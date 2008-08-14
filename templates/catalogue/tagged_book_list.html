@@ -42,7 +42,7 @@
                 trigger: 'a.jqm-trigger', 
                 onShow: function(hash) { 
                     var offset = $(hash.t).offset();
-                    target.html('<p><img src="/.txt/img/indicator.gif" /> Ładowanie</p>');
+                    target.html('<p><img src="/media/img/indicator.gif" /> Ładowanie</p>');
                     hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
                 onLoad: function(hash) { 
                     $('form', hash.w).ajaxForm({
@@ -147,7 +147,7 @@
     <div id="set-window">
         <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
         <div class="target">
-            <p><img src="/.txt/img/indicator.gif" /> Ładowanie</p>
+            <p><img src="/media/img/indicator.gif" /> Ładowanie</p>
         </div>
     </div>
 {% endblock %}
