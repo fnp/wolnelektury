@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load catalogue chunks %}
+
+{% block bodyid %}book-a-list{% endblock %}
+
+{% block extrahead %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('#id_q').labelify({labelledClass: 'blur'});
+            $('#book-list .group').addClass('dontsplit');
+            $('#book-list').columnize({columns: 3});
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>Alfabetyczny spis utworów</h1>
+    <form action="." method="GET" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /></p>
+    </form>
+    
+    <div id="book-list">
+        {% for first_letter, group in books_by_first_letter.items %}
+        <div class="group">
+            <h2>{{ first_letter }}</h2>
+            <ol>
+            {% for book in group %}
+                <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+            {% endfor %}
+            </ol>
+        </div>
+        {% endfor %}    
+    </div>
+{% endblock %}

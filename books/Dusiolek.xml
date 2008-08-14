@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Le%C5%9Bmian/Dusio%C5%82ek">
+<dc:creator xml:lang="pl">Leśmian, Bolesław</dc:creator>
+<dc:title xml:lang="pl">Dusiołek</dc:title>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Młoda Polska</dc:subject.period>
+<dc:subject.period xml:lang="pl">Dwudziestolecie międzywojenne</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
+<dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+<dc:subject.genre xml:lang="pl">Wiersz sylabotoniczny</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Dusio%C5%82ek</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=7336&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+<dc:source xml:lang="pl">Bolesław Leśmian (1877-1937), Łąka, Wydawnictwo Mortkowicza, Warszawa, 1920</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Bolesław Leśmian zm. 1937</dc:rights>
+<dc:date.pd xml:lang="pl">1937</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-01-11</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+

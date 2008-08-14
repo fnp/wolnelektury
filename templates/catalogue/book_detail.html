@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load catalogue %}
+
+{% block title %}Lektura {{ book.title }} w WolneLektury.pl{% endblock %}
+
+{% block bodyid %}book-detail{% endblock %}
+
+{% block extrahead %}
+    <script type="text/javascript">
+        $(function() {
+            $('#toggle-description').hover(
+                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                function() { $(this).css({background: '#EEE'}); }
+            ).click(function() {
+                if ($('#description').hasClass('hidden')) {
+                    $('#description').slideDown('fast').removeClass('hidden');
+                    $('p', this).html('Zwiń opis ▲');
+                } else {
+                    $('#description').slideUp('fast').addClass('hidden');
+                    $('p', this).html('Rozwiń opis ▼');
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ book.title }}, {{ categories.author|join:", " }}</h1>
+    <form action="{% url main_page %}" method="get" accept-charset="utf-8" id="search-form">
+        <ol>
+            {% for tag in tags %}
+            <li class="category"><a href="{% catalogue_url tag %}">{{ tag }}</a> | <a href="{% catalogue_url tags -tag %}">x</a></li>
+            {% endfor %}
+            <li class="book-title">{{ book.title }} | <a href="{% catalogue_url tags %}">x</a></li>
+        </ol>
+    </form>
+    
+    <div id="books-list">
+        {% if book.has_description %}
+            <div id="description">
+                {{ book.description|safe }}
+            </div>
+            <div id="toggle-description"><p>Zwiń opis ▲</p></div>
+        {% endif %}
+        <div id="formats">
+            <ul>
+            {% if book.pdf_file %}
+                <li><a href="{{ book.pdf_file.url }}">Pobierz plik PDF</a></li>
+            {% endif %}
+            {% if book.odt_file %}
+                <li><a href="{{ book.odt_file.url }}">Pobierz plik ODT</a></li>
+            {% endif %}
+            {% if book.html_file %}
+                <li><a href="{{ book.html_file.url }}">Pobierz plik HTML</a></li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div id="tags-list">
+        <h2>O utworze</h2>
+        <ul>
+            <li>
+                Autor: 
+                {% for tag in categories.author %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                {% endfor %}
+            </li>
+            <li>
+                Epoka:
+                {% for tag in categories.epoch %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                {% endfor %}
+            </li>
+            <li>
+                Rodzaj:
+                {% for tag in categories.kind %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                {% endfor %}
+            </li>
+            <li>
+                Gatunek:
+                {% for tag in categories.genre %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                {% endfor %}
+            </li>
+        </ul>
+        {% if categories.theme %}
+            <h2>Motywy w utworze</h2>
+            <ul>
+            {% for theme in categories.theme %}
+                <li>{{ theme }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

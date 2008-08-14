@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Fredro/Zemsta">
+<dc:creator xml:lang="pl">Fredro, Aleksander</dc:creator>
+<dc:title xml:lang="pl">Zemsta</dc:title>
+<dc:contributor.editor xml:lang="pl">Maciejewski, Janusz</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Dramat</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Komedia</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl"></dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/3043</dc:source.URL>
+<dc:source xml:lang="pl">Fredro, Aleksander (1793-1876), Zemsta, Wydawnictwo Łódź, wyd. 6, Łódź, 1975</dc:source>
+<dc:rights xml:lang="pl">Aleksander Fredro zm. 1876</dc:rights>
+<dc:date.pd xml:lang="pl">1876</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+

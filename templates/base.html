@@ -1,0 +1,62 @@
+{% load chunks compressed %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>{% block title %}WolneLektury.pl{% endblock %}</title>
+        <link rel="icon" href="/pliki/img/favicon.png" type="image/x-icon" />
+        {% compressed_css "all" %}
+        {% compressed_js "all" %}
+        {% block extrahead %}
+        {% endblock %}
+    </head>
+    <body id="{% block bodyid %}base{% endblock %}">
+        <div id="header">
+            <div id="logo">
+                <a href="/"><img src="/pliki/img/logo.png" alt="WolneLektury.pl - logo" /></a>
+            </div>
+            <div id="user-info">
+                {% if user.is_authenticated %}
+                    <p>Zalogowany jako {{ user.username }} | <a href="{% url logout %}">Wyloguj</a></p>
+                {% else %}
+                    <p><a href="{% url login %}">Zaloguj / Zarejestruj</a></p>
+                {% endif %}
+            </div>
+            <div class="clearboth"></div>
+        </div>
+        <div id="maincontent">
+            {% block body %}
+            {% endblock %}    
+        </div>
+        <div class="clearboth"></div>
+        <div id="footer">
+            <p>
+                Wolne Lektury to projekt prowadzony przez <a href="http://nowoczesnapolska.org.pl/">Fundację Nowoczesna
+                Polska</a>. Reprodukcje cyfrowe wykonane przez <a href="http://www.bn.org.pl/">Bibliotekę Narodową</a>
+                z egzemplarzy pochodzących ze zbiorów BN. Hosting <a href="http://eo.pl/">EO Networks</a>.
+            </p>
+            <p>
+                Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17,
+                e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>
+            </p>
+            <img src="/pliki/img/footer.png" usemap="#footermap" alt="Partnerzy serwisu" />
+            <map name="footermap" id="footermap">
+                <area alt="Biblioteka Analiz" coords="618,59,679,77" href="http://www.rynek-ksiazki.pl/" shape="rect" />
+                <area alt="Przekrój" coords="590,53,615,74" href="http://www.przekroj.pl/" shape="rect" />
+                <area alt="TVP Kultura" coords="551,53,588,74" href="http://www.tvp.pl/tvpkultura/" shape="rect" />
+                <area alt="Elle" coords="618,33,677,57" href="http://elle.interia.pl/" shape="rect" />
+                <area alt="Radio TOK.FM " coords="515,53,549,75" href="http://www.tok.fm/" shape="rect" />
+                <area alt="Tygodnik Powszechny" coords="514,33,616,51" href="http://tygodnik.onet.pl/" shape="rect" />
+                <area alt="Dziennik Polska-Europa-Swiat" coords="368,34,512,75" href="http://www.dziennik.pl/" shape="rect" />
+                <area alt="Ministerstwo Kultury i Dziedzictwa Narodowego" coords="265,35,366,74" href="http://www.mkidn.gov.pl/" shape="rect" />
+                <area alt="Biblioteka Narodowa" coords="222,29,261,83" href="http://www.bn.org.pl/" shape="rect" />
+                <area alt="PZL" coords="188,58,217,81" href="http://www.pzl.pl/" shape="rect" />
+                <area alt="EO Networks" coords="162,32,218,56" href="http://eo.pl/" shape="rect" />
+                <area alt="Kancelaria Prawna Grynhoff Woźny Maliński Spółka komandytowa" coords="104,61,184,76" href="http://www.gww.pl/" shape="rect" />
+                <area alt="Information is art" coords="104,35,160,60" href="http://www.informationisart.com/" shape="rect" />
+                <area alt="Fundacja Nowoczesna Polska" coords="15,39,98,75" href="http://nowoczesnapolska.org.pl/" shape="rect" />
+            </map>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load catalogue pagination_tags %}
+
+{% block title %}{% title_from_tags tags %} w WolneLektury.pl{% endblock %}
+
+{% block bodyid %}books{% endblock %}
+
+{% block extrahead %}
+    <script type="text/javascript">
+        $(function() {            
+            $('#id_q').labelify({labelledClass: 'blur'});
+            
+            // $('#tags-list ul').addClass('dontsplit');
+            // $('#tags-list').columnize({width: 180});
+            
+            $('#books-list .book').hover(
+                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                function() { $(this).css({background: '#FFF'}); }
+            ).click(function() {
+                location.href = $('h2 a', this).attr('href');
+            });
+            
+            $('#toggle-description').hover(
+                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                function() { $(this).css({background: '#EEE'}); }
+            ).click(function() {
+                if ($('#description').hasClass('hidden')) {
+                    $('#description').slideDown('fast').removeClass('hidden');
+                    $('p', this).html('Zwiń opis ▲');
+                } else {
+                    $('#description').slideUp('fast').addClass('hidden');
+                    $('p', this).html('Rozwiń opis ▼');
+                }
+            });
+            
+            var target = $('#set-window div.target');
+            
+            $('#set-window').jqm({
+                ajax: '@href', 
+                target: target[0],
+                overlay: 60,
+                trigger: 'a.jqm-trigger', 
+                onShow: function(hash) { 
+                    var offset = $(hash.t).offset();
+                    target.html('<p><img src="/pliki/img/indicator.gif" /> Ładowanie</p>');
+                    hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
+                onLoad: function(hash) { 
+                    $('form', hash.w).ajaxForm({
+                        target: target,
+                        success: function() { setTimeout(function() { $('#set-window').jqmHide() }, 1000) }
+                    });
+                }});
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>{% title_from_tags tags %}</h1>
+    <form action="." method="get" accept-charset="utf-8" id="search-form">
+        <ol>
+            {% for tag in tags %}
+            <li class="category"><a href="{% catalogue_url tag %}">{{ tag }}</a> | <a href="{% catalogue_url tags -tag %}">x</a></li>
+            {% endfor %}
+            <li>{{ form.q }} <input type="submit" value="Szukaj"/></li>
+        </ol>
+    </form>
+    
+    {% autopaginate books 10 %}
+    <div id="books-list">
+        {% with tags|last as last_tag %}
+        {% if last_tag.has_description %}
+            <div id="description">
+                {{ last_tag.description|safe }}
+            </div>
+            <div id="toggle-description"><p>Zwiń opis ▲</p></div>
+        {% endif %}
+        {% endwith %}
+        <ol>
+        {% for book in books %}
+            <li>{% include "catalogue/_book.html" %}</li>
+        {% endfor %}
+        </ol>
+        {% paginate %}
+    </div>
+    <div id="tags-list">
+        <div class="dontsplit">
+            {% if categories.set %}
+                <h2>Zestawy</h2>
+                <ul>
+                {% for set in categories.set %}
+                    <li><a href="{% catalogue_url tags set %}">{{ set }}&nbsp;({{ set.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="dontsplit">
+            {% if categories.author %}
+                <h2>Autorzy</h2>
+                <ul>
+                {% for author in categories.author %}
+                    <li><a href="{% catalogue_url tags author %}">{{ author }}&nbsp;({{ author.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="dontsplit">
+            {% if categories.epoch %}
+                <h2>Epoki</h2>
+                <ul>
+                {% for epoch in categories.epoch %}
+                    <li><a href="{% catalogue_url tags epoch %}">{{ epoch }}&nbsp;({{ epoch.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="dontsplit">
+            {% if categories.kind %}
+                <h2>Rodzaje</h2>
+                <ul>
+                {% for kind in categories.kind %}
+                    <li><a href="{% catalogue_url tags kind %}">{{ kind }}&nbsp;({{ kind.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="dontsplit">
+            {% if categories.genre %}
+                <h2>Gatunki literackie</h2>
+                <ul>
+                {% for genre in categories.genre %}
+                    <li><a href="{% catalogue_url tags genre %}">{{ genre }}&nbsp;({{ genre.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="dontsplit">
+            {% if categories.theme %}
+                <h2>Motywy</h2>
+                <ul>
+                {% for theme in categories.theme %}
+                    <li><a href="{% catalogue_url tags theme %}">{{ theme }} ({{ theme.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div id="set-window">
+        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="target">
+            <p><img src="/pliki/img/indicator.gif" /> Ładowanie</p>
+        </div>
+    </div>
+{% endblock %}

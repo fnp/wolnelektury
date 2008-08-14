@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load catalogue chunks %}
+
+{% block bodyid %}main-page{% endblock %}
+
+{% block extrahead %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('#id_q').labelify({labelledClass: 'blur'});
+            
+            $('#categories-list ul').columnize({width: 180});
+            $('#themes-list ul').columnize({width: 180});
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <form action="." method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url catalogue.views.book_list %}">zobacz spis utworów</a> w naszym zbiorze</p>
+    </form>
+    
+    <div id="tags-list">
+        <div id="categories-list">
+            {% if categories.set %}
+                <h2>Zestawy</h2>
+                <ul>
+                {% for set in categories.set %}
+                    <li><a href="{% catalogue_url set %}">{{ set }}&nbsp;({{ set.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% if categories.author %}
+                <h2>Autorzy</h2>
+                <ul>
+                {% for author in categories.author %}
+                    <li><a href="{% catalogue_url author %}">{{ author }}&nbsp;({{ author.count }})</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% if categories.epoch %}
+            <h2>Epoki</h2>
+                <ul>
+                {% for epoch in categories.epoch %}
+                    <li><a href="{% catalogue_url epoch %}">{{ epoch }}&nbsp;({{ epoch.count }})</a></li>
+                {% endfor %}
+                </ul>                
+            {% endif %}
+            
+            {% if categories.kind %}
+                <h2>Rodzaje</h2>
+                <ul>
+                {% for kind in categories.kind %}
+                    <li><a href="{% catalogue_url kind %}">{{ kind }}&nbsp;({{ kind.count }})</a></li>
+                {% endfor %}
+                </ul>                
+            {% endif %}
+            
+            {% if categories.genre %}
+                <h2>Gatunki literackie</h2>
+                <ul>
+                {% for genre in categories.genre %}
+                    <li><a href="{% catalogue_url genre %}">{{ genre }}&nbsp;({{ genre.count }})</a></li>
+                {% endfor %}
+                </ul>                
+            {% endif %}
+        </div>
+        <div id="themes-list">
+            {% if categories.theme %}
+                <h2>Motywy</h2>
+                <ul>
+                {% for theme in categories.theme %}
+                    <li><a href="{% catalogue_url theme %}">{{ theme }}&nbsp;({{ theme.count }})</a></li>
+                {% endfor %}
+                </ul>                
+            {% endif %}
+        </div>
+        <div class="clearboth"></div>
+    </div>
+    
+    <div id="latest-blog-posts">
+        <h2>Aktualności z naszego bloga</h2>
+        {% latest_blog_posts "http://wolnepodreczniki.pl/feed/?s=Wolne%20Lektury" %}
+    </div>
+{% endblock %}

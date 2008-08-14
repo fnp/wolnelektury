@@ -1,0 +1,30 @@
+<div class="book">
+    {% if request.user.is_authenticated %}
+    <div class="change-sets">
+        <a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">Zestawy</a>
+    </div>
+    {% endif %}
+    <div class="book-thumbnail"></div>
+    <div class="book-description">
+        <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
+        <p style="margin: 0">Formaty: 
+            <a href="#">Czytaj online</a>
+            {% if book.pdf_file %}
+                <a href="{{ book.pdf_file.url }}">Pobierz plik PDF</a>
+            {% endif %}
+            {% if book.odt_file %}
+                <a href="{{ book.odt_file.url }}">ODT</a>
+            {% endif %}
+            {% if book.html_file %}
+                <a href="{{ book.html_file.url }}">Pobierz plik HTML</a>
+            {% endif %}
+        </p>
+        <p style="margin: 0">Utwór w kategoriach:
+        {% for tag in book.tags %}
+            {% ifnotequal tag.category "set" %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %},{% endif %}
+            {% endifnotequal %}
+        {% endfor %}
+        </p>
+    </div>
+</div>

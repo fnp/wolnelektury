@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <form method="POST" action="." class="simple-form">
+    <ol>
+        {{ form.as_ul }}
+        <li><input type="submit" value="Zaloguj" /></li>
+    </ol>
+    <p><input type="hidden" name="next" value="{{ next }}" /></p>
+    </form>
+{% endblock %}

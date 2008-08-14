@@ -1,0 +1,152 @@
+# -*- coding: utf-8 -*-
+from django import template
+from django.template import Node, Variable
+from django.utils.encoding import smart_str
+from django.core.urlresolvers import reverse
+
+
+register = template.Library()
+
+
+def iterable(obj):
+    try:
+        iter(obj)
+        return True
+    except TypeError:
+        return False
+
+
+def capfirst(text):
+    try:
+        return '%s%s' % (text[0].upper(), text[1:])
+    except IndexError:
+        return ''
+
+
+@register.simple_tag
+def title_from_tags(tags):
+    def split_tags(tags):
+        result = {}
+        for tag in tags:
+            result[tag.category] = tag
+        return result
+    
+    class Flection(object):
+        def get_case(self, name, flection):
+            return name
+    flection = Flection()
+    
+    self = split_tags(tags)
+    
+    title = u''
+    
+    # Specjalny przypadek "Twórczość w pozytywizmie", wtedy gdy tylko epoka
+    # jest wybrana przez użytkownika
+    if 'epoch' in self and len(self) == 1:
+        text = u'Twórczość w %s' % flection.get_case(unicode(self['epoch']), u'miejscownik')
+        return capfirst(text)
+    
+    # Specjalny przypadek "Dramat w twórczości Sofoklesa", wtedy gdy podane
+    # są tylko rodzaj literacki i autor
+    if 'kind' in self and 'author' in self and len(self) == 2:
+        text = u'%s w twórczości %s' % (unicode(self['kind']), 
+            flection.get_case(unicode(self['author']), u'dopełniacz'))
+        return capfirst(text)
+    
+    # Przypadki ogólniejsze
+    if 'theme' in self:
+        title += u'Motyw %s' % unicode(self['theme'])
+    
+    if 'genre' in self:
+        if 'theme' in self:
+            title += u' w %s' % flection.get_case(unicode(self['genre']), u'miejscownik')
+        else:
+            title += unicode(self['genre'])
+            
+    if 'kind' in self or 'author' in self or 'epoch' in self:
+        if 'genre' in self or 'theme' in self:
+            if 'kind' in self:
+                title += u' w %s ' % flection.get_case(unicode(self['kind']), u'miejscownik')
+            else:
+                title += u' w twórczości '
+        else:
+            title += u'%s ' % unicode(self.get('kind', u'twórczość'))
+            
+    if 'author' in self:
+        title += flection.get_case(unicode(self['author']), u'dopełniacz')
+    elif 'epoch' in self:
+        title += flection.get_case(unicode(self['epoch']), u'dopełniacz')
+    
+    return capfirst(title)
+
+
+@register.tag
+def catalogue_url(parser, token):
+    bits = token.split_contents()
+    tag_name = bits[0]
+    
+    tags_to_add = []
+    tags_to_remove = []
+    for bit in bits[1:]:
+        if bit[0] == '-':
+            tags_to_remove.append(bit[1:])
+        else:
+            tags_to_add.append(bit)
+    
+    return CatalogueURLNode(tags_to_add, tags_to_remove)
+
+
+class CatalogueURLNode(Node):
+    def __init__(self, tags_to_add, tags_to_remove):
+        self.tags_to_add = [Variable(tag) for tag in tags_to_add]
+        self.tags_to_remove = [Variable(tag) for tag in tags_to_remove]
+    
+    def render(self, context):
+        tags_to_add = []
+        tags_to_remove = []
+
+        for tag_variable in self.tags_to_add:
+            tag = tag_variable.resolve(context)
+            if isinstance(tag, (list, dict)):
+                tags_to_add += [t for t in tag]
+            else:
+                tags_to_add.append(tag)
+
+        for tag_variable in self.tags_to_remove:
+            tag = tag_variable.resolve(context)
+            if iterable(tag):
+                tags_to_remove += [t for t in tag]
+            else:
+                tags_to_remove.append(tag)
+            
+        tag_slugs = [tag.slug for tag in tags_to_add]
+        for tag in tags_to_remove:
+            try:
+                tag_slugs.remove(tag.slug)
+            except KeyError:
+                pass
+        
+        if len(tag_slugs) > 0:
+            return reverse('tagged_book_list', kwargs={'tags': '/'.join(tag_slugs)})
+        else:
+            return reverse('main_page')
+
+
+@register.inclusion_tag('catalogue/latest_blog_posts.html')
+def latest_blog_posts(feed_url, posts_to_show=5):
+    import feedparser
+    import datetime
+    
+    feed = feedparser.parse(feed_url)
+    posts = []
+    for i in range(posts_to_show):
+        pub_date = feed['entries'][i].updated_parsed
+        published = datetime.date(pub_date[0], pub_date[1], pub_date[2] )
+        posts.append({
+            'title': feed['entries'][i].title,
+            'summary': feed['entries'][i].summary,
+            'link': feed['entries'][i].link,
+            'date': published,
+            })
+    return {'posts': posts}
+
