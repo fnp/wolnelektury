@@ -289,13 +289,13 @@ em {
 /* =============== */
 /* = Simple form = */
 /* =============== */
-.simple-form ol, .simple-form ul {
+.cuteform ol, .cuteform ul {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-.simple-form ol li, .simple-form ul li {
+.cuteform ol li, .cuteform ul li {
     margin-top: 0.5em;
 }
 

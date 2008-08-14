@@ -1,6 +1,6 @@
 {% if book %}
 <h2>Zestawy zawierające utwór {{ book.title }}</h2>
-<form action="{% url catalogue.views.book_sets book.slug %}" method="POST" accept-charset="utf-8" class="simple-form">
+<form action="{% url catalogue.views.book_sets book.slug %}" method="POST" accept-charset="utf-8" class="cuteform">
 <ol>
     <li>{{ form.set_ids }}</li>
     <li><input type="submit" value="Zapisz zestawy"/></li>
@@ -8,6 +8,6 @@
 </form>
 {% endif %}
 <hr />
-<form action="{% url catalogue.views.new_set %}" method="POST" accept-charset="utf-8" class="simple-form">
+<form action="{% url catalogue.views.new_set %}" method="POST" accept-charset="utf-8" class="cuteform">
     <p>{{ new_set_form.name }} <input type="submit" value="Dodaj zestaw"/></p>
 </form>
