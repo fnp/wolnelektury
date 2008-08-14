@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^uzytkownicy/wyloguj/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
     
     # Pliki statyczne
-    (r'^pliki/(?P<path>.*)$', 'django.views.static.serve', 
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', 
         {'document_root': os.path.join(os.path.dirname(__file__), 'media'), 'show_indexes': True}),
     (r'^$', 'django.views.generic.simple.redirect_to', {'url': 'katalog/'}),
 )

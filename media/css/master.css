@@ -2,7 +2,7 @@ body {
     margin: 2em;
     font: 70% Verdana, Arial, Helvetica, sans-serif;
     line-height: 1.5em;
-    background: #FFF url(/pliki/img/bg.png) repeat-x;
+    background: #FFF url(/media/img/bg.png) repeat-x;
     color: #000;
 }
 
@@ -41,6 +41,11 @@ h3 {
     font-weight: bold;
     margin: 0.2em 0 0 0;
     color: #333;
+}
+
+em {
+    font-style: normal;
+    background-color: #F5DC7D;
 }
 
 .clearboth {
@@ -275,7 +280,7 @@ h3 {
 }
 
 .book-thumbnail {
-    background: transparent url(/pliki/img/book.png) no-repeat 0 0;
+    background: transparent url(/media/img/book.png) no-repeat 0 0;
     width: 3em;
     height: 3em;
     float: left;

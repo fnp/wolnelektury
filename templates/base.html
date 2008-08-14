@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
-        <link rel="icon" href="/pliki/img/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="/media/img/favicon.png" type="image/x-icon" />
         {% compressed_css "all" %}
         {% compressed_js "all" %}
         {% block extrahead %}
@@ -14,7 +14,7 @@
     <body id="{% block bodyid %}base{% endblock %}">
         <div id="header">
             <div id="logo">
-                <a href="/"><img src="/pliki/img/logo.png" alt="WolneLektury.pl - logo" /></a>
+                <a href="/"><img src="/media/img/logo.png" alt="WolneLektury.pl - logo" /></a>
             </div>
             <div id="user-info">
                 {% if user.is_authenticated %}
@@ -40,7 +40,7 @@
                 Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17,
                 e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>
             </p>
-            <img src="/pliki/img/footer.png" usemap="#footermap" alt="Partnerzy serwisu" />
+            <img src="/media/img/footer.png" usemap="#footermap" alt="Partnerzy serwisu" />
             <map name="footermap" id="footermap">
                 <area alt="Biblioteka Analiz" coords="618,59,679,77" href="http://www.rynek-ksiazki.pl/" shape="rect" />
                 <area alt="Przekrój" coords="590,53,615,74" href="http://www.przekroj.pl/" shape="rect" />
