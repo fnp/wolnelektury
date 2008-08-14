@@ -2,4 +2,4 @@ syntax: regexp
 
 ^lektury\.sqlite$
 .*\.pyc$
-
+.*\.DS_Store$
