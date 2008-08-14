@@ -1,0 +1,5 @@
+syntax: regexp
+
+^lektury\.sqlite$
+.*\.pyc$
+
