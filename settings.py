@@ -97,7 +97,7 @@ COMPRESS_CSS = {
 COMPRESS_JS = {
     'all': {
         'source_filenames': ('js/jquery.js', 'js/jquery.autocolumn.js', 'js/jquery.autocomplete.js', 
-            'js/jquery.form.js', 'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/jquery.cuteform.js'),
+            'js/jquery.form.js', 'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/jquery.cuteform.js',),
         'output_filename': 'js/all.min.js',
     }
 }
