@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-10 08:44-0500\n"
+"POT-Creation-Date: 2008-08-15 09:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,90 +16,115 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: catalogue/models.py:14
+#: catalogue/models.py:12
 msgid "author"
 msgstr "autor"
 
-#: catalogue/models.py:15
+#: catalogue/models.py:13
 msgid "epoch"
 msgstr "epoka"
 
-#: catalogue/models.py:16
+#: catalogue/models.py:14
 msgid "kind"
 msgstr "rodzaj"
 
-#: catalogue/models.py:17
+#: catalogue/models.py:15
 msgid "genre"
 msgstr "gatunek"
 
-#: catalogue/models.py:18
+#: catalogue/models.py:16
 msgid "theme"
 msgstr "motyw"
 
-#: catalogue/models.py:32
+#: catalogue/models.py:17
+msgid "set"
+msgstr "zestaw"
+
+#: catalogue/models.py:31
 msgid "name"
 msgstr "nazwa"
 
-#: catalogue/models.py:33 catalogue/models.py:59
+#: catalogue/models.py:32 catalogue/models.py:60
 msgid "slug"
 msgstr "slug"
 
-#: catalogue/models.py:34
+#: catalogue/models.py:33
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: catalogue/models.py:35
+#: catalogue/models.py:34
 msgid "category"
 msgstr "kategoria"
 
-#: catalogue/models.py:41 catalogue/models.py:73
+#: catalogue/models.py:42 catalogue/models.py:74
 msgid "Has description"
 msgstr "Ma opis"
 
-#: catalogue/models.py:50 newtagging/models.py:458
+#: catalogue/models.py:51 newtagging/models.py:473
 msgid "tag"
 msgstr "tag"
 
-#: catalogue/models.py:51 newtagging/admin.py:38
+#: catalogue/models.py:52 newtagging/admin.py:38
 msgid "tags"
 msgstr "tagi"
 
-#: catalogue/models.py:58
+#: catalogue/models.py:59
 msgid "title"
 msgstr "tytuł"
 
-#: catalogue/models.py:60
+#: catalogue/models.py:61
 msgid "description"
 msgstr "opis"
 
-#: catalogue/models.py:61
+#: catalogue/models.py:62
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: catalogue/models.py:64
+#: catalogue/models.py:65
 msgid "PDF file"
 msgstr "plik PDF"
 
-#: catalogue/models.py:65
+#: catalogue/models.py:66
 msgid "ODT file"
 msgstr "plik ODT"
 
-#: catalogue/models.py:66
+#: catalogue/models.py:67
 msgid "HTML file"
 msgstr "plik HTML"
 
-#: catalogue/models.py:82
+#: catalogue/models.py:98
 msgid "book"
 msgstr "książka"
 
-#: catalogue/models.py:83
+#: catalogue/models.py:99
 msgid "books"
 msgstr "książki"
 
-#: newtagging/models.py:459
+#: chunks/models.py:12
+msgid "key"
+msgstr "klucz"
+
+#: chunks/models.py:12
+msgid "A unique name for this chunk of content"
+msgstr "Unikalna nazwa dla tego kawałka treści"
+
+#: chunks/models.py:13
+#, fuzzy
+msgid "content"
+msgstr "typ zawartości"
+
+#: chunks/models.py:17
+msgid "chunk"
+msgstr "kawałek"
+
+#: chunks/models.py:18
+msgid "chunks"
+msgstr "kawałki"
+
+#: newtagging/models.py:474
 msgid "content type"
 msgstr "typ zawartości"
 
-#: newtagging/models.py:460
+#: newtagging/models.py:475
 msgid "object id"
 msgstr "id obiektu"
