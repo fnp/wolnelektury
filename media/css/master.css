@@ -312,6 +312,15 @@ em {
     display: block;
 }
 
+.cuteform span.help-text {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+}
+
+.cuteform .error {
+    color: #BF3024;
+}
 
 /* ================ */
 /* = Modal Window = */

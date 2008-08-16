@@ -7,6 +7,18 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.datastructures import SortedDict
 from django.views.decorators.http import require_GET, require_POST
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.utils import simplejson
+from django.utils.functional import Promise
+from django.utils.encoding import force_unicode
+
+class LazyEncoder(simplejson.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_unicode(obj)
+        return obj
+
 
 from catalogue import models
 from catalogue import forms
@@ -28,16 +40,7 @@ def catalogue_redirect(request, tags=''):
     else:
         return HttpResponseRedirect(reverse('catalogue.views.main_page'))
 
-# 
-# @require_GET
-# def tag_search(request):
-#     search_form = forms.SearchForm(request.GET)
-#     if search_form.is_valid():
-#         query = search_form.cleaned_data['q']
-#         tags = search_form.cleaned_data['tags']
-#         
-    
-    
+
 def tags_starting_with(request):
     try:
         prefix = request.GET['q']
@@ -129,6 +132,38 @@ def book_detail(request, slug):
     
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
+
+
+def logout_then_redirect(request):
+    auth.logout(request)
+    return HttpResponseRedirect(request.GET.get('next', '/'))
+
+
+@require_POST
+def register(request):
+    registration_form = UserCreationForm(request.POST, prefix='registration')
+    if registration_form.is_valid():
+        user = registration_form.save()
+        user = auth.authenticate(
+            username=registration_form.cleaned_data['username'], 
+            password=registration_form.cleaned_data['password1']
+        )
+        auth.login(request, user)
+        response_data = {'success': True, 'errors': {}}
+    else:
+        response_data = {'success': False, 'errors': registration_form.errors}
+    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
+
+
+@require_POST
+def login(request):
+    form = AuthenticationForm(data=request.POST, prefix='login')
+    if form.is_valid():
+        auth.login(request, form.get_user())
+        response_data = {'success': True, 'errors': {}}
+    else:
+        response_data = {'success': False, 'errors': form.errors}
+    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
 
 
 @login_required

@@ -15,8 +15,9 @@ urlpatterns = patterns('',
     url(r'^admin/(.*)$', admin.site.root),
     
     # Użytkownicy
-    url(r'^uzytkownicy/zaloguj/$', 'django.contrib.auth.views.login', {'template_name': 'auth/login.html'}, name='login'),
-    url(r'^uzytkownicy/wyloguj/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
+    url(r'^uzytkownicy/zaloguj/$', 'catalogue.views.login', name='login'),
+    url(r'^uzytkownicy/wyloguj/$', 'catalogue.views.logout_then_redirect', name='logout'),
+    url(r'^uzytkownicy/utworz/$', 'catalogue.views.register', name='register'),
     
     # Pliki statyczne
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', 

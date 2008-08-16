@@ -1,4 +1,4 @@
-{% load chunks compressed %}
+{% load chunks compressed catalogue %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,7 +23,7 @@
                         {% if user.is_staff %}
                         | <a href="/admin/">Administracja</a>
                         {% endif %}
-                        | <a href="{% url logout %}">Wyloguj</a>
+                        | <a href="{% url logout %}?next={{ request.get_full_path }}">Wyloguj</a>
                     </p>
                 {% else %}
                     <p><a href="{% url login %}" id="login-register-link">Zaloguj się / Załóż konto</a></p>
@@ -67,26 +67,21 @@
         <div id="login-register-window">
             <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
             <div class="target">
-                <form method="post" action="{% url login %}" id="login-form" class="cuteform" style="width: 18em;">
+                <form method="post" action="{% url login %}" id="login-form" class="cuteform">
                     <h2>Zaloguj się / <a href="#" id="show-registration-form" style="font-size: 0.85em; font-weight: normal">Załóż konto</a></h2>
+                    <p><span id="id_login-__all__" /></p>
                     <ol>
-                        <li><label for="id_username" title="np. Anna Kowalska">Nazwa użytkownika:</label> <input id="id_username" type="text" name="username" maxlength="30" /></li>
-            <li><label for="id_password">Hasło:</label> <input type="password" name="password" id="id_password" /></li>
+                        {% authentication_form %}
                         <li><input type="submit" value="Zaloguj się" /></li>
                     </ol>
-                    <p style="display:none;"><input type="hidden" name="next" value="{{ request.get_full_path }}" /></p>
                 </form>
-                <form method="post" action="{% url login %}" id="registration-form" class="cuteform" style="display: none; width: 18em;">
+                <form method="post" action="{% url register %}" id="registration-form" class="cuteform" style="display: none;">
                     <h2><a href="#" id="show-login-form" style="font-size: 0.85em; font-weight: normal">Zaloguj się</a> / Załóż konto</h2>
+                    <p><span id="id_registration-__all__" /></p>
                     <ol>
-                        <li><label for="id_username" title="np. Anna Kowalska">Nazwa użytkownika:</label> <input id="id_username" type="text" name="username" maxlength="30" /></li>
-                        <li><label for="id_email">Adres e-mail:</label> <input id="id_email" type="text" name="email" maxlength="80" /></li>
-            <li><label for="id_password">Hasło:</label> <input type="password" name="password" id="id_password" /></li>
-            <li><label for="id_password2">Powtórz hasło:</label> <input type="password" name="password2" id="id_password2" /></li>
-            
+                        {% user_creation_form %}
                         <li><input type="submit" value="Załóż konto" /></li>
                     </ol>
-                    <p style="display:none;"><input type="hidden" name="next" value="{{ request.get_full_path }}" /></p>
                 </form>
             </div>
         </div>

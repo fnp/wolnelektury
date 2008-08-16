@@ -3,9 +3,22 @@ from django import template
 from django.template import Node, Variable
 from django.utils.encoding import smart_str
 from django.core.urlresolvers import reverse
+from django.contrib.auth import forms
 
 
 register = template.Library()
+
+
+class RegistrationForm(forms.UserCreationForm):
+    def as_ul(self):
+        "Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."
+        return self._html_output(u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>', '</li>', u' %s', False)
+
+
+class LoginForm(forms.AuthenticationForm):
+    def as_ul(self):
+        "Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."
+        return self._html_output(u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>', '</li>', u' %s', False)
 
 
 def iterable(obj):
@@ -39,6 +52,10 @@ def title_from_tags(tags):
     self = split_tags(tags)
     
     title = u''
+    
+    # Specjalny przypadek oglądania wszystkich lektur w danym zestawie
+    if len(self) == 1 and 'set' in self:
+        return u'Zestaw %s' % self['set']
     
     # Specjalny przypadek "Twórczość w pozytywizmie", wtedy gdy tylko epoka
     # jest wybrana przez użytkownika
@@ -78,6 +95,16 @@ def title_from_tags(tags):
         title += flection.get_case(unicode(self['epoch']), u'dopełniacz')
     
     return capfirst(title)
+
+
+@register.simple_tag
+def user_creation_form():
+    return RegistrationForm(prefix='registration').as_ul()
+
+
+@register.simple_tag
+def authentication_form():
+    return LoginForm(prefix='login').as_ul()
 
 
 @register.tag
