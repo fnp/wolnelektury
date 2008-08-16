@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
+{% block title %}Zaloguj / Zarejestruj się w WolneLektury.pl{% endblock %}
+
 {% block body %}
-    <h1>Zaloguj / Zarejestruj</h1>
+    <h1>Zaloguj się / Załóż konto</h1>
+    <form action="." method="get" accept-charset="utf-8" id="search-form">
+        <p><li>{{ search_form.q }} <input type="submit" value="Szukaj" /></li> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
+    </form>
+    <form method="post" action="." id="login-form" class="cuteform">
+        <h2>Zaloguj się</h2>
+        <ol>
+            {{ form.as_ul }}
+            <li><input type="submit" value="Zaloguj się" /></li>
+        </ol>
+        <p><input type="hidden" name="next" value="{{ next }}" /></p>
+    </form>
     
-    <form method="POST" action="." class="cuteform">
-    <ol>
-        {{ form.as_ul }}
-        <li><input type="submit" value="Zaloguj" /></li>
-    </ol>
-    <p><input type="hidden" name="next" value="{{ next }}" /></p>
+    <form action="." method="post" accept-charset="utf-8" id="registration-form">
+        <h2>Załóż konto</h2>
+
+        <p><input type="submit" value="Załóż konto"/></p>
     </form>
 {% endblock %}

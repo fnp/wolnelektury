@@ -39,7 +39,7 @@ class ChunkNode(template.Node):
         except Chunk.DoesNotExist:
             n = Chunk(key=self.key)
             n.save()
-            return 'SOME TEXT PLEASE'
+            return ''
         return content
         
 register.tag('chunk', do_get_chunk)

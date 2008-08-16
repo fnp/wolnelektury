@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.datastructures import SortedDict
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_GET, require_POST
 
 from catalogue import models
 from catalogue import forms
@@ -28,7 +28,16 @@ def catalogue_redirect(request, tags=''):
     else:
         return HttpResponseRedirect(reverse('catalogue.views.main_page'))
 
-
+# 
+# @require_GET
+# def tag_search(request):
+#     search_form = forms.SearchForm(request.GET)
+#     if search_form.is_valid():
+#         query = search_form.cleaned_data['q']
+#         tags = search_form.cleaned_data['tags']
+#         
+    
+    
 def tags_starting_with(request):
     try:
         prefix = request.GET['q']
@@ -143,6 +152,7 @@ def book_sets(request, slug):
     
     return render_to_response('catalogue/book_sets.html', locals(),
         context_instance=RequestContext(request))
+
 
 @login_required
 @require_POST

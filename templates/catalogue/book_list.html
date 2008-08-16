@@ -8,7 +8,6 @@
 {% block extrahead %}
     <script type="text/javascript" charset="utf-8">
         $(function() {
-            $('#id_q').labelify({labelledClass: 'blur'});
             $('#book-list .group').addClass('dontsplit');
             $('#book-list').columnize({columns: 3});
         });
@@ -18,10 +17,7 @@
 {% block body %}
     <h1>Alfabetyczny spis utworów</h1>
     <form action="." method="GET" accept-charset="utf-8" id="search-form">
-        <ol>
-            <li class="book-title">Alfabetyczny spis utworów | <a href="{% url main_page %}">x</a></li>
-            <li>{{ form.q }} <input type="submit" value="Szukaj" /></li>
-        </ol>
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
     </form>
     
     <div id="book-list">

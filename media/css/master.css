@@ -3,7 +3,7 @@ body {
     font: 70% Verdana, Arial, Helvetica, sans-serif;
     line-height: 1.5em;
     background: #FFF url(/media/img/bg.png) repeat-x;
-    color: #000;
+    color: #2F4110;
 }
 
 img {
@@ -26,7 +26,7 @@ input {
 h1 {
     font: normal normal bold 1.75em Arial, sans-serif;
     color: #2F4110;
-    margin: 1em 0 0 0;
+    margin: 0.55em 0 0 0;
 }
 
 h2 {
@@ -53,7 +53,7 @@ em {
 }
 
 .blur {
-    color: #999;
+    color: #777;
 }
 
 /* ================================== */
@@ -73,6 +73,15 @@ em {
     text-align: right;
 }
 
+#site-description {
+    margin-top: -1.5em;
+    height:4.5em;
+    overflow: hidden;
+    float: right;
+    width: 42em;
+    text-align: right;
+    color: #777;
+}
 
 /* ======================== */
 /* = Footer with sponsors = */
@@ -296,8 +305,13 @@ em {
 }
 
 .cuteform ol li, .cuteform ul li {
-    margin-top: 0.5em;
+    margin-top: 0.7em;
 }
+
+.cuteform label {
+    display: block;
+}
+
 
 /* ================ */
 /* = Modal Window = */
@@ -307,27 +321,54 @@ em {
     display: none;
     width: 32em;
     background-color: transparent;
-    color: #333;
     margin-top: -0.5em;
     margin-left: -1em;
 }
 
 #set-window div.header {
     background-color: #FFF;
-    border-right: 0.5em solid #DDD;
+    border-right: 0.25em solid #DDD;
     width: 4em;
     padding: 0.5em 1em 0.5em 1em;
 }
 
 #set-window div.target {
     background-color: #FFF;
-    border-right: 0.5em solid #DDD;
-    border-bottom: 0.5em solid #DDD;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
     padding: 1em;
 }
 
 .jqmOverlay { background-color: #000; }
 
+
+#login-register-window {
+    position: absolute;
+    display: none;
+    width: 24em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+#login-register-window div.header {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    width: 4em;
+    right: 0;
+    left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    float: right;
+    text-align: center;
+}
+
+#login-register-window div.target {
+    clear: both;
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
 
 /* ======================== */
 /* = Alphabetic book list = */
@@ -337,3 +378,4 @@ em {
     margin: 0.3em 0 1.2em 0;
     list-style: none;
 }
+
