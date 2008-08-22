@@ -6,23 +6,24 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.datastructures import SortedDict
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_POST
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
 
+from newtagging.views import tagged_object_list
+from catalogue import models
+from catalogue import forms
+from catalogue.utils import split_tags
+
+
 class LazyEncoder(simplejson.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Promise):
             return force_unicode(obj)
         return obj
-
-
-from catalogue import models
-from catalogue import forms
-from catalogue.utils import split_tags
 
 
 def catalogue_redirect(request, tags=''):
@@ -97,31 +98,26 @@ def tagged_book_list(request, tags=''):
     if 'q' in request.GET:
         return catalogue_redirect(request, tags)
     
-    choices_split = tags.split('/')
-    tags = []
-    for tag in choices_split:
-        tag = get_object_or_404(models.Tag, slug=tag)
-        if tag.category == 'set' and (not request.user.is_authenticated() or request.user != tag.user):
-            raise Http404
-        tags.append(tag)
+    try:
+        tags = models.Tag.get_tag_list(tags)
+    except models.Tag.DoesNotExist:
+        raise Http404
         
-    books = models.Book.objects.with_all(tags)
-    
     if request.user.is_authenticated():
         extra_where = '(NOT catalogue_tag.category = "set" OR catalogue_tag.user_id = %d)' % request.user.id
     else:
         extra_where = 'NOT catalogue_tag.category = "set"'
     related_tags = models.Tag.objects.related_for_model(tags, models.Book, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
-    
-    form = forms.SearchForm()
-    
-    return render_to_response('catalogue/tagged_book_list.html', dict(
+
+    return tagged_object_list(
+        request,
+        tag_model=models.Tag,
+        queryset_or_model=models.Book,
         tags=tags,
-        form=form,
-        books=books,
-        categories=categories,
-    ), context_instance=RequestContext(request))
+        template_name='catalogue/tagged_book_list.html',
+        extra_context = {'categories': categories, 'form': forms.SearchForm() },
+    )
 
 
 def book_detail(request, slug):

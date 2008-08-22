@@ -63,7 +63,7 @@
         </ol>
     </form>
     
-    {% autopaginate books 10 %}
+    {% autopaginate object_list 10 %}
     <div id="books-list">
         {% with tags|last as last_tag %}
         {% if last_tag.has_description %}
@@ -74,7 +74,7 @@
         {% endif %}
         {% endwith %}
         <ol>
-        {% for book in books %}
+        {% for book in object_list %}
             <li>{% include "catalogue/_book.html" %}</li>
         {% endfor %}
         </ol>
