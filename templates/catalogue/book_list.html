@@ -16,7 +16,7 @@
 
 {% block body %}
     <h1>Alfabetyczny spis utworów</h1>
-    <form action="." method="GET" accept-charset="utf-8" id="search-form">
+    <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
     </form>
     

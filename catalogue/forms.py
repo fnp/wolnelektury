@@ -8,11 +8,13 @@ from catalogue.lib.slughifi import slughifi
 
 class SearchForm(forms.Form):
     q = JQueryAutoCompleteField('/katalog/tags/', {'minChars': 2, 'selectFirst': True, 'cacheLength': 50})
-    tags = forms.CharField(widget=forms.HiddenInput)
+    tags = forms.CharField(widget=forms.HiddenInput, required=False)
     
     def __init__(self, *args, **kwargs):
+        tags = kwargs.pop('tags', [])
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['q'].widget.attrs['title'] = u'tytuł utworu, motyw lub kategoria'
+        self.fields['tags'].initial = '/'.join(tag.slug for tag in Tag.get_tag_list(tags))
 
 
 class UserSetsForm(forms.Form):

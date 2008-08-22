@@ -26,20 +26,26 @@ class LazyEncoder(simplejson.JSONEncoder):
         return obj
 
 
-def catalogue_redirect(request, tags=''):
-    if len(request.GET['q']) > 0:
+def search(request):
+    query = request.GET.get('q', '')
+    tags = request.GET.get('tags', '')
+    if tags == '':
+        tags = []
+    
+    try:
+        tag_list = models.Tag.get_tag_list(tags)
+        tag = models.Tag.objects.get(name=query)
+    except models.Tag.DoesNotExist:
+        print "%r, %r" % (query, tags)
         try:
-            tag = models.Tag.objects.get(name=request.GET['q'])
-            if len(tags):
-                tags += '/'
-            tags = tags + tag.slug
-        except models.Tag.DoesNotExist:
-            book = get_object_or_404(models.Book, title=request.GET['q'])
-            return HttpResponseRedirect(book.get_absolute_url())
-    if len(tags) > 0:
-        return HttpResponseRedirect(reverse('catalogue.views.tagged_book_list', kwargs=dict(tags=tags)))
+            book = models.Book.objects.get(title=query)
+        except models.Book.DoesNotExist:
+            return HttpResponseRedirect(reverse('catalogue.views.main_page'))
     else:
-        return HttpResponseRedirect(reverse('catalogue.views.main_page'))
+        tag_list.append(tag)
+        return HttpResponseRedirect(reverse('catalogue.views.tagged_book_list', 
+            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
+        ))
 
 
 def tags_starting_with(request):
@@ -63,10 +69,7 @@ def tags_starting_with(request):
         return HttpResponse('')
 
 
-def main_page(request):
-    if 'q' in request.GET:
-        return catalogue_redirect(request)
-    
+def main_page(request):    
     if request.user.is_authenticated():
         extra_where = '(NOT catalogue_tag.category = "set" OR catalogue_tag.user_id = %d)' % request.user.id
     else:
@@ -80,9 +83,6 @@ def main_page(request):
 
 
 def book_list(request):
-    if 'q' in request.GET:
-        return catalogue_redirect(request)
-        
     books = models.Book.objects.all()
     form = forms.SearchForm()
     
@@ -95,9 +95,6 @@ def book_list(request):
 
 
 def tagged_book_list(request, tags=''):
-    if 'q' in request.GET:
-        return catalogue_redirect(request, tags)
-    
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
@@ -116,7 +113,7 @@ def tagged_book_list(request, tags=''):
         queryset_or_model=models.Book,
         tags=tags,
         template_name='catalogue/tagged_book_list.html',
-        extra_context = {'categories': categories, 'form': forms.SearchForm() },
+        extra_context = {'categories': categories },
     )
 
 
@@ -124,7 +121,6 @@ def book_detail(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
-    search_form = forms.SearchForm()
     
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
