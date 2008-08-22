@@ -3,19 +3,19 @@ from django import template
 from django.template import Node, Variable
 from django.utils.encoding import smart_str
 from django.core.urlresolvers import reverse
-from django.contrib.auth import forms
-
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+    
 
 register = template.Library()
 
 
-class RegistrationForm(forms.UserCreationForm):
+class RegistrationForm(UserCreationForm):
     def as_ul(self):
         "Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."
         return self._html_output(u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>', '</li>', u' %s', False)
 
 
-class LoginForm(forms.AuthenticationForm):
+class LoginForm(AuthenticationForm):
     def as_ul(self):
         "Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."
         return self._html_output(u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>', '</li>', u' %s', False)

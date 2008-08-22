@@ -14,6 +14,14 @@ class SearchForm(forms.Form):
         self.fields['q'].widget.attrs['title'] = u'tytuł utworu, motyw lub kategoria'
 
 
+class UserSetsForm(forms.Form):
+    def __init__(self, book, user, *args, **kwargs):
+        super(UserSetsForm, self).__init__(*args, **kwargs)
+        self.fields['set_ids'] = forms.ChoiceField(
+            choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user)],
+        )
+
+
 class BookSetsForm(forms.Form):
     def __init__(self, book, user, *args, **kwargs):        
         super(BookSetsForm, self).__init__(*args, **kwargs)

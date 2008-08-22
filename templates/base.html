@@ -12,6 +12,9 @@
         {% endblock %}
     </head>
     <body id="{% block bodyid %}base{% endblock %}">
+        <div id="top-message">
+            {% chunk "top-message" %}
+        </div>
         <div id="header">
             <div id="logo">
                 <a href="/"><img src="/media/img/logo.png" alt="WolneLektury.pl - logo" /></a>
@@ -20,6 +23,7 @@
                 {% if user.is_authenticated %}
                     <p>
                         Zalogowany jako <strong>{{ user.username }}</strong>
+                        | <a href="#">Zestawy</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">Administracja</a>
                         {% endif %}

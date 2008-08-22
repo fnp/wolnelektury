@@ -388,3 +388,7 @@ em {
     list-style: none;
 }
 
+#top-message {
+    background-color: #2F4110;
+    color: #FFF;
+}

@@ -54,6 +54,14 @@ class Tag(TagBase):
     def __unicode__(self):
         return self.name
 
+    @staticmethod
+    def get_tag_list(tags):
+        if isinstance(tags, basestring):
+            tag_slugs = tags.split('/')
+            return [Tag.objects.get(slug=slug) for slug in tag_slugs]
+        else:
+            return TagBase.get_tag_list(tags)
+
 
 class Book(models.Model):
     title = models.CharField(_('title'), max_length=120)
