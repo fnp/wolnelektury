@@ -107,6 +107,15 @@ def authentication_form():
     return LoginForm(prefix='login').as_ul()
 
 
+@register.inclusion_tag('catalogue/breadcrumbs.html')
+def breadcrumbs(tags, search_form=True):
+    from wolnelektury.catalogue.forms import SearchForm
+    context = {'tag_list': tags}
+    if search_form:
+        context['search_form'] = SearchForm(tags=tags)
+    return context
+
+
 @register.tag
 def catalogue_url(parser, token):
     bits = token.split_contents()
