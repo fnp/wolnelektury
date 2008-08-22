@@ -484,9 +484,9 @@ class TagMeta(ModelBase):
         model = super(TagMeta, cls).__new__(cls, name, bases, attrs)
         if not model._meta.abstract:
             # Create an intermediary table and register custom managers for concrete models
-            intermediary_table_model = create_intermediary_table_model(model)
-            TagManager(intermediary_table_model).contribute_to_class(model, 'objects')
-            TaggedItemManager(model).contribute_to_class(intermediary_table_model, 'objects')
+            model.intermediary_table_model = create_intermediary_table_model(model)
+            TagManager(model.intermediary_table_model).contribute_to_class(model, 'objects')
+            TaggedItemManager(model).contribute_to_class(model.intermediary_table_model, 'objects')
         return model
 
 
