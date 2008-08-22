@@ -12,8 +12,6 @@ from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.base import ModelBase
 
-from newtagging.utils import get_tag_list, get_queryset_and_model
-
 qn = connection.ops.quote_name
 
 try:
@@ -22,10 +20,23 @@ except ImportError:
     parse_lookup = None
 
 
+def get_queryset_and_model(queryset_or_model):
+    """
+    Given a ``QuerySet`` or a ``Model``, returns a two-tuple of
+    (queryset, model).
+
+    If a ``Model`` is given, the ``QuerySet`` returned will be created
+    using its default manager.
+    """
+    try:
+        return queryset_or_model, queryset_or_model.model
+    except AttributeError:
+        return queryset_or_model._default_manager.all(), queryset_or_model
+
+
 ############
 # Managers #
 ############
-
 class TagManager(models.Manager):
     def __init__(self, intermediary_table_model):
         super(TagManager, self).__init__()
@@ -38,7 +49,7 @@ class TagManager(models.Manager):
         content_type = ContentType.objects.get_for_model(obj)
         current_tags = list(self.filter(items__content_type__pk=content_type.pk,
                                         items__object_id=obj.pk))
-        updated_tags = get_tag_list(tags)
+        updated_tags = self.model.get_tag_list(tags)
     
         # Remove tags which no longer apply
         tags_for_removal = [tag for tag in current_tags \
@@ -52,23 +63,6 @@ class TagManager(models.Manager):
             if tag not in current_tags:
                 self.intermediary_table_model._default_manager.create(tag=tag, content_object=obj)
     
-    # def add_tag(self, obj, tag_name):
-    #     """
-    #     Associates the given object with a tag.
-    #     """
-    #     tag_names = parse_tag_input(tag_name)
-    #     if not len(tag_names):
-    #         raise AttributeError(_('No tags were given: "%s".') % tag_name)
-    #     if len(tag_names) > 1:
-    #         raise AttributeError(_('Multiple tags were given: "%s".') % tag_name)
-    #     tag_name = tag_names[0]
-    #     # if settings.FORCE_LOWERCASE_TAGS:
-    #     #     tag_name = tag_name.lower()
-    #     tag, created = self.get_or_create(name=tag_name)
-    #     ctype = ContentType.objects.get_for_model(obj)
-    #     self.intermediary_table_model._default_manager.get_or_create(
-    #         tag=tag, content_type=ctype, object_id=obj.pk)
-
     def get_for_object(self, obj):
         """
         Create a queryset matching all tags associated with the given
@@ -77,7 +71,7 @@ class TagManager(models.Manager):
         ctype = ContentType.objects.get_for_model(obj)
         return self.filter(items__content_type__pk=ctype.pk,
                            items__object_id=obj.pk)
-
+    
     def _get_usage(self, model, counts=False, min_count=None, extra_joins=None, extra_criteria=None, params=None, extra=None):
         """
         Perform the custom SQL query for ``usage_for_model`` and
@@ -214,7 +208,7 @@ class TagManager(models.Manager):
         Passing a value for ``min_count`` implies ``counts=True``.
         """
         if min_count is not None: counts = True
-        tags = get_tag_list(tags)
+        tags = self.model.get_tag_list(tags)
         tag_count = len(tags)
         tagged_item_table = qn(self.intermediary_table_model._meta.db_table)
         tag_columns = self._get_tag_columns()
@@ -287,12 +281,16 @@ class TaggedItemManager(models.Manager):
           Once the queryset-refactor branch lands in trunk, this can be
           tidied up significantly.
     """
+    def __init__(self, tag_model):
+        super(TaggedItemManager, self).__init__()
+        self.tag_model = tag_model
+    
     def get_by_model(self, queryset_or_model, tags):
         """
         Create a ``QuerySet`` containing instances of the specified
         model associated with a given tag or list of tags.
         """
-        tags = get_tag_list(tags)
+        tags = self.tag_model.get_tag_list(tags)
         tag_count = len(tags)
         if tag_count == 0:
             # No existing tags were given
@@ -326,7 +324,7 @@ class TaggedItemManager(models.Manager):
         Create a ``QuerySet`` containing instances of the specified
         model associated with *all* of the given list of tags.
         """
-        tags = get_tag_list(tags)
+        tags = self.tag_model.get_tag_list(tags)
         tag_count = len(tags)
         queryset, model = get_queryset_and_model(queryset_or_model)
 
@@ -365,7 +363,7 @@ class TaggedItemManager(models.Manager):
         Create a ``QuerySet`` containing instances of the specified
         model associated with *any* of the given list of tags.
         """
-        tags = get_tag_list(tags)
+        tags = self.tag_model.get_tag_list(tags)
         tag_count = len(tags)
         queryset, model = get_queryset_and_model(queryset_or_model)
 
@@ -488,7 +486,7 @@ class TagMeta(ModelBase):
             # Create an intermediary table and register custom managers for concrete models
             intermediary_table_model = create_intermediary_table_model(model)
             TagManager(intermediary_table_model).contribute_to_class(model, 'objects')
-            TaggedItemManager().contribute_to_class(intermediary_table_model, 'objects')
+            TaggedItemManager(model).contribute_to_class(intermediary_table_model, 'objects')
         return model
 
 
@@ -498,4 +496,16 @@ class TagBase(models.Model):
     
     class Meta:
         abstract = True
+    
+    @staticmethod
+    def get_tag_list(tag_list):
+        """
+        Utility function for accepting tag input in a flexible manner.
+        
+        You should probably override this method in your subclass.
+        """
+        if isinstance(tag_list, TagBase):
+            return [tag_list]
+        else:
+            return tag_list
 
