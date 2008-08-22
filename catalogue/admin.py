@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from django import forms
-from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
 
 from newtagging.admin import TaggableModelAdmin
 from catalogue.models import Book, Tag
@@ -17,8 +14,6 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',),}
     radio_fields = {'category': admin.HORIZONTAL}
 
-admin.site.register(Tag, TagAdmin)
-
 
 class BookAdmin(TaggableModelAdmin):
     tag_model = Tag
@@ -29,5 +24,7 @@ class BookAdmin(TaggableModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
 
+
+admin.site.register(Tag, TagAdmin)
 admin.site.register(Book, BookAdmin)
 

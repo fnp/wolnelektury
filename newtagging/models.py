@@ -8,7 +8,6 @@ if not hasattr(__builtins__, 'set'):
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import connection, models
-from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.base import ModelBase
 

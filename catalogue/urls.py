@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
-
 from django.conf.urls.defaults import *
-from django.views.generic.simple import redirect_to
 
 
 urlpatterns = patterns('catalogue.views',
