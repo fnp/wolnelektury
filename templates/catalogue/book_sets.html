@@ -1,15 +1,17 @@
-{% if book %}
 <h2>Zestawy zawierające utwór {{ book.title }}</h2>
-<form action="{% url catalogue.views.book_sets book.slug %}" method="POST" accept-charset="utf-8" class="cuteform">
-<ol>
-    <li>{{ form.set_ids }}</li>
-    <li><input type="submit" value="Zapisz zestawy"/></li>
-</ol>
-</form>
+{% if not user.tag_set.count %}
+    <p>Nie posiadasz żadnych zestawów. Jeśli chcesz, możesz utworzyć nowy zestaw poniżej.</p>
+{% else %}
+    <form action="{% url catalogue.views.book_sets book.slug %}" method="POST" accept-charset="utf-8" class="cuteform">
+    <ol>
+        <li>{{ form.set_ids }}</li>
+        <li><input type="submit" value="Zapisz zestawy"/></li>
+    </ol>
+    </form>
 {% endif %}
 <hr />
 <form action="{% url catalogue.views.new_set %}" method="POST" accept-charset="utf-8" class="cuteform">
 <ol>
-    <li>{{ new_set_form.name }} <input type="submit" value="Dodaj zestaw"/></li>
+    <li>{{ new_set_form.name }} <input type="submit" value="Nowy zestaw"/></li>
 </ol>
 </form>

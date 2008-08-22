@@ -4,7 +4,7 @@ from django.template import Node, Variable
 from django.utils.encoding import smart_str
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-    
+
 
 register = template.Library()
 
