@@ -39,6 +39,7 @@ def search(request):
         print "%r, %r" % (query, tags)
         try:
             book = models.Book.objects.get(title=query)
+            return HttpResponseRedirect(book.get_absolute_url())
         except models.Book.DoesNotExist:
             return HttpResponseRedirect(reverse('catalogue.views.main_page'))
     else:
