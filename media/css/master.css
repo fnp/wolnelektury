@@ -1,5 +1,5 @@
 body {
-    margin: 2em;
+    margin: 0 2em 2em 2em;
     font: 70% Verdana, Arial, Helvetica, sans-serif;
     line-height: 1.5em;
     background: #FFF url(/media/img/bg.png) repeat-x;
@@ -61,6 +61,7 @@ em {
 /* ================================== */
 #header {
     position: relative;
+    margin-top: 1.5em;
 }
 
 #header #logo {
@@ -391,6 +392,7 @@ em {
 #top-message {
     background-color: #2F4110;
     color: #FFF;
-    margin:-2em -2em 2em;
-    padding:0.25em 2em 0.5em;
+    margin: 0 -2em;
+    padding: 0 2em;
+    line-height: 2em;
 }
