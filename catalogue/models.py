@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.core.files import File
 
 from newtagging.models import TagBase
 from newtagging import managers
@@ -70,6 +71,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
     
     # Formats
+    xml_file = models.FileField(_('XML file'), upload_to='books/xml', blank=True)
     pdf_file = models.FileField(_('PDF file'), upload_to='books/pdf', blank=True)
     odt_file = models.FileField(_('ODT file'), upload_to='books/odt', blank=True)
     html_file = models.FileField(_('HTML file'), upload_to='books/html', blank=True)
@@ -96,6 +98,23 @@ class Book(models.Model):
         return bool(self.html_file)
     has_html_file.short_description = 'HTML'
     has_html_file.boolean = True
+    
+    def save(self, **kwargs):
+        try:
+            from bin import book2html
+            from django.conf import settings
+            from os.path import splitext, basename
+            from tempfile import NamedTemporaryFile
+            
+            html_file = NamedTemporaryFile()
+            book2html.transform(self.xml_file.path, html_file)
+            
+            html_filename = '%s.html' % splitext(basename(self.xml_file.path))[0]
+            self.html_file.save(html_filename, File(html_file), save=False)
+        except ValueError:
+            pass
+
+        book = super(Book, self).save(**kwargs)
     
     @permalink
     def get_absolute_url(self):
