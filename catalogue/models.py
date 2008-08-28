@@ -102,7 +102,6 @@ class Book(models.Model):
     def save(self, **kwargs):
         try:
             from bin import book2html
-            from django.conf import settings
             from os.path import splitext, basename
             from tempfile import NamedTemporaryFile
             
