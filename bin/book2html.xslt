@@ -8,7 +8,7 @@
 <xsl:template match="extra|uwaga" />
 <xsl:template match="extra|uwaga" mode="inline" />
 
-<xsl:template match="/">
+<xsl:template match="utwor">
     <html>
         <head>
             <title>book2html output</title>
@@ -16,7 +16,7 @@
             <link rel="stylesheet" href="master.css" type="text/css" media="screen" charset="utf-8" />
         </head>
         <body>
-            <xsl:apply-templates />
+            <xsl:apply-templates select="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny" />
             <div id="footnotes">
                 <h3>Przypisy</h3>
                 <xsl:for-each select="descendant::*[self::pe or self::pa or self::pr or self::pt][not(parent::extra)]">
@@ -36,6 +36,10 @@
             </div>
         </body>
     </html>
+</xsl:template>
+
+<xsl:template match="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny">
+    <xsl:apply-templates />
 </xsl:template>
 
 <xsl:template match="naglowek_akt|naglowek_czesc">
