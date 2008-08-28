@@ -38,12 +38,12 @@ class TaggableModelForm(forms.ModelForm):
     tags = forms.MultipleChoiceField(label=_('tags').capitalize(), required=True, widget=FilteredSelectMultiple(_('tags'), False))
 
     def __init__(self, *args, **kwargs):
-        self.tags.choices = [(tag.id, tag.name) for tag in self.tag_model.objects.all()]
         if 'instance' in kwargs:
             if 'initial' not in kwargs:
                 kwargs['initial'] = {}
             kwargs['initial']['tags'] = [tag.id for tag in self.tag_model.objects.get_for_object(kwargs['instance'])]
         super(TaggableModelForm, self).__init__(*args, **kwargs)
+        self.fields['tags'].choices = [(tag.id, tag.name) for tag in self.tag_model.objects.all()]
     
     def save(self, commit):
         obj = super(TaggableModelForm, self).save()
