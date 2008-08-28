@@ -9,32 +9,11 @@ import sys
 from lxml import etree
 
 
-# Parse args
-usage = """Usage: %prog [options] SOURCE [SOURCE...]
-Convert SOURCE files to HTML format."""
+def transform(input_filename, output_filename):
+    """Transforms file input_filename in XML to output_filename in XHTML."""
+    # Parse XSLT
+    style = etree.parse('book2html.xslt')
 
-parser = optparse.OptionParser(usage=usage)
-
-parser.add_option('-v', '--verbose', action='store_true', dest='verbose', default=False,
-    help='print status messages to stdout')
-
-options, input_filenames = parser.parse_args()
-
-if len(input_filenames) < 1:
-    parser.print_help()
-    exit(1)
-
-# Parse XSLT
-style = etree.parse('book2html.xslt')
-    
-# Do some real work
-for input_filename in input_filenames:
-    if options.verbose:
-        print input_filename
-    
-    output_filename = os.path.splitext(input_filename)[0] + '.html'
-    
-    # Transform
     doc_file = cStringIO.StringIO()
     expr = re.compile(r'/\s', re.MULTILINE | re.UNICODE);
 
@@ -52,4 +31,29 @@ for input_filename in input_filenames:
 
     result = doc.xslt(style)
     result.write(output_filename, xml_declaration=True, pretty_print=True, encoding='utf-8')
+
+
+if __name__ == '__main__':
+    # Parse commandline arguments
+    usage = """Usage: %prog [options] SOURCE [SOURCE...]
+    Convert SOURCE files to HTML format."""
+
+    parser = optparse.OptionParser(usage=usage)
+
+    parser.add_option('-v', '--verbose', action='store_true', dest='verbose', default=False,
+        help='print status messages to stdout')
+
+    options, input_filenames = parser.parse_args()
+
+    if len(input_filenames) < 1:
+        parser.print_help()
+        exit(1)
+
+    # Do some real work
+    for input_filename in input_filenames:
+        if options.verbose:
+            print input_filename
+        
+        output_filename = os.path.splitext(input_filename)[0] + '.html'
+        transform(input_filename, output_filename)
 
