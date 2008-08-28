@@ -38,8 +38,26 @@
     </html>
 </xsl:template>
 
+
 <xsl:template match="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny">
+    <xsl:if test="nazwa_utworu">
+        <h1>
+            <xsl:apply-templates select="autor_utworu|dzielo_nadrzedne|nazwa_utworu" mode="header" />
+        </h1>
+    </xsl:if>
     <xsl:apply-templates />
+</xsl:template>
+
+<xsl:template match="autor_utworu" mode="header">
+    <span class="author"><xsl:apply-templates mode="inline" /></span>
+</xsl:template>
+
+<xsl:template match="nazwa_utworu" mode="header">
+    <span class="title"><xsl:apply-templates mode="inline" /></span>
+</xsl:template>
+
+<xsl:template match="dzielo_nadrzedne" mode="header">
+    <span class="collection"><xsl:apply-templates mode="inline" /></span>
 </xsl:template>
 
 <xsl:template match="naglowek_akt|naglowek_czesc">
