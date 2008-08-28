@@ -12,7 +12,8 @@ from lxml import etree
 def transform(input_filename, output_filename):
     """Transforms file input_filename in XML to output_filename in XHTML."""
     # Parse XSLT
-    style = etree.parse('book2html.xslt')
+    style_filename = os.path.join(os.path.dirname(__file__), 'book2html.xslt')
+    style = etree.parse(style_filename)
 
     doc_file = cStringIO.StringIO()
     expr = re.compile(r'/\s', re.MULTILINE | re.UNICODE);
