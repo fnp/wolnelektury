@@ -23,7 +23,7 @@
                 {% if user.is_authenticated %}
                     <p>
                         Zalogowany jako <strong>{{ user.username }}</strong>
-                        | <a href="#">Zestawy</a>
+                        | <a href="#" id="user-sets-link">Zestawy</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">Administracja</a>
                         {% endif %}
