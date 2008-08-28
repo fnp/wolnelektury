@@ -16,7 +16,7 @@ a {
 /* =================================================== */
 h1 {
     font-size: 3em;
-    margin: 1.5em 0 0;
+    margin: 1.5em 0;
     text-align: center;
     line-height: 1.5em;
     font-weight: bold;
@@ -86,16 +86,17 @@ p {
 /* = Custom elements = */
 /* =================== */
 span.author {
-    font-size: 0.9em;
+    font-size: 0.8em;
     display: block;
     line-height: 1.5em;
+    margin-bottom: 0.25em;
 }
 
 span.collection {
-    font-size: 0.6em;
+    font-size: 0.5em;
     display: block;
     line-height: 1.5em;
-    margin-bottom: -0.8em;
+    margin-bottom: -0.5em;
 }
 
 div.didaskalia {
