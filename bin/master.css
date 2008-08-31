@@ -112,6 +112,10 @@ div.stanza {
     margin: 1.5em 0 0;
 }
 
+div.kwestia div.stanza {
+    margin: 0;
+}
+
 p.paragraph {
     text-align: justify;
     margin: 1.5em 0 0;
