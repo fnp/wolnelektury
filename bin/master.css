@@ -86,17 +86,17 @@ p {
 /* = Custom elements = */
 /* =================== */
 span.author {
-    font-size: 0.8em;
+    font-size: 0.75em;
     display: block;
     line-height: 1.5em;
     margin-bottom: 0.25em;
 }
 
 span.collection {
-    font-size: 0.5em;
+    font-size: 0.75em;
     display: block;
     line-height: 1.5em;
-    margin-bottom: -0.5em;
+    margin-bottom: -0.25em;
 }
 
 div.didaskalia {
@@ -106,6 +106,10 @@ div.didaskalia {
 
 div.kwestia {
     margin: 0.5em 0 0;
+}
+
+div.stanza {
+    margin: 1.5em 0 0;
 }
 
 p.paragraph {
