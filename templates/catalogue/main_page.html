@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load catalogue_tags chunks %}
+{% load catalogue_tags chunks cache %}
 
 {% block bodyid %}main-page{% endblock %}
 
@@ -83,6 +83,8 @@
     
     <div id="latest-blog-posts">
         <h2>Aktualności z naszego bloga</h2>
+        {% cache 1800 latest-blog-posts %}
         {% latest_blog_posts "http://wolnepodreczniki.pl/feed/?s=Wolne%20Lektury" %}
+        {% endcache %}
     </div>
 {% endblock %}
