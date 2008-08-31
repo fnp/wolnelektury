@@ -121,7 +121,15 @@ p.paragraph {
     margin: 1.5em 0 0;
 }
 
+p.motto {
+    font-style: italic;
+}
+
 div.fragment {
     border-bottom: 0.1em solid #999;
     padding-bottom: 1.5em;
+}
+
+hr.spacer {
+    height: 3em;
 }

@@ -174,4 +174,12 @@
     <blockquote><xsl:apply-templates /></blockquote>
 </xsl:template>
 
+<xsl:template match="motto">
+    <p class="motto"><xsl:apply-templates mode="inline" /></p>
+</xsl:template>
+
+<xsl:template match="sekcja_swiatlo">
+    <hr class="spacer" />
+</xsl:template>
+
 </xsl:stylesheet>
