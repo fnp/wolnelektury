@@ -36,7 +36,6 @@ def search(request):
         tag_list = models.Tag.get_tag_list(tags)
         tag = models.Tag.objects.get(name=query)
     except models.Tag.DoesNotExist:
-        print "%r, %r" % (query, tags)
         try:
             book = models.Book.objects.get(title=query)
             return HttpResponseRedirect(book.get_absolute_url())
