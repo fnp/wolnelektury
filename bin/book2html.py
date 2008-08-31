@@ -9,6 +9,29 @@ import sys
 from lxml import etree
 
 
+ENTITY_SUBSTITUTIONS = [
+    (u'---', u'—'),
+    (u'--', u'–'),
+    (u'...', u'…'),
+    (u',,', u'„'),
+    (u'"', u'”'),
+]
+
+
+def substitute_entities(context, text):
+    """XPath extension function converting all entites in passed text."""
+    if isinstance(text, list):
+        text = ''.join(text)
+    for entity, substitutution in ENTITY_SUBSTITUTIONS:
+        text = text.replace(entity, substitutution)
+    return text
+
+
+# Register substitute_entities function with lxml
+ns = etree.FunctionNamespace('http://wolnelektury.pl/functions')
+ns['substitute_entities'] = substitute_entities
+
+
 def transform(input_filename, output_filename):
     """Transforms file input_filename in XML to output_filename in XHTML."""
     # Parse XSLT
@@ -21,7 +44,7 @@ def transform(input_filename, output_filename):
     f = open(input_filename, 'r')
     for line in f:
         line = line.decode('utf-8')
-        line = expr.sub(u'<br/>\n', line).replace(u'---', u'—').replace(u',,', u'„')
+        line = expr.sub(u'<br/>\n', line)
         doc_file.write(line.encode('utf-8'))
     f.close()
 

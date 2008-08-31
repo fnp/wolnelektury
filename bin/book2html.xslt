@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:wl="http://wolnelektury.pl/functions" >
 
 <xsl:output method="xml" encoding="utf-8" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" indent="yes" />
 
 <xsl:template match="text()" />
+<xsl:template match="text()" mode="inline">
+    <xsl:value-of select="wl:substitute_entities(.)" />
+</xsl:template>
 
 <xsl:template match="extra|uwaga" />
 <xsl:template match="extra|uwaga" mode="inline" />
@@ -13,27 +16,29 @@
         <head>
             <title>book2html output</title>
             <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-            <link rel="stylesheet" href="master.css" type="text/css" media="screen" charset="utf-8" />
+            <link rel="stylesheet" href="master.css" type="text/css" media="all" charset="utf-8" />
         </head>
         <body>
             <xsl:apply-templates select="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny" />
-            <div id="footnotes">
-                <h3>Przypisy</h3>
-                <xsl:for-each select="descendant::*[self::pe or self::pa or self::pr or self::pt][not(parent::extra)]">
-                    <div>
-                        <a name="{concat('footnote-', generate-id(.))}" />
-                        <a href="{concat('#anchor-', generate-id(.))}" class="annotation">[<xsl:number value="count(preceding::*[self::pa or self::pe or self::pr or self::pt]) + 1" />]</a>
-                        <xsl:choose>
-                            <xsl:when test="count(akap|akap_cd|strofa) = 0">
-                                <p><xsl:apply-templates select="text()|*" mode="inline" /></p>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:apply-templates select="text()|*" mode="inline" />
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </div>
-                </xsl:for-each>
-            </div>
+            <xsl:if test="count(descendant::*[self::pe or self::pa or self::pr or self::pt][not(parent::extra)])">
+                <div id="footnotes">
+                    <h3>Przypisy</h3>
+                    <xsl:for-each select="descendant::*[self::pe or self::pa or self::pr or self::pt][not(parent::extra)]">
+                        <div>
+                            <a name="{concat('footnote-', generate-id(.))}" />
+                            <a href="{concat('#anchor-', generate-id(.))}" class="annotation">[<xsl:number value="count(preceding::*[self::pa or self::pe or self::pr or self::pt]) + 1" />]</a>
+                            <xsl:choose>
+                                <xsl:when test="count(akap|akap_cd|strofa) = 0">
+                                    <p><xsl:apply-templates select="text()|*" mode="inline" /></p>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:apply-templates select="text()|*" mode="inline" />
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </div>
+                    </xsl:for-each>
+                </div>
+            </xsl:if>
         </body>
     </html>
 </xsl:template>
@@ -60,7 +65,7 @@
     <span class="collection"><xsl:apply-templates mode="inline" /></span>
 </xsl:template>
 
-<xsl:template match="naglowek_akt|naglowek_czesc">
+<xsl:template match="naglowek_akt|naglowek_czesc|srodtytul">
     <h2><xsl:apply-templates mode="inline" /></h2>
 </xsl:template>
 
