@@ -47,12 +47,15 @@
 <xsl:template match="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny">
     <xsl:if test="nazwa_utworu">
         <h1>
-            <xsl:apply-templates select="autor_utworu|dzielo_nadrzedne|nazwa_utworu" mode="header" />
+            <xsl:apply-templates select="autor_utworu|dzielo_nadrzedne|nazwa_utworu|podtytul" mode="header" />
         </h1>
     </xsl:if>
     <xsl:apply-templates />
 </xsl:template>
 
+<!-- ======================= -->
+<!-- = Header (title page) = -->
+<!-- ======================= -->
 <xsl:template match="autor_utworu" mode="header">
     <span class="author"><xsl:apply-templates mode="inline" /></span>
 </xsl:template>
@@ -63,6 +66,14 @@
 
 <xsl:template match="dzielo_nadrzedne" mode="header">
     <span class="collection"><xsl:apply-templates mode="inline" /></span>
+</xsl:template>
+
+<xsl:template match="podtytul" mode="header">
+    <span class="subtitle"><xsl:apply-templates mode="inline" /></span>
+</xsl:template>
+
+<xsl:template match="nota">
+    <div class="note"><xsl:apply-templates /></div>
 </xsl:template>
 
 <xsl:template match="naglowek_akt|naglowek_czesc|srodtytul">
@@ -176,6 +187,10 @@
 
 <xsl:template match="motto">
     <p class="motto"><xsl:apply-templates mode="inline" /></p>
+</xsl:template>
+
+<xsl:template match="motto_podpis">
+    <p class="motto_podpis"><xsl:apply-templates mode="inline" /></p>
 </xsl:template>
 
 <xsl:template match="sekcja_swiatlo">
