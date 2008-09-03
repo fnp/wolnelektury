@@ -42,24 +42,8 @@ class Command(BaseCommand):
                         continue
                     if verbosity > 1:
                         print "Parsing '%s'" % file_path
-                        
-                    book_info = dcparser.parse(file_path)
-                    book = Book(title=book_info.title, slug=slughifi(book_info.title))
-                    book.save()
                     
-                    book_tags = []
-                    for category in ('kind', 'genre', 'author', 'epoch'):    
-                        tag_name = getattr(book_info, category)
-                        tag_sort_key = tag_name
-                        if category == 'author':
-                            tag_sort_key = tag_name.last_name
-                            tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
-                        tag, created = Tag.objects.get_or_create(name=tag_name,
-                            slug=slughifi(tag_name), sort_key=slughifi(tag_sort_key), category=category)
-                        tag.save()
-                        book_tags.append(tag)
-                    book.tags = book_tags
-        
+                    Book.from_xml_file(file_path)
         
         transaction.commit()
         transaction.leave_transaction_management()

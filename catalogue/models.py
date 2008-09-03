@@ -8,6 +8,8 @@ from django.core.files import File
 from newtagging.models import TagBase
 from newtagging import managers
 
+from librarian import html
+
 
 TAG_CATEGORIES = (
     ('author', _('author')),
@@ -98,22 +100,37 @@ class Book(models.Model):
         return bool(self.html_file)
     has_html_file.short_description = 'HTML'
     has_html_file.boolean = True
-    
-    def save(self, **kwargs):
-        try:
-            from bin import book2html
-            from os.path import splitext, basename
-            from tempfile import NamedTemporaryFile
-            
-            html_file = NamedTemporaryFile()
-            book2html.transform(self.xml_file.path, html_file)
-            
-            html_filename = '%s.html' % splitext(basename(self.xml_file.path))[0]
-            self.html_file.save(html_filename, File(html_file), save=False)
-        except ValueError:
-            pass
 
-        book = super(Book, self).save(**kwargs)
+    @staticmethod
+    def from_xml_file(xml_file):
+        from tempfile import NamedTemporaryFile
+        from slughifi import slughifi
+        import dcparser
+        
+        book_info = dcparser.parse(xml_file)
+        book = Book(title=book_info.title, slug=slughifi(book_info.title))
+        book.save()
+        
+        book_tags = []
+        for category in ('kind', 'genre', 'author', 'epoch'):    
+            tag_name = getattr(book_info, category)
+            tag_sort_key = tag_name
+            if category == 'author':
+                tag_sort_key = tag_name.last_name
+                tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
+            tag, created = Tag.objects.get_or_create(name=tag_name,
+                slug=slughifi(tag_name), sort_key=slughifi(tag_sort_key), category=category)
+            tag.save()
+            book_tags.append(tag)
+        book.tags = book_tags
+        
+        book.xml_file.save('%s.xml' % book.slug, File(file(xml_file)), save=False)
+        
+        html_file = NamedTemporaryFile()
+        html.transform(book.xml_file.path, html_file)
+        book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
+        
+        return book.save()
     
     @permalink
     def get_absolute_url(self):
