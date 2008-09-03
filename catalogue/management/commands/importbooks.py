@@ -40,7 +40,7 @@ class Command(BaseCommand):
                     if not os.path.splitext(file_name)[1] == '.xml':
                         print self.style.NOTICE("Skipping '%s': not an XML file." % file_path)
                         continue
-                    if verbosity > 1:
+                    if verbosity > 0:
                         print "Parsing '%s'" % file_path
                     
                     Book.from_xml_file(file_path)
