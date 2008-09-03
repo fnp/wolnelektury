@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from newtagging.admin import TaggableModelAdmin
-from catalogue.models import Book, Tag
+from catalogue.models import Tag, Book, Fragment
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -25,6 +25,14 @@ class BookAdmin(TaggableModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+class FragmentAdmin(TaggableModelAdmin):
+    tag_model = Tag
+    
+    list_display = ('book', 'anchor',)
+    ordering = ('book', 'anchor',)
+
+
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Book, BookAdmin)
+admin.site.register(Fragment, FragmentAdmin)
 
