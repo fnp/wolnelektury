@@ -178,5 +178,5 @@ class Fragment(models.Model):
     class Meta:
         ordering = ('book', 'anchor',)
         verbose_name = _('fragment')
-        verbose_name_plural = _('fragment')
+        verbose_name_plural = _('fragments')
 
