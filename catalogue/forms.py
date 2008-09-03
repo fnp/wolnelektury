@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django import forms
+from slughifi import slughifi
 
 from catalogue.models import Tag
 from catalogue.fields import JQueryAutoCompleteField
-from catalogue.lib.slughifi import slughifi
 
 
 class SearchForm(forms.Form):

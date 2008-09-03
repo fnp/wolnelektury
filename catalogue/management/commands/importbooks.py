@@ -1,11 +1,11 @@
-from django.core.management.base import BaseCommand, CommandError
-from django.core.management.color import color_style
-from optparse import make_option
-import sys
 import os
 
-from catalogue.lib.dcparser import parse
-from catalogue.lib.slughifi import slughifi
+from django.core.management.base import BaseCommand
+from django.core.management.color import color_style
+from optparse import make_option
+from slughifi import slughifi
+import dcparser
+
 from catalogue.models import Book, Tag
 
 
@@ -43,7 +43,7 @@ class Command(BaseCommand):
                     if verbosity > 1:
                         print "Parsing '%s'" % file_path
                         
-                    book_info = parse(file_path)
+                    book_info = dcparser.parse(file_path)
                     book = Book(title=book_info.title, slug=slughifi(book_info.title))
                     book.save()
                     
