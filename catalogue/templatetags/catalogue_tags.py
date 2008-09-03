@@ -4,6 +4,7 @@ from django.template import Node, Variable
 from django.utils.encoding import smart_str
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.db.models import Q
 
 
 register = template.Library()
@@ -114,6 +115,22 @@ def breadcrumbs(tags, search_form=True):
     if search_form:
         context['search_form'] = SearchForm(tags=tags)
     return context
+
+
+@register.inclusion_tag('catalogue/_book.html')
+def book(book):
+    tags = book.tags.filter(~Q(category__in=('set', 'theme')))
+    tags = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in tags]
+    
+    formats = []
+    if book.html_file:
+        formats.append(u'<a href="%s">Czytaj online</a>' % book.html_file.url)
+    if book.pdf_file:
+        formats.append(u'<a href="%s">Plik PDF</a>' % book.pdf_file.url)
+    if book.odt_file:
+        formats.append(u'<a href="%s">Plik ODT</a>' % book.odt_file.url)
+        
+    return {'book': book, 'tags': tags, 'formats': formats}
 
 
 @register.tag
