@@ -68,7 +68,7 @@
         {% endwith %}
         <ol>
         {% for book in object_list %}
-            <li>{% include "catalogue/_book.html" %}</li>
+            <li>{% book book %}</li>
         {% endfor %}
         </ol>
         {% paginate %}

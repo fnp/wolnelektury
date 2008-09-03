@@ -72,7 +72,7 @@
             {% if categories.theme %}
                 <h2>Motywy</h2>
                 <ul>
-                {% for theme in categories.theme %}
+                {% for theme in fragment_tags %}
                     <li><a href="{% catalogue_url theme %}">{{ theme }}&nbsp;({{ theme.count }})</a></li>
                 {% endfor %}
                 </ul>                

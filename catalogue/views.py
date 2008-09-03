@@ -75,6 +75,8 @@ def main_page(request):
     else:
         extra_where = 'NOT catalogue_tag.category = "set"'
     tags = models.Tag.objects.usage_for_model(models.Book, counts=True, extra={'where': [extra_where]})
+    fragment_tags = models.Tag.objects.usage_for_model(models.Fragment, counts=True,
+        extra={'where': ['catalogue_tag.category = "theme"']})
     categories = split_tags(tags)
     
     form = forms.SearchForm()
@@ -99,12 +101,17 @@ def tagged_book_list(request, tags=''):
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
         raise Http404
-        
+    
+    model = models.Book
+    theme_is_set = any(tag.category == 'theme' for tag in tags)
+    if theme_is_set:
+        model = models.Fragment
+    
     if request.user.is_authenticated():
         extra_where = '(NOT catalogue_tag.category = "set" OR catalogue_tag.user_id = %d)' % request.user.id
     else:
         extra_where = 'NOT catalogue_tag.category = "set"'
-    related_tags = models.Tag.objects.related_for_model(tags, models.Book, counts=True, extra={'where': [extra_where]})
+    related_tags = models.Tag.objects.related_for_model(tags, model, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
 
     return tagged_object_list(
