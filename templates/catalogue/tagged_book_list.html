@@ -55,14 +55,6 @@
 {% block body %}
     <h1>{% title_from_tags tags %}</h1>
     {% breadcrumbs tags %}
-    {# <form action="." method="get" accept-charset="utf-8" id="search-form"> #}
-    {#     <ol> #}
-    {#         {% for tag in tags %} #}
-    {#         <li class="category"><a href="{% catalogue_url tag %}">{{ tag }}</a> | <a href="{% catalogue_url tags -tag %}">x</a></li> #}
-    {#         {% endfor %} #}
-    {#         <li>{{ form.q }} <input type="submit" value="Szukaj"/></li> #}
-    {#     </ol> #}
-    {# </form> #}
     
     {% autopaginate object_list 10 %}
     <div id="books-list">
