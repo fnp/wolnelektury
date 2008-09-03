@@ -128,27 +128,17 @@ class Book(models.Model):
         return self.title
 
 
-# class Fragment(models.Model):
-#     id = models.IntegerField(primary_key=True)
-#     text = models.TextField(blank=True)
-#     start_paragraph = models.IntegerField(null=True, blank=True)
-#     book_id = models.IntegerField(null=True, blank=True)
-#     class Meta:
-#         db_table = u'fragment'
-
-
-# class Inflections(models.Model):
-#     word = models.CharField(max_length=120, primary_key=True)
-#     cases = models.TextField() # This field type is a guess.
-#     class Meta:
-#         db_table = u'inflections'
-
-
-# class Paragraph(models.Model):
-#     id = models.IntegerField(primary_key=True)
-#     number = models.IntegerField(null=True, blank=True)
-#     text = models.TextField(blank=True)
-#     book_id = models.IntegerField(null=True, blank=True)
-#     class Meta:
-#         db_table = u'paragraph'
+class Fragment(models.Model):
+    text = models.TextField()
+    short_text = models.TextField()
+    anchor = models.IntegerField()
+    book = models.ForeignKey(Book)
+    
+    objects = managers.ModelTaggedItemManager(Tag)
+    tags = managers.TagDescriptor(Tag)
+    
+    class Meta:
+        ordering = ('book', 'anchor',)
+        verbose_name = _('fragment')
+        verbose_name_plural = _('fragment')
 
