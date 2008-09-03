@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_i_przypowie%C5%9Bci/Przydatek_do_Bajek_i_przypowie%C5%9Bci">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki i przypowieści (5) - przydatek</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki i przypowieści</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Przydatek do <tytul_dziela>Bajek i przypowieści</tytul_dziela></nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial><begin id="b1190881854664"/><motyw id="m1190881854664">Pozycja społeczna</motyw>1. Snycerz i statua<pr>Bajka była bardzo szeroko kolportowana w odpisach (począwszy od września 1776 r.) i interpretowana jako epigramat na Ksawerego Branickiego. Opatrzona została komentarzem, w którym mowa była o tym, że Branicki, który z kasztelana brasławskiego został łowczym koronnym, następnie generałem artylerii Wielkiego Księstwa Litewskiego, a wreszcie hetmanem wielkim koronnym, używał swej władzy despotycznie i, okazując niewdzięczność, wykorzystywał swoją pozycję przeciwko królowi Stanisławowi Augustowi. Z tego powodu na sejmie warszawskim 1776 roku odebrano mu władzę hetmańską i wszystkie przywileje związane z urzędami. Wykładnia bajki była więc taka, że snycerz to król, a kloc --- hetman Branicki. Jako odpowiedź Branickiego krążył epigram z pogróżką: Niech się ów Snicerz lęka tego kloca przecie, / Bo jak się znajdzie drugi rzemieślnik na świecie, / Co te odcięte ręce klocowi przyprawi, / Pewnie Snicerza ręki i dłota pozbawi. (por. L. Bernacki, Krasiciana, [w:] Studia staropolskie. Księga ku czci A. Bruecknera, Lwów 1928, s. 9---10)</pr></naglowek_rozdzial>
+    <strofa>Snycerz za to, że nieraz na klocu odpoczął,/
+Statuę Herkulesa robić z niego począł./
+Jeszcze rąk nie dokończył, już rycerz zuchwały/
+Niekontent, że był w sieniach, chciał osiąść<pr><slowo_obce>osiąść</slowo_obce> --- tu: zająć.</pr> dom cały./
+Zląkł się snycerz nad takim wdzięczności owocem ---/
+Uciął ręce i nogi; kloc został się klocem.<end id="e1190881854664"/></strofa>
+    <naglowek_rozdzial>2. Pijak<pr>Schemat bajki o pijaku apostrofującym butelkę i kończącym wezwaniem, by dała mu się napić, dostrzeżony w bajce P. L. Belloya <tytul_dziela>Ivrogne et la Bouteille</tytul_dziela> dostrzeżono w <tytul_dziela>Kartowniku</tytul_dziela> (BP III, 12) (Kleiner, 1956, s.175). Podobny koncept został też zastosowany przez Krasickiego w zakończeniu satyry <tytul_dziela>Pijaństwo</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190882109551"/><motyw id="m1190882109551">Pijaństwo</motyw>Trawiąc niegdyś nad flaszką nocy i poranki,/
+Chory pijak stłukł wszystkie kieliszki i szklanki;/
+Klął miód, piwo znieważał, wino zwał tyranem./
+Przyszedł potem do zdrowia i odtąd... pił dzbanem.<end id="e1190882109551"/></strofa>
+    <naglowek_rozdzial>3. Szkapa i rumak<pr>Pierwowzorem bajki miał być utwór Ch. F. Gellerta <tytul_dziela>Das Kutschpferd</tytul_dziela> (Bernacki, s.502).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190882250002"/><motyw id="m1190882250002">Praca</motyw>Pogardzał rumak szkapą, która co dzień rano/
+Woziła mu do stajni i obrok, i siano./
+Rzekła mu więc: ,,Gdyby mną obrok nie wożono,/
+Skromniejszy byłbyś pewnie, nie brykałbyś pono".<end id="e1190882250002"/></strofa>
+    <naglowek_rozdzial>4. Matedory<pr>Bajka ta była, podobnie jak <tytul_dziela>Snycerz i statua</tytul_dziela> (por. wyżej BP P 1) kolportowana pod różnymi tytułami w rękopiśmiennych powieleniach, począwszy od 1776 r. i odczytywana jako epigramat na Adama Ponińskiego, znanego karciarza i hulakę, wzbogaconego m. in. przez grabież dóbr pojezuickich, który szczególną niesławą okrył się jako marszałek sejmu rozbiorowego (stąd bajce nadawano też tytuł <tytul_dziela>Na sejmu dokończenie</tytul_dziela>). Wiersz akcentuje relatywność wartości zależnych od przyjętej konwencji, a w odniesieniu do Ponińskiego wyrażałby życzenie, aby Fortuna odwróciła się od tego, kto w niechlubny sposób, nie własną zasługą zdobył władzę. Nie można uznać, że nadanie bajce takiego aktualnego podtekstu politycznego było zamiarem samego Krasickiego. Tytuł: <tytul_dziela>Matedory</tytul_dziela> / <tytul_dziela>Chapanka</tytul_dziela> ZPP; <slowo_obce>matedory</slowo_obce> (lub <slowo_obce>matadory</slowo_obce>) --- najstarsze karty atutowe.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190887600323"/><motyw id="m1190887600323">Pozycja społeczna, Władza</motyw>Póki trwała chapanka między kartowniki,/
+Bił kinal<pr><slowo_obce>chapanka</slowo_obce>, <slowo_obce>kinal</slowo_obce> --- por. BP III, 12.</pr> z pancerolą króle i wyźniki<pr><slowo_obce>wyźnik</slowo_obce> --- w chapance nazwa damy.</pr>./
+Skończyła się chapanka, zaczęto grę inną ---/
+Aż owa pancerola szóstką tylko winną./
+Tym smutniejszy był koniec, im milsze początki:/
+Biła króle, biły ją potem i dziewiątki.<end id="e1190887600323"/></strofa>
+    <naglowek_rozdzial>5. Dzwon</naglowek_rozdzial>
+    <strofa><begin id="b1190882805366"/><motyw id="m1190882805366">Próżność</motyw>Częstokroć samochwalcy przykrości doznają./
+Mówił dzwon: ,,Gdy ja wołam, wszyscy mnie słuchają",/
+,,Prawda --- rzekł mu ktoś z boku --- ale przydaj i to:/
+Nigdy byś nie zadzwonił, gdyby cię nie bito".<end id="e1190882805366"/></strofa>
+    <naglowek_rozdzial><begin id="b1190882987349"/><motyw id="m1190882987349">Pozycja społeczna</motyw>6. Sułtan w piekle</naglowek_rozdzial>
+    <strofa>Na miętkiej<pe><slowo_obce>miętkiej</slowo_obce> --- miękkiej.</pe> gdy rozkosznie spoczywał pościeli,/
+Śniło się sułtanowi, że go diabli wzięli./
+Przeląkł się; a gdy w piekle szuka towarzysza,/
+Postrzegł najsamprzód<pe><slowo_obce>najsamprzód</slowo_obce> --- najpierw.</pe> ojca, a potem derwisza./
+Pyta go: ,,Za coś tu jest?" Rzekł derwisz spytany:/
+,,Myśliłem po sułtańsku, i za tom skarany"./
+,,A ty, ojcze, dlaczego? powiedz, niech cię słyszę!"/
+,,Dlatego, żem tak myślał jak moi derwisze".<end id="e1190882987349"/></strofa>
+    <naglowek_rozdzial>7. Brytan w obroży</naglowek_rozdzial>
+    <strofa><begin id="b1190883056882"/><motyw id="m1190883056882">Bogactwo, Niewola, Pies, Próżność, Wolność</motyw>Niech się nikt z powierzchownej ozdoby nie sroży<pr><slowo_obce>srożyć się</slowo_obce> --- tu: pysznić się.</pr>./
+Brytan z srebrno--złocistej pysznił się obroży./
+Zazdrościli koledzy w wieczór; patrzą rano,/
+Aż brytana za srebrną obroż uwiązano./
+,,Pyszńże się teraz, bracie!" --- do brytana rzekli;/
+Gryzł łańcuch nadaremnie, a oni uciekli.<end id="e1190883056882"/></strofa>
+    <naglowek_rozdzial>8. Człowiek i zwierściadła</naglowek_rozdzial>
+    <strofa><begin id="b1190883206243"/><motyw id="m1190883206243">Prawda, Umiarkowanie</motyw>W zwierściadło<pe><slowo_obce>zwierściadło</slowo_obce> --- zwierciadło.</pe>, co powiększa, wspojźrzał<pe><slowo_obce>wspojźrzał</slowo_obce> --- spojrzał.</pe> człowiek mały:/
+Ucieszył się niezmiernie, że tak okazały./
+Mniemał już być olbrzymem; gdy się więc nasrożył,/
+Ktoś zwierściadło, co zmniejsza, przed niego położył./
+Stłukł obydwie i odtąd zwierściadłom nie wierzył./
+Poznał prawdę na koniec, gdy się piędzią<pr><slowo_obce>piędzią zmierzył</slowo_obce> --- tu w znaczeniu: zastosował właściwą sobie miarę; piędź oznaczała miarę długości od końca kciuka do końca palca środkowego rozpostartej dłoni, zmierzył.</pr><end id="e1190883206243"/></strofa>
+    <naglowek_rozdzial>9. Drzewo</naglowek_rozdzial>
+    <strofa><begin id="b1190883248892"/><motyw id="m1190883248892">Drzewo</motyw>Wielbił drzewo grzejąc się człowiek przy kominie./
+Rzekło drzewo: ,,Cóż po tym! --- grzeje, ale ginie".<end id="e1190883248892"/></strofa>
+    <naglowek_rozdzial>10. Koniec</naglowek_rozdzial>
+    <strofa>Zmordował się na koniec ten, co bajki prawił,/
+Żeby więc do ostatka słuchaczów zabawił,/
+Rzekł: ,,Powiem jeszcze jedną, o której nie wiecie:/
+<begin id="b1194603791611"/><motyw id="m1194603791611">Prawda</motyw>Bajka poszła w wędrówkę; wędrując po świecie/
+Zaszła w lasy głębokie; okrutni i dzicy/
+Napadli ją z hałasem wielkim rozbójnicy,/
+A widząc, że ubrana bardzo podle była,/
+Zdarli suknie --- aż z bajki Prawda<pr><slowo_obce>z bajki Prawda</slowo_obce> --- zgodnie z poznawczą koncepcją bajki, pod jej zawoalowaną postacią wypowiadane są tylko prawdy. Bajka objawiająca się jako naga Prawda (<slowo_obce>nuda veritas</slowo_obce> u Horacego), ponieważ prawdę mówi się bez osłonek, przedstawiana była w alegorycznych obrazach, jak np. na sztychowanym frontispisie <tytul_dziela>Fables nouvelles dedié au Roi</tytul_dziela> A. Houdara de la Motte'a z 1720 r., w sposób następujący: do siedzącego na tronie króla (bez korony), obok którego stoi Minerwa, zwraca się w pokłonie poeta z kaduceuszem w lewej ręce wskazując ręką prawą na unoszącą się w rozświetlonym obłoku Prawdę wyobrażoną jako nagą kobietę. W perspektywie rysunku postaci Prawdy, Minerwy i poety odpowiadające sobie wymiarami są znacznie większe od króla.</pr>, się odkryła"<end id="e1194603791611"/></strofa>
+    <naglowek_rozdzial>11. [Po pniu i po bocianie...]<pr>Bajka jest kontynuacją apologu Ezopa---Fedrusa, który Krasicki ogłosił w ,,Co tydzień" w 1798 r. (nr 11), pt. <tytul_dziela>Żaby i bocian</tytul_dziela> (BN P 2). W AF tytułu brak.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190883471630"/><motyw id="m1190883471630">Władza</motyw>Po pniu i po bocianie żaby nędzne, słabe,/
+Chciały jeszcze trzeciego. Dał im Jowisz żabę./
+,,Przecież swoja!" --- krzyknęły. Zmierziły i swoją;/
+Kiedy więc nowe bunty i projekta roją,/
+Rzekł im Jowisz: ,,A chcecie być pod nowym panem?/
+Dam takiego, co będzie i pniem, i bocianem".<end id="e1190883471630"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

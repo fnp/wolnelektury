@@ -1,0 +1,736 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Księgi_pierwsze">
+      <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+      <dc:title xml:lang="pl">Fraszki - Księgi 1</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Fraszki</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
+      <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Kochanowski zm. 1584</dc:rights>
+      <dc:date.pd xml:lang="pl">1584</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-09-07</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Jan Kochanowski</autor_utworu>
+    <nazwa_utworu>Fraszki. Księgi pierwsze</nazwa_utworu>
+    <dedykacja>
+      <strofa>
+			Fraszki tym książkom dzieją: kto się puści na nie/
+			Uszczypliwym językiem, za fraszką nie stanie.
+			</strofa>
+    </dedykacja>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Do gościa<pe><tytul_dziela>Do gościa</tytul_dziela> --- czyli do czytelnika.</pe></naglowek_rozdzial>
+    <strofa>Jeśli darmo masz te książki,/
+A spełna w wacku<pe><slowo_obce>w wacku</slowo_obce> --- w woreczku.</pe> pieniążki,/
+Chwalę twą rzecz, gościu-bracie,/
+Bo nie przydziesz ku utracie;/
+Ale jeśliś dał co z taszki<pe><slowo_obce>taszka</slowo_obce> --- sakiewka.</pe>,/
+Nie kupiłeś, jedno fraszki.</strofa>
+    <naglowek_rozdzial>2. Na swoje księgi</naglowek_rozdzial>
+    <strofa>Nie dbają moje papiery/
+O przeważne<pe><slowo_obce>przeważne</slowo_obce> --- tu: bardzo ważnych; odważnych.</pe> bohatery;/
+Nic u nich Mars, chocia srogi,/
+I Achilles prędkonogi<pr><slowo_obce>Mars... Achilles</slowo_obce> --- tu przywołani jako wyraz tematyki poważnej, wojenno-historycznej: Mars jest bogiem wojny, a Achilles występuje w eposie Homera, <tytul_dziela>Iliadzie</tytul_dziela>.</pr>;/
+Ale śmiechy, ale żarty/
+Zwykły zbierać moje karty./
+Pieśni, tańce i biesiady/
+Schadzają się do nich rady<pe><slowo_obce>rade</slowo_obce> --- zadowolone.</pe>./
+Statek tych czasów nie płaci<pe><slowo_obce>Statek tych czasów nie płaci</slowo_obce> --- stateczność jest w tych czasach nieopłacalna.</pe>,/
+Pracą człowiek próżno traci./
+Przy fraszkach mi wżdy naleją,/
+A to wniwecz, co się śmieją.</strofa>
+    <naglowek_rozdzial><begin id="b1188761014666"/><motyw id="m1188761014666">Kondycja ludzka, Przemijanie, Theatrum mundi</motyw>3. O żywocie ludzkim</naglowek_rozdzial>
+    <strofa>Fraszki to wszytko, cokolwiek myślemy,/
+Fraszki to wszytko, cokolwiek czyniemy;/
+Nie masz na świecie żadnej pewnej rzeczy<pe>Por.: ,,Wszystko to marność nad marnościami" (<slowo_obce>Vanitas vanitatum et omnia vanitas</slowo_obce>), <tytul_dziela>Księga Koheleta</tytul_dziela>. W tej starotestamentowej księdze Kohelet snuje rozważania nad sensem ludzkiego życia. Próbuje znaleźć odpowiedź na pytanie o szczęście, ale mu się to nie udaje. Jedyny wniosek, jaki płynie z tych rozmyślań, to to, że wszystko marność. Już na samym wstępie czytamy: ,,Marność nad marnościami, powiada Kohelet, marność nad marnościami --- wszystko marność" (Koh 1:2). Kohelet jest przy wszystkich tych, którzy cierpią i nie ma ich kto pocieszyć. Jedyną pociechą --- jakże przewrotną --- jest to, że (jak mówi Kohelet) smutek jest lepszy niż śmiech, bo przy smutku serce jest dobre i mądre (Koh 7:3-4).</pe>,/
+Próżno tu człowiek ma co mieć na pieczy./
+Zacność, uroda, moc, pieniądze, sława,/
+Wszystko to minie jako polna trawa<pe>W Księdze Izajasza czytamy: ,,Wszelkie ciało to jakby trawam a cały wdzięk jego to niby kwiat polny. Trawa usycha, więdnie kwiat" (Iz 40:6-7).</pe>;/
+Naśmiawszy się nam i naszym porządkom,/
+Wemkną nas w mieszek, jako czynią łątkom<pr><slowo_obce>Wemkną nas w mieszek, jako czynią łątkom</slowo_obce> --- wsadzą nas do worka jak kukiełki (marionetki) po przedstawieniu.</pr><end id="e1188761014666"/></strofa>
+    <naglowek_rozdzial><begin id="b1188761122441"/><motyw id="m1188761122441">Miłość, Poezja</motyw>4. Z Anakreonta<pr>Anakreontowi, lirykowi z VI w. p.n.e., mylnie przypisywano autorstwo wydanego w r. 1554 przez paryskiego księgarza-humanistę, Henri Etienne'a, zbioru drobnych poezji greckich, odznaczających się błahą treścią i beztroskim nastrojem (topika miłosna, taniec, piękno, wino. itd.). W rzeczywistości najwcześniejsze spośród owych „anakreontyków", ogromnie popularnych i często naśladowanych w w. XVI--XVIII, pochodzą z pierwszych lat naszej ery.</pr></naglowek_rozdzial>
+    <strofa>Ja chcę śpiewać krwawe boje,/
+Łuki, strzały, miecze, zbroje;/
+Moja lutnia --- Kupidyna,/
+Pięknej Afrodyty syna.</strofa>
+    <strofa>Jużem był porwał bardony<pr><slowo_obce>bardony</slowo_obce> --- struny basowe nadające się do pieśni wojennych.</pr>/
+I nawiązał nowe strony;/
+Jużem śpiewał Meryjona<pr><slowo_obce>Meryjona</slowo_obce> --- Merion, jeden z greckich bohaterów w wojnie trojańskiej.</pr>/
+I prędkiego Sarpedona;<pr><slowo_obce>Sarpedona</slowo_obce> --- Sarpedon, syn Jowisza, król Likii, sprzymierzeniec Trojan w wojnie z Grekami. Zginął w walkach pod Troją.</pr></strofa>
+    <strofa>Lutnia swym zwyczajem g'woli/
+O miłości śpiewać woli./
+Bóg was żegnaj, krwawe boje,/
+Nie lubią was strony moje.<end id="e1188761122441"/></strofa>
+    <naglowek_rozdzial><begin id="b1188761202486"/><motyw id="m1188761202486">Kochanek, Miłość</motyw>5. O Hannie</naglowek_rozdzial>
+    <strofa>Serce mi zbiegło, a nie wiem inaczej,/
+	Jedno do Hanny, tam bywa naraczej<pe><slowo_obce>naraczej</slowo_obce> --- najchętniej.</pe>./
+Tom był zakazał, by nie przyjmowała/
+W dom tego zbiega, owszem, wypychała./
+Pójdę go szukać, lecz się i sam boję/
+Tam zostać. Wenus, powiedz radę swoje!<end id="e1188761202486"/></strofa>
+    <naglowek_rozdzial>6. Na hardego</naglowek_rozdzial>
+    <strofa>Nie chcę w tej mierze głowy psować sobie,/
+Bych się, mój panie, miał podobać tobie;/
+Widzę, żeś hardy --- mnie też na tym mało<pr><slowo_obce>mnie też na tym mało</slowo_obce> --- mało mi zależy.</pr>,/
+Kiedy się tobie tak upodobało.</strofa>
+    <naglowek_rozdzial><begin id="b1188761310261"/><motyw id="m1188761310261">Kobieta, Miłość, Przemijanie, Starość </motyw>7. Na starą</naglowek_rozdzial>
+    <strofa>Teraz by ze mną zygrywać<pe><slowo_obce>zygrywać</slowo_obce> --- bawić się.</pe> się chciała,/
+Kiedyś, niebogo, sobie podstarzała./
+Daj pokój, prze Bóg!<pe><slowo_obce>prze Bóg</slowo_obce> --- w imię Boga.</pe> Sama baczysz snadnie<pe><slowo_obce>snadnie</slowo_obce> --- z łatwością.</pe>,/
+Że nic po cierniu, kiedy róża spadnie.<end id="e1188761310261"/></strofa>
+    <naglowek_rozdzial>8. Z Anakreonta</naglowek_rozdzial>
+    <strofa>Próżno się mam odejmować<pe><slowo_obce>odejmować</slowo_obce> --- bronić się przed tym.</pe>,/
+Widzę, że muszę miłować./
+Miłość mi dawno radziła,/
+Lecz ja, jako prawy wiła<pe><slowo_obce>prawy wiła</slowo_obce> --- prawdziwy szaleniec.</pe>,/
+Nie chciałem słuchać jej rady,/
+Aż nama<pe><slowo_obce>nama</slowo_obce> --- nam (liczba podwójna).</pe> przyszło do zwady./
+Bo sajdak<pe><slowo_obce>sajdak</slowo_obce> --- pokrowiec na łuk i strzały.</pe> z łukiem porwała,/
+A mnie na rękę wyzwała<pe><slowo_obce>na rękę wyzwała</slowo_obce> --- wyzwała na pojedynek.</pe>./
+Ja też, jako Hektor zasię<pe><slowo_obce>zasię</slowo_obce> --- zaś.</pe>,/
+Wziąwszy karacenę<pe><slowo_obce>karacena</slowo_obce> --- rodzaj skórzanej zbroi z żelaznymi łuskami.</pe> na się,/
+Tarcz i szablę jako brzytwę,/
+Stoczyłem z Miłością bitwę./
+Ona ku mnie ciągnie rogi<pr><slowo_obce>ciągnie rogi</slowo_obce> --- naciąga łuk; <slowo_obce>rogi</slowo_obce> --- wygięte końce łuku z nacięciami do cięciwy.</pr>,/
+A ja co nadalej w nogi./
+A gdy wszytkich strzał pozbyła,/
+Sama się w bełt<pe><slowo_obce>bełt</slowo_obce> --- strzałę.</pe> obróciła/
+I prosto mi w serce wpadła,/
+A mnie zaraz moc odpadła./
+Próżno tedy noszę zbroję,/
+Próżno za pawęzą<pe><slowo_obce>pawęzą</slowo_obce> --- podłużna tarcza.</pe> stoję:/
+Bo kto mię ma bić na górze<pe><slowo_obce>na górze</slowo_obce> --- tu: na zewnątrz ciała.</pe>,/
+Kiedy nieprzyjaciel w skórze?</strofa>
+    <naglowek_rozdzial><begin id="b1188761480095"/><motyw id="m1188761480095">Miłość</motyw>9. Do Hanny</naglowek_rozdzial>
+    <strofa>Chybaby nie wiedziała, co znaczy twarz blada/
+I kiedy kto nie g'rzeczy, Hanno, odpowiada,/
+Często wzdycha, a rzadko kiedy się rozśmieje ---/
+Tedy nie wiesz, że prze cię moje serce mdleje?<end id="e1188761480095"/></strofa>
+    <naglowek_rozdzial>10. Do Pawła</naglowek_rozdzial>
+    <strofa>Pawle, rzecz pewna, u twego sąsiada/
+Możesz długiego nie czekać obiada,/
+Bo w mej komorze szczera pajęczyna,/
+W piwnicy także coś na schyłku wina./
+Ale chleb (według przypowieści) z solą/
+Każę położyć prze cię z dobrą wolą./
+<begin id="b1188761585016"/><motyw id="m1188761585016">Muzyka, Poezja</motyw>Muzyka Muzyka będzie, pieśni też dostanie,/
+A k'temu płacić nie potrzeba za nie,/
+Bo się tu ten żmij rodzi tak okwito,/
+Lepiej daleko niż jęczmień, niż żyto./
+Przeto siądź za stół, mój dobry sąsiedzie,/
+Boś dawno bywał przy takiej biesiedzie,/
+Gdzie śmiechu więcej niż potraw dawają:/
+Ale poetom wszytko przepuszczają.<end id="e1188761585016"/></strofa>
+    <naglowek_rozdzial>11. Na utratne<pr>Fraszka jest okazem tzw. emblematu, obrazka alegorycznego: Kochanowski przełożył ją z Alciata, twórcy tego gatunku (<tytul_dziela>Emblemata</tytul_dziela>, 1531). Inny przekład <tytul_dziela>Niedbałego figura</tytul_dziela> sporządził Rej w <tytul_dziela>Zwierzyńcu</tytul_dziela> (1562, rozdz. IV, nr 22).</pr></naglowek_rozdzial>
+    <strofa>Na przykrej skale, gdzie nikt nie dochodzi,/
+Zielone drzewo słodkie figi rodzi,/
+Których z wronami krucy zażywają,/
+Ludzie żadnego pożytku nie mają;/
+Takżeć nie wiem, z kim wszytko drudzy zjedzą,/
+A ludzie godni gdzieś na stronie siedzą.</strofa>
+    <naglowek_rozdzial><begin id="b1188764445942"/><motyw id="m1188764445942">Miłość, Sen</motyw>12. Sen</naglowek_rozdzial>
+    <strofa>Uciekałem przez sen w nocy,/
+Mając skrzydła ku pomocy,/
+Lecz mię miłość poimała,/
+Choć na nogach ołów miała./
+Hanno, co to znamionuje?/
+Podobno mi praktykuje,/
+Że ja, będąc uwikłany/
+Tymi i owymi pany,/
+Wszytkich inszych łatwie zbędę ---/
+Tobie służyć wiecznie będę.<end id="e1188764445942"/></strofa>
+    <naglowek_rozdzial><begin id="b1188764541980"/><motyw id="m1188764541980">Kobieta, Poeta, Poezja</motyw>13. Do paniej</naglowek_rozdzial>
+    <strofa>Pani jako nadobna, tak też i uczciwa!/
+Patrząc na twą wdzięczną twarz, rymów mi przybywa,/
+Które jeśli się ludziom kiedy spodobają,/
+Nie więcej mnie, niż tobie, być powinne mają.<end id="e1188764541980"/></strofa>
+    <naglowek_rozdzial><begin id="b1188764907866"/><motyw id="m1188764907866">Bogactwo, Cnota, Kobieta, Miłość</motyw>14. Raki<pr>Nazwa wiersza, który daje się czytać na wspak. Fraszka tak odczytana daje sens wręcz przeciwny, zawiera bowiem naganę kobiet. Żart poetycki polega na tym, że w środku wiersza stoi „nie", które zaprzecza albo drugą, albo pierwszą jego połowę, oraz na podwójnych rymach, końcowych i początkowych. Wiersz czytany na wspak brzmi: Ma rada, sobie nie paniom folgujmy, / Przysada w nich jest nie wiernie miłujmy / Cnota tu za nic nie trzeba godności, / Złota tu pragną nie pragną miłości.</pr></naglowek_rozdzial>
+    <strofa>Folgujmy paniom nie sobie, ma rada;/
+Miłujmy wiernie nie jest w nich przysada./
+Godności trzeba nie za nic tu cnota,/
+Miłości pragną nie pragną tu złota./
+Miłują z serca nie patrzają zdrady,/
+Pilnują prawdy nie kłamają rady./
+Wiarę uprzejmą nie dar sobie ważą,/
+W miarę nie nazbyt ciągnąć rzemień każą<pr><slowo_obce>ciągnąć rzemień</slowo_obce> --- zwrot utarty: wydawać pieniądze ze skórzanego, rzemiennego mieszka.</pr>./
+Wiecznie wam służę nie służę na chwilę,/
+Bezpiecznie wierzcie nierad ja omylę.<end id="e1188764907866"/></strofa>
+    <naglowek_rozdzial><begin id="b1188765619920"/><motyw id="m1188765619920">Kot, Przemoc</motyw>15. O kocie</naglowek_rozdzial>
+    <strofa>Słychał kto kiedy, jako ciągną kota?<pr><slowo_obce>ciągną kota</slowo_obce> --- kara ośmieszająca: winnego przeciągano przez wodę lub błoto, okręcając go powrozem, na którego drugim końcu uwiązywano kota. Stąd później w przenośni: wystawianie na pośmiewisko.</pr>/
+Nie zawżdy szuka wody ta robota,/
+Ciągnie go drugi nadobnie na suszy./
+Sukniej nie zmacza, ale wżdy mdło duszy.<end id="e1188765619920"/></strofa>
+    <naglowek_rozdzial><begin id="b1188765687918"/><motyw id="m1188765687918">Kobieta</motyw>16. Na nieodpowiedną</naglowek_rozdzial>
+    <strofa>Odmów, jeślić nie po myśli; daj, masz li dać wolą;/
+Słuchając słów niepotrzebnych aż mię uszy bolą.<end id="e1188765687918"/></strofa>
+    <naglowek_rozdzial>17. Na pieszczone ziemiany</naglowek_rozdzial>
+    <strofa>Gniewam się na te pieszczone ziemiany,/
+Co piwu radzi szukają przygany./
+Nie pij, aż ci się pierwej będzie chciało,/
+Tedyć się każde dobrym będzie zdało.</strofa>
+    <naglowek_rozdzial><begin id="b1188765877831"/><motyw id="m1188765877831">Kobieta, Kochanek</motyw>18. Na niesłowną</naglowek_rozdzial>
+    <strofa>Miałem nadzieję, że mi zyścić miano,/
+Tak jako było z chucią obiecano;/
+Ale co komu rzecze białagłowa,/
+Pisz jej na wietrze i na wodzie słowa.<end id="e1188765877831"/></strofa>
+    <naglowek_rozdzial><begin id="b1188766084388"/><motyw id="m1188766084388">Kobieta, Miłość</motyw>19. Do paniej</naglowek_rozdzial>
+    <strofa>Co usty mówisz, byś w sercu myśliła,/
+Barzo byś mię tym, pani, zniewoliła;/
+Ale kiedy mię swym miłym mianujesz,/
+Podobno dawnym zwyczajom folgujesz.<end id="e1188766084388"/></strofa>
+    <naglowek_rozdzial>20. O chmielu</naglowek_rozdzial>
+    <strofa>Co to za sałata rana,/
+Rózynkami posypana?<pr>Z rodzynkami przyrządzano zarówno sałatę z młodych pędów chmielu, jak i polewkę piwną, podawaną często na śniadanie.</pr>/
+Chmiel, jeśli dobrze smakuję;/
+Przetociem go w głowie czuję.</strofa>
+    <naglowek_rozdzial><begin id="b1188766174458"/><motyw id="m1188766174458">Kobieta, Świętoszek</motyw>21. Na nabożną</naglowek_rozdzial>
+    <strofa>Jeśli nie grzeszysz, jako mi powiadasz,/
+Czego się, miła, tak często spowiadasz?<end id="e1188766174458"/></strofa>
+    <naglowek_rozdzial><begin id="b1188766242105"/><motyw id="m1188766242105">Starość </motyw>22. Na grzebień</naglowek_rozdzial>
+    <strofa>Nowy to fortel a mało słychany:/
+	Na srebrną brodę grzebień ołowiany<pr><slowo_obce>grzebień ołowiany</slowo_obce> --- służył do czernienia siwych włosów.</pr>.<end id="e1188766242105"/></strofa>
+    <naglowek_rozdzial><begin id="b1188766326326"/><motyw id="m1188766326326">Walka, Wróg</motyw>23. Ofiara</naglowek_rozdzial>
+    <strofa>Łuk i sajdak twój, Febe<pr><slowo_obce>Febe</slowo_obce> (<slowo_obce>Febus</slowo_obce>) --- <wyroznienie>promienny</wyroznienie>, jeden z przydomków Apollina.</pr>, niech będzie, lecz strzały/
+W sercach nieprzyjacielskich w dzień boju zostały.<end id="e1188766326326"/></strofa>
+    <naglowek_rozdzial>24. O sobie</naglowek_rozdzial>
+    <strofa>Dopiero chcę pisać żarty/
+Przegrawszy pieniądze w karty;/
+Ale się i dworstwo zmieni,/
+Kiedy <wyroznienie>w pytlu hrosza neni</wyroznienie><pr><slowo_obce>w pytlu hrosza neni</slowo_obce> --- w sakiewce nie ma grosza. Czechizm użyty dla efektu komicznego.</pr>.</strofa>
+    <naglowek_rozdzial>25. Na konrata</naglowek_rozdzial>
+    <strofa>Milczycie w obiad, mój panie Konracie;/
+Czy tylko na chleb gębę swą chowacie?</strofa>
+    <naglowek_rozdzial>26. Do Mikołaja Firleja</naglowek_rozdzial>
+    <strofa>Mało na tym, że moje fraszki masz pisane,/
+Lecz je chcesz, Mikołaju, mieć i drukowane;/
+Ku ćci czy hańbie mojej? --- Cóż, nie wierzysz temu/
+Żeś i sam w nich? Ba, jesteś, już wierz słowu memu/
+A tak rozmyśl się na to, trefno li to będzie,/
+Gdy we fraszkach kasztelan<pr><slowo_obce>kasztelan</slowo_obce> --- Mikołaj Firlej mianowany został kasztelanem wiślickim na sejmie Unii Lubelskiej (1569).</pr> drukowany siędzie?/
+Jać wytrwam, choć mię będą fraszkopisem wołać,/
+Bom nie mógł ani bojom, ani mężom zdołać.</strofa>
+    <naglowek_rozdzial>27. O Łazickim a Barzym<pr>Imiona: <slowo_obce>Łazicki</slowo_obce> od łażenia, w sensie nieprzyzwoitym; <slowo_obce>Barzy</slowo_obce> (czyt. Bar-y) --- szybki, prędki.</pr></naglowek_rozdzial>
+    <strofa>Łazićki z Barzym, gospodarzu miły,/
+Jeśliś nieświadom, jakowej są siły,/
+Chciej same tylko uważyć imiona,/
+A masz li rozum, niech spać idzie żona!</strofa>
+    <naglowek_rozdzial><begin id="b1188766605307"/><motyw id="m1188766605307">Kobieta, Kochanek, Miłość</motyw>28. O Jędrzeju</naglowek_rozdzial>
+    <strofa>Z sercam się rozśmiał Jędrzeja słuchając,/
+Kiedy do domu przyszedł narzekając/
+,,A kat jej prosi, by się ku mnie miała,/
+Teraz się, małpa, z podchłopia wyrwała."<end id="e1188766605307"/></strofa>
+    <naglowek_rozdzial><begin id="b1188766684812"/><motyw id="m1188766684812">Poeta, Władza</motyw>29. Do Jósta</naglowek_rozdzial>
+    <strofa>Wiesz, coś mi winien; miejże się do taszki<pr>Jak wkazuje aluzja do „taszki", adresatem utworu jest zapewne skarbnik królewski Jost Ludwik Decjusz (młodszy, zm. 1567).</pr>,/
+Bo cię wnet włożę, Jóstcie, między fraszki!<end id="e1188766684812"/></strofa>
+    <naglowek_rozdzial>30. Do Jakuba</naglowek_rozdzial>
+    <strofa>Że krótkie fraszki czynię, to, Jakubie, winisz?/
+Krótsze twoje nierówno, bo ich ty nie czynisz.</strofa>
+    <naglowek_rozdzial><begin id="b1188766803532"/><motyw id="m1188766803532">Kondycja ludzka, Przemijanie, Śmierć</motyw>31. Epitafium Kosowi<pr><slowo_obce>epitafium</slowo_obce> --- napis nagrobkowy.</pr></naglowek_rozdzial>
+    <strofa>Z żalem i z płaczem, acz za twe nie stoi,/
+Mój dobry Kosie, towarzysze twoi/
+W ten grób twe ciało umarłe włożyli,/
+Którzy weseli wczora z tobą byli./
+Śmierć za człowiekiem na wszelki czas chodzi;/
+Niech zdrowie, niech nas młodość nie uwodzi,/
+Bo ani wzwiemy, kiedy wsiadać każą,<pr><slowo_obce>wsiadać</slowo_obce> --- domyślne: do łodzi Charona, umierać.</pr>/
+A tam ani płacz, ani dary ważą.<end id="e1188766803532"/></strofa>
+    <naglowek_rozdzial><begin id="b1188766885670"/><motyw id="m1188766885670">Przemijanie, Śmierć</motyw>32. O tymże</naglowek_rozdzial>
+    <strofa>Wczora pił z nami, a dziś go chowamy;/
+Ani wiem, czemu tak hardzie stąpamy?/
+Śmierć nie zna złota i drogiej purpury,/
+Mknie po jednemu jako z kojca kury.<end id="e1188766885670"/></strofa>
+    <naglowek_rozdzial><begin id="b1188766986115"/><motyw id="m1188766986115">Bogactwo, Mądrość</motyw>33. O zazdrości</naglowek_rozdzial>
+    <strofa>Ani przyjaciel, ani wielkość złota,/
+Ani uchowa złej przygody cnota;/
+Przeklęta Zazdrość dziwnie się frasuje,/
+Kiedy u kogo co nad ludzi czuje./
+Więc jeśli nie zje, tedy przedsię szczeka,/
+A ustawicznie na twoje złe czeka./
+To na nię fortel: nic nie czuć do siebie<pr><slowo_obce>nic nie czuć do siebie</slowo_obce> --- nie poczuwać się do niczego.</pr>/
+A wszytko mężnie wytrzymać w potrzebie.<end id="e1188766986115"/></strofa>
+    <naglowek_rozdzial><begin id="b1188767107619"/><motyw id="m1188767107619">Chłop, Kobieta, Szlachcic</motyw>34. O dobrym panie</naglowek_rozdzial>
+    <strofa>Dobry pan jakiś, jadąc sobie w drogę,/
+Ujźrzał u dziewki w polu bossą nogę./
+,,Nie chodź --- powiada --- bez botów, ma rada,/
+Bo macierzyzna tak zwietrzeje rada."/
+,,Łaskawy panie, nic jej to nie wadzi,/
+Chyba, żebyście pijali z niej radzi."<end id="e1188767107619"/></strofa>
+    <naglowek_rozdzial><begin id="b1188767189647"/><motyw id="m1188767189647">Miłość</motyw>35. O Kachnie</naglowek_rozdzial>
+    <strofa>Kachna się każe w łaźni przypatrować,/
+Jeslibych ją chciał nago wymalować;/
+A ja powiadam: gdzie nas dwoje siędzie,/
+Tam pewna łaźnia, mówię, łaźnia będzie.<end id="e1188767189647"/></strofa>
+    <naglowek_rozdzial>36. Do gościa</naglowek_rozdzial>
+    <strofa>Nie pieść się długo z mymi książeczkami,/
+Gościu, boć rzeką: ,,Bawisz się fraszkami."</strofa>
+    <naglowek_rozdzial><begin id="b1188767520503"/><motyw id="m1188767520503">Kobieta, Starość </motyw>37. Na Barbarę<pr>Fraszka o temacie u Kochanowskiego pospolitym (zob. I 7 <tytul_dziela>Na starą</tytul_dziela>). Dowcip polega na sztuczce rymowej, wiersze bowiem parzyste zamiast wyrazu oczekiwanego wprowadzają całe zwroty, rzekomo maskujące drwiny z podstarzałej zalotnicy. Owe wyrazy oczekiwane to: babo, lata, wnuki, dupia, do domu, legaj, szalej, młody, paciorki, stary, za tobą, szydzą, matka.</pr></naglowek_rozdzial>
+    <strofa>Jakoś mi już skaczesz słabo,/
+Folguj sobie, miła Barbaro, proszę cię./
+Czart rozskakał tego swata,/
+Nie dba nic, choć kto ma lada co przed sobą./
+Okazuje swoje sztuki,/
+Alboć nie ,,wie, że masz w Nuremberku<pr><slowo_obce>Nuremberk</slowo_obce> --- Norymberga.</pr> towar?/
+<begin id="b1188767649799"/><motyw id="m1188767649799">Ksiądz</motyw>Ale ty wżdy nie bądź głupia,/
+Nieznajomym nie daj dudkować przed sobą./
+Nie zwierzaj się leda komu,/
+Nie puszczaj mnichów do dobrego mieszkania./
+I kapłanów się wystrzegaj,/
+Raczej sama zawżdy letanije śpiewaj!<end id="e1188767649799"/>/
+A chcesz li mię słuchać dalej,/
+Moja Barbaro, nie szacuj dobrych ludzi!/
+Zawżdy raczej szukaj zgody,/
+Niech za cię skacze, kto młotem dobrze robi./
+Możesz odpruć i te wzorki,/
+Czyście tak nama z paciorkowym biczykiem./
+A nie dufaj w żadne czary,/
+I pod pierzem szpetny staroświetski bieret./
+Wiedzże, co masz czynić z sobą,/
+Bo lisi ogon<pr>Lisi ogon nosił u spodni błazen.</pr> za towar nie uchodzi./
+A łotrowie, co to widzą,/
+W oczy pięknie, w kącie szykują swe draby./
+Domyślajże się ostatka,/
+<begin id="b1188767805683"/><motyw id="m1188767805683">Dziecko, Matka</motyw>Wszakeś już swym dziatkom marcypan rozdała.<end id="e1188767805683"/><end id="e1188767520503"/></strofa>
+    <naglowek_rozdzial>38. Do Walka</naglowek_rozdzial>
+    <strofa>Wałku mój, tym mię nie rozgniewasz sobie,/
+Że się me fraszki kiepstwem zdadzą tobie./
+Bych ja też w nich był baczył statek jaki,/
+Wierz mi, nie byłby tytuł na nich taki.</strofa>
+    <naglowek_rozdzial><begin id="b1188767918746"/><motyw id="m1188767918746">Przemijanie, Śmierć, Zaświaty</motyw>39. Epitafium Krysztofowi Sienieńskiemu</naglowek_rozdzial>
+    <strofa>Tylko cię tu na ziemię szczęście ukazało,/
+Dalej cię mieć, Krysztofie, na świecie nie chciało./
+Czy to gorzej, czy lepiej? --- Wy sami widzicie,/
+Którzy tego i tego świata smak pomnicie.<end id="e1188767918746"/></strofa>
+    <naglowek_rozdzial><begin id="b1188768014724"/><motyw id="m1188768014724">Bogactwo, Miłość</motyw>40. Z Anakreonta</naglowek_rozdzial>
+    <strofa>Ciężko, kto nie miłuje, ciężko, kto miłuje,/
+Naciężej, kto miłując łaski nie zyskuje./
+Zacność w miłości za nic, fraszka obyczaje,/
+Na tego tam naraczej patrzają, kto daje./
+Bodaj zdechł, kto się naprzód złota rozmiłował,/
+Ten wszytek świat swoim złym przykładem popsował./
+Stąd walki, stąd morderstwa; a co jeszcze więcej,/
+Nas, chude, co miłujem, to gubi napręcej.<end id="e1188768014724"/></strofa>
+    <naglowek_rozdzial><begin id="b1188768081910"/><motyw id="m1188768081910">Miłość</motyw>41. Na poduszkę</naglowek_rozdzial>
+    <strofa>Szlachetne płótno, na którym leżało/
+Owo tak piękne w oczu moich ciało,/
+Przecz tego smutny u Fortuny sobie/
+Zjednać nie mogę, aby głowie obie/
+Pospołu na twym wdzięcznym mchu leżały,/
+A zobopólnych rozmów używały?/
+Więcej nie śmiem rzec, bo i tak się boję,/
+Że z tych słów Zazdrość myśl rozumie moje.<end id="e1188768081910"/></strofa>
+    <naglowek_rozdzial><begin id="b1188768139884"/><motyw id="m1188768139884">Pijaństwo, Sługa</motyw>42. Na frasownego</naglowek_rozdzial>
+    <strofa>Nie frasuj się na sługi, żeć się pożarli;/
+Trzeźwi słudzy z trzeźwimi pany pomarli.<end id="e1188768139884"/></strofa>
+    <naglowek_rozdzial><begin id="b1188768227490"/><motyw id="m1188768227490">Rodzina</motyw>43. Na stryja<pr>Fraszka skierowana Jest do stryja poety, Filipa Kochanowskiego. Jako właściciel połowy Czarnolasu gospodarował on w majątku podczas nieobecności Jana Kochanowskiego, a w latach 1562--1563 miał z nim proces.</pr></naglowek_rozdzial>
+    <strofa>Nie bądź mi stryjem<pr>Przysłowie łacińskie: „Nie obchodź się ze mną jak z wyrodnym bratankiem", przytacza Horacy (<tytul_dziela>Satyry</tytul_dziela> II 3, 87).</pr>, Rzymianie mawiali,/
+Kiedy się komu karać nie dawali./
+Bądź ty mnie Stryjem przedsię po staremu,/
+Jedno nic nie bierz synowcowi swemu.<end id="e1188768227490"/></strofa>
+    <naglowek_rozdzial><begin id="b1188768291572"/><motyw id="m1188768291572">Ksiądz</motyw>44. Na Świętego Ojca<pr>Fraszka Jest przekładem końcowego dystychu epigramatu humanisty węgierskiego Jana z Panonii (1433--1490), skierowanego do Pawła II.</pr></naglowek_rozdzial>
+    <strofa>Świętym cię zwać nie mogę, ojcem się nie wstydzę,/
+Kiedy, wielki kapłanie, syny twoje widzę.<end id="e1188768291572"/></strofa>
+    <naglowek_rozdzial>45. Do Mikołaja Mieleckiego<pr>Mikołaj Mielecki (zm. 1585) --- starosta chmielnicki (1557), później wojewoda podolski i hetman, przyjaciel Kochanowskiego.</pr></naglowek_rozdzial>
+    <strofa>Nie dar jaki kosztowny, ale co przemogę,/
+Dam ci parę wirszyków, Mielecki, na drogę:/
+Boże daj, być się dobrze na wszytkim wodziło,/
+Byś we zdrowiu oglądał, na co patrzać miło./
+Na mię bądź łaskaw, jakoś zawżdy okazował;/
+Nie był ten łaskaw, kto do końca nie miłował.</strofa>
+    <naglowek_rozdzial><begin id="b1188889975701"/><motyw id="m1188889975701">Bogactwo, Mądrość, Skąpiec</motyw>46. Na łakome</naglowek_rozdzial>
+    <strofa>Na umyśle prawdziwe bogactwa zależą;/
+Pod nim srebro i złoto, i pieniądze leżą;/
+A temu bogatego imię będzie służyć,/
+Który szczęścia swojego umie dobrze użyć./
+Ale kto ustawicznie leży nad liczmany,/
+Tylko tego słuchając, gdzie przedajne łany,/
+Ten równie jako pszczoła plastry w ul układa,/
+A drugi nic nie robiąc miód gotowy jada.<end id="e1188889975701"/></strofa>
+    <naglowek_rozdzial>47. Na niesłownego</naglowek_rozdzial>
+    <strofa>Powiem ci prawdę, że rad obiecujesz,/
+A obiecawszy, potym się nie czujesz;/
+Fraszką by cię zwać, lecz to jeszcze mniejsza:/
+Jest w moich książkach fraszka stateczniejsza.</strofa>
+    <naglowek_rozdzial>48. Do Pawełka</naglowek_rozdzial>
+    <strofa>Kiedy żorawie polecą za morze,/
+Nie bywaj często, Pawełku, na dworze,/
+Aby na tobie nie pokiwali skóry,/
+Mnimając, żeś ty z Pigmeolów<pr><slowo_obce>z Pigmeolów</slowo_obce> --- z Pigmejów, karzełków, z którymi wedle podań greckich żurawie prowadziły wojnę.</pr> który.</strofa>
+    <naglowek_rozdzial>49. Na Matusza</naglowek_rozdzial>
+    <strofa>,,Matusz wąsów" lepiej rzec; bo wielką kładziemy/
+Rzecz pod małą, kiedy ,,wąs Matuszów" mówiemy.</strofa>
+    <naglowek_rozdzial><begin id="b1188768949268"/><motyw id="m1188768949268">Ksiądz</motyw>50. Na posła papieskiego</naglowek_rozdzial>
+    <strofa>Pośle papieski rzymskiego narodu,/
+Uczysz nas drogi, a sam chybiasz brodu./
+Nawracaj<pr><slowo_obce>Nawracaj</slowo_obce> --- w podwójnym znaczeniu tego wyrazu leży istota fraszki, podrwiwającej sobie z któregoś nuncjusza.</pr> lepiej niżli twój woźnica,/
+Strzeż nas tam zawieźć, gdzie płacz i tęsknica<pr><slowo_obce>płacz i tęsknica</slowo_obce> --- płacz i zgrzytanie zębów w piekle (wg Św. Mateusza XXII 13).</pr>.<end id="e1188768949268"/></strofa>
+    <naglowek_rozdzial><begin id="b1188768998749"/><motyw id="m1188768998749">Pijaństwo</motyw>51. Na pijanego</naglowek_rozdzial>
+    <strofa>Nie darmo Bakcha z rogami malują,/
+Bo pijanego i dzieci poczują./
+Niech głowa, niech mu służą dobrze nogi ---/
+Sama postawa ukazuje rogi<pr><slowo_obce>postawa ukazuje rogi</slowo_obce> --- skłonność do awantur, stąd wyrażenie: rogata natura.</pr>.<end id="e1188768998749"/></strofa>
+    <naglowek_rozdzial>52. Na gospodarza</naglowek_rozdzial>
+    <strofa>Posadziłeś mię wprawdzie nie nagorzej<pr><slowo_obce>Posadziłeś... nienagorzej</slowo_obce> --- tj. na miejscu bliskim gospodarza.</pr>,/
+Aleby trzeba mięsa dawać sporzej;/
+Przed tobą widzę półmisków niemało,/
+A mnie się ledwie polewki dostało./
+Diabłu się godzi takowa biesiada!/
+Gościem czy świadkiem ja twego obiada!</strofa>
+    <naglowek_rozdzial>53. Na matematyka</naglowek_rozdzial>
+    <strofa>Ziemię pomierzył i głębokie morze,/
+Wie, jako wstają i zachodzą zorze;/
+Wiatrom rozumie, praktykuje komu,/
+A sam nie widzi, że ma kurwę w domu.</strofa>
+    <naglowek_rozdzial><begin id="b1188769138670"/><motyw id="m1188769138670">Ksiądz</motyw>54. O księdzu</naglowek_rozdzial>
+    <strofa>Z wieczora na cześć księdza zaproszono,/
+Ale mu na noc małpę przywiedziono./
+Trwała tam chwilę ta miła biesiada,/
+Aż ksiądz zamieszkał i mszej, i obiada!<end id="e1188769138670"/></strofa>
+    <naglowek_rozdzial><begin id="b1188769270720"/><motyw id="m1188769270720">Kobieta, Kochanek, Mąż, Żona</motyw>55. O gospodyniej<pr>Anegdota cytowana przez Poggia Braccioliniego w utworze <tytul_dziela>De facto cuiusdam iusto sed bruto</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa>Proszono jednej wielkimi prośbami,/
+Nie powiem o co, zgadniecie to sami./
+A iż stateczna była białagłowa,/
+Nie wdawała się z gościem w długie słowa,/
+Ale mu z mężem do łaźniej kazała,/
+Aby mu swoje myśl rozumieć dała./
+Wnidą do łaźniej, a gospodarz miły/
+Chodzi by w raju, nie zakrywszy żyły./
+A słusznie, bo miał bindasz tak dostały,/
+Żeby był nie wlazł w żadne famurały./
+Gość poglądając dobrze żyw, a ono/
+Barzo nierówno pany podzielono./
+Nie mył się długo i jechał tym chutniej:/
+Nie każdy weźmie po Bekwarku<pr>Bekwark (Walenty Greff, 1507--1576) --- rodem z Siedmiogrodu, kompozytor i słynny lutnista na dworze Zygmunta Augusta. Pointa fraszki zacytowana została przez Piotra Statoriusza Stojeńskiego w gramatyce, co pozwala stwierdzić, że utwór powstał przed lipcem 1576 (data przedmowy gramatyki).</pr> lutniej.<end id="e1188769270720"/></strofa>
+    <naglowek_rozdzial>56. Na butnego</naglowek_rozdzial>
+    <strofa>Już mi go nie chwal, co to przy biesiedzie/
+Z zwycięstwy na plac i z walkami jedzie;/
+Takiego wolę, co zaśpiewać może/
+I co z pannami tańcować pomoże.</strofa>
+    <naglowek_rozdzial><begin id="b1188769373357"/><motyw id="m1188769373357">Pijaństwo, Obraz świata</motyw>57. Za pijanicami</naglowek_rozdzial>
+    <strofa>Ziemia deszcz pije, ziemię drzewa piją,/
+Z rzek morze, z morza wszytki gwiazdy żyją./
+Na nas nie wiem, co ludzie upatrzyli,/
+Dziwno im, żeśmy trochę się napili.<end id="e1188769373357"/></strofa>
+    <naglowek_rozdzial><begin id="b1188769530123"/><motyw id="m1188769530123">Ksiądz</motyw>58. O prałacie</naglowek_rozdzial>
+    <strofa>I to być musi do fraszek włożono,/
+Jako prałata jednego uczczono./
+Białychgłów młodych i panów niemało/
+Za jednym stołem pospołu siedziało./
+Siedział też i ten, com go już mianował,/
+Bo dobrej myśli nigdy nie zepsował./
+Mnich wedle niego, a po drugiej ręce/
+Pani co starsza. Słuchajże o męce:/
+Na pirwszym miejscu pannę całowano,/
+Także do końca podawać kazano<pr><slowo_obce>pannę całowano, także do końca podawać kazano</slowo_obce> --- zabawa w ,,podaj dalej".</pr>./
+Więc tego nie raz, ale kilka było,/
+A prałatowi by kąska niemiło<pr><slowo_obce>by kąska niemiło</slowo_obce> --- ani trochę nie jest przyjemnie.</pr>,/
+Bo co raz to go baba pocałuje,/
+A on zaś mnicha; więc mu się styskuje./
+Miał czyściec prawy jeszcze na tym świecie,/
+Bodaj wam taki, co go mieć nie chcecie<pr><slowo_obce>co go mieć nie chcecie</slowo_obce> --- protestanci odrzucali wiarę w czyściec.</pr>.<end id="e1188769530123"/></strofa>
+    <naglowek_rozdzial>59. Do Marcina</naglowek_rozdzial>
+    <strofa>A więc by ty, Marcinie, przed tym nie ugonił,/
+Co to siedzi jako wróbl, a oczy zasłonił;/
+Niech on chwali Żmudzinki, że bywają trwałe;/
+By miał madzie jako sam, tedy przedsię małe.</strofa>
+    <naglowek_rozdzial>60. Na miernika</naglowek_rozdzial>
+    <strofa>Kiedyście się tych pomiarów tak dobrze uczyli,/
+Że wiecie, ilekroć koło obróci się w mili,/
+Zgadnicież mi, wiele razów, niż jeden raz minie,/
+Magdalena pod namiotem żywym duszą kinie.</strofa>
+    <naglowek_rozdzial><begin id="b1188769693468"/><motyw id="m1188769693468">Kochanek</motyw>61. O chłopcu</naglowek_rozdzial>
+    <strofa>Pan sobie kazał przywieść białągłowę,/
+Aby z nią mógł mieć tajemną rozmowę./
+Czekawszy chłopca dobrze długą chwilę,/
+Tak żeby drugi uszedł był i milę,/
+Pojźrzy pod okno, a ci sobie radzi!/
+I rzecze z góry do onej czeladzi:/
+,,Po diable, synku, folgujesz tej paniej:/
+Jam kazał przywieść, a ty jedziesz na niej."<end id="e1188769693468"/></strofa>
+    <naglowek_rozdzial><begin id="b1188769765441"/><motyw id="m1188769765441">Miłość, Natura</motyw>62. O Hannie</naglowek_rozdzial>
+    <strofa>Tu góra drzewy natkniona,/
+A pod nią łąka zielona;/
+Tu zdrój przeźroczystej wody/
+Podróżnemu dla ochłody;/
+Tu zachodny wiatr powiewa,/
+Tu słowik przyjemnie śpiewa ---/
+Ale to wszytko za jaje<pr><slowo_obce>jaje</slowo_obce> --- niewarte (wyjedzonego) jajka.</pr>/
+Kiedy Hanny nie dostaje.<end id="e1188769765441"/></strofa>
+    <naglowek_rozdzial><begin id="b1188769855210"/><motyw id="m1188769855210">Kochanek</motyw>63. Do Stanisława</naglowek_rozdzial>
+    <strofa>Co mi Sybilla prorokuje ninie?/
+,,Źle trzem --- powiada --- o jednej pierzynie."/
+Znać, Stanisławie, że się ta pieśń była/
+Mym towarzyszom dobrze w głowę wbiła./
+Bom ja sam jeden został z tej drużyny,/
+Co pociągali na się yej pierzyny./
+Oni już tylko legają po parze,/
+Ja przedsię ziębnę samotrzeć do zarze.<end id="e1188769855210"/></strofa>
+    <naglowek_rozdzial><begin id="b1188769920544"/><motyw id="m1188769920544">Żałoba</motyw>64. Epitafium Wojciechowi Kryskiemu<pr>Wojciech Kryski (zm. 1566) --- prawnik, dyplomata, dworzanin Zygmunta Augusta, sportretowany przez Górnickiego w <tytul_dziela>Dworzaninie</tytul_dziela> jako znawca zwyczajów renesansowych.</pr></naglowek_rozdzial>
+    <strofa>Płaczą cię starzy, płaczą cię i młodzi,/
+Dwór wszystek w czerni prze cię, Kryski, chodzi,/
+Abowiem ludzkość i dworstwo przy tobie/
+W jednymże za raz pochowano grobie.<end id="e1188769920544"/></strofa>
+    <naglowek_rozdzial><begin id="b1188769983955"/><motyw id="m1188769983955">Obywatel, Żałoba</motyw>65. Drugie Temuż</naglowek_rozdzial>
+    <strofa>Hiszpany, Włochy i Niemce zwiedziwszy,/
+Królowi swemu cnotliwie służywszy/
+Umarłeś, Kryski, i leżysz w tym grobie;/
+Mnieś wielki smutek zostawił po sobie./
+A iż płacz próżny i żałość w tej mierze,/
+Tym więtszą i płacz, i żałość moc bierze.<end id="e1188769983955"/></strofa>
+    <naglowek_rozdzial><begin id="b1188770078291"/><motyw id="m1188770078291">Sługa, Szlachcic</motyw>66. Na pany</naglowek_rozdzial>
+    <strofa>Ciężko mi na te teraźniejsze pany:/
+Siebie nie baczą, a ganią dworzany./
+,,W on czas --- pry --- czystych zapaśników było,/
+Szermierzów, gońców, aż i wspomnieć miło./
+A dziś co młodzi pachołcy umieją?/
+Jedno w się wino jako w beczkę leją."/
+Prawda, że wielka w sługach dziś odmiana,/
+Ale też trudno o takiego pana,/
+O jakich nam więc starszy powiadali;/
+Oni się w męstwie, w dzielności kochali,/
+Dziś leda Żyda z workiem pieprzu wolą ---/
+Nie dziw, że rzadko za tarczami kolą.<end id="e1188770078291"/></strofa>
+    <naglowek_rozdzial><begin id="b1188770179376"/><motyw id="m1188770179376">Kochanek, Miłość</motyw>67. Do gospodyniej</naglowek_rozdzial>
+    <strofa>Ciebie zła lwica w ogromnej jaskini/
+Nie urodziła, moja gospodyni,/
+Ani swym mlekiem tygrys napawała;/
+Gdzieżeś się wżdy tak sroga uchowała,/
+Że nie chcesz baczyć na me powolności/
+Ani mię wspomóc w mej wielkiej trudności?/
+O którą samażeś mię przyprawiła,/
+Że chodzę mało nie tak jako wiła./
+Wprawdzie żeć się już nie wczas odejmować;/
+Ja ciebie muszę rad nierad miłować./
+Ty się w tym pomni, masz li mię mieć g'woli/
+Z mej dobrej chęci czyli po niewoli.<end id="e1188770179376"/></strofa>
+    <naglowek_rozdzial>68. O Staszku</naglowek_rozdzial>
+    <strofa>Gdy co nie g'rzeczy usłyszy mój Staszek,/
+To mi wnet każe przypisać do fraszek./
+Bracie, by się to wszytko pisać miało,/
+Już by mi dawno papieru nie zstało.</strofa>
+    <naglowek_rozdzial>69. Do Kachny</naglowek_rozdzial>
+    <strofa>Pewnie cię moje zwierciadło zawstydzi,/
+Bo się w nim, Kachno, każdy szpetny widzi.</strofa>
+    <naglowek_rozdzial><begin id="b1188770281784"/><motyw id="m1188770281784">Miłość</motyw>70. O liście</naglowek_rozdzial>
+    <strofa>Nie wiem, by ta niemoc była,/
+Co by się nie przyrzuciła./
+Wczora mi pani pisała,/
+Że po trzy nocy nie spała./
+Od tych czasów mi nie śmieszno/
+I sam nie śpię, co mię teszno.<end id="e1188770281784"/></strofa>
+    <naglowek_rozdzial><begin id="b1188890347370"/><motyw id="m1188890347370">Pijaństwo, Zbrodnia</motyw>71. Epitafium Jędrzejowi Żelisławskiemu</naglowek_rozdzial>
+    <strofa>W jegoż gospodzie o wieczornej chwili/
+Żelisławskiego niewinnie zabili/
+Swowolni ludzie; kto chce słowo miłe/
+Dać temu grobu, przeklinaj opiłe!<end id="e1188890347370"/></strofa>
+    <naglowek_rozdzial>72. Do Baltazera</naglowek_rozdzial>
+    <strofa>Nie dziw, żeć głowa, Baltazarze, chora;/
+Siedziałeś wedle głupiego doktora.</strofa>
+    <naglowek_rozdzial>73. Do Pawła Stępowskiego<pr>Paweł Stępowski (zm. 156  <uwaga>tak w tekście!!</uwaga>) --- przyjaciel Kochanowskiego, sekretarz królewski, dyplomata i poeta.</pr></naglowek_rozdzial>
+    <strofa>Sam pannę ściskasz, sam się zakazujesz,/
+Sam w ucho szepcesz, sam, Pawle, całujesz,/
+Wszytkoś sam zabrał, ani się dasz pożyć ---/
+A jeszcze by cię do fraszek nie włożyć?</strofa>
+    <naglowek_rozdzial>74. O gospodyniej</naglowek_rozdzial>
+    <strofa>Starosta jednej paniej rozkazał objawić,/
+Że legata rzymskiego u niej miał postawić./
+,,Ba, toć --- pry --- legat prawy, co go stawiać trzeba<pr>Gospodyni wyraz „legat" (z łac.: poseł), wiąże z polskim „legać”.</pr>,/
+Ale w mym domu takim nie dawają chleba."</strofa>
+    <naglowek_rozdzial><begin id="b1188890880321"/><motyw id="m1188890880321">Wino</motyw>75. Na hardego</naglowek_rozdzial>
+    <strofa>Nie bądź mi hardym, chociaś wielkim panem,/
+Jam nie starostą ani kastellanem,/
+Ale gdy namniej podweselę sobie,/
+Siła mam w głowie panów równych tobie.<end id="e1188890880321"/></strofa>
+    <naglowek_rozdzial><begin id="b1188891537348"/><motyw id="m1188891537348">Bogactwo, Miłość, Śmierć</motyw>76. Z Anakreonta</naglowek_rozdzial>
+    <strofa>Kiedy by worek bogatego złota/
+Mógł człowiekowi przysporzyć żywota:/
+I sam bych się już jął pieniędzy chować,/
+Żebych się miał czym śmierci odkupować./
+Ale jeśli nikt kupnem nie przyczyni/
+Żywota sobie, zaż nie głupie czyni,/
+Kto się frasuje, a żywie w kłopocie?/
+Jeśli masz umrzeć, a cóż ci po złocie?/
+Ja dobrej myśli zawżdy chcę używać,/
+Ja z przyjacioły chcę pospołu bywać./
+A jeśli Wenus od tego nie będzie,/
+I Bogumiła niechaj się przysiędzie!<end id="e1188891537348"/></strofa>
+    <naglowek_rozdzial><begin id="b1188891685478"/><motyw id="m1188891685478">Śmierć bohaterska</motyw>77. Na Sokalskie mogiły</naglowek_rozdzial>
+    <strofa>Tuśmy<pr><slowo_obce>Tuśmy</slowo_obce> --- tu, tj. pod Sokalem w bitwie z Tatarami w r. 1519.</pr> się mężnie prze ojczyznę bili/
+I na ostatek gardła położyli./
+Nie masz przecz, gościu, złez nad nami tracić,/
+Taką śmierć mógłbyś sam drogo zapłacić.<end id="e1188891685478"/></strofa>
+    <naglowek_rozdzial><begin id="b1188891852954"/><motyw id="m1188891852954">Miłość, Przemijanie</motyw>78. Do Jana<pr>Fraszka niewątpliwie o sobie samym.</pr></naglowek_rozdzial>
+    <strofa>Radzę, Janie, daj pokój przedsięwzięciu swemu,/
+Bo bądź krótko, bądź długo, przedsię przydzie k'temu,/
+Że się człowiek obaczy, a co mu dziś miło,/
+Tomu będzie za czasem wstyd w oczu mnożyło./
+Tę rozkosz, którą teraz tak drogo szacujesz,/
+Puścisz taniej po chwili, gdy prawdę poczujesz./
+A tak, co ma czas przynieść, uprzedź go ty raczej,/
+Odmień swój bieg, a żagle nakręć w czas inaczej!/
+Świadomeś słów łaskawych i pięknej postawy,/
+Zdradę widzisz, znajże więc, co przyjaciel prawy!/
+A ty, o morska Wenus, chluśni z raz tej paniej,/
+A pomści się wzdychania i moich z łez na niej!<end id="e1188891852954"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892253412"/><motyw id="m1188892253412">Pijaństwo</motyw>79. O Doktorze Hiszpanie<pr>Bohaterem tej fraszki jest Piotr Rojzjusz (właśc.: Ruiz de Moroszm, 1571) --- z pochodzenia Hiszpan, uczony humanista, poeta i pisarz łaciński, w latach 1541--1550 profesor prawa na Uniwersytecie Krakowskim, dworzanin i doradca prawny Zygmunta Augusta.</pr></naglowek_rozdzial>
+    <strofa>,,Nasz dobry doktor spać się od nas bierze,/
+Ani chce z nami doczekać wieczerze."/
+,,Dajcie mu pokój! najdziem go w pościeli,/
+A sami przedsię bywajmy weseli!"/
+,,Już po wieczerzy, pódźmy do Hiszpana!"/
+,,Ba, wierę, pódźmy, ale nie bez dzbana."/
+,,Puszczaj, doktorze, towarzyszu miły!"/
+Doktor nie puścił, ale drzwi puściły<pr><slowo_obce>drzwi puściły</slowo_obce> --- bo je wyważono.</pr>./
+,,Jedna nie wadzi, daj ci Boże zdrowie!"/
+,,By jeno jedna" --- doktor na to powie./
+Od jednej przyszło aż więc do dziewiąci,/
+A doktorowi mózg się we łbie mąci./
+,,Trudny --- powiada --- mój rząd z tymi pany:/
+Szedłem spać trzeźwo, a wstanę pijany."<end id="e1188892253412"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892377335"/><motyw id="m1188892377335">Przemijanie, Szlachcic</motyw>80. O ślachcicu polskim</naglowek_rozdzial>
+    <strofa>Jeden pan wielomożny niedawno powiedział:/
+,,W Polszcze ślachcic jakoby też na karczmie siedział;/
+Bo kto jedno przyjedzie, to z każdym pić musi,/
+A żona, pościel zwłócząc, nieboga się krtusi."<end id="e1188892377335"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892453338"/><motyw id="m1188892453338">Dziecko, Ojciec, Śmierć</motyw>81. Epitafium dziecięciu</naglowek_rozdzial>
+    <strofa>Ojcze, nade mną płakać nie potrzeba,/
+Moja niewinność wniosła mię do nieba;/
+Bodaj tak wiele tobie przyczyniła,/
+Ile mnie sroga śmierć lat ukrzywdziła.<end id="e1188892453338"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892514353"/><motyw id="m1188892514353">Młodość </motyw>82. Na młodość</naglowek_rozdzial>
+    <strofa>Jakoby też rok bez wiosny mieć chcieli,/
+Którzy chcą, żeby młodzi nie szaleli.<end id="e1188892514353"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892575355"/><motyw id="m1188892575355">Starość </motyw>83. Na starość</naglowek_rozdzial>
+    <strofa>Biedna starości, wszyscy cię żądamy,
+A kiedy przydziesz, to zaś narzekamy.<end id="e1188892575355"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892664236"/><motyw id="m1188892664236">Śmierć</motyw>84. Na śmierć</naglowek_rozdzial>
+    <strofa>Obłudny świecie, jakcoć się tu widzi,/
+Doszedłem portu; już więc z inszych szydzi!<end id="e1188892664236"/></strofa>
+    <naglowek_rozdzial><begin id="b1188892793290"/><motyw id="m1188892793290">Kondycja ludzka, Los</motyw>85. Na frasowne</naglowek_rozdzial>
+    <strofa>Przy jednym szczęściu dwie szkodzie Bóg daje./
+Głupi nie widzi, więc Fortunie łaje;/
+Baczny, co dobrze, to na wirzch wykłada,/
+A co nie g'myśli, to pilnie przysiada.<end id="e1188892793290"/></strofa>
+    <naglowek_rozdzial><begin id="b1188893117750"/><motyw id="m1188893117750">Los, Mądrość</motyw>86. Na Fortunę<pr>Chodzi tu o Pogodę (gr. <slowo_obce>Kairos</slowo_obce>, łac. Occasio), boginię uosabiającą sposobną chwilę, sprzyjającą porę. Przedstawiano ją z długimi włosami na przedzie głowy, z tyłu nagiej na znak, że kto nie korzysta z chwili (nie chwytając jej jakby za włosy), ten, gdy się od niego odwróci, już jej nie złapie.</pr></naglowek_rozdzial>
+    <strofa>W tym się Fortuny radzić nie potrzeba:/
+Chowaj swe dobrze, coć Bóg życzył<pe><slowo_obce>życzył</slowo_obce> --- tu: użyczył.</pe> z nieba;/
+A kiedy będziesz miał pogodę na co,/
+Łapaj jej z przodku, z tyłu nie masz za co.<end id="e1188893117750"/></strofa>
+    <naglowek_rozdzial>87. O fraszkach</naglowek_rozdzial>
+    <strofa>Najdziesz tu fraszkę dobrą, najdziesz złą i srzednią,/
+Nie wszytkoć mury wiodą materyją przednią;/
+Z boków cegłę rumieńszą i kamień ciosany,/
+W pośrzodek sztuki kładą i gruz brakowany.</strofa>
+    <naglowek_rozdzial><begin id="b1188893226125"/><motyw id="m1188893226125">Miłość</motyw>88. Do miłości</naglowek_rozdzial>
+    <strofa>Chyba w serce, Miłości, proszę, nie uderzaj,/
+Ale na każdy członek inszy śmiele zmierzaj!<end id="e1188893226125"/></strofa>
+    <naglowek_rozdzial>89. O śmierci</naglowek_rozdzial>
+    <strofa>Śmiesznie to rzekła jedna białagłowa/
+Słuchając pieśni, w której są te słowa:/
+,,Rada bym śmierci, by już przyszła na mię";/
+--- Proszę, kto śmiercią, niech go też mam znamię<pr><slowo_obce>niech go też mam znamię</slowo_obce> --- niech go poznam.</pr>.</strofa>
+    <naglowek_rozdzial><begin id="b1188893959612"/><motyw id="m1188893959612">Obyczaje</motyw>90. Na ucztę</naglowek_rozdzial>
+    <strofa>Szeląg dam od wychodu, nie zjem, jeno jaje:/
+Drożej sram, niźli jadam; złe to obyczaje.<end id="e1188893959612"/></strofa>
+    <naglowek_rozdzial>91. Do Chmury<pr>Chmura --- zapewne dworzanin królewski, upamiętniony również przez Piotra Rojzjusza w zbiorze <tytul_dziela>Carmina</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa>Mówiłem ja tobie, Chmura,/
+Że przy kuchni bywa dziura;/
+Aleś mnie ty nie chciał wierzyć,/
+Wolałeś swym grzbietem zmierzyć.</strofa>
+    <naglowek_rozdzial>92. O tymże</naglowek_rozdzial>
+    <strofa>Wierzę, od początku świata/
+Nie były tak suche lata;/
+Oczy nasze to widziały:/
+Chmury się w rzekach kąpały.</strofa>
+    <naglowek_rozdzial><begin id="b1188894209362"/><motyw id="m1188894209362">Dziecko, Ojciec, Śmierć</motyw>93. Epitafium dziecięciu</naglowek_rozdzial>
+    <strofa>Byłem ojcem niedawno, dziś nie mam nikogo,/
+Co by mię tak zwał, takem w dzieci zniszczał srogo./
+Wszytki mi śmierć pożarła; jedno śmierć połknęło,/
+Haftkę lichą połknąwszy, tak swój koniec wzięło.<end id="e1188894209362"/></strofa>
+    <naglowek_rozdzial><begin id="b1188894314734"/><motyw id="m1188894314734">Kondycja ludzka, Los</motyw>94. Do Pawła</naglowek_rozdzial>
+    <strofa>Dobra to, Pawle (możesz wierzyć), szkoła,/
+Gdzie każą patrząc na poślednie koła./
+Człowiek, gdy mu się wedle myśli wodzi,/
+Mnima, że prosto nie po ziemi chodzi;/
+Ale nietrwała rozkosz na tym świecie,/
+Upadnie jako kwiat za kosą lecie.<end id="e1188894314734"/></strofa>
+    <naglowek_rozdzial>95. Na Ślasę</naglowek_rozdzial>
+    <strofa>Stań ku słońcu, a rozdziew gębę, panie Ślasa,/
+A już nie będziem szukać inszego kompasa<pr><slowo_obce>kompas</slowo_obce> --- zegar słoneczny.</pr>:/
+Bo ten nos, coć to gęby już ledwe nie minie,/
+Na zębach nam okaże, o której godzinie.</strofa>
+    <naglowek_rozdzial><begin id="b1188894494014"/><motyw id="m1188894494014">Młodość , Śmierć</motyw>96. Epitafium Wysockiemu<pr>Prawdopodobnie chodzi tu o Marcina Wysockiego (zm. 1568), dworzanina Zygmunta Augusta.</pr></naglowek_rozdzial>
+    <strofa>Urodziłem się w Prusiech, Wysockim mię zwano,/
+Umarłem w młodym wieku i tu mię schowano./
+U śmierci w tejże cenie młody co i stary,/
+Napadnie li jej na raz, nie da doróść miary.<end id="e1188894494014"/></strofa>
+    <naglowek_rozdzial><begin id="b1188894744672"/><motyw id="m1188894744672">Miłość, Poezja, Przemijanie</motyw>97. Do paniej</naglowek_rozdzial>
+    <strofa>Imię twe, pani, które rad mianuję,/
+Najdziesz w mych rymiech często napisane,/
+A kiedy będzie od ludzi czytane,/
+Masz przed inszymi, jeśli ja co czuję<pr><slowo_obce>Masz przed inszymi, jeśli ja co czuję</slowo_obce> --- przewyższasz innych, jeśli ja trafnie to czuję.</pr>.</strofa>
+    <strofa>Bych cię z drogiego marmoru postawił,/
+Bych cię dał ulać i z szczerego złota/
+(Czego uroda i twa godna cnota),/
+Jeszcze bych cię czci trwałej nie nabawił.</strofa>
+    <strofa>I mauzolea, i egiptskie grody/
+Ostatniej śmierci próżne być nie mogą<pr><slowo_obce>Ostatniej śmierci próżne być nie mogą</slowo_obce> --- nie mogą ostatecznie być wolne od zagłady.</pr>;/
+Albo je ogień, albo nagłe wody,/
+Albo je lata zazdrościwe zmogą;</strofa>
+    <strofa>Sława z dowcipu<pr><slowo_obce>Sława z dowcipu</slowo_obce> --- sława oparta na talencie poetyckim.</pr> sama wiecznie stoi,/
+Ta gwałtu nie zna, ta się lat nie boi.<end id="e1188894744672"/></strofa>
+    <naglowek_rozdzial><begin id="b1188894802826"/><motyw id="m1188894802826">Miłość</motyw>98. O miłości</naglowek_rozdzial>
+    <strofa>Próżno uciec, próżno się przed miłością schronić,/
+Bo jako lotny nie ma pieszego dogonić?<end id="e1188894802826"/></strofa>
+    <naglowek_rozdzial>99. Na kogoś</naglowek_rozdzial>
+    <strofa>Wyganiasz psa z piekarniej --- ba, raczej sam wynidź,/
+Bo tu jednak masz diabła<pr><slowo_obce>masz diabła</slowo_obce> --- nic nie masz.</pr> u kucharek czynić.</strofa>
+    <naglowek_rozdzial>100. O fraszkach</naglowek_rozdzial>
+    <strofa>Komu sto fraszek zda się przeczyść mało,/
+Ten siła złego wytrwać może cało.</strofa>
+    <naglowek_rozdzial><begin id="b1188895178742"/><motyw id="m1188895178742">Bóg, Kondycja ludzka, Los, Theatrum mundi</motyw>101. O żywocie ludzkim</naglowek_rozdzial>
+    <strofa>Wieczna Myśli<pr><slowo_obce>Wieczna Myśli</slowo_obce> --- filozoficzne określenie Boga, obojętnego na sprawy doczesne.</pr>, któraś jest dalej niż od wieka,/
+Jeśli cię też to rusza, co czasem człowieka,/
+Wierzę, że tam na niebie masz mięsopust prawy<pr><slowo_obce>mięsopust prawy</slowo_obce> --- prawdziwe widowisko karnawałowe (zapustne), w czasie którego między gawiedź uliczną rzucano przysmaki, co wywoływało bójki.</pr>/
+Patrząc na rozmaite świata tego sprawy./
+Bo leda co wyrzucisz, to my, jako dzieci,/
+W taki treter, że z sobą wyniesiem i śmieci./
+Więc temu rękaw urwą, a ten czapkę straci;/
+Drugi tej krotochwile i włosy przypłaci<pr><slowo_obce>krotochwile i włosy przypłaci</slowo_obce> --- zabawę przypłaci włosami wydartymi mu w bójce.</pr>./
+Na koniec niefortuna albo śmierć przypadnie,/
+To drugi, choćby nierad, czacz porzuci snadnie./
+Panie, godno li, niech tę rozkosz z Tobą czuję:/
+Niech drudzy za łby chodzą, a ja się dziwuję.<end id="e1188895178742"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

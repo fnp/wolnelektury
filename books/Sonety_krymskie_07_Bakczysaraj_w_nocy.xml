@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety/Bakczysaraj_w_nocy">
+      <dc:creator xml:lang="pl">Mickiewicz, Adam </dc:creator>
+      <dc:title xml:lang="pl">Sonety krymskie - (07) Bakczysaraj w nocy</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Sonety krymskie</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+      <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+      <dc:date.pd xml:lang="pl">1855</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-01-29</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Adam Mickiewicz</autor_utworu>
+    <nazwa_utworu>Bakczysaraj w nocy</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa>Rozchodzą się z dżamidów pobożni mieszkańce,<pa><slowo_obce>Rozchodzą się z dżamidów pobożni mieszkańce</slowo_obce> --- Mesdżid lub Dżiami, są to zwyczajne meczety. Zewnątrz, po rogach świątyni, wznoszą się cienkie, wystrzelone w niebo wieżyczki, które minaretami, <wyroznienie>menaré</wyroznienie>, zowią; są one w połowie swej wysokości otoczone galerią, <wyroznienie>szurfé</wyroznienie>, z której <wyroznienie>miuezzinowie</wyroznienie>, czyli oznajmiciele, zwołują lud na modlitwę. To zwoływanie, wyśpiewane z galerii, zowie się <wyroznienie>izanem</wyroznienie>. Pięć razy na dzień, w oznaczonych godzinach daje się słyszeć izan ze wszystkich minaretów, a czysty i donośny głos miuezzinów przyjemnie rozlega się w powietrzokręgu miast muzułmańskich, w których, z powodu nieużywania kołowych pojazdów, szczególniejsza cichość panuje (Sękowski, <tytul_dziela>Collectanea</tytul_dziela>. T. II, k. 65--68.)</pa>/
+Odgłos izanu w cichym gubi się wieczorze,/
+Zawstydziło się licem rubinowem zorze,/
+Srebrny król nocy<pr><slowo_obce>Srebrny król</slowo_obce> --- księżyc. Tak ta przenośnia, jak i cały obraz nocy, wzorowane są na poezji perskiej. Dowodem tego głośna w poezji perskiej kasyda, opiewająca urok nocy, poety Ferideddina Ahwala, zaczynająca się od słów: Höret das Abendgebet! es brausen die Wogen des Nachtmeers, / Fort ist das goldene Schiff, sieh da die silberne Tass’, / Auf den Wogen der Nacht erscheinen Tausend der Sterne / Wie im Ocean Schaaren befiederter Brut, a drugi poeta, Baba Sewdaji, wtóruje mu: Wenn der himmlischen Flur Springquellen enstromen von / Tritt in Hermelin silbern der König herein. (Hammer, I. c. str. 202).</pr> dąży spocząć przy kochance.</strofa>
+    <strofa>Błyszczą w haremie niebios wieczne gwiazd kagańce/
+Śród nich po safirowym żegluje przestworze/
+Jeden obłok, jak senny łabędź na jeziorze,/
+Pierś ma białą, a złotem malowane krańce.</strofa>
+    <strofa>Tu cień pada z menaru i wierzchu cyprysa,/
+Dalej czernią się kołem olbrzymy granitu,/
+Jak szatany, siedzące w dywanie<pr>dywan --- wyraz perski: zgromadzenie, rada państwa.</pr> Eblisa<pa><slowo_obce>w dywanie Eblisa</slowo_obce> --- Eblis, albo Iblis lub Garazel, jest to Lucyper u Mahometanów.</pa><uwaga>Olu, pominięty fragment przypisu z cytatem po niemiecku - skan 54.</uwaga></strofa>
+    <strofa>Pod namiotem ciemności; niekiedy z ich szczytu/
+Budzi się błyskawica i pędem Farysa<pa><slowo_obce>pędem Farysa</slowo_obce> --- Farys, rycerz u Arabów Beduinów.</pa>/
+Przelatuje milczące pustynie błękitu.</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

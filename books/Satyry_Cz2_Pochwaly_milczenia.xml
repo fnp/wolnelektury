@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_druga/Pochwa%C5%82y_milczenia">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 2 - (1) Pochwały milczenia</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sobczyński, Mariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Pochwały milczenia</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><begin id="b1201602352726"/><motyw id="m1201602352726">Słowo</motyw><wers_akap>Co nie jest do istności<pr><slowo_obce>Co nie jest do istności</slowo_obce> --- to, czego nie możemy zaliczyć do rzeczy istniejących; to, czego się nie da wymierzyć ani zliczyć.</pr>, co brak w liczby rzędzie,</wers_akap>/
+	Tym mniemamy milczenie --- i jesteśmy w błędzie./
+	Pozór go<pe><slowo_obce>go</slowo_obce> --- je: milczenie.</pe> tak osądził, ale pozór zdradny./
+	Jest w nim przymiot istotny, jest przymiot dokładny;/
+	Zgoła jest rzeczą dobrą, zdatną, pożyteczną./
+	<wers_akap>Pisarze i gadacze, znam waszą myśl sprzeczną,</wers_akap>/
+	Przecież na was powstanę. Ty, co ci się marzy,/
+	Ty, co bredzisz, co zmyślasz, czasem ci się zdarzy,/
+	Że utrudzony krzykiem, którym drugich nudzisz,/
+	Umilkniesz, a że płochą powieścią nie trudzisz,/
+	Żeś dał uszom spoczynek, wielbią cię słuchacze,/
+	Oddawaj hołd milczeniu.<end id="e1201602352726"/> <begin id="b1201602613242"/><motyw id="m1201602613242">Kłamstwo</motyw>Wy, sławni matacze,/
+	Wy, szalbierze z rzemiosła, wy, zdrajcy z urzędu,/
+	Profesy dzieł nieprawych, wy, niegodni względu,/
+	Wy, co słowem, co piórem umiecie kaleczyć,/
+	Wy, których dziełem, trudem: łgać, zdradzać, złorzeczyć,/
+	Zbyt poznani<pr><slowo_obce>Zbyt poznani</slowo_obce> --- przejrzani.</pr>, milczycie, a głupi wam wierzy./
+	Hipokryty! wśród waszych wzdychań i pacierzy/
+	Zdradne milczenie wtenczas, gdy cnota nie milczy,/
+	Pod jagnięcym pozorem ukrywa jad wilczy./
+	<begin id="b1194353484259"/><motyw id="m1194353484259">Cnota</motyw>Wiecie, jak zdradniej milczyć niźli jawnie szczekać;/
+	Wiecie, a cnota jęczy: stąd zasługi tajne<pr><slowo_obce>tajne</slowo_obce> --- zatajone przed społeczeństwem.</pr>,/
+	Stąd talenta w pogardzie, stąd dusze przedajne,/
+	Stąd nieszczęście poczciwych, a przeciw naturze/
+	Cnota w podłej siermiędze, występek w purpurze.<end id="e1194353484259"/>/
+	<begin id="b1194353531434"/><motyw id="m1194353531434">Dworzanin, Maska, Podstęp, Pozory</motyw><wers_akap>Dworaki! w nieprawości wyćwiczeni szkole,</wers_akap>/
+	Wy, co w sztucznej a zdradnej podstępów mozole/
+	Kładniecie cały polor, strzeżcie się widoku./
+	Maszka<pe><slowo_obce>Maszka</slowo_obce> --- maska; dawniej: maszkaron.</pe>, coście przywdziali, patrzających wzroku/
+	Nie osłabi, odkryją zdradę omamienia./
+	Dusze podłe, nurzcie się w otchłaniach milczenia!<end id="e1194353531434"/>/
+	Trwożliwa jest poczciwość: nie jest jej kunszt głuszyć<pr><slowo_obce>nie jest jej kunszt głuszyć</slowo_obce> --- nie trudno zmusić ją do milczenia.</pr>,/
+	Jakże ją z zaniedbanych kryjówek wyruszyć<pr><slowo_obce>wyruszyć</slowo_obce> --- wydobyć na światło dzienne.</pr>?/
+	Mógłbyś, Pawle, bo czujesz, choć pełen szkarady,/
+	Mógłbyś, bo masz czołgaczów, coś wysłał na zwiady,/
+	Mógłbyś, bo w twoim ręku los prawego człeka;/
+	<begin id="b1201599686534"/><motyw id="m1201599686534">Cnota</motyw>Czegóż się cnota, Pawle, od ciebie doczeka?/
+	Milczeniem ją przytłumisz, więc skromna i cicha,/
+	Nieznajoma u dworów, narzeka i wzdycha./
+	Wzdycha nie tak o siebie, bo sobie wystarczy,/
+	Ale gdy na nią podstęp niegodziwy warczy,/
+	Gdy wydziera sposobność, aby zdatną była./
+	Jęczy, iż chcąc nie może, by uszczęśliwiła.<end id="e1201599686534"/>/
+	<begin id="b1194353597149"/><motyw id="m1194353597149">Obywatel, Ojczyzna</motyw><wers_akap>Niegdyś służyć ojczyźnie hasłem było człeka.</wers_akap>/
+	Święte hasło, gdzieżeś jest? Zmilczane od wieka./
+	Odgłosie serc poczciwych, niezmazanej<pe><slowo_obce>niezmazanej</slowo_obce> --- czystej, niepokalanej.</pe> duszy,/
+	Już się o nasze płoche nie obijasz uszy./
+	Dobrze milczyć, bo płacą; szukaj wpośród wiela ---/
+	Jest gmin, ale kto znajdzie w nim obywatela?<end id="e1194353597149"/>/
+	<begin id="b1201599973638"/><motyw id="m1201599973638">Ksiądz, Obowiązek, Odwaga, Prawda</motyw><wers_akap>O wy, których powinność prawdę mówić jawnie,</wers_akap>/
+	Mocnić<pr><slowo_obce>Mocnić</slowo_obce> --- umacniać.</pr> słowo przykładem dzielnie a ustawnie,/
+	Milczenie was potępia, gdy myśl świecka trwoży:/
+	<begin id="b1201603561453"/><motyw id="m1201603561453">Religia</motyw>Świętą śmiałość, bezwzględną, niesie zakon boży.<end id="e1201603561453"/>/
+	Zbyt trwożliwą roztropność nie godzicie z stanem:/
+	Znać, czuć, mówić, dać przykład --- to jest być kapłanem.<end id="e1201599973638"/>/
+	<wers_akap>Milczenie, w skutkach bywasz złe, lecz nie w istocie;</wers_akap>/
+	Zrzuć barwę<pr><slowo_obce>barwa</slowo_obce> --- tu: cecha, znamię.</pr>, co cię podli, a towarzysz cnocie ---/
+	W świetnym się blasku wydasz. --- <begin id="b1201602925718"/><motyw id="m1201602925718">Pochlebstwo, Władza</motyw>O świętowymowne/
+	Wtenczas, gdy uszy podchlebstw wdziękom niewarowne,/
+	<begin id="b1201603076790"/><motyw id="m1201603076790">Niebezpieczeństwo, Słowo</motyw>Uszy pieszczone panów, do pochwał przywykłe,/
+	Za korzyść biorąc brzęki łudzące i znikłe,/
+	Słyszą pochwałę zbrodni, jak by cnotą była<end id="e1201602925718"/>:/
+	Wieleż dzielność<pr><slowo_obce>dzielność</slowo_obce> --- władza, siła.</pr> milczenia zbrodni poprawiła!/
+	Zdało się być przystępne, lecz umysł, co błądził,/
+	Świętą niemotę z czasem, czym była, osądził./
+	<wers_akap>Serc niewinnych okraso, skromności i wstydzie,</wers_akap>/
+	Nie daj się szerzyć słowom ku twojej ohydzie,/
+	Wznoś żądze<pr><slowo_obce>żądza</slowo_obce> --- żądanie.</pr> ku milczeniu, ażeby cię strzegło./
+	Mniej od miecza rażonych na placu poległo/
+	Niż tych, co w jadzie dzielne, w złych skutkach zamożne<pr><slowo_obce>zamożne</slowo_obce> --- przemożne, potężne.</pr>,/
+	Zgubiło jedno słowo, wolne<pr><slowo_obce>wolne</slowo_obce> --- swobodnie wypowiedziane, niehamowane.</pr>, nieostrożne.<end id="e1201603076790"/>/
+	<begin id="b1201600129582"/><motyw id="m1201600129582">Upadek, Śmiech, Zbrodnia</motyw>Niegdyś zbrodnią to było, co dziś żartem mienią.<end id="e1201600129582"/>/
+	<begin id="b1201600265883"/><motyw id="m1201600265883">Kobieta, Upadek</motyw>Płochość z głupstwem nie znają, co wielbią i cenią:/
+	Nieszczęśliwie uwolnion od cnotliwej dziczy,/
+	Przywykł sprośnym wyrazom słuch czujny, dziewiczy./
+	Stąd młodsze gdy w ubite starszych wchodzą tropy,/
+	Pełno widziem Mesalin<pr>Mesalina --- słynna z rozpusty żona cesarza rzymskiego Klaudiusza, ,,dla niepowściągnionej rozwiązłości śmiercią ukarana od męża swego". (<tytul_dziela>Zbiór potrzebnych wiadomości</tytul_dziela>).</pr>, rzadkie Penelopy<pr>Penelopa --- żona Odyseusza, jednego z głównych bohaterów <tytul_dziela>Iliady</tytul_dziela> i <tytul_dziela>Odysei</tytul_dziela> Homera, wzór wierności małżeńskiej.</pr><pr>W zaniechanej później brulionowej redakcji satyry odczytujemy odmienny fragment zakończenia: Czyta modny literat sprośne w wierszach strofy, / Bluźnią grzecznie a śmiało modne filozofy, / A ciekawość niewieścia, którą wstyd nie tłumi, / Chwali sprośność i bluźni to, co nie rozumie. / Równe stanów i związków najświętszych koleje: / Córka z matki, syn z ojca, mąż z żony się śmieje, / Natrząsa się brat z brata, a kiedy go ściska, / Myśli wtenczas, skąd pochop wziąć na pośmiewiska. (I. Krasicki, <tytul_dziela>Satyry i listy</tytul_dziela>.</pr>.<end id="e1201600265883"/>/
+	<begin id="b1194353813630"/><motyw id="m1194353813630">Zbrodnia</motyw><wers_akap>Święta niemoto, gdybyś opanować chciała</wers_akap>/
+	Te usta, z których zbrodnia szkaradna, zuchwała,/
+	Jak z źródła, gdy obficie w zarazie wytryska,/
+	Śmie z świętości żart czynić, a z cnoty igrzyska.<end id="e1194353813630"/>/
+	Wznieś porę pożądaną i wiekom pamiętną!/
+	<begin id="b1201600394973"/><motyw id="m1201600394973">Zdrada</motyw>Niech zdrajcy, co mądrości znieważyli piętno<pr><slowo_obce>piętno</slowo_obce> --- cecha, właściwość.</pr>,/
+	Piętno właściwe cnocie, które nienawidzą,/
+	Niech poznają, co szpecą, i niechaj się wstydzą;/
+	A jeśli głos wznieść śmieją, daj tego doczekać,/
+	Niech mają dar mówienia, ażeby odszczekać.<end id="e1201600394973"/>/
+	<begin id="b1201600471780"/><motyw id="m1201600471780">Mądrość</motyw><wers_akap>Milczenie, sprawco myśli! w twoim łonie, żywa,</wers_akap>/
+	Wznosi się, działa, krzewi, poznaje, odkrywa,/
+	Z twych łożysk buja; wolna od zmyślnej<pr><slowo_obce>zmyślnej</slowo_obce> --- wymyślnej.</pr> katuszy,/
+	Wywyższona, poznaje, jaka dzielność duszy;/
+	Szuka celu, choć widzi wyższy nad jej silność,/
+	Nie objęty żądaniem, tłumiący usilność,/
+	Przecież się lotem wzmaga, a w zapędy płodna,/
+	Poznaje przyszłą istność, czuje, czego godna.<end id="e1201600471780"/>
+</strofa>
+  </liryka_l>
+</utwor>

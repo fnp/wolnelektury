@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety/Droga_nad_przepa%C5%9Bci%C4%85_w_Czufut-Kale">
+      <dc:creator xml:lang="pl">Mickiewicz, Adam </dc:creator>
+      <dc:title xml:lang="pl">Sonety krymskie - (15) Droga nad przepaścią w Czufut-Kale</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Sonety krymskie</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+      <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+      <dc:date.pd xml:lang="pl">1855</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-01-29</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Adam Mickiewicz</autor_utworu>
+    <nazwa_utworu>Droga nad przepaścią w Czufut--Kale<pa>Czufut--Kale --- miasteczko na wyniosłej skale; domy, na brzegu stojące, mają podobieństwo do gniazd jaskółczych, ścieżka, wiodąca na górę, jest przykra i nad przepaścią wisząca. W samem mieście ściany domów łączą się prawie ze zrębem skały; spojrzawszy przez okno, wzrok gubi się w głębi niezmiernej.</pa><pr>Czufut--kale, zamieszkałe przez sektę żydowską Karaimów (Żydów nie uznających Talmudu), dziś niemal zupełnie opustoszałe. Niegdyś silna i niedostępna twierdza, obecnie w ruinie.</pr></nazwa_utworu>
+    <podtytul>Mirza i Pielgrzym</podtytul>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>MIRZA</naglowek_rozdzial>
+    <strofa>Zmów pacierz, opuść wodze, odwróć na bok lica,/
+<begin id="b1195862718488"/><motyw id="m1195862718488">Koń</motyw>Tu jeździec końskim nogom swój rozum powierza<pa><slowo_obce>Tu jeździec końskim nogom swój rozum powierza</slowo_obce> --- koń krymski w trudnych i niebezpiecznych przeprawach zdaje się posiadać szczególniejszy instynkt ostrożności i pewności; nim krok postawi, trzymając na powietrzu nogę szuka kamienia i próbuje, czy bezpiecznie stąpić i ostać się może.</pa>;/
+Dzielny koń! patrz, jak staje, głąb okiem rozmierza,/
+Uklęka, brzeg wiszaru<pr><slowo_obce>wiszar</slowo_obce> --- wikle, zarośle, zielsko rosnące zwieszając się ze skały.</pr> kopytem pochwyca,</strofa>
+    <strofa>I zawisnął.<end id="e1195862718488"/> --- Tam nie patrz! tam spadła źrenica,/
+Jak w studni Al--Kahiru<pr><slowo_obce>w studni Al--Kahiru</slowo_obce> --- Al--Kahir tyle co Kair. Sułtan Saladyn W. kazał wybić 88 m. głęboką studnię w górze Dżebel--Mokottam, znaną i istniejącą po dziś dzień pod nazwą »studni Józefa« (Reclus, <tytul_dziela>Nouvelle Geogr.</tytul_dziela> t. X str. 580).</pr> o dno nie uderza./
+I ręką tam nie wskazuj --- nie masz u rąk pierza;/
+I myśli tam nie puszczaj, <begin id="b1196202813903"/><motyw id="m1196202813903">Morze </motyw>bo myśl, jak kotwica</strofa>
+    <strofa>Z łodzi drobnej ciśniona, w niezmierność głębiny/
+Piorunem spadnie, morza do dna nie przewierci,/
+I łódź z sobą przechyli w otchłanie chaosu.<end id="e1196202813903"/></strofa>
+    <naglowek_rozdzial>PIELGRZYM</naglowek_rozdzial>
+    <strofa><begin id="b1195862803170"/><motyw id="m1195862803170">Kondycja ludzka, Śmierć, Wizja</motyw>Mirzo! a ja spojrzałem! Przez świata szczeliny/
+Tam widziałem... com widział, opowiem --- po śmierci,/
+Bo w żyjących języku niema na to głosu.<end id="e1195862803170"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

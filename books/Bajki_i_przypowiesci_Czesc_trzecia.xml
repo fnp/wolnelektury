@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_i_przypowie%C5%9Bci/Cz%C4%99%C5%9B%C4%87_trzecia">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki i przypowieści (3)</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki i przypowieści</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Bajki i przypowieści. Część trzecia</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Słoń i pszczoła</naglowek_rozdzial>
+    <strofa><begin id="b1190714531948"/><motyw id="m1190714531948">Obraz świata, Pozycja społeczna</motyw>Niechaj się nigdy słaby na mocnych nie dąsa!/
+Zaufana tym pszczoła, że dotkliwie kąsa,/
+Widząc, iż słoń ogromny na łące się pasie,/
+A na nią nie uważa, choć przybliżyła się,/
+Chciała go za to skarać. Gdy kąsać poczęła,/
+Cóż się stało? Słoń nie czuł, a pszczoła zginęła.<end id="e1190714531948"/></strofa>
+    <naglowek_rozdzial>2. Lis i osieł</naglowek_rozdzial>
+    <strofa><begin id="b1190714643424"/><motyw id="m1190714643424">Przyjaźń, Sprawiedliwość</motyw>Lis stary, wielki oszust, sławny swym rzemiosłem,/
+Że nie miał przyjaciela, narzekał przed osłem./
+,,Sameś sobie w tym winien --- rzekł mu osieł na to ---/
+Jakąś sobie zgotował, obchodź się zapłatą"./
+Głupi ten, co wniść w przyjaźń z łotrem się ośmiela:/
+Umiej być przyjacielem, znajdziesz przyjaciela<pr>Z maksym na temat przyjaźni, wśród wynotowanych przez Krasickiego ze <tytul_dziela>Zdań filozofów</tytul_dziela>, najbliższe poincie bajki jest zdanie Epikura: ,,Największą jest słodyczą życia przyjaciel wierny; znaleźć go największe szczęście" (<tytul_dziela>Uwagi</tytul_dziela>, s. 211).</pr>.<end id="e1190714643424"/></strofa>
+    <naglowek_rozdzial>3. Oracze i Jowisz<pr>Temat jest pokrewny z bajką Lafontaine'a <tytul_dziela>Jupiter et le Métayer</tytul_dziela> (VI 4)(Górski, s.217; Kleiner, 1956, s.172); jest to jedyne pełniejsze zapożyczenie od bajkopisarza francuskiego w zbiorze <tytul_dziela>Bajek i przypowieści</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190714774019"/><motyw id="m1190714774019">Natura, Religia</motyw>Posiał jeden na górze, a drugi na dole./
+Rzekł pierwszy: ,,Pragnę deszczu"; drugi: ,,Suszą wolę"./
+Kiedy się więc z prośbami poczęli rozwodzić,/
+Jowisz, chcąc obu żądzy obficie dogodzić,/
+Ustawicznie niziny suszył, góry moczył./
+Przyszło zbierać, aż każdy poznał, że wykroczył:/
+Bo zboże, traktowane w kontr<pe><slowo_obce>w kontr</slowo_obce> --- przeciwnie.</pe> swojej naturze,/
+Spaliło się w nizinie, wymokło na górze.<end id="e1190714774019"/></strofa>
+    <naglowek_rozdzial>4. Dziecię i ojciec<pr>Bajka jest być może ,,celowo skonstruowanym pendant do bajki Lafontaine'a o służebnicach i kogucie [<tytul_dziela>La Vieille et les deux Servantes</tytul_dziela>, (V 6) świeżo przyswojonej przez Trembeckiego [<tytul_dziela>Pani i dziewki</tytul_dziela>], w której dwie służebnice duszą koguta, który je co dzień budzi wczesnym rankiem, ale przez to pogarszają swój los: stara a skąpa chlebodawczyni budzi je teraz jeszcze wcześniej"(Kleiner, 1956, s.180).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190715123145"/><motyw id="m1190715123145">Kondycja ludzka, Los, Dziecko, Ojciec, Przemoc</motyw>Bił ojciec rózgą dziecię, że się nie uczyło;/
+Gdy odszedł, dziecię rózgę ze złości spaliło./
+Wkrótce znowu Jaś krnąbrny na plagi zarobił,/
+Ojciec rózgi nie znalazł; --- i kijem go obił.<end id="e1190715123145"/></strofa>
+    <naglowek_rozdzial>5. Diament i kryształ</naglowek_rozdzial>
+    <strofa><begin id="b1190715960108"/><motyw id="m1190715960108">Nieśmiertelność, Pozycja społeczna, Próżność</motyw>Darmo tym być, do czego kto się nie urodził./
+Kryształ brylantowany<pr><slowo_obce>brylantowany</slowo_obce> --- imitujący brylant dzięki odpowiedniej obróbce szlifierskiej.</pr>wielu oczy zwodził;/
+Gdy się więc nad rubiny i szmaragi<pr><slowo_obce>szmaragi</slowo_obce> (dawna oboczna postać) --- szmaragdy.</pr> drożył<pr><slowo_obce>drożyć się</slowo_obce> --- tu: cenić się, wynosić.</pr>,/
+Ktoś prawdziwy dyjament z nim obok położył./
+Zgasł kryształ; a co niegdyś jaśniał u obrączki,/
+Ledwo go potem złotnik chciał zażyć do sprzączki<pr><slowo_obce>do sprzączki</slowo_obce> --- chodzi o sprzączkę u trzewika; ozdoby te były wykonywane z pośledniejszych kamieni ze względu na łatwość ich zniszczenia lub zgubienia.</pr>.<end id="e1190715960108"/></strofa>
+    <naglowek_rozdzial>6. Dewotka<pr>Być może pomysł dewotki znalazł Krasicki w bajce Ch. F. Gellerta <tytul_dziela>Die Betschwester</tytul_dziela> (Górski, s.211; Kleiner, 1956, s.175); Wolno się w niej dopatrzeć również rozwiniętej charakterystyki molierowskiej z <tytul_dziela>Mizantropa</tytul_dziela> (akt III, sc. 5): ,,Jest skrajnie skrupulatna w dobrym odmawianiu modlitwy, ale bije służbę i nie płaci jej wcale"(Kleiner, 1956, s.160).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190800575060"/><motyw id="m1190800575060">Obyczaje, Religia, Sługa, Świętoszek</motyw>Dewotce służebnica w czymsiś przewiniła/
+Właśnie natenczas, kiedy pacierze kończyła./
+Obróciwszy się przeto z gniewem do dziewczyny,/
+Mówiąc właśnie te słowa: ,,...i odpuść nam winy,/
+Jako my odpuszczamy", biła bez litości./
+Uchowaj, Panie Boże, takiej pobożności!<end id="e1190800575060"/></strofa>
+    <naglowek_rozdzial>7. Bogacz i żebrak</naglowek_rozdzial>
+    <strofa><begin id="b1190716128231"/><motyw id="m1190716128231">Bieda, Bogactwo, Los, Obyczaje</motyw>Żebrak panu tłustemu gdy się przypatrował,/
+Płakał; tegoż wieczora tłusty zachorował:/
+Pękł z sadła. Dziedzic po nim gdy jałmużny sypie<pr><slowo_obce>gdy jałmużny sypie</slowo_obce> --- obyczaj rozdawania jałmużny (w gotowiźnie) w czasie uroczystości żałobnych był powszechny zarówno na pogrzebach królewskich, jak też szlachty, zwłaszcza bogatszej.</pr>./
+Śmiał się żebrak nazajutrz i upił na stypie<pr><slowo_obce>upił</slowo_obce> [się] <slowo_obce>na stypie</slowo_obce> --- nadużywanie trunków podczas stypy było zjawiskiem powszechnym.</pr>.<end id="e1190716128231"/></strofa>
+    <naglowek_rozdzial>8. Księgi<pr>Bajka jest przetworzeniem apologu B. Imberta <tytul_dziela>L'Infolio et l'Almanach</tytul_dziela> (I 15)(Górski, s.251---252; Kleiner, 1956, s.174 i 182).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190718470895"/><motyw id="m1190718470895">Historia</motyw>W pewnej bibliotece, gdzie była, nie pomnę,/
+Powadziły się<pe><slowo_obce>Powadziły się</slowo_obce> --- pokłóciły się.</pe> księgi; a że niezbyt skromne,/
+Łajały się do woli różnymi języki./
+Wchodzi bibliotekarz, pyta się kroniki<pr><slowo_obce>kronika</slowo_obce> --- gatunek historiograficzny uprawiany szeroko aż po wiek XVI, do którego myśl historyczna oświecenia odnosiła się krytycznie.</pr>:/
+,,Dlaczego takie wrzaski?" --- ,,Dlatego się swarzem<pe><slowo_obce>swarzem</slowo_obce> --- swarzymy, kłócimy.</pe>,/
+Iżeś mnie śmiał położyć obok z kalendarzem<pr><slowo_obce>z kalendarzem</slowo_obce> --- kalendarze XVIII--wieczne celowały m.in. w prognostykach, a więc przepowiedniach nie tylko pogody, ale wszelkich klęsk elementarnych, wpływu ciał niebieskich na losy i zdrowie ludzi, wieściły różne nadzwyczajne przypadki. Do najbardziej znanych kalendarzy należały wydawane przez S. Duńczewskiego, profesora Akademii Zamojskiej. Kalendarze tego typu były przedmiotem ostrej nieraz krytyki ludzi oświecenia.</pr>"./
+,,Wszystko się tu porządnie --- rzekł jej --- posadziło:/
+On zmyśla to, co będzie, ty zmyślasz, co było".<end id="e1190718470895"/></strofa>
+    <naglowek_rozdzial>9. Hipokryt<pr>Krasicki oznaczył, że bajka jest przekładem: <tytul_dziela>Hipocrite --- traduit</tytul_dziela>(Bernacki, s.493); literackich opracowań tematu hipokryty wskazano kilka: najbliższą Krasickiemu jest bajka J. J. Boisarda <tytul_dziela>Le Bonze et le Chien</tytul_dziela>, III 23 (<tytul_dziela>Fables</tytul_dziela>, Paris 1777)(Górski, s.214; Kleiner, 1956, s.174). Tytuł: <slowo_obce>Hipokryt</slowo_obce> --- Krasicki używał obocznych postaci tego rzeczownika: <wyroznienie>hipokryt</wyroznienie>, <wyroznienie>hipokryta</wyroznienie>; tytuł w rękopisie fromborskim brzmi: <tytul_dziela>Hipokryta</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190801057406"/><motyw id="m1190801057406">Obyczaje, Zemsta</motyw>Mniej szkodzi impet jawny niźli złość ukryta./
+Ukąsił idącego brytan hipokryta./
+Rzekł nabożniś: ,,Psa obić nie bardzo się godzi,/
+Zemścijmy się inaczej, lepiej to zaszkodzi"./
+Jakoż widząc, że ludzie za nim nadchodzili,/
+Krzyknął na psa, że wściekły; w punkcie go zabili.<end id="e1190801057406"/></strofa>
+    <naglowek_rozdzial>10. Dąb i małe drzewka</naglowek_rozdzial>
+    <strofa><begin id="b1190801157653"/><motyw id="m1190801157653">Drzewo, Kondycja ludzka</motyw>Od wieków trwał na puszczy dąb jeden wyniosły;/
+W cieniu jego gałęzi małe drzewka rosły./
+A że w swojej postaci był nader wspaniały,/
+Że go doróść nie mogły, wszystkie się gniewały./
+Przyszedł czas i na dęba pełnić srogie losy<pr><slowo_obce>pełnić srogie losy</slowo_obce> --- zakończyć życie.</pr>;/
+Słysząc, że mu fatalne<pr><slowo_obce>fatalne</slowo_obce> --- złowieszcze, złowróżbne, tu: zgubne.</pr> zadawano ciosy,/
+Cieszyły się niewdzięczne. Wtem upadł dąb stary,/
+Połamał małe drzewka swoimi konary.<end id="e1190801157653"/></strofa>
+    <naglowek_rozdzial>11. Wilk i owce<pr>Traktat wilka z owcami był w bajkopisarstwie motywem obiegowym; Górski wskazał m. in. zbiory J. L. Camerariusa i P. Neveleta oraz u Lafontaine'a bajkę <tytul_dziela>Les Loups et les Brebis</tytul_dziela> (III 13)(Górski, s.207).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190801915211"/><motyw id="m1190801915211">Cierpienie, Przemoc, Sprawiedliwość, Zdrada</motyw>Choć przykro, trzeba cierpieć; choć boli, wybaczyć,/
+Skoro tylko kto umie rzecz dobrze tłumaczyć./
+<wers_akap>Wszedł wilk w traktat z owcami. O co? O ich skórę;</wers_akap>/
+Szło o rzecz<pr><slowo_obce>Szło o rzecz</slowo_obce> --- szło o wielką, ważną sprawę.</pr>. Widząc owce dobrą koniunkturę/
+Tak go dobrze ujęły, tak go opisały<pr><slowo_obce>opisały</slowo_obce> --- tu: ujęły w odpowiednie punkty traktatu.</pr>,/
+Iż się już odtąd więcej o siebie nie bały./
+W kilka dni ten, co owczej skóry zawżdy pragnie,/
+Widocznie<pr><slowo_obce>Widocznie</slowo_obce> --- tu: na widoku, na oczach wszystkich.</pr>, wśród południa, zjadł na polu jagnię./
+Owce w krzyk! A wilk na to: ,,Po cóż narzekacie./
+Wszak nie masz o jagniętach i wzmianki w traktacie"./
+Udusił potem owcę: krzyk na wilka znowu;/
+Wilk rzecze: ,,Ona sama przyszła do połowu"<pr><slowo_obce>przyszła do połowu</slowo_obce> --- dała się złapać.</pr>./
+Niezabawem<pe><slowo_obce>Niezabawem</slowo_obce> --- niebawem.</pe> krzyk znowu i skargi na wilka<pr>Por. w. 12 w AF: Nowy kazus do nowej rozprawy przymusił: / ,,Traktat pisze bym nie gryzł, jam owce udusił".</pr>/
+Wprzód jedną, teraz razem zabił owiec kilka./
+,,Drudzy rwali --- wilk rzecze --- jam tylko pomagał"./
+I tak, kiedy się coraz większy hałas wzmagał,/
+Czyli szedł wstępnym bojem, czy się cicho skradał,/
+Zawżdy się wytłumaczył --- a owce pozjadał.<end id="e1190801915211"/></strofa>
+    <naglowek_rozdzial>12. Kartownik<pr><slowo_obce>Kartownik</slowo_obce> --- karciarz. Jeżeli Krasicki był czytelnikiem L. P. Buirette de Belloya (1727---1775), to znalazł w jego wierszach schemat wyzyskany w <tytul_dziela>Kartowniku</tytul_dziela>: ,,pijak apostrofujacy gwałtownie butelkę, kończy wezwaniem, by dała mu się napić" (<tytul_dziela>Oeuvres complétes</tytul_dziela>, Paris 1787, t. 6 ; tytuł: <tytul_dziela>L'lvrogne et la Bouteille</tytul_dziela>(Kleiner, 1956, s.175). Ten sam schemat zastosowany został w bajce <tytul_dziela>Pijak</tytul_dziela> (BP P 2) odpowiadającej bezpośrednio wskazanemu wzorcowi, czego Kleiner nie posiadający kompletu bajek i przypowieści w jednej edycji nie uwzględnił. Tytuł: <tytul_dziela>Kartownik</tytul_dziela> / <tytul_dziela>Szuler</tytul_dziela> AF.</pr></naglowek_rozdzial>
+    <strofa>Zgrał się szuler w chapankę<pr><slowo_obce>chapanka</slowo_obce> --- gra w karty popularna w Polsce w XVIII w.</pr>, a siedząc przy stole,/
+Zdarł pamfila z kinalem, spalił pancerolę<pr><slowo_obce>pamfil</slowo_obce> (także <slowo_obce>panfil</slowo_obce>), <slowo_obce>kinal</slowo_obce>, <slowo_obce>pancerola</slowo_obce> --- nazwy kart w chapance (pochodzenie franc. i wł.), które w układzie atutowym odpowiadały waletowi treflowemu, waletowi kierowemu i szóstce pikowej.</pr>,/
+Uspokoiwszy zatem rozjuszone żądze,/
+Zebrawszy w małej reszcie ostatnie pieniądze,/
+Zaczął kartom złorzeczyć, słuchaczom probować<pr><slowo_obce>probować</slowo_obce> --- dowodzić, przekonywać.</pr>,/
+Jak wiele mogą w kunszcie<pr><slowo_obce>kunszt</slowo_obce> --- sztuka, tu: zabawa.</pr> przemierzłym szkodować<pr><slowo_obce>szkodować</slowo_obce> --- ponosić straty.</pr>;/
+Jak gubi młodych, starych pożądliwość taka./
+Skończył, wziął karty w ręce i... zaczął tryszaka<pr><slowo_obce>tryszak</slowo_obce> --- dawna hazardowa gra w karty.</pr>.</strofa>
+    <naglowek_rozdzial>13. Potok i rzeka</naglowek_rozdzial>
+    <strofa><begin id="b1193741462743"/><motyw id="m1193741462743">Czas, Los, Woda </motyw>Potok szybko bieżący po pięknej dolinie/
+Wymawiał wielkiej rzece, że pomału płynie./
+Rzekła rzeka: ,,Nim zejdą porankowe zorza<pr><slowo_obce>zorza</slowo_obce> --- l. mn. od dawnej formy l.p. <slowo_obce>zorze</slowo_obce>.</pr>,/
+Ty prędko, ja pomału wpadniemy do morza"<end id="e1193741462743"/></strofa>
+    <naglowek_rozdzial>14. Lis i wilk<pr>Motyw lisa w jamie, znany zwłaszcza z bajki Lafontaine'a <tytul_dziela>Le Renard et le Bouc</tytul_dziela> (III 5), uzyskał tu zupełnie odmienne opracowanie: lis zamiast otrzymać pomoc, usłyszał morał; por. <tytul_dziela>Wilk i owce</tytul_dziela> (BP IV, 29).</pr></naglowek_rozdzial>
+    <strofa>Wpadł lis w jamę, wilk nadszedł, a widząc w złym stanie,/
+Oświadczył mu żal szczery i politowanie./
+,,Nie żałuj --- lis zawołał --- chciej lepiej ratować"./
+,,Zgrzeszyłeś, bracie lisie, trzeba pokutować"./
+I nadgroda<pe><slowo_obce>nadgroda</slowo_obce> --- nagroda.</pe>, i kara zarówno się mierzy:/
+Kto nikomu nie wierzył, nikt temu nie wierzy.</strofa>
+    <naglowek_rozdzial>15. Wino i woda</naglowek_rozdzial>
+    <strofa><begin id="b1190802704465"/><motyw id="m1190802704465">Chłop, Szlachcic, Wino, Woda</motyw>Przymawiało jednego czasu wino wodzie:/
+,,Ja panom, a ty chłopom jesteś ku wygodzie"./
+,,Nie piłoby cię państwo --- rzecze woda skromnie ---/
+Gdyby nie chłop dał na cię, co chodzi pić do mnie".<end id="e1190802704465"/></strofa>
+    <naglowek_rozdzial>16. Pan i pies<pr>Historia obitego psa mogła być znana Krasickiemu z bajki księcia L. J. Manciniego de Nivernais <tytul_dziela>Le Chien battu</tytul_dziela> (VI 3)(Górski, s.213; Kleiner, 1956, s.175).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190802819650"/><motyw id="m1190802819650">Sługa, Zwierzęta</motyw>Pies szczekał na złodzieja, całą noc się trudził;/
+Obili go nazajutrz, że pana obudził,/
+Spał smaczno drugiej nocy, złodzieja nie czekał;/
+Ten dom skradł<pr><slowo_obce>skradł</slowo_obce> --- tu: okradł.</pr>; psa obili za to, że nie szczekał.<end id="e1190802819650"/></strofa>
+    <naglowek_rozdzial>17. Wół minister<pr>Prawzory tej bajki w zakresie charakterystyki bohaterów (podobnie jak bajki <tytul_dziela>Lew, wół, lis</tytul_dziela>, BN I, 10) można odnaleźć u Pilpaja, którego Krasicki znał z wydań posiadanych w bibliotece (Górski, s. 204); por. <tytul_dziela>Gołębie</tytul_dziela> (BN II, l).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190803048482"/><motyw id="m1190803048482">Władza</motyw>Kiedy wół był ministrem i rządził rozsądnie,/
+Szły, prawda, rzeczy z wolna, ale szły porządnie./
+Jednostajność na koniec monarchę znudziła;/
+Dał miejsce woła małpie lew, bo go bawiła./
+Dwór był kontent, kontenci poddani --- z początku;/
+Ustała wkrótce radość --- nie było porządku./
+Pan się śmiał, śmiał minister, płakał lud ubogi./
+Kiedy więc coraz większe nastawały trwogi,/
+Zrzucono z miejsca małpę. Żeby złemu radził<pe><slowo_obce>Żeby złemu radził</slowo_obce> --- żeby zaradził złemu.</pe>,/
+Wzięto lisa: ten pana i poddanych zdradził./
+Nie osiedział się zdrajca i ten, który bawił:/
+Znowu wół był ministrem i wszystko naprawił.<end id="e1190803048482"/></strofa>
+    <naglowek_rozdzial>18. Lew pokorny</naglowek_rozdzial>
+    <strofa><begin id="b1190803224012"/><motyw id="m1190803224012">Władza</motyw>Źle zmyślać, źle i prawdę mówić w pańskim dworze<pr>Krytyka pańskiego dworu zawarta we wstępnej maksymie tej bajki była przedmiotem wielu wypowiedzi literackich Krasickiego, zwłaszcza w satyrach.</pr>./
+Lew, chcąc wszystkich przeświadczyć o swojej pokorze,/
+Kazał się jawnie ganić. Rzekł lis: ,,Jesteś winny,/
+Boś zbyt dobry, zbyt łaskaw, zbytnie dobroczynny"./
+Owca widząc, że kontent, gdy liszka ganiła,/
+Rzekła: ,,Okrutnyś, żarłok, tyran". --- Już nie żyła.<end id="e1190803224012"/></strofa>
+    <naglowek_rozdzial>19. Mądry i głupi</naglowek_rozdzial>
+    <strofa>Nie nowina, że głupi mądrego przegadał;/
+Kontent więc, iż uczony nic nie odpowiadał,/
+Tym bardziej jeszcze krzyczeć przeraźliwie począł;/
+Na koniec, zmordowany, gdy sobie odpoczął,/
+Rzekł mądry, żeby nie był w odpowiedzi dłużny:/
+,,Wiesz, dlaczego dzwon głośny? Bo wewnątrz jest próżny"<pe><slowo_obce>Wiesz, dlaczego dzwon głośny? Bo wewnątrz jest próżny.</slowo_obce> --- aforyzm zawarty w tym wierszu stał się obiegowym zwrotem przysłowiowym.</pe>.</strofa>
+    <naglowek_rozdzial>20. Orzeł i sowa<pr>Bajka ta jest (ze zmianą postaci) naśladowaniem utworu A. Houdara de la Motte'a <tytul_dziela>Le Linx; et la Taupe</tytul_dziela> (III 20), w którym bajeczny ostrowidz żałujący kreta, że jest ślepy, ginie od strzały, której świst kret usłyszał (Kleiner, 173).</pr></naglowek_rozdzial>
+    <strofa>Na jednym drzewie orzeł gdy z sową nocował,/
+Że tylko w nocy widzi, bardzo jej żałował./
+Dziękowała mu sowa za politowanie./
+Wtem, uprzedzając jeszcze zorza<pe><slowo_obce>zorza</slowo_obce> --- zorze (zob. BP III, 13).</pe> i świtanie,/
+Wkradł się strzelec pod drzewo; sowa to postrzegła/
+I do orła natychmiast z przestrogą pobiegła./
+Uszli śmierci; a wtenczas rzekł orzeł do sowy:/
+,,Gdybyś nie była ślepą, nie byłbym ja zdrowy".</strofa>
+    <naglowek_rozdzial>21. Kałamarz i pióro<pr>Inspirację bajki widziano (Górski, s.215; Kleiner, 1956, s.174) w utworze B. Imberta o piórze literata (<tytul_dziela>La Plume d'un Bel--esprit, II 3</tytul_dziela>), które pyszni się tym, że napisało książkę i dopiero fotel pisarza uświadamia mu fałszywość tego przekonania.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190803762059"/><motyw id="m1190803762059">Próżność</motyw>Powadził się kałamarz na stoliku z piórem,/
+Kto świeżo napisanej księgi był autorem./
+Nadszedł ten, co ją pisał, rozśmiał się z bajarzów./
+Wieleż takich na świecie piór i kałamarzów.<end id="e1190803762059"/></strofa>
+    <naglowek_rozdzial>22. Groch przy drodze</naglowek_rozdzial>
+    <strofa>Oszukany gospodarz turbował się srodze:/
+Zjedli mu przechodzący groch zeszły<pr><slowo_obce>zeszły</slowo_obce> --- wzeszły, tu: wzrosły.</pr> przy drodze./
+Chcąc wetować<pr><slowo_obce>wetować</slowo_obce> --- powetować, wyrównać stratę.</pr> i pewnym cieszyć się profitem<pr><slowo_obce>profit</slowo_obce> --- korzyść, zysk.</pr>,/
+Drugiego roku wszystek groch posiał za żytem./
+Przyszło zbierać; gdy mniemał mieć korzyść obfitą,/
+Znalazł i groch zjedzony, i stłoczone żyto./
+<wers_akap><begin id="b1193742240379"/><motyw id="m1193742240379">Umiarkowanie</motyw>Niech się miary trzymają i starzy, i młodzi:</wers_akap>/
+I ostrożność zbyteczna częstokroć zaszkodzi.<end id="e1193742240379"/></strofa>
+    <naglowek_rozdzial>23. Słowik i szczygieł</naglowek_rozdzial>
+    <strofa>Rzekł szczygieł do słowika, który cicho siedział:/
+,,Szkoda, że krótko śpiewasz". Słowik odpowiedział:/
+,,Co mi dała natura, wypełniam to wiernie./
+Lepiej krótko, a dobrze, niż długo, a miernie."</strofa>
+    <naglowek_rozdzial><begin id="b1190803900065"/><motyw id="m1190803900065">Praca</motyw>24. Wól i mrówki</naglowek_rozdzial>
+    <strofa>Wół się śmiał widząc mrówki w małej pracy skrzętne;/
+Wtem usłyszał od jednej te słowa pamiętne:/
+,,Z umysłu<pr><slowo_obce>z umysłu</slowo_obce> --- ze sposobu pojmowania.</pr> pracujących szacunek<pr><slowo_obce>szacunek</slowo_obce> --- tu: ocena.</pr> roboty!/
+Ty pracujesz, bo musisz; my mrówki --- z ochoty".<end id="e1190803900065"/></strofa>
+    <naglowek_rozdzial><begin id="b1190803984182"/><motyw id="m1190803984182">Pozycja społeczna, Przyjaźń</motyw>25. Tulipan i fiałek</naglowek_rozdzial>
+    <strofa>Tulipan okazały patrzał na to krzywo,/
+Że fijałek w przyjaźni zostawał z pokrzywą./
+Nadszedł pan do ogrodu tegoż właśnie rana;/
+Widząc, że pięknie zeszedł<pr><slowo_obce>zeszedł</slowo_obce> --- wzeszedł, tu: wzrósł.</pr>, urwał tulipana./
+A gdy się do bukietu i fijałek zdarzył,/
+Chciał go zerwać, ale się pokrzywą oparzył./
+Patrzał na to tulipan, mądry poniewczasie,/
+I poznał, że przyjaciel, choć nierówny, zda się.<end id="e1190803984182"/></strofa>
+    <naglowek_rozdzial>26. Furman i motyl<pr>Krasicki wskazał jako źródło przekładu bajkę Ch. F. Gellerta <tytul_dziela>Le Papillon et le Voiturier</tytul_dziela> (Bernacki, s.496), której w zbiorach bajek tego pisarza nie odnaleziono. Kleiner twierdził --- dość dowolnie --- że bajka ,,pewne rysy zawdzięcza" Lafontaine'owi (<tytul_dziela>Le Coche et la Mouche</tytul_dziela>, VII 9)(Kleiner, 1956, s.172).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190804121122"/><motyw id="m1190804121122">Wyrzuty sumienia</motyw>Ugrzązł wóz, ani ruszyć już się nie mógł w błocie;/
+Ustał furman, ustały i konie w robocie./
+Motyl, który na wozie siedział wtenczas prawie,/
+Sądząc, że był ciężarem w takowej przeprawie,/
+Pomyśli sobie: ,,Litość nie jest złym nałogiem"./
+Zleciał i rzekł do chłopa: ,,Jedźże z Panem Bogiem!"<end id="e1190804121122"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

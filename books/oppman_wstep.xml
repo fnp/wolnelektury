@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
+      <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
+      <dc:title xml:lang="pl">Wstęp</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Legendy warszawskie</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Wst%C4%99p</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
+      <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
+      <dc:date.pd xml:lang="pl">1931</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-08-30</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_lp>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Artur Oppman</autor_utworu>
+    <nazwa_utworu>Wstęp</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <begin id="b1188565538769"/>
+    <motyw id="m1188565538769">Ogień , Zima</motyw>
+    <strofa>Noc srebrna śniegiem, wiatr mroźny dmucha,/
+			Na skrzypcach zimy gra zawierucha,/
+			Kłębami śniegu w okna uderza,/
+			To coś zaszepce, jakby z pacierza,/
+			To się rozjęczy nutą żałosną,/
+			Jakby tęskniła za cudną wiosną,/
+			To znów na chwilę płacz swój uciszy/
+			I gwiazd milionem błyśnie w tej ciszy.</strofa>
+    <strofa>Jakże to miło w wieczór zimowy/
+			W cieple zacisznej siedzieć alkowy;/
+			W piecu się ogień dopala właśnie,/
+			W ciemnej czeluści mignie, to zgaśnie,/
+			Sypie iskierki czerwone, złote,/
+			W sercach nieznaną budzi tęsknotę/
+			Za czemś minionem, za czemś dalekiem<pe><slowo_obce>Za czemś minionem, za czemś dalekiem</slowo_obce> --- dziś poprawnie: Za czymś minionym, za czymś dalekim.</pe>,/
+			Za dawnym światem, za dawnym wiekiem.</strofa>
+    <strofa>Zimową nocą w alkowie starej/
+			Umarłych czasów snują się mary,/
+			W wielkim fotelu, z przed stu lat może,/
+			Wsłuchał się dziaduś w zamieć na dworze;/
+			Jakby ustami jakiegoś ducha/
+			Głos mu wichury gada do ucha,/
+			0 tem<pe><slowo_obce>O tem</slowo_obce> --- dziś popr.: o tym.</pe>, co było, co się prześniło,/
+			Co już --- od kiedy! --- śpi pod mogiłą...</strofa>
+    <end id="e1188565538769"/>
+    <strofa>I nagle dziatwa przypadnie z wrzawą:/
+			--- Powiedz nam, dziadziu, bajkę ciekawą!/
+			--- Jak szedł Twardowski do piekieł bramy?/
+			--- O, nie, dziadziusiu! Znamy to, znamy!/
+			--- Więc o Madeju, co zbrodnie knował?/
+			--- Ach, wiemy: Madej odpokutował!/
+			--- To o Kopciuszku w zgrzebnej odzieży?/
+			--- Na pamięć umiem, niech dziadziuś wierzy!/
+			--- No, to już nie wiem, co rzec w tej sprawie!/
+			--- Powiedz nam, dziadziu o... o Warszawie!</strofa>
+    <strofa>Pochylił dziaduś głowę zmęczoną,/
+			Ale mu w oczach iskry zapłoną,/
+			Strudzone serce mocniej kołata./
+			Bo swej młodości przypomniał lata:/
+			Jak to w ulicach starej Warszawy/
+			Gonił za widmem rycerskiej sławy,/
+			Jak każda cegła, każdy głaz w murze/
+			Wskrzeszały przeszłość w zlocie, w purpurze.</strofa>
+    <strofa>Na szarej Wiśle, na mętnej fali/
+			Piosnka syreny ulata wdali,/
+			W zapadłych w ziemię lochach zwaliska/
+			Zły bazyliszek ślepiami błyska,/
+			Męczeńska Praga krwią się zalała,/
+			W królewskim zamku łka Dama Biała.../
+			A nad główkami dzieciaków grona/
+			Cudowny Chrystus wznosi ramiona...</strofa>
+    <strofa>Dali mu malcy myśl do gawędy:/
+			Starej Warszawy stare legendy...</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_lp>
+</utwor>

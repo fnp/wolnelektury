@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_i_przypowie%C5%9Bci/Cz%C4%99%C5%9B%C4%87_czwarta">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki i przypowieści (4)</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki i przypowieści</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Bajki i przypowieści. Część czwarta</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Pszczoły i mrówki</naglowek_rozdzial>
+    <strofa><begin id="b1194600379929"/><motyw id="m1194600379929">Państwo, Wróg</motyw>W sąsiedztwie bliskim były dwie rzeczpospolite:/
+Pszczoły w ulach, w mrowisku mrówki pracowite./
+A że przyjaźń sąsiedzka dumy nie umniejsza,/
+Często były dysputy: która z nich rządniejsza?/
+Przyszły czasy jesienne, aż na pszczoły strachy:/
+Poderżnął skrzętny bartnik wykształcone gmachy,/
+Powypędzał mieszkańców, wyprzątnął spiżarnie:/
+Poznały wtenczas pszczoły, że zbierały marnie<pe><slowo_obce>zbierały marnie</slowo_obce> --- zbierały na marne, na próżno.</pe>./
+A mrówki widząc smutne ich zbiorów ostatki/
+Rzekły: ,,<begin id="b1193743539615"/><motyw id="m1193743539615">Umiarkowanie</motyw>Lepsza jest mierność niż zbytnie dostatki<end id="e1193743539615"/>".<end id="e1194600379929"/></strofa>
+    <naglowek_rozdzial>2. Daremna praca</naglowek_rozdzial>
+    <strofa><begin id="b1193743619864"/><motyw id="m1193743619864">Praca</motyw>Nie chcąc się Jędrzej uczyć, zmazał abecadło;/
+Widząc się szpetnym, potłukł w kawałki zwierściadło<pe><slowo_obce>zwierściadło</slowo_obce> --- zwierciadło.</pe>;/
+Słysząc się złym, chciał stłumić wieść przemysły<pr><slowo_obce>przemysły</slowo_obce> --- (dawna forma narzędnika l.mn.) --- przemysłami, tj. pomysłowymi wybiegami.</pr> swymi:/
+Nie mógł się zrobić głuchym, a drugich niemymi.<end id="e1193743619864"/></strofa>
+    <naglowek_rozdzial>3. Jagnię i wilcy</naglowek_rozdzial>
+    <strofa><begin id="b1190805065614"/><motyw id="m1190805065614">Przemoc, Sprawiedliwość</motyw>Zawżdy<pe><slowo_obce>Zawżdy</slowo_obce> --- zawsze.</pe> znajdzie przyczynę, kto zdobyczy pragnie./
+Dwóch wilków jedno w lesie nadybali<pe><slowo_obce>nadybali</slowo_obce> --- zdybali, przyłapali.</pe> jagnię;/
+Już go mieli rozerwać; rzekło: ,,Jakim prawem?"/
+,,Smacznyś, słaby i w lesie!" --- Zjedli niezabawem<pe><slowo_obce>niezabawem</slowo_obce> --- niebawem, wkrótce.</pe>.<end id="e1190805065614"/></strofa>
+    <naglowek_rozdzial>4. Żółw i mysz</naglowek_rozdzial>
+    <strofa><begin id="b1193743829572"/><motyw id="m1193743829572">Dom</motyw>Że zamknięty w skorupie niewygodnie siedział,/
+Żałowała mysz żółwia; żółw jej odpowiedział:/
+,,Miej ty sobie pałace, ja mój domek ciasny;/
+Prawda, nie jest wspaniały --- szczupły, ale własny<pe><slowo_obce>ciasny... ale własny</slowo_obce> --- wyrażenie to weszło do przysłów.</pe>"<end id="e1193743829572"/>.</strofa>
+    <naglowek_rozdzial>5. Doktor i zdrowie</naglowek_rozdzial>
+    <strofa><begin id="b1193743989803"/><motyw id="m1193743989803">Choroba, Lekarz</motyw>Rzecz ciekawą, lecz trudną do wierzenia powiem:/
+Jednego razu doktor potkał się ze zdrowiem;/
+On do miasta, a zdrowie z miasta wychodziło./
+Przeląkł się, gdy go postrzegł, lecz że blisko było,/
+Spytał go: ,,Dlaczegóż to tak spieszno uchodzisz?/
+Gdzie idziesz?" Zdrowie rzekło: ,,Tam, gdzie ty nie chodzisz".<end id="e1193743989803"/></strofa>
+    <naglowek_rozdzial>6. Fiałek i trawa</naglowek_rozdzial>
+    <strofa><begin id="b1193744056280"/><motyw id="m1193744056280">Zazdrość</motyw>W cieniu drzew rozłożystych na pięknej murawie/
+Zeszedł razu jednego fijałek przy trawie./
+Ta się bujno wzmagała; on, przejęty strachem,/
+Krył się, jak mógł; na koniec wydany zapachem./
+Gdy się z zguby sąsiada, zazdrosna, weseli,/
+Kosarze i fijałki, i trawę podcięli.<end id="e1193744056280"/></strofa>
+    <naglowek_rozdzial>7. Wilk pokutujący<pr>Motyw wilka pokutującego pojawia się w wielu bajkach, m. in. u Desbillonsa, Abstemiusa, P. Neveleta, B. Imberta, P. L. Belloya, G. E. Lessinga (Górski, s.208; Kleiner, 1956, s.178).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190805544199"/><motyw id="m1190805544199">Przemoc, Wyrzuty sumienia</motyw>Wzięły wilka skrupuły. Wiódł łotrowskie życie,/
+Więc ażeby pokutę zaczął należycie,/
+Zrzekł się mięsa. Jarzyną żyjąc przez dni kilka,/
+Znalazł na polowaniu znajomego wilka./
+Trzeba pomóc bliźniemu! Za pracę usłużną/
+Zjadł kawał mięsa --- gardzić nie można jałmużną./
+<begin id="b1190805500097"/><motyw id="m1190805500097">Grzech</motyw>Spotkał jagnię nazajutrz samopas idący<pr><slowo_obce>jagnię (...) idący</slowo_obce> (dawna forma) --- jagnię idące samotnie.</pr>,/
+Chciał upomnieć, nastraszyć, zabił go niechcący,/
+Nazajutrz widząc cielę, że z krową nie chodzi,/
+Zabił go --- takich grzechów cierpieć się nie godzi./
+Nazajutrz, gdy się pasły z krowami pospołu:/
+,,Niech się dłużej nie męczy!" --- zjadł starego wołu.<end id="e1190805500097"/>/
+I tak cierpiąc przykładne z dóbr świata wyzucie,/
+Chudy, gdy był grzesznikiem, utył na pokucie.<end id="e1190805544199"/></strofa>
+    <naglowek_rozdzial>8. Paw i orzeł</naglowek_rozdzial>
+    <strofa><begin id="b1190805634735"/><motyw id="m1190805634735">Próżność, Ptak Umiarkowanie, Zwierzęta</motyw>Paw się dął, szklniące<pe><slowo_obce>szklniące</slowo_obce> --- lśniące jak szkło.</pe> pióra gdy wspaniale toczył./
+Orzeł górnie bujając, gdy go w locie zoczył,/
+Rozśmiał się i przeleciał. Wrzasnął paw --- w śmiech ptacy./
+,,Nie znają się --- powtarzał --- na rzeczach prostacy"./
+,,Znają się --- rzekł mu orzeł --- (wdzięk cenić umieją,/
+Ale gardzą przysadą<pr><slowo_obce>przysada</slowo_obce> --- nadmiar.</pr> i z dumnych się śmieją".<end id="e1190805634735"/></strofa>
+    <naglowek_rozdzial>9. Chleb i szabla</naglowek_rozdzial>
+    <strofa><begin id="b1190805810107"/><motyw id="m1190805810107">Chleb, Chłop, Przemoc, Szlachcic, Wojna</motyw>Chleb przy szabli gdy leżał, oręż mu powiedział:/
+,,Szanowałbyś mnie bardziej, gdybyś o tym wiedział,/
+Jak ja na to pracuję i w wieczór, i rano,/
+Żeby twoich bezpiecznie darów używano"./
+,,Wiem ja --- chleb odpowiedział --- jakim służysz kształtem<pr><slowo_obce>kształt</slowo_obce> --- tu: sposób.</pr>:/
+Jeśli mnie często bronisz, częściej bierzesz gwałtem".<end id="e1190805810107"/></strofa>
+    <naglowek_rozdzial>10.Podróżny<pr>Według notatki Krasickiego we francuskim przekładzie bajek (Bernacki, s.497) wiersz ten jest tłumaczeniem: ,,Le Voyageur --- traduction", w którym rozpoznano autorstwo Ch. P. Gellerta (Bernacki, s.502); niemiecki tytuł bajki: <tytul_dziela>Der Reisende</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1193744437608"/><motyw id="m1193744437608">Deszcz</motyw>Gniewał się wędrujący i przeklinał bogi,/
+Że mu deszcz ustawiczny przeszkadzał do drogi./
+Tymczasem z boku czuwał<pr><slowo_obce>czuwał</slowo_obce> --- tu: czatował, czyhał.</pr> nań rozbójnik chciwy./
+Puścił strzałę; ale że przemokły cięciwy,/
+Padła bez żadnej mocy. Zrazu przestraszony,/
+Kiedy poznał, że deszczem został ocalony,/
+Przestał bogi przeklinać, nie złorzeczył słocie./
+Często, co złe z pozoru, dobre jest w istocie.<end id="e1193744437608"/></strofa>
+    <naglowek_rozdzial>11. Król i pisarze<pr>Istnieje współzależność bajki i felietonu Krasickiego <slowo_obce>O trefnisiach czyli błaznach</slowo_obce> ogłoszonego dopiero w XIX w. ("Biblioteka Warszawska" 1850, t. 1, s. 163), w którym Harun--al--Raszyd spytawszy swego błazna, ilu jest w mieście błaznów, otrzymał odpowiedź: ,,Długo by trzeba rachować; ale dla skrócenia czasu pozwól, iżbym pierwej rozumnych spisał; to nie zabawi, a z reszty poznasz wiele masz błaznów w Bagdadzie" (Bernacki, s.501). Źródłem tego apologu jest <tytul_dziela>Anecdotes arabes et musulmanes</tytul_dziela> (Paris 1772, s. 353---354).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1193744536671"/><motyw id="m1193744536671">Mądrość, Szczęście</motyw>Król jeden, pełen myśli i projektów dumnych,/
+Kazał spisać szczęśliwych regestr i rozumnych./
+Ten, co pisał szczęśliwych, znalazł bardzo mało;/
+Pisarzowi rozumnych papieru nie stało.<end id="e1193744536671"/></strofa>
+    <naglowek_rozdzial>12. Synogarlica<pr>Pierwowzoru bajki upatrywano (Górski, s.261; Kleiner, 1956, s.175) w opowiadaniu M--me de Ville--Dieu, w którym piękny gołąb pocieszył owdowiałą synogarlicę (<tytul_dziela>La Tourterelle et le Ramier</tytul_dziela>; <tytul_dziela>Oeuvres</tytul_dziela>, Paris 1741, t. 1, s. 337). Według tradycji ludowej synogarlice żyją w związkach monogamicznych i po śmierci samca samica dochowuje mu wierności.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190806390294"/><motyw id="m1190806390294">Grzech, Kobieta, Małżeństwo, Miasto</motyw>Dobrze czyni, kto zawżdy z dobrymi obcuje;/
+I najlepszego miejsce nieprawe zepsuje./
+<wers_akap>Smutną synogarlicę na zdradnej zasadzce</wers_akap>/
+Złapał ptasznik przemyślny i osadził w klatce/
+Trzy dni w mieście siedziała, czwartego uciekła;/
+A co niegdyś powtórnych związków się wyrzekła,/
+Śmielsza w kroku i z przeszłej śmiejąc się ofiary,/
+Za jedną utraconą znalazła dwie pary.<end id="e1190806390294"/></strofa>
+    <naglowek_rozdzial>13. Chart i kotka</naglowek_rozdzial>
+    <strofa><begin id="b1190806493296"/><motyw id="m1190806493296">Kot, Pies, Sługa, Wolność, Zwierzęta</motyw>Chart widząc kotkę, że mysz jadła na śniadanie,/
+Wymawiał jej tak podły gust i polowanie./
+Rzekła kotka, wymówką wcale nie zmieszana:/
+,,Wolę ja mysz dla siebie niż sarnę dla pana".<end id="e1190806493296"/></strofa>
+    <naglowek_rozdzial>14. Człowiek i wilk</naglowek_rozdzial>
+    <strofa>Szedł podróżny w wilczurze, zaszedł mu wilk drogę./
+,,Znaj z odzieży --- rzekł człowiek --- co jestem, co mogę"./
+Wprzód się rozśmiał, rzekł potem człeku<pe><slowo_obce>człeku</slowo_obce> --- człowiekowi.</pe> wilk ponury:/
+,,Znam, żeś słaby, gdy cudzej potrzebujesz skóry".</strofa>
+    <naglowek_rozdzial>15. Prawda, satyryk i panegirysta<pr>Tytuł: <slowo_obce>satyryk i panegirysta</slowo_obce> --- w wypowiedziach na temat istoty satyry Krasicki nie dość wyraźnie rozdzielił satyrę od paszkwilu. Panegiryk, według definicji Krasickiego odnotowanej w <tytul_dziela>Zbiorze potrzebniejszych wiadomości</tytul_dziela>, s. v. <tytul_dziela>Panegiryk</tytul_dziela>, to ,,mowa na pochwałę osoby znamienitej doskonałością, cnotami lub urzędem". Zganiony w bajce panegirysta w kategorii tej się nie mieści, lecz oznacza taniego chwalcę.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194600795153"/><motyw id="m1194600795153">Kłamstwo, Literat, Prawda</motyw>Rzadko kłamca z swojego rzemiosła korzysta./
+Zeszli<pr><slowo_obce>Zeszli</slowo_obce> --- tu: spotkali.</pr> Prawdę satyryk i panegirysta./
+Chcieli od niej nadgrody za podjętą pracę:/
+,,Jakeście zasłużyli --- rzekła --- tak zapłacę"./
+Wtem radośni, od Prawdy wzięli w podarunku/
+Każdy pełne naczynie przyprawnego trunku./
+Jaki był, skosztowawszy poznali po szkodzie:/
+Pierwszy znalazł truciznę w żółci, drugi w miodzie.<end id="e1194600795153"/></strofa>
+    <naglowek_rozdzial>16. Atłas i kitaj</naglowek_rozdzial>
+    <strofa><begin id="b1190879609253"/><motyw id="m1190879609253">Mieszczanin, Pieniądz, Pozycja społeczna, Szlachcic</motyw>Atłas w sklepie z kitaju<pr><slowo_obce>kitaj</slowo_obce> --- kitajka, tanie cienkie płótno bawełniane.</pr> żartował do woli;/
+Kupił atłas pan sędzic<pr><slowo_obce>sędzic</slowo_obce> --- syn sędziego.</pr>, kitaj pan podstoli<pr><slowo_obce>podstoli</slowo_obce> --- pierwotnie jeden z urzędów stołu królewskiego, zastępca stolnika, później również jeden z urzędów ziemskich. W dyskursywnej powieści <tytul_dziela>Pan Podstoli</tytul_dziela> Krasicki dał portret rządnego szlacheckiego gospodarza swoich czasów.</pr>./
+A że trzeba pieniędzy dać było kupcowi,/
+Kłaniał się bardzo nisko atłas kitajowi./
+Gdy przyszło dług zapłacić, a dłużnik się wzbraniał,/
+Co rok się potem kitaj atłasowi kłaniał<pr>W ,,Monitorze" z 1766 (nr 28) przedstawiono kupca, który m. in. mówi: ,,Strasznie nie lubię moim sukniom kłaniać się, aby mi za nie zapłacono", co odniósł do bajki Krasickiego J. Kleiner, 1955, s. 508.</pr>.<end id="e1190879609253"/></strofa>
+    <naglowek_rozdzial>17. Zwierściadło podchlebne<pr>Według informacji Krasickiego bajka jest przekładem: ,,Le Miroir --- traduction" (Bernacki, 498); podstawy tłumaczenia nie odnaleziono.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190879928340"/><motyw id="m1190879928340">Kobieta, Obyczaje, Próżność, Zazdrość</motyw>Patrząc się we zwierściadło<pe><slowo_obce>zwierściadło</slowo_obce> --- zwierciadło.</pe>, a widząc się białą,/
+Lubiła go smaglawa<pe><slowo_obce>smaglawa</slowo_obce> --- kobieta o smagłej cerze, ciemnej karnacji; w owych czasach za piękne uważano kobiety o białej cerze.</pe>, że jej podchlebiało./
+Przyszła do niej znajoma, nierównie czarniejsza./
+Gdy postrzegła, że i tej szpetności umniejsza,/
+Zła, że i jej sąsiadce do; gustu przypadło ---/
+Stłukła w drobne kawałki podchlebne zwierściadło.<end id="e1190879928340"/></strofa>
+    <naglowek_rozdzial>18. Ptaki i osieł<pr>Bajki o ośle, który zagłusza słowika odnaleziono u J. W. Gleima (1719---1803) (<tytul_dziela>Der Esel und die Nachtigall</tytul_dziela>) i Auberta (<tytul_dziela>L'Ane et le Rossignol</tytul_dziela>, II 2) (Górski, s.221; Kleiner, 1956, s.174). Krasicki miał w bibliotece zbiorek Auberta: <tytul_dziela>Fables nouvelles divisées en huit livres</tytul_dziela>, Paris 1773.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194602401074"/><motyw id="m1194602401074">Artysta, Przemoc, Ptak, Sztuka</motyw>Był dyskurs o słowiku: "Wdzięk jego śpiewania ---/
+Rzekł czyżyk --- tak jest miły, że aż do świtania/
+Od zmroku gotów jestem słuchać jego pieśni"./
+Toż samo powtarzali śpiewaczkowie leśni,/
+Toż samo i zwierzęta. Osieł, mało dbały,/
+Gryzł chwasty na ustroniu; więc się go spytały:/
+,,A ciebie czy ten jego głos wdzięczny poruszył?"/
+,,Mnie?... Jakem się odezwał, zarazem go zgłuszył".<end id="e1194602401074"/></strofa>
+    <naglowek_rozdzial>19. Dobroczynność<pr>Podobny motyw znajduje się u Abstemiusa, P. Neveleta i J. L. Camerariusa (Górski, s.222). Tytuł: <tytul_dziela>Dobroczynność</tytul_dziela> / <tytul_dziela>Owca i lis</tytul_dziela> AF.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190880265014"/><motyw id="m1190880265014">Umiarkowanie</motyw>Chwaliła owca wilka, że był dobroczynny;/
+Lis to słysząc spytał ją: W czymże tak uczynny?"/
+,,I bardzo --- rzecze owca --- niewiele on pragnie./
+Moderat<pr><slowo_obce>Moderat</slowo_obce> --- osobnik umiarkowany, powściągliwy.</pr>! Mógł mnie zajeść<pr><slowo_obce>zajeść</slowo_obce> ---- zagryźć.</pr>, zjadł mi tylko jagnię".<end id="e1190880265014"/></strofa>
+    <naglowek_rozdzial>20. Skąpy<pr>Podobny koncept ,,śmierci bez kosztów" odnajdujemy u Lafontaine'a: <tytul_dziela>Le Tresor et les deux Hommes</tytul_dziela>, IX 16 (Kleiner, 1956, s.172).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194600950381"/><motyw id="m1194600950381">Samobójstwo, Skąpiec, Śmierć</motyw>Chciał się skąpy obwiesić, że talara stracił./
+Żeby jednak za powróz dwóch groszy nie spłacił,/
+Ukradł go po kryjomu. Postrzegli sąsiedzi./
+Kiedy więc, osądzony na śmierć, w jamie<pr><slowo_obce>w jamie</slowo_obce> --- tu: w lochu więziennym.</pr> siedzi,/
+Rzekł, (gdy jedni żałują, a drudzy go cieszą<pr><slowo_obce>cieszą</slowo_obce> --- tu: pocieszają.</pr>:/
+,,To szczęście, że mnie przecież bez kosztu powieszą".<end id="e1194600950381"/></strofa>
+    <naglowek_rozdzial>21. Pan i kotka<pr>W bajce pobrzmiewa opracowanie Fedrusa <tytul_dziela>Mustela et homo</tytul_dziela> (I 22).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190880508593"/><motyw id="m1190880508593">Kot, Przyjaźń</motyw>,,Nie masz prawej przyjaźni" --- mówiła do pana/
+Kotka syta połowem i za to głaskana./
+,,Jak to nie masz przyjaźni?" pan na to odpowie./
+,,Pieścisz mnie --- rzecze kotka --- bo ci myszy łowię"./
+,,Łowić myszy --- pan rzecze --- przysługi to znaczne./
+Ale dlaczego łowisz?... Dlatego, że smaczne".<end id="e1190880508593"/></strofa>
+    <naglowek_rozdzial>22. Człowiek i suknia</naglowek_rozdzial>
+    <strofa><begin id="b1194601108923"/><motyw id="m1194601108923">Przemoc</motyw>Brał się pewien do pręta chcąc wytrzepać suknię;/
+Ta, widząc się w złym razie<pr><slowo_obce>w złym razie</slowo_obce> --- w trudnej sytuacji.</pr>, żwawie<pr><slowo_obce>żwawie</slowo_obce> --- szybko.</pr> go ofuknie:/
+,,A ,takaż to jest pamięć na usługi --- rzecze ---/
+Bijesz tę, co cię zdobi, niewdzięczny człowiecze!"/
+Rzekł człowiek: ,,Ja nie biję, lecz otrząsam z prochu./
+Zakurzyłaś się wczoraj, dziś trzepię po trochu,/
+Wybacz, z przykrych sposobów, kto musi, korzysta;/
+Gdybyś nie była bita, nie byłabyś czysta".<end id="e1194601108923"/></strofa>
+    <naglowek_rozdzial>23. Szczurek i matka<pr>W bajce jest wyraźna reminiscencja lafontainowskiej bajki o myszce, kocie i kogucie przełożonej przez Trembeckiego (tytuł francuski: <tytul_dziela>Le Cochet, le Chat et le Souriceau</tytul_dziela>, VI 5)(Kleiner, 1956, s.172). Tytuł: <tytul_dziela>Szczurek i matka</tytul_dziela> / <tytul_dziela>Szczurek młody i matka</tytul_dziela> AF.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190880873328"/><motyw id="m1190880873328">Przemoc</motyw>Widząc, że z myszą igra, chwalił szczurek kota./
+Rzekła matka do niego: ,,Fałszywa to cnota;/
+Na pozór on jest grzeczny, a wewnątrz jad mieści"./
+Najokrutniejszy taki, co gryzie, a pieści.<end id="e1190880873328"/></strofa>
+    <naglowek_rozdzial>24. Sąsiedztwo</naglowek_rozdzial>
+    <strofa><begin id="b1194602507744"/><motyw id="m1194602507744">Sąsiad</motyw>Zeszło żyto na ziemi leżącej odłogiem:/
+Cóż po tym, kiedy zewsząd otoczone głogiem./
+Grunt był dobry, chociaż go pług nigdy nie ruszył;/
+Byłoby z niego zboże --- głóg wszystko zagłuszył./
+Szczęśliwy, kto z równymi o granicę siedzi!/
+Zły głód, wojna, powietrze; gorsi źli sąsiedzi.<end id="e1194602507744"/></strofa>
+    <naglowek_rozdzial>25. Wyszydzający<pr>Motyw takiej samej zarozumiałości kalek znajduje się w bajkach Desbillonsa (<tytul_dziela>Gibberorum civitas</tytul_dziela>, IX 13) i Ch. F. Gellerta (<tytul_dziela>Le Pais de Boiteux</tytul_dziela>; tytuł niemiecki: <tytul_dziela>Das Land der Hinkenden</tytul_dziela>) (Górski, s.221).</pr></naglowek_rozdzial>
+    <strofa>Żartował, a od śmiechu trzymał się za boki,/
+Na ślepego kompana patrząc, jednooki./
+Nadszedł, co krzywo patrzył<pr><slowo_obce>co krzywo patrzył</slowo_obce> --- tu: zezowaty.</pr>: śmiał się. Nadszedł stary:/
+I ten się śmiał włożywszy na nos okulary./
+Przyszedł na koniec jeden z dobrze patrzających,/
+Żałował i wyśmianych, i wyśmiewających.</strofa>
+    <naglowek_rozdzial>26. Mądry i głupi<pr>W dialogu bogatego prostaka i ubogiego mędrca w bajce Lafontaine'a (<tytul_dziela>L'Avantage de la Science</tytul_dziela>, VIII 19) ten ostatni nagabywany, na co rozum zda się --- milczał, bowiem za wiele miał do powiedzenia (Górski, s.220; K1einer, 1956, s.172).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190881254840"/><motyw id="m1190881254840">Głupota, Mądrość</motyw>Pytał głupi mądrego: ,,Na co rozum zda się?"/
+Mądry milczał: gdy coraz bardziej naprzykrza się,/
+Rzekł mu: ,,Na to się przyda, według mego zdania,/
+Żeby nie odpowiedać na głupie pytania".<end id="e1190881254840"/></strofa>
+    <naglowek_rozdzial>27. Jastrząb i sokół</naglowek_rozdzial>
+    <strofa><begin id="b1190881364961"/><motyw id="m1190881364961">Ptak, Walka, Wróg</motyw>Niech zważa, z kim ma sprawę, kto chce być junakiem./
+Jastrząb, że się z niejednym dobrze spotkał<pr><slowo_obce>spotkał się</slowo_obce> --- tu: w bezpośredniej walce.</pr> ptakiem,/
+Chciał sokoły wojować; śmiał się sokół lotny./
+Na koniec z zuchwałości takowej markotny<pr><slowo_obce>markotny</slowo_obce> --- tu: rozgniewany.</pr>,/
+Porwał go; a gdy ostre szpony wskroś przebodły,/
+Rzekł: ,,Daruję cię życiem, boś dla mnie zbyt podły"<pr><slowo_obce>podły</slowo_obce> --- lichy, marny.</pr>./
+<wers_akap>Szpecą sławę zwycięstwa mdłe<pr><slowo_obce>mdłe</slowo_obce> --- tu: nędzne, słabe.</pr> nieprzyjacioły;</wers_akap>/
+Jastrzębie na przepiórki, orły na sokoły.<end id="e1190881364961"/></strofa>
+    <naglowek_rozdzial>28. Woły krnąbrne</naglowek_rozdzial>
+    <strofa><begin id="b1190881442872"/><motyw id="m1190881442872">Kara, Praca, Sługa, Zwierzęta</motyw>Miłe złego początki, lecz koniec żałosny,/
+Nie chciały w jarzmie chodzić woły podczas wiosny;/
+W jesieni nie woziły zboża do stodoły;/
+W zimie chleba nie stało, zjadł gospodarz woły.<end id="e1190881442872"/></strofa>
+    <naglowek_rozdzial>29. Wilk i owce<pr> Bajka podejmuje stary motyw przygody lisa, który wpadł do dołu (Lafontaine, <tytul_dziela>Le Renard et le Bouc</tytul_dziela>, III 5), przetworzonej przez A. Mickiewicza w znanej bajce <tytul_dziela>Lis i kozieł</tytul_dziela>, lecz transponuje ten przypadek na wilka i odmienia jej pozostałych bohaterów (Kleiner, 1956, s.179).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1190881630685"/><motyw id="m1190881630685">Głupota, Przemoc, Zdrada</motyw>Wilk, chociaż to ostrożny, przecie że żarłoczny,/
+Postrzegł ścierwo, chciał dostać i wpadł w dół poboczny<pr><slowo_obce>dół poboczny</slowo_obce> --- pułapka z przynętą, wykopany na poboczu, w ostępie.</pr>./
+Siedzi w jamie a wzdycha; wtem owieczki słyszy./
+Patrzą w dół, aż wilk w jamie siedzi, ledwo dyszy./
+Odezwał się na koniec, rzekł do nich powolnie:/
+,,Nie wpadłem, za pokutę siedzę dobrowolnie:/
+Trzeba czynić pokutę za boje, za groźby,/
+Za to, żem was pożerał..." Owce zatem w prośby:/
+,,Wynidź z dołu!..." ,,Nie wyjdę!..." ,,My będziem podnosić.../
+Droży się wilk, na koniec dał się im uprosić./
+Jęły się więc roboty i tak pracowały,/
+Że go ze dna samego jamy wydostały./
+Wyszedł, a zawdzięczając<pr><slowo_obce>zawdzięczając</slowo_obce> --- tu: odwdzięczając się.</pr> nierozumnej kupie,/
+Pojadł, pogryzł, podusił wszystkie owce głupie.<end id="e1190881630685"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

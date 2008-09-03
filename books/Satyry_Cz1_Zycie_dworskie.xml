@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/%C5%BBycie_dworskie">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (10) Życie dworskie</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Życie dworskie</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><wers_akap><begin id="b1194350652153"/><motyw id="m1194350652153">Dorosłość, Starość</motyw>Joachimie! Już młodość porywcza uciekła</wers_akap>/
+I wieku dojźrzałego już pora dociekła<pr><slowo_obce>dociec</slowo_obce> --- dobiec.</pr>,/
+Ta pora, w której żądze słabieć zaczynają./
+<begin id="b1194608079935"/><motyw id="m1194608079935">Dworzanin, Dwór</motyw>Strawiłeś lata twoje między dworską zgrają.<end id="e1194350652153"/>/
+Zrazu młodzian, dojźrzalszy potem, profes teraz,/
+Zyskający, zdradzony, oszukany nieraz,/
+Zgoła dworak. Więc naucz, świadom znamienicie,/
+Na czym zawisło, jakie u dworu jest życie?/
+<wers_akap>Milczysz? Znać, żeś jest dworak.<end id="e1194608079935"/> Ja, wieśniak, opowiem.</wers_akap>/
+Najprzód (trzeba te rzeczy brać z letka), albowiem/
+Obraziłbym i wielu, gdybym prawdę szczerą/
+Objawiał, a nie zwykłą dworom manijerą./
+<begin id="b1194608139509"/><motyw id="m1194608139509">Dworzanin, Dwór, Grzeczność</motyw>Grzeczność --- talent nie lada, ten rad w dworach gości,/
+Ten kształci oświecone jasne wielmożności,/
+Ten jest cechą każdego, co się dworu ima,/
+Co pozoru ma nazbyt, a istoty nie ma,/
+Zgoła co jest dworakiem. Panie Joachimie,/
+<begin id="b1202429519602"/><motyw id="m1202429519602">Cnota, Prawda</motyw>Powiedz, co tam w ohydzie, a co tam w estymie<pr><slowo_obce>estyma</slowo_obce> --- poważanie, szacunek.</pr>?/
+Cnota. Waszmość żartujesz. Kunsztem wielorakiem/
+Umiałeś żyć u dworu i jesteś dworakiem./
+A ja prostak, a przecież chciałbym z tego toru<pr><slowo_obce>tor</slowo_obce> --- tu: sposób postępowania.</pr>/
+Coś pojąć i określić, jak żyją u dworu./
+Źlem się udał, daremniem staranie postradał;/
+A któż się u dworaków o prawdzie wybadał?<end id="e1202429519602"/><end id="e1194608139509"/>/
+Więc coś nie opowiedział, choć wiesz, a wiesz ściśle,/
+Ja, co nie wiem, na domysł powiem i określę./
+<wers_akap><begin id="b1194608215165"/><motyw id="m1194608215165">Dwór, Grzeczność, Prawda</motyw>Dwór jest to wybór ludzi, tak mówi świat grzeczny<pr><slowo_obce>grzeczny</slowo_obce> --- wytworny.</pr>,</wers_akap>/
+Ale świat pospolity zdaniu temu sprzeczny./
+Kto z nich lepiej osądził? Grzeczny mówi wdzięcznie:/
+Cnotę, dowcip, talenta, umieszczone zręcznie,/
+Dwór najlepiej obwieszcza. <begin id="b1194350920400"/><motyw id="m1194350920400">Fałsz, Kłamstwo, Złodziej</motyw>Świat prosty a szczery,/
+Jak z łupin człeka łuszcząc z dobrej manijery,/
+Gdy nie patrzy, kto czyni, lecz o co rzecz chodzi,<end id="e1194608215165"/>/
+Wszystko zwie po imieniu: Piotr kradł, więc Piotr złodziej./
+To prawda, lecz niegrzeczna, wyraz<pr><slowo_obce>wyraz</slowo_obce> --- wyrażone, określone.</pr> zbyt dosadnie./
+Jakże to pięknie nazwać, kiedy Piotr okradnie?/
+Można prawdę powiedzieć, ale tonem grzecznym:/
+Piotr się wsławił w rzemiośle trochę niebezpiecznym,/
+Piotr zażył<pr><slowo_obce>zażył</slowo_obce> --- tu: wziął, przywłaszczył.</pr>, a nie swoje, kunsztownie pożyczył. ---/
+Zgoła tyle sposobów grzecznych będziesz liczył,/
+Tak fałsz będziesz uwieńczał, do prawdy sposobił,/
+Że na to wreszcie wyjdzie: Piotr kradł, dobrze zrobił./
+<wers_akap><begin id="b1202429819373"/><motyw id="m1202429819373">Pozory</motyw>Fałsz grzeczny to styl dworów i moneta w kursie,</wers_akap>/
+Wszędzie on się tam mieści, w dziełach i w dyskursie,<end id="e1194350920400"/>/
+I choć na kształt liczmanów<pr><slowo_obce>liczman</slowo_obce> --- znaczek umownej wartości zastępujący pieniądze przy grze karcianej.</pr> z siebie nic nie waży<pr><slowo_obce>z siebie nic nie waży</slowo_obce> --- sam nie stanowi żadnej wartości.</pr>,/
+Nadali mu panowie walor<pr><slowo_obce>walor</slowo_obce> --- cena, wartość.</pr> do przedaży./
+Więc ten fant wielce zdatny i każdy go chowa;/
+Stąd grzeczne oświadczenia, stąd pieszczone słowa,/
+Stąd ostrożna nienawiść i podejścia sztuczne,/
+Stąd łaski, oświadczenia łaknącym nietuczne<pr><slowo_obce>nietuczne</slowo_obce> --- nietuczące, niesycące.</pr>,/
+Stąd zgoła wszystko pozór, a mało istoty,/
+Fałszywe słowa, dzieła, dobrodziejstwa, cnoty<end id="e1202429819373"/>,/
+Stąd... ale dość już tego. Chciwy o puściznę,/
+Wlecze się Piotr z poranku na dzienną pańszczyznę./
+Uprzedził go Mikołaj. Ściskają się oba:/
+,,Jak się masz, przyjacielu? Jak ci się podoba/
+Dzień dzisiejszy?” ,,Pogodny”. ,,Cieszę się”. ,,Ja wzajem”./
+Idzie dyskurs uprzejmy zwykłym obyczajem./
+<begin id="b1202429887851"/><motyw id="m1202429887851">Fałsz, Plotka</motyw>Już się sobie zwierzyli, o czym i nie myślą./
+Więc obcych wizerunki malują i kreślą./
+,,Jan?” --- ,,To oszust”. ,,Bartłomiej?” --- ,,To szuler wierutny”./
+,,Jędrzej?” --- ,,Mędrek”. ,,Wincenty?” --- ,,Dziwak bałamutny”./
+,,Franciszek?” --- ,,On ma rozum tylko przy kieliszku”./
+Wchodzi. Aż ci do niego: ,,Witajże, braciszku!”/
+A braciszek, co właśnie z nich czynił igrzyska:/
+,,Witajcież, kochankowie”. Całuje i ściska.<end id="e1202429887851"/>/
+Już ciżba<pe><slowo_obce>ciżba</slowo_obce> --- tłum.</pe>; ci w dyskursach, ci szepcą do ucha,/
+Ten niby z drugim gada, a trzeciego słucha;/
+Tamten łże, a co słucha<pr><slowo_obce>a co słucha</slowo_obce> --- a ten, co słucha, słuchający.</pr>, łżącemu nie wierzy./
+Tomasz stoi, a z boku układa i mierzy:/
+Jędrzej mu nie do kroju<pr><slowo_obce>być do kroju</slowo_obce> --- przypaść do upodobania.</pr>, więc Jędrzej ladaco./
+Stawia sidła, a dzienną nie zwątlony pracą,/
+<begin id="b1202430014543"/><motyw id="m1202430014543">Plotka</motyw>Patrzy w ciżbę, gdzie natrzeć; jakoż się już wtłoczył,/
+Już świeżego wśród zgrai domatora zoczył,/
+Już przyjaciel serdeczny, sekretów się zwierza,/
+A na znak poufałych afektów przymierza/
+Zmyślił piękną nowinę, szeptając do ucha./
+Ten już przedał, co kupił; wieść nie lada grucha.<end id="e1202430014543"/>/
+Dopieroż w politykę. Nim pan wszedł do sali,/
+Już jedne państwa znieśli, drugie rozebrali:/
+Jędrzej zyskał Neapol za królową Bonę,/
+Marek ojcu świętemu darował Lizbonę,/
+Nie masz Turków, rwą Persy, strach koło Japonów./
+<wers_akap><begin id="b1202430178509"/><motyw id="m1202430178509">Pan, Pochlebstwo, Pozycja społeczna</motyw>Drzwi się z nagła otwarły. Aż tysiąc ukłonów.</wers_akap>/
+Wchodzi pan; już umilkła świegotliwa zgraja,/
+Każdy się inszym kształtem łasi i przyczaja./
+Każdy patrzy na pana, a z wzroku docieka,/
+Czego albo się chroni, albo na co czeka./
+Wszystkie się usta śmieją, ciągną wszystkie szyje,/
+Ten się pcha, ten potrąca, ten się jak wąż wije,/
+Wszyscy na to, kogo by pan gestem oznaczył;/
+Wspojźrzał pan na Szymona, dniem dobrym uraczył<pr><slowo_obce>dniem dobrym uraczył</slowo_obce> --- powiedział mu ,,dzień dobry”.</pr>:/
+Ażci Szymon w promieniach śmieje się i mruga./
+Jan go kocha serdecznie, Piotr najniższy sługa,/
+Bartłomiej go uwielbia, a Krzysztof go ściska,/
+Wszyscy hurmem do niego z daleka i z bliska,/
+A Szymon pełen wdzięków i niby pokorny,/
+Mając zaraz na przedaż uśmiech i gest dworny,/
+Tym go daje w dwójnasób, a tym przez połowę./
+Łapią w lot, a już szczęścia stąd biorąc osnowę,/
+Ten, który trzema słowy Szymona się szczycił,/
+Gardzi tym, który tylko półtora uchwycił.<end id="e1202430178509"/>/
+<wers_akap>Piotr dostał pół uśmiechu, Jędrzej ćwierć wspojźrzenia.</wers_akap>/
+Szczęśliwy, kto z przyjaznej fortuny zdarzenia/
+Tyle zyskał czekając przez niejeden tydzień,/
+Że wypadł z ust Szymona dla niego dobrydzień./
+I nie próżno, bo mniejszych choć fawor<pr><slowo_obce>fawor</slowo_obce> --- łaska, życzliwość.</pr> nie szczyci,/
+Są z łaski faworytów wicefaworyci;/
+<begin id="b1202430320263"/><motyw id="m1202430320263">Dwór, Drzewo</motyw>Urząd to niewysoki, lecz przecie wygodny,/
+A przemysł<pr><slowo_obce>przemysł</slowo_obce> --- przemyślność, przebiegłość.</pr> dworu, zawżdy w kunszta nowe płodny,/
+Dzieląc fawor jak wilgoć w drzewie przez zawiązki,/
+Z pnia w konary, z konarów przesącza w gałązki.<end id="e1202430320263"/>/
+<wers_akap>O barwie<pr><slowo_obce>barwa</slowo_obce> --- liberia służby, odmienna kolorem w każdym domu magnackim.</pr> faworytów niech się nikt nie pyta.</wers_akap>/
+Poznać z miny zuchwałej sługę faworyta./
+<begin id="b1194351187010"/><motyw id="m1194351187010">Theatrum mundi</motyw>Choć nierówne teatrum<pr><slowo_obce>teatrum</slowo_obce> --- ulubiona metafora w. XVIII: ,,teatr życia ludzkiego”.</pr>, gdzie są umieszczeni,/
+Co pan w izbie, to słudzy dokazują w sieni.<end id="e1194351187010"/>/
+<begin id="b1202430400088"/><motyw id="m1202430400088">Pozycja społeczna, Sługa</motyw>Paweł, co w dworskiej służbie lat strawił trzydzieści,/
+Śwista z szpakiem ministra, z psem się jego pieści,/
+Podchlebuje lokajom, z lauframi się wita,/
+Dobrze mu się też każda nadaje wizyta;/
+Jemu szwajcar otwiera drzwi z wdzięcznym uśmiechem,/
+Jemu lokaje służyć gotowi z pośpiechem,/
+A co większa, ów pański strzelec poufały/
+Raczy słuchać te, co mu opiewa, pochwały;/
+<begin id="b1202430466433"/><motyw id="m1202430466433">Flirt</motyw>Nawet jejmość (nie jejmość, jak to pierwej zwali/
+Ci, co z prosta tak pańskie żony mianowali),/
+Ale jejmość afektów, jejmość wdzięcznej chęci,/
+Jejmość miłosnowładna na dowód pamięci/
+Uszczypnęła go w ramię. Kontent, głodny czeka,/
+Już ujźrzał perspektywę szczęścia, choć z daleka.<end id="e1202430466433"/>/
+Wkrótce bowiem skutecznej łaskę uprzejmości/
+Zyskał: przez garderobę wchód do jegomości.<end id="e1202430400088"/>/
+<wers_akap>W pierwiastkach nieświadomy Rzym praktyk faworu,</wers_akap>/
+Stawiał cnoty przysionek przed domem honoru<pr><slowo_obce>Rzym... stawiał cnoty przysionek przed domem honoru</slowo_obce> --- w mitologii Cnota ,,miana jest za boginią i czczona w ubiorze poważnej matrony, a częstokroć szędziwej, na kamieniu czworogranistym siedzącej. Tej Markus Marcellus wspaniały poświęcił kościół, przy którym zaraz i Honorowi bazylikę wystawić postarał się, ale tak żeby przez kościół Cnoty do bazyliki Honoru było przejście, czym chciał pokazać, iż inaczej do honoru wstąpić nie można, tylko przez cnotę”. (F. Pomey, <tytul_dziela>Pantheum mithicum, albo bajeczna bogów histori</tytul_dziela>a, Warszawa 1768, s. 352--353).</pr>./
+Przyszły pany, upadły szacowne świątnice,/
+A przybytków Fortuny dumne okolice/
+Objął przysionek podchlebstw, matactwa i datków./
+<wers_akap>Otóż dwór, Joachimie, z skutków i zadatków;</wers_akap>/
+Tymi ścieżki iść musi, kto dworu się trzyma./
+<begin id="b1194351319917"/><motyw id="m1194351319917">Wieś</motyw>Wsi swobodna! Szczęśliwy, kto ciebie się ima./
+Niekształtne twoje zyski, prawda, ale trwałe./
+Niech dwór stawia złudzonym widoki wspaniałe,/
+Niechaj cieszy nadzieją, niźli się ta ziści./
+Lepsze małe, lecz pewne, wieśniackie korzyści.<end id="e1194351319917"/>
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

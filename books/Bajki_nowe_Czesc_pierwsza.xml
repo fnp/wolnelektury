@@ -1,0 +1,411 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_nowe/Cz%C4%99%C5%9B%C4%87_pierwsza">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki nowe (1)</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki nowe</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Bajki nowe. Część pierwsza</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1.Alegoria</naglowek_rozdzial>
+    <strofa>Wszędzie się znajdzie rozum, byle tylko szukać,/
+A nawet i jegomość, kiedy zacznie fukać,/
+I jejmość, gdy rozprawia,/
+I nasz ksiądz, gdy przymawia,/
+Mają go podostatkiem<pr><slowo_obce>podostatkiem</slowo_obce> --- wystarczająco dużo, pod dostatkiem.</pr> i pięknie, i wiele./
+Jakoż się ,to wydało w Przewodnią Niedzielę./
+Gadał ksiądz o Adamie,/
+I o bramie,/
+I o wężu, i o Ewie,/
+I o jabłku, i o drzewie.../
+Po kazaniu do karczmy rzecz się wytoczyła./
+Pan wójt, co to ma rozum i nauki siła:/
+,,A wiecie, co ksiądz prawił? --- rzekł całej gromadzie ---/
+Oto u nas są sady, a drzewa są w sadzie,/
+A na drzewach są jabłka w wielkiej obfitości:/
+Adam --- pan, Ewa --- jejmość, a wąż --- podstarości".</strofa>
+    <naglowek_rozdzial>2. Wierzba i lipa</naglowek_rozdzial>
+    <strofa><begin id="b1191571194884"/><motyw id="m1191571194884">Choroba, Drzewo, Rośliny</motyw>Mówiła wierzba lipie: ,,Źle się masz, sąsiadko,/
+A co się, zwłaszcza w lesie, trafia dosyć rzadko,/
+Choć wiosna, liść twój więdnie". Ta odpowiedziała:/
+,,Alboś chrząszczów, gąsienic nigdy nie widziała?/
+<begin id="b1191571330958"/><motyw id="m1191571330958">Kondycja ludzka</motyw>I tobie się wydarzyć może pora taka./
+Każde drzewo, sąsiadko, ma swego robaka.<end id="e1191571330958"/>"<end id="e1191571194884"/></strofa>
+    <naglowek_rozdzial>3. Słonecznik i fiałek</naglowek_rozdzial>
+    <strofa><begin id="b1191571539701"/><motyw id="m1191571539701">Pozycja społeczna, Wolność</motyw>Jeden wielki, drugi mały:/
+Słonecznik wzrostem wspaniały,/
+Fijałek skromny postacią,/
+Jak to bywa między bracią,/
+Na koniec się powadzili./
+O co?... Raz w raz<pr><slowo_obce>Raz w raz</slowo_obce> --- raz po raz, tu: stale.</pr> z sobą byli:/
+A być razem, a być w zgodzie/
+Ciężko nawet w jednym rodzie./
+Szło o słońce, a hardy z swojego nazwiska,/
+Ten, co jaskrawym blaskiem się połyska/
+I za słońcem się obraca,/
+Gardził drugim, iż się zwraca<pr><slowo_obce>się zwraca </slowo_obce> --- tu: odwraca się, kryje przed słońcem.</pr>/
+I kryje pomiędzy trawą./
+Gdy więc nań powstawał żwawo,/
+Rzekł fijałek: ,,Miły bracie,/
+Żal mi cię, gdy patrzę na cię./
+Chociaż jaśnie oświecony,/
+A ja do blasku niezdolny,/
+Twój zwrot jednak przymuszony;/
+Ja w ukryciu, ale wolny".<end id="e1191571539701"/></strofa>
+    <naglowek_rozdzial>4. Pasterz i morze</naglowek_rozdzial>
+    <nota>
+      <akap>z Fedra<pr>Wskazanej przez Krasickiego (w podtytule) bajki w zbiorze Fedrusa brak; bajka Ezopa (49) pod tym tytułem posiada ścisły odpowiednik u Desbillonsa: <tytul_dziela>Pastor et mare</tytul_dziela> (IV 3), opracowana była także przez Lafontaine'a (<tytul_dziela>Le Berger et la Mer</tytul_dziela>, IV 2).</pr></akap>
+    </nota>
+    <strofa>Ponad skały i rzeczki/
+Pędził pasterz owieczki./
+Gdy zeszło zorze/
+A ujźrzał morze,/
+Jak wspaniałe, dostojne,/
+Jak w zaciszu spokojne,/
+Jak się szklniły<pe><slowo_obce>szklniły</slowo_obce> --- szkliły, lśniły jak szkło.</pe> po wodzie/
+Blaski słońca przy wschodzie ---/
+Zakochał się w żywiole./
+Więc rzekł: ,,Płynąć ja wolę,/
+Niż się tułać po ziemi/
+Z owieczkami mojemi"./
+Przedał je więc i z stratą,/
+A za to/
+Nakupował daktylów, na okręt zgromadził./
+Płynął morzem, a gdy go wiatr przeciwny zdradził,/
+W złą chwilę/
+Stracił okręt i daktyle./
+Więc do owiec nieborak: a gdy je pasł znowu,/
+Zoczył morze. Wspomniawszy na korzyść z obłowu<pr><slowo_obce>z obłowu</slowo_obce> --- tu: z rzekomych korzyści.</pr>,/
+Rzekł kłaniając się nisko raz, drugi i trzeci:/
+,,Mówię to i powtarzam z przysięgą waszeci,/
+Bądź jeszcze pozorniejsze<pr><slowo_obce>pozorniejsze</slowo_obce> --- tu: wyglądające zewnętrznie zachęcająco.</pr>,/
+Bądź jeszcze spokojniejsze,/
+Szklnij się, jak chcesz, w pogodzie,/
+I w zachodzie, i w wschodzie;/
+Wiem ja, co cię łagodzi,/
+Wiem ja, o co tu chodzi!/
+Chciałoby się daktylów?... Nie uda się sztuka!/
+Panie morze! Ostrożny, kto się raz oszuka".</strofa>
+    <naglowek_rozdzial>5.Chmiel</naglowek_rozdzial>
+    <strofa>Chmiel chciał się ziemią sunąć, bo mu to niemiło/
+Było,/
+Iż musiał szukać wsparcia i pomocy./
+Szedł więc o swojej mocy/
+I rozciągnął się dosyć ... Ale cóż się stało?/
+Liście żółkniało,/
+Kwiat był wąski,/
+Schły gałązki;/
+Już i drzeń<pr><slowo_obce>drzeń</slowo_obce> (stp.) --- rdzeń.</pr> od wilgoci zaczynał się psować<pe><slowo_obce>psować</slowo_obce> --- psuć.</pe>./
+Trzeba się było ratować:/
+Gdzież się piąć? Były żerdzie, ale je ominął;/
+Jął się chwastu --- i zginął.</strofa>
+    <naglowek_rozdzial>6. Puchacze<pr>Charakterystykę puchaczy (i sów) jako zaślepionych rodziców zawierają bajki: Abstemiusa, P. Neveleta i Lafontaine'a (<tytul_dziela>L'Aigle et le Hibou</tytul_dziela>, V 18) (Górski, s. 246).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191572401541"/><motyw id="m1191572401541">Dziecko, Matka, Próżność</motyw>Małżonka puchaczowa, męża swego godna,/
+A więc płodna,/
+Urodziła sześć sowiąt, puchaczków też nieco;/
+Zrazu słabe, dalej<pr><slowo_obce>dalej</slowo_obce> --- tu: po jakimś czasie.</pr> lecą./
+Raz, gdy na zwykłe igrzyska/
+Ponad puste stanowiska<pr><slowo_obce>stanowisko</slowo_obce> --- tu: miejsce przebywania dzikich zwierząt.</pr>/
+Nabujawszy się do sytu,/
+Wróciły do swego bytu<pr><slowo_obce>do swego bytu</slowo_obce> --- do miejsca swego bytowania, siedliska.</pr>,/
+To jest w dziurę przy kominie,/
+Pani matka, w córce, synie,/
+Wnukach, wnuczkach spoważniona<pr><slowo_obce>spoważniona</slowo_obce> --- uhonorowana.</pr>./
+Przyjmując do swego łona,/
+Jak to zawsze panie matki,/
+Rzekła: ,,Cóż tam, moje dziatki?/
+Cóż tam słychać?"/
+A więc wzdychać:/
+,,Za naszych czasów wszystko coś szło sporzej<pr><slowo_obce>sporzej</slowo_obce> --- lepiej.</pr>,/
+Teraz raz w raz coraz gorzej"./
+W tej tak wielkiej troskliwości/
+Najmłodsze puchaczątko, faworyt jejmości,/
+Ozwało się: ,,Jakeśmy tylko wylecieli,/
+Wszystkie ptaki zaniemieli,/
+W kąty każdy jął się cisnąć,/
+Żaden nie śmiał ani pisnąć:/
+My tylko same bujały./
+Coś tam w krzaczkach ptaszek mały,/
+Co go to zowią słowikiem,/
+Odzywał się smutnym krzykiem;/
+Ale i ten nie śmiał mruczyć,/
+Skoro my zaczęły huczyć"./
+Po sercu, jak to mówią, matkę pogłaskało,/
+Że się tak pięknie udało;/
+Najbardziej, iż pieszczoszek, tak dzielnie wymowny./
+Myśląc jednak, iż trzeba dać obrok<pe><slowo_obce>obrok</slowo_obce> --- paszę, karmę, strawę.</pe> duchowny,/
+Rzekła: ,,Choć wasz głos piękny, chociaż lot tak spory,/
+Uczcie się, miłe dziatki, i z tego pokory./
+Dobrze to jest, iż cudzą ułomność przebaczem:/
+Nie każdemu dał Pan Bóg rodzić się puchaczem".<end id="e1191572401541"/></strofa>
+    <naglowek_rozdzial>7. Ziemia i potok</naglowek_rozdzial>
+    <strofa>Potok nagle wezbrany z szumem się zapieniał,/
+A gdy groble przerywał, drzewa wykorzeniał,/
+Zalewał pola,/
+Wzmogła się rola./
+Po hałasie,/
+W krótkim czasie,/
+Kiedy mu wody coraz ubywało,/
+Z rzeki stał się strużką małą;/
+I ów, co huczał,/
+Mruczał/
+I wymawiał niewdzięczność z siebie sprawnej roli<pr><slowo_obce>z siebie sprawnej</slowo_obce> --- użyźnionej przez siebie.</pr>,/
+Iż go nie żałowała w tak srogiej niedoli./
+,,Prawda, żeś mnie zasilił, kiedym była spiekła ---/
+Rzekła ---/
+Lecz przypadkiem wspomogłeś rwąc brzegi twą wodą./
+Nie jest to dobrodziejstwem, co jest z cudzą szkodą".</strofa>
+    <naglowek_rozdzial><begin id="b1191573009507"/><motyw id="m1191573009507">Młodość </motyw>8. Jaś</naglowek_rozdzial>
+    <strofa><begin id="b1191572717966"/><motyw id="m1191572717966">Starość </motyw>Nieźle to i posłuchać, gdy mówią staruszki<end id="e1191572717966"/>./
+Szedł Jaś na gruszki,/
+A ojciec widząc, jak pełen zapału,/
+Rzekł: ,,Trząś gruszki, mój Jasiu, ale trząś, pomału!"/
+Jeszcze nie skończył, a już Jaś w sadzie./
+Posłuszny radzie,/
+Strząsnął drzewem pomału... i gruszka nie pada./
+Zła rada!/
+Więc strząsnął mocniej, nie padła znowu./
+Chciwy połowu:/
+,,Nie trząść tu, widzę, trzeba --- rzekł --- lecz rwać należy"./
+Po drabinę więc bieży,/
+A gdy nie znalazł i w prawo, i w lewo,/
+Piął się na drzewo./
+I to wskórał, iż zleciał i potłukł się srodze./
+Jednak, choć w bólu i trwodze/
+Smutną miał postać,/
+Przemyśliwał Jaś przecież, jak to gruszek dostać./
+Więc sporym, który leżał koło drzewa, klocem/
+Rzucił, przełamał gałąź i padła z owocem./
+Porwie, gryźnie<pe><slowo_obce>gryźnie</slowo_obce> --- ugryzie.</pe>, aż gruszka twarda i ladaco./
+Gdy więc wrócił do ojca z nadaremną pracą,/
+Rzekł smutnemu po szkodzie Jasiowi staruszek:/
+<begin id="b1191572809194"/><motyw id="m1191572809194">Czas , Drzewo, Rośliny</motyw>,,Gdy nie padną trzęsione, nie trzeba rwać gruszek".<end id="e1191572809194"/><end id="e1191573009507"/></strofa>
+    <naglowek_rozdzial>9. Chłop i Jowisz</naglowek_rozdzial>
+    <strofa><begin id="b1191573272079"/><motyw id="m1191573272079">Bogactwo, Chłop, Choroba</motyw>Chłop stojący zazdrościł siedzącemu panu/
+Lepszego stanu:/
+I lżył niebiosy/
+Za takie losy/
+Myślą zuchwałą,/
+Iż jednym nadto dają, drugim nadto mało,/
+Rzekł wtem Jowisz: ,,On chory, a ty jesteś zdrowy,/
+Lecz masz wybór gotowy./
+Chcesz bogactw? Będziesz je miał, lecz pedogrę<pr><slowo_obce>pedogra</slowo_obce> (także <slowo_obce>podagra</slowo_obce>) --- choroba stawów nóg.</pr> razem"./
+Uszczęśliwion wyrazem<pr><slowo_obce>wyrazem</slowo_obce> --- tymi słowami, zapewnieniem.</pr>,/
+Przyjął chłop złoto, ale legł kulawy./
+Wesół był zrazu, lecz gdy ból żwawy/
+Coraz bardziej dokuczał,/
+Chłop narzekał i mruczał,/
+A winując się o to,/ 
+Rzekł:,,Jowiszu, wróć zdrowie, a weź sobie złoto!"/
+Z uskutecznieniem Jowisz się nie bawił,/
+Odjął bogactwa, pedogrę zostawił.<end id="e1191573272079"/></strofa>
+    <naglowek_rozdzial>10. Lew, wół, lis<pr>Istnieją wyraźne analogie między tą bajką a   <tytul_dziela>Le Lion, l'Ours et le Renard</tytul_dziela> (IV 19) księcia L. J. Manciniego de Nivernais (Górski, s. 206).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191573851316"/><motyw id="m1191573851316">Przemoc, Władza</motyw>Lew zjadł był woła./
+Strach dookoła/
+Powstał niezmierny,/
+Bo wół był wierny,/
+Źle łask nie użył,/
+Poczciwie służył./
+Jeszcze by to znośniejsza, gdyby był lew zrzędził,/
+Wypędził;/
+Ale stracić i skórę, i łaskę to wiele./
+Przyjaciele,/
+(Bo ich miał, choć minister, nieboszczyk) płakali:/
+Lis raz w raz chwali/
+Najjaśniejszego króla jegomości/
+Dzieła pełne dobroci, pełne łaskawości./
+Nieznośno to wszystkim było,/
+A na koniec i lwu się słuchać uprzykrzyło./
+Więc biorąc na się postać ponurą i hardą,/
+Rzekł z gniewem, z wzgardą:/
+,,Lisie! Czym jesteś, z tym się nie wydawaj,/
+Jeżeliś głupi, nie chwal; mądry, nie przymawiaj".<end id="e1191573851316"/></strofa>
+    <naglowek_rozdzial>11. Fiałki</naglowek_rozdzial>
+    <strofa><begin id="b1194605069644"/><motyw id="m1194605069644">Głupota</motyw>Źle, gdzie umysł jest miałki<end id="e1194605069644"/><pr><slowo_obce>miałki</slowo_obce> --- tu: płytki, ograniczony, powierzchowny.</pr>./
+Skarżyły się fijałki/
+Na swe losy niezręczne<pr><slowo_obce>niezręczne</slowo_obce> --- tu: niekorzystne.</pr>,/
+Iż choć wonne i wdzięczne,/
+Względem kwiatów, co bliskie,/
+Zbyt ukryte i niskie./
+Gdy się wrzask nie ucisza,/
+Doszły skargi Jowisza,/
+A ten wyrok dał taki:/
+,,Zbyt natrętne żebraki!/
+Narzekacie, a przecie,/
+Co wam zdatno, nie wiecie!/
+To, na które skarżycie,/
+Ocala was ukrycie".</strofa>
+    <naglowek_rozdzial><begin id="b1191574076811"/><motyw id="m1191574076811">Filozof, Mędrzec</motyw>12. Filozof<pr>Filozof oznacza tu w ogóle uczonego. Natomiast opisana w bajce pracownia należała, jak sądzić można z wyposażenia, do alchemika, astronoma lub przyrodnika.</pr></naglowek_rozdzial>
+    <strofa>Po stryju filozofie wziął jeden spuściznę,/
+Nie gotowiznę,/
+Tam, gdzie duch buja nad ciało,/
+Takich sprzętów bywa mało,/
+Ale były na szafach, w szafach słojków szyki,/
+Alembiki<pr><slowo_obce>Alembiki</slowo_obce> --- naczynia do destylacji płynów.</pr>,/
+Papierów stósy<pr><slowo_obce>stósy</slowo_obce> --- pochylonego ,,ó" użyto dla rymu.</pr>,/
+Globusy/
+I na stoliku/
+Szkiełek bez liku,/
+A w końcu ławy/
+Worek dziurawy./
+Wziął jedno szkiełko, patrzy, aż wór okazały./
+Wziął drugie, a woreczek nikczemny<pr><slowo_obce>nikczemny</slowo_obce> --- tu: nędzny, mizerny.</pr> i mały./
+Westchnął zatem nieborak i rzekł: ,,Wiem, dlaczego/
+Były pustki w dziurawym worku stryja mego:/
+Gdyby był okiem, nie szkłem, na rzeczy poglądał,/
+I on by użył, i ja znalazłbym, com żądał".<end id="e1191574076811"/></strofa>
+    <naglowek_rozdzial>13. Małpy</naglowek_rozdzial>
+    <strofa>Małpa, wielki samochwał, co człeka udaje,/
+Zwiedziła cudze kraje,/
+Bo była z lasa<pe><slowo_obce>z lasa</slowo_obce> --- dziś popr. z lasu.</pe> wyszła i wlazła pod strzechę./
+Wielką pociechę/
+Przyniosła za powrotem i siostrom, i braci./
+Koligaci,/
+Krewni i przyjaciele, tak świezi jak przeszli,/
+Wszyscy się zeszli./
+A ta każdemu, co słucha,/
+To w głos, to do ucha/
+Opowiada,/
+Jedno łże, drugie zgada<pr><slowo_obce>zgada</slowo_obce> --- zgaduje, zmyśla.</pr>,/
+Zgoła aż słuchać miło,/
+Jak to pięknie pod strzechą i zabawnie było./
+Przyszło spać, nie masz strzechy, a jak spać bez dachu?/
+Małpy w strachu./
+Więc w pośpiechy/
+Szukać strzechy ---/
+I znalazły,/
+Pod dach wlazły./
+Słysząc szelest gospodarz szedł z świecą na górę,/
+Małpy w nogi... Zatkał dziurę,/
+Ledwo jedna,/
+Zbita biedna,/
+Skąd przyszła, chyżo do lasa uciekła;/
+A gdy pytano, gdzie są drugie, rzekła:/
+,,Pięknieć to, prawda, lecz straszy i więzi./
+Kiedyśmy małpy, śpijmy na gałęzi".</strofa>
+    <naglowek_rozdzial>14. Wilczki</naglowek_rozdzial>
+    <strofa><begin id="b1191574621444"/><motyw id="m1191574621444">Bezpieczeństwo, Próżność, Wróg</motyw>Pstry jeden, czarny drugi, a bury najmniejszy,/
+Trzy wilczki wadziły się, który z nich piękniejszy./
+Mówił pierwszy: „Ja rzadki!"/
+Mówił drugi: ,,Ja gładki!"/
+Mówił trzeci: ,,Ja taki jak i pani matka!"/
+Trwała zwadka<pe><slowo_obce>zwadka</slowo_obce> --- kłótnia.</pe>./
+Wtem wilczyca nadbiegła;/
+Gdy w niezgodzie postrzegła:/
+,,Cóż to --- rzecze --- same w lesie/
+Wadzicie się!"/
+Więc one w powieść<pr><slowo_obce>w powieść</slowo_obce> --- do opowieści.</pr>, jak się rzecz działa./
+Gdy wysłuchała:/
+,,Idzie tu wam o skórę --- rzekła --- miłe dzieci,/
+Która zdobi, która szpeci./
+Nasłuchałam się tego już to razy kilka,/
+Nie przystoi to na wilka/
+Wcale./
+Ale/
+Jak będziecie tak w kupie/
+Dysputować się<pr><slowo_obce>Dysputować się</slowo_obce> --- prowadzić dysputę, kłócić się.</pr>, głupie,/
+Wiecie, kto nie zbłądzi?/
+Oto strzelec was pozwie, a kusznierz was osądzi".<end id="e1191574621444"/></strofa>
+    <naglowek_rozdzial>15. Dzieci i żaby<pr>Autokomentarz do tej bajki i jej przekład prozą zawarł Krasicki w jednym z felietonów monitorowych: ,,Są ludzie płochego umysłu --- pisał --- którzy dla szczebietliwości i nieuwagi gotowi słowem nieostrożnym wziąść sławę bliźniemu, pismem uwłoczyć honorowi i reputacji, nie dlatego aby o szkodę przywiedli, ale jedynie aby konwersacji dać żywość, w pismach zaostrzyć ciekawość czytelnika albo, jak ów satyryk Boileau, który dla kadencji wiersza ludzi kilku na sławie zgubił. Tacy niech wiedzą, iż wstrzemięźliwość nie tylko w uczynkach, ale w mówieniu i pisaniu nader chwalebna, iż lepiej być mniej dobrym mówcą lub wierszopisem, niżeli doskonałym oszczercą i paszkwilantem. Jeżeli, na koniec, bawi ich satyra, niech przeczytają, a z uwagą, tę prostą bajeczkę: ,,Chłopcy, stojąc nad bagnem, upatrywali żab, a skoro się która pokazała, rzucali na nią kamykami; gdy tego długo było, jedna z odważniejszych, wydobywszy łeb z kałuży, rzekła: Chłopcy! jeżeli to was bawi, wiedzcie, iż tu idzie o nasze życie" ("Monitor" 1772, nr 5). Jest to przeróbka umieszczonego w ,,Spektatorze" (1, 17) apologu Rogera I'Estrange, najprzód prozą, a następnie wierszem, co wskazali: L. Siemienski, <tytul_dziela>Pamflet i paszkwil</tytul_dziela> [w:] <tytul_dziela>Dzieła</tytul_dziela>, Warszawa 1881, t. 2, s. 263) oraz I. Chrzanowski, <tytul_dziela>Z dziejów satyry polskiej XVIII wieku</tytul_dziela>, Warszawa 1909, s. 181). Ten sam wątek fabularny występuje u A. Houdara de la Motte'a (<tytul_dziela>Les Grenouilles et les Enfantes</tytul_dziela>, III 5), księcia L. J. Manciniego de Nivernais i Desbillonsa (Górski, s.214).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191575054469"/><motyw id="m1191575054469">Przemoc</motyw>Koło jeziora/
+Z wieczora/
+Chłopcy wkoło biegały/
+I na żaby czuwały:/
+Skoro która wypływała,/
+Kamieniem w łeb dostawała./
+Jedna z nich, śmielszej natury,/
+Wystawiwszy łeb do góry,/
+Rzekła: ,,Chłopcy, przestańcie, bo się źle bawicie!/
+Dla was to jest igraszką, nam idzie o życie".<end id="e1191575054469"/></strofa>
+    <naglowek_rozdzial>16. Skowronek<pr>Bajka przesłana J. Ursynowi Niemcewiczowi w liście z 7 lutego 1790 r. M. in. J. I. Kraszewski sugerował, że Niemcewicz jest bohaterem tytułowym utworu.</pr></naglowek_rozdzial>
+    <strofa>W czasy gorące/
+Na łące/
+Pasły się społem/
+Osieł z wołem:/
+Tamten chwastem ten trawą;/
+A pomiędzy murawą,/
+Tam gdzie kwiaty i ziółka ---/
+Pszczółka./
+Chwytający motylki, zbierający robaczki/
+Bujał skowronek nad krzaczki./
+Na jednej łące wszystko się działo./
+Pszczółka brzęcząc w ul niosła zdobycz okazałą,/
+Chwast z trawą to użyczał;/
+Osieł beczał, wół ryczał./
+Skowronek, wzbijając się, czule i radośnie/
+Dawał wdzięk<pr><slowo_obce>Dawał wdzięk</slowo_obce> --- dodawał uroku.</pr> wiośnie<pr>Po w. 16 w innej zachowanej wersji (Rubrycela w Bibliotece Ossolineum sygn. 1127/I) następuje dwuwiersz: Tak rozum z cicha, a głupstwo z hukiem / Wychodzą drukiem.</pr>. W redakcji przekazanej do druku autor zrezygnował z puenty.</strofa>
+    <naglowek_rozdzial>17. Konie</naglowek_rozdzial>
+    <strofa><begin id="b1191575527313"/><motyw id="m1191575527313">Koń, Nauka, Szkoła, Wolność</motyw>Koń maneżowy<pr><slowo_obce>Koń maneżowy</slowo_obce> (od <slowo_obce>maneż</slowo_obce> --- pomieszczenie do nauki konnej jazdy, ujeżdżalnia koni) --- wierzchowiec ujeżdżony na maneżu.</pr> zszedł się z stadniczym<pr><slowo_obce>stadniczy</slowo_obce> --- żyjący w stadzie, dziki.</pr>,/
+Rzekł: ,,Tyś jest niczym./
+Jeżeli mnie będziesz prosić,/
+Nauczę cię człeka nosić:/
+Jak suwać rowy<pr><slowo_obce>suwać rowy</slowo_obce> --- skakać przez rowy.</pr>,/
+Jak biec na łowy,/
+Jak stąpać w ciągu,/
+Jak być w zaprzągu"./
+,,A ja, nieuk --- rzekł stadny --- o to cię nie proszę;/
+Może źle, że nie umiem --- lepiej, że nie noszę".<end id="e1191575527313"/></strofa>
+    <naglowek_rozdzial>18. Wróbel</naglowek_rozdzial>
+    <strofa><begin id="b1191575604000"/><motyw id="m1191575604000">Próżność, Ptak</motyw>Wróbel pstry, iż był cudem pomiędzy szaremi,/
+Ledwo się tykał ziemi,/
+Tak był zhardział; rozumiał bowiem, iż nad niego/
+Piękniejszego/
+Natura wydać nie zdoła/
+Nie tylko wróbla, ale i sokoła./
+Gdy więc wszystkimi gardził, rzekł mu jeden z szpaków:/
+,,Kto jest pierwszym wśród wróblów, nie jest pierwszym z ptaków".<end id="e1191575604000"/></strofa>
+    <naglowek_rozdzial>19. Dialog<pr>Bajka, przesłana w liście z 24 czerwca 1790 r. do F. K. Dmochowskiego (?), miała autokomentarz Krasickiego, stosujący ją m. in. do podjętych bez powodzenia przez szlachtę galicyjską w tymże roku pertraktacji z dworem austriackim w sprawach politycznych: ,,Przyłączam bajeczkę --- pisał Krasicki --- którą po spełzłej sławnej komisji lwowskiej Wielmożnemu memu bratu, jednemu z komisarzów posyłam; moralność w wielu okolicznościach przydać się może"(<tytul_dziela>Korespondencja...</tytul_dziela>, t. 2, s. 464). Tekst wg autografu w Cz. Tytuł: <tytul_dziela>Dialog</tytul_dziela> / w Cz. tytuł obcą ręką: <tytul_dziela>Zbytek przygotowania szkodliwy</tytul_dziela>; <slowo_obce>dialog</slowo_obce> --- prosta forma sceniczna uprawiana w teatrach konwiktów zakonnych; po r. 1750 na ziemiach polskich już prawie nie spotykana.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191575862645"/><motyw id="m1191575862645">Ksiądz, Praca, Umiarkowanie</motyw>Ksiądz majster<pr><slowo_obce>majster</slowo_obce> --- tu: magister, mistrz w konwikcie zakonnym.</pr> jezuita chcąc ojców zabawić/
+Starał się bardzo piękny dyjalog wyprawić;/
+A że właśnie do rzeczy było z karnawałem,/
+Przedsięwziął diabła bitwę dać z świętym Michałem./
+Za czym dla archanioła zgotowano skrzydła;/
+Żeby zaś diabła postać stała się obrzydła/
+I tym większym zwycięzca mógł wsławić się plonem,/
+Diabła z sześciołokciowym klejono ogonem./
+Gdy przyszło rzecz wyprawiać, Michał, skrzydły skory,/
+Wyleciał chyżym lotem z majstrowej komory./
+A diabeł, skrępowany potrójnym łańcuchem,/
+Z nadto długim ogonem, z nadto grubym brzuchem,/
+Uwiązł we drzwiach nieborak... i pęknął na progu./
+Gdzie nadto przygotowań, tam nic z dyjalogu.<end id="e1191575862645"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

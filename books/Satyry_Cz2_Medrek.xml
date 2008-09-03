@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_druga/M%C4%99drek">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 2 - (7) Mędrek</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sobczyński, Mariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Mędrek</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><wers_akap><begin id="b1202385893122"/><motyw id="m1202385893122">Sława</motyw>,,A to co za jegomość?” ,,Jegomość dobrodziej.</wers_akap>/
+	On nie tak, jak to drudzy, i gada, i chodzi”./
+	,,Jakże mówi? jak stąpa?” ,,Oto jak człek wielki./
+	Skoro wyszedł z opieki jejmość rodzicielki,/
+	Zaraz znać było, jaki człowiek z niego będzie./
+	Jakoż nigdy się w takich nie chciał mieścić rzędzie,/
+	Co tak czynią jak drudzy, szedł zawżdy nawiasem<pr><slowo_obce>nawiasem</slowo_obce> --- bokiem, okrążając.</pr>,/
+	Zgoła z pracą, pilnością i kunsztem, i czasem/
+	Do tego stopnia przyszedł, iż człek zawołany”./
+	,,Skądże to zawołanie<pr><slowo_obce>zawołanie</slowo_obce> --- sława.</pr>?” ,,Stąd: panie i pany/
+	Zgodzili się powszechnie, że to człowiek wielki,/
+	Więc za nimi powtarzać musi człowiek wszelki,/
+	A kto by nie powtarzał, ten zysk sobie kupi,/
+	Iż będzie osądzonym, że dziwak i głupi./
+	Ciężka, mówią, rzecz człeku na sławę zarobić,/
+	A ja mówię, że lekka, byle rzecz sposobić,/
+	Byle umieć ulegać tym, co wsławić mogą.<end id="e1202385893122"/>/
+	<wers_akap>Alboż inszą Konstantyn uwielbiony drogą?</wers_akap>/
+	Wszedł na świat --- kto go zoczył, przestraszył się, zdumiał”./
+	,,Dlaczego?” ,,Bo zgadł wszystko”. ,,Więc wiedział?”/
+	,,Nie umiał”. ,,Jakże zgadł?” ,,Tak jak teraz”. ,,A jakże to teraz?”/
+	,,Mój bracie, widzęś prostak, jam bo bywał nieraz/
+	Tam, gdzie to jest świat wielki". ,,I jam--ci na świecie”./
+	,,Nie na wielkim, on inszy, wy tego nie wiecie,/
+	<begin id="b1194608331941"/><motyw id="m1194608331941">Mędrzec</motyw>Co to jest ten świat wielki, więc go wam opiszę./
+	Świat wielki, gdzie są mędrcy i ich towarzysze,/
+	Gdzie są umysły raźne, a pojęcia żywsze,/
+	Gdzie uczucia dzielniejsze, wyrazy prawdziwsze,/
+	Zgoła gdzie lepiej, piękniej niźli między wami”./
+	,,Któż tak osądził?” ,,Zgadnij”. ,,Nie wiem”. ,,Oni sami”./
+	,,Któż w swojej sprawie sędzią?” ,,Bałamuctwo stare;/
+	Inszą wiek polerowny ma cechę<pr><slowo_obce>cecha</slowo_obce> --- próba (wyznaczająca wartość metali szlachetnych).</pr> i miarę,/
+	Insze czucia, rozmysły, sposoby, narzędzia,/
+	W swojej sprawie i patron, i strona, i sędzia./
+	Więc wyroki pomyślne, a pospólstwo wierzy;<end id="e1194608331941"/>/
+	<begin id="b1202386188496"/><motyw id="m1202386188496">Szlachcic</motyw>Nie pospólstwo, co kupczy, co płaci, co mierzy,/
+	Lecz gmin<pr><slowo_obce>gmin</slowo_obce> --- mowa o gminie szlacheckim.</pr>, co moda szlachci, a umysł poniża.<end id="e1202386188496"/>/
+	<begin id="b1202386273168"/><motyw id="m1202386273168">Mądrość, Rozum</motyw>Skąd rozum? --- Od Szwajcarów<pr><slowo_obce>Od Szwajcarów</slowo_obce> --- aluzja do popularyzujących się coraz bardziej, a często wypaczanych koncepcji filozoficznych Rousseau pochodzącego z Genewy.</pr>. Skąd dowcip? --- Z Paryża./
+	Więc po rozum, po dowcip trzeba za granicę./
+	Niegdyś bywał on wszędy, dziś ma dwie stolice./
+	Nie uwłaczam ja cudzym, ale zbytek ganię,/
+	Talent granic nie cierpi, jego panowanie/
+	Nie od kraju zawisło --- przemysł<pr><slowo_obce>przemysł</slowo_obce> --- cywilizacja i kultura.</pr> znamienity/
+	Zdobił Greki, lecz mieli mędrce nawet Scyty<pr><slowo_obce>mieli mędrce nawet Scyty</slowo_obce> --- ma tu Krasicki na myśli zapewne Anacharsisa, mędrca scytyjskiego z VI w. p. n. e., o którym tak pisze: ,,Filozof, rodem był z Scytii. Zwiedził greckie państwa dla nabycia tam większej doskonałości; jakoż wielce się wsławił wytwornością nauki i dowcipu w rozmowach, które miał z rozmaitymi mędrcami [...]. O nim powiadają, iż prawa porównywał do pajęczyny, w której tylko muchy więzną”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>); Scytowie --- koczowniczy lud barbarzyński zamieszkujący w starożytności północne wybrzeża Morza Czarnego.</pr>.<end id="e1202386273168"/>/
+	<begin id="b1194533728480"/><motyw id="m1194533728480">Matka, Natura</motyw>Natura wszystkim matką, nikomu macochą.<end id="e1194533728480"/>/
+	<begin id="b1202386420570"/><motyw id="m1202386420570">Praca, Sława</motyw>Ci więc, co się uwodzą częścią sławy płochą,/
+	Przeświadczenia poddani, choć go w inszych ganią,/
+	Chcieliby drogi towar kupić, ale tanio./
+	Doskonałość niełatwa, trzeba pracy przecie;<end id="e1202386420570"/>/
+	<begin id="b1194533768278"/><motyw id="m1194533768278">Mądrość, Mędrzec, Głupota, Głupiec</motyw>Za jednego mądrego sto głupich na świecie,/
+	A kto wie, czy nie tysiąc; wiele to, czy mało?<end id="e1194533768278"/>/
+	Niechaj kto chce doświadcza, mnie gdy się tak zdało,/
+	Nie upieram się w zdaniu, a wracam do rzeczy./
+	Szczególne<pr><slowo_obce>Szczególne</slowo_obce> --- pojedyncze.</pr> i powszechne doświadczenie przeczy,/
+	Iżby można być wielkim i prędko, i łatwo./
+	<begin id="b1202386914380"/><motyw id="m1202386914380">Mieszczanin, Praca</motyw>Rzemieślnik lata strawi nad dłutem, nad dratwą,/
+	A przecie rzadki dobry, choć proste rzemiosło.<end id="e1202386914380"/>/
+	<begin id="b1194533860681"/><motyw id="m1194533860681">Drzewo, Mądrość, Młodość, Starość</motyw>Drzewo nim w pień, w konary, gałęzie urosło,/
+	Nim kwiat zszedł, owoc dojźrzał, długie pory przeszły./
+	Doświadczenia nabywa wiek w lata podeszły./
+	A to mistrz najpewniejszy, więc mędrce bezbrodni<pr><slowo_obce>bezbrodni</slowo_obce> --- bez bród, młokosy.</pr>/
+	Albo cudem natury lub wiary niegodni”.<end id="e1194533860681"/>/
+	,,Lecz się to jednak trafia”. ,,Bywać i śnieg w maju./
+	Rzecz bolesna korzyści modnego zwyczaju,/
+	Algebra od kolebek, żaki prawią cuda,/
+	Dźwięk mami, lecz na przyszłość szkodliwa obłuda./
+	<begin id="b1194533937119"/><motyw id="m1194533937119">Filozof, Głupota, Mędrzec, Sława</motyw>Dawnych praca --- nam korzyść, lecz korzyść, co szpeci/
+	Zbierających rodziców marnotrawne dzieci./
+	Cytując bez rozsądku maksymy i strofy,/
+	Śmiałość głupstwa dumnego czyni filozofy./
+	Dawni, myślami, trudem, nauką wybledli,/
+	Albo żywot odludny, albo ostry wiedli;/
+	Nasze mędrki rubaszne i pulchne, i hoże./
+	Przemieniły się w sofy cyników<pr><slowo_obce>cynicy</slowo_obce> --- grecka materialistyczna szkoła filozoficzna reprezentująca plebejski nurt filozofii starożytnej. Najpopularniejszym jej przedstawicielem był Diogenes z Synopy (IV w. p. n. e.), który głosząc, że szczęście polega na uniezależnieniu się od istniejącego porządku społecznego, propagował wyrzeczenie się majątku i wszelkich wytworów cywilizacji i ograniczenie się do zaspokajania elementarnych potrzeb człowieka zgodnie z prawami natury. Krasicki pisze o nim krytycznie w <tytul_dziela>Zbiorze potrzebn. wiad.</tytul_dziela>: ,,wódz sekty filozofickiej cyników, ubóstwo dobrowolne obrał i zamiast domu miał beczkę na spoczynek. [...] Zdaje się, iż ten filozof pod pokrywką wstrzemięźliwości taił nienasyconą żądzę ambicji, chcąc się bardziej osobliwością niźli cnotą od innych różnić”.</pr> rogoże,/
+	Pełno Dyjogenesów nie w beczce, lecz z beczką./
+	Sławni wielbieniem własnym i krzykliwą sprzeczką,/
+	Czytają, a nie myślą, sądzą ślepym zdaniem,/
+	A gmin czci dumne głupstwo owczym powtarzaniem./
+	Stąd wziętość<pe><slowo_obce>wziętość</slowo_obce> --- popularność.</pe>, a jak niegdyś płaszcz i gęsta broda,/
+	Tak i teraz, gdy śmiałość wspaniałości doda,/
+	Lada osieł w lwiej skórze przestrasza bydlęta.<end id="e1194533937119"/>/
+	Konstantyn o tej bajce<pr><slowo_obce>o tej bajce</slowo_obce> --- bajka o ośle z Kume, który włożywszy lwią skórę chciał udawać lwa. Bajkę o ośle w lwiej skórze opublikował Krasicki w »Monitorze« (1766, nr 24).</pr> wcale nie pamięta,/
+	Zamyśla się ustawnie<pe><slowo_obce>ustawnie</slowo_obce> --- nieustannie.</pe>, wznosi oczy w górę,/
+	Niechaj wspojźrzy na siebie, postrzeże lwią skórę./
+	<wers_akap>Jakoż chcieć być uczonym, a mało się uczyć,</wers_akap>/
+	Siebie tylko wysławiać, a na innych mruczyć,/
+	Dawać pismom stąd wybór<pr><slowo_obce>wybór</slowo_obce> --- pierwszeństwo, wyróżnienie.</pr>, iż je każą palić<pr><slowo_obce>każą palić</slowo_obce> --- wiele pism filozofów Oświecenia godzących w podstawy systemu feudalnego i przygotowujących grunt rewolucji burżuazyjnej palono na stosie, a autorów i drukarzy prześladowano.</pr>,/
+	<begin id="b1194534053674"/><motyw id="m1194534053674">Mądrość, Pozory</motyw>Ganić to, co chwalono, co ganiono --- chwalić,/
+	Nowość tylko uwielbiać, zniżać czasy dawne,/
+	Czynić łotry sławnymi, podlić męże sławne,/
+	Rozsądnych gminem nazwać, na błędy narzekać,/
+	Czego dociec nie można, na pozór dociekać,/
+	Za dowody żart dawać, gdy prawda dokucza:/
+	Tym dzielna nowa mądrość, tych kunsztów naucza./
+	<wers_akap>Czyż ją wielbić? Niech wielbi, któremu błąd miły;</wers_akap>/
+	<begin id="b1202387498961"/><motyw id="m1202387498961">Światło</motyw>Nie są światłem błyszczenia, co ledwo się szklniły,<end id="e1194534053674"/>/
+	I owszem, gdy zagasną, większa po nich ciemność.<end id="e1202387498961"/>/
+	Miła w kunsztownym żarcie wyrazów przyjemność,/
+	Ale żart, ale wdzięki po co zwać nauką?/
+	Czy błąd idzie podstępem, czyli inną sztuką,/
+	Zawżdy tym jest, tym będzie, czym z natury --- błędem./
+	Więc, nasz panie Konstanty, co tak żwawym pędem/
+	Doszedłeś celu rzeczy, jak ci się to zdaje?/
+	Nie rozumiej, że ja ci przymawiam, że łaję;/
+	Malarz musi malować takie, jak są, twarze./
+	Chcesz, aby te ustały, jak zowiesz, potwarze,/
+	<begin id="b1202387616900"/><motyw id="m1202387616900">Błazen, Mędrzec, Nauczyciel</motyw>Nie dmij, gdy mało umiesz, mędrszym nie dokuczaj./
+	Jeśli masz dar bawienia, baw, a nie nauczaj<end id="e1202387616900"/>”.
+</strofa>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

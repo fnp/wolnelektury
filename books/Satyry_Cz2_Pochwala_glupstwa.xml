@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_druga/Pochwa%C5%82a_g%C5%82upstwa">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 2 - (3) Pochwała głupstwa</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sobczyński, Mariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Pochwała głupstwa<pr><tytul_dziela>Pochwała głupstwa</tytul_dziela> (1509) to tytuł satyry jednego z najsłynniejszych humanistów, Erazma z Rotterdamu, w której krytyka stosunków średniowiecznych ujęta została w ironiczną formę niby panegiryku. Przesyłając królowi autograf wiersza, pisał Krasicki w liście z 7 IX 1781 r.: ,,Poprzednikiem moim w tej mierze był Erazm; żart jego dowcipny zdał mi się być sposobną materią do satyry”. (I. Krasicki, <tytul_dziela>Pisma wybrane</tytul_dziela>, t. IV, s. 267).</pr></nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><begin id="b1201610059137"/><motyw id="m1201610059137">Głupota, Mądrość</motyw>,,A ja mówię, że głupstwo niezłym jest podziałem”./
+	,,Mądrość przecież zaszczytem, nierozum zakałem<pe><slowo_obce>zakałem</slowo_obce> --- wadą.</pe>”./
+	,,Nie wchodzę ja w dysputę, rzecz jest niby jawna,/
+	Maksyma teraźniejsza tak jako i dawna/
+	Każe szukać mądrości, a głupstwa się chronić./
+	Umieli zawżdy ludzie od dobrego stronić,/
+	A że głupstwo jest dobrem, stronili od niego.<end id="e1201610059137"/>/
+	<begin id="b1194608614016"/><motyw id="m1194608614016">Głupiec, Mędrzec</motyw>Patrz na mędrca --- tetryka<pe><slowo_obce>tetryk</slowo_obce> --- człowiek zrzędliwy, marudny, ponury, schorowany.</pe>, głupca --- wesołego:/
+	Tu pryska z twarzy zdrowie, tam zapadłe oczy,/
+	Wlecze się chuda mądrość, spasłe głupstwo toczy./
+	A co lepsza, kto głupi, mądrością jest dumny,/
+	A co gorsza, kto mądry, zna, że mniej rozumny.<end id="e1194608614016"/>/
+	<wers_akap>Nasz pan Paweł, choć w głupstwie dni swoje postradał,</wers_akap>/
+	Skoro wszedł, wszystkich zgłuszył, Michała przegadał,/
+	Michała, co wiek z księgą trawi w gabinecie./
+	Prawda, Paweł raz po raz nic do rzeczy plecie,/
+	Ale żwawo i głośno, więc go zgraja słucha,/
+	Zmiłuje się na koniec, przecie udobrucha,/
+	Da mówić Michałowi, który w kącie wzdycha,/
+	Zaczyna, dobrze mówi, ale mówi z cicha,/
+	Aż w śmiech, co go słuchali, więc milczy, zlękniony;/
+	Dopieroż tym tryumfem głupiec uwielbiony<pr><slowo_obce>uwielbiony</slowo_obce> --- wywyższony, podniesiony.</pr>/
+	Łże, bredzi, decyduje, a w zgrai nacisku<pr><slowo_obce>nacisk</slowo_obce> --- natłok, ciżba.</pr>/
+	Odbiera plauz<pe><slowo_obce>plauz</slowo_obce> --- aplauz.</pe> mądrości i ma sławę w zysku./
+	<wers_akap>Ale --- rzeczesz --- pan Paweł nie próbuje rzeczy<pe><slowo_obce>nie próbuje rzeczy</slowo_obce> --- jeden przykład nie stanowi wystarczającej próby.</pe>,</wers_akap>/
+	Że czasem przykład jeden doświadczeniu przeczy,/
+	Nie idzie, żeby zawżdy podobne bywały./
+	Prawda, ale w tej mierze dowód okazały,/
+	Pawłów jest tysiącami, a rzadki w złym stanie./
+	<begin id="b1194608684907"/><motyw id="m1194608684907">Głupiec, Głupota, Mądrość, Mędrzec</motyw>Każdy w podobnym sobie ma upodobanie,/
+	Więc głupi prędko znajdzie, komu się podoba./
+	Mędrzec, wieku okrasa i kraju ozdoba,/
+	Laur ma, prawda, ale ten ni grzeje, ni tuczy,/
+	Głupstwo go jawnie nęka, zazdrość w kącie mruczy.<end id="e1194608684907"/>/
+	Półmędrków rodzaj zjadły<pe><slowo_obce>zjadły</slowo_obce> --- zajadły, zaciekły.</pe> z bliska i z daleka,/
+	Gdy nie może ukąsić, jak szczeka, tak szczeka./
+	Sroga bitwa, a o co --- o liść<pr><slowo_obce>liść</slowo_obce> --- domyślnie: laurowy.</pr> lub kadzidła./
+	<begin id="b1201610609191"/><motyw id="m1201610609191">Pochlebstwo</motyw><wers_akap>Bogdaj to w bractwie głupich! Tam szczęścia prawidła,</wers_akap>/
+	Tam korzyści, tam rozkosz coraz żywsza z wiekiem,/
+	Każdy kontent, bo czuje, że jest wielkim człekiem./
+	Fraszka sława na potem, co teraz, to moje./
+	O Pawle, niech ogłoszę uwielbienie twoje!/
+	Pozwól --- śmieje się --- wielkiś --- śmieje się i wierzy,/
+	A że szczodrym wydziałem<pr><slowo_obce>wydział</slowo_obce> --- rozdział.</pr> łaski swoje mierzy,/
+	Za to żem winny jemu szacunek oznaczył<pr><slowo_obce>oznaczyć</slowo_obce> --- zaznaczyć, wyrazić.</pr>,/
+	Lekkim głowy skinieniem obdarzyć mnie raczył;/
+	Tak Jowisz u Homera utwierdzał wyroki<pr><slowo_obce>Tak Jowisz u Homera utwierdzał wyroki</slowo_obce> --- w <tytul_dziela>Iliadzie</tytul_dziela> (ks. I, w. 436--439) tak mówi Zeus (Jowisz) do błagającej go o łaskę bogini Tetydy: ,,Prośbę twoja mam w sercu wyrytą głęboko. / Skłonię głowę, byś pewna była mojej chęci; / Tej na stwierdzenie słowa używam pieczęci, / Przed bogi i przed ludźmi znak ten jest konieczny." (Homer, <tytul_dziela>Iliada</tytul_dziela>, przekład Fr. Ks. Dmochowskiego, Wrocław 1950, B.N. Seria II, nr 17, wyd. 7, s. 21).</pr>./
+	Choć stopień uwielbienia posiada wysoki,/
+	Zniża się czasem Paweł, kiedy tego godni/
+	Jurgieltowi<pr><slowo_obce>Jurgieltowi</slowo_obce> --- płatni, pozostający na żołdzie.</pr> chwalacze, autorowie głodni,/
+	<begin id="b1201610884184"/><motyw id="m1201610884184">Pieniądz</motyw>Ci, których niezmazana w sądzeniu rzetelność/
+	Gotowa za grosz patent dać na nieśmiertelność,/
+	A przypisując dzieło temu, co druk płaci,/
+	Pieniężnym bohatyrem kronikę bogaci<pr><slowo_obce>A przypisując dzieło...</slowo_obce> --- w czasach saskich i we wczesnym Oświeceniu pisarze, których nie stać było na wydanie książek własnym nakładem, ubiegali się o nakładców wśród bogatej szlachty i magnaterii, w zamian wypisując im szumne, panegiryczne dedykacje.</pr>.<end id="e1201610609191"/>/
+	<begin id="b1201611064302"/><motyw id="m1201611064302">Władza</motyw>Indy<pr><slowo_obce>Indy</slowo_obce> --- mieszkańcy Indii, których północno--zachodnią część podbił Aleksander Macedoński.</pr>, Persy i Medy, Party, Baktryjany<pr><slowo_obce>Medy</slowo_obce>, <slowo_obce>Party</slowo_obce>, <slowo_obce>Baktryjany</slowo_obce> --- mieszkańcy Medii, Partii, Baktrii, krain wchodzących w skład starożytnego państwa perskiego, podbitego przez Aleksandra Wielkiego. Mało znane ówcześnie egzotyczne narody i wielkie czyny historyczne były to najczęściej używane realia w panegirykach.</pr>/
+	Zwyciężył Aleksander.<end id="e1201611064302"/> Więcej zawołany<pr><slowo_obce>zawołany</slowo_obce> --- sławny.</pr>/
+	Nasz mecenas<pr><slowo_obce>mecenas</slowo_obce> --- opiekun i protektor sztuk pięknych, nauk i literatury; nazwa pochodzi od nazwiska Gaiusa Maecenasa (ok. 67 r. p.n.e.--ok. 8 r. n.e.), możnego przyjaciela i protektora najsławniejszych poetów rzymskich: Horacego, Owidiusza, Wergiliusza.</pr>, bohater, zdziałał i dokazał,/
+	Zapłacił szczodrobliwie, dawne dzieje zmazał./
+	On sam sławy posiadacz, a prawem dziedzicznym,/
+	Bo się przodków szeregiem zaszczycając licznym,/
+	Pomimo Niesieckiego<pr><slowo_obce>Pomimo Niesieckiego...</slowo_obce> --- chociaż nie figurują w wydanym w latach 1728--1743 herbarzu Kaspra Niesieckiego.</pr> sławny antenaty<pe><slowo_obce>sławny antenaty</slowo_obce> --- sławny swymi antenatami, tzn. sławny z powodu swoich przodków.</pe>/
+	Stryjeczne i cioteczne licząc majestaty,/
+	Tam gdzie słońce zapada, gdzie powstaje zorza,/
+	Sławny z dzieł, z krwi, z talentów od morza do morza./
+	<wers_akap>Co druk głosi, to prawda: od czegóż by służył?</wers_akap>/
+	Płaci on wielkim mężom, w czym się świat zadłużył./
+	Płaci sławą, a że się wszystko w świecie płaci,/
+	<begin id="b1194608710648"/><motyw id="m1194608710648">Głupiec, Mędrzec</motyw>Głupi możny, głodnego gdy mędrca bogaci,/
+	Staje się jeszcze większym i mędrszym nad niego.<end id="e1194608710648"/><end id="e1201610884184"/>/
+	<begin id="b1201611441136"/><motyw id="m1201611441136">Choroba, Konflikt</motyw><wers_akap>Po sławie cóż nad zdrowie jest pożądańszego?</wers_akap>/
+	A może i przed sławą? To dobro jedyne./
+	Cóż po tym, w życiu niezdrów, że po śmierci słynę,/
+	<begin id="b1201612755462"/><motyw id="m1201612755462">Śmierć</motyw>Co mi po dobrym mieniu, gdy użyć nie mogę,/
+	Co po wszystkim, gdy słabość wznieca śmierci trwogę.<end id="e1201612755462"/>/
+	Tam, kędy zdrowia nie masz, jaki zysk powabi?/
+	Rycerstwo kroci życie, mądrość zmysły słabi,/
+	Praca siły wywnętrza, skrzętność zbyt zaprząta,/
+	Wszędzie gorycz w pośrodku korzyści się pląta;/
+	Zgoła w zysku bez zdrowia musiemy szkodować.<end id="e1201611441136"/>/
+	<begin id="b1194608734827"/><motyw id="m1194608734827">Głupota</motyw>Jakże siły utrzymać? Jak czerstwość zachować?/
+	Próżno krzyczy Hipokrat<pr>Hipokrat --- Hipokrates (ok. 460--ok. 380 r. p.n.e.), najwybitniejszy lekarz starożytnej Grecji, twórca medycyny naukowej, wiedzę lekarską opierał na doświadczeniu i obserwacji; ,,wódz lekarzów [...]. Księgi jego dotąd są ozdobą i prawidłem lekarskiej nauki” --- pisał Krasicki w <tytul_dziela>Zbiorze potrzebnych wiadomości</tytul_dziela>.</pr>, próżno Galen<pr>Galen --- Claudius Galenus (131--ok. 200 r.), wybitny lekarz--praktyk, badacz naukowy i eksperymentator. Dzieła jego, w których dał syntezę ówczesnych poglądów medycznych, były aż do XVII w. uważane za podstawę wiedzy lekarskiej.</pr> szepta,/
+	Głupstwo, głupstwo, o bracia, jedyna recepta!/
+	<wers_akap>Skarbie nie dość wielbiony! Choć wielu bogacisz,</wers_akap>/
+	Nie przebierzesz się<pr><slowo_obce>przebrać się</slowo_obce> --- wyczerpać się.</pr> nigdy, ceny nie utracisz.<end id="e1194608734827"/>/
+	Obdarzasz, lecz niewdzięcznych; choć miła spuścizna,/
+	<begin id="b1194608753570"/><motyw id="m1194608753570">Głupiec</motyw>Głupców tłumy niezmierne, a nikt się nie przyzna,/
+	Wszyscy mądrzy --- nikt siebie prawdziwie nie widzi,/
+	Czym nie jest, tym być pragnie, czym jest, tym się brzydzi.<end id="e1194608753570"/>/
+	<begin id="b1194608775611"/><motyw id="m1194608775611">Maska</motyw>Pełno w świecie obłudy, wkrada się i w fraszki./
+	Wewnątrz skryta osoba, z wierzchu same maszki<pe><slowo_obce>maszki</slowo_obce> --- maski; dawn. maszkaron.</pe>.<end id="e1194608775611"/>/
+	Zrzućmy je, niech odkrycie głupstwo światem włada,/
+	Sławę, honor, bogactwa, rozkoszy posiada./
+	Czemuż się szczęścia wstydzić? --- <begin id="b1194354668628"/><motyw id="m1194354668628">Mądrość, Mędrzec, Głupiec</motyw>Dzień po nocy wschodzi,/
+	Zrzucił świat uprzedzenia, wiek złoty się rodzi./
+	Niechaj mądrość, jakie chce, przepisy stanowi,/
+	Próżne są. --- Mądrzy sławni, ale głupi zdrowi”<end id="e1194354668628"/><pr>Z brulionu satyry przytaczamy porzucony później przez autora fragment o złocie i bogactwie: ,,Bogactwo, mówią mędrcy, że to jest rzecz podła. / Nie wierzcie --- z tego teraz wszystko płynie źródła --- / Rzecz znikoma, a przecie świat jej cały szuka, / Przydatek wielkie dzieła, przydatek nauka, / Złoto grunt, złoto cecha przymiotów i cnoty, / Dobra sława i talent, lepszy kruszec złoty." (I. Krasicki, <tytul_dziela>Satyry i listy</tytul_dziela>).</pr>.
+</strofa>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Przestroga_m%C5%82odemu">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (8) Przestroga młodemu</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Przestroga młodemu</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><wers_akap>Wychodzisz na świat, Janie. Przy zaczęciu drogi</wers_akap>/
+Żądasz zdania mojego i wiernej przestrogi;/
+Dam, na jaką się może zdobyć moja możność<pr><slowo_obce>możność</slowo_obce> --- tu: stan wiedzy, doświadczenie.</pr>,/
+W krótkich ją słowach zamknę: miej, Janie ostrożność!/
+<wers_akap>Wchodzisz na świat. Krok pierwszy stawić nie jest snadno<pe><slowo_obce>snadno</slowo_obce> --- łatwo.</pe>,</wers_akap>/
+Zewsząd cię zbójcy, zdrajcy, filuty opadną;/
+Zewsząd łowcy przebiegli, kształtną<pr><slowo_obce>kształtny</slowo_obce> --- przyjemny.</pr> biorąc postać,/
+Będą czuwać, jak by cię w sidła swoje dostać;/
+Wpadniesz, jeśli się pierwej dobrze nie uzbroisz./
+Słusznie się więc twych kroków pierwiastkowych<pe><slowo_obce>pierwiastkowych</slowo_obce> --- pierwszych.</pe> boisz./
+Rzadki na świat przychodzień, który by obfito/
+Nie zapłacił na wstępie oszukania myto<pr><slowo_obce>myto</slowo_obce> --- opłata, podatek.</pr>./
+<begin id="b1202425476237"/><motyw id="m1202425476237">Umiarkowanie</motyw>Strzeż się, nie żebyś grzeszył zbytnim nieufaniem,/
+Roztropna jest ostrożność; Piotr szedł za jej zdaniem./
+Średniej się drogi trzymał i tak kroki zmierzał,/
+Że ani zbytnie ufał, ani nie dowierzał;/
+Piotr ocalał i chociaż podejścia nie szukał,/
+Choć szedł drogą poczciwych, filutów oszukał./
+A to jak? Tak jak ślepy; ten, gdzie się obraca,/
+Nim stąpi, kijem pierwej bezpieczeństwa maca./
+Miej się na ostrożności, nikt cię nie oszuka.<end id="e1202425476237"/>/
+<wers_akap>Znajdziesz Pawła na wstępie, co przychodniów szuka;</wers_akap>/
+Stary to mistrz i profes<pr><slowo_obce>profes</slowo_obce> --- zakonnik, który złożył ostatnie, uroczyste śluby.</pr> w filutów zakonie,/
+Zna on nie tylko panów, ale psy i konie,/
+Układa się i łasi, powierzchownie grzeczny,/
+Z miny, z gestów poczciwy, uprzejmy, stateczny,/
+Temu rady dodaje, z tym się towarzyszy,/
+Tamtemu niby wierza<pr><slowo_obce>wierzać</slowo_obce> --- powierzać, zwierzać w zaufaniu.</pr>, co od drugich słyszy:/
+Trwożny, czy kto nie patrzy, czy kto nie podsłucha,/
+Za wżdy ma coś w rezerwie i szepcze do ucha,/
+Rai, strzeże, poznaje i godzi, i rożni<pe><slowo_obce>rożni</slowo_obce> --- różni, doprowadza do poróżnienia się stron, do kłótni.</pe>;/
+<begin id="b1202425632332"/><motyw id="m1202425632332">Korzyść, Pochlebstwo, Zdrada</motyw>Przeszli przez jego ręce szlachetni, wielmożni,/
+Przeszli, a z tych, co zdradnie całował i ściskał,/
+Żadnego nie wypuścił, żeby co nie zyskał.<end id="e1202425632332"/>/
+<wers_akap>Znajdziesz po nim Macieja, co już resztą goni.</wers_akap>/
+Przechodzi dotąd wszystkich wytwornością koni,/
+Ekwipaż po angielsku<pr><slowo_obce>Ekwipaż po angielsku</slowo_obce> --- już w końcu panowania Augusta III coraz modniejsze stawały się angielskie karety, które sprowadzali przeważnie tylko magnaci.</pr>, z francuska lokaje,/
+A choć do dalszych zbytków sposobu nie staje,/
+Choć nikt borgować<pe><slowo_obce>borgować</slowo_obce> --- pożyczać na kredyt.</pe> nie chce, przykrzą się dłużnicy,/
+Przecież Maciej paradnie jedzie po ulicy,/
+Przecież laufry przed końmi, Murzyn za karetą<pr><slowo_obce>za karetą</slowo_obce> --- ,,u kozła tylniego wisiał stopień [...] na paskach rzemiennych, po którym lokaje na kozioł wstępowali, hajducy zaś i pajucy, gdzie nie było hajduków, na tym stopniu plac swój za karetą mieli”. (J. Kitowicz, <tytul_dziela>Opis obyczajów</tytul_dziela>, s. 531). Obowiązkiem hajduków w czasie podróży było otwieranie drzwi karety i ustawianie przed nią stopnia. Zgodnie z ówczesną modą na egzotykę do dobrego tonu należało mieć służącego Murzyna.</pr>.<pr>Ochocki zanotował w <tytul_dziela>Pamiętnikach</tytul_dziela>: ,,W r. 1786 zastałem jeszcze w Warszawie wiele pańskich domów, jeżdżących z kawalkatą ekwipażami”. Ową ,,kawalkatę” stanowił orszak sług, do których należeli laufrowie, biegnący przed karetą, których zadaniem było trzaskać z harapów na znak, że wszyscy powinni ustąpić z drogi; ,,laufrów odziewano z hiszpańska, w lekkie materie, w trzewiki, z kaszkietem na głowie z herbem pańskim i piórami strusimi, którego nie zdejmowali nigdy ani w kościele, ani w sali posługując do stołu”. (J. D. Ochocki, <tytul_dziela>Pamiętniki</tytul_dziela>, s. 97, 93).</pr>/
+Chcesz widzieć tajemnicę przed światem ukrytą?/
+Nauczysz się, bylebyś tym szedł, co on torem,/
+Bylebyś się pożegnał z cnotą i honorem,/
+Bylebyś czoło stracił<pr><slowo_obce>czoło stracić</slowo_obce> --- wyzbyć się wstydu.</pr>, dojdziesz przedsięwzięcia./
+Zbądź się wstydu, a język trzymaj od najęcia<pr><slowo_obce>język trzymaj od najęcia</slowo_obce> --- bądź płatnym chwalcą.</pr>,/
+<begin id="b1202425931192"/><motyw id="m1202425931192">Korzyść, Pochlebstwo</motyw>Czołgaj się, a gdy podłość rozpostrzesz najdalej,/
+Dokażesz, że przed tobą będą się czołgali./
+Zyskasz korzyść niecnotą; ale to zysk podły;/
+Nie tymi prawe szczęście obwieszcza się źrodły;<end id="e1202425931192"/>/
+Strzeż się więc takich zdobycz<pr><slowo_obce>zdobycz</slowo_obce> --- dawny dopełniacz liczby mnogiej.</pr>, co czynią zelżywym./
+<wers_akap><begin id="b1194349444389"/><motyw id="m1194349444389">Młodość, Nauka</motyw>Jesteś w wiośnie młodości, w tym wieku szczęśliwym,</wers_akap>/
+Co do wszystkiego zdatny. Do użycia wzywa/
+Rozkosz miła z pozoru, w istocie zdradliwa;/
+Uwdzięcza<pr><slowo_obce>Uwdzięcza</slowo_obce> --- nadaje wdzięku, powabu.</pr> bite ślady, lecz choć mile pieści,/
+Kładzie żółć przy słodyczy, ciernie z kwiaty mieści<pr>Wszystkie teksty podają zgodnie ten wiersz w brzmieniu: ,,Kładzie żółć przy goryczy, ciernie z kwiaty mieści”. W miejsce niewłaściwego ,,przy goryczy”, co jest oczywistym przepisaniem się Krasickiego, wprowadzono koniekturę wydawcy: ,,przy słodyczy”.</pr>,/
+Omamia nieostrożnych zdradnymi kompany./
+Będziesz na pierwszym wstępie uprzejmie wezwany/
+Od rzeszy grzeczno--modnej, rozpustnie wytwornej./
+Tam się nauczysz w szkole przebiegłej, wybornej,/
+Jak grzecznie rozposażyć<pr><slowo_obce>rozposażyć</slowo_obce> --- porozdzielać, porozdawać.</pr> zbiory przodków skrzętne,/
+A ślady wspaniałości stawiając pamiętne,/
+Niesłychanymi zbytki i treścią rozpusty/
+Zawstydzać marnotrawców i dziwić oszusty./
+Nauczysz się, jak prawom można się nie poddać,/
+Jak dostać, kiedy nie masz, dostawszy nie oddać,/
+Jak zwodzić zaufanych a śmiać się z zwiedzionych,/
+Jak w błędzie utrzymywać sztucznie<pr><slowo_obce>sztucznie</slowo_obce> --- umiejętnym podejściem, chytrze.</pr> omamionych,/
+Jak się udać, gdy trzeba, za dobrych i skromnych,/
+Jak podchlebiać przytomnym<pr><slowo_obce>przytomny</slowo_obce> --- obecny.</pr>, śmiać się z nieprzytomnych,/
+Jak cnocie, gdzie ją znajdziesz, dać zelżywą postać,/
+Jak deptać wszystkie względy, byle swego dostać,/
+Jak wziąwszy grzeczną tonu modnego postawę,/
+Dla żartu dowcipnego szarpać cudzą sławę,/
+Jak się chlubić z niecnoty, a w wyrazach sprośnych/
+Mieszać fałsz z zuchwałością w tryumfach miłosnych./
+Taka to nasza młodzież! <begin id="b1202426267285"/><motyw id="m1202426267285">Jesień, Wiosna</motyw>Po skażonej wiośnie/
+Jaki plon, jaki owoc w jesieni urośnie?<end id="e1202426267285"/><end id="e1194349444389"/>/
+Rzuć okiem na Tomasza: słaby, wynędzniały,/
+Dwudziestoletni starzec. Poszły kapitały,/
+Poszły wioski, miasteczka, pałace, ogrody,/
+Jęczy nędzarz, a pamięć niepowrotnej szkody/
+Truje resztę dni smutnych, co je wlecze z pracą<pr><slowo_obce>z pracą</slowo_obce> --- z trudem, mozołem.</pr>:/
+Taka korzyść rozpusty, tak się zbytki płacą./
+<wers_akap>Uszedłeś marnotrawców, wpadniesz w otchłań nową.</wers_akap>/
+<begin id="b1202426548619"/><motyw id="m1202426548619">Kochanek, Miłość</motyw>Ci to są, co z romansów zawróconą głową,/
+Bohatyry miłosne, żaki teatralni<pr><slowo_obce>żaki teatralni</slowo_obce> --- zgrywające się młokosy.</pr>,/
+Trawią wiek u nóg bogiń przy ich gotowalni.<end id="e1202426548619"/>/
+Westchnienia ich kunsztowne do Filidów<pr>Filida, Filis, Tyrsys --- konwencjonalne imiona bohaterów modnych sielanek dworskich.</pr> modnych,/
+Kaloandry<pr><slowo_obce>Kaloander</slowo_obce> --- aluzja do bohatera popularnego wówczas romansu włoskiego poety Giovanni Ambrogio Mariniego pt. <tytul_dziela>Calloandro sconosciuto</tytul_dziela> (1640), przetłumaczonego na język polski, którego pełny tytuł brzmi: <tytul_dziela>Kolloander wierny Leonildzie przyjaźni dotrzymujący, przy różnych nienawiści wojennych awanturach i przypadkach, z okazji niedotrzymania słowa między Poliartem, cesarzem konstantynopolitańskim, Enceladona synem, i między Tygryndą, królową trabizońską, Tygranora króla córką, albo historia polityczna, kawalerskie ich dzielności i skrytą miłość przez Hymeneusz dożywotniej przyjaźni między nimi zakończone opisująca</tytul_dziela>. O romansach pisał Krasicki w <tytul_dziela>Zbiorze potrzebn. wiad.</tytul_dziela>: ,,rodzaj ten pisma, zbyt teraz rozpleniony zabawką momentalną, nie nadgradza nieskończonego uszczerbku w obyczajach młodzieży”.</pr> w afektach wiernych a dowodnych/
+Jęczą nad srogim losem, a boginie cudne,/
+Raz uprzejme, drugi raz dzikie i obłudne,/
+Czy się zechcą nasrożyć, czy wdzięcznie uśmiechać,/
+Dają im tylko wolność rozpaczać i wzdychać./
+<wers_akap><begin id="b1202426743299"/><motyw id="m1202426743299">Czas, Kobieta, Miłość, Wolność</motyw>Strzeż się matni zdradliwych, w które płochych mieści</wers_akap>/
+Zbyt czuły na podstępy zawżdy kunszt niewieści;/
+Strzeż się sideł powabnych, w które młodzież wabią./
+Choć sztuką zdradę skryją, pęta ujedwabią,/
+Przecież w nich wolność ginie, czas się drogi traci,/
+Zysk wdzięcznych sentymentów w cnoty nie bogaci;<end id="e1202426743299"/>/
+A Filida<pr>Filida, Filis, Tyrsys --- konwencjonalne imiona bohaterów modnych sielanek dworskich.</pr> tymczasem, gdy ją statek<pr><slowo_obce>statek</slowo_obce> --- stałość.</pr> smuci,/
+Dla nowego Tyrsysa<pr>Filida, Filis, Tyrsys --- konwencjonalne imiona bohaterów modnych sielanek dworskich.</pr> dawnego porzuci./
+<wers_akap>Skacz ze skały, w miłosnych pętach niewolniku,</wers_akap>/
+Albo siadłszy w zamysłach<pr><slowo_obce>w zamysłach</slowo_obce> --- w zamyśleniu, w zadumie.</pr> przy krętym strumyku,/
+Gadaj z echem płaczącym na płonne nadzieje;/
+Twoja Filis<pr>Filida, Filis, Tyrsys --- konwencjonalne imiona bohaterów modnych sielanek dworskich.</pr> tymczasem z głupiego się śmieje./
+Nie masz tego w romansach --- ale jest na jawie;/
+<begin id="b1202426834040"/><motyw id="m1202426834040">Kochanek</motyw>Ktokolwiek się tej płochej poświęcił zabawie,/
+Nie inszą korzyść żądań zniewieściałych zyska;/
+Czyli politowania wart, czy pośmiewiska,/
+Niech boginie osądzą. --- Ty zważ, co cię czeka./
+Boginie są, mój Janie; czcij je, lecz z daleka<end id="e1202426834040"/><pr>Bogatszą charakterystykę ,,bogini” odnajdujemy w nieukończonej satyrze, ogłoszonej przez L. Bernackiego w krytycznym wydaniu satyr i listów (s. 232--233): ,,Dla wdzięków bojaźliwa, a dla mody chora, / Jęczy, wzdycha wsparta na sofach piękna Leonora [!]. / Jęczy, wzdycha, niesyta szczęściem, nowych zysków łaknie [!], / W tym, co tylko mieć może, a ma, czegoś braknie. / Im więcej zgromadziła, tym bardziej ubywa, / Piękna, młoda, dostatnia, przecież nieszczęśliwa. / Gdzie jest --- nudno, gdzie nie jest --- tam miłe momenta. / Więc tam leci, gdzie pragnie; doszła --- niekontenta. / Skąd nudność? Zbyt myśl wzniosła, zbyt się umysł żarzy, / Co usłyszy, co zoczy --- mniej, niż sobie marzy. / Świat szczupły na te głowy, dopieroż kraj cały!</pr>./
+<wers_akap>Nie, żebyś był odludkiem. <begin id="b1202426981151"/><motyw id="m1202426981151">Kobieta</motyw>Znajdziesz nawet w mieście,</wers_akap>/
+Co umysł mając męski, powaby niewieście,/
+Szacowne bardziej cnotą niż blaskiem urody,/
+Mimo zwyczaj powszechny, mimo przepis mody/
+Śmią pełnić obowiązki, a proste Sarmatki<pr><slowo_obce>Sarmatki</slowo_obce> --- tu: Polki przestrzegające dawnych obyczajów, wprowadzone do satyry jako przeciwstawienie kobiet modnych.</pr>,/
+Są i żony poczciwe, i starowne matki;/
+Romans je w obowiązkach nigdy nie rozgrzesza./
+Z takich gniazd, jeśli znajdziesz, szukaj towarzysza;<end id="e1202426981151"/>/
+I znajdziesz. Niech odszczeka, co je trzy rachował<pr><slowo_obce>Niech odszczeka, co je trzy rachował</slowo_obce> --- aluzja do zjadliwego ustępu satyry Boileau (satyra X, ww. 43--44): ,,Ba, i dziś nawet podług tak sławnego wzoru / Można znaleźć małżonkę wierną nie z pozoru. / Prawda. Ja sam w Krakowie, jeśli się nie mylę, / Trzy takie bym wymienił." (Boileau, <tytul_dziela>Satyry wierszem polskim przełożone, z przystosowaniem do polskich rzeczy</tytul_dziela> przez J. Gorczyczewskiego, Warszawa 1805, I. 90. Tu jest to satyra IX, ww. 43--46).</pr>./
+Nie będę ja zbyt ostrą satyrą brakował<pr><slowo_obce>brakować</slowo_obce> --- tu: piętnować.</pr>./
+Są, a często, choć pozór przeciwnie obwieszcza,/
+W uściech płochość, a cnota w sercu się umieszcza./
+<wers_akap><begin id="b1194349641482"/><motyw id="m1194349641482">Filozof</motyw>Wojciech --- mędrzec ponury, łapie młodzież żywą,</wers_akap>/
+A najeżony miną poważnie żarliwą,/
+Nową rzeczy postawą gdy dziwi i cieszy,/
+Same wyroki głosi zgromadzonej rzeszy./
+Za nic dawni pisarze, stare księgi --- fraszki,/
+Dzieła wieków to płonne u niego igraszki;/
+Filozof, jednym słowem, i miną, i cerą<pr><slowo_obce>cera</slowo_obce> --- ułożenie twarzy, mina.</pr>,/
+Unosi się nad podłą gminu atmosferą,/
+Depce miałkość<pr><slowo_obce>miałkość</slowo_obce> --- powierzchowność.</pr> uprzedzeń, a dając, co nie ma,/
+Stwarza nowy rząd rzeczy<pr><slowo_obce>Stwarza nowy rząd rzeczy</slowo_obce> --- daje pogląd na siły, które rządzą światem. Po w. 134 znajdował się w brulionie, następnie zarzucony przez autora fragment: ,,Tli się ogień szkodliwy, zajęty w iskierce, / Powabne jego słowa wkradają się w serce, / W bluźnierskich żartach, grzeczną mądrość kiedy mieści, / Doktor płochych umysłów, apostoł niewieści, / Wszystko, co jest, on pojął, co było, on wiedział. / Rzekł słowo, a choć reszty ani dopowiedział, / Rozśmiał się lub zasępił --- misternie a sztucznie, / Umieją to tłumaczyć omamione ucznie." (I. Krasicki, <tytul_dziela>Satyry i listy</tytul_dziela>, s. 95--96).</pr> i wiary systema.<end id="e1194349641482"/>/
+<wers_akap>Z daleka od tej szkoły, z daleka, mój Janie!</wers_akap>/
+Powabne tam jest wejście, wdzięczne przywitanie,/
+Ale powrót fatalny. <begin id="b1194349686828"/><motyw id="m1194349686828">Rozum, Pobożność, Cnota</motyw>Zły to rozum, bracie,/
+Co się na cnoty, wiary zasadza utracie.<end id="e1194349686828"/>/
+Ochełznaj<pr><slowo_obce>ochełznać</slowo_obce> --- okiełznać, stłumić.</pr> dumne zdania pokory munsztukiem<pe><slowo_obce>munsztukiem</slowo_obce> --- wędzidem; za jego pomocą powściąga się zapędy konia; tu: umysłu.</pe>,/
+<begin id="b1194349775140"/><motyw id="m1194349775140">Bóg, Cnota, Mądrość, Rozum, Religia</motyw>Wierz, nie szperaj, bądź raczej cnotliwym nieukiem/
+Niż mądrym, a bezbożnym. Tacy byli dawni,/
+Równie, a może więcej naukami sławni,/
+Przodki twoje poczciwe, co Boga się bali./
+Co mogli, co powinni, oni roztrząsali,/
+Umieli dzielić w zdaniu, o czym sądzić można,/
+Od tego, w czym nauka próżna i bezbożna./
+<wers_akap>Na co rozum, dar boży, jeśli bluźni dawcę?</wers_akap>/
+Mijaj, Janie, bezbożnych maksym prawodawcę,/
+Mijaj mądrość nieprawą. Ta niech tobą rządzi,/
+Co do cnoty zaprawia, w nauce nie błądzi,/
+Co prawe obowiązki bezwzględnie określa,/
+Co zna ludzką ułomność, w zdaniach nie wymyśla,/
+Co cię łącząc z poczciwym, staropolskim gminem,/
+Nie każe ci się wstydzić, żeś chrześcijaninem.<end id="e1194349775140"/>
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

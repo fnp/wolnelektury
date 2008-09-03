@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_nowe/Cz%C4%99%C5%9B%C4%87_czwarta">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki nowe (4)</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki nowe</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <naglowek_rozdzial>Bajki nowe. Część czwarta</naglowek_rozdzial>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Kruk i Lis</naglowek_rozdzial>
+    <nota>
+      <akap>z Ezopa<pr>Bajka Ezopa---Fedrusa <tytul_dziela>Vulpes et corvus</tytul_dziela> (I, 13) jedna z najpopularniejszych w literaturze polskiej, znajduje się również w zbiorze Lafontaine'a: <tytul_dziela>Le Corbeau et le Ranard</tytul_dziela> (I, 2).</pr></akap>
+    </nota>
+    <strofa><begin id="b1194609887719"/><motyw id="m1194609887719">Pochlebstwo, Podstęp, Próżność</motyw>Bywa często zwiedzionym,/
+Kto lubi być chwalonym./
+Kruk miał w pysku ser ogromny;/
+Lis, niby skromny,/
+Przyszedł do niego i rzekł: ,,Miły bracie,/
+Nie mogę się nacieszyć, kiedy patrzę na cię!/
+Cóż to za oczy!/
+Ich blask aż mroczy!/
+Czyż można dostać/
+Takową postać?/
+A pióra jakie!/
+Szklniące, jednakie./
+A jeśli nie jestem w głędzie,/
+Pewnie i głos śliczny będzie."/
+Więc kruk w kantaty<pr><slowo_obce>w kantaty</slowo_obce> --- zaczął śpiewać; od <slowo_obce>kantata</slowo_obce> (z wł.) --- utwór muzyczno-wokalny o charakterze uroczystym, tu w znaczeniu żartobliwym.</pr>; skoro pysk rozdziawił,/
+Ser wypadł, lis go porwał i kruka zostawił.<end id="e1194609887719"/></strofa>
+    <naglowek_rozdzial>2. Dudek</naglowek_rozdzial>
+    <nota>
+      <akap>z Fedra<pr>Bohaterem bajki w oryginale Ezopa---Fedrusa <tytul_dziela>Gracculus supperbus et pavo</tytul_dziela> (I 3),podobnie jak a Lafontaine'a (<tytul_dziela>Le Gaei paré des plumes du Paon</tytul_dziela>, IV 9) jest sójka, co respektował również przekład J. E. Minasowicza z Fedrusa: <tytul_dziela>Sójka pyszna i paw</tytul_dziela> (13).</pr></akap>
+    </nota>
+    <strofa><begin id="b1194610603364"/><motyw id="m1194610603364">Klęska, Maska, Pozory, Pozycja społeczna</motyw>Źle ten czyni, kto cudzą rzecz sobie przyswoił./
+W pióra się pawie dudek ustroił/
+I w tej postawie/
+Wszedł między pawie./
+Poznały zdrajcy świeże rozboje:/
+Postradał cudze i stracił swoje./
+Z tej więc pobudki/
+Wrócił, gdzie dudki,/
+A te w śmiech z niego:/
+,,Chciałeś cudzego,/
+Dobrze ci tak i nikt cię żałować nie może ---/
+Kiedyś stworzeń na dudka, bądź dudkiem, niebożę!"<end id="e1194610603364"/></strofa>
+    <naglowek_rozdzial>3. Słońce i żaby</naglowek_rozdzial>
+    <nota>
+      <akap>z tegoż<pr>W zbiorze Fedrusa bajka ma tytuł <tytul_dziela>Ranae ad solem</tytul_dziela> (I 6), tłumaczona była również przez Lafontaine'a (<tytul_dziela>Le Soleil et les Grenouilles</tytul_dziela>, VI 12).</pr>;</akap>
+    </nota>
+    <strofa><begin id="b1194610794051"/><motyw id="m1194610794051">Rodzina, Ślub, Złodziej</motyw>Sąsiad Ezopa, złodziej, się żenił,/
+Ezop do bajki; tak rzecz wymienił:/
+Słońce chciało mieć żonę./
+Żaby, strwożone,/
+Tak wrzeszczały,/
+Iż się słyszeć Jowiszowi dały./
+Pyta się, o co/
+Tak się kłopocą./
+Rzekła z nich jedna: ,,Jak nie narzekać,/
+Gdy teraz samo może dopiekać/
+I suszyć bagna, które nas chłodzą;/
+Niechże się z niego inne rozrodzą,/
+A z panem ojcem razem wyruszą,/
+Bagna i rzeki, i nas wysuszą".<end id="e1194610794051"/></strofa>
+    <naglowek_rozdzial>4. Worki<pr><slowo_obce>worki</slowo_obce> --- mieszki, sakiewki na pieniądze. Bajka <tytul_dziela>Worki</tytul_dziela> drukowana w LP zyskała dla cyklu <tytul_dziela>Bajek nowych</tytul_dziela> odmienną redakcję z wiersza sylabicznie regularnego na nieregularny. Poniżej bajka według LP: ,,Worek piękny, a pusty spotkał się w podróży / Z niepięknym, ale pełnym. ,,Kto u kogo służy?" --- / Pierwsze było pytanie: ,Według mego stanu --- / Rzekł piękny --- usługuję wspaniałemu panu". / ,,A ja u bogatego" --- rzekł worek skórzany. / ,,Żal mi cię --- rzekł mu piękny --- w złąś służbę oddany". / ,,Mnie ciebie --- rzekł skórzany --- żeś piękny, a głupi; / Nie ten dobry, co błyszczy, ale ten, co kupi."</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194611481263"/><motyw id="m1194611481263">Głupota, Mądrość, Pozory, Pozycja społeczna</motyw>Nie patrzajmy na wzorki<pr><slowo_obce>wzorki</slowo_obce> --- na postać zewnętrzną.</pr>./
+Zeszły się raz dwa worki:/
+Pozłacany/
+I skórzany,/
+Pozdrowiwszy się wdzięcznie,/
+Rzekł złoty: ,,To niezręcznie<pr><slowo_obce>niezręcznie</slowo_obce> --- tu: nieładnie, niestosownie.</pr>,/
+Iżeś skórzany/
+I obszarpany,/
+Gdy patrzę na cię,/
+Żal mi cię, bracie"./
+<begin id="b1194611628607"/><motyw id="m1194611628607">Dworzanin, Mieszczanin</motyw>,,Choć ja u kupca, ty między pany ---/
+Rzekł mu skórzany ---/
+Ani się troszczę,/
+Ani zazdroszczę./
+Owszem, mnie cię żal, bracie, żeś choć złoty, głupi./
+Nie ten dobry, co błyszczy, ale ten, co kupi".<end id="e1194611628607"/><end id="e1194611481263"/></strofa>
+    <naglowek_rozdzial>5. Kot i kogut<pr>Motyw znany już u Ezopa, a także P. Neveleta i J. L. Camerariusa (Górski, s. 241).</pr></naglowek_rozdzial>
+    <strofa>Kot sprawiedliwy koguta dławił/
+Za to, iż się czynami zbyt złymi osławił./
+A te czyny były takie:/
+Budził zwierzęta wszelakie,/
+A budzić się nie godzi,/
+Sen przerwany zdrowiu szkodzi./
+<begin id="b1194639865495"/><motyw id="m1194639865495">Małżeństwo</motyw>Małżeńskiej wiary koty wielbiciele ---/
+On miał żon wiele;/
+A co gorzej nieprzykładnie,/
+Szkaradnie,/
+Bez względu na pokrewieństwa/
+Wchodził w małżeństwa./
+<end id="e1194639865495"/>Dławiącemu,/
+Jak mógł, rzekł po swojemu/
+Dławny<pr><slowo_obce>Dławny</slowo_obce> --- dławiony.</pr>:/
+,,Sędzio sławny!/
+Przykładny kocie!/
+Wiem ja o twojej żarliwej cnocie/
+I kiedy się jej dziwię,/
+Pozwól, niech się też usprawiedliwię:/
+Mój ród jeśli rozpładzam,/
+Ludziom przeto dogadzam,/
+Piejąc budzę do pracy:/
+I majętni, i żebracy/
+Dlatego mnie chowają"./
+,,Na tobie się nie znają ---/
+Rzekł kot. --- <begin id="b1194611750854"/><motyw id="m1194611750854">Przemoc, Sprawiedliwość</motyw>A że ja głodny,/
+Więc ty życia niegodny".<end id="e1194611750854"/></strofa>
+    <naglowek_rozdzial>6. Motyl i chrząszcz</naglowek_rozdzial>
+    <strofa><begin id="b1194639963917"/><motyw id="m1194639963917">Dziecko, Filozof</motyw>Czasem złą się być zdaje bardziej, niż jest, chwila./
+Złapało dziecko chrząszcza, filozof motyla./
+Musiał się chrząszcz po kijku kręcić naokoło<pr><slowo_obce>po kijku kręcić naokoło</slowo_obce> --- jak w zabawie dzieci, uwiązujących chrząszcza (tu zapewne: chrabąszcza) nitką do kijka, wokół którego kręci się on i brzęczy.</pr>,/
+Motyl, pielęgnowany, poglądał wesoło/
+I żałował kompana. Puściło go dziecię./
+Wsadzony motyl za szkło kiedy kończył życie,/
+Rzekł: ,,Teraz znam, jak zmienne w pozorach istoty!/
+Lepsze prostych dziwactwo niż mądrych pieszczoty".<end id="e1194639963917"/></strofa>
+    <naglowek_rozdzial>7. Szczep winny<pr>Motyw ten ma bardzo dawną i rozległą tradycję literacką poświadczoną w wielu opracowaniach. ,,Monitor" (1783, nr 29) odnotował w wariancie <tytul_dziela>Gesta romanorum</tytul_dziela> następującą wersję bajki: ,,Żydowscy rabinowie uważają, iż gdy Noe latorośli szczepił, wziął z sowy, małpy i lwa krwi, korzenie u latorośli polał. Stąd dzieje się, iż gdy ludzie zatapiają się w winie, niektórzy sowy naśladują, po całych nocach nie śpią jedząc, gryząc, inni małpy głupstwo, inni lwa srogość wyrażają". Ścisły pierwowzór bajki Krasickiego (pochodzenia arabskiego) odnotował Damiri (1349---1405), zoolog średniowieczny (Mikulski, s. 224---225).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194640537682"/><motyw id="m1194640537682">Wino</motyw>Mówią Araby, iż gdy szczep winny/
+Adam posadził, diaboł, zbyt czynny,/
+Podlał krwią pawia, co Adam szczepił./
+A gdy się w zroście szczep coraz krzepił/
+I listki wydał,/
+Diaboł krew małpią do pierwszej przydał./
+Zeszły jagody, skropił lwią juchą,/
+A gdy dojźrzały, a było sucho,/
+Skropił je wszystkie posoką świnią<pr><slowo_obce>posoką świnią</slowo_obce> --- krwią świńską.</pr>./
+Cóż teraz czynią?/
+Oto gdy wina szklankę kto łyknie,/
+Jak paw się nadmie, po drugiej krzyknie,/
+Skacze jak małpa, gdy szklanki mnoży,/
+Po piątej, szóstej jak lew się sroży;/
+A kiedy coraz więcej przyczynia<pr><slowo_obce>przyczynia</slowo_obce> --- dodaje.</pr>,/
+Z pawia, lwa, małpy staje się świnia.<end id="e1194640537682"/></strofa>
+    <naglowek_rozdzial>8. Wilczek</naglowek_rozdzial>
+    <strofa>Wilczek chowany zrobił się grzecznym,/
+Bezpiecznym<pr><slowo_obce>Bezpiecznym</slowo_obce> --- nie zagrażającym bezpieczeństwu (tu: domowników).</pr>./
+Jegomość pieścił, jejmość go pasła,/
+Przywykł do mleka i masła./
+Hoży, dogodny<pr><slowo_obce>dogodny</slowo_obce> --- powolny, posłuszny.</pr>,/
+Wilczek był modny./
+Nieszczęściem kurczę zaszło mu drogę./
+<begin id="b1194640733173"/><motyw id="m1194640733173">Konflikt wewnętrzny</motyw>Chęć: zjem to kurczę; skrupuł: nie mogę./
+<end id="e1194640733173"/>Więc chciwy, trwożny a czuły,/
+Gdy się biedził ze skrupuły,/
+Jakoś w tej walce gorącej/
+Zjadło się kurczę niechcący./
+Po kurczęciu kogutek, po kogucie kura ---/
+Przemogła rozum natura./
+Zresztą<pr><slowo_obce>Zresztą</slowo_obce> --- wreszcie.</pr> poszedł do lasa, a wpadłszy w manowce/
+Ów wilczek stał się wilkiem, gryzł gęsi i owce;/
+Aż go na koniec w jamie dostali./
+Najciężej zacząć, pójdzie się dalej.</strofa>
+    <naglowek_rozdzial>9. Młynarz, syn jego i osieł</naglowek_rozdzial>
+    <nota>
+      <akap>z francuskiego, La Fontaine<pr>Krasicki o Lafontainie, którego jako źródło wskazał tu po raz pierwszy (tytuł bajki francuskiej: <tytul_dziela>Le Meunier, son Fils, et l'Ane</tytul_dziela>, III 1), pisał zawsze z najwyższym uznaniem.</pr></akap>
+    </nota>
+    <strofa>Nie wiem, gdzie ja to czytał, ale mniejsza o to./
+Miał jeden młynarz osła; tak zmęczył robotą,/
+Iż nie wiedząc, co robić,/
+Wolał przedać niż dobić./
+Woła syna wyrostka, co go w domu chował,/
+I rzecze: ,,Żeby się nasz osieł nie zmordował/
+W długiej drogi przeciągu,/
+Zanieśmy go na drągu"./
+Dźwiga stary i stęka, chłopiec jeszcze gorzej,/
+Im szli dalej, im szli sporzej,/
+Tym srożej trud uciemiężał,/
+Tym bardziej im osieł ciężał./
+Gdy to postrzegli,/
+Ludzie się zbiegli./
+Śmiechy się wzniosły:/
+,,Wzdyć to trzy osły!/
+A ten najmniej, co na drągu"./
+Niekontent młynarz z zaciągu<pr><slowo_obce>zaciąg</slowo_obce> --- przedsięwzięcie.</pr>,/
+Rozumu się poradził,/
+Syna na osła wsadził./
+Aż pierwsi, co napotkał, nuż się gniewać o to:/
+,,Ty na ośle, niecnoto! ---/
+Rzekli do chłopca --- a stary pieszo!"/
+Więc do kijów gdy się spieszą,/
+Aby ich złość nie uniosła,/
+Zsadził syna, siadł na osła./
+Przechodziły dziewczęta, mówi jedna do drugiej:/
+,,Patrz, biedny chłopiec, jak do wysługi/
+Ten stary go używa!/
+Dziecię z pracy omdlewa,/
+A dziad niemiłosierny/
+W taki upał niezmierny/
+Pieszo go iść przymusza"./
+To starego gdy wzrusza,/
+Wsadził chłopca za siebie./
+Że dogodził potrzebie,/
+Jedzie kontent z wynalazku,/
+Ledwo co wyjechał z lasku,/
+Znowu krzyk: ,,Jacy to głupi!/
+A kto od nich osła kupi?/
+Podróżą go udręczą,/
+Ciężarem go zamęczą;/
+Chyba skórę przedadzą!"/
+,,Nieźle oni coś radzą ---/
+Rzekł młynarz --- chociaż i łają"./
+Więc z synem z osła zsiadają,/
+Aż znowu mówią przechodnie:/
+,,A któż to widział, aby wygodnie/
+Osieł szedł wolno, a młynarz za mim./
+Wybacz, bracie, że cię ganim;/
+<begin id="b1194641353155"/><motyw id="m1194641353155">Głupota, Mądrość, Obyczaje</motyw>Każdy z ciebie śmiać się będzie,/
+Jak się nie poprawisz w błędzie"./
+,,Nie poprawię --- rzekł młynarz --- dość przymówek zniosłem;/
+Chciałem wszystkim dogodzić i w tym byłem osłem./
+Odtąd, czy kto pochwali, czy mnie będzie winił,/
+Nie będę dbał nic o to; co chcę, będę czynił"./
+Co rzekł, to się ziściło/
+I dobrze mu z tym było.<end id="e1194641353155"/></strofa>
+    <naglowek_rozdzial>10. Fejerwerk<pr>Fajerwerki w XVIII w. były bardzo częstym sposobem uświetniania uroczystości na dworach.</pr></naglowek_rozdzial>
+    <strofa>W lesie w noc ciemną/
+Zapalony fejerwerk miał postać przyjemną./
+Więc kontenci puszkarze<pr><slowo_obce>puszkarz</slowo_obce> --- tu: specjalista wyrabiający i puszczający ognie sztuczne.</pr>,/
+Chcąc rzecz zlepszyć w zamiarze,/
+Ku milszemu upominku<pr><slowo_obce>upominek</slowo_obce> --- wspomnienie, upamiętnienie.</pr>/
+Odprawili rzecz na rynku./
+Ten, gdy się własnym oświeceniem krasił,/
+Fejerwerk zgasił./
+Zawiódł skorych w czynieniu./
+Trzeba światłu być w cieniu.</strofa>
+    <naglowek_rozdzial>11. Rzepa</naglowek_rozdzial>
+    <strofa><begin id="b1194641577407"/><motyw id="m1194641577407">Praca</motyw>Kulawy, głuchy, stary i ślepy/
+Zeszli wór rzepy./
+Chciało się podjeść, bo jeść nie mieli./
+Lecz gdy szło o to, jakby ją wzięli,/
+Powiedział stary: ,,Ja nie ugryzę"./
+Powiedział chromy: ,,Ja ledwo lezę"./
+Ślepy: ,,Nie widzę, jej, towarzysze"./
+Głuchy: ,,A ja was, bracia, nie słyszę"./
+I tak gdy ciągle spór z sobą wiedli,/
+Została rzepa i nic nie jedli./
+Jak u nich rzepa tak u nas mienie ---/
+Każdy ma swoje wyrozumienie./
+Gdy o zysk idzie, chcemy zarobić,/
+A kiedy na zysk, nikt nie chce robić.<end id="e1194641577407"/></strofa>
+    <naglowek_rozdzial>12. Umbrelka<pr> Wschodnie akcesoria bajki wskazują wyraźnie, że Krasicki korzystał z jakiegoś wzoru dotychczas wszakże nie rozpoznanego.</pr></naglowek_rozdzial>
+    <strofa>Prosił bramin<pr><slowo_obce>bramin</slowo_obce> --- kapłan religii bramińskiej w Indiach, znawca ksiąg nabożnych.</pr> pobożny oświecenia z góry./
+Wtem duch stanął, a wpośród pełnej grzmotów chmury/
+Wzniósł się głos: ,,W tym, co znajdziesz, jest nauka wszelka!"/
+Duch zniknął. Wspojźrzy bramin, aż przed nim umbrelka./
+Jeżeli się przestraszył, bardziej jeszcze zdziwił;/
+Żeby się jednak górnej woli nie sprzeciwił./
+Wziął rzecz, której zdatności dotąd był nie wiedział,/
+Gdy więc smutny i w myślach zatopiony siedział,/
+Nie wiedząc, czy los wielbić, czyli nań narzekać,/
+Tak niezwyczajnie słońce zaczęło dopiekać,/
+Iż nie mając wśród pola żadnego schronienia,/
+Z rozpostartej umbrelki zyskał pomoc cienia./
+Wtem zbierały się chmury i wiatry powstały;/
+Lubo w tej porze<pr><slowo_obce>w tej porze</slowo_obce> --- w tych okolicznościach.</pr> bramin cierpliwy i trwały,/
+Przecież widząc, co zyskał, rzekł sobie: ,,Duch zdarzył./
+Kto wie, może w tym darze i inne skojarzył?"/
+Gdy mu więc wiatr był przykrym mocą swoją wielką,/
+Zastawił się i zyskał schronienie umbrelką./
+Po wietrze deszcz się puścił i gdy pola moczył,/
+Bramin, kiedy narzędzie dane sobie zoczył,/
+Rzekł: ,,Ukryję się pod tym, co mi dały duchy"./
+Wzniósł nad siebie i został wśród ulewy suchy./
+Więc patrząc na tak zdatną żądz dogodzicielkę/
+Wielbił dawcę i chwalił dogodną umbrelkę./
+Wtem słyszy odgłos w grzmocie: ,,Ucz się z małej rzeczy,/
+Co masz czynić, jak czynić i co mieć na pieczy./
+<begin id="b1194641866483"/><motyw id="m1194641866483">Mądrość, Umiarkowanie</motyw>Wiatry są namiętności dzielne i burzliwe,/
+Deszcz rzęsisty, --- przygody życia nieszczęśliwe,/
+Zbytnie słońca upały --- pomyślność gdy wielka;/
+Uczyni to roztropność, co teraz umbrelka<end id="e1194641866483"/>".</strofa>
+    <naglowek_rozdzial>13. Lew i osieł</naglowek_rozdzial>
+    <nota>
+      <akap>z Fedra<pr>Tytuł bajki u Ezopa---Fedrusa: <tytul_dziela>Asinus et leo venantes</tytul_dziela> (I 11), u Lafontaine'a: <tytul_dziela>Le Lion et l'Ane chassant</tytul_dziela> (II 19).</pr></akap>
+    </nota>
+    <strofa><begin id="b1194642062965"/><motyw id="m1194642062965">Głupota, Próżność</motyw>Kiedy dmie<pr><slowo_obce>dmie</slowo_obce> --- nadyma się, pyszni się.</pr> głupi, śmiech z wzgardą zyska./
+Wziął raz lew osła do stanowiska<pr><slowo_obce>stanowisko</slowo_obce> --- tu: miejsce, w którym myśliwy oczekuje zwierzyny w czasie polowania.</pr>/
+I okrył liściem,/
+Żeby za przyściem/
+Zwierzęta go nie poznały,/
+A gdy ryknie, uciekały,/
+A on je miał brać wówczas, utajony./
+Co miał czynić, nauczony,/
+Jak jął śpiewać po swojemu,/
+Taki dał połów lwu obżartemu,/
+Iż mu za to podziękował./
+,,I masz za co --- rzekł osieł --- bom ja sam polował"./
+,,Żebyś nie był tak głupim, nie byłbyś zuchwały ---/
+Rzekł zwierz wspaniały ---/
+Zażyłem<pr><slowo_obce>zażyć</slowo_obce> --- użyć, posłużyć się.</pr> cię dlatego, iż jesteś straszydło,/
+Skryłem postać obrzydłą;/
+A żeś jest hardy, z tego teraz wniosłem:/
+Iż osieł, choć z lwem, przecież zawżdy osłem".<end id="e1194642062965"/></strofa>
+    <naglowek_rozdzial>14. Szczygieł i kos</naglowek_rozdzial>
+    <strofa><begin id="b1194642162128"/><motyw id="m1194642162128">Niewola, Wolność</motyw>Ponad wrzosem/
+Szczygieł z kosem/
+Powadzili się o to, kto z nich lepiej śpiewa./
+Koło drzewa/
+Widząc, iż się przymyka,/
+Zdali sąd na ptasznika./
+Ten, przyjaźni zadatki/
+Chcąc dać, prosił do klatki./
+Ale i kos, i szczygieł powiedzieli mu na to:/
+,,Lepsza zwada na dworze niźli zgoda za kratą".<end id="e1194642162128"/></strofa>
+    <naglowek_rozdzial>15. Filozof i chłop<pr>Bajka jest przetworzeniem przypowieści prozą J. Gaya <tytul_dziela>Le Berger et le Philosophe</tytul_dziela> (wstęp do bajek poza numeracją; zob. Górski, s.257.)</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194642319624"/><motyw id="m1194642319624">Chłop, Filozof, Mądrość, Nauka</motyw>Wielki jeden filozof, co wszystko posiadał<pr><slowo_obce>wszystko posiadał</slowo_obce> --- tu: posiadał całą wiedzę.</pr>,/
+Co bardzo wiele myślał, więcej jeszcze gadał,/
+Dowiedział się o drugim, który na wsi mieszkał./
+Nie omieszkał/
+I kolegę odwiedzieć,/
+I od niego się dowiedzieć,/
+Co umiał i skąd była ta jego nauka,/
+Znalazł chłopa nieuka,/
+Bo i czytać nie umiał, a więc książek nie miał./
+Oniemiał./
+A chłop w śmiech: ,,Moje księgi --- rzekł --- wszystkie na dworze:/
+Wół, co orze,/
+Sposobi mnie do pracy, uczy cierpliwości,/
+Pszczoła pilności,/
+Koń, jak być zręcznym,/
+Pies, jak wiernym i wdzięcznym,/
+A sroka, co na płocie ustawicznie krzeczy,/
+Jak lepiej milczyć niźli gadać nic do rzeczy".<end id="e1194642319624"/></strofa>
+    <naglowek_rozdzial>16. Kuglarze<pr>Bajka jest przeróbką J. Gaya <tytul_dziela>Les Jongleurs</tytul_dziela> (I 41; por. Górski, s.240). Wcześniejsze tłumaczenie tej bajki, dokonane przez Albertrandiego, ogłosiły ,,Zabawy Przyjemne i Pożyteczne" (1770, t. 1, cz. 2, s. 315---320) pt. <tytul_dziela>O wykrętach występku albo kuglarz</tytul_dziela>, satyra według antologii <tytul_dziela>L'Abeille du Parnasse</tytul_dziela>, co wskazała I. Turowska-Barowa (<tytul_dziela>Zabawy Przyjemne i Pożyteczne</tytul_dziela> (1770---1777). <tytul_dziela>Ze studiów nad literaturą stanisławowską</tytul_dziela>, Kraków 1933, s. 14, ,,Prace Historyczno-Literackie", nr 40). Wzorzec lafontainowski tej bajki (<tytul_dziela>Le Charlatan</tytul_dziela>, VI 19) jest znacznie odleglejszy niż J. Gaya, chociaż Krasicki bajkę kilkakrotnie przerabiał, nim otrzymała postać przeznaczoną do publikacji.</pr></naglowek_rozdzial>
+    <strofa>Dosyć się to często zdarza:/
+Bywa kuglarz nad kuglarza./
+Jeden z nich a jest niemało,/
+Żwawo i śmiało/
+Pokazywał co może:/
+Zjadał łyżki i noże,/
+Z gałek ciasta robił grosze,/
+Karty przemieniał w kokosze;/
+Co chciał, stawiał, i co chciał, zmykał<pr><slowo_obce>zmykać</slowo_obce> --- tu: ściągać, ukrywać, usuwać.</pr>,/
+Usta kłódkami zamykał,/
+Kuropatwy robił z chleba;/
+Zgoła był takim jak trzeba:/
+Bawił, dziwił od tygodnia./
+Wszedł drugi i powiedział: ,,Ja się zowie zbrodnia"./
+Rzekł zatem do pierwszego: ,,Kolego i bracie!/
+Na rzemiośle się nie znacie!/
+A wy, co mnie widzicie,/
+Patrzcie, cuda ujźrzycie,/
+Oto zwierściadło,/
+Co wszystko zgadło"./
+Zbliżył się szpetny --- ujźrzał postać miłą,/
+Przyszedł garbaty, i garbu nie było;/
+Każdy z pociesznym<pr><slowo_obce>pocieszny</slowo_obce> --- tu: pocieszający.</pr> odszedł zadatkiem:/
+Kto nie miał zębów --- znalazł dostatkiem,/
+Poczerniałe/
+Były białe;/
+Stara baba będąc młodą/
+Pocieszyła się urodą./
+Wszyscy sprawcę uwielbiali,/
+Wszyscy razem zawołali:/
+,,Oto zwierściadło,/
+Co wszystko zgadło"./
+Dał lichwiarzowi w rękę pełen kaszy garnek:/
+Skoro wziął, tyle groszy było, ile ziarnek:/
+Glina postać przybrała okutej szkatułki:/
+Otworzył stratny<pr><slowo_obce>stratny</slowo_obce> --- utracjusz, marnotrawca.</pr>, znalazł pozew i pigułki<pr><slowo_obce>pigułki</slowo_obce> --- tu: z trucizną.</pr>,/
+Rzucił; porwał ją złodziej i brzęczała złotem,/
+Ale gdy odbił zamek z niezmiernym łoskotem,/
+Przestraszył go natychmiast widok niespodziany:/
+Złoto znikło, znalazł się stryczek i kajdany./
+Stawił butelek parę szampańskich;/
+,,Oto --- rzekł –-- ekstrakt<pr><slowo_obce>ekstrakt</slowo_obce> (z łac.) --- wyciąg, streszczenie, tu: treść, istota.</pr> obietnic pańskich"./
+Zrazu nic w nich nie było. Coś się potem zjawiło./
+A to coś jak się zaczęło burzyć,/
+Mieszać, przewracać, pienić i kurzyć,/
+Szelest zrobił się wielki,/
+Pękły obie butelki.../
+I znowu nic nie było./
+Gdy to wszystkich dziwiło,/
+Jakieś dziwackie jął odprawiać szepty,/
+Jak grad na stolik leciały recepty<pr>W innym wydaniu skreślono czterowiersz: Były jedne malowane, / Były drugie wyzłacane, / Kształtne, sztuczne i poważne, / A choć papier, jednak ważne.</pr>./
+Wziął jedną zdrowy, czytał i słabo mu było:/
+Wziął chory, nic nie znalazł i to uleczyło./
+Spazmatyczna<pr><slowo_obce>Spazmatyczna</slowo_obce> --- chora na spazmy, słabość modną w XVIII w., która dostarczyła m. in. W. Bogusławskiemu materii do komedii <tytul_dziela>Spazmy modne</tytul_dziela> napisanej i wystawionej we Lwowie w 1797 r.</pr>, co tam stała,/
+To na swojej wyczytała:/
+,,Chcesz nie być chora,/
+Strzeż się doktora!"<pr>W innym wydaniu dopisany jest czterowiersz, który Krasicki usunął dokładnie go przemazując: Przyniósł książkę i wcale nową postać miała, / Wzgłąbż, wszerz, w podłuż równą się być okazowała. / Dmuchnął: w okrąg się wzdęła, jęk się ozwał z płaczem, / Co miało być nauką, stało się kartaczem.</pr>/
+Zmienił modne kornety w worek wypróżniony,/
+Zrobił pierścień z pszenicy, a kufel z karbony<pr><slowo_obce>karbona</slowo_obce> --- skarbona.</pr>./
+Zadziwili się wszyscy, on rzekł: ,,To jest fraszka!"/
+Dał młodemu trzos złota, została się flaszka./
+Postrzegł w ciżbie dworaka, dał mu pęcherz z złotem,/
+Kazał ścisnąć, natychmiast, niespodzianym zwrotem/
+Odmieniwszy postawę prostą<pr><slowo_obce>prosty</slowo_obce> --- tu: prostacki, pośledni.</pr> i obrzydłą,/
+Wystrzelił jak z harmaty i wydał kadzidło./
+Wziął fascykuł<pr><slowo_obce>fascykuł</slowo_obce> --- zwój papierów, dokumentów.</pr> od jurysty,/
+Dmuchnął --- został piasek czysty./
+Z piasku owego zaraz bicz ukręcił,/
+Z bicza kałamarz, a gdy w nim coś zmęcił,/
+Ujźrzeli w rękach swoich za taką robotą:/
+Ten, co miał sprawę --- piasek, co w niej gadał<pr><slowo_obce>co w niej gadał</slowo_obce> --- tu: obrońca sądowy.</pr> --- złoto./
+Sędziemu dwa pęcherze dał od zapozwanych,/
+Obydwa były pełne papierów pisanych./
+Pękł, co był ubogiego, skoro go wymienił,/
+Bogacza w ważny weksel<pr><slowo_obce>ważny weksel</slowo_obce> --- weksel wiele ważący, tj. na wielką sumę.</pr> zaraz się przemienił./
+A wszyscy zawołali z daleka i bliska:/
+,,To mi to pęcherz, gdy kto na nim zyska!"/
+,,Chcecie wiedzieć --- rzekł dalej --- jak przemysł rzecz mnoży?/
+Niech z was każdy w ten worek pieniądze położy"./
+Stosując się do rozkazu/
+Napełnili go do razu./
+On się pokłonił, podskoczył, wykrzyknął,/
+Brzęknął pieniędzmi, rozśmiał się i zniknął.</strofa>
+    <naglowek_rozdzial>17. Pszczoły<pr>Nad w. 1 z prawej strony, równolegle do tytułu, dopisany ręką Krasickiego dwuwiersz, który, być może, miał być umieszczony po w. 22 (?): A że się przedtem dzieło okrutnie, / Do współki puścić osy i trutnie.</pr></naglowek_rozdzial>
+    <strofa>Rozum się rozpościera, to przywilej wieku<pr><slowo_obce>przywilej wieku</slowo_obce> --- zwanego rozumnym lub oświeconym.</pr>,/
+I nie tylko w człowieku,/
+Ale już i zwierzęta, chociaż pism nie kryślą,/
+Głęboko myślą./
+Pszczoła do mędrca zawędrowała,/
+A gdy go mówiącego żarliwie słyszała,/
+Zapomniawszy o kwiatkach, co na oknie stały,/
+Na to swój umysł natężyła cały,/
+Aby pojąć, co on gada./
+Z nauki rada,/
+Bez miodu, lecz z rozumem do roju przybyła/
+I jako mądra, tym się zatrudniła,/
+Jakby go to polepszyć, lepiej usposobić<pr><slowo_obce>lepiej usposobić</slowo_obce> --- udoskonalić.</pr>,/
+Zgoła nową rzecz zrobić./
+Gdy się więc zeszły, na pierwszym wniosku/
+Radziła nie robić wosku./
+Bo i wiele kosztuje, i człek go podrzyna./
+Druga odmiany przyczyna,/
+Że miód zbyt słodki wydarza straty<pr><slowo_obce>wydarzyć</slowo_obce> --- wyrządzać.</pr> ---/
+Omijać kwiaty;/
+Z ziół się obejść użytkiem ---/
+Rzeczpospolite niszczą się zbytkiem./
+,,A nowość im bardziej szkodzi ---/
+Rzekła matka --- niech was to nie zwodzi,/
+Co próżne mędrków roją mozoły ---/
+Bez miodu, wosku nie będą pszczoły.
+Próżna jest i szkodliwa na człowieka zmowa./
+Prawda, my go karmiemy, ale on nas chowa./
+Niech więc tak będzie, jak było od wieka:/
+Człowiek dla pszczoły, pszczoła dla człowieka".</strofa>
+    <naglowek_rozdzial>18. Słońce, obłoki, ziemia</naglowek_rozdzial>
+    <strofa>Skarżyła się przed słońcem ziemia na obłoki:/
+,,Cóż po tym, że po świecie lot wiedziesz wysoki,/
+Kiedy cię obłok kryje i wilgoć zachmurza?/
+Dopieroż kiedy z chmury uczyni się burza,/
+Noc ze dnia!" Słońce rzekło: ,,Darmo się rozwodzisz;/
+Nie skarż się na obłoki, ty je sama rodzisz".</strofa>
+    <naglowek_rozdzial>19. Lwica i maciora<pr>Istnieje wiele bajek w zbiorach ezopowych i wschodnich, w których jest mowa o lwie wywyższonym nad wszystkich (zob. Górski, s.204), m. in. liczne bajki u Desbillonsa. Krasicki dał tej bajce najpierw tytuł ,,Lwica i świnia", poczem przekreślił ,,świnia" i dopisał ,,maciora".</pr></naglowek_rozdzial>
+    <strofa>Źle to, gdy się podli szczycą./
+Zeszła się raz świnia z lwicą,/
+Więc w dyskursa. W tych przewlekła,/
+Z żalem świnia lwicy rzekła:/
+,,Żal mi ciebie, luboś godna,/
+Luboś zacna, żeś mniej płodna./
+Patrz na moją zgraję świnków:/
+Co tu córek, co tu synków!/
+A wszystkie jednym pomiotem"./
+Rzekła lwica: ,,Wiem ja o tem./
+<begin id="b1194643065827"/><motyw id="m1194643065827">Dziecko, Matka</motyw>Ródź ty dziesięć, cztery, dwa,/
+Ja jednego, ale lwa<end id="e1194643065827"/>".</strofa>
+    <naglowek_rozdzial>20. Malarze<pr>Pierwowzorem jest bajka J. Gaya <tytul_dziela>Le Peintre qui contente et mécontente tout le Monde</tytul_dziela> (I 18; zob.Górski, s. 216--217).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194643304711"/><motyw id="m1194643304711">Artysta, Bogactwo, Pochlebstwo</motyw>Dwaj portretów malarze słynęli przed laty:/
+Piotr dobry, a ubogi, Jan zły, a bogaty./
+Piotr malował wybornie, a głód go uciskał,/
+Jan mało i źle robił, więcej jednak zyskał./
+Dlaczegóż los tak różny mieli ci malarze?/
+Piotr malował podobne, Jan piękniejsze twarze.<end id="e1194643304711"/></strofa>
+    <naglowek_rozdzial>21. Koniec</naglowek_rozdzial>
+    <strofa>A jeszcze jedną! Albo to przychodzą/
+Bajki na rozkaz? Gdy zechcą, się rodzą,/
+A kiedy nie chcą, --- wołaj, wrzeszcz jak czajka,/
+Nie przyjdzie bajka./
+Tak jak nasz Józio, co go pieści matka,/
+Postrzegł opłatka<pr><slowo_obce>opłatek</slowo_obce> --- gatunek ciasta pszennego cienko wylewanego na formy.</pr>/
+Postrzec, naprzeć się --- (to u niego jedno./
+Więc matkę biedną/
+Nuż męczyć: ,,Daj go!" A opłatek zjadła./
+,,Dam --- rzekła --- ale, Józiu, ucz się abecadła"./
+Porozumiał<pr><slowo_obce>Porozumiał</slowo_obce> --- zrozumiał, domyślił się.</pr> to Józio, za co go tak łechce,/
+Więc rzekł: ,,Schowaj opłatek; kiedy każesz, nie chcę!"</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

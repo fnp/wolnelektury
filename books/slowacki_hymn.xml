@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Słowacki/Hymn">
+      <dc:creator xml:lang="pl">Słowacki, Juliusz</dc:creator>
+      <dc:title xml:lang="pl">Hymn</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Hymn</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/4060</dc:source.URL>
+      <dc:source xml:lang="pl">Mazanowski, Antoni (1858-1916), Wypisy polskie na VII klasę gimnazyalną, [s.n.], Kraków, 1914</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Juliusz Słowacki zm. 1849</dc:rights>
+      <dc:date.pd xml:lang="pl">1849</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-09-06</dc:date>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_lp>
+    <autor_utworu>Juliusz Słowacki</autor_utworu>
+    <nazwa_utworu>Hymn o zachodzie słońca na morzu</nazwa_utworu>
+    <strofa><begin id="b1189071911318"/><motyw id="m1189071911318">Emigrant, Ojczyzna, Tęsknota</motyw>Smutno mi, Boże! Dla mnie na zachodzie/
+Rozlałeś tęczę blasków promienistą;/
+Przede mną gasisz w lazurowej wodzie/
+<wers_wciety typ="2">Gwiazdę ognistą...</wers_wciety>/
+Choć mi tak niebo Ty złocisz i morze,/
+<wers_wciety typ="2">Smutno mi, Boże!</wers_wciety>/
+Jak puste kłosy z podniesioną głową,/
+Stoję rozkoszy próżen i dosytu.../
+Dla obcych ludzi mam twarz jednakową,/
+<wers_wciety typ="3">Ciszę błękitu.</wers_wciety>/
+Ale przed Tobą głąb serca otworzę:/
+<wers_wciety typ="3">Smutno mi, Boże!</wers_wciety>/
+Jako na matki odejście się żali/
+Mała dziecina, tak ja płaczu bliski,/
+Patrząc na słońce, co mi rzuca z fali/
+<wers_wciety typ="3">Ostatnie błyski,</wers_wciety>/
+Choć wiem, że jutro błyśnie nowe zorze,/
+<wers_wciety typ="3">Smutno mi, Boże!</wers_wciety>/
+Dzisiaj na wielkiem morzu obłąkany,/
+Sto mil od brzegu i sto mil przed brzegiem,/
+Widziałem lotne w powietrzu bociany/
+<wers_wciety typ="3">Długim szeregiem.</wers_wciety>/
+Żem je znał kiedyś na polskim ugorze,/
+<wers_wciety typ="3">Smutno mi, Boże!</wers_wciety>/
+Żem często dumał nad mogiłą ludzi,/
+Żem nie znał prawie rodzinnego domu,/
+Żem był jak pielgrzym, co się w drodze trudzi/
+<wers_wciety typ="3">Przy blaskach gromu,</wers_wciety>/
+Że nie wiem, gdzie się w mogiłę położę,/
+<wers_wciety typ="3">Smutno mi, Boże!</wers_wciety>/
+Ty będziesz widział moje białe kości,/
+W straż nieoddane kolumnowym czołom;/
+Alem jest jako człowiek, co zazdrości/
+<wers_wciety typ="3">Mogił... popiołom.</wers_wciety>/
+Więc, że nieznane gotujesz mi łoże,/
+<wers_wciety typ="3">Smutno mi, Boże!</wers_wciety>/
+Kazano w kraju niewinnej dziecinie/
+Modlić się za mnie co dzień; a ja przecie/
+Wiem, że mój okręt nie do kraju płynie,/
+<wers_wciety typ="3">Płynąc po świecie.</wers_wciety>/
+Więc, że modlitwa dziecka nic nie może,/
+<wers_wciety typ="3">Smutno mi, Boże!</wers_wciety>/
+Na tęczę blasków, którą tak ogromnie/
+Anieli twoi w niebie rozpostarli,/
+Nowi gdzieś ludzie w sto lat będą po mnie/
+<wers_wciety typ="3">Patrzący --- marli.</wers_wciety>/
+Nim się przed moją nicością ukorzę,/
+<wers_wciety typ="3">Smutno mi, Boże!<end id="e1189071911318"/></wers_wciety></strofa>
+  </liryka_lp>
+</utwor>

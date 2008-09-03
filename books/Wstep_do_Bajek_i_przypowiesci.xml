@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_i_przypowie%C5%9Bci/Wst%C4%99p_do_Bajek_i_przypowie%C5%9Bci">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki i przypowieści (0) - Wstęp</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki i przypowieści</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP1</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Bajki i przypowieści --- dedykacja</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <motto>
+	Suspicione si quis errabit sua./
+	Et rapiet ad se, quod erit commune omnium/
+	Stulte nudabit animi conscientiam.<pr>Motto jest cytatem z wstępnego wiersza Fedrusa do księgi III bajek pt. <tytul_dziela>Prologus ad Eutichum</tytul_dziela>, który w tłumaczeniu J. E. Minasowicza (<tytul_dziela>Phaedra Augusta cesarza wyzwoleńca bajek Ezopowych ksiąg V</tytul_dziela>, Warszawa 1777, s. 29) brzmi: ,,Jeśli zaś w rozumieniu swym kto się pomyli. / I, co wszystkim powszechna, do siebie nachyli, / Głupie obnaży swoje sumienie [...]" (w. 47--49).</pr>
+</motto>
+    <motto_podpis>Phaedr<pr>Phaedrus (ok. 15 p.n.e.--ok. 50 n.e.) --- pozostawił zbiór bajek w pięciu księgach przyswajający łacinie wiele apologów Ezopa w formie krótkiej, epigramatycznej; w Polsce tłumaczony był wielokrotnie. Krasicki przełożył z Fedrusa kilka bajek.</pr>, <tytul_dziela>Ad Eutich.</tytul_dziela>, lib. III</motto_podpis>
+    <naglowek_rozdzial>Do dzieci<pr>Przypisanie zbioru <tytul_dziela>Bajek i przypowieści</tytul_dziela>, za wzorem wszystkich bajkopisarzy dawniejszych, określonemu odbiorcy nie może być tu odczytywane wprost; bajki Krasickiego nie były intencjonalnie kierowane do młodocianego czytelnika, lecz pod jego maską do świata dorosłych, nacechowanego w tym wierszu z góry ujemnie.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1193649307677"/><motyw id="m1193649307677">Dziecko, Kondycja ludzka</motyw>O wy, co wszystkie porzuciwszy względy,/
+Za cackiem bieżyć gotowi w zapędy,/
+Za cackiem, które zbyt wysoko leci,/
+Bajki wam niosę, posłuchajcie, dzieci.</strofa>
+    <strofa>Wy, których tylko niestatek żywiołem,/
+Co się o fraszki uganiacie wspołem,/
+O fraszki, których zysk maże i szpeci<pr><slowo_obce>których zysk maże i szpeci</slowo_obce> --- których posiadanie przynosi ujmę i dyshonor.</pr>,/
+Bajki wam niosę, posłuchajcie, dzieci.</strofa>
+    <strofa>Wy, którzy marne<pr><slowo_obce>marne</slowo_obce> --- nędzne, liche.</pr> przybrawszy postaci,/
+Baśniami łudzić umiecie współbraci,/
+Baśniami, które umysł płochy kleci,/
+Bajki wam niosę, posłuchajcie, dzieci.<end id="e1193649307677"/></strofa>
+    <naglowek_rozdzial>Wstęp do bajek<pr>Wiersz ten --- (Kleiner, 1956, s. 171) wyzyskujący pomysł <tytul_dziela>Pieśni ciarlatańskiej</tytul_dziela> A. Naruszewicza (drukowanej w ,,Zabawach Przyjemnych i Pożytecznych" 1770, t. 1, cz. 2, s. 321--330), w której między cuda włożone zostały przypisania cech pozytywnych różnym postaciom o ujemnej w powszechnej opinii reputacji --- posłużył się zabiegiem przekornej charakterystyki, stosowanym przez Krasickiego również w innych utworach (np. w wierszu o charakterach narodów: <tytul_dziela>Gdybym ja był Szwajcarem</tytul_dziela>). Tytuł: <tytul_dziela>Wstęp do bajek / Bajka AF</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1193649622058"/><motyw id="m1193649622058">Bogactwo, Literat, Młodość, Poeta, Starość, Władza, Żołnierz</motyw>Był młody, który życie wstrzemięźliwie pędził;/
+Był stary, który nigdy nie łajał, nie zrzędził;/
+Był bogacz, który zbiorów potrzebnym<pr><slowo_obce>potrzebny</slowo_obce> --- tu: potrzebujący, ubogi.</pr> udzielał;/
+Był autor, co się z cudzej sławy rozweselał;/
+Był celnik, który nie kradł; szewc, który nie pijał;/
+Żołnierz, co się nie chwalił; łotr, co nie rozbijał;/
+Był minister rzetelny, o sobie nie myślał;/
+Był na koniec poeta, co nigdy nie zmyślał.<end id="e1193649622058"/>/
+--- A cóż to jest za bajka? Wszystko to być może!/
+--- Prawda, jednakże ja to między bajki włożę.</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

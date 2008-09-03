@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_nowe/Cz%C4%99%C5%9B%C4%87_trzecia">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki nowe (3)</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki nowe</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Bajki nowe. Część trzecia</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Trzoda<pr> Motyw nierozsądnych sojuszy słabych z silniejszymi i przebiegłymi partnerami odnajdujemy w bajce Lafontaine'a <tytul_dziela>Les Loups et les Brebis</tytul_dziela> (III 13); por. również <tytul_dziela>Wilk i owce</tytul_dziela> (BP III,11).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194607189659"/><motyw id="m1194607189659">Głupota, Pies, Sprawiedliwość, Zdrada</motyw>Pies wierny, owca prosta, ale dobre zwierzę,/
+Z wilkiem i lisem raz weszły w przymierze:/
+Lis, aby od kur stronił,/
+Wilk, aby owce bronił,/
+Jednak, iż był lis zdradny, wilk w siłę zamożny<pr><slowo_obce>w siłę zamożny</slowo_obce> --- obdarzony siłą.</pr>,/
+Pies był ostrożny./
+Gdy szły w manowce,/
+Pilnował owce,/
+A na odwodzie<pr><slowo_obce>na odwodzie</slowo_obce> --- w straży tylnej.</pr>/
+Czuwał przy trzodzie./
+Raz gdy się kury, gęsi, owce w radę zeszły,/
+Przybył tam i rzekł do nich lis w lata podeszły:/
+,,Próżno się zgromadzacie już to razy kilka;/
+Zawsze jest podejźrzenie na lisa i wilka:/
+Na wilka, co was broni, kochane jagnięta,/
+Na lisa, co was strzeże, kury i gąsięta!/
+Pies was w to podejźrzenie ku nam przyprowadza,/
+Pies was zdradza"./
+Więc wyrok zgromadzenia psa odejść przymusił./
+Cóż zatem? Wilk zgryzł owce, lis kury wydusił/
+I tak to zawsze bywa, gdy się zejdą w kupie/
+Pilnujący roztropni, pilnowane głupie.<end id="e1194607189659"/></strofa>
+    <naglowek_rozdzial>2. Wyżeł i brytan<pr>Pierwowzór bajki dostrzeżono (Górski, s. 211) u J. Gaya: <tytul_dziela>Le Chien couchant et le Dogue</tytul_dziela> (I, 26).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194607586873"/><motyw id="m1194607586873">Kłamstwo, Pochlebstwo, Sługa, Zdrada</motyw>Wyżeł, czołgacz podchlebny, zdrajca skryty w duchu,/
+Chcąc się panu przymilić stawał na podsłuchu/
+I nosił raz w raz plotki, układny i tajny,/
+Jak to jemu podobnych obyczaj zwyczajny,/
+<begin id="b1194607708833"/><motyw id="m1194607708833">Obowiązek, Pies</motyw>Wtem złodziej, co na dobrą porę w nocy czekał,/
+Nakarmił wyżła skrycie i wyżeł nie szczekał;/
+A gdy i brytanowi przysmaczka użyczył,/
+Rzucił wierny pieczenia, złodzieja skaleczył.<end id="e1194607708833"/>/
+Uciekł ten; wyżeł pobiegł tymczasem do pana,/
+Dzikim, wściekłym zabójcą mianował brytana./
+I wypchnięto go z domu; a złodziej skradł<pr><slowo_obce>skradł</slowo_obce> --- okradł, tu: dom.</pr> w nocy./
+Poznał pan poniewczasie, jak był ku pomocy/
+Ów, którego wypędził, więc nazad powrócił,/
+A wyżeł zdrajca, co się lizał, bałamucił,/
+Gdy na nowo zamyślał, jak kogo uwięzi<pr><slowo_obce>uwięzi</slowo_obce> --- tu: uwikła, usidli za pomocą intrygi.</pr>,/
+<begin id="b1194607638455"/><motyw id="m1194607638455">Kara</motyw>Zyskał, czego był godzien: uwiązł<pr><slowo_obce>uwiązł</slowo_obce> --- tu: zawisł.</pr> na gałęzi.<end id="e1194607638455"/><end id="e1194607586873"/></strofa>
+    <naglowek_rozdzial>3. Cesarz chiński i syn jego</naglowek_rozdzial>
+    <nota>
+      <akap>z dziejów tamtejszych<pr>Temat tej bajki wzięty został z dziejów cesarza chińskiego z VII w. n.e. Tai-Tsonga (Tai-Tsunga). Obszerną, pozytywną charakterystykę Tai-Tsonga zawarł Krasicki w zbiorze <tytul_dziela>Życia zacnych mężów na wzór Plutarcha</tytul_dziela> (<tytul_dziela>Dzieła</tytul_dziela>, t. 10, s. 153---163), gdzie przytoczył następującą anegdotę, będącą osnową tej bajki: ,,Czuły o dobro poddanych monarcha przykładny oraz małżonek nie zaniedbywał obowiązków prawego ojca. Nie spuszczał się na mistrze i nauczyciele, lubo ich jak najdoświadczeńszych dobierał, a z każdej okoliczności biorąc wstęp i pochop ku zbawiennym przestrogom, gdy razu jednego płynął z nimi po rzece, rzekł: Widzicie, dzieci, jak woda nasz czołn unosi, ale go i pogrążyć może. Miejcież to na pamięci, iż lud jest podobnym do wody, a rządca do czółna". Przypowieść tę z kolei wziął Krasicki z posiadanego we własnej bibliotece dzieła J. B. Du Halde' a, <tytul_dziela>Description [...] de l'Empire de la Chine</tytul_dziela>, Paris 1735, t. I, s. 442, co ustalił Mikulski, s. 218---221.</pr></akap>
+    </nota>
+    <strofa><begin id="b1194607886450"/><motyw id="m1194607886450">Mądrość</motyw>Chińczyki mają rozum, choć daleko siedzą,/
+I bajki wiedzą.<end id="e1194607886450"/>/
+Jeden z nich, a co większa, <begin id="b1194608105660"/><motyw id="m1194608105660">Król, Nauka, Ojciec, Syn</motyw>cesarz tego ludu,/
+Nie szczędził trudu,/
+Aby pan syn, następca jego, nie był osłem./
+Raz płynął z nim po wodzie, a gdy robił wiosłem/
+I płynąc nucił,/
+W brzeg uderzył i łódki ledwo nie wywrócił:/
+Obadwa się przestraszyli./
+Korzystając ojciec z chwili/
+Rzekł: ,,Patrz, jak przez niebaczność złem sobie poradził,/
+Gdybym nie śpiewał, o brzeg byłbym nie zawadził./
+<begin id="b1194608031023"/><motyw id="m1194608031023">Państwo, Przywódca, Władza</motyw>Z mojego czynu/
+Naucz się synu:/
+Łódka tron, lud jest woda i nosi ją snadno;/
+Kiedy sternik niebaczny, łódka idzie na dno<end id="e1194608031023"/>".<end id="e1194608105660"/></strofa>
+    <naglowek_rozdzial>4. Kogut</naglowek_rozdzial>
+    <strofa><begin id="b1194608244311"/><motyw id="m1194608244311">Dworzanin, Dwór, Przemijanie, Ptak, Sługa</motyw>Kogut, iż piał na odmianę,/
+Zyskał życie pożądane./
+W szczęśliwej porze/
+Osiadł we dworze./
+Skoro raz pan umieścił,/
+Każdy sługa go pieścił:/
+Zażywając do rady/
+Pan, panięta, sąsiady,/
+Uwielbiali proroka/
+W pół roka./
+Zapiał był raz po deszczu: --- Odmiana!/
+Więc zaraz z rana/
+Gospodarz w pole,/
+Sąsiad na rolę/
+Szli zaufale;/
+Ale/
+Wpośród roboty/
+Nadeszły słoty./
+Kogut winien --- więc na niego!/
+On sprawcą wszystkiego złego!/
+On źle poradził,/
+On grad sprowadził,/
+On czas oziębił,/
+On zasiew zgnębił,/
+On zepsuł pole,/
+On zniszczył rolę!/
+Idąc na śmierć, rzekł nieborak:/
+,,Dobrze mi tak, żem był dworak".<end id="e1194608244311"/></strofa>
+    <naglowek_rozdzial>5. Wóz z sianem</naglowek_rozdzial>
+    <strofa><begin id="b1194608296641"/><motyw id="m1194608296641">Głupota, Praca</motyw><begin id="b1195566390211"/><motyw id="m1195566390211">Koń</motyw>Przy powrozie/
+Na wozie/
+Wielki ciężar konie wlekły,/
+Więc sobie rzekły:/
+,,Aby naszą pracę skrócić:/
+Starajmy się wóz wywrócić".<end id="e1195566390211"/>/
+I tak się stało:/
+Siano się w wodzie zmaczało./
+Ale czego nie dociekły,/
+Cięższe, bo zmokłe, do domu przywlekły./
+<begin id="b1195566406706"/><motyw id="m1195566406706">Głód</motyw>A nim wyschło bywszy w wodzie,/
+Pracowały trzy dni w głodzie.<end id="e1195566406706"/><end id="e1194608296641"/></strofa>
+    <naglowek_rozdzial>6. Komar</naglowek_rozdzial>
+    <strofa>Brzęczał komar wesoło, bo się dobrze napił./
+Gdy się więc kwapił,/
+Aby się to jeszcze stało,/
+Co mu się już raz udało,/
+Źle w tym sobie poradził:/
+Brzękiem własnym się zdradził./
+I gdy próżno się trudził,/
+A śpiącego obudził,/
+Czatowany po głosie,/
+Skończył życie na nosie./
+I cóż z tego wybadać?/
+Lepiej milczeć niż gadać.</strofa>
+    <naglowek_rozdzial>7. Zajączek<pr>Wiersz ogłoszony był w ,,Co tydzień" (1799, nr 2) w kontekście odpowiedzi na list czternastoletniej panny, skarżącej autora dawniejszego felietonu noworocznego o przymówki, iż panny na każdy nowy rok szpetnieją. Po tekście bajki dopisany był następujący morał <slowo_obce>ad personam</slowo_obce>: ,,Żeby więc w jesieni, to jest w dojźrzałym wieku, nie narzekać, trzeba na wiosnę, to jest w czternastym roku, który się w wigilią ś. Agnieszki zacznie, po trawkach niewiele skakać, po łączkach nie bardzo igrać". Bajka --- według Górskiego, s. 220 --- bliska jest konceptowi bajki o żabach Desbillonsa: <tytul_dziela>Ranunculus et rana</tytul_dziela> (VI 8).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194608465596"/><motyw id="m1194608465596">Wiosna</motyw>Już pora miła/
+Wiosny wschodziła;/
+Młode gałązki/
+Szły na zawiązki<pr><slowo_obce>Szły na zawiązki</slowo_obce> --- wypuszczały pączki.</pr>,/
+<begin id="b1194608591623"/><motyw id="m1194608591623">Czas , Młodość , Przemijanie, Starość</motyw>Trawki bujały:/
+Zajączek mały/
+Cieszył się wiosną./
+Mruczał jednak na trawki, że tak prędko rosną./
+Bo dla takiej odmiany/
+I widzieć nie mógł, i nie był widziany./
+Gdy je więc wydeptywał, po łące igrając,/
+Rzekł stary zając:/
+,,Zetną trawki, ty wzrośniesz i gdy się czas zmieni,/
+<begin id="b1194608615808"/><motyw id="m1194608615808">Jesień</motyw>Na to, co w wiośnie pragniesz, zapłaczesz w jesieni<end id="e1194608615808"/>".<end id="e1194608591623"/><end id="e1194608465596"/></strofa>
+    <naglowek_rozdzial>8. Koń i wielbłąd</naglowek_rozdzial>
+    <nota>
+      <akap>z Lessinga<pr>Gotthold Ephraim Lessing (1729---1781) --- niemiecki dramatopisarz, krytyk literatury i filozof, napisał m. in. około stu bajek prozą; w rozprawie o bajce (<tytul_dziela>Abhandlungen über die Fabel</tytul_dziela>, 1759) postulował zwięzłość i jasność oraz prostotę.</pr></akap>
+    </nota>
+    <strofa><begin id="b1195566461881"/><motyw id="m1195566461881">Chciwość</motyw>Mało dla nas, co mamy, więcej chcemy jeszcze./
+<begin id="b1195566489299"/><motyw id="m1195566489299">Koń</motyw>A że to prawda, powieść o koniu umieszczę.<end id="e1195566461881"/>/
+Skarżył się przed Jowiszem, hardy i zuchwały/
+Iż choć wspaniały,/
+Chociaż rześki, ozdobny<pr><slowo_obce>ozdobny</slowo_obce> --- tu: piękny, okazały.</pr>,/
+Choć do skoków sposobny,/
+Chociaż stąd bywa powszechnie chwalonym,<end id="e1195566489299"/>/
+,,Przecież się mniemał być upośledzonym./
+,,W czymże to? --- rzekł mu Jowisz --- mów, na czym ci zbywa?"/
+,,Oto kark niezbyt wzniosły, a zbyt gęsta grzywa./
+Nogi nie dość wysokie,/
+Piersi nie dość szerokie;/
+Każesz nosić człowieka, a siodła nie dałeś"./
+,,Ujźrzysz, co chciałeś" ---/
+Rzekł Jowisz i natychmiast postawił wielbłąda./
+Koń gdy pogląda:/
+,,Oto masz z małą grzywą --- rzekł Jowisz --- kark wzniosły,/
+Siodło --- garb wyniosły,/
+Piersi, jak chciałeś,/
+Nogi długie, jakowych do chodu żądałeś./
+Godzien byś za zuchwałość, porównany<pr><slowo_obce>porównany</slowo_obce> --- zrównany, postawiony na równi.</pr> z bydłem,/
+Został straszydłem./
+<begin id="b1195566526557"/><motyw id="m1195566526557">Strach </motyw>Ale głupstwu wybaczam; lecz na ukaranie/
+Wielbłąd zostanie"./
+Jakoż skoro go ujźrzy z daleka czy z bliska,/
+Drży koń z strachu, rżę trwożny, zżyma się i pryska<end id="e1195566526557"/><pr><slowo_obce>pryska</slowo_obce> --- tu: parska.</pr>.</strofa>
+    <naglowek_rozdzial>9. Gęsi<pr>Według podań staroitalskich podczas najazdu Gallów na Rzym (w IV w. p.n.e.) gęsi kapitolińskie poświęcone Junonie, w chwili gdy nieprzyjaciel skradał się pod mury tej twierdzy, obudziły krzykiem obrońców miasta przyczyniając się w ten sposób do jego uratowania.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1195566547557"/><motyw id="m1195566547557">Ptak</motyw>Gęsi, iż Rzym uwolniły,/
+Wielbione były;/
+A że się to i w nocy, i krzyczeniem działo,/
+Ujęte chwałą,/
+Szły na radę i stanęło,/
+Aby zacząć nowe dzieło:/
+W krzyczeniu się nie szczędzić,/
+Lisy z lasa wypędzić,/
+Więc wspaniałe a żwawe/
+Poszły w nocy i wrzawę/
+W lesie zrobiły,/
+Lisy zbudziły:/
+A te, gdy z jam wypadły./
+Zgryzły gęsi i zjadły.<end id="e1195566547557"/></strofa>
+    <naglowek_rozdzial>10. Wabik<pr><slowo_obce>Wabik</slowo_obce> --- instrument naśladujący głosy ptaków używany przez myśliwych podczas polowania.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1195566591303"/><motyw id="m1195566591303">Zwierzęta</motyw>Wabił strzelec tak dobrze, iż zwodził zwierzęta;/
+Szły na głos albo raczej na śmierć niebożęta./
+On zaś gubiąc i zwierza, i ptaszęta liche/
+Jeszcze się z nich naśmiewał i podnosił w pychę.<end id="e1195566591303"/>/
+Trafiło się, iż gdy raz z wabikiem polował,/
+Drugi strzelec, co także ma ptaszki czatował,/
+Głos słysząc, gdy na ten krzyk strzelić się ośmielił,/
+Zamiast ptaszka kompana swojego postrzelił./
+I to może być nauką:/
+Gubi się frant<pr><slowo_obce>frant</slowo_obce> --- człowiek przebiegły, chytry, spryciarz, szalbierz.</pr> swoją sztuką.</strofa>
+    <naglowek_rozdzial>11. Góra i dolina</naglowek_rozdzial>
+    <strofa><begin id="b1194608899370"/><motyw id="m1194608899370">Bezpieczeństwo</motyw>Jak to zwyczaj, wyższy, hardy./
+Doznawając zwykłej wzgardy/
+Rzekła raz dolina górze:/
+,,Ty się wznosisz, ja się nurzę,/
+Jednak bym się nie mieniała"./
+Góra, szczytem swym zuchwała,/
+Pogroziła dolinie;/
+Ale w tejże godzinie/
+<begin id="b1195566653306"/><motyw id="m1195566653306">Drzewo</motyw>Osiadł tuman<pr><slowo_obce>tuman</slowo_obce> --- gęsta mgła, chmura.</pr> na górze,/
+A z nim wiatry i burze:/
+Wiatr liść dębów pomiotał,/
+Cedry piorun zdruzgotał.<end id="e1195566653306"/><end id="e1194608899370"/></strofa>
+    <naglowek_rozdzial>12. Pszczółka</naglowek_rozdzial>
+    <strofa>Składała pszczółka na wiatr<pr><slowo_obce>składała pszczółka na wiatr</slowo_obce> --- Zdanie eliptyczne. Domyślnie: pszczółka zrzucała winę.</pr>, ale to podobno/
+Chciało się żyć osobno:/
+Zgoła jak się wyprawiła,/
+Przez trzy dni w domu nie była./
+Cukier jej zasmakował; chciała się sposobić,/
+Jakby go zrobić./
+Choć się wiele pracowało,/
+Kiedy się to nie udało,/
+Po kryjomu/
+Wróciła do domu./
+A szerszenie tymczasem,/
+Bujające za lasem,/
+W ul się zakradły/
+I miód jej zjadły./
+I nie pszczółkom to bywa!/
+Kto ma niechaj używa!/
+<begin id="b1194608998547"/><motyw id="m1194608998547">Chciwość</motyw>Chciwość żądze podnieca, zbytnie żądze źle wiodą:/
+Dobry rozum po szkodzie, lepszy rozum przed szkodą<end id="e1194608998547"/><pr><slowo_obce>Dobry rozum po szkodzie, lepszy rozum przed szkodą</slowo_obce> --- wiersz ten wszedł do repertuaru przysłowiowego.</pr>.</strofa>
+    <naglowek_rozdzial>13. Człowiek i gołębie</naglowek_rozdzial>
+    <strofa><begin id="b1195566728977"/><motyw id="m1195566728977">Ptak, Zwierzęta</motyw>W gołębniku chowane na wyniosłym dębie/
+Skarżyły się na ludzi niewinne gołębie;/
+Skarżyły się, i słusznie, strapione, zwierzęta,/
+Iż szły dla nich na jadło młode gołębięta./
+Wtem szła matka na strawę<pr><slowo_obce>na strawę</slowo_obce> --- na poszukiwanie pożywienia.</pr>; postrzegł jastrząb chciwy,/
+Więc w biegu wybujałym kiedy zapalczywy/
+Już ją tylko miał ująć, w czasie, co ugnębia,/
+Postrzegł strzelec gonitwę i zabił jastrzębia./
+Ocalona, lot nagły pomału zelżyła<pr><slowo_obce>zelżyła</slowo_obce> --- tu: zwolniła.</pr>,/
+A kiedy do gniazdeczka i dzieci przybyła,/
+A przybyła z radością, uczuciem i drżeniem,/
+Rzekła: ,,I człowiek jednak niezłym jest stworzeniem"<end id="e1195566728977"/></strofa>
+    <naglowek_rozdzial>14. Wyrok</naglowek_rozdzial>
+    <strofa><begin id="b1195566831063"/><motyw id="m1195566831063">Młodość , Starość</motyw>Czy nos dla tabakiery, czy ona dla nosa,/
+Była wielka dysputa ze starym młokosa,/
+Na złotnika sąd przyszedł; bezwzględny a szczery/
+Dał wyrok nieodwłocznie: ,,Nos dla tabakiery!"<end id="e1195566831063"/></strofa>
+    <naglowek_rozdzial>15. Pochodnia i świeca</naglowek_rozdzial>
+    <strofa><begin id="b1195566855500"/><motyw id="m1195566855500">Próżność</motyw>Świeca blisko pochodni raz stawiona była,/
+Więc harda wielkim blaskiem gdy się wynosiła,/ 
+Rzekł ktoś: ,,Cudzej jasności małaś uczestniczka:/
+Zna każdy, co pochodnia; zna każdy, co świéczka".<end id="e1195566855500"/></strofa>
+    <naglowek_rozdzial>16. Wino szampańskie<pr>K. Koźmian wspomniał w <tytul_dziela>Pamiętnikach</tytul_dziela> (Wrocław 1972, t. 3, s. 94), że bajka była odczytywana jako aluzja do niewczesnych działań --- zapewne wojennych 1792 i 1794 r. --- mających uwolnić kraj od obcych najazdów. Pisał on w jednoznacznym kontekście: ,,Krasicki, arcybiskup gnieźnieński był niepodejrzanym patriotą. Po ostatnim jednak podziale Polski napisał bajkę, którą tu właściwie przypomnieć można". Dalej następował tekst bajki cytowanej <slowo_obce>in extenso</slowo_obce>. Taką samą interpretację bajki podejmowali niektórzy badacze.</pr></naglowek_rozdzial>
+    <strofa>Niezłe to bywa czasem, co przymusi./
+Mruczało wino, iż go<pr><slowo_obce>go</slowo_obce> --- pojawiająca się czasem u Krasickiego męska forma zaimka w miejsce nijakiej je.</pr> czopek dusi,/
+I żwawe wielce,/
+Wrzało w butelce./
+I póty wrzało, aż go się pozbyło./
+Ale cóż się wydarzyło?/
+Przez połowę wyleciało,/
+Co zostało, wywietrzało:/
+Aż na koniec własnym czynem/
+Poszło w ocet, bywszy winem.</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

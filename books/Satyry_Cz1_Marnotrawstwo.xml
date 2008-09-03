@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Marnotrawstwo">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (5) Marnotrawstwo</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Marnotrawstwo</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><begin id="b1193829634478"/><motyw id="m1193829634478">Bieda, Bogactwo</motyw><wers_akap>,,Znałeś dawniej Wojciecha?” ,,Któż nie znał! Co teraz</wers_akap>/
+Bez sług, ledwo w opończy<pr><slowo_obce>opończa</slowo_obce> --- obszerny płaszcz bez rękawów, służący szczególnie na czas słoty.</pr> brnie po błocie nieraz,/
+Niegdyś w karecie, z której dął się i umizgał,/
+Takich, jakim jest dzisiaj, roztrącał i bryzgał./
+Ustępowali z drogi wielmożnemu panu/
+Lepsi i urodzeniem, i powagą stanu;/
+Nieraz ten, który przedtem od filuta stronił,/
+Westchnął skrycie natenczas, gdy mu się ukłonił./
+Musiał czcić; czegóż złoto nie potrafi dzielne?<end id="e1193829634478"/>/
+Niedługo przecież trwały te czasy weselne,/
+Na złe wyszła wspaniałość. Przyjaciele kuchni,/
+Junacy heroiczni, wzdychacze miluchni,/
+Filozof i na koniec, jak pustki postrzegli,/
+Z maksymami, z wdziękami, z junactwem odbiegli./
+Został się niedostatek, z nim wstyd dawnej pychy;/
+A co niegdyś wystrząsał kufle i kielichy,/
+Co szampańskim, węgierskim<pr><slowo_obce>szampańskim, węgierskim</slowo_obce> --- wina szampańskie i węgierskie należały do najdroższych i pojawiały się na stołach tylko bardzo zamożnej szlachty i magnatów.</pr> pyszne stoły krasił,/
+Wiadrem potem u studni pragnienie ugasił”./
+,,Jak to przyszło?” ,,Nieznacznie. <begin id="b1202403392949"/><motyw id="m1202403392949">Los, Pieniądz</motyw>Łakome są żądze,/
+Pełen jest świat oszustów, toczą się pieniądze.<end id="e1202403392949"/>/
+Zyskał Wojciech szalbierstwem, stracił wszystko zbytkiem;/
+A niedługo się ciesząc niecnoty pożytkiem,/
+Nawet tego nie doznał, gdy nic nie dochował,/
+Żeby zdrajcę, bankruta któżkolwiek żałował./
+<wers_akap>To gorsza, kiedy młody dziedzic wielkiej włości</wers_akap>/
+Zysk zasług przodków swoich, cnoty, poczciwości/
+Niszczy, podły odrodek. Znałeś Konstantyna?”/
+,,Alboż widzieć odrodków u nas jest nowina?/
+Znałem go, ale w nędzy”. ,,Jam znał w dobrym stanie./
+<begin id="b1202403534062"/><motyw id="m1202403534062">Bogactwo, Chciwość, Młodość, Szlachcic</motyw>Młodo zaczął wspaniałe swoje panowanie,/
+Młodo skończył. Rodzice dzieckiem odumarli,/
+Opiekunowie najprzód (jak zazwyczaj) zdarli,/
+Dorwał się panicz rządów. Natychmiast do razu<pr><slowo_obce>do razu</slowo_obce> --- od razu.</pr>,/
+Jedni z sławy, ci z zysku, a tamci z rozkazu,/
+Dworzanie, pokojowi, krewni, asystenci<pr><slowo_obce>asystent</slowo_obce> --- tu: dworzanin, członek świty.</pr>,/
+Przyjaciele, sąsiedzi i plenipotenci,/
+I ta wszystka niesyta stołowników zgraja,/
+Co się zyskiem obłudy karmi i opaja,/
+Natarli wstępnym bojem. Rad pan wszystkim w domu,/
+Wrota jego nie były zamknięte nikomu:/
+Niech zna świat, jak pan możny, dzielny i bogaty.<end id="e1202403534062"/>/
+Grzmią bębny na dziedzińcu<pr><slowo_obce>Grzmią bębny na dziedzińcu</slowo_obce> --- za wzorem dworów magnackich zwyczaj utrzymywania własnego wojska rozprzestrzenił się tak bardzo, że ambicją prawie każdego szlachcica posesjonata było posiadanie własnych żołnierzy, których funkcje ograniczały się do czysto reprezentacyjnych, jak np. dawanie ognia w czasie uczt, oddawanie honorów panu i jego gościom w czasie wizyt.</pr>, na wałach harmaty,/
+Żaki prawią perory<pr><slowo_obce>Żaki prawią perory</slowo_obce> --- powszechnie przyjętym zwyczajem na prowincji były popisy uczniów szkół, zwłaszcza jezuickich i pijarskich, przed panem, który był ich protektorem. Wygłaszane na cześć pana wiersze to przede wszystkim panegiryki.</pr>, ksiądz prefekt<pr><slowo_obce>ksiądz prefekt</slowo_obce> --- nauczyciel w szkole zakonnej, często będący równocześnie zarządzającym drukarnią. Drukarnie prowincjonalne za czasów saskich i jeszcze w początkach panowania Stanisława Augusta należały przeważnie do zakonów.</pr> za nimi/
+Drukiem to wyprobował<pr><slowo_obce>wyprobować</slowo_obce> --- dowieść.</pr>, że dzieły wielkimi/
+<begin id="b1202403802798"/><motyw id="m1202403802798">Pan, Szlachcic, Zabawa</motyw>Przeszedł pan przodków swoich, godzien krzeseł<pr><slowo_obce>krzeseł</slowo_obce> --- urzędu senatorskiego.</pr>, tronów,/
+Prawnuk Piastów po matce, z ojca Jagiellonów<pr><slowo_obce>Prawnuk Piastów...</slowo_obce> --- aluzja do manii wywodzenia przez szlachtę fantazyjnych genealogii, zwłaszcza od władców obcych, głównie starożytnych, i polskich.</pr>./
+»Wiwat pan!« brzmią ogromnym hasłem okolice,/
+<begin id="b1202404296969"/><motyw id="m1202404296969">Jedzenie, Wino</motyw>Dymy z kuchni jak z Etny<pr>Etna --- czynny wulkan na Sycylii.</pr>, a sławne piwnice,/
+Co dziad, pradziad szacownym napełniał likworem<pr><slowo_obce>likwor</slowo_obce> --- płyn, trunek. W <tytul_dziela>Panu Podstolim</tytul_dziela> Krasicki pisze: ,,iż te trunki, które ojcowie nasi po prostu nazywali gorzałką, potem wódką, my teraz ochrzciliśmy likworami”. (I. Krasicki, <tytul_dziela>Pisma wybrane</tytul_dziela>, t. III, s. 246).</pr>,/
+Pełne, zgrai ochoczej stanęły otworem./
+»Wiwat pan! niech wiekuje szczęśliwy i zdrowy!«/
+Objął sienie, przysionki zapach dryjakwowy<pr><slowo_obce>zapach dryjakwowy</slowo_obce> --- tu: zapach starego wina. W liście pisanym z Berlina 17 II 1796 prosi Krasicki brata Antoniego, by przysłano mu wina: ,,starego, wytrawionego, driakwią pachnącego, choćby i 100 dukatów kosztowało, beczkę lub dwa antały”. (I. Krasicki, <tytul_dziela>Pisma wybrane,</tytul_dziela> t. IV, s. 310).</pr>.<end id="e1202404296969"/>/
+Wala się, wadzi, wrzeszczy rozpojona tłuszcza,/
+Pan rad, w domu każdego do siebie przypuszcza.<end id="e1202403802798"/>/
+Ten wziął konia z siedzeniem<pr><slowo_obce>siedzenie</slowo_obce> --- siodło, kulbaka.</pr>, tamten za przysługę/
+Nieboszczyka pradziada z lamusu<pr><slowo_obce>lamus</slowo_obce> --- niewielki budynek, zazwyczaj zabezpieczony od ognia, służący jako skarbiec, ale częściej będący składem rupieci lub spiżarnią.</pr> czeczugę<pr><slowo_obce>czeczuga</slowo_obce> --- krótka szabla tatarska, używana w Polsce w XVII w.</pr>,/
+Ów wlecze złoty dywan, co w skarbcu spoczywał,/
+Dywan, co stół naddziada--ministra okrywał,/
+Gdy w usłudze publicznej pracował lub sądził;/
+Śmieją się z starych gratów, a jak by pobłądził,/
+Wyszydzają wiek dawny, nowy rzesza chwali./
+Liczne przodków portrety wyrzucono z sali<pr>Pan Podstoli opowiada swemu gościowi o podobnym wydarzeniu: ,,Aż mi łzy stanęły w oczach, gdym postrzegł z sali wyrzucone portrety owych zawołanych w ojczyźnie mężów, przodków jego [modnego kawalera]. Pytałem się więc troskliwie, gdzie ich myślał pomieścić. Odpowiedział, iż te obrazy bardzo były już stare, zakopciałe, [...] stroje dziwackie, z brodami, wąsami, czuprynami, w ferezjach jak stangreci; kazał więc ich wyrzucić. Tknięty do żywego, tylem wymógł, iż rozkazał ich szukać; znaleziono pod strychem”. (I. Krasicki, <tytul_dziela>Pisma wybrane</tytul_dziela>, t. III, s. 326).</pr>,/
+Natychmiast, że zbyt wielka, ścieśniają gmach<pr><slowo_obce>gmach</slowo_obce> --- pokój, komnata.</pr> stary:/
+Cztery z niej gabinety<pr><slowo_obce>gabinet</slowo_obce> --- pokój męski do przyjmowania gości.</pr> i dwa buduary<pr><slowo_obce>buduar</slowo_obce> --- ozdobny pokoik kobiecy.</pr>,/
+Że w nich były Starego dzieje Testamentu,/
+Nie cierpiano szpalerów<pr><slowo_obce>szpaler</slowo_obce> --- ozdobne obicie ścian, gobelin.</pr> jednego momentu,/
+Wziął je sąsiad za wyżła, a za dwie papugi/
+Zyskał zbroję złocistą<pr><slowo_obce>złocista</slowo_obce> --- pozłacana.</pr> w zamian sąsiad drugi./
+<wers_akap><begin id="b1202404031978"/><motyw id="m1202404031978">Sługa</motyw>Od czasów nieboszczyka jeszcze jegomości</wers_akap>/
+Płaczą w kącie z szafarzem<pr><slowo_obce>szafarz</slowo_obce> --- klucznik, sługa doglądający gospodarstwa domowego.</pr> stary podstarości<pr><slowo_obce>podstarości</slowo_obce> --- włodarz, rządca majątku.</pr>.<end id="e1202404031978"/>/
+Pan kontent. Skoro w rannej porze słońce błyśnie,/
+Już się przez przedpokoje ledwo kto przeciśnie;/
+Ten ustawia pagody<pr><slowo_obce>pagody</slowo_obce> --- modne w osiemnastowiecznych salonach porcelanowe figurki chińskie, poruszające głowami.</pr> chińskie na kominie<pr><slowo_obce>Ten ustawia pagody chińskie...</slowo_obce> --- egzotyzm wschodni pojawia się w Polsce jako moda czasów stanisławowskich. Oddziałują tu wyraźnie wpływy francuskie, a również stosunki handlowe z Anglią. Modne są wówczas drobne ozdoby figuralne sprowadzane z Chin, w ogrodach wznoszone są domki chińskie; w literaturze pojawiają się coraz częściej tematy wschodnie.</pr>,/
+Ten perskie gerydony<pr><slowo_obce>girydon</slowo_obce> --- stolik okrągły o jednej nodze.</pr>, ów japońskie skrzynie,/
+Pełno muszlów zamorskich, afrykańskich ptaków,/
+Wrzeszczą w klatkach papugi, krzyk szczygłów, świst szpaków,/
+Bije zegar kuranty<pr><slowo_obce>Bije zegar kuranty</slowo_obce> --- melodia wygrywana przez mechanizm ukryty w zegarze; tu: precyzyjnie skonstruowana aparatura fletowa wygrywająca melodię rokokowego tańca dworskiego --- menueta.</pr>, a misterne flety/
+Co kwadrans, co godzina dudlą menuety./
+<begin id="b1202404213459"/><motyw id="m1202404213459">Bogactwo, Pan, Pochlebstwo</motyw>Wchodzi pan, pasie oczy nowymi widoki,/
+Zewsząd gładkie podchlebstwa i ukłon głęboki;/
+Znają się na wielkości i pan na niej zna się,/
+A chociaż do mówienia z gminem uniża się,/
+Zna, czym jest. Wszyscy »wiwat« skoro tylko kichnie./
+Na kogo okiem rzuci, każdy się uśmiechnie,/
+Kontent z pańskich faworów.<end id="e1202404213459"/> Wtem nowe kredense<pr><slowo_obce>kredens</slowo_obce> --- zastawa stołowa.</pr>,/
+Dwa mniemane Wandyki<pr><slowo_obce>Wandyk</slowo_obce> --- Anthonis Van Dyck (1599--1641), sławny malarz flamandzki; uprawiał głównie dworskie malarstwo portretowe. ,,Portrety jego w rodzaju swoim są najcelniejsze” --- czytamy w <tytul_dziela>Zbiorze potrzebn. wiad.</tytul_dziela></pr> i cztery Rubense<pr>Peter Paul Rubens (1577--1640) --- wielki malarz flamandzki, reprezentant dworskiego malarstwa wczesnobarokowego. ,,Obrazy jego zaleca najbardziej wytworność ułożenia albo kompozycja i żywość farb przedziwna. Najcelniejsze Europy galerie obrazami jego zagęszczone są”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>).</pr>/
+Niosą w pakach hajduki<pr><slowo_obce>hajduk</slowo_obce> --- służący ubrany na wzór piechoty węgierskiej. Ochocki, po opisaniu bardzo dokładnym ubioru hajduków, dodaje: ,,Na hajduka dobrze zrobić odzienie było wielkim kunsztem; dobierano zwykle na nich jak najlepiej zbudowanych ludzi. [W kościele] hajduk trzymał przy panu pałasz, kiedy nie było wielkiego festu, w uroczyste bowiem dni wszyscy szli do kościoła przy pałaszach”. (J. D. Ochocki, <tytul_dziela>Pamiętnik</tytul_dziela>, Wilno 1857, t. I, s. 96--97).</pr>; wyjmują, gmin cały/
+Złoto ważne uwielbia, czci oryginały./
+A pan wszystkich naucza, jak Rubens w marmurze/
+Jeszcze lepiej rznął twarze, a w architekturze,/
+Co to wszystkich patrzących dziwi i przenika,/
+Nie było celniejszego mistrza nad Wandyka<pr><slowo_obce>A pan wszystkich naucza...</slowo_obce> --- ironiczny przytyk do nieuctwa szlachty, bowiem Rubens nie zajmował się rzeźbą, a Van Dyck architekturą.</pr>./
+»To to pan! --- krzyczy zgraja --- to wiadomość rzeczy!«/
+Wtem, gdy wszyscy w aplauzach, a żaden nie przeczy/
+Wpośród ciżby wielbiącej, rejestrzyk<pr><slowo_obce>rejestrzyk</slowo_obce>, lub: <slowo_obce>regestrzyk</slowo_obce> --- zdrobniale: rachunek.</pr> podaje/
+<begin id="b1202404854661"/><motyw id="m1202404854661">Bogactwo, Pan, Polak, Niemiec</motyw>Snycerz, malarz, tapicer, których cudze kraje/
+Na to do nas zesłały, aby według stanu/
+Dogadzali wytwornie wspaniałemu panu./
+Nie czytał pan regestrów. Kto regestra czyta?/
+Podpisał; niech zna Niemiec, jak Polska obfita.<end id="e1202404854661"/>/
+Tak ów, co po jałmużnę niegdyś do Włoch spieszył,/
+Złoto rzucał, nic nie wziął, a dumą rozśmieszył<pr><slowo_obce>Tak ów, co po jałmużną...</slowo_obce> --- mowa o Jerzym Ossolińskim, który w czasie poselstwa do Rzymu w r. 1633 zadziwił cudzoziemców świetnością i bogactwem orszaku, ale oburzył szlachtę przyjęciem wysokich tytułów cudzoziemskich i częściową tylko realizacją instrukcji poselskiej, przede wszystkim zaś tym, że nie przywiózł z Rzymu zakazu nabywania dóbr ziemskich przez duchowieństwo.</pr>./
+Lecą dnie w towarzystwie dobranych współbraci,/
+A że wojaż<pr><slowo_obce>wojaż</slowo_obce> --- podróż.</pr> nowymi talenty zbogaci,/
+Jedzie do cudzych krajów. Z projektu kontenci,/
+Wysłani na kontrakty<pr><slowo_obce>kontrakty</slowo_obce> --- zjazdy szlachty na doroczne jarmarki dla celów handlowych i towarzyskich. Szczególnym powodzeniem cieszyły się kontrakty lwowskie, dubieńskie i kijowskie.</pr> już plenipotenci,/
+Ten przedaje wpół darmo, a wdzięczen ochocie,/
+Dał ułomek kradzieży kupiec w dożywocie<pr><slowo_obce>Dał ułomek kradzieży...</slowo_obce> --- część zysku odstąpił plenipotentowi, który umożliwił mu przeprowadzenie zyskownego interesu.</pr>,/
+Ten zastawia za bezcen, ów fałszuje akty:/
+Tak to robią szczęśliwych zyskowne kontrakty!/
+Wraca się przecież cząstka do tego, co zdarli,/
+Wdzięczen, że go w potrzebie nieuchronnej wsparli;/
+Wyjeżdża, niesie haracz niszczącej nas modzie,/
+A weksel lichwopłatny mając na powodzie<pr><slowo_obce>na powodzie</slowo_obce> --- luźno uwiązany na postronku; tu: ciągnący się za nim.</pr>,/
+<begin id="b1202405173429"/><motyw id="m1202405173429">Polak, Próżność, Szlachcic, Upadek</motyw>Dziwi kraje sąsiedzkie nierozumnym zbytkiem/
+I z tym swojej podróży powraca użytkiem,/
+Że co panem wyjechał przystojnym i godnym,/
+Wraca grzecznym filutem i żebrakiem modnym./
+<wers_akap>Nie ganię ja podróże, ale niech nie niszczą.</wers_akap>/
+Co po guście, dłużnicy gdy płaczą i piszczą?/
+Co po fantach, za które poszły wsie dziedziczne?/
+Bogaciemy, ubodzy, kraje okoliczne;/
+A zbytek, co się tylko czczym pozorem chlubił,/
+Okrasił nas powierzchnie<pr><slowo_obce>powierzchnie</slowo_obce> --- powierzchownie, pozornie.</pr>, a w istocie zgubił<end id="e1202405173429"/>”.
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

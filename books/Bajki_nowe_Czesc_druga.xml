@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_nowe/Cz%C4%99%C5%9B%C4%87_druga">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki nowe (2)</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki nowe</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <naglowek_rozdzial>Bajki nowe. Część druga</naglowek_rozdzial>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Gołębie</naglowek_rozdzial>
+    <nota>
+      <akap>z indyjskiego, Pilpaja<pr>Autor oznaczony przez Krasickiego w podtytule: <slowo_obce>Pilpaj</slowo_obce> (albo <slowo_obce>Bidpai</slowo_obce>) --- filozof i pisarz bramiński, któremu przypisuje się autorstwo zbioru bajek zwierzęcych. W XII w. przełożono jego bajki na łacinę, a na początku XVIII w. A. Galland opracował ich przekład francuski za pośrednictwem wersji tureckiej. Krasicki posiadał edycję A. Gallanda (<tytul_dziela>Les Contes et Fables indiennes de Bidpai et de Lokman</tytul_dziela>, Paris 1724), z której korzystał też przy opracowaniu bajki <tytul_dziela>Les deux Pigeons</tytul_dziela> (Mikulski, s. 214---216). Popularność bajki zaświadcza wiele innych przekładów, m.in. Lafontaine'a (tytuł: jw., IX 2) --- choć znacznie różny od bajki Krasickiego, A. Houdara de la Motte'a (tytuł: jw., III 4), a na gruncie polskim Trembeckiego, W. Miera, J. Ursyna Niemcewicza.</pr></akap>
+    </nota>
+    <strofa><begin id="b1191577342188"/><motyw id="m1191577342188">Przyjaźń, Ptak</motyw>Dwa gołąbki razem żyły/
+I szczęśliwe sobą były./
+Jeden się zwał Bezendech, Newazendech drugi/
+W jednym jadły korytku, z jednej piły strugi./
+Razem po polach bujały,/
+Razem do domu wracały./
+Zgoła czy w wieczór, czy rano,/
+Zawżdy je razem widziano.<end id="e1191577342188"/>/
+Nie masz w świecie rzeczy stałej!/
+Zażyłości poufałej/
+Nie najdłuższe było trwanie./
+<begin id="b1191577507486"/><motyw id="m1191577507486">Bezpieczeństwo, Dom, Podróż, Szczęście</motyw>Mimo prośby, odradzanie/
+Bezendech chciał świat odwiedzieć<pe><slowo_obce>odwiedzieć</slowo_obce> --- zwiedzić.</pe>,/
+Uprzykrzyło się na miejscu siedzieć,/
+I poleciał... Miło było,/
+Co obaczył, to bawiło./
+Gdzie siadł, nowe widowiska./
+Wtem, gdy już noc była bliska,/
+A odpocząć sam gdzie nie wie,/
+Usiadł na drzewie./
+Nadeszła burza, grad i ulewa;/
+Spuścił się z wierzchołka drzewa./
+I tak jeszcze gorzej było./
+Wspomniał więc sobie, jak miło/
+Spokojnej chwili używać,/
+W gołębniku odpoczywać./
+Po smutnej porze/
+Nastały zorze./
+Deszcz, grad, grzmoty ustały./
+Wskroś przemokły, zmartwiały,/
+Widząc już rzeczy postać okazalszą<pr><slowo_obce>okazalszą</slowo_obce> --- tu: lepszą, korzystniejszą.</pr>,/
+Otrzepawszy skrzydełka wziął lot w drogą dalszą./
+A gdy coraz nowymi widoki się cieszy,/
+<begin id="b1191577620371"/><motyw id="m1191577620371">Wróg</motyw><begin id="b1195564747807"/><motyw id="m1195564747807">Walka</motyw>Postrzegł, że ktoś za nim spieszy./
+Był to jastrząb w pędzie lotny./
+Gołąb zwrotny,/
+Jak mógł, uciekał.../
+Wtem orzeł z góry,/
+Straszny pazury,/
+Padł na jastrzębia; i gdy walczyli,/
+Korzystając z dobrej chwili,/
+Przecież tę miał pociechę,/
+Iż się dostał pod strzechę.<end id="e1195564747807"/>/
+<end id="e1191577620371"/><begin id="b1191577567392"/><motyw id="m1191577567392">Niewola</motyw>Nazajutrz, gdy dzień nastał pogodny,/
+Letki, bo głodny,/
+Postrzegł gołębia: a on się pasie./
+,,I to zda się!"/
+--- Pomyślał sobie; więc się z nim wita./
+Strawa obfita,/
+Potrzebna zdrowiu,/
+Na pogotowiu./
+<begin id="b1195564784832"/><motyw id="m1195564784832">Niewola</motyw>Niedługo myśląc jął się do jadła./
+Wtem sieć zapadła/
+I wraz z kolegą został w więzieniu.<end id="e1195564784832"/>/
+Gdy więc w srogim utrapieniu/
+Płakał stroskany,/
+Postrzegł, iż tamten był uwiązany./
+<begin id="b1195564822729"/><motyw id="m1195564822729">Los</motyw>Więc mu złorzeczył, mądry po stracie,/
+A ów: ,,Nie krzycz, bracie,/
+Płacz tu i krzyk nie pomoże!/
+Jakeś wpadł, tak i siedź, niebożę.<end id="e1195564822729"/>/
+I mnie się to przydało<pr><slowo_obce>przydało</slowo_obce> --- przydarzyło, przytrafiło.</pr>./
+Lecz poweźmy myśl wspaniałą!/
+Kto wie, czy wspólni/
+Nie będziem wolni?"/
+Jakoż tyle pracowali,/
+Iż się z więzów wydostali/
+I każdy w swoją poleciał stronę.<end id="e1191577567392"/>/
+Bezendech, kontent, iż miał ochronę,/
+<begin id="b1195565057055"/><motyw id="m1195565057055">Dom</motyw>Nie mówiąc nic nikomu/
+Powędrował do domu./
+Już widział z bliska/
+Miłe siedliska,<end id="e1195565057055"/>/
+Już do swojego domku się spieszył,/
+Gdy strzelec skrzydło strzałą wskroś przeszył./
+Wpadł w studnią i ostatnia ginęła otucha;/
+Szczęściem niespodziewanym studnia była sucha./
+Więc kiedy się ocucił,/
+A do lotu jak powrócił,/
+A raczej gdy sił zdobywał,/
+Ponad ziemię podlatywał,/
+Pełen wesela,/
+Znalazł dom i przyjaciela./
+<begin id="b1195565105187"/><motyw id="m1195565105187">Podróż</motyw>A doznawszy, jak podróż i trudzi, i smuci,/
+Przysiągł, iż więcej do niej nie powróci.<end id="e1195565105187"/><end id="e1191577507486"/></strofa>
+    <naglowek_rozdzial>2. Platon<pr>Bajka korzysta z J. Gaya (<tytul_dziela>L' Homme et la Puce</tytul_dziela> I 48), wybierając z wielu przedstawionych tam relacji ostatnią o pchle, która ,,sądzi, że w niej ma wszechświat cały swą ostateczną przyczynę" (Górski, s. 215). Platon, jako symbol świata filozofii, został tu potraktowany żartobliwie, jakkolwiek Krasicki bardzo cenił greckiego filozofa, co zaświadczył w <tytul_dziela>Zbiorze potrzebniejszych wiadomości</tytul_dziela>, s. v. Platon: ,,Księgi jego pełne nauki doskonałej, pisane stylem wybornym, po większej części doszły do teraźniejszych wieków, i mimo nowe w naukach wynalazki, zawżdy swój szacunek w potomności mieć będą".</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191577921814"/><motyw id="m1191577921814">Filozof, Kondycja ludzka, Mędrzec, Zwierzęta</motyw><begin id="b1195565155439"/><motyw id="m1195565155439">Uczeń</motyw>Platon, raz swoje zgromadziwszy ucznie,/
+Wybornie, sztucznie<pr><slowo_obce>sztucznie</slowo_obce> --- tu: w sposób wykwintny, misterny.</pr>/
+Dowodził, jak to mędrzec panuje nad światy,/
+Sam dzielny, sam bogaty,<end id="e1195565155439"/>/
+Jemu się ziemia sili, jemu wschodzą zorze,/
+Pieni się morze:/
+I powietrze, i gwiazdy, i słońce, i nieba/
+Dają, co trzeba./
+<begin id="b1195565187352"/><motyw id="m1195565187352">Żywioły</motyw>On lotem nieścignionym wybujałej myśli/
+Czy co działa, czy kryśli<pr><slowo_obce>kryśli</slowo_obce> --- wyznacza, zamierza, kreśli plany.</pr>,/
+Zawiaduje żywiołmi, ziemią, oceanem,<end id="e1195565187352"/>/
+Zwierząt, ludzi jest panem./
+A pchła, co go w nos gryzła, nie zważając nic na to/
+Rzekła: ,,To dla Platona, ale dla mnie jest Plato".<end id="e1191577921814"/></strofa>
+    <naglowek_rozdzial>3. Myszy</naglowek_rozdzial>
+    <strofa><begin id="b1191578029025"/><motyw id="m1191578029025">Bezpieczeństwo, Przemoc</motyw><begin id="b1195565245223"/><motyw id="m1195565245223">Kot</motyw>Każdy się swoim zatrudnia kłopotem:/
+Myślały myszy, co tu robić z kotem./
+Mówiły jedne: ,,Darami go skusić!"/
+Mówiły drugie: ,,Lepiej go udusić!"<end id="e1195565245223"/>/
+Wtem się odezwał szczur szczwany, bo ,stary:/
+,,Próżne tu groźby, próżne i ofiary./
+I dary weźmie, i przysięgi złamie!/
+<begin id="b1194606099605"/><motyw id="m1194606099605">Umiarkowanie</motyw>Najlepiej cicho siedzieć sobie w jamie,/
+A opatrzywszy zewsząd bez łoskotu<pr><slowo_obce>opatrzywszy... bez łoskotu</slowo_obce> --- zabezpieczywszy się bez hałasu, po cichu.</pr>/
+Ani być z kotem, ani przeciw kotu<end id="e1194606099605"/>".<end id="e1191578029025"/></strofa>
+    <naglowek_rozdzial>4. Noga i but</naglowek_rozdzial>
+    <strofa><begin id="b1191578188782"/><motyw id="m1191578188782">Cierpienie, Pozycja społeczna</motyw>Wiedli wojnę i srogą/
+But z nogą./
+Ten ją winował,/
+Że się na niej psował;/
+Tamta, iż ją uciskał./
+Wdał się w to szewc, co zyskał;/
+A w pokorze i trwodze/
+Kłaniający się nodze./
+Gromiąc buta rzekł, groźno wstrząsając narzędzie:/
+,,Szanuj nogę, choć cię drze --- but bez niej nie będzie".<end id="e1191578188782"/></strofa>
+    <naglowek_rozdzial>5. Pasterz i owce<pr>Motyw występujący również u Lafontaine'a w bajce <tytul_dziela>Le Berger et son Troupeau</tytul_dziela> (IX 19).</pr></naglowek_rozdzial>
+    <strofa>Owca na wilka/
+Płakała dni kilka:/
+Młode jagnię/
+Zagryzł w bagnie./
+I pasterz, co go hodował,/
+Żałował;/
+Zgoła płakali oboje/
+Jak swoje./
+Widząc to koza rzekła do drugiej:/
+,,Patrz, co to człowiek czyni usługi!/
+Zasila w życiu, żałuje w zgubie;/
+Jakże go lubię!"/
+,,Siebie on lubi --- rzekła jej druga ---/
+Chytra to czułość, chytra usługa./
+Nie płacze jagnię<pr><slowo_obce>Nie płacze jagnię</slowo_obce> (dawna forma dopełniacza) --- nie opłakuje jagnięcia.</pr>!/
+On mięsa pragnie!"</strofa>
+    <naglowek_rozdzial>6. Lew chory<pr>Bajki o podobnej ekspozycji znajdują się w zbiorach Ezopa, P. Neveleta i u Lafontaine'a: <tytul_dziela>Le Lion malade et le Renard</tytul_dziela>, VI 14 (Górski, s. 206).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1195565296004"/><motyw id="m1195565296004">Choroba, Zwierzęta</motyw>I panowie chorują, czemuż lwy nie mogą?/
+Boleścią srogą/
+Lew zdjęty ryczał; niebożęta,/
+Drżały zwierzęta./
+Te, co na dworze króla jegomości,/
+W żałości/
+Przymilały się panu. <begin id="b1195565319045"/><motyw id="m1195565319045">Lekarz</motyw>A że gdzie chory,/
+Tam i doktory:/
+Niedźwiedź mimo powagę wraz z lisem kolegą/
+Natychmiast biegą.<end id="e1195565319045"/>/
+W radę: niedźwiedź po prostu/
+Na niestrawność życzył postu;/
+I zdławion za to./
+Lis, przelękły zapłatą,/
+Kiedy się go pytano, co brać na chorobę,/
+<begin id="b1195565344464"/><motyw id="m1195565344464">Jedzenie</motyw>Rzekł: ,,Pan chory na wątrobę./
+Moja rada o tej dobie<pr><slowo_obce>o tej dobie</slowo_obce> --- w takich okolicznościach.</pr>/
+Podjeść sobie:/
+Komu post miły, niech gryzie śledzia,/
+Pan zje niedźwiedzia".<end id="e1195565344464"/>/
+Nadgrodzony obficie, że dogodnie życzył,/
+Nowym kunsztem chorego doktorem uleczył.<end id="e1195565296004"/></strofa>
+    <naglowek_rozdzial>7. Młot z kowadłem</naglowek_rozdzial>
+    <strofa><begin id="b1191578462116"/><motyw id="m1191578462116">Praca, Władza</motyw>Raz zagadło/
+Młot kowadło:/
+,,Czemu w robocie,/
+Młocie, Choć się też raz nie znudzisz/
+I mnie darmo dokuczasz, i sam próżno się trudzisz?/
+,,Alboż z ochoty/
+Pracują młoty? ---/
+Rzekł zagadniony ---/
+Nie ja mam być winiony;/
+Ten nas nagli, co robi./
+A gdy oręż sposobi/
+<begin id="b1195565405982"/><motyw id="m1195565405982">Kara, Zemsta</motyw>W pracy, trzasku, pożarze,/
+My się mściemy, on karze.<end id="e1195565405982"/>"<pr><slowo_obce>My się mściemy, on karze.</slowo_obce> --- miecz jest tu narzędziem kary, a młot zemsty.</pr>.<end id="e1191578462116"/></strofa>
+    <naglowek_rozdzial>8. Rumak i źrebiec<pr>Bajkę tę przesłał Krasicki J. Ursynowi Niemcewiczowi w liście z 29 kwietnia 1792 r. Podobny temat pojawił się w przypowieści o koniu korzystającym z opieki człowieka wyjętej z listu Horacego do Arystiusza i ogłoszonej w przekładzie w ,,Monitorze" (1768, nr 17): ,,Jeleń konia bitniejszy z wspólnych łąk gdy zgonił, / Koń, w długiej bitwie słabszy, pod człeka się schronił, / A gdy ludzkiej pomocy zmordowany szuka, / Twardego na się przyjął niewolę munsztuka. / Lecz gwałtowna wygrana źle mu się powiodła, / Z ust wędzideł, a z grzbietu nie mógł pozbyć siodła." (List X, <tytul_dziela>Urbis amatorem Fuscum salvere iubemus...</tytul_dziela>).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191578887559"/><motyw id="m1191578887559">Bogactwo, Niewola, Próżność, Wolność</motyw><begin id="b1195565480212"/><motyw id="m1195565480212">Koń</motyw>Koń w rzędzie sutym, zewsząd szklniący<pe><slowo_obce>szklniący</slowo_obce> --- błyszczący, lśniący.</pe> złotem,/
+Rżąc deptał ziemię pod jeźdźcem zuchwałym,<end id="e1195565480212"/>/
+Źrebiec bez uzdy posuwisty lotem/
+Uginał trawy w pędzie wybujałym./
+Razem ku sobie zbliżyły się oba./
+Rzekł rumak: ,,Patrzaj, jaka moja postać!/
+Siodło, rząd złoty jak ci się podoba?/
+Przyznaj, bez jeźdźca trudno tego dostać./
+Na wspaniałości wcale się nie znacie,/
+Tułacze w łąkach<pr><slowo_obce>w łąkach</slowo_obce> --- na łąkach.</pr> jak nikczemne bydło"./
+,,Prawda --- rzekł źrebiec --- jednakże, mój bracie,/
+Chociaż to złoto, przecież to wędzidło".<end id="e1191578887559"/></strofa>
+    <naglowek_rozdzial>9. Przyjaciele<pr> Bajka czerpie z <tytul_dziela>Le Lievre et ses Amis</tytul_dziela> J. Gaya (I 49)(Górski, s. 203, 222); była inspiracją dla A. Pługa  do napisania trzyaktowej komedii: <tytul_dziela>Przyjaciele. Bajka Krasickiego dialogowana</tytul_dziela> (Lwów 1870, Biblioteka Mrówki, nr 23).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191579412829"/><motyw id="m1191579412829">Przyjaźń, Wróg</motyw><begin id="b1195565550369"/><motyw id="m1195565550369">Grzeczność, Młodość , Zwierzęta</motyw>Zajączek jeden młody/
+Korzystając z swobody/
+Pasł się trawką, ziółkami w polu i ogrodzie,/
+Z każdym w zgodzie./
+A że był bardzo grzeczny, rozkoszny i miły,/
+Bardzo go inne zwierzęta lubiły.<end id="e1195565550369"/>/
+I on też, używając wszystkiego z weselem,/
+Wszystkich był przyjacielem./
+Raz, gdy wyszedł w świtanie i bujał po łące,/
+Słyszy przerażające/
+Głosy trąb, psów szczekania, trzask wielki po lesie./
+Stanął... Słucha... Dziwuje się.../
+A gdy się coraz zbliżał ów hałas, wrzask srogi,/
+Zając w nogi./
+Wspojźrzy się poza siebie: aż tuż psy i strzelce!/
+Strwożon wielce,/
+Przecież wypadł na drogę, od psów się oddalił./
+<begin id="b1195565592199"/><motyw id="m1195565592199">Koń</motyw>Spotkał konia, prosi go, iżby się użalił:/
+,,Weź mnie na grzbiet i unieś!" Koń na to: ,,Nie mogę,/
+Ale od innych będziesz miał pewną załogę<pr><slowo_obce>załoga</slowo_obce> --- tu: pomoc.</pr>".<end id="e1195565592199"/>/
+Jakoż wół się nadarzył. ,,Ratuj, przyjacielu!"/
+Wół na to: ,,Takich jak ja zapewne niewielu/
+Znajdziesz, ale poczekaj i ukryj się w trawie,/
+Jałowica mnie czeka, niedługo zabawię./
+A tymczasem masz kozła, co ci dopomoże"./
+Kozieł: ,,Żal mi cię, niebożę!/
+Ale ci grzbietu nie dam, twardy, nie dogodzi:/
+Oto wełniasta owca niedaleko chodzi,/
+Będzie ci miętko siedzieć". Owca rzecze:/
+,,Ja nie przeczę,/
+Ale choć cię uniosę pomiędzy manowce,/
+Psy dogonią i zjedzą zająca i owcę:/
+Udaj się do cielęcia, które się tu pasie"./
+,,Jak ja ciebie mam wziąć na się,/
+Kiedy starsi nie wzięli?" --- cielę na to rzekło/
+I uciekło./
+Gdy więc wszystkie sposoby ratunku upadły,/
+Wśród serdecznych przyjaciół psy zająca zjadły<pr><slowo_obce>Wśród serdecznych przyjaciół...</slowo_obce> --- zdanie to weszło do repertuaru przysłów.</pr>.<end id="e1191579412829"/></strofa>
+    <naglowek_rozdzial>10. Konwersacja</naglowek_rozdzial>
+    <strofa>Nie tylko to w Paryżu, nie tylko to w Warszawie/
+Śni się ludziom na jawie./
+Mają też i zwierzęta posiedzenia modne,/
+Swobodne,/
+Wygodne,/
+Płodne<pr><slowo_obce>płodne</slowo_obce> --- w dowcip płodne.</pr>./
+Zeszły się raz w pół lasa<pe><slowo_obce>w pół lasa</slowo_obce> --- w połowie lasu, w środku lasu.</pe>; był dyskurs o człeku:/
+A jak zwyczaj w tym wieku,/
+Tyle o nim gadano,/
+Tak się z niego naśmiano,/
+Z takim sławy ujęciem,/
+Iż ledwo był zwierzęciem./
+Na koniec, gdy raz nierychło/
+Posiedzenie ucichło,/
+Ktoś zagadł małpę co by w nim dociekła<pr><slowo_obce>co by w nim dociekła</slowo_obce> --- jak by go oceniła.</pr>?/
+Rzekła:/
+,,Chciałby on to coś znaczyć, ale mi się tak zdaje,/
+Iż źle małpy udaje".</strofa>
+    <naglowek_rozdzial>11. Wyżeł i brytan</naglowek_rozdzial>
+    <strofa><begin id="b1191579719101"/><motyw id="m1191579719101">Bezpieczeństwo, Pies, Pozycja społeczna, Praca</motyw>Pan strzelił, trafił kaczkę, pies dostał i dobił,/
+A gdy postrzegł brytana, który nic nie robił,/
+Zgrzytnął zębami:/
+,,My tylko sami,/
+Wyżły legawe,/
+Dajem wam strawę,/
+A wy śpicie, leniuchy"./
+,,Patrz na moje łańcuchy ---/
+Rzekł brytan, stróż domowy ---/
+Gdy ty idziesz na łowy,/
+Ja nic wprawdzie nie robię;/
+Ale gdy w nocnej dobie/
+Do wczasu się sposobisz/
+I nic wówczas nie robisz,/
+Ja, uwolnion z łańcucha,/
+Czyniąc urząd podsłucha,/
+Gdy wyręczam kolegę,/
+Pana, ciebie, dom strzegę".<end id="e1191579719101"/></strofa>
+    <naglowek_rozdzial>12. Czapla, ryby i rak<pr>Jest to przeróbka bajki Lafontaine'a <tytul_dziela>Les Poissons et le Cormoran</tytul_dziela> (X 4).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191579946519"/><motyw id="m1191579946519">Zdrada</motyw><begin id="b1195565653621"/><motyw id="m1195565653621">Starość</motyw>Czapla stara, jak to bywa,/
+Trochę ślepa, trochę krzywa,/
+Gdy już ryb łowić nie mogła,<end id="e1195565653621"/>/
+Na taki się koncept wzmogła<pr><slowo_obce>Na taki się koncept wzmogła</slowo_obce> --- zdobyła się na taki pomysł.</pr>/
+Rzekła rybom: ,,Wy nie wiecie,/
+A tu o was idzie przecie"./
+Więc wiedzieć chciały,/
+Czego się obawiać miały./
+,,Wczora/
+Z wieczora/
+Wysłuchałam, jak rybacy/
+Rozmawiali: wiele pracy/
+Łowić wędką lub więcierzem<pr><slowo_obce>więcierz</slowo_obce> --- inaczej żak; specjalny rodzaj sieci do łowienia ryb rozpiętej na drewnianych obręczach i zakładanej w wodach stojących lub wolno płynących.</pr>;/
+Spuśćmy staw, wszystkie zabierzem./
+Nie będę mieć otuchy,/
+Skoro staw będzie suchy"./
+Ryby w płacz, a czapla na to:/
+,,Boleję nad waszą stratą;/
+Lecz można złemu zaradzić/
+I gdzie indziej was osadzić./
+Jest tu drugi staw blisko,/
+Tam obierzcie siedlisko./
+Chociaż pierwszy wysuszą./
+Z drugiego was nie ruszą"./
+,,Więc nas przenieś" --- rzekły ryby./
+<begin id="b1195565703930"/><motyw id="m1195565703930">Podstęp</motyw>Wzdrygała się czapla niby;/
+Dała się na koniec użyć,/
+Zaczęła służyć./
+Brała jedną po drugiej w pysk, niby nieść mając/
+I tak pomału zjadając;/
+Zachciało się na koniec, skosztować i raki./
+<begin id="b1191579986139"/><motyw id="m1191579986139">Zemsta</motyw>Jeden z nich widząc, iż go czapla niesie w krzaki,/
+Postrzegł zdradę, o zemstę zaraz się pokusił.<end id="e1195565703930"/>/
+<begin id="b1195565754332"/><motyw id="m1195565754332">Zdrada</motyw>Tak dobrze za kark ujął, iż czaplę udusił./
+Padła nieżywa:/
+Tak zdrajcom bywa.<end id="e1195565754332"/><end id="e1191579986139"/><end id="e1191579946519"/></strofa>
+    <naglowek_rozdzial>13. Chłop i cielę<pr> Analogiczny temat i rozwiązanie istnieje w bajce <tytul_dziela>Le Chien mal scouru, ou le Combat de Nuit</tytul_dziela> (I 2) księcia L. J. Manciniego de Nivernais(Górski, s. 265).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191580157171"/><motyw id="m1191580157171">Choroba, Lekarz</motyw>Nie sztuka zabić, dobrze zabić sztuka ---/
+Z bajki nauka./
+Szedł chłop na jarmark, ciągnąc cielę na powrozie./
+W lesie, w wąwozie,/
+W nocy burza napadła, a gdy wiatry świszczą,/
+Wśród ciemności postrzegł wilka po oczach, co błyszczą./
+Więc do pałki; jak jął machać nie myślawszy wiele,/
+Zamiast wilka, który uciekł, zabił swoje cielę./
+Trafia się to i nie w lesie, panowie doktorzy!/
+Leki--- pałka, wilk --- choroba, a cielęta --- chorzy.<end id="e1191580157171"/></strofa>
+    <naglowek_rozdzial>14. Jodła i jabłoń<pr>Podobny temat z bajką <tytul_dziela>Malus expoliata</tytul_dziela> (II 1) Desbillonsa (Górski, s. 216); obok ogołoconej jesienią przez ludzi jabłoni nie ma tam wszakże jodły.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1195565821425"/><motyw id="m1195565821425">Drzewo, Próżność</motyw>Jabłoń rzekła sąsiadce: ,,O ponura jodło!/
+Po cóż blisko mnie wzrastasz, gdy jesteś tak podłą?/
+Patrz, do moich owoców jak się każdy spieszy!/
+Patrz, jak widząc, że kwitnę, każdy się ucieszy!"/
+Spadły kwiaty, za czasem<pr><slowo_obce>za czasem</slowo_obce> --- po jakimś czasie.</pr>, owoce zerwano/
+Spadły liście, a zatem<pe><slowo_obce>zatem</slowo_obce> --- potem.</pe> o jabłoń nie dbano./
+Widząc to rzekła jodła: ,,Sąsiadko zbyt harda,/
+Osądź teraz, czy słuszna była twoja wzgarda?/
+O tym, co było zewnątrz, trzymałaś wysoce:/
+Nie ciebie ludzie czcili, lecz twoje owoce".<end id="e1195565821425"/></strofa>
+    <naglowek_rozdzial>15. Podróżny<pr>Według ustalenia I. Turowskiej (<tytul_dziela>Źródło jednej bajki Krasickiego</tytul_dziela>, ,,Ruch Literacki" R. VI: 1931, s. 192) bajka miała pierwowzór w zbiorze F. Blancheta (<tytul_dziela>Apologues et contes orientaux</tytul_dziela>, Paris 1784) w apologu <tytul_dziela>L'Arabe affamé</tytul_dziela> (12).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191580909400"/><motyw id="m1191580909400">Bogactwo, Chleb, Głód, Pieniądz</motyw><begin id="b1195565861540"/><motyw id="m1195565861540">Podróż</motyw>Arab jeden, gdy go noc w podróży zapadła<pr><slowo_obce>zapadła</slowo_obce> --- tu: zaskoczyła.</pr>,/
+A był dwa dni wśród stepu<pr><slowo_obce>wśród stepu</slowo_obce> --- tu zapewne: w pustyni.</pr> bez wody, bez jadła,/
+Postrzegł worek na drodze; wziął, rozweselony,<end id="e1195565861540"/>/
+A w blasku gwiazd chcąc widzieć, czym był napełniony,/
+Jęknął i rzekł niezmierną boleścią przejęty:/
+,,Jam rozumiał, że kasza, a to dyjamenty!"<end id="e1191580909400"/></strofa>
+    <naglowek_rozdzial>16. Bocian i jeleń<pr>Krasicki korzystał z wzoru bajki <tytul_dziela>La Cigogne et le Cerf</tytul_dziela> (I 2) L. E. Billardona de Sauvigny (Mikulski, s. 207---209).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1191581374864"/><motyw id="m1191581374864">Choroba, Miasto, Natura, Wieś</motyw>Bocian, miasta mieszkaniec, mówił jeleniowi:/
+,,Ty kunsztu lekarstw nie znasz"./
+Jeleń mu odpowie: ,,Prawdę mówisz, bocianie, lekarstw nie rozumiem,/
+Ale ty leczysz, a ja chorować nie umiem"./
+<begin id="b1195565957280"/><motyw id="m1195565957280">Mędrzec, Śmierć</motyw>Umarł mędrzec w lat dziesięć na dachu przy mieście:/
+Umarł prostak na puszczy, żył tylko lat dwieście.<end id="e1195565957280"/><end id="e1191581374864"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Z%C5%82o%C5%9B%C4%87_ukryta_i_jawna">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (3) Złość ukryta i jawna</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Złość ukryta i jawna</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><wers_akap><begin id="b1194698461029"/><motyw id="m1194698461029">Fircyk</motyw>Łatwiej nie łgać poetom, ministrom nie zwodzić,</wers_akap>/
+Łatwiej głupiego przeprzeć<pe><slowo_obce>przeprzeć</slowo_obce> --- przekonać.</pe>, wodę z ogniem zgodzić/
+Niż zrachować filuty<pr><slowo_obce>filuty</slowo_obce> --- mianem filutów określa Krasicki charakterystycznych dla powstającego wówczas w Polsce życia wielkomiejskiego, wszelkiego rodzaju frantów, szulerów, lichwiarzy. Do tej samej grupy obyczajowej zalicza (mimo że nie posługuje się tym wyrazem) ,,fircyków”, modnych lekkoduchów, wytwór kosmopolitycznej kultury salonowej. Fircyka zwalczała satyra i komedia obyczajowa (np. Franciszek Zabłocki, <tytul_dziela>Fircyk w zalotach</tytul_dziela>, 1781). Zasadnicze cechy fircyka pokazuje Naruszewicz w szkicu satyrycznym <tytul_dziela>Fircyk</tytul_dziela>: Fircyk grzeczny kawaler --- każdy mi powiada. / Znam go. Je smaczno, pije dobrze, wiele gada. / A na czymże ta grzeczność fircyka zależy? / Czy że mu dziwnym kształtem fryzura się jeży? / Czy że jaki wygwiżdże włoski kancik kusy? / Czy że wonnymi cały pachnie spirytusy? / Na piatach się wykręca, lata jak sparzony / Udając Arlekina z lisimi ogony? / Czy że się rozwaliwszy grądal na kanapie / W przytomności zacniejszych jako wielbłąd sapie? / Czy że swą przed zwierciadłem piękność rozpościera? / Cukrowe kartki pisze i sam je odbiera? / Czy że się coraz w modne suknie stroi ładnie? / Gładko tnie w maryjasza, gładzej karty kradnie? / Bluzga, co ślina niesie, nie ma w gębie tamy, / Gorsząc młodzież niewinną i uczciwe damy? / Czy że z wielkim rękawem, z buczną miną chodzi, / Przymawia i przeprasza, łże i ludzi zwodzi? / Bierze wszystko na kredyt, a gdy mu dopiecze / Pan dłużnik, incognito z miasta gdzieś uciecze? / Czy że się sam powozi lub gdy zima stanie, / Trzaska biczem misternie usiadłszy za sanie? / Och, kiedyż fircyk grzecznym kawalerem takiem, / Któż będzie sowiźrzałem, głupcem i pustakiem? / <tytul_dziela>Zabawy Przyjemne i Pożyteczne</tytul_dziela>, 1771, t. III, cz. I, s. 175--176).</pr>: ciżba, wojsko spore.<end id="e1194698461029"/>/
+Skąd zacząć? Spośród tłumu na hazard<pr><slowo_obce>na hazard</slowo_obce> --- na ślepo, na chybił trafił.</pr> wybiorę./
+<wers_akap><begin id="b1193827401810"/><motyw id="m1193827401810">Zdrada</motyw>Wojciech jadem zaprawny, co go wewnątrz mieści,</wers_akap>/
+Zdradnie wita, pozdrawia, całuje i pieści,/
+W oczy ściska, w bok patrzy, a gdy łudzi wdzięcznie,/
+Cieszy się wewnątrz zdrajca, że oszukał zręcznie./
+Czyni źle, bo gust w samej upatruje złości./
+Zdradza, byleby zdradził, a ten zysk chytrości/
+Stawia mu z cudzych trosków wdzięczne widowiska./
+<begin id="b1194698282342"/><motyw id="m1194698282342">Łzy</motyw>Najmilszy jego napój łza, którą wyciska.<end id="e1194698282342"/>/
+Co słowo --- sztuka zdradna, co krok --- podstęp nowy;/
+Zdrajca czynmi, gestami, milczeniem i słowy./
+Na kogo tylko wspojźrzy, stawia zaraz sidła,/
+A gdy się coraz wzmaga złość jego obrzydła,/
+Jak pająk, co snuł z siebie, rozpostarłszy sieci,/
+Czuwa wśród pasm zawiłych, rychło w nie kto wleci./
+Uśmiech jego nieprawy zmyka się<pr><slowo_obce>zmykać się</slowo_obce> --- pełzać, ślizgać się.</pr> po twarzy,/
+W oczach skra zajadłości błyszczy się i żarzy<end id="e1193827401810"/>:/
+Spuszcza je na blask cnoty, a zjadle<pr><slowo_obce>zjadle</slowo_obce> --- jadowicie, zabójczo.</pr> pokorny,/
+Sili się swej niecnocie kształt nadać pozorny<pr><slowo_obce>pozorny</slowo_obce> --- wspaniały, świetny.</pr>./
+Próżna praca. <begin id="b1193827484412"/><motyw id="m1193827484412">Maska</motyw>Sama się złość z czasem odkrywa./
+Spada maszka<pr><slowo_obce>maszka</slowo_obce> --- maska; por. maszkaron.</pr>, a zdrajca, co pod nią przebywa,/
+Tym jeszcze wszeteczniejszy, im dłużej był tajny.<end id="e1193827484412"/>/
+<wers_akap>Ten, co ma umysł zwrotny<pr><slowo_obce>zwrotny</slowo_obce> --- przewrotny.</pr>, a język przedajny,</wers_akap>/
+Idzie za nim Konstanty, szczęśliwy, że wygrał,/
+A co w pierwszych początkach żartował i igrał,/
+Czyniąc jak od niechcenia, gdy sztucznie<pr><slowo_obce>sztucznie</slowo_obce> --- przebiegle, chytrze.</pr> się czaił,/
+Tak kunszt zdradnych podstępów dowcipnie utaił,/
+Iż ten, co oszukany, nie wie, jak wpadł w pęta;/
+Wpadł jednak, a fortelnie sztuka przedsięwzięta/
+Tego, co ją dokazał, uczyniła sławnym./
+A poczciwość? Ten przymiot służył czasom dawnym;/
+A kto wie, czy i służył? Każdy wiek miał łotrów,/
+A co my teraz mamy i Pawłów, i Piotrów./
+Miał Rzym swoje Werresy<pr><slowo_obce>Werres</slowo_obce> --- Gaius Verres (ok. 119---ok. 43 p. n. e.) jako wysoki urzędnik w Rzymie i prowincjach rzymskich zasłynął z nadużyć i gwałtów; ,,[...] przeciw niemu o zdzierstwa stawał Cicero imieniem miast i obywatelów Sycylii, oracje, które miał, powszechnym nazwiskiem mianują się Verrinae”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>)</pr>, swoje Katyliny<pr><slowo_obce>Katylina</slowo_obce> --- Lucius Sergius Catilina (ok. 10--62 p. n. e.) --- zrujnowany arystokrata rzymski, organizator spisku przeciw republice, odkrytego i udaremnionego przez Cicerona. Dla Krasickiego był Katylina typem politycznego warchoła.</pr>,/
+Był ten czas, kiedy Kato<pr><slowo_obce>Kato</slowo_obce> --- Marcus Portius Cato, zwany Młodszym (95--46 p. n. e.), nieprzejednany obrońca ginącego ustroju republikańskiego. Kato zwalczał dyktaturę Juliusza Cezara, a nie chcąc mu ulec odebrał sobie życie.</pr>, z poczciwych jedyny,/
+Silił się przeciw zdrajcom sam i padł w odporze./
+<begin id="b1194698694234"/><motyw id="m1194698694234">Cnota, Upadek</motyw><wers_akap>Nie w tak dzikim już teraz jest cnota humorze<pr><slowo_obce>Nie w tak dzikim... jest cnota humorze</slowo_obce> --- cnota nie jest już tak bezkompromisowa.</pr></wers_akap>,/
+Umie ona, gdy trzeba, zyskowi dogadzać:/
+<begin id="b1202398116550"/><motyw id="m1202398116550">Grzeczność, Kłamstwo, Pozory</motyw>Człowiek grzeczno--poczciwy, kiedy kraść i zdradzać/
+Nakaże okoliczność, zdradzi i okradnie,/
+Ale zdradzi przystojnie<pr><slowo_obce>przystojnie</slowo_obce> --- przyzwoicie, porządnie.</pr> i zedrze przykładnie,/
+Ale wdzięcznie oszuka, kształtnie przysposobi,/
+Ochrzci cnotą szkaradę i złość przyozdobi<end id="e1194698694234"/>,/
+A choć zraża sumnienie<pr><slowo_obce>zraża sumnienie</slowo_obce> --- sumienie go odstręcza.</pr>, niebo straszy gromem,/
+Śmieje się, zdradza, kradnie --- i jest galantomem<pr><slowo_obce>galantom</slowo_obce> (z franc. <slowo_obce>galant homme</slowo_obce>) --- człowiek przyzwoity, bez zarzutu, w salonowym, dworskim rozumieniu tych wyrazów.</pr>.<end id="e1202398116550"/>/
+<wers_akap>Więc poczciwych aż nadto. <begin id="b1194698895914"/><motyw id="m1194698895914">Bóg, Obyczaje, Pieniądze, Religia, Świętoszek</motyw>Paweł trzech mszów<pe><slowo_obce>mszów</slowo_obce> --- mszy.</pe> słuchał,</wers_akap>/
+Zmówił cztery różańce, na gromnice dmuchał,/
+Wpisał się w wszystkie bractwa, dwie godziny klęczał,/
+Krzywił się, szeptał, mrugał i wzdychał, i jęczał,/
+A pieniądze dał w lichwę. Święte są pacierze,/
+Zdatne bractwa<pr><slowo_obce>bractwa</slowo_obce> --- stowarzyszenia religijno--dobroczynne, które rozmnożyły się niepomiernie u schyłku XVII w., stając się ośrodkami dziwacznej, obłudnej dewocji.</pr>, lecz temu, co daje, nie bierze./
+Syp fundusze, a kradnij, Bóg ofiarą wzgardzi./
+Tacy byli, mniemaną pobożnością hardzi,/
+Owi faryzeusze<pr><slowo_obce>faryzeusze</slowo_obce> --- polityczno--religijne konserwatywne stronnictwo żydowskie w Palestynie, odznaczające się formalistycznym stosunkiem do starych praw i obyczajów religijnych, a w wyniku tego fałszywą, uprawianą na pokaz pobożnością. Wbrew utartemu zwyczajowo przekonaniu, znajdującemu odzwierciedlenie i u Krasickiego, że byli przeciwnikami Jezusa i jego uczniów, wielu faryzeuszy znalazło się wśród chrześcijan (m.in. św. Paweł).</pr> i wyschli, i smutni,/
+A w łakomstwie niesyci, w dumie absolutni,/
+Mściwi, krnąbrni, łakomi, nieludzcy, oszczerce./
+Próżne, Pawle, ofiary, gdzie skażone serce:/
+Krzyw się, mrugaj, bij czołem, klęcz, szeptaj i dmuchaj,/
+Zmów różańców bez liku, bez liku mszów słuchaj,/
+Jeśliś zdrajca, obłudnik, darmo kunsztu<pr><slowo_obce>kunszt</slowo_obce> --- podstęp, fortel.</pr> szukasz,/
+Możesz ludzi omamić, Boga nie oszukasz.<end id="e1194698895914"/>/
+<begin id="b1194699572897"/><motyw id="m1194699572897">Obyczaje, Religia, Upadek</motyw><wers_akap>Brzydzi się niecnotliwym Jędrzej hipokrytą,</wers_akap>/
+A natychmiast zbyt szczery, nie już złością skrytą,/
+Ale jawnym wzgorszeniem zaraża i truje<pr><slowo_obce>jawnym wzgorszeniem zaraża i truje</slowo_obce> --- jako przeciwstawienie obłudnego świętoszka pokazuje tu Krasicki młodego franta, pozbawionego wszelkich norm etycznych, szermującego nadto hasłami antyreligijnymi.</pr>,/
+Pyszny mnóstwem szkarady, hańbą tryumfuje./
+Zrzucił szacowną cnoty i wstydu zaporę,/
+A widząc skutki jadu i łatwe, i spore,/
+Stał się mistrzem bezbożnych. Ma uczniów bez liku./
+Leżą grzecznych<pr><slowo_obce>grzeczny</slowo_obce> --- wytworny.</pr> bluźnierców dzieła na stoliku;/
+Gotowalniane mędrcy, tajemnic badacze,/
+Przewodniki złudzonych, wieków poprawiacze<pr><slowo_obce>grzeczni bluźniercy</slowo_obce>, <slowo_obce>gotowalniani mędrcy</slowo_obce>, <slowo_obce>wieków poprawiacze</slowo_obce> --- rekrutują się z pilnych czytelników rozwiązłych romansów, o których Krasicki tak pisze: ,,Za ostatni rodzaj romansów kłaść należy te, które się obyczajności istotnie sprzeciwiają, a którymi na nieszczęście zarzuceni jesteśmy. Apulejusz i Petroniusz pierwsze trzymają miejsce w tych pismach co do czasu. W nieuczciwości i niewstydzie teraźniejszy wiek trzyma pierwszeństwo; zraża się pióro na określenie i obwieszczenie dzieł takowych, gdzie z jawnym bluźnierstwem mieści się bezczelna rozwiązłość. Z tego to czytelnictwa płeć nawet, którą niegdyś wstydliwą zwano, nauczyła się nie rumienić. Brakuje na polorze modnym mędrcom, gdy ksiąg takowych nie są wiadomi, a przynajmniej gdy ich w zbiorze bibliotek swoich nie mieszczą; już i po gotowalniach ukazywać się zaczynają, a z tego czytelnictwa jakowy pożytek, każdy z tego, co widzi i słyszy, domyśleć się może”. (I. Krasicki, <tytul_dziela>Dzieła prozą</tytul_dziela>, t. VI, s. 392. Artykuł: <tytul_dziela>Romanse</tytul_dziela> w cyklu <tytul_dziela>Uwagi</tytul_dziela>).</pr>,/
+Co w zuchwałych zapędach chcąc rzeczy dociekać,/
+Śmieją prawdzie uwłoczyć i na jawność szczekać;/
+Czcze światła, dymy znikłe<pr><slowo_obce>znikłe</slowo_obce> --- przemijające, znikome.</pr>... Lecz z widoków sprośnych/
+Zwróćmy oczy. Już nadto tych scen zbyt żałosnych.<end id="e1194699572897"/>/
+<begin id="b1194699461017"/><motyw id="m1194699461017">Szlachcic</motyw><wers_akap>Dumny Jan pokrewieństwem i Litwy, i Polski,</wers_akap>/
+Że go uczcił Niesiecki<pr>Niesiecki Kasper --- jezuita, autor herbarza polskiego (wyd. 1728--1743), o którym Krasicki pisze: ,,Dzieło to ze wszech miar szacowne, erudycją niezmierną i pracę nadzwyczajną w autorze obwieszcza. Pisać albowiem jednemu dzieło, zgromadzenia całego usilności potrzebujące, dowieść je do stopnia takowego, iż osobliwie co do krytyki, prym innym księgom tymi czasy wydanym bierze, rzecz jest podziwienia, a przeto słusznego uwielbienia godna”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>). Krasicki uzupełniał dzieło Niesieckiego.</pr>, Paprocki, Okolski<pr>Bartosz Paprocki, Szymon Okolski --- autorzy herbarzy polskich w XVI i XVII w.</pr>,/
+Rozumie, iż za zmową ugodną i wspólną/
+Wszystkim cierpieć należy, jemu szaleć wolno./
+Rozumie, iż gdy tytuł zaczyna od ,,jaśnie”<pr><slowo_obce>tytuł zaczyna od ,,jaśnie”</slowo_obce> --- w dawnej Polsce każdy urząd, choćby nominalny, dawał prawo do tytułu ,,jaśnie wielmożny”.</pr>,/
+Przy tym blasku i rozum, i cnota przygaśnie;/
+Nadstawia się<pr><slowo_obce>nadstawia się</slowo_obce> --- pyszni się, wywyższa.</pr> i gardzi.<end id="e1194699461017"/> <begin id="b1194699750903"/><motyw id="m1194699750903">Bogactwo, Pieniądz, Pozycja społeczna</motyw>Mikołaj bogaty,/
+Choć go jaśnie wielmożne nie czczą antenaty,/
+Śmieje się z oświeconych, co złotem nie świecą./
+To u niego zacności i szczęścia skarbnicą,/
+To rozum, to nauka, w tym się wszystko mieści:/
+Szóstak<pr><slowo_obce>Szóstak</slowo_obce> --- srebrna moneta wartości 6 groszy miedzianych; złoty liczył 4 grosze srebrne, a 30 miedzianych.</pr> groszy dwanaście, a złoty trzydzieści./
+Jakże zebrał? Dość, że ma; czy ukradł, czy zdradził./
+<begin id="b1194699773566"/><motyw id="m1194699773566">Mieszczanin, Szlachcic</motyw>Mikołaj pan, choć filut, bo skarby zgromadził,/
+Bo posiada po panach folwarki i włości;/
+Jak zechce, przyjdzie i do jaśnie wielmożności.<end id="e1194699773566"/>/
+Woli być mości panem, a z sum pożyczonych/
+Brać lichwę od dłużników jaśnie oświeconych./
+<wers_akap>Dumą wewnątrz nadęci, zbytkiem podupadli,</wers_akap>/
+Nie wstydzą się ci żebrać u tych, co je skradli<pr><slowo_obce>je skradli</slowo_obce> --- okradli ich.</pr>;/
+Oszukani, klną na dal, a łaszą się z bliska,/
+Śmieje się pan Mikołaj, a majętność zyska./
+Za jedną, która poszła, w rok idzie i druga,/
+Aż ów lichwiarz pokorny, uniżony sługa,/
+Większy pan niż jegomość, którego wielmożni<pr><slowo_obce>wielmożnić</slowo_obce> --- tytułować ,,jaśnie wielmożnym”.</pr>;<end id="e1194699750903"/>/
+Tak lecą w zdradne sidła młodzi, nieostrożni./
+<wers_akap>Omamiony nieprawym polorem i gustem,</wers_akap>/
+<begin id="b1202399763118"/><motyw id="m1202399763118">Podstęp, Przyjaźń, Szlachcic</motyw>Piotr, co zaczął być stratnym<pr><slowo_obce>stratny</slowo_obce> --- utracjusz, marnotrawca.</pr>, jest teraz oszustem./
+Gdy nie ma wsi na zastaw, dopieroż pieniędzy,/
+Chcąc uniknąć i głodu, i zimna, i nędzy,/
+Istotną dolegliwość gdy, jak może, tai,/
+Wiąże się z towarzyszmi, podchlebia i rai,/
+Czatuje, jak by ze wsi domatora dostać,/
+A uprzejmego biorąc przyjaciela postać,/
+Zaczyna rządy w domu, częstuje i sprasza,/
+Dobry gust gospodarza wielbi i ogłasza,/
+W spółce jest do wszystkiego, choć pieniędzy nie ma,/
+I poty w więzach tego, co usidlił, trzyma,/
+Aż go sobie we wszystkim uczyni podobnym./
+Więc ten, co niegdyś oczy pasł gustem ozdobnym<pr><slowo_obce>gustem ozdobnym</slowo_obce> --- przedmiotami wytwornymi i dekoracyjnymi.</pr>,/
+Wraca do domu zdarty, smutny, po kryjomu,/
+Albo i nie powraca nie miawszy już domu.<end id="e1202399763118"/>/
+Próżno więc, jak to mówią, po szkodzie korzysta<pr><slowo_obce>po szkodzie korzysta</slowo_obce> --- domyślnie: z doświadczenia.</pr>./
+<wers_akap>Franciszek, przedtem pieniacz<pr><slowo_obce>pieniacz</slowo_obce> --- zaciekły procesowicz. Powszechne zjawisko pieniactwa poddawał Krasicki wielokrotnie literackiemu opracowaniu (np. <tytul_dziela>Mikołaja Doświadczyńskiego przypadki</tytul_dziela>, komedia <tytul_dziela>Pieniacz</tytul_dziela>). W <tytul_dziela>Uwagach</tytul_dziela> powiedział krótko, że jest to jedna z groźniejszych przywar, wynikająca z nadmiaru ambicji, a przynosząca wielkie straty pieniaczowi; alchimista --- uprawiający alchemię, o której czytamy w <tytul_dziela>Zbiorze potrzebn. wiad.</tytul_dziela>: ,,Zawisł ten kunszt 1--mo na jak najdoskonalszym oczyszczeniu i przyprawieniu kruszców; 2--do na sposobie przeistoczenia onych; 3--tio na wydystylowaniu esencji i spirytusów kruszcowych i zielnych. Że ten kunszt będąc zapalonej imaginacji płodem, omamieniu najbardziej podlega [...], że wielu zwiódł, doświadczenie nauczyło; że do tego czasu znajdują się tacy, którzy w kamień filozofski i inne podobne matactwa wierzą, rzecz równie podziwienia i politowania godna”. W drugiej połowie XVIII w. znanym alchemikiem w Polsce był August Fryderyk Moszyński; głośnym echem odbił się również pobyt w Warszawie słynnego alchemika i szarlatana, Włocha Cagliostro, który w ciągu niespełna dwóch miesięcy wyłudził od ciekawych za swoje praktyki magiczne wielkie sumy i uciekł.</pr>, teraz alchimista,</wers_akap>/
+Dmucha coraz na węgle, przy piecyku siedzi,/
+Zagęszcza i rozwilża, przerzadza i cedzi./
+Pełne proszków chimicznych szafy i stoliki,/
+Wszędzie torty, retorty, banie, alembiki<pr><slowo_obce>torty</slowo_obce>, <slowo_obce>retorty</slowo_obce>, <slowo_obce>banie</slowo_obce>, <slowo_obce>alembiki</slowo_obce> --- naczynia ze szkła lub metalu służące do doświadczeń chemicznych.</pr>./
+Już postrzegł w ogniu gwiazdę, a kto gwiazdę zoczy<pr><slowo_obce>Już postrzegł w ogniu gwiazdę</slowo_obce> --- alchemicy przypisywali gwiazdom wpływ na przekształcanie metali nieszlachetnych w złoto. Dalej Krasicki kpi z maniackich praktyk i przywidzeń alchemików.</pr>/
+Albo głowę Meduzy<pr><slowo_obce>Meduza</slowo_obce> --- mitologiczny potwór z wężami zamiast włosów, którego spojrzenie zamieniało ludzi i zwierzęta w kamienie.</pr>, albo ogon smoczy,/
+Już ten wygrał. Winszuję, ale nie zazdroszczę./
+To mniejsza, że Franciszek o złoto się troszcze;/
+Niech dmucha, a nie kradnie. Choćby złoto zrobił,/
+Swoje stracił, na swoim niechby i zarobił./
+<wers_akap><begin id="b1194700095759"/><motyw id="m1194700095759">Pieniądz, Szczęście, Cnota</motyw>Nie złoto szczęście czyni, o bracia, nie złoto!</wers_akap>/
+Grunt wszystkiego poczciwość, pobożność i z cnotą.<end id="e1194700095759"/>/
+<begin id="b1194700441136"/><motyw id="m1194700441136">Obyczaje, Obywatel, Ojczyzna, Państwo, Polak</motyw>Padnie taka budowla, gdzie grunt nie jest stały./
+Chcemy nasz stan, stan kraju, ustanowić trwały,/
+Odmieńmy obyczaje, a jąwszy się<pe><slowo_obce>jąwszy się</slowo_obce> --- od: jąć się czegoś, zabrać się za, wziąć do czegoś (tu: do pracy).</pe> pracy,/
+Niech będą dobrzy, będą szczęśliwi Polacy.<end id="e1194700441136"/>
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

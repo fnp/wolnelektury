@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_druga/Podr%C3%B3%C5%BC">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 2 - (9) Podróż</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sobczyński, Mariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Podróż</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><begin id="b1194534656177"/><motyw id="m1194534656177">Dom, Podróż</motyw><wers_akap>Miał rozum, w domu siedząc kto się śmiał z podróży.</wers_akap>/
+	Jeśli więc ten mu zaszczyt sprawiedliwie służy,/
+	Jak zwać tych, co się raz wraz ustawicznie włóczą?/
+	Oto --- ale zaczekam, aczej<pe><slowo_obce>aczej</slowo_obce> --- a nuż, może.</pe> się oduczą./
+	<wers_akap>Jeszczeć można wybaczyć, gdy ostatnia nędza</wers_akap>/
+	Z domów, jeśli je mają, ubogie wypędza,/
+	Ale kiedy bogaty puszcza się w podróże,/
+	Ja o jego rozumie, iżby miał, nie wróżę./
+	<wers_akap>Zdrowie, życie nieść na szwank po przykrej przeprawie<pr><slowo_obce>po przykrej przeprawie</slowo_obce> --- przez rzeką.</pr>,</wers_akap>/
+	Głód znosić, snu nie użyć, spoczywać na ławie,/
+	Albo się dusić w dymie lub marznąć na dworze,/
+	Słuchać świerki<pr><slowo_obce>świerk</slowo_obce> --- świerszcz.</pr>, wrzask dziecek, w spróchniałej komorze/
+	Robactwu się opędzać --- może kto zaprzeczy,/
+	Iż gdzie indziej nie jest tak --- i tam nic do rzeczy,/
+	Albo żeby treść myśli objawić wytwornie,/
+	Jeśli u nas niedobrze, indziej niewybornie./
+	Droga zawżdy jest drogą pomimo wygody,/
+	Rzadka obejść się cale<pr><slowo_obce>Rzadka [rzecz] obejść się cale</slowo_obce> --- wyjść cało, bez szwanku.</pr>, znaleźć się bez szkody,/
+	A choćby innej w ciągłych podróżach nie było,/
+	Gdy się czas marnie strawił, wiele się straciło./
+	<wers_akap>Przepłynąwszy przez morza i zwiedziwszy ziemie,</wers_akap>/
+	Dajmy to, iż kto poznał wszystkie ludzkie plemię./
+	Cóż poznał? --- To, co w domu miał na pogotowiu.<end id="e1194534656177"/>/
+	<begin id="b1202392624152"/><motyw id="m1202392624152">Pieniądz, Podróż</motyw>Może jazdą, płynieniem mógł usłużyć zdrowiu,/
+	Bo lekarze tak mówią; ale syty z wzorku<pr><slowo_obce>z wzorku</slowo_obce> --- z doświadczenia.</pr>,/
+	Zapytajmy pielgrzyma, co mówi o worku<pr><slowo_obce>o worku</slowo_obce> --- o sakiewce z pieniędzmi.</pr>./
+	Pewnie mu nie usłużył --- a źle, gdy nie służy.<end id="e1202392624152"/>/
+	To nic jeszcze: gdy mówiem ściśle o podróży,/
+	Że się zlepszenia zdrowia w niej znajdzie przyczyna,/
+	Większa, ważniejsza jeszcze i pilniejsza wszczyna,/
+	<begin id="b1194534876019"/><motyw id="m1194534876019">Woda </motyw>Trzeba jechać koniecznie. --- Gdzie? --- jechać do wody<pr><slowo_obce>do wody</slowo_obce> --- do wód, do uzdrowiska.</pr>./
+	Służyła ona przedtem tylko do ochłody,/
+	Teraz większa usługa. --- Jaka? --- Żyć nie można,/
+	Jeśli pilność o zdrowie czuła a ostrożna/
+	Nie zapędzi tam, gdzie jest saletra i siarka. ---/
+	A nam co po saletrze? --- Jeśli onej miarka/
+	I z częściami hałunu<pr><slowo_obce>hałun</slowo_obce> --- ałun.</pr>, a najbardziej z rana,/
+	Dobrze trafiona --- zdrowie! lecz ze źródła brana,/
+	Gdzie ją chwytać należy, żeby moc nie zgasła./
+	Jeżeli więc na takie ozdrowienia hasła/
+	Nie wzbudzi się chęć jechać, pożegnaj się z życiem ---/
+	Jużci, ale i z workiem. Za takim użyciem/
+	<begin id="b1202392814236"/><motyw id="m1202392814236">Umiarkowanie, Zdrowie</motyw>Droższe widzę, niż przedtem było, teraz zdrowie.<end id="e1194534876019"/>/
+	Żyli dłużej niźli my, nasi pradziadowie:/
+	Za krzepkość z ojców wziętą, nie płacąc nikomu,/
+	Od zdrowych wzięte zdrowie zachowali w domu./
+	Cnotliwej roztropności urządzeni miarką,/
+	Nie znali się z hałunem, saletrą i siarką./
+	Czerstwa starość poważne ich zmarszczki wdzięczyła,/
+	<begin id="b1202392914930"/><motyw id="m1202392914930">Lekarz</motyw>Było zdrowie, bo święta wstrzemięźliwość była./
+	Lepsza ona od siarki i skuteczniej zdrowi<pr><slowo_obce>zdrowi</slowo_obce> --- uzdrawia.</pr><end id="e1202392814236"/>,/
+	Niż co kreślą lekarze i starsi, i nowi,/
+	Którym (bo mają rozum), frymarczących bólem,/
+	Wody siarką zaprawne stały się Patolem<pr>Paktol --- rzeka w Lidii, w Azji Mniejszej, niegdyś złotodajna. Według mitologii, król Frygii Midas otrzymał od Bachusa dar zamieniania wszystkiego, czego dotknął, w złoto. Gdy jednak potrawy i napoje również za jego dotknięciem stawały się złotem, prosił Midas Bachusa, by ten odebrał mu drogocenny dar. ,,Zezwala łaskawie Bacchus i aby się w Paktolu, rzece lidyjskiej obmył, rozkazuje. I od tego to czasu, którego się Midas w paktolskich kąpał wodach, złote ta rzeka poczęła mieć piaski”. (F. Pomey, <tytul_dziela>Pantheum mithicum</tytul_dziela>, s. 65).</pr>.<end id="e1202392914930"/>/
+	<begin id="b1202393065216"/><motyw id="m1202393065216">Filozof, Mądrość, Pielgrzym, Podróż</motyw><wers_akap>Pitagoras i Tales, i Platon, i inni,</wers_akap>/
+	Za których wielkim zdaniem poszli ludzie gminni,/
+	Niżeli swej nauki cuda rozpostarli,/
+	W kraju się właściwego cieśni nie zawarli,/
+	Lecz chcąc ludzi oświecić w błędach, w których trwali,/
+	Do innych się, najdalszych, w pielgrzymstwo udali./
+	Tam, czerpając u źródła, w wiadomość bogaci,/
+	Z niezmiernym nauk trzosem wrócili do braci./
+	Pitagoras powiedział: Nie trzeba jeść bobu<pr><slowo_obce>Nie trzeba jeść bobu</slowo_obce> --- Pitagoras (VI w. p. n. e.), matematyk i filozof grecki, założyciel arystokratycznego związku religijno--politycznego, miał jakoby zakazywać jedzenia bobu, narodowej potrawy Greków, ze względu na to, że ten kiełkując przybierał święty kształt falliczny.</pr>./
+	A niekontent z greckiego rządzenia sposobu,/
+	Nową rzeczpospolitą mądry Plato sklecił<pr><slowo_obce>Nową rzeczpospolitą</slowo_obce> --- dialog Platona <tytul_dziela>Rzeczpospolita</tytul_dziela> był pierwszą w literaturze utopią polityczną.</pr>,/
+	I tak dowodnie onej pożytek zalecił,/
+	Iż się dotąd na jawie jeszcze nie skleciła./
+	<begin id="b1194535021979"/><motyw id="m1194535021979">Woda </motyw>Woda, według Talesa, wszystko sporządziła<pr><slowo_obce>Woda, według Talesa, wszystko sporządziła</slowo_obce> --- Tales z Miletu (VII--VI w. p.n.e.), filozof grecki, przyjmował, że woda jest pramaterią świata.</pr>.<end id="e1194535021979"/>/
+	<begin id="b1202393100527"/><motyw id="m1202393100527">Szczęście</motyw>Wzmogli się niewiadomi<pr><slowo_obce>niewiadomi</slowo_obce> --- nieuczeni, nieoświeceni.</pr> wynalazki tymi,/
+	A szczęśliwi zostali jeszcze szczęśliwszymi.<end id="e1202393100527"/>/
+	<wers_akap>Nie mogę ja tak wielkiej oprzeć się powadze,</wers_akap>/
+	Jednak się zbyt daleko zapędzać nie radzę./
+	<begin id="b1202393150078"/><motyw id="m1202393150078">Rozum</motyw>Ostatnia to po rozum za granice jeździć;/
+	Jeśli on się pod własnym dachem nie chciał gnieździć,/
+	Darmo go indziej szukać.<end id="e1202393150078"/> Mimo górne wzory,/
+	Wzory sławne Talesa albo Pitagory,/
+	Wzory zbyt uwielbione przez swoje wzniesienia,/
+	Trzymajmy się po prostu skutków doświadczenia.<end id="e1202393065216"/>/
+	<begin id="b1202393202614"/><motyw id="m1202393202614">Mądrość, Rozum</motyw>Dobry rozum, ale źle rozumem przesadzać<end id="e1202393202614"/>;/
+	Czuje to świat, ja światu nie będę doradzać,/
+	Ale gdybym był takim, iżbym mógł dać radę,/
+	Rzekłbym: <begin id="b1202393370055"/><motyw id="m1202393370055">Książka, Mądrość, Nauka, Pieniądz</motyw>Świecie, miej baczność na każdą przyjadę<pe><slowo_obce>przyjadę</slowo_obce> --- przesadę.</pe>,/
+	Nie wierz łbom zagorzałym, które robią księgi,/
+	Ani książek działaczom; ich umysł nietęgi/
+	Zabawnie bałamucąc nabawił cię nędzą./
+	Nieszczęśliwe się chwile w światłym wieku pędzą,/
+	I pisarz, i czytelnik za naukę płacą.<end id="e1202393370055"/>/
+	Dobrze im tak --- a kiedy zwodziciele tracą,/
+	<begin id="b1202393572185"/><motyw id="m1202393572185">Cnota, Dom, Nuda, Rozum, Sąsiad, Sługa, Szczęście</motyw>Rozsądny, co się ustrzegł takiego pogromu,/
+	Niech się strzeże podejścia<pe><slowo_obce>podejścia</slowo_obce> --- podstępu.</pe> i zasklepi w domu./
+	<wers_akap>Ale w nim raz wraz siedzieć rzecz jest niepodobna.</wers_akap>/
+	Choćby rzecz najwdzięczniejsza, ciągła a osobna,/
+	Sprawi sytość, a tej jest skutkiem unudzenie./
+	Zarzut nowy --- więc innych okolic zwiedzenie,/
+	A z nim odmiana rzeczy lekarstwem nudności./
+	Nie nudzi się, kto kontent, lecz tej szczęśliwości/
+	Rozum tylko i cnota są sprawicielami;/
+	Z tymi, choćby wśród stepów, nie będziemy sami./
+	Cóż dopiero, gdy dzieci i poczciwa żona,/
+	I uprzejmość sąsiedzka, prawa, doświadczona,/
+	Słodycz losu poddanych, któryśmy sprawili,/
+	I myśl lat przeszłych, cośmy poczciwie przebyli:/
+	Piękne to towarzystwo i nigdy nie znudzi./
+	<begin id="b1194535138043"/><motyw id="m1194535138043">Dom, Podróż</motyw>Swoich znając, po co nam nowych szukać ludzi?/
+	Miłe to przeświadczenie do tego nas wiedzie,/
+	Iż dobrze w domu siedzieć. --- Kto nie chce, niech jedzie!<end id="e1202393572185"/><end id="e1194535138043"/>
+</strofa>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

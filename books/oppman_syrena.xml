@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
+      <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
+      <dc:title xml:lang="pl">Syrena</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Legendy warszawskie</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Syrena</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
+      <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
+      <dc:date.pd xml:lang="pl">1931</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-08-30</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <opowiadanie>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Artur Oppman</autor_utworu>
+    <nazwa_utworu>Syrena</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <srodtytul>I</srodtytul>
+    <begin id="b1188462589918"/>
+    <motyw id="m1188462589918">Muzyka</motyw>
+    <akap_dialog>--- A widzieliście ją, tę syrenę niby, kumie Szymonie?</akap_dialog>
+    <akap_dialog>--- Widzieć nie widziałem, kumie Mateuszu, bo drzewa przesłaniały źródełko, a bliżej podejść bałem się jakości, alem słyszał, jak śpiewa.</akap_dialog>
+    <akap_dialog>--- Alboż to syreny śpiewają ?</akap_dialog>
+    <akap_dialog>--- Jakże to? Nie wiecie o tym, kumie Mateuszu? śpiewają! I jak jeszcze! Głos to ci się tak rozchodził po Bugaju, po Wiśle, hen, aż za rzekę, jakoby właśnie dzwonek srebrzysty dzwonił. Słuchałbyś dniem i nocą.</akap_dialog>
+    <akap_dialog>--- No, i co dalej? Co dalej?</akap_dialog>
+    <akap_dialog>--- Ano, nic dalej. Słuchałem, słuchałem, lubość mi się jakowaś rozpływała po kościach, aż w końcu śpiewanie ucichło: widać syrena schowała się na nocleg w źródełku, bo już i słońce zachodziło, a ja powlokłem się do chaty, alem całą noc spać nie mógł, inom o tej syrenie rozmyślał.</akap_dialog>
+    <akap_dialog>--- Ciekawość! Warto by ją wypatrzeć, zobaczyć.</akap_dialog>
+    <akap_dialog>--- Ale jak? Toć, jeśli nas ujrzy, --- umknie i skryje się w wodzie. A zresztą, może to i grzech przyglądać się takowej stworze niechrzczonej i kuszącego jej śpiewania słuchać.</akap_dialog>
+    <akap_dialog>--- Grzech nie grzech, --- niewiada<pe><slowo_obce>niewiada</slowo_obce> --- nie wiadomo.</pe>! Najlepiej zapytać o to ojca Barnaby, pustelnika. To człek mądry i pobożny; on powie i nauczy, co czynić nam należy.</akap_dialog>
+    <akap_dialog>--- Rzetelnie mówicie, kumie Mateuszu, chodźmy do pustelnika Barnaby.</akap_dialog>
+    <akap_dialog>--- Ano, to i chodźmy! Ryby przez ten czas z Wisły nie uciekną, a my się od duchownej osoby przeróżności dowiemy.</akap_dialog>
+    <akap>Tak rozmawiali z sobą dwaj rybacy z nad Wisły w owych zamierzchłych czasach, gdy na miejscu dzisiejszej Warszawy, a właściwie jej Powiśla, leżała niewielka rybacka osada, otoczona gęstymi lasami, w których roiło się od grubego zwierza: łosi, turów, wilków i niedźwiedzi.</akap>
+    <srodtytul>II</srodtytul>
+    <akap_dialog>--- Więc powiadacie, że śpiewała?</akap_dialog>
+    <akap_dialog>--- A juści! śpiewała; gadałem przecie.</akap_dialog>
+    <akap_dialog>--- Hm! I często se tak podśpiewuje?</akap_dialog>
+    <akap_dialog>--- A co dnia! Jak tylko słoneczko Boże ma się ku zachodowi i czerwienią a złotem pomaluje Wisełkę, wraz ci się na Bugaju jej piosenka rozlega.</akap_dialog>
+    <akap_dialog>--- I długo też nuci?</akap_dialog>
+    <akap_dialog>--- Do zachodu. Jak się ino ciemno zrobi na świecie, już jej nie słychać.</akap_dialog>
+    <akap_dialog>--- To nocami nigdy ze źródła nie wychodzi?</akap_dialog>
+    <akap_dialog>--- Czy wychodzi, czy nie wychodzi, tego ja nie wiem, ale przepomniałem<pe><slowo_obce>przepomniałem</slowo_obce> --- zapomniałem.</pe> powiedzieć, że w pełnię miesiąca też śpiewa. Nieraz mnie ze snu budzi blask księżycowy, co do chałupy zagląda: siadam se na posłaniu, aż ci tu odgłos jakowyś dolata z daleka; jakby skowronek, jakby dzwonek, jakby skrzypeczki lipowe: to ona.</akap_dialog>
+    <end id="e1188462589918"/>
+    <akap_dialog>--- O to mi chodziło właśnie. Więc trzeba tak zrobić...</akap_dialog>
+    <akap>Tu ojciec Barnaba zadumał się na długą chwilę, a obaj rybacy czekali w skupieniu, aż namyśli się, co poradzić.</akap>
+    <akap>Ojciec Barnaba był to starzec wysoki, chudy, siwobrody, łysy jak kolano, odziany w długą samodziałową opończę. Na pomarszczonym jego obliczu rysowały się powaga i dobroć.</akap>
+    <begin id="b1188462675213"/>
+    <motyw id="m1188462675213">Lato, Zwierzęta</motyw>
+    <akap>Wszyscy trzej siedzieli przed budką pustelnika, na ławie, uczynionej z dwóch pieńków, na których położono z gruba obciosaną deskę. Było to lipcowe popołudnie i cudnie było w boru, pachnącym żywicą i kwiatami. Ptaki śpiewały radośnie, pszczoły wesoło brzęczały, a zielony dzięcioł w czerwonym kapturku stukał dziobkiem, jak młotkiem, w korę rozłożystego dębu i wydłubywał robaki.</akap>
+    <end id="e1188462675213"/>
+    <akap>A ojciec Barnaba namyślał się, namyślał, aż rzecze:</akap>
+    <begin id="b1188462743881"/>
+    <motyw id="m1188462743881">Muzyka</motyw>
+    <akap_dialog>--- Więc trzeba tak zrobić: w pełnię miesiąca wybierzemy się we trzech do źródełka; na odzienia nasze naczepić należy gałęzi świeżo zerwanych, najlepiej lipowych, kwiatem okrytych, żeby syrena człowieka nie poczuła, bo się nie pokaże; zaczaimy się przy samem źródle, a gdy wynijdzie i śpiewać zacznie, wtedy zarzucimy na nią sznur, spleciony z cienkich witek wierzbowych, święconą wodą skropiony, ile, że takiego żaden się czar nie ima; zwiążemy i miłościwemu księciu na Czersku zawieziemy w darze. Niech ją na zamku trzyma i niech mu wyśpiewuje.</akap_dialog>
+    <akap>Ale uszy woskiem musimy sobie zatkać, żeby jej narzekań i lamentów nie słyszeć, bo inaczej serce w nas tak zemdleje, że nie będziemy mieli mocy wziąć jej w niewolę. Srodze jest żałościwe syrenie śpiewanie.</akap>
+    <akap_dialog>--- Tak jest, jak mówicie, ojcze Barnabo; wiem ci ja o tern, bom te piosenki słyszał. Żaden miód, by najprzedniejszy, tak człowieka nie upoi, jako on głos syreni.<end id="e1188462743881"/> Więc tedy do pełni miesięcznej?</akap_dialog>
+    <akap_dialog>--- Tak jest, do pełni.</akap_dialog>
+    <akap>I rozeszli się w swoje strony. Rybacy nad Wisłę do zarzuconych sieci, a ojciec Barnaba na modlitwę.</akap>
+    <srodtytul>III</srodtytul>
+    <akap>Tam, gdzie dziś nad samem prawie wybrzeżem Wisły, poniżej starożytnych kamienic Starego Miasta, rozciąga się ulica, Bugaj zwana, przed wielu, wielu laty szumiał las zielony, odwieczny.</akap>
+    <akap>W lesie tym, z pagórka, wznoszącego się nad rzeką, tryskało źródło i rozlewało się w głęboki, bystro płynący potok.</akap>
+    <akap>Nad potokiem rosły białokore brzozy, wierzby pokrzywione maczały w nim długie gałęzie, kwitnęły polne róże, i niezapominajki haftowały niebieskimi kwiatkami zielony traw kobierzec.</akap>
+    <akap>W tym to potoku mieszkała właśnie syrena.</akap>
+    <akap>Była piękna, pogodna noc miesięczna. Srebrzysta pełnia żeglowała przez błękitne, usiane gwiazdami niebo i przyglądała się ziemi uśpionej, lasowi i źródłu.</akap>
+    <akap>Ale w lesie nie wszyscy spali.</akap>
+    <akap>Zza brzóz i wierzb, stojących na potokiem, widać było trzy skulone postacie. Przycupnęły one, wśród krzaków gęstych, i ciekawymi oczyma spozierały w wodę potoku, mieniącą się srebrzyście od blasków tarczy miesięcznej. Byli to dwaj rybacy, Szymon i Mateusz, i pustelnik, ojciec Barnaba.</akap>
+    <akap>Nagle z wody wynurzyła się przecudna postać. Była to dziewica nadziemskiej urody; w świetle miesięcznym widać ją było doskonale. Miała długie kruczoczarne włosy, pierścieniami spływające na białą, jak z marmuru wyrzeźbioną szyję; szafirowe jej oczy, wzniesione ku pełni, patrzyły dziwnie przejmująco i smutno, a ozdobiona lekkim rumieńcem twarzyczka takim tchnęła czarodziejskim urokiem, że przyglądającym się jej rybakom aż serca zamarły ze wzruszenia.</akap>
+    <akap>Syrena chwilę trwała w milczeniu, zapatrzona w niebo i w gwiazdy --- i oto w ciszy tej czarownej nocy zadźwięczał śpiew tak piękny, tak kryształowo czysty, że zdawało się, iż i księżyc, i gwiazd miliony, i ziemia, i niebo zasłuchały się w niego do niepamięci.</akap>
+    <akap>Wtem z krzaków, cicho, bez szelestu, wyskoczyły owe trzy postacie --- i nie tak szybko rzuca się ryś drapieżny na przebiegającą łanię, jak oni rzucili się na syrenę, skrępowali ją powrósłem, z witek wierzbowych splecionym, i wyciągnęli z wody na murawę.</akap>
+    <akap>Próżno się szamotała nieszczęsna, próżno ich ludzkim a cudnym zaklinała głosem. Głos ten wzruszyć ich nie mógł, gdyż, wedle rady ojca Barnaby, uszy mieli woskiem szczelnie zatkane.</akap>
+    <akap_dialog>--- Co teraz począć? Co z nią począć? --- jęli się pytać obaj rybacy zdyszanym, gorączkowym głosem.</akap_dialog>
+    <akap_dialog>--- Co począć? --- rzeknie pustelnik --- poczekajcie, zaraz wam powiem:</akap_dialog>
+    <akap>Nim ją do Jego Miłości księcia na Czersku zawieziem, a wieźć przecież nie będziem po nocy, zamkniemy syrenę w oborze, a pilnować jej będzie Staszek, pastuch gromadzkiego bydła. Skoro świt zaś, wóz drabiasty sianem wymościm i jazda do Czerska! Dobrze mówię?</akap>
+    <akap_dialog>--- Dobrze mówicie, ojcze Barnabo, mądrze mówicie!</akap_dialog>
+    <akap>Miesiąc świecił tuż nad polanką, gdzie rybacy złożyli skrępowaną syrenę, i widać ją było wybornie. Do pasa była to, jak się już rzekło, panna na podziw urodziwa, od pasa zasię ryba srebrzystą łuską błyszcząca. Leżała biedna bez ruchu, z zawartemi cudnemi oczyma, ręce wzdłuż ciała opuściwszy, i tylko rybi ogon, długi a giętki, uderzał kiedy niekiedy w ziemię, zupełnie jak u wyjętego z wody karpia lub szczupaka.</akap>
+    <akap_dialog>--- Czas nam w drogę --- przemówił pustelnik --- bierzcie ją!</akap_dialog>
+    <akap>Szymon i Mateusz dźwignęli syrenę i ponieśli ją w stronę wioski.</akap>
+    <srodtytul>IV</srodtytul>
+    <akap_dialog>--- Otwieraj, Staszku!</akap_dialog>
+    <akap_dialog>--- Otwierajno co prędzej! Cóż to? Zarżnęli cię zbóje, że się nie ruszasz?</akap_dialog>
+    <akap_dialog>--- Nie gramol się, gamoniu! skorzej<pe><slowo_obce>skorzej</slowo_obce> --- szybciej; od: <slowo_obce>skoro</slowo_obce> --- szybko.</pe>! skorzej!</akap_dialog>
+    <akap>I rozległy się głośne uderzenia krzepkich pięści Szymona i Mateusza we wrota obory, oni to bowiem, wraz z pustelnikiem Barnabą, dobijali się uporczywie do wielkiego, drewnianego budynku, w którego ścianach, przez wyrzezane otwory, widać było rogate łby i mokre pyski licznych krów.</akap>
+    <akap_dialog>--- A co tam? Kto tam? Toć idę już, idę! A któż to tam tak łomoce po nocy? Pali się, czy co takiego?</akap_dialog>
+    <akap>Zaszurgał ktoś bosymi nogami, odezwało się szerokie ziewnięcie, w ciemnościach niepewna ręka szukała zawory, znalazła ją, otwarła, skrzypnęły wrota --- i z mroku wynurzyła się gibka, młodzieńcza postać pastucha Staszka,</akap>
+    <akap_dialog>--- Wszelki duch Pana Boga chwali! A czego to chceta, ojcze Barnabo i wy Szymonie i Mateuszu?</akap_dialog>
+    <akap_dialog>--- Cichaj! Syrena! O, widzisz? Syrena! Złapaliśmy ją! Niechaj tu przeleży do rana! O świcie do Czerska ją zawiezieni, do księcia!</akap_dialog>
+    <akap_dialog>--- Syrena? Jezusie, Maryjo! Prawda! Jakaż ona śliczna!</akap_dialog>
+    <akap_dialog>--- Nie prawiłbyś byle czego! Śliczna! Czarownica, wiadomo ! Taka ci najcudniejszą postać przybierze, aby tym łacniej otumanić chrześcijańską duszę.</akap_dialog>
+    <akap_dialog>--- Boże miły! Prawdę mówicie? To ona chrześcijańskie dusze tumani? I cóż ja mam z nią zrobić?</akap_dialog>
+    <akap_dialog>--- Pilnować do zorzy! Ale pilnuj bez ustanku. Nie zdrzemnij się. Uważaj, żeby postronków nie zerwała, bo ucieknie.</akap_dialog>
+    <akap_dialog>--- Ha! Każecie pilnować, to będę pilnował. A kiedyż po nią przyjdziecie?</akap_dialog>
+    <akap_dialog>--- Mówilim. Skoro świt. Teraz ją położym w oborze, niech leży.</akap_dialog>
+    <akap_dialog>--- A ty, Staszku, pamiętaj: oka z niej nie spuszczaj! Patrz i patrz! Na twoją głowę ją zdajem.</akap_dialog>
+    <akap_dialog>--- Już wy się nie bójta! Umiałem sobie dać rady z graniastym byczkiem, choć beskurcyja zły, jak sam diabeł, to i z syreną poradzę.</akap_dialog>
+    <akap_dialog>--- No, to bywaj zdrowy! Będziem tu z powrotem, ino patrzeć!</akap_dialog>
+    <srodtytul>V</srodtytul>
+    <akap>Staszek został sam na sam z syreną. Leżała ona pod ścianą obory, na wprost jednego z otworów okiennych, w przeciwległej ścianie wyciętych, a Staszek siadł naprzeciwko i tak, jak mu rozkazali, patrzył w nią bacznie, i oczu z dziwowiska nie spuszczał.</akap>
+    <akap>Miesiąc świecił w ten otwór ścienny mocnym blaskiem i osrebrzą! cudną twarzyczkę syreny, w której to twarzyczce jaśniały, jak gwiazdy, modre, wilgotne od łez, przesmutne oczy.</akap>
+    <akap>I nie cniło się<pe><slowo_obce>nie cniło się</slowo_obce> --- nie nudziło się.</pe> Staszkowi spozierać tak nieustannie na syrenę, bo nigdy, nigdy, jako żywo, nie widział podobnie urodziwego lica i źrenic równie głębokich, przepastnych i czaru zaziemskiego pełnych.</akap>
+    <begin id="b1188464162484"/>
+    <motyw id="m1188464162484">Muzyka</motyw>
+    <akap>I nagle --- syrena spojrzała na Staszka swymi czarodziejskimi oczami, uniosła przepiękną, opierścienioną zwojami czarnych włosów główkę, otworzyła koralowe usteczka i zaśpiewała.</akap>
+    <akap>Zaśpiewała jakąś piosenkę bez słów, piosenkę tak cudną, że drzewa za oborą przestały szumieć, a krowy łby ciężkie od żłobów zwróciły w jej stronę, żuć przestały i zasłuchały się w oszołamiającą pieśń syreny.</akap>
+    <akap>Staszek był na wpół przytomny. Jak żyje nie słyszał nic podobnego. Śpiew syreny grał na jego sercu tak, jak gra wiosna na sercu każdego człowieka. Uczuł, że dzieje się z nim coś dziwnego, że jest jakiś lepszy, jakiś mądrzejszy, że otwierają się przed nim światy, o których nigdy dotychczas nie pomyślał, światy pełne aniołów i cudów.</akap>
+    <end id="e1188464162484"/>
+    <akap>A syrena nagle spojrzała wprost w oczy Staszka i rzekła:</akap>
+    <akap_dialog>--- Rozwiąż mnie!</akap_dialog>
+    <akap>Nie zawahał się ani na chwilę. Podszedł ku syrenie i kozikiem rozciął krępujące ją postronki.</akap>
+    <akap>A dziwowisko ślicznymi rączkami objęło go za szyję i szepnęło:</akap>
+    <akap_dialog>--- Otwórz wrota i chodź za mną.</akap_dialog>
+    <akap>Usłuchał. Otworzył wrota na ścieżaj<pe><slowo_obce>na ścieżaj</slowo_obce> --- na oścież.</pe> i czekał, co się stanie.</akap>
+    <akap>Nie czekał długo. <begin id="b1188464433796"/><motyw id="m1188464433796">Muzyka</motyw>Syrena uniosła się ze słomy, na której leżała, i skacząc na swoim rybim ogonie, przeszła przez wrota i skierowała się w stronę Wisły.</akap>
+    <akap>Szła i śpiewała. Krowy wyciągnęły za nią łby i poczęły ryczeć żałośnie, drzewa szumiały do wtóru piosence syreniej, a szumiały tak smutnie, aż niebo drobnymi łzami sypać jęło i zachmurzyło się ponuro. A Staszek, jak urzeczony, szedł za nią, szedł za nią, bez woli, bez myśli.</akap>
+    <akap>Ustał deszcz, wybłysnęło słońce; z chałup wychodzili ludzie i ze zdumieniem patrzyli na widok tak nadzwyczajny. A syrena szła i śpiewała.</akap>
+    <akap>A gdy już była tuż, tuż nad brzegiem Wisły, odwróciła się, spojrzała ku wiosce i zawołała na głos cały:</akap>
+    <akap_dialog>--- Kochałam cię, ty brzegu wiślany, kochałam was, ludzie prości i serca dobrego, byłam waszą pieśnią, waszym czarem życia!</akap_dialog>
+    <akap>Czemuż wzięliście mnie w niewolę, czemuż chcieliście, abym w pętach, w więzieniu, na rozkaz książęcy śpiewała?</akap>
+    <akap>Śpiewałam wam, ludzie prości, ludzie serca cichego i dobrego, ale na rozkaz śpiewać nie chcę i nie będę.</akap>
+    <akap>Wolę skryć się na wieki w fale wiślane, wolę zniknąć z przed waszych oczu i tylko szumem rzeki do was przemawiać.</akap>
+    <akap>A gdy przyjdą czasy ciężkie i twarde, czasy, o których nie śni się, ani wam, ani dzieciom i wnukom dzieci waszych śnić się jeszcze nie będzie, wtedy, w lata krzywdy i klęski, szum fal wiślanych śpiewać będzie potomkom waszym o nadziei, o sile, o zwycięstwie.</akap>
+    <end id="e1188464433796"/>
+    <akap>A tu tymczasem, pędem od wioski lecą ku brzegowi obaj rybacy i pustelnik stary i krzyczą:</akap>
+    <akap_dialog>--- Łapaj, trzymaj, nie puszczaj!</akap_dialog>
+    <akap>Ale! nie puszczaj!</akap>
+    <akap>Już ci syrena chlup! do wody, a za nią w te pędy Staszek.</akap>
+    <akap>Skoczył, wychynął z rzeki, rozejrzał się dokoła, zawołał:</akap>
+    <akap_dialog>--- Bóg z wami!</akap_dialog>
+    <akap>I zniknął.</akap>
+    <separator_linia/>
+    <akap>Minęły lata i wieki. Na miejscu wioski --- miasto powstało, ludne, bogate, warowne.</akap>
+    <akap>A miasto owo, później stolica, na pamiątkę dziwnej przygody z syreną, wzięło ją za godło swoje, i godło to po dzień dzisiejszy widnieje na ratuszu Warszawy.</akap>
+  </opowiadanie>
+  <extra>
+    <!--</tekst_glowny>-->
+  </extra>
+</utwor>

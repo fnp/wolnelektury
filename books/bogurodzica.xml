@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Bogurodzica">
+      <dc:creator xml:lang="pl">Anonim</dc:creator>
+      <dc:title xml:lang="pl">Bogurodzica</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Feicht, Hieronim</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Woronczak, Jerzy</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Średniowiecze</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Hymn</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Bogurodzica</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/3073</dc:source.URL>
+      <dc:source xml:lang="pl">Bogurodzica, Biblioteka Pisarzów Polskich, Seria A, Liryka Średniowieczna, t. 1, Zakład Narodowy im. Ossolińskich. Wydawnictwo PAN, Wrocław, 1962</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Bogurodzica powstała we wczesnym średniowieczu, chociaż dokładna data jest nieznana. Przeważają hipotezy badaczy wskazujące na XI lub XII w. jako czas jej powstania. Pierwszy zapis tekstu jest późny, z początku XV w. (ok. 1407); wcześniejsze zapisy mogły zaginąć, ale też tekst mógł krążyć w obiegu ustnym.</dc:rights>
+      <dc:date.pd xml:lang="pl">1407</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-09-06</dc:date>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_lp>
+    <nazwa_utworu>Bogurodzica</nazwa_utworu>
+    <nota>TEKSTY --- PRZEKAZ Ab/
+Transkrypcja</nota>
+    <begin id="b1189081667258"/>
+    <motyw id="m1189081667258">Bóg, Kondycja ludzka, Matka Boska, Obraz świata, Religia</motyw>
+    <strofa>Bogurodzica dziewica, Bogiem sławiena Maryja,/
+U twego syna Gospodzina matko zwolena, Maryja!/
+Zyszczy nam, spuści nam./
+<wers_wciety>Kyrieleison.</wers_wciety></strofa>
+    <strofa>Twego dziela Krzciciela, bożycze,/
+Usłysz głosy, napełni myśli człowiecze./
+Słysz modlitwe, jąż nosimy,/
+Oddać raczy, jegoż prosimy:/
+A na świecie zbożny pobyt,/
+Po żywocie rajski przebyt./
+<wers_wciety>Kyrieleison.</wers_wciety></strofa>
+    <begin id="b1189081789321"/>
+    <motyw id="m1189081789321">Nieśmiertelność, Śmierć</motyw>
+    <strofa>Nas dla wstał z martwych syn boży./
+Wierzyż w to, człowiecze zbożny,/
+Iż przez trud Bog swoj lud/
+Odjął diablej strożej.</strofa>
+    <strofa>Przydał nam zdrowia wiecznego,/
+Starostę skował pkielnego,/
+Śmierć podjął, wspomionął/
+Człowieka pirwego.</strofa>
+    <strofa>Jenże trudy cirpiał zawiernie,/
+Jeszcze był nie prześpiał zaśmiernie,/
+Aliż sam Bog zmartwychwstał.</strofa>
+    <end id="e1189081789321"/>
+    <strofa>Adamie, ty boży kmieciu,/
+Ty siedzisz u Boga [w] wiecu./
+Domieściż twe dzieci,/
+Gdzież krolują anjeli.</strofa>
+    <strofa>Tegoż nas domieściż, Jezu Kryste miły,/
+Bychom z tobą byli,/
+Gdzie sie nam radują szwe niebieskie siły.</strofa>
+    <strofa>Była radość, była miłość, było widzenie tworca/
+Anjelskie bez końca,/
+Tuć sie nam zwidziało diable potępienie.</strofa>
+    <strofa>Ni śrebrem, ni złotem nas diabłu odkupił,/
+Swą mocą zastąpił.</strofa>
+    <begin id="b1189081848839"/>
+    <motyw id="m1189081848839">Cierpienie</motyw>
+    <strofa>Ciebie dla, człowiecze, dał Bog przekłoć sobie/
+Ręce, nodze obie,/
+Kry święta szła z boka na zbawienie tobie.</strofa>
+    <strofa>Wierzyż w to, człowiecze, iż Jezu Kryst prawy/
+Cirpiał za nas rany,/
+Swą świętą krew przelał za nas krześcijany.</strofa>
+    <end id="e1189081848839"/>
+    <strofa>O duszy o grzeszne sam Bog pieczą ima,/
+Diabłu ją otyma,/
+Gdzie to sam króluje, k sob[ie] ją przyma.</strofa>
+    <strofa>Maryja dziewice, prośmy synka twego,/
+Krola niebieskiego,/
+Haza nas huchowa ote wszego złego.</strofa>
+    <strofa>Amen tako Bog daj,/
+Bychom szli szwyćcy w raj.</strofa>
+    <end id="e1189081667258"/>
+  </liryka_lp>
+</utwor>

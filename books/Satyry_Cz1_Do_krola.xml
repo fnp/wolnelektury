@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Do_kr%C3%B3la">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (1) Do króla</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Do króla</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><wers_akap><begin id="b1193744363426"/><motyw id="m1193744363426">Pozycja społeczna, Prawda, Władza</motyw>Im wyżej, tym widoczniej; chwale lub naganie<pr><slowo_obce>Im wyżej, tym widoczniej</slowo_obce> --- im kto wyżej wyniesiony w społecznej hierarchii, tym baczniejszej poddany jest obserwacji.</pr></wers_akap>/
+Podpadają królowie, najjaśniejszy panie!/
+<begin id="b1194607985939"/><motyw id="m1194607985939">Król</motyw>Satyra prawdę mówi, względów się wyrzeka./
+Wielbi urząd, czci króla, lecz sądzi człowieka.<end id="e1193744363426"/>/
+Gdy więc ganię zdrożności i zdania mniej baczne<pr><slowo_obce>mniej baczne</slowo_obce> --- pochopne, nierozważne, nierozsądne.</pr>,/
+Pozwolisz, mości królu, że od ciebie zacznę./
+<wers_akap><begin id="b1193744464662"/><motyw id="m1193744464662">Krew</motyw>Jesteś królem, a czemu nie królewskim synem<pr>Stanisław August był synem kasztelana krakowskiego, Stanisława Poniatowskiego.</pr>?<end id="e1194607985939"/></wers_akap>/
+To niedobrze; krew pańska jest zaszczyt przed gminem<pr>Gminem nazywa Krasicki, zależnie od okoliczności, zarówno pospólstwo wiejskie i miejskie, jak i ogół szlachty; tu mowa o gminie szlacheckim.</pr>./
+Kto się w zamku urodził, niech ten w zamku siedzi;/
+Z tegoć powodu nasi szczęśliwi sąsiedzi.<end id="e1193744464662"/>/
+<begin id="b1194644861609"/><motyw id="m1194644861609">Natura, Pozycja społeczna</motyw>Bo natura na rządczych pokoleniach<pr><slowo_obce>rządcze pokolenia</slowo_obce> --- dynastie panujących.</pr> zna się:/
+Inszym powietrzem żywi, inszą strawą pasie./
+Stąd rozum bez nauki, stąd biegłość bez pracy;/
+Mądrzy, rządni, wspaniali, mocarze, junacy ---/
+Wszystko im łatwo idzie; a chociażby który/
+Odstrychnął się na moment od swojej natury,/
+Znowu się do niej wróci, a dobrym koniecznie/
+Być musi i szacownym<pr><slowo_obce>szacowny</slowo_obce> --- wielce ceniony, poważany.</pr> w potomności wiecznie.<end id="e1194644861609"/>/
+<begin id="b1193744558392"/><motyw id="m1193744558392">Poeta, Pochlebstwo</motyw>Bo od czegóż poeci? Skarb królestwa drogi<pr><slowo_obce>drogi</slowo_obce> --- tu: wielki, bogaty.</pr>,/
+Rodzaj możny w aplauzy<pr><slowo_obce>aplauz</slowo_obce> --- pochwała, poklask.</pr>, w słowa nieubogi,/
+Rodzaj, co umie znaleźć, czego i nie było,/
+A co jest, a niedobrze, żeby się przyćmiło,/
+I w to oni potrafią; stąd też jak na smyczy/
+Szedł chwalca za chwalonym, zysk niosąc w zdobyczy,/
+A choć który fałsz postrzegł, kompana nie zdradził;/
+Ten gardził, ale płacił, ów śmiał się, lecz kadził.<end id="e1193744558392"/>/
+<begin id="b1194645676111"/><motyw id="m1194645676111">Król, Państwo, Polak, Szlachcic, Władza</motyw>Tyś królem, czemu nie ja? Mówiąc między nami,/
+Ja się nie będę chwalił, ale przymiotami/
+Niezłymi się zaszczycam. Jestem Polak rodem,/
+A do tego i szlachcic, a choćbym i miodem/
+Szynkował, tak jak niegdyś ów bartnik w Kruszwicy<pr><slowo_obce>bartnik w Kruszwicy</slowo_obce> --- legendarny Piast.</pr>,/
+Czemuż bym nie mógł osieść na twojej stolicy?/
+<wers_akap>Jesteś królem --- a byłeś przedtem mości panem;</wers_akap>/
+To grzech nieodpuszczony. Każdy, który stanem/
+Przedtem się z tobą równał, a teraz czcić musi,/
+Nim powie: ,,najjaśniejszy”, pierwej się zakrztusi<pr><slowo_obce>mości pan</slowo_obce> --- przyjęty powszechnie skrót tytułu grzecznościowego ,,miłościwy pan”, który przysługiwał każdemu szlachcicowi. Znana powszechnie w XVIII w. anegdota mówi, że Karol Radziwiłł, zwany ,,Panie Kochanku”, w czasie spotkania ze Stanisławem Augustem nie chciał tytułować go ,,najjaśniejszym panem”.</pr>;/
+I choć się przyzwyczaił, przecież go to łechce:/
+Usty cię czci, a sercem szanować cię nie chce./
+I ma słuszne przyczyny. Wszak w Lacedemonie<pr>Lacedemon --- Sparta.</pr>/
+Zawżdy siedział Tesalczyk<pr>Tesalczyk --- mieszkaniec Tesalii, jednego z państewek starożytnej Grecji.</pr> na Likurga<pr>Likurg --- półlegendarny twórca spartańskiego ustroju państwowego, który ukształtował się około VII w. p. n. e.</pr> tronie,/
+Greki archontów<pr><slowo_obce>archontowie</slowo_obce> --- ,,urzędnicy najwyżsi Rzeczypospolitej Ateńskiej postanowieni po dobrowolnej za ojczyznę śmierci ostatniego ich króla Kodrusa. [...] Urząd archontów był roczny, nie tylko zaś w Atenach, ale i w innych wielu miastach Grecji i Azji podobni urzędnicy ustanowieni byli”. (I. Krasicki, <tytul_dziela>Zbiór potrzebniejszych wiadomości</tytul_dziela>, Warszawa 1781--1783).</pr> swoich od Rzymianów brali,/
+Rzymianie dyktatorów<pr><slowo_obce>dyktator</slowo_obce> --- w starożytnym Rzymie republikańskim nadzwyczajny urzędnik obdarzony pełnią władzy, mianowany na przeciąg 6 miesięcy w razie wielkiego niebezpieczeństwa.</pr> od Greków przyzwali<pr>Stanisław August w uwagach skierowanych do autora (w liście z 4 III 1779) nie zrozumiał ironii w przytoczonej przez Krasickiego bałamutnej, pseudohistorycznej argumentacji na poparcie tezy o konieczności pochodzenia króla z obcego domu panującego. Pisał on: ,,Ta asercja [twierdzenie] dwoista nie wiem, jak z historii może być dowiedzioną” (I. Krasicki, <tytul_dziela>Pisma wybrane</tytul_dziela>, Warszawa 1954, t. IV, s. 248).</pr>;/
+Zgoła, byle był nie swój, choćby i pobłądził,/
+Zawżdy to lepiej było, kiedy cudzy rządził./
+<wers_akap>Czyń, co możesz, i dziełmi sąsiadów zadziwiaj,</wers_akap>/
+Szczep nauki, wznoś handel i kraj uszczęśliwiaj ---/
+Choć wiedzą, chociaż czują, żeś jest tronu godny,/
+Nie masz chrztu, co by zmazał twój grzech pierworodny./
+<wers_akap>Skąd powstał na Michała ów spisek zdradziecki?</wers_akap>/
+Stąd tylko, że król Michał zwał się Wiszniowiecki./
+Do Jana, że Sobieski, naród nie przywyka,/
+Król Stanisław dług płaci za pana stolnika<pr><slowo_obce>za pana stolnika</slowo_obce> --- Stanisław August był przed elekcją, w latach 1755--1764, stolnikiem litewskim. Po w. 52 w redakcji satyry przesłanej królowi znajdowały się następujące dwa wiersze: ,,Los się u nas na królów rodowitych sroży, / Nikt prorokiem w ojczyźnie, wyrok to jest boży." (I. Krasicki, <tytul_dziela>Satyry i listy</tytul_dziela>, s. 61). W pierwotnej redakcji satyry ww. 49--50 brzmiały: ,,Co sprawiło gołębski ów spisek zdradziecki, / Jeśli nie to, że Michał zwał się Wiszniowiecki." (I. Krasicki, <tytul_dziela>Satyry i listy, wydanie krytyczne Ludwika Bernackiego</tytul_dziela>, Lwów 1908, s. 60--61). Dwuznaczność pierwszego z nich o konfederacji gołębskiej usunął Krasicki na życzenie króla, wobec czego pod ,,spiskiem zdradzieckim" można rozumieć jedynie konfederację szczebrzeszyńską. Została ona zawiązana w r. 1672, pod przewodnictwem Jana Sobieskiego, wówczas hetmana w. koronnego, przeciw Michałowi Korybutowi, wyniesionemu na tron przez popleczników dworu austriackiego. Podobnie jak późniejsza opozycja przeciw Janowi III, związanemu ze stronnictwem francuskim, była ona raczej, nie jak chce Krasicki --- wystąpieniem szlachty przeciwko królowi--rodakowi, ale wyrazem walki o władzę między stronnictwami magnackimi, szukającymi poparcia u dworów zagranicznych. Krasicki robi tu oczywistą aluzję do tarć między stronnictwem Czartoryskich, które przeprowadziło wybór Stanisława Poniatowskiego na króla, a zwolennikami kandydatury saskiej.</pr>/
+Czujesz to --- i ja czuję; więc się już nie troszczę,/
+Pozwalam ci być królem, tronu nie zazdroszczę./
+<wers_akap>Źle to więc, żeś jest Polak; źle, żeś nie przychodzień<end id="e1194645676111"/>;</wers_akap>/
+To gorsza (luboć, prawda, poprawiasz się co dzień) ---/
+Przecież muszę wymówić, wybacz, że nie pieszczę ---/
+<begin id="b1193744952918"/><motyw id="m1193744952918">Starość, Król</motyw>Powiem więc bez ogródki: oto młodyś jeszcze./
+Pięknież to, gdy na tronie sędziwość się mieści;/
+Tyś nań wstąpił mający lat tylko trzydzieści<pr><slowo_obce>mający lat tylko trzydzieści</slowo_obce> --- gdy Stanisław August obrany został w r. 1764 królem, liczył 32 lata.</pr>,/
+Bez siwizny, bez zmarszczków: zakał<pr><slowo_obce>zakał</slowo_obce> --- wada, przywara.</pr> to nie lada./
+Wszak siwizna zwyczajnie talenta posiada,/
+Wszak w zmarszczkach rozum mieszka, a gdzie broda siwa,/
+Tam wszelka doskonałość zwyczajnie przebywa./
+<wers_akap>Nie byłeś, prawda, winien temu, żeś nie stary;</wers_akap>/
+Młodość, czerstwość i rześkość piękneż to przywary,/
+Przecież są przywarami. Aleś się poprawił:/
+Już cię tron z naszej łaski siwizny nabawił./
+Poczekaj tylko, jeśli zstarzeć ci się damy,/
+Jak cię tylko w zgrzybiałym wieku oglądamy<pr><slowo_obce>oglądamy</slowo_obce> --- ujrzymy, zobaczymy.</pr>,/
+Będziem krzyczeć na starych, dlatego żeś stary.<end id="e1193744952918"/>/
+<wers_akap>To już trzy, com ci w oczy wyrzucił, przywary.</wers_akap>/
+A czwarta jaka będzie, miłościwy panie?/
+<begin id="b1194647087200"/><motyw id="m1194647087200">Król, Przemoc, Władza</motyw>O sposobie rządzenia niedobre masz zdanie./
+Król nie człowiek. To prawda, a ty nie wiesz o tym;/
+Wszystko ci się coś marzy o tym wieku złotym<pr><slowo_obce>ci się coś marzy o tym wieku złotym</slowo_obce> --- aluzja do ambitnych planów Stanisława Augusta, którego dążeniem było zrealizowanie ,,złotego wieku” kultury polskiej na wzór Oktawiana Augusta, pierwszego cesarza starożytnego Rzymu.</pr>./
+Nie wierz bajkom! Bądź takim, jacy byli drudzy./
+Po co tobie przyjaciół? Niech cię wielbią słudzy./
+Chcesz, aby cię kochali? Niech się raczej boją./
+Cóżeś zyskał dobrocią, łagodnością twoją?/
+Zdzieraj, a będziesz możnym, gnęb, a będziesz wielkim;/
+Tak się wsławisz a przeciw nawałnościom wszelkim/
+Trwale się ubezpieczysz. Nie chcesz? Tym ci gorzej:/
+Przypadać będą na cię niefortuny<pr><slowo_obce>niefortuna</slowo_obce> --- niepowodzenie, nieszczęście.</pr> sporzej./
+Zniesiesz mężnie --- cierpże z tym myślenia sposobem;/
+Wolę ja być Krezusem<pr>Krezus (VI w. p.n.e.) --- ostatni król Lidii (w Azji Mniejszej), ze względu na swe olbrzymie bogactwa uważał się za najszczęśliwszego z ludzi.</pr> aniżeli Jobem<pr>Job --- Hiob, postać biblijna, człowiek przyjmujący z całkowitą rezygnacją najcięższe doświadczenia zsyłane nań przez Boga. ,,Przykład cierpliwości” --- pisze o nim Krasicki, (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>). Po w. 86 następowały cztery wiersze: ,,Co po tym, że po śmierci pochwałę zamruczą, / Kiedy mnie w życiu zhańbią, zmartwią i dokuczą, / Z tych, co na tronie rzymskim rząd trzymali świata, / Żył Neron lat piętnaście, a Tytus dwa lata." (I. Krasicki, <tytul_dziela>Satyry i listy</tytul_dziela>, s. 62) W przesłanym królowi odpisie ww. 1--2 zostały opuszczone, natomiast ww. 3--4 usunął Krasicki na skutek uwagi adresata satyry, który pisał: ,,Podobno lepiej opuścić wcale te dwa wiersze, bo lubo i tu kawałek żartu jest zawarty, ale jednak coś niemiło igrać z imieniem obrzydłym Nerona, którego los tu się skazuje niby za pożądańszy nad los Tytusa”. (I. Krasicki, <tytul_dziela>Pisma wybrane</tytul_dziela>, t. IV, s. 248).</pr>./
+<wers_akap>Świadczysz, a na złe idą dobrodziejstwa twoje.</wers_akap>/
+Czemuż świadczysz, z dobroci gdy masz niepokoje?/
+Bolejesz na niewdzięczność --- alboż ci rzecz tajna,/
+Że to w płacy za łaski moneta zwyczajna?/
+<wers_akap><begin id="b1202395084891"/><motyw id="m1202395084891">Korzyść</motyw>Po co nie brać szafunku starostw, gdy dawano?</wers_akap>/
+Po tym ci tylko w Polszcze króle poznawano./
+A zagrzane wspaniałą miłością ojczyzny,/
+Kochały patryjoty dawcę królewszczyzny<end id="e1202395084891"/><pr><slowo_obce>królewszczyzny</slowo_obce> --- ,,Królewszczyzny, dobra niegdyś stołu królewskiego, obrócone na nadgrodę zasług i stąd pospolicie nazwane <slowo_obce>panis bene merentium</slowo_obce> (chleb dobrze zasłużonych). Dwojakiej były natury: jedne z jurysdykcją (tzw. starostwa), drugie żadnego nie mają obowiązku i te się tenutami albo dzierżawami nazywały. Przedtem według upodobania król jednej osobie kilka królewszczyzn bez jurysdykcji nadawał [...]. Starostowie pograniczni, choć bez jurysdykcji, zamków i granic strzec powinni. Lustracja królewszczyzn co lat 5 być powinna i kwarta z nich sprawiedliwa, to jest czwarta część dochodów do skarbu publicznego idzie”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>). Na sejmie rozbiorowym w r. 1775 rozdawnictwo starostw i królewszczyzn wyjęte zostało spod praw przysługujących królowi.</pr>.<end id="e1194647087200"/>/
+<wers_akap><begin id="b1194647264705"/><motyw id="m1194647264705">Mądrość, Mędrzec, Nauka, Przemoc</motyw>Księgi lubisz i w ludziach kochasz się uczonych;</wers_akap>/
+I to źle. Porzuć mędrków zabałamuconych./
+<begin id="b1202395206145"/><motyw id="m1202395206145">Książka</motyw>Żaden się naród księgą w moc nie przysposobił<end id="e1202395206145"/>:/
+Mądry przedysputował, ale głupi pobił.<end id="e1194647264705"/>/
+Ten, co niegdyś potrafił floty duńskie chwytać ---/
+Król Wizimierz<pr><slowo_obce>król Wizimierz</slowo_obce> --- w <tytul_dziela>Kronice wszytkiego świata</tytul_dziela> Marcina Bielskiego (Kraków 1551) znajduje się wzmianka o Wizimierzu, synu Lecha, legendarnym królu polskim, zwycięzcy floty duńskiej. Postać Wizimierza spotykamy u Krasickiego również w <tytul_dziela>Historii</tytul_dziela>.</pr> --- nie umiał pisać ani czytać<pr>Niektórzy historycy literatury (np. J. Kleiner) interpretują te wiersze (97-100) jako rzeczywisty zarzut Krasickiego wobec króla. Zapewne i współcześnie panowała taka opinia, bo w artykule pt. <tytul_dziela>O stanie rycerskim</tytul_dziela> Krasicki broni się przeciw niej i wyjaśnia właściwą intencję aluzji: ,,mniemają źle rzecz biorący, iż żart, umyślnie na poparcie przeciwnego zdania wyrzeczony, ściśle za prawdę brać należy. Znać, iż bez uwagi czytali pismo, inaczej poznaliby, do czego zmierza. Zmierza zaś do wyśmiania dawnych przesądów, które były skutkiem grubej i dzikiej niewiadomości”. (I. Krasicki, <tytul_dziela>Dzieła prozą</tytul_dziela>, Warszawa 1803--1804, t. VI, s. 426; w cyklu <tytul_dziela>Uwagi</tytul_dziela>).</pr>./
+<wers_akap>Waszej królewskiej mości nie przeprę<pr><slowo_obce>przeprzeć</slowo_obce> --- przekonać.</pr>, jak widzę,</wers_akap>/
+W tym się popraw przynajmniej, o co ja się wstydzę./
+<begin id="b1194647442511"/><motyw id="m1194647442511">Król, Władza, Strach</motyw>Dobroć serca monarchom wcale nie przystoi:/
+To mi to król, co go się każdy człowiek boi,/
+To mi król, co jak wspojźrzy, do serca przeniknie./
+Kiedy lud do dobroci rządzących przywyknie,/
+Bryka, mościwy królu, wzgląd wspacznie obróci<pr><slowo_obce>wzgląd wspacznie obróci</slowo_obce> --- przychylność zrozumie opacznie.</pr>:/
+Zły, gdy kontent, powolny<pr><slowo_obce>powolny</slowo_obce> --- zgodny, uległy.</pr>, kiedy się zasmuci./
+<wers_akap>Nie moje to jest zdanie, lecz przez rozum bystry</wers_akap>/
+Dawno tak osądziły przezorne ministry:/
+Wiedzą oni (a czegóż ministry nie wiedzą?),/
+Przy sterze ustawicznie, gdy pracują, siedzą,/
+Dociekli, na czym sekret zawisł panujących./
+<wers_akap>Z tych więc powodów, umysł wskroś przenikających,</wers_akap>/
+<begin id="b1202395488391"/><motyw id="m1202395488391">Serce</motyw>Nie trzeba, mości królu, mieć łagodne serce:/
+Zwycięż się, zgaś ten ogień i zatłum w iskierce.<end id="e1202395488391"/>/
+<wers_akap>Żeś dobry, gorszysz wszystkich, jak o tobie słyszę,<end id="e1194647442511"/></wers_akap>/
+I ja się z ciebie gorszę i satyry piszę;/
+Bądź złym, a zaraz kładąc twe cnoty na szalę,/
+Za to, żeś się poprawił, i ja cię pochwalę.
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

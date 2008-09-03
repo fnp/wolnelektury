@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Gracz">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (12) Gracz</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Gracz</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa><wers_akap>Słusznie niżnik czerwienny<pr><slowo_obce>niżnik czerwienny</slowo_obce> --- walet kierowy.</pr>, a kinal<pr><slowo_obce>kinal</slowo_obce> --- walet atutowy.</pr> z nazwiska,</wers_akap>/
+Uczczony matedorstwem<pr><slowo_obce>matedorstwo</slowo_obce> --- starszeństwo w kartach; <slowo_obce>matador</slowo_obce> --- najstarsza karta atutowa.</pr>. Jemu kart igrzyska/
+Winniśmy; a walecznym dumne bohatyrem,/
+Wyszły na świat szulery pod wodzem Lahirem<pr><slowo_obce>Lahir</slowo_obce> --- Etienne de Vignoles (1390--1433), znany bardziej pod nazwiskiem La Hire, jeden z przywódców wojsk króla francuskiego Karola VII; nazwiskiem jego ochrzczono we Francji waleta kierowego. Tradycyjne przypisywanie La Hire'owi wynalezienia kart do gry nie jest zgodne z prawdą historyczną.</pr>./
+Tak się zwał ten, co pierwszy dla zabawnej współki/
+Pod różnymi barwami zebrał cztery pułki/
+I każąc się bić lalkom, głupiego gdy bawił,/
+Wszystkim jego następcom kunszt zacny objawił./
+Weszły karty w potrzebę tak jak innych wiela,/
+0 których dziwacki wymysł gdy ludziom udziela,/
+Płaciemy haracz modzie. Stąd tyrany nowe,/
+Króle winne, czerwienne, żołędne, dzwonkowe<pr><slowo_obce>Króle winne, czerwienne...</slowo_obce> --- staropolskie nazwy kolorów w kartach, obok których w XVIII w. wprowadzono nazwy francuskie: pik, kier, trefl, karo.</pr>,/
+Bez względu na poddanych majątku ostatki/
+Coraz cięższe wkładają jarzma i podatki./
+<wers_akap>Łask pańskich (jak zazwyczaj) rywale, rywalki,</wers_akap>/
+Dworzany --- niżnikowie, faworytki --- kralki<pr><slowo_obce>kralka</slowo_obce> --- dama kierowa.</pr>,/
+Zawżdy w wojnie, a z nimi i ich adherenci<pr><slowo_obce>adherent</slowo_obce> --- stronnik, poplecznik.</pr>,/
+Biją wszystkich, skoro się ich kolor wyświęci<pr><slowo_obce>kolor wyświęci się</slowo_obce> --- zostanie kolorem atutowym.</pr>./
+<wers_akap>Król najstarszy u innych; nasz jarzmu niezdolny,</wers_akap>/
+Pod tuzem<pr><slowo_obce>tuz</slowo_obce> --- as w kartach.</pr> jak pod prawem sadza go lud wolny./
+Bije więc wstępnym bojem i króle, i kralki,/
+A my głupi, co gramy, płaciemy za lalki./
+<wers_akap>I lalki nam też płacą. Co ziemi i piędzi</wers_akap>/
+Nie miał przedtem, dziś Marek hrabia na żołędzi<pr><slowo_obce>Marek hrabia na żołędzi</slowo_obce> --- tj. na treflu, bo zdobył majątek szulerską grą w karty. Ironiczny tytuł hrabiego na żołędzi wystylizowany jest na wzór ówczesnych tytułów rodowych, np. Jacek hrabia Fredro na Pleszowicach i Hoczwi.</pr>./
+Z łaski malowanego króla jegomości/
+Posiada sumy, weksle, fanty, majętności./
+Jako strumyk, co z letka po kamyczkach ścieka,/
+Nim się z niego tak znaczna ustanowi rzeka,/
+Iż ją majtek w żegludze żartkim porze<pr><slowo_obce>porze</slowo_obce> --- pruje.</pr> wiosłem,/
+Tak szedł Marek do zbiorów szulerskim rzemiosłem./
+Podłe są grów wspaniałych pierwsze towarzyszki,/
+Chcesz przyjść do faraona<pr><slowo_obce>faraon</slowo_obce> --- hazardowa gra w karty, niezwykle popularna w Polsce od czasów saskich.</pr>, trzeba zacząć w pliszki<pr><slowo_obce>pliszki</slowo_obce> --- gra polegająca na rzucaniu czterech rozłupanych drewienek z gałęzi. Wygrana zależała od tego, czy ktoś rzucił do pary, tj. dwa drewienka na stronę płaską, białą i drugie dwa na stronę półokrągłą lub wszystkie cztery na jedną stronę.</pr>,/
+Trzeba skrzętnym staraniem, gdy pora użycza,/
+Próbować różnych losów i w rusa<pr><slowo_obce>rus</slowo_obce> --- gra w karty, w której ten wygrywał, kto miał trzy kolejne karty starsze lub jednego koloru</pr>, i w bicza<pr><slowo_obce>bicz</slowo_obce> --- rodzaj popularnej gry karcianej.</pr>,/
+A zacząwszy w ciskankę<pr><slowo_obce>ciskanka</slowo_obce> --- gra pieniędzmi lub liczmanami: ,,orzeł czy reszka”.</pr> z chłopcy, po miesiącu/
+Kończyć z pany wśród luster grając po tysiącu./
+Najśmielej wódz takowy do zwycięstwa zmierza,/
+Który się od prostego dosłużył żołnierza./
+<wers_akap>O wy, dusze wyborne i większe nad prawo!</wers_akap>/
+Wspaniały punkt honoru co trzymając żwawo,/
+Zaufani, że na was cios kary nie natrze,/
+Na bankowym fortunę stawiacie teatrze,/
+A szacownej wolności stawając się wzorem,/
+Domy wasze stawiacie szulerstwu otworem./
+Pozwólcie, dusze wielkie, dusze uwielbione,/
+Niechaj igrzysk Fortuny uchylę zasłonę./
+<wers_akap>Asamble<pr><slowo_obce>Asamble</slowo_obce> --- bale, reduty były miejscem szczególnie wysokiej gry w karty.</pr>. Niosą karty i sztony<pr><slowo_obce>sztony</slowo_obce> --- liczmany, znaczki metalowe lub kościane zastępujące umownie pieniądze w grze.</pr>, i marki,</wers_akap>/
+A jako bankierowie na walne jarmarki<pr><slowo_obce>bankierowie na walne jarmarki</slowo_obce> --- kontrakty, wielkie doroczne zjazdy szlachty dla dokonywania transakcji handlowych. Na kontraktach bywali również przedstawiciele bankierów warszawskich, zwanych także wekslarzami.</pr>,/
+Zasiadają szulery w wielkie dzieła wprawne,/
+Koło nich jak na smyczy pacyjenty sławne./
+Ten nowy kabalista zaczyna kwerendy<pr><slowo_obce>kwerendy</slowo_obce> --- poszukiwania, badania.</pr>,/
+Stawił na piątkę z asem połowę arendy<pr>Kitowicz pisze: ,,Zrobił się z tej gry wielom stopień do fortuny, wielom do upadku, gdy w profesją [zawód] szulerów, przedtem wzgardzoną i tylko między małym ludem zachowanie mającą [...] weszli ludzie dystyngwowani, a nawet najwięksi panowie stali się szulerami, ogrywając jedni drugich nie tylko z gotowych pieniędzy, ale nawet z nieruchomych substancji, z dóbr, z klejnotów i całej fortuny. Kiedy na jedną kartę wolno było stawić i tysiąc czerwonych złotych, i sto tysięcy, i przez jedne noc możno było miernie majętnemu lub synowi szlachcica, wyprawionemu do dworu albo do palestry, ograć się do koszuli”. (J. Kitowicz, <tytul_dziela>Opis obyczajów</tytul_dziela>, s. 577).</pr>,/
+Tamten, zazdrosnym okiem patrząc na kolegę,/
+Sypie na kralkę pełną pszenicy komięgę<pr><slowo_obce>komiega</slowo_obce> --- statek rzeczny do spławiania zboża.</pr>./
+przegrał niżnik, ów niżnik, co się był tak wsławił,/
+Zgniótł Antoni złoczyńcę i w komin wyprawił./
+Marcin damie łeb urwał za dwa łaszty<pr><slowo_obce>łaszt</slowo_obce> --- dawna miara towarów sypkich, równa około 3840 l.</pr> żyta,/
+Klnie Jędrzej nieszczęśliwy i zębami zgrzyta,/
+A że sąsiad na takąż jak on kartę stawia,/
+Dąsa się na sąsiada, mruczy i przymawia./
+I ów przegrał i westchnął, a Jędrzej się cieszy./
+Coraz więcej zgromadza zysk szulerskiej rzeszy:/
+<begin id="b1202432670803"/><motyw id="m1202432670803">Los, Pieniądz, Zabobony</motyw>Złoto brzęczy, ten daje, a tamten odbiera,/
+Ów, że przegrał, za siebie coraz się obziera,/
+Ktoś mu przyniósł nieszczęście. Piotr przegrał na kralkę,/
+Byłby i więcej przegrał, szczęściem postrzegł balkę<pr><slowo_obce>szczęściem postrzegł balkę</slowo_obce> --- według rozpowszechnionego wśród karciarzy przesądu miejsce pod belką w suficie przynosi nieszczęście w grze.</pr><end id="e1202432670803"/>,/
+Posunął się, a miejsca gdy lepszego siąga,/
+Już nietrwożny, jak siedzi, zgrał się do szeląga./
+Zgrał się, a nowy Tytan<pr><slowo_obce>nowy Tytan</slowo_obce> --- według mitologii starożytnej walczący z Zeusem Olbrzymi (już w starożytności myleni często z Tytanami) spiętrzyli szczyt Pelion na górze Ossie, aby dostać się na Olimp.</pr>, zjadłością rozżarty,/
+Jak Ossę i Pelijon rzucił w górę karty;/
+Wyzywa, a w perorach<pr><slowo_obce>perora</slowo_obce> --- długie rozwlekle przemówienie.</pr> żwawo rozpoczętych/
+Bluźni żywych, umarłych i grzesznych, i świętych./
+<wers_akap>Piotr więcej jeszcze przegrał, przecież się uśmiecha,</wers_akap>/
+Śmiech w uściech, a łzy w oczach, więc tajemnie wzdycha./
+Żal dokucza, wstyd broni; trójka nieszczęśliwa,/
+Trójka niegdyś pomyślna, a teraz zdradliwa,/
+Poczwórnym złym padnieniem zgubiła go marnie,/
+Osierocone złoto chciwy bankier garnie./
+Nie masz czasu i żegnać miłe towarzysze,/
+Poszedł smutny, siadł w kącie i satyry pisze./
+Pisz, bracie! dobre będą, piękne i zbawienne./
+<wers_akap>W drugim kącie, na losy płaczący odmienne,</wers_akap>/
+<begin id="b1202432784306"/><motyw id="m1202432784306">Klęska, Los</motyw>Co największą pociechą strapionego gracza,/
+Znalazł Łukasz nieszczęsnych awantur słuchacza./
+Za nic Rzymu i Aten sławne oratory,/
+Naówczas kiedy szuler płaczliwe perory/
+Rozpoczyna wybornym sposobem i kształtem:/
+Jakim los rozjuszony niesłychanym gwałtem/
+Srożył się, jak tylekroć szczęsne i wygrane,/
+Owe karty z kabały, karty doznawane,/
+Odmieniły się wszystkie, odmieniły nagle,/
+A gdy dął wiatr pomyślny w rozpuszczone żagle,/
+Gdy już okręt ku mecie dążył w bystrym biegu,/
+Gdy już portu dotykał, rozbił się na brzegu./
+Rozbił się! --- Umilkł mówca --- westchnął, głową kiwnął,/
+Rozbił! --- powtórzył słuchacz i żałośnie ziewnął.<end id="e1202432784306"/>/
+<wers_akap>Wrzask. --- O co? --- Jak nie wrzeszczyć. Zyski oczywiste</wers_akap>/
+Stracił Jan. Wielkim głosem wotum<pr><slowo_obce>wotum</slowo_obce> --- ślubowanie, przysięga.</pr> uroczyste,/
+Co w zaklęciu wskroś serce słyszących przenika,/
+Czyni, że grać nie będzie... i stawia niżnika./
+Stawia zdrajcę, co tyle złota na bank wegnał,/
+Stawia na pożegnanie; przegrał... nie pożegnał,/
+A losów nieszczęśliwych dopełniając miarki,/
+Pozbywszy gotowizny gra teraz na marki./
+Źle rzecz sądzić z pozoru. O marki, o sztony!/
+Któż by zgadł, żeście czasem warte milijony./
+Spytaj Jana, opowie, kościanymi znaki<pr><slowo_obce>kościane znaki</slowo_obce> --- sztony, liczmany z kości.</pr>/
+Jak z sług pany, a z panów stały się żebraki./
+Piotr kontent. Piotr, co wczoraj trzysta nie żałował./
+Dziś wziął rewanż; trzy wygrał, do kieszeni schował./
+Oszukał, bo grać przestał, tych, co wczoraj zgrali<pr><slowo_obce>zgrali</slowo_obce> --- zgrali się.</pr>,/
+Jęczą nad srogą zemstą, więc się ich użali:/
+Niech wygrane odbiorą. Stawił --- przegrał, drugą ---/
+I ta poszła. Nie bawiąc z odgrywaniem długo,/
+Co chciał pocieszyć niby zawstydzone franty,/
+Dał pięćset w gotowiźnie, a tysiąc na fanty<pr><slowo_obce>na fanty</slowo_obce> --- w zastaw.</pr>./
+<begin id="b1202432905580"/><motyw id="m1202432905580">Bogactwo, Pan, Sługa, Skąpiec</motyw>Przegrał, lecz pięknie przegrał, nie oszczędza zbioru<pr><slowo_obce>zbiór</slowo_obce> --- majątek.</pr>,/
+Ale przegrał na słowo, a to dług honoru./
+Niech głód mrą<pr><slowo_obce>głód mrą</slowo_obce> --- umierają z głodu.</pr>. niech klną pana służący niepłatni,/
+Żebrak on na potrzeby, na zbytki dostatni./
+Pierwszy dług kart u niego niż zasług, niż cnoty,/
+Woli płacić za kralkę niż wspomóc sieroty./
+Nie kazał tak król polski, lecz kazał czerwienny,/
+A zbytek, coraz w głupich zapędach odmienny,/
+W tym tylko jest stateczny, że niecnotę wdzięczy./
+To nie honor zapłacić, gdy sierota jęczy,/
+Kiedy płacze rzemieślnik, sługa strawion pracą,/
+A honor, gdy się zbytki i niecnoty płacą?<end id="e1202432905580"/>/
+<wers_akap>Jan objął po rodzicach majętność dostatnią,</wers_akap>/
+Wjechał w miasto, a wpadłszy w filutowską matnią,/
+W takie go facyjendy<pr><slowo_obce>facjenda</slowo_obce> --- spekulacja, afera.</pr> wprawił kunszt łotrowski,/
+Że w rok poszły intraty i sumy, i wioski./
+Cóż teraz czyni? Oto widząc w worku pustki,/
+Z szóstek robi siódemki, a z siódemek szóstki./
+Żyje więc jeszcze lepiej, niż kiedy był panem,/
+A teraźniejszym dobrze dyrygując stanem,/
+Kto wie, jeśli co przegrał, nazad nie odkupi./
+A jak zdradę postrzegą? Albo to Jan głupi;/
+Wyćwiczył się on nieźle. Są mistrze uczeni,/
+Co kiedy zechcą, żołądź uczynią z czerwieni,/
+Co pamfila skinalą<pr><slowo_obce>pamfila skinalą</slowo_obce> --- waleta treflowego zamienią w atutowego (kinala).</pr>, a gdy karta zmyka,/
+Z króla kralkę uczynią, a z tuza niżnika./
+<wers_akap>Świat się przepolerował. Bogdajby był dziki,</wers_akap>/
+Bogdaj wiecznie przepadły tuzy i niżniki!/
+<begin id="b1202432948762"/><motyw id="m1202432948762">Upadek, Zabawa</motyw>Dla głupich się zaczęły, mądrzy je przejęli/
+I co by się kartami bawić tylko mieli,/
+Tracą na nich czas drogi, majątek i cnotę,/
+A zbrodni filutowskich przejmując ochotę,/
+Oszukani, utratni, zdrajcę i oszusty/
+Płacą głupstwu dań zdzierstwa, zbytków i rozpusty.<end id="e1202432948762"/>
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

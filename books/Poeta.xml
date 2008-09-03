@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Le%C5%9Bmian/Poeta">
+      <dc:creator xml:lang="pl">Leśmian, Bolesław</dc:creator>
+      <dc:title xml:lang="pl">Poeta</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Młoda Polska</dc:subject.period>
+      <dc:subject.period xml:lang="pl">Dwudziestolecie międzywojenne</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Wiersz sylabotoniczny</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Poeta</dc:identifier.url>
+      <dc:source xml:lang="pl">Bolesław Leśmian (1877-1937), Napój cienisty, Wydawnictwo Mortkowicza, Warszawa, 1936</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Bolesław Leśmian zm. 1937</dc:rights>
+      <dc:date.pd xml:lang="pl">1937</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-01-11</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Bolesław Leśmian</autor_utworu>
+    <nazwa_utworu>Poeta</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa>Zaroiło się w sadach od tęcz i zawieruch ---/
+				<begin id="b1199873758998"/><motyw id="m1199873758998">Poeta</motyw>Z drogi! --- Idzie poeta --- niebieski wycieruch!/
+				Zbój obłoczny, co z światem jest --- wspak i na noże!<end id="e1199873758998"/>/
+				Baczność! --- Nic się przed takim uchronić nie może!/
+				Słońce --- w cebrze, dal --- w szybie, świt --- w studni, a zwłaszcza/
+				Wszelkie dziwy zza jarów --- prawem snu przywłaszcza./
+				<begin id="b1199874271722"/><motyw id="m1199874271722">Bóg</motyw>Rad Boga między żuki wmodlić --- do zielnika,/
+				Gdzie się z listem miłosnym sam jelonek styka!...<end id="e1199874271722"/>/
+				Świetniejąc łachmanami --- tym żwawszy, im golszy ---/
+				Nie bez wróżb się uśmiecha do grabu i olszy, ---/
+				<begin id="b1199874334023"/><motyw id="m1199874334023">Taniec</motyw>I widziano w dzień biały tego obłąkańca,/
+				Jak wierzbę sponad rzeki porywał do tańca!<end id="e1199874334023"/>/
+				A tak zgubnie porywać, mimo drwin i zniewag, ---/
+				Zdoła tylko z otchłanią sprzysiężony śpiewak./
+				<begin id="b1199875701996"/><motyw id="m1199875701996">Poeta, Żona</motyw>Żona jego, żegnając swój los znakiem krzyża,/
+				Na palcach --- pełna lęku do niego się zbliża./
+				Stoi... Nie śmie przeszkadzać... On słowa nawleka/
+				Na sznur rytmu, a ona płochliwie narzeka:/
+				--- ,,Giniemy... Córki nasze --- w nędzy i rozpaczy.../
+				A wiadomo, że jutro nie będzie inaczej.../
+				Wleczesz nas w nieokreślność... Spójrz --- my tu pod płotem/
+				Mrzemy z głodu bez jutra, a ty nie wiesz o tem!” ---/
+				Wie i wiedział zawczasu!...<end id="e1199875701996"/> I ze łzami w gardle/
+				<begin id="b1199875899799"/><motyw id="m1199875899799">Poeta, Poezja</motyw>Wiersz układa pokutnie --- złociście --- umarle, ---/
+				Za pan brat ze zmorami... Treść, gdy w rytm się stacza,/
+				Póty w nim się kołysze, aż się przeinacza./
+				Chętnie łowi treść, w której łzy prawdziwe płoną, ---/
+				Ale kocha naprawdę tę --- przeinaczoną.../
+				I z zachłanną radością mąci mu się głowa,/
+				Gdy ujmie niepochwytność w dwa przyległe słowa!/
+				A słowa się po niebie włóczą i łajdaczą ---/
+				I udają, że znaczą coś więcej, niż znaczą!...<end id="e1199875899799"/></strofa>
+    <strofa><begin id="b1200310095087"/><motyw id="m1200310095087">Artysta, Bóg, Kondycja ludzka</motyw>I po tym samym niebie --- z tamtej ułud strony ---/
+				Znawca słowa --- Bóg płynie --- w poetę wpatrzony./
+				Widzi jego niezdolność do zarobkowania/
+				I to, że się za snami tak pilnie ugania!/
+				Stwierdza z zgrozą, że w chacie --- nędza i zagłada, ---/
+				A on w szale występnym wiersz śpiewny układa!/
+				<begin id="b1200310207769"/><motyw id="m1200310207769">Obłok, Ptak</motyw>I Bóg, wsparty wędrownie o srebrzystą krawędź/
+				Obłoku, co się wzburzył skrzydłami, jak łabędź, ---<end id="e1200310207769"/>/
+				Z łabędzia --- do poety, zbłąkanego we śnie, ---/
+				Uśmiecha się i pięścią grozi jednocześnie!<end id="e1200310095087"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

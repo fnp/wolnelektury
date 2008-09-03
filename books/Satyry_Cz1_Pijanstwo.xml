@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Pija%C5%84stwo">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Satyry - Część 1 - (7) Pijaństwo</dc:title>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław 1958</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-02-12</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <nazwa_utworu>Pijaństwo</nazwa_utworu>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa>
+,,Skąd idziesz?” ,,Ledwo chodzę”. ,,Słabyś?” ,,I jak jeszcze./
+Wszak wiesz, że się ja nigdy zbytecznie nie pieszczę,/
+Ale mi zbyt dokucza ból głowy okrutny”./
+,,Pewnieś wczoraj był wesół, dlategoś dziś smutny./
+Przejdzie ból, powiedzże mi, proszę, jak to było?/
+<begin id="b1202418182599"/><motyw id="m1202418182599">Jedzenie</motyw>Po smacznym, mówią, kąsku i wodę pić miło<end id="e1202418182599"/>”./
+,,Oj, nie miło, mój bracie! bogdaj z tym przysłowiem/
+Przepadł, co go wymyślił; jak było, opowiem./
+<wers_akap>Upiłem się onegdaj dla imienin żony;</wers_akap>/
+Nie żal mi tego było. Dzień ten obchodzony/
+Musiał być uroczyście. Dobrego sąsiada/
+Nieźle czasem podpoić; jejmość była rada,/
+<begin id="b1202418245199"/><motyw id="m1202418245199">Wino</motyw>Wina mieliśmy dosyć, a że dobre było,/
+Cieszyliśmy się pięknie i nieźle się piło.<end id="e1202418245199"/>/
+Trwała uczta do świtu. <begin id="b1202418350490"/><motyw id="m1202418350490">Choroba</motyw>W południe się budzę,/
+Cięży głowa jak ołów, krztuszę się i nudzę<pr><slowo_obce>nudzić się</slowo_obce> --- mieć nudności.</pr>;/
+Jejmość radzi herbatę, lecz to trunek mdlący./
+Jakoś koło apteczki<pr><slowo_obce>apteczka</slowo_obce> --- ,,w domach szlacheckich osobna izdebka na schowanie korzeni kuchennych, wódek, likworów i lekarstw domowych”. (Linde, <tytul_dziela>Słownik języka polskiego</tytul_dziela>, Lwów 1854).</pr> przeszedłem niechcący,/
+Hanyżek<pr><slowo_obce>Hanyżek</slowo_obce> --- wódka anyżówka.</pr> mnie zaleciał, trochę nie zawadzi./
+Napiłem się więc trochę, aczej<pr><slowo_obce>aczej</slowo_obce> --- a może, a nuż.</pr> to poradzi:/
+Nudno przecie. Ja znowu, już mi raźniej było,/
+<begin id="b1202418432598"/><motyw id="m1202418432598">Gość, Obyczaje</motyw>Wtem dwóch z uczty wczorajszej kompanów przybyło./
+Jakże nie poczęstować, gdy kto w dom przychodzi?/
+Jak częstować, a nie pić? i to się nie godzi;<end id="e1202418432598"/>/
+Więc ja znowu do wódki, wypiłem niechcący:/
+Omne trinum perfectum<pr><slowo_obce>Omne trinum perfectum</slowo_obce> --- przysłowie łacińskie: każda trójca tworzy doskonałość.</pr>, choć trunek gorący,/
+Dobry jest na żołądek. Jakoż w punkcie<pr><slowo_obce>w punkcie</slowo_obce> --- natychmiast.</pr> zdrowy,/
+Ustały i nudności, ustał i ból głowy.<end id="e1202418350490"/>/
+Zdrów i wesół wychodzę z moimi kompany,/
+Wtem obiad zastaliśmy już przygotowany./
+Siadamy. <begin id="b1202418537479"/><motyw id="m1202418537479">Wino</motyw>Chwali trzeźwość pan Jędrzej, my za nim,/
+Bogdaj to wstrzemięźliwość, pijatykę ganim,/
+A tymczasem butelka nietykana stoi./
+Pan Wojciech, co się bardzo niestrawności boi,/
+Po szynce, cośmy jedli, trochę wina radzi:/
+Kieliszek jeden, drugi zdrowiu nie zawadzi,/
+A zwłaszcza kiedy wino wytrawione, czyste./
+Przystajem na takowe prawdy oczywiste.<end id="e1202418537479"/>/
+Idą zatem dyskursa tonem statystycznym<pr><slowo_obce>ton statystyczny</slowo_obce> --- wzorowany na statystach, mężach stanu.</pr>:/
+O miłości ojczyzny, o dobru publicznym,/
+O wspaniałych projektach, mężnym animuszu;/
+Kopiem góry<pr><slowo_obce>góry</slowo_obce> --- kopalnie. Sprawa uruchomienia znanych od XIII w. olkuskich kopalni srebra i ołowiu, wchodzących w skład królewszczyzn, a zrujnowanych na skutek rabunkowej gospodarki dzierżawców--cudzoziemców i polskich magnatów oraz wojen szwedzkich, była w XVIII wieku przedmiotem wielu uchwał na sejmikach i sejmach. W r. 1779 powstała spółka akcyjna dla odbudowy kopalni, a Komisja Skarbowa wyznaczyła nagrodę za projekt ich odwodnienia. Do wznowienia eksploatacji jednak nie doszło, wymagało ono bowiem olbrzymich kapitałów inwestycyjnych.</pr> dla srebra i złota w Olkuszu,/
+Odbieramy Inflanty<pr>Inflanty --- kraj nadbałtycki przyłączony do Polski w 1561 r. Na mocy pokoju oliwskiego (1660) część Inflant przypadła Szwecji, pozostała przy Polsce reszta ziem przeszła na rzecz Rosji przy pierwszym rozbiorze (1772). Wielu spośród szlachty posiadało tytuły urzędów ziemskich z Inflant, stąd stałe i liczne głosy domagające się odebrania tych ziem.</pr> i państwa multańskie<pr><slowo_obce>państwa multańskie</slowo_obce> --- Mołdawia i Wołoszczyzna, księstwa naddunajskie, zhołdowane za Władysława Jagiełły Polsce, która jednak utraciła tu wszelkie wpływy na rzecz Turcji od czasu klęski cecorskiej (1620).</pr>,/
+Liczemy owe sumy neapolitańskie<pr><slowo_obce>sumy neapolitańskie</slowo_obce> --- 430 tysięcy dukatów neapolitańskich pożyczonych przez Bonę królowi hiszpańskiemu i neapolitańskiemu, Filipowi II, i nigdy, mimo stale ponawianych zabiegów, nie odzyskanych; do sprawy zwrotu sum neapolitańskich powracano niejednokrotnie na sejmikach. Ochocki wspomina najbardziej typowe instrukcje poselskie zalecane posłom: ,,Na sejmikach podpisywano laudum dla posłów --- windykowanie sum neapolitańskich przez królową Bonę wywiezionych, nalegania o odkrycie gór olkuskich, prośby o parę beatyfikacji do Rzymu [...]. Na koniec popiła się szlachta, porąbała mocniej jeszcze i niejeden do jejmości swej z pohaftowanym policzkiem powrócił”. (J D. Ochocki. <tytul_dziela>Pamiętniki</tytul_dziela>, s. 60).</pr>,/
+Reformujemy państwo, wojny nowe zwodzim,/
+Tych bijem wstępnym bojem<pr><slowo_obce>wstępnym bojem</slowo_obce> --- w pierwszym starciu.</pr>, z tamtymi się godzim,/
+A butelka nieznacznie jakoś się wysusza./
+Przyszła druga; a gdy nas żarliwość porusza,/
+Pełni pociech, że wszyscy przeciwnicy legli,/
+Trzeciej, czwartej i piątej aniśmy postrzegli./
+Poszła szósta i siódma, za nimi dziesiąta,/
+Naówczas, gdy nas miłość ojczyzny zaprząta,/
+Pan Jędrzej, przypomniawszy żórawińskie klęski<pr><slowo_obce>żórawińskie klęski</slowo_obce> --- traktat zawarty z Turkami przez Jana Sobieskiego w Żórawnie (nad Dniestrem) w r. 1676, pozostawiający Turcji znaczną część Ukrainy. Oburzał on szczególnie szlachtę posiadającą tam duże majątki.</pr>,/
+Nuż w płacz nad królem Janem: »Król Jan był zwycięski!«/
+Krzyczy Wojciech: »Nieprawda!« A pan Jędrzej płacze./
+Ja gdy ich chcę pogodzić i rzeczy tłumaczę,/
+Pan Wojciech mi przymówił: »Słyszysz waść<pr><slowo_obce>waść</slowo_obce> --- skrócone ,,wasza miłość”, zwrot o odcieniu lekceważącym, używany w stosunku do szlachty szaraczkowej i mieszczan.</pr>« --- mi rzecze./
+Jak to waść! Nauczę cię rozumu, człowiecze./
+On do mnie, ja do niego, rwiemy się zajadli,/
+Trzyma Jędrzej, na wrzaski służący przypadli,/
+Nie wiem, jak tam skończyli zwadę naszą wielką,/
+Ale to wiem i czuję, żem wziął w łeb butelką./
+<begin id="b1194349126447"/><motyw id="m1194349126447">Pijaństwo</motyw>Bogdaj w piekło przepadło obrzydłe pijaństwo!/
+Cóż w nim? Tylko niezdrowie, zwady, grubijaństwo./
+Oto profit<pr><slowo_obce>profit</slowo_obce> --- korzyść, zysk.</pr>: nudności i guzy, i plastry”./
+<wers_akap>,,Dobrze mówisz, podłej to zabawa hałastry,</wers_akap>/
+Brzydzi się nim człek prawy, jako rzeczą sprośną:/
+Z niego zwady, obmowy nieprzystojne rosną,/
+Pamięć się przez nie traci, rozumu użycie,/
+Zdrowie się nadweręża i ukraca życie./
+Patrz na człeka, którego ujęła moc trunku,/
+Człowiekiem jest z pozoru, lecz w zwierząt gatunku/
+Godzien się mieścić, kiedy rozsądek zaleje/
+I w kontr<pr><slowo_obce>w kontr</slowo_obce> --- przeciwko.</pr> naturze postać bydlęcą przywdzieje./
+<begin id="b1202418863207"/><motyw id="m1202418863207">Umiarkowanie, Wino</motyw>Jeśli niebios zdarzenie wino ludziom dało/
+Na to, aby użyciem swoim orzeźwiało,/
+Użycie darów bożych powinno być w mierze.<end id="e1202418863207"/>/
+<begin id="b1202418899159"/><motyw id="m1202418899159">Zwierzęta</motyw>Zawstydza pijanice nierozumne zwierzę,/
+Potępiają bydlęta niewstrzymałość naszą,/
+Trunkiem według potrzeby gdy pragnienie gaszą,/
+Nie biorą nad potrzebę; człek, co nimi gardzi,/
+Gorzej od nich gdy działa, podlejszy tym bardziej.<end id="e1202418899159"/>/
+<wers_akap>Mniejsza guzy i plastry, to zapłata zbrodni,</wers_akap>/
+<begin id="b1202418949351"/><motyw id="m1202418949351">Rozum</motyw>Większej kary, obelgi takowi są godni,/
+Co w dzikim zaślepieniu występni i zdrożni,/
+Rozum, który człowieka od bydlęcia rożni,/
+Śmią za lada przyczyną przytępiać lub tracić./
+Jakiż zysk taką szkodę potrafi zapłacić?/
+Jaka korzyść tak wielką utratę nadgrodzi?/
+Zła to radość, mój bracie, po której żal chodzi<pe><slowo_obce>radość, ... po której żal chodzi</slowo_obce> --- po której następuje (nieuchronnie) żal.</pe>.<end id="e1202418949351"/>/
+<wers_akap>Ci, co się na takowe nie udają zbytki,</wers_akap>/
+Patrz, jakie swej trzeźwości odnoszą pożytki:/
+Zdrowie czerstwe, myśl u nich wesoła i wolna,/
+Moc i raźność niezwykła i do pracy zdolna,/
+Majętność w dobrym stanie, gospodarstwo rządne,/
+Dostatek na wydatki potrzebnie rozsądne:/
+Te są wstrzemięźliwości zaszczyty, pobudki,/
+Te są”. ,,Bądź zdrów!” ,,Gdzież idziesz?” ,,Napiję się wódki”.<end id="e1194349126447"/>
+</strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

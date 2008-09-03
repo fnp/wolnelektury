@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety/Czatyrdah">
+      <dc:creator xml:lang="pl">Mickiewicz, Adam </dc:creator>
+      <dc:title xml:lang="pl">Sonety krymskie - (13) Czatyrdah</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Sonety krymskie</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+      <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+      <dc:date.pd xml:lang="pl">1855</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2008-01-29</dc:date>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Adam Mickiewicz</autor_utworu>
+    <nazwa_utworu>Czatyrdah<pr>Odczucie Wschodu w tym sonecie zwróciło natychmiast uwagę znawców, o czym świadczy przetłumaczenie sonetu w r. 1826 przez Hafiza Topczy--Paszę na język perski.</pr></nazwa_utworu>
+    <podtytul>Mirza</podtytul>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <strofa>Drżąc muślimin<pr><slowo_obce>muślimin</slowo_obce> --- jest to właściwie l. mn. imiesłowu słowa arab. <slowo_obce>islam</slowo_obce> i oznacza tyle co: poddający się. Stąd wyrazy perskie <slowo_obce>muśliman</slowo_obce> i <slowo_obce>miusiulman</slowo_obce>; tę ostatnią formę, przyjętą przez Turków, myśmy przekształcili na muzułmanin.</pr> całuje stopy twej opoki,/
+Maszcie krymskiego statku, wielki Czatyrdahu!/
+O minarecie świata! o gór padyszachu<pa><slowo_obce>padyszach</slowo_obce> --- tytuł sułtana tureckiego.</pa>!/
+Ty, nad skały poziomu uciekłszy w obłoki,</strofa>
+    <strofa>Siedzisz sobie pod bramą niebios, jak wysoki/
+Gabryjel<uwaga>wycięty przypis autorski i redaktorski - skan 56</uwaga>, pilnujący edeńskiego gmachu./
+Ciemny las twoim płaszczem, a janczary<pr><slowo_obce>janczary</slowo_obce> --- groźna piechota turecka, tworzona z poturczonych dzieci chrześcijańskich.</pr> strachu/
+Twój turban z chmur haftują błyskawic potoki.</strofa>
+    <strofa>Nam czy słońce dopieka, czyli mgła ocienia,/
+Czy szarańcza plon zetnie, czy giaur pali domy, ---/
+Czartydahu, ty zawsze głuchy, nieruchomy,</strofa>
+    <strofa><begin id="b1196202342795"/><motyw id="m1196202342795">Bóg, Natura</motyw>Między światem i niebem jak drogman<pr><slowo_obce>drogman</slowo_obce> --- drogoman, tłumacz; wyraz arabskiego pochodzenia: <slowo_obce>tardżaman</slowo_obce>.</pr> stworzenia,/
+Podesławszy pod nogi ziemie, ludzi, gromy,/
+Słuchasz tylko, co mówi Bóg do przyrodzenia.<end id="e1196202342795"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>

@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Bajki/Bajki_nowe/Przydatek_do_Bajek_nowych">
+      <dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+      <dc:title xml:lang="pl">Bajki nowe (5) - przydatek</dc:title>
+      <dc:relation.isPartOf xml:lang="pl">Bajki nowe</dc:relation.isPartOf>
+      <dc:contributor.editor xml:lang="pl">Goliński, Zbigniew</dc:contributor.editor>
+      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+      <dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+      <dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+      <dc:subject.genre xml:lang="pl">Bajka</dc:subject.genre>
+      <dc:subject.genre xml:lang="pl">Przypowieść</dc:subject.genre>
+      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+      <dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+      <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3044&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+      <dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Bajki, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, Kraków, 1975</dc:source>
+      <dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+      <dc:date.pd xml:lang="pl">1801</dc:date.pd>
+      <dc:format xml:lang="pl">xml</dc:format>
+      <dc:type xml:lang="pl">text</dc:type>
+      <dc:type xml:lang="en">text</dc:type>
+      <dc:date xml:lang="pl">2007-11-29</dc:date>
+      <dc:audience xml:lang="pl">SP2</dc:audience>
+      <dc:audience xml:lang="pl">G</dc:audience>
+      <dc:audience xml:lang="pl">L</dc:audience>
+      <dc:language xml:lang="pl">pol</dc:language>
+    </rdf:Description>
+  </rdf:RDF>
+  <liryka_l>
+    <extra>
+      <!--<elementy_poczatkowe>-->
+    </extra>
+    <autor_utworu>Ignacy Krasicki</autor_utworu>
+    <naglowek_rozdzial>Przydatek do <tytul_dziela>Bajek nowych</tytul_dziela></naglowek_rozdzial>
+    <extra>
+      <!--</elementy_poczatkowe>-->
+    </extra>
+    <extra>
+      <!--<tekst_glowny>-->
+    </extra>
+    <naglowek_rozdzial>1. Lew, koza, owca i krowa</naglowek_rozdzial>
+    <nota>
+      <akap>z Fedra<pr>Jest to bajka o tzw. lwim dziale, jedna z popularniejszych w bajkopisarstwie i mająca szczególnie rozległą tradycję. Tytuł bajki u Fedrusa: <tytul_dziela>Vacca et capella, ovis et leo</tytul_dziela> (I 5), przełożonej również przez Lafontaine'a: <tytul_dziela>Le Lion en Société avec la Génisse, la Chévre et la Brebis</tytul_dziela> (I 6).</pr></akap>
+    </nota>
+    <strofa><begin id="b1195567296344"/><motyw id="m1195567296344">Zwierzęta</motyw>Kiedy mocny z słabym w kupie,/
+Towarzystwo takie głupie./
+Lew idący na łowy/
+Miał wspołeczeństwo<pr><slowo_obce>wspołeczeństwo</slowo_obce> --- towarzystwo.</pr> kozy, owcy, krowy/
+I dostali<pr><slowo_obce>dostali</slowo_obce> --- tu: upolowali, złowili.</pr> jelenia:<end id="e1195567296344"/>/
+Gdy przyszło do podzielenia,/
+<begin id="b1195567329689"/><motyw id="m1195567329689">Głód, Jedzenie, Władza</motyw>Lew rzekł: ,,Pierwsza część dla mnie, bo się lwem nazywam,/
+Druga, bo lepiej niż wy dokazywam;/
+Trzecia, bo sam jestem wart więcej niż wy troje;/
+Czwarta, bo się mnie boicie, a ja się nie boję"./
+A że piątej nie było, towarzystwo zgodne/
+Powąchawszy przysmaczka wróciło się głodne.<end id="e1195567329689"/></strofa>
+    <naglowek_rozdzial>2. Żaby i bocian<pr>Bajka według Ezopa, który pomysł zaczerpnął z Fedrusa (<tytul_dziela>Ranae regem petentes</tytul_dziela>, I 2) tłumaczona również przez Lafontaine'a (<tytul_dziela>Le Grenouilles qui demandent un Roi</tytul_dziela>, III 4). Bajka ta ma kontynuację we wcześniej zamieszczonej bajce w <tytul_dziela>Przydatku do Bajek i przypowieści: [Po pniu i po bocianie...]</tytul_dziela> (BP P 11).</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194643846259"/><motyw id="m1194643846259">Król, Niewola, Przemoc, Władza, Wolność</motyw>Dobrze było w Atenach, kiedy wolność była./
+Ale gdy się w rozwiązłość z czasem przemieniła,/
+A każdy z nich jedynie na zysk własny godził,/
+Posiadł władzę Pizystrat<pr>Pizystrat (600--527 p.n.e.) --- tyran Aten; w czasie sprawowania przez niego władzy Ateny zyskały podstawę swojej wielkości.</pr> i wszystkich pogodził./
+Więc w rozpacz, lecz poniewczasie,/
+Niewola uprzykrzyła się./
+A gdy się o tym Ezop dowiedział,/
+Taką im bajkę powiedział:/
+Zachciało się żabom pana./
+Od wieczora więc do rana/
+Do Jowisza krzeczały,/
+Żeby króla dostały./
+Dał im pieniek --- padł z hałasem./
+Przestraszone, nawiasem<pr><slowo_obce>nawiasem</slowo_obce> --- bokiem, okrążając.</pr>/
+Z początku się przybliżały,/
+Ażeby króla poznały,/
+I znalazły z podziwieniem,/
+Iż król jegomość był pieniem<pr><slowo_obce>był pieniem</slowo_obce> (dawna forma narzędnika) --- był pniem.</pr>./
+Skoro się to rozgłosiło,/
+Co tylko w bagnie żab było,/
+Dogadzając ciekawości/
+Szły do króla jegomości./
+Zrazu przystąpić się bały,/
+Dalej na niego skakały./
+Gdy do woli wyszydziły,/
+O innego Jowisza prosiły./
+Dał im bociana; a ten, niesłaby,/
+Jak się zawinął pomiędzy żaby,/
+Na przywitanie zjadł z pół tuzina./
+Gdy się wrzask z płaczem żab nędznych wszczyna,/
+Rzekł Jowisz: ,,Pogardzając zbyt dogodnym stanem,/
+Skakałyście na pieniek --- skaczcież przed bocianem".<end id="e1194643846259"/></strofa>
+    <naglowek_rozdzial>3. Wilk i baran<pr>Wiersz przejął motyw bajki Ezopa, który pomysł zaczerpnął z Fedrusa <tytul_dziela>Lupus et agnus</tytul_dziela> (I 1), o tytule tak samo brzmiącym u Lafontaine'a (<tytul_dziela>Le Loup et l'Agneau</tytul_dziela>, I 10), przełożonej współcześnie z wersji francuskiej również przez Trembeckiego pt. <tytul_dziela>Wilk i baranek</tytul_dziela>.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194643950770"/><motyw id="m1194643950770">Konflikt, Przemoc</motyw>Pragnieniem przymuszeni, raz do jednej strugi/
+Pierwszy wilk pić był przyszedł, a baranek drugi;/
+Stanął po nim. Wilk: ,,Po co ty mi mącisz wodę?"/
+Baranek: ,,Do mnie płynie". Wilk: ,,Ja ci dowiodę,/
+Żeś przed sześciu miesięcy..." ,,Mam tylko pół czwarta"./
+,,Może, lecz twoja matka na wilki zażarta". I zjadł go./
+Kiedy przemoc do niecnoty zajdzie,/
+Grzech się uświątobliwi i przyczyna znajdzie.<end id="e1194643950770"/></strofa>
+    <naglowek_rozdzial>4. Słońce i obłoki<pr>Bajka ta, egzemplifikująca u Krasickiego, s. 453---454 bajkopisarstwo J. Gaya, jedyny raz wskazuje na bezpośrednie zapożyczenie u tego pisarza (<tytul_dziela>Le Persan, le Soleil et la Nue</tytul_dziela>, I, 27). John Gay (1685---1732), poeta i bajkopisarz angielski oceniony był przez Krasickiego jak następuje: ,,Niepospolite trzyma miejsce między rymotwórcami dla dowcipnych i kształtnie pisanych bajek swoich". Krasicki posiadał w bibliotece francuski przekład bajek J. Gaya: <tytul_dziela>Fables de [...] suivies du Poeme de L'éventail, le tout traduit de l'Anglois, par M. de Keralio</tytul_dziela>, Londres 1759.</pr></naglowek_rozdzial>
+    <strofa><begin id="b1194644094877"/><motyw id="m1194644094877">Cnota, Prawda</motyw>Czciciel słońca, a raczej tego, co go stworzył,/
+Przed wschodzącym wspaniale kiedy się pokorzył,/
+Obłok go skrył. A tym hardy,/
+Rzekł czczącemu: ,,Godzien wzgardy,/
+Kto się blaskiem uwodzi;/
+Jeżeli się czcić godzi,/
+Mnie się kłaniaj, co blask gaszę"./
+Rzekł mu czciciel: ,,Znam czczość<pr><slowo_obce>czczość</slowo_obce> --- nicość, pustka wewnętrzna.</pr> waszę;/
+Czym jesteście, dociekam;/
+A niech tylko poczekam,/
+Zbyt zuchwali tułacze,/
+Czym jesteście, obaczę"./
+Jakoż wiatr spędził chmurę zgęstwiałą;/
+Znikła, słońce zajaśniało./
+Próżne zjadłych są kroki,/
+Pełzną jak czcze obłoki./
+Choć przyćmi cnotę złość, gdy ją uciśnie,/
+Wzmoże się sama i żywiej zabłyśnie.<end id="e1194644094877"/></strofa>
+    <naglowek_rozdzial>5. Listy</naglowek_rozdzial>
+    <strofa><begin id="b1194644297308"/><motyw id="m1194644297308">Przemiana , Przemijanie, Ślub, Śmierć, Wesele, Żałoba</motyw>Zeszli się jakoś w zapustną niedzielę/
+List, co prosił na pogrzeb, z tym, co na wesele./
+A jak to między sąsiady,/
+Od rozmów przyszło do zwady./
+Szło o pierwszeństwo; żałobny, szlubny/
+Równie był chlubny./
+Udali się do trzeciego, aby je rozsądził;/
+Ten rzekł: ,,Każdy z was zbłądził,/
+Nie macie się z czego wynosić/
+Przecie i o sąd prosić:/
+Po tobie zaczną płakać i będą się śmiali<pr><slowo_obce>i będą się śmiali</slowo_obce> --- zapewne w czasie stypy.</pr>,/
+Po tobie śmiać się zaczną, a będą płakali".<end id="e1194644297308"/></strofa>
+    <naglowek_rozdzial>6. Nadzieja i bojaźń<pr>Bajka wzięta z Krasickiego, s. 402, gdzie występuje jako jeden z dwóch wierszy poety niemieckiego F. Hagedorna (1708---1754), o którym Krasicki pisał tamże: ,,W roku 1738 wydał bajki, które, ile pierwsze tym sposobem w języku ojczystym pisane, stały się wzorem następnym".</pr></naglowek_rozdzial>
+    <strofa>Kiedy myśl zdatna, kiedy ostrożna,/
+Jak powiadają, i zmyślać można;/
+Mogą to drudzy, i ja też mogę./
+<begin id="b1194644500120"/><motyw id="m1194644500120">Bogactwo, Nauka</motyw>W jedne szły drogę,/
+Nie wiem czy razem, czyli koleją/
+Bojaźń z nadzieją./
+Dziwne się rzeczy naówczas działy,/
+Bo skoro tylko gdzie zawitały,/
+Nagle, dziwacznie,/
+Wszystkie się rzeczy działy opacznie./
+Ubóstwo, że ma wszystko, mniemało,/
+Bogactwo, że nic nie ma, płakało./
+Skądże przyczyna błędu takiego?/
+Oto dlatego:/
+Nadziei przychód był uroczysty/
+Do alchimisty./
+A bojaźń, skąpych strzegąc zbiór czule,/
+Była w szkatule.<end id="e1194644500120"/></strofa>
+    <extra>
+      <!--</tekst_glowny>-->
+    </extra>
+  </liryka_l>
+</utwor>
