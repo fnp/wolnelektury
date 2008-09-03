@@ -124,12 +124,33 @@ class Book(models.Model):
             book_tags.append(tag)
         book.tags = book_tags
         
+        # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, File(file(xml_file)), save=False)
         
         html_file = NamedTemporaryFile()
         html.transform(book.xml_file.path, html_file)
         book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
         
+        # Extract fragments
+        closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
+        book_themes = []
+        for fragment in closed_fragments.values():
+            new_fragment = Fragment(html=fragment.to_string(), short_html=fragment.to_string(),
+                anchor=fragment.id, book=book)
+                
+            theme_names = [s.strip() for s in fragment.themes.split(',')]
+            themes = []
+            for theme_name in theme_names:
+                tag, created = Tag.objects.get_or_create(name=theme_name,
+                    slug=slughifi(theme_name), sort_key=slughifi(theme_name), category='theme')
+                tag.save()
+                themes.append(tag)
+            new_fragment.save()
+            new_fragment.tags = list(book.tags) + themes
+            book_themes += themes
+        
+        book_themes = set(book_themes)
+        book.tags = list(book.tags) + list(book_themes)
         return book.save()
     
     @permalink
@@ -146,10 +167,10 @@ class Book(models.Model):
 
 
 class Fragment(models.Model):
-    text = models.TextField()
-    short_text = models.TextField()
+    html = models.TextField()
+    short_html = models.TextField()
     anchor = models.IntegerField()
-    book = models.ForeignKey(Book)
+    book = models.ForeignKey(Book, related_name='fragments')
     
     objects = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
