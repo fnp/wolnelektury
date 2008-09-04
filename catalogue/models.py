@@ -83,7 +83,7 @@ class Book(models.Model):
     
     def has_description(self):
         return len(self.description) > 0
-    has_description.short_description = _('Has description')
+    has_description.short_description = _('description')
     has_description.boolean = True
     
     def has_pdf_file(self):
