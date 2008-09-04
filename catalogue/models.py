@@ -73,7 +73,7 @@ class Book(models.Model):
     slug = models.SlugField(_('slug'), unique=True, db_index=True)
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
-    _short_html = models.TextField(_('short HTML'))
+    _short_html = models.TextField(_('short HTML'), editable=False)
     
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to='books/xml', blank=True)
@@ -130,6 +130,7 @@ class Book(models.Model):
         from slughifi import slughifi
         import dcparser
         
+        # Read book metadata
         book_info = dcparser.parse(xml_file)
         book = Book(title=book_info.title, slug=slughifi(book_info.title))
         book.save()
