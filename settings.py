@@ -89,7 +89,7 @@ TEMPLATE_DIRS = (
 # CSS and JS files to compress
 COMPRESS_CSS = {
     'all': {
-        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css',),
+        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css',),
         'output_filename': 'css/all.min.css',
     }
 }

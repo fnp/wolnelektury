@@ -159,8 +159,7 @@ class Book(models.Model):
         closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
         book_themes = []
         for fragment in closed_fragments.values():
-            new_fragment = Fragment(html=fragment.to_string(), short_html=fragment.to_string(),
-                anchor=fragment.id, book=book)
+            new_fragment = Fragment(html=fragment.to_string(), anchor=fragment.id, book=book)
                 
             theme_names = [s.strip() for s in fragment.themes.split(',')]
             themes = []
@@ -192,13 +191,25 @@ class Book(models.Model):
 
 class Fragment(models.Model):
     html = models.TextField()
-    short_html = models.TextField()
+    _short_html = models.TextField(editable=False)
     anchor = models.IntegerField()
     book = models.ForeignKey(Book, related_name='fragments')
-    
+
     objects = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     
+    def short_html(self):
+        if len(self._short_html):
+            return mark_safe(self._short_html)
+        else:
+            book_authors = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) 
+                for tag in self.book.tags if tag.category == 'author']
+            
+            self._short_html = render_to_string('catalogue/fragment_short.html',
+                {'fragment': self, 'book': self.book, 'book_authors': book_authors})
+            self.save()
+            return mark_safe(self._short_html)
+        
     class Meta:
         ordering = ('book', 'anchor',)
         verbose_name = _('fragment')

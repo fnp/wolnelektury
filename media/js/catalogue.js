@@ -14,6 +14,14 @@
             $('#login-form').show();
         });
         
+        $('.fragment-text').toggle(
+            function() { $(this).addClass('fragment-text-full').removeClass('fragment-text'); }, 
+            function() { $(this).addClass('fragment-text').removeClass('fragment-text-full'); }
+        ).hover(
+            function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+            function() { $(this).css({background: '#FFF'}); }
+        )
+        
         $('#registration-form').ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {

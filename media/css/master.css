@@ -396,3 +396,15 @@ em {
     padding: 0 2em;
     line-height: 2em;
 }
+
+/* ================= */
+/* = Fragment list = */
+/* ================= */
+.fragment {
+    margin-bottom: 1.5em;
+}
+
+.fragment-text {
+    max-height: 12em;
+    overflow: hidden;
+}

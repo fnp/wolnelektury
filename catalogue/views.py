@@ -117,7 +117,7 @@ def tagged_book_list(request, tags=''):
     return tagged_object_list(
         request,
         tag_model=models.Tag,
-        queryset_or_model=models.Book,
+        queryset_or_model=model,
         tags=tags,
         template_name='catalogue/tagged_book_list.html',
         extra_context = {'categories': categories },
