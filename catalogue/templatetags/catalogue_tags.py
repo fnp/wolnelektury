@@ -118,7 +118,7 @@ def breadcrumbs(tags, search_form=True):
 
 
 @register.inclusion_tag('catalogue/_book.html')
-def book(book):
+def book(request, book):
     tags = book.tags.filter(~Q(category__in=('set', 'theme')))
     tags = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in tags]
     
@@ -130,7 +130,7 @@ def book(book):
     if book.odt_file:
         formats.append(u'<a href="%s">Plik ODT</a>' % book.odt_file.url)
         
-    return {'book': book, 'tags': tags, 'formats': formats}
+    return locals()
 
 
 @register.tag
