@@ -14,13 +14,26 @@
             $('#login-form').show();
         });
         
-        $('.fragment-text').toggle(
-            function() { $(this).addClass('fragment-text-full').removeClass('fragment-text'); }, 
-            function() { $(this).addClass('fragment-text').removeClass('fragment-text-full'); }
-        ).hover(
+        // Fragments
+        $('.fragment-text').each(function() {
+            if ($(this).prev().filter('.fragment-short-text').length) {
+                $(this).hover(
+                    function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                    function() { $(this).css({background: '#FFF'}); }
+                ).click(function() {
+                    $(this).fadeOut(function() {
+                        $(this).prev().fadeIn()
+                    });
+                })
+            }
+        });
+        
+        $('.fragment-short-text').click(function() {
+            $(this).fadeOut(function() { $(this).next().fadeIn() });
+        }).hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
             function() { $(this).css({background: '#FFF'}); }
-        )
+        );
         
         $('#registration-form').ajaxForm({
             dataType: 'json',

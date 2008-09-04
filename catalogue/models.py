@@ -129,6 +129,8 @@ class Book(models.Model):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         import dcparser
+        from markupstring import MarkupString
+        import re
         
         # Read book metadata
         book_info = dcparser.parse(xml_file)
@@ -159,7 +161,11 @@ class Book(models.Model):
         closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
         book_themes = []
         for fragment in closed_fragments.values():
-            new_fragment = Fragment(html=fragment.to_string(), anchor=fragment.id, book=book)
+            text = fragment.to_string()
+            short_text = ''
+            if (len(re.sub(r'</?.*?>', '', text)) > 400):
+                short_text = MarkupString(text)[:240]
+            new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
                 
             theme_names = [s.strip() for s in fragment.themes.split(',')]
             themes = []
@@ -190,7 +196,8 @@ class Book(models.Model):
 
 
 class Fragment(models.Model):
-    html = models.TextField()
+    text = models.TextField()
+    short_text = models.TextField(editable=False)
     _short_html = models.TextField(editable=False)
     anchor = models.IntegerField()
     book = models.ForeignKey(Book, related_name='fragments')
