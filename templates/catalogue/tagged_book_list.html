@@ -68,7 +68,7 @@
         {% endwith %}
         <ol>
         {% for book in object_list %}
-            <li>{% book request book %}</li>
+            <li>{{ book.short_html }}</li>
         {% endfor %}
         </ol>
         {% paginate %}

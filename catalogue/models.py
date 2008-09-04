@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from django.db.models import permalink
+from django.db.models import permalink, Q
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.files import File
+from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 
 from newtagging.models import TagBase
 from newtagging import managers
@@ -71,6 +73,7 @@ class Book(models.Model):
     slug = models.SlugField(_('slug'), unique=True, db_index=True)
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
+    _short_html = models.TextField(_('short HTML'))
     
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to='books/xml', blank=True)
@@ -80,6 +83,26 @@ class Book(models.Model):
     
     objects = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
+    
+    def short_html(self):
+        if len(self._short_html):
+            return mark_safe(self._short_html)
+        else:
+            tags = self.tags.filter(~Q(category__in=('set', 'theme')))
+            tags = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in tags]
+
+            formats = []
+            if self.html_file:
+                formats.append(u'<a href="%s">Czytaj online</a>' % self.html_file.url)
+            if self.pdf_file:
+                formats.append(u'<a href="%s">Plik PDF</a>' % self.pdf_file.url)
+            if self.odt_file:
+                formats.append(u'<a href="%s">Plik ODT</a>' % self.odt_file.url)
+            
+            self._short_html = render_to_string('catalogue/book_short.html',
+                {'book': self, 'tags': tags, 'formats': formats})
+            self.save()
+            return mark_safe(self._short_html)
     
     def has_description(self):
         return len(self.description) > 0
