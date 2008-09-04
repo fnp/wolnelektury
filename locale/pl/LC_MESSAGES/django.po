@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 18:00-0500\n"
+"POT-Creation-Date: 2008-09-04 06:17-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,9 +56,10 @@ msgstr "klucz sortowania"
 msgid "category"
 msgstr "kategoria"
 
-#: catalogue/models.py:45 catalogue/models.py:86
-msgid "Has description"
-msgstr "Ma opis"
+#: catalogue/models.py:45 catalogue/models.py:72 catalogue/models.py:86
+#: chunks/models.py:11
+msgid "description"
+msgstr "opis"
 
 #: catalogue/models.py:54 newtagging/models.py:470
 msgid "tag"
@@ -71,10 +72,6 @@ msgstr "tagi"
 #: catalogue/models.py:70
 msgid "title"
 msgstr "tytuł"
-
-#: catalogue/models.py:72 chunks/models.py:11
-msgid "description"
-msgstr "opis"
 
 #: catalogue/models.py:73
 msgid "creation date"
