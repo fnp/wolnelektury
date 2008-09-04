@@ -163,8 +163,8 @@ class Book(models.Model):
         for fragment in closed_fragments.values():
             text = fragment.to_string()
             short_text = ''
-            if (len(re.sub(r'</?.*?>', '', text)) > 400):
-                short_text = MarkupString(text)[:240]
+            if (len(re.sub(r'</?.*?>', '', text)) > 240):
+                short_text = MarkupString(text)[:160]
             new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
                 
             theme_names = [s.strip() for s in fragment.themes.split(',')]
