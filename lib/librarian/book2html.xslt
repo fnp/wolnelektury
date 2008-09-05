@@ -233,6 +233,14 @@
     <hr class="spacer" />
 </xsl:template>
 
+<xsl:template match="sekcja_asterysk">
+    <p class="spacer-asterisk">*</p>
+</xsl:template>
+
+<xsl:template match="separator_linia">
+    <hr class="spacer-line" />
+</xsl:template>
+
 
 <!-- ================ -->
 <!-- = SPECIAL TAGS = -->
