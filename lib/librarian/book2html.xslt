@@ -78,7 +78,7 @@
     </div>
 </xsl:template>
 
-<xsl:template match="dlugi_cytat">
+<xsl:template match="dlugi_cytat|poezja_cyt">
     <blockquote><xsl:apply-templates /></blockquote>
 </xsl:template>
 
