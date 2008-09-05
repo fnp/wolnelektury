@@ -208,7 +208,7 @@ def fragment_sets(request, id):
             else:
                 return HttpResponseRedirect('/')
     else:
-        form = forms.ObjectSetsForm(book, request.user)
+        form = forms.ObjectSetsForm(fragment, request.user)
         new_set_form = forms.NewSetForm()
 
     return render_to_response('catalogue/fragment_sets.html', locals(),
