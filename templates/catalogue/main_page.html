@@ -24,7 +24,7 @@
     <div id="tags-list">
         <div id="categories-list">
             {% if categories.set %}
-                <h2>Zestawy</h2>
+                <h2>Półki</h2>
                 <ul>
                 {% for set in categories.set %}
                     <li><a href="{% catalogue_url set %}">{{ set }}&nbsp;({{ set.count }})</a></li>

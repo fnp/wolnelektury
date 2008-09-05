@@ -165,11 +165,13 @@ def login(request):
     return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
 
 
-@login_required
 def book_sets(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
     book_sets = book.tags.filter(category='set', user=request.user)
+    
+    if not request.user.is_authenticated():
+        return HttpResponse('<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>')
     
     if request.method == 'POST':
         form = forms.BookSetsForm(book, request.user, request.POST)
@@ -177,7 +179,7 @@ def book_sets(request, slug):
             book.tags = ([models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']] +
                 list(book.tags.filter(~Q(category='set') | ~Q(user=request.user))))
             if request.is_ajax():
-                return HttpResponse('<p>Zestawy zostały zapisane</p>')
+                return HttpResponse('<p>Półki zostały zapisane</p>')
             else:
                 return HttpResponseRedirect('/')
     else:

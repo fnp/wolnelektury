@@ -29,7 +29,7 @@ class BookSetsForm(forms.Form):
     def __init__(self, book, user, *args, **kwargs):        
         super(BookSetsForm, self).__init__(*args, **kwargs)
         self.fields['set_ids'] = forms.MultipleChoiceField(
-            label=u'Zestawy',
+            label=u'Półki',
             required=False,
             choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user)],
             initial=[tag.id for tag in book.tags.filter(category='set', user=user)],
