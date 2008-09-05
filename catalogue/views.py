@@ -221,8 +221,24 @@ def new_set(request):
     new_set_form = forms.NewSetForm(request.POST)
     if new_set_form.is_valid():
         new_set = new_set_form.save(request.user)
-        return HttpResponse('<p>Zestaw <strong>%s</strong> został utworzony</p>' % new_set)
+        return HttpResponse(u'<p>Zestaw <strong>%s</strong> został utworzony</p>' % new_set)
     
     return render_to_response('catalogue/book_sets.html', locals(),
+            context_instance=RequestContext(request))
+
+
+@login_required
+@require_POST
+def delete_shelf(request, slug):
+    user_set = get_object_or_404(models.Tag, slug=slug, category='set', user=request.user)
+    user_set.delete()
+    return HttpResponse(u'<p>Zestaw <strong>%s</strong> został usunięty</p>' % user_set.name)
+    
+    
+@login_required
+def user_shelves(request):
+    shelves = models.Tag.objects.filter(category='set', user=request.user)
+    new_set_form = forms.NewSetForm()
+    return render_to_response('catalogue/user_shelves.html', locals(),
             context_instance=RequestContext(request))
 

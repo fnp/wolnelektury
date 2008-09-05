@@ -23,7 +23,7 @@
                 {% if user.is_authenticated %}
                     <p>
                         Zalogowany jako <strong>{{ user.username }}</strong>
-                        | <a href="#" id="user-sets-link">Moje półki</a>
+                        | <a href="{% url user_shelves %}" id="user-shelves-link">Moje półki</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">Administracja</a>
                         {% endif %}
@@ -87,6 +87,12 @@
                         <li><input type="submit" value="Załóż konto" /></li>
                     </ol>
                 </form>
+            </div>
+        </div>
+        <div id="user-shelves-window">
+            <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+            <div class="target">
+                <p><img src="/media/img/indicator.gif" alt="*"/> Ładowanie</p>
             </div>
         </div>
     </body>

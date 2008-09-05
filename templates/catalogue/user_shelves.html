@@ -1,0 +1,15 @@
+<h2>Moje półki</h2>
+{% if shelves %}
+<ul class="shelf-list">
+{% for shelf in shelves %}
+    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">usuń</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć półkę poniżej.</p>
+{% endif %}
+<hr />
+<form action="{% url catalogue.views.new_set %}" method="POST" accept-charset="utf-8" class="cuteform">
+<ol>
+    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz nową półkę"/></li>
+</ol>

@@ -88,6 +88,40 @@
                 hash.w.show();
             }
         });
-        $('#login-register-window').labelify({labelledClass: 'blur'});
+        
+        $('#user-shelves-window').jqm({
+            ajax: '@href',
+            target: $('#user-shelves-window div.target')[0],
+            overlay: 60,
+            trigger: '#user-shelves-link',
+            onShow: function(hash) {
+                var offset = $(hash.t).offset();
+                hash.w.css({position: 'absolute', left: offset.left - hash.w.width() + $(hash.t).width(), top: offset.top});
+                $('div.header', hash.w).css({width: $(hash.t).width()});
+                hash.w.show();
+            },
+            onLoad: function(hash) { 
+                $('form', hash.w).ajaxForm({
+                    target: $('#user-shelves-window div.target'),
+                    success: function() { setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000) }
+                });
+                
+                $('ul.shelf-list li', hash.w).hover(function() {
+                    $(this).css({background: '#EEE', cursor: 'pointer'});
+                }, function() {
+                    $(this).css({background: 'transparent'});
+                }).click(function() {
+                    location.href = $('a.visit-shelf', this).attr('href');
+                });
+                
+                $('.delete-shelf').click(function() { 
+                    $.post($(this).attr('href'), function(data, textStatus) {
+                        $('#user-shelves-window div.target').html(data);
+                        setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000);
+                    });
+                    return false;
+                });
+            }
+        });
     });
 })(jQuery)

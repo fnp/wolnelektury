@@ -343,6 +343,8 @@ em {
 /* ================ */
 /* = Modal Window = */
 /* ================ */
+.jqmOverlay { background-color: #000; }
+
 #set-window {
     position: absolute;
     display: none;
@@ -365,9 +367,6 @@ em {
     border-bottom: 0.3em solid #DDD;
     padding: 1em;
 }
-
-.jqmOverlay { background-color: #000; }
-
 
 #login-register-window {
     position: absolute;
@@ -395,6 +394,44 @@ em {
     border-right: 0.3em solid #DDD;
     border-bottom: 0.3em solid #DDD;
     padding: 1em;
+}
+
+#user-shelves-window {
+    position: absolute;
+    display: none;
+    width: 28em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+#user-shelves-window div.header {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    width: 4em;
+    right: 0;
+    left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    float: right;
+    text-align: center;
+}
+
+#user-shelves-window div.target {
+    clear: both;
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
+
+#user-shelves-window ul {
+    list-style: none;
+    padding: 0;
+}
+
+#user-shelves-window a.delete-shelf {
+    color: #900;
+    float: right;
 }
 
 /* ======================== */
