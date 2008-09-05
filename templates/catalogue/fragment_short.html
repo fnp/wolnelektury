@@ -1,0 +1,20 @@
+<div class="fragment">
+    {# <div class="change-sets"> #}
+    {#     <a href="{% url catalogue.views.fragment_sets fragment.id %}" class="jqm-trigger">Półki</a> #}
+    {# </div> #}
+    {% if fragment.short_text %}
+    <div class='fragment-short-text'>
+        {{ fragment.short_text|safe }}
+        <a href="#">↓ Rozwiń fragment ↓</a>
+    </div>
+    {% endif %}
+    <div class="fragment-text" {% if fragment.short_text %}style="display:none;"{% endif %}>
+        {{ fragment.text|safe }}
+        {% if fragment.short_text %}
+            <a href="#">↑ Zwiń fragment ↑</a>
+        {% endif %}
+    </div>
+    <div class="fragment-metadata">
+        <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a>, {{ book_authors|join:","|safe }}</p>
+    </div>
+</div>
