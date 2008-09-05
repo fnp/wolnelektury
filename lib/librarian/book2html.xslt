@@ -197,6 +197,33 @@
     <a href="{concat('#footnote-', generate-id(.))}" class="annotation">[<xsl:number value="count(preceding::*[self::pa or self::pe or self::pr or self::pt]) + 1" />]</a>
 </xsl:template>
 
+<!-- Other inline tags -->
+<xsl:template match="mat" mode="inline">
+    <em class="math"><xsl:apply-templates mode="inline" /></em>
+</xsl:template>
+
+<xsl:template match="didask_tekst" mode="inline">
+    <em class="didaskalia"><xsl:apply-templates mode="inline" /></em>
+</xsl:template>
+
+<xsl:template match="slowo_obce" mode="inline">
+    <em class="foreign-word"><xsl:apply-templates mode="inline" /></em>
+</xsl:template>
+
+<xsl:template match="tytul_dziela" mode="inline">
+    <em class="book-title">
+        <xsl:if test="./@typ = '1'">„</xsl:if><xsl:apply-templates mode="inline" /><xsl:if test="./@typ = '1">”</xsl:if>
+    </em>
+</xsl:template>
+
+<xsl:template match="wyroznienie" mode="inline">
+    <em class="author-emphasis"><xsl:apply-templates mode="inline" /></em>
+</xsl:template>
+
+<xsl:template match="osoba" mode="inline">
+    <em class="person"><xsl:apply-templates mode="inline" /></em>
+</xsl:template>
+
 
 <!-- ============================================== -->
 <!-- = STANDALONE TAGS                            = -->
