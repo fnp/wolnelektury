@@ -161,3 +161,13 @@ div.person-list ol {
 p.place-and-time {
     font-style: italic;
 }
+
+em.math, em.foreign-word, em.book-title, em.didaskalia, em.author-emphasis {
+    font-style: italic;
+}
+
+em.person {
+    font-style: normal;
+    font-variant: small-caps;
+}
+

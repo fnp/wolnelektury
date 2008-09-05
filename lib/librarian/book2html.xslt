@@ -212,7 +212,7 @@
 
 <xsl:template match="tytul_dziela" mode="inline">
     <em class="book-title">
-        <xsl:if test="./@typ = '1'">„</xsl:if><xsl:apply-templates mode="inline" /><xsl:if test="./@typ = '1">”</xsl:if>
+        <xsl:if test="@typ = '1'">„</xsl:if><xsl:apply-templates mode="inline" /><xsl:if test="@typ = '1'">”</xsl:if>
     </em>
 </xsl:template>
 
