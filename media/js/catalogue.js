@@ -101,6 +101,8 @@
                 hash.w.show();
             },
             onLoad: function(hash) { 
+                var shelf_name = $('a.visit-shelf', this).html();
+                
                 $('form', hash.w).ajaxForm({
                     target: $('#user-shelves-window div.target'),
                     success: function() { setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000) }
@@ -115,10 +117,12 @@
                 });
                 
                 $('.delete-shelf').click(function() { 
-                    $.post($(this).attr('href'), function(data, textStatus) {
-                        $('#user-shelves-window div.target').html(data);
-                        setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000);
-                    });
+                    if (confirm('Czy na pewno usunąć półkę ' + shelf_name + '?')) {
+                        $.post($(this).attr('href'), function(data, textStatus) {
+                            $('#user-shelves-window div.target').html(data);
+                            setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000);
+                        });
+                    }
                     return false;
                 });
             }
