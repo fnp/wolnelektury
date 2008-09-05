@@ -49,7 +49,7 @@ class Tag(TagBase):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.tagged_book_list', [self.slug])
+        return ('catalogue.views.tagged_object_list', [self.slug])
     
     class Meta:
         ordering = ('sort_key',)
@@ -130,7 +130,6 @@ class Book(models.Model):
         from slughifi import slughifi
         import dcparser
         from markupstring import MarkupString
-        import re
         
         # Read book metadata
         book_info = dcparser.parse(xml_file)
@@ -163,7 +162,7 @@ class Book(models.Model):
         for fragment in closed_fragments.values():
             text = fragment.to_string()
             short_text = ''
-            if (len(re.sub(r'</?.*?>', '', text)) > 240):
+            if (len(MarkupString(text)) > 240):
                 short_text = MarkupString(text)[:160]
             new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
                 

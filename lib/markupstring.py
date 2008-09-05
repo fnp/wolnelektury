@@ -92,3 +92,6 @@ class MarkupString (unicode):
             for et in ends[e]: outbuf+= et
         return MarkupString(outbuf)
 
+    def __len__(self):
+        return len(self.raw)
+

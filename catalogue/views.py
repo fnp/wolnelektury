@@ -13,10 +13,10 @@ from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
 
-from newtagging.views import tagged_object_list
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
+from newtagging import views as newtagging_views
 
 
 class LazyEncoder(simplejson.JSONEncoder):
@@ -43,7 +43,7 @@ def search(request):
             return HttpResponseRedirect(reverse('catalogue.views.main_page'))
     else:
         tag_list.append(tag)
-        return HttpResponseRedirect(reverse('catalogue.views.tagged_book_list', 
+        return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
             kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
         ))
 
@@ -96,7 +96,7 @@ def book_list(request):
         context_instance=RequestContext(request))
 
 
-def tagged_book_list(request, tags=''):
+def tagged_object_list(request, tags=''):
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
@@ -114,12 +114,12 @@ def tagged_book_list(request, tags=''):
     related_tags = models.Tag.objects.related_for_model(tags, model, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
 
-    return tagged_object_list(
+    return newtagging_views.tagged_object_list(
         request,
         tag_model=models.Tag,
         queryset_or_model=model,
         tags=tags,
-        template_name='catalogue/tagged_book_list.html',
+        template_name='catalogue/tagged_object_list.html',
         extra_context = {'categories': categories },
     )
 

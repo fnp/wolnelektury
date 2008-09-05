@@ -164,7 +164,7 @@ class CatalogueURLNode(Node):
                 pass
         
         if len(tag_slugs) > 0:
-            return reverse('tagged_book_list', kwargs={'tags': '/'.join(tag_slugs)})
+            return reverse('tagged_object_list', kwargs={'tags': '/'.join(tag_slugs)})
         else:
             return reverse('main_page')
 
