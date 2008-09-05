@@ -179,7 +179,7 @@ def book_sets(request, slug):
             book.tags = ([models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']] +
                 list(book.tags.filter(~Q(category='set') | ~Q(user=request.user))))
             if request.is_ajax():
-                return HttpResponse('<p>Półki zostały zapisane</p>')
+                return HttpResponse('<p>Półki zostały zapisane.</p>')
             else:
                 return HttpResponseRedirect('/')
     else:
@@ -187,6 +187,31 @@ def book_sets(request, slug):
         new_set_form = forms.NewSetForm()
     
     return render_to_response('catalogue/book_sets.html', locals(),
+        context_instance=RequestContext(request))
+
+
+def fragment_sets(request, id):
+    fragment = get_object_or_404(models.Fragment, pk=id)
+    user_sets = models.Tag.objects.filter(category='set', user=request.user)
+    fragment_sets = fragment.tags.filter(category='set', user=request.user)
+
+    if not request.user.is_authenticated():
+        return HttpResponse('<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>')
+
+    if request.method == 'POST':
+        form = forms.ObjectSetsForm(fragment, request.user, request.POST)
+        if form.is_valid():
+            fragment.tags = ([models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']] +
+                list(fragment.tags.filter(~Q(category='set') | ~Q(user=request.user))))
+            if request.is_ajax():
+                return HttpResponse('<p>Półki zostały zapisane.</p>')
+            else:
+                return HttpResponseRedirect('/')
+    else:
+        form = forms.ObjectSetsForm(book, request.user)
+        new_set_form = forms.NewSetForm()
+
+    return render_to_response('catalogue/fragment_sets.html', locals(),
         context_instance=RequestContext(request))
 
 
