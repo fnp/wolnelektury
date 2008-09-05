@@ -108,7 +108,7 @@
     <span class="subtitle"><xsl:apply-templates mode="inline" /></span>
 </xsl:template>
 
-<!-- Section headers -->
+<!-- Section headers (included in index)-->
 <xsl:template match="naglowek_akt|naglowek_czesc|srodtytul">
     <h2><xsl:apply-templates mode="inline" /></h2>
 </xsl:template>
@@ -172,10 +172,10 @@
     <p>
         <xsl:choose>
             <xsl:when test="name($line-content) = 'wers_akap'">
-                <xsl:attribute name="style">indent: 1em</xsl:attribute>
+                <xsl:attribute name="style">padding-left: 1em</xsl:attribute>
             </xsl:when>
             <xsl:when test="name($line-content) = 'wers_wciety'">
-                <xsl:attribute name="style">indent: 2em</xsl:attribute>
+                <xsl:attribute name="style">padding-left: <xsl:value-of select="$line-content/@typ" />em</xsl:attribute>
             </xsl:when>
         </xsl:choose>
         <xsl:apply-templates select="$line-content" mode="inline" />
