@@ -54,9 +54,9 @@ def title_from_tags(tags):
     
     title = u''
     
-    # Specjalny przypadek oglądania wszystkich lektur w danym zestawie
+    # Specjalny przypadek oglądania wszystkich lektur na danej półce
     if len(self) == 1 and 'set' in self:
-        return u'Zestaw %s' % self['set']
+        return u'Półka %s' % self['set']
     
     # Specjalny przypadek "Twórczość w pozytywizmie", wtedy gdy tylko epoka
     # jest wybrana przez użytkownika
