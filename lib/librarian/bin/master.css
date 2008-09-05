@@ -64,7 +64,7 @@ p {
 .annotation {
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 #footnotes .annotation {
@@ -143,7 +143,7 @@ div.fragment {
     padding-bottom: 1.5em;
 }
 
-div.note p, div.note p.paragraph {
+div.note p, div.dedication p, div.note p.paragraph, div.dedication p.paragraph {
     text-align: right;
     font-style: italic;
 }
@@ -151,4 +151,13 @@ div.note p, div.note p.paragraph {
 hr.spacer {
     height: 3em;
     visibility: hidden;
+}
+
+div.person-list ol {
+    list-style: none;
+    padding: 0 0 0 1.5em;
+}
+
+p.place-and-time {
+    font-style: italic;
 }

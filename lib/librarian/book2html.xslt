@@ -76,6 +76,10 @@
     <div class="note"><xsl:apply-templates /></div>
 </xsl:template>
 
+<xsl:template match="dedykacja">
+    <div class="dedication"><xsl:apply-templates /></div>
+</xsl:template>
+
 <xsl:template match="naglowek_akt|naglowek_czesc|srodtytul">
     <h2><xsl:apply-templates mode="inline" /></h2>
 </xsl:template>
@@ -86,6 +90,10 @@
 
 <xsl:template match="naglowek_osoba">
     <h4><xsl:apply-templates mode="inline" /></h4>
+</xsl:template>
+
+<xsl:template match="naglowek_osoba">
+    <p class="place-and-time"><xsl:apply-templates mode="inline" /></p>
 </xsl:template>
 
 <xsl:template match="kwestia">
