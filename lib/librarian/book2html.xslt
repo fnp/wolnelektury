@@ -80,6 +80,9 @@
     <div class="dedication"><xsl:apply-templates /></div>
 </xsl:template>
 
+<!-- =================== -->
+<!-- = Section headers = -->
+<!-- =================== -->
 <xsl:template match="naglowek_akt|naglowek_czesc|srodtytul">
     <h2><xsl:apply-templates mode="inline" /></h2>
 </xsl:template>
@@ -88,11 +91,11 @@
     <h3><xsl:apply-templates mode="inline" /></h3>
 </xsl:template>
 
-<xsl:template match="naglowek_osoba">
+<xsl:template match="naglowek_osoba|naglowek_podrozdzial">
     <h4><xsl:apply-templates mode="inline" /></h4>
 </xsl:template>
 
-<xsl:template match="naglowek_osoba">
+<xsl:template match="miejsce_czas">
     <p class="place-and-time"><xsl:apply-templates mode="inline" /></p>
 </xsl:template>
 
