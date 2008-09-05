@@ -174,7 +174,7 @@ def book_sets(request, slug):
         return HttpResponse('<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>')
     
     if request.method == 'POST':
-        form = forms.BookSetsForm(book, request.user, request.POST)
+        form = forms.ObjectSetsForm(book, request.user, request.POST)
         if form.is_valid():
             book.tags = ([models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']] +
                 list(book.tags.filter(~Q(category='set') | ~Q(user=request.user))))
@@ -183,7 +183,7 @@ def book_sets(request, slug):
             else:
                 return HttpResponseRedirect('/')
     else:
-        form = forms.BookSetsForm(book, request.user)
+        form = forms.ObjectSetsForm(book, request.user)
         new_set_form = forms.NewSetForm()
     
     return render_to_response('catalogue/book_sets.html', locals(),
