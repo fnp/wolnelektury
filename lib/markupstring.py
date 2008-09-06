@@ -5,21 +5,21 @@
 import xml.sax
 
 
-class simpleHandler (xml.sax.ContentHandler):
+class simpleHandler(xml.sax.ContentHandler):
     """A simple handler that provides us with indices of marked up content."""
-    def __init__ (self):        
+    def __init__(self):        
         self.elements = [] #this will contain a list of elements and their start/end indices
         self.open_elements = [] #this holds info on open elements while we wait for their close
         self.content = ""
 
-    def startElement (self,name,attrs):
+    def startElement(self,name,attrs):
         if name=='foobar': return # we require an outer wrapper, which we promptly ignore.
         self.open_elements.append({'name':name,
                                    'attrs':attrs.copy(),
                                    'start':len(self.content),
                                    })
 
-    def endElement (self, name):
+    def endElement(self, name):
         if name=='foobar': return # we require an outer wrapper, which we promptly ignore.
         for i in range(len(self.open_elements)):
             e = self.open_elements[i]
@@ -32,23 +32,23 @@ class simpleHandler (xml.sax.ContentHandler):
                 del self.open_elements[i]
                 return
 
-    def characters (self, chunk):
+    def characters(self, chunk):
         self.content += chunk
 
 
-class MarkupString (unicode):
+class MarkupString(unicode):
     """A simple class for dealing with marked up strings. When we are sliced, we return
     valid marked up strings, preserving markup."""
-    def __init__ (self, string):        
+    def __init__(self, string):        
         unicode.__init__(self, string)
         self.handler = simpleHandler()
         xml.sax.parseString((u"<foobar>%s</foobar>" % string).encode('utf-8'), self.handler)
         self.raw = self.handler.content
 
-    def __getitem__ (self, n):
+    def __getitem__(self, n):
         return self.__getslice__(n,n+1)
 
-    def __getslice__ (self, s, e):
+    def __getslice__(self, s, e):
         # only include relevant elements
         if not e or e > len(self.raw): e = len(self.raw)
         elements = filter(lambda tp: (tp[0][1] >= s and # end after the start...
