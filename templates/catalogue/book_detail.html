@@ -55,7 +55,18 @@
             {% endif %}
             </ul>
         </div>
+    
+        {% if book.children.all %}
+        <div id="book-children">
+            <h2>Utwory składające się na ten utwór:</h2>
+            {% for book in book.children.all %}
+                <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+            {% endfor %}
+        </div>
+        {% endif %}
+    
     </div>
+        
     <div id="tags-list">
         <h2>O utworze</h2>
         <ul>
