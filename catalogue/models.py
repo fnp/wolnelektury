@@ -10,7 +10,7 @@ from django.utils.safestring import mark_safe
 from newtagging.models import TagBase
 from newtagging import managers
 
-from librarian import html
+from librarian import html, dcparser
 
 
 TAG_CATEGORIES = (
@@ -128,7 +128,6 @@ class Book(models.Model):
     def from_xml_file(xml_file):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
-        import dcparser
         from markupstring import MarkupString
         
         # Read book metadata
