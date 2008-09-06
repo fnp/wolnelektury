@@ -3,10 +3,8 @@ import os
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from optparse import make_option
-from slughifi import slughifi
-import dcparser
 
-from catalogue.models import Book, Tag
+from catalogue.models import Book
 
 
 class Command(BaseCommand):
