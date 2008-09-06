@@ -111,3 +111,11 @@ class BookInfo(object):
 def parse(file_name):
     return BookInfo.from_file(file_name)
 
+
+if __name__ == '__main__':
+    import sys
+    
+    info = parse(sys.argv[1])
+    for attribute, _ in BookInfo.mapping.values():
+        print '%s: %r' % (attribute, getattr(info, attribute, None))
+
