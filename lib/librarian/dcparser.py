@@ -45,7 +45,7 @@ def str_to_unicode(value, previous):
 def str_to_unicode_list(value, previous):
     if previous is None:
         previous = []
-    previous.append(str_to_unicode(value))
+    previous.append(str_to_unicode(value, None))
     return previous
 
 
@@ -76,7 +76,7 @@ def str_to_date(value, previous):
 # ==========
 class ParseError(Exception):
     def __init__(self, message):
-        super(self, Exception).__init__(message)
+        super(ParseError, self).__init__(message)
 
 
 class XMLNamespace(object):
