@@ -81,9 +81,10 @@ class Book(models.Model):
     odt_file = models.FileField(_('ODT file'), upload_to='books/odt', blank=True)
     html_file = models.FileField(_('HTML file'), upload_to='books/html', blank=True)
     
-    parent = models.ForeignKey('self', blank=True, null=True)
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     
-    objects = managers.ModelTaggedItemManager(Tag)
+    objects = models.Manager()
+    tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     
     def short_html(self):
@@ -209,7 +210,8 @@ class Fragment(models.Model):
     anchor = models.IntegerField()
     book = models.ForeignKey(Book, related_name='fragments')
 
-    objects = managers.ModelTaggedItemManager(Tag)
+    objects = models.Manager()
+    tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     
     def short_html(self):
