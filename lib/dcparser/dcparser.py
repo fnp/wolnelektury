@@ -1,21 +1,79 @@
 # -*- coding: utf-8 -*-
 from xml.parsers.expat import ExpatError
+from datetime import date
+import time
 
 # Import ElementTree from anywhere
 try:
-    import xml.etree.ElementTree as ET # Python >= 2.5
+    import xml.etree.ElementTree as etree # Python >= 2.5
 except ImportError:
     try:
-        import elementtree.ElementTree as ET # effbot's pure Python module
+        import elementtree.ElementTree as etree # effbot's pure Python module
     except ImportError:
-        import lxml.etree as ET # ElementTree API using libxml2
-
-import converters
+        import lxml.etree as etree # ElementTree API using libxml2
 
 
-__all__ = ('parse', 'ParseError')
+# ==============
+# = Converters =
+# ==============
+class Person(object):
+    """Single person with last name and a list of first names."""
+    def __init__(self, last_name, *first_names):
+        self.last_name = last_name
+        self.first_names = first_names
+    
+    
+    def __eq__(self, right):
+        return self.last_name == right.last_name and self.first_names == right.first_names
+    
+    
+    def __unicode__(self):
+        if len(self.first_names) > 0:
+            return '%s, %s' % (self.last_name, ' '.join(self.first_names))
+        else:
+            return self.last_name
+    
+    
+    def __repr__(self):
+        return 'Person(last_name=%r, first_names=*%r)' % (self.last_name, self.first_names)
 
 
+def str_to_unicode(value, previous):
+    return unicode(value)
+
+
+def str_to_unicode_list(value, previous):
+    if previous is None:
+        previous = []
+    previous.append(str_to_unicode(value))
+    return previous
+
+
+def str_to_person(value, previous):
+    comma_count = value.count(',')
+    
+    if comma_count == 0:
+        last_name, first_names = value, []
+    elif comma_count == 1:
+        last_name, first_names = value.split(',')
+        first_names = [name for name in first_names.split(' ') if len(name)]
+    else:
+        raise ValueError("value contains more than one comma: %r" % value)
+    
+    return Person(last_name.strip(), *first_names)
+
+
+def str_to_date(value, previous):
+    try:
+        t = time.strptime(value, '%Y-%m-%d')
+    except ValueError:
+        t = time.strptime(value, '%Y')
+    return date(t[0], t[1], t[2])
+
+
+# ==========
+# = Parser =
+# ==========
 class ParseError(Exception):
     def __init__(self, message):
         super(self, Exception).__init__(message)
@@ -45,20 +103,20 @@ class BookInfo(object):
     DC = XMLNamespace('http://purl.org/dc/elements/1.1/')
     
     mapping = {
-        DC('creator')        : ('author', converters.str_to_person),
-        DC('title')          : ('title', converters.str_to_unicode),
-        DC('subject.period') : ('epoch', converters.str_to_unicode),
-        DC('subject.type')   : ('kind', converters.str_to_unicode),
-        DC('subject.genre')  : ('genre', converters.str_to_unicode),
-        DC('date')           : ('created_at', converters.str_to_date),
-        DC('date.pd')        : ('released_to_public_domain_at', converters.str_to_date),
-        DC('contributor.translator') : ('translator', converters.str_to_person),
-        DC('contributor.technical_editor') : ('technical_editor', converters.str_to_person),
-        DC('publisher')      : ('publisher', converters.str_to_unicode),
-        DC('source')         : ('source_name', converters.str_to_unicode),
-        DC('source.URL')     : ('source_url', converters.str_to_unicode),
-        DC('identifier.url') : ('url', converters.str_to_unicode),
-        DC('relation.hasPart') : ('parts', converters.str_to_unicode_list),
+        DC('creator')        : ('author', str_to_person),
+        DC('title')          : ('title', str_to_unicode),
+        DC('subject.period') : ('epoch', str_to_unicode),
+        DC('subject.type')   : ('kind', str_to_unicode),
+        DC('subject.genre')  : ('genre', str_to_unicode),
+        DC('date')           : ('created_at', str_to_date),
+        DC('date.pd')        : ('released_to_public_domain_at', str_to_date),
+        DC('contributor.translator') : ('translator', str_to_person),
+        DC('contributor.technical_editor') : ('technical_editor', str_to_person),
+        DC('publisher')      : ('publisher', str_to_unicode),
+        DC('source')         : ('source_name', str_to_unicode),
+        DC('source.URL')     : ('source_url', str_to_unicode),
+        DC('identifier.url') : ('url', str_to_unicode),
+        DC('relation.hasPart') : ('parts', str_to_unicode_list),
     }
 
     @classmethod
@@ -71,7 +129,7 @@ class BookInfo(object):
         book_info = cls()
         
         try:
-            tree = ET.parse(xml_file)
+            tree = etree.parse(xml_file)
         except ExpatError, e:
             raise ParseError(e)
 
@@ -93,19 +151,19 @@ class BookInfo(object):
 
     def to_xml(self):
         """XML representation of this object."""
-        ET._namespace_map[str(self.RDF)] = 'rdf'
-        ET._namespace_map[str(self.DC)] = 'dc'
+        etree._namespace_map[str(self.RDF)] = 'rdf'
+        etree._namespace_map[str(self.DC)] = 'dc'
         
-        root = ET.Element(self.RDF('RDF'))
-        description = ET.SubElement(root, self.RDF('Description'))
+        root = etree.Element(self.RDF('RDF'))
+        description = etree.SubElement(root, self.RDF('Description'))
         
         for tag, (attribute, converter) in self.mapping.iteritems():
             if hasattr(self, attribute):
-                e = ET.Element(tag)
+                e = etree.Element(tag)
                 e.text = unicode(getattr(self, attribute))
                 description.append(e)
         
-        return unicode(ET.tostring(root, 'utf-8'), 'utf-8')
+        return unicode(etree.tostring(root, 'utf-8'), 'utf-8')
 
 
 def parse(file_name):
