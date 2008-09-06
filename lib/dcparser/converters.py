@@ -3,14 +3,34 @@ from datetime import date
 import time
 import re
 
-from person import Person
+
+class Person(object):
+    """Single person with last name and a list of first names."""
+    def __init__(self, last_name, *first_names):
+        self.last_name = last_name
+        self.first_names = first_names
+    
+    
+    def __eq__(self, right):
+        return self.last_name == right.last_name and self.first_names == right.first_names
+    
+    
+    def __unicode__(self):
+        if len(self.first_names) > 0:
+            return '%s, %s' % (self.last_name, ' '.join(self.first_names))
+        else:
+            return self.last_name
+    
+    
+    def __repr__(self):
+        return 'Person(last_name=%r, first_names=*%r)' % (self.last_name, self.first_names)
 
 
-def str_to_unicode(value):
+def str_to_unicode(value, previous):
     return unicode(value)
 
 
-def str_to_person(value):
+def str_to_person(value, previous):
     comma_count = value.count(',')
     
     if comma_count == 0:
@@ -24,7 +44,7 @@ def str_to_person(value):
     return Person(last_name.strip(), *first_names)
 
 
-def str_to_date(value):
+def str_to_date(value, previous):
     try:
         t = time.strptime(value, '%Y-%m-%d')
     except ValueError:

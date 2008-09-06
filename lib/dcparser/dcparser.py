@@ -13,15 +13,12 @@ except ImportError:
 import converters
 
 
-
 __all__ = ('parse', 'ParseError')
-
 
 
 class ParseError(Exception):
     def __init__(self, message):
         super(self, Exception).__init__(message)
-
 
 
 class XMLNamespace(object):
@@ -37,11 +34,10 @@ class XMLNamespace(object):
         return tag.startswith(str(self))
 
     def __repr__(self):
-        return 'NS(%r)' % self.uri
+        return 'XMLNamespace(%r)' % self.uri
     
     def __str__(self):
         return '%s' % self.uri
-
 
 
 class BookInfo(object):
@@ -63,13 +59,10 @@ class BookInfo(object):
         DC('source.URL')     : ('source_url', converters.str_to_unicode),
     }
 
-    
     @classmethod
     def from_string(cls, xml):
-        """docstring for from_string"""
         from StringIO import StringIO
         return cls.from_file(StringIO(xml))
-
     
     @classmethod
     def from_file(cls, xml_file):
@@ -89,14 +82,12 @@ class BookInfo(object):
         
         return book_info
 
-        
     def parse_element(self, element):
         try:
             attribute, converter = self.mapping[element.tag]
-            setattr(self, attribute, converter(element.text))
+            setattr(self, attribute, converter(element.text, getattr(self, attribute, None)))
         except KeyError:
             pass
-
 
     def to_xml(self):
         """XML representation of this object."""
@@ -117,5 +108,4 @@ class BookInfo(object):
 
 def parse(file_name):
     return BookInfo.from_file(file_name)
-
 
