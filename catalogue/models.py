@@ -81,6 +81,8 @@ class Book(models.Model):
     odt_file = models.FileField(_('ODT file'), upload_to='books/odt', blank=True)
     html_file = models.FileField(_('HTML file'), upload_to='books/html', blank=True)
     
+    parent = models.ForeignKey('self', blank=True, null=True)
+    
     objects = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     
