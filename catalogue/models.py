@@ -150,6 +150,13 @@ class Book(models.Model):
             book_tags.append(tag)
         book.tags = book_tags
         
+        if hasattr(book_info, 'parts'):
+            for part_url in book_info.parts:
+                base, slug = part_url.rsplit('/', 1)
+                child_book = Book.objects.get(slug=slug)
+                child_book.parent = book
+                child_book.save()
+        
         # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, File(file(xml_file)), save=False)
         
