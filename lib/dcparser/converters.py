@@ -30,6 +30,13 @@ def str_to_unicode(value, previous):
     return unicode(value)
 
 
+def str_to_unicode_list(value, previous):
+    if previous is None:
+        previous = []
+    previous.append(str_to_unicode(value))
+    return previous
+
+
 def str_to_person(value, previous):
     comma_count = value.count(',')
     

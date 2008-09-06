@@ -57,6 +57,8 @@ class BookInfo(object):
         DC('publisher')      : ('publisher', converters.str_to_unicode),
         DC('source')         : ('source_name', converters.str_to_unicode),
         DC('source.URL')     : ('source_url', converters.str_to_unicode),
+        DC('identifier.url') : ('url', converters.str_to_unicode),
+        DC('relation.hasPart') : ('parts', converters.str_to_unicode_list),
     }
 
     @classmethod
