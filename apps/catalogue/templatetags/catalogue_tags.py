@@ -110,7 +110,7 @@ def authentication_form():
 
 @register.inclusion_tag('catalogue/breadcrumbs.html')
 def breadcrumbs(tags, search_form=True):
-    from wolnelektury.catalogue.forms import SearchForm
+    from catalogue.forms import SearchForm
     context = {'tag_list': tags}
     if search_form:
         context['search_form'] = SearchForm(tags=tags)

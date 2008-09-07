@@ -102,8 +102,8 @@ class Book(models.Model):
             if self.odt_file:
                 formats.append(u'<a href="%s">Plik ODT</a>' % self.odt_file.url)
             
-            self._short_html = render_to_string('catalogue/book_short.html',
-                {'book': self, 'tags': tags, 'formats': formats})
+            self._short_html = unicode(render_to_string('catalogue/book_short.html',
+                {'book': self, 'tags': tags, 'formats': formats}))
             self.save()
             return mark_safe(self._short_html)
     
@@ -172,7 +172,7 @@ class Book(models.Model):
             text = fragment.to_string()
             short_text = ''
             if (len(MarkupString(text)) > 240):
-                short_text = MarkupString(text)[:160]
+                short_text = unicode(MarkupString(text)[:160])
             new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
                 
             theme_names = [s.strip() for s in fragment.themes.split(',')]
@@ -221,8 +221,8 @@ class Fragment(models.Model):
             book_authors = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) 
                 for tag in self.book.tags if tag.category == 'author']
             
-            self._short_html = render_to_string('catalogue/fragment_short.html',
-                {'fragment': self, 'book': self.book, 'book_authors': book_authors})
+            self._short_html = unicode(render_to_string('catalogue/fragment_short.html',
+                {'fragment': self, 'book': self.book, 'book_authors': book_authors}))
             self.save()
             return mark_safe(self._short_html)
         
