@@ -1,0 +1,261 @@
+<utwor><opowiadanie>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
+<dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
+<dc:title xml:lang="pl">Złota kaczka</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/legendy-warszawskie</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Z%C5%82ota+kaczka</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
+<dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
+<dc:date.pd xml:lang="pl">1931</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Artur Oppman</autor_utworu>
+
+<dzielo_nadrzedne>Legendy warszawskie</dzielo_nadrzedne>
+
+<nazwa_utworu>Złota kaczka</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+
+
+<srodtytul>I</srodtytul>
+
+
+
+
+
+<akap><begin id="b1188825459087" /><motyw id="m1188825459087">Bogactwo, Cnota</motyw>Był sobie szewczyk warszawski. Nazywał się Lutek. Dobre było chłopczysko, wesołe, pracowite, ale biedne, jak ta mysz kościelna. Pracował ci on u majstra jednego, u majstra na Starym Mieście. Ale cóż? Majster, jak majster, grosz zbierał do grosza, z groszy ciułał<pe><slowo_obce>ciułać</slowo_obce> --- po troszeczku, pieczołowicie zbierać.</pe> talary i czerwońce<pe><slowo_obce>czerwońce</slowo_obce> --- czerwone złote; rodzaj dawnych monet.</pe>, a u chłopaka bieda, aż piszczy.</akap>
+
+
+<akap>Niby to mu tam pożywienie dawał. Boże, zmiłuj się: wodzianka<pe><slowo_obce>wodzianka</slowo_obce> --- wodnista zupa.</pe>, kartofle --- i tyle! I odział<pe><slowo_obce>odziać</slowo_obce> --- ubrać.</pe> go, mówi się, ale ta przyodziewa<pe><slowo_obce>przyodziewa</slowo_obce> --- ubranie.</pe> spadała z Lutka, boć to stare łachy majstrowskie, co ledwo się kupy trzymały. Dość, że w takim sianie i pies by nie wytrzymał, a cóż dopiero człowiek! Gadają mu: Miej cierpliwość, mityguj się<pe><slowo_obce>mitygować się</slowo_obce> --- powstrzymywać się, panować nad sobą.</pe>, będzie lepiej, poczekaj ino<pe><slowo_obce>ino</slowo_obce> --- tylko.</pe>!</akap>
+
+
+<akap>Co to lepiej! Kiedy? Rok za rokiem mija, lata lecą, a tu wciąż nędza i nędza.</akap>
+
+
+<akap>Znudziło mu się. Uciec chce. Do wojska --- powiada --- pójdę, żołnierzem będę, może się ta nowy Napoljon<pe><slowo_obce>Napoljon</slowo_obce> --- (gwarowo zniekształcone:) Napoleon; chodzi o Napoleona Bonaparte, cesarza Francji w latach 1804-1814, 1815; wybitnego wodza i prawodawcy; pod jego rozkazami walczyły m.in. polskie legiony Dąbrowskiego, przyczynił się do utworzenia po kilkunastu latach zaborów kadłubowego państwa polskiego, Księstwa Warszawskiego; Nopoleon cenił wysoko odwagę i umiejętności żołnierskie, nagradzając je często wysokimi awansami.</pe> gdzie zjawi, to, jak nic marszałkiem zostanę, jenerałem wielkim, mocarzem.</akap>
+
+
+<akap>No nic! cierpi jeszcze, czeka.</akap>
+
+
+<akap>Aż ci tu kiedyś na wieczorynkę poszedł do czeladnika jednego, co się niedawno wyzwolił<pe><slowo_obce>wyzwolił</slowo_obce> --- uwolnił spod władzy majstra szewskiego, stając się samodzielnym pracownikiem.</pe> i wiodło mu się niezgorzej, bo grenadierskie<pe><slowo_obce>grenadierskie</slowo_obce> --- przeznaczone dla grenadierów, czyli członków wojskowych oddziałów pieszych, których zadaniem było rzucanie granatów ręcznych.</pe> buty szył, dla gwardii<pe><slowo_obce>gwardia</slowo_obce> --- wojskowe oddziały straży.</pe>, dla panów oficerów. Wieczorynka aż miło! Jedzą, piją, gawędzą. Ni z tego, ni z owego, o bajkach się zaczyna, o takich podaniach warszawskich</akap>
+
+
+<akap>I mówi jeden stary szewc, kuternoga<pe><slowo_obce>kuternoga</slowo_obce> --- kulawy, beznogi.</pe>:</akap>
+
+<akap_dialog>--- Ho! ho! u nas w Warszawie i o pieniądz łatwo i o sławę, tylko trza mieć odwagę i rozum we łbie, jak się patrzy.</akap_dialog>
+
+
+<akap>Zaciekawił się Lutek, pyta:</akap>
+
+<akap_dialog>--- Mówcie, co takiego?</akap_dialog>
+
+<akap_dialog>--- Ano nic --- rzeknie kuternoga --- na Ordynackiej, w podziemiach starego zamku, jest królewna taka, zaklęta w złotą kaczkę. Kto do niej trafi, kto ją przydybie<pe><slowo_obce>przydybać</slowo_obce> --- złapać, schwytać, spotkać (nieprzypadkowo, ale szukając wcześniej lub czekając na okazję do spotkania).</pe> --- wygrał! Ona mu powie, jak skarby ogromne zdobyć, jak się stać możnym bogaczem, magnatem!</akap_dialog>
+
+<akap_dialog>--- I gdzie to, mówicie?</akap_dialog>
+
+<akap_dialog>--- Na Ordynackiej, w lochach starego zamczyska.</akap_dialog>
+
+<akap_dialog>--- A kiedy?</akap_dialog>
+
+<akap_dialog>--- W noc świętojańską<pe><slowo_obce>noc świętojańska</slowo_obce> --- dawn. noc Kupały, wiosenne pradawne święto obchodzone nocą między 21 a 22 czerwca, potem powiązane z chrześcijańskim patronem świętym Janem (stąd nazwa: święto--jańska) i przesunięte na 23 czerwca.</pe>.</akap_dialog>
+
+
+<akap>Zapamiętał to sobie nasz Lutek, a do nocy świętojańskiej trzy dni trzeba czekać, nie więcej.</akap>
+
+
+
+
+
+<srodtytul>II</srodtytul>
+
+
+
+
+
+<akap><begin id="b1188825287070" /><motyw id="m1188825287070">Kobieta, Żołnierz</motyw>Wieczór spadł na gwarną<pe><slowo_obce>gwarną</slowo_obce> --- pełną gwaru, czyli odgłosów rozmów.</pe> Warszawę, gwiaździsty, ciepły, czerwcowy. Na ulicy ludzi, jak mrowia. Panienki takie śliczne spacerują, a przy nich kawaleria, młodzi panowie, a głównie --- wojskowi.</akap>
+
+
+<akap>Tu ułan drugiego pułku, biały z granatem, tu strzelec konny gwardii w mundurze zielonym z żółtym, tu piechota liniowa, tu artylerzysta; hej! ostrogi dźwięczą, szable brzęczą, kity migają, aż lubo<pe><slowo_obce>lubo</slowo_obce> --- miło.</pe> patrzeć!<end id="e1188825287070" /></akap>
+
+
+<akap>Idzie sobie nasz szewczyk Lutek Krakowskim Przedmieściem, Nowym Światem, wszedł w Ordynacką, przeżegnał się: już blisko!</akap>
+
+
+<akap>Spuszcza się Tamką, bo tam właśnie jest wnijście<pe><slowo_obce>wnijście</slowo_obce> --- wejście.</pe> do lochów ordynackiego zamczyska, idzie, lezie, ale mu coś niesporo<pe><slowo_obce>niesporo</slowo_obce> --- niełatwo, z trudnością.</pe>.</akap>
+
+
+<akap>Nie to, żeby się bał: niech Bóg broni! nie lęka się on niczego; tylko tak jakoś, nie łacno mu, ze złym duchem może, wejść w komitywę<pe><slowo_obce>komitywa</slowo_obce> --- znajomość, wspólne interesy.</pe>.</akap>
+
+
+<akap>Ano trudno! Raz się zdecydował: wejść trzeba!</akap>
+
+
+<akap>Od Tamki, okienka nad ulicą dość nisko, szyb nie ma, ino kraty, ale taki chudzielec, jak wąż się przeciśnie.</akap>
+
+
+<akap>Jazda! Wdrapał się po wystających cegłach do okna, raz, dwa, trzy! W imię Ojca i Syna i Ducha Świętego! --- Wlazł do wnętrza. Ciemno! zapalił świeczkę --- idzie. Kurytarz<pe><slowo_obce>Kurytarz</slowo_obce> --- korytarz.</pe> długi, wąski, kręty, prowadzi niżej i niżej. Aż ci po kwadransie może takiej drogi wylazł szewczyk do piwnicy wielkiej, sklepionej, z jeziorkiem jakiemsiś pośrodku.</akap>
+
+
+<akap>Przy mdłym światełku świeczki łojowej, którą trzymał w ręku, obaczył Lutek owo jeziorko, --- a na nim --- Boże drogi! prawdę mówił szewc Kuternoga: złota kaczka pływa, piórkami szeleści.</akap>
+
+<akap_dialog>--- Taś, taś! kaczuchno!</akap_dialog>
+
+
+<akap>I nagle --- z kaczki czyni się przecudna dziewica: królewna. Włosy złote do ziemi, usta jak maliny, oczy jak gwiazdy, a buzia taka cudna, że --- klękajcie narody!</akap>
+
+<akap_dialog>--- Czego chcesz ode mnie, chłopczyku?</akap_dialog>
+
+<akap_dialog>--- Jaśniewielmożna królewno --- Lutek powiada, --- nic ci ja nie chcę, ino zrobię to, co ty chcesz, abyś rozkazała.</akap_dialog>
+
+<akap_dialog>--- Dobrze --- odpowie księżniczka --- tedy ci powiem! Uzyskasz skarby, jakich nikt na świecie nie ma i mieć nie będzie, panem będziesz, bogaczem, jeśli spełnisz, co do joty, to, co ci powiem.</akap_dialog>
+
+<akap_dialog>--- Słucham, jaśniewielmożna!</akap_dialog>
+
+<akap_dialog>--- Oto masz kieskę, w niej sto dukatów; przez dzień jutrzejszy musisz je wydać, ale tylko na potrzeby własne, dla siebie samego; nic ci z tego złota dać nikomu nie wolno, ni grosza, ni grosza! Pamiętaj.</akap_dialog>
+
+<akap_dialog>--- Ha! ha! ha! --- zaśmieje się Lutek --- i cóż to trudnego? Będę jadł, będę pił, będę hulał! Wydam sto dukatów --- a co potem?</akap_dialog>
+
+<akap_dialog>--- A potem, skarby niezmierne otworem stać ci będą, kopalnie złota prawdziwe, bogactwa niezmierzone; ale pamiętaj: ni grosza nikomu!</akap_dialog>
+
+<akap_dialog>--- Zgoda, królewno! daj kieskę!</akap_dialog>
+
+
+<akap>Księżniczka kieskę Lutkowi wręczyła, zaśmiała się jakoś dziwnie --- i znikła.</akap>
+
+
+<akap>Strach przejął szewczyka. Ledwo się do okna dogramolił, wylazł na Tamkę i smyrgnął na Stare Miasto.</akap>
+
+
+
+
+
+<srodtytul>III</srodtytul>
+
+
+
+
+
+<akap>Nazajutrz dzień od rana samego puszcza się Lutek na miasto. Co tu robić najsampierw --- myśli sobie --- chyba się odziać, jak panicz.</akap>
+
+
+<akap>No, dobrze! racja! Poszedł na Świętojerską, do sklepów z odzieżą, kupił sobie kapelusz, ubranie, paletot<pe><slowo_obce>paletot</slowo_obce> --- palto, płaszcz.</pe>. Szyk! Prawdziwy hrabia!</akap>
+
+
+<akap>Idzie, pogwizduje, laseczką macha, bo i laseczkę se sprawił, nie wie co robić dalej.</akap>
+
+
+<akap>Nie taka to łatwa sprawa wydać sto dukatów!</akap>
+
+
+<akap>Sto dukatów! dla siebie samego!</akap>
+
+
+<akap>Ha! trza pomyśleć!</akap>
+
+
+<akap>A że to była już jakaś dziesiąta godzina, jeść mu się kaducznie zachciało. Jeść i jeść. Młody, zdrowy, to i nic dziwnego, że głodny.</akap>
+
+
+<akap>Wstąpił do gospody. Każe sobie dać kiełbasy, kiszki, piwa, bułek.</akap>
+
+
+<akap>Je, je, aż mu się uszy trzęsą. Najadł się tak, że mu chyba na trzy dni wystarczy.</akap>
+
+<akap_dialog>--- Co się należy?</akap_dialog>
+
+<akap_dialog>--- Dwa złote.</akap_dialog>
+
+<akap_dialog>--- Dwa złote? Nie więcej?</akap_dialog>
+
+<akap_dialog>--- Dwa złote, paniczu, i przydałoby się z dziesięć groszy napiwku.</akap_dialog>
+
+
+<akap>Wydajże tu sto dukatów, bądź mądry! Ano trudno! Trza jakości ten pieniądz wydać. Pomyślimy!</akap>
+
+
+<akap>Sypie ci Lutek na wycieczkę<pe><slowo_obce>Sypie</slowo_obce> (gwar.) --- tu: idzie.</pe> za miasto. Pojechał końmi do Wilanowa. Bryczkę wynajął na poczcie, koni czwórka, pocztylion gra na trąbce. Uciecha.</akap>
+
+
+<akap>Przyjechał. Dał dukata odźwiernemu przy parku. Chodzi po ogrodzie. Napatrzył się, południe już minęło. Pora powracać! I znów jest w Warszawie. Co zrobić? Gdzie wydać pieniądze, boć wydał niespełna pięć dukatów.</akap>
+
+
+<akap>Spojrzał. Afisz na rogu: Teatr Narodowy. Nie ma co! Chodźmy do teatru.</akap>
+
+
+<akap>W teatrze zabawił się setnie. Nie był w nim nigdy. Bo i skądże? Rzecz droga: miejsce dwa złote.</akap>
+
+
+<akap>Wyśmiał się, ucieszył, wychodzi.</akap>
+
+
+<akap>Późna już pora. Czasu do wydania pieniędzy niewiele, a Bóg świadkiem --- nie wie Lutek, co z nimi zrobić? Idzie, rozmyśla. <begin id='b1218990915611' /><motyw id='m1218990915611'>Polak, Żołnierz</motyw>A gdy tak idzie, na rogu zaułka starzec stoi zgarbiony.</akap>
+
+<akap_dialog>--- Panie --- powiada --- drugi dzień mija, gdy nic w ustach nie miałem. Starym żołnierz, paniczu, pod Sommosierrą byłem, pod Smoleńskiem, pod Moskwą, przy księciu Józefie pod Lipskiem --- poratuj mnie!</akap_dialog>
+
+
+<akap>Pojrzy Lutek na starca: inwalida bez ręki, a na piersiach błyszczą mu wstążeczki orderowe: Legia honorowa i Virtuti militari.</akap>
+
+
+<akap>Sięgnął do kieszeni, wyciągnął garść złota, dał starcowi.</akap>
+
+<akap_dialog>--- Bóg---że ci zapłać, paniczu! Bóg ci zapłać! Będziesz szczęśliwy i bogaty!<end id='e1218990915611' /></akap_dialog>
+
+
+<akap>Błysnęło! zagrzmiało!</akap>
+
+
+<akap>Mignęła przed oczami Lutka księżniczka zaklęta.</akap>
+
+<akap_dialog>--- Nie dotrzymałeś obietnicy, nie dla siebie wydałeś pieniądze!</akap_dialog>
+
+
+<akap>I znikła.</akap>
+
+
+<akap>Rozejrzy się szewczyk: dziad stoi, jak stał poprzednio --- i rzecze:</akap>
+
+<akap_dialog>--- <begin id='b1218991012178' /><motyw id='m1218991012178'>Pieniądz, Praca, Szczęście, Zdrowie</motyw>Nie dukat, paniczu, daje szczęście, ino praca i zdrowie. Ten pieniądz wart coś, co zarobiony, a darmocha na złe idzie.</akap_dialog>
+
+
+<akap>Powrócił Lutek do domu rad i wesół. Ocknął się rankiem bez grosza w kieszeni. Wydał na siebie z dziesięć dukatów, a resztę oddał starcowi, ale też od tego czasu wiodło mu się, jak nigdy. Wyzwolił się wrychle<pe><slowo_obce>wrychle</slowo_obce> --- szybko.</pe> na czeladnika, niebawem majstrem został, ożenił się z panienką piękną i zacną, dzieci wychował --- i żył długie lata w zdrowiu, w dostatku i w szczęściu.<end id='e1218991012178' /></akap>
+
+
+<akap>A o złotej kaczce słuch zaginął. I dzięki Bogu! bo <begin id='b1218991130347' /><motyw id='m1218991130347'>Polak</motyw>zła to musiała być boginka, kiedy za warunek stawiała: sobie, nie komu!</akap>
+
+
+<akap>Nie tak! nie tak myśleć i czuć po polsku trzeba! My rządzimy się inaczej: naprzód biednemu, potem sobie!<end id='e1218991130347' /></akap>
+
+
+<akap>A wtedy każdej pracy Pan Bóg dopomoże.<end id="e1188825459087" /></akap>
+
+
+<extra><!--</tekst_glowny>--></extra>
+
+</opowiadanie></utwor>

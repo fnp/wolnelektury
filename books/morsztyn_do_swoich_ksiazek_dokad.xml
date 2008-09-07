@@ -1,0 +1,61 @@
+<utwor><liryka_l>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Do_swoich_książek_1">
+<dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
+<dc:title xml:lang="pl">Do swoich książek (Dokąd się, moja lutni, napierasz skwapliwie?)</dc:title>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Kukulski, Leszek</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Barok</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl"></dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
+<dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Andrzej Morsztyn zm. 1693</dc:rights>
+<dc:date.pd xml:lang="pl">1693</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-06</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<autor_utworu>Jan Andrzej Morsztyn</autor_utworu>
+
+<nazwa_utworu>Do swoich książek</nazwa_utworu>
+
+
+
+<strofa><begin id='b1189001983234' /><motyw id='m1189001983234'>Literat, Poeta, Poezja</motyw>Dokąd się, moja lutni, napierasz skwapliwie?/
+<wers_wciety>Chcesz na świat i drukarskiej chciałabyś oliwie</wers_wciety>/
+Podać w nielutościwe swoje plotki prasy,/
+<wers_wciety>Wzgardziwszy słodkie mego kabinetu wczasy?</wers_wciety>/
+Ach, nie wiesz, czego-ć się chce! Różne w ludziach smaki,/
+<wers_wciety>I ciebie potka wilkum pewnie niejednaki.</wers_wciety>/
+Nie trzeba dymem śmierdzieć, kto się chce do dworu/
+<wers_wciety>Udać, jeszcześ ty godna kuchennego szoru:</wers_wciety>/
+Jeden, co lepiej pisze, znajdzie w tobie siła,/
+<wers_wciety>Co by cierpliwsza głowa jeszcze przekreśliła;</wers_wciety>/
+Drugi z zazdrości, która średnie mózgi żywi,/
+<wers_wciety>W oczy pochwali, ale z tyłu gębę skrzywi;</wers_wciety>/
+Inszy, choć z hipokreńskiej nie pił nigdy bani,/
+<wers_wciety>Żeby się coś zdał, czego nie umie, pogani.</wers_wciety>/
+Tak, coś ją w ciszy miała, utracisz powagę/
+<wers_wciety>I pójdziesz za sukienkę korzeniu na wagę</wers_wciety>/
+Albo cię, ważąc konfekt, podściele na szali/
+<wers_wciety>Aptekarz i Szot tobą tabakę podpali,</wers_wciety>/
+Albo kiedy krystera czyści brzuch zawarty,/
+<wers_wciety>Coraz, co krok do stolca, jednej zbędziesz karty.</wers_wciety>/
+Ale ty przecie prosisz łaskawej odprawy,/
+<wers_wciety>Tak ci się moje przykrzą kreski i poprawy,</wers_wciety>/
+I co go doznać możesz, nie poważasz sromu;/
+<wers_wciety>Idź tedy --- ale lepiej było siedzieć w domu.</wers_wciety><end id='e1189001983234' /></strofa>
+
+</liryka_l></utwor>

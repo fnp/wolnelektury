@@ -1,72 +1,77 @@
-<?xml version='1.0' encoding='utf-8'?>
-<utwor>
-  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Słowacki/Testament_mój">
-      <dc:creator xml:lang="pl">Słowacki, Juliusz</dc:creator>
-      <dc:title xml:lang="pl">Testament mój</dc:title>
-      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
-      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
-      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
-      <dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
-      <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
-      <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
-      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Testament+m%C3%B3j</dc:identifier.url>
-      <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/4060</dc:source.URL>
-      <dc:source xml:lang="pl">Mazanowski, Antoni (1858-1916), Wypisy polskie na VII klasę gimnazyalną, [s.n.], Kraków, 1914</dc:source>
-      <dc:rights xml:lang="pl">Domena publiczna - Juliusz Słowacki zm. 1849</dc:rights>
-      <dc:date.pd xml:lang="pl">1849</dc:date.pd>
-      <dc:format xml:lang="pl">xml</dc:format>
-      <dc:type xml:lang="pl">text</dc:type>
-      <dc:type xml:lang="en">text</dc:type>
-      <dc:date xml:lang="pl">2007-09-06</dc:date>
-      <dc:audience xml:lang="pl">G</dc:audience>
-      <dc:audience xml:lang="pl">L</dc:audience>
-      <dc:language xml:lang="pl">pol</dc:language>
-    </rdf:Description>
-  </rdf:RDF>
-  <liryka_l>
-    <autor_utworu>Juliusz Słowacki</autor_utworu>
-    <nazwa_utworu>Testament mój</nazwa_utworu>
-    <strofa><begin id="b1189008560503"/><motyw id="m1189008560503">Poeta</motyw>Żyłem z wami, cierpiałem i płakałem z wami;/
+<utwor><liryka_l>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Słowacki/Testament_mój">
+<dc:creator xml:lang="pl">Słowacki, Juliusz</dc:creator>
+<dc:title xml:lang="pl">Testament mój</dc:title>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Testament+m%C3%B3j</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/4060</dc:source.URL>
+<dc:source xml:lang="pl">Mazanowski, Antoni (1858-1916), Wypisy polskie na VII klasę gimnazyalną, [s.n.], Kraków, 1914</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Juliusz Słowacki zm. 1849</dc:rights>
+<dc:date.pd xml:lang="pl">1849</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-06</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<autor_utworu>Juliusz Słowacki</autor_utworu>
+
+<nazwa_utworu>Testament mój</nazwa_utworu>
+
+
+
+<strofa><begin id='b1189008560503' /><motyw id='m1189008560503'>Poeta</motyw>Żyłem z wami, cierpiałem i płakałem z wami;/
 <wers_wciety>Nigdy mi, kto szlachetny, nie był obojętny:</wers_wciety>/
 Dziś was rzucam i dalej idę w cień --- z duchami,/
 <wers_wciety>A jak gdyby tu szczęście było, idę smętny.</wers_wciety>/
-Nie zostawiłem tutaj żadnego dziedzica/
-<wers_wciety>Ani dla mojej lutni, ani dla imienia:</wers_wciety>/
+Nie zostawiłem tutaj żadnego dziedzica<pe><slowo_obce>dziedzic</slowo_obce> --- spadkobierca.</pe>/
+<wers_wciety>Ani dla mojej lutni<pe><slowo_obce>lutnia</slowo_obce> --- tu występuje jako symbol poezji.</pe>, ani dla imienia:</wers_wciety>/
 Imię moje tak przeszło, jako błyskawica,/
 <wers_wciety>I będzie, jak dźwięk pusty, trwać przez pokolenia.</wers_wciety>/
-Lecz wy, coście mnie znali, w podaniach przekażcie,/
-<wers_wciety>Żem dla ojczyzny sterał moje lata młode,</wers_wciety>/
+<begin id='b1219173153154' /><motyw id='m1219173153154'>Ojczyzna, Okręt, Patriota, Dziedzictwo</motyw>Lecz wy, coście mnie znali, w podaniach<pe><slowo_obce>podanie</slowo_obce> --- utwór prozatorski, przekazywany ustnie, podejmuje ważną tematykę społeczną. Opowiadanie dotyczące wierzeń historycznych lub legendarnych.</pe> przekażcie,/
+<wers_wciety>Żem dla ojczyzny sterał<pe><slowo_obce>sterać</slowo_obce> --- tu: stracić.</pe> moje lata młode;</wers_wciety>/
 A póki okręt walczył, siedziałem na maszcie,/
 <wers_wciety>A gdy tonął, z okrętem poszedłem pod wodę...</wers_wciety>/
 Ale kiedyś, o smętnych losach zadumany/
 <wers_wciety>Mojej biednej ojczyzny, pozna, kto szlachetny,</wers_wciety>/
 Że płaszcz na moim duchu był nie wyżebrany,/
-<wers_wciety>Lecz świetnościami moich dawnych przodków świetny.</wers_wciety>/
-Niech przyjaciele moi w nocy się zgromadzą/
-<wers_wciety>I biedne serce moje spalą w aloesie,</wers_wciety>/
+<wers_wciety>Lecz świetnościami moich dawnych przodków świetny.</wers_wciety><end id='e1219173153154' />/
+<begin id='b1219173240089' /><motyw id='m1219173240089'>Matka, Przyjaźń, Serce</motyw>Niech przyjaciele moi w nocy się zgromadzą/
+<wers_wciety>I biedne serce moje spalą w aloesie<pe><slowo_obce>aloes</slowo_obce> --- uprawna roślina lecznicza, używana do balsamowania ciał zmarłych (tu poeta odwołuje się do tej praktyki ,,unieśmiertelniania").</pe>,</wers_wciety>/
 I tej, która mi dała to serce, oddadzą:/
-<wers_wciety>Tak się matkom wypłaca świat, gdy proch odniesie...</wers_wciety>/
-Niech przyjaciele moi siędą przy pucharze/
-<wers_wciety>I zapiją mój pogrzeb --- oraz własną biédę:</wers_wciety>/
+<wers_wciety>Tak się matkom wypłaca świat, gdy proch odniesie...<end id='e1219173240089' /></wers_wciety>/
+<begin id='b1219173303600' /><motyw id='m1219173303600'>Przyjaźń, Duch, Pogrzeb</motyw>Niech przyjaciele moi siędą przy pucharze<pe><slowo_obce>pucharze</slowo_obce> --- w oryg. ,,puharze"; dziś obowiązuje inna ortografia.</pe>/
+<wers_wciety>I zapiją mój pogrzeb --- oraz własną biedę:</wers_wciety>/
 Jeżeli będę duchem, to się im pokażę,/
-<wers_wciety>Jeśli Bóg mnie uwolni od męki, nie przyjdę...</wers_wciety>/
-<begin id="b1189008663479"/><motyw id="m1189008663479">Obowiązek</motyw>Lecz zaklinam: niech żywi nie tracą nadziei/
-<wers_wciety>I przed narodem niosą oświaty kaganiec;</wers_wciety>/
+<wers_wciety>Jeśli Bóg mnie uwolni od męki, nie przyjdę...<pe><slowo_obce>Jeżeli będę duchem ... nie przyjdę</slowo_obce> --- na temat wierzeń dotyczących duchów zmarłych i ich kontaktowania się z żyjącymi wiele informacji znajduje się w <tytul_dziela>Dziadach</tytul_dziela> Adama Mickiewicza.</pe></wers_wciety><end id='e1219173303600' />/
+<begin id='b1189008663479' /><motyw id='m1189008663479'>Obowiązek, Naród, Nauka</motyw>Lecz zaklinam: niech żywi nie tracą nadziei/
+<wers_wciety>I przed narodem niosą oświaty kaganiec<pe><slowo_obce>kaganiec</slowo_obce> --- rodzaj oświetlenia: naczynie, wewnątrz, którego płonął ogień (częściej spotyka się formę zdrobnienia: kaganek).</pe>;</wers_wciety>/
 A kiedy trzeba, na śmierć idą po kolei,/
-<wers_wciety>Jak kamienie, przez Boga rzucane na szaniec!<end id="e1189008663479"/></wers_wciety>/
-Co do mnie --- ja zostawiam maleńką tu drużbę/
+<wers_wciety>Jak kamienie, przez Boga rzucane na szaniec<pe><slowo_obce>szaniec</slowo_obce> --- umocnienie polowe, składało się z wału i rowu.</pe>!</wers_wciety><end id='e1189008663479' />/
+<begin id='b1219173441869' /><motyw id='m1219173441869'>Przyjaźń, Samotnik</motyw>Co do mnie --- ja zostawiam maleńką tu drużbę<pe><slowo_obce>drużba</slowo_obce> --- życzliwość, przyjaźń; tu: grupa przyjaciół.</pe>/
 <wers_wciety>Tych, co mogli pokochać serce moje dumne;</wers_wciety>/
 Znać, że srogą spełniłem, twardą Bożą służbę,/
-<wers_wciety>I zgodziłem się tu mieć niepłakaną trumnę.</wers_wciety>/
-Kto drugi tak bez świata oklasków się zgodzi/
+<wers_wciety>I zgodziłem się tu mieć niepłakaną trumnę.</wers_wciety><end id='e1219173441869' />/
+<begin id='b1219172900060' /><motyw id='m1219172900060'>Duch</motyw>Kto drugi tak bez świata oklasków się zgodzi/
 <wers_wciety>Iść?... taką obojętność, jak ja, mieć dla świata?</wers_wciety>/
 Być sternikiem duchami napełnionej łodzi/
-<wers_wciety>I tak cicho odlecieć, jak duch, gdy odlata?</wers_wciety>/
-<begin id="b1189008883966"/><motyw id="m1189008883966">Nieśmiertelność</motyw>Jednak zostanie po mnie ta siła fatalna,/
+<wers_wciety>I tak cicho odlecieć, jak duch, gdy odlata?</wers_wciety><end id='e1219172900060' />/
+<begin id='b1189008883966' /><motyw id='m1189008883966'>Nieśmiertelność, Anioł</motyw>Jednak zostanie po mnie ta siła fatalna<pe><slowo_obce>fatalny</slowo_obce> --- tu: z góry przeznaczony, nieuchronny, nieunikniony jak los, fatum.</pe>,/
 <wers_wciety>Co mi żywemu na nic, tylko czoło zdobi;</wers_wciety>/
 Lecz po śmierci was będzie gniotła niewidzialna,/
-<wers_wciety>Aż was, zjadacze chleba --- w aniołów przerobi.<end id="e1189008883966"/><end id="e1189008560503"/></wers_wciety></strofa>
-  </liryka_l>
-</utwor>
+<wers_wciety>Aż was, zjadacze chleba --- w aniołów przerobi.<end id='e1189008883966' /><end id='e1189008560503' /></wers_wciety></strofa>
+
+</liryka_l></utwor>

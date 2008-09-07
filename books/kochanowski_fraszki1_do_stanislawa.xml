@@ -1,0 +1,52 @@
+<utwor><liryka_l>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Do_Stanis%C5%82awa_%281%29">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Do Stanisława</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://wolnelektury.pl/lektura/fraszki-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-07</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Fraszki, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Do Stanisława</nazwa_utworu>
+
+
+
+<strofa><begin id='b1188769855210' /><motyw id='m1188769855210'>Kochanek</motyw>Co mi Sybilla prorokuje ninie?/
+,,Źle trzem --- powiada --- o jednej pierzynie."/
+Znać, Stanisławie, że się ta pieśń była/
+Mym towarzyszom dobrze w głowę wbiła./
+Bom ja sam jeden został z tej drużyny,/
+Co pociągali na się tej pierzyny./
+Oni już tylko legają po parze,/
+Ja przedsię ziębnę samotrzeć do zarze.<end id='e1188769855210' /></strofa>
+
+</liryka_l></utwor>

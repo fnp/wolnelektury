@@ -1,0 +1,56 @@
+<utwor><liryka_l>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/O_%C5%BCywocie_ludzkim_%282%29">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">O żywocie ludzkim (Wieczna Myśli, któraś jest dalej niż od wieka...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://wolnelektury.pl/lektura/fraszki-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-07</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Fraszki, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>O żywocie ludzkim</nazwa_utworu>
+
+
+
+<strofa><begin id='b1188895178742' /><motyw id='m1188895178742'>Bóg, Kondycja ludzka, Los, Theatrum mundi, Obraz świata</motyw>Wieczna Myśli<pr><slowo_obce>Wieczna Myśli</slowo_obce> --- filozoficzne określenie Boga, obojętnego na sprawy doczesne.</pr>, któraś jest dalej niż od wieka,/
+Jesli cię też to rusza, co czasem człowieka,/
+Wierzę, że tam na niebie masz mięsopust prawy<pr><slowo_obce>mięsopust prawy</slowo_obce> --- prawdziwe widowisko karnawałowe (zapustne), w czasie którego między gawiedź uliczną rzucano przysmaki, co wywoływało bójki.</pr>/
+Patrząc na rozmaite świata tego sprawy./
+<begin id='b1218743415790' /><motyw id='m1218743415790'>Dziecko</motyw>Bo leda co wyrzucisz, to my, jako dzieci,/
+W taki treter, że z sobą wyniesiem i śmieci./
+Więc temu rękaw urwą, a ten czapkę straci;/
+Drugi tej krotochwile i włosy przypłaci<pr><slowo_obce>krotochwile i włosy przypłaci</slowo_obce> --- zabawę przypłaci włosami wydartymi mu w bójce.</pr>.<end id='e1218743415790' />/
+Na koniec niefortuna albo śmierć przypadnie,/
+To drugi, choćby nierad, czacz porzuci snadnie./
+Panie, godno li, niech tę rozkosz z Tobą czuję:/
+Niech drudzy za łby chodzą, a ja się dziwuję.<end id='e1188895178742' /></strofa>
+
+</liryka_l></utwor>

@@ -1,0 +1,136 @@
+<utwor><opowiadanie>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
+<dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
+<dc:title xml:lang="pl">Zbójcy</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/legendy-warszawskie</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Zb%C3%B3jcy</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
+<dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
+<dc:date.pd xml:lang="pl">1931</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Artur Oppman</autor_utworu>
+
+<dzielo_nadrzedne>Legendy warszawskie</dzielo_nadrzedne>
+
+<nazwa_utworu>Zbójcy</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<akap><begin id="b1188823135309" /><motyw id="m1188823135309">Miasto</motyw>Dwieście lat temu Nowe Miasto warszawskie otoczone było wielkimi moczarami i gęstymi zaroślami, w których nierzadko ukrywał się zwierz dziki, tak, że zdarzało się nieraz, iż mroźną zimą głodne wilki przybiegały na rynek nowomiejski i wyły po nocach przed jatkami rzeźników.<end id="e1188823135309" /></akap>
+
+
+<akap>W czas takiej to właśnie zimy długotrwałej, w wieczór zawieruchą śnieżną dmący, do jednej z gospód, w pobliżu kościoła Panny Marii, przywlókł się stary, obdarty, skulony z zimna, dziad.</akap>
+
+
+<akap>Rozejrzał się po izbie obszernej, o gościnę pokornie poprosił, że to --- powiada --- nie ma się gdzie schronić, a głodny jest taki, iż nogi go już nosić nie zdołają.</akap>
+
+
+<akap>Choć żebrakowi źle jakoś z oczu patrzało, miłosierni gospodarstwo nie odmówili mu przytułku. Jeść dali, pić dali i na ciepłym przypiecku przespać się pozwolili.</akap>
+
+
+<akap>Wlazł ci dziadyga za piec, postękał, pokwękał i po krótkiej chwili zasnął widocznie, bo jął chrapać, aż grzmiało.</akap>
+
+
+<akap>A że to noc już na świat boży zapadła, tedy i gospodarstwo, pobożnie odmówiwszy pacierze, do snu się ułożyli, a też i dziewczyna służebna, gdy statki zmyła i podłogę zamiotła, wlazła pod pierzynę do swojego łóżka i już, już sen jej padał na oczy, gdy, nagle a niespodziewanie, coś ją tknęło, coś jakby zaszeptało: ,,Nie śpij, dziewucho, czuwaj..."</akap>
+
+
+<akap>Przelękła się dziewczynina, ale nic, czuwa, jak jej ten głos wewnętrzny rozkazał. Modli się po cichutku, w sobie, i czeka, co to z tego będzie.</akap>
+
+
+<akap>Minęła tak dobra godzina, a może i więcej, aż ci tu słyszy dziewucha: ktoś się za piecem gramoli. Wyjrzała jednym okiem spod pierzyny, niewiele widzi, bo ciemno, ale tak myśli, że to chyba dziad ów zza pieca wyłazi.</akap>
+
+
+<akap>Jakoż tak było w istocie. Dziad to, przybłęda, na czworakach idzie cichuteńko, podszedł do stołu, podniósł się, świeczkę zapalił, postawił na stole i rozejrzał się wokoło.</akap>
+
+
+<akap>Panie Boże miłosierny! Straszne rzeczy! Dziadzisko już nie skulone, nie takie stare, jak się wydawało. Wyprostował się teraz, zogromniał jakoś, nóż długi a ostry w ręku trzyma, ślepia mu błyszczą, jak wilkowi. Zbójca!</akap>
+
+
+<akap>Dziewuszysko zatrzęsło się ze strachu, ale zaraz pomyślała sobie: jak zobaczy, że nie śpię, zabije mnie, trzeba leżeć cicho, ani tchnąć.</akap>
+
+
+<akap>A wiedziała też dobrze dziewczyna, co to za świeczka taka: z trupiego łoju<uwaga>świeczka taka: z trupiego łoju</uwaga>! Taka świeczka ma tę własność, że póki się pali, nikt ze śpiących w izbie ocknąć nie może; obudzi się dopiero, gdy świeca zgaśnie. Okropieństwo!</akap>
+
+
+<akap>Rozejrzał się tedy ów zbójca, pomedytował chwilę i sunie bez szelestu, jak zły duch, naprzód do gospodarstwa, zobaczyć, czy śpią mocno?</akap>
+
+
+<akap>Pochylił się nad nimi, a nóż wzniesiony w garści trzyma, popatrzył, posłuchał: spali.</akap>
+
+
+<akap><begin id="b1188823335998" /><motyw id="m1188823335998">Cierpienie, Sługa</motyw>Więc lezie pomaleńku, wprost ku łóżku dziewczyny służebnej. Uniósł pierzynę z jej głowy, przygląda się, a dziewucha dech zataiła w sobie, ani drgnie. Coś się zbójowi w niej nie spodobało, coś widać, psi syn, zauważył takiego, że niedowierza; schylił się, nasłuchuje, czy równo oddycha: równo.</akap>
+
+
+<akap>Ehe! Nie taki on głupi! Nie dosyć mu na tym! Uszczypnął ją w policzek: nic! Wyciągnął szpilkę z kapoty, ukłuł: nic! Jeszcze mu mało!</akap>
+
+
+<akap>Wrócił się do stołu, wziął świeczkę, skrada się, a wciąż spoziera na twarz dziewczyny. No! niema co! śpi!</akap>
+
+<akap_dialog>--- Czekaj, bestyjo --- powiada --- albo ty śpisz, albo nie śpisz; jeśli nie śpisz, to zaraz mi tu narobisz krzyku.</akap_dialog>
+
+
+<akap>Stanął przy nogach łóżka i nuż bose stopy służącej przypiekać oną świeczką z trupiego łoju. Przypieka, aż skóra skwierczy, aż bąble wyskakują. Dziewucha, jak nieżywa; ani się ruszy.</akap>
+
+<akap_dialog>--- Śpi, jak zarżnięta --- mruknął zbójca. --- Takiego bólu żaden człek bez wrzasku nie wytrzyma.</akap_dialog>
+
+
+<akap>A ta dziewczyna taką siłę miała i taką wytrzymałość, iż ową mękę śmiało przeniosła, że to niby i jej życie i jej gospodarstwa poczciwych od udawania, jako śpi, zależało.</akap>
+
+
+<akap>Uspokoił się zbójca, stawia świeczkę na nowo na stole, a sam drzwi cicho, cichutko otwiera i myk na dwór, po swoich kamratów.</akap>
+
+
+<akap>Ale już dziewczyna zerwała się z łóżka, na bałykach<uwaga>bałykach</uwaga>, bo chodzić nie mogła od bólu okropnego, do furty się dowlokła i żelaznym drągiem ją zawarła.<end id="e1188823335998" /></akap>
+
+
+<akap>Jeszcze nie zdążyła wynijść z sieni, aż ci tu pięciu zbójów za drzwiami staje i chce furtę otworzyć.</akap>
+
+
+<akap>Ale! gadaj mu tam! Otwieraj, kiedy zamknięte! A wyłamywać furtę bali się, bo kościół blisko i hałas mógłby kto ze służby kościelnej usłyszeć!</akap>
+
+
+<akap>Słyszy dziewucha, jak gadają:</akap>
+
+<akap_dialog>--- A mówiłeś, że otwarte. Czemuś nas zwiódł?</akap_dialog>
+
+<akap_dialog>--- Nie zwiodłem! Było otwarte! Ino wiem, jak się to stało: to ta szelma dziewczyna nie spała i furtę zawarła.</akap_dialog>
+
+<akap_dialog>--- Nie ona szelma, tylko ty szelma, żeś się nie poznał i dziewuchy nie zarżnął!</akap_dialog>
+
+<akap_dialog>--- Ano, niema co gadać po próżnicy! Na nic dziś cała robota. Chodźmy do lasu! Ale dziewusze przy okazji odpłacim!</akap_dialog>
+
+
+<akap>Poszli. A służąca wstała, świeczkę czarodziejską zgasiła, zażegła łuczywo, zbudziła gospodarstwo i opowiedziała im rzecz całą.</akap>
+
+
+<akap>Chorowała długo, a gdy wyzdrowiała wreszcie, przeniosła się aż na Litwę, bojąc się zemsty owych zbójów przeklętych.</akap>
+
+<extra><!--</tekst_glowny>--></extra>
+
+</opowiadanie></utwor>
+

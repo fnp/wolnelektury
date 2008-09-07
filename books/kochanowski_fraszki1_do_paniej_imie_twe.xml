@@ -1,0 +1,61 @@
+<utwor><liryka_l>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Do_paniej_%283%29">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Do paniej (Imię twe, pani, które rad mianuję...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://wolnelektury.pl/lektura/fraszki-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-07</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Fraszki, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Do paniej</nazwa_utworu>
+
+
+
+<strofa><begin id='b1188894744672' /><motyw id='m1188894744672'>Miłość, Poezja, Przemijanie</motyw>Imię twe, pani, które rad mianuję,/
+Najdziesz w mych rymiech często napisane,/
+A kiedy będzie od ludzi czytane,/
+Masz przed inszymi, jesli ja co czuję<pr><slowo_obce>Masz przed inszymi, jesli ja co czuję</slowo_obce> --- przewyższasz innych, jeśli ja trafnie to czuję.</pr>.</strofa>
+
+<strofa>Bych cię z drogiego marmoru postawił,/
+Bych cię dał ulać i z szczerego złota/
+(Czego uroda i twa godna cnota),/
+Jeszcze bych cię czci trwałej nie nabawił.</strofa>
+
+<strofa>I mauzolea, i egiptskie grody/
+Ostatniej śmierci próżne być nie mogą<pr><slowo_obce>Ostatniej śmierci próżne być nie mogą</slowo_obce> --- nie mogą ostatecznie być wolne od zagłady.</pr>;/
+Albo je ogień, albo nagłe wody,/
+Albo je lata zazdrościwe zmogą;</strofa>
+
+<strofa>Sława z dowcipu<pr><slowo_obce>Sława z dowcipu</slowo_obce> --- sława oparta na talencie poetyckim.</pr> sama wiecznie stoi,/
+Ta gwałtu nie zna, ta się lat nie boi.<end id='e1188894744672' /></strofa>
+
+</liryka_l></utwor>

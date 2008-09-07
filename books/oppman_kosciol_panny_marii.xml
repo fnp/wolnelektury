@@ -1,252 +1,333 @@
-<?xml version='1.0' encoding='utf-8'?>
-<utwor>
-  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
-      <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
-      <dc:title xml:lang="pl">Kościół Panny Marii</dc:title>
-      <dc:relation.isPartOf xml:lang="pl">Legendy warszawskie</dc:relation.isPartOf>
-      <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
-      <dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
-      <dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
-      <dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
-      <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
-      <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
-      <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-      <dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Ko%C5%9Bci%C3%B3%C5%82+Panny+Marii</dc:identifier.url>
-      <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
-      <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
-      <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
-      <dc:date.pd xml:lang="pl">1931</dc:date.pd>
-      <dc:format xml:lang="pl">xml</dc:format>
-      <dc:type xml:lang="pl">text</dc:type>
-      <dc:type xml:lang="en">text</dc:type>
-      <dc:date xml:lang="pl">2007-08-30</dc:date>
-      <dc:audience xml:lang="pl">SP2</dc:audience>
-      <dc:language xml:lang="pl">pol</dc:language>
-    </rdf:Description>
-  </rdf:RDF>
-  <liryka_lp>
-    <extra>
-      <!--<elementy_poczatkowe>-->
-    </extra>
-    <autor_utworu>Artur Oppman</autor_utworu>
-    <nazwa_utworu>Kościół Panny Marii</nazwa_utworu>
-    <extra>
-      <!--</elementy_poczatkowe>-->
-    </extra>
-    <extra>
-      <!--<tekst_glowny>-->
-    </extra>
-    <srodtytul>I</srodtytul>
-    <strofa>Przed latami, przed dawnemi,/
-			Pewien młynarz żył w tej ziemi,/
-			A gdzie mieszkał? Prosta sprawa:/
-			Tam gdzie stoi dziś Warszawa.</strofa>
-    <strofa>Domek miał nad Wisłą szarą,/
-			Cieszył się koników parą,/
-			Czwórką wołów pracowitych,/
-			Kur i kaczek rozmaitych/
-			Wielkiem mnóstwem... A miał przytem/
-			Młyn zapchany zawsze żytem/
-			I pszenicą... Z tego zboża,/
-			Ani długo, ani krótko,/
-			Młynarz mąkę mełł bielutką/
-			I sprzedawał aż za morza.</strofa>
-    <strofa>Dobrze płacił cudzoziemiec,/
-			Anglik, Francuz, Szwed, czy Niemiec,/
-			Za tę mąkę życiodajną,/
-			Taką smaczną, choć zwyczajną.</strofa>
-    <strofa>Polskie zboże żną parobcy,/
-			Polski młynarz mąkę miele,/
-			A z tej mąki mają obcy/
-			Pszenny kołacz na niedzielę.</strofa>
-    <strofa>Więc nasz młynarz, z łaski nieba,/
-			Że się trudził najgoręcej,/
-			Miał dla siebie dosyć chleba,/
-			Miał dla biednych jeszcze więcej;/
-			A ponadto w kutej skrzyni/
-			Co dzień się przybytek czyni.</strofa>
-    <strofa>Srebrny talar przy talarze/
-			Leżą sobie w zgodnej parze,/
-			Złoty dukat przy dukacie/
-			Podzwaniają w cichej chacie.</strofa>
-    <strofa>Aż talarów i dukatów/
-			Tyle razem się zebrało,/
-			Ile wiosną w łąkach kwiatów ---/
-			I to jeszcze pewnie mało!</strofa>
-    <strofa>Od Warszawy ku Gdańskowi/
-			Można niemi szlak wymościć...</strofa>
-    <begin id="b1188465596890"/>
-    <motyw id="m1188465596890">Dziecko, Rodzina</motyw>
-    <strofa>Więc bogactwa młynarzowi/
-			Mógłby książę pozazdrościć!</strofa>
-    <srodtytul>II</srodtytul>
-    <strofa>Szumi stary młyn nad rzeką/
-			I trajkoce i terkoce./
-			Młynarz patrzy, hen, daleko/
-			I w źrenicach łza migoce.</strofa>
-    <strofa>Taka piękna, taka młoda,/
-			Siedzi w izbie młynarzowa,/
-			Czemuż ćmi się jej uroda?/
-			Czemuż smutna, gdyby wdowa?</strofa>
-    <strofa>Skąd ten smutek i tęsknota?/
-			Skąd te w oczach srebrne łezki,/
-			Gdy w alkierzu tyle złota,/
-			Gdy tak jasny strop niebieski?</strofa>
-    <strofa>Są na niebie dla nich chmurki:/
-			Ni im syna, ni im córki!</strofa>
-    <strofa>I cóż przyjdzie z bogactw w domu/
-			Choćbyś pereł wór zarobił,/
-			Gdy zostawić niema komu,/
-			Czego człek się pracą dobił.</strofa>
-    <strofa>Nic dziwnego, że się łzami/
-			Zalewają młynarzowie,/
-			Boć są sami, zawsze sami,/
-			Czy w robocie, czy w alkowie!</strofa>
-    <strofa>Czy dzień zwykły, czy to święto,/
-			Czy mrok idzie, czy blask świta,/
-			Nikt ich buzią uśmiechniętą/
-			Przez okienko nie powita.</strofa>
-    <strofa>Rozchylając ustek wiśnie,/
-			Nie zagwarzy, jak to dzieci,/
-			I tatusia nie uściśnie,/
-			I do mamy nie przyleci.</strofa>
-    <strofa>Głucha cisza w długie noce/
-			I w dzień cisza na dom spada,/
-			Tylko stary młyn turkoce/
-			I z wiślaną falą gada.</strofa>
-    <strofa>Gdybyż w domku życia kwiecie:/
-			Jedno dziecię! Jedno dziecię!</strofa>
-    <end id="e1188465596890"/>
-    <srodtytul>III</srodtytul>
-    <strofa>Po robocie całodziennej,/
-			Hołd złożywszy świętym Pańskim,/
-			Spać się kładzie młynarz senny/
-			W swoim domku nadwiślańskim.</strofa>
-    <strofa>A nim do snu się ułoży,/
-			Przed obrazem kornie klęka,/
-			Gdzie z Dzieciątkiem w glorii Bożej/
-			Przenajświętsza lśni Panienka.</strofa>
-    <strofa>I tak błaga i tak prosi/
-			O dziecinę dla swej chaty,/
-			Ku niebiosom głos podnosi,/
-			I duch w niebo mknie skrzydlaty.</strofa>
-    <strofa>Zda się, płynie w pozaświecie/
-			Swe zwierzając Bogu żale:/
-			Daj mi, Panie, małe dziecię,/
-			Bym je chował ku Twej chwale!</strofa>
-    <strofa>Noc gwieździsta dookoła/
-			Szatą mroku świat osnuwa,/
-			A pod domkiem straż anioła/
-			Nad snem dobrych ludzi czuwa.</strofa>
-    <begin id="b1188465731255"/>
-    <motyw id="m1188465731255">Wizja</motyw>
-    <strofa>Śpi nasz młynarz utrudzony/
-			A wtem: Boże! Jakież cuda!/
-			Czy to niebios sen wyśniony?/
-			Czy to tylko zmysłów złuda?</strofa>
-    <strofa>W płaszczu modrym, jak niebiosa,/
-			Cała w blaskach, gdyby zorza,/
-			Jasnooka, złotowłosa/
-			Przed nim staje Matka Boża!</strofa>
-    <strofa>A gdy pada na kolana,/
-			Wskroś radością wielką zdjęty,/
-			Głos Jej słyszy: ,,Wielbij Pana,/
-			Bo twój pacierz w niebo wzięty.</strofa>
-    <strofa>Wzięty w niebo, usłyszany,/
-			Człecze dobry, pracowity,/
-			Więc gdy wstanie świt różany/
-			I wybłyśnie na błękity,</strofa>
-    <strofa>Idź po samym Wisły brzegu/
-			Od swojego domku proga,/
-			A gdzie ujrzysz wzgórek w śniegu,/
-			Zbuduj kościół na cześć Boga.</strofa>
-    <strofa>Bo ci mówię w tej godzinie/
-			I nasz Stwórca tak uczyni,/
-			Że nim jeden rok upłynie,/
-			Ochrzcisz synka w tej świątyni.</strofa>
-    <strofa>W prawdzie, w szczęściu, w łasce Bożej,/
-			Mając w sercu cnót promienie,/
-			Twoje plemię się rozmnoży/
-			Po dziesiąte pokolenie."</strofa>
-    <strofa>Cudna postać się rozpływa,/
-			Jak marzenie, jak mgła lekka,/
-			Młynarz ze snu się porywa, ---/
-			A już niebo świt obleka.</strofa>
-    <end id="e1188465731255"/>
-    <srodtytul>IV</srodtytul>
-    <strofa>Idzie młynarz Wisły brzegiem,/
-			W śpiewem ptaków ranek gwarny;/
-			Gdzież tu wzgórek kryty śniegiem,/
-			Gdy na świecie lipiec skwarny?</strofa>
-    <strofa>Fale zboża wietrzyk wzdyma,/
-			Słonko parzy, świecąc cudnie,/
-			Toć daleka jeszcze zima!/
-			Toć na śniegi mroźne grudnie!</strofa>
-    <strofa>Ale w wierze niepożytej/
-			Nie zawaha się na chwilę,/
-			Bo, co spojrzy na błękity,/
-			Coś mu w sercu szepce mile:</strofa>
-    <strofa>Niech cię trudność nie przeraża,/
-			Kto nie sieje --- ten nie zbiera,/
-			Szczera wiara cuda stwarza,/
-			Góry nosi wiara szczera!</strofa>
-    <strofa>Już przybliża się południe,/
-			Nagle: istne dziwowiska!/
-			Patrz, młynarzu, jakże cudnie/
-			Bliski wzgórek srebrem błyska.</strofa>
-    <strofa>Na szczyt wzgórza młynarz bieży/
-			I przyklęka oniemiały,/
-			A tam śniegu obrus leży,/
-			Obrus śniegu, zimny, biały.</strofa>
-    <strofa>Cud się spełnił z woli nieba,/
-			Więc ku czci Jej nieustannej,/
-			Teraz prędko, prędko trzeba/
-			Stawiać kościół Marii Panny!</strofa>
-    <srodtytul>V</srodtytul>
-    <strofa>Jakże pilnie się zwijają/
-			Młynarzowi robotnicy!/
-			Mija miesiąc --- mury stają,/
-			Biegnie w niebo krzyż świątnicy.</strofa>
-    <strofa>Mija drugi w pracy Bożej, ---/
-			Już i wieża w górę pnie się;/
-			Każdy tydzień coś dołoży,/
-			Każdy tydzień coś przyniesie.</strofa>
-    <strofa>Młynarz złota nie żałuje,/
-			Hojnie sypie dukatami,/
-			Sam pomaga, sam pilnuje,/
-			Sam się trudzi z murarzami!</strofa>
-    <strofa>Aż przyjemnie patrzeć na to,/
-			Aż człekowi serce rośnie!/
-			Przeminęło śliczne lato,/
-			Jesień wiatrem łka żałośnie.</strofa>
-    <strofa>Lecz robota wre na brzegu,/
-			Choć i deszcze z nieba cieką,/
-			Tam, gdzie widniał obrus śniegu,/
-			Na pagórku ponad rzeką.</strofa>
-    <strofa>Mknie na Wisłę pieśń radosna,/
-			Brzmi w tej pieśni Boża chwała,/
-			A gdy przyszła nowa wiosna/
-			I kwiatami świat ubrała,</strofa>
-    <strofa>W pewien złoty blask poranny,/
-			W dzień Jej chwale poświęcony,/
-			Stanął kościół Marii Panny/
-			I zagrały z wieży dzwony.</strofa>
-    <srodtytul>VI</srodtytul>
-    <strofa>Od kościoła w dzień niedzieli/
-			Idzie orszak rozśpiewany,/
-			To nasz młynarz się weseli,/
-			Radby prawie skoczyć w tany.</strofa>
-    <strofa>Uśmiechnięta młynarzowa/
-			Dzieciąteczko śliczne tuli, ---/
-			Niechże zdrowo im się chowa,/
-			Niech ich kocha jak najczulej!</strofa>
-    <strofa>Wielkiem szczęściem błyszczą oczy,/
-			Duch wzwyż leci, szczęściem zdjęty.../
-			Tak się spełnił sen proroczy,/
-			W dawnych czasach wiary świętej...</strofa>
-  </liryka_lp>
-  <extra>
-    <!--</tekst_glowny>-->
-  </extra>
-</utwor>
+<utwor><liryka_lp>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
+<dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
+<dc:title xml:lang="pl">Kościół Panny Marii</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/legendy-warszawskie</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Ko%C5%9Bci%C3%B3%C5%82+Panny+Marii</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
+<dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
+<dc:date.pd xml:lang="pl">1931</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Artur Oppman</autor_utworu>
+
+<dzielo_nadrzedne>Legendy warszawskie</dzielo_nadrzedne>
+
+<nazwa_utworu>Kościół Panny Marii</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<srodtytul>I</srodtytul>
+
+
+
+<strofa>Przed latami, przed dawnemi,/
+	Pewien młynarz żył w tej ziemi,/
+	A gdzie mieszkał? Prosta sprawa:/
+	Tam gdzie stoi dziś Warszawa.</strofa>
+
+<strofa>Domek miał nad Wisłą szarą,/
+	Cieszył się koników parą,/
+	Czwórką wołów pracowitych,/
+	Kur i kaczek rozmaitych/
+	Wielkiem mnóstwem... A miał przytem/
+	Młyn zapchany zawsze żytem/
+	I pszenicą... Z tego zboża,/
+	Ani długo, ani krótko,/
+	Młynarz mąkę mełł bielutką/
+	I sprzedawał aż za morza.</strofa>
+
+<strofa>Dobrze płacił cudzoziemiec,/
+	Anglik, Francuz, Szwed, czy Niemiec,/
+	Za tę mąkę życiodajną,/
+	Taką smaczną, choć zwyczajną.</strofa>
+
+<strofa>Polskie zboże żną parobcy,/
+	Polski młynarz mąkę miele,/
+	A z tej mąki mają obcy/
+	Pszenny kołacz na niedzielę.</strofa>
+
+<strofa>Więc nasz młynarz, z łaski nieba,/
+	Że się trudził najgoręcej,/
+	Miał dla siebie dosyć chleba,/
+	Miał dla biednych jeszcze więcej;/
+	A ponadto w kutej skrzyni/
+	Co dzień się przybytek czyni.</strofa>
+<strofa>Srebrny talar przy talarze/
+	Leżą sobie w zgodnej parze,/
+	Złoty dukat przy dukacie/
+	Podzwaniają w cichej chacie.</strofa>
+
+<strofa>Aż talarów i dukatów/
+	Tyle razem się zebrało,/
+	Ile wiosną w łąkach kwiatów ---/
+	I to jeszcze pewnie mało!</strofa>
+
+<strofa>Od Warszawy ku Gdańskowi/
+	Można niemi szlak wymościć...</strofa>
+
+<strofa><begin id="b1188465596890" /><motyw id="m1188465596890">Dziecko, Rodzina</motyw>Więc bogactwa młynarzowi/
+	Mógłby książę pozazdrościć!</strofa>
+
+
+
+
+
+<srodtytul>II</srodtytul>
+
+
+
+<strofa>Szumi stary młyn nad rzeką/
+	I trajkoce i terkoce./
+	Młynarz patrzy, hen, daleko/
+	I w źrenicach łza migoce.</strofa>
+
+<strofa>Taka piękna, taka młoda,/
+	Siedzi w izbie młynarzowa,/
+	Czemuż ćmi się jej uroda?/
+	Czemuż smutna, gdyby wdowa?</strofa>
+
+<strofa>Skąd ten smutek i tęsknota?/
+	Skąd te w oczach srebrne łezki,/
+	Gdy w alkierzu tyle złota,/
+	Gdy tak jasny strop niebieski?</strofa>
+
+<strofa>Są na niebie dla nich chmurki:/
+	Ni im syna, ni im córki!</strofa>
+
+<strofa>I cóż przyjdzie z bogactw w domu/
+	Choćbyś pereł wór zarobił,/
+	Gdy zostawić niema komu,/
+	Czego człek się pracą dobił.</strofa>
+
+<strofa>Nic dziwnego, że się łzami/
+	Zalewają młynarzowie,/
+	Boć są sami, zawsze sami,/
+	Czy w robocie, czy w alkowie!</strofa>
+
+<strofa>Czy dzień zwykły, czy to święto,/
+	Czy mrok idzie, czy blask świta,/
+	Nikt ich buzią uśmiechniętą/
+	Przez okienko nie powita.</strofa>
+
+<strofa>Rozchylając ustek wiśnie,/
+	Nie zagwarzy, jak to dzieci,/
+	I tatusia nie uściśnie,/
+	I do mamy nie przyleci.</strofa>
+
+<strofa>Głucha cisza w długie noce/
+	I w dzień cisza na dom spada,/
+	Tylko stary młyn turkoce/
+	I z wiślaną falą gada.</strofa>
+
+<strofa>Gdybyż w domku życia kwiecie:/
+	Jedno dziecię! Jedno dziecię!<end id="e1188465596890" /></strofa>
+
+
+
+
+
+<srodtytul>III</srodtytul>
+
+
+
+<strofa>Po robocie całodziennej,/
+	Hołd złożywszy świętym Pańskim,/
+	Spać się kładzie młynarz senny/
+	W swoim domku nadwiślańskim.</strofa>
+
+<strofa>A nim do snu się ułoży,/
+	Przed obrazem kornie klęka,/
+	Gdzie z Dzieciątkiem w glorii Bożej/
+	Przenajświętsza lśni Panienka.</strofa>
+
+<strofa>I tak błaga i tak prosi/
+	O dziecinę dla swej chaty,/
+	Ku niebiosom głos podnosi,/
+	I duch w niebo mknie skrzydlaty.</strofa>
+
+<strofa>Zda się, płynie w pozaświecie/
+	Swe zwierzając Bogu żale:/
+	Daj mi, Panie, małe dziecię,/
+	Bym je chował ku Twej chwale!</strofa>
+
+<strofa>Noc gwieździsta dookoła/
+	Szatą mroku świat osnuwa,/
+	A pod domkiem straż anioła/
+	Nad snem dobrych ludzi czuwa.</strofa>
+
+<strofa><begin id="b1188465731255" /><motyw id="m1188465731255">Wizja</motyw>Śpi nasz młynarz utrudzony/
+	A wtem: Boże! Jakież cuda!/
+	Czy to niebios sen wyśniony?/
+	Czy to tylko zmysłów złuda?</strofa>
+
+<strofa>W płaszczu modrym, jak niebiosa,/
+	Cała w blaskach, gdyby zorza,/
+	Jasnooka, złotowłosa/
+	Przed nim staje Matka Boża!</strofa>
+
+<strofa>A gdy pada na kolana,/
+	Wskroś radością wielką zdjęty,/
+	Głos Jej słyszy: ,,Wielbij Pana,/
+	Bo twój pacierz w niebo wzięty.</strofa>
+
+<strofa>Wzięty w niebo, usłyszany,/
+	Człecze dobry, pracowity,/
+	Więc gdy wstanie świt różany/
+	I wybłyśnie na błękity,</strofa>
+
+<strofa>Idź po samym Wisły brzegu/
+	Od swojego domku proga,/
+	A gdzie ujrzysz wzgórek w śniegu,/
+	Zbuduj kościół na cześć Boga.</strofa>
+
+<strofa>Bo ci mówię w tej godzinie/
+	I nasz Stwórca tak uczyni,/
+	Że nim jeden rok upłynie,/
+	Ochrzcisz synka w tej świątyni.</strofa>
+
+<strofa>W prawdzie, w szczęściu, w łasce Bożej,/
+	Mając w sercu cnót promienie,/
+	Twoje plemię się rozmnoży/
+	Po dziesiąte pokolenie."</strofa>
+
+<strofa>Cudna postać się rozpływa,/
+	Jak marzenie, jak mgła lekka,/
+	Młynarz ze snu się porywa, ---/
+	A już niebo świt obleka.<end id="e1188465731255" /></strofa>
+
+
+
+
+
+<srodtytul>IV</srodtytul>
+
+
+
+<strofa>Idzie młynarz Wisły brzegiem,/
+	W śpiewem ptaków ranek gwarny;/
+	Gdzież tu wzgórek kryty śniegiem,/
+	Gdy na świecie lipiec skwarny?</strofa>
+
+<strofa>Fale zboża wietrzyk wzdyma,/
+	Słonko parzy, świecąc cudnie,/
+	Toć daleka jeszcze zima!/
+	Toć na śniegi mroźne grudnie!</strofa>
+
+<strofa>Ale w wierze niepożytej/
+	Nie zawaha się na chwilę,/
+	Bo, co spojrzy na błękity,/
+	Coś mu w sercu szepce mile:</strofa>
+
+<strofa>Niech cię trudność nie przeraża,/
+	Kto nie sieje --- ten nie zbiera,/
+	Szczera wiara cuda stwarza,/
+	Góry nosi wiara szczera!</strofa>
+
+<strofa>Już przybliża się południe,/
+	Nagle: istne dziwowiska!/
+	Patrz, młynarzu, jakże cudnie/
+	Bliski wzgórek srebrem błyska.</strofa>
+
+<strofa>Na szczyt wzgórza młynarz bieży/
+	I przyklęka oniemiały,/
+	A tam śniegu obrus leży,/
+	Obrus śniegu, zimny, biały.</strofa>
+
+<strofa>Cud się spełnił z woli nieba,/
+	Więc ku czci Jej nieustannej,/
+	Teraz prędko, prędko trzeba/
+	Stawiać kościół Marii Panny!</strofa>
+
+
+
+
+
+<srodtytul>V</srodtytul>
+
+<strofa>Jakże pilnie się zwijają/
+	Młynarzowi robotnicy!/
+	Mija miesiąc --- mury stają,/
+	Biegnie w niebo krzyż świątnicy.</strofa>
+
+<strofa>Mija drugi w pracy Bożej, ---/
+	Już i wieża w górę pnie się;/
+	Każdy tydzień coś dołoży,/
+	Każdy tydzień coś przyniesie.</strofa>
+
+<strofa>Młynarz złota nie żałuje,/
+	Hojnie sypie dukatami,/
+	Sam pomaga, sam pilnuje,/
+	Sam się trudzi z murarzami!</strofa>
+
+<strofa>Aż przyjemnie patrzeć na to,/
+	Aż człekowi serce rośnie!/
+	Przeminęło śliczne lato,/
+	Jesień wiatrem łka żałośnie.</strofa>
+
+<strofa>Lecz robota wre na brzegu,/
+	Choć i deszcze z nieba cieką,/
+	Tam, gdzie widniał obrus śniegu,/
+	Na pagórku ponad rzeką.</strofa>
+
+<strofa>Mknie na Wisłę pieśń radosna,/
+	Brzmi w tej pieśni Boża chwała,/
+	A gdy przyszła nowa wiosna/
+	I kwiatami świat ubrała,</strofa>
+
+<strofa>W pewien złoty blask poranny,/
+	W dzień Jej chwale poświęcony,/
+	Stanął kościół Marii Panny/
+	I zagrały z wieży dzwony.</strofa>
+
+
+
+
+
+<srodtytul>VI</srodtytul>
+
+
+
+<strofa>Od kościoła w dzień niedzieli/
+	Idzie orszak rozśpiewany,/
+	To nasz młynarz się weseli,/
+	Radby prawie skoczyć w tany.</strofa>
+
+<strofa>Uśmiechnięta młynarzowa/
+	Dzieciąteczko śliczne tuli, ---/
+	Niechże zdrowo im się chowa,/
+	Niech ich kocha jak najczulej!</strofa>
+
+<strofa>Wielkiem szczęściem błyszczą oczy,/
+	Duch wzwyż leci, szczęściem zdjęty.../
+	Tak się spełnił sen proroczy,/
+	W dawnych czasach wiary świętej...</strofa>
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_lp></utwor>
+

@@ -1,0 +1,103 @@
+<utwor><liryka_lp>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Bogurodzica">
+<dc:creator xml:lang="pl">Anonim</dc:creator>
+<dc:title xml:lang="pl">Bogurodzica</dc:title>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Feicht, Hieronim</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Woronczak, Jerzy</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Średniowiecze</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Hymn</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Bogurodzica</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/3073</dc:source.URL>
+<dc:source xml:lang="pl">Bogurodzica, Biblioteka Pisarzów Polskich, Seria A, Liryka Średniowieczna, t. 1, Zakład Narodowy im. Ossolińskich. Wydawnictwo PAN, Wrocław, 1962</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Bogurodzica powstała we wczesnym średniowieczu, chociaż dokładna data jest nieznana. Przeważają hipotezy badaczy wskazujące na XI lub XII w. jako czas jej powstania. Pierwszy zapis tekstu jest późny, z początku XV w. (ok. 1407); wcześniejsze zapisy mogły zaginąć, ale też tekst mógł krążyć w obiegu ustnym.</dc:rights>
+<dc:date.pd xml:lang="pl">1407</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-06</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<nazwa_utworu>Bogurodzica<pe>Utwór składa się z trzech, powstałych w różnym czasie, części. Pierwsza z nich --- najstarsza --- obejmuje dwie zwrotki i nie wiadomo dokładnie, kiedy powstała (datuje się ją na przestrzeni XI--XIVw.). Kolejne 4 zwrotki (wielkanocne) to prawdopodobnie wiek XIV. Ostatnia część (pasyjna) składa się z 9 zwrotek i powstała w II poł. XIV w., może część jest też z wieku XV.</pe></nazwa_utworu>
+
+
+<nota><akap>TEKSTY --- PRZEKAZ Ab</akap>
+<akap>Transkrypcja</akap></nota>
+
+
+<strofa><begin id='b1189081667258' /><motyw id='m1189081667258'>Bóg, Kondycja ludzka, Matka Boska, Obraz świata, Religia</motyw>Bogurodzica dziewica<pe><slowo_obce>dziewica</slowo_obce> --- także: panienka.</pe>, Bogiem sławiena<pe><slowo_obce>Bogiem sławiena</slowo_obce> --- umiłowana przez Boga.</pe> Maryja,/
+U twego syna Gospodzina<pe><slowo_obce>gospodzin</slowo_obce> --- tu: Bóg.</pe> matko zwolena<pe><slowo_obce>zwolena</slowo_obce> --- wybrana.</pe>, Maryja!/
+Zyszczy nam, spuści nam<pe><slowo_obce>zyszczy nam, spuści nam</slowo_obce> --- zdobądź dla nas, ześlij nam.</pe>./
+<wers_wciety>Kyrieleison.<pe><slowo_obce>Kyrieleison</slowo_obce>dziś: Kyrie eleison --- Panie, zmiłuj się nad nami.</pe></wers_wciety></strofa>
+
+<strofa>Twego dziela<pe><slowo_obce>Twego dziela</slowo_obce> --- dla Twego.</pe> Krzciciela<pe><slowo_obce>Krzciciel</slowo_obce> --- chodzi o Jana Chrzciciela.</pe>, bożycze<pe><slowo_obce>bożycze</slowo_obce> --- Synu Boga.</pe>,/
+Usłysz głosy<pe><slowo_obce>usłysz głosy</slowo_obce> --- wysłuchaj głosów.</pe>, napełni myśli<pe><slowo_obce>napełni myśli</slowo_obce> --- spełnij pragnienia.</pe> człowiecze./
+Słysz modlitwe, jąż nosimy<pe><slowo_obce>jąż nosimy</slowo_obce> --- którą zanosimy.</pe>,/
+Oddać raczy, jegoż prosimy:/
+A na świecie zbożny<pe><slowo_obce>zbożny</slowo_obce> --- pobożny, bogaty(ale uwaga: chodzi raczej o bogactwo duchowe!).</pe> pobyt,/
+Po żywocie rajski przebyt<pe><slowo_obce>przebyt</slowo_obce> --- przebyt jako wieczne przebywanie w raju.</pe>./
+<wers_wciety>Kyrieleison<pe><slowo_obce>Kyrieleison</slowo_obce> --- dziś: Kyrie eleison.</pe>.</wers_wciety></strofa>
+
+<strofa><begin id='b1189081789321' /><motyw id='m1189081789321'>Nieśmiertelność, Śmierć</motyw>Nas dla<pe><slowo_obce>Nas dla</slowo_obce> --- dla nas.</pe> wstał z martwych syn boży./
+Wierzyż w to, człowiecze zbożny<pe><slowo_obce>zbożny</slowo_obce> --- pobożny, kierujący się szlachetnością.</pe>,/
+Iż przez trud Bog swoj lud/
+Odjął diablej strożej<pe><slowo_obce>odjął diablej strożej</slowo_obce> --- uwolnił od diabelskiej straży (nadzoru).</pe>.</strofa>
+
+<strofa>Przydał nam zdrowia wiecznego,/
+Starostę skował pkielnego<pe><slowo_obce>Starostę skował pkielnego</slowo_obce> --- skuł (w znaczeniu uwięził) piekielnego zarządcę (mowa o Szatanie).</pe>,/
+Śmierć podjął<pe><slowo_obce>śmierć podjął</slowo_obce> --- zmarł.</pe>, wspomionął<pe><slowo_obce>wspomionąć</slowo_obce> --- wspomnieć.</pe>/
+Człowieka pirwego<pe><slowo_obce>pirwego</slowo_obce> --- pierwszego.</pe>.</strofa>
+
+<strofa>Jenże trudy cirpiał zawiernie<pe><slowo_obce>zawiernie</slowo_obce> --- naprawdę, rzeczywiście.</pe>,/
+Jeszcze był nie prześpiał<pe><slowo_obce>prześpieć</slowo_obce> --- udać się.</pe> zaśmiernie<pe><slowo_obce>zaśmiernie</slowo_obce> --- pokornie; sens całego zdanie jest niejasny.</pe>,/
+Aliż<pe><slowo_obce>aliż</slowo_obce> --- dopóki.</pe> sam Bog zmartwychwstał.<end id='e1189081789321' /></strofa>
+
+<strofa>Adamie, ty boży kmieciu<pe><slowo_obce>kmieć</slowo_obce> --- w średniowieczu zamożny chłop, który posiadał własne gospodarstwo.</pe>,/
+Ty siedzisz u Boga [w] wiecu<pe><slowo_obce>wiec</slowo_obce> --- rodzaj prymitywnego sejmu, pierwsze zgromadzenia ustawodawcze.</pe>./
+Domieściż<pe><slowo_obce>domieściż</slowo_obce> --- doprowadzisz.</pe> twe dzieci,/
+Gdzież krolują anjeli<pe><slowo_obce>anjeli</slowo_obce> --- dziś pisownia: anieli.</pe>.</strofa>
+
+<strofa>Tegoż nas domieściż<pe><slowo_obce>tegoż nas domieścisz</slowo_obce> --- tam nas doprowadzisz.</pe>, Jezu Kryste miły,/
+Bychom<pe><slowo_obce>bychom</slowo_obce> --- byśmy.</pe> z tobą byli,/
+Gdzie sie nam radują szwe<pe><slowo_obce>szwe</slowo_obce> --- wsze, tj. wszelkie.</pe> niebieskie siły<pe><slowo_obce>siły</slowo_obce> --- siły, tj. aniołowie.</pe>.</strofa>
+
+<strofa>Była radość, była miłość<pe><slowo_obce>miłość</slowo_obce> --- łaska.</pe>, było widzenie tworca/
+Anjelskie bez końca<pe><slowo_obce>było widzenie tworca</slowo_obce> --- było wieczne oglądanie Stwórcy.</pe>,/
+Tuć sie nam zwidziało<pe><slowo_obce>sie nam zwidziało</slowo_obce> --- pokazało się.</pe> diable potępienie.</strofa>
+
+<strofa>Ni śrebrem, ni złotem nas diabłu odkupił,/
+Swą mocą zastąpił.<pe>Sens dwuwiersza: nie odkupił nas ani srebrem, ani złotem, lecz obronił nas swoją mocą.</pe></strofa>
+
+<strofa><begin id='b1189081848839' /><motyw id='m1189081848839'>Cierpienie</motyw>Ciebie dla, człowiecze, dał Bog przekłoć<pe><slowo_obce>przekłoć</slowo_obce> --- przekłuć.</pe> sobie/
+Ręce, nodze<pe><slowo_obce>nodze</slowo_obce> --- nogi.</pe> obie,/
+Kry<pe><slowo_obce>kry</slowo_obce> --- krew.</pe> święta szła z boka<pe><slowo_obce>boka</slowo_obce> --- dziś: z boku.</pe> na zbawienie tobie.</strofa>
+
+<strofa>Wierzyż w to, człowiecze, iż Jezu Kryst prawy<pe><slowo_obce>prawy</slowo_obce> --- prawdziwy.</pe>/
+Cirpiał za nas rany,/
+Swą świętą krew przelał za nas krześcijany<pe><slowo_obce>za nas krześcijany</slowo_obce> --- za nas chrześcijan.</pe>.<end id='e1189081848839' /></strofa>
+
+<strofa>O duszy o grzeszne sam Bog pieczą ima<pe><slowo_obce>O duszy grzeszne sam Bog pieczą ima</slowo_obce> --- sam Bóg sprawuje opiekę nad grzesznymi duszami.</pe>,/
+Diabłu ją otyma<pe><slowo_obce>otyma</slowo_obce> --- odbiera.</pe>,/
+Gdzie to sam króluje, k sob[ie] ją przyma<pe><slowo_obce>k sobie ją przyma</slowo_obce> --- do siebie ją przyjmuje.</pe>.</strofa>
+
+<strofa>Maryja dziewice, prośmy synka twego,/
+Krola niebieskiego,/
+Haza<pe><slowo_obce>haza</slowo_obce> --- aby.</pe> nas huchowa<pe><slowo_obce>huchowa</slowo_obce> --- uchowa.</pe> ote wszego złego.<pe><slowo_obce>ote wszego złego</slowo_obce> --- od wszelkiego zła.</pe></strofa>
+
+<strofa>Amen tako Bog daj,/
+Bychom szli szwyćcy<pe><slowo_obce>szwyćcy</slowo_obce> --- wszyscy.</pe> w raj.<end id='e1189081667258' /></strofa>
+
+
+</liryka_lp></utwor>
+

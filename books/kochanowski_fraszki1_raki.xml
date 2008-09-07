@@ -1,0 +1,54 @@
+<utwor><liryka_l>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Raki">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Raki</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://wolnelektury.pl/lektura/fraszki-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-07</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Fraszki, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Raki<pr>Nazwa wiersza, który daje się czytać na wspak. Fraszka tak odczytana daje sens wręcz przeciwny, zawiera bowiem naganę kobiet. Żart poetycki polega na tym, że w środku wiersza stoi „nie", które zaprzecza albo drugą, albo pierwszą jego połowę, oraz na podwójnych rymach, końcowych i początkowych. Wiersz czytany na wspak brzmi: Ma rada, sobie nie paniom folgujmy, / Przysada w nich jest nie wiernie miłujmy / Cnota tu za nic nie trzeba godności, / Złota tu pragną nie pragną miłości.</pr></nazwa_utworu>
+
+
+
+<strofa><begin id='b1188764907866' /><motyw id='m1188764907866'>Bogactwo, Cnota, Kobieta, Miłość</motyw>Folgujmy paniom nie sobie, ma rada;/
+Miłujmy wiernie nie jest w nich przysada./
+Godności trzeba nie za nic tu cnota,/
+Miłości pragną nie pragną tu złota./
+Miłują z serca nie patrzają zdrady,/
+Pilnują prawdy nie kłamają rady./
+Wiarę uprzejmą nie dar sobie ważą,/
+W miarę nie nazbyt ciągnąć rzemień każą<pr><slowo_obce>ciągnąć rzemień</slowo_obce> --- zwrot utarty: wydawać pieniądze ze skórzanego, rzemiennego mieszka.</pr>./
+Wiecznie wam służę nie służę na chwilę,/
+Bezpiecznie wierzcie nierad ja omylę.<end id='e1188764907866' /></strofa>
+
+</liryka_l></utwor>
