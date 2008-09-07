@@ -80,7 +80,7 @@ MIDDLEWARE_CLASSES = [
 if DEBUG:
     MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'wolnelektury.urls'
 
 TEMPLATE_DIRS = (
     PROJECT_DIR + '/templates/'
