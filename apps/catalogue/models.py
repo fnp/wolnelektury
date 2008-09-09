@@ -34,8 +34,8 @@ class TagSubcategoryManager(models.Manager):
 
 class Tag(TagBase):
     name = models.CharField(_('name'), max_length=50, unique=True, db_index=True)
-    slug = models.SlugField(_('slug'), unique=True, db_index=True)
-    sort_key = models.SlugField(_('sort key'), db_index=True)
+    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
+    sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False, 
         db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(blank=True)
@@ -70,7 +70,7 @@ class Tag(TagBase):
 
 class Book(models.Model):
     title = models.CharField(_('title'), max_length=120)
-    slug = models.SlugField(_('slug'), unique=True, db_index=True)
+    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
     _short_html = models.TextField(_('short HTML'), editable=False)
