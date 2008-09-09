@@ -68,23 +68,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'pagination.middleware.PaginationMiddleware',
-)
+]
 
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.version.VersionDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-)
-
-INTERNAL_IPS = ('127.0.0.1', )
+# If DEBUG is enabled add query log to bottom of every template
+if DEBUG:
+    MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
 
 ROOT_URLCONF = 'urls'
 
@@ -124,7 +118,6 @@ INSTALLED_APPS = (
     'pagination',
     'chunks',
     'compress',
-    'debug_toolbar',
     'catalogue',
 )
 
