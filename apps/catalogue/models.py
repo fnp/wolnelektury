@@ -207,7 +207,7 @@ class Fragment(models.Model):
     text = models.TextField()
     short_text = models.TextField(editable=False)
     _short_html = models.TextField(editable=False)
-    anchor = models.IntegerField()
+    anchor = models.CharField(max_length=120)
     book = models.ForeignKey(Book, related_name='fragments')
 
     objects = models.Manager()
