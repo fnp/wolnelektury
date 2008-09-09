@@ -1,0 +1,191 @@
+<script type="text/javascript">
+var djDebugLastObj = null;
+function djDebugToggle(tag) {
+    if (djDebugLastObj) {
+        djDebugLastObj.className = '';
+        document.getElementById(djDebugLastObj.getAttribute('rel')).style.display = 'none';
+    }
+    djDebugWindowClose();
+    var obj = document.getElementById(tag.getAttribute('rel'));
+    if (!obj) return;
+    if (djDebugLastObj == tag) {
+        djDebugLastObj = null;
+        return;
+    }
+    if (obj.style.display != 'block') {
+        obj.style.display = 'block';
+        tag.className = 'active';
+        djDebugLastObj = tag;
+    }
+}
+function djDebugClose() {
+    if (!djDebugLastObj) return;
+    djDebugLastObj.className = '';
+    document.getElementById(djDebugLastObj.getAttribute('rel')).style.display = 'none';
+    djDebugLastObj = null;
+}
+function djDebugWindowHtml(text) {
+    var obj = document.getElementById('djDebugWindow');
+    var frame = obj.getElementsByTagName('div')[1];
+    frame.innerHTML = text;
+}
+function djDebugWindow(url) {
+    var obj = document.getElementById('djDebugWindow');
+    djDebugWindowHtml('Loading request...');
+    djDebugHttp.open('get', url, true);
+
+    djDebugHttp.onreadystatechange = function() {
+      if (djDebugHttp.readyState == 4) {
+        // XXX: why does status return 0?
+        if (djDebugHttp.status == 200 || djDebugHttp.status == 0) {
+          djDebugWindowHtml(djDebugHttp.responseText);
+        }
+        else {
+          djDebugWindowHtml('There was an error loading the document.');
+        }
+      }
+    }
+    djDebugHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    try {
+      djDebugHttp.send(null);
+    }
+    catch (ex) {
+      djDebugWindowHtml('There was an error loading the document.');
+    }
+    obj.style.display = 'block';
+}
+function djDebugCreateXMLHttpRequest() {
+  var http;
+  if (window.XMLHttpRequest) { // Mozilla, Safari,...
+    http = new XMLHttpRequest();
+    if (http.overrideMimeType) {
+      // set type accordingly to anticipated content type
+      http.overrideMimeType('text/html');
+    }
+  }
+  else if (window.ActiveXObject) { // IE
+    try {
+      http = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+      try {
+        http = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (e) {}
+    }
+  }
+  if (!http) {
+    alert('Cannot create XMLHTTP instance');
+    return false;
+  }
+  return http;
+}
+var djDebugHttp = djDebugCreateXMLHttpRequest();
+function djDebugWindowClose() {
+    var obj = document.getElementById('djDebugWindow');
+    obj.style.display = 'none';
+}
+function djDebugCloseAll() {
+    djDebugClose();
+    djDebugWindowClose();
+}
+function djDebugHide() {
+    var obj = document.getElementById('djDebug');
+    obj.style.display = 'none';
+}
+</script>
+<style type="text/css">
+#djDebug * { font: normal 12px Arial, sans-serif; margin: 0; padding: 0; float: none; position: static; border: 0;  }
+#djDebugToolbar {
+	height:22px;
+	background:#244035;
+	color:#90EF45;
+	text-transform:lowercase;
+	margin: 5px 0;
+	z-index:100000000;
+	border-top:1px solid #345447;
+	border-bottom:1px solid #10211a;
+}
+#djDebugToolbar ul { margin: 0; padding: 0 10px; }
+#djDebugToolbar li { display: inline; height: 22px; float: left; }
+#djDebugToolbar li span,
+#djDebugToolbar li a { color: #FFE761; text-decoration: none; display: inline; width: auto; position: relative; float: none; margin: 0; height: 12px; line-height: 22px; padding: 4px 10px; border-left: 1px solid #345447; border-right: 1px solid #10211a; padding-right: 10px; }
+#djDebugToolbar li a:hover, #djDebugToolbar li.active a { color: #fff; background-color: #2e4d41; }
+#djDebugToolbar #djDebugButton span { border-left: 0; color: #fff; font-weight: bold; }
+#djDebugToolbar #djDebugHide { float: right; }
+#djDebugToolbar #djDebugHide a { border: 0; font-size: 93%; }
+#djDebug .panelContent {
+	display:none;
+	position:absolute;
+	margin:0;
+	padding:10px;
+	top:43px;
+	width:auto;
+	left:10px;
+	right:10px;
+	bottom:10px;
+	background:#244035;
+	color:#fff;
+	z-index:1000000;
+	overflow:auto;
+	border:1px solid #345447;
+}
+#djDebug .panelContent * { color: #fff; }
+#djDebug .panelContent a:hover { color: #FFE761; }
+#djDebug .panelContent table { width: 100%; }
+#djDebug .panelContent p { padding: 5px; }
+#djDebug .panelContent p, #djDebug .panelContent table,
+#djDebug .panelContent ul, #djDebug .panelContent dl,
+#djDebug .panelContent .title { margin: 5px 0; }
+#djDebug .panelContent dt, #djDebug .panelContent dd { display: block; }
+#djDebug .panelContent dt { font-weight: bold; width: 100px; clear: left; float: left; }
+#djDebug .panelContent dd { margin-left: 20px; margin-bottom: 5px; margin-left: 100px; }
+#djDebug .panelContent th, #djDebug td { padding: 5px; }
+#djDebug .panelContent td { background:#244035; }
+#djDebug .panelContent th { font-weight: bold; text-align: left; background: transparent; color: #fff; }
+#djDebug .panelContent thead th { border-bottom: 1px solid #2e4d41; color: #FFE761; }
+#djDebug .panelContent .row2 td { background:#2e4d41; }
+#djDebugWindow { z-index: 20000000; }
+#djDebug .panelContent .title { font-weight: bold; font-size: 15px; color: #90EF45; }
+#djDebug .panelContent .title a { float: right; font-weight: bold; font-size: 10px; }
+#djDebug .panelContent .title .close { float: right; font-weight: bold; margin-left: 15px; }
+</style>
+
+<div id="djDebug">
+	<div id="djDebugToolbar">
+		<ul id="djDebugPanelList">
+			<li id="djDebugButton"><span>Django Debug</span></li>
+			{% for panel in panels %}
+				<li rel="{{ panel.dom_id }}">
+					{% if panel.content %}
+						<a href="{{ panel.url|default:"#" }}" onclick="djDebugToggle(this.parentNode)" title="{{ panel.title }}" class="{{ panel.dom_id }}">{{ panel.title }}</a>
+					{% else %}
+						<span>{{ panel.title }}</span>
+					{% endif %}
+				</li>
+			{% endfor %}
+			<li id="djDebugHide"><a href="javascript:djDebugHide();">Hide Debug Toolbar</a></li>
+		</ul>
+	</div>
+	{% for panel in panels %}
+		{% with panel.content as content %}
+			{% if content %}
+				<div id="{{ panel.dom_id }}" class="panelContent">
+					<div class="title">
+						<a href="javascript:djDebugCloseAll()" class="close">Close</a>
+					<!-- <h1>{{ panel.title }}</h1> -->
+					</div>
+					<div class="content">
+					    {{ content|safe }}
+					</div>
+				</div>
+			{% endif %}
+		{% endwith %}
+	{% endfor %}
+	<div id="djDebugWindow" class="panelContent">
+	    <div class="title">
+			<a href="javascript:djDebugCloseAll()" class="close">Close</a>
+	        <a href="javascript:djDebugWindowClose();" class="close">Back</a>
+	    </div>
+	    <div class="content">
+    	</div>
+    </div>
+</div>

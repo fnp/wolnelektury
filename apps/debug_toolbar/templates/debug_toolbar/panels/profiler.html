@@ -1,0 +1,28 @@
+<div class="title">
+    Profile Output
+</div>
+<p>`profile` module output for the view `{{ module|escape }}.{{ callback|escape }}`</p>
+<table>
+    <thead>
+        <tr>
+            <th>Calls</th>
+            <th>Total Time (ms)</th>
+            <th>Per Call (ms)</th>
+            <th>Cumulative Time (ms)</th>
+            <th>Per Call (ms)</th>
+            <th>Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in function_calls %}
+            <tr class="{% cycle 'row1' 'row2' %}">
+                <td>{{ row.0 }}</td>
+                <td>{{ row.1|floatformat:"4" }}</td>
+                <td>{{ row.2|floatformat:"4" }}</td>
+                <td>{{ row.3|floatformat:"4" }}</td>
+                <td>{{ row.4|floatformat:"4" }}</td>
+                <td>{{ row.5|escape }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

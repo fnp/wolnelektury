@@ -1,0 +1,39 @@
+<div class="title">SQL Explain</div>
+<dl>
+    <dt>Query:</dt>
+    <dd style="white-space:pre-wrap;">{{ sql|escape|linebreaksbr }}</dd>
+    <dt>Parameters:</dt>
+    <dd>{{ params|join:", "|escape }}</dd>
+</dl>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Select Type</th>
+            <th>Table</th>
+            <th>Type</th>
+            <th>Possible Keys</th>
+            <th>Key</th>
+            <th>Ken Length</th>
+            <th>Ref</th>
+            <th>Rows</th>
+            <th>Extra</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in explain %}
+            <tr class="{% cycle 'row1' 'row2' %}">
+                <td>{{ row.0|escape }}</td>
+                <td>{{ row.1|escape }}</td>
+                <td>{{ row.2|escape }}</td>
+                <td>{{ row.3|escape }}</td>
+                <td>{{ row.4|escape }}</td>
+                <td>{{ row.5|escape }}</td>
+                <td>{{ row.6|escape }}</td>
+                <td>{{ row.7|escape }}</td>
+                <td>{{ row.8|escape }}</td>
+                <td>{{ row.9|escape }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
