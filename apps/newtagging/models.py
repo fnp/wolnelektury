@@ -217,22 +217,26 @@ class TagManager(models.Manager):
         if 'where' in extra:
             extra_where = 'AND ' + ' AND '.join(extra['where'])
         
+        # Temporary table in this query is a hack to prevent MySQL from executing
+        # inner query as dependant query (which could result in severe performance loss)
         query = """
         SELECT %(tag_columns)s%(count_sql)s
         FROM %(tagged_item)s INNER JOIN %(tag)s ON %(tagged_item)s.tag_id = %(tag)s.id
         WHERE %(tagged_item)s.content_type_id = %(content_type_id)s
-          AND %(tagged_item)s.object_id IN
-          (
-              SELECT %(tagged_item)s.object_id
-              FROM %(tagged_item)s, %(tag)s
-              WHERE %(tagged_item)s.content_type_id = %(content_type_id)s
-                AND %(tag)s.id = %(tagged_item)s.tag_id
-                AND %(tag)s.id IN (%(tag_id_placeholders)s)
-              GROUP BY %(tagged_item)s.object_id
-              HAVING COUNT(%(tagged_item)s.object_id) = %(tag_count)s
-          )
-          AND %(tag)s.id NOT IN (%(tag_id_placeholders)s)
-          %(extra_where)s
+        AND %(tagged_item)s.object_id IN
+        (
+            SELECT temporary.object_id 
+            FROM (
+                SELECT %(tagged_item)s.object_id
+                FROM %(tagged_item)s, %(tag)s
+                WHERE %(tagged_item)s.content_type_id = %(content_type_id)s
+                  AND %(tag)s.id = %(tagged_item)s.tag_id
+                  AND %(tag)s.id IN (%(tag_id_placeholders)s)
+                GROUP BY %(tagged_item)s.object_id
+                HAVING COUNT(%(tagged_item)s.object_id) = %(tag_count)s
+            ) AS temporary
+        )
+        %(extra_where)s
         GROUP BY %(tag_columns)s
         %(min_count_sql)s
         ORDER BY %(tag)s.%(ordering)s ASC""" % {
