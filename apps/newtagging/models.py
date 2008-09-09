@@ -233,7 +233,7 @@ class TagManager(models.Manager):
           )
           AND %(tag)s.id NOT IN (%(tag_id_placeholders)s)
           %(extra_where)s
-        GROUP BY %(tag)s.id, %(tag)s.name
+        GROUP BY %(tag_columns)s
         %(min_count_sql)s
         ORDER BY %(tag)s.%(ordering)s ASC""" % {
             'tag': qn(self.model._meta.db_table),
