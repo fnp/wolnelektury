@@ -3,7 +3,7 @@
 
 {% block title %}{% title_from_tags tags %} w WolneLektury.pl{% endblock %}
 
-{% block bodyid %}books{% endblock %}
+{% block bodyid %}tagged-object-list{% endblock %}
 
 {% block extrahead %}
     <script type="text/javascript">
@@ -73,7 +73,7 @@
         {% paginate %}
     </div>
     <div id="tags-list">
-        <div class="dontsplit">
+        <div id="categories-list">
             {% if categories.set %}
                 <h2>Półki</h2>
                 <ul>
@@ -82,8 +82,6 @@
                 {% endfor %}
                 </ul>
             {% endif %}
-        </div>
-        <div class="dontsplit">
             {% if categories.author %}
                 <h2>Autorzy</h2>
                 <ul>
@@ -92,8 +90,6 @@
                 {% endfor %}
                 </ul>
             {% endif %}
-        </div>
-        <div class="dontsplit">
             {% if categories.epoch %}
                 <h2>Epoki</h2>
                 <ul>
@@ -102,8 +98,6 @@
                 {% endfor %}
                 </ul>
             {% endif %}
-        </div>
-        <div class="dontsplit">
             {% if categories.kind %}
                 <h2>Rodzaje</h2>
                 <ul>
@@ -112,8 +106,6 @@
                 {% endfor %}
                 </ul>
             {% endif %}
-        </div>
-        <div class="dontsplit">
             {% if categories.genre %}
                 <h2>Gatunki literackie</h2>
                 <ul>
@@ -121,9 +113,9 @@
                     <li><a href="{% catalogue_url tags genre %}">{{ genre }}&nbsp;({{ genre.count }})</a></li>
                 {% endfor %}
                 </ul>
-            {% endif %}
+            {% endif %}            
         </div>
-        <div class="dontsplit">
+        <div id="themes-list">
             {% if categories.theme %}
                 <h2>Motywy</h2>
                 <ul>
@@ -133,6 +125,7 @@
                 </ul>
             {% endif %}
         </div>
+        <div class="clearboth"></div>
     </div>
     <div id="set-window">
         <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>

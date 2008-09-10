@@ -174,7 +174,7 @@ em {
     margin-right: 29em;
 }
 
-#main-page #themes-list ul, #main-page #categories-list ul {
+#categories-list ul, #themes-list ul {
     -moz-column-width: 12em;
     -webkit-column-width: 12em;
     column-width: 12em;
@@ -191,8 +191,25 @@ em {
     border-right: 0.15em solid #E3D888;
 }
 
-#books #tags-list, #book-detail #tags-list {
+#tagged-object-list #tags-list, #book-detail #tags-list {
     margin-left: 39em;
+}
+
+#book-info, #categories-list {
+    float: left;
+    width: 47.5%;
+}
+
+#themes-list {
+    margin-left: 52.5%;
+}
+
+#tagged-object-list #categories-list, #book-detail #book-info {
+    width: 12em;
+}
+
+#tagged-object-list #themes-list, #book-detail #themes-list {
+    margin-left: 14em;
 }
 
 #tags-list ol, #tags-list ul {
@@ -204,15 +221,6 @@ em {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-#main-page #categories-list {
-    float: left;
-    width: 47.5%;
-}
-
-#main-page #themes-list {
-    margin-left: 52.5%;
 }
 
 #books-list {
@@ -243,7 +251,7 @@ em {
     text-align: justify;
 }
 
-#toggle-description, #books .pagination {
+#toggle-description, #tagged-object-list .pagination {
     width: 100%;
     height: 1.5em;
     background-color: #EEE;

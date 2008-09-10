@@ -68,40 +68,44 @@
     </div>
         
     <div id="tags-list">
-        <h2>O utworze</h2>
-        <ul>
-            <li>
-                Autor: 
-                {% for tag in categories.author %}
-                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
-                {% endfor %}
-            </li>
-            <li>
-                Epoka:
-                {% for tag in categories.epoch %}
-                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
-                {% endfor %}
-            </li>
-            <li>
-                Rodzaj:
-                {% for tag in categories.kind %}
-                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
-                {% endfor %}
-            </li>
-            <li>
-                Gatunek:
-                {% for tag in categories.genre %}
-                <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
-                {% endfor %}
-            </li>
-        </ul>
-        {% if categories.theme %}
-            <h2>Motywy w utworze</h2>
+        <div id="book-info">
+            <h2>O utworze</h2>
             <ul>
-            {% for theme in categories.theme %}
-                <li>{{ theme }}</li>
-            {% endfor %}
+                <li>
+                    Autor: 
+                    {% for tag in categories.author %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    {% endfor %}
+                </li>
+                <li>
+                    Epoka:
+                    {% for tag in categories.epoch %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    {% endfor %}
+                </li>
+                <li>
+                    Rodzaj:
+                    {% for tag in categories.kind %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    {% endfor %}
+                </li>
+                <li>
+                    Gatunek:
+                    {% for tag in categories.genre %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    {% endfor %}
+                </li>
             </ul>
-        {% endif %}
+        </div>
+        <div id="themes-list">
+            {% if categories.theme %}
+                <h2>Motywy w utworze</h2>
+                <ul>
+                {% for theme in categories.theme %}
+                    <li>{{ theme }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
