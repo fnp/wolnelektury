@@ -225,7 +225,7 @@ class TagManager(models.Manager):
         WHERE %(tagged_item)s.content_type_id = %(content_type_id)s
         AND %(tagged_item)s.object_id IN
         (
-            SELECT temporary.object_id 
+            SELECT *
             FROM (
                 SELECT %(tagged_item)s.object_id
                 FROM %(tagged_item)s, %(tag)s
