@@ -76,7 +76,7 @@ def main_page(request):
         extra_where = 'NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1'
     tags = models.Tag.objects.usage_for_model(models.Book, counts=True, extra={'where': [extra_where]})
     fragment_tags = models.Tag.objects.usage_for_model(models.Fragment, counts=True,
-        extra={'where': ['catalogue_tag.category = "theme"']})
+        extra={'where': ['catalogue_tag.category = "theme"'] + [extra_where]})
     categories = split_tags(tags)
     
     form = forms.SearchForm()
