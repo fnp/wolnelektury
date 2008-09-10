@@ -163,6 +163,10 @@ em {
 }
 
 .ac_input {
+    width: 18em;
+}
+
+#main-page .ac_input {
     width: 28em;
 }
 
