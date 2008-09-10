@@ -170,6 +170,16 @@ em {
 /* ============= */
 /* = Tags list = */
 /* ============= */
+#main-page #tags-list {
+    margin-right: 29em;
+}
+
+#main-page #themes-list ul, #main-page #categories-list ul {
+    -moz-column-width: 12em;
+    -webkit-column-width: 12em;
+    column-width: 12em;
+}
+
 #tags-list {
     margin-top: 1em;
     padding: 1em;
@@ -198,22 +208,12 @@ em {
 
 #main-page #categories-list {
     float: left;
-    width: 50%;
+    width: 47.5%;
 }
 
 #main-page #themes-list {
-    margin-left: 50%;
+    margin-left: 52.5%;
 }
-
-
-.column {
-    padding-right: 1em;
-}
-
-.last.column {
-    padding-right: 0;
-}
-
 
 #books-list {
     width: 38em;
@@ -438,6 +438,12 @@ em {
 /* ======================== */
 /* = Alphabetic book list = */
 /* ======================== */
+#book-a-list #book-list {
+    -moz-column-width: 24em;
+    -webkit-column-width: 24em;
+    column-width: 24em;
+}
+
 #book-a-list #book-list ol {
     padding: 0;
     margin: 0.3em 0 1.2em 0;
