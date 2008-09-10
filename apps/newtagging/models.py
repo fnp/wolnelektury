@@ -236,6 +236,7 @@ class TagManager(models.Manager):
                 HAVING COUNT(%(tagged_item)s.object_id) = %(tag_count)s
             ) AS temporary
         )
+        AND %(tag)s.id NOT IN (%(tag_id_placeholders)s)
         %(extra_where)s
         GROUP BY %(tag_columns)s
         %(min_count_sql)s
