@@ -71,9 +71,9 @@ def tags_starting_with(request):
 
 def main_page(request):    
     if request.user.is_authenticated():
-        extra_where = '(NOT catalogue_tag.category = "set" OR catalogue_tag.user_id = %d)' % request.user.id
+        extra_where = '((NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1) OR catalogue_tag.user_id = %d)' % request.user.id
     else:
-        extra_where = 'NOT catalogue_tag.category = "set"'
+        extra_where = 'NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1'
     tags = models.Tag.objects.usage_for_model(models.Book, counts=True, extra={'where': [extra_where]})
     fragment_tags = models.Tag.objects.usage_for_model(models.Fragment, counts=True,
         extra={'where': ['catalogue_tag.category = "theme"']})
@@ -129,6 +129,7 @@ def book_detail(request, slug):
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     
+    form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
 

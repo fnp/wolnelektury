@@ -27,12 +27,7 @@
 {% block body %}
     <h1>{{ book.title }}, {{ categories.author|join:", " }}</h1>
     <form action="{% url main_page %}" method="get" accept-charset="utf-8" id="search-form">
-        <ol>
-            {# {% for tag in tags %} #}
-            {# <li class="category"><a href="{% catalogue_url tag %}">{{ tag }}</a> | <a href="{% catalogue_url tags -tag %}">x</a></li> #}
-            {# {% endfor %} #}
-            <li class="book-title">{{ book.title }} | <a href="{% url main_page %}">x</a></li>
-        </ol>
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
     </form>
     
     <div id="books-list">

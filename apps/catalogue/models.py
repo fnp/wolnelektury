@@ -38,8 +38,9 @@ class Tag(TagBase):
     sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False, 
         db_index=True, choices=TAG_CATEGORIES)
-    description = models.TextField(blank=True)
-    
+    description = models.TextField(_('description'), blank=True)
+    main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
+        
     user = models.ForeignKey(User, blank=True, null=True)
     
     def has_description(self):
