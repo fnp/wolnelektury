@@ -5,15 +5,6 @@
 
 {% block title %}Alfabetyczny spis utworów w WolneLektury.pl{% endblock %}
 
-{% block extrahead %}
-    <script type="text/javascript" charset="utf-8">
-        $(function() {
-            $('#book-list .group').addClass('dontsplit');
-            $('#book-list').columnize({columns: 3});
-        });
-    </script>
-{% endblock %}
-
 {% block body %}
     <h1>Alfabetyczny spis utworów</h1>
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">

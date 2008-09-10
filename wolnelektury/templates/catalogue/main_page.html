@@ -3,15 +3,6 @@
 
 {% block bodyid %}main-page{% endblock %}
 
-{% block extrahead %}
-    <script type="text/javascript" charset="utf-8">
-        $(function() {
-            $('#categories-list ul').columnize({width: 180});
-            $('#themes-list ul').columnize({width: 180});
-        });
-    </script>
-{% endblock %}
-
 {% block body %}
     <div id="site-description">
         {% chunk "site-description" %}
