@@ -169,6 +169,10 @@ p .ac_input {
 /* ============= */
 /* = Tags list = */
 /* ============= */
+#intro {
+    margin: 0 0 2.5em 0;
+}
+
 #main-page #tags-list {
     margin-right: 29em;
 }
@@ -244,11 +248,12 @@ p .ac_input {
 }
 
 /* ===================== */
-/* = Latest blog posts = */
+/* = Other info        = */
 /* ===================== */
 #latest-blog-posts {
     padding: 0.5em;
-    margin-top: 0.5em;
+    float: left;
+    width: 30%;
 }
 
 #latest-blog-posts ol {
@@ -256,6 +261,18 @@ p .ac_input {
     margin: 0.3em 0 0 0;
     list-style-type: square;
     color: #D13628;
+}
+
+#you-can-help {
+    float: right;
+    padding: 0.5em;
+    width: 30%;
+}
+
+#about-us {
+    padding: 0.5em;
+    margin-left: 35%;
+    margin-right: 35%;
 }
 
 /* =============== */
