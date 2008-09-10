@@ -157,16 +157,11 @@ em {
     color: #444;
 }
 
-/* TODO: Shouldn't be needed */
-#book-detail #search-form {
-    padding: 0.75em 0.5em;
-}
-
 .ac_input {
     width: 18em;
 }
 
-#main-page .ac_input {
+p .ac_input {
     width: 28em;
 }
 
