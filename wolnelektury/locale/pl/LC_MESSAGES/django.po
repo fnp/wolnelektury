@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -118,9 +117,8 @@ msgid "A unique name for this chunk of content"
 msgstr "Unikalna nazwa dla tego kawałka treści"
 
 #: chunks/models.py:12
-#, fuzzy
 msgid "content"
-msgstr "typ zawartości"
+msgstr "zawartość"
 
 #: chunks/models.py:16
 msgid "chunk"
