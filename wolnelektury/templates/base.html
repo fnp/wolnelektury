@@ -22,8 +22,8 @@
             <div id="user-info">
                 {% if user.is_authenticated %}
                     <p>
-                        Zalogowany jako <strong>{{ user.username }}</strong>
-                        | <a href="{% url user_shelves %}" id="user-shelves-link">Moje półki</a>
+                        Witaj <strong>{{ user.username }}</strong>!
+                        | <a href="{% url user_shelves %}" id="user-shelves-link">Twoje półki</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">Administracja</a>
                         {% endif %}
