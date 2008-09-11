@@ -81,9 +81,7 @@ def main_page(request):
         extra={'where': ['catalogue_tag.category = "theme"'] + [extra_where]})
     categories = split_tags(tags)
     
-    print categories
     form = forms.SearchForm()
-    
     return render_to_response('catalogue/main_page.html', locals(),
         context_instance=RequestContext(request))
 
