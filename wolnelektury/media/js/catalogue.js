@@ -89,6 +89,14 @@
             }
         });
         
+        $('ul.shelf-list li').hover(function() {
+            $(this).css({background: '#EEE', cursor: 'pointer'});
+        }, function() {
+            $(this).css({background: 'transparent'});
+        }).click(function() {
+            location.href = $('a.visit-shelf', this).attr('href');
+        });
+        
         $('.delete-shelf').click(function() { 
             var link = $(this);
             var shelf_name = $('.visit-shelf', link.parent()).text();

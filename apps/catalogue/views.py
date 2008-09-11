@@ -73,14 +73,15 @@ def main_page(request):
     if request.user.is_authenticated():
         shelves = models.Tag.objects.filter(category='set', user=request.user)
         new_set_form = forms.NewSetForm()
-        extra_where = '((NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1) OR catalogue_tag.user_id = %d)' % request.user.id
+        extra_where = '(NOT catalogue_tag.category = "set" OR catalogue_tag.user_id = %d)' % request.user.id
     else:
-        extra_where = 'NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1'
+        extra_where = 'NOT catalogue_tag.category = "set"'
     tags = models.Tag.objects.usage_for_model(models.Book, counts=True, extra={'where': [extra_where]})
     fragment_tags = models.Tag.objects.usage_for_model(models.Fragment, counts=True,
         extra={'where': ['catalogue_tag.category = "theme"'] + [extra_where]})
     categories = split_tags(tags)
     
+    print categories
     form = forms.SearchForm()
     
     return render_to_response('catalogue/main_page.html', locals(),

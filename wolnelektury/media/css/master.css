@@ -470,9 +470,16 @@ p .ac_input {
     padding: 0;
 }
 
+.shelf-list li {
+    padding: 0.25em;
+    margin: 0 -0.25em;
+}
+
 .shelf-list a.delete-shelf {
     color: #900;
     float: right;
+    padding: 0.25em 0.25em 0.25em 1em;
+    margin: -0.25em;
 }
 
 .shelf-list a.delete-shelf:active, .shelf-list a.delete-shelf:hover {
