@@ -245,6 +245,10 @@ div.shown-tags p {
     text-align: right;
 }
 
+.show-all-tags {
+    text-decoration: underline;
+}
+
 /* ============== */
 /* = Propaganda = */
 /* ============== */
