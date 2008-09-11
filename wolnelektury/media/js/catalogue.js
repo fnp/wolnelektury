@@ -117,6 +117,8 @@
                     success: function() { setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000) }
                 });
                 
+                $('input', hash.w).labelify({labelledClass: 'blur'});
+                
                 $('ul.shelf-list li', hash.w).hover(function() {
                     $(this).css({background: '#EEE', cursor: 'pointer'});
                 }, function() {
