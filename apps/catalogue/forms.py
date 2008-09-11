@@ -42,7 +42,7 @@ class NewSetForm(forms.Form):
     
     def __init__(self, *args, **kwargs):
         super(NewSetForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['title'] = u'nazwa nowej półki'
+        self.fields['name'].widget.attrs['title'] = u'nazwa półki'
         
     def save(self, user, commit=True):
         name = self.cleaned_data['name']

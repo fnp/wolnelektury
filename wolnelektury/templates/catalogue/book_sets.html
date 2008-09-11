@@ -1,11 +1,11 @@
-<h2>Półki zawierające utwór {{ book.title }}</h2>
+<h2>Wrzuć lekturę na półki</h2>
 {% if not user.tag_set.count %}
     <p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć nową półkę poniżej.</p>
 {% else %}
     <form action="{% url catalogue.views.book_sets book.slug %}" method="POST" accept-charset="utf-8" class="cuteform">
     <ol>
         <li>{{ form.set_ids }}</li>
-        <li><input type="submit" value="Zapisz półki"/></li>
+        <li><input type="submit" value="Wrzuć na półki"/></li>
     </ol>
     </form>
 {% endif %}

@@ -187,3 +187,11 @@ def latest_blog_posts(feed_url, posts_to_show=5):
             })
     return {'posts': posts}
 
+
+@register.inclusion_tag('catalogue/tag_list.html')
+def tag_list(tags, choices=None):
+    if choices is None:
+        choices = []
+    tag_count = len(tags)
+    return locals()
+

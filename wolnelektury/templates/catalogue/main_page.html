@@ -29,11 +29,11 @@
                 <hr />
                 <form action="{% url catalogue.views.new_set %}" method="post" accept-charset="utf-8" class="cuteform">
                 <ol>
-                    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz półkę"/></li>
+                    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz nową półkę"/></li>
                 </ol>
                 </form>
             {% else %}
-                <p>Stwórz własny zestaw lektur!</p>
+                <p>Stwórz własny zestaw lektur! Możesz się nim później podzielić z innymi, przesyłając im link do Twojej półki.</p>
                 <p>Aby zarządzać swoimi półkami musisz się <a class="login-register-link" href="#">zalogować</a>.</p>
             {% endif %}
         </div>
@@ -41,48 +41,28 @@
             <div id="categories-list">
                 {% if categories.author %}
                     <h2>Autorzy</h2>
-                    <ul>
-                    {% for author in categories.author %}
-                        <li><a href="{% catalogue_url author %}">{{ author }}&nbsp;({{ author.count }})</a></li>
-                    {% endfor %}
-                    </ul>
+                    {% tag_list categories.author %}
                 {% endif %}
             
                 {% if categories.epoch %}
                 <h2>Epoki</h2>
-                    <ul>
-                    {% for epoch in categories.epoch %}
-                        <li><a href="{% catalogue_url epoch %}">{{ epoch }}&nbsp;({{ epoch.count }})</a></li>
-                    {% endfor %}
-                    </ul>                
+                    {% tag_list categories.epoch %}
                 {% endif %}
             
                 {% if categories.kind %}
                     <h2>Rodzaje</h2>
-                    <ul>
-                    {% for kind in categories.kind %}
-                        <li><a href="{% catalogue_url kind %}">{{ kind }}&nbsp;({{ kind.count }})</a></li>
-                    {% endfor %}
-                    </ul>                
+                    {% tag_list categories.kind %}
                 {% endif %}
             
                 {% if categories.genre %}
                     <h2>Gatunki literackie</h2>
-                    <ul>
-                    {% for genre in categories.genre %}
-                        <li><a href="{% catalogue_url genre %}">{{ genre }}&nbsp;({{ genre.count }})</a></li>
-                    {% endfor %}
-                    </ul>                
+                    {% tag_list categories.genre %}
                 {% endif %}
             </div>
             <div id="themes-list">
-                {% if categories.theme %}
+                {% if fragment_tags %}
                     <h2>Motywy</h2>
-                    <ul>
-                    {% for theme in fragment_tags %}
-                        <li><a href="{% catalogue_url theme %}">{{ theme }}&nbsp;({{ theme.count }})</a></li>
-                    {% endfor %}
-                    </ul>                
+                    {% tag_list fragment_tags %}
                 {% endif %}
             </div>
             <div class="clearboth"></div>
