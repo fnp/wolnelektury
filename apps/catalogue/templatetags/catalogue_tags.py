@@ -192,6 +192,7 @@ def latest_blog_posts(feed_url, posts_to_show=5):
 def tag_list(tags, choices=None):
     if choices is None:
         choices = []
-    tag_count = len(tags)
+    if len(tags) == 1:
+        one_tag = tags[0]
     return locals()
 

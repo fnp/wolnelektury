@@ -74,55 +74,27 @@
     </div>
     <div id="tags-list">
         <div id="categories-list">
-            {% if categories.set %}
-                <h2>Półki</h2>
-                <ul>
-                {% for set in categories.set %}
-                    <li><a href="{% catalogue_url tags set %}">{{ set }}&nbsp;({{ set.count }})</a></li>
-                {% endfor %}
-                </ul>
-            {% endif %}
             {% if categories.author %}
                 <h2>Autorzy</h2>
-                <ul>
-                {% for author in categories.author %}
-                    <li><a href="{% catalogue_url tags author %}">{{ author }}&nbsp;({{ author.count }})</a></li>
-                {% endfor %}
-                </ul>
+                {% tag_list categories.author tags %}
             {% endif %}
             {% if categories.epoch %}
                 <h2>Epoki</h2>
-                <ul>
-                {% for epoch in categories.epoch %}
-                    <li><a href="{% catalogue_url tags epoch %}">{{ epoch }}&nbsp;({{ epoch.count }})</a></li>
-                {% endfor %}
-                </ul>
+                {% tag_list categories.epoch tags %}
             {% endif %}
             {% if categories.kind %}
                 <h2>Rodzaje</h2>
-                <ul>
-                {% for kind in categories.kind %}
-                    <li><a href="{% catalogue_url tags kind %}">{{ kind }}&nbsp;({{ kind.count }})</a></li>
-                {% endfor %}
-                </ul>
+                {% tag_list categories.kind tags %}
             {% endif %}
             {% if categories.genre %}
                 <h2>Gatunki literackie</h2>
-                <ul>
-                {% for genre in categories.genre %}
-                    <li><a href="{% catalogue_url tags genre %}">{{ genre }}&nbsp;({{ genre.count }})</a></li>
-                {% endfor %}
-                </ul>
+                {% tag_list categories.genre tags %}
             {% endif %}            
         </div>
         <div id="themes-list">
             {% if categories.theme %}
                 <h2>Motywy</h2>
-                <ul>
-                {% for theme in categories.theme %}
-                    <li><a href="{% catalogue_url tags theme %}">{{ theme }} ({{ theme.count }})</a></li>
-                {% endfor %}
-                </ul>
+                {% tag_list categories.theme tags %}
             {% endif %}
         </div>
         <div class="clearboth"></div>
