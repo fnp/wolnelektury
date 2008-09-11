@@ -22,7 +22,7 @@
             <div id="user-info">
                 {% if user.is_authenticated %}
                     <p>
-                        Witaj <strong>{{ user.username }}</strong>!
+                        Witaj, <strong>{{ user.username }}</strong>
                         | <a href="{% url user_shelves %}" id="user-shelves-link">Twoje półki</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">Administracja</a>
