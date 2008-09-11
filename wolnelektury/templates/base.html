@@ -30,7 +30,7 @@
                         | <a href="{% url logout %}?next={{ request.get_full_path }}">Wyloguj</a>
                     </p>
                 {% else %}
-                    <p><a href="{% url login %}" id="login-register-link">Zaloguj się / Załóż konto</a></p>
+                    <p><a href="{% url login %}" class="login-register-link">Zaloguj się / Załóż konto</a></p>
                 {% endif %}
             </div>
             <div class="clearboth"></div>

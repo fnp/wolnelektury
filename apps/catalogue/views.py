@@ -71,6 +71,8 @@ def tags_starting_with(request):
 
 def main_page(request):    
     if request.user.is_authenticated():
+        shelves = models.Tag.objects.filter(category='set', user=request.user)
+        new_set_form = forms.NewSetForm()
         extra_where = '((NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1) OR catalogue_tag.user_id = %d)' % request.user.id
     else:
         extra_where = 'NOT catalogue_tag.category = "set" AND catalogue_tag.main_page = 1'
@@ -80,6 +82,7 @@ def main_page(request):
     categories = split_tags(tags)
     
     form = forms.SearchForm()
+    
     return render_to_response('catalogue/main_page.html', locals(),
         context_instance=RequestContext(request))
 
@@ -222,7 +225,11 @@ def new_set(request):
     new_set_form = forms.NewSetForm(request.POST)
     if new_set_form.is_valid():
         new_set = new_set_form.save(request.user)
-        return HttpResponse(u'<p>Półka <strong>%s</strong> została utworzona</p>' % new_set)
+        
+        if request.is_ajax():
+            return HttpResponse(u'<p>Półka <strong>%s</strong> została utworzona</p>' % new_set)
+        else:
+            return HttpResponseRedirect('/')
     
     return render_to_response('catalogue/book_sets.html', locals(),
             context_instance=RequestContext(request))
@@ -233,9 +240,13 @@ def new_set(request):
 def delete_shelf(request, slug):
     user_set = get_object_or_404(models.Tag, slug=slug, category='set', user=request.user)
     user_set.delete()
-    return HttpResponse(u'<p>Półka <strong>%s</strong> została usunięta</p>' % user_set.name)
     
-    
+    if request.is_ajax():
+        return HttpResponse(u'<p>Półka <strong>%s</strong> została usunięta</p>' % user_set.name)
+    else:
+        return HttpResponseRedirect('/')
+
+
 @login_required
 def user_shelves(request):
     shelves = models.Tag.objects.filter(category='set', user=request.user)

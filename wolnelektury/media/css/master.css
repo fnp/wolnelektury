@@ -173,8 +173,13 @@ p .ac_input {
     margin: 0 0 2.5em 0;
 }
 
+#tags-description {
+    color: #777;
+    margin: 0 0.5em -0.75em 0.5em;
+}
+
 #main-page #tags-list {
-    margin-right: 29em;
+    margin-right: 33%;
 }
 
 #categories-list ul, #themes-list ul {
@@ -236,9 +241,9 @@ p .ac_input {
 /* ============== */
 #propaganda {
     float: right;
-    width: 27em;
+    width: 30%;
     margin: 0;
-    padding: 1em;
+    padding: 2em 1em 1em;
 }
 
 
@@ -460,14 +465,20 @@ p .ac_input {
     padding: 1em;
 }
 
-#user-shelves-window ul {
+.shelf-list {
     list-style: none;
     padding: 0;
 }
 
-#user-shelves-window a.delete-shelf {
+.shelf-list a.delete-shelf {
     color: #900;
     float: right;
+}
+
+.shelf-list a.delete-shelf:active, .shelf-list a.delete-shelf:hover {
+    color: #FFF;
+    background-color: #900;
+    text-decoration: none;
 }
 
 /* ======================== */

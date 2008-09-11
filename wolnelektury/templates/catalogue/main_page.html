@@ -13,10 +13,29 @@
     </form>
     
     <div id="intro">
+        <p id="tags-description">↓ Przeglądaj lektury według wybranych kategorii i motywów ↓</p>
         <div id="propaganda">
             <h2>Twoje półki z lekturami</h2>
-            <p>Stwórz własny zestaw lektur!</p>
-            <p>Aby zarządzać swoimi półkami musisz się <a id="login-register-link" href="#">zalogować</a>.</p>
+            {% if user.is_authenticated %}
+                {% if shelves %}
+                <ul class="shelf-list">
+                {% for shelf in shelves %}
+                    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">usuń</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }}</a></li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć półkę poniżej.</p>
+                {% endif %}
+                <hr />
+                <form action="{% url catalogue.views.new_set %}" method="post" accept-charset="utf-8" class="cuteform">
+                <ol>
+                    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz półkę"/></li>
+                </ol>
+                </form>
+            {% else %}
+                <p>Stwórz własny zestaw lektur!</p>
+                <p>Aby zarządzać swoimi półkami musisz się <a class="login-register-link" href="#">zalogować</a>.</p>
+            {% endif %}
         </div>
         <div id="tags-list">
             <div id="categories-list">

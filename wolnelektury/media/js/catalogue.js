@@ -1,6 +1,6 @@
 (function($) {
     $(function() {
-        $('#id_q').labelify({labelledClass: 'blur'});
+        $('form input').labelify({labelledClass: 'blur'});
         
         target = $('#login-register-window div.target');
         
@@ -80,13 +80,24 @@
         $('#login-register-window').jqm({
             target: target[0],
             overlay: 60,
-            trigger: '#login-register-link',
+            trigger: '.login-register-link',
             onShow: function(hash) {
                 var offset = $(hash.t).offset();
                 hash.w.css({position: 'absolute', left: offset.left - hash.w.width() + $(hash.t).width(), top: offset.top});
                 $('div.header', hash.w).css({width: $(hash.t).width()});
                 hash.w.show();
             }
+        });
+        
+        $('.delete-shelf').click(function() { 
+            var link = $(this);
+            var shelf_name = $('.visit-shelf', link.parent()).text();
+            if (confirm('Czy na pewno usunąć półkę ' + shelf_name + '?')) {
+                $.post(link.attr('href'), function(data, textStatus) {
+                    link.parent().remove();
+                });
+            }
+            return false;
         });
         
         $('#user-shelves-window').jqm({
@@ -101,8 +112,6 @@
                 hash.w.show();
             },
             onLoad: function(hash) { 
-                var shelf_name = $('a.visit-shelf', this).html();
-                
                 $('form', hash.w).ajaxForm({
                     target: $('#user-shelves-window div.target'),
                     success: function() { setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000) }
@@ -116,11 +125,13 @@
                     location.href = $('a.visit-shelf', this).attr('href');
                 });
                 
-                $('.delete-shelf').click(function() { 
+                $('.delete-shelf').click(function() {
+                    var link = $(this);
+                    var shelf_name = $('.visit-shelf', link.parent()).text();
+                    console.log(shelf_name);
                     if (confirm('Czy na pewno usunąć półkę ' + shelf_name + '?')) {
-                        $.post($(this).attr('href'), function(data, textStatus) {
-                            $('#user-shelves-window div.target').html(data);
-                            setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000);
+                        $.post(link.attr('href'), function(data, textStatus) {
+                            link.parent().remove();
                         });
                     }
                     return false;

@@ -39,6 +39,10 @@ class ObjectSetsForm(forms.Form):
 
 class NewSetForm(forms.Form):
     name = forms.CharField(max_length=50, required=True)
+    
+    def __init__(self, *args, **kwargs):
+        super(NewSetForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs['title'] = u'nazwa nowej półki'
         
     def save(self, user, commit=True):
         name = self.cleaned_data['name']
