@@ -6,7 +6,7 @@ from catalogue.models import Tag, Book, Fragment
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'sort_key', 'category', 'has_description',)
+    list_display = ('name', 'slug', 'sort_key', 'category', 'has_description', 'main_page',)
     list_filter = ('category',)
     search_fields = ('name',)
     ordering = ('name',)
