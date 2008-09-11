@@ -39,6 +39,7 @@
             $(this).parent().parent().fadeOut(function() { 
                 $(this).next().fadeIn();
             });
+            return false;
         });
         
         
