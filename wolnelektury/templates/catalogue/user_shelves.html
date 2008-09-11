@@ -9,7 +9,8 @@
 <p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć półkę poniżej.</p>
 {% endif %}
 <hr />
-<form action="{% url catalogue.views.new_set %}" method="POST" accept-charset="utf-8" class="cuteform">
+<form action="{% url catalogue.views.new_set %}" method="post" accept-charset="utf-8" class="cuteform">
 <ol>
     <li>{{ new_set_form.name }} <input type="submit" value="Utwórz nową półkę"/></li>
 </ol>
+</form>
