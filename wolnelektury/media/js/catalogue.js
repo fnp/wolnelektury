@@ -35,6 +35,14 @@
             function() { $(this).css({background: '#FFF'}); }
         );
         
+        $('.show-all-tags').click(function() {
+            $(this).parent().parent().fadeOut(function() { 
+                $(this).next().fadeIn();
+            });
+        });
+        
+        
+        
         $('#registration-form').ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {

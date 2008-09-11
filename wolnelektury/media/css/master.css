@@ -236,6 +236,15 @@ p .ac_input {
     float: left;
 }
 
+ul.all-tags {
+    display: none;
+}
+
+div.shown-tags p {
+    margin: -0.5em 0 0 0;
+    text-align: right;
+}
+
 /* ============== */
 /* = Propaganda = */
 /* ============== */

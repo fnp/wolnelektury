@@ -41,28 +41,28 @@
             <div id="categories-list">
                 {% if categories.author %}
                     <h2>Autorzy</h2>
-                    {% tag_list categories.author %}
+                    {% folded_tag_list categories.author %}
                 {% endif %}
             
                 {% if categories.epoch %}
                     <h2>Epoki</h2>
-                    {% tag_list categories.epoch %}
+                    {% folded_tag_list categories.epoch %}
                 {% endif %}
             
                 {% if categories.kind %}
                     <h2>Rodzaje</h2>
-                    {% tag_list categories.kind %}
+                    {% folded_tag_list categories.kind %}
                 {% endif %}
             
                 {% if categories.genre %}
                     <h2>Gatunki literackie</h2>
-                    {% tag_list categories.genre %}
+                    {% folded_tag_list categories.genre %}
                 {% endif %}
             </div>
             <div id="themes-list">
                 {% if fragment_tags %}
                     <h2>Motywy</h2>
-                    {% tag_list fragment_tags %}
+                    {% folded_tag_list fragment_tags %}
                 {% endif %}
             </div>
             <div class="clearboth"></div>
