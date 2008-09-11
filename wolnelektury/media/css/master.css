@@ -241,12 +241,13 @@ ul.all-tags {
 }
 
 div.shown-tags p {
-    margin: -0.5em 0 0 0;
+    margin: -1em 0 0 0;
     text-align: right;
 }
 
 .show-all-tags {
     text-decoration: underline;
+    padding-right: 1em;
 }
 
 /* ============== */
