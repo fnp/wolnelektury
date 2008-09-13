@@ -71,6 +71,11 @@
             <div id="toggle-description"><p>Zwiń opis ▲</p></div>
         {% endif %}
         {% endwith %}
+        {% if shelf_is_set %}
+            <a id="download-shelf">
+                Pobierz wszystkie książki z tej półki
+            </a>
+        {% endif %}
         <ol>
         {% for book in object_list %}
             <li>{{ book.short_html }}</li>
