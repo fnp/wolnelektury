@@ -37,6 +37,23 @@ def capfirst(text):
         return ''
 
 
+
+def simple_title(tags):
+    mapping = {
+        'author': u'Autor',
+        'theme': u'Motyw',
+        'epoch': u'Epoka',
+        'genre': u'Gatunek',
+        'kind': u'Rodzaj',
+        'set': u'Półka',
+    }
+    
+    title = []
+    for tag in tags:
+        title.append("%s: %s." % (mapping[tag.category], tag.name))
+    return ' '.join(title)
+
+
 @register.simple_tag
 def title_from_tags(tags):
     def split_tags(tags):
@@ -44,6 +61,9 @@ def title_from_tags(tags):
         for tag in tags:
             result[tag.category] = tag
         return result
+    
+    # TODO: Remove this after adding flection mechanism
+    return simple_title(tags)
     
     class Flection(object):
         def get_case(self, name, flection):
