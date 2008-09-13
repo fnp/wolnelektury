@@ -12,9 +12,11 @@
             <p><a href="#" class="show-all-tags">Zobacz więcej</a></p>
         {% endif %}
     </div>
-    <ul class="all-tags">
-        {% for tag in tags %}
-            <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
-        {% endfor %}      
-    </ul>    
+    <div class="all-tags">
+        <ul>
+            {% for tag in tags %}
+                <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
+            {% endfor %}      
+        </ul>    
+    </div>
 {% endif %}
