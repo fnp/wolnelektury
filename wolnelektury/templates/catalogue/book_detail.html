@@ -39,14 +39,17 @@
         {% endif %}
         <div id="formats">
             <ul>
+            {% if book.html_file %}
+                <li><a href="{{ book.html_file.url }}">Czytaj online</a></li>
+            {% endif %}
             {% if book.pdf_file %}
                 <li><a href="{{ book.pdf_file.url }}">Pobierz plik PDF</a></li>
             {% endif %}
             {% if book.odt_file %}
                 <li><a href="{{ book.odt_file.url }}">Pobierz plik ODT</a></li>
             {% endif %}
-            {% if book.html_file %}
-                <li><a href="{{ book.html_file.url }}">Pobierz plik HTML</a></li>
+            {% if book.txt_file %}
+                <li><a href="{{ book.txt_file.url }}">Pobierz plik TXT</a></li>
             {% endif %}
             </ul>
         </div>

@@ -78,9 +78,10 @@ class Book(models.Model):
     
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to='books/xml', blank=True)
+    html_file = models.FileField(_('HTML file'), upload_to='books/html', blank=True)
     pdf_file = models.FileField(_('PDF file'), upload_to='books/pdf', blank=True)
     odt_file = models.FileField(_('ODT file'), upload_to='books/odt', blank=True)
-    html_file = models.FileField(_('HTML file'), upload_to='books/html', blank=True)
+    txt_file = models.FileField(_('TXT file'), upload_to='books/txt', blank=True)
     
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     
