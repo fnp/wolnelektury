@@ -78,10 +78,6 @@
                 <h2>Autorzy</h2>
                 {% tag_list categories.author tags %}
             {% endif %}
-            {% if categories.epoch %}
-                <h2>Epoki</h2>
-                {% tag_list categories.epoch tags %}
-            {% endif %}
             {% if categories.kind %}
                 <h2>Rodzaje</h2>
                 {% tag_list categories.kind tags %}
@@ -89,7 +85,11 @@
             {% if categories.genre %}
                 <h2>Gatunki literackie</h2>
                 {% tag_list categories.genre tags %}
-            {% endif %}            
+            {% endif %}
+            {% if categories.epoch %}
+                <h2>Epoki</h2>
+                {% tag_list categories.epoch tags %}
+            {% endif %}        
         </div>
         <div id="themes-list">
             {% if categories.theme %}
