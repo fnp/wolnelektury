@@ -13,7 +13,7 @@ class SearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
         tags = kwargs.pop('tags', [])
         super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['q'].widget.attrs['title'] = u'tytuł, autor, motyw, gatunek, …'
+        self.fields['q'].widget.attrs['title'] = u'tytuł, autor, motyw, epoka, rodzaj, gatunek literacki'
         self.fields['tags'].initial = '/'.join(tag.slug for tag in Tag.get_tag_list(tags))
 
 
