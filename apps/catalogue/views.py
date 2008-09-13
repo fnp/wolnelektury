@@ -103,10 +103,11 @@ def tagged_object_list(request, tags=''):
         raise Http404
     
     model = models.Book
+    shelf_is_set = any(tag.category == 'set' for tag in tags)
     theme_is_set = any(tag.category == 'theme' for tag in tags)
     if theme_is_set:
         model = models.Fragment
-    
+
     extra_where = 'NOT catalogue_tag.category = "set"'
     related_tags = models.Tag.objects.related_for_model(tags, model, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
@@ -117,7 +118,7 @@ def tagged_object_list(request, tags=''):
         queryset_or_model=model,
         tags=tags,
         template_name='catalogue/tagged_object_list.html',
-        extra_context = {'categories': categories },
+        extra_context = {'categories': categories, 'shelf_is_set': shelf_is_set },
     )
 
 

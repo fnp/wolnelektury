@@ -55,6 +55,12 @@
     <h1>{% title_from_tags tags %}</h1>
     {% breadcrumbs tags %}
     
+    {% if shelf_is_set and not object_list %}
+    <div id="books-list">
+        <h2>Twoja półka jest pusta</h2>
+        <p>Możesz wrzucić książkę na półkę, wchodząc na stronę danej lektury i klikając na przycisk „Na półkę!”.</p>
+    </div>
+    {% else %}
     {% autopaginate object_list 10 %}
     <div id="books-list">
         {% with tags|last as last_tag %}
@@ -99,6 +105,7 @@
         </div>
         <div class="clearboth"></div>
     </div>
+    {% endif %}
     <div id="set-window">
         <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
         <div class="target">
