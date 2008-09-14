@@ -169,7 +169,7 @@
 <xsl:template name="verse">
     <xsl:param name="line-content" />
     <xsl:param name="line-number" />
-    <p>
+    <p class="verse">
         <xsl:choose>
             <xsl:when test="name($line-content) = 'wers_akap'">
                 <xsl:attribute name="style">padding-left: 1em</xsl:attribute>
