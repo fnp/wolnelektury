@@ -147,7 +147,6 @@
                 $('.delete-shelf').click(function() {
                     var link = $(this);
                     var shelf_name = $('.visit-shelf', link.parent()).text();
-                    console.log(shelf_name);
                     if (confirm('Czy na pewno usunąć półkę ' + shelf_name + '?')) {
                         $.post(link.attr('href'), function(data, textStatus) {
                             link.parent().remove();
