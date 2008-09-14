@@ -1,204 +1,547 @@
 body {
-    font-size: 16px;
-    font: Georgia, "Times New Roman", serif;
+    margin: 0 2em 2em 2em;
+    font: 70% Verdana, Arial, Helvetica, sans-serif;
     line-height: 1.5em;
-    margin: 3em;
-    max-width: 36em;
+    background: #FFF url(/media/img/bg.png) repeat-x;
+    color: #2F4110;
+}
+
+img {
+    border: none;
 }
 
 a {
-    color: blue;
+    color: #295158;
     text-decoration: none;
 }
 
-/* =================================================== */
-/* = Common elements: headings, paragraphs and lines = */
-/* =================================================== */
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+input {
+    font: 1em Verdana, Arial, Helvetica, sans-serif; 
+}
+
 h1 {
-    font-size: 3em;
-    margin: 1.5em 0;
-    text-align: center;
-    line-height: 1.5em;
-    font-weight: bold;
+    font: normal normal bold 1.75em Arial, sans-serif;
+    color: #2F4110;
+    margin: 0.55em 0 0 0;
 }
 
 h2 {
-    font-size: 2em;
-    margin: 1.5em 0 0;
+    font-size: 1.2em;
     font-weight: bold;
-    line-height: 1.5em;
+    color: #2F4110;
+    margin: 0;
 }
 
 h3 {
-    font-size: 1.5em;
-    margin: 1.5em 0 0;
-    font-weight: normal;
-    line-height: 1.5em;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0.2em 0 0 0;
+    color: #333;
 }
 
-h4 {
-    font-size: 1em;
-    margin: 1.5em 0 0;
-    line-height: 1.5em;
-}
-
-p {
-    margin: 0;
-}
-
-/* ======================== */
-/* = Footnotes and themes = */
-/* ======================== */
-.theme-begin {
-    border-left: 0.1em solid #DDDDDD;
-    color: #666;
-    float: right;
-    margin: 0 -9.5em 0 0;
-    padding: 0 0.5em;
-    width: 7.5em;
+em {
     font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
+    background-color: #F5DC7D;
 }
 
-.annotation {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-}
-
-#footnotes .annotation {
-    display: block;
-    float: left;
-    width: 2.5em;
+.clearboth {
     clear: both;
 }
 
-#footnotes div {
-    margin: 1.5em 0 0 0;
-}
-
-#footnotes p {
-    margin-left: 2.5em;
-}
-
-
-/* ============= */
-/* = Numbering = */
-/* ============= */
-.anchor {
-    float: left;
-    margin: -0.2em -0.5em -0.2em -3.5em;
+.blur {
     color: #777;
-    font-size: 12px;
-    width: 2em;
-    text-align: center;
-    padding: 0.2em 0.5em;
 }
 
-.anchor:hover, .anchor:active {
-    color: #FFF;
-    background-color: #CCC;
+/* ================================== */
+/* = Header with logo and user-info = */
+/* ================================== */
+#header {
+    position: relative;
+    margin-top: 1.5em;
 }
 
-/* =================== */
-/* = Custom elements = */
-/* =================== */
-span.author {
-    font-size: 0.75em;
-    display: block;
-    line-height: 1.5em;
-    margin-bottom: 0.25em;
+#header #logo {
+    float: left;
 }
 
-span.collection {
-    font-size: 0.75em;
-    display: block;
-    line-height: 1.5em;
-    margin-bottom: -0.25em;
+#header #user-info {
+    margin: 0 0 0 auto;
+    width: 40em;
+    text-align: right;
 }
 
-span.subtitle {
-    font-size: 0.75em;
-    display: block;
-    line-height: 1.5em;
-    margin-top: -0.25em;
+#site-description {
+    margin-top: -1.5em;
+    height:4.5em;
+    overflow: hidden;
+    float: right;
+    width: 42em;
+    text-align: right;
+    color: #777;
 }
 
-div.didaskalia {
-    font-style: italic;
-    margin: 0.5em 0 0;
+/* ======================== */
+/* = Footer with sponsors = */
+/* ======================== */
+#footer {
+    border-top: 0.1em solid #999;
+    color: #777;
+    font-size: 0.8em;
+    padding-top: 0.5em;
+    margin: 2em 0 0 0;
 }
 
-div.kwestia {
-    margin: 0.5em 0 0;
-}
-
-div.stanza {
-    margin: 1.5em 0 0;
-}
-
-div.kwestia div.stanza {
+#footer p {
     margin: 0;
 }
 
-p.paragraph {
-    text-align: justify;
-    margin: 1.5em 0 0;
+#footer a {
+    color: #999;
+    text-decoration: underline;
 }
 
-p.motto {
-    text-align: justify;
-    font-style: italic;
-    margin: 1.5em 0 0;
+
+/* =============== */
+/* = Search form = */
+/* =============== */
+#search-form {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    background-color: rgb(132, 191, 42);
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border-bottom: 0.15em solid #7B9C2D;
+    border-right: 0.15em solid #7B9C2D;
 }
 
-p.motto_podpis {
-    font-size: 0.875em;
+#search-form p {
+    margin: 0em 0 0 0;
 }
 
-div.fragment {
-    border-bottom: 0.1em solid #999;
-    padding-bottom: 1.5em;
-}
-
-div.note p, div.dedication p, div.note p.paragraph, div.dedication p.paragraph {
-    text-align: right;
-    font-style: italic;
-}
-
-hr.spacer {
-    height: 3em;
-    visibility: hidden;
-}
-
-hr.spacer-line {
-    margin: 1.5em 0;
-    border: none;
-    border-bottom: 0.1em solid #000;
-}
-
-p.spacer-asterisk {
+#search-form ol {
+    margin: 0;
     padding: 0;
-    margin: 1.5em 0;
+}
+
+#search-form li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline;
+}
+
+#search-form li.category, #search-form li.book-title {
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    background-color: rgb(242, 163, 15);
+    border: 1px solid #BA8722;
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#search-form li.book-title {
+    background-color: #DDD;
+    border: 1px solid #999;
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+}
+
+#search-form input[type=submit] {
+    color: #444;
+}
+
+.ac_input {
+    width: 18em;
+}
+
+p .ac_input {
+    width: 28em;
+}
+
+
+/* ============= */
+/* = Tags list = */
+/* ============= */
+#intro {
+    margin: 0 0 2.5em 0;
+}
+
+#tags-description {
+    color: #777;
+    margin: 0 0.5em -0.75em 0.5em;
+}
+
+#main-page #tags-list {
+    margin-right: 33%;
+}
+
+#categories-list ul, #themes-list ul {
+    -moz-column-width: 12em;
+    -webkit-column-width: 12em;
+    column-width: 12em;
+}
+
+#tags-list {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: #FBEF90;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border-bottom: 0.15em solid #E3D888;
+    border-right: 0.15em solid #E3D888;
+}
+
+#tagged-object-list #tags-list, #book-detail #tags-list {
+    margin-left: 39em;
+}
+
+#book-info, #categories-list {
+    float: left;
+    width: 47.5%;
+}
+
+#themes-list {
+    margin-left: 52.5%;
+}
+
+#tagged-object-list #categories-list, #book-detail #book-info {
+    width: 12em;
+}
+
+#tagged-object-list #themes-list, #book-detail #themes-list {
+    margin-left: 14em;
+}
+
+#tags-list ol, #tags-list ul {
+    padding: 0;
+    margin: 0.3em 0 1.2em 0;
+}
+
+#tags-list li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#books-list {
+    width: 38em;
+    float: left;
+}
+
+.all-tags {
+    display: none;
+}
+
+div.shown-tags p {
+    margin: -1em 0 1em 0;
+    text-align: right;
+}
+
+.show-all-tags {
+    text-decoration: underline;
+    padding-right: 1em;
+}
+
+.subcategories {
+    display: block;
+    padding-left: 2em;
+    padding-bottom: 0.5em;
+}
+
+
+/* ============== */
+/* = Propaganda = */
+/* ============== */
+#propaganda {
+    float: right;
+    width: 30%;
+    margin: 0;
+    padding: 2em 0.5em 0.5em;
+}
+
+
+/* ===================== */
+/* = Other info        = */
+/* ===================== */
+#latest-blog-posts {
+    padding: 0.5em;
+    float: left;
+    width: 30%;
+}
+
+#latest-blog-posts ol {
+    padding: 0 0 0 1.5em;
+    margin: 1em 0 0 0;
+    list-style-type: square;
+    color: #D13628;
+}
+
+#you-can-help {
+    float: right;
+    padding: 0.5em;
+    width: 30%;
+}
+
+#about-us {
+    padding: 0.5em;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+/* =============== */
+/* = Description = */
+/* =============== */
+#description {
+    margin-top: 0.5em;
+    text-align: justify;
+}
+
+#toggle-description, #tagged-object-list .pagination {
+    width: 100%;
+    height: 1.5em;
+    background-color: #EEE;
+    margin-top: 0.5em;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
     text-align: center;
 }
 
-div.person-list ol {
+#toggle-description p {
+    margin: 0;
+    padding: 0;
+    color: #999;
+}
+
+#download-shelf {
+    display: block;
+    width: 100%;
+    height: 1.5em;
+    background-color: #EEE;
+    margin-top: 0.5em;
+    padding: 0.5em 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-align: center;    
+}
+
+/* ============================ */
+/* = Books and fragments list = */
+/* ============================ */
+#books-list {
+    margin: 0;
+}
+
+#books-list ol {
     list-style: none;
-    padding: 0 0 0 1.5em;
+    padding: 0;
+    margin: 1.5em 0;
 }
 
-p.place-and-time {
-    font-style: italic;
+.book {
+    padding: 0.5em;
+    background-color: #FFF;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
-em.math, em.foreign-word, em.book-title, em.didaskalia, em.author-emphasis {
-    font-style: italic;
+.fragment {
+    border-bottom: 0.1em solid #EEE;
+    margin-top: 0.5em;
 }
 
-em.person {
-    font-style: normal;
-    font-variant: small-caps;
+.fragment-text, .fragment-short-text {
+    padding: 0.5em;
+    background-color: #FFF;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.fragment-metadata {
+    padding: 0.5em 0.5em 1.5em 0.5em;
+    float: right;
+}
+
+.change-sets {
+    float: right;
+}
+
+.book-description {
+    margin-left: 3.5em;
+}
+
+.book-thumbnail {
+    background: transparent url(/media/img/book.png) no-repeat 0 0;
+    width: 3em;
+    height: 3em;
+    float: left;
+}
+
+/* =============== */
+/* = Simple form = */
+/* =============== */
+.cuteform ol, .cuteform ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.cuteform ol li, .cuteform ul li {
+    margin-top: 0.7em;
+}
+
+.cuteform label {
+    display: block;
+}
+
+.cuteform span.help-text {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+}
+
+.cuteform .error {
+    color: #BF3024;
+}
+
+/* ================ */
+/* = Modal Window = */
+/* ================ */
+.jqmOverlay { background-color: #000; }
+
+#set-window {
+    position: absolute;
+    display: none;
+    width: 32em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: -1em;
+}
+
+#set-window div.header {
+    background-color: #FFF;
+    border-right: 0.25em solid #DDD;
+    width: 4em;
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+#set-window div.target {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
+
+#login-register-window {
+    position: absolute;
+    display: none;
+    width: 24em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+#login-register-window div.header {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    width: 4em;
+    right: 0;
+    left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    float: right;
+    text-align: center;
+}
+
+#login-register-window div.target {
+    clear: both;
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
+
+#user-shelves-window {
+    position: absolute;
+    display: none;
+    width: 28em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+#user-shelves-window div.header {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    width: 4em;
+    right: 0;
+    left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    float: right;
+    text-align: center;
+}
+
+#user-shelves-window div.target {
+    clear: both;
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
+
+.shelf-list {
+    list-style: none;
+    padding: 0;
+}
+
+.shelf-list li {
+    padding: 0.25em;
+    margin: 0 -0.25em;
+}
+
+.shelf-list a.delete-shelf {
+    color: #900;
+    float: right;
+    padding: 0.25em 0.25em 0.25em 1em;
+    margin: -0.25em;
+}
+
+.shelf-list a.delete-shelf:active, .shelf-list a.delete-shelf:hover {
+    color: #FFF;
+    background-color: #900;
+    text-decoration: none;
+}
+
+/* ======================== */
+/* = Alphabetic book list = */
+/* ======================== */
+#book-a-list #book-list {
+    -moz-column-width: 24em;
+    -webkit-column-width: 24em;
+    column-width: 24em;
+}
+
+#book-a-list #book-list ol {
+    padding: 0;
+    margin: 0.3em 0 1.2em 0;
+    list-style: none;
+}
+
+#top-message {
+    background-color: #2F4110;
+    color: #FFF;
+    margin: 0 -2em;
+    padding: 0 2em;
+    line-height: 2em;
 }
 
