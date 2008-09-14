@@ -84,6 +84,26 @@ p {
     margin-left: 2.5em;
 }
 
+
+/* ============= */
+/* = Numbering = */
+/* ============= */
+.anchor {
+    float: left;
+    margin: -0.2em -0.5em -0.2em -3.5em;
+    color: #777;
+    font-size: 12px;
+    width: 2em;
+    text-align: center;
+    padding: 0.2em 0.5em;
+}
+
+.anchor:hover, .anchor:active {
+    color: #FFF;
+    background-color: #CCC;
+}
+
+
 /* =================== */
 /* = Custom elements = */
 /* =================== */
