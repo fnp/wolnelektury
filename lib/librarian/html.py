@@ -53,6 +53,7 @@ def transform(input_filename, output_filename):
     doc = etree.parse(doc_file, parser)
 
     result = doc.xslt(style)
+    add_anchors(result.getroot())
     result.write(output_filename, xml_declaration=True, pretty_print=True, encoding='utf-8')
 
 
@@ -154,4 +155,35 @@ def extract_fragments(input_filename):
                     open_fragments[fragment_id].append(event, copy.copy(element))
 
     return closed_fragments, open_fragments
+
+
+def add_anchor(element, number):
+    anchor = etree.Element('a', href='#f%d' % number)
+    anchor.set('class', 'anchor')
+    anchor.text = str(number)
+    if element.text:
+        anchor.tail = element.text
+        element.text = u''
+    element.insert(0, anchor)
+    
+    anchor_target = etree.Element('a', name='f%d' % number)
+    element.insert(0, anchor_target)
+
+
+def add_anchors(root):
+    counter = 1
+    for element in root.iterdescendants():
+        if element.getparent().tag in 'div' and 'note' in element.getparent().get('class', ''):
+            continue
+        if element.getparent().tag in 'blockquote':
+            continue
+        
+        if element.tag == 'p' and 'verse' in element.get('class', ''):
+            if counter == 1 or counter % 5 == 0:
+                add_anchor(element, counter)
+            counter += 1
+        elif 'paragraph' in element.get('class', ''):
+            add_anchor(element, counter)
+            counter += 1
+
 
