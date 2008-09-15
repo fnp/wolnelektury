@@ -1,7 +1,8 @@
-<utwor><dramat_wierszowany_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <dramat_wierszowany_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Shakespeare/Romeo_i_Julia">
 <dc:creator xml:lang="pl">Shakespeare, William</dc:creator>
 <dc:title xml:lang="pl">Romeo i Julia</dc:title>
@@ -15,7 +16,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.genre xml:lang="pl">Dramat szekspirowski</dc:subject.genre>
 <dc:subject.genre xml:lang="pl">Tragedia</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Romeo+i+Julia</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/romeo-i-julia</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
 <dc:source xml:lang="pl">Shakespeare, William (1564-1616), Romeo i Julia, Państwowy Instytut Wydawniczy, wyd. 5, Warszawa, 1975</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - tłumacz Józef Paszkowski zm. 1861 </dc:rights>
@@ -78,7 +79,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <nota><akap>Przełożył Jan Kasprowicz</akap></nota>
 
 
-<strofa><begin id='b1191309306250' /><motyw id='m1191309306250'>Konflikt</motyw>Dwa rody, zacne jednako i sławne ---/
+<strofa><begin id="b1191309306250"/><motyw id="m1191309306250">Konflikt</motyw>Dwa rody, zacne jednako i sławne ---/
 Tam, gdzie się rzecz ta rozgrywa, w Weronie,/
 Do nowej zbrodni pchają złości dawne,/
 Plamiąc szlachetną krwią szlachetne dłonie</strofa>
@@ -91,7 +92,7 @@ Po pełnym przygód nieszczęśliwych bycie/
 <strofa>Tej ich miłości przebieg zbyt bolesny/
 I jak się ojców nienawiść nie zmienia,/
 Aż ją zakończy dzieci zgon przedwczesny,/
-Dwugodzinnego treścią przedstawienia,<end id='e1191309306250' /></strofa>
+Dwugodzinnego treścią przedstawienia,<end id="e1191309306250"/></strofa>
 
 <strofa>Które otoczcie cierpliwymi względy,/
 Jest w nim co złego, my usuniem błędy...</strofa>
@@ -125,7 +126,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>SAMSON</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1189496597000' /><motyw id='m1189496597000'>Sługa</motyw>Dalipan, Grzegorzu, nie będziem darli pierza.</akap>
+		<akap><begin id="b1189496597000"/><motyw id="m1189496597000">Sługa</motyw>Dalipan, Grzegorzu, nie będziem darli pierza.</akap>
 	</kwestia>
 
 
@@ -197,7 +198,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>SAMSON</naglowek_osoba>
 	<kwestia>
-		<akap>Mniejsza mi o to, będę nieubłagany. Pobiwszy ludzi, wywrę wściekłość na kobietach: rzeź między nimi sprawię.<end id='e1189496597000' /></akap>
+		<akap>Mniejsza mi o to, będę nieubłagany. Pobiwszy ludzi, wywrę wściekłość na kobietach: rzeź między nimi sprawię.<end id="e1189496597000"/></akap>
 	</kwestia>
 
 
@@ -215,11 +216,11 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>GRZEGORZ</naglowek_osoba>
 	<kwestia>
-		<akap>Tym lepiej, że się liczysz do zwierząt; bo gdybyś się liczył do ryb, to byłbyś pewnie sztokfiszem<pe><slowo_obce>sztokfisz</slowo_obce> --- z niem. <slowo_obce>stockfish</slowo_obce>: suszona ryba, najczęściej z rodziny dorszowatych.</pe>. <begin id='b1191309812628' /><motyw id='m1191309812628'>Sługa</motyw>Weź no się za instrument<pr><slowo_obce>instrument</slowo_obce> --- miecz.</pr>, bo oto nadchodzi dwóch domowników Montekiego.</akap>
+		<akap>Tym lepiej, że się liczysz do zwierząt; bo gdybyś się liczył do ryb, to byłbyś pewnie sztokfiszem<pe><slowo_obce>sztokfisz</slowo_obce> --- z niem. <slowo_obce>stockfish</slowo_obce>: suszona ryba, najczęściej z rodziny dorszowatych.</pe>. <begin id="b1191309812628"/><motyw id="m1191309812628">Sługa</motyw>Weź no się za instrument<pr><slowo_obce>instrument</slowo_obce> --- miecz.</pr>, bo oto nadchodzi dwóch domowników Montekiego.</akap>
 	</kwestia>
 
 
-<didaskalia>Wchodzą <osoba>Abraham</osoba> i <osoba>Baltazar</osoba><pr>Służba należąca do obu skłóconych domów nosiła specjalne oznaki na kapeluszach, stąd łatwo ich było dostrzec i rozpoznać z daleka.</pr>.<end id='e1191309812628' /></didaskalia>
+<didaskalia>Wchodzą <osoba>Abraham</osoba> i <osoba>Baltazar</osoba><pr>Służba należąca do obu skłóconych domów nosiła specjalne oznaki na kapeluszach, stąd łatwo ich było dostrzec i rozpoznać z daleka.</pr>.<end id="e1191309812628"/></didaskalia>
 
 
 <naglowek_osoba>SAMSON</naglowek_osoba>
@@ -385,10 +386,10 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>TYBALT</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189492119750' /><motyw id='m1189492119750'>Wróg</motyw>Z gołym orężem pokój? Nienawidzę/
+		<strofa><begin id="b1189492119750"/><motyw id="m1189492119750">Wróg</motyw>Z gołym orężem pokój? Nienawidzę/
 		Tego wyrazu, tak jak nienawidzę/
 		Szatana, wszystkich Montekich i ciebie./
-		Broń się, nikczemny tchórzu.<end id='e1189492119750' /></strofa>
+		Broń się, nikczemny tchórzu.<end id="e1189492119750"/></strofa>
 	</kwestia>
 
 
@@ -420,8 +421,8 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189492274921' /><motyw id='m1189492274921'>Wróg</motyw>Miecz, mówię! Stary Monteki nadchodzi./
-		I szydnie<pe><slowo_obce>szydnie</slowo_obce> --- szyderczo.</pe> swoją klingą mi urąga.<end id='e1189492274921' /></strofa>
+		<strofa><begin id="b1189492274921"/><motyw id="m1189492274921">Wróg</motyw>Miecz, mówię! Stary Monteki nadchodzi./
+		I szydnie<pe><slowo_obce>szydnie</slowo_obce> --- szyderczo.</pe> swoją klingą mi urąga.<end id="e1189492274921"/></strofa>
 	</kwestia>
 
 
@@ -466,7 +467,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Porzucić swoje wygodne przybory/
 		I w stare dłonie stare ująć miecze,/
 		By zardzewiałym ostrzem zardzewiałe/
-		Niechęci wasze przecinać. <begin id='b1189492484906' /><motyw id='m1189492484906'>Kara</motyw>Jeżeli/
+		Niechęci wasze przecinać. <begin id="b1189492484906"/><motyw id="m1189492484906">Kara</motyw>Jeżeli/
 		Wzniecicie kiedyś waśń podobną,/
 		Zamęt pokoju opłacicie życiem./
 		A teraz wszyscy ustąpcie niezwłocznie./
@@ -475,7 +476,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Na ratusz, gdzie ci dokładnie w tym względzie/
 		Dalsza ma wola oznajmiona będzie./
 		Jeszcze raz wzywam wszystkich tu obecnych/
-		Pod karą śmierci, aby się rozeszli.<end id='e1189492484906' /></strofa>
+		Pod karą śmierci, aby się rozeszli.<end id="e1189492484906"/></strofa>
 	</kwestia>
 
 
@@ -491,7 +492,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189492862203' /><motyw id='m1189492862203'>Konflikt, Sługa, Walka, Wróg</motyw>Nieprzyjaciela naszego pachołcy/
+		<strofa><begin id="b1189492862203"/><motyw id="m1189492862203">Konflikt, Sługa, Walka, Wróg</motyw>Nieprzyjaciela naszego pachołcy/
 		I wasi już się bili, kiedym nadszedł;/
 		Dobyłem broni, aby ich rozdzielić:/
 		Wtem wpadł szalony Tybalt z gołym mieczem,/
@@ -501,14 +502,14 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Jego zamachów. Gdyśmy tak ze sobą/
 		Cięcia i pchnięcia zamieniali, zbiegł się/
 		Większy tłum ludzi; z obu stron walczono,/
-		Aż książę nadszedł i rozdzielił wszystkich.<end id='e1189492862203' /></strofa>
+		Aż książę nadszedł i rozdzielił wszystkich.<end id="e1189492862203"/></strofa>
 	</kwestia>
 
 
 <naglowek_osoba>PANI MONTEKI</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496779875' /><motyw id='m1189496779875'>Dziecko, Matka, Syn</motyw>Lecz gdzież Romeo? Widziałżeś go dzisiaj?/
-		Jakże się cieszę, że nie był w tym starciu.<end id='e1189496779875' /></strofa>
+		<strofa><begin id="b1189496779875"/><motyw id="m1189496779875">Dziecko, Matka, Syn</motyw>Lecz gdzież Romeo? Widziałżeś go dzisiaj?/
+		Jakże się cieszę, że nie był w tym starciu.<end id="e1189496779875"/></strofa>
 	</kwestia>
 
 
@@ -532,7 +533,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1189496811750' /><motyw id='m1189496811750'>Dziecko, Ojciec, Syn</motyw>MONTEKI</naglowek_osoba>
+<naglowek_osoba><begin id="b1189496811750"/><motyw id="m1189496811750">Dziecko, Ojciec, Syn</motyw>MONTEKI</naglowek_osoba>
 	<kwestia>
 		<strofa>Nieraz o świcie już go tam widziano/
 		Łzami poranną mnożącego rosę,/
@@ -577,7 +578,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Nim światu wonny swój kielich roztoczył/
 		I pełność swoją rozwinął przed słońcem./
 		Gdybyśmy mogli dojść tych trosk zarodka,/
-		Nie zbrakłoby nam zaradczego środka.<end id='e1189496811750' /></strofa>
+		Nie zbrakłoby nam zaradczego środka.<end id="e1189496811750"/></strofa>
 	</kwestia>
 
 
@@ -603,7 +604,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496840531' /><motyw id='m1189496840531'>Przyjaźń</motyw>Dzień dobry, bracie.<end id='e1189496840531' /></strofa>
+		<strofa><begin id="b1189496840531"/><motyw id="m1189496840531">Przyjaźń</motyw>Dzień dobry, bracie.<end id="e1189496840531"/></strofa>
 	</kwestia>
 
 
@@ -665,8 +666,8 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189493024812' /><motyw id='m1189493024812'>Miłość</motyw>Niestety! Czemuż, zdając się niebianką,/
-		Miłość jest w gruncie tak srogą tyranką?<end id='e1189493024812' /></strofa>
+		<strofa><begin id="b1189493024812"/><motyw id="m1189493024812">Miłość</motyw>Niestety! Czemuż, zdając się niebianką,/
+		Miłość jest w gruncie tak srogą tyranką?<end id="e1189493024812"/></strofa>
 	</kwestia>
 
 
@@ -710,7 +711,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189493089796' /><motyw id='m1189493089796'>Cierpienie, Miłość</motyw><wers_cd>A więc strzała</wers_cd>/
+		<strofa><begin id="b1189493089796"/><motyw id="m1189493089796">Cierpienie, Miłość</motyw><wers_cd>A więc strzała</wers_cd>/
 		Miłości nawet przez odbitkę działa?/
 		Dość mi już ciężył mój smutek, ty jego/
 		Brzemię powiększasz przewyżką twojego;/
@@ -721,7 +722,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		To żar, co w oku szczęśliwego płonie;/
 		Morze łez, w którym nieszczęśliwy tonie./
 		Czymże jest więcej? Istnym amalgamem<pr><slowo_obce>amalgam</slowo_obce> --- tu: plaster zmiękczający.</pr>,/
-		Żółcią trawiącą i zbawczym balsamem.<end id='e1189493089796' />/
+		Żółcią trawiącą i zbawczym balsamem.<end id="e1189493089796"/>/
 		Bądź zdrów.</strofa>
 	</kwestia>
 
@@ -731,8 +732,8 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496885625' /><motyw id='m1189496885625'>Przyjaźń</motyw><wers_cd>Zaczekaj! krzywdę byś mi sprawił,</wers_cd>/
-		Gdybyś mą przyjaźń z kwitkiem tak zostawił.<end id='e1189496885625' /></strofa>
+		<strofa><begin id="b1189496885625"/><motyw id="m1189496885625">Przyjaźń</motyw><wers_cd>Zaczekaj! krzywdę byś mi sprawił,</wers_cd>/
+		Gdybyś mą przyjaźń z kwitkiem tak zostawił.<end id="e1189496885625"/></strofa>
 	</kwestia>
 
 
@@ -795,7 +796,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495006562' /><motyw id='m1189495006562'>Kobieta, Kochanek, Miłość</motyw>A właśnieś chybił. Niczym tu kołczany/
+		<strofa><begin id="b1189495006562"/><motyw id="m1189495006562">Kobieta, Kochanek, Miłość</motyw>A właśnieś chybił. Niczym tu kołczany/
 		Kupida<pr>Kupido --- bożek miłości.</pr>; ona ma naturę Diany<pr>Diana --- bogini księżyca i łowów, niezłomna dziewica.</pr>;/
 		Pod twardą zbroją wstydliwości swojej/
 		Grotów miłości wcale się nie boi;/
@@ -804,7 +805,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Nawet jej złota wszechwładztwo nie zjedna./
 		Bogata w wdzięki, w tym jedynie biedna,/
 		Że kiedy umrze, do grobu z nią zstąpi/
-		Całe bogactwo, którego tak skąpi.<end id='e1189495006562' /></strofa>
+		Całe bogactwo, którego tak skąpi.<end id="e1189495006562"/></strofa>
 	</kwestia>
 
 
@@ -816,13 +817,13 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189493240453' /><motyw id='m1189493240453'>Cierpienie, Miłość</motyw>Tak jest; i skąpstwo to jest marnotrawstwem,/
+		<strofa><begin id="b1189493240453"/><motyw id="m1189493240453">Cierpienie, Miłość</motyw>Tak jest; i skąpstwo to jest marnotrawstwem,/
 		Bo piękność, którą własna srogość strawia,/
 		Całą potomność piękności pozbawia./
-		<begin id='b1189495443437' /><motyw id='m1189495443437'>Kobieta</motyw>Zbyt ona piękna, zbyt mądra zarazem;/
+		<begin id="b1189495443437"/><motyw id="m1189495443437">Kobieta</motyw>Zbyt ona piękna, zbyt mądra zarazem;/
 		Zbyt mądrze piękna: stąd istnym jest głazem./
 		Przysięgła nigdy nie kochać i dzięki/
-		Temu skazanym - wieczne cierpieć męki.<end id='e1189495443437' /><end id='e1189493240453' /></strofa>
+		Temu skazanym - wieczne cierpieć męki.<end id="e1189495443437"/><end id="e1189493240453"/></strofa>
 	</kwestia>
 
 
@@ -901,11 +902,11 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189493301531' /><motyw id='m1189493301531'>Ojciec</motyw><begin id='b1189495336031' /><motyw id='m1189495336031'>Córka, Dziecko</motyw>To samo, co już dawniej powiedziałem:/
+		<strofa><begin id="b1189493301531"/><motyw id="m1189493301531">Ojciec</motyw><begin id="b1189495336031"/><motyw id="m1189495336031">Córka, Dziecko</motyw>To samo, co już dawniej powiedziałem:/
 		Mojemu dziecku świat jest jeszcze obcy,/
 		Ledwie czternastu lat wysnuła przędzę;/
 		Parę jej wiosen jeszcze przeżyć trzeba,/
-		Nim małżeńskiego zakosztuje chleba.<end id='e1189495336031' /><end id='e1189493301531' /></strofa>
+		Nim małżeńskiego zakosztuje chleba.<end id="e1189495336031"/><end id="e1189493301531"/></strofa>
 	</kwestia>
 
 
@@ -919,13 +920,13 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	<kwestia>
 		<strofa>Lecz prędko więdną przedwczesne mężatki./
 		Ziemia schłonęła wszystkie me nadzieje:/
-		Oprócz tej jednej; <begin id='b1189494770593' /><motyw id='m1189494770593'>Córka, Dziecko, Ojciec</motyw>ona jest, Parysie,/
+		Oprócz tej jednej; <begin id="b1189494770593"/><motyw id="m1189494770593">Córka, Dziecko, Ojciec</motyw>ona jest, Parysie,/
 		Przyszłą, jedyną moich ziem dziedziczką./
 		Staraj się jednak, skarb sobie jej serce,/
 		Chęć ma z jej chęcią nie będzie w rozterce;/
 		Jeśli cię przyjmie, głos ojca w tym względzie/
-		Jej pozwolenia echem tylko będzie.<end id='e1189494770593' />/
-		<begin id='b1189493800093' /><motyw id='m1189493800093'>Obyczaje</motyw>Daję dziś wieczór, na który niemało/
+		Jej pozwolenia echem tylko będzie.<end id="e1189494770593"/>/
+		<begin id="b1189493800093"/><motyw id="m1189493800093">Obyczaje</motyw>Daję dziś wieczór, na który niemało/
 		Gości sprosiłem; gdyby ci się dało/
 		Być jednym więcej, w nader miły sposób/
 		Zwiększyłbyś przez to zbiór miłych mi osób./
@@ -941,9 +942,9 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Przyjdź, przejrz<pe><slowo_obce>przejrz</slowo_obce> --- dziś poprawnie: przejrzyj.</pe> i wybierz sobie z tych bukietów/
 		Kwiat najpiękniejszy. I mój kwiat tam luby/
 		Wejdzie do liczby, choć nie do rachuby./
-		Idźmy.<end id='e1189493800093' /></strofa>
+		Idźmy.<end id="e1189493800093"/></strofa>
 
-		<didaskalia><begin id='b1191313106916' /><motyw id='m1191313106916'>Sługa</motyw>do <osoba>Sługi</osoba></didaskalia>
+		<didaskalia><begin id="b1191313106916"/><motyw id="m1191313106916">Sługa</motyw>do <osoba>Sługi</osoba></didaskalia>
 		
 		<strofa><wers_cd>A wasze obejdź w krąg Weronę,</wers_cd>/
 		Wynajdź osoby tu wyszczególnione</strofa>
@@ -960,7 +961,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>SŁUŻĄCY</naglowek_osoba>
 	<kwestia>
-		<akap>Mam wynaleźć osoby tu wyszczególnione: to się znaczy według tego, co tu napisano... A cóż tu napisano? Oto: że szewc ma pilnować łokcia, a krawiec kopyta; rybak pędzla, a malarz więcierza. Jakże wynajdę osoby tu wyszczególnione, kiedy nie mogę wynaleźć środka na wyczytanie tego, co osoba pisząca tu wyszczególniła? Kazano mi jednak; muszę się udać do uczonych. Oto jacyś ichmoście. W samą porę nadchodzą.<end id='e1191313106916' /></akap>
+		<akap>Mam wynaleźć osoby tu wyszczególnione: to się znaczy według tego, co tu napisano... A cóż tu napisano? Oto: że szewc ma pilnować łokcia, a krawiec kopyta; rybak pędzla, a malarz więcierza. Jakże wynajdę osoby tu wyszczególnione, kiedy nie mogę wynaleźć środka na wyczytanie tego, co osoba pisząca tu wyszczególniła? Kazano mi jednak; muszę się udać do uczonych. Oto jacyś ichmoście. W samą porę nadchodzą.<end id="e1191313106916"/></akap>
 	</kwestia>
 
 
@@ -1006,10 +1007,10 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495297718' /><motyw id='m1189495297718'>Cierpienie</motyw><wers_cd>Nie, nie oszalałem;</wers_cd>/
+		<strofa><begin id="b1189495297718"/><motyw id="m1189495297718">Cierpienie</motyw><wers_cd>Nie, nie oszalałem;</wers_cd>/
 		Lecz wpadłem w gorszy stan niż szalonego;/
 		W loch się dostałem, jestem pastwą głodu,/
-		Chłost i mąk... <begin id='b1189495489734' /><motyw id='m1189495489734'>Sługa</motyw>Dobry wieczór, przyjacielu.<end id='e1189495297718' /></strofa>
+		Chłost i mąk... <begin id="b1189495489734"/><motyw id="m1189495489734">Sługa</motyw>Dobry wieczór, przyjacielu.<end id="e1189495297718"/></strofa>
 	</kwestia>
 
 
@@ -1098,7 +1099,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>SŁUŻĄCY</naglowek_osoba>
 	<kwestia>
-		<akap>Oznajmię to panu bez pytania: moim panem jest możny, bogaty Kapulet; jeżeli panowie nie jesteście z domu Montekich, to was zapraszam do niego na kubek wina. Bądźcie weseli. <end id='e1189495489734' /></akap>
+		<akap>Oznajmię to panu bez pytania: moim panem jest możny, bogaty Kapulet; jeżeli panowie nie jesteście z domu Montekich, to was zapraszam do niego na kubek wina. Bądźcie weseli. <end id="e1189495489734"/></akap>
 	</kwestia>
 
 
@@ -1118,7 +1119,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495233812' /><motyw id='m1189495233812'>Kobieta, Kochanek, Miłość</motyw>Gdyby rzetelny mój wzrok tak fałszywe/
+		<strofa><begin id="b1189495233812"/><motyw id="m1189495233812">Kobieta, Kochanek, Miłość</motyw>Gdyby rzetelny mój wzrok tak fałszywe/
 		Miał dać świadectwo, łzy, stańcie się żarem!/
 		Wy, zalewane wciąż, a jeszcze żywe/
 		Przezrocza, spłońcie pod kłamstwa nadmiarem!/
@@ -1141,7 +1142,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Pójdę tam, ale z obojętnym okiem,/
-		Jednej wyłącznie poić się widokiem.<end id='e1189495233812' /></strofa>
+		Jednej wyłącznie poić się widokiem.<end id="e1189495233812"/></strofa>
 	</kwestia>
 
 
@@ -1159,11 +1160,11 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495570234' /><motyw id='m1189495570234'>Córka, Dziecko, Matka</motyw>Gdzie moja córka? Idź ją tu przywołać.</strofa>
+		<strofa><begin id="b1189495570234"/><motyw id="m1189495570234">Córka, Dziecko, Matka</motyw>Gdzie moja córka? Idź ją tu przywołać.</strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1189495578859' /><motyw id='m1189495578859'>Sługa</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1189495578859"/><motyw id="m1189495578859">Sługa</motyw>MARTA</naglowek_osoba>
 	<kwestia>
 		<strofa>Na moją cnotę do dwunastu wiosen ---/
 		Już ją wołałam. Pieszczotko, biedronko!/
@@ -1228,7 +1229,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
 	<kwestia>
 		<strofa><wers_cd>Za parę tygodni</wers_cd>/
-		Mniej więcej.<end id='e1189495570234' /></strofa>
+		Mniej więcej.<end id="e1189495570234"/></strofa>
 	</kwestia>
 
 
@@ -1310,9 +1311,9 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191316276270' /><motyw id='m1191316276270'>Córka, Matka</motyw>PANI KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191316276270"/><motyw id="m1191316276270">Córka, Matka</motyw>PANI KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495670625' /><motyw id='m1189495670625'>Małżeństwo</motyw><wers_cd>Zamęście!</wers_cd>/
+		<strofa><begin id="b1189495670625"/><motyw id="m1189495670625">Małżeństwo</motyw><wers_cd>Zamęście!</wers_cd>/
 		To jest punkt właśnie, o którym chcę mówić./
 		Powiedz mi, Julio, co myślisz i jakie/
 		Są chęci twoje we względzie małżeństwa?</strofa>
@@ -1321,7 +1322,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa>O tym zaszczycie jeszcze nie myślałam.<end id='e1189495670625' /></strofa>
+		<strofa>O tym zaszczycie jeszcze nie myślałam.<end id="e1189495670625"/></strofa>
 	</kwestia>
 
 
@@ -1335,12 +1336,12 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495707593' /><motyw id='m1189495707593'>Małżeństwo, Obyczaje</motyw><wers_cd>Myślże o tym teraz.</wers_cd>/
+		<strofa><begin id="b1189495707593"/><motyw id="m1189495707593">Małżeństwo, Obyczaje</motyw><wers_cd>Myślże o tym teraz.</wers_cd>/
 		Młodsze od ciebie dziewczęta z szlachetnych/
 		Domów w Weronie wcześnie stan zmieniają;/
 		Ja sama byłam już matką w tym wieku,/
 		W którym tyś jeszcze panną. Krótko mówiąc,/
-		Waleczny Parys stara się o ciebie.<end id='e1189495707593' /></strofa>
+		Waleczny Parys stara się o ciebie.<end id="e1189495707593"/></strofa>
 	</kwestia>
 
 
@@ -1387,7 +1388,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <naglowek_osoba>MARTA</naglowek_osoba>
 	<kwestia>
 		<strofa>Ujmy? Ba, owszem przyrost, boć to przecie/
-		Zawżdy z mężczyzną przybywa kobiecie.<end id='e1189495578859' /></strofa>
+		Zawżdy z mężczyzną przybywa kobiecie.<end id="e1189495578859"/></strofa>
 	</kwestia>
 
 
@@ -1401,11 +1402,11 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	<kwestia>
 		<strofa>Zobaczę, jeśli patrzenia dość na to;/
 		Nie głębiej jednak myślę w tę rzecz wglądać,/
-		Jak tobie, pani, podoba się żądać.<end id='e1191316276270' /></strofa>
+		Jak tobie, pani, podoba się żądać.<end id="e1191316276270"/></strofa>
 	</kwestia>
 
 
-<didaskalia><begin id='b1191314682031' /><motyw id='m1191314682031'>Sługa</motyw>Wchodzi <osoba>Służący</osoba>.</didaskalia>
+<didaskalia><begin id="b1191314682031"/><motyw id="m1191314682031">Sługa</motyw>Wchodzi <osoba>Służący</osoba>.</didaskalia>
 
 
 <naglowek_osoba>SŁUŻĄCY</naglowek_osoba>
@@ -1414,7 +1415,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	</kwestia>
 
 
-<didaskalia>Wychodzi.<end id='e1191314682031' /></didaskalia>
+<didaskalia>Wychodzi.<end id="e1191314682031"/></didaskalia>
 
 
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
@@ -1443,7 +1444,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495839234' /><motyw id='m1189495839234'>Obyczaje</motyw>Mamyż przy wejściu z przemową wystąpić<pr>Gości niezaproszonych poprzedzał służący z kurtuazyjnymi przeprosinami (często w przebraniu, np. bożka miłości Kupidyna), a następnie już oni sami przy wejściu wygłaszali mowę na cześć gościnności pana domu albo pod adresem znajdujących się dam. Jak widzimy z tekstu, zwyczaj ten wtedy wyszedł już w Anglii z mody.</pr>/
+		<strofa><begin id="b1189495839234"/><motyw id="m1189495839234">Obyczaje</motyw>Mamyż przy wejściu z przemową wystąpić<pr>Gości niezaproszonych poprzedzał służący z kurtuazyjnymi przeprosinami (często w przebraniu, np. bożka miłości Kupidyna), a następnie już oni sami przy wejściu wygłaszali mowę na cześć gościnności pana domu albo pod adresem znajdujących się dam. Jak widzimy z tekstu, zwyczaj ten wtedy wyszedł już w Anglii z mody.</pr>/
 		Czy też po prostu wejść?</strofa>
 	</kwestia>
 
@@ -1458,7 +1459,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Ani też owych prawili oracji,/
 		Mdło za suflerem cedzonych na wstępie./
 		Niech sobie o nas pomyślą, co zechcą;/
-		Wejdziem, pokręcim się<pr><slowo_obce>pokręcim się</slowo_obce> --- w oryg. <slowo_obce>measure</slowo_obce>, oznaczające uroczysty taniec rozpoczynający zabawę.</pr> i znikniem potem.<end id='e1189495839234' /></strofa>
+		Wejdziem, pokręcim się<pr><slowo_obce>pokręcim się</slowo_obce> --- w oryg. <slowo_obce>measure</slowo_obce>, oznaczające uroczysty taniec rozpoczynający zabawę.</pr> i znikniem potem.<end id="e1189495839234"/></strofa>
 	</kwestia>
 
 
@@ -1478,7 +1479,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495872562' /><motyw id='m1189495872562'>Cierpienie, Miłość</motyw><wers_cd>Nie, doprawdy.</wers_cd>/
+		<strofa><begin id="b1189495872562"/><motyw id="m1189495872562">Cierpienie, Miłość</motyw><wers_cd>Nie, doprawdy.</wers_cd>/
 		Wy macie lekkie trzewiki, to tańczcie;/
 		Mnie ołów serce tłoczy, ledwie mogę/
 		Ruszyć się z miejsca.</strofa>
@@ -1519,7 +1520,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
 	<kwestia>
 		<strofa>Twardali dla cię, bądź i dla niej twardy;/
-		Kol ją, gdy kole, a zwalisz ją łatwo.<end id='e1189495872562' />/
+		Kol ją, gdy kole, a zwalisz ją łatwo.<end id="e1189495872562"/>/
 		Hola! podajcie mi na twarz pokrowiec!/
 		Maskę na maskę!</strofa>
 	
@@ -1590,7 +1591,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189495975031' /><motyw id='m1189495975031'>Sen</motyw>Miałem tej nocy marzenie.</strofa>
+		<strofa><begin id="b1189495975031"/><motyw id="m1189495975031">Sen</motyw>Miałem tej nocy marzenie.</strofa>
 	</kwestia>
 
 
@@ -1653,17 +1654,17 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Za bardzo znajdzie cukrem przesycony./
 		Czasem też wjeżdża na nos dworakowi:/
 		Wtedy śnią mu się nowe łaski pańskie;/
-		<begin id='b1191318009455' /><motyw id='m1191318009455'>Ksiądz</motyw>Czasem i księdza plebana odwiedzi,/
+		<begin id="b1191318009455"/><motyw id="m1191318009455">Ksiądz</motyw>Czasem i księdza plebana odwiedzi,/
 		Gdy ten spokojnie drzemie, i ogonem/
 		Dziesięcinnego wieprza<pr><slowo_obce>Dziesięcinnego wieprza</slowo_obce> --- wieprza składanego w dziesięcinie, czyli w podatku kościelnym stanowiącym dziesiątą część zbiorów.</pr> w nos go łechce:/
-		Wtedy mu nowe śnią się beneficja<pr><slowo_obce>beneficja</slowo_obce> --- ziemie, z których duchowny pobierał dożywotnio dochody.</pr><end id='e1191318009455' />/
-		<begin id='b1191317942239' /><motyw id='m1191317942239'>Żołnierz</motyw>Czasem wkłusuje na kark żołnierzowi:/
+		Wtedy mu nowe śnią się beneficja<pr><slowo_obce>beneficja</slowo_obce> --- ziemie, z których duchowny pobierał dożywotnio dochody.</pr><end id="e1191318009455"/>/
+		<begin id="b1191317942239"/><motyw id="m1191317942239">Żołnierz</motyw>Czasem wkłusuje na kark żołnierzowi:/
 		Ten wtedy marzy o cięciach i pchnięciach,/
 		O szturmach, breszach <pr><slowo_obce>bresze</slowo_obce> --- wyłomy w murze zdobywanego miasta.</pr>, o hiszpańskich klingach/
 		Czy o pucharach, co mają pięć sążni<pe><slowo_obce>sążeń</slowo_obce> --- dawna jednostka długości, wynosząca ok. 2m, wyznaczana rozpiętością ramion.</pe>;/
 		Wtem mu zatrąbi w ucho: nasz bohater/
 		Truchleje, zrywa się, klnąc zmawia pacierz/
-		I znów zasypia.<end id='e1191317942239' /> <begin id='b1191317902302' /><motyw id='m1191317902302'>Kobieta</motyw>Taka jest Mab: ona,/
+		I znów zasypia.<end id="e1191317942239"/> <begin id="b1191317902302"/><motyw id="m1191317902302">Kobieta</motyw>Taka jest Mab: ona,/
 		Ona to w nocy zlepia grzywy koniom/
 		I włos ich gładki w szpetne kudły zbija,/
 		Które rozczesać niebezpiecznie; ona/
@@ -1671,7 +1672,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Dziewczęta dusi i wcześnie je uczy/
 		Dźwigać ciężary, by się z czasem mogły/
 		Zawołanymi stać gospodyniami./
-		Ona to, ona...<end id='e1191317902302' /></strofa>
+		Ona to, ona...<end id="e1191317902302"/></strofa>
 	</kwestia>
 
 
@@ -1691,7 +1692,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Tak subtelnego właśnie jak powietrze;/
 		Bardziej niestała niż wiatr, który już to/
 		Mroźną całuje północ, już to z wstrętem/
-		Rzuca ją, dążąc w objęcia południa.<end id='e1189495975031' /></strofa>
+		Rzuca ją, dążąc w objęcia południa.<end id="e1189495975031"/></strofa>
 	</kwestia>
 
 
@@ -1702,7 +1703,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191318224257' /><motyw id='m1191318224257'>Los</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191318224257"/><motyw id="m1191318224257">Los</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Boję się, czyli nie przyjdziem za wcześnie;/
 		Bo moja dusza przeczuwa, że jakieś/
@@ -1712,7 +1713,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		W mej piersi, zbyt już nieznośnego, życia/
 		Przyśpieszy jakimś strasznym śmierci ciosem./
 		Lecz niech Ten, który ma ster mój w swym ręku,/
-		Kieruje moim żaglem! Dalej! Idźmy!<end id='e1191318224257' /></strofa>
+		Kieruje moim żaglem! Dalej! Idźmy!<end id="e1191318224257"/></strofa>
 	</kwestia>
 
 
@@ -1734,9 +1735,9 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <didaskalia>Sala w domu Kapuletów. Wchodzą muzykanci i słudzy.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191318370461' /><motyw id='m1191318370461'>Sługa</motyw>PIERWSZY SŁUGA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191318370461"/><motyw id="m1191318370461">Sługa</motyw>PIERWSZY SŁUGA</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1189496060921' /><motyw id='m1189496060921'>Sługa</motyw>Gdzie Potpan?<end id='e1189496060921' /><pr><slowo_obce>Potpan</slowo_obce> --- skrócone <slowo_obce>potcompanion</slowo_obce> --- kuchcik.</pr> Czemu nie pomaga sprzątać? Gęsi mu paść, nie służyć.</akap>
+		<akap><begin id="b1189496060921"/><motyw id="m1189496060921">Sługa</motyw>Gdzie Potpan?<end id="e1189496060921"/><pr><slowo_obce>Potpan</slowo_obce> --- skrócone <slowo_obce>potcompanion</slowo_obce> --- kuchcik.</pr> Czemu nie pomaga sprzątać? Gęsi mu paść, nie służyć.</akap>
 	</kwestia>
 
 
@@ -1766,7 +1767,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>TRZECI SŁUGA</naglowek_osoba>
 	<kwestia>
-		<akap>Nie możemy być tu i tam razem. Dalej, chłopcy! pohulajmyż dzisiaj! Kto umie czekać, wszystkiego się doczeka.<end id='e1191318370461' /></akap>
+		<akap>Nie możemy być tu i tam razem. Dalej, chłopcy! pohulajmyż dzisiaj! Kto umie czekać, wszystkiego się doczeka.<end id="e1191318370461"/></akap>
 	</kwestia>
 
 
@@ -1775,11 +1776,11 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496086656' /><motyw id='m1189496086656'>Obyczaje, Starość, Młodość</motyw>Witaj, cna młodzi! <begin id='b1191318482021' /><motyw id='m1191318482021'>Kobieta</motyw>Wolne od nagniotków/
+		<strofa><begin id="b1189496086656"/><motyw id="m1189496086656">Obyczaje, Starość, Młodość</motyw>Witaj, cna młodzi! <begin id="b1191318482021"/><motyw id="m1191318482021">Kobieta</motyw>Wolne od nagniotków/
 		Damy rachują na waszą ruchawość,/
 		Śliczne panienki, któraż z was odmówi/
 		Stanąć do tańca? O takiej wręcz powiem,/
-		Że ma nagniotki.<end id='e1191318482021' /> A co? Tom was zażył!/
+		Że ma nagniotki.<end id="e1191318482021"/> A co? Tom was zażył!/
 		Dalej, panowie! I ja kiedyś także/
 		Maskę nosiłem i umiałem szeptać/
 		W ucho pięknościom jedwabne powieści,/
@@ -1787,12 +1788,12 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Nuże, panowie! Grajki, zaczynajcie!/
 		Miejsca! rozstąpmy się! dalej, dziewczęta!</strofa></kwestia>
 		
-	<didaskalia>Muzyka gra. Młodzież tańczy.<end id='e1189496086656' /></didaskalia>
+	<didaskalia>Muzyka gra. Młodzież tańczy.<end id="e1189496086656"/></didaskalia>
 	
 	<kwestia>
 		<strofa>Hej! więcej światła! Wynieście te stoły<pr><slowo_obce>Wynieście te stoły</slowo_obce> --- stoły składały się z blatu opieranego na krzyżakach, w razie potrzeby stawiano je na bok, aby nie zabierały miejsca, i tak jest w oryginale.</pr>!/
 		I zgaście ogień, bo zbyt już gorąco./
-		<begin id='b1191318708918' /><motyw id='m1191318708918'>Starość</motyw>Siadajże, siadaj, bracie Kapulecie<pr><slowo_obce>bracie Kapulecie</slowo_obce> --- jak wynika z zaproszenia (I, 2), jest on stryjem ojca Julii.</pr>!/
+		<begin id="b1191318708918"/><motyw id="m1191318708918">Starość</motyw>Siadajże, siadaj, bracie Kapulecie<pr><slowo_obce>bracie Kapulecie</slowo_obce> --- jak wynika z zaproszenia (I, 2), jest on stryjem ojca Julii.</pr>!/
 		Dla nas dwóch czasy pląsów już minęły./
 		Jakże to dawno byliśmy obydwaj/
 		Po raz ostatni w maskach?</strofa>
@@ -1825,14 +1826,14 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
 		<strofa>Co mi waść prawisz? Przede dwoma laty/
-		Syn jego nie był jeszcze pełnoletni.<end id='e1191318708918' /></strofa>
+		Syn jego nie był jeszcze pełnoletni.<end id="e1191318708918"/></strofa>
 	</kwestia>
 
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<didaskalia>do jednego z sług</didaskalia>
 	<kwestia>
-		<strofa><begin id='b1189496121265' /><motyw id='m1189496121265'>Miłość, Kochanek</motyw>Co to za dama, co w tej chwili tańczy/
+		<strofa><begin id="b1189496121265"/><motyw id="m1189496121265">Miłość, Kochanek</motyw>Co to za dama, co w tej chwili tańczy/
 		Z tym kawalerem?</strofa>
 	</kwestia>
 
@@ -1854,18 +1855,18 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Zaraz po tańcu przybliżę się do niej/
 		I dłoń mą uczczę dotknięciem jej dłoni./
 		Kochałżem dotąd? O! zaprzecz, mój wzroku!/
-		Boś jeszcze nie znał równego uroku.<end id='e1189496121265' /></strofa>
+		Boś jeszcze nie znał równego uroku.<end id="e1189496121265"/></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191319034157' /><motyw id='m1191319034157'>Grzech, Obyczaje, Przemoc, Wróg</motyw>TYBALT</naglowek_osoba>
+<naglowek_osoba><begin id="b1191319034157"/><motyw id="m1191319034157">Grzech, Obyczaje, Przemoc, Wróg</motyw>TYBALT</naglowek_osoba>
 	<kwestia>
 		<strofa>Sądząc po głosie, z Montekich to któryś./
 		Daj no mi rapir, chłopcze. Jak się waży/
 		Ten łotr tu wchodzić i kłamaną larwą/
 		Szyderczo naszej urągać zabawie?/
 		Na krew szlachetną, co mi wzdyma serce,/
-		Nie będzie grzechu, jeśli go uśmiercę.<end id='e1191319034157' /></strofa>
+		Nie będzie grzechu, jeśli go uśmiercę.<end id="e1191319034157"/></strofa>
 	</kwestia>
 
 
@@ -1877,9 +1878,9 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>TYBALT</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496148531' /><motyw id='m1189496148531'>Konflikt, Wróg</motyw>Ujmy tej, stryju, pewno nie wytrzymasz:/
+		<strofa><begin id="b1189496148531"/><motyw id="m1189496148531">Konflikt, Wróg</motyw>Ujmy tej, stryju, pewno nie wytrzymasz:/
 		Jeden z Montekich, twych śmiertelnych wrogów,/
-		Śmie tu znieważać gościnność twych progów.<end id='e1189496148531' /></strofa>
+		Śmie tu znieważać gościnność twych progów.<end id="e1189496148531"/></strofa>
 	</kwestia>
 
 
@@ -1897,7 +1898,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496159453' /><motyw id='m1189496159453'>Obyczaje</motyw>Daj mu waść pokój, nie wychodzi przecie/
+		<strofa><begin id="b1189496159453"/><motyw id="m1189496159453">Obyczaje</motyw>Daj mu waść pokój, nie wychodzi przecie/
 		z granic wytkniętych dobrym wychowaniem/
 		I prawdę mówiąc, cała go Werona/
 		Ma za młodzieńca pełnego przymiotów;/
@@ -1906,7 +1907,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 		Miły synowcze, nie zważaj na niego,/
 		Taka ma wola; jeśli ją szanujesz,/
 		Okaż uprzejmość i spędź precz z oblicza/
-		Ten mars niezgodny z weselem tej doby.<end id='e1189496159453' /></strofa>
+		Ten mars niezgodny z weselem tej doby.<end id="e1189496159453"/></strofa>
 	</kwestia>
 
 
@@ -1960,7 +1961,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<didaskalia>do <osoba>Julii</osoba><pr><slowo_obce>do Julii</slowo_obce> --- pierwsza ich rozmowa napisana jest w formie sonetu.</pr></didaskalia>
 	<kwestia>
-		<strofa><begin id='b1189496219046' /><motyw id='m1189496219046'>Miłość</motyw>Jeśli dłoń moja, co tę świętość trzyma,/
+		<strofa><begin id="b1189496219046"/><motyw id="m1189496219046">Miłość</motyw>Jeśli dłoń moja, co tę świętość trzyma,/
 		Bluźni dotknięciem: zuchwalstwo takowe/
 		Odpokutować usta me gotowe/
 		Pocałowaniem pobożnym pielgrzyma.</strofa>
@@ -2034,7 +2035,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa><wers_cd>Jak z książki całujesz pielgrzymie.</wers_cd><end id='e1189496219046' /></strofa>
+		<strofa><wers_cd>Jak z książki całujesz pielgrzymie.</wers_cd><end id="e1189496219046"/></strofa>
 	</kwestia>
 
 
@@ -2052,18 +2053,18 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>MARTA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496265500' /><motyw id='m1189496265500'>Sługa</motyw><wers_cd>Jej matką? Bajbardzo!</wers_cd>/
+		<strofa><begin id="b1189496265500"/><motyw id="m1189496265500">Sługa</motyw><wers_cd>Jej matką? Bajbardzo!</wers_cd>/
 		Nikt inny, jeno pani tego domu;/
 		I dobra pani, mądra a cnotliwa./
 		Ja byłam mamką tej, coś z nią pan mówił./
-		Smaczny by kąsek miał, kto by ją złowił.<end id='e1189496265500' /></strofa>
+		Smaczny by kąsek miał, kto by ją złowił.<end id="e1189496265500"/></strofa>
 	</kwestia>
 
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496278625' /><motyw id='m1189496278625'>Konflikt, Wróg</motyw>A więc Kapulet! O dolo zbyt sroga!/
-		Życie me jest więc w ręku mego wroga.<end id='e1189496278625' /></strofa>
+		<strofa><begin id="b1189496278625"/><motyw id="m1189496278625">Konflikt, Wróg</motyw>A więc Kapulet! O dolo zbyt sroga!/
+		Życie me jest więc w ręku mego wroga.<end id="e1189496278625"/></strofa>
 	</kwestia>
 
 
@@ -2156,10 +2157,10 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189496360781' /><motyw id='m1189496360781'>Konflikt, Miłość, Wróg</motyw>Jako obcego za wcześnie ujrzałam!/
+		<strofa><begin id="b1189496360781"/><motyw id="m1189496360781">Konflikt, Miłość, Wróg</motyw>Jako obcego za wcześnie ujrzałam!/
 		Jako lubego za późno poznałam!/
 		Dziwny miłości traf się na mnie iści,/
-		Że muszę kochać przedmiot nienawiści.<end id='e1189496360781' /></strofa>
+		Że muszę kochać przedmiot nienawiści.<end id="e1189496360781"/></strofa>
 	</kwestia>
 
 
@@ -2206,14 +2207,14 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 
 
-<naglowek_rozdzial><begin id='b1191327333746' /><motyw id='m1191327333746'>Sen</motyw>PROLOG</naglowek_rozdzial>
+<naglowek_rozdzial><begin id="b1191327333746"/><motyw id="m1191327333746">Sen</motyw>PROLOG</naglowek_rozdzial>
 
 <nota><akap>Przełożył Jan Kasprowicz</akap></nota>
 
 
 <naglowek_osoba>CHÓR</naglowek_osoba>
 
-<strofa><begin id='b1191324309503' /><motyw id='m1191324309503'>Konflikt, Miłość, Rodzina</motyw>Dawna namiętność już w całunach leży,/
+<strofa><begin id="b1191324309503"/><motyw id="m1191324309503">Konflikt, Miłość, Rodzina</motyw>Dawna namiętność już w całunach leży,/
 W jej miejscu władnie<pe><slowo_obce>władnie</slowo_obce> --- włada.</pe> siła żądzy nowej;/
 Piękną przestała być przy Julii świeżej/
 Piękność, dla której umrzeć był gotowy.</strofa>
@@ -2229,7 +2230,7 @@ I jej, choć w łonie namiętność się sroży,/
 Zejścia się z lubym zamkniętą jest droga.</strofa>
 
 <strofa>Lecz w żądzy siła: po wielkich katuszach/
-Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
+Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 
 
 
@@ -2271,7 +2272,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191325153048' /><motyw id='m1191325153048'>Kochanek</motyw>MERKUCJO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191325153048"/><motyw id="m1191325153048">Kochanek</motyw>MERKUCJO</naglowek_osoba>
 	<kwestia>
 		<strofa><wers_cd>Użyję nań zaklęć;</wers_cd>/
 		Romeo! gachu! cietrzewiu! wariacie<pr><slowo_obce>Romeo! gachu!...</slowo_obce> --- w oryg. poetyczniej: <slowo_obce>Romeo, humours, madman, passion, lover!</slowo_obce>, czyli: Romeo! Zmienniku! wariacie! namiętności! kochanku! Ponieważ Romeo uciekł towarzyszom, Merkucjo żartobliwymi zaklęciami chce wywołać jego ducha. Jak widzimy w następnej scenie, Romeo słyszał ich z ukrycia.</pr>!/
@@ -2289,7 +2290,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Na jej wysokie czoło, krasne usta,/
 		Wysmukłe nóżki i toczone biodra/
 		Z przyległościami, abyś się przed nami/
-		W właściwej sobie postaci ukazał.<end id='e1191325153048' /></strofa>
+		W właściwej sobie postaci ukazał.<end id="e1191325153048"/></strofa>
 	</kwestia>
 
 
@@ -2315,22 +2316,22 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189499513046' /><motyw id='m1189499513046'>Miłość</motyw>Pójdź! skrył się owdzie pomiędzy drzewami,/
+		<strofa><begin id="b1189499513046"/><motyw id="m1189499513046">Miłość</motyw>Pójdź! skrył się owdzie pomiędzy drzewami,/
 		By się tam zbratał z tajemniczą nocą<pr><slowo_obce>z tajemniczą nocą</slowo_obce> --- w oryg.: <slowo_obce>humorous night</slowo_obce> --- wilgotna, czyli zmienna noc.</pr>---/
-		Ślepym w miłości ciemność jest najmilsza.<end id='e1189499513046' /></strofa>
+		Ślepym w miłości ciemność jest najmilsza.<end id="e1189499513046"/></strofa>
 	</kwestia>
 
 
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191325220996' /><motyw id='m1191325220996'>Kobieta, Kochanek</motyw>Możeż w cel trafić miłość będąc ślepą?/
+		<strofa><begin id="b1191325220996"/><motyw id="m1191325220996">Kobieta, Kochanek</motyw>Możeż w cel trafić miłość będąc ślepą?/
 		Teraz usiądzie sobie pod jabłonką/
 		I będzie wzdychał, by jego kochanka/
 		Była owocem, który młode panny,/
 		Kiedy są same - nazywają figą./
 		Oby, Romeo, była, oby była 
 		Taką otwartą figą, a ty chłopcze,/
-		Obyś był gruszką!<end id='e1191325220996' /> Dobranoc, Romeo!/
+		Obyś był gruszką!<end id="e1191325220996"/> Dobranoc, Romeo!/
 		Idę lec w moim łóżku za kotarą,/
 		Bo to polowe<pr><slowo_obce>polowe</slowo_obce> --- dotyczy łóżka, chodzi o spanie na ziemi.</pr> tu dla mnie za chłodne./
 		Czy idziesz także?</strofa>
@@ -2358,7 +2359,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189499555531' /><motyw id='m1189499555531'>Cierpienie, Kochanek, Miłość</motyw>Drwi z blizn, kto nigdy nie doświadczył rany.<end id='e1189499555531' /></strofa>
+		<strofa><begin id="b1189499555531"/><motyw id="m1189499555531">Cierpienie, Kochanek, Miłość</motyw>Drwi z blizn, kto nigdy nie doświadczył rany.<end id="e1189499555531"/></strofa>
 	</kwestia>
 	
 	<didaskalia><osoba>Julia</osoba> ukazuje się w oknie.</didaskalia>
@@ -2414,11 +2415,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189499589953' /><motyw id='m1189499589953'>Konflikt, Miłość, Rodzina</motyw>Romeo! Czemuż ty jesteś Romeo!/
+		<strofa><begin id="b1189499589953"/><motyw id="m1189499589953">Konflikt, Miłość, Rodzina</motyw>Romeo! Czemuż ty jesteś Romeo!/
 		Wyrzecz się swego rodu, rzuć tę nazwę!/
 		Lub jeśli tego nie możesz uczynić,/
 		To przysiąż wiernym być mojej miłości,/
-		A ja przestanę być z krwi Kapuletów.<end id='e1189499589953' /></strofa>
+		A ja przestanę być z krwi Kapuletów.<end id="e1189499589953"/></strofa>
 	</kwestia>
 
 
@@ -2430,7 +2431,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191325719058' /><motyw id='m1191325719058'>Konflikt, Miłość, Rodzina</motyw>Nazwa twa tylko jest mi nieprzyjazna,/
+		<strofa><begin id="b1191325719058"/><motyw id="m1191325719058">Konflikt, Miłość, Rodzina</motyw>Nazwa twa tylko jest mi nieprzyjazna,/
 		Boś ty w istocie nie Montekim dla mnie./
 		Jestże Monteki choćby tylko ręką,/
 		Ramieniem, twarzą, zgoła jakąkolwiek/
@@ -2439,9 +2440,9 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Pod inną nazwą równie by pachniało;/
 		Tak i Romeo bez nazwy Romea/
 		Przecież by całą swą wartość zatrzymał./
-		<begin id='b1191325798938' /><motyw id='m1191325798938'>Kochanek</motyw>Romeo! porzuć tę nazwę, a w zamian/
+		<begin id="b1191325798938"/><motyw id="m1191325798938">Kochanek</motyw>Romeo! porzuć tę nazwę, a w zamian/
 		Za to, co nawet cząstką ciebie nie jest,/
-		Weź mię, ach! całą!<end id='e1191325719058' /></strofa>
+		Weź mię, ach! całą!<end id="e1191325719058"/></strofa>
 	</kwestia>
 
 
@@ -2449,7 +2450,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<kwestia>
 		<strofa><wers_cd>Biorę cię za słowo:</wers_cd>/
 		Zwij mię kochankiem, a krzyżmo<pr><slowo_obce>krzyżmo</slowo_obce> --- olej z balsamu i oliwy używany przy niektórych sakramentach i uroczystościach kościelnych.</pr> chrztu tego/
-		Sprawi, że odtąd nie będę Romeem.<end id='e1191325798938' /></strofa>
+		Sprawi, że odtąd nie będę Romeem.<end id="e1191325798938"/></strofa>
 	</kwestia>
 
 
@@ -2497,7 +2498,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189499635375' /><motyw id='m1189499635375'>Miłość</motyw><wers_cd>Na skrzydłach miłości</wers_cd>/
+		<strofa><begin id="b1189499635375"/><motyw id="m1189499635375">Miłość</motyw><wers_cd>Na skrzydłach miłości</wers_cd>/
 		Lekko, bezpiecznie mur ten przesadziłem,/
 		Bo miłość nie ma żadnych tam i granic;/
 		A co potrafi, na to się i waży;/
@@ -2515,7 +2516,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<kwestia>
 		<strofa>Ach! więcej groźby leży w oczach twoich/
 		Niż w ich dwudziestu mieczach; patrz łaskawie,/
-		A będę silny przeciw ich gniewowi.<end id='e1189499635375' /></strofa>
+		A będę silny przeciw ich gniewowi.<end id="e1189499635375"/></strofa>
 	</kwestia>
 
 
@@ -2534,7 +2535,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191325991247' /><motyw id='m1191325991247'>Miłość</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191325991247"/><motyw id="m1191325991247">Miłość</motyw>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>Kto ci dopomógł znaleźć to ustronie?</strofa>
 	</kwestia>
@@ -2547,7 +2548,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Nie jestem sternik, gdybyś jednak była/
 		Równie daleko jak ów brzeg, którego/
 		Morze najdalsze podmywa krawędzie,/
-		Śmiało po taki klejnot bym popłynął.<end id='e1191325991247' /></strofa>
+		Śmiało po taki klejnot bym popłynął.<end id="e1191325991247"/></strofa>
 	</kwestia>
 
 
@@ -2558,7 +2559,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Po tym, co z ust mych słyszałeś tej nocy./
 		Rada bym form się trzymać, rada cofnąć/
 		To, co wyrzekłam; ale precz, udanie!/
-		<begin id='b1191326102007' /><motyw id='m1191326102007'>Miłość</motyw>Czy ty mię kochasz? Wiem, że powiesz: tak jest;/
+		<begin id="b1191326102007"/><motyw id="m1191326102007">Miłość</motyw>Czy ty mię kochasz? Wiem, że powiesz: tak jest;/
 		I jać uwierzę; mimo przysiąg jednak/
 		Możesz mię zawieść. Z wiarołomstwa mężczyzn/
 		Śmieje się, mówią, Jowisz. O! Romeo!/
@@ -2576,7 +2577,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Głosu miłości mojej nie podchwycił./
 		Nie wiń mię przeto ani też przypisuj/
 		Płochości tego wylania mych uczuć,/
-		Które zdradziła noc ciemna.<end id='e1191326102007' /></strofa>
+		Które zdradziła noc ciemna.<end id="e1191326102007"/></strofa>
 	</kwestia>
 
 
@@ -2588,7 +2589,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191326381278' /><motyw id='m1191326381278'>Miłość</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191326381278"/><motyw id="m1191326381278">Miłość</motyw>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>O! nie przysięgaj na księżyc, bo księżyc/
 		Co tydzień zmienia kształt swej pięknej tarczy;/
@@ -2627,7 +2628,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Te nocne śluby nie cieszą mnie jakoś,/
 		Za nagłe one są, za nierozważne,/
 		Podobne niby do blasku, co znika,/
-		Nim człowiek zdąży powiedzieć: ,,Błysnęło".<end id='e1191326381278' />/
+		Nim człowiek zdąży powiedzieć: ,,Błysnęło".<end id="e1191326381278"/>/
 		Dobranoc, luby! Oby nam ten wonny/
 		Miłości pączek przyniósł kwiat niepłonny!/
 		Bądź zdrów! i zaśnij z tak błogim spokojem,/
@@ -2670,10 +2671,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<kwestia>
 		<strofa>Ażebym mogła oddać ci je znowu./
 		A przecież jest to żądanie zbyteczne;/
-		<begin id='b1191326316928' /><motyw id='m1191326316928'>Miłość, Woda</motyw>Bo moja miłość równie jest głęboka/
+		<begin id="b1191326316928"/><motyw id="m1191326316928">Miłość, Woda</motyw>Bo moja miłość równie jest głęboka/
 		Jak morze, równie jak ono bez końca;/
 		Im więcej ci jej udzielam, tym więcej/
-		Czuję jej w sercu.<end id='e1191326316928' /></strofa>
+		Czuję jej w sercu.<end id="e1191326316928"/></strofa>
 	</kwestia>
 	
 	<didaskalia>Słychać w pokojach głos <osoba>Marty</osoba>.</didaskalia>
@@ -2748,7 +2749,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191326552622' /><motyw id='m1191326552622'>Kochanek</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191326552622"/><motyw id="m1191326552622">Kochanek</motyw>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>Po tysiąc razy dobranoc.</strofa>
 	</kwestia>
@@ -2764,7 +2765,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Jak żak, gdy rzuca książkę, tak kochanek/
 		Do celu swego pospiesza wesoły;/
 		A gdy nadejdzie z kochanką rozstanek<pe><slowo_obce>rozstanek</slowo_obce> --- rozstanie.</pe>,/
-		Wlecze się smutnie, jak ów żak do szkoły.<end id='e1191326552622' /></strofa>
+		Wlecze się smutnie, jak ów żak do szkoły.<end id="e1191326552622"/></strofa>
 	</kwestia>
 
 
@@ -2784,7 +2785,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191326715329' /><motyw id='m1191326715329'>Kochanek, Miłość</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191326715329"/><motyw id="m1191326715329">Kochanek, Miłość</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Moja to dusza dzwoni imię moje,/
 		Jak srebrny dźwięk ma nocą głos kochanki!/
@@ -2794,7 +2795,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa>Romeo!<end id='e1191326715329' /></strofa>
+		<strofa>Romeo!<end id="e1191326715329"/></strofa>
 	</kwestia>
 
 
@@ -2877,10 +2878,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Odchodzi.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191326843855' /><motyw id='m1191326843855'>Kochanek, Sen</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191326843855"/><motyw id="m1191326843855">Kochanek, Sen</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Sen na twe oczy, pokój w pierś niech spłynie;/
-		Obym był nimi w tej błogiej godzinie!<end id='e1191326843855' />/
+		Obym był nimi w tej błogiej godzinie!<end id="e1191326843855"/>/
 		Spieszę do ojca Laurentego celi,/
 		On mi pomocy i rady udzieli.</strofa>
 	</kwestia>
@@ -2906,7 +2907,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Z dróg dnia ubitych kołami Tytana<pr><slowo_obce>kołami Tytana</slowo_obce> --- w mitologii gr. tytan Hyperion był przed Apollinem woźnicą słonecznego rydwanu.</pr>./
 		Nim oko słońca pełnym blaskiem strzeli,/
 		Rosę wypije i świat rozweseli,/
-		<begin id='b1191327015462' /><motyw id='m1191327015462'>Natura, Rośliny</motyw>Muszę uzbierać w ten koszyk z sitowia/
+		<begin id="b1191327015462"/><motyw id="m1191327015462">Natura, Rośliny</motyw>Muszę uzbierać w ten koszyk z sitowia/
 		Roślin tak zbawczych, jak zgubnych dla zdrowia,/
 		Ziemia jest matką natury i grobem,/
 		Grzebie i życia obdziela zasobem./
@@ -2915,8 +2916,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Niejedno w skutkach swoich wyśmienite,/
 		Każde do czegoś, wszystko rozmaite./
 		O! moc to pełna cudów, co się mieści/
-		W sokach ziół, krzewów, w martwej kruszców treści!<end id='e1191327015462' />/
-		<begin id='b1189499801390' /><motyw id='m1189499801390'>Obraz świata</motyw>Bo nie ma rzeczy tak podłych na ziemi,/
+		W sokach ziół, krzewów, w martwej kruszców treści!<end id="e1191327015462"/>/
+		<begin id="b1189499801390"/><motyw id="m1189499801390">Obraz świata</motyw>Bo nie ma rzeczy tak podłych na ziemi,/
 		Aby nie mogły stać się przydatnemi;/
 		Ni tak przydatnych, aby zamiast służyć/
 		Nie zaszkodziły pod wpływem nadużyć./
@@ -2929,7 +2930,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Podobnie sprzeczna i w człowieku gości/
 		Dwójca pierwiastków: dobroci i złości;/
 		A kędy górę gorsza weźmie stroma,/
-		Tam śmierć przychodzi i roślina kona.<end id='e1189499801390' /></strofa>
+		Tam śmierć przychodzi i roślina kona.<end id="e1189499801390"/></strofa>
 	</kwestia>
 
 
@@ -2950,11 +2951,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Próżne zostawia o tak wczesnej porze./
 		Troska odbywa straż w oczach starego,/
 		A sen tych mija, których troski strzegą;/
-		<begin id='b1189499854593' /><motyw id='m1189499854593'>Młodość</motyw>Ale gdzie czerstwa, wolna od kłopotów/
-		Młódź głowę złoży, sen zawżdy przyjść gotów.<end id='e1189499854593' />/
+		<begin id="b1189499854593"/><motyw id="m1189499854593">Młodość</motyw>Ale gdzie czerstwa, wolna od kłopotów/
+		Młódź głowę złoży, sen zawżdy przyjść gotów.<end id="e1189499854593"/>/
 		To więc tak ranne tu przybycie zdradza/
 		Jakiś niepokój, któremu snu władza/
-		Ulec musiała.<end id='e1191327333746' /> Czy tylko się kładłeś?/
+		Ulec musiała.<end id="e1191327333746"/> Czy tylko się kładłeś?/
 		Możeś do łóżka i nie zajrzał?</strofa>
 	</kwestia>
 
@@ -2988,14 +2989,14 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Zaraz ci powiem: próżno byś zgadywał;/
-		<begin id='b1189499895890' /><motyw id='m1189499895890'>Konflikt, Miłość</motyw>Byłem na balu w domu mego wroga,/
+		<begin id="b1189499895890"/><motyw id="m1189499895890">Konflikt, Miłość</motyw>Byłem na balu w domu mego wroga,/
 		Gdziem został ranny, lecz zbójczyni sroga/
 		Czuje cios wzajem przeze mnie zadany,/
 		Tak że na nasze obopólne rany/
 		Święty wpływ tylko twej, ojcze, opieki/
 		Poradzić zdoła i dać zbawcze leki./
 		Po chrześcijańsku, jak widzisz, przemawiam,/
-		Skoro się nawet za mym wrogiem wstawiam.<end id='e1189499895890' /></strofa>
+		Skoro się nawet za mym wrogiem wstawiam.<end id="e1189499895890"/></strofa>
 	</kwestia>
 
 
@@ -3008,7 +3009,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189500018796' /><motyw id='m1189500018796'>Kobieta, Małżeństwo, Miłość</motyw>Dowiedz się zatem, że anioł kobieta,/
+		<strofa><begin id="b1189500018796"/><motyw id="m1189500018796">Kobieta, Małżeństwo, Miłość</motyw>Dowiedz się zatem, że anioł kobieta,/
 		Którąm ukochał, jest z krwi Kapuleta./
 		Jego to dziecko i nadzieja cała;/
 		Jak ja ją, tak mnie ona ukochała./
@@ -3017,13 +3018,13 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Stułą zjednoczył. Gdzie, o jakiej dobie/
 		Dozgonną miłość przysięgliśmy sobie,/
 		Powiem ci idąc, czcigodny kapłanie;/
-		Błagam cię tylko, niech się to dziś stanie.<end id='e1189500018796' /></strofa>
+		Błagam cię tylko, niech się to dziś stanie.<end id="e1189500018796"/></strofa>
 	</kwestia>
 
 
 <naglowek_osoba>OJCIEC LAURENTY</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191327910046' /><motyw id='m1191327910046'>Kochanek, Młodość</motyw>Święty Franciszku! Cóż to za przemiana!/
+		<strofa><begin id="b1191327910046"/><motyw id="m1191327910046">Kochanek, Młodość</motyw>Święty Franciszku! Cóż to za przemiana!/
 		Toż Rozalina, owa ukochana,/
 		Niczym już dla cię? Miłość więc młodzieży/
 		W oczach jedynie, a nie w sercu leży?/
@@ -3038,7 +3039,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Wszystko, coś cierpiał z miłosnej przyczyny,/
 		Cierpiałeś tylko gwoli Rozaliny./
 		A teraz! nie dziw, gdy mdła płeć upadnie,/
-		Kiedy mężczyźni szwankują tak snadnie.<end id='e1191327910046' /></strofa>
+		Kiedy mężczyźni szwankują tak snadnie.<end id="e1191327910046"/></strofa>
 	</kwestia>
 
 
@@ -3166,7 +3167,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1189500057406' /><motyw id='m1189500057406'>Cierpienie, Kochanek, Miłość</motyw>Biedny Romeo! Już trup z niego! Zakłuty czarnymi oczyma białogłowy; przestrzelony na wskroś uszu romansową piosnką; ugodzony w sam rdzeń serca postrzałem ślepego malca łucznika; potrafiż on Tybaltowi stawić czoło?<end id='e1189500057406' /></akap>
+		<akap><begin id="b1189500057406"/><motyw id="m1189500057406">Cierpienie, Kochanek, Miłość</motyw>Biedny Romeo! Już trup z niego! Zakłuty czarnymi oczyma białogłowy; przestrzelony na wskroś uszu romansową piosnką; ugodzony w sam rdzeń serca postrzałem ślepego malca łucznika; potrafiż on Tybaltowi stawić czoło?<end id="e1189500057406"/></akap>
 	</kwestia>
 
 
@@ -3203,7 +3204,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191328783715' /><motyw id='m1191328783715'>Przyjaźń</motyw>MERKUCJO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191328783715"/><motyw id="m1191328783715">Przyjaźń</motyw>MERKUCJO</naglowek_osoba>
 	<kwestia>
 		<akap>Bez mlecza, jak śledź suszony. O! człowieku! jakżeś się w rybę przedzierzgnął! Teraz go rymy Petrarki rozczulają. Laura naprzeciw jego bóstwa jest prostą pomywaczką, lubo tamta miała kochanka, co ją opiewał; Dydona flądrą; Kleopatra Cyganką; Helena i Hero szurgotami i otłukami; Tyzbe<pr><slowo_obce>Dydona... Kleopatra</slowo_obce> --- sławne heroiny romansów miłosnych starożytności: <slowo_obce>Dydona</slowo_obce> --- królowa Kartaginy, ukochana księcia trojańskiego Eneasza, <slowo_obce>Kleopatra</slowo_obce> --- królowa Egiptu, ukochana wodzów rzymskich, Cezara i Antoniusza, <slowo_obce>Helena</slowo_obce> --- królowa Sparty, ukochana królewicza trojańskiego Parysa, <slowo_obce>Hero</slowo_obce> --- ukochana Leandra, <slowo_obce>Tyzbe</slowo_obce> --- ukochana Pirama.</pr> kopciuchem lub czymś podobnym, ale zawsze niedystyngowanym. Bon jour<pr><slowo_obce>Bonjour</slowo_obce> --- fr. dzień dobry.</pr>, sinior Romeo! Oto masz francuskie pozdrowienie na cześć twoich francuskich pantalonów. Pięknie nas zażyłeś tej nocy.</akap>
 	</kwestia>
@@ -3223,7 +3224,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<akap>To się znaczy, żem wam zdezerterował. Wybacz, kochany Merkucjo; miałem pilny interes, a w takim przypadku człowiek może zgrzeszyć na polu uprzejmości.<end id='e1191328783715' /></akap>
+		<akap>To się znaczy, żem wam zdezerterował. Wybacz, kochany Merkucjo; miałem pilny interes, a w takim przypadku człowiek może zgrzeszyć na polu uprzejmości.<end id="e1191328783715"/></akap>
 	</kwestia>
 
 
@@ -3349,7 +3350,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
 	<kwestia>
-		<akap>Nie jestże to lepiej niż jęczeć z miłości? Teraz to co innego; teraz mi jesteś towarzyski, jesteś Romeem, jesteś tym, czym jesteś; <begin id='b1189500112765' /><motyw id='m1189500112765'>Miłość</motyw>miłość zaś jest podobna do owego gapia, co się szwenda wywiesiwszy język, szukając dziury, gdzie by mógł palec wścibić.<end id='e1189500112765' /></akap>
+		<akap>Nie jestże to lepiej niż jęczeć z miłości? Teraz to co innego; teraz mi jesteś towarzyski, jesteś Romeem, jesteś tym, czym jesteś; <begin id="b1189500112765"/><motyw id="m1189500112765">Miłość</motyw>miłość zaś jest podobna do owego gapia, co się szwenda wywiesiwszy język, szukając dziury, gdzie by mógł palec wścibić.<end id="e1189500112765"/></akap>
 	</kwestia>
 
 
@@ -3531,7 +3532,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191330511546' /><motyw id='m1191330511546'>Kobieta</motyw>MERKUCJO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191330511546"/><motyw id="m1191330511546">Kobieta</motyw>MERKUCJO</naglowek_osoba>
 	<kwestia>
 		<akap>Do widzenia, starożytna damo; damo, damo, damo, damo<pr><slowo_obce>damo, damo...</slowo_obce> --- jest to refren ze starej ballady.</pr>!</akap>
 	</kwestia>
@@ -3560,7 +3561,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>PIOTR</naglowek_osoba>
 	<kwestia>
-		<akap>Nie widziałem jeszcze, żeby kto używał jejmości wedle upodobania; gdybym był to widział, byłbym był pewnie zaraz giwer wydobył, ręczę za to. Umiem się najeżyć tak dobrze jak kto inny, kiedy mam sposobność po temu i prawo za sobą.<end id='e1191330511546' /></akap>
+		<akap>Nie widziałem jeszcze, żeby kto używał jejmości wedle upodobania; gdybym był to widział, byłbym był pewnie zaraz giwer wydobył, ręczę za to. Umiem się najeżyć tak dobrze jak kto inny, kiedy mam sposobność po temu i prawo za sobą.<end id="e1191330511546"/></akap>
 	</kwestia>
 
 
@@ -3654,9 +3655,9 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191330967901' /><motyw id='m1191330967901'>Sługa</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191330967901"/><motyw id="m1191330967901">Sługa</motyw>MARTA</naglowek_osoba>
 	<kwestia>
-		<akap>A więc wszystko dobrze. Co też za miłe stworzenie ta moja panienka! Co to nie wyprawiało, jak było małym! Chryste Panie! Ale, ale, jest tu na mieście jeden pan, niejaki Parys, ten ma na nią diabli apetyt; ale ona, poczciwina, wolałaby patrzeć na bazyliszka<pr><slowo_obce>bazyliszek</slowo_obce> --- legendarny płaz podobny do jaszczurki, który miał zabijać wzrokiem.</pr> niż na niego. Przekomarzam się z nią nieraz i mówię, że ten Parys to wcale przystojny mężczyzna; wtedy ona, powiadam panu, za każdym razem aż blednie, zupełnie tak jak pąsowa chusta na słońcu. Proszę też pana, czy rozmaryn<pr><slowo_obce>rozmaryn</slowo_obce> --- symbol ludzkiej pamięci.</pr> i Romeo nie zaczyna się od takiej samej litery?<end id='e1191330967901' /></akap>
+		<akap>A więc wszystko dobrze. Co też za miłe stworzenie ta moja panienka! Co to nie wyprawiało, jak było małym! Chryste Panie! Ale, ale, jest tu na mieście jeden pan, niejaki Parys, ten ma na nią diabli apetyt; ale ona, poczciwina, wolałaby patrzeć na bazyliszka<pr><slowo_obce>bazyliszek</slowo_obce> --- legendarny płaz podobny do jaszczurki, który miał zabijać wzrokiem.</pr> niż na niego. Przekomarzam się z nią nieraz i mówię, że ten Parys to wcale przystojny mężczyzna; wtedy ona, powiadam panu, za każdym razem aż blednie, zupełnie tak jak pąsowa chusta na słońcu. Proszę też pana, czy rozmaryn<pr><slowo_obce>rozmaryn</slowo_obce> --- symbol ludzkiej pamięci.</pr> i Romeo nie zaczyna się od takiej samej litery?<end id="e1191330967901"/></akap>
 	</kwestia>
 
 
@@ -3681,7 +3682,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Wychodzi.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191331200664' /><motyw id='m1191331200664'>Sługa</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191331200664"/><motyw id="m1191331200664">Sługa</motyw>MARTA</naglowek_osoba>
 	<kwestia>
 		<akap>Uczynię to, uczynię po tysiąc razy. --- Piotrze!</akap>
 	</kwestia>
@@ -3695,7 +3696,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>MARTA</naglowek_osoba>
 	<kwestia>
-		<akap>Piotrze, naści<pe><slowo_obce>naści</slowo_obce> --- weź.</pe> mój wachlarz i idź przodem.<end id='e1191331200664' /></akap>
+		<akap>Piotrze, naści<pe><slowo_obce>naści</slowo_obce> --- weź.</pe> mój wachlarz i idź przodem.<end id="e1191331200664"/></akap>
 	</kwestia>
 
 
@@ -3714,7 +3715,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>Dziewiąta biła, kiedym ją posłała;/
-		<begin id='b1191331524796' /><motyw id='m1191331524796'>Miłość</motyw>Przyrzekła wrócić się za pół godziny./
+		<begin id="b1191331524796"/><motyw id="m1191331524796">Miłość</motyw>Przyrzekła wrócić się za pół godziny./
 		Nie znalazła go może? nie, to nie to;/
 		Słabe ma nogi. Heroldem miłości 
 		Powinna by być myśl, która o dziesięć/
@@ -3722,7 +3723,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Kiedy z pochyłych wzgórków cień spędzają./
 		Nie darmo lotne gołębie są w cugach/
 		Bóstwa miłości i nie darmo Kupid/
-		Ma skrzydła z wiatrem idące w zawody.<end id='e1191331524796' />/
+		Ma skrzydła z wiatrem idące w zawody.<end id="e1191331524796"/>/
 		Już teraz słońce jest w samej połowie/
 		Dzisiejszej drogi swojej; od dziewiątej/
 		Aż do dwunastej trzy już upłynęły/
@@ -3731,8 +3732,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Jak piłka byłaby chyżą i lekką,/
 		I słowa moje do mego kochanka,/
 		A jego do mnie w lot by ją popchnęły;/
-		<begin id='b1191331557787' /><motyw id='m1191331557787'>Starość</motyw>Lecz starzy wcześnie są jakby nieżywi;/
-		Jak ołów ciężcy, zimni, więc leniwi.<end id='e1191331557787' /></strofa>
+		<begin id="b1191331557787"/><motyw id="m1191331557787">Starość</motyw>Lecz starzy wcześnie są jakby nieżywi;/
+		Jak ołów ciężcy, zimni, więc leniwi.<end id="e1191331557787"/></strofa>
 	</kwestia>
 	
 	<didaskalia>Wchodzą <osoba>Marta</osoba> i <osoba>Piotr</osoba>.</didaskalia>
@@ -3808,13 +3809,13 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191331745239' /><motyw id='m1191331745239'>Kobieta, Starość</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191331745239"/><motyw id="m1191331745239">Kobieta, Starość</motyw>MARTA</naglowek_osoba>
 	<kwestia>
 		<strofa>Ach! jak mnie głowa boli! tak w niej łupie,/
 		Jakby się miała w kawałki rozlecieć./
 		A krzyż! krzyż! biedny krzyż! niechaj waćpannie/
 		Bóg nie pamięta, żeś mię posyłała./
-		Aby mi przez ten kurs śmierci przyśpieszyć.<end id='e1191331745239' /></strofa>
+		Aby mi przez ten kurs śmierci przyśpieszyć.<end id="e1191331745239"/></strofa>
 	</kwestia>
 
 
@@ -3905,7 +3906,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>OJCIEC LAURENTY</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189500265703' /><motyw id='m1189500265703'>Małżeństwo</motyw>Oby ten święty akt był miły niebu/
+		<strofa><begin id="b1189500265703"/><motyw id="m1189500265703">Małżeństwo</motyw>Oby ten święty akt był miły niebu/
 		I przyszłość smutkiem nas nie ukarała.</strofa>
 	</kwestia>
 
@@ -3917,11 +3918,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Jaką mię darzy jedna przy niej chwila./
 		Złącz tylko nasze dłonie świętym węzłem;/
 		Niech go śmierć potem przetnie, kiedy zechce,/
-		Dość, że wprzód będę mógł ją nazwać moją.<end id='e1189500265703' /></strofa>
+		Dość, że wprzód będę mógł ją nazwać moją.<end id="e1189500265703"/></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191332055028' /><motyw id='m1191332055028'>Ksiądz, Miłość</motyw>OJCIEC LAURENTY</naglowek_osoba>
+<naglowek_osoba><begin id="b1191332055028"/><motyw id="m1191332055028">Ksiądz, Miłość</motyw>OJCIEC LAURENTY</naglowek_osoba>
 	<kwestia>
 		<strofa>Gwałtownych uciech i koniec gwałtowny;/
 		Są one na kształt prochu zatlonego<pe><slowo_obce>zatlonego</slowo_obce> --- zapalonego, tlącego się.</pe>,/
@@ -3939,7 +3940,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Nie ugiąłby się pod tak lekką stopą./
 		Kochankom mogłyby do jazdy służyć/
 		Owe słoneczne pyłki, co igrają/
-		Latem w powietrzu; tak lekką jest marność.<end id='e1191332055028' /></strofa>
+		Latem w powietrzu; tak lekką jest marność.<end id="e1191332055028"/></strofa>
 	</kwestia>
 
 
@@ -3984,11 +3985,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191332280645' /><motyw id='m1191332280645'>Ksiądz, Małżeństwo, Miłość</motyw>OJCIEC LAURENTY</naglowek_osoba>
+<naglowek_osoba><begin id="b1191332280645"/><motyw id="m1191332280645">Ksiądz, Małżeństwo, Miłość</motyw>OJCIEC LAURENTY</naglowek_osoba>
 	<kwestia>
 		<strofa>Pójdźcie, załatwim rzecz w krótkich wyrazach,/
 		Nie wprzód będziecie sobie zostawieni,/
-		Aż was sakrament z dwojga w jedno zmieni.<end id='e1191332280645' /></strofa>
+		Aż was sakrament z dwojga w jedno zmieni.<end id="e1191332280645"/></strofa>
 	</kwestia>
 
 
@@ -4014,7 +4015,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <didaskalia>Plac publiczny. Wchodzą <osoba>Benwolio</osoba>, <osoba>Merkucjo</osoba>, <osoba>Paź</osoba> i słudzy.</didaskalia>
 
-<naglowek_osoba><begin id='b1191403535549' /><motyw id='m1191403535549'>Konflikt</motyw>BENWOLIO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191403535549"/><motyw id="m1191403535549">Konflikt</motyw>BENWOLIO</naglowek_osoba>
 	<kwestia>
 		<strofa>Oddalmy się stąd, proszę cię, Merkucjo,/
 		Dzień dziś gorący, Kapuleci krążą;/
@@ -4025,7 +4026,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
 	<kwestia>
-		<akap>Podobnyś do owego burdy, co wchodząc do winiarni rzuca szpadę i mówi: ,,Daj Boże, abym cię nie potrzebował!", a po wypróżnieniu drugiego kubka dobywa jej na dobywacza korków bez najmniejszej w świecie potrzeby.<end id='e1191403535549' /></akap>
+		<akap>Podobnyś do owego burdy, co wchodząc do winiarni rzuca szpadę i mówi: ,,Daj Boże, abym cię nie potrzebował!", a po wypróżnieniu drugiego kubka dobywa jej na dobywacza korków bez najmniejszej w świecie potrzeby.<end id="e1191403535549"/></akap>
 	</kwestia>
 
 
@@ -4049,7 +4050,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1191403642548' /><motyw id='m1191403642548'>Konflikt</motyw>Gdybyśmy mieli dwóch takich, to byśmy wkrótce nie mieli żadnego, bo jeden by drugiego zagryzł. Tyś gotów człowieka napastować za to, że ma w brodzie jeden włos mniej lub więcej od ciebie. Tyś gotów napastować człowieka za to, że piwo pije, bo w tym upatrzysz przytyk do swoich piwnych oczu; chociaż żadne inne oko, jak piwne, nie upatrzyłoby w tym przytyku. W twojej głowie tak się lęgną swary jak bekasy w ługu<pr><slowo_obce>bekas</slowo_obce> --- ptak błotny, kszyk; <slowo_obce>ług</slowo_obce> --- woda stojąca, bagienna. Tu Paszkowski sięgnąwszy do polskiego powiedzenia upiększył porównanie. W oryg. jest prozaicznie <slowo_obce>as an egg is full of meat</slowo_obce>, jak jajko pełne swojej zawartości.</pr>, toś też nieraz za to beknął i głowę ci zmyto bez ługu. Pobiłeś raz człowieka za to, że kaszlnął na ulicy i przebudził przez to twego psa, który się wysypiał przed domem. Nie napastowałżeś raz krawca za to, że wdział na siebie nowy kaftan w dzień powszedni? kogoś innego za to, że miał stare wstążki u nowych trzewików? I ty mię chcesz moralizować za kłótliwość?<end id='e1191403642548' /></akap>
+		<akap><begin id="b1191403642548"/><motyw id="m1191403642548">Konflikt</motyw>Gdybyśmy mieli dwóch takich, to byśmy wkrótce nie mieli żadnego, bo jeden by drugiego zagryzł. Tyś gotów człowieka napastować za to, że ma w brodzie jeden włos mniej lub więcej od ciebie. Tyś gotów napastować człowieka za to, że piwo pije, bo w tym upatrzysz przytyk do swoich piwnych oczu; chociaż żadne inne oko, jak piwne, nie upatrzyłoby w tym przytyku. W twojej głowie tak się lęgną swary jak bekasy w ługu<pr><slowo_obce>bekas</slowo_obce> --- ptak błotny, kszyk; <slowo_obce>ług</slowo_obce> --- woda stojąca, bagienna. Tu Paszkowski sięgnąwszy do polskiego powiedzenia upiększył porównanie. W oryg. jest prozaicznie <slowo_obce>as an egg is full of meat</slowo_obce>, jak jajko pełne swojej zawartości.</pr>, toś też nieraz za to beknął i głowę ci zmyto bez ługu. Pobiłeś raz człowieka za to, że kaszlnął na ulicy i przebudził przez to twego psa, który się wysypiał przed domem. Nie napastowałżeś raz krawca za to, że wdział na siebie nowy kaftan w dzień powszedni? kogoś innego za to, że miał stare wstążki u nowych trzewików? I ty mię chcesz moralizować za kłótliwość?<end id="e1191403642548"/></akap>
 	</kwestia>
 
 
@@ -4070,7 +4071,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1189502408281' /><motyw id='m1189502408281'>Konflikt</motyw>Patrz, oto idą Kapuleci.</akap>
+		<akap><begin id="b1189502408281"/><motyw id="m1189502408281">Konflikt</motyw>Patrz, oto idą Kapuleci.</akap>
 	</kwestia>
 
 
@@ -4161,7 +4162,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191404767822' /><motyw id='m1191404767822'>Los</motyw>TYBALT</naglowek_osoba>
+<naglowek_osoba><begin id="b1191404767822"/><motyw id="m1191404767822">Los</motyw>TYBALT</naglowek_osoba>
 	<kwestia>
 		<strofa><wers_cd>Romeo, nienawiść</wers_cd>/
 		Moja do ciebie nie może się zdobyć/
@@ -4253,7 +4254,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<didaskalia><osoba>Tybalt</osoba> odchodzi ze swoimi.<end id='e1189502408281' /></didaskalia>
+<didaskalia><osoba>Tybalt</osoba> odchodzi ze swoimi.<end id="e1189502408281"/></didaskalia>
 
 
 <naglowek_osoba>MERKUCJO</naglowek_osoba>
@@ -4322,13 +4323,13 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191404493241' /><motyw id='m1191404493241'>Przyjaźń, Rodzina</motyw>Ten dzielny człowiek, bliski krewny księcia/
+		<strofa><begin id="b1191404493241"/><motyw id="m1191404493241">Przyjaźń, Rodzina</motyw>Ten dzielny człowiek, bliski krewny księcia/
 		I mój najlepszy przyjaciel, śmiertelny/
 		Poniósł cios za mnie; moją dobrą sławę/
 		Tybalt znieważył; Tybalt, który nie ma/
 		Godziny jeszcze, jak został mym krewnym./
 		O Julio! wdzięki twe mię zniewieściły/
-		I z hartu zwykłej wyzuły mię siły.<end id='e1191404493241' /></strofa>
+		I z hartu zwykłej wyzuły mię siły.<end id="e1191404493241"/></strofa>
 	</kwestia>
 
 
@@ -4337,7 +4338,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189502507546' /><motyw id='m1189502507546'>Śmierć</motyw>Romeo, Romeo, Merkucjo skonał!/
+		<strofa><begin id="b1189502507546"/><motyw id="m1189502507546">Śmierć</motyw>Romeo, Romeo, Merkucjo skonał!/
 		Mężny duch jego uleciał wysoko/
 		Gardząc przedwcześnie swą ziemską powłoką.</strofa>
 	</kwestia>
@@ -4359,7 +4360,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191404544866' /><motyw id='m1191404544866'>Zemsta</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191404544866"/><motyw id="m1191404544866">Zemsta</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>On żyw! W tryumfie! A Merkucjo trupem!/
 		Precz, pobłażliwa teraz łagodności!/
@@ -4368,7 +4369,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Zwracam ci, co mi dałeś! Duch Merkucja/
 		Wznosi się ponad naszymi głowami/
 		Dopominając się za swoją twojej./
-		Ty lub ja albo oba musim legnąć.<end id='e1191404544866' /></strofa>
+		Ty lub ja albo oba musim legnąć.<end id="e1191404544866"/></strofa>
 	</kwestia>
 
 
@@ -4385,10 +4386,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<didaskalia>Walczą. <osoba>Tybalt</osoba> pada.<end id='e1189502507546' /></didaskalia>
+<didaskalia>Walczą. <osoba>Tybalt</osoba> pada.<end id="e1189502507546"/></didaskalia>
 
 
-<naglowek_osoba><begin id='b1191405179623' /><motyw id='m1191405179623'>Zbrodnia, Zbrodniarz</motyw>BENWOLIO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191405179623"/><motyw id="m1191405179623">Zbrodnia, Zbrodniarz</motyw>BENWOLIO</naglowek_osoba>
 	<kwestia>
 		<strofa>Romeo, uchodź, oddal się, uciekaj!/
 		Rozruch się wszczyna i Tybalt nie żyje./
@@ -4399,7 +4400,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 	<kwestia>
-		<strofa>Jestem igraszką losu!<end id='e1191404767822' /></strofa>
+		<strofa>Jestem igraszką losu!<end id="e1191404767822"/></strofa>
 	</kwestia>
 
 
@@ -4421,7 +4422,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa>Tybalt tu leży.<end id='e1191405179623' /></strofa>
+		<strofa>Tybalt tu leży.<end id="e1191405179623"/></strofa>
 	</kwestia>
 
 
@@ -4435,7 +4436,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Wchodzą <osoba>Książę</osoba> z orszakiem, <osoba>Monteki</osoba> i <osoba>Kapulet</osoba> z małżonkami swymi i inne osoby.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191405405266' /><motyw id='m1191405405266'>Sprawiedliwość</motyw>KSIĄŻĘ</naglowek_osoba>
+<naglowek_osoba><begin id="b1191405405266"/><motyw id="m1191405405266">Sprawiedliwość</motyw>KSIĄŻĘ</naglowek_osoba>
 	<kwestia>
 		<strofa>Gdzie są nikczemni sprawcy tej rozterki?</strofa>
 	</kwestia>
@@ -4450,12 +4451,12 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191405219977' /><motyw id='m1191405219977'>Siostra, Zbrodnia, Zemsta, Żona</motyw>PANI KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191405219977"/><motyw id="m1191405219977">Siostra, Zbrodnia, Zemsta, Żona</motyw>PANI KAPULET</naglowek_osoba>
 	<kwestia>
 		<strofa>Tybalt! Mój krewny! Syn mojego brata!/
 		Boże! Tak marnie zgładzony ze świata!/
 		O mości książę, błagam twej opieki,/
-		Niech za krew naszą odda krew Monteki.<end id='e1191405219977' /></strofa>
+		Niech za krew naszą odda krew Monteki.<end id="e1191405219977"/></strofa>
 	</kwestia>
 
 
@@ -4499,8 +4500,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191405108158' /><motyw id='m1191405108158'>Rodzina</motyw>On jest Montekich krewnym, przywiązanie/
-		Czyni go kłamcą, nie wierz mu, o panie!<end id='e1191405108158' />/
+		<strofa><begin id="b1191405108158"/><motyw id="m1191405108158">Rodzina</motyw>On jest Montekich krewnym, przywiązanie/
+		Czyni go kłamcą, nie wierz mu, o panie!<end id="e1191405108158"/>/
 		Ich tu przynajmniej ze dwudziestu było;/
 		Dwudziestu przeciw jednemu walczyło./
 		Sprawiedliwości, panie! Kto śmierć zadał,/
@@ -4527,8 +4528,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>KSIĄŻĘ</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189502645375' /><motyw id='m1189502645375'>Kara</motyw><wers_cd>I za ten to błąd</wers_cd>/
-		Banitujemy go na zawsze stąd.<end id='e1189502645375' />/
+		<strofa><begin id="b1189502645375"/><motyw id="m1189502645375">Kara</motyw><wers_cd>I za ten to błąd</wers_cd>/
+		Banitujemy go na zawsze stąd.<end id="e1189502645375"/>/
 		Z bliska mię wasze dotknęły niesnaski,/
 		Skoro mój własny dom cierpi z ich łaski;/
 		Ale ja takie znajdę środki na nie,/
@@ -4538,7 +4539,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Uprzedzam! Niechaj Romeo ucieka,/
 		Bo gdy schwytany będzie, śmierć go czeka./
 		Każcie stąd zabrać te zwłoki: Łaskawość/
-		Zbrodnią jest, kiedy oszczędza nieprawość.<end id='e1191405405266' /></strofa>
+		Zbrodnią jest, kiedy oszczędza nieprawość.<end id="e1191405405266"/></strofa>
 	</kwestia>
 
 
@@ -4555,7 +4556,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Pokój w domu Kapuletów. <osoba>Julia</osoba> sama.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191405763503' /><motyw id='m1191405763503'>Miłość, Żona</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191405763503"/><motyw id="m1191405763503">Miłość, Żona</motyw>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>Pędźcie, ognistokopyte rumaki<pr><slowo_obce>Pędźcie...</slowo_obce> --- monolog Julii oparty został na bardzo popularnej w czasach Shakespeare'a pieśni weselnej (tzw. epithalamion).</pr>,/
 		Ku państwom Feba; oby nowy jaki/
@@ -4591,7 +4592,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Jak noc, co święto jakowe poprzedza,/
 		Niecierpliwemu dziecku, które nowe/
 		Dostało szaty, a nie może zaraz/
-		W nie się przystroić.<end id='e1191405763503' /> A! niania kochana.</strofa>
+		W nie się przystroić.<end id="e1191405763503"/> A! niania kochana.</strofa>
 	</kwestia>
 	
 	<didaskalia>Wchodzi <osoba>Marta</osoba> z drabinką sznurową w ręku.</didaskalia>
@@ -4634,7 +4635,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191406055326' /><motyw id='m1191406055326'>Samobójstwo</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191406055326"/><motyw id="m1191406055326">Samobójstwo</motyw>MARTA</naglowek_osoba>
 	<kwestia>
 		<strofa><wers_cd>Niebo</wers_cd>/
 		Nie jest okrutne, lecz Romeo; on to,/
@@ -4654,28 +4655,28 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Istnieć nie będzie; zawrą się na zawsze/
 		Te usta, które to ,,tak"<pr><slowo_obce>tak</slowo_obce> --- w oryg. piękna retoryczna figura oparta na słowie ,,ja".</pr> wywołały./
 		Zginąłli, powiedz: tak, jeżeli nie - nie;/
-		W krótkich wyrazach zbaw albo mnie zabij.<end id='e1191406055326' /></strofa>
+		W krótkich wyrazach zbaw albo mnie zabij.<end id="e1191406055326"/></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191406285452' /><motyw id='m1191406285452'>Rozpacz, Żałoba</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191406285452"/><motyw id="m1191406285452">Rozpacz, Żałoba</motyw>MARTA</naglowek_osoba>
 	<kwestia>
 		<strofa>Widziałam ranę na me własne oczy,/
 		Boże, zmiłuj się nad nim, tu, tu oto,/
 		Tu w samym środku mężnej jego piersi./
 		Straszny trup! straszny trup! blady jak popiół;/
 		Cały zbroczony, cały krwią zbryzgany,/
-		Zgęstłą krwią: ażem wzdrygnęła się patrząc.<end id='e1191406285452' /></strofa>
+		Zgęstłą krwią: ażem wzdrygnęła się patrząc.<end id="e1191406285452"/></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191406122711' /><motyw id='m1191406122711'>Miłość, Śmierć</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191406122711"/><motyw id="m1191406122711">Miłość, Śmierć</motyw>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>O pęknij, serce! pęknij w tym przeskoku/
 		Z bogactw do nędzy! Do więzienia, wzroku!/
 		Już ty nie zaznasz swobody uroku./
 		Jak nas na ziemi złączył jeden ślub,/
-		Tak niech nas w ziemi złączy jeden grób.<end id='e1191406122711' /></strofa>
+		Tak niech nas w ziemi złączy jeden grób.<end id="e1191406122711"/></strofa>
 	</kwestia>
 
 
@@ -4703,7 +4704,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191406444041' /><motyw id='m1191406444041'>Zdrada</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191406444041"/><motyw id="m1191406444041">Zdrada</motyw>JULIA</naglowek_osoba>
 	<kwestia>
 		<strofa>Boże! Romeo przelał krew Tybalta?</strofa>
 	</kwestia>
@@ -4733,14 +4734,14 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191406477505' /><motyw id='m1191406477505'>Pijaństwo</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191406477505"/><motyw id="m1191406477505">Pijaństwo</motyw>MARTA</naglowek_osoba>
 	<kwestia>
 		<strofa>Nie ma czci, nie ma wiary, nie ma prawdy,/
 		Nie ma sumienia w ludziach; sama zmienność,/
-		Sama przewrotność, chytrość i obłuda.<end id='e1191406444041' />/
+		Sama przewrotność, chytrość i obłuda.<end id="e1191406444041"/>/
 		Pietrze! daj no mi trochę akwawity<pr><slowo_obce>akwawita</slowo_obce> (łac. <slowo_obce>aqua vitae</slowo_obce>) --- woda życia, okowita, wódka.</pr>./
 		Te smutki, te zgryzoty, te cierpienia/
-		Robią mię starą.<end id='e1191406477505' /> <begin id='b1189502727625' /><motyw id='m1189502727625'>Małżeństwo, Rodzina, Żona</motyw>Przeklęty Romeo!/
+		Robią mię starą.<end id="e1191406477505"/> <begin id="b1189502727625"/><motyw id="m1189502727625">Małżeństwo, Rodzina, Żona</motyw>Przeklęty Romeo!/
 		Hańba mu!</strofa>
 	</kwestia>
 
@@ -4826,7 +4827,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Ty pozostajesz spuścizną jałową,/
 		A ja w panieńskim stanie jestem wdową./
 		Pójdź, nianiu, prowadź mię w małżeńskie łoże,/
-		Nie mąż, już tylko śmierć w nie wstąpić może.<end id='e1189502727625' /></strofa>
+		Nie mąż, już tylko śmierć w nie wstąpić może.<end id="e1189502727625"/></strofa>
 	</kwestia>
 
 
@@ -4883,7 +4884,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1189503547718' /><motyw id='m1189503547718'>Zesłaniec</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1189503547718"/><motyw id="m1189503547718">Zesłaniec</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Jakiż by mógł być łaskawszy prócz śmierci?</strofa>
 	</kwestia>
@@ -4935,7 +4936,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191407432817' /><motyw id='m1191407432817'>Kobieta, Kochanek, Miłość, Zwierzęta</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191407432817"/><motyw id="m1191407432817">Kobieta, Kochanek, Miłość, Zwierzęta</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa>Katusza to, nie łaska. Tu jest niebo,/
 		Gdzie Julia żyje; lada pies, kot, lada/
@@ -4949,8 +4950,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Z tych ust, co pełne westalczej skromności/
 		Bez przerwy płoną i pocałowanie 
 		Grzechem być sądzą; mucha ma tę wolność,/
-		Ale Romeo nie ma; on wygnany.<end id='e1191407432817' />/
-		<begin id='b1191407997947' /><motyw id='m1191407997947'>Filozof, Mądrość, Rozpacz, Szaleniec</motyw>I mówisz, że wygnanie nie jest śmiercią?/
+		Ale Romeo nie ma; on wygnany.<end id="e1191407432817"/>/
+		<begin id="b1191407997947"/><motyw id="m1191407997947">Filozof, Mądrość, Rozpacz, Szaleniec</motyw>I mówisz, że wygnanie nie jest śmiercią?/
 		Nie maszli żadnej trucizny, żadnego/
 		Ostrza, żadnego środka nagłej śmierci,/
 		Aby mię zabić, tylko ten fatalny/
@@ -4958,7 +4959,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Wyją, gdy w piekle usłyszą ten wyraz:/
 		I ty masz serce, ty, święty spowiednik,/
 		Rozgrześca<pe><slowo_obce>Rozgrześca</slowo_obce> --- rozgrzeszający z win.</pe> grzechów i szczery przyjaciel,/
-		Pasy drzeć ze mnie tym słowem: wygnanie?<end id='e1189503547718' /></strofa>
+		Pasy drzeć ze mnie tym słowem: wygnanie?<end id="e1189503547718"/></strofa>
 	</kwestia>
 
 
@@ -5018,7 +5019,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		A wtedy będziesz mógł mówić; o, wtedy/
 		Będziesz mógł sobie z rozpaczy rwać włosy/
 		I rzuć się na ziemię,jak ja teraz,/
-		Na grób zawczasu biorąc sobie miarę.<end id='e1191407997947' /></strofa>
+		Na grób zawczasu biorąc sobie miarę.<end id="e1191407997947"/></strofa>
 	</kwestia>
 
 
@@ -5112,12 +5113,12 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>MARTA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191407760755' /><motyw id='m1191407760755'>Śmierć</motyw>Ach, panie! Wszystko na tym świecie/
-		Kończy się śmiercią.<end id='e1191407760755' /></strofa>
+		<strofa><begin id="b1191407760755"/><motyw id="m1191407760755">Śmierć</motyw>Ach, panie! Wszystko na tym świecie/
+		Kończy się śmiercią.<end id="e1191407760755"/></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191408533751' /><motyw id='m1191408533751'>Małżeństwo, Obowiązek, Samobójstwo</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191408533751"/><motyw id="m1191408533751">Małżeństwo, Obowiązek, Samobójstwo</motyw>ROMEO</naglowek_osoba>
 	<kwestia>
 		<strofa><wers_cd>Mówiłaś o Julii?</wers_cd>/
 		Cóż się z nią dzieje? O, pewnie mię ona/
@@ -5153,18 +5154,18 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>OJCIEC LAURENTY</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191408676588' /><motyw id='m1191408676588'>Kobieta</motyw><wers_cd>Stój! Wstrzymaj</wers_cd>/
+		<strofa><begin id="b1191408676588"/><motyw id="m1191408676588">Kobieta</motyw><wers_cd>Stój! Wstrzymaj</wers_cd>/
 		Dłoń rozpaczliwą! czy jesteś ty mężem?/
 		Postać wskazuje twoja, że nim jesteś;/
 		Łzy twe niewieście; dzikie twoje czyny/
 		Cechują wściekłość bezrozumną zwierza./
 		W pozornym mężu ukryta niewiasto!/
 		Zwierzu, przybrany w pozór tego dwojga!/
-		<begin id='b1191408761034' /><motyw id='m1191408761034'>Skąpiec</motyw>Ty mnie w zdumienie wprawiasz. Jakem kapłan!/
+		<begin id="b1191408761034"/><motyw id="m1191408761034">Skąpiec</motyw>Ty mnie w zdumienie wprawiasz. Jakem kapłan!/
 		Myślałem, że masz więcej hartu w sobie./
 		Tybaltaś zabił, chcesz zabić sam siebie/
 		I przez haniebny ten na siebie zamach/
-		Zabić chcesz także tę, co żyje tobą?<end id='e1191408676588' />/
+		Zabić chcesz także tę, co żyje tobą?<end id="e1191408676588"/>/
 		Przecz tak uwłaczasz swemu urodzeniu,/
 		Niebu i ziemi, skoro urodzenie,/
 		Niebo i ziemia ci się śmieją? Wstydź się!/
@@ -5180,10 +5181,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Niezręczny w korzystaniu z tego dwojga,/
 		Jest jak proch w rożku płochego żołnierza,/
 		Co się zapala z własnej jego winy/
-		I razi tego, którego miał bronić.<end id='e1191408761034' />/
-		<begin id='b1191408945995' /><motyw id='m1191408945995'>Kondycja ludzka, Szczęście</motyw>Otrząś<pe><slowo_obce>Otrząś</slowo_obce> --- popr. otrząśnij.</pe> się, człeku! Julia twoja żyje;/
+		I razi tego, którego miał bronić.<end id="e1191408761034"/>/
+		<begin id="b1191408945995"/><motyw id="m1191408945995">Kondycja ludzka, Szczęście</motyw>Otrząś<pe><slowo_obce>Otrząś</slowo_obce> --- popr. otrząśnij.</pe> się, człeku! Julia twoja żyje;/
 		Julia, dla której umrzeć byłeś gotów;/
-		W tymeś szczęśliwy.<end id='e1191408533751' /> Tybalt chciał cię zabić,/
+		W tymeś szczęśliwy.<end id="e1191408533751"/> Tybalt chciał cię zabić,/
 		Tyś jego zabił: w tym szczęśliwyś także./
 		Prawo, grożące ci śmiercią, zamienia/
 		Śmierć na wygnanie, i w tymeś szczęśliwy./
@@ -5191,7 +5192,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Szczęście najwabniej wdzięczy się do ciebie,/
 		A ty, jak dziewka zepsuta, kapryśna,/
 		Dąsasz się na tę szczodrotę fortuny./
-		Strzeż się, bo tacy marnie umierają.<end id='e1191408945995' />/
+		Strzeż się, bo tacy marnie umierają.<end id="e1191408945995"/>/
 		Terazże idź do żony, jak to było/
 		Wprzód umówione, i pociesz niebogę./
 		Pomnij wyjść jednak przed wart rozstawieniem;/
@@ -5302,11 +5303,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189502919312' /><motyw id='m1189502919312'>Córka, Dziecko</motyw>Hrabio, za miłość naszego dziecięcia/
+		<strofa><begin id="b1189502919312"/><motyw id="m1189502919312">Córka, Dziecko</motyw>Hrabio, za miłość naszego dziecięcia/
 		Mogę ci ręczyć; mniemam, że się skłoni/
 		Do mych przełożeń, co więcej, nie wątpię./
 		Pójdź do niej, żono, nim się spać położysz;/
-		<begin id='b1189502945312' /><motyw id='m1189502945312'>Obyczaje</motyw>Oznajm jej cnego Parysa zamiary/
+		<begin id="b1189502945312"/><motyw id="m1189502945312">Obyczaje</motyw>Oznajm jej cnego Parysa zamiary/
 		I powiedzże jej, uważasz, iż w środę.../
 		Zaczekaj, cóż to dzisiaj?</strofa>
 	</kwestia>
@@ -5325,12 +5326,12 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Zostanie żoną szlachetnego hrabi./
 		Będzieszli gotów? Czy ci to dogadza?/
 		Cicho się sprawim: jeden, dwóch przyjaciół.../
-		Gdybyśmy bowiem po tak świeżej stracie<end id='e1189502945312' />/
+		Gdybyśmy bowiem po tak świeżej stracie<end id="e1189502945312"/>/
 		Bardzo hulali, ludzie, widzisz, hrabio,/
 		Mogliby myśleć, że za lekko bierzem/
 		Zgon tak bliskiego krewnego; dlatego/
 		Wezwiem przyjaciół z jakie pół tuzina/
-		I na tym koniec. Cóż mówisz na czwartek?<end id='e1189502919312' /></strofa>
+		I na tym koniec. Cóż mówisz na czwartek?<end id="e1189502919312"/></strofa>
 	</kwestia>
 
 
@@ -5473,11 +5474,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191409893151' /><motyw id='m1191409893151'>Czas, Miłość</motyw>Już idziesz; o mój drogi! mój milutki!/
+		<strofa><begin id="b1191409893151"/><motyw id="m1191409893151">Czas, Miłość</motyw>Już idziesz; o mój drogi! mój milutki!/
 		Muszę mieć co dzień wiadomość o tobie;/
 		A każda chwila równą będzie dobie./
 		Zgrzybieję licząc podług tej rachuby,/
-		Nim cię zobaczę znowu, o mój luby.<end id='e1191409893151' /></strofa>
+		Nim cię zobaczę znowu, o mój luby.<end id="e1191409893151"/></strofa>
 	</kwestia>
 
 
@@ -5521,7 +5522,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191409849314' /><motyw id='m1191409849314'>Los</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191409849314"/><motyw id="m1191409849314">Los</motyw>JULIA</naglowek_osoba>
 	<didaskalia>odstępując od okna</didaskalia>
 	<kwestia>
 		<strofa>O losie! ludzie mienią cię niestałym;/
@@ -5529,7 +5530,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Tych, co kochają stale? Bądź niestały,/
 		Bo wtedy będę mogła mieć nadzieję,/
 		Że go niedługo będziesz zatrzymywał/
-		I wrócisz nazad.<end id='e1191409849314' /></strofa>
+		I wrócisz nazad.<end id="e1191409849314"/></strofa>
 	</kwestia>
 
 
@@ -5563,9 +5564,9 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191409975329' /><motyw id='m1191409975329'>Żałoba</motyw>PANI KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191409975329"/><motyw id="m1191409975329">Żałoba</motyw>PANI KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191410148803' /><motyw id='m1191410148803'>Zemsta</motyw>Wciąż jeszcze płaczesz nad stratą Tybalta?/
+		<strofa><begin id="b1191410148803"/><motyw id="m1191410148803">Zemsta</motyw>Wciąż jeszcze płaczesz nad stratą Tybalta?/
 		Chceszże go łzami dobyć z grobu? Choćbyś/
 		Dopięła tego, wskrzesić go nie zdołasz./
 		Przestań więc; pewien żal może dowodzić/
@@ -5597,7 +5598,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<kwestia>
 		<strofa>Przyznaj się jednak, że nie tyle płaczesz/
 		Nad jego śmiercią, jako raczej nad tym,/
-		Że jeszcze żyje ten łotr, co go zabił.<end id='e1191409975329' /></strofa>
+		Że jeszcze żyje ten łotr, co go zabił.<end id="e1191409975329"/></strofa>
 	</kwestia>
 
 
@@ -5662,14 +5663,14 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Jakże mię korci słyszeć jego imię/
 		I nie móc zaraz dostać się do niego,/
 		By przywiązaniu memu do Tybalta/
-		Dać odwet na tym, co go zamordował.<end id='e1191410148803' /></strofa>
+		Dać odwet na tym, co go zamordował.<end id="e1191410148803"/></strofa>
 	</kwestia>
 
 
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
 	<kwestia>
 		<strofa>Znajdź ty sposoby, ja znajdę człowieka,/
-		<begin id='b1191411213102' /><motyw id='m1191411213102'>Córka, Małżeństwo, Matka, Obyczaje, Ojciec</motyw>Terazże mam ci udzielić, dziewczyno,/
+		<begin id="b1191411213102"/><motyw id="m1191411213102">Córka, Małżeństwo, Matka, Obyczaje, Ojciec</motyw>Terazże mam ci udzielić, dziewczyno,/
 		Wesołych nowin.</strofa>
 	</kwestia>
 
@@ -5708,9 +5709,9 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1189503086750' /><motyw id='m1189503086750'>Bunt</motyw><wers_cd>Na kościół</wers_cd>/
+		<strofa><begin id="b1189503086750"/><motyw id="m1189503086750">Bunt</motyw><wers_cd>Na kościół</wers_cd>/
 		Świętego Piotra i Piotra samego!/
-		Nigdy on, nigdy tego nie uczyni!<end id='e1189503086750' />/
+		Nigdy on, nigdy tego nie uczyni!<end id="e1189503086750"/>/
 		Zdumiewa mię ten pośpiech. Mam iść za mąż,/
 		Nim ten, co moim ma być mężem, zaczął/
 		Starać się o mnie, nim mi się dał poznać?/
@@ -5761,7 +5762,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 	<kwestia>
-		<strofa><begin id='b1191410419810' /><motyw id='m1191410419810'>Kobieta, Mądrość</motyw>Co? Jak to? Nie chce? Nie chce? Nie chce, mówisz?/
+		<strofa><begin id="b1191410419810"/><motyw id="m1191410419810">Kobieta, Mądrość</motyw>Co? Jak to? Nie chce? Nie chce? Nie chce, mówisz?/
 		Nie jest nam wdzięczna? Nie pyszni się z tego?/
 		Nie poczytuje sobie za szczyt szczęścia,/
 		Niegodna, żeśmy jej najgodniejszego/
@@ -5778,7 +5779,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1191411384752' /><motyw id='m1191411384752'>Przemoc, Szaleniec</motyw>KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191411384752"/><motyw id="m1191411384752">Przemoc, Szaleniec</motyw>KAPULET</naglowek_osoba>
 	<kwestia>
 		<strofa>Cóż to znów? cóż to? Logika w spódnicy!/
 		Pysznam i wdzięcznam, i zasię nie wdzięcznam,/
@@ -5857,7 +5858,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<kwestia>
 		<strofa>Milcz, stara trajkotko!/
 		Schowaj swój rozum na babskie sejmiki./
-		Tu niepotrzebny.<end id='e1191410419810' /></strofa>
+		Tu niepotrzebny.<end id="e1191410419810"/></strofa>
 	</kwestia>
 
 
@@ -5894,7 +5895,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Bo jak Bóg w niebie, nigdy cię nie uznam/
 		Za moje dziecko i z mojego mienia/
 		Nawet źdźbło nigdy ci się nie oberwie./
-		Możesz się na to spuścić, jestem słowny.<end id='e1191411384752' /></strofa>
+		Możesz się na to spuścić, jestem słowny.<end id="e1191411384752"/></strofa>
 	</kwestia>
 
 
@@ -5915,7 +5916,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <naglowek_osoba>PANI KAPULET</naglowek_osoba>
 	<kwestia>
 		<strofa>Nie mów nic do mnie, nic ci nie odpowiem;/
-		Rób, co chcesz, wszystko mi to obojętne.<end id='e1191411213102' /></strofa>
+		Rób, co chcesz, wszystko mi to obojętne.<end id="e1191411213102"/></strofa>
 	</kwestia>
 
 
@@ -5932,7 +5933,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Po opuszczeniu ziemi? Daj mi radę./
 		Niestety! Że też nieba mogą nękać/
 		Tak mdłą istotę jak ja! Nic nie mówisz?/
-		<begin id='b1191410957646' /><motyw id='m1191410957646'>Zdrada</motyw>Nie maszże żadnej pociechy, żadnego 
+		<begin id="b1191410957646"/><motyw id="m1191410957646">Zdrada</motyw>Nie maszże żadnej pociechy, żadnego 
 		Na to lekarstwa?</strofa>
 	</kwestia>
 
@@ -6012,7 +6013,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Czy lżyć małżonka mego tymiż usty,/
 		Którymi tyle razy go pod niebo/
 		Wznosiłaś chwaląc? Precz, uwodzicielko!/
-		Serce me odtąd zamknięte dla ciebie.<end id='e1191410957646' />/
+		Serce me odtąd zamknięte dla ciebie.<end id="e1191410957646"/>/
 		Pójdę poprosić ojca Laurentego,/
 		By mi dał radę, a jeśli żadnego/
 		Na tę przeciwność nie będzie sposobu,/
@@ -6037,7 +6038,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 
 
-<naglowek_scena><begin id='b1191486280407' /><motyw id='m1191486280407'>Ksiądz, Zaświaty</motyw>SCENA PIERWSZA</naglowek_scena>
+<naglowek_scena><begin id="b1191486280407"/><motyw id="m1191486280407">Ksiądz, Zaświaty</motyw>SCENA PIERWSZA</naglowek_scena>
 
 
 <didaskalia>Cela <osoba>Ojca Laurentego</osoba>. <osoba>Ojciec Laurenty</osoba> i <osoba>Parys</osoba>.</didaskalia>
@@ -6058,7 +6059,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>OJCIEC LAURENTY</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191482692303' /><motyw id='m1191482692303'>Obyczaje, Żałoba</motyw>Nie znasz pan, mówisz, uczuć swojej przyszłej;/
+	<strofa><begin id="b1191482692303"/><motyw id="m1191482692303">Obyczaje, Żałoba</motyw>Nie znasz pan, mówisz, uczuć swojej przyszłej;/
 		Krzywa to droga, ja takich nie lubię.</strofa>
 </kwestia>
 
@@ -6074,7 +6075,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		By zatamować źródło tych łez, które/
 		W odosobnieniu cieką za obficie./
 		A w towarzystwie prędzej mogą ustać./
-		Znasz teraz, ojcze, powód tej nagłości.<end id='e1191482692303' /></strofa>
+		Znasz teraz, ojcze, powód tej nagłości.<end id="e1191482692303"/></strofa>
 </kwestia>
 
 
@@ -6122,7 +6123,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191483182826' /><motyw id='m1191483182826'>Ciało, Kobieta, Miłość</motyw>PARYS</naglowek_osoba>
+<naglowek_osoba><begin id="b1191483182826"/><motyw id="m1191483182826">Ciało, Kobieta, Miłość</motyw>PARYS</naglowek_osoba>
 <kwestia>
 	<strofa>Przyszłaś się, pani, spowiadać przed ojcem?</strofa>
 </kwestia>
@@ -6194,7 +6195,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 <kwestia>
-	<strofa>Nie przeczę; moja bowiem była inna.<end id='e1191483182826' />/
+	<strofa>Nie przeczę; moja bowiem była inna.<end id="e1191483182826"/>/
 		Maszli czas teraz, mój ojcze duchowny,/
 		Czyli też mam przyjść wieczór po nieszporach?</strofa>
 </kwestia>
@@ -6227,7 +6228,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191483085396' /><motyw id='m1191483085396'>Los, Samobójstwo</motyw>OJCIEC LAURENTY</naglowek_osoba>
+<naglowek_osoba><begin id="b1191483085396"/><motyw id="m1191483085396">Los, Samobójstwo</motyw>OJCIEC LAURENTY</naglowek_osoba>
 <kwestia>
 	<strofa>Ach, Julio! Znam twą boleść; mnie samego/
 		Nabawia ona prawie odurzenia,/
@@ -6258,7 +6259,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Wiek, ani rozum nie mógł doprowadzić/
 		Do rozwiązania zgodnego z honorem./
 		Mów prędko; pilno mi wstąpić do grobu,/
-		Jeśli mi powiesz, że nie ma sposobu.<end id='e1191483085396' /></strofa>
+		Jeśli mi powiesz, że nie ma sposobu.<end id="e1191483085396"/></strofa>
 </kwestia>
 
 
@@ -6302,7 +6303,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Przystań na związek z hrabią. Jutro środa;/
 		Staraj się jutro na noc zostać sama,/
 		Niech Marta nie śpi ten raz w twym pokoju./
-		<begin id='b1189503717062' /><motyw id='m1189503717062'>Sen</motyw>Masz tu flaszeczkę; weźmiesz ją do łóżka/
+		<begin id="b1189503717062"/><motyw id="m1189503717062">Sen</motyw>Masz tu flaszeczkę; weźmiesz ją do łóżka/
 		I filtrowany likwor ten wypijesz;/
 		A wnet po wszystkich żyłach cię przebiegnie/
 		Usypiający dreszcz, który owładnie/
@@ -6327,8 +6328,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		O naszym planie, Romeo przybędzie;/
 		Wraz ze mną czekać będzie w owym lochu/
 		Na twe ocknienie i tej samej nocy/
-		Uprowadzi cię skrycie do Mantui.<end id='e1189503717062' />/
-		<begin id='b1191483427341' /><motyw id='m1191483427341'>Kobieta</motyw>To cię uchroni od hańby grożącej;/
+		Uprowadzi cię skrycie do Mantui.<end id="e1189503717062"/>/
+		<begin id="b1191483427341"/><motyw id="m1191483427341">Kobieta</motyw>To cię uchroni od hańby grożącej;/
 		Jeśli brak woli lub niewieścia bojaźń/
 		Od wykonania tego cię nie wstrzyma.</strofa>
 </kwestia>
@@ -6336,7 +6337,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 <kwestia>
-	<strofa>O, daj mi, daj mi! nie mów o bojaźni!<end id='e1191483427341' /></strofa>
+	<strofa>O, daj mi, daj mi! nie mów o bojaźni!<end id="e1191483427341"/></strofa>
 </kwestia>
 
 
@@ -6369,7 +6370,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Pokój w domu Kapuletów. Wchodzą <osoba>Kapulet</osoba>, <osoba>Pani Kapulet</osoba>, <osoba>Marta</osoba> i słudzy.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191483848972' /><motyw id='m1191483848972'>Sługa</motyw>KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191483848972"/><motyw id="m1191483848972">Sługa</motyw>KAPULET</naglowek_osoba>
 <didaskalia>do <osoba>Służącego</osoba></didaskalia>
 <kwestia>
 	<akap>Proś te osoby, co tu są spisane.</akap>
@@ -6396,7 +6397,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>DRUGI SŁUŻĄCY</naglowek_osoba>
 <kwestia>
-	<akap>Zły to kucharz, jaśnie panie, co nie oblizuje sobie palców<pr><slowo_obce>Zły to kucharz...</slowo_obce> --- popularne powiedzenie o kucharzu, który dobrze gotuje; por. polskie: palce lizać.</pr>, o którym się więc przekonam, że tego nie umie, tego nie sprowadzę.<end id='e1191483848972' /></akap>
+	<akap>Zły to kucharz, jaśnie panie, co nie oblizuje sobie palców<pr><slowo_obce>Zły to kucharz...</slowo_obce> --- popularne powiedzenie o kucharzu, który dobrze gotuje; por. polskie: palce lizać.</pr>, o którym się więc przekonam, że tego nie umie, tego nie sprowadzę.<end id="e1191483848972"/></akap>
 </kwestia>
 
 
@@ -6409,7 +6410,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <kwestia>
 	<strofa>Wątpię, czy wszystko na czas wygotujem./
-		<begin id='b1191483807464' /><motyw id='m1191483807464'>Córka, Ksiądz, Obyczaje, Ojciec</motyw>Bodaj cię! Prawdaż to, że Julia poszła/
+		<begin id="b1191483807464"/><motyw id="m1191483807464">Córka, Ksiądz, Obyczaje, Ojciec</motyw>Bodaj cię! Prawdaż to, że Julia poszła/
 		Do ojca Laurentego?</strofa>
 </kwestia>
 
@@ -6474,7 +6475,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Tak być powinno, tak córce przystoi./
 		Prosić tu hrabię, żeby przyszedł zaraz./
 		Dalipan, święty to człek z tego mnicha;/
-		Słusznie mu całe miasto cześć oddaje.<end id='e1191483807464' /></strofa>
+		Słusznie mu całe miasto cześć oddaje.<end id="e1191483807464"/></strofa>
 </kwestia>
 
 
@@ -6515,10 +6516,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Idź do Juleczki, pomóż jej się przebrać./
 		Ja się tej nocy nie położę; będę/
 		Na ten raz pełnił urząd gospodyni./
-		<begin id='b1191483926469' /><motyw id='m1191483926469'>Sługa</motyw>Hej, służba! Cóż to? wszyscy się rozeszli?/
+		<begin id="b1191483926469"/><motyw id="m1191483926469">Sługa</motyw>Hej, służba! Cóż to? wszyscy się rozeszli?/
 		Mniejsza z tym, pójdę sam hrabię uprzedzić/
-		O zaszłej zmianie.<end id='e1191483926469' /> <begin id='b1191483946847' /><motyw id='m1191483946847'>Córka, Ojciec</motyw>Lekko mi na sercu,/
-		Że się ten kozioł przecie opamiętał.<end id='e1191483946847' /></strofa>
+		O zaszłej zmianie.<end id="e1191483926469"/> <begin id="b1191483946847"/><motyw id="m1191483946847">Córka, Ojciec</motyw>Lekko mi na sercu,/
+		Że się ten kozioł przecie opamiętał.<end id="e1191483946847"/></strofa>
 </kwestia>
 
 
@@ -6536,11 +6537,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>JULIA</naglowek_osoba>
 <kwestia>
-	<strofa>Tak, ten strój wezmę. Ale, <begin id='b1191484083226' /><motyw id='m1191484083226'>Grzech</motyw>złota nianiu,/
+	<strofa>Tak, ten strój wezmę. Ale, <begin id="b1191484083226"/><motyw id="m1191484083226">Grzech</motyw>złota nianiu,/
 		Proszę cię, zostaw mię na tę noc samą,/
 		Bo dużo muszę pacierzy odmówić/
 		Dla uproszenia sobie względów niebios/
-		Nad moim stanem, jak wiesz, pełnym grzechu.<end id='e1191484083226' /></strofa>
+		Nad moim stanem, jak wiesz, pełnym grzechu.<end id="e1191484083226"/></strofa>
 </kwestia>
 
 
@@ -6580,7 +6581,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Zimny dreszcz trwogi na wskroś mię przejmuje/
 		I jakby mrozi we mnie ciepło życia./
 		Zawołam na nie, by mnie pokrzepiły;/
-		<begin id='b1191484601811' /><motyw id='m1191484601811'>Sen, Śmierć</motyw>Nianiu! I po cóż tu ona? Straszliwy/
+		<begin id="b1191484601811"/><motyw id="m1191484601811">Sen, Śmierć</motyw>Nianiu! I po cóż tu ona? Straszliwy/
 		Ten czyn wymaga właśnie samotności./
 		Ha! pójdź, flakonie!/
 		Gdyby jednakże ten płyn nie skutkował?/
@@ -6590,14 +6591,14 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	
 	<didaskalia>kładzie na stole sztylet<pr><slowo_obce>Kładzie... sztylet</slowo_obce> --- w tamtych czasach kobiety nosiły przy sobie albo sztylet, albo nóż.</pr></didaskalia>
 	
-	<strofa><begin id='b1191493541650' /><motyw id='m1191493541650'>Ksiądz</motyw>A gdyby też to miała być trucizna,/
+	<strofa><begin id="b1191493541650"/><motyw id="m1191493541650">Ksiądz</motyw>A gdyby też to miała być trucizna,/
 		Którą mi ksiądz ten zręcznie śmierć chce zadać,/
 		By ujść zarzutu, że dał ślub kobiecie,/
 		Którą już pierwej zaślubił z kim innym?/
-		To by być mogło;<end id='e1191493541650' /> ale nie, tak nie jest,/
+		To by być mogło;<end id="e1191493541650"/> ale nie, tak nie jest,/
 		Bo jego świętość jest wypróbowana,/
 		I nawet myśli tej nie chcę przypuszczać./
-		<begin id='b1191493590784' /><motyw id='m1191493590784'>Gotycyzm</motyw>Lecz gdybym w grobie się ocknęła pierwej,/
+		<begin id="b1191493590784"/><motyw id="m1191493590784">Gotycyzm</motyw>Lecz gdybym w grobie się ocknęła pierwej,/
 		Nim mię Romeo przyjdzie oswobodzić?/
 		To byłoby okropnie!/
 		Nie udusiłażbym się wśród tych sklepień,/
@@ -6614,12 +6615,12 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Złożony Tybalt gnije pod całunem;/
 		I kędy nocą, o pewnych godzinach,/
 		Duchy, jak mówią odbywają schadzki;/
-		<begin id='b1191484714046' /><motyw id='m1191484714046'>Szaleniec</motyw>Niestety! czyliżby prawdopodobnie/
+		<begin id="b1191484714046"/><motyw id="m1191484714046">Szaleniec</motyw>Niestety! czyliżby prawdopodobnie/
 		To wszystko, gdybym wcześniej się ocknęła,/
-		A potem zapach trupi, <begin id='b1191484648913' /><motyw id='m1191484648913'>Rośliny</motyw>krzyk podobny/
+		A potem zapach trupi, <begin id="b1191484648913"/><motyw id="m1191484648913">Rośliny</motyw>krzyk podobny/
 		Do tego, jaki wydaje ów korzeń/
 		Ziela pokrzyku<pr><slowo_obce>pokrzyk</slowo_obce> --- mandragora; to roślina o działaniu usypiającym.</pr>, gdy się go wyrywa,/
-		Krzyk wprawiający ludzi w obłąkanie<pr>Wg starych wierzeń korzeń pokrzyku (w kształcie człowieka) wyrwany z ziemi krzyczy tak przeraźliwie, że ludzie słyszący jego wrzaski wpadają w obłęd.</pr>,<end id='e1191484648913' />/
+		Krzyk wprawiający ludzi w obłąkanie<pr>Wg starych wierzeń korzeń pokrzyku (w kształcie człowieka) wyrwany z ziemi krzyczy tak przeraźliwie, że ludzie słyszący jego wrzaski wpadają w obłęd.</pr>,<end id="e1191484648913"/>/
 		Czyliżby wszystko to, w razie ocknienia/
 		Nie pomieszało mi zmysłów? Czyliżbym/
 		Po szalonemu nie igrała wtedy/
@@ -6630,7 +6631,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Jak pałką? Patrzcie! patrzcie! zdaje mi się,/
 		Że duch Tybalta widzę ścigający/
 		Romea za to, że go wygnał z ciała./
-		Stój! stój, Tybalcie!<end id='e1191493590784' /><end id='e1191484714046' /></strofa>
+		Stój! stój, Tybalcie!<end id="e1191493590784"/><end id="e1191484714046"/></strofa>
 	
 	<didaskalia>przytyka flakon do ust</didaskalia>
 	
@@ -6639,7 +6640,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<didaskalia>Wypija napój i rzuca się na łóżko.<end id='e1191484601811' /></didaskalia>
+<didaskalia>Wypija napój i rzuca się na łóżko.<end id="e1191484601811"/></didaskalia>
 
 
 
@@ -6706,7 +6707,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<strofa>Zazdrosna sztuka!</strofa>
 </kwestia>
 
-<didaskalia><begin id='b1191485083130' /><motyw id='m1191485083130'>Sługa</motyw>Wchodzą słudzy z rożnami, koszami i drzewem.</didaskalia>
+<didaskalia><begin id="b1191485083130"/><motyw id="m1191485083130">Sługa</motyw>Wchodzą słudzy z rożnami, koszami i drzewem.</didaskalia>
 
 <kwestia>
 	<strofa><wers_cd>Hej! co tam niesiecie?</wers_cd></strofa>
@@ -6746,7 +6747,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <naglowek_osoba>KAPULET</naglowek_osoba>
 <kwestia>
 	<strofa>Masz słuszność; żywo! Wesołe ladaco!/
-		Sam będziesz klocem.<end id='e1191485083130' /> Dalipan, już dnieje/
+		Sam będziesz klocem.<end id="e1191485083130"/> Dalipan, już dnieje/
 		I hrabia będzie tu zaraz z muzyką./
 		Tak przyrzekł.</strofa>
 </kwestia>
@@ -6780,24 +6781,24 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Pokój <osoba>Julii</osoba>. <osoba>Julia</osoba> w łóżku. Wchodzi <osoba>Marta</osoba>.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191486114451' /><motyw id='m1191486114451'>Śmierć</motyw>MARTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1191486114451"/><motyw id="m1191486114451">Śmierć</motyw>MARTA</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191486636919' /><motyw id='m1191486636919'>Ciało, Małżeństwo, Sen</motyw>Panienko! Julciu! Jak się to zaspało!/
+	<strofa><begin id="b1191486636919"/><motyw id="m1191486636919">Ciało, Małżeństwo, Sen</motyw>Panienko! Julciu! Jak się to zaspało!/
 		Wstawaj gołąbku! Wstawaj! Wstydź się, śpiochu!/
 		Panienko! duszko! rybko! Ani mrumru!/
 		Chcesz, widzę, wyspać się za cały tydzień./
 		Jakbyś wiedziała, że ci hrabia Parys/
 		Następnej nocy nie da oka zmrużyć./
-		Odpuść mi, Panie, amen!<end id='e1191486636919' /> Jak śpi smacznie!/
+		Odpuść mi, Panie, amen!<end id="e1191486636919"/> Jak śpi smacznie!/
 		Muszę ją jednak zbudzić. Julciu! Julciu!/
 		Niech no cię hrabia Parys tak zastanie,/
 		To się dopiero zerwiesz. Cóż to? w sukni?/
 		Jużeś ubrana i znów się pokładłaś?/
 		Dosyć już tego! Julciu! Panno Julio! -/
-		<begin id='b1191486600228' /><motyw id='m1191486600228'>Pijaństwo</motyw>Ha! przez Bóg żywy! Na pomoc! na pomoc!/
+		<begin id="b1191486600228"/><motyw id="m1191486600228">Pijaństwo</motyw>Ha! przez Bóg żywy! Na pomoc! na pomoc!/
 		Ona nie żyje! O, ja nieszczęśliwa!/
 		Po co mi było się rodzić? Na pomoc!/
-		Choć trochę akwawity! Panie! Pani!<end id='e1191486600228' /></strofa>
+		Choć trochę akwawity! Panie! Pani!<end id="e1191486600228"/></strofa>
 </kwestia>
 
 
@@ -6862,11 +6863,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191486565719' /><motyw id='m1191486565719'>Córka, Ojciec</motyw>Puśćcie mię, niech zobaczę... Jak lód zimna;/
+	<strofa><begin id="b1191486565719"/><motyw id="m1191486565719">Córka, Ojciec</motyw>Puśćcie mię, niech zobaczę... Jak lód zimna;/
 		Krew w niej zastygła; członki jej zdrętwiały.../
 		Dawno już życie z tych ust uleciało./
 		Śmierć ją zwarzyła, jak mróz najpiękniejszy/
-		Pierwiosnek w maju. Nieszczęsny ja starzec!<end id='e1191486565719' /></strofa>
+		Pierwiosnek w maju. Nieszczęsny ja starzec!<end id="e1191486565719"/></strofa>
 </kwestia>
 
 
@@ -6882,7 +6883,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191486500602' /><motyw id='m1191486500602'>Ojciec</motyw>KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191486500602"/><motyw id="m1191486500602">Ojciec</motyw>KAPULET</naglowek_osoba>
 <kwestia>
 	<strofa>Śmierć ta, niszcząca wszystkie me nadzieje,/
 		Głos mi tamuje i zamyka usta.</strofa>
@@ -6907,7 +6908,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Patrz, oto leży ten kwiat w jej uścisku./
 		Śmierć jest mym zięciem, śmierć jest mym dziedzicem./
 		Umrę i wszystko jej oddam, bo wszystko 
-		Oddaje śmierci, kto oddaje ducha.<end id='e1191486500602' /></strofa>
+		Oddaje śmierci, kto oddaje ducha.<end id="e1191486500602"/></strofa>
 </kwestia>
 
 
@@ -6918,14 +6919,14 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191486371615' /><motyw id='m1191486371615'>Matka</motyw>PANI KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191486371615"/><motyw id="m1191486371615">Matka</motyw>PANI KAPULET</naglowek_osoba>
 <kwestia>
 	<strofa>Dniu nienawistny, przeklęty! ohydny,/
 		Stokroć obmierzły, jakiemu równego/
 		W obiegu swoim czas jeszcze nie widział!/
 		Jedno mieć tylko, jedno biedne dziecko,/
 		Jedną uciechę i jedną pociechę./
-		I tę zabiera śmierć nielitościwa!<end id='e1191486371615' /></strofa>
+		I tę zabiera śmierć nielitościwa!<end id="e1191486371615"/></strofa>
 </kwestia>
 
 
@@ -6952,13 +6953,13 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191486342487' /><motyw id='m1191486342487'>Los, Ojciec</motyw>Zawistny, twardy, niecny, zbójczy losie!/
+	<strofa><begin id="b1191486342487"/><motyw id="m1191486342487">Los, Ojciec</motyw>Zawistny, twardy, niecny, zbójczy losie!/
 		Po cóż ci, po co było tak tyrańsko/
 		Wniwecz obracać naszą uroczystość!/
 		O moje dziecko! raczej duszo moja,/
 		Nie moje dziecko, bo dziecko jest trupem;/
 		I wraz z nim cała pociech mych ostoja,/
-		Cały wdzięk życia stał się śmierci łupem!<end id='e1191486342487' /></strofa>
+		Cały wdzięk życia stał się śmierci łupem!<end id="e1191486342487"/></strofa>
 </kwestia>
 
 
@@ -6977,27 +6978,27 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		I rozpaczacie, widząc ją wzniesioną/
 		Ponad obłoki do istnego raju?/
 		O, zła to miłość jęczeć z żalu wtedy,/
-		Kiedy tym, których kochamy, jest dobrze.<end id='e1191486280407' />/
-		<begin id='b1191486218337' /><motyw id='m1191486218337'>Małżeństwo, Żona</motyw>Nie ta dziewica dobrze poszła za mąż,/
+		Kiedy tym, których kochamy, jest dobrze.<end id="e1191486280407"/>/
+		<begin id="b1191486218337"/><motyw id="m1191486218337">Małżeństwo, Żona</motyw>Nie ta dziewica dobrze poszła za mąż,/
 		Co długie lata przeżyła w zamęściu,/
-		Lecz ta, co młodo zamężną umiera.<end id='e1191486218337' />/
+		Lecz ta, co młodo zamężną umiera.<end id="e1191486218337"/>/
 		Połóżcie tamę łzom i umaiwszy/
 		To piękne ciało liśćmi rozmarynu,/
 		Każcie je, wedle zwyczaju, niebawem/
 		W świątecznych szatach zanieść do kościoła./
-		<begin id='b1191486302289' /><motyw id='m1191486302289'>Żałoba</motyw>Świętymi wprawdzie są boleści prawa,/
-		Przecież rozsądek z łez się naigrawa.<end id='e1191486302289' /></strofa>
+		<begin id="b1191486302289"/><motyw id="m1191486302289">Żałoba</motyw>Świętymi wprawdzie są boleści prawa,/
+		Przecież rozsądek z łez się naigrawa.<end id="e1191486302289"/></strofa>
 </kwestia>
 
 
 <naglowek_osoba>KAPULET</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191486167345' /><motyw id='m1191486167345'>Małżeństwo</motyw>Cośmy na gody poprzysposabiali,/
+	<strofa><begin id="b1191486167345"/><motyw id="m1191486167345">Małżeństwo</motyw>Cośmy na gody poprzysposabiali,/
 		To musi teraz posłużyć na pogrzeb;/
 		Weselna uczta zamieni się w stypę,/
 		Dźwięk strun w jęk dzwonów, pieśni w smętne treny,/
 		Mirtowy wieniec martwą skroń otoczy,/
-		Słowem, wszystko się w opak przeistoczy.<end id='e1191486167345' /></strofa>
+		Słowem, wszystko się w opak przeistoczy.<end id="e1191486167345"/></strofa>
 </kwestia>
 
 
@@ -7008,14 +7009,14 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Te piękne zwłoki na wieczny spoczynek./
 		Snadź niebo na was o coś zagniewane;/
 		Nie jątrzcież jego gniewu jeszcze gorzej/
-		Oporem przeciw świętej woli bożej.<end id='e1191486114451' /></strofa>
+		Oporem przeciw świętej woli bożej.<end id="e1191486114451"/></strofa>
 </kwestia>
 
 
 <didaskalia>Wychodzą <osoba>Kapulet</osoba>, <osoba>Pani Kapulet</osoba>, <osoba>Parys</osoba> i <osoba>Ojciec Laurenty</osoba>.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191485984423' /><motyw id='m1191485984423'>Muzyka, Sługa</motyw>PIERWSZY MUZYKANT</naglowek_osoba>
+<naglowek_osoba><begin id="b1191485984423"/><motyw id="m1191485984423">Muzyka, Sługa</motyw>PIERWSZY MUZYKANT</naglowek_osoba>
 <kwestia>
 	<akap>Trzeba nam podobno schować dudy w miech i wynieść się za drzwi.</akap>
 </kwestia>
@@ -7164,7 +7165,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<didaskalia>wychodzi śpiewając</didaskalia>
 	
 	<strofa>Muzyki srebrny dźwięk/
-		Natychmiast ulgę sprawia.<end id='e1191485984423' /></strofa>
+		Natychmiast ulgę sprawia.<end id="e1191485984423"/></strofa>
 </kwestia>
 
 
@@ -7203,9 +7204,9 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Mantua. Ulica. Wchodzi <osoba>Romeo</osoba>.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1189503928968' /><motyw id='m1189503928968'>Los</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1189503928968"/><motyw id="m1189503928968">Los</motyw>ROMEO</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1189503867531' /><motyw id='m1189503867531'>Sen, Przeczucie</motyw>Jeżeli można ufać sennym wróżbom,/
+	<strofa><begin id="b1189503867531"/><motyw id="m1189503867531">Sen, Przeczucie</motyw>Jeżeli można ufać sennym wróżbom,/
 		Wkrótce mię czeka jakaś wieść radosna./
 		Król mego łona<pr><slowo_obce>Król mego łona</slowo_obce> --- serce.</pr> oddycha swobodnie/
 		I duch mój przez dzień cały niezwyczajnie/
@@ -7217,7 +7218,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Tyle tchu wlała w martwe moje usta,/
 		Żem nagle odżył i został cesarzem./
 		Ach, jakże słodką jest miłość naprawdę,/
-		Kiedy jej mara taką rozkosz sprawia!<end id='e1189503867531' /></strofa></kwestia>
+		Kiedy jej mara taką rozkosz sprawia!<end id="e1189503867531"/></strofa></kwestia>
 
 <didaskalia>Wchodzi <osoba>Baltazar</osoba>.</didaskalia>
 
@@ -7232,10 +7233,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>BALTAZAR</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1189503892234' /><motyw id='m1189503892234'>Śmierć</motyw>Wszystko więc dobrze, bo jej już źle nie jest;/
+	<strofa><begin id="b1189503892234"/><motyw id="m1189503892234">Śmierć</motyw>Wszystko więc dobrze, bo jej już źle nie jest;/
 		Ciało jej leży w lochach Kapuletów,/
 		A duch jej gości między aniołami./
-		Widziałem, jak ją złożono do sklepień<end id='e1189503892234' />,/
+		Widziałem, jak ją złożono do sklepień<end id="e1189503892234"/>,/
 		I wziąłem pocztę, aby o tym panu/
 		Donieść czym prędzej. Przebacz pan, że taką/
 		Złą wieść przynoszę; wszakże uwiadomić/
@@ -7245,7 +7246,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191490001015' /><motyw id='m1191490001015'>Rozpacz</motyw>Maż to być prawdą? Drwię sobie z was, gwiazdy!<pr><slowo_obce>Drwię sobie z was, gwiazdy!</slowo_obce> --- Romeo wierzy, iż gwiazdy, rządzące jego życiem skazały go na bezgraniczne cierpienie; drwina z gwiazd jest więc zapowiedzią samobójstwa, buntem przeciw losowi.</pr><end id='e1191490001015' /><end id='e1189503928968' />/
+	<strofa><begin id="b1191490001015"/><motyw id="m1191490001015">Rozpacz</motyw>Maż to być prawdą? Drwię sobie z was, gwiazdy!<pr><slowo_obce>Drwię sobie z was, gwiazdy!</slowo_obce> --- Romeo wierzy, iż gwiazdy, rządzące jego życiem skazały go na bezgraniczne cierpienie; drwina z gwiazd jest więc zapowiedzią samobójstwa, buntem przeciw losowi.</pr><end id="e1191490001015"/><end id="e1189503928968"/>/
 		Wszak wiesz, gdzie mieszkam? Przynieś mi papieru/
 		I atramentu, idź potem na pocztę/
 		Zamienić konie. Wyjeżdżam tej nocy.</strofa>
@@ -7300,8 +7301,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Pęcherzów, stęchłych nasion; resztki sznurków/
 		I zapleśniałe kawałki lukrecji./
 		Na widok tego pomyślałem sobie:/
-		<begin id='b1191487235715' /><motyw id='m1191487235715'>Obyczaje</motyw>Komu by była potrzebna trucizna,/
-		Której w Mantui sprzedaż gardłem karzą,<end id='e1191487235715' />/
+		<begin id="b1191487235715"/><motyw id="m1191487235715">Obyczaje</motyw>Komu by była potrzebna trucizna,/
+		Której w Mantui sprzedaż gardłem karzą,<end id="e1191487235715"/>/
 		Niechajby przyszedł do tego hołysza,/
 		On by dostarczył mu jej. Myśl ta była,/
 		Niestety! wróżbą mej potrzeby własnej;/
@@ -7323,7 +7324,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191487470772' /><motyw id='m1191487470772'>Bieda, Samobójstwo, Śmierć</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191487470772"/><motyw id="m1191487470772">Bieda, Samobójstwo, Śmierć</motyw>ROMEO</naglowek_osoba>
 <kwestia>
 	<strofa><wers_cd>Zbliż się tu, człowieku,</wers_cd>/
 		Widzę, że jesteś w niezamożnym stanie;/
@@ -7388,7 +7389,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Nie ty mnie, ja ci sprzedałem truciznę./
 		Bądź zdrów: kup strawy i odziej się w mięso./
 		Kordiale, nie trucizno, pójdź mi służyć/
-		U grobu Julii, bo tam cię mam użyć.<end id='e1191487470772' /></strofa>
+		U grobu Julii, bo tam cię mam użyć.<end id="e1191487470772"/></strofa>
 </kwestia>
 
 
@@ -7494,7 +7495,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>PARYS</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191490232258' /><motyw id='m1191490232258'>Sługa</motyw>Daj mi pochodnię, chłopcze, i idź z Bogiem,/
+	<strofa><begin id="b1191490232258"/><motyw id="m1191490232258">Sługa</motyw>Daj mi pochodnię, chłopcze, i idź z Bogiem,/
 		Lub zgaś ją, nie chcę, żeby mię widziano./
 		Idź się położyć owdzie pod cisami/
 		I ucho przyłóż do ziemi, a skoro/
@@ -7508,7 +7509,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <naglowek_osoba>PAŹ</naglowek_osoba>
 <kwestia>
 	<strofa>Straszno mi będzie pozostać samemu/
-		Wpośród cmentarza; jednakże spróbuję.<end id='e1191490232258' /></strofa>
+		Wpośród cmentarza; jednakże spróbuję.<end id="e1191490232258"/></strofa>
 </kwestia>
 
 
@@ -7539,7 +7540,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>Oddala się. Wchodzi <osoba>Romeo</osoba> i <osoba>Baltazar</osoba> z pochodnią, oskardem itp.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191490306330' /><motyw id='m1191490306330'>Sługa</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191490306330"/><motyw id="m1191490306330">Sługa</motyw>ROMEO</naglowek_osoba>
 <kwestia>
 	<strofa>Podaj mi oskard i drąg. Weź to pismo;/
 		Oddasz je memu ojcu jak najraniej./
@@ -7580,19 +7581,19 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <didaskalia>na stronie</didaskalia>
 <kwestia>
 	<strofa>Bądź jak bądź, stanę tu gdzie na uboczu,/
-		Bo mu zły jakiś zamiar patrzy z oczu.<end id='e1191490306330' /></strofa>
+		Bo mu zły jakiś zamiar patrzy z oczu.<end id="e1191490306330"/></strofa>
 </kwestia>
 
 
 <didaskalia>Oddala się.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1191490381471' /><motyw id='m1191490381471'>Śmierć</motyw>ROMEO</naglowek_osoba>
+<naglowek_osoba><begin id="b1191490381471"/><motyw id="m1191490381471">Śmierć</motyw>ROMEO</naglowek_osoba>
 <kwestia>
 	<strofa>Czarna pieczaro, o! ty wnętrze śmierci,/
 		Tuczne najdroższym na tej ziemi szczątkiem,/
 		Otwórz mi swoją zardzewiałą paszczę,/
-		A ja ci nową żertwę rzucę za to.<end id='e1191490381471' /></strofa>
+		A ja ci nową żertwę rzucę za to.<end id="e1191490381471"/></strofa>
 </kwestia>
 
 
@@ -7601,7 +7602,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>PARYS</naglowek_osoba>
 <kwestia>
-	<strofa><begin id='b1191490702210' /><motyw id='m1191490702210'>Zbrodniarz</motyw>To ten wygnany, zuchwały Monteki,/
+	<strofa><begin id="b1191490702210"/><motyw id="m1191490702210">Zbrodniarz</motyw>To ten wygnany, zuchwały Monteki,/
 		Co zamordował Tybalta, po którym/
 		Żal, jak mniemają, sprowadził śmierć Julii;/
 		I on tu przyszedł knuć jeszcze zamachy/
@@ -7611,8 +7612,8 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	
 	<strofa>Spuść świętokradzką dłoń, niecny Monteki!/
 		Możeż się zemsta aż za grób rozciągać?/
-		<begin id='b1191490894693' /><motyw id='m1191490894693'>Szaleniec</motyw>Skazany zbrodniu, aresztuję ciebie;/
-		Bądź mi posłuszny i pójdź; musisz umrzeć.<end id='e1191490702210' /></strofa>
+		<begin id="b1191490894693"/><motyw id="m1191490894693">Szaleniec</motyw>Skazany zbrodniu, aresztuję ciebie;/
+		Bądź mi posłuszny i pójdź; musisz umrzeć.<end id="e1191490702210"/></strofa>
 </kwestia>
 
 
@@ -7631,7 +7632,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1189503992937' /><motyw id='m1189503992937'>Śmierć</motyw>PARYS</naglowek_osoba>
+<naglowek_osoba><begin id="b1189503992937"/><motyw id="m1189503992937">Śmierć</motyw>PARYS</naglowek_osoba>
 <kwestia>
 	<strofa>Za nic mam wszelkie twoje przełożenia/
 		I aresztuję cię jako złoczyńcę.</strofa>
@@ -7644,12 +7645,12 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<didaskalia><begin id='b1191490936148' /><motyw id='m1191490936148'>Sługa</motyw>Walczą.</didaskalia>
+<didaskalia><begin id="b1191490936148"/><motyw id="m1191490936148">Sługa</motyw>Walczą.</didaskalia>
 
 
 <naglowek_osoba>PAŹ</naglowek_osoba>
 <kwestia>
-	<strofa>O nieba! biją się, biegnę po wartę.<end id='e1191490936148' /></strofa>
+	<strofa>O nieba! biją się, biegnę po wartę.<end id="e1191490936148"/></strofa>
 </kwestia>
 
 
@@ -7664,7 +7665,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<didaskalia>Umiera.<end id='e1189503992937' /></didaskalia>
+<didaskalia>Umiera.<end id="e1189503992937"/></didaskalia>
 
 
 <naglowek_osoba>ROMEO</naglowek_osoba>
@@ -7692,19 +7693,19 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<strofa>Mówią, że nieraz ludzie bliscy śmierci/
 		Miewali chwile wesołe; ich stróże/
 		Zwą to ostatnim przedśmiertnym wybłyskiem;/
-		Coś podobnego i u mnie się zdarza?<end id='e1191490894693' />/
-		<begin id='b1189504032765' /><motyw id='m1189504032765'>Miłość, Miłość silniejsza niż śmierć, Rozpacz</motyw>Julio! kochanko moja! moja żono!/
+		Coś podobnego i u mnie się zdarza?<end id="e1191490894693"/>/
+		<begin id="b1189504032765"/><motyw id="m1189504032765">Miłość, Miłość silniejsza niż śmierć, Rozpacz</motyw>Julio! kochanko moja! moja żono!/
 		Śmierć, co wyssała miód twojego tchnienia,/
 		Wdzięków twych zatrzeć nie zdołała jeszcze./
 		Nie jesteś jeszcze zwyciężoną: karmin,/
 		Ten sztandar wdzięków, nie przestał powiewać/
 		Na twoich licach i bladej swej flagi/
 		Zniszczenie na nich jeszcze nie zatknęło./
-		<begin id='b1189504057671' /><motyw id='m1189504057671'>Samobójstwo</motyw>Tybalcie, tyż to śpisz pod tym całunem?/
+		<begin id="b1189504057671"/><motyw id="m1189504057671">Samobójstwo</motyw>Tybalcie, tyż to śpisz pod tym całunem?/
 		Mogęż czym lepszym zadość ci uczynić,/
 		Jak że tą ręką, co zabiła ciebie,/
 		Przetnę dni tego, co był twoim wrogiem?/
-		Przebacz mi, przebacz, Tybalcie! <begin id='b1191491206235' /><motyw id='m1191491206235'>Gotycyzm</motyw>Ach, Julio!/
+		Przebacz mi, przebacz, Tybalcie! <begin id="b1191491206235"/><motyw id="m1191491206235">Gotycyzm</motyw>Ach, Julio!/
 		Jakżeś ty jeszcze piękna! Mamże myśleć,/
 		Że bezcielesna nawet śmierć ulega/
 		Wpływom miłości? że chudy ten potwór/
@@ -7713,9 +7714,9 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		I nigdy, nigdy już nie wyjdę z tego/
 		Pałacu nocy; tu, tu mieszkać będę/
 		Pośród twojego orszaku - robactwa./
-		Tu sobie stałą założę siedzibę,<end id='e1191491206235' />/
-		<begin id='b1191491494729' /><motyw id='m1191491494729'>Los</motyw>Gdy z tego ciała znużonego światem/
-		Otrząsnę jarzmo gwiazd zawistnych.<end id='e1191491494729' /> Oczy,/
+		Tu sobie stałą założę siedzibę,<end id="e1191491206235"/>/
+		<begin id="b1191491494729"/><motyw id="m1191491494729">Los</motyw>Gdy z tego ciała znużonego światem/
+		Otrząsnę jarzmo gwiazd zawistnych.<end id="e1191491494729"/> Oczy,/
 		Spojrzyjcie po raz ostatni! ramiona,/
 		Po raz ostatni zegnijcie się w uścisk!/
 		A wy, podwoje tchu, zapieczętujcie/
@@ -7729,11 +7730,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<didaskalia>pije</didaskalia>
 	
 	<strofa><wers_cd>Walny aptekarzu!</wers_cd>/
-		Płyn twój skutkuje: całując --- umieram.<end id='e1189504032765' /></strofa>
+		Płyn twój skutkuje: całując --- umieram.<end id="e1189504032765"/></strofa>
 </kwestia>
 
 
-<didaskalia>Umiera.<end id='e1189504057671' /> Wchodzi <osoba>Ojciec Laurenty</osoba> z przeciwnej strony cmentarza, z latarnią, drągiem żelaznym i rydlem.</didaskalia>
+<didaskalia>Umiera.<end id="e1189504057671"/> Wchodzi <osoba>Ojciec Laurenty</osoba> z przeciwnej strony cmentarza, z latarnią, drągiem żelaznym i rydlem.</didaskalia>
 
 
 <naglowek_osoba>OJCIEC LAURENTY</naglowek_osoba>
@@ -7759,7 +7760,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191491552975' /><motyw id='m1191491552975'>Sługa</motyw>BALTAZAR</naglowek_osoba>
+<naglowek_osoba><begin id="b1191491552975"/><motyw id="m1191491552975">Sługa</motyw>BALTAZAR</naglowek_osoba>
 <kwestia>
 	<strofa>Tam właśnie; jest tam i mój pan, któremu/
 		Sprzyjacie, ojcze.</strofa>
@@ -7801,7 +7802,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	<strofa><wers_cd>Nie śmiem;</wers_cd>/
 		Bo mi pan kazał odejść i straszliwie/
 		Zagroził śmiercią, jeśli tu zostanę/
-		I kroki jego ważę się podglądać.<end id='e1191491552975' /></strofa>
+		I kroki jego ważę się podglądać.<end id="e1191491552975"/></strofa>
 </kwestia>
 
 
@@ -7831,10 +7832,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 	
 	<didaskalia>wchodzi do grobowca</didaskalia>
 	
-	<strofa><begin id='b1191491579176' /><motyw id='m1191491579176'>Los</motyw>Romeo! blady! --- Parys! i on także!/
+	<strofa><begin id="b1191491579176"/><motyw id="m1191491579176">Los</motyw>Romeo! blady! --- Parys! i on także!/
 		I krwią zalany? Ach! cóż za fatalność/
-		Tak opłakany zrządziła wypadek! ---<end id='e1191491579176' />/
-		<begin id='b1191492431784' /><motyw id='m1191492431784'>Miłość silniejsza niż śmierć</motyw>Julia się budzi.</strofa>
+		Tak opłakany zrządziła wypadek! ---<end id="e1191491579176"/>/
+		<begin id="b1191492431784"/><motyw id="m1191492431784">Miłość silniejsza niż śmierć</motyw>Julia się budzi.</strofa>
 </kwestia>
 
 
@@ -7852,12 +7853,12 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>OJCIEC LAURENTY</naglowek_osoba>
 <kwestia>
-	<strofa>Cóż to za hałas? <begin id='b1191491661018' /><motyw id='m1191491661018'>Los</motyw>Julio, wyjdźmy z tego/
+	<strofa>Cóż to za hałas? <begin id="b1191491661018"/><motyw id="m1191491661018">Los</motyw>Julio, wyjdźmy z tego/
 		Mieszkania śmierci, zgrozy i zniszczenia./
 		Potęga, której nikt z nas się nie oprze,/
 		Wniwecz zamiary nasze obróciła./
 		Pójdź; twój mąż leży martwy obok ciebie./
-		I Parys także.<end id='e1191491661018' /> Pójdź; pójdź; zaprowadzęć/
+		I Parys także.<end id="e1191491661018"/> Pójdź; pójdź; zaprowadzęć/
 		Do monasteru świętych sióstr zakonnych./
 		Nie zwłócz, nie pytaj, bo warta nadchodzi./
 		Pójdź, biedna Julio!</strofa>
@@ -7876,10 +7877,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 <naglowek_osoba>JULIA</naglowek_osoba>
 <kwestia>
 	<strofa>Idź z Bogiem, starcze; idź, ja tu zostanę./
-		<begin id='b1191491826920' /><motyw id='m1191491826920'>Skąpiec</motyw>Cóż to jest? Czara w zaciśniętej dłoni/
+		<begin id="b1191491826920"/><motyw id="m1191491826920">Skąpiec</motyw>Cóż to jest? Czara w zaciśniętej dłoni/
 		Mego kochanka? Truciznę więc zażył!/
 		O skąpiec! Wypił wszystko; ani kropli/
-		Nie pozostawił dla mnie!<end id='e1191491826920' /> Przytknę usta/
+		Nie pozostawił dla mnie!<end id="e1191491826920"/> Przytknę usta/
 		Do twych kochanych ust, może tam jeszcze/
 		Znajdzie się jaka odrobina jadu,/
 		Co mię zabije w upojeniu błogim.</strofa>
@@ -7897,7 +7898,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1189504117156' /><motyw id='m1189504117156'>Samobójstwo</motyw>JULIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1189504117156"/><motyw id="m1189504117156">Samobójstwo</motyw>JULIA</naglowek_osoba>
 <kwestia>
 	<strofa>Idą, czas kończyć.</strofa>
 	
@@ -7912,7 +7913,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<didaskalia>Pada na ciało <osoba>Romea</osoba> i umiera.<end id='e1189504117156' /><end id='e1191492431784' /> Wchodzi warta z <osoba>Paziem Parysa</osoba>.</didaskalia>
+<didaskalia>Pada na ciało <osoba>Romea</osoba> i umiera.<end id="e1189504117156"/><end id="e1191492431784"/> Wchodzi warta z <osoba>Paziem Parysa</osoba>.</didaskalia>
 
 
 <naglowek_osoba>PAŹ</naglowek_osoba>
@@ -8046,10 +8047,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191492094568' /><motyw id='m1191492094568'>Matka, Starość, Śmierć</motyw>PANI KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191492094568"/><motyw id="m1191492094568">Matka, Starość, Śmierć</motyw>PANI KAPULET</naglowek_osoba>
 <kwestia>
 	<strofa>Niestety! widok ten, jak odgłos dzwonu,/
-		Ostrzega starość mą o chwili zgonu.<end id='e1191492094568' /></strofa>
+		Ostrzega starość mą o chwili zgonu.<end id="e1191492094568"/></strofa>
 </kwestia>
 
 
@@ -8063,11 +8064,11 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191492141885' /><motyw id='m1191492141885'>Matka, Syn</motyw>MONTEKI</naglowek_osoba>
+<naglowek_osoba><begin id="b1191492141885"/><motyw id="m1191492141885">Matka, Syn</motyw>MONTEKI</naglowek_osoba>
 <kwestia>
 	<strofa>Ach! miłościwy książę, żona moja/
 		Zmarła tej nocy z tęsknoty za synem;/
-		Jakiż cios jeszcze niebo mi przeznacza?<end id='e1191492141885' /></strofa>
+		Jakiż cios jeszcze niebo mi przeznacza?<end id="e1191492141885"/></strofa>
 </kwestia>
 
 
@@ -8077,10 +8078,10 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191492183034' /><motyw id='m1191492183034'>Ojciec, Syn</motyw>MONTEKI</naglowek_osoba>
+<naglowek_osoba><begin id="b1191492183034"/><motyw id="m1191492183034">Ojciec, Syn</motyw>MONTEKI</naglowek_osoba>
 <kwestia>
 	<strofa><wers_cd>O niedobry synu!</wers_cd>/
-		Jak się ważyłeś w grób uprzedzić ojca?<end id='e1191492183034' /></strofa>
+		Jak się ważyłeś w grób uprzedzić ojca?<end id="e1191492183034"/></strofa>
 </kwestia>
 
 
@@ -8116,7 +8117,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191492781322' /><motyw id='m1191492781322'>Małżeństwo</motyw>OJCIEC LAURENTY</naglowek_osoba>
+<naglowek_osoba><begin id="b1191492781322"/><motyw id="m1191492781322">Małżeństwo</motyw>OJCIEC LAURENTY</naglowek_osoba>
 <kwestia>
 	<strofa><wers_cd>Zwięźle rzecz opowiem.</wers_cd>/
 		Bo tchnień mych pasmo krótsze jest zaiste/
@@ -8157,7 +8158,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Sam pospieszyłem wyrwać ją z tych sklepień,/
 		Chcąc ją następnie umieścić w mej celi,/
 		Póki Romeo nie przybędzie; ale/
-		<begin id='b1191492705123' /><motyw id='m1191492705123'>Rozpacz</motyw>Kiedym tu przyszedł (na niewiele minut/
+		<begin id="b1191492705123"/><motyw id="m1191492705123">Rozpacz</motyw>Kiedym tu przyszedł (na niewiele minut/
 		Przed jej zbudzeniem), już szlachetny Parys/
 		Leżał bez duszy i Romeo także./
 		Ona się budzi, jam się jął przekładać,/
@@ -8166,13 +8167,13 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Gdy wtem zgiełk nagły spłoszył mię od grobu,/
 		A ona, głucha na moje namowy,/
 		Rozpaczą zdjęta, pozostała w miejscu/
-		I, jak się zdaje, cios zadała sobie.<end id='e1191492705123' />/
+		I, jak się zdaje, cios zadała sobie.<end id="e1191492705123"/>/
 		Oto jest wszystko, co wiem; o małżeństwie/
 		Marta zaświadczy. Jeśli to nieszczęście/
 		Choć najmniej z mojej nastąpiło winy,/
 		Niech mój sędziwy wiek odpowie za to,/
 		Na kilka godzin przed bliskim już kresem,/
-		Wedle rygoru praw jak najsurowszych.<end id='e1191492781322' /></strofa>
+		Wedle rygoru praw jak najsurowszych.<end id="e1191492781322"/></strofa>
 </kwestia>
 
 
@@ -8220,18 +8221,18 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 		Że sobie kupił gdzieś u aptekarza/
 		Trucizny, którą postanowił zażyć/
 		W tym tu grobowcu, by umrzeć przy Julii./
-		<begin id='b1191493080800' /><motyw id='m1191493080800'>Kara, Konflikt, Miłość tragiczna, Śmierć</motyw>Rzecz jasna! Gdzie są ci nieprzyjaciele?/
+		<begin id="b1191493080800"/><motyw id="m1191493080800">Kara, Konflikt, Miłość tragiczna, Śmierć</motyw>Rzecz jasna! Gdzie są ci nieprzyjaciele?/
 		Patrzcie, Monteki! Kapulecie! Jaka/
 		Chłosta spotyka wasze nienawiści,/
 		Niebo obrało miłość za narzędzie/
 		Zabicia pociech waszego żywota;/
 		I ja za moje zbytnie pobłażanie/
 		Waszym niesnaskom straciłem dwóch krewnych./
-		Wszyscy jesteśmy ukarani.<end id='e1191493080800' /></strofa>
+		Wszyscy jesteśmy ukarani.<end id="e1191493080800"/></strofa>
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1191493158229' /><motyw id='m1191493158229'>Miłość silniejsza niż śmierć, Przyjaźń</motyw>KAPULET</naglowek_osoba>
+<naglowek_osoba><begin id="b1191493158229"/><motyw id="m1191493158229">Miłość silniejsza niż śmierć, Przyjaźń</motyw>KAPULET</naglowek_osoba>
 <kwestia>
 	<strofa>Monteki, bracie mój, podaj mi rękę;/
 		Niech to oprawą<pr><slowo_obce>oprawa</slowo_obce> --- część należna żonie z majątku męża, wynosząca zwykle podwójną wartość jej posagu. Tu oprawą Julii po mężu ma być zgoda obu zwaśnionych rodów.</pr> będzie dla mej córki;/
@@ -8259,7 +8260,7 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <naglowek_osoba>KSIĄŻĘ</naglowek_osoba>
 <kwestia>
-	<strofa>Ponurą zgodą ranek ten skojarzył;<end id='e1191493158229' />/
+	<strofa>Ponurą zgodą ranek ten skojarzył;<end id="e1191493158229"/>/
 		Słońce się z żalu w chmur zasłonę tuli;/
 		Smutniejszej bowiem los jeszcze nie zdarzył,/
 		Jak ta historia Romea i Julii<pr>Paszkowski zamykając tą piękną i tradycyjną już dziś strofą smutną opowieść o Romeo i Julii pominął dwa poprzednie wiersze, wzmiankę księcia: ,,Chodźmy stąd, by pomówić o tych smutkach / Jednym wybaczę, a drugich ukarzę".</pr></strofa>
@@ -8271,4 +8272,5 @@ Wielką im radość czas zgotuje w duszach.<end id='e1191324309503' /></strofa>
 
 <extra><!--</tekst_glowny>--></extra>
 
-</dramat_wierszowany_l></utwor>
+</dramat_wierszowany_l>
+</utwor>

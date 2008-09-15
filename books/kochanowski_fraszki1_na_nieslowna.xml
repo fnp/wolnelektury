@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Na_nies%C5%82own%C4%85">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
 <dc:title xml:lang="pl">Na niesłowną</dc:title>
@@ -16,7 +17,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-pierwsze-na-nieslowna</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
 <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
@@ -40,9 +41,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1188765877831' /><motyw id='m1188765877831'>Kobieta, Kochanek, Słowo</motyw>Miałem nadzieję, że mi zyścić miano,/
+<strofa><begin id="b1188765877831"/><motyw id="m1188765877831">Kobieta, Kochanek, Słowo</motyw>Miałem nadzieję, że mi zyścić miano,/
 Tak jako było z chucią<pe><slowo_obce>z chucią</slowo_obce> --- z chęcią, z ochotą.</pe> obiecano;/
 Ale co komu rzecze białagłowa,/
-Pisz jej na wietrze i na wodzie słowa.<end id='e1188765877831' /></strofa>
+Pisz jej na wietrze i na wodzie słowa.<end id="e1188765877831"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

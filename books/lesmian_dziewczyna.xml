@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Le%C5%9Bmian/Dziewczyna">
 <dc:creator xml:lang="pl">Leśmian, Bolesław</dc:creator>
 <dc:title xml:lang="pl">Dziewczyna</dc:title>
@@ -16,7 +17,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:subject.genre xml:lang="pl">Wiersz sylabotoniczny</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Dziewczyna</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/dziewczyna</dc:identifier.url>
 <dc:source xml:lang="pl">Bolesław Leśmian (1877-1937), Napój cienisty, Wydawnictwo Mortkowicza, Warszawa, 1936</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Bolesław Leśmian zm. 1937</dc:rights>
 <dc:date.pd xml:lang="pl">1937</dc:date.pd>
@@ -44,29 +45,29 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1199870554761' /><motyw id='m1199870554761'>Kondycja ludzka, Marzenie, Miłość, Tajemnica</motyw>Dwunastu braci, wierząc w sny, zbadało mur od marzeń strony,/
+<strofa><begin id="b1199870554761"/><motyw id="m1199870554761">Kondycja ludzka, Marzenie, Miłość, Tajemnica</motyw>Dwunastu braci, wierząc w sny, zbadało mur od marzeń strony,/
 A poza murem płakał głos, dziewczęcy głos zaprzepaszczony.</strofa>
 
 <strofa>I pokochali głosu dźwięk i chętny domysł o Dziewczynie,/
 I zgadywali kształty ust po tym, jak śpiew od żalu ginie...</strofa>
 
-<strofa>Mówili o niej: ,,Łka, więc jest!”<end id='e1199870554761' /> --- I nic innego nie mówili,/
+<strofa>Mówili o niej: ,,Łka, więc jest!”<end id="e1199870554761"/> --- I nic innego nie mówili,/
 I przeżegnali cały świat, --- i świat zadumał się w tej chwili...</strofa>
 
-<strofa><begin id='b1199870578192' /><motyw id='m1199870578192'>Praca</motyw>Porwali młoty w twardą dłoń i jęli w mury tłuc z łoskotem!/
-I nie wiedziała ślepa noc, kto jest człowiekiem, a kto młotem?<end id='e1199870578192' /></strofa>
+<strofa><begin id="b1199870578192"/><motyw id="m1199870578192">Praca</motyw>Porwali młoty w twardą dłoń i jęli w mury tłuc z łoskotem!/
+I nie wiedziała ślepa noc, kto jest człowiekiem, a kto młotem?<end id="e1199870578192"/></strofa>
 
 <strofa>,,O, prędzej skruszmy zimny głaz, nim śmierć Dziewczynę rdzą powlecze!” ---/
 Tak, waląc w mur, dwunasty brat do jedenastu innych rzecze.</strofa>
 
-<strofa><begin id='b1199870662038' /><motyw id='m1199870662038'>Śmierć</motyw>Ale daremny był ich trud, daremny ramion sprzęg i usił!/
+<strofa><begin id="b1199870662038"/><motyw id="m1199870662038">Śmierć</motyw>Ale daremny był ich trud, daremny ramion sprzęg i usił!/
 Oddali ciała swe na strwon owemu snowi, co ich kusił!</strofa>
 
 <strofa>Łamią się piersi, trzeszczy kość, próchnieją dłonie, twarze bledną.../
-I wszyscy w jednym zmarli dniu i noc wieczystą mieli jedną!<end id='e1199870662038' /></strofa>
+I wszyscy w jednym zmarli dniu i noc wieczystą mieli jedną!<end id="e1199870662038"/></strofa>
 
-<strofa><begin id='b1199870819504' /><motyw id='m1199870819504'>Czas , Duch, Praca, Zaświaty</motyw>Lecz cienie zmarłych --- Boże mój! --- nie wypuściły młotów z dłoni!/
-I tylko inny płynie czas --- i tylko młot inaczej dzwoni...<end id='e1199870819504' /></strofa>
+<strofa><begin id="b1199870819504"/><motyw id="m1199870819504">Czas , Duch, Praca, Zaświaty</motyw>Lecz cienie zmarłych --- Boże mój! --- nie wypuściły młotów z dłoni!/
+I tylko inny płynie czas --- i tylko młot inaczej dzwoni...<end id="e1199870819504"/></strofa>
 
 <strofa>I dzwoni wprzód! I dzwoni wspak! I wzwyż za każdym grzmi nawrotem!/
 I nie wiedziała ślepa noc, kto tu jest cieniem, a kto młotem?</strofa>
@@ -74,11 +75,11 @@ I nie wiedziała ślepa noc, kto tu jest cieniem, a kto młotem?</strofa>
 <strofa>,,O, prędzej skruszmy zimny głaz, nim śmierć Dziewczynę rdzą powlecze!”/
 Tak, waląc w mur, dwunasty cień do jedenastu innych rzecze.</strofa>
 
-<strofa><begin id='b1199870982690' /><motyw id='m1199870982690'>Śmierć</motyw>Lecz cieniom zbrakło nagle sił, a cień się mrokom nie opiera!/
+<strofa><begin id="b1199870982690"/><motyw id="m1199870982690">Śmierć</motyw>Lecz cieniom zbrakło nagle sił, a cień się mrokom nie opiera!/
 I powymarły jeszcze raz, bo nigdy dość się nie umiera...</strofa>
 
 <strofa>I nigdy dość, i nigdy tak, jak tego pragnie ów, co kona!.../
-I znikła treść --- i zginął ślad --- i powieść o nich już skończona!<end id='e1199870982690' /></strofa>
+I znikła treść --- i zginął ślad --- i powieść o nich już skończona!<end id="e1199870982690"/></strofa>
 
 <strofa>Lecz dzielne młoty --- Boże mój! --- mdłej nie poddały się żałobie!/
 I same przez się biły w mur, huczały spiżem same w sobie!</strofa>
@@ -90,7 +91,7 @@ I nie wiedziała ślepa noc, czym bywa młot, gdy nie jest młotem?</strofa>
 Tak, waląc w mur, dwunasty młot do jedenastu innych rzecze.</strofa>
 
 <strofa>I runął mur, tysiącem ech wstrząsając wzgórza i doliny!/
-<begin id='b1199871347607' /><motyw id='m1199871347607'>Klęska, Marzenie, Praca</motyw>Lecz poza murem --- nic i nic! Ni żywej duszy, ni Dziewczyny!</strofa>
+<begin id="b1199871347607"/><motyw id="m1199871347607">Klęska, Marzenie, Praca</motyw>Lecz poza murem --- nic i nic! Ni żywej duszy, ni Dziewczyny!</strofa>
 
 <strofa>Niczyich oczu, ani ust! I niczyjego w kwiatach losu!/
 Bo to był głos i tylko --- głos, i nic nie było, oprócz głosu!</strofa>
@@ -99,11 +100,12 @@ Bo to był głos i tylko --- głos, i nic nie było, oprócz głosu!</strofa>
 Takiż to świat! Niedobry świat! Czemuż innego nie ma świata?</strofa>
 
 <strofa>Wobec kłamliwych jawnie snów, wobec zmarniałych w nicość cudów./
-Potężne młoty legły w rząd na znak spełnionych godnie trudów.<end id='e1199871347607' /></strofa>
+Potężne młoty legły w rząd na znak spełnionych godnie trudów.<end id="e1199871347607"/></strofa>
 
 <strofa>I była zgroza nagłych cisz! I była próżnia w całym niebie!/
 A ty z tej próżni czemu drwisz, kiedy ta próżnia nie drwi z ciebie?</strofa>
 
 <extra><!--</tekst_glowny>--></extra>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

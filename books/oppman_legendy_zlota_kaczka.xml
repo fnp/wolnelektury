@@ -1,7 +1,8 @@
-<utwor><opowiadanie>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <opowiadanie>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
 <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
 <dc:title xml:lang="pl">Złota kaczka</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Z%C5%82ota+kaczka</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/legendy-warszawskie-zlota-kaczka</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
 <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
@@ -49,7 +50,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap><begin id="b1188825459087" /><motyw id="m1188825459087">Bogactwo, Cnota</motyw>Był sobie szewczyk warszawski. Nazywał się Lutek. Dobre było chłopczysko, wesołe, pracowite, ale biedne, jak ta mysz kościelna. Pracował ci on u majstra jednego, u majstra na Starym Mieście. Ale cóż? Majster, jak majster, grosz zbierał do grosza, z groszy ciułał<pe><slowo_obce>ciułać</slowo_obce> --- po troszeczku, pieczołowicie zbierać.</pe> talary i czerwońce<pe><slowo_obce>czerwońce</slowo_obce> --- czerwone złote; rodzaj dawnych monet.</pe>, a u chłopaka bieda, aż piszczy.</akap>
+<akap><begin id="b1188825459087"/><motyw id="m1188825459087">Bogactwo, Cnota</motyw>Był sobie szewczyk warszawski. Nazywał się Lutek. Dobre było chłopczysko, wesołe, pracowite, ale biedne, jak ta mysz kościelna. Pracował ci on u majstra jednego, u majstra na Starym Mieście. Ale cóż? Majster, jak majster, grosz zbierał do grosza, z groszy ciułał<pe><slowo_obce>ciułać</slowo_obce> --- po troszeczku, pieczołowicie zbierać.</pe> talary i czerwońce<pe><slowo_obce>czerwońce</slowo_obce> --- czerwone złote; rodzaj dawnych monet.</pe>, a u chłopaka bieda, aż piszczy.</akap>
 
 
 <akap>Niby to mu tam pożywienie dawał. Boże, zmiłuj się: wodzianka<pe><slowo_obce>wodzianka</slowo_obce> --- wodnista zupa.</pe>, kartofle --- i tyle! I odział<pe><slowo_obce>odziać</slowo_obce> --- ubrać.</pe> go, mówi się, ale ta przyodziewa<pe><slowo_obce>przyodziewa</slowo_obce> --- ubranie.</pe> spadała z Lutka, boć to stare łachy majstrowskie, co ledwo się kupy trzymały. Dość, że w takim sianie i pies by nie wytrzymał, a cóż dopiero człowiek! Gadają mu: Miej cierpliwość, mityguj się<pe><slowo_obce>mitygować się</slowo_obce> --- powstrzymywać się, panować nad sobą.</pe>, będzie lepiej, poczekaj ino<pe><slowo_obce>ino</slowo_obce> --- tylko.</pe>!</akap>
@@ -99,10 +100,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap><begin id="b1188825287070" /><motyw id="m1188825287070">Kobieta, Żołnierz</motyw>Wieczór spadł na gwarną<pe><slowo_obce>gwarną</slowo_obce> --- pełną gwaru, czyli odgłosów rozmów.</pe> Warszawę, gwiaździsty, ciepły, czerwcowy. Na ulicy ludzi, jak mrowia. Panienki takie śliczne spacerują, a przy nich kawaleria, młodzi panowie, a głównie --- wojskowi.</akap>
+<akap><begin id="b1188825287070"/><motyw id="m1188825287070">Kobieta, Żołnierz</motyw>Wieczór spadł na gwarną<pe><slowo_obce>gwarną</slowo_obce> --- pełną gwaru, czyli odgłosów rozmów.</pe> Warszawę, gwiaździsty, ciepły, czerwcowy. Na ulicy ludzi, jak mrowia. Panienki takie śliczne spacerują, a przy nich kawaleria, młodzi panowie, a głównie --- wojskowi.</akap>
 
 
-<akap>Tu ułan drugiego pułku, biały z granatem, tu strzelec konny gwardii w mundurze zielonym z żółtym, tu piechota liniowa, tu artylerzysta; hej! ostrogi dźwięczą, szable brzęczą, kity migają, aż lubo<pe><slowo_obce>lubo</slowo_obce> --- miło.</pe> patrzeć!<end id="e1188825287070" /></akap>
+<akap>Tu ułan drugiego pułku, biały z granatem, tu strzelec konny gwardii w mundurze zielonym z żółtym, tu piechota liniowa, tu artylerzysta; hej! ostrogi dźwięczą, szable brzęczą, kity migają, aż lubo<pe><slowo_obce>lubo</slowo_obce> --- miło.</pe> patrzeć!<end id="e1188825287070"/></akap>
 
 
 <akap>Idzie sobie nasz szewczyk Lutek Krakowskim Przedmieściem, Nowym Światem, wszedł w Ordynacką, przeżegnał się: już blisko!</akap>
@@ -215,7 +216,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Wyśmiał się, ucieszył, wychodzi.</akap>
 
 
-<akap>Późna już pora. Czasu do wydania pieniędzy niewiele, a Bóg świadkiem --- nie wie Lutek, co z nimi zrobić? Idzie, rozmyśla. <begin id='b1218990915611' /><motyw id='m1218990915611'>Polak, Żołnierz</motyw>A gdy tak idzie, na rogu zaułka starzec stoi zgarbiony.</akap>
+<akap>Późna już pora. Czasu do wydania pieniędzy niewiele, a Bóg świadkiem --- nie wie Lutek, co z nimi zrobić? Idzie, rozmyśla. <begin id="b1218990915611"/><motyw id="m1218990915611">Polak, Żołnierz</motyw>A gdy tak idzie, na rogu zaułka starzec stoi zgarbiony.</akap>
 
 <akap_dialog>--- Panie --- powiada --- drugi dzień mija, gdy nic w ustach nie miałem. Starym żołnierz, paniczu, pod Sommosierrą byłem, pod Smoleńskiem, pod Moskwą, przy księciu Józefie pod Lipskiem --- poratuj mnie!</akap_dialog>
 
@@ -225,7 +226,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Sięgnął do kieszeni, wyciągnął garść złota, dał starcowi.</akap>
 
-<akap_dialog>--- Bóg---że ci zapłać, paniczu! Bóg ci zapłać! Będziesz szczęśliwy i bogaty!<end id='e1218990915611' /></akap_dialog>
+<akap_dialog>--- Bóg---że ci zapłać, paniczu! Bóg ci zapłać! Będziesz szczęśliwy i bogaty!<end id="e1218990915611"/></akap_dialog>
 
 
 <akap>Błysnęło! zagrzmiało!</akap>
@@ -241,21 +242,22 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Rozejrzy się szewczyk: dziad stoi, jak stał poprzednio --- i rzecze:</akap>
 
-<akap_dialog>--- <begin id='b1218991012178' /><motyw id='m1218991012178'>Pieniądz, Praca, Szczęście, Zdrowie</motyw>Nie dukat, paniczu, daje szczęście, ino praca i zdrowie. Ten pieniądz wart coś, co zarobiony, a darmocha na złe idzie.</akap_dialog>
+<akap_dialog>--- <begin id="b1218991012178"/><motyw id="m1218991012178">Pieniądz, Praca, Szczęście, Zdrowie</motyw>Nie dukat, paniczu, daje szczęście, ino praca i zdrowie. Ten pieniądz wart coś, co zarobiony, a darmocha na złe idzie.</akap_dialog>
 
 
-<akap>Powrócił Lutek do domu rad i wesół. Ocknął się rankiem bez grosza w kieszeni. Wydał na siebie z dziesięć dukatów, a resztę oddał starcowi, ale też od tego czasu wiodło mu się, jak nigdy. Wyzwolił się wrychle<pe><slowo_obce>wrychle</slowo_obce> --- szybko.</pe> na czeladnika, niebawem majstrem został, ożenił się z panienką piękną i zacną, dzieci wychował --- i żył długie lata w zdrowiu, w dostatku i w szczęściu.<end id='e1218991012178' /></akap>
+<akap>Powrócił Lutek do domu rad i wesół. Ocknął się rankiem bez grosza w kieszeni. Wydał na siebie z dziesięć dukatów, a resztę oddał starcowi, ale też od tego czasu wiodło mu się, jak nigdy. Wyzwolił się wrychle<pe><slowo_obce>wrychle</slowo_obce> --- szybko.</pe> na czeladnika, niebawem majstrem został, ożenił się z panienką piękną i zacną, dzieci wychował --- i żył długie lata w zdrowiu, w dostatku i w szczęściu.<end id="e1218991012178"/></akap>
 
 
-<akap>A o złotej kaczce słuch zaginął. I dzięki Bogu! bo <begin id='b1218991130347' /><motyw id='m1218991130347'>Polak</motyw>zła to musiała być boginka, kiedy za warunek stawiała: sobie, nie komu!</akap>
+<akap>A o złotej kaczce słuch zaginął. I dzięki Bogu! bo <begin id="b1218991130347"/><motyw id="m1218991130347">Polak</motyw>zła to musiała być boginka, kiedy za warunek stawiała: sobie, nie komu!</akap>
 
 
-<akap>Nie tak! nie tak myśleć i czuć po polsku trzeba! My rządzimy się inaczej: naprzód biednemu, potem sobie!<end id='e1218991130347' /></akap>
+<akap>Nie tak! nie tak myśleć i czuć po polsku trzeba! My rządzimy się inaczej: naprzód biednemu, potem sobie!<end id="e1218991130347"/></akap>
 
 
-<akap>A wtedy każdej pracy Pan Bóg dopomoże.<end id="e1188825459087" /></akap>
+<akap>A wtedy każdej pracy Pan Bóg dopomoże.<end id="e1188825459087"/></akap>
 
 
 <extra><!--</tekst_glowny>--></extra>
 
-</opowiadanie></utwor>
+</opowiadanie>
+</utwor>

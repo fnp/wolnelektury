@@ -1,1 +1,1268 @@
-<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Odprawa_posłów_greckich"><dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator><dc:title xml:lang="pl">Odprawa posłów greckich</dc:title><dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor><dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor><dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor><dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor><dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher><dc:subject.period xml:lang="pl">Renesans</dc:subject.period><dc:subject.type xml:lang="pl">Dramat</dc:subject.type><dc:subject.genre xml:lang="pl">Tragedia</dc:subject.genre><dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description><dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Odprawa+pos%C5%82%C3%B3w+greckich</dc:identifier.url><dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL><dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source><dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights><dc:date.pd xml:lang="pl">1584</dc:date.pd><dc:format xml:lang="pl">xml</dc:format><dc:type xml:lang="pl">text</dc:type><dc:type xml:lang="en">text</dc:type><dc:date xml:lang="pl">2007-08-30</dc:date><dc:audience xml:lang="pl">L</dc:audience><dc:language xml:lang="pl">pol</dc:language></rdf:Description></rdf:RDF><dramat_wierszowany_l><extra><!--<elementy_poczatkowe>--></extra><autor_utworu>Jan Kochanowski</autor_utworu><nazwa_utworu>Odprawa posłów greckich</nazwa_utworu><podtytul>	PODANA NA TEATRHUM PRZED KRÓLEM JEGO MŚCIĄ/	I KRÓLOWĄ JEJ MŚCIĄ/	W JAZDOWIE NAD WARSZAWĄ<pr>W Jazdowie (Ujazdowie), wówczas wsi podwarszawskiej, we dworze Radziwiłłów odbyło się w r. 1578 wesele Krystyny Radziwiłłówny i Jana Zamoyskiego. Tytuł <tytul_dziela>Odprawa</tytul_dziela> nie znaczy <wyroznienie>odmowy</wyroznienie>, lecz <wyroznienie>załatwienie</wyroznienie>, jak dzisiaj odprawa celna lub paszportowa.</pr>/	DNIA 12 STYCZNIA ROKU PAŃSKIEGO 1578,/	NA FEŚCIE U JEGO MŚCI PANA/	PODKANCLERZEGO KORONNEGO</podtytul><sekcja_swiatlo /><srodtytul>	MEMU MIŁOŚCIWEMU PANU,/	JEGO MŚCI PANU,/	PANU JANOWI ZAMOYSKIEMU/	Z ZAMOŚCIA,/	PODKANCLERZEMU KORONNEMU ETC., ETC./	<wyroznienie>Służby swe w łaskę W. M. mego miłościwego Pana zalecam.</wyroznienie></srodtytul><akap>Wczora dopiero oddano mi obadwa listy za raz<pe><slowo_obce>za raz</slowo_obce> --- równoczesnie, razem.</pe>, któreś W. M.<pe><slowo_obce>W. M.</slowo_obce> --- Wasza Miłość.</pe> do mnie około tej tragedyjej pisał. A iżem przedtym nie wiedział o tych liściech, spodziewałem się, że za tymi czasów odwłokami<pe><slowo_obce>czasów odwłokami</slowo_obce> --- zwlekaniami, zwłoką.</pe> i mej tragedyjej się odwlec miało albo raczej że tak ze mną zostać miała molom na pokarm albo na trąbki do apteki<pe><slowo_obce>trąbki do apteki</slowo_obce> --- papierki, w które zawijano towar.</pe>. Jakom listy W. M. przeczytał, nie było czasu poprawować, bom wszytek musiał <slowo_obce>insumere</slowo_obce><pr><slowo_obce>insumere</slowo_obce> (łac.) --- użyć, poświęcić.</pr> na przepisanie. <slowo_obce>Quicquid id est</slowo_obce><pr><slowo_obce>Quicquid id est</slowo_obce> (łac.) --- czymkolwiek to [dzieło] jest.</pr>, a baczę, że błazeństwo<pe><slowo_obce>błazeństwo</slowo_obce> --- tu: rzecz licha, miernej wartości.</pe>, i W. M. sam podobno rzeczesz, posyłam W. M. tym śmielej, chocia nie masz co, żem to jeszcze z przodku W. M. opowiadał, że to nie miało być <slowo_obce>ad amussim</slowo_obce><pe><slowo_obce>ad amussim</slowo_obce> (łac., dosł.: pod sznur) --- według reguły, tu: według zasad tragedii antycznej.</pe>, bo mistrz nie po temu. Rzeczy też drugie nie wedla uszu naszych<pe><slowo_obce>nie wedla uszu naszych</slowo_obce> --- niezgodne z przyzwyczajeniami współczesnych Kochanowskiego.</pe>. <slowo_obce>Inter caetera</slowo_obce><pr><slowo_obce>Inter caetera</slowo_obce> (łac.) --- między innymi.</pr> trzy są chory, a trzeci jakoby greckim chorom przygania<pr><slowo_obce>przygania</slowo_obce> --- <wyroznienie>przygarnąć</wyroznienie>, forma częstotliwa od  <wyroznienie>przygonić</wyroznienie>, tu w sensie: iść za, iść śladem, naśladować.</pr>, bo oni już osobny <slowo_obce>characterem</slowo_obce> do tego mają<pe><slowo_obce>characterem</slowo_obce> [łac.]<slowo_obce>... mają</slowo_obce> --- mają odrębną, specjalną formę. Chodzi tu zapewne o próbę przystosowania rytmiki wiersza polskiego do metrum antycznego.</pe><uwaga>Czy powyższy przyp. OK? + Warto to wyjaśnić dokładniej -- dgalecki</uwaga>; nie wiem, jako to w polskim języku brzmieć będzie. Ale w tym niech będzie <slowo_obce>arbitrium</slowo_obce><pr><slowo_obce>arbitrium</slowo_obce> (łac.) --- sąd, wyrok.</pr> W. M. albo raczej we wszytkim. Barzo bych to był rad uczynił, żebych<pe><slowo_obce>Barzo bych... żebych</slowo_obce> --- staropolskie formy trybu warunkowego: bardzo bym... żebym.</pe> był sam <slowo_obce>praesens</slowo_obce> <pr>praesens (łac.) --- osobiście, obecny.</pr> W. M. teraz służby swe ofiarował, ale mi złe zdrowie nie da. Nierad bych przedsię omieszkał przenosin W. M., jeśli <slowo_obce>salus</slowo_obce><pr>salus (łac.) --- zdrowie.</pr> tak będzie chciała. Zatym się łasce W. M. mego miłościwego Pana zalecam. Dat.<pr><slowo_obce>Dat.</slowo_obce>[um] (skrót łac. od:<slowo_obce>datum</slowo_obce>) --- dano (domyślnie: list posłańcowi).</pr> w Czarnolesie dwudziestego wtórego dnia grudnia roku bożego MDLXXVII.</akap><akap>W. M. mego miłościwego Pana</akap><akap_cd> </akap_cd><akap_cd>sługa uprzejmy</akap_cd><akap_cd><wyroznienie>Jan Kochanowski</wyroznienie></akap_cd><lista_osob>	<naglowek_listy>PERSONY</naglowek_listy>	<lista_osoba>Antenor</lista_osoba>	<lista_osoba>Aleksander, którego i Parysem zowią</lista_osoba>	<lista_osoba>Helena</lista_osoba>	<lista_osoba>Pani Stara</lista_osoba>	<lista_osoba>Poseł Parysów</lista_osoba>	<lista_osoba typ="posłowie greccy">Ulisses</lista_osoba>	<lista_osoba typ="posłowie greccy">Menelaus</lista_osoba>		<extra>Jeśli powyższe nie zadziała (klamra spinającą oba imiona, za nią "posłowie..."), to można złożyć i w ten sposób:			<lista_osoba>Posłowie greccy:/				[tab] Ulisses/				[tab] Menelaus			</lista_osoba>		</extra>	<lista_osoba>Priamus, król trojański</lista_osoba>	<lista_osoba>Kasandra</lista_osoba>	<lista_osoba>Rotmistrz</lista_osoba>	<lista_osoba>Więzień</lista_osoba>	<lista_osoba>Chorus z panien trojańskich</lista_osoba></lista_osob><miejsce_czas>Sprawa w Trojej</miejsce_czas><extra><!--</elementy_poczatkowe>--></extra><extra><!--<tekst_glowny>--></extra><extra><naglowek_scena>[PROLOG]</naglowek_scena></extra><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	Com dawno tuszył i w głos opowiedał,/	Że obelżenia i krzywdy tak znacznej/	Cierpieć nie mieli waleczni Grekowie:/	Teraz już posły ich u siebie mamy,/	Którzy się tego u nas domagają,/	Aby Helena była im wydana,/	Którą w tych czasiech przeszłych Aleksander,/	Będąc w Grecyjej, gość nieprawie wierny<pr><slowo_obce>gość nieprawie wierny</slowo_obce> --- wyrażenie bardzo oględne, chodzi bowiem o złamanie prawa gościnności i wiarołomstwo, tłumaczy się jednak stylem tragedii rozgrywającej się w środowisku dworskim.</pr>,/	Uniósł od męża i przez bystre morze/	Do trojańskiego miasta przyprowadził./	Tę jeśli wrócim i mężowi w ręce/	Oddamy, możem siedzieć za pokojem,/	Lecz jeśli z niczym posłowie odjadą,/	Tegoż dnia nowin słuchajmy, że Greczyn/	Z morza wysiada i ziemię wojuje./	<begin id='b1188299578684' /><motyw id='m1188299578684'>Obywatel</motyw>Czuje o sobie<pr><slowo_obce>Czuje o sobie</slowo_obce> --- dba o swoją sprawę.</pr> widzę, Aleksander:/	Praktyki czyni<pr><slowo_obce>Praktyki czyni</slowo_obce> --- praktykuje, tj. zjednywa sobie zwolenników, spiskuje.</pr>, towarzystwa zbiera,/	Śle upominki, aż i mnie nie minął;/	A mnie i dom mój, i co mam z swych przodków,/	Nie jest przedajno. A miałbych swą wiarę/	Na targ wynosić, uchowa mię tego/	Bóg mój<pr><slowo_obce>uchowa... Bóg...</slowo_obce> --- uchowaj Bóg, niech Bóg uchowa.</pr>. Nie ufa swej sprawiedliwości,/	Kto złotu mówić od siebie rzecz każe./	Lecz i to człowiek małego baczenia,/	Który na zgubę rzeczypospolitej/	Podarki bierze, jakoby sam tylko/	W cale miał zostać, kiedy wszytko zginie./<end id='e1188299578684' />	Ale mnie czas do rady, bo dziś król chce posły/	Odprawować. Snąć widzę Aleksandra? Ten jest.	</strofa></kwestia><didaskalia><osoba>Aleksander</osoba>, <osoba>Antenor</osoba></didaskalia><extra><naglowek_scena>[EPEISODION PIERWSZE]</naglowek_scena></extra><begin id='b1188300805652' /><motyw id='m1188300805652'>Przyjaźń, Sprawiedliwość</motyw><naglowek_osoba>ALEKSANDER<pe>Początek pierwszego <slowo_obce>epeisodionu</slowo_obce> (<slowo_obce>epeisodion</slowo_obce> --- część dialogowa w tragedii greckiej, w przeciwieństwie do <slowo_obce>stasimonu</slowo_obce>, części wygłaszanej przez chór. Tragedia grecka składała się zazwyczaj z czterech, pięciu epeisodionów przeplatanych stasimonami.</pe></naglowek_osoba><kwestia>	<strofa>	Jako mi niemal wszyscy obiecali,/	Cny Antenorze, proszę, i ty sprawie/	Mej bądź przychylnym przeciw posłom greckim.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	A ja z chęcią rad, zacny królewicze<pe><slowo_obce>królewicze</slowo_obce> --- królewiczu.</pe>,/	Cokolwiek będzie sprawiedliwość niosła/	I dobre<pe><slowo_obce>dobre</slowo_obce> --- dobro</pe> rzeczypospolitej naszej.	</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>Wymówki nie masz, gdy przyjaciel prosi.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>Przyzwalam, kiedy o słuszną rzecz prosi.</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>	Obcemu więcej życzyć niżli swemu/	Coś niedaleko zda się od zazdrości.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	Przyjacielowi więcej niżli prawdzie/	Chcieć służyć, zda się przeciw przystojności.	</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>	Ręka umywa rękę, noga nogi/	Wspiera, przyjaciel port przyjacielowi.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	Wielki przyjaciel przystojność: tą sobie/	Rozkazać służyć nie jest przyjacielska<pr><slowo_obce>nie jest przyjacielska</slowo_obce> --- nie jest rzeczą przyjacielską.</pr>.	</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>W potrzebie, mówią, doznać przyjaciela.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>I toć potrzeba, gdzie sumnienie płaci<pr><slowo_obce>I toć potrzeba, gdzie sumnienie płaci</slowo_obce> --- i to jest potrzebą (niebezpieczeństwem), gdzie chodzi o sumienie. Obaj rozmówcy sypią w rozmowie przysłowiami, osłaniającymi ich wzajemną niechęć, rozmowa zaś toczy się w krótkich, jednowierszowych zdaniach (tzw. <slowo_obce>stichomytia</slowo_obce>), dowodzących wzburzenia przeciwników.</pr>.</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>Piękne sumnienie: stać przy przyjacielu.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia><strofa>Jeszcze piękniejsze: zostawać przy prawdzie.</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia><strofa>Grekom pomagać to u ciebie prawda.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia><strofa>Grek u mnie każdy, kto ma sprawiedliwą<pr><slowo_obce>kto ma sprawiedliwą</slowo_obce> --- ma słuszność.</pr>.</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia><strofa>Widzę, żebyś mię ty prędko osądził.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia><strofa>Swoje sumnienie każdego ma sądzić.</strofa></kwestia><end id='e1188300805652' /><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia><strofa>Znać, że u ciebie gospodą posłowie.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia><strofa>Wszystkim ućciwym dom mój otworzony.</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia><strofa>A zwłaszcza, kto nie z próżnymi rękoma.</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	Trzeba mi bowiem sędziom na podarki,/	Bom cudzą żonę wziął, o którą czynią<pr><slowo_obce>o którą czynią</slowo_obce> --- o którą toczy się sprawa.</pr>.	</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>	Nie wiem o żonę<pr><slowo_obce>Nie wiem o żonę</slowo_obce> --- nie wiem, czy o żonę.</pr>, ale dary bierzesz,/	Od Greków zwłaszcza; moje na cię małe.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	I żon, i cudzych darów nierad biorę./	Ty, jako żywiesz, tak, widzę, i mówisz/	Niepowściągliwie; nie mam z tobą sprawy.	</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>	I mnie żal, żem cię o co kiedy prosił./	Ufam swym bogom, że i krom twej łaski/	Najdę, kto rzeczy mych podpierać będzie.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia><strofa>Taki, jakiś sam.</strofa></kwestia><naglowek_osoba>ALEKSANDER</naglowek_osoba><kwestia>	<strofa>		<wers_cd>Da Bóg, człek poćciwy.</wers_cd>	</strofa></kwestia><begin id='b1188300941159' /><motyw id='m1188300941159'>Mądrość, Młodość </motyw><naglowek_osoba>	CHORUS<pe>Początek pierwszego <slowo_obce>stasimon</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>		By rozum był przy młodości/		Nigdy takiej obfitości/		Pereł morze i ziemia złota nie urodzi,/		Żeby tego nie mieli tym dostawać młodzi<pr><slowo_obce>Żeby tego nie mieli tym dostawać łodzi</slowo_obce> --- nie ma takich skarbów, za które młodzi nabyć by mogli rozum.</pr>.	</strofa>		<strofa>		<wers_akap>Mniej by na świecie trosk było,</wers_akap>/		By się to dwoje łączyło;/		I oni by rozkoszy trwalszych używali,/		Siebie ani powinnych w żal by nie wdawali.	</strofa>		<strofa>		<wers_akap>Teraz, na rozum nie dbając,</wers_akap>/		A żądzom tylko zgadzając,/		Zdrowie i sławę tracą, tracą majętności/		I ojczyznę w ostatnie zawodzą trudności.	</strofa>		<strofa>		<wers_akap>O Boże na wielkim niebie!</wers_akap>/		Drogo to, widzę, u Ciebie/		Dać młodość i baczenie za raz; jedno płacić/		Drugim trzeba: to dobre, a tego żal stracić.<end id='e1188300941159' />	</strofa>		<strofa>		<wers_akap>Ale oto Helenę widzę: co też teraz</wers_akap>/		Nieboga myśli wiedząc, że dziś o niej w radzie/		Ostateczne namowy, ma li w Troi zostać/		Czyli Grecyją znowu i Spartę nawiedzić?	</strofa></kwestia><begin id='b1188301188520' /><motyw id='m1188301188520'>Kobieta, Ojczyzna, Żona</motyw><naglowek_osoba>	HELENA<pe>Początek drugiego <slowo_obce>epeisodion</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>	Wszytkom ja to widziała jako we zwierciedle,/	Że z korzyści swej nie miał długo się weselić/	Bezecny Aleksander, ale mu wczas mieli/	I dobrą myśl przekazie przeważni Grekowie./	Więc on, jako drapieżny wilk rozbiwszy stado,/	Co nadalej uciekał, a oni zaś, jako/	Pasterze ze psy, za nim. I ledwe do tego/	Nie przyjdzie, że wilk owcę na ostatek musi/	Porzucić, a sam gdzie w las sromotnie uciecze.	</strofa>		<strofa>	<wers_akap>Niestety, jakież moje będą przenosiny?</wers_akap>/	Podobno w tył okrętu łańcuchem za szyję/	Uwiązana, pośrzodkiem greckich naw popłynę./	Z jakąż ja twarzą bracią swą<pr><slowo_obce>bracią swą</slowo_obce> --- braćmi Heleny, jako córki Zeusa i  Ledy, byli Kastor i Polluks.</pr> miłą przywitam?/	Jakoż ja, niewstydliwa, przed oczy twe naprzód,/	Mężu mój miły, przyjdę i sprawę o sobie/	Dawać będę? A będęż w twarz ci wejźrzeć śmiała?/	Bodajżeś ty był nigdy Sparty nie nawiedził,/	Nieszczęsny Pryjamida! Bo czego mnie więcej/	Nie dostawało? Zacnych książąt córką będąc/	Szłam w książęcy dom zacny; dał był Bóg urodę,/	Dał potomstwo, dał dobrą nade wszytko sławę./	Tom wszytko prze człowieka złego utraciła./	Ojczyzna gdzieś daleko, przyjaciół nie widzę,/	Dziatki<pr><slowo_obce>Dziatki</slowo_obce> --- Helena miała, według Homera, jedną córkę: Hermionę.</pr>, nie wiem, żywe li; jam sama coś mało/	Od niewolnice rożna, przymówkom dotkliwym/	I złej sławie podległa, a co jeszcze ze mną/	Szczęście myśli poczynać, ty sam wiesz, mój Panie.	</strofa><end id='e1188301188520' /></kwestia><didaskalia><osoba>Pani Stara</osoba>, <osoba>Helena</osoba></didaskalia><begin id='b1188301342762' /><motyw id='m1188301342762'>Kondycja ludzka</motyw><naglowek_osoba>PANI</naglowek_osoba><kwestia>	<strofa>	Nie frasuj mi się, moje dziecię miłe,/	Takci na świecie być musi: raz radość,/	Drugi raz smutek; z tego dwojga żywot/	Nasz upleciony. I rozkoszyć nasze/	Niepewne, ale i troski ustąpić/	Muszą, gdy Bóg chce, a czasy przyniosą.	</strofa></kwestia><naglowek_osoba>HELENA</naglowek_osoba><kwestia>	<strofa>	0 matko moja, nierównoż to tego/	Wieńca pleciono; więcej że daleko/	Człowiek frasunków czuje niż radości.	</strofa></kwestia><naglowek_osoba>PANI</naglowek_osoba><kwestia>	<strofa>	Barziej do serca to, co boli, człowiek/	Przypuszcza, niżli co g'myśli się dzieje./	I stądże się zda, że tego jest więcej,/	Co trapi, niżli co człowieka cieszy.	</strofa></kwestia><naglowek_osoba>HELENA</naglowek_osoba><kwestia>	<strofa>	Prze Bóg, więcejci złego na tym świecie/	Niżli dobrego. Patrzaj naprzód, jako/	Jedenże tylko sposób człowiekowi/	Jest urodzić się, a zginąć tak wiele/	Dróg jest, że tego niepodobno zgadnąć./	Także i zdrowie nie ma, jeno jedno./	Człowiek śmiertelny, a przeciwko temu/	Niezliczna liczba chorób rozmaitych./	Ale i ona, która wszystkim włada,/	Która ma wszytko w ręku, wszytkim rządzi,/	Fortuna, za mną świadczy, że daleko/	Mniej dóbr na świecie niżli tego, co złym/	Ludzie mianują, bo ubogaciwszy/	Pewną część ludzi, patrzaj, co ich ciężkim/	Ubóstwem trapi. A iż tego żadnej/	Zadości g'woli ani skępstwu swemu/	Nie czyni, ale niedostatkiem tylko/	Sciśniona, znak jest, że i dziś, gdy komu/	Chce co uczynić dobrze, pospolicie/	Jednemu pierwej weźmie, toż dopiero/	Drugiemu daje; skąd się da rozumieć,/	Co już powtarzam nie raz, że na świecie/	Mniej dóbr daleko niżli złych przypadków.	</strofa></kwestia><naglowek_osoba>PANI</naglowek_osoba><kwestia>	<strofa>	Mniej abo więcej, równa li też liczba/	Obojga --- korzyść niewielka to wiedzieć./	0 to by Boga prosić, żeby człowiek/	Co namniej szczęścia przeciwnego doznał,/	Bo żeby zgoła nic, to nie człowiecza./<end id='e1188301342762' />	<begin id='b1188301420388' /><motyw id='m1188301420388'>Kobieta</motyw>Ale że z rady tak długo nikogo/	Nie słychać! Wiem, że da bez omieszkania/	Znać Aleksander, skoro się tam rzeczy/	Przetoczą, a nam białymgłowom jakoś/	Przystojniej w domu zawżdy niż przed sienią<pr><slowo_obce>przed sienią</slowo_obce> --- przed pałacem, to bowiem jeszcze w pierwszej połowie w. XVI wyraz ,,sień" znaczył.</pr>.<end id='e1188301420388' />	</strofa></kwestia><begin id='b1188301579887' /><motyw id='m1188301579887'>Obywatel, Sprawiedliwość, Władza</motyw><naglowek_osoba>	CHORUS<pe>Początek drugiego <slowo_obce>stasimon</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>	Wy, którzy pospolitą rzeczą władacie,/	A ludzką sprawiedliwość w ręku trzymacie,/	Wy, mówię, którym ludzi paść poruczono/	I zwirzchności nad stadem bożym zwierzono:	</strofa>		<strofa>	<wers_akap>Miejcie to przed oczyma zawżdy swojemi,</wers_akap>/	Żeście miejsce zasiedli boże na ziemi,/	Z którego macie nie tak swe własne rzeczy,/	Jako wszytek ludzki mieć rodzaj na pieczy.	</strofa>		<strofa>	<wers_akap>A wam więc nad mniejszymi zwierzchność jest dana,</wers_akap>/	Ale i sami macie nad sobą pana,/	Któremu kiedyżkolwiek z spraw swych uczynić/	Poczet macie: trudnoż tam krzywemu wynić.	</strofa>		<strofa>	<wers_akap>Nie bierze ten pan darów ani się pyta,</wers_akap>/	Jeśli kto chłop czyli się grofem poczyta,/	W siermiędze li go widzi, w złotych li głowach;/	Jeśli namniej przewinił, być mu w okowach.	</strofa>		<strofa>	<wers_akap>Więc ja podobno z mniejszym niebezpieczeństwem</wers_akap>/	Grzeszę, bo sam się tracę swym wszeteczeństwem./	Przełożonych występy miasta zgubiły/	I szerokie do gruntu carstwa zniszczyły.	</strofa><end id='e1188301579887' /></kwestia><didaskalia><osoba>Poseł</osoba>, <osoba>Helena</osoba></didaskalia><naglowek_osoba>	POSEŁ<pe>Początek trzeciego <slowo_obce>epeisodion</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>	Dobrą nowinę paniej swojej niosę./	Rozumiem temu, że już dawno tego/	Poselstwa czeka, serce swe troskami/	I płaczem trapiąc. Ale oto prawie/	Na czas wychodzi z domu. O królowa,/	Wdzięcznej nowiny posła masz przed sobą.	</strofa></kwestia><naglowek_osoba>HELENA</naglowek_osoba><kwestia><strofa>Daj Boże, byś co przyniósł pociesznego.</strofa></kwestia><naglowek_osoba>POSEŁ</naglowek_osoba><kwestia>	<strofa>	Posłowie twoi, jako przyjechali,/	Tak odjeżdżają, a ty przedsię z nami.	</strofa></kwestia><naglowek_osoba>HELENA</naglowek_osoba><kwestia><strofa>Byłeś sam w radzie czyś słyszał od kogo?</strofa></kwestia><naglowek_osoba>POSEŁ</naglowek_osoba><kwestia>	<strofa>	Byłem przy wszytkim i prosto mi stamtąd/	Iść Aleksander do ciebie rozkazał.	</strofa></kwestia><naglowek_osoba>HELENA</naglowek_osoba><kwestia>	<strofa>	Jeszczeć nie widzę, z czego bych się prawie/	Ucieszyć miała. Wszakże powiedz przedsię,/	Jako co było.	</strofa></kwestia><naglowek_osoba>POSEŁ</naglowek_osoba><kwestia>	<strofa>	<wers_cd>Powiem, jeno słuchaj!</wers_cd>/	<begin id='b1188302065574' /><motyw id='m1188302065574'>Ojciec, Ojczyzna, Rodzina, Sprawiedliwość, Syn, Władza</motyw>Skoro w radzie zasiedli panowie, król naprzód/	Tę rzecz do nich uczynił: ,,Nie zwykłem nic nigdy/	Bez rady waszej czynić; a bych też zwykł kiedy/	(Czego w pamięci nie mam), w tej sprawie koniecznie/	Syna swego bych nie chciał, aby mię ojcowska/	Miłość przeciw synowi<pr><slowo_obce>przeciw synowi</slowo_obce> --- do syna.</pr> jako nie uwiodła./	Bo aczci to podobno nie darmo rzeczono:/	»Krew nie woda«<pr><slowo_obce>Krew nie woda</slowo_obce> --- Kochanowski używa tu zwrotu przysłowiowego <wyroznienie>krew nie woda</wyroznienie> w niespotykanym już dziś znaczeniu: pokrewieństwo to czynnik doniosły.</pr>, lecz u mnie pospolitej rzeczy/	Powinowactwo więtsze. A tak, co się kolwiek/	Wam wszytkim będzie zdało, toż i ja pochwalę/<end id='e1188302065574' />	Syn mój w Grecyjej żony dostał, nie wiem jako<pr><slowo_obce>nie wiem jako</slowo_obce> --- z woli bogów czy przez porwanie.</pr>;/	Tej się upominają od Greków posłowie./	Wydać abo nie wydać; w tym rozmysłu trzeba"./	</strofa>		<strofa>	<wers_akap>Zatym wstał Aleksander i tak mówić począł:</wers_akap>/	,,Przy pierwszej posłów skardze dałem dostateczną/	Sprawę o sobie; teraz nie chcę uszu waszych/	Słowy próżnymi bawić, ale maluczko co/	Powiedziawszy, ostatek na Boga przypuszczę<pr><slowo_obce>ostatek na Boga przypuszczę</slowo_obce> --- resztę zdam na Boga.</pr>/	I na łaskę ojcowską, i was wszytkich zdanie./	<begin id='b1188302269476' /><motyw id='m1188302269476'>Bóg, Los, Miłość</motyw>Wszytkim wam jest świadomo, jakim ja był żywot/	Wziął przed się, żęciem nigdy tych burkowych biesiad<pr><slowo_obce>burkowych biesiad</slowo_obce> --- rozrywek miejskich, hulanek żołnierskich.</pr>/	Patrząc nie chciał; wolałem po gęstych dąbrowach/	Prędkie jelenie gonić abo dzikie świnie./	Anim ja tego sobie za niewczas poczytał/	W budzie leśnej się przespać i nad stady chodzić<pr><slowo_obce>nad stady chodzić</slowo_obce> --- chodzić za stadami, pasąc je.</pr>./	Nie myśliłciem<pr><slowo_obce>Nie myśliłciem</slowo_obce> --- <wyroznienie>nie myślił-ci-jem</wyroznienie> (jestem): nie myślałem.</pr> ja wtenczas namniej o Helenie/	Ani to imię przedtym w uszu mych postało./	Wenus, kiedy mię naprzód trzy boginie<pr><slowo_obce>trzy boginie</slowo_obce> --- Hera (Junona), Pallas Atena (Minerwa) i Afrodyta (Wenus).</pr> sobie/	Za sędziego obrały, Wenus mi ją sama/	Napierwej zaleciła i za żonę dała./	Ludzie, widzę, u Boga szczęścia sobie proszą,/	A ja kiedy mię z chęci swej tym potykali,/	Miałem gardzić? Przyjąłem, i przyjąłem wdzięcznie,/	I mam pewną nadzieję, że tenże bóg, który/	Ućcił mię naprzód, będzie i do końca szczęścił/	I co mi dał, nie da mi leda jako wydrzeć./	A bych też był żony swej ludzkim obyczajem<pr><slowo_obce>ludzkim obyczajem</slowo_obce> --- w sposób ludzki, zwyczajny, bez pomocy ,,boga", tj. bogini.</pr>/	Dostawał, nie wiem, czemu onym się zyść miało/	Medeą z domu wykraść od przyjaciół naszych,/	A mnie zaś ich fortelu takimże fortelem/	Oddać się nie godziło?/	Jeślim co tedy winien, toż i oni winni./<end id='e1188302269476' />	Chcą li nagrody, niech ją sami pierwej czynią,/	Jako ci, którzy krzywdę naprzód uczynili./	A tam, ojcze, nie tylko żonę moje, ale/	I mnie samego wydaj, niechaj pokutuję!/	Gdzie by też to o sobie tak rozumieć chcieli,/	Że im każdy, a oni nie winni nikomu/	Sprawiedliwości czynić: tego, da Bóg, nigdy/	Nad nami nie przewiodą<pr><slowo_obce>Nad nami nie przewiodą ani ich z to będzie</slowo_obce> --- nam nie narzucą i na to się nie zdobędą.</pr> ani ich z to będzie./	Nie tuszęć ja, żebyś ty, ojcze mój łaskawy,/	Nie pomniał jeszcze krzywdy i szkód staradawnych<pr><slowo_obce>szkód staradawnych</slowo_obce> --- mowa o dawniejszej wyprawie greckiej pod wodzą Heraklesa, zakończonej zburzeniem Troi i porwaniem Hezjony.</pr>,/	Któreś wziął od tych panów i to państwo sławne./	Jeszczeć mury na ziemi leżą powalone/	I pola do tej doby pustyniami stoją,/	Znaki miecza greckiego i okrutnej ręki./	A byś też tego dobrze nie chciał sam pamiętać,/	Hesyjona pamiętać musi, siostra twoja,/	Ojcze, a moja ciotka, która do tej doby/	U nich w niewoli żywię, jeśli jeszcze żywię./	Tej nam krzywdy, o królu, jedna nie nagrodzi/	Helena ani jeden Parys powetuje".	</strofa>		<strofa>	<wers_akap>Tu przestał Aleksander, a szept miedzy ludźmi</wers_akap>/	Rozlegał się po sali. Jako więc ku latu/	Robotne pszczoły w ulu szemrzą, kiedy wodza/	Nowego oglądały, a chęć nastąpiła/	Od macior<pr><slowo_obce>Od macior</slowo_obce> --- od matek. Poeta stosuje tu (jak poprzednio w wersie 111: ,,dziatek") zamiennie: używa liczby mnogiej zamiast pojedynczej.</pr><uwaga>???</uwaga> się wynosić i nowe zaczynać/	Gospodarstwo, szmer w ulu i rozruch kryjomy:/	Taki dźwięk tam natenczas wstał był między ludźmi,/	Który skoro ucichnął, Antenor jął mówić:/	</strofa>		<strofa>	<wers_akap>,,Prawdzie długich wywodów, królu, nie potrzeba:</wers_akap>/	<begin id='b1188302698309' /><motyw id='m1188302698309'>Kobieta, Żona</motyw>Aleksander, w Grecyjej gościem w domu będąc/	Człowieka przedniejszego, na gościnne prawa/	Nie pomniąc, żonę mu wziął i przywłaszczył sobie./	By mu był niewolnicę naliższą przemówił<pr><slowo_obce>przemówił</slowo_obce> --- przeciągnął do siebie, skłonił do opuszczenia domu.</pr>,/	Winien by mu był został, cóż kiedy wziął żonę,/	Której ani zaniedbać, ani też dochodzić/	Dobry, ućciwy człowiek bez wstydu nie może?/	Winien mu nie po mału. On, chocia ze wstydem,/	Żony się upomina, a ja wrócić radzę,/	Abychmy ku zelżeniu niesprawiedliwości/	Nie przydali: oboje to przez się nieznośne,/	Cóż<pr><slowo_obce>Cóż</slowo_obce> --- cóż dopiero.</pr> pospołu złożone!<end id='e1188302698309' /> <begin id='b1188302781913' /><motyw id='m1188302781913'>Konflikt, Małżeństwo, Obywatel</motyw>Toteż niewątpliwa,/	Że Grekowie Heleny nie tylko przez posły,/	Ale nawet i przez miecz domagać się będą./	Niechże się Aleksander tak drogo nie żeni,/	Żeby małżeństwo swoje upadkiem ojczyzny/	I krwią naszą miał płacić! Jeśli w łaskę dufa/	Boginiej swej, niech na to miejsce dwu się boi,/	Które dla niej rozgniewał i sądem swym zganił./<end id='e1188302781913' />	Medeą nie za naszych czasów uniesiono./	I nie wiem, jeśli nam co do tego. To widzę,/	Że tej krzywdy u Greków nikt się do tej doby/	Nie domagał; milczeli tego, którym było/	Przystojniej o to mówić. Nie wiem, jako słusznie/	Swój własny występ cudzą krzywdą barwić chcemy?/	To się nas barziej tycze, że za przodków naszych/	Grekowie w tym królestwie mieczem wojowali;/	Lecz i natenczas, królu (prawda się znać musi)<pr><slowo_obce>prawda się znać musi</slowo_obce> --- prawdę wyznać się musi.</pr>,/	Nasza niesprawiedliwość<pr><slowo_obce>Nasza niesprawiedliwość</slowo_obce> --- aluzja do niedotrzymania zobowiązań wobec Heraklesa, któremu Laomedon (ojciec Priama) obiecał rękę córki Hezjony i cudowne konie za uwolnienie kraju od smoka morskiego. Herakles zabił potwora, a gdy nie otrzymał przyrzeczonej nagrody, z pomocą innych Greków zburzył Troję, zabił Laomedonta, a Hezjonę oddał jako niewolnicę jednemu ze swych towarzyszy.</pr> do tego upadku/	Nas przywiodła, że się też i dziś lękać muszę,/	Aby to sąd tajemny jakiś boży nie był,/	Nam prze niesprawiedliwość zawżdy pomstę odnieść/	Od Greków. Czego tobie przestrzegać się godzi,/	0 królu, a tym barziej, żeś i w pierwszej klęsce/	Mało małym nie zginął<pr><slowo_obce>Mało małym nie zginął</slowo_obce> --- Priama przed zemstą Heraklesa uratowała siostra Hezjona.</pr> pokutując za grzech/	Ojcowski i postępek mało sprawiedliwy".	</strofa>		<strofa>	<wers_akap>To powiedziawszy milczał. Toż Eneasz mówił,</wers_akap>/	Toż Pantus i Tymetes, zgadzał się i Lampon,/	I Ukalegon z nimi, ale Iketaon/	Coś inszego rozumiał i w te słowa mówił:	</strofa>		<strofa>	<wers_akap>,,Owa, jako nam kolwiek Grekowie zagrają,</wers_akap>/	Tak my już skakać musim? Bać się ich nam każą,/	A ja, owszem, się lękam. Teraz nam Helenę/	Wydać każą, po chwili naszych się żon będą/	I dzieci upominać. Nigdy w swojej mierze/	Chciwość władze nie stoi; zawżdy, jako powódź,/	Pomyka swoich granic nieznacznie, aż potym/	Wszytki pola zaleje. Za czasu, panowie,/	Umykać rogów trzeba, bo wonczas już próżno/	Miotać się, kiedy jarzmo na szyję założą./	Sprawiedliwości proszą, a grożą nam wojną:/	Daj, chcesz li, alboć wydrę, taka to jest prosto. <pr>taka to jest prosto --- taka to jest ich sprawiedliwość</pr>/	Wimenem sprawiedliwość, ale nie z swą hańbą:/	Kto ją na mnie wyciska, sowitej nagrody/	Ze mnie chce, i korzyści, i zelżenia mego./	Dawnyć to grecki tytuł pany się mianować,/	A nas, <slowo_obce>barbaros</slowo_obce>, sługi<pr><slowo_obce>A nas, barbaros, sługi</slowo_obce> --- a nas, barbarzyńców, sługami. Iketaon, podobnie jak Parys, kładzie nacisk na niechęć Greków do ludów azjatyckich.</pr>. Ale nie toć jest pan,/	Co się w Peloponezie albo w Troi rodził;/	Szabla ostra przy boku to pan: ta rozstrzygnie,/	Kto komu czołem bić ma. Do tego tam czasu/	Równi sobie być musim; ani tego Greczyn/	0 sobie niechaj dzierży, żeby tak był groźny,/	Jako się sobie sam zda. Jeśli tedy krzywdę/	W tym się mieć rozumieją, że Helenę uniósł/	Aleksander, niechajże okażą na sobie/	Sami naprzód, jako ten gwałt winien nagradzać/	Aleksander, ponieważ samiż okazali,/	Jako taki gwałt czynić. Aczci Aleksander/	Brata przy siestrze nie wziął, jako oni wzięli/	Medeą i Absyrta./	Bo co Antenor mówi, że nam nic do tego:/	Ba, i barzo do tego! Za jednego krzywdę/	Oni się wszyscy wzięli, a nas pojedynkiem/	Zbierać mają? Nie tuszę; tożci sąsiadowi/	Sąsiad w Azyjej<pr><slowo_obce>w Azyjej</slowo_obce> --- Troja leżała w północno-zachodniej części Azji Mniejszej.</pr> winien, co u nich w Europie./	Mówiono zawżdy o to<pr><slowo_obce>Mówiono... o to</slowo_obce> --- domagano się tego.</pr> i do końca będą./	Co się siostry królewskiej i szkód dawnych tycze,/	Więtsza to zasię u mnie, niżby się tu miała/	Przypomnieć abo na ten sztych kłaść<pr><slowo_obce>na ten sztych kłaść</slowo_obce> --- kłaść na szalę wagi, porównywać.</pr>: dzierżę o cnej/	Krwi trojańskiej, że tego mścić się jeszcze będzie./	Teraz zgoła nie radzę Heleny wydawać,/	Aż się też oni z nami o Medeą zgodzą".	</strofa>		<strofa>	<wers_akap>To jego słowa były. Potym się już żaden</wers_akap>/	Długą rzeczą nie bawił; jeden głos był wszytkich:/	,,Tak jako Iketaon"; i tych, co siedzieli,/	I tych, co za stołkami stali, głos był jeden:/	,,Tak jako Iketaon". Kilkakroć powstawał/	Ukalegon chcąc mówić, lecz przed hukiem nie mógł./	Marszałkowie, laskami w ziemię coraz bijąc:/	,,Posłuchajcie, panowie, Ukalegon mówi"./	Nie pomogły nic laski, a nasz Ukalegon/	Ukalegontom mówił<pr><slowo_obce>Ukalegon Ukalegontom mówił</slowo_obce> --- uczona gra słów, <slowo_obce>ukalegon</slowo_obce> bowiem po grecku znaczy: <wyroznienie>niedbający</wyroznienie>.</pr>, bo nań nic nie dbali./	Tymczasem ktoś zawołał głosem prawie głośnym:/	,,Co po tych krasnych mowach<pr><slowo_obce>krasnych mowach</slowo_obce> --- pięknych, por. <slowo_obce>krasomówca</slowo_obce>, <slowo_obce>krasomówstwo</slowo_obce> na oznaczenie pięknej wymowy.</pr><uwaga>przypisy marne, do poprawienia: źle zredagowne, mogą być niezrozumiałe</uwaga>? Rozstąpmy się oto;/	Ujźrzemy, gdzie nas więcej"<pr>W ten sposób głosowano w Rzymie.</pr>. Ledwe wyrzekł, a już/	Wszyscy na nogach stali i swe miejsca brali./	Kiedy się rozstąpili, nie było co równać:/	Wszyscy przy Aleksandrze, a tam ich garść była./	Prosili potym króla, aby wedle prawa/	Postąpił, a za więtszą częścią wyrok podał./	Król, niewiele mieszkając: ,,Rad bych był, powiada,/	Na zgodę wasze patrzał, lecz iż być nie mogła,/	Mnie nie lża, jeno więtszej części naśladować<pr><slowo_obce>więtszej części naśladować</slowo_obce>  --- iść za większością.</pr>./	A tak, co z dobrym niechaj będzie pospolitym:/	Helena niechaj w Troi zostanie, aż też nam/	Grekowie za Medeą nagrodę uczynią".	</strofa>		<strofa>	<wers_akap>Skoro po tym dekrecie po posły posłano,</wers_akap>/	A mnie też Aleksander do ciebie wyprawił/	Z tym wszytkim, coś słyszała; tuszę, że odprawę/	Do tej doby już wzięli posłowie, i twój mąż/	W domu cię dawno czeka. A tak nie mieszkajmy!	</strofa></kwestia><naglowek_osoba>HELENA</naglowek_osoba><kwestia>	<strofa>Dobrze mówisz: idź ty wprzód, ja za tobą w tropy.</strofa></kwestia><naglowek_osoba>	CHORUS<pr>Zamiast oczekiwanej pieśni chóru, <slowo_obce>stasimonu</slowo_obce>, poeta wprowadza jedynie czterowiersz o charakterze informacyjnym.</pr></naglowek_osoba><kwestia>	<strofa>	Tej podobno ta powieść g'myśli: mnie bynamniej./	I onej, nie wiem, na co ta radość wynidzie./	Posłowie, widzę, idą nosy powiesiwszy:/	Znać, że nie po swej myśli odprawę odnoszą.	</strofa></kwestia><naglowek_osoba>	ULISSES<pe>Początek czwartego <slowo_obce>epeisodion</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>	O nierządne królestwo i zginienia bliskie,/	Gdzie ani prawa ważą, ani sprawiedliwość/	Ma miejsca, ale wszytko złotem kupić trzeba!/	Jeden to marnotrawca umiał spraktykować,/	Że jego wszeteczeństwa i łotrowskiej sprawy/	Od małych aż do wielkich wszyscy jawnie bronią,/	Nizacz prawdy nie mając ani końca patrząc,/	Do którego rzeczy przyść za ich radą muszą./	<begin id='b1188303298446' /><motyw id='m1188303298446'>Młodość , Obywatel, Upadek</motyw>Nie rozumieją ludzie ani się w tym czują,/	Jaki to wrzód szkodliwy w rzeczypospolitej/	Młódź wszeteczna: ci cnocie i wstydowi cenę/	Ustawili; przed tymi trudno człowiekiem być/	Dobrym; ci domy niszczą, ci państwa ubożą,/	A rzekę, że i gubią (Troja, poznasz potym!),/	A przykładem zaś swoim jako wielką liczbę/	Drugich przy sobie psują. <begin id='b1188303393624' /><motyw id='m1188303393624'>Upadek, Żołnierz</motyw>Patrz, jakie orszaki/	Darmojadów za nimi, którzy ustawicznym/	Próżnowaniem a zbytkiem jako wieprze tyją./<end id='e1188303298446' />	Z tego stada, mniemacie, że się który przyda/	Do posługi ojczyzny? Jako ten we zbroi/	Wytrwa, któremu czasem i w jedwabiu ciężko?/	Jako straż będzie trzymał, a on i w południe/	Przesypiać się nauczył? Jako stos wytrzymać/	Ma nieprzyjacielowi, który ustawicznym/	Pijaństwem zdrowie stracił? Takimi się czując,/	A podobno nie czując, na wojnę wołają:/	Boże, daj mi z takimi mężmi zawżdy czynić!<end id='e1188303393624' />	</strofa></kwestia><begin id='b1188303501745' /><motyw id='m1188303501745'>Mąż</motyw><naglowek_osoba>MENELAUS</naglowek_osoba><kwestia>	<strofa>	Wieczne światło niebieskie i ty, płodna ziemi,/	I ty, morze szerokie, wy, wszyscy bogowie,/	I wysocy, i niscy<pr><slowo_obce>bogowie i wysocy, i niscy</slowo_obce> --- tj. bogowie niebiańscy, olimpijscy i bogowie podziemni, Hadesu.</pr>, świadki mi dziś bądźcie,/	Żem rzeczy sprawiedliwej od Trojanów żądał,/	Abych był krzywdy wielkiej i zelżenia swego/	Nagrodę jaką wziąć mógł; nicem nie otrzymał,/	Jeno śmiech ludzki, a żal serdeczny tym więtszy./	Na was tedy krzywdę swą i żałość niezmierną/	Kładę<pr><slowo_obce>Na was... kładę</slowo_obce> --- wam polecam.</pr>, możni bogowie; jeśli sercem czystym/	Tę prośbę do was czynię, pomścicie zelżenia/	I mej krzywdy tak jasnej: dajcie mi na gardle/	Usieść Aleksandrowym i miecz krwią napoić/	Człowieka bezecnego, ponieważ i on mej/	Zelżywości dawno syt i dziś się ją karmi.	</strofa><end id='e1188303501745' /></kwestia><naglowek_osoba>	CHORUS<pe>Początek trzeciego <slowo_obce>stasimon</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>	O białoskrzydła<pr><slowo_obce>białoskrzydła</slowo_obce> --- neologizm poety na wzór greckiego <slowo_obce>leu-kopteros</slowo_obce>.</pr> morska pławaczko,/	Wychowanico Idy <pr>Idy --- góra Ida pod Troją, gdzie rosły buki, z których zbudowano łódź Parysa</pr> wysokiej,/	Łodzi bukowa, któraś gładkiej/	Twarzy pasterza Pryjamczyka/	Mokrymi słonych wód ścieżkami<pr><slowo_obce>Mokrymi słonych wód ścieżkami</slowo_obce> --- przekładnia, zamiast: mokrymi ścieżkami słonych wód.</pr>/	Do przezroczystych Eurotowych/	Brodów<pr><slowo_obce>Eurotowych brodów</slowo_obce> --- żaglowiec Parysa zawinął do ujścia rzeki Eurotas w Lakonii na Peloponezie.</pr> nosiła!/	Coś to zołwicom<pe><slowo_obce>zołwicom</slowo_obce> --- dziś: szwagierkom; chodzi o relację więzów rodzinnych sióstr Aleksandra w stosunku do Heleny jako jego żony</pe> za bratową,/	Córom szlachetnym Pryjamowym,/	Cnej Poliksenie i Kasandrze/	Wieszczej<pr>Cnej Poliksenie i Kasandrze wieszczej --- córkom Priama; występuje tu <slowo_obce>krzyżownik</slowo_obce>, układ krzyżowy <wyroznienie>abba</wyroznienie>: przymiotnik raz poprzedza, drugi raz następuje po rzeczowniku.</pr>, przyniosła?/	Za którą oto w tropy prosto,/	Jako za zbiegłą niewolnicą,/	Prędka pogonią przybieżała./	</strofa>		<strofa>	Toli on sławny upominek/	Albo pamiętne, którym luby/	Sędziemu wyrok ze wszech Wenus/	Bogiń piękniejsza<pr><slowo_obce>ze wszech Wenus bogiń piękniejsza</slowo_obce> --- przekładnia, zamiast: ze wszech bogiń Wenus piękniejsza.</pr> zapłaciła,/	Kiedy na Idzie stokorodnej/	Śmierci podległy nieśmiertelne/	Uznawca twarzy rozeznawał?<pr><slowo_obce>Śmierci podległy nieśmiertelne uznawca twarzy rozeznawał</slowo_obce> --- przekładnia, zamiast: śmierci podległy uznawca nieśmiertelne twarzy rozeznawał; do przekładni dochodzi gra wyrazów: ,,śmierci podległy" i ,,nieśmiertelne".</pr>/	Swar był początkiem i niezgoda/	Twego małżeństwa, Pryjamicze./	Nie śmiem źle tuszyć, nie śmiem, ale/	Ledwe nie takiż koniec będzie./	</strofa>		<strofa>	<wers_akap>Niechajże się ja, można Cypri<pr>Cypri --- Cypryda, przydomek Wenus.</pr>,</wers_akap>/	Ninacz cudzego nie zapatrzam!/	Niech towarzysza życzliwego,/	Jednemu łożu przyjaciela,/	Mam z łaski twojej; inszy, więcej/	Chcą li, niech proszą!/	Oczy łakome siła ludzi/	Zawiodły, lecz kto w krygi żądzą/	Mógł ująć<pr><slowo_obce>w krygi... ująć</slowo_obce> --- okiełznać, opanować.</pr>, w długim bezpieczeństwie/	Dni swych używie. Przyjdą, przyjdą/	Niedawno czasy, że rozbójcę/	Rozbójca znidzie; ten mu słodki/	Sen z oczu zetrze i bezpieczne/	Serce zatrwoży, kiedy trąby/	Ogromne zagrzmią, a pod mury/	Nieprzyjacielskie staną szańce.	</strofa></kwestia><didaskalia><osoba>Antenor</osoba>, <osoba>Priamus</osoba></didaskalia><naglowek_osoba>	ANTENOR<pe>Początek piątego <slowo_obce>epeisodion</slowo_obce>.</pe></naglowek_osoba><kwestia>	<strofa>	Iż moja wierna rada u ciebie, o wielki/	Królu, ważna nie była, żebyś był Helenę/	Grekom wydać rozkazał, a tę niewątpliwą/	Wielkiej wojny pochodnią co napręcej zgasił,/	Teraz, co potym idzie<pr><slowo_obce>co potym idzie</slowo_obce> --- jako następstwo tej sprawy.</pr>, w czas cię upominam,/	Abyś czuł o potrzebie i o pewnej wojnie,/	Tak pewnej, jako mię tu dziś przed sobą widzisz./	Słyszałeś, jako cię dziś posłowie żegnali/	I nas wszytkich przy tobie. Pograniczni piszą/	Starostowie<pr><slowo_obce>Pograniczni starostowie</slowo_obce> --- dowódcy oddziałów strzegących granic.</pr>, że greckie wojska się ściągają/	Do Aulidy<pr>Au1ida --- port w Beoeji.</pr>; w tym wątpić nie potrzeba, że ci/	Do nas pójdą: inaczej ani by tu byli/	Posłów swych posyłali, ani tak surowie/	0 swą krzywdę mówili. A tak nie mieszkając,/	Póki brzegu morskiego ostatka nie stracim,/	Porty naprzód i zamki pograniczne spiżą/	I ludźmi dobrze opatrz<pr><slowo_obce>Porty... i zamki... opatrz</slowo_obce> --- rady te pozwalają odtworzyć stosunki polskie.</pr><uwaga>???</uwaga>; hołdownym książętom/	Rozkaż być pogotowiu; żołnierzom przypowiedz/	Służbę; szpiegi rozeszli; straż miej i na morzu,/	I na ziemi, aby cię łacni niegotowym/	Grekowie nie zastali. To jest rada moja.	</strofa></kwestia><naglowek_osoba>PRIAMUS</naglowek_osoba><kwestia>	<strofa>	Jakobyś już na oko, dobry Antenorze,/	Nieprzyjaciela widział, tak się, widzę, boisz.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	O królu, teraz się bać lepiej, bo za taką/	Bojaźnią i opatrzność, i gotowość roście<pr><slowo_obce>i opatrzność, i gotowość roście</slowo_obce> --- ostrożność i gotowość rośnie.</pr>./	Wonczas już próżny rozmysł, bo już abo się bić,/	Abo uciekać trzeba: trzeciego nic nie masz.	</strofa></kwestia><naglowek_osoba>PRIAMUS</naglowek_osoba><kwestia>	<strofa>	A ja, owszem, na dobrej pieczy wszytko mieć chcę,/	Aby nam do tak nagłych ucieczek nie przyszło.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	Daj to Boże! <begin id='b1188304824746' /><motyw id='m1188304824746'>Kobieta, Wizja</motyw>A to zaś co za białagłowa<pr><slowo_obce>co za białagłowa</slowo_obce> --- Antenor zna oczywiście Kasandrę; chodzi tu jednak o przedstawienie jej widzom, jak w teatrze greckim (nie znano tam afisza, zastępowano go więc dialogiem, podającym imię wprowadzanego na scenę bohatera).</pr>/	Z włosy roztarganymi i twarzy tak bladej?/	Drżą na niej wszytki członki, piersiami pracuje,/	Oczy wywraca, głową kręci: to chce mówić,/	To zamilknie.	</strofa></kwestia><naglowek_osoba>PRIAMUS</naglowek_osoba><kwestia>	<strofa>	<wers_cd>Moja to nieszczęśliwa córa,</wers_cd>/	Kasandra; widzę, że ją duch Apollinowy<pr><slowo_obce>duch Apo11inowy</slowo_obce> --- Kasamdra otrzymała dar proroczy od zakochanego w niej Apollina (boga proroctw), gdy jednak odrzuciła jego miłość, sprawił, że nikt nie wierzył jej przepowiedniom.</pr>/	Zwykły nagarnął; nie lża, jeno jej posłuchać.	</strofa></kwestia><naglowek_osoba>KASANDRA</naglowek_osoba><kwestia>	<strofa>	Po co mię próżno, srogi Apollo, trapisz,/	Który, wieszczego ducha dawszy, nie dałeś/	Wagi w słowiech, ale me wszytki proroctwa/	Na wiatr idą nie mając u ludzi więcej/	Wiary nad baśni próżne i sny znikome?/	Komu serce spętane albo pamięci/	Zguba mojej pomoże? Komu z ust moich/	Duch nie mój<pr><slowo_obce>Duch nie mój</slowo_obce> --- Apollo; jego również oznaczają słowa:,,nieznośny gość".</pr> użyteczen i zmysły wszytki/	Ciężkim, nieznośnym gościem opanowane?/	Próżno się odejmuję, gwałt mi się dzieje;/	Nie władne dalej sobą, nie jestem swoja./	Ale gdzieżem, prze Boga? Światła nie widzę,/	Noc mi jakaś przed oczy nagła upadła./	Owóż mamy dwie słońcy, owóż dwie Troi,/	Owóż i łani morzem głębokim płynie./	Nieszczęśliwa to łani, złej wróżki łani<pr><slowo_obce>złej wróżki łani</slowo_obce> --- złej wróżby, złowróżbna; łania oznacza tu Helenę.</pr>./	Brońcie brzegów, pasterze, nie dopuszczajcie/	Tej niezdarzonej goście nigdziej do ziemie!/	Nieszczęśliwa to ziemia i brzeg nieszczęsny,/	Gdzie ta łani wypłynie; nieszczęsna knieja,/	Gdzie wnidzie i gdzie gładki swój bok położy./	Wszytki stopy, wszytki jej łożyska muszą/	Krwią opłynąć; upadek, pożogę, pustki/	Z sobą niesie. O wdzięczna ojczyzno moja,/	0 mury, nieśmiertelnych ręku roboto<pr><slowo_obce>nieśmiertelnych ręku roboto</slowo_obce> --- mury Troi wznieśli bogowie Apollo i Posejdon (Neptun).</pr>!/	Jaki koniec was czeka? Ciebie, mój bracie,/	Stróżu ojczyzny, domu zacna podporo,/	Wkoło murów trojańskich tesalskie konie/	Włóczyć grożą, a twoje oziębłe ciało/	Będzie li chciał nieszczęsny ociec pochować,/	Musi je u rozbójce złotem kupować<pr>Przepowiednia śmierci Hektora.</pr>./	Nieprzepłacony duchu, z tobą pospołu/	I ojczyzna umarła: jednaż mogiła/	Oboje was przykryje. Lecz i ty, srogi/	Trupokupcze<pr>Trupokupcze (gr. <slowo_obce>nekropernas</slowo_obce>) --- Achilles, zabójca Hektora, za okup wydał zwłoki syna Priamowi. Zginął zraniony w piętę strzałą Parysa. Pomścił go syn Neoptolemos (Pyrrus), który po upadku Troi zamordował Priama chroniącego się w świątyni.</pr>, niedawno i sam polężesz,/	Strzałą niemężnej ręki prędką objeżdżon./	Cóż potym? Kłoda leży, a ze pnia przedsię/	Nowa rózga<pr><slowo_obce>Nowa rózga</slowo_obce> --- syn Achillesa, Neoptolemos.</pr> wyrosła i nad nadzieję/	Prędko ku górze idzie. A to co za koń<pr><slowo_obce>koń</slowo_obce> --- drewniany koń z ukrytymi wewnątrz Grekami.</pr>/	Tak wielki na poboju sam jeden stoi?/	Nie wódźcie go do stajniej, radzę, nie wódźcie:/	Bije ten koń i kasze; spalcie go raczej,/	Jeśli sami od niego zgorzeć nie chcecie./	Czujcie, stróże: noc idzie, noc podejźrzana./	Wielki ogień ma powstać, tak wielki ogień,/	Że wszytko jako w biały dzień widać będzie,/	Ale nazajutrz zaś nic widać nie będzie./	Wtenczas, ojcze, ani już bogom swym dufaj,/	Ani się poświęconych ołtarzów łapaj:/	Okrutnego lwa szczenię za tobą bieży,/	Które cię paznoktami przejmie ostrymi/	I krwią twoją swe gardło głodne nasyci/	Syny wszytki pobiją, dziewki w niewolą/	Zabiorą; drugie<pr><slowo_obce>drugie</slowo_obce> --- Foliksenę, narzeczoną Achillesa, zabito na jego grobie.</pr> g'woli trupom umarłym/	Na ich grobiech bić będą. Matko<pr><slowo_obce>Matko</slowo_obce> --- Hekuba, żona Priama, po upadku Troi i śmierci dzieci zamieniona została w sukę.</pr>, ty dziatek/	Swoich płakać nie będziesz, ale wyć będziesz!	</strofa><end id='e1188304824746' /></kwestia><naglowek_osoba>CHORUS</naglowek_osoba><kwestia>	<strofa>	Rzućmy się co napręcej, a na pokój gdzie/	Wyprowadźmy tę pannę upracowaną!	</strofa></kwestia><didaskalia><osoba>Antenor</osoba>, <osoba>Priamus</osoba></didaskalia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	Te słowa, królu, nie są ku wyrozumieniu/	Nazbyt trudne, a zgoła tobie i ojczyźnie/	Upad opowiadają; prze Boga cię proszę,/	Nie waż ich sobie lekce ani miej za baśni!	</strofa></kwestia><naglowek_osoba>PRIAMUS</naglowek_osoba><kwestia>	<strofa>	Jeszcze tego nieprawie ta przeciwna wiedma/	W mię wmówiła, żebych się miał bać; ale przedsię/	Postraszyła mię nieco, zwłaszcza że mi przyszedł/	Sen na pamięć żony mej; bo gdy z tym złym synem,/	Aleksandrem, chodziła, mało przed zlężeniem/	Śniło się jej już na dniu, że miasto dziecięcia/	Pochodnią urodziła.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	<wers_cd>I jam też to, królu,</wers_cd>/	Jeszcze natenczas wiedział i pomnie, jako to/	Wieszczkowie wykładali, że to dziecię miało/	Upad ojczyźnie przynieść; czego, widzę, blisko.	</strofa></kwestia><naglowek_osoba>PRIAMUS</naglowek_osoba><kwestia>	<strofa>	Dobrze to pomnisz, ale i jam był rozkazał/	Grzechu tego nie żywić<pr><slowo_obce>Grzechu tego nie żywić</slowo_obce> --- przeklętego dziecka nie zostawić przy życiu.</pr>; dawno to na puszczy/	Wilcy mieli rozdrapać i kości nieszczęsne/	Po pustych górach roznieść.	</strofa></kwestia><naglowek_osoba>ANTENOR</naglowek_osoba><kwestia>	<strofa>	A lepiej było, niżli nam przeń wszytkim zginąć./	Co za więźnia to mamy? Ubiór to jest grecki.	</strofa></kwestia><didaskalia><osoba>Rotmistrz</osoba>, <osoba>Więzień</osoba></didaskalia><begin id='b1188304742645' /><motyw id='m1188304742645'>Wojna</motyw><naglowek_osoba>ROTMISTRZ</naglowek_osoba><kwestia>	<strofa>	Takci, panowie; wy tu radzicie, a w polu/	Grekowie nas wojują. Wczora o południu/	Pięć galer ich przypadło na trojańskie brzegi./	Ludzi wprawdzie nie brali ani też palili,/	Ale cokolwiek było w polu bydła, wzięli./	Jako nas tam niewielki natenczas był poczet,/	Kusiwszy się kilkakroć o nie<pr><slowo_obce>Kusiwszy się kilkakroć o nie</slowo_obce> --- spróbowawszy ich kilka razy atakować.</pr>, musielichmy/	Na ostatek dać pokój; kilka głów jest przedsię/	Zabitych, ten sam jeden tylko poimany;/	Na próbie<pr><slowo_obce>Na próbie</slowo_obce> --- na śledztwie, na torturach.</pr> to powiedział, że greckiego wojska/	Tysiąc galer na kotwiach<pr><slowo_obce>kotwiach</slowo_obce> --- poprawiony przez Nehringa błąd druku: kotwicach.</pr><uwaga>?</uwaga> pogotowiu stoi/	W Aulidzie, którzy tylko na posły czekają./	A ci jeśli Heleny nazad nie przyniosą/	(Jakoż widzę, że bez niej tak na morze wsiedli),/	Wszytko się wojsko tedyż ma ruszyć i prosto/	Ku Troi żagle podać; wszak tak?<end id='e1188304742645' />	</strofa></kwestia><naglowek_osoba>WIĘZIEŃ</naglowek_osoba><kwestia>	<strofa>	<wers_cd>Niepochybnie.</wers_cd>	</strofa></kwestia><naglowek_osoba>ROTMISTRZ</naglowek_osoba><kwestia><strofa>Hetmanem Agamemnon?</strofa></kwestia><naglowek_osoba>Więzień</naglowek_osoba><kwestia><strofa><wers_cd>Ten, brat Menelaów.</wers_cd></strofa></kwestia><naglowek_osoba>PRIAMUS</naglowek_osoba><kwestia>	<strofa>	Każ więźnia tego schować i opatrzyć dobrze!/	To więc już, Antenorze, insza niż proroctwa/	Albo sny białogłowskie; ale wszyscy przedsię/	W jeden cel przed się biją. Jutro co naraniej/	W radę wnidźmy, a stamtąd już ani wychodźmy,/	Aż obronę uradzim.	</strofa></kwestia>ANTENOR<kwestia>	<strofa>	<wers_cd>Baczę, że jej trzeba,</wers_cd>/	Acz mi to słowa przykre i coś nie bez wróżki;/	Na każdy rok nam każą radzić o obronie;/	Ba, radźmy też o wojnie, nie wszytko się brońmy:/	Radźmy, jako kogo bić; lepiej, niż go czekać<pr>Zdanie to, niedostosowane do sytuacji w dramacie, jest wyrazem stosunków polskich i na nim głównie opierają się poglądy o tendencji politycznej Odprawy.</pr>!	</strofa></kwestia><extra><!--</tekst_glowny>--></extra></dramat_wierszowany_l></utwor>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Odprawa_posłów_greckich">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Odprawa posłów greckich</dc:title>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Dramat</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tragedia</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/odprawa-poslow-greckich</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+
+<dramat_wierszowany_l>
+
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<nazwa_utworu>Odprawa posłów greckich</nazwa_utworu>
+
+<podtytul>
+	PODANA NA TEATRHUM PRZED KRÓLEM JEGO MŚCIĄ/
+	I KRÓLOWĄ JEJ MŚCIĄ/
+	W JAZDOWIE NAD WARSZAWĄ<pr>W Jazdowie (Ujazdowie), wówczas wsi podwarszawskiej, we dworze Radziwiłłów odbyło się w r. 1578 wesele Krystyny Radziwiłłówny i Jana Zamoyskiego. Tytuł <tytul_dziela>Odprawa</tytul_dziela> nie znaczy <wyroznienie>odmowy</wyroznienie>, lecz <wyroznienie>załatwienie</wyroznienie>, jak dzisiaj odprawa celna lub paszportowa.</pr>/
+	DNIA 12 STYCZNIA ROKU PAŃSKIEGO 1578,/
+	NA FEŚCIE U JEGO MŚCI PANA/
+	PODKANCLERZEGO KORONNEGO
+</podtytul>
+
+<sekcja_swiatlo/>
+
+<srodtytul>
+	MEMU MIŁOŚCIWEMU PANU,/
+	JEGO MŚCI PANU,/
+	PANU JANOWI ZAMOYSKIEMU/
+	Z ZAMOŚCIA,/
+	PODKANCLERZEMU KORONNEMU ETC., ETC./
+	<wyroznienie>Służby swe w łaskę W. M. mego miłościwego Pana zalecam.</wyroznienie>
+</srodtytul>
+
+<akap>Wczora dopiero oddano mi obadwa listy za raz<pe><slowo_obce>za raz</slowo_obce> --- równoczesnie, razem.</pe>, któreś W. M.<pe><slowo_obce>W. M.</slowo_obce> --- Wasza Miłość.</pe> do mnie około tej tragedyjej pisał. A iżem przedtym nie wiedział o tych liściech, spodziewałem się, że za tymi czasów odwłokami<pe><slowo_obce>czasów odwłokami</slowo_obce> --- zwlekaniami, zwłoką.</pe> i mej tragedyjej się odwlec miało albo raczej że tak ze mną zostać miała molom na pokarm albo na trąbki do apteki<pe><slowo_obce>trąbki do apteki</slowo_obce> --- papierki, w które zawijano towar.</pe>. Jakom listy W. M. przeczytał, nie było czasu poprawować, bom wszytek musiał <slowo_obce>insumere</slowo_obce><pr><slowo_obce>insumere</slowo_obce> (łac.) --- użyć, poświęcić.</pr> na przepisanie. <slowo_obce>Quicquid id est</slowo_obce><pr><slowo_obce>Quicquid id est</slowo_obce> (łac.) --- czymkolwiek to [dzieło] jest.</pr>, a baczę, że błazeństwo<pe><slowo_obce>błazeństwo</slowo_obce> --- tu: rzecz licha, miernej wartości.</pe>, i W. M. sam podobno rzeczesz, posyłam W. M. tym śmielej, chocia nie masz co, żem to jeszcze z przodku W. M. opowiadał, że to nie miało być <slowo_obce>ad amussim</slowo_obce><pe><slowo_obce>ad amussim</slowo_obce> (łac., dosł.: pod sznur) --- według reguły, tu: według zasad tragedii antycznej.</pe>, bo mistrz nie po temu. Rzeczy też drugie nie wedla uszu naszych<pe><slowo_obce>nie wedla uszu naszych</slowo_obce> --- niezgodne z przyzwyczajeniami współczesnych Kochanowskiego.</pe>. <slowo_obce>Inter caetera</slowo_obce><pr><slowo_obce>Inter caetera</slowo_obce> (łac.) --- między innymi.</pr> trzy są chory, a trzeci jakoby greckim chorom przygania<pr><slowo_obce>przygania</slowo_obce> --- <wyroznienie>przygarnąć</wyroznienie>, forma częstotliwa od  <wyroznienie>przygonić</wyroznienie>, tu w sensie: iść za, iść śladem, naśladować.</pr>, bo oni już osobny <slowo_obce>characterem</slowo_obce> do tego mają<pe><slowo_obce>characterem</slowo_obce> [łac.]<slowo_obce>... mają</slowo_obce> --- mają odrębną, specjalną formę. Chodzi tu zapewne o próbę przystosowania rytmiki wiersza polskiego do metrum antycznego.</pe><uwaga>Czy powyższy przyp. OK? + Warto to wyjaśnić dokładniej -- dgalecki</uwaga>; nie wiem, jako to w polskim języku brzmieć będzie. Ale w tym niech będzie <slowo_obce>arbitrium</slowo_obce><pr><slowo_obce>arbitrium</slowo_obce> (łac.) --- sąd, wyrok.</pr> W. M. albo raczej we wszytkim. Barzo bych to był rad uczynił, żebych<pe><slowo_obce>Barzo bych... żebych</slowo_obce> --- staropolskie formy trybu warunkowego: bardzo bym... żebym.</pe> był sam <slowo_obce>praesens</slowo_obce> <pr>praesens (łac.) --- osobiście, obecny.</pr> W. M. teraz służby swe ofiarował, ale mi złe zdrowie nie da. Nierad bych przedsię omieszkał przenosin W. M., jeśli <slowo_obce>salus</slowo_obce><pr>salus (łac.) --- zdrowie.</pr> tak będzie chciała. Zatym się łasce W. M. mego miłościwego Pana zalecam. Dat.<pr><slowo_obce>Dat.</slowo_obce>[um] (skrót łac. od:<slowo_obce>datum</slowo_obce>) --- dano (domyślnie: list posłańcowi).</pr> w Czarnolesie dwudziestego wtórego dnia grudnia roku bożego MDLXXVII.</akap>
+
+<akap>W. M. mego miłościwego Pana</akap>
+
+<akap_cd> </akap_cd>
+
+<akap_cd>sługa uprzejmy</akap_cd>
+
+<akap_cd><wyroznienie>Jan Kochanowski</wyroznienie></akap_cd>
+
+
+<lista_osob>
+	<naglowek_listy>PERSONY</naglowek_listy>
+	<lista_osoba>Antenor</lista_osoba>
+	<lista_osoba>Aleksander, którego i Parysem zowią</lista_osoba>
+	<lista_osoba>Helena</lista_osoba>
+	<lista_osoba>Pani Stara</lista_osoba>
+	<lista_osoba>Poseł Parysów</lista_osoba>
+	<lista_osoba typ="posłowie greccy">Ulisses</lista_osoba>
+	<lista_osoba typ="posłowie greccy">Menelaus</lista_osoba>
+		<extra>Jeśli powyższe nie zadziała (klamra spinającą oba imiona, za nią "posłowie..."), to można złożyć i w ten sposób:
+			<lista_osoba>Posłowie greccy:/
+				[tab] Ulisses/
+				[tab] Menelaus
+			</lista_osoba>
+		</extra>
+	<lista_osoba>Priamus, król trojański</lista_osoba>
+	<lista_osoba>Kasandra</lista_osoba>
+	<lista_osoba>Rotmistrz</lista_osoba>
+	<lista_osoba>Więzień</lista_osoba>
+	<lista_osoba>Chorus z panien trojańskich</lista_osoba>
+</lista_osob>
+
+<miejsce_czas>Sprawa w Trojej</miejsce_czas>
+
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+<extra><naglowek_scena>[PROLOG]</naglowek_scena></extra>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Com dawno tuszył i w głos opowiedał,/
+	Że obelżenia i krzywdy tak znacznej/
+	Cierpieć nie mieli waleczni Grekowie:/
+	Teraz już posły ich u siebie mamy,/
+	Którzy się tego u nas domagają,/
+	Aby Helena była im wydana,/
+	Którą w tych czasiech przeszłych Aleksander,/
+	Będąc w Grecyjej, gość nieprawie wierny<pr><slowo_obce>gość nieprawie wierny</slowo_obce> --- wyrażenie bardzo oględne, chodzi bowiem o złamanie prawa gościnności i wiarołomstwo, tłumaczy się jednak stylem tragedii rozgrywającej się w środowisku dworskim.</pr>,/
+	Uniósł od męża i przez bystre morze/
+	Do trojańskiego miasta przyprowadził./
+	Tę jeśli wrócim i mężowi w ręce/
+	Oddamy, możem siedzieć za pokojem,/
+	Lecz jeśli z niczym posłowie odjadą,/
+	Tegoż dnia nowin słuchajmy, że Greczyn/
+	Z morza wysiada i ziemię wojuje./
+	<begin id="b1188299578684"/><motyw id="m1188299578684">Obywatel</motyw>Czuje o sobie<pr><slowo_obce>Czuje o sobie</slowo_obce> --- dba o swoją sprawę.</pr> widzę, Aleksander:/
+	Praktyki czyni<pr><slowo_obce>Praktyki czyni</slowo_obce> --- praktykuje, tj. zjednywa sobie zwolenników, spiskuje.</pr>, towarzystwa zbiera,/
+	Śle upominki, aż i mnie nie minął;/
+	A mnie i dom mój, i co mam z swych przodków,/
+	Nie jest przedajno. A miałbych swą wiarę/
+	Na targ wynosić, uchowa mię tego/
+	Bóg mój<pr><slowo_obce>uchowa... Bóg...</slowo_obce> --- uchowaj Bóg, niech Bóg uchowa.</pr>. Nie ufa swej sprawiedliwości,/
+	Kto złotu mówić od siebie rzecz każe./
+	Lecz i to człowiek małego baczenia,/
+	Który na zgubę rzeczypospolitej/
+	Podarki bierze, jakoby sam tylko/
+	W cale miał zostać, kiedy wszytko zginie./<end id="e1188299578684"/>
+	Ale mnie czas do rady, bo dziś król chce posły/
+	Odprawować. Snąć widzę Aleksandra? Ten jest.
+	</strofa>
+</kwestia>
+
+<didaskalia><osoba>Aleksander</osoba>, <osoba>Antenor</osoba></didaskalia>
+
+
+<extra><naglowek_scena>[EPEISODION PIERWSZE]</naglowek_scena></extra>
+
+
+<begin id="b1188300805652"/><motyw id="m1188300805652">Przyjaźń, Sprawiedliwość</motyw><naglowek_osoba>ALEKSANDER<pe>Początek pierwszego <slowo_obce>epeisodionu</slowo_obce> (<slowo_obce>epeisodion</slowo_obce> --- część dialogowa w tragedii greckiej, w przeciwieństwie do <slowo_obce>stasimonu</slowo_obce>, części wygłaszanej przez chór. Tragedia grecka składała się zazwyczaj z czterech, pięciu epeisodionów przeplatanych stasimonami.</pe></naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Jako mi niemal wszyscy obiecali,/
+	Cny Antenorze, proszę, i ty sprawie/
+	Mej bądź przychylnym przeciw posłom greckim.
+	</strofa>
+</kwestia>
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	A ja z chęcią rad, zacny królewicze<pe><slowo_obce>królewicze</slowo_obce> --- królewiczu.</pe>,/
+	Cokolwiek będzie sprawiedliwość niosła/
+	I dobre<pe><slowo_obce>dobre</slowo_obce> --- dobro</pe> rzeczypospolitej naszej.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>Wymówki nie masz, gdy przyjaciel prosi.</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>Przyzwalam, kiedy o słuszną rzecz prosi.</strofa>
+</kwestia>
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Obcemu więcej życzyć niżli swemu/
+	Coś niedaleko zda się od zazdrości.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Przyjacielowi więcej niżli prawdzie/
+	Chcieć służyć, zda się przeciw przystojności.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Ręka umywa rękę, noga nogi/
+	Wspiera, przyjaciel port przyjacielowi.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Wielki przyjaciel przystojność: tą sobie/
+	Rozkazać służyć nie jest przyjacielska<pr><slowo_obce>nie jest przyjacielska</slowo_obce> --- nie jest rzeczą przyjacielską.</pr>.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>W potrzebie, mówią, doznać przyjaciela.</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>I toć potrzeba, gdzie sumnienie płaci<pr><slowo_obce>I toć potrzeba, gdzie sumnienie płaci</slowo_obce> --- i to jest potrzebą (niebezpieczeństwem), gdzie chodzi o sumienie. Obaj rozmówcy sypią w rozmowie przysłowiami, osłaniającymi ich wzajemną niechęć, rozmowa zaś toczy się w krótkich, jednowierszowych zdaniach (tzw. <slowo_obce>stichomytia</slowo_obce>), dowodzących wzburzenia przeciwników.</pr>.</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>Piękne sumnienie: stać przy przyjacielu.</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia><strofa>Jeszcze piękniejsze: zostawać przy prawdzie.</strofa></kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+
+<kwestia><strofa>Grekom pomagać to u ciebie prawda.</strofa></kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia><strofa>Grek u mnie każdy, kto ma sprawiedliwą<pr><slowo_obce>kto ma sprawiedliwą</slowo_obce> --- ma słuszność.</pr>.</strofa></kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia><strofa>Widzę, żebyś mię ty prędko osądził.</strofa></kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia><strofa>Swoje sumnienie każdego ma sądzić.</strofa></kwestia><end id="e1188300805652"/>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia><strofa>Znać, że u ciebie gospodą posłowie.</strofa></kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia><strofa>Wszystkim ućciwym dom mój otworzony.</strofa></kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia><strofa>A zwłaszcza, kto nie z próżnymi rękoma.</strofa></kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Trzeba mi bowiem sędziom na podarki,/
+	Bom cudzą żonę wziął, o którą czynią<pr><slowo_obce>o którą czynią</slowo_obce> --- o którą toczy się sprawa.</pr>.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Nie wiem o żonę<pr><slowo_obce>Nie wiem o żonę</slowo_obce> --- nie wiem, czy o żonę.</pr>, ale dary bierzesz,/
+	Od Greków zwłaszcza; moje na cię małe.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	I żon, i cudzych darów nierad biorę./
+	Ty, jako żywiesz, tak, widzę, i mówisz/
+	Niepowściągliwie; nie mam z tobą sprawy.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	I mnie żal, żem cię o co kiedy prosił./
+	Ufam swym bogom, że i krom twej łaski/
+	Najdę, kto rzeczy mych podpierać będzie.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia><strofa>Taki, jakiś sam.</strofa></kwestia>
+
+
+<naglowek_osoba>ALEKSANDER</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+		<wers_cd>Da Bóg, człek poćciwy.</wers_cd>
+	</strofa>
+</kwestia>
+
+
+<begin id="b1188300941159"/><motyw id="m1188300941159">Mądrość, Młodość </motyw><naglowek_osoba>
+	CHORUS<pe>Początek pierwszego <slowo_obce>stasimon</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+		By rozum był przy młodości/
+		Nigdy takiej obfitości/
+		Pereł morze i ziemia złota nie urodzi,/
+		Żeby tego nie mieli tym dostawać młodzi<pr><slowo_obce>Żeby tego nie mieli tym dostawać łodzi</slowo_obce> --- nie ma takich skarbów, za które młodzi nabyć by mogli rozum.</pr>.
+	</strofa>
+	
+	<strofa>
+		<wers_akap>Mniej by na świecie trosk było,</wers_akap>/
+		By się to dwoje łączyło;/
+		I oni by rozkoszy trwalszych używali,/
+		Siebie ani powinnych w żal by nie wdawali.
+	</strofa>
+	
+	<strofa>
+		<wers_akap>Teraz, na rozum nie dbając,</wers_akap>/
+		A żądzom tylko zgadzając,/
+		Zdrowie i sławę tracą, tracą majętności/
+		I ojczyznę w ostatnie zawodzą trudności.
+	</strofa>
+	
+	<strofa>
+		<wers_akap>O Boże na wielkim niebie!</wers_akap>/
+		Drogo to, widzę, u Ciebie/
+		Dać młodość i baczenie za raz; jedno płacić/
+		Drugim trzeba: to dobre, a tego żal stracić.<end id="e1188300941159"/>
+	</strofa>
+	
+	<strofa>
+		<wers_akap>Ale oto Helenę widzę: co też teraz</wers_akap>/
+		Nieboga myśli wiedząc, że dziś o niej w radzie/
+		Ostateczne namowy, ma li w Troi zostać/
+		Czyli Grecyją znowu i Spartę nawiedzić?
+	</strofa>
+</kwestia>
+
+
+<begin id="b1188301188520"/><motyw id="m1188301188520">Kobieta, Ojczyzna, Żona</motyw><naglowek_osoba>
+	HELENA<pe>Początek drugiego <slowo_obce>epeisodion</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Wszytkom ja to widziała jako we zwierciedle,/
+	Że z korzyści swej nie miał długo się weselić/
+	Bezecny Aleksander, ale mu wczas mieli/
+	I dobrą myśl przekazie przeważni Grekowie./
+	Więc on, jako drapieżny wilk rozbiwszy stado,/
+	Co nadalej uciekał, a oni zaś, jako/
+	Pasterze ze psy, za nim. I ledwe do tego/
+	Nie przyjdzie, że wilk owcę na ostatek musi/
+	Porzucić, a sam gdzie w las sromotnie uciecze.
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Niestety, jakież moje będą przenosiny?</wers_akap>/
+	Podobno w tył okrętu łańcuchem za szyję/
+	Uwiązana, pośrzodkiem greckich naw popłynę./
+	Z jakąż ja twarzą bracią swą<pr><slowo_obce>bracią swą</slowo_obce> --- braćmi Heleny, jako córki Zeusa i  Ledy, byli Kastor i Polluks.</pr> miłą przywitam?/
+	Jakoż ja, niewstydliwa, przed oczy twe naprzód,/
+	Mężu mój miły, przyjdę i sprawę o sobie/
+	Dawać będę? A będęż w twarz ci wejźrzeć śmiała?/
+	Bodajżeś ty był nigdy Sparty nie nawiedził,/
+	Nieszczęsny Pryjamida! Bo czego mnie więcej/
+	Nie dostawało? Zacnych książąt córką będąc/
+	Szłam w książęcy dom zacny; dał był Bóg urodę,/
+	Dał potomstwo, dał dobrą nade wszytko sławę./
+	Tom wszytko prze człowieka złego utraciła./
+	Ojczyzna gdzieś daleko, przyjaciół nie widzę,/
+	Dziatki<pr><slowo_obce>Dziatki</slowo_obce> --- Helena miała, według Homera, jedną córkę: Hermionę.</pr>, nie wiem, żywe li; jam sama coś mało/
+	Od niewolnice rożna, przymówkom dotkliwym/
+	I złej sławie podległa, a co jeszcze ze mną/
+	Szczęście myśli poczynać, ty sam wiesz, mój Panie.
+	</strofa><end id="e1188301188520"/>
+</kwestia>
+
+
+<didaskalia><osoba>Pani Stara</osoba>, <osoba>Helena</osoba></didaskalia>
+
+
+<begin id="b1188301342762"/><motyw id="m1188301342762">Kondycja ludzka</motyw><naglowek_osoba>PANI</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Nie frasuj mi się, moje dziecię miłe,/
+	Takci na świecie być musi: raz radość,/
+	Drugi raz smutek; z tego dwojga żywot/
+	Nasz upleciony. I rozkoszyć nasze/
+	Niepewne, ale i troski ustąpić/
+	Muszą, gdy Bóg chce, a czasy przyniosą.
+	</strofa>
+</kwestia>
+
+<naglowek_osoba>HELENA</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	0 matko moja, nierównoż to tego/
+	Wieńca pleciono; więcej że daleko/
+	Człowiek frasunków czuje niż radości.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PANI</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Barziej do serca to, co boli, człowiek/
+	Przypuszcza, niżli co g'myśli się dzieje./
+	I stądże się zda, że tego jest więcej,/
+	Co trapi, niżli co człowieka cieszy.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>HELENA</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Prze Bóg, więcejci złego na tym świecie/
+	Niżli dobrego. Patrzaj naprzód, jako/
+	Jedenże tylko sposób człowiekowi/
+	Jest urodzić się, a zginąć tak wiele/
+	Dróg jest, że tego niepodobno zgadnąć./
+	Także i zdrowie nie ma, jeno jedno./
+	Człowiek śmiertelny, a przeciwko temu/
+	Niezliczna liczba chorób rozmaitych./
+	Ale i ona, która wszystkim włada,/
+	Która ma wszytko w ręku, wszytkim rządzi,/
+	Fortuna, za mną świadczy, że daleko/
+	Mniej dóbr na świecie niżli tego, co złym/
+	Ludzie mianują, bo ubogaciwszy/
+	Pewną część ludzi, patrzaj, co ich ciężkim/
+	Ubóstwem trapi. A iż tego żadnej/
+	Zadości g'woli ani skępstwu swemu/
+	Nie czyni, ale niedostatkiem tylko/
+	Sciśniona, znak jest, że i dziś, gdy komu/
+	Chce co uczynić dobrze, pospolicie/
+	Jednemu pierwej weźmie, toż dopiero/
+	Drugiemu daje; skąd się da rozumieć,/
+	Co już powtarzam nie raz, że na świecie/
+	Mniej dóbr daleko niżli złych przypadków.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PANI</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Mniej abo więcej, równa li też liczba/
+	Obojga --- korzyść niewielka to wiedzieć./
+	0 to by Boga prosić, żeby człowiek/
+	Co namniej szczęścia przeciwnego doznał,/
+	Bo żeby zgoła nic, to nie człowiecza./<end id="e1188301342762"/>
+	<begin id="b1188301420388"/><motyw id="m1188301420388">Kobieta</motyw>Ale że z rady tak długo nikogo/
+	Nie słychać! Wiem, że da bez omieszkania/
+	Znać Aleksander, skoro się tam rzeczy/
+	Przetoczą, a nam białymgłowom jakoś/
+	Przystojniej w domu zawżdy niż przed sienią<pr><slowo_obce>przed sienią</slowo_obce> --- przed pałacem, to bowiem jeszcze w pierwszej połowie w. XVI wyraz ,,sień" znaczył.</pr>.<end id="e1188301420388"/>
+	</strofa>
+</kwestia>
+
+
+<begin id="b1188301579887"/><motyw id="m1188301579887">Obywatel, Sprawiedliwość, Władza</motyw><naglowek_osoba>
+	CHORUS<pe>Początek drugiego <slowo_obce>stasimon</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Wy, którzy pospolitą rzeczą władacie,/
+	A ludzką sprawiedliwość w ręku trzymacie,/
+	Wy, mówię, którym ludzi paść poruczono/
+	I zwirzchności nad stadem bożym zwierzono:
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Miejcie to przed oczyma zawżdy swojemi,</wers_akap>/
+	Żeście miejsce zasiedli boże na ziemi,/
+	Z którego macie nie tak swe własne rzeczy,/
+	Jako wszytek ludzki mieć rodzaj na pieczy.
+	</strofa>
+	
+	<strofa>
+	<wers_akap>A wam więc nad mniejszymi zwierzchność jest dana,</wers_akap>/
+	Ale i sami macie nad sobą pana,/
+	Któremu kiedyżkolwiek z spraw swych uczynić/
+	Poczet macie: trudnoż tam krzywemu wynić.
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Nie bierze ten pan darów ani się pyta,</wers_akap>/
+	Jeśli kto chłop czyli się grofem poczyta,/
+	W siermiędze li go widzi, w złotych li głowach;/
+	Jeśli namniej przewinił, być mu w okowach.
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Więc ja podobno z mniejszym niebezpieczeństwem</wers_akap>/
+	Grzeszę, bo sam się tracę swym wszeteczeństwem./
+	Przełożonych występy miasta zgubiły/
+	I szerokie do gruntu carstwa zniszczyły.
+	</strofa><end id="e1188301579887"/>
+</kwestia>
+
+
+<didaskalia><osoba>Poseł</osoba>, <osoba>Helena</osoba></didaskalia>
+
+
+<naglowek_osoba>
+	POSEŁ<pe>Początek trzeciego <slowo_obce>epeisodion</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Dobrą nowinę paniej swojej niosę./
+	Rozumiem temu, że już dawno tego/
+	Poselstwa czeka, serce swe troskami/
+	I płaczem trapiąc. Ale oto prawie/
+	Na czas wychodzi z domu. O królowa,/
+	Wdzięcznej nowiny posła masz przed sobą.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>HELENA</naglowek_osoba>
+
+<kwestia><strofa>Daj Boże, byś co przyniósł pociesznego.</strofa></kwestia>
+
+
+<naglowek_osoba>POSEŁ</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Posłowie twoi, jako przyjechali,/
+	Tak odjeżdżają, a ty przedsię z nami.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>HELENA</naglowek_osoba>
+
+<kwestia><strofa>Byłeś sam w radzie czyś słyszał od kogo?</strofa></kwestia>
+
+
+<naglowek_osoba>POSEŁ</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Byłem przy wszytkim i prosto mi stamtąd/
+	Iść Aleksander do ciebie rozkazał.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>HELENA</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Jeszczeć nie widzę, z czego bych się prawie/
+	Ucieszyć miała. Wszakże powiedz przedsię,/
+	Jako co było.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>POSEŁ</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	<wers_cd>Powiem, jeno słuchaj!</wers_cd>/
+	<begin id="b1188302065574"/><motyw id="m1188302065574">Ojciec, Ojczyzna, Rodzina, Sprawiedliwość, Syn, Władza</motyw>Skoro w radzie zasiedli panowie, król naprzód/
+	Tę rzecz do nich uczynił: ,,Nie zwykłem nic nigdy/
+	Bez rady waszej czynić; a bych też zwykł kiedy/
+	(Czego w pamięci nie mam), w tej sprawie koniecznie/
+	Syna swego bych nie chciał, aby mię ojcowska/
+	Miłość przeciw synowi<pr><slowo_obce>przeciw synowi</slowo_obce> --- do syna.</pr> jako nie uwiodła./
+	Bo aczci to podobno nie darmo rzeczono:/
+	»Krew nie woda«<pr><slowo_obce>Krew nie woda</slowo_obce> --- Kochanowski używa tu zwrotu przysłowiowego <wyroznienie>krew nie woda</wyroznienie> w niespotykanym już dziś znaczeniu: pokrewieństwo to czynnik doniosły.</pr>, lecz u mnie pospolitej rzeczy/
+	Powinowactwo więtsze. A tak, co się kolwiek/
+	Wam wszytkim będzie zdało, toż i ja pochwalę/<end id="e1188302065574"/>
+	Syn mój w Grecyjej żony dostał, nie wiem jako<pr><slowo_obce>nie wiem jako</slowo_obce> --- z woli bogów czy przez porwanie.</pr>;/
+	Tej się upominają od Greków posłowie./
+	Wydać abo nie wydać; w tym rozmysłu trzeba"./
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Zatym wstał Aleksander i tak mówić począł:</wers_akap>/
+	,,Przy pierwszej posłów skardze dałem dostateczną/
+	Sprawę o sobie; teraz nie chcę uszu waszych/
+	Słowy próżnymi bawić, ale maluczko co/
+	Powiedziawszy, ostatek na Boga przypuszczę<pr><slowo_obce>ostatek na Boga przypuszczę</slowo_obce> --- resztę zdam na Boga.</pr>/
+	I na łaskę ojcowską, i was wszytkich zdanie./
+	<begin id="b1188302269476"/><motyw id="m1188302269476">Bóg, Los, Miłość</motyw>Wszytkim wam jest świadomo, jakim ja był żywot/
+	Wziął przed się, żęciem nigdy tych burkowych biesiad<pr><slowo_obce>burkowych biesiad</slowo_obce> --- rozrywek miejskich, hulanek żołnierskich.</pr>/
+	Patrząc nie chciał; wolałem po gęstych dąbrowach/
+	Prędkie jelenie gonić abo dzikie świnie./
+	Anim ja tego sobie za niewczas poczytał/
+	W budzie leśnej się przespać i nad stady chodzić<pr><slowo_obce>nad stady chodzić</slowo_obce> --- chodzić za stadami, pasąc je.</pr>./
+	Nie myśliłciem<pr><slowo_obce>Nie myśliłciem</slowo_obce> --- <wyroznienie>nie myślił-ci-jem</wyroznienie> (jestem): nie myślałem.</pr> ja wtenczas namniej o Helenie/
+	Ani to imię przedtym w uszu mych postało./
+	Wenus, kiedy mię naprzód trzy boginie<pr><slowo_obce>trzy boginie</slowo_obce> --- Hera (Junona), Pallas Atena (Minerwa) i Afrodyta (Wenus).</pr> sobie/
+	Za sędziego obrały, Wenus mi ją sama/
+	Napierwej zaleciła i za żonę dała./
+	Ludzie, widzę, u Boga szczęścia sobie proszą,/
+	A ja kiedy mię z chęci swej tym potykali,/
+	Miałem gardzić? Przyjąłem, i przyjąłem wdzięcznie,/
+	I mam pewną nadzieję, że tenże bóg, który/
+	Ućcił mię naprzód, będzie i do końca szczęścił/
+	I co mi dał, nie da mi leda jako wydrzeć./
+	A bych też był żony swej ludzkim obyczajem<pr><slowo_obce>ludzkim obyczajem</slowo_obce> --- w sposób ludzki, zwyczajny, bez pomocy ,,boga", tj. bogini.</pr>/
+	Dostawał, nie wiem, czemu onym się zyść miało/
+	Medeą z domu wykraść od przyjaciół naszych,/
+	A mnie zaś ich fortelu takimże fortelem/
+	Oddać się nie godziło?/
+	Jeślim co tedy winien, toż i oni winni./<end id="e1188302269476"/>
+	Chcą li nagrody, niech ją sami pierwej czynią,/
+	Jako ci, którzy krzywdę naprzód uczynili./
+	A tam, ojcze, nie tylko żonę moje, ale/
+	I mnie samego wydaj, niechaj pokutuję!/
+	Gdzie by też to o sobie tak rozumieć chcieli,/
+	Że im każdy, a oni nie winni nikomu/
+	Sprawiedliwości czynić: tego, da Bóg, nigdy/
+	Nad nami nie przewiodą<pr><slowo_obce>Nad nami nie przewiodą ani ich z to będzie</slowo_obce> --- nam nie narzucą i na to się nie zdobędą.</pr> ani ich z to będzie./
+	Nie tuszęć ja, żebyś ty, ojcze mój łaskawy,/
+	Nie pomniał jeszcze krzywdy i szkód staradawnych<pr><slowo_obce>szkód staradawnych</slowo_obce> --- mowa o dawniejszej wyprawie greckiej pod wodzą Heraklesa, zakończonej zburzeniem Troi i porwaniem Hezjony.</pr>,/
+	Któreś wziął od tych panów i to państwo sławne./
+	Jeszczeć mury na ziemi leżą powalone/
+	I pola do tej doby pustyniami stoją,/
+	Znaki miecza greckiego i okrutnej ręki./
+	A byś też tego dobrze nie chciał sam pamiętać,/
+	Hesyjona pamiętać musi, siostra twoja,/
+	Ojcze, a moja ciotka, która do tej doby/
+	U nich w niewoli żywię, jeśli jeszcze żywię./
+	Tej nam krzywdy, o królu, jedna nie nagrodzi/
+	Helena ani jeden Parys powetuje".
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Tu przestał Aleksander, a szept miedzy ludźmi</wers_akap>/
+	Rozlegał się po sali. Jako więc ku latu/
+	Robotne pszczoły w ulu szemrzą, kiedy wodza/
+	Nowego oglądały, a chęć nastąpiła/
+	Od macior<pr><slowo_obce>Od macior</slowo_obce> --- od matek. Poeta stosuje tu (jak poprzednio w wersie 111: ,,dziatek") zamiennie: używa liczby mnogiej zamiast pojedynczej.</pr><uwaga>???</uwaga> się wynosić i nowe zaczynać/
+	Gospodarstwo, szmer w ulu i rozruch kryjomy:/
+	Taki dźwięk tam natenczas wstał był między ludźmi,/
+	Który skoro ucichnął, Antenor jął mówić:/
+	</strofa>
+	
+	<strofa>
+	<wers_akap>,,Prawdzie długich wywodów, królu, nie potrzeba:</wers_akap>/
+	<begin id="b1188302698309"/><motyw id="m1188302698309">Kobieta, Żona</motyw>Aleksander, w Grecyjej gościem w domu będąc/
+	Człowieka przedniejszego, na gościnne prawa/
+	Nie pomniąc, żonę mu wziął i przywłaszczył sobie./
+	By mu był niewolnicę naliższą przemówił<pr><slowo_obce>przemówił</slowo_obce> --- przeciągnął do siebie, skłonił do opuszczenia domu.</pr>,/
+	Winien by mu był został, cóż kiedy wziął żonę,/
+	Której ani zaniedbać, ani też dochodzić/
+	Dobry, ućciwy człowiek bez wstydu nie może?/
+	Winien mu nie po mału. On, chocia ze wstydem,/
+	Żony się upomina, a ja wrócić radzę,/
+	Abychmy ku zelżeniu niesprawiedliwości/
+	Nie przydali: oboje to przez się nieznośne,/
+	Cóż<pr><slowo_obce>Cóż</slowo_obce> --- cóż dopiero.</pr> pospołu złożone!<end id="e1188302698309"/> <begin id="b1188302781913"/><motyw id="m1188302781913">Konflikt, Małżeństwo, Obywatel</motyw>Toteż niewątpliwa,/
+	Że Grekowie Heleny nie tylko przez posły,/
+	Ale nawet i przez miecz domagać się będą./
+	Niechże się Aleksander tak drogo nie żeni,/
+	Żeby małżeństwo swoje upadkiem ojczyzny/
+	I krwią naszą miał płacić! Jeśli w łaskę dufa/
+	Boginiej swej, niech na to miejsce dwu się boi,/
+	Które dla niej rozgniewał i sądem swym zganił./
+<end id="e1188302781913"/>	Medeą nie za naszych czasów uniesiono./
+	I nie wiem, jeśli nam co do tego. To widzę,/
+	Że tej krzywdy u Greków nikt się do tej doby/
+	Nie domagał; milczeli tego, którym było/
+	Przystojniej o to mówić. Nie wiem, jako słusznie/
+	Swój własny występ cudzą krzywdą barwić chcemy?/
+	To się nas barziej tycze, że za przodków naszych/
+	Grekowie w tym królestwie mieczem wojowali;/
+	Lecz i natenczas, królu (prawda się znać musi)<pr><slowo_obce>prawda się znać musi</slowo_obce> --- prawdę wyznać się musi.</pr>,/
+	Nasza niesprawiedliwość<pr><slowo_obce>Nasza niesprawiedliwość</slowo_obce> --- aluzja do niedotrzymania zobowiązań wobec Heraklesa, któremu Laomedon (ojciec Priama) obiecał rękę córki Hezjony i cudowne konie za uwolnienie kraju od smoka morskiego. Herakles zabił potwora, a gdy nie otrzymał przyrzeczonej nagrody, z pomocą innych Greków zburzył Troję, zabił Laomedonta, a Hezjonę oddał jako niewolnicę jednemu ze swych towarzyszy.</pr> do tego upadku/
+	Nas przywiodła, że się też i dziś lękać muszę,/
+	Aby to sąd tajemny jakiś boży nie był,/
+	Nam prze niesprawiedliwość zawżdy pomstę odnieść/
+	Od Greków. Czego tobie przestrzegać się godzi,/
+	0 królu, a tym barziej, żeś i w pierwszej klęsce/
+	Mało małym nie zginął<pr><slowo_obce>Mało małym nie zginął</slowo_obce> --- Priama przed zemstą Heraklesa uratowała siostra Hezjona.</pr> pokutując za grzech/
+	Ojcowski i postępek mało sprawiedliwy".
+	</strofa>
+	
+	<strofa>
+	<wers_akap>To powiedziawszy milczał. Toż Eneasz mówił,</wers_akap>/
+	Toż Pantus i Tymetes, zgadzał się i Lampon,/
+	I Ukalegon z nimi, ale Iketaon/
+	Coś inszego rozumiał i w te słowa mówił:
+	</strofa>
+	
+	<strofa>
+	<wers_akap>,,Owa, jako nam kolwiek Grekowie zagrają,</wers_akap>/
+	Tak my już skakać musim? Bać się ich nam każą,/
+	A ja, owszem, się lękam. Teraz nam Helenę/
+	Wydać każą, po chwili naszych się żon będą/
+	I dzieci upominać. Nigdy w swojej mierze/
+	Chciwość władze nie stoi; zawżdy, jako powódź,/
+	Pomyka swoich granic nieznacznie, aż potym/
+	Wszytki pola zaleje. Za czasu, panowie,/
+	Umykać rogów trzeba, bo wonczas już próżno/
+	Miotać się, kiedy jarzmo na szyję założą./
+	Sprawiedliwości proszą, a grożą nam wojną:/
+	Daj, chcesz li, alboć wydrę, taka to jest prosto. <pr>taka to jest prosto --- taka to jest ich sprawiedliwość</pr>/
+	Wimenem sprawiedliwość, ale nie z swą hańbą:/
+	Kto ją na mnie wyciska, sowitej nagrody/
+	Ze mnie chce, i korzyści, i zelżenia mego./
+	Dawnyć to grecki tytuł pany się mianować,/
+	A nas, <slowo_obce>barbaros</slowo_obce>, sługi<pr><slowo_obce>A nas, barbaros, sługi</slowo_obce> --- a nas, barbarzyńców, sługami. Iketaon, podobnie jak Parys, kładzie nacisk na niechęć Greków do ludów azjatyckich.</pr>. Ale nie toć jest pan,/
+	Co się w Peloponezie albo w Troi rodził;/
+	Szabla ostra przy boku to pan: ta rozstrzygnie,/
+	Kto komu czołem bić ma. Do tego tam czasu/
+	Równi sobie być musim; ani tego Greczyn/
+	0 sobie niechaj dzierży, żeby tak był groźny,/
+	Jako się sobie sam zda. Jeśli tedy krzywdę/
+	W tym się mieć rozumieją, że Helenę uniósł/
+	Aleksander, niechajże okażą na sobie/
+	Sami naprzód, jako ten gwałt winien nagradzać/
+	Aleksander, ponieważ samiż okazali,/
+	Jako taki gwałt czynić. Aczci Aleksander/
+	Brata przy siestrze nie wziął, jako oni wzięli/
+	Medeą i Absyrta./
+	Bo co Antenor mówi, że nam nic do tego:/
+	Ba, i barzo do tego! Za jednego krzywdę/
+	Oni się wszyscy wzięli, a nas pojedynkiem/
+	Zbierać mają? Nie tuszę; tożci sąsiadowi/
+	Sąsiad w Azyjej<pr><slowo_obce>w Azyjej</slowo_obce> --- Troja leżała w północno-zachodniej części Azji Mniejszej.</pr> winien, co u nich w Europie./
+	Mówiono zawżdy o to<pr><slowo_obce>Mówiono... o to</slowo_obce> --- domagano się tego.</pr> i do końca będą./
+	Co się siostry królewskiej i szkód dawnych tycze,/
+	Więtsza to zasię u mnie, niżby się tu miała/
+	Przypomnieć abo na ten sztych kłaść<pr><slowo_obce>na ten sztych kłaść</slowo_obce> --- kłaść na szalę wagi, porównywać.</pr>: dzierżę o cnej/
+	Krwi trojańskiej, że tego mścić się jeszcze będzie./
+	Teraz zgoła nie radzę Heleny wydawać,/
+	Aż się też oni z nami o Medeą zgodzą".
+	</strofa>
+	
+	<strofa>
+	<wers_akap>To jego słowa były. Potym się już żaden</wers_akap>/
+	Długą rzeczą nie bawił; jeden głos był wszytkich:/
+	,,Tak jako Iketaon"; i tych, co siedzieli,/
+	I tych, co za stołkami stali, głos był jeden:/
+	,,Tak jako Iketaon". Kilkakroć powstawał/
+	Ukalegon chcąc mówić, lecz przed hukiem nie mógł./
+	Marszałkowie, laskami w ziemię coraz bijąc:/
+	,,Posłuchajcie, panowie, Ukalegon mówi"./
+	Nie pomogły nic laski, a nasz Ukalegon/
+	Ukalegontom mówił<pr><slowo_obce>Ukalegon Ukalegontom mówił</slowo_obce> --- uczona gra słów, <slowo_obce>ukalegon</slowo_obce> bowiem po grecku znaczy: <wyroznienie>niedbający</wyroznienie>.</pr>, bo nań nic nie dbali./
+	Tymczasem ktoś zawołał głosem prawie głośnym:/
+	,,Co po tych krasnych mowach<pr><slowo_obce>krasnych mowach</slowo_obce> --- pięknych, por. <slowo_obce>krasomówca</slowo_obce>, <slowo_obce>krasomówstwo</slowo_obce> na oznaczenie pięknej wymowy.</pr><uwaga>przypisy marne, do poprawienia: źle zredagowne, mogą być niezrozumiałe</uwaga>? Rozstąpmy się oto;/
+	Ujźrzemy, gdzie nas więcej"<pr>W ten sposób głosowano w Rzymie.</pr>. Ledwe wyrzekł, a już/
+	Wszyscy na nogach stali i swe miejsca brali./
+	Kiedy się rozstąpili, nie było co równać:/
+	Wszyscy przy Aleksandrze, a tam ich garść była./
+	Prosili potym króla, aby wedle prawa/
+	Postąpił, a za więtszą częścią wyrok podał./
+	Król, niewiele mieszkając: ,,Rad bych był, powiada,/
+	Na zgodę wasze patrzał, lecz iż być nie mogła,/
+	Mnie nie lża, jeno więtszej części naśladować<pr><slowo_obce>więtszej części naśladować</slowo_obce>  --- iść za większością.</pr>./
+	A tak, co z dobrym niechaj będzie pospolitym:/
+	Helena niechaj w Troi zostanie, aż też nam/
+	Grekowie za Medeą nagrodę uczynią".
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Skoro po tym dekrecie po posły posłano,</wers_akap>/
+	A mnie też Aleksander do ciebie wyprawił/
+	Z tym wszytkim, coś słyszała; tuszę, że odprawę/
+	Do tej doby już wzięli posłowie, i twój mąż/
+	W domu cię dawno czeka. A tak nie mieszkajmy!
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>HELENA</naglowek_osoba>
+
+<kwestia>
+	<strofa>Dobrze mówisz: idź ty wprzód, ja za tobą w tropy.</strofa>
+</kwestia>
+
+
+<naglowek_osoba>
+	CHORUS<pr>Zamiast oczekiwanej pieśni chóru, <slowo_obce>stasimonu</slowo_obce>, poeta wprowadza jedynie czterowiersz o charakterze informacyjnym.</pr>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Tej podobno ta powieść g'myśli: mnie bynamniej./
+	I onej, nie wiem, na co ta radość wynidzie./
+	Posłowie, widzę, idą nosy powiesiwszy:/
+	Znać, że nie po swej myśli odprawę odnoszą.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>
+	ULISSES<pe>Początek czwartego <slowo_obce>epeisodion</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	O nierządne królestwo i zginienia bliskie,/
+	Gdzie ani prawa ważą, ani sprawiedliwość/
+	Ma miejsca, ale wszytko złotem kupić trzeba!/
+	Jeden to marnotrawca umiał spraktykować,/
+	Że jego wszeteczeństwa i łotrowskiej sprawy/
+	Od małych aż do wielkich wszyscy jawnie bronią,/
+	Nizacz prawdy nie mając ani końca patrząc,/
+	Do którego rzeczy przyść za ich radą muszą./
+	<begin id="b1188303298446"/><motyw id="m1188303298446">Młodość , Obywatel, Upadek</motyw>Nie rozumieją ludzie ani się w tym czują,/
+	Jaki to wrzód szkodliwy w rzeczypospolitej/
+	Młódź wszeteczna: ci cnocie i wstydowi cenę/
+	Ustawili; przed tymi trudno człowiekiem być/
+	Dobrym; ci domy niszczą, ci państwa ubożą,/
+	A rzekę, że i gubią (Troja, poznasz potym!),/
+	A przykładem zaś swoim jako wielką liczbę/
+	Drugich przy sobie psują. <begin id="b1188303393624"/><motyw id="m1188303393624">Upadek, Żołnierz</motyw>Patrz, jakie orszaki/
+	Darmojadów za nimi, którzy ustawicznym/
+	Próżnowaniem a zbytkiem jako wieprze tyją./<end id="e1188303298446"/>
+	Z tego stada, mniemacie, że się który przyda/
+	Do posługi ojczyzny? Jako ten we zbroi/
+	Wytrwa, któremu czasem i w jedwabiu ciężko?/
+	Jako straż będzie trzymał, a on i w południe/
+	Przesypiać się nauczył? Jako stos wytrzymać/
+	Ma nieprzyjacielowi, który ustawicznym/
+	Pijaństwem zdrowie stracił? Takimi się czując,/
+	A podobno nie czując, na wojnę wołają:/
+	Boże, daj mi z takimi mężmi zawżdy czynić!<end id="e1188303393624"/>
+	</strofa>
+</kwestia>
+
+
+<begin id="b1188303501745"/><motyw id="m1188303501745">Mąż</motyw><naglowek_osoba>MENELAUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Wieczne światło niebieskie i ty, płodna ziemi,/
+	I ty, morze szerokie, wy, wszyscy bogowie,/
+	I wysocy, i niscy<pr><slowo_obce>bogowie i wysocy, i niscy</slowo_obce> --- tj. bogowie niebiańscy, olimpijscy i bogowie podziemni, Hadesu.</pr>, świadki mi dziś bądźcie,/
+	Żem rzeczy sprawiedliwej od Trojanów żądał,/
+	Abych był krzywdy wielkiej i zelżenia swego/
+	Nagrodę jaką wziąć mógł; nicem nie otrzymał,/
+	Jeno śmiech ludzki, a żal serdeczny tym więtszy./
+	Na was tedy krzywdę swą i żałość niezmierną/
+	Kładę<pr><slowo_obce>Na was... kładę</slowo_obce> --- wam polecam.</pr>, możni bogowie; jeśli sercem czystym/
+	Tę prośbę do was czynię, pomścicie zelżenia/
+	I mej krzywdy tak jasnej: dajcie mi na gardle/
+	Usieść Aleksandrowym i miecz krwią napoić/
+	Człowieka bezecnego, ponieważ i on mej/
+	Zelżywości dawno syt i dziś się ją karmi.
+	</strofa><end id="e1188303501745"/>
+</kwestia>
+
+
+<naglowek_osoba>
+	CHORUS<pe>Początek trzeciego <slowo_obce>stasimon</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	O białoskrzydła<pr><slowo_obce>białoskrzydła</slowo_obce> --- neologizm poety na wzór greckiego <slowo_obce>leu-kopteros</slowo_obce>.</pr> morska pławaczko,/
+	Wychowanico Idy <pr>Idy --- góra Ida pod Troją, gdzie rosły buki, z których zbudowano łódź Parysa</pr> wysokiej,/
+	Łodzi bukowa, któraś gładkiej/
+	Twarzy pasterza Pryjamczyka/
+	Mokrymi słonych wód ścieżkami<pr><slowo_obce>Mokrymi słonych wód ścieżkami</slowo_obce> --- przekładnia, zamiast: mokrymi ścieżkami słonych wód.</pr>/
+	Do przezroczystych Eurotowych/
+	Brodów<pr><slowo_obce>Eurotowych brodów</slowo_obce> --- żaglowiec Parysa zawinął do ujścia rzeki Eurotas w Lakonii na Peloponezie.</pr> nosiła!/
+	Coś to zołwicom<pe><slowo_obce>zołwicom</slowo_obce> --- dziś: szwagierkom; chodzi o relację więzów rodzinnych sióstr Aleksandra w stosunku do Heleny jako jego żony</pe> za bratową,/
+	Córom szlachetnym Pryjamowym,/
+	Cnej Poliksenie i Kasandrze/
+	Wieszczej<pr>Cnej Poliksenie i Kasandrze wieszczej --- córkom Priama; występuje tu <slowo_obce>krzyżownik</slowo_obce>, układ krzyżowy <wyroznienie>abba</wyroznienie>: przymiotnik raz poprzedza, drugi raz następuje po rzeczowniku.</pr>, przyniosła?/
+	Za którą oto w tropy prosto,/
+	Jako za zbiegłą niewolnicą,/
+	Prędka pogonią przybieżała./
+	</strofa>
+	
+	<strofa>
+	Toli on sławny upominek/
+	Albo pamiętne, którym luby/
+	Sędziemu wyrok ze wszech Wenus/
+	Bogiń piękniejsza<pr><slowo_obce>ze wszech Wenus bogiń piękniejsza</slowo_obce> --- przekładnia, zamiast: ze wszech bogiń Wenus piękniejsza.</pr> zapłaciła,/
+	Kiedy na Idzie stokorodnej/
+	Śmierci podległy nieśmiertelne/
+	Uznawca twarzy rozeznawał?<pr><slowo_obce>Śmierci podległy nieśmiertelne uznawca twarzy rozeznawał</slowo_obce> --- przekładnia, zamiast: śmierci podległy uznawca nieśmiertelne twarzy rozeznawał; do przekładni dochodzi gra wyrazów: ,,śmierci podległy" i ,,nieśmiertelne".</pr>/
+	Swar był początkiem i niezgoda/
+	Twego małżeństwa, Pryjamicze./
+	Nie śmiem źle tuszyć, nie śmiem, ale/
+	Ledwe nie takiż koniec będzie./
+	</strofa>
+	
+	<strofa>
+	<wers_akap>Niechajże się ja, można Cypri<pr>Cypri --- Cypryda, przydomek Wenus.</pr>,</wers_akap>/
+	Ninacz cudzego nie zapatrzam!/
+	Niech towarzysza życzliwego,/
+	Jednemu łożu przyjaciela,/
+	Mam z łaski twojej; inszy, więcej/
+	Chcą li, niech proszą!/
+	Oczy łakome siła ludzi/
+	Zawiodły, lecz kto w krygi żądzą/
+	Mógł ująć<pr><slowo_obce>w krygi... ująć</slowo_obce> --- okiełznać, opanować.</pr>, w długim bezpieczeństwie/
+	Dni swych używie. Przyjdą, przyjdą/
+	Niedawno czasy, że rozbójcę/
+	Rozbójca znidzie; ten mu słodki/
+	Sen z oczu zetrze i bezpieczne/
+	Serce zatrwoży, kiedy trąby/
+	Ogromne zagrzmią, a pod mury/
+	Nieprzyjacielskie staną szańce.
+	</strofa>
+</kwestia>
+
+
+<didaskalia><osoba>Antenor</osoba>, <osoba>Priamus</osoba></didaskalia>
+
+
+<naglowek_osoba>
+	ANTENOR<pe>Początek piątego <slowo_obce>epeisodion</slowo_obce>.</pe>
+</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Iż moja wierna rada u ciebie, o wielki/
+	Królu, ważna nie była, żebyś był Helenę/
+	Grekom wydać rozkazał, a tę niewątpliwą/
+	Wielkiej wojny pochodnią co napręcej zgasił,/
+	Teraz, co potym idzie<pr><slowo_obce>co potym idzie</slowo_obce> --- jako następstwo tej sprawy.</pr>, w czas cię upominam,/
+	Abyś czuł o potrzebie i o pewnej wojnie,/
+	Tak pewnej, jako mię tu dziś przed sobą widzisz./
+	Słyszałeś, jako cię dziś posłowie żegnali/
+	I nas wszytkich przy tobie. Pograniczni piszą/
+	Starostowie<pr><slowo_obce>Pograniczni starostowie</slowo_obce> --- dowódcy oddziałów strzegących granic.</pr>, że greckie wojska się ściągają/
+	Do Aulidy<pr>Au1ida --- port w Beoeji.</pr>; w tym wątpić nie potrzeba, że ci/
+	Do nas pójdą: inaczej ani by tu byli/
+	Posłów swych posyłali, ani tak surowie/
+	0 swą krzywdę mówili. A tak nie mieszkając,/
+	Póki brzegu morskiego ostatka nie stracim,/
+	Porty naprzód i zamki pograniczne spiżą/
+	I ludźmi dobrze opatrz<pr><slowo_obce>Porty... i zamki... opatrz</slowo_obce> --- rady te pozwalają odtworzyć stosunki polskie.</pr><uwaga>???</uwaga>; hołdownym książętom/
+	Rozkaż być pogotowiu; żołnierzom przypowiedz/
+	Służbę; szpiegi rozeszli; straż miej i na morzu,/
+	I na ziemi, aby cię łacni niegotowym/
+	Grekowie nie zastali. To jest rada moja.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PRIAMUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Jakobyś już na oko, dobry Antenorze,/
+	Nieprzyjaciela widział, tak się, widzę, boisz.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	O królu, teraz się bać lepiej, bo za taką/
+	Bojaźnią i opatrzność, i gotowość roście<pr><slowo_obce>i opatrzność, i gotowość roście</slowo_obce> --- ostrożność i gotowość rośnie.</pr>./
+	Wonczas już próżny rozmysł, bo już abo się bić,/
+	Abo uciekać trzeba: trzeciego nic nie masz.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PRIAMUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	A ja, owszem, na dobrej pieczy wszytko mieć chcę,/
+	Aby nam do tak nagłych ucieczek nie przyszło.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Daj to Boże! <begin id="b1188304824746"/><motyw id="m1188304824746">Kobieta, Wizja</motyw>A to zaś co za białagłowa<pr><slowo_obce>co za białagłowa</slowo_obce> --- Antenor zna oczywiście Kasandrę; chodzi tu jednak o przedstawienie jej widzom, jak w teatrze greckim (nie znano tam afisza, zastępowano go więc dialogiem, podającym imię wprowadzanego na scenę bohatera).</pr>/
+	Z włosy roztarganymi i twarzy tak bladej?/
+	Drżą na niej wszytki członki, piersiami pracuje,/
+	Oczy wywraca, głową kręci: to chce mówić,/
+	To zamilknie.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PRIAMUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	<wers_cd>Moja to nieszczęśliwa córa,</wers_cd>/
+	Kasandra; widzę, że ją duch Apollinowy<pr><slowo_obce>duch Apo11inowy</slowo_obce> --- Kasamdra otrzymała dar proroczy od zakochanego w niej Apollina (boga proroctw), gdy jednak odrzuciła jego miłość, sprawił, że nikt nie wierzył jej przepowiedniom.</pr>/
+	Zwykły nagarnął; nie lża, jeno jej posłuchać.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>KASANDRA</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Po co mię próżno, srogi Apollo, trapisz,/
+	Który, wieszczego ducha dawszy, nie dałeś/
+	Wagi w słowiech, ale me wszytki proroctwa/
+	Na wiatr idą nie mając u ludzi więcej/
+	Wiary nad baśni próżne i sny znikome?/
+	Komu serce spętane albo pamięci/
+	Zguba mojej pomoże? Komu z ust moich/
+	Duch nie mój<pr><slowo_obce>Duch nie mój</slowo_obce> --- Apollo; jego również oznaczają słowa:,,nieznośny gość".</pr> użyteczen i zmysły wszytki/
+	Ciężkim, nieznośnym gościem opanowane?/
+	Próżno się odejmuję, gwałt mi się dzieje;/
+	Nie władne dalej sobą, nie jestem swoja./
+	Ale gdzieżem, prze Boga? Światła nie widzę,/
+	Noc mi jakaś przed oczy nagła upadła./
+	Owóż mamy dwie słońcy, owóż dwie Troi,/
+	Owóż i łani morzem głębokim płynie./
+	Nieszczęśliwa to łani, złej wróżki łani<pr><slowo_obce>złej wróżki łani</slowo_obce> --- złej wróżby, złowróżbna; łania oznacza tu Helenę.</pr>./
+	Brońcie brzegów, pasterze, nie dopuszczajcie/
+	Tej niezdarzonej goście nigdziej do ziemie!/
+	Nieszczęśliwa to ziemia i brzeg nieszczęsny,/
+	Gdzie ta łani wypłynie; nieszczęsna knieja,/
+	Gdzie wnidzie i gdzie gładki swój bok położy./
+	Wszytki stopy, wszytki jej łożyska muszą/
+	Krwią opłynąć; upadek, pożogę, pustki/
+	Z sobą niesie. O wdzięczna ojczyzno moja,/
+	0 mury, nieśmiertelnych ręku roboto<pr><slowo_obce>nieśmiertelnych ręku roboto</slowo_obce> --- mury Troi wznieśli bogowie Apollo i Posejdon (Neptun).</pr>!/
+	Jaki koniec was czeka? Ciebie, mój bracie,/
+	Stróżu ojczyzny, domu zacna podporo,/
+	Wkoło murów trojańskich tesalskie konie/
+	Włóczyć grożą, a twoje oziębłe ciało/
+	Będzie li chciał nieszczęsny ociec pochować,/
+	Musi je u rozbójce złotem kupować<pr>Przepowiednia śmierci Hektora.</pr>./
+	Nieprzepłacony duchu, z tobą pospołu/
+	I ojczyzna umarła: jednaż mogiła/
+	Oboje was przykryje. Lecz i ty, srogi/
+	Trupokupcze<pr>Trupokupcze (gr. <slowo_obce>nekropernas</slowo_obce>) --- Achilles, zabójca Hektora, za okup wydał zwłoki syna Priamowi. Zginął zraniony w piętę strzałą Parysa. Pomścił go syn Neoptolemos (Pyrrus), który po upadku Troi zamordował Priama chroniącego się w świątyni.</pr>, niedawno i sam polężesz,/
+	Strzałą niemężnej ręki prędką objeżdżon./
+	Cóż potym? Kłoda leży, a ze pnia przedsię/
+	Nowa rózga<pr><slowo_obce>Nowa rózga</slowo_obce> --- syn Achillesa, Neoptolemos.</pr> wyrosła i nad nadzieję/
+	Prędko ku górze idzie. A to co za koń<pr><slowo_obce>koń</slowo_obce> --- drewniany koń z ukrytymi wewnątrz Grekami.</pr>/
+	Tak wielki na poboju sam jeden stoi?/
+	Nie wódźcie go do stajniej, radzę, nie wódźcie:/
+	Bije ten koń i kasze; spalcie go raczej,/
+	Jeśli sami od niego zgorzeć nie chcecie./
+	Czujcie, stróże: noc idzie, noc podejźrzana./
+	Wielki ogień ma powstać, tak wielki ogień,/
+	Że wszytko jako w biały dzień widać będzie,/
+	Ale nazajutrz zaś nic widać nie będzie./
+	Wtenczas, ojcze, ani już bogom swym dufaj,/
+	Ani się poświęconych ołtarzów łapaj:/
+	Okrutnego lwa szczenię za tobą bieży,/
+	Które cię paznoktami przejmie ostrymi/
+	I krwią twoją swe gardło głodne nasyci/
+	Syny wszytki pobiją, dziewki w niewolą/
+	Zabiorą; drugie<pr><slowo_obce>drugie</slowo_obce> --- Foliksenę, narzeczoną Achillesa, zabito na jego grobie.</pr> g'woli trupom umarłym/
+	Na ich grobiech bić będą. Matko<pr><slowo_obce>Matko</slowo_obce> --- Hekuba, żona Priama, po upadku Troi i śmierci dzieci zamieniona została w sukę.</pr>, ty dziatek/
+	Swoich płakać nie będziesz, ale wyć będziesz!
+	</strofa><end id="e1188304824746"/>
+</kwestia>
+
+
+<naglowek_osoba>CHORUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Rzućmy się co napręcej, a na pokój gdzie/
+	Wyprowadźmy tę pannę upracowaną!
+	</strofa>
+</kwestia>
+
+
+<didaskalia><osoba>Antenor</osoba>, <osoba>Priamus</osoba></didaskalia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Te słowa, królu, nie są ku wyrozumieniu/
+	Nazbyt trudne, a zgoła tobie i ojczyźnie/
+	Upad opowiadają; prze Boga cię proszę,/
+	Nie waż ich sobie lekce ani miej za baśni!
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PRIAMUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Jeszcze tego nieprawie ta przeciwna wiedma/
+	W mię wmówiła, żebych się miał bać; ale przedsię/
+	Postraszyła mię nieco, zwłaszcza że mi przyszedł/
+	Sen na pamięć żony mej; bo gdy z tym złym synem,/
+	Aleksandrem, chodziła, mało przed zlężeniem/
+	Śniło się jej już na dniu, że miasto dziecięcia/
+	Pochodnią urodziła.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	<wers_cd>I jam też to, królu,</wers_cd>/
+	Jeszcze natenczas wiedział i pomnie, jako to/
+	Wieszczkowie wykładali, że to dziecię miało/
+	Upad ojczyźnie przynieść; czego, widzę, blisko.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>PRIAMUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Dobrze to pomnisz, ale i jam był rozkazał/
+	Grzechu tego nie żywić<pr><slowo_obce>Grzechu tego nie żywić</slowo_obce> --- przeklętego dziecka nie zostawić przy życiu.</pr>; dawno to na puszczy/
+	Wilcy mieli rozdrapać i kości nieszczęsne/
+	Po pustych górach roznieść.
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ANTENOR</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	A lepiej było, niżli nam przeń wszytkim zginąć./
+	Co za więźnia to mamy? Ubiór to jest grecki.
+	</strofa>
+</kwestia>
+
+
+<didaskalia><osoba>Rotmistrz</osoba>, <osoba>Więzień</osoba></didaskalia>
+
+<begin id="b1188304742645"/><motyw id="m1188304742645">Wojna</motyw>
+<naglowek_osoba>ROTMISTRZ</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Takci, panowie; wy tu radzicie, a w polu/
+	Grekowie nas wojują. Wczora o południu/
+	Pięć galer ich przypadło na trojańskie brzegi./
+	Ludzi wprawdzie nie brali ani też palili,/
+	Ale cokolwiek było w polu bydła, wzięli./
+	Jako nas tam niewielki natenczas był poczet,/
+	Kusiwszy się kilkakroć o nie<pr><slowo_obce>Kusiwszy się kilkakroć o nie</slowo_obce> --- spróbowawszy ich kilka razy atakować.</pr>, musielichmy/
+	Na ostatek dać pokój; kilka głów jest przedsię/
+	Zabitych, ten sam jeden tylko poimany;/
+	Na próbie<pr><slowo_obce>Na próbie</slowo_obce> --- na śledztwie, na torturach.</pr> to powiedział, że greckiego wojska/
+	Tysiąc galer na kotwiach<pr><slowo_obce>kotwiach</slowo_obce> --- poprawiony przez Nehringa błąd druku: kotwicach.</pr><uwaga>?</uwaga> pogotowiu stoi/
+	W Aulidzie, którzy tylko na posły czekają./
+	A ci jeśli Heleny nazad nie przyniosą/
+	(Jakoż widzę, że bez niej tak na morze wsiedli),/
+	Wszytko się wojsko tedyż ma ruszyć i prosto/
+	Ku Troi żagle podać; wszak tak?<end id="e1188304742645"/>
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>WIĘZIEŃ</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	<wers_cd>Niepochybnie.</wers_cd>
+	</strofa>
+</kwestia>
+
+
+<naglowek_osoba>ROTMISTRZ</naglowek_osoba>
+
+<kwestia><strofa>Hetmanem Agamemnon?</strofa></kwestia>
+
+
+<naglowek_osoba>Więzień</naglowek_osoba>
+
+<kwestia><strofa><wers_cd>Ten, brat Menelaów.</wers_cd></strofa></kwestia>
+
+
+<naglowek_osoba>PRIAMUS</naglowek_osoba>
+
+<kwestia>
+	<strofa>
+	Każ więźnia tego schować i opatrzyć dobrze!/
+	To więc już, Antenorze, insza niż proroctwa/
+	Albo sny białogłowskie; ale wszyscy przedsię/
+	W jeden cel przed się biją. Jutro co naraniej/
+	W radę wnidźmy, a stamtąd już ani wychodźmy,/
+	Aż obronę uradzim.
+	</strofa>
+</kwestia>
+
+
+ANTENOR
+
+<kwestia>
+	<strofa>
+	<wers_cd>Baczę, że jej trzeba,</wers_cd>/
+	Acz mi to słowa przykre i coś nie bez wróżki;/
+	Na każdy rok nam każą radzić o obronie;/
+	Ba, radźmy też o wojnie, nie wszytko się brońmy:/
+	Radźmy, jako kogo bić; lepiej, niż go czekać<pr>Zdanie to, niedostosowane do sytuacji w dramacie, jest wyrazem stosunków polskich i na nim głównie opierają się poglądy o tendencji politycznej Odprawy.</pr>!
+	</strofa>
+</kwestia>
+
+
+<extra><!--</tekst_glowny>--></extra>
+
+
+</dramat_wierszowany_l>
+
+
+</utwor>

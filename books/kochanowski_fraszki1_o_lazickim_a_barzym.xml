@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/O_%C5%81azickim_a_Barzym">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
 <dc:title xml:lang="pl">O Łazickim a Barzym</dc:title>
@@ -16,7 +17,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-pierwsze-o-lazickim-a-barzym</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
 <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
@@ -40,9 +41,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1218737703757' /><motyw id='m1218737703757'>Gospodarz, Gość, Mąż, Żona</motyw>Łazićki z Barzym, gospodarzu miły,/
+<strofa><begin id="b1218737703757"/><motyw id="m1218737703757">Gospodarz, Gość, Mąż, Żona</motyw>Łazićki z Barzym, gospodarzu miły,/
 Jesliś nieświadom, jakowej są siły,/
 Chciej same tylko uważyć imiona,/
-A masz li rozum, niech spać idzie żona!<end id='e1218737703757' /></strofa>
+A masz li rozum, niech spać idzie żona!<end id="e1218737703757"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Niestatek_1">
 <dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
 <dc:title xml:lang="pl">Niestatek (Oczy są ogień, czoło jest zwierciadłem...)</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Epigramat</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl"></dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/niestatek-oczy-sa-ogien-czolo-jest-zwierciadlem</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
 <dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Andrzej Morsztyn zm. 1693</dc:rights>
@@ -33,13 +34,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189002632586' /><motyw id='m1189002632586'>Kobieta, Kochanek</motyw>Oczy są ogień, czoło jest zwierciadłem,/
+<strofa><begin id="b1189002632586"/><motyw id="m1189002632586">Kobieta, Kochanek</motyw>Oczy są ogień, czoło jest zwierciadłem,/
 <wers_wciety>Włos złotem, perłą ząb, płeć mlekiem zsiadłem,</wers_wciety>/
 Usta koralem, purpurą jagody,/
 <wers_wciety>Póki mi, panno, dotrzymujesz zgody.</wers_wciety>/
 Jak się zwadzimy --- jagody są trądem,/
 <wers_wciety>Usta czeluścią, płeć blejwasem bladem,</wers_wciety>/
 Ząb szkapią kością, włosy pajęczyną,/
-<wers_wciety>Czoło maglownią, a oczy perzyną.</wers_wciety><end id='e1189002632586' /></strofa>
+<wers_wciety>Czoło maglownią, a oczy perzyną.</wers_wciety><end id="e1189002632586"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

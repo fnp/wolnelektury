@@ -1,7 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
 <utwor>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasi%C5%84ski/Nie-Boska_komedia">
 <dc:creator xml:lang="pl">Krasiński, Zygmunt</dc:creator>
 <dc:title xml:lang="pl">Nie-Boska komedia</dc:title>
@@ -12,7 +12,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Dramat</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Dramat romantyczny</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Nie-boska+komedia</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/nie-boska-komedia</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=592</dc:source.URL>
 <dc:source xml:lang="pl">Krasiński, Zygmunt (1812-1859), Nie-Boska komedia, Zakład Narodowy im. Ossolińskich, wyd. 8 zmien., Wrocław, 1965</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Zygmunt Krasiński zm. 1859</dc:rights>
@@ -61,70 +61,70 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <naglowek_akt>CZĘŚĆ PIERWSZA<pr>Epicko---liryczne partie <tytul_dziela>Nie---Boskiej Komedii</tytul_dziela> porównywane były często przez badaczy utworu do uwertur muzycznych. Pełnią one jakby funkcję komentarza do części dramatycznych. Cytowany już A. Jung pisał: ,,[...] jak powabnie rzuca poeta między opadającą a wznoszącą się kurtyną ciągle nową harmonię tonów, która wprowadza nas w to, co nadchodzi. Te poetyczne intermezza godne są najwyższej uwagi. Ich istota jest całkowicie muzycznej natury, a za każdym razem stanowią uwerturę do tego, co ma nastąpić" (s. 25--26).</pr></naglowek_akt>
 
 
-<akap><begin id='b1187696181773' /><motyw id='m1187696181773'>Poeta, Poezja</motyw>Gwiazdy wokoło twojej głowy --- pod twoimi nogi fale morza --- na falach morza tęcza przed tobą pędzi i rozdziela mgły --- co ujrzysz, jest twoim --- brzegi, miasta i ludzie tobie się przynależą --- niebo jest twoim --- chwale twojej niby nic nie zrówna. ---</akap>
+<akap><begin id="b1187696181773"/><motyw id="m1187696181773">Poeta, Poezja</motyw>Gwiazdy wokoło twojej głowy --- pod twoimi nogi fale morza --- na falach morza tęcza przed tobą pędzi i rozdziela mgły --- co ujrzysz, jest twoim --- brzegi, miasta i ludzie tobie się przynależą --- niebo jest twoim --- chwale twojej niby nic nie zrówna. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>Ty grasz cudzym uszom niepojęte rozkosze. --- Splatasz serca i rozwiązujesz gdyby wianek, igraszkę palców twoich --- łzy wyciskasz --- suszysz je uśmiechem i na nowo uśmiech strącasz z ust na chwilę --- na chwil kilka --- czasem na wieki. --- Ale sam co czujesz? --- ale sam co tworzysz? --- co myślisz? --- Przez ciebie płynie strumień piękności, ale ty nie jesteś pięknością. --- Biada ci --- biada! --- Dziecię, co płacze na łonie mamki --- kwiat polny, co nie wie o woniach swoich, więcej ma zasługi przed Panem od ciebie. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>Skądżeś powstał, marny cieniu, który znać o świetle dajesz, a światła nie znasz, nie widziałeś, nie obaczysz? Kto cię stworzył w gniewie lub w ironii? --- Kto ci dał życie nikczemne, tak zwodnicze, że potrafisz udać Anioła chwilą, nim zagrząźniesz w błoto, nim jak płaz pójdziesz czołgać i zadusić się mułem? --- Tobie i niewieście jeden jest początek<pr>Zgodne to z poglądem Krasińskiego wyrażonym w liście do Reeve'a, że kobiety to istoty ,,zupełnie ziemskie", mające jednak zdolność ,,do stania się aniołami w chwili jednej" (list z 5 II 1833).</pr> ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>Ale i ty cierpisz, choć twoja boleść nic nie utworzy, na nic się nie zda. --- Ostatniego nędzarza jęk policzon<pe>Jest to bardzo charakterystyczna dla Krasińskiego skrócona forma --- policzon zamiast: policzony; zbawion zamiast: zbawiony itp.</pe> między tony harf niebieskich. --- Twoje rozpacze i westchnienia opadają na dół i Szatan je zbiera, dodaje w radości do swoich kłamstw i złudzeń --- a Pan je kiedyś zaprzeczy, jako one zaprzeczyły Pana. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>Nie przeto wyrzekam na ciebie, Poezjo, matko Piękności i Zbawienia. --- Ten tylko nieszczęśliwy<pr>Nieszczęśliwym jest poeta, który dostrzega obiektywnie istniejącą poezję i odtwarza ją w sferze materialnej, a więc takiej, która musi ulec zagładzie. Błogosławionym zaś jest ten poeta, którego samo życie jest poezją.</pr>, kto na światach poczętych, na światach, mających zginąć, musi wspominać lub przeczuwać ciebie --- bo jedno tych gubisz, którzy się poświęcili tobie, którzy się stali żywymi głosami twej chwały. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap>Błogosławiony ten, w którym zamieszkałaś, jak Bóg zamieszkał w świecie, niewidziany, niesłyszany, w każdej części jego okazały, wielki, Pan, przed którym się uniżają stworzenia i mówią: ,,On jest tutaj". --- Taki cię będzie nosił gdyby gwiazdę na czole swoim<pr>Rozważania zawarte w tym wstępie do Części I oddziałały wyraźnie na Słowackiego, który w <tytul_dziela>Beniowskim</tytul_dziela> przeciwstawienie poezji---sztuki i poezji---życia ujął w znane, wersety: ,,[...] Roję / Śnię, tworzę; harfy używam lub bicza / I to jest moja poetyczna droga.--- / Lecz z mego życia poemat --- dla Boga" (III, 341--344). W <tytul_dziela>Odpowiedzi na Psalmy przyszłości pisał</tytul_dziela>: ,,Jam spróbował na mej głowie / Na kształt perły kałakuckiej / Nosić gwiazdę myśli ludzkiej / I z tą gwiazdą żyć surowie" --- jest to według Kleinera aluzja do obrazu owego ,,błogosławionego", który poezję nosi na czole ,,niby gwiazdę". Problem jedności poezji i życia nurtował świadomość romantycznego pokolenia. Kleiner stwierdza w przypisie: ,,Mickiewicz przecież zerwie z poezją, by życie w poemat zmienić". Przytacza też w tym miejscu, rozważania romantyków niemieckich, Z. Wernera i Justinusa Kernera. Ten ostatni twierdził, że ,,prawdziwa poezja milczy tak jak ból prawdziwy".</pr>, a nie oddzieli się od twej miłości przepaścią słowa. --- On będzie kochał ludzi i wystąpi mężem pośród braci swoich. --- A kto cię nie dochowa, kto zdradzi za wcześnie i wyda na marną rozkosz ludziom, temu sypniesz kilka kwiatów na głowę i odwrócisz się, a on zwiędłymi się bawi i grobowy wieniec splata sobie przez całe życie. --- Temu i niewieście jeden jest początek.<end id='e1187696181773' /></akap>
-
-
-
-
-<sekcja_swiatlo />
-<sekcja_swiatlo />
+<akap>Błogosławiony ten, w którym zamieszkałaś, jak Bóg zamieszkał w świecie, niewidziany, niesłyszany, w każdej części jego okazały, wielki, Pan, przed którym się uniżają stworzenia i mówią: ,,On jest tutaj". --- Taki cię będzie nosił gdyby gwiazdę na czole swoim<pr>Rozważania zawarte w tym wstępie do Części I oddziałały wyraźnie na Słowackiego, który w <tytul_dziela>Beniowskim</tytul_dziela> przeciwstawienie poezji---sztuki i poezji---życia ujął w znane, wersety: ,,[...] Roję / Śnię, tworzę; harfy używam lub bicza / I to jest moja poetyczna droga.--- / Lecz z mego życia poemat --- dla Boga" (III, 341--344). W <tytul_dziela>Odpowiedzi na Psalmy przyszłości pisał</tytul_dziela>: ,,Jam spróbował na mej głowie / Na kształt perły kałakuckiej / Nosić gwiazdę myśli ludzkiej / I z tą gwiazdą żyć surowie" --- jest to według Kleinera aluzja do obrazu owego ,,błogosławionego", który poezję nosi na czole ,,niby gwiazdę". Problem jedności poezji i życia nurtował świadomość romantycznego pokolenia. Kleiner stwierdza w przypisie: ,,Mickiewicz przecież zerwie z poezją, by życie w poemat zmienić". Przytacza też w tym miejscu, rozważania romantyków niemieckich, Z. Wernera i Justinusa Kernera. Ten ostatni twierdził, że ,,prawdziwa poezja milczy tak jak ból prawdziwy".</pr>, a nie oddzieli się od twej miłości przepaścią słowa. --- On będzie kochał ludzi i wystąpi mężem pośród braci swoich. --- A kto cię nie dochowa, kto zdradzi za wcześnie i wyda na marną rozkosz ludziom, temu sypniesz kilka kwiatów na głowę i odwrócisz się, a on zwiędłymi się bawi i grobowy wieniec splata sobie przez całe życie. --- Temu i niewieście jeden jest początek.<end id="e1187696181773"/></akap>
 
 
 
-<naglowek_osoba><begin id='b1187696850679' /><motyw id='m1187696850679'>Anioł, Małżeństwo</motyw>ANIOŁ STRÓŻ<pr>Nad słowami Anioła Stróża w wyd. I i II znajduje, się epigraf: ,,<slowo_obce>De toutes les bouffonneries la plus sérieuse est le mariage</slowo_obce>". <tytul_dziela>Figaro</tytul_dziela>. ("Ze wszystkich błazeństw najpoważniejszym jest małżeństwo". Beaumarchais, <tytul_dziela>Wesele Figara</tytul_dziela>).</pr></naglowek_osoba>
+
+<sekcja_swiatlo/>
+<sekcja_swiatlo/>
+
+
+
+<naglowek_osoba><begin id="b1187696850679"/><motyw id="m1187696850679">Anioł, Małżeństwo</motyw>ANIOŁ STRÓŻ<pr>Nad słowami Anioła Stróża w wyd. I i II znajduje, się epigraf: ,,<slowo_obce>De toutes les bouffonneries la plus sérieuse est le mariage</slowo_obce>". <tytul_dziela>Figaro</tytul_dziela>. ("Ze wszystkich błazeństw najpoważniejszym jest małżeństwo". Beaumarchais, <tytul_dziela>Wesele Figara</tytul_dziela>).</pr></naglowek_osoba>
 	<kwestia>
 		<akap>Pokój ludziom dobrej woli --- błogosławiony pośród stworzeń, kto ma serce<pr><tytul_dziela>Nie--Boska Komedia</tytul_dziela> została uznana przez Kleinera za dramat ,,o braku serca". Choć w tej formule nie mieści się cała skomplikowana problematyka dramatu, niewątpliwie w utworze, któremu autor chciał nadać charakter moralitetu chrześcijańskiego, operowanie wskazaniami etyki chrześcijańskiej z jej podstawowym nakazem miłości Boga i bliźniego --- nabiera szczególnej wagi.</pr> --- on jeszcze zbawion być może. --- Żono dobra i skromna, zjaw się dla niego --- i dziecię niechaj się urodzi w domu waszym. ---</akap>
 	
-		<didaskalia>przelatuje<end id='e1187696850679' /></didaskalia>
+		<didaskalia>przelatuje<end id="e1187696850679"/></didaskalia>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187696962047' /><motyw id='m1187696962047'>Szatan</motyw>CHÓR ZŁYCH DUCHÓW</naglowek_osoba>
+<naglowek_osoba><begin id="b1187696962047"/><motyw id="m1187696962047">Szatan</motyw>CHÓR ZŁYCH DUCHÓW</naglowek_osoba>
 	<kwestia>
 		<akap>W drogę, w drogę, widma, lećcie ku niemu! --- Ty naprzód, ty na czele, cieniu nałożnicy, umarłej wczoraj, odświeżony w mgle i ubrany w kwiaty, dziewico, kochanko poety, naprzód. ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
-		<akap>W drogę i ty, sławo, stary orle wypchany w piekle, zdjęty z palu, kędy cię strzelec zawiesił w jesieni --- leć i roztocz skrzydła, wielkie, białe od słońca, nad głową poety. ---Z naszych sklepów wynidź, spróchniały obrazie Edenu<pr><slowo_obce>Eden</slowo_obce> (hebr.) --- raj.</pr>, dzieło Belzebuba<pr><slowo_obce>Belzebub</slowo_obce> (z hebr.) --- w <tytul_dziela>Nowym Testamencie</tytul_dziela> pan piekieł i przywódca złych duchów. W utworze Krasińskiego ma on być twórcą ,,spróchniałego obrazu" raju, który to obraz --- niby dekorację teatralną --- złe duchy przechowują w sklepach, czyli podziemiach (staropolskie: <slowo_obce>sklep</slowo_obce> --- piwnica, loch, podziemie). Wokół interpretacji obrazu Edenu rozwinęła się polemika między A. Łuckim a Z. Niemojewską--Gruszczyńską (A. Łucki, <tytul_dziela>Obraz Edenu w <tytul_dziela typ="1">Nie--Boskiej Komedii</tytul_dziela></tytul_dziela>, ,,Ruch literacki", nr 3, s.65--67; Z. Niemojewska---Gruszczyńska, <tytul_dziela>W sprawie obrazu Edenu w <tytul_dziela typ="1">Nie--Boskiej Komedii</tytul_dziela></tytul_dziela>, tamże, nr 5, s. 133--135; A. Łucki, <tytul_dziela>Jeszcze w sprawie obrazu Edenu w <tytul_dziela typ="1">Nie--Boskiej Komedii</tytul_dziela></tytul_dziela>, tamże, nr 6, s.191--192). Kleiner sądzi, że obraz Edenu to przyroda ,,zespolona z jakimiś utopijnymi marzeniami", ,,że plan pierwotny był odmienny", przyroda ,,miała być narzędziem szatana", kuszącego wyobraźnię poety. Za tą interpretacją idzie też wyd. Libery i Sawrymowicza. Według M. Janion interpretacja Edenu jako jednej z trzech wizji---kuszeń może być dwojaka. Po pierwsze można uznać, że Eden stanowi tu synonim natury, tak jak rozumieli ją romantycy: to raj utracony, stan naturalnej szczęśliwości, przeciwieństwo życia w cywilizacji, prosty i harmonijny żywot. Ale można rozumieć ów symboliczny Eden jako oświeceniowy ,,stan naturalny" człowieka związany z filozoficzną utopią XVIII--wiecznych racjonalistów. Wtedy pokusę szatańską łączyć należy z obrazem przyszłego szczęścia ludzkości, jaką roztacza Pankracy w rozmowie z hrabią Henrykiem.</pr> --- dziury zalepiem i rozwiedziemy pokostem --- a potem, płótno czarodziejskie, zwiń się w chmurę i leć do poety --- wnet się rozwiąż naokoło niego, opasz go skałami i wodami, na przemian nocą i dniem. --- Matko naturo, otocz poetę!<end id='e1187696962047' /></akap>
+		<akap>W drogę i ty, sławo, stary orle wypchany w piekle, zdjęty z palu, kędy cię strzelec zawiesił w jesieni --- leć i roztocz skrzydła, wielkie, białe od słońca, nad głową poety. ---Z naszych sklepów wynidź, spróchniały obrazie Edenu<pr><slowo_obce>Eden</slowo_obce> (hebr.) --- raj.</pr>, dzieło Belzebuba<pr><slowo_obce>Belzebub</slowo_obce> (z hebr.) --- w <tytul_dziela>Nowym Testamencie</tytul_dziela> pan piekieł i przywódca złych duchów. W utworze Krasińskiego ma on być twórcą ,,spróchniałego obrazu" raju, który to obraz --- niby dekorację teatralną --- złe duchy przechowują w sklepach, czyli podziemiach (staropolskie: <slowo_obce>sklep</slowo_obce> --- piwnica, loch, podziemie). Wokół interpretacji obrazu Edenu rozwinęła się polemika między A. Łuckim a Z. Niemojewską--Gruszczyńską (A. Łucki, <tytul_dziela>Obraz Edenu w <tytul_dziela typ="1">Nie--Boskiej Komedii</tytul_dziela></tytul_dziela>, ,,Ruch literacki", nr 3, s.65--67; Z. Niemojewska---Gruszczyńska, <tytul_dziela>W sprawie obrazu Edenu w <tytul_dziela typ="1">Nie--Boskiej Komedii</tytul_dziela></tytul_dziela>, tamże, nr 5, s. 133--135; A. Łucki, <tytul_dziela>Jeszcze w sprawie obrazu Edenu w <tytul_dziela typ="1">Nie--Boskiej Komedii</tytul_dziela></tytul_dziela>, tamże, nr 6, s.191--192). Kleiner sądzi, że obraz Edenu to przyroda ,,zespolona z jakimiś utopijnymi marzeniami", ,,że plan pierwotny był odmienny", przyroda ,,miała być narzędziem szatana", kuszącego wyobraźnię poety. Za tą interpretacją idzie też wyd. Libery i Sawrymowicza. Według M. Janion interpretacja Edenu jako jednej z trzech wizji---kuszeń może być dwojaka. Po pierwsze można uznać, że Eden stanowi tu synonim natury, tak jak rozumieli ją romantycy: to raj utracony, stan naturalnej szczęśliwości, przeciwieństwo życia w cywilizacji, prosty i harmonijny żywot. Ale można rozumieć ów symboliczny Eden jako oświeceniowy ,,stan naturalny" człowieka związany z filozoficzną utopią XVIII--wiecznych racjonalistów. Wtedy pokusę szatańską łączyć należy z obrazem przyszłego szczęścia ludzkości, jaką roztacza Pankracy w rozmowie z hrabią Henrykiem.</pr> --- dziury zalepiem i rozwiedziemy pokostem --- a potem, płótno czarodziejskie, zwiń się w chmurę i leć do poety --- wnet się rozwiąż naokoło niego, opasz go skałami i wodami, na przemian nocą i dniem. --- Matko naturo, otocz poetę!<end id="e1187696962047"/></akap>
 	</kwestia>
 
 
 <didaskalia>Wieś --- kościół --- nad kościołem <osoba>Anioł Stróż</osoba> się kołysze.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1187697002320' /><motyw id='m1187697002320'>Anioł</motyw>[ANIOŁ STRÓŻ]</naglowek_osoba>
+<naglowek_osoba><begin id="b1187697002320"/><motyw id="m1187697002320">Anioł</motyw>[ANIOŁ STRÓŻ]</naglowek_osoba>
 	<kwestia>
-		<akap>Jeśli dotrzymasz przysięgi na wieki, będziesz bratem moim w obliczu Ojca niebieskiego.<end id='e1187697002320' /></akap>
+		<akap>Jeśli dotrzymasz przysięgi na wieki, będziesz bratem moim w obliczu Ojca niebieskiego.<end id="e1187697002320"/></akap>
 		
 		<didaskalia>znika</didaskalia>
 	</kwestia>
@@ -133,7 +133,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <didaskalia>Wnątrz<pr><slowo_obce>Wnątrz</slowo_obce> --- wnętrze.</pr> kościoła --- świadki --- gromnica na ołtarzu. ---</didaskalia>
 
 
-<naglowek_osoba><begin id='b1187697139652' /><motyw id='m1187697139652'>Małżeństwo</motyw>KSIĄDZ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187697139652"/><motyw id="m1187697139652">Małżeństwo</motyw>KSIĄDZ</naglowek_osoba>
 	<kwestia>
 		<didaskalia>ślub daje</didaskalia>
 	
@@ -146,14 +146,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>[MĄŻ]</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1194612123229' /><motyw id='m1194612123229'>Ślub</motyw>Zstąpiłem do ziemskich ślubów<pr><slowo_obce>Zstąpiłem do ziemskich ślubów</slowo_obce> --- Najważniejsze znaczenie dla Męża miały ,,śluby duchowe" --- niebiańskie. Śluby ziemskie zatem były pewnego rodzaju ,,zniżeniem", zstąpieniem z wyżyn niebiańskich do ziemskiej rzeczywistości.</pr>, bom znalazł tę, o której marzyłem --- przeklęstwo<pr><slowo_obce>przeklęstwo</slowo_obce> --- forma oboczna do: przekleństwo, przeklęctwo. Mąż niejako sam sprowadza na siebie klątwę. Kleiner pisze przy tej okazji, że ,,romantycy chętnie wiązali losy tragiczne z klątwą jakąś tajemniczą [...] wracano w ten sposób do idei starożytnego fatum". Tu jednak klątwa nie jest tajemnicza. Zanik uczucia do Żony wywołuje skutki, które mieszczą się w ramach motywacji psychologicznej (oczywiście w zakresie dramatu rodzinnego).</pr> mojej głowie, jeśli ją kiedy kochać przestanę. ---<end id='e1194612123229' /></akap>
+		<akap><begin id="b1194612123229"/><motyw id="m1194612123229">Ślub</motyw>Zstąpiłem do ziemskich ślubów<pr><slowo_obce>Zstąpiłem do ziemskich ślubów</slowo_obce> --- Najważniejsze znaczenie dla Męża miały ,,śluby duchowe" --- niebiańskie. Śluby ziemskie zatem były pewnego rodzaju ,,zniżeniem", zstąpieniem z wyżyn niebiańskich do ziemskiej rzeczywistości.</pr>, bom znalazł tę, o której marzyłem --- przeklęstwo<pr><slowo_obce>przeklęstwo</slowo_obce> --- forma oboczna do: przekleństwo, przeklęctwo. Mąż niejako sam sprowadza na siebie klątwę. Kleiner pisze przy tej okazji, że ,,romantycy chętnie wiązali losy tragiczne z klątwą jakąś tajemniczą [...] wracano w ten sposób do idei starożytnego fatum". Tu jednak klątwa nie jest tajemnicza. Zanik uczucia do Żony wywołuje skutki, które mieszczą się w ramach motywacji psychologicznej (oczywiście w zakresie dramatu rodzinnego).</pr> mojej głowie, jeśli ją kiedy kochać przestanę. ---<end id="e1194612123229"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1194612253629' /><motyw id='m1194612253629'>Wesele</motyw>Komnata pełna osób --- bal --- muzyka --- świece --- kwiaty. --- <osoba>Panna Młoda</osoba> walcuje i po kilku okręgach staje, przypadkiem napotyka męża w tłumie i głowę, opiera na jego ramieniu.</didaskalia>
+<didaskalia><begin id="b1194612253629"/><motyw id="m1194612253629">Wesele</motyw>Komnata pełna osób --- bal --- muzyka --- świece --- kwiaty. --- <osoba>Panna Młoda</osoba> walcuje i po kilku okręgach staje, przypadkiem napotyka męża w tłumie i głowę, opiera na jego ramieniu.</didaskalia>
 
 
 <naglowek_osoba>PAN MŁODY</naglowek_osoba>
@@ -164,7 +164,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>PANNA MŁODA</naglowek_osoba>
 	<kwestia>
-		<akap><begin id='b1194612276399' /><motyw id='m1194612276399'>Żona</motyw>Będę wierną żoną tobie, jako matka mówiła, jako serce mówi. --- Ale tyle ludzi jest tutaj --- tak gorąco i huczno. ---<end id='e1194612276399' /></akap>
+		<akap><begin id="b1194612276399"/><motyw id="m1194612276399">Żona</motyw>Będę wierną żoną tobie, jako matka mówiła, jako serce mówi. --- Ale tyle ludzi jest tutaj --- tak gorąco i huczno. ---<end id="e1194612276399"/></akap>
 	</kwestia>
 
 
@@ -186,13 +186,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<didaskalia>Taniec i muzyka.<end id='e1194612253629' /><end id='e1187697139652' /></didaskalia>
+<didaskalia>Taniec i muzyka.<end id="e1194612253629"/><end id="e1187697139652"/></didaskalia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187697200414' /><motyw id='m1187697200414'>Szatan</motyw>Noc pochmurna --- <osoba>Duch zły</osoba> pod postacią dziewicy, lecąc ---</didaskalia>
+<didaskalia><begin id="b1187697200414"/><motyw id="m1187697200414">Szatan</motyw>Noc pochmurna --- <osoba>Duch zły</osoba> pod postacią dziewicy, lecąc ---</didaskalia>
 
 
 <naglowek_osoba>[DUCH ZŁY]</naglowek_osoba>
@@ -207,16 +207,16 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	
 		<akap>Świeżość i wdzięki umarłych dziewic, rozlane w powietrzu, płynące nad mogiłami, lećcie do jagód moich. ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
-		<akap>Tu czarnowłosa się rozsypuje --- cienie jej puklów, zawiśnijcie mi nad czołem. --- Pod tym kamieniem zgasłych dwoje ócz błękitnych --- do mnie, do mnie ogień, co tlał w nich! --- Za tymi kraty sto gromnic się pali --- księżnę dziś pochowano --- suknio atłasowa, biała jak mleko,oderwij się od niej! --- Przez kraty leci suknia do mnie, trzepocząc się jak ptak --- a dalej, a dalej. ---<end id='e1187697200414' /></akap>
+		<akap>Tu czarnowłosa się rozsypuje --- cienie jej puklów, zawiśnijcie mi nad czołem. --- Pod tym kamieniem zgasłych dwoje ócz błękitnych --- do mnie, do mnie ogień, co tlał w nich! --- Za tymi kraty sto gromnic się pali --- księżnę dziś pochowano --- suknio atłasowa, biała jak mleko,oderwij się od niej! --- Przez kraty leci suknia do mnie, trzepocząc się jak ptak --- a dalej, a dalej. ---<end id="e1187697200414"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187697359117' /><motyw id='m1187697359117'>Kochanek romantyczny, Kobieta demoniczna, Małżeństwo, Mąż, Miłość romantyczna, Nuda, Szatan, Żona</motyw>Pokój sypialny --- lampa nocna stoi na stole i blisko oświeca <osoba>Męża</osoba> śpiącego obok <osoba>Żony</osoba>. ---</didaskalia>
+<didaskalia><begin id="b1187697359117"/><motyw id="m1187697359117">Kochanek romantyczny, Kobieta demoniczna, Małżeństwo, Mąż, Miłość romantyczna, Nuda, Szatan, Żona</motyw>Pokój sypialny --- lampa nocna stoi na stole i blisko oświeca <osoba>Męża</osoba> śpiącego obok <osoba>Żony</osoba>. ---</didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -235,7 +235,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1194612411532' /><motyw id='m1194612411532'>Upadek, Zdrada</motyw>DZIEWICA</naglowek_osoba>
+<naglowek_osoba><begin id="b1194612411532"/><motyw id="m1194612411532">Upadek, Zdrada</motyw>DZIEWICA</naglowek_osoba>
 	<kwestia>
 		<akap>Zdradziłeś mnie.</akap>
 	
@@ -245,7 +245,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Przeklęta niech będzie chwila, w której pojąłem kobietę, w której opuściłem kochankę lat młodych, myśl myśli moich, duszę duszy mojej...<end id='e1194612411532' /></akap>
+		<akap>Przeklęta niech będzie chwila, w której pojąłem kobietę, w której opuściłem kochankę lat młodych, myśl myśli moich, duszę duszy mojej...<end id="e1194612411532"/></akap>
 	</kwestia>
 
 
@@ -290,7 +290,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Ogród przy świetle księżyca --- za parkanem kościół<pr>Typowo romantyczna sceneria: noc księżycowa w pobliżu kościoła, godzina bliska północy, zjawia się upiór Dziewicy.</pr>. ---</didaskalia>
@@ -310,7 +310,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	
 		<akap>Boże, czyś Ty sam uświęcił związek dwóch ciał? czyś Ty sam wyrzekł, że nic ich rozerwać nie zdoła, choć dusze się odepchną od siebie, pójdą każda w swoją stronę i ciała, gdyby dwa trupy, zostawią przy sobie? ---</akap>
 		
-		<akap></akap>
+		<akap/>
 		
 		<akap>Znowu jesteś przy mnie --- o moja --- o moja, zabierz mnie z sobą. --- Jeśliś złudzeniem, jeślim cię wymyślił, a tyś się utworzyła ze mnie i teraz objawiasz się mnie, niechże i ja będę marą, stanę się mgłą i dymem, by zjednoczyć się z tobą. ---</akap>
 	</kwestia>
@@ -371,7 +371,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Salon --- dwie świece na fortepianie --- kolebka z uśpionym dzieckiem w kącie --- <osoba>Mąż</osoba> rozciągnięty na krześle, z twarzą ukrytą w dłoniach --- <osoba>Żona</osoba> przy fortepianie.</didaskalia>
@@ -577,11 +577,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Henryku --- Henryku ---</akap>
 	
-		<didaskalia>mdleje i pada z dzieckiem --- drugi grzmot<end id='e1187697359117' /></didaskalia>
+		<didaskalia>mdleje i pada z dzieckiem --- drugi grzmot<end id="e1187697359117"/></didaskalia>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Chrzest --- <osoba>Goście</osoba> --- <osoba>Ojciec Beniamin</osoba> --- <osoba>Ojciec Chrzestny</osoba> --- <osoba>Matka Chrzestna</osoba> --- mamka z dzieckiem --- na sofie na boku siedzi <osoba>Żona</osoba> --- w głębi służący.</didaskalia>
@@ -619,7 +619,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187698603472' /><motyw id='m1187698603472'>Poeta</motyw>OJCIEC BENIAMIN</naglowek_osoba>
+<naglowek_osoba><begin id="b1187698603472"/><motyw id="m1187698603472">Poeta</motyw>OJCIEC BENIAMIN</naglowek_osoba>
 	<kwestia>
 		<akap>Jerzy Stanisławie, przyjmujesz olej święty?</akap>
 	</kwestia>
@@ -709,7 +709,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Przeklinam cię, jeśli nie będziesz poetą. ---</akap>
 	
-		<didaskalia>mdleje --- wynoszą ją sługi<end id='e1187698603472' /></didaskalia>
+		<didaskalia>mdleje --- wynoszą ją sługi<end id="e1187698603472"/></didaskalia>
 	</kwestia>
 
 
@@ -721,24 +721,24 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<didaskalia><begin id='b1187956880704' /><motyw id='m1187956880704'>Obywatel</motyw>Tymczasem obrzęd się kończy --- dziecię płaczące odnoszą do kolebki.</didaskalia>
+<didaskalia><begin id="b1187956880704"/><motyw id="m1187956880704">Obywatel</motyw>Tymczasem obrzęd się kończy --- dziecię płaczące odnoszą do kolebki.</didaskalia>
 
 
 <naglowek_osoba>OJCIEC CHRZESTNY</naglowek_osoba>
 	<kwestia>
 		<didaskalia>przed kolebką</didaskalia>
 	
-		<akap>Jerzy Stanisławie, dopiero coś został chrześcijaninem i wszedł do towarzystwa ludzkiego, a później zostaniesz obywatelem, a za staraniem rodziców i łaską Bożą znakomitym urzędnikiem --- pamiętaj, że Ojczyznę kochać trzeba i że nawet za Ojczyznę zginąć jest pięknie...<end id='e1187956880704' /></akap>
+		<akap>Jerzy Stanisławie, dopiero coś został chrześcijaninem i wszedł do towarzystwa ludzkiego, a później zostaniesz obywatelem, a za staraniem rodziców i łaską Bożą znakomitym urzędnikiem --- pamiętaj, że Ojczyznę kochać trzeba i że nawet za Ojczyznę zginąć jest pięknie...<end id="e1187956880704"/></akap>
 	</kwestia>
 
 
 <didaskalia>Wychodzą wszyscy.</didaskalia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187698759796' /><motyw id='m1187698759796'>Kochanek romantyczny, Miłość romantyczna, Szatan</motyw>Piękna okolica --- wzgórza i łasy --- góry w oddali.</didaskalia>
+<didaskalia><begin id="b1187698759796"/><motyw id="m1187698759796">Kochanek romantyczny, Miłość romantyczna, Szatan</motyw>Piękna okolica --- wzgórza i łasy --- góry w oddali.</didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -755,7 +755,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Góry i przepaście ponad morzem --- gęste chmury --- burza. ---</didaskalia>
@@ -767,7 +767,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187699661914' /><motyw id='m1187699661914'>Anioł, Kobieta demoniczna, Kochanek romantyczny, Miłość romantyczna, Samobójstwo, Szatan, Upadek</motyw>GŁOS DZIEWICY</naglowek_osoba>
+<naglowek_osoba><begin id="b1187699661914"/><motyw id="m1187699661914">Anioł, Kobieta demoniczna, Kochanek romantyczny, Miłość romantyczna, Samobójstwo, Szatan, Upadek</motyw>GŁOS DZIEWICY</naglowek_osoba>
 	<kwestia>
 		<didaskalia>w oddaleniu</didaskalia>
 	
@@ -859,7 +859,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>CHÓR DUCHÓW ZŁYCH</naglowek_osoba>
 	<kwestia>
-		<akap>Stara, wracaj do piekła --- uwiodłaś serce wielkie i dumne, podziw ludzi i siebie samego. --- Serce wielkie, idź za lubą twoją<pe>Od tej chwili ,,serce" hrabiego Henryka jest skazane na ,,piekło", tj. udręki piekielne; sygnały tego przekleństwa rozsiane są dalej po całym tekście.</pe>. ---<end id='e1187698759796' /></akap>
+		<akap>Stara, wracaj do piekła --- uwiodłaś serce wielkie i dumne, podziw ludzi i siebie samego. --- Serce wielkie, idź za lubą twoją<pe>Od tej chwili ,,serce" hrabiego Henryka jest skazane na ,,piekło", tj. udręki piekielne; sygnały tego przekleństwa rozsiane są dalej po całym tekście.</pe>. ---<end id="e1187698759796"/></akap>
 	</kwestia>
 
 
@@ -903,14 +903,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		
 		<akap>Wracaj do domu i nie grzesz więcej. ---</akap>
 		
-		<akap>Wracaj do domu i kochaj dziecię twoje. ---<end id='e1187699661914' /></akap>
+		<akap>Wracaj do domu i kochaj dziecię twoje. ---<end id="e1187699661914"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187699807357' /><motyw id='m1187699807357'>Małżeństwo, Mąż, Poeta, Szaleniec, Szatan, Żona</motyw>Salon z fortepianem --- wchodzi <osoba>Mąż</osoba> --- <osoba>Służący</osoba> ze świecą za nim. ---</didaskalia>
+<didaskalia><begin id="b1187699807357"/><motyw id="m1187699807357">Małżeństwo, Mąż, Poeta, Szaleniec, Szatan, Żona</motyw>Salon z fortepianem --- wchodzi <osoba>Mąż</osoba> --- <osoba>Służący</osoba> ze świecą za nim. ---</didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -987,11 +987,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	
 		<didaskalia>bieży ku drzwiom, rozpycha podwoje</didaskalia>
 		
-		<akap>Tatara mi osiodłać --- płaszcz mój i pistolety! ---<end id='e1187699807357' /></akap>
+		<akap>Tatara mi osiodłać --- płaszcz mój i pistolety! ---<end id="e1187699807357"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Dom obłąkanych, w górzystej okolicy. --- Ogród wokoło. ---</didaskalia>
@@ -1011,7 +1011,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187700144272' /><motyw id='m1187700144272'>Obraz świata, Poeta, Poetka, Poezja, Rewolucja, Szaleniec, Upadek, Wieża Babel</motyw>ŻONA DOKTORA</naglowek_osoba>
+<naglowek_osoba><begin id="b1187700144272"/><motyw id="m1187700144272">Obraz świata, Poeta, Poetka, Poezja, Rewolucja, Szaleniec, Upadek, Wieża Babel</motyw>ŻONA DOKTORA</naglowek_osoba>
 	<kwestia>
 		<akap>Proszę Pana --- wiele sobie z niej obiecywać nie sposób --- mój mąż wyjechał, byłby to lepiej wyłuszczył --- przywieźli ją zawczoraj --- była w konwulsjach. --- Jakie gorąco. ---</akap>
 	
@@ -1021,7 +1021,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Pokój --- kratowane okno --- kilko krzeseł --- łóżko --- <osoba>Żona</osoba> na kanapie. ---</didaskalia>
@@ -1225,7 +1225,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187700229916' /><motyw id='m1187700229916'>Bóg, Upadek</motyw>GŁOS Z SUFITU</naglowek_osoba>
+<naglowek_osoba><begin id="b1187700229916"/><motyw id="m1187700229916">Bóg, Upadek</motyw>GŁOS Z SUFITU</naglowek_osoba>
 	<kwestia>
 		<akap>Daruj im, Ojcze, bo nie wiedzą, co czynią.</akap>
 	</kwestia>
@@ -1249,7 +1249,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	
 		<didaskalia>bierze go za rękę</didaskalia>
 	
-		<akap>Wszystkie światy lecą to na dół, to w górę --- człowiek każdy, robak każdy krzyczy --- ,,Ja Bogiem" --- i co chwila jeden po drugim konają --- gasną komety i słońca. --- Chrystus nas już nie zbawi --- krzyż swój wziął w ręce obie i rzucił w otchłań. Czy słyszysz, jak ten krzyż, nadzieja milionów, rozbija się o gwiazdy, łamie się, pęka, rozlatuje w kawałki, a coraz niżej i niżej --- aż tuman wielki powstał z jego odłamków --- Najświętsza Bogarodzica jedna się jeszcze modli i gwiazdy, Jej służebnice, nie odbiegły Jej dotąd --- ale i Ona pójdzie, kędy idzie świat cały. ---<end id='e1187700229916' /></akap>
+		<akap>Wszystkie światy lecą to na dół, to w górę --- człowiek każdy, robak każdy krzyczy --- ,,Ja Bogiem" --- i co chwila jeden po drugim konają --- gasną komety i słońca. --- Chrystus nas już nie zbawi --- krzyż swój wziął w ręce obie i rzucił w otchłań. Czy słyszysz, jak ten krzyż, nadzieja milionów, rozbija się o gwiazdy, łamie się, pęka, rozlatuje w kawałki, a coraz niżej i niżej --- aż tuman wielki powstał z jego odłamków --- Najświętsza Bogarodzica jedna się jeszcze modli i gwiazdy, Jej służebnice, nie odbiegły Jej dotąd --- ale i Ona pójdzie, kędy idzie świat cały. ---<end id="e1187700229916"/></akap>
 	</kwestia>
 
 
@@ -1285,7 +1285,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>ŻONA</naglowek_osoba>
 	<kwestia>
-		<akap>Kto jest poetą, ten nie żyje długo.<end id='e1187700144272' /></akap>
+		<akap>Kto jest poetą, ten nie żyje długo.<end id="e1187700144272"/></akap>
 	</kwestia>
 
 
@@ -1364,36 +1364,36 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <naglowek_akt>CZĘŚĆ DRUGA<pr>Część druga opatrzona była w wyd. I i II następującym epigrafem: ,,<slowo_obce>Du Gemisch von Koth und Feuer</slowo_obce>". Faust, Goethe. ("Ty mieszanino błota i ognia"). Jest to cytat niedokładny. Faust w dramacie Goethego mówi do Mefista: ,,<slowo_obce>Du Spottgeburt von Dreck und Feuer</slowo_obce>" ("Z ognia i gnoju ty pomiocie" --- w przekł. F. Konopki). Kleiner opatruje epigraf uwagą: ,,Zastosowanie tych słów do ,,mieszaniny" ziemskości i anielstwa w Orciu jest dość dziwne". Trzeba jednak przypomnieć odpowiednie miejsce ze wstępu do Części I, gdzie mowa o poecie: ,,Kto ci dał życie tak nikczemne, tak zwodnicze, że potrafisz udać Anioła chwilą, nim zagrząźniesz w błoto". Tu więc słowa epigrafu odnoszą się również raczej do tego, co stanowi istotę poety w ogóle, a bardziej zdają się dotyczyć Męża, który daje się porwać marzeniom o sławie, marzeniom ,,górnym", w istocie zaś prowadzącym do upadku. O wstępie do Części II pisze A. Jung: ,,Nic nie przewyższa piękna drugiej uwertury, w której fatalny los dziecka dźwięczy lirycznie, tak że w finale może być powiedziane: Poeta jest wszystkim i dlatego też wcześnie powraca w wszechświat" ("<slowo_obce>Der Dichter ist Alles, daher kehrt er auch früh in das All zurück</slowo_obce>")(s. 31).</pr></naglowek_akt>
 
 
-<akap><begin id='b1187783332749' /><motyw id='m1187783332749'>Dzieciństwo, Poeta</motyw>Czemu, o dziecię, nie hasasz na kijku, nie bawisz się lalką, much nie mordujesz, nie wbijasz na pal motyli, nie tarzasz się po trawnikach, nie kradniesz łakoci<pr><slowo_obce>łakoci</slowo_obce> --- w wyd. I i II: ,,łakocie".</pr>, nie oblewasz łzami wszystkich liter od A do Z? --- Królu much i motyli, przyjacielu poliszynela<pr><slowo_obce>poliszynel</slowo_obce> (z fr. <slowo_obce>polichinelle</slowo_obce>) --- pajac, od włos. pulcinella --- kogucik. Jedna ze stałych postaci komicznych włoskiej komedii ludowej (<slowo_obce>commedia dell'arte</slowo_obce>).</pr>, czarcie maleńki, czemuś tak podobny do aniołka? --- Co znaczą twoje błękitne oczy, pochylone, choć żywe, pełne wspomnień, choć ledwo kilka wiosen przeszło ci nad głową? --- Skąd czoło opierasz na rączkach białych i zdajesz się marzyć, a jako kwiat obarczony rosą, tak skronią twoje obarczone myślami? ---</akap>
+<akap><begin id="b1187783332749"/><motyw id="m1187783332749">Dzieciństwo, Poeta</motyw>Czemu, o dziecię, nie hasasz na kijku, nie bawisz się lalką, much nie mordujesz, nie wbijasz na pal motyli, nie tarzasz się po trawnikach, nie kradniesz łakoci<pr><slowo_obce>łakoci</slowo_obce> --- w wyd. I i II: ,,łakocie".</pr>, nie oblewasz łzami wszystkich liter od A do Z? --- Królu much i motyli, przyjacielu poliszynela<pr><slowo_obce>poliszynel</slowo_obce> (z fr. <slowo_obce>polichinelle</slowo_obce>) --- pajac, od włos. pulcinella --- kogucik. Jedna ze stałych postaci komicznych włoskiej komedii ludowej (<slowo_obce>commedia dell'arte</slowo_obce>).</pr>, czarcie maleńki, czemuś tak podobny do aniołka? --- Co znaczą twoje błękitne oczy, pochylone, choć żywe, pełne wspomnień, choć ledwo kilka wiosen przeszło ci nad głową? --- Skąd czoło opierasz na rączkach białych i zdajesz się marzyć, a jako kwiat obarczony rosą, tak skronią twoje obarczone myślami? ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>A kiedy się zarumienisz, płoniesz jak stulistna róża i, pukle odwijając w tył, wzroczkiem sięgasz do nieba --- powiedz, co słyszysz, co widzisz, z kim rozmawiasz wtedy? --- Bo na twe czoło występują zmarszczki, gdyby cieniutkie nici, płynące z niewidzialnego kłębka --- bo w oczach twoich jaśnieje iskra, której nikt nie rozumie --- a mamka twoja płacze i woła na ciebie, i myśli, że jej nie kochasz --- a znajomi i krewni wołają na ciebie i myślą, że ich nie poznajesz --- twój ojciec jeden milczy i spogląda ponuro, a łza mu się zakręci i znowu gdzieś przepadnie. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>Lekarz wziął cię za puls, liczył bicia i ogłosił, że masz nerwy. --- Ojciec Chrzestny ciast ci przyniósł, poklepał po ramieniu i wróżył, że będziesz obywatelem pośród wielkiego narodu. --- Profesor przystąpił i macał głowę twoją, i wyrzekł, że masz zdatność do nauk ścisłych<pr>W XIX w. cieszyła się popularnością teoria F. Galla (1758--1828), według której istnieje związek między kształtem ludzkiej czaszki a zdolnościami, cechami intelektualnymi człowieka. Teoria ta, mająca charakter pseudonaukowy, nazywała się frenologią.</pr>. --- Ubogi, któremuś dał grosz, przechodząc, do czapki, obiecał ci piękną żonę na ziemi i koronę w niebie. --- Wojskowy przyskoczył, porwał i podrzucił, i krzyknął: ,,Będziesz pułkownikiem". --- Cyganka długo czytała dłoń twoją prawą i lewą, nic wyczytać nie mogła; jęcząc odeszła, dukata wziąć nie chciała. --- Magnetyzer<pr><slowo_obce>Magnetyzer</slowo_obce> --- człowiek posiadający umiejętność wprawiania ludzi w stan magnetyczny (hipnotyczny) zbliżony do naturalnego snu. W wieku XIX stosowano ,,magnetyzowanie" Jako zabieg leczniczy.</pr> palcami ci wionął w oczy, długimi palcami twarz ci okrążył i przeląkł się, bo czuł, że sam zasypia. --- Ksiądz gotował cię do pierwszej spowiedzi --- i chciał ukląc<pe><slowo_obce>ukląc</slowo_obce> --- współczesna poprawna forma: ulkęknąć.</pe> przed tobą, jak przed obrazkiem. --- Malarz nadszedł, kiedyś się gniewał i tupał nóżkami; nakreślił z ciebie szatanka i posadził cię na obrazie dnia sądnego między wyklętymi duchami. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap>Tymczasem wzrastasz i piękniejesz --- nie ową świeżością dzieciństwa mleczną i poziomkową, ale pięknością dziwnych, niepojętych myśli, które chyba z innego świata płyną ku tobie --- bo choć często oczy masz gasnące, śniade lica, zgięte piersi, każdy, co spojrzy na ciebie, zatrzyma się i powie: ,,Jakie śliczne dziecię!" --- Gdyby kwiat, co więdnie, miał duszę z ognia i natchnienie z nieba, gdyby na każdym listku, chylącym się ku ziemi, anielska myśl leżała miasto kropli rosy, ten kwiat byłby do ciebie podobnym, o dziecię moje --- może takie bywały przed upadkiem Adama<pr>Kleiner przypomina, że jest to aluzja do poglądu, iż grzech Adama sprowadził upadek całej natury.</pr>. ---<end id='e1187783332749' /></akap>
-
-
-
-
-<sekcja_swiatlo />
-<sekcja_swiatlo />
+<akap>Tymczasem wzrastasz i piękniejesz --- nie ową świeżością dzieciństwa mleczną i poziomkową, ale pięknością dziwnych, niepojętych myśli, które chyba z innego świata płyną ku tobie --- bo choć często oczy masz gasnące, śniade lica, zgięte piersi, każdy, co spojrzy na ciebie, zatrzyma się i powie: ,,Jakie śliczne dziecię!" --- Gdyby kwiat, co więdnie, miał duszę z ognia i natchnienie z nieba, gdyby na każdym listku, chylącym się ku ziemi, anielska myśl leżała miasto kropli rosy, ten kwiat byłby do ciebie podobnym, o dziecię moje --- może takie bywały przed upadkiem Adama<pr>Kleiner przypomina, że jest to aluzja do poglądu, iż grzech Adama sprowadził upadek całej natury.</pr>. ---<end id="e1187783332749"/></akap>
 
 
 
 
-<didaskalia><begin id='b1187783507058' /><motyw id='m1187783507058'>Matka, Ojciec, Poeta, Poetka, Poezja, Syn, Wizja, Zaświaty</motyw>Cmentarz --- <osoba>Mąż</osoba> i <osoba>Orcio</osoba> przy grobie w gotyckie filary i wieżyczki.<pr>Scena ta ma cechy wspomnienia z dzieciństwa Z. Krasińskiego, tak jak w ogóle w postaci Orcia dostrzec można duży udział stylizowanego pierwiastka autobiograficznego.</pr></didaskalia>
+<sekcja_swiatlo/>
+<sekcja_swiatlo/>
+
+
+
+
+<didaskalia><begin id="b1187783507058"/><motyw id="m1187783507058">Matka, Ojciec, Poeta, Poetka, Poezja, Syn, Wizja, Zaświaty</motyw>Cmentarz --- <osoba>Mąż</osoba> i <osoba>Orcio</osoba> przy grobie w gotyckie filary i wieżyczki.<pr>Scena ta ma cechy wspomnienia z dzieciństwa Z. Krasińskiego, tak jak w ogóle w postaci Orcia dostrzec można duży udział stylizowanego pierwiastka autobiograficznego.</pr></didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -1560,22 +1560,22 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Boże, zmiłuj się nad dzieckiem naszym, którego, zda się, że w gniewie Twoim przeznaczyłeś szaleństwu i za wczesnej śmierci. --- Panie, nie wydzieraj rozumu własnym stworzeniom, nie opuszczaj świątyń, któreś Sam wybudował Sobie --- spojrzyj na męki moje, i aniołka tego nie wydawaj piekłu --- mnieś przynajmniej obdarzył siłą na wytrzymanie natłoku myśli, namiętności i uczuć, a jemu? --- dałeś ciało do pajęczyny podobne, które lada myśl wielka rozerwie --- o Panie Boże --- o Boże! ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
 		<akap>Od lat dziesięciu dnia spokojnego nie miałem --- nasłałeś wielu ludzi na mnie, którzy mi szczęścia winszowali, zazdrościli, życzyli --- spuściłeś na mnie grad boleści i znikomych obrazów, i przeczuciów<pr><slowo_obce>przeczuciów</slowo_obce> --- forma dopełniacza l. mn. utworzona logicznie do formy rzeczowników męskich, używana często jeszcze w XIX w.</pr>, i marzeń --- łaska Twoja na rozum spadła, nie na serce moje --- dozwól mi dziecię ukochać w pokoju, i niechaj stanie mir<pr><slowo_obce>mir</slowo_obce> --- starosłowiańskie, używane jeszcze w staropolszczyźnie słowo oznaczające pokój, przymierze.</pr> już między Stwórcą i stworzonym. --- Synu, przeżegnaj się i chodź ze mną. Wieczny odpoczynek.</akap>
 	</kwestia>
 
 
-<didaskalia>Wychodzą.<end id='e1187783507058' /></didaskalia>
+<didaskalia>Wychodzą.<end id="e1187783507058"/></didaskalia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Spacer --- damy i kawalerowie --- <osoba>Filozof</osoba> --- <osoba>Mąż</osoba>.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1187783579364' /><motyw id='m1187783579364'>Filozof, Obraz świata, Rewolucja</motyw>FILOZOF</naglowek_osoba>
+<naglowek_osoba><begin id="b1187783579364"/><motyw id="m1187783579364">Filozof, Obraz świata, Rewolucja</motyw>FILOZOF</naglowek_osoba>
 	<kwestia>
 		<akap>Powtarzam, iż to jest nieodbitą, samowolną wiarą<pr><slowo_obce>samowolna wiara</slowo_obce> --- wiara wynikająca z własnej woli, z własnego wyboru.</pr> we mnie, że czas nadchodzi wyzwolenia kobiet i Murzynów. ---</akap>
 	</kwestia>
@@ -1655,17 +1655,17 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Jednak to obraz twój i wszystkich twoich, i wieku twego, i teorii twojej<pr>Cała scena między Filozofem a Mężem wydaje się służyć charakterystyce poglądów Krasińskiego na pewne teorie filozoficzne ówcześnie rozpowszechnione. Autor <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> uważał mianowicie filozofię głoszącą postęp społeczny za wywodzącą się od materialistów francuskich osiemnastowiecznych, których dziełem była rewolucja francuska. W r. 1836 pisał do Gaszyńskiego charakteryzując poglądy H. Heinego: ,,Henryk Heine jest to wyraz zgrzybiałej filozofii, wpadającej nazad w dzieciństwo, wracającej do materializmu i lekkomyślności [...] Heine i cała jego szkoła, chcąc koniecznie coś nowego utworzyć, nie pomiarkowali, że do bardzo starych zasad się cofają, że przedrewolucyjny materializm Helwecjusza i panów dworskich, przebrawszy go tylko w mieszczańskie szaty, nazad stawiają na nogach"(<tytul_dziela>Listy Zygmunta Krasińskiego do Konstantego Gaszyńskiego</tytul_dziela>, Lwów 1882, s. 96). Dlatego też poglądy Filozofa --- wyznawcy wyzwolenia kobiet (analogicznie do saintsimonistów) i Murzynów (sprawa dyskutowana w Anglii w r. 1833), rzecznika odrodzenia ludzkości ,,przez krew" i zwolennika teorii rozwoju świata przez kataklizmy --- jako wywodzące się z teorii materialistycznych, uważa Mąż za przestarzałe, ,,spróchniałe". Wydaje się, że interpretacja Niemojewskiej--Gruszczyńskiej, na którą powołuje się Kleiner, a która pogardliwe słowa Męża odnosi do całej ludzkości, nie do filozofów, jest niesłuszna.</pr>. ---<end id='e1187783579364' /></akap>
+		<akap>Jednak to obraz twój i wszystkich twoich, i wieku twego, i teorii twojej<pr>Cała scena między Filozofem a Mężem wydaje się służyć charakterystyce poglądów Krasińskiego na pewne teorie filozoficzne ówcześnie rozpowszechnione. Autor <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> uważał mianowicie filozofię głoszącą postęp społeczny za wywodzącą się od materialistów francuskich osiemnastowiecznych, których dziełem była rewolucja francuska. W r. 1836 pisał do Gaszyńskiego charakteryzując poglądy H. Heinego: ,,Henryk Heine jest to wyraz zgrzybiałej filozofii, wpadającej nazad w dzieciństwo, wracającej do materializmu i lekkomyślności [...] Heine i cała jego szkoła, chcąc koniecznie coś nowego utworzyć, nie pomiarkowali, że do bardzo starych zasad się cofają, że przedrewolucyjny materializm Helwecjusza i panów dworskich, przebrawszy go tylko w mieszczańskie szaty, nazad stawiają na nogach"(<tytul_dziela>Listy Zygmunta Krasińskiego do Konstantego Gaszyńskiego</tytul_dziela>, Lwów 1882, s. 96). Dlatego też poglądy Filozofa --- wyznawcy wyzwolenia kobiet (analogicznie do saintsimonistów) i Murzynów (sprawa dyskutowana w Anglii w r. 1833), rzecznika odrodzenia ludzkości ,,przez krew" i zwolennika teorii rozwoju świata przez kataklizmy --- jako wywodzące się z teorii materialistycznych, uważa Mąż za przestarzałe, ,,spróchniałe". Wydaje się, że interpretacja Niemojewskiej--Gruszczyńskiej, na którą powołuje się Kleiner, a która pogardliwe słowa Męża odnosi do całej ludzkości, nie do filozofów, jest niesłuszna.</pr>. ---<end id="e1187783579364"/></akap>
 	</kwestia>
 
 
 <didaskalia>Przechodzą.</didaskalia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187783813713' /><motyw id='m1187783813713'>Obywatel, Szatan, Upadek, Władza, Walka</motyw>Wąwóz pomiędzy górami.</didaskalia>
+<didaskalia><begin id="b1187783813713"/><motyw id="m1187783813713">Obywatel, Szatan, Upadek, Władza, Walka</motyw>Wąwóz pomiędzy górami.</didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -1773,24 +1773,24 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		<akap>Idź, podły gadzie --- jako strąciłem ciebie i nie ma żalu po tobie w naturze, tak oni wszyscy stoczą się w dół i po nich żalu nie będzie --- sławy nie zostanie --- żadna chmura się nie odwróci w żegludze, by
 		spojrzeć za sobą na tylu synów ziemi, ginących pospołu. ---</akap>
 		
-		<akap></akap>
+		<akap/>
 	
 		<akap>Oni naprzód --- ja potem. ---</akap>
 		
-		<akap></akap>
+		<akap/>
 		
 		<akap>Błękicie niezmierzony, ty ziemię obwijasz --- ziemia niemowlęciem, co zgrzyta i płacze --- ale ty nie drżysz, nie słuchasz jej, ty płyniesz w nieskończoność swoją. ---</akap>
 		
-		<akap></akap>
+		<akap/>
 		
-		<akap>Matko naturo<pr><slowo_obce>Matko naturo</slowo_obce> --- W swej polemice z Łuckim (por. przypis dotyczący Edenu w cz.I dramatu) Niemojewska--Gruszczyńska uważa te słowa za realizację zapowiedzi szatańskiej z Części I --- kuszenie Męża obrazem spróchniałego Edenu, czyli natury martwej. ,,Na pytające jakby spojrzenie Męża, obojętnością odpowiedziała matka Natura. Mąż żegna ją, idzie między ludzi, odtąd będzie szukał natchnień człowieczych, człowieka, nie naturę naśladował będzie. Czemuż ostatnie tchnienie natury współdziałało tak solidarnie z wezwaniem orła? Czemuż Mąż nie odczuwa płynącego z przyrody wzniosłego prądu miłości braterskiej [...] Człowiekowi wodzonemu na pokuszenie szatan nie pozwoli ,,w pięknym przyrodzeniu czytać". Pomiędzy nim i naturą stanie wywleczona ze sklepów szatańskich dekoracja Edenu. Odgrodzi go od źródła wyższych natchnień" ("Ruch Literacki” 1927, s. 135).</pr>, bądź mi zdrowa --- idę się na człowieka przetworzyć, walczyć idę z bracią moją.<end id='e1187783813713' /></akap>
+		<akap>Matko naturo<pr><slowo_obce>Matko naturo</slowo_obce> --- W swej polemice z Łuckim (por. przypis dotyczący Edenu w cz.I dramatu) Niemojewska--Gruszczyńska uważa te słowa za realizację zapowiedzi szatańskiej z Części I --- kuszenie Męża obrazem spróchniałego Edenu, czyli natury martwej. ,,Na pytające jakby spojrzenie Męża, obojętnością odpowiedziała matka Natura. Mąż żegna ją, idzie między ludzi, odtąd będzie szukał natchnień człowieczych, człowieka, nie naturę naśladował będzie. Czemuż ostatnie tchnienie natury współdziałało tak solidarnie z wezwaniem orła? Czemuż Mąż nie odczuwa płynącego z przyrody wzniosłego prądu miłości braterskiej [...] Człowiekowi wodzonemu na pokuszenie szatan nie pozwoli ,,w pięknym przyrodzeniu czytać". Pomiędzy nim i naturą stanie wywleczona ze sklepów szatańskich dekoracja Edenu. Odgrodzi go od źródła wyższych natchnień" ("Ruch Literacki” 1927, s. 135).</pr>, bądź mi zdrowa --- idę się na człowieka przetworzyć, walczyć idę z bracią moją.<end id="e1187783813713"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187784334375' /><motyw id='m1187784334375'>Choroba, Ojciec, Poeta, Syn</motyw>Pokój. --- <osoba>Mąż</osoba> --- <osoba>Lekarz</osoba> --- <osoba>Orcio</osoba>.</didaskalia>
+<didaskalia><begin id="b1187784334375"/><motyw id="m1187784334375">Choroba, Ojciec, Poeta, Syn</motyw>Pokój. --- <osoba>Mąż</osoba> --- <osoba>Lekarz</osoba> --- <osoba>Orcio</osoba>.</didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -1925,7 +1925,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187784499653' /><motyw id='m1187784499653'>Szatan, Rozpacz</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187784499653"/><motyw id="m1187784499653">Szatan, Rozpacz</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<didaskalia>przyciskając syna do piersi</didaskalia>
 	
@@ -1979,11 +1979,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>GŁOS SKĄDSIŚ</naglowek_osoba>
 	<kwestia>
-		<akap>Twój syn poetą --- czegóż żądasz więcej?<end id='e1187784499653' /></akap>
+		<akap>Twój syn poetą --- czegóż żądasz więcej?<end id="e1187784499653"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia><osoba>Lekarz</osoba> --- <osoba>Ojciec Chrzestny</osoba></didaskalia>
@@ -2022,7 +2022,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <didaskalia><osoba>Mąż</osoba> wchodzi.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1187785128443' /><motyw id='m1187785128443'>Poeta, Wizja</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187785128443"/><motyw id="m1187785128443">Poeta, Wizja</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Przepraszam Pana, żem go prosił o tak późnej godzinie, ale od kilku dni mój biedny syn budzi się zawsze około dwunastej, wstaje i przez sen mówi --- proszę za mną. ---</akap>
 	</kwestia>
@@ -2034,7 +2034,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Pokój sypialny. --- <osoba>Służąca</osoba> --- <osoba>Krewni</osoba> --- <osoba>Ojciec Chrzestny</osoba> --- <osoba>Lekarz</osoba> --- <osoba>Mąż</osoba>. ---</didaskalia>
@@ -2142,7 +2142,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>ORCIO</naglowek_osoba>
 	<kwestia>
-		<akap>Nie odpowiadasz mi --- o matko! nie opuszczaj mnie. ---<end id='e1187785128443' /></akap>
+		<akap>Nie odpowiadasz mi --- o matko! nie opuszczaj mnie. ---<end id="e1187785128443"/></akap>
 	</kwestia>
 
 
@@ -2228,9 +2228,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187960847778' /><motyw id='m1187960847778'>Anioł, Upadek</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187960847778"/><motyw id="m1187960847778">Anioł, Upadek</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Niech moje błogosławieństwo spoczywa na tobie --- nic ci więcej dać nie mogę, ni szczęścia, ni światła, ni sławy --- a dobija godzina<pr>Kleiner zwraca uwagę, że Mąż ,,odczuwa jakiś fatalizm w swym losie". Podobnie bowiem wyczuwał zbliżanie się fatalnego przełomowego momentu w Części I, kiedy postanowił porzucić Żonę, aby pójść za widmem Dziewicy: ,,Nadeszła godzina --- nic jej nie odwlecze".</pr>, w której będę musiał walczyć, działać z kilkoma ludźmi przeciwko wielu ludziom. --- Gdzie się ty podziejesz, sam jeden i wśród stu przepaści, ślepy, bezsilny, dziecię i poeto zarazem, biedny śpiewaku bez słuchaczy, żyjący duszą za obrębami ziemi, a ciałem przykuty do ziemi --- o ty nieszczęśliwy, najnieszczęśliwszy z aniołów, o ty mój synu? ---<end id='e1187960847778' /><end id='e1187784334375' /></akap>
+		<akap>Niech moje błogosławieństwo spoczywa na tobie --- nic ci więcej dać nie mogę, ni szczęścia, ni światła, ni sławy --- a dobija godzina<pr>Kleiner zwraca uwagę, że Mąż ,,odczuwa jakiś fatalizm w swym losie". Podobnie bowiem wyczuwał zbliżanie się fatalnego przełomowego momentu w Części I, kiedy postanowił porzucić Żonę, aby pójść za widmem Dziewicy: ,,Nadeszła godzina --- nic jej nie odwlecze".</pr>, w której będę musiał walczyć, działać z kilkoma ludźmi przeciwko wielu ludziom. --- Gdzie się ty podziejesz, sam jeden i wśród stu przepaści, ślepy, bezsilny, dziecię i poeto zarazem, biedny śpiewaku bez słuchaczy, żyjący duszą za obrębami ziemi, a ciałem przykuty do ziemi --- o ty nieszczęśliwy, najnieszczęśliwszy z aniołów, o ty mój synu? ---<end id="e1187960847778"/><end id="e1187784334375"/></akap>
 	</kwestia>
 
 
@@ -2258,55 +2258,55 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<naglowek_akt><begin id='b1187875285443' /><motyw id='m1187875285443'>Rewolucja</motyw><begin id='b1187962248967' /><motyw id='m1187962248967'>Rycerz</motyw>CZĘŚĆ TRZECIA<pr>Część trzecia opatrzona była w wyd. I i II oraz w rękopiśmiennej kopii następującym epigrafem: ,,<slowo_obce>Il fut administré, parce que le niais demandait un prêtre, puis pendu à la satisfaction générale etc. etc.</slowo_obce>" --- <slowo_obce>Rapport du citoyen Caillot, commissaire de la sixiéme chambre</slowo_obce> [w kopii: <slowo_obce>section</slowo_obce>] <slowo_obce>an III, 5 prairial</slowo_obce> ("Opatrzony został sakramentami, ponieważ, dureń, zażądał księdza, później powieszony ku ogólnemu zadowoleniu". --- Raport obywatela Caillota, komisarza izby szóstej, roku III [tj. trzeciego roku ery rewolucyjnej, liczonej od 22 września 1792, a więc r. 1795] piątego prairiala [tj. 22 maja --- <slowo_obce>prairial</slowo_obce>, czyli miesiąc łąk, był dziewiątym miesiącem w kalendarzu rewolucyjnym]). Być może chodzi tu o któryś z raportów F. M. Cailleux (1761---1796), członka klubu jakobinów, który, mianowany oficerem municypalnym, był strażnikiem rodziny królewskiej w czasie jej pobytu w więzieniu w Tempie.</pr></naglowek_akt>
+<naglowek_akt><begin id="b1187875285443"/><motyw id="m1187875285443">Rewolucja</motyw><begin id="b1187962248967"/><motyw id="m1187962248967">Rycerz</motyw>CZĘŚĆ TRZECIA<pr>Część trzecia opatrzona była w wyd. I i II oraz w rękopiśmiennej kopii następującym epigrafem: ,,<slowo_obce>Il fut administré, parce que le niais demandait un prêtre, puis pendu à la satisfaction générale etc. etc.</slowo_obce>" --- <slowo_obce>Rapport du citoyen Caillot, commissaire de la sixiéme chambre</slowo_obce> [w kopii: <slowo_obce>section</slowo_obce>] <slowo_obce>an III, 5 prairial</slowo_obce> ("Opatrzony został sakramentami, ponieważ, dureń, zażądał księdza, później powieszony ku ogólnemu zadowoleniu". --- Raport obywatela Caillota, komisarza izby szóstej, roku III [tj. trzeciego roku ery rewolucyjnej, liczonej od 22 września 1792, a więc r. 1795] piątego prairiala [tj. 22 maja --- <slowo_obce>prairial</slowo_obce>, czyli miesiąc łąk, był dziewiątym miesiącem w kalendarzu rewolucyjnym]). Być może chodzi tu o któryś z raportów F. M. Cailleux (1761---1796), członka klubu jakobinów, który, mianowany oficerem municypalnym, był strażnikiem rodziny królewskiej w czasie jej pobytu w więzieniu w Tempie.</pr></naglowek_akt>
 
 
 <akap>Do pieśni --- do pieśni<pr>do pieśni --- występuje tu nie znany (anonimowy)autor, któremu jednak nie dane jest, jak dawnym średniowiecznym śpiewakom, opiewać wzniosłej, rycerskiej i bohaterskiej przeszłości, lecz teraźniejszość skarlałą i nędzną.</pr>.</akap>
 
 
-<akap></akap>
+<akap/>
 
 
-<akap>Kto ją zacznie, kto jej dokończy? --- Dajcie mi przeszłość, zbrojną w stal, powiewną rycerskimi pióry<pe><slowo_obce>pióry</slowo_obce> --- piórami.</pe>. --- Gotyckie wieże wywołam przed oczy wasze --- rzucę cień katedr świętych na głowy wam. --- Ale to nie to --- tego już nigdy nie będzie. ---<end id='e1187962248967' /></akap>
+<akap>Kto ją zacznie, kto jej dokończy? --- Dajcie mi przeszłość, zbrojną w stal, powiewną rycerskimi pióry<pe><slowo_obce>pióry</slowo_obce> --- piórami.</pe>. --- Gotyckie wieże wywołam przed oczy wasze --- rzucę cień katedr świętych na głowy wam. --- Ale to nie to --- tego już nigdy nie będzie. ---<end id="e1187962248967"/></akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap><begin id='b1187962285023' /><motyw id='m1187962285023'>Upadek</motyw>Ktokolwiek jesteś, powiedz mi, w co wierzysz --- łatwiej byś życia się pozbył, niż wiarę jaką wynalazł, wzbudził wiarę w sobie. Wstydźcie się, wstydźcie wszyscy, mali i wielcy, --- a mimo was, mimo żeście mierni i nędzni, bez serca i mózgu, świat dąży ku swoim celom, rwie za sobą, pędzi przed się, bawi się z wami, przerzuca, odrzuca --- walcem świat się toczy, pary znikają i powstają, wnet zapadają, bo ślisko --- bo krwi dużo<pr><slowo_obce>bo krwi dużo</slowo_obce> --- Występuje tu pogląd, że rozwój świata, który ,,dąży ku swoim celom", odbywa się poprzez krew.</pr> --- krew wszędzie --- krwi dużo, powiadam wam. ---<end id='e1187962285023' /></akap>
+<akap><begin id="b1187962285023"/><motyw id="m1187962285023">Upadek</motyw>Ktokolwiek jesteś, powiedz mi, w co wierzysz --- łatwiej byś życia się pozbył, niż wiarę jaką wynalazł, wzbudził wiarę w sobie. Wstydźcie się, wstydźcie wszyscy, mali i wielcy, --- a mimo was, mimo żeście mierni i nędzni, bez serca i mózgu, świat dąży ku swoim celom, rwie za sobą, pędzi przed się, bawi się z wami, przerzuca, odrzuca --- walcem świat się toczy, pary znikają i powstają, wnet zapadają, bo ślisko --- bo krwi dużo<pr><slowo_obce>bo krwi dużo</slowo_obce> --- Występuje tu pogląd, że rozwój świata, który ,,dąży ku swoim celom", odbywa się poprzez krew.</pr> --- krew wszędzie --- krwi dużo, powiadam wam. ---<end id="e1187962285023"/></akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap><begin id='b1187875587943' /><motyw id='m1187875587943'>Robotnik</motyw>Czy widzisz owe tłumy, stojące u bram miasta wśród wzgórzów<pe><slowo_obce>wzgórzów</slowo_obce> --- wzgórz.</pe> i sadzonych topoli --- namioty rozbite --- zastawione deski, długie, okryte mięsiwem i napojami, podparte pniami, drągami. --- Kubek lata z rąk do rąk --- a gdzie ust się dotknie, tam głos się wydobędzie, groźba, przysięga lub przeklęstwo. --- On lata, zawraca, krąży, tańcuje, zawsze pełny, brzęcząc, błyszcząc, wśród tysiąców<pe><slowo_obce>tysiąców</slowo_obce> --- tysięcy.</pe>. --- Niechaj żyje kielich pijaństwa i pociechy! ---</akap>
+<akap><begin id="b1187875587943"/><motyw id="m1187875587943">Robotnik</motyw>Czy widzisz owe tłumy, stojące u bram miasta wśród wzgórzów<pe><slowo_obce>wzgórzów</slowo_obce> --- wzgórz.</pe> i sadzonych topoli --- namioty rozbite --- zastawione deski, długie, okryte mięsiwem i napojami, podparte pniami, drągami. --- Kubek lata z rąk do rąk --- a gdzie ust się dotknie, tam głos się wydobędzie, groźba, przysięga lub przeklęstwo. --- On lata, zawraca, krąży, tańcuje, zawsze pełny, brzęcząc, błyszcząc, wśród tysiąców<pe><slowo_obce>tysiąców</slowo_obce> --- tysięcy.</pe>. --- Niechaj żyje kielich pijaństwa i pociechy! ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap>Czy widzicie, jak oni czekają niecierpliwie --- szemrzą między sobą, do wrzasków się gotują --- wszyscy nędzni, ze znojem na czole, z rozczuchranymi<pe><slowo_obce>rozczuchranymi</slowo_obce> --- rozczochranymi.</pe> włosy, w łachmanach, z spiekłymi twarzami, z dłoniami pomarszczonymi od trudu --- ci trzymają kosy, owi potrząsają młotami, heblami --- patrz --- ten wysoki trzyma topór spuszczony --- a tamten stemplem<pr><slowo_obce>stempel</slowo_obce> --- pręt metalowy do czyszczenia i nabijania strzelb dawnego typu, ładowanych od końca lufy. Z wymienionych tu narzędzi pracy, które w rękach zrewolucjonizowanego tłumu zamieniły się w broń, rozpoznać można ,,skład socjalny" rewolucjonistów. Są tu więc kowale, stolarze czy cieśle, szewcy, rzeźnicy, zaś właściciel stempla --- to być może dworski strzelec.</pr> żelaznym nad głową powija;<end id='e1187875587943' /> <begin id='b1187875636573' /><motyw id='m1187875636573'>Dziecko, Kobieta</motyw>dalej w bok pod wierzbą chłopię małe wisznię<pe><slowo_obce>wisznię</slowo_obce> --- wiśnię.</pe> do ust kładzie, a długie szydło w prawej ręce ściska<pe><slowo_obce>chłopię małe...</slowo_obce> --- Scena ta, czy raczej obrazek zaledwie, była przez badaczy interpretowana metaforycznie --- szydło w ręku dziecka ma za chwilę przebić wiśnię, by rozlał się jej krwistoczerwony sok. W ten sposób (ale w dalszych scenach również na inne sposoby) Krasiński pokazuje, że w obozie rewolucji nawet dzieci ,,bawią się zabijaniem". Ryciny z okresu rewolucji francuskiej 1789 r. ukazywały dzieci ,,igrające" odciętą głową zgilotynowanej ofiary rewolucji.</pe>. --- Kobiety przybyły także, ich matki, ich żony, głodne i biedne jak oni, zwiędłe przed czasem, bez śladów piękności --- na ich włosach kurzawa bitej drogi --- na ich łonach poszarpane odzieże --- w ich oczach coś gasnącego, ponurego, gdyby przedrzeźnianie wzroku --- ale wnet się ożywią --- kubek lata wszędzie, obiega wszędzie. --- Niech żyje kielich pijaństwa i pociechy! ---<end id='e1187875636573' /></akap>
+<akap>Czy widzicie, jak oni czekają niecierpliwie --- szemrzą między sobą, do wrzasków się gotują --- wszyscy nędzni, ze znojem na czole, z rozczuchranymi<pe><slowo_obce>rozczuchranymi</slowo_obce> --- rozczochranymi.</pe> włosy, w łachmanach, z spiekłymi twarzami, z dłoniami pomarszczonymi od trudu --- ci trzymają kosy, owi potrząsają młotami, heblami --- patrz --- ten wysoki trzyma topór spuszczony --- a tamten stemplem<pr><slowo_obce>stempel</slowo_obce> --- pręt metalowy do czyszczenia i nabijania strzelb dawnego typu, ładowanych od końca lufy. Z wymienionych tu narzędzi pracy, które w rękach zrewolucjonizowanego tłumu zamieniły się w broń, rozpoznać można ,,skład socjalny" rewolucjonistów. Są tu więc kowale, stolarze czy cieśle, szewcy, rzeźnicy, zaś właściciel stempla --- to być może dworski strzelec.</pr> żelaznym nad głową powija;<end id="e1187875587943"/> <begin id="b1187875636573"/><motyw id="m1187875636573">Dziecko, Kobieta</motyw>dalej w bok pod wierzbą chłopię małe wisznię<pe><slowo_obce>wisznię</slowo_obce> --- wiśnię.</pe> do ust kładzie, a długie szydło w prawej ręce ściska<pe><slowo_obce>chłopię małe...</slowo_obce> --- Scena ta, czy raczej obrazek zaledwie, była przez badaczy interpretowana metaforycznie --- szydło w ręku dziecka ma za chwilę przebić wiśnię, by rozlał się jej krwistoczerwony sok. W ten sposób (ale w dalszych scenach również na inne sposoby) Krasiński pokazuje, że w obozie rewolucji nawet dzieci ,,bawią się zabijaniem". Ryciny z okresu rewolucji francuskiej 1789 r. ukazywały dzieci ,,igrające" odciętą głową zgilotynowanej ofiary rewolucji.</pe>. --- Kobiety przybyły także, ich matki, ich żony, głodne i biedne jak oni, zwiędłe przed czasem, bez śladów piękności --- na ich włosach kurzawa bitej drogi --- na ich łonach poszarpane odzieże --- w ich oczach coś gasnącego, ponurego, gdyby przedrzeźnianie wzroku --- ale wnet się ożywią --- kubek lata wszędzie, obiega wszędzie. --- Niech żyje kielich pijaństwa i pociechy! ---<end id="e1187875636573"/></akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap><begin id='b1187875768569' /><motyw id='m1187875768569'>Przywódca</motyw>Teraz szum wielki powstał w zgromadzeniu --- czy to radość, czy rozpacz? --- kto rozpozna jakie uczucie w głosach tysiąców? --- Ten, który nadszedł, wstąpił na stół, wskoczył na krzesło i panuje nad nimi, mówi do nich. --- Głos jego przeciągły, ostry, wyraźny --- każde słowo rozeznasz, zrozumiesz --- ruchy jego powolne, łatwe, wtórują słowom, jak muzyka pieśni --- czoło wysokie, przestronne, włosa jednego na czaszce nie masz, wszystkie wypadły, strącone myślami --- skóra przyschła do czaszki, do liców, żółtawo się wcina pomiędzy koście i muszkuły<pe><slowo_obce>muszkuły</slowo_obce> --- muskuły.</pe> --- a od skroni broda czarna wieńcem twarz opasuje --- nigdy krwi, nigdy zmiennej barwy na licach --- oczy niewzruszone, wlepione w słuchaczy --- chwili jednej zwątpienia, pomieszania nie dojrzeć; a kiedy ramię wzniesie, wyciągnie, wytęży ponad nimi, schylają głowy, zda się, że wnet uklękną przed tym błogosławieństwem wielkiego rozumu --- nie serca --- precz z sercem, z przesądami<pr>Kleiner zwraca uwagę, że zestawienie tu ,,serca" i ,,przesądów" wskazuje na sięgnięcie do haseł rewolucji francuskiej, która walczyła z przesądami, jako nie opartymi na rozumie, rozum zaś odrzucał postawę uczuciową --- ,,serce".</pr>, a niech żyje słowo pociechy i mordu! ---</akap>
+<akap><begin id="b1187875768569"/><motyw id="m1187875768569">Przywódca</motyw>Teraz szum wielki powstał w zgromadzeniu --- czy to radość, czy rozpacz? --- kto rozpozna jakie uczucie w głosach tysiąców? --- Ten, który nadszedł, wstąpił na stół, wskoczył na krzesło i panuje nad nimi, mówi do nich. --- Głos jego przeciągły, ostry, wyraźny --- każde słowo rozeznasz, zrozumiesz --- ruchy jego powolne, łatwe, wtórują słowom, jak muzyka pieśni --- czoło wysokie, przestronne, włosa jednego na czaszce nie masz, wszystkie wypadły, strącone myślami --- skóra przyschła do czaszki, do liców, żółtawo się wcina pomiędzy koście i muszkuły<pe><slowo_obce>muszkuły</slowo_obce> --- muskuły.</pe> --- a od skroni broda czarna wieńcem twarz opasuje --- nigdy krwi, nigdy zmiennej barwy na licach --- oczy niewzruszone, wlepione w słuchaczy --- chwili jednej zwątpienia, pomieszania nie dojrzeć; a kiedy ramię wzniesie, wyciągnie, wytęży ponad nimi, schylają głowy, zda się, że wnet uklękną przed tym błogosławieństwem wielkiego rozumu --- nie serca --- precz z sercem, z przesądami<pr>Kleiner zwraca uwagę, że zestawienie tu ,,serca" i ,,przesądów" wskazuje na sięgnięcie do haseł rewolucji francuskiej, która walczyła z przesądami, jako nie opartymi na rozumie, rozum zaś odrzucał postawę uczuciową --- ,,serce".</pr>, a niech żyje słowo pociechy i mordu! ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap>To ich wściekłość, ich kochanie, to władzca<pe><slowo_obce>władzca</slowo_obce> --- władca.</pe> ich dusz i zapału --- on obiecuje im chleb i zarobek --- krzyki się wzbiły, rozciągnęły, pękły po wszystkich stronach --- ,,Niech żyje Pankracy<pr>Ukazanie postaci przywódcy rewolucji we wstępie do Części III jako mówcy na zaimprowizowanej <slowo_obce>ad hoc</slowo_obce> trybunie przemawiającego do tłumu, a więc jak gdyby od razu we właściwej mu akcji, jest zabiegiem interesującym i może być odczytane jako wskazówka dla inscenizatora. Dokładny opis wyglądu i gestykulacji Pankracego ukazuje go jako wprawnego przywódcę ludu --- demagoga. Postać Pankracego przyciągała uwagę wszystkich badaczy <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela>, którzy szukali dla wodza rewolucji pierwowzoru. We <tytul_dziela>Wstępie</tytul_dziela> do <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> w wyd. Bibl. Nar. pisze Kleiner, że Pankracy, ,,odarty z uroku poetyckiego, jest kontrastem bezwzględnym Henryka. Tamten jest wyobraźnią bez serca, on rozumem bez serca [...] Tamten musi być malarsko piękny --- on jest posągowo brzydki". Dalej pisze Kleiner, iż Pankracy ma ,,coś z psychiki Napoleona. I jest, jak Napoleon wobec monarchów, człowiekiem bez przodków, bez wykwintności rasowej, ale czującym, że w nim skupiła się wola zbiorowa" (s. XXXV). Podobnego zestawienia dokonał w połowie XIX w. krytyk ,,młodoniemiecki", cytowany już A. Jung: ,,Stary, dumny, upudrowany arystokratyzm, który swoją skłonność do użycia, poetyczne zamiłowania i <slowo_obce>esprit</slowo_obce> datuje od czasów Ludwika XIV, zostaje przeniesiony z Paryża do Warszawy i do swoich zamków; demokratyzm, który przenika do szkoły wojskowej w Brienne, zapala prometejską żagiew swej sławy od tulońskich lontów, zostaje przeniesiony na rękach wiwatującego ludu i osadzony na tronie; krótko mówiąc: Mąż i Pankracy, szlachta i Napoleon muszą ulec [...]" (s. 30). Nadanie przywódcy rewolucji imienia ,,znaczącego" (<slowo_obce>Pankracy</slowo_obce> --- z gr.: Wszechwładca) jest jeszcze jednym sposobem charakteryzowania bohatera.</pr>! --- chleba nam, chleba, chleba!" ---<end id='e1187875768569' /><begin id='b1187875942444' /><motyw id='m1187875942444'>Żyd</motyw> A u stóp mówcy opiera się na stole przyjaciel czy towarzysz, czy sługa. ---</akap>
+<akap>To ich wściekłość, ich kochanie, to władzca<pe><slowo_obce>władzca</slowo_obce> --- władca.</pe> ich dusz i zapału --- on obiecuje im chleb i zarobek --- krzyki się wzbiły, rozciągnęły, pękły po wszystkich stronach --- ,,Niech żyje Pankracy<pr>Ukazanie postaci przywódcy rewolucji we wstępie do Części III jako mówcy na zaimprowizowanej <slowo_obce>ad hoc</slowo_obce> trybunie przemawiającego do tłumu, a więc jak gdyby od razu we właściwej mu akcji, jest zabiegiem interesującym i może być odczytane jako wskazówka dla inscenizatora. Dokładny opis wyglądu i gestykulacji Pankracego ukazuje go jako wprawnego przywódcę ludu --- demagoga. Postać Pankracego przyciągała uwagę wszystkich badaczy <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela>, którzy szukali dla wodza rewolucji pierwowzoru. We <tytul_dziela>Wstępie</tytul_dziela> do <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> w wyd. Bibl. Nar. pisze Kleiner, że Pankracy, ,,odarty z uroku poetyckiego, jest kontrastem bezwzględnym Henryka. Tamten jest wyobraźnią bez serca, on rozumem bez serca [...] Tamten musi być malarsko piękny --- on jest posągowo brzydki". Dalej pisze Kleiner, iż Pankracy ma ,,coś z psychiki Napoleona. I jest, jak Napoleon wobec monarchów, człowiekiem bez przodków, bez wykwintności rasowej, ale czującym, że w nim skupiła się wola zbiorowa" (s. XXXV). Podobnego zestawienia dokonał w połowie XIX w. krytyk ,,młodoniemiecki", cytowany już A. Jung: ,,Stary, dumny, upudrowany arystokratyzm, który swoją skłonność do użycia, poetyczne zamiłowania i <slowo_obce>esprit</slowo_obce> datuje od czasów Ludwika XIV, zostaje przeniesiony z Paryża do Warszawy i do swoich zamków; demokratyzm, który przenika do szkoły wojskowej w Brienne, zapala prometejską żagiew swej sławy od tulońskich lontów, zostaje przeniesiony na rękach wiwatującego ludu i osadzony na tronie; krótko mówiąc: Mąż i Pankracy, szlachta i Napoleon muszą ulec [...]" (s. 30). Nadanie przywódcy rewolucji imienia ,,znaczącego" (<slowo_obce>Pankracy</slowo_obce> --- z gr.: Wszechwładca) jest jeszcze jednym sposobem charakteryzowania bohatera.</pr>! --- chleba nam, chleba, chleba!" ---<end id="e1187875768569"/><begin id="b1187875942444"/><motyw id="m1187875942444">Żyd</motyw> A u stóp mówcy opiera się na stole przyjaciel czy towarzysz, czy sługa. ---</akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<akap>Oko wschodnie, czarne, cieniowane długimi rzęsy --- ramiona obwisłe, nogi uginające się, ciało niedołężnie w bok schylone --- na ustach coś lubieżnego, coś złośliwego, na palcach złote pierścienie --- i on także głosem chrapliwym woła --- ,,Niech żyje Pankracy!" --- Mówca ku niemu na chwilę wzrok obrócił. --- ,,Obywatelu przechrzto<pr><slowo_obce>Obywatelu przechrzto</slowo_obce> --- Od czasu rewolucji francuskiej forma <slowo_obce>obywatel</slowo_obce> (w miejsce dawnego ,,pan") weszła w skład słownika demokratycznego; <slowo_obce>przechrzta</slowo_obce> --- nazwa nadawana Żydom, którzy zmienili wyznanie z judaizmu na chrześcijaństwo.</pr>, podaj mi chustkę".---<end id='e1187875942444' /></akap>
+<akap>Oko wschodnie, czarne, cieniowane długimi rzęsy --- ramiona obwisłe, nogi uginające się, ciało niedołężnie w bok schylone --- na ustach coś lubieżnego, coś złośliwego, na palcach złote pierścienie --- i on także głosem chrapliwym woła --- ,,Niech żyje Pankracy!" --- Mówca ku niemu na chwilę wzrok obrócił. --- ,,Obywatelu przechrzto<pr><slowo_obce>Obywatelu przechrzto</slowo_obce> --- Od czasu rewolucji francuskiej forma <slowo_obce>obywatel</slowo_obce> (w miejsce dawnego ,,pan") weszła w skład słownika demokratycznego; <slowo_obce>przechrzta</slowo_obce> --- nazwa nadawana Żydom, którzy zmienili wyznanie z judaizmu na chrześcijaństwo.</pr>, podaj mi chustkę".---<end id="e1187875942444"/></akap>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <akap>Tymczasem trwają poklaski i wrzaski. --- ,,Chleba nam, chleba, chleba! --- Śmierć panom, śmierć kupcom --- chleba, chleba!" ---</akap>
@@ -2314,7 +2314,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<sekcja_swiatlo />
+<sekcja_swiatlo/>
 
 
 
@@ -2450,15 +2450,15 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187880932493' /><motyw id='m1187880932493'>Przywódca</motyw>Namiot --- porozrzucane butelki, kielichy.</didaskalia>
+<didaskalia><begin id="b1187880932493"/><motyw id="m1187880932493">Przywódca</motyw>Namiot --- porozrzucane butelki, kielichy.</didaskalia>
 
 
 <naglowek_osoba>PANKRACY</naglowek_osoba>
 	<kwestia>
-		<akap>Pięćdziesięciu hulało tu przed chwilą i za każdym słowem moim krzyczało --- <slowo_obce>Vivat</slowo_obce> --- czy choć jeden zrozumiał myśli moje? --- pojął koniec drogi, u początku której hałasuje? --- Ach! <slowo_obce>servile imitatorum pecus</slowo_obce><pr><slowo_obce>servile imitatorum pecus</slowo_obce> (łac.) --- niewolnicza trzoda naśladowców. Jest to parafraza z Horacego <tytul_dziela>Epistolarum liber 19: O imitatores, servum pecus!</tytul_dziela> (O naśladowcy, trzodo niewolnicza!). W rękopisie, wyd. I i następnych aż do wyd. T. Piniego miejsce to było skażone błędem (zniekształcono pierwsze słowo użytego zwrotu, odczytując je jako <slowo_obce>fervide</slowo_obce> (łac.) --- zapalony, gorliwy, zagorzały).</pr>. ---<end id='e1187880932493' /></akap>
+		<akap>Pięćdziesięciu hulało tu przed chwilą i za każdym słowem moim krzyczało --- <slowo_obce>Vivat</slowo_obce> --- czy choć jeden zrozumiał myśli moje? --- pojął koniec drogi, u początku której hałasuje? --- Ach! <slowo_obce>servile imitatorum pecus</slowo_obce><pr><slowo_obce>servile imitatorum pecus</slowo_obce> (łac.) --- niewolnicza trzoda naśladowców. Jest to parafraza z Horacego <tytul_dziela>Epistolarum liber 19: O imitatores, servum pecus!</tytul_dziela> (O naśladowcy, trzodo niewolnicza!). W rękopisie, wyd. I i następnych aż do wyd. T. Piniego miejsce to było skażone błędem (zniekształcono pierwsze słowo użytego zwrotu, odczytując je jako <slowo_obce>fervide</slowo_obce> (łac.) --- zapalony, gorliwy, zagorzały).</pr>. ---<end id="e1187880932493"/></akap>
 	</kwestia>
 	
 	<didaskalia>Wchodzi <osoba>Leonard</osoba> i <osoba>Przechrzta</osoba>.</didaskalia>
@@ -2536,7 +2536,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <didaskalia><osoba>Przechrzta</osoba> wychodzi.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1187881146552' /><motyw id='m1187881146552'>Przywódca</motyw>LEONARD</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881146552"/><motyw id="m1187881146552">Przywódca</motyw>LEONARD</naglowek_osoba>
 	<kwestia>
 		<akap>Na co ta odwłoka, te półśrodki, układy --- rozmowy? --- Kiedym przysiągł uwielbiać i słuchać ciebie, to że cię miałem za bohatera ostateczności, za orła lecącego wprost do celu, za człowieka stawiającego siebie i swoich wszystkich na jedną kartę. ---</akap>
 	</kwestia>
@@ -2644,7 +2644,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>PANKRACY</naglowek_osoba>
 	<kwestia>
-		<akap>Myśl więcej, gadaj mniej, a kiedyś mnie zrozumiesz. --- Czy posłałeś do magazynu po dwa tysiące ładunków? ---<end id='e1187881146552' /></akap>
+		<akap>Myśl więcej, gadaj mniej, a kiedyś mnie zrozumiesz. --- Czy posłałeś do magazynu po dwa tysiące ładunków? ---<end id="e1187881146552"/></akap>
 	</kwestia>
 
 
@@ -2654,7 +2654,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187881390110' /><motyw id='m1187881390110'>Sługa, Szlachcic , Walka klas</motyw>PANKRACY</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881390110"/><motyw id="m1187881390110">Sługa, Szlachcic , Walka klas</motyw>PANKRACY</naglowek_osoba>
 	<kwestia>
 		<akap>A składka szewców oddana do kasy naszej?</akap>
 	</kwestia>
@@ -2704,7 +2704,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>PANKRACY</naglowek_osoba>
 	<kwestia>
-		<akap>Ale poeta zarazem<pr>Pankracy opiera swój plan przeciągnięcia hr. Henryka na stronę rewolucjonistów na możliwości oddziałania na poetycką wyobraźnię arystokraty. Później w rozmowie ze swym antagonistą bystro spostrzeże: ,,trafiłem do nerwu poezji".</pr>. --- Teraz zostaw mnie samym. ---<end id='e1187881390110' /></akap>
+		<akap>Ale poeta zarazem<pr>Pankracy opiera swój plan przeciągnięcia hr. Henryka na stronę rewolucjonistów na możliwości oddziałania na poetycką wyobraźnię arystokraty. Później w rozmowie ze swym antagonistą bystro spostrzeże: ,,trafiłem do nerwu poezji".</pr>. --- Teraz zostaw mnie samym. ---<end id="e1187881390110"/></akap>
 	</kwestia>
 
 
@@ -2761,15 +2761,15 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187881448062' /><motyw id='m1187881448062'>Przywódca, Konflikt wewnętrzny</motyw>PANKRACY</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881448062"/><motyw id="m1187881448062">Przywódca, Konflikt wewnętrzny</motyw>PANKRACY</naglowek_osoba>
 	<kwestia>
 		<akap>Dlaczegóż mnie, wodzowi tysiąców, ten jeden człowiek na zawadzie stoi? --- Siły jego małe w porównaniu z moimi --- kilkaset chłopów, ślepo wierzących jego słowu, przywiązanych miłością swojskich zwierząt... To nędza, to zero. --- Czemuż tak pragnę go widzieć, omamić --- czyż duch mój napotkał równego sobie i na chwilę się zatrzymał? --- Ostatnia to zapora dla mnie na tych równinach --- trza ją obalić, a potem... Myśli moja, czyż nie zdołasz łudzić siebie, jako drugich łudzisz --- wstydź się, przecie ty znasz swój cel, ty jesteś myślą --- panią ludu --- w tobie zeszła się wola i potęga wszystkich --- i co zbrodnią dla innych, to chwałą dla ciebie. --- Ludziom podłym, nieznanym, nadałaś imiona --- ludziom bez czucia wiarę nadałaś --- świat na podobieństwo swoje<pr><slowo_obce>świat na podobieństwo swoje</slowo_obce> --- w poprzednich wyd. Bibl. Nar. brak tych słów.</pr> --- świat nowy utworzyłaś naokoło siebie --- a sama błąkasz się i nie wiesz, czym jesteś. --- Nie, nie, nie --- ty jesteś wielką<pr>Monolog Pankracego ukazuje przywódcę rewolucji jako człowieka pełnego wątpliwości.</pr>!</akap>
 	
-		<didaskalia>pada na krzesło i duma<end id='e1187881448062' /></didaskalia>
+		<didaskalia>pada na krzesło i duma<end id="e1187881448062"/></didaskalia>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Bór --- porozwieszane płótna na drzewach --- w środku łąka, na której stoi szubienica --- szałasy --- namioty --- ogniska --- beczki --- tłumy ludzi.</didaskalia>
@@ -2803,7 +2803,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187881583782' /><motyw id='m1187881583782'>Chłop, Taniec, Walka klas</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881583782"/><motyw id="m1187881583782">Chłop, Taniec, Walka klas</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Mów ze mną jak ze znajomym, z przyjacielem nowo przybyłym. --- Cóż to za taniec? ---</akap>
 	</kwestia>
@@ -2819,25 +2819,25 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Chleba, zarobku, drzewa na opał w zimie, odpoczynku w lecie! --- Hura --- Hura!</akap>
 	
-		<akap></akap>
+		<akap/>
 		
 		<akap>Bóg nad nami nie miał litości --- Hura --- Hura! ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
 		<akap>Królowie nad nami nie mieli litości --- Hura --- Hura! ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
 		<akap>Panowie nad nami nie mieli litości --- Hura! ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
-		<akap>My dziś Bogu, królom i panom za służbę podziękujem --- Hura --- Hura! ---<end id='e1187881583782' /></akap>
+		<akap>My dziś Bogu, królom i panom za służbę podziękujem --- Hura --- Hura! ---<end id="e1187881583782"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187881738179' /><motyw id='m1187881738179'>Kobieta, Sługa</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881738179"/><motyw id="m1187881738179">Kobieta, Sługa</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<didaskalia>do dziewczyny</didaskalia>
 	
@@ -2847,7 +2847,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>DZIEWCZYNA</naglowek_osoba>
 	<kwestia>
-		<akap>A dyć tośmy długo na taki dzień czekały. --- Juści, ja myłam talerze, widelce szurowała ścierką, dobrego słowa nie słyszała nigdy --- a dyć czas, czas, bym jadła sama --- tańcowała sama<pr>Związek wypowiedzi Dziewczyny z rozmową, jaką przeprowadził Krasiński w karczmie w Ferney na temat rewolucji w Lyonie ze służącą, odnotował już J. Kallenbach w monografii <tytul_dziela>Zygmunt Krasiński...</tytul_dziela>, Lwów 1904. Relacja z tej rozmowy zawarta jest w liście do Reeve'a (<tytul_dziela>Correspondance</tytul_dziela>, t. I, s. 378--381).</pr> --- Hura! ---<end id='e1187881738179' /></akap>
+		<akap>A dyć tośmy długo na taki dzień czekały. --- Juści, ja myłam talerze, widelce szurowała ścierką, dobrego słowa nie słyszała nigdy --- a dyć czas, czas, bym jadła sama --- tańcowała sama<pr>Związek wypowiedzi Dziewczyny z rozmową, jaką przeprowadził Krasiński w karczmie w Ferney na temat rewolucji w Lyonie ze służącą, odnotował już J. Kallenbach w monografii <tytul_dziela>Zygmunt Krasiński...</tytul_dziela>, Lwów 1904. Relacja z tej rozmowy zawarta jest w liście do Reeve'a (<tytul_dziela>Correspondance</tytul_dziela>, t. I, s. 378--381).</pr> --- Hura! ---<end id="e1187881738179"/></akap>
 	</kwestia>
 
 
@@ -2871,7 +2871,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187881803649' /><motyw id='m1187881803649'>Konflikt, Sługa, Walka klas</motyw>PRZECHRZTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881803649"/><motyw id="m1187881803649">Konflikt, Sługa, Walka klas</motyw>PRZECHRZTA</naglowek_osoba>
 	<kwestia>
 		<akap>Pod tym dębem siedzi klub Lokajów<pr>Wielka rewolucja francuska wprowadziła nazwę klubów dla ugrupowań politycznych (np. klub jakobinów). W czasie powstania listopadowego działał klub patriotyczny. Tu Krasiński wprowadził nazwę klubów dla zawodowych ugrupowań rewolucjonistów.</pr>. ---</akap>
 	</kwestia>
@@ -2915,11 +2915,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>CHÓR LOKAI</naglowek_osoba>
 	<kwestia>
-		<akap>Z przedpokojów, więzień naszych, razem, zgodnie, jednym wypadliśmy rzutem --- <slowo_obce>Vivat!</slowo_obce> --- Salonów znamy śmieszności i wszeteczeństwa<pr><slowo_obce>wszeteczeństwa</slowo_obce> --- w drukach: ,,wszeteczności", poprawione przez Czubka na podstawie rękopisu.</pr> --- <slowo_obce>Vivat!</slowo_obce> --- <slowo_obce>Vivat!</slowo_obce> ---<end id='e1187881803649' /></akap>
+		<akap>Z przedpokojów, więzień naszych, razem, zgodnie, jednym wypadliśmy rzutem --- <slowo_obce>Vivat!</slowo_obce> --- Salonów znamy śmieszności i wszeteczeństwa<pr><slowo_obce>wszeteczeństwa</slowo_obce> --- w drukach: ,,wszeteczności", poprawione przez Czubka na podstawie rękopisu.</pr> --- <slowo_obce>Vivat!</slowo_obce> --- <slowo_obce>Vivat!</slowo_obce> ---<end id="e1187881803649"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187881928476' /><motyw id='m1187881928476'>Robotnik, Walka klas, Zbrodnia</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187881928476"/><motyw id="m1187881928476">Robotnik, Walka klas, Zbrodnia</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Cóż to za głosy, twardsze i dziksze, wychodzące z tej gęstwiny na lewo? ---</akap>
 	</kwestia>
@@ -2935,7 +2935,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Obuch i nóż to broń nasza --- szlachtuz<pr><slowo_obce>szlachtuz</slowo_obce> (z niem. <slowo_obce>Schlachthaus</slowo_obce>) --- rzeźnia.</pr> to życie nasze. --- Nam jedno: czy bydło, czy panów rznąć. ---</akap>
 		
-		<akap></akap>
+		<akap/>
 		
 		<akap>Dzieci siły i krwi, obojętnie patrzym na drugich, słabszych i bielszych --- kto nas powoła, ten nas ma --- dla panów woły, dla ludu panów bić będziem.</akap>
 		
@@ -2945,7 +2945,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Tych lubię --- przynajmniej nie wspominają ani o honorze, ani o filozofii.<end id='e1187881928476' /><begin id='b1187882002047' /><motyw id='m1187882002047'>Kobieta</motyw> --- Dobry wieczór Pani. ---</akap>
+		<akap>Tych lubię --- przynajmniej nie wspominają ani o honorze, ani o filozofii.<end id="e1187881928476"/><begin id="b1187882002047"/><motyw id="m1187882002047">Kobieta</motyw> --- Dobry wieczór Pani. ---</akap>
 	</kwestia>
 
 
@@ -2989,11 +2989,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Życzę Obywatelce miłej przechadzki. ---<end id='e1187882002047' /></akap>
+		<akap>Życzę Obywatelce miłej przechadzki. ---<end id="e1187882002047"/></akap>
 	
 		<didaskalia>przechodzi</didaskalia>
 		
-		<akap><begin id='b1187882864396' /><motyw id='m1187882864396'>Władza, Żołnierz</motyw>Któż jest ten dziwny żołnierz --- oparty na szabli obosiecznej, z główką trupią na czapce, z drugą na felcechu<pr><slowo_obce>felcech</slowo_obce> (z niem. <slowo_obce>Feldzeichen</slowo_obce>) --- pas ukośny od ramienia do biodra, służący do zawieszania broni siecznej.</pr>, z trzecią na piersiach? --- Czy to nie sławny Bianchetti<pr>S. Skwarczyńska w osobie Bianchettiego widzi jeden z dowodów, że obraz rewolucji w <tytul_dziela>Nie--Boskiej...</tytul_dziela> wzorowany był na planie karbonarskiej rewolucji powszechnej. Nazwisko Bianchetti powstało z połączenia nazwiska Filippo Michele Bounarrotti, jednego z najwybitniejszych włoskich rewolucjonistów związanych z karbonaryzmem, oraz Louis--Auguste Blanqui, francuskiego rewolucjonisty, który, powiązany z organizacjami rewolucyjnymi w wojsku, otrzymał stopień generała przyszłej rewolucji. Nazwą <slowo_obce>kondotiera</slowo_obce> (z wł. <slowo_obce>condottiere</slowo_obce> --- najemnik) mianowano pierwotnie we Włoszech opłacanego żołdem dowódcę wojsk najemnych, z czasem nazwa przeszła na dowódców wojsk najemnych nie tylko we Włoszech, następnie była używana w sensie przenośnym dla określenia człowieka gotowego służyć każdej sprawie, jeśli przynosiła ona zysk osobisty. Bianchetti jest przywódcą armii rewolucyjnej jako fachowiec, co nie oznacza, przynajmniej w oczach hr. Henryka, że jest on ideowo związany z obozem rewolucji. Stąd dalsze jego ostrzeżenie, że z takich właśnie ludzi wyrośnie nowa arystokracja. Kleiner przypomina w przypisie, że kondotierzy we Włoszech ,,dochodzili nawet do władzy książęcej".</pr>, taki dziś kondotier ludów, jako dawniej bywali kondotiery książąt i rządów? ---</akap>
+		<akap><begin id="b1187882864396"/><motyw id="m1187882864396">Władza, Żołnierz</motyw>Któż jest ten dziwny żołnierz --- oparty na szabli obosiecznej, z główką trupią na czapce, z drugą na felcechu<pr><slowo_obce>felcech</slowo_obce> (z niem. <slowo_obce>Feldzeichen</slowo_obce>) --- pas ukośny od ramienia do biodra, służący do zawieszania broni siecznej.</pr>, z trzecią na piersiach? --- Czy to nie sławny Bianchetti<pr>S. Skwarczyńska w osobie Bianchettiego widzi jeden z dowodów, że obraz rewolucji w <tytul_dziela>Nie--Boskiej...</tytul_dziela> wzorowany był na planie karbonarskiej rewolucji powszechnej. Nazwisko Bianchetti powstało z połączenia nazwiska Filippo Michele Bounarrotti, jednego z najwybitniejszych włoskich rewolucjonistów związanych z karbonaryzmem, oraz Louis--Auguste Blanqui, francuskiego rewolucjonisty, który, powiązany z organizacjami rewolucyjnymi w wojsku, otrzymał stopień generała przyszłej rewolucji. Nazwą <slowo_obce>kondotiera</slowo_obce> (z wł. <slowo_obce>condottiere</slowo_obce> --- najemnik) mianowano pierwotnie we Włoszech opłacanego żołdem dowódcę wojsk najemnych, z czasem nazwa przeszła na dowódców wojsk najemnych nie tylko we Włoszech, następnie była używana w sensie przenośnym dla określenia człowieka gotowego służyć każdej sprawie, jeśli przynosiła ona zysk osobisty. Bianchetti jest przywódcą armii rewolucyjnej jako fachowiec, co nie oznacza, przynajmniej w oczach hr. Henryka, że jest on ideowo związany z obozem rewolucji. Stąd dalsze jego ostrzeżenie, że z takich właśnie ludzi wyrośnie nowa arystokracja. Kleiner przypomina w przypisie, że kondotierzy we Włoszech ,,dochodzili nawet do władzy książęcej".</pr>, taki dziś kondotier ludów, jako dawniej bywali kondotiery książąt i rządów? ---</akap>
 	</kwestia>
 
 
@@ -3069,11 +3069,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<didaskalia>do <osoba>Przechrzty</osoba></didaskalia>
 	
-		<akap>Radzę wam, go zabijcie, bo tak się poczyna każda Arystokracja<pr>S. Skwarczyńska pisze w związku z tą sceną: ,,[...] myśl o kondotierstwie, o geniuszu, z którego poczyna się wszelka arystokracja --- mógł zaszczepić Krasińskiemu Napoleon, niegdyś generał wojsk rewolucyjnej Francji, a potem cesarz, ten, który rewolucję zdradził" (s. 28).</pr>. ---<end id='e1187882864396' /></akap>
+		<akap>Radzę wam, go zabijcie, bo tak się poczyna każda Arystokracja<pr>S. Skwarczyńska pisze w związku z tą sceną: ,,[...] myśl o kondotierstwie, o geniuszu, z którego poczyna się wszelka arystokracja --- mógł zaszczepić Krasińskiemu Napoleon, niegdyś generał wojsk rewolucyjnej Francji, a potem cesarz, ten, który rewolucję zdradził" (s. 28).</pr>. ---<end id="e1187882864396"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187882946813' /><motyw id='m1187882946813'>Robotnik, Walka klas</motyw>RZEMIEŚLNIK</naglowek_osoba>
+<naglowek_osoba><begin id="b1187882946813"/><motyw id="m1187882946813">Robotnik, Walka klas</motyw>RZEMIEŚLNIK</naglowek_osoba>
 	<kwestia>
 		<akap>Przeklęstwo --- przeklęstwo. ---</akap>
 	</kwestia>
@@ -3091,7 +3091,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187883104223' /><motyw id='m1187883104223'>Żyd</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187883104223"/><motyw id="m1187883104223">Żyd</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Wychylże czarę, którą trzymasz w dłoni. ---</akap>
 	</kwestia>
@@ -3115,7 +3115,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Tchórzu wolności, obywatelu Przechrzto, patrz na tę głowę bez życia, pływającą w pokrwawie<pr><slowo_obce>pokrwawa</slowo_obce> --- krwawy odblask; jest to neologizm utworzony przez Krasińskiego analogicznie do formy ,,poświata".</pr> zachodzącego słońca. ---</akap>
 
-		<akap>Gdzie się podzieją teraz wasze wyrazy, wasze obietnice --- równość --- doskonałość i szczęście rodu ludzkiego<pr>Wyd. Libery i Sawrymowicza sugeruje w przypisie, że zarzut hr. Henryka skierowany jest rzekomo do obozu rewolucyjnego, jako odpowiedzialnego za śmierć robotnika, który przecież jednak zginął jako ofiara wyzysku kapitalistycznego. Podobnie Kleiner uważa, że ,,Henryk niesłusznie wysnuwa ze śmierci robotnika zarzuty przeciw partii Pankracego". Wydaje się jednak, że Henrykowi chodzi o to, iż cierpienia fizycznego i śmierci rewolucja nie jest w stanie odsunąć od ludzkości, że zatem obietnice ,,doskonałości i szczęścia rodu ludzkiego" są oszustwem.</pr>? ---<end id='e1187882946813' /></akap>
+		<akap>Gdzie się podzieją teraz wasze wyrazy, wasze obietnice --- równość --- doskonałość i szczęście rodu ludzkiego<pr>Wyd. Libery i Sawrymowicza sugeruje w przypisie, że zarzut hr. Henryka skierowany jest rzekomo do obozu rewolucyjnego, jako odpowiedzialnego za śmierć robotnika, który przecież jednak zginął jako ofiara wyzysku kapitalistycznego. Podobnie Kleiner uważa, że ,,Henryk niesłusznie wysnuwa ze śmierci robotnika zarzuty przeciw partii Pankracego". Wydaje się jednak, że Henrykowi chodzi o to, iż cierpienia fizycznego i śmierci rewolucja nie jest w stanie odsunąć od ludzkości, że zatem obietnice ,,doskonałości i szczęścia rodu ludzkiego" są oszustwem.</pr>? ---<end id="e1187882946813"/></akap>
 	</kwestia>
 
 
@@ -3149,11 +3149,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Dzięki ci za troskliwość, mości Żydzie --- nazad! --- Chcę obywateli raz jeszcze<pr><slowo_obce>raz jeszcze</slowo_obce> --- w poprzednich wyd. Bibl. Nar.: ,,jeszcze raz".</pr> w zmierzchu obejrzyć. ---<end id='e1187883104223' /></akap>
+		<akap>Dzięki ci za troskliwość, mości Żydzie --- nazad! --- Chcę obywateli raz jeszcze<pr><slowo_obce>raz jeszcze</slowo_obce> --- w poprzednich wyd. Bibl. Nar.: ,,jeszcze raz".</pr> w zmierzchu obejrzyć. ---<end id="e1187883104223"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187883285232' /><motyw id='m1187883285232'>Chłop, Konflikt, Poezja, Szlachcic , Walka klas</motyw>GŁOS POMIĘDZY DRZEWAMI</naglowek_osoba>
+<naglowek_osoba><begin id="b1187883285232"/><motyw id="m1187883285232">Chłop, Konflikt, Poezja, Szlachcic , Walka klas</motyw>GŁOS POMIĘDZY DRZEWAMI</naglowek_osoba>
 	<kwestia>
 		<akap>Syn chamów dobranoc zasyła staremu słonku.</akap>
 	</kwestia>
@@ -3237,14 +3237,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Nim pogardzam, a was nienawidzę --- poezja to wszystko ozłoci kiedyś. --- Dalej, Żydzie --- dalej! ---</akap>
 	
-		<didaskalia>zapuszcza się w krzaki<end id='e1187883285232' /></didaskalia>
+		<didaskalia>zapuszcza się w krzaki<end id="e1187883285232"/></didaskalia>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
-<didaskalia><begin id='b1187883693757' /><motyw id='m1187883693757'>Bóg, Bunt </motyw>Inna część boru --- wzgórze z rozpalonymi ogniami --- zgromadzenie ludzi przy pochodniach.</didaskalia>
+<didaskalia><begin id="b1187883693757"/><motyw id="m1187883693757">Bóg, Bunt </motyw>Inna część boru --- wzgórze z rozpalonymi ogniami --- zgromadzenie ludzi przy pochodniach.</didaskalia>
 
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
@@ -3317,7 +3317,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187884031303' /><motyw id='m1187884031303'>Bunt , Kobieta, Miłość, Władza</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884031303"/><motyw id="m1187884031303">Bunt , Kobieta, Miłość, Władza</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Któż jest ten młody człowiek, na gruzach przybytku stojący? --- Trzy ogniska palą się pod nim, wśród dymu i łuny twarz jego płonie, głos jego brzmi szaleństwem. ---</akap>
 	</kwestia>
@@ -3397,11 +3397,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>CHÓR NIEWIAST</naglowek_osoba>
 	<kwestia>
-		<akap>Szczęśliwa, szczęśliwa oblubienica Proroka --- my tu na dole stoimy i zazdrościm jej chwały. ---<end id='e1187884031303' /></akap>
+		<akap>Szczęśliwa, szczęśliwa oblubienica Proroka --- my tu na dole stoimy i zazdrościm jej chwały. ---<end id="e1187884031303"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187884170339' /><motyw id='m1187884170339'>Bunt , Konflikt, Walka klas, Władza, Zbrodnia, Zbrodniarz</motyw>LEONARD</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884170339"/><motyw id="m1187884170339">Bunt , Konflikt, Walka klas, Władza, Zbrodnia, Zbrodniarz</motyw>LEONARD</naglowek_osoba>
 	<kwestia>
 		<akap>Świat nowy ogłaszam --- Bogu nowemu oddaję niebiosa. Panie swobody i rozkoszy, Boże ludu, każda ofiara zemsty, trup każdego ciemięzcy twoim niech będzie ołtarzem --- w oceanie krwi utoną stare łzy i cierpienia rodu ludzkiego --- życiem jego odtąd szczęście --- prawem jego równość --- a kto inne tworzy, temu stryczek i przeklęstwo. ---</akap>
 	</kwestia>
@@ -3465,11 +3465,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>CHÓR ZABÓJCÓW</naglowek_osoba>
 	<kwestia>
-		<akap>Pójdziemy nocą ciemną, sztylety ściskając w dłoniach, pójdziemy, pójdziemy. ---<end id='e1187884170339' /></akap>
+		<akap>Pójdziemy nocą ciemną, sztylety ściskając w dłoniach, pójdziemy, pójdziemy. ---<end id="e1187884170339"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187884251231' /><motyw id='m1187884251231'>Bóg, Kobieta, Kochanek, Władza</motyw>LEONARD</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884251231"/><motyw id="m1187884251231">Bóg, Kobieta, Kochanek, Władza</motyw>LEONARD</naglowek_osoba>
 	<kwestia>
 		<akap>Obudź się, urodziwa moja. ---</akap>
 	</kwestia>
@@ -3485,11 +3485,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>DZIEWICA</naglowek_osoba>
 	<kwestia>
-		<akap>Pałam miłością ku tobie i Bogu twemu, światu całemu miłość rozdam moją --- płonę --- płonę.<end id='e1187884251231' /></akap>
+		<akap>Pałam miłością ku tobie i Bogu twemu, światu całemu miłość rozdam moją --- płonę --- płonę.<end id="e1187884251231"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187884318268' /><motyw id='m1187884318268'>Filozof</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884318268"/><motyw id="m1187884318268">Filozof</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Ktoś mu zabiegł --- padł na kolana --- mocuje się sam z sobą, coś bełkoce, coś jęczy. ---</akap>
 	</kwestia>
@@ -3521,7 +3521,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		
 		<didaskalia>do <osoba>Hermana</osoba></didaskalia>
 		
-		<akap>Olejem, którym dawniej namaszczano królów, na zgubę królom namaszczam cię dzisiaj --- broń dawnych rycerzy i Panów na zatratę panów kładę w ręce twoje --- na twoich Piersiach zawieszam medalion, pełny trucizny tam, gdzie twoje żelazo nie dojdzie, niech ona żre i pali wnętrzności tyranów. --- Idź i niszcz stare pokolenia po wszech stronach świata<pr>S. Skwarczyńska w tej formule ,,święcenia" dopatruje się stylizacji na obrzędy wtajemniczeń karbonarskich. Motywy karbonarskie według niej widoczne są w całej tej scenie.</pr>. ---<end id='e1187884318268' /></akap>
+		<akap>Olejem, którym dawniej namaszczano królów, na zgubę królom namaszczam cię dzisiaj --- broń dawnych rycerzy i Panów na zatratę panów kładę w ręce twoje --- na twoich Piersiach zawieszam medalion, pełny trucizny tam, gdzie twoje żelazo nie dojdzie, niech ona żre i pali wnętrzności tyranów. --- Idź i niszcz stare pokolenia po wszech stronach świata<pr>S. Skwarczyńska w tej formule ,,święcenia" dopatruje się stylizacji na obrzędy wtajemniczeń karbonarskich. Motywy karbonarskie według niej widoczne są w całej tej scenie.</pr>. ---<end id="e1187884318268"/></akap>
 	</kwestia>
 
 
@@ -3537,7 +3537,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187884523677' /><motyw id='m1187884523677'>Kobieta, Bunt</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884523677"/><motyw id="m1187884523677">Kobieta, Bunt</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Nie --- chcę tego snu dokończyć<pr>Kleiner stwierdza, że Henryk ,,odczuwa wszystko to, co widzi, niby przez sen dręczący".</pr>. ---</akap>
 	</kwestia>
@@ -3583,7 +3583,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Widzę go znowu --- drugie niewiasty cisną się za nim, blade, obłąkane, w konwulsjach. --- Syn filozofa pieni się, potrząsa sztyletem. --- Dochodzą teraz do ruin wieży północnej. ---</akap>
 	
-		<akap>Stanęli --- pląsają na gruzach --- rozrywają nie obalone arkady --- sypią iskrami na leżące ołtarze i krzyże --- płomień się zajmuje i gna słupy dymu przed sobą --- biada wam --- biada<pr>Już Kleiner w przypisie do tej sceny wtrącił nawiasowo uwagę, że orgiastyczny charakter nabożeństwa nasuwa ,,myśl o ,,sabatach" czarownic pod przewodnictwem szatana jako ,,mistrza Leonarda"". Uznał jednak tę scenę za parodię saintsimonistycznych nabożeństw, jakie miały się odbywać w przyszłości. W. Kubacki natomiast uznał tę scenę za rozstrzygającą dla interpretacji całości dramatu Krasińskiego. Pisze on, że ,,Krasiński świadomie wystylizował ten ustęp na jakiś rewolucyjny ,,sabat". Po przeprowadzeniu analizy pisze dalej Kubacki, że ,,w scenie z Leonardem mamy ukrytą paralelę: rewolucja --- sabat, ruch społeczny --- natchnienie piekieł, trybun ludu, Leonard --- szatan z średniowiecznej legendy, wielki mistrz wszelkiego rozpasania i wyuzdania". Interpretację tę Podsumowuje Kubacki pisząc, iż historiozofia autora <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> nie jest ,,zbyt złożona. Doskonale mieści się ona, wraz ze wszystkimi inspiracjami, jakie poeta zawdzięczał Heglowi, Ballanche'owi czy Cieszkowskiemu, w kościelnej nauce o Opatrzności" (W. Kubacki, <tytul_dziela>Leonard --- wielki mistrz sabatów rewolucji</tytul_dziela>, ,,Ruch Literacki" 1960, nr 3).</pr>! ---<end id='e1187884523677' /></akap>
+		<akap>Stanęli --- pląsają na gruzach --- rozrywają nie obalone arkady --- sypią iskrami na leżące ołtarze i krzyże --- płomień się zajmuje i gna słupy dymu przed sobą --- biada wam --- biada<pr>Już Kleiner w przypisie do tej sceny wtrącił nawiasowo uwagę, że orgiastyczny charakter nabożeństwa nasuwa ,,myśl o ,,sabatach" czarownic pod przewodnictwem szatana jako ,,mistrza Leonarda"". Uznał jednak tę scenę za parodię saintsimonistycznych nabożeństw, jakie miały się odbywać w przyszłości. W. Kubacki natomiast uznał tę scenę za rozstrzygającą dla interpretacji całości dramatu Krasińskiego. Pisze on, że ,,Krasiński świadomie wystylizował ten ustęp na jakiś rewolucyjny ,,sabat". Po przeprowadzeniu analizy pisze dalej Kubacki, że ,,w scenie z Leonardem mamy ukrytą paralelę: rewolucja --- sabat, ruch społeczny --- natchnienie piekieł, trybun ludu, Leonard --- szatan z średniowiecznej legendy, wielki mistrz wszelkiego rozpasania i wyuzdania". Interpretację tę Podsumowuje Kubacki pisząc, iż historiozofia autora <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> nie jest ,,zbyt złożona. Doskonale mieści się ona, wraz ze wszystkimi inspiracjami, jakie poeta zawdzięczał Heglowi, Ballanche'owi czy Cieszkowskiemu, w kościelnej nauce o Opatrzności" (W. Kubacki, <tytul_dziela>Leonard --- wielki mistrz sabatów rewolucji</tytul_dziela>, ,,Ruch Literacki" 1960, nr 3).</pr>! ---<end id="e1187884523677"/></akap>
 	</kwestia>
 
 
@@ -3695,7 +3695,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		<akap>Jutro staw się u namiotu Obywatela Wodza.</akap></kwestia>
 
 
-<naglowek_osoba><begin id='b1187884686466' /><motyw id='m1187884686466'>Filozof</motyw>CHÓR KAPŁANÓW</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884686466"/><motyw id="m1187884686466">Filozof</motyw>CHÓR KAPŁANÓW</naglowek_osoba>
 	<kwestia>
 		<akap>Pozdrawiamy cię, gościu, imieniem ducha Wolności --- w ręku twoim część naszego zbawienia. --- Kto walczy bez ustanku, morduje bez słabości, kto dniem i nocą wierzy zwycięstwu, ten zwycięży wreszcie. ---</akap>
 	
@@ -3715,11 +3715,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Towarzyszu bracie, czaszką starego świętego piję zdrowie<pr><slowo_obce>czaszką... piję zdrowie</slowo_obce> --- jeden z motywów karbonarskich odnotowanych przez S. Skwarczyńską.</pr> twoje --- do widzenia. ---</akap>
 
-		<didaskalia>rzuca czaszkę<end id='e1187884686466' /></didaskalia>
+		<didaskalia>rzuca czaszkę<end id="e1187884686466"/></didaskalia>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187884727058' /><motyw id='m1187884727058'>Dziecko, Kobieta</motyw>DZIEWCZYNA</naglowek_osoba>
+<naglowek_osoba><begin id="b1187884727058"/><motyw id="m1187884727058">Dziecko, Kobieta</motyw>DZIEWCZYNA</naglowek_osoba>
 	<kwestia>
 		<didaskalia>tańcując</didaskalia>
 	
@@ -3741,7 +3741,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>INNI</naglowek_osoba>
 	<kwestia>
-		<akap>Szczęść się twojemu sztyletowi! ---<end id='e1187884727058' /></akap>
+		<akap>Szczęść się twojemu sztyletowi! ---<end id="e1187884727058"/></akap>
 	</kwestia>
 
 
@@ -3834,7 +3834,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>MĄŻ</naglowek_osoba>
 	<kwestia>
-		<akap>Rozwidnia się coraz bardziej --- ich postacie mdleją w promieniach zorzy. ---<end id='e1187883693757' /></akap>
+		<akap>Rozwidnia się coraz bardziej --- ich postacie mdleją w promieniach zorzy. ---<end id="e1187883693757"/></akap>
 	</kwestia>
 
 <naglowek_osoba>PRZECHRZTA</naglowek_osoba>
@@ -3879,7 +3879,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Noc --- krzaki --- drzewa. ---</didaskalia>
@@ -3905,7 +3905,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187885424634' /><motyw id='m1187885424634'>Przywódca, Mieszczanin, Obywatel, Rycerz, Sługa, Szlachcic , Upadek</motyw>LEONARD</naglowek_osoba>
+<naglowek_osoba><begin id="b1187885424634"/><motyw id="m1187885424634">Przywódca, Mieszczanin, Obywatel, Rycerz, Sługa, Szlachcic , Upadek</motyw>LEONARD</naglowek_osoba>
 	<kwestia>
 		<akap>Mnie jednego przynajmniej weź z sobą --- to pan, to arystokrata, to kłamca. ---</akap>
 	</kwestia>
@@ -3919,7 +3919,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Komnata podłużna --- obrazy dam i rycerzy porozwieszane po ścianach --- w głębi filar z tarczą herbowną --- <osoba>Mąż</osoba> siedzi przy stoliku marmurowym, na którym lampa, para pistoletów, pałasz i zegar --- naprzeciwko drugi stolik, srebrne konwie i puchary.</didaskalia>
@@ -3931,7 +3931,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		
 		<akap>I ja dziś czekam na podobne widzenie. --- Za chwilę stanie przede mną człowiek bez imienia, bez przodków, bez anioła stróża --- co wydobył się z nicości i zacznie może nową Epokę<pr>Henryk sądzi, że ,,rozpoczęcie nowej Epoki" lub ,,odrzucenie jej w tył" to sprawa, która może rozstrzygnąć się w starciu sił ludzkich.</pr>, jeśli go w tył nie odrzucę nazad, nie strącę do nicości. ---</akap>
 	
-		<akap></akap>
+		<akap/>
 		
 		<akap>Ojcowie moi, natchnijcie mnie tym, co was panami świata uczyniło --- wszystkie lwie serca wasze dajcie mi do piersi --- powaga skroni waszych niechaj się zleje na czoło moje. --- Wiara w Chrystusa i Kościół Jego, ślepa, nieubłagana, wrząca, natchnienie dzieł waszych na ziemi, nadzieja chwały nieśmiertelnej w niebie, niechaj zstąpi na mnie, a wrogów będę mordował i palił, ja, syn stu pokoleń, ostatni dziedzic waszych myśli i dzielności, waszych cnót i błędów.</akap>
 	</kwestia>
@@ -4092,7 +4092,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187885802664' /><motyw id='m1187885802664'>Konflikt, Wizja</motyw>PANKRACY</naglowek_osoba>
+<naglowek_osoba><begin id="b1187885802664"/><motyw id="m1187885802664">Konflikt, Wizja</motyw>PANKRACY</naglowek_osoba>
 	<kwestia>
 		<akap>Honor święty, honor rycerski wystąpił na scenę --- zwiędły to łachman w sztandarze ludzkości. --- O! Znam ciebie, przenikam ciebie --- pełnyś życia, a łączysz się z umierającymi, bo chcesz się oszukać<pr><slowo_obce>bo chcesz się oszukać</slowo_obce> --- słowa dodane przez Czubka na podstawie rękopisu.</pr>, bo chcesz wierzyć jeszcze w kasty, w kości prababek, w słowo ,,ojczyzna" i tam dalej --- ale w głębi ducha sam wiesz, że braci twojej należy się kara, a po karze niepamięć. ---</akap>
 	</kwestia>
@@ -4198,7 +4198,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><end id='e1187885802664' />PANKRACY</naglowek_osoba>
+<naglowek_osoba><end id="e1187885802664"/>PANKRACY</naglowek_osoba>
 	<kwestia>
 		<didaskalia>na stronie</didaskalia>
 	
@@ -4333,9 +4333,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>JAKUB</naglowek_osoba>
 	<kwestia>
-		<akap>Tak mi Panie Boże dopomóż! ---<end id='e1187885424634' /></akap>
+		<akap>Tak mi Panie Boże dopomóż! ---<end id="e1187885424634"/></akap>
 	
-		<didaskalia>wychodzi<end id='e1187875285443' /></didaskalia>
+		<didaskalia>wychodzi<end id="e1187875285443"/></didaskalia>
 	</kwestia>
 
 
@@ -4347,7 +4347,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<naglowek_akt><begin id='b1187951148340' /><motyw id='m1187951148340'>Koniec świata</motyw>CZĘŚĆ CZWARTA<pr>Część czwarta poprzedzona jest epigrafem: <slowo_obce>,,Bottomless perdition"</slowo_obce>, Milton. (,,Bezdenna zguba, bezdenne potępienie"). Jest to cytat z <tytul_dziela>Raju utraconego</tytul_dziela> Miltona. Słowa te wiążą się z wizją świata, historii i losu ludzkiego zawartą w dramacie. W <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> znalazła odzwierciedlenie dość złożona koncepcja tragizmu, łącząca się ściśle z wizją historii charakterystyczną dla Krasińskiego i pozwalająca określić jego utwór mianem ,,chrześcijańskiej tragedii o ludzkim buncie". Osią tej koncepcji jest przekonanie o istnieniu nieusuwalnych sprzeczności na różnych płaszczyznach rzeczywistości. Z tego powodu nierozstrzygnięty pozostaje spór między hr. Henrykiem a Pankracym. Jeden z nich uosabia tragizm ginącej klasy (arystokracji, szlachty), skazanej na zagładę, lecz zarazem zobowiązanej moralnie do podjęcia walki o wartości związane z historią tej klasy. Krasiński podkreśla wzniosłość owej walki, z drugiej zaś strony nie szczędzi słów krytyki szlachcie i w ogóle klasom posiadającym za występki popełnione w przeszłości, jak również za obecną duchową małość (widać to m.in. w przeciwstawieniu hr. Henryka reszcie zgromadzonych w okopach Świętej Trójcy). Pankracy natomiast reprezentuje tragizm rewolucji, która swą słuszność znajduje w krzywdzie uciśnionych przez wieki mas, lecz jest zarazem zbrodnicza jako bunt i jako próba samozbawienia, a ponadto pociąga za sobą rozlew krwi i zniszczenie. Ta ostatnia okoliczność sprawia, że Pankracy na progu zwycięstwa sam wątpi w sens swego dzieła, co stanowi dodatkowy rys tragiczny w rysunku tej postaci. Obie racje, wcielone w postacie Henryka i Pankracego, posiadają charakter obiektywnej konieczności i to właśnie decyduje o tragicznym napięciu między nimi. W okresie pisania tego dramatu Krasiński uważał, że człowiek ma prawo do buntu, prawo, które mieści się w boskim planie świata --- lecz jako element nie--boski, przynoszący tragiczne starcie i konieczną zagładę. Racje obu ścierających się stron są dialektycznie splecione, a zarazem znoszą się wzajemnie; są to racje cząstkowe, jednostronne. Dlatego obaj ich przedstawiciele muszą zginąć, racje cząstkowe muszą zostać zniesione przez jedyną wyższą rację całościową, reprezentowaną przez Boga (dochodzi tu do głosu popularne w tym czasie w Europie myślenie na zasadzie triady Heglowskiej: teza + antyteza = synteza; ciekawe, że Henryk ginie skacząc w mroczną przepaść Boga, zaś Pankracy porażony boskim światłem). Ten ostateczny triumf Boga jest jednak przedstawiony w aurze finalnej katastrofy, Apokalipsy: Bóg--mściciel karze za bunt i pychę, lecz nie można mieć pewności, czy przynosi zbawienie ludzkości, czy jej ostateczną zagładę (por. M. Janion, <tytul_dziela>Zygmunt Krasiński. Debiut i dojrzałość</tytul_dziela>, Warszawa 1962, s.226--232).
+<naglowek_akt><begin id="b1187951148340"/><motyw id="m1187951148340">Koniec świata</motyw>CZĘŚĆ CZWARTA<pr>Część czwarta poprzedzona jest epigrafem: <slowo_obce>,,Bottomless perdition"</slowo_obce>, Milton. (,,Bezdenna zguba, bezdenne potępienie"). Jest to cytat z <tytul_dziela>Raju utraconego</tytul_dziela> Miltona. Słowa te wiążą się z wizją świata, historii i losu ludzkiego zawartą w dramacie. W <tytul_dziela>Nie--Boskiej Komedii</tytul_dziela> znalazła odzwierciedlenie dość złożona koncepcja tragizmu, łącząca się ściśle z wizją historii charakterystyczną dla Krasińskiego i pozwalająca określić jego utwór mianem ,,chrześcijańskiej tragedii o ludzkim buncie". Osią tej koncepcji jest przekonanie o istnieniu nieusuwalnych sprzeczności na różnych płaszczyznach rzeczywistości. Z tego powodu nierozstrzygnięty pozostaje spór między hr. Henrykiem a Pankracym. Jeden z nich uosabia tragizm ginącej klasy (arystokracji, szlachty), skazanej na zagładę, lecz zarazem zobowiązanej moralnie do podjęcia walki o wartości związane z historią tej klasy. Krasiński podkreśla wzniosłość owej walki, z drugiej zaś strony nie szczędzi słów krytyki szlachcie i w ogóle klasom posiadającym za występki popełnione w przeszłości, jak również za obecną duchową małość (widać to m.in. w przeciwstawieniu hr. Henryka reszcie zgromadzonych w okopach Świętej Trójcy). Pankracy natomiast reprezentuje tragizm rewolucji, która swą słuszność znajduje w krzywdzie uciśnionych przez wieki mas, lecz jest zarazem zbrodnicza jako bunt i jako próba samozbawienia, a ponadto pociąga za sobą rozlew krwi i zniszczenie. Ta ostatnia okoliczność sprawia, że Pankracy na progu zwycięstwa sam wątpi w sens swego dzieła, co stanowi dodatkowy rys tragiczny w rysunku tej postaci. Obie racje, wcielone w postacie Henryka i Pankracego, posiadają charakter obiektywnej konieczności i to właśnie decyduje o tragicznym napięciu między nimi. W okresie pisania tego dramatu Krasiński uważał, że człowiek ma prawo do buntu, prawo, które mieści się w boskim planie świata --- lecz jako element nie--boski, przynoszący tragiczne starcie i konieczną zagładę. Racje obu ścierających się stron są dialektycznie splecione, a zarazem znoszą się wzajemnie; są to racje cząstkowe, jednostronne. Dlatego obaj ich przedstawiciele muszą zginąć, racje cząstkowe muszą zostać zniesione przez jedyną wyższą rację całościową, reprezentowaną przez Boga (dochodzi tu do głosu popularne w tym czasie w Europie myślenie na zasadzie triady Heglowskiej: teza + antyteza = synteza; ciekawe, że Henryk ginie skacząc w mroczną przepaść Boga, zaś Pankracy porażony boskim światłem). Ten ostateczny triumf Boga jest jednak przedstawiony w aurze finalnej katastrofy, Apokalipsy: Bóg--mściciel karze za bunt i pychę, lecz nie można mieć pewności, czy przynosi zbawienie ludzkości, czy jej ostateczną zagładę (por. M. Janion, <tytul_dziela>Zygmunt Krasiński. Debiut i dojrzałość</tytul_dziela>, Warszawa 1962, s.226--232).
 </pr></naglowek_akt>
 
 
@@ -4369,24 +4369,24 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Widna przepaść wśród obszarów, co pękły nad nią. ---</akap>
 
 
-<akap></akap>
+<akap/>
 
 
 <akap>Czarno tam w jej głębi, od głów ludzkich czarno --- dolina cała zarzucona głowami ludzkimi, jako dno morza głazami. ---</akap>
 
 
-<akap></akap>
+<akap/>
 
 
 <akap>Słońce ze wzgórzów na skały wstępuje --- w złocie unoszą się, w złocie roztapiają się chmury, a im bardziej nikną, tym lepiej słychać wrzaski, tym lepiej dojrzeć można tłumy, płynące u dołu. ---</akap>
 
 
-<akap>Z gór podniosły się mgły --- i konają teraz po nicościach błękitu. --- Dolina Świętej Trójcy obsypana światłem migającej broni i Lud ciągnie zewsząd do niej jak do równiny Ostatniego Sądu<pr><slowo_obce>równiny Ostatniego Sądu</slowo_obce> --- Komentatorzy zgodnie stwierdzają, że miejsce to sugeruje, iż ma nastąpić koniec świata, poprzedzony Sądem Ostatecznym.</pr>. ---<end id='e1187951148340' /></akap>
+<akap>Z gór podniosły się mgły --- i konają teraz po nicościach błękitu. --- Dolina Świętej Trójcy obsypana światłem migającej broni i Lud ciągnie zewsząd do niej jak do równiny Ostatniego Sądu<pr><slowo_obce>równiny Ostatniego Sądu</slowo_obce> --- Komentatorzy zgodnie stwierdzają, że miejsce to sugeruje, iż ma nastąpić koniec świata, poprzedzony Sądem Ostatecznym.</pr>. ---<end id="e1187951148340"/></akap>
 
 
 
 
-<sekcja_swiatlo />
+<sekcja_swiatlo/>
 
 
 
@@ -4394,7 +4394,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <didaskalia>Panowie, senatory, dygnitarze siedzą po obu stronach, każdy pod posągiem jakiego króla lub rycerza --- za posągami tłumy szlachty --- przed wielkim ołtarzem w głębi <osoba>Arcybiskup</osoba> w krześle złoconym, z mieczem na kolanach --- za ołtarzem <osoba>Chór Kapłanów</osoba>. --- <osoba>Mąż</osoba> stoi w progu przez chwilą, potem zaczyna iść powoli ku Arcybiskupowi ze sztandarem w ręku. ---</didaskalia>
 
-<begin id='b1187951343306' /><motyw id='m1187951343306'>Rycerz, Szlachcic </motyw>
+<begin id="b1187951343306"/><motyw id="m1187951343306">Rycerz, Szlachcic </motyw>
 <naglowek_osoba>CHÓR KAPŁANÓW</naglowek_osoba>
 	<kwestia>
 		<akap>Ostatnie sługi Twoje, w ostatnim kościele<pr><slowo_obce>w ostatnim kościele</slowo_obce> --- Ostatni kościół poza obrębem murów warowni był już zburzony. Katedra jest więc ostatnim kościołem. Jak pisze Kleiner: ,,Jest to katedra fikcyjna. --- Okopy Świętej Trójcy naprawdę mają tylko ruiny kościółka, w którym bohatersko broniła się niegdyś garstka konfederatów barskich".</pr> Syna Twego, błagamy Cię za czcią ojców naszych. --- Od nieprzyjaciół wyratuj nas, Panie!</akap>
@@ -4530,7 +4530,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Jeden z dziedzińców Świętej Trójcy. --- <osoba>Mąż</osoba> --- <osoba>Hrabiowie</osoba> --- <osoba>Barony</osoba> --- <osoba>Książęta</osoba> --- księża --- szlachta.</didaskalia>
@@ -4642,20 +4642,20 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>WSZYSCY</naglowek_osoba>
 	<kwestia>
-		<akap>Śmiercią --- śmiercią --- <slowo_obce>vivat</slowo_obce>!<end id='e1187951343306' /></akap>
+		<akap>Śmiercią --- śmiercią --- <slowo_obce>vivat</slowo_obce>!<end id="e1187951343306"/></akap>
 	</kwestia>
 
 
 <didaskalia>Wychodzą.</didaskalia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Krużganek na szczycie wieży. --- <osoba>Mąż</osoba>, --- <osoba>Jakub</osoba>.</didaskalia>
 
 
-<naglowek_osoba><begin id='b1187951408141' /><motyw id='m1187951408141'>Poeta</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187951408141"/><motyw id="m1187951408141">Poeta</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Gdzie syn mój<pr><slowo_obce>syn mój</slowo_obce> --- w poprzednich wyd. Bibl. Nar.: ,,mój syn".</pr>?</akap>
 	</kwestia>
@@ -4663,11 +4663,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>JAKUB</naglowek_osoba>
 	<kwestia>
-		<akap>W wieży północnej usiadł na progu starego więzienia i śpiewa proroctwa<pr>Kleiner zwraca uwagę, że folklor i literatura znają ,,postaci niewidomych obdarzonych darem jasnowidzenia i proroctwa, jak np. świadomy przyszłości Tejrezjasz w podaniach Hellady".</pr>. ---<end id='e1187951408141' /></akap>
+		<akap>W wieży północnej usiadł na progu starego więzienia i śpiewa proroctwa<pr>Kleiner zwraca uwagę, że folklor i literatura znają ,,postaci niewidomych obdarzonych darem jasnowidzenia i proroctwa, jak np. świadomy przyszłości Tejrezjasz w podaniach Hellady".</pr>. ---<end id="e1187951408141"/></akap>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187951575809' /><motyw id='m1187951575809'>Poezja, Władza</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187951575809"/><motyw id="m1187951575809">Poezja, Władza</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Najmocniej osadź basztę Eleonory --- sam nie ruszaj się stamtąd i co kilka minut patrzaj lunetą na obóz buntowników. ---</akap>
 	</kwestia>
@@ -4697,11 +4697,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		
 		<akap>Bo nie podłą pracą, nie podstępem, nie przemysłem<pr><slowo_obce>przemysłem</slowo_obce> --- przemyślnością, podstępem.</pr> doszedłem końca życzeń moich --- ale nagle, znienacka, tak, jakom marzył zawżdy.</akap>
 		
-		<akap>I teraz tu stoję na pograniczach snu wiecznego wodzem tych wszystkich, co mi wczoraj jeszcze równymi byli. ---<end id='e1187951575809' /></akap>
+		<akap>I teraz tu stoję na pograniczach snu wiecznego wodzem tych wszystkich, co mi wczoraj jeszcze równymi byli. ---<end id="e1187951575809"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Komnata w zamku, oświecona pochodniami --- <osoba>Orcio</osoba> siedzi na łożu --- <osoba>Mąż</osoba> wchodzi i składa broń na stole.</didaskalia>
@@ -4719,7 +4719,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187951827493' /><motyw id='m1187951827493'>Matka, Ojciec, Poeta, Syn, Szlachcic , Upadek, Władza, Zaświaty</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187951827493"/><motyw id="m1187951827493">Matka, Ojciec, Poeta, Syn, Szlachcic , Upadek, Władza, Zaświaty</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Zapewne słyszałeś wystrzały, odgłosy naszej wycieczki --- ale bądź dobrej myśli, dziecię moje, nie przepadniemy jeszcze ni dzisiaj, ni jutro. ---</akap>
 	</kwestia>
@@ -4771,7 +4771,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Lochy podziemne<pr><slowo_obce>Lochy podziemne</slowo_obce> --- Kleiner zwraca uwagę, że taką scenerię ,,chętnie wprowadzała literaturą sensacyjna", przede wszystkim romanse grozy. Tu jednak chodzi nie tylko o wywołanie nastroju grozy. To podziemie, w którym odbywa się sąd duchów nad Henrykiem, to przecież lochy więzienne z salą tortur, nieodłączny rekwizyt feudalnego zamku---warowni.</pr><uwaga>Ten przypis źle się wyświetla. Pojawia się jako tekst ciągły didaskaliów, a nie jako odniesienie na dole strony</uwaga> --- kraty żelazne, kajdany, narzędzia do tortur, połamane, leżące na ziemi. --- <osoba>Mąż</osoba> z pochodnią u stóp głazu, na którym <osoba>Orcio</osoba> stoi.</didaskalia>
@@ -4941,12 +4941,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<didaskalia>w oddali</didaskalia>
 	
-		<akap>Za to, żeś nic nie kochał, nic nie czcił prócz siebie, prócz siebie i myśli twych, potępion jesteś --- potępion na wieki. ---<end id='e1187951827493' /></akap>
+		<akap>Za to, żeś nic nie kochał, nic nie czcił prócz siebie, prócz siebie i myśli twych, potępion jesteś --- potępion na wieki. ---<end id="e1187951827493"/></akap>
 	</kwestia>
 
 
-<sekcja_asterysk />
-<begin id='b1187952140432' /><motyw id='m1187952140432'>Dziecko, Matka, Obywatel, Upadek, Władza, Żołnierz</motyw>
+<sekcja_asterysk/>
+<begin id="b1187952140432"/><motyw id="m1187952140432">Dziecko, Matka, Obywatel, Upadek, Władza, Żołnierz</motyw>
 
 <didaskalia>Sala w zamku Świętej Trójcy. --- <osoba>Mąż</osoba>, kobiety, dzieci, kilku starców i hrabiów klęczących u stóp jego --- <osoba>Ojciec Chrzestny</osoba> stoi w środku sali --- tłum w głębi --- zbroje zawieszone, gotyckie filary, ozdoby, okna. ---</didaskalia>
 
@@ -5173,12 +5173,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>A ja was za podłość waszą. ---</akap>
 	
-		<didaskalia>wychodzi<pr><slowo_obce>Wychodzi</slowo_obce> --- objaśnienie to dodał Czubek na podstawie rękopisu.</pr><uwaga> Przypis ten źle się wyświetla. Powinien być jako odniesienie na dole, a jest tekstem ciągłym didaskaliów!</uwaga></didaskalia><end id='e1187952140432' />
+		<didaskalia>wychodzi<pr><slowo_obce>Wychodzi</slowo_obce> --- objaśnienie to dodał Czubek na podstawie rękopisu.</pr><uwaga> Przypis ten źle się wyświetla. Powinien być jako odniesienie na dole, a jest tekstem ciągłym didaskaliów!</uwaga></didaskalia><end id="e1187952140432"/>
 	</kwestia>
 
 
-<sekcja_asterysk />
-<begin id='b1187952279330' /><motyw id='m1187952279330'>Walka, Żołnierz</motyw>
+<sekcja_asterysk/>
+<begin id="b1187952279330"/><motyw id="m1187952279330">Walka, Żołnierz</motyw>
 
 <didaskalia>Okopy Świętej Trójcy. --- Trupy naokoło --- działa potrzaskane --- broń leżąca na ziemi. --- Tu i ówdzie biegną żołnierze --- <osoba>Mąż</osoba> oparty o szaniec, <osoba>Jakub</osoba> przy nim.</didaskalia>
 
@@ -5235,11 +5235,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Bankierów i hrabiów, i książąt. ---</akap>
 	
-		<didaskalia>odchodzi</didaskalia><end id='e1187952279330' />
+		<didaskalia>odchodzi</didaskalia><end id="e1187952279330"/>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187952341193' /><motyw id='m1187952341193'>Ojciec, Syn, Władza, Zaświaty</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187952341193"/><motyw id="m1187952341193">Ojciec, Syn, Władza, Zaświaty</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<akap>Chodź, synu --- połóż tu rękę swoją na dłoni mojej --- czołem ust moich się dotknij --- czoło matki twojej niegdyś było takiej samej bieli i miękkości. ---</akap>
 	</kwestia>
@@ -5354,14 +5354,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		<didaskalia>dobywa szabli i przykłada do ust leżącego</didaskalia>
 		
 		<akap>Klinga szklanna<pr><slowo_obce>Klinga szklanna</slowo_obce> --- dowód braku oddechu, który nie zamglił, nie zaparował gładkiej powierzchni szabli.</pr> jak wprzódy --- oddech i życie uleciały razem. ---
-		Hej! tu --- naprzód --- już się wdarli na długość szabli mojej --- nazad, w przepaść, syny wolności! --- <end id='e1187952341193' /></akap>
+		Hej! tu --- naprzód --- już się wdarli na długość szabli mojej --- nazad, w przepaść, syny wolności! --- <end id="e1187952341193"/></akap>
 	</kwestia>
-<begin id='b1187952514007' /><motyw id='m1187952514007'>Sługa</motyw>
+<begin id="b1187952514007"/><motyw id="m1187952514007">Sługa</motyw>
 
 <didaskalia>Zamieszanie i bitwa.</didaskalia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
 
 <didaskalia>Insza strona okopów --- słychać odgłosy walki --- <osoba>Jakub</osoba> rozciągnięty na murze --- <osoba>Mąż</osoba> nadbiega, krwią oblany.</didaskalia>
@@ -5377,11 +5377,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<kwestia>
 		<akap>Niech ci czart odpłaci w piekle upór twój i męki moje. --- Tak mi Panie Boże dopomóż! ---</akap>
 	
-		<didaskalia>umiera</didaskalia><end id='e1187952514007' />
+		<didaskalia>umiera</didaskalia><end id="e1187952514007"/>
 	</kwestia>
 
 
-<naglowek_osoba><begin id='b1187952664892' /><motyw id='m1187952664892'>Bóg, Poezja, Samobójstwo, Upadek, Walka</motyw>MĄŻ</naglowek_osoba>
+<naglowek_osoba><begin id="b1187952664892"/><motyw id="m1187952664892">Bóg, Poezja, Samobójstwo, Upadek, Walka</motyw>MĄŻ</naglowek_osoba>
 	<kwestia>
 		<didaskalia>rzucając płaszcz</didaskalia>
 	
@@ -5399,13 +5399,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		
 		<akap>Biegną, zobaczyli mnie --- Jezus, Maryja! --- Poezjo, I bądź mi przeklęta<pr>Przekleństwo rzucone na poezję w chwili klęski dowodzi, że marzenia o sławie, które go pchnęły do podjęcia walki, traktuje Henryk jako jeden z pomysłów poetyckich, uważa, że poezja doprowadziła go do upadku.</pr>, jako ja sam będę na wieki! --- Ramiona, idźcie i przerzynajcie te wały!</akap>
 		
-		<didaskalia>skacze w przepaść<end id='e1187952664892' /></didaskalia>
+		<didaskalia>skacze w przepaść<end id="e1187952664892"/></didaskalia>
 	</kwestia>
 
 
-<sekcja_asterysk />
+<sekcja_asterysk/>
 
-<begin id='b1187952989493' /><motyw id='m1187952989493'>Obywatel, Rewolucja, Szlachcic , Władza</motyw>
+<begin id="b1187952989493"/><motyw id="m1187952989493">Obywatel, Rewolucja, Szlachcic , Władza</motyw>
 <didaskalia>Dziedziniec zamkowy. --- <osoba>Pankracy</osoba> --- <osoba>Leonard</osoba> --- <osoba>Bianchetti</osoba> na czele tłumów --- przed nimi przechodzą <osoba>Hrabiowie</osoba>, <osoba>Książęta</osoba>, z żonami i dziećmi, w łańcuchach. ---<pr>Kleiner uważa, że scena ta jest ,,wzorowana na wyrokach trybunałów rewolucyjnych z czasów rewolucji francuskiej". Komentarz w wyd. Libery i Sawrymowicza do tej informacji dorzuca jeszcze następującą uwagę: ,,ale Pankracy występuje tu jako dyktator, nie jako sędzia rewolucyjny. W tym ujęciu Krasiński ukazuje swój pogląd, że rewolucja doprowadzi do nowej arystokracji i nowego ucisku. Wymowny dowód, że Krasiński nie pojmuje możności istnienia innego ustroju niż feudalny". Ostatni wniosek wydaje się zbyt pośpieszny i ogólny.</pr><uwaga>Źle wyświetla się ten przypis. Pojawia się jako tekst ciągły, nie jako odniesienie na dole strony.</uwaga></didaskalia>
 
 
@@ -5503,7 +5503,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<didaskalia>Żołnierze otaczają <osoba>Ojca Chrzestnego</osoba> i niewolników.</didaskalia>
 		
 	<kwestia>
-		<akap><begin id='b1187953096054' /><motyw id='m1187953096054'>Samobójstwo </motyw>Gdzie Henryk? --- czy kto z was nie widział go żywym lub umarłym? --- Wór pełny złota za Henryka --- choćby za trupa<pr><slowo_obce>trupa</slowo_obce> --- tak w wyd. III. W poprzednich i rękopisie, ,,trup".</pr> jego! ---</akap>
+		<akap><begin id="b1187953096054"/><motyw id="m1187953096054">Samobójstwo </motyw>Gdzie Henryk? --- czy kto z was nie widział go żywym lub umarłym? --- Wór pełny złota za Henryka --- choćby za trupa<pr><slowo_obce>trupa</slowo_obce> --- tak w wyd. III. W poprzednich i rękopisie, ,,trup".</pr> jego! ---</akap>
 	</kwestia>
 		
 	<didaskalia>Oddział zbrojnych schodzi z murów.</didaskalia>
@@ -5532,11 +5532,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 		
 		<akap>Leonardzie! ---</akap>
 		
-		<didaskalia>wstępuje na basztę z <osoba>Leonardem</osoba><end id='e1187953096054' /></didaskalia>
+		<didaskalia>wstępuje na basztę z <osoba>Leonardem</osoba><end id="e1187953096054"/></didaskalia>
 	</kwestia>
 
 	
-<naglowek_osoba><begin id='b1187953287839' /><motyw id='m1187953287839'>Wizja</motyw>LEONARD</naglowek_osoba>
+<naglowek_osoba><begin id="b1187953287839"/><motyw id="m1187953287839">Wizja</motyw>LEONARD</naglowek_osoba>
 	<kwestia>
 		<akap>Po tylu nocach bezsennych powinien byś odpocząć, mistrzu --- znać strudzenie na rysach twoich. ---</akap>
 	</kwestia>
@@ -5544,7 +5544,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>PANKRACY</naglowek_osoba>
 	<kwestia>
-		<akap>Nie czas mi jeszcze zasnąć, dziecię, bo dopiero połowa pracy dojdzie końca swojego z ich ostatnim westchnieniem. --- Patrz na te obszary --- na te ogromy, które stoją w poprzek między mną a myślą moją --- trza zaludnić te puszcze --- przedrążyć te skały --- połączyć te jeziora --- wydzielić grunt każdemu, by we dwójnasób tyle życia się urodziło na tych równinach, ile śmierci teraz na nich leży. --- Inaczej dzieło zniszczenia odkupionym nie jest<pr>Wypowiedź Pankracego interpretowana jest przez wyd. Libery i Sawrymowicza jako ,,ocena wyników rewolucji, w której Krasiński podkreśla brak elementów twórczych i płynącą stąd bezradność zwycięzców w obliczu konieczności budowania nowego świata". Jednakże wypowiedź Pankracego nie upoważnia do takich wniosków. Plan odbudowy ,,dzieła zniszczenia" jest wprawdzie bardzo ogólnikowy, ale, jak słusznie zauważa Kleiner, ,,Pankracy idzie torem planów saintsimonistycznych eksploatowania ziemi".</pr>. ---<end id='e1187952989493' /></akap>
+		<akap>Nie czas mi jeszcze zasnąć, dziecię, bo dopiero połowa pracy dojdzie końca swojego z ich ostatnim westchnieniem. --- Patrz na te obszary --- na te ogromy, które stoją w poprzek między mną a myślą moją --- trza zaludnić te puszcze --- przedrążyć te skały --- połączyć te jeziora --- wydzielić grunt każdemu, by we dwójnasób tyle życia się urodziło na tych równinach, ile śmierci teraz na nich leży. --- Inaczej dzieło zniszczenia odkupionym nie jest<pr>Wypowiedź Pankracego interpretowana jest przez wyd. Libery i Sawrymowicza jako ,,ocena wyników rewolucji, w której Krasiński podkreśla brak elementów twórczych i płynącą stąd bezradność zwycięzców w obliczu konieczności budowania nowego świata". Jednakże wypowiedź Pankracego nie upoważnia do takich wniosków. Plan odbudowy ,,dzieła zniszczenia" jest wprawdzie bardzo ogólnikowy, ale, jak słusznie zauważa Kleiner, ,,Pankracy idzie torem planów saintsimonistycznych eksploatowania ziemi".</pr>. ---<end id="e1187952989493"/></akap>
 	</kwestia>
 
 
@@ -5556,7 +5556,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <naglowek_osoba>PANKRACY</naglowek_osoba>
 	<kwestia>
-		<akap>Co mówisz o Bogu --- ślisko tu od krwi ludzkiej. ---<end id='e1187953287839' /> Czyjaż to krew? --- Za nami dziedzińce zamkowe --- sami jesteśmy, a zda mi się, jakoby tu był ktoś trzeci. ---</akap>
+		<akap>Co mówisz o Bogu --- ślisko tu od krwi ludzkiej. ---<end id="e1187953287839"/> Czyjaż to krew? --- Za nami dziedzińce zamkowe --- sami jesteśmy, a zda mi się, jakoby tu był ktoś trzeci. ---</akap>
 	</kwestia>
 
 

@@ -1,7 +1,8 @@
-<utwor><liryka_lp>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_lp>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Lilie">
 <dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
 <dc:title xml:lang="pl">Lilie</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Lilie</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/lilie</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2222</dc:source.URL>
 <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
@@ -31,13 +32,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <autor_utworu>Adam Mickiewicz</autor_utworu>
 
-<nazwa_utworu><begin id='b1189064257681' /><motyw id='m1189064257681'>Mąż, Morderstwo, Zbrodniarz, Żona</motyw>Lilje<pr>Wiadomość o <tytul_dziela>Liljach</tytul_dziela>, jako niedokończonej jeszcze balladzie, mamy w liście z Kowna z dnia 8 kwietnia 1820 r. <tytul_dziela>Lilje</tytul_dziela> są arcydziełem wśród ballad Mickiewicza. Krótki motyw ludowy rozwinął poeta wspaniale. Pierwsza zwrotka pieśni ludowej brzmi: ,,Stała się nam nowina, Pani pana zabiła, / W ogródku go schowała, Ruty na nim posiała, / Rośnij rutko wysoko, Jak pan leży głęboko".</pr></nazwa_utworu>
+<nazwa_utworu><begin id="b1189064257681"/><motyw id="m1189064257681">Mąż, Morderstwo, Zbrodniarz, Żona</motyw>Lilje<pr>Wiadomość o <tytul_dziela>Liljach</tytul_dziela>, jako niedokończonej jeszcze balladzie, mamy w liście z Kowna z dnia 8 kwietnia 1820 r. <tytul_dziela>Lilje</tytul_dziela> są arcydziełem wśród ballad Mickiewicza. Krótki motyw ludowy rozwinął poeta wspaniale. Pierwsza zwrotka pieśni ludowej brzmi: ,,Stała się nam nowina, Pani pana zabiła, / W ogródku go schowała, Ruty na nim posiała, / Rośnij rutko wysoko, Jak pan leży głęboko".</pr></nazwa_utworu>
 
 <nota><akap>(z pieśni gminnej)</akap></nota>
 
 
 
-<strofa><wers_akap><begin id='b1220610816456' /><motyw id='m1220610816456'>Kwiaty</motyw>Zbrodnia to niesłychana,</wers_akap>/
+<strofa><wers_akap><begin id="b1220610816456"/><motyw id="m1220610816456">Kwiaty</motyw>Zbrodnia to niesłychana,</wers_akap>/
 Pani zabija pana./
 Zabiwszy grzebie w gaju,/
 Na łączce przy ruczaju,/
@@ -46,7 +47,7 @@ Zasiewając tak śpiewa:/
 ,,Rośnij kwiecie wysoko,/
 Jak pan leży głęboko;/
 Jak pan leży głęboko,/
-Tak ty rośnij wysoko".<end id='e1220610816456' /></strofa>
+Tak ty rośnij wysoko".<end id="e1220610816456"/></strofa>
 
 <strofa><wers_akap>Potem cała skrwawiona,</wers_akap>/
 Męża zbójczyni żona,/
@@ -64,7 +65,7 @@ Stuk stuk, stuk stuk!</strofa>
 
 <strofa><wers_akap>,,Kto tam?" Spadła zapora,</wers_akap>/
 Wychodzi starzec, świeci;/
-<begin id='b1220609764236' /><motyw id='m1220609764236'>Wina, Wyrzuty sumienia, Zdrada</motyw>Pani na kształt upiora/
+<begin id="b1220609764236"/><motyw id="m1220609764236">Wina, Wyrzuty sumienia, Zdrada</motyw>Pani na kształt upiora/
 Z krzykiem do chatki leci./
 Ha! ha! zsiniałe usta,/
 Oczy przewraca w słup,/
@@ -88,7 +89,7 @@ A droga cnoty śliska!/
 Nie dochowałam wiary,/
 Ach! biada mojej głowie!/
 Król srogie głosi kary;/
-Powrócili mężowie.<end id='e1220609764236' /></strofa>
+Powrócili mężowie.<end id="e1220609764236"/></strofa>
 
 <strofa><wers_akap>Ha! ha! mąż się nie dowie!</wers_akap>/
 Oto krew! oto nóż!/
@@ -102,7 +103,7 @@ Zniosę bicze, pochodnie,/
 Byleby moję zbrodnię/
 Wieczysta noc powlekła".</strofa>
 
-<strofa><begin id='b1189063208387' /><motyw id='m1189063208387'>Kara, Tajemnica</motyw><wers_akap>,,Niewiasto --- rzecze stary ---</wers_akap>/
+<strofa><begin id="b1189063208387"/><motyw id="m1189063208387">Kara, Tajemnica</motyw><wers_akap>,,Niewiasto --- rzecze stary ---</wers_akap>/
 Więc ci nie żal rozboju,/
 Ale tylko strach kary?/
 Idźże sobie w pokoju,/
@@ -111,9 +112,9 @@ Wieczna twa tajemnica./
 Bo takie sądy Boże,/
 Iż co ty zrobisz skrycie,/
 Mąż tylko wydać może,/
-A mąż twój stracił życie".<end id='e1189063208387' /></strofa>
+A mąż twój stracił życie".<end id="e1189063208387"/></strofa>
 
-<strofa><begin id='b1189063263924' /><motyw id='m1189063263924'>Dziecko, Matka, Ojciec</motyw><wers_akap>Pani z wyroku rada,</wers_akap>/
+<strofa><begin id="b1189063263924"/><motyw id="m1189063263924">Dziecko, Matka, Ojciec</motyw><wers_akap>Pani z wyroku rada,</wers_akap>/
 Jak wpadła, tak wypada./
 Bieży nocą do domu,/
 Nic nie mówiąc nikomu./
@@ -125,12 +126,12 @@ A gdzie został nasz tato?"/
 ,,Został w lesie za dworem,/
 Powróci dziś wieczorem".</strofa>
 
-<strofa><begin id='b1220609943545' /><motyw id='m1220609943545'>Pamięć</motyw><wers_akap>Czekają wieczór dzieci;</wers_akap>/
+<strofa><begin id="b1220609943545"/><motyw id="m1220609943545">Pamięć</motyw><wers_akap>Czekają wieczór dzieci;</wers_akap>/
 Czekają drugi, trzeci,/
 Czekają tydzień cały;/
 Nareszcie zapomniały.</strofa>
 
-<strofa><begin id='b1189063292943' /><motyw id='m1189063292943'>Grzech</motyw><wers_akap>Pani zapomnieć trudno,</wers_akap>/
+<strofa><begin id="b1189063292943"/><motyw id="m1189063292943">Grzech</motyw><wers_akap>Pani zapomnieć trudno,</wers_akap>/
 Nie wygnać z myśli grzechu,/
 Zawsze na sercu nudno,/
 Nigdy na ustach śmiechu,/
@@ -139,12 +140,12 @@ Bo często w nocnej porze,/
 Coś stuka się na dworze,/
 Coś chodzi po świetlicy:/
 ,,Dzieci, --- woła --- to ja to,/
-To ja, dzieci, wasz tato!"<end id='e1189063263924' /><end id='e1220609943545' /></strofa>
+To ja, dzieci, wasz tato!"<end id="e1189063263924"/><end id="e1220609943545"/></strofa>
 
 <strofa><wers_akap>Noc przeszła, zasnąć trudno;</wers_akap>/
 Nie wygnać z myśli grzechu,/
 Zawsze na sercu nudno,/
-Nigdy na ustach śmiechu!<end id='e1189063292943' /></strofa>
+Nigdy na ustach śmiechu!<end id="e1189063292943"/></strofa>
 
 <strofa><wers_akap>,,Idź, Hanko, przez dziedziniec:</wers_akap>/
 Słyszę tętent na moście,/
@@ -160,7 +161,7 @@ Ostre błyszczą szabelki,/
 Jadą, jadą panowie,/
 Nieboszczyka bratowie!" ---</strofa>
 
-<strofa><begin id='b1189063434787' /><motyw id='m1189063434787'>Brat</motyw><wers_akap>--- ,,A witajże, czy zdrowa?</wers_akap>/
+<strofa><begin id="b1189063434787"/><motyw id="m1189063434787">Brat</motyw><wers_akap>--- ,,A witajże, czy zdrowa?</wers_akap>/
 Witajże nam, bratowa./
 Gdzie brat?" --- ,,Nieboszczyk brat,/
 Już pożegnał ten świat"./
@@ -169,9 +170,9 @@ Umarł... na wojnie zginął"./
 --- ,,To kłamstwo, bądź spokojna,/
 Już skończyła się wojna;/
 Brat zdrowy i ochoczy,/
-Ujrzysz go na twe oczy".<end id='e1189063434787' /></strofa>
+Ujrzysz go na twe oczy".<end id="e1189063434787"/></strofa>
 
-<strofa><wers_akap><begin id='b1220610088553' /><motyw id='m1220610088553'>Fałsz</motyw>Pani ze strachu zbladła,</wers_akap>/
+<strofa><wers_akap><begin id="b1220610088553"/><motyw id="m1220610088553">Fałsz</motyw>Pani ze strachu zbladła,</wers_akap>/
 Zemdlała i upadła;/
 Oczy przewraca w słup,/
 Z trwogą dokoła rzuca:/
@@ -180,7 +181,7 @@ Powoli się ocuca;/
 Mdlała niby z radości/
 I pytała u gości:/
 ,,Gdzie mąż, gdzie me kochanie,/
-Kiedy przede mną stanie?"<end id='e1220610088553' /></strofa>
+Kiedy przede mną stanie?"<end id="e1220610088553"/></strofa>
 
 <strofa><wers_akap>--- ,,Powracał razem z nami,</wers_akap>/
 Lecz przodem chciał pospieszyć,/
@@ -234,7 +235,7 @@ Obadwaj zjęci trwogą,/
 Wreszcie, na jedno zdani,/
 Idą razem do pani.</strofa>
 
-<strofa><begin id='b1220610194219' /><motyw id='m1220610194219'>Młodość, Wdowa</motyw><wers_akap>--- ,,Słuchaj, pani bratowo,</wers_akap>/
+<strofa><begin id="b1220610194219"/><motyw id="m1220610194219">Młodość, Wdowa</motyw><wers_akap>--- ,,Słuchaj, pani bratowo,</wers_akap>/
 Przyjm dobrze nasze słowo:/
 My tu próżno siedzimy,/
 Brata nie zobaczymy./
@@ -268,10 +269,10 @@ Lecz kto weźmie? kto straci?/
 Ja mam maleńkie dziatki,/
 I wioski i dostatki;/
 Dostatek się zmitręża<pr><slowo_obce>zmitręża się</slowo_obce> --- marnuje się.</pr>,/
-Gdy zostałam bez męża.<end id='e1220610194219' />/
+Gdy zostałam bez męża.<end id="e1220610194219"/>/
 Lecz ach! nie dla mnie szczęście!/
 Nie dla mnie już zamęście!/
-<begin id='b1220610337179' /><motyw id='m1220610337179'>Trup, Upiór</motyw>Boża nade mną kara,/
+<begin id="b1220610337179"/><motyw id="m1220610337179">Trup, Upiór</motyw>Boża nade mną kara,/
 Ściga mnie nocna mara:</strofa>
 
 <strofa><wers_akap>Zaledwie przymknę oczy,</wers_akap>/
@@ -283,12 +284,12 @@ Ach, widzę, słyszę trupa!/
 Skrzyp, skrzyp, i już nad łożem/
 Skrwawionym sięga nożem,/
 I iskry z gęby sypie,/
-I ciągnie mnie i szczypie.<end id='e1220610337179' />/
+I ciągnie mnie i szczypie.<end id="e1220610337179"/>/
 Ach! dosyć, dosyć strachu,/
 Nie siedzieć mnie w tym gmachu,/
 Nie dla mnie świat i szczęście,/
 Nie dla mnie już zamęście!"
-<begin id='b1189064396033' /><motyw id='m1189064396033'>Zbrodnia, Kara, Śmierć</motyw><wers_akap>,,Córko --- rzecze jej stary ---</wers_akap>/
+<begin id="b1189064396033"/><motyw id="m1189064396033">Zbrodnia, Kara, Śmierć</motyw><wers_akap>,,Córko --- rzecze jej stary ---</wers_akap>/
 Nie masz zbrodni bez kary,/
 Lecz jeśli szczera skrucha,/
 Zbrodniarzów Pan Bóg słucha./
@@ -321,11 +322,11 @@ Nie lękaj się upiora./
 Martwy się nie ocuci,/
 Twarda wieczności brama;/
 I mąż twój nie powróci,/
-Chyba zawołasz sama".<end id='e1189064396033' /></strofa>
+Chyba zawołasz sama".<end id="e1189064396033"/></strofa>
 
 <strofa><wers_akap>--- ,,Lecz jak pogodzić braci?</wers_akap>/
 Kto weźmie, a kto straci?..."/
-<begin id='b1220610768550' /><motyw id='m1220610768550'>Kwiaty</motyw>--- ,,Najlepsza będzie droga,/
+<begin id="b1220610768550"/><motyw id="m1220610768550">Kwiaty</motyw>--- ,,Najlepsza będzie droga,/
 Zdać się na los i Boga./
 Niechajże z ranną rosą/
 Pójdą i kwiecia zniosą./
@@ -336,7 +337,7 @@ I niechaj doda znaki,/
 I pójdzie w kościół Boży,/
 I na ołtarzu złoży:/
 Czyj pierwszy weźmiesz wianek,/
-Ten mąż twój, ten kochanek".<end id='e1220610768550' /></strofa>
+Ten mąż twój, ten kochanek".<end id="e1220610768550"/></strofa>
 
 <strofa><wers_akap>Pani z przestrogi rada,</wers_akap>/
 Już do małżeństwa skora,/
@@ -364,18 +365,18 @@ Coś wciąż po krzakach stęka,/
 Echo powtarza wciąż:/
 ,,To ja, twój mąż, twój mąż!"</strofa>
 
-<strofa><begin id='b1189064126966' /><motyw id='m1189064126966'>Konflikt, Walka</motyw><wers_akap>Lecz zbliża się niedziela,</wers_akap>/
+<strofa><begin id="b1189064126966"/><motyw id="m1189064126966">Konflikt, Walka</motyw><wers_akap>Lecz zbliża się niedziela,</wers_akap>/
 Zbliża się czas wesela./
 Zaledwie słońce wschodzi,/
 Wybiegają dwaj młodzi./
-<begin id='b1194609490254' /><motyw id='m1194609490254'>Ślub</motyw>Pani, śród dziewic grona/
+<begin id="b1194609490254"/><motyw id="m1194609490254">Ślub</motyw>Pani, śród dziewic grona/
 Do ślubu prowadzona,/
 Wystąpi śród kościoła/
-<begin id='b1220611031415' /><motyw id='m1220611031415'>Kwiaty</motyw>I bierze pierwszy wianek,/
+<begin id="b1220611031415"/><motyw id="m1220611031415">Kwiaty</motyw>I bierze pierwszy wianek,/
 Obnosi go dokoła:/
 ,,Oto w wieńcu lilije,/
 Ach! czyjeż to są, czyje?/
-Kto mój mąż, kto kochanek?"<end id='e1194609490254' /></strofa>
+Kto mój mąż, kto kochanek?"<end id="e1194609490254"/></strofa>
 
 <strofa><wers_akap>Wybiega starszy brat,</wers_akap>/
 Radość na licach płonie,/
@@ -400,9 +401,9 @@ Ten mówi, ten zaprzecza;/
 Dobyli z pochew miecza,/
 Wszczyna się srogi bój,/
 Szarpią do siebie wieńce:/
-,,To mój, to mój, to mój!"<end id='e1189064126966' /></strofa>
+,,To mój, to mój, to mój!"<end id="e1189064126966"/></strofa>
 
-<strofa><begin id='b1189064295909' /><motyw id='m1189064295909'>Kara</motyw><wers_akap>Wtem drzwi kościoła trzasły</wers_akap>/
+<strofa><begin id="b1189064295909"/><motyw id="m1189064295909">Kara</motyw><wers_akap>Wtem drzwi kościoła trzasły</wers_akap>/
 Wiatr zawiał, świece zgasły,/
 Wchodzi osoba w bieli:/
 Znany chód, znana zbroja.../
@@ -413,7 +414,7 @@ Podziemnym woła głosem:/
 Kwiat na mym rwany grobie:/
 Mnie, księże, stułą wiąż;/
 Zła żono, biada tobie!/
-To ja, twój mąż, twój mąż!<end id='e1220611031415' />/
+To ja, twój mąż, twój mąż!<end id="e1220611031415"/>/
 Źli bracia! biada obu!/
 Z mego rwaliście grobu,/
 Zawieście krwawy bój!/
@@ -428,6 +429,7 @@ Cerkiew zapada w głąb./
 Ziemia ją z wiérzchu kryje,/
 Na niéj rosną lilije,/
 A rosną tak wysoko,/
-Jak pan leżał głęboko.<end id='e1189064257681' /><end id='e1189064295909' /></strofa>
+Jak pan leżał głęboko.<end id="e1189064257681"/><end id="e1189064295909"/></strofa>
 
-</liryka_lp></utwor>
+</liryka_lp>
+</utwor>

@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Słowacki/Do_matki">
 <dc:creator xml:lang="pl">Słowacki, Juliusz</dc:creator>
 <dc:title xml:lang="pl">Do matki</dc:title>
@@ -11,7 +12,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Do+matki</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/do-matki</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/4060</dc:source.URL>
 <dc:source xml:lang="pl">Mazanowski, Antoni (1858-1916), Wypisy polskie na VII klasę gimnazyalną, [s.n.], Kraków,  1914</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Juliusz Słowacki zm. 1849</dc:rights>
@@ -31,21 +32,22 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189071737006' /><motyw id='m1189071737006'>Emigrant, Wygnanie, Matka, Ojczyzna</motyw>Zadrży ci nieraz serce, miła matko moja,/
+<strofa><begin id="b1189071737006"/><motyw id="m1189071737006">Emigrant, Wygnanie, Matka, Ojczyzna</motyw>Zadrży ci nieraz serce, miła matko moja,/
 <wers_wciety>Widząc powracających i ułaskawionych.</wers_wciety>/
 Kląć będziesz, że tak twarda była na mnie zbroja/
 <wers_wciety>I tak wielkie wytrwanie w zamiarach szalonych.</wers_wciety>/
 Wiem, żebym ci wróceniem mojem lat przysporzył;/
-<wers_wciety><begin id='b1219174832198' /><motyw id='m1219174832198'>Pies, Oko, Wzrok, Rozpacz, Wolność</motyw>Mów, kiedy cię spytają, czy twój syn powraca,</wers_wciety>/
+<wers_wciety><begin id="b1219174832198"/><motyw id="m1219174832198">Pies, Oko, Wzrok, Rozpacz, Wolność</motyw>Mów, kiedy cię spytają, czy twój syn powraca,</wers_wciety>/
 Że syn twój na sztandarach, jak pies, się położył/
 <wers_wciety>I choć wołasz, nie idzie --- oczy tylko zwraca,</wers_wciety>/
 Oczy zwraca ku tobie... więcej nic nie może,/
 <wers_wciety>Tylko spojrzeniem tobie smutek swój tłomaczy;</wers_wciety>/
 Lecz woli konający --- nie iść na obrożę,/
-<wers_wciety>Lecz woli zamiast hańby --- choć czarę rozpaczy!<end id='e1219174832198' /></wers_wciety>/
+<wers_wciety>Lecz woli zamiast hańby --- choć czarę rozpaczy!<end id="e1219174832198"/></wers_wciety>/
 Przebaczże mu, o moja ty piastunko droga,/
 <wers_wciety>Że się tak zaprzepaścił i tak zaczeluścił;</wers_wciety>/
 Przebacz... bo gdyby nie to, że opuścić Boga/
-<wers_wciety>Trzeba by --- toby ciebie pewno nie opuścił.<end id='e1189071737006' /></wers_wciety></strofa>
+<wers_wciety>Trzeba by --- toby ciebie pewno nie opuścił.<end id="e1189071737006"/></wers_wciety></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

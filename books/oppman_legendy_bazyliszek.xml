@@ -1,7 +1,8 @@
-<utwor><opowiadanie>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <opowiadanie>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
 <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
 <dc:title xml:lang="pl">Bazyliszek</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Bazyliszek</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/legendy-warszawskie-bazyliszek</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
 <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
@@ -49,7 +50,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap><begin id="b1188809688837" /><motyw id="m1188809688837">Praca</motyw>W kuźni płatnerskiej imćpana Melchiora Ostrogi robota wrzała aż miło. Czeladzie pracowali nad wykończeniem przepysznej zbroi rycerskiej dla Jego Miłości pana kasztelana płockiego, a dwóch chłopaków dęło w wielkie miechy, podsycając ognisko w ogromnym kominie. W płomieniach purpurowych i złotych tego ognia sam we własnej osobie imćpan Melchior Ostroga, świetny mistrz sławetnego płatnerskiego cechu, trzymał w cęgach potężnych sztabę żelazną, aby ją za chwilę na miecz na kowadle przekować.</akap>
+<akap><begin id="b1188809688837"/><motyw id="m1188809688837">Praca</motyw>W kuźni płatnerskiej imćpana Melchiora Ostrogi robota wrzała aż miło. Czeladzie pracowali nad wykończeniem przepysznej zbroi rycerskiej dla Jego Miłości pana kasztelana płockiego, a dwóch chłopaków dęło w wielkie miechy, podsycając ognisko w ogromnym kominie. W płomieniach purpurowych i złotych tego ognia sam we własnej osobie imćpan Melchior Ostroga, świetny mistrz sławetnego płatnerskiego cechu, trzymał w cęgach potężnych sztabę żelazną, aby ją za chwilę na miecz na kowadle przekować.</akap>
 
 
 <akap>Miecz ten, wraz z pancerzem, z hełmem, z naramiennikami i nagolennikami stanowił właśnie całkowity rynsztunek bojowy, po który pan kasztelan miał dziś --- jutro przyjechać.</akap>
@@ -58,10 +59,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>A cudnaż to była zbroica! Z najprzedniejszej stali, wypolerowanej, jak zwierciadło, pokryta nabijaniami ze szczerego srebra, z wizerunkiem Matki Boskiej Częstochowskiej, prześlicznie w złocie wyimaginowanym, i z krzyżem husarskim na kołnierzu.</akap>
 
 
-<akap>Miało to być prawdziwe arcydzieło przesławnej sztuki płatnerskiej, i niepomału chlubił się nim już z góry mistrz Melchior.<end id="e1188809688837" /></akap>
+<akap>Miało to być prawdziwe arcydzieło przesławnej sztuki płatnerskiej, i niepomału chlubił się nim już z góry mistrz Melchior.<end id="e1188809688837"/></akap>
 
 
-<akap><begin id="b1188810773858" /><motyw id="m1188810773858">Dziecko</motyw>W kąciku kuźni, za wielką kupą żelastwa, bawiło się dwoje dzieci: czarnowłosy chłopczyk i złocistoloka dziewczynka. Było to rodzeństwo, dziatwa imćpana Ostrogi. Chłopczyk, jako to chłopczyk, rycerską znalazł sobie igraszkę: z kawałka cienkiego żelaza szablę krzywą, niby to turecką, uczynił i w fechty jął się wprawiać, jak żołnierz. Ale dziewczynka, zapatrzona z początku w szermierkę braciszka, znudziła się niezadługo, boć co tam panienkę wojowanie obchodzi.<end id="e1188810773858" /></akap>
+<akap><begin id="b1188810773858"/><motyw id="m1188810773858">Dziecko</motyw>W kąciku kuźni, za wielką kupą żelastwa, bawiło się dwoje dzieci: czarnowłosy chłopczyk i złocistoloka dziewczynka. Było to rodzeństwo, dziatwa imćpana Ostrogi. Chłopczyk, jako to chłopczyk, rycerską znalazł sobie igraszkę: z kawałka cienkiego żelaza szablę krzywą, niby to turecką, uczynił i w fechty jął się wprawiać, jak żołnierz. Ale dziewczynka, zapatrzona z początku w szermierkę braciszka, znudziła się niezadługo, boć co tam panienkę wojowanie obchodzi.<end id="e1188810773858"/></akap>
 
 <akap_dialog>--- Maćku! --- zawołała na brata. --- Chodźmy już stąd na Rynek; w Rynku tak wesoło i gwarno, słoneczko świeci; pobiegamy, przyjrzymy się kramom<pe><slowo_obce>kram</slowo_obce> --- stragan, stolik, z którego sprzedaje się towary.</pe> i towarom.</akap_dialog>
 
@@ -99,13 +100,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap><begin id='b1219047462253' /><motyw id='m1219047462253'>Miasto, Tłum</motyw>Na Rynku wrzask i harmider. Tłum w barwnych ubiorach krąży dokoła Ratusza, który dumnie wznosi się pośrodku placu. W Ratuszu na dole kramnice bogate, dostanie w nich, czego dusza zapragnie. Tu sklepy ormiańskie z tkaninami tureckimi, haftowanymi złotem i srebrem, z dywanami perskimi i indyjskimi szalami; tam Szkot suknem i płótnem zamorskim handluje; ówdzie poważny Turek z długą brodą i z cybuchem<pe><slowo_obce>cybuch</slowo_obce> --- część fajki łącząca ustnik z główką, w ktorej znajduje się tytoń.</pe> w ustach zasiadł za ladą, na której figi, daktyle, rodzynki, bakalie przeróżne stosami się piętrzą, aż ślinka idzie, a jeszcze gdzie indziej Niemiec, czy Holender zabawki ma takie, łątki, czyli lalki, koniki, pieski, piłki, że aż oczy bolą patrzeć i chciałoby się mieć to wszystko na własność.<end id='e1219047462253' /></akap>
+<akap><begin id="b1219047462253"/><motyw id="m1219047462253">Miasto, Tłum</motyw>Na Rynku wrzask i harmider. Tłum w barwnych ubiorach krąży dokoła Ratusza, który dumnie wznosi się pośrodku placu. W Ratuszu na dole kramnice bogate, dostanie w nich, czego dusza zapragnie. Tu sklepy ormiańskie z tkaninami tureckimi, haftowanymi złotem i srebrem, z dywanami perskimi i indyjskimi szalami; tam Szkot suknem i płótnem zamorskim handluje; ówdzie poważny Turek z długą brodą i z cybuchem<pe><slowo_obce>cybuch</slowo_obce> --- część fajki łącząca ustnik z główką, w ktorej znajduje się tytoń.</pe> w ustach zasiadł za ladą, na której figi, daktyle, rodzynki, bakalie przeróżne stosami się piętrzą, aż ślinka idzie, a jeszcze gdzie indziej Niemiec, czy Holender zabawki ma takie, łątki, czyli lalki, koniki, pieski, piłki, że aż oczy bolą patrzeć i chciałoby się mieć to wszystko na własność.<end id="e1219047462253"/></akap>
 
 
 <akap>Maciuś i Halszka przewijają się wśród ludzkiej gromady zręcznie i szybko, jak dwa piskorze<pe><slowo_obce>piskorz</slowo_obce> --- ryba słodkowodna o zwinnym ciele.</pe>; sami nie wiedzą, na co spojrzeć. I to wabi, i to nęci. Wszędzie jest tyle piękności, że można by rok chyba cały po Rynku wędrować i jeszcze by się wszystkiego nie zobaczyło.</akap>
 
 
-<akap><begin id='b1219047667663' /><motyw id='m1219047667663'>Teatr</motyw>Aż ci tu nagle zahuczy bębenek, zaświszczy piszczałka, talerze blaszane zadźwięczą. Co to takiego? A to Cygan, czarnokudły, ciemny na gębie, uczonego niedźwiedzia na łańcuchu prowadzi. Cóż to za niedźwiedź! Boże miły! Wszystko umie, wszystko rozumie. Gada ci Cygan do niego jakimsiś łamanym językiem, z kiepska po węgiersku, a ten robi, co mu każą, ani się namyśli.</akap>
+<akap><begin id="b1219047667663"/><motyw id="m1219047667663">Teatr</motyw>Aż ci tu nagle zahuczy bębenek, zaświszczy piszczałka, talerze blaszane zadźwięczą. Co to takiego? A to Cygan, czarnokudły, ciemny na gębie, uczonego niedźwiedzia na łańcuchu prowadzi. Cóż to za niedźwiedź! Boże miły! Wszystko umie, wszystko rozumie. Gada ci Cygan do niego jakimsiś łamanym językiem, z kiepska po węgiersku, a ten robi, co mu każą, ani się namyśli.</akap>
 
 <akap_dialog>--- Miszka! Ukłoń się ładnie jasno wielmożnym państwu!</akap_dialog>
 
@@ -120,7 +121,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap_dialog>--- Miszka! Jak młode panienki na weselu tańcują?</akap_dialog>
 
 
-<akap>I niedźwiedź nuż w podrygi, a w łamańce. Boki zrywać ze śmiechu!<end id='e1219047667663' /></akap>
+<akap>I niedźwiedź nuż w podrygi, a w łamańce. Boki zrywać ze śmiechu!<end id="e1219047667663"/></akap>
 
 
 <akap>Gdy się tak Maciek i Halszka zwierzowi mądremu przypatrują, z nagła ktoś im ręce na oczach położył i ciekawy widok zasłonił.</akap>
@@ -130,10 +131,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap_dialog>--- Waluś! Waluś! --- ucieszyło się rodzeństwo. --- Poznaliśmy cię od razu po głosie! Ale odsłoń--no już nam oczy i spozierajmy razem na niedźwiedzia.</akap_dialog>
 
 
-<akap><begin id="b1188811517185" /><motyw id="m1188811517185">Dziecko</motyw>Odwrócili główki: jakoż był to w istocie Waluś Klepka, synek dziesięciolatek imćpana Pietra Klepki, bednarza<pe><slowo_obce>bednarz</slowo_obce> --- rzemieślnik wyrabiający różne naczynia z drewna, w tym np. beczki.</pe> z Zapiecka.</akap>
+<akap><begin id="b1188811517185"/><motyw id="m1188811517185">Dziecko</motyw>Odwrócili główki: jakoż był to w istocie Waluś Klepka, synek dziesięciolatek imćpana Pietra Klepki, bednarza<pe><slowo_obce>bednarz</slowo_obce> --- rzemieślnik wyrabiający różne naczynia z drewna, w tym np. beczki.</pe> z Zapiecka.</akap>
 
 
-<akap>Waluś, dawny ich znajomy, miły i zabawny chłopczyk, jedną wielką miał wadę: urwis był z niego okrutny. Psocił i broił co niemiara; rady sobie z nim rodzice dać nie mogli. Obiecywał poprawę, przyrzekał posłuszeństwo, ale gdzie tam! Za parę dni --- co dni! --- za kilka godzin znów jakąś sztukę wypłatał. Niewytrzymanie ludzkie z takim wiercipiętą!<end id="e1188811517185" /></akap>
+<akap>Waluś, dawny ich znajomy, miły i zabawny chłopczyk, jedną wielką miał wadę: urwis był z niego okrutny. Psocił i broił co niemiara; rady sobie z nim rodzice dać nie mogli. Obiecywał poprawę, przyrzekał posłuszeństwo, ale gdzie tam! Za parę dni --- co dni! --- za kilka godzin znów jakąś sztukę wypłatał. Niewytrzymanie ludzkie z takim wiercipiętą!<end id="e1188811517185"/></akap>
 
 
 <akap>Niedźwiedź odprawił swoje widowisko, Cygan do czapki sporą kupkę nazbierał szelągów<pe><slowo_obce>szeląg</slowo_obce> --- srebrna moneta, która w XIV wieku była bita i wprowadzona przez Krzyżaków.</pe>, pomiędzy którymi gdzieniegdzie i srebrny grosz zabłysnął --- i ruszyli dalej.</akap>
@@ -195,7 +196,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Tak idąc ostrożnie i pomału, zeszli nareszcie do lochu i znaleźli się w wielkiej, sklepionej piwnicy. Pod ścianami jej stały rozmaite rupiecie: stare okna, futryny, drzwi i różne nieużyteczne graty. Po prawej stronie piwnicy widać było, uchyloną nieco, żelazem okutą furtkę od dalszych zapewne lochów.</akap>
 
-<akap_dialog><begin id="b1188812688285" /><motyw id="m1188812688285">Śmierć</motyw>--- Maćku, Halszko! --- rzekł Waluś, a głos jego dziwnie ponuro rozbrzmiał w głębokościach podziemia. --- Kiedyśmy tu już zeszli, to idźmy--ż i dalej, spenetrujmy całe zwaliska, a skarb znajdzie się na pewno.</akap_dialog>
+<akap_dialog><begin id="b1188812688285"/><motyw id="m1188812688285">Śmierć</motyw>--- Maćku, Halszko! --- rzekł Waluś, a głos jego dziwnie ponuro rozbrzmiał w głębokościach podziemia. --- Kiedyśmy tu już zeszli, to idźmy--ż i dalej, spenetrujmy całe zwaliska, a skarb znajdzie się na pewno.</akap_dialog>
 
 <akap_dialog>--- Walusiu, mój Walusiu! Proszę cię, chodźmy już na górę --- rzewliwie zawołała Halszka. --- Co nam po skarbach! Wróćmy! Ja się czegoś lękam okropnie.</akap_dialog>
 
@@ -213,7 +214,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Z otwartej czeluści drugiej piwnicy buchnęło zgnilizną i w zielonawym świetle, przypominającym blask świętojańskich robaczków, Maciek i Halszka ujrzeli okropnego potworka. Był to niby kogut, niby wąż. Głowę miał kogucią z ogromnym purpurowym grzebieniem w kształcie korony, szyję długą i cienką, wężową, kadłub pękaty, nastroszonymi czarnymi piórami pokryty, i nogi kosmate, wysokie, zakończone łapami o ostrych olbrzymich pazurach.</akap>
 
 
-<akap>Ale najstraszniejsze były oczy potwora: wyłupiaste, okrągłe, do sowich ślepiów podobne, jarzące się to czerwono, to żółto; oczy te, na szczęście, nie widziały Maćka i Halszki, utkwiła je bowiem poczwara w ciało leżącego na ziemi i nieżywego już biednego Walusia.<end id="e1188812688285" /></akap>
+<akap>Ale najstraszniejsze były oczy potwora: wyłupiaste, okrągłe, do sowich ślepiów podobne, jarzące się to czerwono, to żółto; oczy te, na szczęście, nie widziały Maćka i Halszki, utkwiła je bowiem poczwara w ciało leżącego na ziemi i nieżywego już biednego Walusia.<end id="e1188812688285"/></akap>
 
 <akap_dialog>--- Bazyliszek! --- szepnął drżącym głosem Maciek. --- To bazyliszek, siostrzyczko; schowajmy się, schowajmy czym prędzej!</akap_dialog>
 
@@ -221,13 +222,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>I po cichutku, po cichutku, trzymając się za ręce, dzieci na paluszkach posunęły się ku ścianie i wślizgnęły się za wielkie drzwi o mur prastary oparte.</akap>
 
 
-<akap><begin id="b1188812946984" /><motyw id="m1188812946984">Brat, Siostra</motyw>W tym ukryciu, bezpiecznym na razie, Maciek począł szeptać siostrzyczce do uszka:</akap>
+<akap><begin id="b1188812946984"/><motyw id="m1188812946984">Brat, Siostra</motyw>W tym ukryciu, bezpiecznym na razie, Maciek począł szeptać siostrzyczce do uszka:</akap>
 
 <akap_dialog>--- To bazyliszek! Słyszałem o nim od tatuńcia. Sroga to stwora! Na kogo spojrzy --- wzrokiem zabije! Tak zabił Walusia. Stójmy tu cicho, Halszko, stójmy cichutko...</akap_dialog>
 
 <akap_dialog>--- Boże, mój Boże! --- załkała Halszka. --- Co to będzie? Co się z nami stanie? Pocośmy tu przyszli? Pocośmy tu przyszli? Ja chcę do domu!</akap_dialog>
 
-<akap_dialog>--- Uspokój się, siostrzyczko --- szeptał Maciek --- wrócimy do domu, jeśli Bóg pozwoli; ale teraz chodzi o to, żeby nas bazyliszek nie spostrzegł, bo jak zobaczy i spojrzy na nas --- wszystko przepadło: umrzemy!<end id="e1188812946984" /></akap_dialog>
+<akap_dialog>--- Uspokój się, siostrzyczko --- szeptał Maciek --- wrócimy do domu, jeśli Bóg pozwoli; ale teraz chodzi o to, żeby nas bazyliszek nie spostrzegł, bo jak zobaczy i spojrzy na nas --- wszystko przepadło: umrzemy!<end id="e1188812946984"/></akap_dialog>
 
 <akap_dialog>--- Maćkuuuu! Maaaćku! Halszko! Halusiu! --- rozległo się nawoływanie z ulicy --- Maaaćku! Haaalszko! Gdzież wy jesteście? Obiad gotowy! Obiad gotowy!</akap_dialog>
 
@@ -274,9 +275,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap_dialog>--- Agatę ja posłałam, bo dzieci nie wracały. Boże wielkiego miłosierdzia, bądź miłościw mnie grzesznej! Co ja tu pocznę, nieszczęsna?!</akap_dialog>
 
 
-<akap><begin id="b1188813359557" /><motyw id="m1188813359557">Matka, Ojciec</motyw>W przedsieniu uczynił się rumor i przedzierając się przez ciżbę wpadł do alkierza mistrz Melchior. Blady był płatnerz i drżący, bo już dowiedział się był<pe>Forma czasu zaprzeszłego. Czas ten nie jest używany we współczesnej polszczyźnie.</pe> w kuźni o srogim ciosie, jaki go ugodził. A Maćka i Halszkę miłował ponad wszystko, ponad życie własne!</akap>
+<akap><begin id="b1188813359557"/><motyw id="m1188813359557">Matka, Ojciec</motyw>W przedsieniu uczynił się rumor i przedzierając się przez ciżbę wpadł do alkierza mistrz Melchior. Blady był płatnerz i drżący, bo już dowiedział się był<pe>Forma czasu zaprzeszłego. Czas ten nie jest używany we współczesnej polszczyźnie.</pe> w kuźni o srogim ciosie, jaki go ugodził. A Maćka i Halszkę miłował ponad wszystko, ponad życie własne!</akap>
 
-<akap_dialog>--- Co robić, Melchrze, co robić? --- biadała Ostrożyna. --- Ratujmy--ż nasze maleństwa kochane! Ślubuję Ci, Panie Jezu, srebrne serce złocone pod Twoje nóżki najświętsze, jeno dopomóż nam w tym strapieniu!<end id="e1188813359557" /></akap_dialog>
+<akap_dialog>--- Co robić, Melchrze, co robić? --- biadała Ostrożyna. --- Ratujmy--ż nasze maleństwa kochane! Ślubuję Ci, Panie Jezu, srebrne serce złocone pod Twoje nóżki najświętsze, jeno dopomóż nam w tym strapieniu!<end id="e1188813359557"/></akap_dialog>
 
 
 <akap>Z gromady wysunął się sędziwy rajca<pe><slowo_obce>rajca</slowo_obce> --- dawny radca miejski. Stanowisko to piastowane było w danwej Polsce.</pe> miejski, imćpan Ezechiel Strubicz, mąż mądry i stateczny, znany całej Warszawie z dobroci i z przywiązania do dziatwy staromiejskiej.</akap>
@@ -295,7 +296,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Na Piwnej, na czwartym piętrze pod samym dachem wysokiego narożnego domu, mieszkał sławny i uczony doktór, dominus Hermenegildus Fabuła, znany nawet na dworze króla jegomości.</akap>
 
 
-<akap><begin id='b1219048623478' /><motyw id='m1219048623478'>Czary, Lud</motyw>Nie był to, prawdę mówiąc, czarownik, tylko wielce znamienity lekarz i człek we wszystkich kunsztach<pe><slowo_obce>kunszt</slowo_obce> --- sztuka, umiejętność.</pe> i naukach wyzwolonych doświadczony. Jeno gmin warszawski, widząc jego prawie cudowne kuracje, i obserwując z daleka tajemnicze praktyki, mienił go, w prostocie swojej, być czarnoksiężnikiem, z mocami nadprzyrodzonymi mającym ścisłą styczność. A że pan rajca Strubicz czarownikiem go nazywał, to jeno tak tylko, aby ludowi na poprzek nie stawać, który lubi rzeczy niezrozumiałe i rad ku cudowności się obraca, samą mądrość ludzką lekce sobie ważąc i zgoła postponując.<end id='e1219048623478' /></akap>
+<akap><begin id="b1219048623478"/><motyw id="m1219048623478">Czary, Lud</motyw>Nie był to, prawdę mówiąc, czarownik, tylko wielce znamienity lekarz i człek we wszystkich kunsztach<pe><slowo_obce>kunszt</slowo_obce> --- sztuka, umiejętność.</pe> i naukach wyzwolonych doświadczony. Jeno gmin warszawski, widząc jego prawie cudowne kuracje, i obserwując z daleka tajemnicze praktyki, mienił go, w prostocie swojej, być czarnoksiężnikiem, z mocami nadprzyrodzonymi mającym ścisłą styczność. A że pan rajca Strubicz czarownikiem go nazywał, to jeno tak tylko, aby ludowi na poprzek nie stawać, który lubi rzeczy niezrozumiałe i rad ku cudowności się obraca, samą mądrość ludzką lekce sobie ważąc i zgoła postponując.<end id="e1219048623478"/></akap>
 
 
 <akap>W obszernej komnacie o łukowym sklepieniu siedział za wielkim stołem, zawalonym księgami i pergaminami, człeczek maleńki, chuderlawy, wyschły, o licu pożółkłym, pomarszczonym, jak pieczone jabłko; ale źrenice w tej twarzy, ogromne, czarne, jarzyły się, jak pochodnie gorejące, a taką miały moc i potęgę te oczy, że, gdyś w nie spojrzał, zdawało ci się, iż na wielkoluda spozierasz, i mimowiednie budziły się w tobie lęk, podziw i uszanowanie dla tej niepozornej, a jednak imponującej postaci.</akap>
@@ -311,7 +312,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Tedy Ostrożyna z płaczem a narzekaniem wielkim opowiedziała całą sprawę, a gdy skończyła i chlipiąc błagać poczęła o pomoc i ratunek, dominus Hermenegildus Fabuła tak rzecze:</akap>
 
-<akap_dialog><begin id='b1219048936957' /><motyw id='m1219048936957'>Książka</motyw>--- Wiem ci ja dobrze, co było przyczyną zaguby waszmość państwa dziatek, bom właśnie w tej księdze o podobnych przypadkach traktat wertował. Oto, ani mniej, ani więcej, tylko stwór najniebezpieczniejszy i najszkodliwszy na ziemi, który się zwie: bazyliszek.<end id='e1219048936957' /></akap_dialog>
+<akap_dialog><begin id="b1219048936957"/><motyw id="m1219048936957">Książka</motyw>--- Wiem ci ja dobrze, co było przyczyną zaguby waszmość państwa dziatek, bom właśnie w tej księdze o podobnych przypadkach traktat wertował. Oto, ani mniej, ani więcej, tylko stwór najniebezpieczniejszy i najszkodliwszy na ziemi, który się zwie: bazyliszek.<end id="e1219048936957"/></akap_dialog>
 
 <akap_dialog>--- Bazyliszek? --- zakrzyknęli w popłochu Strubicz, Ostroga i Ostrożyna --- bazyliszek! Tedy już nadaremne wszystkie trudy i starania nasze!</akap_dialog>
 
@@ -403,9 +404,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>I z ukrycia swego, zza wielkich drzwi, o mur prastary opartych, wybiegły dzieci i zdrowe, choć pobladłe jeszcze ze strachu, rzuciły się w objęcia rodziców. O, jakaż radość! O, jakież szczęście! Uściskom i pocałunkom końca nie było, aż imćpan rajca Strubicz, choć taki stary i mądry, płakał jak bóbr i od płaczu się zanosił.</akap>
 
 
-<sekcja_swiatlo />
-<separator_linia />
-<sekcja_swiatlo />
+<sekcja_swiatlo/>
+<separator_linia/>
+<sekcja_swiatlo/>
 
 
 <akap>Tak się skończyła przygoda z bazyliszkiem. Przypłacili ją życiem nieposłuszny Waluś i stara, poczciwa Agata. Zwłoki ich, wydobyte z piwnicy, pochowano uroczyście, a rodzina Ostrogów nigdy o nich nie zapomniała.</akap>
@@ -419,4 +420,5 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <extra><!--</tekst_glowny>--></extra>
 
-</opowiadanie></utwor>
+</opowiadanie>
+</utwor>

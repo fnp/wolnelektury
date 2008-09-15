@@ -1,7 +1,8 @@
-<utwor><liryka_lp>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_lp>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Oda_do_młodości">
 <dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
 <dc:title xml:lang="pl">Oda do młodości</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Oda</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Oda+do+m%C5%82odo%C5%9Bci</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/oda-do-mlodosci</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2624</dc:source.URL>
 <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1, Gubrynowicz, Lwów, 1929</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
@@ -33,7 +34,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189078081859' /><motyw id='m1189078081859'>Młodość, Praca</motyw><wers_akap>Bez serc, bez ducha, --- to szkieletów ludy!</wers_akap>/
+<strofa><begin id="b1189078081859"/><motyw id="m1189078081859">Młodość, Praca</motyw><wers_akap>Bez serc, bez ducha, --- to szkieletów ludy!</wers_akap>/
 Młodości! dodaj mi skrzydła!/
 Niech nad martwym wzlecę światem/
 W rajską dziedzinę ułudy:/
@@ -41,10 +42,10 @@ Kędy zapał tworzy cudy,/
 Nowości potrząsa kwiatem/
 I obleka w nadziei złote malowidła!</strofa>
 
-<strofa><begin id='b1189078176632' /><motyw id='m1189078176632'>Starość</motyw><wers_akap>Niechaj, kogo wiek zamroczy,</wers_akap>/
+<strofa><begin id="b1189078176632"/><motyw id="m1189078176632">Starość</motyw><wers_akap>Niechaj, kogo wiek zamroczy,</wers_akap>/
 Chyląc ku ziemi poradlone czoło,/
 Takie widzi świata koło,/
-Jakie tępemi zakreśla oczy.<end id='e1189078176632' /></strofa>
+Jakie tępemi zakreśla oczy.<end id="e1189078176632"/></strofa>
 
 <strofa><wers_akap>Młodości! ty nad poziomy</wers_akap>/
 Wylatuj, a okiem słońca/
@@ -69,7 +70,7 @@ Natenczas słodki, gdy z innymi dzielę:/
 Serca niebieskie poi wesele,/
 Kiedy je razem nić powiąże złota.</strofa>
 
-<strofa><begin id='b1189078136390' /><motyw id='m1189078136390'>Rewolucja</motyw><wers_akap>Razem młodzi przyjaciele!</wers_akap>/
+<strofa><begin id="b1189078136390"/><motyw id="m1189078136390">Rewolucja</motyw><wers_akap>Razem młodzi przyjaciele!</wers_akap>/
 W szczęściu wszystkiego są wszystkich cele;/
 Jednością silni, rozumni szałem,/
 Razem młodzi przyjaciele!/
@@ -117,6 +118,7 @@ A przyjaźń w wieczne skojarzy spojnie.</strofa>
 <strofa><wers_akap>Pryskają nieczułe lody,</wers_akap>/
 I przesądy, światło ćmiące.../
 Witaj jutrzenko swobody,/
-Zbawienia za tobą słońce!<end id='e1189078081859' /><end id='e1189078136390' /></strofa>
+Zbawienia za tobą słońce!<end id="e1189078081859"/><end id="e1189078136390"/></strofa>
 
-</liryka_lp></utwor>
+</liryka_lp>
+</utwor>

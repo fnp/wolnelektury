@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Słowacki/W_pamiętniku_Zofii_Bobrówny">
 <dc:creator xml:lang="pl">Słowacki, Juliusz</dc:creator>
 <dc:title xml:lang="pl">W pamiętniku Zofii Bobrówny</dc:title>
@@ -12,7 +13,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/W+pami%C4%99tniku+Zofii+Bobr%C3%B3wny</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/w-pamietniku-zofii-bobrowny</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/4060</dc:source.URL>
 <dc:source xml:lang="pl">Mazanowski, Antoni (1858-1916), Wypisy polskie na VII klasę gimnazyalną, [s.n.], Kraków, 1914</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Juliusz Słowacki zm. 1849</dc:rights>
@@ -33,25 +34,26 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189009067056' /><motyw id='m1189009067056'>Ojczyzna, Tęsknota, Dzieciństwo</motyw>Niechaj mnie Zośka o wiersze nie prosi,/
+<strofa><begin id="b1189009067056"/><motyw id="m1189009067056">Ojczyzna, Tęsknota, Dzieciństwo</motyw>Niechaj mnie Zośka o wiersze nie prosi,/
 Bo kiedy Zośka do ojczyzny wróci,/
-<begin id='b1205760379310' /><motyw id='m1205760379310'>Natura, Kwiat, Gwiazda</motyw>To każdy kwiatek powie wiersze Zosi,/
+<begin id="b1205760379310"/><motyw id="m1205760379310">Natura, Kwiat, Gwiazda</motyw>To każdy kwiatek powie wiersze Zosi,/
 Każda jej gwiazdka piosenkę zanuci./
 Nim kwiat przekwitnie, nim gwiazdeczka zleci,/
-<begin id='b1205832726260' /><motyw id='m1205832726260'>Poeta, Poetka, Poezja</motyw>Słuchaj --- bo to są najlepsi poeci.</strofa>
+<begin id="b1205832726260"/><motyw id="m1205832726260">Poeta, Poetka, Poezja</motyw>Słuchaj --- bo to są najlepsi poeci.</strofa>
 
 <strofa>Gwiazdy błękitne, kwiateczki czerwone/
 Będą ci całe poemata składać./
 Jabym to samo powiedział, co one,/
-Bo ja się od nich nauczyłem gadać;<end id='e1205760379310' />/
+Bo ja się od nich nauczyłem gadać;<end id="e1205760379310"/>/
 Bo tam, gdzie Ikwy srebrne fale płyną,/
-Byłem ja niegdyś, jak Zośka, dzieciną.<end id='e1205832726260' /></strofa> 
+Byłem ja niegdyś, jak Zośka, dzieciną.<end id="e1205832726260"/></strofa> 
 
-<strofa><begin id='b1205760424994' /><motyw id='m1205760424994'>Los, Wygnanie, Młodość, Wspomnienia</motyw>Dzisiaj daleko pojechałem w gości/
+<strofa><begin id="b1205760424994"/><motyw id="m1205760424994">Los, Wygnanie, Młodość, Wspomnienia</motyw>Dzisiaj daleko pojechałem w gości/
 I dalej mię los nieszczęśliwy goni./
 Przywieź mi, Zośko, od tych gwiazd światłości,/
 Przywieź mi, Zośko, z tamtych kwiatów woni,/
 Bo mi zaprawdę odmłodnieć potrzeba./
-Wróć mi więc z kraju taką --- jakby z nieba.<end id='e1205760424994' /><end id='e1189009067056' /></strofa>
+Wróć mi więc z kraju taką --- jakby z nieba.<end id="e1205760424994"/><end id="e1189009067056"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

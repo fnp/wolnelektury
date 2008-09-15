@@ -1,7 +1,8 @@
-<utwor><liryka_lp>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_lp>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Asnyk/Między_nami_nic_nie_było">
 <dc:creator xml:lang="pl">Asnyk, Adam</dc:creator>
 <dc:title xml:lang="pl">Między nami nic nie było</dc:title>
@@ -12,7 +13,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Mi%C4%99dzy+nami+nic+nie+by%C5%82o</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/miedzy-nami-nic-nie-bylo</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5164</dc:source.URL>
 <dc:source xml:lang="pl">(Asnyk, Adam) El...y (1838-1897), Poezye, t. 3,  Gebethner i Wolff, wyd. nowe poprzedzone słowem wstępnym St. Krzemińskiego, Warszawa, 1898</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Asnyk zm. 1897</dc:rights>
@@ -29,7 +30,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <autor_utworu>Adam Asnyk</autor_utworu>
 
-<nazwa_utworu><begin id='b1189062500041' /><motyw id='m1189062500041'>Miłość platoniczna</motyw>Między nami nic nie było</nazwa_utworu>
+<nazwa_utworu><begin id="b1189062500041"/><motyw id="m1189062500041">Miłość platoniczna</motyw>Między nami nic nie było</nazwa_utworu>
 
 
 
@@ -40,7 +41,7 @@ Prócz wiosennych marzeń zdradnych;</strofa>
 
 
 
-<strofa><begin id='b1189062528872' /><motyw id='m1189062528872'>Natura</motyw>Prócz tych woni, barw i blasków,/
+<strofa><begin id="b1189062528872"/><motyw id="m1189062528872">Natura</motyw>Prócz tych woni, barw i blasków,/
 Unoszących się w przestrzeni;/
 Prócz szumiących śpiewem lasków/
 I tej świeżej łąk zieleni;</strofa>
@@ -57,6 +58,7 @@ Prócz natury słodkich czarów;</strofa>
 <strofa>Prócz tych wspólnych, jasnych zdrojów,/
 Z których serce zachwyt piło;/
 Prócz pierwiosnków i powojów,---/
-Między nami nic nie było!<end id='e1189062528872' /><end id='e1189062500041' /></strofa>
+Między nami nic nie było!<end id="e1189062528872"/><end id="e1189062500041"/></strofa>
 
-</liryka_lp></utwor>
+</liryka_lp>
+</utwor>

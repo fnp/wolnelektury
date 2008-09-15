@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/O_Doktorze_Hiszpanie">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
 <dc:title xml:lang="pl">O Doktorze Hiszpanie</dc:title>
@@ -16,7 +17,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-pierwsze-o-doktorze-hiszpanie</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
 <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
@@ -40,7 +41,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1188892253412' /><motyw id='m1188892253412'>Pijaństwo, Obyczaje</motyw>,,Nasz dobry doktor spać się od nas bierze<pe><slowo_obce>spać się od nas bierze</slowo_obce> --- odchodzi (zabiera się) od nas, aby udać się spać.</pe>,/
+<strofa><begin id="b1188892253412"/><motyw id="m1188892253412">Pijaństwo, Obyczaje</motyw>,,Nasz dobry doktor spać się od nas bierze<pe><slowo_obce>spać się od nas bierze</slowo_obce> --- odchodzi (zabiera się) od nas, aby udać się spać.</pe>,/
 Ani chce z nami doczekać wieczerze."/
 ,,Dajcie mu pokój! najdziem go w pościeli,/
 A sami przedsię bywajmy weseli!"/
@@ -53,6 +54,7 @@ Doktor nie puścił, ale drzwi puściły<pr><slowo_obce>drzwi puściły</slowo_o
 Od jednej przyszło aż więc do dziewiąci,/
 A doktorowi mózg się we łbie mąci./
 ,,Trudny --- powiada --- mój rząd z tymi pany:/
-Szedłem spać trzeźwo, a wstanę pijany."<end id='e1188892253412' /></strofa>
+Szedłem spać trzeźwo, a wstanę pijany."<end id="e1188892253412"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

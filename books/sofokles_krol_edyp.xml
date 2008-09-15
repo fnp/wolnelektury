@@ -1,7 +1,8 @@
-<utwor><dramat_wierszowany_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <dramat_wierszowany_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Sofokles/Król_Edyp">
 <dc:creator xml:lang="pl">Sofokles</dc:creator>
 <dc:title xml:lang="pl">Król Edyp</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Dramat</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Tragedia</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Kr%C3%B3l+Edyp</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/krol-edyp</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/3067</dc:source.URL>
 <dc:source xml:lang="pl">Sofokles (496-406 a.C.), Król Edyp, Zakład Narodowy im. Ossolińskich, wyd. 2, Kraków, 1947</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - tłumacz Kazimierz Morawski zm. 1925</dc:rights>
@@ -85,7 +86,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	A tamci innym bogom; równe tłumy/
 	Siadły gdzie indziej, gdzie chramy Pallady<pe><slowo_obce>Pallas</slowo_obce> --- przydomek bogini Ateny.</pe>/
 	I tam, gdzie ołtarz Ismena<pr>Ismenus --- rzeka pod Tebami. Nad nią leżała świątynia Apollina --- Ismenion. Była ona siedzibą wróżbitów, którzy wróżyli z płomieni buchających na ołtarzu.</pr> popielny,/
-	<begin id='b1188992169418' /><motyw id='m1188992169418'>Kara, Los, Przywódca, Śmierć</motyw>Bo miasto --- jak ty sam widzisz --- odmęty/
+	<begin id="b1188992169418"/><motyw id="m1188992169418">Kara, Los, Przywódca, Śmierć</motyw>Bo miasto --- jak ty sam widzisz --- odmęty/
 	Złego zalały i lud bodaj głowę/
 	Wznosi wśród klęski i krwawej pożogi,/
 	Mrąc w ziemi kłosach i ziemi owocach,/
@@ -106,10 +107,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	A więc ku tobie, któryś nam najdroższym,/
 	Ślemy, Edypie, tę prośbę błagalną,/
 	Byś nas ratował, czy z bogów porady/
-	Znajdując leki, czy z ludzi natchnienia.<end id='e1188992169418' />/
+	Znajdując leki, czy z ludzi natchnienia.<end id="e1188992169418"/>/
 	Bo przecież widzę, jako doświadczonych/
 	Rady najlepszym poprawy zadatkiem./
-	<begin id='b1188909841358' /><motyw id='m1188909841358'>Państwo, Przywódca, Władza</motyw>Nuże więc, mężom ty przoduj, skrzep miasto,/
+	<begin id="b1188909841358"/><motyw id="m1188909841358">Państwo, Przywódca, Władza</motyw>Nuże więc, mężom ty przoduj, skrzep miasto,/
 	Nuże, rozważnie działaj, bo ta ziemia/
 	Zbawcą cię mieni za dawną gotowość./
 	Niechbyśmy rządów twych tak nie pomnieli,/
@@ -120,7 +121,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Bo jeśli nadal zachowasz ster rządów,/
 	Piękniej ci mężom przewodzić, niż próżni./
 	Ni gród, ni okręt nic przecie nie waży,/
-	Jeśli nie stanie męża dla ich straży.<end id='e1188909841358' />
+	Jeśli nie stanie męża dla ich straży.<end id="e1188909841358"/>
 	</strofa>
 </kwestia>
 
@@ -237,7 +238,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <naglowek_osoba>KREON</naglowek_osoba>
 
 <kwestia>
-	<strofa><begin id='b1188993079114' /><motyw id='m1188993079114'>Bóg, Kara, Los, Zbrodnia, Zbrodniarz</motyw>
+	<strofa><begin id="b1188993079114"/><motyw id="m1188993079114">Bóg, Kara, Los, Zbrodnia, Zbrodniarz</motyw>
 	Niech więc wypowiem, co Bóg mi obwieścił. ---/
 	Febus<pr>Febus --- Apollo.</pr> rozkazał stanowczo, abyśmy/
 	Ziemi zakałę, co w kraju się gnieździ,/
@@ -286,7 +287,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <kwestia>
 	<strofa>
 	Tych więc, co jego zabili, rozkazał/
-	Bóg nam ukarać i pomścić stanowczo.<end id='e1188993079114' />
+	Bóg nam ukarać i pomścić stanowczo.<end id="e1188993079114"/>
 	</strofa>
 </kwestia>
 
@@ -411,7 +412,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1188910545146' /><motyw id='m1188910545146'>Bóg, Grzech, Kara, Przywódca, Zbrodnia, Zbrodniarz</motyw>EDYP</naglowek_osoba>
+<naglowek_osoba><begin id="b1188910545146"/><motyw id="m1188910545146">Bóg, Grzech, Kara, Przywódca, Zbrodnia, Zbrodniarz</motyw>EDYP</naglowek_osoba>
 
 <kwestia>
 	<strofa>
@@ -429,7 +430,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Co prędzej wiązki podniósłszy błagalne<pr><slowo_obce>wiązki podniósłszy błagalne</slowo_obce> --- po szczęśliwym wysłuchaniu modłów usuwali błagalnicy wiązki z ołtarzy.</pr>./
 	I niech kto inny lud na wiec tak zbierze,/
 	Iżby gotowym mnie wiedział; a z woli/
-	Bogów los szczęścia spłynie lub niedoli.<end id='e1188910545146' />
+	Bogów los szczęścia spłynie lub niedoli.<end id="e1188910545146"/>
 	</strofa>
 </kwestia>
 
@@ -471,7 +472,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Precz stąd wyżęli, przybądźcie i teraz i pomoc mi nieście.
 	</strofa>
 	
-	<strofa><begin id='b1188910715140' /><motyw id='m1188910715140'>Bóg, Kara, Miasto, Naród, Państwo, Śmierć</motyw>
+	<strofa><begin id="b1188910715140"/><motyw id="m1188910715140">Bóg, Kara, Miasto, Naród, Państwo, Śmierć</motyw>
 	Zło mnie bezbrzeżne dotknęło. O biada!/
 	<wers_wciety typ="2">Naród wśród moru upada</wers_wciety>/
 	<wers_wciety typ="2">I myśli zbrakło już mieczy</wers_wciety>/
@@ -521,7 +522,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<wers_wciety typ="2">O Bakchusie, pośród gór</wers_wciety>/
 	<wers_wciety>Pląsasz w Menad gronie,</wers_wciety>/
 	<wers_wciety typ="2">W Boga klęsk<pr><slowo_obce>Bóg klęsk</slowo_obce> --- Ares, który tu występuje jako bóstwo dżumy.</pr>, co niesie mór,</wers_wciety>/
-	<wers_wciety>Żagwią mieć, co płonie!</wers_wciety><end id='e1188910715140' />
+	<wers_wciety>Żagwią mieć, co płonie!</wers_wciety><end id="e1188910715140"/>
 	</strofa>
 </kwestia>
 
@@ -536,7 +537,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Które ja, obcy zupełnie tej wieści/
 	I obcy --- sprawie, wypowiem. Toć sam bym/
 	Nie wiele zbadał bez wszelkiej wskazówki./
-	<begin id='b1188995468015' /><motyw id='m1188995468015'>Przywódca, Sprawiedliwość</motyw>Teraz, żem świeżym tej gminy jest członkiem,/
+	<begin id="b1188995468015"/><motyw id="m1188995468015">Przywódca, Sprawiedliwość</motyw>Teraz, żem świeżym tej gminy jest członkiem,/
 	Do was się zwracam z następną przemową:/
 	Kto z was by wiedział, z czyjej zginął ręki/
 	Śmiercią ugodzon Laios Labdakida<pr>Laios Labdakida --- Agenor, król Fenicji, miał syna Kadmosa, który założył Teby. Kadmosa synem był Polydoros; ten zrodził Labdakosa, a Labdakos Laiosa, którego synem był Edyp.</pr>,/
@@ -547,7 +548,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	A jeśli w obcej by ziemi kto wiedział/
 	Sprawcę, niech mówi, otrzyma nagrodę/
 	I nadto sobie na wdzięczność zasłuży./
-	<begin id='b1188995672751' /><motyw id='m1188995672751'>Los</motyw>Lecz jeśli milczeć będziecie, kryć prawdę,/
+	<begin id="b1188995672751"/><motyw id="m1188995672751">Los</motyw>Lecz jeśli milczeć będziecie, kryć prawdę,/
 	To o przyjaciół się trwożąc, to siebie,/
 	Tedy usłyszcie, co wtedy zarządzę./
 	Niechajby taki człowiek w naszej ziemi,/
@@ -568,8 +569,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Aby te klątwy na mą głowę spadły./
 	A was zaklinam, abyście to wszystko/
 	Czynili dla mnie, boga i tej ziemi/
-	Od zbóż i bogów tak osieroconej.<end id='e1188995672751' />/
-	<begin id='b1188995755060' /><motyw id='m1188995755060'>Obowiązek, Rodzina</motyw>Bo choćby boga głos nie nakazywał,/
+	Od zbóż i bogów tak osieroconej.<end id="e1188995672751"/>/
+	<begin id="b1188995755060"/><motyw id="m1188995755060">Obowiązek, Rodzina</motyw>Bo choćby boga głos nie nakazywał,/
 	Nie trzeba było popuścić bezkarnie/
 	Śmierci przedniego człowieka i króla/
 	Lecz rzecz wyśledzić. Że ja teraz dzierżę/
@@ -582,14 +583,14 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Wystąpię za nim, wszystkiego dokonam,/
 	Aby przychwytać tego, co uśmiercił/
 	Syna Labdaka, wnuka Polydora,/
-	Któremu Kadmus i Agenor przodkiem.<end id='e1188995755060' />/
+	Któremu Kadmus i Agenor przodkiem.<end id="e1188995755060"/>/
 	A tym, co działać omieszkają, bogi/
 	Niech ani z ziemi nie dopuszczą płodów,/
 	Ni dziatek z niewiast; niech oni marnieją/
 	Wśród tej zarazy, lub gorszym dopustem./
 	Was za to, którzy powolni mym słowom,/
 	Wspólnictwo Diki<pr>Dike --- bogini sprawiedliwości.</pr> niech skrzepi łaskawie/
-	I bogi w każdej niech poprą was sprawie.<end id='e1188995468015' />
+	I bogi w każdej niech poprą was sprawie.<end id="e1188995468015"/>
 	</strofa>
 </kwestia>
 
@@ -750,9 +751,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <naglowek_osoba>EDYP</naglowek_osoba>
 
 <kwestia>	
-	<strofa><begin id='b1188996138982' /><motyw id='m1188996138982'>Miasto, Obowiązek, Ojczyzna</motyw>
+	<strofa><begin id="b1188996138982"/><motyw id="m1188996138982">Miasto, Obowiązek, Ojczyzna</motyw>
 	Miastu, któregoś dzieckiem, służyć radą/
-	Jest obowiązkiem miłości i prawa.<end id='e1188996138982' />
+	Jest obowiązkiem miłości i prawa.<end id="e1188996138982"/>
 	</strofa>
 </kwestia>
 
@@ -1013,7 +1014,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <kwestia><strofa>Nie Kreon, lecz ty sam sobie zatratą.</strofa></kwestia>
 
 
-<naglowek_osoba><begin id='b1188996717227' /><motyw id='m1188996717227'>Przywódca, Władza</motyw>EDYP</naglowek_osoba>
+<naglowek_osoba><begin id="b1188996717227"/><motyw id="m1188996717227">Przywódca, Władza</motyw>EDYP</naglowek_osoba>
 
 <kwestia>	
 	<strofa>
@@ -1040,7 +1041,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Że bliskim będziesz przy Kreona tronie./
 	Lecz ciężko i ty jak ów, co podżega,/
 	Odpokutujesz, a gdyby nie starość,/
-	Wraz byś otrzymał kaźń za twe zamysły.<end id='e1188996717227' />
+	Wraz byś otrzymał kaźń za twe zamysły.<end id="e1188996717227"/>
 	</strofa>
 </kwestia>
 
@@ -1065,11 +1066,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	W odprawie. Słowem i ja także władam./
 	Nie twoim jestem sługą, lecz Apolla;/
 	I nie zawezwę zastępstwa Kreona,/
-	<begin id='b1188996898640' /><motyw id='m1188996898640'>Kondycja ludzka</motyw>Lecz sam ci powiem, tobie, który szydzisz/
+	<begin id="b1188996898640"/><motyw id="m1188996898640">Kondycja ludzka</motyw>Lecz sam ci powiem, tobie, który szydzisz/
 	Z mojej ślepoty, patrzysz a nie widzisz/
 	Nędzy twej, nie wiesz z kim życie ci schodzi,/
-	Gdzie zamieszkałeś i kto ciebie rodzi.<end id='e1188996898640' />/
-	<begin id='b1188996981669' /><motyw id='m1188996981669'>Los, Wizja</motyw>Między żywymi i zmarłymi braćmi/
+	Gdzie zamieszkałeś i kto ciebie rodzi.<end id="e1188996898640"/>/
+	<begin id="b1188996981669"/><motyw id="m1188996981669">Los, Wizja</motyw>Między żywymi i zmarłymi braćmi/
 	Wzgardę masz, klątwy dwusieczne cię z kraju/
 	Ojca i matki w obczyznę wygnają,/
 	A wzrok, co, światło ogląda, się zaćmi./
@@ -1081,7 +1082,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Nie znasz, co z dziećmi cię zrówna i zgnębi. ---/
 	Szydź więc z Kreona, szydź z mojej ty mowy/
 	Bo niema człeka między śmiertelnymi,/
-	Którego złe by straszniej zmiażdżyć miało.<end id='e1188996981669' />
+	Którego złe by straszniej zmiażdżyć miało.<end id="e1188996981669"/>
 	</strofa>
 </kwestia>
 
@@ -1172,7 +1173,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1188997201639' /><motyw id='m1188997201639'>Los, Rodzina, Wizja</motyw>TYREZJASZ</naglowek_osoba>
+<naglowek_osoba><begin id="b1188997201639"/><motyw id="m1188997201639">Los, Rodzina, Wizja</motyw>TYREZJASZ</naglowek_osoba>
 
 <kwestia>	
 	<strofa>
@@ -1191,7 +1192,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Synem i mężem był, wreszcie rodzica/
 	Współsiewcą w łożu i razem mordercą./
 	Zważ to, a jeśli to prawdę obraża,/
-	Za niemądrego ogłoś mnie wróżbiarza.<end id='e1188997201639' />
+	Za niemądrego ogłoś mnie wróżbiarza.<end id="e1188997201639"/>
 	</strofa>
 </kwestia>
 
@@ -1199,7 +1200,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <naglowek_osoba>CHÓR</naglowek_osoba>
 
 <kwestia>
-	<strofa><begin id='b1188997267499' /><motyw id='m1188997267499'>Bóg, Kara, Los</motyw>
+	<strofa><begin id="b1188997267499"/><motyw id="m1188997267499">Bóg, Kara, Los</motyw>
 	Na kogóż wskazał delfickich głos skał/
 	Kto strasznej zbrodni krwią ręce swoje zlał./
 	<wers_wciety>Niechby szybkim pędem koni,</wers_wciety>/
@@ -1207,7 +1208,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<wers_wciety typ="2">Uszedł on pogoni!</wers_wciety>/
 	<wers_wciety>Bo Apollo wnet nań runie</wers_wciety>/
 	<wers_wciety>Z błyskiem, gromem, burzą,</wers_wciety>/
-	I niechybne wnet Erynje<pr>Erynie --- dziewice zemsty ścigające zbrodniarzy.</pr> grozie tej przywtórzą.<end id='e1188997267499' />
+	I niechybne wnet Erynje<pr>Erynie --- dziewice zemsty ścigające zbrodniarzy.</pr> grozie tej przywtórzą.<end id="e1188997267499"/>
 	</strofa>
 	
 	<strofa>
@@ -1532,7 +1533,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <kwestia>	
 	<strofa>
 	Nie, gdybyś słuchał, jak ja cię słuchałem/
-	<begin id='b1188997852689' /><motyw id='m1188997852689'>Przywódca, Władza</motyw>Rozważ to naprzód, czy ktoby przekładał/
+	<begin id="b1188997852689"/><motyw id="m1188997852689">Przywódca, Władza</motyw>Rozważ to naprzód, czy ktoby przekładał/
 	Rządy wśród trwogi nad spokój pogodny,/
 	Któryby równą zapewniał mu siłę./
 	Jam tedy nigdy nie marzył, by królem/
@@ -1543,7 +1544,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Jakże przeniósłbym więc godność i trony/
 	Nad stanowisko, co dzierżę wśród wczasów?/
 	Nie jestem' przecie głupim, by pożądać/
-	Czegoś innego nad zaszczyt z korzyścią.<end id='e1188997852689' />/
+	Czegoś innego nad zaszczyt z korzyścią.<end id="e1188997852689"/>/
 	Czczą mnie tu wszyscy, wszystko mi się kłania,/
 	Ci, co do ciebie dążą, mi schlebiają,/
 	Bo od mej łaski tak wiele zależy./
@@ -1551,7 +1552,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Nie wykolei się człowiek rozważny,/
 	Anibym powziął ja takich zamiarów,/
 	Ani też innych nie poparł w tem dziele./
-	<begin id='b1188997946296' /><motyw id='m1188997946296'>Sprawiedliwość</motyw>Więc dla dowodu zapytaj się w Delfach,/
+	<begin id="b1188997946296"/><motyw id="m1188997946296">Sprawiedliwość</motyw>Więc dla dowodu zapytaj się w Delfach,/
 	Czy w całej prawdzie oddałem głos boga;/
 	A gdybyś poznał, że spiski knowałem/
 	Wespół z wróżbitą, to chwyć mnie i zabij/
@@ -1563,7 +1564,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Jakby kto drogiej wyzbył się chudoby./
 	Poznasz to z czasem stanowczo, albowiem/
 	Cnocie czas jeden świadectwo wystawi,/
-	A złość nieprawych dzień jeden wyjawi.<end id='e1188997946296' />
+	A złość nieprawych dzień jeden wyjawi.<end id="e1188997946296"/>
 	</strofa>
 </kwestia>
 
@@ -1953,8 +1954,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	By syn ten ojca powalił, ni groźby,/
 	Że Laios legnie pod syna zamachem./
 	A tak głosiły przecie przepowiednie./
-	<begin id='b1188998775543' /><motyw id='m1188998775543'>Bóg</motyw>Nie troszcz się o nie. Gdy tajemnej toni/
-	Bóg chce co wydrzeć, on sam to odsłoni.<end id='e1188998775543' />
+	<begin id="b1188998775543"/><motyw id="m1188998775543">Bóg</motyw>Nie troszcz się o nie. Gdy tajemnej toni/
+	Bóg chce co wydrzeć, on sam to odsłoni.<end id="e1188998775543"/>
 	</strofa>
 </kwestia>
 
@@ -2049,12 +2050,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1188998902034' /><motyw id='m1188998902034'>Los</motyw>EDYP</naglowek_osoba>
+<naglowek_osoba><begin id="b1188998902034"/><motyw id="m1188998902034">Los</motyw>EDYP</naglowek_osoba>
 
 <kwestia>
 	<strofa>
 	Biada mi, straszną rzuciłem ja klątwę,/
-	Jak się wydaje, nieświadom na siebie.<end id='e1188998902034' />
+	Jak się wydaje, nieświadom na siebie.<end id="e1188998902034"/>
 	</strofa>
 </kwestia>
 
@@ -2171,7 +2172,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Nie skryjęć tego, skorom tak daleko/
 	Zapadł już w trwogę; a komużbym raczej/
 	Wśród takiej burzy otworzył me wnętrze?/
-	<begin id='b1188999147745' /><motyw id='m1188999147745'>Kondycja ludzka, Los, Rodzina</motyw>Ojcem był moim Polybos z Koryntu,/
+	<begin id="b1188999147745"/><motyw id="m1188999147745">Kondycja ludzka, Los, Rodzina</motyw>Ojcem był moim Polybos z Koryntu,/
 	Matką Merope z Dorydy<pr>Doris --- mały kraik górski nad rzeką Kefisosem, na północ od Focydy.</pr>. Zażyłem/
 	Tam ja czci wielkiej, aż się przytrafiło/
 	Coś, co urazy zapewne jest godnem,/
@@ -2194,8 +2195,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	To usłyszawszy, zdała od Koryntu/
 	Błądziłem, kroki gwiazdami kierując,/
 	Aby przenigdy nie zaznać nieszczęścia,/
-	Hańby, któraby spełniła tę wróżbę.<end id='e1188999147745' />/
-	<begin id='b1188999263568' /><motyw id='m1188999263568'>Zbrodnia</motyw>I krocząc naprzód, przyszedłem na miejsce,/
+	Hańby, któraby spełniła tę wróżbę.<end id="e1188999147745"/>/
+	<begin id="b1188999263568"/><motyw id="m1188999263568">Zbrodnia</motyw>I krocząc naprzód, przyszedłem na miejsce,/
 	Gdzie według ciebie ten król był zabitym./
 	Zeznam ci wszystko po prawdzie; gdym idąc/
 	Do troistego zbliżył się rozdroża,/
@@ -2208,8 +2209,8 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Starzec, upatrzył gdym podle był wozu,/
 	I w głowę oścień mi wraża kolczasty; ---/
 	Oddałem z lichwą; ugodzon kosturem/
-	Runął on nawznak ze środka siedzenia. ---<end id='e1188999263568' />/
-	Tnę potem drugich; <begin id='b1188999361962' /><motyw id='m1188999361962'>Los</motyw>a jeśli obcego/
+	Runął on nawznak ze środka siedzenia. ---<end id="e1188999263568"/>/
+	Tnę potem drugich; <begin id="b1188999361962"/><motyw id="m1188999361962">Los</motyw>a jeśli obcego/
 	Łączyło jakie z Laiosem krewieństwo,/
 	To któż nędzniejszym byłby od zabójcy,/
 	Któż w większej bogów pogardzie i nieba?/
@@ -2229,7 +2230,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Niechbym nie zajrzał, o boże wy mocy,/
 	Tego ja słońca i zginął bez wieści/
 	Z pośród śmiertelnych, nim takie nieszczęście/
-	Ostrzem by w moją ugodziło głowę.<end id='e1188999361962' />
+	Ostrzem by w moją ugodziło głowę.<end id="e1188999361962"/>
 	</strofa>
 </kwestia>
 
@@ -2624,7 +2625,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <kwestia><strofa>Lecz matki łoże, czyż nie ma mnie trwożyć?</strofa></kwestia>
 
 
-<naglowek_osoba><begin id='b1189000019504' /><motyw id='m1189000019504'>Kondycja ludzka, Los, Matka</motyw>JOKASTA</naglowek_osoba>
+<naglowek_osoba><begin id="b1189000019504"/><motyw id="m1189000019504">Kondycja ludzka, Los, Matka</motyw>JOKASTA</naglowek_osoba>
 
 <kwestia>
 	<strofa>
@@ -2634,7 +2635,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	A tych miłostek z matką się nie strachaj,/
 	Bo wielu ludzi już we śnie z matkami/
 	Się miłowało; swobodnie ten żyje,/
-	Kto snu mamidła lekko sobie waży.<end id='e1189000019504' />
+	Kto snu mamidła lekko sobie waży.<end id="e1189000019504"/>
 	</strofa>
 </kwestia>
 
@@ -3442,7 +3443,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 </kwestia>
 
 
-<naglowek_osoba><begin id='b1189000460739' /><motyw id='m1189000460739'>Kondycja ludzka, Los</motyw>EDYP</naglowek_osoba>
+<naglowek_osoba><begin id="b1189000460739"/><motyw id="m1189000460739">Kondycja ludzka, Los</motyw>EDYP</naglowek_osoba>
 
 <kwestia>
 	<strofa>
@@ -3467,7 +3468,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Los ten, co ciebie, Edypie, spotyka,/
 	<wers_wciety typ="3">Jest mi jakby głosem żywym,</wers_wciety>/
 	<wers_wciety typ="2">Bym żadnego śmiertelnika</wers_wciety>/
-	<wers_wciety typ="3">Nie zwał już szczęśliwym.</wers_wciety><end id='e1189000460739' />
+	<wers_wciety typ="3">Nie zwał już szczęśliwym.</wers_wciety><end id="e1189000460739"/>
 	</strofa>
 	
 	<strofa>
@@ -3510,7 +3511,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	</strofa>
 </kwestia>
 
-<naglowek_osoba><begin id='b1189000883498' /><motyw id='m1189000883498'>Grzech, Kara, Los, Matka, Mąż, Rodzina, Rozpacz, Samobójstwo, Syn, Żona</motyw>POSŁANIEC DOMOWY</naglowek_osoba>
+<naglowek_osoba><begin id="b1189000883498"/><motyw id="m1189000883498">Grzech, Kara, Los, Matka, Mąż, Rodzina, Rozpacz, Samobójstwo, Syn, Żona</motyw>POSŁANIEC DOMOWY</naglowek_osoba>
 
 <kwestia>	
 	<strofa>
@@ -3604,7 +3605,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	Była tu świetność zaprawdę świetnością/
 	Za dni minionych, w dniu jednak dzisiejszym/
 	Nastała groza, śmierć, hańba i jęki,/
-	Nie brak niczego, co złem się nazywa.<end id='e1189000883498' />
+	Nie brak niczego, co złem się nazywa.<end id="e1189000883498"/>
 	</strofa>
 </kwestia>
 
@@ -4172,4 +4173,5 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <extra><!--</tekst_glowny>--></extra>
 
-</dramat_wierszowany_l></utwor>
+</dramat_wierszowany_l>
+</utwor>

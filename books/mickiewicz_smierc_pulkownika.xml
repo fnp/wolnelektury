@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Mickiewicz/%C5%9Amier%C4%87_Pu%C5%82kownika/">
 <dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
 <dc:title xml:lang="pl">Śmierć Pułkownika</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/%C5%9Amier%C4%87+Pu%C5%82kownika</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/smierc-pulkownika</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
 <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., W. L. Anczyc, Kraków, 1928</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
@@ -39,7 +40,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><wers_akap><begin id='b1195865274623' /><motyw id='m1195865274623'>Kobieta, Przywódca, Rycerz, Śmierć bohaterska, Żołnierz</motyw>W głuchéj puszczy, przed chatką leśnika,</wers_akap>/
+<strofa><wers_akap><begin id="b1195865274623"/><motyw id="m1195865274623">Kobieta, Przywódca, Rycerz, Śmierć bohaterska, Żołnierz</motyw>W głuchéj puszczy, przed chatką leśnika,</wers_akap>/
 Rota strzelców stanęła zielona;/
 A u wrót stoi straż Pułkownika,/
 Tam w izdebce Pułkownik ich kona./
@@ -48,7 +49,7 @@ Wódz to był wiélkiej mocy i sławy,/
 Kiedy po nim lud prosty tak płacze/
 I o zdrowie tak pyta ciekawy.</strofa>
 
-<strofa><wers_akap><begin id='b1195865075367' /><motyw id='m1195865075367'>Koń</motyw>Kazał konia Pułkownik kulbaczyć,</wers_akap>/
+<strofa><wers_akap><begin id="b1195865075367"/><motyw id="m1195865075367">Koń</motyw>Kazał konia Pułkownik kulbaczyć,</wers_akap>/
 Konia w każdéj sławnego potrzebie;/
 Chce go jeszcze przed śmiercią obaczyć,/
 Kazał przywieść do izby --- do siebie./
@@ -58,7 +59,7 @@ Stary żołnierz, --- on chce, jak Czarniecki,/
 Umierając, swe żegnać rynsztunki<pr>Pomysł żegnania się z koniem, towarzyszem bojów, przejęty, zdaje się, z Niemcewicza dumy o Czarnieckim, w której poeta za Kochowskim wprowadził podobną wzruszającą scenę żegnania się wodza z ulubionym rumakiem.</pr>.</strofa>
 
 <strofa><wers_akap>A gdy konia już z izby wywiedli,</wers_akap>/
-<begin id='b1195865143665' /><motyw id='m1195865143665'>Religia</motyw>Potém do niéj wszedł ksiądz z Panem Bogiem;<end id='e1195865075367' />/
+<begin id="b1195865143665"/><motyw id="m1195865143665">Religia</motyw>Potém do niéj wszedł ksiądz z Panem Bogiem;<end id="e1195865075367"/>/
 I żołnierze od żalu pobledli,/
 A lud modlił się klęcząc przed progiem./
 Nawet starzy Kościuszki żołnierze,/
@@ -72,14 +73,15 @@ Bo już Moskal był w téj okolicy./
 Przyszedł lud widzieć zwłoki rycerza./
 Na pastuszym tapczanie on leży ---/
 W ręku krzyż, w głowach siodło i burka,/
-A u boku kordelas, dwururka.<end id='e1195865143665' /></strofa>
+A u boku kordelas, dwururka.<end id="e1195865143665"/></strofa>
 
 <strofa><wers_akap>Lecz ten wódz, choć w żołnierskiéj odzieży,</wers_akap>/
 Jakie piękne dziewicze ma lica?/
 Jaką pierś? --- Ach, to była dziewica,/
 To Litwinka, dziewica--bohater,/
-Wódz Powstańców --- Emilija Plater!<pr><tytul_dziela>Śmierć pułkownika</tytul_dziela> ukazała się po raz pierwszy drukiem w paryskim wydaniu z 1836 r.</pr><end id='e1195865274623' /></strofa>
+Wódz Powstańców --- Emilija Plater!<pr><tytul_dziela>Śmierć pułkownika</tytul_dziela> ukazała się po raz pierwszy drukiem w paryskim wydaniu z 1836 r.</pr><end id="e1195865274623"/></strofa>
 
 <extra><!--</tekst_glowny>--></extra>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

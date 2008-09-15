@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Na_krzyżyk_na_piersiach_jednej_panny">
 <dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
 <dc:title xml:lang="pl">Na krzyżyk na piersiach jednej panny</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Na+krzy%C5%BCyk+na+piersiach+jednej+panny</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/na-krzyzyk-na-piersiach-jednej-panny</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
 <dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Andrzej Morsztyn zm. 1693</dc:rights>
@@ -33,7 +34,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189002438206' /><motyw id='m1189002438206'>Grzech, Kobieta, Religia, Wyrzuty sumienia</motyw>O święta mego przyczyno zbawienia!/
+<strofa><begin id="b1189002438206"/><motyw id="m1189002438206">Grzech, Kobieta, Religia, Wyrzuty sumienia</motyw>O święta mego przyczyno zbawienia!/
 <wers_wciety>Któż cię wniósł na tę jasną Kalwaryją,</wers_wciety>/
 <wers_wciety>Gdzie dusze, które z łaski twojej żyją</wers_wciety>/
 <wers_wciety>W wolności, znowu sadzasz do więzienia?</wers_wciety></strofa>
@@ -49,6 +50,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <strofa>Nie dziw, że zmarli podnoszą się w grobie,/
 <wers_wciety>Widząc, jak kiedyś, ten, co żywot daje,</wers_wciety>/
-<wers_wciety>Krzyż między dwiema wystawion łotrami.</wers_wciety><end id='e1189002438206' /></strofa>
+<wers_wciety>Krzyż między dwiema wystawion łotrami.</wers_wciety><end id="e1189002438206"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

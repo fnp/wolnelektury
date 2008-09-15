@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Le%C5%9Bmian/Urszula_Kochanowska">
 <dc:creator xml:lang="pl">Leśmian, Bolesław</dc:creator>
 <dc:title xml:lang="pl">Urszula Kochanowska</dc:title>
@@ -14,7 +15,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:subject.genre xml:lang="pl">Wiersz sylabotoniczny</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Urszula+Kochanowska</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/urszula-kochanowska</dc:identifier.url>
 <dc:source xml:lang="pl">Bolesław Leśmian (1877-1937), Napój cienisty, Wydawnictwo Mortkowicza, Warszawa, 1936</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Bolesław Leśmian zm. 1937</dc:rights>
 <dc:date.pd xml:lang="pl">1937</dc:date.pd>
@@ -39,7 +40,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1199877660211' /><motyw id='m1199877660211'>Bóg, Dziecko, Śmierć, Zaświaty</motyw>Gdy po śmierci w niebiosów przybyłam pustkowie,/
+<strofa><begin id="b1199877660211"/><motyw id="m1199877660211">Bóg, Dziecko, Śmierć, Zaświaty</motyw>Gdy po śmierci w niebiosów przybyłam pustkowie,/
 Bóg długo patrzał<pe>Patrzył.</pe> na mnie i głaskał po głowie.</strofa>
 
 <strofa>--- ,,Zbliż się do mnie, Urszulo! Poglądasz<pe>Wyglądasz.</pe>, jak żywa.../
@@ -52,7 +53,7 @@ Wszystko było tak samo, jak tam --- w Czarnolasie!<pe>Czarnolas-wieś w wojewó
 By zbadać, czy się gniewa, że Go o to proszę?</strofa>
 
 <strofa>Uśmiechnął się i skinął --- i wnet z Bożej łaski/
-<begin id='b1199877918379' /><motyw id='m1199877918379'>Dom</motyw>Powstał dom kubek w kubek<pe>Identyczny.</pe>, jak nasz --- Czarnolaski.</strofa>
+<begin id="b1199877918379"/><motyw id="m1199877918379">Dom</motyw>Powstał dom kubek w kubek<pe>Identyczny.</pe>, jak nasz --- Czarnolaski.</strofa>
 
 <strofa>I sprzęty i donice rozkwitłego ziela/
 Tak podobne, aż oczom straszno od wesela!</strofa>
@@ -67,14 +68,15 @@ Nieraz do drzwi zapukam, by odwiedzić ciebie!”</strofa>
 Więc nakrywam do stołu, omiatam podłogę ---</strofa>
 
 <strofa>I w suknię najróżowszą ciało przyoblekam/
-I sen wieczny odpędzam --- i czuwam --- i czekam...<end id='e1199877918379' /></strofa>
+I sen wieczny odpędzam --- i czuwam --- i czekam...<end id="e1199877918379"/></strofa>
 
 <strofa>Już świt pierwszą roznietą złoci się po ścianie,/
 Gdy właśnie słychać kroki i do drzwi pukanie...</strofa>
 
-<strofa><begin id='b1199877809090' /><motyw id='m1199877809090'>Córka, Matka, Miłość, Miłość silniejsza niż śmierć, Ojciec, Rodzina</motyw>Więc zrywam się i biegnę! Wiatr po niebie dzwoni!/
-Serce w piersi zamiera... Nie!... To --- Bóg, nie oni!...<end id='e1199877809090' /><end id='e1199877660211' /></strofa>
+<strofa><begin id="b1199877809090"/><motyw id="m1199877809090">Córka, Matka, Miłość, Miłość silniejsza niż śmierć, Ojciec, Rodzina</motyw>Więc zrywam się i biegnę! Wiatr po niebie dzwoni!/
+Serce w piersi zamiera... Nie!... To --- Bóg, nie oni!...<end id="e1199877809090"/><end id="e1199877660211"/></strofa>
 
 <extra><!--</tekst_glowny>--></extra>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

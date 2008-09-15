@@ -1,7 +1,8 @@
-<utwor><opowiadanie>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <opowiadanie>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
 <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
 <dc:title xml:lang="pl">Syrena</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Syrena</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/legendy-warszawskie-syrena</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
 <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
@@ -49,7 +50,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap_dialog><begin id="b1188462589918" /><motyw id="m1188462589918">Śpiew</motyw>--- A widzieliście ją, tę syrenę niby, kumie Szymonie?</akap_dialog>
+<akap_dialog><begin id="b1188462589918"/><motyw id="m1188462589918">Śpiew</motyw>--- A widzieliście ją, tę syrenę niby, kumie Szymonie?</akap_dialog>
 
 <akap_dialog>--- Widzieć nie widziałem, kumie Mateuszu, bo drzewa przesłaniały źródełko, a bliżej podejść bałem się jakoś--ci, alem słyszał, jak śpiewa.</akap_dialog>
 
@@ -65,11 +66,11 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap_dialog>--- Ale jak? Toć, jeśli nas ujrzy, --- umknie i skryje się w wodzie. A zresztą, może to i grzech przyglądać się takowej stworze niechrzczonej i kuszącego jej śpiewania słuchać.</akap_dialog>
 
-<akap_dialog><begin id='b1218983586253' /><motyw id='m1218983586253'>Samotnik</motyw>--- Grzech nie grzech, --- niewiada<pe><slowo_obce>niewiada</slowo_obce> (gwar.) --- nie wiadomo.</pe>! Najlepiej zapytać o to ojca Barnaby, pustelnika. To człek mądry i pobożny; on powie i nauczy, co czynić nam należy.</akap_dialog>
+<akap_dialog><begin id="b1218983586253"/><motyw id="m1218983586253">Samotnik</motyw>--- Grzech nie grzech, --- niewiada<pe><slowo_obce>niewiada</slowo_obce> (gwar.) --- nie wiadomo.</pe>! Najlepiej zapytać o to ojca Barnaby, pustelnika. To człek mądry i pobożny; on powie i nauczy, co czynić nam należy.</akap_dialog>
 
 <akap_dialog>--- Rzetelnie mówicie, kumie Mateuszu, chodźmy do pustelnika Barnaby.</akap_dialog>
 
-<akap_dialog>--- Ano, to i chodźmy! Ryby przez ten czas z Wisły nie uciekną, a my się od duchownej osoby przeróżności dowiemy.<end id='e1218983586253' /></akap_dialog>
+<akap_dialog>--- Ano, to i chodźmy! Ryby przez ten czas z Wisły nie uciekną, a my się od duchownej osoby przeróżności dowiemy.<end id="e1218983586253"/></akap_dialog>
 
 
 <akap>Tak rozmawiali z sobą dwaj rybacy znad Wisły w owych zamierzchłych czasach, gdy na miejscu dzisiejszej Warszawy, a właściwie jej Powiśla, leżała niewielka rybacka osada, otoczona gęstymi lasami, w których roiło się od grubego zwierza: łosi, turów, wilków i niedźwiedzi.</akap>
@@ -109,17 +110,17 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Ojciec Barnaba był to starzec wysoki, chudy, siwobrody, łysy jak kolano, odziany w długą samodziałową opończę. Na pomarszczonym jego obliczu rysowały się powaga i dobroć.</akap>
 
 
-<akap><begin id="b1188462675213" /><motyw id="m1188462675213">Lato, Rośliny, Zwierzęta</motyw>Wszyscy trzej siedzieli przed budką pustelnika, na ławie, uczynionej z dwóch pieńków, na których położono z gruba obciosaną deskę. Było to lipcowe popołudnie i cudnie było w boru<pe>w boru --- w borze, w lesie.</pe>, pachnącym żywicą i kwiatami. Ptaki śpiewały radośnie, pszczoły wesoło brzęczały, a zielony dzięcioł w czerwonym kapturku stukał dziobkiem, jak młotkiem, w korę rozłożystego dębu i wydłubywał robaki.<end id="e1188462675213" /></akap>
+<akap><begin id="b1188462675213"/><motyw id="m1188462675213">Lato, Rośliny, Zwierzęta</motyw>Wszyscy trzej siedzieli przed budką pustelnika, na ławie, uczynionej z dwóch pieńków, na których położono z gruba obciosaną deskę. Było to lipcowe popołudnie i cudnie było w boru<pe>w boru --- w borze, w lesie.</pe>, pachnącym żywicą i kwiatami. Ptaki śpiewały radośnie, pszczoły wesoło brzęczały, a zielony dzięcioł w czerwonym kapturku stukał dziobkiem, jak młotkiem, w korę rozłożystego dębu i wydłubywał robaki.<end id="e1188462675213"/></akap>
 
 
 <akap>A ojciec Barnaba namyślał się, namyślał, aż rzecze:</akap>
 
-<akap_dialog><begin id='b1218983847820' /><motyw id='m1218983847820'>Podstęp</motyw>--- Więc trzeba tak zrobić: w pełnię miesiąca wybierzemy się we trzech do źródełka; na odzienia nasze naczepić należy gałęzi świeżo zerwanych, najlepiej lipowych, kwiatem okrytych, żeby syrena człowieka nie poczuła, bo się nie pokaże; zaczaimy się przy samym źródle, a gdy wynijdzie i śpiewać zacznie, wtedy zarzucimy na nią sznur, spleciony z cienkich witek wierzbowych, święconą wodą skropiony, ile, że<pe><slowo_obce>ile, że</slowo_obce> --- jako że, ponieważ.</pe> takiego żaden się czar nie ima<pe><slowo_obce>czar się nie ima</slowo_obce> --- czar go nie dotyka.</pe>; zwiążemy i miłościwemu księciu na Czersku zawieziemy w darze. Niech ją na zamku trzyma i niech mu wyśpiewuje.</akap_dialog>
+<akap_dialog><begin id="b1218983847820"/><motyw id="m1218983847820">Podstęp</motyw>--- Więc trzeba tak zrobić: w pełnię miesiąca wybierzemy się we trzech do źródełka; na odzienia nasze naczepić należy gałęzi świeżo zerwanych, najlepiej lipowych, kwiatem okrytych, żeby syrena człowieka nie poczuła, bo się nie pokaże; zaczaimy się przy samym źródle, a gdy wynijdzie i śpiewać zacznie, wtedy zarzucimy na nią sznur, spleciony z cienkich witek wierzbowych, święconą wodą skropiony, ile, że<pe><slowo_obce>ile, że</slowo_obce> --- jako że, ponieważ.</pe> takiego żaden się czar nie ima<pe><slowo_obce>czar się nie ima</slowo_obce> --- czar go nie dotyka.</pe>; zwiążemy i miłościwemu księciu na Czersku zawieziemy w darze. Niech ją na zamku trzyma i niech mu wyśpiewuje.</akap_dialog>
 
 
 <akap>Ale uszy woskiem musimy sobie zatkać, żeby jej narzekań i lamentów nie słyszeć, bo inaczej serce w nas tak zemdleje, że nie będziemy mieli mocy wziąć jej w niewolę. Srodze jest żałościwe syrenie śpiewanie.</akap>
 
-<akap_dialog>--- Tak jest, jak mówicie, ojcze Barnabo; wiem ci ja o tem, bom te piosenki słyszał. Żaden miód, by najprzedniejszy<pe><slowo_obce>by najprzedniejszy</slowo_obce> --- choćby najlepszy.</pe>, tak człowieka nie upoi, jako on głos syreni.<end id="e1188462589918" /><end id='e1218983847820' /> Więc tedy do pełni miesięcznej?</akap_dialog>
+<akap_dialog>--- Tak jest, jak mówicie, ojcze Barnabo; wiem ci ja o tem, bom te piosenki słyszał. Żaden miód, by najprzedniejszy<pe><slowo_obce>by najprzedniejszy</slowo_obce> --- choćby najlepszy.</pe>, tak człowieka nie upoi, jako on głos syreni.<end id="e1188462589918"/><end id="e1218983847820"/> Więc tedy do pełni miesięcznej?</akap_dialog>
 
 <akap_dialog>--- Tak jest, do pełni.</akap_dialog>
 
@@ -148,7 +149,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>W tym to potoku mieszkała właśnie syrena.</akap>
 
 
-<akap><begin id='b1218984901238' /><motyw id='m1218984901238'>Księżyc</motyw>Była piękna, pogodna noc miesięczna. Srebrzysta pełnia żeglowała przez błękitne, usiane gwiazdami niebo i przyglądała się ziemi uśpionej, lasowi i źródłu.<end id='e1218984901238' /></akap>
+<akap><begin id="b1218984901238"/><motyw id="m1218984901238">Księżyc</motyw>Była piękna, pogodna noc miesięczna. Srebrzysta pełnia żeglowała przez błękitne, usiane gwiazdami niebo i przyglądała się ziemi uśpionej, lasowi i źródłu.<end id="e1218984901238"/></akap>
 
 
 <akap>Ale w lesie nie wszyscy spali.</akap>
@@ -160,7 +161,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Nagle z wody wynurzyła się przecudna postać. Była to dziewica<pe><slowo_obce>dziewica</slowo_obce> --- panna.</pe> nadziemskiej urody; w świetle miesięcznym widać ją było doskonale. Miała długie kruczoczarne włosy, pierścieniami spływające na białą, jak z marmuru wyrzeźbioną szyję; szafirowe jej oczy, wzniesione ku pełni, patrzyły dziwnie przejmująco i smutno, a ozdobiona lekkim rumieńcem twarzyczka takim tchnęła czarodziejskim urokiem, że przyglądającym się jej rybakom aż serca zamarły ze wzruszenia.</akap>
 
 
-<akap><begin id='b1218984878926' /><motyw id='m1218984878926'>Śpiew</motyw>Syrena chwilę trwała w milczeniu, zapatrzona w niebo i w gwiazdy --- i oto w ciszy tej czarownej nocy zadźwięczał śpiew tak piękny, tak kryształowo czysty, że zdawało się, iż i księżyc, i gwiazd miliony, i ziemia, i niebo zasłuchały się w niego do niepamięci.<end id='e1218984878926' /></akap>
+<akap><begin id="b1218984878926"/><motyw id="m1218984878926">Śpiew</motyw>Syrena chwilę trwała w milczeniu, zapatrzona w niebo i w gwiazdy --- i oto w ciszy tej czarownej nocy zadźwięczał śpiew tak piękny, tak kryształowo czysty, że zdawało się, iż i księżyc, i gwiazd miliony, i ziemia, i niebo zasłuchały się w niego do niepamięci.<end id="e1218984878926"/></akap>
 
 
 <akap>Wtem z krzaków, cicho, bez szelestu, wyskoczyły owe trzy postacie --- i nie tak szybko rzuca się ryś drapieżny na przebiegającą łanię, jak oni rzucili się na syrenę, skrępowali ją powrósłem<pe><slowo_obce>powrósło</slowo_obce> --- sznur.</pe>, z witek wierzbowych splecionym, i wyciągnęli z wody na murawę.</akap>
@@ -215,7 +216,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap_dialog>--- Syrena? Jezusie, Maryjo! Prawda! Jakaż ona śliczna!</akap_dialog>
 
-<akap_dialog>--- <begin id='b1218985561477' /><motyw id='m1218985561477'>Czarownica</motyw>Nie prawiłbyś byle czego! Śliczna! Czarownica, wiadomo ! Taka ci najcudniejszą postać przybierze, aby tym łacniej<pe><slowo_obce>łacniej</slowo_obce> --- łatwiej.</pe> otumanić chrześcijańską duszę.<end id='e1218985561477' /></akap_dialog>
+<akap_dialog>--- <begin id="b1218985561477"/><motyw id="m1218985561477">Czarownica</motyw>Nie prawiłbyś byle czego! Śliczna! Czarownica, wiadomo ! Taka ci najcudniejszą postać przybierze, aby tym łacniej<pe><slowo_obce>łacniej</slowo_obce> --- łatwiej.</pe> otumanić chrześcijańską duszę.<end id="e1218985561477"/></akap_dialog>
 
 <akap_dialog>--- Boże miły! Prawdę mówicie? To ona chrześcijańskie dusze tumani? I cóż ja mam z nią zrobić?</akap_dialog>
 
@@ -249,13 +250,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>I nie cniło się<pe><slowo_obce>nie cniło się</slowo_obce> --- nie nudziło się.</pe> Staszkowi spozierać tak nieustannie na syrenę, bo nigdy, nigdy, jako żywo, nie widział podobnie urodziwego lica i źrenic równie głębokich, przepastnych i czaru zaziemskiego pełnych.</akap>
 
 
-<akap><begin id="b1188464162484" /><motyw id="m1188464162484">Śpiew</motyw>I nagle --- syrena spojrzała na Staszka swymi czarodziejskimi oczami, uniosła przepiękną, opierścienioną zwojami czarnych włosów główkę, otworzyła koralowe usteczka i zaśpiewała.</akap>
+<akap><begin id="b1188464162484"/><motyw id="m1188464162484">Śpiew</motyw>I nagle --- syrena spojrzała na Staszka swymi czarodziejskimi oczami, uniosła przepiękną, opierścienioną zwojami czarnych włosów główkę, otworzyła koralowe usteczka i zaśpiewała.</akap>
 
 
 <akap>Zaśpiewała jakąś piosenkę bez słów, piosenkę tak cudną, że drzewa za oborą przestały szumieć, a krowy łby ciężkie od żłobów zwróciły w jej stronę, żuć przestały i zasłuchały się w oszołamiającą pieśń syreny.</akap>
 
 
-<akap>Staszek był na wpół przytomny. Jak żyje nie słyszał nic podobnego. Śpiew syreny grał na jego sercu tak, jak gra wiosna na sercu każdego człowieka. Uczuł, że dzieje się z nim coś dziwnego, że jest jakiś lepszy, jakiś mądrzejszy, że otwierają się przed nim światy, o których nigdy dotychczas nie pomyślał, światy pełne aniołów i cudów.<end id="e1188464162484" /></akap>
+<akap>Staszek był na wpół przytomny. Jak żyje nie słyszał nic podobnego. Śpiew syreny grał na jego sercu tak, jak gra wiosna na sercu każdego człowieka. Uczuł, że dzieje się z nim coś dziwnego, że jest jakiś lepszy, jakiś mądrzejszy, że otwierają się przed nim światy, o których nigdy dotychczas nie pomyślał, światy pełne aniołów i cudów.<end id="e1188464162484"/></akap>
 
 
 <akap>A syrena nagle spojrzała wprost w oczy Staszka i rzekła:</akap>
@@ -274,7 +275,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Usłuchał. Otworzył wrota na ścieżaj<pe><slowo_obce>na ścieżaj</slowo_obce> --- na oścież.</pe> i czekał, co się stanie.</akap>
 
 
-<akap>Nie czekał długo. <begin id="b1188464433796" /><motyw id="m1188464433796">Śpiew</motyw>Syrena uniosła się ze słomy, na której leżała, i skacząc na swoim rybim ogonie, przeszła przez wrota i skierowała się w stronę Wisły.</akap>
+<akap>Nie czekał długo. <begin id="b1188464433796"/><motyw id="m1188464433796">Śpiew</motyw>Syrena uniosła się ze słomy, na której leżała, i skacząc na swoim rybim ogonie, przeszła przez wrota i skierowała się w stronę Wisły.</akap>
 
 
 <akap>Szła i śpiewała. Krowy wyciągnęły za nią łby i poczęły ryczeć żałośnie, drzewa szumiały do wtóru piosence syreniej, a szumiały tak smutnie, aż niebo drobnymi łzami sypać jęło i zachmurzyło się ponuro. A Staszek, jak urzeczony, szedł za nią, szedł za nią, bez woli, bez myśli.</akap>
@@ -285,19 +286,19 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>A gdy już była tuż, tuż nad brzegiem Wisły, odwróciła się, spojrzała ku wiosce i zawołała na głos cały:</akap>
 
-<akap_dialog>--- <begin id='b1218986244325' /><motyw id='m1218986244325'>Lud</motyw>Kochałam cię, ty brzegu wiślany, kochałam was, ludzie prości i serca dobrego, byłam waszą pieśnią, waszym czarem życia!</akap_dialog>
+<akap_dialog>--- <begin id="b1218986244325"/><motyw id="m1218986244325">Lud</motyw>Kochałam cię, ty brzegu wiślany, kochałam was, ludzie prości i serca dobrego, byłam waszą pieśnią, waszym czarem życia!</akap_dialog>
 
 
 <akap>Czemuż wzięliście mnie w niewolę, czemuż chcieliście, abym w pętach, w więzieniu, na rozkaz książęcy śpiewała?</akap>
 
 
-<akap>Śpiewałam wam, ludzie prości, ludzie serca cichego i dobrego, ale na rozkaz śpiewać nie chcę i nie będę.<end id='e1218986244325' /></akap>
+<akap>Śpiewałam wam, ludzie prości, ludzie serca cichego i dobrego, ale na rozkaz śpiewać nie chcę i nie będę.<end id="e1218986244325"/></akap>
 
 
 <akap>Wolę skryć się na wieki w fale wiślane, wolę zniknąć sprzed waszych oczu i tylko szumem rzeki do was przemawiać.</akap>
 
 
-<akap>A gdy przyjdą czasy ciężkie i twarde, czasy, o których nie śni się, ani wam, ani dzieciom i wnukom dzieci waszych śnić się jeszcze nie będzie, wtedy, w lata krzywdy i klęski, szum fal wiślanych śpiewać będzie potomkom waszym o nadziei, o sile, o zwycięstwie.<end id="e1188464433796" /></akap>
+<akap>A gdy przyjdą czasy ciężkie i twarde, czasy, o których nie śni się, ani wam, ani dzieciom i wnukom dzieci waszych śnić się jeszcze nie będzie, wtedy, w lata krzywdy i klęski, szum fal wiślanych śpiewać będzie potomkom waszym o nadziei, o sile, o zwycięstwie.<end id="e1188464433796"/></akap>
 
 
 <akap>A tu tymczasem, pędem od wioski lecą ku brzegowi obaj rybacy i pustelnik stary i krzyczą:</akap>
@@ -319,9 +320,9 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>I zniknął.</akap>
 
 
-<sekcja_swiatlo />
-<separator_linia />
-<sekcja_swiatlo />
+<sekcja_swiatlo/>
+<separator_linia/>
+<sekcja_swiatlo/>
 
 
 <akap>Minęły lata i wieki. Na miejscu wioski --- miasto powstało, ludne<pe><slowo_obce>ludne</slowo_obce> --- mające wielu mieszkańców, zamieszkałe przez wielu ludzi.</pe>, bogate, warowne.</akap>
@@ -331,4 +332,5 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <extra><!--</tekst_glowny>--></extra>
 
-</opowiadanie></utwor>
+</opowiadanie>
+</utwor>

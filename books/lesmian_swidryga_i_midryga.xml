@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Le%C5%9Bmian/%C5%9Awidryga_i_Midryga">
 <dc:creator xml:lang="pl">Leśmian, Bolesław</dc:creator>
 <dc:title xml:lang="pl">Świdryga i Midryga</dc:title>
@@ -14,7 +15,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:subject.genre xml:lang="pl">Wiersz sylabotoniczny</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/%C5%9Awidryga+i+Midryga</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/swidryga-i-midryga</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=7336&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
 <dc:source xml:lang="pl">Bolesław Leśmian (1877-1937), Łąka, Wydawnictwo Mortkowicza, Warszawa, 1920</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Bolesław Leśmian zm. 1937</dc:rights>
@@ -40,13 +41,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1199876777676' /><motyw id='m1199876777676'>Taniec</motyw>To nie konie tak cwałują i uszami strzygą,/
+<strofa><begin id="b1199876777676"/><motyw id="m1199876777676">Taniec</motyw>To nie konie tak cwałują i uszami strzygą,/
 Jeno tańczą dwaj opoje --- Świdryga z Midrygą.</strofa>
 
 <strofa>A nie stęka tak stodoła pod cepów bijakiem,/
 Jak ta łąka, źgana stopą srożej, niż kułakiem!</strofa>
 
-<strofa><begin id='b1199877489995' /><motyw id='m1199877489995'>Sobowtór</motyw>Zaskoczyła ich na słońcu Południca blada/
+<strofa><begin id="b1199877489995"/><motyw id="m1199877489995">Sobowtór</motyw>Zaskoczyła ich na słońcu Południca blada/
 I Świdrydze i Midrydze i tańcowi rada.</strofa>
 
 <strofa>Zaglądała im do oczu chciwie, jak do żłobu./
@@ -79,20 +80,20 @@ Ten obcasem kurz zamiatał, a tamten --- cholewą.</strofa>
 <strofa>Na odsiebkę, na odkrętkę i znów na odwrotkę, ---/
 Podeptali macierzankę, błyszczkę i tymotkę!</strofa>
 
-<strofa><begin id='b1199877040012' /><motyw id='m1199877040012'>Śmierć</motyw>Jeden wrzeszczał: ,,Konaj żywcem!” a drugi: ,,Wciornaści!”/
+<strofa><begin id="b1199877040012"/><motyw id="m1199877040012">Śmierć</motyw>Jeden wrzeszczał: ,,Konaj żywcem!” a drugi: ,,Wciornaści!”/
 Tańcowali aż do zdechu i aż do upaści!</strofa>
 
 <strofa>Aż poczuli, że dziewczyna życie w tańcu traci,/
 I umarła jednocześnie we dwojej postaci.</strofa>
 
-<strofa><begin id='b1199877134016' /><motyw id='m1199877134016'>Grób, Pogrzeb</motyw>„Pochowajmy owo ciało nie bardzo samotne,/
+<strofa><begin id="b1199877134016"/><motyw id="m1199877134016">Grób, Pogrzeb</motyw>„Pochowajmy owo ciało nie bardzo samotne,/
 Bo podwójne w tańcowaniu, a w śmierci dwukrotne.</strofa>
 
 <strofa>Pochowajmy na cmentarzu, gdzie za drzewem --- drzewo,/
 Zmówmy pacierz obopólny --- za prawą i lewą.”</strofa>
 
 <strofa>W dwóch ją trumnach ułożyli, ale w jednym grobie, ---/
-A już huczy echo ziemne --- tańczą trumny obie!<end id='e1199877489995' /></strofa>
+A już huczy echo ziemne --- tańczą trumny obie!<end id="e1199877489995"/></strofa>
 
 <strofa>Tańczą, ciałem nakarmione, syte i hulaszcze,/
 Ukazując co raz w tańcu niedomkniętą paszczę.</strofa>
@@ -104,7 +105,7 @@ Na odkrętkę, na odwrotkę i znów na odsiebkę!</strofa>
 Aż się wzdryga wnętrznościami przerażony cmentach!</strofa>
 
 <strofa>Aż się w sobie zatraciło błędne tańca koło,/
-Aż się stało popod ziemią huczno i wesoło!<end id='e1199877134016' /></strofa>
+Aż się stało popod ziemią huczno i wesoło!<end id="e1199877134016"/></strofa>
 
 <strofa>Aż zmąciły się rozumy Świdrydze---Midrydze,/
 Jakby wicher je rozhulał na wiatraka śmidze!</strofa>
@@ -131,8 +132,9 @@ I na klęczkach zatańczyli tuż, tuż nad jej skrajem.</strofa>
 Tak i nie tak --- i na opak --- razem i nie razem!</strofa>
 
 <strofa>Aż wwichrzeni w mrok dwóch trumien, jak dwa błędne wióry,/
-Powpadali w otchłań śmierci nogami do góry!<end id='e1199877040012' /><end id='e1199876777676' /></strofa>
+Powpadali w otchłań śmierci nogami do góry!<end id="e1199877040012"/><end id="e1199876777676"/></strofa>
 
 <extra><!--</tekst_glowny>--></extra>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

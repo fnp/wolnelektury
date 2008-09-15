@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Rękawiczka">
 <dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
 <dc:title xml:lang="pl">Rękawiczka</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/R%C4%99kawiczka</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/rekawiczka</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2222</dc:source.URL>
 <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
@@ -37,15 +38,15 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189066171321' /><motyw id='m1189066171321'>Rycerz</motyw><wers_akap>Chcąc być widzem dzikich bojów,</wers_akap>/
+<strofa><begin id="b1189066171321"/><motyw id="m1189066171321">Rycerz</motyw><wers_akap>Chcąc być widzem dzikich bojów,</wers_akap>/
 Już u zwierzyńca podwojów/
 Król zasiada./
 Przy nim książęta i panowie Rada<pr><slowo_obce>panowie Rada</slowo_obce> --- zwrot staropolski na oznaczenie senatu.</pr>;/
 A gdzie wzniosły<pr><slowo_obce>wzniosły</slowo_obce> --- wzniesiony.</pr> krążył ganek,/
 Rycerze obok kochanek.</strofa>
 
-<strofa><wers_akap>Król skinął palcem, zaczęto igrzysko,</wers_akap><end id='e1189066171321' />/
-<begin id='b1189066205561' /><motyw id='m1189066205561'>Zwierzęta</motyw>Spadły wrzeciądze: ogromne lwisko/
+<strofa><wers_akap>Król skinął palcem, zaczęto igrzysko,</wers_akap><end id="e1189066171321"/>/
+<begin id="b1189066205561"/><motyw id="m1189066205561">Zwierzęta</motyw>Spadły wrzeciądze: ogromne lwisko/
 Z wolna się toczy;/
 Podnosi czoło,/
 Milczkiem obraca oczy/
@@ -80,9 +81,9 @@ Wtem lew podniósł łeb do góry,/
 Zagrzmiał --- i znowu cisze ---/
 A dzicz z krwawemi pazury/
 Obiega, za mordem dysze,/
-Dysząc, na stronie przylega.<end id='e1189066205561' /></strofa>
+Dysząc, na stronie przylega.<end id="e1189066205561"/></strofa>
 
-<strofa><begin id='b1189066274416' /><motyw id='m1189066274416'>Kobieta, Kochanek, Rycerz</motyw><wers_akap>Wtem leci rękawiczka z krużganków pałacu,</wers_akap>/
+<strofa><begin id="b1189066274416"/><motyw id="m1189066274416">Kobieta, Kochanek, Rycerz</motyw><wers_akap>Wtem leci rękawiczka z krużganków pałacu,</wers_akap>/
 Z rączek nadobnej Marty,/
 Pada między tygrysa i między lamparty/
 Na środek placu.</strofa>
@@ -101,6 +102,7 @@ Wstępuje na krużganki./
 Tam, od radosnej witany kochanki,/
 Rycerz jej w oczy rękawiczkę rzucił:/
 ,,Pani, twych dzięków nie trzeba mi wcale"./
-To rzekł i poszedł, i więcej nie wrócił.<end id='e1189066274416' /></strofa>
+To rzekł i poszedł, i więcej nie wrócił.<end id="e1189066274416"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

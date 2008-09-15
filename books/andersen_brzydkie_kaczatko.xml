@@ -1,7 +1,8 @@
-<utwor><opowiadanie>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <opowiadanie>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Andersen/Brzydkie_kaczątko">
 <dc:creator xml:lang="pl">Andersen, Hans Christian</dc:creator>
 <dc:title xml:lang="pl">Brzydkie kaczątko</dc:title>
@@ -12,7 +13,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Baśń</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Brzydkie+kacz%C4%85tko</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/brzydkie-kaczatko</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3563&amp;dirids=4</dc:source.URL>
 <dc:source xml:lang="pl">Andersen, Hans Christian (1805-1875), Baśnie, Gebethner i Wolff, wyd. 7, Kraków, 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - tłumacz Cecylia Niewiadomska zm. 1925</dc:rights>
@@ -38,13 +39,13 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap><begin id="b1187960839090" /><motyw id="m1187960839090">Wieś, Lato</motyw>Prześlicznie było na wsi. Lato gorące, pogodne, żółte zboże na polach, owies jeszcze zielony, na łąkach wielkie stogi pachnącego siana, a bociany przechadzają się powoli, na wysokich, czerwonych nogach i klekoczą po egipsku, bo takim językiem nauczyły się mówić od matek. Dokoła wielkie lasy, cieniste, szumiące, a w nich głębokie i ciche jeziora. Prześlicznie i cudownie było na wsi.<end id="e1187960839090" /></akap>
+<akap><begin id="b1187960839090"/><motyw id="m1187960839090">Wieś, Lato</motyw>Prześlicznie było na wsi. Lato gorące, pogodne, żółte zboże na polach, owies jeszcze zielony, na łąkach wielkie stogi pachnącego siana, a bociany przechadzają się powoli, na wysokich, czerwonych nogach i klekoczą po egipsku, bo takim językiem nauczyły się mówić od matek. Dokoła wielkie lasy, cieniste, szumiące, a w nich głębokie i ciche jeziora. Prześlicznie i cudownie było na wsi.<end id="e1187960839090"/></akap>
 
 
 <akap>Na pochyłości wzgórza jasne słońce oświetlało stary zamek z wieżycami i gankami, otoczony murem i szeroką wstęgą wolno płynącej wody. Z muru zwieszały się pnące rośliny, a wielkie liście łopianu schylały się aż do wody. I było pod nimi cicho i ciemno, jak w cienistym lesie.</akap>
 
 
-<akap><begin id="b1189669666541" /><motyw id="m1189669666541">Matka, Nuda</motyw>Pod jednym z takich liści młoda kaczka usłała sobie gniazdo i siedziała na jajach. Nudziło jej się bardzo, bo żadna z sąsiadek nie miała chęci w tak piękną pogodę rozmawiać z nią o tym, co słychać na świecie. Każda wolała pływać po przejrzystej wodzie, pluskać się i osuszać na ciepłym słoneczku, a ona tylko jedna, jak przykuta, siedzi w cieniu na gnieździe.<end id="e1189669666541" /></akap>
+<akap><begin id="b1189669666541"/><motyw id="m1189669666541">Matka, Nuda</motyw>Pod jednym z takich liści młoda kaczka usłała sobie gniazdo i siedziała na jajach. Nudziło jej się bardzo, bo żadna z sąsiadek nie miała chęci w tak piękną pogodę rozmawiać z nią o tym, co słychać na świecie. Każda wolała pływać po przejrzystej wodzie, pluskać się i osuszać na ciepłym słoneczku, a ona tylko jedna, jak przykuta, siedzi w cieniu na gnieździe.<end id="e1189669666541"/></akap>
 
 
 <akap>Skończyło się wreszcie jej udręczenie, jajka zaczęły pękać i główka pisklęcia co chwila wysuwała się z innej skorupki, oznajmiając cienkim głosikiem, że żyje.</akap>
@@ -58,7 +59,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap_dialog>--- Ach, jaki ten świat duży! --- wołały kaczęta, dobywając się z ciasnej skorupy i prostując z przyjemnością nóżki i skrzydełka.</akap_dialog>
 
-<akap_dialog><begin id='b1189671303673' /><motyw id='m1189671303673'>Obraz świata</motyw>--- Nie myślcie, że to cały świat widać z tego gniazda --- rzekła matka --- ho, ho! Ciągnie on się ogromnie daleko, jeszcze za tym ogrodem, za łąką proboszcza, het, het! Ale nigdy tam nie byłam. <end id='e1189671303673' /> Czyście już wszystkie wyszły ze skorupek? --- dodała, wstając. --- Jeszcze nie! Największe ani myśli pęknąć. Ciekawam bardzo, jak długo będę na nim tu pokutowała<pe><slowo_obce>pokutowała</slowo_obce> --- tu: tkwiła nad nim, musiała je wysiadywać.</pe>! Przyznam się, że mam tego już zupełnie dosyć.</akap_dialog>
+<akap_dialog><begin id="b1189671303673"/><motyw id="m1189671303673">Obraz świata</motyw>--- Nie myślcie, że to cały świat widać z tego gniazda --- rzekła matka --- ho, ho! Ciągnie on się ogromnie daleko, jeszcze za tym ogrodem, za łąką proboszcza, het, het! Ale nigdy tam nie byłam. <end id="e1189671303673"/> Czyście już wszystkie wyszły ze skorupek? --- dodała, wstając. --- Jeszcze nie! Największe ani myśli pęknąć. Ciekawam bardzo, jak długo będę na nim tu pokutowała<pe><slowo_obce>pokutowała</slowo_obce> --- tu: tkwiła nad nim, musiała je wysiadywać.</pe>! Przyznam się, że mam tego już zupełnie dosyć.</akap_dialog>
 
 
 <akap>I usiadła z gniewem na upartym jajku.</akap>
@@ -76,7 +77,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>I siedziała kaczka cierpliwie, aż pękło i wielkie jajo.</akap>
 
-<akap_dialog><begin id="b1187961046017" /><motyw id="m1187961046017">Narodziny</motyw>--- Pip, pip! --- odezwało się pisklę i prędko wydostawać się zaczęło ze skorupki. Było bardzo duże i brzydkie! Kaczka patrzyła na nie z ciekawością i uwagą.<end id="e1187961046017" /></akap_dialog>
+<akap_dialog><begin id="b1187961046017"/><motyw id="m1187961046017">Narodziny</motyw>--- Pip, pip! --- odezwało się pisklę i prędko wydostawać się zaczęło ze skorupki. Było bardzo duże i brzydkie! Kaczka patrzyła na nie z ciekawością i uwagą.<end id="e1187961046017"/></akap_dialog>
 
 <akap_dialog>--- Ogromne pisklę --- rzekła wreszcie --- i do żadnego z moich niepodobne. Czyżby to rzeczywiście było indycze jajko? No, o tym się przekonamy: musi iść do wody, choćbym je miała wciągnąć za łeb własnym dziobem!</akap_dialog>
 
@@ -88,28 +89,28 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Brzydkie kaczątko pływało z innymi.</akap>
 
-<akap_dialog><begin id="b1187961105313" /><motyw id="m1187961105313">Matka</motyw>--- To nie indycze --- rzekła do siebie kaczka --- umie pływać i jak jeszcze! Może najlepiej ze wszystkich. Jak prosto się trzyma, a jak doskonale przebiera nogami. To moje własne dziecko. Nie jest ono nawet tak brzydkie, jeśli się dobrze przypatrzyć, tylko za duże trochę, --- no, bardzo duże.</akap_dialog>
+<akap_dialog><begin id="b1187961105313"/><motyw id="m1187961105313">Matka</motyw>--- To nie indycze --- rzekła do siebie kaczka --- umie pływać i jak jeszcze! Może najlepiej ze wszystkich. Jak prosto się trzyma, a jak doskonale przebiera nogami. To moje własne dziecko. Nie jest ono nawet tak brzydkie, jeśli się dobrze przypatrzyć, tylko za duże trochę, --- no, bardzo duże.</akap_dialog>
 
-<akap_dialog>--- Kwa, kwa! --- odezwała się znów głośno --- za mną, dzieci! Muszę was w świat wprowadzić, przedstawić na dworze kaczym; tylko trzymajcie się koło mnie blisko, żeby was kto nie zdeptał; a najbardziej strzeżcie się kota.<end id="e1187961105313" /></akap_dialog>
+<akap_dialog>--- Kwa, kwa! --- odezwała się znów głośno --- za mną, dzieci! Muszę was w świat wprowadzić, przedstawić na dworze kaczym; tylko trzymajcie się koło mnie blisko, żeby was kto nie zdeptał; a najbardziej strzeżcie się kota.<end id="e1187961105313"/></akap_dialog>
 
 
 <akap>Przepłynąwszy kawałek drogi, kaczki wyszły znów na ląd i dostały się na kacze podwórze. Hałas tu był niesłychany, gdyż dwie rodziny kłóciły się zapamiętale o główkę węgorza, którą tymczasem w zamieszaniu kot rozbójnik pochwycił.</akap>
 
 <akap_dialog>--- Tak to bywa na świecie --- rzekła kaczka i obtarła dziób o piasek, gdyż sama miała apetyt na główkę.</akap_dialog>
 
-<akap_dialog><begin id='b1189671797060' /><motyw id='m1189671797060'>Matka</motyw>--- A teraz naprzód! Równo poruszać nogami, a tej pięknej kaczce ukłońcie się grzecznie, tak, głową; to bardzo znakomita osoba; jest Hiszpanką i dlatego taka tłusta. Widzicie na jej nodze ten czerwony znaczek? To największe odznaczenie, jakie kaczkę od ludzi spotkać może: oznacza ono, że nie wolno jej wyrządzić żadnej krzywdy, więc też wszyscy ją szanują. No, dalej, dalej, nogi rozstawiać szeroko, nie do środka; kaczka dobrze wychowana powinna umieć chodzić. Patrzcie zresztą na mnie. A teraz się ukłońcie i powiedzcie: kwa, kwa!<end id='e1189671797060' /></akap_dialog>
+<akap_dialog><begin id="b1189671797060"/><motyw id="m1189671797060">Matka</motyw>--- A teraz naprzód! Równo poruszać nogami, a tej pięknej kaczce ukłońcie się grzecznie, tak, głową; to bardzo znakomita osoba; jest Hiszpanką i dlatego taka tłusta. Widzicie na jej nodze ten czerwony znaczek? To największe odznaczenie, jakie kaczkę od ludzi spotkać może: oznacza ono, że nie wolno jej wyrządzić żadnej krzywdy, więc też wszyscy ją szanują. No, dalej, dalej, nogi rozstawiać szeroko, nie do środka; kaczka dobrze wychowana powinna umieć chodzić. Patrzcie zresztą na mnie. A teraz się ukłońcie i powiedzcie: kwa, kwa!<end id="e1189671797060"/></akap_dialog>
 
 
 <akap>Kaczątka wypełniły rozkaz matki. Inne kaczki otoczyły je dokoła i przypatrywały się nowym przybyszom.</akap>
 
-<akap_dialog>--- Jeszcze nas widać mało! --- rzekła wreszcie jedna --- niedługo miejsca dla wszystkich zabraknie. <begin id='b1189671881949' /><motyw id='m1189671881949'>Obcy</motyw>Ach, pfe! A cóż to znowu? Patrzcie tylko, patrzcie, jak to kaczę wygląda! Nie mogę znieść widoku takiego brzydactwa.</akap_dialog>
+<akap_dialog>--- Jeszcze nas widać mało! --- rzekła wreszcie jedna --- niedługo miejsca dla wszystkich zabraknie. <begin id="b1189671881949"/><motyw id="m1189671881949">Obcy</motyw>Ach, pfe! A cóż to znowu? Patrzcie tylko, patrzcie, jak to kaczę wygląda! Nie mogę znieść widoku takiego brzydactwa.</akap_dialog>
 
 
 <akap>Podbiegła do brzydkiego kaczęcia i ze złością uszczypnęła je z całej siły w szyję.</akap>
 
 <akap_dialog>--- Daj mu pokój<pe><slowo_obce>Daj mu pokój</slowo_obce> --- daj mu spokój.</pe> --- zawołała gniewnie matka --- przecież nikomu nic złego nie robi.</akap_dialog>
 
-<akap_dialog>--- Ale jest takie wielkie i takie dziwaczne, że nie można patrzeć na nie. Po co takie stworzenie między nami? Każdy ma prawo dać mu poznać, co sobie o nim myśli.<end id='e1189671881949' /></akap_dialog>
+<akap_dialog>--- Ale jest takie wielkie i takie dziwaczne, że nie można patrzeć na nie. Po co takie stworzenie między nami? Każdy ma prawo dać mu poznać, co sobie o nim myśli.<end id="e1189671881949"/></akap_dialog>
 
 <akap_dialog>--- Ładne masz dzieci --- rzekła stara kaczka z czerwonym strzępkiem na nodze --- można ci powinszować. To duże tylko jakoś ci się nie udało. Czy nie można by go trochę przerobić?</akap_dialog>
 
@@ -123,7 +124,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap_dialog>--- Inne dzieci bardzo ładne, bardzo ładne. No, możecie już odejść. Bądźcie tu jak u siebie, moje małe. A jeśli wam się zdarzy znaleźć główkę węgorza, możecie mi ją przynieść.</akap_dialog>
 
 
-<akap><begin id="b1187961243722" /><motyw id="m1187961243722">Dzieciństwo, Obcy</motyw>I kaczęta były jak u siebie w domu.</akap>
+<akap><begin id="b1187961243722"/><motyw id="m1187961243722">Dzieciństwo, Obcy</motyw>I kaczęta były jak u siebie w domu.</akap>
 
 
 <akap>Tylko jedno brzydkie kaczę popychano, szczypano, odpędzano, a znęcały się nad nim nie tylko kaczki, ale nawet i kury.</akap>
@@ -136,7 +137,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap_dialog>--- Idź--że sobie ode mnie --- powtarzała coraz częściej. --- Czego się przy mnie plączesz!</akap_dialog>
 
 
-<akap>Kaczki je biły, kury je dziobały, nawet dziewczyna, która jeść ptactwu dawała, odtrącała je nogą.<end id="e1187961243722" /></akap>
+<akap>Kaczki je biły, kury je dziobały, nawet dziewczyna, która jeść ptactwu dawała, odtrącała je nogą.<end id="e1187961243722"/></akap>
 
 
 <akap>Uciekło wreszcie i przedostało się przez płot na drugą stronę, w krzaki. Gdy upadło na ziemię, przestraszone ptaszki frunęły i uciekły.</akap>
@@ -161,12 +162,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap_dialog>--- Jesteś tak brzydki, kochany kolego, że nie potrzebujemy obawiać się ciebie, więc jeśli zechcesz, możesz lecieć z nami na nasze błoto. Tam dopiero życie! Nie brak i młodych, ślicznych, białych gąsek. A jakie wszystkie wesołe, rozmowne, jak pięknie śpiewać umieją! Mój drogi, zakochasz się z pewnością i choć jesteś tak brzydki, kto wie, czy się której nie spodobasz.</akap_dialog>
 
-<akap_dialog><begin id='b1189672382111' /><motyw id='m1189672382111'>Śmierć, Polowanie</motyw>--- A ja myślę... --- zaczął drugi.</akap_dialog>
+<akap_dialog><begin id="b1189672382111"/><motyw id="m1189672382111">Śmierć, Polowanie</motyw>--- A ja myślę... --- zaczął drugi.</akap_dialog>
 
 
 <akap>Wtem --- pif--paf! I obaj dorodni młodzieńcy padli nieżywi w błoto, które się zaczerwieniło od krwi rozlanej.</akap>
 
-<akap_dialog>--- Pif--paf! --- rozległo się znowu --- pif--paf --- i całe stada dzikich gęsi uniosły się w powietrze ponad trzcinę. Ale teraz dopiero zaczęła się strzelanina! Było to wielkie polowanie: strzelcy otoczyli błoto, niektórzy nawet siedzieli na drzewach, rosnących na wybrzeżu. Smugi dymu rozciągały się nad wodą i zasłaniały wszystko. Plusk, plusk, i psy myśliwskie zaczęły przebiegać wśród trzciny, chwytając nieszczęśliwych zbiegów. Sądny dzień!<end id='e1189672382111' /></akap_dialog>
+<akap_dialog>--- Pif--paf! --- rozległo się znowu --- pif--paf --- i całe stada dzikich gęsi uniosły się w powietrze ponad trzcinę. Ale teraz dopiero zaczęła się strzelanina! Było to wielkie polowanie: strzelcy otoczyli błoto, niektórzy nawet siedzieli na drzewach, rosnących na wybrzeżu. Smugi dymu rozciągały się nad wodą i zasłaniały wszystko. Plusk, plusk, i psy myśliwskie zaczęły przebiegać wśród trzciny, chwytając nieszczęśliwych zbiegów. Sądny dzień!<end id="e1189672382111"/></akap_dialog>
 
 
 <akap>Biedne kaczę, odwróciło głowę, aby z wielkiego strachu schować ją pod skrzydło, ale w tej samej chwili ujrzało przed sobą straszliwą paszczę z wiszącym językiem i oczy, niby dwa ognie złośliwe. Pies rzucił się na kaczę, zęby mu błysnęły, wtem --- plusk, plusk! Poszedł sobie w inną stronę.</akap>
@@ -180,7 +181,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Późno uciszyło się na krwawym stawie, lecz wystraszone kaczę jeszcze przez kilka godzin nie śmiało ruszyć się z miejsca. Na koniec cisza je uspokoiła, podniosło głowę, otworzyło oczy, a nie widząc nikogo, zaczęło uciekać, ile mu sił starczyło, dalej, dalej, dalej!</akap>
 
 
-<akap><begin id='b1189672533799' /><motyw id='m1189672533799'>Burza, Żywioły</motyw>W drodze zaskoczyła je okropna burza. Pioruny biły, deszcz lał strumieniami, a wicher miotał biednym pisklęciem, jak listkiem. Nigdy w życiu nic podobnego nie widziało, i zdawało mu się, że to koniec świata.<end id='e1189672533799' /></akap>
+<akap><begin id="b1189672533799"/><motyw id="m1189672533799">Burza, Żywioły</motyw>W drodze zaskoczyła je okropna burza. Pioruny biły, deszcz lał strumieniami, a wicher miotał biednym pisklęciem, jak listkiem. Nigdy w życiu nic podobnego nie widziało, i zdawało mu się, że to koniec świata.<end id="e1189672533799"/></akap>
 
 
 <akap>Co począć? Gdzie się schronić?</akap>
@@ -195,7 +196,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Wtem spostrzegło, że drzwi chaty wisiały tylko na jednej zawiasie, skutkiem czego pod spodem utworzyła się szpara, przez którą można było wsunąć się do środka. Uczyniło to spiesznie, choć z niemałym trudem.</akap>
 
 
-<akap><begin id='b1189672596529' /><motyw id='m1189672596529'>Kot</motyw>W chatce mieszkała stara kobiecina z kotem i kurą. Kot umiał mruczeć, wyginać grzbiet w pałąk, a nawet sypać iskry trzaskające, lecz na to trzeba było pod włos go pogłaskać. Staruszka go kochała i nazywała wnukiem.<end id='e1189672596529' /> Kura znosiła jajka, a że miała nogi nadzwyczaj krótkie, staruszka ją przezwała swoją córką Krótkonóżką.</akap>
+<akap><begin id="b1189672596529"/><motyw id="m1189672596529">Kot</motyw>W chatce mieszkała stara kobiecina z kotem i kurą. Kot umiał mruczeć, wyginać grzbiet w pałąk, a nawet sypać iskry trzaskające, lecz na to trzeba było pod włos go pogłaskać. Staruszka go kochała i nazywała wnukiem.<end id="e1189672596529"/> Kura znosiła jajka, a że miała nogi nadzwyczaj krótkie, staruszka ją przezwała swoją córką Krótkonóżką.</akap>
 
 
 <akap>Z rana zauważono zaraz obecność kaczki, i kura zagdakała, a kot zaczął mruczeć.</akap>
@@ -232,29 +233,29 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap_dialog>--- A to co! --- rzekła kura. --- Nic nie robisz, i dlatego ci takie głupstwa przychodzą do głowy. Noś jajka, albo mrucz sobie, a zaraz wywietrzeją<pe><slowo_obce>wywietrzeją</slowo_obce> --- tu: zaraz ci przejdą.</pe> ci fantazje.</akap_dialog>
 
-<akap_dialog><begin id='b1189672746663' /><motyw id='m1189672746663'>Kot</motyw>--- Kiedy to tak przyjemnie --- zapewniało kaczę --- zanurzać się, wypływać, pluskać w czystej wodzie, a potem skryć się głęboko i widzieć, jak woda zamyka się nad głową.</akap_dialog>
+<akap_dialog><begin id="b1189672746663"/><motyw id="m1189672746663">Kot</motyw>--- Kiedy to tak przyjemnie --- zapewniało kaczę --- zanurzać się, wypływać, pluskać w czystej wodzie, a potem skryć się głęboko i widzieć, jak woda zamyka się nad głową.</akap_dialog>
 
-<akap_dialog>--- O tak, to wielka rozkosz! --- zaśmiała się kura. --- Zupełnie zwariowałeś, mój drogi. Zapytaj kota --- przecież mądrzejszego stworzenia nie ma na świecie --- zapytaj, czy lubi pływać albo zanurzać się w wodzie?<end id='e1189672746663' /> O sobie już nie mówię, ale możesz spytać naszej pani. Żyje tak długo na świecie i jest bardzo rozumna. Nie znam rozumniejszej nad nią. Więc zapytaj, czy to przyjemnie zanurzać się z głową w wodzie i czy ma ochotę pływać.</akap_dialog>
+<akap_dialog>--- O tak, to wielka rozkosz! --- zaśmiała się kura. --- Zupełnie zwariowałeś, mój drogi. Zapytaj kota --- przecież mądrzejszego stworzenia nie ma na świecie --- zapytaj, czy lubi pływać albo zanurzać się w wodzie?<end id="e1189672746663"/> O sobie już nie mówię, ale możesz spytać naszej pani. Żyje tak długo na świecie i jest bardzo rozumna. Nie znam rozumniejszej nad nią. Więc zapytaj, czy to przyjemnie zanurzać się z głową w wodzie i czy ma ochotę pływać.</akap_dialog>
 
 <akap_dialog>--- Nie rozumiecie mnie --- rzekło kaczątko.</akap_dialog>
 
-<akap_dialog>--- My ciebie nie rozumiemy? Doprawdy? Więc któż cię może zrozumieć? Czy sobie nie wyobrażasz czasem, ty głuptasie, żeś mądrzejszy od kota, albo od naszej pani? O sobie już nie mówię. Nie bądź tak zarozumiałe, moje dziecko, i dziękuj Bogu za te dobrodziejstwa, które ci tu wyświadczono. Mieszkasz w ciepłej izbie i masz towarzystwo, z którego mógłbyś skorzystać bardzo wiele. Ale na to trzeba słuchać i rozważać, a nie bajać<pe><slowo_obce>bajać</slowo_obce> --- opowiadać bajki.</pe> bez sensu. <begin id='b1189672895680' /><motyw id='m1189672895680'>Przyjaźń</motyw>Powiem ci otwarcie, że niezbyt przyjemnie żyć z tobą pod jednym dachem. Możesz mi wierzyć. Zresztą mówię ci o tym przez życzliwość. Przyjaciel ma obowiązek mówić prawdę w oczy, chociażby przykrą była. Radzę ci też szczerze: naucz się znosić jajka, albo mruczeć, albo sypać iskry. Inaczej nic z ciebie nie będzie.<end id='e1189672895680' /></akap_dialog>
+<akap_dialog>--- My ciebie nie rozumiemy? Doprawdy? Więc któż cię może zrozumieć? Czy sobie nie wyobrażasz czasem, ty głuptasie, żeś mądrzejszy od kota, albo od naszej pani? O sobie już nie mówię. Nie bądź tak zarozumiałe, moje dziecko, i dziękuj Bogu za te dobrodziejstwa, które ci tu wyświadczono. Mieszkasz w ciepłej izbie i masz towarzystwo, z którego mógłbyś skorzystać bardzo wiele. Ale na to trzeba słuchać i rozważać, a nie bajać<pe><slowo_obce>bajać</slowo_obce> --- opowiadać bajki.</pe> bez sensu. <begin id="b1189672895680"/><motyw id="m1189672895680">Przyjaźń</motyw>Powiem ci otwarcie, że niezbyt przyjemnie żyć z tobą pod jednym dachem. Możesz mi wierzyć. Zresztą mówię ci o tym przez życzliwość. Przyjaciel ma obowiązek mówić prawdę w oczy, chociażby przykrą była. Radzę ci też szczerze: naucz się znosić jajka, albo mruczeć, albo sypać iskry. Inaczej nic z ciebie nie będzie.<end id="e1189672895680"/></akap_dialog>
 
-<akap_dialog><begin id='b1189672954153' /><motyw id='m1189672954153'>Samotnik</motyw>--- Pójdę sobie w świat chyba --- rzekło kaczę.</akap_dialog>
+<akap_dialog><begin id="b1189672954153"/><motyw id="m1189672954153">Samotnik</motyw>--- Pójdę sobie w świat chyba --- rzekło kaczę.</akap_dialog>
 
 <akap_dialog>--- Otwarta droga, nikt cię tu nie zatrzymuje.</akap_dialog>
 
 
-<akap>I poszło sobie kaczę. Pływało po wodzie, pluskało, zanurzało się głęboko, ale zawsze było samo --- inne pływające ptaki unikały go z powodu brzydoty.<end id='e1189672954153' /></akap>
+<akap>I poszło sobie kaczę. Pływało po wodzie, pluskało, zanurzało się głęboko, ale zawsze było samo --- inne pływające ptaki unikały go z powodu brzydoty.<end id="e1189672954153"/></akap>
 
 
-<akap><begin id="b1187961940944" /><motyw id="m1187961940944">Jesień</motyw>Tymczasem nastąpiła jesień. Liście na drzewach pożółkły, ściemniały i zaczęły opadać; wiatr kręcił je w powietrzu i niósł gdzieś daleko, aby porzucić znowu. Powietrze stawało się chłodne, wilgotne, ciężkie chmury przesuwały się nisko po niebie, niosąc deszcze i śniegi, zasłaniając słońce. Wrony krakały z zimna. Dreszcz przebiega na samą myśl o takim czasie.<end id="e1187961940944" /></akap>
+<akap><begin id="b1187961940944"/><motyw id="m1187961940944">Jesień</motyw>Tymczasem nastąpiła jesień. Liście na drzewach pożółkły, ściemniały i zaczęły opadać; wiatr kręcił je w powietrzu i niósł gdzieś daleko, aby porzucić znowu. Powietrze stawało się chłodne, wilgotne, ciężkie chmury przesuwały się nisko po niebie, niosąc deszcze i śniegi, zasłaniając słońce. Wrony krakały z zimna. Dreszcz przebiega na samą myśl o takim czasie.<end id="e1187961940944"/></akap>
 
 
-<akap><begin id='b1189673008555' /><motyw id='m1189673008555'>Obcy</motyw>I brzydkiemu kaczęciu było coraz gorzej. Chłodno, głodno i nikogo, kto by polubił je szczerze. Bo takie brzydkie! A nie tylko brzydkie, lecz takie duże i takie odmienne od wszystkich, wszystkich ptaków. Do nikogo, do nikogo niepodobne.</akap>
+<akap><begin id="b1189673008555"/><motyw id="m1189673008555">Obcy</motyw>I brzydkiemu kaczęciu było coraz gorzej. Chłodno, głodno i nikogo, kto by polubił je szczerze. Bo takie brzydkie! A nie tylko brzydkie, lecz takie duże i takie odmienne od wszystkich, wszystkich ptaków. Do nikogo, do nikogo niepodobne.</akap>
 
 
-<akap>A każdy szuka podobnych do siebie.<end id='e1189673008555' /></akap>
+<akap>A każdy szuka podobnych do siebie.<end id="e1189673008555"/></akap>
 
 
 <akap>Razu jednego pływało po wodzie. Słońce chyliło się ku zachodowi, niebo było czerwone, niby w ogniu. Wtem spoza lasu podniosło się stado wielkich, wspaniałych ptaków. Podobnie pięknych kaczę nie widziało dotąd: leciały niby chmurki śnieżnobiałe, spokojne, wdzięczne i majestatyczne. Były to odlatujące łabędzie. Nagle wydały ton długi, przeciągły, tak dziwny! Poruszyły spokojnie silnymi skrzydłami i wzniosły się wysoko, aż pod chmury i płynęły tak dalej, dalej, w nieskończoność.</akap>
@@ -274,7 +275,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap_dialog>--- Ale tamte ptaki!...</akap_dialog>
 
 
-<akap><begin id="b1187962137116" /><motyw id="m1187962137116">Zima</motyw>Nadeszła zima surowa i mroźna. Zamarzły wody. Na małym kawałku, który wolnym został, musiało kaczę pływać bezustannie, aby uchronić go od zamarznięcia. Mimo to wolna przestrzeń zmniejszała się po każdej nocy. Bo co dzień zimniej było, mróz się wzmagał, lód trzaskał dookoła na maleńkim otworze, który pozostał jeszcze. Kaczątko bez odpoczynku poruszać musiało nóżkami, ażeby nie przymarznąć. Lecz i to nie pomogło: zmęczone, ustało, a wówczas lód uwięził je jak w kleszczach.<end id="e1187962137116" /></akap>
+<akap><begin id="b1187962137116"/><motyw id="m1187962137116">Zima</motyw>Nadeszła zima surowa i mroźna. Zamarzły wody. Na małym kawałku, który wolnym został, musiało kaczę pływać bezustannie, aby uchronić go od zamarznięcia. Mimo to wolna przestrzeń zmniejszała się po każdej nocy. Bo co dzień zimniej było, mróz się wzmagał, lód trzaskał dookoła na maleńkim otworze, który pozostał jeszcze. Kaczątko bez odpoczynku poruszać musiało nóżkami, ażeby nie przymarznąć. Lecz i to nie pomogło: zmęczone, ustało, a wówczas lód uwięził je jak w kleszczach.<end id="e1187962137116"/></akap>
 
 
 <akap>Zobaczył to nazajutrz z rana jakiś wieśniak, rozbił lód butem z drewnianą podeszwą, a ptaka zabrał do siebie, do chaty.</akap>
@@ -286,10 +287,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Można wyobrazić sobie, jak wyglądało. Umączone, mokre, powalane sadzami, w nastroszonych piórach, a przy tym upadające ze znużenia. Lecz nie myślało o tym; ostatnim wysiłkiem dostało się pomiędzy krzaki, rosnące niedaleko, i jak nieżywe przykucnęło w śniegu.</akap>
 
 
-<akap><begin id="b1187961920154" /><motyw id="m1187961920154">Bezdomność, Cierpienie</motyw>Za smutno byłoby opisywać wam to wszystko, co nieszczęśliwe kaczę wycierpiało podczas mroźnej i długiej zimy. Głód, chłód, ani ciepłego schronienia, ani żywności, ani przyjaciela.<end id="e1187961920154" /></akap>
+<akap><begin id="b1187961920154"/><motyw id="m1187961920154">Bezdomność, Cierpienie</motyw>Za smutno byłoby opisywać wam to wszystko, co nieszczęśliwe kaczę wycierpiało podczas mroźnej i długiej zimy. Głód, chłód, ani ciepłego schronienia, ani żywności, ani przyjaciela.<end id="e1187961920154"/></akap>
 
 
-<akap><begin id='b1205689077515' /><motyw id='m1205689077515'>Wiosna</motyw>Leżało pośród trzciny, kiedy słońce znowu zaczęło jaśniej i cieplej przyświecać. Zanuciły skowronki, powracała wiosna.</akap>
+<akap><begin id="b1205689077515"/><motyw id="m1205689077515">Wiosna</motyw>Leżało pośród trzciny, kiedy słońce znowu zaczęło jaśniej i cieplej przyświecać. Zanuciły skowronki, powracała wiosna.</akap>
 
 
 <akap>I kaczątko odżyło: z każdym dniem powracały mu stracone siły, aż rozpostarło skrzydła jakieś wielkie, jakby nie swoje, zaszumiało nimi i poleciało wysoko, daleko, prowadzone jakąś tęsknotą nieznaną do świata, do wszystkiego, co na nim jest piękne.</akap>
@@ -298,10 +299,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>I nie spoczęło, aż na wielkim stawie, w dużym ogrodzie, gdzie ptaki śpiewały wesoło, drzewa jaśniały świeżą zielonością, biała czeremcha<pe><slowo_obce>czeremcha</slowo_obce> --- rodzaj drzewa, kwitnącego w kwietniu i w maju; drobne białe kwiatki, rosnące nie pojedynczo, ale całymi gronkami, wydzielają bardzo silny, słodki zapach.</pe> rozlewała zapach i zwieszała tak nisko swe cienkie gałązki, iż zanurzały się w wodzie przejrzystej.</akap>
 
 
-<akap>Ślicznie tu było. Każda trawka, kwiatek, każdy listek na drzewie zdawał się śpiewać radośnie: --- Wiosna powraca, wiosna, wiosna, wiosna!<end id='e1205689077515' /></akap>
+<akap>Ślicznie tu było. Każda trawka, kwiatek, każdy listek na drzewie zdawał się śpiewać radośnie: --- Wiosna powraca, wiosna, wiosna, wiosna!<end id="e1205689077515"/></akap>
 
 
-<akap><begin id='b1206281178578' /><motyw id='m1206281178578'>Przemiana </motyw>Wtem spoza gęstych krzaków naprzeciwko wypłynęły trzy wielkie wspaniałe łabędzie. Rozpostarły białe skrzydła niby żagle i płynęły lekko po błękitnej wodzie, z szyją wygiętą wdzięcznie i wzniesioną głową, spokojne, dumne i majestatyczne.</akap>
+<akap><begin id="b1206281178578"/><motyw id="m1206281178578">Przemiana </motyw>Wtem spoza gęstych krzaków naprzeciwko wypłynęły trzy wielkie wspaniałe łabędzie. Rozpostarły białe skrzydła niby żagle i płynęły lekko po błękitnej wodzie, z szyją wygiętą wdzięcznie i wzniesioną głową, spokojne, dumne i majestatyczne.</akap>
 
 
 <akap>Na ten widok dziwny smutek i tęsknota ogarnęły biedne kaczę. Oto królewskie ptaki, które raz widziało i ukochało tak silnie od razu.</akap>
@@ -330,7 +331,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Inne dzieci także zaczęły klaskać w ręce i skakać, powtarzając:</akap>
 
-<akap_dialog><begin id='b1206281278343' /><motyw id='m1206281278343'>Szczęście</motyw>--- Łabędź nam przybył! Łabędź! Jaki śliczny! Najpiękniejszy, najpiękniejszy!</akap_dialog>
+<akap_dialog><begin id="b1206281278343"/><motyw id="m1206281278343">Szczęście</motyw>--- Łabędź nam przybył! Łabędź! Jaki śliczny! Najpiękniejszy, najpiękniejszy!</akap_dialog>
 
 
 <akap>I rzucały ciastka i bułkę do wody, sprowadziły rodziców i wszyscy przyznali, że nowy łabędź był najpiękniejszy ze wszystkich.</akap>
@@ -344,9 +345,10 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <akap>Rozpostarł<pe><slowo_obce>Rozpostarł</slowo_obce> --- rozłożył.</pe> skrzydła, które zaszumiały głośno, podniósł do góry szyję wdzięcznym ruchem i z głębi serca zawołał radośnie:</akap>
 
-<akap_dialog>--- Nie marzyłem o takim szczęściu --- nie marzyłem!<end id='e1206281178578' /><end id='e1206281278343' /></akap_dialog>
+<akap_dialog>--- Nie marzyłem o takim szczęściu --- nie marzyłem!<end id="e1206281178578"/><end id="e1206281278343"/></akap_dialog>
 
 
 <extra><!--</tekst_glowny>--></extra>
 
-</opowiadanie></utwor>
+</opowiadanie>
+</utwor>

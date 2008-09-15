@@ -1,7 +1,8 @@
-<utwor><opowiadanie>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <opowiadanie>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
 <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
 <dc:title xml:lang="pl">Zbójcy</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Zb%C3%B3jcy</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/legendy-warszawskie-zbojcy</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
 <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
@@ -41,7 +42,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<akap><begin id="b1188823135309" /><motyw id="m1188823135309">Miasto</motyw>Dwieście lat temu Nowe Miasto warszawskie otoczone było wielkimi moczarami i gęstymi zaroślami, w których nierzadko ukrywał się zwierz dziki, tak, że zdarzało się nieraz, iż mroźną zimą głodne wilki przybiegały na rynek nowomiejski i wyły po nocach przed jatkami rzeźników.<end id="e1188823135309" /></akap>
+<akap><begin id="b1188823135309"/><motyw id="m1188823135309">Miasto</motyw>Dwieście lat temu Nowe Miasto warszawskie otoczone było wielkimi moczarami i gęstymi zaroślami, w których nierzadko ukrywał się zwierz dziki, tak, że zdarzało się nieraz, iż mroźną zimą głodne wilki przybiegały na rynek nowomiejski i wyły po nocach przed jatkami rzeźników.<end id="e1188823135309"/></akap>
 
 
 <akap>W czas takiej to właśnie zimy długotrwałej, w wieczór zawieruchą śnieżną dmący, do jednej z gospód, w pobliżu kościoła Panny Marii, przywlókł się stary, obdarty, skulony z zimna, dziad.</akap>
@@ -83,7 +84,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Pochylił się nad nimi, a nóż wzniesiony w garści trzyma, popatrzył, posłuchał: spali.</akap>
 
 
-<akap><begin id="b1188823335998" /><motyw id="m1188823335998">Cierpienie, Sługa</motyw>Więc lezie pomaleńku, wprost ku łóżku dziewczyny służebnej. Uniósł pierzynę z jej głowy, przygląda się, a dziewucha dech zataiła w sobie, ani drgnie. Coś się zbójowi w niej nie spodobało, coś widać, psi syn, zauważył takiego, że niedowierza; schylił się, nasłuchuje, czy równo oddycha: równo.</akap>
+<akap><begin id="b1188823335998"/><motyw id="m1188823335998">Cierpienie, Sługa</motyw>Więc lezie pomaleńku, wprost ku łóżku dziewczyny służebnej. Uniósł pierzynę z jej głowy, przygląda się, a dziewucha dech zataiła w sobie, ani drgnie. Coś się zbójowi w niej nie spodobało, coś widać, psi syn, zauważył takiego, że niedowierza; schylił się, nasłuchuje, czy równo oddycha: równo.</akap>
 
 
 <akap>Ehe! Nie taki on głupi! Nie dosyć mu na tym! Uszczypnął ją w policzek: nic! Wyciągnął szpilkę z kapoty, ukłuł: nic! Jeszcze mu mało!</akap>
@@ -105,7 +106,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <akap>Uspokoił się zbójca, stawia świeczkę na nowo na stole, a sam drzwi cicho, cichutko otwiera i myk na dwór, po swoich kamratów.</akap>
 
 
-<akap>Ale już dziewczyna zerwała się z łóżka, na bałykach<uwaga>bałykach</uwaga>, bo chodzić nie mogła od bólu okropnego, do furty się dowlokła i żelaznym drągiem ją zawarła.<end id="e1188823335998" /></akap>
+<akap>Ale już dziewczyna zerwała się z łóżka, na bałykach<uwaga>bałykach</uwaga>, bo chodzić nie mogła od bólu okropnego, do furty się dowlokła i żelaznym drągiem ją zawarła.<end id="e1188823335998"/></akap>
 
 
 <akap>Jeszcze nie zdążyła wynijść z sieni, aż ci tu pięciu zbójów za drzwiami staje i chce furtę otworzyć.</akap>
@@ -132,5 +133,5 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <extra><!--</tekst_glowny>--></extra>
 
-</opowiadanie></utwor>
-
+</opowiadanie>
+</utwor>

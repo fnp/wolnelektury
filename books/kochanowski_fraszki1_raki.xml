@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Raki">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
 <dc:title xml:lang="pl">Raki</dc:title>
@@ -16,7 +17,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-pierwsze-raki</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
 <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
@@ -40,7 +41,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1188764907866' /><motyw id='m1188764907866'>Bogactwo, Cnota, Kobieta, Miłość</motyw>Folgujmy paniom nie sobie, ma rada;/
+<strofa><begin id="b1188764907866"/><motyw id="m1188764907866">Bogactwo, Cnota, Kobieta, Miłość</motyw>Folgujmy paniom nie sobie, ma rada;/
 Miłujmy wiernie nie jest w nich przysada./
 Godności trzeba nie za nic tu cnota,/
 Miłości pragną nie pragną tu złota./
@@ -49,6 +50,7 @@ Pilnują prawdy nie kłamają rady./
 Wiarę uprzejmą nie dar sobie ważą,/
 W miarę nie nazbyt ciągnąć rzemień każą<pr><slowo_obce>ciągnąć rzemień</slowo_obce> --- zwrot utarty: wydawać pieniądze ze skórzanego, rzemiennego mieszka.</pr>./
 Wiecznie wam służę nie służę na chwilę,/
-Bezpiecznie wierzcie nierad ja omylę.<end id='e1188764907866' /></strofa>
+Bezpiecznie wierzcie nierad ja omylę.<end id="e1188764907866"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Fraszki/Z_Anakreonta">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
 <dc:title xml:lang="pl">Z Anakreonta (Ja chcę śpiewać krwawe boje...)</dc:title>
@@ -17,7 +18,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
 <dc:subject.genre xml:lang="pl">Anakreontyk</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-pierwsze-z-anakreonta-ja-chce-spiewac-krwawe-boje</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
 <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
@@ -37,7 +38,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <dzielo_nadrzedne>Fraszki, Księgi pierwsze</dzielo_nadrzedne>
 
-<nazwa_utworu><begin id='b1188761122441' /><motyw id='m1188761122441'>Miłość, Poezja</motyw>Z Anakreonta<pr>Anakreontowi, lirykowi z VI w. p.n.e., mylnie przypisywano autorstwo wydanego w r. 1554 przez paryskiego księgarza--humanistę, Henri Etienne'a, zbioru drobnych poezji greckich, odznaczających się błahą treścią i beztroskim nastrojem (topika miłosna, taniec, piękno, wino. itd.). W rzeczywistości najwcześniejsze spośród owych „anakreontyków", ogromnie popularnych i często naśladowanych w w. XVI--XVIII, pochodzą z pierwszych lat naszej ery.</pr></nazwa_utworu>
+<nazwa_utworu><begin id="b1188761122441"/><motyw id="m1188761122441">Miłość, Poezja</motyw>Z Anakreonta<pr>Anakreontowi, lirykowi z VI w. p.n.e., mylnie przypisywano autorstwo wydanego w r. 1554 przez paryskiego księgarza--humanistę, Henri Etienne'a, zbioru drobnych poezji greckich, odznaczających się błahą treścią i beztroskim nastrojem (topika miłosna, taniec, piękno, wino. itd.). W rzeczywistości najwcześniejsze spośród owych „anakreontyków", ogromnie popularnych i często naśladowanych w w. XVI--XVIII, pochodzą z pierwszych lat naszej ery.</pr></nazwa_utworu>
 
 
 
@@ -54,6 +55,7 @@ I prędkiego Sarpedona;<pr><slowo_obce>Sarpedona</slowo_obce> --- Sarpedon, syn 
 <strofa>Lutnia swym zwyczajem g'woli/
 O miłości śpiewać woli./
 Bóg was żegnaj, krwawe boje,/
-Nie lubią was strony moje.<end id='e1188761122441' /></strofa>
+Nie lubią was strony moje.<end id="e1188761122441"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

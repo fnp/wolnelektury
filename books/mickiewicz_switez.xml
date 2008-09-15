@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Świteź">
 <dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
 <dc:title xml:lang="pl">Świteź</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/%C5%9Awite%C5%BA</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/switez</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2222</dc:source.URL>
 <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
@@ -37,7 +38,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189067330910' /><motyw id='m1189067330910'>Woda </motyw><wers_akap>Ktokolwiek będziesz w Nowogródzkiej stronie,</wers_akap><extra>w źródle nie ma wcięcia akapitowego</extra>/
+<strofa><begin id="b1189067330910"/><motyw id="m1189067330910">Woda </motyw><wers_akap>Ktokolwiek będziesz w Nowogródzkiej stronie,</wers_akap><extra>w źródle nie ma wcięcia akapitowego</extra>/
 Do Płużyn ciemnego boru/
 Wjechawszy, pomnij zatrzymać twe konie,/
 By się przypatrzyć jezioru.</strofa>
@@ -64,8 +65,8 @@ W jakiejś otchłani błękitu.</strofa>
 
 <strofa><wers_akap>Tak w noc, pogodna jeśli służy pora,</wers_akap>/
 Wzrok się przyjemnie ułudzi.../
-<begin id='b1189067394008' /><motyw id='m1189067394008'>Czary</motyw>Lecz, żeby w nocy jechać do jeziora,/
-Trzeba być najśmielszym z ludzi.<end id='e1189067330910' /></strofa>
+<begin id="b1189067394008"/><motyw id="m1189067394008">Czary</motyw>Lecz, żeby w nocy jechać do jeziora,/
+Trzeba być najśmielszym z ludzi.<end id="e1189067330910"/></strofa>
 
 <strofa><wers_akap>Bo jakie szatan wyprawia tam harce!</wers_akap>/
 Jakie się larwy<pr><slowo_obce>larwy</slowo_obce> --- straszydła.</pr> szamocą!/
@@ -85,7 +86,7 @@ I dziewic żałośne modły.</strofa>
 <strofa><wers_akap>Co to ma znaczyć? różni różnie plotą:</wers_akap>/
 Cóż, kiedy nie był nikt na dnie;/
 Biegają wieści pomiędzy prostotą,/
-Lecz któż z nich prawdę odgadnie?<end id='e1189067394008' /></strofa>
+Lecz któż z nich prawdę odgadnie?<end id="e1189067394008"/></strofa>
 
 <strofa><wers_akap>Pan na Płużynach, którego pradziady</wers_akap>/
 Były Świtezi dziedzice,/
@@ -97,13 +98,13 @@ I wielkie sypał wydatki:/
 Związano niewód, głęboki stóp dwieście,/
 Budują czółny i statki.</strofa>
 
-<strofa><begin id='b1189067514932' /><motyw id='m1189067514932'>Ksiądz, Religia</motyw><wers_akap>Ja ostrzegałem: że w tak wielkiem dziele</wers_akap>/
+<strofa><begin id="b1189067514932"/><motyw id="m1189067514932">Ksiądz, Religia</motyw><wers_akap>Ja ostrzegałem: że w tak wielkiem dziele</wers_akap>/
 Dobrze, kto z Bogiem poczyna;/
 Dano więc na mszę w niejednym kościele,/
 I ksiądz przyjechał z Cyryna<pr>Cyryn --- miasteczko w Nowogródzkiem, z kościołem parafialnym. Do parafii cyryńskiej należały Płużyny.</pr>.</strofa>
 
 <strofa><wers_akap>Stanął na brzegu, ubrał się w ornaty,</wers_akap>/
-Przeżegnał, pracę pokropił;<end id='e1189067514932' />/
+Przeżegnał, pracę pokropił;<end id="e1189067514932"/>/
 Pan daje hasło: odbijają baty<pr><slowo_obce>baty</slowo_obce> --- czółna.</pr>,/
 Niewód się z szumem zatopił.</strofa>
 
@@ -137,12 +138,12 @@ Wraz byście poszli w głębinie<pr><slowo_obce>głębinia</slowo_obce> (forma b
 Lecz, że to kraj był twojego pradziada,/
 Że w tobie nasza krew płynie;</strofa>
 
-<strofa><begin id='b1189067678140' /><motyw id='m1189067678140'>Bóg, Religia</motyw><wers_akap>Choć godna kary jest ciekawość pusta,</wers_akap>/
+<strofa><begin id="b1189067678140"/><motyw id="m1189067678140">Bóg, Religia</motyw><wers_akap>Choć godna kary jest ciekawość pusta,</wers_akap>/
 Lecz, żeście z Bogiem poczęli,/
 Bóg wam przez moje opowiada usta,/
-Dzieje tej cudnej topieli.<end id='e1189067678140' /></strofa>
+Dzieje tej cudnej topieli.<end id="e1189067678140"/></strofa>
 
-<strofa><begin id='b1189067749157' /><motyw id='m1189067749157'>Miasto</motyw><wers_akap>Na miejscach, które dziś piaskiem zaniosło,</wers_akap>/
+<strofa><begin id="b1189067749157"/><motyw id="m1189067749157">Miasto</motyw><wers_akap>Na miejscach, które dziś piaskiem zaniosło,</wers_akap>/
 Gdzie car<pr><slowo_obce>car</slowo_obce> --- podbiał (ziele).</pr> i trzcina zarasta,/
 Po których teraz wasze biega wiosło,/
 Stał okrąg pięknego miasta.</strofa>
@@ -150,11 +151,11 @@ Stał okrąg pięknego miasta.</strofa>
 <strofa><wers_akap>Świteź, i w sławne orężem ramiona</wers_akap>/
 I w kraśne twarze bogata,/
 Niegdyś od książąt Tuhanów<pr><slowo_obce>od książąt Tuhanów</slowo_obce> --- aluzja do Tuhanowicz, wsi należącej do Wereszczaków, gdzie przebywała Maryla.</pr> rządzona,/
-Kwitnęła przez długie lata.<end id='e1189067749157' /></strofa>
+Kwitnęła przez długie lata.<end id="e1189067749157"/></strofa>
 
 <strofa><wers_akap>Nie ćmił widoku ten ostęp ponury:</wers_akap>/
 Przez żyzne wskroś okolice/
-<begin id='b1189068330457' /><motyw id='m1189068330457'>Przywódca, Wojna, Żołnierz</motyw>Widać stąd było Nowogródzkie mury,/
+<begin id="b1189068330457"/><motyw id="m1189068330457">Przywódca, Wojna, Żołnierz</motyw>Widać stąd było Nowogródzkie mury,/
 Litwy naówczas stolicę.</strofa>
 
 <strofa><wers_akap>Raz niespodzianie obiegł tam Mendoga</wers_akap>/
@@ -182,10 +183,10 @@ Dla obcej zgubię odsieczy?/
 Wszak wiesz, że Świteź nie ma innych szańców,/
 Prócz naszych piersi i mieczy.</strofa>
 
-<strofa><begin id='b1189069106821' /><motyw id='m1189069106821'>Anioł, Bóg, Córka, Miasto</motyw><wers_akap>Jeśli rozdzielę szczupłe wojsko moje,</wers_akap>/
+<strofa><begin id="b1189069106821"/><motyw id="m1189069106821">Anioł, Bóg, Córka, Miasto</motyw><wers_akap>Jeśli rozdzielę szczupłe wojsko moje,</wers_akap>/
 Krewnemu nie dam obrony;/
 A jeśli wszyscy pociągniem na boje,/
-Jak będą córy i żony?«<end id='e1189068330457' /></strofa>
+Jak będą córy i żony?«<end id="e1189068330457"/></strofa>
 
 <strofa><wers_akap>--- Ojcze, odpowiem, lękasz się niewcześnie,</wers_akap>/
 Idź, kędy sława cię woła,/
@@ -195,9 +196,9 @@ Widziałam jego anioła.</strofa>
 <strofa><wers_akap>Okrążył Świteź miecza błyskawicą,</wers_akap>/
 I nakrył złotemi pióry,/
 I rzekł mi: póki męże za granicą,/
-Ja bronię żony i córy. ---<end id='e1189069106821' /></strofa>
+Ja bronię żony i córy. ---<end id="e1189069106821"/></strofa>
 
-<strofa><begin id='b1189069337092' /><motyw id='m1189069337092'>Miasto, Walka</motyw><wers_akap>Usłuchał Tuhan, i za wojskiem goni;</wers_akap>/
+<strofa><begin id="b1189069337092"/><motyw id="m1189069337092">Miasto, Walka</motyw><wers_akap>Usłuchał Tuhan, i za wojskiem goni;</wers_akap>/
 Lecz gdy noc spada ponura,/
 Słychać gwar z dala, szczęk i tętent koni,/
 I zewsząd straszny wrzask: ura!</strofa>
@@ -205,14 +206,14 @@ I zewsząd straszny wrzask: ura!</strofa>
 <strofa><wers_akap>Zagrzmią tarany, padły bram ostatki,</wers_akap>/
 Zewsząd pocisków grad leci,/
 Biegą na dworzec starce, nędzne matki,/
-Dziewice i drobne dzieci.<end id='e1189069337092' /></strofa>
+Dziewice i drobne dzieci.<end id="e1189069337092"/></strofa>
 
 <strofa><wers_akap>»Gwałtu! wołają, zamykajcie bramę,</wers_akap>/
 Tuż, tuż, za nami Ruś wali./
 Ach! zgińmy lepiej, zabijmy się same,/
 Śmierć nas od hańby ocali«.</strofa>
 
-<strofa><begin id='b1189069531893' /><motyw id='m1189069531893'>Bóg, Samobójstwo</motyw><wers_akap>Natychmiast wściekłość bierze miejsce strachu;</wers_akap>/
+<strofa><begin id="b1189069531893"/><motyw id="m1189069531893">Bóg, Samobójstwo</motyw><wers_akap>Natychmiast wściekłość bierze miejsce strachu;</wers_akap>/
 Miecą bogactwa na stosy,/
 Przynoszą żagwie i płomień do gmachu,/
 I krzyczą strasznemi głosy:</strofa>
@@ -237,7 +238,7 @@ Dzień zda się spędzać noc ciemną:/
 Spuszczam ku ziemi przerażone oczy.../
 Już ziemi nie ma pode mną!...</strofa>
 
-<strofa><begin id='b1189069690064' /><motyw id='m1189069690064'>Dziewictwo</motyw><begin id='b1189069801095' /><motyw id='m1189069801095'>Rośliny</motyw><wers_akap>Takeśmy uszły zhańbienia i rzezi.</wers_akap>/
+<strofa><begin id="b1189069690064"/><motyw id="m1189069690064">Dziewictwo</motyw><begin id="b1189069801095"/><motyw id="m1189069801095">Rośliny</motyw><wers_akap>Takeśmy uszły zhańbienia i rzezi.</wers_akap>/
 Widzisz to ziele dokoła,/
 To są małżonki i córki Świtezi,/
 Które Bóg przemienił w zioła.</strofa>
@@ -250,7 +251,7 @@ Kiedy je śniegi pobielą.</strofa>
 <strofa><wers_akap>Za życia cnoty niewinnej obrazy,</wers_akap>/
 Jej barwę mają po zgonie,/
 W ukryciu żyją i nie cierpią skazy,/
-Śmiertelne nie tkną ich dłonie.<end id='e1189069690064' /><end id='e1189069531893' /></strofa>
+Śmiertelne nie tkną ich dłonie.<end id="e1189069690064"/><end id="e1189069531893"/></strofa>
 
 <strofa><wers_akap>Doświadczył tego car i ruska zgraja,</wers_akap>/
 Gdy piękne ujrzawszy kwiecie,/
@@ -265,7 +266,7 @@ I śmierć gwałtowna ugadza.</strofa>
 <strofa><wers_akap>Choć czas te dzieje wymazał z pamięci,</wers_akap>/
 Pozostał sam odgłos kary,/
 Dotąd w swych baśniach prostota go święci,/
-I kwiaty nazywa Cary". ---<end id='e1189069801095' /></strofa>
+I kwiaty nazywa Cary". ---<end id="e1189069801095"/></strofa>
 
 <strofa><wers_akap>To mówiąc, pani z wolna się oddala,</wers_akap>/
 Topią się statki i sieci,/
@@ -277,4 +278,5 @@ Lecz próżno za nią wzrok goni,/
 Wpadła i falą nakryła się znowu,/
 I więcej nie słychać o niéj.</strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

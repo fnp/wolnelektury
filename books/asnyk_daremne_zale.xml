@@ -1,7 +1,8 @@
-<utwor><liryka_lp>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_lp>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Asnyk/Między_nami_nic_nie_było">
 <dc:creator xml:lang="pl">Asnyk, Adam</dc:creator>
 <dc:title xml:lang="pl">Daremne żale</dc:title>
@@ -12,7 +13,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Daremne+%C5%BCale</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/daremne-zale</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5164</dc:source.URL>
 <dc:source xml:lang="pl">(Asnyk, Adam) El...y (1838-1897), Poezye, t. 3,  Gebethner i Wolff, wyd. nowe poprzedzone słowem wstępnym St. Krzemińskiego, Warszawa, 1898</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Asnyk zm. 1897</dc:rights>
@@ -32,7 +33,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189062211494' /><motyw id='m1189062211494'>Przemijanie, Czas, Carpe Diem, Czyn</motyw>Daremne żale, próżny trud,/
+<strofa><begin id="b1189062211494"/><motyw id="m1189062211494">Przemijanie, Czas, Carpe Diem, Czyn</motyw>Daremne żale, próżny trud,/
 <wers_wciety typ="2">Bezsilne złorzeczenia!</wers_wciety>/
 Przeżytych kształtów żaden cud/
 <wers_wciety typ="2">Nie wróci do istnienia.</wers_wciety></strofa>
@@ -50,6 +51,7 @@ A nie w uwiędłych laurów liść/
 <strofa>Wy nie cofniecie życia fal!/
 <wers_wciety typ="2">Nic skargi nie pomogą!</wers_wciety>/
 Bezsilne gniewy, próżny żal!/
-<wers_wciety typ="2">Świat pójdzie swoją drogą.</wers_wciety><end id='e1189062211494' /></strofa>
+<wers_wciety typ="2">Świat pójdzie swoją drogą.</wers_wciety><end id="e1189062211494"/></strofa>
 
-</liryka_lp></utwor>
+</liryka_lp>
+</utwor>

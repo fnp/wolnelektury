@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
 <dc:title xml:lang="pl">O Hannie (Serce mi zbiegło, a nie wiem inaczej...)</dc:title>
@@ -16,7 +17,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Fraszka</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">LINK DO STRONY W SERWISIE WOLNELEKTURY.PL</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-pierwsze-o-hannie-serce-mi-zbieglo-a-nie-wiem-inaczej</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
 <dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
@@ -40,11 +41,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1188761202486' /><motyw id='m1188761202486'>Kochanek, Miłość</motyw>Serce mi zbiegło, a nie wiem inaczej,/
+<strofa><begin id="b1188761202486"/><motyw id="m1188761202486">Kochanek, Miłość</motyw>Serce mi zbiegło, a nie wiem inaczej,/
 Jedno do Hanny, tam bywa naraczej<pe><slowo_obce>naraczej</slowo_obce> --- najchętniej.</pe>./
 Tom był zakazał, by nie przyjmowała/
 W dom tego zbiega, owszem, wypychała./
 Pójdę go szukać, lecz się i sam boję/
-Tam zostać. Wenus, powiedz radę swoję!<end id='e1188761202486' /></strofa>
+Tam zostać. Wenus, powiedz radę swoję!<end id="e1188761202486"/></strofa>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

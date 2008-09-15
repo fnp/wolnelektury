@@ -1,7 +1,8 @@
-<utwor><liryka_l>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_l>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:S%C5%82owacki/Gr%C3%B3b_Agamemnona/">
 <dc:creator xml:lang="pl">Słowacki, Juliusz</dc:creator>
 <dc:title xml:lang="pl">Grób Agamemnona</dc:title>
@@ -12,7 +13,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Gr%C3%B3b+Agamemnona</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/grob-agamemnona</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=5175&amp;from=editionindex&amp;dirids=4</dc:source.URL>
 <dc:source xml:lang="pl">Słowacki, Juliusz (1809-1849), Pisma Juliusza Słowackiego, tom 3, Lwów, 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Juliusz Słowacki zm. 1849</dc:rights>
@@ -38,12 +39,12 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1219176018434' /><motyw id='m1219176018434'>Grób</motyw>Niech fantastycznie<pe><slowo_obce>fantastycznie</slowo_obce> --- w sposób pobudzający wyobraźnię.</pe> lutnia nastrojona,/
+<strofa><begin id="b1219176018434"/><motyw id="m1219176018434">Grób</motyw>Niech fantastycznie<pe><slowo_obce>fantastycznie</slowo_obce> --- w sposób pobudzający wyobraźnię.</pe> lutnia nastrojona,/
 <wers_wciety>Wtóruje myśli posępnej i ciemnej ---</wers_wciety>/
 Bom oto wstąpił w grób Agamemnona<pe>Agamemnon --- naczelny wódz wyprawy greckiej pod Troję; gdy Grecy z powodu ciszy morskiej nie mogli wyruszyć na wojnę, złożył w ofierze bogini Artemidzie swą córkę, Ifigenię; został za to po powrocie spod Troi zabity przez swą żonę, Klitajmestrę.</pe>./
 <wers_wciety>I siedzę cichy w kopule podziemnej,</wers_wciety>/
 Co krwią Atrydów<pe>Atrydzi --- potomkowie Atresa, należeli do nich m.in. Agamemnon i Menelaos, mąż Heleny; ród przeklęty z powodu bratobójstwa, którego dopuścili się Arteusz i Tyestes; ich historię znaczą najokrutniejsze zbrodnie popełniane w łonie rodziny; Arteusz, będąc królem Myken, zemścił się na Tyestesie za uwiedzenie żony, podając mu w czasie uczty potrawę przygotowaną z ciał jego synów; sam zginął za to z ręki brata zamordowanych dzieci, Egista.</pe> zwalana okrutną./
-<begin id='b1219180668540' /><motyw id='m1219180668540'>Serce</motyw>Serce zasnęło, lecz śni. --- Jak mi smutno!<end id='e1219180668540' /></strofa>
+<begin id="b1219180668540"/><motyw id="m1219180668540">Serce</motyw>Serce zasnęło, lecz śni. --- Jak mi smutno!<end id="e1219180668540"/></strofa>
 
 <strofa>O! jak daleko brzmi ta harfa złota,/
 <wers_wciety>Której mi tylko echo wieczne słychać!</wers_wciety>/
@@ -59,21 +60,21 @@ Tu cząbry<pe><slowo_obce>cząber</slowo_obce> --- rodzaj zioła, używanego ró
 Napędza nasion kwiatów --- a te puchy/
 Chodzą i w grobie latają jak duchy.</strofa>
 
-<strofa><begin id='b1219175639018' /><motyw id='m1219175639018'>Cisza, Śpiew</motyw>Tu świerszcze polne, pomiędzy kamienie/
+<strofa><begin id="b1219175639018"/><motyw id="m1219175639018">Cisza, Śpiew</motyw>Tu świerszcze polne, pomiędzy kamienie/
 <wers_wciety>Przed nadgrobowym pochowane słońcem,</wers_wciety>/
 Jakby mi chciały nakazać milczenie:/
 <wers_wciety>Sykają. --- Strasznym jest Rapsodu<pe><slowo_obce>Rapsod</slowo_obce> --- pieśń opiewająca bohaterów, fragment epopei.</pe> końcem:</wers_wciety>/
 Owe sykanie co się w grobach słyszy ---/
-Jest objawieniem --- jest i pieśnią ciszy.<end id='e1219175639018' /></strofa>
+Jest objawieniem --- jest i pieśnią ciszy.<end id="e1219175639018"/></strofa>
 
-<strofa><begin id='b1219175696030' /><motyw id='m1219175696030'>Pokora</motyw>O! cichy jestem jak wy! o Atrydzi!/
+<strofa><begin id="b1219175696030"/><motyw id="m1219175696030">Pokora</motyw>O! cichy jestem jak wy! o Atrydzi!/
 <wers_wciety>Których popioły śpią pod świerszczów strażą ---</wers_wciety>/
 Ani mię teraz moja małość wstydzi,/
 <wers_wciety>Ani się myśli tak jak orły ważą.</wers_wciety>/
 Głęboko jestem pokorny i cichy/
-Tu, w tym grobowcu sławy, zbrodni, pychy!<end id='e1219175696030' /> ---</strofa>
+Tu, w tym grobowcu sławy, zbrodni, pychy!<end id="e1219175696030"/> ---</strofa>
 
-<strofa><begin id='b1196168866557' /><motyw id='m1196168866557'>Drzewo, Światło</motyw>Nad drzwiami grobu, na granitu zrębie/
+<strofa><begin id="b1196168866557"/><motyw id="m1196168866557">Drzewo, Światło</motyw>Nad drzwiami grobu, na granitu zrębie/
 <wers_wciety>Wyrasta dąbek w trójkącie z kamieni:</wers_wciety>/
 Posadziły go wróble lub gołębie,/
 <wers_wciety>I listkami się czarnemi<pe><slowo_obce>czarnemi</slowo_obce> --- dawn. forma dla r. ż. i n.; dziś: czarnymi.</pe> zieleni ---</wers_wciety>/
@@ -92,30 +93,30 @@ Brzask, była struna to z harfy Homera<pe>Homer --- na poły legendarny, genialn
 Przymusić do łez, i śpiewu, i złości/
 <wers_wciety>Nad wielkiem niczem<pe><slowo_obce>wielkiem niczem</slowo_obce> --- dawn. forma dla r. ż. i n.; dziś popr.: wielkim niczym; chodzi o wielką nicość grobów, o której mówi podmiot liryczny.</pe> grobów --- i milczącą</wers_wciety>/
 Garstką popiołów: ale w mojem<pe><slowo_obce>mojem</slowo_obce> --- dziś: moim.</pe> ręku/
-Ta struna drgnęła i pękła bez jęku.<end id='e1196168866557' /></strofa>
+Ta struna drgnęła i pękła bez jęku.<end id="e1196168866557"/></strofa>
 
-<strofa><begin id='b1196169026630' /><motyw id='m1196169026630'>Los, Poeta, Polak</motyw>Tak więc --- to los mój, na grobowcach siadać/
+<strofa><begin id="b1196169026630"/><motyw id="m1196169026630">Los, Poeta, Polak</motyw>Tak więc --- to los mój, na grobowcach siadać/
 <wers_wciety>I szukać smutków błahych, wiotkich, kruchych.</wers_wciety>/
-<begin id='b1196169074372' /><motyw id='m1196169074372'>Życie snem</motyw>To los mój, senne królestwa posiadać,<end id='e1196169074372' />/
+<begin id="b1196169074372"/><motyw id="m1196169074372">Życie snem</motyw>To los mój, senne królestwa posiadać,<end id="e1196169074372"/>/
 <wers_wciety>Nieme mieć harfy i słuchaczów głuchych ---</wers_wciety>/
-Albo umarłych ---<end id='e1219176018434' /> <begin id='b1196169521692' /><motyw id='m1196169521692'>Koń</motyw>i tak pełny wstrętu ---<end id='e1196169026630' />/
+Albo umarłych ---<end id="e1219176018434"/> <begin id="b1196169521692"/><motyw id="m1196169521692">Koń</motyw>i tak pełny wstrętu ---<end id="e1196169026630"/>/
 Na koń! chcę słońca i wichru --- tętentu!</strofa>
 
 <strofa>Na koń! --- Tu łożem suchego potoku,/
 <wers_wciety>Gdzie zamiast wody, płynie laur różowy;</wers_wciety>/
 Ze łzą i z wielką błyskawicą w oku,/
 <wers_wciety>Jakby mię wicher gnał błyskawicowy,</wers_wciety>/
-<begin id='b1219179692557' /><motyw id='m1219179692557'>Grób, Śmierć bohaterska</motyw>Lecę --- a koń się na powietrzu kładnie<pe><slowo_obce>kładnie</slowo_obce> --- kładzie.</pe> ---/
+<begin id="b1219179692557"/><motyw id="m1219179692557">Grób, Śmierć bohaterska</motyw>Lecę --- a koń się na powietrzu kładnie<pe><slowo_obce>kładnie</slowo_obce> --- kładzie.</pe> ---/
 Jeśli napotka grób rycerzy --- padnie.</strofa>
 
 <strofa>Na Termopilach<pe>Termopile --- stromy, górski wąwóz, stanowiący przejście z Tesalii do Grecji środkowej, z obu stron zamknięty bramami, u których znajdowały się termy, czyli gorące źródła (stąd pochodzi nazwa: <slowo_obce>thermos</slowo_obce> --- gorący, <slowo_obce>pyle</slowo_obce> --- brama); stanowiły ważny punkt strategiczny; w 480 r. p.n.e. król Sparty Leonidas wraz z trzystoma swymi rodakami bronił tego miejsca przed wojskami króla perskiego Kserksesa, walcząc do śmierci ostatniego obrońcy, z przyczyn honorowych, wiedząc, że wojna jest już przegrana --- napis na pomniku Spartan poległych pod Termopilami głosi: ,,Przechodniu, powiedz Sparcie, że leżymy tutaj, posłuszni jej prawom".</pe>? --- Nie, na Cheronei<pe>Cheroneja --- miasto w staroż. Beocji; tu Filip Macedoński zadał w 338 r. p.n.e. klęskę połączonym siłom Aten i Teb; pobity w tej bitwie przez Aleksandra Macedońskiego, syna Filipa, oddział Tebańczyków walczył do śmierci ostatniego wojownika.</pe>/
 <wers_wciety>Trzeba się znowu załamać koniowi;</wers_wciety>/
-<begin id='b1196169614395' /><motyw id='m1196169614395'>Ojczyzna, Polak</motyw>Bo jestem z kraju, gdzie widmo nadziei/
-<wers_wciety>Dla małowiernych serc, podobne snowi<pe><slowo_obce>Bo jestem z kraju, gdzie widmo nadziei / Dla małowiernych serc, podobne snowi</slowo_obce> --- jestem z kraju, gdzie stracono już nadzieję: wyzwolenie stało się tylko marzeniami sennymi.</pe>.</wers_wciety><end id='e1196169614395' />/
+<begin id="b1196169614395"/><motyw id="m1196169614395">Ojczyzna, Polak</motyw>Bo jestem z kraju, gdzie widmo nadziei/
+<wers_wciety>Dla małowiernych serc, podobne snowi<pe><slowo_obce>Bo jestem z kraju, gdzie widmo nadziei / Dla małowiernych serc, podobne snowi</slowo_obce> --- jestem z kraju, gdzie stracono już nadzieję: wyzwolenie stało się tylko marzeniami sennymi.</pe>.</wers_wciety><end id="e1196169614395"/>/
 Więc jeśli koń mój w biegu się przestraszy,/
-To tej mogiły, co równa jest --- naszej ---<end id='e1196169521692' /></strofa>
+To tej mogiły, co równa jest --- naszej ---<end id="e1196169521692"/></strofa>
 
-<strofa><begin id='b1196169789861' /><motyw id='m1196169789861'>Ojczyzna, Polak, Śmierć bohaterska, Walka</motyw>Mnie od mogiły termopilskiej gotów/
+<strofa><begin id="b1196169789861"/><motyw id="m1196169789861">Ojczyzna, Polak, Śmierć bohaterska, Walka</motyw>Mnie od mogiły termopilskiej gotów/
 <wers_wciety>Odgonić legjon<pe><slowo_obce>legjon</slowo_obce> --- dziś popr.: legion.</pe> umarłych Spartanów;</wers_wciety>/
 Bo jestem z kraju smutnego Ilotów<pe>Iloci --- mieszkańcy Ilionu (stąd nazwa eposu homeryckiego <tytul_dziela>Iliada</tytul_dziela>), Trojanie, a więc obywatele kraju, którego już nie ma, odkąd Troja została zburzona; <slowo_obce>ilota</slowo_obce> jest tu synonimem niewolnika.</pe>,/
 <wers_wciety>Z kraju --- gdzie rozpacz nie sypie kurhanów<pe><slowo_obce>kurhan</slowo_obce> --- kopiec, który sypano na grobach, dla upamiętnienia zmarłych i miejsc ich spoczynku.</pe>!</wers_wciety>/
@@ -126,8 +127,8 @@ Zostaje smutne pół --- rycerzy --- żywych.</strofa>
 <wers_wciety>Osadzić konia w wąwozowym szlaku,</wers_wciety>/
 Bo tam być muszą tak patrzące twarze,/
 <wers_wciety>Że serce, skruszy wstyd --- w każdym Polaku.</wers_wciety>/
-<begin id='b1196169847492' /><motyw id='m1196169847492'>Niewola</motyw>Ja tam nie będę stał przed Grecji duchem ---/
-Nie --- pierwej skonam, niż tam iść --- z łańcuchem<pe><slowo_obce>łańcuch</slowo_obce> --- jako atrybut niewolnictwa.</pe>!<end id='e1196169847492' /></strofa>
+<begin id="b1196169847492"/><motyw id="m1196169847492">Niewola</motyw>Ja tam nie będę stał przed Grecji duchem ---/
+Nie --- pierwej skonam, niż tam iść --- z łańcuchem<pe><slowo_obce>łańcuch</slowo_obce> --- jako atrybut niewolnictwa.</pe>!<end id="e1196169847492"/></strofa>
 
 <strofa>Na Termopilach --- jaką bym zdał sprawę,/
 <wers_wciety>Gdyby stanęli męże nad mogiłą?</wers_wciety>/
@@ -136,23 +137,23 @@ I pokazawszy mi swe piersi krwawe:/
 Zapomnij że jest długi wieków przedział ---/
 Gdyby spytali tak --- cóż bym powiedział?!</strofa>
 
-<strofa><begin id='b1196374520978' /><motyw id='m1196374520978'>Obowiązek, Szlachcic, Walka</motyw>Na Termopilach, bez złotego pasa,/
+<strofa><begin id="b1196374520978"/><motyw id="m1196374520978">Obowiązek, Szlachcic, Walka</motyw>Na Termopilach, bez złotego pasa,/
 <wers_wciety>Bez czerwonego leży trup kontusza<pe><slowo_obce>kontusz</slowo_obce> --- męska suknia z rozciętymi rękawami i zapinana z przodu; tradycyjny (choć o kroju zapożyczonym ze wschodu i szyty z orientalnych materiałów) strój szlachty polskiej.</pe> ---</wers_wciety>/
 Ale jest nagi trup Leonidasa<pe>Leonidas --- król Sparty 491--480 p.n.e., poległ pod Termopilami.</pe>,/
 <wers_wciety>Jest w marmurowych kształtach piękna dusza:</wers_wciety>/
 I długo płakał lud takiej ofiary,/
-Ognia wonnego, i rozbitej czary.<end id='e1219179692557' /><end id='e1196374520978' /><end id='e1196169789861' /></strofa>
+Ognia wonnego, i rozbitej czary.<end id="e1219179692557"/><end id="e1196374520978"/><end id="e1196169789861"/></strofa>
 
-<strofa><begin id='b1196376250294' /><motyw id='m1196376250294'>Niewola, Ojczyzna, Polak, Sarmata, Dusza, Ciało</motyw>O Polsko! póki ty duszę anielską/
+<strofa><begin id="b1196376250294"/><motyw id="m1196376250294">Niewola, Ojczyzna, Polak, Sarmata, Dusza, Ciało</motyw>O Polsko! póki ty duszę anielską/
 <wers_wciety>Będziesz więziła w czerepie rubasznym<pe><slowo_obce>czerep</slowo_obce> --- głowa, czaszka; ,,czerep rubaszny" stanowi metaforyczną aluzję do stylu bycia polskiej szlachty --- właśnie rubasznego, a więc bezceremonialnego, prostego (czy wręcz prostackiego), swobodnego i poufale żartobliwego, niepoważnego.</pe>;</wers_wciety>/
 Póty kat będzie rąbał twoje cielsko,/
 <wers_wciety>Póty nie będzie twój miecz zemsty strasznym!</wers_wciety>/
-<begin id='b1196374635723' /><motyw id='m1196374635723'>Upiór, Wampir</motyw>Póty mieć będziesz hienę<pe><slowo_obce>hiena</slowo_obce> --- zwierzę znane z tego, że żywi się padliną; tu: martwym ,,ciałem" ojczyzny poety żywią się zaborcy.</pe> na sobie ---/
-I grób --- i oczy otworzone w grobie.<end id='e1196374635723' /></strofa>
+<begin id="b1196374635723"/><motyw id="m1196374635723">Upiór, Wampir</motyw>Póty mieć będziesz hienę<pe><slowo_obce>hiena</slowo_obce> --- zwierzę znane z tego, że żywi się padliną; tu: martwym ,,ciałem" ojczyzny poety żywią się zaborcy.</pe> na sobie ---/
+I grób --- i oczy otworzone w grobie.<end id="e1196374635723"/></strofa>
 
 <strofa>Zruć<pe><slowo_obce>Zruć</slowo_obce> --- zrzuć.</pe> do ostatka te płachty ohydne,/
-<wers_wciety>Tę --- Dejaniry<pe>Dejanira --- mit. gr. żona Herkulesa. Herkules zabił zatrutą strzałą centaura Nessosa, który próbował zgwałcić Dejanirę. Umierając centaur podarował Dejanirze swoją tunikę splamioną krwią twierdząc, że ma ona moc zapewnienia miłości męża. Dejanira posłała Herkulesowi tę tunikę, gdy zakochał się w innej kobiecie, Joli. Herkules zmarł w męczarniach po włożeniu tuniki, która na skutek działania zatrutej krwi Nessosa, przywarła do jego ciała i paliła go okrutnie. ,,Paląca koszula Dejaniry" jest więc synonimem nieznośnego, zabójczego cierpienia, które więzi ofiarę w swej mocy, od którego nie ma ucieczki. Tu koszulą tą ma być ,,czerep rubaszny", który należy kojarzyć z spuścizną sarmatyzmu: przez nią nie jesteśmy zdolni do odpowiedzialnego i honorowego czynu patriotycznego, a jedynie do zabawy w wojaczkę.</pe> palącą koszulę:<end id='e1196376250294' /></wers_wciety>/
-<begin id='b1196376993333' /><motyw id='m1196376993333'>Nieśmiertelność, Wizja</motyw>A wstań jak wielkie posągi bezwstydne,/
+<wers_wciety>Tę --- Dejaniry<pe>Dejanira --- mit. gr. żona Herkulesa. Herkules zabił zatrutą strzałą centaura Nessosa, który próbował zgwałcić Dejanirę. Umierając centaur podarował Dejanirze swoją tunikę splamioną krwią twierdząc, że ma ona moc zapewnienia miłości męża. Dejanira posłała Herkulesowi tę tunikę, gdy zakochał się w innej kobiecie, Joli. Herkules zmarł w męczarniach po włożeniu tuniki, która na skutek działania zatrutej krwi Nessosa, przywarła do jego ciała i paliła go okrutnie. ,,Paląca koszula Dejaniry" jest więc synonimem nieznośnego, zabójczego cierpienia, które więzi ofiarę w swej mocy, od którego nie ma ucieczki. Tu koszulą tą ma być ,,czerep rubaszny", który należy kojarzyć z spuścizną sarmatyzmu: przez nią nie jesteśmy zdolni do odpowiedzialnego i honorowego czynu patriotycznego, a jedynie do zabawy w wojaczkę.</pe> palącą koszulę:<end id="e1196376250294"/></wers_wciety>/
+<begin id="b1196376993333"/><motyw id="m1196376993333">Nieśmiertelność, Wizja</motyw>A wstań jak wielkie posągi bezwstydne,/
 <wers_wciety>Naga --- w styksowym<pe><slowo_obce>styksowy muł</slowo_obce> --- muł rzeki Styks, jednej z rzek Hadesu, świata umarłych; przez nią Charon przewoził zmarłych; jej wody to wody śmierci, ale skąpanie się w nich czyniło ciało ludzkie odpornym na rany --- w ten sposób został zabezpieczony przez swą matkę Achilles (zanurzając go w Styksie, matka trzymała dziecko za piętę, która stała się jedynym miejscem na ciele Achillesa podatnym na zranienie). Kąpiel w Styksie byłaby rodzajem chrztu śmierci.</pe> wykąpana mule!</wers_wciety>/
 Nowa --- nagością żelazną bezczelna ---/
 Niezawstydzona niczem --- nieśmiertelna!</strofa>
@@ -162,20 +163,20 @@ Niezawstydzona niczem --- nieśmiertelna!</strofa>
 Że taki wielki posąg --- z jednej bryły!/
 <wers_wciety>A tak hartowny<pe><slowo_obce>hartowny</slowo_obce> --- odporny.</pe>, że w gromach nie pęknie,</wers_wciety>/
 Ale z piorunów ma ręce i wieniec ---/
-Gardzący śmiercią wzrok --- życia rumieniec.<end id='e1196376993333' /></strofa>
+Gardzący śmiercią wzrok --- życia rumieniec.<end id="e1196376993333"/></strofa>
 
-<strofa><begin id='b1196377128307' /><motyw id='m1196377128307'>Niewola, Próżność, Sługa, Upadek</motyw>Polsko! lecz ciebie błyskotkami łudzą!/
+<strofa><begin id="b1196377128307"/><motyw id="m1196377128307">Niewola, Próżność, Sługa, Upadek</motyw>Polsko! lecz ciebie błyskotkami łudzą!/
 <wers_wciety>Pawiem narodów byłaś i papugą;</wers_wciety>/
-A teraz jesteś służebnicą cudzą ---<end id='e1196377128307' />/
-<wers_wciety><begin id='b1219180372855' /><motyw id='m1219180372855'>Serce</motyw>Choć wiem, że słowa te nie zadrżą długo</wers_wciety>/
-W sercu --- gdzie nie trwa myśl nawet godziny<end id='e1219180372855' />:/
-<begin id='b1196170430821' /><motyw id='m1196170430821'>Wyrzuty sumienia</motyw>Mówię --- bom smutny --- i sam pełen winy!<end id='e1196170430821' /></strofa>
+A teraz jesteś służebnicą cudzą ---<end id="e1196377128307"/>/
+<wers_wciety><begin id="b1219180372855"/><motyw id="m1219180372855">Serce</motyw>Choć wiem, że słowa te nie zadrżą długo</wers_wciety>/
+W sercu --- gdzie nie trwa myśl nawet godziny<end id="e1219180372855"/>:/
+<begin id="b1196170430821"/><motyw id="m1196170430821">Wyrzuty sumienia</motyw>Mówię --- bom smutny --- i sam pełen winy!<end id="e1196170430821"/></strofa>
 
-<strofa><begin id='b1219181604135' /><motyw id='m1219181604135'>Prometeusz</motyw>Przeklnij! --- lecz ciebie przepędzi ma dusza,/
+<strofa><begin id="b1219181604135"/><motyw id="m1219181604135">Prometeusz</motyw>Przeklnij! --- lecz ciebie przepędzi ma dusza,/
 <wers_wciety>Jak Eumenida<pe>Eumenida --- inaczej: Erynia, w mit. gr. Erynie były wysłanniczkami Fatum, mścicielkami tropiącymi zbrodniarzy (tu dusz poety ma pełnić tę rolę --- sumienia dręczącego winowajcę); przedstawiane były z wężami we włosach (stąd: ,,wężowe rózgi" i skrzydłami; z imienia znane są trzy: Alekto (Niestrudzona), Tysyfone (Mścicielka) i Megera (Wroga).</pe> przez wężowe rózgi.</wers_wciety>/
 Boś ty, jedyny syn Prometeusza<pe>Prometeusz --- mit. gr. tytan, który litując się nad rodem ludzkim wykradł z Olimpu ogień i dał ludziom, za co został na rozkaz Zeusa przykuty do skały na Kaukazie, gdzie wciąż od nowa orzeł (tu: sęp) wyjadał jego wątrobę (tu: serce), która odrastała w ciągu jednej nocy.</pe> ---/
-<begin id='b1196378083621' /><motyw id='m1196378083621'>Głupota, Los</motyw>Sęp ci wyjada nie serce --- lecz mózgi.<end id='e1219181604135' /><end id='e1196378083621' />/
-<begin id='b1196378238613' /><motyw id='m1196378238613'>Bunt, Matka, Niewola, Ojczyzna, Syn, Poeta</motyw>Choć Muzę moją w twojej krwi zaszargam,/
+<begin id="b1196378083621"/><motyw id="m1196378083621">Głupota, Los</motyw>Sęp ci wyjada nie serce --- lecz mózgi.<end id="e1219181604135"/><end id="e1196378083621"/>/
+<begin id="b1196378238613"/><motyw id="m1196378238613">Bunt, Matka, Niewola, Ojczyzna, Syn, Poeta</motyw>Choć Muzę moją w twojej krwi zaszargam,/
 Sięgnę do wnętrza twych trzew --- i zatargam.</strofa>
 
 <strofa>Szczęknij z boleści i przeklinaj syna!/
@@ -183,8 +184,9 @@ Sięgnę do wnętrza twych trzew --- i zatargam.</strofa>
 Nade mną --- zwinie się w łęk<pe><slowo_obce>łęk</slowo_obce> --- tu: łuk.</pe> jak gadzina<pe><slowo_obce>gadzina</slowo_obce> --- tu: wąż.</pe>,/
 <wers_wciety>I z ramion ci się odkruszy zeschnięta!</wers_wciety>/
 I w proch ją czarne szatany rozchwycą;/
-Bo nie masz władzy przekląć --- niewolnico!!! ---<end id='e1196378238613' /></strofa>
+Bo nie masz władzy przekląć --- niewolnico!!! ---<end id="e1196378238613"/></strofa>
 
 <extra><!--</tekst_glowny>--></extra>
 
-</liryka_l></utwor>
+</liryka_l>
+</utwor>

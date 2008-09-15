@@ -1,7 +1,8 @@
-<utwor><liryka_lp>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_lp>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Oppman/Legendy_warszawskie">
 <dc:creator xml:lang="pl">Oppman, Artur</dc:creator>
 <dc:title xml:lang="pl">Kościół Panny Marii</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Epika</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Legenda</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Ko%C5%9Bci%C3%B3%C5%82+Panny+Marii</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/legendy-warszawskie-kosciol-panny-marii</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/799</dc:source.URL>
 <dc:source xml:lang="pl">Oppman, Artur (1867-1931), Legendy warszawskie, Księgarnia św. Wojciecha, Poznań, Warszawa [etc.], 1925</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Artur Oppman zm. 1931</dc:rights>
@@ -90,7 +91,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <strofa>Od Warszawy ku Gdańskowi/
 	Można niemi szlak wymościć...</strofa>
 
-<strofa><begin id="b1188465596890" /><motyw id="m1188465596890">Dziecko, Rodzina</motyw>Więc bogactwa młynarzowi/
+<strofa><begin id="b1188465596890"/><motyw id="m1188465596890">Dziecko, Rodzina</motyw>Więc bogactwa młynarzowi/
 	Mógłby książę pozazdrościć!</strofa>
 
 
@@ -145,7 +146,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	I z wiślaną falą gada.</strofa>
 
 <strofa>Gdybyż w domku życia kwiecie:/
-	Jedno dziecię! Jedno dziecię!<end id="e1188465596890" /></strofa>
+	Jedno dziecię! Jedno dziecię!<end id="e1188465596890"/></strofa>
 
 
 
@@ -180,7 +181,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 	A pod domkiem straż anioła/
 	Nad snem dobrych ludzi czuwa.</strofa>
 
-<strofa><begin id="b1188465731255" /><motyw id="m1188465731255">Wizja</motyw>Śpi nasz młynarz utrudzony/
+<strofa><begin id="b1188465731255"/><motyw id="m1188465731255">Wizja</motyw>Śpi nasz młynarz utrudzony/
 	A wtem: Boże! Jakież cuda!/
 	Czy to niebios sen wyśniony?/
 	Czy to tylko zmysłów złuda?</strofa>
@@ -218,7 +219,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <strofa>Cudna postać się rozpływa,/
 	Jak marzenie, jak mgła lekka,/
 	Młynarz ze snu się porywa, ---/
-	A już niebo świt obleka.<end id="e1188465731255" /></strofa>
+	A już niebo świt obleka.<end id="e1188465731255"/></strofa>
 
 
 
@@ -329,5 +330,5 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 <extra><!--</tekst_glowny>--></extra>
 
-</liryka_lp></utwor>
-
+</liryka_lp>
+</utwor>

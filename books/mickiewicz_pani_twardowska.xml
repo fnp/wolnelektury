@@ -1,7 +1,8 @@
-<utwor><liryka_lp>
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <liryka_lp>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Pani_Twardowska">
 <dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
 <dc:title xml:lang="pl">Pani Twardowska</dc:title>
@@ -13,7 +14,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
 <dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://www.wolnelektury.pl/lektura/Pani+Twardowska</dc:identifier.url>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/pani-twardowska</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2222</dc:source.URL>
 <dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922</dc:source>
 <dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
@@ -33,7 +34,7 @@ xmlns:dc="http://purl.org/dc/elements/1.1/">
 
 
 
-<strofa><begin id='b1189064473183' /><motyw id='m1189064473183'>Pijaństwo</motyw><wers_akap>Jedzą, piją, lulki palą,</wers_akap>/
+<strofa><begin id="b1189064473183"/><motyw id="m1189064473183">Pijaństwo</motyw><wers_akap>Jedzą, piją, lulki palą,</wers_akap>/
 Tańce, hulanka, swawola;/
 Ledwie karczmy nie rozwalą,/
 Cha, cha! chi, chi! hejże! hola!</strofa>
@@ -41,9 +42,9 @@ Cha, cha! chi, chi! hejże! hola!</strofa>
 <strofa><wers_akap>Twardowski siadł w końcu stoła,</wers_akap>/
 Podparł się w boki jak basza:/
 ,,Hulaj dusza! hulaj!" woła,/
-Śmieszy, tumani, przestrasza.<end id='e1189064473183' /></strofa>
+Śmieszy, tumani, przestrasza.<end id="e1189064473183"/></strofa>
 
-<strofa><begin id='b1189064575166' /><motyw id='m1189064575166'>Czary</motyw><wers_akap>Żołnierzowi, co grał zucha,</wers_akap>/
+<strofa><begin id="b1189064575166"/><motyw id="m1189064575166">Czary</motyw><wers_akap>Żołnierzowi, co grał zucha,</wers_akap>/
 Wszystkich łaje<pe><slowo_obce>łajać</slowo_obce> --- strofować, ganić.</pe> i potrąca,/
 Świsnął szablą koło ucha:/
 Już z żołnierza masz zająca.</strofa>
@@ -53,12 +54,12 @@ Co milczkiem wypróżniał rondel,/
 Zadzwonił kieską<pr><slowo_obce>kieska</slowo_obce> --- woreczek z pieniędzmi.</pr>, pomału:/
 Z patrona robi się kondel<pe><slowo_obce>kondel</slowo_obce> --- kundel, pies.</pe>.</strofa>
 
-<strofa><begin id='b1220611595408' /><motyw id='m1220611595408'>Alkohol</motyw><wers_akap>Szewcu<pe><slowo_obce>Szewcu</slowo_obce> --- dziś: Szewcowi.</pe> w nos wyciął trzy szczutki,</wers_akap>/
+<strofa><begin id="b1220611595408"/><motyw id="m1220611595408">Alkohol</motyw><wers_akap>Szewcu<pe><slowo_obce>Szewcu</slowo_obce> --- dziś: Szewcowi.</pe> w nos wyciął trzy szczutki,</wers_akap>/
 Do łba przymknął trzy rureczki,/
 Cmoknął: cmok! i gdańskiej wódki/
-Wytoczył ze łba pół beczki.<end id='e1189064575166' /></strofa>
+Wytoczył ze łba pół beczki.<end id="e1189064575166"/></strofa>
 		
-<strofa><begin id='b1189064788170' /><motyw id='m1189064788170'>Diabeł</motyw><wers_akap>Wtem, gdy wódkę pił z kielicha,</wers_akap>/
+<strofa><begin id="b1189064788170"/><motyw id="m1189064788170">Diabeł</motyw><wers_akap>Wtem, gdy wódkę pił z kielicha,</wers_akap>/
 Kielich zaświstał, zazgrzytał;/
 Patrzy na dno: --- ,,Co u licha?/
 Po coś tu, kumie, zawitał?"</strofa>
@@ -71,7 +72,7 @@ Zdjął kapelusz i dał susa.</strofa>
 <strofa><wers_akap>Z kielicha aż na podłogę</wers_akap>/
 Pada, rośnie na dwa łokcie,/
 Nos jak haczyk, kurzą nogę,/
-I krogulcze ma paznokcie.<end id='e1220611595408' /></strofa>
+I krogulcze ma paznokcie.<end id="e1220611595408"/></strofa>
 
 <strofa><wers_akap>,,A, Twardowski... witam bracie!"</wers_akap>/
 To mówiąc, bieży obcesem<pr><slowo_obce>obcesem</slowo_obce> --- natrętnie, zuchwale.</pr>:/
@@ -96,19 +97,19 @@ Ani myślisz o podróży.</strofa>
 <strofa><wers_akap>Ale zemsta, choć leniwa,</wers_akap>/
 Nagnała cię w nasze sieci:/
 Ta karczma <wyroznienie>Rzym</wyroznienie> się nazywa.../
-Kładę areszt na waszeci".<end id='e1189064788170' /></strofa>
+Kładę areszt na waszeci".<end id="e1189064788170"/></strofa>
 
-<strofa><begin id='b1189064855320' /><motyw id='m1189064855320'>Szlachcic</motyw><wers_akap>Twardowski ku drzwiom się kwapił</wers_akap>/
+<strofa><begin id="b1189064855320"/><motyw id="m1189064855320">Szlachcic</motyw><wers_akap>Twardowski ku drzwiom się kwapił</wers_akap>/
 Na takie <slowo_obce>dictum acerbum</slowo_obce><pr><slowo_obce>dictum acerbum</slowo_obce> (łac.) --- przykre powiedzenie.</pr>;/
 Diabeł za kontusz ułapił:/
-,,A gdzie jest <slowo_obce>nobile verbum</slowo_obce><pr><slowo_obce>nobile verbum</slowo_obce> (łac.) --- słowo szlacheckie (którego trzeba dotrzymać pod groźbą utraty honoru)..</pr>?"<end id='e1189064855320' /></strofa>
+,,A gdzie jest <slowo_obce>nobile verbum</slowo_obce><pr><slowo_obce>nobile verbum</slowo_obce> (łac.) --- słowo szlacheckie (którego trzeba dotrzymać pod groźbą utraty honoru)..</pr>?"<end id="e1189064855320"/></strofa>
 
 <strofa><wers_akap>Co tu począć? kusa rada,</wers_akap>/
 Przyjdzie już nałożyć głową.../
 Twardowski na koncept wpada/
 I zadaje trudność nową.</strofa>
 
-<strofa><begin id='b1189064930959' /><motyw id='m1189064930959'>Czary, Diabeł</motyw><wers_akap>,,Patrz w kontrakt, Mefistofilu,</wers_akap>/
+<strofa><begin id="b1189064930959"/><motyw id="m1189064930959">Czary, Diabeł</motyw><wers_akap>,,Patrz w kontrakt, Mefistofilu,</wers_akap>/
 Tam warunki takie stoją:/
 Po latach tylu a tylu,/
 Gdy przyjdziesz brać duszę moją,</strofa>
@@ -146,9 +147,9 @@ I już w gotowości stoi.</strofa>
 <strofa><wers_akap>Twardowski dosiadł biegusa,</wers_akap>/
 Probuje podskoków, zwrotów,/
 Stępa, galopuje, kłusa ---/
-Patrzy, aż i gmach już gotów.<end id='e1189064930959' /></strofa>
+Patrzy, aż i gmach już gotów.<end id="e1189064930959"/></strofa>
 
-<strofa><begin id='b1189064969438' /><motyw id='m1189064969438'>Diabeł</motyw><wers_akap>,,No! wygrałeś panie bisie,</wers_akap>/
+<strofa><begin id="b1189064969438"/><motyw id="m1189064969438">Diabeł</motyw><wers_akap>,,No! wygrałeś panie bisie,</wers_akap>/
 Lecz druga rzecz nie skończona:/
 Trzeba skąpać się w tej misie ---/
 A to jest woda święcona".</strofa>
@@ -161,9 +162,9 @@ Skąpał się biedak po szyję.</strofa>
 <strofa><wers_akap>Wyleciał potem jak z procy,</wers_akap>/
 Otrząsł się, dbrum! parsknął raźnie:/
 ,,Teraz jużeś w naszej mocy,/
-Najgorętsząm odbył łaźnię".<end id='e1189064969438' /></strofa>
+Najgorętsząm odbył łaźnię".<end id="e1189064969438"/></strofa>
 
-<strofa><begin id='b1189065034174' /><motyw id='m1189065034174'>Kobieta, Diabeł, Żona</motyw><wers_akap>,,Jeszcze jedno, będzie kwita:</wers_akap>/
+<strofa><begin id="b1189065034174"/><motyw id="m1189065034174">Kobieta, Diabeł, Żona</motyw><wers_akap>,,Jeszcze jedno, będzie kwita:</wers_akap>/
 Zaraz pęknie moc czartowska! ---/
 Patrzaj, oto jest kobiéta,/
 Moja żoneczka, Twardowska.</strofa>
@@ -186,6 +187,7 @@ Tymczasem już blisko klamki.</strofa>
 <strofa><wers_akap>Gdy mu Twardowski dokucza,</wers_akap>/
 Od drzwi, od okien odpycha,/
 Czmychnąwszy dziurką od klucza,/
-Dotąd, jak czmycha, tak czmycha.<end id='e1189065034174' /></strofa>
+Dotąd, jak czmycha, tak czmycha.<end id="e1189065034174"/></strofa>
 		
-</liryka_lp></utwor>
+</liryka_lp>
+</utwor>
