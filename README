@@ -3,3 +3,25 @@ Dependencies
  
  * `Django 1.0 <http://djangoproject.com/>`_ (application framework)
  * `lxml 2.0.0 <http://codespeak.net/lxml/>`_ (for importing books)
+ 
+ 
+Numbering
+=========
+
+Co numerujemy
+
+ 1. W utworach wierszowanych każdy wers,
+ * przy czym powinien pokazywać się co 5 numer wersu
+ * utwory wierszowane tzn. wiersze liryczne, poematy prozą, powieści poetyckie, dramaty wierszowane itp.; należą tu np. „Pieśni” Kochanowskiego, liryki Leśmiana, „Giaur” Byrona, „Pan Tadeusz” Mickiewicza, „Balladyna” Słowackiego i in.
+ * NIE numerujemy wersów utworów liczących sobie mniej niż 5 wersów 
+ * za to wskazujemy 5 i 10 wers w utworach, które z zasady liczą sobie zawsze stałą liczbę wersów – tzn. sonety)
+ 2. W utworach prozą, każdy akapit (wyróżniony wcięciem akapitowym), 
+ * przy czym każdy numer akapitu powinien się wyświetlać, ułatwiając orientację w tekście 
+ * do utworów prozą należą np. opowiadania, powieści, „Księgi narodu polskiego i pielgrzymstwa polskiego” Mickiewicza, dramaty prozą takie jak „Moralność Pani Dulskiej” Zapolskiej
+ * NIE numerujemy w dramatach: list dialogowych, nagłówków (numer aktu, sceny, osoba), «wers_cd» ani didaskaliów – tylko goły tekst.
+ * NIE numerujemy nagłówków i tytułów w opowiadaniach, nowelach, legendach i powieściach
+ *tam, gdzie akapit jest przerwany cytatem i następnie kontynuowany bez wcięcia akapitowego (akap_cd» – liczymy go razem z cytatem jako jeden numer
+ 3. W dramatach numeracja zamyka się w ramach jednego aktu
+ 4. W utworach mieszanych – pisanych na przemian wierszem i prozą (np. dramaty Shakespeare'a) numerujemy w części wierszowanej każdy wers (wyświetlając co 5), a w części prozą – kolejne akapity 
+ 5. Ustaloną tradycyjnie numerację ma jedynie „Biblia” i tych ustaleń się trzymamy 
+
