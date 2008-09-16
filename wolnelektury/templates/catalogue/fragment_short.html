@@ -15,7 +15,8 @@
         {% endif %}
     </div>
     <div class="fragment-metadata">
-        <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a>, {{ book_authors|join:","|safe }}</p>
+        <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a>, {{ book_authors|join:","|safe }}
+           <a href="{{ fragment.get_absolute_url }}">(Zobacz w utworze)</a></p>
     </div>
     <div class="clearboth"></div>
 </div>
