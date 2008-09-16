@@ -109,7 +109,7 @@ def extract_fragments(input_filename):
 
     for event, element in etree.iterparse(input_filename, events=('start', 'end')):
         # Process begin and end elements
-        if element.tag == 'span' and element.get('class', '') in ('theme-begin', 'theme-end'):
+        if element.get('class', '') in ('theme-begin', 'theme-end'):
             if not event == 'end': continue # Process elements only once, on end event
 
             # Open new fragment

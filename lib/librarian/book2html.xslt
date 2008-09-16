@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:wl="http://wolnelektury.pl/functions" >
 
-<xsl:output method="xml" encoding="utf-8" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" indent="yes" />
+<xsl:output encoding="utf-8" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" indent="yes" />
 
 
 <xsl:template match="utwor">
@@ -248,10 +248,9 @@
 <!-- Themes -->
 <xsl:template match="begin" mode="inline">
     <xsl:variable name="mnum" select="concat('m', substring(@id, 2))" />
-    <span class="theme-begin" fid="{substring(@id, 2)}">
-        <a name="m{substring(@id, 2)}" />
+    <a name="m{substring(@id, 2)}" class="theme-begin" fid="{substring(@id, 2)}">
         <xsl:value-of select="string(following::motyw[@id=$mnum]/text())" />
-    </span>
+    </a>
 </xsl:template>
 
 <xsl:template match="end" mode="inline">
