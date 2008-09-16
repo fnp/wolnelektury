@@ -132,7 +132,7 @@ def authentication_form():
 def breadcrumbs(tags, search_form=True):
     from catalogue.forms import SearchForm
     context = {'tag_list': tags}
-    if search_form:
+    if search_form and len(tags) < 6:
         context['search_form'] = SearchForm(tags=tags)
     return context
 

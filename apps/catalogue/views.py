@@ -97,6 +97,10 @@ def book_list(request):
 
 
 def tagged_object_list(request, tags=''):
+    # Prevent DoS attacks on our database
+    if len(tags.split('/')) > 6:
+        raise Http404
+        
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:

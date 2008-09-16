@@ -132,7 +132,8 @@ em {
     margin: 0;
     padding: 0;
     list-style: none;
-    display: inline;
+    display: block;
+    float: left;
 }
 
 #search-form li.category, #search-form li.book-title {
@@ -144,6 +145,7 @@ em {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
+    margin-right: 0.25em;
 }
 
 #search-form li.book-title {

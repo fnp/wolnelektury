@@ -4,6 +4,9 @@
         {% for tag in tag_list %}
         <li class="category"><a href="{% catalogue_url tag %}">{{ tag }}</a> | <a href="{% catalogue_url tag_list -tag %}">x</a></li>
         {% endfor %}
-        <li>{{ search_form.q }} {{ search_form.tags }} <input type="submit" value="Szukaj"/></li>
+        {% if search_form %}
+            <li>{{ search_form.q }} {{ search_form.tags }} <input type="submit" value="Szukaj"/></li>
+        {% endif %}
     </ol>
+    <div class="clearboth"></div>
 </form>
