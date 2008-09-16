@@ -55,7 +55,7 @@ def transform(input_filename, output_filename):
     result = doc.xslt(style)
     add_anchors(result.getroot())
     add_table_of_contents(result.getroot())
-    result.write(output_filename, xml_declaration=True, pretty_print=True, encoding='utf-8')
+    result.write(output_filename, xml_declaration=False, pretty_print=True, encoding='utf-8')
 
 
 class Fragment(object):
@@ -117,9 +117,9 @@ def extract_fragments(input_filename):
                 fragment = Fragment(id=element.get('fid'), themes=element.text)
 
                 # Append parents
-                if element.getparent().tag != 'body':
+                if element.getparent().get('id', None) != 'book-text':
                     parents = [element.getparent()]
-                    while parents[-1].getparent().tag != 'body':
+                    while parents[-1].getparent().get('id', None) != 'book-text':
                         parents.append(parents[-1].getparent())
 
                     parents.reverse()

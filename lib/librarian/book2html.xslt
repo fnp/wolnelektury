@@ -1,17 +1,18 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:wl="http://wolnelektury.pl/functions" >
 
-<xsl:output encoding="utf-8" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" indent="yes" />
+<xsl:output encoding="utf-8" indent="yes" omit-xml-declaration = "yes" />
 
 
 <xsl:template match="utwor">
-    <html>
+    <!-- <html>
         <head>
             <title>book2html output</title>
             <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
             <link rel="stylesheet" href="master.css" type="text/css" media="all" charset="utf-8" />
         </head>
-        <body>
+        <body> -->
+        <div id="book-text">
             <xsl:apply-templates select="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny" />
             <xsl:if test="count(descendant::*[self::pe or self::pa or self::pr or self::pt][not(parent::extra)])">
                 <div id="footnotes">
@@ -32,8 +33,9 @@
                     </xsl:for-each>
                 </div>
             </xsl:if>
-        </body>
-    </html>
+        </div>
+        <!-- </body>
+    </html> -->
 </xsl:template>
 
 
