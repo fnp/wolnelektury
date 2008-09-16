@@ -248,7 +248,7 @@ class Fragment(models.Model):
             return mark_safe(self._short_html)
     
     def get_absolute_url(self):
-        return '%s#m%s' % (self.book.html_file.url, self.anchor)
+        return '%s#m%s' % (reverse('book_text', kwargs={'slug': self.book.slug}), self.anchor)
     
     class Meta:
         ordering = ('book', 'anchor',)
