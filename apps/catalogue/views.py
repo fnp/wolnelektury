@@ -116,6 +116,9 @@ def tagged_object_list(request, tags=''):
     related_tags = models.Tag.objects.related_for_model(tags, model, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
 
+    if not theme_is_set:
+        model=models.Book.objects.filter(parent=None)
+    
     return newtagging_views.tagged_object_list(
         request,
         tag_model=models.Tag,
