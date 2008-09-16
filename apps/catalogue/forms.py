@@ -4,6 +4,7 @@ from slughifi import slughifi
 
 from catalogue.models import Tag
 from catalogue.fields import JQueryAutoCompleteField
+from catalogue import utils
 
 
 class SearchForm(forms.Form):
@@ -46,7 +47,7 @@ class NewSetForm(forms.Form):
         
     def save(self, user, commit=True):
         name = self.cleaned_data['name']
-        new_set = Tag(name=name, slug=slughifi(name), sort_key=slughifi(name),
+        new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=slughifi(name),
             category='set', user=user)
         
         new_set.save()
