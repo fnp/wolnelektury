@@ -249,6 +249,7 @@
 <xsl:template match="begin" mode="inline">
     <xsl:variable name="mnum" select="concat('m', substring(@id, 2))" />
     <span class="theme-begin" fid="{substring(@id, 2)}">
+        <a name="m{substring(@id, 2)}" />
         <xsl:value-of select="string(following::motyw[@id=$mnum]/text())" />
     </span>
 </xsl:template>
