@@ -137,7 +137,8 @@ class Book(models.Model):
         
         # Read book metadata
         book_info = dcparser.parse(xml_file)
-        book = Book(title=book_info.title, slug=slughifi(book_info.title))
+        book_base, book_slug = book_info.url.rsplit('/', 1)
+        book = Book(title=book_info.title, slug=book_slug)
         book.save()
         
         book_tags = []
