@@ -171,12 +171,18 @@ def add_anchor(element, number):
     element.insert(0, anchor_target)
 
 
+def any_ancestor(element, test):
+    for ancestor in element.iterancestors():
+        if test(ancestor):
+            print element, ancestor
+            return True
+    return False
+
+
 def add_anchors(root):
     counter = 1
     for element in root.iterdescendants():
-        if element.getparent().tag in 'div' and 'note' in element.getparent().get('class', ''):
-            continue
-        if element.getparent().tag in 'blockquote':
+        if any_ancestor(element, lambda e: e.get('class') in ('note', 'motto', 'motto_podpis') or e.tag == 'blockquote'):
             continue
         
         if element.tag == 'p' and 'verse' in element.get('class', ''):
