@@ -69,6 +69,12 @@ class Tag(TagBase):
             return TagBase.get_tag_list(tags)
 
 
+def book_upload_path(ext):
+    def get_dynamic_path(book, filename):
+        return 'lektura/%s.%s' % (book.slug, ext)
+    return get_dynamic_path
+
+
 class Book(models.Model):
     title = models.CharField(_('title'), max_length=120)
     slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
@@ -77,11 +83,11 @@ class Book(models.Model):
     _short_html = models.TextField(_('short HTML'), editable=False)
     
     # Formats
-    xml_file = models.FileField(_('XML file'), upload_to='books/xml', blank=True)
-    html_file = models.FileField(_('HTML file'), upload_to='books/html', blank=True)
-    pdf_file = models.FileField(_('PDF file'), upload_to='books/pdf', blank=True)
-    odt_file = models.FileField(_('ODT file'), upload_to='books/odt', blank=True)
-    txt_file = models.FileField(_('TXT file'), upload_to='books/txt', blank=True)
+    xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
+    html_file = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
+    pdf_file = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
+    odt_file = models.FileField(_('ODT file'), upload_to=book_upload_path('odt'), blank=True)
+    txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
     
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     
@@ -228,7 +234,10 @@ class Fragment(models.Model):
                 {'fragment': self, 'book': self.book, 'book_authors': book_authors}))
             self.save()
             return mark_safe(self._short_html)
-        
+    
+    def get_absolute_url(self):
+        return '%s#m%s' % (self.book.html_file.url, self.anchor)
+    
     class Meta:
         ordering = ('book', 'anchor',)
         verbose_name = _('fragment')
