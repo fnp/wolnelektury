@@ -1,6 +1,7 @@
-syntax: regexp
+syntax: glob
 
-^local_settings\.py$
-^lektury\.sqlite$
-.*\.pyc$
-.*\.DS_Store$
+local_settings.py
+lektury.sqlite
+wolnelektury/media/lektura/*
+*.pyc
+*.DS_Store
