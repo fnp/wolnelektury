@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_XI">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren XI (Fraszka cnota! --- powiedział Brutus porażony...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-xi-fraszka-cnota-powiedzial-brutus-porazony</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren XI</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188553917479"/><motyw id="m1188553917479">Cnota, Kondycja ludzka, Mądrość, Zwątpienie</motyw>Fraszka cnota<pr><slowo_obce>Fraszka cnota</slowo_obce> --- według tradycji ostatnie przed samobójczą śmiercią słowa Brutusa (85-42 p.n.e.), przywódcy rzymskich republikanów, zabójcy Cezara.</pr>! --- powiedział Brutus porażony<pe><slowo_obce>porażony</slowo_obce> --- tu: pokonany.</pe>.../
+Fraszka, kto się przypatrzy, fraszka z każdej strony/
+<begin id="b1188553969072"/><motyw id="m1188553969072">Los, Wróg</motyw>Kogo kiedy pobożność jego ratowała?/
+Kogo dobroć przypadku złego uchowała?<pe><slowo_obce>Kogo dobroć... uchowała?</slowo_obce> --- kogo od złego losu uratowała dobroć?</pe>/
+Nieznajomy wróg <pr><slowo_obce>Nieznajomy wróg</slowo_obce> --- nieprzewidziany los, fatum.</pr> jakiś miesza ludzkie rzeczy/
+Nie mając ani dobrych, ani złych na pieczy./
+Kędy jego duch wienie, żaden nie ulęże<pe><slowo_obce>nie ulęże</slowo_obce> --- nie schowa się.</pe>;/
+Praw--li, krzyw--li<pe><slowo_obce>Praw-li</slowo_obce> --- prawi, dobrzy; <slowo_obce>krzyw-li</slowo_obce> --- źli.</pe>, bez braku<pe><slowo_obce>bez braku</slowo_obce> --- bez wyjątku.</pe> każdego dosięże.<end id="e1188553969072"/>/
+<begin id="b1219185917408"/><motyw id="m1219185917408">Rozum, Sen</motyw>A my rozumy swoje przedsię udać<pr><slowo_obce>rozumy... udać</slowo_obce> --- udawać mędrców.</pr> chcemy:/
+Hardzi miedzy prostaki, że nic nie umiemy,/
+Wspinamy się do nieba, boże tajemnice/
+Upatrując; ale wzrok śmiertelnej źrzenice<pe><slowo_obce>źrzenice</slowo_obce> --- dziś popr: źrenicy.</pe>/
+Tępy na to! Sny lekkie, sny płoche nas bawią,/
+Które się nam podobno nigdy nie wyjawią.../
+Żałości! co mi czynisz? Owa już oboje/
+Mam stracić: i pociechę, i baczenie<pe><slowo_obce>baczenie</slowo_obce> --- rozumność.</pe> swoje?<end id="e1219185917408"/><end id="e1188553917479"/></strofa>
+	
+</liryka_l></utwor>

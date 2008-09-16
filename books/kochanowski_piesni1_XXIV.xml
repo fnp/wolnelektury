@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XXIV_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XXIV (Zegar, słyszę, wybija...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxiv-zegar-slysze-wybija</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XXIV</nazwa_utworu>
+
+
+
+<strofa>Zegar, słyszę, wybija,/
+Ustąp, melankolija!/
+Dosyć na dniu ma statek,/
+Dobrej myśli ostatek<pr><slowo_obce>Dobrej myśli ostatek</slowo_obce> --- wieczór i noc należą się wesołości.</pr>.</strofa>
+
+<strofa><begin id="b1188563146680"/><motyw id="m1188563146680">Bóg, Kondycja ludzka</motyw>U Boga każdy błazen,/
+Choć tu przymówki prazen<pr><slowo_obce>Choć tu przymówki prazen</slowo_obce> --- choć między ludźmi wolny (próżny) jest od zarzutu.</pr>,/
+A im się barziej sili,/
+Tym jeszcze więcej myli.</strofa>
+
+<strofa>A kto by chciał na świecie/
+Uważyć, co się plecie,/
+Dziwnie to prawdy blisko,/
+Że człek --- boże igrzysko.</strofa>
+
+<strofa>Dygnitarstwa, urzędy,/
+Wszystko to jawne błędy;/
+Bo nas równo śmierć sadza,/
+Ani pomoże władza.<end id="e1188563146680"/></strofa>
+
+<strofa><begin id="b1188563234937"/><motyw id="m1188563234937">Ojciec, Syn</motyw>A nad chłopa chciwego/
+Nie masz nic nędzniejszego;/
+Bo na drugiego zbiera,/
+A sam głodem umiera.</strofa>
+
+<strofa>Więc, by tacy synowie/
+Byli jako ojcowie,/
+Dawno by z tej przyczyny/
+Świat się jął żebraniny.</strofa>
+
+<strofa>Lecz temu Bóg poradził,/
+Bo co jeden zgromadził,/
+To drugi wnet rozciska;/
+Niech świata głód nie ściska.</strofa>
+
+<strofa>Po śmierci trudno rządzić;/
+Tyś mógł, ojcze, nie błądzić,/
+Syn tylko worki zliczy,/
+W rozumie nie dziedziczy.<end id="e1188563234937"/></strofa>
+
+<strofa>Przeto te troski płone/
+Szatanowi zlecone<pr><slowo_obce>Szatanowi zlecone</slowo_obce> --- do diabła z nimi.</pr>;/
+Niech, uprzątnąwszy głowę,/
+Mkną w skrzynię Fokarowę<pr><slowo_obce>w skrzynię Fokarowę</slowo_obce> --- zwrot niejasny, znaczy może: niech się tym kłopoczą bankierzy; Fokar bowiem znaczy tyle, co Fugger, nazwisko potężnego kupiecko-bankierskiego rodu niemieckiego, którego odgałęzieniem była znana później warszawska rodzina Fukierów.</pr>.</strofa>
+
+<strofa><begin id="b1188563275598"/><motyw id="m1188563275598">Wino</motyw>A nam wina przynoście,/
+Z wina dobra myśl roście;/
+A frasunek podlany/
+Taje by śnieg zagrzany!<end id="e1188563275598"/></strofa>
+
+</liryka_l></utwor>

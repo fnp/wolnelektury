@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kasprowicz/Z_wichr%C3%B3w_i_hal/II._Z_Tatr/Krzak_dzikiej_r%C3%B3%C5%BCy_w_Ciemnych_Smreczynach">
+<dc:creator xml:lang="pl">Kasprowicz, Jan</dc:creator>
+<dc:title xml:lang="pl">Krzak dzikiej róży w Ciemnych Smreczynach</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/z-wichrów-i-hal-z-tatr</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/z-wichrow-i-hal-z-tatr-krzak-dzikiej-rozy-w-ciemnych-smreczy</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5895</dc:source.URL>
+<dc:source xml:lang="pl">Kasprowicz, Jan (1860-1926), Krzak dzikiej róży, Towarzystwo Wydawnicze, Lwów, 1898</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kasprowicz zm. 1926</dc:rights>
+<dc:date.pd xml:lang="pl">1926</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-09-16</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_lp>
+
+<autor_utworu>Jan Kasprowicz</autor_utworu>
+
+<dzielo_nadrzedne>Z wichrów i hal, Z Tatr</dzielo_nadrzedne>
+
+<nazwa_utworu>Krzak dzikiej róży w Ciemnych Smreczynach</nazwa_utworu>
+
+<dedykacja><akap>Żonie poświęcam</akap></dedykacja>
+
+
+
+<srodtytul>I</srodtytul>
+
+
+
+<strofa><begin id="b1207434711281"/><motyw id="m1207434711281">Bezpieczeństwo, Góra, Młodość, Przemiana, Samotnik, Starość, Walka</motyw>W Ciemnosmreczyńskich skał zwaliska,/
+Gdzie pawiookie drzemią stawy,/
+<begin id="b1207433935359"/><motyw id="m1207433935359">Kwiaty, Natura, Rośliny</motyw>Krzak dzikiej róży pąs swój krwawy/
+Na plamy szarych złomów ciska.</strofa>
+
+<strofa>U stóp mu bujne rosną trawy./
+Bokiem się piętrzy turnia<pe><slowo_obce>turnia</slowo_obce> --- stromy, skalisty szczyt.</pe> śliska,/
+Kosodrzewiny wężowiska/
+Poobszywały głaźne ławy<pe><slowo_obce>głaźne ławy</slowo_obce> --- ławy utworzone z głazów.</pe>...<end id="e1207433935359"/></strofa>
+
+<strofa><begin id="b1207433956515"/><motyw id="m1207433956515">Strach</motyw>Samotny, senny, zadumany,/
+Skronie do zimnej tuli ściany,/
+Jakby się lękał tchnienia burzy.<end id="e1207433956515"/></strofa>
+
+<strofa>Cisza... O liście wiatr nie trąca,/
+<begin id="b1207434474921"/><motyw id="m1207434474921">Drzewo, Śmierć, Trup</motyw>A tylko limba próchniejąca/
+Spoczywa obok krzaku róży.<end id="e1207434474921"/></strofa>
+
+
+
+<srodtytul>II</srodtytul>
+
+
+
+<strofa><begin id="b1207434008796"/><motyw id="m1207434008796">Światło, Woda</motyw>Słońce w niebieskim lśni krysztale,/
+Światłością stały się granity,/
+Ciemnosmreczyński las spowity/
+W blado--błękitne, wiewne fale.<end id="e1207434008796"/></strofa>
+
+<strofa>Szumna siklawa<pe><slowo_obce>siklawa</slowo_obce> --- Siklawa to największy wodospad w Polsce, znajdujący się w Tatrach Wysokich; tu: każdy wodospad górski.</pe> mknie po skale,/
+Pas rozwijając srebrnolity,/
+A przez mgły idą, przez błękity,/
+Jakby wzdychania, jakby żale.<end id="e1207434049203"/></strofa>
+
+<strofa><begin id="b1207434433843"/><motyw id="m1207434433843">Kwiaty</motyw>W skrytych załomach, w cichym schronie,/
+Między graniami<pe><slowo_obce>grań</slowo_obce> --- stromy, skalisty grzbiet górski.</pe> w słońcu płonie,/
+Zatopion w szum, krzak dzikiej róży...<end id="e1207434433843"/></strofa>
+
+<strofa>Do ścian się tuli jakby we śnie,/
+<begin id="b1207434107421"/><motyw id="m1207434107421">Drzewo, Śmierć</motyw>A obok limbę toczą pleśnie,/
+Limbę, zwaloną tchnieniem burzy.<end id="e1207434107421"/></strofa>
+
+
+
+<srodtytul>III</srodtytul>
+
+
+
+<strofa><begin id="b1207434221031"/><motyw id="m1207434221031">Cierpienie, Strach</motyw>Lęki! wzdychania! rozżalenia,/
+Przenikające nieświadomy/
+Bezmiar powietrza!... Hen! na złomy,/
+Na blaski turnic, na ich cienia</strofa>
+
+<strofa><begin id="b1207434145109"/><motyw id="m1207434145109">Zwierzęta</motyw>Stado się kozic rozprzestrzenia;/
+Nadziemskich lotów ptak łakomy/
+Rozwija skrzydeł swych ogromy;/
+Świstak gdzieś świszcze spod kamienia.<end id="e1207434145109"/></strofa>
+
+<strofa><begin id="b1207434411296"/><motyw id="m1207434411296">Kwiaty</motyw>A między zielska i wykroty,/
+Jak lęk, jak żal, jak dech tęsknoty/
+Wtulił się krzak tej dzikiej róży.<end id="e1207434411296"/></strofa>
+
+<strofa>Przy nim, ofiara ach! zamieci,/
+<begin id="b1207434190828"/><motyw id="m1207434190828">Drzewo, Śmierć, Trup</motyw>Czerwonym próchnem limba świeci,/
+Na wznak rzucona świstem burzy...<end id="e1207434221031"/><end id="e1207434190828"/></strofa>
+
+
+
+<srodtytul>IV</srodtytul>
+
+
+
+<strofa>O rozżalenia! o wzdychania!/
+O tajemnicze, dziwne lęki!.../
+<begin id="b1207434296234"/><motyw id="m1207434296234">Natura</motyw>Ziół zapachniały świeże pęki/
+Od niw liptowskich, od Krywania.</strofa>
+
+<strofa>W dali echowe słychać grania:/
+Jakby nie z tego świata dźwięki/
+Płyną po rosie, co hal miękki/
+Aksamit w wilgną biel osłania.</strofa>
+
+<strofa>W seledyn stroją się niebiosy,/
+<begin id="b1207434373031"/><motyw id="m1207434373031">Kwiaty</motyw>Wilgotna biel wieczornej rosy/
+Błyszczy na kwieciu dzikiej róży.<end id="e1207434373031"/></strofa>
+
+<strofa><begin id="b1207434338218"/><motyw id="m1207434338218">Drzewo, Śmierć, Trup</motyw>A cichy powiew krople strąca/
+Na limbę, co tam próchniejąca/
+Leży, zwalona wiewem burzy...<end id="e1207434338218"/><end id="e1207434296234"/><end id="e1207434711281"/></strofa>
+
+</liryka_lp></utwor>

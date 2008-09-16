@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_IV">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren IV (Zgwałciłaś, niepobożna Śmierci, oczy moje...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-iv-zgwalcilas-niepobozna-smierci-oczy-moje</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren IV</nazwa_utworu>
+
+
+
+<strofa><begin id="b1184581441904"/><motyw id="m1184581441904">Śmierć, Dziecko</motyw>Zgwałciłaś, niepobożna Śmierci, oczy moje,/
+Żem widział umierając<pr><slowo_obce>umierając</slowo_obce> --- dziś poprawna forma: umierające.</pr> miłe dziecię swoje!/
+Widziałem, kiedyś trzęsła owoc niedordzały<pe><slowo_obce>niedordzały</slowo_obce> --- niedojrzały.</pe>,/
+A rodzicom nieszczęsnym serca się krajały./
+Nigdyć by ona była bez wielkiej żałości/
+Mojej umrzeć nie mogła, nigdy bez ciężkości<pe><slowo_obce>bez ciężkości</slowo_obce> --- tu: bez zmartwienia.</pe>/
+I serdecznego bólu, w którymkolwiek lecie/
+Mnie by smutnego była odbiegła na świecie;/
+Alem ja już z jej śmierci nigdy żałościwszy,/
+Nigdy smutniejszy nie mógł być ani teskliwszy./
+A ona, by był Bóg chciał, dłuższym wiekiem swoim/
+Siła pociech przymnożyć mogła oczom moim./
+A przynamniej tymczasem mogłem był odprawić/
+Wiek swój<pe><slowo_obce>mogłem był odprawić wiek swój</slowo_obce> --- mogłem przeżyć swoje lata.</pe> i Persefonie ostatniej się stawić<pr><slowo_obce>Persefonie ostatniej się stawić</slowo_obce> --- stanąć przed Persefoną, która jest ostatkiem wszystkiego, śmiercią.</pr>,/
+Nie uczuwszy na sercu tak wielkiej żałości,/
+Której równia nie widzę w tej tu śmiertelności<pr><slowo_obce>w tej tu śmiertelności</slowo_obce> --- w życiu skazanym na tym świecie.</pr>./
+Nie dziwuję Niobie<pe>Niobe --- postać z mitologii greckiej; matka skamieniała z rozpaczy po stracie dzieci. Niobe miała siedem córek i tyluż synów. Szczyciła się posiadaniem tak licznego potomstwa i wynosiła się ponad Latonę, matkę Apollina i Artemidy. W ten sposób obraziła pychą bogów. Apollin i Artemida na oczach Niobe zabili z łuków wszystkie jej dzieci. Rozpaczającą po ich stracie Niobe Zeus zamienił w skałę.</pe>, że na martwe ciała/
+Swoich namilszych dziatek patrząc skamieniała.<end id="e1184581441904"/></strofa>
+	
+</liryka_l></utwor>

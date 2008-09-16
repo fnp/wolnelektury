@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XXIV_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XXIV (Niezwykłym i nie leda piórem opatrzony...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-xxiv-niezwyklym-i-nie-leda-piorem-</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+  <liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XXIV</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188581344241"/><motyw id="m1188581344241">Nieśmiertelność, Poeta, Poezja</motyw>Niezwykłym i nie leda piórem opatrzony/
+Polecę precz, poeta, ze dwojej złożony/
+Natury<pr><slowo_obce>ze dwojej... natury</slowo_obce> --- ludzkiej i ptasiej, śmiertelnej i nieśmiertelnej.</pr>: ani ja już przebywać na ziemi/
+Więcej będę; a więtszy nad zazdrość, ludnemi</strofa>
+
+<strofa>Miasty wzgardzę. On, w równym szczęściu urodzony<pr><slowo_obce>w równym szczęściu</slowo_obce> --- w miernym, zrównoważonym.</pr>,/
+On ja, jako mię zowiesz, wielce ulubiony/
+Mój Myszkowski<pe>Piotr Myszkowski, biskup (1510--1591) --- Mecenas Jana Kochanowskiego.</pe>, nie umrę ani mię czarnymi/
+Styks niewesoła zamknie odnogami swymi.</strofa>
+
+<strofa>Już mi skóra chropawa padnie na goleni,/
+Już mi w ptaka białego wierzch się głowy mieni;/
+Po palcach wszędy nowe piórka się puszczają,/
+A z ramion sążeniste<pe><slowo_obce>sążeniste</slowo_obce> --- wielkie na sążeń (inaczej: siąg, a więc zasięg ramion); była to miara długości, wynosząca ok. 178 cm.</pe> skrzydła wyrastają.</strofa>
+
+<strofa>Terazże, nad Ikara prędszy przeważnego,/
+Puste brzegi nawiedzę Bosfora hucznego/
+I Syrty Cyrynejskie<pr><slowo_obce>Syrty Cyrynejskie</slowo_obce> --- zatoki na północnych brzegach Afryki.</pr>, Muzom poświęcony/
+Ptak<pr><slowo_obce>Muzom poświęcony ptak</slowo_obce> --- łabędź, który według wierzeń greckich ginąc śpiewał pieśń przedśmiertną, „śpiew łabędzi".</pr>, i pola zabiegłe za zimne Tryjony.</strofa>
+
+<strofa>O mnie Moskwa i będą wiedzieć Tatarowie,/
+I różnego mieszkańcy świata Anglikowie;/
+Mnie Niemiec i waleczny Hiszpan, mnie poznają,/
+Którzy głęboki strumień Tybrowy pijają<pr><slowo_obce>Którzy... strumień Tybrowy pijają</slowo_obce> --- Włosi.</pr>.</strofa>
+
+<strofa>Niech przy próznym pogrzebie<pr><slowo_obce>przy próżnym pogrzebie</slowo_obce> --- bez zwłok, te bowiem stały się ciałem łabędzia.</pr> żadne narzekanie,/
+Żaden lament nie będzie ani uskarżanie:/
+Świec i dzwonów zaniechaj, i mar drogo słanych,/
+I głosem żałobliwym żołtarzów<pr><slowo_obce>żołtarzów</slowo_obce> --- psalmów lub tylko pieśni kościelnych.</pr> spiewanych!<end id="e1188581344241"/></strofa>
+
+</liryka_l>
+</utwor>

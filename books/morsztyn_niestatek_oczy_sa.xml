@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <utwor>
-  <liryka_l>
-
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Niestatek_1">
 <dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
 <dc:title xml:lang="pl">Niestatek (Oczy są ogień, czoło jest zwierciadłem...)</dc:title>
@@ -13,7 +11,7 @@
 <dc:subject.period xml:lang="pl">Barok</dc:subject.period>
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Epigramat</dc:subject.genre>
-<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
 <dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/niestatek-oczy-sa-ogien-czolo-jest-zwierciadlem</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
 <dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
@@ -27,6 +25,9 @@
 <dc:language xml:lang="pl">pol</dc:language>
 </rdf:Description>
 </rdf:RDF>
+  <liryka_l>
+
+
 
 <autor_utworu>Jan Andrzej Morsztyn</autor_utworu>
 
@@ -34,14 +35,14 @@
 
 
 
-<strofa><begin id="b1189002632586"/><motyw id="m1189002632586">Kobieta, Kochanek</motyw>Oczy są ogień, czoło jest zwierciadłem,/
-<wers_wciety>Włos złotem, perłą ząb, płeć mlekiem zsiadłem,</wers_wciety>/
-Usta koralem, purpurą jagody,/
+<strofa><begin id="b1189002632586"/><motyw id="m1189002632586">Kobieta, Kochanek, Ciało</motyw>Oczy są ogień, czoło jest zwierciadłem,/
+<wers_wciety>Włos złotem, perłą ząb, płeć<pe><slowo_obce>płeć</slowo_obce> --- daw. cera.</pe> mlekiem zsiadłem,</wers_wciety>/
+Usta koralem, purpurą jagody<pe><slowo_obce>jagody</slowo_obce> --- daw. policzki.</pe>,/
 <wers_wciety>Póki mi, panno, dotrzymujesz zgody.</wers_wciety>/
-Jak się zwadzimy --- jagody są trądem,/
-<wers_wciety>Usta czeluścią, płeć blejwasem bladem,</wers_wciety>/
+Jak się zwadzimy<pe><slowo_obce>zwadzimy</slowo_obce> --- pokłócimy.</pe> --- jagody są trądem,/
+<wers_wciety>Usta czeluścią, płeć blejwasem<pe><slowo_obce>blejwas</slowo_obce> (z niem. <slowo_obce>Bleiweiβ</slowo_obce>) --- biel ołowiana; rodzaj barwnika używanego w malarstwie i rzemiosłach.</pe> bladem,</wers_wciety>/
 Ząb szkapią kością, włosy pajęczyną,/
-<wers_wciety>Czoło maglownią, a oczy perzyną.</wers_wciety><end id="e1189002632586"/></strofa>
+<wers_wciety>Czoło maglownią<pe><slowo_obce>maglownia</slowo_obce> --- wałek do maglowania bielizny.</pe>, a oczy perzyną<pe><slowo_obce>perzyna</slowo_obce> --- daw. iskra, zgliszcza, żarzący się popiół.</pe>.</wers_wciety><end id="e1189002632586"/></strofa>
 
 </liryka_l>
 </utwor>

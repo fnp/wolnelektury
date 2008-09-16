@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <utwor>
-  <liryka_l>
-
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Pszczoła_w_bursztynie">
 <dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
 <dc:title xml:lang="pl">Pszczoła w bursztynie</dc:title>
@@ -13,7 +11,7 @@
 <dc:subject.period xml:lang="pl">Barok</dc:subject.period>
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Epigramat</dc:subject.genre>
-<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
 <dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/pszczola-w-bursztynie</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
 <dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
@@ -27,6 +25,9 @@
 <dc:language xml:lang="pl">pol</dc:language>
 </rdf:Description>
 </rdf:RDF>
+  <liryka_l>
+
+
 
 <autor_utworu>Jan Andrzej Morsztyn</autor_utworu>
 
@@ -34,10 +35,10 @@
 
 
 
-<strofa><begin id="b1189002799148"/><motyw id="m1189002799148">Nieśmiertelność, Przemijanie, Śmierć, Zwierzęta</motyw>Widomie skryta w przeczystym bursztynie/
-<wers_wciety>Zda się, że w własnym miedzie pszczoła płynie.</wers_wciety>/
+<strofa><begin id="b1189002799148"/><motyw id="m1189002799148">Nieśmiertelność, Grób, Śmierć, Zwierzęta</motyw>Widomie skryta w przeczystym bursztynie/
+<wers_wciety>Zda się, że w własnym miedzie<pe><slowo_obce>miedzie</slowo_obce> --- miodzie.</pe> pszczoła płynie.</wers_wciety>/
 Wzgardzona będąc, gdy żyła pod niebem,/
-<wers_wciety>Teraz jest droższa trunną i pogrzebem.</wers_wciety>/
+<wers_wciety>Teraz jest droższa trunną i pogrzebem<pe><slowo_obce>droższa trunną...</slowo_obce> --- pszczoła sama stała się cenniejsza przez to, w jakiej została zamknięta ,,trumnie".</pe>.</wers_wciety>/
 Tak się jej wierna praca zapłaciła,/
 <wers_wciety>Snadź sama sobie tak umrzeć życzyła.</wers_wciety>/
 Niech Kleopatra nie pochlebia sobie,/

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_X">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren X (Orszulo moja wdzięczna, gdzieś mi się podziała?)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-x-orszulo-moja-wdzieczna-gdzies-mi-sie-podziala</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren X</nazwa_utworu>
+
+
+
+<strofa><begin id="b1184588558656"/><motyw id="m1184588558656">Zaświaty, Wierzenia</motyw>Orszulo moja wdzięczna, gdzieś mi się podziała?/
+W którą stronę, w którąś się krainę udała?/
+Czyś ty nad wszytki nieba<pr><slowo_obce>nad wszytki nieba</slowo_obce> --- do nieba najwyższego; wedle ówczesnych wyobrażeń wszechświat złożony był ze sfer gwiezdnych wzniesionych jedne nad drugimi.</pr> wysoko wniesiona/
+I tam w liczbę aniołków małych policzona?/
+Czyliś do raju wzięta? Czyliś na sczęśliwe/
+Wyspy<pr><slowo_obce>na sczęśliwe wyspy</slowo_obce> --- mityczne Wyspy Szczęśliwe, na których panowała wieczna radość; władcą ich był Kronos, ojciec Zeusa (Jowisza).</pr> zaprowadzona? Czy cię przez teskliwe<pe><slowo_obce>teskliwy</slowo_obce> --- markotny, smutny.</pe>/
+Charon<pe>Charon --- w mit. gr. przewoźnik dusz zmarłych przez rzekę Styks lub Acheron do Hadesu (opłatą za przeprawę jego łodzią miał być obol wkładany zmarłym do ust).</pe> jeziora wiezie i napawa zdrojem/
+Niepomnym<pr><slowo_obce>zdrojem niepomnym</slowo_obce> --- wodą z rzeki zapomnienia, Lete płynącej w Hadesie.</pr>, że ty nie wiesz nic o płaczu mojem?/
+Czy, człowieka zrzuciwszy i myśli dziewicze,/
+Wzięłaś na się postawę i piórka słowicze?/
+<begin id="b1219185599931"/><motyw id="m1219185599931">Czyściec</motyw>Czyli się w czyścu czyścisz, jesli z strony ciała/
+Jakakolwiek zmazeczka na tobie została?<end id="e1219185599931"/>/
+Czyś po śmierci tam poszła, kędyś pierwej była,/
+Niżeś się na mą ciężką żałość urodziła?/
+<begin id="b1219185565251"/><motyw id="m1219185565251">Zwątpienie</motyw>Gdzieśkolwiek jest, jesliś jest<end id="e1219185565251"/>, lituj mej żałości,/
+A nie możesz li w onej dawnej swej całości<pe><slowo_obce>w... dawnej swej całości</slowo_obce> --- w swoim dawnym ciele.</pe>,/
+<begin id="b1219185530962"/><motyw id="m1219185530962">Cień, Sen</motyw>Pociesz mię, jako możesz, a staw' się przede mną/
+Lubo snem, lubo cieniem, lub marą nikczemną<pr><slowo_obce>marą nikczemną</slowo_obce> --- znikomym przywidzeniem.</pr>!<end id="e1219185530962"/><end id="e1184588558656"/></strofa>
+
+</liryka_l></utwor>

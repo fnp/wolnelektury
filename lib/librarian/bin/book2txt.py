@@ -6,6 +6,18 @@ import optparse
 import codecs
 
 
+HEADER = u"""
+-----
+Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl/). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.
+Ten utwór nie jest chroniony prawem autorskim i znajduje się w domenie publicznej, co oznacza, że możesz go swobodnie wykorzystywać, publikować i rozpowszechniać.
+Źródło:
+-----
+
+AUTOR: 
+TYTUŁ: 
+"""
+
+
 REGEXES = [
     (r'<rdf:RDF[^>]*>(.|\n)*?</rdf:RDF>', ''),
     (r'<motyw[^>]*>(.|\n)*?</motyw>', ''),
@@ -50,7 +62,8 @@ if __name__ == '__main__':
             # print pattern, repl
             xml, n = re.subn(pattern, repl, xml)
             # print n
-            
+        
         output = codecs.open(output_filename, 'w', encoding='utf-8')
+        output.write(HEADER)
         output.write(xml)
 

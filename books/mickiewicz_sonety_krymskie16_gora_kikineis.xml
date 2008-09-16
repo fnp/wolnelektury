@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety/G%C3%B3ra_Kikineis">
+<dc:creator xml:lang="pl">Mickiewicz, Adam </dc:creator>
+<dc:title xml:lang="pl">Góra Kikineis</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/sonety-krymskie</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-gora-kikineis</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+<dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+<dc:date.pd xml:lang="pl">1855</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-01-29</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Adam Mickiewicz</autor_utworu>
+
+<dzielo_nadrzedne>Sonety krymskie</dzielo_nadrzedne>
+
+<nazwa_utworu>Góra Kikineis<pr>Góra Kikineis --- wioska Kikineis leży o 3 km na wschód od Bajdarów.</pr></nazwa_utworu>
+
+<podtytul>Mirza</podtytul>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<strofa>Spojrzyj w przepaść --- <begin id="b1196203237762"/><motyw id="m1196203237762">Morze </motyw>niebiosa leżące na dole,/
+To jest morze; --- śród fali, zda się, że ptak--góra<pa><slowo_obce>To jest morze; --- śród fali, zda się, że ptak--góra</slowo_obce> --- ptak--góra, znajomy z <tytul_dziela>Tysiąca Nocy</tytul_dziela>. Jest to sławny w mitologii perskiej, po wielokroć od poetów wschodnich opisywany, ptak Simurg. „Wielki on (powiada Firdussi w <tytul_dziela>Szah--Name</tytul_dziela>) jak góra, a mocny jak twierdza, słonia unosi w szponach swoich”, i dalej: „ujrzawszy rycerzy (Simurg) zerwał się jak chmura ze skały, na której mieszka, i ciągnął przez powietrze jak huragan, rzucając cień na wojska jeźdźców”.</pa><uwaga>Olu, urwany trochę przypis autorski i brak przypisu redaktorskiego - skan 58.</uwaga>,/
+Piorunem zastrzelony, swe masztowe pióra/
+Roztoczył kręgiem, szerszym niż tęczy półkole,</strofa>
+
+<strofa>I wyspą śniegu nakrył błękitne wód pole./
+Ta wyspa, żeglująca w otchłani --- to chmura!<pa><slowo_obce>Ta wyspa, żeglująca w otchłani --- to chmura!</slowo_obce> --- z wierzchołka gór, wyniesionych nad krainę obłoków, jeżeli spojrzymy na chmury, płynące ponad morzem, zdaje się, że leżą na wodzie w kształcie wielkich wysp białych. Ciekawy ten fenomen oglądałem z Czatyrdahu.</pa>/
+Z jéj piersi na pół świata spada noc ponura;/
+Czy widzisz płomienistą wstążkę na jéj czole?</strofa>
+
+<strofa>To jest piorun!<end id="e1196203237762"/> --- Lecz stójmy, otchłanie pod nogą,/
+<begin id="b1195862988957"/><motyw id="m1195862988957">Koń</motyw>Musim wąwóz przesadzić w całym konia pędzie;/
+Ja skaczę, ty z gotowym biczem i ostrogą,</strofa>
+
+<strofa>Gdy zniknę z oczu, patrzaj w owe skał krawędzie:/
+Jeśli tam pióro błyśnie, to mój kołpak będzie;/
+Jeżeli nie, już ludziom nie jechać tą drogą.<end id="e1195862988957"/></strofa>
+
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_l></utwor>

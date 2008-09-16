@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Rybka">
+<dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
+<dc:title xml:lang="pl">Rybka</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/ballady-i-romanse</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Kallenbach, Józef</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/ballady-i-romanse-rybka</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2222</dc:source.URL>
+<dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+<dc:date.pd xml:lang="pl">1855</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-06</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+  <liryka_lp>
+
+
+
+<autor_utworu>Adam Mickiewicz</autor_utworu>
+
+<dzielo_nadrzedne>Ballady i romanse</dzielo_nadrzedne>
+
+<nazwa_utworu>Rybka</nazwa_utworu>
+
+<nota><akap>(ze śpiewu gminnego)</akap></nota>
+
+
+
+<strofa><begin id="b1189066821708"/><motyw id="m1189066821708">Dziecko, Kochanek, Matka, Miłość, Sługa</motyw><wers_akap>Od dworu, spod lasa, z wioski,</wers_akap>/
+Smutna wybiega dziewica,/
+Rozpuściła na wiatr włoski/
+I łzami skropiła lica.</strofa>
+
+<strofa><wers_akap>Przybiega na koniec łączki,</wers_akap>/
+Gdzie w jezioro wpada rzeka;/
+Załamuje białe rączki/
+I tak żałośnie narzeka:</strofa>
+
+<strofa><begin id="b1216129360045"/><motyw id="m1216129360045">Zdrada, Rozczarowanie</motyw><wers_akap>,,O wy, co mieszkacie w wodzie,</wers_akap>/
+Siostry moje, Świtezianki,/
+Słuchajcie w ciężkiej przygodzie/
+Głosu zdradzonej kochanki.</strofa>
+
+<strofa><wers_akap>Kochałam pana tak szczerze,</wers_akap>/
+On mię przysięgał zaślubić;/
+Dziś księżnę za żonę bierze,/
+Krysię ubogą chce zgubić.<end id="e1216129360045"/></strofa>
+
+<strofa><wers_akap>Niechże sobie żyją młodzi,</wers_akap>/
+Niech się z nią obłudnik pieści,/
+Niech tylko tu nie przychodzi/
+Urągać<pe><slowo_obce>urągać</slowo_obce> --- naśmiewać się z kogoś.</pe> się z mych boleści.</strofa>
+
+<strofa><wers_akap>Dla opuszczonej kochanki</wers_akap>/
+Cóż pozostało na świecie?/
+Przyjmijcie mię, Świtezianki:/
+Lecz moje dziecię... ach dziecię!"</strofa>
+
+<strofa><wers_akap>To mówiąc rzewnie zapłacze,</wers_akap>/
+Rączkami oczy zasłoni,/
+I z brzegu do wody skacze,/
+I w bystrej nurza się toni.</strofa>
+
+<strofa><wers_akap>Wtem z lasu, gdzie się dwór bieli,</wers_akap>/
+Tysiączne świecą kagańce,/
+Zjeżdżają goście weseli,/
+Muzyka, hałas i tańce.</strofa>
+
+<strofa><wers_akap>Lecz mimo tego hałasu</wers_akap>/
+Płacz dziecięcia słychać w lesie;/
+Wierny sługa wyszedł z lasu,/
+I dziecię na ręku niesie.</strofa>
+
+<strofa><wers_akap>Ku wodzie obraca kroki,</wers_akap>/
+Gdzie łoza gęsto spleciona/
+Wzdłuż wykręconej zatoki/
+Okryła rzeki ramiona.</strofa>
+
+<strofa><wers_akap>Tam staje w ciemnym zakątku,</wers_akap>/
+Płacze i woła: --- ,,Niestety!/
+Ach! któż da piersi dzieciątku?/
+Ach! gdzie ty, Krysiu, ach, gdzie ty?"</strofa>
+
+<strofa><wers_akap>--- ,,Tu jestem, w rzece, u spodu, ---</wers_akap>/
+Cichy mu głos odpowiada ---/
+Tutaj drżę cała od chłodu,/
+A żwir mnie oczki wyjada.</strofa>
+
+<strofa><wers_akap>Przez żwir, przez ostre kamuszki</wers_akap>/
+Fale mnie gwałtowne niosą;/
+Pokarm mój koralki, muszki,/
+A zapijam zimną rosą".</strofa>
+
+<strofa><wers_akap>Lecz sługa jak na początku,</wers_akap>/
+Tak wszystko woła<pr><slowo_obce>wszystko woła</slowo_obce> (z białorus.) --- ciągle woła.</pr>: --- ,,Niestety!/
+Ach! któż da piersi dzieciątku?/
+Ach! gdzież ty, Krysiu, ach, gdzie ty?"</strofa>
+
+<strofa><begin id="b1189066938936"/><motyw id="m1189066938936">Kobieta, Woda , Zwierzęta</motyw><wers_akap>Wtem się coś z lekka potrąci</wers_akap>/
+Śród kryształowej przeźroczy,/
+Woda się z lekka zamąci,/
+Rybka nad wodę podskoczy;</strofa>
+
+<strofa><wers_akap>I jak skałka<pr><slowo_obce>skałka</slowo_obce> --- płaski kamyk nadbrzeżny, umiejętnie rzucony odbija się kilkakroć od powierzchni wody.</pr> płaskim bokiem,</wers_akap>/
+Gdy z lekkich rąk chłopca pierzchnie,/
+Tak nasza rybka podskokiem/
+Mokre całuje powierzchnie.</strofa>
+
+<strofa><wers_akap>Złotemi plamki nadobna,</wers_akap>/
+Kraśne ma po bokach piórka,/
+Główka jak naparstek drobna,/
+Oczko drobne jak paciórka.</strofa>
+
+<strofa><wers_akap>Wtem rybią łuskę odwinie,</wers_akap>/
+Spojrzy dziewicy oczyma;/
+Z głowy jasny włos wypłynie,/
+Szyjka cieniuchna się wzdyma.</strofa>
+
+<strofa><wers_akap>Na licach różana krasa,</wers_akap>/
+Piersi jak jabłuszka mleczne,/
+Rybią ma płetwę do pasa,/
+Płynie pod chrusty nadrzeczne.</strofa>
+
+<strofa><wers_akap>I dziecię bierze do ręki,</wers_akap>/
+U łona białego tuli:/
+--- ,,Luli, woła, mój maleńki,/
+Luli, mój maleńki, luli". ---</strofa>
+
+<strofa><wers_akap>Gdy dziecię płakać przestało,</wers_akap>/
+Zawiesza kosz na gałęzi,/
+I znowu ściska swe ciało,/
+I główkę nadobną zwęzi.</strofa>
+
+<strofa><wers_akap>Znowu ją łuski powleką,</wers_akap>/
+Od boków wyskoczą skrzelki,/
+Plusła, i tylko nad rzeką/
+Kipiące pękły bąbelki.<end id="e1189066938936"/></strofa>
+
+<strofa><wers_akap>Tak co wieczora, co ranka,</wers_akap>/
+Gdy sługa stanie w zakątku,/
+Wraz wypływa Świtezianka,/
+Żeby dać piersi dzieciątku.</strofa>
+
+<strofa><wers_akap>Za cóż jednego wieczora</wers_akap>/
+Nikt nie przychodzi na smugi?/
+Już zwykła przemija pora:/
+Nie widać z dziecięciem sługi.</strofa>
+
+<strofa><wers_akap>Nie może on przyjść tą stroną,</wers_akap>/
+Musi zaczekać troszeczkę,/
+Bo właśnie teraz pan z żoną/
+Poszli przechadzką nad rzeczkę.</strofa>
+
+<strofa><wers_akap>Wrócił się, czekał z daleka,</wers_akap>/
+Za gęstym usiadłszy krzakiem:/
+Lecz próżno czeka i czeka,/
+Nikt nie powracał tym szlakiem.</strofa>
+
+<strofa><wers_akap>Wstaje, i dłoń w trąbkę zwinął<pr><slowo_obce>dłoń w trąbkę zwinął</slowo_obce> --- aby lepiej dostrzec z odległości.</pr>,</wers_akap>/
+I patrzył przez palców szparę,/
+Ale i dzień już przeminął,/
+I mroki padają szare.</strofa>
+
+<strofa><wers_akap>Czekał długo po zachodzie,</wers_akap>/
+A gdy noc gwiazdy zapala,/
+Zbliża się z lekka ku wodzie/
+I śledzi oczyma z dala.</strofa>
+
+<strofa><begin id="b1189066862261"/><motyw id="m1189066862261">Czary, Kara</motyw><wers_akap>Przebóg! cudy, czy moc piekła?</wers_akap>/
+Uderza go widok nowy:/
+Gdzie pierwej rzeczułka ciekła,/
+Tam suchy piasek i rowy.</strofa>
+
+<strofa><wers_akap>Na brzegach porozrzucana</wers_akap>/
+Wala się odzież bez ładu;/
+Ani pani, ani pana,/
+Nie widać nigdzie ni śladu.</strofa>
+
+<strofa><wers_akap>Tylko z zatoki połową<pr><slowo_obce>z zatoki połową</slowo_obce> --- w połowie zatoki.</pr></wers_akap>/
+Sterczał wielki głazu kawał,/
+I dziwną kształtu budową,/
+Dwa ludzkie ciała udawał.<end id="e1189066862261"/></strofa>
+
+<strofa><wers_akap>Zdumiewa się wierny sługa,</wers_akap>/
+Rozpierzchłych myśli nie złowił;/
+Przeszła godzina, i druga,/
+Nim wreszcie słówko przemówił.</strofa>
+
+<strofa><wers_akap>,,Krysiu, o Krysiu!" zawoła:</wers_akap>/
+Echo mu ,,Krysiu" odpowie;/
+Lecz próżno patrzy dokoła,/
+Nikt nie pokazał się w rowie.</strofa>
+
+<strofa><wers_akap>Patrzy na rów i na głazy,</wers_akap>/
+Otrze pot na licu zbladłem,/
+I kiwnie głową trzy razy,/
+Jakby chciał mówić: już zgadłem.</strofa>
+
+<strofa><wers_akap>Dzieciątko na ręce bierze,</wers_akap>/
+Śmieje się dzikim uśmiechem,/
+I odmawiając pacierze,/
+Wraca do domu z pośpiechem.<end id="e1189066821708"/></strofa>
+
+</liryka_lp>
+</utwor>

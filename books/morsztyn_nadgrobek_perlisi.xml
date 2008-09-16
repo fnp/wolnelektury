@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <utwor>
-  <liryka_l>
-
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Nagrobek_Perlisi">
 <dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
 <dc:title xml:lang="pl">Nadgrobek Perlisi</dc:title>
@@ -13,7 +11,7 @@
 <dc:subject.period xml:lang="pl">Barok</dc:subject.period>
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
-<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
 <dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/nadgrobek-perlisi</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
 <dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
@@ -27,32 +25,35 @@
 <dc:language xml:lang="pl">pol</dc:language>
 </rdf:Description>
 </rdf:RDF>
+  <liryka_l>
+
+
 
 <autor_utworu>Jan Andrzej Morsztyn</autor_utworu>
 
-<nazwa_utworu>Nadgrobek Perlisi</nazwa_utworu>
+<nazwa_utworu>Nadgrobek<pe><slowo_obce>Nadgrobek</slowo_obce> --- nad grobem, nagrobek. Tytuł zapowiada, że utwór będzie epitafium.</pe> Perlisi<pe><slowo_obce>Perlisi</slowo_obce> --- tu: Perlisia, zdrobniale od Perełka, imię.</pe></nazwa_utworu>
 
 
 
-<strofa><begin id="b1189002316156"/><motyw id="m1189002316156">Zwierzęta, Żałoba</motyw>Perła tu leży, nie ta, co Szczęśliwe/
+<strofa><begin id="b1189002316156"/><motyw id="m1189002316156">Pies, Żałoba</motyw>Perła tu leży, nie ta, co Szczęśliwe/
 <wers_wciety>Wyspy więc noszą ani brzegi krzywe</wers_wciety>/
 Oryjentalskie, ani te skorupy,/
 <wers_wciety>Które bogate w sobie kryją łupy.</wers_wciety>/
-Kosztowniejsza to perła, która siła/
-<wers_wciety>Wraz w sobie skarbów bogatych nosiła:</wers_wciety>/
-Nos załamany, sierć bielsza niż wełna,/
+Kosztowniejsza to perła, która siła<pe><slowo_obce>siła</slowo_obce> --- daw. dużo, wiele, mnóstwo.</pe>/
+<wers_wciety>Wraz<pe><slowo_obce>Wraz</slowo_obce> --- naraz.</pe> w sobie skarbów bogatych nosiła:</wers_wciety>/
+Nos załamany<pe><slowo_obce>załamany</slowo_obce> --- zagięty.</pe>, sierć bielsza niż wełna,/
 <wers_wciety>Miększa niż tyrski jedwab, niż bawełna,</wers_wciety>/
 Oczy wypukłe, ogon zatoczony/
-<wers_wciety>I w kilka kręgów pięknie ucerklony,</wers_wciety>/
-Wzrost niezwyczajny, mały i sudanny,/
-<wers_wciety>Jak do rękawka potrzebują panny ---</wers_wciety>/
+<wers_wciety>I w kilka kręgów pięknie ucerklony<pe><slowo_obce>ucerklony</slowo_obce> --- zakręcony.</pe>,</wers_wciety>/
+Wzrost niezwyczajny, mały i sudanny<pe><slowo_obce>sudanny</slowo_obce> --- kształtny, zgrabny.</pe>,/
+<wers_wciety>Jak do rękawka<pe><slowo_obce>rękawek</slowo_obce> --- mufka; sens: w sam raz taki, żeby zmieścił się w mufce i grzał ręce.</pe> potrzebują panny ---</wers_wciety>/
 Owa co kiedy nadobnego było/
-<wers_wciety>W malteńskich pieskach, jej samej służyło.</wers_wciety>/
+<wers_wciety>W malteńskich pieskach<pe><slowo_obce>malteńskie pieski</slowo_obce> --- pieski z Malty, odmiana pinczerków.</pe>, jej samej służyło.</wers_wciety>/
 A przy tym dowcip i wdzięczne pieszczoty,/
-<wers_wciety>Wierność i co jest we psiech tylko cnoty,</wers_wciety>/
-I ochędóstwo niezwyczajne miała,/
+<wers_wciety>Wierność i co jest we psiech<pe><slowo_obce>we psiech</slowo_obce> --- w psach.</pe> tylko cnoty,</wers_wciety>/
+I ochędóstwo<pe><slowo_obce>ochędóstwo</slowo_obce> --- porządek, schludność.</pe> niezwyczajne miała,/
 <wers_wciety>I tym się w łasce swej paniej trzymała.</wers_wciety>/
-Pies ją niebieski żywota pozbawił,/
+Pies ją niebieski<pe><slowo_obce>Pies (...) niebieski</slowo_obce> --- gwiazda Syriusz najlepiej widzialna na niebie latem.</pe> żywota pozbawił,/
 <wers_wciety>Ale postrzegszy, co niechcący sprawił,</wers_wciety>/
 Zawył lamenty trąbą swą do góry/
 <wers_wciety>I za żałobę przywdział czarne chmury.</wers_wciety>/
@@ -61,7 +62,7 @@ Płakał jej pokój i łóżka płakały,/
 Płacze i łzami kosztownymi ani/
 <wers_wciety>Da się utulić nad nią moja pani.</wers_wciety>/
 Sam się śnieg śmieje, bo za tym pogrzebem/
-<wers_wciety>Bielszego nadeń nie masz nic pod niebem.</wers_wciety><end id="e1189002316156"/></strofa>
+<wers_wciety>Bielszego nadeń nie masz nic pod niebem<pe><slowo_obce>bo za tym pogrzebem...</slowo_obce> --- skoro Perła o nieskazitelnie białej sierści została już pogrzebana, śnieg nie ma już konkurencji.</pe>.</wers_wciety><end id="e1189002316156"/></strofa>
 
 </liryka_l>
 </utwor>

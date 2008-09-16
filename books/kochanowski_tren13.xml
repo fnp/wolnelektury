@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_XIII">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren XIII (Moja wdzięczna Orszulo, bodaj ty mnie była...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-xiii-moja-wdzieczna-orszulo-bodaj-ty-mnie-byla</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren XIII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188555858239"/><motyw id="m1188555858239">Dziecko, Śmierć, Żałoba</motyw>Moja wdzięczna Orszulo, bodaj ty mnie była/
+Albo nie umierała lub się nie rodziła!/
+Małe pociechy płacę wielkim żalem swoim/
+Za tym nieodpowiednym pożegnaniem<pr><slowo_obce>Za... nieodpowiednym pożegnaniem</slowo_obce> --- wskutek pożegnania przedwczesnego, nie w porę.</pr> twoim./
+<begin id="b1188555943170"/><motyw id="m1188555943170">Kondycja ludzka, Sen</motyw>Omyliłaś mię<pe><slowo_obce>Omyliłaś mię</slowo_obce> --- zwiodłaś mnie.</pe> jako nocny sen znikomy,/
+Który wielkością złota cieszy smysł łakomy,/
+Potym nagle uciecze, a temu na jawi/
+Z onych skarbów jeno chęć a żądzą zostawi./
+Takeś ty mnie, Orszulo droga, uczyniła:/
+Wielkieś nadzieje w moim sercu roznieciła,/
+Potymeś mię, smutnego, nagle odbieżała<pe><slowo_obce>Potymeś mię... odbieżała</slowo_obce> --- potem zostawiłaś mnie smutnego.</pe>./
+I wszytki moje z sobą pociechy zabrała./
+Wzięłaś mi, zgoła mówiąc, dusze połowicę<pe><slowo_obce>dusze połowicę</slowo_obce> --- połowę duszy.</pe>;/
+<begin id="b1206258396203"/><motyw id="m1206258396203">Grób</motyw>Ostatek przy mnie został na wieczną tęsknicę<pe><slowo_obce>Ostatek... został na wieczną tęsknicę</slowo_obce> --- resztka duszy (ta, której nie zabrała ze sobą, umierając, córka)pozostała, aby ojciec odczuwał wieczny żal i tęsknotę.</pe>.<end id="e1188555943170"/>/
+<begin id="b1188556059367"/><motyw id="m1188556059367">Córka, Ojciec</motyw>Tu mi kamień, murarze, ciosany połóżcie,/
+A na nim tę nieszczęsną pamiątkę wydróżcie<pe><slowo_obce>wydróżcie</slowo_obce> --- wydrążcie; wyrzeźbcie (napis).</pe>:/
+,,Orszula Kochanowska tu leży, kochanie/
+Ojcowe albo raczej płacz i narzekanie.<end id="e1206258396203"/>/
+Opakeś to, niebaczna śmierci, udziałała<pe><slowo_obce>Opakeś... udziałała</slowo_obce> --- uczyniłaś na opak, na odwrót, przeciwnie niż być powinno.</pe>:/
+Nie jać onej, ale mnie ona płakać miała"<pe><slowo_obce>Nie jać onej, ale mnie ona...</slowo_obce> --- nie ja po niej, ale ona po mnie płakać miała.</pe>.<end id="e1188556059367"/><end id="e1188555858239"/></strofa>
+
+</liryka_l></utwor>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety/Bakczysaraj">
+<dc:creator xml:lang="pl">Mickiewicz, Adam </dc:creator>
+<dc:title xml:lang="pl">Bakczysaraj</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/sonety-krymskie</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-bakczysaraj</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+<dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+<dc:date.pd xml:lang="pl">1855</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-01-29</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+  <liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Adam Mickiewicz</autor_utworu>
+
+<dzielo_nadrzedne>Sonety krymskie</dzielo_nadrzedne>
+
+<nazwa_utworu>Bakczysaraj<pa>W dolinie, otoczonej ze wszech stron górami, leży miasto Bakczysaraj, niegdyś stolica Girajów, chanów krymskich.</pa><pr>Bakczysaraj (Pałac ogrodów), gniazdo i skarbnica tatarszczyzny, leży w kotlinie przerżniętej rzeczki Czuruk--su (Zatęchła woda), podobny położeniem do czeskiego Karlsbadu. Na końcu głównej ulicy wznosi się fantastyczny pałac chanów, o kolorowych oknach, osłoniętych bukietami liści. W niszach ciągną się kamienne, ławy, jakby podsienia, gdzie interesanci małej rangi wyczekiwali na przejście księcia. Na parterze głównego korpusu pałacowego, w przedpokoju sali sądowej, znajduje się słynna Selsebil, czyli Fontanna łez. Składa się ona z wielu kamiennych zbiorników, piętrzących się w kształcie piramid. Urocza kaskada spada z najwyższego basenu w następny, i ściekając tak kolejno z jednego w drugi, w coraz to subtelniejszych strugach, spada wreszcie w ostatnią jakby kroplami łez. Stąd nazwa tego zabytku... Na pustym rozdrożu rozchodzących się uliczek, na nierównym placyku poza obrębem dworca, stoi wielka, okrągła, kopułą zakończona kaplica, z krzyżem w półksiężycu. To grób M. Potockiej, legendarnej branki polskiej, której poeta poświęci osobny sonet. Z jej pamięcią związane są w Bakczysaraju: kapliczka z krzyżem zatkniętym w półksiężyc, owa fontanna i mauzoleum. Zaraz za meczetem wznosi się okrągła budowa z kopułą. Tam pod grobowcami z marmuru spoczywają popioły zmarłych chanów (Rzętkowski).</pr></nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<strofa><begin id="b1196201077917"/><motyw id="m1196201077917">Ruiny</motyw>Jeszcze wielka, już pusta Girajów dziedzina<pr><slowo_obce>Girajów dziedzina</slowo_obce> --- dynastia chanów tatarskich, panująca w Krymie od r. 1479, kiedy sułtan turecki Mahomet II osadził na tronie Mengli--Gireja.</pr>!/
+Zmiatane czołem baszów ganki i przedsienia,/
+Sofy, trony potęgi, miłości schronienia,/
+Przeskakuje szarańcza, obwija gadzina.</strofa>
+
+<strofa>Skroś okien różnofarbnych powoju roślina,/
+Wdzierając się na głuche ściany i sklepienia,/
+Zajmuje dzieło ludzi w imię przyrodzenia/
+I pisze Baltasara głoskami: RUINA.<pa><slowo_obce>I pisze Baltasara głoskami »Ruina«</slowo_obce> --- „Tejże godziny wyszły palce ręki człowieczej, które pisały przeciwko świecznikowi na ścianie pałacu królewskiego, a król (Baltasar) widział część ręki, która pisała. Proroctwo Danielowe V, 5, 25, 26, 27, 28.</pa><pr>„A toć jest --- powiada dalej Biblia --- pismo, które jest rozłożone: Mene, Thekel, Ufarsin, co prorok Daniel wytłumaczył królowi: policzone, zważone, rozdarte”. Baldasar, Belsarzar, zwany także Baltasarem, ostatni król babiloński.</pr><end id="e1196201077917"/></strofa>
+
+<strofa>W środku sali wycięte z marmuru naczynie;/
+To fontanna haremu<pr><slowo_obce>harem</slowo_obce> --- wyraz arabskiego pochodzenia, oznacza u Turków i Tatarów mieszkanie niewiast, niedostępne dla nikogo obcego.</pr>, dotąd stoi cało/
+I perłowe łzy sącząc, woła przez pustynie:</strofa>
+
+<strofa><begin id="b1195861575895"/><motyw id="m1195861575895">Kondycja ludzka, Przemijanie</motyw>Gdzież jesteś, o miłości, potęgo i chwało!/
+Wy macie trwać na wieki, źródło szybko płynie,/
+O hańbo! wyście przeszły, a źródło zostało.<end id="e1195861575895"/></strofa>
+
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_l>
+</utwor>

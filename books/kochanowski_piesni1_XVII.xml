@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XVII_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XVII (Słońce już padło, ciemna noc nadchodzi...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xvii-slonce-juz-padlo-ciemna-no</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XVII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188556874268"/><motyw id="m1188556874268">Odyseusz</motyw>Słońce już padło, ciemna noc nadchodzi,/
+Nie wiem, co za głos uszu mych dochodzi;/
+Postoję mało, a dowiem się pewnie,/
+Dlaczego płacze ta pani<pr><slowo_obce>ta pani</slowo_obce> --- Penelopa. Pieśń jest poetyckim streszczeniem listu Penelopy do męża z poematu Owidiusza <tytul_dziela>Heroidy</tytul_dziela>.</pr> tak rzewnie.</strofa>
+
+<strofa><begin id="b1188556943905"/><motyw id="m1188556943905">Żona</motyw>,,Już to dziesiąte lato niebo toczy,/
+Jako me smutne zawsze płaczą oczy;/
+A dokąd mi się miły mój nie wróci,/
+Żaden na świecie troski mej nie skróci.</strofa>
+
+<strofa>Już wszyscy inszy nazad przyjechali,/
+Którzy nieszczęsnej Troje dobywali;/
+Jam tylko sama bez męża została:/
+Sroga Fortuna, ta mi go zajźrzała<pe><slowo_obce>zajźrzała</slowo_obce> --- zazdrościła</pe>.</strofa>
+
+<strofa>Bodaj był w ten czas, gdy do Sparty płynął,/
+Ten cudzołożnik<pr><slowo_obce>Ten cudzołożnik</slowo_obce> --- Parys.</pr> na morzu zaginął!/
+Uszłabych była tej ciężkiej żałości,/
+Przed którą prawie schną dziś moje kości.</strofa>
+
+<strofa><begin id="b1188557023675"/><motyw id="m1188557023675">Mąż, Zwierzęta, Żona</motyw>Jako ptak, kiedy towarzysza zbędzie,/
+Nigdy na rózdze zielonej nie siędzie<pe><slowo_obce>nie siędzie</slowo_obce> --- nie usiądzie</pe>,/
+A między bory i pustymi lasy/
+Sam jeden lata po swe wszystkie czasy:</strofa>
+
+<strofa>Tak ja, nieszczęsna, w jego niebytności/
+Muszę być zawżdy w trosce i w żałości;/
+Chronię się ludzi, sama nie wiem czemu,/
+Radam, gdy świadka nie mam płaczu swemu.<end id="e1188557023675"/></strofa>
+
+<strofa>Bałam się zawżdy, póki wojna trwała,/
+Alem wżdy o nim, nieboga, słyszała;/
+Teraz nie wiedzieć, gdzie po świecie błądzi,/
+A wierne serce zawsze gorzej sądzi.</strofa>
+
+<strofa>Troszczą mię, smutną, srogie morskie wody,/
+Troszczą mię wiatry i złe niepogody,/
+Troszczę mię wszystko, cokolwiek być może;/
+Tobie go ja tam poruczam, mój Boże!</strofa>
+
+<strofa>I to mi czasem na myśl więc przychodzi/
+(Bo łacno, gdy chce, nieszczęście ugodzi),/
+Że moje serce próżno się frasuje,/
+A on podobno gdzie indziej miłuje.</strofa>
+
+<strofa>Źleć by mi płacił moje życzliwości,/
+Bych miała doznać takiej niewdzięczności;/
+Bodajbych pierwej ostatnie skonała,/
+Niżli nowiny takiej doczekała!</strofa>
+
+<strofa>Aleć ja dufam jego szczerej cnocie,/
+Że mię nie będzie chciał mieć w tym kłopocie;/
+Będzie pamiętał i statecznie chował/
+Miłość i wiarę, którą mi ślubował.<end id="e1188556943905"/></strofa>
+
+<strofa><begin id="b1188557108299"/><motyw id="m1188557108299">Wiatr , Żywioły</motyw>Usilne wiatry, co morzem władacie,/
+Jeśli też kiedy, co to miłość, znacie,/
+Dodajcie mu tak szczęśliwego biegu,/
+Że wrychle stanie na ojczystym brzegu!"<end id="e1188557108299"/><end id="e1188556874268"/></strofa>
+
+</liryka_l></utwor>

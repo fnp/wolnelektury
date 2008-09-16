@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_II_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń II (Nie dbam, aby zimne skały...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-ii-nie-dbam-aby-zimne-skaly</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń II</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188564957758"/><motyw id="m1188564957758">Kobieta, Poeta</motyw>Nie dbam, aby zimne skały/
+Po mym graniu tańcowały;/
+Niech mię wilcy nie słuchają,/
+Lasy za mną nie biegają!</strofa>
+
+<strofa>Hanno, tobie k'woli śpiewam,/
+Skąd jeśli twą łaskę miewam,/
+Przeszedłem już Amfijona<pr><slowo_obce>Amfijona</slowo_obce> --- por. przyp. do <tytul_dziela>Pieśni</tytul_dziela> I</pr>/
+I lutnistę Arijona<pr><slowo_obce>Arijona</slowo_obce> --- Arion (II. w. p.n.e.), słynny poeta liryczny z Lesbos uchodzący za twórcę dytyrambu.</pr>.</strofa>
+
+<strofa>Mnie sama twarz nie uwiedzie/
+I choć druga na plac jedzie/
+Z herby<pr><slowo_obce>I choć druga na plac jedzie z herby</slowo_obce> --- ani też panna, która popisuje się starożytnością rodu.</pr> domów starożytnych,/
+Zacne plemię dziadów bitnych.</strofa>
+
+<strofa>Ja chcę podobać się w mowie/
+Nauczonej białejgłowie;/
+Ty mię pochwal, moja pani,/
+Nie dbam, choć kto inszy gani!</strofa>
+<end id="e1188564957758"/>
+
+<strofa>Cnocie zajźrzą jako żywo:/
+Bujne drzewo wiatrom krzywo<pr><slowo_obce>krzywo</slowo_obce> --- przeszkadza.</pr>/
+Ale ty chciej pomóc sama,/
+Nie ugrozi zazdrość nama.</strofa>
+
+<strofa><begin id="b1188565036085"/><motyw id="m1188565036085">Dom</motyw>A jeśli me niskie progi/
+Będą godne twojej nogi,/
+Nogi pięknej: nie potrzeba<pr><slowo_obce>nie potrzeba</slowo_obce> --- wystarcza, więcej nic nie trzeba.</pr>,/
+Dosięgę już głową nieba.</strofa>
+
+<strofa>Samy cię ściany wołają/
+I z dobrą myślą czekają;/
+Lipa, stojąc wpośrzód dworu,/
+Wygląda cię co raz z boru.<end id="e1188565036085"/></strofa>
+
+<strofa><begin id="b1188565117367"/><motyw id="m1188565117367">Lato, Natura, Wieś</motyw>Każ bystre konie zakładać,/
+A sama się gotuj wsiadać!/
+Teraz naweselsze czasy,/
+Zielenią się pięknie lasy.</strofa>
+
+<strofa>Łąki kwitną rozmaicie,/
+Zająca już nie znać w życie<pr><slowo_obce>Zająca już nie znać w życie</slowo_obce> --- zielone żyto jest już tak duże, iż nie widać w nim zająca.</pr>;/
+Przy nadziei oracz ścisły,/
+Że będzie miał z czym do Wisły<pr><slowo_obce>Przy nadziei oracz ścisły, że będzie miał z czym do Wisły</slowo_obce> --- rolnik przyciśnięty biedą na przednówku spodziewa się, że zboże obrodzi i że dostawi je nad Wisłę, którą spławiano je do Gdańska.</pr>.</strofa>
+
+<strofa>Stada igrają przy wodzie,/
+A sam pasterz, siedząc w chłodzie,/
+Gra w piszczałkę proste pieśni,/
+A faunowie skaczą leśni.</strofa>
+
+<strofa>Kwap' się, póki jasne zorze/
+Nie zapadną w bystre morze;/
+Po chwili ćmy czarne wstaną,/
+Co noc noszą nienaspaną.<end id="e1188565117367"/></strofa>
+
+</liryka_l></utwor>

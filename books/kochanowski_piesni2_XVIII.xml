@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XVIII_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XVIII (Ucieszna lutni, w której słodkie strony...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-xviii-ucieszna-lutni-w-ktorej-slod</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XVIII</nazwa_utworu>
+
+
+
+<strofa>Ucieszna lutni, w której słodkie strony/
+Bijąc Amfijon kamień rozproszony/
+Zwabił na kupę, a z chętnej opoki/
+<wers_wciety>Wstał mur szeroki.</wers_wciety></strofa>
+
+<strofa>Niemowna przedtym ani ulubiona,/
+Dziś na wszytek świat wielce zalecona,/
+Zaśpiewaj, co by trudnej<pr><slowo_obce>trudnej</slowo_obce> --- nieprzystępnej.</pr> Bogumiły/
+<wers_wciety>Uszy lubiły,</wers_wciety></strofa>
+
+<strofa>Która jakoby źrzóbek niełapany/
+Ani pasterską ręką ugłaskany/
+Ucieka w pole, a pędem człowieka/
+<wers_wciety>Mija z daleka.</wers_wciety></strofa>
+
+<strofa>Ty umiesz tygry, umiesz lasy wodzić/
+I bieg pochopnym strumieniom zagrodzić;/
+Tobie ustąpił stróż nieokrócony/
+<wers_wciety>Piekielnej brony,</wers_wciety></strofa>
+
+<strofa>Cerber, chocia mu wściekły łeb nakrywa/
+Sto srogich wężów, a para smrodliwa/
+I sprośna piana ciecze między zęby/
+<wers_wciety>Z trojakiej gęby.</wers_wciety></strofa>
+
+<strofa>Biedny Iksyjon, Tityjus<pr>Iksyjon, Tityjus --- Iksjon, król Lapidów, za zbrodnię świętokradztwa przywiązany był w Hadesie wężami do skrzydlatego, obracającego się z szybkością wiatru, ognistego koła i smagany rózgami; Titios, olbrzym, za znieważenie Latony rażony przez Jowisza piorunem.</pr>, zmiękczony,/
+Rozśmiał się nie chcąc. I dzban osuszony/
+Stał chwilę, za czym cieszył twój rym drogi/
+<wers_wciety>Dziewki-niebogi.<pr><slowo_obce>Dziewki</slowo_obce> --- niebogi --- Danaidy, pięćdziesiąt córek Danaosa, który zostawszy królem Argos wydał je za pięćdziesięciu synów brata Aigiptosa, ale przypomniawszy sobie, że według wyroczni zięciowie sprowadzą na dom nieszczęście, kazał córkom pozabijać mężów. Za tę zbrodnię skazane (oprócz Hipermestry, która ostrzegła swego męża Lynkeusa) na napełnianie w Hadesie beczki bez dna wodą czerpaną sitami.</pr></wers_wciety></strofa>
+
+<strofa>Niech Bogumiła srogość jadowitą/
+Złych panien słyszy i wody niesytą/
+Banię bezdenną, i pomstę nieskorą,/
+<wers_wciety>Którą źli biorą</wers_wciety></strofa>
+
+<strofa>Na drugim świecie. Bo co, prze żywego/
+Boga, już mogły uczynić gorszego?/
+Pomordowały jędze niecnotliwe/
+<wers_wciety>Męże właściwe.</wers_wciety></strofa>
+
+<strofa>Jedna z nich, wierna łożu małżeńskiemu,/
+Przeciwko ojcu krzywoprzysiężnemu/
+Zacnie skłamała: panna czci bez końca/
+<wers_wciety>Pod kręgiem słońca.</wers_wciety></strofa>
+
+<strofa>Która: ,,Wstań --- rzekła --- wstań, mężu, by wieczny/
+Sen na cię nie padł, skądeś ty bezpieczny;/
+Schroń się przed ojcem i przed bezecnymi/
+<wers_wciety>Siostrami złymi,</wers_wciety></strofa>
+
+<strofa>Które jak lwice z głodu nieznośnego/
+Wpadwszy na stado, każda morzy swego;/
+Ja, litościwsza, ani cię chcę tykać,/
+<wers_wciety>Ani zamykać.</wers_wciety></strofa>
+
+<strofa>Mnie niechaj ojciec trzyma w pęcie srogim,/
+Żem litość miała nad mężem ubogim;/
+Mnie niechaj zaśle w pogańskie narody/
+<wers_wciety>Przez morskie wody!</wers_wciety></strofa>
+
+<strofa>Idź, gdzie cię nogi i wiatry powiodą,/
+Za tą życzliwej ćmy nocnej pogodą;/
+Idź zdrów, a skargę na mogiłę smętną/
+<wers_wciety>Włóż więc pamiętną<pr><slowo_obce>pamiętną</slowo_obce> --- dowodzącą pamięci.</pr>!</wers_wciety></strofa>
+
+</liryka_l></utwor>

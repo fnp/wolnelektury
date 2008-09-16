@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_VI">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren VI (Ucieszna moja śpiewaczko! Safo słowieńska!)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-vi-ucieszna-moja-spiewaczko-safo-slowienska</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren VI</nazwa_utworu>
+
+
+
+<strofa><begin id="b1184937706292"/><motyw id="m1184937706292">Córka, Rodzina, Poeta, Poetka, Dziedzictwo</motyw>Ucieszna moja śpiewaczko! Safo słowieńska<pe>Safo, Safona --- starożytna poetka grecka, pochodziła z wyspy Lesbos i była autorką wierszy miłosnych, weselnych itp.; <slowo_obce>słowieńska</slowo_obce> --- tu: polska.</pe>!/
+Na którą nie tylko moja cząstka ziemieńska<pe><slowo_obce>cząstka ziemieńska</slowo_obce> --- ziemska posiadłość.</pe>,/
+Ale i lutnia<pe><slowo_obce>lutnia</slowo_obce> --- instrument strunowy; jeden z symbolów poetyckich (obok liry), wywodzący się z czasów, gdy poezja była nierozłącznie związana z muzyką.</pe> dziedzicznym prawem spaść miała!/
+Tęś nadzieję już po sobie okazowała,/
+Nowe piosnki sobie tworząc, nie zamykając/
+Ustek nigdy, ale cały dzień prześpiewając,/
+<begin id="b1206257705122"/><motyw id="m1206257705122">Ptak, Śpiew</motyw>Jako więc lichy słowiczek w krzaku zielonym/
+Całą noc prześpiewa gardłkiem swym ucieszonym./
+Prędkoś mi nazbyt umilkła! Nagle cię sroga/
+Śmierć spłoszyła, moja wdzięczna szczebiotko droga!<end id="e1206257705122"/>/
+Nie nasyciłaś mych uszu swymi piosnkami,/
+I tę trochę<pe><slowo_obce>tę trochę</slowo_obce> --- tych kilka, te nieliczne (które usłyszałem).</pe> teraz płacę sowicie łzami./
+A tyś ani umierając śpiewać przestała<pe><slowo_obce>tyś ani umierając śpiewać przestała</slowo_obce> --- nie przestawałaś śpiewać nawet w chwili śmierci.</pe>,/
+Lecz matkę, ucałowawszy, takeś żegnała:/
+,,Już ja tobie, moja matko, służyć nie będę/
+Ani za twym wdzięcznym stołem miejsca zasiędę;/
+Przyjdzie mi klucze położyć, samej precz jechać,/
+Domu rodziców swych miłych wiecznie zaniechać"<pr>Pieśń panny młodej przy przenosinach z domu ojcowskiego do mężowskiego. Czy Kochanowski czterowiersz ten przejął z pieśni weselnych, czy go na wzór ich ułożył, odpowiedzieć nie umiemy.</pr>./
+To i czego żal ojcowski nie da serdeczny/
+Przypominać<pe><slowo_obce>Przypominać</slowo_obce> --- tu: wspominać.</pe> więcej, był jej głos ostateczny./
+A matce, słysząc żegnanie tak żałościwe,/
+Dobre serce, że od żalu zostało żywe.<end id="e1184937706292"/></strofa>
+
+</liryka_l></utwor>

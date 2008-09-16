@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_VIII">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren VIII (Wielkieś mi uczyniła pustki w domu moim...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-viii-wielkies-mi-uczynila-pustki-w-domu-moim</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren VIII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1184937333133"/><motyw id="m1184937333133">Dom, Rodzina, Dziecko</motyw>Wielkieś mi uczyniła pustki w domu moim,/
+Moja droga Orszulo, tym zniknieniem swoim!/
+Pełno nas, a jakoby nikogo nie było:/
+Jedną maluczką duszą tak wiele ubyło./
+Tyś za wszytki mówiła, za wszytki śpiewała,/
+Wszytkiś w domu kąciki zawżdy pobiegała<pe><slowo_obce>zawżdy pobiegała</slowo_obce> --- zawsze obiegała.</pe>./
+Nie dopuściłaś nigdy matce się frasować<pe><slowo_obce>frasować się</slowo_obce> --- martwić się.</pe>/
+Ani ojcu myśleniem zbytnim głowy psować<pe><slowo_obce>myśleniem... głowy psować</slowo_obce> --- zamartwiać się.</pe>,/
+To tego, to owego wdzięcznie obłapiając/
+I onym swym uciesznym śmiechem zabawiając./
+Teraz wszytko umilkło, szczyre pustki w domu,/
+Nie masz zabawki<pe><slowo_obce>zabawka</slowo_obce> --- tu: zabawa, migraszka.</pe>, nie masz rozśmiać się nikomu./
+Z każdego kąta żałość człowieka ujmuje,/
+A serce swej pociechy darmo upatruje.<end id="e1184937333133"/></strofa>
+
+</liryka_l></utwor>

@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kasprowicz/Hymny/Dies_Irae">
+<dc:creator xml:lang="pl">Kasprowicz, Jan</dc:creator>
+<dc:title xml:lang="pl">Dies Irae</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/hymny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Hymn</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/hymny-dies-irae</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5961</dc:source.URL>
+<dc:source xml:lang="pl">Kasprowicz, Jan (1860-1926), Hymny, ”Bibljoteka Polska“, Warszawa, 1922</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kasprowicz zm. 1926</dc:rights>
+<dc:date.pd xml:lang="pl">1926</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-09-15</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+  <liryka_l>
+
+<autor_utworu>Jan Kasprowicz</autor_utworu>
+
+<dzielo_nadrzedne>Hymny</dzielo_nadrzedne>
+
+<nazwa_utworu>Dies Irae<pe><slowo_obce>Dies irae</slowo_obce> --- czyt. [dies ire], dzień gniewu, czyli Sądu Ostatecznego. Taki tytuł nosiła średniowieczna pieśń religijna, napisana przez włoskiego poetę Tomasza z Celano (1190--1260). Pieśń zwiastowała nadejście dnia kary. Dzisiaj <slowo_obce>Dies Irae</slowo_obce> wchodzi w skład <slowo_obce>Requiem</slowo_obce>, utworu wykonywanego z okazji uroczystości pogrzebowych.</pe></nazwa_utworu>
+
+
+
+<strofa><begin id="b1208024554875"/><motyw id="m1208024554875">Koniec świata</motyw>Trąba dziwny dźwięk rozsieje,/
+ogień skrzepnie, blask ściemnieje<pe><slowo_obce>ogień skrzepnie, blask ściemnieje</slowo_obce> --- nawiązanie do kolędy <tytul_dziela>Bóg się rodzi</tytul_dziela>.</pe>,/
+w proch powrócą światów dzieje./
+Z drzew wieczności spadną liście/
+na Sędziego straszne przyjście,/
+by świadectwo dać Psalmiście...</strofa>
+
+<strofa>A ty, psalmisto Pański, nastrój harfę swoją/
+już na ostatni ton!</strofa>
+
+<strofa>Grzech krwią czarną duszę plami.../
+Bez obrońcy staniem sami ---/
+któż zlituje się nad nami?</strofa>
+
+<strofa>Kyrie elejson<pe><slowo_obce>Kyrie eleison</slowo_obce> --- Panie, zmiłuj się.</pe>!.../
+O Boże! Ty bądź naszą łaską i obroną!/
+Kyrie elejson!</strofa>
+
+<strofa><begin id="b1212578892492"/><motyw id="m1212578892492">Chrystus</motyw>O Głowo, owinięta cierniową koroną,/
+gasnącym wieki wieków spojrzyj na nas okiem!/
+O spojrzyj na nas z tej głuszy,/
+która swym tchnieniem głębokiem/
+ogarnia światów bezmiary,/
+a którą ty wypełniasz swych bólów ogromem,/
+o Głowo, owinięta cierniową koroną!<end id="e1212578892492"/></strofa>
+
+<strofa><begin id="b1208024650533"/><motyw id="m1208024650533">Grzech, Kara, Kondycja ludzka, Los</motyw>Żałobna drogo nieochybnej kary,/
+broczącej we łzach i przy jęków wtórze/
+w ten pozbawiony końca/
+Pańskiego gniewu dzień,/
+w którym w pożarach spokojnego słońca/
+<begin id="b1208024781752"/><motyw id="m1208024781752">Kobieta, Kobieta "upadła", Kwiaty</motyw>szatańskim chichotem płoną/
+świeże, niezwiędłe róże/
+grzechu i winy!</strofa>
+
+<strofa>Na ich purpurze/
+osiadł posępny i siny/
+tej Konieczności cień,/
+z której przepastnej głębiny,/
+z łona, pełnego niweczących tchnień,/
+nad boskiej woli złomem/
+wyrosły zabójcze kwiaty/
+w Pańskiego gniewu nieskończony dzień...</strofa>
+
+<strofa>A Ewa jasnowłosa, matka gwiazd i ziemi,/
+upaja się ich wonią, schylona nad niemi.<end id="e1208024781752"/><end id="e1208024650533"/>/
+Kyrie elejson!/
+Przez ciebie w proch nicości wracają Twe światy,/
+o Boże miłosierny, zmiłuj się nad nami!</strofa>
+
+<strofa>Od Twego drzewa oderwany liść,/
+pędzi duch ludzki i naprzód i wstecz,/
+niby garść kurzu, porwana cyklonem:/
+przed nim i za nim płomienisty miecz/
+iskrzy się ostrzem czerwonem;/
+przed nim i za nim wstają z swych cmentarzy/
+upiory wieków, naznaczone sromem/
+winy i grzechu,/
+i klną i bluźnią i płaczą,/
+jęczą i syczą i dyszą/
+nieustającą rozpaczą,/
+od szaleńczego zamierają śmiechu/
+w ten Pańskich gniewów nieskończony dzień...</strofa>
+
+<strofa><begin id="b1212579137019"/><motyw id="m1212579137019">Chrystus</motyw>O Głowo, owinięta cierniową koroną,/
+Ty, co rozpierasz Swej męki ogromem/
+pierś Konieczności! <begin id="b1212579165428"/><motyw id="m1212579165428">Oko, Wzrok</motyw>O Głowo,/
+której źrenice, jako dwie pochodnie/
+dogasające, płoną/
+nad krętą, pustą, nieskończoną drogą/
+i gasną, gasną, a zgasnąć nie mogą,/
+zawrzyj Swe oczy nad nami,/
+nie patrz na boleść i zbrodnię!...<end id="e1212579165428"/><end id="e1212579137019"/></strofa>
+
+<strofa>Jedno jest tylko w przestworzach widomem,/
+jedno w zachodniej płomienieje zorzy/
+nad płomiennymi falami/
+wiekuistego Żywota/
+i nigdy w ciemnię grobu się nie złoży/
+i nigdy ciężkich stóp swych nie poruszy,/
+by iść i iść i iść/
+poza granice duszy ---/
+jedno jest tylko Jednem,/
+grzmiącym miedzianą surmą archanioła/
+ponad pokoleń pokoleniem biednem/
+w Pańskiego gniewu nieskończony dzień:/
+wielki, wszechmocny Ból.</strofa>
+
+<strofa>O Boże miłosierny, zmiłuj się nad nami!/
+Niech łaska Twoja winy nam odpuści.../
+A ty swe skronie tul/
+do zimnych opok, do strzaskanych grani,/
+sterczących smutnie nad gardłem czeluści,/
+i płacz...</strofa>
+
+<strofa>Surma jęczy, surma woła!/
+Giną w chmurach wirchów<pe><slowo_obce>wirchy</slowo_obce> lub: <slowo_obce>wierchy</slowo_obce> --- region. szczyty gór.</pe> czoła;/
+wałem mżących mgieł dokoła/
+nieznany oddech miota,/
+jakieś potworne, dzikie kształty tworzy/
+i po dolinach rozpędza ich stada/
+i znów je skupia w przepastnej otchłani/
+i ku niebiosom wyrzuca ich kłąb/
+i w jakieś czarne rozsnuwa całuny/
+ten niewidzialny, dreszcz budzący Tkacz/
+i ciężką, mokrą tą przędzą pokrywa/
+wszystko, co jest.../
+<wers_wciety typ="6">O biada!...</wers_wciety></strofa>
+
+<strofa>Biada!... Pierś światów przed chwilą tak żywa,/
+kona pod strasznym ciężarem.../
+Olbrzymy świerków padają strzaskane;/
+las się położył na skalisty zrąb;/
+węże kosówek, wyprężywszy ciała/
+w kurczach śmiertelnych, drętwieją bezwładne;/
+wrzos na granitów podścielisku szarem/
+spełznął na wieki;/
+kozice stromą oblepiły ścianę/
+i patrząc trwożnie w bezmierny, daleki,/
+w ten nieskończony chaos mgieł i cieni,/
+runęły w żlebny grób.../
+Rozkrzyżuj silne ramiona/
+i paznokciami wpij się w twardy głaz/
+i odwróć oczy od onej przestrzeni,/
+w której rozsadza horyzontów krańce/
+ta Głowa, w cierń uwieńczona!</strofa>
+
+<strofa><begin id="b1208022977046"/><motyw id="m1208022977046">Grzech, Kobieta, Kobieta "upadła"</motyw>Nie patrz, gdzie siadła jasnowłosa Ewa,/
+wygnana z raju na wieczysty czas,/
+mająca zbrodnię u swych białych stóp,/
+wieczyście żarta płomienistą żądzą/
+winy i grzechu...<end id="e1208022977046"/></strofa>
+
+<strofa>O duszo, pełna miłości,/
+a którą nieustanne szarpią niepokoje!/
+Pańskiego gniewu zwalił się już dzień!/
+Trombita Sądu nad tobą rozbrzmiewa/
+piorunną mocą archanielskich tchnień/
+w Pańskiego gniewu nieskończony dzień...</strofa>
+
+<strofa>Niechaj mnie sądzą,/
+niechaj mnie karzą ---/
+tak, mnie, Adama, com na barki swoje/
+zabrał z Ogrodu to nadludzkie brzemię/
+przygniatającej winy/
+i wieki wieków pnę się z tym ciężarem/
+ku wiekuistej wyży<pe><slowo_obce>wyży</slowo_obce> --- (neol.) wysokości.</pe>/
+i zbladłą nie śmiem odwrócić się twarzą/
+<begin id="b1208023046256"/><motyw id="m1208023046256">Grzech, Kobieta, Kobieta "upadła", Wąż</motyw>tam, ku tym zmrokom, co zaległy ziemię,/
+tam, ku piekielnej przełęczy,/
+na której siadła jasnowłosa Ewa/
+z padalcem grzechu u swych białych stóp...<end id="e1208023046256"/></strofa>
+
+<strofa>Miliardy krzyży,/
+opromienione okręgami tęczy,/
+z padolnych Styksów powstają głębiny/
+w Pańskiego gniewu nieskończony dzień/
+i rosną, rosną w jakiś straszny las,/
+co wierzchołkami swych bolesnych drzew/
+przeszywa wszystkie mgły/
+i wszystkie blaski, które lśnią nad mgłami,/
+wypływające z Wszechmocy Istnienia.</strofa>
+
+<strofa>O Boże miłosierny, zmiłuj się nad nami!/
+Twojego gniewu nadszedł wielki czas,/
+głos już zagrzmiał hiobowy,/
+niebios walą się posowy<pe><slowo_obce>posowa</slowo_obce> (region.) --- sufit.</pe>,/
+<begin id="b1208023136836"/><motyw id="m1208023136836">Krew, Cierpienie, Chrystus</motyw>z owiniętej cierniem Głowy/
+rzeką i morzem płynie ciepła krew,/
+w rzekę i morze krwi jej ból się zmienia...<end id="e1208023136836"/></strofa>
+
+<strofa>W świątyni bożej zamilkł święty śpiew,/
+już się zasłona rozdarła na dwoje,/
+mur się już wali i skała już pęka.../
+A krew w tych morzach, w tych czerwonych rzekach/
+ścięła się w ciemny lód...</strofa>
+
+<strofa>Kyrie elejson!</strofa>
+
+<strofa><begin id="b1208023276117"/><motyw id="m1208023276117">Ciało, Cierpienie</motyw>Ogromna, niesłychana, wiekuista męka,/
+z nieprzygasłymi oczyma,/
+milcząca, cicha i, jak zmierzch, pobladła,/
+na wklęsłych skroniach siadła,/
+na wpółotwartych powiekach/
+i na wydętych piersiach tych olbrzymich ciał,/
+które do krzyżów przybiła/
+nielitościwa Dłoń.../
+W kleszczach je swoich trzyma,/
+wpija się w kąty ust,/
+ramiona w kabłąk gnie/
+dręcząca wieki niezmożona siła/
+i, jak śmiertelny szał,/
+zastygły, skamieniały w godzinie konania,/
+swoim ciężarem się wgniata/
+w zwiędłe, z przepasek odsłonięte brzuchy/
+i biodra spłaszcza, kolana rozsuwa/
+i pokrzywione, czarne palce nóg,/
+pokrytych siecią fioletowych żył,/
+w zamarłych kurczach wydłuża.../
+O grozo świata!<end id="e1208023276117"/>/
+O widma, płynące w dal,/
+w ten przestwór ślepy i głuchy,/
+w wilgotny, mgławy pył,/
+w te ciemne wnętrza bezsłonecznych brył,/
+w potworne gmachy nadszczytowych chmur!</strofa>
+
+<strofa>Jeszcze nie zapiał kur,/
+a na piekielnej przełęczy,/
+<begin id="b1208023329433"/><motyw id="m1208023329433">Grzech, Kobieta, Kobieta "upadła", Zdrada</motyw>nad dnem Styksowych otchłani,/
+siedzi pod złomem niebotycznej grani/
+pramatka Grzechu, jasnowłosa Ewa,/
+z gadziną zdrady u swych białych stóp.<end id="e1208023329433"/></strofa>
+
+<strofa>Kyrie elejson!/
+Straszny przed nami otworzyłeś grób...</strofa>
+
+<strofa><begin id="b1208023436257"/><motyw id="m1208023436257">Błoto</motyw>I płyną, płyną te milczące krzyże/
+razem z ruchomym, wielkim trzęsawiskiem,/
+które swą rdzawą kałużą oblewa/
+męczeńskie drzewa./
+Wszystko, co było dalekim i bliskiem,/
+co opadało w niedojrzaną głąb/
+i w niedojrzane wznosiło się wyże,/
+teraz tym wielkim, grząskim bagnem płynie/
+w Pańskiego gniewu ostatniej godzinie.../
+Kyrie elejson!/
+Światy pochłania nieprzebyty muł,/
+światy, od bożych odepchnięte bram.</strofa>
+
+<strofa><begin id="b1208023572252"/><motyw id="m1208023572252">Pokusa, Wąż, Gotycyzm</motyw>A spod korzeni jadowitych ziół,/
+spod kęp sitowia i trzciny i traw,/
+z rowów, przepadlisk, wądolców<pe><slowo_obce>wądolec</slowo_obce> --- wądół; niewielka dolinka, zagłębienie terenu.</pe> i jam,/
+pokrytych opalowym szkliwem zgniłych wód,/
+zaczyna wypełzywać<pe><slowo_obce>wypełzywać</slowo_obce> --- dziś popr.: wypełzać.</pe> żmij skłębiony płód<end id="e1208023436257"/>:/
+czarne pijawki, zielone jaszczury/
+wiją się naprzód wpław/
+i oplatają kręgami śliskiemi/
+męczeńskich krzyżów smutne miliardy,/
+z bagnistej wyrosłe ziemi,/
+zapadłe w bagnisty kał.../
+I oto głowy swoje, dziwne, ludzkie głowy,/
+świecące trupim tłuszczem zżółkłych, łysych czół,/
+o szczękach, otulonych kłębem czarnych bród,/
+kładą na łonach tych pomarłych ciał.../
+I skośne, mętne oczy podnoszą do góry/
+ku ich schylonym skroniom.../
+I biodra opasawszy w lubieżnym uścisku,/
+zwilgotniałymi usty/
+szepczą im słowa rozpusty...<end id="e1208023572252"/></strofa>
+
+<strofa>O Boże miłosierny, zmiłuj się nad nami!/
+W królestwie Śmierci staje nagi szał./
+W niedoścignionym błysku/
+tchnienie żywota przenika/
+to, co od wieków zagasło.../
+W Pańskiego gniewu ostatniej godzinie/
+krew świeża płynie/
+z odrywających się od krzyżów rąk,/
+z odrywających się od krzyżów nóg.../
+I Głowa, owinięta cierniową koroną,/
+ta Głowa, która przestwór wypełnia bezbrzeżny,/
+podnosi ciężkie powieki i patrzy...</strofa>
+
+<strofa>Jakaż to orgia dzika!/
+Jakiż to chaos mąk!/
+Kyrie elejson!/
+Idą na się zmartwychwstali,/
+ogniem wojny świat się pali,/
+tłumy w krwawej brodzą fali!/
+<begin id="b1208023698424"/><motyw id="m1208023698424">Grzech, Pokusa, Kobieta, Kobieta "upadła", Mężczyzna, Upadek, Wąż</motyw>Adamie potępiony, zwróć się z strasznych dróg!/
+Zawiśnij na swym krzyżu, sterczącym w niebiosa,/
+i nie patrz, gdzie w spokoju Ewa jasnowłosa,/
+piekielny zająwszy próg,/
+do rozpustnego przytula się gada!<end id="e1208023698424"/>/
+<wers_wciety typ="6">O biada! ---</wers_wciety></strofa>
+
+<strofa><begin id="b1212582602070"/><motyw id="m1212582602070">Rozpacz, Zemsta</motyw>Idą na się zmartwychwstali ---/
+w oku mściwy skrzy się gniew,/
+rozpaczy kurcz wypręża rozchylone wargi,/
+kroplisty pot oblewa policzki zapadłe,/
+kudły włosów zlepia gęsta krew./
+Z wyciem hien, z rykiem lwów,/
+z psów szczekaniem, z rżeniem koni,/
+które cugli nie zaznały,/
+łkając, jęcząc, grożąc, klnąc,/
+poszarpane miecąc<pe><slowo_obce>miecąc</slowo_obce> --- miotając, rzucając.</pe> skargi,/
+pędzi tuman ludzkich żądz.<end id="e1212582602070"/></strofa>
+
+<strofa>Ten upada, ten się broni,/
+temu dłoń ścisnęła krtań,/
+ten się w swojego brata paznokciami wrył,/
+a tamten zęby szczerzy, poszarpawszy ramię,/
+a ten olbrzyma ręką pochwycił dwie nogi/
+i rozdarł na dwie szczypy tułów Heraklowy/
+i w ciemną rzucił bezdeń, w Sądu straszną noc.../
+<begin id="b1212583641803"/><motyw id="m1212583641803">Oko, Strach </motyw>A z parą szklanych, martwych kul,/
+rozsadzających oczodoły,/
+biegnie bez końca, bez końca, bez końca,/
+gnając przed sobą bratobójczy huf,/
+niemy i głuchy Strach...<end id="e1212583641803"/></strofa>
+
+<strofa><begin id="b1208023868198"/><motyw id="m1208023868198">Grzech, Kobieta, Mężczyzna, Upadek</motyw>Zakryj błędne źrenice, ścigany Adamie!/
+Nad tobą tam! u szczytu/
+złocistowłosa Ewa!/
+Jej grzechu ciężar zgniótł cię, stanąłeś wpół drogi/
+Zakryj błędne źrenice i na wieki wieków/
+rzuć się w przepastny żleb!...<end id="e1208023868198"/></strofa>
+
+<strofa>Enoch i Eliasz z proroczymi księgi/
+przyszli obwieścić szalonemu światu/
+Pańskiego gniewu moc./
+Lecz nim zdołali rozedrzeć swój płaszcz,/
+nim głos wytrysnął z przepełnionych łon,/
+padli w zamęcie spadających gwiazd,/
+zgaśli, jak słońca,/
+na to wzniecone w przedpoczątkach bytu,/
+ażeby zgasły... Amen.</strofa>
+
+<strofa>Szum się wielki stał dokoła,/
+kiedy surma<pe><slowo_obce>surma</slowo_obce> --- bęben używany w wojsku, pomagał komenderować i nadawać rytm marszowi oddziałów.</pe> archanioła/
+na Ostatni Sąd zawoła./
+Głos rozlega się ponury,/
+jak grzmot leci złotopióry,/
+z dolinami równa góry./
+Drży strwożona światów dusza,/
+a on głębie mórz wysusza,/
+kości wieków w grobach rusza./
+Gwiazdy z orbit wytrąciła/
+archanielskiej trąby siła,/
+już rozwarła się mogiła./
+<begin id="b1208024067585"/><motyw id="m1208024067585">Bunt , Walka</motyw>Idą na się zmartwychwstali,/
+ogniem buntu świat się pali,/
+tłumy w krwawej broczą fali./
+Z wyciem hien, z rykiem lwów,/
+łkając, jęcząc, grożąc, klnąc/
+pędzi tuman ludzkich żądz...<end id="e1208024067585"/>/
+<begin id="b1212584034957"/><motyw id="m1212584034957">Bóg</motyw>A On,/
+potężne Łono, przepotężnych łon,/
+Jasność jasności,/
+Zmrok zmroków,/
+Łaska łask i gniewów Gniew,/
+stanął nad skonem Żywota/
+i, rękę położywszy na głowie Boleści,/
+na niezmierzonej, cierniem opasanej Głowie,/
+wypełniającej wszechświatów przestwory,/
+rozpoczął Sąd./
+Biją pioruny,/
+a nad pioruny idzie Jego zew!/
+Ogrom bytu błyskawic wszystkich nie pomieści,/
+a Jego światłość złota/
+strzela nad pełnię, nad ogniste łuny/
+błyskawicowych potoków...<end id="e1212584034957"/></strofa>
+
+<strofa><begin id="b1208024157814"/><motyw id="m1208024157814">Bóg, Grzech, Kondycja ludzka</motyw>Czym jestem wobec Ciebie, ja, com z rajskich włości/
+zabrał z sobą, wygnaniec, tę łamiącą winę/
+i teraz ginę,/
+od Wschodu do Zachodu tułacz nieszczęśliwy,/
+pod nieuchronnych wyroków/
+w początkach dnia i nocy wzniesionym obuchem?!/
+Stopę Swoją złożyłeś na pokoleń grzbiecie/
+i sądzisz! Kyrie elejson!<end id="e1208024157814"/>/
+Płaczów i jęków słuchasz niesłyszącym uchem/
+i sądzisz! Kyrie elejson!/
+Na mękę wieków patrzysz niewidzącym okiem/
+i sądzisz! Kyrie elejson!/
+<begin id="b1208024238681"/><motyw id="m1208024238681">Bóg, Dziecko, Grzech, Kobieta, Narodziny</motyw>Niewiasta z rozpaczliwym krzykiem rodzi dziecię,/
+Ty jego duszę grzechu oblewasz hyzopem<pe><slowo_obce>hyzop</slowo_obce> --- roślina (półkrzew), z którego olejek używany był przez staroż. Żydów w oczyszczających obrzędach rytualnych.</pe>/
+i sądzisz! Kyrie elejson!<end id="e1208024238681"/>/
+Wichr idzie po rozdrożach westchnieniem głębokiem/
+ku Twojej wyży<pe><slowo_obce>wyż</slowo_obce> (neol.) --- wysokość.</pe>,/
+modlitwy niesie krwawe, przybite do krzyży,/
+Ty sądzisz! Kyrie elejson!/
+<begin id="b1208025125946"/><motyw id="m1208025125946">Bóg, Grzech, Kondycja ludzka, Sąd</motyw>A kto mnie stworzył na to, ażebym w tej chwili,/
+odziany potępienia podartą żałobą,/
+kawałem kiru, zdjętym z mar Twojego świata,/
+wił się i czołgał przed Tobą,/
+<begin id="b1212584513019"/><motyw id="m1212584513019">Oko</motyw>i martwym, osłupiałym z przerażenia okiem/
+strasznego Sądu wyławiał płomienne,/
+świat druzgocące rozkazy<end id="e1212584513019"/>?<end id="e1208025125946"/>/
+<begin id="b1208024982029"/><motyw id="m1208024982029">Kobieta, Kobieta "upadła", Pożądanie, Wąż</motyw>A kto mi kazał patrzeć na te czarne głazy,/
+rozpadające się na gruz pod mocą/
+Twojego gniewu, przeraźliwy Boże ---/
+na głazy te, gdzie straszny owoc Twego drzewa,/
+złocistowłosa Ewa,/
+do piersi pierś padalca tuli obnażoną?...</strofa>
+
+<strofa><begin id="b1212584563715"/><motyw id="m1212584563715">Chrystus</motyw>O Głowo, przepasana cierniową koroną!.../
+Któż się nad dolą zlituje sierocą,/
+nad moją dolą,/
+której, Boże, Twe ręce, z kajdan nie wyzwolą?<end id="e1212584563715"/>/
+Kyrie elejson!/
+Patrzaj!... Kyrie elejson!/
+Ona swą białą dłoń/
+kładzie na jego skroń ---/
+na trupią, zapadniętą, zżółkła skroń zleniałą.../
+Kyrie elejson!/
+I podczas, <begin id="b1212584613325"/><motyw id="m1212584613325">Bóg, Sąd</motyw>gdy Swe Sądy sprawiasz Ty, o morze/
+niewyczerpanych gniewów<end id="e1212584613325"/>,/
+ona swym okiem patrzy w jego oczy ---/
+omdlewającym okiem!/
+Kyrie elejson!/
+Jej nagie uda drżą,/
+palcami rozczesuje złoto swych warkoczy/
+i falą złocistych włosów/
+osłania jego nagość i pieści i pieści/
+ustami czerwonymi bladość jego ust./
+Kyrie elejson!/
+Wężowe jego kręgi opasują biodra/
+rozlubieżnionej Boleści,/
+a ona, wyprężywszy swe rozpustne ciało,/
+nienasyconym oddycha pragnieniem./
+Kyrie elejson!/
+Na łonie jej spoczęła czarna, lśniąca broda/
+rozpalonego Szatana,/
+co świat umierający okrył swoim cieniem,/
+a ona,/
+w zbrodniczych pieszczot rozdawaniu szczodra,/
+zamknęła w drżące go biodra,/
+w nabiegłe żądzą ramiona.../
+Kyrie elejson!<end id="e1208024982029"/>/
+<begin id="b1208025286818"/><motyw id="m1208025286818">Bóg, Kondycja ludzka, Sąd</motyw>Mą duszę pali wieczna, niezamknięta rana!/
+Któż mi lekarstwo poda?/
+Ojcze rozpusty! Kyrie elejson!/
+Nic, co się stało pod sklepem niebiosów<pe><slowo_obce>pod sklepem niebiosów</slowo_obce> --- pod sklepieniem niebios.</pe>,/
+bez Twej się woli nie stało!/
+Kyrie elejson!/
+O źródło zdrady! Kyrie elejson!/
+Przyczyno grzechu/
+i zemsty i rozpaczy szaleńczego śmiechu!/
+Kyrie elejson!</strofa>
+
+<strofa>Sądź, Sprawiedliwy!/
+Krusz światów posady,/
+rozżegnij wielki pożar w tlejącej iskierce,/
+na popiół spal Adama oszukane serce/
+i płacz!/
+Z nim razem płacz, kamienny, lodowaty Boże!/
+Niech Twa surma przeraźliwa/
+echem płaczu się odzywa/
+nad pokosem Twego żniwa...</strofa>
+
+<strofa>Dwujęzycznego smoka,/
+Szatana o trzech grzbietach zwalczył w wielkim boju/
+archanioł pański, Michał, i zginął w otchłani. Amen.</strofa>
+
+<strofa>I stał się koniec świata... O chwilo spokoju!/
+Zgasł płomienny głos proroka,/
+i wieczności noc głęboka/
+nieprzejrzaną jest dla oka./
+<begin id="b1212585130196"/><motyw id="m1212585130196">Buntownik, Wygnanie, Zesłaniec</motyw>A ja, wygnaniec z Raju, tułacz nieszczęśliwy,/
+zesłany, aby konać, na te ziemskie niwy,/
+i patrzeć, jak pod złomem niebotycznej grani/
+usiadła matka Śmierci, Ewa jasnowłosa,/
+pieszcząca węża Grzechu, posyłam w niebiosa,/
+opadłe nad wieczności tajemniczym mrokiem,/
+to moje wiekuiste, nieprzebrzmiałe: Amen!/
+Amen!<pe><slowo_obce>Amen!</slowo_obce> --- formuła uroczystego potwierdzenia i zgody (dosł. tak, zaiste).</pe></strofa>
+
+<strofa>W umarłych bytów milczeniu głębokiem/
+słychać jedynie Amen, moje straszne Amen.</strofa>
+
+<strofa>O Boże miłosierny, zmiłuj się nad nami!/
+Kyrie elejson!</strofa>
+
+<strofa><begin id="b1212584866718"/><motyw id="m1212584866718">Grzech</motyw>Przede mną przepaść, zrodzona przez winę,/
+przez grzech Twój, Boże!... Ginę! ginę! ginę!<end id="e1212584866718"/>/
+Amen./
+A cóż powstanie ponad nicościami,/
+gdzie ongi były światy/
+i Ja, w chęć życia bogaty,/
+a dziś w umarłych postawiony rzędzie?</strofa>
+
+<strofa>Niech nic nie będzie!/
+Amen!</strofa>
+
+<strofa>Bo cóż być może, jeślim ja zaginął?.../
+Na wszystko mrok nicości nieprzebyty spłynął ---<end id="e1212585130196"/>/
+Amen.<end id="e1208025286818"/><end id="e1208024554875"/></strofa>
+
+</liryka_l>
+</utwor>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_IX_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń IX (Chcemy sobie być radzi?)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-ix-chcemy-sobie-byc-radzi</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń IX</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188393669737"/><motyw id="m1188393669737">Muzyka, Wino</motyw><wers_wciety>Chcemy sobie być radzi?</wers_wciety>/
+<wers_wciety>Rozkaż, panie, czeladzi,</wers_wciety>/
+Niechaj na stół dobrego wina przynaszają,/
+A przy tym w złote gęśli albo w lutnią grają.<end id="e1188393669737"/></strofa>
+
+<strofa><begin id="b1188393750341"/><motyw id="m1188393750341">Bóg, Kondycja ludzka</motyw><wers_wciety>Kto tak mądry, że zgadnie,</wers_wciety>/
+<wers_wciety>Co nań jutro przypadnie?</wers_wciety>/
+Sam Bóg wie przyszłe rzeczy, a śmieje się z nieba,/
+Kiedy się człowiek troszcze więcej, niźli trzeba.</strofa>
+
+<strofa><begin id="b1188393815987"/><motyw id="m1188393815987">Los, Umiarkowanie</motyw><wers_wciety>Szafuj gotowym bacznie!</wers_wciety>/
+<wers_wciety>Ostatek, jako zacznie,</wers_wciety>/
+Tak Fortuna niech kona: raczy li łaskawie,/
+Raczy li też inaczej; my siedziem w jej prawie.</strofa>
+
+<strofa><wers_wciety>U Fortuny to snadnie,</wers_wciety>/
+<wers_wciety>Że kto stojąc upadnie;</wers_wciety>/
+A który był dopiero u niej pod nogami,/
+Patrzajże go po chwili, a on gardzi nami.</strofa>
+
+<strofa><begin id="b1219002043695"/><motyw id="m1219002043695">Rozum, Wiedza</motyw><wers_wciety>Wszystko się dziwnie plecie</wers_wciety>/
+<wers_wciety>Na tym tu biednym świecie;</wers_wciety>/
+A kto by chciał rozumem wszystkiego dochodzić,/
+I zginie, a nie będzie umiał w to ugodzić.<end id="e1219002043695"/><end id="e1188393815987"/></strofa>
+
+<strofa><wers_wciety>Prózno ma mieć na pieczy</wers_wciety>/
+<wers_wciety>Śmiertelny wieczne rzeczy;</wers_wciety>/
+Dosyć na tym, kiedy wie, że go to nie minie,/
+Co z przejźrzenia Pańskiego od wieku mu płynie.<end id="e1188393750341"/></strofa>
+
+<strofa><begin id="b1188394030056"/><motyw id="m1188394030056">Mądrość</motyw><wers_wciety>A nigdy nie zabłądzi,</wers_wciety>/
+<wers_wciety>Kto tak umysł narządzi,</wers_wciety>/
+Jakoby umiał szczęście i nieszczęście znosić,/
+Temu mężnie wytrzymać, w owym się nie wznosić.</strofa>
+
+<strofa><wers_wciety>Chwałę szczęście stateczne:</wers_wciety>/
+<wers_wciety>Nie chce li też być wieczne,</wers_wciety>/
+Spuszczę, com wziął, a w cnotę własną się ogarnę/
+I uczciwej chudoby bez posagu pragnę.<end id="e1188394030056"/></strofa>
+
+<strofa><begin id="b1188394060195"/><motyw id="m1188394060195">Bogactwo, Mądrość</motyw><wers_wciety>Nie umiem ja, gdy w żagle</wers_wciety>/
+<wers_wciety>Uderzą wiatry nagle,</wers_wciety>/
+Krzyżem padać i świętych przenajdować dary,/
+Aby łakomej wodzie tureckie towary</strofa>
+
+<strofa><wers_wciety>Bogactwa nie przydały</wers_wciety>/
+<wers_wciety>Wpadwszy gdzie między skały;</wers_wciety>/
+Tam ja bezpiecznym sercem i pełen otuchy/
+W równej fuście<pr><slowo_obce>W równej fuście</slowo_obce> --- w małej łodzi.</pr> popłynę przez morskie rozruchy.<end id="e1188394060195"/></strofa>
+
+</liryka_l></utwor>

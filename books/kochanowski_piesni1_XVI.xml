@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XVI_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XVI (Królom moc na poddane i zwierzchność dana...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xvi-krolom-moc-na-poddane-i-zwi</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XVI</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188555373668"/><motyw id="m1188555373668">Kondycja ludzka, Los, Obraz świata, Śmierć, Władza</motyw>Królom moc na poddane i zwierzchność dana,/
+A królowie zaś mają nad sobą pana,/
+Który wszystkiemu światu sam rozkazuje,/
+Na ziemi i na niebie wiecznie króluje.</strofa>
+
+<strofa>Nie wszyscy z jednym szczęściem na świat się rodzą,/
+Szerzej jedni niż drudzy swe płoty grodzą:/
+Ten ma wiele nad insze w zacności domu,/
+Ten dobrą sławą nie da naprzód nikomu,</strofa>
+
+<strofa>Za tym przyjaciół więcej. Śmierć sprawiedliwa/
+Jednakiego na wszystki prawa używa./
+Kto bądź, ten bądź, na kogo los naprzód padnie,/
+Tak pana, jako sługę poima snadnie.<end id="e1188555373668"/></strofa>
+
+<strofa><begin id="b1188555491930"/><motyw id="m1188555491930">Los, Mądrość, Śmierć</motyw>Komu zawżdy nad szyją wisi miecz goły<pr><slowo_obce>miecz goły</slowo_obce> --- słynny miecz Damoklesa.</pr>,/
+Nie uczynią mu smaku przyprawne stoły,/
+Nie pomoże mu do snu słodkie śpiewanie;/
+Sen u prostaków przyjmie i złe posłanie.</strofa>
+
+<strofa>Kto swą chciwość na tym, co dosyć, miarkuje,/
+Tego ani burzliwe morze frasuje,/
+Ani ciężki grad, ani złe urodzaje,/
+Kiedy drzewo to ciepłu, to zimnu łaje<pr><slowo_obce>Kiedy drzewo to ciepłu, to zimnu łaje</slowo_obce> --- kiedy upały lub zimna grożą płodności drzewa owocowego.</pr>.<end id="e1188555491930"/></strofa>
+
+<strofa><begin id="b1188555534008"/><motyw id="m1188555534008">Bogactwo, Kondycja ludzka</motyw>Delfinowie swe morza ścieśnione czują,/
+Bowiem już i na wodzie zamki budują:/
+Wszystka się do roboty czeladź rzuciła/
+I sam pan, bo mu się już ziemia sprzykrzyła.</strofa>
+
+<strofa>Ale bojaźń i groza pana prowadzą/
+I z wysokich pałaców pchać się nie dadzą<pr><slowo_obce>pchać się nie dadzą</slowo_obce> --- nie dają się wypchnąć.</pr>;/
+Na okręt li budowny, na koń li wsiędzie,/
+Troska w okręcie, troska za siodłem będzie.</strofa>
+
+<strofa><begin id="b1188555561609"/><motyw id="m1188555561609">Ojczyzna</motyw>A jeśli ani marmór<pe><slowo_obce>marmór</slowo_obce> --- dziś poprawna pisownia: marmur</pe> serdecznej rany,/
+Ani ulżą jedwabiem obite ściany,/
+Przecz mam zajźrzeć<pe><slowo_obce>zajźrzeć</slowo_obce> --- zazdrościć</pe> kosztownych pałaców komu,/
+A nie raczej w swym mieszkać ojczystym domu?<end id="e1188555561609"/><end id="e1188555534008"/></strofa>
+
+</liryka_l></utwor>

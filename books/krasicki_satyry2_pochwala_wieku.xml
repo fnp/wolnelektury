@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_druga/Pochwa%C5%82a_wieku">
+<dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+<dc:title xml:lang="pl">Pochwała wieku</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/satyry-czesc-druga</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sobczyński, Mariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/satyry-czesc-druga-pochwala-wieku</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+<dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław, 1958</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+<dc:date.pd xml:lang="pl">1801</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-02-12</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Ignacy Krasicki</autor_utworu>
+
+<dzielo_nadrzedne>Satyry, Część druga</dzielo_nadrzedne>
+
+<nazwa_utworu>Pochwała wieku</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<strofa><begin id="b1201606003914"/><motyw id="m1201606003914">Czas, Przemiana, Rozum, Ojciec, Syn</motyw><wers_akap>,,Lepiej teraz niż przedtem”. ,,Dlaczego?” ,,Bo lepiej.</wers_akap>/
+To dowód oczywisty. Świat się coraz krzepi./
+Nabrał z laty rozumu, a im bardziej stary,/
+Tym dzielniej zeszły<pr><slowo_obce>Tym dzielniej zeszły</slowo_obce> --- tym radykalniej zniknęły.</pr>, co go szpeciły, przywary”./
+,,Ale dlaczego lepiej?” ,,Dlatego że byli/
+Lepsze syny od ojców, co nas poprawili”./
+,,Więc zmyślał ów Horacy<pr><slowo_obce>Więc zmyślał ów Horacy</slowo_obce> --- zapewne uwaga Krasickiego odnosi się do ww. 45--48 p. 6 z III ks. <tytul_dziela>Pieśni</tytul_dziela> Horacego: ,,Z upłynnym czasem wszystko na dół leci: / Gorsi po dziadach nastali rodzice, / Rodziców jeszcze przepisują dzieci, / A nasi, nie wiem, czym będą dziedzice." (Przekład A. Naruszewicza, [w książce:] A. Naruszewicz, <tytul_dziela>Dzieła</tytul_dziela>, Warszawa 1778, t. IV, s. 87).</pr>?” ,,Zmyślał”. ,,Toć i wierzę”./
+,,Człowiek przedtem był prosty i dziki jak zwierzę,/
+Dziś jest istność rozumna, ale jak rozumna!/
+Z szkół, z obozu, z warsztatu, nawet i od gumna/
+Wszystko tchnie wytwornością, wszystko się zwiększyło<pr><slowo_obce>zwiększyć się</slowo_obce> --- wydoskonalić się.</pr>.<end id="e1201606003914"/>/
+Zgoła zawżdy dziś lepiej, niźli wczoraj było”./
+<begin id="b1194353973168"/><motyw id="m1194353973168">Lato, Zima</motyw>,,Ale przecież o świecie zła się wieść roznosi,/
+Powiadają, że się coś popsuło u osi<pr><slowo_obce>się coś popsuło u osi</slowo_obce> --- współczesne kalendarze (por. satyrę <tytul_dziela>Żona modna</tytul_dziela>.) zamieszczały przy bałamutnych przepowiedniach pogody obszerne komentarze na temat rzekomego odchylenia się osi ziemskiej, co miało być przyczyną zaburzeń atmosferycznych, m. in. i w Polsce.</pr>/
+Stąd już lato nie lato, a zima nie zima”.,<end id="e1194353973168"/>/
+,,Bajki, powieści godne mamek lub pielgrzyma,/
+Nawet i kalendarza; ale to ogólnie./
+Chcesz, abym lepszość naszą dowodził szczególnie?”/
+,,Zgoda”. ,,Więc... ale skądże wywodzić pochwały,/
+Na przykład nasze pisma --- to oryginały./
+I choć czasem zdaje się, iż dawnych skradamy,/
+Gdy im czyniem ten honor, wtenczas poprawiamy./
+<begin id="b1194354061436"/><motyw id="m1194354061436">Sen</motyw>Drzemał Homer niekiedy<pr><slowo_obce>Drzemał Homer niekiedy</slowo_obce> --- aluzja do słów Horacego z <tytul_dziela>Listu do Pizonów</tytul_dziela> (w. 359): Czasem i Homerowi zdrzymać się przychodzi, / Lecz w długiej dzieła pracy zasnąć się też godzi. --- tzn., że nawet największym talentom zdarzają się momenty zniżenia lotu. (Q. Horatius Flaccus, <tytul_dziela>De arte poetica </tytul_dziela>[...] przekład Onufrego Korytyńskiego, Warszawa 1770, s. 19).</pr> --- fraszka zadrzemanie,/
+My nie drzemiem, ale śpiem, lecz to nasze spanie/
+Roi sny, których różność, wdzięki i wspaniałość/
+W samej treści zawiera wszystką doskonałość.<end id="e1194354061436"/>/
+<begin id="b1194610545338"/><motyw id="m1194610545338">Nauka, Rozum</motyw>Żółwim krokiem szły przedtem nauki kłopotne./
+My, orły wybujałe, orły bystrolotne,/
+Wzbiwszy pod same nieba rozpostarte skrzydła,/
+Z góry patrząc widziemy treści i prawidła./
+Darmo się matka rzeczy<pr><slowo_obce>matka rzeczy</slowo_obce> --- natura.</pr> z swym działaniem kryła ---/
+Bystrość nasza zakąty ciemne wyśledziła;/
+Darmo wyrok najwyższy granice oznaczył ---/
+Przeszedł człek, zdarł zasłonę i jawnie obaczył,/
+Co było wiekom tajno. Więc sędzie dobrani,/
+Każdy, co jest, wychwala, a co było, gani,/
+Przewraca dawnych mozół działania na nice,/
+A rozpostarłszy bystre pojęcia<pr><slowo_obce>pojęcie</slowo_obce> --- pojmowanie, wiedza.</pr> granice,/
+W taki się lot zapuszcza, iż można by myślić,/
+Jak co lepiej wynaleźć alboli określić.<end id="e1194610545338"/>/
+Ten jest odgłos zbyt częsty, ale czyli bacznych<pr><slowo_obce>baczny</slowo_obce> --- rozsądny, mądry.</pr>,/
+<begin id="b1201606573115"/><motyw id="m1201606573115">Mądrość</motyw>Czy prawdy głosicielów, czy błędów dziwacznych,/
+Niech ci sądzą, co myślą, a myślą, jak trzeba./
+Pamięć, bystrość, pojęcie są to dary nieba./
+Ale ten skarb dzierżących nie zawżdy bogaci,/
+Użycie go powiększa, użycie go traci.<end id="e1201606573115"/>/
+Czytał Szymon, wie, co, jak i kiedy się działo./
+Lecz na tym zasadzony zbyt dumnie, zbyt śmiało,/
+Czyli się w piśmie uda do prozy, czy wierszy,/
+Za siebie tylko patrzy i mniema, że pierwszy./
+Stąd wyroki i w stylu, i w zdaniach opacznych,/
+Stąd nowe wynalazki systemów dziwacznych,/
+Stąd starymi pogardza, innych mało ceni ---/
+<begin id="b1194610367755"/><motyw id="m1194610367755">Nauka, Praca</motyw>Nie tak czynili, czynią prawdziwie uczeni./
+<wers_akap>Wiek mało dla nauki, pomału przychodzi,</wers_akap>/
+Długo trzeba pracować, nim prace nadgrodzi,/
+Ale też, choć niespieszna, obfita nadgroda./
+<begin id="b1201606712220"/><motyw id="m1201606712220">Czas, Pozory, Przemijanie</motyw>Co powie prawy mędrzec, wiek wiekowi poda.<end id="e1194610367755"/>/
+A te nasze światełka, co błyszczą dość jasno,/
+Jak się w punkcie<pr><slowo_obce>w punkcie</slowo_obce> --- natychmiast.</pr> rozświecą, tak w punkcie i zgasną.<end id="e1201606712220"/>/
+<begin id="b1194610431195"/><motyw id="m1194610431195">Mędrzec</motyw><wers_akap>Tłum mędrców; przedtem ledwo znaleźć było w tłumie<pr><slowo_obce>przedtem ledwo znaleźć było w tłumie</slowo_obce> --- domyślnie: mędrca.</pr>.</wers_akap><end id="e1194610431195"/>/
+<begin id="b1194610407404"/><motyw id="m1194610407404">Nauka</motyw>Czyż się nowe przymioty odkryły w rozumie?/
+Czyli wspacznym obrotem<pr><slowo_obce>wspacznym obrotem</slowo_obce> --- przez wsteczny obrót ziemi i czasu (pisze o tym Platon w <tytul_dziela>Kritonie</tytul_dziela>).</pr> wrócił się wiek złoty<pr><slowo_obce>wiek złoty</slowo_obce> --- złoty wiek rozkwitu nauk i sztuk.</pr>?<end id="e1194610407404"/>/
+Czy świat dzielniejszą zyskał istność i obroty?/
+Też same, co i pierwej, jest tak, jak i było,/
+Lecz co się wszerz zyskało, wzgłąbsz<pr><slowo_obce>wzgłąbsz</slowo_obce> --- w głąb.</pr> się utraciło./
+<begin id="b1194610469319"/><motyw id="m1194610469319">Handel, Nauka</motyw>Poszła w handel nauka, kramnicą drukarnie,/
+<begin id="b1201607171102"/><motyw id="m1201607171102">Literat, Upadek</motyw>Głód kładzie pióro w rękę, zysk do pisma garnie.<end id="e1194610469319"/>/
+Mają dowcip na zbyciu w ten jarmark otwarty,/
+Jak kramarze na łokcie<pr><slowo_obce>łokieć</slowo_obce> --- dawna miara długości.</pr>, autory na karty<pr><slowo_obce>Jak kramarze na łokieć, autory na karty</slowo_obce> --- na czasy stanisławowskie przypada w Polsce zjawisko występowania zawodowych literatów, usiłujących żyć z pióra.</pr>,/
+A że <begin id="b1201607287275"/><motyw id="m1201607287275">Handel</motyw>w handlu rzemiosło wkrada się łotrostwo,<end id="e1201607287275"/>/
+Stąd owe, co nas gnębi, ksiąg rozlicznych mnóstwo,/
+W których rozum, naukę, dowcip, wynalazki/
+Zastępuje druk, papier, pozłota, obrazki./
+Stąd, niby gazą kryte, wyrazy wszeteczne,/
+Stąd fałsze modnym tonem, stąd bluźnierstwa grzeczne,/
+Stąd <begin id="b1201607322211"/><motyw id="m1201607322211">Nuda</motyw>owe nudne Muzy, a niezmiernie płodne<end id="e1201607322211"/>,/
+Stąd zbiory anekdotów czytania niegodne,/
+Stąd --- pod nazwiskiem żartów dowcipnych --- potwarze,/
+Bajki w rząd abecadła, stąd dykcyjonarze<pr><slowo_obce>Bajki w rząd abecadła... dykcjonarze</slowo_obce> --- słowniki encyklopedyczne bardzo rozpowszechnione w XVIII w. Znane są z tych czasów dykcjonarze filozoficzne, mitologiczne, starożytności, przyrodnicze, historyczno--geograficzne i inne. Zapewne w rząd bajek zalicza Krasicki arcybałamutne <tytul_dziela>Nowe Ateny</tytul_dziela> Benedykta Chmielowskiego.</pr>,/
+Zgoła pisma niewarte nawet ksiąg nazwiska<pr><slowo_obce>pisma niewarte nawet ksiąg nazwiska</slowo_obce> --- w wersach 72--81 Krasicki krytykuje współczesne mu niepokojące zjawisko. O niezmiernym rozprzestrzenianiu się w druku miernot literackich pisał również Węgierski w dedykacji <tytul_dziela>Organów</tytul_dziela> Krasickiemu: ,,Zbytek, który nas zgubił, do wierszy się nawet rozciąga; nie masz aż do ostatniego żaczka, który by ich nie robił, pewien zakon najbardziej w nich jednak przesadza i sądząc z pozoru, zdaje się, że wszystkie członki jego na złych się poetów poświęciły. Nie masz święta, uroczystości, wesela, urodzin, pogrzebu, stypy, żebyśmy na nie z magazynu tego wierszy nie mieli; z czasem na wszystkie dni roku dostaniemy. Szczęśliwy WKsMość jesteś, że od tych parnaskich bredni wolne masz uszy; my nimi zupełnie przywaleni jesteśmy. To szaleństwo już wszystkie ogarnęło stany, Poważne nawet piszą wiersze kasztelany. U których, jako dawna przypowieść nam niesła, Ani głowa do rady, ani tył do krzesła”. (T. K. Węgierski, <tytul_dziela>Organy</tytul_dziela>, oprac. J. W. Gomulicki, Warszawa 1956, s. 8).</pr>.<end id="e1201607171102"/>/
+O Fauście<pr>Faust --- Johann Faust (lub Fust, zm. 1466), mieszczanin z Moguncji uważany wraz z Gutenbergiem za współwynalazcę sztuki drukarskiej.</pr>! z twojej łaski druk głupstwa wyciska,/
+Dałeś łatwość naukom, dowcipowi cechę<pr><slowo_obce>Dałeś... dowcipowi cechę</slowo_obce> --- stempel, powagę, którą nadaje druk.</pr>,/
+Ma świat, prawda, z przemysłu twojego pociechę,/
+Lecz z tych skarbnic mądrości nieprzerachowanych/
+Za jedno dobre pismo --- sto głupstw drukowanych./
+<begin id="b1201607867876"/><motyw id="m1201607867876">Zabobony</motyw><wers_akap>Bajkami się lud bawi, drukarnia bogaci.</wers_akap>/
+Nim diabła Bohomolec dał w swojej postaci<pr><slowo_obce>diabła Bohomolec dał w swojej postaci</slowo_obce> --- mowa o dziele Jana Bohomolca <tytul_dziela>Diabeł w swojej postaci z okazji pytania, jeśli są upiory</tytul_dziela> (Warszawa 1772), zwalczającym powszechne jeszcze wówczas przesądy i zabobony.</pr>,/
+Wieleż książek, powieści o strasznych poczwarach,/
+O wróżkach, zabobonach, upierach i czarach/
+Trwożyły nasze ojce. <begin id="b1201608068299"/><motyw id="m1201608068299">Czary, Przemoc, Władza</motyw>Ująwszy gromnice/
+Palił ławnik z burmistrzem w rynku czarownice,/
+Chcąc jednak pierwej dociec zupełnej pewności,/
+Pławił ją na powrozie w stawie podstarości<pr>Zabobonność i wiara w czary była nagminnym zjawiskiem nie tylko wśród ciemnej szlachty (bo o niej pisze Krasicki), lecz również wśród magnaterii. Podejrzani o czary, sądzeni przez sądy grodzkie, które w większości województw składały się z sędziego głównego, zwanego podstarostą, sędziego grodzkiego i pisarza, poddawani byli zazwyczaj torturom, którym asystował wójt (burmistrz) z jednym lub dwoma ławnikami i pisarz miejski. Jedną z najpospolitszych praktyk było tzw. pławienie: podejrzane o czary kobiety wrzucano do wody wierząc, że niewinnie oskarżona tonie, czarownica natomiast utrzymuje się na powierzchni. O opętanych wspomina Stanisław Wodzicki: ,,Za moich czasów u dominikanów w Krakowie, w kaplicy św. Jacka, spuszczano chorągiew tego patrona na klęczących opętanych, a ci wijąc się po ziemi, okropne wycia wydawali. Pokazywano mi także wytłuczone szyby w kościele, którymi zwyciężony egzorcyzmem diabeł wylatywał, opętany zaś nic na tym nie tracił, ponieważ wedle ich rozumienia nie jeden czart siedział w ciele komornem i każdy innym przemawiał językiem i inne nosił nazwisko”. (St. Wodzicki, <tytul_dziela>Wspomnienia przeszłości</tytul_dziela>, Kraków 1873, s. 121--122). Oświecenie wydało czarom stanowczą wojnę. Sejm r. 1776 zakazał tortur i kary śmierci za czary; mimo tej uchwały wypadki pławienia i palenia rzekomych czarownic zdarzały się jeszcze do końca XVIII w.</pr>.<end id="e1201608068299"/>./
+Zdejmowały uroki stare baby dziecku,/
+Skakał na pustej baszcie diaboł po niemiecku<pr><slowo_obce>diaboł po niemiecku</slowo_obce> --- diabła wyobrażano sobie często w obcisłym stroju niemieckim.</pr>,/
+Krzewiły się kołtuny<pr><slowo_obce>kołtun</slowo_obce> --- choroba powstała na skutek niechlujstwa, wywołująca skręcenie i zlepianie się włosów; kołtun przypisywano urokom.</pr> czarami nadane,/
+Gadały po francusku baby opętane,/
+A czkając po kruczgankach<pe><slowo_obce>kruczgankach</slowo_obce> --- krużganek to galeria okalająca wewnętrzny dziedziniec, często na każdym z pięter budynku.</pe>  na miejscach cudownych,/
+Nabawiały patrzących strachów niewymownych./
+<wers_akap>Co zbytnim dowierzaniem upłodził wiek przeszły,</wers_akap>/
+W teraźniejszym podlące te przywary zeszły<end id="e1201607867876"/>,/
+Ale też zbyt porywczym zaciekłszy się<pr><slowo_obce>zaciec się</slowo_obce> --- zapędzić się, zagalopować.</pr> pędem,/
+Często, gdy błąd poprawia, śmie prawdę zwać błędem./
+<begin id="b1201608141697"/><motyw id="m1201608141697">Umiarkowanie</motyw>Roztropną zdania nasze szalą trzeba mierzyć,/
+Źle jest nadto dowierzać, gorzej nic nie wierzyć.<end id="e1201608141697"/>/
+Że się obrzask<pr><slowo_obce>obrzask</slowo_obce> --- kwaśny smak sfermentowanego wina.</pr> pokaże w źle chowanym winie,/
+Nie likwor temu winien, ale złe naczynie./
+Trafia się płód odrodny, choć cnotliwej matki,/
+A dzikich latorośli poziome ostatki<pr><slowo_obce>poziome ostatki</slowo_obce> --- ścielące się po ziemi pędy.</pr>/
+Gdy ucina ogrodnik, drzewu to nie szkodzi./
+Owszem, piękniej wybuja, lepszy owoc rodzi./
+<begin id="b1201608361734"/><motyw id="m1201608361734">Rozum, Umiarkowanie</motyw><wers_akap>Jest granica, za którą przechodzić nie wolno.</wers_akap>/
+Mając porę, ochotę i sposobność zdolną<pr><slowo_obce>zdolny</slowo_obce> --- stosowny, odpowiedni.</pr>,/
+Dociekajmy, co możem, co dociec się godzi.<end id="e1201608361734"/>/
+<begin id="b1201608408884"/><motyw id="m1201608408884">Czas </motyw>Wiek nasz w wielu odkryciach dawniejsze przechodzi./
+Dzień dniu prawdę obwieszcza, godzinom godziny;/
+Z pracy ojców szczęśliwe korzystają syny,/
+A do zdatnego<pr><slowo_obce>zdatny</slowo_obce> --- tu: umiejętny.</pr> rzeczy stosując użycia,/
+Nowe wiekom późniejszym gotują odkrycia”./
+,,Więc lepiej rzeczy idą, bo żywiej, bo sporzej”./
+,,Sądź, jak chcesz, może lepiej, może też i gorzej".<end id="e1201608408884"/></strofa>
+
+<extra><!--<tekst_glowny>--></extra>
+
+</liryka_l></utwor>

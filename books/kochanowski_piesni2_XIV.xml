@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XXIV_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XIV (Wy, którzy pospolitą rzeczą władacie...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-xiv-wy-ktorzy-pospolita-rzecza-wla</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XIV</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188578793778"/><motyw id="m1188578793778">Władza, Obowiązek</motyw>Wy, którzy pospolitą rzeczą władacie,/
+A ludzką sprawiedliwość w ręku trzymacie,/
+Wy, mówię, którym ludzi paść poruczono<pr><slowo_obce>ludzi paść poruczono</slowo_obce> --- u Homera królowie stale zwą się ,,pasterzami ludów".</pr>/
+I zwierzchności nad stadem bożym zwierzono:</strofa>
+
+<strofa>Miejcie to przed oczyma zawżdy swojemi,/
+Żeście miejsce zasiedli boże na ziemi,/
+Z którego macie nie tak swe własne rzeczy/
+Jako wszytek ludzki mieć rodzaj na pieczy.</strofa>
+
+<strofa><begin id="b1219007777446"/><motyw id="m1219007777446">Sprawiedliwość</motyw>A wam więc nad mniejszymi<pr><slowo_obce>mniejszymi</slowo_obce> --- w pierwodruku błędnie: niniejszymi.</pr> zwierzchność jest dana,/
+Ale i sami macie nad sobą pana,/
+Któremu kiedyżkolwiek z spraw swych uczynić/
+Poczet macie; trudnoż tam krzywemu wynić<pr><slowo_obce>krzywemu wynić</slowo_obce> --- winnemu wyjść na wolność.</pr>.</strofa>
+
+<strofa>Nie bierze ten pan darów ani się pyta,/
+Jesli kto chłop czyli się grofem poczyta;/
+W siermiędze li go widzi, w złotych li głowach<pr><slowo_obce>złotych li głowach</slowo_obce> --- czy w złotogłowach.</pr>,/
+Jesli namniej przewinił, być mu w okowach.<end id="e1219007777446"/></strofa>
+
+<strofa><begin id="b1219007792730"/><motyw id="m1219007792730">Grzech</motyw>Więc ja podobno z mniejszym niebezpieczeństwem/
+Grzeszę, bo sam się tracę swym wszeteczeństwem;/
+Przełożonych występki miasta zgubiły/
+I szerokie do gruntu carstwa zniszczyły.<end id="e1219007792730"/><end id="e1188578793778"/></strofa>
+
+</liryka_l></utwor>

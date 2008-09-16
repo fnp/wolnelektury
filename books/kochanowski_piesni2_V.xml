@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_V_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń V (Wieczna sromota i nienagrodzona...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-v-wieczna-sromota-i-nienagrodzona</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń V</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188576921752"/><motyw id="m1188576921752">Ojczyzna, Przedmurze chrześcijaństwa</motyw>Wieczna sromota i nienagrodzona/
+Szkoda, Polaku! Ziemia spustoszona<pr><slowo_obce>Ziemia spustoszona</slowo_obce> --- najazd Tatarów w r. 1575 przyniósł szczególnie wielkie spustoszenie; według kroniki Bielskiego Tatarzy wzięli wówczas ponad pięćdziesiąt tysięcy ludzi w jasyr.</pr>/
+Podolska leży, a pohaniec sprosny,/
+Nad Niestrem<pr><slowo_obce>Nad Niestrem</slowo_obce> --- nad Dniestrem.</pr> siedząc, dzieli łup żałosny!</strofa>
+
+<strofa><begin id="b1219005006521"/><motyw id="m1219005006521">Niewola</motyw>Niewierny Turczyn<pr><slowo_obce>Niewierny Turczyn</slowo_obce> --- mimo zawarcia w r. 1533 wieczystego pokoju między Polską a Turcją, Tatarzy, poddani sułtana, nie zaprzestali najazdów.</pr> psy zapuścił swoje<pr><slowo_obce>psy zapuścił swoje</slowo_obce> --- Tatarzy są narzędziem Turcji, która posługuje się nimi jak myśliwiec psami.</pr>,/
+Którzy zagnali piękne łanie twoje/
+Z dziećmi pospołu, a nie masz nadzieje,/
+By kiedy miały nawiedzić swe knieje.</strofa>
+
+<strofa>Jedny za Dunaj Turkom zaprzedano,/
+Drugie do hordy dalekiej zagnano;/
+Córy szlacheckie (żal się mocny Boże!)/
+Psom bisurmańskim brzydkie ścielą łoże.<end id="e1219005006521"/></strofa>
+
+<strofa>Zbójce (niestety), zbójce nas wojują<pe><slowo_obce>Zbójce... nas wojują</slowo_obce> --- zbójcy zwyciężają z nami w walce.</pe>,/
+Którzy ani miast, ani wsi budują;/
+Pod kotarzami<pr><slowo_obce>Pod kotarzami</slowo_obce> --- pod namiotami.</pr> tylko w polach siedzą,/
+A nas nierządne, ach, nierządne, jedzą!</strofa>
+
+<strofa>Tak odbieżałe stado<pr><slowo_obce>odbieżałe stado</slowo_obce> --- najazd nastąpił w czasie bezkrólewia, po ucieczce z Polski Henryka Walezego.</pr> więc drapają/
+Rozbójce wilcy, gdy po woli mają<pe><slowo_obce>gdy po woli mają</slowo_obce> --- gdy wszystko układa się według ich woli.</pe>,/
+Że ani pasterz nad owcami chodzi,/
+Ani ostrożnych psów za sobą wodzi.<end id="e1188576921752"/></strofa>
+
+<strofa>Jakiego serca Turkowi dodamy,/
+Jesli tak lekkim ludziom<pr><slowo_obce>lekkim ludziom</slowo_obce> --- lichym.</pr> nie zdołamy?/
+Ledwieć nam i tak króla nie podawa<pr><slowo_obce>Ledwieć nam... króla nie podawa</slowo_obce> --- w r. 1573 Turcy usiłowali wpłynąć na elekcję przeciwstawiając się kandydaturze Habsburga.</pr>;/
+Kto się przypatrzy, mała nie dostawa<pe><slowo_obce>mała nie dostawa</slowo_obce> --- mało brakuje.</pe>.</strofa>
+
+<strofa>Zetrzy sen z oczu, a czuj w czas o sobie,/
+Cny Lachu! Kto wie, jemu czyli tobie/
+Szczęście chce służyć? A dokąd wyroku/
+Mars nie uczyni<pr><slowo_obce>wyroku Mars nie uczyni</slowo_obce> --- wojna nie rozstrzygnie.</pr>, nie ustępuj kroku!</strofa>
+
+<strofa>A teraz k'temu obróć myśli swoje/
+Jakoby--ć<pe><slowo_obce>Jakoby--ć</slowo_obce> --- Jakoby ci; żeby ci (nieprzyjaciel odpłacił krzywdę).</pe> szkody nieprzyjaciel twoje/
+Krwią swą nagrodził i omył tę zmazę,/
+Którą dziś niesiesz prze swej ziemie skazę<pr><slowo_obce>prze swej ziemie skazę</slowo_obce> --- przez zniszczenie swej ziemi.</pr>.</strofa>
+
+<strofa><begin id="b1188576992986"/><motyw id="m1188576992986">Obowiązek, Ojczyzna</motyw>Wsiadamy? Czy nas półmiski trzymają?/
+Biedne półmiski, czego te czekają?/
+To pan, i jadać na srebrze<pr><slowo_obce>jadać na srebrze</slowo_obce> --- w Polsce klasy zamożniejsze używały talerzy cynowych lub srebrnych, uboższe --- mis glinianych; tym tłumaczy się pomysł ofiarowania srebrnych talerzy do przetopienia na talary.</pr> godniejszy,/
+Komu żelazny Mars będzie chętniejszy.</strofa>
+
+<strofa>Skujmy talerze na talery, skujmy,/
+A żołnierzowi pieniądze gotujmy!/
+Inszy to darmo po drogach miotali,/
+A my nie damy, bychmy w cale trwali?<end id="e1188576992986"/></strofa>
+
+<strofa>Dajmy; a naprzód dajmy<pr><slowo_obce>a naprzód dajmy</slowo_obce> --- w Polsce w XVI i XVII w. bardzo trudno było przeprowadzać uchwały sejmowe nakładające na szlachtę podatki na zaciąg wojsk.</pr>! Sami siebie/
+Ku gwałtowniejszej chowajmy potrzebie./
+Tarczej niż piersi pierwej nastawiają,/
+Pozno puklerza przebici<pr><slowo_obce>Pozno... przebici</slowo_obce> --- cytat z Owidiusza.</pr> macają.</strofa>
+
+<strofa>Cieszy mię ten rym<pr><slowo_obce>rym</slowo_obce> --- wiersz; tu ,,przypowieść", tj. przysłowie.</pr>: ,,Polak mądr po szkodzie":/
+Lecz jeśli prawda i z tego nas zbodzie<pr><slowo_obce>prawda... zbodzie</slowo_obce> --- zepchnie ze stanowiska, dowiedzie niesłuszności.</pr>,/
+Nową przypowieść Polak sobie kupi,/
+Że i przed szkodą, i po szkodzie głupi.</strofa>
+
+</liryka_l></utwor>

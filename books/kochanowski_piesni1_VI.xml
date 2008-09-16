@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_VI_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń VI (Acz mię twa droga, miła, barzo boli...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-vi-acz-mie-twa-droga-mila-barzo</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń VI</nazwa_utworu>
+
+
+<strofa>Acz mię twa droga, miła, barzo boli,/
+Nie chcę cię trzymać przeciw twojej woli;/
+Z mej strony bodaj wszystko dobre miała,/
+Kędy się kolwiek będziesz obracała.</strofa>
+
+<strofa>Lecz sama widzisz, jakie wiatry wstają,/
+Jakie po niebie chmury się mieszają./
+<begin id="b1188391441248"/><motyw id="m1188391441248">Kobieta, Niewola</motyw>Ja wiem, co umie morze i szalony/
+Wicher, na wody słone uniesiony.</strofa>
+
+<strofa>Niech żony srogich pohańców i dzieci/
+Doświadczą, jakim pędem wicher leci/
+Morze mieszając; huczą srogie wały,/
+A brzeżne w gruncie wzdrygają się skały.</strofa>
+
+<strofa>Takci się biednej Europie<pr><slowo_obce>biednej Europie</slowo_obce> --- Jowisz zakochawszy się w Europie, córce Agenora, władcy Sydonu, przybrał postać byka, porwał ją i zawiózł na Kretę, gdzie urodziła dwóch synów, Minosa i Radamantysa.</pr> dostało,/
+Jeno że wołu chciała przysieść mało/
+Bo się z nienagła przymknął z nią ku wodzie,/
+Potym jak płynie, tak płynie bez łodzie.</strofa>
+
+<strofa>A ta dopiero zlękła się nieboga/
+Gdzie pojźrzy, zewsząd morze, zewsząd trwoga ---/
+Brzegu nie widać, przewoźnik niepewny/
+Strach serce ujął, a w oczu płacz rzewny</strofa>
+
+<strofa><begin id="b1188391607814"/><motyw id="m1188391607814">Córka, Ojciec, Samobójstwo</motyw>A gdy do sławnej Krety przypłynęła,/
+Z wielkiej tęsknice włosy targać jęła/
+Skarżąc się z płaczem: ,,Ojcze mój łaskawy,/
+Któregom zbyła prze me głupie sprawy,</strofa>
+
+<strofa>Com ja tu miała czynić w tej krainie?/
+Mało jest jedna śmierć<pr><slowo_obce>Mało jest jedna śmierć</slowo_obce> --- śmierć to mała kara.</pr> panieńskiej winie./
+Ale na jawiż płaczę swej lekkości?/
+Czy mię pokusa łudzi krom winności,</strofa>
+
+<strofa>Która przez wrota kościane wychodzi,/
+A na człowieka sny dziwne przywodzi?/
+Lepiej li było przez morze się pławić/
+Czy nad polnymi kwiatkami się bawić?</strofa>
+
+<strofa>By mi się teraz dostał jako w ręce/
+On wół bezecny, byłby w takiej męce,/
+Żeby mu ze łba musiały spaść rogi,/
+Chociaż był u mnie niedawno tak drogi.</strofa>
+
+<strofa>Nie miałam wstydu, dom swój opuszczając,/
+I teraz nie mam, śmierci odkładając;/
+Boże mój, jeśli słyszysz prośbę moję,/
+Niechaj dziś nago w pośrzodku lwów stoję!</strofa>
+
+<strofa>Pierwej niż pleśnią piękna twarz przypadnie/
+I zupełnemu ciału krasa spadnie,/
+Niechaj mię wilcy pożrą w tej gładkości,/
+A po pustyniach rozniosą me kości!"</strofa>
+
+<strofa>Nikczemna dziewko, ojciec ci przyciska,/
+Czemu nie umrzesz? Strzyma cię ta niska/
+Jedlina<pr><slowo_obce>Strzyma cię... jedlina i pas zaniesiony w cale</slowo_obce> --- pas zarzucony na jedlinę wytrzyma, gdy zechcesz się powiesić.</pr> i pas zaniesiony w cale;/
+A jeslić milsza śmierć na ostrej skale,</strofa>
+
+<strofa>Daj się w moc wiatrom, a skocz z góry śmiele,/
+Niżbyś wolała siedzieć u kądziele,/
+Królewska dziewka, i być w ręce dana/
+Srogiej pogance, winna bywszy pana<pr><slowo_obce>winna bywszy pana</slowo_obce> --- należeć do pana.</pr>.<end id="e1188391607814"/><end id="e1188391441248"/></strofa>
+
+</liryka_l></utwor>

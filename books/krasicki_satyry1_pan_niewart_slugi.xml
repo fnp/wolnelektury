@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Pan_niewart_s%C5%82ugi">
+<dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+<dc:title xml:lang="pl">Pan niewart sługi</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/satyry-czesc-pierwsza</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/satyry-czesc-pierwsza-pan-niewart-slugi</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+<dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław, 1958</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+<dc:date.pd xml:lang="pl">1801</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-02-12</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Ignacy Krasicki</autor_utworu>
+
+<dzielo_nadrzedne>Satyry, Część pierwsza</dzielo_nadrzedne>
+
+<nazwa_utworu>Pan niewart sługi</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<strofa><begin id="b1194351423522"/><motyw id="m1194351423522">Pan, Sługa, Kara</motyw>,,I wziął tylko pięćdziesiąt<pr><slowo_obce>pięćdziesiąt</slowo_obce> --- domyślnie: plag.</pr>”. ,,Wieleż miał wziąść?” ,,Trzysta./
+Tak to z dobrego pana zły sługa korzysta”./
+,,A za cóż te pięćdziesiąt?” ,,Psa trącił”. ,,Cóż z tego?”/
+,,Ale psa--faworyta jegomościnego”./
+,,Prawda, wielki kryminał<pr><slowo_obce>kryminał</slowo_obce> --- zbrodnia.</pr>, ale i plag<pe><slowo_obce>plagi</slowo_obce> --- baty, razy; chodzi o wymierzanie chłosty.</pe> wiele”./
+,,To łaska, że pięćdziesiąt”. ,,I nieprzyjaciele/
+Taką łaskę wyświadczą”. ,,On najlepszy z panów,/
+On sto plag nigdy nie dał”. ,,Mów lepiej z tyranów,/
+Co dom czynią katownią, a na płacz nieczuli,/
+Z wnętrzności się człowieczych ku sługom wyzuli.<end id="e1194351423522"/>/
+<begin id="b1202431368620"/><motyw id="m1202431368620">Szlachcic</motyw><wers_akap>Ten, co gdy był sam sługą, dobre miewał pany,</wers_akap>/
+Porzuciwszy niedawno podłe pasamany<pr><slowo_obce>pasamany</slowo_obce> --- galony, tu: liberia.</pr>,/
+Co się niegdyś pokornie nazywał Maciejem,/
+Dziś jest jaśnie wielmożnym mości dobrodziejem./
+Zza karety, gdzie stawał<pr><slowo_obce>Zza karety, gdzie stawał</slowo_obce> --- jako hajduk.</pr>, przesiadł się w karetę,/
+W mundur<pr><slowo_obce>mundur</slowo_obce> --- mundury wojewódzkie albo obywatelskie nosiła szlachta pełniąca funkcje poselskie i urzędowe mocą uchwały sejmu z r. 1776; mundury poszczególnych województw różniły się kolorem kontuszów i żupanów.</pr> barwę<pr><slowo_obce>barwa</slowo_obce> --- liberia sługi dworskiego.</pr> zamienił, a nader obfite/
+Mając zacności swojej próby<pr><slowo_obce>próba</slowo_obce> --- dowód.</pr> oczewiste,/
+I herb znalazł, i przodków, i panegirystę.<end id="e1202431368620"/>/
+<wers_akap>Niech ziółko w krzaczek idzie, choćby w dąb urosło;</wers_akap>/
+<begin id="b1202431438060"/><motyw id="m1202431438060">Los, Pozycja społeczna</motyw>Wolno igrać Fortunie, jej to jest rzemiosło;/
+Cudotworna, na krzesła przerabia warsztaty<pr><slowo_obce>na krzesła przerabia warsztaty</slowo_obce> --- na krzesła senatorskie zamienia warsztaty rzemieślnicze. ,,Cudotworność” Fortuny określa tu autor przy pomocy poetyckiej przenośni; w XVIII w. bowiem uzyskanie godności senatorskiej przez mieszczanina było niemożliwe.</pr>”.<end id="e1202431438060"/>/
+<begin id="b1194351599660"/><motyw id="m1194351599660">Chłop, Szlachcic</motyw>,,Maciej chłop”. ,,I cóż z tego? ale że bogaty,/
+Maciej szlachcic”.<end id="e1194351599660"/> ,,Niech będzie, ja nie chcę kaduka<pr><slowo_obce>ja nie chcę kaduka</slowo_obce> --- nie chcę otrzymać majątku Macieja, oskarżając go jako nieszlachcica o bezprawne nabycie dóbr ziemskich. Kadukiem nazywano majątek pozostawiony bez testamentu i prawnych spadkobierców lub dobra skonfiskowane wyrokiem sądu, które otrzymywał zwykle oskarżający.</pr>”./
+<begin id="b1194351635356"/><motyw id="m1194351635356">Bogactwo</motyw>,,Ale Maciej łakomy i złych zysków szuka;/
+Nie pracą, lecz podejściem majętność pomnożył,/
+<begin id="b1202431526357"/><motyw id="m1202431526357">Złodziej</motyw>Ale nie kładł, gdzie trzeba, wziął, gdzie nie położył<end id="e1202431526357"/>,/
+Ale Maciej niewdzięczny tym, u których służył,/
+Ale Maciej bogactwa na złe tylko użył,<end id="e1194351635356"/>/
+<begin id="b1194351708989"/><motyw id="m1194351708989">Kara, Maska, Literat, Poeta</motyw>Ale Maciej nieludzki --- to satyra karze./
+Nie dba ona, kto w jakiej zostaje maszkarze<pr><slowo_obce>maszkara</slowo_obce> --- maska, kostium.</pr>,/
+Odrzuca czczą wielmożność, a gdy z chłostą czeka,/
+Nie szlachcica, nie chłopa ściga, lecz człowieka.<end id="e1194351708989"/>/
+<begin id="b1194351756465"/><motyw id="m1194351756465">Pan, Sługa, Kara, Przemoc </motyw><wers_akap>Śpi jegomość w południe, choć pracy nie użył,</wers_akap>/
+Nie śpi Marcin, noc całą i oka nie zmrużył./
+Wolno panom i nadto, zbytek im nie wadzi,/
+Choć mało, nie godzi się ubogiej czeladzi./
+Obudził się jegomość. Marcin, co czuł<pr><slowo_obce>czuł</slowo_obce> --- czuwał.</pr> pilnie,/
+Krząta się, chce, jak może, dogodzić usilnie,/
+Nadaremne starania! Któż panom dogodzi?/
+Jak legł, tak wstał niekontent jegomość dobrodziej,/
+Wszystko mu nie do gustu; noc na kartach strawił,/
+Wszystko źle; zgrał się wczoraj, klejnoty zastawił./
+Przyszedł kupiec z regestrem, termin przypomina,/
+Trzeba oddać, a nie masz: sto plag dla Marcina!/
+Płacze w kącie, więc krnąbrny po plagach się schował,/
+Dali drugie w dwójnasób, za co<pr><slowo_obce>za co</slowo_obce> --- czemu, dlaczego.</pr> nie dziękował,/
+Więc dziękuje, a płacze; opłonął<pr><slowo_obce>opłonąć</slowo_obce> --- ochłonąć.</pr> pan przecie/
+I Marcin, że po drugich nie przyszły i trzecie./
+<wers_akap>Katów waszych, nie panów, zjadłości igrzyska,</wers_akap>/
+Nędzni! bydlęta z pracy, a sługi z nazwiska./
+I płakać wam nie wolno, mówić jeszcze gorzej./
+Przyjdzie kara za słowem okrutna tym sporzej./
+<wers_akap>Paweł skąpy na czeladź, na zbytki utratny<pr><slowo_obce>utratny</slowo_obce> --- rozrzutny.</pr>,</wers_akap>/
+Za to, że od pół roka służący niepłatny/
+Prosił go o posiłek, łaknący czas długi,/
+Dał plag dwieście za strawne<pr><slowo_obce>strawne</slowo_obce> --- wypłata służbie na wyżywienie.</pr>, a sto za zasługi./
+Hojny pan! stema<pr><slowo_obce>stema</slowo_obce> --- setką, stoma; domyślnie: plagami.</pr> karze, a płaci dziesiątkiem./
+Nieźle zapomożony sługa takim wziątkiem<pr><slowo_obce>wziątek</slowo_obce> --- tu: zapłata.</pr>/
+<begin id="b1202431988822"/><motyw id="m1202431988822">Złodziej</motyw>Milczy, a widząc, że się nie doprosi snadnie<pe><slowo_obce>snadnie</slowo_obce> --- łatwo.</pe>,/
+Co widocznie<pr><slowo_obce>widocznie</slowo_obce> --- jawnie.</pr> nie zyskał, po cichu ukradnie.<end id="e1194351756465"/>/
+Zasmakuje rzemiosło, ażci złodziej w domu./
+Zaprawił się na małej kwocie po kryjomu,/
+Pójdzie dalej; z początku trwożny i przelękły,/
+Ośmieli się: już kłódki, już zawiasy pękły;/
+Skradł skarbiec, zniknął z oczu, a odmienny stanem,/
+Przez kradzież (jak to teraz) zostanie i panem”./
+,,A któż to teraz okradł?” ,,Nie odpowiem snadnie,/
+Raczej pytaj, mój bracie, kto teraz nie kradnie./
+Stracił ten kunszt odrazę, przemyślnych oświeca<pr><slowo_obce>oświeca</slowo_obce> --- nadaje blasku.</pr>,/
+Dla głupich, dla ubogich tylko szubienica;/
+Inaczej o tych rzeczach świat mądry rozumie,/
+Nie karzą, że kto okradł, lecz że kraść nie umie./
+Ale to nie o sługach.<end id="e1202431988822"/> <begin id="b1202432087374"/><motyw id="m1202432087374">Dwór, Szlachcic</motyw>Zwyczajne u dworu/
+Są stopnie: jedne zysku, a drugie honoru./
+Jaśnie wielmożny tyran, bożek okoliczny,/
+Dla większej wspaniałości raczy mieć dwór liczny./
+Stąd wyższe urzędniki, niższe posługacze:/
+Pan koniuszy, co bije, masztalerz, co płacze,/
+Pan podskarbi, co kradnie, piwniczny, co zmyka<pr><slowo_obce>zmykać</slowo_obce> --- ściągać, kraść.</pr>,/
+Sługa pieszy, dworzanin, co ma pacholika,/
+Pokojowiec przez zaszczyt wspaniałemu sercu,/
+A dlatego że szlachcic, bierze na kobiercu<pr>,,Pokojowi była to służba pałacowa, jednakowo ubrana, zawsze przy pałaszach, stojąca za panem, panią i gośćmi z talerzami u stołu; tym się często trafiało leżeć na kobiercach”. (J. D. Ochocki, <tytul_dziela>Pamiętniki</tytul_dziela>, s. 93). Chłostę na kobiercu odbierali pokojowi w odróżnieniu od chłopów, którym taki przywilej nie przysługiwał.</pr>;/
+Pan architekt, co planty bez skutku wymyśla,/
+Pan doktor, co zabija, sekretarz, co zmyśla,/
+Pan rachmisrz, co łże w liczbie, gumienny<pr><slowo_obce>gumienny, co w mierze</slowo_obce> --- do obowiązków gumiennego należało kontrolowanie miary dostawianych lub wydzielanych z pańskiego spichrza plonów.</pr>, co w mierze,/
+Plenipotent, co w sądzie, komisarz<pr><slowo_obce>komisarz</slowo_obce> --- administrator, urzędnik do specjalnych zleceń.</pr>, co bierze/
+Więcej jeszcze, jak daje, a złodziejów mniejszych/
+Kradnąc<pr><slowo_obce>kraść</slowo_obce> --- okraść.</pr>, sam jest użyty do usług ważniejszych;/
+Łowczy, co je zwierzynę, a w polu nie bywa,/
+Stary szafarz, co zawżdy panu potakiwa./
+Pan kapitan, co Żydów drze, kiedy się proszą,/
+Żołnierze, co potrawy na stół w gale<pr><slowo_obce>gala</slowo_obce> --- uroczystość dworska, biesiada.</pr> noszą,/
+Kapral, co więcej jeszcze kradnie niż dragani,/
+I dobosz, co pod okna capstrych tarabani,/
+A kiedy do kościoła jedzie z gronem gości,/
+Bije w dziurawy bęben werbel jegomości<pr><slowo_obce>Zwyczajne u dworu...</slowo_obce> --- magnaci urządzali swoje dwory na wzór dworu królewskiego, ustanawiając szereg urzędów. Obok oficjalistów, którzy byli płatni, hierarchia dworska obejmowała również nie obarczonych żadnymi stałymi funkcjami dworzan, z których część związana była jednak z dworem służbowo, przeważnie na całe życie, i pobierała wynagrodzenie zależnie od ilości posiadanej służby i koni. Cały dwór, liczący niekiedy kilkaset osób, dzielił się zasadniczo na dwie części: właściwy dwór szlachecki i służbę pochodzenia plebejskiego. I tak np. oficjalnie zarządzał stajnią pańską koniuszy, w rzeczywistości wyręczający się masztalerzami, starszymi stajennymi. Pośrednie stanowisko na dworze zajmowali specjaliści, np. architekci, lekarze, muzycy, którzy jako przeważnie cudzoziemcy nie byli szlachtą, korzystali jednak z przywilejów dworzan.</pr>/
+<wers_akap>Mają króle marszałków; co być królem może,</wers_akap>/
+Jak ma być bez marszałka?<end id="e1202432087374"/> Gale i podrożę/
+Szlachci dumny urzędnik<pr><slowo_obce>Szlachci dumny urzędnik</slowo_obce> --- wzorem dworu królewskiego marszałek na dworze pańskim był mistrzem ceremonii biesiad i przyjęć. ,,Marszałek dworu musiał być koniecznie posesjonatem i jakim urzędnikiem powiatowym lub wojewódzkim; on zastępował gospodarza domu, pod jego dependencją byli dworzanie, w ścisłym bardzo dozorze pokojówce, paziowie, cała barwa (tak wówczas zwano liberią) i kuchnie”. (J. D. Ochocki, <tytul_dziela>Pamiętniki</tytul_dziela>, s. 94); szlachcic --- upiększać, wywyższać.</pr>, namiestnik powagi,/
+<begin id="b1202432239923"/><motyw id="m1202432239923">Pan, Przemoc, Sługa, Władza</motyw>Wicetyran. Bez niego i chłosty, i plagi/
+Nie miałyby zaszczytu<pr><slowo_obce>zaszczyt</slowo_obce> --- powaga, szacunek.</pr>. On kary rozdawca,/
+On rozrządziciel męczeństw, on katowni sprawca./
+A jak niegdyś przed rzymskim konsulem topory/
+Niosły kar wykonacze, bezwzględne liktory<pr>,,Liktorowie, rodzaj woźnych i sług przedniejszych urzędników rzymskich, nosili je [tzw. fasces --- pęk rózg około drzewca toporowego uwiniony] w ręku przed urzędnikami. Że zaś ci liktorowie byli egzekutorami sentencji kryminalnych, a według zwyczaju rzymskiego winowajcy przed egzekucją rózgami byli bici [...], naówczas odwiązywał liktor pęk rózg od topora na smaganie winowajcy, toporem zaś głowę ucinał”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>, s. v. Fasces).</pr>,/
+Tak przed srogim marszałkiem sążniste pajuki<pr><slowo_obce>pajuk</slowo_obce> --- bogato ubrany służący. ,,Służby tej używano tylko w domu, w pokojach; dobierano do niej ludzi wysokiego wzrostu, pleczystych, z dużymi wąsami”. (J. D. Ochocki, <tytul_dziela>Pamiętniki</tytul_dziela>, s. 96.)</pr>/
+Niosą skórom pamiętne boćkowskie kańczuki<pr>nahajki, dyscypliny, wyrabiane w podlaskim miasteczku Boćki, znane współcześnie pod nazwą ,,boćkowskiego monitora”.</pr>./
+Wchodzi. Zewsząd jęczenia i płacze się wznoszą,/
+Oprawcy gdy rozkazy srogie nędznym głoszą./
+Dom się wrzaskiem napełnia; płacz sług pana cieszy;/
+Wspaniały jękiem nędznych, płaczem służnej rzeszy,/
+Rzuca groźnym wspojźrzeniem nieszczęśliwe losy,/
+Karmią słuch neronowski płaczliwe odgłosy;/
+A w powszechnym nieszczęsnej czeladzi ucisku,/
+Gdy przeklęstw, narzekania dań odnosi w zysku,/
+Czuje, że pan, bo gnębi.<end id="e1202432239923"/> Jestże usłużony?/
+Bynajmniej, szczęścia tego nie znały Nerony./
+<begin id="b1202432363140"/><motyw id="m1202432363140">Los, Niewola, Pan, Sługa</motyw>Służy wiernie, kto kocha, nie ma sług, kto dręczy,/
+Niewolnik, co pod jarzmem obelżywym jęczy,/
+Dźwiga ciężar w przeklęstwie na tego, co włożył./
+Klnie los, co się tym zjadlej dla niego nasrożył,/
+Tym dotkliwszym, odjąwszy wolność, skarał stanem,/
+Gdy kazał temu służyć, co nie wart być panem”.<end id="e1202432363140"/></strofa>
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_l></utwor>

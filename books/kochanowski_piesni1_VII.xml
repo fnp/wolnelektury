@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_VII_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń VII (Trudna rada w tej mierze: przyjdzie się rozjechać...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-vii-trudna-rada-w-tej-mierze-pr</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń VII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188457756656"/><motyw id="m1188457756656"/>Trudna rada w tej mierze: przyjdzie się rozjechać,/
+A przez ten czas wesela i lutnie zaniechać./
+Wszystka moja dobra myśl z tobą precz odchodzi,/
+A z tego mię więzienia nikt nie wyswobodzi,/
+Dokąd cię zaś nie ujźrzę, pani wszech piękniejsza,/
+Co ich kolwiek przyniosła chwila teraźniejsza<pr><slowo_obce>Co ich kolwiek przyniosła chwila teraźniejsza</slowo_obce> --- które wydały obecne czasy</pr>.</strofa>
+
+<strofa>Już mi z myśli wypadły te obecne twarzy;/
+Twoje nadobne lice jest podobne do zarzy,/
+Która nad wielkim morzem rano się czerwieni,/
+A z nienagła ciemności nocne w światłość mieni;/
+Przed nią gwiazdy drobniejsze po jednaj znikają/
+I tak już przyszłej nocy nieznacznie czekają.</strofa>
+
+<strofa>Takaś ty w oczu moich. Szczęśliwa to droga,/
+Po której chodzić będzie tak udatna noga;/
+Zajźrzę, gęste lasy i wysokie skały,/
+Że przede mną będziecie taką rozkosz miały:/
+Usłyszycie wdzięczny głos i przyjemne słowa,/
+Po których sobie teskni biedna moja głowa.</strofa>
+
+<strofa>Lubeż moje wesele, lubeż me biesiady!/
+Mnie podobno już prózno szukać inszej rady,/
+Jeno smutnego serca podpierać nadzieją;/
+W nadzieję ludzie orzą i w nadzieję sieją./
+A ty tak srogą nie bądź ani mię tym karzy,/
+Bych długo nie miał widzieć twojej pięknej twarzy.<end id="e1188457756656"/></strofa>
+
+</liryka_l></utwor>

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Do_swoich_książek_2">
+<dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
+<dc:title xml:lang="pl">Do swoich książek (Hola! Już dosyć, dosyć, moja księgo!)</dc:title>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Kukulski, Leszek</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Barok</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/do-swoich-ksiazek-hola-juz-dosyc-dosyc-moja-ksiego</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
+<dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Andrzej Morsztyn zm. 1693</dc:rights>
+<dc:date.pd xml:lang="pl">1693</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-06</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Andrzej Morsztyn</autor_utworu>
+
+<nazwa_utworu>Do swoich książek</nazwa_utworu>
+
+
+
+<strofa><begin id="b1206278147593"/><motyw id="m1206278147593">Książka</motyw>Hola! Już dosyć, dosyć, moja księgo!/
+<wers_wciety>A ty drwić jeszcze napierasz się<pe><slowo_obce>napierać</slowo_obce> --- tu: uparcie dopominać się czegoś.</pe> tęgo<pe><slowo_obce>tęgo</slowo_obce> --- tutaj: bardzo, mocno, z dużym nasileniem.</pe>.</wers_wciety>/
+Porzuć obyczaj świegoty<pe><slowo_obce>świegota</slowo_obce> --- daw. świergotanie, ćwierkanie, śpiew.</pe> tak brzydki,/
+<wers_wciety>Ma krótka księga, a pewne pożytki.</wers_wciety>/
+Naprzód ci powiem, a powiem ci szczerze:/
+<wers_wciety>Mniejszy koszt, mniejsza i szkoda w papierze;</wers_wciety>/
+Druga: tęskliwy pisarz z drukarczyki/
+<wers_wciety>Nie tak kląć będą pomierne<pe><slowo_obce>pomierne</slowo_obce> --- daw. umiarkowane (tu: co do objętości).</pe> wierszyki;</wers_wciety>/
+Potem, gdy przyjdziesz w ręce mądrych ludzi,/
+<wers_wciety>Rzeką: Nie przednia--ć<pe><slowo_obce>przednia</slowo_obce> --- bardzo dobra.</pe>, ale nie zamudzi<pe><slowo_obce>zamudzi</slowo_obce> --- daw. zanudzi.</pe>;</wers_wciety>/
+I gość twe karty czytając przewieje/
+<wers_wciety>Wprzód<pe><slowo_obce>wprzód</slowo_obce> --- daw. zanim.</pe>, niż mu wino w kieliszku sciepleje.</wers_wciety>/
+Rozumiesz, żeś tym ucinkiem wygrała?/
+<wers_wciety>I tak się będziesz wielom<pe><slowo_obce>wielom</slowo_obce> --- wielu ludziom.</pe> długą zdała<pe><slowo_obce>będziesz (...) zdała</slowo_obce> --- będziesz się wydawała.</pe>!</wers_wciety><end id="e1206278147593"/></strofa>
+
+</liryka_l></utwor>

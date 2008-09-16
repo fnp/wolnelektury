@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <utwor>
-  <liryka_l>
-
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Morsztyn/Do_swoich_książek_1">
 <dc:creator xml:lang="pl">Morsztyn, Jan Andrzej</dc:creator>
 <dc:title xml:lang="pl">Do swoich książek (Dokąd się, moja lutni, napierasz skwapliwie?)</dc:title>
@@ -13,7 +11,7 @@
 <dc:subject.period xml:lang="pl">Barok</dc:subject.period>
 <dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
 <dc:subject.genre xml:lang="pl">Wiersz</dc:subject.genre>
-<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Partnerem projektu jest Prokom Software SA. Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
 <dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/do-swoich-ksiazek-dokad-sie-moja-lutni-napierasz-skwapliwie</dc:identifier.url>
 <dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5265</dc:source.URL>
 <dc:source xml:lang="pl">Morsztyn, Jan Andrzej (1621-1693), 275 wierszy, Państwowy Instytut Wydawniczy, Warszawa, 1977</dc:source>
@@ -27,6 +25,9 @@
 <dc:language xml:lang="pl">pol</dc:language>
 </rdf:Description>
 </rdf:RDF>
+  <liryka_l>
+
+
 
 <autor_utworu>Jan Andrzej Morsztyn</autor_utworu>
 
@@ -36,27 +37,27 @@
 
 <strofa><begin id="b1189001983234"/><motyw id="m1189001983234">Literat, Poeta, Poezja</motyw>Dokąd się, moja lutni, napierasz skwapliwie?/
 <wers_wciety>Chcesz na świat i drukarskiej chciałabyś oliwie</wers_wciety>/
-Podać w nielutościwe swoje plotki prasy,/
-<wers_wciety>Wzgardziwszy słodkie mego kabinetu wczasy?</wers_wciety>/
-Ach, nie wiesz, czego-ć się chce! Różne w ludziach smaki,/
-<wers_wciety>I ciebie potka wilkum pewnie niejednaki.</wers_wciety>/
+Podać w nielutościwe<pe><slowo_obce>nielutościwe</slowo_obce> --- nielitościwe, okrutne.</pe> swoje plotki prasy,/
+<wers_wciety>Wzgardziwszy słodkie mego kabinetu<pe><slowo_obce>kabinet</slowo_obce> --- daw. mebel z otwieranym pulpitem i licznymi szufladkami. Miał formę małej, dwuczęściowej szafki.</pe> wczasy?</wers_wciety>/
+Ach, nie wiesz, czego--ć się chce! Różne w ludziach smaki,/
+<wers_wciety>I ciebie potka<pe><slowo_obce>potka</slowo_obce> --- dziś: spotka.</pe> wilkum<pe><slowo_obce>wilkum</slowo_obce> (z niem. <slowo_obce>willkommen</slowo_obce>: witać) --- powitanie.</pe> pewnie niejednaki.</wers_wciety>/
 Nie trzeba dymem śmierdzieć, kto się chce do dworu/
 <wers_wciety>Udać, jeszcześ ty godna kuchennego szoru:</wers_wciety>/
-Jeden, co lepiej pisze, znajdzie w tobie siła,/
+Jeden, co lepiej pisze, znajdzie w tobie siła<pe><slowo_obce>siła</slowo_obce> --- tu: wiele.</pe>,/
 <wers_wciety>Co by cierpliwsza głowa jeszcze przekreśliła;</wers_wciety>/
 Drugi z zazdrości, która średnie mózgi żywi,/
 <wers_wciety>W oczy pochwali, ale z tyłu gębę skrzywi;</wers_wciety>/
-Inszy, choć z hipokreńskiej nie pił nigdy bani,/
+Inszy, choć z hipokreńskiej nie pił nigdy bani<pe><slowo_obce>hipokreńska bania</slowo_obce> --- w mit. gr. na wzgórzu Muz, gdy Pegaz uderzył kopytem w skałę, wypłynęło źródło Hippokrene. Pić z hipokreńskiej bani lub z źródła hipokreńskiego to doświadczać natchnienia poetyckiego.</pe>,/
 <wers_wciety>Żeby się coś zdał, czego nie umie, pogani.</wers_wciety>/
 Tak, coś ją w ciszy miała, utracisz powagę/
-<wers_wciety>I pójdziesz za sukienkę korzeniu na wagę</wers_wciety>/
-Albo cię, ważąc konfekt, podściele na szali/
+<wers_wciety>I pójdziesz za sukienkę korzeniu na wagę<pe><slowo_obce>pójdziesz za sukienkę korzeniu...</slowo_obce> --- owiną twoimi kartami ważone w sklepie przyprawy.</pe></wers_wciety>/
+Albo cię, ważąc konfekt<pe><slowo_obce>konfekt</slowo_obce> --- tu: słodycze.</pe>, podściele na szali/
 <wers_wciety>Aptekarz i Szot tobą tabakę podpali,</wers_wciety>/
-Albo kiedy krystera czyści brzuch zawarty,/
+Albo kiedy krystera<pe><slowo_obce>krystera</slowo_obce> (starop.) --- lewatywa.</pe> czyści brzuch zawarty,/
 <wers_wciety>Coraz, co krok do stolca, jednej zbędziesz karty.</wers_wciety>/
 Ale ty przecie prosisz łaskawej odprawy,/
 <wers_wciety>Tak ci się moje przykrzą kreski i poprawy,</wers_wciety>/
-I co go doznać możesz, nie poważasz sromu;/
+I co go doznać możesz, nie poważasz sromu<pe><slowo_obce>srom</slowo_obce> --- daw. wstyd, hańba, niesława.</pe>;/
 <wers_wciety>Idź tedy --- ale lepiej było siedzieć w domu.</wers_wciety><end id="e1189001983234"/></strofa>
 
 </liryka_l>

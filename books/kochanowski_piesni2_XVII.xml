@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XVII_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XVII (Niegodzien tego ten świat zawikłany...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-xvii-niegodzien-tego-ten-swiat-zaw</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XVII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188579597959"/><motyw id="m1188579597959">Los</motyw>Niegodzien tego ten świat zawikłany,/
+Aby miał na nim, rozumem nadany,/
+Człowiek polegać, a swe szczęśliwości/
+Sadzić na jego płochej odmienności.</strofa>
+
+<strofa>Co ma ten żywot, na co by bezpiecznie/
+Człowiek mógł kazać? Niedługo koniecznie/
+Doniesie czaszę pachołek do gęby,/
+A przedsię i w tym straci czasem zęby<pr>Pijacki żart, gdy pijącemu podbije ktoś pięścią kubek, stanowi tu ilustrację greckiego przysłowia: wiele rzeczy leży między ustami a brzegiem pucharu.</pr>.</strofa>
+
+<strofa>Morze nie stoi nigdy, zawżdy płynie;/
+Teraz kędzierze nastrzępi, w godzinie/
+Dnem wzgórę stanie, a ogromne wały/
+Wysokich będą obłoków sięgały.<end id="e1188579597959"/></strofa>
+
+<strofa><begin id="b1188579624009"/><motyw id="m1188579624009">Cnota</motyw>Cnota mój kompas, który nie w pół nocy,/
+Ale w pół zbytków bije. Niech się smocy/
+I wszytko bydło Proteowe<pr><slowo_obce>bydło Proteowe</slowo_obce> --- por. przyp. do fr. III.</pr> jeży,/
+Łódź moja przedsię swym pędem pobieży.<end id="e1188579624009"/></strofa>
+
+</liryka_l></utwor>

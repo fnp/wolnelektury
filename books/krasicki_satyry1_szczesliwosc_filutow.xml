@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/Szcz%C4%99%C5%9Bliwo%C5%9B%C4%87_filut%C3%B3w">
+<dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+<dc:title xml:lang="pl">Szczęśliwość filutów</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/satyry-czesc-pierwsza</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/satyry-czesc-pierwsza-szczesliwosc-filutow</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+<dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław, 1958</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+<dc:date.pd xml:lang="pl">1801</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-02-12</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Ignacy Krasicki</autor_utworu>
+
+<dzielo_nadrzedne>Satyry, Część pierwsza</dzielo_nadrzedne>
+
+<nazwa_utworu>Szczęśliwość filutów</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<strofa><wers_akap>,,Rok się skończył, winszować tej pory należy”.</wers_akap>/
+,,Komu?” ,,Wszystkim”. ,,Niech Jędrzej z winszowaniem bieży;/
+Jędrzej, co to zmyśloną wziąwszy na się postać,/
+Szuka, gdzie by się wkręcić lub zysk jaki dostać,/
+A przedajnym językiem, drogi albo tani,/
+Jak zgodzą, jak zapłacą, tak chwali lub gani./
+Albo Szymon, miłośnik ludzkiego rodzaju,/
+Co złych i dobrych współem chwaląc dla zwyczaju,/
+Gdy cnotę i występki równą szalą mierzy,/
+Tyle zyskał w rzemiośle, że mu nikt nie wierzy./
+Niechaj tacy winszują; ja milczę”. ,,Źle czynisz./
+Alboż wszystkich zarówno potępiasz i winisz?/
+Alboż wszystkim źle życzysz?” ,,Owszem, dobrze życzę./
+Są cnotliwi; a chociaż niewiele ich liczę,/
+Chociaż ledwo ten rodzaj w złych się stoku<pr><slowo_obce>stok</slowo_obce> --- stek, zbiorowisko.</pr> zmieści,/
+Są dobrzy i w płci męskiej, są i w płci niewieściej”./
+,,Więc im winszuj!” <begin id="b1202400213435"/><motyw id="m1202400213435">Cnota, Los, Szczęście</motyw>,,A jakaż winszować przyczyna?”/
+,,Stary się rok zakończył, a nowy zaczyna”./
+,,Cóż mam dobrym powiedzieć? W starym ucierpieli,/
+I w przyszłym cierpieć będą zapewne musieli./
+Nie kończy się poczciwych niefortuna<pr><slowo_obce>niefortuna</slowo_obce> --- niepowodzenie.</pr> z rokiem,/
+Rzadko się cnota szczęsnym ucieszy wyrokiem.<end id="e1202400213435"/>/
+<wers_akap>Do was więc mowę zwracam, sztuczni<pr><slowo_obce>sztuczny</slowo_obce> --- chytry, przebiegły.</pr>, a ostrożni,</wers_akap>/
+Filuty oświecone i jaśnie wielmożni,/
+Wielmożni i szlachetni z zgrają waszą całą,/
+Winszuję, że w tym roku dobrze się udało./
+Coście tylko pragnęli, wszystko wam los zdarzył,/
+Wyście się tam ogrzali, gdzie się drugi sparzył./
+Fortuna<pr><slowo_obce>Fortuna</slowo_obce> --- ,,bogini szafująca złem i dobrem, szczęściem i nieszczęściem. Wyobrażają Fortunę ślepą i łysą, nigdy nie siedzącą, ale skwapliwą do biegu, mającą skrzydła u nóg, jedną nogą stojącą na kole szybko obracającym się, drugą na powietrzu”. (P. Chompre, <tytul_dziela>Słownik mytologiczny</tytul_dziela>).</pr>, której koło ustawnie<pe><slowo_obce>ustawnie</slowo_obce> --- nieustannie.</pe> się toczy,/
+Była ślepą dla innych, dla was miała oczy./
+Więc winszuję wszem wobec, każdemu z osobna,/
+<wers_akap>Tobie najprzód, którego dziś postać ozdobna,</wers_akap>/
+Którego oko śmiałe, a czoło jak z miedzi<pr><slowo_obce>czoło jak z miedzi</slowo_obce> --- wytarte, bezwstydne.</pr>,/
+W twoich progach los spoczął i Fortuna siedzi,/
+Płyną ci dni pomyślne, a przędziarka Kloto<pr><slowo_obce>Kloto</slowo_obce> --- jedna z trzech Park (Moir). ,,Prządkami ich życia ludzkiego czyniła starożytność pod alegorią wyrażając, iż najstarsza z nich Klotho trzyma w ręku kądziel i pasmo wije życia ludzkiego”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>).</pr>/
+Pasmo życia nawija na jedwab i złoto./
+Gdzie stąpisz, wszystko w kwiecie, gdzie wspojźrzysz, w owocach,/
+A gdy bierzesz spoczynek w twych rozkosznych nocach,/
+Ty śpisz, a szczęście czuje<pr><slowo_obce>czuć</slowo_obce> --- czuwać.</pr>. Brzęczą złota trzosy,/
+Wrzask cię chwały otacza, a podchlebne głosy,/
+Im bardziej natężone, im ogromniej wrzeszczą,/
+Tym wdzięczniej słuch twój mocnią<pr><slowo_obce>mocnić</slowo_obce> --- wzmacniać.</pr>, uszy twoje pieszczą./
+Umiesz słyszeć, coć miło, na przymówkę głuchy,/
+A gdy czasem mniej wdzięczne zalecą podsłuchy,/
+Umiesz i niedosłyszeć. Talent dziwny, rzadki!/
+Takie więc szczęścia twego gdy widzę zadatki,/
+Winszuję ci. A najprzód, żeś ocalał zdrowo;/
+Wieluż za mniej los srogi ukarał surowo,/
+A bardziej sprawiedliwość, której wiek zepsuty/
+Nie zna teraz, a przeto szczęśliwe filuty./
+Winszuję, jak ty inszym, że tobie nie mierzą;/
+Winszuję, żeś choć zdradził, przecież jeszczeć wierzą;/
+Winszuję, żeś choć okradł, nie każą ci wracać,/
+Możesz łupu zdartego, na co chcesz, obracać;/
+Jest więc czego winszować. A tobie, Konstanty,/
+Coś się zgrał na wsie, weksle, pieniądze i fanty<pr><slowo_obce>fanty</slowo_obce> --- cenne przedmioty, tu: dane w zastaw.</pr>,/
+Przecież grasz, czego srogi los niegdy pozbawił,/
+Przemysł sztuczny<pr><slowo_obce>przemysł sztuczny</slowo_obce> --- przemyślność, spryt.</pr> to zleczył, fortunę poprawił,/
+Odzyskałeś, coś przegrał, już brzękasz wygraną,/
+Winszuję, że cię na złym dziele nie złapano./
+<wers_akap>A tobie, panie Pawle, jest czego winszować<pr><slowo_obce>A tobie, panie Pawle...</slowo_obce> --- w ,,niejasnym” sformułowaniu zarzutu możemy się domyślać, że mowa tu o nowobogackich w rodzaju kamerdynera królewskiego Ryxa, który za intymne usługi oddane królowi został krociowym panem i starostą piaseczyńskim.</pr>:</wers_akap>/
+Przed rokiem musiałeś się o szeląg<pr><slowo_obce>szeląg</slowo_obce> --- drobna moneta z miedzi wartości 1/3 grosza.</pr> turbować,/
+Teraz kroćmi rachujesz. Jak to przyszło? --- Sztuka!/
+Zyskałeś, cóżeś zyskał? Nowa to nauka!/
+Nie powiem. I satyra nie ma być zbyt jasną./
+Tak to nowe światełka wschodzą, stare gasną./
+Panie Pietrze, a waszeć coś wskórał w tym roku?/
+Utyłeś, więc winszuję dobrego obroku. A jak?/
+Mamże powiedzieć czyli mam zasłaniać?/
+Zasłonię; proszę jednak jejmości się kłaniać<pr><slowo_obce>proszę jednak jejmości się kłaniać</slowo_obce> --- aluzja do żony nowobogackiego, która zapewne przysporzyła mężowi fortuny zdobywając dla niego względy możnych.</pr>./
+<wers_akap>A waść, panie Wincenty, coś majętność kupił</wers_akap>/
+Nie dawszy i szeląga? Czyś okradł, czyś złupił,/
+Dość, że wioska już twoja. Niechaj płacze głupi;/
+Po co nie był ostrożnym, już jej nie odkupi./
+Zły też to był gospodarz, grunt leżał odłogiem,/
+Pola były zarosły chwastem, łąki głogiem;/
+Ty przemysłem naprawisz, coś zyskał fortelem,/
+I tak się wysłużonym już obywatelem/
+Staniesz twojej ojczyźnie. Tak pięknej przysługi/
+Winszuję, a choćby się zgorszył może drugi,/
+Że gardzisz skrupułami, winszuję i tego:/
+Znak to jest mocnej duszy, umysłu wielkiego./
+Gmin podły wnętrzna trwoga i sumnienie straszy./
+Mędrcy! Wam dziękujemy, nauki to waszej/
+Jest dzieło, że z nas każdy pozbył się wędzidła;/
+Stawia dowcip przemyślny, śmiało teraz sidła,/
+Kto w nie wpadnie, tym gorzej, że był nieostrożny:/
+Śmieje się, co oszukał, a umysł nietrwożny,/
+Wsparty kunsztem dowcipnym wygodnej nauki,/
+Na dalsze się natęża i sidła, i sztuki./
+Winszuję więc wam, ucznie dzisiejsi i przeszli,/
+Winszuję, żeście nawet mistrzów waszych przeszli./
+<wers_akap>A wam co mam powiedzieć, cnotliwa hołoto<pr><slowo_obce>cnotliwa hołoto</slowo_obce> --- w ten sposób nazywa tu Krasicki, zapożyczając ironicznie terminu ze słownika filutów, ogół szlachty realizującej czynnie program obozu reform.</pr>?</wers_akap>/
+Dobrzy! Cierpieć wasz podział, ale cierpieć z cnotą./
+Modnej maksym nauki że się nie trzymacie,/
+Trzódko mała wśród łotrów, niewiele zyskacie./
+Nie rozpaczajcie jednak. <begin id="b1193829247519"/><motyw id="m1193829247519">Los</motyw>Patrzajcie, jak dalej/
+Los tych, których rozpieścił, wesprze i ocali./
+Rzadko się niepoczciwość tak, jak zacznie, kończy,<end id="e1193829247519"/>/
+<begin id="b1193829266706"/><motyw id="m1193829266706">Cnota</motyw>A cnota, co się nigdy z chytrością nie łączy,/
+Choć jej często dokuczą troski, niepokoje,/
+Później, prawda, lecz lepiej wychodzi na swoje”.<end id="e1193829266706"/></strofa>
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_l></utwor>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XXII_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XXII (Rozumie mój, próżno się masz frasować...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxii-rozumie-moj-prozno-sie-mas</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XXII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188512657844"/><motyw id="m1188512657844">Kondycja ludzka, Los, Mądrość, Przemijanie</motyw>Rozumie mój, próżno się masz frasować:/
+Co zginęło, trudno tego wetować;/
+Póki czas był, póki szczęście służyło,/
+Czegoś żądał, o wszystko łacno było.</strofa>
+
+<strofa>Teraz widzisz, że nam niebo nie sprzyja:/
+W czym się kochasz, to cię daleko mija./
+Cóż temu rzec? I szkoda głowy psować;/
+Lepiej się nam na lepsze czasy chować.</strofa>
+
+<strofa>A nie mniemaj, byś sam był w tej niewoli:/
+Nalazłby się, kogo to nie mniej boli;/
+Jeno ludzie snadniej zakryć umieją,/
+Acz nie z serca, z wierzchu się przedsię śmieją.</strofa>
+
+<strofa>Mnie, smutnego, ten dowcip nie ratuje<pr><slowo_obce>ten dowcip nie ratuje</slowo_obce> --- nie mam tego talentu, zdolności do tego.</pr>,/
+Wyda mię twarz, gdy się serce źle czuje;/
+Wszakoż widzę, że się próżno frasować,/
+Co zginęło, trudno tego wetować.<end id="e1188512657844"/></strofa>
+
+</liryka_l></utwor>

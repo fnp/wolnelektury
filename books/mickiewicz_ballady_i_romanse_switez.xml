@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Świteź">
+<dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
+<dc:title xml:lang="pl">Świteź</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/ballady-i-romanse</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Kallenbach, Józef</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Ballada</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/ballady-i-romanse-switez</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/2222</dc:source.URL>
+<dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+<dc:date.pd xml:lang="pl">1855</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-09-06</dc:date>
+<dc:audience xml:lang="pl">SP2</dc:audience>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+
+<autor_utworu>Adam Mickiewicz</autor_utworu>
+
+<dzielo_nadrzedne>Ballady i romanse</dzielo_nadrzedne>
+
+<nazwa_utworu>Świteź</nazwa_utworu>
+
+<dedykacja><akap>Do Michała Wereszczaki</akap></dedykacja>
+
+
+
+<strofa><begin id="b1189067330910"/><motyw id="m1189067330910">Woda </motyw><wers_akap>Ktokolwiek będziesz w Nowogródzkiej stronie,</wers_akap><extra>w źródle nie ma wcięcia akapitowego</extra>/
+Do Płużyn ciemnego boru/
+Wjechawszy, pomnij zatrzymać twe konie,/
+By się przypatrzyć jezioru.</strofa>
+
+<strofa><wers_akap>Świteź tam jasne rozprzestrzenia łona,</wers_akap>/
+W wielkiego kształcie obwodu,/
+Gęstą po bokach puszczą oczerniona,/
+A gładka jak szyba lodu.</strofa>
+
+<strofa><wers_akap>Jeżeli nocną przybliżysz się dobą</wers_akap>/
+I zwrócisz ku wodom lice:/
+Gwiazdy nad tobą i gwiazdy pod tobą/
+I dwa obaczysz księżyce.</strofa>
+
+<strofa><wers_akap>Niepewny, czyli szklanna spod twej stopy</wers_akap>/
+Pod niebo idzie równina,/
+Czyli też niebo swoje szklanne stropy/
+Aż do nóg twoich ugina;</strofa>
+
+<strofa><wers_akap>Gdy oko brzegów przeciwnych nie sięga,</wers_akap>/
+Dna nie odróżnia od szczytu:/
+Zdajesz się wisieć w środku niebokręga,/
+W jakiejś otchłani błękitu.</strofa>
+
+<strofa><wers_akap>Tak w noc, pogodna jeśli służy pora,</wers_akap>/
+Wzrok się przyjemnie ułudzi.../
+<begin id="b1189067394008"/><motyw id="m1189067394008">Czary</motyw>Lecz, żeby w nocy jechać do jeziora,/
+Trzeba być najśmielszym z ludzi.<end id="e1189067330910"/></strofa>
+
+<strofa><wers_akap>Bo jakie szatan wyprawia tam harce!</wers_akap>/
+Jakie się larwy<pr><slowo_obce>larwy</slowo_obce> --- straszydła.</pr> szamocą!/
+Drżę cały, kiedy bają o tém starce,/
+I strach wspominać przed nocą.</strofa>
+
+<strofa><wers_akap>Nieraz śród wody gwar jakoby w mieście,</wers_akap>/
+Ogień i dym bucha gęsty,/
+I zgiełk walczących i wrzaski niewieście/
+I dzwonów gwałt i zbrój chrzęsty.</strofa>
+
+<strofa><wers_akap>Nagle dym spada, hałas się uśmierza,</wers_akap>/
+Na brzegach tylko szum jodły,/
+W wodach gadanie cichego pacierza,/
+I dziewic żałośne modły.</strofa>
+
+<strofa><wers_akap>Co to ma znaczyć? różni różnie plotą:</wers_akap>/
+Cóż, kiedy nie był nikt na dnie;/
+Biegają wieści pomiędzy prostotą,/
+Lecz któż z nich prawdę odgadnie?<end id="e1189067394008"/></strofa>
+
+<strofa><wers_akap>Pan na Płużynach, którego pradziady</wers_akap>/
+Były Świtezi dziedzice,/
+Z dawna przemyślał i zasięgał rady,/
+Jak te zbadać tajemnice.</strofa>
+
+<strofa><wers_akap>Kazał przybory w bliskiem robić mieście,</wers_akap>/
+I wielkie sypał wydatki:/
+Związano niewód, głęboki stóp dwieście,/
+Budują czółny i statki.</strofa>
+
+<strofa><begin id="b1189067514932"/><motyw id="m1189067514932">Ksiądz, Religia</motyw><wers_akap>Ja ostrzegałem: że w tak wielkiem dziele</wers_akap>/
+Dobrze, kto z Bogiem poczyna;/
+Dano więc na mszę w niejednym kościele,/
+I ksiądz przyjechał z Cyryna<pr>Cyryn --- miasteczko w Nowogródzkiem, z kościołem parafialnym. Do parafii cyryńskiej należały Płużyny.</pr>.</strofa>
+
+<strofa><wers_akap>Stanął na brzegu, ubrał się w ornaty,</wers_akap>/
+Przeżegnał, pracę pokropił;<end id="e1189067514932"/>/
+Pan daje hasło: odbijają baty<pr><slowo_obce>baty</slowo_obce> --- czółna.</pr>,/
+Niewód się z szumem zatopił.</strofa>
+
+<strofa><wers_akap>Topi się, pławki<pr><slowo_obce>pławki</slowo_obce> (<slowo_obce>pławy</slowo_obce>, <slowo_obce>pławuki</slowo_obce>) --- kawałki kory przytwierdzane do górnej krawędzi sieci w celu utrzymania jej na wodzie.</pr> na dół z sobą spycha,</wers_akap>/
+Tak przepaść wody głęboka;/
+Prężą się liny, niewód idzie z cicha,/
+Pewnie nie złowią ni oka<pr><slowo_obce>Pewnie nie złowią ni oka</slowo_obce> --- zwrot ludowy, używany na Białej Rusi i Podolu; <slowo_obce>oko</slowo_obce> --- waga trzech funtów.</pr>.</strofa>
+
+<strofa><wers_akap>Na brzeg oboje wyjęto już skrzydło,</wers_akap>/
+Ciągną ostatek więcierzy:/
+Powiemże jakie złowiono straszydło?/
+Choć powiem, nikt nie uwierzy.</strofa>
+
+<strofa><wers_akap>Powiem jednakże. Nie straszydło wcale,</wers_akap>/
+Żywa kobieta w niewodzie,/
+Twarz miała jasną, usta jak korale,/
+Włos biały skąpany w wodzie.</strofa>
+
+<strofa><wers_akap>Do brzegu dąży. A gdy jedni z trwogi</wers_akap>/
+Na miejscu stanęli głazem,/
+Drudzy zwracają ku ucieczce nogi,/
+Łagodnym rzecze wyrazem:</strofa>
+
+<strofa><wers_akap>,,Młodzieńcy! wiecie, że tutaj bezkarnie</wers_akap>/
+Dotąd nikt statku nie spuści:/
+Każdego śmiałka jezioro zagarnie/
+Do nieprzebrnionych czeluści.</strofa>
+
+<strofa><wers_akap>I ty, zuchwały, i twoja gromada</wers_akap>/
+Wraz byście poszli w głębinie<pr><slowo_obce>głębinia</slowo_obce> (forma białorus.) --- głębina.</pr>:/
+Lecz, że to kraj był twojego pradziada,/
+Że w tobie nasza krew płynie;</strofa>
+
+<strofa><begin id="b1189067678140"/><motyw id="m1189067678140">Bóg, Religia</motyw><wers_akap>Choć godna kary jest ciekawość pusta,</wers_akap>/
+Lecz, żeście z Bogiem poczęli,/
+Bóg wam przez moje opowiada usta,/
+Dzieje tej cudnej topieli.<end id="e1189067678140"/></strofa>
+
+<strofa><begin id="b1189067749157"/><motyw id="m1189067749157">Miasto</motyw><wers_akap>Na miejscach, które dziś piaskiem zaniosło,</wers_akap>/
+Gdzie car<pr><slowo_obce>car</slowo_obce> --- podbiał (ziele).</pr> i trzcina zarasta,/
+Po których teraz wasze biega wiosło,/
+Stał okrąg pięknego miasta.</strofa>
+
+<strofa><wers_akap>Świteź, i w sławne orężem ramiona</wers_akap>/
+I w kraśne twarze bogata,/
+Niegdyś od książąt Tuhanów<pr><slowo_obce>od książąt Tuhanów</slowo_obce> --- aluzja do Tuhanowicz, wsi należącej do Wereszczaków, gdzie przebywała Maryla.</pr> rządzona,/
+Kwitnęła przez długie lata.<end id="e1189067749157"/></strofa>
+
+<strofa><wers_akap>Nie ćmił widoku ten ostęp ponury:</wers_akap>/
+Przez żyzne wskroś okolice/
+<begin id="b1189068330457"/><motyw id="m1189068330457">Przywódca, Wojna, Żołnierz</motyw>Widać stąd było Nowogródzkie mury,/
+Litwy naówczas stolicę.</strofa>
+
+<strofa><wers_akap>Raz niespodzianie obiegł tam Mendoga</wers_akap>/
+Potężnem wojskiem car z Rusi;/
+Na całą Litwę wielka padła trwoga,/
+Że Mendog poddać się musi.</strofa>
+
+<strofa><wers_akap>Nim ściągnął wojsko z odległej granicy,</wers_akap>/
+Do ojca mego napisze:/
+--- »Tuhanie! w tobie obrona stolicy,/
+Śpiesz, zwołaj twe towarzysze«. ---</strofa>
+
+<strofa><wers_akap>Skoro przeczytał Tuhan list książęcy</wers_akap>/
+I wydał rozkaz do wojny,/
+Stanęło zaraz mężów pięć tysięcy,/
+A każdy konny i zbrojny.</strofa>
+
+<strofa><wers_akap>Uderzą w trąby, rusza młódź, już w bramie</wers_akap>/
+Błyska Tuhana proporzec,/
+Lecz Tuhan stanie i ręce załamie,/
+I znowu jedzie na dworzec.</strofa>
+
+<strofa><wers_akap>I mówi do mnie: --- »Jaż własnych mieszkańców</wers_akap>/
+Dla obcej zgubię odsieczy?/
+Wszak wiesz, że Świteź nie ma innych szańców,/
+Prócz naszych piersi i mieczy.</strofa>
+
+<strofa><begin id="b1189069106821"/><motyw id="m1189069106821">Anioł, Bóg, Córka, Miasto</motyw><wers_akap>Jeśli rozdzielę szczupłe wojsko moje,</wers_akap>/
+Krewnemu nie dam obrony;/
+A jeśli wszyscy pociągniem na boje,/
+Jak będą córy i żony?«<end id="e1189068330457"/></strofa>
+
+<strofa><wers_akap>--- Ojcze, odpowiem, lękasz się niewcześnie,</wers_akap>/
+Idź, kędy sława cię woła,/
+Bóg nas obroni: dziś nad miastem we śnie,/
+Widziałam jego anioła.</strofa>
+
+<strofa><wers_akap>Okrążył Świteź miecza błyskawicą,</wers_akap>/
+I nakrył złotemi pióry,/
+I rzekł mi: póki męże za granicą,/
+Ja bronię żony i córy. ---<end id="e1189069106821"/></strofa>
+
+<strofa><begin id="b1189069337092"/><motyw id="m1189069337092">Miasto, Walka</motyw><wers_akap>Usłuchał Tuhan, i za wojskiem goni;</wers_akap>/
+Lecz gdy noc spada ponura,/
+Słychać gwar z dala, szczęk i tętent koni,/
+I zewsząd straszny wrzask: ura!</strofa>
+
+<strofa><wers_akap>Zagrzmią tarany, padły bram ostatki,</wers_akap>/
+Zewsząd pocisków grad leci,/
+Biegą na dworzec starce, nędzne matki,/
+Dziewice i drobne dzieci.<end id="e1189069337092"/></strofa>
+
+<strofa><wers_akap>»Gwałtu! wołają, zamykajcie bramę,</wers_akap>/
+Tuż, tuż, za nami Ruś wali./
+Ach! zgińmy lepiej, zabijmy się same,/
+Śmierć nas od hańby ocali«.</strofa>
+
+<strofa><begin id="b1189069531893"/><motyw id="m1189069531893">Bóg, Samobójstwo</motyw><wers_akap>Natychmiast wściekłość bierze miejsce strachu;</wers_akap>/
+Miecą bogactwa na stosy,/
+Przynoszą żagwie i płomień do gmachu,/
+I krzyczą strasznemi głosy:</strofa>
+
+<strofa><wers_akap>»Przeklęty będzie, kto się nie dobije!«</wers_akap>/
+Broniłam, lecz próżny opór:/
+Klęczą, na progach wyciągają szyje,/
+A drugie przynoszą topór.</strofa>
+
+<strofa><wers_akap>Gotowa zbrodnia... Czyli wezwać hordy</wers_akap>/
+I podłe przyjąć kajdany,/
+Czy bezbożnemi wytępić się mordy?.../
+Panie, zawołam, nad pany:</strofa>
+
+<strofa><wers_akap>Jeśli nie możem ujść nieprzyjaciela,</wers_akap>/
+O śmierć błagamy u Ciebie,/
+Niechaj nas lepiej Twój piorun wystrzela,/
+Lub żywych ziemia pogrzebie!</strofa>
+
+<strofa><wers_akap>Wtem, jakaś białość nagle mnie otoczy,</wers_akap>/
+Dzień zda się spędzać noc ciemną:/
+Spuszczam ku ziemi przerażone oczy.../
+Już ziemi nie ma pode mną!...</strofa>
+
+<strofa><begin id="b1189069690064"/><motyw id="m1189069690064">Dziewictwo</motyw><begin id="b1189069801095"/><motyw id="m1189069801095">Rośliny</motyw><wers_akap>Takeśmy uszły zhańbienia i rzezi.</wers_akap>/
+Widzisz to ziele dokoła,/
+To są małżonki i córki Świtezi,/
+Które Bóg przemienił w zioła.</strofa>
+
+<strofa><wers_akap>Białawem kwieciem, jak białe motylki,</wers_akap>/
+Unoszą się nad topielą;/
+List<pr><slowo_obce>List</slowo_obce> (stpol.) --- liść (por.: <wyroznienie>listopad</wyroznienie>).</pr> ich zielony, jak jodłowe szpilki,/
+Kiedy je śniegi pobielą.</strofa>
+
+<strofa><wers_akap>Za życia cnoty niewinnej obrazy,</wers_akap>/
+Jej barwę mają po zgonie,/
+W ukryciu żyją i nie cierpią skazy,/
+Śmiertelne nie tkną ich dłonie.<end id="e1189069690064"/><end id="e1189069531893"/></strofa>
+
+<strofa><wers_akap>Doświadczył tego car i ruska zgraja,</wers_akap>/
+Gdy piękne ujrzawszy kwiecie,/
+Ten rwie i szyszak stalony umaja,/
+Ten wianki na skronie plecie:</strofa>
+
+<strofa><wers_akap>Kto tylko ściągnął do głębini ramie,</wers_akap>/
+Tak straszna jest kwiatów władza,/
+Że go natychmiast choroba wyłamie,/
+I śmierć gwałtowna ugadza.</strofa>
+
+<strofa><wers_akap>Choć czas te dzieje wymazał z pamięci,</wers_akap>/
+Pozostał sam odgłos kary,/
+Dotąd w swych baśniach prostota go święci,/
+I kwiaty nazywa Cary". ---<end id="e1189069801095"/></strofa>
+
+<strofa><wers_akap>To mówiąc, pani z wolna się oddala,</wers_akap>/
+Topią się statki i sieci,/
+Szum słychać w puszczy, poburzona fala/
+Z łoskotem na brzegi leci.</strofa>
+
+<strofa><wers_akap>Jezioro do dna pękło na kształt rowu,</wers_akap>/
+Lecz próżno za nią wzrok goni,/
+Wpadła i falą nakryła się znowu,/
+I więcej nie słychać o niéj.</strofa>
+
+</liryka_l></utwor>

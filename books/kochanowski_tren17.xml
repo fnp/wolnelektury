@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Treny/Tren_XVII">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Tren XVII (Pańska ręka mię dotknęła...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/treny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Tren</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/treny-tren-xvii-panska-reka-mie-dotknela</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1501</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 2, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-30</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Treny</dzielo_nadrzedne>
+
+<nazwa_utworu>Tren XVII</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188561565957"/><motyw id="m1188561565957">Bóg, Los</motyw>Pańska ręka mię dotknęła<pe><slowo_obce>Pańska ręka mię dotknęła</slowo_obce> --- por. "Zlitujcie się, przyjaciele, zlitujcie, gdyż Bóg mnie dotknął swą ręką --- Księga Hioba (Job 19, 21).</pe>,/
+Wszytkę mi radość odjęła:/
+Ledwie w sobie czuję duszę/
+I tę podobno dać muszę<pe><slowo_obce>duszę... dać muszę</slowo_obce> --- muszę umrzeć</pe>.</strofa>
+
+<strofa><begin id="b1219234770154"/><motyw id="m1219234770154">Czas , Serce, Słońce</motyw>Lubo wstając gore jaśnie,/
+Lubo padnąc słońce gaśnie<pe><slowo_obce>Lubo wstając... Lubo padnąc słońce gaśnie</slowo_obce> --- czy słońce wschodzi i jasno świeci, czy zachodzi i gaśnie.</pe>,/
+Mnie jednako<pe><slowo_obce>jednako</slowo_obce> --- tak samo.</pe> serce boli,/
+A nigdy się nie utoli<pe><slowo_obce>utoli</slowo_obce> --- utuli.</pe>.<end id="e1219234770154"/></strofa>
+
+<strofa><begin id="b1206258897014"/><motyw id="m1206258897014">Łzy</motyw>Oczu nigdy nie osuszę ---/
+I tak wiecznie płakać muszę!/
+Muszę płakać! --- O mój Boże,/
+Kto się przed Tobą skryć może?<end id="e1206258897014"/></strofa>
+
+<strofa>Próżno morzem nie pływamy,/
+Próżno w bitwach nie bywamy:/
+Ugodzi nieszczęście wszędzie,/
+Choć podobieństwa nie będzie.</strofa>
+
+<strofa>Wiodłem swój żywot tak skromnie,/
+Że ledwe kto wiedział o mnie,/
+A zazdrość i złe przygody/
+Nie miały mi w co dać szkody<pe><slowo_obce>Nie miały mi w co dać szkody</slowo_obce> --- nie mogły mi zaszkodzić</pe>.</strofa>
+
+<strofa>Lecz Pan, który gdzie tknąć, widzi<pe><slowo_obce>gdzie tknąć, widzi</slowo_obce> --- widzi, gdzie ugodzić celnie.</pe>,/
+A z przestrogi<pe><slowo_obce>przestrogi</slowo_obce> --- tu: z ostrożności.</pe> ludzkiej szydzi,/
+Zadał mi raz tym znaczniejszy,/
+Czym-em już był bezpieczniejszy<pe><slowo_obce>Czym-em był bezpieczniejszy</slowo_obce> --- im bardziej czułem, że jestem już bezpieczny.</pe>.<end id="e1188561565957"/></strofa>
+
+<strofa><begin id="b1188561991488"/><motyw id="m1188561991488">Mądrość, Rozum, Upadek, Żałoba</motyw>A rozum, który w swobodzie/
+Umiał mówić o przygodzie,/
+Dziś ledwe sam wie o sobie:/
+Tak mię podparł<pr><slowo_obce>Tak mię podparł</slowo_obce> --- tak mi pomógł; zdanie to wyraża ironię, bo właśnie rozum zawiódł.</pr> w mej chorobie.</strofa>
+
+<strofa>Czasem by się chciał poprawić,/
+A mnie ciężkiej troski zbawić,/
+Ale gdy siędzie na wadze,/
+Żalu ruszyć nie ma władze<pe><slowo_obce>nie ma władze</slowo_obce> --- nie ma siły.</pe>.</strofa>
+
+<strofa><begin id="b1219235191469"/><motyw id="m1219235191469">Szaleństwo</motyw>Próżne to ludzkie wywody,/
+Żeby szkodą nie zwać szkody;/
+A kto się w nieszczęściu śmieje,/
+Ja bych tak rzekł, że szaleje.<end id="e1219235191469"/></strofa>
+
+<strofa><begin id="b1219235466665"/><motyw id="m1219235466665">Łzy</motyw>Kto zaś na płacz lekkość wkłada<pr><slowo_obce>na płacz lekkość wkłada</slowo_obce> --- gani lub lekceważy płacz.</pr>,/
+Słyszę dobrze, co powiada;/
+Lecz się tym żal nie hamuje,/
+Owszem, więtszy przystępuje.</strofa>
+
+<strofa>Bo, mając zranioną duszę,/
+Rad i nierad płakać muszę,/
+Co snadź nie cześć, to ku szkodzie<pe><slowo_obce>Co... nie cześć, to ku szkodzie</slowo_obce> --- co nie przynosi zaszczytu, to przynosi szkodę.</pe>/
+I zelżywość serce bodzie<pe><slowo_obce>zelżywość serce bodzie</slowo_obce> --- lekceważenie, pobłażliwość rani serce.</pe>.</strofa>
+
+<strofa>Lekarstwo to, prze Bóg żywy,/
+Ciężkie na umysł troskliwy!<pe><slowo_obce>umysł troskliwy</slowo_obce> --- zatroskany.</pe>/
+Kto przyjaciel zdrowia mego,/
+Wynajdzi co wolniejszego<pe><slowo_obce>co wolniejszego</slowo_obce> --- coś łagodniejszego.</pe>!</strofa>
+
+<strofa>A ja zatym łzy niech leję,/
+Bom stracił wszytkę nadzieję,/
+By mię rozum miał ratować;/
+Bóg sam mocen to hamować<pe><slowo_obce>Bóg sam mocen</slowo_obce> --- jedynie Bóg może.</pe>.<end id="e1219235466665"/><end id="e1188561991488"/></strofa>
+
+</liryka_l></utwor>

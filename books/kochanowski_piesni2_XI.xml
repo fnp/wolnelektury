@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XI_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XI (Stateczny umysł pamiętaj zachować...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-xi-stateczny-umysl-pamietaj-zachow</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XI</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188578025275"/><motyw id="m1188578025275">Los</motyw>Stateczny umysł pamiętaj zachować,/
+Jeśli cię pocznie nieszczęście frasować;/
+Także i góry<pr><slowo_obce>góry</slowo_obce> --- w górę.</pr> nie radzęć wylatać,/
+Kiedy się szczęście z tobą imie bratać,</strofa>
+
+<strofa>Śmierci podległy człowiecze cnotliwy,/
+Choć wszytek twój wiek będzie frasowliwy,/
+Chocia też czasem, siedząc z przyjacioły,/
+Przy dobrym trunku strawisz dzień wesoły.</strofa>
+
+<strofa>Tu przy ciekącym, przezornym strumieniu/
+Każ stół gotować w jaworowym cieniu;/
+Każ wino nosić, póki beczka leje,/
+Póki wiek służy, a śmierć nie przyspieje!</strofa>
+
+<strofa>Postąpisz z włości drogo zapłaconych,/
+Postąpisz z dworu i gmachów złoconych;/
+A co zebrania twego kolwiek będzie,/
+To wszytko przyszły namiastek osiędzie.</strofa>
+
+<strofa>Bądź się kto zacnym rodził i bogatym,/
+Bądź niewolnikiem, u śmierci nic na tym;/
+Czyj kolwiek naprzód los wynidzie, wsiadaj,/
+Wieczny wygnańcze, ani więc odkładaj!<end id="e1188578025275"/></strofa>
+
+</liryka_l></utwor>

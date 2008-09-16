@@ -1,0 +1,536 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kasprowicz/Hymny/Salome">
+<dc:creator xml:lang="pl">Kasprowicz, Jan</dc:creator>
+<dc:title xml:lang="pl">Salome</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/hymny</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl"> Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Hymn</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/hymny-salome</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/5961</dc:source.URL>
+<dc:source xml:lang="pl">Kasprowicz, Jan (1860-1926), Hymny, ”Bibljoteka Polska“, Warszawa, 1922</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kasprowicz zm. 1926</dc:rights>
+<dc:date.pd xml:lang="pl">1926</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-09-15</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kasprowicz</autor_utworu>
+
+<dzielo_nadrzedne>Hymny</dzielo_nadrzedne>
+
+<nazwa_utworu>Salome<pe>Salome --- żydowska księżniczka z dynastii herodiańskiej (wnuczka Heroda Wielkiego); według legendy biblijnej, gdy jej ojczym, Herod Antypas, władca Galilei, zachwycony tańcem dziewczyny obiecał spełnić każde jej życzenie, Salome za namową swej matki Herodiady zażądała głowy Jana Chrzciciela, przyczyniając się w ten sposób bezpośrednio do śmierci proroka.</pe></nazwa_utworu>
+
+
+
+<strofa><begin id="b1212608225557"/><motyw id="m1212608225557">Kobieta demoniczna, Miłość silniejsza niż śmierć, Pożądanie</motyw>O przyjdź!/
+O boski przyjdź proroku!/
+Salome ciebie woła z płomieniami w oku!/
+Na tę słoneczną miłości polanę,/
+pomiędzy żądz rozkwitłe czarodziejskie zioła/
+Salome cię woła!/
+O przyjdź!.../
+Salome, kłęby włosów rozwiawszy miedziane,/
+niby wieków pożaru krwawiące się łuny,/
+w złocistej harfy uderzyła struny/
+i śpiewa.../
+O przyjdź!.../
+O przyjdź, proroku blady!/
+Ogień żywy obleje twe liliowe skronie,/
+ogień żywy na licu--ć przygasłym zapłonie/
+od mych gorących warg!/
+<begin id="b1212605629033"/><motyw id="m1212605629033">Grzech, Raj, Drzewo, Kobieta</motyw>Salome, białolistny kwiat Herodiady,/
+zerwany ręką grzechu z świadomości drzewa,<end id="e1212605629033"/>/
+w pożarne wieków łuny rzuca pieśń swą krwawą,/
+swą nieskończoną pieśń ---/
+i woła cię, proroku! Przyjdź!.../
+W królewskiej komnacie/
+kazałam służebnicom rozesłać kobierce,/
+utkane z miękkiej wełny owiec z Galaadu;/
+majestat ciężkich kotar otula me łoże,/
+moje łabędzie puchy!.../
+Ach! jak się trwożę!/
+Jak lęka się ma dusza, aby promyk złoty/
+nie przedarł się zuchwale do mojej tęsknoty!/
+By jakiś listek mirtowy,/
+gdy wiatr z kryjówek gaju ciche szumy płoszy,/
+nie zadrżał, posłyszawszy stłumione rozmowy/
+naszej mdlejącej rozkoszy!.../
+Nie wejdzie nikt, prócz ciszy, w ten przybytek głuchy,/
+prócz ciszy i prócz żaru mojego pragnienia,/
+co mi rozdźwięcza serce,/
+że śpiewa pieśń, idącą w wieków majestacie/
+przez świat, ogromny świat ---/
+tę nieskończoną pieśń:/
+O przyjdź, proroku, przyjdź!...</strofa>
+
+<strofa><begin id="b1212608276730"/><motyw id="m1212608276730">Ciało, Dziewictwo</motyw>Skąpałam swą dziewiczość w przejrzystym marmurze,/
+gdzie zdrój różanej wody z kształtnych dziobów tryska,/
+a słońce przez zazdrosne ciśnie się kryształy,/
+ażeby rozcałować mych biódr<pe><slowo_obce>biódr</slowo_obce> --- bioder.</pe> marmur biały,/
+mej piersi oroszone, wpółzamknięte róże.../
+Kazałam się namaścić maściami wonnymi,/
+a uśmiech ubezwładniał me rozwarte usta/
+w przeczuciu nieznanej pieszczoty,/
+gdy Jezabel, ta płocha, ta dziewczyna pusta,/
+namaszczająca me łono/
+i mleczną szyję mą,/
+szeptała mi do duszy, żem ja winne grono,/
+najwyborniejsze z gron!/
+Ach! złocę się w słonecznym, błękitnym przestworzu/
+i czekam na winnicach engaddyjskiej ziemi,/
+aż przyjdzie pragnący On,/
+aż przyjdzie żniwiarz wybrany/
+i niecierpliwą dłoń/
+wzniesie po owoc ten złoty.../
+Ach! przyjdź!.../
+Na oceany/
+niewyczerpanych żądz/
+rzuć swoich żagli płótna/
+i płyń!...<end id="e1212608276730"/>/
+Ach! przyjdź!.../
+Czekam na ciebie smutna.../
+Ach! przyjdź!.../
+Czekam na ciebie wesoła, radosna/
+onym pragnieniem, co się spełnić ma,/
+jako ta kwieciem pękająca wiosna!/
+Ach! przyjdź!/
+Powieki mi się kładły na przepastne głębie/
+moich senliwych<pe><slowo_obce>senliwych</slowo_obce> (neol.) --- sennych.</pe> ócz,/
+gdy gdzieś, na dnie ich, wielkim, jak za krańcem świata/
+nieogarnięta oceanów toń,/
+kąpały się obrazy, rozkoszne, jak woń,/
+płynąca z Raju, gdzie --- brat zabił brata!.../
+A były--ć w swej rozkoszy zabójcze, jak śmierć,/
+co na tę misę rzeźbioną/
+rzuciła mi w swym szale lubieżnym twą skroń,/
+owitą w włosów krucz<pe><slowo_obce>krucz</slowo_obce> --- czerń, czarna barwa.</pe>,/
+ociekających krwią.../
+Ach przyjdź!...</strofa>
+
+<strofa>Jak twe źrenice, choć umarłe, płoną!</strofa>
+
+<strofa><begin id="b1212608588649"/><motyw id="m1212608588649">Kochanek, Miłość, Śmierć, Trup</motyw>O ty kochanku mój!/
+O mój jedyny kochanku!/
+Rozpalę w alabastrach kosztowne oleje,/
+otoczę światłościami jedwabiste łoże,/
+z nocy dzień biały stworzę!/
+Niech tych światłości zdrój/
+oblewa naszą miłość, by lśniła, jak zorze/
+konającego dnia!.../
+O Jezabel<pe><slowo_obce>Jezabel</slowo_obce> --- w kulturze żydowskiej synonim kobiety próżnej, sztucznie poprawiającej swą urodę.</pe>, ty płocha, ty dziewczyno pusta!/
+O Jezabel, przed tobą ma się dusza śmieje/
+i moje wargi drżą,/
+moje rozwarte usta!.../
+Lub zgaszę w drogich czarach płonące pochodnie,/
+szkarłatem, jak mrok gęstym, łożnicę osłonię,/
+promieniom gwiazd przystępu w ten kościół zabronię,/
+niech nasza miłość utonie/
+w wieczystej, nieodgadłej, niezgłębionej nocy!.../
+A z tajemniczych uścisków,/
+gdy dusza twa, proroku, mą duszę pochłonie,/
+gdy w oczach twych przymkniętych czar twojej Salomy/
+urośnie w niespodzianej rozkoszy ogromy,/
+gdy świat się cały zamknie w pragnienia wszechmocy,/
+a ty gdy cały zginiesz w nasyceń powodzi,/
+niech się zbawiciel narodzi/
+lub szatan, co po wszystkie globów widnokręgi/
+rozepnie wiekuistą, nieśmiertelną zbrodnię!.../
+Niech płynie głos triumfu po życia odmętach,/
+lub jęk i żal, w skazańców wychowany pętach,/
+niech bije w bramy śmierci swym rozpaczy młotem,/
+niech dźwiga się po krzyżach, szubienicach, palach,/
+ku niemym stropom niebios, w chmury czy błękity,/
+a ty, proroku, niesyty ---/
+ty słuchaj mojej pieśni, nieskończonej pieśni,/
+rozbrzmiewającej po bezbrzeżnych dalach,/
+i przyjdź!/
+Niechaj się łamią potęgi,/
+niechaj się w gruzy rozpada/
+ten tron, na którym twórcza nieśmiertelność siada;/
+ta ziemia i te gwiazdy, słońca i księżyce/
+niech się rozprysną w mgławice;/
+niech sen wiekuistości jako sen się prześni,/
+ty słuchaj mojej pieśni/
+i przyjdź!/
+O ty kochanku mój!/
+O ty jedyny kochanku!...</strofa>
+
+<strofa><begin id="b1212608697385"/><motyw id="m1212608697385">Oko</motyw>Jak twe źrenice, choć umarłe, płoną!<end id="e1212608697385"/></strofa>
+
+<strofa><begin id="b1212608892496"/><motyw id="m1212608892496">Pocałunek</motyw>A o poranku,/
+o świcie któż mnie budzi całowaniem w oczy?/
+To on, to prorok boży!/
+Kto pieści miedź złotawą rozwitych warkoczy/
+i budzi całowaniem z słodkich snów omdlenia?/
+To on, to prorok boży!/
+Któż głowę mą podnosi i do ust przyciska/
+i znowu ją na puchach jedwabnych położy/
+i budzi całowaniem i sen mój przemienia/
+w rozkoszną, słodką jawę?/
+To on, to prorok boży!/
+Ach! przyjdź!/
+Któż piersi me odsłania i z swego ogniska,/
+z ogniska żądnej duszy sypie iskry krwawe/
+na moje łono białe,/
+na moje włosy złotawe,/
+na oczy, z rozkosznego zdumienia rozwarte,/
+i budzi całowaniem zdumienie rozkoszy?/
+To on, to prorok boży!/
+Któż sen mi płoszy?<end id="e1212608892496"/>/
+<begin id="b1212608945682"/><motyw id="m1212608945682">Wampir</motyw>Któż sen mi całowaniem płoszy na wiek wieków,/
+ażebym wieki wieków tuląc twoją szyję/
+w uścisku drżących ramion i do twego łona,/
+jak jemioła do dębu, ciałem przylepiona/
+i duszą, z rozwartymi wciąż śniła oczyma,/
+że twoją duszę piję,/
+że twym się ciałem sycę!<end id="e1212608945682"/>/
+<begin id="b1212612056191"/><motyw id="m1212612056191">Kobieta, Mężczyzna, Miłość, Pan, Sługa, Władza</motyw>Że duszę twą i ciało miłość moja trzyma,/
+ażeby nie wybiegły za przybytku progi,/
+gdzie ja, gdzie moja miłość ogniem ogniów skrzy się!/
+Gdzie ja, gdzie twoja luba, twa droga, wybrana,/
+twa jedna i jedyna ma swojego pana/
+i swego sługę w tobie, <begin id="b1212612128254"/><motyw id="m1212612128254">Gotycyzm, Trup</motyw>o luby, o drogi,/
+o słodki, o wybrany, o jeden jedyny<end id="e1212612056191"/>,/
+o na złocistej położony misie/
+w czerwieni krwi najdroższej, krwi najkosztowniejszej!/
+Któż mnie, kochanku,/
+o srebrnym budzi poranku,/
+że mogę twoje blade rozcałować lice,/
+że mogę wyczesywać z włosów krew zakrzepłą!?/
+Że mogę tą źrenicą, z rozkoszy oślepłą,/
+spoglądać w twoje źrenice ---/
+jak twe źrenice, choć umarłe, płoną!/
+Że mogę twe powieki rozwierać palcami,/
+tą ręką, którą krew twa przekosztowna plami,/
+i patrzeć w twoje źrenice ---/
+jak twe źrenice, choć umarłe, płoną!/
+Jak one płoną ogromnie!<end id="e1212612128254"/>/
+<begin id="b1212612257691"/><motyw id="m1212612257691">Gotycyzm, Krew, Taniec</motyw>O moje wy służebne! przyjaciółki moje!/
+Na oścież otwierajcie pałacu podwoje!/
+Rozsuńcie nad posłaniem oponę czerwoną!/
+Kochanek zbliża się do mnie!/
+Uderzcie w lutnie i harfy!/
+Zatańczcie! niech radosny korowód się złoży!/
+Przy mnie kochanek mój!/
+Przy mnie jest prorok boży!/
+W tym wirze,/
+w którym ach! wszystek świat wiruje ze mną,/
+krew cieknie z misy, cieknie strugą ciemną!/
+Zedrzyjcie ze mnie te szarfy!/
+Zedrzyjcie drogie powłoki!/
+Niech krew ta cieknie po mym łonie białem!/
+Niech się spokrewni z mym ciałem/
+ten przekosztowny zdrój!<end id="e1212612257691"/>/
+O święte objawienie mej boskiej urody!/
+Te oczy,/
+w które wpatrywać się będzie/
+ten mój kochanek młody,/
+aż mu się z szału wszystek świat zamroczy!/
+Ach! przyjdź!.../
+Te moje włosy miedziane,/
+w które on rękę zanurzy/
+i będzie na swej dłoni ich sypkość promienną/
+z rozkosznym ważył uśmiechem!/
+Ach! przyjdź!.../
+Te usta, szkarłatem zlane,/
+barwami od świtowych ros wilgotnej róży!/
+Ach! przyjdź!/
+<begin id="b1212612191916"/><motyw id="m1212612191916">Pocałunek</motyw>Te moje piersi drzemiące!/
+Z parą łabędzi porówna je senną/
+i potem je pożarem całunków przebudzi,/
+aż spłomienieją od rozkosznych znamion!<end id="e1212612191916"/>/
+Ach! przyjdź!.../
+Te biodra, które zamknie pierścieniem swych ramion!/
+Ach! przyjdź!.../
+Ach! przyjdź, kochanku, przyjdź!...<end id="e1212608588649"/></strofa>
+
+<strofa>Dlaczego głos mój w pustym rozbrzmiewa przestworzu?/
+Dlaczego mu potężnym nie odpowie echem/
+głos twój, proroku, by wieścił przemianę/
+okręgów świata pod mocą/
+miłości mojej niesytej?/
+Proroku! niebios błękity/
+złączą się z ziemią, przez ciebie wezwane,/
+w tajemnic jeden cud/
+i ty objąłeś istotę stworzenia,/
+objąwszy miłość mą!<end id="e1212608225557"/>/
+O! jakie blaski w twoich oczach drżą!/
+W jakąż muzykę głos się twój przemienia!/
+Jak rozkrysztala się w srebrnych oparach!/
+Jak z światów cudotwórczym zlewa się oddechem!/
+Głos twój, przy moich zająwszy się żarach,/
+błyskawicami moich żądz brzemienny,/
+huczący grzmotem namiętnego szału,/
+który od końca do końca/
+przenika głębie, moją przepełnione duszą,/
+wstrząśnie tej ziemi macierzystym łonem/
+i nowe siły wywiedzie z jej wnętrza./
+Z przepaści ciemnie się ruszą/
+i jutrznie, owinięte obrzeżem czerwonem!/
+Do boju stanie dzień z nocą;/
+pomrok ucieknie, jak tchórz;/
+łyskliwe wody zagrają pieśń fal/
+pod tchnieniem rannych zórz,/
+pod lubieżnymi całunkami słońca,/
+które powstanie, rozbudzone głosem/
+twojej natchnionej, a mnie pełnej pieśni./
+O wskrześnij, wiosno, o wskrześnij!/
+<begin id="b1212612561838"/><motyw id="m1212612561838">Kobieta, Kochanek, Miłość, Natura</motyw>Po łąk kwitnących obszarach/
+rozpromienieją się rosy,/
+a ty je strącać będziesz stopy swemi,/
+przed siebie idąc z głową, wzniesioną w niebiosy,/
+dumny, że z stworzeń najpierwsza,/
+że ta najczystsza i ta najgorętsza/
+na niewolnika wzięła cię swej wielkiej,/
+swej wszechpotężnej miłości,/
+która jest jedną na niebie i ziemi,/
+która stworzyła te jutrznie, te zorze,/
+te słońca i te rosy słoneczne kropelki/
+i to rozkwitłe zboże,/
+uginające przed tobą swe kłosy.../
+Las się rozszumi, a ty, o proroku,/
+jeden na ziemi i niebie,/
+słuchać go będziesz i, idąc przed siebie,/
+wciąż zasłuchany w tę szumiącą dal,/
+zgłębisz tę głębię szumu,/
+ujrzysz w nim duszę Salomy/
+i śpiewać będziesz jej chwałę,/
+że była przedtem, nim w wierzchołkach drzew/
+ten tajemniczy zaszeleścił śpiew.../
+Przeze mnie, przeze mnie/
+przenikniesz wieków ciemnie/
+i rozsłonecznisz to, co legło w mroku!/
+Przeze mnie, przeze mnie/
+rozpoznasz związek pomiędzy obłoku/
+rozsłonecznioną urodą,/
+a szmaragdową jętką, co nad wodą,/
+nad szeleszczącą trzciną skrzydły przejrzystemi/
+lśni w promienistym słońcu/
+i nad wieczności zagadką przelata,/
+nad życiem i śmiercią ziemi./
+Przeze mnie, przeze mnie/
+poznasz, co w gwiazd się kryje milionie,/
+a onym kurzu, który wiatr południa/
+wzrusza po drogach i rzuca na świeże,/
+po burtach rowów i miedzach rosnące/
+kępy krwawników i śniade szaleje!/
+Przeze mnie, przeze mnie/
+rozpoznasz związek pomiędzy spokojem/
+w tę północ letnią, a drganiem powietrza/
+nad rozległymi rżyskami/
+w sierpniowy skwar,/
+gdy słońce stanie na szczycie./
+<begin id="b1212612410250"/><motyw id="m1212612410250">Miłość, Śmierć, Taniec</motyw>Przeze mnie, przeze mnie/
+rozpoznasz związek między pluskiem ryby,/
+zostawiającej kręgi na jeziorze,/
+a wulkanicznym ogniem, który w łonie/
+rodzącej ziemi płonie/
+i wre i huczy i lawy/
+wyrzuca potok krwawy,/
+że ziemia z grzmotem pęka i walą się miasta/
+i giną miłości nadzieje,/
+a w śmierci pełnej pustce rozpacza niewiasta!<end id="e1212612561838"/>/
+I nic nie widzi, tylko oczu dwoje,/
+płonące ogniem wulkanu!/
+I nic nie słyszy, tylko wrzące tchnienie/
+swej rozszalałej piersi!/
+I nic nie liczy tylko one chwile,/
+kiedy na świata mogile/
+stanie z tą misą złocistą/
+i krąg szalony zatoczy ---/
+ten krąg radości i bólu...<end id="e1212612410250"/>/
+<begin id="b1212612707127"/><motyw id="m1212612707127">Dziewictwo, Król, Taniec</motyw>A ty, o królu Herodzie,/
+życia i śmierci barbarzyński królu:/
+w taniec przed tobą pójdzie wstyd dziewiczy,/
+tylko mi pozwól wziąć/
+głowę bożego proroka!.../
+A wy służebne! przyjaciółki moje!/
+Słuchajcie dźwięków mej harfy!/
+Zedrzyjcie ze mnie te szarfy!/
+Niech padnie ta droga powłoka,/
+niech barbarzyński król życia i śmierci/
+moim się ciałem upije!/
+<begin id="b1212612743058"/><motyw id="m1212612743058">Żywioły</motyw>Niech go powali ten taniec/
+zapamiętałych żywiołów!/
+Niech wie, że chociam z popiołów/
+i popiołami żyję,/
+przy mnie jest prorok boży,/
+przy mnie kochanek mój!<end id="e1212612707127"/></strofa>
+
+<strofa>Czemu nie idziesz? czemu?/
+Salome, białolistny kwiat Herodiady,/
+zerwany ręką grzechu z świadomości drzewa,/
+pieśń żywiołów śpiewa...<end id="e1212612743058"/></strofa>
+
+<strofa>Przyjdź!</strofa>
+
+<strofa>Przyjdź!... Pośpieszymy/
+w miesięczną noc do gaju, gdzie cyprysów cienie/
+rosną pod srebrnym księżyca zaklęciem/
+w jakieś tajemne olbrzymy,/
+że po nich stopa człowieka/
+kroczyć się lęka.../
+Ale ode mnie trwoga jak daleka,/
+gdy twa powiedzie mnie ręka,/
+gdy przy mnie Salomy wybraniec/
+z księgą tajemnic, w której zapisano/
+w spełnienia rano,/
+co między cieniem cyprysu,/
+a między krągiem<pe><slowo_obce>krągiem</slowo_obce> --- dziś popr.: kręgiem.</pe> księżyca/
+zmieściło wielkie spełnienie!.../
+<begin id="b1212613759230"/><motyw id="m1212613759230">Wizja, Władza</motyw>Albo się wspniemy na stromość opoki,/
+przeszywającej obłoki,/
+<begin id="b1212613795041"/><motyw id="m1212613795041">Morze </motyw>i, mając głębie mórz u naszych stóp,/
+opanujemy los świata...<end id="e1212613795041"/>/
+I wielkie zbiorą się rzesze,/
+przyjdą mocarze i króle/
+z swojego życia zawrócą się dróg/
+i wszystkie skarby rozsypią przed tobą,/
+byś był, jak oni,/
+byś się w ich ubrał purpury/
+i na ich tronach siadł/
+i z niebotycznej rozkazywał góry,/
+byś opanował miecze i lemiesze/
+i dzierżył je do końca niezliczonych lat./
+Byś serca z łon królewskich wydzierał skrwawione/
+i w swojej mocy/
+na misy je rzucał złociste!/
+A ty nad życia żałobą/
+i ponad życia radością,/
+nad jego blaskiem i wonią,/
+nad jego nocą i dniem/
+podniesiesz swą prorocką, niedosięgłą wzgardę/
+i, uderzywszy dłonią/
+w pomarłe głazy twarde,/
+że dźwięk wydadzą krwawy,/
+a dotąd niesłyszany w istnienia obrębie,/
+rozpoczniesz wieścić sprawy,/
+będące ponad istnieniem,/
+nad tym, co się mieści,/
+w rozkoszy czy boleści,/
+między cyprysu cieniem,/
+a krągiem srebrnego miesiąca.<end id="e1212613759230"/>/
+<begin id="b1212613868647"/><motyw id="m1212613868647">Morze </motyw>A morze, nad bezdenne wychyliwszy głębie/
+swą rozwichrzoną, niepomierną głowę,/
+na której każdy włos,/
+srebrzystą pianą zlany,/
+dźwiga wieczności głośne oceany,/
+słuchać cię będzie z poszumem,/
+co najgłośniejszy ból światów przygłuszy!/
+<begin id="b1212613647619"/><motyw id="m1212613647619">Szatan</motyw>Lecz ponad morza szum/
+pójdzie ten głos,/
+który się wyrwie z twej duszy.../
+Lewiatan<pe>Lewiatan --- nazwa wspominanego w kilku miejscach w Biblii mitycznego potwora, będącego uosobieniem zła; mówi się o nim jako o wężu, smoku o kilku głowach, wielorybie lub też jednej z kochanek samego Lucyfera; istniały legendy millenijne (żywe ok. roku 1000 n.e.), według których Lewiatan został uwięziony pod Lateranem, siedzibą papieży, a jego wyzwolenie się z tego więzienia miało przynieść koniec światu.</pe> się ruszy/
+i oczy swe globowe z zdumienia otworzy/
+i paszczę, która chłonie wieków straszny żer,/
+do twej wyciągnie Salomy./
+Pragnie ją pożreć, że twemu wieszczeniu/
+dała tę wielką moc,/
+która nad wszystkie idzie Lewiatany!<end id="e1212613868647"/>/
+Ale w szatańską noc,/
+gdy błyskawice i gromy/
+z krzykiem owijać będą swymi wstęgi/
+i żreć swoimi ogniami/
+wieczysty byt,/
+ona płomiennym mieczem swej potęgi,/
+która ci duszę rozżegła/
+do wieczystego płomienia,/
+odetnie głowę potwora/
+i na złocistej ją misie/
+przed tobą rozkosznie złoży<end id="e1212613647619"/>,/
+o ty cyprysie,/
+cień rzucający olbrzymi!.../
+O ty proroku boży!/
+O ty kochanku mój!.../
+Ach przyjdź!</strofa>
+
+<strofa>Czemu twe oczy umarłe tak płoną/
+w konającego dnia zorzę czerwoną?/
+Przyjdź!/
+<begin id="b1212613403628"/><motyw id="m1212613403628">Kobieta "upadła", Pożądanie, Szantaż, Sługa</motyw>Libijczyk, królewskiego strzegący pałacu,/
+śmiał ku mnie sięgnąć swym okiem!/
+Zakradał się z wieczora pod białe me ściany/
+aby, z westchnieniem głębokiem,/
+zobaczyć twojej wybranej/
+ten obnażony cud,/
+ścielący się na miękkie jedwabiów dywany,/
+pomiędzy rozsunięte miłości osłony,/
+na łoże płonących żądz./
+Ach! przyjdź!/
+Libijczyk do przybytku wejdzie nieproszony,/
+westchnieniem miłość mą kupi,/
+na jego czaszce trupiej/
+me rozżarzone położą się ręce!/
+Do jego czarnej brody/
+przylgnie ten dziwny kwiat,/
+który w pożądań niweczącej męce/
+zabójczym mieczem wykwita/
+z mej twarzy młodej ---/
+jak twe źrenice, choć umarłe, płoną/
+w cichej bladości na tej misie złotej!/
+Ach! przyjdź!/
+Przyjdźże z tym głosem bożym,/
+który rozbrzmiewa w świątyni/
+nad lud ten tłumny,/
+o marmurowe łamie się kolumny/
+i o sklepienia odbija się gromem/
+i jehowiczne łoskoty/
+na całopalne rozlewa ołtarze!/
+Libijczyk zwiędłoczoły opuści z mym sromem/
+mojego domu próg...<end id="e1212613403628"/>/
+Ach! przyjdź!/
+Salome cię woła.../
+Salome, kłęby włosów rozwiawszy miedziane,/
+niby wieków pożaru krwawiące się łuny,/
+w wieczystej harfy uderzyła struny/
+i śpiewa ---/
+i wzywa cię, proroku: przyjdź! ach! przyjdź! ach! przyjdź!/
+<begin id="b1212613566162"/><motyw id="m1212613566162">Obrzędy</motyw>Weź mnie do swego kościoła!/
+W ręku trzymając palmy,/
+zerwane z wiosennego zmartwychwstania drzewa,/
+nucić będziemy psalmy,/
+wielbić będziemy Boga,/
+jako jest jeden Bóg,/
+który miłości pragnienie/
+w twoją Salome wlał./
+Mirę będziemy sypać w trybularze<pe><slowo_obce>trybularz</slowo_obce> --- kadzielnica.</pe>,/
+do ognia dokładać drew,/
+niech Abrahama spełni się ofiara!/
+Niech głowa bożego proroka,/
+który ten zrodził śpiew,/
+ten śpiew wieczysty,/
+spocznie na misie złocistej!<end id="e1212613566162"/>/
+<begin id="b1212613471616"/><motyw id="m1212613471616">Bunt </motyw>Albo wszechmożny podniesiemy bunt!/
+Podważym świątynny mur ---/
+niech runie u naszych stóp/
+wraz z Bogiem, który w piersi najprzedniejszej z cór/
+zbudził rozpaczny głos,/
+ciemny, jak grób,/
+rozbrzmiewający nad wielką nicością,/
+idący w zorzę czerwoną/
+konającego Żywota,/
+nad tymi oczy<pe><slowo_obce>nad tymi oczy</slowo_obce> --- nad tymi oczami.</pe>, co tak strasznie płoną!...<end id="e1212613471616"/></strofa>
+
+<strofa><begin id="b1212607116702"/><motyw id="m1212607116702">Taniec</motyw>Miso wybrana! o miso ty złota!/
+wieczysta struno mej harfy!...</strofa>
+
+<strofa>Ach! przyjdź, proroku, przyjdź!.../
+A wy, o moje służebne,/
+zedrzyjcie ze mnie te szarfy ---/
+i tańczcie... i tańczcie!... i tańczcie!...</strofa>
+
+<strofa>Miso wybrana! o miso ty złota!...<end id="e1212607116702"/></strofa>
+
+</liryka_l></utwor>

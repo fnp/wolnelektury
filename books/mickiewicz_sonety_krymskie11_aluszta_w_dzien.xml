@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety/A%C5%82uszta_w_dzie%C5%84">
+<dc:creator xml:lang="pl">Mickiewicz, Adam </dc:creator>
+<dc:title xml:lang="pl">Ałuszta w dzień</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/sonety-krymskie</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-aluszta-w-dzien</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+<dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+<dc:date.pd xml:lang="pl">1855</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-01-29</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Adam Mickiewicz</autor_utworu>
+
+<dzielo_nadrzedne>Sonety krymskie</dzielo_nadrzedne>
+
+<nazwa_utworu>Ałuszta w dzień<pa>Ałuszta --- jedno z miejsc najrozkoszniejszych Krymu; tam już wiatry północne nigdy nie dochodzą, i podróżny w listopadzie szuka częstokroć chłodu pod cieniem ogromnych orzechów włoskich, jeszcze zielonych.</pa><pr>Krańcowy punkt południowego Krymu, leży Ałuszta u wstępu iście rajskiej doliny. »Dwa okoliczne wąwozy stanowią jeden nieprzerwany ciąg ogrodów i winnic, urozmaiconych gdzieniegdzie grupami wysmukłych cyprysów i ogromnych włoskich topoli«. Dzisiejsza wieś Ałuszta stoi na gruzach zamku Alustan, zbudowanego w VI w. przez Justyniana I, i słynie z obfitości win i wybornych owoców (Rzętkowski, 183).</pr></nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+
+<strofa>Już góra z piersi mgliste otrząsa chylaty<pe><slowo_obce>chylat</slowo_obce> --- w Turcji, Indiach, Persji suknia honorowa ofiarowywana osobie zasłużonej przez władcę.</pe>,/
+<begin id="b1196201924274"/><motyw id="m1196201924274">Religia</motyw>Rannym szumi namazem<pr><slowo_obce>namaz</slowo_obce> --- modlitwa muzułmańska, którą odprawiają siedząc i bijąc pokłony. »Każdy muzułman obowiązany jest co dzień pięć takich odprawiać namazów, w godzinach oznaczonych« (Sękowski, <tytul_dziela>Collectanea</tytul_dziela> t. I, str. 202).</pr> niwa złotokłosa,/
+Kłania się las i sypie z majowego włosa,/
+Jak z różańca chalifów<pe><slowo_obce>chalif</slowo_obce> --- kalif; następca Mahometa, tytuł najwyższych władców świeckich i duchownych w swiecie muzułmańskim.</pe>, rubin i granaty<pa><slowo_obce>Jak z różańca chalifów, rubin i granaty</slowo_obce> --- muzułmanie używają w czasie modłów różańca, który u znakomitych osób z kosztownych bywa kamieni. Granatowe i morwowe drzewa, czerwieniejące się rozkosznym owocem, są pospolite na całym brzegu południowym Krymu.</pa>.<end id="e1196201924274"/></strofa>
+
+<strofa>Łąka w kwiatach, nad łąką latające kwiaty,/
+Motyle różnofarbne, niby tęczy kosa,/
+Baldakimem<pr><slowo_obce>Baldakim</slowo_obce> --- jedwabna złocista zasłona nad krzesłem lub osłona noszona na drążkach nad znakomitą osobą, używana w czasie procesyj i uroczystych obchodów. Materie takie wyrabiano w mieście Bagdad, które w wiekach średnich nazywano Baldek; stąd nazwa: baldakim.</pr> z brylantów okryły niebiosa;/
+Daléj szarańcza ciągnie swój całun skrzydlaty.</strofa>
+
+<strofa><begin id="b1196202015024"/><motyw id="m1196202015024">Morze </motyw>A kędy w wodach skała przegląda się łysa,/
+Wre morze i odparte z nowym szturmem pędzi;/
+W jego szumach gra światło, jak w oczach tygrysa,</strofa>
+
+<strofa>Sroższą zwiastując burzę dla ziemskiéj krawędzi;/
+A na głębinie fala lekko się kołysa,/
+I kąpią się w niéj floty i stada łabędzi.<end id="e1196202015024"/></strofa>
+
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_l></utwor>

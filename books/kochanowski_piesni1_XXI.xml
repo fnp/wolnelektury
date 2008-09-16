@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XXI_(1)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XXI (Ty spisz, a ja sam na dworze...)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-pierwsze</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxi-ty-spisz-a-ja-sam-na-dworze</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi pierwsze</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XXI</nazwa_utworu>
+
+
+
+<strofa><begin id="b1188561348953"/><motyw id="m1188561348953">Miłość, Kochanek, Poeta, Sen</motyw>Ty spisz, a ja sam na dworze/
+Jeszcze od wieczornej zorze/
+Cierpię nocne niepogody;/
+Użałuj się mojej szkody!</strofa>
+
+<strofa>Słuchaj, jako bije w ściany/
+Z gwałtownym dżdżem grad zmieszany;/
+Ockni się, a przemów słowo,/
+Nieużyta białagłowo!</strofa>
+
+<strofa>Nie na żadną kradzież godzę,/
+Chocia tak po nocy chodzę;/
+Wziąłbych przedsię, by co dano:/
+Łupiestwo czartu porwano<pr><slowo_obce>Łupiestwo czartu porwano</slowo_obce> --- niech diabli wezmą kradzież.</pr>.</strofa>
+
+<strofa>Nigdziej miejsca mniej hardości<pr><slowo_obce>hardości</slowo_obce> --- dla hardości.</pr>/
+Nie najdziesz jako w miłości;/
+Gładkość wprawdzie sługi daje,/
+Ale dzierżą obyczaje.</strofa>
+
+<strofa>Słuchasz? Czy mój głos nie może/
+Dolecieć na twoje łoże?/
+Słuchajcie wy, nocne cienie,/
+I nieumowne kamienie!</strofa>
+
+<strofa>Do Amfijonowej lutnie<pr><slowo_obce>Amfijonowej lutnie</slowo_obce> --- Amfion, król tebański, poeta i muzyk. Gdy chciał otoczyć Teby murami, głazy poruszone jego piękną grą same zbierały się i układały w rzędy.</pr>/
+Spieszyły się lasy chutnie,/
+A niezwyczajne opoki/
+Ścisnęły się w mur szeroki.</strofa>
+
+<strofa>Orfeowych stron słuchały/
+Srogie jędze<pr><slowo_obce>Srogie jędze</slowo_obce> --- Erynie, trzy boginie uosabiające wyrzuty sumienia.</pr> i płakały,/
+Gdy, miłością utrapiony,/
+I pod ziemią szukał żony.</strofa>
+
+<strofa>Jego pieśni żałościwe/
+Zjęły bogi nieżyczliwe;/
+I miał w ręku, co miłował,/
+By był, nędznik, lepiej chował.</strofa>
+
+<strofa>Ale nie strzymał umowy,/
+Więc przyszedł o smutek nowy,/
+Bo źle się obejźrzał, ali/
+Czarci panią zaś porwali.</strofa>
+
+<strofa>Czekać już, niebożę, było:/
+Ale gdy co komu miło,/
+Trudno wytrwać i czas mały:/
+Godzina tam jak rok cały.</strofa>
+
+<strofa>A ja długo mam bić w strony?/
+Już u mnichów słyszę dzwony./
+Dziwnosmy się pomieszali,/
+Jam nie spał, a ci już wstali.</strofa>
+
+<strofa>Dobrą noc, jeśli kto słyszy,/
+A mój wieniec w tej złej ciszy/
+Niechaj wisi do świtania,/
+Świadek mego niewyspania.<end id="e1188561348953"/></strofa>
+
+</liryka_l></utwor>

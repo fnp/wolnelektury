@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/index.php?title=Lektury:Krasicki/Satyry/Cz%C4%99%C5%9B%C4%87_pierwsza/%C5%BBona_modna">
+<dc:creator xml:lang="pl">Krasicki, Ignacy</dc:creator>
+<dc:title xml:lang="pl">Żona modna</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/satyry-czesc-pierwsza</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Hernas, Marcin</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Oświecenie</dc:subject.period>
+<dc:subject.type xml:lang="pl">Epika</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Satyra</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/satyry-czesc-pierwsza-zona-modna</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=3761&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
+<dc:source xml:lang="pl">Krasicki, Ignacy (1735-1801), Satyry i listy, oprac. Zbigniew Goliński, Zakład Narodowy im. Ossolińskich, wyd. 1, Wrocław, 1958</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Ignacy Krasicki zm. 1801</dc:rights>
+<dc:date.pd xml:lang="pl">1801</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-02-12</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<extra><!--<elementy_poczatkowe>--></extra>
+
+<autor_utworu>Ignacy Krasicki</autor_utworu>
+
+<dzielo_nadrzedne>Satyry, Część pierwsza</dzielo_nadrzedne>
+
+<nazwa_utworu>Żona modna</nazwa_utworu>
+
+<extra><!--</elementy_poczatkowe>--></extra>
+
+<extra><!--<tekst_glowny>--></extra>
+
+
+	
+<strofa><begin id="b1194349880996"/><motyw id="m1194349880996">Małżeństwo</motyw><wers_akap>,,A ponieważ dostałeś, coś tak drogo cenił,</wers_akap>/
+Winszuję<pe>Gratuluję.</pe>, panie Pietrze<pe>Piotrze.</pe>, żeś się już ożenił”./
+,,Bóg zapłać”. ,,Cóż to znaczy? Ozięble dziękujesz,/
+Alboż<pe>Czy.</pe> to szczęścia swego jeszcze nie pojmujesz?/
+Czyliż<pe>Czy.</pe> się już sprzykrzyły małżeńskie ogniwa?”/
+,,Nie ze wszystkim, luboć to zazwyczaj tak bywa,/
+Pierwsze czasy cukrowe”. ,,Toś pewnie w goryczy?”/
+,,Jeszczeć!” <begin id="b1202427482262"/><motyw id="m1202427482262">Kobieta, Władza</motyw>,,Bracie, trzymaj więc, coś dostał w zdobyczy!/
+Trzymaj skromnie, cierpliwie, a milcz tak jak drudzy<pe>Inni.</pe>,/
+Co to swoich małżonek uniżeni słudzy,/
+Z tytułu ichmościowie, dla oka dobrani,/
+A jejmość tylko w domu rządczyna<pe>Sprawująca władzę.</pe> i pani.<end id="e1202427482262"/>/
+Pewnie może i twoja?”<end id="e1194349880996"/> <begin id="b1194350046313"/><motyw id="m1194350046313">Miasto, Żona</motyw>,,Ma talenta śliczne:/
+Wziąłem po niej w posagu cztery wsie dziedziczne,/
+Piękna, grzeczna, rozumna”. ,,Tym lepiej”. ,,Tym gorzej./
+Wszystko to na złe wyszło i zgubi mnie wsporzej<pr><slowo_obce>wsporzej</slowo_obce> --- szybciej.</pr>;/
+Piękność, talent wielkie są zaszczyty<pr><slowo_obce>zaszczyt</slowo_obce> --- tu: zaleta.</pr> niewieście,/
+Cóż po tym, kiedy była wychowana w mieście”./
+,,Alboż<pe>A czy.</pe> to miasto psuje?” ,,A któż<pe>Kto.</pe> wątpić może?/
+Bogdaj to żonka ze wsi!” ,,A z miasta?” ,,Broń Boże!<end id="e1194350046313"/>/
+<wers_akap>Źlem tuszył<pr><slowo_obce>tuszyć</slowo_obce> --- mniemać, sądzić.</pr>, skorom moją pierwszy raz obaczył,</wers_akap>/
+Ale żem to, co postrzegł, na dobre tłumaczył,/
+Wdawszy się już, a nie chcąc dla damy ohydy<pr><slowo_obce>ohyda</slowo_obce> --- wstyd, niesława.</pr>,/
+Wiejski Tyrsys, wzdychałem do mojej Filidy./
+<wers_akap><begin id="b1202427774042"/><motyw id="m1202427774042">Maska, Miłość</motyw>Dziwne były jej gesta<pr><slowo_obce>gesta</slowo_obce> --- sposób poruszania się.</pr> i misterne wdzięki,</wers_akap>/
+A nim przyszło do ślubu i dania mi ręki,/
+Szliśmy drogą romansów<pr><slowo_obce>Szliśmy drogą romansów</slowo_obce> --- postępowaliśmy jak bohaterowie romansów.</pr>, a czym się uśmiéchał,/
+Czym się skarżył, czy milczał, czy mówił, czy wzdychał,/
+Widziałem, żem niedobrze udawał aktora,/
+<begin id="b1202427841879"/><motyw id="m1202427841879">Korzyść, Mąż, Ślub</motyw>Modna Filis gardziła sercem domatora.<end id="e1202427774042"/>/
+I ja byłbym nią wzgardził; ale punkt honoru,/
+A czego mi najbardziej żal, ponęta zbioru<pr><slowo_obce>zbiór</slowo_obce> --- majątek, bogactwo.</pr>,/
+Owie wioski, co z mymi graniczą, dziedziczne,/
+Te mnie zwiodły, wprawiły w te okowy śliczne.<end id="e1202427841879"/>/
+<wers_akap>Przyszło do intercyzy<pr><slowo_obce>intercyza</slowo_obce> --- umowa przedślubna ustalająca stosunki majątkowe pomiędzy przyszłymi małżonkami.</pr>. Punkt pierwszy: że w mieście</wers_akap>/
+Jejmość przy doskonałej francuskiej niewieście,/
+Co lepiej (bo Francuzka) potrafi ratować,/
+Będzie mieszkać, ilekroć trafi się chorować./
+Punkt drugi: chociaż zdrowa czas na wsi przesiedzi,/
+Co zima jednak miasto stołeczne odwiedzi./
+Punkt trzeci: będzie miała swój ekwipaż własny./
+Punkt czwarty: dom się najmie wygodny, nieciasny,/
+To jest apartamenta<pe>Miejsce.</pe> paradne<pe>Odpowiednie.</pe> dla gości,/
+Jeden z tyłu dla męża, z przodu dla jejmości./
+Punkt piąty: a broń Boże! --- Zląkłem się<pe>Przestraszyłem się.</pe>. A czego?/
+<begin id="b1194350130736"/><motyw id="m1194350130736">Małżeństwo</motyw>»Trafia się --- rzekli krewni --- że z zdania wspólnego/
+Albo się węzeł przerwie, albo się rozłączy!«/
+»Jaki węzeł?« »Małżeński«. Rzekłem: »Ten śmierć kończy«./
+Rozśmieli się z wieśniackiej przytomni prostoty./
+I tak płacąc wolnością niewczesne zaloty,/
+Po zwyczajnych obrządkach rzecz poprzedzających/
+Jestem wpisany w bractwo braci żałujących.<end id="e1194350130736"/>/
+<wers_akap>Wyjeżdżamy do domu. Jejmość w złych humorach:</wers_akap>/
+»Czym pojedziem?« »Karetą«. »A nie na resorach<pr><slowo_obce>A nie na resorach</slowo_obce> --- powszechnie pudła karet zawieszone były nisko na pasach. Już przy końcu panowania Augusta III moda ta zaczęła się zmieniać. ,,Majstrowie zagraniczni wymyślili karety na resurach, to jest na sztabach żelaznych gibkich, wysoko osadzone”. (J. Kitowicz, <tytul_dziela>Opis obyczajów</tytul_dziela>, s. 532--533). Karety sprowadzane z Anglii uchodziły za najwytworniejsze.</pr>?«/
+Daliż<pe><slowo_obce>Daliż</slowo_obce> --- dalejże.</pe> ja po resory. Szczęściem kasztelanic,/
+Co karetę angielską sprowadził z zagranic,/
+Zgrał się co do szeląga. Kupiłem. Czas siadać./
+Jejmość słaba. Więc podróż musiemy<pe>Musimy.</pe> odkładać./
+Zdrowsza jejmość. Zajeżdża angielska karéta./
+Siada jejmość, a przy niej suczka faworyta./
+Kładą skrzynki, skrzyneczki, woreczki i paczki,/
+Te od wódek pachnących<pr><slowo_obce>wódki pachnące</slowo_obce> --- pachnidła, perfumy.</pr>, tamte od tabaczki,/
+Niosą pudło kornetów<pr><slowo_obce>kornet</slowo_obce> --- wysoki, ozdobny czepiec.</pr>, jakiś kosz na fanty;/
+<begin id="b1202428037390"/><motyw id="m1202428037390">Zwierzęta</motyw>W jednej klatce kanarek, co śpiewa kuranty,/
+W drugiej sroka, dla ptaków jedzenie w garnuszku,/
+Dalej kotka z kocięty i mysz na łańcuszku./
+Chcę siadać, nie masz miejsca; żeby nie zwlec drogi,/
+Wziąłem klatkę pod pachę, a suczkę na nogi.<end id="e1202428037390"/>/
+Wyjeżdżamy szczęśliwie, jejmość siedzi smutna,/
+Ja milczę, sroka tylko wrzeszczy rezolutna./
+Przerwała jejmość myśli: »Masz waćpan kucharza?«/
+»Mam, moje serce«. »A pfe, koncept z kalendarza<pr><slowo_obce>koncept z kalendarza</slowo_obce> --- osiemnastowieczne, szczególnie saskie jeszcze kalendarze, jedyna lektura ciemnej prowincjonalnej szlachty, podawały bałamutne wiadomości, prognostyki pogody, przepowiednie wypadków historycznych i klęsk żywiołowych. Pełne były również niewybrednych żartów i konceptów.</pr>,/
+Moje serce! Proszę się tych prostactw oduczyć!«/
+Zamilkłem. Trudno mówić, a dopieroż mruczyć./
+Więc milczę. <begin id="b1202428149141"/><motyw id="m1202428149141">Sługa</motyw>Jejmość znowu o kucharza pyta./
+»Mam, mościa dobrodziejko«. »Masz waćpan stangréta?«/
+»Wszak nas wiezie«. »To furman. Trzeba od parady/
+Mieć inszego. Kucharza dla jakiej sąsiady/
+Możesz waćpan ustąpić«. »Dobry«. »Skąd?« »Poddany«./
+»To musi być zapewne nieoszacowany,/
+Musi dobrze przypiekać reczuszki, łazanki,/
+Do gustu pani wojskiej<pr><slowo_obce>wojskiej</slowo_obce> --- żony wojskiego. ,,Wojski, urząd wojewódzki na doglądanie bezpieczeństwa publicznego, gdy stan szlachecki na koń siada w pospolitym ruszeniu”. (<tytul_dziela>Zbiór potrzebn. wiad.</tytul_dziela>).</pr>, panny podstolanki./
+Ustąp go waćpan; przyjmą pana Matyjasza,/
+Może go i ksiądz pleban użyć do kiermasza<pr><slowo_obce>kiermasz</slowo_obce> --- uroczysty obchód rocznicy poświęcenia kościoła połączony z odpustem i najczęściej z jarmarkiem.</pr>./
+A pasztetnik?« »Umiałci i pasztety robić«./
+»Wierz mi waćpan, jeżeli mamy się sposobić/
+Do uczciwego życia, weźże ludzi zgodnych,/
+Kucharzy cudzoziemców, pasztetników modnych,/
+Trzeba i cukiernika.<end id="e1202428149141"/> Serwis zwierściadlany/
+Masz waćpan i figurki piękne z porcelany<pr>Wygląd takiej zastawy stołowej opisuje Ochocki: [...] ubierano stoły w tafle zwierciadlane z pięknymi, złoconymi galeryjkami i kryształowymi ozdobami. Te kładziono wzdłuż przez cały stół, a na nich stawiano figurki porcelanowe, koszyki i inne cacka misterne, żyrandoliki z kryształowymi wisidełkami do świec, itp. Na wielkie obchody wysypywali w pośrodku stołu cukiernicy kolorami herby osób, które fetowano, wkoło tafel z obu stron ustawiano konfitury, blanmanże [galaretki migdałowe] galarety, owoce i co do deseru należało. Nie mógł być stół piękniej i dla oka powabniej ubrany, osobliwie wieczorem przy świecach ślicznie się to wydawało”. (J. D. Ochocki, <tytul_dziela>Pamiętniki</tytul_dziela>, s. 102).</pr>?«/
+»Nie mam«. »Jak to być może? Ale już rozumiem/
+<begin id="b1202428371591"/><motyw id="m1202428371591">Jedzenie</motyw>I lubo jeszcze trybu wiejskiego nie umiem,/
+Domyślam się. Na wety<pr><slowo_obce>Na wety...</slowo_obce> --- na deser; w mniej zamożnych domach szlacheckich, gdzie nie używano serwisów i zastaw cukrowych, a stoły były bardzo wąskie (na półtora łokcia), ustawiano koło stołów półki, na których podawane były słodycze.</pr> zastawiają półki,/
+Tam w pięknych piramidach krajanki, gomółki,/
+Tatarskie ziele<pr><slowo_obce>tatarskie ziele</slowo_obce> --- tatarak.</pr> w cukrze, imbier chiński w miodzie,/
+Zaś ku większej pociesze razem i wygodzie/
+W ładunkach bibułowych kmin kandyzowany<pr><slowo_obce>W ładunkach bibułowych kmin kandyzowany</slowo_obce> --- kmin obsmażany w cukrze podawany był w tutkach z kolorowego papieru.</pr>,/
+A na wierzchu toruński piernik pozłacany<pr><slowo_obce>toruński piernik pozłacany</slowo_obce> --- pierniki toruńskie, których wyrób osiągnął szczytowy poziom w XVIII w., słynęły z wybornego smaku i bogatej ornamentyki. Często powlekane były dla ozdoby złotą farbą.</pr>.<end id="e1202428371591"/>/
+<wers_akap>Szkoda mówić, to pięknie, wybornie i grzecznie,</wers_akap>/
+Ale wybacz mi waćpan, że się stawię sprzecznie<pr><slowo_obce>że się stawię sprzecznie</slowo_obce> --- że się przeciwstawię.</pr>./
+Jam niegodna tych parad, takiej wspaniałości«./
+Zmilczałem, wolno było żartować jejmości./
+Wjeżdżamy już we wrota, spojźrzała z karety:/
+»A pfe, mospanie! parkan, czemu nie sztakiety?«/
+<begin id="b1202428448972"/><motyw id="m1202428448972">Sługa, Żona</motyw>Wysiadła, a z nią suczka i kotka, i myszka;/
+Odepchnęła starego szafarza Franciszka,/
+Łzy mu w oczach stanęły, jam westchnął.<end id="e1202428448972"/> W drzwi wchodzi./
+»To nasz ksiądz pleban!« »Kłaniam<pr><slowo_obce>kłaniam</slowo_obce> --- forma pozdrowienia mająca odcień lekceważenia.</pr>«. Zmarszczył się dobrodziéj./
+<begin id="b1202428502509"/><motyw id="m1202428502509">Sługa</motyw>»Gdzie sala?« »Tu jadamy«. »Kto widział tak jadać!/
+Mała izba, czterdziestu nie może tu siadać«./
+Aż się wezdrgnął Franciszek, skoro to wyrzekła,/
+A klucznica natychmiast ze strachu uciekła.<end id="e1202428502509"/>/
+Jam został. Idziem dalej. »Tu pokój sypialny«./
+»A pokój do bawienia?« »Tam gdzie i jadalny«./
+»To być nigdy nie może! A gabinet?« »Daléj./
+Ten będzie dla waćpani, a tu będziem spali«./
+»Spali? Proszę, mospanie, do swoich pokojów./
+Ja muszę mieć osobne od spania, od strojów,/
+Od książek, od muzyki, od zabaw prywatnych,/
+Dla panien pokojowych<pr><slowo_obce>Dla panien pokojowych</slowo_obce> --- w bogatszych dworach szlacheckich prócz płatnej służby przyjmowano dziewczęta z chudopacholskich rodzin szlacheckich, pełniące funkcje pośrednie między damą do towarzystwa a służebną.</pr>, dla służebnic płatnych./
+<begin id="b1202428672083"/><motyw id="m1202428672083">Ogród, Sielanka</motyw>A ogród?« »Są kwatery<pr><slowo_obce>kwatera</slowo_obce> --- działka w ogrodzie.</pr> z bukszpanu, ligustru«./
+»Wyrzucić! Nie potrzeba przydatniego lustru./
+To niemczyzna. Niech będą z cyprysów gaiki,/
+Mruczące po kamyczkach gdzieniegdzie strumyki,/
+Tu kiosk<pr><slowo_obce>kiosk</slowo_obce> --- altanka w kształcie chińskiej świątyni; holenderskie wanny --- prawdopodobnie baseny wokół fontann wykładane ozdobnymi kafelkami holenderskimi.</pr>, a tu meczecik, holenderskie wanny,/
+Tu domek pustelnika, tam kościół Dyjanny<pr><slowo_obce>kościół Dyjanny</slowo_obce> --- pawilon ogrodowy w kształcie świątyni greckiej.</pr>./
+Wszystko jak od niechcenia, jakby od igraszki,/
+Belwederek<pr><slowo_obce>Belwederek</slowo_obce> --- budynek na wzniesieniu z rozległym widokiem na okolicę.</pr> maleńki, klateczki na ptaszki,/
+A tu słowik miłośnie szczebioce do ucha,/
+Synogarlica jęczy, a gołąbek grucha<pr><slowo_obce>A ogród</slowo_obce> --- jeszcze na początku panowania Stanisława Augusta modne były ogrody ,,francuskie”, odznaczające się symetrią i sztucznością doprowadzoną czasem do dziwactwa. Krasicki tak o nich pisze w <tytul_dziela>Listach o ogrodach</tytul_dziela>: ,,Nie dość było kunsztownej sztuce holenderskich zwłaszcza i niemieckich ogrodników czynić z drzew słupy, obeliski i piramidy, ledwo pojętym wysileniem przeistaczali je w posągi: ,,Grał na cytrze Apollo z jodły złotowłosy, / Ceres z szyszek borowych piastowała kłosy, / Błyszczał Neptun trójzębny od bzowego lustru, / Jowisz w zapale rzucał pioruny z ligustru, / Mars z figi, rozjuszony zabójczym rzemiosłem, / Bachus na tyce chmielu z Sylenem i osłem, Wenus / wdzięczna jałowcem z uśmiechu i giestu, Gracyje / porzeczkowe, Kupido z agrestu”. / (I. Krasicki, <tytul_dziela>Dzieła prozą</tytul_dziela>, t. V, s. 393). Nowa moda, związana z sentymentalizmem, zastąpiła ogród ,,francuski” ,,angielskim”, który miał naśladować swobodną i dziką naturę. Gust francuskiego rokoka wprowadził do ogrodów ,,angielskich” architekturę sielanki dworskiej. Całe urządzenie ogrodu żony modnej, a więc belwederki, meczeciki, domki pustelnika, świątynie Diany spotykamy w opisach słynnych wówczas ogrodów, jak Solca Kazimierza Poniatowskiego, brata królewskiego, czy Arkadii Heleny Radziwiłłowej.</pr>,/
+A ja sobie rozmyślam pomiędzy cyprysy/
+Nad nieszczęściem Pameli<pr><slowo_obce>Pamela</slowo_obce> --- tytułowa bohaterka sentymentalnego romansu (1740) angielskiego pisarza Samuela Richardsona.</pr> albo Heloisy<pr><slowo_obce>Heloiza</slowo_obce> --- bohaterka powieści czołowego przedstawiciela sentymentalizmu Jean---Jacques Rousseau, pt. <tytul_dziela>Nowa Heloiza</tytul_dziela> (1761). W szkicu <tytul_dziela>O romansach</tytul_dziela> Krasicki zaliczy przecież między ,,obyczajne” i Pamelę Richardsona: ,,Mieści się w rodzaju tych dzieł uczciwych i Pamela; ale choć z wielu miar te księgi godne szacunku, mogą ich miejsce inne w pierwiastkowej panien edukacji zastąpić”. (I. Krasicki, <tytul_dziela>Dzieła prozą</tytul_dziela>, t. VI, s. 390).</pr>...«<end id="e1202428672083"/>/
+Uciekłem, jak się jejmość rozpoczęła zżymać,/
+Już też więcej nie mogłem tych bajek wytrzymać./
+Uciekłem. <begin id="b1202428881734"/><motyw id="m1202428881734">Dom, Przemiana, Żona</motyw>Jejmość w rządy. Pełno w domu wrzawy,/
+Trzy sztafety<pr><slowo_obce>sztafeta</slowo_obce> --- posłaniec konny.</pr> w tygodniu poszło do Warszawy;/
+W dwa tygodnie już domu i poznać nie można./
+Jejmość w planty<pr><slowo_obce>planta</slowo_obce> --- plan, pomysł.</pr> obfita, a w dziełach przemożna,/
+Z stołowej izby balki wyrzuciwszy stare<pr><slowo_obce>Z stołowej izby balki wyrzuciwszy stare</slowo_obce> --- w większych domach szlacheckich ozdabiano pułap belkami, wypełniając barwnymi ornamentami kwadraty powstałe przy skrzyżowaniu. Nowa moda wprowadza sufit gładki, ozdobiony malowidłami często o tematyce mitologicznej.</pr>,/
+Dała sufit a na nim <tytul_dziela>Wenery Ofiarę</tytul_dziela><pr><tytul_dziela>Wenery ofiara</tytul_dziela> --- obraz przedstawiający boginię miłości, Wenerę, składającą parę gołębi na ofiarę.</pr>./
+Już alkowa<pr><slowo_obce>alkowa</slowo_obce> --- sypialnia bez okien łącząca się z drugim pokojem.</pr> złocona w sypialnym pokoju,/
+Gipsem wymarmurzony<pr><slowo_obce>Gipsem wymarmurzony</slowo_obce> --- ozdobiony gipsowymi sztukateriami.</pr> gabinet od stroju./
+Poszły słojki z apteczki, poszły konfitury,/
+A nowym dziełem kunsztu i architektury/
+Z półek szafy mahoni<pr><slowo_obce>szafy mahoni</slowo_obce> --- szafy mahoniowe.</pr>, w nich książek bez liku<pr>W przekreślonych po w. 145 wierszach brulionu pozorne zainteresowanie się książkami wyraża autor z dosadniejszą ironią: Jejmość moja uczona; nawet na stoliku, / Nawet na gotowalni swoje księgi mieści. / (I. Krasicki, <tytul_dziela>Satyry i listy</tytul_dziela>, s. 102).</pr>,/
+A wszystko po francusku; globus na stoliku,/
+Buduar szklni się złotem, pełno porcelany,/
+Stoliki marmurowe, zwierściadlane ściany./
+Zgoła przeszedł mój domek warszawskie pałace,/
+A ja w kącie nieborak, jak płaczę, tak płaczę.<end id="e1202428881734"/>/
+<wers_akap>To mniejsza, lecz gdy hurmem zjechali się goście,</wers_akap>/
+Wykwintne kawalery i modne imoście,/
+<begin id="b1202428975569"/><motyw id="m1202428975569">Zabawa</motyw>Bal, maszki, trąby, kotły, gromadna muzyka,/
+Pan szambelan za zdrowie jejmości wykrzyka,/
+Pan adiutant wypija moje stare wino,/
+A jejmość, w kącie siedząc z panią starościną,/
+Kiedy się ja uwijam jako jaki sługa,/
+Coraz na mnie pogląda, śmieje się i mruga./
+<wers_akap>Po wieczerzy fajerwerk<end id="e1202428975569"/><pr><slowo_obce>Po wieczerzy fajerwerk</slowo_obce> --- sztuczne ognie, rzecz często bardzo kosztowna, były ulubionym sposobem uświetniania większych uroczystości bogatej szlachty i magnaterii.</pr>. Goście patrzą z sali;</wers_akap>/
+Wpadł szmermel<pr><slowo_obce>szmermel</slowo_obce> --- fajerwerk o wężykowatych skrętach, który przed zgaśnięciem daje wystrzał.</pr> między gumna<pr><slowo_obce>gumno</slowo_obce> --- podwórze między zabudowaniami gospodarskimi.</pr>, stodoła się pali./
+Ja wybiegam, ja gaszę, ratuję i płaczę,/
+A tu brzmią coraz głośniej na wiwat trębacze./
+Powracam zmordowany od pogorzeliska,/
+Nowe żarty, przymówki, nowe pośmiewiska./
+Siedzą goście, a coraz więcej ich przybywa,/
+Przekładam zbytni ekspens, jejmość zapalczywa/
+Z swoimi czterma wsiami odzywa się dwornie./
+»I osiem nie wystarczy« --- przekładam pokornie./
+»To się wróćmy do miasta«. Zezwoliłem, jedziem;/
+Już tu od kilku niedziel zbytkujem i siedziem./
+<begin id="b1194350550353"/><motyw id="m1194350550353">Małżeństwo</motyw>Już... ale dobrze mi tak, choć frasunek bodzie,/
+Cóż mam czynić? Próżny żal, jak mówią, po szkodzie”.<end id="e1194350550353"/></strofa>
+
+<extra><!--</tekst_glowny>--></extra>
+
+</liryka_l></utwor>

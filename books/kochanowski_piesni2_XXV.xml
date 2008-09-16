@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_XXV_(2)">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Pieśń XXV (Czego chcesz od nas, Panie, za Twe hojne dary?)</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni-ksiegi-wtore</dc:relation.isPartOf>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-wtore-piesn-xxv-czego-chcesz-od-nas-panie-za-t</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">G</dc:audience>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+<liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Pieśni, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Pieśń XXV </nazwa_utworu>
+
+
+
+<strofa><begin id="b1188581676128"/><motyw id="m1188581676128">Bóg, Natura</motyw>Czego chcesz od nas, Panie, za Twe hojne dary?/
+Czego za dobrodziejstwa, którym nie masz miary?/
+Kościół Cię nie ogarnie, wszędy pełno Ciebie,/
+I w otchłaniach, i w morzu, na ziemi, na niebie.</strofa>
+
+<strofa><begin id="b1219009536830"/><motyw id="m1219009536830">Bogactwo, Serce</motyw>Złota też, wiem, nie pragniesz, bo to wszytko Twoje,/
+Cokolwiek na tym świecie człowiek mieni swoje./
+Wdzięcznym Cię tedy sercem, Panie, wyznawamy,/
+Bo nad to przystojniejszej ofiary nie mamy.<end id="e1219009536830"/></strofa>
+
+<strofa><begin id="b1219009588586"/><motyw id="m1219009588586">Artysta, Stworzenie</motyw>Tyś pan wszytkiego świata, Tyś niebo zbudował/
+I złotymi gwiazdami ślicznieś uhaftował;/
+Tyś fundament założył nieobeszłej ziemi/
+I przykryłeś jej nagość zioły rozlicznemi.</strofa>
+
+<strofa>Za Twoim rozkazaniem w brzegach morze stoi,/
+A zamierzonych granic przeskoczyć się boi;/
+Rzeki wód nieprzebranych wielką hojność mają./
+Biały dzień, a noc ciemna swoje czasy znają.<end id="e1219009588586"/></strofa>
+
+<strofa><begin id="b1219009637696"/><motyw id="m1219009637696">Wiosna, Lato, Jesień, Zima</motyw>Tobie k'woli rozliczne kwiatki Wiosna rodzi,/
+Tobie k'woli w kłosianym wieńcu Lato chodzi./
+Wino Jesień i jabłka rozmaite dawa,/
+Potym do gotowego gnuśna Zima wstawa.<end id="e1219009637696"/></strofa>
+
+<strofa><begin id="b1219009682624"/><motyw id="m1219009682624">Deszcz, Woda , Zwierzęta</motyw>Z Twej łaski nocna rosa na mdłe zioła padnie,/
+A zagorzałe zboża deszcz ożywia snadnie;/
+Z Twoich rąk wszelkie zwierzę patrzą swej żywności,/
+A Ty każdego żywisz z Twej szczodrobliwości.<end id="e1219009682624"/></strofa>
+
+<strofa>Bądź na wieki pochwalon, nieśmiertelny Panie!/
+Twoja łaska, Twa dobroć nigdy nie ustanie./
+Chowaj nas, póki raczysz, na tej niskiej ziemi;/
+Jedno zawżdy niech będziem pod skrzydłami Twemi!<end id="e1188581676128"/></strofa>
+
+</liryka_l></utwor>
