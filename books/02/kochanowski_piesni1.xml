@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pie%C5%9Bni/Ksiegi_pierwsze">
+<dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xml:lang="pl">Księgi pierwsze</dc:title>
+<dc:relation.isPartOf xml:lang="pl">http://www.wolnelektury.pl/lektura/piesni</dc:relation.isPartOf>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-i-bys-wszystko-zloto-posiadl-kt</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-ii-serce-roscie-patrzac-na-te-c</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-iii-dzbanie-moj-pisany</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-iv-zlota-to-strzala-i-krom-wsze</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-v-kto-ma-swego-chleba</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-vi-acz-mie-twa-droga-mila-barzo</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-vii-trudna-rada-w-tej-mierze-pr</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-viii-gdzieskolwiek-jest-bozec-p</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-ix-chcemy-sobie-byc-radzi</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-x-kto-mi-dal-skrzydla-kto-mie-o</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xi-stronisz-przede-mna-neto-nie</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xii-musze-wyznac-bo-sie-juz-nie</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xiii-o-piekna-nocy-nad-zwyczaj-</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xiv-patrzaj-jako-snieg-po-gorac</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xv-nie-za-staraniem-ani-prze-ma</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xvi-krolom-moc-na-poddane-i-zwi</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xvii-slonce-juz-padlo-ciemna-no</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xviii-czolem-za-czesc-laskawy-m</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xix-zal-mi-cie-niebogo</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xx-milo-szalec-kiedy-czas-po-te</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxi-ty-spisz-a-ja-sam-na-dworze</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxii-rozumie-moj-prozno-sie-mas</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxiii-niezle-czasem-zamilczec-c</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxiv-zegar-slysze-wybija</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze-piesn-xxv-uzaluj-sie-kto-dobry-a-potl</dc:relation.hasPart>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Pieśń</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/piesni-ksiegi-pierwsze</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/Content/1499</dc:source.URL>
+<dc:source xml:lang="pl">Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584 </dc:rights>
+<dc:date.pd xml:lang="pl">1584</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2007-08-31</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+
+</utwor>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<utwor>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Sonety_krymskie">
+<dc:creator xml:lang="pl">Mickiewicz, Adam</dc:creator>
+<dc:title xml:lang="pl">Sonety krymskie</dc:title>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-motto-i-dedykacja</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-stepy-akermanskie</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-cisza-morska</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-zegluga</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-burza</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-widok-gor-ze-stepow-kozlowa</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-bakczysaraj</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-bakczysaraj-w-nocy</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-grob-potockiej</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-mogily-haremu</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-bajdary</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-aluszta-w-dzien</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-aluszta-w-nocy</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-czatyrdah</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-pielgrzym</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-droga-nad-przepascia-w-czufut-kale</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-gora-kikineis</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-ruiny-zamku-w-balaklawie</dc:relation.hasPart>
+<dc:relation.hasPart xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie-ajudah</dc:relation.hasPart>
+<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl">Romantyzm</dc:subject.period>
+<dc:subject.type xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl">Sonet</dc:subject.genre>
+<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/sonety-krymskie</dc:identifier.url>
+<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=2223&amp;from=editionindex&amp;dirids=4</dc:source.URL>
+<dc:source xml:lang="pl">Mickiewicz, Adam (1798-1855), Poezje, tom 2, Wiersze z lat 1825-1855 (Pieśni - Sonety - Poezje patrjotyczne, religijne i filozoficzne - Wiersze okolicznościowe - Bajki), wstęp i układ Józefa Kallenbacha, objaśn. zaopatrzył Jan Bystrzycki, Krakowska Spółdzielnia Wydawnicza, wyd. 2 popr., druk. W. L. Anczyca, Kraków, 1928</dc:source>
+<dc:rights xml:lang="pl">Domena publiczna - Adam Mickiewicz zm. 1855</dc:rights>
+<dc:date.pd xml:lang="pl">1855</dc:date.pd>
+<dc:format xml:lang="pl">xml</dc:format>
+<dc:type xml:lang="pl">text</dc:type>
+<dc:type xml:lang="en">text</dc:type>
+<dc:date xml:lang="pl">2008-01-29</dc:date>
+<dc:audience xml:lang="pl">L</dc:audience>
+<dc:language xml:lang="pl">pol</dc:language>
+</rdf:Description>
+</rdf:RDF>
+</utwor>
