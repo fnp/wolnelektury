@@ -2,10 +2,14 @@
     <div class="change-sets">
         <a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">Na półkę!</a>
     </div>
-    <div class="book-thumbnail"></div>
+    {% if book.children %}
+        <div class="book-parent-thumbnail"></div>
+    {% else %}
+        <div class="book-thumbnail"></div>
+    {% endif %}
     <div class="book-description">
         <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
-        <p style="margin: 0">Formaty: {{ formats|join:", "|safe }}</p>
+        <p style="margin: 0">Na skróty: {{ formats|join:", "|safe }}</p>
         <p style="margin: 0">Utwór w kategoriach: {{ tags|join:", "|safe }}</p>
     </div>
 </div>

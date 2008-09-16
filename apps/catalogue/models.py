@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.files import File
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
+from django.core.urlresolvers import reverse
 
 from newtagging.models import TagBase
 from newtagging import managers
@@ -81,6 +82,7 @@ class Book(models.Model):
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
     _short_html = models.TextField(_('short HTML'), editable=False)
+    parent_number = models.IntegerField(_('parent number'), default=0)
     
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
@@ -104,7 +106,7 @@ class Book(models.Model):
 
             formats = []
             if self.html_file:
-                formats.append(u'<a href="%s">Czytaj online</a>' % self.html_file.url)
+                formats.append(u'<a href="%s">Czytaj online</a>' % reverse('book_text', kwargs={'slug': self.slug}))
             if self.pdf_file:
                 formats.append(u'<a href="%s">Plik PDF</a>' % self.pdf_file.url)
             if self.odt_file:
@@ -164,10 +166,11 @@ class Book(models.Model):
         book.tags = book_tags
         
         if hasattr(book_info, 'parts'):
-            for part_url in book_info.parts:
+            for part_url, n in enumerate(book_info.parts):
                 base, slug = part_url.rsplit('/', 1)
                 child_book = Book.objects.get(slug=slug)
                 child_book.parent = book
+                child_book.parent_number = n
                 child_book.save()
         
         # Save XML and HTML files

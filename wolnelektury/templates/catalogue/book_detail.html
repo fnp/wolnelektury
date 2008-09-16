@@ -40,7 +40,7 @@
         <div id="formats">
             <ul>
             {% if book.html_file %}
-                <li><a href="{{ book.html_file.url }}">Czytaj online</a></li>
+                <li><a href="{% url book_text book.slug %}">Czytaj online</a></li>
             {% endif %}
             {% if book.pdf_file %}
                 <li><a href="{{ book.pdf_file.url }}">Pobierz plik PDF</a></li>
