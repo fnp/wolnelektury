@@ -33,7 +33,7 @@ class TagSubcategoryManager(models.Manager):
 
 
 class Tag(TagBase):
-    name = models.CharField(_('name'), max_length=50, unique=True, db_index=True)
+    name = models.CharField(_('name'), max_length=50, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False, 
@@ -154,9 +154,12 @@ class Book(models.Model):
             if category == 'author':
                 tag_sort_key = tag_name.last_name
                 tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
-            tag, created = Tag.objects.get_or_create(name=tag_name,
-                slug=slughifi(tag_name), sort_key=slughifi(tag_sort_key), category=category)
-            tag.save()
+            tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name))
+            if created:
+                tag.name = tag_name
+                tag.sort_key = slughifi(tag_sort_key)
+                tag.category = category
+                tag.save()
             book_tags.append(tag)
         book.tags = book_tags
         
@@ -183,13 +186,19 @@ class Book(models.Model):
             if (len(MarkupString(text)) > 240):
                 short_text = unicode(MarkupString(text)[:160])
             new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
-                
-            theme_names = [s.strip() for s in fragment.themes.split(',')]
+            
+            try:
+                theme_names = [s.strip() for s in fragment.themes.split(',')]
+            except AttributeError:
+                continue
             themes = []
             for theme_name in theme_names:
-                tag, created = Tag.objects.get_or_create(name=theme_name,
-                    slug=slughifi(theme_name), sort_key=slughifi(theme_name), category='theme')
-                tag.save()
+                tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name))
+                if created:
+                    tag.name = theme_name
+                    tag.sort_key = slughifi(theme_name)
+                    tag.category = 'theme'
+                    tag.save()
                 themes.append(tag)
             new_fragment.save()
             new_fragment.tags = list(book.tags) + themes
