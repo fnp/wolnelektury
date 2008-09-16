@@ -136,6 +136,13 @@ def book_detail(request, slug):
         context_instance=RequestContext(request))
 
 
+def book_text(request, slug):
+    book = get_object_or_404(models.Book, slug=slug)
+    
+    return render_to_response('catalogue/book_text.html', locals(),
+        context_instance=RequestContext(request))
+
+
 def logout_then_redirect(request):
     auth.logout(request)
     return HttpResponseRedirect(request.GET.get('next', '/'))

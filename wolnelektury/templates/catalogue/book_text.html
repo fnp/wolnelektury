@@ -1,0 +1,15 @@
+{% load chunks compressed catalogue_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>{% block title %}WolneLektury.pl{% endblock %}</title>
+        <link rel="icon" href="/media/img/favicon.png" type="image/x-icon" />
+        {% compressed_css "book" %}
+        {% compressed_js "all" %}
+    </head>
+    <body>
+        {% for chunk in book.html_file.chunks %}{{ chunk|safe }}{% endfor %}
+    </body>
+</html>
