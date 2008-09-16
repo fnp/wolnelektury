@@ -54,12 +54,14 @@
             </ul>
         </div>
     
-        {% if book.children.all %}
+        {% if book_children %}
         <div id="book-children">
             <h2>Utwory składające się na ten utwór:</h2>
-            {% for book in book.children.all %}
-                <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+            <ol>
+            {% for book in book_children %}
+                <li>{{ book.short_html }}</li>
             {% endfor %}
+            </ol>
         </div>
         {% endif %}
     

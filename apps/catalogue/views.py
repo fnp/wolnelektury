@@ -130,6 +130,7 @@ def book_detail(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
+    book_children = book.children.all().order_by('parent_number')
     
     form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),

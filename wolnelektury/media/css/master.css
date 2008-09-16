@@ -383,12 +383,17 @@ div.shown-tags p {
     margin-left: 3.5em;
 }
 
-.book-thumbnail {
+.book-thumbnail, .book-parent-thumbnail {
     background: transparent url(/media/img/book.png) no-repeat 0 0;
     width: 3em;
     height: 3em;
     float: left;
 }
+
+.book-parent-thumbnail {
+    background: transparent url(/media/img/book-parent.png) no-repeat 0 0;
+}
+
 
 /* =============== */
 /* = Simple form = */

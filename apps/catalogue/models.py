@@ -166,7 +166,7 @@ class Book(models.Model):
         book.tags = book_tags
         
         if hasattr(book_info, 'parts'):
-            for part_url, n in enumerate(book_info.parts):
+            for n, part_url in enumerate(book_info.parts):
                 base, slug = part_url.rsplit('/', 1)
                 child_book = Book.objects.get(slug=slug)
                 child_book.parent = book
