@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load catalogue_tags %}
+{% load catalogue_tags pagination_tags %}
 
 {% block title %}Lektura {{ book.title }} w WolneLektury.pl{% endblock %}
 
@@ -55,6 +55,7 @@
         </div>
     
         {% if book_children %}
+        {% autopaginate book_children 10 %}
         <div id="book-children">
             <h2>Utwory składające się na ten utwór:</h2>
             <ol>
@@ -63,6 +64,7 @@
             {% endfor %}
             </ol>
         </div>
+        {% paginate %}
         {% endif %}
     
     </div>
