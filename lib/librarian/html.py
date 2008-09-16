@@ -53,9 +53,13 @@ def transform(input_filename, output_filename):
     doc = etree.parse(doc_file, parser)
 
     result = doc.xslt(style)
-    add_anchors(result.getroot())
-    add_table_of_contents(result.getroot())
-    result.write(output_filename, xml_declaration=False, pretty_print=True, encoding='utf-8')
+    if result.find('//h1') is not None:
+        add_anchors(result.getroot())
+        add_table_of_contents(result.getroot())
+        result.write(output_filename, xml_declaration=False, pretty_print=True, encoding='utf-8')
+        return True
+    else:
+        return False
 
 
 class Fragment(object):

@@ -177,38 +177,39 @@ class Book(models.Model):
         book.xml_file.save('%s.xml' % book.slug, File(file(xml_file)), save=False)
         
         html_file = NamedTemporaryFile()
-        html.transform(book.xml_file.path, html_file)
-        book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
-        
-        # Extract fragments
-        closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
-        book_themes = []
-        for fragment in closed_fragments.values():
-            text = fragment.to_string()
-            short_text = ''
-            if (len(MarkupString(text)) > 240):
-                short_text = unicode(MarkupString(text)[:160])
-            new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
+        if html.transform(book.xml_file.path, html_file):
+            book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
             
-            try:
-                theme_names = [s.strip() for s in fragment.themes.split(',')]
-            except AttributeError:
-                continue
-            themes = []
-            for theme_name in theme_names:
-                tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name))
-                if created:
-                    tag.name = theme_name
-                    tag.sort_key = slughifi(theme_name)
-                    tag.category = 'theme'
-                    tag.save()
-                themes.append(tag)
-            new_fragment.save()
-            new_fragment.tags = list(book.tags) + themes
-            book_themes += themes
+            # Extract fragments
+            closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
+            book_themes = []
+            for fragment in closed_fragments.values():
+                text = fragment.to_string()
+                short_text = ''
+                if (len(MarkupString(text)) > 240):
+                    short_text = unicode(MarkupString(text)[:160])
+                new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
+                
+                try:
+                    theme_names = [s.strip() for s in fragment.themes.split(',')]
+                except AttributeError:
+                    continue
+                themes = []
+                for theme_name in theme_names:
+                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name))
+                    if created:
+                        tag.name = theme_name
+                        tag.sort_key = slughifi(theme_name)
+                        tag.category = 'theme'
+                        tag.save()
+                    themes.append(tag)
+                new_fragment.save()
+                new_fragment.tags = list(book.tags) + themes
+                book_themes += themes
+            
+            book_themes = set(book_themes)
+            book.tags = list(book.tags) + list(book_themes)
         
-        book_themes = set(book_themes)
-        book.tags = list(book.tags) + list(book_themes)
         return book.save()
     
     @permalink

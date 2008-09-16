@@ -9,7 +9,9 @@
     {% endif %}
     <div class="book-description">
         <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
-        <p style="margin: 0">Na skróty: {{ formats|join:", "|safe }}</p>
+        {% if formats %}
+            <p style="margin: 0">Na skróty: {{ formats|join:", "|safe }}</p>
+        {% endif %}
         <p style="margin: 0">Utwór w kategoriach: {{ tags|join:", "|safe }}</p>
     </div>
 </div>
