@@ -54,6 +54,7 @@ def transform(input_filename, output_filename):
 
     result = doc.xslt(style)
     add_anchors(result.getroot())
+    add_table_of_contents(result.getroot())
     result.write(output_filename, xml_declaration=True, pretty_print=True, encoding='utf-8')
 
 
@@ -186,4 +187,30 @@ def add_anchors(root):
             add_anchor(element, counter)
             counter += 1
 
+
+def add_table_of_contents(root):
+    sections = []
+
+    for element in root.iterdescendants():
+        if element.tag in ('h2', 'h3'):
+            if element.tag == 'h3' and len(sections) and sections[-1][0] == 'h2':
+                sections[-1][2].append((element.tag, ''.join(element.xpath('descendant-or-self::text()')), []))
+            else:
+                sections.append((element.tag, ''.join(element.xpath('descendant-or-self::text()')), []))
+            
+    toc = etree.Element('div')
+    toc.set('id', 'toc')
+    toc_header = etree.SubElement(toc, 'h2')
+    toc_header.text = u'Spis treści'
+    toc_list = etree.SubElement(toc, 'ol')
+
+    for section, text, subsections in sections:
+        section_element = etree.SubElement(toc_list, 'li')
+        section_element.text = text
+        if len(subsections):
+            subsection_list = etree.SubElement(section_element, 'ol')
+            for subsection, text, _ in subsections:
+                subsection_element = etree.SubElement(subsection_list, 'li')
+                subsection_element.text = text
+    root.insert(0, toc)
 
