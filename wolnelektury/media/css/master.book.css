@@ -206,21 +206,21 @@ p {
 /* = Custom elements = */
 /* =================== */
 span.author {
-    font-size: 0.75em;
+    font-size: 0.5em;
     display: block;
     line-height: 1.5em;
     margin-bottom: 0.25em;
 }
 
 span.collection {
-    font-size: 0.75em;
+    font-size: 0.375em;
     display: block;
     line-height: 1.5em;
     margin-bottom: -0.25em;
 }
 
 span.subtitle {
-    font-size: 0.75em;
+    font-size: 0.5em;
     display: block;
     line-height: 1.5em;
     margin-top: -0.25em;
