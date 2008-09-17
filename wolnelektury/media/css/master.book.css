@@ -181,8 +181,12 @@ p {
 
 #footnotes p {
     margin-left: 2.5em;
+    font-size: 0.875em;
 }
 
+blockquote {
+    font-size: 0.875em;
+}
 
 /* ============= */
 /* = Numbering = */
@@ -228,7 +232,7 @@ span.subtitle {
 
 div.didaskalia {
     font-style: italic;
-    margin: 0.5em 0 0;
+    margin: 0.5em 0 0 1.5em;
 }
 
 div.kwestia {
@@ -256,6 +260,7 @@ p.motto {
 
 p.motto_podpis {
     font-size: 0.875em;
+    text-align: right;
 }
 
 div.fragment {
@@ -294,8 +299,12 @@ p.place-and-time {
     font-style: italic;
 }
 
-em.math, em.foreign-word, em.book-title, em.didaskalia, em.author-emphasis {
+em.math, em.foreign-word, em.book-title, em.didaskalia {
     font-style: italic;
+}
+
+em.author-emphasis {
+    letter-spacing: 0.1em;
 }
 
 em.person {
