@@ -13,8 +13,6 @@ Ten utwór nie jest chroniony prawem autorskim i znajduje się w domenie publicz
 Źródło:
 -----
 
-AUTOR: 
-TYTUŁ: 
 """
 
 
