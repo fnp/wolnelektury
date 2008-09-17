@@ -42,8 +42,6 @@
             return false;
         });
         
-        
-        
         $('#registration-form').ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {
@@ -156,5 +154,45 @@
                 });
             }
         });
+    
+        $('#books-list .book').hover(
+            function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+            function() { $(this).css({background: '#FFF'}); }
+        ).click(function() {
+            location.href = $('h2 a', this).attr('href');
+        });
+    
+        $('#toggle-description').hover(
+            function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+            function() { $(this).css({background: '#EEE'}); }
+        ).click(function() {
+            if ($('#description').hasClass('hidden')) {
+                $('#description').slideDown('fast').removeClass('hidden');
+                $('p', this).html('Zwiń opis ▲');
+            } else {
+                $('#description').slideUp('fast').addClass('hidden');
+                $('p', this).html('Rozwiń opis ▼');
+            }
+        });
+    
+        var target = $('#set-window div.target');
+    
+        $('#set-window').jqm({
+            ajax: '@href', 
+            target: target[0],
+            overlay: 60,
+            trigger: 'a.jqm-trigger', 
+            onShow: function(hash) { 
+                var offset = $(hash.t).offset();
+                target.html('<p><img src="/media/img/indicator.gif" /> Ładowanie</p>');
+                hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
+            onLoad: function(hash) { 
+                $('form', hash.w).ajaxForm({
+                    target: target,
+                    success: function() { setTimeout(function() { $('#set-window').jqmHide() }, 1000) }
+                });
+            }
+        });
+
     });
 })(jQuery)
