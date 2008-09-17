@@ -142,7 +142,13 @@ def book_detail(request, slug):
 
 def book_text(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
+    book_themes = {}
+    for fragment in book.fragments.all():
+        for theme in fragment.tags.filter(category='theme'):
+            book_themes.setdefault(theme, []).append(fragment)
     
+    book_themes = book_themes.items()
+    book_themes.sort(key=lambda s: s[0].sort_key)
     return render_to_response('catalogue/book_text.html', locals(),
         context_instance=RequestContext(request))
 

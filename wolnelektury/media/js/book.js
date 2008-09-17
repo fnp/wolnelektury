@@ -5,9 +5,9 @@ $(function() {
         $('#menu li a[href="#toc"]').remove();
     }
     
-    $('#toc a').click(function(event) {
+    $('#toc a, #themes a').click(function(event) {
         event.preventDefault();
-        $('#menu li a.selected[href="#toc"]').click();
+        $('#menu li a.selected').click();
         $.scrollTo('a[name="' + $(this).attr('href').slice(1) + '"]', {offset: {top: -50, left: 0}});
     });
     

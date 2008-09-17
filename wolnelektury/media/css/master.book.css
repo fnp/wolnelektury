@@ -35,6 +35,7 @@ img {
     height: 1.5em;
     background: #333;
     color: #FFF;
+    opacity: 0.9;
 }
 
 #menu ul {
@@ -63,7 +64,7 @@ img {
     background: #FFF url(/media/img/arrow-up.png) no-repeat center right;
 }
 
-#toc {
+#toc, #themes {
     position: fixed;
     left: 0em;
     top: 1.5em;
@@ -76,9 +77,10 @@ img {
     height: 16em;
     overflow-x: hidden;
     overflow-y: auto;
+    opacity: 0.9;
 }
 
-#toc ol {
+#toc ol, #themes ol {
     list-style: none;
     padding: 0;
     margin: 0;

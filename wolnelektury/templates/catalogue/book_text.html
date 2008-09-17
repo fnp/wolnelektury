@@ -14,13 +14,24 @@
         <div id="menu">
             <ul>
                 <li><a href="#toc">Spis treści</a></li>
-                <li><a href="#">Motywy</a></li>
+                <li><a href="#themes">Motywy</a></li>
             </ul>
         </div>
         <div id="header">
             <div id="logo">
                 <a href="/"><img src="/media/img/logo.png" alt="WolneLektury.pl - logo" /></a>
             </div>
+        </div>
+        <div id="themes">
+            <ol>
+                {% for theme, fragments in book_themes %}
+                <li>{{ theme }}:
+                    {% for fragment in fragments %}
+                        <a href="#m{{ fragment.anchor }}">{{ forloop.counter }}</a>
+                    {% endfor %}
+                <li>
+                {% endfor %}
+            </ol>
         </div>
         {{ book.html_file.read|safe }}
     </body>
