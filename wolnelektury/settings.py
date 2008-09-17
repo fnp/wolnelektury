@@ -99,10 +99,18 @@ COMPRESS_CSS = {
 }
 
 COMPRESS_JS = {
+    'jquery': {
+        'source_filenames': ('js/jquery.js',),
+        'output_filename': 'js/jquery.min.js',
+    },
     'all': {
-        'source_filenames': ('js/jquery.js', 'js/jquery.autocomplete.js', 'js/jquery.form.js', 
+        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js', 
             'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',),
         'output_filename': 'js/all.min.js',
+    },
+    'book': {
+        'source_filenames': ('js/jquery.scrollto.js', 'js/book.js',),
+        'output_filename': 'js/book.min.js',
     }
 }
 

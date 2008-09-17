@@ -7,9 +7,21 @@
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
         <link rel="icon" href="/media/img/favicon.png" type="image/x-icon" />
         {% compressed_css "book" %}
-        {% compressed_js "all" %}
+        {% compressed_js "jquery" %}
+        {% compressed_js "book" %}
     </head>
     <body>
+        <div id="menu">
+            <ul>
+                <li><a href="#toc">Spis treści</a></li>
+                <li><a href="#">Motywy</a></li>
+            </ul>
+        </div>
+        <div id="header">
+            <div id="logo">
+                <a href="/"><img src="/media/img/logo.png" alt="WolneLektury.pl - logo" /></a>
+            </div>
+        </div>
         {{ book.html_file.read|safe }}
     </body>
 </html>

@@ -162,17 +162,26 @@ def extract_fragments(input_filename):
     return closed_fragments, open_fragments
 
 
-def add_anchor(element, number):
-    anchor = etree.Element('a', href='#f%d' % number)
-    anchor.set('class', 'anchor')
-    anchor.text = str(number)
-    if element.text:
-        anchor.tail = element.text
-        element.text = u''
-    element.insert(0, anchor)
+def add_anchor(element, prefix, with_link=True, with_target=True, link_text=None):
+    if with_link:
+        if link_text is None:
+            link_text = prefix
+        anchor = etree.Element('a', href='#%s' % prefix)
+        anchor.set('class', 'anchor')
+        anchor.text = unicode(link_text)
+        if element.text:
+            anchor.tail = element.text
+            element.text = u''
+        element.insert(0, anchor)
     
-    anchor_target = etree.Element('a', name='f%d' % number)
-    element.insert(0, anchor_target)
+    if with_target:
+        anchor_target = etree.Element('a', name='%s' % prefix)
+        anchor_target.set('class', 'target')
+        anchor_target.text = u' '
+        if element.text:
+            anchor_target.tail = element.text
+            element.text = u''
+        element.insert(0, anchor_target)
 
 
 def any_ancestor(element, test):
@@ -191,39 +200,43 @@ def add_anchors(root):
         
         if element.tag == 'p' and 'verse' in element.get('class', ''):
             if counter == 1 or counter % 5 == 0:
-                add_anchor(element, counter)
+                add_anchor(element, "f%d" % counter, link_text=counter)
             counter += 1
         elif 'paragraph' in element.get('class', ''):
-            add_anchor(element, counter)
+            add_anchor(element, "f%d" % counter, link_text=counter)
             counter += 1
 
 
 def add_table_of_contents(root):
     sections = []
-
+    counter = 1
     for element in root.iterdescendants():
         if element.tag in ('h2', 'h3'):
-            if any_ancestor(element, lambda e: e.get('id') in ('footnotes')):
+            if any_ancestor(element, lambda e: e.get('id') in ('footnotes',)):
                 continue
             
-            if element.tag == 'h3' and len(sections) and sections[-1][0] == 'h2':
-                sections[-1][2].append((element.tag, ''.join(element.xpath('descendant-or-self::text()')), []))
+            if element.tag == 'h3' and len(sections) and sections[-1][1] == 'h2':
+                sections[-1][3].append((counter, element.tag, ''.join(element.xpath('text()')), []))
             else:
-                sections.append((element.tag, ''.join(element.xpath('descendant-or-self::text()')), []))
-            
+                sections.append((counter, element.tag, ''.join(element.xpath('text()')), []))
+            add_anchor(element, "s%d" % counter, with_link=False)
+            counter += 1
+    
     toc = etree.Element('div')
     toc.set('id', 'toc')
     toc_header = etree.SubElement(toc, 'h2')
     toc_header.text = u'Spis treści'
     toc_list = etree.SubElement(toc, 'ol')
 
-    for section, text, subsections in sections:
+    for n, section, text, subsections in sections:
         section_element = etree.SubElement(toc_list, 'li')
-        section_element.text = text
+        add_anchor(section_element, "s%d" % n, with_target=False, link_text=text)
+        
         if len(subsections):
             subsection_list = etree.SubElement(section_element, 'ol')
-            for subsection, text, _ in subsections:
+            for n, subsection, text, _ in subsections:
                 subsection_element = etree.SubElement(subsection_list, 'li')
-                subsection_element.text = text
+                add_anchor(subsection_element, "s%d" % n, with_target=False, link_text=text)
+    
     root.insert(0, toc)
 

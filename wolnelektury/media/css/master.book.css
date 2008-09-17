@@ -2,13 +2,110 @@ body {
     font-size: 16px;
     font: Georgia, "Times New Roman", serif;
     line-height: 1.5em;
-    margin: 3em;
-    max-width: 36em;
+    margin: 0;
 }
 
 a {
     color: blue;
     text-decoration: none;
+}
+
+#book-text {
+    margin: 3em;
+    max-width: 36em;
+}
+
+/* ================================== */
+/* = Header with logo and menu      = */
+/* ================================== */
+#header {
+    margin: 3.4em 0 0 1.4em;
+}
+
+img {
+    border: none;
+}
+
+
+#menu {
+    position: fixed;
+    left: 0em;
+    top: 0em;
+    width: 100%;
+    height: 1.5em;
+    background: #333;
+    color: #FFF;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu li a {
+    display: block;
+    float: left;
+    width: 7.5em;
+    height: 1.5em;
+    margin-left: 0.5em;
+    text-align: center;
+    color: #FFF;
+}
+
+#menu li a:hover, #menu li a:active {
+    color: #000;
+    background: #FFF url(/media/img/arrow-down.png) no-repeat center right;
+}
+
+#menu li a.selected {
+    color: #000;
+    background: #FFF url(/media/img/arrow-up.png) no-repeat center right;
+}
+
+#toc {
+    position: fixed;
+    left: 0em;
+    top: 1.5em;
+    width: 37em;
+    padding: 1.5em;
+    background: #FFF;
+    border-bottom: 0.25em solid #DDD;
+    border-right: 0.25em solid #DDD;
+    display: none;
+    height: 16em;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#toc ol li {
+    font-weight: bold;
+}
+
+#toc ol ol {
+    padding: 0 0 1.5em 1.5em;
+    margin: 0;
+}
+
+#toc ol ol li {
+    font-weight: normal;
+}
+
+#toc h2 {
+    display: none;
+}
+
+#toc .anchor {
+    float: none;
+    margin: 0;
+    color: blue;
+    font-size: 16px;
 }
 
 /* =================================================== */
@@ -98,11 +195,10 @@ p {
     padding: 0.2em 0.5em;
 }
 
-.anchor:hover, .anchor:active {
+.anchor:hover, #book-text .anchor:active {
     color: #FFF;
     background-color: #CCC;
 }
-
 
 /* =================== */
 /* = Custom elements = */
