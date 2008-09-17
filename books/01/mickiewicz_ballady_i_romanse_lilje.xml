@@ -35,13 +35,13 @@
 
 <dzielo_nadrzedne>Ballady i romanse</dzielo_nadrzedne>
 
-<nazwa_utworu><begin id="b1189064257681"/><motyw id="m1189064257681">Mąż, Morderstwo, Zbrodniarz, Żona</motyw>Lilje<pr>Wiadomość o <tytul_dziela>Liljach</tytul_dziela>, jako niedokończonej jeszcze balladzie, mamy w liście z Kowna z dnia 8 kwietnia 1820 r. <tytul_dziela>Lilje</tytul_dziela> są arcydziełem wśród ballad Mickiewicza. Krótki motyw ludowy rozwinął poeta wspaniale. Pierwsza zwrotka pieśni ludowej brzmi: ,,Stała się nam nowina, Pani pana zabiła, / W ogródku go schowała, Ruty na nim posiała, / Rośnij rutko wysoko, Jak pan leży głęboko".</pr></nazwa_utworu>
+<nazwa_utworu>Lilje<pr>Wiadomość o <tytul_dziela>Liljach</tytul_dziela>, jako niedokończonej jeszcze balladzie, mamy w liście z Kowna z dnia 8 kwietnia 1820 r. <tytul_dziela>Lilje</tytul_dziela> są arcydziełem wśród ballad Mickiewicza. Krótki motyw ludowy rozwinął poeta wspaniale. Pierwsza zwrotka pieśni ludowej brzmi: ,,Stała się nam nowina, Pani pana zabiła, / W ogródku go schowała, Ruty na nim posiała, / Rośnij rutko wysoko, Jak pan leży głęboko".</pr></nazwa_utworu>
 
 <nota><akap>(z pieśni gminnej)</akap></nota>
 
 
 
-<strofa><wers_akap><begin id="b1220610816456"/><motyw id="m1220610816456">Kwiaty</motyw>Zbrodnia to niesłychana,</wers_akap>/
+<strofa><begin id="b1189064257681"/><motyw id="m1189064257681">Mąż, Morderstwo, Zbrodniarz, Żona</motyw><begin id="b1220610816456"/><motyw id="m1220610816456">Kwiaty</motyw><wers_akap>Zbrodnia to niesłychana,</wers_akap>/
 Pani zabija pana./
 Zabiwszy grzebie w gaju,/
 Na łączce przy ruczaju,/
@@ -291,7 +291,7 @@ I ciągnie mnie i szczypie.<end id="e1220610337179"/>/
 Ach! dosyć, dosyć strachu,/
 Nie siedzieć mnie w tym gmachu,/
 Nie dla mnie świat i szczęście,/
-Nie dla mnie już zamęście!"
+Nie dla mnie już zamęście!"/
 <begin id="b1189064396033"/><motyw id="m1189064396033">Zbrodnia, Kara, Śmierć</motyw><wers_akap>,,Córko --- rzecze jej stary ---</wers_akap>/
 Nie masz zbrodni bez kary,/
 Lecz jeśli szczera skrucha,/

@@ -31,13 +31,13 @@
 
 <autor_utworu>Adam Mickiewicz</autor_utworu>
 
-<nazwa_utworu><begin id="b1189071545288"/><motyw id="m1189071545288">Kochanek romantyczny, Miłość romantyczna</motyw>Do M***<pr><slowo_obce>Do M***</slowo_obce> --- Do Maryli Puttkamerowej.</pr></nazwa_utworu>
+<nazwa_utworu>Do M***<pr><slowo_obce>Do M***</slowo_obce> --- Do Maryli Puttkamerowej.</pr></nazwa_utworu>
 
 <nota><akap>Wiérsz napisany w roku 1822</akap></nota>
 
 
 
-<strofa>Precz z moich oczu!... posłucham od razu,/
+<strofa><begin id="b1189071545288"/><motyw id="m1189071545288">Kochanek romantyczny, Miłość romantyczna</motyw>Precz z moich oczu!... posłucham od razu,/
 Precz z mego serca!... i serce posłucha,/
 Precz z méj pamięci!... Nie! tego rozkazu/
 Moja i twoja pamięć nie posłucha.</strofa>

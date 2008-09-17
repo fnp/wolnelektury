@@ -3,7 +3,7 @@
   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśń_świętojańska_o_sobótce">
 <dc:creator xml:lang="pl">Kochanowski, Jan</dc:creator>
-<dc:title xml:lang="pl">Pieśń świętojańska o sobótce</dc:title>
+<dc:title xml:lang="pl">Pieśń świętojańska o Sobótce</dc:title>
 <dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
 <dc:contributor.editor xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
 <dc:contributor.editor xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
@@ -33,7 +33,7 @@
 
 <autor_utworu>Jan Kochanowski</autor_utworu>
 
-<nazwa_utworu>Pieśń świętojańska o sobótce</nazwa_utworu>
+<nazwa_utworu>Pieśń świętojańska o Sobótce</nazwa_utworu>
 
 <extra><!--</elementy_poczatkowe>--></extra>
 

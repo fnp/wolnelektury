@@ -537,7 +537,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	<kwestia>
 		<strofa>Nieraz o świcie już go tam widziano/
 		Łzami poranną mnożącego rosę,/
-		A chmury - swego oblicza chmurami,/
+		A chmury --- swego oblicza chmurami,/
 		Aliści ledwo na najdalszym wschodzie/
 		Wesołe słońce sprzed łoża Aurory<pr><slowo_obce>Aurora</slowo_obce> --- jutrzenka.</pr>/
 		Zaczęło ściągać cienistą kotarę,/
@@ -866,7 +866,7 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
-		<strofa>Najpraktyczniejszą - życie w zastaw kładę.</strofa>
+		<strofa>Najpraktyczniejszą --- życie w zastaw kładę.</strofa>
 	</kwestia>
 
 
@@ -1939,10 +1939,10 @@ Jest w nim co złego, my usuniem błędy...</strofa>
 	<kwestia>
 		<strofa><wers_cd>Cicho! burdą jesteś.</wers_cd>/
 		Z tą porywczością doigrasz się waszmość./
-		Zawsze mi musisz się sprzeciwiać! - Brawo,/
-		Kochana młodzi! - Urwipołeć z waści!/
-		Siedź cicho albo... Hola! Więcej światła! -/
-		Ja cię uciszę. Patrz go! - Żwawo, chłopcy!</strofa>
+		Zawsze mi musisz się sprzeciwiać! --- Brawo,/
+		Kochana młodzi! --- Urwipołeć z waści!/
+		Siedź cicho albo... Hola! Więcej światła! ---/
+		Ja cię uciszę. Patrz go! --- Żwawo, chłopcy!</strofa>
 	</kwestia>
 
 
@@ -2317,7 +2317,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 <naglowek_osoba>BENWOLIO</naglowek_osoba>
 	<kwestia>
 		<strofa><begin id="b1189499513046"/><motyw id="m1189499513046">Miłość</motyw>Pójdź! skrył się owdzie pomiędzy drzewami,/
-		By się tam zbratał z tajemniczą nocą<pr><slowo_obce>z tajemniczą nocą</slowo_obce> --- w oryg.: <slowo_obce>humorous night</slowo_obce> --- wilgotna, czyli zmienna noc.</pr>---/
+		By się tam zbratał z tajemniczą nocą<pr><slowo_obce>z tajemniczą nocą</slowo_obce> --- w oryg.: <slowo_obce>humorous night</slowo_obce> --- wilgotna, czyli zmienna noc.</pr> ---/
 		Ślepym w miłości ciemność jest najmilsza.<end id="e1189499513046"/></strofa>
 	</kwestia>
 
@@ -2328,7 +2328,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Teraz usiądzie sobie pod jabłonką/
 		I będzie wzdychał, by jego kochanka/
 		Była owocem, który młode panny,/
-		Kiedy są same - nazywają figą./
+		Kiedy są same --- nazywają figą./
 		Oby, Romeo, była, oby była 
 		Taką otwartą figą, a ty chłopcze,/
 		Obyś był gruszką!<end id="e1191325220996"/> Dobranoc, Romeo!/
@@ -4785,7 +4785,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Chętnie bym o tym zapomniała, ale/
 		To coś wcisnęło się tak w moją pamięć/
 		Jak karygodny czyn w umysł grzesznika./
-		Tybalt nie żyje - Romeo wygnany!/
+		Tybalt nie żyje --- Romeo wygnany!/
 		To jedno słowo: wygnany, zabiło/
 		Tysiąc Tybaltów. Śmierć Tybalta była/
 		Sama już przez się dostatecznym ciosem;/
@@ -4931,7 +4931,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Błąd twój pociąga z prawa śmierć za sobą:/
 		Książę, ujmując się jednak za tobą,/
 		Prawo życzliwie usuwa na stronę/
-		I groźny wyraz: śmierć - w wygnanie zmienia,/
+		I groźny wyraz: śmierć --- w wygnanie zmienia,/
 		Łaska to, i ty tego nie uznajesz?</strofa>
 	</kwestia>
 
@@ -5717,7 +5717,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Starać się o mnie, nim mi się dał poznać?/
 		Proszę cię, matko, powiedz memu ojcu,/
 		Że jeszcze nie chcę iść za mąż, a gdybym/
-		Koniecznie miała iść, to bym wolała 
+		Koniecznie miała iść, to bym wolała/
 		Pójść za Romea, który, jak wiesz dobrze,/
 		Jest mi z całego serca nienawistny,/
 		Niż za Parysa. Ha! to mi nowina!</strofa>
@@ -5933,7 +5933,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Po opuszczeniu ziemi? Daj mi radę./
 		Niestety! Że też nieba mogą nękać/
 		Tak mdłą istotę jak ja! Nic nie mówisz?/
-		<begin id="b1191410957646"/><motyw id="m1191410957646">Zdrada</motyw>Nie maszże żadnej pociechy, żadnego 
+		<begin id="b1191410957646"/><motyw id="m1191410957646">Zdrada</motyw>Nie maszże żadnej pociechy, żadnego/
 		Na to lekarstwa?</strofa>
 	</kwestia>
 
@@ -6560,7 +6560,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Co mi na jutro może być potrzebne./
 		Pozwól, bym teraz sama pozostała,/
 		I niechaj Marta spędzi tę noc z tobą./
-		Pewnam, że wszyscy macie dość roboty 
+		Pewnam, że wszyscy macie dość roboty/
 		Przy tym tak nagłym obchodzie.</strofa>
 </kwestia>
 
@@ -6907,7 +6907,7 @@ Wielką im radość czas zgotuje w duszach.<end id="e1191324309503"/></strofa>
 		Śmierć zaślubiła twą oblubienicę./
 		Patrz, oto leży ten kwiat w jej uścisku./
 		Śmierć jest mym zięciem, śmierć jest mym dziedzicem./
-		Umrę i wszystko jej oddam, bo wszystko 
+		Umrę i wszystko jej oddam, bo wszystko/
 		Oddaje śmierci, kto oddaje ducha.<end id="e1191486500602"/></strofa>
 </kwestia>
 
