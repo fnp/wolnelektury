@@ -203,6 +203,9 @@ def add_table_of_contents(root):
 
     for element in root.iterdescendants():
         if element.tag in ('h2', 'h3'):
+            if any_ancestor(element, lambda e: e.get('id') in ('footnotes')):
+                continue
+            
             if element.tag == 'h3' and len(sections) and sections[-1][0] == 'h2':
                 sections[-1][2].append((element.tag, ''.join(element.xpath('descendant-or-self::text()')), []))
             else:
