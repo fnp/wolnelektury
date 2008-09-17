@@ -41,17 +41,17 @@ def capfirst(text):
 def simple_title(tags):
     mapping = {
         'author': u'Autor',
-        'theme': u'Motyw',
-        'epoch': u'Epoka',
-        'genre': u'Gatunek',
-        'kind': u'Rodzaj',
-        'set': u'Półka',
+        'theme': u'motyw',
+        'epoch': u'epoka',
+        'genre': u'gatunek',
+        'kind': u'rodzaj',
+        'set': u'półka',
     }
     
     title = []
     for tag in tags:
-        title.append("%s: %s." % (mapping[tag.category], tag.name))
-    return ' '.join(title)
+        title.append("%s: %s" % (mapping[tag.category], tag.name))
+    return capfirst(', '.join(title))
 
 
 @register.simple_tag
