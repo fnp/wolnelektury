@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
+from django.views.decorators.cache import cache_page
 
 from catalogue import models
 from catalogue import forms
@@ -140,6 +141,7 @@ def book_detail(request, slug):
         context_instance=RequestContext(request))
 
 
+@cache_page(60 * 60)
 def book_text(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     book_themes = {}
