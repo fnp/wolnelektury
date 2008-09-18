@@ -306,6 +306,17 @@ div.shown-tags p {
     text-align: justify;
 }
 
+#description .meta {
+    margin: 0.5em;
+    width: 12em;
+    list-style: none;
+    float: right;
+}
+
+#description dt {
+    font-weight: bold;
+}
+
 #toggle-description, #tagged-object-list .pagination {
     width: 100%;
     height: 1.5em;
