@@ -584,3 +584,6 @@ div.shown-tags p {
     margin-top: 1em;
 }
 
+.see-more {
+    text-align: right;
+}
