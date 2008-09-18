@@ -1,0 +1,83 @@
+
+body {
+font-family: verdana, arial, sans-serif; 
+margin: 2em;
+font-size: 100%;
+}
+
+
+
+
+h1 {
+font-size: 300%;
+font-weight: bold;
+margin-top: 30px;
+}
+
+h1,h2 {
+margin-bottom: 0;
+}
+
+h2 {
+font-size: 100%;
+font-weight: bold; 
+margin-top: 1em;
+}
+
+p {
+width: 450px;
+margin-top: 0.5em;
+}
+
+img {
+	border: none;
+}
+	
+	#whoiam {
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-size: 150%;
+	margin-bottom: 0.8em;
+}
+
+.howto {
+
+	color: gray;
+	font-size: 80%
+}
+
+#contact h2 {
+margin-top: 0.5em;
+}
+
+
+.haj {
+	background-color: #ffc;
+}
+
+#urle {
+margin-top: 2.3em;
+}
+
+/*
+LINKS
+*/
+
+a:link {
+color: #037;
+text-decoration: underline; 
+}
+
+a:visited {
+color: #636;
+}
+
+a:active {
+color: #900;
+text-decoration: none;
+}
+
+a:hover {
+color: #d46400;
+}
+
