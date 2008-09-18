@@ -137,8 +137,11 @@ class Book(models.Model):
     has_html_file.short_description = 'HTML'
     has_html_file.boolean = True
 
+    class AlreadyExists(Exception):
+        pass
+    
     @staticmethod
-    def from_xml_file(xml_file):
+    def from_xml_file(xml_file, overwrite=False):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
@@ -146,7 +149,11 @@ class Book(models.Model):
         # Read book metadata
         book_info = dcparser.parse(xml_file)
         book_base, book_slug = book_info.url.rsplit('/', 1)
-        book = Book(title=book_info.title, slug=book_slug)
+        book, created = Book.objects.get_or_create(slug=book_slug)
+        if not created and not overwrite:
+            raise Book.AlreadyExists('Book %s already exists' % book_slug)
+        
+        book.title = book_info.title
         book.save()
         
         book_tags = []
@@ -210,7 +217,8 @@ class Book(models.Model):
             book_themes = set(book_themes)
             book.tags = list(book.tags) + list(book_themes)
         
-        return book.save()
+        book.save()
+        return book
     
     @permalink
     def get_absolute_url(self):

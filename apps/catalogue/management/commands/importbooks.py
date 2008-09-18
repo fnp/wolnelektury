@@ -1,4 +1,5 @@
 import os
+import sys
 
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
@@ -9,11 +10,10 @@ from catalogue.models import Book
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
-        make_option('--verbosity', action='store', dest='verbosity', default='1',
-            type='choice', choices=['0', '1', '2'],
+        make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
             help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
-        make_option('--force', action='store_true', dest='force', default=False,
-            help='Overwrite previously imported files with the same id')
+        make_option('-f', '--force', action='store_true', dest='force', default=False,
+            help='Print status messages to stdout')
     )
     help = 'Imports books from the specified directories.'
     args = 'directory [directory ...]'
@@ -23,7 +23,7 @@ class Command(BaseCommand):
 
         self.style = color_style()
 
-        verbosity = int(options.get('verbosity', 1))
+        verbose = options.get('verbose')
         force = options.get('force')
         show_traceback = options.get('traceback', False)
 
@@ -32,20 +32,61 @@ class Command(BaseCommand):
         transaction.enter_transaction_management()
         transaction.managed(True)
 
+        files_imported = 0
+        files_skipped = 0
+        
         for dir_name in directories:
             if not os.path.isdir(dir_name):
-                print self.style.ERROR("Skipping '%s': not a directory." % dir_name)
+                print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
+                files_skipped += 1
             else:
                 for file_name in os.listdir(dir_name):
                     file_path = os.path.join(dir_name, file_name)
-                    if not os.path.splitext(file_name)[1] == '.xml':
-                        print self.style.NOTICE("Skipping '%s': not an XML file." % file_path)
-                        continue
-                    if verbosity > 0:
-                        print "Parsing '%s'" % file_path
+                    file_base, ext = os.path.splitext(file_path)
                     
-                    Book.from_xml_file(file_path)
-        
+                    # Skip files that are not XML files
+                    if not ext == '.xml':
+                        print self.style.NOTICE("%s: Not an XML file. Skipping." % file_path)
+                        files_skipped += 1
+                        continue
+                    
+                    if verbose > 0:
+                        print "Parsing '%s'" % file_path
+                    else:
+                        sys.stdout.write('.')
+                        sys.stdout.flush()
+                    
+                    # Import book files
+                    try:
+                        book = Book.from_xml_file(file_path, overwrite=force)
+                        files_imported += 1
+                        
+                        if os.path.isfile(file_base + '.pdf'):
+                            book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
+                            if verbose:
+                                print "Importing %s.pdf" % file_base 
+                        if os.path.isfile(file_base + '.odt'):
+                            book.odt_file.save('%s.odt' % book.slug, File(file(file_base + '.odt')))
+                            if verbose:
+                                print "Importing %s.odt" % file_base
+                        if os.path.isfile(file_base + '.txt'):
+                            book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
+                            if verbose:
+                                print "Importing %s.txt" % file_base
+                    
+                        book.save()
+                    
+                    except Book.AlreadyExists, msg:
+                        print self.style.ERROR('%s: Book already imported. Skipping. To overwrite use --force.' %
+                            file_path)
+                        files_skipped += 1
+                        
+        # Print results
+        print
+        print "Results: %d files imported, %d skipped, %d total." % (
+            files_imported, files_skipped, files_imported + files_skipped)
+        print
+                        
         transaction.commit()
         transaction.leave_transaction_management()
 
