@@ -108,6 +108,7 @@ img {
     margin: 0;
     color: blue;
     font-size: 16px;
+    position: inherit;
 }
 
 /* =================================================== */
