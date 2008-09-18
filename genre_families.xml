@@ -1,0 +1,160 @@
+<div>
+<li>cielesność
+<span class="subcategories">Ciało,Krew,Zdrowie,Choroba,Kaleka</span></li>
+
+<li>dom
+<span class="subcategories">Dom,Salon,Piwnica,Kuchnia,Ogród,Przestrzeń,Gospodarz,Gospodyni,Sąsiad,Gość,Bezdomność,Bezpieczeństwo,Niebezpieczeństwo</span></li>
+
+<li>działania nieczyste
+<span class="subcategories">Szantaż,Zazdrość,Zdrada,Zemsta,Postęp,Kłamstwo,Fałsz,Pozory,Tajemnica,Szpieg</span></li>
+
+<li>dziedzictwo
+<span class="subcategories">Dziedzictwo,Obyczaje,Pamięć,Historia,Naród,Krew,Państwo,Obowiązek,Patriota,Ruiny,Dom,Przywódca</span></li>
+
+<li>dźwięk
+<span class="subcategories">Cisza,Dźwięk,Muzyka,Śpiew,Poezja</span></li>
+
+<li>edukacja
+<span class="subcategories">Uczeń,Szkoła,Nauczyciel,Nauczycielka,Nauka,Wiedza,Dzieciństwo,Młodość,Dorosłość</span></li>
+
+<li>egzystencja ludzka
+<span class="subcategories">Kondycja ludzka,Los,Błądzenie,Bunt,Buntownik,Pielgrzym,Theatrum mundi,Życie jako wędrówka,Życie snem</span></li>
+
+<li>etapy życia
+<span class="subcategories">Dzieciństwo,Młodość,Dorosłość,Panna młoda,Żona,Mąż,Wdowa,Wdowiec,Starość,Czas,Przemijanie,Przemiana,Kondycja ludzka</span></li>
+
+<li>fauna
+<span class="subcategories">Zwierzęta,Kot,Koń,Motyl,Pająk,Pies,Ptak,Robak,Wąż</span></li>
+
+<li>flora
+<span class="subcategories">Rośliny,Kwiaty,Ogród,Drzewo,Las</span></li>
+
+<li>historie miłosne
+<span class="subcategories">Miłość,Miłość niespełniona,Miłość platoniczna,Miłość romantyczna,Miłość silniejsza niż śmierć,Miłość spełniona,Miłość tragiczna,Kochanek,Kochanek romantyczny,Flirt,Pocałunek,Pożądanie,List,Serce,Łzy,Przysięga,Rozstanie,Tęsknota,Wspomnienia,Marzenia,Zdrada,Rozczarowanie,Rozpacz,Małżeństwo,Ślub,Panna młoda,Przyjaźń</span></li>
+
+<li>jedzenie i picie
+<span class="subcategories">Głód,Bieda,Chleb,Jedzenie,Uczta,Wino,Alkohol,Pijaństwo</span></li>
+
+<li>konflikty
+<span class="subcategories">Kłótnia,Bijatyka,Siła,Przemoc,Krew,Konflikt,Pojedynek,Walka,Wojna,Powstanie,Bunt,Rewolucja</span></li>
+
+<li>momenty graniczne
+<span class="subcategories">Narodziny,Śmierć,Przemiana,Odrodzenie przez grób,Zmartwychwstanie</span></li>
+
+<li>nadużycie władzy
+<span class="subcategories">Władza,Przemoc,Strach,Kara</span></li>
+
+<li>nacjonalizm
+<span class="subcategories">Polak,Niemiec,Rosjanin,Rosja,Car,Żyd,Naród,Obcy,Wróg,Niebezpieczeństwo</span></li>
+
+<li>nastroje melancholijne
+<span class="subcategories">Nuda,Melancholia,Ruiny,Wspomnienia,Marzenie,Przemijanie,Tęsknota,Rozpacz,Śmierć,Los,Kondycja ludzka</span></li>
+
+<li>nastroje rewolucyjne
+<span class="subcategories">Rewolucja,Walka klas,Robotnik,Chłop,Pozycja społeczna,Władza,Przemoc,Sprawiedliwość</span></li>
+
+<li>podporządkowanie
+<span class="subcategories">Sługa,Pan,Praca,Władza,Obyczaje</span></li>
+
+<li>pokrewieństwo
+<span class="subcategories">Rodzina,Ojciec,Matka,Dziecko,Syn,Córka,Brat,Siostra,Sierota,Dziedzictwo,Obowiązek,Wojna pokoleń,Zdrada</span></li>
+
+<li>polityczny obraz świata
+<span class="subcategories">Państwo,Obowiązek,Cnota,Obywatel,Patriota,Ojczyzna,Naród,Przywódca,Władza,Urzędnik,Król,Rycerz,Żołnierz,Wojna,Wróg,Zwycięstwo,Walka,Siła,Historia,Powstanie,Powstaniec,Śmierć bohaterska,Sława,Rewolucja,Sąd,Zdrada</span></li>
+
+<li>pory roku
+<span class="subcategories">Wiosna,Lato,Jesień,Zima,Czas,Przemijanie</span></li>
+
+<li>posiadanie
+<span class="subcategories">Pieniądz,Handel,Korzyść,Chciwość,Kradzież,Bieda,Bogactwo,Skąpiec,Własność,Złodziej,Żebrak</span></li>
+
+<li>poświęcenie
+<span class="subcategories">Poświęcenie,Ofiara,Prometeusz,Miłosierdzie,Chrystus,Zbawienie,Odrodzenie przez grób</span></li>
+
+<li>poznanie
+<span class="subcategories">Filozof,Mądrość,Mędrzec,Głupiec,Głupota,Rozum,Wiedza,Prawda,Fałsz</span></li>
+
+<li>poznanie alternatywne
+<span class="subcategories">Szaleniec,Szaleństwo,Prawda,Pozory,Obraz świata,Serce,Wiedza,Mądrość,Dusza,Duch,Ciało</span></li>
+
+<li>praca
+<span class="subcategories">Praca,Współpraca,Lenistwo,Sługa,Pan Robotnik Praca u podstaw Praca organiczna Idealista Społecznik</span></li>
+
+<li>przyroda
+<span class="subcategories">Natura,Żywioły,Ogień,Ziemia,Wiatr,Woda,Wiosna,Lato,Jesień,Zima,Przemijanie,Słońce,Księżyc,Gwiazda,Obłok,Noc,Świt,Światło,Góra,Rzeka,Morze,Burza,Deszcz,Błoto,Pustynia,Przyroda nieożywiona,Rośliny,Kwiaty,Ogród,Arkadia,Sielanka,Raj,Jabłko,Drzewo,Las,Obraz,Świata,Zwierzęta,Ptak,Motyl,Kot,Koń,Pająk,Pies,Wąż,Robak,Potwór,Organizm,Maszyna</span></li>
+
+<li>regulacja postępowania
+<span class="subcategories">Sumienie,Cnota,Sprawiedliwość,Obowiązek</span></li>
+
+<li>role społeczne
+<span class="subcategories">Kobieta,Mężczyzna,Mąż,Żona,Matka,Ojciec,Dziecko,Syn,Córka,Brat,Siostra,Wdowa,Wdowiec,Nauczyciel,Nauczycielka,Uczeń,Poeta,Literat,Lekarz,Sędzia,Król,Przywódca,Żołnierz,Urzędnik,Filozof,Prorok,Ksiądz</span></li>
+
+<li>rycerskie czasy
+<span class="subcategories">Zamek,Ruiny,Rycerz,Pojedynek,Honor,Wierność,Obowiązek,Walka,Król,Dama</span></li>
+
+<li>rzeczywistość nadprzyrodzona
+<span class="subcategories">Bóg,Chrystus,Matka Boska,Anioł,Szatan,Diabeł,Duch,Dusza,Wampir,Upiór,Czary,Czarownica</span></li>
+
+<li>struktura społeczna
+<span class="subcategories">Chłop,Mieszczanin,Żyd,Szlachcic,Ksiądz,Robotnik,Król,Przywódca,Pozycja społeczna,Dworek,Obyczaje</span></li>
+
+<li>sarmatyzm
+<span class="subcategories">Polak,Sarmata,Szlachcic,Przedmurze chrześcijaństwa,Matka Boska,Religia</span></li>
+
+<li>sprawowanie władzy
+<span class="subcategories">Urzędnik,Państwo,Władza,Przemoc,Sąd,Kara,Więzienie</span></li>
+
+<li>śmierć
+<span class="subcategories">Śmierć,Danse macabre,Gotycyzm,Grób,Otchłań,Pogrzeb,Samobójstwo,Krew,Trup,Morderstwo,Żałoba,Zmartwychwstanie,Melancholia,Cmentarz,Vanitas,Los,Kondycja ludzka</span></li>
+
+<li>środowisko miejskie i wiejskie
+<span class="subcategories">Miasto,Warszawa,Mieszczanin,Handel,Robotnik,Żyd,Wieś,Sielanka,Chłop,Ogród,Arkadia,Organizm,Maszyna,Natura,Przestrzeń</span></li>
+
+<li>świat w perspektywie etycznej
+<span class="subcategories">Dobro,Zło,Sumienie,Kuszenie,Zwątpienie,Wyrzuty sumienia,Wina,Grzech,Kara,Piętno,Los,Sąd ostateczny,Egzorcyzm,Koniec świata,Wieża Babel,Odrodzenie przez grób,Zbawienie,Potępienie,Zaświaty,Piekło,Czyściec,Raj,Nieśmiertelność,Przysięga,Przekleństwo,Religia,Obrzędy,Modlitwa,Niedziela,Przedmurze chrześcijaństwa,Ksiądz,Pobożność,Świętoszek,Święty,Cud,Wierzenia,Zabobony</span></li>
+
+<li>świętowanie
+<span class="subcategories">Wesele,Uczta,Jedzenie,Pijaństwo,Zabawa,Taniec,Muzyka,Śmiech,Śpiew,Bijatyka,Obyczaje,Wierzenia,Zabobony</span></li>
+
+<li>tożsamość pozorna i podwójna
+<span class="subcategories">Portret,Lustro,Cień,Sobowtór,Maska,Przebranie,Strój,Przemiana</span></li>
+
+<li>trunki
+<span class="subcategories">Alkohol,Wino,Carpe diem,Pijaństwo,Karczma,Obyczaje</span></li>
+
+<li>typy bohaterów
+<span class="subcategories">Samotnik,Buntownik,Pielgrzym,Szaleniec,Filozof,Mędrzec,Prorok,Obcy,Przywódca,Realista,Idealista,Społecznik,Syzyf,Prometeusz,Sługa,Uczeń</span></li>
+
+<li>ukrywanie/ujawnianie
+<span class="subcategories">Tajemnica,Przysięga,Zdrada,Szpieg,Kłamstwo,Fałsz</span></li>
+
+<li>upływ czasu
+<span class="subcategories">Wspomnienia,Marzenie,Pamięć,Przemijanie,Czas,Śmierć</span></li>
+
+<li>widzenie
+<span class="subcategories">Oko,Wzrok,Sen,Marzenie,Wizja,Przeczucie,Duch,Dusza,Proroctwo</span></li>
+
+<li>wina i przebaczenie
+<span class="subcategories">Grzech,Wina,Wyrzuty sumienia,Syn marnotrawny,Pokora,Przemiana,Miłosierdzie,Zbawienie</span></li>
+
+<li>wizerunki kobiety
+<span class="subcategories">Kobieta,Kobieta demoniczna,Kobieta „upadła”,Czarownica,Dama,Próżność,Uroda,Mizoginia,Ciało,Córka,Siostra,Żona,Matka</span></li>
+
+<li>w kręgu sztuki
+<span class="subcategories">Artysta,Sztuka,Literat,Poeta,Poetka,Poezja,Muzyka,Taniec,Śpiew,Teatr,Książka,Słowo,Sława,Nieśmiertelność</span></li>
+
+<li>wychodźstwo i uwięzienie
+<span class="subcategories">Emigrant,Tęsknota,Obcy,Więzienie,Przemiana,Więzień,Wolność,Niewola,Wygnanie,Zesłaniec,Syberia,Zbrodnia,Zbrodniarz</span></li>
+
+<li>zagrożenie
+<span class="subcategories">Niebezpieczeństwo,Trucizna,Fałsz,Zdrada,Choroba,Śmierć</span></li>
+
+<li>zajęcia i zawody
+<span class="subcategories">Lekarz,Prawnik,Sędzia,Nauczyciel,Nauczycielka,Literat,Poeta,Poetka,Artysta,Żołnierz,Urzędnik,Sługa,Rycerz</span></li>
+
+<li>życie dworskie
+<span class="subcategories">Dworzanin,Dwór,Elita,Dama,Fircyk,Salon,Błazen,Król,Urzędnik,Sługa,Grzeczność,Obyczaje,Służalczość,Pochlebstwo</span></li>
+
+<li>żywioły
+<span class="subcategories">Żywioły,Ogień,Ziemia,Wiatr,Woda,Przestrzeń</span></li>
+</div>
