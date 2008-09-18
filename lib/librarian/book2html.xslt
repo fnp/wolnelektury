@@ -7,10 +7,180 @@
 <xsl:template match="utwor">
     <!-- <html>
         <head>
-            <title>book2html output</title>
+            <title>Książka z serwisu WolneLektury.pl</title>
             <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
             <link rel="stylesheet" href="master.css" type="text/css" media="all" charset="utf-8" />
         </head>
+        <style>
+            body {
+                font-size: 14px;
+                font: Georgia, "Times New Roman", serif;
+                line-height: 1.5em;
+                margin: 3em;
+                max-width: 36em;
+            }
+
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+
+            /* =================================================== */
+            /* = Common elements: headings, paragraphs and lines = */
+            /* =================================================== */
+            h1 {
+                font-size: 3em;
+                margin: 1.5em 0;
+                text-align: center;
+                line-height: 1.5em;
+                font-weight: bold;
+            }
+
+            h2 {
+                font-size: 2em;
+                margin: 1.5em 0 0;
+                font-weight: bold;
+                line-height: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+                margin: 1.5em 0 0;
+                font-weight: normal;
+                line-height: 1.5em;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin: 1.5em 0 0;
+                line-height: 1.5em;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            /* ======================== */
+            /* = Footnotes and themes = */
+            /* ======================== */
+            .theme-begin {
+                border-left: 0.1em solid #DDDDDD;
+                color: #666;
+                float: right;
+                margin: 0 -9.5em 0 0;
+                padding: 0 0.5em;
+                width: 7.5em;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                display: none;
+            }
+
+            .annotation {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                display: none;
+            }
+
+            #footnotes {
+                display: none;
+            }
+
+            #footnotes .annotation {
+                display: block;
+                float: left;
+                width: 2.5em;
+                clear: both;
+            }
+
+            #footnotes div {
+                margin: 1.5em 0 0 0;
+            }
+
+            #footnotes p {
+                margin-left: 2.5em;
+            }
+
+            /* =================== */
+            /* = Custom elements = */
+            /* =================== */
+            span.author {
+                font-size: 0.5em;
+                display: block;
+                line-height: 1.5em;
+                margin-bottom: 0.25em;
+            }
+
+            span.collection {
+                font-size: 0.375em;
+                display: block;
+                line-height: 1.5em;
+                margin-bottom: -0.25em;
+            }
+
+            span.subtitle {
+                font-size: 0.5em;
+                display: block;
+                line-height: 1.5em;
+                margin-top: -0.25em;
+            }
+
+            div.didaskalia {
+                font-style: italic;
+                margin: 0.5em 0 0;
+            }
+
+            div.kwestia {
+                margin: 0.5em 0 0;
+            }
+
+            div.stanza {
+                margin: 1.5em 0 0;
+            }
+
+            div.kwestia div.stanza {
+                margin: 0;
+            }
+
+            p.paragraph {
+                text-align: justify;
+                margin: 1.5em 0 0;
+            }
+
+            p.motto {
+                text-align: justify;
+                font-style: italic;
+                margin: 1.5em 0 0;
+            }
+
+            p.motto_podpis {
+                font-size: 0.875em;
+            }
+
+            div.fragment {
+                border-bottom: 0.1em solid #999;
+                padding-bottom: 1.5em;
+            }
+
+            div.note p, div.note p.paragraph {
+                text-align: right;
+                font-style: italic;
+            }
+
+            hr.spacer {
+                height: 3em;
+                visibility: hidden;
+            }
+
+            .anchor {
+                display: none;
+            }
+
+            #toc {
+                display: none;
+            }
+        </style>
         <body> -->
         <div id="book-text">
             <xsl:apply-templates select="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny" />
