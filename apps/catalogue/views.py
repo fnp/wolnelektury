@@ -201,7 +201,7 @@ def book_sets(request, slug):
         context_instance=RequestContext(request))
 
 
-@cache.cache_control(must_revalidate=True, max_age=1800)
+@cache.never_cache
 def download_shelf(request, slug):
     """"
     Create a ZIP archive on disk and transmit it in chunks of 8KB,
@@ -212,24 +212,31 @@ def download_shelf(request, slug):
     
     # Create a ZIP archive
     temp = tempfile.TemporaryFile()
-    archive = zipfile.ZipFile(temp, 'w', zipfile.ZIP_DEFLATED)
+    archive = zipfile.ZipFile(temp, 'w')
     for book in models.Book.tagged.with_all(shelf):
         if book.pdf_file:
             filename = book.pdf_file.path
-            archive.write(filename, str('%s.pdf' % book.slug))
+            print filename
+            archive.write(filename, str('%s.pdf' % book.slug[:7]))
         if book.odt_file:
             filename = book.odt_file.path
-            archive.write(filename, str('%s.odt' % book.slug))
+            print filename
+            archive.write(filename, str('%s.odt' % book.slug[:7]))
         if book.txt_file:
             filename = book.txt_file.path
-            archive.write(filename, str('%s.txt' % book.slug))
+            print filename
+            archive.write(filename, str('%s.txt' % book.slug[:7]))
     archive.close()
+
+    zf = zipfile.ZipFile(temp, 'r')
+    print zf.testzip()
+    print zf.namelist()
     
-    # Write file to archive in small chunks
     wrapper = FileWrapper(temp)
     response = HttpResponse(wrapper, content_type='application/zip')
     response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.sort_key
     response['Content-Length'] = temp.tell()
+    print temp.tell()
     temp.seek(0)
     return response
 

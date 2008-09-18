@@ -111,6 +111,8 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">Plik PDF</a>' % self.pdf_file.url)
             if self.odt_file:
                 formats.append(u'<a href="%s">Plik ODT</a>' % self.odt_file.url)
+            if self.odt_file:
+                formats.
             
             self._short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
@@ -154,6 +156,7 @@ class Book(models.Model):
             raise Book.AlreadyExists('Book %s already exists' % book_slug)
         
         book.title = book_info.title
+        book._short_html = ''
         book.save()
         
         book_tags = []

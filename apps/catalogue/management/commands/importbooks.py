@@ -1,9 +1,10 @@
 import os
 import sys
+from optparse import make_option
 
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
-from optparse import make_option
+from django.core.files import File
 
 from catalogue.models import Book
 
@@ -38,7 +39,6 @@ class Command(BaseCommand):
         for dir_name in directories:
             if not os.path.isdir(dir_name):
                 print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
-                files_skipped += 1
             else:
                 for file_name in os.listdir(dir_name):
                     file_path = os.path.join(dir_name, file_name)
@@ -47,7 +47,6 @@ class Command(BaseCommand):
                     # Skip files that are not XML files
                     if not ext == '.xml':
                         print self.style.NOTICE("%s: Not an XML file. Skipping." % file_path)
-                        files_skipped += 1
                         continue
                     
                     if verbose > 0:
