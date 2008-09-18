@@ -209,34 +209,28 @@ def download_shelf(request, slug):
     be used for large dynamic PDF files.                                        
     """
     shelf = get_object_or_404(models.Tag, slug=slug, category='set')
-    
-    from StringIO import StringIO
-    
-    
+            
     # Create a ZIP archive
     temp = temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
     for book in models.Book.tagged.with_all(shelf):
         if book.pdf_file:
             filename = book.pdf_file.path
-            print filename
             archive.write(filename, str('%s.pdf' % book.slug))
         if book.odt_file:
             filename = book.odt_file.path
-            print filename
             archive.write(filename, str('%s.odt' % book.slug))
         if book.txt_file:
             filename = book.txt_file.path
-            print filename
             archive.write(filename, str('%s.txt' % book.slug))
     archive.close()
     
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
     response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.sort_key
     response['Content-Length'] = temp.tell()
+    
     temp.seek(0)
     response.write(temp.read())
-
     return response
 
 
