@@ -109,7 +109,7 @@ def tagged_object_list(request, tags=''):
     
     model = models.Book
     shelf_is_set = (len(tags) == 1 and tags[0].category == 'set')
-    theme_is_set = any(tag.category == 'theme' for tag in tags)
+    theme_is_set = len([tag for tag in tags if tag.category == 'theme']) > 0
     if theme_is_set:
         model = models.Fragment
 
