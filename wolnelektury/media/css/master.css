@@ -567,3 +567,20 @@ div.shown-tags p {
     color: #AAA;
 }
 
+
+/* =========== */
+/* = Columns = */
+/* =========== */
+.column-left {
+    width: 37em;
+    float: left;
+    text-align: justify;
+    margin-top: 1em;
+}
+
+.column-right {
+    margin-left: 40em;
+    text-align: justify;
+    margin-top: 1em;
+}
+
