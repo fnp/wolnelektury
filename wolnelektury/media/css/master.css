@@ -552,3 +552,7 @@ div.shown-tags p {
     line-height: 2em;
 }
 
+#top-message a {
+    color: #999;
+}
+
