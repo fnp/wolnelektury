@@ -111,8 +111,8 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">Plik PDF</a>' % self.pdf_file.url)
             if self.odt_file:
                 formats.append(u'<a href="%s">Plik ODT</a>' % self.odt_file.url)
-            if self.odt_file:
-                formats.
+            if self.txt_file:
+                formats.append(u'<a href="%s">Plik TXT</a>' % self.txt_file.url)
             
             self._short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
