@@ -72,13 +72,13 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.doc.XViewMiddleware',
+    # 'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
 ]
 
 # If DEBUG is enabled add query log to bottom of every template
-if DEBUG:
-    MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
+# if DEBUG:
+#     MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
 
 ROOT_URLCONF = 'urls'
 
