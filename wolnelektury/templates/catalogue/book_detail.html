@@ -103,7 +103,7 @@
                 <h2>Motywy w utworze</h2>
                 <ul>
                 {% for theme in categories.theme %}
-                    <li>{{ theme }}</li>
+                    <li><a href="{{ theme.get_absolute_url }}">{{ theme }}</a></li>
                 {% endfor %}
                 </ul>
             {% endif %}
