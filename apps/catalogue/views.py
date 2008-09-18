@@ -214,13 +214,21 @@ def download_shelf(request, slug):
     temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w', zipfile.ZIP_DEFLATED)
     for book in models.Book.tagged.with_all(shelf):
-        filename = book.html_file.path
-        archive.write(filename, str('%s.html' % book.slug))
+        if book.pdf_file:
+            filename = book.pdf_file.path
+            archive.write(filename, str('%s.pdf' % book.slug))
+        if book.odt_file:
+            filename = book.odt_file.path
+            archive.write(filename, str('%s.odt' % book.slug))
+        if book.txt_file:
+            filename = book.txt_file.path
+            archive.write(filename, str('%s.txt' % book.slug))
     archive.close()
     
+    # Write file to archive in small chunks
     wrapper = FileWrapper(temp)
     response = HttpResponse(wrapper, content_type='application/zip')
-    response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.slug
+    response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.sort_key
     response['Content-Length'] = temp.tell()
     temp.seek(0)
     return response
