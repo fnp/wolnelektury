@@ -109,7 +109,7 @@ COMPRESS_JS = {
         'output_filename': 'js/all.min.js',
     },
     'book': {
-        'source_filenames': ('js/jquery.scrollto.js', 'js/book.js',),
+        'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
         'output_filename': 'js/book.min.js',
     }
 }
