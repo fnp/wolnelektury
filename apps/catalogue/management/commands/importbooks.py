@@ -12,6 +12,8 @@ class Command(BaseCommand):
         make_option('--verbosity', action='store', dest='verbosity', default='1',
             type='choice', choices=['0', '1', '2'],
             help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
+        make_option('--force', action='store_true', dest='force', default=False,
+            help='Overwrite previously imported files with the same id')
     )
     help = 'Imports books from the specified directories.'
     args = 'directory [directory ...]'
@@ -22,6 +24,7 @@ class Command(BaseCommand):
         self.style = color_style()
 
         verbosity = int(options.get('verbosity', 1))
+        force = options.get('force')
         show_traceback = options.get('traceback', False)
 
         # Start transaction management.
