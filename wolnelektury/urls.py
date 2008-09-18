@@ -12,9 +12,12 @@ urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
     
     # Static pages
-    url(r'wolontariat/$', 'django.views.generic.simple.direct_to_template', 
+    url(r'^wolontariat/$', 'django.views.generic.simple.direct_to_template', 
         {'template': 'info/voluntary_services.html', 'extra_context': {'form': SearchForm()}},
         name='voluntary_services'),
+    url(r'^o-projekcie/$', 'django.views.generic.simple.direct_to_template', 
+        {'template': 'info/about_us.html', 'extra_context': {'form': SearchForm()}},
+        name='about_us'),
     
     # Admin panel
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

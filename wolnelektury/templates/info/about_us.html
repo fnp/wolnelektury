@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}O projekcie WolneLektury.pl{% endblock %}
+
+{% block body %}
+    <h1>Wolontariat dla wiedzy</h1>
+    <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
+    </form>
+
+    <div class="column-left">
+        <h2>O projekcie Wolne Lektury</h2>
+    
+        <p>Biblioteka internetowa z lekturami szkolnymi „Wolne Lektury” (www.wolnelektury.pl) to projekt realizowany
+        przez Fundację Nowoczesna Polska. Działa od 2007 roku i udostępnia w swoich zbiorach lektury szkolne, które są
+        zalecane do użytku przez Ministerstwo Edukacji Narodowej i które trafiły już do domeny publicznej. Są one
+        opracowane, opatrzone komentarzem i udostępnione w kilku formatach (html, odt, txt i pdf). Można je zgodnie z
+        prawem, bezpłatnie przeglądać, ściągać na swój komputer, a także udostępniać innym i cytować.</p>
+        
+         <p>Zespół projektu Wolne Lektury składa się z doświadczonych redaktorek i nauczycielek, co zapewnia rzetelność
+        naszego portalu. W tworzeniu go współpracujemy z Biblioteką Narodową, która dostarcza nam najlepszych dostępnych
+        wydań i opracowań krytycznych lektur szkolnych, opublikowanych w Cyfrowej Bibliotece Narodowej Polona. Wspólnie
+        staramy się, aby teksty lektur – nasze dziedzictwo kulturowe – były dostępne dla wszystkich, niezależnie od
+        miejsca zamieszkania, zasobności portfela, sprawności lub jej braku. Jest to możliwe dzięki istnieniu domeny
+        publicznej, czyli zbioru dzieł nieobjętych restrykcjami prawa autorskiego, oraz dzięki nowoczesnym technologiom
+        – narzędziom, które pozwalają zwielokrotnić dostępność treści upublicznianych w Internecie.</p>
+        
+         <p>Projekt Wolne Lektury jest całkowicie niekomercyjny i realizowany pro publico bono. Dlatego tak ważne jest
+        dla nas poparcie udzielone przez wybitne osobistości kultury i nauki. Patronat honorowy nad projektem Wolne
+        Lektury sprawuje Ministerstwo Kultury i Dziedzictwa Narodowego oraz Stowarzyszenie Pisarzy Polskich. W Komitecie
+        Honorowym Wolnych Lektur zgodzili się uczestniczyć prof. Maria Janion, prof. Grażyna Borkowska, prof. Przemysław
+        Czapliński, prof. Mieczysław Dąbrowski, prof. Ewa Kraskowska, prof. Małgorzata Czermińska, prof. Jerzy Jarzębski
+        i prof. Piotr Śliwiński.</p>
+        
+         <p>Digitalizacją i korektą tekstów zajmuje się Biblioteka Narodowa. Serwis internetowy został zaprojektowany
+        przez 2ia. Obsługę prawną Wolnych Lektur zapewnia Kancelaria Grynhoff, Woźny, Maliński. Hosting serwisu zapewnia
+        firma EO Networks. W opracowaniu technicznym tekstów pomaga wydawnictwo Korporacja Ha!Art. Logo Wolne Lektury
+        jest dziełem agencji PZL. Projekt objęli patronatem medialnym: Dziennik, Elle, Tok.fm, Biblioteka Analiz,
+        Tygodnik Powszechny, Przekrój i TVP Kultura.</p>
+        
+        <h2>Jak korzystać z Wolnych Lektur?</h2>
+        
+         <p>Najważniejszą innowacją Wolnych Lektur, odróżniającą ten projekt od innych bibliotek internetowych, jest
+        możliwość przeszukiwania tekstów z zastosowaniem różnych kryteriów: tradycyjnych, takich jak tytuł, autor,
+        epoka, rodzaj, gatunek literacki, ale i niespotykanych nigdzie indziej, to jest odnoszących się do treści wielu
+        utworów naraz – motywów i tematów literackich. Takie przeszukiwanie jest możliwe dzięki specjalnemu opracowaniu
+        tekstów lektur szkolnych, to znaczy opisaniu ich za pomocą wymienionych kryteriów. Tym właśnie Wolne Lektury
+        różnią się od licznych stron z opracowaniami lektur szkolnych – dostarczają narzędzi do twórczej pracy z
+        tekstem, a nie gotowych ściąg. Jeśli np. uczeń dostanie temat pracy domowej: „Motyw dziecka w romantyzmie na
+        podstawie wybranych utworów“, to trzy kliknięcia na naszej stronie sprawią, że na ekranie komputera pojawi mu
+        się komplet tekstów do analizy. Dzięki takim narzędziom czytanie lektur staje się fascynującą podróżą po świecie
+        kultury.</p>
+        
+         <p>Kolejną użyteczną funkcjonalnością Wolnych Lektur, przydatną w pracy w szkole, jest możliwość układania
+        całych zestawów tekstów przerabianych na przykład w ciągu roku przez daną klasę. Takie półki z lekturami są
+        tworzone przez nauczycielkę/la, która/y może następnie wysłać swoim uczniom odnośnik (link) do tego zbioru, a
+        oni jednym kliknięciem ściągną cały zestaw na swój komputer.</p>
+        
+         <p>Mechanizm działania Wolnych Lektur jest obecnie rozszerzany i wzbogacany o następne funkcjonalności.
+        Planujemy między innymi przygotowanie wersji audio lektur szkolnych, dzięki którym dostęp do arcydzieł
+        literatury zyskają także niewidomi i słabo widzący. I oczywiście wciąż wzbogacamy nasz zbiór lektur o kolejne
+        utwory.</p>
+    </div>
+    
+    <div class="column-right">
+        <h2>O Fundacji</h2>
+
+        <p>Fundacja Nowoczesna Polska powstała, ponieważ kształcenie dzieci jest kluczem do przyszłości Polski. Jednym z
+        najważniejszych zadań, jakie stoją przed polską edukacją, jest walka z cyfrowym wykluczeniem. Umiejętność
+        korzystania z komputera i internetu w czasach społeczeństwa informacyjnego jest rodzajem elementarza. Ci, którzy
+        go nie znają, skazani są na wegetację na obrzeżach nowoczesnego świata. </p>
+        
+         <p>Dlatego od siedmiu lat pomagamy dzieciom zrozumieć i wykorzystywać zaawansowane technologie. Fundacja
+        Nowoczesna Polska tysiącom dzieci chce dać to, co najcenniejsze: wiedzę i umiejętności pozwalające rozumieć
+        współczesny świat i wykorzystywać możliwości, jakie on oferuje.</p>
+        
+         <p>Fundacja Nowoczesna Polska – poza projektem Wolne Lektury – koordynuje także projekt Wolne Podręczniki,
+        tworzony przez ruch społeczny nauczycieli wolontariuszy, którzy korzystając z Internetu piszą nowe podręczniki
+        dla polskich uczniów. Wolne Podręczniki są publikowane na wolnych licencjach – czyli takich, które zezwalają
+        każdemu na bezpłatne kopiowanie, rozpowszechnianie i aktualizowanie ich bez konieczności pytania o zgodę zespołu
+        autorów. Każdy nauczyciel będzie mógł te podręczniki uzupełniać, rozszerzać i poprawiać zgodnie z własnymi
+        potrzebami i doświadczeniem. Dzięki wolnym licencjom można poważnie obniżyć koszt podręczników wydawanych w
+        tradycyjnej postaci książek drukowanych na papierze, a podręczniki rozpowszechniane w formie elektronicznej będą
+        dostępne za darmo.</p>
+        
+        <h2>O domenie publicznej</h2>
+        
+        <p>W serwisie Wolne Lektury możemy zgodnie z prawem publikować tylko te książki, które należą do domeny
+        publicznej, a więc te, które wyszły już spod działania prawa autorskiego. Domena publiczna to rodzaj skarbca
+        kultury, wspólnego dobra, z którego wszyscy mogą korzystać na równych prawach, bez ograniczeń i opłat. Istnienie
+        domeny publicznej jest gwarantem dostępu do dóbr kultury, ten zaś jest naszym obywatelskim prawem zapisanym w
+        konstytucji.</p>
+        
+         <p>Choć zasadą jest, że po jakimś czasie wszystkie dzieła mają zasilić domenę publiczną, to czas działania
+        polskiego prawa autorskiego został w ciągu ostatnich kilkunastu lat znacznie wydłużony. Jeszcze na początku lat
+        90. było to 25 lat od śmierci autora, potem ten czas wydłużono na 50 lat, dziś jest to już lat 70. To oznacza,
+        że wielu pozycji z ministerialnych list lektur nie będziemy mogli udostępnić jeszcze przez wiele lat. Dopiero w
+        2020 roku opublikujemy utwory Marka Hłaski i Witolda Gombrowicza. Powieści Kuncewiczowej zasilą domenę publiczną
+        w roku 2060, a poezje Miłosza w 2075 roku.</p>
+        
+         <p>Ograniczenia prawa autorskiego odnoszą się także do wydań krytycznych i tłumaczeń. Do 1 stycznia 2012 roku
+        będziemy czekać na "Wielki Testament" Villona i inne utwory tłumaczone przez Boya-Żeleńskiego, a do 2068 roku na
+        „Kubusia Puchatka” Milne'a i inne przekłady Ireny Tuwim. Nie mamy także prawa upubliczniać wstępów i przedmów
+        napisanych przez autorów, którzy zmarli mniej niż 70 lat temu. Z tego właśnie powodu zdarza się czasem, że jakiś
+        utwór znajduje się na Wolnych Lekturach, ale link do odpowiadającej mu pozycji w Cyfrowej Bibliotece Narodowej
+        Polona odsyła do strony, która mówi, że utwór objęty jest ochroną prawa autorskiego. Znaczy to, że choć sam
+        tekst należy do domeny publicznej i dlatego umieszczamy go w Wolnych Lekturach, to jego wydanie krytyczne,
+        którym dysponuje CBN Polona (ze wszystkimi wstępami, przedmowami i komentarzami redaktorów), wciąż jest objęte
+        działaniem prawa autorskiego.</p>
+        
+         <p>O domenę publiczną należy dbać i otaczać ją ochroną. Kultura to misterny gmach, w którym kolejne piętra mogą
+        być budowane tylko na solidnych podstawach wypracowanych przez poprzedników. Kochanowski bezpośrednio czerpał z
+        tradycji antycznej. Mickiewicz twórczość ludową wykorzystał do stworzenia najpiękniejszych polskich wierszy.
+        Każde kolejne pokolenie może sięgać wzrokiem dalej, wypracowywać własny literacki język i trwale wpisywać się w
+        historię literatury tylko dzięki osiągnięciom poprzedników. Dlatego tak ważna jest wolność w udostępnianiu i
+        wykorzystywaniu najważniejszych dzieł polskiej i światowej literatury. Bez domeny publicznej zbudowanie tego
+        wspaniałego gmachu, jakim jest kultura, byłoby niemożliwe.</p>
+    </div>
+{% endblock %}
+
