@@ -7,6 +7,21 @@ Dependencies
  * Django applications from apps directory
 
 
+How to deploy
+=============
+
+Just execute this commands:
+    
+    cd wolnelektury.pl
+    source setpythonpath.sh
+    cd wolnelektury
+    ./manage.py syncdb
+    ./manage.py importbooks ../books/01 ../books/02 ../books/03
+    ../setmainpage.py
+
+[TODO]
+
+
 Numbering
 =========
 
