@@ -12,7 +12,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
-from django.views.decorators.cache import cache_page
+from django.views.decorators import cache
 
 from catalogue import models
 from catalogue import forms
@@ -27,49 +27,7 @@ class LazyEncoder(simplejson.JSONEncoder):
         return obj
 
 
-def search(request):
-    query = request.GET.get('q', '')
-    tags = request.GET.get('tags', '')
-    if tags == '':
-        tags = []
-    
-    try:
-        tag_list = models.Tag.get_tag_list(tags)
-        tag = models.Tag.objects.get(name=query)
-    except models.Tag.DoesNotExist:
-        try:
-            book = models.Book.objects.get(title=query)
-            return HttpResponseRedirect(book.get_absolute_url())
-        except models.Book.DoesNotExist:
-            return HttpResponseRedirect(reverse('catalogue.views.main_page'))
-    else:
-        tag_list.append(tag)
-        return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
-            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
-        ))
-
-
-def tags_starting_with(request):
-    try:
-        prefix = request.GET['q']
-        if len(prefix) < 2:
-            raise KeyError
-            
-        books = models.Book.objects.filter(title__icontains=prefix)
-        tags = models.Tag.objects.filter(name__icontains=prefix)
-        if request.user.is_authenticated():
-            tags = tags.filter(~Q(category='set') | Q(user=request.user))
-        else:
-            tags = tags.filter(~Q(category='set'))
-        
-        completions = [book.title for book in books] + [tag.name for tag in tags]
-
-        return HttpResponse('\n'.join(completions))    
-    
-    except KeyError:
-        return HttpResponse('')
-
-
+@cache.cache_control(must_revalidate=True, max_age=3600)
 def main_page(request):    
     if request.user.is_authenticated():
         shelves = models.Tag.objects.filter(category='set', user=request.user)
@@ -97,6 +55,7 @@ def book_list(request):
         context_instance=RequestContext(request))
 
 
+@cache.cache_control(must_revalidate=True, max_age=3600)
 def tagged_object_list(request, tags=''):
     # Prevent DoS attacks on our database
     if len(tags.split('/')) > 6:
@@ -141,7 +100,6 @@ def book_detail(request, slug):
         context_instance=RequestContext(request))
 
 
-@cache_page(60 * 60)
 def book_text(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     book_themes = {}
@@ -155,38 +113,65 @@ def book_text(request, slug):
         context_instance=RequestContext(request))
 
 
-def logout_then_redirect(request):
-    auth.logout(request)
-    return HttpResponseRedirect(request.GET.get('next', '/'))
+# ==========
+# = Search =
+# ==========
+def search(request):
+    query = request.GET.get('q', '')
+    tags = request.GET.get('tags', '')
+    if tags == '':
+        tags = []
 
-
-@require_POST
-def register(request):
-    registration_form = UserCreationForm(request.POST, prefix='registration')
-    if registration_form.is_valid():
-        user = registration_form.save()
-        user = auth.authenticate(
-            username=registration_form.cleaned_data['username'], 
-            password=registration_form.cleaned_data['password1']
-        )
-        auth.login(request, user)
-        response_data = {'success': True, 'errors': {}}
+    try:
+        tag_list = models.Tag.get_tag_list(tags)
+        tag = models.Tag.objects.get(name=query)
+    except models.Tag.DoesNotExist:
+        try:
+            book = models.Book.objects.get(title=query)
+            return HttpResponseRedirect(book.get_absolute_url())
+        except models.Book.DoesNotExist:
+            return HttpResponseRedirect(reverse('catalogue.views.main_page'))
     else:
-        response_data = {'success': False, 'errors': registration_form.errors}
-    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
+        tag_list.append(tag)
+        return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
+            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
+        ))
 
 
-@require_POST
-def login(request):
-    form = AuthenticationForm(data=request.POST, prefix='login')
-    if form.is_valid():
-        auth.login(request, form.get_user())
-        response_data = {'success': True, 'errors': {}}
-    else:
-        response_data = {'success': False, 'errors': form.errors}
-    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
+def tags_starting_with(request):
+    try:
+        prefix = request.GET['q']
+        if len(prefix) < 2:
+            raise KeyError
+
+        books = models.Book.objects.filter(title__icontains=prefix)
+        tags = models.Tag.objects.filter(name__icontains=prefix)
+        if request.user.is_authenticated():
+            tags = tags.filter(~Q(category='set') | Q(user=request.user))
+        else:
+            tags = tags.filter(~Q(category='set'))
+
+        completions = [book.title for book in books] + [tag.name for tag in tags]
+
+        return HttpResponse('\n'.join(completions))    
+
+    except KeyError:
+        return HttpResponse('')
 
 
+# ====================
+# = Shelf management =
+# ====================
+@login_required
+@cache.cache_control(must_revalidate=True, max_age=3600, private=True)
+def user_shelves(request):
+    shelves = models.Tag.objects.filter(category='set', user=request.user)
+    new_set_form = forms.NewSetForm()
+    return render_to_response('catalogue/user_shelves.html', locals(),
+            context_instance=RequestContext(request))
+
+
+@cache.cache_control(must_revalidate=True, max_age=3600, private=True)
 def book_sets(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
@@ -212,63 +197,70 @@ def book_sets(request, slug):
         context_instance=RequestContext(request))
 
 
-def fragment_sets(request, id):
-    fragment = get_object_or_404(models.Fragment, pk=id)
-    user_sets = models.Tag.objects.filter(category='set', user=request.user)
-    fragment_sets = fragment.tags.filter(category='set', user=request.user)
-
-    if not request.user.is_authenticated():
-        return HttpResponse('<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>')
-
-    if request.method == 'POST':
-        form = forms.ObjectSetsForm(fragment, request.user, request.POST)
-        if form.is_valid():
-            fragment.tags = ([models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']] +
-                list(fragment.tags.filter(~Q(category='set') | ~Q(user=request.user))))
-            if request.is_ajax():
-                return HttpResponse('<p>Półki zostały zapisane.</p>')
-            else:
-                return HttpResponseRedirect('/')
-    else:
-        form = forms.ObjectSetsForm(fragment, request.user)
-        new_set_form = forms.NewSetForm()
-
-    return render_to_response('catalogue/fragment_sets.html', locals(),
-        context_instance=RequestContext(request))
-
-
 @login_required
 @require_POST
+@cache.never_cache
 def new_set(request):
     new_set_form = forms.NewSetForm(request.POST)
     if new_set_form.is_valid():
         new_set = new_set_form.save(request.user)
-        
+
         if request.is_ajax():
             return HttpResponse(u'<p>Półka <strong>%s</strong> została utworzona</p>' % new_set)
         else:
             return HttpResponseRedirect('/')
-    
+
     return render_to_response('catalogue/book_sets.html', locals(),
             context_instance=RequestContext(request))
 
 
 @login_required
 @require_POST
+@cache.never_cache
 def delete_shelf(request, slug):
     user_set = get_object_or_404(models.Tag, slug=slug, category='set', user=request.user)
     user_set.delete()
-    
+
     if request.is_ajax():
         return HttpResponse(u'<p>Półka <strong>%s</strong> została usunięta</p>' % user_set.name)
     else:
         return HttpResponseRedirect('/')
 
 
-@login_required
-def user_shelves(request):
-    shelves = models.Tag.objects.filter(category='set', user=request.user)
-    new_set_form = forms.NewSetForm()
-    return render_to_response('catalogue/user_shelves.html', locals(),
-            context_instance=RequestContext(request))
+# ==================
+# = Authentication =
+# ==================
+@require_POST
+@cache.never_cache
+def login(request):
+    form = AuthenticationForm(data=request.POST, prefix='login')
+    if form.is_valid():
+        auth.login(request, form.get_user())
+        response_data = {'success': True, 'errors': {}}
+    else:
+        response_data = {'success': False, 'errors': form.errors}
+    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
+
+
+@require_POST
+@cache.never_cache
+def register(request):
+    registration_form = UserCreationForm(request.POST, prefix='registration')
+    if registration_form.is_valid():
+        user = registration_form.save()
+        user = auth.authenticate(
+            username=registration_form.cleaned_data['username'], 
+            password=registration_form.cleaned_data['password1']
+        )
+        auth.login(request, user)
+        response_data = {'success': True, 'errors': {}}
+    else:
+        response_data = {'success': False, 'errors': registration_form.errors}
+    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
+
+
+@cache.never_cache
+def logout_then_redirect(request):
+    auth.logout(request)
+    return HttpResponseRedirect(request.GET.get('next', '/'))
 
