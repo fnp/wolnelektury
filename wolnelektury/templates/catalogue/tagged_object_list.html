@@ -24,12 +24,12 @@
             </div>
             <div id="toggle-description"><p>Zwiń opis ▲</p></div>
         {% endif %}
-        {% endwith %}
         {% if shelf_is_set %}
-            <a id="download-shelf">
+            <a id="download-shelf" href="{% url download_shelf last_tag.slug %}">
                 Pobierz wszystkie książki z tej półki
             </a>
         {% endif %}
+        {% endwith %}
         <ol>
         {% for book in object_list %}
             <li>{{ book.short_html }}</li>

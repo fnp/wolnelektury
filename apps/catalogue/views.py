@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import tempfile
+import zipfile
+
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
@@ -13,6 +16,7 @@ from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
 from django.views.decorators import cache
+from django.core.servers.basehttp import FileWrapper
 
 from catalogue import models
 from catalogue import forms
@@ -163,7 +167,7 @@ def tags_starting_with(request):
 # = Shelf management =
 # ====================
 @login_required
-@cache.cache_control(must_revalidate=True, max_age=3600, private=True)
+@cache.never_cache
 def user_shelves(request):
     shelves = models.Tag.objects.filter(category='set', user=request.user)
     new_set_form = forms.NewSetForm()
@@ -171,7 +175,7 @@ def user_shelves(request):
             context_instance=RequestContext(request))
 
 
-@cache.cache_control(must_revalidate=True, max_age=3600, private=True)
+@cache.never_cache
 def book_sets(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
@@ -195,6 +199,31 @@ def book_sets(request, slug):
     
     return render_to_response('catalogue/book_sets.html', locals(),
         context_instance=RequestContext(request))
+
+
+@cache.cache_control(must_revalidate=True, max_age=1800)
+def download_shelf(request, slug):
+    """"
+    Create a ZIP archive on disk and transmit it in chunks of 8KB,
+    without loading the whole file into memory. A similar approach can
+    be used for large dynamic PDF files.                                        
+    """
+    shelf = get_object_or_404(models.Tag, slug=slug, category='set')
+    
+    # Create a ZIP archive
+    temp = tempfile.TemporaryFile()
+    archive = zipfile.ZipFile(temp, 'w', zipfile.ZIP_DEFLATED)
+    for book in models.Book.tagged.with_all(shelf):
+        filename = book.html_file.path
+        archive.write(filename, str('%s.html' % book.slug))
+    archive.close()
+    
+    wrapper = FileWrapper(temp)
+    response = HttpResponse(wrapper, content_type='application/zip')
+    response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.slug
+    response['Content-Length'] = temp.tell()
+    temp.seek(0)
+    return response
 
 
 @login_required
