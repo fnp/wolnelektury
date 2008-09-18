@@ -17,7 +17,7 @@ $(function() {
     // On page load, scroll to anchor
     scrollToAnchor(window.location.hash)
     
-    $('body').delegate('click', '#toc a, #themes a, .anchor, .annotation', function(event) {
+    $('#toc, #themes, #book-text').delegate('click', 'a', function(event) {
         event.preventDefault();
         $('#menu li a.selected').click();
         scrollToAnchor($(this).attr('href'));
