@@ -15,7 +15,7 @@ Just execute this commands:
     cd wolnelektury.pl
     source setpythonpath.sh
     cd wolnelektury
-    ./manage.py syncdb
+    ./manage.py syncdbc
     ./manage.py importbooks ../books/01 ../books/02 ../books/03
     ../setmainpage.py
 
@@ -41,4 +41,66 @@ Co numerujemy
  3. W dramatach numeracja zamyka się w ramach jednego aktu
  4. W utworach mieszanych – pisanych na przemian wierszem i prozą (np. dramaty Shakespeare'a) numerujemy w części wierszowanej każdy wers (wyświetlając co 5), a w części prozą – kolejne akapity 
  5. Ustaloną tradycyjnie numerację ma jedynie „Biblia” i tych ustaleń się trzymamy 
+
+
+Używany kod open-source
+=======================
+
+django
+------
+ - Źródła: [djangoproject.com](http://www.djangoproject.com/)
+ - Autorzy: [wielu autorów](http://code.djangoproject.com/browser/django/trunk/AUTHORS)
+ - Licencja: [BSD License](http://code.djangoproject.com/browser/django/trunk/LICENSE)
+ - Typ: framework
+
+django-chunks
+-------------
+ - Źródła: [Google Code](http://code.google.com/p/django-chunks/)
+ - Autorzy: Clint Ecker <clintecker@gmail.com>
+ - Licencja: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+ - Typ: biblioteka (aplikacja django)
+
+django-pagination
+-----------------
+ - Źródła: [Google Code](http://code.google.com/p/django-pagination/)
+ - Autorzy: James Tauber <jtauber@gmail.com>, leidel@gmail.com
+ - Licencja: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+ - Typ: biblioteka (aplikacja django)
+
+django-compress
+---------------
+ - Źródła: [Google Code](http://code.google.com/p/django-compress/)
+ - Autorzy: Andreas Pelme <andreas.pelme@gmail.com>
+ - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ - Typ: biblioteka (aplikacja django)
+
+django-newtagging
+-----------------
+ - Źródła: [BitBucket](http://www.bitbucket.org/zuber/django-newtagging/)
+ - Autorzy: Marek Stępniowski <marek@stepniowski.com>
+ - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ - Typ: biblioteka (aplikacja django)
+ - Nota: Aplikacja wzorowana na [django-tagging](http://code.google.com/p/django-tagging/), która jest również wydana na licencji [MIT](http://www.opensource.org/licenses/mit-license.php) Około połowa kodu jest dzielona.
+
+feedparser
+----------
+ - Źródła: [Google Code](http://code.google.com/p/feedparser/)
+ - Autorzy: Mark Pilgrim <pilgrim@gmail.com>
+ - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ - Typ: biblioteka
+
+markupstring
+------------
+ - Żródła: [ASPN Cookbook](http://code.activestate.com/recipes/389023/)
+ - Autorzy: Thomas Hinkle
+ - Licencja: [MIT License](http://code.activestate.com/help/terms/)
+ - Typ: biblioteka
+ - Nota: Zmienione przez Marka Stępniowskiego <marek@stepniowski.com> tak, żeby akceptowało ciągi znaków Unicode
+ 
+lxml
+----
+ - Żródła: [codespeak.net](http://codespeak.net/lxml/index.html#download)
+ - Autorzy: [wielu autorów](http://codespeak.net/lxml/credits.html)
+ - Licencja: [BSD License](http://codespeak.net/lxml/index.html#license)
+ - Typ: biblioteka
 
