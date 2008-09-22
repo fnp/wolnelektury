@@ -16,6 +16,6 @@ urlpatterns = patterns('catalogue.views',
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)\.html$', 'book_text', name='book_text'),
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)/$', 'book_detail', name='book_detail'),
-    url(r'^(?P<tags>[a-zA-Z0-9-/]+)/$', 'tagged_object_list', name='tagged_object_list'),
+    url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 )
 
