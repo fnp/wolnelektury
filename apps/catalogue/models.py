@@ -97,6 +97,10 @@ class Book(models.Model):
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     
+    @property
+    def name(self):
+        return self.title
+    
     def short_html(self):
         if len(self._short_html):
             return mark_safe(self._short_html)

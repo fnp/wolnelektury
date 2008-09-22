@@ -119,47 +119,49 @@ def book_text(request, slug):
 # ==========
 # = Search =
 # ==========
-def search(request):
-    query = request.GET.get('q', '')
-    tags = request.GET.get('tags', '')
-    if tags == '':
-        tags = []
+def _tags_starting_with(prefix, user):
+    books = models.Book.objects.filter(title__icontains=prefix)
+    tags = models.Tag.objects.filter(name__icontains=prefix)
+    if user.is_authenticated():
+        tags = tags.filter(~Q(category='set') | Q(user=user))
+    else:
+        tags = tags.filter(~Q(category='set'))
 
+    return list(books) + list(tags)
+        
+
+def search(request):
+    tags = request.GET.get('tags', '')
+    prefix = request.GET.get('q', '')
+    # Prefix must have at least 2 characters
+    if len(prefix) < 2:
+        return HttpResponse('')
+    
     try:
         tag_list = models.Tag.get_tag_list(tags)
-        tag = models.Tag.objects.get(name=query)
-    except models.Tag.DoesNotExist:
-        try:
-            book = models.Book.objects.get(title=query)
-            return HttpResponseRedirect(book.get_absolute_url())
-        except models.Book.DoesNotExist:
-            return HttpResponseRedirect(reverse('catalogue.views.main_page'))
-    else:
-        tag_list.append(tag)
-        return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
-            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
-        ))
+    except:
+        tag_list = []
+    
+    result = _tags_starting_with(prefix, request.user)
+    if len(result) > 0:
+        tag = result[0]
+        if isinstance(tag, models.Book):
+            return HttpResponseRedirect(tag.get_absolute_url())
+        else:
+            tag_list.append(tag)
+        
+    return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
+        kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
+    ))
 
 
 def tags_starting_with(request):
-    try:
-        prefix = request.GET['q']
-        if len(prefix) < 2:
-            raise KeyError
-
-        books = models.Book.objects.filter(title__icontains=prefix)
-        tags = models.Tag.objects.filter(name__icontains=prefix)
-        if request.user.is_authenticated():
-            tags = tags.filter(~Q(category='set') | Q(user=request.user))
-        else:
-            tags = tags.filter(~Q(category='set'))
-
-        completions = [book.title for book in books] + [tag.name for tag in tags]
-
-        return HttpResponse('\n'.join(completions))    
-
-    except KeyError:
+    prefix = request.GET['q']
+    # Prefix must have at least 2 characters
+    if len(prefix) < 2:
         return HttpResponse('')
+    
+    return HttpResponse('\n'.join(tag.name for tag in _tags_starting_with(prefix, request.user)))
 
 
 # ====================
