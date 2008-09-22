@@ -202,7 +202,8 @@ class Book(models.Model):
                 short_text = ''
                 if (len(MarkupString(text)) > 240):
                     short_text = unicode(MarkupString(text)[:160])
-                new_fragment = Fragment(text=text, short_text=short_text, anchor=fragment.id, book=book)
+                new_fragment, created = Fragment.objects.get_or_create(anchor=fragment.id, book=book, 
+                    defaults={'text': text, 'short_text': short_text})
                 
                 try:
                     theme_names = [s.strip() for s in fragment.themes.split(',')]

@@ -77,8 +77,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 # If DEBUG is enabled add query log to bottom of every template
-# if DEBUG:
-#     MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
+if DEBUG:
+    MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
 
 ROOT_URLCONF = 'urls'
 
