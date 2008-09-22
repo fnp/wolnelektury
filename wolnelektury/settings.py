@@ -83,7 +83,7 @@ if DEBUG:
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
-    PROJECT_DIR + '/templates/'
+    PROJECT_DIR + '/templates/',
 )
 
 # CSS and JS files to compress
@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'newtagging',
     'pagination',
     'chunks',
