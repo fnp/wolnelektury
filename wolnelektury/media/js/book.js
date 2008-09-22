@@ -1,10 +1,12 @@
 $(function() {    
     function scrollToAnchor(anchor) {
         if (anchor) {
-            var name = anchor.slice(1);
-            $.scrollTo('a[name="' + name + '"]', 500, {offset: {top: -50, left: 0}});
-            $('a[name="' + name + '"]').highlightFade('yellow');
-            window.location.hash = '#' + name;
+            var element = $('a[name="' + anchor.slice(1) + '"]');
+            if (element.length > 0) {
+                $.scrollTo(element, 500, {offset: {top: -50, left: 0}});
+                $(element).highlightFade('yellow');
+                window.location.hash = anchor;
+            }
         }
     }
     
