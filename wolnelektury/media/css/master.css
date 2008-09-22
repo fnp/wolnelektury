@@ -308,13 +308,19 @@ div.shown-tags p {
 
 #description .meta {
     margin: 0.5em;
-    width: 12em;
+    width: 18em;
     list-style: none;
     float: right;
 }
 
 #description dt {
     font-weight: bold;
+    display: inline;
+}
+
+#description dd {
+    margin: 0;
+    display: inline;
 }
 
 #toggle-description, #tagged-object-list .pagination {
