@@ -176,7 +176,6 @@ def user_shelves(request):
     return render_to_response('catalogue/user_shelves.html', locals(),
             context_instance=RequestContext(request))
 
-@login_required
 @cache.never_cache
 def book_sets(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
