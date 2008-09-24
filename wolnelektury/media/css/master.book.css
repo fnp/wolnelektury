@@ -157,7 +157,9 @@ p {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    position: absolute;
+    float: right;
+    margin-right: -9.5em;
+    clear: both;
     left: 40em;
     line-height: 1.5em;
     text-align: left;
