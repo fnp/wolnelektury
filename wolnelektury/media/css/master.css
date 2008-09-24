@@ -396,6 +396,13 @@ div.shown-tags p {
     float: right;
 }
 
+.change-sets a {
+    padding: 0.2em;
+    margin: 0.3em;
+    border: 0.1em solid #EEE;
+    background-color: #F9F9F9;
+}
+
 .book-description {
     margin-left: 3.5em;
 }
@@ -592,4 +599,17 @@ div.shown-tags p {
 
 .see-more {
     text-align: right;
+}
+
+.remove-from-shelf {
+    float: right;
+    padding: 0.2em;
+    margin: 0.3em;
+    color: #900;
+}
+
+.remove-from-shelf:active, .remove-from-shelf:hover {
+    color: #FFF;
+    background-color: #900;
+    text-decoration: none;
 }

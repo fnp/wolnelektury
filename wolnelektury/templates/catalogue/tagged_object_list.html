@@ -30,12 +30,16 @@
                 Pobierz wszystkie książki z tej półki
             </a>
         {% endif %}
-        {% endwith %}
         <ol>
         {% for book in object_list %}
-            <li>{{ book.short_html }}</li>
+            <li>
+                {% if user_is_owner %}
+                    <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">Usuń</a>
+                {% endif %}
+                {{ book.short_html }}</li>
         {% endfor %}
         </ol>
+        {% endwith %}
         {% paginate %}
     </div>
     <div id="tags-list">

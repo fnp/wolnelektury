@@ -30,7 +30,6 @@ class LazyEncoder(simplejson.JSONEncoder):
         return obj
 
 
-@cache.cache_control(must_revalidate=True, max_age=3600)
 def main_page(request):    
     if request.user.is_authenticated():
         shelves = models.Tag.objects.filter(category='set', user=request.user)
@@ -58,7 +57,6 @@ def book_list(request):
         context_instance=RequestContext(request))
 
 
-@cache.cache_control(must_revalidate=True, max_age=3600)
 def tagged_object_list(request, tags=''):
     # Prevent DoS attacks on our database
     if len(tags.split('/')) > 6:
@@ -70,11 +68,14 @@ def tagged_object_list(request, tags=''):
         raise Http404
     
     model = models.Book
+    shelf = [tag for tag in tags if tag.category == 'set']
     shelf_is_set = (len(tags) == 1 and tags[0].category == 'set')
     theme_is_set = len([tag for tag in tags if tag.category == 'theme']) > 0
     if theme_is_set:
         model = models.Fragment
 
+    user_is_owner = (len(shelf) and request.user.is_authenticated() and request.user == shelf[0].user)
+    
     extra_where = 'NOT catalogue_tag.category = "set"'
     related_tags = models.Tag.objects.related_for_model(tags, model, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
@@ -88,7 +89,7 @@ def tagged_object_list(request, tags=''):
         queryset_or_model=model,
         tags=tags,
         template_name='catalogue/tagged_object_list.html',
-        extra_context = {'categories': categories, 'shelf_is_set': shelf_is_set },
+        extra_context = {'categories': categories, 'shelf_is_set': shelf_is_set, 'user_is_owner': user_is_owner },
     )
 
 
@@ -175,7 +176,7 @@ def user_shelves(request):
     return render_to_response('catalogue/user_shelves.html', locals(),
             context_instance=RequestContext(request))
 
-
+@login_required
 @cache.never_cache
 def book_sets(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
@@ -200,6 +201,18 @@ def book_sets(request, slug):
     
     return render_to_response('catalogue/book_sets.html', locals(),
         context_instance=RequestContext(request))
+
+
+@login_required
+@require_POST
+@cache.never_cache
+def remove_from_shelf(request, shelf, book):
+    book = get_object_or_404(models.Book, slug=book)
+    shelf = get_object_or_404(models.Tag, slug=shelf, category='set', user=request.user)
+    
+    models.Tag.objects.remove_tag(book, shelf)
+    
+    return HttpResponse('Usunieto')
 
 
 @cache.never_cache

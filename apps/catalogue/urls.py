@@ -4,6 +4,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('catalogue.views',
     url(r'^$', 'main_page', name='main_page'),
+    url(r'^polki/(?P<shelf>[a-zA-Z0-9-]+)/(?P<book>[a-zA-Z0-9-0-]+)/usun$', 'remove_from_shelf', name='remove_from_shelf'),
     url(r'^polki/$', 'user_shelves', name='user_shelves'),
     url(r'^polki/(?P<slug>[a-zA-Z0-9-]+)/usun/$', 'delete_shelf', name='delete_shelf'),
     url(r'^polki/(?P<slug>[a-zA-Z0-9-]+)\.zip$', 'download_shelf', name='download_shelf'),

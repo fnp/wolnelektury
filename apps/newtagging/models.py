@@ -62,6 +62,14 @@ class TagManager(models.Manager):
             if tag not in current_tags:
                 self.intermediary_table_model._default_manager.create(tag=tag, content_object=obj)
     
+    def remove_tag(self, obj, tag):
+        """
+        Remove tag from an object.
+        """
+        content_type = ContentType.objects.get_for_model(obj)
+        self.intermediary_table_model._default_manager.filter(content_type__pk=content_type.pk,
+            object_id=obj.pk, tag=tag).delete()
+
     def get_for_object(self, obj):
         """
         Create a queryset matching all tags associated with the given

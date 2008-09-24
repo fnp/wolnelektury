@@ -193,6 +193,14 @@
                 });
             }
         });
+        
+        $('a.remove-from-shelf').click(function(event) {
+            event.preventDefault();
+            link = $(this);
+            $.post(link.attr('href'), function(data, textStatus) {
+                link.parent().remove();
+            });
+        });
 
     });
 })(jQuery)
