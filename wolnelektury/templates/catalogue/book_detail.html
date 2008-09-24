@@ -7,7 +7,7 @@
 
 {% block body %}
     <h1>{{ book.title }}, {{ categories.author|join:", " }}</h1>
-    <form action="{% url main_page %}" method="get" accept-charset="utf-8" id="search-form">
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
     </form>
     
