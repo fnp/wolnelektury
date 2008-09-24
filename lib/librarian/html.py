@@ -212,7 +212,7 @@ def add_table_of_contents(root):
     counter = 1
     for element in root.iterdescendants():
         if element.tag in ('h2', 'h3'):
-            if any_ancestor(element, lambda e: e.get('id') in ('footnotes',)):
+            if any_ancestor(element, lambda e: e.get('id') in ('footnotes',) or e.get('class') in ('person-list',)):
                 continue
             
             if element.tag == 'h3' and len(sections) and sections[-1][1] == 'h2':
