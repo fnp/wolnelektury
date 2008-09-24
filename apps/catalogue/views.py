@@ -271,8 +271,7 @@ def new_set(request):
         else:
             return HttpResponseRedirect('/')
 
-    return render_to_response('catalogue/book_sets.html', locals(),
-            context_instance=RequestContext(request))
+    return HttpResponseRedirect('/')
 
 
 @login_required
