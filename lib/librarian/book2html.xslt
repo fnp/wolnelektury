@@ -356,6 +356,9 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
+            <xsl:when test="name($verse-type) = 'wers_cd'">
+                <xsl:attribute name="style">padding-left: 12em</xsl:attribute>
+            </xsl:when>
         </xsl:choose>
         <xsl:apply-templates select="$verse-content" mode="inline" />
     </p>
