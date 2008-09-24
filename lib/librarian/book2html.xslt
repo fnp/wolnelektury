@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:wl="http://wolnelektury.pl/functions" >
 
-<xsl:output encoding="utf-8" indent="yes" omit-xml-declaration = "yes" />
+<xsl:output encoding="utf-8" indent="yes" omit-xml-declaration = "yes" version="2.0" />
 
 
 <xsl:template match="utwor">
@@ -315,23 +315,23 @@
         <xsl:choose>
             <xsl:when test="count(br) > 0">     
                 <xsl:call-template name="verse">
-                    <xsl:with-param name="line-content" select="br[1]/preceding-sibling::text() | br[1]/preceding-sibling::node()" />
-                    <xsl:with-param name="line-number" select="1" />
+                    <xsl:with-param name="verse-content" select="br[1]/preceding-sibling::text() | br[1]/preceding-sibling::node()" />
+                    <xsl:with-param name="verse-type" select="br[1]/preceding-sibling::*[name() = 'wers_wciety' or name() = 'wers_akap' or name() = 'wers_cd'][1]" />
                 </xsl:call-template>    
                 <xsl:for-each select="br">		
         			<!-- Each BR tag "consumes" text after it -->
                     <xsl:variable name="lnum" select="count(preceding-sibling::br)" />
                     <xsl:call-template name="verse">
-                        <xsl:with-param name="line-number" select="$lnum+2" />
-                        <xsl:with-param name="line-content" 
+                        <xsl:with-param name="verse-content" 
                             select="following-sibling::text()[count(preceding-sibling::br) = $lnum+1] | following-sibling::node()[count(preceding-sibling::br) = $lnum+1]" />
+                        <xsl:with-param name="verse-type" select="following-sibling::*[count(preceding-sibling::br) = $lnum+1 and (name() = 'wers_wciety' or name() = 'wers_akap' or name() = 'wers_cd')][1]" />
                     </xsl:call-template>
                 </xsl:for-each>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="verse">
-                    <xsl:with-param name="line-content" select="text() | node()" />
-                    <xsl:with-param name="line-number" select="1" />
+                    <xsl:with-param name="verse-content" select="text() | node()" />
+                    <xsl:with-param name="verse-type" select="wers_wciety|wers_akap|wers_cd[1]" />
                  </xsl:call-template>           
             </xsl:otherwise>
         </xsl:choose>
@@ -339,18 +339,25 @@
 </xsl:template>
 
 <xsl:template name="verse">
-    <xsl:param name="line-content" />
-    <xsl:param name="line-number" />
+    <xsl:param name="verse-content" />
+    <xsl:param name="verse-type" />
     <p class="verse">
         <xsl:choose>
-            <xsl:when test="name($line-content) = 'wers_akap'">
+            <xsl:when test="name($verse-type) = 'wers_akap'">
                 <xsl:attribute name="style">padding-left: 1em</xsl:attribute>
             </xsl:when>
-            <xsl:when test="name($line-content) = 'wers_wciety'">
-                <xsl:attribute name="style">padding-left: <xsl:value-of select="$line-content/@typ" />em</xsl:attribute>
+            <xsl:when test="name($verse-type) = 'wers_wciety'">
+                <xsl:choose>
+                    <xsl:when test="$verse-content/@typ">
+                        <xsl:attribute name="style">padding-left: <xsl:value-of select="$verse-content/@typ" />em</xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="style">padding-left: 1em</xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:when>
         </xsl:choose>
-        <xsl:apply-templates select="$line-content" mode="inline" />
+        <xsl:apply-templates select="$verse-content" mode="inline" />
     </p>
 </xsl:template>
 
