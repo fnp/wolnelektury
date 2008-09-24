@@ -214,7 +214,18 @@ def download_shelf(request, slug):
     # Create a ZIP archive
     temp = temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
-    for book in models.Book.tagged.with_all(shelf):
+    
+    # Collect all books to include in ZIP archive
+    def collect_books(books):
+        result = []
+        for book in books:
+            if len(book.children.all()) == 0:
+                result.append(book)
+            else:
+                result += collect_books(book.children.all())
+        return result
+    
+    for book in collect_books(models.Book.tagged.with_all(shelf)):
         if book.pdf_file:
             filename = book.pdf_file.path
             archive.write(filename, str('%s.pdf' % book.slug))
