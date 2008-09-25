@@ -43,6 +43,7 @@ class Tag(TagBase):
     main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
         
     user = models.ForeignKey(User, blank=True, null=True)
+    book_count = models.IntegerField(_('book count'))
     
     def has_description(self):
         return len(self.description) > 0
