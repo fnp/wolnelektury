@@ -42,6 +42,13 @@
             return false;
         });
         
+        $('.hide-all-tags').click(function() {
+           $(this).parent().parent().fadeOut(function() {
+               $(this).prev().fadeIn();
+           });
+           return false; 
+        });
+        
         $('#registration-form').ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {

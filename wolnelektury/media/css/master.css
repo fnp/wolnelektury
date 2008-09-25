@@ -242,12 +242,12 @@ p .ac_input {
     display: none;
 }
 
-div.shown-tags p {
+div.shown-tags p, div.all-tags p {
     margin: -1em 0 1em 0;
     text-align: right;
 }
 
-.show-all-tags {
+.show-all-tags, .hide-all-tags {
     text-decoration: underline;
     padding-right: 1em;
 }
