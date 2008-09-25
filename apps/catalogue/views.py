@@ -188,8 +188,18 @@ def book_sets(request, slug):
     if request.method == 'POST':
         form = forms.ObjectSetsForm(book, request.user, request.POST)
         if form.is_valid():
-            book.tags = ([models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']] +
-                list(book.tags.filter(~Q(category='set') | ~Q(user=request.user))))
+            old_shelves = list(book.tags.filter(category='set'))
+            new_shelves = [models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']]
+            
+            for shelf in [shelf for shelf in old_shelves if shelf not in new_shelves]:
+                shelf.book_count -= 1
+                shelf.save()
+                
+            for shelf in [shelf for shelf in new_shelves if shelf not in old_shelves]:
+                shelf.book_count += 1
+                shelf.save()
+            
+            book.tags = new_shelves + list(book.tags.filter(~Q(category='set') | ~Q(user=request.user)))
             if request.is_ajax():
                 return HttpResponse('<p>Półki zostały zapisane.</p>')
             else:
@@ -210,6 +220,9 @@ def remove_from_shelf(request, shelf, book):
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set', user=request.user)
     
     models.Tag.objects.remove_tag(book, shelf)
+    
+    shelf.book_count -= 1
+    shelf.save()
     
     return HttpResponse('Usunieto')
 
