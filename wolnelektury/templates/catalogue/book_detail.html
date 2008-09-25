@@ -19,20 +19,22 @@
             <div id="toggle-description"><p>Zwiń opis ▲</p></div>
         {% endif %}
         <div id="formats">
-            <ul>
+            <p class="change-sets">Wrzuć lekturę <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">na półkę!</a></span></p>
+            <div class="clearboth"></div>
+            <div class="wrap">
             {% if book.html_file %}
-                <li><a href="{% url book_text book.slug %}">Czytaj online</a></li>
+                <a href="{% url book_text book.slug %}">Czytaj online</a>
             {% endif %}
             {% if book.pdf_file %}
-                <li><a href="{{ book.pdf_file.url }}">Pobierz plik PDF</a></li>
+                <a href="{{ book.pdf_file.url }}">Pobierz plik PDF</a>
             {% endif %}
             {% if book.odt_file %}
-                <li><a href="{{ book.odt_file.url }}">Pobierz plik ODT</a></li>
+                <a href="{{ book.odt_file.url }}">Pobierz plik ODT</a>
             {% endif %}
             {% if book.txt_file %}
-                <li><a href="{{ book.txt_file.url }}">Pobierz plik TXT</a></li>
+                <a href="{{ book.txt_file.url }}">Pobierz plik TXT</a>
             {% endif %}
-            </ul>
+            </div>
         </div>
     
         {% if book_children %}
