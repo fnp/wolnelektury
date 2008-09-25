@@ -32,7 +32,7 @@ class ObjectSetsForm(forms.Form):
         self.fields['set_ids'] = forms.MultipleChoiceField(
             label=u'Półki',
             required=False,
-            choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user)],
+            choices=[(tag.id, "%s (%s)" % (tag.name, tag.book_count)) for tag in Tag.objects.filter(category='set', user=user)],
             initial=[tag.id for tag in obj.tags.filter(category='set', user=user)],
             widget=forms.CheckboxSelectMultiple
         )
