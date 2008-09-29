@@ -157,8 +157,14 @@ class Book(models.Model):
         book_info = dcparser.parse(xml_file)
         book_base, book_slug = book_info.url.rsplit('/', 1)
         book, created = Book.objects.get_or_create(slug=book_slug)
-        if not created and not overwrite:
-            raise Book.AlreadyExists('Book %s already exists' % book_slug)
+        
+        if created:
+            book_shelves = []
+        else:
+            if not overwrite:
+                raise Book.AlreadyExists('Book %s already exists' % book_slug)
+            # Save shelves for this book
+            book_shelves = book.tags.filter(category='set')
         
         book.title = book_info.title
         book._short_html = ''
@@ -224,7 +230,7 @@ class Book(models.Model):
                 book_themes += themes
             
             book_themes = set(book_themes)
-            book.tags = list(book.tags) + list(book_themes)
+            book.tags = list(book.tags) + list(book_themes) + list(book_shelves)
         
         book.save()
         return book
