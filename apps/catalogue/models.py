@@ -164,7 +164,7 @@ class Book(models.Model):
             if not overwrite:
                 raise Book.AlreadyExists('Book %s already exists' % book_slug)
             # Save shelves for this book
-            book_shelves = book.tags.filter(category='set')
+            book_shelves = list(book.tags.filter(category='set'))
         
         book.title = book_info.title
         book._short_html = ''
@@ -230,7 +230,7 @@ class Book(models.Model):
                 book_themes += themes
             
             book_themes = set(book_themes)
-            book.tags = list(book.tags) + list(book_themes) + list(book_shelves)
+            book.tags = list(book.tags) + list(book_themes) + book_shelves
         
         book.save()
         return book
