@@ -19,7 +19,7 @@
             <div id="toggle-description"><p>Zwiń opis ▲</p></div>
         {% endif %}
         <div id="formats">
-            <p class="change-sets">Wrzuć lekturę <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">na półkę!</a></span></p>
+            <p class="change-sets">Wrzuć cały zbiór <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">na półkę!</a></span></p>
             <div class="clearboth"></div>
             <div class="wrap">
             {% if book.html_file %}
