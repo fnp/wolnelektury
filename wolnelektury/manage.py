@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+from os.path import abspath, dirname, join
+from site import addsitedir
+import sys
+path = addsitedir(abspath(join(dirname(__file__), '../external_libs')), set())
+if path: sys.path = list(path) + sys.path
+sys.path.insert(0, abspath(join(dirname(__file__), '../apps')))
+sys.path.insert(0, abspath(join(dirname(__file__), '../lib')))
+
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.
