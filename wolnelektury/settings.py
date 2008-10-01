@@ -75,7 +75,7 @@ MIDDLEWARE_CLASSES = [
     'pagination.middleware.PaginationMiddleware',
 ]
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'wolnelektury.urls'
 
 TEMPLATE_DIRS = [
     path.join(PROJECT_DIR, 'templates'),
