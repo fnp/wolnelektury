@@ -5,3 +5,4 @@ lektury.sqlite
 wolnelektury/media/lektura/*
 *.pyc
 *.DS_Store
+localsettings.py
