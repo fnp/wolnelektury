@@ -1,21 +1,20 @@
-# -*- coding: utf-8 -*-
 # Django settings for wolnelektury project.
 from os import path
 
 PROJECT_DIR = path.abspath(path.dirname(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    (u'Marek Stępniowski', 'marek@stepniowski.com'),
-)
+ADMINS = [
+    # ('Your Name', 'your_email@domain.com'),
+]
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'wolnelektury'  # Or path to database file if using sqlite3.
-DATABASE_USER = 'root'             # Not used with sqlite3.
+DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = path.join(PROJECT_DIR, 'dev.db')  # Or path to database file if using sqlite3.
+DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
@@ -25,7 +24,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Warsaw Poland'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -39,7 +38,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = PROJECT_DIR + '/media/'
+MEDIA_ROOT = path.join(PROJECT_DIR, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -54,39 +53,58 @@ ADMIN_MEDIA_PREFIX = '/admin-media/'
 # Make this unique, and don't share it with anybody.
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
+TEMPLATE_LOADERS = [
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
 #     'django.template.loaders.eggs.load_template_source',
-)
+]
 
-TEMPLATE_CONTEXT_PROCESSORS = (
+TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
-)
+]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.middleware.doc.XViewMiddleware',
+    'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
 ]
 
-# If DEBUG is enabled add query log to bottom of every template
-if DEBUG:
-    MIDDLEWARE_CLASSES.append('middleware.ProfileMiddleware')
-
 ROOT_URLCONF = 'urls'
 
-TEMPLATE_DIRS = (
-    PROJECT_DIR + '/templates/',
-)
+TEMPLATE_DIRS = [
+    path.join(PROJECT_DIR, 'templates'),
+]
 
-# CSS and JS files to compress
+LOGIN_URL = '/uzytkownicy/zaloguj/'
+
+LOGIN_REDIRECT_URL = '/'
+
+INSTALLED_APPS = [
+    # included
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    
+    # external
+    'newtagging',
+    'pagination',
+    'chunks',
+    'compress',
+    'catalogue',
+]
+
+CACHE_BACKEND = 'locmem:///?max_entries=3000'
+
+# CSS and JavaScript file groups
 COMPRESS_CSS = {
     'all': {
         'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css',),
@@ -116,21 +134,10 @@ COMPRESS_JS = {
 
 COMPRESS_CSS_FILTERS = None
 
-LOGIN_URL = '/uzytkownicy/zaloguj/'
 
-LOGIN_REDIRECT_URL = '/'
-
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    'newtagging',
-    'pagination',
-    'chunks',
-    'compress',
-    'catalogue',
-)
+# Load localsettings, if they exist
+try:
+    from localsettings import *
+except ImportError:
+    pass
 
