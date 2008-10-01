@@ -1,16 +1,21 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+from os.path import abspath, dirname, join
 import sys
-import os
-from os import path
 
-# Add project directories to PYTHONPATH
-PROJECT_DIR = path.abspath(path.dirname(__file__))
-PROJECT_MODULE_DIRS = [PROJECT_DIR + '/lib', PROJECT_DIR + '/apps', PROJECT_DIR + '/wolnelektury']
+# Redirect sys.stdout to sys.stderr for bad libraries like geopy that use
+# print statements for optional import exceptions.
+sys.stdout = sys.stderr
 
-sys.path = PROJECT_MODULE_DIRS + sys.path
+# Add apps and lib directories to PYTHONPATH
+sys.path.insert(0, abspath(join(dirname(__file__), '../apps')))
+sys.path.insert(0, abspath(join(dirname(__file__), '../lib')))
 
-# Set the DJANGO_SETTINGS_MODULE environment variable.
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings_eo'
+# Emulate manage.py path hacking.
+sys.path.insert(0, abspath(join(dirname(__file__), "../../")))
+sys.path.insert(0, abspath(join(dirname(__file__), "../")))
+
+# Run Django
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from django.core.servers.fastcgi import runfastcgi
 runfastcgi(method='threaded', daemonize='false')
