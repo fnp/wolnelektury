@@ -84,9 +84,11 @@ class AutoPaginateNode(template.Node):
         try:
             page_obj = paginator.page(context['request'].page)
         except InvalidPage:
-            context[key] = []
-            context['invalid_page'] = True
-            return u''
+            # context[key] = []
+            # context['invalid_page'] = True
+            # return u''
+            from django.http import Http404
+            raise Http404
         context[key] = page_obj.object_list
         context['paginator'] = paginator
         context['page_obj'] = page_obj
