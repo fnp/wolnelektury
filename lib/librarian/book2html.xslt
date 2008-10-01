@@ -9,7 +9,6 @@
         <head>
             <title>Książka z serwisu WolneLektury.pl</title>
             <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-            <link rel="stylesheet" href="master.css" type="text/css" media="all" charset="utf-8" />
         </head>
         <style>
             body {
@@ -65,26 +64,24 @@
             /* ======================== */
             .theme-begin {
                 border-left: 0.1em solid #DDDDDD;
-                color: #666;
-                float: right;
-                margin: 0 -9.5em 0 0;
+                color: #777;
                 padding: 0 0.5em;
                 width: 7.5em;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 16px;
-                display: none;
+                float: right;
+                margin-right: -9.5em;
+                clear: both;
+                left: 40em;
+                line-height: 1.5em;
+                text-align: left;
             }
 
             .annotation {
                 font-style: normal;
                 font-weight: normal;
-                font-size: 16px;
-                display: none;
-            }
-
-            #footnotes {
-                display: none;
+                font-size: 12px;
             }
 
             #footnotes .annotation {
@@ -100,6 +97,11 @@
 
             #footnotes p {
                 margin-left: 2.5em;
+                font-size: 0.875em;
+            }
+
+            blockquote {
+                font-size: 0.875em;
             }
 
             /* =================== */
@@ -174,9 +176,22 @@
             }
 
             .anchor {
-                display: none;
+                position: absolute;
+                margin: -0.25em -0.5em;
+                left: 1em;
+                color: #777;
+                font-size: 12px;
+                width: 2em;
+                text-align: center;
+                padding: 0.25em 0.5em;
+                line-height: 1.5em;
             }
 
+            .anchor:hover, #book-text .anchor:active {
+                color: #FFF;
+                background-color: #CCC;
+            }
+            
             #toc {
                 display: none;
             }
