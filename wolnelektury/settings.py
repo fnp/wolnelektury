@@ -95,6 +95,7 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     
     # external
+    'south',
     'newtagging',
     'pagination',
     'chunks',

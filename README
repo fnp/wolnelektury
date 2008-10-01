@@ -61,6 +61,13 @@ django-newtagging
  - Typ: biblioteka (aplikacja django)
  - Nota: Aplikacja wzorowana na [django-tagging](http://code.google.com/p/django-tagging/), która jest również wydana na licencji [MIT](http://www.opensource.org/licenses/mit-license.php) Około połowa kodu jest dzielona.
 
+south
+-----
+- Źródła: [aercode.org](http://south.aeracode.org/)
+- Autorzy: Andrew Godwin <andrew@aeracode.org>, Andy McCurdy <sedrik@gmail.com>
+- Licencja: [Apache License 2.0](http://www.opensource.org/licenses/apache2.0.php)
+- Typ: biblioteka (aplikacja django)
+
 feedparser
 ----------
  - Źródła: [Google Code](http://code.google.com/p/feedparser/)
