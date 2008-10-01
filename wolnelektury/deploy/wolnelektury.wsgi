@@ -7,8 +7,8 @@ import sys
 sys.stdout = sys.stderr
 
 # Add apps and lib directories to PYTHONPATH
-sys.path.insert(0, abspath(join(dirname(__file__), '../apps')))
-sys.path.insert(0, abspath(join(dirname(__file__), '../lib')))
+sys.path.insert(0, abspath(join(dirname(__file__), '../../apps')))
+sys.path.insert(0, abspath(join(dirname(__file__), '../../lib')))
 
 # Emulate manage.py path hacking.
 sys.path.insert(0, abspath(join(dirname(__file__), "../../")))
