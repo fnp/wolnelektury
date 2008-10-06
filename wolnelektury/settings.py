@@ -96,7 +96,6 @@ INSTALLED_APPS = [
     
     # external
     'south',
-    'djangosphinx',
     'newtagging',
     'pagination',
     'chunks',
@@ -135,9 +134,6 @@ COMPRESS_JS = {
 }
 
 COMPRESS_CSS_FILTERS = None
-
-SPHINX_SERVER = 'localhost'
-SPHINX_PORT = 3312
 
 
 # Load localsettings, if they exist
