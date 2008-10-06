@@ -5,7 +5,7 @@
 
 
 <xsl:template match="utwor">
-    <!-- <html>
+    <html>
         <head>
             <title>Książka z serwisu WolneLektury.pl</title>
             <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -196,7 +196,7 @@
                 display: none;
             }
         </style>
-        <body> -->
+        <body>
         <div id="book-text">
             <xsl:apply-templates select="powiesc|opowiadanie|liryka_l|liryka_lp|dramat_wierszowany_l|dramat_wierszowany_lp|dramat_wspolczesny" />
             <xsl:if test="count(descendant::*[self::pe or self::pa or self::pr or self::pt][not(parent::extra)])">
@@ -219,8 +219,8 @@
                 </div>
             </xsl:if>
         </div>
-        <!-- </body>
-    </html> -->
+        </body>
+    </html>
 </xsl:template>
 
 
@@ -261,7 +261,7 @@
 
 <xsl:template match="kwestia">
     <div class="kwestia">
-        <xsl:apply-templates select="strofa|akap" />
+        <xsl:apply-templates select="strofa|akap|didaskalia" />
     </div>
 </xsl:template>
 

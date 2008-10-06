@@ -1,34 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
 <utwor>
-
 <dramat_wspolczesny>
 
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-<rdf:Description rdf:about="http://wiki.wolnepodreczniki.pl/Lektury:Zapolska/Moralność_pani_Dulskiej">
-<dc:creator xml:lang="pl">Zapolska, Gabriela</dc:creator>
-<dc:title xml:lang="pl">Moralność pani Dulskiej</dc:title>
-<dc:contributor.editor xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
-<dc:contributor.technical_editor xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
-<dc:publisher xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
-<dc:subject.period xml:lang="pl">Modernizm</dc:subject.period>
-<dc:subject.type xml:lang="pl">Dramat</dc:subject.type>
-<dc:subject.genre xml:lang="pl">Tragifarsa</dc:subject.genre>
-<dc:subject.genre xml:lang="pl">Komedia</dc:subject.genre>
-<dc:description xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
-<dc:identifier.url xml:lang="pl">http://wolnelektury.pl/katalog/lektura/moralnosc-pani-dulskiej</dc:identifier.url>
-<dc:source.URL xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=582&amp;from=&amp;from=generalsearch&amp;dirids=1&amp;lang=pl</dc:source.URL>
-<dc:source xml:lang="pl">Zapolska, Gabriela (1857-1921), Moralność pani Dulskiej: komedya w trzech aktach, Tow. Akc. S. Orgelbranda S-ów, Warszawa, 1907</dc:source>
-<dc:rights xml:lang="pl">Domena publiczna - Gabriela Zapolska, herbu Korwin, właśc. Maria Gabriela Korwin-Piotro, zm. 17 grudnia 1921</dc:rights>
-<dc:date.pd xml:lang="pl">1921</dc:date.pd>
-<dc:format xml:lang="pl">xml</dc:format>
-<dc:type xml:lang="pl">text</dc:type>
-<dc:type xml:lang="en">text</dc:type>
-<dc:date xml:lang="pl">2007-11-10</dc:date>
-<dc:audience xml:lang="pl">G</dc:audience>
-<dc:audience xml:lang="pl">L</dc:audience>
-<dc:language xml:lang="pl">pol</dc:language>
-</rdf:Description>
-</rdf:RDF>
 
 
 <extra><!--<elementy_wstepne>--></extra>
@@ -73,10 +45,10 @@
 
 
 
-<naglowek_akt>AKT I---y</naglowek_akt>
+<naglowek_akt>AKT I</naglowek_akt>
 
 
-<didaskalia><begin id="b1192562734879"/><motyw id="m1192562734879">Mieszczanin</motyw>Scena przedstawia salon w burżuazyjnym domu. --- Dywany --- meble solidne --- na ścianach w złoconych ramach premia i Bóg wie jakie obrazy. --- Rogi obfitości --- sztuczne palmy --- landszaft haftowany za szkłem. --- Pomiędzy tym stara, piękna serwantka mahoniowa i empirowy ekranik.---Lampa z abażurem z bibuły --- stoliki, a na nich fotografie.<end id="e1192562734879"/> --- Rolety pospuszczane --- na scenie ciemno. --- Gdy zasłona się podnosi, zegar w jadalni bije godzinę szóstą.--- W czasie pierwszych scen powoli rozwidnia się --- wreszcie rozwidnia się zupełnie, gdy story podniosą.</didaskalia>
+<didaskalia><begin id="b1192562734879"/><motyw id="m1192562734879">Mieszczanin</motyw>Scena przedstawia salon w burżuazyjnym domu. --- Dywany --- meble solidne --- na ścianach w złoconych ramach premia i Bóg wie jakie obrazy. --- Rogi obfitości --- sztuczne palmy --- landszaft haftowany za szkłem. --- Pomiędzy tym stara, piękna serwantka mahoniowa i empirowy ekranik. ---Lampa z abażurem z bibuły --- stoliki, a na nich fotografie.<end id="e1192562734879"/> --- Rolety pospuszczane --- na scenie ciemno. --- Gdy zasłona się podnosi, zegar w jadalni bije godzinę szóstą. --- W czasie pierwszych scen powoli rozwidnia się --- wreszcie rozwidnia się zupełnie, gdy story podniosą.</didaskalia>
 
 
 
@@ -88,7 +60,7 @@
 
 
 
-<didaskalia>Chwilę scena pozostaje pusta. <begin id="b1192562058807"/><motyw id="m1192562058807">Kobieta, Dom</motyw>Słychać za kulisami szłapanie pantofli. Z lewej (sypialnia małżeńska) wchodzi <osoba>Dulska</osoba> w stroju niedbałym. Papiloty --- z tyłu cienki kosmyk --- kaftanik biały wątpliwej czystości --- halka włóczkowa krótka, poddarta na brzuchu. Idzie, mrucząc --- świeca w ręku. Stawia świece na stole --- idzie do kuchni.</didaskalia>
+<didaskalia>Chwilę scena pozostaje pusta. <begin id="b1192562058807"/><motyw id="m1192562058807">Gospodyni, Kobieta, Dom</motyw>Słychać za kulisami szłapanie pantofli. Z lewej (sypialnia małżeńska) wchodzi <osoba>Dulska</osoba> w stroju niedbałym. Papiloty --- z tyłu cienki kosmyk --- kaftanik biały wątpliwej czystości --- halka włóczkowa krótka, poddarta na brzuchu. Idzie, mrucząc --- świeca w ręku. Stawia świece na stole --- idzie do kuchni.</didaskalia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -103,18 +75,18 @@
 	
 		<didaskalia>idzie ku drzwiom na prawo</didaskalia>
 		
-		<strofa>Heśka! Mela! wstawać! lekcje przepowiedzieć --- gammy<pe><slowo_obce>gammy</slowo_obce> --- dziś popr.: gamy.</pe> do grania... prędzej... nie gnić w łóżkach!...</strofa>
+		<strofa>Heśka! Mela! wstawać! lekcje przepowiedzieć --- gamy do grania... prędzej... nie gnić w łóżkach!...</strofa>
 	</kwestia>
 
 
-<didaskalia>Chwilę chodzi po scenie, mrucząc. Idzie do pierwszych drzwi na prawo --- zagląda --- łamie race, wchodzi do pokoju ze świecą.<end id="e1192562058807"/></didaskalia>
+<didaskalia>Chwilę chodzi po scenie, mrucząc. Idzie do pierwszych drzwi na prawo --- zagląda --- łamie ręce, wchodzi do pokoju ze świecą.<end id="e1192562058807"/></didaskalia>
 
 
 
 
 
 
-<naglowek_scena><begin id="b1192561933407"/><motyw id="m1192561933407">Sługa</motyw>SCENA II</naglowek_scena>
+<naglowek_scena><begin id="b1192561933407"/><motyw id="m1192561933407">Pan, Sługa</motyw>SCENA II</naglowek_scena>
 
 
 
@@ -126,7 +98,7 @@
 <didaskalia><osoba>Hanka</osoba> bosa --- spódnica ledwo zawiązana, koszula, kaftanik narzucony --- niesie smolaki i trochę węgli. Przykuca przy piecu --- rozpala --- podciąga nosem --- wzdycha. Wchodzi <osoba>Dulska</osoba> zła.</didaskalia>
 
 
-<naglowek_osoba><begin id="b1192561981345"/><motyw id="m1192561981345">Mieszczanin</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192561981345"/><motyw id="m1192561981345">Gospodyni, Mieszczanin</motyw>DULSKA</naglowek_osoba>
 	<kwestia>
 		<akap>Jak palisz? jak palisz? skaranie Boże z tym tłomokiem. Do krów, do krów, nie do pańskich pieców. Czego niszczysz tyle smolaków! Czekaj, ustąp się, ty do niczego --- ja ci pokażę.</akap>
 	
@@ -160,7 +132,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Widzisz, jak się w piecu pali?<end id="e1192561981345"/></akap></kwestia>
+<kwestia><akap>Widzisz, jak się w piecu pali?</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
@@ -168,7 +140,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Ja o wszystkim myśleć muszę. Niedługo przez was to zejdę do grobu.</akap></kwestia>
+<kwestia><akap>Ja o wszystkim myśleć muszę. Niedługo przez was to zejdę do grobu.<end id="e1192561981345"/></akap></kwestia>
 
 
 <naglowek_osoba><begin id="b1192603448415"/><motyw id="m1192603448415">Miasto</motyw>HANKA</naglowek_osoba>
@@ -257,7 +229,7 @@
 </kwestia>
 
 
-<naglowek_osoba><begin id="b1192562238055"/><motyw id="m1192562238055">Córka, Dom, Matka, Mąż, Syn, Żona</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192562238055"/><motyw id="m1192562238055">Córka, Dom, Gospodyni, Matka, Mąż, Syn, Żona</motyw>DULSKA</naglowek_osoba>
 <didaskalia>idzie ku drzwiom sypialni małżeńskiej</didaskalia>
 
 <kwestia>
@@ -365,7 +337,7 @@
 <kwestia><akap>Co?</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192563779721"/><motyw id="m1192563779721">Grzech</motyw>MELA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192563779721"/><motyw id="m1192563779721">Grzech, Nauka, Wiedza</motyw>MELA</naglowek_osoba>
 <kwestia><akap>Niby że dziecko podobne do ojca albo do matki. Jak to się dzieje?</akap></kwestia>
 
 
@@ -447,7 +419,7 @@
 <kwestia><akap>To nie kręć się.</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192563961463"/><motyw id="m1192563961463">Brat, Sługa</motyw>HESIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192563961463"/><motyw id="m1192563961463">Brat, Flirt, Miłość, Sługa</motyw>HESIA</naglowek_osoba>
 <kwestia><akap>Wiesz! Zbyszko znów poszedł na lumpkę.</akap></kwestia>
 
 
@@ -481,13 +453,13 @@
 
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
-	<akap>No co? nie byłaś na Halce? nie wiesz, jak to się dzieje? Panicz, no i nieszczęsna Halka gwałtem tu idzie...</akap>
+	<akap>No co? nie byłaś na <tytul_dziela>Halce</tytul_dziela>? nie wiesz, jak to się dzieje? Panicz, no i nieszczęsna Halka gwałtem tu idzie...</akap>
 
 <didaskalia>śmieje się serdecznie</didaskalia></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Ale to na scenie... potem, to było wtedy, jak takie kontusze nosili --- ale Zbyszko... och, Hesiu!...</akap></kwestia>
+<kwestia><akap>Ale to na scenie... potem<pe><slowo_obce>potem</slowo_obce> --- tu: poza tym.</pe>, to było wtedy, jak takie kontusze nosili --- ale Zbyszko... och, Hesiu!...</akap></kwestia>
 
 
 <didaskalia>Wchodzi <osoba>Hanka</osoba> --- klęka przy piecu.</didaskalia>
@@ -508,7 +480,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Hesiu!... mnie czegoś przed Hanką wstyd</akap></kwestia>
+<kwestia><akap>Hesiu!... mnie czegoś przed Hanką wstyd.</akap></kwestia>
 
 
 <didaskalia>Milczenie.</didaskalia>
@@ -547,7 +519,7 @@
 <didaskalia>Chwila. Nagle.</didaskalia>
 
 
-<kwestia><akap>Ach! chciałabym wiedzieć, gdzie ten Zbyszko tak nocami chodzi?</akap></kwestia>
+<kwestia><akap><begin id='b1223035615717' /><motyw id='m1223035615717'>Nauka, Wiedza</motyw>Ach! chciałabym wiedzieć, gdzie ten Zbyszko tak nocami chodzi?</akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -595,7 +567,7 @@
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
-<kwestia><akap>Tuman!...<end id="e1192563394227"/></akap></kwestia>
+<kwestia><akap>Tuman!...<end id='e1223035615717' /><end id="e1192563394227"/></akap></kwestia>
 
 
 
@@ -615,7 +587,7 @@
 
 <naglowek_osoba><begin id="b1192564114503"/><motyw id="m1192564114503">Córka, Matka, Sługa</motyw>DULSKA</naglowek_osoba>
 <kwestia>
-	<akap>Czego wy tu? co to? ubierać się... Hanka sprzątać... Mela gammy!... Felicjanie!...</akap>
+	<akap>Czego wy tu? co to? ubierać się... Hanka sprzątać... Mela gamy!... Felicjanie!...</akap>
 
 	<didaskalia>wpada do sypialni małżeńskiej</didaskalia>
 </kwestia>
@@ -647,7 +619,7 @@
 
 	<didaskalia>do <osoba>Hanki</osoba></didaskalia>
 	
-	<akap>Czego się śmiejesz, idiotko? --- sprzątaj! Albo czekaj. Byłaś kiedy w nocnej kawiarni?</akap>
+	<akap>Czego się śmiejesz, idiotko? --- sprzątaj! Albo czekaj. <begin id='b1223035814084' /><motyw id='m1223035814084'>Nauka, Wiedza</motyw>Byłaś kiedy w nocnej kawiarni?</akap>
 </kwestia>
 
 
@@ -671,7 +643,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Mówiłam ci --- wolę nie wiedzieć.</akap></kwestia>
+<kwestia><akap>Mówiłam ci --- wolę nie wiedzieć.<end id='e1223035814084' /></akap></kwestia>
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
@@ -807,7 +779,7 @@
 
 	<didaskalia><begin id="b1192604889986"/><motyw id="m1192604889986">Córka, Kobieta, Matka</motyw>do dziewcząt</didaskalia>
 	
-	<akap>Proszę iść się ubrać. Mela do gamm.</akap>
+	<akap>Proszę iść się ubrać. Mela do gam.</akap>
 </kwestia>
 
 
@@ -834,7 +806,7 @@
 <kwestia><akap>Nie ma czarnej kawy w tym zakładzie?</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192565490061"/><motyw id="m1192565490061">Kobieta, Matka, Mężczyzna, Syn</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192565490061"/><motyw id="m1192565490061">Kobieta, Matka, Mężczyzna, Syn, Rodzina</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>Gdzie byłeś?</akap></kwestia>
 
 
@@ -900,12 +872,12 @@
 <kwestia><akap>Jeszcze gorszych biorą. Nie ma czarnej kawy w tym zakładzie?</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192565564087"/><motyw id="m1192565564087">Obyczaje</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192565564087"/><motyw id="m1192565564087">Obyczaje, Kobieta "upadła", Pieniądz</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>Wyrażaj się inaczej. Ciągle myślisz, że jesteś w towarzystwie kokocic.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Takie dobre towarzystwo, jak i inne. A potem co mamcia wydziwia na kokotki. Niby to i u nas nie ma kokot w kamienicy. Sama mamcia wynajmowała tej z pierwszego piętra.</akap></kwestia>
+<kwestia><akap>Takie dobre towarzystwo, jak i inne. A potem co mamcia wydziwia na kokotki<pe><slowo_obce>kokotka</slowo_obce> (a. <slowo_obce>kokota</slowo_obce>) --- prostytutka.</pe>. Niby to i u nas nie ma kokot w kamienicy. Sama mamcia wynajmowała tej z pierwszego piętra.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -941,11 +913,11 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Jamais!<pe><slowo_obce>Jamais!</slowo_obce> (fr.) --- nigdy!</pe></akap></kwestia>
+<kwestia><akap>Jamais!<pe><slowo_obce>Jamais!</slowo_obce> (fr.) --- nigdy.</pe></akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Ja --- długów płacić nie będę.</akap></kwestia>
+<kwestia><akap>Ja długów płacić nie będę.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -970,12 +942,12 @@
 <kwestia><akap>Ciężkie czasy --- nie ma na przyjęcia.</akap></kwestia>
 
 
-<naglowek_osoba>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id='b1222760601687' /><motyw id='m1222760601687'>Cmentarz, Dom</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>E! człowiek jest zwierzęciem towarzyskim. Musi od czasu do czasu myśl wymienić. O! widzi mamcia, myśl --- to wielkie słowo. Choć ono się stąd gna, to przecież tu i ówdzie się jeszcze kręci...</akap></kwestia>
 
 
-<naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Ja tam nie mam czasu myśleć...</akap></kwestia>
+<naglowek_osoba><begin id='b1223043329113' /><motyw id='m1223043329113'>Czas </motyw>DULSKA</naglowek_osoba>
+<kwestia><akap>Ja tam nie mam czasu myśleć...<end id='e1223043329113' /></akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -987,7 +959,7 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Tak --- tak! do... Co mamcia może wiedzieć, którymi to drogami chadza ludzka myśl, nawet takiego jak ja kołtuna.</akap></kwestia>
+<kwestia><akap>Tak --- tak! do... Co mamcia może wiedzieć, którymi to drogami chadza ludzka myśl, nawet takiego jak ja kołtuna.<end id='e1222760601687' /></akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -997,7 +969,7 @@
 
 
 
-<naglowek_scena><begin id="b1192565728784"/><motyw id="m1192565728784">Mąż, Żona</motyw>SCENA VII</naglowek_scena>
+<naglowek_scena><begin id="b1192565728784"/><motyw id="m1192565728784">Mąż, Żona</motyw>SCENA VI</naglowek_scena>
 
 
 
@@ -1028,7 +1000,7 @@
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <didaskalia>do męża</didaskalia>
 
-<kwestia><akap>Dziś fasujesz!</akap></kwestia>
+<kwestia><akap>Dziś fasujesz<pe><slowo_obce>fasować</slowo_obce> (z niem. <slowo_obce>fassen</slowo_obce>: pobierać, otrzymywać) --- tu: odbierać pensję.</pe>!</akap></kwestia>
 
 
 <naglowek_osoba>DULSKI</naglowek_osoba>
@@ -1093,7 +1065,7 @@
 
 
 
-<naglowek_scena>SCENA VIII</naglowek_scena>
+<naglowek_scena>SCENA VII</naglowek_scena>
 
 
 
@@ -1152,7 +1124,7 @@
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
-<kwestia><akap>Mnie o nic nie chodzi --- tylko nie chcę, żeby mnie pan sekował.</akap></kwestia>
+<kwestia><akap>Mnie o nic nie chodzi --- tylko nie chcę, żeby mnie pan sekował<pe><slowo_obce>sekować</slowo_obce> (wł. <slowo_obce>seccare</slowo_obce>) --- dręczyć, nękać, prześladować, dokuczać komuś.</pe>.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -1182,6 +1154,7 @@
 	<akap>Figa!</akap>
 
 	<didaskalia>uderza go po łapie</didaskalia>
+
 </kwestia>
 
 
@@ -1189,7 +1162,7 @@
 <kwestia><akap>A ty szelmo...</akap></kwestia>
 
 
-<didaskalia>Chce ją objąć --- wchodzi <osoba>Mela</osoba>, która wydaje lekki okrzyk --- potem zaczerwieniona, z oczyma spuszczonymi idzie do fortepianu --- <osoba>Hanka</osoba> ucieka ---<end id="e1192565878009"/> <osoba>Mela</osoba> siada i gra ćwiczenia pięciopalcowe. Gdy <osoba>Mela</osoba> zostaje sama, chwilką gra --- potem wstaje, idzie do pokoju <osoba>Zbyszka</osoba> i puka.</didaskalia>
+<didaskalia>Chce ją objąć --- wchodzi <osoba>Mela</osoba>, która wydaje lekki okrzyk --- potem zaczerwieniona, z oczyma spuszczonymi idzie do fortepianu --- <osoba>Hanka</osoba> ucieka ---<end id="e1192565878009"/> <osoba>Mela</osoba> siada i gra ćwiczenia pięciopalcowe. Gdy <osoba>Mela</osoba> zostaje sama, chwilkę gra --- potem wstaje, idzie do pokoju <osoba>Zbyszka</osoba> i puka.</didaskalia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -1244,7 +1217,7 @@
 
 
 
-<naglowek_scena>SCENA IX</naglowek_scena>
+<naglowek_scena>SCENA VIII</naglowek_scena>
 
 
 
@@ -1253,7 +1226,7 @@
 <didaskalia><osoba>Mela</osoba> --- <osoba>Hesia</osoba> --- <osoba>Dulska</osoba> --- <osoba>Hanka</osoba></didaskalia>
 
 
-<naglowek_osoba><begin id="b1192566135168"/><motyw id="m1192566135168">Córka, Obyczaje</motyw>HESIA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192566135168"/><motyw id="m1192566135168">Córka, Kobieta, Obyczaje</motyw>HESIA</naglowek_osoba>
 <kwestia><akap>Ubieraj się, Ofelio! żywo! już chłopcy idą do szkoły.</akap></kwestia>
 
 
@@ -1306,6 +1279,7 @@
 	<akap>Macie parasol? iść prosto --- nie oglądać się. Pamiętać: skromność --- skarb dziewczęcia.</akap>
 
 	<didaskalia>do <osoba>Hesi</osoba></didaskalia>
+
 	
 	<akap>Nie garb się...<end id="e1192566135168"/></akap>
 </kwestia>
@@ -1317,7 +1291,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <didaskalia>rzuca jej książki</didaskalia>
 
-<kwestia><akap>Bierz, ciużmo pokręcona. Dowidzenia mamci!</akap></kwestia>
+<kwestia><akap>Bierz, ciużmo pokręcona. Do widzenia mamci!</akap></kwestia>
 
 
 <didaskalia>Dziewczęta wychodzą z <osoba>Hanką</osoba>. <osoba>Dulska</osoba> chodzi, ściera prochy ---<end id="e1192566191960"/> wzdycha --- dzwonek w przedpokoju --- <osoba>Dulska</osoba> idzie otwierać ostrożnie --- zobaczywszy lokatorkę, cofa się.</didaskalia>
@@ -1326,7 +1300,7 @@
 
 
 
-<naglowek_scena>SCENA X</naglowek_scena>
+<naglowek_scena>SCENA IX</naglowek_scena>
 
 
 
@@ -1348,6 +1322,7 @@
 	<akap>Tak --- tak --- wrzucę tylko co na siebie.</akap>
 
 	<didaskalia>biegnie do swego pokoju. <osoba>Lokatorka</osoba> wchodzi powoli. Jest bardzo blada i smutna. Widocznie przeszła jakąś ciężką chorobę i moralne zmartwienie. Siada na najbliższym krześle --- patrzy w ziemię i siedzi nieruchoma. Po chwili wchodzi <osoba>Dulska</osoba>, odziana w barchanowy, dostatni szlafrok.</didaskalia>
+
 	
 	<akap>Proszę panią na kanapę.</akap>
 </kwestia>
@@ -1358,10 +1333,11 @@
 	<akap>Dziękuję. Tylko parę słów. Dostałam list pani...</akap>
 
 	<didaskalia>urywa. Milczenie.</didaskalia>
+
 </kwestia>
 
 
-<naglowek_osoba><begin id="b1192566744344"/><motyw id="m1192566744344">Samobójstwo</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192566744344"/><motyw id="m1192566744344">Samobójstwo, Odwaga, Tchórzostwo, Cierpienie</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>Pani już zupełnie wyszła ze szpitala?</akap></kwestia>
 
 
@@ -1380,7 +1356,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap><begin id="b1192566819743"/><motyw id="m1192566819743">Kobieta</motyw>Och! w domeczku swoim wróci pani szybko do sił. Dla kobiety nie ma jak dom. Ja zawsze to powtarzam.</akap></kwestia>
+<kwestia><akap><begin id="b1192566819743"/><motyw id="m1192566819743">Kobieta, Dom</motyw>Och! w domeczku swoim wróci pani szybko do sił. Dla kobiety nie ma jak dom. Ja zawsze to powtarzam.</akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1396,6 +1372,7 @@
 	<akap>Tak... ale...</akap>
 
 	<didaskalia>milczenie. Z wysiłkiem.</didaskalia>
+
 	
 	<akap>Proszę pani. Czy to rzeczywiście konieczne, ażebym na przyszłego pierwszego się wyprowadziła?</akap>
 </kwestia>
@@ -1442,18 +1419,18 @@
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
-<kwestia><akap>Ależ, proszę pani, wypadek może się zdarzyć wszędzie.</akap></kwestia>
+<kwestia><akap><begin id='b1223043949293' /><motyw id='m1223043949293'>Pozycja społeczna</motyw>Ależ, proszę pani, wypadek może się zdarzyć wszędzie.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>W porządnej kamienicy wypadki się nie trafiają. Czy pani widziała kiedy przed hrabską kamienicą Pogotowie? Nie! A potem ta publika w gazetach! Trzy razy wymienione nazwisko Dulskiej --- nazwisko moich córek przy takim skandalu...</akap></kwestia>
+<kwestia><akap>W porządnej kamienicy wypadki się nie trafiają. Czy pani widziała kiedy przed hrabską kamienicą Pogotowie? Nie! A potem ta publika w gazetach!<end id='e1223043949293' /> Trzy razy wymienione nazwisko Dulskiej --- nazwisko moich córek przy takim skandalu...</akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
 <kwestia><akap>Ależ, proszę pani --- chyba pani zna przyczyny i...</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192567074890"/><motyw id="m1192567074890">Kobieta, Małżeństwo, Mąż, Mężczyzna, Obyczaje, Żona</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192567074890"/><motyw id="m1192567074890">Małżeństwo, Mąż, Mężczyzna, Obyczaje, Zdrada, Żona</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>Wielka afera, że pani mąż, no i ta dziewczyna... to swoja rzecz...</akap></kwestia>
 
 
@@ -1462,7 +1439,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Zażyła pani zapałek... taka trywialna trucizna... Ludzie się śmieli. I jeszcze jak się to skończyło. Cała komedia --- gdyby pani była umarła --- no...</akap></kwestia>
+<kwestia><akap><begin id='b1222765337979' /><motyw id='m1222765337979'>Trucizna, Śmiech</motyw>Zażyła pani zapałek... taka trywialna trucizna... Ludzie się śmieli. I jeszcze jak się to skończyło. Cała komedia --- gdyby pani była umarła --- no...<end id='e1222765337979' /></akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1485,14 +1462,15 @@
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
 <kwestia>
-	<akap>Ja bardzo to przechorowałam. Zresztą ja nie wiedziałam co robię. Ja byłam wtedy jak szalona...</akap>
+	<akap><begin id='b1222765649057' /><motyw id='m1222765649057'>Grzech, Szaleństwo</motyw>Ja bardzo to przechorowałam. Zresztą ja nie wiedziałam co robię. Ja byłam wtedy jak szalona...</akap>
 
 	<didaskalia>płacze cicho</didaskalia>
+
 </kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Pewnie, moja pani. Każdy samobójca musi być szalony i stracić poczucie moralności i wiary w obecność Boga. To, to jest tchórzostwo. Tak jest --- tchórzostwo. A potem zagłada własnej duszy. Dobrze, że samobójców chowają osobno. Niech się nie pchają między porządnych ludzi. Zabijać się!... I dla kogo? Dla mężczyzny. A żaden mężczyzna, moja pani, nie jest wart, aby przez niego iść na potępienie wieczne.</akap></kwestia>
+<kwestia><akap>Pewnie, moja pani. Każdy samobójca musi być szalony i stracić poczucie moralności i wiary w obecność Boga. To, to jest tchórzostwo. Tak jest --- tchórzostwo. A potem zagłada własnej duszy. Dobrze, że samobójców chowają osobno. Niech się nie pchają między porządnych ludzi. Zabijać się!... I dla kogo? Dla mężczyzny. A żaden mężczyzna, moja pani, nie jest wart, aby przez niego iść na potępienie wieczne.<end id='e1222765649057' /></akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1516,7 +1494,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Moja pani! Na to mamy cztery ściany i sufit, aby brudy swoje prać w domu i aby nikt o nich nie wiedział. Rozwłóczyć je po świecie, to ani moralne, ani uczciwe. Ja zawsze tak żyłam, ażeby nikt nie mógł powiedzieć, iż byłam powodem skandalu. Kobieta powinna przejść przez życie cicho i spokojnie. Ta już to jest tak i żadne nic nie pomoże.</akap></kwestia>
+<kwestia><akap><begin id='b1222765700743' /><motyw id='m1222765700743'>Dom, Kobieta</motyw>Moja pani! Na to mamy cztery ściany i sufit, aby brudy swoje prać w domu i aby nikt o nich nie wiedział. Rozwłóczyć je po świecie, to ani moralne, ani uczciwe. Ja zawsze tak żyłam, ażeby nikt nie mógł powiedzieć, iż byłam powodem skandalu. Kobieta powinna przejść przez życie cicho i spokojnie. Ta już to jest tak i żadne nic nie pomoże.<end id='e1222765700743' /></akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1524,7 +1502,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Felicjan ? --- to niemożliwe. Pani go nie zna. A potem... to już pani rzecz. Ja muszę strzec siebie i swoich od publiki. Pani może znów taką bezbożność popełnić, bo to podobno taki szał to wraca. Więc...</akap></kwestia>
+<kwestia><akap>Felicjan ? --- to niemożliwe. Pani go nie zna. A potem<pe><slowo_obce>A potem</slowo_obce> --- używane jest tu stale w znaczeniu: a poza tym, a ponadto.</pe>... to już pani rzecz. Ja muszę strzec siebie i swoich od publiki. Pani może znów taką bezbożność popełnić, bo to podobno taki szał to wraca. Więc...</akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1546,11 +1524,12 @@
 	<akap>Nie wątpię. Jednak może się pani nie obawiać. Drugi raz truć się nie będę. Na to trzeba wiele odwagi, pomimo tego, że pani to nazywa tchórzostwem... A potem trzeba wiele cierpieć. Na to już nie mam sił i... już bym tak nie potrafiła cierpieć raz jeszcze. Zresztą --- rozstaję się z mężem, więc to najlepsza gwarancja, że już zazdrosna nie będę...</akap>
 
 	<didaskalia>uśmiecha się smutnie<end id="e1192566744344"/></didaskalia>
+
 </kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Rozstaje się pani z mężem? Bardzo pani źle robi. To nowa publika i nikt pani racji nie przyzna. Nawet z tej przyczyny nie mogłabym pani dłużej wynajmować mieszkania w mej kamienicy. Kobiety samotne to nie tego... to... no, pani rozumie.</akap></kwestia>
+<kwestia><akap><begin id='b1222765915462' /><motyw id='m1222765915462'>Kobieta "upadła"</motyw>Rozstaje się pani z mężem? Bardzo pani źle robi. To nowa publika i nikt pani racji nie przyzna. Nawet z tej przyczyny nie mogłabym pani dłużej wynajmować mieszkania w mej kamienicy. Kobiety samotne to nie tego... to... no, pani rozumie.</akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1568,11 +1547,11 @@
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
 <didaskalia>ironicznie</didaskalia>
 
-<kwestia><akap>Tylko gummy i automobile.</akap></kwestia>
+<kwestia><akap>Tylko gumy i automobile.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Stają zawsze kilka kamienic dalej. A potem zdaje się, iż ja nie mam obowiązku zdawać sprawy z mego postępowania przed panią.</akap></kwestia>
+<kwestia><akap>Stają zawsze kilka kamienic dalej. A potem zdaje się, iż ja nie mam obowiązku zdawać sprawy z mego postępowania przed panią.<end id='e1222765915462' /></akap></kwestia>
 
 
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
@@ -1586,7 +1565,8 @@
 <naglowek_osoba>LOKATORKA</naglowek_osoba>
 <didaskalia>wychodząc</didaskalia>
 
-<kwestia><akap>Powiem, że jest wilgoć, bo rzeczywiście jest wilgoć.</akap></kwestia>
+<kwestia><akap>Powiem, że jest wilgoć, bo rzeczywiście jest
+ wilgoć.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -1611,13 +1591,14 @@
 	<akap>Żegnam panią.</akap>
 
 	<didaskalia>wychodzi</didaskalia>
+
 </kwestia>
 
 
 
 
 
-<naglowek_scena>SCENA XI</naglowek_scena>
+<naglowek_scena>SCENA X</naglowek_scena>
 
 
 
@@ -1637,7 +1618,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Jak tak dalej pójdzie, to będę musiała w lecie jechać do Karlsbadu i tam <wyroznienie>sztrudel</wyroznienie> pić!</akap></kwestia>
+<kwestia><akap>Jak tak dalej pójdzie, to będę musiała w lecie jechać do Karlsbadu<pe>Karlsbad --- miejscowość uzdrowiskowa (dziś: Karlove Vary).</pe> i tam <wyroznienie>sztrudel</wyroznienie><pe><slowo_obce>sztrudel</slowo_obce> --- niem. <slowo_obce>Strudel</slowo_obce> to: strucla, ale też topiel, odmęty, wir wodny; Dulskiej chodzi zaś o ,,szprudel", rodzaj wody mineralnej.</pe> pić!</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -1653,7 +1634,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Tak... tak... ta sama. Wyszła ze szpitala. Skandal! Przecież po czymś podobnym trzymać ją w kamienicy nie mogę. Sama byłaś świadkiem. Jak ją wynosili, to była prawie naga. Horendum! Wymówiłam jej mieszkanie.</akap></kwestia>
+<kwestia><akap>Tak... tak... ta sama. Wyszła ze szpitala. Skandal! Przecież po czymś podobnym trzymać ją w kamienicy nie mogę. Sama byłaś świadkiem. Jak ją wynosili, to była prawie naga. Horendum<pe><slowo_obce>Horendum</slowo_obce> (łac. <slowo_obce>horrendum</slowo_obce>) --- okropność, coś przerażającego.</pe>! Wymówiłam jej mieszkanie.</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -1689,6 +1670,7 @@
 	<akap>Chodzicie do teatru.</akap>
 
 	<didaskalia>surowo</didaskalia>
+
 	
 	<akap>I to na same <wyroznienie>masowe</wyroznienie> sztuki.</akap>
 </kwestia>
@@ -1728,12 +1710,12 @@
 <kwestia><akap>Jak my? Zobaczymy, jak będziecie śpiewali na starość. Ja i Felicjan mamy inne pod tym względem zasady.</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222766123748' /><motyw id='m1222766123748'>Wdowa</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Mój mąż nie umie się oszczędzać, ja także.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Skoro miałaś takie usposobienie, trzeba było iść za tego aptekarza z Bobrki, co się o ciebie starał. Namawiałam cię.</akap></kwestia>
+<kwestia><akap>Skoro miałaś takie usposobienie, trzeba było iść za tego aptekarza z Bóbrki, co się o ciebie starał. Namawiałam cię.</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -1749,13 +1731,13 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Nie ma co --- o!... byt zabezpieczony, to podstawa życia. A co do męża, można go uchodzić. Pensję zabierać, gdy zaferuje --- co dzień dwie szóstki na kawę do łapy, a cygara samej kupować i suszyć na piecu. Inaczej, taki pan może cię zrujnować.<end id="e1192568209321"/></akap></kwestia>
+<kwestia><akap>Nie ma co --- o!... byt zabezpieczony, to podstawa życia.<end id='e1222766123748' /> A co do męża, można go uchodzić. Pensję zabierać, gdy zaferuje<pe><slowo_obce>zaferować</slowo_obce> (z łac. <slowo_obce>fero</slowo_obce>, <slowo_obce>ferre</slowo_obce>: nieść, podawać, przekazywać) --- tu: przynieść (wypłatę), zarobić.</pe> --- co dzień dwie szóstki na kawę do łapy, a cygara samej kupować i suszyć na piecu. Inaczej, taki pan może cię zrujnować.<end id="e1192568209321"/></akap></kwestia>
 
 
 
 
 
-<naglowek_scena>SCENA XII</naglowek_scena>
+<naglowek_scena>SCENA XI</naglowek_scena>
 
 
 
@@ -1764,7 +1746,7 @@
 <didaskalia><osoba>Zbyszko</osoba> --- <osoba>Dulska</osoba> --- <osoba>Juliasiewiczowa</osoba></didaskalia>
 
 
-<naglowek_osoba>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id='b1222769018274' /><motyw id='m1222769018274'>Praca</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>Taki terkot, że spać nie można.</akap></kwestia>
 
 
@@ -1806,7 +1788,7 @@
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
-	<akap>To nie ja zalegam, ale strony.</akap>
+	<akap>To nie ja zalegam, ale strony.<end id='e1222769018274' /></akap>
 
 	<didaskalia>opiera się o piec i grzeje</didaskalia>
 </kwestia>
@@ -1843,7 +1825,7 @@
 <kwestia><akap>Zupełnie wierzę. Szkandalistka.</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192569024363"/><motyw id="m1192569024363">Mąż, Miłość, Obyczaje, Żona</motyw>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id="b1192569024363"/><motyw id="m1192569024363">Kobieta, Mąż, Miłość, Obyczaje, Żona</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>Zrobiła to z miłości dla męża. To w guście mamy. Miłość małżeńska...</akap></kwestia>
 
 
@@ -1881,7 +1863,7 @@
 
 	<didaskalia>z pasją</didaskalia>
 	
-	<akap><begin id="b1192606739185"/><motyw id="m1192606739185">Matka, Siostra</motyw>Gdy patrzę na ciebie, to chwilami wierzyć mi się nie chce, że jesteś moim dzieckiem.</akap>
+	<akap><begin id="b1192606739185"/><motyw id="m1192606739185">Matka, Siostra, Rodzina</motyw>Gdy patrzę na ciebie, to chwilami wierzyć mi się nie chce, że jesteś moim dzieckiem.</akap>
 </kwestia>
 
 
@@ -1925,7 +1907,7 @@
 <kwestia><akap>Doprawdy, Zbyszko --- zanadto sobie pozwalasz...</akap></kwestia>
 
 
-<naglowek_osoba>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id='b1222768924169' /><motyw id='m1222768924169'>Idealista</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>Daj ty mi spokój!</akap></kwestia>
 
 
@@ -1968,7 +1950,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Na socjalistę nie trzeba mieć przede wszystkim Boga w sercu.</akap></kwestia>
+<kwestia><akap>Na socjalistę nie trzeba mieć przede wszystkim Boga w sercu.<end id='e1222768924169' /></akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -1978,7 +1960,7 @@
 
 
 
-<naglowek_scena>SCENA XIII</naglowek_scena>
+<naglowek_scena>SCENA XII</naglowek_scena>
 
 
 
@@ -2073,7 +2055,7 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Głupia jesteś z twoją kołtuńską estetyką. A zresztą, ja jestem jak pianista. Gdy zobaczy fortepian, musi zaraz passaż<pe><slowo_obce>passaż</slowo_obce> --- dziś popr.: pasaż.</pe>...</akap></kwestia>
+<kwestia><akap>Głupia jesteś z twoją kołtuńską estetyką. A zresztą, ja jestem jak pianista. Gdy zobaczy fortepian, musi zaraz pasaż...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -2084,7 +2066,7 @@
 <kwestia><akap>Moja droga --- każda kobieta to fortepian --- tylko trzeba umieć grać...  Ach!... jaki ja śpiący...<end id="e1192569356791"/></akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192569664403"/><motyw id="m1192569664403">Mieszczanin, Rodzina</motyw>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192569664403"/><motyw id="m1192569664403">Mieszczanin, Rodzina, Dziedzictwo, Piętno</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Czego ty po tych knajpach się włóczysz?</akap></kwestia>
 
 
@@ -2106,7 +2088,7 @@
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
-	<akap>Bom się urodził po kołtuńsku, aniele! bo w łonie matki już nim byłem --- bo żebym skórę zdarł z siebie, mam tam pod spodem, w duszy, całą warstwę kołtunerii, której nic wyplenić nie zdoła. Coś taki nowy, taki inny walczy z tym podstawowym --- szarpie się, ciska. Ale ja wiem, że to do czasu --- że ten kołtun rodzinny weźmie mnie za łeb, że przyjdzie czas, gdy ja będę Felicyanem, będę odbierał czynsze, będę... no... Dulskim, pra---Dulskim, ober---Dulskim --- że będę rodził Dulskich, całe legiony Dulskich --- będę miał srebrne wesele i porządny nagrobek, z dala od samobójców. I nie będę zielony, ale nalany tłuszczem i nalany teoriami i będę mówił dużo o Bogu...</akap>
+	<akap>Bom się urodził po kołtuńsku, aniele! bo w łonie matki już nim byłem --- bo żebym skórę zdarł z siebie, mam tam pod spodem, w duszy, całą warstwę kołtunerii, której nic wyplenić nie zdoła. Coś taki nowy, taki inny walczy z tym podstawowym --- szarpie się, ciska. Ale ja wiem, że to do czasu --- że ten kołtun rodzinny weźmie mnie za łeb, że przyjdzie czas, gdy ja będę Felicjanem, będę odbierał czynsze, będę... no... Dulskim, pra--Dulskim, ober--Dulskim --- że będę rodził Dulskich, całe legiony Dulskich --- będę miał srebrne wesele i porządny nagrobek, z dala od samobójców. I nie będę zielony, ale nalany tłuszczem i nalany teoriami i będę mówił dużo o Bogu...</akap>
 
 	<didaskalia>urywa --- idzie do fortepianu i gra nerwowo</didaskalia>
 </kwestia>
@@ -2147,7 +2129,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <didaskalia>śmieje się</didaskalia>
 
-<kwestia><akap>Passaże, moja droga... passaże...</akap></kwestia>
+<kwestia><akap>Pasaże, moja droga... pasaże...</akap></kwestia>
 
 
 <didaskalia><osoba>Hanka</osoba> przechodzi przez pokój i rzuca ponure spojrzenie na nich oboje --- wchodzi do kuchni.</didaskalia>
@@ -2164,11 +2146,11 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Ta dziewczyna. Gdybyś widział, jak ona na nas popatrzyła... Ja na twojem miejscu...</akap></kwestia>
+<kwestia><akap>Ta dziewczyna. Gdybyś widział, jak ona na nas popatrzyła... Ja na twoim miejscu...</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Ja też jak będę miał czas...</akap></kwestia>
+<kwestia><akap>Ja też, jak będę miał czas...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -2190,7 +2172,7 @@
 
 
 
-<naglowek_scena>SCENA XIV</naglowek_scena>
+<naglowek_scena>SCENA XIII</naglowek_scena>
 
 
 
@@ -2199,7 +2181,7 @@
 <didaskalia>Ciż sami --- <osoba>Dulska</osoba></didaskalia>
 
 
-<naglowek_osoba>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222769338346' /><motyw id='m1222769338346'>Praca</motyw>DULSKA</naglowek_osoba>
 <didaskalia>do <osoba>Zbyszka</osoba></didaskalia>
 
 <kwestia><akap>Jeszcze jesteś tutaj? Czy ci nie wstyd? Ojciec twój pracuje, ja pracuję --- siostry...</akap></kwestia>
@@ -2225,7 +2207,7 @@
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
-	<akap>Wyciągniemy kopytka... pa!</akap>
+	<akap>Wyciągniemy kopytka... pa!<end id='e1222769338346' /></akap>
 
 	<didaskalia>do <osoba>Juljasiewiczowej</osoba></didaskalia>
 	
@@ -2238,7 +2220,7 @@
 
 
 
-<naglowek_scena>SCENA XV</naglowek_scena>
+<naglowek_scena>SCENA XIV</naglowek_scena>
 
 
 
@@ -2398,7 +2380,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Spodziewam się. Muszę. Wszyscy podwyższają. Pokażę ci szpejscettel<pe><slowo_obce>szpejscettel</slowo_obce> --- menu, karta dań (z niem. <slowo_obce>Speise</slowo_obce> --- danie, <slowo_obce>Zettel</slowo_obce> --- kartka); tu: wykaz rachunkowy.</pe>.</akap></kwestia>
+<kwestia><akap>Spodziewam się. Muszę. Wszyscy podwyższają. Pokażę ci szpejscettel<pe><slowo_obce>szpejscettel</slowo_obce> (z niem. <slowo_obce>Speise</slowo_obce>: danie, <slowo_obce>Zettel</slowo_obce>: kartka) --- menu, karta dań; tu: wykaz rachunkowy.</pe>.</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -2416,7 +2398,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>To mi wszystko jedno. Ja tamtędy nigdy nie chodzę. Oba partery po pięć --- pierwsze piętro, kokocica, o dziesięć...</akap></kwestia>
+<kwestia><akap>To mi wszystko jedno. Ja tamtędy nigdy nie chodzę. <begin id='b1222769619628' /><motyw id='m1222769619628'>Kobieta "upadła"</motyw>Oba partery po pięć --- pierwsze piętro, kokocica, o dziesięć...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -2446,7 +2428,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>A więc --- kokotka o dwadzieścia, radca o dziesięć... drugie piętro...</akap></kwestia>
+<kwestia><akap>A więc --- kokotka o dwadzieścia, radca o dziesięć... drugie piętro...<end id='e1222769619628' /></akap></kwestia>
 
 
 <didaskalia>Obie zacietrzewione, pochylone nad stołem, czytają.<end id="e1192609024388"/> --- Kurtyna wolno spada.</didaskalia>
@@ -2460,10 +2442,10 @@
 
 
 
-<naglowek_akt>AKT II---gi</naglowek_akt>
+<naglowek_akt>AKT II</naglowek_akt>
 
 
-<didaskalia>Ta sama dekoracja co w akcie poprzednim. --- Ściemnia się powoli --- długie cienie liliowo szare padają przez zamarzłe szyby.--- Po scenie, jak zwierz w klatce, tam i z powrotem automatycznym ruchem chodzi <osoba>Dulski</osoba> w szlafroku z zegarkiem w ręku.--- Zamyka oczy i chodzi tak jak lalka drewniana. Wreszcie ustaje. --- Zaraz otwierają się drzwi sypialni małżeńskiej i ukazuje się <osoba>Dulska</osoba> w gorsecie i spódnicy.</didaskalia>
+<didaskalia>Ta sama dekoracja co w akcie poprzednim. --- Ściemnia się powoli --- długie cienie liliowo szare padają przez zamarzłe szyby. --- Po scenie, jak zwierz w klatce, tam i z powrotem automatycznym ruchem chodzi <osoba>Dulski</osoba> w szlafroku z zegarkiem w ręku. --- Zamyka oczy i chodzi tak jak lalka drewniana. Wreszcie ustaje. --- Zaraz otwierają się drzwi sypialni małżeńskiej i ukazuje się <osoba>Dulska</osoba> w gorsecie i spódnicy.</didaskalia>
 
 
 
@@ -2475,10 +2457,10 @@
 
 
 
-<didaskalia><begin id="b1192615188115"/><motyw id="m1192615188115">Mąż, Żona</motyw><osoba>Dulska</osoba> --- <osoba>Dulski</osoba> --- <osoba>Hesia</osoba></didaskalia>
+<didaskalia><osoba>Dulska</osoba> --- <osoba>Dulski</osoba> --- <osoba>Hesia</osoba></didaskalia>
 
 
-<naglowek_osoba>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192615188115"/><motyw id="m1192615188115">Mąż, Żona</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>Felicjan! Felicjan!</akap></kwestia>
 
 
@@ -2487,7 +2469,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Chodź! czemu nie chodzisz? Jeszcze niema dwóch kilometrów. Ja tam rachuję.</akap></kwestia>
+<kwestia><akap>Chodź! czemu nie chodzisz? Jeszcze nie ma dwóch kilometrów. Ja tam rachuję.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKI</naglowek_osoba>
@@ -2518,7 +2500,7 @@
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
-<kwestia><akap>Pięćset ?</akap></kwestia>
+<kwestia><akap>Pięćset?</akap></kwestia>
 
 
 <naglowek_osoba>DULSKI</naglowek_osoba>
@@ -2554,7 +2536,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Mama nie widzi!...</akap>
-
+	
 	<didaskalia>biegnie do drzwi pokoju dziewcząt</didaskalia>
 	
 	<akap>Mela! Mela!...</akap>
@@ -2617,7 +2599,7 @@
 <naglowek_osoba>MELA</naglowek_osoba>
 <didaskalia>zatrzymuje się we drzwiach, zgorszona --- po czym biegnie ku <osoba>Hesi</osoba>, która pokazuje jej język i ucieka ku kanapie</didaskalia>
 
-<kwestia><akap><begin id="b1192615734000"/><motyw id="m1192615734000">Córka, Ojciec</motyw>Hesiu!... pokaż... coś ty wzięła?</akap></kwestia>
+<kwestia><akap><begin id="b1192615734000"/><motyw id="m1192615734000">Córka, Ojciec, Kradzież</motyw>Hesiu!... pokaż... coś ty wzięła?</akap></kwestia>
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
@@ -2637,11 +2619,11 @@
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
-<kwestia><akap>Po co?  Wy---pa---lę.</akap></kwestia>
+<kwestia><akap>Po co? Wy--pa--lę.</akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Och!  Kiedy?</akap></kwestia>
+<kwestia><akap>Och! Kiedy?</akap></kwestia>
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
@@ -2653,7 +2635,7 @@
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
-<kwestia><akap>Nad Bałtyk. Albo nie --- dam cygaro kochankowi kucharki. Powiadam ci --- widziałam go. Jest pucerem. No --- rozumiesz? u lejtnanta, bardzo, bardzo...</akap></kwestia>
+<kwestia><akap>Nad Bałtyk. Albo nie --- dam cygaro kochankowi kucharki. Powiadam ci --- widziałam go. Jest pucerem<pe><slowo_obce>pucer</slowo_obce> (z niem. <slowo_obce>putzen</slowo_obce>: szorować, czyścić) --- ordynans na służbie u oficera (w tym wypadku w randze lejtnanta, czyli porucznika).</pe>. No --- rozumiesz? u lejtnanta, bardzo, bardzo...</akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -2729,7 +2711,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Jak chcesz --- taka tam ma tajemnice... no --- no...<end id="e1192616521273"/> daj łapę... jak to chasses --- un, deux --- un, deux<pe><slowo_obce>un</slowo_obce>, <slowo_obce>deux</slowo_obce> (fr.) --- raz, dwa.</pe></akap>
-
+	
 	<didaskalia>gwiżdże</didaskalia>
 </kwestia>
 
@@ -2741,7 +2723,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Aha! ziemia się trzęsie --- co ? --- no, a teraz walca --- moja brylantowa.</akap>
-
+	
 	<didaskalia>obejmuje ją --- walcują</didaskalia>
 </kwestia>
 
@@ -2763,8 +2745,8 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Właśnie --- a jak za kobietę, to tak! o!</akap>
-
-	<didaskalia>przerzuca się na ręką <osoba>Meli</osoba></didaskalia>
+	
+	<didaskalia>przerzuca się na rękę <osoba>Meli</osoba></didaskalia>
 	
 	<akap>omdlewająco! omdlewająco! a potem w oczy... w oczy... Ja tak zawsze robię...</akap>
 </kwestia>
@@ -2793,14 +2775,14 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>No, to zagraj --- cichutko, żeby mama nie przyszła. Ja nie mogę wpaść w tempo...</akap>
-
+	
 	<didaskalia>popycha <osoba>Melę</osoba> do fortepianu</didaskalia>
 	
 	<akap>Walca...</akap>
 </kwestia>
 
 
-<didaskalia><osoba>Mela</osoba> gra cichutko --- <osoba>Hesia</osoba> chce tańczyć --- robi pas<pe><slowo_obce>pas</slowo_obce> (fr.) --- krok, tu: krok taneczny.</pe> --- śmieje się --- wpada w cake walka<pe><slowo_obce>cake walk</slowo_obce> --- taniec towarzyski o żywym tempie, łączący kroki polki, marsza i two--stepa oraz ruchy ciała naśladujące tańce murzyńskie, na przełomie XIX i XX wieku popularny początkowo w Stanach Zjednoczonych, a następnie w Europie.</pe>.</didaskalia>
+<didaskalia><osoba>Mela</osoba> gra cichutko --- <osoba>Hesia</osoba> chce tańczyć --- robi pas<pe><slowo_obce>pas</slowo_obce> (fr.) --- krok, tu: krok taneczny.</pe> --- śmieje się --- wpada w cake walka<pe><slowo_obce>cake walk</slowo_obce> --- taniec towarzyski o żywym tempie, łączący kroki polki, marsza i two--stepa oraz ruchy ciała naśladujące tańce murzyńskie; na przełomie XIX i XX wieku popularny początkowo w Stanach Zjednoczonych, a następnie w Europie.</pe>.</didaskalia>
 
 
 <kwestia><akap>Mela! cake walka!...</akap></kwestia>
@@ -2825,10 +2807,10 @@
 <kwestia><akap>A to co?</akap></kwestia>
 
 
-<naglowek_osoba>HESIA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223053295807' /><motyw id='m1223053295807'>Nauka</motyw>HESIA</naglowek_osoba>
 <didaskalia>tańcząc</didaskalia>
 
-<kwestia><akap>Cake walk! Cake walk! Cake walk! A co? źle... prawda, że jest we mnie materiał na <wyroznienie>szansę</wyroznienie>?</akap></kwestia>
+<kwestia><akap>Cake walk! Cake walk! Cake walk! A co? źle... prawda, że jest we mnie materiał na <wyroznienie>szansę</wyroznienie><pe><slowo_obce>materiał na ,,szansę"</slowo_obce> --- tj. na szansonistkę (fr. <slowo_obce>chansonnette</slowo_obce>; od chanson: <slowo_obce>piosenka</slowo_obce>), czyli piosenkarkę i artystkę kabaretową.</pe>?</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -2846,7 +2828,7 @@
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
-<kwestia><akap>Ignania mnie nauczyła. No wiesz --- Ignania Olbrzycka. Jej brat ciągle w tinglach siedzi, więc ją nauczył, a ona mnie.</akap></kwestia>
+<kwestia><akap>Ignania mnie nauczyła. No wiesz --- Ignania Olbrzycka. Jej brat ciągle w tinglach<pe><slowo_obce>tingel</slowo_obce> (<slowo_obce>tingel--tangel</slowo_obce>; niem: <slowo_obce>Tingeltangel</slowo_obce>) --- podrzędny lokal oferujący wyszynk oraz występy muzyczne i kabaretowe; nazwa miała oddawać dźwięk instrumentów perkusyjnych wykorzystywanych w tych występach.</pe> siedzi, więc ją nauczył, a ona mnie.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -2876,7 +2858,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Znów się złościsz? a byłeś już jakiś lepszy. No... Mela jeszcze trochę... Powiedz, Zbyszko, czy dobrze? mój królu!... Tak?</akap>
-
+	
 	<didaskalia>tańczy</didaskalia>
 </kwestia>
 
@@ -2888,7 +2870,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Jak? jak?...</akap>
-
+	
 	<didaskalia>tańczą oboje</didaskalia>
 	
 	<akap>Jak dobrze, jak miło --- jakby po powietrzu się latało.</akap>
@@ -2914,20 +2896,20 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Dopełniam edukacji mej siostry.</akap></kwestia>
+<kwestia><akap>Dopełniam edukacji mej siostry.<end id='e1223053295807' /></akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Hesia! jak możesz tak?... co to...</akap>
-
+	
 	<didaskalia>do <osoba>Zbyszka</osoba></didaskalia>
 	
 	<akap>Z tobą to też jest krzyż pański. Albo chodzisz jak dzik, albo wyprawiasz wariacje i dziewczyny w to wciągasz.</akap>
 </kwestia>
 
 
-<naglowek_osoba>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id='b1222775224611' /><motyw id='m1222775224611'>Strój</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>Dobrze już, dobrze. Po co tyle słów! Gdzież to was niesie w takiej paradzie?</akap></kwestia>
 
 
@@ -2974,7 +2956,7 @@
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Zbyszko!... milcz!... Jak śmiesz?</akap>
-
+	
 	<didaskalia>do <osoba>Meli</osoba></didaskalia>
 	
 	<akap>Cóżeś taka blada?</akap>
@@ -2995,7 +2977,7 @@
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Pokaż język! Biały. Znów coś zjadłaś.</akap>
-
+	
 	<didaskalia>przykłada jej rękę do głowy</didaskalia>
 	
 	<akap>Rozpalona. No, z tobą... to też... może cię kłuje? co?</akap>
@@ -3019,13 +3001,13 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Piechotą idziecie? Ona --- tak? Jeszcze was zaaresztują.</akap></kwestia>
+<kwestia><akap>Piechotą idziecie? Ona --- tak? Jeszcze was zaaresztują.<end id='e1222775224611' /></akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Rany boskie, nie wytrzymam.<end id="e1192617801104"/> A lampy jeszcze nie zapalać.</akap>
-
+	
 	<didaskalia>do <osoba>Zbyszka</osoba></didaskalia>
 	
 	<akap>Wychodzisz?</akap>
@@ -3097,7 +3079,7 @@
 
 <kwestia>
 	<akap>Pójdę!</akap>
-
+	
 	<didaskalia>wychodzi powoli --- słychać jak zatrzaskuje za sobą ciężko drzwi</didaskalia>
 </kwestia>
 
@@ -3133,7 +3115,7 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Nie. Ty jeszcze z całej familii jesteś najmożliwsza. Może dlatego, że jesteś chora, więc jest w tobie coś milszego, coś innego, jak u tamtych.</akap></kwestia>
+<kwestia><akap>Nie. <begin id='b1222775343503' /><motyw id='m1222775343503'>Choroba, Siła</motyw>Ty jeszcze z całej familii jesteś najmożliwsza. Może dlatego, że jesteś chora, więc jest w tobie coś milszego, coś innego, jak u tamtych.</akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -3141,7 +3123,7 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Tak. Nie masz dużo sił życiowych, więc nie idziesz, rozbijając łokciami, przez życie --- ale się... skradasz. Rozumiesz? co?</akap></kwestia>
+<kwestia><akap>Tak. Nie masz dużo sił życiowych, więc nie idziesz, rozbijając łokciami, przez życie --- ale się... skradasz. Rozumiesz? co?<end id='e1222775343503' /></akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -3149,7 +3131,7 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>To źle. Panna Dulska powinna iść naprzód tak... rozumiesz. Ktoś potrąci --- ty jego... to powinna być nasza zasada. Jak najwięcej miejsca. <wyroznienie>Für die obere zehn tausend milionen kołtunen!</wyroznienie></akap></kwestia>
+<kwestia><akap>To źle. Panna Dulska powinna iść naprzód tak... rozumiesz. Ktoś potrąci --- ty jego... to powinna być nasza zasada. Jak najwięcej miejsca. <wyroznienie>Für die obere zehn tausend milionen kołtunen!</wyroznienie><pe><slowo_obce>Für die obere</slowo_obce> (właśc. <slowo_obce>oberen</slowo_obce>) <slowo_obce>zehn tausend kołtunen</slowo_obce> (niem.)--- dla górnych (zapewne w znaczeniu pozycji społecznej) dziesięciu tysięcy kołtunów; ostatnie słowo jest połączeniem polskiego rdzenia i niemieckiej końcówki.</pe></akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -3165,7 +3147,7 @@
 <naglowek_osoba>MELA</naglowek_osoba>
 <kwestia>
 	<akap>Siebie nienawidzisz także... A ja to znowu... Pozwól mi trochę z tobą porozmawiać. Dobrze? Jak szara godzina nadejdzie, to ja dałabym wszystko, żeby móc z kimś dobrze, cicho, spokojnie porozmawiać. Tylko że u nas to niepodobna. Jak w tartaku. Mama mówi, że się pracuje. Ale przecież można i myślą popracować. Prawda Zbyszku?</akap>
-
+	
 	<didaskalia>osuwa się przed nim tak, że światło z pieca oświetla grupą tych dwojga smutnych i zgnębionych</didaskalia>
 </kwestia>
 
@@ -3175,11 +3157,11 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Ty siebie nienawidzisz, a ja to siebie żałuję. Strasznie. Nie dzieje mi się nic złego. Mam ojca, mamcię, was, chodzę na pensję --- jestem prosta, dbają o mnie, dają mi żelazo, nacierają wodą --- uczę się wszystkiego, a przecież, przecież, Zbyszko, mnie się zdaje, że mi się dzieje jakaś krzywda --- że mnie ktoś więzi, że mi ściśnięto gardło, że... Ja ci tego opowiedzieć nie mogę, ale...</akap></kwestia>
+<kwestia><akap><begin id='b1223054130022' /><motyw id='m1223054130022'>Krzywda</motyw>Ty siebie nienawidzisz, a ja to siebie żałuję. Strasznie. Nie dzieje mi się nic złego. Mam ojca, mamcię, was, chodzę na pensję --- jestem prosta, dbają o mnie, dają mi żelazo, nacierają wodą --- uczę się wszystkiego, a przecież, przecież, Zbyszko, mnie się zdaje, że mi się dzieje jakaś krzywda --- że mnie ktoś więzi, że mi ściśnięto gardło, że... Ja ci tego opowiedzieć nie mogę, ale...<end id='e1223054130022' /></akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>To źle, Melo, że ty tak czujesz --- źle. Najlepiej pozbądź się tych sensacji. Niedługo wyrośniesz, pójdziesz dobrze za mąż i będziesz świat rozbijać łokciami.</akap></kwestia>
+<kwestia><akap>To źle, Melo, że ty tak czujesz --- źle. <begin id='b1223054197264' /><motyw id='m1223054197264'>Matka, Mąż, Ojciec, Żona</motyw>Najlepiej pozbądź się tych sensacji. Niedługo wyrośniesz, pójdziesz dobrze za mąż i będziesz świat rozbijać łokciami.</akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -3195,13 +3177,13 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Bo ojciec wybrał dogodniejszą drogę. Mama za niego łokciami się przez świat przepycha, a on za nią.</akap></kwestia>
+<kwestia><akap>Bo ojciec wybrał dogodniejszą drogę. Mama za niego łokciami się przez świat przepycha, a on za nią.<end id='e1223054197264' /></akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
 <didaskalia>po chwili</didaskalia>
 
-<kwestia><akap>To wszystko bardzo jakieś smutne.</akap></kwestia>
+<kwestia><akap><begin id='b1222775561723' /><motyw id='m1222775561723'>Śmiech</motyw>To wszystko bardzo jakieś smutne.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -3213,7 +3195,7 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Tak śmieją się wisielce.</akap></kwestia>
+<kwestia><akap>Tak śmieją się wisielce.<end id='e1222775561723' /></akap></kwestia>
 
 
 <didaskalia>Chwila milczenia.</didaskalia>
@@ -3230,7 +3212,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Chciałam ci coś powiedzieć... ale... nie będziesz krzyczał? To widzisz z najlepszego serca. --- Bo... wtedy... jak ja widziałam...</akap></kwestia>
+<kwestia><akap>Chciałam ci coś powiedzieć... ale... nie będziesz krzyczał? To, widzisz, z najlepszego serca. --- Bo... wtedy... jak ja widziałam...</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -3247,7 +3229,7 @@
 <kwestia><akap>Czego ty o tym mówisz?</akap></kwestia>
 
 
-<naglowek_osoba>MELA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222776518258' /><motyw id='m1222776518258'>Dziecko, Kobieta, Mężczyzna, Miłość, Miłość romantyczna, Miłość tragiczna, Pozycja społeczna</motyw>MELA</naglowek_osoba>
 <kwestia><akap>Bo mi żal i ciebie, i Hanki. Ja ciągle o was myślę. Ja się nawet za was modlę. Bo wy musicie być bardzo nieszczęśliwi.</akap></kwestia>
 
 
@@ -3330,7 +3312,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <didaskalia>głaszcze ją</didaskalia>
 
-<kwestia><akap>Nie.  Teraz nie.</akap></kwestia>
+<kwestia><akap>Nie. Teraz nie.</akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -3352,7 +3334,7 @@
 <didaskalia><osoba>Zbyszko</osoba> --- <osoba>Hanka</osoba></didaskalia>
 
 
-<naglowek_osoba>HANKA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223054346543' /><motyw id='m1223054346543'>Łzy, Samotność</motyw>HANKA</naglowek_osoba>
 <kwestia><akap>Proszę pana...</akap></kwestia>
 
 
@@ -3363,7 +3345,7 @@
 <naglowek_osoba>HANKA</naglowek_osoba>
 <kwestia>
 	<akap>Tak jest jak ja mówiłam.</akap>
-
+	
 	<didaskalia>zanosi się cicho od płaczu</didaskalia>
 </kwestia>
 
@@ -3371,7 +3353,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Ładna historia! a to pech!</akap>
-
+	
 	<didaskalia>zaczyna chodzić po pokoju --- <osoba>Hanka</osoba> pozostaje przy oknie w smudze światła --- tragiczna w fałdach swej czarnej chustki</didaskalia>
 </kwestia>
 
@@ -3392,7 +3374,7 @@
 <kwestia><akap>Zresztą nie becz. Jeszcze daleko. Może się jeszcze co zmieni.</akap></kwestia>
 
 
-<naglowek_osoba>HANKA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223054414246' /><motyw id='m1223054414246'>Śmierć</motyw>HANKA</naglowek_osoba>
 <kwestia><akap>Ale... takim jak ja, to cygany los wyklną. Mnie zawsze najgorsze się trafi. Potrzebne mi to było. Boże! Boże!... To chyba się utopić.</akap></kwestia>
 
 
@@ -3410,8 +3392,8 @@
 
 <naglowek_osoba>HANKA</naglowek_osoba>
 <kwestia>
-	<akap>Ale!...</akap>
-
+	<akap>Ale!...<end id='e1223054414246' /></akap>
+	
 	<didaskalia>płacze</didaskalia>
 </kwestia>
 
@@ -3434,7 +3416,7 @@
 <kwestia><akap>A to pech! a to pech!...</akap></kwestia>
 
 
-<didaskalia><osoba>Hanka</osoba> wybucha spazmatycznym płaczem, tuląc się do ściany --- na palcach ze swego pokoju wysuwa się <osoba>Mela</osoba>.</didaskalia>
+<didaskalia><osoba>Hanka</osoba> wybucha spazmatycznym płaczem, tuląc się do ściany<end id='e1223054346543' /> --- na palcach ze swego pokoju wysuwa się <osoba>Mela</osoba>.</didaskalia>
 
 
 
@@ -3533,7 +3515,7 @@
 <naglowek_osoba>MELA</naglowek_osoba>
 <kwestia>
 	<akap>Hanka! nie płacz, bo mnie serce pęknie.</akap>
-
+	
 	<didaskalia>pochyla się nad nią</didaskalia>
 </kwestia>
 
@@ -3557,7 +3539,7 @@
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Jest tu kto? W kuchni drzwi otwarte...</akap>
-
+	
 	<didaskalia>spostrzega <osoba>Melę</osoba> i <osoba>Hankę</osoba></didaskalia>
 	
 	<akap>Cóż wy tu robicie po ciemku?</akap>
@@ -3616,7 +3598,7 @@
 <naglowek_osoba>MELA</naglowek_osoba>
 <kwestia>
 	<akap>Jak to? ona głównie.</akap>
-
+	
 	<didaskalia>po chwili</didaskalia>
 	
 	<akap>Ja cioci powiem --- wszystko jak na spowiedzi --- ale ciociu, jak ciocia mnie zdradzi, że to ja... to... już nie wiem co. Ciociu, ciociu!... tu stało się nieszczęście. Zbyszko zakochał się w Hance.</akap>
@@ -3637,7 +3619,7 @@
 <kwestia><akap>Najprzód --- skąd to wiesz?</akap></kwestia>
 
 
-<naglowek_osoba>MELA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223054554998' /><motyw id='m1223054554998'>Nauka, Oko</motyw>MELA</naglowek_osoba>
 <kwestia><akap>Ja... podpatrzyłam. Niechcący! Jak Bozię kocham. Ja zaraz potem oczy zamknęłam.</akap></kwestia>
 
 
@@ -3704,7 +3686,7 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Nie, panienko. Ja ci tego nie wytłumaczę. Tylko niech Mela pamięta. Trzymać języczek za zębami. Ani słowa o tym do nikogo! Ani słowa. I dalej nie podpatrywać... Jakby się co znów zobaczyło --- oczy zamknąć.</akap></kwestia>
+<kwestia><akap>Nie, panienko. Ja ci tego nie wytłumaczę. Tylko niech Mela pamięta. Trzymać języczek za zębami. Ani słowa o tym do nikogo! Ani słowa. I dalej nie podpatrywać... Jakby się co znów zobaczyło --- oczy zamknąć.<end id='e1223054554998' /></akap></kwestia>
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
@@ -3716,7 +3698,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Moja ciociu święta. Oni się jeszcze wykradną albo zabiją. Tak było w Kijowie... Cicho... Zbyszko!</akap></kwestia>
+<kwestia><akap>Moja ciociu święta. Oni się jeszcze wykradną albo zabiją. Tak było w Kijowie... Cicho... Zbyszko!<end id='e1222776518258' /></akap></kwestia>
 
 
 
@@ -3811,7 +3793,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Ja nigdy niczego nie żałuję!</akap>
-
+	
 	<didaskalia>wychodzi</didaskalia>
 </kwestia>
 
@@ -3851,7 +3833,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Ona na złość się wyciąga i zaraz potem z konduktorem <wyroznienie>secessja</wyroznienie> --- wszyscy się patrzą...</akap></kwestia>
+<kwestia><akap>Ona na złość się wyciąga i zaraz potem z konduktorem <wyroznienie>secesja</wyroznienie><pe><slowo_obce>secesja</slowo_obce> (łac. <slowo_obce>secessio</slowo_obce>: wycofania się, odstąpienie) --- zerwanie (stosunków), odłączenie się (części ziem od reszty jakiegoś kraju) itp., a także: nazwa odrębnego stylu w sztuce na przełomie XIX i XX wieku; Dulskiej chodzi jednak zapewne o <wyroznienie>scysję</wyroznienie> z konduktorem, a więc sprzeczkę, konflikt (z łac. <slowo_obce>scindere</slowo_obce>: rozszczepiać).</pe> --- wszyscy się patrzą...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -3876,7 +3858,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Dziś była marna lekcja --- dobrze zrobiłaś, że cię nie było. Same sztubaki...</akap>
-
+	
 	<didaskalia>wybiega</didaskalia>
 </kwestia>
 
@@ -3973,7 +3955,7 @@
 <kwestia><akap>Co ty za miny do ciotki wyprawiasz?</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222776857236' /><motyw id='m1222776857236'>Plotka</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Do mnie? Zdaje się cioci. A co do tego rodzinnego koła...</akap></kwestia>
 
 
@@ -4002,7 +3984,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Wywołujesz taką opinię. Dlaczego o mnie tego nikt nie powie.</akap></kwestia>
+<kwestia><akap>Wywołujesz taką opinię. Dlaczego o mnie tego nikt nie powie.<end id='e1222776857236' /></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -4086,12 +4068,12 @@
 <kwestia><akap>Proszę cię --- jesteśmy same. Mów, co mi masz powiedzieć.</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222777006655' /><motyw id='m1222777006655'>Dom</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Doprawdy, że ciocia zasługuje na to, ażeby się dowiedziała. I to cioci powiem, że jeżeli ciocia do mego domu zagląda, to przede wszystkim ciocia powinna swój z brudów oczyścić.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>U mnie nic brudnego się nie dzieje. A przynajmniej po ulicach mój dom nie jest głośny.</akap></kwestia>
+<kwestia><akap>U mnie nic brudnego się nie dzieje. A przynajmniej po ulicach mój dom nie jest głośny.<end id='e1222777006655' /></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -4099,7 +4081,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Cóż to za iluzje?</akap></kwestia>
+<kwestia><akap>Cóż to za iluzje<pe><slowo_obce>iluzje</slowo_obce> --- złudzenia (zwł. optyczne); Dulskiej jednak chodzi o <wyroznienie>aluzje</wyroznienie> (łac. <slowo_obce>allusio</slowo_obce>): napomknienia, nawiązania do czegoś nie wprost, ale w sposób zawoalowany, przytyki.</pe>?</akap></kwestia>
 
 
 <naglowek_osoba>JULJASIEWICZOWA</naglowek_osoba>
@@ -4131,7 +4113,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Jezus, Maria! Co? jak? Kłamiesz --- kłamiesz. Chcesz mnie chyba zabić! Strach! Nie dość, że mnie delożowali stróża, jeszcze takie coś wymyślają.</akap></kwestia>
+<kwestia><akap>Jezus, Maria! Co? jak? Kłamiesz --- kłamiesz. Chcesz mnie chyba zabić! Strach! Nie dość, że mnie delożowali<pe><slowo_obce>delożować</slowo_obce> --- eksmitować, usunąć się a. usunąć kogoś z jakiegoś miejsca.</pe> stróża, jeszcze takie coś wymyślają.</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -4170,7 +4152,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Hanka! odpowiadaj --- ale tak jak przed księdzem. Czy to prawda, że ty... że ty jesteś... że...</akap></kwestia>
+<kwestia><akap><begin id='b1223056229176' /><motyw id='m1223056229176'>Ksiądz, Prawda</motyw>Hanka! odpowiadaj --- ale tak jak przed księdzem. Czy to prawda, że ty... że ty jesteś... że...<end id='e1223056229176' /></akap></kwestia>
 
 
 <didaskalia><osoba>Hanka</osoba> cofa się pod ścianę i stoi nieruchoma z oczyma szeroko otwartymi --- <osoba>Dulska</osoba> naprzeciw niej, groźnie w nią wpatrzona.</didaskalia>
@@ -4187,10 +4169,10 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Może kłamiesz? może chcesz naciągnąć.</akap></kwestia>
+<kwestia><akap>Może kłamiesz? może chcesz naciągnąć...</akap></kwestia>
 
 
-<naglowek_osoba>HANKA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222777138304' /><motyw id='m1222777138304'>Bóg, Przysięga</motyw>HANKA</naglowek_osoba>
 <kwestia><akap>Nie kłamię.</akap></kwestia>
 
 
@@ -4199,7 +4181,7 @@
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
-<kwestia><akap>Jak Boga chcę mieć przy skonaniu!</akap></kwestia>
+<kwestia><akap>Jak Boga chcę mieć przy skonaniu!<end id='e1222777138304' /></akap></kwestia>
 
 
 <didaskalia>Długa chwila milczenia --- <osoba>Hanka</osoba> stoi nieruchoma, oparta plecami o ścianę. Po jej twarzy płyną duże ciężkie łzy.</didaskalia>
@@ -4237,13 +4219,14 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<kwestia><akap>Hanka!</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
-<kwestia><akap>Hanka! Co?</akap></kwestia>
+<kwestia><akap>Co?</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223056347639' /><motyw id='m1223056347639'>Krzywda</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Co się stało?</akap></kwestia>
 
 
@@ -4259,8 +4242,8 @@
 
 <naglowek_osoba>HANKA</naglowek_osoba>
 <kwestia>
-	<akap>Ale... co mi tam! niech ich za moją krzywdę!</akap>
-
+	<akap>Ale... co mi tam! niech ich za moją krzywdę!<end id='e1223056347639' /></akap>
+	
 	<didaskalia>wypada do kuchni</didaskalia>
 </kwestia>
 
@@ -4302,10 +4285,10 @@
 <kwestia><akap>A... psia krew!</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222777290331' /><motyw id='m1222777290331'>Honor</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Aha! klnij. Dużo ci pomoże. Matka Hankę teraz wypędza. Ciekawa jestem, co twój <wyroznienie>honor</wyroznienie> uwodziciela każe ci teraz zrobić dla twej... ofiary.</akap>
-
+	
 	<didaskalia>Śmieje się ironicznie.</didaskalia>
 </kwestia>
 
@@ -4317,7 +4300,7 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Byłam pewna. Kapelusz w rękę i fiut! Najlepszy punkt wyjścia.</akap></kwestia>
+<kwestia><akap>Byłam pewna. Kapelusz w rękę i fiut! Najlepszy punkt wyjścia.<end id='e1222777290331' /></akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -4369,10 +4352,10 @@
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Jaka ja jestem, to jestem. Ale nigdy nie dopuściłabym się tego, czego się tu dopuszczono.</akap>
-
+	
 	<didaskalia>do <osoba>Zbyszka</osoba></didaskalia>
 	
-	<akap>Wiedz o tem, że ciocia o Hance od początku wiedziała.</akap>
+	<akap>Wiedz o tym, że ciocia o Hance od początku wiedziała.</akap>
 </kwestia>
 
 
@@ -4421,7 +4404,7 @@
 
 <kwestia>
 	<akap>Prawdę mówi. Ja to czuję! Ja to wiem! To jest to, co tu pełza tak brudno, tak ohydnie --- co to za ścianę byle nie wyszło. Ale kto wiatr sieje, ten burzę zbiera!</akap>
-
+	
 	<didaskalia>biegnie do kuchni</didaskalia>
 	
 	<akap>Hanka!</akap>
@@ -4479,7 +4462,7 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Zbyszko! opamiętaj się!...</akap></kwestia>
+<kwestia><akap>Zbyszko! upamiętaj się!...</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -4495,15 +4478,15 @@
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>To na nic. Tak będzie... Niech raz taka szpetota unurza się we własnem błocie.</akap></kwestia>
+<kwestia><akap>To na nic. Tak będzie... Niech raz taka szpetota unurza się we własnym błocie.</akap></kwestia>
 
 
-<naglowek_osoba>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222777551234' /><motyw id='m1222777551234'>Kara, Zemsta, Syn, MAtka</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>Rany boskie! Jak mi się kto spyta, jak moja synowa z domu...</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>To powie mama, że nie z domu, ale z chałupy. To będzie najgorsza kara... Hanka, padnij do nóg i proś o błogosławieństwo...</akap></kwestia>
+<kwestia><akap>To powie mama, że nie z domu, ale z chałupy. To będzie najgorsza kara...<end id='e1222777551234' /> Hanka, padnij do nóg i proś o błogosławieństwo...</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
@@ -4517,7 +4500,7 @@
 <naglowek_osoba>DULSKI</naglowek_osoba>
 <kwestia>
 	<akap>A niech was wszyscy diabli!!!</akap>
-
+	
 	<didaskalia>odchodzi do sypialni</didaskalia>
 </kwestia>
 
@@ -4531,7 +4514,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Siadaj, Hanka --- siadaj rzędem obok mamy. Teraz tu twoje miejsce...</akap>
-
+	
 	<didaskalia>sadza gwałtem <osoba>Hankę</osoba> na kanapę</didaskalia>
 </kwestia>
 
@@ -4540,7 +4523,7 @@
 <kwestia><akap>Zbyszko!</akap></kwestia>
 
 
-<didaskalia>Dzwonek --- <osoba>Hanka</osoba> się zrywa i chce biegnąć otworzyć.</didaskalia>
+<didaskalia>Dzwonek --- <osoba>Hanka</osoba> się zrywa i chce biec otworzyć.</didaskalia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -4572,7 +4555,7 @@
 
 
 
-<naglowek_akt>AKT III---ci</naglowek_akt>
+<naglowek_akt>AKT III</naglowek_akt>
 
 
 <didaskalia>Scena przedstawia ten sam pokój. --- Ranek --- story podniesione --- szare światło dnia zimowego --- pod nierozpalonym piecem drzemie na stołeczku niskim <osoba>Hanka</osoba>, owinięta w chustkę czarną. Za podniesieniem zasłony słychać wicher, łopoczący o szyby. --- Chwila milczenia. Słychać tylko jak <osoba>Hanka</osoba> oddycha ciężko i od czasu do czasu jęczy: „Jezus!” --- drzwi otwierają się --- wchodzi cichutko <osoba>Mela</osoba> w barchanowej spódniczce białej, koszulce i narzuconym na plecy barchanowym kaftaniku. Włosy ma rozpuszczone. W rękach bułka i garnuszek z kawą. Chwilę waha się. --- Biegnie do drzwi sypialni małżeńskiej --- słucha --- wreszcie wraca --- pochyla się nad <osoba>Hanką</osoba> i delikatnie, ostrożnie budzi ją.</didaskalia>
@@ -4605,7 +4588,7 @@
 <naglowek_osoba><begin id="b1192651590048"/><motyw id="m1192651590048">Małżeństwo, Mieszczanin, Pozycja społeczna, Sługa</motyw>HANKA</naglowek_osoba>
 <kwestia>
 	<akap>A!... to wielmożna panienka... ja zaraz... po mleko...</akap>
-
+	
 	<didaskalia>trze oczy</didaskalia>
 </kwestia>
 
@@ -4627,7 +4610,7 @@
 
 <kwestia>
 	<akap>A... tak... tak... Zapomniałam, teraz już wiem.</akap>
-
+	
 	<didaskalia>zaczyna płakać</didaskalia>
 	
 	<akap>O Jezu! Jezusieczku!</akap>
@@ -4643,7 +4626,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Nie... nie. Daj spokój. Lepiej żebyś już się do niczego nie mieszała. Bo jak zaczniesz znów być służącą, to będzie jeszcze gorzej. Siedź tu spokojnie i czekaj co będzie.</akap></kwestia>
+<kwestia><akap>Nie... nie. Daj spokój. Lepiej żebyś już się do niczego nie mieszała. Bo jak zaczniesz znów być służącą, to będzie jeszcze gorzej. Siedź tu spokojnie i czekaj, co będzie.</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
@@ -4657,8 +4640,8 @@
 <naglowek_osoba>HANKA</naglowek_osoba>
 <kwestia>
 	<akap>Dziękuję panience --- nie mogę. Mnie tak od tego wczorajszego, że aż no... ha...</akap>
-
-	<didaskalia>pociera nos</didaskalia>
+	
+	<didaskalia>obciera nos</didaskalia>
 	
 	<akap>O Jezu!...</akap>
 </kwestia>
@@ -4675,7 +4658,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Ha --- będziesz mieć inne zajęcie. Potem ja będę zawsze z tobą i przy tobie. Ja za mąż nie pójdę, bo ja nie mam zdrowia, a mamcia mówi, że do zamążpójścia to trzeba mieć końskie zdrowie. I właśnie chciałam ci powiedzieć, że... co do tego jakiegoś dziecka, coś ty mówiła, a co ja nie rozumiem... to jeżeli ty już byłaś zamężna i boisz się, że niby podobno mężczyźni niechętnie się żenią z wdowami, co mają dzieci... to nie bój się. Ja się tym dzieckiem zajmę --- wychowam. A co by mi mamcia dała na wyprawę czy na posag, to dla dziecka oddam...  Ja sobie tak umyśliłam dziś w nocy. Ja chciałam iść do klasztoru, bo tam cicho i tak miło musi być za murami, jak dzwonek rano dzwoni w maju. Ale przecież i na świecie można mieć ciszę.. I wolę się dla ciebie poświęcić. No... jedz bułkę... jedz... A ty za to musisz być dla mnie bardzo dobra i mówić do mnie --- moja złota, dobra, kochana Melu... no... powtórz...</akap></kwestia>
+<kwestia><akap>Ha --- będziesz mieć inne zajęcie. <begin id='b1223056670096' /><motyw id='m1223056670096'>Małżeństwo, Zdrowie, Poświęcenie</motyw>Potem ja będę zawsze z tobą i przy tobie. Ja za mąż nie pójdę, bo ja nie mam zdrowia, a mamcia mówi, że do zamążpójścia to trzeba mieć końskie zdrowie. I właśnie chciałam ci powiedzieć, że... co do tego jakiegoś dziecka, coś ty mówiła, a co ja nie rozumiem... to jeżeli ty już byłaś zamężna i boisz się, że niby podobno mężczyźni niechętnie się żenią z wdowami, co mają dzieci... to nie bój się. Ja się tym dzieckiem zajmę --- wychowam. A co by mi mamcia dała na wyprawę czy na posag, to dla dziecka oddam...  Ja sobie tak umyśliłam dziś w nocy. Ja chciałam iść do klasztoru, bo tam cicho i tak miło musi być za murami, jak dzwonek rano dzwoni w maju. Ale przecież i na świecie można mieć ciszę.. I wolę się dla ciebie poświęcić.<end id='e1223056670096' /> No... jedz bułkę... jedz... A ty za to musisz być dla mnie bardzo dobra i mówić do mnie --- moja złota, dobra, kochana Melu... no... powtórz...</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
@@ -4683,7 +4666,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Mów mi Melu --- a ja tobie... Andziu.</akap></kwestia>
+<kwestia><akap><begin id='b1223056737261' /><motyw id='m1223056737261'>Pozycja społeczna</motyw>Mów mi Melu --- a ja tobie... Andziu.</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
@@ -4691,7 +4674,7 @@
 
 
 <naglowek_osoba>MELA</naglowek_osoba>
-<kwestia><akap>Nie, jak Zbyszkowa żona --- to Andzia.</akap></kwestia>
+<kwestia><akap>Nie, jak Zbyszkowa żona --- to Andzia.<end id='e1223056737261' /></akap></kwestia>
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
@@ -4707,7 +4690,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Dziś cały dom chory. Nikt nie idzie do roboty, tylko tatko naturalnie.</akap>
-
+	
 	<didaskalia>do <osoba>Hanki</osoba></didaskalia>
 	
 	<akap>Cóż ty? Belle soeur<pe><slowo_obce>Belle soeur</slowo_obce> (fr.) --- bratowa.</pe>! a!... hi... hi...  Serwus, czupiradło!</akap>
@@ -4721,7 +4704,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Cóż ty to na serio bierzesz? Przecież to cała komedia. Gzy, nic więcej. Hu... zimno tu... W piecu nie palą. Co to są --- zaburzenia familijne.</akap>
-
+	
 	<didaskalia>nagle siada przy <osoba>Hance</osoba></didaskalia>
 	
 	<akap>Powiedz!... czy ty pierwsza zaczepiałaś Zbyszka, czy on ciebie?</akap>
@@ -4809,7 +4792,7 @@
 
 <kwestia>
 	<didaskalia>do <osoba>Hanki</osoba></didaskalia>
-
+	
 	<akap>Ty idź do pokoiku, gdzie się składa brudną bieliznę. Tam siedź --- nie ruszaj się, aż cię zawołam. Z kucharką ani słowa, ani z nikim. Rozumiesz? Twoja matka chrzestna, ta Tadrachowa, co prała dwa razy, zawsze mieszka na Św. Józefa?</akap>
 </kwestia>
 
@@ -4827,7 +4810,7 @@
 
 <kwestia>
 	<didaskalia>do <osoba>Hesi</osoba></didaskalia>
-
+	
 	<akap>Posłałaś list do ciotki?</akap>
 </kwestia>
 
@@ -4889,7 +4872,7 @@
 
 <kwestia>
 	<akap>Gdzie Hanka?</akap>
-
+	
 	<didaskalia>milczenie</didaskalia>
 	
 	<akap>Pytam się, gdzie Hanka?</akap>
@@ -4903,7 +4886,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Proszę więcej jej nie używać do kuchennych posług. Gdzie Hanka dziś spała?</akap>
-
+	
 	<didaskalia>milczenie</didaskalia>
 	
 	<akap>Pytam się, gdzie Hanka dziś spała?</akap>
@@ -4917,7 +4900,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Trzeba inaczej się nią zająć.</akap>
-
+	
 	<didaskalia>milczenie</didaskalia>
 	
 	<akap>Bo... jeżeli... no... zresztą --- ja wychodzę, za chwilę wrócę. Muszę jakiś porządek zrobić.</akap>
@@ -4937,7 +4920,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Nie chce mi się... nie chce mi się... Cake walk! cake walk!</akap>
-
+	
 	<didaskalia>robi kilka pas</didaskalia>
 	
 	<akap>Hanuś, słodka narzeczona... --- dziewczę z buzią jak malina...</akap>
@@ -4946,17 +4929,17 @@
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>Idź... ty...</akap>
-
-<didaskalia>wychodzi szybko</didaskalia></kwestia>
+	
+	<didaskalia>wychodzi szybko</didaskalia></kwestia>
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>Strach!... jeszcze czegoś podobnego, jak długo żyję, nie widziałam.</akap>
-
+	
 	<didaskalia>nadsłuchuje</didaskalia>
 	
-	<akap>Stróż jest. w kuchni. Dowiem się. Tylko wie mamcia, ja wątpię, czy ciocia przyjdzie, bo strasznie była wczoraj naindyczona.</akap>
+	<akap>Stróż jest w kuchni. Dowiem się. Tylko wie mamcia, ja wątpię, czy ciocia przyjdzie, bo strasznie była wczoraj naindyczona.</akap>
 </kwestia>
 
 
@@ -4969,7 +4952,7 @@
 
 <kwestia>
 	<akap>Nie wolno... na dziedzińcu się trzepie... nie wolno!...</akap>
-
+	
 	<didaskalia>wraca</didaskalia>
 </kwestia>
 
@@ -4993,7 +4976,7 @@
 <naglowek_osoba>HESIA</naglowek_osoba>
 <kwestia>
 	<akap>No dobrze... dobrze... już idę!</akap>
-
+	
 	<didaskalia>Wybiega do siebie.</didaskalia>
 </kwestia>
 
@@ -5011,7 +4994,7 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<didaskalia>w płaszczu na matince --- z godnością</didaskalia>
+<didaskalia>w płaszczu na matince<pe><slowo_obce>matinka</slowo_obce> --- kobiecy strój poranny na przełomie XIX i XX wieku; rodzaj podomki.</pe> --- z godnością</didaskalia>
 
 <kwestia><akap>Ciocia mnie wezwała?</akap></kwestia>
 
@@ -5024,7 +5007,7 @@
 <kwestia><akap>Właściwie nie powinnam przyjść po tak dotkliwej obrazie, ale w nieszczęściu powinno darować się winy. Cóż zatem ciocia sobie życzy?</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192779174344"/><motyw id="m1192779174344">Obyczaje, Sługa</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192779174344"/><motyw id="m1192779174344">Obyczaje, Sługa, Matka, Syn</motyw>DULSKA</naglowek_osoba>
 <didaskalia>z nagłym wybuchem</didaskalia>
 
 <kwestia><akap>Zlituj się! ratuj!... wybaw mnie z tego położenia. Przecież taki ożenek dla Zbyszka to ostatnia zguba. Jak ja ludziom w oczy spojrzę?</akap></kwestia>
@@ -5035,7 +5018,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Ale kiedy ci wytłumaczyłam, dlaczego ją trzymam, sama się zgodziłaś, że tak lepiej. Ja to przecież zrobiłam dla jego dobra. Patrzeć już nie mogłam, jak się wisusował. To się nieraz robi. Ja nie pierwsza i nie ostatnia.<end id="e1192779174344"/></akap></kwestia>
+<kwestia><akap>Ale kiedy ci wytłumaczyłam, dlaczego ją trzymam, sama się zgodziłaś, że tak lepiej. Ja to przecież zrobiłam dla jego dobra. Patrzeć już nie mogłam, jak się wisusował. To się nieraz robi. Ja nie pierwsza i nie ostatnia.</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5043,7 +5026,7 @@
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
-<kwestia><akap>Radź! ratuj! ty masz doskonały złodziejski spryt --- ty coś wymyślisz. Przede wszystkim --- weź tę, tę Hankę, do siebie. Wyrzucić jej nie mogę, bo obniesie nas po mieście. U ciebie będziesz ją pilnować, żeby z nikim nie pyskowała.</akap></kwestia>
+<kwestia><akap>Radź! ratuj! ty masz doskonały złodziejski spryt --- ty coś wymyślisz. Przede wszystkim --- weź tę, tę Hankę, do siebie. Wyrzucić jej nie mogę, bo obniesie nas po mieście. U ciebie będziesz ją pilnować, żeby z nikim nie pyskowała.<end id="e1192779174344"/></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5071,7 +5054,7 @@
 
 <kwestia>
 	<akap>Na złość mnie? matce?... i miej tu dzieci! Takem go chowała. Woziłam się z nim do Rabki --- jak była ta matura, to niby... no... pokierowałam go do Prokuratorii Skarbu... a tu... a tu...</akap>
-
+	
 	<didaskalia>płacze<end id="e1192779545366"/></didaskalia>
 </kwestia>
 
@@ -5115,7 +5098,7 @@
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>A to wy!...</akap>
-
+	
 	<didaskalia>do <osoba>Juliasiewiczowej</osoba></didaskalia>
 	
 	<akap>Ta praczka.</akap>
@@ -5129,7 +5112,7 @@
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Niech mnie ciocia pozwoli!</akap>
-
+	
 	<didaskalia>do <osoba>Tadrachowej</osoba></didaskalia>
 	
 	<akap>Nie, moja dobra kobieto --- my tu was zawezwali całkiem o co innego.</akap>
@@ -5148,7 +5131,7 @@
 <kwestia><akap>A...</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222850644975' /><motyw id='m1222850644975'>Dziewictwo, Kobieta</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Widzicie, tak się stało. Hance trafia się doskonały mąż.</akap></kwestia>
 
 
@@ -5172,20 +5155,20 @@
 <kwestia><akap>Niby... co do Hanki? A, wielmożna pani --- to dziewczyna była jak szklanka. Nawet rysy nie było.</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223057095192' /><motyw id='m1223057095192'>Przysięga</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Moglibyście na to przysiąc?</akap></kwestia>
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>Przed Przenajświętszym Sakramentem. Za nią, jak za siebie.</akap></kwestia>
+<kwestia><akap>Przed Przenajświętszym Sakramentem. Za nią, jak za siebie.<end id='e1223057095192' /></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>No... a ten <wyroznienie>finanz wach</wyroznienie>?</akap></kwestia>
 
 
-<naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>To insza inszość. On się z nią zaręczył. Ale co do tamtego --- to o!... tylko że nie było pieniędzy, niby na gospodarstwo, więc bez to się to ślimaczy. Ale to całkiem uczciwie i honorowo --- to sam ksiądz proboszcz może poświadczyć.</akap></kwestia>
+<naglowek_osoba><begin id='b1223057164703' /><motyw id='m1223057164703'>Honor, Zaręczyny</motyw>TADRACHOWA</naglowek_osoba>
+<kwestia><akap>To insza inszość. On się z nią zaręczył. Ale co do tamtego --- to o!... tylko że nie było pieniędzy, niby na gospodarstwo, więc bez to się to ślimaczy. Ale to całkiem uczciwie i honorowo --- to sam ksiądz proboszcz może poświadczyć.<end id='e1223057164703' /></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5193,20 +5176,20 @@
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>A... to już... chyba wielmożna pani gospodyni wie, bo przecie dziewczyna niby tu... jakby pod opieką...</akap></kwestia>
+<kwestia><akap>A... to już... chyba wielmożna pani gospodyni wie, bo przecie dziewczyna niby tu... jakby pod opieką...<end id='e1222850644975' /></akap></kwestia>
 
 
 <didaskalia>Chwila milczenia.</didaskalia>
 
 
-<naglowek_osoba><begin id="b1192777230530"/><motyw id="m1192777230530">Obyczaje</motyw>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192777230530"/><motyw id="m1192777230530">Obyczaje, Alkohol, Przysięga</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Może się pani Tadrachowa wódki napije.</akap></kwestia>
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
 <kwestia>
 	<akap>Rączki całuję wielmożnej pani --- ja przysięgłam od wódki.</akap>
-
+	
 	<didaskalia>śmieje się</didaskalia>
 </kwestia>
 
@@ -5218,13 +5201,13 @@
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>No... chyba...<end id="e1192777230530"/></akap></kwestia>
+<kwestia><akap>No... chyba...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <didaskalia>do <osoba>Dulskiej</osoba></didaskalia>
 
-<kwestia><akap>Daj, Anielko, coś słodkiego.</akap></kwestia>
+<kwestia><akap>Daj, Anielko, coś słodkiego.<end id="e1192777230530"/></akap></kwestia>
 
 
 <didaskalia><osoba>Dulska</osoba> wychodzi.</didaskalia>
@@ -5247,7 +5230,7 @@
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
 <kwestia>
 	<akap>Rączki całuję --- rączki całuję</akap>
-
+	
 	<didaskalia>pije</didaskalia>
 	
 	<akap>hi, hi, hi...</akap>
@@ -5309,7 +5292,7 @@
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Żenię się!</akap>
-
+	
 	<didaskalia>patrzy na <osoba>Dulską</osoba></didaskalia>
 	
 	<akap>żenię się i to bardzo prędko. Chodziłem się dowiedzieć, jakie formalności. Gdzie Hanka chrzczona? Trzeba prędko jej metrykę. Rozumiecie? Zresztą przyjdźcie jutro, to się wszystko ułoży.</akap>
@@ -5319,7 +5302,7 @@
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>W imię Ojca i Syna... chyba wielmożny młody gospodarz jest pomylony, albo bardzo na honorze delikatny.</akap></kwestia>
+<kwestia><akap><begin id='b1222850889238' /><motyw id='m1222850889238'>Honor, Szaleństwo</motyw>W imię Ojca i Syna... chyba wielmożny młody gospodarz jest pomylony, albo bardzo na honorze delikatny.<end id='e1222850889238' /></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5327,7 +5310,7 @@
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>A no... proszę wielmożnych pań... ta ja ślepa nie jestem. Ja przecie wiedziałam co i jak jest. Dość było popatrzeć jak to Hanka przymizerniała. A beczy po kątach --- a do mnie wpadała... Ja jej zawsze mówiłam: Nie becz --- pan jest godny, z rodziców świętych, pan cię zabezpieczy. Ale żeby się aż żenił...</akap></kwestia>
+<kwestia><akap>A no... proszę wielmożnych pań... ta ja ślepa nie jestem. Ja przecie wiedziałam, co i jak jest. Dość było popatrzeć, jak to Hanka przymizerniała. A beczy po kątach --- a do mnie wpadała... Ja jej zawsze mówiłam: Nie becz --- pan jest godny, z rodziców świętych, pan cię zabezpieczy. Ale żeby się aż żenił...</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -5335,7 +5318,7 @@
 
 
 <naglowek_osoba><begin id="b1192780180549"/><motyw id="m1192780180549">Pieniądz</motyw>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>A, broń mnie Boże! Bez błogosławieństwa mamusi my ta do ołtarza nie pójdziemy. Ale chyba wielmożna pani gospodyni nie będzie dęba stawać, żeby się uczciwa rzecz nie stała... Skoro młody pan tak chce, to już od Boga natchniony, aby sierocie krzywdy nie robić. <begin id="b1192781022906"/><motyw id="m1192781022906">Bogactwo, Dziewictwo</motyw>Całe jej wiano była ta uczciwość, a dziś nikt jej nie weźmie, bo bogactwem swego pohańbienia nie przykryje<end id="e1192781022906"/>, a jeno jeszcze pieniędzami ludziom oczy mydlić można...</akap></kwestia>
+<kwestia><akap>A, broń mnie Boże! Bez błogosławieństwa mamusi my ta do ołtarza nie pójdziemy. Ale chyba wielmożna pani gospodyni nie będzie dęba stawać, żeby się uczciwa rzecz nie stała... Skoro młody pan tak chce, to już od Boga natchniony, aby sierocie krzywdy nie robić. <begin id="b1192781022906"/><motyw id="m1192781022906">Bogactwo, Dziewictwo, Kobieta</motyw>Całe jej wiano była ta uczciwość, a dziś nikt jej nie weźmie, bo bogactwem swego pohańbienia nie przykryje<end id="e1192781022906"/>, a jeno jeszcze pieniędzami ludziom oczy mydlić można...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5349,7 +5332,7 @@
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <didaskalia>odprowadza <osoba>Dulską</osoba></didaskalia>
 
-<kwestia><akap>Ciociu! może ofiarować pewną summę...</akap></kwestia>
+<kwestia><akap>Ciociu! może ofiarować pewną sumę...</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -5357,7 +5340,7 @@
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-Trudno.
+<kwestia><akap>Trudno.</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -5367,33 +5350,33 @@ Trudno.
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Dobrze. Ale wie ciocia, że to będzie twardo.</akap>
-
+	
 	<didaskalia>do <osoba>Tadrachowej</osoba></didaskalia>
 	
-	<akap>Więc powiadacie, że pieniądze...</akap>
+	<akap><begin id='b1223057370684' /><motyw id='m1223057370684'>Obraz świata</motyw>Więc powiadacie, że pieniądze...</akap>
 </kwestia>
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>To grunt, wielmożna pani. Taki już teraz świat. Jeden Judasz drugiego za pieniądze sprzeda. Oj czasy! czasy nastały. Ani paszy dla bydła, ani uczciwości ludzkiej.<end id="e1192780180549"/></akap></kwestia>
+<kwestia><akap>To grunt, wielmożna pani. Taki już teraz świat. Jeden Judasz drugiego za pieniądze sprzeda. Oj czasy! czasy nastały. Ani paszy dla bydła, ani uczciwości ludzkiej.<end id='e1223057370684' /><end id="e1192780180549"/></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Macie rację. My tu jeszcze z panią gospodynią chcemy się naradzić.</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192780375299"/><motyw id="m1192780375299">Pozycja społeczna</motyw>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>Co do Hanki? Jakaż tu rada? Młodzi chcą jedno drugie. Wielmożna pani nie będzie twarda. Przecie dzieje się to i po hrabskich domach, że się z niższymi żenią, a Hanka znów jest i ślubna, i znowu nie takie tam co, bo też z familii zasiedziałej, choć stanu murarskiego.</akap></kwestia>
+<naglowek_osoba><begin id="b1192780375299"/><motyw id="m1192780375299">Mieszczanin, Lud, Pozycja społeczna</motyw>TADRACHOWA</naglowek_osoba>
+<kwestia><akap>Co do Hanki? Jakaż tu rada? Młodzi chcą jedno drugie. Wielmożna pani nie będzie twarda. Przecie dzieje się to i po hrabskich domach, że się z niższymi żenią, a Hanka znów jest i ślubna, i znowu nie takie tam co, bo też z familii zasiedziałej, choć stanu murarskiego.<end id="e1192780375299"/></akap></kwestia>
 
 
-<naglowek_osoba><end id="e1192780375299"/>DULSKA</naglowek_osoba>
+<naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia><akap>Idźcie no tylko do jadalni i czekajcie aż was zawołamy.</akap></kwestia>
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
 <kwestia>
 	<akap>Całuję rączki pani gospodyni. Idę już --- Panu Jezusowi oddaję --- całuję rączki. A niech mamusia nie będzie twarda...</akap>
-
+	
 	<didaskalia>wychodzi</didaskalia>
 </kwestia>
 
@@ -5429,7 +5412,7 @@ Trudno.
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Idę... idę... mojaś ty, zrób wszystko... ja już z sił opadam!</akap>
-
+	
 	<didaskalia>wychodzi</didaskalia>
 </kwestia>
 
@@ -5455,7 +5438,7 @@ Trudno.
 <naglowek_osoba>MELA</naglowek_osoba>
 <kwestia>
 	<akap>Ach, Boże! Boże! co to będzie!</akap>
-
+	
 	<didaskalia>znika</didaskalia>
 </kwestia>
 
@@ -5519,7 +5502,7 @@ Trudno.
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Mam męża i... <wyroznienie>c'est le premier pas qui coute</wyroznienie><pe><slowo_obce>c'est le premier pas qui coute</slowo_obce> --- najtrudniejszy pierwszy krok.</pe> --- a tam, gdzie nie ma zmysłu moralnego, jak u takiej dziewczyny --- to nigdy nie wiadomo co i jak.</akap></kwestia>
+<kwestia><akap>Mam męża i... <wyroznienie>c'est le premier pas qui coute</wyroznienie><pe><slowo_obce>c'est le premier pas qui coute</slowo_obce> --- najtrudniejszy pierwszy krok.</pe> --- a tam, gdzie nie ma zmysłu moralnego, jak u takiej dziewczyny --- to nigdy nie wiadomo, co i jak.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -5595,7 +5578,7 @@ Trudno.
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Bądźmy logiczni. Mieszkanie już jeden pokój z kuchenką 25 do 30---tu. Na życie --- gulden, co jest nędzą. Ale --- skoro się kochacie... To już cała pensja. A gdzież reszta?</akap></kwestia>
+<kwestia><akap>Bądźmy logiczni. Mieszkanie już jeden pokój z kuchenką 25 do 30--tu. Na życie --- gulden, co jest nędzą. Ale --- skoro się kochacie... To już cała pensja. A gdzież reszta?</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -5613,7 +5596,7 @@ Trudno.
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Boże drogi! gdyby to można tak życiu powiedzieć --- daj mi spokój --- ale ono włazi na kark, jak hydra, i zdławi.</akap>
-
+	
 	<didaskalia>podchodzi do niego i siada na poręczy fotela</didaskalia>
 	
 	<akap>Zbyszko! popatrz mi w oczy. Ty żałujesz tego, coś zrobił.</akap>
@@ -5628,12 +5611,12 @@ Trudno.
 <kwestia><akap>Nie puszczę... Tu się rozchodzi o coś więcej, jak o głupie na złość... matce.</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192784433245"/><motyw id="m1192784433245">Bunt , Klęska</motyw>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id="b1192784433245"/><motyw id="m1192784433245">Bunt, Walka, Klęska</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia><akap>To nie na złość... Ja chciałem raz zetrzeć w proch to podłe, to czarne, co tu jest duszą złych czynów w tych ścianach. Chciałem raz wziąć się za bary z tym czymś nieuchwytnym i...</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>I wziąłeś się za bary --- szamotałeś --- pokazałeś kły, a teraz musisz ulec.<end id="e1192784433245"/></akap></kwestia>
+<kwestia><akap>I wziąłeś się za bary --- szamotałeś --- pokazałeś kły, a teraz musisz ulec.</akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -5649,7 +5632,7 @@ Trudno.
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Aha! aha!... nawet nie odpowiadasz. Ty jesteś zupełnie już wyczerpany. Ciebie ta jedna noc zmogła, a cóż dopiero całe takie życie...</akap></kwestia>
+<kwestia><akap>Aha! aha!... nawet nie odpowiadasz. Ty jesteś zupełnie już wyczerpany. Ciebie ta jedna noc zmogła, a cóż dopiero całe takie życie...<end id="e1192784433245"/></akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -5657,7 +5640,7 @@ Trudno.
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Cóż ja? Ciocia powiedziała, że ja mam złodziejski spryt. Tak! Bo zgodziłam się z życiem i kradnę to, co jest najmilszego. To jest szczyt mądrości. Walczyć? Don Kiszot!... Śmieszne... zresztą, sam powiedziałeś --- wyciągniemy kopytka.</akap></kwestia>
+<kwestia><akap><begin id='b1222852511112' /><motyw id='m1222852511112'>Kondycja ludzka, Mądrość</motyw>Cóż ja? Ciocia powiedziała, że ja mam złodziejski spryt. Tak! Bo zgodziłam się z życiem i kradnę to, co jest najmilszego. To jest szczyt mądrości. Walczyć? Don Kiszot!... Śmieszne... zresztą, sam powiedziałeś --- wyciągniemy kopytka.<end id='e1222852511112' /></akap></kwestia>
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
@@ -5677,7 +5660,7 @@ Trudno.
 
 
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
-<kwestia><akap>Najlepiej!... to zgroza słuchać co ty mówisz.</akap></kwestia>
+<kwestia><akap>Najlepiej!... to zgroza słuchać, co ty mówisz.</akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5735,7 +5718,7 @@ Trudno.
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>A widzisz! a mówiłeś, że ci o świat nie chodzi!</akap>
-
+	
 	<didaskalia>chwila milczenia</didaskalia>
 	
 	<akap>Więc nie będziesz się żenił?</akap>
@@ -5757,7 +5740,7 @@ Trudno.
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia>
 	<akap>Zrób to --- obraziłeś ją bardzo. Ona chora, ona biedna.<end id="e1192781428949"/></akap>
-
+	
 	<didaskalia>biegnie do drzwi</didaskalia>
 	
 	<akap>Ciociu!</akap>
@@ -5818,10 +5801,10 @@ Trudno.
 <kwestia><akap>Cofasz się?</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192784816491"/><motyw id="m1192784816491">Upadek</motyw>ZBYSZKO</naglowek_osoba>
+<naglowek_osoba><begin id="b1192784816491"/><motyw id="m1192784816491">Małżeństwo, Mężczyzna, Upadek</motyw>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Tak... tak... będę tym, kim byłem!... a! możecie być dumni.</akap>
-
+	
 	<didaskalia>z wybuchem nerwowym</didaskalia>
 	
 	<akap>Ach! jak ja się będę teraz łotrował! jak ja się będę łotrował!...</akap>
@@ -5835,8 +5818,8 @@ Trudno.
 <naglowek_osoba>ZBYSZKO</naglowek_osoba>
 <kwestia>
 	<akap>Dopóki się dobrze nie ożenię... z posagiem, z kamienicą --- z diabłem --- z czortem...</akap>
-
-	<didaskalia>wybiega do swego pokoju<end id="e1192784816491"/></didaskalia>
+	
+	<didaskalia>wybiega do swego pokoju</didaskalia>
 </kwestia>
 
 
@@ -5845,7 +5828,7 @@ Trudno.
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>Niech ciocia pozwoli mu wyburzyć się. Główna rzecz zrobiona. Teraz trzeba się wziąć do niej. Ciocia mi daje <wyroznienie>carte blanche</wyroznienie><pe><slowo_obce>carte blanche</slowo_obce> (fr.) ---  dosł. białą kartę; dawać carte blanche, oznacza dawać wolną rękę.</pe>?</akap></kwestia>
+<kwestia><akap>Niech ciocia pozwoli mu wyburzyć się. Główna rzecz zrobiona.<end id="e1192784816491"/> Teraz trzeba się wziąć do niej. Ciocia mi daje <wyroznienie>carte blanche</wyroznienie><pe><slowo_obce>carte blanche</slowo_obce> (fr.) ---  dosł. białą kartę; dawać carte blanche, oznacza dawać wolną rękę.</pe>?</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -5874,7 +5857,7 @@ Trudno.
 <kwestia><akap>Rączki całuję... jestem... jestem...</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192785743401"/><motyw id="m1192785743401">Obyczaje, Sługa, Krzywda</motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>Moja Tadrachowa, zaszły tu pewne zmiany. Młody pan żenić się z Hanką nie chce.</akap></kwestia>
 
 
@@ -5887,7 +5870,7 @@ Trudno.
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>Tak niby --- <wyroznienie>mir nichts, dir nichts</wyroznienie><pe><slowo_obce>mir nichts, dir nichts</slowo_obce> (niem.) --- mnie nic, tobie nic.</pe>?</akap></kwestia>
+<kwestia><akap>Tak niby --- <wyroznienie>mir nichts, dir nichts</wyroznienie><pe><slowo_obce>mir nichts, dir nichts</slowo_obce> (niem.) --- mnie nic, tobie nic; idiom: ni z tego ni z owego.</pe>?</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -5895,7 +5878,7 @@ Trudno.
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>To duże słowo. <begin id="b1192785743401"/><motyw id="m1192785743401">Obyczaje, Sługa</motyw>No, ale to krzywda dla Hanki, a ja przecie dziecka, com go do Chrztu świętego podawała, ukrzywdzić nie dam.</akap></kwestia>
+<kwestia><akap>To duże słowo. <begin id='b1223058549888' /><motyw id='m1223058549888'>Chrzest, Obowiązek</motyw>No, ale to krzywda dla Hanki, a ja przecie dziecka, com go do Chrztu świętego podawała, ukrzywdzić nie dam.<end id='e1223058549888' /></akap></kwestia>
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
@@ -5912,7 +5895,7 @@ Trudno.
 
 
 <naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
-<kwestia><akap>No... czy ja wiem co i jak...</akap></kwestia>
+<kwestia><akap>No... czy ja wiem, co i jak...</akap></kwestia>
 
 
 <naglowek_osoba><begin id="b1192785767563"/><motyw id="m1192785767563">Małżeństwo, Pieniądz</motyw>TADRACHOWA</naglowek_osoba>
@@ -6008,7 +5991,7 @@ Trudno.
 <kwestia><akap>A teraz nie chce.</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192784122925"/><motyw id="m1192784122925">Małżeństwo, Pozycja społeczna, Sługa</motyw>HANKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192784122925"/><motyw id="m1192784122925">Honor, Małżeństwo, Pozycja społeczna, Sługa</motyw>HANKA</naglowek_osoba>
 <kwestia><akap>A niech go pokręci z jego żenieniem. Co mi tam po takim ożenku. Ja do tego, czy co? Poniewierajom mną już od wczoraj. Myśleli, że wielki cymes.</akap></kwestia>
 
 
@@ -6037,7 +6020,7 @@ Trudno.
 
 
 <naglowek_osoba>TADRACHOWA</naglowek_osoba>
-<kwestia><akap>To ty nie obstajesz, żeby się pan z tobą żenił?</akap></kwestia>
+<kwestia><akap>To ty nie obstajesz, żeby się pan z tobą żenił.</akap></kwestia>
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
@@ -6124,7 +6107,7 @@ Trudno.
 <kwestia><akap>Ja za nią, jak za siebie...</akap></kwestia>
 
 
-<naglowek_osoba>JULIASIEWICZOWA</naglowek_osoba>
+<naglowek_osoba><begin id='b1222853158547' /><motyw id='m1222853158547'>Bunt, Przemiana </motyw>JULIASIEWICZOWA</naglowek_osoba>
 <kwestia><akap>A że ciocia chce coś z łaski zrobić, to powinniście być wdzięczni... Więc ja tak myślę, że...</akap></kwestia>
 
 
@@ -6157,7 +6140,7 @@ Trudno.
 <kwestia><akap>Patrzcie, jak się rozzuchwaliła.</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192788051135"/><motyw id="m1192788051135">Sprawiedliwość</motyw>HANKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192788051135"/><motyw id="m1192788051135">Sprawiedliwość, Sumienie</motyw>HANKA</naglowek_osoba>
 <kwestia><akap>A ino... płaćcie! płaćcie!... A nie --- to chodź matka chrzestna, i tak zapłacą. Są sądy i alimenta, a ja przysięgnę...</akap></kwestia>
 
 
@@ -6200,7 +6183,7 @@ Trudno.
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
-<kwestia><akap>Tysiąc koron.</akap></kwestia>
+<kwestia><akap>Tysiąc koron.<end id='e1222853158547' /></akap></kwestia>
 
 
 <didaskalia>Chwila milczenia --- kobiety mierzą się długiemi spojrzeniami.</didaskalia>
@@ -6215,7 +6198,7 @@ Trudno.
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Boże mój drogi!...</akap>
-
+	
 	<didaskalia>do <osoba>Hanki</osoba></didaskalia>
 	
 	<akap>Cóż ty ze skóry mnie chcesz obedrzeć?</akap>
@@ -6223,7 +6206,7 @@ Trudno.
 
 
 <naglowek_osoba>HANKA</naglowek_osoba>
-<kwestia><akap>A mnie tu w tym domu nie obdarli z uczciwości. Ja prosiłam się, żeby mnie puścić. Chodźcie, matko chrzestna!</akap></kwestia>
+<kwestia><akap>A mnie tu w tym domu nie obdarli z uczciwości? Ja prosiłam się, żeby mnie puścić. Chodźcie, matko chrzestna!</akap></kwestia>
 
 
 <naglowek_osoba>DULSKA</naglowek_osoba>
@@ -6300,7 +6283,7 @@ Trudno.
 <didaskalia><osoba>Hanka</osoba> --- <osoba>Tadrachowa</osoba> --- <osoba>Dulska</osoba> --- <osoba>Juliasiewiczowa</osoba> --- później <osoba>Zbyszko</osoba> --- <osoba>Hesia</osoba> --- <osoba>Mela</osoba></didaskalia>
 
 
-<naglowek_osoba><begin id="b1192786074757"/><motyw id="m1192786074757">Pozycja społeczna, Sługa</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192786074757"/><motyw id="m1192786074757">Pozycja społeczna, Sługa, Duma</motyw>DULSKA</naglowek_osoba>
 <kwestia><akap>A teraz kuferek i jazda --- żeby mi was w minutę nie było.</akap></kwestia>
 
 
@@ -6311,7 +6294,7 @@ Trudno.
 <naglowek_osoba>HANKA</naglowek_osoba>
 <kwestia>
 	<akap>Ta chodźcie, matko chrzestna, ta co się kłaniacie.</akap>
-
+	
 	<didaskalia>wychodzi z <osoba>Tadrachową</osoba><end id="e1192786074757"/></didaskalia>
 </kwestia>
 
@@ -6319,7 +6302,7 @@ Trudno.
 <naglowek_osoba>DULSKA</naglowek_osoba>
 <kwestia>
 	<akap>Ach!...</akap>
-
+	
 	<didaskalia>upada na sofę</didaskalia>
 	
 	<akap>Jezus, Maria! co za dzień!... no!... ledwo żyję... przecież to straszne, co ja przejść musiałam. Tysiąc koron!...</akap>
@@ -6346,10 +6329,10 @@ Trudno.
 <kwestia><akap>Ciocię to nic już nie nauczy...</akap></kwestia>
 
 
-<naglowek_osoba><begin id="b1192786407507"/><motyw id="m1192786407507">Bóg, Mieszczanin</motyw>DULSKA</naglowek_osoba>
+<naglowek_osoba><begin id="b1192786407507"/><motyw id="m1192786407507">Bóg, Mieszczanin, Mądrość</motyw>DULSKA</naglowek_osoba>
 <didaskalia>wyniośle</didaskalia>
 
-<kwestia><akap>A czegóż to ma mnie uczyć i kto? Ja sama, dzięki Bogu, wiem co i jak się należy.</akap></kwestia>
+<kwestia><akap>A czegóż to ma <wyroznienie>mnie</wyroznienie> uczyć i kto? Ja sama, dzięki Bogu, wiem co i jak się należy.</akap></kwestia>
 
 
 <didaskalia><osoba>Juliasiewiczowa</osoba> wzrusza ramionami i wychodzi --- <osoba>Dulska</osoba> biegnie do drzwi <osoba>Zbyszka</osoba>.</didaskalia>
@@ -6357,10 +6340,10 @@ Trudno.
 
 <kwestia>
 	<akap>Zbyszko --- idź do biura!</akap>
-
+	
 	<didaskalia>do dziewcząt</didaskalia>
 	
-	<akap>Hesia, kurze ścierać... Mela, gammy...</akap>
+	<akap>Hesia, kurze ścierać... Mela, gamy...</akap>
 	
 	<didaskalia>do sypialni</didaskalia>
 	
@@ -6392,7 +6375,7 @@ Trudno.
 <naglowek_osoba><begin id="b1192786291810"/><motyw id="m1192786291810">Sługa</motyw>HANKA</naglowek_osoba>
 <kwestia>
 	<akap>Całuję rączki panience... jedna panienka tu co warta. Niech się ta panience powodzi... a innym to niech...</akap>
-
+	
 	<didaskalia>robi groźny gest ręką<end id="e1192786291810"/></didaskalia>
 </kwestia>
 
@@ -6410,10 +6393,10 @@ Trudno.
 <didaskalia>Słychać ciężkie zamknięcie drzwi.</didaskalia>
 
 
-<naglowek_osoba>MELA</naglowek_osoba>
+<naglowek_osoba><begin id='b1223058368039' /><motyw id='m1223058368039'>Rozpacz, Śmiech</motyw>MELA</naglowek_osoba>
 <kwestia>
 	<akap>Mama ją wyrzuca, Zbyszko!... Już drzwi się za nią zamknęły.</akap>
-
+	
 	<didaskalia>biegnie do okna</didaskalia>
 	
 	<akap>Nie widać jej... o!... idzie --- niesie kuferek... Gdzie ona idzie? Taki śnieg!... znikła za rogiem. Boże mój!</akap>
@@ -6427,7 +6410,7 @@ Trudno.
 
 <kwestia>
 	<akap>A ja wiem! a ja wiem! wszystko słyszałam --- co to? świeci się coś... papierek...</akap>
-
+	
 	<didaskalia>na czworakach pełza pod fortepian</didaskalia>
 </kwestia>
 
@@ -6457,7 +6440,7 @@ Trudno.
 <naglowek_osoba>MELA</naglowek_osoba>
 <didaskalia>z jakąś tragiczną rozpaczą</didaskalia>
 
-<kwestia><akap>Cicho, Hesia! Cicho! nie śmiej się, Hesia!</akap></kwestia>
+<kwestia><akap>Cicho, Hesia! Cicho! nie śmiej się, Hesia!<end id='e1223058368039' /></akap></kwestia>
 
 
 <naglowek_osoba>HESIA</naglowek_osoba>
@@ -6472,6 +6455,4 @@ Trudno.
 <extra><!--</tekst_glowny>--></extra>
 
 
-</dramat_wspolczesny>
-
-</utwor>
+</dramat_wspolczesny></utwor>
