@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 
 from newtagging.models import TagBase
 from newtagging import managers
+import djangosphinx
 
 from librarian import html, dcparser
 
@@ -44,6 +45,8 @@ class Tag(TagBase):
         
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), default=0, blank=False, null=False)
+    
+    search = djangosphinx.SphinxSearch()
     
     def has_description(self):
         return len(self.description) > 0
@@ -97,6 +100,8 @@ class Book(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
+
+    search = djangosphinx.SphinxSearch()
     
     @property
     def name(self):
@@ -258,6 +263,8 @@ class Fragment(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
+    
+    search = djangosphinx.SphinxSearch()
     
     def short_html(self):
         if len(self._short_html):
