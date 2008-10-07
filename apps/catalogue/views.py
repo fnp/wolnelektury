@@ -157,7 +157,7 @@ def search(request):
 
 
 def tags_starting_with(request):
-    prefix = request.GET['q']
+    prefix = request.GET.get('q', '')
     # Prefix must have at least 2 characters
     if len(prefix) < 2:
         return HttpResponse('')
