@@ -134,6 +134,8 @@ class BookInfo(object):
             raise ParseError(e)
 
         description = tree.find('//' + book_info.RDF('Description'))
+        book_info.wiki_url = description.get(cls.RDF('about'), None)
+        
         if description is None:
             raise ParseError('no Description tag found in document')
         
@@ -157,6 +159,9 @@ class BookInfo(object):
         root = etree.Element(self.RDF('RDF'))
         description = etree.SubElement(root, self.RDF('Description'))
         
+        if self.wiki_url:
+            description.set(self.RDF('about'), self.wiki_url)
+        
         for tag, (attribute, converter) in self.mapping.iteritems():
             if hasattr(self, attribute):
                 e = etree.Element(tag)
@@ -169,7 +174,7 @@ class BookInfo(object):
         etree._namespace_map[str(self.RDF)] = 'rdf'
         etree._namespace_map[str(self.DC)] = 'dc'
         
-        result = {}        
+        result = {'about': self.wiki_url}
         for tag, (attribute, converter) in self.mapping.iteritems():
             if hasattr(self, attribute):
                 result[attribute] = unicode(getattr(self, attribute))
