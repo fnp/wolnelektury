@@ -45,7 +45,7 @@ class JSONField(models.TextField):
 
     def contribute_to_class(self, cls, name):
         super(JSONField, self).contribute_to_class(cls, name)
-        dispatcher.connect(self.post_init, signal=signals.post_init, sender=cls)
+        signals.post_init.connect(self.post_init, sender=cls)
 
         def get_json(model_instance):
             return dumps(getattr(model_instance, self.attname, None))
@@ -55,7 +55,8 @@ class JSONField(models.TextField):
             return setattr(model_instance, self.attname, loads(json))
         setattr(cls, 'set_%s_json' % self.name, set_json)
 
-    def post_init(self, instance=None):
+    def post_init(self, **kwargs):
+        instance = kwargs.get('instance', None)
         value = self.value_from_object(instance)
         if (value):
             setattr(instance, self.attname, loads(value))

@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 
 from newtagging.models import TagBase
 from newtagging import managers
+from catalogue.fields import JSONField
 
 from librarian import html, dcparser
 
@@ -41,7 +42,7 @@ class Tag(TagBase):
         db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(_('description'), blank=True)
     main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
-        
+    
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), default=0, blank=False, null=False)
     
@@ -84,6 +85,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
     _short_html = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
+    extra_info = JSONField(_('extra information'))
     
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
