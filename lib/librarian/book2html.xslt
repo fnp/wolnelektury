@@ -261,7 +261,7 @@
 
 <xsl:template match="kwestia">
     <div class="kwestia">
-        <xsl:apply-templates select="strofa|akap" />
+        <xsl:apply-templates select="strofa|akap|didaskalia" />
     </div>
 </xsl:template>
 
