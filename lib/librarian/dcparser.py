@@ -165,6 +165,17 @@ class BookInfo(object):
         
         return unicode(etree.tostring(root, 'utf-8'), 'utf-8')
 
+    def to_dict(self):
+        etree._namespace_map[str(self.RDF)] = 'rdf'
+        etree._namespace_map[str(self.DC)] = 'dc'
+        
+        result = {}        
+        for tag, (attribute, converter) in self.mapping.iteritems():
+            if hasattr(self, attribute):
+                result[attribute] = unicode(getattr(self, attribute))
+        
+        return result
+
 
 def parse(file_name):
     return BookInfo.from_file(file_name)
