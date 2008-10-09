@@ -170,6 +170,7 @@ class Book(models.Model):
             book_shelves = list(book.tags.filter(category='set'))
         
         book.title = book_info.title
+        book.extra_info = book_info.to_dict()
         book._short_html = ''
         book.save()
         
