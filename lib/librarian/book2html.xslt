@@ -12,16 +12,116 @@
         </head>
         <style>
             body {
-                font-size: 14px;
+                font-size: 16px;
                 font: Georgia, "Times New Roman", serif;
                 line-height: 1.5em;
-                margin: 3em;
-                max-width: 36em;
+                margin: 0;
             }
 
             a {
                 color: blue;
                 text-decoration: none;
+            }
+
+            #book-text {
+                margin: 3em;
+                max-width: 36em;
+            }
+
+            /* ================================== */
+            /* = Header with logo and menu      = */
+            /* ================================== */
+            #header {
+                margin: 3.4em 0 0 1.4em;
+            }
+
+            img {
+                border: none;
+            }
+
+
+            #menu {
+                position: fixed;
+                left: 0em;
+                top: 0em;
+                width: 100%;
+                height: 1.5em;
+                background: #333;
+                color: #FFF;
+                opacity: 0.9;
+            }
+
+            #menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #menu li a {
+                display: block;
+                float: left;
+                width: 7.5em;
+                height: 1.5em;
+                margin-left: 0.5em;
+                text-align: center;
+                color: #FFF;
+            }
+
+            #menu li a:hover, #menu li a:active {
+                color: #000;
+                background: #FFF url(/media/img/arrow-down.png) no-repeat center right;
+            }
+
+            #menu li a.selected {
+                color: #000;
+                background: #FFF url(/media/img/arrow-up.png) no-repeat center right;
+            }
+
+            #toc, #themes {
+                position: fixed;
+                left: 0em;
+                top: 1.5em;
+                width: 37em;
+                padding: 1.5em;
+                background: #FFF;
+                border-bottom: 0.25em solid #DDD;
+                border-right: 0.25em solid #DDD;
+                display: none;
+                height: 16em;
+                overflow-x: hidden;
+                overflow-y: auto;
+                opacity: 0.9;
+            }
+
+            #toc ol, #themes ol {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #toc ol li {
+                font-weight: bold;
+            }
+
+            #toc ol ol {
+                padding: 0 0 1.5em 1.5em;
+                margin: 0;
+            }
+
+            #toc ol ol li {
+                font-weight: normal;
+            }
+
+            #toc h2 {
+                display: none;
+            }
+
+            #toc .anchor {
+                float: none;
+                margin: 0;
+                color: blue;
+                font-size: 16px;
+                position: inherit;
             }
 
             /* =================================================== */
@@ -104,6 +204,26 @@
                 font-size: 0.875em;
             }
 
+            /* ============= */
+            /* = Numbering = */
+            /* ============= */
+            .anchor {
+                position: absolute;
+                margin: -0.25em -0.5em;
+                left: 1em;
+                color: #777;
+                font-size: 12px;
+                width: 2em;
+                text-align: center;
+                padding: 0.25em 0.5em;
+                line-height: 1.5em;
+            }
+
+            .anchor:hover, #book-text .anchor:active {
+                color: #FFF;
+                background-color: #CCC;
+            }
+
             /* =================== */
             /* = Custom elements = */
             /* =================== */
@@ -130,7 +250,7 @@
 
             div.didaskalia {
                 font-style: italic;
-                margin: 0.5em 0 0;
+                margin: 0.5em 0 0 1.5em;
             }
 
             div.kwestia {
@@ -158,6 +278,7 @@
 
             p.motto_podpis {
                 font-size: 0.875em;
+                text-align: right;
             }
 
             div.fragment {
@@ -165,7 +286,7 @@
                 padding-bottom: 1.5em;
             }
 
-            div.note p, div.note p.paragraph {
+            div.note p, div.dedication p, div.note p.paragraph, div.dedication p.paragraph {
                 text-align: right;
                 font-style: italic;
             }
@@ -175,25 +296,38 @@
                 visibility: hidden;
             }
 
-            .anchor {
-                position: absolute;
-                margin: -0.25em -0.5em;
-                left: 1em;
-                color: #777;
-                font-size: 12px;
-                width: 2em;
-                text-align: center;
-                padding: 0.25em 0.5em;
-                line-height: 1.5em;
+            hr.spacer-line {
+                margin: 1.5em 0;
+                border: none;
+                border-bottom: 0.1em solid #000;
             }
 
-            .anchor:hover, #book-text .anchor:active {
-                color: #FFF;
-                background-color: #CCC;
+            p.spacer-asterisk {
+                padding: 0;
+                margin: 1.5em 0;
+                text-align: center;
             }
-            
-            #toc {
-                display: none;
+
+            div.person-list ol {
+                list-style: none;
+                padding: 0 0 0 1.5em;
+            }
+
+            p.place-and-time {
+                font-style: italic;
+            }
+
+            em.math, em.foreign-word, em.book-title, em.didaskalia {
+                font-style: italic;
+            }
+
+            em.author-emphasis {
+                letter-spacing: 0.1em;
+            }
+
+            em.person {
+                font-style: normal;
+                font-variant: small-caps;
             }
         </style>
         <body> -->
