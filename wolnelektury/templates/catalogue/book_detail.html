@@ -86,14 +86,12 @@
             </ul>
         </div>
         <div id="themes-list">
-            {% if categories.theme %}
-                <h2>Motywy w utworze</h2>
-                <ul>
-                {% for theme in categories.theme %}
-                    <li><a href="{{ theme.get_absolute_url }}">{{ theme }}</a></li>
-                {% endfor %}
-                </ul>
-            {% endif %}
+            <h2>Motywy w utworze</h2>
+            <ul>
+            {% for theme in book_themes %}
+                <li><a href="{% url book_fragments book.slug,theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
+            {% endfor %}
+            </ul>
         </div>
         <div class="clearboth"></div>
     </div>

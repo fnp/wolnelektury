@@ -67,6 +67,9 @@ def tagged_object_list(request, tags=''):
     except models.Tag.DoesNotExist:
         raise Http404
     
+    if len([tag for tag in tags if tag.category == 'book']):
+        raise Http404
+    
     model = models.Book
     shelf = [tag for tag in tags if tag.category == 'set']
     shelf_is_set = (len(tags) == 1 and tags[0].category == 'set')
@@ -76,7 +79,7 @@ def tagged_object_list(request, tags=''):
 
     user_is_owner = (len(shelf) and request.user.is_authenticated() and request.user == shelf[0].user)
     
-    extra_where = 'NOT catalogue_tag.category = "set"'
+    extra_where = 'catalogue_tag.category NOT IN ("set", "book")'
     related_tags = models.Tag.objects.related_for_model(tags, model, counts=True, extra={'where': [extra_where]})
     categories = split_tags(related_tags)
 
@@ -93,11 +96,25 @@ def tagged_object_list(request, tags=''):
     )
 
 
+def book_fragments(request, book_slug, theme_slug):
+    book = get_object_or_404(models.Book, slug=book_slug)
+    book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug)
+    theme = get_object_or_404(models.Tag, slug=theme_slug)
+    fragments = models.Fragment.tagged.with_all([book_tag, theme])
+    
+    form = forms.SearchForm()
+    return render_to_response('catalogue/book_fragments.html', locals(),
+        context_instance=RequestContext(request))
+
+
 def book_detail(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
+    book_tag = get_object_or_404(models.Tag, slug = 'l-' + slug)
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
+    extra_where = 'catalogue_tag.category = "theme"'
+    book_themes = models.Tag.objects.related_for_model(book_tag, models.Fragment, counts=True, extra={'where': [extra_where]})
     
     form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),
@@ -124,9 +141,9 @@ def _tags_starting_with(prefix, user):
     books = models.Book.objects.filter(title__icontains=prefix)
     tags = models.Tag.objects.filter(name__icontains=prefix)
     if user.is_authenticated():
-        tags = tags.filter(~Q(category='set') | Q(user=user))
+        tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
     else:
-        tags = tags.filter(~Q(category='set'))
+        tags = tags.filter(~Q(category='book') & ~Q(category='set'))
 
     return list(books) + list(tags)
         

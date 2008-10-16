@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load catalogue_tags pagination_tags %}
+
+{% block title %}Motyw {{ theme }} w utworze {{ book }} w WolneLektury.pl{% endblock %}
+
+{% block bodyid %}tagged-object-list{% endblock %}
+
+{% block body %}
+    <h1>Motyw {{ theme }} w utworze {{ book }}</h1>
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{{ book.get_absolute_url }}">wróć do strony utworu</a></p>
+    </form>
+
+    {% autopaginate fragments 10 %}
+    <div id="books-list">
+        <ol>
+        {% for fragment in fragments %}
+            <li>{{ fragment.short_html }}</li>
+        {% endfor %}
+        </ol>
+        {% paginate %}
+    </div>
+    <div id="tags-list">
+        <div id="categories-list">
+            Zobacz opis <a href="{{ book.get_absolute_url }}">utworu {{ book }}</a>
+        </div>
+        <div id="themes-list">
+        </div>
+        <div class="clearboth"></div>
+    </div>
+    <div id="set-window">
+        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="target">
+            <p><img src="/media/img/indicator.gif" alt="*"/> Ładowanie</p>
+        </div>
+    </div>
+{% endblock %}

@@ -22,6 +22,7 @@ TAG_CATEGORIES = (
     ('genre', _('genre')),
     ('theme', _('theme')),
     ('set', _('set')),
+    ('book', _('book')),
 )
 
 
@@ -109,7 +110,7 @@ class Book(models.Model):
         if len(self._short_html):
             return mark_safe(self._short_html)
         else:
-            tags = self.tags.filter(~Q(category__in=('set', 'theme')))
+            tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
             tags = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in tags]
 
             formats = []
@@ -188,6 +189,15 @@ class Book(models.Model):
                 tag.category = category
                 tag.save()
             book_tags.append(tag)
+            
+        book_tag, created = Tag.objects.get_or_create(slug=('l-' + book.slug)[:120])
+        if created:
+            book_tag.name = book.title[:50]
+            book_tag.sort_key = ('l-' + book.slug)[:120]
+            book_tag.category = 'book'
+            book_tag.save()
+        book_tags.append(book_tag)
+        
         book.tags = book_tags
         
         if hasattr(book_info, 'parts'):
@@ -197,7 +207,14 @@ class Book(models.Model):
                 child_book.parent = book
                 child_book.parent_number = n
                 child_book.save()
-        
+
+        book_descendants = list(book.children.all())
+        while len(book_descendants) > 0:
+            child_book = book_descendants.pop(0)
+            for fragment in child_book.fragments.all():
+                fragment.tags = set(list(fragment.tags) + [book_tag])
+            book_descendants += list(child_book.children.all())
+            
         # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, File(file(xml_file)), save=False)
         
@@ -230,7 +247,7 @@ class Book(models.Model):
                         tag.save()
                     themes.append(tag)
                 new_fragment.save()
-                new_fragment.tags = list(book.tags) + themes
+                new_fragment.tags = set(list(book.tags) + themes + [book_tag])
                 book_themes += themes
             
             book_themes = set(book_themes)
