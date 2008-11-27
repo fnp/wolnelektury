@@ -94,6 +94,8 @@ class Book(models.Model):
     pdf_file = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
     odt_file = models.FileField(_('ODT file'), upload_to=book_upload_path('odt'), blank=True)
     txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
+    mp3_file = models.FileField(_('MP3 file'), upload_to=book_upload_path('mp3'), blank=True)
+    ogg_file = models.FileField(_('OGG file'), upload_to=book_upload_path('ogg'), blank=True)
     
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     
