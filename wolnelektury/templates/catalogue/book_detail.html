@@ -35,6 +35,16 @@
             {% if book.txt_file %}
                 <a href="{{ book.txt_file.url }}">Pobierz plik TXT</a>
             {% endif %}
+            {% if book.mp3_file and book.ogg_file %}
+                <a href="http://czytamysluchajac.pl/" id="czytamysluchajac-logo"><img src="/media/img/czytamysluchajac-logo-small.png" /></a>
+                <a href="{{ book.mp3_file.url }}">Pobierz plik MP3</a>
+                <a href="{{ book.ogg_file.url }}">Pobierz plik Ogg Vorbis</a>
+                <object type="application/x-shockwave-flash" data="/media/player.swf" width="426" height="20">
+                    <param name="movie" value="/media/player.swf" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="FlashVars" value="mp3={{ book.mp3_file.url }}&amp;width=426&amp;showvolume=1&amp;bgcolor1=eeeeee&amp;bgcolor2=eeeeee&amp;buttoncolor=666666" />
+                </object>
+            {% endif %}
             </div>
         </div>
     

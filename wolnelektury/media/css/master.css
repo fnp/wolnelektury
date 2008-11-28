@@ -235,6 +235,20 @@ p .ac_input {
     text-align: center;    
 }
 
+#formats #czytamysluchajac-logo {
+    display: inline;
+    padding: 0 0.5em 0 0;
+    background: white;
+    float: left;
+    margin: 0.5em 0;
+    text-align: left;
+    width: 140px;
+    height: 62px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
 #tagged-object-list #themes-list, #book-detail #themes-list {
     margin-left: 14em;
 }
