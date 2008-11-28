@@ -235,6 +235,10 @@ p .ac_input {
     text-align: center;    
 }
 
+#czytamysluchajac {
+    margin-top: 2.5em;
+}
+
 #formats #czytamysluchajac-logo {
     display: inline;
     padding: 0 0.5em 0 0;
