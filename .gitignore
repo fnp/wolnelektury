@@ -1,4 +1,4 @@
 wolnelektury/localsettings.py
-wolnelektury/media/**/*
+wolnelektury/media/lektura/**/*
 *.pyc
 .DS_Store
