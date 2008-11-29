@@ -12,7 +12,7 @@
     </form>
     
     <div id="books-list">
-        <p>Na podstawie: {{ book.extra_info.source_name }}</p>
+        <p>Na podstawie: {{ extra_info.source_name }}</p>
         {% if book.has_description %}
             <div id="description">
                 {{ book.description|safe }}
@@ -90,8 +90,8 @@
                     <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
                     {% endfor %}
                 </li>
-                <li><a href="{{ book.extra_info.about }}">Lektura na wiki projektu</a></li>
-                <li><a href="{{ book.extra_info.source_url }}">Lektura w CBN Polona</a></li>
+                <li><a href="{{ extra_info.about }}">Lektura na wiki projektu</a></li>
+                <li><a href="{{ extra_info.source_url }}">Lektura w CBN Polona</a></li>
                 <li><a href="{{ book.xml_file.url }}">Kod źródłowy utworu (XML)</a></li>
             </ul>
         </div>

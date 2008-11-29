@@ -115,6 +115,7 @@ def book_detail(request, slug):
     book_children = book.children.all().order_by('parent_number')
     extra_where = 'catalogue_tag.category = "theme"'
     book_themes = models.Tag.objects.related_for_model(book_tag, models.Fragment, counts=True, extra={'where': [extra_where]})
+    extra_info = book.get_extra_info_value()
     
     form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),

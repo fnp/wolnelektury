@@ -31,36 +31,39 @@ def loads(str):
     return json.loads(str, encoding=settings.DEFAULT_CHARSET)
 
 
+class JSONFormField(forms.CharField):
+    widget = forms.Textarea
+    
+    def clean(self, value):
+        try:
+            loads(value)
+            return value
+        except ValueError, e:
+            raise forms.ValidationError('Enter a valid JSON value. Error: %s' % e)
+
+
 class JSONField(models.TextField):
+    def formfield(self, **kwargs):
+        defaults = {'form_class': JSONFormField}
+        defaults.update(kwargs)
+        return super(JSONField, self).formfield(**defaults)
+
     def db_type(self):
         return 'text'
-    
+
     def get_internal_type(self):
         return 'TextField'
 
-    def pre_save(self, model_instance, add):
-        value = getattr(model_instance, self.attname, None)
-        return dumps(value)
-
     def contribute_to_class(self, cls, name):
         super(JSONField, self).contribute_to_class(cls, name)
-        signals.post_init.connect(self.post_init, sender=cls)
+        
+        def get_value(model_instance):
+            return loads(getattr(model_instance, self.attname, None))
+        setattr(cls, 'get_%s_value' % self.name, get_value)
 
-        def get_json(model_instance):
-            return dumps(getattr(model_instance, self.attname, None))
-        setattr(cls, 'get_%s_json' % self.name, get_json)
-
-        def set_json(model_instance, json):
-            return setattr(model_instance, self.attname, loads(json))
-        setattr(cls, 'set_%s_json' % self.name, set_json)
-
-    def post_init(self, **kwargs):
-        instance = kwargs.get('instance', None)
-        value = self.value_from_object(instance)
-        if (value):
-            setattr(instance, self.attname, loads(value))
-        else:
-            setattr(instance, self.attname, None)
+        def set_value(model_instance, json):
+            return setattr(model_instance, self.attname, dumps(json))
+        setattr(cls, 'set_%s_value' % self.name, set_value)
 
 
 class JQueryAutoCompleteWidget(forms.TextInput):
