@@ -13,6 +13,7 @@ from newtagging import managers
 from catalogue.fields import JSONField
 
 from librarian import html, dcparser
+from mutagen import id3
 
 
 TAG_CATEGORIES = (
@@ -130,6 +131,20 @@ class Book(models.Model):
             self.save()
             return mark_safe(self._short_html)
     
+    def save(self, force_insert=False, force_update=False):
+        if self.mp3_file:
+            extra_info = self.get_extra_info_value()
+            extra_info.update(self.get_mp3_info())
+            self.set_extra_info_value(extra_info)
+        return super(Book, self).save(force_insert, force_update)
+    
+    def get_mp3_info(self):
+        """Retrieves artist and director names from audio ID3 tags."""
+        audio = id3.ID3(self.mp3_file.path)
+        artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
+        director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
+        return {'artist_name': artist_name, 'director_name': director_name}
+        
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')
