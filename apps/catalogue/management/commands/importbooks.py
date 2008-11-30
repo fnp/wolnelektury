@@ -71,7 +71,15 @@ class Command(BaseCommand):
                             book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
                             if verbose:
                                 print "Importing %s.txt" % file_base
-                    
+                        if os.path.isfile(file_base + '.mp3'):
+                            book.mp3_file.save('%s.mp3' % book.slug, File(file(file_base + '.mp3')))
+                            if verbose:
+                                print "Importing %s.txt" % file_base
+                        if os.path.isfile(file_base + '.ogg'):
+                            book.ogg_file.save('%s.ogg' % book.slug, File(file(file_base + '.ogg')))
+                            if verbose:
+                                print "Importing %s.ogg" % file_base
+                            
                         book.save()
                     
                     except Book.AlreadyExists, msg:
