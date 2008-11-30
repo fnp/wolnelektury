@@ -46,7 +46,6 @@ class Command(BaseCommand):
                     
                     # Skip files that are not XML files
                     if not ext == '.xml':
-                        print self.style.NOTICE("%s: Not an XML file. Skipping." % file_path)
                         continue
                     
                     if verbose > 0:
