@@ -71,14 +71,14 @@ class Command(BaseCommand):
                             book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
                             if verbose:
                                 print "Importing %s.txt" % file_base
-                        if os.path.isfile(file_base + '.mp3'):
-                            book.mp3_file.save('%s.mp3' % book.slug, File(file(file_base + '.mp3')))
+                        if os.path.isfile(os.path.join(dir_name, book.slug + '.mp3')):
+                            book.mp3_file.save('%s.mp3' % book.slug, File(file(os.path.join(dir_name, book.slug + '.mp3'))))
                             if verbose:
-                                print "Importing %s.txt" % file_base
-                        if os.path.isfile(file_base + '.ogg'):
-                            book.ogg_file.save('%s.ogg' % book.slug, File(file(file_base + '.ogg')))
+                                print "Importing %s.mp3" % book.slug
+                        if os.path.isfile(os.path.join(dir_name, book.slug + '.ogg')):
+                            book.ogg_file.save('%s.ogg' % book.slug, File(file(os.path.join(dir_name, book.slug + '.ogg'))))
                             if verbose:
-                                print "Importing %s.ogg" % file_base
+                                print "Importing %s.ogg" % book.slug
                             
                         book.save()
                     
