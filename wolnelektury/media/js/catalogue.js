@@ -208,6 +208,7 @@
                 link.parent().remove();
             });
         });
-
+        
+        $('#user-info').show();
     });
 })(jQuery)

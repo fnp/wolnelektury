@@ -24,7 +24,7 @@
             <div id="logo">
                 <a href="/"><img src="/media/img/logo.png" alt="WolneLektury.pl - logo" /></a>
             </div>
-            <div id="user-info">
+            <div id="user-info" style="display:none">
                 {% if user.is_authenticated %}
                     <p>
                         Witaj, <strong>{{ user.username }}</strong>
