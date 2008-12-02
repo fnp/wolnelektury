@@ -239,13 +239,21 @@ p .ac_input {
     margin-top: 2.5em;
 }
 
+#czytamy-sluchajac-info {
+    width: 400px;
+    height: 80px;
+}
+
+#czytamy-sluchajac-info p {
+    margin-left: 170px;
+    padding-top: 1em;
+    padding-bottom: 0em;
+}
+
 #formats #czytamysluchajac-logo {
-    display: inline;
-    padding: 0 0.5em 0 0;
     background: white;
-    float: left;
-    margin: 0.5em 0;
     text-align: left;
+    float: left;
     width: 140px;
     height: 62px;
     -moz-border-radius: 0px;
