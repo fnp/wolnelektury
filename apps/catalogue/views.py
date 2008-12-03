@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.datastructures import SortedDict
 from django.views.decorators.http import require_POST
 from django.contrib import auth
@@ -21,6 +21,9 @@ from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
 from newtagging import views as newtagging_views
+
+
+staff_required = user_passes_test(lambda user: user.is_staff)
 
 
 class LazyEncoder(simplejson.JSONEncoder):
@@ -355,3 +358,21 @@ def logout_then_redirect(request):
     auth.logout(request)
     return HttpResponseRedirect(request.GET.get('next', '/'))
 
+
+
+# =========
+# = Admin =
+# =========
+@login_required
+@staff_required
+def import_book(request):
+    """docstring for import_book"""
+    book_import_form = forms.BookImportForm(request.POST, request.FILES)
+    if book_import_form.is_valid():
+        # try:
+        book_import_form.save()
+        # except:
+            # return HttpResponse("Error importing book: %r" % (sys.exc_info(),))
+        return HttpResponse("Book imported successfully")
+    else:
+        return HttpResponse("Error importing file: %r" % book_import_form.errors)

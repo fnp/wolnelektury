@@ -23,6 +23,7 @@ urlpatterns = patterns('',
         name='about_us'),
     
     # Admin panel
+    url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/(.*)$', admin.site.root),
     
