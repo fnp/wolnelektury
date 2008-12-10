@@ -2,9 +2,16 @@
 from django import forms
 from slughifi import slughifi
 
-from catalogue.models import Tag
+from catalogue.models import Tag, Book
 from catalogue.fields import JQueryAutoCompleteField
 from catalogue import utils
+
+
+class BookImportForm(forms.Form):
+    book_xml_file = forms.FileField()
+
+    def save(self, commit=True):
+        return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True)
 
 
 class SearchForm(forms.Form):
