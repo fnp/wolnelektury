@@ -233,7 +233,9 @@ class Book(models.Model):
             book_descendants += list(child_book.children.all())
             
         # Save XML and HTML files
-        book.xml_file.save('%s.xml' % book.slug, File(file(xml_file)), save=False)
+        if not isinstance(xml_file, File):
+            xml_file = File(file(xml_file))
+        book.xml_file.save('%s.xml' % book.slug, xml_file, save=False)
         
         html_file = NamedTemporaryFile()
         if html.transform(book.xml_file.path, html_file):
