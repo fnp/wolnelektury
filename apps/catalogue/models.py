@@ -120,11 +120,15 @@ class Book(models.Model):
             if self.html_file:
                 formats.append(u'<a href="%s">Czytaj online</a>' % reverse('book_text', kwargs={'slug': self.slug}))
             if self.pdf_file:
-                formats.append(u'<a href="%s">Plik PDF</a>' % self.pdf_file.url)
+                formats.append(u'<a href="%s">PDF</a>' % self.pdf_file.url)
             if self.odt_file:
-                formats.append(u'<a href="%s">Plik ODT</a>' % self.odt_file.url)
+                formats.append(u'<a href="%s">ODT</a>' % self.odt_file.url)
             if self.txt_file:
-                formats.append(u'<a href="%s">Plik TXT</a>' % self.txt_file.url)
+                formats.append(u'<a href="%s">TXT</a>' % self.txt_file.url)
+            if self.mp3_file:
+                formats.append(u'<a href="%s">MP3</a>' % self.mp3_file.url)
+            if self.ogg_file:
+                formats.append(u'<a href="%s">OGG</a>' % self.ogg_file.url)
             
             self._short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
