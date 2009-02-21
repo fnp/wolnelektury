@@ -30,6 +30,9 @@
                 Pobierz wszystkie książki z tej półki
             </a>
         {% endif %}
+        {% if last_tag.gazeta_link %}
+            <p><a href="{{ last_tag.gazeta_link }}">Przeczytaj omówienia lektur w Lektury.Gazeta.pl</a></p>
+        {% endif %}
         <ol>
         {% for book in object_list %}
             <li>

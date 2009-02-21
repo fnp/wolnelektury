@@ -47,6 +47,7 @@ class Tag(TagBase):
     
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), default=0, blank=False, null=False)
+    gazeta_link = models.CharField(blank=True,  max_length=240)
     
     def has_description(self):
         return len(self.description) > 0
@@ -88,6 +89,7 @@ class Book(models.Model):
     _short_html = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
     extra_info = JSONField(_('extra information'))
+    gazeta_link = models.CharField(blank=True,  max_length=240)
     
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)

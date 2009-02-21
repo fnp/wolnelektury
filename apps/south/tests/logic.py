@@ -117,7 +117,7 @@ class TestMigrationLogic(unittest.TestCase):
         app = self.create_test_app()
         
         self.assertEqual(
-            ["0001_spam", "0002_eggs"],
+            ["0001_spam", "0002_eggs", "0003_alter_spam"],
             migration.get_migration_names(app),
         )
     
@@ -129,9 +129,10 @@ class TestMigrationLogic(unittest.TestCase):
         # Can't use vanilla import, modules beginning with numbers aren't in grammar
         M1 = __import__("fakeapp.migrations.0001_spam", {}, {}, ['Migration']).Migration
         M2 = __import__("fakeapp.migrations.0002_eggs", {}, {}, ['Migration']).Migration
+        M3 = __import__("fakeapp.migrations.0003_alter_spam", {}, {}, ['Migration']).Migration
         
         self.assertEqual(
-            [M1, M2],
+            [M1, M2, M3],
             list(migration.get_migration_classes(app)),
         )
     
@@ -147,7 +148,7 @@ class TestMigrationLogic(unittest.TestCase):
         self.assertEqual(M1, migration.get_migration(app, "0001_spam"))
         self.assertEqual(M2, migration.get_migration(app, "0002_eggs"))
         
-        self.assertRaises(ValueError, migration.get_migration, app, "0001_jam")
+        self.assertRaises((ImportError, ValueError), migration.get_migration, app, "0001_jam")
     
     
     def test_all_migrations(self):
@@ -158,6 +159,7 @@ class TestMigrationLogic(unittest.TestCase):
             {app: {
                 "0001_spam": migration.get_migration(app, "0001_spam"),
                 "0002_eggs": migration.get_migration(app, "0002_eggs"),
+                "0003_alter_spam": migration.get_migration(app, "0003_alter_spam"),
             }},
             migration.all_migrations(),
         )
@@ -186,6 +188,7 @@ class TestMigrationLogic(unittest.TestCase):
             (
                 (u"fakeapp", u"0001_spam"),
                 (u"fakeapp", u"0002_eggs"),
+                (u"fakeapp", u"0003_alter_spam"),
             ),
             migration.MigrationHistory.objects.values_list("app_name", "migration"),
         )
@@ -241,13 +244,49 @@ class TestMigrationLogic(unittest.TestCase):
             (
                 (u"fakeapp", u"0001_spam"),
                 (u"fakeapp", u"0002_eggs"),
+                (u"fakeapp", u"0003_alter_spam"),
             ),
             migration.MigrationHistory.objects.values_list("app_name", "migration"),
         )
         
         # Now roll them backwards
+        migration.migrate_app(app, target_name="0002", resolve_mode=None, fake=False, silent=True)
         migration.migrate_app(app, target_name="0001", resolve_mode=None, fake=True, silent=True)
         migration.migrate_app(app, target_name="zero", resolve_mode=None, fake=False, silent=True)
         
         # Finish with none
+        self.assertEqual(list(migration.MigrationHistory.objects.all()), [])
+    
+    def test_alter_column_null(self):
+        def null_ok():
+            from django.db import connection, transaction
+            # the DBAPI introspection module fails on postgres NULLs.
+            cursor = connection.cursor()
+            try:
+                cursor.execute("INSERT INTO southtest_spam (id, weight, expires, name) VALUES (100, 10.1, now(), NULL);")
+            except:
+                transaction.rollback()
+                return False
+            else:
+                cursor.execute("DELETE FROM southtest_spam")
+                transaction.commit()
+                return True
+        
+        app = migration.get_app("fakeapp")
+        self.assertEqual(list(migration.MigrationHistory.objects.all()), [])
+        
+        # by default name is NOT NULL
+        migration.migrate_app(app, target_name="0002", resolve_mode=None, fake=False, silent=True)
+        self.failIf(null_ok())
+        
+        # after 0003, it should be NULL
+        migration.migrate_app(app, target_name="0003", resolve_mode=None, fake=False, silent=True)
+        self.assert_(null_ok())
+
+        # make sure it is NOT NULL again
+        migration.migrate_app(app, target_name="0002", resolve_mode=None, fake=False, silent=True)
+        self.failIf(null_ok(), 'name not null after migration')
+        
+        # finish with no migrations, otherwise other tests fail...
+        migration.migrate_app(app, target_name="zero", resolve_mode=None, fake=False, silent=True)
         self.assertEqual(list(migration.MigrationHistory.objects.all()), [])

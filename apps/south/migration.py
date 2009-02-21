@@ -2,8 +2,11 @@
 import datetime
 import os
 import sys
+import traceback
 from django.conf import settings
 from django.db import models
+from django.core.exceptions import ImproperlyConfigured
+from django.core.management import call_command
 from models import MigrationHistory
 from south.db import db
 
@@ -57,7 +60,7 @@ def get_migration_names(app):
     return sorted([
         filename[:-3]
         for filename in os.listdir(os.path.dirname(app.__file__))
-        if filename.endswith(".py") and filename != "__init__.py"
+        if filename.endswith(".py") and filename != "__init__.py" and not filename.startswith(".")
     ])
 
 
@@ -77,7 +80,9 @@ def get_migration(app, name):
         module = __import__(app.__name__ + "." + name, '', '', ['Migration'])
         return module.Migration
     except ImportError:
-        raise ValueError("Migration %s:%s does not exist." % (get_app_name(app), name))
+        print " ! Migration %s:%s probably doesn't exist." % (get_app_name(app), name)
+        print " - Traceback:"
+        raise
 
 
 def all_migrations():
@@ -201,61 +206,116 @@ def needed_before_backwards(tree, app, name, sameapp=True):
     return remove_duplicates(needed)
 
 
-def run_forwards(app, migrations, fake=False, silent=False):
+def run_migrations(toprint, torun, recorder, app, migrations, fake=False, db_dry_run=False, silent=False):
     """
     Runs the specified migrations forwards, in order.
     """
     for migration in migrations:
         app_name = get_app_name(app)
         if not silent:
-            print " > %s: %s" % (app_name, migration)
+            print toprint % (app_name, migration)
         klass = get_migration(app, migration)
+
         if fake:
             if not silent:
                 print "   (faked)"
         else:
-            db.start_transaction()
+            
+            # If the database doesn't support running DDL inside a transaction
+            # *cough*MySQL*cough* then do a dry run first.
+            if not db.has_ddl_transactions:
+                db.dry_run = True
+                db.debug, old_debug = False, db.debug
+                try:
+                    getattr(klass(), torun)()
+                except:
+                    traceback.print_exc()
+                    print " ! Error found during dry run of migration! Aborting."
+                    return False
+                db.debug = old_debug
+                db.clear_run_data()
+            
+            db.dry_run = bool(db_dry_run)
+            
+            if db.has_ddl_transactions:
+                db.start_transaction()
             try:
-                klass().forwards()
+                getattr(klass(), torun)()
                 db.execute_deferred_sql()
             except:
-                db.rollback_transaction()
-                raise
+                if db.has_ddl_transactions:
+                    db.rollback_transaction()
+                    raise
+                else:
+                    traceback.print_exc()
+                    print " ! Error found during real run of migration! Aborting."
+                    print
+                    print " ! Since you have a database that does not support running"
+                    print " ! schema-altering statements in transactions, we have had to"
+                    print " ! leave it in an interim state between migrations."
+                    if torun == "forwards":
+                        print
+                        print " ! You *might* be able to recover with:"
+                        db.debug = db.dry_run = True
+                        klass().backwards()
+                    print
+                    print " ! The South developers regret this has happened, and would"
+                    print " ! like to gently persuade you to consider a slightly"
+                    print " ! easier-to-deal-with DBMS."
+                    return False
             else:
-                db.commit_transaction()
+                if db.has_ddl_transactions:
+                    db.commit_transaction()
+
+        if not db_dry_run:
+            # Record us as having done this
+            recorder(app_name, migration)
+
+
+def run_forwards(app, migrations, fake=False, db_dry_run=False, silent=False):
+    """
+    Runs the specified migrations forwards, in order.
+    """
+    
+    def record(app_name, migration):
         # Record us as having done this
         record = MigrationHistory.for_migration(app_name, migration)
         record.applied = datetime.datetime.utcnow()
         record.save()
+    
+    return run_migrations(
+        toprint = " > %s: %s",
+        torun = "forwards",
+        recorder = record,
+        app = app,
+        migrations = migrations,
+        fake = fake,
+        db_dry_run = db_dry_run,
+        silent = silent,
+    )
 
 
-def run_backwards(app, migrations, ignore=[], fake=False, silent=False):
+def run_backwards(app, migrations, ignore=[], fake=False, db_dry_run=False, silent=False):
     """
     Runs the specified migrations backwards, in order, skipping those
     migrations in 'ignore'.
     """
-    for migration in migrations:
-        if migration not in ignore:
-            app_name = get_app_name(app)
-            if not silent:
-                print " < %s: %s" % (app_name, migration)
-            klass = get_migration(app, migration)
-            if fake:
-                if not silent:
-                    print "   (faked)"
-            else:
-                db.start_transaction()
-                try:
-                    klass().backwards()
-                    db.execute_deferred_sql()
-                except:
-                    db.rollback_transaction()
-                    raise
-                else:
-                    db.commit_transaction()
-            # Record us as having not done this
-            record = MigrationHistory.for_migration(app_name, migration)
-            record.delete()
+    
+    def record(app_name, migration):
+        # Record us as having not done this
+        record = MigrationHistory.for_migration(app_name, migration)
+        record.delete()
+    
+    return run_migrations(
+        toprint = " < %s: %s",
+        torun = "backwards",
+        recorder = record,
+        app = app,
+        migrations = [x for x in migrations if x not in ignore],
+        fake = fake,
+        db_dry_run = db_dry_run,
+        silent = silent,
+    )
 
 
 def right_side_of(x, y):
@@ -291,7 +351,7 @@ def backwards_problems(tree, backwards, done, silent=False):
     return problems
 
 
-def migrate_app(app, target_name=None, resolve_mode=None, fake=False, yes=False, silent=False):
+def migrate_app(app, target_name=None, resolve_mode=None, fake=False, db_dry_run=False, yes=False, silent=False, load_inital_data=False):
     
     app_name = get_app_name(app)
     
@@ -309,6 +369,12 @@ def migrate_app(app, target_name=None, resolve_mode=None, fake=False, yes=False,
     # Find out what delightful migrations we have
     tree = dependency_tree()
     migrations = get_migration_names(app)
+    
+    # If there aren't any, quit quizically
+    if not migrations:
+        if not silent:
+            print "? You have no migrations for the '%s' app. You might want some." % app_name
+        return
     
     if target_name not in migrations and target_name not in ["zero", None]:
         matches = [x for x in migrations if x.startswith(target_name)]
@@ -331,7 +397,15 @@ def migrate_app(app, target_name=None, resolve_mode=None, fake=False, yes=False,
             return
     
     # Check there's no strange ones in the database
-    ghost_migrations = [m for m in MigrationHistory.objects.filter(applied__isnull = False) if get_app(m.app_name) not in tree or m.migration not in tree[get_app(m.app_name)]]
+    ghost_migrations = []
+    for m in MigrationHistory.objects.filter(applied__isnull = False):
+        try:
+            if get_app(m.app_name) not in tree or m.migration not in tree[get_app(m.app_name)]:
+                ghost_migrations.append(m)
+        except ImproperlyConfigured:
+            pass
+            
+        
     if ghost_migrations:
         if not silent:
             print " ! These migrations are in the database but not on disk:"
@@ -361,7 +435,12 @@ def migrate_app(app, target_name=None, resolve_mode=None, fake=False, yes=False,
             backwards = []
     
     # Get the list of currently applied migrations from the db
-    current_migrations = [(get_app(m.app_name), m.migration) for m in  MigrationHistory.objects.filter(applied__isnull = False)]
+    current_migrations = []
+    for m in MigrationHistory.objects.filter(applied__isnull = False):
+        try:
+            current_migrations.append((get_app(m.app_name), m.migration))
+        except ImproperlyConfigured:
+            pass
     
     direction = None
     bad = False
@@ -416,15 +495,34 @@ def migrate_app(app, target_name=None, resolve_mode=None, fake=False, yes=False,
     if direction == 1:
         if not silent:
             print " - Migrating forwards to %s." % target_name
-        for mapp, mname in forwards:
-            if (mapp, mname) not in current_migrations:
-                run_forwards(mapp, [mname], fake=fake, silent=silent)
+        try:
+            for mapp, mname in forwards:
+                if (mapp, mname) not in current_migrations:
+                    result = run_forwards(mapp, [mname], fake=fake, db_dry_run=db_dry_run, silent=silent)
+                    if result is False: # The migrations errored, but nicely.
+                        return
+        finally:
+            # Call any pending post_syncdb signals
+            db.send_pending_create_signals()
+        # Now load initial data, only if we're really doing things and ended up at current
+        if not fake and not db_dry_run and load_inital_data and target_name == migrations[-1]:
+            print " - Loading initial data for %s." % app_name
+            # Override Django's get_apps call temporarily to only load from the
+            # current app
+            old_get_apps, models.get_apps = (
+                models.get_apps,
+                lambda: [models.get_app(get_app_name(app))],
+            )
+            # Load the initial fixture
+            call_command('loaddata', 'initial_data', verbosity=1)
+            # Un-override
+            models.get_apps = old_get_apps
     elif direction == -1:
         if not silent:
             print " - Migrating backwards to just after %s." % target_name
         for mapp, mname in backwards:
             if (mapp, mname) in current_migrations:
-                run_backwards(mapp, [mname], fake=fake, silent=silent)
+                run_backwards(mapp, [mname], fake=fake, db_dry_run=db_dry_run, silent=silent)
     else:
         if not silent:
             print "- Nothing to migrate."

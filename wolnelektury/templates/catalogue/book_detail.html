@@ -94,9 +94,14 @@
                     <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
                     {% endfor %}
                 </li>
+            </ul>
+            <h2>W innych miejscach</h2>
+            <ul>
                 <li><a href="{{ extra_info.about }}">Lektura na wiki projektu</a></li>
                 <li><a href="{{ extra_info.source_url }}">Lektura w CBN Polona</a></li>
-                <li><a href="{{ book.xml_file.url }}">Kod źródłowy utworu (XML)</a></li>
+                {% if book.gazeta_link %}
+                <li><a href="{{ book.gazeta_link }}">Omówienie lektury w Lektury.Gazeta.pl</a></li>
+                {% endif %}
             </ul>
         </div>
         <div id="themes-list">

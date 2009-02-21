@@ -1,4 +1,4 @@
-from django.core.management.base import NoArgsCommand
+from django.core.management.base import NoArgsCommand, BaseCommand 
 from django.core.management.color import no_style
 from django.utils.datastructures import SortedDict
 from optparse import make_option
@@ -15,14 +15,17 @@ def get_app_name(app):
 
 class Command(NoArgsCommand):
     option_list = NoArgsCommand.option_list + (
-        make_option('--verbosity', action='store', dest='verbosity', default='1',
-            type='choice', choices=['0', '1', '2'],
-            help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
         make_option('--noinput', action='store_false', dest='interactive', default=True,
             help='Tells Django to NOT prompt the user for input of any kind.'),
         make_option('--migrate', action='store_true', dest='migrate', default=False,
             help='Tells South to also perform migrations after the sync. Default for during testing, and other internal calls.'),
     )
+    if '--verbosity' not in [opt.get_opt_string() for opt in BaseCommand.option_list]:
+        option_list += (
+            make_option('--verbosity', action='store', dest='verbosity', default='1',
+            type='choice', choices=['0', '1', '2'],
+            help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
+        )
     help = "Create the database tables for all apps in INSTALLED_APPS whose tables haven't already been created, except those which use migrations."
 
     def handle_noargs(self, **options):
@@ -37,8 +40,10 @@ class Command(NoArgsCommand):
             else:
                 # This is a migrated app, leave it
                 apps_migrated.append(app_name)
+        verbosity = int(options.get('verbosity', 0))
         # Run syncdb on only the ones needed
-        print "Syncing..."
+        if verbosity > 0:
+            print "Syncing..."
         old_installed, settings.INSTALLED_APPS = settings.INSTALLED_APPS, apps_needing_sync
         old_app_store, cache.app_store = cache.app_store, SortedDict([
             (k, v) for (k, v) in cache.app_store.items()
@@ -49,13 +54,17 @@ class Command(NoArgsCommand):
         cache.app_store = old_app_store
         # Migrate if needed
         if options.get('migrate', True):
-            print "Migrating..."
-            management.call_command('migrate')
+            if verbosity > 0:
+                print "Migrating..."
+            management.call_command('migrate', **options)
         # Be obvious about what we did
-        print "\nSynced:\n > %s" % "\n > ".join(apps_needing_sync)
+        if verbosity > 0:
+            print "\nSynced:\n > %s" % "\n > ".join(apps_needing_sync)
         
         if options.get('migrate', True):
-            print "\nMigrated:\n - %s" % "\n - ".join(apps_migrated)
+            if verbosity > 0:
+                print "\nMigrated:\n - %s" % "\n - ".join(apps_migrated)
         else:
-            print "\nNot synced (use migrations):\n - %s" % "\n - ".join(apps_migrated)
-            print "(use ./manage.py migrate to migrate these)"
+            if verbosity > 0:
+                print "\nNot synced (use migrations):\n - %s" % "\n - ".join(apps_migrated)
+                print "(use ./manage.py migrate to migrate these)"

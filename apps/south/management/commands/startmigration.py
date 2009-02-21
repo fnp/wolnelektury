@@ -3,6 +3,7 @@ from django.core.management.color import no_style
 from django.db import models
 from django.db.models.fields.related import RECURSIVE_RELATIONSHIP_CONSTANT
 from django.contrib.contenttypes.generic import GenericRelation
+from django.db.models.fields import FieldDoesNotExist
 from optparse import make_option
 from south import migration
 import sys
@@ -17,18 +18,23 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('--model', action='append', dest='model_list', type='string',
             help='Generate a Create Table migration for the specified model.  Add multiple models to this migration with subsequent --model parameters.'),
+        make_option('--add-field', action='append', dest='field_list', type='string',
+            help='Generate an Add Column migration for the specified modelname.fieldname - you can use this multiple times to add more than one column.'),
         make_option('--initial', action='store_true', dest='initial', default=False,
             help='Generate the initial schema for the app.'),
     )
     help = "Creates a new template migration for the given app"
     
-    def handle(self, app=None, name="", model_list=None, initial=False, **options):
+    def handle(self, app=None, name="", model_list=None, field_list=None, initial=False, **options):
         
         # If model_list is None, then it's an empty list
         model_list = model_list or []
         
+        # If field_list is None, then it's an empty list
+        field_list = field_list or []
+        
         # make sure --model and --all aren't both specified
-        if initial and model_list:
+        if initial and (model_list or field_list):
             print "You cannot use --initial and other options together"
             return
             
@@ -67,7 +73,22 @@ class Command(BaseCommand):
                     return
                     
                 models_to_migrate.append(model)
-                
+        
+        # See what fields need to be included
+        fields_to_add = []
+        for field_spec in field_list:
+            model_name, field_name = field_spec.split(".", 1)
+            model = models.get_model(app, model_name)
+            if not model:
+                print "Couldn't find model '%s' in app '%s'" % (model_name, app)
+                return
+            try:
+                field = model._meta.get_field(field_name)
+            except FieldDoesNotExist:
+                print "Model '%s' doesn't have a field '%s'" % (model_name, field_name)
+                return
+            fields_to_add.append((model, field_name, field))
+        
         # Make the migrations directory if it's not there
         app_module_path = app_models_module.__name__.split('.')[0:-1]
         try:
@@ -80,11 +101,15 @@ class Command(BaseCommand):
             os.path.dirname(app_module.__file__),
             "migrations",
         )
+        # Make sure there's a migrations directory and __init__.py
         if not os.path.isdir(migrations_dir):
             print "Creating migrations directory at '%s'..." % migrations_dir
             os.mkdir(migrations_dir)
+        init_path = os.path.join(migrations_dir, "__init__.py")
+        if not os.path.isfile(init_path):
             # Touch the init py file
-            open(os.path.join(migrations_dir, "__init__.py"), "w").close()
+            print "Creating __init__.py in '%s'..." % migrations_dir
+            open(init_path, "w").close()
         # See what filename is next in line. We assume they use numbers.
         migrations = migration.get_migration_names(migration.get_app(app))
         highest_number = 0
@@ -102,23 +127,110 @@ class Command(BaseCommand):
         )
         # If there's a model, make the migration skeleton, else leave it bare
         forwards, backwards = '', ''
+        if fields_to_add:
+            # First, do the added fields
+            for model, field_name, field in fields_to_add:
+                field_definition = generate_field_definition(model, field)
+                
+                if isinstance(field, models.ManyToManyField):
+                    # Make a mock model for each side
+                    mock_model = "\n".join([
+                        create_mock_model(model, "        "), 
+                        create_mock_model(field.rel.to, "        ")
+                    ])
+                    # And a field defn, that's actually a table creation
+                    forwards += '''
+        # Mock Model
+%s
+        # Adding ManyToManyField '%s.%s'
+        db.create_table('%s', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('%s', models.ForeignKey(%s, null=False)),
+            ('%s', models.ForeignKey(%s, null=False))
+        )) ''' % (
+                mock_model,
+                model._meta.object_name,
+                field.name,
+                field.m2m_db_table(),
+                field.m2m_column_name()[:-3], # strip off the '_id' at the end
+                model._meta.object_name,
+                field.m2m_reverse_name()[:-3], # strip off the '_id' at the ned
+                field.rel.to._meta.object_name
+                )
+                    backwards += '''
+        # Dropping ManyToManyField '%s.%s'
+        db.drop_table('%s')''' % (
+                        model._meta.object_name,
+                        field.name,
+                        field.m2m_db_table()
+                    )
+                    continue
+                elif field.rel: # ForeignKey, etc.
+                    mock_model = create_mock_model(field.rel.to, "        ")
+                    field_definition = related_field_definition(field, field_definition)
+                else:
+                    mock_model = None
+                
+                # If we can't get it (inspect madness?) then insert placeholder
+                if not field_definition:
+                    print "Warning: Could not generate field definition for %s.%s, manual editing of migration required." % \
+                                (model._meta.object_name, field.name)
+                    field_definition = '<<< REPLACE THIS WITH FIELD DEFINITION FOR %s.%s >>>' % (model._meta.object_name, f.name)
+                
+                if mock_model:
+                    forwards += '''
+        # Mock model
+%s
+        ''' % (mock_model)
+                
+                forwards += '''
+        # Adding field '%s.%s'
+        db.add_column(%r, %r, %s)
+        ''' % (
+            model._meta.object_name,
+            field.name,
+            model._meta.db_table,
+            field.name,
+            field_definition,
+        )
+                backwards += '''
+        # Deleting field '%s.%s'
+        db.delete_column(%r, %r)
+        ''' % (
+            model._meta.object_name,
+            field.name,
+            model._meta.db_table,
+            field.column,
+        )
+        
         if models_to_migrate:
+            # Now, do the added models
             for model in models_to_migrate:
                 table_name = model._meta.db_table
                 mock_models = []
                 fields = []
                 for f in model._meta.local_fields:
-                    # look up the field definition to see how this was created
+                    
+                    # Look up the field definition to see how this was created
                     field_definition = generate_field_definition(model, f)
-                    if field_definition:
+                    
+                    # If it's a OneToOneField, and ends in _ptr, just use it
+                    if isinstance(f, models.OneToOneField) and f.name.endswith("_ptr"):
+                        mock_models.append(create_mock_model(f.rel.to, "        "))
+                        field_definition = "models.OneToOneField(%s)" % f.rel.to.__name__
+                    
+                    # It's probably normal then
+                    elif field_definition:
                         
                         if isinstance(f, models.ForeignKey):
-                            mock_models.append(create_mock_model(f.rel.to))
+                            mock_models.append(create_mock_model(f.rel.to, "        "))
                             field_definition = related_field_definition(f, field_definition)
-                            
+                    
+                    # Oh noes, no defn found
                     else:
                         print "Warning: Could not generate field definition for %s.%s, manual editing of migration required." % \
                                 (model._meta.object_name, f.name)
+                        print f, type(f)
                                 
                         field_definition = '<<< REPLACE THIS WITH FIELD DEFINITION FOR %s.%s >>>' % (model._meta.object_name, f.name)
                                                 
@@ -128,12 +240,12 @@ class Command(BaseCommand):
                     forwards += '''
         
         # Mock Models
-        %s
-        ''' % "\n        ".join(mock_models)
+%s
+        ''' % "\n".join(mock_models)
         
                 forwards += '''
         # Model '%s'
-        db.create_table('%s', (
+        db.create_table(%r, (
             %s
         ))''' % (
                     model._meta.object_name,
@@ -155,11 +267,11 @@ class Command(BaseCommand):
                     if m.rel.through:
                         continue
                         
-                    mock_models = [create_mock_model(model), create_mock_model(m.rel.to)]
+                    mock_models = [create_mock_model(model, "        "), create_mock_model(m.rel.to, "        ")]
                     
                     forwards += '''
         # Mock Models
-        %s
+%s
         
         # M2M field '%s.%s'
         db.create_table('%s', (
@@ -167,7 +279,7 @@ class Command(BaseCommand):
             ('%s', models.ForeignKey(%s, null=False)),
             ('%s', models.ForeignKey(%s, null=False))
         )) ''' % (
-                        "\n        ".join(mock_models),
+                        "\n".join(mock_models),
                         model._meta.object_name,
                         m.name,
                         m.m2m_db_table(),
@@ -204,12 +316,20 @@ class Command(BaseCommand):
                 "','".join(model._meta.object_name for model in models_to_migrate)
                 )
         
-        else:
+        # Try sniffing the encoding using PEP 0263's method
+        encoding = None
+        first_two_lines = inspect.getsourcelines(app_models_module)[0][:2]
+        for line in first_two_lines:
+            if re.search("coding[:=]\s*([-\w.]+)", line):
+                encoding = line
+        
+        if (not forwards) and (not backwards):
             forwards = '"Write your forwards migration here"'
             backwards = '"Write your backwards migration here"'
         fp = open(os.path.join(migrations_dir, new_filename), "w")
-        fp.write("""
+        fp.write("""%s
 from south.db import db
+from django.db import models
 from %s.models import *
 
 class Migration:
@@ -219,7 +339,7 @@ class Migration:
     
     def backwards(self):
         %s
-""" % ('.'.join(app_module_path), forwards, backwards))
+""" % (encoding or "", '.'.join(app_module_path), forwards, backwards))
         fp.close()
         print "Created %s." % new_filename
 
@@ -248,8 +368,11 @@ def generate_field_definition(model, field):
             # the correct comment.
             if test_field(stripped_definition):
                 return stripped_definition
-                
-            index = field_definition.index('#', index+1)
+            
+            try:    
+                index = field_definition.index('#', index+1)
+            except ValueError:
+                break
             
         return field_definition
         
@@ -263,7 +386,7 @@ def generate_field_definition(model, field):
     source = inspect.getsourcelines(model)
     if not source:
         raise Exception("Could not find source to model: '%s'" % (model.__name__))
-        
+    
     # look for a line starting with the field name
     start_field_re = re.compile(r'\s*%s\s*=\s*(.*)' % field.name)
     for line in source[0]:
@@ -329,21 +452,40 @@ def related_field_definition(field, field_definition):
     
     return field_definition
 
-def create_mock_model(model):
+def create_mock_model(model, indent="        "):
     # produce a string representing the python syntax necessary for creating
     # a mock model using the supplied real model
-    if model._meta.pk.__class__.__module__ != 'django.db.models.fields':
+    if not model._meta.pk.__class__.__module__.startswith('django.db.models.fields'):
         # we can fix this with some clever imports, but it doesn't seem necessary to
         # spend time on just yet
-        print "Can't generate a mock model for %s because it's primary key isn't a default django field" % model
+        print "Can't generate a mock model for %s because it's primary key isn't a default django field; it's type %s." % (model, model._meta.pk.__class__)
         sys.exit()
     
-    return "%s = db.mock_model(model_name='%s', db_table='%s', db_tablespace='%s', pk_field_name='%s', pk_field_type=models.%s)" % \
+    pk_field_args = []
+    pk_field_kwargs = {}
+    other_mocks = []
+    # If it's a OneToOneField or ForeignKey, take it's first arg
+    if model._meta.pk.__class__.__name__ in ["OneToOneField", "ForeignKey"]:
+        if model._meta.pk.rel.to == model:
+            pk_field_args += ["'self'"]
+        else:
+            pk_field_args += [model._meta.pk.rel.to._meta.object_name]
+            other_mocks += [model._meta.pk.rel.to]
+    
+    # Perhaps it has a max_length set?
+    if model._meta.pk.max_length:
+        pk_field_kwargs["max_length"] = model._meta.pk.max_length
+    
+    return "%s%s%s = db.mock_model(model_name='%s', db_table='%s', db_tablespace='%s', pk_field_name='%s', pk_field_type=models.%s, pk_field_args=[%s], pk_field_kwargs=%r)" % \
         (
+        "\n".join([create_mock_model(m, indent) for m in other_mocks]+[""]),
+        indent,
         model._meta.object_name,
         model._meta.object_name,
         model._meta.db_table,
         model._meta.db_tablespace,
         model._meta.pk.name,
-        model._meta.pk.__class__.__name__
+        model._meta.pk.__class__.__name__,
+        ", ".join(pk_field_args),
+        pk_field_kwargs,
         )
