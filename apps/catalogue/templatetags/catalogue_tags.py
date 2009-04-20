@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import feedparser
+import datetime
+
 from django import template
 from django.template import Node, Variable
 from django.utils.encoding import smart_str
@@ -190,12 +193,9 @@ class CatalogueURLNode(Node):
 
 
 @register.inclusion_tag('catalogue/latest_blog_posts.html')
-def latest_blog_posts(feed_url, posts_to_show=5):
-    import feedparser
-    import datetime
-    
+def latest_blog_posts(feed_url, posts_to_show=5):    
     try:
-        feed = feedparser.parse(feed_url)
+        feed = feedparser.parse(str(feed_url))
         posts = []
         for i in range(posts_to_show):
             pub_date = feed['entries'][i].updated_parsed

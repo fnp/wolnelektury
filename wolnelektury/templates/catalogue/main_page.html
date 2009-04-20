@@ -253,7 +253,7 @@
         <div id="latest-blog-posts">
             <h2>Aktualności</h2>
             {% cache 1800 latest-blog-posts %}
-            {% latest_blog_posts "http://www.nowoczesnapolska.org.pl/feed/?s=Wolne%20Lektury" %}
+            {% latest_blog_posts "http://www.nowoczesnapolska.org.pl/tematy/wolne-lektury/feed/" %}
             {% endcache %}
             <p class="see-more"><a href="http://www.nowoczesnapolska.org.pl/">Zobacz nasz blog ⇒</a></p>
         </div>
