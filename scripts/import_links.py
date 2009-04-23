@@ -13,7 +13,7 @@ setup_environ(settings)
 from catalogue.models import Book, Tag
 
 
-def import_tags(file_name, attribute):
+def import_links(file_name, attribute):
     for line in file(file_name):
         slug, link = line.split()
         link = link.strip('\n')
@@ -32,5 +32,5 @@ def import_tags(file_name, attribute):
                 print 'Invalid slug %s!' % slug
 
 
-import_tags('gazeta-links', 'gazeta_link')
-
+import_links('gazeta-links', 'gazeta_link')
+import_links('wiki-links', 'wiki_link')
