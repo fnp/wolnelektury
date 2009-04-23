@@ -100,7 +100,10 @@
                 <li><a href="{{ extra_info.about }}">Lektura na wiki projektu</a></li>
                 <li><a href="{{ extra_info.source_url }}">Lektura w CBN Polona</a></li>
                 {% if book.gazeta_link %}
-                <li><a href="{{ book.gazeta_link }}">Lektura w Lektury.Gazeta.pl</a></li>
+                <li><a href="{{ book.gazeta_link }}">Opis lektury w Lektury.Gazeta.pl</a></li>
+                {% endif %}
+                {% if book.wiki_link %}
+                <li><a href="{{ book.wiki_link }}">Opis lektury w Wikipedii</a></li>
                 {% endif %}
             </ul>
         </div>

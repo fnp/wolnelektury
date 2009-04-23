@@ -33,6 +33,9 @@
         {% if last_tag.gazeta_link %}
             <p><a href="{{ last_tag.gazeta_link }}">{{ last_tag }} w Lektury.Gazeta.pl</a></p>
         {% endif %}
+        {% if last_tag.wiki_link %}
+            <p><a href="{{ last_tag.wiki_link }}">{{ last_tag }} w Wikipedii</a></p>
+        {% endif %}
         <ol>
         {% for book in object_list %}
             <li>
