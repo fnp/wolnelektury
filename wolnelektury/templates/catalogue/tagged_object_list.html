@@ -31,10 +31,16 @@
             </a>
         {% endif %}
         {% if last_tag.gazeta_link %}
-            <p><a href="{{ last_tag.gazeta_link }}">{{ last_tag }} w Lektury.Gazeta.pl</a></p>
+        <p><a href="{{ last_tag.gazeta_link }}">
+            {% ifequal last_tag.category "author" %}Przeczytaj omówienia utworów autora w serwisie Lektury.Gazeta.pl{% endifequal %}
+            {% ifequal last_tag.category "epoch"  %}Przeczytaj omówienia z epoki {{ last_tag }} w serwisie Lektury.Gazeta.pl{% endifequal %}
+        </a></p>
         {% endif %}
         {% if last_tag.wiki_link %}
-            <p><a href="{{ last_tag.wiki_link }}">{{ last_tag }} w Wikipedii</a></p>
+        <p><a href="{{ last_tag.wiki_link }}">
+            {% ifequal last_tag.category "author" %}Przeczytaj artykuł o autorze w Wikipedii{% endifequal %}
+            {% ifequal last_tag.category "epoch"  %}Przeczytaj artykuł o epoce {{ last_tag }} w Wikipedii{% endifequal %}
+        </a></p>
         {% endif %}
         <ol>
         {% for book in object_list %}
