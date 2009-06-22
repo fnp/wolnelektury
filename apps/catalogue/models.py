@@ -119,7 +119,7 @@ class Book(models.Model):
             return mark_safe(self._short_html)
         else:
             tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
-            tags = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in tags]
+            tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
 
             formats = []
             if self.html_file:
@@ -134,6 +134,8 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">MP3</a>' % self.mp3_file.url)
             if self.ogg_file:
                 formats.append(u'<a href="%s">OGG</a>' % self.ogg_file.url)
+            
+            formats = [mark_safe(format) for format in formats]
             
             self._short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
@@ -312,7 +314,7 @@ class Fragment(models.Model):
         if len(self._short_html):
             return mark_safe(self._short_html)
         else:
-            book_authors = [u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) 
+            book_authors = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) 
                 for tag in self.book.tags if tag.category == 'author']
             
             self._short_html = unicode(render_to_string('catalogue/fragment_short.html',

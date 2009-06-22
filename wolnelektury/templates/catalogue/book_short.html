@@ -10,8 +10,8 @@
     <div class="book-description">
         <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
         {% if formats %}
-            <p style="margin: 0">Na skróty: {{ formats|join:", "|safe }}</p>
+            <p style="margin: 0">Na skróty: {{ formats|join:", " }}</p>
         {% endif %}
-        <p style="margin: 0">Utwór w kategoriach: {{ tags|join:", "|safe }}</p>
+        <p style="margin: 0">Utwór w kategoriach: {{ tags|join:", " }}</p>
     </div>
 </div>
