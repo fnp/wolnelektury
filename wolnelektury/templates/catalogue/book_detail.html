@@ -12,6 +12,9 @@
     </form>
     
     <div id="books-list">
+        {% if extra_info.license %}
+        <p>Utwór jest udostępniony na licencji <a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
+        {% endif %}
         <p>Na podstawie: {{ extra_info.source_name }}</p>
         {% if book.has_description %}
             <div id="description">
