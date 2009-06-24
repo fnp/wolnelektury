@@ -25,7 +25,8 @@ class TestDCParser(unittest.TestCase):
             'released_to_public_domain_at': u'1925-01-01',
             'epoch': u'Romantyzm',
             'genre': u'Baśń',
-            'technical_editor': u'Gałecki, Dariusz'
+            'technical_editor': u'Gałecki, Dariusz',
+            'license_description': u'Domena publiczna - tłumacz Cecylia Niewiadomska zm. 1925',
         }),
         ('kochanowski_piesn7.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
@@ -40,7 +41,8 @@ class TestDCParser(unittest.TestCase):
             'released_to_public_domain_at': u'1584-01-01',
             'epoch': u'Renesans',
             'genre': u'Pieśń',
-            'technical_editor': u'Gałecki, Dariusz'
+            'technical_editor': u'Gałecki, Dariusz',
+            'license_description': u'Domena publiczna - Jan Kochanowski zm. 1584 ',
         }),
         ('mickiewicz_rybka.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
@@ -55,7 +57,8 @@ class TestDCParser(unittest.TestCase):
             'released_to_public_domain_at': u'1855-01-01',
             'epoch': u'Romantyzm',
             'genre': u'Ballada',
-            'technical_editor': u'Sutkowska, Olga'
+            'technical_editor': u'Sutkowska, Olga',
+            'license_description': u'Domena publiczna - Adam Mickiewicz zm. 1855',
         }),
         ('sofokles_antygona.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
@@ -71,7 +74,24 @@ class TestDCParser(unittest.TestCase):
             'released_to_public_domain_at': u'1925-01-01',
             'epoch': u'Starożytność',
             'genre': u'Tragedia',
-            'technical_editor': u'Gałecki, Dariusz'
+            'technical_editor': u'Gałecki, Dariusz',
+            'license_description': u'Domena publiczna - tłumacz Kazimierz Morawski zm. 1925',
+        }),
+        ('biedrzycki_akslop.xml', {
+            'publisher': u'Fundacja Nowoczesna Polska',
+            'about': 'http://wiki.wolnepodreczniki.pl/Lektury:Biedrzycki/Akslop',
+            'source_name': u'Miłosz Biedrzycki, * ("Gwiazdka"), Fundacja "brulion", Kraków-Warszawa, 1993',
+            'author': u'Biedrzycki, Miłosz',
+            'url': u'http://wolnelektury.pl/katalog/lektura/akslop',
+            'created_at': u'2009-06-04',
+            'title': u'Akslop',
+            'kind': u'Liryka',
+            'source_url': u'http://free.art.pl/mlb/gwiazdka.html#t1',
+            'epoch': u'Współczesność',
+            'genre': u'Wiersz',
+            'technical_editor': u'Sutkowska, Olga',
+            'license': u'http://creativecommons.org/licenses/by-sa/3.0/',
+            'license_description': u'Creative Commons Uznanie Autorstwa - Na Tych Samych Warunkach 3.0.PL'
         }),
     )
     

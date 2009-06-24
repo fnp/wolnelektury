@@ -117,6 +117,8 @@ class BookInfo(object):
         DC('source.URL')     : ('source_url', str_to_unicode),
         DC('identifier.url') : ('url', str_to_unicode),
         DC('relation.hasPart') : ('parts', str_to_unicode_list),
+        DC('rights.license') : ('license', str_to_unicode),
+        DC('rights')         : ('license_description', str_to_unicode), 
     }
 
     @classmethod
