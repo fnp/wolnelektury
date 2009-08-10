@@ -102,15 +102,12 @@ class TestDCParser(unittest.TestCase):
 
 
 class TestParserErrors(unittest.TestCase):
-
     def test_error(self):
         try:
             html.transform(test_file_path('erroneous', 'asnyk_miedzy_nami.xml'),
                            test_file_path('erroneous', 'asnyk_miedzy_nami.html'))
             self.fail()
         except etree.XMLSyntaxError, e:
-            import ipdb; ipdb.set_trace()
-            
             self.assertEqual(e.position, (25, 13))
 
 
