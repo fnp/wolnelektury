@@ -5,6 +5,8 @@ import os
 import optparse
 import codecs
 
+from librarian import dcparser
+
 
 HEADER = u"""\
 Kodowanie znaków w dokumencie: UTF-8.
@@ -12,9 +14,14 @@ Kodowanie znaków w dokumencie: UTF-8.
 Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl/). Reprodukcja cyfrowa wykonana przez
 Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN. Ten utwór nie jest chroniony prawem autorskim i znajduje
 się w domenie publicznej, co oznacza, że możesz go swobodnie wykorzystywać, publikować i rozpowszechniać.
+
+Wersja lektury w opracowaniu merytorycznym i krytycznym (przypisy i motywy) dostępna jest na stronie %s.
 -----
 
 """
+
+def get_header(filename):
+    return HEADER % dcparser.parse(filename).url
 
 
 REGEXES = [
@@ -58,11 +65,9 @@ if __name__ == '__main__':
         
         xml = codecs.open(input_filename, 'r', encoding='utf-8').read()
         for pattern, repl in REGEXES:
-            # print pattern, repl
             xml, n = re.subn(pattern, repl, xml)
-            # print n
         
         output = codecs.open(output_filename, 'w', encoding='utf-8')
-        output.write(HEADER)
+        output.write(get_header(input_filename))
         output.write(xml)
 
