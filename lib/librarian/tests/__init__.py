@@ -2,16 +2,17 @@
 import unittest
 from os.path import dirname, join, realpath
 
-from librarian import dcparser
+from lxml import etree
+from librarian import dcparser, html
 
 
-def test_file_path(file_name):
-    return realpath(join(dirname(__file__), file_name))
+def test_file_path(dir_name, file_name):
+    return realpath(join(dirname(__file__), 'files', dir_name, file_name))
 
 
 class TestDCParser(unittest.TestCase):
     KNOWN_RESULTS = (
-        ('andersen_brzydkie_kaczatko.xml', {
+        ('dcparser', 'andersen_brzydkie_kaczatko.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
             'about': u'http://wiki.wolnepodreczniki.pl/Lektury:Andersen/Brzydkie_kaczątko',
             'source_name': u'Andersen, Hans Christian (1805-1875), Baśnie, Gebethner i Wolff, wyd. 7, Kraków, 1925',
@@ -28,7 +29,7 @@ class TestDCParser(unittest.TestCase):
             'technical_editor': u'Gałecki, Dariusz',
             'license_description': u'Domena publiczna - tłumacz Cecylia Niewiadomska zm. 1925',
         }),
-        ('kochanowski_piesn7.xml', {
+        ('dcparser', 'kochanowski_piesn7.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
             'about': u'http://wiki.wolnepodreczniki.pl/Lektury:Kochanowski/Pieśni/Pieśń_VII_(1)',
             'source_name': u'Kochanowski, Jan (1530-1584), Dzieła polskie, tom 1, oprac. Julian Krzyżanowski, wyd. 8, Państwowy Instytut Wydawniczy, Warszawa, 1976',
@@ -44,7 +45,7 @@ class TestDCParser(unittest.TestCase):
             'technical_editor': u'Gałecki, Dariusz',
             'license_description': u'Domena publiczna - Jan Kochanowski zm. 1584 ',
         }),
-        ('mickiewicz_rybka.xml', {
+        ('dcparser', 'mickiewicz_rybka.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
             'about': 'http://wiki.wolnepodreczniki.pl/Lektury:Mickiewicz/Ballady/Rybka',
             'source_name': u'Mickiewicz, Adam (1798-1855), Poezje, tom 1 (Wiersze młodzieńcze - Ballady i romanse - Wiersze do r. 1824), Krakowska Spółdzielnia Wydawnicza, wyd. 2 zwiększone, Kraków, 1922',
@@ -60,7 +61,7 @@ class TestDCParser(unittest.TestCase):
             'technical_editor': u'Sutkowska, Olga',
             'license_description': u'Domena publiczna - Adam Mickiewicz zm. 1855',
         }),
-        ('sofokles_antygona.xml', {
+        ('dcparser', 'sofokles_antygona.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
             'about': 'http://wiki.wolnepodreczniki.pl/Lektury:Sofokles/Antygona',
             'source_name': u'Sofokles (496-406 a.C.), Antygona, Zakład Narodowy im. Ossolińskich, wyd. 7, Lwów, 1939',
@@ -77,7 +78,7 @@ class TestDCParser(unittest.TestCase):
             'technical_editor': u'Gałecki, Dariusz',
             'license_description': u'Domena publiczna - tłumacz Kazimierz Morawski zm. 1925',
         }),
-        ('biedrzycki_akslop.xml', {
+        ('dcparser', 'biedrzycki_akslop.xml', {
             'publisher': u'Fundacja Nowoczesna Polska',
             'about': 'http://wiki.wolnepodreczniki.pl/Lektury:Biedrzycki/Akslop',
             'source_name': u'Miłosz Biedrzycki, * ("Gwiazdka"), Fundacja "brulion", Kraków-Warszawa, 1993',
@@ -96,8 +97,21 @@ class TestDCParser(unittest.TestCase):
     )
     
     def test_parse(self):
-        for file_name, result in self.KNOWN_RESULTS:
-            self.assertEqual(dcparser.parse(test_file_path(file_name)).to_dict(), result)
+        for dir_name, file_name, result in self.KNOWN_RESULTS:
+            self.assertEqual(dcparser.parse(test_file_path(dir_name, file_name)).to_dict(), result)
+
+
+class TestParserErrors(unittest.TestCase):
+
+    def test_error(self):
+        try:
+            html.transform(test_file_path('erroneous', 'asnyk_miedzy_nami.xml'),
+                           test_file_path('erroneous', 'asnyk_miedzy_nami.html'))
+            self.fail()
+        except etree.XMLSyntaxError, e:
+            import ipdb; ipdb.set_trace()
+            
+            self.assertEqual(e.position, (25, 13))
 
 
 if __name__ == '__main__':
