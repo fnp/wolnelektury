@@ -18,6 +18,9 @@ ENTITY_SUBSTITUTIONS = [
 ]
 
 
+MAX_LINE_LENGTH = 80
+
+
 def substitute_entities(context, text):
     """XPath extension function converting all entites in passed text."""
     if isinstance(text, list):
@@ -27,9 +30,28 @@ def substitute_entities(context, text):
     return text
 
 
+def wrap_words(context, text):
+    """XPath extension function automatically wrapping words in passed text"""
+    if isinstance(text, list):
+        text = ''.join(text)
+    words = re.split(r'\s', text)
+    
+    line_length = 0
+    lines = [[]]
+    for word in words:
+        line_length += len(word) + 1
+        if line_length > MAX_LINE_LENGTH:
+            # Max line length was exceeded. We create new line
+            lines.append([])
+            line_length = len(word)
+        lines[-1].append(word)
+    return '\n'.join(' '.join(line) for line in lines)
+
+
 # Register substitute_entities function with lxml
 ns = etree.FunctionNamespace('http://wolnelektury.pl/functions')
 ns['substitute_entities'] = substitute_entities
+ns['wrap_words'] = wrap_words
 
 
 def transform(input_filename, output_filename):

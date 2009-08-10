@@ -158,7 +158,7 @@ Wersja lektury w opracowaniu merytorycznym i krytycznym (przypisy i motywy) dost
 <xsl:text>
 
 </xsl:text>
-<xsl:apply-templates mode="inline" />
+<xsl:value-of select="wl:wrap_words(text())" />
 </xsl:template>
 
 <xsl:template match="strofa">
