@@ -3,6 +3,7 @@ Dependencies
 
  * [Django 1.0](http://djangoproject.com/) (application framework)
  * [lxml 2.0.0](http://codespeak.net/lxml/) (for importing books)
+ * [librarian 1.1](http://redmine.nowoczesnapolska.org.pl/projects/show/librarian) (for importing books)
  * Python libraries from lib directory
  * Django applications from apps directory
 
