@@ -2,10 +2,12 @@ from django import template
 from django.db import models
 from django.core.cache import cache
 
+
 register = template.Library()
 
 Chunk = models.get_model('chunks', 'chunk')
-CACHE_PREFIX = "chunk_"
+Attachment = models.get_model('chunks', 'attachment')
+
 
 def do_get_chunk(parser, token):
     # split_contents() knows not to split quoted strings.
@@ -23,6 +25,7 @@ def do_get_chunk(parser, token):
     # Send key without quotes and caching time
     return ChunkNode(key[1:-1], cache_time)
 
+
 class ChunkNode(template.Node):
     def __init__(self, key, cache_time=0):
        self.key = key
@@ -30,7 +33,7 @@ class ChunkNode(template.Node):
     
     def render(self, context):
         try:
-            cache_key = CACHE_PREFIX + self.key
+            cache_key = 'chunk_' + self.key
             c = cache.get(cache_key)
             if c is None:
                 c = Chunk.objects.get(key=self.key)
@@ -43,3 +46,18 @@ class ChunkNode(template.Node):
         return content
         
 register.tag('chunk', do_get_chunk)
+
+
+def attachment(key, cache_time=0):
+    try:
+        cache_key = 'attachment_' + key
+        c = cache.get(cache_key)
+        if c is None:
+            c = Attachment.objects.get(key=key)
+            cache.set(cache_key, c, int(cache_time))
+        return c.attachment.url
+    except Attachment.DoesNotExist:
+        return ''
+    
+register.simple_tag(attachment)
+

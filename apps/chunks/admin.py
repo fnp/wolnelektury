@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from chunks.models import Chunk
+from chunks.models import Chunk, Attachment
 
 
 class ChunkAdmin(admin.ModelAdmin):
@@ -9,3 +9,9 @@ class ChunkAdmin(admin.ModelAdmin):
 
 admin.site.register(Chunk, ChunkAdmin)
 
+
+class AttachmentAdmin(admin.ModelAdmin):
+    list_display = ('key',)
+    search_fields = ('key',)
+
+admin.site.register(Attachment, AttachmentAdmin)
