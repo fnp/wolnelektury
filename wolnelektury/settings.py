@@ -96,6 +96,7 @@ INSTALLED_APPS = [
     
     # external
     'south',
+    'sponsors',
     'newtagging',
     'pagination',
     'chunks',
@@ -108,7 +109,7 @@ CACHE_BACKEND = 'locmem:///?max_entries=3000'
 # CSS and JavaScript file groups
 COMPRESS_CSS = {
     'all': {
-        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css',),
+        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css', 'css/sponsors.css',),
         'output_filename': 'css/all.min.css',
     },
     'book': {

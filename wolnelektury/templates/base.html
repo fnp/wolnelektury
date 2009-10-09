@@ -1,4 +1,4 @@
-{% load chunks compressed catalogue_tags %}
+{% load chunks compressed catalogue_tags sponsor_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,11 +55,8 @@
                 Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17,
                 e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>
             </p>
-<p>
-    <img src="{% attachment 'footer-img' %}" usemap="#footermap" alt="Partnerzy serwisu" />
-<MAP NAME="footermap">{% chunk 'footer-map' %}</MAP>
-</p>
 
+			{% sponsors %}
         </div>
         <div id="login-register-window">
             <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
