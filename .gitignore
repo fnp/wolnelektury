@@ -1,4 +1,12 @@
-wolnelektury/localsettings.py
-wolnelektury/media/lektura/*
+localsettings.py
+dev.sqlite
+
+# Python garbage
 *.pyc
+.coverage
+
+# Mac OS X garbage
 .DS_Store
+
+# Windows garbage
+thumbs.db
