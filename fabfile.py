@@ -30,6 +30,7 @@ def production():
     env.virtualenv = '/opt/cas/basevirtualenv/bin/virtualenv'
     env.pip = '/opt/cas/basevirtualenv/bin/pip'
 
+
 # =========
 # = Tasks =
 # =========
@@ -44,11 +45,11 @@ def setup():
     a full deployment. virtualenv and pip should be already installed.
     """
     require('hosts', 'path', provided_by=[staging, production])
-    
+
     run('mkdir -p %(path)s; cd %(path)s; %(virtualenv)s --no-site-packages .;' % env, pty=True)
     run('cd %(path)s; mkdir releases; mkdir shared; mkdir packages;' % env, pty=True)
     deploy()
-    
+
 def deploy():
     """
     Deploy the latest version of the site to the servers, 
@@ -56,11 +57,12 @@ def deploy():
     install the virtual host and then restart the webserver
     """
     require('hosts', 'path', provided_by=[staging, production])
-    
+
     import time
     env.release = time.strftime('%Y-%m-%dT%H%M')
-    
+
     upload_tar_from_git()
+    upload_pybundle()
     install_requirements()
     symlink_current_release()
     migrate()
@@ -107,15 +109,29 @@ def install_requirements():
     "Install the required packages from the requirements file using pip"
     print '>>> install requirements'
     require('release', provided_by=[deploy])
-    
+    run('cd %(path)s; %(pip)s install -E . requirements.pybundle' % env)
+
+def upload_pybundle():
+    "Create pybundle with required libraries and upload it"
+    print ">>> upload pybundle"
+    require('release', provided_by=[deploy])
     with settings(warn_only=True):
         pip_options = run('cat %(path)s/releases/%(release)s/pip-options.txt' % env)
         if pip_options.failed:
             env.pip_options = ''
         else:
             env.pip_options = pip_options
-    
-    run('cd %(path)s; %(pip)s install %(pip_options)s -E . -r ./releases/%(release)s/requirements.txt' % env)
+
+    requirements_mtime = os.path.getmtime('requirements.txt')
+    bundle_mtime = 0
+    try:
+        bundle_mtime = os.path.getmtime('requirements.pybundle')
+    except os.error:
+        pass
+
+    if requirements_mtime > bundle_mtime:
+        local('pip bundle requirements.pybundle %(pip_options)s -r requirements.txt' % env)
+        put('requirements.pybundle', '%(path)s' % env)
 
 def symlink_current_release():
     "Symlink our current release"
