@@ -3,13 +3,15 @@ from fabric.api import *
 
 import os
 
+
+# ==========
+# = Config =
+# ==========
 # Globals
 env.project_name = 'wolnelektury'
 env.use_south = True
 
-# ===========
-# = Servers =
-# ===========
+# Servers
 def staging():
     """Use staging server"""
     env.hosts = ['stigma.nowoczesnapolska.org.pl:2222']
