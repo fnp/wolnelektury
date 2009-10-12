@@ -40,14 +40,14 @@
             {% endif %}
             {% if book.mp3_file and book.ogg_file %}
             <div id="czytamy-sluchajac-info">
-                    <a href="http://czytamysluchajac.pl/" id="czytamysluchajac-logo"><img src="/media/img/czytamysluchajac-logo-small.png" /></a>     
+                    <a href="http://czytamysluchajac.pl/" id="czytamysluchajac-logo"><img src="/static/img/czytamysluchajac-logo-small.png" /></a>     
                     <p>Czyta: {{ book.get_extra_info_value.artist_name }}</p>
                     <p>Reżyseruje: {{ book.get_extra_info_value.director_name }}</p>
                 </div>
                 <a href="{{ book.mp3_file.url }}">Pobierz plik MP3</a>
                 <a href="{{ book.ogg_file.url }}">Pobierz plik Ogg Vorbis</a>
-                <object type="application/x-shockwave-flash" style="margin-top: 0.5em" data="/media/player.swf" width="426" height="20">
-                    <param name="movie" value="/media/player.swf" />
+                <object type="application/x-shockwave-flash" style="margin-top: 0.5em" data="/static/player.swf" width="426" height="20">
+                    <param name="movie" value="/static/player.swf" />
                     <param name="bgcolor" value="#ffffff" />
                     <param name="FlashVars" value="mp3={{ book.mp3_file.url }}&amp;width=426&amp;showvolume=1&amp;bgcolor1=eeeeee&amp;bgcolor2=eeeeee&amp;buttoncolor=666666" />
                 </object>
@@ -123,7 +123,7 @@
     <div id="set-window">
         <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
         <div class="target">
-            <p><img src="/media/img/indicator.gif" alt="*"/> Ładowanie</p>
+            <p><img src="/static/img/indicator.gif" alt="*"/> Ładowanie</p>
         </div>
     </div>
 {% endblock %}

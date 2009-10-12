@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
-        <link rel="icon" href="/media/img/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="/static/img/favicon.png" type="image/x-icon" />
         {% compressed_css "all" %}
         {% compressed_js "jquery" %}
         {% compressed_js "all" %}
@@ -13,16 +13,16 @@
         {% endblock %}
     </head>
     <body id="{% block bodyid %}base{% endblock %}">
-        <!--[if lt IE 7]><link href=/media/infobar/infobar.css rel=stylesheet>
+        <!--[if lt IE 7]><link href=/static/infobar/infobar.css rel=stylesheet>
         <div id=infobar><a href=http://browsehappy.pl/infobar>
         Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, aby dowiedzieć się więcej...
-        </a></div><div id=viewplot><script src=/media/infobar/infobar.js></script><![endif]-->
+        </a></div><div id=viewplot><script src=/static/infobar/infobar.js></script><![endif]-->
         <div id="top-message">
             {% chunk "top-message" %}
         </div>
         <div id="header">
             <div id="logo">
-                <a href="/"><img src="/media/img/logo.png" alt="WolneLektury.pl - logo" /></a>
+                <a href="/"><img src="/static/img/logo.png" alt="WolneLektury.pl - logo" /></a>
             </div>
             <div id="user-info" style="display:none">
                 {% if user.is_authenticated %}
@@ -82,7 +82,7 @@
         <div id="user-shelves-window">
             <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
             <div class="target">
-                <p><img src="/media/img/indicator.gif" alt="*"/> Ładowanie</p>
+                <p><img src="/static/img/indicator.gif" alt="*"/> Ładowanie</p>
             </div>
         </div>
         <script type="text/javascript">

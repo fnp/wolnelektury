@@ -2,7 +2,7 @@ body {
     margin: 0 2em 2em 2em;
     font: 70% Verdana, Arial, Helvetica, sans-serif;
     line-height: 1.5em;
-    background: #FFF url(/media/img/bg.png) repeat-x;
+    background: #FFF url(/static/img/bg.png) repeat-x;
     color: #2F4110;
 }
 
@@ -451,14 +451,14 @@ div.shown-tags p, div.all-tags p {
 }
 
 .book-thumbnail, .book-parent-thumbnail {
-    background: transparent url(/media/img/book.png) no-repeat 0 0;
+    background: transparent url(/static/img/book.png) no-repeat 0 0;
     width: 3em;
     height: 3em;
     float: left;
 }
 
 .book-parent-thumbnail {
-    background: transparent url(/media/img/book-parent.png) no-repeat 0 0;
+    background: transparent url(/static/img/book-parent.png) no-repeat 0 0;
 }
 
 

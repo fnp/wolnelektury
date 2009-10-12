@@ -54,7 +54,7 @@
             beforeSubmit: function() {
                 $('#registration-form input[type=submit]')
                     .attr('disabled', 'disabled')
-                    .after('<img src="/media/img/indicator.gif" style="margin-left: 0.5em"/>');
+                    .after('<img src="/static/img/indicator.gif" style="margin-left: 0.5em"/>');
             },
             success: function(response) {
                 if (response.success) {
@@ -75,7 +75,7 @@
             beforeSubmit: function() {
                 $('#login-form input[type=submit]')
                     .attr('disabled', 'disabled')
-                    .after('<img src="/media/img/indicator.gif" style="margin-left: 0.5em"/>');
+                    .after('<img src="/static/img/indicator.gif" style="margin-left: 0.5em"/>');
             },
             success: function(response) {
                 if (response.success) {
@@ -191,7 +191,7 @@
             trigger: 'a.jqm-trigger', 
             onShow: function(hash) { 
                 var offset = $(hash.t).offset();
-                target.html('<p><img src="/media/img/indicator.gif" /> Ładowanie</p>');
+                target.html('<p><img src="/static/img/indicator.gif" /> Ładowanie</p>');
                 hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
             onLoad: function(hash) { 
                 $('form', hash.w).ajaxForm({

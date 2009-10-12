@@ -2,11 +2,14 @@
 import os
 
 from django.conf.urls.defaults import *
+from django.conf import settings
 from django.contrib import admin
+
+from catalogue.forms import SearchForm
+
 
 admin.autodiscover()
 
-from catalogue.forms import SearchForm
 
 urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
@@ -33,7 +36,9 @@ urlpatterns = patterns('',
     url(r'^uzytkownicy/utworz/$', 'catalogue.views.register', name='register'),
     
     # Static files
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', 
-        {'document_root': os.path.join(os.path.dirname(__file__), 'media'), 'show_indexes': True}),
+    url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', 
+        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], 'django.views.static.serve',
+        {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
     url(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'katalog/'}),
 )

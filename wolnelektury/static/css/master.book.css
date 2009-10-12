@@ -56,12 +56,12 @@ img {
 
 #menu li a:hover, #menu li a:active {
     color: #000;
-    background: #FFF url(/media/img/arrow-down.png) no-repeat center right;
+    background: #FFF url(/static/img/arrow-down.png) no-repeat center right;
 }
 
 #menu li a.selected {
     color: #000;
-    background: #FFF url(/media/img/arrow-up.png) no-repeat center right;
+    background: #FFF url(/static/img/arrow-up.png) no-repeat center right;
 }
 
 #toc, #themes {

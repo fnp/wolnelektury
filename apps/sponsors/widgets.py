@@ -10,11 +10,11 @@ class SponsorPageWidget(forms.Textarea):
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',
             'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js',
-            settings.MEDIA_URL + 'sponsors/js/jquery.json.min.js',
-            settings.MEDIA_URL + 'sponsors/js/footer_admin.js',
+            settings.STATIC_URL + 'sponsors/js/jquery.json.min.js',
+            settings.STATIC_URL + 'sponsors/js/footer_admin.js',
         )
         css = {
-            'all': (settings.MEDIA_URL + 'sponsors/css/footer_admin.css',),
+            'all': (settings.STATIC_URL + 'sponsors/css/footer_admin.css',),
         }
 
     def render(self, name, value, attrs=None):
