@@ -1,4 +1,4 @@
-Django==1.1
+Django==1.1.1
 librarian==1.2.6
 lxml==2.2.2
 Imaging==1.1.6
