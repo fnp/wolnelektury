@@ -1,21 +1,25 @@
-from django.db import models
 from django.contrib import admin
+from django.conf import settings
 
-from sponsors.models import Sponsor, SponsorGroup
-from sponsors.widgets import OrderedSelectMultiple
+from sponsors import models
+from sponsors import fields
+from sponsors import widgets
 
-class SponsorGroupAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.CommaSeparatedIntegerField: {'widget': OrderedSelectMultiple},
-    }   
-    list_display = ('name',)
-    search_fields = ('name',)
-    ordering = ('name',)
 
 class SponsorAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     ordering = ('name',)
 
-admin.site.register(SponsorGroup, SponsorGroupAdmin)
-admin.site.register(Sponsor, SponsorAdmin)
+
+class SponsorPageAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        fields.JSONField: {'widget': widgets.SponsorPageWidget},
+    }   
+    list_display = ('name',)
+    search_fields = ('name',)
+    ordering = ('name',)
+
+
+admin.site.register(models.Sponsor, SponsorAdmin)
+admin.site.register(models.SponsorPage, SponsorPageAdmin)

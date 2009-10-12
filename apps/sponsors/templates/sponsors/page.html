@@ -1,0 +1,11 @@
+<div class="sponsors-sponsor-group">
+{% for column in sponsors %}
+	<div class="sponsors-sponsor-column" style="width: {{ column_width }}px">
+		<p class="sponsors-sponsor-column-name">{{ column.name }}</p>
+		{% for sponsor in column.sponsors %}
+			<div class="sponsors-sponsor">{% if sponsor.url %}<a style="sponsors-sponsor-link" href="{{ sponsor.url }}" >{% endif %}<img class="sponsors-sponsor-logo" src="{{ sponsor.logo.url }}" alt="{{ sponsor.description }}"/>{% if sponsor.url %}</a>{% endif %}</div>
+		{% endfor %}
+	</div>
+{% endfor %}
+<div style="clear: both" />
+</div>

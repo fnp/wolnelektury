@@ -1,4 +1,5 @@
 from django import template
+from django.utils.safestring import mark_safe
 
 from sponsors import models
 
@@ -6,7 +7,11 @@ from sponsors import models
 register = template.Library()
 
 
-def sponsors():
-    return {'sponsor_groups': models.SponsorGroup.objects.all()}
+def sponsor_page(name):
+    try:
+        page = models.SponsorPage.objects.get(name=name)
+    except:
+        return u''
+    return mark_safe(page.html)
     
-compressed_js = register.inclusion_tag('sponsors/sponsors.html')(sponsors)
+sponsor_page = register.simple_tag(sponsor_page)

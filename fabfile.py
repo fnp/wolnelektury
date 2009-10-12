@@ -26,8 +26,8 @@ def production():
 # =========
 def test():
     "Run the test suite and bail out if it fails"
-    require('project_dir', provided_by=[staging, production])
-    result = local('cd %(path)s; python manage.py test' % env)
+    require('hosts', 'path', provided_by=[staging, production])
+    result = run('cd %(path)s/%(project_name)s; python manage.py test' % env)
 
 def deploy():
     """
@@ -35,13 +35,13 @@ def deploy():
     install any required third party modules, 
     install the virtual host and then restart the webserver
     """
-    require('hosts', provided_by=[staging, production])
-    require('path')
+    require('hosts', 'path', provided_by=[staging, production])
     
     import time
     env.release = time.strftime('%Y-%m-%dT%H%M')
     
     upload_tar_from_git()
+    upload_requirements_bundle()
     install_requirements()
     symlink_current_release()
     migrate()
@@ -49,8 +49,7 @@ def deploy():
 
 def deploy_version(version):
     "Specify a specific version to be made live"
-    require('hosts', provided_by=[localhost,webserver])
-    require('path')
+    require('hosts', 'path', provided_by=[localhost,webserver])
     env.version = version
     with cd(env.path):
         run('rm releases/previous; mv releases/current releases/previous;', pty=True)
@@ -99,6 +98,7 @@ def rollback():
 # =====================================================================
 def upload_tar_from_git():
     "Create an archive from the current Git master branch and upload it"
+    print '>>> upload tar from git'
     require('release', provided_by=[deploy])
     local('git archive --format=tar master | gzip > %(release)s.tar.gz' % env)
     run('mkdir -p %(path)s/releases/%(release)s' % env, pty=True)
@@ -107,16 +107,32 @@ def upload_tar_from_git():
     run('cd %(path)s/releases/%(release)s && tar zxf ../../packages/%(release)s.tar.gz' % env, pty=True)
     local('rm %(release)s.tar.gz' % env)
 
+def upload_requirements_bundle():
+    "Create a pybundle from requirements.txt file and upload it"
+    print '>>> upload requirements bundle'
+    require('release', provided_by=[deploy])
+    requirements_mtime = os.path.getmtime('requirements.txt')
+    pybundle_mtime = 0
+    try:
+        pybundle_mtime = os.path.getmtime('requirements.pybundle')
+    except os.error:
+        pass
+    if pybundle_mtime < requirements_mtime:
+        pip_options = file('pip-options.txt').read().strip()
+        local('pip bundle %s -r requirements.txt requirements.pybundle' % pip_options)
+    put('requirements.pybundle', '%(path)s/releases/%(release)s' % env)
+
 def install_requirements():
     "Install the required packages from the requirements file using pip"
+    print '>>> install requirements'
     require('release', provided_by=[deploy])
-    pip_options = file('pip-options.txt').read().strip()
     with cd('%(path)s/releases/%(release)s' % env):
         run('virtualenv --no-site-packages .')
-        run('pip install -E . %s -r requirements.txt' % pip_options)
+        run('pip install -E . requirements.pybundle')
 
 def symlink_current_release():
     "Symlink our current release"
+    print '>>> symlink current release'
     require('release', provided_by=[deploy])
     require('path', provided_by=[staging, production])
     with cd(env.path):
@@ -130,6 +146,7 @@ def symlink_current_release():
 
 def migrate():
     "Update the database"
+    print '>>> migrate'
     require('project_name', provided_by=[staging, production])
     with cd('%(path)s/releases/current/%(project_name)s' % env):
         run('../bin/python manage.py syncdb --noinput' % env, pty=True)
@@ -137,6 +154,7 @@ def migrate():
 
 def restart_webserver():
     "Restart the web server"
+    print '>>> restart webserver'
     run('touch %(path)s/releases/current/%(project_name)s/%(project_name)s.wsgi' % env)
 
 # def install_site():

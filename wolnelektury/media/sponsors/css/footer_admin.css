@@ -1,0 +1,67 @@
+.sponsors {
+    display: block;
+    clear: both;
+    margin-top: 5px;
+}
+
+.sponsors .sponsors-sponsor-group {
+    float: left;
+    width: 200px;
+    border: 1px solid #CCC;
+    margin: 2px 2px 0 0;
+}
+
+.sponsors .sponsors-sponsor-group-name {
+    border-bottom: 1px solid #CCC;
+    padding: 2px 2px 2px 4px;
+    margin: 0;
+    color: #FFF;
+    background-color: #7CA0C7;
+    font-weight: bold;
+    height: 15px;
+}
+
+.sponsors .sponsors-sponsor-group-name input {
+    margin: -2px -2px -2px -4px;
+    padding: 0;
+    height: 15px;
+    width: 180px;
+}
+
+.sponsors .sponsors-remove-sponsor-group {
+    float: right;
+    background-color: #CC3434;
+    color: #FFF;
+    width: 10px;
+    height: 15px;
+    padding: 2px;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    cursor: default;
+}
+
+.sponsors .sponsors-remove-sponsor-group:hover {
+    color: #CC3434;
+    background-color: white;
+}
+
+.sponsors .sponsors-unused-sponsor-group-name {
+    background-color: #FFF;
+    color: #666;
+}
+
+.sponsors .sponsors-sponsor-group-list {
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+    min-height: 200px;
+}
+
+.sponsors-sponsor {
+    margin: 0 0 2px 0;
+    padding: 2px;
+    border: 1px solid #CCC;
+    background-color: #EEE;
+    cursor: default;
+}
