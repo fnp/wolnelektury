@@ -14,12 +14,17 @@ def staging():
     """Use staging server"""
     env.hosts = ['zuber@stigma.nowoczesnapolska.org.pl:2222']
     env.path = '/var/lektury'
+    env.python = '/usr/bin/python'
+    env.virtualenv = '/usr/bin/virtualenv'
+    env.pip = '/usr/bin/pip'
     
 def production():
     """Use production server"""
-    env.hosts = ['fundacja@wolnelektury:22123']
+    env.hosts = ['fundacja@wolnelektury.pl:22123']
     env.path = '/opt/lektury'
-
+    env.python = '/opt/lektury/basevirtualenv/bin/python'
+    env.virtualenv = '/opt/lektury/basevirtualenv/bin/virtualenv'
+    env.pip = '/opt/lektury/basevirtualenv/bin/pip'
 
 # =========
 # = Tasks =
@@ -27,7 +32,7 @@ def production():
 def test():
     "Run the test suite and bail out if it fails"
     require('hosts', 'path', provided_by=[staging, production])
-    result = run('cd %(path)s/%(project_name)s; python manage.py test' % env)
+    result = run('cd %(path)s/%(project_name)s; %(python)s manage.py test' % env)
 
 def deploy():
     """
@@ -127,8 +132,8 @@ def install_requirements():
     print '>>> install requirements'
     require('release', provided_by=[deploy])
     with cd('%(path)s/releases/%(release)s' % env):
-        run('virtualenv --no-site-packages .')
-        run('pip install -E . requirements.pybundle')
+        run('%(virtualenv)s --no-site-packages .' % env)
+        run('%(pip)s install -E . requirements.pybundle' % env)
 
 def symlink_current_release():
     "Symlink our current release"
