@@ -1,3 +1,6 @@
+--find-links=http://stigma.nowoczesnapolska.org.pl/pypi/
+--find-links=http://www.pythonware.com/products/pil/
+
 Django==1.1.1
 librarian==1.2.6
 lxml==2.2.2

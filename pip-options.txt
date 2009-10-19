@@ -1,1 +1,0 @@
--f http://redmine.nowoczesnapolska.org.pl/projects/librarian/files -f http://www.pythonware.com/products/pil/
