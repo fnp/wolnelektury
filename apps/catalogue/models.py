@@ -231,11 +231,14 @@ class Book(models.Model):
         if hasattr(book_info, 'parts'):
             for n, part_url in enumerate(book_info.parts):
                 base, slug = part_url.rsplit('/', 1)
-                child_book = Book.objects.get(slug=slug)
-                child_book.parent = book
-                child_book.parent_number = n
-                child_book.save()
-
+                try:
+                    child_book = Book.objects.get(slug=slug)
+                    child_book.parent = book
+                    child_book.parent_number = n
+                    child_book.save()
+                except Book.DoesNotExist, e:
+                    raise Book.DoesNotExist(u'Book with slug = "%s" does not exist.' % slug)
+        
         book_descendants = list(book.children.all())
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)

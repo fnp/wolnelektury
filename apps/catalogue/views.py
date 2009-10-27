@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import tempfile
 import zipfile
+import sys
+import pprint
+import traceback
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
@@ -369,10 +372,13 @@ def import_book(request):
     """docstring for import_book"""
     book_import_form = forms.BookImportForm(request.POST, request.FILES)
     if book_import_form.is_valid():
-        # try:
-        book_import_form.save()
-        # except:
-            # return HttpResponse("Error importing book: %r" % (sys.exc_info(),))
+        try:
+            book_import_form.save()
+        except:
+            info = sys.exc_info()
+            exception = pprint.pformat(info[1])
+            tb = '\n'.join(traceback.format_tb(info[2]))
+            return HttpResponse("An error occurred: %s\n\n%s" % (exception, tb), mimetype='text/plain')
         return HttpResponse("Book imported successfully")
     else:
         return HttpResponse("Error importing file: %r" % book_import_form.errors)
