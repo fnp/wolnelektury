@@ -104,6 +104,7 @@ INSTALLED_APPS = [
     'chunks',
     'compress',
     'catalogue',
+    'lessons',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'

@@ -656,3 +656,57 @@ div.shown-tags p, div.all-tags p {
     background-color: #900;
     text-decoration: none;
 }
+
+/* =========== */
+/* = Lessons = */
+/* =========== */
+#lessons {
+    margin-top: 2.5em;
+}
+
+#document-list {
+    width: 380px;
+    float: left;
+}
+
+#document-list ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#document-list li a {
+    padding: 0.5em;
+    background-color: #FFF;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+/*    font-size: 1.2em;*/
+    font-weight: bold;
+    width: 370px;
+    margin-bottom: 0.25em;
+    display: block;
+}
+
+#document-list li a:hover, #document-list li a.active {
+    text-decoration: none;
+    background-color: #EEE;
+}
+
+#document-list-body #document-detail {
+    margin-left: 390px;
+}
+
+#document-detail {    
+    width: 480px;
+}
+
+#document-detail h2 {
+    margin: 0.75em 0 0.75em 0;
+}
+
+#document-list-body #document-detail .download {
+    float: right;
+    margin: 0;
+    padding: 0
+}

@@ -36,6 +36,11 @@
                 <p>Stwórz własny zestaw lektur. Możesz się nim później podzielić z innymi, przesyłając im link do Twojej półki.</p>
                 <p>Aby zarządzać swoimi półkami, musisz się <a class="login-register-link" href="#">zalogować</a>.</p>
             {% endif %}
+            <div id="lessons">
+                <h2><a href="{% url lessons_document_list %}">Materiały pomocnicze dla nauczycieli</a></h2>
+                <p>Scenariusze lekcji i inne pomysły na wykorzytanie serwisu WolneLektury.pl podczas nauczania.</p>
+                <p class="see-more"><a href="{% url lessons_document_list %}">Zobacz więcej ⇒</a></p>
+            </div>
             <div id="czytamysluchajac">
                 <a href="http://czytamysluchajac.pl/"><img src="/static/img/czytamysluchajac-logo-small.png" /></a>
                 <p><a href="http://czytamysluchajac.pl/">Czytamy Słuchając</a> to profesjonalne nagrania tekstów literackich z naszego zbioru dostępne na wolnej licencji w formatach MP3, Ogg Vorbis oraz w systemie DAISY.</p>

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load catalogue_tags chunks %}
+
+{% block bodyid %}document-list-body{% endblock %}
+
+{% block title %}Materiały pomocnicze dla nauczycieli w WolneLektury.pl{% endblock %}
+
+{% block extrahead %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('#document-list a').click(function() {
+                if (!$(this).hasClass('active')) {
+                    $('#document-list a').removeClass('active');
+                    $(this).addClass('active');
+                    document.location.hash = $(this).attr('data-hash');
+                }
+                return false;
+            });
+            
+            var lastHash = null;
+            
+            function checkHash() {
+                if (document.location.hash != lastHash) {
+                    lastHash = document.location.hash;
+                    var documentLink = $('#document-list a[data-hash=' + document.location.hash + ']');
+                    if (!documentLink.hasClass('active')) {
+                        $('#document-list a').removeClass('active');
+                        documentLink.addClass('active');
+                    };
+                    
+                    if ($('#document-detail').attr('data-hash') != lastHash) {
+                        $('#document-detail')
+                            .attr('data-hash', lastHash)
+                            .load(documentLink.attr('href'));
+                    };
+                } else if (!document.location.hash) {
+                    $('#document-list a:first').click();
+                }
+                
+                setTimeout(checkHash, 500);
+            };
+            
+            checkHash();
+        });
+    </script>
+{% endblock extrahead %}
+{% block body %}
+    <h1>Materiały pomocnicze dla nauczycieli</h1>
+    <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
+    </form>
+    
+    <div id="document-list">
+        <ol>
+        {% for object in object_list %}
+            <li><a href="{{ object.get_absolute_url }}" data-hash="#{{ object.slug }}">{{ object }}</a></li>
+        {% endfor %}
+        </ol>
+    </div>
+    <div id="document-detail">
+    </div>
+{% endblock %}
+            

@@ -13,6 +13,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
+    url(r'^materialy/', include('lessons.urls')),
     
     # Static pages
     url(r'^wolontariat/$', 'django.views.generic.simple.direct_to_template', 

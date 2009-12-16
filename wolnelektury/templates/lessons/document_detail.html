@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }} w WolneLektury.pl{% endblock %}
+
+{% block body %}
+    <h1>{{ object.title }}</h1>
+    <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url lessons_document_list %}">wróć do listy materiałów</a></p>
+    </form>
+    
+    <div id="document-detail">
+        <p class="download"><a href="{{ object.file.url }}">Pobierz</a> {% if object.author %}(autor: {{ object.author }}){% endif %}</p>
+        {% if object.slideshare_id %}
+        <object style="margin:0px" width="480" height="400">
+            <param name="movie" value="http://static.slidesharecdn.com/swf/{{ object.slideshare_player }}?doc={{ object.slideshare_id }}&rel=0&stripped_title={{ object.name|slugify }}" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed src="http://static.slidesharecdn.com/swf/{{ object.slideshare_player }}?doc={{ object.slideshare_id }}&rel=0&stripped_title={{ object.name|slugify }}" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="400"></embed></object>
+        {% endif %}
+        {% if object.description %}
+            <p>{{ object.description|urlize|linebreaks }}</p>
+        {% endif %}
+    </div>
+{% endblock body %}

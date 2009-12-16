@@ -1,0 +1,11 @@
+<div>
+    <p class="download"><a href="{{ object.file.url }}">Pobierz</a> {% if object.author %}(autor: {{ object.author }}){% endif %}</p>
+    <h2>{{ object.title }}</h2>
+    {% if object.slideshare_id %}
+    <object style="margin:0px" width="480" height="400">
+        <param name="movie" value="http://static.slidesharecdn.com/swf/{{ object.slideshare_player }}?doc={{ object.slideshare_id }}&rel=0&stripped_title={{ object.name|slugify }}" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed src="http://static.slidesharecdn.com/swf/{{ object.slideshare_player }}?doc={{ object.slideshare_id }}&rel=0&stripped_title={{ object.name|slugify }}" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="400"></embed></object>
+    {% endif %}
+    {% if object.description %}
+        <p>{{ object.description|urlize|linebreaks }}</p>
+    {% endif %}
+</div>
