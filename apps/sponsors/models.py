@@ -2,13 +2,21 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
 
+from sorl.thumbnail.fields import ImageWithThumbnailsField
 from sponsors.fields import JSONField
 
 
 class Sponsor(models.Model):
     name = models.CharField(_('name'), max_length=120)
     _description = models.CharField(_('description'), blank=True, max_length=255)
-    logo = models.ImageField(_('logo'), upload_to='sponsors/sponsor/logo')
+    logo = ImageWithThumbnailsField(
+        _('logo'),
+        upload_to='sponsors/sponsor/logo',
+        thumbnail={
+            'size': (150, 75),
+            'extension': 'png',
+            'options': ['upscale', 'pad', 'detail'],
+        })
     url = models.URLField(_('url'), blank=True, verify_exists=False)
     
     def __unicode__(self):

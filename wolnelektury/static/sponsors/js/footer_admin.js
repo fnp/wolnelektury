@@ -80,7 +80,7 @@
       
       
       for (var i = 0; i < sponsors.length; i++) {
-        $('<li class="sponsors-sponsor">' + sponsors[i].name + '</li>')
+        $('<li class="sponsors-sponsor"><img src="' + sponsors[i].image + '" alt="' + sponsors[i].name + '"/></li>')
           .data('obj_id', sponsors[i].id)
           .appendTo(groupList);
       }
@@ -115,7 +115,7 @@
     });
     
     for (i = 0; i < settings.sponsors.length; i++) {
-      $('<li class="sponsors-sponsor">' + settings.sponsors[i].name + '</li>')
+      $('<li class="sponsors-sponsor"><img src="' + settings.sponsors[i].image + '" alt="' + settings.sponsors[i].name + '"/></li>')
         .data('obj_id', settings.sponsors[i].id)
         .appendTo(unusedList);
     }

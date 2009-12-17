@@ -6,7 +6,7 @@
 
 .sponsors .sponsors-sponsor-group {
     float: left;
-    width: 200px;
+    width: 180px;
     border: 1px solid #CCC;
     margin: 2px 2px 0 0;
 }
@@ -25,7 +25,7 @@
     margin: -2px -2px -2px -4px;
     padding: 0;
     height: 15px;
-    width: 180px;
+    width: 160px;
 }
 
 .sponsors .sponsors-remove-sponsor-group {
@@ -59,8 +59,9 @@
 }
 
 .sponsors-sponsor {
-    margin: 0 0 2px 0;
-    padding: 2px;
+    margin: 0 30px 2px 0;
+    width: 150px;
+    height: 75px;
     border: 1px solid #CCC;
     background-color: #EEE;
     cursor: default;

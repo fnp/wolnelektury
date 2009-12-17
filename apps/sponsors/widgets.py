@@ -19,8 +19,8 @@ class SponsorPageWidget(forms.Textarea):
 
     def render(self, name, value, attrs=None):
         output = [super(SponsorPageWidget, self).render(name, value, attrs)]
-        sponsors = [(unicode(obj), obj.pk) for obj in models.Sponsor.objects.all()]
-        sponsors_js = ', '.join('{name: "%s", id: %d}' % sponsor for sponsor in sponsors)
+        sponsors = [(unicode(obj), obj.pk, obj.logo.thumbnail) for obj in models.Sponsor.objects.all()]
+        sponsors_js = ', '.join('{name: "%s", id: %d, image: "%s"}' % sponsor for sponsor in sponsors)
         output.append(u'<script type="text/javascript">addEvent(window, "load", function(e) {')
         # TODO: "id_" is hard-coded here. This should instead use the correct
         # API to determine the ID dynamically.
