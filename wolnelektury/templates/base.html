@@ -63,7 +63,7 @@
             <div class="target">
                 <form method="post" action="{% url login %}" id="login-form" class="cuteform">
                     <h2>Zaloguj się / <a href="#" id="show-registration-form" style="font-size: 0.85em; font-weight: normal">Załóż konto</a></h2>
-                    <p><span id="id_login-__all__" /></p>
+                    <p><span id="id_login-__all__"></span></p>
                     <ol>
                         {% authentication_form %}
                         <li><input type="submit" value="Zaloguj się" /></li>
@@ -71,7 +71,7 @@
                 </form>
                 <form method="post" action="{% url register %}" id="registration-form" class="cuteform" style="display: none;">
                     <h2><a href="#" id="show-login-form" style="font-size: 0.85em; font-weight: normal">Zaloguj się</a> / Załóż konto</h2>
-                    <p><span id="id_registration-__all__" /></p>
+                    <p><span id="id_registration-__all__"></span></p>
                     <ol>
                         {% user_creation_form %}
                         <li><input type="submit" value="Załóż konto" /></li>
