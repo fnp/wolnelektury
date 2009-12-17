@@ -139,15 +139,24 @@ class Book(models.Model):
             
             self._short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
-            self.save()
+            self.save(reset_short_html=False)
             return mark_safe(self._short_html)
     
-    def save(self, force_insert=False, force_update=False):
+    def save(self, force_insert=False, force_update=False, reset_short_html=True):
+        if reset_short_html:
+            # Reset _short_html during save
+            self._short_html = ''
+        
+        book = super(Book, self).save(force_insert, force_update)
+        
         if self.mp3_file:
+            print self.mp3_file, self.mp3_file.path
             extra_info = self.get_extra_info_value()
             extra_info.update(self.get_mp3_info())
             self.set_extra_info_value(extra_info)
-        return super(Book, self).save(force_insert, force_update)
+            book = super(Book, self).save(force_insert, force_update)
+        
+        return book
     
     def get_mp3_info(self):
         """Retrieves artist and director names from audio ID3 tags."""
