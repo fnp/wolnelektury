@@ -53,7 +53,6 @@ class SponsorPage(models.Model):
 
     def save(self, *args, **kwargs):
         self._html = render_to_string('sponsors/page.html', {
-            'column_width': self.column_width,
             'sponsors': self.populated_sponsors(),
         })
         return super(SponsorPage, self).save(*args, **kwargs)
