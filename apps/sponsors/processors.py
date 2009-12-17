@@ -6,7 +6,8 @@ def add_padding(image, requested_size, opts):
         padded_image = Image.new('RGBA', requested_size, '#fff')
         width, height = image.size
         requested_width, requested_height = requested_size
-        padded_image.paste(image, (0, requested_height - height / 2))
+        print 'whatever'
+        padded_image.paste(image, (0, (requested_height - height) / 2))
         return padded_image
     return image
 
