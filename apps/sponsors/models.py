@@ -15,7 +15,7 @@ class Sponsor(models.Model):
         thumbnail={
             'size': (120, 60),
             'extension': 'png',
-            'options': ['upscale', 'pad', 'detail'],
+            'options': ['pad', 'detail'],
         })
     url = models.URLField(_('url'), blank=True, verify_exists=False)
     
@@ -31,7 +31,6 @@ class Sponsor(models.Model):
 
 class SponsorPage(models.Model):
     name = models.CharField(_('name'), max_length=120)
-    column_width = models.PositiveIntegerField(_('column width'), default=200)
     sponsors = JSONField(_('sponsors'), default={})
     _html = models.TextField(blank=True, editable=False)
     

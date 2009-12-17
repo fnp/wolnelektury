@@ -55,13 +55,13 @@
     margin: 0;
     padding: 2px;
     list-style: none;
-    min-height: 200px;
+    min-height: 250px;
 }
 
 .sponsors-sponsor {
-    margin: 0 30px 2px 0;
-    width: 150px;
-    height: 75px;
+    margin: 0 40px 2px 0;
+    width: 120px;
+    height: 60px;
     border: 1px solid #CCC;
     background-color: #EEE;
     cursor: default;
