@@ -10,6 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import connection, models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.base import ModelBase
+from django.core.exceptions import ObjectDoesNotExist
 
 qn = connection.ops.quote_name
 
@@ -474,8 +475,11 @@ def create_intermediary_table_model(model):
         unique_together = (('tag', 'content_type', 'object_id'),)
 
     def obj_unicode(self):
-        return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
-        
+        try:
+            return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
+        except ObjectDoesNotExist:
+            return u'<deleted> [%s]' % self.tag
+            
     # Set up a dictionary to simulate declarations within a class    
     attrs = {
         '__module__': model.__module__,
