@@ -1,3 +1,30 @@
+var BANNER_TEXTS = [
+    'Przekaż 1% żeby ukryć ten baner.',
+    'Jak dobrze wydać 1% swojego podatku? <strong>Poradnik dla opornych</strong>.',
+    'Wiadomość systemowa: wystąpił błąd brak funduszy. Wykonaj procedurę 1%.',
+    '<strong>FREE!</strong> Wygraj darmowe lektury!',
+    'Confidential business offer. Not scam! 1% for you.',
+    'Biblioteka Wolne Lektury wymaga aktualizacji. Kliknij dalej.',
+    '1000 lektur. <strong>1 procent</strong>.'
+]
+
+
+function changeBannerText() {
+    var index = Math.floor(Math.random() * BANNER_TEXTS.length);
+    if (BANNER_TEXTS[index] == $('#onepercent-text').html()) {
+        // try again
+        changeBannerText();
+    } else {
+        $('#onepercent-text').fadeOut('slow', function() {
+            $(this).html(BANNER_TEXTS[index]);
+            $(this).fadeIn('slow');
+        });
+        
+        setTimeout(changeBannerText, 30 * 1000);
+    }
+}
+
+
 (function($) {
     $(function() {
         $('form input').labelify({labelledClass: 'blur'});
@@ -210,5 +237,7 @@
         });
         
         $('#user-info').show();
+        changeBannerText();
+        $('#onepercent-banner').slideDown('slow')
     });
 })(jQuery)

@@ -17,8 +17,13 @@
         <div id=infobar><a href=http://browsehappy.pl/infobar>
         Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, aby dowiedzieć się więcej...
         </a></div><div id=viewplot><script src=/static/infobar/infobar.js></script><![endif]-->
+        {% block bodycontent %}
         <div id="top-message">
             {% chunk "top-message" %}
+        </div>
+        <div id="onepercent-banner" style="display:none">
+            <a href="{% url 1percent %}" id="onepercent-text"></a>
+            <a href="{% url 1percent %}" id="onepercent-see-more">Zobacz więcej</a>
         </div>
         <div id="header">
             <div id="logo">
@@ -90,6 +95,7 @@
                 <p><img src="/static/img/indicator.gif" alt="*"/> Ładowanie</p>
             </div>
         </div>
+        {% endblock bodycontent %}
         <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

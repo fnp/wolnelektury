@@ -25,6 +25,9 @@ urlpatterns = patterns('',
     url(r'^o-projekcie/$', 'django.views.generic.simple.direct_to_template', 
         {'template': 'info/about_us.html', 'extra_context': {'form': SearchForm()}},
         name='about_us'),
+    url(r'^1procent/$', 'django.views.generic.simple.direct_to_template', {
+        'template': '1percent.html'
+    }, name='1percent'),
     
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}1% podatku na WolneLektury.pl{% endblock title %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="/static/css/960.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="/static/css/text.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="/static/css/1percent.css" type="text/css" charset="utf-8" />
+{% endblock extrahead %}
+
+{% block bodycontent %}
+    <div id="onepercent-content" class="container_12">
+        
+        <div id="header" class="grid_12">
+            <div id="logos" class="alpha grid_5 suffix_1">
+                <img src="/static/img/logo-big.png" />
+                <img src="/static/img/1percent-big.png" />
+            </div>
+            <div id="title" class="omega grid_6">
+                <img src="/static/img/tagline.png" />
+            </div>
+        </div>
+        
+        <div id="lists" class="grid_12">
+            <div id="why" class="alpha grid_6">
+                <h2>Dlaczego warto?</h2>
+                <ul>
+                    <li>Mamy efekty: udostępniliśmy <strong>za darmo 1005 lektur</strong></li>
+                    <li>Ponad <strong>100 000 osób miesięcznie</strong> korzysta z biblioteki</li>
+                    <li>W 2010 roku uwolnimy <strong>286 nowych utworów</strong></li>
+                    <li>Lektury są dostępne w wersji on-line i do wydruku</li>
+                    <li>Nagrywamy <strong>darmowe audiobooki</strong> wybranych tekstów</li>
+                    <li>Już wkrótce: wersja na e-papierowe czytniki książek</li>
+                    <li><strong>Jesteśmy niedochodową fundacją</strong> - organizacją pożytku publicznego</li>
+                </ul>
+            </div>
+            <div id="how" class="omega grid_6">
+                <h2>To proste</h2>
+                <p>Przy wypełnianiu formularza PIT w polu <em>wniosek o przekazanie 1% podatku na rzecz OPP</em> wpisz:</p>
+<pre>Fundacja Nowoczesna Polska
+KRS 0000070056</pre>
+                <img src="/static/img/pit37.png" />
+            </div>
+        </div>
+        
+        <div id="copy" class="grid_12">
+            <p>Biblioteka Wolne Lektury to projekt realizowany przez Fundację Nowoczesna Polska. Rozwijamy się tylko dzięki pomocy wolontariuszy i darczyńców. Pomóż nam! Dzięki 1% podatku dodajemy nowe lektury i nowe funkcjonalności.</p>
+            <p>Fundacja jest organizacją pożytku publicznego. Bez ponoszenia dodatkowych kosztów Twoi rodzice mogą wspomóc rozwój internetowej biblioteki Wolne Lektury. Co ważne, te pieniądze i tak nie zostaną w ich kieszeni. Jeśli nie podarują ich Fundacji Nowoczesna Polska lub innej organizacji pożytku publicznego, to rząd zdecyduje, jak je wydać. Powiedz rodzicom o możliwości przekazania 1% podatku i przekonaj ich, że warto samodzielnie zadecydować, co stanie się z częścią ich podatków.  Dzięki uzyskanym w ten sposób środkom będziemy mogli opublikować na stronie Wolnych Lektur jeszcze więcej tekstów oraz dodać nowe narzędzia ułatwiające czytanie. Dzięki temu biblioteka będzie jeszcze bardziej przydatnym i przyjaznym miejscem w sieci.</p>
+        </div>
+        
+        <div class="grid_12">
+            <a id="back" href="{% url main_page %}">Wróć do serwisu Wolne Lektury</a>
+        </div>
+    </div>
+{% endblock bodycontent %}
