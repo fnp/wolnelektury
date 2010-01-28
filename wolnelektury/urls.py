@@ -39,6 +39,9 @@ urlpatterns = patterns('',
     url(r'^uzytkownicy/wyloguj/$', 'catalogue.views.logout_then_redirect', name='logout'),
     url(r'^uzytkownicy/utworz/$', 'catalogue.views.register', name='register'),
     
+    # API
+    (r'^api/', include('api.urls')),
+    
     # Static files
     url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', 
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),

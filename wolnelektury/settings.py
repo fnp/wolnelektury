@@ -106,6 +106,8 @@ INSTALLED_APPS = [
     'compress',
     'catalogue',
     'lessons',
+    'piston',
+    'api',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'
