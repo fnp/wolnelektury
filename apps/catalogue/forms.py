@@ -60,3 +60,19 @@ class NewSetForm(forms.Form):
         new_set.save()
         return new_set
 
+
+FORMATS = (
+    ('mp3', 'MP3'),
+    ('ogg', 'OGG'),
+    ('pdf', 'PDF'),
+    ('odt', 'ODT'),
+    ('txt', 'TXT'),
+)
+
+
+class DownloadFormatsForm(forms.Form):
+    formats = forms.MultipleChoiceField(required=False, choices=FORMATS, widget=forms.CheckboxSelectMultiple)
+    
+    def __init__(self, *args, **kwargs):
+         super(DownloadFormatsForm, self).__init__(*args, **kwargs)
+

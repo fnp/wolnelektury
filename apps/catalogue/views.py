@@ -98,7 +98,12 @@ def tagged_object_list(request, tags=''):
         queryset_or_model=model,
         tags=tags,
         template_name='catalogue/tagged_object_list.html',
-        extra_context = {'categories': categories, 'shelf_is_set': shelf_is_set, 'user_is_owner': user_is_owner },
+        extra_context = {
+            'categories': categories,
+            'shelf_is_set': shelf_is_set,
+            'user_is_owner': user_is_owner,
+            'formats_form': forms.DownloadFormatsForm(),
+        },
     )
 
 
@@ -251,6 +256,19 @@ def remove_from_shelf(request, shelf, book):
     return HttpResponse('Usunieto')
 
 
+def collect_books(books):
+    """
+    Returns all real books in collection.
+    """
+    result = []
+    for book in books:
+        if len(book.children.all()) == 0:
+            result.append(book)
+        else:
+            result += collect_books(book.children.all())
+    return result
+
+
 @cache.never_cache
 def download_shelf(request, slug):
     """"
@@ -259,31 +277,34 @@ def download_shelf(request, slug):
     be used for large dynamic PDF files.                                        
     """
     shelf = get_object_or_404(models.Tag, slug=slug, category='set')
-            
+    
+    formats = []
+    form = forms.DownloadFormatsForm(request.GET)
+    if form.is_valid():
+        formats = form.cleaned_data['formats']
+    if len(formats) == 0:
+        formats = ['pdf', 'odt', 'txt', 'mp3', 'ogg']
+    
     # Create a ZIP archive
     temp = temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
     
-    # Collect all books to include in ZIP archive
-    def collect_books(books):
-        result = []
-        for book in books:
-            if len(book.children.all()) == 0:
-                result.append(book)
-            else:
-                result += collect_books(book.children.all())
-        return result
-    
     for book in collect_books(models.Book.tagged.with_all(shelf)):
-        if book.pdf_file:
+        if 'pdf' in formats and book.pdf_file:
             filename = book.pdf_file.path
             archive.write(filename, str('%s.pdf' % book.slug))
-        if book.odt_file:
+        if 'odt' in formats and book.odt_file:
             filename = book.odt_file.path
             archive.write(filename, str('%s.odt' % book.slug))
-        if book.txt_file:
+        if 'txt' in formats and book.txt_file:
             filename = book.txt_file.path
             archive.write(filename, str('%s.txt' % book.slug))
+        if 'mp3' in formats and book.mp3_file:
+            filename = book.mp3_file.path
+            archive.write(filename, str('%s.mp3' % book.slug))
+        if 'ogg' in formats and book.ogg_file:
+            filename = book.ogg_file.path
+            archive.write(filename, str('%s.ogg' % book.slug))
     archive.close()
     
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
@@ -293,6 +314,30 @@ def download_shelf(request, slug):
     temp.seek(0)
     response.write(temp.read())
     return response
+
+
+@cache.never_cache
+def shelf_book_formats(request, shelf):
+    """"
+    Returns a list of formats of books in shelf.
+    """
+    shelf = get_object_or_404(models.Tag, slug=shelf, category='set')
+
+    formats = {'pdf': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False}
+    
+    for book in collect_books(models.Book.tagged.with_all(shelf)):
+        if book.pdf_file:
+            formats['pdf'] = True
+        if book.odt_file:
+            formats['odt'] = True
+        if book.txt_file:
+            formats['txt'] = True
+        if book.mp3_file:
+            formats['mp3'] = True
+        if book.ogg_file:
+            formats['ogg'] = True
+
+    return HttpResponse(LazyEncoder().encode(formats))
 
 
 @login_required

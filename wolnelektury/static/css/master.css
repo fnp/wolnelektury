@@ -397,7 +397,66 @@ div.shown-tags p, div.all-tags p {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    text-align: center;    
+    text-align: center;   
+    outline: none; 
+}
+
+#download-shelf-menu {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 3px solid #EEE;
+    padding: 5px;
+    margin-top: -5px;
+}
+
+#download-formats-form li {
+    float: left;
+    height: 2em;
+}
+
+#download-formats-form input {
+    float: left;
+}
+
+#download-formats-form label {
+    display: block;
+    background-color: #EEE;
+    float: left;
+    width: 8em;
+    margin-right: 0.5em;
+    margin-top: -0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.75em;
+}
+
+#download-formats-form li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#download-formats-form em {
+    color: #999;
+    background-color: #FFF;
+}
+
+#download-formats-form em strong {
+    color: #000;
+    font-weight: normal;
+}
+
+#download-formats-form-submit {
+    margin-left: 0.5em;
+    
+}
+
+#download-formats-form #download-formats-form-submit-li {
+    margin-top: 0.75em;
+}
+
+#download-formats-form-cancel {
+    color: #900;    
 }
 
 /* ============================ */

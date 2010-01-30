@@ -246,5 +246,43 @@ function changeBannerText() {
         $('#user-info').show();
         changeBannerText();
         $('#onepercent-banner').slideDown('slow');
+        
+        var formatsDownloaded = false;
+        $('#download-shelf').click(function() {
+            $('#download-shelf-menu').slideDown('fast');
+            
+            if (!formatsDownloaded) {
+                // Pobierz dane o formatach
+                formatsDownloaded = true;
+                $.ajax({
+                    url: $('#download-formats-form').attr('data-formats-feed'),
+                    type: 'GET',
+                    dataType: 'json',
+                    complete: function() {
+                        $('#download-formats-form-submit').attr('disabled', null);
+                        $('#download-formats-form-submit-li img').remove();
+                        $('#updating-formats').fadeOut('fast', function() {
+                            $('#formats-updated').fadeIn('fast');
+                        });
+                    },
+                    success: function(data) {
+                        $('#download-formats-form li').each(function() {
+                            var item = $(this);
+                            if (!!item.attr('data-format') && !data[item.attr('data-format')]) {
+                                item.fadeOut('fast', function() {
+                                    item.remove();
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            return false;
+        });
+        
+        $('#download-formats-form-cancel').click(function() {
+            $('#download-shelf-menu').slideUp('fast');
+            return false;
+        });
     });
 })(jQuery)
