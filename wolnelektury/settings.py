@@ -116,11 +116,11 @@ CACHE_BACKEND = 'locmem:///?max_entries=3000'
 COMPRESS_CSS = {
     'all': {
         'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css', 'css/sponsors.css',),
-        'output_filename': 'css/all.min.css',
+        'output_filename': 'css/all.min?.css',
     },
     'book': {
         'source_filenames': ('css/master.book.css',),
-        'output_filename': 'css/book.min.css',
+        'output_filename': 'css/book.min?.css',
     }
 }
 
