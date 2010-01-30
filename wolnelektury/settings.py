@@ -131,7 +131,8 @@ COMPRESS_JS = {
     },
     'all': {
         'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js', 
-            'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',),
+            'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
+            'js/jquery.cookie.js',),
         'output_filename': 'js/all.min.js',
     },
     'book': {

@@ -202,9 +202,11 @@ function changeBannerText() {
         ).click(function() {
             if ($('#description').hasClass('hidden')) {
                 $('#description').slideDown('fast').removeClass('hidden');
+                $.cookie('description-state', 'opened', {path: '/', expires: 30});
                 $('p', this).html('Zwiń opis ▲');
             } else {
                 $('#description').slideUp('fast').addClass('hidden');
+                $.cookie('description-state', 'closed', {path: '/', expires: 30});
                 $('p', this).html('Rozwiń opis ▼');
             }
         });
@@ -236,8 +238,13 @@ function changeBannerText() {
             });
         });
         
+        if ($.cookie('description-state') == 'closed') {
+            $('#description').hide().addClass('hidden');
+            $('#toggle-description p').html('Rozwiń opis ▼');
+        }
+                
         $('#user-info').show();
         changeBannerText();
-        $('#onepercent-banner').slideDown('slow')
+        $('#onepercent-banner').slideDown('slow');
     });
 })(jQuery)
