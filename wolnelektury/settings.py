@@ -133,14 +133,15 @@ COMPRESS_JS = {
         'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js', 
             'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
             'js/jquery.cookie.js',),
-        'output_filename': 'js/all.min.js',
+        'output_filename': 'js/all?.min.js',
     },
     'book': {
         'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
-        'output_filename': 'js/book.min.js',
+        'output_filename': 'js/book?.min.js',
     }
 }
 
+COMPRESS_VERSION = True
 COMPRESS_CSS_FILTERS = None
 
 THUMBNAIL_QUALITY = 95
