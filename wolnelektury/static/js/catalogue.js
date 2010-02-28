@@ -5,7 +5,23 @@ var BANNER_TEXTS = [
     '<strong>FREE!</strong> Wygraj darmowe lektury!',
     'Confidential business offer. Not scam! 1% for you.',
     'Biblioteka Wolne Lektury wymaga aktualizacji. Kliknij dalej.',
-    '1000 lektur. <strong>1 procent</strong>.'
+    '1000 lektur. <strong>1 procent</strong>.',
+    '1% dla biblioteki lektur szkolnych. 1% dla Twojej biblioteki.',
+    '1% na lektury szkolne.',
+    '1% dla wolności lektur szkolnych.',
+    'Podaruj Jeden Procent na rzecz szkolnej biblioteki internetowej',
+    '1% podatku dla biblioteki szkolnej Wolne Lektury.',
+    '1% na rzecz darmowego dostępu do szkolnych lektur',
+    'Żeby czytać teksty a nie skany. Przekaż 1%.',
+    'Czytaj teksty a nie skany. Przekaż 1%',
+    'Motyw artysty w literaturze - 47 cytatów. Pomóż znaleźć następne.',
+    'Twój 1% uwolni więcej lektur.',
+    'Ponad 400 motywów, blisko 10 000 000 cytatów. Pomóż znaleźć następne. Przekaż swój 1%.',
+    'Twój 1% uwolni lektury.',
+    'Rozlicz swój PIT z Wolnymi Lekturami. Skorzystaj z darmowego programu do rozliczania podatków.',
+    'Lektury 2010: Pan Tadeusz, Trylogia.',
+    'Pan Tadeusz też chce być w Internecie! Przekaż 1% swojego podatku.',
+    'Pomóż uwolnić 286 utworów z listy lektur szkolnych. Przekaż swój 1% na Wolne Lektury.'
 ]
 
 
@@ -245,7 +261,7 @@ function changeBannerText() {
                 
         $('#user-info').show();
         changeBannerText();
-        $('#onepercent-banner').slideDown('slow');
+        $('#onepercent-banner').show();
         
         var formatsDownloaded = false;
         $('#download-shelf').click(function() {
