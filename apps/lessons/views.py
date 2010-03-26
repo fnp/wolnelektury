@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from django.views.generic.list_detail import object_detail
 from catalogue import forms
 from lessons import models

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Custom managers for Django models registered with the tagging
 application.

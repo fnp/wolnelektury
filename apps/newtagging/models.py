@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Models and managers for generic tagging.
 """
