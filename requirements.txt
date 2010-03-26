@@ -14,7 +14,7 @@ Imaging>=1.1.6
 mutagen>=1.17
 sorl-thumbnail>=3.2
 
-# homebrew & depencies
+# home-brewed & dependencies
 librarian>=1.2.6
 lxml>=2.2.2
 
