@@ -1,8 +1,11 @@
 """
 Models and managers for generic tagging.
 """
+
 # Python 2.3 compatibility
-if not hasattr(__builtins__, 'set'):
+try:
+    set
+except NameError: 
     from sets import Set as set
 
 from django.contrib.contenttypes import generic

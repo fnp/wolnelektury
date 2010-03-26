@@ -1,12 +1,19 @@
 localsettings.py
 dev.sqlite
+dev.db
 
 # Python garbage
 *.pyc
 .coverage
+pip-log.txt
 
 # Mac OS X garbage
 .DS_Store
 
 # Windows garbage
 thumbs.db
+
+# Eclipse
+.project
+.settings
+.pydevproject

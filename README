@@ -26,6 +26,8 @@ Just execute this commands:
 Używany kod open-source
 =======================
 
+Zewnętrzny:
+
 django
 ------
  - Źródła: [djangoproject.com](http://www.djangoproject.com/)
@@ -33,19 +35,36 @@ django
  - Licencja: [BSD License](http://code.djangoproject.com/browser/django/trunk/LICENSE)
  - Typ: framework
 
-django-chunks
--------------
- - Źródła: [Google Code](http://code.google.com/p/django-chunks/)
- - Autorzy: Clint Ecker <clintecker@gmail.com>
- - Licencja: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Typ: biblioteka (aplikacja django)
-
 django-pagination
 -----------------
  - Źródła: [Google Code](http://code.google.com/p/django-pagination/)
  - Autorzy: James Tauber <jtauber@gmail.com>, leidel@gmail.com
  - Licencja: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
  - Typ: biblioteka (aplikacja django)
+ 
+Django South
+-----
+- Źródła: [aercode.org](http://south.aeracode.org/)
+- Autorzy: Andrew Godwin <andrew@aeracode.org>, Andy McCurdy <sedrik@gmail.com>
+- Licencja: [Apache License 2.0](http://www.opensource.org/licenses/apache2.0.php)
+- Typ: biblioteka (aplikacja django)
+
+lxml
+----
+ - Żródła: [codespeak.net](http://codespeak.net/lxml/index.html#download)
+ - Autorzy: [wielu autorów](http://codespeak.net/lxml/credits.html)
+ - Licencja: [BSD License](http://codespeak.net/lxml/index.html#license)
+ - Typ: biblioteka
+ 
+feedparser
+----------
+ - Źródła: [Google Code](http://code.google.com/p/feedparser/)
+ - Autorzy: Mark Pilgrim <pilgrim@gmail.com>
+ - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ - Typ: biblioteka
+
+
+Wewnętrzny (w źródłach):
 
 django-compress
 ---------------
@@ -53,7 +72,14 @@ django-compress
  - Autorzy: Andreas Pelme <andreas.pelme@gmail.com>
  - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
  - Typ: biblioteka (aplikacja django)
-
+ 
+ django-chunks
+-------------
+ - Źródła: [Google Code](http://code.google.com/p/django-chunks/)
+ - Autorzy: Clint Ecker <clintecker@gmail.com>
+ - Licencja: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+ - Typ: biblioteka (aplikacja django)
+ 
 django-newtagging
 -----------------
  - Źródła: [BitBucket](http://www.bitbucket.org/zuber/django-newtagging/)
@@ -61,20 +87,10 @@ django-newtagging
  - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
  - Typ: biblioteka (aplikacja django)
  - Nota: Aplikacja wzorowana na [django-tagging](http://code.google.com/p/django-tagging/), która jest również wydana na licencji [MIT](http://www.opensource.org/licenses/mit-license.php) Około połowa kodu jest dzielona.
-
-south
------
-- Źródła: [aercode.org](http://south.aeracode.org/)
-- Autorzy: Andrew Godwin <andrew@aeracode.org>, Andy McCurdy <sedrik@gmail.com>
-- Licencja: [Apache License 2.0](http://www.opensource.org/licenses/apache2.0.php)
-- Typ: biblioteka (aplikacja django)
-
-feedparser
-----------
- - Źródła: [Google Code](http://code.google.com/p/feedparser/)
- - Autorzy: Mark Pilgrim <pilgrim@gmail.com>
- - Licencja: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Typ: biblioteka
+ 
+django-piston (0.2.3rc)
+------------------------
+ - http://bitbucket.org/jespern/django-piston/wiki/Home
 
 markupstring
 ------------
@@ -83,11 +99,3 @@ markupstring
  - Licencja: [MIT License](http://code.activestate.com/help/terms/)
  - Typ: biblioteka
  - Nota: Zmienione przez Marka Stępniowskiego <marek@stepniowski.com> tak, żeby akceptowało ciągi znaków Unicode
- 
-lxml
-----
- - Żródła: [codespeak.net](http://codespeak.net/lxml/index.html#download)
- - Autorzy: [wielu autorów](http://codespeak.net/lxml/credits.html)
- - Licencja: [BSD License](http://codespeak.net/lxml/index.html#license)
- - Typ: biblioteka
-
