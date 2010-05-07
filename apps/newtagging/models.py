@@ -112,7 +112,7 @@ class TagManager(models.Manager):
         WHERE %(tagged_item)s.content_type_id = %(content_type_id)s
             %%s
             %(extra_where)s
-        GROUP BY %(tag)s.id, %(tag)s.name
+        GROUP BY %(tag_columns)s, %(tag)s.id, %(tag)s.name
         %%s
         ORDER BY %(tag)s.%(ordering)s ASC""" % {
             'tag': qn(self.model._meta.db_table),

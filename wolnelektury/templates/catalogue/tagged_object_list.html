@@ -14,6 +14,7 @@
         <h2>Twoja półka jest pusta</h2>
         <p>Możesz wrzucić książkę na półkę, wchodząc na stronę danej lektury i klikając na przycisk „Na półkę!”.</p>
     </div>
+	{% else
     {% else %}
     {% autopaginate object_list 10 %}
     <div id="books-list">
@@ -54,18 +55,45 @@
             {% ifequal last_tag.category "epoch"  %}Przeczytaj artykuł o epoce {{ last_tag }} w Wikipedii{% endifequal %}
         </a></p>
         {% endif %}
-        <ol>
-        {% for book in object_list %}
-            <li>
-                {% if user_is_owner %}
-                    <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">Usuń</a>
+
+        {% if object_list %}
+            <ol>
+            {% for book in object_list %}
+                <li>
+                    {% if user_is_owner %}
+                        <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">Usuń</a>
+                    {% endif %}
+                    {{ book.short_html }}</li>
+            {% endfor %}
+            </ol>
+        {% else %}
+			{% if only_author %}
+	            {% if last_tag.alive %}
+					Dzieła tego autora objęte są prawem autorskim.
+				{% else %}{% comment %} Nie żyje {% endcomment %}
+            	    {% if last_tag.in_pd %}
+                	    Dzieła tego autora znajdują się w domenie publicznej
+						i niedługo zostaną opublikowane w szkolnej bibliotece
+						internetowej Wolne Lektury. 
+	                {% else %}{% comment %} Nie żyje, ale jeszcze nie w PD {% endcomment %}
+    	                <div>
+        	                <p>Dzieła tego autora przejdą do zasobów domeny
+							publicznej i będą mogły być publikowane bez
+							żadnych ograniczeń za:</p>
+							{% include "catalogue/pd_counter.html" %}
+						</div>
+	                {% endif %}
                 {% endif %}
-                {{ book.short_html }}</li>
-        {% endfor %}
-        </ol>
+			{% else %}
+			    Nie znaleziono żadnych utworów.
+			{% endif %}
+            {% include "info/join_us.html" %}
+        {% endif %}
         {% endwith %}
         {% paginate %}
     </div>
+	{% if object_list %}
+	{% comment %} Jeśli nic nie znaleźliśmy, to i po prawej stronie nic nie będzie {% endcomment %}
     <div id="tags-list">
         <div id="categories-list">
             {% if categories.author %}
@@ -93,6 +121,7 @@
         </div>
         <div class="clearboth"></div>
     </div>
+	{% endif %}
     {% endif %}
     <div id="set-window">
         <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
