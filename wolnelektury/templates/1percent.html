@@ -4,10 +4,10 @@
 {% block title %}1% podatku na WolneLektury.pl{% endblock title %}
 
 {% block extrahead %}
-    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="/static/css/960.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="/static/css/text.css" type="text/css" charset="utf-8" />
-    <link rel="stylesheet" href="/static/css/1percent.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/960.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/text.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/1percent.css" type="text/css" charset="utf-8" />
 {% endblock extrahead %}
 
 {% block bodycontent %}
@@ -15,11 +15,11 @@
         
         <div id="header" class="grid_12">
             <div id="logos" class="alpha grid_5 suffix_1">
-                <img src="/static/img/logo-big.png" />
-                <img src="/static/img/1percent-big.png" />
+                <img src="{{ STATIC_URL }}img/logo-big.png" />
+                <img src="{{ STATIC_URL }}img/1percent-big.png" />
             </div>
             <div id="title" class="omega grid_6">
-                <img src="/static/img/tagline.png" />
+                <img src="{{ STATIC_URL }}img/tagline.png" />
             </div>
         </div>
         
@@ -41,7 +41,7 @@
                 <p>Przy wypełnianiu formularza PIT w polu <em>wniosek o przekazanie 1% podatku na rzecz OPP</em> wpisz:</p>
 <pre>Fundacja Nowoczesna Polska
 KRS 0000070056</pre>
-                <img src="/static/img/pit37.png" />
+                <img src="{{ STATIC_URL }}img/pit37.png" />
                 <a href="https://www.pitroczny.pl/pit?krs=0000070056"><img src="http://www.pitroczny.pl/pl/resources/images/1oppmini.png" alt="1% dla OPP" style="float: left; margin: 8px 8px 0 0" ></a>
                 <p>Skorzystaj z programu ułatwiającego przygotowanie deklaracji podatkowej on-line.</p>
             </div>
