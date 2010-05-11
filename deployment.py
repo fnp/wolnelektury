@@ -23,18 +23,21 @@ def restart_wsgi():
 def update_application():
     print "Updating repository.",
     os.system("cd %s; git pull" % PROJECT_ROOT)
+
     print "Installing requirements"
-    os.system("pip install -r %s" % os.path.join(PROJECT_ROOT, 'requirements.txt'))
+    os.system("%s install -r %s" % (PIP, os.path.join(PROJECT_ROOT, 'requirements.txt')))
+
     print "Installing local requirements"
-    os.system("pip install -r %s" % os.path.join(ROOT, 'etc', 'requirements.txt'))
+    os.system("%s install -r %s" % (PIP, os.path.join(ROOT, 'etc', 'requirements.txt')))
     print "done."
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 PYTHON = os.path.join(ROOT, 'pythonenv', 'bin', 'python')
+PIP = os.path.join(ROOT, 'pythonenv', 'bin', 'pip')
 PYTHON_SITE = os.path.join(ROOT, 'pythonenv', 'lib', 'python2.6', 'site-packages')
 
-PROJECT_NAME = 'redakcja'
+PROJECT_NAME = 'wolnelektury'
 PROJECT_ROOT = os.path.join(ROOT, 'application')
 
 MEDIA_ROOT = os.path.join(ROOT, 'www', 'media')
