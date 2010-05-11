@@ -294,12 +294,15 @@ def remove_from_shelf(request, shelf, book):
     book = get_object_or_404(models.Book, slug=book)
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set', user=request.user)
     
-    models.Tag.objects.remove_tag(book, shelf)
-    
-    shelf.book_count -= 1
-    shelf.save()
-    
-    return HttpResponse('Usunieto')
+    if shelf in book.tags:
+        models.Tag.objects.remove_tag(book, shelf)
+
+        shelf.book_count -= 1
+        shelf.save()
+
+        return HttpResponse('Usunięto')
+    else:
+        return HttpResponse('Książki nie ma na półce')
 
 
 def collect_books(books):
