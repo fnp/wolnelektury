@@ -206,14 +206,16 @@ def _tags_starting_with(prefix, user):
 def search(request):
     tags = request.GET.get('tags', '')
     prefix = request.GET.get('q', '')
-    # Prefix must have at least 2 characters
-    if len(prefix) < 2:
-        return HttpResponse('')
     
     try:
         tag_list = models.Tag.get_tag_list(tags)
     except:
         tag_list = []
+
+    # Prefix must have at least 2 characters
+    if len(prefix) < 2:
+        return render_to_response('catalogue/search_no_hits.html', {'query':prefix, 'tags':tag_list},
+            context_instance=RequestContext(request))
     
     result = _tags_starting_with(prefix, request.user)
     if len(result) > 0:
