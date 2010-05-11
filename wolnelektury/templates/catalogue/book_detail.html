@@ -43,7 +43,9 @@
                 <div id="czytamy-sluchajac-info">
                     <a href="http://czytamysluchajac.pl/" id="czytamysluchajac-logo"><img src="/static/img/czytamysluchajac-logo-small.png" /></a>     
                     <p>{% trans "Artist" %}: {{ book.get_extra_info_value.artist_name }}</p>
-                    <p>{% trans "Director" %}: {{ book.get_extra_info_value.director_name }}</p>
+					{% if book.get_extra_info_value.director_name %}
+                        <p>{% trans "Director" %}: {{ book.get_extra_info_value.director_name }}</p>
+					{% endif %}
                 </div>
             {% endif %}
             {% if book.mp3_file %}<a href="{{ book.mp3_file.url }}">{% trans "Download MP3" %}</a>{% endif %}
