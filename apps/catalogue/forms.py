@@ -18,7 +18,7 @@ class BookImportForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-    q = JQueryAutoCompleteField('/katalog/tags/', {'minChars': 2, 'selectFirst': True, 'cacheLength': 50})
+    q = JQueryAutoCompleteField('/katalog/tags/', {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
     tags = forms.CharField(widget=forms.HiddenInput, required=False)
     
     def __init__(self, *args, **kwargs):

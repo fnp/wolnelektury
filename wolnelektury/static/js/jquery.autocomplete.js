@@ -10,6 +10,11 @@
  * Revision: $Id: jquery.autocomplete.js 15 2009-08-22 10:30:27Z joern.zaefferer $
  */
 
+/*
+ * Modified by Radek Czajka, Fundacja Nowoczesna Polska, 2010-05-10:
+ *   escape regex for word start checking in matchSubset
+ */
+
 ;(function($) {
 	
 $.fn.extend({
@@ -442,7 +447,7 @@ $.Autocompleter.Cache = function(options) {
 			s = s.toLowerCase();
 		var i = s.indexOf(sub);
 		if (options.matchContains == "word"){
-			i = s.toLowerCase().search("\\b" + sub.toLowerCase());
+			i = s.toLowerCase().search("\\b" + sub.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1").toLowerCase());
 		}
 		if (i == -1) return false;
 		return i == 0 || options.matchContains;
