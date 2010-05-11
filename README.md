@@ -40,12 +40,19 @@ How to deploy (development version)
     
     ./wolnelektury/manage.py syncdb
     ./wolnelektury/manage.py migrate
-    
-5. Import some books which are availble on http://www.wolnelektury.pl or on bitbucket mirror: http://bitbucket.org/lqc/wlbooks/
 
-6. Run the server
+5. Run the server
 
    ./wolnelektury/manage.py runserver
+
+    
+6. Import some books which are available on http://www.wolnelektury.pl or on bitbucket mirror: http://bitbucket.org/lqc/wlbooks/
+   If you use Bitbucket, you also need Mercurial to fetch books (you can install it using: pip install mercurial).
+   After downloading books, log into administration, go to Books and choose 'Browse' to select book file,
+   then fire 'Import book' to upload it. Some books have invalid XML, so you can get an error
+   (just ignore it and look for other books).
+   
+
 
 Full list of used open-source software
 ======================================
