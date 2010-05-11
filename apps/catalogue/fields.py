@@ -83,7 +83,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         if self.options:
             options += ', %s' % self.options
         
-        return u'$(\'#%s\').autocomplete(%s%s);' % (field_id, source, options)
+        return u'$(\'#%s\').autocomplete(%s%s).result(autocomplete_result_handler);' % (field_id, source, options)
     
     def render(self, name, value=None, attrs=None):
         final_attrs = self.build_attrs(attrs, name=name)

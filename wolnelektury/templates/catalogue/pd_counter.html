@@ -1,0 +1,5 @@
+<div id='countdown'></div>
+<script>
+d = new Date({{ pd_counter }}, 1, 1);
+$('#countdown').countdown({until: d, format: 'ydHMS', serverSync: serverTime}); 
+</script>

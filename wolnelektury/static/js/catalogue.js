@@ -40,6 +40,20 @@ function changeBannerText() {
     }
 }
 
+function autocomplete_result_handler(event, item) {
+    $(event.target).closest('form').submit();
+}
+function serverTime() { 
+    var time = null; 
+    $.ajax({url: '/katalog/zegar/', 
+        async: false, dataType: 'text', 
+        success: function(text) { 
+            time = new Date(text);
+        }, error: function(http, message, exc) {
+            time = new Date(); 
+    }}); 
+    return time; 
+}
 
 (function($) {
     $(function() {

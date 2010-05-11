@@ -17,6 +17,9 @@ urlpatterns = patterns('catalogue.views',
     url(r'^polki/nowa/$', 'new_set', name='new_set'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^szukaj/$', 'search', name='search'),
+
+    # tools
+    url(r'^zegar', 'clock', name='clock'),
     
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)\.html$', 'book_text', name='book_text'),
