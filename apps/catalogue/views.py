@@ -258,7 +258,7 @@ def book_sets(request, slug):
     book_sets = book.tags.filter(category='set', user=request.user)
     
     if not request.user.is_authenticated():
-        return HttpResponse('<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>')
+        return HttpResponse(_('<p>To maintain your shelves you need to be logged in.</p>'))
     
     if request.method == 'POST':
         form = forms.ObjectSetsForm(book, request.user, request.POST)
@@ -276,7 +276,7 @@ def book_sets(request, slug):
             
             book.tags = new_shelves + list(book.tags.filter(~Q(category='set') | ~Q(user=request.user)))
             if request.is_ajax():
-                return HttpResponse('<p>Półki zostały zapisane.</p>')
+                return HttpResponse(_('<p>Shelves were sucessfully saved.</p>'))
             else:
                 return HttpResponseRedirect('/')
     else:
@@ -300,9 +300,9 @@ def remove_from_shelf(request, shelf, book):
         shelf.book_count -= 1
         shelf.save()
 
-        return HttpResponse('Usunięto')
+        return HttpResponse(_('Book was successfully removed from the shelf'))
     else:
-        return HttpResponse('Książki nie ma na półce')
+        return HttpResponse(_('This book is not on the shelf'))
 
 
 def collect_books(books):
@@ -335,7 +335,7 @@ def download_shelf(request, slug):
         formats = ['pdf', 'odt', 'txt', 'mp3', 'ogg']
     
     # Create a ZIP archive
-    temp = temp = tempfile.TemporaryFile()
+    temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
     
     for book in collect_books(models.Book.tagged.with_all(shelf)):
@@ -398,7 +398,7 @@ def new_set(request):
         new_set = new_set_form.save(request.user)
 
         if request.is_ajax():
-            return HttpResponse(u'<p>Półka <strong>%s</strong> została utworzona</p>' % new_set)
+            return HttpResponse(_('<p>Shelf <strong>%s</strong> was successfully created</p>') % new_set)
         else:
             return HttpResponseRedirect('/')
 
@@ -413,7 +413,7 @@ def delete_shelf(request, slug):
     user_set.delete()
 
     if request.is_ajax():
-        return HttpResponse(u'<p>Półka <strong>%s</strong> została usunięta</p>' % user_set.name)
+        return HttpResponse(_('<p>Shelf <strong>%s</strong> was successfully removed</p>') % user_set.name)
     else:
         return HttpResponseRedirect('/')
 
@@ -472,10 +472,10 @@ def import_book(request):
             info = sys.exc_info()
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
-            return HttpResponse("An error occurred: %s\n\n%s" % (exception, tb), mimetype='text/plain')
-        return HttpResponse("Book imported successfully")
+            return HttpResponse(_("An error occurred: %s\n\n%s") % (exception, tb), mimetype='text/plain')
+        return HttpResponse(_("Book imported successfully"))
     else:
-        return HttpResponse("Error importing file: %r" % book_import_form.errors)
+        return HttpResponse(_("Error importing file: %r") % book_import_form.errors)
 
 
 

@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from slughifi import slughifi
 
 from catalogue.models import Tag, Book
@@ -24,7 +25,7 @@ class SearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
         tags = kwargs.pop('tags', [])
         super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['q'].widget.attrs['title'] = u'tytuł, autor, motyw/temat, epoka, rodzaj, gatunek'
+        self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre')
         self.fields['tags'].initial = '/'.join(tag.slug for tag in Tag.get_tag_list(tags))
 
 
@@ -40,7 +41,7 @@ class ObjectSetsForm(forms.Form):
     def __init__(self, obj, user, *args, **kwargs):        
         super(ObjectSetsForm, self).__init__(*args, **kwargs)
         self.fields['set_ids'] = forms.MultipleChoiceField(
-            label=u'Półki',
+            label=_('Shelves'),
             required=False,
             choices=[(tag.id, "%s (%s)" % (tag.name, tag.book_count)) for tag in Tag.objects.filter(category='set', user=user)],
             initial=[tag.id for tag in obj.tags.filter(category='set', user=user)],
@@ -53,7 +54,7 @@ class NewSetForm(forms.Form):
     
     def __init__(self, *args, **kwargs):
         super(NewSetForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['title'] = u'nazwa nowej półki'
+        self.fields['name'].widget.attrs['title'] = _('Name of the new shelf')
         
     def save(self, user, commit=True):
         name = self.cleaned_data['name']

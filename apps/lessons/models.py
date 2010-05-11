@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from os import path
 
 class Document(models.Model):
-    """Dokument - materiał pomocniczy dla nauczycieli."""
+    """Document - hand-out for teachers"""
     title = models.CharField(_('title'), max_length=120)
     slug = models.SlugField(_('slug'))
     file = models.FileField(_('file'), upload_to='lessons/document')
