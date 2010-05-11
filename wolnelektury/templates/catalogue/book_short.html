@@ -1,6 +1,7 @@
+{% load i18n %}
 <div class="book">
     <div class="change-sets">
-        <a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">Na półkę!</a>
+        <a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">{% trans "Put on the shelf!" %}</a>
     </div>
     {% if book.children.all|length %}
         <div class="book-parent-thumbnail"></div>
@@ -10,8 +11,8 @@
     <div class="book-description">
         <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
         {% if formats %}
-            <p style="margin: 0">Na skróty: {{ formats|join:", " }}</p>
+            <p style="margin: 0">{% trans "Jump to" %}: {{ formats|join:", " }}</p>
         {% endif %}
-        <p style="margin: 0">Utwór w kategoriach: {{ tags|join:", " }}</p>
+        <p style="margin: 0">{% trans "Categories" %}: {{ tags|join:", " }}</p>
     </div>
 </div>

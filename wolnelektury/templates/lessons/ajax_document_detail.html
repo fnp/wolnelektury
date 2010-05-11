@@ -1,5 +1,6 @@
+{% load i18n %}
 <div>
-    <p class="download"><a href="{{ object.file.url }}">Pobierz</a> {% if object.author %}(autor: {{ object.author }}){% endif %}</p>
+    <p class="download"><a href="{{ object.file.url }}">{% trans "Download" %}</a> {% if object.author %}({% trans "author" %}: {{ object.author }}){% endif %}</p>
     <h2>{{ object.title }}</h2>
     {% if object.slideshare_id %}
     <object style="margin:0px" width="480" height="400">

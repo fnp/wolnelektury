@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load chunks compressed catalogue_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -13,8 +14,8 @@
     <body>
         <div id="menu">
             <ul>
-                <li><a href="#toc">Spis treści</a></li>
-                <li><a href="#themes">Motywy</a></li>
+                <li><a href="#toc">{% trans "Table of content" %}</a></li>
+                <li><a href="#themes">{% trans "Themes" %}</a></li>
             </ul>
         </div>
         <div id="header">

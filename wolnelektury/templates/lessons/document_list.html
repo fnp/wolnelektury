@@ -1,9 +1,10 @@
+{% load i18n %}
 {% extends "base.html" %}
 {% load catalogue_tags chunks %}
 
 {% block bodyid %}document-list-body{% endblock %}
 
-{% block title %}Materiały pomocnicze dla nauczycieli w WolneLektury.pl{% endblock %}
+{% block title %}{% trans "Hand-outs for teachers on " %}WolneLektury.pl{% endblock %}
 
 {% block extrahead %}
     <script type="text/javascript" charset="utf-8">
@@ -45,9 +46,9 @@
     </script>
 {% endblock extrahead %}
 {% block body %}
-    <h1>Materiały pomocnicze dla nauczycieli</h1>
+    <h1>{% trans "Hand-outs for teachers" %}</h1>
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to homepage" %}</a></p>
     </form>
     
     <div id="document-list">

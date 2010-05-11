@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-04 06:17-0500\n"
+"POT-Creation-Date: 2010-05-04 14:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,140 +16,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: catalogue/models.py:15
-msgid "author"
-msgstr "autor"
-
-#: catalogue/models.py:16
-msgid "epoch"
-msgstr "epoka"
-
-#: catalogue/models.py:17
-msgid "kind"
-msgstr "rodzaj"
-
-#: catalogue/models.py:18
-msgid "genre"
-msgstr "gatunek"
-
-#: catalogue/models.py:19
-msgid "theme"
-msgstr "motyw"
-
-#: catalogue/models.py:20
-msgid "set"
-msgstr "zestaw"
-
-#: catalogue/models.py:34
-msgid "name"
-msgstr "nazwa"
-
-#: catalogue/models.py:35 catalogue/models.py:71
-msgid "slug"
-msgstr "slug"
-
-#: catalogue/models.py:36
-msgid "sort key"
-msgstr "klucz sortowania"
-
-#: catalogue/models.py:37
-msgid "category"
-msgstr "kategoria"
-
-#: catalogue/models.py:45 catalogue/models.py:72 catalogue/models.py:86
-#: chunks/models.py:11
-msgid "description"
-msgstr "opis"
-
-#: catalogue/models.py:54 newtagging/models.py:470
-msgid "tag"
-msgstr "tag"
-
-#: catalogue/models.py:55 newtagging/admin.py:38
-msgid "tags"
-msgstr "tagi"
-
-#: catalogue/models.py:70
-msgid "title"
-msgstr "tytuł"
-
-#: catalogue/models.py:73
-msgid "creation date"
-msgstr "data utworzenia"
-
-#: catalogue/models.py:76
-msgid "XML file"
-msgstr "plik XML"
-
-#: catalogue/models.py:77
-msgid "PDF file"
-msgstr "plik PDF"
-
-#: catalogue/models.py:78
-msgid "ODT file"
-msgstr "plik ODT"
-
-#: catalogue/models.py:79
-msgid "HTML file"
-msgstr "plik HTML"
-
-#: catalogue/models.py:162
-msgid "book"
-msgstr "książka"
-
-#: catalogue/models.py:163
-msgid "books"
-msgstr "książki"
-
-#: catalogue/models.py:180
-msgid "fragment"
-msgstr "fragment"
-
-#: catalogue/models.py:181
-msgid "fragments"
-msgstr "fragmenty"
-
-#: chunks/models.py:10
-msgid "key"
-msgstr "klucz"
-
-#: chunks/models.py:10
-msgid "A unique name for this chunk of content"
-msgstr "Unikalna nazwa dla tego kawałka treści"
-
-#: chunks/models.py:12
-msgid "content"
-msgstr "zawartość"
-
-#: chunks/models.py:16
-msgid "chunk"
-msgstr "kawałek"
-
-#: chunks/models.py:17
-msgid "chunks"
-msgstr "kawałki"
-
-#: newtagging/models.py:471
-msgid "content type"
-msgstr "typ zawartości"
-
-#: newtagging/models.py:472
-msgid "object id"
-msgstr "id obiektu"
-
-#: newtagging/views.py:29
-msgid "tagged_object_list must be called with a queryset or a model."
+#: templates/base.html:19
+msgid ""
+"Internet Explorer cannot display this site properly. Click here to read "
+"more..."
 msgstr ""
 
-#: newtagging/views.py:31
-msgid "tagged_object_list must be called with a tag model."
+#: templates/base.html:27
+msgid "See more"
 msgstr ""
 
-#: newtagging/views.py:33
-msgid "tagged_object_list must be called with a tag."
+#: templates/base.html:36
+msgid "Welcome"
 msgstr ""
 
-#: newtagging/views.py:37
-#, python-format
-msgid "No tags found matching \"%s\"."
-msgstr "Nie znaleziono tagów zgodnych z \"%s\"."
+#: templates/base.html:37
+msgid "Your shelf"
+msgstr ""
+
+#: templates/base.html:39
+msgid "Administration"
+msgstr ""
+
+#: templates/base.html:41
+msgid "Logout"
+msgstr ""
+
+#: templates/base.html:44 templates/base.html.py:76 templates/base.html:80
+#: templates/base.html.py:84
+msgid "Sign in"
+msgstr ""
+
+#: templates/base.html:73 templates/base.html.py:94
+msgid "Close"
+msgstr ""
+
+#: templates/base.html:76 templates/base.html.py:84 templates/base.html:88
+msgid "Register"
+msgstr ""
+
+#: templates/base.html:96
+msgid "Loading"
+msgstr ""

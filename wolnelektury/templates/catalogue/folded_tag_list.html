@@ -1,6 +1,7 @@
+{% load i18n %}
 {% load catalogue_tags %}
 {% if one_tag %}
-    <p>Zobacz całą kategorię <a href="{% catalogue_url one_tag %}">{{ one_tag }}</a>.</p>
+    <p>{% trans "Show full category" %} <a href="{% catalogue_url one_tag %}">{{ one_tag }}</a>.</p>
 {% else %}
     <div class="shown-tags">
         <ul class="shown-tags">
@@ -9,7 +10,7 @@
             {% endfor %}
         </ul>
         {% if some_tags_hidden %}
-            <p><a href="#" class="show-all-tags">Zobacz więcej</a></p>
+            <p><a href="#" class="show-all-tags">{% trans "See more" %}</a></p>
         {% endif %}
     </div>
     <div class="all-tags">
@@ -18,6 +19,6 @@
                 <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
             {% endfor %}
         </ul>    
-        <p><a href="#" class="hide-all-tags">Zwiń</a></p>
+        <p><a href="#" class="hide-all-tags">{% trans "Hide" %}</a></p>
     </div>
 {% endif %}

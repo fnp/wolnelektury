@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load catalogue_tags chunks cache %}
 
 {% block bodyid %}main-page{% endblock %}
@@ -9,69 +10,69 @@
     </div>
     <div class="clearboth"></div>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} {{ form.tags }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url catalogue.views.book_list %}">zobacz spis utworów</a> w naszym zbiorze</p>
+        <p>{{ form.q }} {{ form.tags }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url catalogue.views.book_list %}">{% trans "check list of books" %}</a> {% trans "in our repository" %}</p>
     </form>
     
     <div id="intro">
-        <p id="tags-description">↓ Przeglądaj lektury według wybranych kategorii ↓</p>
+        <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
-            <h2>Twoje półki z lekturami</h2>
+            <h2>{% trans "Your shelves with books" %}</h2>
             {% if user.is_authenticated %}
                 {% if shelves %}
                 <ul class="shelf-list">
                 {% for shelf in shelves %}
-                    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">usuń</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.book_count }})</a></li>
+                    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">{% trans "delete" %}</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.book_count }})</a></li>
                 {% endfor %}
                 </ul>
                 {% else %}
-                <p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć półkę poniżej.</p>
+                <p>{% trans "You do not own any shelves. You can create one below, if you want to." %}</p>
                 {% endif %}
                 <hr />
                 <form action="{% url catalogue.views.new_set %}" method="post" accept-charset="utf-8" class="cuteform">
                 <ol>
-                    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz półkę"/></li>
+                    <li>{{ new_set_form.name }} <input type="submit" value="{% trans "Create shelf" %}"/></li>
                 </ol>
                 </form>
             {% else %}
-                <p>Stwórz własny zestaw lektur. Możesz się nim później podzielić z innymi, przesyłając im link do Twojej półki.</p>
-                <p>Aby zarządzać swoimi półkami, musisz się <a class="login-register-link" href="#">zalogować</a>.</p>
+                <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
+                <p>{% trans "You need to " %}<a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
             {% endif %}
             <div id="lessons">
-                <h2><a href="{% url lessons_document_list %}">Materiały pomocnicze dla nauczycieli</a></h2>
-                <p>Scenariusze lekcji i inne pomysły na wykorzytanie serwisu WolneLektury.pl podczas nauczania.</p>
-                <p class="see-more"><a href="{% url lessons_document_list %}">Zobacz więcej ⇒</a></p>
+                <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
+                <p>{% trans "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching." %}</p>
+                <p class="see-more"><a href="{% url lessons_document_list %}">{% trans " See more" %} ⇒</a></p>
             </div>
             <div id="czytamysluchajac">
                 <a href="http://czytamysluchajac.pl/"><img src="/static/img/czytamysluchajac-logo-small.png" /></a>
-                <p><a href="http://czytamysluchajac.pl/">Czytamy Słuchając</a> to profesjonalne nagrania tekstów literackich z naszego zbioru dostępne na wolnej licencji w formatach MP3, Ogg Vorbis oraz w systemie DAISY.</p>
-                <p class="see-more"><a href="http://czytamysluchajac.pl/index.php/o-projekcie/">Zobacz więcej ⇒</a></p>
+                <p><a href="http://czytamysluchajac.pl/">Czytamy Słuchając</a> {% trans "are professional recordings of literary texts from our repository, available on free license in MP3 and Ogg Vorbis formats as well as in DAISY system." %}</p>
+                <p class="see-more"><a href="http://czytamysluchajac.pl/index.php/o-projekcie/">{% trans "See more" %} ⇒</a></p>
             </div>
         </div>
         <div id="tags-list">
             <div id="categories-list">
                 {% if categories.author %}
-                    <h2>Autorzy</h2>
+                    <h2>{% trans "Authors" %}</h2>
                     {% folded_tag_list categories.author %}
                 {% endif %}
                 {% if categories.kind %}
-                    <h2>Rodzaje</h2>
+                    <h2>{% trans "Kinds" %}</h2>
                     {% folded_tag_list categories.kind %}
                 {% endif %}
                 {% if categories.genre %}
-                    <h2>Gatunki</h2>
+                    <h2>{% trans "Genres" %}</h2>
                     {% folded_tag_list categories.genre %}
                 {% endif %}
                 {% if categories.epoch %}
-                    <h2>Epoki</h2>
+                    <h2>{% trans "Epochs" %}</h2>
                     {% folded_tag_list categories.epoch %}
                 {% endif %}
             </div>
             <div id="themes-list">
                 {% if fragment_tags %}
-                    <h2>Motywy i tematy</h2>
+                    <h2>{% trans "Themes and topics" %}</h2>
                     {% folded_tag_list fragment_tags %}
                 {% endif %}
-                <h2>Rodziny motywów</h2>
+                <h2>{% trans "Themes groups" %}</h2>
                 <div class="shown-tags">
                     <ol>
                         <li>środowisko miejskie i wiejskie
@@ -83,7 +84,7 @@
                         <li>przyroda
                         <span class="subcategories"><a href="/katalog/natura/">Natura</a>, <a href="/katalog/zywioly/">Żywioły</a>, <a href="/katalog/ogien/">Ogień</a>, <a href="/katalog/ziemia/">Ziemia</a>, <a href="/katalog/wiatr/">Wiatr</a>, <a href="/katalog/woda/">Woda</a>, <a href="/katalog/wiosna/">Wiosna</a>, <a href="/katalog/lato/">Lato</a>, <a href="/katalog/jesien/">Jesień</a>, <a href="/katalog/zima/">Zima</a>, <a href="/katalog/przemijanie/">Przemijanie</a>, <a href="/katalog/slonce/">Słońce</a>, <a href="/katalog/ksiezyc/">Księżyc</a>, <a href="/katalog/gwiazda/">Gwiazda</a>, <a href="/katalog/oblok/">Obłok</a>, <a href="/katalog/noc/">Noc</a>, <a href="/katalog/swiatlo/">Światło</a>, <a href="/katalog/gora/">Góra</a>, <a href="/katalog/rzeka/">Rzeka</a>, <a href="/katalog/morze/">Morze</a>, <a href="/katalog/burza/">Burza</a>, <a href="/katalog/deszcz/">Deszcz</a>, <a href="/katalog/bloto/">Błoto</a>, <a href="/katalog/przyroda-nieozywiona/">Przyroda nieożywiona</a>, <a href="/katalog/rosliny/">Rośliny</a>, <a href="/katalog/kwiaty/">Kwiaty</a>, <a href="/katalog/ogrod/">Ogród</a>, <a href="/katalog/sielanka/">Sielanka</a>, <a href="/katalog/raj/">Raj</a>, <a href="/katalog/jablko/">Jabłko</a>, <a href="/katalog/drzewo/">Drzewo</a>, <a href="/katalog/zwierzeta/">Zwierzęta</a>, <a href="/katalog/ptak/">Ptak</a>, <a href="/katalog/motyl/">Motyl</a>, <a href="/katalog/kot/">Kot</a>, <a href="/katalog/kon/">Koń</a>, <a href="/katalog/pies/">Pies</a>, <a href="/katalog/waz/">Wąż</a>, <a href="/katalog/potwor/">Potwór</a></span></li>
                     </ol>
-                    <p><a href="#" class="show-all-tags">Zobacz więcej</a></p>
+                    <p><a href="#" class="show-all-tags">{% trans "See more" %}</a></p>
                 </div>
                 <div class="all-tags">
                     <ol>
@@ -246,7 +247,7 @@
                     <li>żywioły
                     <span class="subcategories"><a href="/katalog/zywioly/">Żywioły</a>, <a href="/katalog/ogien/">Ogień</a>, <a href="/katalog/ziemia/">Ziemia</a>, <a href="/katalog/wiatr/">Wiatr</a>, <a href="/katalog/woda/">Woda</a>, <a href="/katalog/przestrzen/">Przestrzeń</a></span></li>
                     </ol>
-                    <p><a href="#" class="hide-all-tags">Zwiń</a></p>
+                    <p><a href="#" class="hide-all-tags">{% trans "Hide" %}</a></p>
                 </div>
             </div>
             <div class="clearboth"></div>
@@ -256,15 +257,15 @@
     
     <div id="site-info">
         <div id="latest-blog-posts">
-            <h2>Aktualności</h2>
+            <h2>{% trans "News" %}</h2>
             {% cache 1800 latest-blog-posts %}
             {% latest_blog_posts "http://www.nowoczesnapolska.org.pl/tematy/wolne-lektury/feed/" %}
             {% endcache %}
-            <p class="see-more"><a href="http://www.nowoczesnapolska.org.pl/">Zobacz nasz blog ⇒</a></p>
+            <p class="see-more"><a href="http://www.nowoczesnapolska.org.pl/">{% trans "See our blog" %} ⇒</a></p>
         </div>
         <div id="you-can-help">
-            <h2>Możesz nam pomóc!</h2>
-            <p>Utwory włączane sukcesywnie do naszej biblioteki staramy się opracowywać jak najdokładniej. Jest to możliwe tylko dzięki współpracującym z nami wolontariuszom.</p>
+            <h2>{% trans "You can help us!" %}</h2>
+            <p>{% trans "Works appended constantly to " %}Utwory włączane sukcesywnie do naszej biblioteki staramy się opracowywać jak najdokładniej. Jest to możliwe tylko dzięki współpracującym z nami wolontariuszom.</p>
             <p>Zapraszamy wszystkie osoby, które chcą współtworzyć szkolną bibliotekę internetową Wolne Lektury.</p>
             <p class="see-more"><a href="{% url help_us %}">Zobacz więcej ⇒</a></p>
         </div>

@@ -1,17 +1,18 @@
-<h2>Półki zawierające fragment</h2>
+{% load i18n %}
+<h2>{% trans "Shelves containing fragment" %}</h2>
 {% if not user.tag_set.count %}
-    <p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć nową półkę poniżej.</p>
+    <p>{% trans "You do not own any shelves. You can create one below, if you want to." %}</p>
 {% else %}
     <form action="{% url catalogue.views.fragment_sets fragment.id %}" method="POST" accept-charset="utf-8" class="cuteform">
     <ol>
         <li>{{ form.set_ids }}</li>
-        <li><input type="submit" value="Zapisz półki"/></li>
+        <li><input type="submit" value="{% trans "Save all shelves" %}"/></li>
     </ol>
     </form>
 {% endif %}
 <hr />
 <form action="{% url catalogue.views.new_set %}" method="POST" accept-charset="utf-8" class="cuteform">
 <ol>
-    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz nową półkę"/></li>
+    <li>{{ new_set_form.name }} <input type="submit" value="{% trans "Create new shelf" %}"/></li>
 </ol>
 </form>

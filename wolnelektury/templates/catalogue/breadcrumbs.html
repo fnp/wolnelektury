@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load catalogue_tags %}
 <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
     <ol>
@@ -5,7 +6,7 @@
         <li class="category"><a href="{% catalogue_url tag %}">{{ tag }}</a> | <a href="{% catalogue_url tag_list -tag %}">x</a></li>
         {% endfor %}
         {% if search_form %}
-            <li>{{ search_form.q }} {{ search_form.tags }} <input type="submit" value="Szukaj"/></li>
+            <li>{{ search_form.q }} {{ search_form.tags }} <input type="submit" value="{% trans "Search" %}"/></li>
         {% endif %}
     </ol>
     <div class="clearboth"></div>

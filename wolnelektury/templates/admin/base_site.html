@@ -1,9 +1,10 @@
+{% load i18n %}
 {% extends "admin/base.html" %}
 
-{% block title %}{{ title }} | Administracja stroną WolneLektury.pl{% endblock %}
+{% block title %}{{ title }} | {% trans "Site administration" %} - WolneLektury.pl{% endblock %}
 
 {% block branding %}
-<h1 id="site-name">Administracja stroną WolneLektury.pl</h1>
+<h1 id="site-name">{% trans "Site administration" %} - WolneLektury.pl</h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
