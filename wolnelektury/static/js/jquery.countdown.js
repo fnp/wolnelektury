@@ -6,7 +6,7 @@
    Please attribute the author if you use it. */
 
 /* Modified by Radek Czajka, Fundacja Nowoczesna Polska (radoslaw.czajka(at)nowoczesnapolska.org.pl) */
-
+w
 /* Display a countdown timer.
    Attach it with options like:
    $('div selector').countdown(
@@ -471,7 +471,10 @@ $.extend(Countdown.prototype, {
 		var timeSeparator = this._get(inst, 'timeSeparator');
 		var description = this._get(inst, 'description') || '';
 		var showCompact = function(period) {
-			var labelsNum = $.countdown._get(inst, 'compactLabels' + periods[period]);
+            var which = $.countdown._get(inst, 'which');
+            if (which) {
+                var labelsNum = $.countdown._get(inst, 'compactLabels' + which(periods[period]));
+            }
 			return (show[period] ? periods[period] +
 				(labelsNum ? labelsNum[period] : labels[period]) + ' ' : '');
 		};
