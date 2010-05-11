@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-04 14:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/base.html:19
+msgid ""
+"Internet Explorer cannot display this site properly. Click here to read "
+"more..."
+msgstr ""
+
+#: templates/base.html:27
+msgid "See more"
+msgstr ""
+
+#: templates/base.html:36
+msgid "Welcome"
+msgstr ""
+
+#: templates/base.html:37
+msgid "Your shelf"
+msgstr ""
+
+#: templates/base.html:39
+msgid "Administration"
+msgstr ""
+
+#: templates/base.html:41
+msgid "Logout"
+msgstr ""
+
+#: templates/base.html:44 templates/base.html.py:76 templates/base.html:80
+#: templates/base.html.py:84
+msgid "Sign in"
+msgstr ""
+
+#: templates/base.html:73 templates/base.html.py:94
+msgid "Close"
+msgstr ""
+
+#: templates/base.html:76 templates/base.html.py:84 templates/base.html:88
+msgid "Register"
+msgstr ""
+
+#: templates/base.html:96
+msgid "Loading"
+msgstr ""

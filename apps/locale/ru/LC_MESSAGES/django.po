@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-04 14:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: catalogue/models.py:23 lessons/models.py:15
+msgid "author"
+msgstr ""
+
+#: catalogue/models.py:24
+msgid "epoch"
+msgstr ""
+
+#: catalogue/models.py:25
+msgid "kind"
+msgstr ""
+
+#: catalogue/models.py:26
+msgid "genre"
+msgstr ""
+
+#: catalogue/models.py:27
+msgid "theme"
+msgstr ""
+
+#: catalogue/models.py:28
+msgid "set"
+msgstr ""
+
+#: catalogue/models.py:29 catalogue/models.py:309
+msgid "book"
+msgstr ""
+
+#: catalogue/models.py:43 catalogue/migrations/0001_initial.py:47
+#: sponsors/models.py:14 sponsors/models.py:37
+msgid "name"
+msgstr ""
+
+#: catalogue/models.py:44 catalogue/models.py:90
+#: catalogue/migrations/0001_initial.py:19
+#: catalogue/migrations/0001_initial.py:48 lessons/models.py:13
+msgid "slug"
+msgstr ""
+
+#: catalogue/models.py:45 catalogue/migrations/0001_initial.py:49
+msgid "sort key"
+msgstr ""
+
+#: catalogue/models.py:46 catalogue/migrations/0001_initial.py:50
+msgid "category"
+msgstr ""
+
+#: catalogue/models.py:48 catalogue/models.py:58 catalogue/models.py:91
+#: catalogue/models.py:172 catalogue/migrations/0001_initial.py:20
+#: catalogue/migrations/0001_initial.py:51 chunks/models.py:11
+#: lessons/models.py:17 sponsors/models.py:15
+msgid "description"
+msgstr ""
+
+#: catalogue/models.py:49 catalogue/migrations/0001_initial.py:52
+msgid "main page"
+msgstr ""
+
+#: catalogue/models.py:49 catalogue/migrations/0001_initial.py:52
+msgid "Show tag on main page"
+msgstr ""
+
+#: catalogue/models.py:52 catalogue/migrations/0001_initial.py:54
+msgid "book count"
+msgstr ""
+
+#: catalogue/models.py:67 catalogue/migrations/0001_initial.py:61
+#: newtagging/models.py:491
+msgid "tag"
+msgstr ""
+
+#: catalogue/models.py:68 newtagging/admin.py:38
+msgid "tags"
+msgstr ""
+
+#: catalogue/models.py:89 catalogue/migrations/0001_initial.py:18
+#: lessons/models.py:12
+msgid "title"
+msgstr ""
+
+#: catalogue/models.py:92 catalogue/migrations/0001_initial.py:21
+msgid "creation date"
+msgstr ""
+
+#: catalogue/models.py:93 catalogue/migrations/0001_initial.py:22
+msgid "short HTML"
+msgstr ""
+
+#: catalogue/models.py:94 catalogue/migrations/0001_initial.py:23
+msgid "parent number"
+msgstr ""
+
+#: catalogue/models.py:95
+msgid "extra information"
+msgstr ""
+
+#: catalogue/models.py:101 catalogue/migrations/0001_initial.py:24
+msgid "XML file"
+msgstr ""
+
+#: catalogue/models.py:102 catalogue/migrations/0001_initial.py:25
+msgid "HTML file"
+msgstr ""
+
+#: catalogue/models.py:103 catalogue/migrations/0001_initial.py:26
+msgid "PDF file"
+msgstr ""
+
+#: catalogue/models.py:104 catalogue/migrations/0001_initial.py:27
+msgid "ODT file"
+msgstr ""
+
+#: catalogue/models.py:105 catalogue/migrations/0001_initial.py:28
+msgid "TXT file"
+msgstr ""
+
+#: catalogue/models.py:106
+msgid "MP3 file"
+msgstr ""
+
+#: catalogue/models.py:107
+msgid "OGG file"
+msgstr ""
+
+#: catalogue/models.py:310
+msgid "books"
+msgstr ""
+
+#: catalogue/models.py:344
+msgid "fragment"
+msgstr ""
+
+#: catalogue/models.py:345
+msgid "fragments"
+msgstr ""
+
+#: catalogue/migrations/0001_initial.py:62 newtagging/models.py:492
+msgid "content type"
+msgstr ""
+
+#: catalogue/migrations/0001_initial.py:63 newtagging/models.py:493
+msgid "object id"
+msgstr ""
+
+#: chunks/models.py:10 chunks/models.py:24
+msgid "key"
+msgstr ""
+
+#: chunks/models.py:10
+msgid "A unique name for this chunk of content"
+msgstr ""
+
+#: chunks/models.py:12
+msgid "content"
+msgstr ""
+
+#: chunks/models.py:16
+msgid "chunk"
+msgstr ""
+
+#: chunks/models.py:17
+msgid "chunks"
+msgstr ""
+
+#: chunks/models.py:24
+msgid "A unique name for this attachment"
+msgstr ""
+
+#: chunks/models.py:29
+msgid "attachment"
+msgstr ""
+
+#: chunks/models.py:29
+msgid "attachments"
+msgstr ""
+
+#: lessons/models.py:14
+msgid "file"
+msgstr ""
+
+#: lessons/models.py:16
+msgid "slideshare ID"
+msgstr ""
+
+#: lessons/models.py:29
+msgid "document"
+msgstr ""
+
+#: lessons/models.py:29
+msgid "documents"
+msgstr ""
+
+#: newtagging/views.py:30
+msgid "tagged_object_list must be called with a queryset or a model."
+msgstr ""
+
+#: newtagging/views.py:32
+msgid "tagged_object_list must be called with a tag model."
+msgstr ""
+
+#: newtagging/views.py:34
+msgid "tagged_object_list must be called with a tag."
+msgstr ""
+
+#: newtagging/views.py:38
+#, python-format
+msgid "No tags found matching \"%s\"."
+msgstr ""
+
+#: sponsors/models.py:17
+msgid "logo"
+msgstr ""
+
+#: sponsors/models.py:24
+msgid "url"
+msgstr ""
+
+#: sponsors/models.py:38
+msgid "sponsors"
+msgstr ""
