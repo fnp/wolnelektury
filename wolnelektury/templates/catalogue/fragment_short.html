@@ -1,8 +1,5 @@
 {% load i18n %}
 <div class="fragment">
-    {# <div class="change-sets"> #}
-    {#     <a href="{% url catalogue.views.fragment_sets fragment.id %}" class="jqm-trigger">Półki</a> #}
-    {# </div> #}
     {% if fragment.short_text %}
     <div class='fragment-short-text'>
         {{ fragment.short_text|safe }}

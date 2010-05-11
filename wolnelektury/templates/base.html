@@ -33,7 +33,7 @@
             <div id="user-info" style="display:none">
                 {% if user.is_authenticated %}
                     <p>
-                        {% trans "Welcome" %},<strong>{{ user.username }}</strong>
+                        {% trans "Welcome" %}, <strong>{{ user.username }}</strong>
                         | <a href="{% url user_shelves %}" id="user-shelves-link">{% trans "Your shelves" %}</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">{% trans "Administration" %}</a>
@@ -58,13 +58,17 @@
         <div class="clearboth"></div>
         <div id="footer">
             <p>
-                Wolne Lektury to projekt prowadzony przez <a href="http://nowoczesnapolska.org.pl/">Fundację Nowoczesna
-                Polska</a>. Reprodukcje cyfrowe wykonane przez <a href="http://www.bn.org.pl/">Bibliotekę Narodową</a>
-                z egzemplarzy pochodzących ze zbiorów BN. Hosting <a href="http://eo.pl/">EO Networks</a>.
+            	{% blocktrans %}
+				Wolne Lektury is a project lead by <a href="http://nowoczesnapolska.org.pl/">Modern Poland Foundation</a>.
+				Digital reproductions are made by <a href="http://www.bn.org.pl/">The National Library</a>, based on TNL resources. 
+				Hosting <a href="http://eo.pl/">EO Networks</a>.
+				{% endblocktrans %}
             </p>
             <p>
-                Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17,
+            	{% blocktrans %}
+				Modern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17
                 e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>
+				{% endblocktrans %}
             </p>
 
 			{% sponsor_page "footer" %}
