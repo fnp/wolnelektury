@@ -13,7 +13,7 @@
     {% if shelf_is_set and not object_list %}
     <div id="books-list">
         <h2>{% trans "Your shelf is empty" %}</h2>
-        <p>{% trans "You can put a book on a shelf by entering page of the reading and clicking \"Put on the shelf\". %}</p>
+        <p>{% trans "You can put a book on a shelf by entering page of the reading and clicking 'Put on the shelf'." %}</p>
     </div>
     {% else %}
     {% autopaginate object_list 10 %}
@@ -113,7 +113,7 @@
                 {% tag_list categories.genre tags %}
             {% endif %}
             {% if categories.epoch %}
-                <h2>{% trans "Epochs" %}Epoki</h2>
+                <h2>{% trans "Epochs" %}</h2>
                 {% tag_list categories.epoch tags %}
             {% endif %}        
         </div>

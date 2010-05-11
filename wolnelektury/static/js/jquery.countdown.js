@@ -6,7 +6,7 @@
    Please attribute the author if you use it. */
 
 /* Modified by Radek Czajka, Fundacja Nowoczesna Polska (radoslaw.czajka(at)nowoczesnapolska.org.pl) */
-w
+
 /* Display a countdown timer.
    Attach it with options like:
    $('div selector').countdown(

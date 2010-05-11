@@ -138,7 +138,7 @@ class Book(models.Model):
 
             formats = []
             if self.html_file:
-                formats.append(u'<a href="%s">Czytaj online</a>' % reverse('book_text', kwargs={'slug': self.slug}))
+                formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', kwargs={'slug': self.slug}), _('Read online')))
             if self.pdf_file:
                 formats.append(u'<a href="%s">PDF</a>' % self.pdf_file.url)
             if self.odt_file:
@@ -218,7 +218,7 @@ class Book(models.Model):
             book_shelves = []
         else:
             if not overwrite:
-                raise Book.AlreadyExists('Book %s already exists' % book_slug)
+                raise Book.AlreadyExists(_('Book %s already exists') % book_slug)
             # Save shelves for this book
             book_shelves = list(book.tags.filter(category='set'))
         
@@ -261,7 +261,7 @@ class Book(models.Model):
                     child_book.parent_number = n
                     child_book.save()
                 except Book.DoesNotExist, e:
-                    raise Book.DoesNotExist(u'Book with slug = "%s" does not exist.' % slug)
+                    raise Book.DoesNotExist(_('Book with slug = "%s" does not exist.') % slug)
         
         book_descendants = list(book.children.all())
         while len(book_descendants) > 0:
@@ -384,4 +384,3 @@ class BookStub(models.Model):
         ordering = ('title',)
         verbose_name = _('book stub')
         verbose_name_plural = _('book stubs')
-

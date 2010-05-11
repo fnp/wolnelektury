@@ -1,37 +1,35 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}Lektura {{ book.title }} w WolneLektury.pl{% endblock %}
+{% block title %}{{ book.title }} w WolneLektury.pl{% endblock %}
 
 {% block bodyid %}book-stub-detail{% endblock %}
 
 {% block body %}
     <h1>{{ book.title }}, {{ book.author }}</h1>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="Szukaj" /> <strong>lub</strong> <a href="{% url main_page %}">wróć do strony głównej</a></p>
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
     
     <div id="books-list">
     {% if book.in_pd %}
-	To dzieło znajduje się w domenie publicznej i niedługo zostanie
-	opublikowane w szkolnej bibliotece internetowej Wolne Lektury. 
+		{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %} 
 	{% else %}
 	    {% if book.pd %}
-		    To dzieło przejdzie
-			do zasobów domeny publicznej i będzie mogło być publikowane bez
-			żadnych ograniczeń za: 
+			{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in:" %}
 		    {% include "catalogue/pd_counter.html" %}
 		{% else %}
-		    To dzieło objęte jest prawem autorskim. 
+		    {% trans "This author's works are copyrighted." %}
 		{% endif %}
 	{% endif %}
     {% include "info/join_us.html" %}
     </div>
 
     <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
         <div class="target">
-            <p><img src="/static/img/indicator.gif" alt="*"/> Ładowanie</p>
+            <p><img src="/static/img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
         </div>
     </div>
 {% endblock %}
