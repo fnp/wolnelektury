@@ -70,18 +70,22 @@
         {% else %}
 			{% if only_author %}
 	            {% if last_tag.alive %}
-					Dzieła tego autora objęte są prawem autorskim.
+					<p>Dzieła tego autora objęte są prawem autorskim.</p>
+					<p>Dowiedz się, dlaczego biblioteki internetowe
+					nie mogą udostępniać dzieł tego autora.</p>
 				{% else %}{% comment %} Nie żyje {% endcomment %}
             	    {% if last_tag.in_pd %}
-                	    Dzieła tego autora znajdują się w domenie publicznej
+                	    <p>Dzieła tego autora znajdują się w domenie publicznej
 						i niedługo zostaną opublikowane w szkolnej bibliotece
-						internetowej Wolne Lektury. 
+						internetowej Wolne Lektury.</p> 
 	                {% else %}{% comment %} Nie żyje, ale jeszcze nie w PD {% endcomment %}
     	                <div>
         	                <p>Dzieła tego autora przejdą do zasobów domeny
 							publicznej i będą mogły być publikowane bez
 							żadnych ograniczeń za:</p>
 							{% include "catalogue/pd_counter.html" %}
+                            <p>Dowiedz się, dlaczego biblioteki internetowe
+                            nie mogą udostępniać dzieł tego autora.</p>
 						</div>
 	                {% endif %}
                 {% endif %}
