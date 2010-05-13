@@ -31,7 +31,7 @@ def update_application():
     os.system("%s install -r %s" % (PIP, os.path.join(ROOT, 'etc', 'requirements.txt')))
     print "done."
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PYTHON = os.path.join(ROOT, 'pythonenv', 'bin', 'python')
 PIP = os.path.join(ROOT, 'pythonenv', 'bin', 'pip')

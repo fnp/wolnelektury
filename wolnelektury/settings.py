@@ -67,6 +67,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
+    'wolnelektury.context_processors.extra_settings',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -96,7 +97,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    
+
     # external
     'south',
     'sorl.thumbnail',
@@ -131,7 +132,7 @@ COMPRESS_JS = {
         'output_filename': 'js/jquery.min.js',
     },
     'all': {
-        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js', 
+        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js',
             'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
             'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
             'js/jquery.cookie.js',),
