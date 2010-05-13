@@ -33,7 +33,7 @@
             <div id="user-info" style="display:none">
                 {% if user.is_authenticated %}
                     <p>
-                        {% trans "Welcome" %},<strong>{{ user.username }}</strong>
+                        {% trans "Welcome" %}, <strong>{{ user.username }}</strong>
                         | <a href="{% url user_shelves %}" id="user-shelves-link">{% trans "Your shelves" %}</a>
                         {% if user.is_staff %}
                         | <a href="/admin/">{% trans "Administration" %}</a>
