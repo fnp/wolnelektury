@@ -17,6 +17,7 @@ urlpatterns = patterns('catalogue.views',
     url(r'^polki/nowa/$', 'new_set', name='new_set'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^szukaj/$', 'search', name='search'),
+    url(r'^nie_ma/(?P<tags>[a-zA-Z0-9-/]*)$', 'search_no_hits', name='search_no_hits'),
 
     # tools
     url(r'^zegar', 'clock', name='clock'),

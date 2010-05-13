@@ -214,8 +214,9 @@ def search(request):
 
     # Prefix must have at least 2 characters
     if len(prefix) < 2:
-        return render_to_response('catalogue/search_no_hits.html', {'query':prefix, 'tags':tag_list},
-            context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse('catalogue.views.search_no_hits', 
+            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
+        ))
     
     result = _tags_starting_with(prefix, request.user)
     if len(result) > 0:
@@ -229,9 +230,22 @@ def search(request):
                 kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
             ))
     else:
-        return render_to_response('catalogue/search_no_hits.html', {'query':prefix, 'tags':tag_list},
-            context_instance=RequestContext(request))
+        return HttpResponseRedirect(reverse('catalogue.views.search_no_hits', 
+            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
+        ))
 
+
+def search_no_hits(request, tags):
+    try:
+        tag_list = models.Tag.get_tag_list(tags)
+    except:
+        tag_list = []
+
+    return render_to_response('catalogue/search_no_hits.html', {'tags':tag_list},
+        context_instance=RequestContext(request))
+
+
+search_no_hits
 
 def tags_starting_with(request):
     prefix = request.GET.get('q', '')
