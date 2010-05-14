@@ -194,10 +194,13 @@ blockquote {
 /* ============= */
 /* = Numbering = */
 /* ============= */
+.verse {
+	position:relative;
+}
 .anchor {
     position: absolute;
     margin: -0.25em -0.5em;
-    left: 1em;
+    left: -3em;
     color: #777;
     font-size: 12px;
     width: 2em;
@@ -317,3 +320,11 @@ em.person {
     font-variant: small-caps;
 }
 
+
+/* =================================== */
+/* = Hide some elements for printing = */
+/* =================================== */
+
+@media print {
+    #menu {display: none;}
+}
