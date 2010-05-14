@@ -245,8 +245,6 @@ def search_no_hits(request, tags):
         context_instance=RequestContext(request))
 
 
-search_no_hits
-
 def tags_starting_with(request):
     prefix = request.GET.get('q', '')
     # Prefix must have at least 2 characters
