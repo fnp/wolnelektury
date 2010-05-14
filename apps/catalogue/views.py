@@ -171,7 +171,7 @@ def book_text(request, slug):
 # = Search =
 # ==========
 def _word_starts_with(name, prefix):
-    """returns a Q object gettings models having `name` contain a word
+    """returns a Q object getting models having `name` contain a word
     starting with `prefix`
     """
     kwargs = {}
@@ -188,6 +188,19 @@ def _word_starts_with(name, prefix):
         # checking for simple icontain instead
         kwargs['%s__icontains' % name] = prefix
     return Q(**kwargs)
+
+
+def _tags_exact_matches(prefix, user):
+    book_stubs = models.BookStub.objects.filter(title__iexact = prefix)
+    books = models.Book.objects.filter(title__iexact = prefix)
+    book_stubs = filter(lambda x: x not in books, book_stubs)
+    tags = models.Tag.objects.filter(name__iexact = prefix)
+    if user.is_authenticated():
+        tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
+    else:
+        tags = tags.filter(~Q(category='book') & ~Q(category='set'))
+
+    return list(books) + list(tags) + list(book_stubs)
 
 
 def _tags_starting_with(prefix, user):
@@ -218,7 +231,10 @@ def search(request):
             kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
         ))
     
-    result = _tags_starting_with(prefix, request.user)
+    result = _tags_exact_matches(prefix, request.user)
+    if (not result):
+        result = _tags_starting_with(prefix, request.user)
+    
     if len(result) > 0:
         tag = result[0]
         if isinstance(tag, models.Book) or isinstance(tag, models.BookStub):
