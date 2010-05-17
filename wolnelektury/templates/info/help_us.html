@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load chunks %}
 
 {% block title %}Możesz nam pomóc w WolneLektury.pl{% endblock %}
 
@@ -9,93 +10,9 @@
     </form>
 
     <div class="column-left">
-        <h2>Wolontariat</h2>
-
-        <p>Utwory włączane sukcesywnie do naszej biblioteki staramy się opracowywać jak najdokładniej. Jest to możliwe
-        tylko dzięki współpracującym z nami wolontariuszom.</p>
-        
-        <p>Zapraszamy wszystkie osoby, które chcą współtworzyć szkolną bibliotekę internetową Wolne Lektury.</p>
-        
-        <p>Wszystkim wolontariuszom oferujemy szkolenia i praktykę w zakresie edycji tekstów: redakcji technicznej i
-        merytorycznej. Wolontariusze mogą poznać problemy, ale i możliwości, jakie wiążą się z publikacjami internetowymi.
-        Współorganizują z nami szkolenia i konferencje, pomagają w przygotowaniu wersji tekstów do słuchania (tzw.
-        audiobooków). Wystawiamy umowy i zaświadczenia o tym, kiedy i jakie prace wykonywał wolontariusz na rzecz naszej
-        fundacji. Szkolenia, praktyka edytorska i potwierdzające je zaświadczenia mogą się okazać istotne w procesie
-        podnoszenia kwalifikacji i awansu zawodowego.</p>
-        
-        <h2>Co jest do zrobienia?</h2>
-        
-        <p>Najwięcej pracy mamy przy przygotowaniu lektur do publikacji. Z tekstu, który otrzymujemy z Biblioteki
-        Narodowej, należy usunąć literówki i inne mechaniczne błędy, a następnie opatrzyć tekst przypisami, pamiętając o
-        tym, że nasza oferta skierowana jest przede wszystkim do uczniów, dla których wiele słów i zwrotów będzie brzmiało
-        anachronicznie. Wydania dawniejsze (rygor wyznacza tu prawo autorskie) poddawane są koniecznym uwspółcześnieniom
-        językowym, np. w zakresie ortografii lub fleksji, przy czym pilnujemy, aby nie naruszać artystycznej swoistości
-        tekstu. Ostatnim etapem jest wyszukiwanie motywów i tematów literackich, mające pomóc przejrzeć literaturę "na
-        wskroś". We wszystkich tych pracach wspomagają nas wolontariusze – nauczyciele i studenci – często służąc również
-        radami i uwagami przy podejmowaniu ważnych decyzji.</p>
-        
-        <h2>Jak się do nas zgłosić?</h2>
-        
-        <p>Wszystkie zainteresowane osoby prosimy o przysłanie maila na adres <a href="mail:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>.</p>
-
-        <p>Zapraszamy także na <a href="http://redmine.nowoczesnapolska.org.pl/projects/wl-publikacje">stronę redakcji Wolnych Lektur</a>, na której znajdują się wszystkie niezbędne informacje o tym, jak włączyć się w prace redakcyjne.</p>
+        {% chunk "help_us_left" %}
     </div>
     <div class="column-right">
-        <h2>Najbardziej zasłużeni wolontariusze</h2>
-
-	<h3>Agatapaszkowska (współpracuje z nami od 15 marca 2008)</h3>
-
-        <p>m.in. opracowywała „W pustyni i w puszczy” Sienkiewicza ; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Agatapaszkowska">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Agatapaszkowska</a></p>
-
-
-	<h3>AgnieszkaKappa (współpracuje z nami od 16 marca 2008)</h3>
-
-        <p>m.in. brała udział w tworzeniu listy i opisie użycia motywów i tematów literackich; opracowywała teksty Sienkiewicza (Latarnik, Janko Muzykant, Quo vadis); zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/index.php?title=Specjalna:Wk%C5%82ad&amp;limit=500&amp;target=AgnieszkaKappa">http://wiki.wolnepodreczniki.pl/index.php?title=Specjalna:Wk%C5%82ad&amp;limit=500&amp;target=AgnieszkaKappa</a></p>
-
-
-        <h3>Anerys (współpracuje z nami od 5 lipca 2007)</h3>
-
-        <p>m.in. brała udział w tworzeniu listy motywów i tematów literackich, dyskusji o gatunkach literackich, opracowywała Bogurodzicę, „Fraszki” i „Treny” Kochanowskiego; wiersze Słowackiego (Grób Agamemnona), „Świętoszka” Moliere'a, czy poezje Kasprowicza (w tym hymn „Dies Irae”); zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Anerys">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Anerys</a></p>
-
-
-	<h3>EmiliaZdankiewicz (współpracuje z nami od 17 marca 2008)</h3>
-
-        <p>m.in. motywy literackie dyskusja i opisywanie, Słowacki, Kordian; Konopnicka, Nasza szkapa; Mickiewicz, Dziady cz. III; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/EmiliaZdankiewicz">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/EmiliaZdankiewicz</a></p>
-
-
-	<h3>Ewa_Serafin (współpracuje z nami od 15 marca 2008)</h3>
-
-        <p>m.in. brała udział w tworzeniu listy i opisie użycia motywów i tematów literackich, opracowywała poezje Kasprowicza („Z wichrów i hal”, „Nad przepaściami”, „W ciemności schodzi moja dusza” oraz „Nad Niemnem” Orzeszkowej; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Ewa_Serafi">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Ewa_Serafi</a>n</p>
-
-
-    	<h3>Hanna_Golab (współpracuje z nami od 15 marca 2008)</h3>
-
-        <p>opracowywała „Króla Edypa” Sofoklesa oraz „Dusiołka” Leśmiana; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Hanna_Golab">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Hanna_Golab</a></p>
-
-
-	<h3>Ingene (współpracuje z nami od 16 lipca 2008)</h3>
-
-        <p>m.in. opracowywała „Siłaczkę” Żeromskiego, „Quo vadis” Sienkiewicza oraz „Treny” Kochanowskiego; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Ingene">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Ingene</a></p>
-    
-	<h3>Jmyszkowska (współpracuje z nami od 26 marca 2008)</h3>
-
-        <p>m. in. opracowywała „Giaura” Byrona oraz „Quo vadis” Sienkiewicza; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Jmyszkowska">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Jmyszkowska</a></p>
-
-
-        <h3>Marysiabailey (współpracuje z nami od 1 października 2007)</h3>
-
-        <p>m.in. brała udział w tworzeniu listy motywów i tematów literackich oraz opisywaniu ich użycia; opracowywała „Chłopów” Reymonta, „Lalkę” Prusa, „Nie-Boską komedię” Krasińskiego, „Bajki” i „Satyry” Krasickiego, „Antygonę” Sofoklesa oraz utwory Kochanowskiego, Morsztyna, Mickiewicza, Kasprowicza, Goethego, Oppmana, Kasprowicza; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/index.php?title=Specjalna:Wk%C5%82ad&amp;limit=500&amp;target=Marysiabailey">http://wiki.wolnepodreczniki.pl/index.php?title=Specjalna:Wk%C5%82ad&amp;limit=500&amp;target=Marysiabailey</a>; ponadto przygotowywała i prowadziła szkolenie dla wolontariuszy 15 marca 2008; zajmowała się proofreadingiem, a obecnie kieruje pracami nad audiobookami.</p>
-
-
-        <h3>Olga_Wojtczak (współpracuje z nami od 21 października 2008)</h3>
-
-        <p>m.in. opracowywała powieści Sienkiewicza (Trylogia), Reymonta, Żeromskiego, dramaty Shakespeare'a; zob. też na naszej stronie „wkład użytkownika”: <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Olga_Wojtczak">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Olga_Wojtczak</a></p>
-
-
-        <h3>Renataml (współpracuje z nami od 30 czerwca 2007)</h3>
-
-        <p>brała udział w dyskusji na temat listy motywów, wspomagała nas radami jako doświadczona nauczycielka, edytowała „Lalkę” Prusa, „Balladynę” Słowackiego, „Siłaczkę” Żeromskiego.
-
-        <a href="http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Renataml">http://wiki.wolnepodreczniki.pl/Specjalna:Wk%C5%82ad/Renataml</a></p>
+        {% chunk "help_us_right" %}
     </div>
 {% endblock %}
