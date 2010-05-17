@@ -79,7 +79,8 @@ function serverTime() {
                     function() { $(this).css({background: '#FFF'}); }
                 ).click(function() {
                     $(this).fadeOut(function() {
-                        $(this).prev().fadeIn()
+                        $(this).prev().fadeIn();
+                        return false;
                     });
                 })
             }
@@ -87,6 +88,7 @@ function serverTime() {
         
         $('.fragment-short-text').click(function() {
             $(this).fadeOut(function() { $(this).next().fadeIn() });
+            return false;
         }).hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
             function() { $(this).css({background: '#FFF'}); }
