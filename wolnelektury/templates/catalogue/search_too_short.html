@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load catalogue_tags pagination_tags %}
+
+{% block title %}Wyszukiwanie w WolneLektury.pl{% endblock %}
+
+{% block bodyid %}tagged-object-list{% endblock %}
+
+{% block body %}
+    <h1>{% title_from_tags tags %}</h1>
+    {% breadcrumbs tags %}
+    
+    <div id="books-list">
+        <p>Przepraszamy! Wyszukiwana fraza musi mieć co najmniej dwa znaki.</p>
+        {% include "info/join_us.html" %}
+    </div>
+
+    <div id="set-window">
+        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="target">
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> Ładowanie</p>
+        </div>
+    </div>
+{% endblock %}

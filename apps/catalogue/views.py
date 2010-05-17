@@ -22,6 +22,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
+from django.utils.http import urlquote_plus
 from django.views.decorators import cache
 
 from catalogue import models
@@ -216,6 +217,24 @@ def _tags_starting_with(prefix, user):
     return list(books) + list(tags) + list(book_stubs)
         
 
+
+def _get_result_link(match, tag_list):
+    if isinstance(match, models.Book) or isinstance(match, models.BookStub):
+        return match.get_absolute_url()
+    else:
+        return reverse('catalogue.views.tagged_object_list', 
+            kwargs={'tags': '/'.join(tag.slug for tag in tag_list + [match])}
+        )
+
+def _get_result_type(match):
+    if isinstance(match, models.Book) or isinstance(match, models.BookStub):
+        type = 'book'
+    else:
+        type = match.category
+    return dict(models.TAG_CATEGORIES)[type]
+    
+
+
 def search(request):
     tags = request.GET.get('tags', '')
     prefix = request.GET.get('q', '')
@@ -227,38 +246,26 @@ def search(request):
 
     # Prefix must have at least 2 characters
     if len(prefix) < 2:
-        return HttpResponseRedirect(reverse('catalogue.views.search_no_hits', 
-            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
-        ))
+        return render_to_response('catalogue/search_too_short.html', {'tags':tag_list, 'prefix':prefix},
+            context_instance=RequestContext(request))
     
     result = _tags_exact_matches(prefix, request.user)
-    if (not result):
+    
+    if len(result) > 1:
+        # multiple exact matches
+        return render_to_response('catalogue/search_multiple_hits.html', 
+            {'tags':tag_list, 'prefix':prefix, 'results':((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)},
+            context_instance=RequestContext(request))
+    
+    if not result:
+        # no exact matches
         result = _tags_starting_with(prefix, request.user)
     
-    if len(result) > 0:
-        tag = result[0]
-        if isinstance(tag, models.Book) or isinstance(tag, models.BookStub):
-            return HttpResponseRedirect(tag.get_absolute_url())
-        else:
-            tag_list.append(tag)
-            
-            return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
-                kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
-            ))
+    if result:
+        return HttpResponseRedirect(_get_result_link(result[0], tag_list))
     else:
-        return HttpResponseRedirect(reverse('catalogue.views.search_no_hits', 
-            kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
-        ))
-
-
-def search_no_hits(request, tags):
-    try:
-        tag_list = models.Tag.get_tag_list(tags)
-    except:
-        tag_list = []
-
-    return render_to_response('catalogue/search_no_hits.html', {'tags':tag_list},
-        context_instance=RequestContext(request))
+        return render_to_response('catalogue/search_no_hits.html', {'tags':tag_list, 'prefix':prefix},
+            context_instance=RequestContext(request))
 
 
 def tags_starting_with(request):
@@ -483,7 +490,7 @@ def register(request):
 @cache.never_cache
 def logout_then_redirect(request):
     auth.logout(request)
-    return HttpResponseRedirect(request.GET.get('next', '/'))
+    return HttpResponseRedirect(urlquote_plus(request.GET.get('next', '/'), safe='/?='))
 
 
 
