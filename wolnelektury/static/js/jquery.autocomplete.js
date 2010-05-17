@@ -430,8 +430,22 @@ $.Autocompleter.defaults = {
 	width: 0,
 	multiple: false,
 	multipleSeparator: ", ",
+    regex_escape: function(term) {
+        term = term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1");
+        /* no polish diacritics; should be more locale-aware */
+        term = term.replace(/a/g, '[aą]')
+                .replace(/c/g, '[cć]')
+                .replace(/e/g, '[eę]')
+                .replace(/l/g, '[lł]')
+                .replace(/n/g, '[nń]')
+                .replace(/o/g, '[oó]')
+                .replace(/s/g, '[sś]')
+                .replace(/z/g, '[zźż]');
+        return term;
+    },
 	highlight: function(value, term) {
-		return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+		term = $.Autocompleter.defaults.regex_escape(term);
+		return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	},
     scroll: true,
     scrollHeight: 180
@@ -447,7 +461,8 @@ $.Autocompleter.Cache = function(options) {
 			s = s.toLowerCase();
 		var i = s.indexOf(sub);
 		if (options.matchContains == "word"){
-			i = s.toLowerCase().search("\\b" + sub.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1").toLowerCase());
+			query = $.Autocompleter.defaults.regex_escape(sub.toLowerCase());
+			i = s.toLowerCase().search("\\b" + query);
 		}
 		if (i == -1) return false;
 		return i == 0 || options.matchContains;

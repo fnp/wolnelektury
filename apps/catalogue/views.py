@@ -7,6 +7,7 @@ import zipfile
 import sys
 import pprint
 import traceback
+import re
 
 from django.conf import settings
 from django.template import RequestContext
@@ -171,16 +172,24 @@ def book_text(request, slug):
 # ==========
 # = Search =
 # ==========
+
+def _no_diacritics_regexp(query):
+    """ returns a regexp for searching for a query without diacritics
+    
+    should be locale-aware """
+    names = {'a':u'ą', 'c':u'ć', 'e':u'ę', 'l': u'ł', 'n':u'ń', 'o':u'ó', 's':u'ś', 'z':u'ź|ż'}
+    def repl(m):
+        l = m.group()
+        return "(%s|%s)" % (l, names[l])
+    return re.sub('[%s]'%(''.join(names.keys())), repl, query)
+
 def _word_starts_with(name, prefix):
     """returns a Q object getting models having `name` contain a word
     starting with `prefix`
     """
     kwargs = {}
     if settings.DATABASE_ENGINE in ('mysql', 'postgresql_psycopg2', 'postgresql'):
-        # we must escape `prefix` so that it only matches literally
-        for special in r'\^$.*+?|(){}[]':
-            prefix = prefix.replace(special, '\\' + special)
-        
+        prefix = _no_diacritics_regexp(re.escape(prefix))
         # we could use a [[:<:]] (word start), 
         # but we want both `xy` and `(xy` to catch `(xyz)`
         kwargs['%s__iregex' % name] = u"(^|[^[:alpha:]])%s" % prefix
