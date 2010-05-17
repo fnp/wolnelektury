@@ -80,8 +80,8 @@ function serverTime() {
                 ).click(function() {
                     $(this).fadeOut(function() {
                         $(this).prev().fadeIn();
-                        return false;
                     });
+                    return false;
                 })
             }
         });
