@@ -30,6 +30,19 @@ TIME_ZONE = 'Europe/Warsaw Poland'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pl'
 
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('de', gettext('German')),
+    ('en', gettext('English')),
+    ('pl', gettext('Polish')),
+    ('lt', gettext('Lithuanian')),
+    ('fr', gettext('French')),
+    ('ru', gettext('Russian')),
+    ('es', gettext('Spain')),        
+)
+
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -110,6 +123,7 @@ INSTALLED_APPS = [
     'lessons',
     'piston',
     'api',
+    'rosetta',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'

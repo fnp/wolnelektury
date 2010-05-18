@@ -8,13 +8,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 15:47+0200\n"
+"POT-Creation-Date: 2010-05-18 13:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: settings.py:36
+msgid "German"
+msgstr ""
+
+#: settings.py:37
+msgid "English"
+msgstr ""
+
+#: settings.py:38
+msgid "Polish"
+msgstr ""
+
+#: settings.py:39
+msgid "Lithuanian"
+msgstr ""
+
+#: settings.py:40
+msgid "French"
+msgstr ""
+
+#: settings.py:41
+msgid "Russian"
+msgstr ""
+
+#: settings.py:42
+msgid "Spain"
+msgstr ""
 
 #: templates/404.html:6 templates/404.html.py:15
 msgid "Site does not exist"
@@ -40,49 +68,57 @@ msgid ""
 "working on fixing it as soon as possible. Meanwhile, please go to "
 msgstr ""
 
-#: templates/base.html:19
+#: templates/base.html:20
 msgid ""
 "Internet Explorer cannot display this site properly. Click here to read "
 "more..."
 msgstr ""
 
-#: templates/base.html:27 templates/catalogue/folded_tag_list.html:13
+#: templates/base.html:28 templates/catalogue/folded_tag_list.html:13
 #: templates/catalogue/main_page.html:48 templates/catalogue/main_page.html:87
 #: templates/catalogue/main_page.html:270
 #: templates/catalogue/main_page.html:279
 msgid "See more"
 msgstr ""
 
-#: templates/base.html:36
+#: templates/base.html:37
 msgid "Welcome"
 msgstr ""
 
-#: templates/base.html:37
+#: templates/base.html:38
 msgid "Your shelves"
 msgstr ""
 
-#: templates/base.html:39
+#: templates/base.html:40
 msgid "Administration"
 msgstr ""
 
-#: templates/base.html:41
+#: templates/base.html:42
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:44 templates/base.html.py:80 templates/base.html:84
-#: templates/base.html.py:88 templates/auth/login.html:4
+#: templates/base.html:45 templates/base.html.py:91 templates/base.html:95
+#: templates/base.html.py:99 templates/auth/login.html:4
 #: templates/auth/login.html.py:7 templates/auth/login.html:12
 #: templates/auth/login.html.py:15
 msgid "Sign in"
 msgstr ""
 
-#: templates/base.html:44 templates/base.html.py:80 templates/base.html:88
-#: templates/base.html.py:92 templates/auth/login.html:7
+#: templates/base.html:45 templates/base.html.py:91 templates/base.html:99
+#: templates/base.html.py:103 templates/auth/login.html:7
 #: templates/auth/login.html.py:21 templates/auth/login.html:23
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:61
+#: templates/base.html:55
+msgid "Choose your interface language: "
+msgstr ""
+
+#: templates/base.html:60
+msgid "Choose language"
+msgstr ""
+
+#: templates/base.html:72
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
@@ -93,7 +129,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/base.html:68
+#: templates/base.html:79
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
@@ -103,25 +139,29 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/base.html:77 templates/base.html.py:98
+#: templates/base.html:88 templates/base.html.py:109
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:30
-#: templates/catalogue/search_no_hits.html:19
-#: templates/catalogue/tagged_object_list.html:131
+#: templates/catalogue/search_no_hits.html:22
+#: templates/catalogue/tagged_object_list.html:134
 msgid "Close"
 msgstr ""
 
-#: templates/base.html:100 templates/catalogue/book_detail.html:131
+#: templates/base.html:111 templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:32
-#: templates/catalogue/search_no_hits.html:21
-#: templates/catalogue/tagged_object_list.html:133
+#: templates/catalogue/search_no_hits.html:24
+#: templates/catalogue/tagged_object_list.html:136
 msgid "Loading"
 msgstr ""
 
 #: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
 msgid "Site administration"
+msgstr ""
+
+#: templates/admin/base_site.html:8
+msgid "Tłumaczenia"
 msgstr ""
 
 #: templates/admin/catalogue/book/change_list.html:6
@@ -325,7 +365,7 @@ msgid ""
 msgstr ""
 
 #: templates/catalogue/book_stub_detail.html:20
-#: templates/catalogue/tagged_object_list.html:86
+#: templates/catalogue/tagged_object_list.html:87
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in:"
@@ -341,7 +381,7 @@ msgid "Table of contents"
 msgstr ""
 
 #: templates/catalogue/book_text.html:18
-#: templates/catalogue/tagged_object_list.html:122
+#: templates/catalogue/tagged_object_list.html:125
 msgid "Themes"
 msgstr ""
 
@@ -444,22 +484,22 @@ msgid ""
 msgstr ""
 
 #: templates/catalogue/main_page.html:54
-#: templates/catalogue/tagged_object_list.html:104
+#: templates/catalogue/tagged_object_list.html:107
 msgid "Authors"
 msgstr ""
 
 #: templates/catalogue/main_page.html:58
-#: templates/catalogue/tagged_object_list.html:108
+#: templates/catalogue/tagged_object_list.html:111
 msgid "Kinds"
 msgstr ""
 
 #: templates/catalogue/main_page.html:62
-#: templates/catalogue/tagged_object_list.html:112
+#: templates/catalogue/tagged_object_list.html:115
 msgid "Genres"
 msgstr ""
 
 #: templates/catalogue/main_page.html:66
-#: templates/catalogue/tagged_object_list.html:116
+#: templates/catalogue/tagged_object_list.html:119
 msgid "Epochs"
 msgstr ""
 
@@ -541,7 +581,7 @@ msgid "Download all books from this shelf"
 msgstr ""
 
 #: templates/catalogue/tagged_object_list.html:35
-msgid "Choose books' which you want to download:"
+msgid "Choose books' formats which you want to download:"
 msgstr ""
 
 #: templates/catalogue/tagged_object_list.html:36
@@ -621,7 +661,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:92
+#: templates/catalogue/tagged_object_list.html:95
 msgid "No works of this author found."
 msgstr ""
 

@@ -519,7 +519,8 @@ def import_book(request):
             info = sys.exc_info()
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
-            return HttpResponse(_("An error occurred: %s\n\n%s") % (exception, tb), mimetype='text/plain')
+            _('Today is %(month)s, %(day)s.') % {'month': m, 'day': d}
+            return HttpResponse(_("An error occurred: %(exception)s\n\n%(tb)s") % {'exception':exception, 'tb':tb}, mimetype='text/plain')
         return HttpResponse(_("Book imported successfully"))
     else:
         return HttpResponse(_("Error importing file: %r") % book_import_form.errors)

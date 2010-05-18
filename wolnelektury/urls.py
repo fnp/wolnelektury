@@ -50,3 +50,8 @@ urlpatterns = patterns('',
     url(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'katalog/'}),
     url(r'^i18n/', include('django.conf.urls.i18n')),    
 )
+
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += patterns('',
+        url(r'^rosetta/', include('rosetta.urls')),
+    )
