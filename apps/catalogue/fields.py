@@ -13,6 +13,7 @@ from django.forms.util import smart_unicode
 from django.utils import simplejson as json
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext_lazy as _
 
 
 class JSONEncoder(json.JSONEncoder):
