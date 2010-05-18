@@ -13,9 +13,6 @@
 		timeSeparator: ':', isRTL: false,
 		which: function(n){
 			return n==1 ? 1 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 2 : 0;
-
-			
-			n == 1 ? 1 : 0;
 		}
 	};
 	//$.countdown.setDefaults($.countdown.regional['pl']);
