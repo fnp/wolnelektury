@@ -74,18 +74,26 @@ django-pagination
  - Source: [Google Code](http://code.google.com/p/django-pagination/)
  - Authors: James Tauber <jtauber@gmail.com>, leidel@gmail.com
  - License: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Type: library (aplikacja django)
+ - Type: library (django application)
+
+django-rosetta
+-----------------
+ - Source: [Google Code](http://code.google.com/p/django-rosetta/)
+ - Authors: James Tauber <jtauber@gmail.com>, leidel@gmail.com
+ - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ - Type: library (django application)
+
  
 Django South
 ------------
 - Source: [aercode.org](http://south.aeracode.org/)
 - Authors: Andrew Godwin <andrew@aeracode.org>, Andy McCurdy <sedrik@gmail.com>
 - License: [Apache License 2.0](http://www.opensource.org/licenses/apache2.0.php)
-- Type: library (aplikacja django)
+- Type: library (django application)
 
 lxml
 ---------
- - Żródła: [codespeak.net](http://codespeak.net/lxml/index.html#download)
+ - Source: [codespeak.net](http://codespeak.net/lxml/index.html#download)
  - Authors: [many authors](http://codespeak.net/lxml/credits.html)
  - License: [BSD License](http://codespeak.net/lxml/index.html#license)
  - Type: library
@@ -106,14 +114,14 @@ django-compress
  - Source: [Google Code](http://code.google.com/p/django-compress/)
  - Authors: Andreas Pelme <andreas.pelme@gmail.com>
  - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Type: library (Django aplication)
+ - Type: library (Django application)
  
  django-chunks
 -------------
  - Source: [Google Code](http://code.google.com/p/django-chunks/)
  - Authors: Clint Ecker <clintecker@gmail.com>
  - License: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Type: library (Django aplication)
+ - Type: library (Django application)
  
 django-newtagging
 -----------------

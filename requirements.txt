@@ -5,6 +5,7 @@
 Django>=1.1.1,<1.2
 South>=0.4 # migrations for django
 django-pagination>=1.0
+django-rosetta>=0.5.3
 
 # Feedparser 
 Feedparser>=4.1
