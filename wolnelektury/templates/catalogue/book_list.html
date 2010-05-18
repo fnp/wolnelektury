@@ -4,10 +4,10 @@
 
 {% block bodyid %}book-a-list{% endblock %}
 
-{% block title %}{% trans "Alphabetical listing of works on" %}Alfabetyczny spis utworów w WolneLektury.pl{% endblock %}
+{% block title %}{% trans "Alphabetical listing of works on WolneLektury.pl" %}{% endblock %}
 
 {% block body %}
-    <h1>Alfabetyczny spis utworów</h1>
+    <h1>{% trans "Alphabetical listing of works" %}</h1>
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>

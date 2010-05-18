@@ -132,8 +132,11 @@ COMPRESS_JS = {
         'output_filename': 'js/jquery.min.js',
     },
     'all': {
-        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js',
-            'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
+        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js', 
+            'js/jquery.countdown.js', 'js/jquery.countdown-pl.js', 
+            'js/jquery.countdown-en.js', 'js/jquery.countdown-de.js',
+            'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
+            'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
             'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
             'js/jquery.cookie.js',),
         'output_filename': 'js/all?.min.js',

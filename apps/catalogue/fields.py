@@ -42,7 +42,7 @@ class JSONFormField(forms.CharField):
             loads(value)
             return value
         except ValueError, e:
-            raise forms.ValidationError('Enter a valid JSON value. Error: %s' % e)
+            raise forms.ValidationError(_('Enter a valid JSON value. Error: %s') % e)
 
 
 class JSONField(models.TextField):

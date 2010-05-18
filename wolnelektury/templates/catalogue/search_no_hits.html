@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}Wyszukiwanie w WolneLektury.pl{% endblock %}
+{% block title %}{% trans "Search in WolneLektury.pl" %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
@@ -10,18 +11,17 @@
     {% breadcrumbs tags %}
     
     <div id="books-list">
-        <p>Przepraszamy! Brak wyników spełniających kryteria podane w zapytaniu.</p>
-
-        <p>Wyszukiwarka obsługuje takie kryteria jak tytuł, autor, motyw/temat, epoka, rodzaj i gatunek utworu.
-        Obecnie nie obsługujemy wyszukiwania fraz w tekstach utworów.</p>
-
+        <p>{% trans "Search of " %}<i>{{ query }}</i> {% trans "did not match any resources." %}</p>
+		
+		<p>{% transblock %}Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.
+		As for now we do not support full text search.{% endtransblock %}</p>
         {% include "info/join_us.html" %}
     </div>
 
     <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
         <div class="target">
-            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> Ładowanie</p>
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
         </div>
     </div>
 {% endblock %}

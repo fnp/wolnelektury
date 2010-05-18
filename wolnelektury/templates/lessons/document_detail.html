@@ -6,7 +6,7 @@
 {% block body %}
     <h1>{{ object.title }}</h1>
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Szukaj" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url lessons_document_list %}">{% trans "return to list of materials" %}</a></p>
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url lessons_document_list %}">{% trans "return to list of materials" %}</a></p>
     </form>
     
     <div id="document-detail">

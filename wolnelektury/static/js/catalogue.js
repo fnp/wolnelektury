@@ -1,3 +1,47 @@
+var LOCALE_TEXTS = {
+	"pl": {
+		"DELETE_SHELF": "Czy na pewno usunąć półkę",
+		"HIDE_DESCRIPTION": "Zwiń opis",
+		"EXPAND DESCRIPTION": "Rozwiń opis",
+		"LOADING": "Ładowanie",		
+	},
+	"fr": {
+		"DELETE_SHELF": "Translate me!",
+		"HIDE_DESCRIPTION": "Translate me!",
+		"EXPAND DESCRIPTION": "Translate me!",
+		"LOADING": "Translate me!",				
+	},
+	"ru": {
+		"DELETE_SHELF": "Translate me!",
+		"HIDE_DESCRIPTION": "Translate me!",
+		"EXPAND DESCRIPTION": "Translate me!",
+		"LOADING": "Translate me!",				
+	},
+	"en": {
+		"DELETE_SHELF": "Translate me!",
+		"HIDE_DESCRIPTION": "Translate me!",
+		"EXPAND DESCRIPTION": "Translate me!",
+		"LOADING": "Translate me!",		
+	}, 
+	"ru": {
+		"DELETE_SHELF": "Translate me!",
+		"HIDE_DESCRIPTION": "Translate me!",
+		"EXPAND DESCRIPTION": "Translate me!",
+		"LOADING": "Translate me!",		
+	},
+	"es": {
+		"DELETE_SHELF": "Translate me!",
+		"HIDE_DESCRIPTION": "Translate me!",
+		"EXPAND DESCRIPTION": "Translate me!",
+		"LOADING": "Translate me!",				
+	},
+	"lt":{
+		"DELETE_SHELF": "Translate me!",
+		"HIDE_DESCRIPTION": "Translate me!",
+		"EXPAND DESCRIPTION": "Translate me!",
+		"LOADING": "Translate me!",				
+	}
+}
 var BANNER_TEXTS = [
     'Przekaż 1% żeby ukryć ten baner.',
     'Jak dobrze wydać 1% swojego podatku? <strong>Poradnik dla opornych</strong>.',
@@ -173,7 +217,7 @@ function serverTime() {
         $('.delete-shelf').click(function() { 
             var link = $(this);
             var shelf_name = $('.visit-shelf', link.parent()).text();
-            if (confirm('Czy na pewno usunąć półkę ' + shelf_name + '?')) {
+            if (confirm(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+ ' '+ shelf_name + '?')) {
                 $.post(link.attr('href'), function(data, textStatus) {
                     link.parent().remove();
                 });
@@ -211,7 +255,7 @@ function serverTime() {
                 $('.delete-shelf').click(function() {
                     var link = $(this);
                     var shelf_name = $('.visit-shelf', link.parent()).text();
-                    if (confirm('Czy na pewno usunąć półkę ' + shelf_name + '?')) {
+                    if (confirm(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF'] + ' ' + shelf_name + '?')) {
                         $.post(link.attr('href'), function(data, textStatus) {
                             link.parent().remove();
                         });
@@ -235,11 +279,11 @@ function serverTime() {
             if ($('#description').hasClass('hidden')) {
                 $('#description').slideDown('fast').removeClass('hidden');
                 $.cookie('description-state', 'opened', {path: '/', expires: 30});
-                $('p', this).html('Zwiń opis ▲');
+                $('p', this).html(LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▲');
             } else {
                 $('#description').slideUp('fast').addClass('hidden');
                 $.cookie('description-state', 'closed', {path: '/', expires: 30});
-                $('p', this).html('Rozwiń opis ▼');
+                $('p', this).html(LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▼');
             }
         });
     
@@ -252,7 +296,7 @@ function serverTime() {
             trigger: 'a.jqm-trigger', 
             onShow: function(hash) { 
                 var offset = $(hash.t).offset();
-                target.html('<p><img src="/static/img/indicator.gif" /> Ładowanie</p>');
+                target.html('<p><img src="/static/img/indicator.gif" />'+LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+'</p>');
                 hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
             onLoad: function(hash) { 
                 $('form', hash.w).ajaxForm({
@@ -272,7 +316,7 @@ function serverTime() {
         
         if ($.cookie('description-state') == 'closed') {
             $('#description').hide().addClass('hidden');
-            $('#toggle-description p').html('Rozwiń opis ▼');
+            $('#toggle-description p').html(LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_SHELF']+' ▼');
         }
                 
         $('#user-info').show();
@@ -284,7 +328,7 @@ function serverTime() {
             $('#download-shelf-menu').slideDown('fast');
             
             if (!formatsDownloaded) {
-                // Pobierz dane o formatach
+                // Get info about the formats
                 formatsDownloaded = true;
                 $.ajax({
                     url: $('#download-formats-form').attr('data-formats-feed'),

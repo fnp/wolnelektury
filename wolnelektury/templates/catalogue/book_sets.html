@@ -1,12 +1,12 @@
 {% load i18n %}
-<h2>{% trans "Put a book on the shelf" %}</h2>
+<h2>{% trans "Put a book on the shelf!" %}</h2>
 {% if not user.tag_set.count %}
     <p>{% trans "You do not have any shelves. You can create one below, if you want to."%}</p>
 {% else %}
     <form action="{% url catalogue.views.book_sets book.slug %}" method="POST" accept-charset="utf-8" class="cuteform">
     <ol>
         <li>{{ form.set_ids }}</li>
-        <li><input type="submit" value="{% trans "Put on the shelf" %}"/></li>
+        <li><input type="submit" value="{% trans "Put on the shelf!" %}"/></li>
     </ol>
     </form>
 {% endif %}

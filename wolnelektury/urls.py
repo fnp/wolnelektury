@@ -48,4 +48,5 @@ urlpatterns = patterns('',
     url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], 'django.views.static.serve',
         {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
     url(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'katalog/'}),
+    url(r'^i18n/', include('django.conf.urls.i18n')),    
 )

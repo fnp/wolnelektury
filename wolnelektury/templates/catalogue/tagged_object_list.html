@@ -12,8 +12,8 @@
     
     {% if shelf_is_set and not object_list %}
     <div id="books-list">
-        <h2>Twoja półka jest pusta</h2>
-        <p>Możesz wrzucić książkę na półkę, wchodząc na stronę danej lektury i klikając na przycisk „Na półkę!”.</p>
+        <h2>{% trans "Your shelf is empty" %}</h2>
+        <p>{% trans "You can put a book on a shelf by entering page of the reading and clicking 'Put on the shelf'." %}</p>
     </div>
     {% else %}
     {% autopaginate object_list 10 %}
@@ -24,35 +24,43 @@
                 {{ last_tag.description|safe }}
             </div>
             <div class="clearboth"></div>
-            <div id="toggle-description"><p>Zwiń opis ▲</p></div>
+            <div id="toggle-description"><p>{% trans "Toggle description" %} ▲</p></div>
         {% endif %}
         {% if shelf_is_set %}
             <a id="download-shelf" href="{% url download_shelf last_tag.slug %}">
-                Pobierz wszystkie książki z tej półki
+                {% trans "Download all books from this shelf" %}
             </a>
             <div id="download-shelf-menu" style="display:none;">
                 <form action="{% url download_shelf last_tag.slug %}" method="get" accept-charset="utf-8" id="download-formats-form" data-formats-feed="{% url shelf_book_formats last_tag.slug %}">
-                    <p>Wybierz formaty książek, które chcesz pobrać:</p>
-                    <li data-format="pdf"><label for="id_formats_2"><input type="checkbox" name="formats" value="pdf" id="id_formats_2" /> PDF</label> <em><strong>do czytania</strong> i drukowania przy pomocy <a href="http://get.adobe.com/reader/">Adobe Reader</a></em></li>
-                    <li data-format="odt"><label for="id_formats_3"><input type="checkbox" name="formats" value="odt" id="id_formats_3" /> ODT</label> <em><strong>do czytania</strong> i edytowania przy pomocy <a href="http://pl.openoffice.org/">OpenOffice.org</a></em></li>
-                    <li data-format="txt"><label for="id_formats_4"><input type="checkbox" name="formats" value="txt" id="id_formats_4" /> TXT</label> <em><strong>do czytania</strong> na małych ekranach, np. na komórce</em></li>
-                    <li data-format="mp3"><label for="id_formats_0"><input type="checkbox" name="formats" value="mp3" id="id_formats_0" /> MP3</label> <em><strong>do słuchania</strong> w ulubionym odtwarzaczu MP3</em></li>
-                    <li data-format="ogg"><label for="id_formats_1"><input type="checkbox" name="formats" value="ogg" id="id_formats_1" /> Ogg Vorbis</label> <em><strong>do słuchania</strong> &mdash; otwarty format <a href="http://www.vorbis.com/">Fundacji Xiph.Org</a></em></li>
-                    <li id="download-formats-form-submit-li"><label><input type="submit" name="submit" value="Pobierz" id="download-formats-form-submit" disabled="disabled" />&nbsp;<img src="{{ STATIC_URL }}img/indicator.gif" /></label> <span id="updating-formats">Uaktualniam listę formatów książek na półce.</span><span id="formats-updated" style="display:none;">lub <a href="#" id="download-formats-form-cancel">anuluj</a></span></li>
+                    <p>{% trans "Choose books' formats which you want to download:" %}</p>
+                    <li data-format="pdf"><label for="id_formats_2"><input type="checkbox" name="formats" value="pdf" id="id_formats_2" /> PDF</label> <em><strong>{% trans "for reading" %}</strong> {% trans "and printing using" %} <a href="http://get.adobe.com/reader/">Adobe Reader</a></em></li>
+                    <li data-format="odt"><label for="id_formats_3"><input type="checkbox" name="formats" value="odt" id="id_formats_3" /> ODT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "and editing using" %} <a href="http://pl.openoffice.org/">OpenOffice.org</a></em></li>
+                    <li data-format="txt"><label for="id_formats_4"><input type="checkbox" name="formats" value="txt" id="id_formats_4" /> TXT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "on small displays, for example mobile phones" %}</em></li>
+                    <li data-format="mp3"><label for="id_formats_0"><input type="checkbox" name="formats" value="mp3" id="id_formats_0" /> MP3</label> <em><strong>{% trans "for listening" %}</strong> {% trans "on favourite MP3 player" %}</em></li>
+                    <li data-format="ogg"><label for="id_formats_1"><input type="checkbox" name="formats" value="ogg" id="id_formats_1" /> Ogg Vorbis</label> <em><strong>{% trans "for listening" %}</strong> &mdash; {% trans "open format" %} <a href="http://www.vorbis.com/">{% trans "Xiph.org Foundation" %}</a></em></li>
+                    <li id="download-formats-form-submit-li"><label><input type="submit" name="submit" value="{% trans "Download" %}" id="download-formats-form-submit" disabled="disabled" />&nbsp;<img src="{{ STATIC_URL }}img/indicator.gif" /></label> <span id="updating-formats">{% trans "Updating list of books' formats on the shelf" %}</span><span id="formats-updated" style="display:none;">{% trans "or" %} <a href="#" id="download-formats-form-cancel">{% trans "cancel" %}</a></span></li>
                     <div class="clearboth"></div>
                 </form>
             </div>
         {% endif %}
         {% if last_tag.gazeta_link %}
         <p><a href="{{ last_tag.gazeta_link }}">
-            {% ifequal last_tag.category "author" %}Przeczytaj omówienia utworów autora w serwisie Lektury.Gazeta.pl{% endifequal %}
-            {% ifequal last_tag.category "epoch"  %}Przeczytaj omówienia z epoki {{ last_tag }} w serwisie Lektury.Gazeta.pl{% endifequal %}
+            {% ifequal last_tag.category "author" %}
+				{% trans "Read work's study of this author on Lektury.Gazeta.pl" %}
+			{% endifequal %}
+            {% ifequal last_tag.category "epoch" %}
+				{% trans "Read study of epoch" %} {{ last_tag }} {% trans "on Lektury.Gazeta.pl" %}
+			{% endifequal %}
         </a></p>
         {% endif %}
         {% if last_tag.wiki_link %}
         <p><a href="{{ last_tag.wiki_link }}">
-            {% ifequal last_tag.category "author" %}Przeczytaj artykuł o autorze w Wikipedii{% endifequal %}
-            {% ifequal last_tag.category "epoch"  %}Przeczytaj artykuł o epoce {{ last_tag }} w Wikipedii{% endifequal %}
+            {% ifequal last_tag.category "author" %}
+				{% trans "Read article about this author on Wikipedia" %}
+			{% endifequal %}
+            {% ifequal last_tag.category "epoch"  %}
+				{% trans "Read article about epoch" %} {{ last_tag }} {% trans "on Wikipedia" %}
+			{% endifequal %}
         </a></p>
         {% endif %}
 
@@ -61,7 +69,7 @@
             {% for book in object_list %}
                 <li>
                     {% if user_is_owner %}
-                        <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">Usuń</a>
+                        <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">{% trans "Delete" %}</a>
                     {% endif %}
                     {{ book.short_html }}</li>
             {% endfor %}
@@ -69,19 +77,14 @@
         {% else %}
 			{% if only_author %}
 	            {% if last_tag.alive %}
-					<p>Dzieła tego autora objęte są prawem autorskim.</p>
-					<p>Dowiedz się, dlaczego biblioteki internetowe
-					nie mogą udostępniać dzieł tego autora.</p>
-				{% else %}{% comment %} Nie żyje {% endcomment %}
+					{% trans "This author's works are copyrighted." %}
+				{% else %}{% comment %} Is dead {% endcomment %}
             	    {% if last_tag.in_pd %}
-                	    <p>Dzieła tego autora znajdują się w domenie publicznej
-						i niedługo zostaną opublikowane w szkolnej bibliotece
-						internetowej Wolne Lektury.</p> 
-	                {% else %}{% comment %} Nie żyje, ale jeszcze nie w PD {% endcomment %}
+						<p>{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>		 
+	                {% else %}
+						{% comment %} Is dead, but not yet in public domain {% endcomment %}
     	                <div>
-        	                <p>Dzieła tego autora przejdą do zasobów domeny
-							publicznej i będą mogły być publikowane bez
-							żadnych ograniczeń za:</p>
+        	                <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in:" %}</p>
 							{% include "catalogue/pd_counter.html" %}
                             <p>Dowiedz się, dlaczego biblioteki internetowe
                             nie mogą udostępniać dzieł tego autora.</p>
@@ -89,7 +92,7 @@
 	                {% endif %}
                 {% endif %}
 			{% else %}
-			    Nie znaleziono żadnych utworów.
+			    {% trans "No works of this author found." %}
 			{% endif %}
             {% include "info/join_us.html" %}
         {% endif %}
@@ -97,29 +100,29 @@
         {% paginate %}
     </div>
 	{% if object_list %}
-	{% comment %} Jeśli nic nie znaleźliśmy, to i po prawej stronie nic nie będzie {% endcomment %}
+	{% comment %} If we didn't find anything there will be nothing on the right side as well {% endcomment %}
     <div id="tags-list">
         <div id="categories-list">
             {% if categories.author %}
-                <h2>Autorzy</h2>
+                <h2>{% trans "Authors" %}</h2>
                 {% tag_list categories.author tags %}
             {% endif %}
             {% if categories.kind %}
-                <h2>Rodzaje</h2>
+                <h2>{% trans "Kinds" %}</h2>
                 {% tag_list categories.kind tags %}
             {% endif %}
             {% if categories.genre %}
-                <h2>Gatunki literackie</h2>
+                <h2>{% trans "Genres" %}</h2>
                 {% tag_list categories.genre tags %}
             {% endif %}
             {% if categories.epoch %}
-                <h2>Epoki</h2>
+                <h2>{% trans "Epochs" %}</h2>
                 {% tag_list categories.epoch tags %}
             {% endif %}        
         </div>
         <div id="themes-list">
             {% if categories.theme %}
-                <h2>Motywy</h2>
+                <h2>{% trans "Themes" %}</h2>
                 {% tag_list categories.theme tags %}
             {% endif %}
         </div>
@@ -128,9 +131,9 @@
 	{% endif %}
     {% endif %}
     <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
         <div class="target">
-            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> Ładowanie</p>
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
         </div>
     </div>
 {% endblock %}

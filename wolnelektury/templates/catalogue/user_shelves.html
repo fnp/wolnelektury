@@ -1,17 +1,17 @@
 {% load i18n %}
-<h2>Twoje półki z lekturami</h2>
+<h2>{% trans "Your shelves with books" %}</h2>
 {% if shelves %}
 <ul class="shelf-list">
 {% for shelf in shelves %}
-    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">usuń</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.book_count }})</a></li>
+    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">{% trans "remove" %}</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.book_count }})</a></li>
 {% endfor %}
 </ul>
 {% else %}
-<p>Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć półkę poniżej.</p>
+<p>{% trans "You do not own any shelves. You can create one below if you want to" %}.</p>
 {% endif %}
 <hr />
 <form action="{% url catalogue.views.new_set %}" method="post" accept-charset="utf-8" class="cuteform">
 <ol>
-    <li>{{ new_set_form.name }} <input type="submit" value="Utwórz półkę"/></li>
+    <li>{{ new_set_form.name }} <input type="submit" value="{% trans "Create shelf" %}"/></li>
 </ol>
 </form>

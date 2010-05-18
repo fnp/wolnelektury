@@ -40,12 +40,21 @@ How to deploy (development version)
     
     ./wolnelektury/manage.py syncdb
     ./wolnelektury/manage.py migrate
-    
-5. Import some books which are availble on http://www.wolnelektury.pl or on bitbucket mirror: http://bitbucket.org/lqc/wlbooks/
 
-6. Run the server
+5. Run the server
 
    ./wolnelektury/manage.py runserver
+
+    
+6. Import some books which are available on http://www.wolnelektury.pl or on bitbucket mirror: http://bitbucket.org/lqc/wlbooks/
+   If you use Bitbucket, you also need Mercurial to fetch books (you can install it using: pip install mercurial).
+   After downloading books, log into administration, go to Books and choose 'Browse' to select book file,
+   then fire 'Import book' to upload it. Some books have invalid XML, so you can get an error
+   (just ignore it and look for other books).
+   
+7. We provide localization of the software in following languages: Polish, Russian, German, English, Spanish, French and Lithuanian.
+   Translation strings are based on gettext and can be found under 'locale' dir.
+   There are also JavaScript files for jQuery countdown plugin (static/js/jquery.countdown-*.js).
 
 Full list of used open-source software
 ======================================
@@ -65,18 +74,26 @@ django-pagination
  - Source: [Google Code](http://code.google.com/p/django-pagination/)
  - Authors: James Tauber <jtauber@gmail.com>, leidel@gmail.com
  - License: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Type: library (aplikacja django)
+ - Type: library (django application)
+
+django-rosetta
+-----------------
+ - Source: [Google Code](http://code.google.com/p/django-rosetta/)
+ - Authors: James Tauber <jtauber@gmail.com>, leidel@gmail.com
+ - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
+ - Type: library (django application)
+
  
 Django South
 ------------
 - Source: [aercode.org](http://south.aeracode.org/)
 - Authors: Andrew Godwin <andrew@aeracode.org>, Andy McCurdy <sedrik@gmail.com>
 - License: [Apache License 2.0](http://www.opensource.org/licenses/apache2.0.php)
-- Type: library (aplikacja django)
+- Type: library (django application)
 
 lxml
 ---------
- - Żródła: [codespeak.net](http://codespeak.net/lxml/index.html#download)
+ - Source: [codespeak.net](http://codespeak.net/lxml/index.html#download)
  - Authors: [many authors](http://codespeak.net/lxml/credits.html)
  - License: [BSD License](http://codespeak.net/lxml/index.html#license)
  - Type: library
@@ -97,14 +114,14 @@ django-compress
  - Source: [Google Code](http://code.google.com/p/django-compress/)
  - Authors: Andreas Pelme <andreas.pelme@gmail.com>
  - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Type: library (Django aplication)
+ - Type: library (Django application)
  
  django-chunks
 -------------
  - Source: [Google Code](http://code.google.com/p/django-chunks/)
  - Authors: Clint Ecker <clintecker@gmail.com>
  - License: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Type: library (Django aplication)
+ - Type: library (Django application)
  
 django-newtagging
 -----------------

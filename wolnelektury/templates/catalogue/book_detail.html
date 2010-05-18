@@ -2,14 +2,14 @@
 {% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}{{ book.title }} w WolneLektury.pl{% endblock %}
+{% block title %}{{ book.title }} {% trans "on WolneLektury.pl" %}{% endblock %}
 
 {% block bodyid %}book-detail{% endblock %}
 
 {% block body %}
     <h1>{{ book.title }}, {{ categories.author|join:", " }}</h1>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to homepage" %}</a></p>
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
     
     <div id="books-list">

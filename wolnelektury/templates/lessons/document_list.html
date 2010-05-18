@@ -48,7 +48,7 @@
 {% block body %}
     <h1>{% trans "Hand-outs for teachers" %}</h1>
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to homepage" %}</a></p>
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
     
     <div id="document-list">
