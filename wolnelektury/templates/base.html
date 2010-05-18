@@ -8,6 +8,7 @@
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
         <link rel="icon" href="/static/img/favicon.png" type="image/x-icon" />
         {% compressed_css "all" %}
+        <script type="text/javascript">var LANGUAGE_CODE = "{{ LANGUAGE_CODE}}";</script>
         {% compressed_js "jquery" %}
         {% compressed_js "all" %}
         {% block extrahead %}
@@ -49,6 +50,16 @@
                 <a href="http://twitter.com/wolnelektury"><img src="/static/img/social/twitter.png" /></a>
                 <a href="http://nasza-klasa.pl/profile/30441509"><img src="/static/img/social/naszaklasa.png" /></a>     
             </div>
+			<div class="lang-menu" style="float:right;">
+				<form action="/i18n/setlang/" method="post">
+					{% trans "Choose your interface language: " %} <select name="language">
+						{% for lang in LANGUAGES %}
+						<option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+						{% endfor %}
+					</select>
+					<input type="submit" value="{% trans "Choose language" %}">
+				</form>
+			</div>			
             <div class="clearboth"></div>
         </div>
         <div id="maincontent">

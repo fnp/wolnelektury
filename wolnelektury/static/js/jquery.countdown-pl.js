@@ -18,5 +18,5 @@
 			n == 1 ? 1 : 0;
 		}
 	};
-	$.countdown.setDefaults($.countdown.regional['pl']);
+	//$.countdown.setDefaults($.countdown.regional['pl']);
 })(jQuery);

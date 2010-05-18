@@ -52,7 +52,9 @@ How to deploy (development version)
    then fire 'Import book' to upload it. Some books have invalid XML, so you can get an error
    (just ignore it and look for other books).
    
-
+7. We provide localization of the software in following languages: Polish, Russian, German, English, Spanish, French and Lithuanian.
+   Translation strings are based on gettext and can be found under 'locale' dir.
+   There are also JavaScript files for jQuery countdown plugin (static/js/jquery.countdown-*.js).
 
 Full list of used open-source software
 ======================================
