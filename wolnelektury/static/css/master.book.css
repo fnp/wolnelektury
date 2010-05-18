@@ -194,7 +194,7 @@ blockquote {
 /* ============= */
 /* = Numbering = */
 /* ============= */
-.verse {
+.verse, .paragraph {
 	position:relative;
 }
 .anchor {
