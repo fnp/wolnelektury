@@ -13,8 +13,8 @@
     <div id="books-list">
         <p>{% trans "Search of " %}<i>{{ query }}</i> {% trans "did not match any resources." %}</p>
 		
-		<p>{% transblock %}Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.
-		As for now we do not support full text search.{% endtransblock %}</p>
+		<p>{% blocktrans %}Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.
+		As for now we do not support full text search.{% endblocktrans %}</p>
         {% include "info/join_us.html" %}
     </div>
 
