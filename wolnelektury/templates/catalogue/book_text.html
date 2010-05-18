@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
-        <link rel="icon" href="/static/img/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/x-icon" />
         {% compressed_css "book" %}
         {% compressed_js "jquery" %}
         {% compressed_js "book" %}
@@ -20,7 +20,7 @@
         </div>
         <div id="header">
             <div id="logo">
-                <a href="/"><img src="/static/img/logo.png" alt="WolneLektury.pl - logo" /></a>
+                <a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="WolneLektury.pl - logo" /></a>
             </div>
         </div>
         <div id="themes">

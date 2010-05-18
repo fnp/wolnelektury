@@ -6,12 +6,12 @@
 <title>500 - {% trans "Server error" %} WolneLektury.pl</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset/reset-min.css"> 
-<link rel="stylesheet" href="/static/css/error.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/error.css" type="text/css" />
 </head>
 
 <body>
 
-<a href="/"><img src="/static/img/logo.png" /></a>
+<a href="/"><img src="{{ STATIC_URL }}img/logo.png" /></a>
 <p class="haj" style="font-weight: bold">{% trans "Server error" %}</p>
 <p>
 {% trans "We are sorry for your inconvenience, but server error occured. We are working on fixing it as soon as possible. Meanwhile, please go to " %}<a href="/">{% trans "main page" %}</a>.

@@ -7,6 +7,7 @@ import zipfile
 import sys
 import pprint
 import traceback
+import re
 
 from django.conf import settings
 from django.template import RequestContext
@@ -22,7 +23,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
+from django.utils.http import urlquote_plus
 from django.views.decorators import cache
+from django.utils.translation import ugettext as _
 
 from catalogue import models
 from catalogue import forms
@@ -170,16 +173,24 @@ def book_text(request, slug):
 # ==========
 # = Search =
 # ==========
+
+def _no_diacritics_regexp(query):
+    """ returns a regexp for searching for a query without diacritics
+    
+    should be locale-aware """
+    names = {'a':u'ą', 'c':u'ć', 'e':u'ę', 'l': u'ł', 'n':u'ń', 'o':u'ó', 's':u'ś', 'z':u'ź|ż'}
+    def repl(m):
+        l = m.group()
+        return "(%s|%s)" % (l, names[l])
+    return re.sub('[%s]'%(''.join(names.keys())), repl, query)
+
 def _word_starts_with(name, prefix):
-    """returns a Q object gettings models having `name` contain a word
+    """returns a Q object getting models having `name` contain a word
     starting with `prefix`
     """
     kwargs = {}
     if settings.DATABASE_ENGINE in ('mysql', 'postgresql_psycopg2', 'postgresql'):
-        # we must escape `prefix` so that it only matches literally
-        for special in r'\^$.*+?|(){}[]':
-            prefix = prefix.replace(special, '\\' + special)
-        
+        prefix = _no_diacritics_regexp(re.escape(prefix))
         # we could use a [[:<:]] (word start), 
         # but we want both `xy` and `(xy` to catch `(xyz)`
         kwargs['%s__iregex' % name] = u"(^|[^[:alpha:]])%s" % prefix
@@ -188,6 +199,19 @@ def _word_starts_with(name, prefix):
         # checking for simple icontain instead
         kwargs['%s__icontains' % name] = prefix
     return Q(**kwargs)
+
+
+def _tags_exact_matches(prefix, user):
+    book_stubs = models.BookStub.objects.filter(title__iexact = prefix)
+    books = models.Book.objects.filter(title__iexact = prefix)
+    book_stubs = filter(lambda x: x not in books, book_stubs)
+    tags = models.Tag.objects.filter(name__iexact = prefix)
+    if user.is_authenticated():
+        tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
+    else:
+        tags = tags.filter(~Q(category='book') & ~Q(category='set'))
+
+    return list(books) + list(tags) + list(book_stubs)
 
 
 def _tags_starting_with(prefix, user):
@@ -203,6 +227,24 @@ def _tags_starting_with(prefix, user):
     return list(books) + list(tags) + list(book_stubs)
         
 
+
+def _get_result_link(match, tag_list):
+    if isinstance(match, models.Book) or isinstance(match, models.BookStub):
+        return match.get_absolute_url()
+    else:
+        return reverse('catalogue.views.tagged_object_list', 
+            kwargs={'tags': '/'.join(tag.slug for tag in tag_list + [match])}
+        )
+
+def _get_result_type(match):
+    if isinstance(match, models.Book) or isinstance(match, models.BookStub):
+        type = 'book'
+    else:
+        type = match.category
+    return dict(models.TAG_CATEGORIES)[type]
+    
+
+
 def search(request):
     tags = request.GET.get('tags', '')
     prefix = request.GET.get('q', '')
@@ -214,22 +256,25 @@ def search(request):
 
     # Prefix must have at least 2 characters
     if len(prefix) < 2:
-        return render_to_response('catalogue/search_no_hits.html', {'query':prefix, 'tags':tag_list},
+        return render_to_response('catalogue/search_too_short.html', {'tags':tag_list, 'prefix':prefix},
             context_instance=RequestContext(request))
     
-    result = _tags_starting_with(prefix, request.user)
-    if len(result) > 0:
-        tag = result[0]
-        if isinstance(tag, models.Book) or isinstance(tag, models.BookStub):
-            return HttpResponseRedirect(tag.get_absolute_url())
-        else:
-            tag_list.append(tag)
-            
-            return HttpResponseRedirect(reverse('catalogue.views.tagged_object_list', 
-                kwargs={'tags': '/'.join(tag.slug for tag in tag_list)}
-            ))
+    result = _tags_exact_matches(prefix, request.user)
+    
+    if len(result) > 1:
+        # multiple exact matches
+        return render_to_response('catalogue/search_multiple_hits.html', 
+            {'tags':tag_list, 'prefix':prefix, 'results':((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)},
+            context_instance=RequestContext(request))
+    
+    if not result:
+        # no exact matches
+        result = _tags_starting_with(prefix, request.user)
+    
+    if result:
+        return HttpResponseRedirect(_get_result_link(result[0], tag_list))
     else:
-        return render_to_response('catalogue/search_no_hits.html', {'query':prefix, 'tags':tag_list},
+        return render_to_response('catalogue/search_no_hits.html', {'tags':tag_list, 'prefix':prefix},
             context_instance=RequestContext(request))
 
 
@@ -455,7 +500,7 @@ def register(request):
 @cache.never_cache
 def logout_then_redirect(request):
     auth.logout(request)
-    return HttpResponseRedirect(request.GET.get('next', '/'))
+    return HttpResponseRedirect(urlquote_plus(request.GET.get('next', '/'), safe='/?='))
 
 
 

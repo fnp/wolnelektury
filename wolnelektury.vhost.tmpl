@@ -1,6 +1,5 @@
 <VirtualHost *:80>
     ServerName $DOMAIN
-    ServerAlias $DOMAIN_ALIASES
     ServerAdmin $ADMIN_EMAIL
 
     WSGIDaemonProcess $PROJECT_NAME user=$WSGI_USER group=$WSGI_USER processes=$WSGI_PROCESSES threads=$WSGI_THREADS display-name=%{GROUP}
@@ -14,7 +13,6 @@
 
     Alias /media $MEDIA_ROOT
     <Directory $MEDIA_ROOT >
-        Options Indexes, FollowLinks
         Order allow,deny
         Allow from all
     </Directory>

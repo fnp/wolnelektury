@@ -1,4 +1,3 @@
-alert(LANGUAGE_CODE);
 var LOCALE_TEXTS = {
 	"pl": {
 		"DELETE_SHELF": "Czy na pewno usunąć półkę",
@@ -43,8 +42,6 @@ var LOCALE_TEXTS = {
 		"LOADING": "Translate me!",				
 	}
 }
-
-alert(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']);
 var BANNER_TEXTS = [
     'Przekaż 1% żeby ukryć ten baner.',
     'Jak dobrze wydać 1% swojego podatku? <strong>Poradnik dla opornych</strong>.',
@@ -126,14 +123,16 @@ function serverTime() {
                     function() { $(this).css({background: '#FFF'}); }
                 ).click(function() {
                     $(this).fadeOut(function() {
-                        $(this).prev().fadeIn()
+                        $(this).prev().fadeIn();
                     });
+                    return false;
                 })
             }
         });
         
         $('.fragment-short-text').click(function() {
             $(this).fadeOut(function() { $(this).next().fadeIn() });
+            return false;
         }).hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
             function() { $(this).css({background: '#FFF'}); }
