@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from django import http
-from django.template import RequestContext, loader
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 def server_error(request):
-    t = loader.get_template('500.html')
-    return http.HttpResponseServerError(t.render(RequestContext(request)))
+    return render_to_response('500.html', RequestContext(request))
 
