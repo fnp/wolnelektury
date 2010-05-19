@@ -2,35 +2,35 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-18 11:01+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-05-19 16:20\n"
+"Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.5.3\n"
 
 #: admin.py:38
 msgid "tags"
-msgstr ""
+msgstr "tagi"
 
 #: models.py:491
 msgid "tag"
-msgstr ""
+msgstr "tag"
 
 #: models.py:492
 msgid "content type"
-msgstr ""
+msgstr "typ zawartości"
 
 #: models.py:493
 msgid "object id"
-msgstr ""
+msgstr "id obiektu"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-18 10:57+0200\n"
-"PO-Revision-Date: 2010-05-19 14:20\n"
+"PO-Revision-Date: 2010-05-19 16:15\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: fields.py:45
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
-msgstr ""
+msgstr "Wprowadź prawidłową wartość JSON. Błąd: %s"
 
 #: forms.py:28
 msgid "title, author, theme/topic, epoch, kind, genre"
@@ -59,11 +59,11 @@ msgstr "półka"
 
 #: models.py:30 models.py:322
 msgid "book"
-msgstr ""
+msgstr "książka"
 
 #: models.py:44 migrations/0001_initial.py:47
 msgid "name"
-msgstr ""
+msgstr "nazwa"
 
 #: models.py:45 models.py:103 models.py:365 migrations/0001_initial.py:19
 #: migrations/0001_initial.py:48
@@ -72,24 +72,24 @@ msgstr ""
 
 #: models.py:46 migrations/0001_initial.py:49
 msgid "sort key"
-msgstr ""
+msgstr "klucz sortowania"
 
 #: models.py:47 migrations/0001_initial.py:50
 msgid "category"
-msgstr ""
+msgstr "kategoria"
 
 #: models.py:49 models.py:60 models.py:104 models.py:185
 #: migrations/0001_initial.py:20 migrations/0001_initial.py:51
 msgid "description"
-msgstr ""
+msgstr "opis"
 
 #: models.py:50 migrations/0001_initial.py:52
 msgid "main page"
-msgstr ""
+msgstr "strona główna"
 
 #: models.py:50 migrations/0001_initial.py:52
 msgid "Show tag on main page"
-msgstr ""
+msgstr "Pokazuj tag na stronie głównej"
 
 #: models.py:53 migrations/0001_initial.py:54
 msgid "book count"
@@ -113,19 +113,19 @@ msgstr "tytuł"
 
 #: models.py:105 migrations/0001_initial.py:21
 msgid "creation date"
-msgstr ""
+msgstr "data utworzenia"
 
 #: models.py:106 migrations/0001_initial.py:22
 msgid "short HTML"
-msgstr ""
+msgstr "krótki HTML"
 
 #: models.py:107 migrations/0001_initial.py:23
 msgid "parent number"
-msgstr ""
+msgstr "numer rodzica"
 
 #: models.py:108
 msgid "extra information"
-msgstr ""
+msgstr "dodatkowe informacje"
 
 #: models.py:114 migrations/0001_initial.py:24
 msgid "XML file"
@@ -162,24 +162,24 @@ msgstr "Czytaj online"
 #: models.py:221
 #, python-format
 msgid "Book %s already exists"
-msgstr ""
+msgstr "Książka %s już istnieje"
 
 #: models.py:264
 #, python-format
 msgid "Book with slug = \"%s\" does not exist."
-msgstr ""
+msgstr "Książki ο slug = \"%s\" nie istnieje."
 
 #: models.py:323
 msgid "books"
-msgstr ""
+msgstr "książki"
 
 #: models.py:357
 msgid "fragment"
-msgstr ""
+msgstr "fragment"
 
 #: models.py:358
 msgid "fragments"
-msgstr ""
+msgstr "fragmenty"
 
 #: models.py:364
 msgid "goes to public domain"
@@ -239,20 +239,23 @@ msgid ""
 "\n"
 "%(tb)s"
 msgstr ""
+"Wystąpił błąd: %(exception)s\n"
+"\n"
+"%(tb)s"
 
 #: views.py:524
 msgid "Book imported successfully"
-msgstr ""
+msgstr "Książka zaimportowana"
 
 #: views.py:526
 #, python-format
 msgid "Error importing file: %r"
-msgstr ""
+msgstr "Błąd podczas importowania pliku: %r"
 
 #: migrations/0001_initial.py:62
 msgid "content type"
-msgstr ""
+msgstr "typ zawartości"
 
 #: migrations/0001_initial.py:63
 msgid "object id"
-msgstr ""
+msgstr "id obiektu"

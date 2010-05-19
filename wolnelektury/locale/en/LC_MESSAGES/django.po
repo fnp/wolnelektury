@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 15:39+0200\n"
+"POT-Creation-Date: 2010-05-19 16:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,52 +84,44 @@ msgid ""
 "more..."
 msgstr ""
 
-#: templates/base.html:28 templates/catalogue/folded_tag_list.html:13
-#: templates/catalogue/main_page.html:43 templates/catalogue/main_page.html:48
-#: templates/catalogue/main_page.html:87
-#: templates/catalogue/main_page.html:270
-#: templates/catalogue/main_page.html:279
-msgid "See more"
-msgstr ""
-
-#: templates/base.html:37
+#: templates/base.html:33
 msgid "Welcome"
 msgstr ""
 
-#: templates/base.html:38
+#: templates/base.html:34
 msgid "Your shelves"
 msgstr ""
 
-#: templates/base.html:40
+#: templates/base.html:36
 msgid "Administration"
 msgstr ""
 
-#: templates/base.html:42
+#: templates/base.html:38
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:45 templates/base.html.py:91 templates/base.html:95
-#: templates/base.html.py:99 templates/auth/login.html:4
+#: templates/base.html:41 templates/base.html.py:87 templates/base.html:91
+#: templates/base.html.py:95 templates/auth/login.html:4
 #: templates/auth/login.html.py:7 templates/auth/login.html:12
 #: templates/auth/login.html.py:15
 msgid "Sign in"
 msgstr ""
 
-#: templates/base.html:45 templates/base.html.py:91 templates/base.html:99
-#: templates/base.html.py:103 templates/auth/login.html:7
+#: templates/base.html:41 templates/base.html.py:87 templates/base.html:95
+#: templates/base.html.py:99 templates/auth/login.html:7
 #: templates/auth/login.html.py:21 templates/auth/login.html:23
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:55
+#: templates/base.html:51
 msgid "Choose your interface language: "
 msgstr ""
 
-#: templates/base.html:60
+#: templates/base.html:56
 msgid "Choose language"
 msgstr ""
 
-#: templates/base.html:72
+#: templates/base.html:68
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
@@ -140,7 +132,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/base.html:79
+#: templates/base.html:75
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
@@ -150,7 +142,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/base.html:88 templates/base.html.py:109
+#: templates/base.html:84 templates/base.html.py:105
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:31
@@ -159,7 +151,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: templates/base.html:111 templates/catalogue/book_detail.html:131
+#: templates/base.html:107 templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:33
 #: templates/catalogue/search_no_hits.html:25
@@ -399,6 +391,14 @@ msgstr ""
 
 #: templates/catalogue/folded_tag_list.html:4
 msgid "Show full category"
+msgstr ""
+
+#: templates/catalogue/folded_tag_list.html:13
+#: templates/catalogue/main_page.html:43 templates/catalogue/main_page.html:48
+#: templates/catalogue/main_page.html:87
+#: templates/catalogue/main_page.html:270
+#: templates/catalogue/main_page.html:279
+msgid "See more"
 msgstr ""
 
 #: templates/catalogue/folded_tag_list.html:22
