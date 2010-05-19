@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 13:36+0200\n"
+"POT-Creation-Date: 2010-05-19 13:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,56 +16,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:36
+#: settings.py:37
 msgid "German"
 msgstr ""
 
-#: settings.py:37
+#: settings.py:38
 msgid "English"
 msgstr ""
 
-#: settings.py:38
+#: settings.py:39
 msgid "Polish"
 msgstr ""
 
-#: settings.py:39
+#: settings.py:40
 msgid "Lithuanian"
 msgstr ""
 
-#: settings.py:40
+#: settings.py:41
 msgid "French"
 msgstr ""
 
-#: settings.py:41
+#: settings.py:42
 msgid "Russian"
 msgstr ""
 
-#: settings.py:42
+#: settings.py:43
 msgid "Spain"
 msgstr ""
 
 #: templates/404.html:6 templates/404.html.py:15
-msgid "Site does not exist"
+msgid "Page does not exist"
 msgstr ""
 
 #: templates/404.html:17
 msgid ""
-"We are sorry, but this site does not exist. Please check if you entered "
+"We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
 msgstr ""
 
-#: templates/404.html:17 templates/500.html:17
+#: templates/404.html:17
 msgid "main page"
 msgstr ""
 
-#: templates/500.html:6 templates/500.html.py:15
+#: templates/500.html:6 templates/500.html.py:54
 msgid "Server error"
 msgstr ""
 
-#: templates/500.html:17
+#: templates/500.html:55
 msgid ""
-"We are sorry for your inconvenience, but server error occured. We are "
-"working on fixing it as soon as possible. Meanwhile, please go to "
+"<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
+"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
+"error.</p>"
+msgstr ""
+
+#: templates/503.html:6 templates/503.html.py:54
+msgid "Service unavailable"
+msgstr ""
+
+#: templates/503.html:56
+msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr ""
 
 #: templates/base.html:20
@@ -144,7 +154,7 @@ msgstr ""
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:30
 #: templates/catalogue/search_no_hits.html:22
-#: templates/catalogue/tagged_object_list.html:134
+#: templates/catalogue/tagged_object_list.html:142
 msgid "Close"
 msgstr ""
 
@@ -152,7 +162,7 @@ msgstr ""
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:32
 #: templates/catalogue/search_no_hits.html:24
-#: templates/catalogue/tagged_object_list.html:136
+#: templates/catalogue/tagged_object_list.html:144
 msgid "Loading"
 msgstr ""
 
@@ -287,7 +297,7 @@ msgid "Book on project's wiki"
 msgstr ""
 
 #: templates/catalogue/book_detail.html:109
-msgid "Book in CBN Polona"
+msgid "Source of the book"
 msgstr ""
 
 #: templates/catalogue/book_detail.html:111
@@ -358,21 +368,21 @@ msgid "Categories"
 msgstr ""
 
 #: templates/catalogue/book_stub_detail.html:17
-#: templates/catalogue/tagged_object_list.html:83
+#: templates/catalogue/tagged_object_list.html:91
 msgid ""
 "This author's works are in public domain and will be published on Internet "
 "school library of Wolne Lektury soon."
 msgstr ""
 
 #: templates/catalogue/book_stub_detail.html:20
-#: templates/catalogue/tagged_object_list.html:87
+#: templates/catalogue/tagged_object_list.html:95
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in:"
 msgstr ""
 
 #: templates/catalogue/book_stub_detail.html:23
-#: templates/catalogue/tagged_object_list.html:80
+#: templates/catalogue/tagged_object_list.html:88
 msgid "This author's works are copyrighted."
 msgstr ""
 
@@ -381,7 +391,7 @@ msgid "Table of contents"
 msgstr ""
 
 #: templates/catalogue/book_text.html:18
-#: templates/catalogue/tagged_object_list.html:125
+#: templates/catalogue/tagged_object_list.html:133
 msgid "Themes"
 msgstr ""
 
@@ -484,22 +494,22 @@ msgid ""
 msgstr ""
 
 #: templates/catalogue/main_page.html:54
-#: templates/catalogue/tagged_object_list.html:107
+#: templates/catalogue/tagged_object_list.html:115
 msgid "Authors"
 msgstr ""
 
 #: templates/catalogue/main_page.html:58
-#: templates/catalogue/tagged_object_list.html:111
+#: templates/catalogue/tagged_object_list.html:119
 msgid "Kinds"
 msgstr ""
 
 #: templates/catalogue/main_page.html:62
-#: templates/catalogue/tagged_object_list.html:115
+#: templates/catalogue/tagged_object_list.html:123
 msgid "Genres"
 msgstr ""
 
 #: templates/catalogue/main_page.html:66
-#: templates/catalogue/tagged_object_list.html:119
+#: templates/catalogue/tagged_object_list.html:127
 msgid "Epochs"
 msgstr ""
 
@@ -560,6 +570,13 @@ msgstr ""
 
 #: templates/catalogue/search_no_hits.html:14
 msgid "did not match any resources."
+msgstr ""
+
+#: templates/catalogue/search_no_hits.html:16
+msgid ""
+"Search engine supports following criteria: title, author, theme/topic, "
+"epoch, kind and genre.\n"
+"\t\tAs for now we do not support full text search."
 msgstr ""
 
 #: templates/catalogue/tag_list.html:4
@@ -633,35 +650,44 @@ msgstr ""
 msgid "cancel"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:49
+#: templates/catalogue/tagged_object_list.html:46
+msgid "Share this shelf"
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:48
+msgid ""
+"Copy this link and share it with other people to let them see your shelf."
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:57
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:52
+#: templates/catalogue/tagged_object_list.html:60
 msgid "Read study of epoch"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:52
+#: templates/catalogue/tagged_object_list.html:60
 msgid "on Lektury.Gazeta.pl"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:59
+#: templates/catalogue/tagged_object_list.html:67
 msgid "Read article about this author on Wikipedia"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:62
+#: templates/catalogue/tagged_object_list.html:70
 msgid "Read article about epoch"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:62
+#: templates/catalogue/tagged_object_list.html:70
 msgid "on Wikipedia"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:72
+#: templates/catalogue/tagged_object_list.html:80
 msgid "Delete"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:95
+#: templates/catalogue/tagged_object_list.html:103
 msgid "No works of this author found."
 msgstr ""
 
