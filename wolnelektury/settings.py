@@ -40,7 +40,7 @@ LANGUAGES = (
     ('lt', gettext('Lithuanian')),
     ('fr', gettext('French')),
     ('ru', gettext('Russian')),
-    ('es', gettext('Spain')),        
+    ('es', gettext('Spanish')),        
 )
 
 

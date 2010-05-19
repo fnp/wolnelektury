@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 15:24+0200\n"
-"PO-Revision-Date: 2010-05-19 15:24\n"
+"POT-Creation-Date: 2010-05-19 15:39+0200\n"
+"PO-Revision-Date: 2010-05-19 15:40\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgid "Russian"
 msgstr "rosyjski"
 
 #: settings.py:43
-msgid "Spain"
+msgid "Spanish"
 msgstr "hiszpański"
 
 #: templates/404.html:6 templates/404.html.py:15
