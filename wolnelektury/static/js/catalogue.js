@@ -2,43 +2,43 @@ var LOCALE_TEXTS = {
 	"pl": {
 		"DELETE_SHELF": "Czy na pewno usunąć półkę",
 		"HIDE_DESCRIPTION": "Zwiń opis",
-		"EXPAND DESCRIPTION": "Rozwiń opis",
+		"EXPAND_DESCRIPTION": "Rozwiń opis",
 		"LOADING": "Ładowanie",		
 	},
 	"fr": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND DESCRIPTION": "Translate me!",
+		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",				
 	},
 	"ru": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND DESCRIPTION": "Translate me!",
+		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",				
 	},
 	"en": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND DESCRIPTION": "Translate me!",
+		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",		
 	}, 
 	"ru": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND DESCRIPTION": "Translate me!",
+		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",		
 	},
 	"es": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND DESCRIPTION": "Translate me!",
+		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",				
 	},
 	"lt":{
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND DESCRIPTION": "Translate me!",
+		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",				
 	}
 }
@@ -283,7 +283,7 @@ function serverTime() {
             } else {
                 $('#description').slideUp('fast').addClass('hidden');
                 $.cookie('description-state', 'closed', {path: '/', expires: 30});
-                $('p', this).html(LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▼');
+                $('p', this).html(LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_DESCRIPTION'] + ' ▼');
             }
         });
 
@@ -327,7 +327,7 @@ function serverTime() {
         
         if ($.cookie('description-state') == 'closed') {
             $('#description').hide().addClass('hidden');
-            $('#toggle-description p').html(LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_SHELF']+' ▼');
+            $('#toggle-description p').html(LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_DESCRIPTION']+' ▼');
         }
 		
         $('#share-shelf').hide().addClass('hidden');

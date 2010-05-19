@@ -24,7 +24,7 @@
                 {{ last_tag.description|safe }}
             </div>
             <div class="clearboth"></div>
-            <div id="toggle-description"><p>{% trans "Toggle description" %} ▲</p></div>
+            <div id="toggle-description"><p>{% trans "Hide description" %} ▲</p></div>
         {% endif %}
         {% if shelf_is_set %}
             <a id="download-shelf" href="{% url download_shelf last_tag.slug %}">

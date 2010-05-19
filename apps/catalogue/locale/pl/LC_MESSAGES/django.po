@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-18 10:57+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2010-05-19 14:20\n"
+"Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.5.3\n"
 
 #: fields.py:45
 #, python-format
@@ -23,39 +23,39 @@ msgstr ""
 
 #: forms.py:28
 msgid "title, author, theme/topic, epoch, kind, genre"
-msgstr ""
+msgstr "tytuł, autor, motyw/temat, epoka, rodzaj, gatunek"
 
 #: forms.py:44
 msgid "Shelves"
-msgstr ""
+msgstr "Półki"
 
 #: forms.py:57
 msgid "Name of the new shelf"
-msgstr ""
+msgstr "nazwa nowej półki"
 
 #: models.py:24 models.py:363
 msgid "author"
-msgstr ""
+msgstr "autor"
 
 #: models.py:25
 msgid "epoch"
-msgstr ""
+msgstr "epoka"
 
 #: models.py:26
 msgid "kind"
-msgstr ""
+msgstr "rodzaj"
 
 #: models.py:27
 msgid "genre"
-msgstr ""
+msgstr "gatunek"
 
 #: models.py:28
 msgid "theme"
-msgstr ""
+msgstr "motyw"
 
 #: models.py:29
 msgid "set"
-msgstr ""
+msgstr "półka"
 
 #: models.py:30 models.py:322
 msgid "book"
@@ -93,23 +93,23 @@ msgstr ""
 
 #: models.py:53 migrations/0001_initial.py:54
 msgid "book count"
-msgstr ""
+msgstr "liczba książek"
 
 #: models.py:54
 msgid "year of death"
-msgstr ""
+msgstr "rok śmierci"
 
 #: models.py:80 migrations/0001_initial.py:61
 msgid "tag"
-msgstr ""
+msgstr "tag"
 
 #: models.py:81
 msgid "tags"
-msgstr ""
+msgstr "tagi"
 
 #: models.py:102 models.py:362 migrations/0001_initial.py:18
 msgid "title"
-msgstr ""
+msgstr "tytuł"
 
 #: models.py:105 migrations/0001_initial.py:21
 msgid "creation date"
@@ -129,35 +129,35 @@ msgstr ""
 
 #: models.py:114 migrations/0001_initial.py:24
 msgid "XML file"
-msgstr ""
+msgstr "Plik XML"
 
 #: models.py:115 migrations/0001_initial.py:25
 msgid "HTML file"
-msgstr ""
+msgstr "Plik HTML"
 
 #: models.py:116 migrations/0001_initial.py:26
 msgid "PDF file"
-msgstr ""
+msgstr "Plik PDF"
 
 #: models.py:117 migrations/0001_initial.py:27
 msgid "ODT file"
-msgstr ""
+msgstr "Plik ODT"
 
 #: models.py:118 migrations/0001_initial.py:28
 msgid "TXT file"
-msgstr ""
+msgstr "Plik TXT"
 
 #: models.py:119
 msgid "MP3 file"
-msgstr ""
+msgstr "Plik MP3"
 
 #: models.py:120
 msgid "OGG file"
-msgstr ""
+msgstr "Plik OGG"
 
 #: models.py:141
 msgid "Read online"
-msgstr ""
+msgstr "Czytaj online"
 
 #: models.py:221
 #, python-format
@@ -183,49 +183,49 @@ msgstr ""
 
 #: models.py:364
 msgid "goes to public domain"
-msgstr ""
+msgstr "trafia do domeny publicznej"
 
 #: models.py:366
 msgid "translator"
-msgstr ""
+msgstr "tłumacz"
 
 #: models.py:367
 msgid "year of translator's death"
-msgstr ""
+msgstr "rok śmierci tłumacza"
 
 #: models.py:385
 msgid "book stub"
-msgstr ""
+msgstr "zapowiedź książki"
 
 #: models.py:386
 msgid "book stubs"
-msgstr ""
+msgstr "zapowiedzi książek"
 
 #: views.py:308
 msgid "<p>To maintain your shelves you need to be logged in.</p>"
-msgstr ""
+msgstr "<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>"
 
 #: views.py:326
 msgid "<p>Shelves were sucessfully saved.</p>"
-msgstr ""
+msgstr "<p>Półki zostały zapisane.</p>"
 
 #: views.py:350
 msgid "Book was successfully removed from the shelf"
-msgstr ""
+msgstr "Usunięto"
 
 #: views.py:352
 msgid "This book is not on the shelf"
-msgstr ""
+msgstr "Książki nie ma na półce"
 
 #: views.py:448
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
-msgstr ""
+msgstr "<p>Półka <strong>%s</strong> została utworzona</p>"
 
 #: views.py:463
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
-msgstr ""
+msgstr "<p>Półka <strong>%s</strong> została usunięta</p>"
 
 #: views.py:522
 #, python-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 13:48+0200\n"
+"POT-Creation-Date: 2010-05-19 15:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,7 +85,8 @@ msgid ""
 msgstr ""
 
 #: templates/base.html:28 templates/catalogue/folded_tag_list.html:13
-#: templates/catalogue/main_page.html:48 templates/catalogue/main_page.html:87
+#: templates/catalogue/main_page.html:43 templates/catalogue/main_page.html:48
+#: templates/catalogue/main_page.html:87
 #: templates/catalogue/main_page.html:270
 #: templates/catalogue/main_page.html:279
 msgid "See more"
@@ -153,7 +154,7 @@ msgstr ""
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:31
-#: templates/catalogue/search_no_hits.html:22
+#: templates/catalogue/search_no_hits.html:23
 #: templates/catalogue/tagged_object_list.html:141
 msgid "Close"
 msgstr ""
@@ -161,7 +162,7 @@ msgstr ""
 #: templates/base.html:111 templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:33
-#: templates/catalogue/search_no_hits.html:24
+#: templates/catalogue/search_no_hits.html:25
 #: templates/catalogue/tagged_object_list.html:143
 msgid "Loading"
 msgstr ""
@@ -171,7 +172,7 @@ msgid "Site administration"
 msgstr ""
 
 #: templates/admin/base_site.html:8
-msgid "Tłumaczenia"
+msgid "Translations"
 msgstr ""
 
 #: templates/admin/catalogue/book/change_list.html:6
@@ -225,7 +226,7 @@ msgstr ""
 
 #: templates/catalogue/book_detail.html:24
 #: templates/catalogue/tagged_object_list.html:27
-msgid "Toggle description"
+msgid "Hide description"
 msgstr ""
 
 #: templates/catalogue/book_detail.html:27
@@ -484,10 +485,6 @@ msgid ""
 "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
 msgstr ""
 
-#: templates/catalogue/main_page.html:43
-msgid " See more"
-msgstr ""
-
 #: templates/catalogue/main_page.html:47
 msgid ""
 "are professional recordings of literary texts from our repository, available "
@@ -553,7 +550,7 @@ msgstr ""
 #: templates/catalogue/main_page.html:275
 msgid ""
 "\n"
-"\t\t\tInternet library with school readings „Wolne Lektury” (<a href="
+"\t\t\tInternet library with school readings “Wolne Lektury” (<a href="
 "\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by "
 "Modern Poland Foundation. It started in 2007 and shares school readings, "
 "which are recommended by Ministry of National Education and are in public "
@@ -565,15 +562,11 @@ msgstr ""
 msgid "Search in WolneLektury.pl"
 msgstr ""
 
-#: templates/catalogue/search_no_hits.html:14
-msgid "Search of "
+#: templates/catalogue/search_no_hits.html:15
+msgid "Sorry! Search cirteria did not match any resources."
 msgstr ""
 
-#: templates/catalogue/search_no_hits.html:14
-msgid "did not match any resources."
-msgstr ""
-
-#: templates/catalogue/search_no_hits.html:16
+#: templates/catalogue/search_no_hits.html:17
 msgid ""
 "Search engine supports following criteria: title, author, theme/topic, "
 "epoch, kind and genre.\n"

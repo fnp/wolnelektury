@@ -21,7 +21,7 @@
             <div id="description">
                 {{ book.description|safe }}
             </div>
-            <div id="toggle-description"><p>{% trans "Toggle description" %} ▲</p></div>
+            <div id="toggle-description"><p>{% trans "Hide description" %} ▲</p></div>
         {% endif %}
         <div id="formats">
             <p class="change-sets">{% trans "Put a book" %} <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">{% trans "on the shelf!" %}</a></span></p>

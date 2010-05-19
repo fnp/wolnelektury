@@ -40,7 +40,7 @@
             <div id="lessons">
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
                 <p>{% trans "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching." %}</p>
-                <p class="see-more"><a href="{% url lessons_document_list %}">{% trans " See more" %} ⇒</a></p>
+                <p class="see-more"><a href="{% url lessons_document_list %}">{% trans "See more" %} ⇒</a></p>
             </div>
             <div id="czytamysluchajac">
                 <a href="http://czytamysluchajac.pl/"><img src="{{ STATIC_URL }}img/czytamysluchajac-logo-small.png" alt="CzytamySluchajac - logo" /></a>
@@ -273,7 +273,7 @@
             <h2>{% trans "About us" %}</h2>
             <p>
            	{% blocktrans %}
-			Internet library with school readings „Wolne Lektury” (<a href="http://wolnelektury.pl">www.wolnelektury.pl</a>) is a project made by Modern Poland Foundation. It started in 2007 and shares school readings, which are recommended by Ministry of National Education and are in public domain.
+			Internet library with school readings “Wolne Lektury” (<a href="http://wolnelektury.pl">www.wolnelektury.pl</a>) is a project made by Modern Poland Foundation. It started in 2007 and shares school readings, which are recommended by Ministry of National Education and are in public domain.
 			{% endblocktrans %}
             </p>
             <p class="see-more"><a href="{% url about_us %}">{% trans "See more" %} ⇒</a></p>
