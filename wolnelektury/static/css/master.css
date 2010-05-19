@@ -459,6 +459,36 @@ div.shown-tags p, div.all-tags p {
     color: #900;    
 }
 
+#toggle-share-shelf {
+    display: block;
+    width: 100%;
+    height: 1.5em;
+    background-color: #EEE;
+    margin-top: 0.5em;
+    padding: 0.5em 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-align: center;   
+    outline: none; 
+}
+#toggle-share-shelf p {
+	margin:0;
+}
+
+#share-shelf {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 3px solid #EEE;
+    padding: 5px;
+    margin-top: -5px;
+}
+#share-shelf input {
+	width: 100%;
+}
+
+
 /* ============================ */
 /* = Books and fragments list = */
 /* ============================ */

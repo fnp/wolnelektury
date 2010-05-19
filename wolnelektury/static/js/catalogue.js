@@ -286,7 +286,18 @@ function serverTime() {
                 $('p', this).html(LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▼');
             }
         });
-    
+
+        $('#toggle-share-shelf').hover(
+            function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+            function() { $(this).css({background: '#EEE'}); }
+        ).click(function() {
+            if ($('#share-shelf').hasClass('hidden')) {
+                $('#share-shelf').slideDown('fast').removeClass('hidden');
+            } else {
+                $('#share-shelf').slideUp('fast').addClass('hidden');
+            }
+        });
+
         var target = $('#set-window div.target');
     
         $('#set-window').jqm({
@@ -318,6 +329,9 @@ function serverTime() {
             $('#description').hide().addClass('hidden');
             $('#toggle-description p').html(LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_SHELF']+' ▼');
         }
+		
+        $('#share-shelf').hide().addClass('hidden');
+		$('#share-shelf input').focus(function(){this.select();});
                 
         $('#user-info').show();
         changeBannerText();
