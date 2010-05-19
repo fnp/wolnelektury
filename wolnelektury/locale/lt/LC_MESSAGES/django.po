@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 13:12+0200\n"
+"POT-Creation-Date: 2010-05-19 13:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,17 +152,17 @@ msgstr ""
 #: templates/base.html:88 templates/base.html.py:109
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
-#: templates/catalogue/book_stub_detail.html:30
+#: templates/catalogue/book_stub_detail.html:31
 #: templates/catalogue/search_no_hits.html:22
-#: templates/catalogue/tagged_object_list.html:142
+#: templates/catalogue/tagged_object_list.html:141
 msgid "Close"
 msgstr ""
 
 #: templates/base.html:111 templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
-#: templates/catalogue/book_stub_detail.html:32
+#: templates/catalogue/book_stub_detail.html:33
 #: templates/catalogue/search_no_hits.html:24
-#: templates/catalogue/tagged_object_list.html:144
+#: templates/catalogue/tagged_object_list.html:143
 msgid "Loading"
 msgstr ""
 
@@ -368,22 +368,23 @@ msgid "Categories"
 msgstr ""
 
 #: templates/catalogue/book_stub_detail.html:17
-#: templates/catalogue/tagged_object_list.html:91
 msgid ""
-"This author's works are in public domain and will be published on Internet "
-"school library of Wolne Lektury soon."
+"This work is in public domain and will be published on Internet school "
+"library of Wolne Lektury soon."
 msgstr ""
 
 #: templates/catalogue/book_stub_detail.html:20
-#: templates/catalogue/tagged_object_list.html:95
 msgid ""
-"This author's works will become part of public domain and will be allowed to "
-"be published without restrictions in:"
+"This work will become part of public domain and will be allowed to be "
+"published without restrictions in"
 msgstr ""
 
-#: templates/catalogue/book_stub_detail.html:23
-#: templates/catalogue/tagged_object_list.html:88
-msgid "This author's works are copyrighted."
+#: templates/catalogue/book_stub_detail.html:22
+msgid "Find out why Internet libraries can't publish this work."
+msgstr ""
+
+#: templates/catalogue/book_stub_detail.html:24
+msgid "This work is copyrighted."
 msgstr ""
 
 #: templates/catalogue/book_text.html:17
@@ -391,7 +392,7 @@ msgid "Table of contents"
 msgstr ""
 
 #: templates/catalogue/book_text.html:18
-#: templates/catalogue/tagged_object_list.html:133
+#: templates/catalogue/tagged_object_list.html:132
 msgid "Themes"
 msgstr ""
 
@@ -494,22 +495,22 @@ msgid ""
 msgstr ""
 
 #: templates/catalogue/main_page.html:54
-#: templates/catalogue/tagged_object_list.html:115
+#: templates/catalogue/tagged_object_list.html:114
 msgid "Authors"
 msgstr ""
 
 #: templates/catalogue/main_page.html:58
-#: templates/catalogue/tagged_object_list.html:119
+#: templates/catalogue/tagged_object_list.html:118
 msgid "Kinds"
 msgstr ""
 
 #: templates/catalogue/main_page.html:62
-#: templates/catalogue/tagged_object_list.html:123
+#: templates/catalogue/tagged_object_list.html:122
 msgid "Genres"
 msgstr ""
 
 #: templates/catalogue/main_page.html:66
-#: templates/catalogue/tagged_object_list.html:127
+#: templates/catalogue/tagged_object_list.html:126
 msgid "Epochs"
 msgstr ""
 
@@ -687,7 +688,27 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:103
+#: templates/catalogue/tagged_object_list.html:88
+msgid "This author's works are copyrighted."
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:91
+msgid ""
+"This author's works are in public domain and will be published on Internet "
+"school library of Wolne Lektury soon."
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:95
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in"
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:97
+msgid "Find out why Internet libraries can't publish this author's works."
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:102
 msgid "No works of this author found."
 msgstr ""
 

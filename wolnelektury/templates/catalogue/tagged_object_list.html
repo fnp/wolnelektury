@@ -92,10 +92,9 @@
 	                {% else %}
 						{% comment %} Is dead, but not yet in public domain {% endcomment %}
     	                <div>
-        	                <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in:" %}</p>
+        	                <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>
 							{% include "catalogue/pd_counter.html" %}
-                            <p>Dowiedz się, dlaczego biblioteki internetowe
-                            nie mogą udostępniać dzieł tego autora.</p>
+                            <p>{% trans "Find out why Internet libraries can't publish this author's works." %}</p>
 						</div>
 	                {% endif %}
                 {% endif %}

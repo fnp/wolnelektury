@@ -14,13 +14,14 @@
     
     <div id="books-list">
     {% if book.in_pd %}
-		{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %} 
+		{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %} 
 	{% else %}
 	    {% if book.pd %}
-			{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in:" %}
+			{% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}
 		    {% include "catalogue/pd_counter.html" %}
+			{% trans "Find out why Internet libraries can't publish this work." %}
 		{% else %}
-		    {% trans "This author's works are copyrighted." %}
+		    {% trans "This work is copyrighted." %}
 		{% endif %}
 	{% endif %}
     {% include "info/join_us.html" %}
