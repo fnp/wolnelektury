@@ -5,6 +5,7 @@ PROJECT_DIR = path.abspath(path.dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+MAINTENANCE_MODE = False
 
 ADMINS = [
     # ('Your Name', 'your_email@domain.com'),
@@ -90,6 +91,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+
+    'maintenancemode.middleware.MaintenanceModeMiddleware',
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'
