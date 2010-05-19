@@ -86,6 +86,7 @@ def tagged_object_list(request, tags=''):
     model = models.Book
     shelf = [tag for tag in tags if tag.category == 'set']
     shelf_is_set = (len(tags) == 1 and tags[0].category == 'set')
+    my_shelf_is_set = shelf_is_set and tags[0].user == request.user
     theme_is_set = len([tag for tag in tags if tag.category == 'theme']) > 0
     if theme_is_set:
         model = models.Fragment
@@ -110,6 +111,7 @@ def tagged_object_list(request, tags=''):
         extra_context = {
             'categories': categories,
             'shelf_is_set': shelf_is_set,
+            'my_shelf_is_set': my_shelf_is_set,
             'only_author': only_author,
             'pd_counter': pd_counter,
             'user_is_owner': user_is_owner,

@@ -42,12 +42,14 @@
                     <div class="clearboth"></div>
                 </form>
             </div>
+            {% if my_shelf_is_set %}
             <div id="toggle-share-shelf"><p>{% trans "Share this shelf" %}</p></div>
             <div id="share-shelf">
                 <p>{% trans "Copy this link and share it with other people to let them see your shelf." %}
                 <input id="share-shelf-url" value='http://{{ request.META.HTTP_HOST }}{{ request.path }}' />
                 </p>
             </div>
+			{% endif %}
         {% endif %}
         {% if last_tag.gazeta_link %}
         <p><a href="{{ last_tag.gazeta_link }}">
