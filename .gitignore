@@ -1,6 +1,7 @@
 localsettings.py
 dev.sqlite
 dev.db
+*~
 
 # Python garbage
 *.pyc
