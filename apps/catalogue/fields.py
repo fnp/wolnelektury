@@ -14,6 +14,7 @@ from django.utils import simplejson as json
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+from south.modelsinspector import add_introspection_rules
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -68,6 +69,8 @@ class JSONField(models.TextField):
         def set_value(model_instance, json):
             return setattr(model_instance, self.attname, dumps(json))
         setattr(cls, 'set_%s_value' % self.name, set_value)
+
+add_introspection_rules([], ["^catalogue\.fields\.JSONField"])
 
 
 class JQueryAutoCompleteWidget(forms.TextInput):
