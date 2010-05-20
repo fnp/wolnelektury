@@ -1,9 +1,8 @@
---find-links=http://stigma.nowoczesnapolska.org.pl/pypi/
 --find-links=http://www.pythonware.com/products/pil/
 
 # django
 Django>=1.1.1,<1.2
-South>=0.4 # migrations for django
+South>=0.7 # migrations for django
 django-pagination>=1.0
 django-rosetta>=0.5.3
 django-maintenancemode>=0.9
@@ -17,7 +16,7 @@ mutagen>=1.17
 sorl-thumbnail>=3.2
 
 # home-brewed & dependencies
-librarian>=1.2.6
 lxml>=2.2.2
+git+git://github.com/fnp/librarian.git
 
 # MySQL-python>=1.2,<2.0
