@@ -8,6 +8,7 @@ from django.conf import settings
 from django.db import models
 from django import forms
 from django.utils import simplejson as json
+from south.modelsinspector import add_introspection_rules
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -62,3 +63,5 @@ class JSONField(models.TextField):
         def set_value(model_instance, json):
             return setattr(model_instance, self.attname, dumps(json))
         setattr(cls, 'set_%s_value' % self.name, set_value)
+
+add_introspection_rules([], [r"^sponsors\.fields\.JSONField"])
