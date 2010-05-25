@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 16:21+0200\n"
+"POT-Creation-Date: 2010-05-25 14:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: settings.py:37
-msgid "German"
+msgid "Polish"
 msgstr ""
 
 #: settings.py:38
-msgid "English"
+msgid "German"
 msgstr ""
 
 #: settings.py:39
-msgid "Polish"
+msgid "English"
 msgstr ""
 
 #: settings.py:40
@@ -42,6 +42,10 @@ msgstr ""
 
 #: settings.py:43
 msgid "Spanish"
+msgstr ""
+
+#: settings.py:44
+msgid "Ukrainian"
 msgstr ""
 
 #: templates/404.html:6 templates/404.html.py:15
@@ -146,7 +150,9 @@ msgstr ""
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:31
-#: templates/catalogue/search_no_hits.html:23
+#: templates/catalogue/search_multiple_hits.html:23
+#: templates/catalogue/search_no_hits.html:22
+#: templates/catalogue/search_too_short.html:19
 #: templates/catalogue/tagged_object_list.html:141
 msgid "Close"
 msgstr ""
@@ -154,7 +160,9 @@ msgstr ""
 #: templates/base.html:107 templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:33
-#: templates/catalogue/search_no_hits.html:25
+#: templates/catalogue/search_multiple_hits.html:25
+#: templates/catalogue/search_no_hits.html:24
+#: templates/catalogue/search_too_short.html:21
 #: templates/catalogue/tagged_object_list.html:143
 msgid "Loading"
 msgstr ""
@@ -180,7 +188,7 @@ msgstr ""
 #: templates/catalogue/book_list.html:12
 #: templates/catalogue/book_stub_detail.html:12
 #: templates/catalogue/breadcrumbs.html:9
-#: templates/catalogue/main_page.html:13
+#: templates/catalogue/main_page.html:13 templates/info/base.html:10
 #: templates/lessons/document_detail.html:9
 #: templates/lessons/document_list.html:51
 msgid "Search"
@@ -191,7 +199,7 @@ msgstr ""
 #: templates/catalogue/book_list.html:12
 #: templates/catalogue/book_stub_detail.html:12
 #: templates/catalogue/main_page.html:13
-#: templates/catalogue/tagged_object_list.html:41
+#: templates/catalogue/tagged_object_list.html:41 templates/info/base.html:10
 #: templates/lessons/document_detail.html:9
 #: templates/lessons/document_list.html:51
 msgid "or"
@@ -313,6 +321,10 @@ msgstr ""
 #: templates/catalogue/book_fragments.html:5
 #: templates/catalogue/book_fragments.html:10
 msgid "in work "
+msgstr ""
+
+#: templates/catalogue/book_fragments.html:5
+msgid "on"
 msgstr ""
 
 #: templates/catalogue/book_fragments.html:12
@@ -558,19 +570,33 @@ msgid ""
 "\t\t\t"
 msgstr ""
 
+#: templates/catalogue/search_multiple_hits.html:5
+#: templates/catalogue/search_too_short.html:5
+msgid "Searching in"
+msgstr ""
+
+#: templates/catalogue/search_multiple_hits.html:14
+msgid "More than one result matching the criteria found."
+msgstr ""
+
 #: templates/catalogue/search_no_hits.html:5
 msgid "Search in WolneLektury.pl"
 msgstr ""
 
-#: templates/catalogue/search_no_hits.html:15
+#: templates/catalogue/search_no_hits.html:14
+#: templates/catalogue/tagged_object_list.html:102
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr ""
 
-#: templates/catalogue/search_no_hits.html:17
+#: templates/catalogue/search_no_hits.html:16
 msgid ""
 "Search engine supports following criteria: title, author, theme/topic, "
 "epoch, kind and genre.\n"
 "\t\tAs for now we do not support full text search."
+msgstr ""
+
+#: templates/catalogue/search_too_short.html:14
+msgid "Sorry! Search query must have at least two characters."
 msgstr ""
 
 #: templates/catalogue/tag_list.html:4
@@ -701,16 +727,35 @@ msgstr ""
 msgid "Find out why Internet libraries can't publish this author's works."
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:102
-msgid "No works of this author found."
-msgstr ""
-
 #: templates/catalogue/user_shelves.html:6
 msgid "remove"
 msgstr ""
 
 #: templates/catalogue/user_shelves.html:10
 msgid "You do not own any shelves. You can create one below if you want to"
+msgstr ""
+
+#: templates/info/base.html:10
+msgid "return to the main page"
+msgstr ""
+
+#: templates/info/join_us.html:2
+#, python-format
+msgid ""
+"We have over 1000 works published in Wolne Lektury!\n"
+"Help us expand the library and set new readings free by\n"
+"making a donation or transferring 1%% of your income tax."
+msgstr ""
+
+#: templates/info/join_us.html:5 templates/info/join_us.html.py:10
+msgid "More..."
+msgstr ""
+
+#: templates/info/join_us.html:7
+msgid ""
+"Become an editor of Wolne Lektury! Find out if\n"
+"we're currently working on a reading you're looking for and prepare\n"
+"a publication by yourself by logging into the Editorial Platform."
 msgstr ""
 
 #: templates/lessons/ajax_document_detail.html:3

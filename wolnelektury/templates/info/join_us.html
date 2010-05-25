@@ -1,7 +1,10 @@
-<p>W serwisie Wolne Lektury już teraz opublikowanych jest ponad 1000 utworów!
-Pomóż w rozwijaniu biblioteki i uwalnianiu nowych lektur przekazując nam
-darowiznę lub 1% podatku. {% comment %}<a href='{}'>Więcej...</a>{% endcomment %}</p>
+{% load i18n %}
+<p>{% blocktrans %}We have over 1000 works published in Wolne Lektury!
+Help us expand the library and set new readings free by
+making a donation or transferring 1%% of your income tax.{% endblocktrans %}
+{% comment %}<a href='{}'>{% trans "More..." %}</a>{% endcomment %}</p>
 
-<p>Zostań redaktorem lub redaktorką Wolnych Lektur! Sprawdź, czy obecnie
-pracujemy nad publikacją wyszukiwanej przez ciebie lektury i samodzielnie
-przygotuj publikację logując się na Platformie Redakcyjnej. <a href='{% url help_us %}'>Więcej...</a></p>
+<p>{% blocktrans %}Become an editor of Wolne Lektury! Find out if
+we're currently working on a reading you're looking for and prepare
+a publication by yourself by logging into the Editorial Platform.{% endblocktrans %}
+<a href='{% url help_us %}'>{% trans "More..." %}</a></p>

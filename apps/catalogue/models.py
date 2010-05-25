@@ -160,7 +160,8 @@ class Book(models.Model):
     def save(self, force_insert=False, force_update=False, reset_short_html=True):
         if reset_short_html:
             # Reset _short_html during save
-            self._short_html = ''
+            for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
+                self.key = ''
         
         book = super(Book, self).save(force_insert, force_update)
         

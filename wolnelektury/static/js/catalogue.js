@@ -5,13 +5,13 @@ var LOCALE_TEXTS = {
 		"EXPAND_DESCRIPTION": "Rozwiń opis",
 		"LOADING": "Ładowanie",		
 	},
+    "de": {
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!",             
+    },
 	"fr": {
-		"DELETE_SHELF": "Translate me!",
-		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!",				
-	},
-	"ru": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
@@ -35,12 +35,18 @@ var LOCALE_TEXTS = {
 		"EXPAND_DESCRIPTION": "Translate me!",
 		"LOADING": "Translate me!",				
 	},
-	"lt":{
-		"DELETE_SHELF": "Translate me!",
-		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!",				
-	}
+    "lt":{
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!",             
+    },
+    "uk":{
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!",             
+    }
 }
 var BANNER_TEXTS = [
     'Przekaż 1% żeby ukryć ten baner.',

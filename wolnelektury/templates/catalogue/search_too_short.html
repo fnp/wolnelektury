@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}Wyszukiwanie w WolneLektury.pl{% endblock %}
+{% block title %}{% trans "Searching in" %} WolneLektury.pl{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
@@ -10,14 +11,14 @@
     {% breadcrumbs tags %}
     
     <div id="books-list">
-        <p>Przepraszamy! Wyszukiwana fraza musi mieć co najmniej dwa znaki.</p>
+        <p>{% trans "Sorry! Search query must have at least two characters." %}</p>
         {% include "info/join_us.html" %}
     </div>
 
     <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
         <div class="target">
-            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> Ładowanie</p>
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
         </div>
     </div>
 {% endblock %}

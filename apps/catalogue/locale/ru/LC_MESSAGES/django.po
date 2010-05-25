@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 10:57+0200\n"
+"POT-Creation-Date: 2010-05-25 11:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fields.py:45
+#: fields.py:47
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
 msgstr ""
@@ -201,38 +201,38 @@ msgstr ""
 msgid "book stubs"
 msgstr ""
 
-#: views.py:308
+#: views.py:339
 msgid "<p>To maintain your shelves you need to be logged in.</p>"
 msgstr ""
 
-#: views.py:326
+#: views.py:357
 msgid "<p>Shelves were sucessfully saved.</p>"
 msgstr ""
 
-#: views.py:350
+#: views.py:381
 msgid "Book was successfully removed from the shelf"
 msgstr ""
 
-#: views.py:352
+#: views.py:383
 msgid "This book is not on the shelf"
 msgstr ""
 
-#: views.py:448
+#: views.py:479
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
 msgstr ""
 
-#: views.py:463
+#: views.py:494
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 msgstr ""
 
-#: views.py:522
+#: views.py:553
 #, python-format
 msgid "Today is %(month)s, %(day)s."
 msgstr ""
 
-#: views.py:523
+#: views.py:554
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -240,11 +240,11 @@ msgid ""
 "%(tb)s"
 msgstr ""
 
-#: views.py:524
+#: views.py:555
 msgid "Book imported successfully"
 msgstr ""
 
-#: views.py:526
+#: views.py:557
 #, python-format
 msgid "Error importing file: %r"
 msgstr ""

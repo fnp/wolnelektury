@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-19 16:21+0200\n"
-"PO-Revision-Date: 2010-05-19 15:40\n"
+"POT-Creation-Date: 2010-05-25 14:29+0200\n"
+"PO-Revision-Date: 2010-05-25 14:27\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,16 +17,16 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
 #: settings.py:37
+msgid "Polish"
+msgstr "polski"
+
+#: settings.py:38
 msgid "German"
 msgstr "niemiecki"
 
-#: settings.py:38
+#: settings.py:39
 msgid "English"
 msgstr "angielski"
-
-#: settings.py:39
-msgid "Polish"
-msgstr "polski"
 
 #: settings.py:40
 msgid "Lithuanian"
@@ -43,6 +43,10 @@ msgstr "rosyjski"
 #: settings.py:43
 msgid "Spanish"
 msgstr "hiszpański"
+
+#: settings.py:44
+msgid "Ukrainian"
+msgstr "ukraiński"
 
 #: templates/404.html:6 templates/404.html.py:15
 msgid "Page does not exist"
@@ -166,7 +170,9 @@ msgstr ""
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:31
-#: templates/catalogue/search_no_hits.html:23
+#: templates/catalogue/search_multiple_hits.html:23
+#: templates/catalogue/search_no_hits.html:22
+#: templates/catalogue/search_too_short.html:19
 #: templates/catalogue/tagged_object_list.html:141
 msgid "Close"
 msgstr "Zamknij"
@@ -174,7 +180,9 @@ msgstr "Zamknij"
 #: templates/base.html:107 templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:33
-#: templates/catalogue/search_no_hits.html:25
+#: templates/catalogue/search_multiple_hits.html:25
+#: templates/catalogue/search_no_hits.html:24
+#: templates/catalogue/search_too_short.html:21
 #: templates/catalogue/tagged_object_list.html:143
 msgid "Loading"
 msgstr "Ładowanie"
@@ -200,7 +208,7 @@ msgstr "Zarejestruj się w"
 #: templates/catalogue/book_list.html:12
 #: templates/catalogue/book_stub_detail.html:12
 #: templates/catalogue/breadcrumbs.html:9
-#: templates/catalogue/main_page.html:13
+#: templates/catalogue/main_page.html:13 templates/info/base.html:10
 #: templates/lessons/document_detail.html:9
 #: templates/lessons/document_list.html:51
 msgid "Search"
@@ -211,7 +219,7 @@ msgstr "Szukaj"
 #: templates/catalogue/book_list.html:12
 #: templates/catalogue/book_stub_detail.html:12
 #: templates/catalogue/main_page.html:13
-#: templates/catalogue/tagged_object_list.html:41
+#: templates/catalogue/tagged_object_list.html:41 templates/info/base.html:10
 #: templates/lessons/document_detail.html:9
 #: templates/lessons/document_list.html:51
 msgid "or"
@@ -334,6 +342,10 @@ msgstr "Motyw"
 #: templates/catalogue/book_fragments.html:10
 msgid "in work "
 msgstr "w utworze"
+
+#: templates/catalogue/book_fragments.html:5
+msgid "on"
+msgstr "w"
 
 #: templates/catalogue/book_fragments.html:12
 msgid "return to book's page"
@@ -605,15 +617,25 @@ msgstr ""
 "zbiorach lektury szkolne, które są zalecane do użytku przez Ministerstwo "
 "Edukacji Narodowej i które trafiły już do domeny publicznej."
 
+#: templates/catalogue/search_multiple_hits.html:5
+#: templates/catalogue/search_too_short.html:5
+msgid "Searching in"
+msgstr "Wyszukiwanie w"
+
+#: templates/catalogue/search_multiple_hits.html:14
+msgid "More than one result matching the criteria found."
+msgstr "Znaleziono więcej niż jeden wynik wyszukiwania."
+
 #: templates/catalogue/search_no_hits.html:5
 msgid "Search in WolneLektury.pl"
 msgstr "Wyszukiwanie w WolneLektury.pl"
 
-#: templates/catalogue/search_no_hits.html:15
+#: templates/catalogue/search_no_hits.html:14
+#: templates/catalogue/tagged_object_list.html:102
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Przepraszamy! Brak wyników spełniających kryteria podane w zapytaniu."
 
-#: templates/catalogue/search_no_hits.html:17
+#: templates/catalogue/search_no_hits.html:16
 msgid ""
 "Search engine supports following criteria: title, author, theme/topic, "
 "epoch, kind and genre.\n"
@@ -622,6 +644,10 @@ msgstr ""
 "Wyszukiwarka obsługuje takie kryteria jak tytuł, autor, motyw/temat, epoka, "
 "rodzaj i gatunek utworu. Obecnie nie obsługujemy wyszukiwania fraz w "
 "tekstach utworów."
+
+#: templates/catalogue/search_too_short.html:14
+msgid "Sorry! Search query must have at least two characters."
+msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 
 #: templates/catalogue/tag_list.html:4
 msgid "See full category"
@@ -761,10 +787,6 @@ msgstr ""
 "Dowiedz się, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego "
 "autora."
 
-#: templates/catalogue/tagged_object_list.html:102
-msgid "No works of this author found."
-msgstr "Nie znaleziono żadnych utworów."
-
 #: templates/catalogue/user_shelves.html:6
 msgid "remove"
 msgstr "usuń"
@@ -773,6 +795,35 @@ msgstr "usuń"
 msgid "You do not own any shelves. You can create one below if you want to"
 msgstr ""
 "Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć półkę poniżej."
+
+#: templates/info/base.html:10
+msgid "return to the main page"
+msgstr "wróć do strony głównej"
+
+#: templates/info/join_us.html:2
+#, python-format
+msgid ""
+"We have over 1000 works published in Wolne Lektury!\n"
+"Help us expand the library and set new readings free by\n"
+"making a donation or transferring 1%% of your income tax."
+msgstr ""
+"W serwisie Wolne Lektury już teraz opublikowanych jest ponad 1000 utworów! "
+"Pomóż w rozwijaniu biblioteki i uwalnianiu nowych lektur przekazując nam "
+"darowiznę lub 1%% podatku."
+
+#: templates/info/join_us.html:5 templates/info/join_us.html.py:10
+msgid "More..."
+msgstr "Więcej..."
+
+#: templates/info/join_us.html:7
+msgid ""
+"Become an editor of Wolne Lektury! Find out if\n"
+"we're currently working on a reading you're looking for and prepare\n"
+"a publication by yourself by logging into the Editorial Platform."
+msgstr ""
+"Zostań redaktorem lub redaktorką Wolnych Lektur! Sprawdź, czy obecnie "
+"pracujemy nad publikacją wyszukiwanej przez ciebie lektury i samodzielnie "
+"przygotuj publikację logując się na Platformie Redakcyjnej."
 
 #: templates/lessons/ajax_document_detail.html:3
 #: templates/lessons/document_detail.html:13

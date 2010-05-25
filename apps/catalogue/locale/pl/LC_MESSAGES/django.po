@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 10:57+0200\n"
+"POT-Creation-Date: 2010-05-25 11:21+0200\n"
 "PO-Revision-Date: 2010-05-19 16:15\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: fields.py:45
+#: fields.py:47
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
 msgstr "Wprowadź prawidłową wartość JSON. Błąd: %s"
@@ -201,38 +201,38 @@ msgstr "zapowiedź książki"
 msgid "book stubs"
 msgstr "zapowiedzi książek"
 
-#: views.py:308
+#: views.py:339
 msgid "<p>To maintain your shelves you need to be logged in.</p>"
 msgstr "<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>"
 
-#: views.py:326
+#: views.py:357
 msgid "<p>Shelves were sucessfully saved.</p>"
 msgstr "<p>Półki zostały zapisane.</p>"
 
-#: views.py:350
+#: views.py:381
 msgid "Book was successfully removed from the shelf"
 msgstr "Usunięto"
 
-#: views.py:352
+#: views.py:383
 msgid "This book is not on the shelf"
 msgstr "Książki nie ma na półce"
 
-#: views.py:448
+#: views.py:479
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
 msgstr "<p>Półka <strong>%s</strong> została utworzona</p>"
 
-#: views.py:463
+#: views.py:494
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 msgstr "<p>Półka <strong>%s</strong> została usunięta</p>"
 
-#: views.py:522
+#: views.py:553
 #, python-format
 msgid "Today is %(month)s, %(day)s."
 msgstr ""
 
-#: views.py:523
+#: views.py:554
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -243,11 +243,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:524
+#: views.py:555
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:526
+#: views.py:557
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"

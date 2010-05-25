@@ -34,13 +34,14 @@ LANGUAGE_CODE = 'pl'
 gettext = lambda s: s
 
 LANGUAGES = (
+    ('pl', gettext('Polish')),
     ('de', gettext('German')),
     ('en', gettext('English')),
-    ('pl', gettext('Polish')),
     ('lt', gettext('Lithuanian')),
     ('fr', gettext('French')),
     ('ru', gettext('Russian')),
-    ('es', gettext('Spanish')),        
+    ('es', gettext('Spanish')),
+    ('uk', gettext('Ukrainian')),
 )
 
 
@@ -122,11 +123,13 @@ INSTALLED_APPS = [
     'pagination',
     'chunks',
     'compress',
+    'modeltranslation',
     'catalogue',
     'lessons',
     'piston',
     'api',
     'rosetta',
+    'infopages',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'
@@ -179,6 +182,8 @@ THUMBNAIL_PROCESSORS = (
     # Custom processors
     'sponsors.processors.add_padding',
 )
+
+TRANSLATION_REGISTRY = "wolnelektury.translation"
 
 # Load localsettings, if they exist
 try:

@@ -7,24 +7,28 @@ from django.contrib import admin
 
 from catalogue.forms import SearchForm
 
+from infopages.models import InfoPage
+
 
 admin.autodiscover()
 
+infopages = {
+    'queryset': InfoPage.objects.all(),
+    'template_name': 'info/base.html',
+}
 
 urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^materialy/', include('lessons.urls')),
     
     # Static pages
-    url(r'^wolontariat/$', 'django.views.generic.simple.direct_to_template', 
-        {'template': 'info/voluntary_services.html', 'extra_context': {'form': SearchForm()}},
-        name='voluntary_services'),
-    url(r'^mozesz-nam-pomoc/$', 'django.views.generic.simple.direct_to_template',
-        {'template': 'info/help_us.html', 'extra_context': {'form': SearchForm()}},
-        name='help_us'),
-    url(r'^o-projekcie/$', 'django.views.generic.simple.direct_to_template', 
-        {'template': 'info/about_us.html', 'extra_context': {'form': SearchForm()}},
-        name='about_us'),
+    url(r'^wolontariat/$', 'django.views.generic.list_detail.object_detail', 
+        dict(infopages, slug='voluntary_services'), name='voluntary_services'),
+    url(r'^mozesz-nam-pomoc/$', 'django.views.generic.list_detail.object_detail', 
+        dict(infopages, slug='help_us'), name='help_us'),
+    url(r'^o-projekcie/$', 'django.views.generic.list_detail.object_detail', 
+        dict(infopages, slug='about_us'), name='about_us'),
+        
     url(r'^1procent/$', 'django.views.generic.simple.direct_to_template', {
         'template': '1percent.html'
     }, name='1percent'),

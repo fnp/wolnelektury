@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}Wyszukiwanie w WolneLektury.pl{% endblock %}
+{% block title %}{% trans "Searching in" %} WolneLektury.pl{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
@@ -10,7 +11,7 @@
     {% breadcrumbs tags %}
     
     <div id="books-list">
-        <p>Znaleziono więcej niż jeden wynik odpowiadający kryteriom wyszukiwania.</p>
+        <p>{% trans "More than one result matching the criteria found." %}</p>
 		<ul class='matches'>
         {% for match, link, type in results %}
             <li><a href='{{ link }}'>{{ match.name }}</a> ({{ type }})</li>
@@ -19,9 +20,9 @@
     </div>
 
     <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">Zamknij</a></div>
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
         <div class="target">
-            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> Ładowanie</p>
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
         </div>
     </div>
 {% endblock %}
