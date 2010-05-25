@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.core.files import File
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
+from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
 from datetime import datetime
 
@@ -130,8 +131,11 @@ class Book(models.Model):
         return self.title
     
     def short_html(self):
-        if len(self._short_html):
-            return mark_safe(self._short_html)
+        key = '_short_html_%s' % get_language()
+        short_html = getattr(self, key)
+        
+        if len(short_html):
+            return mark_safe(short_html)
         else:
             tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
             tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
@@ -152,16 +156,16 @@ class Book(models.Model):
             
             formats = [mark_safe(format) for format in formats]
             
-            self._short_html = unicode(render_to_string('catalogue/book_short.html',
-                {'book': self, 'tags': tags, 'formats': formats}))
+            setattr(self, key, unicode(render_to_string('catalogue/book_short.html',
+                {'book': self, 'tags': tags, 'formats': formats})))
             self.save(reset_short_html=False)
-            return mark_safe(self._short_html)
+            return mark_safe(getattr(self, key))
     
     def save(self, force_insert=False, force_update=False, reset_short_html=True):
         if reset_short_html:
             # Reset _short_html during save
             for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
-                self.key = ''
+                self.__setattr__(key, '')
         
         book = super(Book, self).save(force_insert, force_update)
         
@@ -339,16 +343,18 @@ class Fragment(models.Model):
     tags = managers.TagDescriptor(Tag)
     
     def short_html(self):
-        if len(self._short_html):
-            return mark_safe(self._short_html)
+        key = '_short_html_%s' % get_language()
+        short_html = getattr(self, key)         
+        if len(short_html):
+            return mark_safe(short_html)
         else:
             book_authors = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) 
                 for tag in self.book.tags if tag.category == 'author']
             
-            self._short_html = unicode(render_to_string('catalogue/fragment_short.html',
-                {'fragment': self, 'book': self.book, 'book_authors': book_authors}))
+            setattr(self, key, unicode(render_to_string('catalogue/fragment_short.html',
+                {'fragment': self, 'book': self.book, 'book_authors': book_authors})))
             self.save()
-            return mark_safe(self._short_html)
+            return mark_safe(getattr(self, key))
     
     def get_absolute_url(self):
         return '%s#m%s' % (reverse('book_text', kwargs={'slug': self.book.slug}), self.anchor)

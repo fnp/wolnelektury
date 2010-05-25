@@ -5,7 +5,7 @@
 
 from modeltranslation.translator import translator, TranslationOptions
 from infopages.models import InfoPage
-from catalogue.models import Book
+from catalogue.models import Book, Fragment
 
 class InfoPageTranslationOptions(TranslationOptions):
     fields = ('page_title', 'title', 'left_column', 'right_column')
@@ -16,4 +16,9 @@ class BookTranslationOptions(TranslationOptions):
     fields = ('_short_html', )
 
 translator.register(Book, BookTranslationOptions)
+
+class FragmentTranslationOptions(TranslationOptions):
+    fields = ('_short_html', )
+
+translator.register(Fragment, FragmentTranslationOptions)
 
