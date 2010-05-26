@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'Sponsor'
-        db.mock_model('sponsors_sponsor', (
+        db.create_table('sponsors_sponsor', (
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
             ('logo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
             ('_description', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
@@ -19,7 +19,7 @@ class Migration(SchemaMigration):
         db.send_create_signal('sponsors', ['Sponsor'])
 
         # Adding model 'SponsorPage'
-        db.mock_model('sponsors_sponsorpage', (
+        db.create_table('sponsors_sponsorpage', (
             ('_html', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('sponsors', self.gf('sponsors.fields.JSONField')(default={})),

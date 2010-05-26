@@ -10,8 +10,12 @@ from os import path
 
 
 def move_sponsors_media(orm, old, new):
-    move(path.join(settings.MEDIA_ROOT, old), 
-        path.join(settings.MEDIA_ROOT, new))
+    try:
+        move(path.join(settings.MEDIA_ROOT, old), 
+             path.join(settings.MEDIA_ROOT, new))
+    except IOError:
+        # there could be no sponsors directory yet
+        pass
     for sponsor in orm.Sponsor.objects.all():
         base, rest = sponsor.logo.name.split('/', 1)
         sponsor.logo.name = '/'.join((new, rest))
