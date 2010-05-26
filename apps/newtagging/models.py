@@ -84,7 +84,7 @@ class TagManager(models.Manager):
         return self.filter(items__content_type__pk=ctype.pk,
                            items__object_id=obj.pk)
     
-    def _get_usage(self, model, counts=False, min_count=None, extra_joins=None, extra_criteria=None, params=None, extra=None):
+    def _get_usage(self, model, counts=False, min_count=None, extra_joins=None, extra_criteria=None, params=None, extra=None, extra_tables=None):
         """
         Perform the custom SQL query for ``usage_for_model`` and
         ``usage_for_queryset``.
@@ -104,15 +104,15 @@ class TagManager(models.Manager):
         SELECT DISTINCT %(tag_columns)s%(count_sql)s
         FROM
             %(tag)s
-            INNER JOIN %(tagged_item)s
-                ON %(tag)s.id = %(tagged_item)s.tag_id
+            INNER JOIN %(tagged_item)s AS %(tagged_item_alias)s
+                ON %(tag)s.id = %(tagged_item_alias)s.tag_id
             INNER JOIN %(model)s
-                ON %(tagged_item)s.object_id = %(model_pk)s
+                ON %(tagged_item_alias)s.object_id = %(model_pk)s
             %%s
-        WHERE %(tagged_item)s.content_type_id = %(content_type_id)s
+        WHERE %(tagged_item_alias)s.content_type_id = %(content_type_id)s
             %%s
             %(extra_where)s
-        GROUP BY %(tag_columns)s, %(tag)s.id, %(tag)s.name
+        GROUP BY %(tag_columns)s, %(tag)s.id, %(tag)s.name%(extra_tables)s
         %%s
         ORDER BY %(tag)s.%(ordering)s ASC""" % {
             'tag': qn(self.model._meta.db_table),
@@ -120,9 +120,11 @@ class TagManager(models.Manager):
             'tag_columns': tag_columns,
             'count_sql': counts and (', COUNT(%s)' % model_pk) or '',
             'tagged_item': qn(self.intermediary_table_model._meta.db_table),
+            'tagged_item_alias': qn('_newtagging_' + self.intermediary_table_model._meta.db_table),
             'model': model_table,
             'model_pk': model_pk,
             'extra_where': extra_where,
+            'extra_tables': ''.join((', %s.id' % qn(table)) for table in extra_tables),
             'content_type_id': ContentType.objects.get_for_model(model).pk,
         }
 
@@ -200,11 +202,12 @@ class TagManager(models.Manager):
 
         extra_joins = ' '.join(queryset.query.get_from_clause()[0][1:])
         where, params = queryset.query.where.as_sql()
+        extra_tables = queryset.query.extra_tables
         if where:
             extra_criteria = 'AND %s' % where
         else:
             extra_criteria = ''
-        return self._get_usage(queryset.model, counts, min_count, extra_joins, extra_criteria, params, extra)
+        return self._get_usage(queryset.model, counts, min_count, extra_joins, extra_criteria, params, extra, extra_tables=extra_tables)
 
     def related_for_model(self, tags, model, counts=False, min_count=None, extra=None):
         """

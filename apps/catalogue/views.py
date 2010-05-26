@@ -26,6 +26,7 @@ from django.utils.encoding import force_unicode
 from django.utils.http import urlquote_plus
 from django.views.decorators import cache
 from django.utils.translation import ugettext as _
+from django.views.generic.list_detail import object_list
 
 from catalogue import models
 from catalogue import forms
@@ -85,7 +86,7 @@ def tagged_object_list(request, tags=''):
     
     theme_is_set = [tag for tag in tags if tag.category == 'theme']
     shelf_is_set = len(tags) == 1 and tags[0].category == 'set'
-    my_shelf_is_set = shelf_is_set and request.user.is_authenticated() and request.user == shelf[0].user
+    my_shelf_is_set = shelf_is_set and request.user.is_authenticated() and request.user == tags[0].user
     
     objects = only_author = pd_counter = categories = None
     
@@ -95,48 +96,40 @@ def tagged_object_list(request, tags=''):
         fragments = models.Fragment.tagged.with_all(fragment_tags)
         
         if shelf_tags:
-            books = models.Book.tagged.with_all(shelf_tags)
+            books = models.Book.tagged.with_all(shelf_tags).order_by()
             l_tags = [models.Tag.objects.get(slug = 'l-' + book.slug) for book in books]
-            fragments = (fragment for fragment in models.Fragment.tagged.with_any(l_tags) if fragment in fragments)
+            fragments = models.Fragment.tagged.with_any(l_tags, fragments)
         
-        fragment_keys = (fragment.pk for fragment in fragments)
-        if fragment_keys:
-            related_tags = models.Fragment.tags.usage(counts=True,
-                                filters={'pk__in': fragment_keys}, 
-                                extra={'where': ["catalogue_tag.category != 'book'"]})
-            related_tags = (tag for tag in related_tags if tag not in fragment_tags)
-            categories = split_tags(related_tags)
-            
-            objects = fragments
+        related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True, 
+                            extra={'where': ["catalogue_tag.category != 'book'"]})
+        related_tags = (tag for tag in related_tags if tag not in fragment_tags)
+        categories = split_tags(related_tags)
+        
+        objects = fragments
     else:
-        books = models.Book.tagged.with_all(tags)
+        books = models.Book.tagged.with_all(tags).order_by()
         l_tags = [models.Tag.objects.get(slug = 'l-' + book.slug) for book in books]
         book_keys = [book.pk for book in books]
-        if book_keys:
-            related_tags = models.Book.tags.usage(counts=True,
-                                filters={'pk__in': book_keys}, 
-                                extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
-            categories = split_tags(related_tags)
-    
-            fragment_keys = [fragment.pk for fragment in models.Fragment.tagged.with_any(l_tags)]
-            if fragment_keys:
-                categories['theme'] = models.Fragment.tags.usage(counts=True,
-                                    filters={'pk__in': fragment_keys}, 
-                                    extra={'where': ["catalogue_tag.category = 'theme'"]})
-                
-            books = books.exclude(parent__in = book_keys)
-            objects = books
+        related_tags = models.Tag.objects.usage_for_queryset(books, counts=True, 
+                            extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
+        related_tags = (tag for tag in related_tags if tag not in tags)
+        categories = split_tags(related_tags)
+
+        fragments = models.Fragment.tagged.with_any(l_tags)
+        categories['theme'] = models.Tag.objects.usage_for_queryset(fragments, counts=True,  
+                            extra={'where': ["catalogue_tag.category = 'theme'"]})
+            
+        books = books.exclude(parent__in = book_keys)
+        objects = books
         
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
         pd_counter = only_author and tags[0].goes_to_pd()
         objects = models.Book.objects.none()
     
-    return newtagging_views.tagged_object_list(
+    return object_list(
         request,
-        tag_model=models.Tag,
-        queryset_or_model=objects,
-        tags=tags,
+        objects,
         template_name='catalogue/tagged_object_list.html',
         extra_context = {
             'categories': categories,
@@ -145,7 +138,9 @@ def tagged_object_list(request, tags=''):
             'pd_counter': pd_counter,
             'user_is_owner': my_shelf_is_set,
             'formats_form': forms.DownloadFormatsForm(),
-        },
+
+            'tags': tags,
+        }
     )
 
 
