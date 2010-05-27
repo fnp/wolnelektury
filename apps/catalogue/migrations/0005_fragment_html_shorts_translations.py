@@ -9,28 +9,28 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding field 'Fragment._short_html_de'
-        db.add_column('catalogue_fragment', '_short_html_de', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_de', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_pl'
-        db.add_column('catalogue_fragment', '_short_html_pl', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_pl', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_lt'
-        db.add_column('catalogue_fragment', '_short_html_lt', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_lt', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_en'
-        db.add_column('catalogue_fragment', '_short_html_en', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_en', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_fr'
-        db.add_column('catalogue_fragment', '_short_html_fr', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_fr', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_ru'
-        db.add_column('catalogue_fragment', '_short_html_ru', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_ru', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_es'
-        db.add_column('catalogue_fragment', '_short_html_es', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_es', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Fragment._short_html_uk'
-        db.add_column('catalogue_fragment', '_short_html_uk', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_uk', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
     
     
     def backwards(self, orm):
@@ -93,14 +93,14 @@ class Migration(SchemaMigration):
         'catalogue.book': {
             'Meta': {'object_name': 'Book'},
             '_short_html': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_de': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_en': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_es': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_fr': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_lt': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_pl': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_ru': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_uk': ('django.db.models.fields.TextField', [], {}),
+            '_short_html_de': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_en': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_es': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_fr': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_lt': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_pl': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_ru': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_uk': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'extra_info': ('catalogue.fields.JSONField', [], {}),
@@ -132,14 +132,14 @@ class Migration(SchemaMigration):
         'catalogue.fragment': {
             'Meta': {'object_name': 'Fragment'},
             '_short_html': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_de': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_en': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_es': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_fr': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_lt': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_pl': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_ru': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_uk': ('django.db.models.fields.TextField', [], {}),
+            '_short_html_de': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_en': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_es': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_fr': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_lt': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_pl': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_ru': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_uk': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             'anchor': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
             'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'fragments'", 'to': "orm['catalogue.Book']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
