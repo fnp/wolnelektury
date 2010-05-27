@@ -38,7 +38,7 @@ def loads(str):
 
 class JSONFormField(forms.CharField):
     widget = forms.Textarea
-    
+
     def clean(self, value):
         try:
             loads(value)
@@ -61,7 +61,7 @@ class JSONField(models.TextField):
 
     def contribute_to_class(self, cls, name):
         super(JSONField, self).contribute_to_class(cls, name)
-        
+
         def get_value(model_instance):
             return loads(getattr(model_instance, self.attname, None))
         setattr(cls, 'get_%s_value' % self.name, get_value)
@@ -80,23 +80,23 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         if options:
             self.options = dumps(options)
         super(JQueryAutoCompleteWidget, self).__init__(*args, **kwargs)
-    
+
     def render_js(self, field_id):
         source = "'%s'" % escape(self.source)
         options = ''
         if self.options:
             options += ', %s' % self.options
-        
+
         return u'$(\'#%s\').autocomplete(%s%s).result(autocomplete_result_handler);' % (field_id, source, options)
-    
+
     def render(self, name, value=None, attrs=None):
         final_attrs = self.build_attrs(attrs, name=name)
         if value:
             final_attrs['value'] = smart_unicode(value)
-        
+
         if not self.attrs.has_key('id'):
             final_attrs['id'] = 'id_%s' % name
-        
+
         html = u'''<input type="text" %(attrs)s/>
             <script type="text/javascript">//<!--
             %(js)s//--></script>
@@ -104,7 +104,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
                 'attrs' : flatatt(final_attrs),
                 'js' : self.render_js(final_attrs['id']),
             }
-        
+
         return mark_safe(html)
 
 
@@ -112,6 +112,18 @@ class JQueryAutoCompleteField(forms.CharField):
     def __init__(self, source, options=None, *args, **kwargs):
         if 'widget' not in kwargs:
             kwargs['widget'] = JQueryAutoCompleteWidget(source, options)
-        
+
         super(JQueryAutoCompleteField, self).__init__(*args, **kwargs)
 
+try:
+    # check for south
+    from south.modelsinspector import add_introspection_rules
+
+    add_introspection_rules([
+    (
+        [JSONField], # Class(es) these apply to
+        [], # Positional arguments (not used)
+        {}, # Keyword argument           
+    ), ], ["^catalogue\.fields\.JSONField"])
+except ImportError:
+    pass
