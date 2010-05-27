@@ -204,43 +204,56 @@ def _no_diacritics_regexp(query):
     """ returns a regexp for searching for a query without diacritics
     
     should be locale-aware """
-    names = {'a':u'ą', 'c':u'ć', 'e':u'ę', 'l': u'ł', 'n':u'ń', 'o':u'ó', 's':u'ś', 'z':u'ź|ż'}
+    names = {
+        u'a':u'aąĄ', u'c':u'cćĆ', u'e':u'eęĘ', u'l': u'lłŁ', u'n':u'nńŃ', u'o':u'oóÓ', u's':u'sśŚ', u'z':u'zźżŹŻ',
+        u'ą':u'ąĄ', u'ć':u'ćĆ', u'ę':u'ęĘ', u'ł': u'łŁ', u'ń':u'ńŃ', u'ó':u'óÓ', u'ś':u'śŚ', u'ź':u'źŹ', u'ż':u'żŻ'
+        }
     def repl(m):
         l = m.group()
-        return "(%s|%s)" % (l, names[l])
-    return re.sub('[%s]'%(''.join(names.keys())), repl, query)
+        return u"(%s)" % '|'.join(names[l])
+    return re.sub(u'[%s]'%(u''.join(names.keys())), repl, query)
+
+def unicode_re_escape(query):
+    """ Unicode-friendly version of re.escape """
+    return re.sub('(?u)(\W)', r'\\\1', query)
 
 def _word_starts_with(name, prefix):
     """returns a Q object getting models having `name` contain a word
     starting with `prefix`
+    
+    We define word characters as alphanumeric and underscore, like in JS.
+    
+    Works for MySQL, PostgreSQL, Oracle.
+    For SQLite, _sqlite* version is substituted for this.
     """
     kwargs = {}
-    if settings.DATABASE_ENGINE in ('mysql', 'postgresql_psycopg2', 'postgresql'):
-        prefix = _no_diacritics_regexp(re.escape(prefix))
-        # we could use a [[:<:]] (word start), 
-        # but we want both `xy` and `(xy` to catch `(xyz)`
-        kwargs['%s__iregex' % name] = u"(^|[^[:alpha:]])%s" % prefix
-    else:
-        # don't know how to do a generic regex
-        # checking for simple icontain instead
-        kwargs['%s__icontains' % name] = prefix
+
+    prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
+    # can't use [[:<:]] (word start), 
+    # but we want both `xy` and `(xy` to catch `(xyz)`
+    kwargs['%s__iregex' % name] = u"(^|[^[:alnum:]_])%s" % prefix
+    print kwargs['%s__iregex' % name]
+
+    return Q(**kwargs)
+
+    
+def _sqlite_word_starts_with(name, prefix):
+    """ version of _word_starts_with for SQLite 
+    
+    SQLite in Django uses Python re module
+    """
+    kwargs = {}
+    prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
+    kwargs['%s__iregex' % name] = ur"(^|(?<=[^\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ]))%s" % prefix
     return Q(**kwargs)
 
 
-def _tags_exact_matches(prefix, user):
-    book_stubs = models.BookStub.objects.filter(title__iexact = prefix)
-    books = models.Book.objects.filter(title__iexact = prefix)
-    book_stubs = filter(lambda x: x not in books, book_stubs)
-    tags = models.Tag.objects.filter(name__iexact = prefix)
-    if user.is_authenticated():
-        tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
-    else:
-        tags = tags.filter(~Q(category='book') & ~Q(category='set'))
-
-    return list(books) + list(tags) + list(book_stubs)
+if settings.DATABASE_ENGINE == 'sqlite3':
+    _word_starts_with = _sqlite_word_starts_with
 
 
 def _tags_starting_with(prefix, user):
+    prefix = prefix.lower()
     book_stubs = models.BookStub.objects.filter(_word_starts_with('title', prefix))
     books = models.Book.objects.filter(_word_starts_with('title', prefix))
     book_stubs = filter(lambda x: x not in books, book_stubs)
@@ -271,6 +284,29 @@ def _get_result_type(match):
     
 
 
+def find_best_matches(query, user):
+    """ Finds a Book, Tag or Bookstub best matching a query.
+    
+    Returns a with:
+      - zero elements when nothing is found,
+      - one element when a best result is found,
+      - more then one element on multiple exact matches
+    
+    Raises a ValueError on too short a query.
+    """
+    
+    query = query.lower()
+    if len(query) < 2:
+        raise ValueError("query must have at least two characters")
+    
+    result = tuple(_tags_starting_with(query, user))
+    exact_matches = tuple(res for res in result if res.name.lower() == query)
+    if exact_matches:
+        return exact_matches
+    else:
+        return result[:1]    
+
+
 def search(request):
     tags = request.GET.get('tags', '')
     prefix = request.GET.get('q', '')
@@ -279,26 +315,19 @@ def search(request):
         tag_list = models.Tag.get_tag_list(tags)
     except:
         tag_list = []
-
-    # Prefix must have at least 2 characters
-    if len(prefix) < 2:
+    
+    try:
+        result = find_best_matches(prefix, request.user)
+    except ValueError:
         return render_to_response('catalogue/search_too_short.html', {'tags':tag_list, 'prefix':prefix},
             context_instance=RequestContext(request))
-    
-    result = _tags_exact_matches(prefix, request.user)
-    
-    if len(result) > 1:
-        # multiple exact matches
+
+    if len(result) == 1:
+        return HttpResponseRedirect(_get_result_link(result[0], tag_list))
+    elif len(result) > 1:
         return render_to_response('catalogue/search_multiple_hits.html', 
             {'tags':tag_list, 'prefix':prefix, 'results':((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)},
             context_instance=RequestContext(request))
-    
-    if not result:
-        # no exact matches
-        result = _tags_starting_with(prefix, request.user)
-    
-    if result:
-        return HttpResponseRedirect(_get_result_link(result[0], tag_list))
     else:
         return render_to_response('catalogue/search_no_hits.html', {'tags':tag_list, 'prefix':prefix},
             context_instance=RequestContext(request))
