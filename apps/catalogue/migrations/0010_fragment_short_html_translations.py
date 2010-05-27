@@ -9,28 +9,28 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding field 'Fragment._short_html_de'
-        db.add_column('catalogue_fragment', '_short_html_de', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_de', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_pl'
-        db.add_column('catalogue_fragment', '_short_html_pl', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_pl', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_lt'
-        db.add_column('catalogue_fragment', '_short_html_lt', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_lt', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_en'
-        db.add_column('catalogue_fragment', '_short_html_en', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_en', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_fr'
-        db.add_column('catalogue_fragment', '_short_html_fr', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_fr', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_ru'
-        db.add_column('catalogue_fragment', '_short_html_ru', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_ru', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_es'
-        db.add_column('catalogue_fragment', '_short_html_es', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_es', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
 
         # Adding field 'Fragment._short_html_uk'
-        db.add_column('catalogue_fragment', '_short_html_uk', self.gf('django.db.models.fields.TextField')(), keep_default=False)
+        db.add_column('catalogue_fragment', '_short_html_uk', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
     
     
     def backwards(self, orm):
