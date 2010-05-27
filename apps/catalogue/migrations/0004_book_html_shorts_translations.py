@@ -8,56 +8,56 @@ class Migration(SchemaMigration):
     
     def forwards(self, orm):
         
-        # Adding field 'Book._short_html_pl'
-        db.add_column('catalogue_book', '_short_html_pl', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
-
-        # Adding field 'Book._short_html_de'
-        db.add_column('catalogue_book', '_short_html_de', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
-
         # Adding field 'Book._short_html_en'
-        db.add_column('catalogue_book', '_short_html_en', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
-
-        # Adding field 'Book._short_html_lt'
-        db.add_column('catalogue_book', '_short_html_lt', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
-
-        # Adding field 'Book._short_html_fr'
-        db.add_column('catalogue_book', '_short_html_fr', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
-
-        # Adding field 'Book._short_html_ru'
-        db.add_column('catalogue_book', '_short_html_ru', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_book', '_short_html_en', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Book._short_html_es'
-        db.add_column('catalogue_book', '_short_html_es', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_book', '_short_html_es', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
+
+        # Adding field 'Book._short_html_de'
+        db.add_column('catalogue_book', '_short_html_de', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
+
+        # Adding field 'Book._short_html_fr'
+        db.add_column('catalogue_book', '_short_html_fr', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
         # Adding field 'Book._short_html_uk'
-        db.add_column('catalogue_book', '_short_html_uk', self.gf('django.db.models.fields.TextField')(default=''), keep_default=False)
+        db.add_column('catalogue_book', '_short_html_uk', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
+        # Adding field 'Book._short_html_pl'
+        db.add_column('catalogue_book', '_short_html_pl', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
+
+        # Adding field 'Book._short_html_ru'
+        db.add_column('catalogue_book', '_short_html_ru', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
+
+        # Adding field 'Book._short_html_lt'
+        db.add_column('catalogue_book', '_short_html_lt', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
+    
     
     def backwards(self, orm):
         
-        # Deleting field 'Book._short_html_pl'
-        db.delete_column('catalogue_book', '_short_html_pl')
-
-        # Deleting field 'Book._short_html_de'
-        db.delete_column('catalogue_book', '_short_html_de')
-
         # Deleting field 'Book._short_html_en'
         db.delete_column('catalogue_book', '_short_html_en')
-
-        # Deleting field 'Book._short_html_lt'
-        db.delete_column('catalogue_book', '_short_html_lt')
-
-        # Deleting field 'Book._short_html_fr'
-        db.delete_column('catalogue_book', '_short_html_fr')
-
-        # Deleting field 'Book._short_html_ru'
-        db.delete_column('catalogue_book', '_short_html_ru')
 
         # Deleting field 'Book._short_html_es'
         db.delete_column('catalogue_book', '_short_html_es')
 
+        # Deleting field 'Book._short_html_de'
+        db.delete_column('catalogue_book', '_short_html_de')
+
+        # Deleting field 'Book._short_html_fr'
+        db.delete_column('catalogue_book', '_short_html_fr')
+
         # Deleting field 'Book._short_html_uk'
         db.delete_column('catalogue_book', '_short_html_uk')
+
+        # Deleting field 'Book._short_html_pl'
+        db.delete_column('catalogue_book', '_short_html_pl')
+
+        # Deleting field 'Book._short_html_ru'
+        db.delete_column('catalogue_book', '_short_html_ru')
+
+        # Deleting field 'Book._short_html_lt'
+        db.delete_column('catalogue_book', '_short_html_lt')
     
     
     models = {
@@ -93,14 +93,14 @@ class Migration(SchemaMigration):
         'catalogue.book': {
             'Meta': {'object_name': 'Book'},
             '_short_html': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_de': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_en': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_es': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_fr': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_lt': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_pl': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_ru': ('django.db.models.fields.TextField', [], {}),
-            '_short_html_uk': ('django.db.models.fields.TextField', [], {}),
+            '_short_html_de': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_en': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_es': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_fr': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_lt': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_pl': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_ru': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
+            '_short_html_uk': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'extra_info': ('catalogue.fields.JSONField', [], {}),

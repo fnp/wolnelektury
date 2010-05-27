@@ -74,6 +74,10 @@ class TranslationField(Field):
         field_class = '%s.%s' % (self.translated_field.__class__.__module__,
                                  self.translated_field.__class__.__name__)
         args, kwargs = introspector(self.translated_field)
+
+        # This is patched in init and so should be here! -- lqc
+        kwargs['blank'], kwargs['null'] = True, True
+
         # That's our definition!
         return (field_class, args, kwargs)
 
