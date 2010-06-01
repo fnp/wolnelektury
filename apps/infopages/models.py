@@ -10,9 +10,9 @@ class InfoPage(models.Model):
     An InfoPage is used to display a two-column flatpage
     """
     
-    page_title = models.CharField(_('page title'), max_length=120)
+    page_title = models.CharField(_('page title'), max_length=120, blank=True)
     slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
-    title = models.CharField(_('title'), max_length=120)
+    title = models.CharField(_('title'), max_length=120, blank=True)
     left_column = models.TextField(_('left column'), blank=True)
     right_column = models.TextField(_('right column'), blank=True)
 
