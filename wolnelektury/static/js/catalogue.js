@@ -3,49 +3,49 @@ var LOCALE_TEXTS = {
 		"DELETE_SHELF": "Czy na pewno usunąć półkę",
 		"HIDE_DESCRIPTION": "Zwiń opis",
 		"EXPAND_DESCRIPTION": "Rozwiń opis",
-		"LOADING": "Ładowanie",		
+		"LOADING": "Ładowanie"		
 	},
     "de": {
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!",             
+        "LOADING": "Translate me!"             
     },
 	"fr": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!",				
+		"LOADING": "Translate me!"				
 	},
 	"en": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!",		
+		"LOADING": "Translate me!"		
 	}, 
 	"ru": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!",		
+		"LOADING": "Translate me!"		
 	},
 	"es": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!",				
+		"LOADING": "Translate me!"				
 	},
     "lt":{
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!",             
+        "LOADING": "Translate me!"             
     },
     "uk":{
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!",             
+        "LOADING": "Translate me!"             
     }
 }
 var BANNER_TEXTS = [
