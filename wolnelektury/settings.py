@@ -130,6 +130,7 @@ INSTALLED_APPS = [
     'api',
     'rosetta',
     'infopages',
+    'suggest',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'

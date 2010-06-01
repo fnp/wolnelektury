@@ -270,6 +270,39 @@ function serverTime() {
                 });
             }
         });
+
+        $('#suggest-window').jqm({
+            ajax: '@href',
+            target: $('#suggest-window div.target')[0],
+            overlay: 60,
+            trigger: '#suggest-link',
+            onShow: function(hash) {
+                var offset = $(hash.t).offset();
+                hash.w.css({position: 'absolute', left: offset.left - hash.w.width() + $(hash.t).width(), top: offset.top});
+                $('div.header', hash.w).css({width: $(hash.t).width()});
+                hash.w.show();
+            },
+            onLoad: function(hash) { 
+                $('form', hash.w).ajaxForm({
+					dataType: 'json',
+                    target: $('#suggest-window div.target'),
+                    success: function(response) {
+						if (response.success) {
+							$('#suggest-window div.target').text(response.message);
+                            setTimeout(function() { $('#suggest-window').jqmHide() }, 1000)
+						}
+						else {
+							$('#suggest-form .error').remove();
+	                        $.each(response.errors, function(id, errors) {
+	                            $('#suggest-form #id_' + id).before('<span class="error">' + errors[0] + '</span>');
+	                        });
+	                        $('#suggest-form input[type=submit]').removeAttr('disabled');
+							return false;
+						}
+		            }
+                });
+            }
+        });
     
         $('#books-list .book').hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },

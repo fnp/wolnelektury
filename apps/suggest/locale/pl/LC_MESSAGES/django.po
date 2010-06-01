@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-01 11:35+0200\n"
+"PO-Revision-Date: 2010-06-01 11:37\n"
+"Last-Translator: <radek.czajka@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.5.3\n"
+
+#: forms.py:9
+msgid "Author"
+msgstr "Autor"
+
+#: forms.py:10
+msgid "E-mail"
+msgstr "E-mail"
+
+#: forms.py:11
+msgid "Title"
+msgstr "Tytuł"
+
+#: forms.py:12
+msgid "Description"
+msgstr "Opis"
+
+#: models.py:10
+msgid "author"
+msgstr "autor"
+
+#: models.py:11
+msgid "e-mail"
+msgstr "e-mail"
+
+#: models.py:12
+msgid "title"
+msgstr "tytuł"
+
+#: models.py:13
+msgid "description"
+msgstr "opis"
+
+#: models.py:14
+msgid "creation date"
+msgstr "data utworzenia"
+
+#: models.py:15
+msgid "IP address"
+msgstr "adres IP"
+
+#: models.py:20
+msgid "suggestion"
+msgstr "sugestia"
+
+#: models.py:21
+msgid "suggestions"
+msgstr "sugestie"
+
+#: views.py:33
+msgid "Report was sent successfully."
+msgstr "Zgłoszenie zostało wysłane."
+
+#: templates/suggest.html:2
+msgid "Report a bug or suggestion"
+msgstr "Zgłoś błąd lub sugestię"
+
+#: templates/suggest.html:9
+msgid "Send report"
+msgstr "Wyślij zgłoszenie"

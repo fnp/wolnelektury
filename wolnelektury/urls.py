@@ -20,6 +20,7 @@ infopages = {
 urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^materialy/', include('lessons.urls')),
+    url(r'^sugestia/', include('suggest.urls')),
     
     # Static pages
     url(r'^wolontariat/$', 'django.views.generic.list_detail.object_detail', 

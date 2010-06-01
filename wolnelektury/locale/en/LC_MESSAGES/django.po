@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 14:29+0200\n"
+"POT-Creation-Date: 2010-06-01 10:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,32 +100,36 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: templates/base.html:38
+#: templates/base.html:38 templates/base.html.py:42
+msgid "Report a bug"
+msgstr ""
+
+#: templates/base.html:39
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:41 templates/base.html.py:87 templates/base.html:91
-#: templates/base.html.py:95 templates/auth/login.html:4
+#: templates/base.html:43 templates/base.html.py:89 templates/base.html:93
+#: templates/base.html.py:97 templates/auth/login.html:4
 #: templates/auth/login.html.py:7 templates/auth/login.html:12
 #: templates/auth/login.html.py:15
 msgid "Sign in"
 msgstr ""
 
-#: templates/base.html:41 templates/base.html.py:87 templates/base.html:95
-#: templates/base.html.py:99 templates/auth/login.html:7
+#: templates/base.html:43 templates/base.html.py:89 templates/base.html:97
+#: templates/base.html.py:101 templates/auth/login.html:7
 #: templates/auth/login.html.py:21 templates/auth/login.html:23
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:51
+#: templates/base.html:53
 msgid "Choose your interface language: "
 msgstr ""
 
-#: templates/base.html:56
+#: templates/base.html:58
 msgid "Choose language"
 msgstr ""
 
-#: templates/base.html:68
+#: templates/base.html:70
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
@@ -136,7 +140,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/base.html:75
+#: templates/base.html:77
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
@@ -146,7 +150,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/base.html:84 templates/base.html.py:105
+#: templates/base.html:86 templates/base.html.py:107 templates/base.html:113
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:31
@@ -157,7 +161,8 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: templates/base.html:107 templates/catalogue/book_detail.html:131
+#: templates/base.html:109 templates/base.html.py:115
+#: templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:33
 #: templates/catalogue/search_multiple_hits.html:25

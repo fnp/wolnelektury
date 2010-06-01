@@ -580,6 +580,7 @@ div.shown-tags p, div.all-tags p {
 
 .cuteform .error {
     color: #BF3024;
+	display: block;
 }
 
 /* ================ */
@@ -687,6 +688,37 @@ div.shown-tags p, div.all-tags p {
     color: #FFF;
     background-color: #900;
     text-decoration: none;
+}
+
+#suggest-window {
+    position: absolute;
+    display: none;
+    width: 35em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+#suggest-window div.header {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    width: 4em;
+    right: 0;
+    left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    float: right;
+    text-align: center;
+}
+
+#suggest-window div.target {
+    clear: both;
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
+#suggest-form textarea {
+	width: 30em;
 }
 
 /* ======================== */

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 14:29+0200\n"
+"POT-Creation-Date: 2010-06-01 10:53+0200\n"
 "PO-Revision-Date: 2010-05-25 14:27\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,32 +110,36 @@ msgstr "Twoje półki"
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/base.html:38
+#: templates/base.html:38 templates/base.html.py:42
+msgid "Report a bug"
+msgstr ""
+
+#: templates/base.html:39
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base.html:41 templates/base.html.py:87 templates/base.html:91
-#: templates/base.html.py:95 templates/auth/login.html:4
+#: templates/base.html:43 templates/base.html.py:89 templates/base.html:93
+#: templates/base.html.py:97 templates/auth/login.html:4
 #: templates/auth/login.html.py:7 templates/auth/login.html:12
 #: templates/auth/login.html.py:15
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: templates/base.html:41 templates/base.html.py:87 templates/base.html:95
-#: templates/base.html.py:99 templates/auth/login.html:7
+#: templates/base.html:43 templates/base.html.py:89 templates/base.html:97
+#: templates/base.html.py:101 templates/auth/login.html:7
 #: templates/auth/login.html.py:21 templates/auth/login.html:23
 msgid "Register"
 msgstr "Załóż konto"
 
-#: templates/base.html:51
+#: templates/base.html:53
 msgid "Choose your interface language: "
 msgstr "Wybierz język interfejsu:"
 
-#: templates/base.html:56
+#: templates/base.html:58
 msgid "Choose language"
 msgstr "Wybierz język"
 
-#: templates/base.html:68
+#: templates/base.html:70
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
@@ -152,7 +156,7 @@ msgstr ""
 "\">Bibliotekę Narodową</a> z egzemplarzy pochodzących ze zbiorów BN.\n"
 "Hosting <a href=\"http://eo.pl/\">EO Networks</a>. "
 
-#: templates/base.html:75
+#: templates/base.html:77
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
@@ -166,7 +170,7 @@ msgstr ""
 "125, tel/fax: (22) 621-30-17, e-mail: <a href=\"mailto:"
 "fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>"
 
-#: templates/base.html:84 templates/base.html.py:105
+#: templates/base.html:86 templates/base.html.py:107 templates/base.html:113
 #: templates/catalogue/book_detail.html:129
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/book_stub_detail.html:31
@@ -177,7 +181,8 @@ msgstr ""
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/base.html:107 templates/catalogue/book_detail.html:131
+#: templates/base.html:109 templates/base.html.py:115
+#: templates/catalogue/book_detail.html:131
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/book_stub_detail.html:33
 #: templates/catalogue/search_multiple_hits.html:25
