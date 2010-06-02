@@ -134,7 +134,7 @@ class Book(models.Model):
         key = '_short_html_%s' % get_language()
         short_html = getattr(self, key)
         
-        if len(short_html):
+        if short_html and len(short_html):
             return mark_safe(short_html)
         else:
             tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
@@ -345,7 +345,7 @@ class Fragment(models.Model):
     def short_html(self):
         key = '_short_html_%s' % get_language()
         short_html = getattr(self, key)         
-        if len(short_html):
+        if short_html and len(short_html):
             return mark_safe(short_html)
         else:
             book_authors = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) 

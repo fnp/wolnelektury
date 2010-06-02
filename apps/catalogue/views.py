@@ -100,27 +100,39 @@ def tagged_object_list(request, tags=''):
             l_tags = [models.Tag.objects.get(slug = 'l-' + book.slug) for book in books]
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
         
-        related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True, 
-                            extra={'where': ["catalogue_tag.category != 'book'"]})
-        related_tags = (tag for tag in related_tags if tag not in fragment_tags)
-        categories = split_tags(related_tags)
+        # newtagging goes crazy if we just try:
+        #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True, 
+        #                    extra={'where': ["catalogue_tag.category != 'book'"]})
+        fragment_keys = [fragment.pk for fragment in fragments]
+        if fragment_keys:
+            related_tags = models.Fragment.tags.usage(counts = True,
+                                filters = {'pk__in': fragment_keys}, 
+                                extra={'where': ["catalogue_tag.category != 'book'"]})
+            related_tags = (tag for tag in related_tags if tag not in fragment_tags)
+            categories = split_tags(related_tags)
         
-        objects = fragments
+            objects = fragments
     else:
         books = models.Book.tagged.with_all(tags).order_by()
         l_tags = [models.Tag.objects.get(slug = 'l-' + book.slug) for book in books]
         book_keys = [book.pk for book in books]
-        related_tags = models.Tag.objects.usage_for_queryset(books, counts=True, 
-                            extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
-        related_tags = (tag for tag in related_tags if tag not in tags)
-        categories = split_tags(related_tags)
-
-        fragments = models.Fragment.tagged.with_any(l_tags)
-        categories['theme'] = models.Tag.objects.usage_for_queryset(fragments, counts=True,  
-                            extra={'where': ["catalogue_tag.category = 'theme'"]})
-            
-        books = books.exclude(parent__in = book_keys)
-        objects = books
+        # newtagging goes crazy if we just try:
+        #related_tags = models.Tag.objects.usage_for_queryset(books, counts=True, 
+        #                    extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
+        if book_keys:
+            related_tags = models.Book.tags.usage(counts=True,
+                                filters={'pk__in': book_keys}, 
+                                extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
+            categories = split_tags(related_tags)
+    
+            fragment_keys = [fragment.pk for fragment in models.Fragment.tagged.with_any(l_tags)]
+            if fragment_keys:
+                categories['theme'] = models.Fragment.tags.usage(counts=True,
+                                    filters={'pk__in': fragment_keys}, 
+                                    extra={'where': ["catalogue_tag.category = 'theme'"]})
+                
+            books = books.exclude(parent__in = book_keys)
+            objects = books        
         
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
