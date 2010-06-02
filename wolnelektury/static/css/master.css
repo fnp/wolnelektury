@@ -875,3 +875,6 @@ div.shown-tags p, div.all-tags p {
     color: #FFF;
     text-decoration: none;
 }
+#createNewShelf {
+display: none;
+}

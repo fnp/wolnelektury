@@ -107,6 +107,7 @@ function serverTime() {
 
 (function($) {
     $(function() {
+	
         $('form input').labelify({labelledClass: 'blur'});
         
         target = $('#login-register-window div.target');
@@ -347,9 +348,18 @@ function serverTime() {
                 target.html('<p><img src="/static/img/indicator.gif" />'+LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+'</p>');
                 hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
             onLoad: function(hash) { 
+		try {
+			$('#createShelfTrigger').click(function(){
+				$('#createNewShelf').show();
+			});
+		} catch (e){}
+
                 $('form', hash.w).ajaxForm({
                     target: target,
-                    success: function() { setTimeout(function() { $('#set-window').jqmHide() }, 1000) }
+                    success: function() { 
+			setTimeout(function() { 
+					$('#set-window').jqmHide();
+			           }, 1000)}
                 });
             }
         });
