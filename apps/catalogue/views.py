@@ -351,7 +351,6 @@ def tags_starting_with(request):
 
     return HttpResponse('\n'.join(tag.name for tag in _tags_starting_with(prefix, request.user)))
 
-
 # ====================
 # = Shelf management =
 # ====================
