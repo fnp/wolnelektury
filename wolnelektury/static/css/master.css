@@ -352,6 +352,7 @@ div.shown-tags p, div.all-tags p {
 #description {
     margin-top: 0.5em;
     text-align: justify;
+    overflow: hidden;
 }
 
 #description .meta {

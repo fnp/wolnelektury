@@ -43,7 +43,7 @@ class TagSubcategoryManager(models.Manager):
 
 class Tag(TagBase):
     name = models.CharField(_('name'), max_length=50, db_index=True)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False,
         db_index=True, choices=TAG_CATEGORIES)
@@ -55,11 +55,22 @@ class Tag(TagBase):
     death = models.IntegerField(_(u'year of death'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
+    
+    categories_rev = {
+        'autor': 'author',
+        'epoka': 'epoch',
+        'rodzaj': 'kind',
+        'gatunek': 'genre',
+        'motyw': 'theme',
+        'polka': 'set',
+    }
+    categories_dict = dict((item[::-1] for item in categories_rev.iteritems()))
 
     class Meta:
         ordering = ('sort_key',)
         verbose_name = _('tag')
         verbose_name_plural = _('tags')
+        unique_together = (("slug", "category"),)
 
     def __unicode__(self):
         return self.name
@@ -69,7 +80,7 @@ class Tag(TagBase):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.tagged_object_list', [self.slug])
+        return ('catalogue.views.tagged_object_list', [self.url_chunk])
 
     def has_description(self):
         return len(self.description) > 0
@@ -90,10 +101,40 @@ class Tag(TagBase):
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):
-            tag_slugs = tags.split('/')
-            return [Tag.objects.get(slug=slug) for slug in tag_slugs]
+            real_tags = []
+            ambiguous_slugs = []
+            category = None
+            tags_splitted = tags.split('/')
+            for index, name in enumerate(tags_splitted):
+                if name in Tag.categories_rev:
+                    category = Tag.categories_rev[name]
+                else:
+                    if category:
+                        real_tags.append(Tag.objects.get(slug=name, category=category))
+                        category = None
+                    else:
+                        try:
+                            real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
+                        except Tag.MultipleObjectsReturned, e:
+                            ambiguous_slugs.append(name)
+                            
+            if category:
+                # something strange left off
+                raise Tag.DoesNotExist()
+            if ambiguous_slugs:
+                # some tags should be qualified
+                e = Tag.MultipleObjectsReturned()
+                e.tags = real_tags
+                e.ambiguous_slugs = ambiguous_slugs
+                raise e
+            else:
+                return real_tags
         else:
             return TagBase.get_tag_list(tags)
+    
+    @property
+    def url_chunk(self):
+        return '/'.join((Tag.categories_dict[self.category], self.slug))
 
 
 # TODO: why is this hard-coded ? 
@@ -119,6 +160,7 @@ class Book(models.Model):
     xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
     html_file = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
     pdf_file = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
+    epub_file = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)
     odt_file = models.FileField(_('ODT file'), upload_to=book_upload_path('odt'), blank=True)
     txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
     mp3_file = models.FileField(_('MP3 file'), upload_to=book_upload_path('mp3'), blank=True)
@@ -129,6 +171,9 @@ class Book(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
+    
+    _tag_counter = JSONField(null=True, editable=False)
+    _theme_counter = JSONField(null=True, editable=False)
 
     class AlreadyExists(Exception):
         pass
@@ -141,7 +186,7 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False, reset_short_html=True):
+    def save(self, force_insert=False, force_update=False, reset_short_html=True, refresh_mp3=True):
         if reset_short_html:
             # Reset _short_html during save
             for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
@@ -149,7 +194,7 @@ class Book(models.Model):
 
         book = super(Book, self).save(force_insert, force_update)
 
-        if self.mp3_file:
+        if refresh_mp3 and self.mp3_file:
             print self.mp3_file, self.mp3_file.path
             extra_info = self.get_extra_info_value()
             extra_info.update(self.get_mp3_info())
@@ -165,6 +210,15 @@ class Book(models.Model):
     @property
     def name(self):
         return self.title
+    
+    def book_tag(self):
+        slug = ('l-' + self.slug)[:120]
+        book_tag, created = Tag.objects.get_or_create(slug=slug, category='book')
+        if created:
+            book_tag.name = self.title[:50]
+            book_tag.sort_key = slug
+            book_tag.save()
+        return book_tag
 
     def short_html(self):
         key = '_short_html_%s' % get_language()
@@ -181,6 +235,8 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', kwargs={'slug': self.slug}), _('Read online')))
             if self.pdf_file:
                 formats.append(u'<a href="%s">PDF</a>' % self.pdf_file.url)
+            if self.epub_file:
+                formats.append(u'<a href="%s">EPUB</a>' % self.epub_file.url)
             if self.odt_file:
                 formats.append(u'<a href="%s">ODT</a>' % self.odt_file.url)
             if self.txt_file:
@@ -214,6 +270,11 @@ class Book(models.Model):
         return bool(self.pdf_file)
     has_pdf_file.short_description = 'PDF'
     has_pdf_file.boolean = True
+
+    def has_epub_file(self):
+        return bool(self.epub_file)
+    has_epub_file.short_description = 'EPUB'
+    has_epub_file.boolean = True
 
     def has_odt_file(self):
         return bool(self.odt_file)
@@ -268,23 +329,16 @@ class Book(models.Model):
             if category == 'author':
                 tag_sort_key = tag_name.last_name
                 tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
-            tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name))
+            tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
             if created:
                 tag.name = tag_name
                 tag.sort_key = slughifi(tag_sort_key)
-                tag.category = category
                 tag.save()
             book_tags.append(tag)
 
-        book_tag, created = Tag.objects.get_or_create(slug=('l-' + book.slug)[:120])
-        if created:
-            book_tag.name = book.title[:50]
-            book_tag.sort_key = ('l-' + book.slug)[:120]
-            book_tag.category = 'book'
-            book_tag.save()
-        book_tags.append(book_tag)
-
         book.tags = book_tags
+
+        book_tag = book.book_tag()
 
         if hasattr(book_info, 'parts'):
             for n, part_url in enumerate(book_info.parts):
@@ -300,6 +354,8 @@ class Book(models.Model):
         book_descendants = list(book.children.all())
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)
+            child_book.tags = list(child_book.tags) + [book_tag]
+            child_book.save()
             for fragment in child_book.fragments.all():
                 fragment.tags = set(list(fragment.tags) + [book_tag])
             book_descendants += list(child_book.children.all())
@@ -328,11 +384,10 @@ class Book(models.Model):
                     continue
                 themes = []
                 for theme_name in theme_names:
-                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name))
+                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
                     if created:
                         tag.name = theme_name
                         tag.sort_key = slughifi(theme_name)
-                        tag.category = 'theme'
                         tag.save()
                     themes.append(tag)
                 new_fragment.save()
@@ -344,6 +399,40 @@ class Book(models.Model):
 
         book.save()
         return book
+    
+    
+    def refresh_tag_counter(self):
+        tags = {}
+        for child in self.children.all().order_by():
+            for tag_pk, value in child.tag_counter.iteritems():
+                tags[tag_pk] = tags.get(tag_pk, 0) + value
+        for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
+            tags[tag.pk] = 1
+        self.set__tag_counter_value(tags)
+        self.save(reset_short_html=False, refresh_mp3=False)
+        return tags
+    
+    @property
+    def tag_counter(self):
+        if self._tag_counter is None:
+            return self.refresh_tag_counter()
+        return dict((int(k), v) for k, v in self.get__tag_counter_value().iteritems())
+
+    def refresh_theme_counter(self):
+        tags = {}
+        for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
+            for tag in fragment.tags.filter(category='theme').order_by():
+                tags[tag.pk] = tags.get(tag.pk, 0) + 1
+        self.set__theme_counter_value(tags)
+        self.save(reset_short_html=False, refresh_mp3=False)
+        return tags
+    
+    @property
+    def theme_counter(self):
+        if self._theme_counter is None:
+            return self.refresh_theme_counter()
+        return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
+    
 
 
 class Fragment(models.Model):

@@ -8,6 +8,8 @@ import sys
 import pprint
 import traceback
 import re
+import itertools
+from operator import itemgetter 
 
 from django.conf import settings
 from django.template import RequestContext
@@ -71,15 +73,33 @@ def book_list(request):
         context_instance=RequestContext(request))
 
 
-def tagged_object_list(request, tags=''):
-    # Prevent DoS attacks on our database
-    if len(tags.split('/')) > 6:
-        raise Http404
+def differentiate_tags(request, tags, ambiguous_slugs):
+    beginning = '/'.join(tag.url_chunk for tag in tags)
+    unparsed = '/'.join(ambiguous_slugs[1:])
+    options = []
+    for tag in models.Tag.objects.exclude(category='book').filter(slug=ambiguous_slugs[0]):
+        options.append({
+            'url_args': '/'.join((beginning, tag.url_chunk, unparsed)).strip('/'),
+            'tags': [tag]
+        })
+    return render_to_response('catalogue/differentiate_tags.html',
+                {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]}, 
+                context_instance=RequestContext(request))
 
+
+def tagged_object_list(request, tags=''):
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
         raise Http404
+    except models.Tag.MultipleObjectsReturned, e:
+        return differentiate_tags(request, e.tags, e.ambiguous_slugs)
+
+    try:
+        if len(tags) > settings.MAX_TAG_LIST:
+            raise Http404
+    except AttributeError:
+        pass
 
     if len([tag for tag in tags if tag.category == 'book']):
         raise Http404
@@ -88,7 +108,8 @@ def tagged_object_list(request, tags=''):
     shelf_is_set = len(tags) == 1 and tags[0].category == 'set'
     my_shelf_is_set = shelf_is_set and request.user.is_authenticated() and request.user == tags[0].user
 
-    objects = only_author = pd_counter = categories = None
+    objects = only_author = pd_counter = None
+    categories = {}
 
     if theme_is_set:
         shelf_tags = [tag for tag in tags if tag.category == 'set']
@@ -97,7 +118,7 @@ def tagged_object_list(request, tags=''):
 
         if shelf_tags:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
-            l_tags = [models.Tag.objects.get(slug='l-' + book.slug) for book in books]
+            l_tags = [book.book_tag() for book in books]
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
 
         # newtagging goes crazy if we just try:
@@ -113,26 +134,29 @@ def tagged_object_list(request, tags=''):
 
             objects = fragments
     else:
-        books = models.Book.tagged.with_all(tags).order_by()
-        l_tags = [models.Tag.objects.get(slug='l-' + book.slug) for book in books]
-        book_keys = [book.pk for book in books]
-        # newtagging goes crazy if we just try:
-        #related_tags = models.Tag.objects.usage_for_queryset(books, counts=True, 
-        #                    extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
-        if book_keys:
-            related_tags = models.Book.tags.usage(counts=True,
-                                filters={'pk__in': book_keys},
-                                extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
-            categories = split_tags(related_tags)
-
-            fragment_keys = [fragment.pk for fragment in models.Fragment.tagged.with_any(l_tags)]
-            if fragment_keys:
-                categories['theme'] = models.Fragment.tags.usage(counts=True,
-                                    filters={'pk__in': fragment_keys},
-                                    extra={'where': ["catalogue_tag.category = 'theme'"]})
-
-            books = books.exclude(parent__in=book_keys)
-            objects = books
+        # get relevant books and their tags
+        objects = models.Book.tagged.with_all(tags).order_by()
+        l_tags = [book.book_tag() for book in objects]
+        # eliminate descendants
+        descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
+        if descendants_keys:
+            objects = objects.exclude(pk__in=descendants_keys)
+        
+        # get related tags from `tag_counter` and `theme_counter`
+        related_counts = {}
+        tags_pks = [tag.pk for tag in tags]
+        for book in objects:
+            for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
+                if tag_pk in tags_pks:
+                    continue
+                related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
+        related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
+        related_tags = [tag for tag in related_tags if tag not in tags]
+        for tag in related_tags:
+            tag.count = related_counts[tag.pk]
+        
+        categories = split_tags(related_tags)
+        del related_tags
 
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
@@ -158,8 +182,8 @@ def tagged_object_list(request, tags=''):
 
 def book_fragments(request, book_slug, theme_slug):
     book = get_object_or_404(models.Book, slug=book_slug)
-    book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug)
-    theme = get_object_or_404(models.Tag, slug=theme_slug)
+    book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug, category='book')
+    theme = get_object_or_404(models.Tag, slug=theme_slug, category='theme')
     fragments = models.Fragment.tagged.with_all([book_tag, theme])
 
     form = forms.SearchForm()
@@ -173,7 +197,7 @@ def book_detail(request, slug):
     except models.Book.DoesNotExist:
         return book_stub_detail(request, slug)
 
-    book_tag = get_object_or_404(models.Tag, slug='l-' + slug)
+    book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
@@ -282,7 +306,7 @@ def _get_result_link(match, tag_list):
         return match.get_absolute_url()
     else:
         return reverse('catalogue.views.tagged_object_list',
-            kwargs={'tags': '/'.join(tag.slug for tag in tag_list + [match])}
+            kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])}
         )
 
 def _get_result_type(match):
@@ -443,7 +467,7 @@ def download_shelf(request, slug):
     if form.is_valid():
         formats = form.cleaned_data['formats']
     if len(formats) == 0:
-        formats = ['pdf', 'odt', 'txt', 'mp3', 'ogg']
+        formats = ['pdf', 'epub', 'odt', 'txt', 'mp3', 'ogg']
 
     # Create a ZIP archive
     temp = tempfile.TemporaryFile()
@@ -453,6 +477,9 @@ def download_shelf(request, slug):
         if 'pdf' in formats and book.pdf_file:
             filename = book.pdf_file.path
             archive.write(filename, str('%s.pdf' % book.slug))
+        if 'epub' in formats and book.epub_file:
+            filename = book.epub_file.path
+            archive.write(filename, str('%s.epub' % book.slug))
         if 'odt' in formats and book.odt_file:
             filename = book.odt_file.path
             archive.write(filename, str('%s.odt' % book.slug))
@@ -483,11 +510,13 @@ def shelf_book_formats(request, shelf):
     """
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set')
 
-    formats = {'pdf': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False}
+    formats = {'pdf': False, 'epub': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False}
 
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if book.pdf_file:
             formats['pdf'] = True
+        if book.epub_file:
+            formats['epub'] = True
         if book.odt_file:
             formats['odt'] = True
         if book.txt_file:

@@ -159,7 +159,7 @@ COMPRESS_JS = {
             'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
             'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
             'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
-            'js/jquery.cookie.js',),
+            ),
         'output_filename': 'js/all?.min.js',
     },
     'book': {
@@ -185,6 +185,9 @@ THUMBNAIL_PROCESSORS = (
 )
 
 TRANSLATION_REGISTRY = "wolnelektury.translation"
+
+# limit number of filtering tags
+MAX_TAG_LIST = 6
 
 # Load localsettings, if they exist
 try:

@@ -33,6 +33,9 @@
             {% if book.pdf_file %}
                 <a href="{{ book.pdf_file.url }}">{% trans "Download PDF" %}</a>
             {% endif %}
+            {% if book.epub_file %}
+                <a href="{{ book.epub_file.url }}">{% trans "Download EPUB" %}</a>
+            {% endif %}
             {% if book.odt_file %}
                 <a href="{{ book.odt_file.url }}">{% trans "Download ODT" %}</a>
             {% endif %}

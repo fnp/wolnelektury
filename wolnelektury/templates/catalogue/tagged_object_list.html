@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags pagination_tags %}
+{% load catalogue_tags pagination_tags switch_tag %}
 
 {% block title %}{% title_from_tags tags %} w WolneLektury.pl{% endblock %}
 
@@ -34,6 +34,7 @@
                 <form action="{% url download_shelf last_tag.slug %}" method="get" accept-charset="utf-8" id="download-formats-form" data-formats-feed="{% url shelf_book_formats last_tag.slug %}">
                     <p>{% trans "Choose books' formats which you want to download:" %}</p>
                     <li data-format="pdf"><label for="id_formats_2"><input type="checkbox" name="formats" value="pdf" id="id_formats_2" /> PDF</label> <em><strong>{% trans "for reading" %}</strong> {% trans "and printing using" %} <a href="http://get.adobe.com/reader/">Adobe Reader</a></em></li>
+                    <li data-format="epub"><label for="id_formats_5"><input type="checkbox" name="formats" value="epub" id="id_formats_5" /> EPUB</label> </li>
                     <li data-format="odt"><label for="id_formats_3"><input type="checkbox" name="formats" value="odt" id="id_formats_3" /> ODT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "and editing using" %} <a href="http://pl.openoffice.org/">OpenOffice.org</a></em></li>
                     <li data-format="txt"><label for="id_formats_4"><input type="checkbox" name="formats" value="txt" id="id_formats_4" /> TXT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "on small displays, for example mobile phones" %}</em></li>
                     <li data-format="mp3"><label for="id_formats_0"><input type="checkbox" name="formats" value="mp3" id="id_formats_0" /> MP3</label> <em><strong>{% trans "for listening" %}</strong> {% trans "on favourite MP3 player" %}</em></li>
@@ -53,22 +54,34 @@
         {% endif %}
         {% if last_tag.gazeta_link %}
         <p><a href="{{ last_tag.gazeta_link }}">
-            {% ifequal last_tag.category "author" %}
-				{% trans "Read work's study of this author on Lektury.Gazeta.pl" %}
-			{% endifequal %}
-            {% ifequal last_tag.category "epoch" %}
-				{% trans "Read study of epoch" %} {{ last_tag }} {% trans "on Lektury.Gazeta.pl" %}
-			{% endifequal %}
+            {% switch last_tag.category %}
+                {% case "author" %}
+                    {% trans "Read work's study of this author on Lektury.Gazeta.pl" %}
+                {% case "epoch" %}
+                    {% blocktrans %}Read study of epoch {{ last_tag }} on Lektury.Gazeta.pl{% endblocktrans %}
+                {% case "kind" %}
+                    {% blocktrans %}Read study of kind {{ last_tag }} on Lektury.Gazeta.pl{% endblocktrans %}
+                {% case "genre" %}
+                    {% blocktrans %}Read study of genre {{ last_tag }} on Lektury.Gazeta.pl{% endblocktrans %}
+                {% else %}
+                    {% trans "Read related study on Lektury.Gazeta.pl" %}
+            {% endswitch %}
         </a></p>
         {% endif %}
         {% if last_tag.wiki_link %}
         <p><a href="{{ last_tag.wiki_link }}">
-            {% ifequal last_tag.category "author" %}
-				{% trans "Read article about this author on Wikipedia" %}
-			{% endifequal %}
-            {% ifequal last_tag.category "epoch"  %}
-				{% trans "Read article about epoch" %} {{ last_tag }} {% trans "on Wikipedia" %}
-			{% endifequal %}
+        	{% switch last_tag.category %}
+			    {% case "author" %}
+				    {% trans "Read article about this author on Wikipedia" %}
+				{% case "epoch" %}
+                    {% blocktrans %}Read article about epoch {{ last_tag }} on Wikipedia{% endblocktrans %}
+				{% case "kind" %}
+                    {% blocktrans %}Read article about kind {{ last_tag }} on Wikipedia{% endblocktrans %}
+				{% case "genre" %}
+                    {% blocktrans %}Read article about genre {{ last_tag }} on Wikipedia{% endblocktrans %}
+				{% else %}
+				    {% trans "Read related article on Wikipedia" %}
+			{% endswitch %}
         </a></p>
         {% endif %}
 

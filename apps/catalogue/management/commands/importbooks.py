@@ -67,6 +67,10 @@ class Command(BaseCommand):
                             book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
                             if verbose:
                                 print "Importing %s.pdf" % file_base 
+                        if os.path.isfile(file_base + '.epub'):
+                            book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
+                            if verbose:
+                                print "Importing %s.epub" % file_base 
                         if os.path.isfile(file_base + '.odt'):
                             book.odt_file.save('%s.odt' % book.slug, File(file(file_base + '.odt')))
                             if verbose:
