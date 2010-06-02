@@ -138,7 +138,7 @@ CACHE_BACKEND = 'locmem:///?max_entries=3000'
 # CSS and JavaScript file groups
 COMPRESS_CSS = {
     'all': {
-        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/jquery.countdown.css', 'css/master.plain.css', 'css/sponsors.css',),
+        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/jquery.countdown.css', 'css/master.plain.css', 'css/sponsors.css', 'css/facelist_2-0.css',),
         'output_filename': 'css/all.min?.css',
     },
     'book': {
