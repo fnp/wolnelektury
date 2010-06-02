@@ -354,6 +354,9 @@ div.shown-tags p, div.all-tags p {
     text-align: justify;
     overflow: hidden;
 }
+#description-short {
+	display:none;
+}
 
 #description .meta {
     margin: 0.5em;
