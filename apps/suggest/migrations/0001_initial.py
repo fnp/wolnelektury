@@ -11,13 +11,11 @@ class Migration(SchemaMigration):
         # Adding model 'Suggestion'
         db.create_table('suggest_suggestion', (
             ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=120)),
             ('ip', self.gf('django.db.models.fields.IPAddressField')(max_length=15)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
-            ('author', self.gf('django.db.models.fields.CharField')(max_length=120, blank=True)),
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('contact', self.gf('django.db.models.fields.CharField')(max_length=120, blank=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
-            ('email', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
         ))
         db.send_create_signal('suggest', ['Suggestion'])
     
@@ -67,13 +65,11 @@ class Migration(SchemaMigration):
         },
         'suggest.suggestion': {
             'Meta': {'object_name': 'Suggestion'},
-            'author': ('django.db.models.fields.CharField', [], {'max_length': '120', 'blank': 'True'}),
+            'contact': ('django.db.models.fields.CharField', [], {'max_length': '120', 'blank': 'True'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'ip': ('django.db.models.fields.IPAddressField', [], {'max_length': '15'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'})
         }
     }

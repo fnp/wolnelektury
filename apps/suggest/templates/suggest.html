@@ -2,10 +2,8 @@
 <h2>{% trans "Report a bug or suggestion" %}</h2>
 <form id='suggest-form' action="{% url suggest.views.report %}" method="post" accept-charset="utf-8" class="cuteform">
 <ol>
-    <li><label for="{{ form.author.id }}">{{ form.author.label }}</label> {{ form.author }}</li>
-    <li><label for="{{ form.email.id }}">{{ form.email.label }}</label> {{ form.email }}</li>
-    <li><label for="{{ form.title.id }}">{{ form.title.label }}</label> {{ form.title }}</li>
-	<li><label for="{{ form.description.id }}">{{ form.description.label }}</label> {{ form.description }}</li>
+    <li><label for="id_contact">{{ form.contact.label }}</label> {{ form.contact }}</li>
+	<li><label for="id_description">{{ form.description.label }}</label> {{ form.description }}</li>
     <li><input type="submit" value="{% trans "Send report" %}"/></li>
 </ol>
 </form>

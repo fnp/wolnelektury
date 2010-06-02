@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 11:35+0200\n"
+"POT-Creation-Date: 2010-06-02 10:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: forms.py:9
-msgid "Author"
+msgid "Contact"
 msgstr ""
 
 #: forms.py:10
-msgid "E-mail"
-msgstr ""
-
-#: forms.py:11
-msgid "Title"
-msgstr ""
-
-#: forms.py:12
 msgid "Description"
 msgstr ""
 
 #: models.py:10
-msgid "author"
+msgid "contact"
 msgstr ""
 
 #: models.py:11
-msgid "e-mail"
-msgstr ""
-
-#: models.py:12
-msgid "title"
-msgstr ""
-
-#: models.py:13
 msgid "description"
 msgstr ""
 
-#: models.py:14
+#: models.py:12
 msgid "creation date"
 msgstr ""
 
-#: models.py:15
+#: models.py:13
 msgid "IP address"
 msgstr ""
 
-#: models.py:20
+#: models.py:18
 msgid "suggestion"
 msgstr ""
 
-#: models.py:21
+#: models.py:19
 msgid "suggestions"
 msgstr ""
 
-#: views.py:33
+#: views.py:31
 msgid "Report was sent successfully."
 msgstr ""
 
@@ -72,6 +56,6 @@ msgstr ""
 msgid "Report a bug or suggestion"
 msgstr ""
 
-#: templates/suggest.html:9
+#: templates/suggest.html:7
 msgid "Send report"
 msgstr ""

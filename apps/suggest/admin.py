@@ -7,6 +7,6 @@ from django.contrib import admin
 from suggest.models import Suggestion
 
 class SuggestionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'user', 'author', 'email', 'created_at')
+    list_display = ('created_at', 'contact', 'user', 'description')
 
 admin.site.register(Suggestion, SuggestionAdmin)

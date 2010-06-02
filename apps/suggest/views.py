@@ -19,12 +19,10 @@ from catalogue.views import LazyEncoder
 def report(request):
     suggest_form = forms.SuggestForm(request.POST)
     if suggest_form.is_valid():
-        author = suggest_form.cleaned_data['author']
-        email = suggest_form.cleaned_data['email']
-        title = suggest_form.cleaned_data['title']
+        contact = suggest_form.cleaned_data['contact']
         description = suggest_form.cleaned_data['description']
 
-        suggestion = Suggestion(author=author, email=email, title=title,
+        suggestion = Suggestion(contact=contact,
             description=description, ip=request.META['REMOTE_ADDR'])
         if request.user.is_authenticated():
             suggestion.user = request.user

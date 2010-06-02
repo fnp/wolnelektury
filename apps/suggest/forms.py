@@ -6,7 +6,5 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 class SuggestForm(forms.Form):
-    author = forms.CharField(label=_('Author'), max_length=50, required=False)
-    email = forms.EmailField(label=_('E-mail'), required=False)
-    title = forms.CharField(label=_('Title'), max_length=120, required=True)
+    contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     description = forms.CharField(label=_('Description'), widget=forms.Textarea, required=True)
