@@ -2,15 +2,33 @@
 import datetime
 from south.db import db
 from south.v2 import DataMigration
-from django.db import models
+from django.db import connection, models
+qn = connection.ops.quote_name
 
 class Migration(DataMigration):
 
     def forwards(self, orm):
-        for tag in orm['catalogue.Tag'].objects.filter(user__isnull=False):
-            books = orm['catalogue.Tag'].intermediary_table_model.objects.get_intersection_by_model(
-                                                                        orm['catalogue.Book'], [tag])
-            tag.book_count = len(books)
+        model = orm.Book
+        model_table = qn(model._meta.db_table)
+        for tag in orm.Tag.objects.exclude(user=None):
+            query = """
+            SELECT COUNT(%(model_pk)s)        -- count books
+            FROM %(model)s, %(tagged_item)s   -- from books x tagged
+            WHERE
+              %(tagged_item)s.tag_id=%(tag_id)s   -- get only the shelf
+              AND %(model_pk)s = %(tagged_item)s.object_id  -- get only books on the shelf
+            GROUP BY %(tagged_item)s.tag_id""" % {
+                'model_pk': '%s.%s' % (model_table, qn(model._meta.pk.column)),
+                'model': model_table,
+                'tagged_item': qn(orm.TagRelation._meta.db_table),
+                'tag_id': tag.pk,
+            }
+    
+            cursor = connection.cursor()
+            cursor.execute(query)
+            book_count = (cursor.fetchone() or (0,))[0]
+            
+            tag.book_count = book_count
             tag.save()
 
     def backwards(self, orm):
