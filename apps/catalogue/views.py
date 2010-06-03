@@ -244,7 +244,6 @@ def _word_starts_with(name, prefix):
     # can't use [[:<:]] (word start), 
     # but we want both `xy` and `(xy` to catch `(xyz)`
     kwargs['%s__iregex' % name] = u"(^|[^[:alnum:]_])%s" % prefix
-    print kwargs['%s__iregex' % name]
 
     return Q(**kwargs)
 
