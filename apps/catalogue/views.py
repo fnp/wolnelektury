@@ -44,7 +44,7 @@ class LazyEncoder(simplejson.JSONEncoder):
         return obj
 
 
-def main_page(request):    
+def main_page(request):
     if request.user.is_authenticated():
         shelves = models.Tag.objects.filter(category='set', user=request.user)
         new_set_form = forms.NewSetForm()
@@ -53,7 +53,7 @@ def main_page(request):
     fragment_tags = models.Tag.objects.usage_for_model(models.Fragment, counts=True,
         extra={'where': ["catalogue_tag.category = 'theme'"] + [extra_where]})
     categories = split_tags(tags)
-    
+
     form = forms.SearchForm()
     return render_to_response('catalogue/main_page.html', locals(),
         context_instance=RequestContext(request))
@@ -62,11 +62,11 @@ def main_page(request):
 def book_list(request):
     books = models.Book.objects.all()
     form = forms.SearchForm()
-    
+
     books_by_first_letter = SortedDict()
     for book in books:
         books_by_first_letter.setdefault(book.title[0], []).append(book)
-    
+
     return render_to_response('catalogue/book_list.html', locals(),
         context_instance=RequestContext(request))
 
@@ -75,75 +75,75 @@ def tagged_object_list(request, tags=''):
     # Prevent DoS attacks on our database
     if len(tags.split('/')) > 6:
         raise Http404
-        
+
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
         raise Http404
-    
+
     if len([tag for tag in tags if tag.category == 'book']):
         raise Http404
-    
+
     theme_is_set = [tag for tag in tags if tag.category == 'theme']
     shelf_is_set = len(tags) == 1 and tags[0].category == 'set'
     my_shelf_is_set = shelf_is_set and request.user.is_authenticated() and request.user == tags[0].user
-    
+
     objects = only_author = pd_counter = categories = None
-    
+
     if theme_is_set:
         shelf_tags = [tag for tag in tags if tag.category == 'set']
         fragment_tags = [tag for tag in tags if tag.category != 'set']
         fragments = models.Fragment.tagged.with_all(fragment_tags)
-        
+
         if shelf_tags:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
-            l_tags = [models.Tag.objects.get(slug = 'l-' + book.slug) for book in books]
+            l_tags = [models.Tag.objects.get(slug='l-' + book.slug) for book in books]
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
-        
+
         # newtagging goes crazy if we just try:
         #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True, 
         #                    extra={'where': ["catalogue_tag.category != 'book'"]})
         fragment_keys = [fragment.pk for fragment in fragments]
         if fragment_keys:
-            related_tags = models.Fragment.tags.usage(counts = True,
-                                filters = {'pk__in': fragment_keys}, 
+            related_tags = models.Fragment.tags.usage(counts=True,
+                                filters={'pk__in': fragment_keys},
                                 extra={'where': ["catalogue_tag.category != 'book'"]})
             related_tags = (tag for tag in related_tags if tag not in fragment_tags)
             categories = split_tags(related_tags)
-        
+
             objects = fragments
     else:
         books = models.Book.tagged.with_all(tags).order_by()
-        l_tags = [models.Tag.objects.get(slug = 'l-' + book.slug) for book in books]
+        l_tags = [models.Tag.objects.get(slug='l-' + book.slug) for book in books]
         book_keys = [book.pk for book in books]
         # newtagging goes crazy if we just try:
         #related_tags = models.Tag.objects.usage_for_queryset(books, counts=True, 
         #                    extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
         if book_keys:
             related_tags = models.Book.tags.usage(counts=True,
-                                filters={'pk__in': book_keys}, 
+                                filters={'pk__in': book_keys},
                                 extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
             categories = split_tags(related_tags)
-    
+
             fragment_keys = [fragment.pk for fragment in models.Fragment.tagged.with_any(l_tags)]
             if fragment_keys:
                 categories['theme'] = models.Fragment.tags.usage(counts=True,
-                                    filters={'pk__in': fragment_keys}, 
+                                    filters={'pk__in': fragment_keys},
                                     extra={'where': ["catalogue_tag.category = 'theme'"]})
-                
-            books = books.exclude(parent__in = book_keys)
-            objects = books        
-        
+
+            books = books.exclude(parent__in=book_keys)
+            objects = books
+
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
         pd_counter = only_author and tags[0].goes_to_pd()
         objects = models.Book.objects.none()
-    
+
     return object_list(
         request,
         objects,
         template_name='catalogue/tagged_object_list.html',
-        extra_context = {
+        extra_context={
             'categories': categories,
             'shelf_is_set': shelf_is_set,
             'only_author': only_author,
@@ -161,7 +161,7 @@ def book_fragments(request, book_slug, theme_slug):
     book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug)
     theme = get_object_or_404(models.Tag, slug=theme_slug)
     fragments = models.Fragment.tagged.with_all([book_tag, theme])
-    
+
     form = forms.SearchForm()
     return render_to_response('catalogue/book_fragments.html', locals(),
         context_instance=RequestContext(request))
@@ -173,14 +173,14 @@ def book_detail(request, slug):
     except models.Book.DoesNotExist:
         return book_stub_detail(request, slug)
 
-    book_tag = get_object_or_404(models.Tag, slug = 'l-' + slug)
+    book_tag = get_object_or_404(models.Tag, slug='l-' + slug)
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
     extra_where = "catalogue_tag.category = 'theme'"
     book_themes = models.Tag.objects.related_for_model(book_tag, models.Fragment, counts=True, extra={'where': [extra_where]})
     extra_info = book.get_extra_info_value()
-    
+
     form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
@@ -190,10 +190,10 @@ def book_stub_detail(request, slug):
     book = get_object_or_404(models.BookStub, slug=slug)
     pd_counter = book.pd
     form = forms.SearchForm()
-    
+
     return render_to_response('catalogue/book_stub_detail.html', locals(),
         context_instance=RequestContext(request))
-    
+
 
 def book_text(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
@@ -201,7 +201,7 @@ def book_text(request, slug):
     for fragment in book.fragments.all():
         for theme in fragment.tags.filter(category='theme'):
             book_themes.setdefault(theme, []).append(fragment)
-    
+
     book_themes = book_themes.items()
     book_themes.sort(key=lambda s: s[0].sort_key)
     return render_to_response('catalogue/book_text.html', locals(),
@@ -223,7 +223,7 @@ def _no_diacritics_regexp(query):
     def repl(m):
         l = m.group()
         return u"(%s)" % '|'.join(names[l])
-    return re.sub(u'[%s]'%(u''.join(names.keys())), repl, query)
+    return re.sub(u'[%s]' % (u''.join(names.keys())), repl, query)
 
 def unicode_re_escape(query):
     """ Unicode-friendly version of re.escape """
@@ -247,7 +247,7 @@ def _word_starts_with(name, prefix):
 
     return Q(**kwargs)
 
-    
+
 def _sqlite_word_starts_with(name, prefix):
     """ version of _word_starts_with for SQLite 
     
@@ -263,26 +263,25 @@ if settings.DATABASE_ENGINE == 'sqlite3':
     _word_starts_with = _sqlite_word_starts_with
 
 
-def _tags_starting_with(prefix, user):
+def _tags_starting_with(prefix, user=None):
     prefix = prefix.lower()
     book_stubs = models.BookStub.objects.filter(_word_starts_with('title', prefix))
     books = models.Book.objects.filter(_word_starts_with('title', prefix))
     book_stubs = filter(lambda x: x not in books, book_stubs)
     tags = models.Tag.objects.filter(_word_starts_with('name', prefix))
-    if user.is_authenticated():
+    if user and user.is_authenticated():
         tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
     else:
         tags = tags.filter(~Q(category='book') & ~Q(category='set'))
 
     return list(books) + list(tags) + list(book_stubs)
-        
 
 
 def _get_result_link(match, tag_list):
     if isinstance(match, models.Book) or isinstance(match, models.BookStub):
         return match.get_absolute_url()
     else:
-        return reverse('catalogue.views.tagged_object_list', 
+        return reverse('catalogue.views.tagged_object_list',
             kwargs={'tags': '/'.join(tag.slug for tag in tag_list + [match])}
         )
 
@@ -292,10 +291,10 @@ def _get_result_type(match):
     else:
         type = match.category
     return dict(models.TAG_CATEGORIES)[type]
-    
 
 
-def find_best_matches(query, user):
+
+def find_best_matches(query, user=None):
     """ Finds a Book, Tag or Bookstub best matching a query.
     
     Returns a with:
@@ -305,28 +304,28 @@ def find_best_matches(query, user):
     
     Raises a ValueError on too short a query.
     """
-    
+
     query = query.lower()
     if len(query) < 2:
         raise ValueError("query must have at least two characters")
-    
+
     result = tuple(_tags_starting_with(query, user))
     exact_matches = tuple(res for res in result if res.name.lower() == query)
     if exact_matches:
         return exact_matches
     else:
-        return result[:1]    
+        return result[:1]
 
 
 def search(request):
     tags = request.GET.get('tags', '')
     prefix = request.GET.get('q', '')
-    
+
     try:
         tag_list = models.Tag.get_tag_list(tags)
     except:
         tag_list = []
-    
+
     try:
         result = find_best_matches(prefix, request.user)
     except ValueError:
@@ -336,7 +335,7 @@ def search(request):
     if len(result) == 1:
         return HttpResponseRedirect(_get_result_link(result[0], tag_list))
     elif len(result) > 1:
-        return render_to_response('catalogue/search_multiple_hits.html', 
+        return render_to_response('catalogue/search_multiple_hits.html',
             {'tags':tag_list, 'prefix':prefix, 'results':((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)},
             context_instance=RequestContext(request))
     else:
@@ -349,7 +348,7 @@ def tags_starting_with(request):
     # Prefix must have at least 2 characters
     if len(prefix) < 2:
         return HttpResponse('')
-    
+
     return HttpResponse('\n'.join(tag.name for tag in _tags_starting_with(prefix, request.user)))
 
 
@@ -369,24 +368,24 @@ def book_sets(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
     book_sets = book.tags.filter(category='set', user=request.user)
-    
+
     if not request.user.is_authenticated():
         return HttpResponse(_('<p>To maintain your shelves you need to be logged in.</p>'))
-    
+
     if request.method == 'POST':
         form = forms.ObjectSetsForm(book, request.user, request.POST)
         if form.is_valid():
             old_shelves = list(book.tags.filter(category='set'))
             new_shelves = [models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']]
-            
+
             for shelf in [shelf for shelf in old_shelves if shelf not in new_shelves]:
                 shelf.book_count -= 1
                 shelf.save()
-                
+
             for shelf in [shelf for shelf in new_shelves if shelf not in old_shelves]:
                 shelf.book_count += 1
                 shelf.save()
-            
+
             book.tags = new_shelves + list(book.tags.filter(~Q(category='set') | ~Q(user=request.user)))
             if request.is_ajax():
                 return HttpResponse(_('<p>Shelves were sucessfully saved.</p>'))
@@ -395,7 +394,7 @@ def book_sets(request, slug):
     else:
         form = forms.ObjectSetsForm(book, request.user)
         new_set_form = forms.NewSetForm()
-    
+
     return render_to_response('catalogue/book_sets.html', locals(),
         context_instance=RequestContext(request))
 
@@ -406,7 +405,7 @@ def book_sets(request, slug):
 def remove_from_shelf(request, shelf, book):
     book = get_object_or_404(models.Book, slug=book)
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set', user=request.user)
-    
+
     if shelf in book.tags:
         models.Tag.objects.remove_tag(book, shelf)
 
@@ -439,18 +438,18 @@ def download_shelf(request, slug):
     be used for large dynamic PDF files.                                        
     """
     shelf = get_object_or_404(models.Tag, slug=slug, category='set')
-    
+
     formats = []
     form = forms.DownloadFormatsForm(request.GET)
     if form.is_valid():
         formats = form.cleaned_data['formats']
     if len(formats) == 0:
         formats = ['pdf', 'odt', 'txt', 'mp3', 'ogg']
-    
+
     # Create a ZIP archive
     temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
-    
+
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if 'pdf' in formats and book.pdf_file:
             filename = book.pdf_file.path
@@ -468,11 +467,11 @@ def download_shelf(request, slug):
             filename = book.ogg_file.path
             archive.write(filename, str('%s.ogg' % book.slug))
     archive.close()
-    
+
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
     response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.sort_key
     response['Content-Length'] = temp.tell()
-    
+
     temp.seek(0)
     response.write(temp.read())
     return response
@@ -486,7 +485,7 @@ def shelf_book_formats(request, shelf):
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set')
 
     formats = {'pdf': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False}
-    
+
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if book.pdf_file:
             formats['pdf'] = True
@@ -553,7 +552,7 @@ def register(request):
     if registration_form.is_valid():
         user = registration_form.save()
         user = auth.authenticate(
-            username=registration_form.cleaned_data['username'], 
+            username=registration_form.cleaned_data['username'],
             password=registration_form.cleaned_data['password1']
         )
         auth.login(request, user)

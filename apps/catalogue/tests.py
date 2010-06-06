@@ -3,51 +3,69 @@ from django.test import TestCase
 from catalogue import models, views
 from django.contrib.auth.models import User, AnonymousUser
 
-class SimpleSearchTest(TestCase):
+from nose.tools import raises
+
+class BasicSearchTests(TestCase):
     def setUp(self):
-        t = models.Tag(name=u'Tadeusz Żeleński (Boy)', category=u'author', slug=u'a1')
-        t.save()
-        self.t = t
-        self.user = AnonymousUser()
-    
-    def tearDown(self):
-        self.t.delete()
-    
-    def test_too_short(self):
-        self.assertRaises(ValueError, views.find_best_matches, u'', self.user)
-        self.assertRaises(ValueError, views.find_best_matches, u't', self.user)
-        
-    def test_match_beginning(self):
-        self.assertEqual(views.find_best_matches(u'Tad', self.user), (self.t,))
-    
-    def test_match_case(self):
-        self.assertEqual(views.find_best_matches(u'TAD', self.user), (self.t,))
+        self.author_tag = models.Tag.objects.create(
+                                name=u'Adam Mickiewicz [SubWord]',
+                                category=u'author', slug="one")
+
+        self.unicode_tag = models.Tag.objects.create(
+                                name=u'Tadeusz Żeleński (Boy)',
+                                category=u'author', slug="two")
+
+        self.polish_tag = models.Tag.objects.create(
+                                name=u'ĘÓĄŚŁŻŹĆŃęóąśłżźćń',
+                                category=u'author', slug="three")
+
+    @raises(ValueError)
+    def test_empty_query(self):
+        """ Check that empty queries raise an error. """
+        views.find_best_matches(u'')
+
+    @raises(ValueError)
+    def test_one_letter_query(self):
+        """ Check that one letter queries aren't permitted. """
+        views.find_best_matches(u't')
+
+    def test_match_by_prefix(self):
+        """ Tags should be matched by prefix of words within it's name. """
+        self.assertEqual(views.find_best_matches(u'Ada'), (self.author_tag,))
+        self.assertEqual(views.find_best_matches(u'Mic'), (self.author_tag,))
+        self.assertEqual(views.find_best_matches(u'Mickiewicz'), (self.author_tag,))
+
+    def test_match_case_insensitive(self):
+        """ Tag names should match case insensitive. """
+        self.assertEqual(views.find_best_matches(u'adam mickiewicz'), (self.author_tag,))
+
+    def test_match_case_insensitive_unicode(self):
+        """ Tag names should match case insensitive (unicode). """
+        self.assertEqual(views.find_best_matches(u'tadeusz żeleński (boy)'), (self.unicode_tag,))
 
     def test_word_boundary(self):
-        self.assertEqual(views.find_best_matches(u'Boy', self.user), (self.t,))
-        self.assertEqual(views.find_best_matches(u'(Boy', self.user), (self.t,))
+        self.assertEqual(views.find_best_matches(u'SubWord'), (self.author_tag,))
+        self.assertEqual(views.find_best_matches(u'[SubWord'), (self.author_tag,))
 
-    def test_not_found(self):
-        self.assertEqual(views.find_best_matches(u'andrzej', self.user), ())
-        self.assertEqual(views.find_best_matches(u'deusz', self.user), ())
-    
-    def test_locale(self):
-        self.assertEqual(views.find_best_matches(u'ele', self.user), ())
-        self.assertEqual(views.find_best_matches(u'Żele', self.user), (self.t,))
-        self.assertEqual(views.find_best_matches(u'żele', self.user), (self.t,))
-    
+    def test_unrelated_search(self):
+        self.assertEqual(views.find_best_matches(u'alamakota'), tuple())
+        self.assertEqual(views.find_best_matches(u'Adama'), ())
+
+    def test_infix_doesnt_match(self):
+        """ Searching for middle of a word shouldn't match. """
+        self.assertEqual(views.find_best_matches(u'deusz'), tuple())
+
+    def test_diactricts_removal_pl(self):
+        """ Tags should match both with and without national characters. """
+        self.assertEqual(views.find_best_matches(u'ĘÓĄŚŁŻŹĆŃęóąśłżźćń'), (self.polish_tag,))
+        self.assertEqual(views.find_best_matches(u'EOASLZZCNeoaslzzcn'), (self.polish_tag,))
+        self.assertEqual(views.find_best_matches(u'eoaslzzcneoaslzzcn'), (self.polish_tag,))
+
+    def test_diactricts_query_removal_pl(self):
+        """ Tags without national characters shouldn't be matched by queries with them. """
+        self.assertEqual(views.find_best_matches(u'Adąm'), ())
+
     def test_sloppy(self):
-        self.assertEqual(views.find_best_matches(u'Żelenski', self.user), (self.t,))
-        self.assertEqual(views.find_best_matches(u'zelenski', self.user), (self.t,))
-        
+        self.assertEqual(views.find_best_matches(u'Żelenski'), (self.unicode_tag,))
+        self.assertEqual(views.find_best_matches(u'zelenski'), (self.unicode_tag,))
 
-
-class SetSearchTest(TestCase):
-    def setUp(self):
-        self.me = User(name='me')
-        self.other = User(name='other')
-    
-    def tearDown(self):
-        self.me.delete()
-        self.other.delete()
-    
