@@ -36,7 +36,7 @@ class TagSubcategoryManager(models.Manager):
     def __init__(self, subcategory):
         super(TagSubcategoryManager, self).__init__()
         self.subcategory = subcategory
-        
+
     def get_query_set(self):
         return super(TagSubcategoryManager, self).get_query_set().filter(category=self.subcategory)
 
@@ -45,17 +45,32 @@ class Tag(TagBase):
     name = models.CharField(_('name'), max_length=50, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
-    category = models.CharField(_('category'), max_length=50, blank=False, null=False, 
+    category = models.CharField(_('category'), max_length=50, blank=False, null=False,
         db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(_('description'), blank=True)
     main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
-    
+
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), default=0, blank=False, null=False)
     death = models.IntegerField(_(u'year of death'), blank=True, null=True)
-    gazeta_link = models.CharField(blank=True,  max_length=240)
-    wiki_link = models.CharField(blank=True,  max_length=240)
-    
+    gazeta_link = models.CharField(blank=True, max_length=240)
+    wiki_link = models.CharField(blank=True, max_length=240)
+
+    class Meta:
+        ordering = ('sort_key',)
+        verbose_name = _('tag')
+        verbose_name_plural = _('tags')
+
+    def __unicode__(self):
+        return self.name
+
+    def __repr__(self):
+        return "Tag(slug=%r)" % self.slug
+
+    @permalink
+    def get_absolute_url(self):
+        return ('catalogue.views.tagged_object_list', [self.slug])
+
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')
@@ -63,26 +78,14 @@ class Tag(TagBase):
 
     def alive(self):
         return self.death is None
-    
+
     def in_pd(self):
         """ tests whether an author is in public domain """
         return self.death is not None and self.goes_to_pd() <= datetime.now().year
-    
+
     def goes_to_pd(self):
         """ calculates the year of public domain entry for an author """
         return self.death + 71 if self.death is not None else None
-
-    @permalink
-    def get_absolute_url(self):
-        return ('catalogue.views.tagged_object_list', [self.slug])
-    
-    class Meta:
-        ordering = ('sort_key',)
-        verbose_name = _('tag')
-        verbose_name_plural = _('tags')
-    
-    def __unicode__(self):
-        return self.name
 
     @staticmethod
     def get_tag_list(tags):
@@ -93,6 +96,7 @@ class Tag(TagBase):
             return TagBase.get_tag_list(tags)
 
 
+# TODO: why is this hard-coded ? 
 def book_upload_path(ext):
     def get_dynamic_path(book, filename):
         return 'lektura/%s.%s' % (book.slug, ext)
@@ -107,10 +111,10 @@ class Book(models.Model):
     _short_html = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
     extra_info = JSONField(_('extra information'))
-    gazeta_link = models.CharField(blank=True,  max_length=240)
-    wiki_link = models.CharField(blank=True,  max_length=240)
+    gazeta_link = models.CharField(blank=True, max_length=240)
+    wiki_link = models.CharField(blank=True, max_length=240)
 
-    
+
     # Formats
     xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
     html_file = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
@@ -119,21 +123,53 @@ class Book(models.Model):
     txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
     mp3_file = models.FileField(_('MP3 file'), upload_to=book_upload_path('mp3'), blank=True)
     ogg_file = models.FileField(_('OGG file'), upload_to=book_upload_path('ogg'), blank=True)
-    
+
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
-    
+
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
-    
+
+    class AlreadyExists(Exception):
+        pass
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = _('book')
+        verbose_name_plural = _('books')
+
+    def __unicode__(self):
+        return self.title
+
+    def save(self, force_insert=False, force_update=False, reset_short_html=True):
+        if reset_short_html:
+            # Reset _short_html during save
+            for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
+                self.__setattr__(key, '')
+
+        book = super(Book, self).save(force_insert, force_update)
+
+        if self.mp3_file:
+            print self.mp3_file, self.mp3_file.path
+            extra_info = self.get_extra_info_value()
+            extra_info.update(self.get_mp3_info())
+            self.set_extra_info_value(extra_info)
+            book = super(Book, self).save(force_insert, force_update)
+
+        return book
+
+    @permalink
+    def get_absolute_url(self):
+        return ('catalogue.views.book_detail', [self.slug])
+
     @property
     def name(self):
         return self.title
-    
+
     def short_html(self):
         key = '_short_html_%s' % get_language()
         short_html = getattr(self, key)
-        
+
         if short_html and len(short_html):
             return mark_safe(short_html)
         else:
@@ -153,72 +189,65 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">MP3</a>' % self.mp3_file.url)
             if self.ogg_file:
                 formats.append(u'<a href="%s">OGG</a>' % self.ogg_file.url)
-            
+
             formats = [mark_safe(format) for format in formats]
-            
+
             setattr(self, key, unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats})))
             self.save(reset_short_html=False)
             return mark_safe(getattr(self, key))
-    
-    def save(self, force_insert=False, force_update=False, reset_short_html=True):
-        if reset_short_html:
-            # Reset _short_html during save
-            for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
-                self.__setattr__(key, '')
-        
-        book = super(Book, self).save(force_insert, force_update)
-        
-        if self.mp3_file:
-            print self.mp3_file, self.mp3_file.path
-            extra_info = self.get_extra_info_value()
-            extra_info.update(self.get_mp3_info())
-            self.set_extra_info_value(extra_info)
-            book = super(Book, self).save(force_insert, force_update)
-        
-        return book
-    
+
+
     def get_mp3_info(self):
         """Retrieves artist and director names from audio ID3 tags."""
         audio = id3.ID3(self.mp3_file.path)
         artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
         director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
         return {'artist_name': artist_name, 'director_name': director_name}
-        
+
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')
     has_description.boolean = True
-    
+
     def has_pdf_file(self):
         return bool(self.pdf_file)
     has_pdf_file.short_description = 'PDF'
     has_pdf_file.boolean = True
-    
+
     def has_odt_file(self):
         return bool(self.odt_file)
     has_odt_file.short_description = 'ODT'
     has_odt_file.boolean = True
-    
+
     def has_html_file(self):
         return bool(self.html_file)
     has_html_file.short_description = 'HTML'
     has_html_file.boolean = True
 
-    class AlreadyExists(Exception):
-        pass
-    
-    @staticmethod
-    def from_xml_file(xml_file, overwrite=False):
+    @classmethod
+    def from_xml_file(cls, xml_file, overwrite=False):
+        # use librarian to parse meta-data
+        book_info = dcparser.parse(xml_file)
+
+        if not isinstance(xml_file, File):
+            xml_file = File(xml_file)
+
+        try:
+            return cls.from_text_and_meta(xml_file, book_info, overwrite)
+        finally:
+            xml_file.close()
+
+    @classmethod
+    def from_text_and_meta(cls, raw_file, book_info, overwrite=False):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
-        
+
         # Read book metadata
-        book_info = dcparser.parse(xml_file)
         book_base, book_slug = book_info.url.rsplit('/', 1)
         book, created = Book.objects.get_or_create(slug=book_slug)
-        
+
         if created:
             book_shelves = []
         else:
@@ -226,14 +255,14 @@ class Book(models.Model):
                 raise Book.AlreadyExists(_('Book %s already exists') % book_slug)
             # Save shelves for this book
             book_shelves = list(book.tags.filter(category='set'))
-        
+
         book.title = book_info.title
         book.set_extra_info_value(book_info.to_dict())
         book._short_html = ''
         book.save()
-        
+
         book_tags = []
-        for category in ('kind', 'genre', 'author', 'epoch'):    
+        for category in ('kind', 'genre', 'author', 'epoch'):
             tag_name = getattr(book_info, category)
             tag_sort_key = tag_name
             if category == 'author':
@@ -246,7 +275,7 @@ class Book(models.Model):
                 tag.category = category
                 tag.save()
             book_tags.append(tag)
-            
+
         book_tag, created = Tag.objects.get_or_create(slug=('l-' + book.slug)[:120])
         if created:
             book_tag.name = book.title[:50]
@@ -254,9 +283,9 @@ class Book(models.Model):
             book_tag.category = 'book'
             book_tag.save()
         book_tags.append(book_tag)
-        
+
         book.tags = book_tags
-        
+
         if hasattr(book_info, 'parts'):
             for n, part_url in enumerate(book_info.parts):
                 base, slug = part_url.rsplit('/', 1)
@@ -267,23 +296,21 @@ class Book(models.Model):
                     child_book.save()
                 except Book.DoesNotExist, e:
                     raise Book.DoesNotExist(_('Book with slug = "%s" does not exist.') % slug)
-        
+
         book_descendants = list(book.children.all())
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)
             for fragment in child_book.fragments.all():
                 fragment.tags = set(list(fragment.tags) + [book_tag])
             book_descendants += list(child_book.children.all())
-            
+
         # Save XML and HTML files
-        if not isinstance(xml_file, File):
-            xml_file = File(file(xml_file))
-        book.xml_file.save('%s.xml' % book.slug, xml_file, save=False)
-        
+        book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
+
         html_file = NamedTemporaryFile()
-        if html.transform(book.xml_file.path, html_file):
+        if html.transform(book.xml_file.path, html_file, parse_dublincore=False):
             book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
-            
+
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
             book_themes = []
@@ -292,9 +319,9 @@ class Book(models.Model):
                 short_text = ''
                 if (len(MarkupString(text)) > 240):
                     short_text = unicode(MarkupString(text)[:160])
-                new_fragment, created = Fragment.objects.get_or_create(anchor=fragment.id, book=book, 
+                new_fragment, created = Fragment.objects.get_or_create(anchor=fragment.id, book=book,
                     defaults={'text': text, 'short_text': short_text})
-                
+
                 try:
                     theme_names = [s.strip() for s in fragment.themes.split(',')]
                 except AttributeError:
@@ -311,24 +338,12 @@ class Book(models.Model):
                 new_fragment.save()
                 new_fragment.tags = set(list(book.tags) + themes + [book_tag])
                 book_themes += themes
-            
+
             book_themes = set(book_themes)
             book.tags = list(book.tags) + list(book_themes) + book_shelves
-        
+
         book.save()
         return book
-    
-    @permalink
-    def get_absolute_url(self):
-        return ('catalogue.views.book_detail', [self.slug])
-        
-    class Meta:
-        ordering = ('title',)
-        verbose_name = _('book')
-        verbose_name_plural = _('books')
-
-    def __unicode__(self):
-        return self.title
 
 
 class Fragment(models.Model):
@@ -341,28 +356,28 @@ class Fragment(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
-    
-    def short_html(self):
-        key = '_short_html_%s' % get_language()
-        short_html = getattr(self, key)         
-        if short_html and len(short_html):
-            return mark_safe(short_html)
-        else:
-            book_authors = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) 
-                for tag in self.book.tags if tag.category == 'author']
-            
-            setattr(self, key, unicode(render_to_string('catalogue/fragment_short.html',
-                {'fragment': self, 'book': self.book, 'book_authors': book_authors})))
-            self.save()
-            return mark_safe(getattr(self, key))
-    
-    def get_absolute_url(self):
-        return '%s#m%s' % (reverse('book_text', kwargs={'slug': self.book.slug}), self.anchor)
-    
+
     class Meta:
         ordering = ('book', 'anchor',)
         verbose_name = _('fragment')
         verbose_name_plural = _('fragments')
+
+    def get_absolute_url(self):
+        return '%s#m%s' % (reverse('book_text', kwargs={'slug': self.book.slug}), self.anchor)
+
+    def short_html(self):
+        key = '_short_html_%s' % get_language()
+        short_html = getattr(self, key)
+        if short_html and len(short_html):
+            return mark_safe(short_html)
+        else:
+            book_authors = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name))
+                for tag in self.book.tags if tag.category == 'author']
+
+            setattr(self, key, unicode(render_to_string('catalogue/fragment_short.html',
+                {'fragment': self, 'book': self.book, 'book_authors': book_authors})))
+            self.save()
+            return mark_safe(getattr(self, key))
 
 
 class BookStub(models.Model):
@@ -373,21 +388,23 @@ class BookStub(models.Model):
     translator = models.TextField(_('translator'), blank=True)
     translator_death = models.TextField(_('year of translator\'s death'), blank=True)
 
+    class Meta:
+        ordering = ('title',)
+        verbose_name = _('book stub')
+        verbose_name_plural = _('book stubs')
+
+    def __unicode__(self):
+        return self.title
+
+    @permalink
+    def get_absolute_url(self):
+        return ('catalogue.views.book_detail', [self.slug])
+
     def in_pd(self):
         return self.pd is not None and self.pd <= datetime.now().year
 
     @property
     def name(self):
         return self.title
-    
-    @permalink
-    def get_absolute_url(self):
-        return ('catalogue.views.book_detail', [self.slug])
 
-    def __unicode__(self):
-        return self.title
-    
-    class Meta:
-        ordering = ('title',)
-        verbose_name = _('book stub')
-        verbose_name_plural = _('book stubs')
+

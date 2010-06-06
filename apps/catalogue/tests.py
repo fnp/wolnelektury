@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
 from catalogue import models, views
+from django.core.files.base import ContentFile
 from django.contrib.auth.models import User, AnonymousUser
 
 from nose.tools import raises
+from StringIO import StringIO
 
-class BasicSearchTests(TestCase):
+class BasicSearchLogicTests(TestCase):
+
     def setUp(self):
         self.author_tag = models.Tag.objects.create(
                                 name=u'Adam Mickiewicz [SubWord]',
@@ -68,4 +71,115 @@ class BasicSearchTests(TestCase):
     def test_sloppy(self):
         self.assertEqual(views.find_best_matches(u'Żelenski'), (self.unicode_tag,))
         self.assertEqual(views.find_best_matches(u'zelenski'), (self.unicode_tag,))
+
+
+class PersonStub(object):
+
+    def __init__(self, first_names, last_name):
+        self.first_names = first_names
+        self.last_name = last_name
+
+class BookInfoStub(object):
+
+    def __init__(self, **kwargs):
+        self.__dict = kwargs
+
+    def __setattr__(self, key, value):
+        if not key.startswith('_'):
+            self.__dict[key] = value
+        return object.__setattr__(self, key, value)
+
+    def __getattr__(self, key):
+        return self.__dict[key]
+
+    def to_dict(self):
+        return dict((key, unicode(value)) for key, value in self.__dict.items())
+
+class BookImportLogicTests(TestCase):
+
+    def setUp(self):
+        self.book_info = BookInfoStub(
+            url=u"http://wolnelektury.pl/example/default_book",
+            about=u"http://wolnelektury.pl/example/URI/default_book",
+            title=u"Default Book",
+            author=PersonStub(("Jim",), "Lazy"),
+            kind="X-Kind",
+            genre="X-Genre",
+            epoch="X-Epoch",
+        )
+
+        self.expected_tags = [
+           ('author', 'jim-lazy'),
+           ('book', 'l-default_book'),
+           ('genre', 'x-genre'),
+           ('epoch', 'x-epoch'),
+           ('kind', 'x-kind'),
+        ]
+        self.expected_tags.sort()
+
+    def test_empty_book(self):
+        BOOK_TEXT = "<utwor />"
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+
+        self.assertEqual(book.title, "Default Book")
+        self.assertEqual(book.slug, "default_book")
+        self.assert_(book.parent is None)
+        self.assertTrue(book.has_html_file())
+
+        # no fragments generated
+        self.assertEqual(book.fragments.count(), 0)
+
+        # TODO: this should be filled out probably...
+        self.assertEqual(book.wiki_link, '')
+        self.assertEqual(book.gazeta_link, '')
+        self.assertEqual(book._short_html, '')
+        self.assertEqual(book.description, '')
+
+        tags = [ (tag.category, tag.slug) for tag in book.tags ]
+        tags.sort()
+
+        self.assertEqual(tags, self.expected_tags)
+
+    def test_book_with_fragment(self):
+        BOOK_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01">Love</motyw>Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+
+        self.assertEqual(book.fragments.count(), 1)
+        self.assertEqual(book.fragments.all()[0].text, u'<p class="paragraph">Ala ma kota</p>\n')
+
+        self.assert_(('theme', 'love') in [ (tag.category, tag.slug) for tag in book.tags ])
+
+    def test_book_replace_title(self):
+        BOOK_TEXT = """<utwor />"""
+        self.book_info.title = u"Extraordinary"
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+
+        tags = [ (tag.category, tag.slug) for tag in book.tags ]
+        tags.sort()
+
+        self.assertEqual(tags, self.expected_tags)
+
+    def test_book_replace_author(self):
+        BOOK_TEXT = """<utwor />"""
+        self.book_info.author = PersonStub(("Hans", "Christian"), "Andersen")
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+
+        tags = [ (tag.category, tag.slug) for tag in book.tags ]
+        tags.sort()
+
+        self.expected_tags.remove(('author', 'jim-lazy'))
+        self.expected_tags.append(('author', 'hans-christian-andersen'))
+        self.expected_tags.sort()
+
+        self.assertEqual(tags, self.expected_tags)
+
+        # the old tag should disappear 
+        self.assertRaises(models.Tag.DoesNotExist, models.Tag.objects.get,
+                    slug="jim-lazy", category="author")
+
 
