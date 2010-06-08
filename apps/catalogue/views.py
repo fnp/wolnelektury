@@ -88,7 +88,8 @@ def tagged_object_list(request, tags=''):
     shelf_is_set = len(tags) == 1 and tags[0].category == 'set'
     my_shelf_is_set = shelf_is_set and request.user.is_authenticated() and request.user == tags[0].user
 
-    objects = only_author = pd_counter = categories = None
+    objects = only_author = pd_counter = None
+    categories = {}
 
     if theme_is_set:
         shelf_tags = [tag for tag in tags if tag.category == 'set']

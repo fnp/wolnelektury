@@ -3,6 +3,7 @@ from django.test import TestCase
 from catalogue import models, views
 from django.core.files.base import ContentFile
 from django.contrib.auth.models import User, AnonymousUser
+from django.test.client import Client
 
 from nose.tools import raises
 from StringIO import StringIO
@@ -181,5 +182,75 @@ class BookImportLogicTests(TestCase):
         # the old tag should disappear 
         self.assertRaises(models.Tag.DoesNotExist, models.Tag.objects.get,
                     slug="jim-lazy", category="author")
+
+
+    
+class BooksByTagFlat(TestCase):
+    def setUp(self):
+        self.tag_empty = models.Tag(name='Empty tag', slug='empty', category='author')
+        self.tag_common = models.Tag(name='Common author', slug='common', category='author')
+
+        self.tag_kind1 = models.Tag(name='Type 1', slug='type1', category='kind')
+        self.tag_kind2 = models.Tag(name='Type 2', slug='type2', category='kind')
+        self.tag_kind3 = models.Tag(name='Type 3', slug='type3', category='kind')
+        for tag in self.tag_empty, self.tag_common, self.tag_kind1, self.tag_kind2, self.tag_kind3:
+            tag.save()
+        
+        
+        self.parent = models.Book(title='Parent', slug='parent')
+        self.parent.save()
+        
+        self.similar_child = models.Book(title='Similar child', 
+                                         slug='similar_child', 
+                                         parent=self.parent)
+        self.similar_child.save()
+        self.similar_grandchild = models.Book(title='Similar grandchild', 
+                                              slug='similar_grandchild',
+                                              parent=self.similar_child)
+        self.similar_grandchild.save()
+        for book in self.parent, self.similar_child, self.similar_grandchild:
+            book.tags = [self.tag_common, self.tag_kind1]
+            book.save()
+        
+        self.different_child = models.Book(title='Different child', 
+                                           slug='different_child', 
+                                           parent=self.parent)
+        self.different_child.save()
+        self.different_child.tags = [self.tag_common, self.tag_kind2]
+        self.different_child.save()
+        self.different_grandchild = models.Book(title='Different grandchild', 
+                                                slug='different_grandchild',
+                                                parent=self.different_child)
+        self.different_grandchild.save()
+        self.different_grandchild.tags = [self.tag_common, self.tag_kind3]
+        self.different_grandchild.save()
+
+        for book in models.Book.objects.all():
+            l_tag = models.Tag(name=book.title, slug='l-'+book.slug, category='book')
+            l_tag.save()
+            book.tags = list(book.tags) + [l_tag]
+
+
+        self.client = Client()
+    
+    def test_nonexistent_tag(self):
+        """ Looking for a non-existent tag should yield 404 """
+        self.assertEqual(404, self.client.get('/katalog/czeslaw_milosz/').status_code)
+        
+    def test_book_tag(self):
+        """ Looking for a book tag isn't permitted """
+        self.assertEqual(404, self.client.get('/katalog/parent/').status_code)
+    
+    def test_tag_empty(self):
+        """ Tag with no books should return no books and no related tags """
+        context = self.client.get('/katalog/empty/').context
+        self.assertEqual(0, len(context['object_list']))
+        self.assertEqual(0, len(context['categories']))
+    
+    def test_tag_common(self):
+        """ Filtering by tag should only yield top-level books """
+        context = self.client.get('/katalog/%s/' % self.tag_common.slug).context
+        self.assertEqual(list(context['object_list']),
+                         [self.parent])
 
 
