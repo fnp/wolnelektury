@@ -125,7 +125,7 @@ class BookImportLogicTests(TestCase):
         self.assertEqual(book.title, "Default Book")
         self.assertEqual(book.slug, "default_book")
         self.assert_(book.parent is None)
-        self.assertTrue(book.has_html_file())
+        self.assertFalse(book.has_html_file())
 
         # no fragments generated
         self.assertEqual(book.fragments.count(), 0)
@@ -149,6 +149,7 @@ class BookImportLogicTests(TestCase):
         """
 
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        self.assertTrue(book.has_html_file())
 
         self.assertEqual(book.fragments.count(), 1)
         self.assertEqual(book.fragments.all()[0].text, u'<p class="paragraph">Ala ma kota</p>\n')
