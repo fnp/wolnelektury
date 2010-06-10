@@ -80,9 +80,11 @@ class PersonStub(object):
         self.first_names = first_names
         self.last_name = last_name
 
+from slughifi import slughifi
+
 class BookInfoStub(object):
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs):            
         self.__dict = kwargs
 
     def __setattr__(self, key, value):
@@ -95,6 +97,15 @@ class BookInfoStub(object):
 
     def to_dict(self):
         return dict((key, unicode(value)) for key, value in self.__dict.items())
+
+def info_args(title):
+    """ generate some keywords for comfortable BookInfoCreation  """
+    slug = unicode(slughifi(title))
+    return {'title': unicode(title),
+            'slug': slug,
+            'url': u"http://wolnelektury.pl/example/%s" % slug,
+            'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
+            }
 
 class BookImportLogicTests(TestCase):
 
@@ -111,12 +122,18 @@ class BookImportLogicTests(TestCase):
 
         self.expected_tags = [
            ('author', 'jim-lazy'),
-           ('book', 'l-default_book'),
            ('genre', 'x-genre'),
            ('epoch', 'x-epoch'),
            ('kind', 'x-kind'),
         ]
         self.expected_tags.sort()
+
+    def tearDown(self):
+        for book in models.Book.objects.all():
+            if book.xml_file:
+                book.xml_file.delete()
+            if book.html_file:
+                book.html_file.delete()
 
     def test_empty_book(self):
         BOOK_TEXT = "<utwor />"
@@ -140,6 +157,21 @@ class BookImportLogicTests(TestCase):
         tags.sort()
 
         self.assertEqual(tags, self.expected_tags)
+    
+    def test_not_quite_empty_book(self):
+        """ Not empty, but without any real text.
+        
+        Should work like any other non-empty book.
+        """
+        
+        BOOK_TEXT = """<utwor>
+        <liryka_l>
+            <nazwa_utworu>Nic</nazwa_utworu>
+        </liryka_l></utwor>
+        """
+        
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        self.assertTrue(book.has_html_file())
 
     def test_book_with_fragment(self):
         BOOK_TEXT = """<utwor>
@@ -186,53 +218,55 @@ class BookImportLogicTests(TestCase):
 
 
     
-class BooksByTagFlat(TestCase):
+class BooksByTagTests(TestCase):
+    """ tests the /katalog/tag page for found books """
+    
     def setUp(self):
-        self.tag_empty = models.Tag(name='Empty tag', slug='empty', category='author')
-        self.tag_common = models.Tag(name='Common author', slug='common', category='author')
+        author = PersonStub(("Common",), "Man")
+        tags = dict(genre='G', epoch='E', author=author, kind="K")
 
-        self.tag_kind1 = models.Tag(name='Type 1', slug='type1', category='kind')
-        self.tag_kind2 = models.Tag(name='Type 2', slug='type2', category='kind')
-        self.tag_kind3 = models.Tag(name='Type 3', slug='type3', category='kind')
-        for tag in self.tag_empty, self.tag_common, self.tag_kind1, self.tag_kind2, self.tag_kind3:
-            tag.save()
-        
-        
-        self.parent = models.Book(title='Parent', slug='parent')
-        self.parent.save()
-        
-        self.similar_child = models.Book(title='Similar child', 
-                                         slug='similar_child', 
-                                         parent=self.parent)
-        self.similar_child.save()
-        self.similar_grandchild = models.Book(title='Similar grandchild', 
-                                              slug='similar_grandchild',
-                                              parent=self.similar_child)
-        self.similar_grandchild.save()
-        for book in self.parent, self.similar_child, self.similar_grandchild:
-            book.tags = [self.tag_common, self.tag_kind1]
-            book.save()
-        
-        self.different_child = models.Book(title='Different child', 
-                                           slug='different_child', 
-                                           parent=self.parent)
-        self.different_child.save()
-        self.different_child.tags = [self.tag_common, self.tag_kind2]
-        self.different_child.save()
-        self.different_grandchild = models.Book(title='Different grandchild', 
-                                                slug='different_grandchild',
-                                                parent=self.different_child)
-        self.different_grandchild.save()
-        self.different_grandchild.tags = [self.tag_common, self.tag_kind3]
-        self.different_grandchild.save()
+        # grandchild
+        kwargs = info_args(u"GChild")
+        kwargs.update(tags)
+        gchild_info = BookInfoStub(**kwargs)
+        # child
+        kwargs = info_args(u"Child")
+        kwargs.update(tags)
+        child_info = BookInfoStub(parts=[gchild_info.url], **kwargs)
+        # other grandchild
+        kwargs = info_args(u"Different GChild")
+        kwargs.update(tags)
+        diffgchild_info = BookInfoStub(**kwargs)
+        # other child
+        kwargs = info_args(u"Different Child")
+        kwargs.update(tags)
+        kwargs['kind'] = 'K2'
+        diffchild_info = BookInfoStub(parts=[diffgchild_info.url], **kwargs)
+        # parent
+        kwargs = info_args(u"Parent")
+        kwargs.update(tags)
+        parent_info = BookInfoStub(parts=[child_info.url, diffchild_info.url], **kwargs)
 
-        for book in models.Book.objects.all():
-            l_tag = models.Tag(name=book.title, slug='l-'+book.slug, category='book')
-            l_tag.save()
-            book.tags = list(book.tags) + [l_tag]
+        # create the books
+        book_file = ContentFile('<utwor />')
+        for info in gchild_info, child_info, diffgchild_info, diffchild_info, parent_info:
+            book = models.Book.from_text_and_meta(book_file, info)
 
-
+        # useful tags
+        self.author = models.Tag.objects.get(name='Common Man', category='author')
+        tag_empty = models.Tag(name='Empty tag', slug='empty', category='author')
+        tag_empty.save()
+        
         self.client = Client()
+    
+    
+    def tearDown(self):
+        for book in models.Book.objects.all():
+            if book.xml_file:
+                book.xml_file.delete()
+            if book.html_file:
+                book.html_file.delete()
+
     
     def test_nonexistent_tag(self):
         """ Looking for a non-existent tag should yield 404 """
@@ -243,15 +277,136 @@ class BooksByTagFlat(TestCase):
         self.assertEqual(404, self.client.get('/katalog/parent/').status_code)
     
     def test_tag_empty(self):
-        """ Tag with no books should return no books and no related tags """
+        """ Tag with no books should return no books """
         context = self.client.get('/katalog/empty/').context
         self.assertEqual(0, len(context['object_list']))
-        self.assertEqual(0, len(context['categories']))
     
     def test_tag_common(self):
-        """ Filtering by tag should only yield top-level books """
-        context = self.client.get('/katalog/%s/' % self.tag_common.slug).context
-        self.assertEqual(list(context['object_list']),
-                         [self.parent])
+        """ Filtering by tag should only yield top-level books. """
+        context = self.client.get('/katalog/%s/' % self.author.slug).context
+        self.assertEqual([book.title for book in context['object_list']],
+                         ['Parent'])
 
+    def test_tag_child(self):
+        """ Filtering by child's tag should yield the child """
+        context = self.client.get('/katalog/k2/').context
+        self.assertEqual([book.title for book in context['object_list']],
+                         ['Different Child'])
+
+    def test_tag_child_jump(self):
+        """ Of parent and grandchild, only parent should be returned. """
+        context = self.client.get('/katalog/k/').context
+        self.assertEqual([book.title for book in context['object_list']],
+                         ['Parent'])
+        
+
+class TagRelatedTagsTests(TestCase):
+    """ tests the /katalog/tag/ page for related tags """
+    
+    def setUp(self):
+        author = PersonStub(("Common",), "Man")
+
+        gchild_info = BookInfoStub(author=author, genre="GchildGenre", epoch='Epoch', kind="Kind", 
+                                   **info_args(u"GChild"))
+        child1_info = BookInfoStub(author=author, genre="ChildGenre", epoch='Epoch', kind="ChildKind",
+                                   parts=[gchild_info.url],
+                                   **info_args(u"Child1"))
+        child2_info = BookInfoStub(author=author, genre="ChildGenre", epoch='Epoch', kind="ChildKind",
+                                   **info_args(u"Child2"))
+        parent_info = BookInfoStub(author=author, genre="Genre", epoch='Epoch', kind="Kind", 
+                                   parts=[child1_info.url, child2_info.url],
+                                   **info_args(u"Parent"))
+        
+        for info in gchild_info, child1_info, child2_info, parent_info:
+            book_text = """<utwor><opowiadanie><akap>
+                <begin id="m01" />
+                    <motyw id="m01">Theme, %sTheme</motyw>
+                    Ala ma kąta
+                <end id="m01" />
+                </akap></opowiadanie></utwor>
+                """ % info.title.encode('utf-8')
+            book = models.Book.from_text_and_meta(ContentFile(book_text), info)
+            book.save()
+        
+        tag_empty = models.Tag(name='Empty tag', slug='empty', category='author')
+        tag_empty.save()
+
+        self.client = Client()
+    
+    
+    def tearDown(self):
+        for book in models.Book.objects.all():
+            if book.xml_file:
+                book.xml_file.delete()
+            if book.html_file:
+                book.html_file.delete()
+    
+    
+    def test_empty(self):
+        """ empty tag should have no related tags """
+        
+        cats = self.client.get('/katalog/empty/').context['categories']
+        self.assertEqual(cats, {}, 'tags related to empty tag')
+    
+    
+    def test_has_related(self):
+        """ related own and descendants' tags should be generated """
+        
+        cats = self.client.get('/katalog/kind/').context['categories']
+        self.assertTrue('Common Man' in [tag.name for tag in cats['author']],
+                        'missing `author` related tag')
+        self.assertTrue('Epoch' in [tag.name for tag in cats['epoch']],
+                        'missing `epoch` related tag')
+        self.assertTrue("ChildKind" in [tag.name for tag in cats['kind']],
+                        "missing `kind` related tag")
+        self.assertTrue("Genre" in [tag.name for tag in cats['genre']],
+                        'missing `genre` related tag')
+        self.assertTrue("ChildGenre" in [tag.name for tag in cats['genre']],
+                        "missing child's related tag")
+        self.assertTrue("GchildGenre" in [tag.name for tag in cats['genre']],
+                        "missing grandchild's related tag")
+        self.assertTrue('Theme' in [tag.name for tag in cats['theme']],
+                        "missing related theme")
+        self.assertTrue('Child1Theme' in [tag.name for tag in cats['theme']],
+                        "missing child's related theme")
+        self.assertTrue('GChildTheme' in [tag.name for tag in cats['theme']],
+                        "missing grandchild's related theme")
+    
+    
+    def test_related_differ(self):
+        """ related tags shouldn't include filtering tags """
+        
+        cats = self.client.get('/katalog/kind/').context['categories']
+        self.assertFalse('Kind' in [tag.name for tag in cats['kind']],
+                         'filtering tag wrongly included in related')
+        cats = self.client.get('/katalog/theme/').context['categories']
+        self.assertFalse('Theme' in [tag.name for tag in cats['theme']],
+                         'filtering theme wrongly included in related')
+    
+    
+    def test_parent_tag_once(self):
+        """ if parent and descendants have a common tag, count it only once """
+
+        cats = self.client.get('/katalog/kind/').context['categories']
+        self.assertEqual([(tag.name, tag.count) for tag in cats['epoch']],
+                         [('Epoch', 1)],
+                         'wrong related tag epoch tag on tag page')
+    
+    
+    def test_siblings_tags_add(self):
+        """ if children have tags and parent hasn't, count the children """
+        
+        cats = self.client.get('/katalog/epoch/').context['categories']
+        self.assertTrue(('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
+                    'wrong related kind tags on tag page')
+    
+    def test_themes_add(self):
+        """ all occurencies of theme should be counted """
+
+        cats = self.client.get('/katalog/epoch/').context['categories']
+        self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
+                    'wrong related theme count')
+        
+        
+    
 

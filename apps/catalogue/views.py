@@ -8,6 +8,8 @@ import sys
 import pprint
 import traceback
 import re
+import itertools
+from operator import itemgetter 
 
 from django.conf import settings
 from django.template import RequestContext
@@ -98,7 +100,7 @@ def tagged_object_list(request, tags=''):
 
         if shelf_tags:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
-            l_tags = [models.Tag.objects.get(slug='l-' + book.slug) for book in books]
+            l_tags = [book.book_tag() for book in books]
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
 
         # newtagging goes crazy if we just try:
@@ -114,26 +116,29 @@ def tagged_object_list(request, tags=''):
 
             objects = fragments
     else:
-        books = models.Book.tagged.with_all(tags).order_by()
-        l_tags = [models.Tag.objects.get(slug='l-' + book.slug) for book in books]
-        book_keys = [book.pk for book in books]
-        # newtagging goes crazy if we just try:
-        #related_tags = models.Tag.objects.usage_for_queryset(books, counts=True, 
-        #                    extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
-        if book_keys:
-            related_tags = models.Book.tags.usage(counts=True,
-                                filters={'pk__in': book_keys},
-                                extra={'where': ["catalogue_tag.category NOT IN ('set', 'book', 'theme')"]})
-            categories = split_tags(related_tags)
-
-            fragment_keys = [fragment.pk for fragment in models.Fragment.tagged.with_any(l_tags)]
-            if fragment_keys:
-                categories['theme'] = models.Fragment.tags.usage(counts=True,
-                                    filters={'pk__in': fragment_keys},
-                                    extra={'where': ["catalogue_tag.category = 'theme'"]})
-
-            books = books.exclude(parent__in=book_keys)
-            objects = books
+        # get relevant books and their tags
+        objects = models.Book.tagged.with_all(tags).order_by()
+        l_tags = [book.book_tag() for book in objects]
+        # eliminate descendants
+        descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
+        if descendants_keys:
+            objects = objects.exclude(pk__in=descendants_keys)
+        
+        # get related tags from `tag_counter` and `theme_counter`
+        related_counts = {}
+        tags_pks = [tag.pk for tag in tags]
+        for book in objects:
+            for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
+                if tag_pk in tags_pks:
+                    continue
+                related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
+        related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
+        related_tags = [tag for tag in related_tags if tag not in tags]
+        for tag in related_tags:
+            tag.count = related_counts[tag.pk]
+        
+        categories = split_tags(related_tags)
+        del related_tags
 
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
@@ -174,7 +179,7 @@ def book_detail(request, slug):
     except models.Book.DoesNotExist:
         return book_stub_detail(request, slug)
 
-    book_tag = get_object_or_404(models.Tag, slug='l-' + slug)
+    book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
@@ -445,7 +450,7 @@ def download_shelf(request, slug):
     if form.is_valid():
         formats = form.cleaned_data['formats']
     if len(formats) == 0:
-        formats = ['pdf', 'odt', 'txt', 'mp3', 'ogg']
+        formats = ['pdf', 'epub', 'odt', 'txt', 'mp3', 'ogg']
 
     # Create a ZIP archive
     temp = tempfile.TemporaryFile()
@@ -455,6 +460,9 @@ def download_shelf(request, slug):
         if 'pdf' in formats and book.pdf_file:
             filename = book.pdf_file.path
             archive.write(filename, str('%s.pdf' % book.slug))
+        if 'epub' in formats and book.epub_file:
+            filename = book.epub_file.path
+            archive.write(filename, str('%s.epub' % book.slug))
         if 'odt' in formats and book.odt_file:
             filename = book.odt_file.path
             archive.write(filename, str('%s.odt' % book.slug))
@@ -485,11 +493,13 @@ def shelf_book_formats(request, shelf):
     """
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set')
 
-    formats = {'pdf': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False}
+    formats = {'pdf': False, 'epub': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False}
 
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if book.pdf_file:
             formats['pdf'] = True
+        if book.epub_file:
+            formats['epub'] = True
         if book.odt_file:
             formats['odt'] = True
         if book.txt_file:

@@ -119,6 +119,7 @@ class Book(models.Model):
     xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
     html_file = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
     pdf_file = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
+    epub_file = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)
     odt_file = models.FileField(_('ODT file'), upload_to=book_upload_path('odt'), blank=True)
     txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
     mp3_file = models.FileField(_('MP3 file'), upload_to=book_upload_path('mp3'), blank=True)
@@ -129,6 +130,9 @@ class Book(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
+    
+    _tag_counter = JSONField(editable=False, default='')
+    _theme_counter = JSONField(editable=False, default='')
 
     class AlreadyExists(Exception):
         pass
@@ -141,7 +145,7 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False, reset_short_html=True):
+    def save(self, force_insert=False, force_update=False, reset_short_html=True, refresh_mp3=True):
         if reset_short_html:
             # Reset _short_html during save
             for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
@@ -149,7 +153,7 @@ class Book(models.Model):
 
         book = super(Book, self).save(force_insert, force_update)
 
-        if self.mp3_file:
+        if refresh_mp3 and self.mp3_file:
             print self.mp3_file, self.mp3_file.path
             extra_info = self.get_extra_info_value()
             extra_info.update(self.get_mp3_info())
@@ -165,6 +169,16 @@ class Book(models.Model):
     @property
     def name(self):
         return self.title
+    
+    def book_tag(self):
+        slug = ('l-' + self.slug)[:120]
+        book_tag, created = Tag.objects.get_or_create(slug=slug)
+        if created:
+            book_tag.name = self.title[:50]
+            book_tag.sort_key = slug
+            book_tag.category = 'book'
+            book_tag.save()
+        return book_tag
 
     def short_html(self):
         key = '_short_html_%s' % get_language()
@@ -181,6 +195,8 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', kwargs={'slug': self.slug}), _('Read online')))
             if self.pdf_file:
                 formats.append(u'<a href="%s">PDF</a>' % self.pdf_file.url)
+            if self.epub_file:
+                formats.append(u'<a href="%s">EPUB</a>' % self.epub_file.url)
             if self.odt_file:
                 formats.append(u'<a href="%s">ODT</a>' % self.odt_file.url)
             if self.txt_file:
@@ -214,6 +230,11 @@ class Book(models.Model):
         return bool(self.pdf_file)
     has_pdf_file.short_description = 'PDF'
     has_pdf_file.boolean = True
+
+    def has_epub_file(self):
+        return bool(self.epub_file)
+    has_epub_file.short_description = 'EPUB'
+    has_epub_file.boolean = True
 
     def has_odt_file(self):
         return bool(self.odt_file)
@@ -276,15 +297,9 @@ class Book(models.Model):
                 tag.save()
             book_tags.append(tag)
 
-        book_tag, created = Tag.objects.get_or_create(slug=('l-' + book.slug)[:120])
-        if created:
-            book_tag.name = book.title[:50]
-            book_tag.sort_key = ('l-' + book.slug)[:120]
-            book_tag.category = 'book'
-            book_tag.save()
-        book_tags.append(book_tag)
-
         book.tags = book_tags
+
+        book_tag = book.book_tag()
 
         if hasattr(book_info, 'parts'):
             for n, part_url in enumerate(book_info.parts):
@@ -300,6 +315,8 @@ class Book(models.Model):
         book_descendants = list(book.children.all())
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)
+            child_book.tags = list(child_book.tags) + [book_tag]
+            child_book.save()
             for fragment in child_book.fragments.all():
                 fragment.tags = set(list(fragment.tags) + [book_tag])
             book_descendants += list(child_book.children.all())
@@ -344,6 +361,42 @@ class Book(models.Model):
 
         book.save()
         return book
+    
+    
+    def refresh_tag_counter(self):
+        tags = {}
+        for child in self.children.all().order_by():
+            for tag_pk, value in child.tag_counter.iteritems():
+                tags[tag_pk] = tags.get(tag_pk, 0) + value
+        for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
+            tags[tag.pk] = 1
+        self.set__tag_counter_value(tags)
+        self.save(reset_short_html=False, refresh_mp3=False)
+        return tags
+    
+    @property
+    def tag_counter(self):
+        if self._tag_counter == '':
+            return self.refresh_tag_counter()
+        return dict((int(k), v) for k, v in self.get__tag_counter_value().iteritems())
+        #return self.get__tag_counter_value()
+
+    def refresh_theme_counter(self):
+        tags = {}
+        for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
+            for tag in fragment.tags.filter(category='theme').order_by():
+                tags[tag.pk] = tags.get(tag.pk, 0) + 1
+        self.set__theme_counter_value(tags)
+        self.save(reset_short_html=False, refresh_mp3=False)
+        return tags
+    
+    @property
+    def theme_counter(self):
+        if self._theme_counter == '':
+            return self.refresh_theme_counter()
+        return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
+        return self.get__theme_counter_value()
+    
 
 
 class Fragment(models.Model):

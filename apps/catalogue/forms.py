@@ -71,6 +71,7 @@ FORMATS = (
     ('pdf', 'PDF'),
     ('odt', 'ODT'),
     ('txt', 'TXT'),
+    ('epub', 'EPUB'),
 )
 
 
