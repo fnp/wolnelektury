@@ -186,6 +186,9 @@ THUMBNAIL_PROCESSORS = (
 
 TRANSLATION_REGISTRY = "wolnelektury.translation"
 
+# limit number of filtering tags
+MAX_TAG_LIST = 6
+
 # Load localsettings, if they exist
 try:
     from localsettings import *

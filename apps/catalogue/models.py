@@ -43,7 +43,7 @@ class TagSubcategoryManager(models.Manager):
 
 class Tag(TagBase):
     name = models.CharField(_('name'), max_length=50, db_index=True)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False,
         db_index=True, choices=TAG_CATEGORIES)
@@ -55,11 +55,22 @@ class Tag(TagBase):
     death = models.IntegerField(_(u'year of death'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
+    
+    categories_rev = {
+        'autor': 'author',
+        'epoka': 'epoch',
+        'rodzaj': 'kind',
+        'gatunek': 'genre',
+        'motyw': 'theme',
+        'polka': 'set',
+    }
+    categories_dict = dict((item[::-1] for item in categories_rev.iteritems()))
 
     class Meta:
         ordering = ('sort_key',)
         verbose_name = _('tag')
         verbose_name_plural = _('tags')
+        unique_together = (("slug", "category"),)
 
     def __unicode__(self):
         return self.name
@@ -69,7 +80,7 @@ class Tag(TagBase):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.tagged_object_list', [self.slug])
+        return ('catalogue.views.tagged_object_list', [self.url_chunk])
 
     def has_description(self):
         return len(self.description) > 0
@@ -90,10 +101,26 @@ class Tag(TagBase):
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):
-            tag_slugs = tags.split('/')
-            return [Tag.objects.get(slug=slug) for slug in tag_slugs]
+            real_tags = []
+            category = None
+            for name in tags.split('/'):
+                if name in Tag.categories_rev:
+                    category = Tag.categories_rev[name]
+                else:
+                    if category:
+                        real_tags.append(Tag.objects.get(slug=name, category=category))
+                        category = None
+                    else:
+                        real_tags.append(Tag.objects.get(slug=name))
+            if category:
+                raise Http404
+            return real_tags
         else:
             return TagBase.get_tag_list(tags)
+    
+    @property
+    def url_chunk(self):
+        return '/'.join((Tag.categories_dict[self.category], self.slug))
 
 
 # TODO: why is this hard-coded ? 
@@ -172,11 +199,10 @@ class Book(models.Model):
     
     def book_tag(self):
         slug = ('l-' + self.slug)[:120]
-        book_tag, created = Tag.objects.get_or_create(slug=slug)
+        book_tag, created = Tag.objects.get_or_create(slug=slug, category='book')
         if created:
             book_tag.name = self.title[:50]
             book_tag.sort_key = slug
-            book_tag.category = 'book'
             book_tag.save()
         return book_tag
 
@@ -289,11 +315,10 @@ class Book(models.Model):
             if category == 'author':
                 tag_sort_key = tag_name.last_name
                 tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
-            tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name))
+            tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
             if created:
                 tag.name = tag_name
                 tag.sort_key = slughifi(tag_sort_key)
-                tag.category = category
                 tag.save()
             book_tags.append(tag)
 
@@ -345,11 +370,10 @@ class Book(models.Model):
                     continue
                 themes = []
                 for theme_name in theme_names:
-                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name))
+                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
                     if created:
                         tag.name = theme_name
                         tag.sort_key = slughifi(theme_name)
-                        tag.category = 'theme'
                         tag.save()
                     themes.append(tag)
                 new_fragment.save()

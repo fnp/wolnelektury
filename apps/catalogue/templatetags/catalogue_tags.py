@@ -11,6 +11,7 @@ from django.utils.encoding import smart_str
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db.models import Q
+from django.conf import settings
 
 
 register = template.Library()
@@ -138,7 +139,11 @@ def authentication_form():
 def breadcrumbs(tags, search_form=True):
     from catalogue.forms import SearchForm
     context = {'tag_list': tags}
-    if search_form and len(tags) < 6:
+    try:
+        max_tag_list = settings.MAX_TAG_LIST
+    except AttributeError:
+        max_tag_list = -1
+    if search_form and (max_tag_list == -1 or len(tags) < max_tag_list):
         context['search_form'] = SearchForm(tags=tags)
     return context
 
@@ -182,10 +187,10 @@ class CatalogueURLNode(Node):
             else:
                 tags_to_remove.append(tag)
             
-        tag_slugs = [tag.slug for tag in tags_to_add]
+        tag_slugs = [tag.url_chunk for tag in tags_to_add]
         for tag in tags_to_remove:
             try:
-                tag_slugs.remove(tag.slug)
+                tag_slugs.remove(tag.url_chunk)
             except KeyError:
                 pass
         

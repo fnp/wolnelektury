@@ -74,14 +74,16 @@ def book_list(request):
 
 
 def tagged_object_list(request, tags=''):
-    # Prevent DoS attacks on our database
-    if len(tags.split('/')) > 6:
-        raise Http404
-
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
         raise Http404
+
+    try:
+        if len(tags) > settings.MAX_TAG_LIST:
+            raise Http404
+    except AttributeError:
+        pass
 
     if len([tag for tag in tags if tag.category == 'book']):
         raise Http404
@@ -164,8 +166,8 @@ def tagged_object_list(request, tags=''):
 
 def book_fragments(request, book_slug, theme_slug):
     book = get_object_or_404(models.Book, slug=book_slug)
-    book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug)
-    theme = get_object_or_404(models.Tag, slug=theme_slug)
+    book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug, category='book')
+    theme = get_object_or_404(models.Tag, slug=theme_slug, category='theme')
     fragments = models.Fragment.tagged.with_all([book_tag, theme])
 
     form = forms.SearchForm()
@@ -288,7 +290,7 @@ def _get_result_link(match, tag_list):
         return match.get_absolute_url()
     else:
         return reverse('catalogue.views.tagged_object_list',
-            kwargs={'tags': '/'.join(tag.slug for tag in tag_list + [match])}
+            kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])}
         )
 
 def _get_result_type(match):

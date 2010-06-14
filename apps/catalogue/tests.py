@@ -434,3 +434,43 @@ class CleanTagRelationTests(TestCase):
         models.Tag.objects.all().delete()
         cats = self.client.get('/katalog/lektura/book/').context['categories']
         self.assertEqual(cats, {})
+
+
+class TestIdenticalTag(TestCase):
+    
+    def setUp(self):
+        author = PersonStub(("A",), "B")
+
+        book_info = BookInfoStub(author=author, genre="A B", epoch='A B', kind="A B", 
+                                   **info_args(u"A B"))
+        book_text = """<utwor><opowiadanie><akap>
+            <begin id="m01" /><motyw id="m01">A B</motyw>Ala ma kota
+            <end id="m01" />
+            </akap></opowiadanie></utwor>
+            """
+        book = models.Book.from_text_and_meta(ContentFile(book_text), book_info)
+        book.save()
+        
+        self.client = Client()
+    
+    
+    def tearDown(self):
+        models.Book.objects.all().delete()
+    
+    
+    def test_book_tags(self):
+        """ there should be all related tags in relevant categories """
+        
+        cats = self.client.get('/katalog/lektura/a-b/').context['categories']
+        for category in 'author', 'kind', 'genre', 'epoch', 'theme':
+            self.assertTrue('A B' in [tag.name for tag in cats[category]],
+                            'missing related tag for %s' % category)
+
+    def test_qualified_url(self):
+        categories = {'author': 'autor', 'theme': 'motyw', 'epoch': 'epoka', 'kind':'rodzaj', 'genre':'gatunek'}
+        for cat, localcat in categories.iteritems():
+            context = self.client.get('/katalog/%s/a-b/' % localcat).context
+            self.assertEqual(1, len(context['object_list']))
+            self.assertNotEqual({}, context['categories'])
+            self.assertFalse(cat in context['categories'])
+
