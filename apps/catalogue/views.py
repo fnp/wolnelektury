@@ -79,11 +79,11 @@ def differentiate_tags(request, tags, ambiguous_slugs):
     options = []
     for tag in models.Tag.objects.exclude(category='book').filter(slug=ambiguous_slugs[0]):
         options.append({
-            'url_args': '/'.join((beginning, tag.url_chunk, unparsed)).rstrip('/'),
-            'tags': tags + [tag]
+            'url_args': '/'.join((beginning, tag.url_chunk, unparsed)).strip('/'),
+            'tags': [tag]
         })
     return render_to_response('catalogue/differentiate_tags.html',
-                {'tags': tags, 'options': options, 'unparsed': unparsed}, 
+                {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]}, 
                 context_instance=RequestContext(request))
 
 
