@@ -131,8 +131,8 @@ class Book(models.Model):
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     
-    _tag_counter = JSONField(editable=False, default='')
-    _theme_counter = JSONField(editable=False, default='')
+    _tag_counter = JSONField(null=True, editable=False)
+    _theme_counter = JSONField(null=True, editable=False)
 
     class AlreadyExists(Exception):
         pass
@@ -376,10 +376,9 @@ class Book(models.Model):
     
     @property
     def tag_counter(self):
-        if self._tag_counter == '':
+        if self._tag_counter is None:
             return self.refresh_tag_counter()
         return dict((int(k), v) for k, v in self.get__tag_counter_value().iteritems())
-        #return self.get__tag_counter_value()
 
     def refresh_theme_counter(self):
         tags = {}
@@ -392,10 +391,9 @@ class Book(models.Model):
     
     @property
     def theme_counter(self):
-        if self._theme_counter == '':
+        if self._theme_counter is None:
             return self.refresh_theme_counter()
         return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
-        return self.get__theme_counter_value()
     
 
 

@@ -9,7 +9,7 @@ class Migration(DataMigration):
     def forwards(self, orm):
         """ Look for HTML files without any real content and delete them """
         from lxml import etree
-        from librarian import html_has_content
+        from librarian.html import html_has_content
         
         for book in orm.Book.objects.exclude(html_file=''):
             if not html_has_content(etree.parse(book.html_file)):
@@ -64,8 +64,8 @@ class Migration(DataMigration):
             '_short_html_pl': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             '_short_html_ru': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             '_short_html_uk': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
-            '_tag_counter': ('catalogue.fields.JSONField', [], {'default': "''"}),
-            '_theme_counter': ('catalogue.fields.JSONField', [], {'default': "''"}),
+            '_tag_counter': ('catalogue.fields.JSONField', [], {'null': 'True'}),
+            '_theme_counter': ('catalogue.fields.JSONField', [], {'null': 'True'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'epub_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),

@@ -50,8 +50,9 @@ class Migration(SchemaMigration):
             ('page_title_ru', self.gf('django.db.models.fields.CharField')(max_length=120, null=True, blank=True)),
         ))
 
-        from django.core.management import call_command
-        call_command("loaddata", "wl_data")
+        if not db.dry_run:
+            from django.core.management import call_command
+            call_command("loaddata", "wl_data")
 
         db.send_create_signal('infopages', ['InfoPage'])
     

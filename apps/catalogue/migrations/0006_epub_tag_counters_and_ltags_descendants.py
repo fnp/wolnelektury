@@ -19,8 +19,8 @@ class Migration(SchemaMigration):
         """ Add _tag_counter and make sure all books carry their ancestors' l-tags """
 
         # Adding fields
-        db.add_column('catalogue_book', '_tag_counter', self.gf('catalogue.fields.JSONField')(default=''), keep_default=False)
-        db.add_column('catalogue_book', '_theme_counter', self.gf('catalogue.fields.JSONField')(default=''), keep_default=False)
+        db.add_column('catalogue_book', '_tag_counter', self.gf('catalogue.fields.JSONField')(null=True))
+        db.add_column('catalogue_book', '_theme_counter', self.gf('catalogue.fields.JSONField')(null=True))
         db.add_column('catalogue_book', 'epub_file', self.gf('django.db.models.fields.files.FileField')(default='', max_length=100, blank=True), keep_default=False)
 
         def ltag_descendants(book, ltags=None):
@@ -104,8 +104,8 @@ class Migration(SchemaMigration):
             '_short_html_pl': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             '_short_html_ru': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             '_short_html_uk': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
-            '_tag_counter': ('catalogue.fields.JSONField', [], {'default': "''"}),
-            '_theme_counter': ('catalogue.fields.JSONField', [], {'default': "''"}),
+            '_tag_counter': ('catalogue.fields.JSONField', [], {'null': 'True'}),
+            '_theme_counter': ('catalogue.fields.JSONField', [], {'null': 'True'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'epub_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
