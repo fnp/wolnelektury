@@ -129,11 +129,7 @@ class BookImportLogicTests(TestCase):
         self.expected_tags.sort()
 
     def tearDown(self):
-        for book in models.Book.objects.all():
-            if book.xml_file:
-                book.xml_file.delete()
-            if book.html_file:
-                book.html_file.delete()
+        models.Book.objects.all().delete()
 
     def test_empty_book(self):
         BOOK_TEXT = "<utwor />"
@@ -261,11 +257,7 @@ class BooksByTagTests(TestCase):
     
     
     def tearDown(self):
-        for book in models.Book.objects.all():
-            if book.xml_file:
-                book.xml_file.delete()
-            if book.html_file:
-                book.html_file.delete()
+        models.Book.objects.all().delete()
 
     
     def test_nonexistent_tag(self):
@@ -321,7 +313,7 @@ class TagRelatedTagsTests(TestCase):
             book_text = """<utwor><opowiadanie><akap>
                 <begin id="m01" />
                     <motyw id="m01">Theme, %sTheme</motyw>
-                    Ala ma kąta
+                    Ala ma kota
                 <end id="m01" />
                 </akap></opowiadanie></utwor>
                 """ % info.title.encode('utf-8')
@@ -335,11 +327,7 @@ class TagRelatedTagsTests(TestCase):
     
     
     def tearDown(self):
-        for book in models.Book.objects.all():
-            if book.xml_file:
-                book.xml_file.delete()
-            if book.html_file:
-                book.html_file.delete()
+        models.Book.objects.all().delete()
     
     
     def test_empty(self):
@@ -406,7 +394,43 @@ class TagRelatedTagsTests(TestCase):
         cats = self.client.get('/katalog/epoch/').context['categories']
         self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
                     'wrong related theme count')
-        
-        
     
 
+
+class CleanTagRelationTests(TestCase):
+    """ tests for tag relations cleaning after deleting things """
+    
+    def setUp(self):
+        author = PersonStub(("Common",), "Man")
+
+        book_info = BookInfoStub(author=author, genre="G", epoch='E', kind="K", 
+                                   **info_args(u"Book"))
+        book_text = """<utwor><opowiadanie><akap>
+            <begin id="m01" /><motyw id="m01">Theme</motyw>Ala ma kota
+            <end id="m01" />
+            </akap></opowiadanie></utwor>
+            """
+        book = models.Book.from_text_and_meta(ContentFile(book_text), book_info)
+        book.save()
+        
+        self.client = Client()
+    
+    
+    def tearDown(self):
+        models.Book.objects.all().delete()
+    
+    
+    def test_delete_objects(self):
+        """ there should be no related tags left after deleting some objects """
+        
+        models.Book.objects.all().delete()
+        cats = self.client.get('/katalog/k/').context['categories']
+        self.assertEqual({}, cats)
+
+
+    def test_deleted_tag(self):
+        """ there should be no tag relations left after deleting tags """
+        
+        models.Tag.objects.all().delete()
+        cats = self.client.get('/katalog/lektura/book/').context['categories']
+        self.assertEqual(cats, {})
