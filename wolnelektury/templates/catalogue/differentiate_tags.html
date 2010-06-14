@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags %}
+
+{% block title %}{% title_from_tags tags %} w WolneLektury.pl{% endblock %}
+
+{% block bodyid %}differentiate_tags{% endblock %}
+
+{% block body %}
+    <h1>{% title_from_tags tags %}</h1>
+    {% breadcrumbs tags %}
+    
+	<p>{% trans "The criteria are ambiguous. Please select one of the following options:" %}</p>
+    <div id="books-list">
+        {% for option in options %}
+        <div class="book-description"
+            <p><a href="{% url tagged_object_list option.url_args %}">{% title_from_tags option.tags %}{% if unparsed %}, &hellip;{% endif %}</a></p>
+		</div>
+        {% endfor %}
+    </div>
+
+    <div id="set-window">
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+        <div class="target">
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+        </div>
+    </div>
+{% endblock %}

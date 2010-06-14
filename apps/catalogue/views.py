@@ -73,11 +73,27 @@ def book_list(request):
         context_instance=RequestContext(request))
 
 
+def differentiate_tags(request, tags, ambiguous_slugs):
+    beginning = '/'.join(tag.url_chunk for tag in tags)
+    unparsed = '/'.join(ambiguous_slugs[1:])
+    options = []
+    for tag in models.Tag.objects.exclude(category='book').filter(slug=ambiguous_slugs[0]):
+        options.append({
+            'url_args': '/'.join((beginning, tag.url_chunk, unparsed)).rstrip('/'),
+            'tags': tags + [tag]
+        })
+    return render_to_response('catalogue/differentiate_tags.html',
+                {'tags': tags, 'options': options, 'unparsed': unparsed}, 
+                context_instance=RequestContext(request))
+
+
 def tagged_object_list(request, tags=''):
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
         raise Http404
+    except models.Tag.MultipleObjectsReturned, e:
+        return differentiate_tags(request, e.tags, e.ambiguous_slugs)
 
     try:
         if len(tags) > settings.MAX_TAG_LIST:

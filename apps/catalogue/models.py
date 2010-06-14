@@ -102,8 +102,10 @@ class Tag(TagBase):
     def get_tag_list(tags):
         if isinstance(tags, basestring):
             real_tags = []
+            ambiguous_slugs = []
             category = None
-            for name in tags.split('/'):
+            tags_splitted = tags.split('/')
+            for index, name in enumerate(tags_splitted):
                 if name in Tag.categories_rev:
                     category = Tag.categories_rev[name]
                 else:
@@ -111,10 +113,22 @@ class Tag(TagBase):
                         real_tags.append(Tag.objects.get(slug=name, category=category))
                         category = None
                     else:
-                        real_tags.append(Tag.objects.get(slug=name))
+                        try:
+                            real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
+                        except Tag.MultipleObjectsReturned, e:
+                            ambiguous_slugs.append(name)
+                            
             if category:
-                raise Http404
-            return real_tags
+                # something strange left off
+                raise Tag.DoesNotExist()
+            if ambiguous_slugs:
+                # some tags should be qualified
+                e = Tag.MultipleObjectsReturned()
+                e.tags = real_tags
+                e.ambiguous_slugs = ambiguous_slugs
+                raise e
+            else:
+                return real_tags
         else:
             return TagBase.get_tag_list(tags)
     
