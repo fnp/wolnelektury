@@ -26,6 +26,7 @@ class SearchForm(forms.Form):
         tags = kwargs.pop('tags', [])
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre')
+	self.fields['q'].widget.attrs['style'] = 'float: left; width: 200px; border: medium none; height: 15px; margin-top: 2px;'
         self.fields['tags'].initial = '/'.join(tag.slug for tag in Tag.get_tag_list(tags))
 
 

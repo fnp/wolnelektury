@@ -133,11 +133,12 @@ em {
 }
 
 #search-form li {
-    margin: 0;
+    margin: 2px 0 0 5px;
     padding: 0;
     list-style: none;
     display: block;
     float: left;
+    /*margin-left: 5px;*/
 }
 
 #search-form li.category, #search-form li.book-title {
