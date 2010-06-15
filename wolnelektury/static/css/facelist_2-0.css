@@ -68,11 +68,9 @@ ul.facelist-selections li.facelist-selection-item.blur a.facelist-close {
 
 ul.facelist-selections li:hover.facelist-selection-item {
 	background-color: #d8dfea;
-	border: solid 1px #ccd5e4;
 }
 
 ul.facelist-selections li.facelist-selection-item.selected {
-	border-color: #3b5998;
 	background-color: #5670a6;
 	color: #fff; 
 }
