@@ -21,10 +21,11 @@
         {% with tags|last as last_tag %}
         {% if last_tag.has_description %}
             <div id="description">
-                {{ last_tag.description|safe }}
+                <div id='description-long'>{{ last_tag.description|safe }}</div>
+                <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:30 }}</div>
             </div>
             <div class="clearboth"></div>
-            <div id="toggle-description"><p>{% trans "Hide description" %} ▲</p></div>
+            <div id="toggle-description"><p></p></div>
         {% endif %}
         {% if shelf_is_set %}
             <a id="download-shelf" href="{% url download_shelf last_tag.slug %}">
