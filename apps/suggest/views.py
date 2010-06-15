@@ -11,7 +11,7 @@ from suggest import forms
 from suggest.models import Suggestion
 
 # FIXME - shouldn't be in catalogue
-from catalogue.views import LazyEncoder 
+from catalogue.views import LazyEncoder
 
 
 #@require_POST

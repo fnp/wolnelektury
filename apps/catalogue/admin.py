@@ -20,7 +20,7 @@ class TagAdmin(admin.ModelAdmin):
 
 class BookAdmin(TaggableModelAdmin):
     tag_model = Tag
-    
+
     list_display = ('title', 'slug', 'has_pdf_file', 'has_epub_file', 'has_odt_file', 'has_html_file', 'has_description',)
     search_fields = ('title',)
     ordering = ('title',)
@@ -30,14 +30,14 @@ class BookAdmin(TaggableModelAdmin):
 
 class FragmentAdmin(TaggableModelAdmin):
     tag_model = Tag
-    
+
     list_display = ('book', 'anchor',)
     ordering = ('book', 'anchor',)
 
 
 class BookStubAdmin(admin.ModelAdmin):
     # tag_model = Tag
-    
+
     list_display = ('title', 'author', 'slug','pd')
     search_fields = ('title','author')
     ordering = ('title',)

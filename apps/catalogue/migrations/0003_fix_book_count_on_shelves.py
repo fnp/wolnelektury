@@ -23,11 +23,11 @@ class Migration(DataMigration):
                 'tagged_item': qn(orm.TagRelation._meta.db_table),
                 'tag_id': tag.pk,
             }
-    
+
             cursor = connection.cursor()
             cursor.execute(query)
             book_count = (cursor.fetchone() or (0,))[0]
-            
+
             tag.book_count = book_count
             tag.save()
 

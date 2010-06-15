@@ -123,7 +123,7 @@ try:
     (
         [JSONField], # Class(es) these apply to
         [], # Positional arguments (not used)
-        {}, # Keyword argument           
+        {}, # Keyword argument
     ), ], ["^catalogue\.fields\.JSONField"])
 except ImportError:
     pass

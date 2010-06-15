@@ -17,6 +17,6 @@ sorl-thumbnail>=3.2
 
 # home-brewed & dependencies
 lxml>=2.2.2
--e git+git://github.com/fnp/librarian.git@d43d87400dcc19851442#egg=librarian
+# -e git+git://github.com/fnp/librarian.git@d43d87400dcc19851442#egg=librarian
 
 # MySQL-python>=1.2,<2.0

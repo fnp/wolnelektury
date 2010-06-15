@@ -1,0 +1,3 @@
+[submodule "lib/librarian"]
+	path = lib/librarian
+	url = git://github.com/fnp/librarian.git

@@ -18,7 +18,7 @@
             {% for tag in tags %}
                 <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
             {% endfor %}
-        </ul>    
+        </ul>
         <p><a href="#" class="hide-all-tags">{% trans "Hide" %}</a></p>
     </div>
 {% endif %}

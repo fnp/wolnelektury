@@ -11,10 +11,10 @@
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
-    
+
     <div id="books-list">
     {% if book.in_pd %}
-		{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %} 
+		{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %}
 	{% else %}
 	    {% if book.pd %}
 			{% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}

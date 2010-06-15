@@ -39,7 +39,7 @@ class Command(BaseCommand):
 
         files_imported = 0
         files_skipped = 0
-        
+
         for dir_name in directories:
             if not os.path.isdir(dir_name):
                 print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
@@ -47,30 +47,30 @@ class Command(BaseCommand):
                 for file_name in os.listdir(dir_name):
                     file_path = os.path.join(dir_name, file_name)
                     file_base, ext = os.path.splitext(file_path)
-                    
+
                     # Skip files that are not XML files
                     if not ext == '.xml':
                         continue
-                    
+
                     if verbose > 0:
                         print "Parsing '%s'" % file_path
                     else:
                         sys.stdout.write('.')
                         sys.stdout.flush()
-                    
+
                     # Import book files
                     try:
                         book = Book.from_xml_file(file_path, overwrite=force)
                         files_imported += 1
-                        
+
                         if os.path.isfile(file_base + '.pdf'):
                             book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
                             if verbose:
-                                print "Importing %s.pdf" % file_base 
+                                print "Importing %s.pdf" % file_base
                         if os.path.isfile(file_base + '.epub'):
                             book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
                             if verbose:
-                                print "Importing %s.epub" % file_base 
+                                print "Importing %s.epub" % file_base
                         if os.path.isfile(file_base + '.odt'):
                             book.odt_file.save('%s.odt' % book.slug, File(file(file_base + '.odt')))
                             if verbose:
@@ -87,20 +87,20 @@ class Command(BaseCommand):
                             book.ogg_file.save('%s.ogg' % book.slug, File(file(os.path.join(dir_name, book.slug + '.ogg'))))
                             if verbose:
                                 print "Importing %s.ogg" % book.slug
-                            
+
                         book.save()
-                    
+
                     except Book.AlreadyExists, msg:
                         print self.style.ERROR('%s: Book already imported. Skipping. To overwrite use --force.' %
                             file_path)
                         files_skipped += 1
-                        
+
         # Print results
         print
         print "Results: %d files imported, %d skipped, %d total." % (
             files_imported, files_skipped, files_imported + files_skipped)
         print
-                        
+
         transaction.commit()
         transaction.leave_transaction_management()
 

@@ -21,7 +21,7 @@ class BookImportForm(forms.Form):
 class SearchForm(forms.Form):
     q = JQueryAutoCompleteField('/katalog/tags/', {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
     tags = forms.CharField(widget=forms.HiddenInput, required=False)
-    
+
     def __init__(self, *args, **kwargs):
         tags = kwargs.pop('tags', [])
         super(SearchForm, self).__init__(*args, **kwargs)
@@ -39,7 +39,7 @@ class UserSetsForm(forms.Form):
 
 
 class ObjectSetsForm(forms.Form):
-    def __init__(self, obj, user, *args, **kwargs):        
+    def __init__(self, obj, user, *args, **kwargs):
         super(ObjectSetsForm, self).__init__(*args, **kwargs)
         self.fields['set_ids'] = forms.MultipleChoiceField(
             label=_('Shelves'),
@@ -48,20 +48,20 @@ class ObjectSetsForm(forms.Form):
             initial=[tag.id for tag in obj.tags.filter(category='set', user=user)],
             widget=forms.CheckboxSelectMultiple
         )
-        
+
 
 class NewSetForm(forms.Form):
     name = forms.CharField(max_length=50, required=True)
-    
+
     def __init__(self, *args, **kwargs):
         super(NewSetForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['title'] = _('Name of the new shelf')
-        
+
     def save(self, user, commit=True):
         name = self.cleaned_data['name']
         new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=slughifi(name),
             category='set', user=user)
-        
+
         new_set.save()
         return new_set
 
@@ -78,7 +78,7 @@ FORMATS = (
 
 class DownloadFormatsForm(forms.Form):
     formats = forms.MultipleChoiceField(required=False, choices=FORMATS, widget=forms.CheckboxSelectMultiple)
-    
+
     def __init__(self, *args, **kwargs):
          super(DownloadFormatsForm, self).__init__(*args, **kwargs)
 

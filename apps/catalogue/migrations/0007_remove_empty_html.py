@@ -5,12 +5,12 @@ from south.v2 import DataMigration
 from django.db import models
 
 class Migration(DataMigration):
-    
+
     def forwards(self, orm):
         """ Look for HTML files without any real content and delete them """
         from lxml import etree
         from librarian.html import html_has_content
-        
+
         for book in orm.Book.objects.exclude(html_file=''):
             if not html_has_content(etree.parse(book.html_file)):
                 book.html_file.delete()
@@ -18,11 +18,11 @@ class Migration(DataMigration):
                 for key in filter(lambda x: x.startswith('_short_html'), book.__dict__):
                     book.__setattr__(key, '')
                 book.save()
-    
+
     def backwards(self, orm):
         """ Do nothing. We don't want empty HTML files anyway. """
         pass
-    
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -142,5 +142,5 @@ class Migration(DataMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['catalogue']

@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Suggestion'
         db.create_table('suggest_suggestion', (
             ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
@@ -18,14 +18,14 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
         ))
         db.send_create_signal('suggest', ['Suggestion'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Suggestion'
         db.delete_table('suggest_suggestion')
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -73,5 +73,5 @@ class Migration(SchemaMigration):
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'})
         }
     }
-    
+
     complete_apps = ['suggest']

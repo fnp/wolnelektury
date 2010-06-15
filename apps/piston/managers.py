@@ -48,15 +48,15 @@ class ResourceManager(models.Manager):
         if not self._default_resource:
             self._default_resource = self.get(name=name)
 
-        return self._default_resource        
+        return self._default_resource
 
 class TokenManager(KeyManager):
     def create_token(self, consumer, token_type, timestamp, user=None):
         """
         Shortcut to create a token with random key/secret.
         """
-        token, created = self.get_or_create(consumer=consumer, 
-                                            token_type=token_type, 
+        token, created = self.get_or_create(consumer=consumer,
+                                            token_type=token_type,
                                             timestamp=timestamp,
                                             user=user)
 
@@ -65,4 +65,4 @@ class TokenManager(KeyManager):
             token.save()
 
         return token
-        
+

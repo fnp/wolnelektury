@@ -16,14 +16,14 @@ class Document(models.Model):
     slideshare_id = models.CharField(_('slideshare ID'), blank=True, max_length=120)
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     def slideshare_player(self):
         base, ext = path.splitext(self.file.name)
         if ext in ('.ppt', '.pps', '.pot', '.pptx', '.potx', '.ppsx', '.odp', '.key', '.zip', '.pdf',):
             return 'ssplayer2.swf'
         else:
             return 'ssplayerd.swf'
-    
+
     class Meta:
         ordering = ['slug']
         verbose_name, verbose_name_plural = _("document"), _("documents")

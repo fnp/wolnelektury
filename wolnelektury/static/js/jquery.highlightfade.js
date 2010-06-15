@@ -12,9 +12,9 @@
  * As of now (Aug. 16, 2006) the plugin has been written with the 1.0.1 release of jQuery (rev 249) which
  * is available from http://jquery.com/src/jquery-1.0.1.js
  *
- * A note regarding rgb() syntax: I noticed that most browsers implement rgb syntax as either an integer 
- * (0-255) or percentage (0-100%) value for each field, that is, rgb(i/p,i/p,i/p); however, the W3C 
- * standard clearly defines it as "either three integer values or three percentage values" [http://www.w3.org/TR/CSS21/syndata.html] 
+ * A note regarding rgb() syntax: I noticed that most browsers implement rgb syntax as either an integer
+ * (0-255) or percentage (0-100%) value for each field, that is, rgb(i/p,i/p,i/p); however, the W3C
+ * standard clearly defines it as "either three integer values or three percentage values" [http://www.w3.org/TR/CSS21/syndata.html]
  * which I choose to follow despite the error redundancy of the typical behaviour browsers employ.
  *
  * Changelog:
@@ -42,7 +42,7 @@
  *        - Fixed bug where multiple events on the same element would speed each subsequent event
  *    0.1:
  *        - Initial Release
- * 
+ *
  * @author          Blair Mitchelmore (blair@offput.ca)
  * @version         0.5
  */
@@ -73,7 +73,7 @@ jQuery.fn.highlightFade = function(settings) {
 };
 
 jQuery.highlightFade = function(e,a,o,t) {
-	e.highlighting[a].timer = window.setInterval(function() { 
+	e.highlighting[a].timer = window.setInterval(function() {
 		var newR = t(e.highlighting[a].start[0],e.highlighting[a].end[0],e.highlighting[a].steps,e.highlighting[a].currentStep);
 		var newG = t(e.highlighting[a].start[1],e.highlighting[a].end[1],e.highlighting[a].steps,e.highlighting[a].currentStep);
 		var newB = t(e.highlighting[a].start[2],e.highlighting[a].end[2],e.highlighting[a].steps,e.highlighting[a].currentStep);
@@ -119,7 +119,7 @@ jQuery.highlightFade.getBaseValue = function(e,a,b) {
 	t = a = a || jQuery.highlightFade.defaults['attr'];
 	do {
 		s = jQuery(e).css(t || 'backgroundColor');
-		if ((s  != '' && s != 'transparent') || (e.tagName.toLowerCase() == "body") || (!b && e.highlighting && e.highlighting[a] && e.highlighting[a].end)) break; 
+		if ((s  != '' && s != 'transparent') || (e.tagName.toLowerCase() == "body") || (!b && e.highlighting && e.highlighting[a] && e.highlighting[a].end)) break;
 		t = false;
 	} while (e = e.parentNode);
 	if (!b && e.highlighting && e.highlighting[a] && e.highlighting[a].end) s = e.highlighting[a].end;

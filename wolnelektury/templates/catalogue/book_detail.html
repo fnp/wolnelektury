@@ -11,7 +11,7 @@
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
-    
+
     <div id="books-list">
         {% if extra_info.license %}
         <p>{% trans "Work is licensed under " %}<a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
@@ -44,7 +44,7 @@
             {% endif %}
             {% if book.mp3_file %}
                 <div id="czytamy-sluchajac-info">
-                    <a href="http://czytamysluchajac.pl/" id="czytamysluchajac-logo"><img src="{{ STATIC_URL }}img/czytamysluchajac-logo-small.png" /></a>     
+                    <a href="http://czytamysluchajac.pl/" id="czytamysluchajac-logo"><img src="{{ STATIC_URL }}img/czytamysluchajac-logo-small.png" /></a>
                     <p>{% trans "Artist" %}: {{ book.get_extra_info_value.artist_name }}</p>
 					{% if book.get_extra_info_value.director_name %}
                         <p>{% trans "Director" %}: {{ book.get_extra_info_value.director_name }}</p>
@@ -62,7 +62,7 @@
             {% endif %}
             </div>
         </div>
-    
+
         {% if book_children %}
         {% autopaginate book_children 10 %}
         <div id="book-children">
@@ -74,15 +74,15 @@
         </div>
         {% paginate %}
         {% endif %}
-    
+
     </div>
-        
+
     <div id="tags-list">
         <div id="book-info">
             <h2>{% trans "Details" %}</h2>
             <ul>
                 <li>
-                    {% trans "Author" %}: 
+                    {% trans "Author" %}:
                     {% for tag in categories.author %}
                     <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
                     {% endfor %}

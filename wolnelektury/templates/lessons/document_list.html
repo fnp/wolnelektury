@@ -17,9 +17,9 @@
                 }
                 return false;
             });
-            
+
             var lastHash = null;
-            
+
             function checkHash() {
                 if (document.location.hash != lastHash) {
                     lastHash = document.location.hash;
@@ -28,7 +28,7 @@
                         $('#document-list a').removeClass('active');
                         documentLink.addClass('active');
                     };
-                    
+
                     if ($('#document-detail').attr('data-hash') != lastHash) {
                         $('#document-detail')
                             .attr('data-hash', lastHash)
@@ -37,10 +37,10 @@
                 } else if (!document.location.hash) {
                     $('#document-list a:first').click();
                 }
-                
+
                 setTimeout(checkHash, 500);
             };
-            
+
             checkHash();
         });
     </script>
@@ -50,7 +50,7 @@
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
-    
+
     <div id="document-list">
         <ol>
         {% for object in object_list %}
@@ -61,4 +61,3 @@
     <div id="document-detail">
     </div>
 {% endblock %}
-            

@@ -19,7 +19,7 @@ MAX_SESSION_KEY = 18446744073709551616L     # 2 << 63
 
 
 def get_random_hash(seed):
-    sha_digest = sha_constructor('%s%s%s%s' % 
+    sha_digest = sha_constructor('%s%s%s%s' %
         (randrange(0, MAX_SESSION_KEY), time.time(), unicode(seed).encode('utf-8', 'replace'),
         settings.SECRET_KEY)).digest()
     return urlsafe_b64encode(sha_digest).replace('=', '').replace('_', '-').lower()

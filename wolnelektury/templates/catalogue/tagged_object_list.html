@@ -9,7 +9,7 @@
 {% block body %}
     <h1>{% title_from_tags tags %}</h1>
     {% breadcrumbs tags %}
-    
+
     {% if shelf_is_set and not object_list %}
     <div id="books-list">
         <h2>{% trans "Your shelf is empty" %}</h2>
@@ -102,7 +102,7 @@
 					{% trans "This author's works are copyrighted." %}
 				{% else %}{% comment %} Is dead {% endcomment %}
             	    {% if last_tag.in_pd %}
-						<p>{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>		 
+						<p>{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
 	                {% else %}
 						{% comment %} Is dead, but not yet in public domain {% endcomment %}
     	                <div>
@@ -139,7 +139,7 @@
             {% if categories.epoch %}
                 <h2>{% trans "Epochs" %}</h2>
                 {% tag_list categories.epoch tags %}
-            {% endif %}        
+            {% endif %}
         </div>
         <div id="themes-list">
             {% if categories.theme %}

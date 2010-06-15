@@ -5,7 +5,7 @@ from django.conf import settings
 
 class Form(forms.Form):
     pass
-    
+
 class ModelForm(forms.ModelForm):
     """
     Subclass of `forms.ModelForm` which makes sure

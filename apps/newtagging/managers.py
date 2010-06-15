@@ -14,15 +14,15 @@ class ModelTagManager(models.Manager):
     def __init__(self, tag_model):
         super(ModelTagManager, self).__init__()
         self.tag_model = tag_model
-    
+
     def get_query_set(self):
         content_type = ContentType.objects.get_for_model(self.model)
         return self.tag_model.objects.filter(
             items__content_type__pk=content_type.pk).distinct()
-    
+
     def related(self, tags, *args, **kwargs):
         return self.tag_model.objects.related_for_model(tags, self.model, *args, **kwargs)
-    
+
     def usage(self, *args, **kwargs):
         return self.tag_model.objects.usage_for_model(self.model, *args, **kwargs)
 
@@ -62,7 +62,7 @@ class TagDescriptor(object):
     """
     def __init__(self, tag_model):
         self.tag_model = tag_model
-    
+
     def __get__(self, instance, owner):
         if not instance:
             tag_manager = ModelTagManager(self.tag_model)

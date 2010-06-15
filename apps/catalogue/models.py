@@ -55,7 +55,7 @@ class Tag(TagBase):
     death = models.IntegerField(_(u'year of death'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
-    
+
     categories_rev = {
         'autor': 'author',
         'epoka': 'epoch',
@@ -117,7 +117,7 @@ class Tag(TagBase):
                             real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
                         except Tag.MultipleObjectsReturned, e:
                             ambiguous_slugs.append(name)
-                            
+
             if category:
                 # something strange left off
                 raise Tag.DoesNotExist()
@@ -131,13 +131,13 @@ class Tag(TagBase):
                 return real_tags
         else:
             return TagBase.get_tag_list(tags)
-    
+
     @property
     def url_chunk(self):
         return '/'.join((Tag.categories_dict[self.category], self.slug))
 
 
-# TODO: why is this hard-coded ? 
+# TODO: why is this hard-coded ?
 def book_upload_path(ext):
     def get_dynamic_path(book, filename):
         return 'lektura/%s.%s' % (book.slug, ext)
@@ -171,7 +171,7 @@ class Book(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
-    
+
     _tag_counter = JSONField(null=True, editable=False)
     _theme_counter = JSONField(null=True, editable=False)
 
@@ -210,7 +210,7 @@ class Book(models.Model):
     @property
     def name(self):
         return self.title
-    
+
     def book_tag(self):
         slug = ('l-' + self.slug)[:120]
         book_tag, created = Tag.objects.get_or_create(slug=slug, category='book')
@@ -399,8 +399,8 @@ class Book(models.Model):
 
         book.save()
         return book
-    
-    
+
+
     def refresh_tag_counter(self):
         tags = {}
         for child in self.children.all().order_by():
@@ -411,7 +411,7 @@ class Book(models.Model):
         self.set__tag_counter_value(tags)
         self.save(reset_short_html=False, refresh_mp3=False)
         return tags
-    
+
     @property
     def tag_counter(self):
         if self._tag_counter is None:
@@ -426,13 +426,13 @@ class Book(models.Model):
         self.set__theme_counter_value(tags)
         self.save(reset_short_html=False, refresh_mp3=False)
         return tags
-    
+
     @property
     def theme_counter(self):
         if self._theme_counter is None:
             return self.refresh_theme_counter()
         return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
-    
+
 
 
 class Fragment(models.Model):

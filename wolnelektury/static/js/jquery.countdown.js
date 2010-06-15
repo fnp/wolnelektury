@@ -1,8 +1,8 @@
 /* http://keith-wood.name/countdown.html
    Countdown for jQuery v1.5.8.
    Written by Keith Wood (kbwood{at}iinet.com.au) January 2008.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and
+   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses.
    Please attribute the author if you use it. */
 
 /* Display a countdown timer.
@@ -68,12 +68,12 @@ var S = 6; // Seconds
 $.extend(Countdown.prototype, {
 	/* Class name added to elements to indicate already configured with countdown. */
 	markerClassName: 'hasCountdown',
-	
+
 	/* Shared timer for all countdowns. */
 	_timer: setInterval(function() { $.countdown._updateTargets(); }, 980),
 	/* List of currently active countdown targets. */
 	_timerTargets: [],
-	
+
 	/* Override the default settings for all instances of the countdown widget.
 	   @param  options  (object) the new settings to use as defaults */
 	setDefaults: function(options) {
@@ -277,7 +277,7 @@ $.extend(Countdown.prototype, {
 			}
 		}
 	},
-	
+
 	/* Calculate interal settings for an instance.
 	   @param  target  (element) the containing division
 	   @param  inst    (object) the current settings for this instance */
@@ -362,7 +362,7 @@ $.extend(Countdown.prototype, {
 				inst[inst._since ? '_since' : '_until'] =
 					this._determineTime(sign + inst._periods[0] + 'y' +
 						sign + inst._periods[1] + 'o' + sign + inst._periods[2] + 'w' +
-						sign + inst._periods[3] + 'd' + sign + inst._periods[4] + 'h' + 
+						sign + inst._periods[3] + 'd' + sign + inst._periods[4] + 'h' +
 						sign + inst._periods[5] + 'm' + sign + inst._periods[6] + 's');
 				this._addTarget(target);
 			}
@@ -421,7 +421,7 @@ $.extend(Countdown.prototype, {
 					case 'd': day += parseInt(matches[1], 10); break;
 					case 'w': day += parseInt(matches[1], 10) * 7; break;
 					case 'o':
-						month += parseInt(matches[1], 10); 
+						month += parseInt(matches[1], 10);
 						day = Math.min(day, $.countdown._getDaysInMonth(year, month));
 						break;
 					case 'y':
@@ -508,8 +508,8 @@ $.extend(Countdown.prototype, {
 		return (layout ? this._buildLayout(inst, show, layout, compact, significant, showSignificant) :
 			((compact ? // Compact version
 			'<span class="countdown_row countdown_amount' +
-			(inst._hold ? ' countdown_holding' : '') + '">' + 
-			showCompact(Y) + showCompact(O) + showCompact(W) + showCompact(D) + 
+			(inst._hold ? ' countdown_holding' : '') + '">' +
+			showCompact(Y) + showCompact(O) + showCompact(W) + showCompact(D) +
 			(show[H] ? this._minDigits(inst._periods[H], 2) : '') +
 			(show[M] ? (show[H] ? timeSeparator : '') +
 			this._minDigits(inst._periods[M], 2) : '') +
@@ -616,7 +616,7 @@ $.extend(Countdown.prototype, {
 		show[S] = (format.match('s') ? '?' : (format.match('S') ? '!' : null));
 		return show;
 	},
-	
+
 	/* Calculate the requested periods between now and the target time.
 	   @param  inst         (object) the current settings for this instance
 	   @param  show         (string[7]) flags indicating which periods are requested/required

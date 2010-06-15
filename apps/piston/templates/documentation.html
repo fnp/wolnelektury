@@ -16,40 +16,40 @@
 	</head>
 	<body>
 		<h1>API Documentation</h1>
-		
+
 		{% for doc in docs %}
-		
+
 			<h3>{{ doc.name|cut:"Handler" }}:</h3>
 
 			<p>
 				{{ doc.get_doc|default:""|restructuredtext }}
 			</p>
-			
+
 			<p>
 				URL: <b>{{ doc.get_resource_uri_template }}</b>
 			</p>
-			
+
 			<p>
 				Accepted methods: {% for meth in doc.allowed_methods %}<b>{{ meth }}</b>{% if not forloop.last %}, {% endif %}{% endfor %}
 			</p>
-					
+
 			<dl>
 				{% for method in doc.get_all_methods %}
-				
+
 					<dt>
 						method <i>{{ method.name }}</i>({{ method.signature }}){% if method.stale %} <i>- inherited</i>{% else %}:{% endif %}
-						
-					</dt>				
-										
+
+					</dt>
+
 					{% if method.get_doc %}
 						<dd>
 							{{ method.get_doc|default:""|restructuredtext }}
 						<dd>
 					{% endif %}
-				
+
 				{% endfor %}
 			</dl>
-		
+
 		{% endfor %}
 	</body>
 </html>

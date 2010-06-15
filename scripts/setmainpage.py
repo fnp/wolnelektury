@@ -31,7 +31,7 @@ for tag in Tag.objects.all():
         tag.main_page = True
     else:
         tag.main_page = False
-    
+
     tag.save()
     sys.stderr.write('.')
 

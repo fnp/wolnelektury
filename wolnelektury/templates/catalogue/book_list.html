@@ -11,7 +11,7 @@
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
-    
+
     <div id="book-list">
         {% for first_letter, group in books_by_first_letter.items %}
         <div class="group">
@@ -22,6 +22,6 @@
             {% endfor %}
             </ol>
         </div>
-        {% endfor %}    
+        {% endfor %}
     </div>
 {% endblock %}

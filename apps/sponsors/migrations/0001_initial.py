@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Sponsor'
         db.create_table('sponsors_sponsor', (
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
@@ -26,17 +26,17 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(max_length=120)),
         ))
         db.send_create_signal('sponsors', ['SponsorPage'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Sponsor'
         db.delete_table('sponsors_sponsor')
 
         # Deleting model 'SponsorPage'
         db.delete_table('sponsors_sponsorpage')
-    
-    
+
+
     models = {
         'sponsors.sponsor': {
             'Meta': {'object_name': 'Sponsor'},
@@ -54,5 +54,5 @@ class Migration(SchemaMigration):
             'sponsors': ('sponsors.fields.JSONField', [], {'default': '{}'})
         }
     }
-    
+
     complete_apps = ['sponsors']

@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding field 'Fragment._short_html_de'
         db.add_column('catalogue_fragment', '_short_html_de', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
 
@@ -31,10 +31,10 @@ class Migration(SchemaMigration):
 
         # Adding field 'Fragment._short_html_uk'
         db.add_column('catalogue_fragment', '_short_html_uk', self.gf('django.db.models.fields.TextField')(null=True, blank=True), keep_default=False)
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting field 'Fragment._short_html_de'
         db.delete_column('catalogue_fragment', '_short_html_de')
 
@@ -58,8 +58,8 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Fragment._short_html_uk'
         db.delete_column('catalogue_fragment', '_short_html_uk')
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -176,5 +176,5 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['catalogue']

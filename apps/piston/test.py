@@ -32,8 +32,8 @@ class OAuthClient(client.Client):
         url = "http://testserver" + request['PATH_INFO']
 
         req = oauth.OAuthRequest.from_consumer_and_token(
-            self.consumer, token=self.token, 
-            http_method=request['REQUEST_METHOD'], http_url=url, 
+            self.consumer, token=self.token,
+            http_method=request['REQUEST_METHOD'], http_url=url,
             parameters=params
         )
 
@@ -49,7 +49,7 @@ class OAuthClient(client.Client):
 
         if isinstance(data, dict):
             data = urlencode(data)
-        
+
         return super(OAuthClient, self).post(path, data, content_type, follow, **extra)
 
 class TestCase(test.TestCase):

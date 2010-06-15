@@ -4,12 +4,12 @@
       sponsors: []
     };
     $.extend(settings, options);
-    
+
     var input = $(this).hide();
-    
+
     var container = $('<div class="sponsors"></div>').appendTo(input.parent());
     var groups = $.evalJSON(input.val());
-    
+
     var unusedDiv = $('<div class="sponsors-sponsor-group sponsors-unused-sponsor-group"></div>')
       .appendTo(container)
       .append('<p class="sponsors-sponsor-group-name sponsors-unused-sponsor-group-name">dostępni sponsorzy</p>');
@@ -18,13 +18,13 @@
         .sortable({
           connectWith: '.sponsors-sponsor-group-list'
     		});
-    
+
     // Edit group name inline
     function editNameInline(name) {
       name.unbind('click.sponsorsFooter');
       var inlineInput = $('<input></input>').val(name.html());
       name.html('');
-      
+
       function endEditing() {
         name.html(inlineInput.val());
         inlineInput.remove();
@@ -34,11 +34,11 @@
         input.parents('form').unbind('submit.sponsorsFooter', endEditing);
         return false;
       }
-      
+
       inlineInput.appendTo(name).focus().blur(endEditing);
       input.parents('form').bind('submit.sponsorsFooter', endEditing);
     }
-    
+
     // Remove sponsor with passed id from sponsors array and return it
     function popSponsor(id) {
       for (var i=0; i < settings.sponsors.length; i++) {
@@ -50,15 +50,15 @@
       }
       return null;
     }
-    
+
     // Create sponsor group and bind events
     function createGroup(name, sponsors) {
       if (!sponsors) {
         sponsors = [];
       }
-      
+
       var groupDiv = $('<div class="sponsors-sponsor-group"></div>');
-      
+
       $('<a class="sponsors-remove-sponsor-group">X</a>')
         .click(function() {
           groupDiv.fadeOut('slow', function() {
@@ -66,19 +66,19 @@
             groupDiv.remove();
           });
         }).appendTo(groupDiv);
-      
+
       $('<p class="sponsors-sponsor-group-name">' + name + '</p>')
         .bind('click.sponsorsFooter', function() {
           editNameInline($(this));
         }).appendTo(groupDiv);
-      
+
       var groupList = $('<ol class="sponsors-sponsor-group-list"></ol>')
         .appendTo(groupDiv)
         .sortable({
           connectWith: '.sponsors-sponsor-group-list'
     		});
-      
-      
+
+
       for (var i = 0; i < sponsors.length; i++) {
         $('<li class="sponsors-sponsor"><img src="' + sponsors[i].image + '" alt="' + sponsors[i].name + '"/></li>')
           .data('obj_id', sponsors[i].id)
@@ -86,12 +86,12 @@
       }
       return groupDiv;
     }
-    
+
     // Create groups from data in input value
     for (var i = 0; i < groups.length; i++) {
       var group = groups[i];
       var sponsors = [];
-      
+
       for (var j = 0; j < group.sponsors.length; j++) {
         var s = popSponsor(group.sponsors[j]);
         if (s) {
@@ -100,7 +100,7 @@
       }
       createGroup(group.name, sponsors).appendTo(container);
     }
-    
+
     // Serialize input value before submiting form
     input.parents('form').submit(function(event) {
       var groups = [];
@@ -113,19 +113,19 @@
       });
       input.val($.toJSON(groups));
     });
-    
+
     for (i = 0; i < settings.sponsors.length; i++) {
       $('<li class="sponsors-sponsor"><img src="' + settings.sponsors[i].image + '" alt="' + settings.sponsors[i].name + '"/></li>')
         .data('obj_id', settings.sponsors[i].id)
         .appendTo(unusedList);
     }
-    
+
     $('<button type="button">Dodaj nową grupę</button>')
       .click(function() {
         var newGroup = createGroup('').appendTo(container);
         editNameInline($('.sponsors-sponsor-group-name', newGroup));
       }).prependTo(input.parent());
-    
+
     input.parent().append('<div style="clear: both"></div>');
   };
 })(jQuery);

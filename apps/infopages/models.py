@@ -9,7 +9,7 @@ class InfoPage(models.Model):
     """
     An InfoPage is used to display a two-column flatpage
     """
-    
+
     page_title = models.CharField(_('page title'), max_length=120, blank=True)
     slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     title = models.CharField(_('title'), max_length=120, blank=True)
@@ -20,7 +20,7 @@ class InfoPage(models.Model):
         ordering = ('slug',)
         verbose_name = _('info page')
         verbose_name_plural = _('info pages')
-    
+
     def __unicode__(self):
         return self.title
 

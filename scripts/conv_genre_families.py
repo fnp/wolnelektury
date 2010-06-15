@@ -17,13 +17,13 @@ doc = etree.parse('rodziny.xml')
 
 for element in doc.findall('//span'):
     themes = [s.strip() for s in element.text.split(',')]
-    
+
     element.text = u''
-    
+
     for theme in themes:
         try:
             Tag.objects.get(slug=slughifi(theme))
-        
+
             link = etree.SubElement(element, 'a', href=u'/katalog/%s' % slughifi(theme))
             link.text = theme
             link.tail = ', '

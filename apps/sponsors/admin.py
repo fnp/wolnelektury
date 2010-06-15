@@ -19,7 +19,7 @@ class SponsorAdmin(admin.ModelAdmin):
 class SponsorPageAdmin(admin.ModelAdmin):
     formfield_overrides = {
         fields.JSONField: {'widget': widgets.SponsorPageWidget},
-    }   
+    }
     list_display = ('name',)
     search_fields = ('name',)
     ordering = ('name',)

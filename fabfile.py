@@ -21,7 +21,7 @@ def staging():
     env.python = '/usr/bin/python'
     env.virtualenv = '/usr/bin/virtualenv'
     env.pip = '/usr/bin/pip'
-    
+
 def production():
     """Use production server"""
     env.hosts = ['wolnelektury.pl:22123']
@@ -54,8 +54,8 @@ def setup():
 
 def deploy():
     """
-    Deploy the latest version of the site to the servers, 
-    install any required third party modules, 
+    Deploy the latest version of the site to the servers,
+    install any required third party modules,
     install the virtual host and then restart the webserver
     """
     require('hosts', 'path', provided_by=[staging, production])

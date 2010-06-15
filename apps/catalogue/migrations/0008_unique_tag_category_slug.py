@@ -5,25 +5,25 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Removing unique constraint on 'Tag', fields ['slug']
         db.delete_unique('catalogue_tag', ['slug'])
 
         # Adding unique constraint on 'Tag', fields ['category', 'slug']
         db.create_unique('catalogue_tag', ['category', 'slug'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Adding unique constraint on 'Tag', fields ['slug']
         db.create_unique('catalogue_tag', ['slug'])
 
         # Removing unique constraint on 'Tag', fields ['category', 'slug']
         db.delete_unique('catalogue_tag', ['category', 'slug'])
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -143,5 +143,5 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['catalogue']

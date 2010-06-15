@@ -19,7 +19,7 @@ class ConsumerTest(TestCase):
 
     def test_create_pending(self):
         """ Ensure creating a pending Consumer sends proper emails """
-        # If it's pending we should have two messages in the outbox; one 
+        # If it's pending we should have two messages in the outbox; one
         # to the consumer and one to the site admins.
         if len(settings.ADMINS):
             self.assertEquals(len(mail.outbox), 2)
@@ -36,8 +36,8 @@ class ConsumerTest(TestCase):
         mail.outbox = []
 
         # Delete the consumer, which should fire off the cancel email.
-        self.consumer.delete() 
-        
+        self.consumer.delete()
+
         self.assertEquals(len(mail.outbox), 1)
         expected = "Your API Consumer for example.com has been canceled."
         self.assertEquals(mail.outbox[0].subject, expected)

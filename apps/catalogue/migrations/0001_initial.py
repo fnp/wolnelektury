@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Tag'
         db.create_table('catalogue_tag', (
             ('category', self.gf('django.db.models.fields.CharField')(max_length=50, db_index=True)),
@@ -69,10 +69,10 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
         ))
         db.send_create_signal('catalogue', ['Fragment'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Tag'
         db.delete_table('catalogue_tag')
 
@@ -87,8 +87,8 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Fragment'
         db.delete_table('catalogue_fragment')
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -178,5 +178,5 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['catalogue']

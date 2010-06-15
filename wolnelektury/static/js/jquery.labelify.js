@@ -12,7 +12,7 @@
  *
  * You can also pass an options object with the following keys:
  *   text
- *     "title" to get the in-field label from the field's title attribute 
+ *     "title" to get the in-field label from the field's title attribute
  *      (this is the default)
  *     "label" to get the in-field label from the inner text of the field's label
  *      (note that the label must be attached to the field with for="fieldid")
@@ -22,7 +22,7 @@
  *   labelledClass
  *     a class that will be applied to the input field when it contains the
  *      label and removed when it contains user input. Defaults to blank.
- *  
+ *
  */
 jQuery.fn.labelify = function(settings) {
   settings = jQuery.extend({
@@ -51,7 +51,7 @@ jQuery.fn.labelify = function(settings) {
     if (!lookupval) { return; }
 
     // need to strip newlines because the browser strips them
-    // if you set textbox.value to a string containing them    
+    // if you set textbox.value to a string containing them
     $(this).data("label",lookup(this).replace(/\n/g,''));
     $(this).focus(function() {
       if (this.value === $(this).data("label")) {
@@ -64,7 +64,7 @@ jQuery.fn.labelify = function(settings) {
         $(this).addClass(settings.labelledClass);
       }
     });
-    
+
     var removeValuesOnExit = function() {
       jQuery_labellified_elements.each(function(){
         if (this.value === $(this).data("label")) {
@@ -73,10 +73,10 @@ jQuery.fn.labelify = function(settings) {
         }
       })
     };
-    
+
     $(this).parents("form").submit(removeValuesOnExit);
     $(window).unload(removeValuesOnExit);
-    
+
     if (this.value !== this.defaultValue) {
       // user already started typing; don't overwrite their work!
       return;

@@ -39,7 +39,7 @@ class rc_factory(object):
 
     def __getattr__(self, attr):
         """
-        Returns a fresh `HttpResponse` when getting 
+        Returns a fresh `HttpResponse` when getting
         an "attribute". This is backwards compatible
         with 0.2, which is important.
         """
@@ -49,9 +49,9 @@ class rc_factory(object):
             raise AttributeError(attr)
 
         return HttpResponse(r, content_type='text/plain', status=c)
-    
+
 rc = rc_factory()
-    
+
 class FormValidationError(Exception):
     def __init__(self, form):
         self.form = form
@@ -64,7 +64,7 @@ def validate(v_form, operation='POST'):
     @decorator
     def wrap(f, self, request, *a, **kwa):
         form = v_form(getattr(request, operation))
-    
+
         if form.is_valid():
             return f(self, request, *a, **kwa)
         else:
@@ -75,11 +75,11 @@ def throttle(max_requests, timeout=60*60, extra=''):
     """
     Simple throttling decorator, caches
     the amount of requests made in cache.
-    
+
     If used on a view where users are required to
     log in, the username is used, otherwise the
     IP address of the originating request is used.
-    
+
     Parameters::
      - `max_requests`: The maximum number of requests
      - `timeout`: The timeout for the cache entry (default: 1 hour)
@@ -90,7 +90,7 @@ def throttle(max_requests, timeout=60*60, extra=''):
             ident = request.user.username
         else:
             ident = request.META.get('REMOTE_ADDR', None)
-    
+
         if hasattr(request, 'throttle_extra'):
             """
             Since we want to be able to throttle on a per-
@@ -99,7 +99,7 @@ def throttle(max_requests, timeout=60*60, extra=''):
             object. If so, append the identifier name with it.
             """
             ident += ':%s' % str(request.throttle_extra)
-        
+
         if ident:
             """
             Preferrably we'd use incr/decr here, since they're
@@ -108,7 +108,7 @@ def throttle(max_requests, timeout=60*60, extra=''):
             stable, you can change it here.
             """
             ident += ':%s' % extra
-    
+
             now = time.time()
             count, expiration = cache.get(ident, (1, None))
 
@@ -123,7 +123,7 @@ def throttle(max_requests, timeout=60*60, extra=''):
                 return t
 
             cache.set(ident, (count+1, expiration), (expiration - now))
-    
+
         return f(self, request, *args, **kwargs)
     return wrap
 
@@ -133,7 +133,7 @@ def coerce_put_post(request):
     In case we send data over PUT, Django won't
     actually look at the data and load it. We need
     to twist its arm here.
-    
+
     The try/except abominiation here is due to a bug
     in mod_python. This should fix it.
     """
@@ -146,7 +146,7 @@ def coerce_put_post(request):
             request.META['REQUEST_METHOD'] = 'POST'
             request._load_post_and_files()
             request.META['REQUEST_METHOD'] = 'PUT'
-            
+
         request.PUT = request.POST
 
 
@@ -158,10 +158,10 @@ class MimerDataException(Exception):
 
 class Mimer(object):
     TYPES = dict()
-    
+
     def __init__(self, request):
         self.request = request
-        
+
     def is_multipart(self):
         content_type = self.content_type()
 
@@ -179,7 +179,7 @@ class Mimer(object):
             for mime in mimes:
                 if ctype.startswith(mime):
                     return loadee
-                    
+
     def content_type(self):
         """
         Returns the content type of the request in all cases where it is
@@ -188,10 +188,10 @@ class Mimer(object):
         type_formencoded = "application/x-www-form-urlencoded"
 
         ctype = self.request.META.get('CONTENT_TYPE', type_formencoded)
-        
+
         if type_formencoded in ctype:
             return None
-        
+
         return ctype
 
     def translate(self):
@@ -202,21 +202,21 @@ class Mimer(object):
         key-value (and maybe just a list), the data will be placed on
         `request.data` instead, and the handler will have to read from
         there.
-        
+
         It will also set `request.content_type` so the handler has an easy
         way to tell what's going on. `request.content_type` will always be
         None for form-encoded and/or multipart form data (what your browser sends.)
-        """    
+        """
         ctype = self.content_type()
         self.request.content_type = ctype
-        
+
         if not self.is_multipart() and ctype:
             loadee = self.loader_for_type(ctype)
-            
+
             if loadee:
                 try:
                     self.request.data = loadee(self.request.raw_post_data)
-                        
+
                     # Reset both POST and PUT from request, as its
                     # misleading having their presence around.
                     self.request.POST = self.request.PUT = dict()
@@ -227,18 +227,18 @@ class Mimer(object):
                 self.request.data = None
 
         return self.request
-                
+
     @classmethod
     def register(cls, loadee, types):
         cls.TYPES[loadee] = types
-        
+
     @classmethod
     def unregister(cls, loadee):
         return cls.TYPES.pop(loadee)
 
 def translate_mime(request):
     request = Mimer(request).translate()
-    
+
 def require_mime(*mimes):
     """
     Decorator requiring a certain mimetype. There's a nifty
@@ -265,7 +265,7 @@ def require_mime(*mimes):
     return wrap
 
 require_extended = require_mime('json', 'yaml', 'xml', 'pickle')
-    
+
 def send_consumer_mail(consumer):
     """
     Send a consumer an email depending on what their status is.
@@ -280,20 +280,20 @@ def send_consumer_mail(consumer):
             subject += "has been canceled."
         elif consumer.status == "rejected":
             subject += "has been rejected."
-        else: 
+        else:
             subject += "is awaiting approval."
 
-    template = "piston/mails/consumer_%s.txt" % consumer.status    
-    
+    template = "piston/mails/consumer_%s.txt" % consumer.status
+
     try:
-        body = loader.render_to_string(template, 
+        body = loader.render_to_string(template,
             { 'consumer' : consumer, 'user' : consumer.user })
     except TemplateDoesNotExist:
-        """ 
+        """
         They haven't set up the templates, which means they might not want
         these emails sent.
         """
-        return 
+        return
 
     try:
         sender = settings.PISTON_FROM_EMAIL

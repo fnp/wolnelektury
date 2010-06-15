@@ -28,6 +28,6 @@ class SponsorPageWidget(forms.Textarea):
         output.append(u'<script type="text/javascript">addEvent(window, "load", function(e) {')
         # TODO: "id_" is hard-coded here. This should instead use the correct
         # API to determine the ID dynamically.
-        output.append(u'$("#id_%s").sponsorsFooter({sponsors: [%s]}); });</script>\n' % 
+        output.append(u'$("#id_%s").sponsorsFooter({sponsors: [%s]}); });</script>\n' %
             (name, sponsors_js))
         return mark_safe(u''.join(output))

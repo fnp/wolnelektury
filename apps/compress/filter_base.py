@@ -6,7 +6,7 @@ class FilterBase:
         raise NotImplementedError
     def filter_js(self, js):
         raise NotImplementedError
-        
+
 class FilterError(Exception):
     """
     This exception is raised when a filter fails

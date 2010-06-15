@@ -12,12 +12,11 @@ class Suggestion(models.Model):
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
     ip = models.IPAddressField(_('IP address'))
     user = models.ForeignKey(User, blank=True, null=True)
-    
+
     class Meta:
         ordering = ('-created_at',)
         verbose_name = _('suggestion')
         verbose_name_plural = _('suggestions')
-    
+
     def __unicode__(self):
         return unicode(self.created_at)
-    

@@ -14,7 +14,7 @@ class Command(NoArgsCommand):
     args = ''
 
     def handle_noargs(self, **options):
-        
+
         force = options.get('force', False)
         verbosity = int(options.get('verbosity', 1))
 

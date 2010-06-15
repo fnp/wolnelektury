@@ -7,7 +7,7 @@ from django.views.generic.simple import direct_to_template
 from suggest.forms import SuggestForm
 
 urlpatterns = patterns('',
-    url(r'^$', 'django.views.generic.simple.direct_to_template', 
+    url(r'^$', 'django.views.generic.simple.direct_to_template',
         {'template': 'suggest.html', 'extra_context': {'form': SuggestForm }}, name='suggest'),
     url(r'^wyslij/$', 'suggest.views.report', name='report'),
 )

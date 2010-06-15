@@ -3,49 +3,49 @@ var LOCALE_TEXTS = {
 		"DELETE_SHELF": "Czy na pewno usunąć półkę",
 		"HIDE_DESCRIPTION": "Zwiń opis",
 		"EXPAND_DESCRIPTION": "Rozwiń opis",
-		"LOADING": "Ładowanie"		
+		"LOADING": "Ładowanie"
 	},
     "de": {
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"             
+        "LOADING": "Translate me!"
     },
 	"fr": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"				
+		"LOADING": "Translate me!"
 	},
 	"en": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"		
-	}, 
+		"LOADING": "Translate me!"
+	},
 	"ru": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"		
+		"LOADING": "Translate me!"
 	},
 	"es": {
 		"DELETE_SHELF": "Translate me!",
 		"HIDE_DESCRIPTION": "Translate me!",
 		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"				
+		"LOADING": "Translate me!"
 	},
     "lt":{
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"             
+        "LOADING": "Translate me!"
     },
     "uk":{
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"             
+        "LOADING": "Translate me!"
     }
 }
 var BANNER_TEXTS = [
@@ -85,7 +85,7 @@ function changeBannerText() {
             $(this).html(BANNER_TEXTS[index]);
             $(this).fadeIn('slow');
         });
-        
+
         setTimeout(changeBannerText, 30 * 1000);
     }
 }
@@ -93,35 +93,35 @@ function changeBannerText() {
 function autocomplete_result_handler(event, item) {
     $(event.target).closest('form').submit();
 }
-function serverTime() { 
-    var time = null; 
-    $.ajax({url: '/katalog/zegar/', 
-        async: false, dataType: 'text', 
-        success: function(text) { 
+function serverTime() {
+    var time = null;
+    $.ajax({url: '/katalog/zegar/',
+        async: false, dataType: 'text',
+        success: function(text) {
             time = new Date(text);
         }, error: function(http, message, exc) {
-            time = new Date(); 
-    }}); 
-    return time; 
+            time = new Date();
+    }});
+    return time;
 }
 
 (function($) {
     $(function() {
-	
+
         $('form input').labelify({labelledClass: 'blur'});
-        
+
         target = $('#login-register-window div.target');
-        
+
         $('#show-registration-form').click(function() {
             $('#login-form').hide();
             $('#registration-form').show();
         });
-        
+
         $('#show-login-form').click(function() {
             $('#registration-form').hide();
             $('#login-form').show();
         });
-        
+
         // Fragments
         $('.fragment-text').each(function() {
             if ($(this).prev().filter('.fragment-short-text').length) {
@@ -136,7 +136,7 @@ function serverTime() {
                 })
             }
         });
-        
+
         $('.fragment-short-text').click(function() {
             $(this).fadeOut(function() { $(this).next().fadeIn() });
             return false;
@@ -144,21 +144,21 @@ function serverTime() {
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
             function() { $(this).css({background: '#FFF'}); }
         );
-        
+
         $('.show-all-tags').click(function() {
-            $(this).parent().parent().fadeOut(function() { 
+            $(this).parent().parent().fadeOut(function() {
                 $(this).next().fadeIn();
             });
             return false;
         });
-        
+
         $('.hide-all-tags').click(function() {
            $(this).parent().parent().fadeOut(function() {
                $(this).prev().fadeIn();
            });
-           return false; 
+           return false;
         });
-        
+
         $('#registration-form').ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {
@@ -179,7 +179,7 @@ function serverTime() {
                 }
             }
         });
-        
+
         $('#login-form').ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {
@@ -200,7 +200,7 @@ function serverTime() {
                 }
             }
         });
-        
+
         $('#login-register-window').jqm({
             target: target[0],
             overlay: 60,
@@ -212,7 +212,7 @@ function serverTime() {
                 hash.w.show();
             }
         });
-        
+
         $('ul.shelf-list li').hover(function() {
             $(this).css({background: '#EEE', cursor: 'pointer'});
         }, function() {
@@ -220,8 +220,8 @@ function serverTime() {
         }).click(function() {
             location.href = $('a.visit-shelf', this).attr('href');
         });
-        
-        $('.delete-shelf').click(function() { 
+
+        $('.delete-shelf').click(function() {
             var link = $(this);
             var shelf_name = $('.visit-shelf', link.parent()).text();
             if (confirm(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+ ' '+ shelf_name + '?')) {
@@ -231,7 +231,7 @@ function serverTime() {
             }
             return false;
         });
-        
+
         $('#user-shelves-window').jqm({
             ajax: '@href',
             target: $('#user-shelves-window div.target')[0],
@@ -243,14 +243,14 @@ function serverTime() {
                 $('div.header', hash.w).css({width: $(hash.t).width()});
                 hash.w.show();
             },
-            onLoad: function(hash) { 
+            onLoad: function(hash) {
                 $('form', hash.w).ajaxForm({
                     target: $('#user-shelves-window div.target'),
                     success: function() { setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000) }
                 });
-                
+
                 $('input', hash.w).labelify({labelledClass: 'blur'});
-                
+
                 $('ul.shelf-list li', hash.w).hover(function() {
                     $(this).css({background: '#EEE', cursor: 'pointer'});
                 }, function() {
@@ -258,7 +258,7 @@ function serverTime() {
                 }).click(function() {
                     location.href = $('a.visit-shelf', this).attr('href');
                 });
-                
+
                 $('.delete-shelf').click(function() {
                     var link = $(this);
                     var shelf_name = $('.visit-shelf', link.parent()).text();
@@ -283,7 +283,7 @@ function serverTime() {
                 $('div.header', hash.w).css({width: $(hash.t).width()});
                 hash.w.show();
             },
-            onLoad: function(hash) { 
+            onLoad: function(hash) {
                 $('form', hash.w).ajaxForm({
 					dataType: 'json',
                     target: $('#suggest-window div.target'),
@@ -304,14 +304,14 @@ function serverTime() {
                 });
             }
         });
-    
+
         $('#books-list .book').hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
             function() { $(this).css({background: '#FFF'}); }
         ).click(function() {
             location.href = $('h2 a', this).attr('href');
         });
-        
+
 		function toggled_by_slide(cont, short_el, long_el, button, short_text, long_text) {
 			function toggle(cont, short_el, long_el, button, short_text, long_text) {
 	            if (cont.hasClass('short')) {
@@ -343,8 +343,8 @@ function serverTime() {
                 toggle(cont, short_el, long_el, button, short_text, long_text)
             })
 		}
-        toggled_by_slide($('#description'), $('#description-short'), $('#description-long'),  
-          $('#toggle-description p'), 
+        toggled_by_slide($('#description'), $('#description-short'), $('#description-long'),
+          $('#toggle-description p'),
           LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_DESCRIPTION']+' ▼',
 		  LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▲'
 		  );
@@ -361,17 +361,17 @@ function serverTime() {
         });
 
         var target = $('#set-window div.target');
-    
+
         $('#set-window').jqm({
-            ajax: '@href', 
+            ajax: '@href',
             target: target[0],
             overlay: 60,
-            trigger: 'a.jqm-trigger', 
-            onShow: function(hash) { 
+            trigger: 'a.jqm-trigger',
+            onShow: function(hash) {
                 var offset = $(hash.t).offset();
                 target.html('<p><img src="/static/img/indicator.gif" />'+LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+'</p>');
                 hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
-            onLoad: function(hash) { 
+            onLoad: function(hash) {
 		try {
 			$('#createShelfTrigger').click(function(){
 				$('#createNewShelf').show();
@@ -380,14 +380,14 @@ function serverTime() {
 
                 $('form', hash.w).ajaxForm({
                     target: target,
-                    success: function() { 
-			setTimeout(function() { 
+                    success: function() {
+			setTimeout(function() {
 					$('#set-window').jqmHide();
 			           }, 1000)}
                 });
             }
         });
-        
+
         $('a.remove-from-shelf').click(function(event) {
             event.preventDefault();
             link = $(this);
@@ -395,18 +395,18 @@ function serverTime() {
                 link.parent().remove();
             });
         });
-		
+
         $('#share-shelf').hide().addClass('hidden');
 		$('#share-shelf input').focus(function(){this.select();});
-                
+
         $('#user-info').show();
         changeBannerText();
         $('#onepercent-banner').show();
-        
+
         var formatsDownloaded = false;
         $('#download-shelf').click(function() {
             $('#download-shelf-menu').slideDown('fast');
-            
+
             if (!formatsDownloaded) {
                 // Get info about the formats
                 formatsDownloaded = true;
@@ -435,7 +435,7 @@ function serverTime() {
             }
             return false;
         });
-        
+
         $('#download-formats-form-cancel').click(function() {
             $('#download-shelf-menu').slideUp('fast');
             return false;

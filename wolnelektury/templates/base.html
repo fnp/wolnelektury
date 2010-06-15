@@ -46,7 +46,7 @@
             <div class="social-links" style="float:right">
                 <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"><img src="{{ STATIC_URL }}img/social/facebook.png" alt="WolneLektury @ Facebook" /></a>
                 <a href="http://twitter.com/wolnelektury"><img src="{{ STATIC_URL }}img/social/twitter.png" alt="WolneLektury @ Twitter" /></a>
-                <a href="http://nasza-klasa.pl/profile/30441509"><img src="{{ STATIC_URL }}img/social/naszaklasa.png" alt="WolneLektury @ Nasza-Klasa" /></a>     
+                <a href="http://nasza-klasa.pl/profile/30441509"><img src="{{ STATIC_URL }}img/social/naszaklasa.png" alt="WolneLektury @ Nasza-Klasa" /></a>
             </div>
 			<div class="lang-menu" style="float:right;">
 				<form action="/i18n/setlang/" method="post">
@@ -57,19 +57,19 @@
 					</select>
 					<input type="submit" value="{% trans "Choose language" %}">
 				</form>
-			</div>			
+			</div>
             <div class="clearboth"></div>
         </div>
         <div id="maincontent">
             {% block body %}
-            {% endblock %}    
+            {% endblock %}
         </div>
         <div class="clearboth"></div>
         <div id="footer">
             <p>
             	{% blocktrans %}
 				Wolne Lektury is a project lead by <a href="http://nowoczesnapolska.org.pl/">Modern Poland Foundation</a>.
-				Digital reproductions are made by <a href="http://www.bn.org.pl/">The National Library</a>, based on TNL resources. 
+				Digital reproductions are made by <a href="http://www.bn.org.pl/">The National Library</a>, based on TNL resources.
 				Hosting <a href="http://eo.pl/">EO Networks</a>.
 				{% endblocktrans %}
             </p>

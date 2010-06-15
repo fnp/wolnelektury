@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'BookStub'
         db.create_table('catalogue_bookstub', (
             ('author', self.gf('django.db.models.fields.CharField')(max_length=120)),
@@ -22,17 +22,17 @@ class Migration(SchemaMigration):
 
         # Adding field 'Tag.death'
         db.add_column('catalogue_tag', 'death', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True), keep_default=False)
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'BookStub'
         db.delete_table('catalogue_bookstub')
 
         # Deleting field 'Tag.death'
         db.delete_column('catalogue_tag', 'death')
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -133,5 +133,5 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['catalogue']

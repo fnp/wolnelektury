@@ -17,5 +17,5 @@ def sponsor_page(name):
     except:
         return u''
     return mark_safe(page.html)
-    
+
 sponsor_page = register.simple_tag(sponsor_page)

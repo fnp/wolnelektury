@@ -17,7 +17,7 @@ class FilteredSelectMultiple(forms.SelectMultiple):
         js = ['js/SelectBox.js' , 'js/SelectFilter2.js']
         return forms.Media(js=['%s%s' % (settings.ADMIN_MEDIA_PREFIX, url) for url in js])
     media = property(_media)
-    
+
     def __init__(self, verbose_name, is_stacked, attrs=None, choices=()):
         self.verbose_name = verbose_name
         self.is_stacked = is_stacked
@@ -44,7 +44,7 @@ class TaggableModelForm(forms.ModelForm):
             kwargs['initial']['tags'] = [tag.id for tag in self.tag_model.objects.get_for_object(kwargs['instance'])]
         super(TaggableModelForm, self).__init__(*args, **kwargs)
         self.fields['tags'].choices = [(tag.id, tag.name) for tag in self.tag_model.objects.all()]
-    
+
     def save(self, commit):
         obj = super(TaggableModelForm, self).save()
         tag_ids = self.cleaned_data['tags']
@@ -59,7 +59,7 @@ class TaggableModelForm(forms.ModelForm):
 
 class TaggableModelAdmin(admin.ModelAdmin):
     form = TaggableModelForm
-    
+
     def get_form(self, request, obj=None):
         form = super(TaggableModelAdmin, self).get_form(request, obj)
         form.tag_model = self.tag_model

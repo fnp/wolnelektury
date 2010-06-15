@@ -32,7 +32,7 @@ def loads(str):
 
 class JSONFormField(forms.CharField):
     widget = forms.Textarea
-    
+
     def clean(self, value):
         try:
             loads(value)
@@ -55,7 +55,7 @@ class JSONField(models.TextField):
 
     def contribute_to_class(self, cls, name):
         super(JSONField, self).contribute_to_class(cls, name)
-        
+
         def get_value(model_instance):
             return loads(getattr(model_instance, self.attname, None))
         setattr(cls, 'get_%s_value' % self.name, get_value)

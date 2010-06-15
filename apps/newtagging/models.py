@@ -6,7 +6,7 @@ Models and managers for generic tagging.
 # Python 2.3 compatibility
 try:
     set
-except NameError: 
+except NameError:
     from sets import Set as set
 
 from django.contrib.contenttypes import generic
@@ -45,7 +45,7 @@ class TagManager(models.Manager):
     def __init__(self, intermediary_table_model):
         super(TagManager, self).__init__()
         self.intermediary_table_model = intermediary_table_model
-    
+
     def update_tags(self, obj, tags):
         """
         Update tags associated with an object.
@@ -54,7 +54,7 @@ class TagManager(models.Manager):
         current_tags = list(self.filter(items__content_type__pk=content_type.pk,
                                         items__object_id=obj.pk))
         updated_tags = self.model.get_tag_list(tags)
-    
+
         # Remove tags which no longer apply
         tags_for_removal = [tag for tag in current_tags \
                             if tag not in updated_tags]
@@ -66,7 +66,7 @@ class TagManager(models.Manager):
         for tag in updated_tags:
             if tag not in current_tags:
                 self.intermediary_table_model._default_manager.create(tag=tag, content_object=obj)
-    
+
     def remove_tag(self, obj, tag):
         """
         Remove tag from an object.
@@ -83,7 +83,7 @@ class TagManager(models.Manager):
         ctype = ContentType.objects.get_for_model(obj)
         return self.filter(items__content_type__pk=ctype.pk,
                            items__object_id=obj.pk)
-    
+
     def _get_usage(self, model, counts=False, min_count=None, extra_joins=None, extra_criteria=None, params=None, extra=None):
         """
         Perform the custom SQL query for ``usage_for_model`` and
@@ -94,12 +94,12 @@ class TagManager(models.Manager):
         model_table = qn(model._meta.db_table)
         model_pk = '%s.%s' % (model_table, qn(model._meta.pk.column))
         tag_columns = self._get_tag_columns()
-        
+
         if extra is None: extra = {}
         extra_where = ''
         if 'where' in extra:
             extra_where = 'AND ' + ' AND '.join(extra['where'])
-        
+
         query = """
         SELECT DISTINCT %(tag_columns)s%(count_sql)s
         FROM
@@ -224,12 +224,12 @@ class TagManager(models.Manager):
         tag_count = len(tags)
         tagged_item_table = qn(self.intermediary_table_model._meta.db_table)
         tag_columns = self._get_tag_columns()
-        
+
         if extra is None: extra = {}
         extra_where = ''
         if 'where' in extra:
             extra_where = 'AND ' + ' AND '.join(extra['where'])
-        
+
         # Temporary table in this query is a hack to prevent MySQL from executing
         # inner query as dependant query (which could result in severe performance loss)
         query = """
@@ -301,7 +301,7 @@ class TaggedItemManager(models.Manager):
     def __init__(self, tag_model):
         super(TaggedItemManager, self).__init__()
         self.tag_model = tag_model
-    
+
     def get_by_model(self, queryset_or_model, tags):
         """
         Create a ``QuerySet`` containing instances of the specified
@@ -473,7 +473,7 @@ class TaggedItemManager(models.Manager):
 def create_intermediary_table_model(model):
     """Create an intermediary table model for the specific tag model"""
     name = model.__name__ + 'Relation'
-     
+
     class Meta:
         db_table = '%s_relation' % model._meta.db_table
         unique_together = (('tag', 'content_type', 'object_id'),)
@@ -483,8 +483,8 @@ def create_intermediary_table_model(model):
             return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
         except ObjectDoesNotExist:
             return u'<deleted> [%s]' % self.tag
-            
-    # Set up a dictionary to simulate declarations within a class    
+
+    # Set up a dictionary to simulate declarations within a class
     attrs = {
         '__module__': model.__module__,
         'Meta': Meta,
@@ -513,15 +513,15 @@ class TagMeta(ModelBase):
 class TagBase(models.Model):
     """Abstract class to be inherited by model classes."""
     __metaclass__ = TagMeta
-    
+
     class Meta:
         abstract = True
-    
+
     @staticmethod
     def get_tag_list(tag_list):
         """
         Utility function for accepting tag input in a flexible manner.
-        
+
         You should probably override this method in your subclass.
         """
         if isinstance(tag_list, TagBase):

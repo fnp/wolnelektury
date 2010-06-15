@@ -15,7 +15,7 @@ class Chunk(models.Model):
         ordering = ('key',)
         verbose_name = _('chunk')
         verbose_name_plural = _('chunks')
-    
+
     def __unicode__(self):
         return self.key
 
@@ -23,7 +23,7 @@ class Chunk(models.Model):
 class Attachment(models.Model):
     key = models.CharField(_('key'), help_text=_('A unique name for this attachment'), primary_key=True, max_length=255)
     attachment = models.FileField(upload_to='chunks/attachment')
-    
+
     class Meta:
         ordering = ('key',)
         verbose_name, verbose_name_plural = _('attachment'), _('attachments')

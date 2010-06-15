@@ -54,7 +54,7 @@ def simple_title(tags):
         'kind': u'rodzaj',
         'set': u'półka',
     }
-    
+
     title = []
     for tag in tags:
         title.append("%s: %s" % (mapping[tag.category], tag.name))
@@ -68,46 +68,46 @@ def title_from_tags(tags):
         for tag in tags:
             result[tag.category] = tag
         return result
-    
+
     # TODO: Remove this after adding flection mechanism
     return simple_title(tags)
-    
+
     class Flection(object):
         def get_case(self, name, flection):
             return name
     flection = Flection()
-    
+
     self = split_tags(tags)
-    
+
     title = u''
-    
+
     # Specjalny przypadek oglądania wszystkich lektur na danej półce
     if len(self) == 1 and 'set' in self:
         return u'Półka %s' % self['set']
-    
+
     # Specjalny przypadek "Twórczość w pozytywizmie", wtedy gdy tylko epoka
     # jest wybrana przez użytkownika
     if 'epoch' in self and len(self) == 1:
         text = u'Twórczość w %s' % flection.get_case(unicode(self['epoch']), u'miejscownik')
         return capfirst(text)
-    
+
     # Specjalny przypadek "Dramat w twórczości Sofoklesa", wtedy gdy podane
     # są tylko rodzaj literacki i autor
     if 'kind' in self and 'author' in self and len(self) == 2:
-        text = u'%s w twórczości %s' % (unicode(self['kind']), 
+        text = u'%s w twórczości %s' % (unicode(self['kind']),
             flection.get_case(unicode(self['author']), u'dopełniacz'))
         return capfirst(text)
-    
+
     # Przypadki ogólniejsze
     if 'theme' in self:
         title += u'Motyw %s' % unicode(self['theme'])
-    
+
     if 'genre' in self:
         if 'theme' in self:
             title += u' w %s' % flection.get_case(unicode(self['genre']), u'miejscownik')
         else:
             title += unicode(self['genre'])
-            
+
     if 'kind' in self or 'author' in self or 'epoch' in self:
         if 'genre' in self or 'theme' in self:
             if 'kind' in self:
@@ -116,12 +116,12 @@ def title_from_tags(tags):
                 title += u' w twórczości '
         else:
             title += u'%s ' % unicode(self.get('kind', u'twórczość'))
-            
+
     if 'author' in self:
         title += flection.get_case(unicode(self['author']), u'dopełniacz')
     elif 'epoch' in self:
         title += flection.get_case(unicode(self['epoch']), u'dopełniacz')
-    
+
     return capfirst(title)
 
 
@@ -152,7 +152,7 @@ def breadcrumbs(tags, search_form=True):
 def catalogue_url(parser, token):
     bits = token.split_contents()
     tag_name = bits[0]
-    
+
     tags_to_add = []
     tags_to_remove = []
     for bit in bits[1:]:
@@ -160,7 +160,7 @@ def catalogue_url(parser, token):
             tags_to_remove.append(bit[1:])
         else:
             tags_to_add.append(bit)
-    
+
     return CatalogueURLNode(tags_to_add, tags_to_remove)
 
 
@@ -168,7 +168,7 @@ class CatalogueURLNode(Node):
     def __init__(self, tags_to_add, tags_to_remove):
         self.tags_to_add = [Variable(tag) for tag in tags_to_add]
         self.tags_to_remove = [Variable(tag) for tag in tags_to_remove]
-    
+
     def render(self, context):
         tags_to_add = []
         tags_to_remove = []
@@ -186,14 +186,14 @@ class CatalogueURLNode(Node):
                 tags_to_remove += [t for t in tag]
             else:
                 tags_to_remove.append(tag)
-            
+
         tag_slugs = [tag.url_chunk for tag in tags_to_add]
         for tag in tags_to_remove:
             try:
                 tag_slugs.remove(tag.url_chunk)
             except KeyError:
                 pass
-        
+
         if len(tag_slugs) > 0:
             return reverse('tagged_object_list', kwargs={'tags': '/'.join(tag_slugs)})
         else:
@@ -201,7 +201,7 @@ class CatalogueURLNode(Node):
 
 
 @register.inclusion_tag('catalogue/latest_blog_posts.html')
-def latest_blog_posts(feed_url, posts_to_show=5):    
+def latest_blog_posts(feed_url, posts_to_show=5):
     try:
         feed = feedparser.parse(str(feed_url))
         posts = []
@@ -234,7 +234,7 @@ def folded_tag_list(tags, choices=None):
         choices = []
     some_tags_hidden = False
     tag_count = len(tags)
-    
+
     if tag_count == 1:
         one_tag = tags[0]
     else:

@@ -14,7 +14,7 @@ def get_ltag(book, orm):
 
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
         """ Add _tag_counter and make sure all books carry their ancestors' l-tags """
 
@@ -32,7 +32,7 @@ class Migration(SchemaMigration):
             ltag = get_ltag(book, orm)
             for child in book.children.all():
                 ltag_descendants(child, ltags + [ltag])
-        
+
         if not db.dry_run:
             try:
                 book_ct = orm['contenttypes.contenttype'].objects.get(app_label='catalogue', model='book')
@@ -42,8 +42,8 @@ class Migration(SchemaMigration):
             orm.TagRelation.objects.filter(content_type=book_ct, tag__category='book').delete()
             for book in orm.Book.objects.filter(parent=None):
                 ltag_descendants(book)
-    
-    
+
+
     def backwards(self, orm):
         """ Delete _tag_counter and make sure books carry own l-tag. """
 
@@ -61,8 +61,8 @@ class Migration(SchemaMigration):
             orm.TagRelation.objects.filter(content_type=book_ct, tag__category='book').delete()
             for book in orm.Book.objects.filter(parent=None):
                 orm.TagRelation(object_id=book.pk, tag=get_ltag(book, orm), content_type=book_ct).save()
-    
-    
+
+
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -182,5 +182,5 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['catalogue']

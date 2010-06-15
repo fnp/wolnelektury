@@ -9,7 +9,7 @@
 {% block body %}
     <h1>{% title_from_tags tags %}</h1>
     {% breadcrumbs tags %}
-    
+
 	<p>{% trans "The criteria are ambiguous. Please select one of the following options:" %}</p>
     <div id="books-list">
         {% for option in options %}

@@ -118,7 +118,7 @@ class ProfileMiddleware(object):
             response.content += self.summary_for_files(stats_str)
 
             os.unlink(self.tmpfile)
-            
+
             response.content += '\n%d SQL Queries:\n' % len(connection.queries)
             response.content += pprint.pformat(connection.queries)
 

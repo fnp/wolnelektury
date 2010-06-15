@@ -1,4 +1,4 @@
-/* 
+/*
  * jQuery Event Delegation Plugin - jquery.eventdelegation.js
  * Fast flexible event handling
  *
@@ -21,10 +21,10 @@
 		'keydown',
 		'keypress',
 		'keyup'
-		], function(i, eventName) {	
+		], function(i, eventName) {
 			allowed[eventName] = true;
 	});
-	
+
 	$.fn.extend({
 		delegate: function (event, selector, f) {
 			return $(this).each(function () {
@@ -32,7 +32,7 @@
 					$(this).bind(event, function (e) {
 						var el = $(e.target),
 							result = false;
-						
+
 						while (!$(el).is('body')) {
 							if ($(el).is(selector)) {
 								result = f.apply($(el)[0], [e]);
@@ -40,7 +40,7 @@
 									e.preventDefault();
 								return;
 							}
-							
+
 							el = $(el).parent();
 						}
 					});

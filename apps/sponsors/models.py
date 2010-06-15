@@ -22,7 +22,7 @@ class Sponsor(models.Model):
             'options': ['pad', 'detail'],
         })
     url = models.URLField(_('url'), blank=True, verify_exists=False)
-    
+
     def __unicode__(self):
         return self.name
 
@@ -37,7 +37,7 @@ class SponsorPage(models.Model):
     name = models.CharField(_('name'), max_length=120)
     sponsors = JSONField(_('sponsors'), default={})
     _html = models.TextField(blank=True, editable=False)
-    
+
     def populated_sponsors(self):
         result = []
         for column in self.get_sponsors_value():
@@ -50,7 +50,7 @@ class SponsorPage(models.Model):
                     pass
             result.append(result_group)
         return result
-    
+
     def html(self):
         return self._html
     html = property(fget=html)
@@ -60,7 +60,7 @@ class SponsorPage(models.Model):
             'sponsors': self.populated_sponsors(),
         })
         return super(SponsorPage, self).save(*args, **kwargs)
-    
+
     def __unicode__(self):
         return self.name
 

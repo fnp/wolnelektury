@@ -20,7 +20,7 @@ urlpatterns = patterns('catalogue.views',
 
     # tools
     url(r'^zegar', 'clock', name='clock'),
-    
+
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)\.html$', 'book_text', name='book_text'),
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)/$', 'book_detail', name='book_detail'),

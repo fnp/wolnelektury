@@ -1,12 +1,18 @@
 #!/usr/bin/env python
-from os.path import abspath, dirname, join
+import os.path
 import sys
 
+ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
 # Add apps and lib directories to PYTHONPATH
-sys.path.insert(0, abspath(join(dirname(__file__), '../apps')))
-sys.path.insert(0, abspath(join(dirname(__file__), '../lib')))
+sys.path = [
+    os.path.join(ROOT, 'apps'),
+    os.path.join(ROOT, 'lib'),
+    os.path.join(ROOT, 'lib/librarian'),
+] + sys.path
 
 from django.core.management import execute_manager
+
 try:
     import settings # Assumed to be in the same directory.
 except ImportError:

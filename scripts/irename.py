@@ -25,19 +25,19 @@ for file_name in os.listdir('mp3'):
     base_name, ext = splitext(file_name)
     if ext != '.mp3':
         continue
-    
+
     audio = easyid3.EasyID3(join('mp3', file_name))
     title = audio['title'][0]
     artist = title.split(',', 1)[0].strip()
     artist_slug = slughifi(artist)
     title_part = slughifi(title.rsplit(',', 1)[1].strip())
-    
+
     print "--------------------"
     print "File: %s" % file_name
     print "Title: %s" % title
     print
     print "Matching books:"
-    
+
     matching_books = [book for book in Book.tagged.with_all(artist_slug) if book.slug not in chosen_book_slugs]
     matching_books = [book for book in matching_books if title_part in book.slug]
 
@@ -51,11 +51,10 @@ for file_name in os.listdir('mp3'):
     else:
         print "Skipping %s: No matching book found" % file_name
         continue
-    
+
     print "You chose %d (%s)" % (i, matching_books[i].slug)
-    
+
     chosen_book_slugs.add(matching_books[i].slug)
     os.rename(join('mp3', file_name), join('new_mp3', matching_books[i].slug + '.mp3'))
     os.rename(join('oggvorbis', base_name + '.ogg'), join('new_ogg', matching_books[i].slug + '.ogg'))
-    
-    
+

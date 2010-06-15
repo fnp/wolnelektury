@@ -30,7 +30,7 @@ class ChunkNode(template.Node):
     def __init__(self, key, cache_time=0):
        self.key = key
        self.cache_time = cache_time
-    
+
     def render(self, context):
         try:
             cache_key = 'chunk_' + self.key
@@ -44,7 +44,7 @@ class ChunkNode(template.Node):
             n.save()
             return ''
         return content
-        
+
 register.tag('chunk', do_get_chunk)
 
 
@@ -58,6 +58,6 @@ def attachment(key, cache_time=0):
         return c.attachment.url
     except Attachment.DoesNotExist:
         return ''
-    
+
 register.simple_tag(attachment)
 

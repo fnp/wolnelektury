@@ -9,7 +9,7 @@ import pprint
 import traceback
 import re
 import itertools
-from operator import itemgetter 
+from operator import itemgetter
 
 from django.conf import settings
 from django.template import RequestContext
@@ -83,7 +83,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
             'tags': [tag]
         })
     return render_to_response('catalogue/differentiate_tags.html',
-                {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]}, 
+                {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]},
                 context_instance=RequestContext(request))
 
 
@@ -122,7 +122,7 @@ def tagged_object_list(request, tags=''):
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
 
         # newtagging goes crazy if we just try:
-        #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True, 
+        #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True,
         #                    extra={'where': ["catalogue_tag.category != 'book'"]})
         fragment_keys = [fragment.pk for fragment in fragments]
         if fragment_keys:
@@ -141,7 +141,7 @@ def tagged_object_list(request, tags=''):
         descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
         if descendants_keys:
             objects = objects.exclude(pk__in=descendants_keys)
-        
+
         # get related tags from `tag_counter` and `theme_counter`
         related_counts = {}
         tags_pks = [tag.pk for tag in tags]
@@ -154,7 +154,7 @@ def tagged_object_list(request, tags=''):
         related_tags = [tag for tag in related_tags if tag not in tags]
         for tag in related_tags:
             tag.count = related_counts[tag.pk]
-        
+
         categories = split_tags(related_tags)
         del related_tags
 
@@ -238,7 +238,7 @@ def book_text(request, slug):
 
 def _no_diacritics_regexp(query):
     """ returns a regexp for searching for a query without diacritics
-    
+
     should be locale-aware """
     names = {
         u'a':u'aąĄ', u'c':u'cćĆ', u'e':u'eęĘ', u'l': u'lłŁ', u'n':u'nńŃ', u'o':u'oóÓ', u's':u'sśŚ', u'z':u'zźżŹŻ',
@@ -256,16 +256,16 @@ def unicode_re_escape(query):
 def _word_starts_with(name, prefix):
     """returns a Q object getting models having `name` contain a word
     starting with `prefix`
-    
+
     We define word characters as alphanumeric and underscore, like in JS.
-    
+
     Works for MySQL, PostgreSQL, Oracle.
     For SQLite, _sqlite* version is substituted for this.
     """
     kwargs = {}
 
     prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
-    # can't use [[:<:]] (word start), 
+    # can't use [[:<:]] (word start),
     # but we want both `xy` and `(xy` to catch `(xyz)`
     kwargs['%s__iregex' % name] = u"(^|[^[:alnum:]_])%s" % prefix
 
@@ -273,8 +273,8 @@ def _word_starts_with(name, prefix):
 
 
 def _sqlite_word_starts_with(name, prefix):
-    """ version of _word_starts_with for SQLite 
-    
+    """ version of _word_starts_with for SQLite
+
     SQLite in Django uses Python re module
     """
     kwargs = {}
@@ -320,12 +320,12 @@ def _get_result_type(match):
 
 def find_best_matches(query, user=None):
     """ Finds a Book, Tag or Bookstub best matching a query.
-    
+
     Returns a with:
       - zero elements when nothing is found,
       - one element when a best result is found,
       - more then one element on multiple exact matches
-    
+
     Raises a ValueError on too short a query.
     """
 
@@ -458,7 +458,7 @@ def download_shelf(request, slug):
     """"
     Create a ZIP archive on disk and transmit it in chunks of 8KB,
     without loading the whole file into memory. A similar approach can
-    be used for large dynamic PDF files.                                        
+    be used for large dynamic PDF files.
     """
     shelf = get_object_or_404(models.Tag, slug=slug, category='set')
 

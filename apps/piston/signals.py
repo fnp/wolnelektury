@@ -1,5 +1,5 @@
 # Django imports
-import django.dispatch 
+import django.dispatch
 
 # Piston imports
 from utils import send_consumer_mail

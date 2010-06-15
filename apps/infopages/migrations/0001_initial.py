@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'InfoPage'
         db.create_table('infopages_infopage', (
             ('title_de', self.gf('django.db.models.fields.CharField')(max_length=120, null=True, blank=True)),
@@ -55,14 +55,14 @@ class Migration(SchemaMigration):
             call_command("loaddata", "wl_data")
 
         db.send_create_signal('infopages', ['InfoPage'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'InfoPage'
         db.delete_table('infopages_infopage')
-    
-    
+
+
     models = {
         'infopages.infopage': {
             'Meta': {'object_name': 'InfoPage'},
@@ -106,5 +106,5 @@ class Migration(SchemaMigration):
             'title_uk': ('django.db.models.fields.CharField', [], {'max_length': '120', 'null': True, 'blank': True})
         }
     }
-    
+
     complete_apps = ['infopages']

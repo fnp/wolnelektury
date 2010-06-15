@@ -29,7 +29,7 @@ class Nonce(models.Model):
     token_key = models.CharField(max_length=KEY_SIZE)
     consumer_key = models.CharField(max_length=KEY_SIZE)
     key = models.CharField(max_length=255)
-    
+
     def __unicode__(self):
         return u"Nonce %s for %s" % (self.key, self.consumer_key)
 
@@ -46,17 +46,17 @@ class Consumer(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, related_name='consumers')
 
     objects = ConsumerManager()
-        
+
     def __unicode__(self):
         return u"Consumer %s with key %s" % (self.name, self.key)
 
     def generate_random_codes(self):
         """
         Used to generate random key/secret pairings. Use this after you've
-        added the other data in place of save(). 
+        added the other data in place of save().
 
         c = Consumer()
-        c.name = "My consumer" 
+        c.name = "My consumer"
         c.description = "An app that makes ponies from the API."
         c.user = some_user_object
         c.generate_random_codes()
@@ -77,28 +77,28 @@ class Token(models.Model):
     REQUEST = 1
     ACCESS = 2
     TOKEN_TYPES = ((REQUEST, u'Request'), (ACCESS, u'Access'))
-    
+
     key = models.CharField(max_length=KEY_SIZE)
     secret = models.CharField(max_length=SECRET_SIZE)
     verifier = models.CharField(max_length=VERIFIER_SIZE)
     token_type = models.IntegerField(choices=TOKEN_TYPES)
     timestamp = models.IntegerField(default=long(time.time()))
     is_approved = models.BooleanField(default=False)
-    
+
     user = models.ForeignKey(User, null=True, blank=True, related_name='tokens')
     consumer = models.ForeignKey(Consumer)
-    
+
     callback = models.CharField(max_length=255, null=True, blank=True)
     callback_confirmed = models.BooleanField(default=False)
-    
+
     objects = TokenManager()
-    
+
     def __unicode__(self):
         return u"%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)
 
     def to_string(self, only_key=False):
         token_dict = {
-            'oauth_token': self.key, 
+            'oauth_token': self.key,
             'oauth_token_secret': self.secret,
             'oauth_callback_confirmed': 'true',
         }
@@ -121,7 +121,7 @@ class Token(models.Model):
         self.key = key
         self.secret = secret
         self.save()
-        
+
     # -- OAuth 1.0a stuff
 
     def get_callback_url(self):
@@ -136,13 +136,13 @@ class Token(models.Model):
             return urlparse.urlunparse((scheme, netloc, path, params,
                 query, fragment))
         return self.callback
-    
+
     def set_callback(self, callback):
         if callback != "oob": # out of band, says "we can't do this!"
             self.callback = callback
             self.callback_confirmed = True
             self.save()
-        
+
 admin.site.register(Token)
 
 # Attach our signals
