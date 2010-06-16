@@ -312,42 +312,45 @@ function serverTime() {
             location.href = $('h2 a', this).attr('href');
         });
 
-		function toggled_by_slide(cont, short_el, long_el, button, short_text, long_text) {
-			function toggle(cont, short_el, long_el, button, short_text, long_text) {
-	            if (cont.hasClass('short')) {
-	                cont.animate({"height": long_el.attr("cont_h")+'px'}, {duration: "fast" }).removeClass('short');
-	                short_el.hide();
-	                long_el.show();
-	                button.html(long_text);
-	            } else {
-	                cont.animate({"height": short_el.attr("cont_h")+'px'}, {duration: "fast" }).addClass('short');
-	                long_el.hide();
-	                short_el.show();
-	                button.html(short_text);
-	            }
-			}
+        function toggled_by_slide(cont, short_el, long_el, button, short_text, long_text) {
+            function toggle(cont, short_el, long_el, button, short_text, long_text) {
+                if (cont.hasClass('short')) {
+                    cont.animate({"height": long_el.attr("cont_h")+'px'}, {duration: "fast" }).removeClass('short');
+                    short_el.hide();
+                    long_el.show();
+                    button.html(long_text);
+                } else {
+                    cont.animate({"height": short_el.attr("cont_h")+'px'}, {duration: "fast" }).addClass('short');
+                    long_el.hide();
+                    short_el.show();
+                    button.html(short_text);
+                }
+            }
+            if (long_el.html().length <= short_el.html().length)
+                return;
+
             long_el.attr("cont_h", cont.height()).hide();
             short_el.show().attr("cont_h", cont.height());
-			cont.addClass('short');
-			button.html(short_text);
-			button.hover(
+            cont.addClass('short');
+            button.html(short_text);
+            button.hover(
                 function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
                 function() { $(this).css({background: '#EEE'}); }
-			).click(function(){
-				toggle(cont, short_el, long_el, button, short_text, long_text)
-			});
-			cont.hover(
+            ).click(function(){
+                toggle(cont, short_el, long_el, button, short_text, long_text)
+            });
+            cont.hover(
                 function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
                 function() { $(this).css({background: '#FFF'}); }
             ).click(function(){
                 toggle(cont, short_el, long_el, button, short_text, long_text)
             })
-		}
+        }
         toggled_by_slide($('#description'), $('#description-short'), $('#description-long'),
           $('#toggle-description p'),
           LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_DESCRIPTION']+' ▼',
-		  LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▲'
-		  );
+            LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▲'
+        );
 
         $('#toggle-share-shelf').hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
