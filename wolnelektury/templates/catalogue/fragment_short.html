@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load catalogue_tags %}
 <div class="fragment">
     {% if fragment.short_text %}
     <div class='fragment-short-text'>
@@ -13,7 +14,7 @@
         {% endif %}
     </div>
     <div class="fragment-metadata">
-        <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a>, {{ book_authors|join:"," }}
+        <p>{% book_title_html fragment.book %}
            <a href="{{ fragment.get_absolute_url }}">({% trans "See in a book" %})</a></p>
     </div>
     <div class="clearboth"></div>

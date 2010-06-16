@@ -62,6 +62,29 @@ def simple_title(tags):
 
 
 @register.simple_tag
+def book_title(book, html_links=False):
+    names = list(book.tags.filter(category='author'))
+
+    books = []
+    while book:
+        books.append(book)
+        book = book.parent
+    names.extend(reversed(books[::-1]))
+
+    if html_links:
+        names = ['<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in names]
+    else:
+        names = [tag.name for tag in names]
+
+    return ', '.join(names)
+
+
+@register.simple_tag
+def book_title_html(book):
+    return book_title(book, html_links=True)
+
+
+@register.simple_tag
 def title_from_tags(tags):
     def split_tags(tags):
         result = {}

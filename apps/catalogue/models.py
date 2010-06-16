@@ -189,8 +189,12 @@ class Book(models.Model):
     def save(self, force_insert=False, force_update=False, reset_short_html=True, refresh_mp3=True):
         if reset_short_html:
             # Reset _short_html during save
+            update = {}
             for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
+                update[key] = ''
                 self.__setattr__(key, '')
+            # Fragment.short_html relies on book's tags, so reset it here too
+            self.fragments.all().update(**update)
 
         book = super(Book, self).save(force_insert, force_update)
 
@@ -460,11 +464,8 @@ class Fragment(models.Model):
         if short_html and len(short_html):
             return mark_safe(short_html)
         else:
-            book_authors = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name))
-                for tag in self.book.tags if tag.category == 'author']
-
             setattr(self, key, unicode(render_to_string('catalogue/fragment_short.html',
-                {'fragment': self, 'book': self.book, 'book_authors': book_authors})))
+                {'fragment': self})))
             self.save()
             return mark_safe(getattr(self, key))
 
