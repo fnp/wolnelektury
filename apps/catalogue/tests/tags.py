@@ -244,7 +244,7 @@ class TestIdenticalTag(WLTestCase):
 
         cats = self.client.get('/katalog/lektura/tag/').context['categories']
         for category in 'author', 'kind', 'genre', 'epoch', 'theme':
-            self.assertTrue('tag' in [tag.name for tag in cats[category]],
+            self.assertTrue('tag' in [tag.slug for tag in cats[category]],
                             'missing related tag for %s' % category)
 
     def test_qualified_url(self):
