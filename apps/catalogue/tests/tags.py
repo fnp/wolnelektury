@@ -171,17 +171,14 @@ class TagRelatedTagsTests(WLTestCase):
                          'wrong related tag epoch tag on tag page')
 
 
-    def test_siblings_tags_add(self):
+    def test_siblings_tags_count(self):
         """ if children have tags and parent hasn't, count the children """
 
         cats = self.client.get('/katalog/epoch/').context['categories']
         self.assertTrue(('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
                     'wrong related kind tags on tag page')
 
-    def test_themes_add(self):
-        """ all occurencies of theme should be counted """
-
-        cats = self.client.get('/katalog/epoch/').context['categories']
+        # all occurencies of theme should be counted
         self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
                     'wrong related theme count')
 
