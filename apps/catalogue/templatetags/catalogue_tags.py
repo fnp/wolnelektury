@@ -69,7 +69,7 @@ def book_title(book, html_links=False):
     while book:
         books.append(book)
         book = book.parent
-    names.extend(reversed(books[::-1]))
+    names.extend(reversed(books))
 
     if html_links:
         names = ['<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in names]

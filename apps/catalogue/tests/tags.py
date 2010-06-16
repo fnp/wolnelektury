@@ -2,19 +2,8 @@
 from catalogue import models
 from catalogue.test_utils import *
 from django.core.files.base import ContentFile
-from slughifi import slughifi
 
 from nose.tools import raises
-
-def info_args(title):
-    """ generate some keywords for comfortable BookInfoCreation  """
-    slug = unicode(slughifi(title))
-    return {
-        'title': unicode(title),
-        'slug': slug,
-        'url': u"http://wolnelektury.pl/example/%s" % slug,
-        'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
-    }
 
 
 class BooksByTagTests(WLTestCase):
@@ -23,38 +12,20 @@ class BooksByTagTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         author = PersonStub(("Common",), "Man")
-        tags = dict(genre='G', epoch='E', author=author, kind="K")
 
         # grandchild
-        kwargs = info_args(u"GChild")
-        kwargs.update(tags)
-        gchild_info = BookInfoStub(**kwargs)
+        self.gchild_info = BookInfoStub(genre='Genre', epoch='Epoch', kind='Kind', author=author,
+                                        **info_args("GChild"))
         # child
-        kwargs = info_args(u"Child")
-        kwargs.update(tags)
-        child_info = BookInfoStub(parts=[gchild_info.url], **kwargs)
-        # other grandchild
-        kwargs = info_args(u"Different GChild")
-        kwargs.update(tags)
-        diffgchild_info = BookInfoStub(**kwargs)
-        # other child
-        kwargs = info_args(u"Different Child")
-        kwargs.update(tags)
-        kwargs['kind'] = 'K2'
-        diffchild_info = BookInfoStub(parts=[diffgchild_info.url], **kwargs)
+        self.child_info = BookInfoStub(genre='Genre', epoch='Epoch', kind='Other Kind', author=author,
+                                       parts=[self.gchild_info.url],
+                                       **info_args("Child"))
         # parent
-        kwargs = info_args(u"Parent")
-        kwargs.update(tags)
-        parent_info = BookInfoStub(parts=[child_info.url, diffchild_info.url], **kwargs)
+        self.parent_info = BookInfoStub(genre='Genre', epoch='Epoch', kind='Kind', author=author,
+                                        parts=[self.child_info.url],
+                                        **info_args("Parent"))
 
-        # create the books
-        book_file = ContentFile('<utwor />')
-        for info in gchild_info, child_info, diffgchild_info, diffchild_info, parent_info:
-            book = models.Book.from_text_and_meta(book_file, info)
-
-        # useful tags
-        self.author = models.Tag.objects.get(name='Common Man', category='author')
-        models.Tag.objects.create(name='Empty tag', slug='empty', category='author')
+        self.book_file = ContentFile('<utwor />')
 
     def test_nonexistent_tag(self):
         """ Looking for a non-existent tag should yield 404 """
@@ -63,30 +34,37 @@ class BooksByTagTests(WLTestCase):
 
     def test_book_tag(self):
         """ Looking for a book tag isn't permitted """
-        self.assertEqual(404, self.client.get('/katalog/parent/').status_code)
+        models.Book.from_text_and_meta(self.book_file, self.gchild_info)
+        self.assertEqual(404, self.client.get('/katalog/gchild/').status_code)
 
     def test_tag_empty(self):
         """ Tag with no books should return no books """
+        models.Book.from_text_and_meta(self.book_file, self.gchild_info)
+        models.Tag.objects.create(name='Empty tag', slug='empty', category='author')
+
         context = self.client.get('/katalog/empty/').context
         self.assertEqual(0, len(context['object_list']))
 
-    def test_tag_common(self):
-        """ Filtering by tag should only yield top-level books. """
-        context = self.client.get('/katalog/%s/' % self.author.slug).context
+    def test_tag_eliminate(self):
+        """ Filtering by tag should only yield top-level qualifying books. """
+        for info in self.gchild_info, self.child_info, self.parent_info:
+            models.Book.from_text_and_meta(self.book_file, info)
+
+        # all three qualify
+        context = self.client.get('/katalog/genre/').context
         self.assertEqual([book.title for book in context['object_list']],
                          ['Parent'])
 
-    def test_tag_child(self):
-        """ Filtering by child's tag should yield the child """
-        context = self.client.get('/katalog/k2/').context
-        self.assertEqual([book.title for book in context['object_list']],
-                         ['Different Child'])
-
-    def test_tag_child_jump(self):
-        """ Of parent and grandchild, only parent should be returned. """
-        context = self.client.get('/katalog/k/').context
+        # parent and gchild qualify, child doesn't
+        context = self.client.get('/katalog/kind/').context
         self.assertEqual([book.title for book in context['object_list']],
                          ['Parent'])
+
+        # Filtering by child's tag should yield the child
+        context = self.client.get('/katalog/other-kind/').context
+        self.assertEqual([book.title for book in context['object_list']],
+                         ['Child'])
+
 
 
 class TagRelatedTagsTests(WLTestCase):

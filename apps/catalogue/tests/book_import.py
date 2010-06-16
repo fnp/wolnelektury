@@ -82,7 +82,7 @@ class BookImportLogicTests(WLTestCase):
         BOOK_TEXT = """<utwor />"""
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
         self.book_info.title = u"Extraordinary"
-        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info, overwrite=True)
 
         tags = [ (tag.category, tag.slug) for tag in book.tags ]
         tags.sort()
@@ -93,7 +93,7 @@ class BookImportLogicTests(WLTestCase):
         BOOK_TEXT = """<utwor />"""
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
         self.book_info.author = PersonStub(("Hans", "Christian"), "Andersen")
-        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info, overwrite=True)
 
         tags = [ (tag.category, tag.slug) for tag in book.tags ]
         tags.sort()
@@ -104,6 +104,5 @@ class BookImportLogicTests(WLTestCase):
 
         self.assertEqual(tags, self.expected_tags)
 
-        # the old tag should disappear
-        self.assertRaises(models.Tag.DoesNotExist, models.Tag.objects.get,
-                    slug="jim-lazy", category="author")
+        # the old tag shouldn't disappear
+        models.Tag.objects.get(slug="jim-lazy", category="author")
