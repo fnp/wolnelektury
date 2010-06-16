@@ -10,11 +10,11 @@ class BookDescTests(WLTestCase):
 
     def setUp(self):
         WLTestCase.setUp(self)
-        author = PersonStub(("Common",), "Man")
+        authors = PersonStub(("Common",), "Man"), PersonStub(("Jane",), "Doe")
 
-        child_info = BookInfoStub(author=author, genre="Genre", epoch='Epoch', kind="Kind",
+        child_info = BookInfoStub(authors=authors, genre="Genre", epoch='Epoch', kind="Kind",
                                    **info_args(u"Child"))
-        parent_info = BookInfoStub(author=author, genre="Genre", epoch='Epoch', kind="Kind",
+        parent_info = BookInfoStub(authors=authors, genre="Genre", epoch='Epoch', kind="Kind",
                                    parts=[child_info.url],
                                    **info_args(u"Parent"))
 
@@ -24,4 +24,4 @@ class BookDescTests(WLTestCase):
 
     def test_book_desc(self):
         """ book description should return authors, ancestors, book """
-        self.assertEqual(catalogue_tags.book_title(self.child), 'Common Man, Parent, Child')
+        self.assertEqual(catalogue_tags.book_title(self.child), 'Jane Doe, Common Man, Parent, Child')

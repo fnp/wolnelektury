@@ -83,27 +83,28 @@
             <h2>{% trans "Details" %}</h2>
             <ul>
                 <li>
+                	
                     {% trans "Author" %}:
                     {% for tag in categories.author %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
                 <li>
                     {% trans "Epoch" %}:
                     {% for tag in categories.epoch %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
                 <li>
                     {% trans "Kind" %}:
                     {% for tag in categories.kind %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
                 <li>
                     {% trans "Genre" %}:
                     {% for tag in categories.genre %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
             </ul>

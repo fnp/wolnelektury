@@ -327,18 +327,23 @@ class Book(models.Model):
         book.save()
 
         book_tags = []
-        for category in ('kind', 'genre', 'author', 'epoch'):
-            tag_name = getattr(book_info, category)
-            tag_sort_key = tag_name
-            if category == 'author':
-                tag_sort_key = tag_name.last_name
-                tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
-            tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
-            if created:
-                tag.name = tag_name
-                tag.sort_key = slughifi(tag_sort_key)
-                tag.save()
-            book_tags.append(tag)
+        categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))
+        for field_name, category in categories:
+            try:
+                tag_names = getattr(book_info, field_name)
+            except:
+                tag_names = [getattr(book_info, category)]
+            for tag_name in tag_names:
+                tag_sort_key = tag_name
+                if category == 'author':
+                    tag_sort_key = tag_name.last_name
+                    tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
+                tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
+                if created:
+                    tag.name = tag_name
+                    tag.sort_key = slughifi(tag_sort_key)
+                    tag.save()
+                book_tags.append(tag)
 
         book.tags = book_tags
 
