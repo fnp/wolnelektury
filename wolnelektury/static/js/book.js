@@ -1,10 +1,14 @@
 $(function() {
     function scrollToAnchor(anchor) {
         if (anchor) {
-            var element = $('a[name="' + anchor.slice(1) + '"]');
+            var anchor_name = anchor.slice(1);
+            var element = $('a[name="' + anchor_name + '"]');
             if (element.length > 0) {
                 $.scrollTo(element, 500, {offset: {top: -50, left: 0}});
-                $(element).highlightFade('yellow');
+                foot_elem = $('#footnotes a[name="' + anchor_name + '"]');
+                if (foot_elem.length > 0) {
+                    $(element).parent().highlightFade('yellow');
+                }
                 window.location.hash = anchor;
             }
         }
