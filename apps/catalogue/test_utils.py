@@ -2,6 +2,7 @@ from django.conf import settings
 from django.test import TestCase
 import shutil
 import tempfile
+from slughifi import slughifi
 
 class WLTestCase(TestCase):
     """
@@ -36,3 +37,14 @@ class BookInfoStub(object):
 
     def to_dict(self):
         return dict((key, unicode(value)) for key, value in self.__dict.items())
+
+
+def info_args(title):
+    """ generate some keywords for comfortable BookInfoCreation  """
+    slug = unicode(slughifi(title))
+    return {
+        'title': unicode(title),
+        'slug': slug,
+        'url': u"http://wolnelektury.pl/example/%s" % slug,
+        'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
+    }

@@ -7,7 +7,7 @@
 {% block bodyid %}book-detail{% endblock %}
 
 {% block body %}
-    <h1>{{ book.title }}, {{ categories.author|join:", " }}</h1>
+    <h1>{% book_title book %}</h1>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
@@ -19,9 +19,10 @@
         <p>{% trans "Based on" %}: {{ extra_info.source_name }}</p>
         {% if book.has_description %}
             <div id="description">
-                {{ book.description|safe }}
+                <div id='description-long'>{{ book.description|safe }}</div>
+                <div id='description-short'>{{ book.description|safe|truncatewords_html:30 }}</div>
             </div>
-            <div id="toggle-description"><p>{% trans "Hide description" %} ▲</p></div>
+            <div id="toggle-description"><p></p></div>
         {% endif %}
         <div id="formats">
             <p class="change-sets">{% trans "Put a book" %} <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">{% trans "on the shelf!" %}</a></span></p>
@@ -82,27 +83,28 @@
             <h2>{% trans "Details" %}</h2>
             <ul>
                 <li>
+                	
                     {% trans "Author" %}:
                     {% for tag in categories.author %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
                 <li>
                     {% trans "Epoch" %}:
                     {% for tag in categories.epoch %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
                 <li>
                     {% trans "Kind" %}:
                     {% for tag in categories.kind %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
                 <li>
                     {% trans "Genre" %}:
                     {% for tag in categories.genre %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
             </ul>

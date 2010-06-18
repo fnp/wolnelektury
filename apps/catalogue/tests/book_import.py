@@ -82,7 +82,7 @@ class BookImportLogicTests(WLTestCase):
         BOOK_TEXT = """<utwor />"""
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
         self.book_info.title = u"Extraordinary"
-        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info, overwrite=True)
 
         tags = [ (tag.category, tag.slug) for tag in book.tags ]
         tags.sort()
@@ -93,7 +93,7 @@ class BookImportLogicTests(WLTestCase):
         BOOK_TEXT = """<utwor />"""
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
         self.book_info.author = PersonStub(("Hans", "Christian"), "Andersen")
-        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info, overwrite=True)
 
         tags = [ (tag.category, tag.slug) for tag in book.tags ]
         tags.sort()
@@ -104,6 +104,26 @@ class BookImportLogicTests(WLTestCase):
 
         self.assertEqual(tags, self.expected_tags)
 
-        # the old tag should disappear
-        self.assertRaises(models.Tag.DoesNotExist, models.Tag.objects.get,
-                    slug="jim-lazy", category="author")
+        # the old tag shouldn't disappear
+        models.Tag.objects.get(slug="jim-lazy", category="author")
+
+    def test_multiple_tags(self):
+        BOOK_TEXT = """<utwor />"""
+        self.book_info.authors = self.book_info.author, PersonStub(("Joe",), "Dilligent"),
+        self.book_info.kinds = self.book_info.kind, 'Y-Kind',
+        self.book_info.genres = self.book_info.genre, 'Y-Genre',
+        self.book_info.epochs = self.book_info.epoch, 'Y-Epoch',
+
+        self.expected_tags.extend([
+           ('author', 'joe-dilligent'),
+           ('genre', 'y-genre'),
+           ('epoch', 'y-epoch'),
+           ('kind', 'y-kind'),
+        ])
+        self.expected_tags.sort()
+
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        tags = [ (tag.category, tag.slug) for tag in book.tags ]
+        tags.sort()
+
+        self.assertEqual(tags, self.expected_tags)
