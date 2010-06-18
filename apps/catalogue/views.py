@@ -105,8 +105,9 @@ def tagged_object_list(request, tags=''):
         raise Http404
 
     theme_is_set = [tag for tag in tags if tag.category == 'theme']
-    shelf_is_set = len(tags) == 1 and tags[0].category == 'set'
-    my_shelf_is_set = shelf_is_set and request.user.is_authenticated() and request.user == tags[0].user
+    shelf_is_set = [tag for tag in tags if tag.category == 'set']
+    only_shelf = shelf_is_set and len(tags) == 1
+    only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
 
     objects = only_author = pd_counter = None
     categories = {}
@@ -136,11 +137,12 @@ def tagged_object_list(request, tags=''):
     else:
         # get relevant books and their tags
         objects = models.Book.tagged.with_all(tags).order_by()
-        l_tags = [book.book_tag() for book in objects]
-        # eliminate descendants
-        descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
-        if descendants_keys:
-            objects = objects.exclude(pk__in=descendants_keys)
+        if not shelf_is_set:
+            # eliminate descendants
+            l_tags = [book.book_tag() for book in objects]
+            descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
+            if descendants_keys:
+                objects = objects.exclude(pk__in=descendants_keys)
 
         # get related tags from `tag_counter` and `theme_counter`
         related_counts = {}
@@ -169,10 +171,10 @@ def tagged_object_list(request, tags=''):
         template_name='catalogue/tagged_object_list.html',
         extra_context={
             'categories': categories,
-            'shelf_is_set': shelf_is_set,
+            'only_shelf': only_shelf,
             'only_author': only_author,
             'pd_counter': pd_counter,
-            'user_is_owner': my_shelf_is_set,
+            'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
 
             'tags': tags,

@@ -10,7 +10,7 @@
     <h1>{% title_from_tags tags %}</h1>
     {% breadcrumbs tags %}
 
-    {% if shelf_is_set and not object_list %}
+    {% if only_shelf and not object_list %}
     <div id="books-list">
         <h2>{% trans "Your shelf is empty" %}</h2>
         <p>{% trans "You can put a book on a shelf by entering page of the reading and clicking 'Put on the shelf'." %}</p>
@@ -27,7 +27,7 @@
             <div class="clearboth"></div>
             <div id="toggle-description"><p></p></div>
         {% endif %}
-        {% if shelf_is_set %}
+        {% if only_shelf %}
             <a id="download-shelf" href="{% url download_shelf last_tag.slug %}">
                 {% trans "Download all books from this shelf" %}
             </a>
@@ -44,7 +44,7 @@
                     <div class="clearboth"></div>
                 </form>
             </div>
-            {% if user_is_owner %}
+            {% if only_my_shelf %}
             <div id="toggle-share-shelf"><p>{% trans "Share this shelf" %}</p></div>
             <div id="share-shelf">
                 <p>{% trans "Copy this link and share it with other people to let them see your shelf." %}
