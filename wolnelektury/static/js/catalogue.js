@@ -108,6 +108,52 @@ function serverTime() {
 (function($) {
     $(function() {
 
+        $.fn.toggle_slide = function(p) {
+            cont = $(this);
+            short_el = p['short_el'] || $(':first-child', this);
+            long_el = p['long_el'] || short_el.next();
+            button = p['button'];
+            short_text = p['short_text'],
+            long_text = p['long_text'];
+
+            var toggle = function() {
+                if (cont.hasClass('short')) {
+                    cont.animate({"height": long_el.attr("cont_h")+'px'}, {duration: "fast" }).removeClass('short');
+                    short_el.hide();
+                    long_el.show();
+                    if (button && long_text) button.html(long_text);
+                } else {
+                    cont.animate({"height": short_el.attr("cont_h")+'px'}, {duration: "fast" }).addClass('short');
+                    long_el.hide();
+                    short_el.show();
+                    if (button && short_text) button.html(short_text);
+                }
+                return false;
+            }
+            if (long_el.html().length <= short_el.html().length)
+                return;
+
+            // ensure long element shown first
+            long_el.show();short_el.hide();
+            long_el.attr("cont_h", $(this).height()).hide();
+            short_el.show().attr("cont_h", $(this).height());
+            $(this).addClass('short');
+
+            if (button && short_text) button.html(short_text);
+            if (button) button.hover(
+                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                function() { $(this).css({background: '#EEE'}); }
+            ).click(toggle);
+            short_el.hover(
+                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                function() { $(this).css({background: '#FFF'}); }
+            ).click(toggle);
+            long_el.hover(
+                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
+                function() { $(this).css({background: '#FFF'}); }
+            ).click(toggle);
+        };
+
         $('form input').labelify({labelledClass: 'blur'});
 
         target = $('#login-register-window div.target');
@@ -123,27 +169,13 @@ function serverTime() {
         });
 
         // Fragments
-        $('.fragment-text').each(function() {
-            if ($(this).prev().filter('.fragment-short-text').length) {
-                $(this).hover(
-                    function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-                    function() { $(this).css({background: '#FFF'}); }
-                ).click(function() {
-                    $(this).fadeOut(function() {
-                        $(this).prev().fadeIn();
-                    });
-                    return false;
-                })
-            }
+        $('.fragment-short-text').each(function() {
+            var fragment = $(this).closest('.fragment');
+            fragment.toggle_slide({
+                short_el: $(this),
+                long_el: fragment.find('.fragment-text')
+            })
         });
-
-        $('.fragment-short-text').click(function() {
-            $(this).fadeOut(function() { $(this).next().fadeIn() });
-            return false;
-        }).hover(
-            function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-            function() { $(this).css({background: '#FFF'}); }
-        );
 
         $('.show-all-tags').click(function() {
             $(this).parent().parent().fadeOut(function() {
@@ -312,45 +344,13 @@ function serverTime() {
             location.href = $('h2 a', this).attr('href');
         });
 
-        function toggled_by_slide(cont, short_el, long_el, button, short_text, long_text) {
-            function toggle(cont, short_el, long_el, button, short_text, long_text) {
-                if (cont.hasClass('short')) {
-                    cont.animate({"height": long_el.attr("cont_h")+'px'}, {duration: "fast" }).removeClass('short');
-                    short_el.hide();
-                    long_el.show();
-                    button.html(long_text);
-                } else {
-                    cont.animate({"height": short_el.attr("cont_h")+'px'}, {duration: "fast" }).addClass('short');
-                    long_el.hide();
-                    short_el.show();
-                    button.html(short_text);
-                }
-            }
-            if (long_el.html().length <= short_el.html().length)
-                return;
-
-            long_el.attr("cont_h", cont.height()).hide();
-            short_el.show().attr("cont_h", cont.height());
-            cont.addClass('short');
-            button.html(short_text);
-            button.hover(
-                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-                function() { $(this).css({background: '#EEE'}); }
-            ).click(function(){
-                toggle(cont, short_el, long_el, button, short_text, long_text)
-            });
-            cont.hover(
-                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-                function() { $(this).css({background: '#FFF'}); }
-            ).click(function(){
-                toggle(cont, short_el, long_el, button, short_text, long_text)
-            })
-        }
-        toggled_by_slide($('#description'), $('#description-short'), $('#description-long'),
-          $('#toggle-description p'),
-          LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_DESCRIPTION']+' ▼',
-            LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▲'
-        );
+        $('#description').each(function(){$(this).toggle_slide({
+            long_el: $('#description-long', this),
+            short_el: $('#description-short', this),
+            button: $(this).nextAll('#toggle-description').first().find('p'),
+            long_text: LOCALE_TEXTS[LANGUAGE_CODE]['HIDE_DESCRIPTION'] + ' ▲',
+            short_text: LOCALE_TEXTS[LANGUAGE_CODE]['EXPAND_DESCRIPTION'] + ' ▼'
+        })});
 
         $('#toggle-share-shelf').hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
