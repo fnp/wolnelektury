@@ -33,7 +33,7 @@ LANGUAGE_CODE = 'pl'
 
 gettext = lambda s: s
 
-LANGUAGES = (
+LANGUAGES = tuple(sorted([
     ('pl', gettext('Polish')),
     ('de', gettext('German')),
     ('en', gettext('English')),
@@ -42,7 +42,7 @@ LANGUAGES = (
     ('ru', gettext('Russian')),
     ('es', gettext('Spanish')),
     ('uk', gettext('Ukrainian')),
-)
+], key=lambda x: x[0]))
 
 
 SITE_ID = 1

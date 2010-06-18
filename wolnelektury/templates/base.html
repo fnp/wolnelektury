@@ -1,14 +1,13 @@
-{% load i18n %}
-{% load chunks compressed catalogue_tags sponsor_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+	{% load i18n chunks compressed catalogue_tags sponsor_tags %}
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
         <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/x-icon" />
         {% compressed_css "all" %}
-        <script type="text/javascript">var LANGUAGE_CODE = "{{ LANGUAGE_CODE}}";</script>
+        <script type="text/javascript">var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";</script>
         {% compressed_js "jquery" %}
         {% compressed_js "all" %}
         {% block extrahead %}
@@ -49,13 +48,14 @@
                 <a href="http://nasza-klasa.pl/profile/30441509"><img src="{{ STATIC_URL }}img/social/naszaklasa.png" alt="WolneLektury @ Nasza-Klasa" /></a>
             </div>
 			<div class="lang-menu" style="float:right;">
-				<form action="/i18n/setlang/" method="post">
-					{% trans "Choose your interface language: " %} <select name="language">
-						{% for lang in LANGUAGES %}
-						<option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
-						{% endfor %}
-					</select>
-					<input type="submit" value="{% trans "Choose language" %}">
+				<form action="{% url django.views.i18n.set_language %}" method="POST">
+					{% spaceless %}
+					{% for lang in LANGUAGES %}					     
+					    <button type="submit" name="language" 
+							class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} {% if forloop.last %}last{% endif %}" 
+							value="{{ lang.0 }}">{{ lang.0|upper }}</button>
+					{% endfor %}	
+					{% endspaceless %}				
 				</form>
 			</div>
             <div class="clearboth"></div>
