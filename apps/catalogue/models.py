@@ -296,7 +296,7 @@ class Book(models.Model):
         book_info = dcparser.parse(xml_file)
 
         if not isinstance(xml_file, File):
-            xml_file = File(xml_file)
+            xml_file = File(open(xml_file))
 
         try:
             return cls.from_text_and_meta(xml_file, book_info, overwrite)

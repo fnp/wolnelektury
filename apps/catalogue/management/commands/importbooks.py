@@ -44,7 +44,7 @@ class Command(BaseCommand):
             if not os.path.isdir(dir_name):
                 print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
             else:
-                for file_name in os.listdir(dir_name):
+                for file_name in sorted(os.listdir(dir_name)):
                     file_path = os.path.join(dir_name, file_name)
                     file_base, ext = os.path.splitext(file_path)
 
