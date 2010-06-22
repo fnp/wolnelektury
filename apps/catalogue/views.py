@@ -50,11 +50,12 @@ def main_page(request):
     if request.user.is_authenticated():
         shelves = models.Tag.objects.filter(category='set', user=request.user)
         new_set_form = forms.NewSetForm()
-    extra_where = "NOT catalogue_tag.category = 'set'"
-    tags = models.Tag.objects.usage_for_model(models.Book, counts=True, extra={'where': [extra_where]})
-    fragment_tags = models.Tag.objects.usage_for_model(models.Fragment, counts=True,
-        extra={'where': ["catalogue_tag.category = 'theme'"] + [extra_where]})
+
+    tags = models.Tag.objects.exclude(category__in=('set', 'book'))
+    for tag in tags:
+        tag.count = tag.get_count()
     categories = split_tags(tags)
+    fragment_tags = categories.get('theme', [])
 
     form = forms.SearchForm()
     return render_to_response('catalogue/main_page.html', locals(),
@@ -119,7 +120,7 @@ def tagged_object_list(request, tags=''):
 
         if shelf_tags:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
-            l_tags = [book.book_tag() for book in books]
+            l_tags = models.Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books])
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
 
         # newtagging goes crazy if we just try:
@@ -139,7 +140,7 @@ def tagged_object_list(request, tags=''):
         objects = models.Book.tagged.with_all(tags).order_by()
         if not shelf_is_set:
             # eliminate descendants
-            l_tags = [book.book_tag() for book in objects]
+            l_tags = models.Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in objects])
             descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
             if descendants_keys:
                 objects = objects.exclude(pk__in=descendants_keys)
@@ -203,8 +204,12 @@ def book_detail(request, slug):
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
-    extra_where = "catalogue_tag.category = 'theme'"
-    book_themes = models.Tag.objects.related_for_model(book_tag, models.Fragment, counts=True, extra={'where': [extra_where]})
+
+    theme_counter = book.theme_counter
+    book_themes = models.Tag.objects.filter(pk__in=theme_counter.keys())
+    for tag in book_themes:
+        tag.count = theme_counter[tag.pk]
+
     extra_info = book.get_extra_info_value()
 
     form = forms.SearchForm()
@@ -404,11 +409,11 @@ def book_sets(request, slug):
             new_shelves = [models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']]
 
             for shelf in [shelf for shelf in old_shelves if shelf not in new_shelves]:
-                shelf.book_count -= 1
+                shelf.book_count = None
                 shelf.save()
 
             for shelf in [shelf for shelf in new_shelves if shelf not in old_shelves]:
-                shelf.book_count += 1
+                shelf.book_count = None
                 shelf.save()
 
             book.tags = new_shelves + list(book.tags.filter(~Q(category='set') | ~Q(user=request.user)))
@@ -434,7 +439,7 @@ def remove_from_shelf(request, shelf, book):
     if shelf in book.tags:
         models.Tag.objects.remove_tag(book, shelf)
 
-        shelf.book_count -= 1
+        shelf.book_count = None
         shelf.save()
 
         return HttpResponse(_('Book was successfully removed from the shelf'))

@@ -13,7 +13,7 @@ from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
 from datetime import datetime
 
-from newtagging.models import TagBase
+from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField
 
@@ -51,7 +51,7 @@ class Tag(TagBase):
     main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
 
     user = models.ForeignKey(User, blank=True, null=True)
-    book_count = models.IntegerField(_('book count'), default=0, blank=False, null=False)
+    book_count = models.IntegerField(_('book count'), blank=False, null=True)
     death = models.IntegerField(_(u'year of death'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
@@ -97,6 +97,27 @@ class Tag(TagBase):
     def goes_to_pd(self):
         """ calculates the year of public domain entry for an author """
         return self.death + 71 if self.death is not None else None
+
+    def get_count(self):
+        """ returns global book count for book tags, fragment count for themes """
+
+        if self.book_count is None:
+            if self.category == 'book':
+                # never used
+                objects = Book.objects.none()
+            elif self.category == 'theme':
+                objects = Fragment.tagged.with_all((self,))
+            else:
+                objects = Book.tagged.with_all((self,)).order_by()
+                if self.category != 'set':
+                    # eliminate descendants
+                    l_tags = Tag.objects.filter(slug__in=[book.book_tag_slug() for book in objects])
+                    descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
+                    if descendants_keys:
+                        objects = objects.exclude(pk__in=descendants_keys)
+            self.book_count = objects.count()
+            self.save()
+        return self.book_count
 
     @staticmethod
     def get_tag_list(tags):
@@ -215,8 +236,11 @@ class Book(models.Model):
     def name(self):
         return self.title
 
+    def book_tag_slug(self):
+        return ('l-' + self.slug)[:120]
+
     def book_tag(self):
-        slug = ('l-' + self.slug)[:120]
+        slug = self.book_tag_slug()
         book_tag, created = Tag.objects.get_or_create(slug=slug, category='book')
         if created:
             book_tag.name = self.title[:50]
@@ -345,7 +369,7 @@ class Book(models.Model):
                     tag.save()
                 book_tags.append(tag)
 
-        book.tags = book_tags
+        book.tags = book_tags + book_shelves
 
         book_tag = book.book_tag()
 
@@ -378,7 +402,6 @@ class Book(models.Model):
 
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
-            book_themes = []
             for fragment in closed_fragments.values():
                 text = fragment.to_string()
                 short_text = ''
@@ -400,11 +423,11 @@ class Book(models.Model):
                         tag.save()
                     themes.append(tag)
                 new_fragment.save()
-                new_fragment.tags = set(list(book.tags) + themes + [book_tag])
-                book_themes += themes
+                new_fragment.tags = set(book_tags + themes + [book_tag])
 
-            book_themes = set(book_themes)
-            book.tags = list(book.tags) + list(book_themes) + book_shelves
+        # refresh cache
+        book.tag_counter
+        book.theme_counter
 
         book.save()
         return book
@@ -421,6 +444,12 @@ class Book(models.Model):
         self.save(reset_short_html=False, refresh_mp3=False)
         return tags
 
+    def reset_tag_counter(self):
+        self._tag_counter = None
+        self.save(reset_short_html=False, refresh_mp3=False)
+        if self.parent:
+            self.parent.reset_tag_counter()
+
     @property
     def tag_counter(self):
         if self._tag_counter is None:
@@ -435,6 +464,12 @@ class Book(models.Model):
         self.set__theme_counter_value(tags)
         self.save(reset_short_html=False, refresh_mp3=False)
         return tags
+
+    def reset_theme_counter(self):
+        self._theme_counter = None
+        self.save(reset_short_html=False, refresh_mp3=False)
+        if self.parent:
+            self.parent.reset_theme_counter()
 
     @property
     def theme_counter(self):
@@ -502,4 +537,20 @@ class BookStub(models.Model):
     def name(self):
         return self.title
 
+
+def _tags_updated_handler(sender, affected_tags, **kwargs):
+    # reset tag global counter
+    Tag.objects.filter(pk__in=[tag.pk for tag in affected_tags]).update(book_count=None)
+
+    # if book tags changed, reset book tag counter
+    if isinstance(sender, Book) and \
+                Tag.objects.filter(pk__in=(tag.pk for tag in affected_tags)).\
+                    exclude(category__in=('book', 'theme', 'set')).count():
+        sender.reset_tag_counter()
+    # if fragment theme changed, reset book theme counter
+    elif isinstance(sender, Fragment) and \
+                Tag.objects.filter(pk__in=(tag.pk for tag in affected_tags)).\
+                    filter(category='theme').count():
+        sender.book.reset_theme_counter()
+tags_updated.connect(_tags_updated_handler)
 

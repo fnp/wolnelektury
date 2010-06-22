@@ -253,6 +253,7 @@ def tag_list(tags, choices=None):
 
 @register.inclusion_tag('catalogue/folded_tag_list.html')
 def folded_tag_list(tags, choices=None):
+    tags = [tag for tag in tags if tag.count]
     if choices is None:
         choices = []
     some_tags_hidden = False

@@ -76,7 +76,7 @@ class BookImportLogicTests(WLTestCase):
         self.assertEqual(book.fragments.count(), 1)
         self.assertEqual(book.fragments.all()[0].text, u'<p class="paragraph">Ala ma kota</p>\n')
 
-        self.assert_(('theme', 'love') in [ (tag.category, tag.slug) for tag in book.tags ])
+        self.assert_(('theme', 'love') in [ (tag.category, tag.slug) for tag in book.fragments.all()[0].tags ])
 
     def test_book_replace_title(self):
         BOOK_TEXT = """<utwor />"""

@@ -15,6 +15,7 @@ from django.db import connection, models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.base import ModelBase
 from django.core.exceptions import ObjectDoesNotExist
+from django.dispatch import Signal
 
 qn = connection.ops.quote_name
 
@@ -23,6 +24,8 @@ try:
 except ImportError:
     parse_lookup = None
 
+
+tags_updated = Signal(providing_args=["affected_tags"])
 
 def get_queryset_and_model(queryset_or_model):
     """
@@ -45,6 +48,16 @@ class TagManager(models.Manager):
     def __init__(self, intermediary_table_model):
         super(TagManager, self).__init__()
         self.intermediary_table_model = intermediary_table_model
+        models.signals.pre_delete.connect(self.target_deleted)
+
+    def target_deleted(self, instance, **kwargs):
+        """ clear tag relations before deleting an object """
+        try:
+            int(instance.pk)
+        except ValueError:
+            return
+
+        self.update_tags(instance, [])
 
     def update_tags(self, obj, tags):
         """
@@ -63,9 +76,13 @@ class TagManager(models.Manager):
                                                object_id=obj.pk,
                                                tag__in=tags_for_removal).delete()
         # Add new tags
-        for tag in updated_tags:
+        tags_to_add = [tag for tag in updated_tags
+                       if tag not in current_tags]
+        for tag in tags_to_add:
             if tag not in current_tags:
                 self.intermediary_table_model._default_manager.create(tag=tag, content_object=obj)
+
+        tags_updated.send(sender=obj, affected_tags=tags_to_add + tags_for_removal)
 
     def remove_tag(self, obj, tag):
         """

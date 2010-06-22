@@ -3,7 +3,7 @@
 {% if shelves %}
 <ul class="shelf-list">
 {% for shelf in shelves %}
-    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">{% trans "remove" %}</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.book_count }})</a></li>
+    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">{% trans "remove" %}</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.get_count }})</a></li>
 {% endfor %}
 </ul>
 {% else %}

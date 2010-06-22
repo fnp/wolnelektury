@@ -183,6 +183,10 @@ class CleanTagRelationTests(WLTestCase):
         models.Book.objects.all().delete()
         cats = self.client.get('/katalog/k/').context['categories']
         self.assertEqual(cats, {})
+        self.assertEqual(models.Fragment.objects.all().count(), 0,
+                         "orphaned fragments left")
+        self.assertEqual(models.Tag.intermediary_table_model.objects.all().count(), 0,
+                         "orphaned TagRelation objects left")
 
     def test_deleted_tag(self):
         """ there should be no tag relations left after deleting tags """
@@ -190,6 +194,8 @@ class CleanTagRelationTests(WLTestCase):
         models.Tag.objects.all().delete()
         cats = self.client.get('/katalog/lektura/book/').context['categories']
         self.assertEqual(cats, {})
+        self.assertEqual(models.Tag.intermediary_table_model.objects.all().count(), 0,
+                         "orphaned TagRelation objects left")
 
 
 class TestIdenticalTag(WLTestCase):
@@ -217,10 +223,11 @@ class TestIdenticalTag(WLTestCase):
         """ there should be all related tags in relevant categories """
         models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
 
-        cats = self.client.get('/katalog/lektura/tag/').context['categories']
-        for category in 'author', 'kind', 'genre', 'epoch', 'theme':
-            self.assertTrue('tag' in [tag.slug for tag in cats[category]],
+        context = self.client.get('/katalog/lektura/tag/').context
+        for category in 'author', 'kind', 'genre', 'epoch':
+            self.assertTrue('tag' in [tag.slug for tag in context['categories'][category]],
                             'missing related tag for %s' % category)
+        self.assertTrue('tag' in [tag.slug for tag in context['book_themes']])
 
     def test_qualified_url(self):
         models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
@@ -230,3 +237,51 @@ class TestIdenticalTag(WLTestCase):
             self.assertEqual(1, len(context['object_list']))
             self.assertNotEqual({}, context['categories'])
             self.assertFalse(cat in context['categories'])
+
+
+class BookTagsTests(WLTestCase):
+    """ tests the /katalog/lektura/book/ page for related tags """
+
+    def setUp(self):
+        WLTestCase.setUp(self)
+        author1 = PersonStub(("Common",), "Man")
+        author2 = PersonStub(("Jim",), "Lazy")
+
+        child_info = BookInfoStub(authors=(author1, author2), genre="ChildGenre", epoch='Epoch', kind="ChildKind",
+                                   **info_args(u"Child"))
+        parent_info = BookInfoStub(author=author1, genre="Genre", epoch='Epoch', kind="Kind",
+                                   parts=[child_info.url],
+                                   **info_args(u"Parent"))
+
+        for info in child_info, parent_info:
+            book_text = """<utwor><opowiadanie><akap>
+                <begin id="m01" />
+                    <motyw id="m01">Theme, %sTheme</motyw>
+                    Ala ma kota
+                <end id="m01" />
+                </akap></opowiadanie></utwor>
+                """ % info.title.encode('utf-8')
+            book = models.Book.from_text_and_meta(ContentFile(book_text), info)
+
+    def test_book_tags(self):
+        """ book should have own tags and whole tree's themes """
+
+        context = self.client.get('/katalog/lektura/parent/').context
+
+        self.assertEqual([tag.name for tag in context['categories']['author']],
+                         ['Common Man'])
+        self.assertEqual([tag.name for tag in context['categories']['kind']],
+                         ['Kind'])
+        self.assertEqual([(tag.name, tag.count) for tag in context['book_themes']],
+                         [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
+
+    def test_main_page_tags(self):
+        """ test main page tags and counts """
+
+        context = self.client.get('/katalog/').context
+
+        self.assertEqual([(tag.name, tag.count) for tag in context['categories']['author']],
+                         [('Jim Lazy', 1), ('Common Man', 1)])
+        self.assertEqual([(tag.name, tag.count) for tag in context['fragment_tags']],
+                         [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
+
