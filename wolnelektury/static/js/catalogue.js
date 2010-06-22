@@ -1,40 +1,40 @@
 var LOCALE_TEXTS = {
-	"pl": {
-		"DELETE_SHELF": "Czy na pewno usunąć półkę",
-		"HIDE_DESCRIPTION": "Zwiń opis",
-		"EXPAND_DESCRIPTION": "Rozwiń opis",
-		"LOADING": "Ładowanie"
-	},
+    "pl": {
+        "DELETE_SHELF": "Czy na pewno usunąć półkę",
+        "HIDE_DESCRIPTION": "Zwiń opis",
+        "EXPAND_DESCRIPTION": "Rozwiń opis",
+        "LOADING": "Ładowanie"
+    },
     "de": {
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
         "EXPAND_DESCRIPTION": "Translate me!",
         "LOADING": "Translate me!"
     },
-	"fr": {
-		"DELETE_SHELF": "Translate me!",
-		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"
-	},
-	"en": {
-		"DELETE_SHELF": "Translate me!",
-		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"
-	},
-	"ru": {
-		"DELETE_SHELF": "Translate me!",
-		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"
-	},
-	"es": {
-		"DELETE_SHELF": "Translate me!",
-		"HIDE_DESCRIPTION": "Translate me!",
-		"EXPAND_DESCRIPTION": "Translate me!",
-		"LOADING": "Translate me!"
-	},
+    "fr": {
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!"
+    },
+    "en": {
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!"
+    },
+    "ru": {
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!"
+    },
+    "es": {
+        "DELETE_SHELF": "Translate me!",
+        "HIDE_DESCRIPTION": "Translate me!",
+        "EXPAND_DESCRIPTION": "Translate me!",
+        "LOADING": "Translate me!"
+    },
     "lt":{
         "DELETE_SHELF": "Translate me!",
         "HIDE_DESCRIPTION": "Translate me!",
@@ -116,19 +116,22 @@ function serverTime() {
             short_text = p['short_text'],
             long_text = p['long_text'];
 
-            var toggle = function() {
-                if (cont.hasClass('short')) {
-                    cont.animate({"height": long_el.attr("cont_h")+'px'}, {duration: "fast" }).removeClass('short');
-                    short_el.hide();
-                    long_el.show();
-                    if (button && long_text) button.html(long_text);
-                } else {
-                    cont.animate({"height": short_el.attr("cont_h")+'px'}, {duration: "fast" }).addClass('short');
-                    long_el.hide();
-                    short_el.show();
-                    if (button && short_text) button.html(short_text);
+            var toggle_fun = function(cont, short_el, long_el, button, short_text, long_text) {
+                var toggle = function() {
+                    if (cont.hasClass('short')) {
+                        cont.animate({"height": long_el.attr("cont_h")+'px'}, {duration: "fast" }).removeClass('short');
+                        short_el.hide();
+                        long_el.show();
+                        if (button && long_text) button.html(long_text);
+                    } else {
+                        cont.animate({"height": short_el.attr("cont_h")+'px'}, {duration: "fast" }).addClass('short');
+                        long_el.hide();
+                        short_el.show();
+                        if (button && short_text) button.html(short_text);
+                    }
+                    return false;
                 }
-                return false;
+                return toggle;
             }
             if (long_el.html().length <= short_el.html().length)
                 return;
@@ -143,15 +146,15 @@ function serverTime() {
             if (button) button.hover(
                 function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
                 function() { $(this).css({background: '#EEE'}); }
-            ).click(toggle);
+            ).click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
             short_el.hover(
                 function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
                 function() { $(this).css({background: '#FFF'}); }
-            ).click(toggle);
+            ).click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
             long_el.hover(
                 function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
                 function() { $(this).css({background: '#FFF'}); }
-            ).click(toggle);
+            ).click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
         };
 
         $('form input').labelify({labelledClass: 'blur'});
@@ -317,22 +320,22 @@ function serverTime() {
             },
             onLoad: function(hash) {
                 $('form', hash.w).ajaxForm({
-					dataType: 'json',
+                    dataType: 'json',
                     target: $('#suggest-window div.target'),
                     success: function(response) {
-						if (response.success) {
-							$('#suggest-window div.target').text(response.message);
+                        if (response.success) {
+                            $('#suggest-window div.target').text(response.message);
                             setTimeout(function() { $('#suggest-window').jqmHide() }, 1000)
-						}
-						else {
-							$('#suggest-form .error').remove();
-	                        $.each(response.errors, function(id, errors) {
-	                            $('#suggest-form #id_' + id).before('<span class="error">' + errors[0] + '</span>');
-	                        });
-	                        $('#suggest-form input[type=submit]').removeAttr('disabled');
-							return false;
-						}
-		            }
+                        }
+                        else {
+                            $('#suggest-form .error').remove();
+                            $.each(response.errors, function(id, errors) {
+                                $('#suggest-form #id_' + id).before('<span class="error">' + errors[0] + '</span>');
+                            });
+                            $('#suggest-form input[type=submit]').removeAttr('disabled');
+                            return false;
+                        }
+                    }
                 });
             }
         });
@@ -375,18 +378,18 @@ function serverTime() {
                 target.html('<p><img src="/static/img/indicator.gif" />'+LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+'</p>');
                 hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
             onLoad: function(hash) {
-		try {
-			$('#createShelfTrigger').click(function(){
-				$('#createNewShelf').show();
-			});
-		} catch (e){}
+        try {
+            $('#createShelfTrigger').click(function(){
+                $('#createNewShelf').show();
+            });
+        } catch (e){}
 
                 $('form', hash.w).ajaxForm({
                     target: target,
                     success: function() {
-			setTimeout(function() {
-					$('#set-window').jqmHide();
-			           }, 1000)}
+            setTimeout(function() {
+                    $('#set-window').jqmHide();
+                       }, 1000)}
                 });
             }
         });
@@ -400,7 +403,7 @@ function serverTime() {
         });
 
         $('#share-shelf').hide().addClass('hidden');
-		$('#share-shelf input').focus(function(){this.select();});
+        $('#share-shelf input').focus(function(){this.select();});
 
         $('#user-info').show();
         changeBannerText();
