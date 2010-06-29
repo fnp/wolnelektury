@@ -12,23 +12,15 @@ from infopages.models import InfoPage
 
 admin.autodiscover()
 
-infopages = {
-    'queryset': InfoPage.objects.all(),
-    'template_name': 'info/base.html',
-}
-
 urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^materialy/', include('lessons.urls')),
     url(r'^sugestia/', include('suggest.urls')),
 
     # Static pages
-    url(r'^wolontariat/$', 'django.views.generic.list_detail.object_detail',
-        dict(infopages, slug='voluntary_services'), name='voluntary_services'),
-    url(r'^mozesz-nam-pomoc/$', 'django.views.generic.list_detail.object_detail',
-        dict(infopages, slug='help_us'), name='help_us'),
-    url(r'^o-projekcie/$', 'django.views.generic.list_detail.object_detail',
-        dict(infopages, slug='about_us'), name='about_us'),
+    url(r'^wolontariat/$', 'infopages.views.infopage', {'slug': 'voluntary_services'}, name='voluntary_services'),
+    url(r'^mozesz-nam-pomoc/$', 'infopages.views.infopage', {'slug': 'help_us'}, name='help_us'),
+    url(r'^o-projekcie/$', 'infopages.views.infopage', {'slug': 'about_us'}, name='about_us'),
 
     url(r'^1procent/$', 'django.views.generic.simple.direct_to_template', {
         'template': '1percent.html'
