@@ -78,6 +78,7 @@ img {
     overflow-x: hidden;
     overflow-y: auto;
     opacity: 0.9;
+    z-index: 99;
 }
 
 #toc ol, #themes ol {
