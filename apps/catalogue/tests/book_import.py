@@ -78,6 +78,32 @@ class BookImportLogicTests(WLTestCase):
 
         self.assert_(('theme', 'love') in [ (tag.category, tag.slug) for tag in book.fragments.all()[0].tags ])
 
+    def test_book_with_empty_theme(self):
+        """ empty themes should be ignored """
+
+        BOOK_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01"> , Love , , </motyw>Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        self.assert_([('theme', 'love')],
+                         [ (tag.category, tag.slug) for tag in book.fragments.all()[0].tags.filter(category='theme') ])
+
+    def test_book_with_no_theme(self):
+        """ fragments with no themes shouldn't be created at all """
+
+        BOOK_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01"></motyw>Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        self.assertEqual(book.fragments.count(), 0)
+        self.assertEqual(book.tags.filter(category='theme').count(), 0)
+
     def test_book_replace_title(self):
         BOOK_TEXT = """<utwor />"""
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)

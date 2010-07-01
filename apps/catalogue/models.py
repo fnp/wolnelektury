@@ -403,6 +403,23 @@ class Book(models.Model):
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
             for fragment in closed_fragments.values():
+                try:
+                    theme_names = [s.strip() for s in fragment.themes.split(',')]
+                except AttributeError:
+                    continue
+                themes = []
+                for theme_name in theme_names:
+                    if not theme_name:
+                        continue
+                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
+                    if created:
+                        tag.name = theme_name
+                        tag.sort_key = slughifi(theme_name)
+                        tag.save()
+                    themes.append(tag)
+                if not themes:
+                    continue
+
                 text = fragment.to_string()
                 short_text = ''
                 if (len(MarkupString(text)) > 240):
@@ -410,18 +427,6 @@ class Book(models.Model):
                 new_fragment, created = Fragment.objects.get_or_create(anchor=fragment.id, book=book,
                     defaults={'text': text, 'short_text': short_text})
 
-                try:
-                    theme_names = [s.strip() for s in fragment.themes.split(',')]
-                except AttributeError:
-                    continue
-                themes = []
-                for theme_name in theme_names:
-                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
-                    if created:
-                        tag.name = theme_name
-                        tag.sort_key = slughifi(theme_name)
-                        tag.save()
-                    themes.append(tag)
                 new_fragment.save()
                 new_fragment.tags = set(book_tags + themes + [book_tag])
 
