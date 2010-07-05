@@ -13,7 +13,7 @@ class Migration(SchemaMigration):
 
         if not db.dry_run:
             from django.contrib.contenttypes.models import ContentType
-            from simplejson import loads, dumps
+            from django.utils.simplejson import loads, dumps
 
             manager = orm.TagRelation.objects
 
