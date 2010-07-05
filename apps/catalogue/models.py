@@ -17,7 +17,7 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField
 
-from librarian import html, dcparser
+from librarian import dcparser, html, epub
 from mutagen import id3
 
 
@@ -332,6 +332,10 @@ class Book(models.Model):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
+        from hashlib import sha1
+        from django.core.files.base import ContentFile
+        from django.core.files.storage import default_storage
+        from StringIO import StringIO
 
         # Read book metadata
         book_base, book_slug = book_info.url.rsplit('/', 1)
@@ -399,6 +403,12 @@ class Book(models.Model):
         html_file = NamedTemporaryFile()
         if html.transform(book.xml_file.path, html_file, parse_dublincore=False):
             book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
+
+            # Create EPUB
+            epub_file = StringIO()
+            epub.transform(book.xml_file, epub_file)
+            book.epub_file.save('%s.epub' % book.slug, ContentFile(epub_file.getvalue()), save=False)
+            FileRecord(slug=book.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
 
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
@@ -541,6 +551,21 @@ class BookStub(models.Model):
     @property
     def name(self):
         return self.title
+
+
+class FileRecord(models.Model):
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True)
+    type = models.CharField(_('type'), max_length=20, db_index=True)
+    sha1 = models.CharField(_('sha-1 hash'), max_length=40)
+    time = models.DateTimeField(_('time'), auto_now_add=True)
+
+    class Meta:
+        ordering = ('-time','-slug', '-type')
+        verbose_name = _('file record')
+        verbose_name_plural = _('file records')
+
+    def __unicode__(self):
+        return "%s %s.%s" % (self.sha1,  self.slug, self.type)
 
 
 def _tags_updated_handler(sender, affected_tags, **kwargs):
