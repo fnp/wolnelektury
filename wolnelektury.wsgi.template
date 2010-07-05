@@ -16,6 +16,7 @@ sys.path = [
 	'%(path)s/releases/current',
 	'%(path)s/releases/current/apps',
 	'%(path)s/releases/current/lib',
+    '%(path)s/releases/current/lib/librarian',
 ] + sys.path
 
 # Run Django
