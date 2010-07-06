@@ -304,7 +304,6 @@ def _tags_starting_with(prefix, user=None):
         tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
     else:
         tags = tags.filter(~Q(category='book') & ~Q(category='set'))
-
     return list(books) + list(tags) + list(book_stubs)
 
 
@@ -379,8 +378,13 @@ def tags_starting_with(request):
     # Prefix must have at least 2 characters
     if len(prefix) < 2:
         return HttpResponse('')
-
-    return HttpResponse('\n'.join(tag.name for tag in _tags_starting_with(prefix, request.user)))
+    tags_list = []
+    result = ""   
+    for tag in _tags_starting_with(prefix, request.user):
+        if not tag.name in tags_list:
+            result += "\n" + tag.name
+            tags_list.append(tag.name)
+    return HttpResponse(result)
 
 # ====================
 # = Shelf management =
