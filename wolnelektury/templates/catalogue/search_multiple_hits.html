@@ -12,11 +12,17 @@
 
     <div id="books-list">
         <p>{% trans "More than one result matching the criteria found." %}</p>
-		<ul class='matches'>
+        <ul class='matches'>
         {% for match, link, type in results %}
-            <li><a href='{{ link }}'>{{ match.name }}</a> ({{ type }})</li>
+          <li>{% trans type %}: <a href='{{ link }}'>
+            {% ifequal type "book" %}
+                {% book_title match %}
+            {% else %}
+                {{ match.name }}
+            {% endifequal %}
+          </a></li>
         {% endfor %}
-		</ul>
+        </ul>
     </div>
 
     <div id="set-window">

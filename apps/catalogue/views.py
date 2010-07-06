@@ -320,7 +320,7 @@ def _get_result_type(match):
         type = 'book'
     else:
         type = match.category
-    return dict(models.TAG_CATEGORIES)[type]
+    return type
 
 
 
