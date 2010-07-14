@@ -11,7 +11,7 @@ class Sponsor(models.Model):
     _description = models.CharField(_('description'), blank=True, max_length=255)
     logo = ImageWithThumbnailsField(
         _('logo'),
-        upload_to='sponsors/sponsor/logo',
+        upload_to='sponsorzy/sponsor/logo',
         thumbnail={
             'size': (120, 60),
             'extension': 'png',
