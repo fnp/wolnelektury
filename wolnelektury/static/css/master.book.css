@@ -155,8 +155,14 @@ p {
     color: #777;
     padding: 0 0.5em;
     width: 7.5em;
+
     font-style: normal;
     font-weight: normal;
+    font-variant: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+
     font-size: 16px;
     float: right;
     margin-right: -9.5em;
