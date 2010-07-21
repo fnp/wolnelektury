@@ -61,9 +61,16 @@ def simple_title(tags):
     return capfirst(', '.join(title))
 
 
+def book_stub_title(book):
+    return ', '.join((book.author, book.title))
+
+
 @register.simple_tag
 def book_title(book, html_links=False):
-    names = list(book.tags.filter(category='author'))
+    try:
+        names = list(book.tags.filter(category='author'))
+    except AttributeError:
+        return book_stub_title(book)
 
     books = []
     while book:

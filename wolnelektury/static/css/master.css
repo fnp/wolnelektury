@@ -203,6 +203,14 @@ p .ac_input {
 }
 
 
+/* ================== */
+/* = Search matches = */
+/* ================== */
+
+.matches li:first-letter {
+    text-transform: uppercase;
+}
+
 /* ============= */
 /* = Tags list = */
 /* ============= */
