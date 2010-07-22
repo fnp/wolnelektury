@@ -36,10 +36,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Translate me!"
     },
     "lt":{
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "Ar tikrai nori pašalinti lentną?",
+        "HIDE_DESCRIPTION": "Suvyniok aprašymą ",
+        "EXPAND_DESCRIPTION": "Išplėsk aprašymą",
+        "LOADING": "Krovimas"
     },
     "uk":{
         "DELETE_SHELF": "Translate me!",
