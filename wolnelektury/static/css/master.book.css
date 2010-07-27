@@ -176,6 +176,9 @@ p {
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
+    padding-left: 2px;
+    position: relative;
+    top: -4px;
 }
 
 #footnotes .annotation {

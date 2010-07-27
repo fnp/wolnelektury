@@ -17,7 +17,7 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField
 
-from librarian import dcparser, html, epub
+from librarian import dcparser, html, epub, NoDublinCore
 from mutagen import id3
 
 
@@ -406,9 +406,12 @@ class Book(models.Model):
 
             # Create EPUB
             epub_file = StringIO()
-            epub.transform(book.xml_file, epub_file)
-            book.epub_file.save('%s.epub' % book.slug, ContentFile(epub_file.getvalue()), save=False)
-            FileRecord(slug=book.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
+            try:
+                epub.transform(book.xml_file, epub_file)
+                book.epub_file.save('%s.epub' % book.slug, ContentFile(epub_file.getvalue()), save=False)
+                FileRecord(slug=book.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
+            except NoDublinCore:
+                pass
 
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
