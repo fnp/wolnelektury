@@ -1,24 +1,24 @@
 {% load i18n %}
 {% load catalogue_tags %}
-<form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form" style="float:left;">
-    <div style="width: 900px;">
+<div id="searchContainer">
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
     <ul class="facelist-selections" style="float:left;">
         {% for tag in tag_list %}
         <li class="facelist-selection-item">
-	<span style="margin-left: 5px;">
-	<a href="{% catalogue_url tag %}">{{ tag }}</a>
-	<a class="facelist-close" href="{% catalogue_url tag_list -tag %}">x</a>
-	</span>
-	</li>
+	        <span style="margin-left: 5px;">
+	        <a href="{% catalogue_url tag %}">{{ tag }}</a>
+	        <a class="facelist-close" href="{% catalogue_url tag_list -tag %}">x</a>
+	        </span>
+	    </li>
         {% empty %}
-        <li class="facelist-selection-item">
-        </li>
+            <li class="facelist-selection-item">
+            </li>
         {% endfor %}
         {% if search_form %}
             <li>{{ search_form.q }} {{ search_form.tags }}</li>
         {% endif %}
     </ul>
-    <input type="submit" value="{% trans "Search" %}" style="float: left; margin-top: 10px; height: 33px;"/>
-    </div>
-</form>
+    <input type="submit" value="{% trans "Search" %}" id="searchSubmit"/>
+    </form>
+</div>    
 <div class="clearboth"></div>
