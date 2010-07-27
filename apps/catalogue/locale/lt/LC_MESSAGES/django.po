@@ -256,7 +256,7 @@ msgstr "<p>Lentyna <strong>%s</strong>pašalinta</p>"
 #: views.py:553
 #, python-format
 msgid "Today is %(month)s, %(day)s."
-msgstr "Šiandien yra %(mėnuo), %(diena)."
+msgstr "Šiandien yra %(month)s, %(day)s."
 
 #: views.py:554
 #, python-format

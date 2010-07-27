@@ -6,10 +6,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Ładowanie"
     },
     "de": {
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "﻿Möchtest du wirklich dieses Bücherregal entfernen?",
+        "HIDE_DESCRIPTION": "Beschreibung zuklappen",
+        "EXPAND_DESCRIPTION": "Beschreibung aufklappen",
+        "LOADING": "Herunterladen"
     },
     "fr": {
         "DELETE_SHELF": "Translate me!",
@@ -18,10 +18,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Translate me!"
     },
     "en": {
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "Are you sure you want to delete this shelf?",
+        "HIDE_DESCRIPTION": "Hide",
+        "EXPAND_DESCRIPTION": "Expand",
+        "LOADING": "Loading"
     },
     "ru": {
         "DELETE_SHELF": "Translate me!",

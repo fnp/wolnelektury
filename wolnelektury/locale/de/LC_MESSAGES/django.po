@@ -742,7 +742,9 @@ msgid ""
 "We have over 1000 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
 "making a donation or transferring 1%% of your income tax."
-msgstr "Auf unserer Hompage Wolne Lektury wurden bereits etwa 1000 Werke veröffentlicht! Helfe uns bei der Mitgestaltung und Veröffentlichung neuer Schullektüren, indem du uns eine Spende in Höhe von 1% von deinen Steuerabgaben übergibst."
+msgstr "Auf unserer Hompage Wolne Lektury wurden bereits etwa 1000 Werke veröffentlicht!\n"
+"Helfe uns bei der Mitgestaltung und Veröffentlichung neuer Schullektüren,\n"
+"indem du uns eine Spende in Höhe von 1%% von deinen Steuerabgaben übergibst."
 
 #: templates/info/join_us.html:5
 #: templates/info/join_us.html.py:10
