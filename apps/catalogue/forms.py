@@ -14,8 +14,8 @@ from catalogue import utils
 class BookImportForm(forms.Form):
     book_xml_file = forms.FileField()
 
-    def save(self, commit=True):
-        return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True)
+    def save(self, commit=True, **kwargs):
+        return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True, **kwargs)
 
 
 class SearchForm(forms.Form):
