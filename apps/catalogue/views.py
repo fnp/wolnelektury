@@ -45,6 +45,16 @@ class LazyEncoder(simplejson.JSONEncoder):
             return force_unicode(obj)
         return obj
 
+# shortcut for JSON reponses
+class JSONResponse(HttpResponse):
+    def __init__(self, data={}, callback=None, **kwargs):
+        # get rid of mimetype
+        kwargs.pop('mimetype', None)
+        data = simplejson.dumps(data)
+        if callback:
+            data = callback + "(" + data + ");" 
+        super(JSONResponse, self).__init__(data, mimetype="application/json", **kwargs)
+
 
 def main_page(request):
     if request.user.is_authenticated():
@@ -385,6 +395,22 @@ def tags_starting_with(request):
             result += "\n" + tag.name
             tags_list.append(tag.name)
     return HttpResponse(result)
+
+def json_tags_starting_with(request, callback=None):
+    # Callback for JSONP
+    prefix = request.GET.get('q', '')
+    callback = request.GET.get('callback', '')
+    # Prefix must have at least 2 characters
+    if len(prefix) < 2:
+        return HttpResponse('')
+    tags_list = []
+    result = ""   
+    for tag in _tags_starting_with(prefix, request.user):
+        if not tag.name in tags_list:
+            result += "\n" + tag.name
+            tags_list.append(tag.name)
+    dict_result = {"matches": tags_list}
+    return JSONResponse(dict_result, callback)
 
 # ====================
 # = Shelf management =

@@ -1,0 +1,29 @@
+	$(function() {		
+		$("#id_q").autocomplete({
+			source: function(request, response) {
+				$.ajax({
+					url: "http://www.wolnelektury.pl/katalog/jtags/",
+					dataType: "jsonp",
+					data: {
+						featureClass: "P",
+						style: "full",
+						maxRows: 10,
+						q: request.term
+					},
+					success: function(data) {
+						response($.map(data.matches, function(item) {
+							return {
+								label: item,
+								value: item
+							}
+						}))
+					},					
+				})
+			},
+			minLength: 2,
+            select: function(event, ui) {
+                $("#id_q").val(ui.item.value);
+                $("#wl-form").submit();
+            }			
+		});
+	});
