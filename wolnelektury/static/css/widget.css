@@ -1,0 +1,38 @@
+#wl img {
+border: 0;
+}
+.ui-menu {
+width: 230px;
+font-size: small;
+list-style-type: none;
+padding: 0;
+margin:0;
+border-left:  1px solid #696969;
+border-right: 1px solid #696969;
+border-bottom: 1px solid #696969;
+}
+
+.ui-menu li {
+font-size: small;
+padding: 5px;
+width: 220px
+}
+
+.ui-menu li:nth-child(odd) {
+background-color: white;
+}
+
+.ui-menu li:nth-child(even){
+background-color: #EDF1F5;
+}
+
+.ui-menu li:hover{
+background-color: #053469;
+color:white;
+}
+
+.ui-corner-all {
+width: 230px;
+cursor: pointer;
+display:block;
+}

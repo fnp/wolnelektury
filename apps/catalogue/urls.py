@@ -16,6 +16,7 @@ urlpatterns = patterns('catalogue.views',
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)/polki/', 'book_sets', name='book_shelves'),
     url(r'^polki/nowa/$', 'new_set', name='new_set'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
+    url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
     url(r'^szukaj/$', 'search', name='search'),
 
     # tools
