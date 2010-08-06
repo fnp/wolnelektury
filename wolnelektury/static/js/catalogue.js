@@ -12,10 +12,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Herunterladen"
     },
     "fr": {
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "Voulez-vous supprimer l'étagère  définitivement?",
+        "HIDE_DESCRIPTION": "Montrer la description",
+        "EXPAND_DESCRIPTION": "Cacher la description",
+        "LOADING": "Chargement"
     },
     "en": {
         "DELETE_SHELF": "Are you sure you want to delete this shelf?",
