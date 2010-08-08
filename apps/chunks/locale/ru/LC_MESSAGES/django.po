@@ -3,51 +3,52 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 10:59+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-05-18 10:58+0200\n"
+"PO-Revision-Date: 2010-06-02 17:07+0100\n"
+"Last-Translator: I <moth_04@yahoo.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:10 models.py:24
+#: models.py:10
+#: models.py:24
 msgid "key"
-msgstr ""
+msgstr "ключ"
 
 #: models.py:10
 msgid "A unique name for this chunk of content"
-msgstr ""
+msgstr "Уникальное имя для этого фрагмента содержания"
 
 #: models.py:11
 msgid "description"
-msgstr ""
+msgstr "описание"
 
 #: models.py:12
 msgid "content"
-msgstr ""
+msgstr "содержание"
 
 #: models.py:16
 msgid "chunk"
-msgstr ""
+msgstr "фрагмент"
 
 #: models.py:17
 msgid "chunks"
-msgstr ""
+msgstr "фрагменты"
 
 #: models.py:24
 msgid "A unique name for this attachment"
-msgstr ""
+msgstr "Уникальное имя для этого приложения"
 
 #: models.py:29
 msgid "attachment"
-msgstr ""
+msgstr "приложение"
 
 #: models.py:29
 msgid "attachments"
-msgstr ""
+msgstr "приложения"
+

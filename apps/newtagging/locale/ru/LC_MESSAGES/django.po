@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 11:02+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-05-18 11:01+0200\n"
+"PO-Revision-Date: 2010-07-02 11:48+0100\n"
+"Last-Translator: I <moth_04@yahoo.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,33 +17,34 @@ msgstr ""
 
 #: admin.py:38
 msgid "tags"
-msgstr ""
+msgstr "теги"
 
 #: models.py:491
 msgid "tag"
-msgstr ""
+msgstr "тег"
 
 #: models.py:492
 msgid "content type"
-msgstr ""
+msgstr "тип содержания"
 
 #: models.py:493
 msgid "object id"
-msgstr ""
+msgstr "ID объекта"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."
-msgstr ""
+msgstr "список таг-объектов должен сочетаться с набором вопросов или с моделью."
 
 #: views.py:32
 msgid "tagged_object_list must be called with a tag model."
-msgstr ""
+msgstr "список таг-объектов дожен сочетаться с таг-моделью."
 
 #: views.py:34
 msgid "tagged_object_list must be called with a tag."
-msgstr ""
+msgstr "список таг-объектов должен сочетаться с тагом."
 
 #: views.py:38
 #, python-format
 msgid "No tags found matching \"%s\"."
-msgstr ""
+msgstr "Никакой таг не соответствует \"%s\"."
+

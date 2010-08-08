@@ -24,10 +24,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Loading"
     },
     "ru": {
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "Уверены ли вы том, чтобы удалить полку?",
+        "HIDE_DESCRIPTION": "Свернуть описание",
+        "EXPAND_DESCRIPTION": "Раскрыть описание",
+        "LOADING": "Загрузка"
     },
     "es": {
         "DELETE_SHELF": "Translate me!",
