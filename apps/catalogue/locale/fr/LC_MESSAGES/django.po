@@ -252,6 +252,11 @@ msgstr "<p>L'étagère <strong>%s</strong>a été créée</p>"
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 msgstr "<p>L'étagère <strong>%s</strong>a été supprimée</p>"
 
+#: views.py:553
+#, python-format
+#msgid "Today is %(month)s, %(day)s."
+#msgstr "Aujourd'hui nous sommes le"
+
 #: views.py:554
 #, python-format
 msgid ""
