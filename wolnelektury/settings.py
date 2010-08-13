@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Django settings for wolnelektury project.
 from os import path
 
@@ -34,14 +35,14 @@ LANGUAGE_CODE = 'pl'
 gettext = lambda s: s
 
 LANGUAGES = tuple(sorted([
-    ('pl', gettext('Polish')),
-    ('de', gettext('German')),
-    ('en', gettext('English')),
-    ('lt', gettext('Lithuanian')),
-    ('fr', gettext('French')),
-    ('ru', gettext('Russian')),
-    ('es', gettext('Spanish')),
-    ('uk', gettext('Ukrainian')),
+    ('pl', u'Polski'),
+    ('de', u'Deutsch'),
+    ('en', u'English'),
+    ('lt', u'Lietuvių'),
+    ('fr', u'Français'),
+    ('ru', u'Русский'),
+    ('es', u'Español'),
+    ('uk', u'Українська'),
 ], key=lambda x: x[0]))
 
 

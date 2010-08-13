@@ -51,7 +51,7 @@
 				<form action="{% url django.views.i18n.set_language %}" method="POST">
 					{% spaceless %}
 					{% for lang in LANGUAGES %}					     
-					    <button type="submit" name="language" 
+					    <button type="submit" name="language" title="{{ lang.1 }}"
 							class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} {% if forloop.last %}last{% endif %}" 
 							value="{{ lang.0 }}">{{ lang.0|upper }}</button>
 					{% endfor %}	
