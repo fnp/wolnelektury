@@ -14,7 +14,7 @@
 
     <div id="books-list">
         {% if extra_info.license %}
-        <p>{% trans "Work is licensed under " %}<a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
+        <p>{% trans "Work is licensed under " %} <a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
         {% endif %}
         <p>{% trans "Based on" %}: {{ extra_info.source_name }}</p>
         {% if book.has_description %}
