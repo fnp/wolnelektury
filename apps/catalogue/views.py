@@ -214,6 +214,13 @@ def book_detail(request, slug):
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
+    
+    _book = book
+    parents = []
+    while _book.parent:
+        parents.append(_book.parent)
+        _book = _book.parent
+    parents = reversed(parents)
 
     theme_counter = book.theme_counter
     book_themes = models.Tag.objects.filter(pk__in=theme_counter.keys())

@@ -13,6 +13,15 @@
     </form>
 
     <div id="books-list">
+        {% if parents %}
+            <div id='breadcrumbs'>
+                {% for parent in parents %}
+                    <a href="{{ parent.get_absolute_url }}">{{ parent }}</a>
+                    {% if not forloop.last %}&#187;{% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% if extra_info.license %}
         <p>{% trans "Work is licensed under " %} <a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
         {% endif %}
