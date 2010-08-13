@@ -207,7 +207,7 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False, reset_short_html=True, refresh_mp3=True):
+    def save(self, force_insert=False, force_update=False, reset_short_html=True, refresh_mp3=True, **kwargs):
         if reset_short_html:
             # Reset _short_html during save
             update = {}
