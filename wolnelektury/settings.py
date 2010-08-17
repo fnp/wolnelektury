@@ -35,14 +35,14 @@ LANGUAGE_CODE = 'pl'
 gettext = lambda s: s
 
 LANGUAGES = tuple(sorted([
-    ('pl', u'Polski'),
+    ('pl', u'polski'),
     ('de', u'Deutsch'),
     ('en', u'English'),
-    ('lt', u'Lietuvių'),
-    ('fr', u'Français'),
-    ('ru', u'Русский'),
-    ('es', u'Español'),
-    ('uk', u'Українська'),
+    ('lt', u'lietuvių'),
+    ('fr', u'français'),
+    ('ru', u'русский'),
+    ('es', u'español'),
+    ('uk', u'українська'),
 ], key=lambda x: x[0]))
 
 
