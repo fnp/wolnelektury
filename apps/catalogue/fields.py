@@ -9,7 +9,7 @@ from django.db import models
 from django.db.models import signals
 from django import forms
 from django.forms.widgets import flatatt
-from django.forms.util import smart_unicode
+from django.utils.encoding import smart_unicode
 from django.utils import simplejson as json
 from django.utils.html import escape
 from django.utils.safestring import mark_safe

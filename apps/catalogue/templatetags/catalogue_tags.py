@@ -156,6 +156,18 @@ def title_from_tags(tags):
 
 
 @register.simple_tag
+def book_tree(book_list, books_by_parent):
+    text = "".join("<li><a href='%s'>%s</a>%s</li>" % (
+        book.get_absolute_url(), book.title, book_tree(books_by_parent.get(book, ()), books_by_parent)
+        ) for book in book_list)
+
+    if text:
+        return "<ol>%s</ol>" % text
+    else:
+        return ''
+
+
+@register.simple_tag
 def user_creation_form():
     return RegistrationForm(prefix='registration').as_ul()
 

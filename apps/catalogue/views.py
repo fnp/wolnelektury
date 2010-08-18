@@ -73,12 +73,24 @@ def main_page(request):
 
 
 def book_list(request):
-    books = models.Book.objects.all()
     form = forms.SearchForm()
 
-    books_by_first_letter = SortedDict()
-    for book in books:
-        books_by_first_letter.setdefault(book.title[0], []).append(book)
+    books_by_parent = {}
+    for book in models.Book.objects.all().order_by('parent_number'):
+        books_by_parent.setdefault(book.parent, []).append(book)
+
+    orphans = []
+    books_by_author = SortedDict()
+    for tag in models.Tag.objects.filter(category='author'):
+        books_by_author[tag] = []
+
+    for book in books_by_parent[None]:
+        authors = list(book.tags.filter(category='author'))
+        if authors:
+            for author in authors:
+                books_by_author[author].append(book)
+        else:
+            orphans.append(book)
 
     return render_to_response('catalogue/book_list.html', locals(),
         context_instance=RequestContext(request))
@@ -214,6 +226,13 @@ def book_detail(request, slug):
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number')
+    
+    _book = book
+    parents = []
+    while _book.parent:
+        parents.append(_book.parent)
+        _book = _book.parent
+    parents = reversed(parents)
 
     theme_counter = book.theme_counter
     book_themes = models.Tag.objects.filter(pk__in=theme_counter.keys())

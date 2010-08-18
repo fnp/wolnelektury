@@ -791,9 +791,13 @@ div.shown-tags p, div.all-tags p {
 }
 
 #book-a-list #book-list ol {
-    padding: 0;
+    padding-left: 1em;
     margin: 0.3em 0 1.2em 0;
     list-style: none;
+}
+
+#book-a-list #book-list h2 a {
+    color: black;
 }
 
 #top-message {

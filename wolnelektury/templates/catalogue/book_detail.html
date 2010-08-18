@@ -13,8 +13,20 @@
     </form>
 
     <div id="books-list">
+        <div id='breadcrumbs'>
+            {% if categories.author %}
+                {% for tag in categories.author %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                &#187; 
+            {% endif %}
+            {% for parent in parents %}
+                <a href="{{ parent.get_absolute_url }}">{{ parent }}</a> &#187; 
+            {% endfor %}
+        </div>
+
         {% if extra_info.license %}
-        <p>{% trans "Work is licensed under " %}<a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
+        <p>{% trans "Work is licensed under " %} <a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>.</p>
         {% endif %}
         <p>{% trans "Based on" %}: {{ extra_info.source_name }}</p>
         {% if book.has_description %}

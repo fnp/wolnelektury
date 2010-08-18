@@ -4,24 +4,23 @@
 
 {% block bodyid %}book-a-list{% endblock %}
 
-{% block title %}{% trans "Alphabetical listing of works on WolneLektury.pl" %}{% endblock %}
+{% block title %}{% trans "Listing of all works on WolneLektury.pl" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Alphabetical listing of works" %}</h1>
+    <h1>{% trans "Listing of all works" %}</h1>
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
 
     <div id="book-list">
-        {% for first_letter, group in books_by_first_letter.items %}
-        <div class="group">
-            <h2>{{ first_letter }}</h2>
-            <ol>
-            {% for book in group %}
-                <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
-            {% endfor %}
-            </ol>
-        </div>
+        {% book_tree orphans books_by_parent %}
+        {% for author, group in books_by_author.items %}
+            {% if group %}
+                <div class="group">
+                    <h2><a href="{{ author.get_absolute_url }}">{{ author }}</a></h2>
+                    {% book_tree group books_by_parent %}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}
