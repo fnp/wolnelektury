@@ -3,51 +3,52 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-18 10:59+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-05-18 10:58+0200\n"
+"PO-Revision-Date: 2010-08-10 17:15+0100\n"
+"Last-Translator: Katarzyna Flis <kas.flis@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:10 models.py:24
+#: models.py:10
+#: models.py:24
 msgid "key"
-msgstr ""
+msgstr "clave"
 
 #: models.py:10
 msgid "A unique name for this chunk of content"
-msgstr ""
+msgstr "El nombre único para este elemento del contenido"
 
 #: models.py:11
 msgid "description"
-msgstr ""
+msgstr "descripción"
 
 #: models.py:12
 msgid "content"
-msgstr ""
+msgstr "contenido"
 
 #: models.py:16
 msgid "chunk"
-msgstr ""
+msgstr "elemento"
 
 #: models.py:17
 msgid "chunks"
-msgstr ""
+msgstr "elementos"
 
 #: models.py:24
 msgid "A unique name for this attachment"
-msgstr ""
+msgstr "El nombre único para este adjunto"
 
 #: models.py:29
 msgid "attachment"
-msgstr ""
+msgstr "adjunto"
 
 #: models.py:29
 msgid "attachments"
-msgstr ""
+msgstr "adjuntos"
+

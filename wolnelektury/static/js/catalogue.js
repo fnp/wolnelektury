@@ -30,10 +30,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Загрузка"
     },
     "es": {
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "¿Estás seguro que quieres borrar este estante?",
+        "HIDE_DESCRIPTION": "Esconder la descripción",
+        "EXPAND_DESCRIPTION": "Ampliar la descripción",
+        "LOADING": "Cargando"
     },
     "lt":{
         "DELETE_SHELF": "Ar tikrai nori pašalinti lentną?",
