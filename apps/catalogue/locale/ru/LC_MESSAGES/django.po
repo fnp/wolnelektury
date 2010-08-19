@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-25 11:21+0200\n"
-"PO-Revision-Date: 2010-07-02 11:47+0100\n"
+"PO-Revision-Date: 2010-08-11 20:22+0100\n"
 "Last-Translator: I <moth_04@yahoo.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "Ввести правильное JSON значение. Ошибка: %
 
 #: forms.py:28
 msgid "title, author, theme/topic, epoch, kind, genre"
-msgstr "Звглавие, автор, мотив/тема, эпоха, форма, жанр"
+msgstr "Заглавие, автор, мотив/тема, эпоха, форма, жанр"
 
 #: forms.py:44
 msgid "Shelves"
@@ -102,7 +102,7 @@ msgstr "главная страница"
 #: models.py:50
 #: migrations/0001_initial.py:52
 msgid "Show tag on main page"
-msgstr "Показать тег на главной странице"
+msgstr "Показать таг на главной странице"
 
 #: models.py:53
 #: migrations/0001_initial.py:54
@@ -116,11 +116,11 @@ msgstr "год смерти"
 #: models.py:80
 #: migrations/0001_initial.py:61
 msgid "tag"
-msgstr "тег"
+msgstr "таг"
 
 #: models.py:81
 msgid "tags"
-msgstr "теги"
+msgstr "таги"
 
 #: models.py:102
 #: models.py:362
@@ -208,7 +208,7 @@ msgstr "фрагменты"
 
 #: models.py:364
 msgid "goes to public domain"
-msgstr "идти к публичному домену"
+msgstr "идти к публичной домене"
 
 #: models.py:366
 msgid "translator"

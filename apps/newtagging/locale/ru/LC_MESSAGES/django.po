@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-18 11:01+0200\n"
-"PO-Revision-Date: 2010-07-02 11:48+0100\n"
+"PO-Revision-Date: 2010-06-02 17:08+0100\n"
 "Last-Translator: I <moth_04@yahoo.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,11 @@ msgstr ""
 
 #: admin.py:38
 msgid "tags"
-msgstr "теги"
+msgstr "таги"
 
 #: models.py:491
 msgid "tag"
-msgstr "тег"
+msgstr "таг"
 
 #: models.py:492
 msgid "content type"
