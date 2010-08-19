@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-25 14:29+0200\n"
-"PO-Revision-Date: 2010-06-23 12:25+0100\n"
+"PO-Revision-Date: 2010-08-11 03:13+0100\n"
 "Last-Translator: Iwona Fiałkowska <ifialkowska@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr "Wolnelektury.pl wegen Wartungsarbeiten momentan nicht verfügbar."
 
 #: templates/base.html:20
 msgid "Internet Explorer cannot display this site properly. Click here to read more..."
-msgstr "Diese Seite kann nicht richtig in Internet Explorer angezeigt werden. Klicken Sie hier, um mehr zu lesen..."
+msgstr "Diese Seite kann nicht richtig im Internet Explorer angezeigt werden. Klicken Sie hier, um mehr zu lesen..."
 
 #: templates/base.html:33
 msgid "Welcome"
@@ -117,7 +117,7 @@ msgstr "Anmelden"
 #: templates/auth/login.html.py:21
 #: templates/auth/login.html:23
 msgid "Register"
-msgstr "Register"
+msgstr "Registrieren"
 
 #: templates/base.html:51
 msgid "Choose your interface language: "
@@ -136,7 +136,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tWolne Lektury ist ein Projekt, dass von <a href=\"http://nowoczesnapolska.org.pl/\">Modernes Polen Stiftung</a>.\n"
+"\t\t\t\tWolne Lektury ist ein Projekt, dass von <a href=\"http://nowoczesnapolska.org.pl/\">Stiftung Modernes Polen </a>.\n"
 "\t\t\t\tDigitale Reproduktion entwickelt von der <a href=\"http://www.bn.org.pl/\">Natonalbibliothek</a>, Exemplare aus dem Bücherbestand NB. \n"
 "\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
 "\t\t\t\t"
@@ -149,7 +149,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tModernes Polen Stiftung, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
+"\t\t\t\t Stiftung Modernes Polen, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
 "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 
@@ -351,8 +351,9 @@ msgid "See description"
 msgstr "Beschreibung ansehen"
 
 #: templates/catalogue/book_fragments.html:26
+#, fuzzy
 msgid "of the book "
-msgstr "des Werkes"
+msgstr ""
 
 #: templates/catalogue/book_list.html:7
 msgid "Alphabetical listing of works on WolneLektury.pl"
@@ -424,12 +425,12 @@ msgstr "Alle Kategorien anzeigen"
 #: templates/catalogue/main_page.html:270
 #: templates/catalogue/main_page.html:279
 msgid "See more"
-msgstr "Siehe mehr"
+msgstr "mehr"
 
 #: templates/catalogue/folded_tag_list.html:22
 #: templates/catalogue/main_page.html:250
 msgid "Hide"
-msgstr "Siehe weniger"
+msgstr "weniger"
 
 #: templates/catalogue/fragment_sets.html:2
 msgid "Shelves containing fragment"
@@ -454,7 +455,7 @@ msgstr "Buchauszug zuklappen"
 
 #: templates/catalogue/fragment_short.html:17
 msgid "See in a book"
-msgstr "im Werk ansehen"
+msgstr "Werk ansehen"
 
 #: templates/catalogue/main_page.html:13
 msgid "check list of books"
@@ -509,7 +510,7 @@ msgstr "Unterrichtsszenarien und andere Ideen für die Verwendung von Wolnelektu
 
 #: templates/catalogue/main_page.html:47
 msgid "are professional recordings of literary texts from our repository, available on free license in MP3 and Ogg Vorbis formats as well as in DAISY system."
-msgstr "sind professionelle Aufnahmen literarischer Texte aus unserer Sammlung, die unter freier Lizenz in folgenden Formaten verfügbar sind: MP3-und Ogg-Vorbis-Formate sowie in DAISY-System."
+msgstr "sind professionelle Aufnahmen literarischer Texte aus unserer Sammlung, die unter freier Lizenz in folgenden Formaten verfügbar sind: MP3-und Ogg-Vorbis-Formate sowie im DAISY-System."
 
 #: templates/catalogue/main_page.html:54
 #: templates/catalogue/tagged_object_list.html:114
@@ -545,7 +546,7 @@ msgstr "News"
 
 #: templates/catalogue/main_page.html:264
 msgid "See our blog"
-msgstr "Sehe unseren Blog"
+msgstr "Siehe unseren Blog"
 
 #: templates/catalogue/main_page.html:267
 msgid "You can help us!"
@@ -570,7 +571,7 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tSchulbücher “Wolne Lektury”  in der Internetbibliothek(<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) ist ein Projekt, das von Modernes Polen-Stiftung gefördert wird. Die Stiftung ist seit 2007 tätig und hat bisher viele Schulbücher aus dem Bibliothekbestand zur öffentlichen Nutzung freigestellt. Die Schulbücher werden ausdrücklich vom Bildungsministerium empfohlen.\n"
+"\t\t\tSchulbücher “Wolne Lektury”  in der Internetbibliothek(<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) ist ein Projekt, das von der Stiftung Modernes Polen gefördert wird. Die Stiftung ist seit 2007 tätig und hat bisher viele Schulbücher aus dem Bibliothekbestand zur öffentlichen Nutzung freigestellt. Die Schulbücher werden ausdrücklich vom Bildungsministerium empfohlen.\n"
 "\t\t\t"
 
 #: templates/catalogue/search_multiple_hits.html:5
@@ -742,9 +743,7 @@ msgid ""
 "We have over 1000 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
 "making a donation or transferring 1%% of your income tax."
-msgstr "Auf unserer Hompage Wolne Lektury wurden bereits etwa 1000 Werke veröffentlicht!\n"
-"Helfe uns bei der Mitgestaltung und Veröffentlichung neuer Schullektüren,\n"
-"indem du uns eine Spende in Höhe von 1%% von deinen Steuerabgaben übergibst."
+msgstr "Auf unserer Hompage Wolne Lektury wurden bereits etwa 1000 Werke veröffentlicht! Helfe uns bei der Mitgestaltung und Veröffentlichung neuer Schullektüren, indem du uns eine Spende in Höhe von 1%% deiner Steuerabgaben übergibst."
 
 #: templates/info/join_us.html:5
 #: templates/info/join_us.html.py:10
@@ -765,7 +764,7 @@ msgstr "Autor"
 
 #: templates/lessons/document_detail.html:9
 msgid "return to list of materials"
-msgstr "zurück zur Materialliste"
+msgstr "zurück zur Materialienliste"
 
 #: templates/lessons/document_list.html:7
 msgid "Hand-outs for teachers on "
