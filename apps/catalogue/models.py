@@ -357,17 +357,19 @@ class Book(models.Model):
         try:
             epub.transform(BookImportDocProvider(self), self.slug, epub_file)
             self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()), save=False)
+            self.save()
             FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
         except NoDublinCore:
             pass
 
-        if remove_descendants:
-            book_descendants = list(self.children.all())
-            while len(book_descendants) > 0:
-                child_book = book_descendants.pop(0)
-                if child_book.has_epub_file():
-                    child_book.epub_file.delete()
-                book_descendants += list(child_book.children.all())
+        book_descendants = list(self.children.all())
+        while len(book_descendants) > 0:
+            child_book = book_descendants.pop(0)
+            if remove_descendants and child_book.has_epub_file():
+                child_book.epub_file.delete()
+            # save anyway, to refresh short_html
+            child_book.save()
+            book_descendants += list(child_book.children.all())
 
 
     @classmethod
