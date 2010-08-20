@@ -326,6 +326,50 @@ class Book(models.Model):
     has_html_file.short_description = 'HTML'
     has_html_file.boolean = True
 
+    def build_epub(self, remove_descendants=True):
+        """ (Re)builds the epub file.
+            If book has a parent, does nothing.
+            Unless remove_descendants is False, descendants' epubs are removed.
+        """
+    
+        from StringIO import StringIO
+        from hashlib import sha1
+        from django.core.files.base import ContentFile
+        from librarian import DocProvider
+
+        class BookImportDocProvider(DocProvider):
+            """ used for joined EPUBs """
+
+            def __init__(self, book):
+                self.book = book
+
+            def by_slug(self, slug):
+                if slug == self.book.slug:
+                    return self.book.xml_file
+                else:
+                    return Book.objects.get(slug=slug).xml_file
+
+        if self.parent:
+            # don't need an epub
+            return
+
+        epub_file = StringIO()
+        try:
+            epub.transform(BookImportDocProvider(self), self.slug, epub_file)
+            self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()), save=False)
+            FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
+        except NoDublinCore:
+            pass
+
+        if remove_descendants:
+            book_descendants = list(self.children.all())
+            while len(book_descendants) > 0:
+                child_book = book_descendants.pop(0)
+                if child_book.has_epub_file():
+                    child_book.epub_file.delete()
+                book_descendants += list(child_book.children.all())
+
+
     @classmethod
     def from_xml_file(cls, xml_file, overwrite=False):
         # use librarian to parse meta-data
@@ -344,24 +388,7 @@ class Book(models.Model):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
-        from hashlib import sha1
-        from django.core.files.base import ContentFile
         from django.core.files.storage import default_storage
-        from StringIO import StringIO
-
-        from librarian import DocProvider
-
-        class BookImportDocProvider(DocProvider):
-            """ used for joined EPUBs """
-
-            def __init__(self, book):
-                self.book = book
-
-            def by_slug(self, slug):
-                if slug == self.book.slug:
-                    return self.book.xml_file
-                else:
-                    return Book.objects.get(slug=slug).xml_file
 
         # Read book metadata
         book_base, book_slug = book_info.url.rsplit('/', 1)
@@ -451,23 +478,15 @@ class Book(models.Model):
                 new_fragment.save()
                 new_fragment.tags = set(book_tags + themes + [book_tag])
 
-        # Create EPUB
-        epub_file = StringIO()
-        try:
-            epub.transform(BookImportDocProvider(book), book.slug, epub_file)
-            book.epub_file.save('%s.epub' % book.slug, ContentFile(epub_file.getvalue()), save=False)
-            FileRecord(slug=book.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
-        except NoDublinCore:
-            pass
+        book.build_epub(remove_descendants=False)
 
-        delete_epubs = book.has_epub_file()
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments
         # delete unnecessary EPUB files
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)
             child_book.tags = list(child_book.tags) + [book_tag]
-            if delete_epubs:
+            if child_book.has_epub_file():
                 child_book.epub_file.delete()
             child_book.save()
             for fragment in child_book.fragments.all():
