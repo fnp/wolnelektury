@@ -529,13 +529,15 @@ def download_shelf(request, slug):
     temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
 
+    already = set()
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if 'pdf' in formats and book.pdf_file:
             filename = book.pdf_file.path
             archive.write(filename, str('%s.pdf' % book.slug))
-        if 'epub' in formats and book.epub_file:
-            filename = book.epub_file.path
-            archive.write(filename, str('%s.epub' % book.slug))
+        if book.root_ancestor not in already and 'epub' in formats and book.root_ancestor.epub_file:
+            filename = book.root_ancestor.epub_file.path
+            archive.write(filename, str('%s.epub' % book.root_ancestor.slug))
+            already.add(book.root_ancestor)
         if 'odt' in formats and book.odt_file:
             filename = book.odt_file.path
             archive.write(filename, str('%s.odt' % book.slug))
@@ -571,7 +573,7 @@ def shelf_book_formats(request, shelf):
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if book.pdf_file:
             formats['pdf'] = True
-        if book.epub_file:
+        if book.root_ancestor.epub_file:
             formats['epub'] = True
         if book.odt_file:
             formats['odt'] = True
