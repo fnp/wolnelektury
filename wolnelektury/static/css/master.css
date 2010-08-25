@@ -877,6 +877,14 @@ div.shown-tags p, div.all-tags p {
     display: block;
 }
 
+#document-list ul {
+  padding-left: 30px;
+  list-style: disc;
+}
+#document-list li li a {
+  width: 340px;
+}
+
 #document-list li a:hover, #document-list li a.active {
     text-decoration: none;
     background-color: #EEE;

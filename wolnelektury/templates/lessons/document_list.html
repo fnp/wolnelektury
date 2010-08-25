@@ -9,9 +9,9 @@
 {% block extrahead %}
     <script type="text/javascript" charset="utf-8">
         $(function() {
-            $('#document-list a').click(function() {
+            $('#document-list a[data-hash]').click(function() {
                 if (!$(this).hasClass('active')) {
-                    $('#document-list a').removeClass('active');
+                    $('#document-list a[data-hash]').removeClass('active');
                     $(this).addClass('active');
                     document.location.hash = $(this).attr('data-hash');
                 }
@@ -52,11 +52,7 @@
     </form>
 
     <div id="document-list">
-        <ol>
-        {% for object in object_list %}
-            <li><a href="{{ object.get_absolute_url }}" data-hash="#{{ object.slug }}">{{ object }}</a></li>
-        {% endfor %}
-        </ol>
+        {% chunk "document-list" %}
     </div>
     <div id="document-detail">
     </div>
