@@ -1,8 +1,8 @@
 	$(function() {		
-		$("#id_q").autocomplete({
+		$("#id_qq").autocomplete({
 			source: function(request, response) {
 				$.ajax({
-					url: "http://www.wolnelektury.pl/katalog/jtags/",
+					url: "http://lektury.staging.nowoczesnapolska.org.pl/katalog/jtags/",
 					dataType: "jsonp",
 					data: {
 						featureClass: "P",

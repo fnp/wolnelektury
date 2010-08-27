@@ -16,6 +16,15 @@
     <div id="intro">
         <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
+            <h2>{% trans "Wolne Lektury Widget" %}</h2>
+            <p>{% trans "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:" %}</p>
+            <textarea rows="4" cols="35"><!-- START {% trans "Insert this element in place where you want display the widget" %} -->
+<div id="wl" />
+<!-- END -->
+<!-- START {% trans "Place this element just before closing body tag: </body>" %} -->
+<script type="text/javascript" src="http://www.wolnelektury.pl/static/js/widget.js"></script>
+<!-- END --></textarea>
+                <p class="see-more"><a href="{% url widget %}">{% trans "See more" %} ⇒</a></p>
             <h2>{% trans "Your shelves with books" %}</h2>
             {% if user.is_authenticated %}
                 {% if shelves %}
@@ -43,8 +52,8 @@
                 <p class="see-more"><a href="{% url lessons_document_list %}">{% trans "See more" %} ⇒</a></p>
             </div>
             <div id="czytamysluchajac">
-                <a href="http://czytamysluchajac.pl/"><img src="{{ STATIC_URL }}img/czytamysluchajac-logo-small.png" alt="CzytamySluchajac - logo" /></a>
-                <p><a href="http://czytamysluchajac.pl/">Czytamy Słuchając</a> {% trans "are professional recordings of literary texts from our repository, available on free license in MP3 and Ogg Vorbis formats as well as in DAISY system." %}</p>
+                <a href="http://czytamysluchajac.pl/"><img src="{{ STATIC_URL }}img/czytamysluchajac-logo-small.png" alt="CzytamySluchajac - logo" style="float:left; padding: 10px;" /></a>
+                <p style="padding-top:10px;"><a href="http://czytamysluchajac.pl/">Czytamy Słuchając</a> {% trans "are professional recordings of literary texts from our repository, available on free license in MP3 and Ogg Vorbis formats as well as in DAISY system." %}</p>
                 <p class="see-more"><a href="http://czytamysluchajac.pl/index.php/o-projekcie/">{% trans "See more" %} ⇒</a></p>
             </div>
         </div>

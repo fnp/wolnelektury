@@ -12,10 +12,10 @@ var stylesheet = document.createElement('link');
 /* set attributes of created elements */
 stylesheet.setAttribute('type', 'text/css');
 stylesheet.setAttribute('rel', 'stylesheet');
-stylesheet.setAttribute('href', 'http://www.wolnelektury.pl/static/css/widget.css');
-linkLogo.setAttribute('href', 'http://www.wolnelektury.pl');
-logo.setAttribute('src', 'http://www.wolnelektury.pl/static/img/logo.png');
-form.setAttribute('action', 'http://www.wolnelektury.pl/katalog/szukaj/');
+stylesheet.setAttribute('href', 'http://lektury.staging.nowoczesnapolska.org.pl/static/css/widget.css');
+linkLogo.setAttribute('href', 'http://lektury.staging.nowoczesnapolska.org.pl');
+logo.setAttribute('src', 'http://lektury.staging.nowoczesnapolska.org.pl/static/img/logo.png');
+form.setAttribute('action', 'http://lektury.staging.nowoczesnapolska.org.pl/katalog/szukaj/');
 form.setAttribute('method', 'get');
 form.setAttribute('accept-charset', 'utf-8');
 form.setAttribute('id', 'wl-form');
@@ -23,22 +23,24 @@ inputText.setAttribute('type', 'text');
 inputText.setAttribute('title', 'tytul, autor, motyw/temat, epoka, rodzaj, gatunek');
 inputText.setAttribute('value', '');
 inputText.setAttribute('name', 'q');
-inputText.setAttribute('id', 'id_q');
-inputSubmit.setAttribute('type', 'submit');
-inputSubmit.setAttribute('value', 'Szukaj');
+inputText.setAttribute('id', 'id_qq');
+inputText.setAttribute('size', '13');
+inputSubmit.setAttribute('type', 'image');
+inputSubmit.setAttribute('src', 'http://lektury.staging.nowoczesnapolska.org.pl/static/img/search.png');
+inputSubmit.setAttribute('style', 'position:relative; top:5px; margin-left:5px');
 
 /* import jquery and autocomplete */
 var scriptJ = document.createElement('script');
 scriptJ.setAttribute('type', 'text/javascript');
-scriptJ.setAttribute('src', 'http://www.wolnelektury.pl/static/js/jquery.js');
+scriptJ.setAttribute('src', 'http://lektury.staging.nowoczesnapolska.org.pl/static/js/jquery.js');
 
 var scriptAutoComplete = document.createElement('script');
 scriptAutoComplete.setAttribute('type', 'text/javascript');
-scriptAutoComplete.setAttribute('src', 'http://www.wolnelektury.pl/static/js/jquery-ui-1.8.2.custom.min.js');
+scriptAutoComplete.setAttribute('src', 'http://lektury.staging.nowoczesnapolska.org.pl/static/js/jquery-ui-1.8.2.custom.min.js');
 
 var scriptInit = document.createElement('script');
 scriptInit.setAttribute('type', 'text/javascript');
-scriptInit.setAttribute('src', 'http://www.wolnelektury.pl/static/js/widgetInit.js');
+scriptInit.setAttribute('src', 'http://lektury.staging.nowoczesnapolska.org.pl/static/js/widgetInit.js');
 
 body[0].appendChild(scriptJ);
 body[0].appendChild(scriptAutoComplete);
@@ -56,7 +58,7 @@ form.appendChild(inputSubmit);
 widget.style.borderColor = "#84BF2A";
 widget.style.borderWidth = "2px";
 widget.style.borderStyle = "solid";
-widget.style.width = "260px";
+widget.style.width = "160px";
 widget.style.padding = "10px";
 widget.style.fontSize = "12px";
 form.style.paddingTop = "10px";

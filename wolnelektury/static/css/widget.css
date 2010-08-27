@@ -1,8 +1,11 @@
+#wl {
+background-color: white;
+}
 #wl img {
 border: 0;
 }
 .ui-menu {
-width: 230px;
+width: 160px;
 font-size: small;
 list-style-type: none;
 padding: 0;
@@ -15,7 +18,7 @@ border-bottom: 1px solid #696969;
 .ui-menu li {
 font-size: small;
 padding: 5px;
-width: 220px
+width: 150px
 }
 
 .ui-menu li:nth-child(odd) {
@@ -31,8 +34,13 @@ background-color: #053469;
 color:white;
 }
 
+.ui-menu a:hover {
+color:white;
+text-decoration: none;
+}
+
 .ui-corner-all {
-width: 230px;
+width: 160px;
 cursor: pointer;
 display:block;
 }

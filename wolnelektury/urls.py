@@ -21,7 +21,8 @@ urlpatterns = patterns('',
     url(r'^wolontariat/$', 'infopages.views.infopage', {'slug': 'voluntary_services'}, name='voluntary_services'),
     url(r'^mozesz-nam-pomoc/$', 'infopages.views.infopage', {'slug': 'help_us'}, name='help_us'),
     url(r'^o-projekcie/$', 'infopages.views.infopage', {'slug': 'about_us'}, name='about_us'),
-
+    url(r'^widget/$', 'infopages.views.infopage', {'slug': 'widget'}, name='widget'),
+    
     url(r'^1procent/$', 'django.views.generic.simple.direct_to_template', {
         'template': '1percent.html'
     }, name='1percent'),

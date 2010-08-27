@@ -42,10 +42,10 @@ var LOCALE_TEXTS = {
         "LOADING": "Krovimas"
     },
     "uk":{
-        "DELETE_SHELF": "Translate me!",
-        "HIDE_DESCRIPTION": "Translate me!",
-        "EXPAND_DESCRIPTION": "Translate me!",
-        "LOADING": "Translate me!"
+        "DELETE_SHELF": "Ви впевнені, що хочете видалити полицю?",
+        "HIDE_DESCRIPTION": "Сховати опис",
+        "EXPAND_DESCRIPTION": "Показати опис",
+        "LOADING": "Завантажується"
     }
 }
 var BANNER_TEXTS = [
