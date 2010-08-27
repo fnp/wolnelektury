@@ -17,7 +17,7 @@ class Sponsor(models.Model):
         _('logo'),
         upload_to='sponsorzy/sponsor/logo',
         thumbnail={
-            'size': (120, 60),
+            'size': (120, 120),
             'extension': 'png',
             'options': ['pad', 'detail'],
         })

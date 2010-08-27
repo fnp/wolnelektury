@@ -1,8 +1,14 @@
-.sponsors-sponsor-column {
-    float: left;
-    overflow: hidden;
+.sponsors-sponsor-logo {
+  margin-left: 1em;
+  vertical-align: middle;
 }
 
-.sponsors-sponsor-logo {
-    float: left;
+.sponsors-sponsor-column {
+  line-height: 120px;
+  padding-right: 5em;
+}
+
+.sponsors-sponsor-column-name {
+  font-weight: bold;
+  font-size: 1.25em;
 }

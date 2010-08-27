@@ -1,11 +1,10 @@
-<div class="sponsors-sponsor-page">
+<marquee scrollamount='2' width='800'>
 {% for column in sponsors %}
-	<div class="sponsors-sponsor-column" style="width: 150px">
-		<p class="sponsors-sponsor-column-name">{{ column.name|default:"&nbsp;" }}</p>
-		{% for sponsor in column.sponsors %}
-			<div class="sponsors-sponsor">{% if sponsor.url %}<a style="sponsors-sponsor-link" href="{{ sponsor.url }}" title="{{ sponsor.description }}" >{% endif %}<img class="sponsors-sponsor-logo" src="{{ sponsor.logo.thumbnail }}" alt="{{ sponsor.name }}"/>{% if sponsor.url %}</a>{% endif %}</div>
-		{% endfor %}
-	</div>
+  <span class="sponsors-sponsor-column">
+    <span class="sponsors-sponsor-column-name">{{ column.name }}</span>
+    {% for sponsor in column.sponsors %}
+      {% if sponsor.url %}<a style="sponsors-sponsor-link" href="{{ sponsor.url }}" title="{{ sponsor.description }}" >{% endif %}<img class="sponsors-sponsor-logo" src="{{ sponsor.logo.thumbnail }}" alt="{{ sponsor.name }}"/>{% if sponsor.url %}</a>{% endif %}
+    {% endfor %}
+  </span>
 {% endfor %}
-<div style="clear: both"></div>
-</div>
+</marquee>

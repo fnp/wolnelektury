@@ -4,13 +4,11 @@
 #
 from django.conf.urls.defaults import *
 from catalogue import forms
-from lessons import models
 
 
 urlpatterns = patterns('',
-    url(r'^$', 'django.views.generic.list_detail.object_list', {
-        'queryset': models.Document.objects.all(),
-        'template_name': 'lessons/document_list.html',
+    url(r'^$', 'django.views.generic.simple.direct_to_template', {
+        'template': 'lessons/document_list.html',
         'extra_context': {
             'form': forms.SearchForm(),
         },

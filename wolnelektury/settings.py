@@ -42,7 +42,7 @@ LANGUAGES = tuple(sorted([
     ('fr', u'français'),
     ('ru', u'русский'),
     ('es', u'español'),
-    ('uk', u'українська'),
+    #('uk', u'українська'),
 ], key=lambda x: x[0]))
 
 
@@ -159,6 +159,7 @@ COMPRESS_JS = {
             'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
             'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
             'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
+            'js/jquery.marquee.js',
             'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
             ),
         'output_filename': 'js/all?.min.js',

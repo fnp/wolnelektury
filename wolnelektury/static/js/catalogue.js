@@ -446,5 +446,7 @@ function serverTime() {
             $('#download-shelf-menu').slideUp('fast');
             return false;
         });
+
+        $('marquee').marquee()
     });
 })(jQuery)

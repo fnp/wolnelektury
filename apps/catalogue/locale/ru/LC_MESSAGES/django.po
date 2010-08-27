@@ -2,18 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 11:21+0200\n"
-"PO-Revision-Date: 2010-08-11 20:22+0100\n"
-"Last-Translator: I <moth_04@yahoo.pl>\n"
+"POT-Creation-Date: 2010-08-25 10:24+0000\n"
+"PO-Revision-Date: 2010-08-25 11:02\n"
+"Last-Translator: <radek.czajka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
 
 #: fields.py:47
 #, python-format
@@ -24,240 +25,232 @@ msgstr "Ввести правильное JSON значение. Ошибка: %
 msgid "title, author, theme/topic, epoch, kind, genre"
 msgstr "Заглавие, автор, мотив/тема, эпоха, форма, жанр"
 
-#: forms.py:44
+#: forms.py:45
 msgid "Shelves"
 msgstr "Полки"
 
-#: forms.py:57
+#: forms.py:58
 msgid "Name of the new shelf"
 msgstr "Название новой полки"
 
-#: models.py:24
-#: models.py:363
+#: models.py:25 models.py:585
 msgid "author"
 msgstr "автор"
 
-#: models.py:25
+#: models.py:26
 msgid "epoch"
 msgstr "эпоха"
 
-#: models.py:26
+#: models.py:27
 msgid "kind"
 msgstr "форма"
 
-#: models.py:27
+#: models.py:28
 msgid "genre"
 msgstr "жанр"
 
-#: models.py:28
+#: models.py:29
 msgid "theme"
 msgstr "мотив"
 
-#: models.py:29
+#: models.py:30
 msgid "set"
 msgstr "набор"
 
-#: models.py:30
-#: models.py:322
+#: models.py:31 models.py:204
 msgid "book"
 msgstr "книга"
 
-#: models.py:44
-#: migrations/0001_initial.py:47
+#: models.py:45
 msgid "name"
 msgstr "название"
 
-#: models.py:45
-#: models.py:103
-#: models.py:365
-#: migrations/0001_initial.py:19
-#: migrations/0001_initial.py:48
+#: models.py:46 models.py:170 models.py:587 models.py:612
 msgid "slug"
 msgstr "slug"
 
-#: models.py:46
-#: migrations/0001_initial.py:49
+#: models.py:47
 msgid "sort key"
 msgstr "ключ сортировки "
 
-#: models.py:47
-#: migrations/0001_initial.py:50
+#: models.py:48
 msgid "category"
 msgstr "категория"
 
-#: models.py:49
-#: models.py:60
-#: models.py:104
-#: models.py:185
-#: migrations/0001_initial.py:20
-#: migrations/0001_initial.py:51
+#: models.py:50 models.py:87 models.py:171 models.py:306
 msgid "description"
 msgstr "описание"
 
-#: models.py:50
-#: migrations/0001_initial.py:52
+#: models.py:51
 msgid "main page"
 msgstr "главная страница"
 
-#: models.py:50
-#: migrations/0001_initial.py:52
+#: models.py:51
 msgid "Show tag on main page"
 msgstr "Показать таг на главной странице"
 
-#: models.py:53
-#: migrations/0001_initial.py:54
+#: models.py:54
 msgid "book count"
 msgstr "число книг"
 
-#: models.py:54
+#: models.py:55
 msgid "year of death"
 msgstr "год смерти"
 
-#: models.py:80
-#: migrations/0001_initial.py:61
+#: models.py:71
 msgid "tag"
 msgstr "таг"
 
-#: models.py:81
+#: models.py:72
 msgid "tags"
 msgstr "таги"
 
-#: models.py:102
-#: models.py:362
-#: migrations/0001_initial.py:18
+#: models.py:169 models.py:584
 msgid "title"
 msgstr "заглавие"
 
-#: models.py:105
-#: migrations/0001_initial.py:21
+#: models.py:172
 msgid "creation date"
 msgstr "дата создания"
 
-#: models.py:106
-#: migrations/0001_initial.py:22
+#: models.py:173
 msgid "short HTML"
 msgstr "короткий  HTML"
 
-#: models.py:107
-#: migrations/0001_initial.py:23
+#: models.py:174
 msgid "parent number"
 msgstr "номер родителя"
 
-#: models.py:108
+#: models.py:175
 msgid "extra information"
 msgstr "дополнительная информация"
 
-#: models.py:114
-#: migrations/0001_initial.py:24
+#: models.py:181
 msgid "XML file"
 msgstr "XML файл"
 
-#: models.py:115
-#: migrations/0001_initial.py:25
+#: models.py:182
 msgid "HTML file"
 msgstr "HTML файл"
 
-#: models.py:116
-#: migrations/0001_initial.py:26
+#: models.py:183
 msgid "PDF file"
 msgstr "PDF файл"
 
-#: models.py:117
-#: migrations/0001_initial.py:27
+#: models.py:184
+msgid "EPUB file"
+msgstr "EPUB файл"
+
+#: models.py:185
 msgid "ODT file"
 msgstr "ODT файл"
 
-#: models.py:118
-#: migrations/0001_initial.py:28
+#: models.py:186
 msgid "TXT file"
 msgstr "TXT файл"
 
-#: models.py:119
+#: models.py:187
 msgid "MP3 file"
 msgstr "MP3 файл"
 
-#: models.py:120
+#: models.py:188
 msgid "OGG file"
 msgstr "OGG файл"
 
-#: models.py:141
+#: models.py:205
+msgid "books"
+msgstr "книги"
+
+#: models.py:263
 msgid "Read online"
 msgstr "Читать онлайн"
 
-#: models.py:221
+#: models.py:403
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книга %s уже существует"
 
-#: models.py:264
+#: models.py:444
 #, python-format
 msgid "Book with slug = \"%s\" does not exist."
 msgstr "Книга со slug = \"%s\"  не существует."
 
-#: models.py:323
-msgid "books"
-msgstr "книги"
-
-#: models.py:357
+#: models.py:565
 msgid "fragment"
 msgstr "фрагмент"
 
-#: models.py:358
+#: models.py:566
 msgid "fragments"
 msgstr "фрагменты"
 
-#: models.py:364
+#: models.py:586
 msgid "goes to public domain"
 msgstr "идти к публичной домене"
 
-#: models.py:366
+#: models.py:588
 msgid "translator"
 msgstr "переводчик"
 
-#: models.py:367
+#: models.py:589
 msgid "year of translator's death"
 msgstr "год смерти переводчика"
 
-#: models.py:385
+#: models.py:593
 msgid "book stub"
 msgstr "анонс книги"
 
-#: models.py:386
+#: models.py:594
 msgid "book stubs"
 msgstr "анонсы книги"
 
-#: views.py:339
+#: models.py:613
+msgid "type"
+msgstr ""
+
+#: models.py:614
+msgid "sha-1 hash"
+msgstr ""
+
+#: models.py:615
+#, fuzzy
+msgid "time"
+msgstr "мотив"
+
+#: models.py:619
+msgid "file record"
+msgstr ""
+
+#: models.py:620
+msgid "file records"
+msgstr ""
+
+#: views.py:452
 msgid "<p>To maintain your shelves you need to be logged in.</p>"
 msgstr "<p>Зарегиструйтесь, чтобы сохранить свои полки.</p>"
 
-#: views.py:357
+#: views.py:470
 msgid "<p>Shelves were sucessfully saved.</p>"
 msgstr "<p>Полки - удачно сохранены.</p>"
 
-#: views.py:381
+#: views.py:494
 msgid "Book was successfully removed from the shelf"
 msgstr "Книга была удачно удалена с полки"
 
-#: views.py:383
+#: views.py:496
 msgid "This book is not on the shelf"
 msgstr "Эта книга не находится на полке"
 
-#: views.py:479
+#: views.py:599
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
 msgstr "<p>Полка <strong>%s</strong>была удачно создана</p>"
 
-#: views.py:494
+#: views.py:614
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 msgstr "<p>Полка<strong>%s</strong>была удачно удалена."
 
-#: views.py:553
-#, python-format
-msgid "Today is %(month)s, %(day)s."
-msgstr "Сегодня %(month)s, %(day)s."
-
-#: views.py:554
+#: views.py:673
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -268,20 +261,20 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:555
+#: views.py:674
 msgid "Book imported successfully"
 msgstr "Вы удачно заимпортировали книгу"
 
-#: views.py:557
+#: views.py:676
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Ошибка импорта файла: %r"
 
-#: migrations/0001_initial.py:62
-msgid "content type"
-msgstr "тип содержания"
+#~ msgid "Today is %(month)s, %(day)s."
+#~ msgstr "Сегодня %(month)s, %(day)s."
 
-#: migrations/0001_initial.py:63
-msgid "object id"
-msgstr "ID объекта"
+#~ msgid "content type"
+#~ msgstr "тип содержания"
 
+#~ msgid "object id"
+#~ msgstr "ID объекта"
