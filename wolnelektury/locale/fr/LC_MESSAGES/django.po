@@ -737,15 +737,14 @@ msgid "return to the main page"
 msgstr "retour à l'accueil"
 
 #: templates/info/join_us.html:2
-#, python-format
 msgid ""
 "We have over 1000 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
-"making a donation or transferring 1%% of your income tax."
+"making a donation or transferring 1% of your income tax."
 msgstr ""
 "Il y a plus de 1000 oeuvres publiées sur Lectures libres!\n"
 "Aidez-nous à développer la bibliothèque et mettre de textes nouveaux à disposition gratuite en\n"
-"faisant une donation ou en nous transmettant 1%% de votre impôt sur le revenu."
+"faisant une donation ou en nous transmettant 1% de votre impôt sur le revenu."
 
 #: templates/info/join_us.html:5
 #: templates/info/join_us.html.py:10

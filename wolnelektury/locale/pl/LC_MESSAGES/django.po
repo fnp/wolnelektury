@@ -849,7 +849,6 @@ msgid "return to the main page"
 msgstr "wróć do strony głównej"
 
 #: templates/info/join_us.html:2
-#, fuzzy, python-format
 msgid ""
 "We have over 1000 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
