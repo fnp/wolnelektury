@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db.models import Q
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 
 register = template.Library()
@@ -46,18 +47,9 @@ def capfirst(text):
 
 
 def simple_title(tags):
-    mapping = {
-        'author': u'Autor',
-        'theme': u'motyw',
-        'epoch': u'epoka',
-        'genre': u'gatunek',
-        'kind': u'rodzaj',
-        'set': u'półka',
-    }
-
     title = []
     for tag in tags:
-        title.append("%s: %s" % (mapping[tag.category], tag.name))
+        title.append("%s: %s" % (_(tag.category), tag.name))
     return capfirst(', '.join(title))
 
 
