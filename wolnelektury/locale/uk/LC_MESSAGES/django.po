@@ -232,7 +232,7 @@ msgstr "Завантажити PDF"
 #: templates/catalogue/book_detail.html:37
 #: templates/catalogue/book_detail.html:50
 msgid "Download EPUB"
-msgstr ""
+msgstr "Завантажити EPUB"
 
 #: templates/catalogue/book_detail.html:53
 msgid "Download ODT"
