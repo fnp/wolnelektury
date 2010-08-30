@@ -99,10 +99,11 @@ def rollback():
 # = Helpers. These are called by other functions rather than directly =
 # =====================================================================
 def upload_tar_from_git():
-    "Create an archive from the current Git master branch and upload it"
+    "Create an archive from the current Git branch and upload it"
     print '>>> upload tar from git'
     require('release', provided_by=[deploy])
-    local('git archive --format=tar master | gzip > %(release)s.tar.gz' % env)
+    local('git-archive-all.sh --format tar %(release)s.tar' % env)
+    local('gzip %(release)s.tar' % env)
     run('mkdir -p %(path)s/releases/%(release)s' % env, pty=True)
     run('mkdir -p %(path)s/packages' % env, pty=True)
     put('%(release)s.tar.gz' % env, '%(path)s/packages/' % env)
