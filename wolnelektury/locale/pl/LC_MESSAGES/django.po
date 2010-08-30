@@ -488,7 +488,6 @@ msgid "Browse books by categories"
 msgstr "Przeglądaj lektury według wybranych kategorii"
 
 #: templates/catalogue/main_page.html:19
-#, fuzzy
 msgid "Wolne Lektury Widget"
 msgstr "Widżet Wolne Lektury"
 
