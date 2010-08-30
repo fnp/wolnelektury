@@ -451,6 +451,7 @@ function serverTime() {
             $(this).trigger('stop');
         }).mouseout(function () {
             $(this).trigger('start');
+             $(this).data('drag', false);
         }).mousemove(function (event) {
             if ($(this).data('drag') == true) {
                 this.scrollLeft = $(this).data('scrollX') + ($(this).data('x') - event.clientX);
