@@ -17,7 +17,7 @@
 								value: item
 							}
 						}))
-					},					
+					}					
 				})
 			},
 			minLength: 2,
