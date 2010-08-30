@@ -22,7 +22,7 @@
 			},
 			minLength: 2,
             select: function(event, ui) {
-                $("#id_q").val(ui.item.value);
+                $("#id_qq").val(ui.item.value);
                 $("#wl-form").submit();
             }			
 		});
