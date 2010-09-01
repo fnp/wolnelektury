@@ -479,6 +479,12 @@ function serverTime() {
                 })
             } 
         );
+        
+        $('.book-list-index').click(function(){
+            $('.book-list-show-index').hide('slow');
+            $(this).parent().next('ul').toggle('slow');
+            return false;
+        });
 
     });
 })(jQuery)

@@ -784,11 +784,27 @@ div.shown-tags p, div.all-tags p {
 /* ======================== */
 /* = Alphabetic book list = */
 /* ======================== */
-#book-a-list #book-list {
-    -moz-column-width: 24em;
-    -webkit-column-width: 24em;
-    column-width: 24em;
+#book-list-nav {
+    position: fixed;
+    right: 50px;
+    width: 200px;
+    border: 2px #325F70 solid;
+    padding: 10px;
+    font-size: 1.2em;
 }
+
+#book-list-nav ul {
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+}
+
+.book-list-show-index {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
 
 #book-a-list #book-list ol {
     padding-left: 1em;

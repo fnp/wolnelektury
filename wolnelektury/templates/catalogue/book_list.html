@@ -11,11 +11,24 @@
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
-
+    <div id="book-list-nav">
+        {% trans "Table of Content" %}
+        {% for index, authors in books_nav.items %}
+                <ul>
+                    <li><a class="book-list-index" href="#">{{ index|upper }}</a></li>
+                    <ul class="book-list-show-index">
+                    {% for author in authors %}
+                        <li><a href="#{{ author.slug }}">{{ author }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </ul>
+        {% endfor %}    
+    </div>
     <div id="book-list">
         {% book_tree orphans books_by_parent %}
         {% for author, group in books_by_author.items %}
             {% if group %}
+                <a name="{{ author.slug }}">
                 <div class="group">
                     <h2><a href="{{ author.get_absolute_url }}">{{ author }}</a></h2>
                     {% book_tree group books_by_parent %}

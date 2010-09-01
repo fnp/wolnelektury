@@ -81,8 +81,13 @@ def book_list(request):
 
     orphans = []
     books_by_author = SortedDict()
+    books_nav = SortedDict()
     for tag in models.Tag.objects.filter(category='author'):
         books_by_author[tag] = []
+        if books_nav.has_key(tag.sort_key[0]):
+            books_nav[tag.sort_key[0]].append(tag)
+        else:
+            books_nav[tag.sort_key[0]] = [tag]
 
     for book in books_by_parent[None]:
         authors = list(book.tags.filter(category='author'))
