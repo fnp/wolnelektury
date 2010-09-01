@@ -462,5 +462,15 @@ function serverTime() {
             $(this).data('drag', false);
         });
 
+        $('.widget-code').focus(
+            function(){
+                $(this).animate({rows: '11'}, 100)
+            } 
+        ).blur(
+            function(){
+                $(this).animate({rows: '1'}, 300)
+            } 
+        );
+
     });
 })(jQuery)

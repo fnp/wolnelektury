@@ -948,3 +948,7 @@ div.shown-tags p, div.all-tags p {
 #createNewShelf {
 display: none;
 }
+
+.widget-code {
+    overflow: hidden;
+}

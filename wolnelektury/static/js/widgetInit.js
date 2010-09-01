@@ -2,7 +2,7 @@
 		$("#id_qq").autocomplete({
 			source: function(request, response) {
 				$.ajax({
-					url: "http://lektury.staging.nowoczesnapolska.org.pl/katalog/jtags/",
+					url: "http://www.wolnelektury.pl/katalog/jtags/",
 					dataType: "jsonp",
 					data: {
 						featureClass: "P",
