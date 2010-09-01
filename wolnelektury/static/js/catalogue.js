@@ -464,11 +464,19 @@ function serverTime() {
 
         $('.widget-code').focus(
             function(){
-                $(this).animate({rows: '11'}, 100)
+                $(this).animate({rows: '11'}, 100, function(){
+                    this.select();
+                    $(this).click(function(){
+                        this.select();
+                    });
+                })
+                
             } 
         ).blur(
             function(){
-                $(this).animate({rows: '1'}, 300)
+                $(this).animate({rows: '1'}, 300, function(){
+                    $(this).unbind('click');
+                })
             } 
         );
 
