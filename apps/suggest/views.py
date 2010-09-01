@@ -31,5 +31,4 @@ def report(request):
         response_data = {'success': True, 'message': _('Report was sent successfully.')}
     else:
         response_data = {'success': False, 'errors': suggest_form.errors}
-    print LazyEncoder(ensure_ascii=False).encode(response_data)
     return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
