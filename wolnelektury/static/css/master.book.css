@@ -36,6 +36,7 @@ img {
     background: #333;
     color: #FFF;
     opacity: 0.9;
+    z-index: 99;
 }
 
 #menu ul {
