@@ -471,11 +471,11 @@ msgstr "видалити"
 #: templates/catalogue/main_page.html:33
 #: templates/catalogue/user_shelves.html:15
 msgid "Create shelf"
-msgstr "Створити подицю"
+msgstr "Створити полицю"
 
 #: templates/catalogue/main_page.html:37
 msgid "Create your own book set. You can share it with friends by sending them link to your shelf."
-msgstr "Створити свій вибір книжок. Ви можете поділитися ним з друзями висилаючи їм посилання на вашу подицю."
+msgstr "Створити свій вибір книжок. Ви можете поділитися ним з друзями висилаючи їм посилання на вашу полицю."
 
 #: templates/catalogue/main_page.html:38
 msgid "You need to "
@@ -565,7 +565,7 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tІнтернет-бібліотека шкільної літератури “Wolne Lektury” (<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) це проект реалізований Фондом Модерна Польща. Діє він з 2007 року та надає доступ до літератури, рекомендованої Міністерством національної освіти, яка є частиною суспільного надбання.\n"
+"\t\t\tІнтернет-бібліотека шкільної літератури “Wolne Lektury” (<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) це проект реалізований Фондом Модерна Польща. Проект стартував у 2007 році та надає доступ до літератури, рекомендованої Міністерством національної освіти, яка є частиною суспільного надбання.\n"
 "\t\t\t"
 
 #: templates/catalogue/search_multiple_hits.html:5

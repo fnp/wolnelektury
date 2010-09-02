@@ -137,7 +137,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\t\t\tLectures libres et un projet réalisé par la <a href=\"http://nowoczesnapolska.org.pl/\">Fondation Pologne Moderne </a>.\n"
-"\t\t\t\tReproductions numériques faites par <a href=\"http://www.bn.org.pl/\">la Bibliothèque nationale</a>, basées sur ressources TNL. \n"
+"\t\t\t\tReproductions numériques faites par <a href=\"http://www.bn.org.pl/\">la Bibliothèque nationale</a>, basées sur ses ressources. \n"
 "\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
 "\t\t\t\t"
 
