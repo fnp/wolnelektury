@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 10:23+0000\n"
+"POT-Creation-Date: 2010-09-02 13:01+0000\n"
 "PO-Revision-Date: 2010-08-25 10:59\n"
 "Last-Translator: <radek.czajka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,38 +15,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
-
-#: localsettings.py:37
-msgid "Polish"
-msgstr "polski"
-
-#: localsettings.py:38
-msgid "German"
-msgstr "niemiecki"
-
-#: localsettings.py:39
-msgid "English"
-msgstr "angielski"
-
-#: localsettings.py:40
-msgid "Lithuanian"
-msgstr "litewski"
-
-#: localsettings.py:41
-msgid "French"
-msgstr "francuski"
-
-#: localsettings.py:42
-msgid "Russian"
-msgstr "rosyjski"
-
-#: localsettings.py:43
-msgid "Spanish"
-msgstr "hiszpański"
-
-#: localsettings.py:44
-msgid "Ukrainian"
-msgstr "ukraiński"
 
 #: templates/404.html:6 templates/404.html.py:15
 msgid "Page does not exist"
@@ -365,6 +333,11 @@ msgstr "Spis wszystkich utworów w WolneLektury.pl"
 msgid "Listing of all works"
 msgstr "Spis wszystkich utworów"
 
+#: templates/catalogue/book_list.html:15
+#, fuzzy
+msgid "Table of Content"
+msgstr "Spis treści"
+
 #: templates/catalogue/book_sets.html:2
 msgid "Put a book on the shelf!"
 msgstr "Wrzuć lekturę na półkę!"
@@ -429,7 +402,9 @@ msgstr "Motywy"
 
 #: templates/catalogue/differentiate_tags.html:13
 msgid "The criteria are ambiguous. Please select one of the following options:"
-msgstr "Podane kryteria są niejednoznaczne. Proszę wybrać jedną z następujących możliwości:"
+msgstr ""
+"Podane kryteria są niejednoznaczne. Proszę wybrać jedną z następujących "
+"możliwości:"
 
 #: templates/catalogue/folded_tag_list.html:4
 msgid "Show full category"
@@ -498,8 +473,8 @@ msgid ""
 "onto your page:"
 msgstr ""
 "Umieść widżet – wyszukiwarkę Wolnych Lektur umożliwiającą dostęp do "
-"darmowych lektur i audiobooków – na swojej stronie WWW! Po prostu skopiuj poniższy kod HTML "
-"na swoją stronę:"
+"darmowych lektur i audiobooków – na swojej stronie WWW! Po prostu skopiuj "
+"poniższy kod HTML na swoją stronę:"
 
 #: templates/catalogue/main_page.html:21
 msgid "Insert this element in place where you want display the widget"
@@ -698,6 +673,7 @@ msgid "Choose books' formats which you want to download:"
 msgstr "Wybierz formaty książek, które chcesz pobrać:"
 
 #: templates/catalogue/tagged_object_list.html:37
+#: templates/catalogue/tagged_object_list.html:38
 #: templates/catalogue/tagged_object_list.html:39
 #: templates/catalogue/tagged_object_list.html:40
 msgid "for reading"
@@ -706,6 +682,10 @@ msgstr "do czytania"
 #: templates/catalogue/tagged_object_list.html:37
 msgid "and printing using"
 msgstr "i drukowania przy pomocy"
+
+#: templates/catalogue/tagged_object_list.html:38
+msgid "on mobile devices"
+msgstr "na urządzeniach mobilnych"
 
 #: templates/catalogue/tagged_object_list.html:39
 msgid "and editing using"
@@ -894,6 +874,30 @@ msgstr "poprzedni"
 #: templates/pagination/pagination.html:23
 msgid "next"
 msgstr "następny"
+
+#~ msgid "Polish"
+#~ msgstr "polski"
+
+#~ msgid "German"
+#~ msgstr "niemiecki"
+
+#~ msgid "English"
+#~ msgstr "angielski"
+
+#~ msgid "Lithuanian"
+#~ msgstr "litewski"
+
+#~ msgid "French"
+#~ msgstr "francuski"
+
+#~ msgid "Russian"
+#~ msgstr "rosyjski"
+
+#~ msgid "Spanish"
+#~ msgstr "hiszpański"
+
+#~ msgid "Ukrainian"
+#~ msgstr "ukraiński"
 
 #~ msgid "Choose your interface language: "
 #~ msgstr "Wybierz język interfejsu:"
