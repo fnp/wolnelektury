@@ -264,7 +264,7 @@ msgstr ""
 
 #: views.py:674
 msgid "Book imported successfully"
-msgstr "Книжку успіщно завантажено"
+msgstr "Книжку успішно завантажено"
 
 #: views.py:676
 #, python-format
