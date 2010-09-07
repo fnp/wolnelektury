@@ -257,6 +257,8 @@ def book_stub_detail(request, slug):
 
 def book_text(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
+    if not book.has_html_file():
+        raise Http404
     book_themes = {}
     for fragment in book.fragments.all():
         for theme in fragment.tags.filter(category='theme'):
