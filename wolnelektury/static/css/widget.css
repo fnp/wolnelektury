@@ -44,3 +44,8 @@ width: 160px;
 cursor: pointer;
 display:block;
 }
+
+.ui-corner-all a{
+    color: black;
+    text-decoration: none;
+}
