@@ -21,11 +21,11 @@
             <h2>{% trans "Wolne Lektury Widget" %}</h2>
             <p>{% trans "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:" %}</p>
             <textarea rows="1" cols="35" class='widget-code'><!-- START {% trans "Insert this element in place where you want display the widget" %} -->
-<div id="wl" />
-<!-- END -->
-<!-- START {% trans "Place this element just before closing body tag: </body>" %} -->
-<script type="text/javascript" src="http://www.wolnelektury.pl/static/js/widget.js"></script>
-<!-- END --></textarea>
+&lt;div id="wl" /&gt;
+&lt;!-- END --&gt;
+&lt;!-- START {% trans "Place this element just before closing body tag: &lt;/body&gt;" %} --&gt;
+&lt;script type="text/javascript" src="http://www.wolnelektury.pl/static/js/widget.js"&gt;&lt;/script&gt;
+&lt;!-- END --&gt;</textarea>
                 <p class="see-more"><a href="{% url widget %}">{% trans "See more" %} ⇒</a></p>
             <h2>{% trans "Your shelves with books" %}</h2>
             {% if user.is_authenticated %}
