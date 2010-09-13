@@ -33,14 +33,22 @@ def poem(request):
     word = u''
     empty = -10
     left = 1000
+    lines = 0
     if not _dictionary:
         left = 0
-    while empty != 3 and left:
+    # want at least two lines, but let Lesmianator end his stanzas
+    while (empty < 2 or lines < 2) and left:
         letter = _choose_word(word)
         letters.append(letter)
         word = word[-2:] + letter
         if letter == u'\n':
-            empty += 1
+            # count non-empty lines
+            if empty == 0:
+                lines += 1
+            # 
+            if lines >= 2:
+                empty += 1
+            lines += 1
         else:
             empty = 0
         left -= 1
