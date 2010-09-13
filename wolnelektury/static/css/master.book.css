@@ -64,6 +64,20 @@ img {
     color: #000;
     background: #FFF url(/static/img/arrow-up.png) no-repeat center right;
 }
+#menu a.menu-link {
+    display: block;
+    float: left;
+    height: 1.5em;
+    margin-left: 0.5em;
+    text-align: center;
+    color: #FFF;
+}
+#menu span {
+    color: #888;
+    font-style: italic;
+    font-size: .75em;
+}
+
 
 #toc, #themes {
     position: fixed;

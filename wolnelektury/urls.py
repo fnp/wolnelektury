@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^materialy/', include('lessons.urls')),
     url(r'^sugestia/', include('suggest.urls')),
+    url(r'^lesmianator/?$', 'lesmianator.views.poem', name='lesmianator'),
 
     # Static pages
     url(r'^wolontariat/$', 'infopages.views.infopage', {'slug': 'voluntary_services'}, name='voluntary_services'),
