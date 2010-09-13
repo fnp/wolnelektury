@@ -16,16 +16,20 @@
     <div id="intro">
         <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
-            <!--p><a href="{% url epub %}"><img src="/static/img/epub-www.jpg" alt="epub: lektury w kieszeni" /></a></p-->
+            {# <p><a href="{% url epub %}"><img src="/static/img/epub-www.jpg" alt="epub: lektury w kieszeni" /></a></p> #}
 
             <h2>Leśmianator — poeta automagiczny</h2>
-            <p><img src="/static/img/mats_erikssonCCBYNCSA.jpg" title="{% trans "Author" %}: Mats Eriksson@Flickr, CC BY-NC-SA" /><br/>
-            <cite>Z drogi! — Idzie poeta — niebieski wycieruch!<br/>
+            <p><a href="{% url lesmianator %}">
+                <img src="/static/img/mats_erikssonCCBYNCSA.jpg" title="{% trans "Author" %}: Mats Eriksson@Flickr, CC BY-NC-SA" alt="Twórz-że się!" />
+                </a><br/>
+
+            Poezja z Wolnych Lektur przepuszczona przez mikser. Stwórz własny wiersz klikając w <a href="{% url lesmianator %}" rel="nofollow">link</a>.</p>
+
+            <p><cite>Z drogi! — Idzie poeta — niebieski wycieruch!<br/>
 Zbój obłoczny, co z światem jest — wspak i na noże!<br/>
 Baczność! — Nic się przed takim uchronić nie może!<br/>
 (<a href='/katalog/lektura/poeta.html#m1199873758998'>źródło</a>)</cite></p>
 
-<p>Poezja z Wolnych Lektur przepuszczona przez mikser. Stwórz własny wiersz klikając w link:</p>
                 <p class="see-more"><a href="{% url lesmianator %}">{% trans "Twórz-że się!" %} ⇒</a></p>
 
             <h2>{% trans "Wolne Lektury Widget" %}</h2>
