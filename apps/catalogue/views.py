@@ -159,7 +159,7 @@ def tagged_object_list(request, tags=''):
             objects = fragments
     else:
         # get relevant books and their tags
-        objects = models.Book.tagged.with_all(tags).order_by()
+        objects = models.Book.tagged.with_all(tags)
         if not shelf_is_set:
             # eliminate descendants
             l_tags = models.Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in objects])
