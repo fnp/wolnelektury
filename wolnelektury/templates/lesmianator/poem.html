@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load chunks compressed catalogue_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>{% block title %}WolneLektury.pl{% endblock %}</title>
+        <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/x-icon" />
+        {% compressed_css "book" %}
+    </head>
+    <body>
+        <div id="menu">
+            <a href='' class='menu-link'>Twórz-że się jeszcze raz!</a>
+            <span style='float: right'>Poezja z Wolnych Lektur przepuszczona przez mikser.</a>
+        </div>
+        <div id="header">
+            <div id="logo">
+                <a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="WolneLektury.pl - logo" /></a>
+            </div>
+        </div>
+        <div id="book-text">
+            <h1>
+                <span class="author">Leśmianator</span>
+                <span class="title">***</span>
+            </h1>
+            {{ object|linebreaksbr }}
+        </div>
+        <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-2576694-1");
+        pageTracker._trackPageview();
+        </script>
+    </body>
+</html>
