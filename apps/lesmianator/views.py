@@ -1,6 +1,6 @@
 # Create your views here.
 
-import pickle
+import cPickle
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from random import randint
@@ -23,7 +23,7 @@ def _choose_word(word):
 # load dictionary on start, it won't change
 try:
     f = open(os.path.join(os.path.dirname(__file__), 'dictionary.p'))
-    _dictionary = pickle.load(f)
+    _dictionary = cPickle.load(f)
 except:
     _dictionary = {}
 
