@@ -326,7 +326,7 @@ def _sqlite_word_starts_with(name, prefix):
     return Q(**kwargs)
 
 
-if settings.DATABASE_ENGINE == 'sqlite3':
+if settings.DATABASES['default']['ENGINE'] == 'django.db.backends.sqlite3':
     _word_starts_with = _sqlite_word_starts_with
 
 

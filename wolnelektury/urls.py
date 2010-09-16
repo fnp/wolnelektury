@@ -32,7 +32,7 @@ urlpatterns = patterns('',
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/(.*)$', admin.site.root),
+    url(r'^admin/', include(admin.site.urls)),
 
     # Authentication
     url(r'^uzytkownicy/zaloguj/$', 'catalogue.views.login', name='login'),
