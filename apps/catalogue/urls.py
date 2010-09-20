@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls.defaults import *
+from catalogue.feeds import RootFeed, ByCategoryFeed, ByTagFeed
 
 
 urlpatterns = patterns('catalogue.views',
@@ -21,6 +22,11 @@ urlpatterns = patterns('catalogue.views',
 
     # tools
     url(r'^zegar', 'clock', name='clock'),
+
+    # OPDS interface
+    url(r'^opds/$', RootFeed(), name="opds_authors"),
+    url(r'^opds/(?P<category>author|kind|genre|epoch|theme)/$', ByCategoryFeed(), name="opds_by_category"),
+    url(r'^opds/(?P<category>author|kind|genre|epoch|theme)/(?P<slug>[a-zA-Z0-9-]+)/$', ByTagFeed(), name="opds_by_tag"),
 
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)\.html$', 'book_text', name='book_text'),
