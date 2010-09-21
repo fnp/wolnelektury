@@ -131,7 +131,7 @@ _root_feeds = (
     {
         u"category": u"genre",
         u"link": u"opds_by_category",
-        u"link_args": [u"kind"],
+        u"link_args": [u"genre"],
         u"title": u"Gatunki",
         u"description": u"Utwory wg gatunków"
     },
