@@ -784,11 +784,14 @@ div.shown-tags p, div.all-tags p {
 /* ======================== */
 /* = Alphabetic book list = */
 /* ======================== */
+#book-list {
+   padding-left: 50px;
+}
 #book-list-nav {
     position: absolute;
     right: 50px;
     width: 200px;
-    border: 2px #325F70 solid;
+    border-left: 1px #cfcfcf solid;
     padding: 10px;
     font-size: 1.2em;
 }
@@ -820,7 +823,7 @@ div.shown-tags p, div.all-tags p {
     position: fixed;
     bottom: 50px;
     right: 50px;
-    border: 2px #325F70 solid;
+    border-left: 1px #cfcfcf solid;
     padding: 10px;
     background-color: white;    
 }

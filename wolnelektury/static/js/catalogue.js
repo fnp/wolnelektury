@@ -447,7 +447,7 @@ function serverTime() {
             return false;
         });
 
-        $('.sponsors').cycle({timeout: 3000});
+        //$('.sponsors').cycle({timeout: 3000});
 
         $('.widget-code').focus(
             function(){
@@ -469,7 +469,9 @@ function serverTime() {
         
         $('.book-list-index').click(function(){
             $('.book-list-show-index').hide('slow');
-            $(this).parent().next('ul').toggle('slow');
+            if($(this).parent().next('ul:not(:hidden)').length == 0){
+		$(this).parent().next('ul').toggle('slow');
+	    }
             return false;
         });
 
