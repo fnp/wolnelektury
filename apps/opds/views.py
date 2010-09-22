@@ -262,7 +262,7 @@ class ByTagFeed(AcquisitionFeed):
         return books
 
 
-@factory_decorator(logged_in_or_basicauth())
+#@factory_decorator(logged_in_or_basicauth())
 class UserFeed(Feed):
     feed_type = OPDSFeed
     link = u'http://www.wolnelektury.pl/'
@@ -288,8 +288,11 @@ class UserFeed(Feed):
     def item_description(self):
         return u''
 
+# no class decorators in python 2.5
+UserFeed = factory_decorator(logged_in_or_basicauth())(UserFeed)
 
-@factory_decorator(logged_in_or_basicauth())
+
+#@factory_decorator(logged_in_or_basicauth())
 class UserSetFeed(AcquisitionFeed):
     def link(self, tag):
         return tag.get_absolute_url()
@@ -305,6 +308,9 @@ class UserSetFeed(AcquisitionFeed):
 
     def items(self, tag):
         return Book.tagged.with_any([tag])
+
+# no class decorators in python 2.5
+UserSetFeed = factory_decorator(logged_in_or_basicauth())(UserSetFeed)
 
 
 class SearchFeed(AcquisitionFeed):
