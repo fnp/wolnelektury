@@ -231,6 +231,9 @@ msgstr "atsisiųsk MP3 failą"
 msgid "Download Ogg Vorbis"
 msgstr "atsisiųsk Ogg Vorbis failą"
 
+msgid "Download DAISY"
+msgstr "atsisiųsk DAISY failą"
+
 #: templates/catalogue/book_detail.html:95
 msgid "Details"
 msgstr "detalės "

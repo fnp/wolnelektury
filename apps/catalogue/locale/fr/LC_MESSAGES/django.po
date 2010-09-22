@@ -180,6 +180,9 @@ msgstr "fichier MP3"
 msgid "OGG file"
 msgstr "fichier OGG"
 
+msgid "DAISY file"
+msgstr "fichier DAISY"
+
 #: models.py:141
 msgid "Read online"
 msgstr "Lire en ligne"

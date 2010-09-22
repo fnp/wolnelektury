@@ -186,6 +186,7 @@ class Book(models.Model):
     txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
     mp3_file = models.FileField(_('MP3 file'), upload_to=book_upload_path('mp3'), blank=True)
     ogg_file = models.FileField(_('OGG file'), upload_to=book_upload_path('ogg'), blank=True)
+    daisy_file = models.FileField(_('DAISY file'), upload_to=book_upload_path('daisy.zip'), blank=True)
 
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
 
@@ -273,6 +274,8 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">MP3</a>' % self.mp3_file.url)
             if self.ogg_file:
                 formats.append(u'<a href="%s">OGG</a>' % self.ogg_file.url)
+            if self.daisy_file:
+                formats.append(u'<a href="%s">DAISY</a>' % self.daisy_file.url)
 
             formats = [mark_safe(format) for format in formats]
 

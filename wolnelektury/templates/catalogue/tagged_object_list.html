@@ -40,6 +40,7 @@
                     <li data-format="txt"><label for="id_formats_4"><input type="checkbox" name="formats" value="txt" id="id_formats_4" /> TXT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "on small displays, for example mobile phones" %}</em></li>
                     <li data-format="mp3"><label for="id_formats_0"><input type="checkbox" name="formats" value="mp3" id="id_formats_0" /> MP3</label> <em><strong>{% trans "for listening" %}</strong> {% trans "on favourite MP3 player" %}</em></li>
                     <li data-format="ogg"><label for="id_formats_1"><input type="checkbox" name="formats" value="ogg" id="id_formats_1" /> Ogg Vorbis</label> <em><strong>{% trans "for listening" %}</strong> &mdash; {% trans "open format" %} <a href="http://www.vorbis.com/">{% trans "Xiph.org Foundation" %}</a></em></li>
+                    <li data-format="daisy"><label for="id_formats_6"><input type="checkbox" name="formats" value="daisy" id="id_formats_6" /> DAISY</label> </li>
                     <li id="download-formats-form-submit-li"><label><input type="submit" name="submit" value="{% trans "Download" %}" id="download-formats-form-submit" disabled="disabled" />&nbsp;<img src="{{ STATIC_URL }}img/indicator.gif" /></label> <span id="updating-formats">{% trans "Updating list of books' formats on the shelf" %}</span><span id="formats-updated" style="display:none;">{% trans "or" %} <a href="#" id="download-formats-form-cancel">{% trans "cancel" %}</a></span></li>
                     <div class="clearboth"></div>
                 </form>

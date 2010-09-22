@@ -255,6 +255,9 @@ msgstr "Pobierz plik MP3"
 msgid "Download Ogg Vorbis"
 msgstr "Pobierz plik Ogg Vorbis"
 
+msgid "Download DAISY"
+msgstr "Pobierz plik DAISY"
+
 #: templates/catalogue/book_detail.html:95
 msgid "Details"
 msgstr "O utworze"

@@ -139,7 +139,7 @@ msgstr "файл PDF"
 
 #: models.py:184
 msgid "EPUB file"
-msgstr ""
+msgstr "файл EPUB"
 
 #: models.py:185
 msgid "ODT file"
@@ -157,6 +157,8 @@ msgstr "файл MP3"
 msgid "OGG file"
 msgstr "файл OGG"
 
+msgid "DAISY file"
+msgstr "файл DAISY"
 
 #: models.py:263
 msgid "Read online"

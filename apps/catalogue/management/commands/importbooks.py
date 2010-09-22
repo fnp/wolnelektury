@@ -87,6 +87,10 @@ class Command(BaseCommand):
                             book.ogg_file.save('%s.ogg' % book.slug, File(file(os.path.join(dir_name, book.slug + '.ogg'))))
                             if verbose:
                                 print "Importing %s.ogg" % book.slug
+                        if os.path.isfile(os.path.join(dir_name, book.slug + '.daisy.zip')):
+                            book.ogg_file.save('%s.daisy.zip' % book.slug, File(file(os.path.join(dir_name, book.slug + '.daisy.zip'))))
+                            if verbose:
+                                print "Importing %s.daisy.zip" % book.slug
 
                         book.save()
 

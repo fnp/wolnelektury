@@ -138,9 +138,8 @@ msgid "PDF file"
 msgstr "PDF failas"
 
 #: models.py:184
-#, fuzzy
 msgid "EPUB file"
-msgstr "PDF failas"
+msgstr "EPUB failas"
 
 #: models.py:185
 msgid "ODT file"
@@ -157,6 +156,9 @@ msgstr "MP3 failas"
 #: models.py:188
 msgid "OGG file"
 msgstr "OGG failas"
+
+msgid "DAISY file"
+msgstr "DAISY failas"
 
 #: models.py:205
 msgid "books"

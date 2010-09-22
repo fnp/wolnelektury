@@ -284,6 +284,9 @@ msgstr "Télécharger un fichier MP3"
 msgid "Download Ogg Vorbis"
 msgstr "Télécharger un fichier Ogg Vorbis"
 
+msgid "Download DAISY"
+msgstr "Télécharger un fichier DAISY"
+
 #: templates/catalogue/book_detail.html:79
 msgid "Details"
 msgstr "Détails"

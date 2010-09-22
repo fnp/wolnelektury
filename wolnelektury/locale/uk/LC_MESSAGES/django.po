@@ -259,6 +259,9 @@ msgstr "Завантажити MP3"
 msgid "Download Ogg Vorbis"
 msgstr "Завантажити Ogg Vorbis"
 
+msgid "Download DAISY"
+msgstr "Завантажити DAISY"
+
 #: templates/catalogue/book_detail.html:95
 msgid "Details"
 msgstr "Подробиці"

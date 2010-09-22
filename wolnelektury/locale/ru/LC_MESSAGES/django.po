@@ -232,6 +232,9 @@ msgstr "скачать MP3"
 msgid "Download Ogg Vorbis"
 msgstr "Скачать Ogg Vorbis"
 
+msgid "Download DAISY"
+msgstr "Скачать DAISY"
+
 #: templates/catalogue/book_detail.html:95
 msgid "Details"
 msgstr "Подробнее"

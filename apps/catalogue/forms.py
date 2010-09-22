@@ -73,6 +73,7 @@ FORMATS = (
     ('odt', 'ODT'),
     ('txt', 'TXT'),
     ('epub', 'EPUB'),
+    ('daisy', 'DAISY'),
 )
 
 

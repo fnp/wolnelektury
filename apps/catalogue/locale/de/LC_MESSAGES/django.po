@@ -157,6 +157,9 @@ msgstr "MP3-Datei"
 msgid "OGG file"
 msgstr "OGG-Datei"
 
+msgid "DAISY file"
+msgstr "DAISY-Datei"
+
 #: models.py:205
 msgid "books"
 msgstr "Bücher"
