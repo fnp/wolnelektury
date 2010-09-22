@@ -137,6 +137,7 @@ INSTALLED_APPS = [
     'infopages',
     'suggest',
     'lesmianator',
+    'opds',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'

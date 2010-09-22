@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>Wolne Lektury</ShortName>
+    <Description>WolneLektury.pl, szkolna biblioteka internetowa.</Description>
+    <Tags>lektury</Tags>
+    <Developer>Fundacja Nowoczesna Polska</Developer>
+    <Language>pl</Language>
+    <Contact>fundacja@nowoczesnapolska.org.pl</Contact>
+    <Url type="application/atom+xml;profile=opds-catalog"
+        template="http://www.wolnelektury.pl/opds/search/?q={searchTerms}" />
+    <Query role="example" searchTerms="słowa" />
+</OpenSearchDescription>

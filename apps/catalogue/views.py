@@ -359,6 +359,10 @@ def _get_result_type(match):
     return type
 
 
+def books_starting_with(prefix):
+    prefix = prefix.lower()
+    return models.Book.objects.filter(_word_starts_with('title', prefix))
+
 
 def find_best_matches(query, user=None):
     """ Finds a Book, Tag or Bookstub best matching a query.

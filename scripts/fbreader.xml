@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<!--
+    Configuration file for FBReader>=0.10
+    Should live as /usr/share/FBreader/network/wolnelektury.pl.xml
+-->
+<catalog type="opds">
+    <site>WolneLektury.pl</site>
+    <title>Wolne Lektury</title>
+    <summary>Szkolna biblioteka internetowa</summary>
+    <link rel="main" type="application/atom+xml">http://www.wolnelektury.pl/opds/</link>
+    <link rel="search" type="application/atom+xml">http://www.wolnelektury.pl/opds/search/?q=%s</link>
+    <link rel="signIn" type="application/atom+xml">http://www.wolnelektury.pl/opds/user/</link>
+    <link rel="signOut" type="application/atom+xml">http://www.wolnelektury.pl/uzytkownicy/wyloguj/?next=/opds/</link>
+    <feeds>
+        <condition show="signedIn">http://www.wolnelektury.pl/opds/user/</condition>
+    </feeds>
+    <authentication type="basic"/>
+    <icon>data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAADAFBMVEX////////////////////+
+///+///+//////7///////////////////7+///+///////+///+///+///9/v79/v79/v79/v3+
+/v3+/vv+/vv9/v3+/vz9/v39/fz9/fz9/fn9/fr9/fz+/f3+/v3+/f39/fz8/Pz7/Pv7/Pv7+/v6
++/r5+vr4+vn2+fj2+fj7+fD3+Pb39/X59/L69/L6+PH7+O/7+O35+Oj4+OX299719tj19dP088j1
+8sb18MHz78Hz68Hy5sfi5ufe5ufn5+bc5KTb5KDr5eLx48vf45jr44/u493a4+Xb45rv44rb46bj
+45Ta453y4dXz4YLz4oXd4qny4NLW4OLf36zz333w3XTx3nnQ3N7s3HDv3HPm23Lf2nLJ2NrT2XXM
+2Hbi2a7H1nbF03fE1Hbl1LDB0dTr0Efg0Evw0ETV0E7xz0HGz1K6ztHGzXvyzj3zzjq0zVG+zlS2
+y8/0yzH0yy7zzDOxy06zzFD0yiquyEiuyEmvyUr0ySTqybXJyX30ySixx8z0xhz0xyD0xRqtxMmx
+xEv1xBfsw7b1whKpwcf1wQ70wAm0wU+lvsT0vgLDv7vVvrrjv7rsvrjsv7jPvoP0vgD1vwb0vwP0
+vgDvvgD1vgH1vgHsvQDcvQOxvRKivMGcvByjvBiavBzHvAeYuxqturrqureduL2iuLqWuRaUuROc
+t7uTtw+StwzUtYiQtQePtQaatLiOtAWKsQXAsFqFrgjcpIx1oQ/Mn2fhnJDjlY9zk5ttkZnkj418
+j5ZpjpfXjnFYiyBji5Tliopdh5CKhozlhIbfg3pWgoyXgIblf4LhfnzjfH5NeoZBeDJFdYE+b3s6
+bHi1bHE1aHQuZ0UvZG8xZXEqYGvFX2QnXmklXGchWlciWmUhWWTRV1wfV2MbVV4cVWIdVmMcVGHW
+UFXaSU/aQ0naPUTZOUDZNTzYMjnXLzbXKzPWJi7WICjVHCTVFx/TEhnSDxfSDBTSChLSBxDSBQ7S
+AwvSAgnSAQjSAAY4qQ0EAAAGUElEQVRIx31WW0yTWRDu25zM0//ah3Ny9qGSQ6v8bpQWaP0h5WIW
+RbMSq7ArCftAY5cYVPASQXfjdc0S4z5AsOz6IGkMRtcGi08VDQkSY7QGDVHUeO+C97uya3fOXy7u
+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
+YII=
+    </icon>
+</catalog>
