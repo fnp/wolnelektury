@@ -447,20 +447,7 @@ function serverTime() {
             return false;
         });
 
-        $('marquee').marquee().mouseover(function () {
-            $(this).trigger('stop');
-        }).mouseout(function () {
-            $(this).trigger('start');
-             $(this).data('drag', false);
-        }).mousemove(function (event) {
-            if ($(this).data('drag') == true) {
-                this.scrollLeft = $(this).data('scrollX') + ($(this).data('x') - event.clientX);
-            }
-        }).mousedown(function (event) {
-            $(this).data('drag', true).data('x', event.clientX).data('scrollX', this.scrollLeft);
-        }).mouseup(function () {
-            $(this).data('drag', false);
-        });
+        $('.sponsors').cycle({timeout: 3000});
 
         $('.widget-code').focus(
             function(){
