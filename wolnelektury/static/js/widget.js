@@ -64,3 +64,10 @@ widget.style.width = "160px";
 widget.style.padding = "10px";
 widget.style.fontSize = "12px";
 form.style.paddingTop = "10px";
+
+/* resize - if needed */
+if(widget.getAttribute('width') == '140'){
+    logo.setAttribute('width', '140');
+    inputText.setAttribute('size', '10');
+    widget.style.width = "140px";
+}

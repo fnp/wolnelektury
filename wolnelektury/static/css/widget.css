@@ -1,6 +1,9 @@
 #wl {
 background-color: white;
 }
+#wl a, a:visited, a:hover {
+border: 0;
+}
 #wl img {
 border: 0;
 }

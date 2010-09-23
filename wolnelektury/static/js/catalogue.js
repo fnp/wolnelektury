@@ -447,7 +447,7 @@ function serverTime() {
             return false;
         });
 
-        //$('.sponsors').cycle({timeout: 3000});
+        $('.sponsors').cycle({timeout: 3000});
 
         $('.widget-code').focus(
             function(){
