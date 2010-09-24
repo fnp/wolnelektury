@@ -163,6 +163,9 @@ msgstr "HTML failas"
 msgid "PDF file"
 msgstr "PDF failas"
 
+msgid "EPUB file"
+msgstr "EPUB failas"
+
 #: models.py:117
 #: migrations/0001_initial.py:27
 msgid "ODT file"
@@ -180,6 +183,9 @@ msgstr "MP3 failas"
 #: models.py:120
 msgid "OGG file"
 msgstr "OGG failas"
+
+msgid "DAISY file"
+msgstr "DAISY failas"
 
 #: models.py:141
 msgid "Read online"

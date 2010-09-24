@@ -260,6 +260,9 @@ msgstr "Skaityk online"
 msgid "Download PDF"
 msgstr "atsisiųsk PDF failą"
 
+msgid "Download EPUB"
+msgstr "atsisiųsk EPUB failą"
+
 #: templates/catalogue/book_detail.html:37
 msgid "Download ODT"
 msgstr "atsisiųsk ODT failą"
@@ -283,6 +286,9 @@ msgstr "atsisiųsk MP3 failą"
 #: templates/catalogue/book_detail.html:52
 msgid "Download Ogg Vorbis"
 msgstr "atsisiųsk Ogg Vorbis failą"
+
+msgid "Download DAISY"
+msgstr "atsisiųsk DAISY failą"
 
 #: templates/catalogue/book_detail.html:79
 msgid "Details"
@@ -355,12 +361,12 @@ msgid "of the book "
 msgstr "kūrinio"
 
 #: templates/catalogue/book_list.html:7
-msgid "Alphabetical listing of works on WolneLektury.pl"
-msgstr "Abėcėliškas kūriniu sąrašas LaisvojiLiteratura.lt"
+msgid "Listing of works on WolneLektury.pl"
+msgstr "Kūriniu sąrašas LaisvojiLiteratura.lt"
 
 #: templates/catalogue/book_list.html:10
-msgid "Alphabetical listing of works"
-msgstr "Abėcėliškas kūriniu sąrašas"
+msgid "Listing of works"
+msgstr "Kūriniu sąrašas"
 
 #: templates/catalogue/book_sets.html:2
 msgid "Put a book on the shelf!"
@@ -735,12 +741,11 @@ msgid "return to the main page"
 msgstr "sugryžk į pagrindinį puslapį "
 
 #: templates/info/join_us.html:2
-#, python-format
 msgid ""
 "We have over 1000 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
-"making a donation or transferring 1%% of your income tax."
-msgstr "Tinklapyje Laisvoji Literatura rasi virš 1000 kūrinių! Padėk mums vystytis ir plėsti literaturą paskirk 1%% pajamų mokesčio bibliotekai"
+"making a donation or transferring 1% of your income tax."
+msgstr "Tinklapyje Laisvoji Literatura rasi virš 1000 kūrinių! Padėk mums vystytis ir plėsti literaturą paskirk 1% pajamų mokesčio bibliotekai"
 
 #: templates/info/join_us.html:5
 #: templates/info/join_us.html.py:10
