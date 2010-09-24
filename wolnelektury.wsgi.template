@@ -10,6 +10,9 @@ import sys
 # print statements for optional import exceptions.
 sys.stdout = sys.stderr
 
+# we don't want these packages to cover our virtualenv
+sys.path = [p for p in sys.path if not p.startswith('/usr/lib/python2.5/site-packages') and not p.startswith('/var/lib/python-support/python2.5')]
+
 # Add apps and lib directories to PYTHONPATH
 sys.path = [
 	'%(path)s/releases/current/%(project_name)s',

@@ -455,12 +455,12 @@ def user_shelves(request):
 
 @cache.never_cache
 def book_sets(request, slug):
+    if not request.user.is_authenticated():
+        return HttpResponse(_('<p>To maintain your shelves you need to be logged in.</p>'))
+
     book = get_object_or_404(models.Book, slug=slug)
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
     book_sets = book.tags.filter(category='set', user=request.user)
-
-    if not request.user.is_authenticated():
-        return HttpResponse(_('<p>To maintain your shelves you need to be logged in.</p>'))
 
     if request.method == 'POST':
         form = forms.ObjectSetsForm(book, request.user, request.POST)
