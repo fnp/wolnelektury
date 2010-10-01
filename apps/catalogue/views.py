@@ -72,24 +72,32 @@ def main_page(request):
         context_instance=RequestContext(request))
 
 
-def book_list(request):
+def book_list(request, filter=None, template_name='catalogue/book_list.html'):
+    """ generates a listing of all books, optionally filtered with a test function """
+
     form = forms.SearchForm()
 
     books_by_parent = {}
-    for book in models.Book.objects.all().order_by('parent_number'):
-        books_by_parent.setdefault(book.parent, []).append(book)
+    books = models.Book.objects.all().order_by('parent_number', 'title').only('title', 'parent', 'slug')
+    if filter:
+        books = books.filter(filter)
+        book_ids = set((book.pk for book in books))
+        for book in books:
+            parent = book.parent_id
+            if parent not in book_ids:
+                parent = None
+            books_by_parent.setdefault(parent, []).append(book)
+    else:
+        for book in books:
+            books_by_parent.setdefault(book.parent_id, []).append(book)
 
     orphans = []
     books_by_author = SortedDict()
     books_nav = SortedDict()
     for tag in models.Tag.objects.filter(category='author'):
         books_by_author[tag] = []
-        if books_nav.has_key(tag.sort_key[0]):
-            books_nav[tag.sort_key[0]].append(tag)
-        else:
-            books_nav[tag.sort_key[0]] = [tag]
 
-    for book in books_by_parent[None]:
+    for book in books_by_parent.get(None,()):
         authors = list(book.tags.filter(category='author'))
         if authors:
             for author in authors:
@@ -97,8 +105,22 @@ def book_list(request):
         else:
             orphans.append(book)
 
-    return render_to_response('catalogue/book_list.html', locals(),
+    for tag in books_by_author:
+        if books_by_author[tag]:
+            books_nav.setdefault(tag.sort_key[0], []).append(tag)
+
+    return render_to_response(template_name, locals(),
         context_instance=RequestContext(request))
+
+
+def audiobook_list(request):
+    return book_list(request, ~Q(mp3_file='') | ~Q(ogg_file=''),
+                     template_name='catalogue/audiobook_list.html')
+
+
+def daisy_list(request):
+    return book_list(request, ~Q(daisy_file=''),
+                     template_name='catalogue/daisy_list.html')
 
 
 def differentiate_tags(request, tags, ambiguous_slugs):
