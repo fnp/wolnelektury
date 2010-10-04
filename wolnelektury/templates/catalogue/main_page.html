@@ -19,6 +19,10 @@
         <div id="propaganda">
             <p><a href="{% url epub %}"><img src="/static/img/epub-www.jpg" alt="epub: lektury w kieszeni" /></a></p>
 
+            <h2>Leśmianator — poeta automagiczny</h2>
+            <p>Poezja z Wolnych Lektur przepuszczona przez mikser. Stwórz własny wiersz klikając w <a href="{% url lesmianator %}" rel="nofollow">link</a>.</p>
+            <p class="see-more"><a href="{% url lesmianator %}">{% trans "Twórzże się!" %} ⇒</a></p>
+
             <h2>{% trans "Wolne Lektury Widget" %}</h2>
             <p>{% trans "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:" %}</p>
             <textarea rows="1" cols="35" class='widget-code'><!-- START {% trans "Insert this element in place where you want display the widget" %} -->
