@@ -3,10 +3,10 @@
         <div class="sponsors-column">
             <p class="sponsors-column-name">{{ column.name|default:"&nbsp;" }}</p>
             <div class='sponsors'>
-                {% for sponsor in column.sponsors %}
-                    {% if sponsor.url %}<a href="{{ sponsor.url }}" title="{{ sponsor.description }}" >{% endif %}
-                    <img src="{{ sponsor.logo.thumbnail }}" alt="{{ sponsor.name }}"/>
-                    {% if sponsor.url %}</a>{% endif %}
+                {% for offset, sponsor in column.sponsors %}
+                    <a href="{{ sponsor.url }}" title="{{ sponsor.description }}" 
+                        style='display:block; background: url({{ page.sprite.url }}) 0px {{ offset }}px no-repeat; width: 120px; height: 120px;'>
+                    </a>
                 {% endfor %}
             </div>
         </div>
