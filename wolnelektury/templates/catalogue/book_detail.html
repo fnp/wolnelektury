@@ -124,7 +124,9 @@
             <h2>{% trans "Other resources" %}</h2>
             <ul>
                 <li><a href="{{ extra_info.about }}">{% trans "Book on project's wiki" %}</a></li>
+                {% if extra_info.source_url %}
                 <li><a href="{{ extra_info.source_url }}">{% trans "Source of the book" %}</a></li>
+                {% endif %}
                 {% if book.gazeta_link %}
                 <li><a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a></li>
                 {% endif %}
