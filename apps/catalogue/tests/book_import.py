@@ -153,3 +153,46 @@ class BookImportLogicTests(WLTestCase):
         tags.sort()
 
         self.assertEqual(tags, self.expected_tags)
+
+
+class ChildImportTests(WLTestCase):
+
+    def setUp(self):
+        WLTestCase.setUp(self)
+        self.child_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Joe",), "Doe"),
+            **info_args("Child")
+        )
+
+        self.parent_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Jim",), "Lazy"),
+            parts=[self.child_info.url],
+            **info_args("Parent")
+        )
+
+    def test_child_replace(self):
+        PARENT_TEXT = """<utwor />"""
+        CHILD_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01">Pies</motyw>Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+        child = models.Book.from_text_and_meta(ContentFile(CHILD_TEXT), self.child_info)
+        parent = models.Book.from_text_and_meta(ContentFile(PARENT_TEXT), self.parent_info)
+        CHILD_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01">Kot</motyw>Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+        child = models.Book.from_text_and_meta(ContentFile(CHILD_TEXT), self.child_info, overwrite=True)
+
+        themes = self.client.get(parent.get_absolute_url()).context['book_themes']
+
+        self.assertEqual(['Kot'], [tag.name for tag in themes],
+                        'wrong related theme list')

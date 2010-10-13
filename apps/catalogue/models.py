@@ -449,9 +449,19 @@ class Book(models.Model):
         # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
 
+        # delete old fragments when overwriting
+        book.fragments.all().delete()
+
         html_file = NamedTemporaryFile()
         if html.transform(book.xml_file.path, html_file, parse_dublincore=False):
             book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
+
+            # get ancestor l-tags for adding to new fragments
+            ancestor_tags = []
+            p = book.parent
+            while p:
+                ancestor_tags.append(p.book_tag())
+                p = p.parent
 
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
@@ -481,9 +491,10 @@ class Book(models.Model):
                     defaults={'text': text, 'short_text': short_text})
 
                 new_fragment.save()
-                new_fragment.tags = set(book_tags + themes + [book_tag])
+                new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
 
-        book.build_epub(remove_descendants=False)
+        if not book.parent:
+            book.build_epub(remove_descendants=False)
 
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments
@@ -499,8 +510,8 @@ class Book(models.Model):
             book_descendants += list(child_book.children.all())
 
         # refresh cache
-        book.tag_counter
-        book.theme_counter
+        book.reset_tag_counter()
+        book.reset_theme_counter()
 
         book.save()
         return book
