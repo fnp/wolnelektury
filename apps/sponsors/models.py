@@ -65,7 +65,7 @@ class SponsorPage(models.Model):
         for column in self.get_sponsors_value():
             sponsor_ids.extend(column['sponsors'])
         sponsors = Sponsor.objects.in_bulk(sponsor_ids)
-        sprite = Image.new('RGB', (THUMB_WIDTH, len(sponsors)*THUMB_HEIGHT))
+        sprite = Image.new('RGBA', (THUMB_WIDTH, len(sponsors)*THUMB_HEIGHT))
         for i, sponsor_id in enumerate(sponsor_ids):
             simg = Image.open(sponsors[sponsor_id].logo.thumbnail.dest)
             sprite.paste(simg, (0, i*THUMB_HEIGHT))
