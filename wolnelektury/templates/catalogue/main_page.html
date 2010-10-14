@@ -11,7 +11,12 @@
     <div class="clearboth"></div>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} {{ form.tags }} <input type="submit" value="{% trans "Search" %}" />
-            <strong>{% trans "or" %}</strong> {% trans "see" %}: <a href="{% url catalogue.views.book_list %}">{% trans "all books" %}</a>, <a href="{% url catalogue.views.audiobook_list %}">{% trans "audiobooks" %}</a>, <a href="{% url catalogue.views.daisy_list %}">{% trans "daisy" %}</a>.</p>
+            <strong>{% trans "or" %}</strong> {% trans "see" %}: 
+            <span class='collections'>
+                <a href="{% url catalogue.views.book_list %}">{% trans "all books" %}</a>
+                <a href="{% url catalogue.views.audiobook_list %}">{% trans "audiobooks" %}</a>
+                <a href="{% url catalogue.views.daisy_list %}">{% trans "daisy" %}</a>
+            </span></p>
     </form>
 
     <div id="intro">

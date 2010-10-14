@@ -228,6 +228,17 @@ p .ac_input {
     text-transform: uppercase;
 }
 
+/* ============== */
+/* = Search bar = */
+/* ============== */
+
+.collections a {
+    color: white;
+    margin: 0 0.5em;
+}
+
+
+
 /* ============= */
 /* = Tags list = */
 /* ============= */
