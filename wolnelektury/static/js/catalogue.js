@@ -267,6 +267,7 @@ function serverTime() {
             return false;
         });
 
+        var serverResponse;
         $('#user-shelves-window').jqm({
             ajax: '@href',
             target: $('#user-shelves-window div.target')[0],
@@ -280,8 +281,12 @@ function serverTime() {
             },
             onLoad: function(hash) {
                 $('form', hash.w).ajaxForm({
-                    target: $('#user-shelves-window div.target'),
-                    success: function() { setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000) }
+                    target: serverResponse,
+                    success: function(serverResponse) {
+                        var newShelf = $.parseJSON(serverResponse);
+                        $('#user-shelves-window div.target').html(newShelf.msg);
+                        setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000);
+                    }
                 });
 
                 $('input', hash.w).labelify({labelledClass: 'blur'});
@@ -378,19 +383,31 @@ function serverTime() {
                 target.html('<p><img src="/static/img/indicator.gif" />'+LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+'</p>');
                 hash.w.css({position: 'absolute', left: offset.left, top: offset.top}).show() },
             onLoad: function(hash) {
-        try {
-            $('#createShelfTrigger').click(function(){
-                $('#createNewShelf').show();
-            });
-        } catch (e){}
-
+                try {
+                        $('#createShelfTrigger').click(function(){
+                            // who cares it's not needed, but I was looking for it
+                            // that's why I want it to stay.. :) 
+                            // var slug = $(hash.t).attr('href').split("/")[3];
+                            $('#createNewShelf').show();
+                        });
+                } catch (e){}
+                $("#putOnShelf input[type=checkbox]").attr("checked",false);
+                var serverResponse;
                 $('form', hash.w).ajaxForm({
-                    target: target,
-                    success: function() {
-            setTimeout(function() {
-                    $('#set-window').jqmHide();
-                       }, 1000)}
-                });
+                    target: serverResponse,
+                    success: function(serverResponse) {
+                        var newShelf = $.parseJSON(serverResponse);
+                        // for live shelf adding
+                        if(newShelf.name){
+                            var noIds = $("#putOnShelf ol ul").children('li').length;
+                            $("#putOnShelf ol ul").prepend('<li><label for="id_set_ids_'+ noIds +'"><input name="set_ids" value="'+ newShelf.id +'" id="id_set_ids_'+ noIds +'" type="checkbox" checked="checked"> '+ newShelf.name +' (0)</label></li>');
+                            $("#createNewShelf ol input[name=name]").val("");
+                        }
+                        if(newShelf.after == "close"){
+                            setTimeout(function() {$('#set-window').jqmHide();}, 1000);
+                        }
+                    }
+                });    
             }
         });
 

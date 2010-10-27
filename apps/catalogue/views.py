@@ -500,7 +500,7 @@ def book_sets(request, slug):
 
             book.tags = new_shelves + list(book.tags.filter(~Q(category='set') | ~Q(user=request.user)))
             if request.is_ajax():
-                return HttpResponse(_('<p>Shelves were sucessfully saved.</p>'))
+                return JSONResponse('{"msg":"'+_("<p>Shelves were sucessfully saved.</p>")+'", "after":"close"}')
             else:
                 return HttpResponseRedirect('/')
     else:
@@ -634,7 +634,7 @@ def new_set(request):
         new_set = new_set_form.save(request.user)
 
         if request.is_ajax():
-            return HttpResponse(_('<p>Shelf <strong>%s</strong> was successfully created</p>') % new_set)
+            return JSONResponse('{"id":"%d", "name":"%s", "msg":"<p>Shelf <strong>%s</strong> was successfully created</p>"}' % (new_set.id, new_set.name, new_set))
         else:
             return HttpResponseRedirect('/')
 
