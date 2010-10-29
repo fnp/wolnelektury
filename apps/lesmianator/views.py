@@ -5,8 +5,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from random import randint
 
-import os.path
-
 
 def _choose_word(word):
     try:
@@ -21,8 +19,10 @@ def _choose_word(word):
         return ''
 
 # load dictionary on start, it won't change
+from django.conf import settings
+
 try:
-    f = open(os.path.join(os.path.dirname(__file__), 'dictionary.p'))
+    f = open(settings.LESMIANATOR_PICKLE)
     _dictionary = cPickle.load(f)
 except:
     _dictionary = {}
