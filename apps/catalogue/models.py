@@ -13,6 +13,8 @@ from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
 from datetime import datetime
 
+from django.conf import settings
+
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField
@@ -360,7 +362,7 @@ class Book(models.Model):
         try:
             epub.transform(BookImportDocProvider(self), self.slug, epub_file)
             self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()), save=False)
-            self.save()
+            self.save(refresh_mp3=False)
             FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
         except NoDublinCore:
             pass
@@ -371,7 +373,7 @@ class Book(models.Model):
             if remove_descendants and child_book.has_epub_file():
                 child_book.epub_file.delete()
             # save anyway, to refresh short_html
-            child_book.save()
+            child_book.save(refresh_mp3=False)
             book_descendants += list(child_book.children.all())
 
 
@@ -498,8 +500,8 @@ class Book(models.Model):
                 new_fragment.save()
                 new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
 
-        if not book.parent:
-            book.build_epub(remove_descendants=False)
+        if not settings.NO_BUILD_EPUB:
+            book.root_ancestor().build_epub()
 
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments
@@ -507,8 +509,6 @@ class Book(models.Model):
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)
             child_book.tags = list(child_book.tags) + [book_tag]
-            if child_book.has_epub_file():
-                child_book.epub_file.delete()
             child_book.save()
             for fragment in child_book.fragments.all():
                 fragment.tags = set(list(fragment.tags) + [book_tag])

@@ -197,6 +197,8 @@ TRANSLATION_REGISTRY = "wolnelektury.translation"
 # limit number of filtering tags
 MAX_TAG_LIST = 6
 
+NO_BUILD_EPUB = False
+
 # Load localsettings, if they exist
 try:
     from localsettings import *

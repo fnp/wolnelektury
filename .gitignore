@@ -1,6 +1,7 @@
 localsettings.py
 dev.sqlite
 *.db
+*.db-journal
 *~
 *.orig
 
