@@ -34,6 +34,7 @@ from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
 from newtagging import views as newtagging_views
+from slughifi import slughifi
 
 
 staff_required = user_passes_test(lambda user: user.is_staff)
@@ -589,7 +590,7 @@ def download_shelf(request, slug):
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
-    response['Content-Disposition'] = 'attachment; filename=%s.zip' % shelf.sort_key
+    response['Content-Disposition'] = 'attachment; filename=%s.zip' % slughifi(shelf.name)
     response['Content-Length'] = temp.tell()
 
     temp.seek(0)

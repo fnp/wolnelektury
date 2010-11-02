@@ -44,7 +44,7 @@ class TagSubcategoryManager(models.Manager):
 class Tag(TagBase):
     name = models.CharField(_('name'), max_length=50, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, db_index=True)
-    sort_key = models.SlugField(_('sort key'), max_length=120, db_index=True)
+    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False,
         db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(_('description'), blank=True)
@@ -245,7 +245,7 @@ class Book(models.Model):
         book_tag, created = Tag.objects.get_or_create(slug=slug, category='book')
         if created:
             book_tag.name = self.title[:50]
-            book_tag.sort_key = slug
+            book_tag.sort_key = self.title.lower()
             book_tag.save()
         return book_tag
 
@@ -427,7 +427,7 @@ class Book(models.Model):
                 tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
                 if created:
                     tag.name = tag_name
-                    tag.sort_key = slughifi(tag_sort_key)
+                    tag.sort_key = tag_sort_key.lower()
                     tag.save()
                 book_tags.append(tag)
 
@@ -477,7 +477,7 @@ class Book(models.Model):
                     tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
                     if created:
                         tag.name = theme_name
-                        tag.sort_key = slughifi(theme_name)
+                        tag.sort_key = theme_name.lower()
                         tag.save()
                     themes.append(tag)
                 if not themes:

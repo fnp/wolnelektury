@@ -59,7 +59,7 @@ class NewSetForm(forms.Form):
 
     def save(self, user, commit=True):
         name = self.cleaned_data['name']
-        new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=slughifi(name),
+        new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=name.lower(),
             category='set', user=user)
 
         new_set.save()
