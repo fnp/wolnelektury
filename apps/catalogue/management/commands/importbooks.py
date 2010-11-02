@@ -44,7 +44,11 @@ class Command(BaseCommand):
             if not os.path.isdir(dir_name):
                 print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
             else:
-                for file_name in sorted(os.listdir(dir_name)):
+                # files queue
+                files = sorted(os.listdir(dir_name))
+                postponed = {}
+                while files:
+                    file_name = files.pop(0)
                     file_path = os.path.join(dir_name, file_name)
                     file_base, ext = os.path.splitext(file_path)
 
@@ -98,6 +102,17 @@ class Command(BaseCommand):
                         print self.style.ERROR('%s: Book already imported. Skipping. To overwrite use --force.' %
                             file_path)
                         files_skipped += 1
+
+                    except Book.DoesNotExist, e:
+                        if file_name not in postponed or postponed[file_name] < files_imported:
+                            # push it back into the queue, maybe the missing child will show up
+                            if verbose:
+                                print self.style.NOTICE('Waiting for missing children')
+                            files.append(file_name)
+                            postponed[file_name] = files_imported
+                        else:
+                            # we're in a loop, nothing's being imported - some child is really missing
+                            raise e
 
         # Print results
         print

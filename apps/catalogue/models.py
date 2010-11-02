@@ -395,6 +395,17 @@ class Book(models.Model):
         from markupstring import MarkupString
         from django.core.files.storage import default_storage
 
+        # check for parts before we do anything
+        children = []
+        if hasattr(book_info, 'parts'):
+            for part_url in book_info.parts:
+                base, slug = part_url.rsplit('/', 1)
+                try:
+                    children.append(Book.objects.get(slug=slug))
+                except Book.DoesNotExist, e:
+                    raise Book.DoesNotExist(_('Book with slug = "%s" does not exist.') % slug)
+
+
         # Read book metadata
         book_base, book_slug = book_info.url.rsplit('/', 1)
         book, created = Book.objects.get_or_create(slug=book_slug)
@@ -435,16 +446,10 @@ class Book(models.Model):
 
         book_tag = book.book_tag()
 
-        if hasattr(book_info, 'parts'):
-            for n, part_url in enumerate(book_info.parts):
-                base, slug = part_url.rsplit('/', 1)
-                try:
-                    child_book = Book.objects.get(slug=slug)
-                    child_book.parent = book
-                    child_book.parent_number = n
-                    child_book.save()
-                except Book.DoesNotExist, e:
-                    raise Book.DoesNotExist(_('Book with slug = "%s" does not exist.') % slug)
+        for n, child_book in enumerate(children):
+            child_book.parent = book
+            child_book.parent_number = n
+            child_book.save()
 
         # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
