@@ -4,12 +4,14 @@
 #
 import tempfile
 import zipfile
+import tarfile
 import sys
 import pprint
 import traceback
 import re
 import itertools
 from operator import itemgetter
+from datetime import datetime
 
 from django.conf import settings
 from django.template import RequestContext
@@ -720,5 +722,47 @@ def clock(request):
     """ Provides server time for jquery.countdown,
     in a format suitable for Date.parse()
     """
-    from datetime import datetime
     return HttpResponse(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
+
+
+@cache.never_cache
+def xmls(request):
+    """"
+    Create a zip archive with all XML files.
+    """
+    temp = tempfile.TemporaryFile()
+    archive = zipfile.ZipFile(temp, 'w')
+
+    for book in models.Book.objects.all():
+        archive.write(book.xml_file.path, str('%s.xml' % book.slug))
+    archive.close()
+
+    response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
+    response['Content-Disposition'] = 'attachment; filename=xmls.zip'
+    response['Content-Length'] = temp.tell()
+
+    temp.seek(0)
+    response.write(temp.read())
+    return response
+
+
+@cache.never_cache
+def epubs(request):
+    """"
+    Create a tar archive with all EPUB files, segregated to directories.
+    """
+
+    temp = tempfile.TemporaryFile()
+    archive = tarfile.TarFile(fileobj=temp, mode='w')
+
+    for book in models.Book.objects.exclude(epub_file=''):
+        archive.add(book.epub_file.path, (u'%s/%s.epub' % (book.get_extra_info_value()['author'], book.slug)).encode('utf-8'))
+    archive.close()
+
+    response = HttpResponse(content_type='application/tar', mimetype='application/x-tar')
+    response['Content-Disposition'] = 'attachment; filename=epubs.tar'
+    response['Content-Length'] = temp.tell()
+
+    temp.seek(0)
+    response.write(temp.read())
+    return response

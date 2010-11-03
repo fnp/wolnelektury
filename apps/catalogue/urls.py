@@ -22,7 +22,9 @@ urlpatterns = patterns('catalogue.views',
     url(r'^szukaj/$', 'search', name='search'),
 
     # tools
-    url(r'^zegar', 'clock', name='clock'),
+    url(r'^zegar/$', 'clock', name='clock'),
+    url(r'^xmls.zip$', 'xmls', name='xmls'),
+    url(r'^epubs.tar$', 'epubs', name='epubs'),
 
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)\.html$', 'book_text', name='book_text'),
