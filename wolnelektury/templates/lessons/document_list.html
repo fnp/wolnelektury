@@ -35,7 +35,9 @@
                             .load(documentLink.attr('href'));
                     };
                 } else if (!document.location.hash) {
-                    $('#document-list a:first').click();
+                    $first = $('#document-list a:first');
+                    $first.addClass('active');
+                    location.replace($first.attr('data-hash'));
                 }
 
                 setTimeout(checkHash, 500);
