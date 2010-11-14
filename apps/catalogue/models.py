@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.template.loader import render_to_string
+from django.template.defaultfilters import slugify
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
@@ -33,6 +34,12 @@ TAG_CATEGORIES = (
     ('book', _('book')),
 )
 
+MEDIA_FORMATS = (
+    ('odt', _('ODT file')),
+    ('mp3', _('MP3 file')),
+    ('ogg', _('OGG file')),
+    ('daisy', _('DAISY file')), 
+)
 
 class TagSubcategoryManager(models.Manager):
     def __init__(self, subcategory):
@@ -161,40 +168,51 @@ class Tag(TagBase):
 
 
 # TODO: why is this hard-coded ?
-def book_upload_path(ext):
-    def get_dynamic_path(book, filename):
-        return 'lektura/%s.%s' % (book.slug, ext)
+def book_upload_path(ext=None):
+    def get_dynamic_path(media, filename, ext=ext):
+        # how to put related book's slug here?
+        if not ext:
+            ext = media.type
+        return 'lektura/%s.%s' % (slugify(filename), ext)
     return get_dynamic_path
 
 
+class BookMedia(models.Model):
+    type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100")
+    name        = models.CharField(_('name'), max_length="100")
+    file        = models.FileField(_('file'), upload_to=book_upload_path(), blank=True)    
+    uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
+
+    def __unicode__(self):
+        return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
+
+    class Meta:
+        ordering            = ('type', 'name')
+        verbose_name        = _('book media')
+        verbose_name_plural = _('book media')
+
 class Book(models.Model):
-    title = models.CharField(_('title'), max_length=120)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
-    description = models.TextField(_('description'), blank=True)
-    created_at = models.DateTimeField(_('creation date'), auto_now_add=True)
-    _short_html = models.TextField(_('short HTML'), editable=False)
+    title         = models.CharField(_('title'), max_length=120)
+    slug          = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
+    description   = models.TextField(_('description'), blank=True)
+    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True)
+    _short_html   = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info = JSONField(_('extra information'))
-    gazeta_link = models.CharField(blank=True, max_length=240)
-    wiki_link = models.CharField(blank=True, max_length=240)
-
-
-    # Formats
-    xml_file = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
-    html_file = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
-    pdf_file = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
-    epub_file = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)
-    odt_file = models.FileField(_('ODT file'), upload_to=book_upload_path('odt'), blank=True)
-    txt_file = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
-    mp3_file = models.FileField(_('MP3 file'), upload_to=book_upload_path('mp3'), blank=True)
-    ogg_file = models.FileField(_('OGG file'), upload_to=book_upload_path('ogg'), blank=True)
-    daisy_file = models.FileField(_('DAISY file'), upload_to=book_upload_path('daisy.zip'), blank=True)
-
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
-
-    objects = models.Manager()
-    tagged = managers.ModelTaggedItemManager(Tag)
-    tags = managers.TagDescriptor(Tag)
+    extra_info    = JSONField(_('extra information'))
+    gazeta_link   = models.CharField(blank=True, max_length=240)
+    wiki_link     = models.CharField(blank=True, max_length=240)
+    # files generated during publication
+    xml_file      = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
+    html_file     = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
+    pdf_file      = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
+    epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)    
+    # other files
+    medias        = models.ManyToManyField(BookMedia)
+    
+    parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
+    objects  = models.Manager()
+    tagged   = managers.ModelTaggedItemManager(Tag)
+    tags     = managers.TagDescriptor(Tag)
 
     _tag_counter = JSONField(null=True, editable=False)
     _theme_counter = JSONField(null=True, editable=False)
@@ -222,13 +240,13 @@ class Book(models.Model):
 
         book = super(Book, self).save(force_insert, force_update)
 
-        if refresh_mp3 and self.mp3_file:
-            print self.mp3_file, self.mp3_file.path
+        if refresh_mp3 and self.has_media('mp3'):
+            file = self.get_media('mp3')[0]
+            #print file, file.path
             extra_info = self.get_extra_info_value()
             extra_info.update(self.get_mp3_info())
             self.set_extra_info_value(extra_info)
             book = super(Book, self).save(force_insert, force_update)
-
         return book
 
     @permalink
@@ -251,6 +269,64 @@ class Book(models.Model):
             book_tag.save()
         return book_tag
 
+    def has_media(self, type):
+        if   type == 'xml':
+            if self.xml_file:
+                return True
+            else:
+                return False
+        elif type == 'html':
+            if self.html_file:
+                return True
+            else:
+                return False        
+        elif type == 'txt':
+            if self.txt_file:
+                return True
+            else:
+                return False        
+        elif type == 'pdf':
+            if self.pdf_file:
+                return True
+            else:
+                return False  
+        elif type == 'epub':
+            if self.epub_file:
+                return True
+            else:
+                return False                          
+        else:
+            if self.medias.filter(book=self, type=type).count() > 0:
+                return True
+            else:
+                return False
+
+    def get_media(self, type):
+        if self.has_media(type):
+            if   type == "xml":
+                return self.xml_file
+            elif type == "html":
+                return self.html_file
+            elif type == "epub":
+                return self.html_file                
+            elif type == "txt":
+                return self.txt_file
+            elif type == "pdf":
+                return self.pdf_file
+            else:                                             
+                return self.medias.filter(book=self, type=type)
+        else:
+            return None
+
+    def get_mp3(self):
+        return self.get_media("mp3")
+    def get_odt(self):
+        return self.get_media("odt")
+    def get_ogg(self):
+        return self.get_media("ogg")
+    def get_daisy(self):
+        return self.get_media("daisy")                       
+
     def short_html(self):
         key = '_short_html_%s' % get_language()
         short_html = getattr(self, key)
@@ -262,23 +338,21 @@ class Book(models.Model):
             tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
 
             formats = []
-            if self.html_file:
+            # files generated during publication               
+            if self.has_media("html"):
                 formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', kwargs={'slug': self.slug}), _('Read online')))
-            if self.pdf_file:
-                formats.append(u'<a href="%s">PDF</a>' % self.pdf_file.url)
-            if self.root_ancestor.epub_file:
-                formats.append(u'<a href="%s">EPUB</a>' % self.root_ancestor.epub_file.url)
-            if self.odt_file:
-                formats.append(u'<a href="%s">ODT</a>' % self.odt_file.url)
-            if self.txt_file:
-                formats.append(u'<a href="%s">TXT</a>' % self.txt_file.url)
-            if self.mp3_file:
-                formats.append(u'<a href="%s">MP3</a>' % self.mp3_file.url)
-            if self.ogg_file:
-                formats.append(u'<a href="%s">OGG</a>' % self.ogg_file.url)
-            if self.daisy_file:
-                formats.append(u'<a href="%s">DAISY</a>' % self.daisy_file.url)
-
+            if self.has_media("pdf"):
+                formats.append(u'<a href="%s">PDF</a>' % self.get_media('pdf').url)
+            if self.root_ancestor.has_media("epub"):
+                formats.append(u'<a href="%s">EPUB</a>' % self.root_ancestor.get_media('epub').url)
+            if self.has_media("odt"):
+                formats.append(u'<a href="%s">ODT</a>' % self.get_media('odt').url)
+            if self.has_media("txt"):
+                formats.append(u'<a href="%s">TXT</a>' % self.get_media('txt').url)
+            # other files
+            for m in self.media.order_by('type'):
+                formats.append(u'<a href="%s">%s</a>' % m.type, m.file.url)
+ 
             formats = [mark_safe(format) for format in formats]
 
             setattr(self, key, unicode(render_to_string('catalogue/book_short.html',
@@ -301,7 +375,7 @@ class Book(models.Model):
 
     def get_mp3_info(self):
         """Retrieves artist and director names from audio ID3 tags."""
-        audio = id3.ID3(self.mp3_file.path)
+        audio = id3.ID3(self.get_media('mp3')[0].file.path)
         artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
         director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
         return {'artist_name': artist_name, 'director_name': director_name}
@@ -311,6 +385,7 @@ class Book(models.Model):
     has_description.short_description = _('description')
     has_description.boolean = True
 
+    # ugly ugly ugly
     def has_pdf_file(self):
         return bool(self.pdf_file)
     has_pdf_file.short_description = 'PDF'
@@ -321,16 +396,31 @@ class Book(models.Model):
     has_epub_file.short_description = 'EPUB'
     has_epub_file.boolean = True
 
-    def has_odt_file(self):
-        return bool(self.odt_file)
-    has_odt_file.short_description = 'ODT'
-    has_odt_file.boolean = True
-
     def has_html_file(self):
         return bool(self.html_file)
     has_html_file.short_description = 'HTML'
     has_html_file.boolean = True
 
+    def has_odt_file(self):
+        return bool(self.has_media("odt"))
+    has_odt_file.short_description = 'ODT'
+    has_odt_file.boolean = True
+
+    def has_mp3_file(self):
+        return bool(self.has_media("mp3"))
+    has_mp3_file.short_description = 'MP3'
+    has_mp3_file.boolean = True
+
+    def has_ogg_file(self):
+        return bool(self.has_media("ogg"))
+    has_ogg_file.short_description = 'OGG'
+    has_ogg_file.boolean = True
+    
+    def has_daisy_file(self):
+        return bool(self.has_media("daisy"))
+    has_daisy_file.short_description = 'DAISY'
+    has_daisy_file.boolean = True    
+    
     def build_epub(self, remove_descendants=True):
         """ (Re)builds the epub file.
             If book has a parent, does nothing.
@@ -565,8 +655,6 @@ class Book(models.Model):
         if self._theme_counter is None:
             return self.refresh_theme_counter()
         return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
-
-
 
 class Fragment(models.Model):
     text = models.TextField()

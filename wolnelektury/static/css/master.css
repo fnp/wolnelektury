@@ -293,7 +293,7 @@ p .ac_input {
     margin-right: 0.5em;
 }
 
-#formats .wrap a {
+#formats .wrap p {
     display: block;
     width: 100%;
     height: 1.5em;
@@ -320,7 +320,9 @@ p .ac_input {
     padding-top: 1em;
     padding-bottom: 0em;
 }
-
+li.mp3Player {
+    list-style-type: none;
+}
 #formats #czytamysluchajac-logo {
     background: white;
     text-align: left;
@@ -330,6 +332,7 @@ p .ac_input {
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px;
+    margin: 0px 20px 10px 10px;
 }
 
 #tagged-object-list #themes-list, #book-detail #themes-list {
