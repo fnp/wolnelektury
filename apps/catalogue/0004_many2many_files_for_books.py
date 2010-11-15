@@ -7,7 +7,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'BookMedia'
         db.create_table('catalogue_bookmedia', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -17,9 +16,15 @@ class Migration(SchemaMigration):
             ('uploaded_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
         db.send_create_signal('catalogue', ['BookMedia'])
-
-        # Deleting field 'Book.txt_file'
-        db.delete_column('catalogue_book', 'txt_file')
+        
+        # Saving data which would be 'Lost In Migration'
+        if not db.dry_run:        
+            medias = []
+            for book in orm.Book.objects.all():
+                medias.append({"url": book.odt_file,   "book": book, "type": "odt"  })
+                medias.append({"url": book.daisy_file, "book": book, "type": "daisy"})
+                medias.append({"url": book.ogg_file,   "book": book, "type": "ogg"  })
+                medias.append({"url": book.mp3_file,   "book": book, "type": "mp3"  })            
 
         # Deleting field 'Book.odt_file'
         db.delete_column('catalogue_book', 'odt_file')
@@ -44,14 +49,20 @@ class Migration(SchemaMigration):
         # Changing field 'Tag.main_page'
         db.alter_column('catalogue_tag', 'main_page', self.gf('django.db.models.fields.BooleanField')(blank=True))
 
-
+        # Moving data from previous state to the new one
+        if not db.dry_run:        
+            for media in medias:
+                try:
+                    name = media['url'].split("/")[-1].split(".")[1]
+                except:
+                    name = media['url'].split("/")[-1]
+                bookMedia = orm.BookMedia.objects.create(file=media['url'], type=media['type'], name=name)
+                media['book'].medias.add(bookMedia)
+                
     def backwards(self, orm):
         
         # Deleting model 'BookMedia'
         db.delete_table('catalogue_bookmedia')
-
-        # Adding field 'Book.txt_file'
-        db.add_column('catalogue_book', 'txt_file', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100, blank=True), keep_default=False)
 
         # Adding field 'Book.odt_file'
         db.add_column('catalogue_book', 'odt_file', self.gf('django.db.models.fields.files.FileField')(default=None, max_length=100, blank=True), keep_default=False)
@@ -128,6 +139,7 @@ class Migration(SchemaMigration):
             'pdf_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'unique': 'True', 'db_index': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
+            'txt_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),            
             'wiki_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
             'xml_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
         },

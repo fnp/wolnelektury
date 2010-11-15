@@ -23,7 +23,13 @@
         <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
             <p><a href="{% url epub %}"><img src="/static/img/epub-www.jpg" alt="epub: lektury w kieszeni" /></a></p>
-
+            <h2>{% trans "Books for every school level" %}</h2>
+            <ul>
+                <li><a href="">{% trans "primary school" %}</a></li>
+                <li><a href="">{% trans "gymnasium" %}</a></li>
+                <li><a href="">{% trans "high school" %}</a></li>
+            </ul>
+            
             <h2>Leśmianator — poeta automagiczny</h2>
             <p>Poezja z Wolnych Lektur przepuszczona przez mikser. Stwórz własny wiersz klikając w <a href="{% url lesmianator %}" rel="nofollow">link</a>.</p>
             <p class="see-more"><a href="{% url lesmianator %}">{% trans "Twórzże się!" %} ⇒</a></p>

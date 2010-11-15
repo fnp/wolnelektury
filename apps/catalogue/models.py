@@ -173,7 +173,7 @@ def book_upload_path(ext=None):
         # how to put related book's slug here?
         if not ext:
             ext = media.type
-        return 'lektura/%s.%s' % (slugify(filename), ext)
+        return 'lektura/%s.%s' % (slugify(media.name), ext)
     return get_dynamic_path
 
 
@@ -206,6 +206,7 @@ class Book(models.Model):
     html_file     = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
     pdf_file      = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
     epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)    
+    txt_file      = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)        
     # other files
     medias        = models.ManyToManyField(BookMedia)
     

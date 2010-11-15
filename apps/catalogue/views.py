@@ -31,7 +31,7 @@ from django.utils.http import urlquote_plus
 from django.views.decorators import cache
 from django.utils.translation import ugettext as _
 from django.views.generic.list_detail import object_list
-
+from django.template.defaultfilters import slugify
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
@@ -83,7 +83,7 @@ def book_list(request, filter=None, template_name='catalogue/book_list.html'):
     books_by_parent = {}
     books = models.Book.objects.all().order_by('parent_number', 'title').only('title', 'parent', 'slug')
     if filter:
-        books = books.filter(filter)
+        books = books.filter(filter).distinct()
         book_ids = set((book.pk for book in books))
         for book in books:
             parent = book.parent_id
@@ -117,12 +117,12 @@ def book_list(request, filter=None, template_name='catalogue/book_list.html'):
 
 
 def audiobook_list(request):
-    return book_list(request, ~Q(mp3_file='') | ~Q(ogg_file=''),
+    return book_list(request, Q(medias__type='mp3') | Q(medias__type='ogg'),
                      template_name='catalogue/audiobook_list.html')
 
 
 def daisy_list(request):
-    return book_list(request, ~Q(daisy_file=''),
+    return book_list(request, Q(medias__type='daisy'),
                      template_name='catalogue/daisy_list.html')
 
 
@@ -574,21 +574,25 @@ def download_shelf(request, slug):
             filename = book.root_ancestor.epub_file.path
             archive.write(filename, str('%s.epub' % book.root_ancestor.slug))
             already.add(book.root_ancestor)
-        if 'odt' in formats and book.odt_file:
-            filename = book.odt_file.path
-            archive.write(filename, str('%s.odt' % book.slug))
+        if 'odt' in formats and book.has_media("odt"):
+            for file in book.get_media("odt"):
+                filename = file.file.path
+                archive.write(filename, str('%s.odt' % slugify(file.name)))
         if 'txt' in formats and book.txt_file:
             filename = book.txt_file.path
             archive.write(filename, str('%s.txt' % book.slug))
-        if 'mp3' in formats and book.mp3_file:
-            filename = book.mp3_file.path
-            archive.write(filename, str('%s.mp3' % book.slug))
-        if 'ogg' in formats and book.ogg_file:
-            filename = book.ogg_file.path
-            archive.write(filename, str('%s.ogg' % book.slug))
-        if 'daisy' in formats and book.daisy_file:
-            filename = book.daisy_file.path
-            archive.write(filename, str('%s.daisy.zip' % book.slug))
+        if 'mp3' in formats and book.has_media("mp3"):
+            for file in book.get_media("mp3"):
+                filename = file.file.path
+                archive.write(filename, str('%s.mp3' % slugify(file.name)))
+        if 'ogg' in formats and book.has_media("ogg"):
+            for file in book.get_media("ogg"):
+                filename = file.file.path
+                archive.write(filename, str('%s.ogg' % slugify(file.name)))
+        if 'daisy' in formats and book.has_media("daisy"):
+            for file in book.get_media("daisy"):
+                filename = file.file.path
+                archive.write(filename, str('%s.daisy' % slugify(file.name)))                                
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
