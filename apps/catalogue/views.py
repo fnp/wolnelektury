@@ -340,19 +340,40 @@ def _word_starts_with(name, prefix):
     return Q(**kwargs)
 
 
+def _word_starts_with_regexp(prefix):
+    prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
+    return ur"(^|(?<=[^\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ]))%s" % prefix
+
+
 def _sqlite_word_starts_with(name, prefix):
     """ version of _word_starts_with for SQLite
 
     SQLite in Django uses Python re module
     """
     kwargs = {}
-    prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
-    kwargs['%s__iregex' % name] = ur"(^|(?<=[^\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ]))%s" % prefix
+    kwargs['%s__iregex' % name] = _word_starts_with_regexp(prefix)
     return Q(**kwargs)
 
 
-if settings.DATABASES['default']['ENGINE'] == 'django.db.backends.sqlite3':
+if hasattr(settings, 'DATABASES'):
+    if settings.DATABASES['default']['ENGINE'] == 'django.db.backends.sqlite3':
+        _word_starts_with = _sqlite_word_starts_with
+elif settings.DATABASE_ENGINE == 'sqlite3':
     _word_starts_with = _sqlite_word_starts_with
+
+
+class App():
+    def __init__(self, name, view):
+        self.name = name
+        self._view = view
+        self.lower = name.lower()
+        self.category = 'application'
+    def view(self):
+        return reverse(*self._view)
+
+_apps = (
+    App(u'Leśmianator', (u'lesmianator', )),
+    )
 
 
 def _tags_starting_with(prefix, user=None):
@@ -365,12 +386,16 @@ def _tags_starting_with(prefix, user=None):
         tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
     else:
         tags = tags.filter(~Q(category='book') & ~Q(category='set'))
-    return list(books) + list(tags) + list(book_stubs)
+
+    prefix_regexp = re.compile(_word_starts_with_regexp(prefix))
+    return list(books) + list(tags) + list(book_stubs) + [app for app in _apps if prefix_regexp.search(app.lower)]
 
 
 def _get_result_link(match, tag_list):
     if isinstance(match, models.Book) or isinstance(match, models.BookStub):
         return match.get_absolute_url()
+    elif isinstance(match, App):
+        return match.view()
     else:
         return reverse('catalogue.views.tagged_object_list',
             kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])}
