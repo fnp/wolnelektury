@@ -32,7 +32,7 @@ class Migration(SchemaMigration):
         db.create_table('catalogue_bookmedia', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('type', self.gf('django.db.models.fields.CharField')(max_length='100')),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length='100')),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length='100', blank=True)),
             ('file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
             ('uploaded_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))

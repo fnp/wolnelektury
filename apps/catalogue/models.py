@@ -173,13 +173,17 @@ def book_upload_path(ext=None):
         # how to put related book's slug here?
         if not ext:
             ext = media.type
-        return 'lektura/%s.%s' % (slugify(media.name), ext)
+        if not media.name:
+            name = slugify(filename.split(".")[0])
+        else:
+            name = slugify(media.name)
+        return 'lektura/%s.%s' % (name, ext)
     return get_dynamic_path
 
 
 class BookMedia(models.Model):
     type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100")
-    name        = models.CharField(_('name'), max_length="100")
+    name        = models.CharField(_('name'), max_length="100", blank=True)
     file        = models.FileField(_('file'), upload_to=book_upload_path(), blank=True)    
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
 
