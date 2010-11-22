@@ -7,6 +7,27 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Saving data which would be 'Lost In Migration'
+        if not db.dry_run:        
+            medias = []
+            for book in orm.Book.objects.all():
+                try:
+                    medias.append({"url": book.odt_file.url,   "book": book, "type": "odt"  })
+                except:
+                    pass
+                try:
+                    medias.append({"url": book.daisy_file.url, "book": book, "type": "daisy"})
+                except:
+                    pass
+                try:
+                    medias.append({"url": book.ogg_file.url,   "book": book, "type": "ogg"  })
+                except:
+                    pass
+                try:
+                    medias.append({"url": book.mp3_file.url,   "book": book, "type": "mp3"  })            
+                except:
+                    pass
+
         # Adding model 'BookMedia'
         db.create_table('catalogue_bookmedia', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -16,15 +37,6 @@ class Migration(SchemaMigration):
             ('uploaded_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
         db.send_create_signal('catalogue', ['BookMedia'])
-        
-        # Saving data which would be 'Lost In Migration'
-        if not db.dry_run:        
-            medias = []
-            for book in orm.Book.objects.all():
-                medias.append({"url": book.odt_file,   "book": book, "type": "odt"  })
-                medias.append({"url": book.daisy_file, "book": book, "type": "daisy"})
-                medias.append({"url": book.ogg_file,   "book": book, "type": "ogg"  })
-                medias.append({"url": book.mp3_file,   "book": book, "type": "mp3"  })            
 
         # Deleting field 'Book.odt_file'
         db.delete_column('catalogue_book', 'odt_file')
@@ -137,6 +149,10 @@ class Migration(SchemaMigration):
             'parent': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'children'", 'blank': 'True', 'null': 'True', 'to': "orm['catalogue.Book']"}),
             'parent_number': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'pdf_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
+            'odt_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
+            'daisy_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
+            'mp3_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
+            'ogg_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'unique': 'True', 'db_index': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
             'txt_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),            
