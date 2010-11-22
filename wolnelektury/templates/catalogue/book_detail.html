@@ -138,6 +138,9 @@
                     <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </li>
+                <li>
+                    <a href="{{ book.xml_file.url }}">{% trans "View XML source" %}</a>
+                </li>                
             </ul>
             <h2>{% trans "Other resources" %}</h2>
             <ul>

@@ -208,7 +208,7 @@ class Book(models.Model):
     epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)    
     txt_file      = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)        
     # other files
-    medias        = models.ManyToManyField(BookMedia)
+    medias        = models.ManyToManyField(BookMedia, blank=True)
     
     parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
     objects  = models.Manager()
