@@ -255,7 +255,7 @@ def book_detail(request, slug):
     book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
-    book_children = book.children.all().order_by('parent_number')
+    book_children = book.children.all().order_by('parent_number', 'title')
     
     _book = book
     parents = []
