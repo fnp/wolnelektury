@@ -355,9 +355,9 @@ class Book(models.Model):
             if self.has_media("txt"):
                 formats.append(u'<a href="%s">TXT</a>' % self.get_media('txt').url)
             # other files
-            for m in self.media.order_by('type'):
+            for m in self.medias.order_by('type'):
                 formats.append(u'<a href="%s">%s</a>' % m.type, m.file.url)
- 
+
             formats = [mark_safe(format) for format in formats]
 
             setattr(self, key, unicode(render_to_string('catalogue/book_short.html',

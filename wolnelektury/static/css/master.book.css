@@ -80,7 +80,7 @@ img {
 }
 
 
-#toc, #themes {
+#toc, #themes, #nota_red {
     position: fixed;
     left: 0em;
     top: 1.5em;
