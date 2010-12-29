@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 16:33+0000\n"
+"POT-Creation-Date: 2010-12-29 20:59+0100\n"
 "PO-Revision-Date: 2010-08-26 14:09+0100\n"
 "Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -790,17 +790,19 @@ msgstr "повернення на головну"
 msgid ""
 "We have over 1200 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
-"making a donation or transferring 1% of your income tax."
+"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a donation\n"
+"or transferring 1% of your income tax</a>."
 msgstr ""
 "На сайті Wolne Lektury опубліковано більше 1200 творів!\n"
 "Допоможіть нам розвивати бібліотеку і надавати доступ до нових творів - \n"
-"передайте нам внесок або 1 відсоток вашого податку на прибуток."
+"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">передайте нам "
+"внесок або 1 відсоток вашого податку на прибуток</a>."
 
-#: templates/info/join_us.html:5 templates/info/join_us.html.py:10
+#: templates/info/join_us.html:6 templates/info/join_us.html.py:11
 msgid "More..."
 msgstr "Більше..."
 
-#: templates/info/join_us.html:7
+#: templates/info/join_us.html:8
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
 "we're currently working on a reading you're looking for and prepare\n"
