@@ -83,3 +83,5 @@ class BookStub(models.Model):
     def name(self):
         return self.title
 
+    def pretty_title(self, html_links=False):
+        return ', '.join((self.author, self.title))
