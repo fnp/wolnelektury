@@ -157,4 +157,4 @@ def migrate():
 def restart_webserver():
     "Restart the web server"
     print '>>> restart webserver'
-    run('touch %(path)s/releases/current/%(project_name)s/%(project_name)s.wsgi' % env)
+    run('touch %(path)s/%(project_name)s.wsgi' % env)
