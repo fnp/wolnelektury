@@ -53,29 +53,9 @@ def simple_title(tags):
     return capfirst(', '.join(title))
 
 
-def book_stub_title(book):
-    return ', '.join((book.author, book.title))
-
-
 @register.simple_tag
 def book_title(book, html_links=False):
-    try:
-        names = list(book.tags.filter(category='author'))
-    except AttributeError:
-        return book_stub_title(book)
-
-    books = []
-    while book:
-        books.append(book)
-        book = book.parent
-    names.extend(reversed(books))
-
-    if html_links:
-        names = ['<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in names]
-    else:
-        names = [tag.name for tag in names]
-
-    return ', '.join(names)
+    return book.pretty_title(html_links)
 
 
 @register.simple_tag

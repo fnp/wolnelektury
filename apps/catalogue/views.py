@@ -378,11 +378,21 @@ def find_best_matches(query, user=None):
         raise ValueError("query must have at least two characters")
 
     result = tuple(_tags_starting_with(query, user))
+    # remove pdcounter stuff
+    book_titles = set(match.pretty_title().lower() for match in result
+                      if isinstance(match, models.Book))
+    authors = set(match.name.lower() for match in result
+                  if isinstance(match, models.Tag) and match.category=='author')
+    result = (res for res in result if not (
+                 (isinstance(res, pdcounter_models.BookStub) and res.pretty_title().lower() in book_titles)
+                 or (isinstance(res, pdcounter_models.Author) and res.name.lower() in authors)
+             ))
+
     exact_matches = tuple(res for res in result if res.name.lower() == query)
     if exact_matches:
         return exact_matches
     else:
-        return result[:1]
+        return tuple(result)[:1]
 
 
 def search(request):

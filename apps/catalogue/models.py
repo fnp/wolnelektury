@@ -548,6 +548,22 @@ class Book(models.Model):
             return self.refresh_theme_counter()
         return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
 
+    def pretty_title(self, html_links=False):
+        book = self
+        names = list(book.tags.filter(category='author'))
+
+        books = []
+        while book:
+            books.append(book)
+            book = book.parent
+        names.extend(reversed(books))
+
+        if html_links:
+            names = ['<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in names]
+        else:
+            names = [tag.name for tag in names]
+
+        return ', '.join(names)
 
 
 class Fragment(models.Model):
