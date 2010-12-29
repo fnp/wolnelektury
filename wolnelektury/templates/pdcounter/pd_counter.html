@@ -1,0 +1,10 @@
+<div id='countdown'></div>
+<script>
+{% if LANGUAGE_CODE != 'en' %}
+    $.countdown.setDefaults($.countdown.regional['{{ LANGUAGE_CODE }}']);
+{% else %}
+    $.countdown.setDefaults($.countdown.regional['']);
+{% endif %}
+d = new Date({{ pd_counter }}, 1, 1);
+$('#countdown').countdown({until: d, format: 'ydHMS', serverSync: serverTime});
+</script>

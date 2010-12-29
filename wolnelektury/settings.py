@@ -138,6 +138,7 @@ INSTALLED_APPS = [
     'suggest',
     'lesmianator',
     'opds',
+    'pdcounter',
 ]
 
 CACHE_BACKEND = 'locmem:///?max_entries=3000'

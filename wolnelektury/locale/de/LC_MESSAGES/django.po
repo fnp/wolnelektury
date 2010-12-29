@@ -2,15 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 10:23+0000\n"
+"POT-Creation-Date: 2010-12-29 15:12+0000\n"
 "PO-Revision-Date: 2010-08-25 10:43\n"
 "Last-Translator: <radek.czajka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,8 +22,13 @@ msgid "Page does not exist"
 msgstr "Die angeforderte Webseite existiert nicht"
 
 #: templates/404.html:17
-msgid "We are sorry, but this page does not exist. Please check if you entered correct address or go to "
-msgstr "Die gesuchte Seite existiert leider nicht mehr. Überprüfen Sie bitte, ob Sie sich bei der Eingabe der URL in die Adresszeile des Browsers vertippt haben oder gehen Sie zur Startseite"
+msgid ""
+"We are sorry, but this page does not exist. Please check if you entered "
+"correct address or go to "
+msgstr ""
+"Die gesuchte Seite existiert leider nicht mehr. Überprüfen Sie bitte, ob Sie "
+"sich bei der Eingabe der URL in die Adresszeile des Browsers vertippt haben "
+"oder gehen Sie zur Startseite"
 
 #: templates/404.html:17
 msgid "main page"
@@ -33,8 +39,16 @@ msgid "Server error"
 msgstr "Serverfehler"
 
 #: templates/500.html:55
-msgid "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our <a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the error.</p>"
-msgstr "<p> Wolnelektury.pl ist zurzeit nicht verfügbar. Besuchen Sie unsere Homepage <a href='http://nowoczesnapolska.org.pl'> Blog </ a>. </ P> Informieren Sie uns <a href = \"mailto: fundacja@nowoczesnapolska.org.pl\" > Administratoren </ a> über den Fehler. </ p>"
+msgid ""
+"<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
+"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
+"error.</p>"
+msgstr ""
+"<p> Wolnelektury.pl ist zurzeit nicht verfügbar. Besuchen Sie unsere "
+"Homepage <a href='http://nowoczesnapolska.org.pl'> Blog </ a>. </ P> "
+"Informieren Sie uns <a href = \"mailto: fundacja@nowoczesnapolska.org.pl\" > "
+"Administratoren </ a> über den Fehler. </ p>"
 
 #: templates/503.html:6 templates/503.html.py:54
 msgid "Service unavailable"
@@ -44,90 +58,104 @@ msgstr "Service nicht verfügbar"
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr "Wolnelektury.pl wegen Wartungsarbeiten momentan nicht verfügbar."
 
-#: templates/base.html:19
-msgid "Internet Explorer cannot display this site properly. Click here to read more..."
-msgstr "Diese Seite kann nicht richtig im Internet Explorer angezeigt werden. Klicken Sie hier, um mehr zu lesen..."
+#: templates/base.html:20
+msgid ""
+"Internet Explorer cannot display this site properly. Click here to read "
+"more..."
+msgstr ""
+"Diese Seite kann nicht richtig im Internet Explorer angezeigt werden. "
+"Klicken Sie hier, um mehr zu lesen..."
 
-#: templates/base.html:32
+#: templates/base.html:33
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: templates/base.html:33
+#: templates/base.html:34
 msgid "Your shelves"
 msgstr "Deine Bücherregale"
 
-#: templates/base.html:35
+#: templates/base.html:36
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/base.html:37 templates/base.html.py:41
+#: templates/base.html:38 templates/base.html.py:42
 msgid "Report a bug"
 msgstr ""
 
-#: templates/base.html:38
+#: templates/base.html:39
 msgid "Logout"
 msgstr "Abmelden"
 
-#: templates/base.html:42 templates/base.html.py:88 templates/base.html:92
-#: templates/base.html.py:96 templates/auth/login.html:4
+#: templates/base.html:43 templates/base.html.py:89 templates/base.html:93
+#: templates/base.html.py:97 templates/auth/login.html:4
 #: templates/auth/login.html.py:7 templates/auth/login.html:12
 #: templates/auth/login.html.py:15
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: templates/base.html:42 templates/base.html.py:88 templates/base.html:96
-#: templates/base.html.py:100 templates/auth/login.html:7
+#: templates/base.html:43 templates/base.html.py:89 templates/base.html:97
+#: templates/base.html.py:101 templates/auth/login.html:7
 #: templates/auth/login.html.py:21 templates/auth/login.html:23
 msgid "Register"
 msgstr "Registrieren"
 
-#: templates/base.html:69
+#: templates/base.html:70
 msgid ""
 "\n"
-"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
-"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/\">The National Library</a>, based on TNL resources.\n"
+"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
+"org.pl/\">Modern Poland Foundation</a>.\n"
+"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
+"\">The National Library</a>, based on TNL resources.\n"
 "\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tWolne Lektury ist ein Projekt, dass von <a href=\"http://nowoczesnapolska.org.pl/\">Stiftung Modernes Polen </a>.\n"
-"\t\t\t\tDigitale Reproduktion entwickelt von der <a href=\"http://www.bn.org.pl/\">Natonalbibliothek</a>, Exemplare aus dem Bücherbestand NB. \n"
+"\t\t\t\tWolne Lektury ist ein Projekt, dass von <a href=\"http://"
+"nowoczesnapolska.org.pl/\">Stiftung Modernes Polen </a>.\n"
+"\t\t\t\tDigitale Reproduktion entwickelt von der <a href=\"http://www.bn.org."
+"pl/\">Natonalbibliothek</a>, Exemplare aus dem Bücherbestand NB. \n"
 "\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
 "\t\t\t\t"
 
-#: templates/base.html:76
+#: templates/base.html:77
 msgid ""
 "\n"
-"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
+"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
+"lok. 125, tel/fax: (22) 621-30-17\n"
+"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+"\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\t Stiftung Modernes Polen, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
+"\t\t\t\t Stiftung Modernes Polen, 00-514 Warsaw, ul. Marszałkowska 84/92 "
+"lok. 125, tel/fax: (22) 621-30-17\n"
+"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+"\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 
-#: templates/base.html:85 templates/base.html.py:106 templates/base.html:112
-#: templates/catalogue/book_detail.html:146
+#: templates/base.html:86 templates/base.html.py:107 templates/base.html:113
+#: templates/catalogue/book_detail.html:168
 #: templates/catalogue/book_fragments.html:33
-#: templates/catalogue/book_stub_detail.html:31
 #: templates/catalogue/differentiate_tags.html:23
 #: templates/catalogue/search_multiple_hits.html:29
 #: templates/catalogue/search_no_hits.html:22
 #: templates/catalogue/search_too_short.html:19
-#: templates/catalogue/tagged_object_list.html:155
+#: templates/catalogue/tagged_object_list.html:139
+#: templates/pdcounter/author_detail.html:52
+#: templates/pdcounter/book_stub_detail.html:31
 msgid "Close"
 msgstr "Schliessen"
 
-#: templates/base.html:108 templates/base.html.py:114
-#: templates/catalogue/book_detail.html:148
+#: templates/base.html:109 templates/base.html.py:115
+#: templates/catalogue/book_detail.html:170
 #: templates/catalogue/book_fragments.html:35
-#: templates/catalogue/book_stub_detail.html:33
 #: templates/catalogue/differentiate_tags.html:25
 #: templates/catalogue/search_multiple_hits.html:31
 #: templates/catalogue/search_no_hits.html:24
 #: templates/catalogue/search_too_short.html:21
-#: templates/catalogue/tagged_object_list.html:157
+#: templates/catalogue/tagged_object_list.html:141
+#: templates/pdcounter/author_detail.html:54
+#: templates/pdcounter/book_stub_detail.html:33
 msgid "Loading"
 msgstr "Herunterladen"
 
@@ -150,31 +178,43 @@ msgstr "Registrieren"
 #: templates/auth/login.html:9 templates/catalogue/book_detail.html:12
 #: templates/catalogue/book_fragments.html:12
 #: templates/catalogue/book_list.html:12
-#: templates/catalogue/book_stub_detail.html:12
 #: templates/catalogue/breadcrumbs.html:21
 #: templates/catalogue/main_page.html:13 templates/info/base.html:10
 #: templates/lessons/document_detail.html:9
-#: templates/lessons/document_list.html:51
+#: templates/lessons/document_list.html:53
+#: templates/pdcounter/author_detail.html:11
+#: templates/pdcounter/book_stub_detail.html:11
 msgid "Search"
 msgstr "Suchen"
 
 #: templates/auth/login.html:9 templates/catalogue/book_detail.html:12
 #: templates/catalogue/book_fragments.html:12
-#: templates/catalogue/book_list.html:12
-#: templates/catalogue/book_stub_detail.html:12
-#: templates/catalogue/main_page.html:13
-#: templates/catalogue/tagged_object_list.html:43 templates/info/base.html:10
+#: templates/catalogue/book_list.html:12 templates/catalogue/main_page.html:14
+#: templates/catalogue/tagged_object_list.html:44 templates/info/base.html:10
 #: templates/lessons/document_detail.html:9
-#: templates/lessons/document_list.html:51
+#: templates/lessons/document_list.html:53
+#: templates/pdcounter/author_detail.html:11
+#: templates/pdcounter/book_stub_detail.html:11
 msgid "or"
 msgstr "oder"
 
 #: templates/auth/login.html:9 templates/catalogue/book_detail.html:12
 #: templates/catalogue/book_list.html:12
-#: templates/catalogue/book_stub_detail.html:12
-#: templates/lessons/document_list.html:51
+#: templates/lessons/document_list.html:53
+#: templates/pdcounter/author_detail.html:11
+#: templates/pdcounter/book_stub_detail.html:11
 msgid "return to main page"
 msgstr "Zur Startseite wechseln"
+
+#: templates/catalogue/audiobook_list.html:6
+#, fuzzy
+msgid "Listing of all audiobooks on WolneLektury.pl"
+msgstr "Werkverzeichnis unter WolneLektury.pl"
+
+#: templates/catalogue/audiobook_list.html:8
+#, fuzzy
+msgid "Listing of all audiobooks"
+msgstr "Werkverzeichnis"
 
 #: templates/catalogue/book_detail.html:5
 msgid "on WolneLektury.pl"
@@ -208,74 +248,55 @@ msgstr "PDF-Datei herunterladen"
 msgid "Download EPUB"
 msgstr "EPUB-Datei herunterladen"
 
-#: templates/catalogue/book_detail.html:53
-msgid "Download ODT"
-msgstr "ODT-Datei herunterladen"
-
-#: templates/catalogue/book_detail.html:56
+#: templates/catalogue/book_detail.html:61
 msgid "Download TXT"
 msgstr "TXT-Datei herunterladen"
 
-#: templates/catalogue/book_detail.html:61
-msgid "Artist"
-msgstr "Liest"
-
-#: templates/catalogue/book_detail.html:63
-msgid "Director"
-msgstr "Führt Regie"
-
-#: templates/catalogue/book_detail.html:67
-msgid "Download MP3"
-msgstr "MP3-Datei herunterladen"
-
-#: templates/catalogue/book_detail.html:68
-msgid "Download Ogg Vorbis"
-msgstr "Ogg Vorbis-Datei herunterladen"
-
-msgid "Download DAISY"
-msgstr "DAISY-Datei herunterladen"
-
-#: templates/catalogue/book_detail.html:95
+#: templates/catalogue/book_detail.html:114
 msgid "Details"
 msgstr "Details"
 
-#: templates/catalogue/book_detail.html:99
+#: templates/catalogue/book_detail.html:118
 msgid "Author"
 msgstr "Autor"
 
-#: templates/catalogue/book_detail.html:105
+#: templates/catalogue/book_detail.html:124
 msgid "Epoch"
 msgstr "Epoche"
 
-#: templates/catalogue/book_detail.html:111
+#: templates/catalogue/book_detail.html:130
 msgid "Kind"
 msgstr "Art"
 
-#: templates/catalogue/book_detail.html:117
+#: templates/catalogue/book_detail.html:136
 msgid "Genre"
 msgstr "Gattung"
 
-#: templates/catalogue/book_detail.html:123
+#: templates/catalogue/book_detail.html:142
 msgid "Other resources"
 msgstr "Andere Ressourcen"
 
-#: templates/catalogue/book_detail.html:125
+#: templates/catalogue/book_detail.html:144
 msgid "Book on project's wiki"
 msgstr "Schullektüre auf  WikiProjekt"
 
-#: templates/catalogue/book_detail.html:126
+#: templates/catalogue/book_detail.html:146
 msgid "Source of the book"
 msgstr "Buchquelle"
 
-#: templates/catalogue/book_detail.html:128
+#: templates/catalogue/book_detail.html:149
 msgid "Book description on Lektury.Gazeta.pl"
 msgstr "Buchbeschreibung unter Lektury.Gazeta.pl"
 
-#: templates/catalogue/book_detail.html:131
+#: templates/catalogue/book_detail.html:152
 msgid "Book description on Wikipedia"
 msgstr "Buchbeschreibung auf Wikipedia"
 
-#: templates/catalogue/book_detail.html:136
+#: templates/catalogue/book_detail.html:155
+msgid "View XML source"
+msgstr ""
+
+#: templates/catalogue/book_detail.html:158
 msgid "Work's themes "
 msgstr "Werkmotive"
 
@@ -313,6 +334,15 @@ msgstr "Werkverzeichnis unter WolneLektury.pl"
 msgid "Listing of all works"
 msgstr "Werkverzeichnis"
 
+#: templates/catalogue/book_list.html:16
+#, fuzzy
+msgid "Table of Content"
+msgstr "Inhalt"
+
+#: templates/catalogue/book_list.html:41
+msgid "↑ top ↑"
+msgstr ""
+
 #: templates/catalogue/book_sets.html:2
 msgid "Put a book on the shelf!"
 msgstr "Leg das Buch aufs Regal ab!"
@@ -324,7 +354,9 @@ msgstr "Neues Bücherregal erstellen"
 
 #: templates/catalogue/book_sets.html:10
 msgid "You do not have any shelves. You can create one below, if you want to."
-msgstr "Keine neue Bücherregale vorhanden. Wenn du willst, kannst du ein neues Bücherregal erstellen."
+msgstr ""
+"Keine neue Bücherregale vorhanden. Wenn du willst, kannst du ein neues "
+"Bücherregal erstellen."
 
 #: templates/catalogue/book_sets.html:15 templates/catalogue/book_short.html:4
 msgid "Put on the shelf!"
@@ -338,30 +370,28 @@ msgstr "Überspringen"
 msgid "Categories"
 msgstr "Kategorien"
 
-#: templates/catalogue/book_stub_detail.html:17
-msgid "This work is in public domain and will be published on Internet school library of Wolne Lektury soon."
-msgstr "Dieses Werk ist zur öffentlichen Nutzung vorgesehen und wird bald in der Internetbibliothek Wolne Lektury veröffentlicht sein."
-
-#: templates/catalogue/book_stub_detail.html:20
-msgid "This work will become part of public domain and will be allowed to be published without restrictions in"
-msgstr "Dieses Werk wird bald zur öffentlichen Nutzung freigestellt und kann in der Zukunft ohne weitere Einschränkungen veröffentlicht werden"
-
-#: templates/catalogue/book_stub_detail.html:22
-msgid "Find out why Internet libraries can't publish this work."
-msgstr "Finde heraus, warum Internet-Bibliotheken die Werke dieses Autors nicht veröffentlichen dürfen."
-
-#: templates/catalogue/book_stub_detail.html:24
-msgid "This work is copyrighted."
-msgstr "Dieses Werk ist urheberrechtlich geschützt."
-
 #: templates/catalogue/book_text.html:17
 msgid "Table of contents"
 msgstr "Inhalt"
 
 #: templates/catalogue/book_text.html:18
-#: templates/catalogue/tagged_object_list.html:146
+#: templates/catalogue/tagged_object_list.html:130
 msgid "Themes"
 msgstr "Motive"
+
+#: templates/catalogue/book_text.html:19
+msgid "Edit. note"
+msgstr ""
+
+#: templates/catalogue/daisy_list.html:6
+#, fuzzy
+msgid "Listing of all DAISY files on WolneLektury.pl"
+msgstr "Werkverzeichnis unter WolneLektury.pl"
+
+#: templates/catalogue/daisy_list.html:8
+#, fuzzy
+msgid "Listing of all DAISY files"
+msgstr "Werkverzeichnis"
 
 #: templates/catalogue/differentiate_tags.html:13
 msgid "The criteria are ambiguous. Please select one of the following options:"
@@ -372,15 +402,16 @@ msgid "Show full category"
 msgstr "Alle Kategorien anzeigen"
 
 #: templates/catalogue/folded_tag_list.html:13
-#: templates/catalogue/main_page.html:43 templates/catalogue/main_page.html:48
-#: templates/catalogue/main_page.html:87
-#: templates/catalogue/main_page.html:270
-#: templates/catalogue/main_page.html:279
+#: templates/catalogue/main_page.html:45 templates/catalogue/main_page.html:70
+#: templates/catalogue/main_page.html:75
+#: templates/catalogue/main_page.html:114
+#: templates/catalogue/main_page.html:297
+#: templates/catalogue/main_page.html:306
 msgid "See more"
 msgstr "mehr"
 
 #: templates/catalogue/folded_tag_list.html:22
-#: templates/catalogue/main_page.html:250
+#: templates/catalogue/main_page.html:277
 msgid "Hide"
 msgstr "weniger"
 
@@ -389,9 +420,11 @@ msgid "Shelves containing fragment"
 msgstr "Regale mit Buchauszügen"
 
 #: templates/catalogue/fragment_sets.html:4
-#: templates/catalogue/main_page.html:28
+#: templates/catalogue/main_page.html:55
 msgid "You do not own any shelves. You can create one below, if you want to."
-msgstr "Keine neue Bücherregale vorhanden. Wenn du willst, kannst du ein neues Bücherregal erstellen."
+msgstr ""
+"Keine neue Bücherregale vorhanden. Wenn du willst, kannst du ein neues "
+"Bücherregal erstellen."
 
 #: templates/catalogue/fragment_sets.html:9
 msgid "Save all shelves"
@@ -409,121 +442,202 @@ msgstr "Buchauszug zuklappen"
 msgid "See in a book"
 msgstr "Werk ansehen"
 
-#: templates/catalogue/main_page.html:13
-msgid "check list of books"
-msgstr "Siehe Bücherliste"
+#: templates/catalogue/main_page.html:14
+msgid "see"
+msgstr ""
 
-#: templates/catalogue/main_page.html:13
-msgid "in our repository"
-msgstr "in unserer Sammlung"
+#: templates/catalogue/main_page.html:16
+#, fuzzy
+msgid "all books"
+msgstr "Buch ablegen"
 
 #: templates/catalogue/main_page.html:17
+msgid "audiobooks"
+msgstr ""
+
+#: templates/catalogue/main_page.html:18
+msgid "daisy"
+msgstr ""
+
+#: templates/catalogue/main_page.html:23
 msgid "Browse books by categories"
 msgstr "Bücher nach ausgewählten Kategorien ansehen"
 
-#: templates/catalogue/main_page.html:19
+#: templates/catalogue/main_page.html:26
+msgid "Books for every school level"
+msgstr ""
+
+#: templates/catalogue/main_page.html:28
+msgid "primary school"
+msgstr ""
+
+#: templates/catalogue/main_page.html:29
+msgid "gymnasium"
+msgstr ""
+
+#: templates/catalogue/main_page.html:30
+msgid "high school"
+msgstr ""
+
+#: templates/catalogue/main_page.html:35
+msgid "Twórzże się!"
+msgstr ""
+
+#: templates/catalogue/main_page.html:37 templates/catalogue/main_page.html:45
+#, fuzzy
+msgid "Wolne Lektury Widget"
+msgstr "auf  WolneLektury.pl"
+
+#: templates/catalogue/main_page.html:38
+msgid ""
+"Place our widget - search engine for Wolne Lektury which gives access to "
+"free books and audiobooks - on your homepage! Just copy the HTML code below "
+"onto your page:"
+msgstr ""
+
+#: templates/catalogue/main_page.html:39
+msgid "Insert this element in place where you want display the widget"
+msgstr ""
+
+#: templates/catalogue/main_page.html:42
+msgid "Place this element just before closing body tag: &lt;/body&gt;"
+msgstr ""
+
+#: templates/catalogue/main_page.html:46
 #: templates/catalogue/user_shelves.html:2
 msgid "Your shelves with books"
 msgstr "Deine Bücherregale"
 
-#: templates/catalogue/main_page.html:24
+#: templates/catalogue/main_page.html:51
 msgid "delete"
 msgstr "löschen"
 
-#: templates/catalogue/main_page.html:33
+#: templates/catalogue/main_page.html:60
 #: templates/catalogue/user_shelves.html:15
 msgid "Create shelf"
 msgstr "Bücherregal erstellen"
 
-#: templates/catalogue/main_page.html:37
-msgid "Create your own book set. You can share it with friends by sending them link to your shelf."
-msgstr "Erstelle dein eigenes Bücherregal. Du kannst es später mal mit deinen Freunden teilen, indem du den Link an sie verschickst."
+#: templates/catalogue/main_page.html:64
+msgid ""
+"Create your own book set. You can share it with friends by sending them link "
+"to your shelf."
+msgstr ""
+"Erstelle dein eigenes Bücherregal. Du kannst es später mal mit deinen "
+"Freunden teilen, indem du den Link an sie verschickst."
 
-#: templates/catalogue/main_page.html:38
+#: templates/catalogue/main_page.html:65
 msgid "You need to "
 msgstr "Um deine Bücherregale zu verwalten "
 
-#: templates/catalogue/main_page.html:38
+#: templates/catalogue/main_page.html:65
 msgid "sign in"
 msgstr "musst du angemeldet  sein"
 
-#: templates/catalogue/main_page.html:38
+#: templates/catalogue/main_page.html:65
 msgid "to manage your shelves."
 msgstr "Bücherregale verwalten"
 
-#: templates/catalogue/main_page.html:41
-#: templates/lessons/document_list.html:49
+#: templates/catalogue/main_page.html:68 templates/catalogue/main_page.html:70
+#: templates/lessons/document_list.html:51
 msgid "Hand-outs for teachers"
 msgstr "Lehrmaterialien"
 
-#: templates/catalogue/main_page.html:42
-msgid "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
-msgstr "Unterrichtsszenarien und andere Ideen für die Verwendung von Wolnelektury.pl für das Unterricht"
+#: templates/catalogue/main_page.html:69
+msgid ""
+"Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
+msgstr ""
+"Unterrichtsszenarien und andere Ideen für die Verwendung von Wolnelektury.pl "
+"für das Unterricht"
 
-#: templates/catalogue/main_page.html:47
-msgid "are professional recordings of literary texts from our repository, available on free license in MP3 and Ogg Vorbis formats as well as in DAISY system."
-msgstr "sind professionelle Aufnahmen literarischer Texte aus unserer Sammlung, die unter freier Lizenz in folgenden Formaten verfügbar sind: MP3-und Ogg-Vorbis-Formate sowie im DAISY-System."
+#: templates/catalogue/main_page.html:74
+msgid ""
+"are professional recordings of literary texts from our repository, available "
+"on free license in MP3 and Ogg Vorbis formats as well as in DAISY system."
+msgstr ""
+"sind professionelle Aufnahmen literarischer Texte aus unserer Sammlung, die "
+"unter freier Lizenz in folgenden Formaten verfügbar sind: MP3-und Ogg-Vorbis-"
+"Formate sowie im DAISY-System."
 
-#: templates/catalogue/main_page.html:54
-#: templates/catalogue/tagged_object_list.html:128
+#: templates/catalogue/main_page.html:81
+#: templates/catalogue/tagged_object_list.html:112
 msgid "Authors"
 msgstr "Autoren"
 
-#: templates/catalogue/main_page.html:58
-#: templates/catalogue/tagged_object_list.html:132
+#: templates/catalogue/main_page.html:85
+#: templates/catalogue/tagged_object_list.html:116
 msgid "Kinds"
 msgstr "Arten"
 
-#: templates/catalogue/main_page.html:62
-#: templates/catalogue/tagged_object_list.html:136
+#: templates/catalogue/main_page.html:89
+#: templates/catalogue/tagged_object_list.html:120
 msgid "Genres"
 msgstr "Gattungen"
 
-#: templates/catalogue/main_page.html:66
-#: templates/catalogue/tagged_object_list.html:140
+#: templates/catalogue/main_page.html:93
+#: templates/catalogue/tagged_object_list.html:124
 msgid "Epochs"
 msgstr "Epochen"
 
-#: templates/catalogue/main_page.html:72
+#: templates/catalogue/main_page.html:99
+#: templates/catalogue/main_page.html:114
 msgid "Themes and topics"
 msgstr "Motive und Themen"
 
-#: templates/catalogue/main_page.html:75
+#: templates/catalogue/main_page.html:102
 msgid "Themes groups"
 msgstr "Motivketten"
 
-#: templates/catalogue/main_page.html:260
+#: templates/catalogue/main_page.html:287
 msgid "News"
 msgstr "News"
 
-#: templates/catalogue/main_page.html:264
+#: templates/catalogue/main_page.html:291
 msgid "See our blog"
 msgstr "Siehe unseren Blog"
 
-#: templates/catalogue/main_page.html:267
+#: templates/catalogue/main_page.html:294
+#: templates/catalogue/main_page.html:297
 msgid "You can help us!"
 msgstr "Du kannst uns helfen!"
 
-#: templates/catalogue/main_page.html:268
-msgid "We try our best to elaborate works appended to our library. It is possible only due to support of our volunteers."
-msgstr "Wir sind stets bemüht, unseren Bibliothekbestand ständig um neue Werke zu erweitern. Dies ist nur dank der Hilfe unserer Volontäre möglich."
+#: templates/catalogue/main_page.html:295
+msgid ""
+"We try our best to elaborate works appended to our library. It is possible "
+"only due to support of our volunteers."
+msgstr ""
+"Wir sind stets bemüht, unseren Bibliothekbestand ständig um neue Werke zu "
+"erweitern. Dies ist nur dank der Hilfe unserer Volontäre möglich."
 
-#: templates/catalogue/main_page.html:269
-msgid "We invite people who want to take part in developing Internet school library Wolne Lektury."
-msgstr "Wir laden herzlich alle Personen ein, die sich an der Mitgestaltung unserer Internet-Schulbibliothek beteiligen wollen."
+#: templates/catalogue/main_page.html:296
+msgid ""
+"We invite people who want to take part in developing Internet school library "
+"Wolne Lektury."
+msgstr ""
+"Wir laden herzlich alle Personen ein, die sich an der Mitgestaltung unserer "
+"Internet-Schulbibliothek beteiligen wollen."
 
-#: templates/catalogue/main_page.html:273
+#: templates/catalogue/main_page.html:300
+#: templates/catalogue/main_page.html:306
 msgid "About us"
 msgstr "Über das Projekt"
 
-#: templates/catalogue/main_page.html:275
+#: templates/catalogue/main_page.html:302
 msgid ""
 "\n"
-"\t\t\tInternet library with school readings “Wolne Lektury” (<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by Modern Poland Foundation. It started in 2007 and shares school readings, which are recommended by Ministry of National Education and are in public domain.\n"
+"\t\t\tInternet library with school readings “Wolne Lektury” (<a href="
+"\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by "
+"Modern Poland Foundation. It started in 2007 and shares school readings, "
+"which are recommended by Ministry of National Education and are in public "
+"domain.\n"
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tSchulbücher “Wolne Lektury”  in der Internetbibliothek(<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) ist ein Projekt, das von der Stiftung Modernes Polen gefördert wird. Die Stiftung ist seit 2007 tätig und hat bisher viele Schulbücher aus dem Bibliothekbestand zur öffentlichen Nutzung freigestellt. Die Schulbücher werden ausdrücklich vom Bildungsministerium empfohlen.\n"
+"\t\t\tSchulbücher “Wolne Lektury”  in der Internetbibliothek(<a href="
+"\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) ist ein Projekt, das von "
+"der Stiftung Modernes Polen gefördert wird. Die Stiftung ist seit 2007 tätig "
+"und hat bisher viele Schulbücher aus dem Bibliothekbestand zur öffentlichen "
+"Nutzung freigestellt. Die Schulbücher werden ausdrücklich vom "
+"Bildungsministerium empfohlen.\n"
 "\t\t\t"
 
 #: templates/catalogue/search_multiple_hits.html:5
@@ -540,16 +654,18 @@ msgid "Search in WolneLektury.pl"
 msgstr "Suche unter WolneLektury.pl"
 
 #: templates/catalogue/search_no_hits.html:14
-#: templates/catalogue/tagged_object_list.html:116
+#: templates/catalogue/tagged_object_list.html:101
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Sorry! Die Suche ergab leider keine Treffer."
 
 #: templates/catalogue/search_no_hits.html:16
 msgid ""
-"Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.\n"
+"Search engine supports following criteria: title, author, theme/topic, "
+"epoch, kind and genre.\n"
 "\t\tAs for now we do not support full text search."
 msgstr ""
-"Die Suche kann nach folgenden Kriterien eingegrenzt werden: Titel, Autor, Motiv/Thema, Epoche, Literaturgattung und Gattungsart. \n"
+"Die Suche kann nach folgenden Kriterien eingegrenzt werden: Titel, Autor, "
+"Motiv/Thema, Epoche, Literaturgattung und Gattungsart. \n"
 "\t\tDie Suche nach Text-Phrasen wird momentan nicht unterstützt."
 
 #: templates/catalogue/search_too_short.html:14
@@ -565,8 +681,12 @@ msgid "Your shelf is empty"
 msgstr "Dein Bücherregal ist leer"
 
 #: templates/catalogue/tagged_object_list.html:16
-msgid "You can put a book on a shelf by entering page of the reading and clicking 'Put on the shelf'."
-msgstr "Du kannst das Buch aufs Regal ablegen, indem du \" aufs Regal!\" - Button anklickst."
+msgid ""
+"You can put a book on a shelf by entering page of the reading and clicking "
+"'Put on the shelf'."
+msgstr ""
+"Du kannst das Buch aufs Regal ablegen, indem du \" aufs Regal!\" - Button "
+"anklickst."
 
 #: templates/catalogue/tagged_object_list.html:32
 msgid "Download all books from this shelf"
@@ -577,6 +697,7 @@ msgid "Choose books' formats which you want to download:"
 msgstr "Wähle Buchformate aus, die du herunterladen möchtest:"
 
 #: templates/catalogue/tagged_object_list.html:37
+#: templates/catalogue/tagged_object_list.html:38
 #: templates/catalogue/tagged_object_list.html:39
 #: templates/catalogue/tagged_object_list.html:40
 msgid "for reading"
@@ -585,6 +706,10 @@ msgstr "zum Lesen"
 #: templates/catalogue/tagged_object_list.html:37
 msgid "and printing using"
 msgstr "drucken mit"
+
+#: templates/catalogue/tagged_object_list.html:38
+msgid "on mobile devices"
+msgstr ""
 
 #: templates/catalogue/tagged_object_list.html:39
 msgid "and editing using"
@@ -611,95 +736,84 @@ msgstr "Format öffnen"
 msgid "Xiph.org Foundation"
 msgstr "Xiph.org Stiftung"
 
-#: templates/catalogue/tagged_object_list.html:43
+#: templates/catalogue/tagged_object_list.html:44
 #: templates/lessons/ajax_document_detail.html:3
 #: templates/lessons/document_detail.html:13
 msgid "Download"
 msgstr "Herunterladen"
 
-#: templates/catalogue/tagged_object_list.html:43
+#: templates/catalogue/tagged_object_list.html:44
 msgid "Updating list of books' formats on the shelf"
 msgstr "Liste der Buchformate auf dem Regal aktualisieren"
 
-#: templates/catalogue/tagged_object_list.html:43
+#: templates/catalogue/tagged_object_list.html:44
 msgid "cancel"
 msgstr "löschen"
 
-#: templates/catalogue/tagged_object_list.html:48
+#: templates/catalogue/tagged_object_list.html:49
 msgid "Share this shelf"
 msgstr "Teile dieses Bücherregal"
 
-#: templates/catalogue/tagged_object_list.html:50
-msgid "Copy this link and share it with other people to let them see your shelf."
-msgstr "Kopiere diesen Link und verschicke an Personen, mit denen du dein Bücherregal teilen willst."
+#: templates/catalogue/tagged_object_list.html:51
+msgid ""
+"Copy this link and share it with other people to let them see your shelf."
+msgstr ""
+"Kopiere diesen Link und verschicke an Personen, mit denen du dein "
+"Bücherregal teilen willst."
 
-#: templates/catalogue/tagged_object_list.html:60
+#: templates/catalogue/tagged_object_list.html:61
+#: templates/pdcounter/author_detail.html:25
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr "Lies Werkanalyse dieses Autors unter Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:62
+#: templates/catalogue/tagged_object_list.html:63
 #, fuzzy, python-format
 msgid "Read study of epoch %(last_tag)s on Lektury.Gazeta.pl"
 msgstr "Lies Werkanalyse dieses Autors unter Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:64
+#: templates/catalogue/tagged_object_list.html:65
 #, fuzzy, python-format
 msgid "Read study of kind %(last_tag)s on Lektury.Gazeta.pl"
 msgstr "Lies Werkanalyse dieses Autors unter Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:66
+#: templates/catalogue/tagged_object_list.html:67
 #, fuzzy, python-format
 msgid "Read study of genre %(last_tag)s on Lektury.Gazeta.pl"
 msgstr "Lies Werkanalyse dieses Autors unter Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:68
+#: templates/catalogue/tagged_object_list.html:69
 #, fuzzy
 msgid "Read related study on Lektury.Gazeta.pl"
 msgstr "Lies Werkanalyse dieses Autors unter Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:76
+#: templates/catalogue/tagged_object_list.html:77
+#: templates/pdcounter/author_detail.html:30
 msgid "Read article about this author on Wikipedia"
 msgstr "Lies den Beitrag über diesen Autor auf Wikipedia"
 
-#: templates/catalogue/tagged_object_list.html:78
+#: templates/catalogue/tagged_object_list.html:79
 #, fuzzy, python-format
 msgid "Read article about epoch %(last_tag)s on Wikipedia"
 msgstr "Lies den Beitrag über diesen Autor auf Wikipedia"
 
-#: templates/catalogue/tagged_object_list.html:80
+#: templates/catalogue/tagged_object_list.html:81
 #, fuzzy, python-format
 msgid "Read article about kind %(last_tag)s on Wikipedia"
 msgstr "Lies den Beitrag über diesen Autor auf Wikipedia"
 
-#: templates/catalogue/tagged_object_list.html:82
+#: templates/catalogue/tagged_object_list.html:83
 #, fuzzy, python-format
 msgid "Read article about genre %(last_tag)s on Wikipedia"
 msgstr "Lies den Beitrag über diesen Autor auf Wikipedia"
 
-#: templates/catalogue/tagged_object_list.html:84
+#: templates/catalogue/tagged_object_list.html:85
 #, fuzzy
 msgid "Read related article on Wikipedia"
 msgstr "Lies den Beitrag über diesen Autor auf Wikipedia"
 
-#: templates/catalogue/tagged_object_list.html:94
+#: templates/catalogue/tagged_object_list.html:95
 msgid "Delete"
 msgstr "Löschen"
-
-#: templates/catalogue/tagged_object_list.html:102
-msgid "This author's works are copyrighted."
-msgstr "Die Werke dieses Autors sind urheberrechtlich geschützt."
-
-#: templates/catalogue/tagged_object_list.html:105
-msgid "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon."
-msgstr "Dieses Werk ist zur öffentlichen Nutzung vorgesehen und wird bald in der Internetbibliothek Wolne Lektury veröffentlicht sein."
-
-#: templates/catalogue/tagged_object_list.html:109
-msgid "This author's works will become part of public domain and will be allowed to be published without restrictions in"
-msgstr "Die Werke dieses Autors werden bald zur öffentlichen Nutzung freigestellt und können in der Zukunft ohne weitere Einschränkungen veröffentlicht werden."
-
-#: templates/catalogue/tagged_object_list.html:111
-msgid "Find out why Internet libraries can't publish this author's works."
-msgstr "Finde heraus, warum Internet-Bibliotheken zu den Werken dieses Autors den Zugang verwähren."
 
 #: templates/catalogue/user_shelves.html:6
 msgid "remove"
@@ -707,7 +821,9 @@ msgstr "löschen"
 
 #: templates/catalogue/user_shelves.html:10
 msgid "You do not own any shelves. You can create one below if you want to"
-msgstr "Keine neue Bücherregale vorhanden. Wenn du willst, kannst du ein neues Bücherregal erstellen."
+msgstr ""
+"Keine neue Bücherregale vorhanden. Wenn du willst, kannst du ein neues "
+"Bücherregal erstellen."
 
 #: templates/info/base.html:10
 msgid "return to the main page"
@@ -715,10 +831,14 @@ msgstr "zur Startseite wechseln"
 
 #: templates/info/join_us.html:2
 msgid ""
-"We have over 1000 works published in Wolne Lektury!\n"
+"We have over 1200 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
 "making a donation or transferring 1% of your income tax."
-msgstr "Auf unserer Hompage Wolne Lektury wurden bereits etwa 1000 Werke veröffentlicht! Helfe uns bei der Mitgestaltung und Veröffentlichung neuer Schullektüren, indem du uns eine Spende in Höhe von 1% deiner Steuerabgaben übergibst."
+msgstr ""
+"Auf unserer Hompage Wolne Lektury wurden bereits etwa 1200 Werke "
+"veröffentlicht! Helfe uns bei der Mitgestaltung und Veröffentlichung neuer "
+"Schullektüren, indem du uns eine Spende in Höhe von 1% deiner Steuerabgaben "
+"übergibst."
 
 #: templates/info/join_us.html:5 templates/info/join_us.html.py:10
 msgid "More..."
@@ -729,7 +849,11 @@ msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
 "we're currently working on a reading you're looking for and prepare\n"
 "a publication by yourself by logging into the Editorial Platform."
-msgstr "Werde Redakteur/in bei  Wolne Lektury! Schau, ob wir gerade an der Veröffentlichung der Schullektüre arbeiten, die du ausgesucht hast. Um eigene Texte zu veröffentlichen, musst du vorher auf unserer redaktionellen Online-Plattform eingeloggt sein. "
+msgstr ""
+"Werde Redakteur/in bei  Wolne Lektury! Schau, ob wir gerade an der "
+"Veröffentlichung der Schullektüre arbeiten, die du ausgesucht hast. Um "
+"eigene Texte zu veröffentlichen, musst du vorher auf unserer redaktionellen "
+"Online-Plattform eingeloggt sein. "
 
 #: templates/lessons/ajax_document_detail.html:3
 #: templates/lessons/document_detail.html:13
@@ -753,6 +877,90 @@ msgstr "zurück"
 #: templates/pagination/pagination.html:23
 msgid "next"
 msgstr "vor"
+
+#: templates/pdcounter/author_detail.html:35
+msgid "This author's works are copyrighted."
+msgstr "Die Werke dieses Autors sind urheberrechtlich geschützt."
+
+#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:44
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this author's works."
+msgstr ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Finde heraus</"
+"a>, warum Internet-Bibliotheken zu den Werken dieses Autors den "
+"Zugang verwähren."
+
+#: templates/pdcounter/author_detail.html:39
+msgid ""
+"This author's works are in public domain and will be published on Internet "
+"school library of Wolne Lektury soon."
+msgstr ""
+"Dieses Werk ist zur öffentlichen Nutzung vorgesehen und wird bald in der "
+"Internetbibliothek Wolne Lektury veröffentlicht sein."
+
+#: templates/pdcounter/author_detail.html:42
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in"
+msgstr ""
+"Die Werke dieses Autors werden bald zur öffentlichen Nutzung freigestellt "
+"und können in der Zukunft ohne weitere Einschränkungen veröffentlicht werden."
+
+#: templates/pdcounter/book_stub_detail.html:16
+msgid ""
+"This work is in public domain and will be published on Internet school "
+"library of Wolne Lektury soon."
+msgstr ""
+"Dieses Werk ist zur öffentlichen Nutzung vorgesehen und wird bald in der "
+"Internetbibliothek Wolne Lektury veröffentlicht sein."
+
+#: templates/pdcounter/book_stub_detail.html:19
+msgid ""
+"This work will become part of public domain and will be allowed to be "
+"published without restrictions in"
+msgstr ""
+"Dieses Werk wird bald zur öffentlichen Nutzung freigestellt und kann in der "
+"Zukunft ohne weitere Einschränkungen veröffentlicht werden"
+
+#: templates/pdcounter/book_stub_detail.html:21
+#: templates/pdcounter/book_stub_detail.html:24
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this work."
+msgstr ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Finde heraus</"
+"a>, warum Internet-Bibliotheken die Werke dieses Autors nicht "
+"veröffentlichen dürfen."
+
+#: templates/pdcounter/book_stub_detail.html:23
+msgid "This work is copyrighted."
+msgstr "Dieses Werk ist urheberrechtlich geschützt."
+
+#~ msgid "Download ODT"
+#~ msgstr "ODT-Datei herunterladen"
+
+#~ msgid "Artist"
+#~ msgstr "Liest"
+
+#~ msgid "Director"
+#~ msgstr "Führt Regie"
+
+#~ msgid "Download MP3"
+#~ msgstr "MP3-Datei herunterladen"
+
+#~ msgid "Download Ogg Vorbis"
+#~ msgstr "Ogg Vorbis-Datei herunterladen"
+
+#~ msgid "Download DAISY"
+#~ msgstr "DAISY10-Datei herunterladen"
+
+#~ msgid "check list of books"
+#~ msgstr "Siehe Bücherliste"
+
+#~ msgid "in our repository"
+#~ msgstr "in unserer Sammlung"
 
 #~ msgid "Polish"
 #~ msgstr "Polnisch"

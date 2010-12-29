@@ -5,7 +5,7 @@
 from django.contrib import admin
 
 from newtagging.admin import TaggableModelAdmin
-from catalogue.models import Tag, Book, Fragment, BookStub, BookMedia
+from catalogue.models import Tag, Book, Fragment, BookMedia
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -35,15 +35,6 @@ class FragmentAdmin(TaggableModelAdmin):
     ordering = ('book', 'anchor',)
 
 
-class BookStubAdmin(admin.ModelAdmin):
-    # tag_model = Tag
-
-    list_display = ('title', 'author', 'slug','pd')
-    search_fields = ('title','author')
-    ordering = ('title',)
-
-    prepopulated_fields = {'slug': ('title',)}
-
 class MediaAdmin(admin.ModelAdmin):
     #tag_model = BookMedia
 
@@ -52,7 +43,6 @@ class MediaAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(BookStub, BookStubAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Fragment, FragmentAdmin)
