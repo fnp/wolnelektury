@@ -11,7 +11,6 @@ from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
-from datetime import datetime
 
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
@@ -52,7 +51,6 @@ class Tag(TagBase):
 
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), blank=False, null=True)
-    death = models.IntegerField(_(u'year of death'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
@@ -86,17 +84,6 @@ class Tag(TagBase):
         return len(self.description) > 0
     has_description.short_description = _('description')
     has_description.boolean = True
-
-    def alive(self):
-        return self.death is None
-
-    def in_pd(self):
-        """ tests whether an author is in public domain """
-        return self.death is not None and self.goes_to_pd() <= datetime.now().year
-
-    def goes_to_pd(self):
-        """ calculates the year of public domain entry for an author """
-        return self.death + 71 if self.death is not None else None
 
     def get_count(self):
         """ returns global book count for book tags, fragment count for themes """
@@ -592,34 +579,6 @@ class Fragment(models.Model):
                 {'fragment': self})))
             self.save()
             return mark_safe(getattr(self, key))
-
-
-class BookStub(models.Model):
-    title = models.CharField(_('title'), max_length=120)
-    author = models.CharField(_('author'), max_length=120)
-    pd = models.IntegerField(_('goes to public domain'), null=True, blank=True)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
-    translator = models.TextField(_('translator'), blank=True)
-    translator_death = models.TextField(_('year of translator\'s death'), blank=True)
-
-    class Meta:
-        ordering = ('title',)
-        verbose_name = _('book stub')
-        verbose_name_plural = _('book stubs')
-
-    def __unicode__(self):
-        return self.title
-
-    @permalink
-    def get_absolute_url(self):
-        return ('catalogue.views.book_detail', [self.slug])
-
-    def in_pd(self):
-        return self.pd is not None and self.pd <= datetime.now().year
-
-    @property
-    def name(self):
-        return self.title
 
 
 class FileRecord(models.Model):

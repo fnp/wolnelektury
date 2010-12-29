@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-29 13:52+0000\n"
+"PO-Revision-Date: 2010-08-25 10:45\n"
+"Last-Translator: <radek.czajka@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.5.6\n"
+
+#: models.py:12
+msgid "name"
+msgstr "name"
+
+#: models.py:13 models.py:64
+msgid "slug"
+msgstr "Slug"
+
+#: models.py:14
+msgid "sort key"
+msgstr "Sort key"
+
+#: models.py:15 models.py:41
+msgid "description"
+msgstr "Description"
+
+#: models.py:16
+msgid "year of death"
+msgstr "Year of death"
+
+#: models.py:22 models.py:62
+msgid "author"
+msgstr "author"
+
+#: models.py:23
+#, fuzzy
+msgid "authors"
+msgstr "author"
+
+#: models.py:61
+msgid "title"
+msgstr "Title"
+
+#: models.py:63
+msgid "goes to public domain"
+msgstr "Goes to public domain"
+
+#: models.py:65
+msgid "translator"
+msgstr "Translator"
+
+#: models.py:66
+msgid "year of translator's death"
+msgstr "Year of translator's death"
+
+#: models.py:70
+msgid "book stub"
+msgstr "Book stub"
+
+#: models.py:71
+msgid "book stubs"
+msgstr "Book stubs"
+
