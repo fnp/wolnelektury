@@ -897,8 +897,7 @@ msgid ""
 "a> why Internet libraries can't publish this work."
 msgstr ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Dowiedz "
-"się</a>, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego "
-"autora."
+"się</a>, dlaczego biblioteki internetowe nie mogą udostępniać tego dzieła."
 
 #: templates/pdcounter/book_stub_detail.html:23
 msgid "This work is copyrighted."
