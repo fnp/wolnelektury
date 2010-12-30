@@ -1,3 +1,4 @@
+var STATIC = '/static/';
 var LOCALE_TEXTS = {
     "pl": {
         "DELETE_SHELF": "Czy na pewno usunąć półkę",
@@ -73,7 +74,6 @@ var BANNER_TEXTS = [
     'Pan Tadeusz też chce być w Internecie! Przekaż 1% swojego podatku.',
     'Pomóż uwolnić 286 utworów z listy lektur szkolnych. Przekaż swój 1% na Wolne Lektury.'
 ]
-
 
 function changeBannerText() {
     var index = Math.floor(Math.random() * BANNER_TEXTS.length);
@@ -492,5 +492,44 @@ function serverTime() {
             return false;
         });
 
+        // player for audiobooks
+ 
+        // event handlers for playing different formats
+        $('p.header span').click(function(){
+            if(this.className != "desc"){
+                $('.audiobook-list').hide();
+                $('p.header span.active').attr('class', '');
+                // we don't want to interact with "audiobook" label, just 'format' tabs
+                this.className = "active";
+                $("#"+$("p.header span.active").html().toLowerCase()+"-files").show();
+            }
+        });
+        
+        
+        
+        $('.audiobook-list').hide();
+        $("#"+$("p.header span.active").html().toLowerCase()+"-files").show();
+        
+        /* this will be useful for javascript html player
+        var medias = $('.audiobook-list a');
+        var mp3List = [];
+        var oggList = [];
+        var daisyList = [];
+        var tmpExt;
+        if (medias.length > 0) {
+            // creating sources list for player
+            medias.each(function(index, item) {
+                tmpExt = item.href.split(".").pop();    
+                if(tmpExt == "mp3") {
+                    mp3List.push(item.href);
+                } else if (tmpExt == "ogg") {
+                    oggList.push(item.href);
+                } else if(tmpExt == "daisy") {
+                    daisyList.push(item.href);
+                }
+            }); 
+        }*/       
+
     });
 })(jQuery)
+

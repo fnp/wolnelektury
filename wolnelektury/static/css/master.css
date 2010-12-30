@@ -292,18 +292,109 @@ p .ac_input {
 #book-detail #formats .change-sets {
     margin-right: 0.5em;
 }
+/*
+#formats .wrap ul {
+    margin: 0;
+    padding: 0;
+}
 
-#formats .wrap p {
+#formats .wrap li {
+    display: block;
+    width: 100%;
+    height: 1.9em;
+    background-color: #F2F2F2;
+    border: 1px solid #EEE;
+    text-align: center;    
+}
+*/
+#formats .wrap .header {
+    display: block;
+    width: 100%;
+    height: 1.9em;
+    background-color: #FFF;
+    border: 1px solid #EEE;
+    margin: 0;
+    padding: 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    color:#2F4110;
+    margin-top: 40px;
+}
+
+#formats .wrap .header span.active {
+    display: block;
+    height: 1.5em;
+    background-color:#FFF;
+    width: 80px;
+    text-align: center;
+    padding: 2px 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    color: #2F4110;
+    font-weight: bold;    
+    float:left;
+    border: 1px solid #EEE;    
+}
+
+#formats .wrap .header span {
+    display: block;
+    height: 1.6em;
+    background-color:#EEE;
+    width: 80px;
+    text-align: center;
+    padding: 2px 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    color: #2F4110;
+    font-weight: bold;    
+    float:left;
+    cursor: pointer;
+    border: 1px solid #EEE;    
+}
+
+#formats .wrap .header span.desc {
+    display: block;
+    height: 1.6em;
+    background-color: #EEE;
+    width: 100px;
+    text-align: center;
+    padding: 2px 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    color: #2F4110;
+    font-weight: bold;    
+    float:left;
+    cursor: normal;
+    margin-right: 20px;
+    border:0px;
+}
+
+
+#formats .wrap p.online {
     display: block;
     width: 100%;
     height: 1.5em;
     background-color: #EEE;
     margin-top: 0.5em;
-    padding: 0.5em 0;
+    padding: 1em 0;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    text-align: center;    
+    text-align: center;
+    font-size: 1.6em;
+        
+}
+
+#formats .wrap div.download {
+    text-align: center;   
+    margin-bottom: 10px; 
+}
+#formats .wrap div.download img {
+    padding: 0 10px 0 10px;    
 }
 
 #czytamysluchajac {
@@ -320,9 +411,26 @@ p .ac_input {
     padding-top: 1em;
     padding-bottom: 0em;
 }
-li.mp3Player {
+div.audiobooks li {
     list-style-type: none;
 }
+
+div.audiobooks {
+    padding: 15px;
+    float: left;
+}
+
+.audiobook-list {
+    float: left; width: 270px;
+    position: relative;
+    left: 10px;
+}
+
+#speaker {
+    float: left; 
+    padding:5px 10px;
+}
+
 #formats #czytamysluchajac-logo {
     background: white;
     text-align: left;
