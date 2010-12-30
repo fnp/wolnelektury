@@ -3,7 +3,6 @@
 	/*border: 1px solid #ccc;
 	background-color: #eee;*/
 	margin: 20px 0 50px 0;
-	line-height: 32px;
 }
 .countdown_rtl {
 	direction: rtl;
@@ -46,6 +45,7 @@
 }
 .countdown_amount {
 	font-size: 350%;
+	line-height: 32px;
 }
 .countdown_descr {
 	display: block;
