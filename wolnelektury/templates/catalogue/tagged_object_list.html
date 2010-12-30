@@ -98,24 +98,7 @@
             {% endfor %}
             </ol>
         {% else %}
-			{% if only_author %}
-	            {% if last_tag.alive %}
-					{% trans "This author's works are copyrighted." %}
-				{% else %}{% comment %} Is dead {% endcomment %}
-            	    {% if last_tag.in_pd %}
-						<p>{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
-	                {% else %}
-						{% comment %} Is dead, but not yet in public domain {% endcomment %}
-    	                <div>
-        	                <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>
-							{% include "catalogue/pd_counter.html" %}
-                            <p>{% trans "Find out why Internet libraries can't publish this author's works." %}</p>
-						</div>
-	                {% endif %}
-                {% endif %}
-			{% else %}
-			    {% trans "Sorry! Search cirteria did not match any resources." %}
-			{% endif %}
+            {% trans "Sorry! Search cirteria did not match any resources." %}
             {% include "info/join_us.html" %}
         {% endif %}
         {% endwith %}

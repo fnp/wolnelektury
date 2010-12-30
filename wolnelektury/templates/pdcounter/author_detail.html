@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ author.name }} w WolneLektury.pl{% endblock %}
+
+{% block bodyid %}author-detail{% endblock %}
+
+{% block body %}
+    <h1>{{ author.name }}</h1>
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
+    </form>
+
+    <div id="books-list">
+        {% if author.has_description %}
+            <div id="description">
+                <div id='description-long'>{{ author.description|safe }}</div>
+                <div id='description-short'>{{ author.description|safe|truncatewords_html:30 }}</div>
+            </div>
+            <div class="clearboth"></div>
+            <div id="toggle-description"><p></p></div>
+        {% endif %}
+        {% if author.gazeta_link %}
+        <p><a href="{{ author.gazeta_link }}">
+            {% trans "Read work's study of this author on Lektury.Gazeta.pl" %}
+        </a></p>
+        {% endif %}
+        {% if author.wiki_link %}
+        <p><a href="{{ author.wiki_link }}">
+            {% trans "Read article about this author on Wikipedia" %}
+        </a></p>
+        {% endif %}
+
+        {% if author.alive %}
+            <p>{% trans "This author's works are copyrighted." %}
+            {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
+        {% else %}
+            {% if author.in_pd %}
+                <p>{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
+            {% else %}
+                <div>
+                    <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>
+                    {% include "pdcounter/pd_counter.html" %}
+                    <p>{% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% include "info/join_us.html" %}
+    </div>
+
+    <div id="set-window">
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+        <div class="target">
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+        </div>
+    </div>
+{% endblock %}

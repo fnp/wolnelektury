@@ -36,6 +36,8 @@ from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
 from newtagging import views as newtagging_views
+from pdcounter import models as pdcounter_models
+from pdcounter import views as pdcounter_views
 from slughifi import slughifi
 
 
@@ -144,7 +146,11 @@ def tagged_object_list(request, tags=''):
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
-        raise Http404
+        chunks = tags.split('/')
+        if len(chunks) == 2 and chunks[0] == 'autor':
+            return pdcounter_views.author_detail(request, chunks[1])
+        else:
+            raise Http404
     except models.Tag.MultipleObjectsReturned, e:
         return differentiate_tags(request, e.tags, e.ambiguous_slugs)
 
@@ -162,7 +168,7 @@ def tagged_object_list(request, tags=''):
     only_shelf = shelf_is_set and len(tags) == 1
     only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
 
-    objects = only_author = pd_counter = None
+    objects = only_author = None
     categories = {}
 
     if theme_is_set:
@@ -215,7 +221,6 @@ def tagged_object_list(request, tags=''):
 
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
-        pd_counter = only_author and tags[0].goes_to_pd()
         objects = models.Book.objects.none()
 
     return object_list(
@@ -226,7 +231,6 @@ def tagged_object_list(request, tags=''):
             'categories': categories,
             'only_shelf': only_shelf,
             'only_author': only_author,
-            'pd_counter': pd_counter,
             'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
 
@@ -250,7 +254,7 @@ def book_detail(request, slug):
     try:
         book = models.Book.objects.get(slug=slug)
     except models.Book.DoesNotExist:
-        return book_stub_detail(request, slug)
+        return pdcounter_views.book_stub_detail(request, slug)
 
     book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
@@ -273,15 +277,6 @@ def book_detail(request, slug):
 
     form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),
-        context_instance=RequestContext(request))
-
-
-def book_stub_detail(request, slug):
-    book = get_object_or_404(models.BookStub, slug=slug)
-    pd_counter = book.pd
-    form = forms.SearchForm()
-
-    return render_to_response('catalogue/book_stub_detail.html', locals(),
         context_instance=RequestContext(request))
 
 
@@ -378,9 +373,11 @@ _apps = (
 
 def _tags_starting_with(prefix, user=None):
     prefix = prefix.lower()
-    book_stubs = models.BookStub.objects.filter(_word_starts_with('title', prefix))
+    # PD counter
+    book_stubs = pdcounter_models.BookStub.objects.filter(_word_starts_with('title', prefix))
+    authors = pdcounter_models.Author.objects.filter(_word_starts_with('name', prefix))
+
     books = models.Book.objects.filter(_word_starts_with('title', prefix))
-    book_stubs = filter(lambda x: x not in books, book_stubs)
     tags = models.Tag.objects.filter(_word_starts_with('name', prefix))
     if user and user.is_authenticated():
         tags = tags.filter(~Q(category='book') & (~Q(category='set') | Q(user=user)))
@@ -388,21 +385,22 @@ def _tags_starting_with(prefix, user=None):
         tags = tags.filter(~Q(category='book') & ~Q(category='set'))
 
     prefix_regexp = re.compile(_word_starts_with_regexp(prefix))
-    return list(books) + list(tags) + list(book_stubs) + [app for app in _apps if prefix_regexp.search(app.lower)]
+    return list(books) + list(tags) + [app for app in _apps if prefix_regexp.search(app.lower)] + list(book_stubs) + list(authors)
 
 
 def _get_result_link(match, tag_list):
-    if isinstance(match, models.Book) or isinstance(match, models.BookStub):
-        return match.get_absolute_url()
-    elif isinstance(match, App):
-        return match.view()
-    else:
+    if isinstance(match, models.Tag):
         return reverse('catalogue.views.tagged_object_list',
             kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])}
         )
+    elif isinstance(match, App):
+        return match.view()
+    else:
+        return match.get_absolute_url()
+
 
 def _get_result_type(match):
-    if isinstance(match, models.Book) or isinstance(match, models.BookStub):
+    if isinstance(match, models.Book) or isinstance(match, pdcounter_models.BookStub):
         type = 'book'
     else:
         type = match.category
@@ -415,7 +413,7 @@ def books_starting_with(prefix):
 
 
 def find_best_matches(query, user=None):
-    """ Finds a Book, Tag or Bookstub best matching a query.
+    """ Finds a Book, Tag, BookStub or Author best matching a query.
 
     Returns a with:
       - zero elements when nothing is found,
@@ -430,11 +428,21 @@ def find_best_matches(query, user=None):
         raise ValueError("query must have at least two characters")
 
     result = tuple(_tags_starting_with(query, user))
+    # remove pdcounter stuff
+    book_titles = set(match.pretty_title().lower() for match in result
+                      if isinstance(match, models.Book))
+    authors = set(match.name.lower() for match in result
+                  if isinstance(match, models.Tag) and match.category=='author')
+    result = (res for res in result if not (
+                 (isinstance(res, pdcounter_models.BookStub) and res.pretty_title().lower() in book_titles)
+                 or (isinstance(res, pdcounter_models.Author) and res.name.lower() in authors)
+             ))
+
     exact_matches = tuple(res for res in result if res.name.lower() == query)
     if exact_matches:
         return exact_matches
     else:
-        return result[:1]
+        return tuple(result)[:1]
 
 
 def search(request):

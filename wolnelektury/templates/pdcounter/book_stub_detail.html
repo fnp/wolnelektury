@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags pagination_tags %}
 
 {% block title %}{{ book.title }} w WolneLektury.pl{% endblock %}
 
 {% block bodyid %}book-stub-detail{% endblock %}
 
 {% block body %}
-    <h1>{{ book.title }}, {{ book.author }}</h1>
+    <h1>{{ book.author }}, {{ book.title }}</h1>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
 
     <div id="books-list">
     {% if book.in_pd %}
-		{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %}
+		<p>{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
 	{% else %}
 	    {% if book.pd %}
-			{% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}
-		    {% include "catalogue/pd_counter.html" %}
-			{% trans "Find out why Internet libraries can't publish this work." %}
+			<p>{% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}</p>
+		    {% include "pdcounter/pd_counter.html" %}
+			<p>{% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}</p>
 		{% else %}
-		    {% trans "This work is copyrighted." %}
+		    <p>{% trans "This work is copyrighted." %}
+		    {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}</p>
 		{% endif %}
 	{% endif %}
     {% include "info/join_us.html" %}
