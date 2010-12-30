@@ -3,6 +3,7 @@
 	/*border: 1px solid #ccc;
 	background-color: #eee;*/
 	margin: 20px 0 50px 0;
+	line-height: 32px;
 }
 .countdown_rtl {
 	direction: rtl;
