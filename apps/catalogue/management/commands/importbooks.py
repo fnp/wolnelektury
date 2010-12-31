@@ -4,6 +4,7 @@
 #
 import os
 import sys
+import time
 from optparse import make_option
 
 from django.core.management.base import BaseCommand
@@ -18,7 +19,11 @@ class Command(BaseCommand):
         make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
             help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
         make_option('-f', '--force', action='store_true', dest='force', default=False,
-            help='Print status messages to stdout')
+            help='Print status messages to stdout'),
+        make_option('-E', '--no-build-epub', action='store_false', dest='build_epub', default=True,
+            help='Don\'t build EPUB file'),
+        make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
+            help='Wait until specified time (Y-M-D h:m:s)'),
     )
     help = 'Imports books from the specified directories.'
     args = 'directory [directory ...]'
@@ -31,6 +36,13 @@ class Command(BaseCommand):
         verbose = options.get('verbose')
         force = options.get('force')
         show_traceback = options.get('traceback', False)
+
+        if options.get('wait_until'):
+            wait_until = time.mktime(time.strptime(options.get('wait_until'), '%Y-%m-%d %H:%M:%S'))
+            if verbose > 0:
+                print "Will wait until %s; it's %f seconds from now" % (
+                    time.strftime('%Y-%m-%d %H:%M:%S', 
+                    time.localtime(wait_until)), wait_until - time.time())
 
         # Start transaction management.
         transaction.commit_unless_managed()
@@ -64,7 +76,7 @@ class Command(BaseCommand):
 
                     # Import book files
                     try:
-                        book = Book.from_xml_file(file_path, overwrite=force)
+                        book = Book.from_xml_file(file_path, overwrite=force, build_epub=options.get('build_epub'))
                         files_imported += 1
 
                         if os.path.isfile(file_base + '.pdf'):
@@ -119,6 +131,13 @@ class Command(BaseCommand):
         print "Results: %d files imported, %d skipped, %d total." % (
             files_imported, files_skipped, files_imported + files_skipped)
         print
+
+        if wait_until:
+            print 'Waiting...'
+            try:
+                time.sleep(wait_until - time.time())
+            except IOError:
+                print "it's already too late"
 
         transaction.commit()
         transaction.leave_transaction_management()

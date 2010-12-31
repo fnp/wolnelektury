@@ -286,7 +286,7 @@
         <div id="latest-blog-posts">
             <h2>{% trans "News" %}</h2>
             {% cache 1800 latest-blog-posts %}
-            {% latest_blog_posts "http://www.nowoczesnapolska.org.pl/tematy/wolne-lektury/feed/" %}
+            {% latest_blog_posts "http://nowoczesnapolska.org.pl/category/wolne-lektury/feed/" %}
             {% endcache %}
             <p class="see-more"><a href="http://www.nowoczesnapolska.org.pl/">{% trans "See our blog" %} ⇒</a></p>
         </div>

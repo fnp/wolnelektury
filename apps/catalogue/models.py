@@ -442,7 +442,7 @@ class Book(models.Model):
 
         epub_file = StringIO()
         try:
-            epub.transform(BookImportDocProvider(self), self.slug, epub_file)
+            epub.transform(BookImportDocProvider(self), self.slug, output_file=epub_file)
             self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()), save=False)
             self.save(refresh_mp3=False)
             FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
@@ -460,7 +460,7 @@ class Book(models.Model):
 
 
     @classmethod
-    def from_xml_file(cls, xml_file, overwrite=False):
+    def from_xml_file(cls, xml_file, overwrite=False, build_epub=True):
         # use librarian to parse meta-data
         book_info = dcparser.parse(xml_file)
 
@@ -468,12 +468,12 @@ class Book(models.Model):
             xml_file = File(open(xml_file))
 
         try:
-            return cls.from_text_and_meta(xml_file, book_info, overwrite)
+            return cls.from_text_and_meta(xml_file, book_info, overwrite, build_epub=build_epub)
         finally:
             xml_file.close()
 
     @classmethod
-    def from_text_and_meta(cls, raw_file, book_info, overwrite=False):
+    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
@@ -582,7 +582,7 @@ class Book(models.Model):
                 new_fragment.save()
                 new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
 
-        if not settings.NO_BUILD_EPUB:
+        if not settings.NO_BUILD_EPUB and build_epub:
             book.root_ancestor().build_epub()
 
         book_descendants = list(book.children.all())
