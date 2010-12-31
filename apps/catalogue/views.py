@@ -383,7 +383,7 @@ def find_best_matches(query, user=None):
                       if isinstance(match, models.Book))
     authors = set(match.name.lower() for match in result
                   if isinstance(match, models.Tag) and match.category=='author')
-    result = (res for res in result if not (
+    result = tuple(res for res in result if not (
                  (isinstance(res, pdcounter_models.BookStub) and res.pretty_title().lower() in book_titles)
                  or (isinstance(res, pdcounter_models.Author) and res.name.lower() in authors)
              ))
