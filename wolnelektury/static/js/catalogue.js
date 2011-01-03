@@ -495,20 +495,17 @@ function serverTime() {
         // player for audiobooks
  
         // event handlers for playing different formats
-        $('p.header span').click(function(){
-            if(this.className != "desc"){
-                $('.audiobook-list').hide();
-                $('p.header span.active').attr('class', '');
-                // we don't want to interact with "audiobook" label, just 'format' tabs
-                this.className = "active";
-                $("#"+$("p.header span.active").html().toLowerCase()+"-files").show();
-            }
+        $('.audiotabs span').click(function(){
+            $('.audiobook-list').hide();
+            $('.audiotabs .active').removeClass('active');
+            // we don't want to interact with "audiobook" label, just 'format' tabs
+            var $this = $(this);
+            $this.addClass("active");
+            $("#"+$this.html().toLowerCase()+"-files").show();
         });
-        
-        
-        
+
         $('.audiobook-list').hide();
-        $("#"+$("p.header span.active").html().toLowerCase()+"-files").show();
+        $("#"+$(".audiotabs .active").html().toLowerCase()+"-files").show();
         
         /* this will be useful for javascript html player
         var medias = $('.audiobook-list a');

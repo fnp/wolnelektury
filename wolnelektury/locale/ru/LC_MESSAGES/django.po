@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 20:40+0100\n"
+"POT-Creation-Date: 2011-01-05 12:44+0100\n"
 "PO-Revision-Date: 2010-08-25 11:05\n"
 "Last-Translator: <radek.czajka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,7 +135,7 @@ msgstr ""
 "\t\t\t\t"
 
 #: templates/base.html:86 templates/base.html.py:107 templates/base.html:113
-#: templates/catalogue/book_detail.html:168
+#: templates/catalogue/book_detail.html:179
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/differentiate_tags.html:23
 #: templates/catalogue/search_multiple_hits.html:29
@@ -148,7 +148,7 @@ msgid "Close"
 msgstr "Закройте"
 
 #: templates/base.html:109 templates/base.html.py:115
-#: templates/catalogue/book_detail.html:170
+#: templates/catalogue/book_detail.html:181
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/differentiate_tags.html:25
 #: templates/catalogue/search_multiple_hits.html:31
@@ -241,63 +241,115 @@ msgstr "на полку"
 msgid "Read online"
 msgstr "Читать онлайн"
 
-#: templates/catalogue/book_detail.html:47
+#: templates/catalogue/book_detail.html:48
 msgid "Download PDF"
 msgstr "Скачать PDF"
 
-#: templates/catalogue/book_detail.html:50
+#: templates/catalogue/book_detail.html:48
+#: templates/catalogue/book_detail.html:51
+#: templates/catalogue/book_detail.html:54
+#: templates/catalogue/book_detail.html:57
+#: templates/catalogue/tagged_object_list.html:37
+#: templates/catalogue/tagged_object_list.html:38
+#: templates/catalogue/tagged_object_list.html:39
+#: templates/catalogue/tagged_object_list.html:40
+msgid "for reading"
+msgstr "для чтения"
+
+#: templates/catalogue/book_detail.html:48
+#: templates/catalogue/tagged_object_list.html:37
+msgid "and printing using"
+msgstr "и для печатки"
+
+#: templates/catalogue/book_detail.html:51
 msgid "Download EPUB"
 msgstr "Скачать EPUB"
 
-#: templates/catalogue/book_detail.html:61
+#: templates/catalogue/book_detail.html:51
+#: templates/catalogue/tagged_object_list.html:38
+msgid "on mobile devices"
+msgstr ""
+
+#: templates/catalogue/book_detail.html:54
 msgid "Download TXT"
 msgstr "Скачать TXT"
 
-#: templates/catalogue/book_detail.html:114
+#: templates/catalogue/book_detail.html:54
+#: templates/catalogue/tagged_object_list.html:40
+msgid "on small displays, for example mobile phones"
+msgstr "на маленьких дисплеях, напр. мобильных телефонов"
+
+#: templates/catalogue/book_detail.html:57
+msgid "Download ODT"
+msgstr "Скачать ODT"
+
+#: templates/catalogue/book_detail.html:57
+#: templates/catalogue/tagged_object_list.html:39
+msgid "and editing using"
+msgstr "и для редактирования"
+
+#: templates/catalogue/book_detail.html:62
+msgid "Audiobooks"
+msgstr ""
+
+#: templates/catalogue/book_detail.html:76
+msgid "Artist"
+msgstr "Артист"
+
+#: templates/catalogue/book_detail.html:77
+msgid "Director"
+msgstr "режиссер"
+
+#: templates/catalogue/book_detail.html:104
+#, python-format
+msgid "Audiobooks were prepared as a part of the %(cs)s project."
+msgstr ""
+
+#: templates/catalogue/book_detail.html:126
 msgid "Details"
 msgstr "Подробнее"
 
-#: templates/catalogue/book_detail.html:118
+#: templates/catalogue/book_detail.html:129
 msgid "Author"
 msgstr "Автор"
 
-#: templates/catalogue/book_detail.html:124
+#: templates/catalogue/book_detail.html:135
 msgid "Epoch"
 msgstr "эпоха"
 
-#: templates/catalogue/book_detail.html:130
+#: templates/catalogue/book_detail.html:141
 msgid "Kind"
 msgstr "форма"
 
-#: templates/catalogue/book_detail.html:136
+#: templates/catalogue/book_detail.html:147
 msgid "Genre"
 msgstr "жанр"
 
-#: templates/catalogue/book_detail.html:142
+#: templates/catalogue/book_detail.html:153
 msgid "Other resources"
 msgstr "другие ресурсы"
 
-#: templates/catalogue/book_detail.html:144
+#: templates/catalogue/book_detail.html:155
 msgid "Book on project's wiki"
 msgstr "Книга по проекту вики"
 
-#: templates/catalogue/book_detail.html:146
+#: templates/catalogue/book_detail.html:157
 msgid "Source of the book"
 msgstr "Источник книги"
 
-#: templates/catalogue/book_detail.html:149
+#: templates/catalogue/book_detail.html:160
 msgid "Book description on Lektury.Gazeta.pl"
 msgstr "Описание книги на Lektury.Gazeta.pl"
 
-#: templates/catalogue/book_detail.html:152
+#: templates/catalogue/book_detail.html:163
 msgid "Book description on Wikipedia"
 msgstr "Описание книги на Wikipedia"
 
-#: templates/catalogue/book_detail.html:155
+#: templates/catalogue/book_detail.html:166
 msgid "View XML source"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:158
+#: templates/catalogue/book_detail.html:169
 msgid "Work's themes "
 msgstr "Темы труда"
 
@@ -692,29 +744,6 @@ msgstr "Скачать все книги с этой полки"
 msgid "Choose books' formats which you want to download:"
 msgstr "Выбрать формат книг, которые вы хотите скачать:"
 
-#: templates/catalogue/tagged_object_list.html:37
-#: templates/catalogue/tagged_object_list.html:38
-#: templates/catalogue/tagged_object_list.html:39
-#: templates/catalogue/tagged_object_list.html:40
-msgid "for reading"
-msgstr "для чтения"
-
-#: templates/catalogue/tagged_object_list.html:37
-msgid "and printing using"
-msgstr "и для печатки"
-
-#: templates/catalogue/tagged_object_list.html:38
-msgid "on mobile devices"
-msgstr ""
-
-#: templates/catalogue/tagged_object_list.html:39
-msgid "and editing using"
-msgstr "и для редактирования"
-
-#: templates/catalogue/tagged_object_list.html:40
-msgid "on small displays, for example mobile phones"
-msgstr "на маленьких дисплеях, напр. мобильных телефонов"
-
 #: templates/catalogue/tagged_object_list.html:41
 #: templates/catalogue/tagged_object_list.html:42
 msgid "for listening"
@@ -824,6 +853,7 @@ msgid "return to the main page"
 msgstr "возвратитесь на главную страницу"
 
 #: templates/info/join_us.html:2
+#, fuzzy, python-format
 msgid ""
 "We have over 1200 works published in Wolne Lektury!\n"
 "Help us expand the library and set new readings free by\n"
@@ -832,7 +862,8 @@ msgid ""
 msgstr ""
 "У нас больше 1200 трудов в Wolne Lektury!\n"
 "Помогите нам распространить библиотеку и поместить новые бесплатные чтения\n"
-"при помощи <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">денежного пожертвования или перевода 1% вашего подоходного налога</a>."
+"при помощи <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/"
+"\">денежного пожертвования или перевода 1% вашего подоходного налога</a>."
 
 #: templates/info/join_us.html:6 templates/info/join_us.html.py:11
 msgid "More..."
@@ -929,14 +960,10 @@ msgstr ""
 msgid "This work is copyrighted."
 msgstr "На эту работу распространяется авторское право."
 
-#~ msgid "Download ODT"
-#~ msgstr "Скачать ODT"
-
-#~ msgid "Artist"
-#~ msgstr "Артист"
-
-#~ msgid "Director"
-#~ msgstr "режиссер"
+#, fuzzy
+#~ msgid ""
+#~ "Download TXT - for reading on small displays, for example mobile phones"
+#~ msgstr "на маленьких дисплеях, напр. мобильных телефонов"
 
 #~ msgid "Download MP3"
 #~ msgstr "скачать MP3"

@@ -95,6 +95,7 @@ class Migration(SchemaMigration):
         },
         'catalogue.bookmedia': {
             'Meta': {'ordering': "('type', 'name')", 'object_name': 'BookMedia'},
+            'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
             'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'", 'blank': 'True'}),

@@ -21,7 +21,7 @@ class TagAdmin(admin.ModelAdmin):
 class BookAdmin(TaggableModelAdmin):
     tag_model = Tag
 
-    list_display = ('title', 'slug', 'has_pdf_file', 'has_epub_file', 'has_html_file', 'has_description',)
+    list_display = ('title', 'slug', 'created_at', 'has_pdf_file', 'has_epub_file', 'has_html_file', 'has_description',)
     search_fields = ('title',)
     ordering = ('title',)
 

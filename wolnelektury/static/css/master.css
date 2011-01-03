@@ -311,34 +311,22 @@ p .ac_input {
     display: block;
     width: 100%;
     height: 1.9em;
-    background-color: #FFF;
-    border: 1px solid #EEE;
+    background-color: #EEE;
+    border-bottom: 1px solid #EEE;
     margin: 0;
-    padding: 0;
-    -moz-border-radius: 4px 4px 0 0;
-    -webkit-border-radius: 4px 4px 0 0;
-    border-radius: 4px 4px 0 0;
+    padding-bottom: 2px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
     color:#2F4110;
     margin-top: 40px;
 }
 
-#formats .wrap .header span.active {
-    display: block;
-    height: 1.5em;
+.audiotabs span.active {
     background-color:#FFF;
-    width: 80px;
-    text-align: center;
-    padding: 2px 0;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    color: #2F4110;
-    font-weight: bold;    
-    float:left;
-    border: 1px solid #EEE;    
 }
 
-#formats .wrap .header span {
+.audiotabs span {
     display: block;
     height: 1.6em;
     background-color:#EEE;
@@ -349,10 +337,10 @@ p .ac_input {
     -webkit-border-radius: 4px;
     border-radius: 4px;
     color: #2F4110;
-    font-weight: bold;    
+    font-weight: bold;
     float:left;
     cursor: pointer;
-    border: 1px solid #EEE;    
+    border: 1px solid #DDD;
 }
 
 #formats .wrap .header span.desc {
@@ -362,31 +350,29 @@ p .ac_input {
     width: 100px;
     text-align: center;
     padding: 2px 0;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
     color: #2F4110;
-    font-weight: bold;    
+    font-weight: bold;
     float:left;
-    cursor: normal;
-    margin-right: 20px;
-    border:0px;
+    border: solid #eee;
+    border-width: 1px;
+}
+
+.audiotabs {
+    float: right;
 }
 
 
-#formats .wrap p.online {
+#formats .wrap .online {
     display: block;
     width: 100%;
-    height: 1.5em;
     background-color: #EEE;
-    margin-top: 0.5em;
+    margin: 0.5em 0 1em 0;
     padding: 1em 0;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
     text-align: center;
     font-size: 1.6em;
-        
 }
 
 #formats .wrap div.download {
@@ -413,6 +399,10 @@ p .ac_input {
 }
 div.audiobooks li {
     list-style-type: none;
+}
+
+div.audiobooks li.mp3Player {
+    margin-bottom: 1em;
 }
 
 div.audiobooks {

@@ -171,8 +171,9 @@ def book_upload_path(ext=None):
 class BookMedia(models.Model):
     type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100")
     name        = models.CharField(_('name'), max_length="100", blank=True)
-    file        = models.FileField(_('file'), upload_to=book_upload_path(), blank=True)    
+    file        = models.FileField(_('file'), upload_to=book_upload_path(), blank=True)
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
+    extra_info  = JSONField(_('extra information'), default='{}')
 
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
@@ -181,6 +182,27 @@ class BookMedia(models.Model):
         ordering            = ('type', 'name')
         verbose_name        = _('book media')
         verbose_name_plural = _('book media')
+
+    def save(self, force_insert=False, force_update=False):
+        media = super(BookMedia, self).save(force_insert, force_update)
+        if self.type == 'mp3':
+            file = self.file
+            extra_info = self.get_extra_info_value()
+            extra_info.update(self.get_mp3_info())
+            self.set_extra_info_value(extra_info)
+            media = super(BookMedia, self).save(force_insert, force_update)
+        return media
+
+    def get_mp3_info(self):
+        """Retrieves artist and director names from audio ID3 tags."""
+        try:
+            audio = id3.ID3(self.file.path)
+            artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
+            director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
+        except:
+            artist_name = director_name = ''
+        return {'artist_name': artist_name, 'director_name': director_name}
+
 
 class Book(models.Model):
     title         = models.CharField(_('title'), max_length=120)
@@ -220,7 +242,7 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False, reset_short_html=True, refresh_mp3=True, **kwargs):
+    def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
         if reset_short_html:
             # Reset _short_html during save
             update = {}
@@ -230,16 +252,7 @@ class Book(models.Model):
             # Fragment.short_html relies on book's tags, so reset it here too
             self.fragments.all().update(**update)
 
-        book = super(Book, self).save(force_insert, force_update)
-
-        if refresh_mp3 and self.has_media('mp3'):
-            file = self.get_media('mp3')[0]
-            #print file, file.path
-            extra_info = self.get_extra_info_value()
-            extra_info.update(self.get_mp3_info())
-            self.set_extra_info_value(extra_info)
-            book = super(Book, self).save(force_insert, force_update)
-        return book
+        return super(Book, self).save(force_insert, force_update)
 
     @permalink
     def get_absolute_url(self):
@@ -337,13 +350,11 @@ class Book(models.Model):
                 formats.append(u'<a href="%s">PDF</a>' % self.get_media('pdf').url)
             if self.root_ancestor.has_media("epub"):
                 formats.append(u'<a href="%s">EPUB</a>' % self.root_ancestor.get_media('epub').url)
-            if self.has_media("odt"):
-                formats.append(u'<a href="%s">ODT</a>' % self.get_media('odt').url)
             if self.has_media("txt"):
                 formats.append(u'<a href="%s">TXT</a>' % self.get_media('txt').url)
             # other files
             for m in self.medias.order_by('type'):
-                formats.append(u'<a href="%s">%s</a>' % m.type, m.file.url)
+                formats.append(u'<a href="%s">%s</a>' % (m.file.url, m.type.upper()))
 
             formats = [mark_safe(format) for format in formats]
 
@@ -365,13 +376,6 @@ class Book(models.Model):
         return self._root_ancestor
 
 
-    def get_mp3_info(self):
-        """Retrieves artist and director names from audio ID3 tags."""
-        audio = id3.ID3(self.get_media('mp3')[0].file.path)
-        artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
-        director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
-        return {'artist_name': artist_name, 'director_name': director_name}
-
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')
@@ -387,6 +391,11 @@ class Book(models.Model):
         return bool(self.epub_file)
     has_epub_file.short_description = 'EPUB'
     has_epub_file.boolean = True
+
+    def has_txt_file(self):
+        return bool(self.txt_file)
+    has_txt_file.short_description = 'HTML'
+    has_txt_file.boolean = True
 
     def has_html_file(self):
         return bool(self.html_file)
@@ -444,7 +453,7 @@ class Book(models.Model):
         try:
             epub.transform(BookImportDocProvider(self), self.slug, output_file=epub_file)
             self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()), save=False)
-            self.save(refresh_mp3=False)
+            self.save()
             FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
         except NoDublinCore:
             pass
@@ -455,7 +464,7 @@ class Book(models.Model):
             if remove_descendants and child_book.has_epub_file():
                 child_book.epub_file.delete()
             # save anyway, to refresh short_html
-            child_book.save(refresh_mp3=False)
+            child_book.save()
             book_descendants += list(child_book.children.all())
 
 
@@ -583,7 +592,7 @@ class Book(models.Model):
                 new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
 
         if not settings.NO_BUILD_EPUB and build_epub:
-            book.root_ancestor().build_epub()
+            book.root_ancestor.build_epub()
 
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments
@@ -612,12 +621,12 @@ class Book(models.Model):
         for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
             tags[tag.pk] = 1
         self.set__tag_counter_value(tags)
-        self.save(reset_short_html=False, refresh_mp3=False)
+        self.save(reset_short_html=False)
         return tags
 
     def reset_tag_counter(self):
         self._tag_counter = None
-        self.save(reset_short_html=False, refresh_mp3=False)
+        self.save(reset_short_html=False)
         if self.parent:
             self.parent.reset_tag_counter()
 
@@ -633,12 +642,12 @@ class Book(models.Model):
             for tag in fragment.tags.filter(category='theme').order_by():
                 tags[tag.pk] = tags.get(tag.pk, 0) + 1
         self.set__theme_counter_value(tags)
-        self.save(reset_short_html=False, refresh_mp3=False)
+        self.save(reset_short_html=False)
         return tags
 
     def reset_theme_counter(self):
         self._theme_counter = None
-        self.save(reset_short_html=False, refresh_mp3=False)
+        self.save(reset_short_html=False)
         if self.parent:
             self.parent.reset_theme_counter()
 
