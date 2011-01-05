@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.alter_column('catalogue_tag', 'sort_key', self.gf('django.db.models.fields.CharField')(max_length=120))
 
         if not db.dry_run:
-            for tag in orm.Tag.objects.exclude(category=('set', 'author')):
+            for tag in orm.Tag.objects.exclude(category__in=('set', 'author')):
                 tag.sort_key = tag.name.lower()
                 tag.save()
             for tag in orm.Tag.objects.filter(category='author'):
