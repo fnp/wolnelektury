@@ -59,7 +59,7 @@ class Tag(TagBase):
     main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
 
     user = models.ForeignKey(User, blank=True, null=True)
-    book_count = models.IntegerField(_('book count'), blank=False, null=True)
+    book_count = models.IntegerField(_('book count'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
