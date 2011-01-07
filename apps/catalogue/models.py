@@ -313,7 +313,7 @@ class Book(models.Model):
             elif type == "html":
                 return self.html_file
             elif type == "epub":
-                return self.html_file                
+                return self.epub_file
             elif type == "txt":
                 return self.txt_file
             elif type == "pdf":
