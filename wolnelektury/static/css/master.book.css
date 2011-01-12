@@ -347,6 +347,10 @@ em.person {
     font-variant: small-caps;
 }
 
+.verse:after {
+    content: "\feff";
+}
+
 
 /* =================================== */
 /* = Hide some elements for printing = */
