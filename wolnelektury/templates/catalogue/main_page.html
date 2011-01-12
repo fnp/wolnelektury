@@ -15,7 +15,7 @@
             <span class='collections'>
                 <a href="{% url catalogue.views.book_list %}">{% trans "all books" %}</a>
                 <a href="{% url catalogue.views.audiobook_list %}">{% trans "audiobooks" %}</a>
-                <a href="{% url catalogue.views.daisy_list %}">{% trans "daisy" %}</a>
+                <a href="{% url catalogue.views.daisy_list %}">{% trans "DAISY" %}</a>
             </span></p>
     </form>
 
@@ -68,11 +68,6 @@
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
                 <p>{% trans "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching." %}</p>
                 <p class="see-more"><a href="{% url lessons_document_list %}" title="{% trans "Hand-outs for teachers" %}">{% trans "See more" %} ⇒</a></p>
-            </div>
-            <div id="czytamysluchajac">
-                <a href="http://czytamysluchajac.pl/"><img src="{{ STATIC_URL }}img/czytamysluchajac-logo-small.png" alt="CzytamySluchajac - logo" style="float:left; padding: 10px;" /></a>
-                <p style="padding-top:10px;"><a href="http://czytamysluchajac.pl/">Czytamy Słuchając</a> {% trans "are professional recordings of literary texts from our repository, available on free license in MP3 and Ogg Vorbis formats as well as in DAISY system." %}</p>
-                <p class="see-more"><a href="http://czytamysluchajac.pl/index.php/o-projekcie/" title="Czytamy Słuchając">{% trans "See more" %} ⇒</a></p>
             </div>
         </div>
         <div id="tags-list">

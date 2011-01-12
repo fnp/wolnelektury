@@ -651,16 +651,11 @@ def shelf_book_formats(request, shelf):
             formats['pdf'] = True
         if book.root_ancestor.epub_file:
             formats['epub'] = True
-        if book.odt_file:
-            formats['odt'] = True
         if book.txt_file:
             formats['txt'] = True
-        if book.mp3_file:
-            formats['mp3'] = True
-        if book.ogg_file:
-            formats['ogg'] = True
-        if book.daisy_file:
-            formats['daisy'] = True
+        for format in ('odt', 'mp3', 'ogg'):
+            if not formats[format] and book.has_media(format):
+                formats[format] = True
 
     return HttpResponse(LazyEncoder().encode(formats))
 

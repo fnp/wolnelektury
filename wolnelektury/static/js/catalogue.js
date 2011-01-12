@@ -501,7 +501,7 @@ function serverTime() {
             // we don't want to interact with "audiobook" label, just 'format' tabs
             var $this = $(this);
             $this.addClass("active");
-            $("#"+$this.html().toLowerCase()+"-files").show();
+            $("#"+$this.attr('data-format')+"-files").show();
         });
 
         $('.audiobook-list').hide();

@@ -8,8 +8,14 @@
 
 {% block body %}
     <h1>{% block book_list_header %}{% trans "Listing of all works" %}{% endblock %}</h1>
-    <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} {{ form.tags }} <input type="submit" value="{% trans "Search" %}" />
+            <strong>{% trans "or" %}</strong> {% trans "see" %}: 
+            <span class='collections'>
+                <a href="{% url catalogue.views.book_list %}">{% trans "all books" %}</a>
+                <a href="{% url catalogue.views.audiobook_list %}">{% trans "audiobooks" %}</a>
+                <a href="{% url catalogue.views.daisy_list %}">{% trans "DAISY" %}</a>
+            </span></p>
     </form>
     <a name="top">
     <div id="book-list-nav">
