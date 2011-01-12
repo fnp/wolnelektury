@@ -17,6 +17,7 @@
                 <a href="{% url catalogue.views.daisy_list %}">{% trans "DAISY" %}</a>
             </span></p>
     </form>
+    <div class="column-left">{% block book_list_info %}{% endblock %}</div><div style='clear:both;'></div>
     <a name="top">
     <div id="book-list-nav">
         {% trans "Table of Content" %}
