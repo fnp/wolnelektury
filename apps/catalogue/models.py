@@ -479,7 +479,7 @@ class Book(models.Model):
 
 
     @classmethod
-    def from_xml_file(cls, xml_file, overwrite=False, build_epub=True):
+    def from_xml_file(cls, xml_file, **kwargs):
         # use librarian to parse meta-data
         book_info = dcparser.parse(xml_file)
 
@@ -487,7 +487,7 @@ class Book(models.Model):
             xml_file = File(open(xml_file))
 
         try:
-            return cls.from_text_and_meta(xml_file, book_info, overwrite, build_epub=build_epub)
+            return cls.from_text_and_meta(xml_file, book_info, **kwargs)
         finally:
             xml_file.close()
 
