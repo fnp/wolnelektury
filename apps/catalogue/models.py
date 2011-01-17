@@ -12,6 +12,7 @@ from django.template.defaultfilters import slugify
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
+from django.db.models.signals import post_save, m2m_changed, pre_delete
 
 from django.conf import settings
 
@@ -720,6 +721,12 @@ class FileRecord(models.Model):
     def __unicode__(self):
         return "%s %s.%s" % (self.sha1,  self.slug, self.type)
 
+###########
+#
+# SIGNALS
+#
+###########
+
 
 def _tags_updated_handler(sender, affected_tags, **kwargs):
     # reset tag global counter
@@ -736,4 +743,25 @@ def _tags_updated_handler(sender, affected_tags, **kwargs):
                     filter(category='theme').count():
         sender.book.reset_theme_counter()
 tags_updated.connect(_tags_updated_handler)
+
+
+def _m2m_changed_handler(sender, instance, action, reverse, pk_set, **kwargs):
+    """ refresh all the short_html stuff on BookMedia delete """
+    if sender == Book.medias.through and reverse and action == 'pre_clear':
+        for book in instance.book_set.all():
+            book.save()
+m2m_changed.connect(_m2m_changed_handler)
+
+def _pre_delete_handler(sender, instance, **kwargs):
+    """ explicitly clear m2m, so that Books can be refreshed """
+    if sender == BookMedia:
+        instance.book_set.clear()
+pre_delete.connect(_pre_delete_handler)
+
+def _post_save_handler(sender, instance, **kwargs):
+    """ refresh all the short_html stuff on BookMedia update """
+    if sender == BookMedia:
+        for book in instance.book_set.all():
+            book.save()
+post_save.connect(_post_save_handler)
 
