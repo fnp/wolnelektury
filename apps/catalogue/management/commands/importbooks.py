@@ -39,6 +39,7 @@ class Command(BaseCommand):
         force = options.get('force')
         show_traceback = options.get('traceback', False)
 
+        wait_until = None
         if options.get('wait_until'):
             wait_until = time.mktime(time.strptime(options.get('wait_until'), '%Y-%m-%d %H:%M:%S'))
             if verbose > 0:
