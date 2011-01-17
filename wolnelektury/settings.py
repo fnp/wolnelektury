@@ -199,6 +199,7 @@ TRANSLATION_REGISTRY = "wolnelektury.translation"
 MAX_TAG_LIST = 6
 
 NO_BUILD_EPUB = False
+NO_BUILD_TXT = False
 
 # Load localsettings, if they exist
 try:

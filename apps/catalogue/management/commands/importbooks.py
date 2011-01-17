@@ -22,6 +22,8 @@ class Command(BaseCommand):
             help='Print status messages to stdout'),
         make_option('-E', '--no-build-epub', action='store_false', dest='build_epub', default=True,
             help='Don\'t build EPUB file'),
+        make_option('-T', '--no-build-txt', action='store_false', dest='build_txt', default=True,
+            help='Don\'t build TXT file'),
         make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
             help='Wait until specified time (Y-M-D h:m:s)'),
     )
@@ -76,7 +78,9 @@ class Command(BaseCommand):
 
                     # Import book files
                     try:
-                        book = Book.from_xml_file(file_path, overwrite=force, build_epub=options.get('build_epub'))
+                        book = Book.from_xml_file(file_path, overwrite=force, 
+                                                  build_epub=options.get('build_epub'),
+                                                  build_txt=options.get('build_txt'))
                         files_imported += 1
 
                         if os.path.isfile(file_base + '.pdf'):

@@ -453,8 +453,7 @@ class Book(models.Model):
         epub_file = StringIO()
         try:
             epub.transform(BookImportDocProvider(self), self.slug, output_file=epub_file)
-            self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()), save=False)
-            self.save()
+            self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()))
             FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
         except NoDublinCore:
             pass
@@ -467,6 +466,16 @@ class Book(models.Model):
             # save anyway, to refresh short_html
             child_book.save()
             book_descendants += list(child_book.children.all())
+
+    def build_txt(self):
+        from StringIO import StringIO
+        from django.core.files.base import ContentFile
+        from librarian import text
+
+        out = StringIO()
+        text.transform(open(self.xml_file.path), out)
+        self.txt_file.save('%s.txt' % self.slug, ContentFile(out.getvalue()))
+        self.save()
 
 
     @classmethod
@@ -483,7 +492,7 @@ class Book(models.Model):
             xml_file.close()
 
     @classmethod
-    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True):
+    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True):
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
@@ -591,6 +600,9 @@ class Book(models.Model):
 
                 new_fragment.save()
                 new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
+
+        if not settings.NO_BUILD_TXT and build_txt:
+            book.build_txt()
 
         if not settings.NO_BUILD_EPUB and build_epub:
             book.root_ancestor.build_epub()
