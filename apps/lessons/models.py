@@ -16,6 +16,7 @@ class Document(models.Model):
     slideshare_id = models.CharField(_('slideshare ID'), blank=True, max_length=120)
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    html = models.TextField(_('HTML'), blank=True) # HTML content, alternative for Flash
 
     def slideshare_player(self):
         base, ext = path.splitext(self.file.name)
