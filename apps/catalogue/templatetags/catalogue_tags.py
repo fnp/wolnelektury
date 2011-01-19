@@ -140,6 +140,11 @@ def book_tree(book_list, books_by_parent):
 
 
 @register.simple_tag
+def person_name(person):
+    return ' '.join(p.strip() for p in person.split(',')[::-1])
+
+
+@register.simple_tag
 def user_creation_form():
     return RegistrationForm(prefix='registration').as_ul()
 

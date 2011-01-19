@@ -80,7 +80,7 @@ img {
 }
 
 
-#toc, #themes, #nota_red {
+#toc, #themes, #nota_red, #info {
     position: fixed;
     left: 0em;
     top: 1.5em;
@@ -126,6 +126,11 @@ img {
     color: blue;
     font-size: 16px;
     position: inherit;
+}
+
+#info p {
+    text-align: justify;
+    margin: 1.5em 0 0;
 }
 
 /* =================================================== */
@@ -222,7 +227,7 @@ blockquote {
 /* = Numbering = */
 /* ============= */
 .verse, .paragraph {
-	position:relative;
+    position:relative;
 }
 .anchor {
     position: absolute;
@@ -263,6 +268,13 @@ span.subtitle {
     display: block;
     line-height: 1.5em;
     margin-top: -0.25em;
+}
+
+span.translator {
+    font-size: 0.375em;
+    display: block;
+    line-height: 1.5em;
+    margin-top: 0.25em;
 }
 
 div.didaskalia {

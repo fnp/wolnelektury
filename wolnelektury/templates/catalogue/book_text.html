@@ -17,7 +17,46 @@
                 <li><a href="#toc">{% trans "Table of contents" %}</a></li>
                 <li><a href="#themes">{% trans "Themes" %}</a></li>
                 <li><a href="#nota_red">{% trans "Edit. note" %}</a></li>
+                <li><a href="#info">{% trans "Infobox" %}</a></li>
             </ul>
+        </div>
+        <div id="info">
+            <p>
+                {% if book.get_extra_info_value.license %}
+                    Ten utwór jest udostepniony na licencji
+                    <a href="{{ book.get_extra_info_value.license }}">{{ book.get_extra_info_value.license_description }}</a>
+                {% else %}
+                    Ten utwór nie jest chroniony prawem autorskim i znajduje się w domenie
+                    publicznej, co oznacza że możesz go swobodnie wykorzystywać, publikować
+                    i rozpowszechniać. Jeśli utwór opatrzony jest dodatkowymi materiałami
+                    (przypisy, motywy literackie etc.), które podlegają prawu autorskiemu, to
+                    te dodatkowe materiały udostępnione są na licencji
+                    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+                    Uznanie Autorstwa – Na Tych Samych Warunkach 3.0 PL</a>.
+                {% endif %}
+            </p>
+    
+            {% if book.get_extra_info_value.source_name %}
+              <p>Tekst opracowany na podstawie: {{ book.get_extra_info_value.source_name }}</p>
+            {% endif %}
+    
+            {% if book.get_extra_info_value.description %}
+              <p>{{ book.get_extra_info_value.description }}</p>
+            {% endif %}
+
+            {% if book.get_extra_info_value.technical_editors or book.get_extra_info_value.editors %}
+              <p>Opracowanie redakcyjne i przypisy:
+                  {% for name in book.get_extra_info_value.technical_editors|add:book.get_extra_info_value.editors %}{% if not forloop.first %}, {% endif %}
+                      {% person_name name %}{% endfor %}.</p>
+            {% endif %}
+
+
+
+            <xsl:if test="//dc:description" >
+              <p><xsl:value-of select="//dc:description" /></p>
+            </xsl:if>
+    
+            <xsl:call-template name="editors" />
         </div>
         <div id="header">
             <div id="logo">
