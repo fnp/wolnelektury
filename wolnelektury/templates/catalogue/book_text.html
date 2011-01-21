@@ -23,21 +23,21 @@
         <div id="info">
             <p>
                 {% if book.get_extra_info_value.license %}
-                    Ten utwór jest udostepniony na licencji
+                    {% trans "This work is licensed under:" %}
                     <a href="{{ book.get_extra_info_value.license }}">{{ book.get_extra_info_value.license_description }}</a>
                 {% else %}
-                    Ten utwór nie jest chroniony prawem autorskim i znajduje się w domenie
-                    publicznej, co oznacza że możesz go swobodnie wykorzystywać, publikować
-                    i rozpowszechniać. Jeśli utwór opatrzony jest dodatkowymi materiałami
-                    (przypisy, motywy literackie etc.), które podlegają prawu autorskiemu, to
-                    te dodatkowe materiały udostępnione są na licencji
-                    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-                    Uznanie Autorstwa – Na Tych Samych Warunkach 3.0 PL</a>.
+                    {% blocktrans %}This work isn't covered by copyright and is part of the
+                    public domain, which means it can be freely used, published and
+                    distributed. If there are any additional copyrighted materials
+                    provided with this work (such as annotations, motifs etc.), those
+                    materials are licensed under the 
+                    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0</a>
+                    license.{% endblocktrans %}
                 {% endif %}
             </p>
     
             {% if book.get_extra_info_value.source_name %}
-              <p>Tekst opracowany na podstawie: {{ book.get_extra_info_value.source_name }}</p>
+              <p>{% trans "Text prepared based on:" %} {{ book.get_extra_info_value.source_name }}</p>
             {% endif %}
     
             {% if book.get_extra_info_value.description %}
@@ -45,7 +45,7 @@
             {% endif %}
 
             {% if book.get_extra_info_value.technical_editors or book.get_extra_info_value.editors %}
-              <p>Opracowanie redakcyjne i przypisy:
+              <p>{% trans "Edited and annotated by:" %}
                   {% for name in book.get_extra_info_value.technical_editors|add:book.get_extra_info_value.editors %}{% if not forloop.first %}, {% endif %}
                       {% person_name name %}{% endfor %}.</p>
             {% endif %}

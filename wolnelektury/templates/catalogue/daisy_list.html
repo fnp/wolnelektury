@@ -5,6 +5,11 @@
 
 {% block title %}{% trans "Listing of all DAISY files on WolneLektury.pl" %}{% endblock %}
 
+{% block extrahead %}
+    <link rel="alternate" type="application/atom+xml" title="{% trans "Latest DAISY audiobooks" %}" href="{% url audiobook_feed 'daisy' %}" />
+    <link rel="alternate" type="application/atom+xml" title="{% trans "Latest audiobooks - all formats" %}" href="{% url audiobook_feed 'all' %}" />
+{% endblock %}
+
 {% block book_list_header %}{% trans "Listing of all DAISY files" %}{% endblock %}
 
 {% block book_list_info %}

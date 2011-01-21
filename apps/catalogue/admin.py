@@ -38,8 +38,8 @@ class FragmentAdmin(TaggableModelAdmin):
 class MediaAdmin(admin.ModelAdmin):
     #tag_model = BookMedia
 
-    list_display = ('type', 'name')
-    ordering = ('type', 'name')
+    list_display = ('name', 'type', 'uploaded_at')
+    ordering = ('name', 'type')
 
 
 
