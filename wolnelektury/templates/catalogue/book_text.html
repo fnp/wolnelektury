@@ -44,7 +44,7 @@
               <p>{{ book.get_extra_info_value.description }}</p>
             {% endif %}
 
-            {% if book.get_extra_info_value.editors or book.get_extra_info_value.technical_editors %}
+            {% if book.get_extra_info_value.editor or book.get_extra_info_value.technical_editor %}
               <p>{% trans "Edited and annotated by:" %}
                   {% all_editors book.get_extra_info_value %}.</p>
             {% endif %}

@@ -141,9 +141,19 @@ def book_tree(book_list, books_by_parent):
 
 @register.simple_tag
 def all_editors(extra_info):
+    editors = []
+    if 'editors' in extra_info:
+        editors += extra_info['editors']
+    if 'technical_editors' in extra_info:
+        editors += extra_info['technical_editors']
+    # support for extra_info-s from librarian<1.2
+    if 'editor' in extra_info:
+        editors.append(extra_info['editor'])
+    if 'technical_editor' in extra_info:
+        editors.append(extra_info['technical_editor'])
     return ', '.join(
                      ' '.join(p.strip() for p in person.rsplit(',', 1)[::-1])
-                     for person in sorted(set(extra_info['editors'] + extra_info['technical_editors'])))
+                     for person in sorted(set(editors)))
 
 
 @register.simple_tag
