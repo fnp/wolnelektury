@@ -44,10 +44,9 @@
               <p>{{ book.get_extra_info_value.description }}</p>
             {% endif %}
 
-            {% if book.get_extra_info_value.technical_editors or book.get_extra_info_value.editors %}
+            {% if book.get_extra_info_value.editors or book.get_extra_info_value.technical_editors %}
               <p>{% trans "Edited and annotated by:" %}
-                  {% for name in book.get_extra_info_value.technical_editors|add:book.get_extra_info_value.editors %}{% if not forloop.first %}, {% endif %}
-                      {% person_name name %}{% endfor %}.</p>
+                  {% all_editors book.get_extra_info_value %}.</p>
             {% endif %}
 
 

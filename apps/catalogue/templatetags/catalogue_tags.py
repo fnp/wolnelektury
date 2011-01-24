@@ -140,8 +140,10 @@ def book_tree(book_list, books_by_parent):
 
 
 @register.simple_tag
-def person_name(person):
-    return ' '.join(p.strip() for p in person.split(',')[::-1])
+def all_editors(extra_info):
+    return ', '.join(
+                     ' '.join(p.strip() for p in person.rsplit(',', 1)[::-1])
+                     for person in sorted(set(extra_info['editors'] + extra_info['technical_editors'])))
 
 
 @register.simple_tag
