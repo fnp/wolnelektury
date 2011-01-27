@@ -1,0 +1,41 @@
+[
+    {
+        "pk": "document-list", 
+        "model": "chunks.chunk", 
+        "fields": {
+            "content": "        <p>Zasoby szkolnej biblioteki internetowej Wolne Lektury oraz jej funkcjonalno\u015bci wykorzystywane s\u0105 przez nauczycieli i nauczycielki podczas pracy w szkole. Poni\u017cej znajduj\u0105 si\u0119 materia\u0142y edukacyjne \u2013 scenariusze lekcji, tematy wypracowa\u0144 i inne \u2013 stworzone przez pedagog\u00f3w, kt\u00f3rzy w swojej codziennej pracy w szkole wykorzystuj\u0105 przygotowane przez nas narz\u0119dzia i opracowane merytorycznie teksty.</p>\r\n\r\n<ol>\r\n<li><strong>Scenariusze lekcji</strong>\r\n\r\n <ul>\r\n  <li><a href=\"/materialy/kot-w-literaturze-scenariusz-lekcji/\" data-hash=\"#kot-w-literaturze-scenariusz-lekcji\">Scenariusz lekcji. Kot w literaturze.</a> <a class='download-doc' href=\"/media/lessons/document/wolnelektury-kot-scenariusz.doc\">Pobierz dokument</a></li>\r\n  <li><a href=\"/materialy/lekcja-multimedialna-danse-macabre/\" data-hash=\"#lekcja-multimedialna-danse-macabre\">Lekcja multimedialna - Motyw danse macabre wyst\u0119puj\u0105cy w tekstach kultury. </a><a class='download-doc' href=\"/media/lessons/document/wolnelektury-lekcja.multimedialna-danse.macabre_.ppt\">Pobierz prezentacj\u0119</a></li>\r\n  <li><a href=\"/materialy/lekcja-multimedialna-sonet/\" data-hash=\"#lekcja-multimedialna-sonet\">R\u00f3\u017cnorodno\u015b\u0107 tematyczna  sonetu.</a><a class='download-doc' href=\"/media/lessons/document/wolnelektury-lekcja.multimedialna-sonet.ppt\">Pobierz dokument</a></li>\r\n  <li><a href=\"/materialy/slowacki-czesc-i/\" data-hash=\"#slowacki-czesc-i\">\u201eBo to jest wieszcza najja\u015bniejsza chwa\u0142a\u2026\u201d Juliusz S\u0142owacki - cz\u0142owiek i poeta</a> <a class='download-doc' href=\"/media/lessons/document/wolnelektury-slowacki01.ppt\">Pobierz prezentacj\u0119</a></li>\r\n  <li><a href=\"/materialy/usmiech-i-lzy-wieszcza/\" data-hash=\"#usmiech-i-lzy-wieszcza\">U\u015bmiech  i \u0142zy wieszcza czyli S\u0142owacki p\u00f3\u0142 \u017cartem,  p\u00f3\u0142 serio.</a> <a class='download-doc' href=\"/media/lessons/document/wolnelektury-usmiech.i.lzy.wieszcza.ppt\">Pobierz prezentacj\u0119</a></li>\r\n\r\n</ul>\r\n</li>\r\n\r\n<li><a href=\"/materialy/przyklady-zadan/\" data-hash=\"#przyklady-zadan\">Przyk\u0142ady zada\u0144 do opracowania przez zespo\u0142y uczni\u00f3w</a> <a class='download-doc' href=\"/media/lessons/document/wolnelektury-przyklady.zadan.doc\">Pobierz dokument</a></li>\r\n<li><a href=\"/materialy/tematy-wypracowan/\" data-hash=\"#tematy-wypracowan\">Tematy wypracowa\u0144</a> <a class='download-doc' href=\"/media/lessons/document/wolne.lektury-tematy.wypracowan.doc\">Pobierz dokument</a></li>\r\n<li><a href=\"/materialy/repetytorium-maturalne/\" data-hash=\"#repetytorium-maturalne\">Repetytorium maturalne.</a> <a class='download-doc' href=\"/media/lessons/document/wolnelektury-repetytorium.maturalne.ppt\">Pobierz prezentacj\u0119</a></li>\r\n\r\n</ol>\r\n</p>\r\n\r\n<p>Zach\u0119camy wszystkich nauczycieli i wszystkie nauczycielki do tworzenia materia\u0142\u00f3w edukacyjnych i publikowania ich na naszej stronie! Warto zapozna\u0107 si\u0119 z <a href=\"/materialy/tworzenie-scenariuszy-lekcji/\" data-hash=\"#tworzenie-scenariuszy-lekcji\">instrukcj\u0105 dotycz\u0105c\u0105 pisania scenariuszy lekcji</a> i <a href=\"/materialy/schemat-scenariusza-lekcji/\" data-hash=\"#schemat-scenariusza-lekcji\">schematem przyk\u0142adowego scenariusza lekcji</a>, a gotowe materia\u0142y przes\u0142a\u0107 na adres <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>.</p>", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": "footer-map", 
+        "model": "chunks.chunk", 
+        "fields": {
+            "content": "<AREA SHAPE=\"rect\" COORDS=\"104,83,261,101\" HREF=\"http://edukacja.gazeta.pl\" ALT=\"GazetaEdukacja.pl - matura, testy, egzaminy, studia\" TITLE=\"GazetaEdukacja.pl - matura, testy, egzaminy, studia\"><AREA SHAPE=\"rect\" COORDS=\"539,38,656,73\" ALT=\"Kurier Wile\u0144ski\" HREF=\"http://www.kurierwilenski.lt/\"><AREA SHAPE=\"rect\" COORDS=\"687,81,789,116\" ALT=\"Radio znad Wilii\" HREF=\"http://www.znadwilii.lt\"><AREA SHAPE=\"rect\" COORDS=\"376,34,520,75\" ALT=\"Ministerstwo Edukacji Narodowej\" HREF=\"http://www.men.gov.pl/\"><AREA SHAPE=\"rect\" COORDS=\"761,59,822,77\" ALT=\"Biblioteka Analiz\" HREF=\"http://www.rynek-ksiazki.pl/\"><AREA SHAPE=\"rect\" COORDS=\"734,55,759,76\" ALT=\"Przekr\u00f3j\" HREF=\"http://www.przekroj.pl/\"><AREA SHAPE=\"rect\" COORDS=\"695,55,732,76\" ALT=\"TVP Kultura\" HREF=\"http://www.tvp.pl/tvpkultura/\"><AREA SHAPE=\"rect\" COORDS=\"762,35,821,59\" ALT=\"Elle\" HREF=\"http://elle.interia.pl/\"><AREA SHAPE=\"rect\" COORDS=\"659,55,693,77\" ALT=\"Radio TOK.FM\" HREF=\"http://www.tok.fm/\"><AREA SHAPE=\"rect\" COORDS=\"658,35,760,53\" ALT=\"Tygodnik Powszechny\" HREF=\"http://tygodnik.onet.pl/\"><AREA SHAPE=\"rect\" COORDS=\"265,35,366,74\" ALT=\"Ministerstwo Kultury i Dziedzictwa Narodowego\" HREF=\"http://www.mkidn.gov.pl/\"><AREA SHAPE=\"rect\" COORDS=\"222,29,261,83\" ALT=\"Biblioteka Narodowa\" HREF=\"http://www.bn.org.pl/\"><AREA SHAPE=\"rect\" COORDS=\"188,58,217,81\" ALT=\"PZL\" HREF=\"http://www.pzl.pl/\"><AREA SHAPE=\"rect\" COORDS=\"162,32,218,56\" ALT=\"eo Networks - administracja, zarz\u0105dzanie serwerami, technologie Sun,\r\nlinux, bsd, unix, solaris\" HREF=\"http://eo.pl/\"><AREA SHAPE=\"rect\" COORDS=\"104,61,184,76\" ALT=\"Kancelaria Prawna Grynhoff Wo\u017any Mali\u0144ski Sp\u00f3\u0142ka komandytowa\" HREF=\"http://www.gww.pl/\"><AREA SHAPE=\"rect\" COORDS=\"104,35,160,60\" ALT=\"Information is art\" HREF=\"http://www.informationisart.com/\"><AREA SHAPE=\"rect\" COORDS=\"15,39,98,75\" ALT=\"Fundacja Nowoczesna Polska\" HREF=\"http://nowoczesnapolska.org.pl/\"><AREA SHAPE=\"default\" COORDS=\"0,0,860,120\" NOHREF>", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": "site-description", 
+        "model": "chunks.chunk", 
+        "fields": {
+            "content": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": "top-message", 
+        "model": "chunks.chunk", 
+        "fields": {
+            "content": "", 
+            "description": ""
+        }
+    }, 
+    {
+        "pk": "footer-img", 
+        "model": "chunks.attachment", 
+        "fields": {
+            "attachment": "chunks/attachment/footer.png"
+        }
+    }
+]
