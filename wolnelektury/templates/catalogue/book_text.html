@@ -17,7 +17,45 @@
                 <li><a href="#toc">{% trans "Table of contents" %}</a></li>
                 <li><a href="#themes">{% trans "Themes" %}</a></li>
                 <li><a href="#nota_red">{% trans "Edit. note" %}</a></li>
+                <li><a href="#info">{% trans "Infobox" %}</a></li>
             </ul>
+        </div>
+        <div id="info">
+            <p>
+                {% if book.get_extra_info_value.license %}
+                    {% trans "This work is licensed under:" %}
+                    <a href="{{ book.get_extra_info_value.license }}">{{ book.get_extra_info_value.license_description }}</a>
+                {% else %}
+                    {% blocktrans %}This work isn't covered by copyright and is part of the
+                    public domain, which means it can be freely used, published and
+                    distributed. If there are any additional copyrighted materials
+                    provided with this work (such as annotations, motifs etc.), those
+                    materials are licensed under the 
+                    <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0</a>
+                    license.{% endblocktrans %}
+                {% endif %}
+            </p>
+    
+            {% if book.get_extra_info_value.source_name %}
+              <p>{% trans "Text prepared based on:" %} {{ book.get_extra_info_value.source_name }}</p>
+            {% endif %}
+    
+            {% if book.get_extra_info_value.description %}
+              <p>{{ book.get_extra_info_value.description }}</p>
+            {% endif %}
+
+            {% if book.get_extra_info_value.editor or book.get_extra_info_value.technical_editor %}
+              <p>{% trans "Edited and annotated by:" %}
+                  {% all_editors book.get_extra_info_value %}.</p>
+            {% endif %}
+
+
+
+            <xsl:if test="//dc:description" >
+              <p><xsl:value-of select="//dc:description" /></p>
+            </xsl:if>
+    
+            <xsl:call-template name="editors" />
         </div>
         <div id="header">
             <div id="logo">

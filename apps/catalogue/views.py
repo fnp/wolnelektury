@@ -10,7 +10,6 @@ import pprint
 import traceback
 import re
 import itertools
-from operator import itemgetter
 from datetime import datetime
 
 from django.conf import settings
@@ -31,7 +30,7 @@ from django.utils.http import urlquote_plus
 from django.views.decorators import cache
 from django.utils.translation import ugettext as _
 from django.views.generic.list_detail import object_list
-from django.template.defaultfilters import slugify
+
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
@@ -610,22 +609,22 @@ def download_shelf(request, slug):
         if 'odt' in formats and book.has_media("odt"):
             for file in book.get_media("odt"):
                 filename = file.file.path
-                archive.write(filename, str('%s.odt' % slugify(file.name)))
+                archive.write(filename, str('%s.odt' % slughifi(file.name)))
         if 'txt' in formats and book.txt_file:
             filename = book.txt_file.path
             archive.write(filename, str('%s.txt' % book.slug))
         if 'mp3' in formats and book.has_media("mp3"):
             for file in book.get_media("mp3"):
                 filename = file.file.path
-                archive.write(filename, str('%s.mp3' % slugify(file.name)))
+                archive.write(filename, str('%s.mp3' % slughifi(file.name)))
         if 'ogg' in formats and book.has_media("ogg"):
             for file in book.get_media("ogg"):
                 filename = file.file.path
-                archive.write(filename, str('%s.ogg' % slugify(file.name)))
+                archive.write(filename, str('%s.ogg' % slughifi(file.name)))
         if 'daisy' in formats and book.has_media("daisy"):
             for file in book.get_media("daisy"):
                 filename = file.file.path
-                archive.write(filename, str('%s.daisy' % slugify(file.name)))                                
+                archive.write(filename, str('%s.daisy' % slughifi(file.name)))
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
@@ -761,6 +760,7 @@ def clock(request):
 def xmls(request):
     """"
     Create a zip archive with all XML files.
+    This should be removed when we have real API.
     """
     temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
@@ -771,28 +771,6 @@ def xmls(request):
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
     response['Content-Disposition'] = 'attachment; filename=xmls.zip'
-    response['Content-Length'] = temp.tell()
-
-    temp.seek(0)
-    response.write(temp.read())
-    return response
-
-
-@cache.never_cache
-def epubs(request):
-    """"
-    Create a tar archive with all EPUB files, segregated to directories.
-    """
-
-    temp = tempfile.TemporaryFile()
-    archive = tarfile.TarFile(fileobj=temp, mode='w')
-
-    for book in models.Book.objects.exclude(epub_file=''):
-        archive.add(book.epub_file.path, (u'%s/%s.epub' % (book.get_extra_info_value()['author'], book.slug)).encode('utf-8'))
-    archive.close()
-
-    response = HttpResponse(content_type='application/tar', mimetype='application/x-tar')
-    response['Content-Disposition'] = 'attachment; filename=epubs.tar'
     response['Content-Length'] = temp.tell()
 
     temp.seek(0)

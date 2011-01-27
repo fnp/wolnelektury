@@ -10,6 +10,7 @@ class WLTestCase(TestCase):
     """
     def setUp(self):
         self._MEDIA_ROOT, settings.MEDIA_ROOT = settings.MEDIA_ROOT, tempfile.mkdtemp(prefix='djangotest_')
+        settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = True
 
     def tearDown(self):
         shutil.rmtree(settings.MEDIA_ROOT, True)
