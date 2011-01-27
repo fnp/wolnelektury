@@ -9,41 +9,17 @@
 {% block extrahead %}
     <script type="text/javascript" charset="utf-8">
         $(function() {
-            $('#document-list a[data-hash]').click(function() {
-                if (!$(this).hasClass('active')) {
-                    $('#document-list a[data-hash]').removeClass('active');
-                    $(this).addClass('active');
-                    document.location.hash = $(this).attr('data-hash');
-                }
-                return false;
+            $("#document-list a").click(function(e){
+                  e.preventDefault();
+                  if($("#presentation-frame").length == 0){
+                    $("<iframe id='presentation-frame' width='600' height='500' border='0' src=''>").appendTo($("#document-detail"));
+                  }
+                  $("#presentation-frame").attr("src", this.href);
+                  $('#document-list li').css('border', 'none');
+                  $(this).closest('li').css('border', '1px solid green');
+                  $('.download-doc').hide();
+                  $(this).next('.download-doc').show();
             });
-
-            var lastHash = null;
-
-            function checkHash() {
-                if (document.location.hash != lastHash) {
-                    lastHash = document.location.hash;
-                    var documentLink = $('#document-list a[data-hash=' + document.location.hash + ']');
-                    if (!documentLink.hasClass('active')) {
-                        $('#document-list a').removeClass('active');
-                        documentLink.addClass('active');
-                    };
-
-                    if ($('#document-detail').attr('data-hash') != lastHash) {
-                        $('#document-detail')
-                            .attr('data-hash', lastHash)
-                            .load(documentLink.attr('href'));
-                    };
-                } else if (!document.location.hash) {
-                    $first = $('#document-list a:first');
-                    $first.addClass('active');
-                    location.replace($first.attr('data-hash'));
-                }
-
-                setTimeout(checkHash, 500);
-            };
-
-            checkHash();
         });
     </script>
 {% endblock extrahead %}
@@ -52,7 +28,6 @@
     <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
     </form>
-
     <div id="document-list">
         {% chunk "document-list" %}
     </div>

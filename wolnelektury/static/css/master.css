@@ -1012,7 +1012,7 @@ div.shown-tags p, div.all-tags p {
     border-radius: 3px;
 /*    font-size: 1.2em;*/
     font-weight: bold;
-    width: 370px;
+    width: 330px;
     margin-bottom: 0.25em;
     display: block;
 }
@@ -1021,8 +1021,13 @@ div.shown-tags p, div.all-tags p {
   padding-left: 30px;
   list-style: disc;
 }
+
+#document-list li {
+  padding: 5px;
+}
+
 #document-list li li a {
-  width: 340px;
+  width: 300px;
 }
 
 #document-list li a:hover, #document-list li a.active {
@@ -1046,6 +1051,11 @@ div.shown-tags p, div.all-tags p {
     float: right;
     margin: 0;
     padding: 0
+}
+
+#document-list .download-doc {
+    display: none;
+    color: #EE2124;
 }
 
 /* ====================== */
@@ -1085,10 +1095,15 @@ div.shown-tags p, div.all-tags p {
     color: #FFF;
     text-decoration: none;
 }
+
 #createNewShelf {
-display: none;
+    display: none;
 }
 
 .widget-code {
     overflow: hidden;
+}
+
+#presentation-frame {
+    border: 0px none white;
 }

@@ -505,7 +505,9 @@ function serverTime() {
         });
 
         $('.audiobook-list').hide();
-        $("#"+$(".audiotabs .active").html().toLowerCase()+"-files").show();
+        if($(".audiotabs .active").length > 0) {
+            $("#"+$(".audiotabs .active").html().toLowerCase()+"-files").show();
+        }
         
         /* this will be useful for javascript html player
         var medias = $('.audiobook-list a');
