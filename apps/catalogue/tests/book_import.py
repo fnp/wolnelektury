@@ -3,12 +3,15 @@ from django.core.files.base import ContentFile
 from catalogue.test_utils import *
 from catalogue import models
 
+from nose.tools import raises
+
+
 class BookImportLogicTests(WLTestCase):
 
     def setUp(self):
         WLTestCase.setUp(self)
         self.book_info = BookInfoStub(
-            url=u"http://wolnelektury.pl/example/default_book",
+            url=u"http://wolnelektury.pl/example/default-book",
             about=u"http://wolnelektury.pl/example/URI/default_book",
             title=u"Default Book",
             author=PersonStub(("Jim",), "Lazy"),
@@ -30,7 +33,7 @@ class BookImportLogicTests(WLTestCase):
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
 
         self.assertEqual(book.title, "Default Book")
-        self.assertEqual(book.slug, "default_book")
+        self.assertEqual(book.slug, "default-book")
         self.assert_(book.parent is None)
         self.assertFalse(book.has_html_file())
 
@@ -103,6 +106,13 @@ class BookImportLogicTests(WLTestCase):
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
         self.assertEqual(book.fragments.count(), 0)
         self.assertEqual(book.tags.filter(category='theme').count(), 0)
+
+    @raises(ValueError)
+    def test_book_with_invalid_slug(self):
+        """ Book with invalid characters in slug shouldn't be imported """
+        self.book_info.url = "http://wolnelektury.pl/example/default_book"
+        BOOK_TEXT = "<utwor />"
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
 
     def test_book_replace_title(self):
         BOOK_TEXT = """<utwor />"""
