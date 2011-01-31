@@ -53,6 +53,7 @@ class MediaAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'type', 'uploaded_at')
     ordering = ('name', 'type')
+    search_fields = ('name',)
 
 
 
