@@ -182,6 +182,7 @@ function toggle() {
 	var slideColl = GetElementsWithClassName('*','slide');
 	var slides = document.getElementById('slideProj');
 	var outline = document.getElementById('outlineStyle');
+	var controls = document.getElementById('controls');
 	if (!slides.disabled) {
 		slides.disabled = true;
 		outline.disabled = false;
@@ -192,6 +193,8 @@ function toggle() {
 			slide.style.visibility = 'visible';
 		}
 	    document.getElementById("toggle").value = "Lista slajdów";
+	    addClass(controls, 'hideme');    
+	    showHide('h');
 	} else {
 		slides.disabled = false;
 		outline.disabled = true;
@@ -202,7 +205,8 @@ function toggle() {
 			slide.style.visibility = 'hidden';
 		}
 		slideColl[snum].style.visibility = 'visible';
-	    document.getElementById("toggle").value = "Ciągły tekst";		
+	    document.getElementById("toggle").value = "Ciągły tekst";
+	    showHide('s');		
 	}
 }
 
