@@ -95,10 +95,11 @@ function slideLabel() {
 		for (var o = 0; o < menunodes.length; o++) {
 			otext += nodeValue(menunodes[o]);
 		}
+		otext = otext.substr(0,15) + '...';
 		list.options[list.length] = new Option(n + ' : '  + otext, n);
 	}
 }
-
+/*
 function currentSlide() {
 	var cs;
 	if (document.getElementById) {
@@ -114,7 +115,7 @@ function currentSlide() {
 	} else {
 		cs.style.visibility = 'visible';
 	}
-}
+}*/
 
 function go(step) {
 	if (document.getElementById('slideProj').disabled || step == 0) return;
@@ -154,7 +155,7 @@ function go(step) {
 	ce.style.visibility = 'hidden';
 	ne.style.visibility = 'visible';
 	jl.selectedIndex = snum;
-	currentSlide();
+	//currentSlide();
 	number = 0;
 }
 
@@ -190,6 +191,7 @@ function toggle() {
 			var slide = slideColl[n];
 			slide.style.visibility = 'visible';
 		}
+	    document.getElementById("toggle").value = "Lista slajdów";
 	} else {
 		slides.disabled = false;
 		outline.disabled = true;
@@ -200,6 +202,7 @@ function toggle() {
 			slide.style.visibility = 'hidden';
 		}
 		slideColl[snum].style.visibility = 'visible';
+	    document.getElementById("toggle").value = "Ciągły tekst";		
 	}
 }
 
@@ -374,26 +377,25 @@ function externalLinks() {
 function createControls() {
 	var controlsDiv = document.getElementById("controls");
 	if (!controlsDiv) return;
-	var hider = ' onmouseover="showHide(\'s\');" onmouseout="showHide(\'h\');"';
+	/*var hider = ' onmouseover="showHide(\'s\');" onmouseout="showHide(\'h\');"';
 	var hideDiv, hideList = '';
 	if (controlVis == 'hidden') {
 		hideDiv = hider;
 	} else {
 		hideList = hider;
-	}
-	controlsDiv.innerHTML = '<form action="#" id="controlForm"' + hideDiv + '>' +
-	'<div id="navLinks">' +
-	'<a accesskey="t" id="toggle" href="javascript:toggle();">&#216;<\/a>' +
-	'<a accesskey="z" id="prev" href="javascript:go(-1);">&laquo;<\/a>' +
-	'<a accesskey="x" id="next" href="javascript:go(1);">&raquo;<\/a>' +
-	'<div id="navList"' + hideList + '><select id="jumplist" onchange="go(\'j\');"><\/select><\/div>' +
-	'<\/div><\/form>';
-	if (controlVis == 'hidden') {
+	}*/
+	controlsDiv.innerHTML = '' +
+	'<input type="button" accesskey="t" id="toggle" onclick="toggle();" value="Ciągły tekst"' +
+	'<input type="button" accesskey="z" id="prev" onclick="javascript:go(-1);" value="&laquo;"' +
+	'<input type="button" accesskey="x" id="next" onclick="javascript:go(1);" value="&raquo;"' +
+	'<select id="jumplist" onchange="go(\'j\');"><\/select><\/div>';
+	/*if (controlVis == 'hidden') {
 		var hidden = document.getElementById('navLinks');
 	} else {
 		var hidden = document.getElementById('jumplist');
 	}
-	addClass(hidden,'hideme');
+	addClass(hidden,'hideme');*/
+	document.getElementById("toggle").onclick = toggle;
 }
 
 function fontScale() {  // causes layout problems in FireFox that get fixed if browser's Reload is used; same may be true of other Gecko-based browsers

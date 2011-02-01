@@ -15,8 +15,11 @@
                     $("<iframe id='presentation-frame' width='600' height='500' border='0' src=''>").appendTo($("#document-detail"));
                   }
                   $("#presentation-frame").attr("src", this.href);
-                  $('#document-list li').css('border', 'none');
-                  $(this).closest('li').css('border', '1px solid green');
+                  $('#document-list li').css('background-color', 'white');
+                  $('#document-list li a').css('background-color', 'white');
+                  $(this).closest('li').css('background-color', '#EEEEEE');
+                  $(this).css('background-color', '#EEEEEE');
+                  $(this).next('a').css('background-color', '#EEEEEE');                                    
                   $('.download-doc').hide();
                   $(this).next('.download-doc').show();
             });

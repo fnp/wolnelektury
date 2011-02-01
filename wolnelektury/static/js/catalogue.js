@@ -464,7 +464,7 @@ function serverTime() {
             return false;
         });
 
-        $('.sponsor-logos').cycle({timeout: 3000});
+        //$('.sponsor-logos').cycle({timeout: 3000});
 
         $('.widget-code').focus(
             function(){
