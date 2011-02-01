@@ -25,7 +25,20 @@ class BookAdmin(TaggableModelAdmin):
     search_fields = ('title',)
     ordering = ('title',)
 
-    prepopulated_fields = {'slug': ('title',)}
+    filter_horizontal = ('medias',)
+
+    def change_view(self, request, object_id, extra_context=None):
+        #my_context = {
+        #    'osm_data': self.get_osm_info(),
+        #}
+        print request.GET.keys()
+        if not request.GET.has_key('advanced'):
+            self.fields = ['title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file', 'medias']
+        else:
+            self.fields = None
+        return super(BookAdmin, self).change_view(request, object_id,
+            extra_context=extra_context)
+
 
 
 class FragmentAdmin(TaggableModelAdmin):
@@ -40,6 +53,7 @@ class MediaAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'type', 'uploaded_at')
     ordering = ('name', 'type')
+    search_fields = ('name',)
 
 
 

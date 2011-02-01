@@ -591,7 +591,7 @@ def download_shelf(request, slug):
     if form.is_valid():
         formats = form.cleaned_data['formats']
     if len(formats) == 0:
-        formats = ['pdf', 'epub', 'odt', 'txt', 'mp3', 'ogg', 'daisy']
+        formats = ['pdf', 'epub', 'odt', 'txt']
 
     # Create a ZIP archive
     temp = tempfile.TemporaryFile()
@@ -613,18 +613,6 @@ def download_shelf(request, slug):
         if 'txt' in formats and book.txt_file:
             filename = book.txt_file.path
             archive.write(filename, str('%s.txt' % book.slug))
-        if 'mp3' in formats and book.has_media("mp3"):
-            for file in book.get_media("mp3"):
-                filename = file.file.path
-                archive.write(filename, str('%s.mp3' % slughifi(file.name)))
-        if 'ogg' in formats and book.has_media("ogg"):
-            for file in book.get_media("ogg"):
-                filename = file.file.path
-                archive.write(filename, str('%s.ogg' % slughifi(file.name)))
-        if 'daisy' in formats and book.has_media("daisy"):
-            for file in book.get_media("daisy"):
-                filename = file.file.path
-                archive.write(filename, str('%s.daisy' % slughifi(file.name)))
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
@@ -643,7 +631,7 @@ def shelf_book_formats(request, shelf):
     """
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set')
 
-    formats = {'pdf': False, 'epub': False, 'odt': False, 'txt': False, 'mp3': False, 'ogg': False, 'daisy': False}
+    formats = {'pdf': False, 'epub': False, 'odt': False, 'txt': False}
 
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         if book.pdf_file:
@@ -652,8 +640,8 @@ def shelf_book_formats(request, shelf):
             formats['epub'] = True
         if book.txt_file:
             formats['txt'] = True
-        for format in ('odt', 'mp3', 'ogg'):
-            if not formats[format] and book.has_media(format):
+        for format in ('odt',):
+            if book.has_media(format):
                 formats[format] = True
 
     return HttpResponse(LazyEncoder().encode(formats))

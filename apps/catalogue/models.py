@@ -493,6 +493,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True):
+        import re
         from tempfile import NamedTemporaryFile
         from slughifi import slughifi
         from markupstring import MarkupString
@@ -511,6 +512,8 @@ class Book(models.Model):
 
         # Read book metadata
         book_base, book_slug = book_info.url.rsplit('/', 1)
+        if re.search(r'[^a-zA-Z0-9-]', book_slug):
+            raise ValueError('Invalid characters in slug')
         book, created = Book.objects.get_or_create(slug=book_slug)
 
         if created:
