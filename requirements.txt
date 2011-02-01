@@ -11,7 +11,7 @@ django-maintenancemode>=0.9
 Feedparser>=4.1
 
 # PIL 
-Imaging>=1.1.6
+PIL>=1.1.6
 mutagen>=1.17
 sorl-thumbnail>=3.2
 
