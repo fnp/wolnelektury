@@ -33,9 +33,11 @@ class BookAdmin(TaggableModelAdmin):
         #}
         print request.GET.keys()
         if not request.GET.has_key('advanced'):
-            self.fields = ['title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file', 'medias']
+            self.fields = ('title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file', 'medias',)
+            self.readonly_fields = ('title', 'slug',)
         else:
             self.fields = None
+            self.readonly_fields = ()
         return super(BookAdmin, self).change_view(request, object_id,
             extra_context=extra_context)
 
