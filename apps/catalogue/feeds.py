@@ -42,8 +42,8 @@ class AudiobookFeed(Feed):
         if type == 'all':
             objects = objects.filter(type__in=('mp3', 'ogg', 'daisy'))
         else:
-            objects = objects.filter(type=type)
-        return objects[:20]
+            objects = objects.filter(type=type)[:20]
+        return objects
 
     def item_title(self, item):
         return item.name
