@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.template.loader import render_to_string
-from django.template.defaultfilters import slugify
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
@@ -22,6 +21,7 @@ from catalogue.fields import JSONField
 
 from librarian import dcparser, html, epub, NoDublinCore
 from mutagen import id3
+from slughifi import slughifi
 
 
 TAG_CATEGORIES = (
@@ -162,9 +162,9 @@ def book_upload_path(ext=None):
         if not ext:
             ext = media.type
         if not media.name:
-            name = slugify(filename.split(".")[0])
+            name = slughifi(filename.split(".")[0])
         else:
-            name = slugify(media.name)
+            name = slughifi(media.name)
         return 'lektura/%s.%s' % (name, ext)
     return get_dynamic_path
 
@@ -184,14 +184,14 @@ class BookMedia(models.Model):
         verbose_name        = _('book media')
         verbose_name_plural = _('book media')
 
-    def save(self, force_insert=False, force_update=False):
-        media = super(BookMedia, self).save(force_insert, force_update)
+    def save(self, force_insert=False, force_update=False, **kwargs):
+        media = super(BookMedia, self).save(force_insert, force_update, **kwargs)
         if self.type == 'mp3':
             file = self.file
             extra_info = self.get_extra_info_value()
             extra_info.update(self.get_mp3_info())
             self.set_extra_info_value(extra_info)
-            media = super(BookMedia, self).save(force_insert, force_update)
+            media = super(BookMedia, self).save(force_insert, force_update, **kwargs)
         return media
 
     def get_mp3_info(self):
@@ -495,7 +495,6 @@ class Book(models.Model):
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True):
         import re
         from tempfile import NamedTemporaryFile
-        from slughifi import slughifi
         from markupstring import MarkupString
         from django.core.files.storage import default_storage
 
