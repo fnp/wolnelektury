@@ -35,7 +35,7 @@ class FilteredSelectMultiple(forms.SelectMultiple):
 
 
 class TaggableModelForm(forms.ModelForm):
-    tags = forms.MultipleChoiceField(label=_('tags').capitalize(), required=True, widget=FilteredSelectMultiple(_('tags'), False))
+    tags = forms.MultipleChoiceField(label=_('tags').capitalize(), required=False, widget=FilteredSelectMultiple(_('tags'), False))
 
     def __init__(self, *args, **kwargs):
         if 'instance' in kwargs:

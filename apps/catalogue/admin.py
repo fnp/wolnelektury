@@ -28,13 +28,9 @@ class BookAdmin(TaggableModelAdmin):
     filter_horizontal = ('medias',)
 
     def change_view(self, request, object_id, extra_context=None):
-        #my_context = {
-        #    'osm_data': self.get_osm_info(),
-        #}
-        print request.GET.keys()
         if not request.GET.has_key('advanced'):
             self.fields = ('title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file', 'medias',)
-            self.readonly_fields = ('title', 'slug',)
+            self.readonly_fields = ('title',)
         else:
             self.fields = None
             self.readonly_fields = ()
@@ -56,6 +52,7 @@ class MediaAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'uploaded_at')
     ordering = ('name', 'type')
     search_fields = ('name',)
+    fields = ('type', 'name', 'file',)
 
 
 
