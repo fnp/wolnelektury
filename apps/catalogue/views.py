@@ -491,13 +491,14 @@ def json_tags_starting_with(request, callback=None):
     if len(prefix) < 2:
         return HttpResponse('')
     tags_list = []
-    result = ""   
     for tag in _tags_starting_with(prefix, request.user):
         if not tag.name in tags_list:
-            result += "\n" + tag.name
             tags_list.append(tag.name)
-    dict_result = {"matches": tags_list}
-    return JSONResponse(dict_result, callback)
+    if request.GET.get('mozhint', ''):
+        result = [prefix, tags_list]
+    else:
+        result = {"matches": tags_list}
+    return JSONResponse(result, callback)
 
 # ====================
 # = Shelf management =
