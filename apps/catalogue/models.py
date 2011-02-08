@@ -156,7 +156,7 @@ class Tag(TagBase):
 
 
 # TODO: why is this hard-coded ?
-def book_upload_path(ext=None):
+def book_upload_path(ext=None, maxlen=100):
     def get_dynamic_path(media, filename, ext=ext):
         # how to put related book's slug here?
         if not ext:
@@ -165,7 +165,7 @@ def book_upload_path(ext=None):
             name = slughifi(filename.split(".")[0])
         else:
             name = slughifi(media.name)
-        return 'lektura/%s.%s' % (name, ext)
+        return 'lektura/%s.%s' % (name[:(maxlen-len('lektura/.%s' % ext))], ext)
     return get_dynamic_path
 
 
