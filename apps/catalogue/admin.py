@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
+from django import forms
 
 from newtagging.admin import TaggableModelAdmin
 from catalogue.models import Tag, Book, Fragment, BookMedia
@@ -46,13 +47,22 @@ class FragmentAdmin(TaggableModelAdmin):
     ordering = ('book', 'anchor',)
 
 
-class MediaAdmin(admin.ModelAdmin):
-    #tag_model = BookMedia
 
-    list_display = ('name', 'type', 'uploaded_at')
+class BookMediaAdminForm(forms.ModelForm):
+    books = forms.CharField(required=False)
+
+    class Meta:
+        model = BookMedia
+
+
+class MediaAdmin(admin.ModelAdmin):
+    form = BookMediaAdminForm
+
+    list_display = ('name', 'type', 'book_count', 'uploaded_at')
     ordering = ('name', 'type')
     search_fields = ('name',)
-    fields = ('type', 'name', 'file',)
+    fields = ('type', 'name', 'file', 'books')
+    readonly_fields = ('books',)
 
 
 

@@ -171,10 +171,18 @@ def book_upload_path(ext=None, maxlen=100):
 
 class BookMedia(models.Model):
     type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100")
-    name        = models.CharField(_('name'), max_length="100", blank=True)
-    file        = models.FileField(_('file'), upload_to=book_upload_path(), blank=True)
+    name        = models.CharField(_('name'), max_length="100")
+    file        = models.FileField(_('file'), upload_to=book_upload_path())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     extra_info  = JSONField(_('extra information'), default='{}')
+
+    def book_count(self):
+        return self.book_set.count()
+    book_count.short_description = _('book count')
+
+    def books(self):
+        return mark_safe('<br/>'.join("<a href='%s'>%s</a>" % (reverse('admin:catalogue_book_change', args=[b.id]), b.title) for b in self.book_set.all()))
+    books.short_description = _('books')
 
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
