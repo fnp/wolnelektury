@@ -23,6 +23,14 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
+a.banner {
+    display: block;
+    white-space: nowrap;
+}
+a.banner:hover {
+    text-decoration: none;
+}
+
 input {
     font: 1em Verdana, Arial, Helvetica, sans-serif; 
 }
