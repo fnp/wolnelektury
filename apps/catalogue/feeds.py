@@ -5,6 +5,7 @@
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 
 from catalogue import models
 
@@ -29,24 +30,33 @@ class AudiobookFeed(Feed):
     }
 
     def get_object(self, request, type):
-        return type
+        return {'type': type, 'all': 'all' in request.GET}
 
-    def title(self, type):
-        return self.titles[type]
+    def title(self, args):
+        return self.titles[args['type']]
 
-    def link(self, type):
-        return reverse('audiobook_feed', args=(type,))
+    def link(self, args):
+        return reverse('audiobook_feed', args=(args['type'],))
 
-    def items(self, type):
+    def items(self, args):
         objects = models.BookMedia.objects.order_by('-uploaded_at')
         if type == 'all':
             objects = objects.filter(type__in=('mp3', 'ogg', 'daisy'))
         else:
-            objects = objects.filter(type=type)[:20]
+            objects = objects.filter(type=args['type'])
+        if not args['all']:
+            objects = objects[:50]
         return objects
 
     def item_title(self, item):
         return item.name
+
+    def item_categories(self, item):
+        authors = set()
+        for book in item.book_set.all():
+            for author in book.tags.filter(category='author'):
+                authors.add(author.name)
+        return sorted(authors)
 
     def item_description(self, item):
         lines = []
