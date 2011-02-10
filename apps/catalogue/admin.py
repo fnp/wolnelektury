@@ -5,7 +5,7 @@
 from django.contrib import admin
 from django import forms
 
-from newtagging.admin import TaggableModelAdmin
+from newtagging.admin import TaggableModelAdmin, TaggableModelForm
 from catalogue.models import Tag, Book, Fragment, BookMedia
 
 
@@ -30,9 +30,11 @@ class BookAdmin(TaggableModelAdmin):
 
     def change_view(self, request, object_id, extra_context=None):
         if not request.GET.has_key('advanced'):
+            self.form = forms.ModelForm
             self.fields = ('title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file', 'medias',)
             self.readonly_fields = ('title',)
         else:
+            self.form = TaggableModelForm
             self.fields = None
             self.readonly_fields = ()
         return super(BookAdmin, self).change_view(request, object_id,
