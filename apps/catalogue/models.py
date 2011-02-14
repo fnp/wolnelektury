@@ -160,7 +160,10 @@ def book_upload_path(ext=None, maxlen=100):
     def get_dynamic_path(media, filename, ext=ext):
         # how to put related book's slug here?
         if not ext:
-            ext = media.type
+            if media.type == 'daisy':
+                ext = 'daisy.zip'
+            else:
+                ext = media.type
         if not media.name:
             name = slughifi(filename.split(".")[0])
         else:

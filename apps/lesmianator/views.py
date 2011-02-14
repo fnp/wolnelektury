@@ -66,8 +66,11 @@ def poem_from_set(request, shelf):
 def get_poem(request, poem):
     p = get_object_or_404(Poem, slug=poem)
     p.visit()
-    books = Book.objects.filter(id__in=p.get_created_from_value())
-    book = books[0] if len(books) == 1 else None
+    if p.created_from:
+        books = Book.objects.filter(id__in=p.get_created_from_value())
+        book = books[0] if len(books) == 1 else None
+    else:
+        books = book = None
 
     return render_to_response('lesmianator/poem.html', 
                 {"poem": p, "books": books, "book": book},
