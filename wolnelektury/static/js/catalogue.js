@@ -391,7 +391,6 @@ function serverTime() {
                             $('#createNewShelf').show();
                         });
                 } catch (e){}
-                $("#putOnShelf input[type=checkbox]").attr("checked",false);
                 var serverResponse;
                 $('form', hash.w).ajaxForm({
                     target: serverResponse,
