@@ -49,13 +49,6 @@
                   {% all_editors book.get_extra_info_value %}.</p>
             {% endif %}
 
-
-
-            <xsl:if test="//dc:description" >
-              <p><xsl:value-of select="//dc:description" /></p>
-            </xsl:if>
-    
-            <xsl:call-template name="editors" />
         </div>
         <div id="header">
             <div id="logo">
