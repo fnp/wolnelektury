@@ -147,11 +147,17 @@ class Continuations(models.Model):
     @classmethod
     def get(cls, sth):
         object_type = ContentType.objects.get_for_model(sth)
+        should_keys = set([sth.id])
+        if isinstance(sth, Tag):
+            should_keys = set(b.pk for b in Book.tagged.with_any((sth,)))
         try:
             obj = cls.objects.get(content_type=object_type, object_id=sth.id)
             f = open(obj.pickle.path)
-            conts = cPickle.load(f)
+            keys, conts = cPickle.load(f)
             f.close()
+            if set(keys) != should_keys:
+                obj.delete()
+                raise cls.DoesNotExist
             return conts
         except cls.DoesNotExist:
             if isinstance(sth, Book):
@@ -162,7 +168,7 @@ class Continuations(models.Model):
                 raise NotImplemented('Lesmianator continuations: only Book and Tag supported')
 
             c = cls(content_object=sth)
-            c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps(conts)))
+            c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps((should_keys, conts))))
             c.save()
             return conts
 
