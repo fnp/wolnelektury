@@ -280,6 +280,7 @@ p .ac_input {
     border-right: 0.15em solid #E3D888;
 }
 
+#lesmianator #tags-list,
 #tagged-object-list #tags-list, #book-detail #tags-list {
     margin-left: 39em;
 }

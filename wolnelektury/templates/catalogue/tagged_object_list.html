@@ -124,6 +124,9 @@
                 <h2>{% trans "Epochs" %}</h2>
                 {% tag_list categories.epoch tags %}
             {% endif %}
+            {% if only_shelf %}
+                <p><a href="{% url poem_from_set tags.0.slug %}">Miksuj utwory z tej półki</a>
+            {% endif %}
         </div>
         <div id="themes-list">
             {% if categories.theme %}

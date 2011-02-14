@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load chunks compressed catalogue_tags %}
+{% load compressed %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,8 +11,13 @@
     </head>
     <body>
         <div id="menu">
-            <a href='' class='menu-link'>Twórzże się jeszcze raz!</a>
-            <span style='float: right'>Poezja z Wolnych Lektur przepuszczona przez mikser.</a>
+            {% if shelf or not books %}
+                {# shelf or global mixing #}
+                <a href='' class='menu-link'>Twórzże się jeszcze raz!</a>
+            {% else %}{% if book %} 
+                <a href='{% url poem_from_book book.slug %}' class='menu-link'>Twórzże się jeszcze raz!</a>
+            {% endif %}{% endif %}
+            <span style='float: right'>Wolne Lektury przepuszczone przez mikser.</a>
         </div>
         <div id="header">
             <div id="logo">
@@ -24,7 +29,42 @@
                 <span class="author">Leśmianator</span>
                 <span class="title">***</span>
             </h1>
-            {{ object|linebreaksbr }}
+            {{ poem.text|linebreaksbr }}
+        <div id="footnotes" >
+            <h3>O utworze</h3>
+            <div><p>
+                Aby pokazać innym ten utwór, użyj linku:<br/>
+                <a class="permalink" href="{{ poem.get_absolute_url }}">http://www.wolnelektury.pl{{ poem.get_absolute_url }}</a>
+            </p></div>
+            <div>
+            {% if book %}
+                <p>Tekst powstał przez zmiksowanie utworu
+                <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>.<br/>
+                <a href="{% url poem_from_book book.slug %}">Zmiksuj go ponownie</a>
+                albo <a href="{% url lesmianator %}">zobacz</a>, co jeszcze możesz zamieszać.</p>
+            {% else %}{% if books %}
+                <p>Tekst powstał przez zmiksowanie utworów:</p>
+                <ul>
+                    {% for book in books %}
+                        <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% if shelf %}
+                    <a href="">Zmiksuj</a>
+                    półkę <a href="{{ shelf.get_absolute_url }}">{{ shelf.name }}</a>
+                    jeszcze raz, albo
+                    <a href="{% url lesmianator %}">zobacz</a>, co jeszcze możesz zamieszać.</p>
+                {% else %}
+                    <p><a href="{% url lesmianator %}">Zobacz</a>,
+                    jak łatwo możesz stworzyć własny wierszmiks.</p>
+                {% endif %}
+            {% else %}
+                <p>Wiersz powstał przez zmiksowanie ze sobą całej liryki z Wolnych Lektur.
+                <a href="">Spróbuj jeszcze raz</a>, albo
+                <a href="{% url lesmianator %}">zobacz</a>, co jeszcze możesz zamieszać.</p>
+            {% endif %}{% endif %}
+            <div>
+        </div>
         </div>
         <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

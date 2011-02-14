@@ -163,6 +163,7 @@
                 {% endif %}
             </ul>
             <p><a href="{{ book.xml_file.url }}">{% trans "View XML source" %}</a></p>
+            <p><a href="{% url poem_from_book book.slug %}">Miksuj ten utwór</a></p>
         </div>
         <div id="themes-list">
             <h2>{% trans "Work's themes " %}</h2>

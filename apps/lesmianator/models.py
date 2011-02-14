@@ -1,0 +1,169 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
+import cPickle
+from datetime import datetime
+from random import randint
+from StringIO import StringIO
+
+from django.core.files.base import ContentFile
+from django.db import models
+from django.db.models import permalink
+from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
+from django.db.models.signals import m2m_changed
+from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+from django.conf import settings
+
+from librarian import text
+from catalogue.fields import JSONField
+from catalogue.models import Book, Tag
+
+
+class Poem(models.Model):
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True)
+    text = models.TextField(_('text'))
+    created_by = models.ForeignKey(User)
+    created_from = JSONField(_('extra information'), null=True, blank=True)
+    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
+    seen_at = models.DateTimeField(_('last view date'), auto_now_add=True, editable=False)
+    view_count = models.IntegerField(_('view count'), default=1)
+
+    try:
+        f = open(settings.LESMIANATOR_PICKLE)
+        global_dictionary = cPickle.load(f)
+        f.close()
+    except:
+        global_dictionary = {}
+
+    def visit(self):
+        self.view_count += 1
+        self.seen_at = datetime.now()
+        self.save()
+
+    def __unicode__(self):
+        return "%s (%s...)" % (self.slug, self.text[:20])
+
+    @classmethod
+    def write(cls, continuations=None, length=3, maxlen=1000):
+        def choose_word(word, continuations):
+            try:
+                choices = sum((continuations[word][post] for post in continuations[word]))
+                r = randint(0, choices - 1)
+
+                for post in continuations[word]:
+                    r -= continuations[word][post]
+                    if r < 0:
+                        return post
+            except KeyError:
+                return ''
+
+
+        if continuations is None:
+            continuations = cls.global_dictionary
+
+        letters = []
+        word = u''
+        empty = -10
+        lines = 0
+        if not continuations:
+            maxlen = 0
+        # want at least two lines, but let Lesmianator end his stanzas
+        while (empty < 2 or lines < 2) and maxlen:
+            letter = choose_word(word, continuations)
+            letters.append(letter)
+            word = word[-length+1:] + letter
+            if letter == u'\n':
+                # count non-empty lines
+                if empty == 0:
+                    lines += 1
+                # 
+                if lines >= 2:
+                    empty += 1
+                lines += 1
+            else:
+                empty = 0
+            maxlen -= 1
+
+        return ''.join(letters).strip()
+
+    def get_absolute_url(self):
+        return reverse('get_poem', kwargs={'poem': self.slug})
+
+
+class Continuations(models.Model):
+    pickle = models.FileField(_('Continuations file'), upload_to='lesmianator')
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+
+    def __unicode__(self):
+        return "Continuations for: %s" % unicode(self.content_object)
+
+    @staticmethod
+    def join_conts(a, b):
+        for pre in b:
+            a.setdefault(pre, {})
+            for post in b[pre]:
+                a[pre].setdefault(post, 0)
+                a[pre][post] += b[pre][post]
+        return a
+
+    @classmethod
+    def for_book(cls, book, length=3):
+        # count from this book only
+        print 'for_book', book
+        output = StringIO()
+        f = open(book.xml_file.path)
+        text.transform(f, output, False, ('raw-text',))
+        f.close()
+        conts = {}
+        last_word = ''
+        for letter in output.getvalue().decode('utf-8').strip().lower():
+            mydict = conts.setdefault(last_word, {})
+            mydict.setdefault(letter, 0)
+            mydict[letter] += 1
+            last_word = last_word[-length+1:] + letter
+        # add children
+        return reduce(cls.join_conts, 
+                      (cls.get(child) for child in book.children.all()),
+                      conts)
+
+    @classmethod
+    def for_set(cls, tag):
+        # book contains its descendants, we don't want them twice
+        books = Book.tagged.with_any((tag,))
+        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books])
+        descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
+        if descendants_keys:
+            books = books.exclude(pk__in=descendants_keys)
+
+        cont_tabs = (cls.get(b) for b in books)
+        return reduce(cls.join_conts, cont_tabs)
+
+    @classmethod
+    def get(cls, sth):
+        object_type = ContentType.objects.get_for_model(sth)
+        try:
+            obj = cls.objects.get(content_type=object_type, object_id=sth.id)
+            f = open(obj.pickle.path)
+            conts = cPickle.load(f)
+            f.close()
+            return conts
+        except cls.DoesNotExist:
+            if isinstance(sth, Book):
+                conts = cls.for_book(sth)
+            elif isinstance(sth, Tag):
+                conts = cls.for_set(sth)
+            else:
+                raise NotImplemented('Lesmianator continuations: only Book and Tag supported')
+
+            c = cls(content_object=sth)
+            c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps(conts)))
+            c.save()
+            return conts
+
+

@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^materialy/', include('lessons.urls')),
     url(r'^opds/', include('opds.urls')),
     url(r'^sugestia/', include('suggest.urls')),
-    url(r'^lesmianator/?$', 'lesmianator.views.poem', name='lesmianator'),
+    url(r'^lesmianator/', include('lesmianator.urls')),
 
     # Static pages
     url(r'^wolontariat/$', 'infopages.views.infopage', {'slug': 'voluntary_services'}, name='voluntary_services'),

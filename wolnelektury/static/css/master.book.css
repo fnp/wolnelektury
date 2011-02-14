@@ -203,6 +203,10 @@ p {
     top: -4px;
 }
 
+#footnotes {
+    margin-top: 3em;
+}
+
 #footnotes .annotation {
     display: block;
     float: left;
@@ -214,9 +218,13 @@ p {
     margin: 1.5em 0 0 0;
 }
 
-#footnotes p {
+#footnotes p, #footnotes ul {
     margin-left: 2.5em;
     font-size: 0.875em;
+}
+
+#footnotes .permalink {
+    font-size: .75em;
 }
 
 blockquote {

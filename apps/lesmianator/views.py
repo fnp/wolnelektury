@@ -1,60 +1,77 @@
 # Create your views here.
 
-import cPickle
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from random import randint
+from django.contrib.auth.decorators import login_required
+from django.views.decorators import cache
+
+from catalogue.utils import get_random_hash
+from catalogue.models import Book, Tag
+from catalogue import forms
+from lesmianator.models import Poem, Continuations
 
 
-def _choose_word(word):
-    try:
-        choices = sum((_dictionary[word][post] for post in _dictionary[word]))
-        r = randint(0, choices - 1)
+def main_page(request):
+    last = Poem.objects.all().order_by('-created_at')[:10]
+    form = forms.SearchForm()
+    shelves = Tag.objects.filter(user__username='lesmianator')
 
-        for post in _dictionary[word]:
-            r -= _dictionary[word][post]
-            if r < 0:
-                return post
-    except KeyError:
-        return ''
-
-# load dictionary on start, it won't change
-from django.conf import settings
-
-try:
-    f = open(settings.LESMIANATOR_PICKLE)
-    _dictionary = cPickle.load(f)
-except:
-    _dictionary = {}
+    return render_to_response('lesmianator/lesmianator.html', 
+                {"last": last, "form": form, "shelves": shelves},
+                context_instance=RequestContext(request))
 
 
-def poem(request):
-    letters = []
-    word = u''
-    empty = -10
-    left = 1000
-    lines = 0
-    if not _dictionary:
-        left = 0
-    # want at least two lines, but let Lesmianator end his stanzas
-    while (empty < 2 or lines < 2) and left:
-        letter = _choose_word(word)
-        letters.append(letter)
-        word = word[-2:] + letter
-        if letter == u'\n':
-            # count non-empty lines
-            if empty == 0:
-                lines += 1
-            # 
-            if lines >= 2:
-                empty += 1
-            lines += 1
-        else:
-            empty = 0
-        left -= 1
-
-    poem = ''.join(letters).strip()
+@cache.never_cache
+def new_poem(request):
+    user = request.user if request.user.is_authenticated else None
+    text = Poem.write()
+    p = Poem(slug=get_random_hash(text), text=text, created_by=user)
+    p.save()
 
     return render_to_response('lesmianator/poem.html', 
-                {"object": poem},
+                {"poem": p},
                 context_instance=RequestContext(request))
+
+
+@cache.never_cache
+def poem_from_book(request, slug):
+    book = get_object_or_404(Book, slug=slug)
+    user = request.user if request.user.is_authenticated else None
+    text = Poem.write(Continuations.get(book))
+    p = Poem(slug=get_random_hash(text), text=text, created_by=user)
+    p.set_created_from_value([book.id])
+    p.save()
+
+    return render_to_response('lesmianator/poem.html', 
+                {"poem": p, "books": [book], "book": book},
+                context_instance=RequestContext(request))
+
+
+@cache.never_cache
+@login_required
+def poem_from_set(request, shelf):
+    user = request.user
+    tag = get_object_or_404(Tag, category='set', slug=shelf)
+    text = Poem.write(Continuations.get(tag))
+    p = Poem(slug=get_random_hash(text), text=text, created_by=user)
+    books = Book.tagged.with_any((tag,))
+    p.set_created_from_value([b.id for b in books])
+    p.save()
+
+    book = books[0] if len(books) == 1 else None
+
+    return render_to_response('lesmianator/poem.html', 
+                {"poem": p, "shelf": tag, "books": books, "book": book},
+                context_instance=RequestContext(request))
+
+def get_poem(request, poem):
+    p = get_object_or_404(Poem, slug=poem)
+    p.visit()
+    books = Book.objects.filter(id__in=p.get_created_from_value())
+    book = books[0] if len(books) == 1 else None
+
+    return render_to_response('lesmianator/poem.html', 
+                {"poem": p, "books": books, "book": book},
+                context_instance=RequestContext(request))
+
+
