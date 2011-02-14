@@ -23,7 +23,7 @@ def main_page(request):
 
 @cache.never_cache
 def new_poem(request):
-    user = request.user if request.user.is_authenticated else None
+    user = request.user if request.user.is_authenticated() else None
     text = Poem.write()
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
     p.save()
@@ -36,7 +36,7 @@ def new_poem(request):
 @cache.never_cache
 def poem_from_book(request, slug):
     book = get_object_or_404(Book, slug=slug)
-    user = request.user if request.user.is_authenticated else None
+    user = request.user if request.user.is_authenticated() else None
     text = Poem.write(Continuations.get(book))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
     p.set_created_from_value([book.id])
@@ -48,9 +48,8 @@ def poem_from_book(request, slug):
 
 
 @cache.never_cache
-@login_required
 def poem_from_set(request, shelf):
-    user = request.user
+    user = request.user if request.user.is_authenticated() else None
     tag = get_object_or_404(Tag, category='set', slug=shelf)
     text = Poem.write(Continuations.get(tag))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)

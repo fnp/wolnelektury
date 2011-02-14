@@ -26,7 +26,7 @@ from catalogue.models import Book, Tag
 class Poem(models.Model):
     slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     text = models.TextField(_('text'))
-    created_by = models.ForeignKey(User)
+    created_by = models.ForeignKey(User, null=True)
     created_from = JSONField(_('extra information'), null=True, blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     seen_at = models.DateTimeField(_('last view date'), auto_now_add=True, editable=False)
