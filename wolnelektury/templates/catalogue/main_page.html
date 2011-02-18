@@ -80,7 +80,7 @@
                 </form>
             {% else %}
                 <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
-                <p>{% trans "You need to " %}<a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
+                <p>{% trans "You need to " %}<a class="login-register-link" href="#" onClick="_gaq.push(['_trackEvent', 'Dialogs', 'Login']);">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
             {% endif %}
             <div id="lessons">
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
@@ -92,25 +92,25 @@
             <div id="categories-list">
                 {% if categories.author %}
                     <h2>{% trans "Authors" %}</h2>
-                    {% folded_tag_list categories.author %}
+                    {% folded_tag_list categories.author 'Authors' %}
                 {% endif %}
                 {% if categories.kind %}
                     <h2>{% trans "Kinds" %}</h2>
-                    {% folded_tag_list categories.kind %}
+                    {% folded_tag_list categories.kind 'Kinds' %}
                 {% endif %}
                 {% if categories.genre %}
                     <h2>{% trans "Genres" %}</h2>
-                    {% folded_tag_list categories.genre %}
+                    {% folded_tag_list categories.genre 'Genres' %}
                 {% endif %}
                 {% if categories.epoch %}
                     <h2>{% trans "Epochs" %}</h2>
-                    {% folded_tag_list categories.epoch %}
+                    {% folded_tag_list categories.epoch 'Epochs' %}
                 {% endif %}
             </div>
             <div id="themes-list">
                 {% if fragment_tags %}
                     <h2>{% trans "Themes and topics" %}</h2>
-                    {% folded_tag_list fragment_tags %}
+                    {% folded_tag_list fragment_tags 'Themes' %}
                 {% endif %}
                 <h2>{% trans "Themes groups" %}</h2>
                 <div class="shown-tags">
@@ -124,7 +124,7 @@
                         <li>przyroda
                         <span class="subcategories"><a href="/katalog/natura/">Natura</a>, <a href="/katalog/zywioly/">Żywioły</a>, <a href="/katalog/ogien/">Ogień</a>, <a href="/katalog/ziemia/">Ziemia</a>, <a href="/katalog/wiatr/">Wiatr</a>, <a href="/katalog/woda/">Woda</a>, <a href="/katalog/wiosna/">Wiosna</a>, <a href="/katalog/lato/">Lato</a>, <a href="/katalog/jesien/">Jesień</a>, <a href="/katalog/zima/">Zima</a>, <a href="/katalog/przemijanie/">Przemijanie</a>, <a href="/katalog/slonce/">Słońce</a>, <a href="/katalog/ksiezyc/">Księżyc</a>, <a href="/katalog/gwiazda/">Gwiazda</a>, <a href="/katalog/oblok/">Obłok</a>, <a href="/katalog/noc/">Noc</a>, <a href="/katalog/swiatlo/">Światło</a>, <a href="/katalog/gora/">Góra</a>, <a href="/katalog/rzeka/">Rzeka</a>, <a href="/katalog/morze/">Morze</a>, <a href="/katalog/burza/">Burza</a>, <a href="/katalog/deszcz/">Deszcz</a>, <a href="/katalog/bloto/">Błoto</a>, <a href="/katalog/przyroda-nieozywiona/">Przyroda nieożywiona</a>, <a href="/katalog/rosliny/">Rośliny</a>, <a href="/katalog/kwiaty/">Kwiaty</a>, <a href="/katalog/ogrod/">Ogród</a>, <a href="/katalog/sielanka/">Sielanka</a>, <a href="/katalog/raj/">Raj</a>, <a href="/katalog/jablko/">Jabłko</a>, <a href="/katalog/drzewo/">Drzewo</a>, <a href="/katalog/zwierzeta/">Zwierzęta</a>, <a href="/katalog/ptak/">Ptak</a>, <a href="/katalog/motyl/">Motyl</a>, <a href="/katalog/kot/">Kot</a>, <a href="/katalog/kon/">Koń</a>, <a href="/katalog/pies/">Pies</a>, <a href="/katalog/waz/">Wąż</a>, <a href="/katalog/potwor/">Potwór</a></span></li>
                     </ol>
-                    <p><a href="#" class="show-all-tags" title="{% trans "Themes and topics" %}">{% trans "See more" %}</a></p>
+                    <p><a href="#" onClick="_gaq.push(['_trackEvent', 'tags-toogle', 'show', 'Themes groups']);" class="show-all-tags" title="{% trans "Themes and topics" %}">{% trans "See more" %}</a></p>
                 </div>
                 <div class="all-tags">
                     <ol>
@@ -287,7 +287,7 @@
                     <li>żywioły
                     <span class="subcategories"><a href="/katalog/zywioly/">Żywioły</a>, <a href="/katalog/ogien/">Ogień</a>, <a href="/katalog/ziemia/">Ziemia</a>, <a href="/katalog/wiatr/">Wiatr</a>, <a href="/katalog/woda/">Woda</a>, <a href="/katalog/przestrzen/">Przestrzeń</a></span></li>
                     </ol>
-                    <p><a href="#" class="hide-all-tags">{% trans "Hide" %}</a></p>
+                    <p><a href="#" onClick="_gaq.push(['_trackEvent', 'tags-toogle', 'hide', 'Themes groups']);" class="hide-all-tags">{% trans "Hide" %}</a></p>
                 </div>
             </div>
             <div class="clearboth"></div>

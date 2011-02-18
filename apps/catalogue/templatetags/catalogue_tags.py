@@ -260,7 +260,7 @@ def tag_list(tags, choices=None):
 
 
 @register.inclusion_tag('catalogue/folded_tag_list.html')
-def folded_tag_list(tags, choices=None):
+def folded_tag_list(tags, title='', choices=None):
     tags = [tag for tag in tags if tag.count]
     if choices is None:
         choices = []
