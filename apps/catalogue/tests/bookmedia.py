@@ -7,11 +7,24 @@ from catalogue import models
 
 class BookMediaTests(WLTestCase):
 
+    def setUp(self):
+        WLTestCase.setUp(self)
+        self.file = ContentFile('X')
+
+    def test_diacritics(self):
+        bm = models.BookMedia.objects.create(type="ogg", 
+                    name="Zażółć gęślą jaźń")
+        bm.file.save(bm.name, self.file)
+        self.assertEqual(bm.file.name.rsplit('/', 1)[-1], 'zazolc-gesla-jazn.ogg')
+
+
     def test_long_name(self):
-        file = ContentFile('X')
         bm = models.BookMedia.objects.create(type="ogg", 
                     name="Some very very very very very very very very very very very very very very very very long file name")
-        bm.file.save(bm.name, file)
+
+        # save twice so Django adds some stuff
+        bm.file.save(bm.name, self.file)
+        bm.file.save(bm.name, self.file)
         bm.save()
 
         # reload to see what was really saved

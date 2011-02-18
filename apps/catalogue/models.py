@@ -168,7 +168,7 @@ def book_upload_path(ext=None, maxlen=100):
             name = slughifi(filename.split(".")[0])
         else:
             name = slughifi(media.name)
-        return 'lektura/%s.%s' % (name[:(maxlen-len('lektura/.%s' % ext))], ext)
+        return 'lektura/%s.%s' % (name[:maxlen-len('lektura/.%s' % ext)-4], ext)
     return get_dynamic_path
 
 
