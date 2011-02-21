@@ -100,6 +100,9 @@ class Continuations(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
+    class Meta:
+        unique_together = (('content_type', 'object_id'), )
+
     def __unicode__(self):
         return "Continuations for: %s" % unicode(self.content_object)
 
@@ -115,7 +118,6 @@ class Continuations(models.Model):
     @classmethod
     def for_book(cls, book, length=3):
         # count from this book only
-        print 'for_book', book
         output = StringIO()
         f = open(book.xml_file.path)
         text.transform(f, output, False, ('raw-text',))
@@ -152,11 +154,12 @@ class Continuations(models.Model):
             should_keys = set(b.pk for b in Book.tagged.with_any((sth,)))
         try:
             obj = cls.objects.get(content_type=object_type, object_id=sth.id)
+            if not obj.pickle:
+                raise cls.DoesNotExist
             f = open(obj.pickle.path)
             keys, conts = cPickle.load(f)
             f.close()
             if set(keys) != should_keys:
-                obj.delete()
                 raise cls.DoesNotExist
             return conts
         except cls.DoesNotExist:
@@ -167,7 +170,7 @@ class Continuations(models.Model):
             else:
                 raise NotImplemented('Lesmianator continuations: only Book and Tag supported')
 
-            c = cls(content_object=sth)
+            c, created = cls.objects.get_or_create(content_type=object_type, object_id=sth.id)
             c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps((should_keys, conts))))
             c.save()
             return conts
