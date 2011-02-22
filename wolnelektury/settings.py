@@ -91,14 +91,16 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-
     'maintenancemode.middleware.MaintenanceModeMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'
@@ -141,7 +143,9 @@ INSTALLED_APPS = [
     'pdcounter',
 ]
 
-CACHE_BACKEND = 'locmem:///?max_entries=3000'
+#CACHE_BACKEND = 'locmem:///?max_entries=3000'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
 
 # CSS and JavaScript file groups
 COMPRESS_CSS = {

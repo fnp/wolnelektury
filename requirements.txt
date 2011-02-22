@@ -7,6 +7,8 @@ django-pagination>=1.0
 django-rosetta>=0.5.3
 django-maintenancemode>=0.9
 
+python-memcached
+
 # Feedparser 
 Feedparser>=4.1
 
