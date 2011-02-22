@@ -40,4 +40,22 @@ $(function() {
         $(this).removeClass('selected');
         $($(this).attr('href')).slideUp('fast');
     });
+    
+
+    if (window.getSelection) {
+        $('.theme-begin').click(function() {
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            var range = document.createRange();
+
+            var e = $(".theme-end[fid='" + $(this).attr('fid') + "']")[0];
+
+            if (e) {
+                range.setStartAfter(this);
+                range.setEndBefore(e);
+                selection.addRange(range);
+            }
+        });
+    }
+
 });
