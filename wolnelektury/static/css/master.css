@@ -79,6 +79,16 @@ em {
 #header #logo {
     float: left;
 }
+#header #logo img {
+    margin-bottom: -1.25em;
+}
+#header #logo a {
+    display:block;
+    color: #777;
+}
+#logo a:hover {
+    text-decoration: none;
+}
 
 #header #user-info {
     margin: 0 0 0 auto;
