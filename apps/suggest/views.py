@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.translation import ugettext as _
 from django.views.decorators import cache
 from django.views.decorators.http import require_POST
+from django.contrib.sites.models import Site
 
 from suggest import forms
 from suggest.models import Suggestion
@@ -33,14 +34,15 @@ def report(request):
 
         mail_managers(u'Nowa sugestia na stronie WolneLektury.pl', u'''\
 Zgłoszono nową sugestię w serwisie WolneLektury.pl.
-%(url)s
+http://%(site)s%(url)s
 
 Użytkownik: %(user)s
 Kontakt: %(contact)s
 
 %(description)s''' % {
+            'site': Site.objects.get_current().domain,
             'url': reverse('admin:suggest_suggestion_change', args=[suggestion.id]),
-            'user': str(request.user),
+            'user': str(request.user) if request.user.is_authenticated() else '',
             'contact': contact,
             'description': description,
             }, fail_silently=True)
