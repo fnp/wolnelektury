@@ -178,7 +178,12 @@ COMPRESS_JS = {
     'book': {
         'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
         'output_filename': 'js/book?.min.js',
+    },
+    'book_ie': {
+        'source_filenames': ('js/ierange-m2.js',),
+        'output_filename': 'js/book_ie?.min.js',
     }
+
 }
 
 COMPRESS_VERSION = True

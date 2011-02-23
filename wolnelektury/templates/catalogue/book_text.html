@@ -10,6 +10,10 @@
         {% compressed_css "book" %}
         {% compressed_js "jquery" %}
         {% compressed_js "book" %}
+        <!--[if IE]>
+            {% compressed_js "book_ie" %}
+        <![endif]-->
+
     </head>
     <body>
         <div id="menu">
