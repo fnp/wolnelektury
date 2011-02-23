@@ -1,15 +1,17 @@
+{% load i18n %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-		<title>Authorize Token</title>
+		<title>{% trans "Authorize Token" %}</title>
+		<link rel="stylesheet" href="/static/css/mobile.css" media="handheld, only screen and (max-device-width:480px)"/>
+		<meta name="viewport" content="width=320" />
 	</head>
 	<body>
-		<h1>Authorize Token</h1>
-
-        <form action="{% url piston.authentication.oauth_user_auth %}" method="POST">
+		<h1>WolneLektury.pl - {% trans "Authorize Token" %}</h1>
+        <form action="{% url piston.authentication.oauth_user_auth %}" method="post">
             {{ form.as_table }}
+            <input type="submit" value="{% trans "Confirm" %}" />
         </form>
-
 	</body>
 </html>
