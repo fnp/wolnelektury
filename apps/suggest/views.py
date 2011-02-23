@@ -2,10 +2,13 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.core.mail import send_mail, mail_managers
+from django.core.urlresolvers import reverse
+from django.core.validators import email_re
 from django.http import HttpResponse, HttpResponseRedirect
+from django.utils.translation import ugettext as _
 from django.views.decorators import cache
 from django.views.decorators.http import require_POST
-from django.utils.translation import ugettext as _
 
 from suggest import forms
 from suggest.models import Suggestion
@@ -27,6 +30,31 @@ def report(request):
         if request.user.is_authenticated():
             suggestion.user = request.user
         suggestion.save()
+
+        mail_managers(u'Nowa sugestia na stronie WolneLektury.pl', u'''\
+Zgłoszono nową sugestię w serwisie WolneLektury.pl.
+%(url)s
+
+Użytkownik: %(user)s
+Kontakt: %(contact)s
+
+%(description)s''' % {
+            'url': reverse('admin:suggest_suggestion_change', args=[suggestion.id]),
+            'user': str(request.user),
+            'contact': contact,
+            'description': description,
+            }, fail_silently=True)
+
+        if email_re.match(contact):
+            send_mail(u'[WolneLektury] ' + _(u'Thank you for your suggestion.'),
+                    _(u"""\
+Thank you for your comment on WolneLektury.pl.
+The suggestion has been referred to the project coordinator.""") +
+u"""
+
+-- 
+""" + _(u'''Message sent automatically. Please do not reply.'''),
+                    'no-reply@wolnelektury.pl', [contact], fail_silently=True)
 
         response_data = {'success': True, 'message': _('Report was sent successfully.')}
     else:
