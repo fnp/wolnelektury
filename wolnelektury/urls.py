@@ -36,6 +36,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Authentication
+    url(r'^users/simple_login/$', 'catalogue.views.simple_login', name='simple_login'),
     url(r'^uzytkownicy/zaloguj/$', 'catalogue.views.login', name='login'),
     url(r'^uzytkownicy/wyloguj/$', 'catalogue.views.logout_then_redirect', name='logout'),
     url(r'^uzytkownicy/utworz/$', 'catalogue.views.register', name='register'),

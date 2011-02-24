@@ -141,7 +141,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
                 context_instance=RequestContext(request))
 
 
-def tagged_object_list(request, tags=''):
+def tagged_object_list(request, tags='', api=False):
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
@@ -222,20 +222,23 @@ def tagged_object_list(request, tags=''):
         only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
 
-    return object_list(
-        request,
-        objects,
-        template_name='catalogue/tagged_object_list.html',
-        extra_context={
-            'categories': categories,
-            'only_shelf': only_shelf,
-            'only_author': only_author,
-            'only_my_shelf': only_my_shelf,
-            'formats_form': forms.DownloadFormatsForm(),
-
-            'tags': tags,
-        }
-    )
+    if api:
+        print objects
+        return objects    
+    else:
+        return object_list(
+            request,
+            objects,
+            template_name='catalogue/tagged_object_list.html',
+            extra_context={
+                'categories': categories,
+                'only_shelf': only_shelf,
+                'only_author': only_author,
+                'only_my_shelf': only_my_shelf,
+                'formats_form': forms.DownloadFormatsForm(),
+                'tags': tags,
+            }
+        )
 
 
 def book_fragments(request, book_slug, theme_slug):
@@ -680,6 +683,27 @@ def delete_shelf(request, slug):
 # ==================
 # = Authentication =
 # ==================
+
+@cache.never_cache
+def simple_login(request):
+    if request.method == "GET":
+        #next = request.REQUEST.get('next', '')
+        #if next == '':
+        form = AuthenticationForm(prefix='login')
+        return render_to_response('auth/login.html', locals(),
+                context_instance=RequestContext(request))
+        #else:
+        #    return HttpResponseRedirect("/"+next)
+            
+    elif request.method == "POST":
+        form = AuthenticationForm(data=request.POST, prefix='login')
+        if form.is_valid():
+            auth.login(request, form.get_user())   
+        url = request.META['HTTP_REFERER'].split("next=")[1]
+        url = url.replace("%3F","?").replace("%3D","=")
+        return HttpResponseRedirect(url)    
+
+
 @require_POST
 @cache.never_cache
 def login(request):
