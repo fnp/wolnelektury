@@ -64,6 +64,9 @@ class Tag(TagBase):
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
+    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
+
     categories_rev = {
         'autor': 'author',
         'epoka': 'epoch',
@@ -220,7 +223,8 @@ class Book(models.Model):
     title         = models.CharField(_('title'), max_length=120)
     slug          = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     description   = models.TextField(_('description'), blank=True)
-    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True)
+    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     _short_html   = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
     extra_info    = JSONField(_('extra information'))
