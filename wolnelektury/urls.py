@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^o-projekcie/$', 'infopages.views.infopage', {'slug': 'about_us'}, name='about_us'),
     url(r'^widget/$', 'infopages.views.infopage', {'slug': 'widget'}, name='widget'),
     url(r'^epub/$', 'infopages.views.infopage', {'slug': 'epub'}, name='epub'),
+    url(r'^zaproszenie/$', 'infopages.views.infopage', {'slug': 'invitation'}, name='invitation'),
     
     url(r'^1procent/$', 'django.views.generic.simple.direct_to_template', {
         'template': '1percent.html'
