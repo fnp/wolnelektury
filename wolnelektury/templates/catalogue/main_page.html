@@ -82,7 +82,7 @@
                 </form>
             {% else %}
                 <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
-                <p>{% trans "You need to " %}<a class="login-register-link" href="#" onClick="_gaq.push(['_trackEvent', 'Dialogs', 'Login']);">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
+                <p>{% trans "You need to " %} <a class="login-register-link" href="#" onClick="_gaq.push(['_trackEvent', 'Dialogs', 'Login']);">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
             {% endif %}
             <div id="lessons">
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
