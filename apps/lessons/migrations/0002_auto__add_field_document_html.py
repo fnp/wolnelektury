@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding field 'Document.html'
-        db.add_column('lessons_document', 'html', self.gf('django.db.models.fields.TextField')(default=None, blank=True), keep_default=False)
+        db.add_column('lessons_document', 'html', self.gf('django.db.models.fields.TextField')(default='', blank=True), keep_default=False)
 
 
     def backwards(self, orm):
@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
 
     models = {
         'lessons.document': {
-            'Meta': {'object_name': 'Document'},
+            'Meta': {'ordering': "['slug']", 'object_name': 'Document'},
             'author': ('django.db.models.fields.CharField', [], {'max_length': '120', 'blank': 'True'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
