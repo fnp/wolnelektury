@@ -31,6 +31,14 @@ def production():
     env.virtualenv = '/opt/lektury/basevirtualenv/bin/virtualenv'
     env.pip = '/opt/lektury/basevirtualenv/bin/pip'
 
+def giewont():
+    """Use giewont server"""
+    env.hosts = ['giewont.icm.edu.pl']
+    env.user = 'rczajka'
+    env.path = '/srv/wolnelektury.pl'
+    env.python = '/usr/bin/python'
+    env.virtualenv = '/usr/bin/virtualenv'
+    env.pip = '/usr/bin/pip'
 
 # =========
 # = Tasks =
@@ -47,7 +55,7 @@ def setup():
     """
     require('hosts', 'path', provided_by=[staging, production])
 
-    run('mkdir -p %(path)s; cd %(path)s; %(virtualenv)s --no-site-packages .;' % env, pty=True)
+    run('mkdir -p %(path)s; cd %(path)s; %(virtualenv)s .;' % env, pty=True)
     run('cd %(path)s; mkdir releases; mkdir shared; mkdir packages;' % env, pty=True)
     run('cd %(path)s/releases; ln -s . current; ln -s . previous' % env, pty=True)
     deploy()
