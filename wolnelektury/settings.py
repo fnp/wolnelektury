@@ -81,14 +81,14 @@ TEMPLATE_LOADERS = [
 #     'django.template.loaders.eggs.load_template_source',
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = [
+TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
     'wolnelektury.context_processors.extra_settings',
-]
+)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -98,6 +98,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'piwik.django.middleware.PiwikMiddleware',
     'maintenancemode.middleware.MaintenanceModeMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -141,6 +142,7 @@ INSTALLED_APPS = [
     'lesmianator',
     'opds',
     'pdcounter',
+    'piwik.django',
 ]
 
 #CACHE_BACKEND = 'locmem:///?max_entries=3000'
