@@ -562,7 +562,7 @@ class Book(models.Model):
                     tag.save()
                 book_tags.append(tag)
 
-        book.tags = book_tags + book_shelves
+        book.tags = set(book_tags + book_shelves)
 
         book_tag = book.book_tag()
 
