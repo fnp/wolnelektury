@@ -5,6 +5,8 @@
 
 {% block title %}{% trans "Listing of all audiobooks on WolneLektury.pl" %}{% endblock %}
 
+{% block metadescription %}Darmowe audiobooki na wolnej licencji. Lektury czytane przez znanych aktorów.{% endblock %}
+
 {% block extrahead %}
     <link rel="alternate" type="application/atom+xml" title="{% trans "Latest MP3 audiobooks" %}" href="{% url audiobook_feed 'mp3' %}" />
     <link rel="alternate" type="application/atom+xml" title="{% trans "Latest Ogg Vorbis audiobooks" %}" href="{% url audiobook_feed 'ogg' %}" />

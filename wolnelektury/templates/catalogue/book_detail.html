@@ -4,6 +4,8 @@
 
 {% block title %}{{ book.title }} {% trans "on WolneLektury.pl" %}{% endblock %}
 
+{% block metadescription %}{% book_title book %}. {{ block.super }}{% endblock %}
+
 {% block bodyid %}book-detail{% endblock %}
 
 {% block body %}

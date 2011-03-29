@@ -4,6 +4,8 @@
 
 {% block title %}{{ object.page_title }}{% endblock %}
 
+{% block metadescription %}{{ object.left_column|striptags|truncatewords:10 }}{% endblock %}
+
 {% block body %}
     <h1>{{ object.title }}</h1>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
