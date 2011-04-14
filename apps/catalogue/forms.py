@@ -27,7 +27,7 @@ class SearchForm(forms.Form):
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre')
 	    #self.fields['q'].widget.attrs['style'] = ''
-        self.fields['tags'].initial = '/'.join(tag.slug for tag in Tag.get_tag_list(tags))
+        self.fields['tags'].initial = '/'.join(tag.url_chunk for tag in Tag.get_tag_list(tags))
 
 
 class UserSetsForm(forms.Form):

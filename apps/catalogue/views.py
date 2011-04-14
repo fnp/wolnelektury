@@ -15,7 +15,7 @@ from datetime import datetime
 from django.conf import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -152,6 +152,8 @@ def tagged_object_list(request, tags=''):
             raise Http404
     except models.Tag.MultipleObjectsReturned, e:
         return differentiate_tags(request, e.tags, e.ambiguous_slugs)
+    except models.Tag.UrlDeprecationWarning, e:
+        return HttpResponsePermanentRedirect(reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)]))
 
     try:
         if len(tags) > settings.MAX_TAG_LIST:

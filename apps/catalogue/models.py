@@ -64,6 +64,9 @@ class Tag(TagBase):
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
+    class UrlDeprecationWarning(DeprecationWarning):
+        pass
+
     categories_rev = {
         'autor': 'author',
         'epoka': 'epoch',
@@ -122,19 +125,20 @@ class Tag(TagBase):
             real_tags = []
             ambiguous_slugs = []
             category = None
+            deprecated = False
             tags_splitted = tags.split('/')
-            for index, name in enumerate(tags_splitted):
-                if name in Tag.categories_rev:
+            for name in tags_splitted:
+                if category:
+                    real_tags.append(Tag.objects.get(slug=name, category=category))
+                    category = None
+                elif name in Tag.categories_rev:
                     category = Tag.categories_rev[name]
                 else:
-                    if category:
-                        real_tags.append(Tag.objects.get(slug=name, category=category))
-                        category = None
-                    else:
-                        try:
-                            real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
-                        except Tag.MultipleObjectsReturned, e:
-                            ambiguous_slugs.append(name)
+                    try:
+                        real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
+                        deprecated = True 
+                    except Tag.MultipleObjectsReturned, e:
+                        ambiguous_slugs.append(name)
 
             if category:
                 # something strange left off
@@ -145,8 +149,11 @@ class Tag(TagBase):
                 e.tags = real_tags
                 e.ambiguous_slugs = ambiguous_slugs
                 raise e
-            else:
-                return real_tags
+            if deprecated:
+                e = Tag.UrlDeprecationWarning()
+                e.tags = real_tags
+                raise e
+            return real_tags
         else:
             return TagBase.get_tag_list(tags)
 
