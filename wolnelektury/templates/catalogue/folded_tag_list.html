@@ -10,7 +10,7 @@
             {% endfor %}
         </ul>
         {% if some_tags_hidden %}
-            <p><a href="#" onClick="_gaq.push(['_trackEvent', 'tags-toogle', 'show', '{{ title }}']);" class="show-all-tags">{% trans "See more" %}</a></p>
+            <p><a href="#" class="show-all-tags">{% trans "See more" %}</a></p>
         {% endif %}
     </div>
     <div class="all-tags">
@@ -19,6 +19,6 @@
                 <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
             {% endfor %}
         </ul>
-        <p><a href="#" onClick="_gaq.push(['_trackEvent', 'tags-toogle', 'hide', '{{ title }}']);" class="hide-all-tags">{% trans "Hide" %}</a></p>
+        <p><a href="#" class="hide-all-tags">{% trans "Hide" %}</a></p>
     </div>
 {% endif %}

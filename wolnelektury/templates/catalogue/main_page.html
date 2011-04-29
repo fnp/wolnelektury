@@ -24,8 +24,8 @@
         <div id="propaganda">
             <p style="margin-top:-1em; margin-bottom: 2em;">
                 <a class="banner" href="http://nowoczesnapolska.org.pl/wesprzyj_nas/" style="line-height: 1.5em; font-size: 1.5em;">
-                    <img src="/static/img/procent.png" style="float:left; margin:.2em .7em 0 0;" />
-                    Twój 1% to <span style="color: rgb(191, 0, 26);">więcej lektur</span><br>
+                    <img src="/static/img/procent.png" alt="1%" style="float:left; margin:.2em .7em 0 0;" />
+                    Twój 1% to <span style="color: rgb(191, 0, 26);">więcej lektur</span><br/>
                     KRS 0000070056
                 </a>
             </p>
@@ -45,7 +45,7 @@
             <h2>Wolne Okładki</h2>
             <p>Tworzymy okładki do utworów z biblioteki Wolne Lektury.</p>
             <p><a href='http://wolneokladki.pl/'><img src='/static/img/wolneokladki-logo.png' alt='Wolne Okładki' width='250' height='98' /></a></p>
-            <p class="see-more"><a href="http://wolneokladki.pl/" title="Wolne Okładki">{%trans "See more" %} ⇒</a>
+            <p class="see-more"><a href="http://wolneokladki.pl/" title="Wolne Okładki">{%trans "See more" %} ⇒</a></p>
 
             {% comment %}    <h2>{% trans "Books for every school level" %}</h2>
             <ul>
@@ -82,7 +82,7 @@
                 </form>
             {% else %}
                 <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
-                <p>{% trans "You need to " %} <a class="login-register-link" href="#" onClick="_gaq.push(['_trackEvent', 'Dialogs', 'Login']);">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
+                <p>{% trans "You need to " %} <a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
             {% endif %}
             <div id="lessons">
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
@@ -126,7 +126,7 @@
                         <li>przyroda
                         <span class="subcategories"><a href="/katalog/motyw/natura/">Natura</a>, <a href="/katalog/motyw/zywioly/">Żywioły</a>, <a href="/katalog/motyw/ogien/">Ogień</a>, <a href="/katalog/motyw/ziemia/">Ziemia</a>, <a href="/katalog/motyw/wiatr/">Wiatr</a>, <a href="/katalog/motyw/woda/">Woda</a>, <a href="/katalog/motyw/wiosna/">Wiosna</a>, <a href="/katalog/motyw/lato/">Lato</a>, <a href="/katalog/motyw/jesien/">Jesień</a>, <a href="/katalog/motyw/zima/">Zima</a>, <a href="/katalog/motyw/przemijanie/">Przemijanie</a>, <a href="/katalog/motyw/slonce/">Słońce</a>, <a href="/katalog/motyw/ksiezyc/">Księżyc</a>, <a href="/katalog/motyw/gwiazda/">Gwiazda</a>, <a href="/katalog/motyw/oblok/">Obłok</a>, <a href="/katalog/motyw/noc/">Noc</a>, <a href="/katalog/motyw/swiatlo/">Światło</a>, <a href="/katalog/motyw/gora/">Góra</a>, <a href="/katalog/motyw/rzeka/">Rzeka</a>, <a href="/katalog/motyw/morze/">Morze</a>, <a href="/katalog/motyw/burza/">Burza</a>, <a href="/katalog/motyw/deszcz/">Deszcz</a>, <a href="/katalog/motyw/bloto/">Błoto</a>, <a href="/katalog/motyw/przyroda-nieozywiona/">Przyroda nieożywiona</a>, <a href="/katalog/motyw/rosliny/">Rośliny</a>, <a href="/katalog/motyw/kwiaty/">Kwiaty</a>, <a href="/katalog/motyw/ogrod/">Ogród</a>, <a href="/katalog/motyw/sielanka/">Sielanka</a>, <a href="/katalog/motyw/raj/">Raj</a>, <a href="/katalog/motyw/jablko/">Jabłko</a>, <a href="/katalog/motyw/drzewo/">Drzewo</a>, <a href="/katalog/motyw/zwierzeta/">Zwierzęta</a>, <a href="/katalog/motyw/ptak/">Ptak</a>, <a href="/katalog/motyw/motyl/">Motyl</a>, <a href="/katalog/motyw/kot/">Kot</a>, <a href="/katalog/motyw/kon/">Koń</a>, <a href="/katalog/motyw/pies/">Pies</a>, <a href="/katalog/motyw/waz/">Wąż</a>, <a href="/katalog/motyw/potwor/">Potwór</a></span></li>
                     </ol>
-                    <p><a href="#" onClick="_gaq.push(['_trackEvent', 'tags-toogle', 'show', 'Themes groups']);" class="show-all-tags" title="{% trans "Themes and topics" %}">{% trans "See more" %}</a></p>
+                    <p><a href="#" class="show-all-tags" title="{% trans "Themes and topics" %}">{% trans "See more" %}</a></p>
                 </div>
                 <div class="all-tags">
                     <ol>
@@ -289,7 +289,7 @@
                     <li>żywioły
                     <span class="subcategories"><a href="/katalog/motyw/zywioly/">Żywioły</a>, <a href="/katalog/motyw/ogien/">Ogień</a>, <a href="/katalog/motyw/ziemia/">Ziemia</a>, <a href="/katalog/motyw/wiatr/">Wiatr</a>, <a href="/katalog/motyw/woda/">Woda</a>, <a href="/katalog/motyw/przestrzen/">Przestrzeń</a></span></li>
                     </ol>
-                    <p><a href="#" onClick="_gaq.push(['_trackEvent', 'tags-toogle', 'hide', 'Themes groups']);" class="hide-all-tags">{% trans "Hide" %}</a></p>
+                    <p><a href="#" class="hide-all-tags">{% trans "Hide" %}</a></p>
                 </div>
             </div>
             <div class="clearboth"></div>
