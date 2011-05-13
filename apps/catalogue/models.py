@@ -621,8 +621,8 @@ class Book(models.Model):
                 new_fragment.save()
                 new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
 
-        if not settings.NO_BUILD_TXT and build_txt:
-            book.build_txt()
+            if not settings.NO_BUILD_TXT and build_txt:
+                book.build_txt()
 
         if not settings.NO_BUILD_EPUB and build_epub:
             book.root_ancestor.build_epub()
