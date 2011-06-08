@@ -40,6 +40,7 @@ urlpatterns = patterns('',
     url(r'^uzytkownicy/zaloguj/$', 'catalogue.views.login', name='login'),
     url(r'^uzytkownicy/wyloguj/$', 'catalogue.views.logout_then_redirect', name='logout'),
     url(r'^uzytkownicy/utworz/$', 'catalogue.views.register', name='register'),
+    url(r'^uzytkownicy/login/$', 'django.contrib.auth.views.login', name='simple_login'),
 
     # API
     (r'^api/', include('api.urls')),
