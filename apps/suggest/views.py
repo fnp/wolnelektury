@@ -10,15 +10,59 @@ from django.utils.translation import ugettext as _
 from django.views.decorators import cache
 from django.views.decorators.http import require_POST
 from django.contrib.sites.models import Site
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
+from catalogue.forms import SearchForm
 from suggest import forms
-from suggest.models import Suggestion
+from suggest.models import Suggestion, PublishingSuggestion
+
 
 # FIXME - shouldn't be in catalogue
 from catalogue.views import LazyEncoder
 
 
-#@require_POST
+class AjaxableFormView(object):
+    formClass = None
+    template = None
+    ajax_template = None
+    formname = None
+
+    def __call__(self, request):
+        """
+            A view displaying a form, or JSON if `ajax' GET param is set.
+        """
+        ajax = request.GET.get('ajax', False)
+        if request.method == "POST":
+            form = self.formClass(request.POST)
+            if form.is_valid():
+                form.save(request)
+                response_data = {'success': True, 'message': _('Report was sent successfully.')}
+            else:
+                response_data = {'success': False, 'errors': form.errors}
+            if ajax:
+                return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
+        else:
+            form = self.formClass()
+            response_data = None
+
+        template = self.ajax_template if ajax else self.template
+        return render_to_response(template, {
+                self.formname: form, 
+                "form": SearchForm(),
+                "response_data": response_data,
+            },
+            context_instance=RequestContext(request))
+
+
+class PublishingSuggestionFormView(AjaxableFormView):
+    formClass = forms.PublishingSuggestForm
+    ajax_template = "publishing_suggest.html"
+    template = "publishing_suggest_full.html"
+    formname = "pubsuggest_form"
+
+
+@require_POST
 @cache.never_cache
 def report(request):
     suggest_form = forms.SuggestForm(request.POST)

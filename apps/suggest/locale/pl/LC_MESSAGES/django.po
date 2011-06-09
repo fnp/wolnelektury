@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-23 10:46+0100\n"
-"PO-Revision-Date: 2011-02-23 10:52+0100\n"
+"POT-Creation-Date: 2011-06-09 12:31+0200\n"
+"PO-Revision-Date: 2011-06-09 12:35+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,27 +17,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: forms.py:9
+#: forms.py:15
+#: forms.py:20
 msgid "Contact"
 msgstr "Kontakt"
 
-#: forms.py:10
+#: forms.py:16
 msgid "Description"
 msgstr "Opis"
 
+#: forms.py:21
+msgid "books"
+msgstr "książki"
+
+#: forms.py:22
+msgid "audiobooks"
+msgstr "audiobooki"
+
+#: forms.py:55
+#: views.py:95
+msgid "Thank you for your suggestion."
+msgstr "Dziękujemy za zgłoszenie."
+
+#: forms.py:56
+#: views.py:96
+msgid ""
+"Thank you for your comment on WolneLektury.pl.\n"
+"The suggestion has been referred to the project coordinator."
+msgstr ""
+"Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
+"Sugestia została przekazana koordynatorce projektu."
+
+#: forms.py:62
+#: views.py:102
+msgid "Message sent automatically. Please do not reply."
+msgstr "Wiadomość wysłana automatycznie. Proszę nie odpowiadać."
+
 #: models.py:10
+#: models.py:26
 msgid "contact"
 msgstr "kontakt"
 
 #: models.py:11
+#: models.py:27
+#: models.py:28
 msgid "description"
 msgstr "opis"
 
 #: models.py:12
+#: models.py:29
 msgid "creation date"
 msgstr "data utworzenia"
 
 #: models.py:13
+#: models.py:30
 msgid "IP address"
 msgstr "adres IP"
 
@@ -49,31 +82,45 @@ msgstr "sugestia"
 msgid "suggestions"
 msgstr "sugestie"
 
-#: views.py:49
-msgid "Thank you for your suggestion."
-msgstr "Dziękujemy za zgłoszenie."
+#: models.py:35
+msgid "publishing suggestion"
+msgstr "sugestia publikacji"
 
-#: views.py:51
-msgid ""
-"Thank you for your comment on WolneLektury.pl.\n"
-"The suggestion has been referred to the project coordinator."
-msgstr ""
-"Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
-"Sugestia została przekazana koordynatorce projektu."
+#: models.py:36
+msgid "publishing suggestions"
+msgstr "sugestie publikacji"
 
-#: views.py:56
-msgid "Message sent automatically. Please do not reply."
-msgstr "Wiadomość wysłana automatycznie. Proszę nie odpowiadać."
-
-#: views.py:59
+#: views.py:40
+#: views.py:105
 msgid "Report was sent successfully."
 msgstr "Zgłoszenie zostało wysłane."
+
+#: templates/publishing_suggest.html:2
+msgid "Didn't find a book? Make a suggestion."
+msgstr "Nie znalazłeś utworu na stronie? Zgłoś sugestię."
+
+#: templates/publishing_suggest.html:7
+msgid "I'd like to find in WolneLektury.pl these…"
+msgstr "Chciałabym/chciałbym znaleźć w bibliotece Wolne Lektury następujące"
+
+#: templates/publishing_suggest.html:13
+#: templates/suggest.html:7
+msgid "Send report"
+msgstr "Wyślij zgłoszenie"
+
+#: templates/publishing_suggest_full.html:12
+msgid "Search"
+msgstr ""
+
+#: templates/publishing_suggest_full.html:12
+msgid "or"
+msgstr ""
+
+#: templates/publishing_suggest_full.html:12
+msgid "return to main page"
+msgstr ""
 
 #: templates/suggest.html:2
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
-
-#: templates/suggest.html:7
-msgid "Send report"
-msgstr "Wyślij zgłoszenie"
 

@@ -61,6 +61,12 @@
 					{% endspaceless %}				
 			</div>
                 </form>
+            {# publication plan consultations - form link #}
+            <div style="clear:right;float:right" class="big-top-link">
+                <a href="{% url suggest_publishing %}" data-ajax="{% url suggest_publishing %}?ajax=1" id="suggest-publishing-link">
+                    {% trans "Didn't find a book? Make a suggestion." %}
+                </a>
+            </div>
             <div class="clearboth"></div>
         </div>
         <div id="maincontent">
@@ -113,6 +119,12 @@
             </div>
         </div>
         <div id="suggest-window">
+            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+            <div class="target">
+                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+            </div>
+        </div>
+        <div id="suggest-publishing-window">
             <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
             <div class="target">
                 <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>

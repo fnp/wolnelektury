@@ -37,6 +37,7 @@ from catalogue.utils import split_tags
 from newtagging import views as newtagging_views
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
+from suggest.forms import PublishingSuggestForm
 from slughifi import slughifi
 
 
@@ -468,7 +469,9 @@ def search(request):
             {'tags':tag_list, 'prefix':prefix, 'results':((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)},
             context_instance=RequestContext(request))
     else:
-        return render_to_response('catalogue/search_no_hits.html', {'tags':tag_list, 'prefix':prefix},
+        form = PublishingSuggestForm(initial={"books": prefix + ", "})
+        return render_to_response('catalogue/search_no_hits.html', 
+            {'tags':tag_list, 'prefix':prefix, "pubsuggest_form": form},
             context_instance=RequestContext(request))
 
 

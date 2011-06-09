@@ -912,6 +912,46 @@ div.shown-tags p, div.all-tags p {
 	width: 30em;
 }
 
+
+.big-top-link {
+    margin-top: .6em;
+    font-size: 2em;
+    /*max-width: 15em;*/
+    line-height: 1.2em;
+}
+
+#suggest-publishing-window {
+    position: absolute;
+    display: none;
+    width: 45em;
+    background-color: transparent;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+#suggest-publishing-window div.header {
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    width: 4em;
+    right: 0;
+    left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    float: right;
+    text-align: center;
+}
+
+#suggest-publishing-window div.target {
+    clear: both;
+    background-color: #FFF;
+    border-right: 0.3em solid #DDD;
+    border-bottom: 0.3em solid #DDD;
+    padding: 1em;
+}
+#suggest-publishing-form textarea {
+	width: 40em;
+    height: 6em;
+}
+
 /* ======================== */
 /* = Alphabetic book list = */
 /* ======================== */

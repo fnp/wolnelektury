@@ -345,6 +345,62 @@ function serverTime() {
             }
         });
 
+        $('#suggest-publishing-window').jqm({
+            ajax: '@data-ajax',
+            target: $('#suggest-publishing-window div.target')[0],
+            overlay: 60,
+            trigger: '#suggest-publishing-link',
+            onShow: function(hash) {
+                var offset = $(hash.t).offset();
+                hash.w.css({position: 'absolute', left: offset.left - hash.w.width() + $(hash.t).width(), top: offset.top});
+                $('div.header', hash.w).css({width: $(hash.t).width()});
+                hash.w.show();
+            },
+            onLoad: function(hash) {
+                $('form', hash.w).each(function() {this.action += '?ajax=1';});
+                $('form', hash.w).ajaxForm({
+                    dataType: 'json',
+                    target: $('#suggest-publishing-window div.target'),
+                    success: function(response) {
+                        if (response.success) {
+                            $('#suggest-publishing-window div.target').text(response.message);
+                            setTimeout(function() { $('#suggest-publishing-window').jqmHide() }, 1000)
+                        }
+                        else {
+                            $('#suggest-publishing-form .error').remove();
+                            $.each(response.errors, function(id, errors) {
+                                $('#suggest-publishing-form #id_' + id).before('<span class="error">' + errors[0] + '</span>');
+                            });
+                            $('#suggest-publishing-form input[type=submit]').removeAttr('disabled');
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+
+        (function($this) {
+            $form = $('form', $this);
+            $form.each(function() {this.action += '?ajax=1';});
+            $form.ajaxForm({
+                dataType: 'json',
+                target: $this,
+                success: function(response) {
+                    if (response.success) {
+                        $this.text(response.message);
+                    }
+                    else {
+                        $('.error', $form).remove();
+                        $.each(response.errors, function(id, errors) {
+                            $('#id_' + id, $form).before('<span class="error">' + errors[0] + '</span>');
+                        });
+                        $('input[type=submit]', $form).removeAttr('disabled');
+                        return false;
+                    }
+                }
+            });
+        })($('.block-form'));
+        
         $('#books-list .book').hover(
             function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
             function() { $(this).css({background: '#FFF'}); }
