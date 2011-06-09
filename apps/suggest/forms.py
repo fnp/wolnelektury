@@ -18,8 +18,15 @@ class SuggestForm(forms.Form):
 
 class PublishingSuggestForm(forms.Form):
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
-    books = forms.CharField(label=_('books'), widget=forms.Textarea, required=True)
-    audiobooks = forms.CharField(label=_('audiobooks'), widget=forms.Textarea, required=True)
+    books = forms.CharField(label=_('books'), widget=forms.Textarea, required=False)
+    audiobooks = forms.CharField(label=_('audiobooks'), widget=forms.Textarea, required=False)
+
+    def clean(self, *args, **kwargs):
+        if not self.cleaned_data['books'] and not self.cleaned_data['audiobooks']:
+            msg = _(u"One of these fields is required.")
+            self._errors["books"] = self.error_class([msg])
+            self._errors["audiobooks"] = self.error_class([msg])
+        return super(PublishingSuggestForm, self).clean(*args, **kwargs)
 
     def save(self, request):
         contact = self.cleaned_data['contact']

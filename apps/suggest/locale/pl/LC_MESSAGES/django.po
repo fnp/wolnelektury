@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-09 12:31+0200\n"
-"PO-Revision-Date: 2011-06-09 12:35+0100\n"
+"POT-Creation-Date: 2011-06-09 13:06+0200\n"
+"PO-Revision-Date: 2011-06-09 13:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,19 +27,25 @@ msgid "Description"
 msgstr "Opis"
 
 #: forms.py:21
+#: models.py:27
 msgid "books"
 msgstr "książki"
 
 #: forms.py:22
+#: models.py:28
 msgid "audiobooks"
 msgstr "audiobooki"
 
-#: forms.py:55
+#: forms.py:26
+msgid "One of these fields is required."
+msgstr "Proszę wypełnić co najmniej jedno z tych pól."
+
+#: forms.py:62
 #: views.py:95
 msgid "Thank you for your suggestion."
 msgstr "Dziękujemy za zgłoszenie."
 
-#: forms.py:56
+#: forms.py:63
 #: views.py:96
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
@@ -48,7 +54,7 @@ msgstr ""
 "Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
 "Sugestia została przekazana koordynatorce projektu."
 
-#: forms.py:62
+#: forms.py:69
 #: views.py:102
 msgid "Message sent automatically. Please do not reply."
 msgstr "Wiadomość wysłana automatycznie. Proszę nie odpowiadać."
@@ -59,8 +65,6 @@ msgid "contact"
 msgstr "kontakt"
 
 #: models.py:11
-#: models.py:27
-#: models.py:28
 msgid "description"
 msgstr "opis"
 

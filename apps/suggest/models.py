@@ -24,8 +24,8 @@ class Suggestion(models.Model):
 
 class PublishingSuggestion(models.Model):
     contact = models.CharField(_('contact'), blank=True, max_length=120)
-    books = models.TextField(_('books'))
-    audiobooks = models.TextField(_('audiobooks'))
+    books = models.TextField(_('books'), null=True, blank=True)
+    audiobooks = models.TextField(_('audiobooks'), null=True, blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True)
     ip = models.IPAddressField(_('IP address'))
     user = models.ForeignKey(User, blank=True, null=True)

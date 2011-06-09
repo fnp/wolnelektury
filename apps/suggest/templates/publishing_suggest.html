@@ -1,0 +1,15 @@
+{% load i18n %}
+<h2>{% trans "Didn't find a book? Make a suggestion." %}</h2>
+<form id='suggest-publishing-form' action="{% url suggest_publishing %}" method="post" accept-charset="utf-8" class="cuteform">
+<ol>
+    <li><span class="error">{{ pubsuggest_form.contact.errors }}</span><label for="id_contact">{{ pubsuggest_form.contact.label }}</label> {{ pubsuggest_form.contact }}</li>
+
+    <li>{% trans "I'd like to find in WolneLektury.pl these…" %}</li>
+
+    <li><span class="error">{{ pubsuggest_form.books.errors }}</span><label for="id_books">{{ pubsuggest_form.books.label }}:</label> {{ pubsuggest_form.books }}</li>
+
+    <li><span class="error">{{ pubsuggest_form.audiobooks.errors }}</span><label for="id_audiobooks">{{ pubsuggest_form.audiobooks.label }}:</label> {{ pubsuggest_form.audiobooks }}</li>
+
+    <li><input type="submit" value="{% trans "Send report" %}"/></li>
+</ol>
+</form>
