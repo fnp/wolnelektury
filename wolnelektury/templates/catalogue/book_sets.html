@@ -12,7 +12,7 @@
     <form action="{% url catalogue.views.book_sets book.slug %}" method="POST" id="putOnShelf" accept-charset="utf-8" class="cuteform">
     <ol>
         <li>{{ form.set_ids }}</li>
-        <li><input type="submit" value="{% trans "Put on the shelf!" %}"/></li>
+        <li id="putOnShelfSubmitButtonWrapper"><input type="submit" value="{% trans "Put on the shelf!" %}"/></li>
     </ol>
     </form>
 {% endif %}

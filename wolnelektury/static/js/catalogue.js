@@ -462,7 +462,12 @@ function serverTime() {
                             setTimeout(function() {$('#set-window').jqmHide();}, 1000);
                         }
                     }
-                });    
+                });
+                // Adds a spinner when an user is adding a book to a shelf
+                $('#putOnShelf').submit(function(){
+                	$('#putOnShelfSubmitButtonWrapper').append('<img src="/static/img/indicator.gif" style="margin-left: 0.5em"/>');
+                }					                	
+                );    
             }
         });
 
