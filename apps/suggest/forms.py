@@ -7,6 +7,8 @@ from django.core.mail import send_mail, mail_managers
 from django.core.urlresolvers import reverse
 from django.core.validators import email_re
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
+
 
 from suggest.models import PublishingSuggestion
 
@@ -59,12 +61,13 @@ Audiobooki:
             }, fail_silently=True)
 
         if email_re.match(contact):
-            send_mail(u'[WolneLektury] ' + _(u'Thank you for your suggestion.'),
-                    _(u"""\
+            send_mail(u'[WolneLektury] ' +
+                    ugettext(u'Thank you for your suggestion.'),
+                    ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator.""") +
 u"""
 
 -- 
-""" + _(u'''Message sent automatically. Please do not reply.'''),
+""" + ugettext(u'''Message sent automatically. Please do not reply.'''),
                     'no-reply@wolnelektury.pl', [contact], fail_silently=True)
