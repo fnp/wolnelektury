@@ -26,7 +26,7 @@ urlpatterns = patterns('catalogue.views',
     url(r'^zegar/$', 'clock', name='clock'),
     url(r'^xmls.zip$', 'xmls', name='xmls'),
 	
-	# Subsections
+    # Subsections
     url(r'^subsection/shelves/$', 'main_page_subsection_shelves', name='main_page_subsection_shelves'),
     
     # Public interface. Do not change this URLs.

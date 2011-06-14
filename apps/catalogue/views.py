@@ -521,13 +521,6 @@ def main_page_subsection_shelves(request):
     if request.user.is_authenticated():
         shelves = models.Tag.objects.filter(category='set', user=request.user)
         new_set_form = forms.NewSetForm()
-    #tags = models.Tag.objects.exclude(category__in=('set', 'book'))
-    #for tag in tags:
-#        tag.count = tag.get_count()
-#    categories = split_tags(tags)
-    #fragment_tags = categories.get('theme', [])
-#
-    #form = forms.SearchForm()
     return render_to_response('catalogue/main_page_subsection_shelves.html', locals(),
         context_instance=RequestContext(request))
 

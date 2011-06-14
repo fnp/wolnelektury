@@ -105,6 +105,8 @@ function serverTime() {
     return time;
 }
 
+/** Sets the shelves flag - should be called anytime 
+/*  the shelves data is being modified */
 function touchShelves() {	
     var date = new Date();
     // Time to force refresh of the shleves
@@ -112,6 +114,8 @@ function touchShelves() {
 	var expires = "; expires="+date.toGMTString();		
 	document.cookie = "shelvesmodified=true"+expires+"; path=/";
 }
+
+/** Checkes if shelves might me modified */
 function isShelvesTouched() {	
     var nameEQ = "shelvesmodified=";
 	var ca = document.cookie.split(';');
@@ -135,7 +139,7 @@ function refreshSubsectionShelves(){
 
 /** Binds jQuery to the tags inside the shelves subsection **/
 function bindSubsectionShelves(){
-    
+        
        $('.delete-shelf').click(function() {
             var link = $(this);
             var shelf_name = $('.visit-shelf', link.parent()).text();
@@ -314,9 +318,9 @@ function bindSubsectionShelves(){
         });
 
         
-        // Refreshes the shelves on each page load to fix the issue with back button cache and 
-        // ajax modifications of the shelves
-        // To disable this replace with bindSubsectionShelves();
+        // Refreshes the shelves on  page load to fix the issue with back button 
+        // amd ajax modifications of the shelves
+        // The refresh is only executed if shelf changing actions happened recently
         if (isShelvesTouched())
             refreshSubsectionShelves()
         else
