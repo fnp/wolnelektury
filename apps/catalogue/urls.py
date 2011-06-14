@@ -25,7 +25,10 @@ urlpatterns = patterns('catalogue.views',
     # tools
     url(r'^zegar/$', 'clock', name='clock'),
     url(r'^xmls.zip$', 'xmls', name='xmls'),
-
+	
+	# Subsections
+    url(r'^subsection/shelves/$', 'main_page_subsection_shelves', name='main_page_subsection_shelves'),
+    
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)\.html$', 'book_text', name='book_text'),
     url(r'^lektura/(?P<slug>[a-zA-Z0-9-]+)/$', 'book_detail', name='book_detail'),
@@ -33,6 +36,11 @@ urlpatterns = patterns('catalogue.views',
         'book_fragments', name='book_fragments'),
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 
+	
+
     url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
+    
+    
+    
 )
 

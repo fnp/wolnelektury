@@ -77,6 +77,7 @@ def main_page(request):
         context_instance=RequestContext(request))
 
 
+
 def book_list(request, filter=None, template_name='catalogue/book_list.html'):
     """ generates a listing of all books, optionally filtered with a test function """
 
@@ -515,6 +516,20 @@ def user_shelves(request):
     new_set_form = forms.NewSetForm()
     return render_to_response('catalogue/user_shelves.html', locals(),
             context_instance=RequestContext(request))
+
+def main_page_subsection_shelves(request):
+    if request.user.is_authenticated():
+        shelves = models.Tag.objects.filter(category='set', user=request.user)
+        new_set_form = forms.NewSetForm()
+    #tags = models.Tag.objects.exclude(category__in=('set', 'book'))
+    #for tag in tags:
+#        tag.count = tag.get_count()
+#    categories = split_tags(tags)
+    #fragment_tags = categories.get('theme', [])
+#
+    #form = forms.SearchForm()
+    return render_to_response('catalogue/main_page_subsection_shelves.html', locals(),
+        context_instance=RequestContext(request))
 
 @cache.never_cache
 def book_sets(request, slug):
