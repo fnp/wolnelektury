@@ -115,7 +115,7 @@ function touchShelves() {
 	document.cookie = "shelvesmodified=true"+expires+"; path=/";
 }
 
-/** Checkes if shelves might me modified */
+/** Checks if shelves might me modified */
 function isShelvesTouched() {	
     var nameEQ = "shelvesmodified=";
 	var ca = document.cookie.split(';');
