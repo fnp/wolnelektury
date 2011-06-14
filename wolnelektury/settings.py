@@ -4,7 +4,7 @@ from os import path
 
 PROJECT_DIR = path.abspath(path.dirname(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 MAINTENANCE_MODE = False
 
