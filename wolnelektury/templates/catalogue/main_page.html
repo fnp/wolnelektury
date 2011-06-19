@@ -49,27 +49,9 @@
 &lt;script type="text/javascript" src="http://www.wolnelektury.pl/static/js/widget.js"&gt;&lt;/script&gt;
 &lt;!-- END --&gt;</textarea>
                 <p class="see-more"><a href="{% url widget %}" title="{% trans "Wolne Lektury Widget" %}">{% trans "See more" %} ⇒</a></p>
-            <h2>{% trans "Your shelves with books" %}</h2>
-            {% if user.is_authenticated %}
-                {% if shelves %}
-                <ul class="shelf-list">
-                {% for shelf in shelves %}
-                    <li><a href="{% url delete_shelf shelf.slug %}" class="delete-shelf">{% trans "delete" %}</a> <a href="{{ shelf.get_absolute_url }}" class="visit-shelf">{{ shelf.name }} ({{ shelf.get_count }})</a></li>
-                {% endfor %}
-                </ul>
-                {% else %}
-                <p>{% trans "You do not own any shelves. You can create one below, if you want to." %}</p>
-                {% endif %}
-                <hr />
-                <form action="{% url catalogue.views.new_set %}" method="post" accept-charset="utf-8" class="cuteform">
-                <ol>
-                    <li>{{ new_set_form.name }} <input type="submit" value="{% trans "Create shelf" %}"/></li>
-                </ol>
-                </form>
-            {% else %}
-                <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
-                <p>{% trans "You need to " %} <a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
-            {% endif %}
+            <div id="subsection-shelves" >
+            {% include "catalogue/main_page_subsection_shelves.html" %}
+            </div>
             <div id="lessons">
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
                 <p>{% trans "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching." %}</p>

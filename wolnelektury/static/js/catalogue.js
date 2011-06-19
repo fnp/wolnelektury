@@ -105,6 +105,75 @@ function serverTime() {
     return time;
 }
 
+/** Sets the shelves flag - should be called anytime 
+/*  the shelves data is being modified */
+function touchShelves() {	
+    var date = new Date();
+    // Time to force refresh of the shleves
+	date.setTime(date.getTime()+(30*60*1000));
+	var expires = "; expires="+date.toGMTString();		
+	document.cookie = "shelvesmodified=true"+expires+"; path=/";
+}
+
+/** Checks if shelves might me modified */
+function isShelvesTouched() {	
+    var nameEQ = "shelvesmodified=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return true;
+	}
+	return false;
+}
+
+/** Reloads the shelves section in the main page body **/
+function refreshSubsectionShelves(){ 
+    if ($("#subsection-shelves").length > 0){
+        $.post("subsection/shelves/", function(data) {
+            $("#subsection-shelves").html(data);            
+            bindSubsectionShelves();
+        });				
+    }
+}
+
+/** Binds jQuery to the tags inside the shelves subsection **/
+function bindSubsectionShelves(){
+        
+       $('.delete-shelf').click(function() {
+            var link = $(this);
+            var shelf_name = $('.visit-shelf', link.parent()).text();
+            if (confirm(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+ ' '+ shelf_name + '?')) {
+                $.post(link.attr('href'), function(data, textStatus) {
+                    link.parent().remove();
+                });
+            }            
+            return false;
+        });
+        
+        $('ul.shelf-list li').hover(function() {
+            $(this).css({background: '#EEE', cursor: 'pointer'});
+        }, function() {
+            $(this).css({background: 'transparent'});
+        }).click(function() {
+            location.href = $('a.visit-shelf', this).attr('href');
+        });
+
+     
+
+		// Handles the adding of a shelf and the data refresh
+		$('#shelf-list-add-form').submit(function(event){
+            if ($("#subsection-shelves").length > 0){				 
+                event.preventDefault();
+                $(this).ajaxSubmit({
+                    success: function(){refreshSubsectionShelves();touchShelves();},
+                });                 
+			}                
+        });
+        
+        $('#shelf-list-add-form input').labelify({labelledClass: 'blur'});
+}
+
 (function($) {
     $(function() {
 
@@ -248,25 +317,16 @@ function serverTime() {
             }
         });
 
-        $('ul.shelf-list li').hover(function() {
-            $(this).css({background: '#EEE', cursor: 'pointer'});
-        }, function() {
-            $(this).css({background: 'transparent'});
-        }).click(function() {
-            location.href = $('a.visit-shelf', this).attr('href');
-        });
-
-        $('.delete-shelf').click(function() {
-            var link = $(this);
-            var shelf_name = $('.visit-shelf', link.parent()).text();
-            if (confirm(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF']+ ' '+ shelf_name + '?')) {
-                $.post(link.attr('href'), function(data, textStatus) {
-                    link.parent().remove();
-                });
-            }
-            return false;
-        });
-
+        
+        // Refreshes the shelves on  page load to fix the issue with back button 
+        // amd ajax modifications of the shelves
+        // The refresh is only executed if shelf changing actions happened recently
+        if (isShelvesTouched())
+            refreshSubsectionShelves()
+        else
+            bindSubsectionShelves();
+        
+		
         var serverResponse;
         $('#user-shelves-window').jqm({
             ajax: '@href',
@@ -286,6 +346,8 @@ function serverTime() {
                         var newShelf = $.parseJSON(serverResponse);
                         $('#user-shelves-window div.target').html(newShelf.msg);
                         setTimeout(function() { $('#user-shelves-window').jqmHide() }, 1000);
+                        touchShelves();
+                        refreshSubsectionShelves();
                     }
                 });
 
@@ -305,6 +367,8 @@ function serverTime() {
                     if (confirm(LOCALE_TEXTS[LANGUAGE_CODE]['DELETE_SHELF'] + ' ' + shelf_name + '?')) {
                         $.post(link.attr('href'), function(data, textStatus) {
                             link.parent().remove();
+                            touchShelves();
+                            refreshSubsectionShelves();
                         });
                     }
                     return false;
@@ -462,7 +526,13 @@ function serverTime() {
                             setTimeout(function() {$('#set-window').jqmHide();}, 1000);
                         }
                     }
-                });    
+                });
+                // Adds a spinner when an user is adding a book to a shelf
+                $('#putOnShelf').submit(function(){
+                	$('#putOnShelfSubmitButtonWrapper').append('<img src="/static/img/indicator.gif" style="margin-left: 0.5em"/>');
+                    touchShelves();
+                }					                	
+                );    
             }
         });
 
