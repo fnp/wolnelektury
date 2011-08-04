@@ -19,6 +19,11 @@ class TagAdmin(admin.ModelAdmin):
     radio_fields = {'category': admin.HORIZONTAL}
 
 
+class MediaInline(admin.TabularInline):
+    model = BookMedia
+    extra = 0
+
+
 class BookAdmin(TaggableModelAdmin):
     tag_model = Tag
 
@@ -26,12 +31,12 @@ class BookAdmin(TaggableModelAdmin):
     search_fields = ('title',)
     ordering = ('title',)
 
-    filter_horizontal = ('medias',)
+    inlines = [MediaInline]
 
     def change_view(self, request, object_id, extra_context=None):
         if not request.GET.has_key('advanced'):
             self.form = forms.ModelForm
-            self.fields = ('title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file', 'medias',)
+            self.fields = ('title', 'description', 'gazeta_link', 'wiki_link', 'pdf_file',)
             self.readonly_fields = ('title',)
         else:
             self.form = TaggableModelForm
@@ -41,7 +46,6 @@ class BookAdmin(TaggableModelAdmin):
             extra_context=extra_context)
 
 
-
 class FragmentAdmin(TaggableModelAdmin):
     tag_model = Tag
 
@@ -49,26 +53,6 @@ class FragmentAdmin(TaggableModelAdmin):
     ordering = ('book', 'anchor',)
 
 
-
-class BookMediaAdminForm(forms.ModelForm):
-    books = forms.CharField(required=False)
-
-    class Meta:
-        model = BookMedia
-
-
-class MediaAdmin(admin.ModelAdmin):
-    form = BookMediaAdminForm
-
-    list_display = ('name', 'type', 'book_count', 'uploaded_at')
-    ordering = ('name', 'type')
-    search_fields = ('name',)
-    fields = ('type', 'name', 'file', 'books')
-    readonly_fields = ('books',)
-
-
-
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Fragment, FragmentAdmin)
-admin.site.register(BookMedia, MediaAdmin)

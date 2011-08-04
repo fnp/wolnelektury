@@ -119,12 +119,12 @@ def book_list(request, filter=None, template_name='catalogue/book_list.html'):
 
 
 def audiobook_list(request):
-    return book_list(request, Q(medias__type='mp3') | Q(medias__type='ogg'),
+    return book_list(request, Q(media__type='mp3') | Q(media__type='ogg'),
                      template_name='catalogue/audiobook_list.html')
 
 
 def daisy_list(request):
-    return book_list(request, Q(medias__type='daisy'),
+    return book_list(request, Q(media__type='daisy'),
                      template_name='catalogue/daisy_list.html')
 
 

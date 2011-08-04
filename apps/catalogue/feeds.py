@@ -52,11 +52,8 @@ class AudiobookFeed(Feed):
         return item.name
 
     def item_categories(self, item):
-        authors = set()
-        for book in item.book_set.all():
-            for author in book.tags.filter(category='author'):
-                authors.add(author.name)
-        return sorted(authors)
+        return sorted(set(author.name for author in 
+                            item.book.tags.filter(category='author')))
 
     def item_description(self, item):
         lines = []
@@ -69,10 +66,7 @@ class AudiobookFeed(Feed):
         return u'<br/>\n'.join(lines)
 
     def item_link(self, item):
-        if item.book_set.exists():
-            return item.book_set.all()[0].get_absolute_url()
-        else:
-            return item.file.url
+        return item.book.get_absolute_url()
 
     def item_guid(self, item):
         return absolute_url(item.file.url)

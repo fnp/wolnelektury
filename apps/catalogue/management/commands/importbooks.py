@@ -92,26 +92,10 @@ class Command(BaseCommand):
                             book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
                             if verbose:
                                 print "Importing %s.epub" % file_base
-                        if os.path.isfile(file_base + '.odt'):
-                            book.odt_file.save('%s.odt' % book.slug, File(file(file_base + '.odt')))
-                            if verbose:
-                                print "Importing %s.odt" % file_base
                         if os.path.isfile(file_base + '.txt'):
                             book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
                             if verbose:
                                 print "Importing %s.txt" % file_base
-                        if os.path.isfile(os.path.join(dir_name, book.slug + '.mp3')):
-                            book.mp3_file.save('%s.mp3' % book.slug, File(file(os.path.join(dir_name, book.slug + '.mp3'))))
-                            if verbose:
-                                print "Importing %s.mp3" % book.slug
-                        if os.path.isfile(os.path.join(dir_name, book.slug + '.ogg')):
-                            book.ogg_file.save('%s.ogg' % book.slug, File(file(os.path.join(dir_name, book.slug + '.ogg'))))
-                            if verbose:
-                                print "Importing %s.ogg" % book.slug
-                        if os.path.isfile(os.path.join(dir_name, book.slug + '.daisy.zip')):
-                            book.ogg_file.save('%s.daisy.zip' % book.slug, File(file(os.path.join(dir_name, book.slug + '.daisy.zip'))))
-                            if verbose:
-                                print "Importing %s.daisy.zip" % book.slug
 
                         book.save()
 

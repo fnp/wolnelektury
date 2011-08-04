@@ -20,6 +20,7 @@ from newtagging import managers
 from catalogue.fields import JSONField
 
 from librarian import dcparser, html, epub, NoDublinCore
+import mutagen
 from mutagen import id3
 from slughifi import slughifi
 
@@ -184,15 +185,9 @@ class BookMedia(models.Model):
     name        = models.CharField(_('name'), max_length="100")
     file        = models.FileField(_('file'), upload_to=book_upload_path())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
-    extra_info  = JSONField(_('extra information'), default='{}')
-
-    def book_count(self):
-        return self.book_set.count()
-    book_count.short_description = _('book count')
-
-    def books(self):
-        return mark_safe('<br/>'.join("<a href='%s'>%s</a>" % (reverse('admin:catalogue_book_change', args=[b.id]), b.title) for b in self.book_set.all()))
-    books.short_description = _('books')
+    extra_info  = JSONField(_('extra information'), default='{}', editable=False)
+    book = models.ForeignKey('Book', related_name='media')
+    source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
     def __unicode__(self):
         return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
@@ -202,25 +197,60 @@ class BookMedia(models.Model):
         verbose_name        = _('book media')
         verbose_name_plural = _('book media')
 
-    def save(self, force_insert=False, force_update=False, **kwargs):
-        media = super(BookMedia, self).save(force_insert, force_update, **kwargs)
-        if self.type == 'mp3':
-            file = self.file
-            extra_info = self.get_extra_info_value()
-            extra_info.update(self.get_mp3_info())
-            self.set_extra_info_value(extra_info)
-            media = super(BookMedia, self).save(force_insert, force_update, **kwargs)
-        return media
+    def save(self, *args, **kwargs):
+        super(BookMedia, self).save(*args, **kwargs)
+        extra_info = self.get_extra_info_value()
+        extra_info.update(self.read_meta())
+        self.set_extra_info_value(extra_info)
+        self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
+        print self.extra_info, self.source_sha1
+        return super(BookMedia, self).save(*args, **kwargs)
 
-    def get_mp3_info(self):
-        """Retrieves artist and director names from audio ID3 tags."""
-        try:
-            audio = id3.ID3(self.file.path)
-            artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
-            director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
-        except:
-            artist_name = director_name = ''
+    def read_meta(self):
+        """
+            Reads some metadata from the audiobook.
+        """
+
+        artist_name = director_name = ''
+        if self.type == 'mp3':
+            try:
+                audio = id3.ID3(self.file.path)
+                artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
+                director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
+            except:
+                pass
+        elif self.type == 'ogg':
+            try:
+                audio = mutagen.File(self.file.path)
+                artist_name = ', '.join(audio.get('artist', []))
+                director_name = ', '.join(audio.get('conductor', []))
+            except:
+                pass
+        else:
+            return {}
         return {'artist_name': artist_name, 'director_name': director_name}
+
+    @staticmethod
+    def read_source_sha1(filepath, filetype):
+        """
+            Reads source file SHA1 from audiobok metadata.
+        """
+
+        if filetype == 'mp3':
+            try:
+                audio = id3.ID3(filepath)
+                return [t.data for t in audio.getall('PRIV') 
+                        if t.owner=='http://wolnelektury.pl?flac_sha1'][0]
+            except:
+                return None
+        elif filetype == 'ogg':
+            try:
+                audio = mutagen.File(filepath)
+                return audio.get('flac_sha1', [None])[0] 
+            except:
+                return None
+        else:
+            return None
 
 
 class Book(models.Model):
@@ -239,9 +269,7 @@ class Book(models.Model):
     pdf_file      = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
     epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)    
     txt_file      = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)        
-    # other files
-    medias        = models.ManyToManyField(BookMedia, blank=True)
-    
+
     parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
     objects  = models.Manager()
     tagged   = managers.ModelTaggedItemManager(Tag)
@@ -320,7 +348,7 @@ class Book(models.Model):
             else:
                 return False                          
         else:
-            if self.medias.filter(book=self, type=type).count() > 0:
+            if self.media.filter(type=type).exists():
                 return True
             else:
                 return False
@@ -338,7 +366,7 @@ class Book(models.Model):
             elif type == "pdf":
                 return self.pdf_file
             else:                                             
-                return self.medias.filter(book=self, type=type)
+                return self.media.filter(type=type)
         else:
             return None
 
@@ -372,7 +400,7 @@ class Book(models.Model):
             if self.has_media("txt"):
                 formats.append(u'<a href="%s">TXT</a>' % self.get_media('txt').url)
             # other files
-            for m in self.medias.order_by('type'):
+            for m in self.media.order_by('type'):
                 formats.append(u'<a href="%s">%s</a>' % (m.file.url, m.type.upper()))
 
             formats = [mark_safe(format) for format in formats]
@@ -777,23 +805,14 @@ def _tags_updated_handler(sender, affected_tags, **kwargs):
 tags_updated.connect(_tags_updated_handler)
 
 
-def _m2m_changed_handler(sender, instance, action, reverse, pk_set, **kwargs):
-    """ refresh all the short_html stuff on BookMedia delete """
-    if sender == Book.medias.through and reverse and action == 'pre_clear':
-        for book in instance.book_set.all():
-            book.save()
-m2m_changed.connect(_m2m_changed_handler)
-
 def _pre_delete_handler(sender, instance, **kwargs):
-    """ explicitly clear m2m, so that Books can be refreshed """
+    """ refresh Book on BookMedia delete """
     if sender == BookMedia:
-        instance.book_set.clear()
+        instance.book.save()
 pre_delete.connect(_pre_delete_handler)
 
 def _post_save_handler(sender, instance, **kwargs):
     """ refresh all the short_html stuff on BookMedia update """
     if sender == BookMedia:
-        for book in instance.book_set.all():
-            book.save()
+        instance.book.save()
 post_save.connect(_post_save_handler)
-
