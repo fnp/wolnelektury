@@ -24,16 +24,7 @@ def staging():
 
 def production():
     """Use production server"""
-    env.hosts = ['wolnelektury.pl:22123']
-    env.user = 'fundacja'
-    env.path = '/opt/lektury/wolnelektury'
-    env.python = '/opt/lektury/basevirtualenv/bin/python'
-    env.virtualenv = '/opt/lektury/basevirtualenv/bin/virtualenv'
-    env.pip = '/opt/lektury/basevirtualenv/bin/pip'
-
-def giewont():
-    """Use giewont server"""
-    env.hosts = ['giewont.icm.edu.pl']
+    env.hosts = ['wolnelektury.pl']
     env.user = 'rczajka'
     env.path = '/srv/wolnelektury.pl'
     env.python = '/usr/bin/python'
