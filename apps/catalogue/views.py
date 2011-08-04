@@ -17,7 +17,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
-from django.db.models import Q
+from django.db.models import Count, Sum, Q
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.datastructures import SortedDict
 from django.views.decorators.http import require_POST
@@ -126,6 +126,23 @@ def audiobook_list(request):
 def daisy_list(request):
     return book_list(request, Q(media__type='daisy'),
                      template_name='catalogue/daisy_list.html')
+
+
+def counters(request):
+    books = models.Book.objects.count()
+    books_nonempty = models.Book.objects.exclude(html_file='').count()
+    books_empty = models.Book.objects.filter(html_file='').count()
+    books_root = models.Book.objects.filter(parent=None).count()
+
+    media = models.BookMedia.objects.count()
+    media_types = models.BookMedia.objects.values('type').\
+            annotate(count=Count('type')).\
+            order_by('type')
+    for mt in media_types:
+        mt['size'] = sum(b.file.size for b in models.BookMedia.objects.filter(type=mt['type']))
+
+    return render_to_response('catalogue/counters.html',
+                locals(), context_instance=RequestContext(request))
 
 
 def differentiate_tags(request, tags, ambiguous_slugs):

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Liczniki w  WolneLektury.pl{% endblock %}
+
+{% block bodyid %}tagged-object-list{% endblock %}
+
+{% block body %}
+    <h1>Liczniki</h1>
+
+    <table>
+        <tr><td>Wszystkie utwory:</td><td>{{ books }}</td></tr>
+        <tr><td>Utwory z własną treścią:</td><td>{{ books_nonempty }}</td></tr>
+        <tr><td>Utwory bez własnej treści:</td><td>{{ books_empty }}</td></tr>
+        <tr><td>Niezależne książki:</td><td>{{ books_root }}</td></tr>
+        {% for mt in media_types %}
+            <tr><td>Media – {{ mt.type }}:</td><td>{{ mt.count }}, {{ mt.size|filesizeformat }}</td></tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
