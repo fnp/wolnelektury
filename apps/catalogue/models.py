@@ -203,7 +203,6 @@ class BookMedia(models.Model):
         extra_info.update(self.read_meta())
         self.set_extra_info_value(extra_info)
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
-        print self.extra_info, self.source_sha1
         return super(BookMedia, self).save(*args, **kwargs)
 
     def read_meta(self):
