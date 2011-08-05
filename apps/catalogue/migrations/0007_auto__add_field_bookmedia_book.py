@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding field 'BookMedia.book'
-        db.add_column('catalogue_bookmedia', 'book', self.gf('django.db.models.fields.related.ForeignKey')(default=0, related_name='media', to=orm['catalogue.Book']), keep_default=False)
+        db.add_column('catalogue_bookmedia', 'book', self.gf('django.db.models.fields.related.ForeignKey')(related_name='media', null=True, to=orm['catalogue.Book']), keep_default=False)
 
 
     def backwards(self, orm):
@@ -80,7 +80,7 @@ class Migration(SchemaMigration):
         },
         'catalogue.bookmedia': {
             'Meta': {'ordering': "('type', 'name')", 'object_name': 'BookMedia'},
-            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'to': "orm['catalogue.Book']"}),
+            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'null': 'True', 'to': "orm['catalogue.Book']"}),
             'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
             'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),

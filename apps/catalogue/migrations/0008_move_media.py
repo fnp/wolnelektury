@@ -82,7 +82,7 @@ class Migration(DataMigration):
         },
         'catalogue.bookmedia': {
             'Meta': {'ordering': "('type', 'name')", 'object_name': 'BookMedia'},
-            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'to': "orm['catalogue.Book']"}),
+            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'null': 'True', 'to': "orm['catalogue.Book']"}),
             'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
             'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),

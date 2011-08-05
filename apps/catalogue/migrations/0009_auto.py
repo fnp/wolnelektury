@@ -11,6 +11,9 @@ class Migration(SchemaMigration):
         # Removing M2M table for field medias on 'Book'
         db.delete_table('catalogue_book_medias')
 
+        # Changing field 'BookMedia.book'
+        db.alter_column('catalogue_bookmedia', 'book_id', self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['catalogue.Book']))
+
 
     def backwards(self, orm):
         
@@ -21,6 +24,9 @@ class Migration(SchemaMigration):
             ('bookmedia', models.ForeignKey(orm['catalogue.bookmedia'], null=False))
         ))
         db.create_unique('catalogue_book_medias', ['book_id', 'bookmedia_id'])
+
+        # Changing field 'BookMedia.book'
+        db.alter_column('catalogue_bookmedia', 'book_id', self.gf('django.db.models.fields.related.ForeignKey')(null=True, to=orm['catalogue.Book']))
 
 
     models = {
