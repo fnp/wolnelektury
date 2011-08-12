@@ -47,10 +47,10 @@ class BookMediaTests(WLTestCase):
         """
 
         bm = models.BookMedia(book=self.book, type='ogg',
-            name="Tytul")
+            name=u"Tytul")
         bm.file.save(None, self.file)
         bm2 = models.BookMedia(book=self.book, type='ogg',
-            name="Tytuł")
+            name=u"Tytuł")
         bm2.file.save(None, self.file2)
         self.assertEqual(basename(bm.file.name), 'tytul.ogg')
         self.assertNotEqual(basename(bm2.file.name), 'tytul.ogg')
