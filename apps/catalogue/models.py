@@ -18,6 +18,7 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField
+from catalogue.utils import ExistingFile
 
 from librarian import dcparser, html, epub, NoDublinCore
 import mutagen
@@ -176,7 +177,7 @@ def book_upload_path(ext=None, maxlen=100):
             name = slughifi(filename.split(".")[0])
         else:
             name = slughifi(media.name)
-        return 'lektura/%s.%s' % (name[:maxlen-len('lektura/.%s' % ext)-4], ext)
+        return 'book/%s/%s.%s' % (ext, name[:maxlen-len('book/%s/.%s' % (ext, ext))-4], ext)
     return get_dynamic_path
 
 
@@ -198,6 +199,18 @@ class BookMedia(models.Model):
         verbose_name_plural = _('book media')
 
     def save(self, *args, **kwargs):
+        try:
+            b = BookMedia.objects.get(pk=self.pk)
+        except BookMedia.DoesNotExist, e:
+            pass
+        else:
+            # if file is replaced, delete the old one
+            if self.file.path != b.file.path:
+                b.file.delete(save=False)
+            # if name changed, change the file name, too
+            elif self.name != b.name:
+                self.file.save(None, ExistingFile(self.file.path))
+
         super(BookMedia, self).save(*args, **kwargs)
         extra_info = self.get_extra_info_value()
         extra_info.update(self.read_meta())
@@ -210,12 +223,16 @@ class BookMedia(models.Model):
             Reads some metadata from the audiobook.
         """
 
-        artist_name = director_name = ''
+        artist_name = director_name = project = funded_by = ''
         if self.type == 'mp3':
             try:
                 audio = id3.ID3(self.file.path)
                 artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
                 director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
+                project = ", ".join([t.data for t in audio.getall('PRIV') 
+                        if t.owner=='wolnelektury.pl?project'])
+                funded_by = ", ".join([t.data for t in audio.getall('PRIV') 
+                        if t.owner=='wolnelektury.pl?funded_by'])
             except:
                 pass
         elif self.type == 'ogg':
@@ -223,11 +240,14 @@ class BookMedia(models.Model):
                 audio = mutagen.File(self.file.path)
                 artist_name = ', '.join(audio.get('artist', []))
                 director_name = ', '.join(audio.get('conductor', []))
+                project = ", ".join(audio.get('project', []))
+                funded_by = ", ".join(audio.get('funded_by', []))
             except:
                 pass
         else:
             return {}
-        return {'artist_name': artist_name, 'director_name': director_name}
+        return {'artist_name': artist_name, 'director_name': director_name,
+                'project': project, 'funded_by': funded_by}
 
     @staticmethod
     def read_source_sha1(filepath, filetype):
@@ -239,7 +259,7 @@ class BookMedia(models.Model):
             try:
                 audio = id3.ID3(filepath)
                 return [t.data for t in audio.getall('PRIV') 
-                        if t.owner=='http://wolnelektury.pl?flac_sha1'][0]
+                        if t.owner=='wolnelektury.pl?flac_sha1'][0]
             except:
                 return None
         elif filetype == 'ogg':

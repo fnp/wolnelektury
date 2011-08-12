@@ -129,6 +129,8 @@ def daisy_list(request):
 
 
 def counters(request):
+    form = forms.SearchForm()
+
     books = models.Book.objects.count()
     books_nonempty = models.Book.objects.exclude(html_file='').count()
     books_empty = models.Book.objects.filter(html_file='').count()
@@ -139,7 +141,18 @@ def counters(request):
             annotate(count=Count('type')).\
             order_by('type')
     for mt in media_types:
-        mt['size'] = sum(b.file.size for b in models.BookMedia.objects.filter(type=mt['type']))
+        size = 0
+        deprecated = missing_project = 0
+        for b in models.BookMedia.objects.filter(type=mt['type']):
+            size += b.file.size
+            if b.type in ('mp3', 'ogg'):
+                if not b.source_sha1:
+                    deprecated += 1
+                if not 'project' in b.get_extra_info_value():
+                    missing_project += 1
+        mt['size'] = size
+        mt['deprecated'] = deprecated
+        mt['missing_project'] = missing_project
 
     return render_to_response('catalogue/counters.html',
                 locals(), context_instance=RequestContext(request))
@@ -293,6 +306,18 @@ def book_detail(request, slug):
         tag.count = theme_counter[tag.pk]
 
     extra_info = book.get_extra_info_value()
+
+    projects = set()
+    for m in book.media.filter(type='mp3'):
+        # ogg files are always from the same project
+        meta = m.get_extra_info_value()
+        project = meta.get('project')
+        if not project:
+            # temporary fallback
+            project = u'CzytamySłuchając'
+            
+        projects.add((project, meta.get('funded_by')))
+    projects = sorted(projects)
 
     form = forms.SearchForm()
     return render_to_response('catalogue/book_detail.html', locals(),

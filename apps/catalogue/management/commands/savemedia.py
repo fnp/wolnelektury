@@ -6,7 +6,6 @@ import os.path
 
 from django.core.management.base import BaseCommand
 from django.core.files import File
-from slughifi import slughifi
 
 from catalogue.models import Book, BookMedia
 from catalogue.utils import ExistingFile
@@ -40,11 +39,12 @@ class Command(BaseCommand):
         try:
             assert source_sha1
             bm = book.media.get(type=ext, source_sha1=source_sha1)
-            print "Replacing media: %s (%s)" % (bm.name, ext)
+            print "Replacing media: %s (%s)" % (bm.name.encode('utf-8'), ext)
         except (AssertionError, BookMedia.DoesNotExist):
-            bm = BookMedia(book=book, type=ext, name=name)
+            bm = BookMedia(book=book, type=ext)
             print "Creating new media"
-        bm.file.save(slughifi(name), ExistingFile(path))
+        bm.name = name
+        bm.file.save(None, ExistingFile(path))
         bm.save()
         transaction.commit()
         transaction.leave_transaction_management()

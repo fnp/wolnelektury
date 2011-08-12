@@ -7,14 +7,24 @@
 
 {% block body %}
     <h1>Liczniki</h1>
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
+    </form>
 
     <table>
+        <tr><th>Utwory</th></tr>
         <tr><td>Wszystkie utwory:</td><td>{{ books }}</td></tr>
         <tr><td>Utwory z własną treścią:</td><td>{{ books_nonempty }}</td></tr>
         <tr><td>Utwory bez własnej treści:</td><td>{{ books_empty }}</td></tr>
         <tr><td>Niezależne książki:</td><td>{{ books_root }}</td></tr>
+
+        <tr><th>Media</th><th>Liczba</th><th>Rozmiar</th><th>Do wymiany</th></tr>
         {% for mt in media_types %}
-            <tr><td>Media – {{ mt.type }}:</td><td>{{ mt.count }}, {{ mt.size|filesizeformat }}</td></tr>
+            <tr><td>{{ mt.type }}:</td>
+                <td>{{ mt.count }}</td>
+                <td>{{ mt.size|filesizeformat }}</td>
+                <td>{{ mt.deprecated }}</td>
+            </tr>
         {% endfor %}
     </table>
 

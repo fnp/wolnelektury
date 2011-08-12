@@ -103,8 +103,30 @@
                             </ul>
                         {% endif %}
                     </div> <!-- /audiobooks -->
-                    <p>{% blocktrans with '<a href="http://czytamysluchajac.pl">CzytamySłuchając</a>' as cs %}Audiobooks were prepared as a part of the {{ cs }} project.{% endblocktrans %}
-                    </p>
+                    {% if projects|length > 1 %}
+                        <p>{% trans "Audiobooks were prepared as a part of the projects:" %}</p>
+                        <ul>
+                        {% for cs, fb in projects %}
+                            <li>
+                            {% if fb %}
+                                {% blocktrans %}{{ cs }}, funded by {{ fb }}{% endblocktrans %}
+                            {% else %}
+                                {{ cs }}
+                            {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>
+                        {% with cs=projects.0.0 fb=projects.0.1 %}
+                            {% if fb %}
+                                {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project funded by {{ fb }}.{% endblocktrans %}
+                            {% else %}
+                                {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project.{% endblocktrans %}
+                            {% endif %}
+                        {% endwith %}
+                        </p>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
