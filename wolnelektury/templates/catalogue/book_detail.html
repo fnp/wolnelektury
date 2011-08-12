@@ -118,12 +118,14 @@
                         </ul>
                     {% else %}
                         <p>
-                        {% with cs=projects.0.0 fb=projects.0.1 %}
+                        {% with projects.0.0 as cs %}
+                        {% with projects.0.1 as fb %}
                             {% if fb %}
                                 {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project funded by {{ fb }}.{% endblocktrans %}
                             {% else %}
                                 {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project.{% endblocktrans %}
                             {% endif %}
+                        {% endwith %}
                         {% endwith %}
                         </p>
                     {% endif %}

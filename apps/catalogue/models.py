@@ -17,7 +17,7 @@ from django.conf import settings
 
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
-from catalogue.fields import JSONField
+from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import ExistingFile
 
 from librarian import dcparser, html, epub, NoDublinCore
@@ -184,7 +184,7 @@ def book_upload_path(ext=None, maxlen=100):
 class BookMedia(models.Model):
     type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100")
     name        = models.CharField(_('name'), max_length="100")
-    file        = models.FileField(_('file'), upload_to=book_upload_path())
+    file        = OverwritingFileField(_('file'), upload_to=book_upload_path())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     extra_info  = JSONField(_('extra information'), default='{}', editable=False)
     book = models.ForeignKey('Book', related_name='media')
@@ -200,16 +200,13 @@ class BookMedia(models.Model):
 
     def save(self, *args, **kwargs):
         try:
-            b = BookMedia.objects.get(pk=self.pk)
+            old = BookMedia.objects.get(pk=self.pk)
         except BookMedia.DoesNotExist, e:
             pass
         else:
-            # if file is replaced, delete the old one
-            if self.file.path != b.file.path:
-                b.file.delete(save=False)
             # if name changed, change the file name, too
-            elif self.name != b.name:
-                self.file.save(None, ExistingFile(self.file.path))
+            if self.name != old.name:
+                self.file.save(None, ExistingFile(self.file.path), save=False, leave=True)
 
         super(BookMedia, self).save(*args, **kwargs)
         extra_info = self.get_extra_info_value()

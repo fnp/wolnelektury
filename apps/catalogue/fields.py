@@ -3,9 +3,11 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import datetime
+from functools import wraps
 
 from django.conf import settings
 from django.db import models
+from django.db.models.fields.files import FieldFile
 from django.db.models import signals
 from django import forms
 from django.forms.widgets import flatatt
@@ -124,3 +126,20 @@ try:
     ), ], ["^catalogue\.fields\.JSONField"])
 except ImportError:
     pass
+
+
+class OverwritingFieldFile(FieldFile):
+    """
+        Deletes the old file before saving the new one.
+    """
+
+    def save(self, *args, **kwargs):
+        leave = kwargs.pop('leave', None)
+        if not leave and self:
+            self.delete(save=False)
+        return super(OverwritingFieldFile, self).save(*args, **kwargs)
+
+
+class OverwritingFileField(models.FileField):
+    attr_class = OverwritingFieldFile
+
