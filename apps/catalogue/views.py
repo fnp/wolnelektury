@@ -141,18 +141,9 @@ def counters(request):
             annotate(count=Count('type')).\
             order_by('type')
     for mt in media_types:
-        size = 0
-        deprecated = missing_project = 0
-        for b in models.BookMedia.objects.filter(type=mt['type']):
-            size += b.file.size
-            if b.type in ('mp3', 'ogg'):
-                if not b.source_sha1:
-                    deprecated += 1
-                if not 'project' in b.get_extra_info_value():
-                    missing_project += 1
-        mt['size'] = size
-        mt['deprecated'] = deprecated
-        mt['missing_project'] = missing_project
+        mt['size'] = sum(b.file.size for b in models.BookMedia.objects.filter(type=mt['type']))
+        mt['deprecated'] = models.BookMedia.objects.filter(
+            type=mt['type'], source_sha1=None).count() if mt['type'] in ('mp3', 'ogg') else '-'
 
     return render_to_response('catalogue/counters.html',
                 locals(), context_instance=RequestContext(request))
