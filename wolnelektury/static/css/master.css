@@ -49,15 +49,22 @@ h2 {
 }
 
 h3 {
-    font-size: 1em;
+    font-size: 1.15em;
     font-weight: bold;
-    margin: 0.2em 0 -1em 0;
-    color: #333;
+    margin: 2em 0 .5em 0;
+    color: #2F4110;
 }
 
 em {
     font-style: normal;
     background-color: #F5DC7D;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #2F4110;
+    margin: 2em 0;
+    height: 0;
 }
 
 .clearboth {

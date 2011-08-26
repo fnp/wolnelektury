@@ -20,16 +20,9 @@ urlpatterns = patterns('',
     url(r'^lesmianator/', include('lesmianator.urls')),
 
     # Static pages
-    url(r'^wolontariat/$', 'infopages.views.infopage', {'slug': 'voluntary_services'}, name='voluntary_services'),
     url(r'^mozesz-nam-pomoc/$', 'infopages.views.infopage', {'slug': 'help_us'}, name='help_us'),
     url(r'^o-projekcie/$', 'infopages.views.infopage', {'slug': 'about_us'}, name='about_us'),
     url(r'^widget/$', 'infopages.views.infopage', {'slug': 'widget'}, name='widget'),
-    url(r'^epub/$', 'infopages.views.infopage', {'slug': 'epub'}, name='epub'),
-    url(r'^zaproszenie/$', 'infopages.views.infopage', {'slug': 'invitation'}, name='invitation'),
-    
-    url(r'^1procent/$', 'django.views.generic.simple.direct_to_template', {
-        'template': '1percent.html'
-    }, name='1percent'),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
@@ -52,6 +45,14 @@ urlpatterns = patterns('',
     url(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'katalog/'}),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
+
+urlpatterns += patterns('django.views.generic.simple',
+    # old static pages - redirected
+    (r'^1procent/$', 'redirect_to', {'url': 'http://nowoczesnapolska.org.pl/wesprzyj_nas/'}),
+    (r'^wolontariat/$', 'redirect_to', {'url': '/mozesz-nam-pomoc/'}),
+    (r'^epub/$', 'redirect_to', {'url': '/katalog/lektury/'}),
+)
+    
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += patterns('',
