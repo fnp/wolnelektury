@@ -223,7 +223,6 @@ def tagged_object_list(request, tags='', api=False):
         objects = models.Book.objects.none()
 
     if api:
-        print objects
         return objects    
     else:
         return object_list(

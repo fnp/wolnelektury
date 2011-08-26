@@ -8,13 +8,13 @@ from api import handlers
 
 
 #auth = OAuthAuthentication(realm='API')
-book_changes_resource = Resource(handler=handlers.BookChangesHandler)
-tag_changes_resource = Resource(handler=handlers.TagChangesHandler)#, authentication=auth)
+#book_changes_resource = Resource(handler=handlers.BookChangesHandler)
+#tag_changes_resource = Resource(handler=handlers.TagChangesHandler)#, authentication=auth)
 changes_resource = Resource(handler=handlers.ChangesHandler)
 
 urlpatterns = patterns('',
-    url(r'^book_changes/(?P<since>\d*(\.\d*)?)\.(?P<emitter_format>xml|json|yaml)$', book_changes_resource),
-    url(r'^tag_changes/(?P<since>\d*(\.\d*)?)\.(?P<emitter_format>xml|json|yaml)$', tag_changes_resource),
+    #url(r'^book_changes/(?P<since>\d*(\.\d*)?)\.(?P<emitter_format>xml|json|yaml)$', book_changes_resource),
+    #url(r'^tag_changes/(?P<since>\d*(\.\d*)?)\.(?P<emitter_format>xml|json|yaml)$', tag_changes_resource),
     url(r'^changes/(?P<since>\d*(\.\d*)?)\.(?P<emitter_format>xml|json|yaml)$', changes_resource),
 
     #url(r'^books/(?P<id>[\d,]+)\.(?P<emitter_format>xml|json|yaml)$', book_resource),

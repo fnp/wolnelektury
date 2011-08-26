@@ -8,32 +8,20 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Deleted'
-        db.create_table('api_deleted', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('object_id', self.gf('django.db.models.fields.IntegerField')()),
-            ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(db_index=True)),
-            ('deleted_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
-        ))
-        db.send_create_signal('api', ['Deleted'])
-
-        # Adding unique constraint on 'Deleted', fields ['content_type', 'object_id']
-        db.create_unique('api_deleted', ['content_type_id', 'object_id'])
+        # Adding field 'Deleted.category'
+        db.add_column('api_deleted', 'category', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=64, null=True, blank=True), keep_default=False)
 
 
     def backwards(self, orm):
         
-        # Removing unique constraint on 'Deleted', fields ['content_type', 'object_id']
-        db.delete_unique('api_deleted', ['content_type_id', 'object_id'])
-
-        # Deleting model 'Deleted'
-        db.delete_table('api_deleted')
+        # Deleting field 'Deleted.category'
+        db.delete_column('api_deleted', 'category')
 
 
     models = {
         'api.deleted': {
             'Meta': {'unique_together': "(('content_type', 'object_id'),)", 'object_name': 'Deleted'},
+            'category': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'max_length': '64', 'null': 'True', 'blank': 'True'}),
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'db_index': 'True'}),
             'deleted_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
