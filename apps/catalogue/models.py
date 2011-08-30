@@ -205,7 +205,7 @@ class BookMedia(models.Model):
             pass
         else:
             # if name changed, change the file name, too
-            if self.name != old.name:
+            if slughifi(self.name) != slughifi(old.name):
                 self.file.save(None, ExistingFile(self.file.path), save=False, leave=True)
 
         super(BookMedia, self).save(*args, **kwargs)
