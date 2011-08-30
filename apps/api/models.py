@@ -31,6 +31,7 @@ def _pre_delete_handler(sender, instance, **kwargs):
                 category = instance.category
         else:
             category = None
-        Deleted.objects.create(type=sender, object_id=instance.id, 
+        content_type = ContentType.objects.get_for_model(sender)
+        Deleted.objects.create(content_type=content_type, object_id=instance.id, 
             created_at=instance.created_at, category=category)
 pre_delete.connect(_pre_delete_handler)

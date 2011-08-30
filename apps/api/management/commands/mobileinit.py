@@ -8,12 +8,10 @@ import os.path
 import re
 import sqlite3
 from django.core.management.base import BaseCommand
-from slughifi import char_map
 
 from api.helpers import timestamp
 from api.settings import MOBILE_INIT_DB
 from catalogue.models import Book, Tag
-from catalogue.views import tagged_object_list # this should be somewhere else
 
 
 class Command(BaseCommand):
@@ -26,7 +24,9 @@ class Command(BaseCommand):
         for b in Book.objects.all():
             add_book(db, b)
         for t in Tag.objects.exclude(category__in=('book', 'set', 'theme')):
-            add_tag(db, t)
+            # only add non-empty tags
+            if t.get_count():
+                add_tag(db, t)
         db.commit()
         db.close()
         current(last_checked)
@@ -50,26 +50,6 @@ def pretty_size(size):
         return "%.1f %s" % (size, unit)
     return "%d %s" % (size, unit)
 
-
-special_marks = {'ż': '|', 'Ż': '|',}
-def replace_char(m):
-    char = m.group()
-    if char_map.has_key(char):
-        special = special_marks.get(char, '{')
-        return char_map[char] + special
-    else:
-        return char
-
-def sortify(value):
-    """
-        Turns Unicode into ASCII-sortable str
-
-        Examples :
-
-        >>> slughifi('aa') < slughifi('a a') < slughifi('ą') < slughifi('b')
-        True
-
-    """
 
     if not isinstance(value, unicode):
         value = unicode(value, 'utf-8')
@@ -115,10 +95,6 @@ CREATE TABLE tag (
 CREATE INDEX IF NOT EXISTS tag_name_index ON tag (name);
 CREATE INDEX IF NOT EXISTS tag_category_index ON tag (category);
 CREATE INDEX IF NOT EXISTS tag_sort_key_index ON tag (sort_key);
-
-CREATE TABLE book_tag (book INTEGER, tag INTEGER);
-CREATE INDEX IF NOT EXISTS book_tag_book ON book_tag (book);
-CREATE INDEX IF NOT EXISTS book_tag_tag_index ON book_tag (tag);
 
 CREATE TABLE state (last_checked INTEGER);
 """
@@ -169,7 +145,7 @@ def add_book(db, book):
         html_file = html_file_size = None
     parent = book.parent
     parent_number = book.parent_number
-    sort_key = sortify(title)
+    sort_key = book.sort_key
     size_str = pretty_size(html_file_size)
     authors = ", ".join(t.name for t in book.tags.filter(category='author'))
     db.execute(book_sql, locals())
@@ -179,11 +155,8 @@ def add_tag(db, tag):
     id = tag.id
     category = categories[tag.category]
     name = tag.name
-    sort_key = sortify(tag.sort_key)
+    sort_key = tag.sort_key
 
-    books = list(tagged_object_list(None, [tag], api=True))
+    books = Book.tagged_top_level([tag])
     book_ids = ','.join(str(b.id) for b in books)
     db.execute(tag_sql, locals())
-
-    for b in books:
-        db.execute(book_tag_sql, {'book': b.id, 'tag': tag.id})

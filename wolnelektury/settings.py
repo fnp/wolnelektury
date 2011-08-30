@@ -204,6 +204,10 @@ THUMBNAIL_PROCESSORS = (
 
 TRANSLATION_REGISTRY = "wolnelektury.translation"
 
+
+# seconds until a changes appears in the changes api
+API_WAIT = 100
+
 # limit number of filtering tags
 MAX_TAG_LIST = 6
 

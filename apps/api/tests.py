@@ -4,62 +4,59 @@ from datetime import datetime
 
 from django.test import TestCase
 from django.utils import simplejson as json
+from django.conf import settings
 
 from api.helpers import timestamp
 from catalogue.models import Book, Tag
 
 
-class ChangesTests(TestCase):
+class ApiTest(TestCase):
+
+    def setUp(self):
+        self.old_api_wait = settings.API_WAIT
+        settings.API_WAIT = -1
+
+    def tearDown(self):
+        settings.API_WAIT = self.old_api_wait
+
+
+class ChangesTest(ApiTest):
 
     def test_basic(self):
-        book = Book.objects.create(slug='a-book', title='A Book')
-        tag = Tag.objects.create(category='author', slug='author', name='Author')
+        book = Book(title='A Book')
+        book.save()
+        tag = Tag.objects.create(category='author', name='Author')
+        book.tags = [tag]
+        book.save()
 
-        print self.client.get('/api/changes/0.json?book_fields=slug&tag_fields=slug').content
-        changes = json.loads(self.client.get('/api/changes/0.json?book_fields=slug&tag_fields=slug').content)
-        self.assertEqual(changes['added']['books'], 
-                         [{'id': book.id, 'slug': book.slug}],
+        changes = json.loads(self.client.get('/api/changes/0.json?book_fields=title&tag_fields=name').content)
+        self.assertEqual(changes['updated']['books'], 
+                         [{'id': book.id, 'title': book.title}],
                          'Invalid book format in changes')
-        self.assertEqual(changes['added']['tags'], 
-                         [{'id': tag.id, 'slug': tag.slug}],
+        self.assertEqual(changes['updated']['tags'], 
+                         [{'id': tag.id, 'name': tag.name}],
                          'Invalid tag format in changes')
 
 
-class BookChangesTests(TestCase):
+class BookChangesTests(ApiTest):
 
     def setUp(self):
-        self.book = Book.objects.create()
+        super(BookChangesTests, self).setUp()
+        self.book = Book.objects.create(slug='slug')
 
     def test_basic(self):
         # test book in book_changes.added
         changes = json.loads(self.client.get('/api/book_changes/0.json').content)
-        self.assertEqual(len(changes['added']),
+        self.assertEqual(len(changes['updated']),
                          1,
-                         'Added book not in book_changes.added')
+                         'Added book not in book_changes.updated')
 
-        # test changed book in changed
-        self.book.slug = 'a-book'
-        self.book.save()
-        changes = json.loads(self.client.get('/api/book_changes/%f.json' % timestamp(self.book.created_at)).content)
-        self.assertEqual(changes['added'],
-                         [],
-                         'Changed book in book_changes.added instead of book_changes.changed.')
-        self.assertEqual(len(changes['changed']),
-                         1,
-                         'Changed book not in book_changes.changed.')
-
-        # test deleted book in deleted
+    def test_deleted_disappears(self):
+        # test deleted book disappears
         Book.objects.all().delete()
-        changes = json.loads(self.client.get('/api/book_changes/%f.json' % timestamp(self.book.changed_at)).content)
-        self.assertEqual(changes['added'],
-                         [],
-                         'Deleted book still in book_changes.added.')
-        self.assertEqual(changes['changed'],
-                         [],
-                         'Deleted book still in book_changes.changed.')
-        self.assertEqual(len(changes['deleted']),
-                         1,
-                         'Deleted book not in book_changes.deleted.')
+        changes = json.loads(self.client.get('/api/book_changes/0.json').content)
+        self.assertEqual(len(changes), 1,
+                         'Deleted book should disappear.')
 
     def test_shelf(self):
         changed_at = self.book.changed_at
@@ -71,38 +68,25 @@ class BookChangesTests(TestCase):
         self.assertEqual(self.book.changed_at,
                          changed_at)
 
-class TagChangesTests(TestCase):
+class TagChangesTests(ApiTest):
 
     def setUp(self):
-        self.tag = Tag.objects.create()
+        super(TagChangesTests, self).setUp()
+        self.tag = Tag.objects.create(category='author')
+        self.book = Book.objects.create()
+        self.book.tags = [self.tag]
+        self.book.save()
 
-    def test_basic(self):
+    def test_added(self):
         # test tag in tag_changes.added
         changes = json.loads(self.client.get('/api/tag_changes/0.json').content)
-        self.assertEqual(len(changes['added']),
+        self.assertEqual(len(changes['updated']),
                          1,
-                         'Added tag not in tag_changes.added')
+                         'Added tag not in tag_changes.updated')
 
-        # test changed tag in changed
-        self.tag.slug = 'a-tag'
-        self.tag.save()
-        changes = json.loads(self.client.get('/api/tag_changes/%f.json' % timestamp(self.tag.created_at)).content)
-        self.assertEqual(changes['added'],
-                         [],
-                         'Changed tag in tag_changes.added instead of tag_changes.changed.')
-        self.assertEqual(len(changes['changed']),
-                         1,
-                         'Changed tag not in tag_changes.changed.')
-
-        # test deleted book in deleted
-        Tag.objects.all().delete()
-        changes = json.loads(self.client.get('/api/tag_changes/%f.json' % timestamp(self.tag.changed_at)).content)
-        self.assertEqual(changes['added'],
-                         [],
-                         'Deleted tag still in tag_changes.added.')
-        self.assertEqual(changes['changed'],
-                         [],
-                         'Deleted tag still in tag_changes.changed.')
-        self.assertEqual(len(changes['deleted']),
-                         1,
-                         'Deleted tag not in tag_changes.deleted.')
+    def test_empty_disappears(self):
+        self.book.tags = []
+        self.book.save()
+        changes = json.loads(self.client.get('/api/tag_changes/0.json').content)
+        self.assertEqual(len(changes), 1,
+                         'Empty or deleted tag should disappear.')

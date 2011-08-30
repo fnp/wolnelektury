@@ -30,4 +30,3 @@ def split_tags(tags):
     for tag in tags:
         result.setdefault(tag.category, []).append(tag)
     return result
-
