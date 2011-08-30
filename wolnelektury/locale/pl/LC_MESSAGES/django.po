@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 10:23+0200\n"
-"PO-Revision-Date: 2011-08-26 10:24+0100\n"
+"POT-Creation-Date: 2011-08-30 17:52+0200\n"
+"PO-Revision-Date: 2011-08-30 17:53+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -105,13 +105,13 @@ msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
 "\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/\">The National Library</a> and <a href=\"http://www.bs.katowice.pl/\">Biblioteka Śląska</a>, based on TNL and BŚ resources.\n"
-"\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
+"\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
 "Wolne Lektury to projekt prowadzony przez <a href=\"http://nowoczesnapolska.org.pl/\">fundację Nowoczesna Polska</a>. \n"
 "Reprodukcje cyfrowe wykonane przez <a href=\"http://www.bn.org.pl/\">Bibliotekę Narodową</a> i <a href=\"http://www.bs.katowice.pl/\">Bibliotekę Śląską</a> z egzemplarzy pochodzących ze zbiorów BN i BŚ.\n"
-"Hosting <a href=\"http://eo.pl/\">EO Networks</a>. "
+"Hosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>."
 
 #: templates/base.html:86
 msgid ""
@@ -132,7 +132,7 @@ msgstr ""
 #: templates/catalogue/differentiate_tags.html:23
 #: templates/catalogue/search_multiple_hits.html:29
 #: templates/catalogue/search_too_short.html:19
-#: templates/catalogue/tagged_object_list.html:143
+#: templates/catalogue/tagged_object_list.html:142
 msgid "Close"
 msgstr "Zamknij"
 
@@ -144,7 +144,7 @@ msgstr "Zamknij"
 #: templates/catalogue/differentiate_tags.html:25
 #: templates/catalogue/search_multiple_hits.html:31
 #: templates/catalogue/search_too_short.html:21
-#: templates/catalogue/tagged_object_list.html:145
+#: templates/catalogue/tagged_object_list.html:144
 msgid "Loading"
 msgstr "Ładowanie"
 
@@ -480,7 +480,7 @@ msgid "Table of contents"
 msgstr "Spis treści"
 
 #: templates/catalogue/book_text.html:22
-#: templates/catalogue/tagged_object_list.html:134
+#: templates/catalogue/tagged_object_list.html:133
 msgid "Themes"
 msgstr "Motywy"
 
@@ -546,15 +546,15 @@ msgid "Show full category"
 msgstr "Zobacz całą kategorię"
 
 #: templates/catalogue/folded_tag_list.html:13
-#: templates/catalogue/main_page.html:54
-#: templates/catalogue/main_page.html:79
-#: templates/catalogue/main_page.html:118
-#: templates/catalogue/main_page.html:313
+#: templates/catalogue/main_page.html:53
+#: templates/catalogue/main_page.html:78
+#: templates/catalogue/main_page.html:117
+#: templates/catalogue/main_page.html:312
 msgid "See more"
 msgstr "Zobacz więcej"
 
 #: templates/catalogue/folded_tag_list.html:22
-#: templates/catalogue/main_page.html:281
+#: templates/catalogue/main_page.html:280
 msgid "Hide"
 msgstr "Zwiń"
 
@@ -563,7 +563,7 @@ msgid "Shelves containing fragment"
 msgstr "Półki zawierające fragment"
 
 #: templates/catalogue/fragment_sets.html:4
-#: templates/catalogue/main_page.html:64
+#: templates/catalogue/main_page.html:63
 msgid "You do not own any shelves. You can create one below, if you want to."
 msgstr "Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć nową półkę poniżej."
 
@@ -591,123 +591,139 @@ msgstr "Przeglądaj lektury według wybranych kategorii"
 msgid "Twórzże się!"
 msgstr ""
 
-#: templates/catalogue/main_page.html:46
-#: templates/catalogue/main_page.html:54
+#: templates/catalogue/main_page.html:38
+msgid "Books for every school level"
+msgstr "Lektury na każdy poziom edukacji"
+
+#: templates/catalogue/main_page.html:40
+msgid "primary school"
+msgstr "szkoła podstawowa"
+
+#: templates/catalogue/main_page.html:41
+msgid "gymnasium"
+msgstr "gimnazjum"
+
+#: templates/catalogue/main_page.html:42
+msgid "high school"
+msgstr "szkoła średnia"
+
+#: templates/catalogue/main_page.html:45
+#: templates/catalogue/main_page.html:53
 msgid "Wolne Lektury Widget"
 msgstr "Widżet Wolne Lektury"
 
-#: templates/catalogue/main_page.html:47
+#: templates/catalogue/main_page.html:46
 msgid "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:"
 msgstr "Umieść widżet – wyszukiwarkę Wolnych Lektur umożliwiającą dostęp do darmowych lektur i audiobooków – na swojej stronie WWW! Po prostu skopiuj poniższy kod HTML na swoją stronę:"
 
-#: templates/catalogue/main_page.html:48
+#: templates/catalogue/main_page.html:47
 msgid "Insert this element in place where you want display the widget"
 msgstr "Umieść ten element w miejscu gdzie chcesz wyświetlić widżet"
 
-#: templates/catalogue/main_page.html:51
+#: templates/catalogue/main_page.html:50
 msgid "Place this element just before closing body tag: &lt;/body&gt;"
 msgstr "Umieść ten element tuż przed zamknięciem taga body: &lt;/body&gt;"
 
-#: templates/catalogue/main_page.html:55
+#: templates/catalogue/main_page.html:54
 #: templates/catalogue/user_shelves.html:2
 msgid "Your shelves with books"
 msgstr "Twoje półki z lekturami"
 
-#: templates/catalogue/main_page.html:60
+#: templates/catalogue/main_page.html:59
 msgid "delete"
 msgstr "usuń"
 
-#: templates/catalogue/main_page.html:69
+#: templates/catalogue/main_page.html:68
 #: templates/catalogue/user_shelves.html:15
 msgid "Create shelf"
 msgstr "Utwórz półkę"
 
-#: templates/catalogue/main_page.html:73
+#: templates/catalogue/main_page.html:72
 msgid "Create your own book set. You can share it with friends by sending them link to your shelf."
 msgstr "Stwórz własny zestaw lektur. Możesz się nim później podzielić z innymi, przesyłając im link do Twojej półki."
 
-#: templates/catalogue/main_page.html:74
+#: templates/catalogue/main_page.html:73
 msgid "You need to "
 msgstr "Aby zarządzać swoimi półkami, musisz się"
 
-#: templates/catalogue/main_page.html:74
+#: templates/catalogue/main_page.html:73
 msgid "sign in"
 msgstr "zalogować"
 
-#: templates/catalogue/main_page.html:74
+#: templates/catalogue/main_page.html:73
 msgid "to manage your shelves."
 msgstr "."
 
-#: templates/catalogue/main_page.html:77
-#: templates/catalogue/main_page.html:79
+#: templates/catalogue/main_page.html:76
+#: templates/catalogue/main_page.html:78
 #: templates/lessons/document_list.html:32
 msgid "Hand-outs for teachers"
 msgstr "Materiały pomocnicze dla nauczycieli"
 
-#: templates/catalogue/main_page.html:78
+#: templates/catalogue/main_page.html:77
 msgid "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
 msgstr "Scenariusze lekcji i inne pomysły na wykorzytanie serwisu WolneLektury.pl podczas nauczania."
 
-#: templates/catalogue/main_page.html:85
-#: templates/catalogue/tagged_object_list.html:113
+#: templates/catalogue/main_page.html:84
+#: templates/catalogue/tagged_object_list.html:112
 msgid "Authors"
 msgstr "Autorzy"
 
-#: templates/catalogue/main_page.html:89
-#: templates/catalogue/tagged_object_list.html:117
+#: templates/catalogue/main_page.html:88
+#: templates/catalogue/tagged_object_list.html:116
 msgid "Kinds"
 msgstr "Rodzaje"
 
-#: templates/catalogue/main_page.html:93
-#: templates/catalogue/tagged_object_list.html:121
+#: templates/catalogue/main_page.html:92
+#: templates/catalogue/tagged_object_list.html:120
 msgid "Genres"
 msgstr "Gatunki"
 
-#: templates/catalogue/main_page.html:97
-#: templates/catalogue/tagged_object_list.html:125
+#: templates/catalogue/main_page.html:96
+#: templates/catalogue/tagged_object_list.html:124
 msgid "Epochs"
 msgstr "Epoki"
 
-#: templates/catalogue/main_page.html:103
-#: templates/catalogue/main_page.html:118
+#: templates/catalogue/main_page.html:102
+#: templates/catalogue/main_page.html:117
 msgid "Themes and topics"
 msgstr "Motywy i tematy"
 
-#: templates/catalogue/main_page.html:106
+#: templates/catalogue/main_page.html:105
 msgid "Themes groups"
 msgstr "Rodziny motywów"
 
-#: templates/catalogue/main_page.html:291
+#: templates/catalogue/main_page.html:290
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/catalogue/main_page.html:295
+#: templates/catalogue/main_page.html:294
 msgid "See our blog"
 msgstr "Zobacz nasz blog"
 
-#: templates/catalogue/main_page.html:298
-#: templates/catalogue/main_page.html:304
+#: templates/catalogue/main_page.html:297
+#: templates/catalogue/main_page.html:303
 msgid "You can help us!"
 msgstr "Możesz nam pomóc!"
 
-#: templates/catalogue/main_page.html:300
+#: templates/catalogue/main_page.html:299
 msgid "Become a volunteer &ndash; an editor, developer or translator."
 msgstr "Zostań naszym redaktorem, programistą lub tłumaczem – wolontariuszem."
 
-#: templates/catalogue/main_page.html:301
+#: templates/catalogue/main_page.html:300
 msgid "Gain new skills and experience."
 msgstr "Zdobądź nowe umiejętności i doświadczenie."
 
-#: templates/catalogue/main_page.html:302
+#: templates/catalogue/main_page.html:301
 msgid "Join an open project of creating an innovative online library."
 msgstr "Weź udział w otwartym projekcie i twórz innowacyjną bibliotekę internetową."
 
-#: templates/catalogue/main_page.html:307
-#: templates/catalogue/main_page.html:313
+#: templates/catalogue/main_page.html:306
+#: templates/catalogue/main_page.html:312
 msgid "About us"
 msgstr "O projekcie"
 
-#: templates/catalogue/main_page.html:309
+#: templates/catalogue/main_page.html:308
 msgid ""
 "\n"
 "\t\t\tInternet library with school readings “Wolne Lektury” (<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by Modern Poland Foundation. It started in 2007 and shares school readings, which are recommended by Ministry of National Education and are in public domain.\n"
@@ -874,16 +890,17 @@ msgid ""
 "or transferring 1% of your income tax</a>."
 msgstr "W serwisie Wolne Lektury już teraz opublikowanych jest ponad 1200 utworów! Pomóż w rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1% podatku</a>."
 
-#: templates/info/join_us.html:9
+#: templates/info/join_us.html:6
+#: templates/info/join_us.html.py:11
+msgid "More..."
+msgstr "Więcej..."
+
+#: templates/info/join_us.html:8
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
 "we're currently working on a reading you're looking for and prepare\n"
 "a publication by yourself by logging into the Editorial Platform."
 msgstr "Zostań redaktorem lub redaktorką Wolnych Lektur! Sprawdź, czy obecnie pracujemy nad publikacją wyszukiwanej przez ciebie lektury i samodzielnie przygotuj publikację logując się na Platformie Redakcyjnej."
-
-#: templates/info/join_us.html:12
-msgid "More..."
-msgstr "Więcej..."
 
 #: templates/lessons/ajax_document_detail.html:3
 msgid "author"
@@ -936,18 +953,6 @@ msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Dowied
 #: templates/pdcounter/book_stub_detail.html:25
 msgid "This work is copyrighted."
 msgstr "To dzieło objęte jest prawem autorskim."
-
-#~ msgid "Books for every school level"
-#~ msgstr "Lektury na każdy poziom edukacji"
-
-#~ msgid "primary school"
-#~ msgstr "szkoła podstawowa"
-
-#~ msgid "gymnasium"
-#~ msgstr "gimnazjum"
-
-#~ msgid "high school"
-#~ msgstr "szkoła średnia"
 
 #~ msgid ""
 #~ "We try our best to elaborate works appended to our library. It is "
