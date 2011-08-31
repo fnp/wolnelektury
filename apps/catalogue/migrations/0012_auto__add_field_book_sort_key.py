@@ -69,7 +69,6 @@ class Migration(SchemaMigration):
             'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
             'html_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'medias': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['catalogue.BookMedia']", 'symmetrical': 'False', 'blank': 'True'}),
             'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['catalogue.Book']"}),
             'parent_number': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'pdf_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
@@ -82,10 +81,12 @@ class Migration(SchemaMigration):
         },
         'catalogue.bookmedia': {
             'Meta': {'ordering': "('type', 'name')", 'object_name': 'BookMedia'},
+            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'to': "orm['catalogue.Book']"}),
             'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
             'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
+            'source_sha1': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
             'type': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
             'uploaded_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'})
         },

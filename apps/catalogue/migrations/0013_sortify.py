@@ -1,46 +1,36 @@
 # encoding: utf-8
 import datetime
 from south.db import db
-from south.v2 import SchemaMigration
+from south.v2 import DataMigration
 from django.db import models
 
-class Migration(SchemaMigration):
+from sortify import sortify
+
+
+class Migration(DataMigration):
 
     def forwards(self, orm):
-        
-        # Adding field 'Book.changed_at'
-        db.add_column('catalogue_book', 'changed_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, default=datetime.datetime(2011, 2, 25, 15, 19, 36, 525463), db_index=True, blank=True), keep_default=False)
+        "Write your forwards methods here."
 
-        # Adding index on 'Book', fields ['created_at']
-        db.create_index('catalogue_book', ['created_at'])
+        for b in orm.Book.objects.all():
+            b.sort_key = sortify(b.title)
+            b.save()
 
-        # Adding field 'Tag.created_at'
-        db.add_column('catalogue_tag', 'created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, default=datetime.datetime(2011, 2, 25, 15, 19, 42, 921525), db_index=True, blank=True), keep_default=False)
-
-        # Adding field 'Tag.changed_at'
-        db.add_column('catalogue_tag', 'changed_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, default=datetime.datetime(2011, 2, 25, 15, 19, 45, 697471), db_index=True, blank=True), keep_default=False)
+        for t in orm.Tag.objects.all():
+            t.sort_key = sortify(t.sort_key)
+            t.save()
 
 
     def backwards(self, orm):
-        
-        # Removing index on 'Book', fields ['created_at']
-        db.delete_index('catalogue_book', ['created_at'])
-
-        # Deleting field 'Book.changed_at'
-        db.delete_column('catalogue_book', 'changed_at')
-
-        # Deleting field 'Tag.created_at'
-        db.delete_column('catalogue_tag', 'created_at')
-
-        # Deleting field 'Tag.changed_at'
-        db.delete_column('catalogue_tag', 'changed_at')
+        "Write your backwards methods here."
+        pass
 
 
     models = {
         'auth.group': {
             'Meta': {'object_name': 'Group'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '80', 'unique': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
             'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
         },
         'auth.permission': {
@@ -64,10 +54,10 @@ class Migration(SchemaMigration):
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
-            'username': ('django.db.models.fields.CharField', [], {'max_length': '30', 'unique': 'True'})
+            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
         },
         'catalogue.book': {
-            'Meta': {'ordering': "('title',)", 'object_name': 'Book'},
+            'Meta': {'ordering': "('sort_key',)", 'object_name': 'Book'},
             '_short_html': ('django.db.models.fields.TextField', [], {}),
             '_short_html_de': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
             '_short_html_en': ('django.db.models.fields.TextField', [], {'null': True, 'blank': True}),
@@ -83,15 +73,15 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'epub_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'extra_info': ('catalogue.fields.JSONField', [], {}),
+            'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
             'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
             'html_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'medias': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['catalogue.BookMedia']", 'symmetrical': 'False', 'blank': 'True'}),
-            'parent': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'children'", 'blank': 'True', 'null': 'True', 'to': "orm['catalogue.Book']"}),
+            'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['catalogue.Book']"}),
             'parent_number': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'pdf_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'unique': 'True', 'db_index': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '120', 'db_index': 'True'}),
+            'sort_key': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
             'txt_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'wiki_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
@@ -99,10 +89,12 @@ class Migration(SchemaMigration):
         },
         'catalogue.bookmedia': {
             'Meta': {'ordering': "('type', 'name')", 'object_name': 'BookMedia'},
+            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'to': "orm['catalogue.Book']"}),
             'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
             'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
+            'source_sha1': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
             'type': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
             'uploaded_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'})
         },

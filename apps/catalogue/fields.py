@@ -114,19 +114,6 @@ class JQueryAutoCompleteField(forms.CharField):
 
         super(JQueryAutoCompleteField, self).__init__(*args, **kwargs)
 
-try:
-    # check for south
-    from south.modelsinspector import add_introspection_rules
-
-    add_introspection_rules([
-    (
-        [JSONField], # Class(es) these apply to
-        [], # Positional arguments (not used)
-        {}, # Keyword argument
-    ), ], ["^catalogue\.fields\.JSONField"])
-except ImportError:
-    pass
-
 
 class OverwritingFieldFile(FieldFile):
     """
@@ -143,3 +130,12 @@ class OverwritingFieldFile(FieldFile):
 class OverwritingFileField(models.FileField):
     attr_class = OverwritingFieldFile
 
+
+try:
+    # check for south
+    from south.modelsinspector import add_introspection_rules
+
+    add_introspection_rules([], ["^catalogue\.fields\.JSONField"])
+    add_introspection_rules([], ["^catalogue\.fields\.OverwritingFileField"])
+except ImportError:
+    pass

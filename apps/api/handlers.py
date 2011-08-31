@@ -67,7 +67,7 @@ class CatalogueHandler(BaseHandler):
             elif field in ('mp3', 'ogg', 'daisy'):
                 media = []
                 for m in book.media.filter(type=field):
-                    files.append({
+                    media.append({
                         'url': m.file.get_absolute_url(),
                         'size': m.file.size,
                     })
