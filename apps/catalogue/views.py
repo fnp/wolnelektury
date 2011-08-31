@@ -28,6 +28,7 @@ from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
 from django.utils.http import urlquote_plus
 from django.views.decorators import cache
+from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.views.generic.list_detail import object_list
 
@@ -83,7 +84,7 @@ def book_list(request, filter=None, template_name='catalogue/book_list.html'):
     form = forms.SearchForm()
 
     books_by_parent = {}
-    books = models.Book.objects.all().order_by('parent_number', 'title').only('title', 'parent', 'slug')
+    books = models.Book.objects.all().order_by('parent_number', 'sort_key').only('title', 'parent', 'slug')
     if filter:
         books = books.filter(filter).distinct()
         book_ids = set((book.pk for book in books))
@@ -217,14 +218,10 @@ def tagged_object_list(request, tags=''):
 
             objects = fragments
     else:
-        # get relevant books and their tags
-        objects = models.Book.tagged.with_all(tags)
-        if not shelf_is_set:
-            # eliminate descendants
-            l_tags = models.Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in objects])
-            descendants_keys = [book.pk for book in models.Book.tagged.with_any(l_tags)]
-            if descendants_keys:
-                objects = objects.exclude(pk__in=descendants_keys)
+        if shelf_is_set:
+            objects = models.Book.tagged.with_all(tags)
+        else:
+            objects = models.Book.tagged_top_level(tags)
 
         # get related tags from `tag_counter` and `theme_counter`
         related_counts = {}
@@ -256,7 +253,6 @@ def tagged_object_list(request, tags=''):
             'only_author': only_author,
             'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
-
             'tags': tags,
         }
     )
@@ -282,7 +278,7 @@ def book_detail(request, slug):
     book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
-    book_children = book.children.all().order_by('parent_number', 'title')
+    book_children = book.children.all().order_by('parent_number', 'sort_key')
     
     _book = book
     parents = []
@@ -803,3 +799,18 @@ def xmls(request):
     temp.seek(0)
     response.write(temp.read())
     return response
+
+
+
+# info views for API
+
+def book_info(request, id, lang='pl'):
+    book = get_object_or_404(models.Book, id=id)
+    # set language by hand
+    translation.activate(lang)
+    return render_to_response('catalogue/book_info.html', locals(),
+        context_instance=RequestContext(request))
+
+def tag_info(request, id):
+    tag = get_object_or_404(models.Tag, id=id)
+    return HttpResponse(tag.description)

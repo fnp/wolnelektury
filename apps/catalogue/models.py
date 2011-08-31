@@ -2,6 +2,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from datetime import datetime
+
 from django.db import models
 from django.db.models import permalink, Q
 from django.utils.translation import ugettext_lazy as _
@@ -24,6 +26,7 @@ from librarian import dcparser, html, epub, NoDublinCore
 import mutagen
 from mutagen import id3
 from slughifi import slughifi
+from sortify import sortify
 
 
 TAG_CATEGORIES = (
@@ -65,6 +68,9 @@ class Tag(TagBase):
     book_count = models.IntegerField(_('book count'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
+
+    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
 
     class UrlDeprecationWarning(DeprecationWarning):
         pass
@@ -271,12 +277,14 @@ class BookMedia(models.Model):
 
 class Book(models.Model):
     title         = models.CharField(_('title'), max_length=120)
+    sort_key = models.CharField(_('sort_key'), max_length=120, db_index=True, editable=False)
     slug          = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     description   = models.TextField(_('description'), blank=True)
-    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True)
+    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     _short_html   = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info    = JSONField(_('extra information'))
+    extra_info    = JSONField(_('extra information'), default='{}')
     gazeta_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
@@ -298,7 +306,7 @@ class Book(models.Model):
         pass
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('sort_key',)
         verbose_name = _('book')
         verbose_name_plural = _('books')
 
@@ -306,6 +314,8 @@ class Book(models.Model):
         return self.title
 
     def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
+        self.sort_key = sortify(self.title)
+
         if reset_short_html:
             # Reset _short_html during save
             update = {}
@@ -605,7 +615,7 @@ class Book(models.Model):
                 tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
                 if created:
                     tag.name = tag_name
-                    tag.sort_key = tag_sort_key.lower()
+                    tag.sort_key = sortify(tag_sort_key.lower())
                     tag.save()
                 book_tags.append(tag)
 
@@ -751,6 +761,24 @@ class Book(models.Model):
 
         return ', '.join(names)
 
+    @classmethod
+    def tagged_top_level(cls, tags):
+        """ Returns top-level books tagged with `tags'.
+
+        It only returns those books which don't have ancestors which are
+        also tagged with those tags.
+
+        """
+        # get relevant books and their tags
+        objects = cls.tagged.with_all(tags)
+        # eliminate descendants
+        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in objects])
+        descendants_keys = [book.pk for book in cls.tagged.with_any(l_tags)]
+        if descendants_keys:
+            objects = objects.exclude(pk__in=descendants_keys)
+
+        return objects
+
 
 class Fragment(models.Model):
     text = models.TextField()
@@ -806,7 +834,8 @@ class FileRecord(models.Model):
 
 def _tags_updated_handler(sender, affected_tags, **kwargs):
     # reset tag global counter
-    Tag.objects.filter(pk__in=[tag.pk for tag in affected_tags]).update(book_count=None)
+    # we want Tag.changed_at updated for API to know the tag was touched
+    Tag.objects.filter(pk__in=[tag.pk for tag in affected_tags]).update(book_count=None, changed_at=datetime.now())
 
     # if book tags changed, reset book tag counter
     if isinstance(sender, Book) and \

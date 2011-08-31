@@ -275,3 +275,7 @@ def folded_tag_list(tags, title='', choices=None):
             some_tags_hidden = True
     return locals()
 
+
+@register.inclusion_tag('catalogue/book_info.html')
+def book_info(book):
+    return locals()
