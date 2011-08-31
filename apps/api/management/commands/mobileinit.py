@@ -106,7 +106,8 @@ CREATE TABLE state (last_checked INTEGER);
 
 def current(last_checked):
     target = os.path.join(MOBILE_INIT_DB, 'initial.db')
-    os.unlink(target)
+    if os.path.lexists(target):
+        os.unlink(target)
     os.symlink(
         'initial.db-%d' % last_checked,
         target,
