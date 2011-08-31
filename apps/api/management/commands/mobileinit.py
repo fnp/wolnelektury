@@ -143,7 +143,7 @@ def add_book(db, book):
         html_file_size = book.html_file.size
     else:
         html_file = html_file_size = None
-    parent = book.parent
+    parent = book.parent_id
     parent_number = book.parent_number
     sort_key = book.sort_key
     size_str = pretty_size(html_file_size)
