@@ -21,7 +21,7 @@ class TagAdmin(admin.ModelAdmin):
 
 class MediaInline(admin.TabularInline):
     model = BookMedia
-    readonly_fields = ['type', 'source_sha1']
+    readonly_fields = ['source_sha1']
     extra = 0
 
 

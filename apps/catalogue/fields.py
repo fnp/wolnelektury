@@ -133,11 +133,11 @@ class OverwritingFieldFile(FieldFile):
         Deletes the old file before saving the new one.
     """
 
-    def save(self, *args, **kwargs):
+    def save(self, name, content, *args, **kwargs):
         leave = kwargs.pop('leave', None)
-        if not leave and self:
+        if not leave and self and content is not self:
             self.delete(save=False)
-        return super(OverwritingFieldFile, self).save(*args, **kwargs)
+        return super(OverwritingFieldFile, self).save(name, content, *args, **kwargs)
 
 
 class OverwritingFileField(models.FileField):

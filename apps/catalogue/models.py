@@ -188,7 +188,7 @@ def book_upload_path(ext=None, maxlen=100):
 
 
 class BookMedia(models.Model):
-    type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100", editable=False)
+    type        = models.CharField(_('type'), choices=MEDIA_FORMATS, max_length="100")
     name        = models.CharField(_('name'), max_length="100")
     file        = OverwritingFileField(_('file'), upload_to=book_upload_path())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
