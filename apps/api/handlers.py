@@ -83,6 +83,9 @@ class CatalogueHandler(BaseHandler):
             elif field == 'author':
                 obj[field] = ", ".join(t.name for t in book.tags.filter(category='author'))
 
+            elif field == 'parent':
+                obj[field] = book.parent_id
+
             elif field in ('license', 'license_description', 'source_name',
                       'technical_editors', 'editors'):
                 f = extra_info.get(field)
