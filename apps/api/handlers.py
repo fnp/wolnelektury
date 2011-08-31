@@ -68,7 +68,7 @@ class CatalogueHandler(BaseHandler):
                 media = []
                 for m in book.media.filter(type=field):
                     media.append({
-                        'url': m.file.get_absolute_url(),
+                        'url': m.file.url,
                         'size': m.file.size,
                     })
                 if media:
