@@ -6,6 +6,7 @@ from datetime import datetime
 
 from django.db import models
 from django.db.models import permalink, Q
+from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.files import File
@@ -282,7 +283,6 @@ class Book(models.Model):
     description   = models.TextField(_('description'), blank=True)
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
-    _short_html   = models.TextField(_('short HTML'), editable=False)
     parent_number = models.IntegerField(_('parent number'), default=0)
     extra_info    = JSONField(_('extra information'), default='{}')
     gazeta_link   = models.CharField(blank=True, max_length=240)
@@ -299,9 +299,6 @@ class Book(models.Model):
     tagged   = managers.ModelTaggedItemManager(Tag)
     tags     = managers.TagDescriptor(Tag)
 
-    _tag_counter = JSONField(null=True, editable=False)
-    _theme_counter = JSONField(null=True, editable=False)
-
     class AlreadyExists(Exception):
         pass
 
@@ -317,13 +314,7 @@ class Book(models.Model):
         self.sort_key = sortify(self.title)
 
         if reset_short_html:
-            # Reset _short_html during save
-            update = {}
-            for key in filter(lambda x: x.startswith('_short_html'), self.__dict__):
-                update[key] = ''
-                self.__setattr__(key, '')
-            # Fragment.short_html relies on book's tags, so reset it here too
-            self.fragments.all().update(**update)
+            self.reset_short_html()
 
         return super(Book, self).save(force_insert, force_update)
 
@@ -405,13 +396,23 @@ class Book(models.Model):
     def get_daisy(self):
         return self.get_media("daisy")                       
 
-    def short_html(self):
-        key = '_short_html_%s' % get_language()
-        short_html = getattr(self, key)
+    def reset_short_html(self):
+        cache_key = "Book.short_html/%d/%s"
+        for lang, langname in settings.LANGUAGES:
+            cache.delete(cache_key % (self.id, lang))
+        # Fragment.short_html relies on book's tags, so reset it here too
+        for fragm in self.fragments.all():
+            fragm.reset_short_html()
 
-        if short_html and len(short_html):
+    def short_html(self):
+        cache_key = "Book.short_html/%d/%s" % (self.id, get_language())
+        short_html = cache.get(cache_key)
+
+        if short_html is not None:
+            print 'b.s from cache'
             return mark_safe(short_html)
         else:
+            print 'b.s manual'
             tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
             tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
 
@@ -431,11 +432,10 @@ class Book(models.Model):
 
             formats = [mark_safe(format) for format in formats]
 
-            setattr(self, key, unicode(render_to_string('catalogue/book_short.html',
-                {'book': self, 'tags': tags, 'formats': formats})))
-            self.save(reset_short_html=False)
-            return mark_safe(getattr(self, key))
-
+            short_html = unicode(render_to_string('catalogue/book_short.html',
+                {'book': self, 'tags': tags, 'formats': formats}))
+            cache.set(cache_key, short_html)
+            return mark_safe(short_html)
 
     @property
     def root_ancestor(self):
@@ -648,7 +648,6 @@ class Book(models.Model):
 
         book.title = book_info.title
         book.set_extra_info_value(book_info.to_dict())
-        book._short_html = ''
         book.save()
 
         meta_tags = []
@@ -710,50 +709,49 @@ class Book(models.Model):
         book.save()
         return book
 
-
-    def refresh_tag_counter(self):
-        tags = {}
-        for child in self.children.all().order_by():
-            for tag_pk, value in child.tag_counter.iteritems():
-                tags[tag_pk] = tags.get(tag_pk, 0) + value
-        for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
-            tags[tag.pk] = 1
-        self.set__tag_counter_value(tags)
-        self.save(reset_short_html=False)
-        return tags
-
     def reset_tag_counter(self):
-        self._tag_counter = None
-        self.save(reset_short_html=False)
+        cache_key = "Book.tag_counter/%d" % self.id
+        cache.delete(cache_key)
         if self.parent:
             self.parent.reset_tag_counter()
 
     @property
     def tag_counter(self):
-        if self._tag_counter is None:
-            return self.refresh_tag_counter()
-        return dict((int(k), v) for k, v in self.get__tag_counter_value().iteritems())
+        cache_key = "Book.tag_counter/%d" % self.id
+        tags = cache.get(cache_key)
+        print 'tag'
+        if tags is None:
+            print 'tag manual'
+            tags = {}
+            for child in self.children.all().order_by():
+                for tag_pk, value in child.tag_counter.iteritems():
+                    tags[tag_pk] = tags.get(tag_pk, 0) + value
+            for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
+                tags[tag.pk] = 1
 
-    def refresh_theme_counter(self):
-        tags = {}
-        for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
-            for tag in fragment.tags.filter(category='theme').order_by():
-                tags[tag.pk] = tags.get(tag.pk, 0) + 1
-        self.set__theme_counter_value(tags)
-        self.save(reset_short_html=False)
+            cache.set(cache_key, tags)
         return tags
 
     def reset_theme_counter(self):
-        self._theme_counter = None
-        self.save(reset_short_html=False)
+        cache_key = "Book.theme_counter/%d" % self.id
+        cache.delete(cache_key)
         if self.parent:
             self.parent.reset_theme_counter()
 
     @property
     def theme_counter(self):
-        if self._theme_counter is None:
-            return self.refresh_theme_counter()
-        return dict((int(k), v) for k, v in self.get__theme_counter_value().iteritems())
+        cache_key = "Book.theme_counter/%d" % self.id
+        tags = cache.get(cache_key)
+        print 'theme'
+        if tags is None:
+            print 'theme manual'
+            tags = {}
+            for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
+                for tag in fragment.tags.filter(category='theme').order_by():
+                    tags[tag.pk] = tags.get(tag.pk, 0) + 1
+
+            cache.set(cache_key, tags)
+        return tags
 
     def pretty_title(self, html_links=False):
         book = self
@@ -794,7 +792,6 @@ class Book(models.Model):
 class Fragment(models.Model):
     text = models.TextField()
     short_text = models.TextField(editable=False)
-    _short_html = models.TextField(editable=False)
     anchor = models.CharField(max_length=120)
     book = models.ForeignKey(Book, related_name='fragments')
 
@@ -810,16 +807,24 @@ class Fragment(models.Model):
     def get_absolute_url(self):
         return '%s#m%s' % (reverse('book_text', kwargs={'slug': self.book.slug}), self.anchor)
 
+    def reset_short_html(self):
+        cache_key = "Fragment.short_html/%d/%s"
+        for lang, langname in settings.LANGUAGES:
+            cache.delete(cache_key % (self.id, lang))
+
     def short_html(self):
-        key = '_short_html_%s' % get_language()
-        short_html = getattr(self, key)
-        if short_html and len(short_html):
+        cache_key = "Fragment.short_html/%d/%s" % (self.id, get_language())
+        short_html = cache.get(cache_key)
+
+        if short_html is not None:
+            print 'f.s from cache'
             return mark_safe(short_html)
         else:
-            setattr(self, key, unicode(render_to_string('catalogue/fragment_short.html',
-                {'fragment': self})))
-            self.save()
-            return mark_safe(getattr(self, key))
+            print 'f.s manual'
+            short_html = unicode(render_to_string('catalogue/fragment_short.html',
+                {'fragment': self}))
+            cache.set(cache_key, short_html)
+            return mark_safe(short_html)
 
 
 class FileRecord(models.Model):
