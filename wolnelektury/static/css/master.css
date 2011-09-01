@@ -544,7 +544,6 @@ div.shown-tags p, div.all-tags p {
 /* =============== */
 #description {
     margin-top: 0.5em;
-    text-align: justify;
     overflow: hidden;
 }
 #description-short {
@@ -1025,13 +1024,11 @@ div.shown-tags p, div.all-tags p {
 .column-left {
     width: 37em;
     float: left;
-    text-align: justify;
     margin-top: 1em;
 }
 
 .column-right {
     margin-left: 40em;
-    text-align: justify;
     margin-top: 1em;
 }
 
