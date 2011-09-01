@@ -25,7 +25,7 @@ def sortify(value):
 
         Examples :
 
-        >>> sortify('aa') < sortify('a a') < sortify('ą') < sortify('b')
+        >>> sortify('a a') < sortify('aa') < sortify('ą') < sortify('b')
         True
 
         >>> sortify('ź') < sortify('ż')
@@ -39,6 +39,6 @@ def sortify(value):
     # try to replace chars
     value = re.sub('[^a-zA-Z0-9\\s\\-]{1}', replace_char, value)
     value = value.lower()
-    value = re.sub(r'[^a-z0-9~]+', '|', value)
+    value = re.sub(r'[^a-z0-9~]+', ' ', value)
     
     return value.encode('ascii', 'ignore')
