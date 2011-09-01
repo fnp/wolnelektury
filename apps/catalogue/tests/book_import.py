@@ -143,6 +143,29 @@ class BookImportLogicTests(WLTestCase):
         # the old tag shouldn't disappear
         models.Tag.objects.get(slug="jim-lazy", category="author")
 
+    def test_book_remove_fragment(self):
+        BOOK_TEXT = """<utwor>
+        <opowiadanie>
+            <akap>
+                <begin id="m01" /><motyw id="m01">Love</motyw>Ala ma kota<end id="m01" />
+                <begin id="m02" /><motyw id="m02">Hatred</motyw>To kot Ali<end id="m02" />
+            </akap>
+        </opowiadanie></utwor>
+        """
+        BOOK_TEXT_AFTER = """<utwor>
+        <opowiadanie>
+            <akap>
+                <begin id="m01" /><motyw id="m01">Love</motyw>Ala ma kota<end id="m01" />
+                To kot Ali
+            </akap>
+        </opowiadanie></utwor>
+        """
+
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        self.assertEqual(book.fragments.count(), 2)
+        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT_AFTER), self.book_info, overwrite=True)
+        self.assertEqual(book.fragments.count(), 1)
+
     def test_multiple_tags(self):
         BOOK_TEXT = """<utwor />"""
         self.book_info.authors = self.book_info.author, PersonStub(("Joe",), "Dilligent"),

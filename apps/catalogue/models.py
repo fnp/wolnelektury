@@ -547,7 +547,61 @@ class Book(models.Model):
         out = StringIO()
         text.transform(open(self.xml_file.path), out)
         self.txt_file.save('%s.txt' % self.slug, ContentFile(out.getvalue()))
-        self.save()
+
+
+    def build_html(self):
+        from tempfile import NamedTemporaryFile
+        from markupstring import MarkupString
+
+        meta_tags = list(self.tags.filter(
+            category__in=('author', 'epoch', 'genre', 'kind')))
+        book_tag = self.book_tag()
+
+        html_file = NamedTemporaryFile()
+        if html.transform(self.xml_file.path, html_file, parse_dublincore=False):
+            self.html_file.save('%s.html' % self.slug, File(html_file))
+
+            # get ancestor l-tags for adding to new fragments
+            ancestor_tags = []
+            p = self.parent
+            while p:
+                ancestor_tags.append(p.book_tag())
+                p = p.parent
+
+            # Delete old fragments and create them from scratch
+            self.fragments.all().delete()
+            # Extract fragments
+            closed_fragments, open_fragments = html.extract_fragments(self.html_file.path)
+            for fragment in closed_fragments.values():
+                try:
+                    theme_names = [s.strip() for s in fragment.themes.split(',')]
+                except AttributeError:
+                    continue
+                themes = []
+                for theme_name in theme_names:
+                    if not theme_name:
+                        continue
+                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
+                    if created:
+                        tag.name = theme_name
+                        tag.sort_key = theme_name.lower()
+                        tag.save()
+                    themes.append(tag)
+                if not themes:
+                    continue
+
+                text = fragment.to_string()
+                short_text = ''
+                if (len(MarkupString(text)) > 240):
+                    short_text = unicode(MarkupString(text)[:160])
+                new_fragment = Fragment.objects.create(anchor=fragment.id, book=self,
+                    text=text, short_text=short_text)
+
+                new_fragment.save()
+                new_fragment.tags = set(meta_tags + themes + [book_tag] + ancestor_tags)
+            self.save()
+            return True
+        return False
 
 
     @classmethod
@@ -566,9 +620,6 @@ class Book(models.Model):
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True):
         import re
-        from tempfile import NamedTemporaryFile
-        from markupstring import MarkupString
-        from django.core.files.storage import default_storage
 
         # check for parts before we do anything
         children = []
@@ -600,7 +651,7 @@ class Book(models.Model):
         book._short_html = ''
         book.save()
 
-        book_tags = []
+        meta_tags = []
         categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))
         for field_name, category in categories:
             try:
@@ -617,9 +668,9 @@ class Book(models.Model):
                     tag.name = tag_name
                     tag.sort_key = sortify(tag_sort_key.lower())
                     tag.save()
-                book_tags.append(tag)
+                meta_tags.append(tag)
 
-        book.tags = set(book_tags + book_shelves)
+        book.tags = set(meta_tags + book_shelves)
 
         book_tag = book.book_tag()
 
@@ -634,47 +685,7 @@ class Book(models.Model):
         # delete old fragments when overwriting
         book.fragments.all().delete()
 
-        html_file = NamedTemporaryFile()
-        if html.transform(book.xml_file.path, html_file, parse_dublincore=False):
-            book.html_file.save('%s.html' % book.slug, File(html_file), save=False)
-
-            # get ancestor l-tags for adding to new fragments
-            ancestor_tags = []
-            p = book.parent
-            while p:
-                ancestor_tags.append(p.book_tag())
-                p = p.parent
-
-            # Extract fragments
-            closed_fragments, open_fragments = html.extract_fragments(book.html_file.path)
-            for fragment in closed_fragments.values():
-                try:
-                    theme_names = [s.strip() for s in fragment.themes.split(',')]
-                except AttributeError:
-                    continue
-                themes = []
-                for theme_name in theme_names:
-                    if not theme_name:
-                        continue
-                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
-                    if created:
-                        tag.name = theme_name
-                        tag.sort_key = theme_name.lower()
-                        tag.save()
-                    themes.append(tag)
-                if not themes:
-                    continue
-
-                text = fragment.to_string()
-                short_text = ''
-                if (len(MarkupString(text)) > 240):
-                    short_text = unicode(MarkupString(text)[:160])
-                new_fragment, created = Fragment.objects.get_or_create(anchor=fragment.id, book=book,
-                    defaults={'text': text, 'short_text': short_text})
-
-                new_fragment.save()
-                new_fragment.tags = set(book_tags + themes + [book_tag] + ancestor_tags)
-
+        if book.build_html():
             if not settings.NO_BUILD_TXT and build_txt:
                 book.build_txt()
 
