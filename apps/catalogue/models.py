@@ -409,10 +409,8 @@ class Book(models.Model):
         short_html = cache.get(cache_key)
 
         if short_html is not None:
-            print 'b.s from cache'
             return mark_safe(short_html)
         else:
-            print 'b.s manual'
             tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
             tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
 
@@ -719,9 +717,7 @@ class Book(models.Model):
     def tag_counter(self):
         cache_key = "Book.tag_counter/%d" % self.id
         tags = cache.get(cache_key)
-        print 'tag'
         if tags is None:
-            print 'tag manual'
             tags = {}
             for child in self.children.all().order_by():
                 for tag_pk, value in child.tag_counter.iteritems():
@@ -742,9 +738,7 @@ class Book(models.Model):
     def theme_counter(self):
         cache_key = "Book.theme_counter/%d" % self.id
         tags = cache.get(cache_key)
-        print 'theme'
         if tags is None:
-            print 'theme manual'
             tags = {}
             for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
                 for tag in fragment.tags.filter(category='theme').order_by():
@@ -817,10 +811,8 @@ class Fragment(models.Model):
         short_html = cache.get(cache_key)
 
         if short_html is not None:
-            print 'f.s from cache'
             return mark_safe(short_html)
         else:
-            print 'f.s manual'
             short_html = unicode(render_to_string('catalogue/fragment_short.html',
                 {'fragment': self}))
             cache.set(cache_key, short_html)
