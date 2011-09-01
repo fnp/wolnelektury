@@ -208,7 +208,7 @@ TRANSLATION_REGISTRY = "wolnelektury.translation"
 
 
 # seconds until a changes appears in the changes api
-API_WAIT = 100
+API_WAIT = 10
 
 # limit number of filtering tags
 MAX_TAG_LIST = 6
