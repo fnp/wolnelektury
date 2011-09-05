@@ -43,7 +43,6 @@ class BookImportLogicTests(WLTestCase):
         # TODO: this should be filled out probably...
         self.assertEqual(book.wiki_link, '')
         self.assertEqual(book.gazeta_link, '')
-        self.assertEqual(book._short_html, '')
         self.assertEqual(book.description, '')
 
         tags = [ (tag.category, tag.slug) for tag in book.tags ]

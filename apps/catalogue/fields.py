@@ -122,9 +122,12 @@ class OverwritingFieldFile(FieldFile):
 
     def save(self, name, content, *args, **kwargs):
         leave = kwargs.pop('leave', None)
-        if not leave and self and content is not self:
+        # delete if there's a file already and there's a new one coming
+        if not leave and self and (not hasattr(content, 'path') or
+                                   content.path != self.path):
             self.delete(save=False)
-        return super(OverwritingFieldFile, self).save(name, content, *args, **kwargs)
+        return super(OverwritingFieldFile, self).save(
+                name, content, *args, **kwargs)
 
 
 class OverwritingFileField(models.FileField):
