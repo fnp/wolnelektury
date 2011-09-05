@@ -397,6 +397,9 @@ class Book(models.Model):
         return self.get_media("daisy")                       
 
     def reset_short_html(self):
+        if self.id is None:
+            return
+
         cache_key = "Book.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
             cache.delete(cache_key % (self.id, lang))
@@ -405,8 +408,11 @@ class Book(models.Model):
             fragm.reset_short_html()
 
     def short_html(self):
-        cache_key = "Book.short_html/%d/%s" % (self.id, get_language())
-        short_html = cache.get(cache_key)
+        if self.id:
+            cache_key = "Book.short_html/%d/%s" % (self.id, get_language())
+            short_html = cache.get(cache_key)
+        else:
+            short_html = None
 
         if short_html is not None:
             return mark_safe(short_html)
@@ -432,7 +438,9 @@ class Book(models.Model):
 
             short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
-            cache.set(cache_key, short_html)
+
+            if self.id:
+                cache.set(cache_key, short_html)
             return mark_safe(short_html)
 
     @property
@@ -708,6 +716,9 @@ class Book(models.Model):
         return book
 
     def reset_tag_counter(self):
+        if self.id is None:
+            return
+
         cache_key = "Book.tag_counter/%d" % self.id
         cache.delete(cache_key)
         if self.parent:
@@ -715,8 +726,12 @@ class Book(models.Model):
 
     @property
     def tag_counter(self):
-        cache_key = "Book.tag_counter/%d" % self.id
-        tags = cache.get(cache_key)
+        if self.id:
+            cache_key = "Book.tag_counter/%d" % self.id
+            tags = cache.get(cache_key)
+        else:
+            tags = None
+
         if tags is None:
             tags = {}
             for child in self.children.all().order_by():
@@ -725,10 +740,14 @@ class Book(models.Model):
             for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
                 tags[tag.pk] = 1
 
-            cache.set(cache_key, tags)
+            if self.id:
+                cache.set(cache_key, tags)
         return tags
 
     def reset_theme_counter(self):
+        if self.id is None:
+            return
+
         cache_key = "Book.theme_counter/%d" % self.id
         cache.delete(cache_key)
         if self.parent:
@@ -736,15 +755,20 @@ class Book(models.Model):
 
     @property
     def theme_counter(self):
-        cache_key = "Book.theme_counter/%d" % self.id
-        tags = cache.get(cache_key)
+        if self.id:
+            cache_key = "Book.theme_counter/%d" % self.id
+            tags = cache.get(cache_key)
+        else:
+            tags = None
+
         if tags is None:
             tags = {}
             for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
                 for tag in fragment.tags.filter(category='theme').order_by():
                     tags[tag.pk] = tags.get(tag.pk, 0) + 1
 
-            cache.set(cache_key, tags)
+            if self.id:
+                cache.set(cache_key, tags)
         return tags
 
     def pretty_title(self, html_links=False):
@@ -802,20 +826,27 @@ class Fragment(models.Model):
         return '%s#m%s' % (reverse('book_text', kwargs={'slug': self.book.slug}), self.anchor)
 
     def reset_short_html(self):
+        if self.id is None:
+            return
+
         cache_key = "Fragment.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
             cache.delete(cache_key % (self.id, lang))
 
     def short_html(self):
-        cache_key = "Fragment.short_html/%d/%s" % (self.id, get_language())
-        short_html = cache.get(cache_key)
+        if self.id:
+            cache_key = "Fragment.short_html/%d/%s" % (self.id, get_language())
+            short_html = cache.get(cache_key)
+        else:
+            short_html = None
 
         if short_html is not None:
             return mark_safe(short_html)
         else:
             short_html = unicode(render_to_string('catalogue/fragment_short.html',
                 {'fragment': self}))
-            cache.set(cache_key, short_html)
+            if self.id:
+                cache.set(cache_key, short_html)
             return mark_safe(short_html)
 
 
