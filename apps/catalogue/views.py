@@ -302,8 +302,8 @@ def book_detail(request, slug):
         if not project:
             # temporary fallback
             project = u'CzytamySłuchając'
-            
-        projects.add((project, meta.get('funded_by')))
+
+        projects.add((project, meta.get('funded_by', '')))
     projects = sorted(projects)
 
     form = forms.SearchForm()
