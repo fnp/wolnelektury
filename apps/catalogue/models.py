@@ -47,6 +47,9 @@ MEDIA_FORMATS = (
     ('daisy', _('DAISY file')), 
 )
 
+# not quite, but Django wants you to set a timeout
+CACHE_FOREVER = 2419200  # 28 days
+
 class TagSubcategoryManager(models.Manager):
     def __init__(self, subcategory):
         super(TagSubcategoryManager, self).__init__()
@@ -313,10 +316,12 @@ class Book(models.Model):
     def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
         self.sort_key = sortify(self.title)
 
+        ret = super(Book, self).save(force_insert, force_update)
+
         if reset_short_html:
             self.reset_short_html()
 
-        return super(Book, self).save(force_insert, force_update)
+        return ret
 
     @permalink
     def get_absolute_url(self):
@@ -440,7 +445,7 @@ class Book(models.Model):
                 {'book': self, 'tags': tags, 'formats': formats}))
 
             if self.id:
-                cache.set(cache_key, short_html)
+                cache.set(cache_key, short_html, CACHE_FOREVER)
             return mark_safe(short_html)
 
     @property
@@ -708,11 +713,12 @@ class Book(models.Model):
                 fragment.tags = set(list(fragment.tags) + [book_tag])
             book_descendants += list(child_book.children.all())
 
+        book.save()
+
         # refresh cache
         book.reset_tag_counter()
         book.reset_theme_counter()
 
-        book.save()
         return book
 
     def reset_tag_counter(self):
@@ -741,7 +747,7 @@ class Book(models.Model):
                 tags[tag.pk] = 1
 
             if self.id:
-                cache.set(cache_key, tags)
+                cache.set(cache_key, tags, CACHE_FOREVER)
         return tags
 
     def reset_theme_counter(self):
@@ -768,7 +774,7 @@ class Book(models.Model):
                     tags[tag.pk] = tags.get(tag.pk, 0) + 1
 
             if self.id:
-                cache.set(cache_key, tags)
+                cache.set(cache_key, tags, CACHE_FOREVER)
         return tags
 
     def pretty_title(self, html_links=False):
@@ -846,7 +852,7 @@ class Fragment(models.Model):
             short_html = unicode(render_to_string('catalogue/fragment_short.html',
                 {'fragment': self}))
             if self.id:
-                cache.set(cache_key, short_html)
+                cache.set(cache_key, short_html, CACHE_FOREVER)
             return mark_safe(short_html)
 
 
