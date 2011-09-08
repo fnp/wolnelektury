@@ -2,6 +2,10 @@
 {% load i18n %}
 {% load catalogue_tags chunks cache %}
 
+{# doodle #}
+{% block logo_url %}{{ STATIC_URL }}img/doodle/20110908.png{% endblock %}
+
+
 {% block bodyid %}main-page{% endblock %}
 
 {% block body %}
@@ -9,6 +13,12 @@
         {% chunk "site-description" %}
     </div>
     <div class="clearboth"></div>
+        {# doodle #}
+        <div style="position:relative;">
+            <a href="https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi" target="_blank">
+                <img src="{{ STATIC_URL }}img/doodle/20110908-android.png" style="position:absolute; top:-100px; left: 250px; margin-top: .5em;" />
+            </a>
+        </div>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} {{ form.tags }} <input type="submit" value="{% trans "Search" %}" />
             <strong>{% trans "or" %}</strong> {% trans "see" %}: 
@@ -22,6 +32,13 @@
     <div id="intro">
         <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
+            <h2>Wolne Lektury na Androida</h2>
+            <p><a target="_blank" href='https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi'>
+                <img src='{{ STATIC_URL }}img/android-poster.png' alt='Wolne Lektury na Androida' width='260' height='260' />
+            </a></p>
+            <p>Aplikacja Wolnych Lektur już w Android Market. Pobierz na swój telefon lub tablet!</p>
+            <p class="see-more"><a href="https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi" title="Zabawnik">Zobacz aplikację ⇒</a></p>
+
             <h2>Zabawnik</h2>
             <p><a target="_blank" href='http://zabawnik.org'>
                 <img src='/static/img/zabawnik.png' alt='Zabawnik' width='260' height='108' />
@@ -30,11 +47,6 @@
 dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
             <p class="see-more"><a href="http://zabawnik.org" title="Zabawnik">Przejdź do Zabawnika ⇒</a></p>
 
-            <h2>Nowy Leśmianator</h2>
-            <p>Tym razem to Ty decydujesz, co wpadnie do miksera &ndash; a efekt możesz pokazać znajomym!
-                </p>
-            <p class="see-more" style="clear:both"><a href="{% url lesmianator %}">{% trans "Twórzże się!" %} ⇒</a></p>
-
             {% comment %}    <h2>{% trans "Books for every school level" %}</h2>
             <ul>
                 <li><a href="">{% trans "primary school" %}</a></li>
@@ -42,15 +54,6 @@ dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
                 <li><a href="">{% trans "high school" %}</a></li>
             </ul>    {% endcomment %}
 
-            <h2>{% trans "Wolne Lektury Widget" %}</h2>
-            <p>{% trans "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:" %}</p>
-            <textarea rows="1" cols="35" class='widget-code' title='widget'><!-- START {% trans "Insert this element in place where you want display the widget" %} -->
-&lt;div id="wl" /&gt;
-&lt;!-- END --&gt;
-&lt;!-- START {% trans "Place this element just before closing body tag: &lt;/body&gt;" %} --&gt;
-&lt;script type="text/javascript" src="http://www.wolnelektury.pl/static/js/widget.js"&gt;&lt;/script&gt;
-&lt;!-- END --&gt;</textarea>
-                <p class="see-more"><a href="{% url widget %}" title="{% trans "Wolne Lektury Widget" %}">{% trans "See more" %} ⇒</a></p>
             <h2>{% trans "Your shelves with books" %}</h2>
             {% if user.is_authenticated %}
                 {% if shelves %}
@@ -72,6 +75,22 @@ dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
                 <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
                 <p>{% trans "You need to " %} <a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
             {% endif %}
+
+            <h2>Nowy Leśmianator</h2>
+            <p>Tym razem to Ty decydujesz, co wpadnie do miksera &ndash; a efekt możesz pokazać znajomym!
+                </p>
+            <p class="see-more" style="clear:both"><a href="{% url lesmianator %}">{% trans "Twórzże się!" %} ⇒</a></p>
+
+            <h2>{% trans "Wolne Lektury Widget" %}</h2>
+            <p>{% trans "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:" %}</p>
+            <textarea rows="1" cols="35" class='widget-code' title='widget'><!-- START {% trans "Insert this element in place where you want display the widget" %} -->
+&lt;div id="wl" /&gt;
+&lt;!-- END --&gt;
+&lt;!-- START {% trans "Place this element just before closing body tag: &lt;/body&gt;" %} --&gt;
+&lt;script type="text/javascript" src="http://www.wolnelektury.pl/static/js/widget.js"&gt;&lt;/script&gt;
+&lt;!-- END --&gt;</textarea>
+                <p class="see-more"><a href="{% url widget %}" title="{% trans "Wolne Lektury Widget" %}">{% trans "See more" %} ⇒</a></p>
+
             <div id="lessons">
                 <h2><a href="{% url lessons_document_list %}">{% trans "Hand-outs for teachers" %}</a></h2>
                 <p>{% trans "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching." %}</p>
@@ -312,4 +331,17 @@ dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
             <p class="see-more"><a href="{% url about_us %}" title="{% trans "About us" %}">{% trans "See more" %} ⇒</a></p>
         </div>
     </div>
+{% endblock %}
+
+
+{% block add_footer %}
+
+<p>
+{% blocktrans %}
+Portions of this page are modifications based on work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used
+according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons
+3.0 Attribution License</a>.
+{% endblocktrans %}
+</p>
+
 {% endblock %}

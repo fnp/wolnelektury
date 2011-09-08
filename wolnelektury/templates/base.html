@@ -28,7 +28,7 @@
         </div>
         <div id="header">
             <div id="logo">
-                <a href="/"><img src="{{ STATIC_URL }}img/logo-bez.png" alt="WolneLektury.pl" /><br/>szkolna biblioteka internetowa</a>
+                <a href="/"><img src="{% block logo_url %}{{ STATIC_URL }}img/logo-bez.png{% endblock %}" alt="WolneLektury.pl" /><br/>szkolna biblioteka internetowa</a>
             </div>
             <div id="user-info" style="display:none">
                 {% if user.is_authenticated %}
@@ -88,6 +88,8 @@
                 e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>
 				{% endblocktrans %}
             </p>
+
+            {% block add_footer %}{% endblock %}
 
 			{% sponsor_page "footer" %}
         </div>
