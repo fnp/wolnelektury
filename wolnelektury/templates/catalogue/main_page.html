@@ -32,13 +32,24 @@
     <div id="intro">
         <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
+            <h2>Turniej Elektrybałtów</h2>
+            <p><a target="_blank" href='http://turniej.wolnelektury.pl'>
+                <img src='{{ STATIC_URL }}img/turniej-maly.png' alt='Logo Turnieju' width='60' height='64' style='float:left;margin:1em;' />
+            </a>
+            Ogłaszamy <strong>otwarty konkurs na najlepszego automatycznego poetę</strong>! Konkurs startuje
+            12 września 2011 roku – z okazji 90 rocznicy urodzin Stanisława Lema.
+            Termin nadsyłania prac upływa z końcem października 2011 roku.
+            </p>
+            <p class="see-more"><a target="_blank" href="http://turniej.wolnelektury.pl" >Idź do strony konkursu ⇒</a></p>
+
             <h2>Wolne Lektury na Androida</h2>
             <p><a target="_blank" href='https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi'>
                 <img src='{{ STATIC_URL }}img/android-poster.png' alt='Wolne Lektury na Androida' width='260' height='260' />
             </a></p>
             <p>Aplikacja Wolnych Lektur już w Android Market. Pobierz na swój telefon lub tablet!</p>
-            <p class="see-more"><a href="https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi" title="Zabawnik">Zobacz aplikację ⇒</a></p>
+            <p class="see-more"><a href="https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi" >Zobacz aplikację ⇒</a></p>
 
+{% comment %}
             <h2>Zabawnik</h2>
             <p><a target="_blank" href='http://zabawnik.org'>
                 <img src='/static/img/zabawnik.png' alt='Zabawnik' width='260' height='108' />
@@ -46,6 +57,7 @@
             <p>Zbiór scenariuszy gier i zabaw
 dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
             <p class="see-more"><a href="http://zabawnik.org" title="Zabawnik">Przejdź do Zabawnika ⇒</a></p>
+{% endcomment %}
 
             {% comment %}    <h2>{% trans "Books for every school level" %}</h2>
             <ul>
