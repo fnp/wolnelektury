@@ -252,7 +252,7 @@ class FragmentsHandler(BaseHandler):
 
         """
         tags = read_tags(tags, allowed=self.categories)
-        fragmets = Fragment.tagged.with_all(tags).select_related('book')
+        fragments = Fragment.tagged.with_all(tags).select_related('book')
         if fragments.exists():
             return fragments
         else:
