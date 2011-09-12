@@ -7,8 +7,6 @@ from datetime import datetime, timedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 from piston.handler import BaseHandler
 from piston.utils import rc
 
@@ -38,7 +36,7 @@ def read_tags(tags, allowed):
 
     :param str tags: a path of category and slug pairs, like: authors/an-author/...
     :returns: list of Tag objects
-    :raises: django.http.Http404
+    :raises: ValueError when tags can't be found
     """
     if not tags:
         return []
@@ -52,16 +50,19 @@ def read_tags(tags, allowed):
         try:
             category = category_singular[category]
         except KeyError:
-            raise Http404
+            raise ValueError('Unknown category.')
 
         if not category in allowed:
-            raise Http404
+            raise ValueError('Category not allowed.')
 
         # !^%@#$^#!
         if category == 'book':
             slug = 'l-' + slug
 
-        real_tags.append(get_object_or_404(Tag, category=category, slug=slug))
+        try:
+            real_tags.append(Tag.objects.get(category=category, slug=slug))
+        except Tag.DoesNotExist:
+            raise ValueError('Tag not found')
     return real_tags
 
 
@@ -96,7 +97,10 @@ class BookDetailHandler(BaseHandler):
     def read(self, request, slug):
         """ Returns details of a book, identified by a slug. """
 
-        return get_object_or_404(Book, slug=slug)
+        try:
+            return Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
 
 
 class BooksHandler(BaseHandler):
@@ -191,7 +195,10 @@ class TagDetailHandler(BaseHandler):
         except KeyError, e:
             return rc.NOT_FOUND
 
-        return get_object_or_404(Tag, category=category_sng, slug=slug)
+        try:
+            return Tag.objects.get(category=category_sng, slug=slug)
+        except Tag.DoesNotExist:
+            return rc.NOT_FOUND
 
 
 class TagsHandler(BaseHandler):
@@ -234,7 +241,10 @@ class FragmentDetailHandler(BaseHandler):
     def read(self, request, slug, anchor):
         """ Returns details of a fragment, identified by book slug and anchor. """
 
-        return get_object_or_404(Fragment, book__slug=slug, anchor=anchor)
+        try:
+            return Fragment.objects.get(book__slug=slug, anchor=anchor)
+        except Fragment.DoesNotExist:
+            return rc.NOT_FOUND
 
 
 class FragmentsHandler(BaseHandler):
