@@ -122,6 +122,9 @@ class TagTests(TestCase):
 
     def setUp(self):
         self.tag = Tag.objects.create(category='author', slug='joe', name='Joe')
+        self.book = Book.objects.create(title='A Book', slug='a-book')
+        self.book.tags = [self.tag]
+        self.book.save()
 
     def test_tag_list(self):
         tags = json.loads(self.client.get('/api/authors/').content)

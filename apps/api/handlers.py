@@ -135,11 +135,17 @@ class BooksHandler(BaseHandler):
         tags = read_tags(tags, allowed=self.categories)
         if tags:
             if top_level:
-                return Book.tagged_top_level(tags)
+                books = Book.tagged_top_level(tags)
+                return books if books else rc.NOT_FOUND
             else:
-                return Book.tagged.with_all(tags)
+                books = Book.tagged.with_all(tags)
         else:
-            return Book.objects.all()
+            books = Book.objects.all()
+
+        if books.exists():
+            return books
+        else:
+            return rc.NOT_FOUND
 
 
 # add categorized tags fields for Book
@@ -201,7 +207,13 @@ class TagsHandler(BaseHandler):
         except KeyError, e:
             return rc.NOT_FOUND
 
-        return Tag.objects.filter(category=category_sng)
+        tags = Tag.objects.filter(category=category_sng)
+        tags = [t for t in tags if t.get_count() > 0]
+        if tags:
+            return tags
+        else:
+            return rc.NOT_FOUND
+
 
     @classmethod
     def href(cls, tag):
@@ -240,7 +252,11 @@ class FragmentsHandler(BaseHandler):
 
         """
         tags = read_tags(tags, allowed=self.categories)
-        return Fragment.tagged.with_all(tags).select_related('book')
+        fragmets = Fragment.tagged.with_all(tags).select_related('book')
+        if fragments.exists():
+            return fragments
+        else:
+            return rc.NOT_FOUND
 
     @classmethod
     def href(cls, fragment):

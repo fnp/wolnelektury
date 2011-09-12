@@ -20,6 +20,10 @@ fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
 
 urlpatterns = patterns('',
+    url(r'^$', 'django.views.generic.simple.direct_to_template',
+            {'template': 'api/main.html'}),
+
+
     # changes handlers
     url(r'^book_changes/(?P<since>\d*?)\.(?P<emitter_format>xml|json|yaml)$', book_changes_resource),
     url(r'^tag_changes/(?P<since>\d*?)\.(?P<emitter_format>xml|json|yaml)$', tag_changes_resource),
