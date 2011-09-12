@@ -779,29 +779,6 @@ def clock(request):
     return HttpResponse(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
 
 
-@cache.never_cache
-def xmls(request):
-    """"
-    Create a zip archive with all XML files.
-    This should be removed when we have real API.
-    """
-    temp = tempfile.TemporaryFile()
-    archive = zipfile.ZipFile(temp, 'w')
-
-    for book in models.Book.objects.all():
-        archive.write(book.xml_file.path, str('%s.xml' % book.slug))
-    archive.close()
-
-    response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
-    response['Content-Disposition'] = 'attachment; filename=xmls.zip'
-    response['Content-Length'] = temp.tell()
-
-    temp.seek(0)
-    response.write(temp.read())
-    return response
-
-
-
 # info views for API
 
 def book_info(request, id, lang='pl'):

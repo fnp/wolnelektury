@@ -9,12 +9,9 @@ from optparse import make_option
 
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
-from django.conf import settings
+import zipfile
 
 from catalogue.models import Book, Tag
-
-# extract text from text file
-re_text = re_text = re.compile(r'\n{3,}(.*?)\n*-----\n', re.S).search
 
 
 class Command(BaseCommand):
@@ -27,75 +24,58 @@ class Command(BaseCommand):
             help='Exclude specific books by slug')
     )
     help = 'Prepare data for Lesmianator.'
+    ftypes = ['xml', 'txt', 'html', 'epub', 'pdf']
+    args = '[%s] output_path.zip' % '|'.join(ftypes)
 
-    def handle(self, *args, **options):
+    def handle(self, ftype, path, **options):
         self.style = color_style()
         verbose = int(options.get('verbosity'))
         tags = options.get('tags')
         include = options.get('include')
         exclude = options.get('exclude')
 
-        try:
-            path = settings.LESMIANATOR_PICKLE
-        except:
-            print self.style.ERROR('LESMIANATOR_PICKLE not set in the settings.')
+        if ftype in self.ftypes:
+            field = "%s_file" % ftype
+        else:
+            print self.style.ERROR('Unknown file type.')
             return
 
         books = []
 
         if include:
-            books += list(Book.objects.filter(slug__in=include.split(',')).only('slug', 'txt_file'))
+            books += list(Book.objects.filter(slug__in=include.split(',')).only('slug', field))
 
         if tags:
-            books += list(Book.tagged.with_all(Tag.objects.filter(slug__in=tags.split(','))).only('slug', 'txt_file'))
+            books += list(Book.tagged.with_all(Tag.objects.filter(slug__in=tags.split(','))).only('slug', field))
         elif not include:
-            books = list(Book.objects.all().only('slug', 'txt_file'))
+            books = list(Book.objects.all().only('slug', field))
 
         if exclude:
             books = [book for book in books if book.slug not in exclude.split(',')]
 
-        books = set(books)
+        archive = zipfile.ZipFile(path, 'w')
 
-        lesmianator = {}
         processed = skipped = 0
         for book in books:
             if verbose >= 2:
                 print 'Parsing', book.slug
-            if not book.txt_file:
+            content = getattr(book, field)
+            if not content:
                 if verbose >= 1:
-                    print self.style.NOTICE('%s has no TXT file' % book.slug)
+                    print self.style.NOTICE('%s has no %s file' % (book.slug, ftype))
                 skipped += 1
                 continue
-            with open(book.txt_file.path) as f:
-                m = re_text(f.read())
-                if not m:
-                    print self.style.ERROR("Unknown text format: %s" % book.slug)
-                    skipped += 1
-                    continue
-
-                processed += 1
-                last_word = ''
-                text = unicode(m.group(1), 'utf-8').lower()
-                for letter in text:
-                    mydict = lesmianator.setdefault(last_word, {})
-                    myval = mydict.setdefault(letter, 0)
-                    mydict[letter] += 1
-                    last_word = last_word[-2:] + letter
+            archive.write(content.path, str('%s.%s' % (book.slug, ftype)))
+            processed += 1
+        archive.close()
 
         if not processed:
             if skipped:
-                print self.style.ERROR("No books with TXT files found")
+                print self.style.ERROR("No books with %s files found" % ftype)
             else:
                 print self.style.ERROR("No books found")
             return
 
-        try:
-            dump(lesmianator, open(path, 'w'))
-        except:
-            print self.style.ERROR("Couldn't write to $s" % path)
-            return
-
-        dump(lesmianator, open(path, 'w'))
         if verbose >= 1:
             print "%d processed, %d skipped" % (processed, skipped)
-            print "Results dumped to %s" % path 
+            print "Results written to %s" % path

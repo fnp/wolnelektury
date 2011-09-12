@@ -24,7 +24,6 @@ urlpatterns = patterns('catalogue.views',
 
     # tools
     url(r'^zegar/$', 'clock', name='clock'),
-    url(r'^xmls.zip$', 'xmls', name='xmls'),
     url(r'^liczniki/$', 'counters', name='catalogue_counters'),
 
     # Public interface. Do not change this URLs.
