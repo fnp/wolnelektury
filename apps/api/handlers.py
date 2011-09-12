@@ -147,6 +147,12 @@ class BooksHandler(BaseHandler):
         else:
             return rc.NOT_FOUND
 
+    @classmethod
+    def media(self, book):
+        """ Returns all media for a book. """
+
+        return book.media.all()
+
 
 # add categorized tags fields for Book
 def _tags_getter(category):
