@@ -3,13 +3,267 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 
 from datetime import datetime, timedelta
-from piston.handler import BaseHandler
+
 from django.conf import settings
+from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse
+from django.http import Http404
+from django.shortcuts import get_object_or_404
+from piston.handler import BaseHandler
+from piston.utils import rc
 
 from api.helpers import timestamp
 from api.models import Deleted
-from catalogue.models import Book, Tag
+from catalogue.models import Book, Tag, BookMedia, Fragment
 
+
+API_BASE = WL_BASE = MEDIA_BASE = 'http://' + Site.objects.get_current().domain
+
+
+category_singular = {
+    'authors': 'author',
+    'kinds': 'kind',
+    'genres': 'genre',
+    'epochs': 'epoch',
+    'themes': 'theme',
+    'books': 'book',
+}
+category_plural={}
+for k, v in category_singular.items():
+    category_plural[v] = k
+
+
+def read_tags(tags, allowed):
+    """ Reads a path of filtering tags.
+
+    :param str tags: a path of category and slug pairs, like: authors/an-author/...
+    :returns: list of Tag objects
+    :raises: django.http.Http404
+    """
+    if not tags:
+        return []
+
+    tags = tags.strip('/').split('/')
+    real_tags = []
+    while tags:
+        category = tags.pop(0)
+        slug = tags.pop(0)
+
+        try:
+            category = category_singular[category]
+        except KeyError:
+            raise Http404
+
+        if not category in allowed:
+            raise Http404
+
+        # !^%@#$^#!
+        if category == 'book':
+            slug = 'l-' + slug
+
+        real_tags.append(get_object_or_404(Tag, category=category, slug=slug))
+    return real_tags
+
+
+# RESTful handlers
+
+
+class BookMediaHandler(BaseHandler):
+    """ Responsible for representing media in Books. """
+
+    model = BookMedia
+    fields = ['name', 'type', 'url']
+
+    @classmethod
+    def url(cls, media):
+        """ Link to media on site. """
+
+        return MEDIA_BASE + media.file.url
+
+
+class BookDetailHandler(BaseHandler):
+    """ Main handler for Book objects.
+
+    Responsible for lists of Book objects
+    and fields used for representing Books.
+
+    """
+    allowed_methods = ['GET']
+    fields = ['title', 'parent',
+        'xml', 'html', 'pdf', 'epub', 'txt',
+        'media', 'url'] + category_singular.keys()
+
+    def read(self, request, slug):
+        """ Returns details of a book, identified by a slug. """
+
+        return get_object_or_404(Book, slug=slug)
+
+
+class BooksHandler(BaseHandler):
+    """ Main handler for Book objects.
+
+    Responsible for lists of Book objects
+    and fields used for representing Books.
+
+    """
+    allowed_methods = ('GET',)
+    model = Book
+    fields = ['href', 'title']
+
+    categories = set(['author', 'epoch', 'kind', 'genre'])
+
+    @classmethod
+    def href(cls, book):
+        """ Returns an URI for a Book in the API. """
+        return API_BASE + reverse("api_book", args=[book.slug])
+
+    @classmethod
+    def url(cls, book):
+        """ Returns Book's URL on the site. """
+
+        return WL_BASE + book.get_absolute_url()
+
+    def read(self, request, tags, top_level=False):
+        """ Lists all books with given tags.
+
+        :param tags: filtering tags; should be a path of categories
+             and slugs, i.e.: authors/an-author/epoch/an-epoch/
+        :param top_level: if True and a book is included in the results,
+             it's children are aren't. By default all books matching the tags
+             are returned.
+        """
+        tags = read_tags(tags, allowed=self.categories)
+        if tags:
+            if top_level:
+                return Book.tagged_top_level(tags)
+            else:
+                return Book.tagged.with_all(tags)
+        else:
+            return Book.objects.all()
+
+
+# add categorized tags fields for Book
+def _tags_getter(category):
+    @classmethod
+    def get_tags(cls, book):
+        return book.tags.filter(category=category)
+    return get_tags
+for plural, singular in category_singular.items():
+    setattr(BooksHandler, plural, _tags_getter(singular))
+
+# add fields for files in Book
+def _file_getter(format):
+    field = "%s_file" % format
+    @classmethod
+    def get_file(cls, book):
+        f = getattr(book, field)
+        if f:
+            return MEDIA_BASE + f.url
+        else:
+            return ''
+    return get_file
+for format in ('xml', 'txt', 'html', 'epub', 'pdf'):
+    setattr(BooksHandler, format, _file_getter(format))
+
+
+class TagDetailHandler(BaseHandler):
+    """ Responsible for details of a single Tag object. """
+
+    fields = ['name', 'sort_key', 'description']
+
+    def read(self, request, category, slug):
+        """ Returns details of a tag, identified by category and slug. """
+
+        try:
+            category_sng = category_singular[category]
+        except KeyError, e:
+            return rc.NOT_FOUND
+
+        return get_object_or_404(Tag, category=category_sng, slug=slug)
+
+
+class TagsHandler(BaseHandler):
+    """ Main handler for Tag objects.
+
+    Responsible for lists of Tag objects
+    and fields used for representing Tags.
+
+    """
+    allowed_methods = ('GET',)
+    model = Tag
+    fields = ['name', 'href']
+
+    def read(self, request, category):
+        """ Lists all tags in the category (eg. all themes). """
+
+        try:
+            category_sng = category_singular[category]
+        except KeyError, e:
+            return rc.NOT_FOUND
+
+        return Tag.objects.filter(category=category_sng)
+
+    @classmethod
+    def href(cls, tag):
+        """ Returns URI in the API for the tag. """
+
+        return API_BASE + reverse("api_tag", args=[category_plural[tag.category], tag.slug])
+
+
+class FragmentDetailHandler(BaseHandler):
+    fields = ['book', 'anchor', 'text', 'url', 'themes']
+
+    def read(self, request, slug, anchor):
+        """ Returns details of a fragment, identified by book slug and anchor. """
+
+        return get_object_or_404(Fragment, book__slug=slug, anchor=anchor)
+
+
+class FragmentsHandler(BaseHandler):
+    """ Main handler for Fragments.
+
+    Responsible for lists of Fragment objects
+    and fields used for representing Fragments.
+
+    """
+    model = Fragment
+    fields = ['book', 'anchor', 'href']
+    allowed_methods = ('GET',)
+
+    categories = set(['author', 'epoch', 'kind', 'genre', 'book', 'theme'])
+
+    def read(self, request, tags):
+        """ Lists all fragments with given book, tags, themes.
+
+        :param tags: should be a path of categories and slugs, i.e.:
+             books/book-slug/authors/an-author/themes/a-theme/
+
+        """
+        tags = read_tags(tags, allowed=self.categories)
+        return Fragment.tagged.with_all(tags).select_related('book')
+
+    @classmethod
+    def href(cls, fragment):
+        """ Returns URI in the API for the fragment. """
+
+        return API_BASE + reverse("api_fragment", args=[fragment.book.slug, fragment.anchor])
+
+    @classmethod
+    def url(cls, fragment):
+        """ Returns URL on the site for the fragment. """
+
+        return WL_BASE + fragment.get_absolute_url()
+
+    @classmethod
+    def themes(cls, fragment):
+        """ Returns a list of theme tags for the fragment. """
+
+        return fragment.tags.filter(category='theme')
+
+
+
+
+# Changes handlers
 
 class CatalogueHandler(BaseHandler):
 
@@ -21,11 +275,13 @@ class CatalogueHandler(BaseHandler):
     @staticmethod
     def until(t=None):
         """ Returns time suitable for use as upper time boundary for check.
-        
-            Defaults to 'five minutes ago' to avoid issues with time between
-            change stamp set and model save.
+
+            Used to avoid issues with time between setting the change stamp
+            and actually saving the model in database.
             Cuts the microsecond part to avoid issues with DBs where time has
             more precision.
+
+            :param datetime t: manually sets the upper boundary
 
         """
         # set to five minutes ago, to avoid concurrency issues

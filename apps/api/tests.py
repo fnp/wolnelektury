@@ -60,7 +60,6 @@ class BookChangesTests(ApiTest):
 
     def test_shelf(self):
         changed_at = self.book.changed_at
-        print changed_at
 
         # putting on a shelf should not update changed_at
         shelf = Tag.objects.create(category='set', slug='shelf')
@@ -90,3 +89,46 @@ class TagChangesTests(ApiTest):
         changes = json.loads(self.client.get('/api/tag_changes/0.json').content)
         self.assertEqual(len(changes), 1,
                          'Empty or deleted tag should disappear.')
+
+
+
+class BookTests(TestCase):
+
+    def setUp(self):
+        self.tag = Tag.objects.create(category='author', slug='joe')
+        self.book = Book.objects.create(title='A Book', slug='a-book')
+        self.book_tagged = Book.objects.create(title='Tagged Book', slug='tagged-book')
+        self.book_tagged.tags = [self.tag]
+        self.book_tagged.save()
+
+    def test_book_list(self):
+        books = json.loads(self.client.get('/api/books/').content)
+        self.assertEqual(len(books), 2,
+                         'Wrong book list.')
+
+    def test_tagged_books(self):
+        books = json.loads(self.client.get('/api/authors/joe/books/').content)
+
+        self.assertEqual([b['title'] for b in books], [self.book_tagged.title],
+                        'Wrong tagged book list.')
+
+    def test_detail(self):
+        book = json.loads(self.client.get('/api/books/a-book/').content)
+        self.assertEqual(book['title'], self.book.title,
+                        'Wrong book details.')
+
+
+class TagTests(TestCase):
+
+    def setUp(self):
+        self.tag = Tag.objects.create(category='author', slug='joe', name='Joe')
+
+    def test_tag_list(self):
+        tags = json.loads(self.client.get('/api/authors/').content)
+        self.assertEqual(len(tags), 1,
+                        'Wrong tag list.')
+
+    def test_tag_detail(self):
+        tag = json.loads(self.client.get('/api/authors/joe/').content)
+        self.assertEqual(tag['name'], self.tag.name,
+                        'Wrong tag details.')
