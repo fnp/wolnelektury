@@ -14,7 +14,7 @@ from django.conf import settings
 from catalogue.models import Book, Tag
 
 # extract text from text file
-re_text = re_text = re.compile(r'\n{3,}(.*?)\n*-----\n', re.S).search
+re_text = re.compile(r'\n{3,}(.*?)\n*-----\n', re.S).search
 
 
 class Command(BaseCommand):
@@ -66,21 +66,22 @@ class Command(BaseCommand):
                     print self.style.NOTICE('%s has no TXT file' % book.slug)
                 skipped += 1
                 continue
-            with open(book.txt_file.path) as f:
-                m = re_text(f.read())
-                if not m:
-                    print self.style.ERROR("Unknown text format: %s" % book.slug)
-                    skipped += 1
-                    continue
+            f = open(book.txt_file.path)
+            m = re_text(f.read())
+            if not m:
+                print self.style.ERROR("Unknown text format: %s" % book.slug)
+                skipped += 1
+                continue
 
-                processed += 1
-                last_word = ''
-                text = unicode(m.group(1), 'utf-8').lower()
-                for letter in text:
-                    mydict = lesmianator.setdefault(last_word, {})
-                    myval = mydict.setdefault(letter, 0)
-                    mydict[letter] += 1
-                    last_word = last_word[-2:] + letter
+            processed += 1
+            last_word = ''
+            text = unicode(m.group(1), 'utf-8').lower()
+            for letter in text:
+                mydict = lesmianator.setdefault(last_word, {})
+                myval = mydict.setdefault(letter, 0)
+                mydict[letter] += 1
+                last_word = last_word[-2:] + letter
+            f.close()
 
         if not processed:
             if skipped:

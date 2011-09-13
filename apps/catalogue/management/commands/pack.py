@@ -53,7 +53,7 @@ class Command(BaseCommand):
         if exclude:
             books = [book for book in books if book.slug not in exclude.split(',')]
 
-        archive = zipfile.ZipFile(path, 'w')
+        archive = zipfile.ZipFile(path, 'w', zipfile.ZIP_DEFLATED)
 
         processed = skipped = 0
         for book in books:

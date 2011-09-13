@@ -47,46 +47,53 @@ class Poem(models.Model):
     def __unicode__(self):
         return "%s (%s...)" % (self.slug, self.text[:20])
 
+    @staticmethod
+    def choose_letter(word, continuations):
+        if word not in continuations:
+            return u'\n'
+
+        choices = sum((continuations[word][letter]
+                       for letter in continuations[word]))
+        r = randint(0, choices - 1)
+
+        for letter in continuations[word]:
+            r -= continuations[word][letter]
+            if r < 0:
+                return letter
+
     @classmethod
-    def write(cls, continuations=None, length=3, maxlen=1000):
-        def choose_word(word, continuations):
-            try:
-                choices = sum((continuations[word][post] for post in continuations[word]))
-                r = randint(0, choices - 1)
-
-                for post in continuations[word]:
-                    r -= continuations[word][post]
-                    if r < 0:
-                        return post
-            except KeyError:
-                return ''
-
-
+    def write(cls, continuations=None, length=3, min_lines=2, maxlen=1000):
         if continuations is None:
             continuations = cls.global_dictionary
+        if not continuations:
+            return ''
 
         letters = []
         word = u''
-        empty = -10
-        lines = 0
-        if not continuations:
-            maxlen = 0
-        # want at least two lines, but let Lesmianator end his stanzas
-        while (empty < 2 or lines < 2) and maxlen:
-            letter = choose_word(word, continuations)
+
+        finished_stanza_verses = 0
+        current_stanza_verses = 0
+        verse_start = True
+
+        char_count = 0
+
+        # do `min_lines' non-empty verses and then stop,
+        # but let Lesmianator finish his last stanza.
+        while finished_stanza_verses < min_lines and char_count < maxlen:
+            letter = cls.choose_letter(word, continuations)
             letters.append(letter)
-            word = word[-length+1:] + letter
+            word = word[-length + 1:] + letter
+            char_count += 1
+
             if letter == u'\n':
-                # count non-empty lines
-                if empty == 0:
-                    lines += 1
-                # 
-                if lines >= 2:
-                    empty += 1
-                lines += 1
+                if verse_start:
+                    finished_stanza_verses += current_stanza_verses
+                    current_stanza_verses = 0
+                else:
+                    current_stanza_verses += 1
+                    verse_start = True
             else:
-                empty = 0
-            maxlen -= 1
+                verse_start = False
 
         return ''.join(letters).strip()
 
