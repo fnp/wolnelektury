@@ -25,7 +25,8 @@ def notes_from_book(sender, **kwargs):
     if sender.html_file:
         for anchor, text_str, html_str in html.extract_annotations(sender.html_file.path):
             Note.objects.create(book=sender, anchor=anchor,
-                               html=html_str, sort_key=sortify(text_str)[:128])
+                               html=html_str, 
+                               sort_key=sortify(text_str).strip()[:128])
 
 # always re-extract notes after making a HTML in a Book
 Book.html_built.connect(notes_from_book)

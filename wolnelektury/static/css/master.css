@@ -1180,3 +1180,7 @@ div.shown-tags p, div.all-tags p {
 .dictionary-note-source {
     margin-top: -1em;
 }
+
+#footnotes .pagination {
+    margin-top: 1em;
+}

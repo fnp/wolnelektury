@@ -8,9 +8,11 @@ from dictionary.models import Note
 
 def letter_notes(request, letter=None):
     form = SearchForm()
-    letters = [chr(a) for a in range(ord('a'), ord('z')+1)]
+    letters = ["0-9"] + [chr(a) for a in range(ord('a'), ord('z')+1)]
     objects = Note.objects.all()
-    if letter:
+    if letter == "0-9":
+        objects = objects.filter(sort_key__regex=r"^[0-9]")
+    elif letter:
         objects = objects.filter(sort_key__startswith=letter)
 
     return object_list(request, queryset=objects, extra_context=locals())
