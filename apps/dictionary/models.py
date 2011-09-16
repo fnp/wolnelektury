@@ -22,9 +22,10 @@ class Note(models.Model):
 
 def notes_from_book(sender, **kwargs):
     Note.objects.filter(book=sender).delete()
-    if sender.has_html_file:
+    if sender.html_file:
         for anchor, text_str, html_str in html.extract_annotations(sender.html_file.path):
             Note.objects.create(book=sender, anchor=anchor,
                                html=html_str, sort_key=sortify(text_str)[:128])
 
+# always re-extract notes after making a HTML in a Book
 Book.html_built.connect(notes_from_book)
