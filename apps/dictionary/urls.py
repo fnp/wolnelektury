@@ -3,12 +3,10 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls.defaults import *
-from dictionary.models import Note
 
 
-all_notes = Note.objects.all()
-
-urlpatterns = patterns('django.views.generic.list_detail',
-    url(r'^$', 'object_list', {'queryset': all_notes}),
+urlpatterns = patterns('dictionary.views',
+    url(r'^$', 'letter_notes', name='dictionary_notes'),
+    url(r'(?P<letter>[a-z])/$', 'letter_notes', name='dictionary_notes'),
 )
 

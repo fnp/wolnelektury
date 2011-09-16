@@ -1,8 +1,35 @@
 {% extends "base.html" %}
-{% load pagination_tags %}
+{% load i18n pagination_tags %}
 
 {% block body %}
+    <h1>Przypisy</h1>
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{%trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to the main page" %}</a></p>
+    </form>
 
+
+
+
+<p>
+{% trans "By first letter" %}:
+{% if letter %}
+    <a href='{% url dictionary_notes %}'>{% trans "all" %}</a>
+{% else %}
+    <strong>{% trans "all" %}</strong>
+{% endif %}
+
+{% for let in letters %}
+    |
+    {% if let == letter %}
+        <strong>{{ let|upper }}</strong>
+    {% else %}
+        <a href='{% url dictionary_notes let %}'>{{ let|upper }}</a>
+    {% endif %}
+{% endfor %}
+</p>
+<hr/>
+
+{% if object_list %}
 
 {% autopaginate object_list 100 %}
 {% paginate %}
@@ -15,5 +42,7 @@
     </div>
 {% endfor %}
 {% paginate %}
+
+{% endif %}
 
 {% endblock %}
