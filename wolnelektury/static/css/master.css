@@ -56,8 +56,6 @@ h3 {
 }
 
 em {
-    font-style: normal;
-    background-color: #F5DC7D;
 }
 
 hr {
@@ -1169,4 +1167,11 @@ div.shown-tags p, div.all-tags p {
 
 #presentation-frame {
     border: 0px none white;
+}
+
+
+/* dictionary */
+
+.dictionary-note-source {
+    margin-top: -1em;
 }

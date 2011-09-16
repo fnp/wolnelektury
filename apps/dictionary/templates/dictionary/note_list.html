@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load pagination_tags %}
+
+{% block body %}
+
+
+{% autopaginate object_list 100 %}
+{% paginate %}
+{% for obj in object_list %}
+    <div class='dictionary-note'>
+    {{ obj.html|safe }}
+    <div class='dictionary-note-source'>
+    (<a href='{% url book_text obj.book.slug %}#{{ obj.anchor }}'>{{ obj.book.pretty_title }}</a>)
+    </div>
+    </div>
+{% endfor %}
+{% paginate %}
+
+{% endblock %}

@@ -6,6 +6,7 @@ from datetime import datetime
 
 from django.db import models
 from django.db.models import permalink, Q
+import django.dispatch
 from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
@@ -301,6 +302,8 @@ class Book(models.Model):
     objects  = models.Manager()
     tagged   = managers.ModelTaggedItemManager(Tag)
     tags     = managers.TagDescriptor(Tag)
+
+    html_built = django.dispatch.Signal()
 
     class AlreadyExists(Exception):
         pass
@@ -611,6 +614,7 @@ class Book(models.Model):
                 new_fragment.save()
                 new_fragment.tags = set(meta_tags + themes + [book_tag] + ancestor_tags)
             self.save()
+            self.html_built.send(sender=self)
             return True
         return False
 

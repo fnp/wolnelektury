@@ -133,6 +133,7 @@ INSTALLED_APPS = [
     'compress',
     'modeltranslation',
     'catalogue',
+    'dictionary',
     'lessons',
     'piston',
     'api',
