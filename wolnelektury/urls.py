@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^sugestia/', include('suggest.urls')),
     url(r'^lesmianator/', include('lesmianator.urls')),
     url(r'^przypisy/', include('dictionary.urls')),
+    url(r'^statystyka/', include('stats.urls')),
 
     # Static pages
     url(r'^mozesz-nam-pomoc/$', 'infopages.views.infopage', {'slug': 'help_us'}, name='help_us'),

@@ -87,10 +87,15 @@ hr {
 #header #logo img {
     margin-bottom: -1.25em;
 }
-#header #logo a {
+#header a.logo {
     display:block;
     color: #777;
 }
+
+#tagline {
+    position: absolute;
+}
+
 #logo a:hover {
     text-decoration: none;
 }

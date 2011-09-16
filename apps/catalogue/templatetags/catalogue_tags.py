@@ -14,6 +14,8 @@ from django.db.models import Q
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
+from catalogue.forms import SearchForm
+
 
 register = template.Library()
 
@@ -166,9 +168,12 @@ def authentication_form():
     return LoginForm(prefix='login').as_ul()
 
 
+@register.inclusion_tag('catalogue/search_form.html')
+def search_form():
+    return {"form": SearchForm()}
+
 @register.inclusion_tag('catalogue/breadcrumbs.html')
 def breadcrumbs(tags, search_form=True):
-    from catalogue.forms import SearchForm
     context = {'tag_list': tags}
     try:
         max_tag_list = settings.MAX_TAG_LIST

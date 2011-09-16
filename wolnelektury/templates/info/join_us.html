@@ -1,8 +1,19 @@
 {% load i18n %}
-<p>{% blocktrans %}We have over 1200 works published in Wolne Lektury!
+{% load stats %}
+
+{% count_books_nonempty book_count %}
+<p>
+{% blocktrans count book_count as c %}
+We have {{c}} work published in Wolne Lektury!
 Help us expand the library and set new readings free by
 <a href="http://nowoczesnapolska.org.pl/wesprzyj_nas/">making a donation
-or transferring 1% of your income tax</a>.{% endblocktrans %}
+or transferring 1&#37; of your income tax</a>.
+{% plural %}
+We have {{c}} works published in Wolne Lektury!
+Help us expand the library and set new readings free by
+<a href="http://nowoczesnapolska.org.pl/wesprzyj_nas/">making a donation
+or transferring 1&#37; of your income tax</a>.
+{% endblocktrans %}
 {% comment %}<a href='{}'>{% trans "More..." %}</a>{% endcomment %}</p>
 
 <p>{% blocktrans %}Become an editor of Wolne Lektury! Find out if

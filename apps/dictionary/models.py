@@ -25,6 +25,6 @@ def notes_from_book(sender, **kwargs):
     if sender.has_html_file:
         for anchor, text_str, html_str in html.extract_annotations(sender.html_file.path):
             Note.objects.create(book=sender, anchor=anchor,
-                               html=html_str, sort_key=sortify(text_str))
+                               html=html_str, sort_key=sortify(text_str)[:128])
 
 Book.html_built.connect(notes_from_book)

@@ -28,7 +28,9 @@
         </div>
         <div id="header">
             <div id="logo">
-                <a href="/"><img src="{% block logo_url %}{{ STATIC_URL }}img/logo-bez.png{% endblock %}" alt="WolneLektury.pl" /><br/>szkolna biblioteka internetowa</a>
+                <a class="logo" href="/"><img src="{% block logo_url %}{{ STATIC_URL }}img/logo-bez.png{% endblock %}" alt="WolneLektury.pl" />
+                <br/>szkolna biblioteka internetowa</a>
+                {% block tagline %}{% endblock %}
             </div>
             <div id="user-info" style="display:none">
                 {% if user.is_authenticated %}

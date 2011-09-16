@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 {% load i18n pagination_tags %}
+{% load catalogue_tags %}
 
 {% block body %}
     <h1>Przypisy</h1>
-    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{%trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to the main page" %}</a></p>
-    </form>
-
-
+    {% search_form %}
 
 
 <p>

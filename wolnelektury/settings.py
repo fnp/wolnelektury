@@ -115,35 +115,38 @@ LOGIN_URL = '/uzytkownicy/zaloguj/'
 LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
-    # included
+    # external
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
-
-    # external
+    'pagination',
+    'piston',
+    'piwik.django',
+    'rosetta',
     'south',
     'sorl.thumbnail',
-    'sponsors',
-    'newtagging',
-    'pagination',
-    'chunks',
+
+    # included
     'compress',
     'modeltranslation',
-    'catalogue',
-    'dictionary',
-    'lessons',
-    'piston',
+
+    # our
     'api',
-    'rosetta',
+    'catalogue',
+    'chunks',
+    'dictionary',
     'infopages',
-    'suggest',
     'lesmianator',
+    'lessons',
+    'newtagging',
     'opds',
     'pdcounter',
-    'piwik.django',
+    'sponsors',
+    'stats',
+    'suggest',
 ]
 
 #CACHE_BACKEND = 'locmem:///?max_entries=3000'

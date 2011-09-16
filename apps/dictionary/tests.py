@@ -22,7 +22,7 @@ class DictionaryTests(WLTestCase):
             epoch="X-Epoch",
         )
 
-    def test_book_with_fragment(self):
+    def test_book_with_footnote(self):
         BOOK_TEXT = """<utwor>
         <opowiadanie>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
