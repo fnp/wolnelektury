@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import feedparser
+from functools import wraps
 import datetime
 
 from django import template
@@ -11,17 +12,6 @@ from catalogue.models import Book, BookMedia
 
 
 register = template.Library()
-
-#~ 
-#~ @register.tag(name='captureas')
-#~ def do_captureas(parser, token):
-    #~ try:
-        #~ tag_name, args = token.contents.split(None, 1)
-    #~ except ValueError:
-        #~ raise template.TemplateSyntaxError("'captureas' node requires a variable name.")
-    #~ nodelist = parser.parse(('endcaptureas',))
-    #~ parser.delete_first_token()
-    #~ return CaptureasNode(nodelist, args)
 
 class StatsNode(template.Node):
     def __init__(self, value, varname=None):
@@ -37,24 +27,36 @@ class StatsNode(template.Node):
             return self.value
 
 
+def register_counter(f):
+    """Turns a simple counting function into a registered counter tag.
 
-#~ @register.tag
-#~ def count_books_all(*args, **kwargs):
-    #~ print args, kwargs
-    #~ return StatsNode(Book.objects.all().count())
+    You can run a counter tag as a simple {% tag_name %} tag, or
+    as {% tag_name var_name %} to store the result in a variable.
 
-@register.tag
-def count_books_nonempty(parser, token):
-    try:
-        tag_name, args = token.contents.split(None, 1)
-    except ValueError:
-        args = None
-    return StatsNode(Book.objects.exclude(html_file='').count(), args)
+    """
+    @wraps(f)
+    def wrapped(parser, token):
+        try:
+            tag_name, args = token.contents.split(None, 1)
+        except ValueError:
+            args = None
+        return StatsNode(f(), args)
 
-#~ @register.simple_tag
-#~ def count_books_empty():
-    #~ return Book.objects.exclude(html_file='').count()
-#~ 
-#~ @register.simple_tag
-#~ def count_books_root():
-    #~ return Book.objects.filter(parent=None).count()
+    return register.tag(wrapped)
+
+
+@register_counter
+def count_books_all():
+    return Book.objects.all().count()
+
+@register_counter
+def count_books_nonempty():
+    return Book.objects.exclude(html_file='').count()
+
+@register_counter
+def count_books_empty():
+    return Book.objects.filter(html_file='').count()
+
+@register_counter
+def count_books_root():
+    return Book.objects.filter(parent=None).count()
