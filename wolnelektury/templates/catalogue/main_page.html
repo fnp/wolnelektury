@@ -2,9 +2,6 @@
 {% load i18n %}
 {% load catalogue_tags chunks cache stats %}
 
-{# doodle #}
-{% block logo_url %}{{ STATIC_URL }}img/doodle/20110908-logo.png{% endblock %}
-
 
 {% block tagline %}
 <div id='tagline'>
@@ -29,12 +26,6 @@ a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.pl'>free license</
         {% chunk "site-description" %}
     </div>
     <div class="clearboth"></div>
-        {# doodle #}
-        <div style="position:relative;">
-            <a href="https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi" target="_blank">
-                <img src="{{ STATIC_URL }}img/doodle/20110908-android.png" style="position:absolute; top:-100px; left: 320px; margin-top: .5em;" />
-            </a>
-        </div>
     <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
         <p>{{ form.q }} {{ form.tags }} <input type="submit" value="{% trans "Search" %}" />
             <strong>{% trans "or" %}</strong> {% trans "see" %}: 

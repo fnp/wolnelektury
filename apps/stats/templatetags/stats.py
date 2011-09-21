@@ -19,7 +19,6 @@ class StatsNode(template.Node):
         self.varname = varname
 
     def render(self, context):
-        print self.varname
         if self.varname:
             context[self.varname] = self.value
             return ''
