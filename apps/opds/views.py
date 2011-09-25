@@ -4,6 +4,7 @@
 #
 from base64 import b64encode
 import os.path
+from urlparse import urljoin
 
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
@@ -58,7 +59,7 @@ _root_feeds = (
 
 
 def full_url(url):
-    return "http://%s%s" % (Site.objects.get_current().domain, url)
+    return urljoin("http://%s" % Site.objects.get_current().domain, url)
 
 
 class OPDSFeed(Atom1Feed):
