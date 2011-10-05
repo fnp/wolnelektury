@@ -10,6 +10,8 @@ from django.core.files.uploadedfile import UploadedFile
 from django.utils.hashcompat import sha_constructor
 from django.conf import settings
 
+from librarian import DocProvider
+
 
 # Use the system (hardware-based) random number generator if it exists.
 if hasattr(random, 'SystemRandom'):
@@ -44,3 +46,16 @@ class ExistingFile(UploadedFile):
 
     def close(self):
         pass
+
+
+class BookImportDocProvider(DocProvider):
+    """ used for joined EPUBs """
+
+    def __init__(self, book):
+        self.book = book
+        
+    def by_slug(self, slug):
+        if slug == self.book.slug:
+            return self.book.xml_file
+        else:
+            return Book.objects.get(slug=slug).xml_file

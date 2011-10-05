@@ -22,14 +22,14 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import ExistingFile
+from catalogue.utils import ExistingFile, BookImportDocProvider
 
 from librarian import dcparser, html, epub, NoDublinCore
 import mutagen
 from mutagen import id3
 from slughifi import slughifi
 from sortify import sortify
-
+from os import unlink
 
 TAG_CATEGORIES = (
     ('author', _('author')),
@@ -50,6 +50,7 @@ MEDIA_FORMATS = (
 
 # not quite, but Django wants you to set a timeout
 CACHE_FOREVER = 2419200  # 28 days
+
 
 class TagSubcategoryManager(models.Manager):
     def __init__(self, subcategory):
@@ -295,9 +296,9 @@ class Book(models.Model):
     xml_file      = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
     html_file     = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
     pdf_file      = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
-    epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)    
-    txt_file      = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)        
-
+    epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)
+    txt_file      = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
+    
     parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
     objects  = models.Manager()
     tagged   = managers.ModelTaggedItemManager(Tag)
@@ -503,34 +504,49 @@ class Book(models.Model):
         return bool(self.has_media("ogg"))
     has_ogg_file.short_description = 'OGG'
     has_ogg_file.boolean = True
-    
+
     def has_daisy_file(self):
         return bool(self.has_media("daisy"))
     has_daisy_file.short_description = 'DAISY'
-    has_daisy_file.boolean = True    
-    
+    has_daisy_file.boolean = True
+
+    def build_pdf(self):
+        """ (Re)builds the pdf file.
+
+        """
+        from librarian import pdf, ParseError
+        from tempfile import NamedTemporaryFile
+        import os
+
+        try:
+            path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
+            try:
+                pdf_file = NamedTemporaryFile(delete=False)
+
+                pdf.transform(BookImportDocProvider(self),
+                          file_path=str(self.xml_file.path),
+                          output_file=pdf_file,
+                          )
+
+                self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
+            finally:
+                unlink(pdf_file.name)
+
+        except ParseError, e:
+            print '%(file)s:%(name)s:%(message)s; use -v to see more output' % {
+                'file': self.xml_file.path,
+                'name': e.__class__.__name__,
+                'message': e
+                }
+
     def build_epub(self, remove_descendants=True):
         """ (Re)builds the epub file.
             If book has a parent, does nothing.
             Unless remove_descendants is False, descendants' epubs are removed.
         """
-    
         from StringIO import StringIO
         from hashlib import sha1
         from django.core.files.base import ContentFile
-        from librarian import DocProvider
-
-        class BookImportDocProvider(DocProvider):
-            """ used for joined EPUBs """
-
-            def __init__(self, book):
-                self.book = book
-
-            def by_slug(self, slug):
-                if slug == self.book.slug:
-                    return self.book.xml_file
-                else:
-                    return Book.objects.get(slug=slug).xml_file
 
         if self.parent:
             # don't need an epub
@@ -633,7 +649,7 @@ class Book(models.Model):
             xml_file.close()
 
     @classmethod
-    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True):
+    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True, build_pdf=True):
         import re
 
         # check for parts before we do anything
@@ -705,6 +721,9 @@ class Book(models.Model):
 
         if not settings.NO_BUILD_EPUB and build_epub:
             book.root_ancestor.build_epub()
+
+        if not settings.NO_BUILD_PDF and build_pdf:
+            book.root_ancestor.build_pdf()
 
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments

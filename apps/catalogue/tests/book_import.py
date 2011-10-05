@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.core.files.base import ContentFile
+from __future__ import with_statement
+
+from django.core.files.base import ContentFile, File
 from catalogue.test_utils import *
 from catalogue import models
 
 from nose.tools import raises
-
+import tempfile
+from os import unlink,path
 
 class BookImportLogicTests(WLTestCase):
 
@@ -228,3 +231,37 @@ class ChildImportTests(WLTestCase):
 
         self.assertEqual(['Kot'], [tag.name for tag in themes],
                         'wrong related theme list')
+
+
+class BookImportGenerateTest(WLTestCase):
+    def setUp(self):
+        WLTestCase.setUp(self)
+        self.book_info = BookInfoStub(
+            url=u"http://wolnelektury.pl/example/default-book",
+            about=u"http://wolnelektury.pl/example/URI/default_book",
+            title=u"Default Book",
+            author=PersonStub(("Jim",), "Lazy"),
+            kind="X-Kind",
+            genre="X-Genre",
+            epoch="X-Epoch",
+        )
+
+        self.expected_tags = [
+           ('author', 'jim-lazy'),
+           ('genre', 'x-genre'),
+           ('epoch', 'x-epoch'),
+           ('kind', 'x-kind'),
+        ]
+        self.expected_tags.sort()
+
+    def test_gen_pdf(self):
+        input = open(path.dirname(__file__) + '/but-w-butonierce-but-w-butonierce.xml')
+        book = models.Book.from_text_and_meta(File(input), self.book_info, overwrite=True)
+        book.build_pdf()
+        self.assertTrue(path.exists(book.pdf_file.path))
+
+    def test_gen_pdf_child(self):
+        input = open(path.dirname(__file__) + "/fraszka-do-anusie.xml")
+        book = models.Book.from_text_and_meta(File(input), self.book_info, overwrite=True)
+        book.build_pdf()
+        self.assertTrue(path.exists(book.pdf_file.path))
