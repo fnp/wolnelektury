@@ -18,6 +18,7 @@ from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 from catalogue.views import books_starting_with
 
+from opds.utils import piwik_track
 
 _root_feeds = (
     {
@@ -186,7 +187,7 @@ class AcquisitionFeed(Feed):
     def item_enclosure_length(self, book):
         return book.root_ancestor.epub_file.size
 
-
+@piwik_track
 class RootFeed(Feed):
     feed_type = OPDSFeed
     title = u'Wolne Lektury'
@@ -207,7 +208,7 @@ class RootFeed(Feed):
     def item_description(self, item):
         return item['description']
 
-
+@piwik_track
 class ByCategoryFeed(Feed):
     feed_type = OPDSFeed
     link = u'http://www.wolnelektury.pl/'
@@ -239,7 +240,7 @@ class ByCategoryFeed(Feed):
     def item_description(self):
         return u''
 
-
+@piwik_track
 class ByTagFeed(AcquisitionFeed):
     def link(self, tag):
         return tag.get_absolute_url()
@@ -263,7 +264,8 @@ class ByTagFeed(AcquisitionFeed):
         return books
 
 
-#@factory_decorator(logged_in_or_basicauth())
+@factory_decorator(logged_in_or_basicauth())
+@piwik_track
 class UserFeed(Feed):
     feed_type = OPDSFeed
     link = u'http://www.wolnelektury.pl/'
@@ -290,10 +292,11 @@ class UserFeed(Feed):
         return u''
 
 # no class decorators in python 2.5
-UserFeed = factory_decorator(logged_in_or_basicauth())(UserFeed)
+#UserFeed = factory_decorator(logged_in_or_basicauth())(UserFeed)
 
 
-#@factory_decorator(logged_in_or_basicauth())
+@factory_decorator(logged_in_or_basicauth())
+@piwik_track
 class UserSetFeed(AcquisitionFeed):
     def link(self, tag):
         return tag.get_absolute_url()
@@ -311,9 +314,9 @@ class UserSetFeed(AcquisitionFeed):
         return Book.tagged.with_any([tag])
 
 # no class decorators in python 2.5
-UserSetFeed = factory_decorator(logged_in_or_basicauth())(UserSetFeed)
+#UserSetFeed = factory_decorator(logged_in_or_basicauth())(UserSetFeed)
 
-
+@piwik_track
 class SearchFeed(AcquisitionFeed):
     description = u"Wyniki wyszukiwania na stronie WolneLektury.pl"
     title = u"Wyniki wyszukiwania"
