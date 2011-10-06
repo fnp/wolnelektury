@@ -219,6 +219,9 @@ MAX_TAG_LIST = 6
 
 NO_BUILD_EPUB = False
 NO_BUILD_TXT = False
+NO_BUILD_PDF = False
+
+
 
 # Load localsettings, if they exist
 try:
