@@ -24,7 +24,7 @@ class Command(BaseCommand):
             help='Don\'t build EPUB file'),
         make_option('-T', '--no-build-txt', action='store_false', dest='build_txt', default=True,
             help='Don\'t build TXT file'),
-        make_option('-T', '--no-build-pdf', action='store_false', dest='build_pdf', default=True,
+        make_option('-P', '--no-build-pdf', action='store_false', dest='build_pdf', default=True,
             help='Don\'t build PDF file'),
         make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
             help='Wait until specified time (Y-M-D h:m:s)'),
