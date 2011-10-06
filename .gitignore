@@ -30,3 +30,5 @@ thumbs.db
 .pydevproject
 .tmp_*
 
+# Tags file
+TAGS
