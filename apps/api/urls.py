@@ -3,11 +3,11 @@ from django.conf.urls.defaults import *
 from piston.resource import Resource
 from piston.authentication import OAuthAuthentication
 
-from api.handlers import BookHandler
+from api.handlers import BooksHandler
 
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
-book_resource = Resource(handler=BookHandler, authentication=auth)
+book_resource = Resource(handler=BooksHandler, authentication=auth)
 
 
 urlpatterns = patterns('',  
