@@ -514,30 +514,23 @@ class Book(models.Model):
         """ (Re)builds the pdf file.
 
         """
-        from librarian import pdf, ParseError
+        from librarian import pdf
         from tempfile import NamedTemporaryFile
         import os
 
+        path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
         try:
-            path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
-            try:
-                pdf_file = NamedTemporaryFile(delete=False)
+            pdf_file = NamedTemporaryFile(delete=False)
 
-                pdf.transform(BookImportDocProvider(self),
-                          file_path=str(self.xml_file.path),
-                          output_file=pdf_file,
-                          )
+            pdf.transform(BookImportDocProvider(self),
+                      file_path=str(self.xml_file.path),
+                      output_file=pdf_file,
+                      )
 
-                self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
-            finally:
-                unlink(pdf_file.name)
+            self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
+        finally:
+            unlink(pdf_file.name)
 
-        except ParseError, e:
-            print '%(file)s:%(name)s:%(message)s; use -v to see more output' % {
-                'file': self.xml_file.path,
-                'name': e.__class__.__name__,
-                'message': e
-                }
 
     def build_epub(self, remove_descendants=True):
         """ (Re)builds the epub file.
