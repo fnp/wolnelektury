@@ -110,7 +110,7 @@ TEMPLATE_DIRS = [
     path.join(PROJECT_DIR, 'templates'),
 ]
 
-LOGIN_URL = '/uzytkownicy/zaloguj/'
+LOGIN_URL = '/uzytkownicy/login/'
 
 LOGIN_REDIRECT_URL = '/'
 

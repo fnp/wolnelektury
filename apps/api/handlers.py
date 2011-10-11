@@ -3,15 +3,17 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 
 from datetime import datetime, timedelta
+import json
 
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
-from piston.handler import BaseHandler
+from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 
 from api.helpers import timestamp
 from api.models import Deleted
+from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment
 
 
@@ -103,7 +105,7 @@ class BookDetailHandler(BaseHandler):
             return rc.NOT_FOUND
 
 
-class BooksHandler(BaseHandler):
+class AnonymousBooksHandler(AnonymousBaseHandler):
     """ Main handler for Book objects.
 
     Responsible for lists of Book objects
@@ -151,12 +153,32 @@ class BooksHandler(BaseHandler):
         else:
             return rc.NOT_FOUND
 
+    def create(self, request, tags, top_level=False):
+        return 'aaa'
+
     @classmethod
     def media(self, book):
         """ Returns all media for a book. """
 
         return book.media.all()
 
+
+class BooksHandler(BaseHandler):
+    model = Book
+    fields = ('slug', 'title')
+    anonymous = AnonymousBooksHandler
+
+    def create(self, request, tags, top_level=False):
+        if not request.user.has_perm('catalogue.add_book'):
+            return rc.FORBIDDEN
+
+        data = json.loads(request.POST.get('data'))
+        form = BookImportForm(data)
+        if form.is_valid():
+            form.save()
+            return rc.CREATED
+        else:
+            return rc.NOT_FOUND
 
 # add categorized tags fields for Book
 def _tags_getter(category):
