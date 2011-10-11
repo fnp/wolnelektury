@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
+from piston.authentication import OAuthAuthentication
 from piston.resource import Resource
 
 from api import handlers
 
 
+auth = OAuthAuthentication(realm="Wolne Lektury")
+
 book_changes_resource = Resource(handler=handlers.BookChangesHandler)
 tag_changes_resource = Resource(handler=handlers.TagChangesHandler)
 changes_resource = Resource(handler=handlers.ChangesHandler)
 
-book_list_resource = Resource(handler=handlers.BooksHandler)
+book_list_resource = Resource(handler=handlers.BooksHandler, authentication=auth)
+#book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 
 tag_list_resource = Resource(handler=handlers.TagsHandler)
@@ -19,7 +23,13 @@ fragment_resource = Resource(handler=handlers.FragmentDetailHandler)
 fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    'piston.authentication',
+    url(r'^oauth/request_token/$', 'oauth_request_token'),
+    url(r'^oauth/authorize/$', 'oauth_user_auth'),
+    url(r'^oauth/access_token/$', 'oauth_access_token'),
+
+) + patterns('',
     url(r'^$', 'django.views.generic.simple.direct_to_template',
             {'template': 'api/main.html'}),
 
