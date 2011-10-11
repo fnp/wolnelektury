@@ -1,15 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-  <head>
-    <title>Authorize Token</title>
-  </head>
-  <body>
-    <h1>Authorize Token</h1>
+{% extends "simple_base.html" %}
+{% load i18n %}
+
+{% block "title" %}{% trans "Authorize access to Wolne Lektury" %}{% endblock %}
+
+{% block "body" %}
+    <h1>{% trans "Authorize access to Wolne Lektury" %}</h1>
+
+    <p>{% blocktrans %}Confirm to authorize access to Wolne Lektury as user <strong>{{ user}}</strong>.{% endblocktrans %}</p>
 
     <form action="{% url piston.authentication.oauth_user_auth %}" method="POST">
-      {{ form.as_table }}
+      {{ form.as_p }}
       <button type="submit">Confirm</button>
     </form>
-
-  </body>
-</html>
+{% endblock %}

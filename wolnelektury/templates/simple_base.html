@@ -1,0 +1,24 @@
+<!doctype html>
+{% load compressed %}
+<html>
+<head>
+    <title>{% block "title" %}{% endblock %}</title>
+    <meta charset="utf-8" />
+
+    <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    {% compressed_css "simple" %}
+</head>
+
+<body>
+
+
+<img id="logo" src="{{ STATIC_URL }}img/logo-bez.png" alt="WolneLektury.pl" />
+<div id="body">
+
+{% block "body" %}{% endblock %}
+
+</div>
+
+</body>
+</html>

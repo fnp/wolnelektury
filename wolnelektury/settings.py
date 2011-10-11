@@ -162,7 +162,11 @@ COMPRESS_CSS = {
     'book': {
         'source_filenames': ('css/master.book.css',),
         'output_filename': 'css/book.min?.css',
-    }
+    },
+    'simple': {
+        'source_filenames': ('css/simple.css',),
+        'output_filename': 'css/simple.min?.css',
+    },
 }
 
 COMPRESS_JS = {
