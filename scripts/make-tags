@@ -3,6 +3,7 @@
 ROOT=$(git rev-parse --show-toplevel)
 
 find $ROOT -name '*.py' | xargs etags -o ${ROOT}/TAGS
+find $ROOT/../librarian -name '*.py' | xargs etags -a -o ${ROOT}/TAGS
 if [ -n "$VIRTUAL_ENV" ]; then
   find ${VIRTUAL_ENV}/lib -name '*.py' |xargs etags -a -o ${ROOT}/TAGS
 else
