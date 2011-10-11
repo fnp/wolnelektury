@@ -283,7 +283,7 @@ class BookMedia(models.Model):
 
 class Book(models.Model):
     title         = models.CharField(_('title'), max_length=120)
-    sort_key = models.CharField(_('sort_key'), max_length=120, db_index=True, editable=False)
+    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     slug          = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     description   = models.TextField(_('description'), blank=True)
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)

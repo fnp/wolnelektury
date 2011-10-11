@@ -272,6 +272,7 @@ def book_detail(request, slug):
         tag.count = theme_counter[tag.pk]
 
     extra_info = book.get_extra_info_value()
+    hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
 
     projects = set()
     for m in book.media.filter(type='mp3'):

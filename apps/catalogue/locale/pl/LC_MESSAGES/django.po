@@ -2,257 +2,238 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 10:24+0000\n"
-"PO-Revision-Date: 2010-08-25 11:02\n"
-"Last-Translator: <radek.czajka@gmail.com>\n"
+"POT-Creation-Date: 2011-10-11 15:44+0200\n"
+"PO-Revision-Date: 2011-10-11 15:44+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 
-#: fields.py:47
+#: fields.py:48
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
 msgstr "Wprowadź prawidłową wartość JSON. Błąd: %s"
 
-#: forms.py:28
+#: forms.py:25
+msgid "Please supply an XML."
+msgstr "Proszę podać XML."
+
+#: forms.py:39
 msgid "title, author, theme/topic, epoch, kind, genre"
 msgstr "tytuł, autor, motyw/temat, epoka, rodzaj, gatunek"
 
-#: forms.py:45
+#: forms.py:56
 msgid "Shelves"
 msgstr "Półki"
 
-#: forms.py:58
+#: forms.py:69
 msgid "Name of the new shelf"
 msgstr "nazwa nowej półki"
 
-#: models.py:25 models.py:585
+#: models.py:35
 msgid "author"
 msgstr "autor"
 
-#: models.py:26
+#: models.py:36
 msgid "epoch"
 msgstr "epoka"
 
-#: models.py:27
+#: models.py:37
 msgid "kind"
 msgstr "rodzaj"
 
-#: models.py:28
+#: models.py:38
 msgid "genre"
 msgstr "gatunek"
 
-#: models.py:29
+#: models.py:39
 msgid "theme"
 msgstr "motyw"
 
-#: models.py:30
+#: models.py:40
 msgid "set"
 msgstr "półka"
 
-#: models.py:31 models.py:204
+#: models.py:41 models.py:314
 msgid "book"
 msgstr "książka"
 
 #: models.py:45
-msgid "name"
-msgstr "nazwa"
-
-#: models.py:46 models.py:170 models.py:587 models.py:612
-msgid "slug"
-msgstr ""
-
-#: models.py:47
-msgid "sort key"
-msgstr "klucz sortowania"
-
-#: models.py:48
-msgid "category"
-msgstr "kategoria"
-
-#: models.py:50 models.py:87 models.py:171 models.py:306
-msgid "description"
-msgstr "opis"
-
-#: models.py:51
-msgid "main page"
-msgstr "strona główna"
-
-#: models.py:51
-msgid "Show tag on main page"
-msgstr "Pokazuj tag na stronie głównej"
-
-#: models.py:54
-msgid "book count"
-msgstr "liczba książek"
-
-#: models.py:55
-msgid "year of death"
-msgstr "rok śmierci"
-
-#: models.py:71
-msgid "tag"
-msgstr "tag"
-
-#: models.py:72
-msgid "tags"
-msgstr "tagi"
-
-#: models.py:169 models.py:584
-msgid "title"
-msgstr "tytuł"
-
-#: models.py:172
-msgid "creation date"
-msgstr "data utworzenia"
-
-#: models.py:173
-msgid "short HTML"
-msgstr "krótki HTML"
-
-#: models.py:174
-msgid "parent number"
-msgstr "numer rodzica"
-
-#: models.py:175
-msgid "extra information"
-msgstr "dodatkowe informacje"
-
-#: models.py:181
-msgid "XML file"
-msgstr "Plik XML"
-
-#: models.py:182
-msgid "HTML file"
-msgstr "Plik HTML"
-
-#: models.py:183
-msgid "PDF file"
-msgstr "Plik PDF"
-
-#: models.py:184
-msgid "EPUB file"
-msgstr "Plik EPUB"
-
-#: models.py:185
 msgid "ODT file"
 msgstr "Plik ODT"
 
-#: models.py:186
-msgid "TXT file"
-msgstr "Plik TXT"
-
-#: models.py:187
+#: models.py:46
 msgid "MP3 file"
 msgstr "Plik MP3"
 
-#: models.py:188
+#: models.py:47
 msgid "OGG file"
 msgstr "Plik OGG"
 
+#: models.py:48
 msgid "DAISY file"
 msgstr "Plik DAISY"
 
-#: models.py:205
+#: models.py:65 models.py:198
+msgid "name"
+msgstr "nazwa"
+
+#: models.py:66 models.py:287 models.py:876
+msgid "slug"
+msgstr "slug"
+
+#: models.py:67 models.py:286
+msgid "sort key"
+msgstr "klucz sortowania"
+
+#: models.py:68
+msgid "category"
+msgstr "kategoria"
+
+#: models.py:70 models.py:112 models.py:288 models.py:469
+msgid "description"
+msgstr "opis"
+
+#: models.py:71
+msgid "main page"
+msgstr "strona główna"
+
+#: models.py:71
+msgid "Show tag on main page"
+msgstr "Pokazuj tag na stronie głównej"
+
+#: models.py:74
+msgid "book count"
+msgstr "liczba książek"
+
+#: models.py:78 models.py:79 models.py:200 models.py:289 models.py:290
+msgid "creation date"
+msgstr "data utworzenia"
+
+#: models.py:96
+msgid "tag"
+msgstr "tag"
+
+#: models.py:97
+msgid "tags"
+msgstr "tagi"
+
+#: models.py:197 models.py:877
+msgid "type"
+msgstr "typ"
+
+#: models.py:199
+msgid "file"
+msgstr "plik"
+
+#: models.py:201 models.py:292
+msgid "extra information"
+msgstr "dodatkowe informacje"
+
+#: models.py:210 models.py:211
+msgid "book media"
+msgstr "media książki"
+
+#: models.py:285
+msgid "title"
+msgstr "tytuł"
+
+#: models.py:291
+msgid "parent number"
+msgstr "numer rodzica"
+
+#: models.py:296
+msgid "XML file"
+msgstr "Plik XML"
+
+#: models.py:297
+msgid "HTML file"
+msgstr "Plik HTML"
+
+#: models.py:298
+msgid "PDF file"
+msgstr "Plik PDF"
+
+#: models.py:299
+msgid "EPUB file"
+msgstr "Plik EPUB"
+
+#: models.py:300
+msgid "TXT file"
+msgstr "Plik TXT"
+
+#: models.py:315
 msgid "books"
 msgstr "książki"
 
-#: models.py:263
+#: models.py:435
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: models.py:403
-#, python-format
-msgid "Book %s already exists"
-msgstr "Książka %s już istnieje"
-
-#: models.py:444
+#: models.py:656
 #, python-format
 msgid "Book with slug = \"%s\" does not exist."
 msgstr "Książki ο slug = \"%s\" nie istnieje."
 
-#: models.py:565
+#: models.py:669
+#, python-format
+msgid "Book %s already exists"
+msgstr "Książka %s już istnieje"
+
+#: models.py:844
 msgid "fragment"
 msgstr "fragment"
 
-#: models.py:566
+#: models.py:845
 msgid "fragments"
 msgstr "fragmenty"
 
-#: models.py:586
-msgid "goes to public domain"
-msgstr "trafia do domeny publicznej"
-
-#: models.py:588
-msgid "translator"
-msgstr "tłumacz"
-
-#: models.py:589
-msgid "year of translator's death"
-msgstr "rok śmierci tłumacza"
-
-#: models.py:593
-msgid "book stub"
-msgstr "zapowiedź książki"
-
-#: models.py:594
-msgid "book stubs"
-msgstr "zapowiedzi książek"
-
-#: models.py:613
-msgid "type"
-msgstr ""
-
-#: models.py:614
+#: models.py:878
 msgid "sha-1 hash"
-msgstr ""
+msgstr "hash sha-1"
 
-#: models.py:615
+#: models.py:879
 msgid "time"
 msgstr "czas"
 
-#: models.py:619
+#: models.py:883
 msgid "file record"
 msgstr ""
 
-#: models.py:620
+#: models.py:884
 msgid "file records"
 msgstr ""
 
-#: views.py:452
+#: views.py:531
 msgid "<p>To maintain your shelves you need to be logged in.</p>"
 msgstr "<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>"
 
-#: views.py:470
+#: views.py:553
 msgid "<p>Shelves were sucessfully saved.</p>"
 msgstr "<p>Półki zostały zapisane.</p>"
 
-#: views.py:494
+#: views.py:577
 msgid "Book was successfully removed from the shelf"
 msgstr "Usunięto"
 
-#: views.py:496
+#: views.py:579
 msgid "This book is not on the shelf"
 msgstr "Książki nie ma na półce"
 
-#: views.py:599
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
-msgstr "<p>Półka <strong>%s</strong> została utworzona</p>"
-
-#: views.py:614
+#: views.py:689
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 msgstr "<p>Półka <strong>%s</strong> została usunięta</p>"
 
-#: views.py:673
+#: views.py:748
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -263,11 +244,39 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:674
+#: views.py:749
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:676
+#: views.py:751
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
+
+#, fuzzy
+#~ msgid "sort_key"
+#~ msgstr "klucz sortowania"
+
+#~ msgid "year of death"
+#~ msgstr "rok śmierci"
+
+#~ msgid "short HTML"
+#~ msgstr "krótki HTML"
+
+#~ msgid "goes to public domain"
+#~ msgstr "trafia do domeny publicznej"
+
+#~ msgid "translator"
+#~ msgstr "tłumacz"
+
+#~ msgid "year of translator's death"
+#~ msgstr "rok śmierci tłumacza"
+
+#~ msgid "book stub"
+#~ msgstr "zapowiedź książki"
+
+#~ msgid "book stubs"
+#~ msgstr "zapowiedzi książek"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
+#~ msgstr "<p>Półka <strong>%s</strong> została utworzona</p>"
