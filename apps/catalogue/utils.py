@@ -49,13 +49,13 @@ class ExistingFile(UploadedFile):
 
 
 class BookImportDocProvider(DocProvider):
-    """ used for joined EPUBs """
+    """Used for joined EPUB and PDF files."""
 
     def __init__(self, book):
         self.book = book
-        
+
     def by_slug(self, slug):
         if slug == self.book.slug:
             return self.book.xml_file
         else:
-            return Book.objects.get(slug=slug).xml_file
+            return type(self.book).objects.get(slug=slug).xml_file
