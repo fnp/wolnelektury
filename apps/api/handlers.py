@@ -16,6 +16,7 @@ from api.models import Deleted
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment
 
+from stats.utils import piwik_track
 
 API_BASE = WL_BASE = MEDIA_BASE = 'http://' + Site.objects.get_current().domain
 
@@ -96,6 +97,7 @@ class BookDetailHandler(BaseHandler):
         'xml', 'html', 'pdf', 'epub', 'txt',
         'media', 'url'] + category_singular.keys()
 
+    @piwik_track
     def read(self, request, slug):
         """ Returns details of a book, identified by a slug. """
 
@@ -129,6 +131,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler):
 
         return WL_BASE + book.get_absolute_url()
 
+    @piwik_track
     def read(self, request, tags, top_level=False):
         """ Lists all books with given tags.
 
@@ -209,6 +212,7 @@ class TagDetailHandler(BaseHandler):
 
     fields = ['name', 'sort_key', 'description']
 
+    @piwik_track
     def read(self, request, category, slug):
         """ Returns details of a tag, identified by category and slug. """
 
@@ -234,6 +238,7 @@ class TagsHandler(BaseHandler):
     model = Tag
     fields = ['name', 'href']
 
+    @piwik_track
     def read(self, request, category):
         """ Lists all tags in the category (eg. all themes). """
 
@@ -260,6 +265,7 @@ class TagsHandler(BaseHandler):
 class FragmentDetailHandler(BaseHandler):
     fields = ['book', 'anchor', 'text', 'url', 'themes']
 
+    @piwik_track
     def read(self, request, slug, anchor):
         """ Returns details of a fragment, identified by book slug and anchor. """
 
@@ -282,6 +288,7 @@ class FragmentsHandler(BaseHandler):
 
     categories = set(['author', 'epoch', 'kind', 'genre', 'book', 'theme'])
 
+    @piwik_track
     def read(self, request, tags):
         """ Lists all fragments with given book, tags, themes.
 
@@ -547,6 +554,7 @@ class CatalogueHandler(BaseHandler):
 class BookChangesHandler(CatalogueHandler):
     allowed_methods = ('GET',)
 
+    @piwik_track
     def read(self, request, since):
         return self.book_changes(request, since)
 
@@ -554,6 +562,7 @@ class BookChangesHandler(CatalogueHandler):
 class TagChangesHandler(CatalogueHandler):
     allowed_methods = ('GET',)
 
+    @piwik_track
     def read(self, request, since):
         return self.tag_changes(request, since)
 
@@ -561,5 +570,6 @@ class TagChangesHandler(CatalogueHandler):
 class ChangesHandler(CatalogueHandler):
     allowed_methods = ('GET',)
 
+    @piwik_track
     def read(self, request, since):
         return self.changes(request, since)

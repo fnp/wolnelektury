@@ -18,7 +18,7 @@ from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 from catalogue.views import books_starting_with
 
-from opds.utils import piwik_track
+from stats.utils import piwik_track
 
 _root_feeds = (
     {
