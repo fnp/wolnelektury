@@ -12,7 +12,7 @@ import os
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
-from catalogue.models import Book
+import catalogue.models
 
 
 class WLAnalyzer(PerFieldAnalyzerWrapper):
@@ -156,9 +156,11 @@ class Index(IndexStore):
         # header_index - the 0-indexed position of header element.
         # content
         master = self.get_master(root)
+        if master is None:
+            return []
+        
         header_docs = []
         for header, position in zip(list(master), range(len(master))):
-            print("header %s @%d" % (header, position))
             doc = self.create_book_doc(book)
             doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
             doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
@@ -181,7 +183,6 @@ class Index(IndexStore):
         # will contain (framgent id -> { content: [], themes: [] }
         fragments = {}
         for start, end in walker(master):
-            print("%s %s" % (start, end))
             if start is not None and start.tag == 'begin':
                 fid = start.attrib['id'][1:]
                 fragments[fid] = {'content': [], 'themes': []}
@@ -192,14 +193,29 @@ class Index(IndexStore):
                 fragments[fid]['content'].append(start.tail)
             elif start is not None and start.tag == 'end':
                 fid = start.attrib['id'][1:]
+                if fid not in fragments:
+                    continue  # a broken <end> node, skip it
                 frag = fragments[fid]
                 del fragments[fid]
-                print("Fragment %s complete, themes: %s contents: %s" % (fid, frag['themes'], frag['content']))
+
+                def jstr(l):
+                    return u' '.join(map(
+                        lambda x: x == None and u'(none)' or unicode(x),
+                        l))
+                s = u"Fragment %s complete, themes: %s contents: %s" % \
+                      (fid, jstr(frag['themes']), jstr(frag['content']))
+                print(s.encode('utf-8'))
 
                 doc = self.create_book_doc(book)
-                doc.add(Field("fragment_anchor", fid, Field.Store.YES, Field.Index.NOT_ANALYZED))
-                doc.add(Field("content", u' '.join(filter(lambda s: s is not None, frag['content'])), Field.Store.NO, Field.Index.ANALYZED))
-                doc.add(Field("themes", u' '.join(frag['themes']), Field.Store.NO, Field.Index.ANALYZED))
+                doc.add(Field("fragment_anchor", fid,
+                              Field.Store.YES, Field.Index.NOT_ANALYZED))
+                doc.add(Field("content",
+                              u' '.join(filter(lambda s: s is not None, frag['content'])),
+                              Field.Store.NO, Field.Index.ANALYZED))
+                doc.add(Field("themes",
+                              u' '.join(filter(lambda s: s is not None, frag['themes'])),
+                              Field.Store.NO, Field.Index.ANALYZED))
+
                 fragment_docs.append(doc)
             elif start is not None:
                 for frag in fragments.values():
@@ -264,7 +280,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(Book.objects.get(id=doc.get("book_id")))
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
     def search(self, query, max_results=50):
@@ -275,7 +291,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(Book.objects.get(id=doc.get("book_id")))
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
     def bsearch(self, query, max_results=50):
@@ -288,5 +304,5 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(Book.objects.get(id=doc.get("book_id")))
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
