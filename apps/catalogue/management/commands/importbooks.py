@@ -28,6 +28,8 @@ class Command(BaseCommand):
             help='Don\'t build TXT file'),
         make_option('-P', '--no-build-pdf', action='store_false', dest='build_pdf', default=True,
             help='Don\'t build PDF file'),
+        make_option('-S', '--no-search-index', action='store_false', dest='search_index', default=True,
+            help='Don\'t build PDF file'),
         make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
             help='Wait until specified time (Y-M-D h:m:s)'),
     )
@@ -87,7 +89,8 @@ class Command(BaseCommand):
                                                   build_epub=options.get('build_epub'),
                                                   build_txt=options.get('build_txt'),
                                                   build_pdf=options.get('build_pdf'),
-                                                  build_mobi=options.get('build_mobi'))
+                                                  build_mobi=options.get('build_mobi'),
+                                                  search_index=options.get('search_index'))
                         files_imported += 1
 
                         if os.path.isfile(file_base + '.pdf'):
