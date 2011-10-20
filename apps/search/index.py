@@ -1,8 +1,12 @@
-
+# -*- coding: utf-8 -*-
 from django.conf import settings
-from lucene import SimpleFSDirectory, IndexWriter, File, Field, NumericField, \
-    Version, Document, JavaError, IndexSearcher, QueryParser, Term, PerFieldAnalyzerWrapper, \
-    SimpleAnalyzer, PolishAnalyzer, ArrayList, KeywordAnalyzer, NumericRangeQuery
+from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
+    NumericField, Version, Document, JavaError, IndexSearcher, \
+    QueryParser, Term, PerFieldAnalyzerWrapper, \
+    SimpleAnalyzer, PolishAnalyzer, ArrayList, \
+    KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
+    BlockJoinQuery, BlockJoinCollector, TermsFilter, \
+    HashSet, BooleanClause, Term
     # KeywordAnalyzer
 import os
 import errno
@@ -28,6 +32,7 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("source_name", simple)
         self.addAnalyzer("publisher", simple)
         self.addAnalyzer("author", simple)
+        self.addAnalyzer("is_book", keyword)
 
         #self.addanalyzer("fragment_anchor", keyword)
 
@@ -57,7 +62,8 @@ class Index(IndexStore):
     def open(self, analyzer=None):
         if self.index:
             raise Exception("Index is already opened")
-        self.index = IndexWriter(self.store, self.analyzer, IndexWriter.MaxFieldLength.LIMITED)
+        self.index = IndexWriter(self.store, self.analyzer,\
+                                 IndexWriter.MaxFieldLength.LIMITED)
         return self.index
 
     def close(self):
@@ -68,7 +74,7 @@ class Index(IndexStore):
     def remove_book(self, book):
         q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True,True)
         self.index.deleteDocuments(q)
-        
+
     def index_book(self, book, overwrite=True):
         if overwrite:
             self.remove_book(book)
@@ -76,21 +82,11 @@ class Index(IndexStore):
         doc = self.extract_metadata(book)
         parts = self.extract_content(book)
         block = ArrayList().of_(Document)
-        
-        try:
-            self.index.addDocument(doc)
-            for p in parts:
-                self.index.addDocument(p)                
-        except JavaError as e:
-            import nose.tools; nose.tools.set_trace()
 
-            #block.add(p)
-            #self.index.addDocuments(block)
-            
-            #        import nose.tools; nose.tools.set_trace()
-            #block.add(doc)
-
-        #        self.index.addDocuments(block)
+        for p in parts:
+            block.add(p)
+        block.add(doc)
+        self.index.addDocuments(block)
 
     master_tags = [
         'opowiadanie',
@@ -117,6 +113,7 @@ class Index(IndexStore):
         doc = self.create_book_doc(book)
         doc.add(Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS))
         doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
+        doc.add(Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
 
         # validator, name
         for field in dcparser.BookInfo.FIELDS:
@@ -164,6 +161,7 @@ class Index(IndexStore):
             print("header %s @%d" % (header, position))
             doc = self.create_book_doc(book)
             doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
+            doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
             content = u' '.join([t for t in header.itertext()])
             doc.add(Field("content", content, Field.Store.NO, Field.Index.ANALYZED))
             header_docs.append(doc)
@@ -226,12 +224,39 @@ class Search(IndexStore):
         self.analyzer = PolishAnalyzer(Version.LUCENE_34)
         ## self.analyzer = WLAnalyzer()
         self.searcher = IndexSearcher(self.store, True)
-        self.parser = QueryParser(Version.LUCENE_34, default_field, self.analyzer)
+        self.parser = QueryParser(Version.LUCENE_34, default_field,
+                                  self.analyzer)
+
+        self.parent_filter = TermsFilter()
+        self.parent_filter.addTerm(Term("is_book", "true"))
 
     def query(self, query):
         return self.parser.parse(query)
 
-    def search(self, query, max_results=50):
+    def wrapjoins(self, query, fields=[]):
+        """
+        This functions modifies the query in a recursive way,
+        so Term and Phrase Queries contained, which match
+        provided fields are wrapped in a BlockJoinQuery,
+        and so delegated to children documents.
+        """
+        if BooleanQuery.instance_(query):
+            qs = BooleanQuery.cast_(query)
+            for clause in qs:
+                clause = BooleanClause.cast_(clause)
+                clause.setQuery(self.wrapjoins(clause.getQuery(), fields))
+            return qs
+        else:
+            termset = HashSet()
+            query.extractTerms(termset)
+            for t in termset:
+                t = Term.cast_(t)
+                if t.field() not in fields:
+                    return query
+            return BlockJoinQuery(query, self.parent_filter,
+                                  BlockJoinQuery.ScoreMode.Total)
+
+    def simple_search(self, query, max_results=50):
         """Returns (books, total_hits)
         """
 
@@ -242,3 +267,26 @@ class Search(IndexStore):
             bks.append(Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
+    def search(self, query, max_results=50):
+        query = self.query(query)
+        query = self.wrapjoins(query, ["content", "themes"])
+
+        tops = self.searcher.search(query, max_results)
+        bks = []
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            bks.append(Book.objects.get(id=doc.get("book_id")))
+        return (bks, tops.totalHits)
+
+    def bsearch(self, query, max_results=50):
+        q = self.query(query)
+        f = TermsFilter()
+        f.addTerm(Term("is_book", "true"))
+        bjq = BlockJoinQuery(q, f, BlockJoinQuery.ScoreMode.Avg)
+
+        tops = self.searcher.search(bjq, max_results)
+        bks = []
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            bks.append(Book.objects.get(id=doc.get("book_id")))
+        return (bks, tops.totalHits)
