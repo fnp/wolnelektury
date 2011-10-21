@@ -25,7 +25,7 @@ def staging():
 def production():
     """Use production server"""
     env.hosts = ['wolnelektury.pl']
-    env.user = 'rczajka'
+    env.user = 'lektury'
     env.path = '/srv/wolnelektury.pl'
     env.python = '/usr/bin/python'
     env.virtualenv = '/usr/bin/virtualenv'
