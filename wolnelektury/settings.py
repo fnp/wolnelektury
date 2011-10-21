@@ -226,6 +226,8 @@ NO_BUILD_TXT = False
 NO_BUILD_PDF = False
 
 
+PAGINATION_INVALID_PAGE_RAISES_404 = True
+
 
 # Load localsettings, if they exist
 try:

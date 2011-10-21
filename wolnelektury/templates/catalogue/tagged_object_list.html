@@ -97,12 +97,12 @@
                     {{ book.short_html }}</li>
             {% endfor %}
             </ol>
+            {% paginate %}
         {% else %}
             {% trans "Sorry! Search cirteria did not match any resources." %}
             {% include "info/join_us.html" %}
         {% endif %}
         {% endwith %}
-        {% paginate %}
     </div>
 	{% if object_list %}
 	{% comment %} If we didn't find anything there will be nothing on the right side as well {% endcomment %}
