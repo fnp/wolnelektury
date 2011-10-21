@@ -211,6 +211,15 @@ class ChildImportTests(WLTestCase):
             **info_args("Parent")
         )
 
+    def test_child(self):
+        TEXT = """<utwor />"""
+        child = models.Book.from_text_and_meta(ContentFile(TEXT), self.child_info)
+        parent = models.Book.from_text_and_meta(ContentFile(TEXT), self.parent_info)
+        author = parent.tags.get(category='author')
+        books = self.client.get(author.get_absolute_url()).context['object_list']
+        self.assertEqual(len(books), 1,
+                        "Only parent book should be visible on author's page")
+
     def test_child_replace(self):
         PARENT_TEXT = """<utwor />"""
         CHILD_TEXT = """<utwor>
