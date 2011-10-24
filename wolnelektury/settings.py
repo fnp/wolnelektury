@@ -128,6 +128,9 @@ INSTALLED_APPS = [
     'rosetta',
     'south',
     'sorl.thumbnail',
+    'djcelery',
+    'djkombu',
+    #    'django_nose',
 
     # included
     'compress',
@@ -225,9 +228,20 @@ NO_BUILD_EPUB = False
 NO_BUILD_TXT = False
 NO_BUILD_PDF = False
 
+ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
+ALL_PDF_ZIP = 'wolnelektury_pl_pdf'
 
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 
+import djcelery
+djcelery.setup_loader()
+
+BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
+BROKER_HOST = "localhost"
+BROKER_PORT = 5672
+BROKER_USER = "guest"
+BROKER_PASSWORD = "guest"
+BROKER_VHOST = "/"
 
 # Load localsettings, if they exist
 try:

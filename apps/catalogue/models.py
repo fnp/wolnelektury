@@ -22,7 +22,7 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import ExistingFile, BookImportDocProvider
+from catalogue.utils import ExistingFile, BookImportDocProvider, create_zip_task, remove_zip
 
 from librarian import dcparser, html, epub, NoDublinCore
 import mutagen
@@ -521,7 +521,7 @@ class Book(models.Model):
         path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
         try:
             pdf_file = NamedTemporaryFile(delete=False)
-
+            print("%s -> %s" % (self.xml_file.path, pdf_file))
             pdf.transform(BookImportDocProvider(self),
                       file_path=str(self.xml_file.path),
                       output_file=pdf_file,
@@ -530,7 +530,6 @@ class Book(models.Model):
             self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
         finally:
             unlink(pdf_file.name)
-
 
     def build_epub(self, remove_descendants=True):
         """ (Re)builds the epub file.
@@ -627,6 +626,35 @@ class Book(models.Model):
             return True
         return False
 
+    @staticmethod
+    def zip_epub():
+        books = Book.objects.all()
+
+        paths = filter(lambda x: x is not None,
+                       map(lambda b: b.epub_file and b.epub_file.path or None, books))
+        result = create_zip_task.delay(paths, settings.ALL_EPUB_ZIP)
+        return settings.MEDIA_URL + result.wait()
+
+    @staticmethod
+    def zip_pdf():
+        books = Book.objects.all()
+
+        paths = filter(lambda x: x is not None,
+                       map(lambda b: b.pdf_file and b.pdf_file.path or None, books))
+        result = create_zip_task.delay(paths, settings.ALL_PDF_ZIP)
+        return settings.MEDIA_URL + result.wait()
+
+    def zip_audiobooks(self):
+        bm = BookMedia.objects.filter(book=self)
+        paths = map(lambda bm: bm.file.path, bm)
+        result = create_zip_task.delay(paths, self.slug)
+
+        return settings.MEDIA_URL + result.wait()
+
+    def clean_zip_files(self):
+        remove_zip(self.slug)
+        remove_zip(settings.ALL_EPUB_ZIP)
+        remove_zip(settings.ALL_PDF_ZIP)
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
