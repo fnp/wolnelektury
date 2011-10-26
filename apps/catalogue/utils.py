@@ -13,7 +13,7 @@ from django.utils.hashcompat import sha_constructor
 from django.conf import settings
 from celery.task import task
 from os import mkdir, path, unlink
-from errno import EEXIST
+from errno import EEXIST, ENOENT
 from fcntl import flock, LOCK_EX
 from zipfile import ZipFile
 
@@ -69,19 +69,33 @@ class BookImportDocProvider(DocProvider):
 
 
 class LockFile(object):
+    """
+    A file lock monitor class; createas an ${objname}.lock
+    file in directory dir, and locks it exclusively.
+    To be used in 'with' construct.
+    """
     def __init__(self, dir, objname):
         self.lockname = path.join(dir, objname + ".lock")
 
-    def __entry__(self):
+    def __enter__(self):
         self.lock = open(self.lockname, 'w')
         flock(self.lock, LOCK_EX)
 
     def __exit__(self, *err):
+        try:
+            unlink(self.lockname)
+        except OSError as oe:
+            if oe.errno != oe.EEXIST:
+                raise oe
         self.lock.close()
-        unlink(self.lockname)
 
 
 def create_zip(paths, zip_slug):
+    """
+    Creates a zip in MEDIA_ROOT/zip directory containing files from path.
+    Resulting archive filename is ${zip_slug}.zip
+    Returns it's path relative to MEDIA_ROOT (no initial slash)
+    """
     # directory to store zip files
     zip_path = path.join(settings.MEDIA_ROOT, 'zip')
 
@@ -102,11 +116,14 @@ def create_zip(paths, zip_slug):
 
 
 def remove_zip(zip_slug):
+    """
+    removes the ${zip_slug}.zip file from zip store.
+    """
     zip_file = path.join(settings.MEDIA_ROOT, 'zip', zip_slug + '.zip')
     try:
         unlink(zip_file)
     except OSError as oe:
-        if oe.errno != EEXIST:
+        if oe.errno != ENOENT:
             raise oe
 
 

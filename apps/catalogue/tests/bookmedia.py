@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from os.path import basename
+from os.path import basename, exists, join, dirname
 from django.core.files.base import ContentFile
 
 from catalogue.test_utils import *
-from catalogue import models
+from catalogue import models, utils
 
 class BookMediaTests(WLTestCase):
 
@@ -84,3 +84,16 @@ class BookMediaTests(WLTestCase):
         self.assertNotEqual(basename(bm2.file.name), 'title.ogg')
         self.assertEqual(bm.file.read(), 'X')
         self.assertEqual(bm2.file.read(), 'Y')
+
+    def test_zip_audiobooks(self):
+        paths = [
+            join(dirname(__file__), "files/fraszka-do-anusie.xml"),
+            join(dirname(__file__), "files/fraszki.xml")
+            ]
+
+        url = utils.create_zip(paths, 'test-zip-slug')
+        self.assertEqual("zip/test-zip-slug.zip", url)
+        self.assertTrue(exists(join(settings.MEDIA_ROOT, url)))
+
+        utils.remove_zip('test-zip-slug')
+        self.assertFalse(exists(join(settings.MEDIA_ROOT, url)))

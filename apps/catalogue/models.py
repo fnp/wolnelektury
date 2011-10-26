@@ -521,7 +521,6 @@ class Book(models.Model):
         path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
         try:
             pdf_file = NamedTemporaryFile(delete=False)
-            print("%s -> %s" % (self.xml_file.path, pdf_file))
             pdf.transform(BookImportDocProvider(self),
                       file_path=str(self.xml_file.path),
                       output_file=pdf_file,

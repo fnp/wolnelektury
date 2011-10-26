@@ -768,6 +768,21 @@ def book_info(request, id, lang='pl'):
     return render_to_response('catalogue/book_info.html', locals(),
         context_instance=RequestContext(request))
 
+
 def tag_info(request, id):
     tag = get_object_or_404(models.Tag, id=id)
     return HttpResponse(tag.description)
+
+
+def download_zip(request, format, slug):
+    url = None
+    if format == 'pdf':
+        url = models.Book.zip_pdf()
+    elif format == 'epub':
+        url = models.Book.zip_epub()
+    elif format == 'audiobook' and slug is not None:
+        book = models.Book.objects.get(slug=slug)
+        url = book.zip_audiobooks()
+    else:
+        raise Http404('No format specified for zip package')
+    return HttpResponseRedirect(urlquote_plus(url, safe='/?='))
