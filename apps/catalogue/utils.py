@@ -108,9 +108,12 @@ def create_zip(paths, zip_slug):
 
     with LockFile(zip_path, zip_slug):
         if not path.exists(path.join(zip_path, zip_filename)):
-            with ZipFile(path.join(zip_path, zip_filename), 'w') as zipf:
+            zipf = ZipFile(path.join(zip_path, zip_filename), 'w')
+            try:
                 for p in paths:
                     zipf.write(p, path.basename(p))
+            finally:
+                zipf.close()
 
         return 'zip/' + zip_filename
 
