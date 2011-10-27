@@ -269,7 +269,6 @@ class ReusableIndex(Index):
 
     @staticmethod
     def close_reusable():
-        import pdb; pdb.set_trace()
         if ReusableIndex.index is not None:
             for job in ReusableIndex.pool_jobs:
                 job.wait()
