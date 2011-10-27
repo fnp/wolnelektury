@@ -626,7 +626,7 @@ class Book(models.Model):
         return result.wait()
 
     def search_index(self):
-        with search.Index() as idx:
+        with search.ReusableIndex() as idx:
             idx.index_book(self)
 
     @classmethod

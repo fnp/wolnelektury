@@ -6,13 +6,15 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
     KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
-    HashSet, BooleanClause, Term
+    HashSet, BooleanClause, Term, CharTermAttribute, \
+    PhraseQuery, StringReader
     # KeywordAnalyzer
 import os
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
 import catalogue.models
+import atexit
 
 
 class WLAnalyzer(PerFieldAnalyzerWrapper):
@@ -97,6 +99,8 @@ class Index(IndexStore):
         'wywiad'
         ]
 
+    skip_header_tags = ['autor_utworu', 'nazwa_utworu']
+
     def create_book_doc(self, book):
         """
         Create a lucene document connected to the book
@@ -147,6 +151,7 @@ class Index(IndexStore):
             if master.tag in self.master_tags:
                 return master
 
+    
     def extract_content(self, book):
         wld = WLDocument.from_file(book.xml_file.path)
         root = wld.edoc.getroot()
@@ -161,6 +166,8 @@ class Index(IndexStore):
         
         header_docs = []
         for header, position in zip(list(master), range(len(master))):
+            if header.tag in self.skip_header_tags:
+                continue
             doc = self.create_book_doc(book)
             doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
             doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
@@ -202,9 +209,6 @@ class Index(IndexStore):
                     return u' '.join(map(
                         lambda x: x == None and u'(none)' or unicode(x),
                         l))
-                s = u"Fragment %s complete, themes: %s contents: %s" % \
-                      (fid, jstr(frag['themes']), jstr(frag['content']))
-                print(s.encode('utf-8'))
 
                 doc = self.create_book_doc(book)
                 doc.add(Field("fragment_anchor", fid,
@@ -233,6 +237,33 @@ class Index(IndexStore):
     def __exit__(self, type, value, tb):
         self.close()
 
+
+class ReusableIndex(Index):
+    """
+    Works like index, but does not close/optimize Lucene index
+    until program exit (uses atexit hook).
+    This is usefull for importbooks command.
+
+    if you cannot rely on atexit, use ReusableIndex.close_reusable() yourself.
+    """
+    index = None
+    def open(self, analyzer=None):
+        if ReusableIndex.index is not None:
+            self.index = ReusableIndex.index
+        else:
+            Index.open(self,analyzer)
+            ReusableIndex.index = self.index
+            atexit.register(ReusableIndex.close_reusable)
+
+    @staticmethod
+    def close_reusable():
+        if ReusableIndex.index is not None:
+            ReusableIndex.index.optimize()
+            ReusableIndex.index.close()
+            ReusableIndex.index = None
+            
+    def close(self):
+        pass
 
 class Search(IndexStore):
     def __init__(self, default_field="content"):
@@ -296,11 +327,99 @@ class Search(IndexStore):
 
     def bsearch(self, query, max_results=50):
         q = self.query(query)
-        f = TermsFilter()
-        f.addTerm(Term("is_book", "true"))
-        bjq = BlockJoinQuery(q, f, BlockJoinQuery.ScoreMode.Avg)
+        bjq = BlockJoinQuery(q, self.parent_filter, BlockJoinQuery.ScoreMode.Avg)
 
         tops = self.searcher.search(bjq, max_results)
+        bks = []
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+        return (bks, tops.totalHits)
+
+# TokenStream tokenStream = analyzer.tokenStream(fieldName, reader);
+# OffsetAttribute offsetAttribute = tokenStream.getAttribute(OffsetAttribute.class);
+# CharTermAttribute charTermAttribute = tokenStream.getAttribute(CharTermAttribute.class);
+
+# while (tokenStream.incrementToken()) {
+#     int startOffset = offsetAttribute.startOffset();
+#     int endOffset = offsetAttribute.endOffset();
+#     String term = charTermAttribute.toString();
+# }
+
+
+class MultiSearch(Search):
+    """Class capable of IMDb-like searching"""
+    def get_tokens(self, queryreader):
+        if isinstance(queryreader, str):
+            queryreader = StringReader(queryreader)
+        queryreader.reset()
+        tokens = self.analyzer.reusableTokenStream('content', queryreader)
+        toks = []
+        while tokens.incrementToken():
+            cta = tokens.getAttribute(CharTermAttribute.class_)
+            toks.append(cta)
+        return toks
+
+    def make_phrase(self, tokens, field='content', joined=False):
+        phrase = PhraseQuery()
+        for t in tokens:
+            term = Term(field, t)
+            phrase.add(term)
+        if joined:
+            phrase = self.content_query(phrase)
+        return phrase
+
+    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, joined=False):
+        q = BooleanQuery()
+        for t in tokens:
+            term = Term(field, t)
+            q.add(BooleanClause(term, modal))
+        if joined:
+            self.content_query(q)
+        return q
+
+    def content_query(self, query):
+        return BlockJoinQuery(query, self.parent_filter,
+                              BlockJoinQuery.ScoreMode.Total)
+
+    def multiseach(self, query, max_results=50):
+        """
+        Search strategy:
+        - (phrase) OR -> content
+                      -> title
+                      -> author
+        - (keywords)  -> author
+                      -> motyw
+                      -> tags
+                      -> content
+        """
+        queryreader = StringReader(query)
+        tokens = self.get_tokens(queryreader)
+
+        top_level = BooleanQuery()
+        Should = BooleanClause.Occur.SHOULD
+
+        phrase_level = BooleanQuery()
+
+        p_content = self.make_phrase(tokens, joined=True)
+        p_title = self.make_phrase(tokens, 'title')
+        p_author = self.make_phrase(tokens, 'author')
+
+        phrase_level.add(BooleanClause(p_content, Should))
+        phrase_level.add(BooleanClause(p_title, Should))
+        phrase_level.add(BooleanClause(p_author, Should))
+
+        kw_level = BooleanQuery()
+
+        kw_level.add(self.make_term_query(tokens, 'author'), Should)
+        kw_level.add(self.make_term_query(tokens, 'themes', joined=True), Should)
+        kw_level.add(self.make_term_query(tokens, 'tags'), Should)
+        kw_level.add(self.make_term_query(tokens, joined=True), Should)
+
+        top_level.add(BooleanClause(phrase_level, Should))
+        top_level.add(BooleanClause(kw_level, Should))
+
+        tops = self.searcher.search(top_level, max_results)
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
