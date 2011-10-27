@@ -1,6 +1,6 @@
 #!%(python)s
 import site
-site.addsitedir('%(path)s/lib/python2.5/site-packages')
+site.addsitedir('%(path)s/lib/python2.6/site-packages')
 
 import os
 from os.path import abspath, dirname, join
@@ -9,9 +9,6 @@ import sys
 # Redirect sys.stdout to sys.stderr for bad libraries like geopy that use
 # print statements for optional import exceptions.
 sys.stdout = sys.stderr
-
-# we don't want these packages to cover our virtualenv
-sys.path = [p for p in sys.path if not p.startswith('/usr/lib/python2.5/site-packages') and not p.startswith('/var/lib/python-support/python2.5')]
 
 # Add apps and lib directories to PYTHONPATH
 sys.path = [
@@ -23,6 +20,7 @@ sys.path = [
 ] + sys.path
 
 # Run Django
+os.environ["CELERY_LOADER"] = "django"
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from django.core.handlers.wsgi import WSGIHandler

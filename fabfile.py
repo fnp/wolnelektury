@@ -65,6 +65,7 @@ def deploy():
     upload_tar_from_git()
     upload_wsgi_script()
     upload_vhost_sample()
+    upload_celery_conf()
     install_requirements()
     copy_localsettings()
     symlink_current_release()
@@ -120,6 +121,12 @@ def upload_wsgi_script():
     files.upload_template('%(project_name)s.wsgi.template' % env, '%(path)s/%(project_name)s.wsgi' % env, context=env)
     run('chmod ug+x %(path)s/%(project_name)s.wsgi' % env)
 
+def upload_celery_conf():
+    "Create and upload a Celery conf for supervisord"
+    print ">>> upload celery supervisord conf"
+    files.upload_template('%(project_name)s-celery.conf.template' % env, '%(path)s/%(project_name)s-celery.conf' % env, context=env)
+    run('chmod ug+x %(path)s/%(project_name)s-celery.conf' % env)
+
 def install_requirements():
     "Install the required packages from the requirements file using pip"
     print '>>> install requirements'
@@ -157,3 +164,5 @@ def restart_webserver():
     "Restart the web server"
     print '>>> restart webserver'
     run('touch %(path)s/%(project_name)s.wsgi' % env)
+    print '>>> restart Celery'
+    sudo('supervisord restart %(project_name)s-celery' % env)

@@ -4,6 +4,7 @@ dev.sqlite
 *.db-journal
 *~
 *.orig
+*.log
 
 # Compress output
 /wolnelektury/static/css/all.min*.css
