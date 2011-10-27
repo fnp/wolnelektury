@@ -82,6 +82,7 @@ class Index(IndexStore):
     def index_book(self, book, overwrite=True):
         if overwrite:
             self.remove_book(book)
+            
 
         doc = self.extract_metadata(book)
         parts = self.extract_content(book)
@@ -263,19 +264,15 @@ class ReusableIndex(Index):
             atexit.register(ReusableIndex.close_reusable)
 
     def index_book(self, *args, **kw):
-        job = ReusableIndex.pool.apply_async(Index.index_book, args, kw)
+        job = ReusableIndex.pool.apply_async(Index.index_book, (self,)+ args, kw)
         ReusableIndex.pool_jobs.append(job)
 
     @staticmethod
     def close_reusable():
+        import pdb; pdb.set_trace()
         if ReusableIndex.index is not None:
-            all_jobs = len(ReusableIndex.pool_jobs)
-            waited=1
             for job in ReusableIndex.pool_jobs:
-                sys.stdout.write("\rWaiting for search index job: %d/%d..." % 
                 job.wait()
-                waited+=1
-            print("Indexing done.")
             ReusableIndex.pool.close()
 
             ReusableIndex.index.optimize()
