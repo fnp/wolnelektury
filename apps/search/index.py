@@ -9,6 +9,7 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
     PhraseQuery, StringReader
     # KeywordAnalyzer
+import sys
 import os
 import errno
 from librarian import dcparser
@@ -268,8 +269,13 @@ class ReusableIndex(Index):
     @staticmethod
     def close_reusable():
         if ReusableIndex.index is not None:
+            all_jobs = len(ReusableIndex.pool_jobs)
+            waited=1
             for job in ReusableIndex.pool_jobs:
+                sys.stdout.write("\rWaiting for search index job: %d/%d..." % 
                 job.wait()
+                waited+=1
+            print("Indexing done.")
             ReusableIndex.pool.close()
 
             ReusableIndex.index.optimize()
