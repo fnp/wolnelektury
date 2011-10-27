@@ -785,4 +785,4 @@ def download_zip(request, format, slug):
         url = book.zip_audiobooks()
     else:
         raise Http404('No format specified for zip package')
-    return HttpResponseRedirect(urlquote_plus(url, safe='/?='))
+    return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))

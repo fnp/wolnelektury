@@ -220,6 +220,9 @@ class BookMedia(models.Model):
             if slughifi(self.name) != slughifi(old.name):
                 self.file.save(None, ExistingFile(self.file.path), save=False, leave=True)
 
+        # remove the zip package for book with modified media
+        remove_zip(self.book.slug)
+
         super(BookMedia, self).save(*args, **kwargs)
         extra_info = self.get_extra_info_value()
         extra_info.update(self.read_meta())
@@ -518,6 +521,9 @@ class Book(models.Model):
         from tempfile import NamedTemporaryFile
         import os
 
+        # remove zip with all pdf files
+        remove_zip(settings.ALL_PDF_ZIP)
+
         path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
         try:
             pdf_file = NamedTemporaryFile(delete=False)
@@ -542,6 +548,9 @@ class Book(models.Model):
         if self.parent:
             # don't need an epub
             return
+
+        # remove zip package with all epub files
+        remove_zip(settings.ALL_EPUB_ZIP)
 
         epub_file = StringIO()
         try:
@@ -631,8 +640,12 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.epub_file and b.epub_file.path or None, books))
-        result = create_zip_task.delay(paths, settings.ALL_EPUB_ZIP)
-        return settings.MEDIA_URL + result.wait()
+        if settings.USE_CELERY:
+            result = create_zip_task.delay(paths, settings.ALL_EPUB_ZIP)
+            return result.wait()
+        else:
+            result = create_zip_task(paths, settings.ALL_EPUB_ZIP)
+            return result
 
     @staticmethod
     def zip_pdf():
@@ -640,20 +653,23 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.pdf_file and b.pdf_file.path or None, books))
-        result = create_zip_task.delay(paths, settings.ALL_PDF_ZIP)
-        return settings.MEDIA_URL + result.wait()
+        if settings.USE_CELERY:
+            result = create_zip_task.delay(paths, settings.ALL_PDF_ZIP)
+            return result.wait()
+        else:
+            result = create_zip_task(paths, settings.ALL_PDF_ZIP)
+            return result
 
     def zip_audiobooks(self):
         bm = BookMedia.objects.filter(book=self)
         paths = map(lambda bm: bm.file.path, bm)
-        result = create_zip_task.delay(paths, self.slug)
+        if settings.USE_CELERY:
+            result = create_zip_task.delay(paths, self.slug)
+            return result.wait()
+        else:
+            result = create_zip_task(paths, self.slug)
+            return result
 
-        return settings.MEDIA_URL + result.wait()
-
-    def clean_zip_files(self):
-        remove_zip(self.slug)
-        remove_zip(settings.ALL_EPUB_ZIP)
-        remove_zip(settings.ALL_PDF_ZIP)
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):

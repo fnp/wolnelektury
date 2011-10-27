@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from os.path import basename, exists, join, dirname
-from django.core.files.base import ContentFile
+from django.core.files.base import ContentFile, File
 
 from catalogue.test_utils import *
 from catalogue import models, utils
@@ -97,3 +97,19 @@ class BookMediaTests(WLTestCase):
 
         utils.remove_zip('test-zip-slug')
         self.assertFalse(exists(join(settings.MEDIA_ROOT, url)))
+
+    def test_remove_zip_on_media_change(self):
+        bm = models.BookMedia(book=self.book, type='ogg', name="Title")
+        bm.file.save(None, self.file)
+        bm.save()
+        
+        zip_url = self.book.zip_audiobooks()
+        self.assertEqual('zip/'+self.book.slug+'.zip', zip_url)
+        self.assertTrue(exists(join(settings.MEDIA_ROOT, zip_url)))
+
+        bm2 = models.BookMedia(book=self.book, type='ogg', name="Other title")
+        bm2.file.save(None, self.file2)
+        bm2.name = "Title"
+        bm2.save()
+        # was the audiobook zip deleted?
+        self.assertFalse(exists(join(settings.MEDIA_ROOT, zip_url)))

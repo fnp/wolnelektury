@@ -101,9 +101,6 @@ class Command(BaseCommand):
                                 print "Importing %s.txt" % file_base
 
                         book.save()
-                        
-                        # clean the generated zip packages. Is this the right place for this?
-                        book.clean_zip_files()
 
                     except Book.AlreadyExists, msg:
                         print self.style.ERROR('%s: Book already imported. Skipping. To overwrite use --force.' %
