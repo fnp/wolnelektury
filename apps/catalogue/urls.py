@@ -25,6 +25,7 @@ urlpatterns = patterns('catalogue.views',
     # zip
     url(r'^zip/pdf/.*\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
     url(r'^zip/epub/.*\.zip$', 'download_zip', {'format': 'epub', 'slug': None}, 'download_zip_epub'),
+    url(r'^zip/mobi/.*\.zip$', 'download_zip', {'format': 'mobi', 'slug': None}, 'download_zip_mobi'),
     url(r'^zip/audiobook/(?P<slug>[a-zA-Z0-9-]+)\.zip', 'download_zip', {'format': 'audiobook'}, 'download_zip_audiobook'),
 
     # tools

@@ -227,9 +227,11 @@ MAX_TAG_LIST = 6
 NO_BUILD_EPUB = False
 NO_BUILD_TXT = False
 NO_BUILD_PDF = False
+NO_BUILD_MOBI = False
 
 ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
 ALL_PDF_ZIP = 'wolnelektury_pl_pdf'
+ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
 
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 

@@ -22,7 +22,7 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import ExistingFile, BookImportDocProvider, create_zip_task, remove_zip
+from catalogue.utils import ExistingFile, ORMDocProvider, create_zip_task, remove_zip
 
 from librarian import dcparser, html, epub, NoDublinCore
 import mutagen
@@ -296,11 +296,8 @@ class Book(models.Model):
     gazeta_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
-    xml_file      = models.FileField(_('XML file'), upload_to=book_upload_path('xml'), blank=True)
-    html_file     = models.FileField(_('HTML file'), upload_to=book_upload_path('html'), blank=True)
-    pdf_file      = models.FileField(_('PDF file'), upload_to=book_upload_path('pdf'), blank=True)
-    epub_file     = models.FileField(_('EPUB file'), upload_to=book_upload_path('epub'), blank=True)
-    txt_file      = models.FileField(_('TXT file'), upload_to=book_upload_path('txt'), blank=True)
+
+    file_types = ['epub', 'html', 'mobi', 'pdf', 'txt', 'xml']
     
     parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
     objects  = models.Manager()
@@ -351,49 +348,15 @@ class Book(models.Model):
         return book_tag
 
     def has_media(self, type):
-        if   type == 'xml':
-            if self.xml_file:
-                return True
-            else:
-                return False
-        elif type == 'html':
-            if self.html_file:
-                return True
-            else:
-                return False        
-        elif type == 'txt':
-            if self.txt_file:
-                return True
-            else:
-                return False        
-        elif type == 'pdf':
-            if self.pdf_file:
-                return True
-            else:
-                return False  
-        elif type == 'epub':
-            if self.epub_file:
-                return True
-            else:
-                return False                          
+        if type in Book.file_types:
+            return bool(getattr(self, "%s_file" % type))
         else:
-            if self.media.filter(type=type).exists():
-                return True
-            else:
-                return False
+            return self.media.filter(type=type).exists()
 
     def get_media(self, type):
         if self.has_media(type):
-            if   type == "xml":
-                return self.xml_file
-            elif type == "html":
-                return self.html_file
-            elif type == "epub":
-                return self.epub_file
-            elif type == "txt":
-                return self.txt_file
-            elif type == "pdf":
-                return self.pdf_file
+            if type in Book.file_types:
+                return getattr(self, "%s_file" % type)
             else:                                             
                 return self.media.filter(type=type)
         else:
@@ -433,11 +396,13 @@ class Book(models.Model):
             tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
 
             formats = []
-            # files generated during publication               
+            # files generated during publication
             if self.has_media("html"):
                 formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', kwargs={'slug': self.slug}), _('Read online')))
             if self.has_media("pdf"):
                 formats.append(u'<a href="%s">PDF</a>' % self.get_media('pdf').url)
+            if self.has_media("mobi"):
+                formats.append(u'<a href="%s">MOBI</a>' % self.get_media('mobi').url)
             if self.root_ancestor.has_media("epub"):
                 formats.append(u'<a href="%s">EPUB</a>' % self.root_ancestor.get_media('epub').url)
             if self.has_media("txt"):
@@ -473,26 +438,6 @@ class Book(models.Model):
     has_description.boolean = True
 
     # ugly ugly ugly
-    def has_pdf_file(self):
-        return bool(self.pdf_file)
-    has_pdf_file.short_description = 'PDF'
-    has_pdf_file.boolean = True
-
-    def has_epub_file(self):
-        return bool(self.epub_file)
-    has_epub_file.short_description = 'EPUB'
-    has_epub_file.boolean = True
-
-    def has_txt_file(self):
-        return bool(self.txt_file)
-    has_txt_file.short_description = 'HTML'
-    has_txt_file.boolean = True
-
-    def has_html_file(self):
-        return bool(self.html_file)
-    has_html_file.short_description = 'HTML'
-    has_html_file.boolean = True
-
     def has_odt_file(self):
         return bool(self.has_media("odt"))
     has_odt_file.short_description = 'ODT'
@@ -524,10 +469,9 @@ class Book(models.Model):
         # remove zip with all pdf files
         remove_zip(settings.ALL_PDF_ZIP)
 
-        path, fname = os.path.realpath(self.xml_file.path).rsplit('/', 1)
         try:
             pdf_file = NamedTemporaryFile(delete=False)
-            pdf.transform(BookImportDocProvider(self),
+            pdf.transform(ORMDocProvider(self),
                       file_path=str(self.xml_file.path),
                       output_file=pdf_file,
                       )
@@ -535,6 +479,28 @@ class Book(models.Model):
             self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
         finally:
             unlink(pdf_file.name)
+
+    def build_mobi(self):
+        """ (Re)builds the MOBI file.
+
+        """
+        from librarian import mobi
+        from tempfile import NamedTemporaryFile
+        import os
+
+        # remove zip with all pdf files
+        remove_zip(settings.ALL_MOBI_ZIP)
+
+        try:
+            mobi_file = NamedTemporaryFile(suffix='.mobi', delete=False)
+            mobi.transform(ORMDocProvider(self), verbose=1,
+                      file_path=str(self.xml_file.path),
+                      output_file=mobi_file.name,
+                      )
+
+            self.mobi_file.save('%s.mobi' % self.slug, File(open(mobi_file.name)))
+        finally:
+            unlink(mobi_file.name)
 
     def build_epub(self, remove_descendants=True):
         """ (Re)builds the epub file.
@@ -554,7 +520,7 @@ class Book(models.Model):
 
         epub_file = StringIO()
         try:
-            epub.transform(BookImportDocProvider(self), self.slug, output_file=epub_file)
+            epub.transform(ORMDocProvider(self), self.slug, output_file=epub_file)
             self.epub_file.save('%s.epub' % self.slug, ContentFile(epub_file.getvalue()))
             FileRecord(slug=self.slug, type='epub', sha1=sha1(epub_file.getvalue()).hexdigest()).save()
         except NoDublinCore:
@@ -660,6 +626,15 @@ class Book(models.Model):
             result = create_zip_task(paths, settings.ALL_PDF_ZIP)
             return result
 
+    @staticmethod
+    def zip_mobi():
+        books = Book.objects.all()
+
+        paths = filter(lambda x: x is not None,
+                       map(lambda b: b.mobi_file and b.mobi_file.path or None, books))
+        result = create_zip_task.delay(paths, settings.ALL_MOBI_ZIP)
+        return settings.MEDIA_URL + result.wait()
+
     def zip_audiobooks(self):
         bm = BookMedia.objects.filter(book=self)
         paths = map(lambda bm: bm.file.path, bm)
@@ -669,7 +644,6 @@ class Book(models.Model):
         else:
             result = create_zip_task(paths, self.slug)
             return result
-
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
@@ -685,7 +659,8 @@ class Book(models.Model):
             xml_file.close()
 
     @classmethod
-    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, build_epub=True, build_txt=True, build_pdf=True):
+    def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
+            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True):
         import re
 
         # check for parts before we do anything
@@ -760,6 +735,9 @@ class Book(models.Model):
 
         if not settings.NO_BUILD_PDF and build_pdf:
             book.root_ancestor.build_pdf()
+
+        if not settings.NO_BUILD_MOBI and build_mobi:
+            book.build_mobi()
 
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments
@@ -870,6 +848,24 @@ class Book(models.Model):
             objects = objects.exclude(pk__in=descendants_keys)
 
         return objects
+
+
+def _has_factory(ftype):
+    has = lambda self: bool(getattr(self, "%s_file" % ftype))
+    has.short_description = t.upper()
+    has.boolean = True
+    has.__name__ = "has_%s_file" % ftype
+    return has
+
+    
+# add the file fields
+for t in Book.file_types:
+    field_name = "%s_file" % t
+    models.FileField(_("%s file" % t.upper()),
+            upload_to=book_upload_path(t),
+            blank=True).contribute_to_class(Book, field_name)
+
+    setattr(Book, "has_%s_file" % t, _has_factory(t))
 
 
 class Fragment(models.Model):

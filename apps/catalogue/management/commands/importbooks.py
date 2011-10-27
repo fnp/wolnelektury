@@ -22,6 +22,8 @@ class Command(BaseCommand):
             help='Print status messages to stdout'),
         make_option('-E', '--no-build-epub', action='store_false', dest='build_epub', default=True,
             help='Don\'t build EPUB file'),
+        make_option('-M', '--no-build-mobi', action='store_false', dest='build_mobi', default=True,
+            help='Don\'t build MOBI file'),
         make_option('-T', '--no-build-txt', action='store_false', dest='build_txt', default=True,
             help='Don\'t build TXT file'),
         make_option('-P', '--no-build-pdf', action='store_false', dest='build_pdf', default=True,
@@ -84,13 +86,18 @@ class Command(BaseCommand):
                         book = Book.from_xml_file(file_path, overwrite=force, 
                                                   build_epub=options.get('build_epub'),
                                                   build_txt=options.get('build_txt'),
-                                                  build_pdf=options.get('build_pdf'))
+                                                  build_pdf=options.get('build_pdf'),
+                                                  build_mobi=options.get('build_mobi'))
                         files_imported += 1
 
                         if os.path.isfile(file_base + '.pdf'):
                             book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
                             if verbose:
                                 print "Importing %s.pdf" % file_base
+                        if os.path.isfile(file_base + '.mobi'):
+                            book.mobi_file.save('%s.mobi' % book.slug, File(file(file_base + '.mobi')))
+                            if verbose:
+                                print "Importing %s.mobi" % file_base
                         if os.path.isfile(file_base + '.epub'):
                             book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
                             if verbose:

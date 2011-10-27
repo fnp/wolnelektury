@@ -85,6 +85,7 @@ FORMATS = (
     ('txt', 'TXT'),
     ('epub', 'EPUB'),
     ('daisy', 'DAISY'),
+    ('mobi', 'MOBI'),
 )
 
 

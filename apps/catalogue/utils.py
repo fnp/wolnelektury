@@ -55,8 +55,8 @@ class ExistingFile(UploadedFile):
         pass
 
 
-class BookImportDocProvider(DocProvider):
-    """Used for joined EPUB and PDF files."""
+class ORMDocProvider(DocProvider):
+    """Used for getting books' children."""
 
     def __init__(self, book):
         self.book = book
