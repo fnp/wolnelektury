@@ -14,6 +14,7 @@ import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
 import catalogue.models
+from multiprocessing.pool import ThreadPool
 import atexit
 
 
@@ -247,23 +248,37 @@ class ReusableIndex(Index):
     if you cannot rely on atexit, use ReusableIndex.close_reusable() yourself.
     """
     index = None
-    def open(self, analyzer=None):
+    pool = None
+    pool_jobs = None
+
+    def open(self, analyzer=None, threads=4):
         if ReusableIndex.index is not None:
             self.index = ReusableIndex.index
         else:
-            Index.open(self,analyzer)
+            ReusableIndex.pool = ThreadPool(threads)
+            ReusableIndex.pool_jobs = []
+            Index.open(self, analyzer)
             ReusableIndex.index = self.index
             atexit.register(ReusableIndex.close_reusable)
+
+    def index_book(self, *args, **kw):
+        job = ReusableIndex.pool.apply_async(Index.index_book, args, kw)
+        ReusableIndex.pool_jobs.append(job)
 
     @staticmethod
     def close_reusable():
         if ReusableIndex.index is not None:
+            for job in ReusableIndex.pool_jobs:
+                job.wait()
+            ReusableIndex.pool.close()
+
             ReusableIndex.index.optimize()
             ReusableIndex.index.close()
             ReusableIndex.index = None
-            
+
     def close(self):
         pass
+
 
 class Search(IndexStore):
     def __init__(self, default_field="content"):
