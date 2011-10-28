@@ -90,6 +90,7 @@ class LockFile(object):
         self.lock.close()
 
 
+@task
 def create_zip(paths, zip_slug):
     """
     Creates a zip in MEDIA_ROOT/zip directory containing files from path.
@@ -128,8 +129,3 @@ def remove_zip(zip_slug):
     except OSError as oe:
         if oe.errno != ENOENT:
             raise oe
-
-
-@task
-def create_zip_task(*args):
-    return create_zip(*args)

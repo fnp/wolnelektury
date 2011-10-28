@@ -22,7 +22,7 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import ExistingFile, ORMDocProvider, create_zip_task, remove_zip
+from catalogue.utils import ExistingFile, ORMDocProvider, create_zip, remove_zip
 
 from librarian import dcparser, html, epub, NoDublinCore
 import mutagen
@@ -606,12 +606,8 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.epub_file and b.epub_file.path or None, books))
-        if settings.USE_CELERY:
-            result = create_zip_task.delay(paths, settings.ALL_EPUB_ZIP)
-            return result.wait()
-        else:
-            result = create_zip_task(paths, settings.ALL_EPUB_ZIP)
-            return result
+        result = create_zip_task.delay(paths, settings.ALL_EPUB_ZIP)
+        return result.wait()
 
     @staticmethod
     def zip_pdf():
@@ -619,12 +615,8 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.pdf_file and b.pdf_file.path or None, books))
-        if settings.USE_CELERY:
-            result = create_zip_task.delay(paths, settings.ALL_PDF_ZIP)
-            return result.wait()
-        else:
-            result = create_zip_task(paths, settings.ALL_PDF_ZIP)
-            return result
+        result = create_zip_task.delay(paths, settings.ALL_PDF_ZIP)
+        return result.wait()
 
     @staticmethod
     def zip_mobi():
@@ -638,12 +630,8 @@ class Book(models.Model):
     def zip_audiobooks(self):
         bm = BookMedia.objects.filter(book=self)
         paths = map(lambda bm: bm.file.path, bm)
-        if settings.USE_CELERY:
-            result = create_zip_task.delay(paths, self.slug)
-            return result.wait()
-        else:
-            result = create_zip_task(paths, self.slug)
-            return result
+        result = create_zip_task.delay(paths, self.slug)
+        return result.wait()
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):

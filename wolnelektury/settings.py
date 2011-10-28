@@ -245,7 +245,6 @@ BROKER_USER = "guest"
 BROKER_PASSWORD = "guest"
 BROKER_VHOST = "/"
 
-USE_CELERY = True
 
 # Load localsettings, if they exist
 try:

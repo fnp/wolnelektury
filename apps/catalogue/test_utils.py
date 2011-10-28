@@ -11,7 +11,7 @@ class WLTestCase(TestCase):
     def setUp(self):
         self._MEDIA_ROOT, settings.MEDIA_ROOT = settings.MEDIA_ROOT, tempfile.mkdtemp(prefix='djangotest_')
         settings.NO_BUILD_PDF = settings.NO_BUILD_MOBI = settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = True
-        settings.USE_CELERY = False
+        settings.CELERY_ALWAYS_EAGER = True
 
     def tearDown(self):
         shutil.rmtree(settings.MEDIA_ROOT, True)
