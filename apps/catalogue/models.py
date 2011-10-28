@@ -606,7 +606,7 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.epub_file and b.epub_file.path or None, books))
-        result = create_zip_task.delay(paths, settings.ALL_EPUB_ZIP)
+        result = create_zip.delay(paths, settings.ALL_EPUB_ZIP)
         return result.wait()
 
     @staticmethod
@@ -615,7 +615,7 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.pdf_file and b.pdf_file.path or None, books))
-        result = create_zip_task.delay(paths, settings.ALL_PDF_ZIP)
+        result = create_zip.delay(paths, settings.ALL_PDF_ZIP)
         return result.wait()
 
     @staticmethod
@@ -624,13 +624,13 @@ class Book(models.Model):
 
         paths = filter(lambda x: x is not None,
                        map(lambda b: b.mobi_file and b.mobi_file.path or None, books))
-        result = create_zip_task.delay(paths, settings.ALL_MOBI_ZIP)
+        result = create_zip.delay(paths, settings.ALL_MOBI_ZIP)
         return settings.MEDIA_URL + result.wait()
 
     def zip_audiobooks(self):
         bm = BookMedia.objects.filter(book=self)
         paths = map(lambda bm: bm.file.path, bm)
-        result = create_zip_task.delay(paths, self.slug)
+        result = create_zip.delay(paths, self.slug)
         return result.wait()
 
     @classmethod
