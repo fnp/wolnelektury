@@ -45,26 +45,21 @@ a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.pl'>free license</
             </a>
             Ogłaszamy <strong>otwarty konkurs na najlepszego automatycznego poetę</strong>! Konkurs startuje
             12 września 2011 roku – z okazji 90 rocznicy urodzin Stanisława Lema.
-            Termin nadsyłania prac upływa z końcem października 2011 roku.
+            Termin nadsyłania prac upływa 10 listopada 2011 roku.
             </p>
             <p class="see-more"><a target="_blank" href="http://turniej.wolnelektury.pl" >Idź do strony konkursu ⇒</a></p>
 
-            <h2>Wolne Lektury na Androida</h2>
-            <p><a target="_blank" href='https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi'>
-                <img src='{{ STATIC_URL }}img/android-poster.png' alt='Wolne Lektury na Androida' width='260' height='260' />
-            </a></p>
-            <p>Aplikacja Wolnych Lektur już w Android Market. Pobierz na swój telefon lub tablet!</p>
-            <p class="see-more"><a href="https://market.android.com/details?id=pl.org.nowoczesnapolska.wlmobi" >Zobacz aplikację ⇒</a></p>
+            <h2>Wolne Lektury na Kindle</h2>
 
-{% comment %}
-            <h2>Zabawnik</h2>
-            <p><a target="_blank" href='http://zabawnik.org'>
-                <img src='/static/img/zabawnik.png' alt='Zabawnik' width='260' height='108' />
+            <p><a target="_blank" href='{{ STATIC_URL }}img/kindle-poster.png'>
+                <img src='{{ STATIC_URL }}img/kindle-poster-260.png' alt='Wolne Lektury na Kindle' width='260' height='260' />
             </a></p>
-            <p>Zbiór scenariuszy gier i zabaw
-dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
-            <p class="see-more"><a href="http://zabawnik.org" title="Zabawnik">Przejdź do Zabawnika ⇒</a></p>
-{% endcomment %}
+
+            <p>Dobra wiadomość dla wszystkich posiadaczy czytnika Kindle – od
+            dzisiaj książki w bibliotece Wolne Lektury dostępne są w nowym formacie MOBI.</p>
+
+            <p>Życzymy miłego czytania!</p>
+
 
             {% comment %}    <h2>{% trans "Books for every school level" %}</h2>
             <ul>
@@ -90,6 +85,7 @@ dla dzieci, od wyliczanek poprzez gry planszowe, aż po teatr.</p>
                     <li>{{ new_set_form.name }} <input type="submit" value="{% trans "Create shelf" %}"/></li>
                 </ol>
                 </form>
+                <br/>
             {% else %}
                 <p>{% trans "Create your own book set. You can share it with friends by sending them link to your shelf." %}</p>
                 <p>{% trans "You need to " %} <a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
