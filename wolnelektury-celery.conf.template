@@ -3,12 +3,12 @@
 ; Put this in /etc/supervisor/conf.d
 ; =========================================
 
-[program:%(project_name)s-celery]
+[program:celery.%(project_name)s]
 command=%(path)s/bin/python %(path)s/releases/current/%(project_name)s/manage.py celeryd --loglevel=INFO
 directory=%(path)s/releases/current/%(project_name)s
 user=%(user)s
 numprocs=2
-process_name=wolnelektury-celery-%%(process_num)
+process_name=wolnelektury-celery-%%(process_num)d
 stdout_logfile=%(path)s/celeryd.log
 stderr_logfile=%(path)s/celeryd.log
 autostart=true
