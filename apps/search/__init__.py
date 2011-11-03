@@ -1,3 +1,3 @@
 import lucene
 lucene.initVM(lucene.CLASSPATH)
-from index import Index, Search, ReusableIndex
+from index import Index, Search, ReusableIndex, MultiSearch

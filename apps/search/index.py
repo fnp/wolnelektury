@@ -7,7 +7,7 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
-    PhraseQuery, StringReader
+    PhraseQuery, StringReader, TermQuery
     # KeywordAnalyzer
 import sys
 import os
@@ -374,11 +374,12 @@ class MultiSearch(Search):
         toks = []
         while tokens.incrementToken():
             cta = tokens.getAttribute(CharTermAttribute.class_)
-            toks.append(cta)
+            toks.append(cta.toString())
         return toks
 
-    def make_phrase(self, tokens, field='content', joined=False):
+    def make_phrase(self, tokens, field='content', joined=False, slop=2):
         phrase = PhraseQuery()
+        phrase.setSlop(slop)
         for t in tokens:
             term = Term(field, t)
             phrase.add(term)
@@ -390,7 +391,7 @@ class MultiSearch(Search):
         q = BooleanQuery()
         for t in tokens:
             term = Term(field, t)
-            q.add(BooleanClause(term, modal))
+            q.add(BooleanClause(TermQuery(term), modal))
         if joined:
             self.content_query(q)
         return q
@@ -399,7 +400,7 @@ class MultiSearch(Search):
         return BlockJoinQuery(query, self.parent_filter,
                               BlockJoinQuery.ScoreMode.Total)
 
-    def multiseach(self, query, max_results=50):
+    def multisearch(self, query, max_results=50):
         """
         Search strategy:
         - (phrase) OR -> content
@@ -417,6 +418,7 @@ class MultiSearch(Search):
         Should = BooleanClause.Occur.SHOULD
 
         phrase_level = BooleanQuery()
+        phrase_level.setBoost(1.3)
 
         p_content = self.make_phrase(tokens, joined=True)
         p_title = self.make_phrase(tokens, 'title')
@@ -436,9 +438,18 @@ class MultiSearch(Search):
         top_level.add(BooleanClause(phrase_level, Should))
         top_level.add(BooleanClause(kw_level, Should))
 
-        tops = self.searcher.search(top_level, max_results)
+        print self.do_search(phrase_level)
+        print self.do_search(kw_level)
+        print self.do_search(top_level)
+
+    def do_search(self, query, max_results=50):
+        tops = self.searcher.search(query, max_results)
+        #tops = self.searcher.search(p_content, max_results)
+
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+            b = catalogue.models.Book.objects.get(id=doc.get("book_id"))
+            bks.append(b)
+            print "%s (%d) -> %f" % (b, b.id, found.score)
         return (bks, tops.totalHits)
