@@ -7,7 +7,8 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
-    PhraseQuery, StringReader, TermQuery
+    PhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
+    Sort
     # KeywordAnalyzer
 import sys
 import os
@@ -16,6 +17,7 @@ from librarian import dcparser
 from librarian.parser import WLDocument
 import catalogue.models
 from multiprocessing.pool import ThreadPool
+from threading import current_thread
 import atexit
 
 
@@ -82,7 +84,7 @@ class Index(IndexStore):
     def index_book(self, book, overwrite=True):
         if overwrite:
             self.remove_book(book)
-            
+
 
         doc = self.extract_metadata(book)
         parts = self.extract_content(book)
@@ -117,6 +119,8 @@ class Index(IndexStore):
     def extract_metadata(self, book):
         book_info = dcparser.parse(book.xml_file)
 
+        print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
+        
         doc = self.create_book_doc(book)
         doc.add(Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS))
         doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
@@ -257,6 +261,7 @@ class ReusableIndex(Index):
         if ReusableIndex.index is not None:
             self.index = ReusableIndex.index
         else:
+            print("opening index")
             ReusableIndex.pool = ThreadPool(threads)
             ReusableIndex.pool_jobs = []
             Index.open(self, analyzer)
@@ -270,6 +275,7 @@ class ReusableIndex(Index):
     @staticmethod
     def close_reusable():
         if ReusableIndex.index is not None:
+            print("closing index")
             for job in ReusableIndex.pool_jobs:
                 job.wait()
             ReusableIndex.pool.close()
@@ -393,7 +399,7 @@ class MultiSearch(Search):
             term = Term(field, t)
             q.add(BooleanClause(TermQuery(term), modal))
         if joined:
-            self.content_query(q)
+            q = self.content_query(q)
         return q
 
     def content_query(self, query):
@@ -421,7 +427,7 @@ class MultiSearch(Search):
         phrase_level.setBoost(1.3)
 
         p_content = self.make_phrase(tokens, joined=True)
-        p_title = self.make_phrase(tokens, 'title')
+        p_title = self.makxe_phrase(tokens, 'title')
         p_author = self.make_phrase(tokens, 'author')
 
         phrase_level.add(BooleanClause(p_content, Should))
@@ -431,18 +437,32 @@ class MultiSearch(Search):
         kw_level = BooleanQuery()
 
         kw_level.add(self.make_term_query(tokens, 'author'), Should)
-        kw_level.add(self.make_term_query(tokens, 'themes', joined=True), Should)
+        j_themes = self.make_term_query(tokens, 'themes', joined=True)
+        kw_level.add(j_themes, Should)
         kw_level.add(self.make_term_query(tokens, 'tags'), Should)
-        kw_level.add(self.make_term_query(tokens, joined=True), Should)
+        j_con = self.make_term_query(tokens, joined=True)
+        kw_level.add(j_con, Should)
 
         top_level.add(BooleanClause(phrase_level, Should))
         top_level.add(BooleanClause(kw_level, Should))
 
-        print self.do_search(phrase_level)
-        print self.do_search(kw_level)
-        print self.do_search(top_level)
+        collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
 
-    def do_search(self, query, max_results=50):
+        self.searcher.search(kw_level, collector)
+
+        # frazy w treści:
+        # ph1 = collector.getTopGroups(j_themes, Sort.RELEVANCE,
+        #                                        0, 10, 0, True)
+        #  reload(search.index); realod(search); s = search.MultiSearch(); s.multisearch(u'dusiołek')       
+        #        ph2 = collector.getTopGroups(j_con, Sort.RELEVANCE,
+        #                                     0, 10, 0, True)
+
+        import pdb; pdb.set_trace();
+        
+        return None
+
+    
+    def do_search(self, query, max_results=50, collector=None):
         tops = self.searcher.search(query, max_results)
         #tops = self.searcher.search(p_content, max_results)
 

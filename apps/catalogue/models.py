@@ -626,8 +626,12 @@ class Book(models.Model):
         return result.wait()
 
     def search_index(self):
-        with search.ReusableIndex() as idx:
+        idx = search.ReusableIndex()
+        idx.open()
+        try:
             idx.index_book(self)
+        finally:
+            idx.close()
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
