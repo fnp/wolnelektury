@@ -781,12 +781,8 @@ def tag_info(request, id):
 
 def download_zip(request, format, slug):
     url = None
-    if format == 'pdf':
-        url = models.Book.zip_pdf()
-    elif format == 'epub':
-        url = models.Book.zip_epub()
-    elif format == 'mobi':
-        url = models.Book.zip_mobi()
+    if format in ('pdf', 'epub', 'mobi'):
+        url = models.Book.zip_format(format)
     elif format == 'audiobook' and slug is not None:
         book = models.Book.objects.get(slug=slug)
         url = book.zip_audiobooks()

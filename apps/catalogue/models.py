@@ -615,6 +615,7 @@ class Book(models.Model):
                     for b in books]
         result = create_zip.delay(paths,
                     getattr(settings, "ALL_%s_ZIP" % format_.upper()))
+        return result.wait()
 
     def zip_audiobooks(self):
         bm = BookMedia.objects.filter(book=self, type='mp3')
