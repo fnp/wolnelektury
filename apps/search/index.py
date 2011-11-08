@@ -370,6 +370,76 @@ class Search(IndexStore):
 # }
 
 
+class SearchResult(object):
+    def __init__(self, searcher, scoreDocs, score=None):
+        if score:
+            self.score = score
+        else:
+            self.score = scoreDocs.score
+
+        self.fragments = []
+        self.scores = {}
+        self.sections = []
+
+        stored = searcher.doc(scoreDocs.doc)
+        self.book_id = int(stored.get("book_id"))
+
+        fragment = stored.get("fragment_anchor")
+        if fragment:
+            self.fragments.append(fragment)
+            self.scores[fragment] = scoreDocs.score
+
+        header_type = stored.get("header_type")
+        if header_type:
+            sec = (header_type, int(stored.get("header_index")))
+            self.sections.append(sec)
+            self.scores[sec] = scoreDocs.score
+
+    def get_book(self):
+        return catalogue.models.Book.objects.get(id=self.book_id)
+
+    book = property(get_book)
+
+    def get_parts(self):
+        book = self.book
+        parts = [{"header": s[0], "position": s[1], '_score_key': s} for s in self.sections] \
+            + [{"fragment": book.fragments.get(anchor=f), '_score_key':f} for f in self.fragments]
+
+        parts.sort(lambda a, b: cmp(self.scores[a['_score_key']], self.scores[b['_score_key']]))
+        print("bookid: %d parts: %s" % (self.book_id, parts))
+        return parts
+
+    parts = property(get_parts)
+
+    def merge(self, other):
+        if self.book_id != other.book_id:
+            raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
+        self.fragments += other.fragments
+        self.sections += other.sections
+        self.scores.update(other.scores)
+        if other.score > self.score:
+            self.score = other.score
+        return self
+
+    def __unicode__(self):
+        return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
+
+    @staticmethod
+    def aggregate(*result_lists):
+        books = {}
+        for rl in result_lists:
+            for r in rl:
+                if r.book_id in books:
+                    books[r.book_id].merge(r)
+                    #print(u"already have one with score %f, and this one has score %f" % (books[book.id][0], found.score))
+                else:
+                    books[r.book_id] = r
+        return books.values()
+
+    def __cmp__(self, other):
+        return cmp(self.score, other.score)
+
+
 class MultiSearch(Search):
     """Class capable of IMDb-like searching"""
     def get_tokens(self, queryreader):
@@ -402,15 +472,25 @@ class MultiSearch(Search):
         return BlockJoinQuery(query, self.parent_filter,
                               BlockJoinQuery.ScoreMode.Total)
 
-    def search_perfect(self, tokens, max_results=20):
-        qrys = [self.make_phrase(tokens, field=fld) for fld in ['author', 'title', 'content']]
+    def search_perfect_book(self, tokens, max_results=20):
+        qrys = [self.make_phrase(tokens, field=fld) for fld in ['author', 'title']]
 
         books = []
         for q in qrys:
             top = self.searcher.search(q, max_results)
             for found in top.scoreDocs:
-                book_info = self.searcher.doc(found.doc)
-                books.append((found.score, catalogue.models.Book.objects.get(id=book_info.get("book_id")), []))
+                books.append(SearchResult(self.searcher, found))
+        return books
+
+    def search_perfect_parts(self, tokens, max_results=20):
+        qrys = [self.make_phrase(tokens, field=fld) for fld in ['content']]
+
+        books = []
+        for q in qrys:
+            top = self.searcher.search(q, max_results)
+            for found in top.scoreDocs:
+                books.append(SearchResult(self.searcher, found))
+
         return books
 
     def search_everywhere(self, tokens, max_results=20):
@@ -437,23 +517,9 @@ class MultiSearch(Search):
         top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
         if top_groups:
             for grp in top_groups.groups:
-                doc_id = Integer.cast_(grp.groupValue).intValue()
-                book_data = self.searcher.doc(doc_id)
-                book = catalogue.models.Book.objects.get(id=book_data.get("book_id"))
-                parts = []
                 for part in grp.scoreDocs:
-                    part_data = self.searcher.doc(part.doc)
-                    header_type = part_data.get("header_type")
-                    if header_type:
-                        parts.append((part.score, {"header": header_type, "position": int(part_data.get("header_index"))}))
-                    fragment = part_data.get("fragment_anchor")
-                    if fragment:
-                        fragment = book.fragments.get(anchor=fragment)
-                        parts.append((part.score, {"fragment": fragment}))
-                books.append((grp.maxScore, book, parts))
-                
+                    books.append(SearchResult(self.searcher, part, score=grp.maxScore))
         return books
-
 
     def multisearch(self, query, max_results=50):
         """

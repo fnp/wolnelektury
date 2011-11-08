@@ -2,11 +2,11 @@
 {% load i18n %}
 {% load catalogue_tags %}
 
-{% block title %}Leśmianator w WolneLektury.pl{% endblock %}
+{% block title %}Search{% endblock %}
 
-{% block metadescription %}Stwórz własny wierszmiks z utworów znajdujących się na Wolnych Lekturach.{% endblock %}
+{% block metadescription %}{% endblock %}
 
-{% block bodyid %}lesmianator{% endblock %}
+{% block bodyid %}newsearch{% endblock %}
 
 {% block body %}
     <h1>Search</h1>
@@ -19,11 +19,11 @@
 
     <div id="results">
       <ol>
-      {% for score,book,parts in results %}
+      {% for result in results %}
       <li>
-	<p>{{book.author}} - {{book.title}} (id: {{book.id}}, score: {{score}})</p>
+	<p>{{result.book.pretty_title}} (id: {{result.book.id}}, score: {{result.score}})</p>
 	<ul>
-	  {% for score,part in parts %}
+	  {% for part in result.parts %}
 	  {% if part.header %}
 	  <li>W {{part.header}} nr {{part.position}}</li>
 	  {% else %} 

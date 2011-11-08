@@ -8,7 +8,7 @@ from django.views.decorators import cache
 from catalogue.utils import get_random_hash
 from catalogue.models import Book, Tag
 from catalogue import forms
-from search import MultiSearch, JVM
+from search import MultiSearch, JVM, SearchResult
 
 
 def main(request):
@@ -19,9 +19,13 @@ def main(request):
     results = None
     if 'q' in request.GET:
         toks = srch.get_tokens(request.GET['q'])
-        results = srch.search_perfect(toks) + srch.search_everywhere(toks)
-        results.sort(lambda a, b: cmp(a[0], b[0]) < 0)
-        print("searched, results are: %s\n" % results)
+        results = SearchResult.aggregate(srch.search_perfect_book(toks),
+                                         srch.search_perfect_parts(toks),
+                                         srch.search_everywhere(toks))
+        results.sort(reverse=True)
+
+        for r in results:
+            print r.parts
 
     return render_to_response('newsearch/search.html', {"results": results},
                               context_instance=RequestContext(request))
