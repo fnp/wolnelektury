@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from django.conf import settings
 from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
@@ -8,8 +9,10 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
     PhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
-    Sort, Integer
+    Sort, Integer, \
+    initVM, CLASSPATH
     # KeywordAnalyzer
+JVM = initVM(CLASSPATH)
 import sys
 import os
 import errno
@@ -84,7 +87,6 @@ class Index(IndexStore):
     def index_book(self, book, overwrite=True):
         if overwrite:
             self.remove_book(book)
-
 
         doc = self.extract_metadata(book)
         parts = self.extract_content(book)
@@ -262,14 +264,14 @@ class ReusableIndex(Index):
             self.index = ReusableIndex.index
         else:
             print("opening index")
-            ReusableIndex.pool = ThreadPool(threads)
+            ReusableIndex.pool = ThreadPool(threads, initializer=lambda: JVM.attachCurrentThread() )
             ReusableIndex.pool_jobs = []
             Index.open(self, analyzer)
             ReusableIndex.index = self.index
             atexit.register(ReusableIndex.close_reusable)
 
     def index_book(self, *args, **kw):
-        job = ReusableIndex.pool.apply_async(Index.index_book, (self,)+ args, kw)
+        job = ReusableIndex.pool.apply_async(Index.index_book, (self,) + args, kw)
         ReusableIndex.pool_jobs.append(job)
 
     @staticmethod
@@ -277,7 +279,9 @@ class ReusableIndex(Index):
         if ReusableIndex.index is not None:
             print("closing index")
             for job in ReusableIndex.pool_jobs:
-                job.wait()
+                job.get()
+                sys.stdout.write('.')
+                sys.stdout.flush()
             ReusableIndex.pool.close()
 
             ReusableIndex.index.optimize()
