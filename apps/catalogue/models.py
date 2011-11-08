@@ -220,10 +220,11 @@ class BookMedia(models.Model):
             if slughifi(self.name) != slughifi(old.name):
                 self.file.save(None, ExistingFile(self.file.path), save=False, leave=True)
 
+        super(BookMedia, self).save(*args, **kwargs)
+
         # remove the zip package for book with modified media
         remove_zip(self.book.slug)
 
-        super(BookMedia, self).save(*args, **kwargs)
         extra_info = self.get_extra_info_value()
         extra_info.update(self.read_meta())
         self.set_extra_info_value(extra_info)
@@ -466,9 +467,6 @@ class Book(models.Model):
         from tempfile import NamedTemporaryFile
         import os
 
-        # remove zip with all pdf files
-        remove_zip(settings.ALL_PDF_ZIP)
-
         try:
             pdf_file = NamedTemporaryFile(delete=False)
             pdf.transform(ORMDocProvider(self),
@@ -480,6 +478,9 @@ class Book(models.Model):
         finally:
             unlink(pdf_file.name)
 
+        # remove zip with all pdf files
+        remove_zip(settings.ALL_PDF_ZIP)
+
     def build_mobi(self):
         """ (Re)builds the MOBI file.
 
@@ -487,9 +488,6 @@ class Book(models.Model):
         from librarian import mobi
         from tempfile import NamedTemporaryFile
         import os
-
-        # remove zip with all pdf files
-        remove_zip(settings.ALL_MOBI_ZIP)
 
         try:
             mobi_file = NamedTemporaryFile(suffix='.mobi', delete=False)
@@ -501,6 +499,9 @@ class Book(models.Model):
             self.mobi_file.save('%s.mobi' % self.slug, File(open(mobi_file.name)))
         finally:
             unlink(mobi_file.name)
+
+        # remove zip with all mobi files
+        remove_zip(settings.ALL_MOBI_ZIP)
 
     def build_epub(self, remove_descendants=True):
         """ (Re)builds the epub file.
@@ -514,9 +515,6 @@ class Book(models.Model):
         if self.parent:
             # don't need an epub
             return
-
-        # remove zip package with all epub files
-        remove_zip(settings.ALL_EPUB_ZIP)
 
         epub_file = StringIO()
         try:
@@ -534,6 +532,9 @@ class Book(models.Model):
             # save anyway, to refresh short_html
             child_book.save()
             book_descendants += list(child_book.children.all())
+
+        # remove zip package with all epub files
+        remove_zip(settings.ALL_EPUB_ZIP)
 
     def build_txt(self):
         from StringIO import StringIO
@@ -601,35 +602,23 @@ class Book(models.Model):
         return False
 
     @staticmethod
-    def zip_epub():
-        books = Book.objects.all()
+    def zip_format(format_):
+        def pretty_file_name(book):
+            return "%s/%s.%s" % (
+                b.get_extra_info_value()['author'],
+                b.slug,
+                format_)
 
-        paths = filter(lambda x: x is not None,
-                       map(lambda b: b.epub_file and b.epub_file.path or None, books))
-        result = create_zip.delay(paths, settings.ALL_EPUB_ZIP)
-        return result.wait()
-
-    @staticmethod
-    def zip_pdf():
-        books = Book.objects.all()
-
-        paths = filter(lambda x: x is not None,
-                       map(lambda b: b.pdf_file and b.pdf_file.path or None, books))
-        result = create_zip.delay(paths, settings.ALL_PDF_ZIP)
-        return result.wait()
-
-    @staticmethod
-    def zip_mobi():
-        books = Book.objects.all()
-
-        paths = filter(lambda x: x is not None,
-                       map(lambda b: b.mobi_file and b.mobi_file.path or None, books))
-        result = create_zip.delay(paths, settings.ALL_MOBI_ZIP)
-        return settings.MEDIA_URL + result.wait()
+        field_name = "%s_file" % format_
+        books = Book.objects.filter(parent=None).exclude(**{field_name: ""})
+        paths = [(pretty_file_name(b), getattr(b, field_name).path)
+                    for b in books]
+        result = create_zip.delay(paths,
+                    getattr(settings, "ALL_%s_ZIP" % format_.upper()))
 
     def zip_audiobooks(self):
-        bm = BookMedia.objects.filter(book=self)
-        paths = map(lambda bm: bm.file.path, bm)
+        bm = BookMedia.objects.filter(book=self, type='mp3')
+        paths = map(lambda bm: (None, bm.file.path), bm)
         result = create_zip.delay(paths, self.slug)
         return result.wait()
 

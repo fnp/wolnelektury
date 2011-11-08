@@ -111,8 +111,10 @@ def create_zip(paths, zip_slug):
         if not path.exists(path.join(zip_path, zip_filename)):
             zipf = ZipFile(path.join(zip_path, zip_filename), 'w')
             try:
-                for p in paths:
-                    zipf.write(p, path.basename(p))
+                for arcname, p in paths:
+                    if arcname is None:
+                        arcname = path.basename(p)
+                    zipf.write(p, arcname)
             finally:
                 zipf.close()
 

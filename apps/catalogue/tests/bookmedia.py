@@ -87,8 +87,8 @@ class BookMediaTests(WLTestCase):
 
     def test_zip_audiobooks(self):
         paths = [
-            join(dirname(__file__), "files/fraszka-do-anusie.xml"),
-            join(dirname(__file__), "files/fraszki.xml")
+            (None, join(dirname(__file__), "files/fraszka-do-anusie.xml")),
+            (None, join(dirname(__file__), "files/fraszki.xml")),
             ]
 
         url = utils.create_zip(paths, 'test-zip-slug')
