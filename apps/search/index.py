@@ -8,7 +8,7 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
     PhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
-    Sort
+    Sort, Integer
     # KeywordAnalyzer
 import sys
 import os
@@ -104,7 +104,7 @@ class Index(IndexStore):
         'wywiad'
         ]
 
-    skip_header_tags = ['autor_utworu', 'nazwa_utworu']
+    skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne']
 
     def create_book_doc(self, book):
         """
@@ -179,7 +179,7 @@ class Index(IndexStore):
             doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
             doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
             content = u' '.join([t for t in header.itertext()])
-            doc.add(Field("content", content, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("content", content, Field.Store.YES, Field.Index.ANALYZED))
             header_docs.append(doc)
 
         def walker(node):
@@ -222,7 +222,7 @@ class Index(IndexStore):
                               Field.Store.YES, Field.Index.NOT_ANALYZED))
                 doc.add(Field("content",
                               u' '.join(filter(lambda s: s is not None, frag['content'])),
-                              Field.Store.NO, Field.Index.ANALYZED))
+                              Field.Store.YES, Field.Index.ANALYZED))
                 doc.add(Field("themes",
                               u' '.join(filter(lambda s: s is not None, frag['themes'])),
                               Field.Store.NO, Field.Index.ANALYZED))
@@ -373,7 +373,7 @@ class Search(IndexStore):
 class MultiSearch(Search):
     """Class capable of IMDb-like searching"""
     def get_tokens(self, queryreader):
-        if isinstance(queryreader, str):
+        if isinstance(queryreader, str) or isinstance(queryreader, unicode):
             queryreader = StringReader(queryreader)
         queryreader.reset()
         tokens = self.analyzer.reusableTokenStream('content', queryreader)
@@ -383,28 +383,77 @@ class MultiSearch(Search):
             toks.append(cta.toString())
         return toks
 
-    def make_phrase(self, tokens, field='content', joined=False, slop=2):
+    def make_phrase(self, tokens, field='content', slop=2):
         phrase = PhraseQuery()
         phrase.setSlop(slop)
         for t in tokens:
             term = Term(field, t)
             phrase.add(term)
-        if joined:
-            phrase = self.content_query(phrase)
         return phrase
 
-    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, joined=False):
+    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD):
         q = BooleanQuery()
         for t in tokens:
             term = Term(field, t)
             q.add(BooleanClause(TermQuery(term), modal))
-        if joined:
-            q = self.content_query(q)
         return q
 
     def content_query(self, query):
         return BlockJoinQuery(query, self.parent_filter,
                               BlockJoinQuery.ScoreMode.Total)
+
+    def search_perfect(self, tokens, max_results=20):
+        qrys = [self.make_phrase(tokens, field=fld) for fld in ['author', 'title', 'content']]
+
+        books = []
+        for q in qrys:
+            top = self.searcher.search(q, max_results)
+            for found in top.scoreDocs:
+                book_info = self.searcher.doc(found.doc)
+                books.append((found.score, catalogue.models.Book.objects.get(id=book_info.get("book_id")), []))
+        return books
+
+    def search_everywhere(self, tokens, max_results=20):
+        q = BooleanQuery()
+        in_meta = BooleanQuery()
+        in_content = BooleanQuery()
+
+        for fld in ['themes', 'content']:
+            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld), BooleanClause.Occur.SHOULD))
+
+        for fld in ['author', 'title', 'epochs', 'genres', 'kinds']:
+            in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld), BooleanClause.Occur.SHOULD))
+
+        q.add(BooleanClause(in_meta, BooleanClause.Occur.MUST))
+        in_content_join = self.content_query(in_content)
+        q.add(BooleanClause(in_content_join, BooleanClause.Occur.MUST))
+
+        collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
+
+        self.searcher.search(q, collector)
+
+        books = []
+
+        top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
+        if top_groups:
+            for grp in top_groups.groups:
+                doc_id = Integer.cast_(grp.groupValue).intValue()
+                book_data = self.searcher.doc(doc_id)
+                book = catalogue.models.Book.objects.get(id=book_data.get("book_id"))
+                parts = []
+                for part in grp.scoreDocs:
+                    part_data = self.searcher.doc(part.doc)
+                    header_type = part_data.get("header_type")
+                    if header_type:
+                        parts.append((part.score, {"header": header_type, "position": int(part_data.get("header_index"))}))
+                    fragment = part_data.get("fragment_anchor")
+                    if fragment:
+                        fragment = book.fragments.get(anchor=fragment)
+                        parts.append((part.score, {"fragment": fragment}))
+                books.append((grp.maxScore, book, parts))
+                
+        return books
+
 
     def multisearch(self, query, max_results=50):
         """
@@ -417,48 +466,35 @@ class MultiSearch(Search):
                       -> tags
                       -> content
         """
-        queryreader = StringReader(query)
-        tokens = self.get_tokens(queryreader)
+        # queryreader = StringReader(query)
+        # tokens = self.get_tokens(queryreader)
 
-        top_level = BooleanQuery()
-        Should = BooleanClause.Occur.SHOULD
+        # top_level = BooleanQuery()
+        # Should = BooleanClause.Occur.SHOULD
 
-        phrase_level = BooleanQuery()
-        phrase_level.setBoost(1.3)
+        # phrase_level = BooleanQuery()
+        # phrase_level.setBoost(1.3)
 
-        p_content = self.make_phrase(tokens, joined=True)
-        p_title = self.makxe_phrase(tokens, 'title')
-        p_author = self.make_phrase(tokens, 'author')
+        # p_content = self.make_phrase(tokens, joined=True)
+        # p_title = self.make_phrase(tokens, 'title')
+        # p_author = self.make_phrase(tokens, 'author')
 
-        phrase_level.add(BooleanClause(p_content, Should))
-        phrase_level.add(BooleanClause(p_title, Should))
-        phrase_level.add(BooleanClause(p_author, Should))
+        # phrase_level.add(BooleanClause(p_content, Should))
+        # phrase_level.add(BooleanClause(p_title, Should))
+        # phrase_level.add(BooleanClause(p_author, Should))
 
-        kw_level = BooleanQuery()
+        # kw_level = BooleanQuery()
 
-        kw_level.add(self.make_term_query(tokens, 'author'), Should)
-        j_themes = self.make_term_query(tokens, 'themes', joined=True)
-        kw_level.add(j_themes, Should)
-        kw_level.add(self.make_term_query(tokens, 'tags'), Should)
-        j_con = self.make_term_query(tokens, joined=True)
-        kw_level.add(j_con, Should)
+        # kw_level.add(self.make_term_query(tokens, 'author'), Should)
+        # j_themes = self.make_term_query(tokens, 'themes', joined=True)
+        # kw_level.add(j_themes, Should)
+        # kw_level.add(self.make_term_query(tokens, 'tags'), Should)
+        # j_con = self.make_term_query(tokens, joined=True)
+        # kw_level.add(j_con, Should)
 
-        top_level.add(BooleanClause(phrase_level, Should))
-        top_level.add(BooleanClause(kw_level, Should))
+        # top_level.add(BooleanClause(phrase_level, Should))
+        # top_level.add(BooleanClause(kw_level, Should))
 
-        collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
-
-        self.searcher.search(kw_level, collector)
-
-        # frazy w treści:
-        # ph1 = collector.getTopGroups(j_themes, Sort.RELEVANCE,
-        #                                        0, 10, 0, True)
-        #  reload(search.index); realod(search); s = search.MultiSearch(); s.multisearch(u'dusiołek')       
-        #        ph2 = collector.getTopGroups(j_con, Sort.RELEVANCE,
-        #                                     0, 10, 0, True)
-
-        import pdb; pdb.set_trace();
-        
         return None
 
     

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags %}
+
+{% block title %}Leśmianator w WolneLektury.pl{% endblock %}
+
+{% block metadescription %}Stwórz własny wierszmiks z utworów znajdujących się na Wolnych Lekturach.{% endblock %}
+
+{% block bodyid %}lesmianator{% endblock %}
+
+{% block body %}
+    <h1>Search</h1>
+    <form action="{% url newsearch %}" method="get" accept-charset="utf-8" id="search-form-x">
+        <p>
+	  <input type="text" name="q" style="width:250px; font-size: 1.2em;">
+	  <input type="submit" value="{% trans "Search" %}" /> 
+	</p>
+    </form>
+
+    <div id="results">
+      <ol>
+      {% for score,book,parts in results %}
+      <li>
+	<p>{{book.author}} - {{book.title}} (id: {{book.id}}, score: {{score}})</p>
+	<ul>
+	  {% for score,part in parts %}
+	  {% if part.header %}
+	  <li>W {{part.header}} nr {{part.position}}</li>
+	  {% else %} 
+	  {% if part.fragment %}
+	  <li>
+	    <div style="font-weight: bold;">{% for tag in part.fragment.tags %}{{tag.name}} {% endfor %}</div>
+	    {{part.fragment.text|safe}} </li>
+	  {% endif %}
+	  {% endif %}
+	  {% endfor %}
+	</ul>
+      </li>
+      {% empty %}
+      <p>No results.</p>
+      {% endfor %}
+      </ol>
+    </div>
+
+{% endblock %}
