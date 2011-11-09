@@ -125,7 +125,7 @@ class Index(IndexStore):
         
         doc = self.create_book_doc(book)
         doc.add(Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS))
-        doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
+        #doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
         doc.add(Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
 
         # validator, name
@@ -288,11 +288,12 @@ class ReusableIndex(Index):
     @staticmethod
     def close_reusable():
         if ReusableIndex.index is not None:
-            print("closing index")
+            print("wait for indexing to finish")
             for job in ReusableIndex.pool_jobs:
                 job.get()
                 sys.stdout.write('.')
                 sys.stdout.flush()
+            print("done.")
             ReusableIndex.pool.close()
 
             ReusableIndex.index.optimize()
