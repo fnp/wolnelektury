@@ -22,7 +22,7 @@ import catalogue.models
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
 import atexit
-
+import traceback
 
 class WLAnalyzer(PerFieldAnalyzerWrapper):
     def __init__(self):
@@ -247,6 +247,17 @@ class Index(IndexStore):
         self.close()
 
 
+def log_exception_wrapper(f):
+    def _wrap(*a):
+	try:
+	    f(*a)
+	except Exception, e:
+	    print("Error in indexing thread: %s" % e)
+	    traceback.print_exc()
+	    raise e
+    return _wrap
+
+
 class ReusableIndex(Index):
     """
     Works like index, but does not close/optimize Lucene index
@@ -271,7 +282,7 @@ class ReusableIndex(Index):
             atexit.register(ReusableIndex.close_reusable)
 
     def index_book(self, *args, **kw):
-        job = ReusableIndex.pool.apply_async(Index.index_book, (self,) + args, kw)
+        job = ReusableIndex.pool.apply_async(log_exception_wrapper(Index.index_book), (self,) + args, kw)
         ReusableIndex.pool_jobs.append(job)
 
     @staticmethod
