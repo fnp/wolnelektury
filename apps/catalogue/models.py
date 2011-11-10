@@ -626,7 +626,14 @@ class Book(models.Model):
         return result.wait()
 
     def search_index(self):
-        idx = search.ReusableIndex()
+        if settings.SEARCH_INDEX_PARALLEL:
+            if instance(settings.SEARCH_INDEX_PARALLEL, int):
+                idx = search.ReusableIndex(threads=4)
+            else:
+                idx = search.ReusableIndex()
+        else:
+            idx = search.Index()
+            
         idx.open()
         try:
             idx.index_book(self)
