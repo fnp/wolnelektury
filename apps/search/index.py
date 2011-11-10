@@ -3,14 +3,15 @@
 from django.conf import settings
 from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
-    QueryParser, Term, PerFieldAnalyzerWrapper, \
+    QueryParser, PerFieldAnalyzerWrapper, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
     KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
-    PhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
-    Sort, Integer, \
-    initVM, CLASSPATH
+    PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
+    FuzzyQuery, FuzzyTermEnum, Sort, Integer, \
+    SimpleHTMLFormatter, Highlighter, QueryScorer, TokenSources, TextFragment, \
+    initVM, CLASSPATH, JArray
     # KeywordAnalyzer
 JVM = initVM(CLASSPATH)
 import sys
@@ -23,6 +24,7 @@ from multiprocessing.pool import ThreadPool
 from threading import current_thread
 import atexit
 import traceback
+
 
 class WLAnalyzer(PerFieldAnalyzerWrapper):
     def __init__(self):
@@ -43,7 +45,9 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("author", simple)
         self.addAnalyzer("is_book", keyword)
 
-        #self.addanalyzer("fragment_anchor", keyword)
+        self.addAnalyzer("KEYWORD", keyword)
+        self.addAnalyzer("SIMPLE", simple)
+        self.addAnalyzer("NATURAL", polish)
 
 
 class IndexStore(object):
@@ -81,7 +85,7 @@ class Index(IndexStore):
         self.index = None
 
     def remove_book(self, book):
-        q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True,True)
+        q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
         self.index.deleteDocuments(q)
 
     def index_book(self, book, overwrite=True):
@@ -122,10 +126,10 @@ class Index(IndexStore):
         book_info = dcparser.parse(book.xml_file)
 
         print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
-        
+
         doc = self.create_book_doc(book)
         doc.add(Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS))
-        #doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
+        doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
         doc.add(Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
 
         # validator, name
@@ -160,7 +164,6 @@ class Index(IndexStore):
             if master.tag in self.master_tags:
                 return master
 
-    
     def extract_content(self, book):
         wld = WLDocument.from_file(book.xml_file.path)
         root = wld.edoc.getroot()
@@ -172,7 +175,7 @@ class Index(IndexStore):
         master = self.get_master(root)
         if master is None:
             return []
-        
+
         header_docs = []
         for header, position in zip(list(master), range(len(master))):
             if header.tag in self.skip_header_tags:
@@ -224,7 +227,7 @@ class Index(IndexStore):
                               Field.Store.YES, Field.Index.NOT_ANALYZED))
                 doc.add(Field("content",
                               u' '.join(filter(lambda s: s is not None, frag['content'])),
-                              Field.Store.YES, Field.Index.ANALYZED))
+                              Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS))
                 doc.add(Field("themes",
                               u' '.join(filter(lambda s: s is not None, frag['themes'])),
                               Field.Store.NO, Field.Index.ANALYZED))
@@ -249,12 +252,12 @@ class Index(IndexStore):
 
 def log_exception_wrapper(f):
     def _wrap(*a):
-	try:
-	    f(*a)
-	except Exception, e:
-	    print("Error in indexing thread: %s" % e)
-	    traceback.print_exc()
-	    raise e
+        try:
+            f(*a)
+        except Exception, e:
+            print("Error in indexing thread: %s" % e)
+            traceback.print_exc()
+            raise e
     return _wrap
 
 
@@ -307,7 +310,7 @@ class ReusableIndex(Index):
 class Search(IndexStore):
     def __init__(self, default_field="content"):
         IndexStore.__init__(self)
-        self.analyzer = PolishAnalyzer(Version.LUCENE_34)
+        self.analyzer = WLAnalyzer() #PolishAnalyzer(Version.LUCENE_34)
         ## self.analyzer = WLAnalyzer()
         self.searcher = IndexSearcher(self.store, True)
         self.parser = QueryParser(Version.LUCENE_34, default_field,
@@ -387,7 +390,7 @@ class Search(IndexStore):
 
 
 class SearchResult(object):
-    def __init__(self, searcher, scoreDocs, score=None):
+    def __init__(self, searcher, scoreDocs, score=None, highlight_query=None):
         if score:
             self.score = score
         else:
@@ -411,6 +414,12 @@ class SearchResult(object):
             self.sections.append(sec)
             self.scores[sec] = scoreDocs.score
 
+        self.snippets = []
+
+    def add_snippets(self, snippets):
+        self.snippets += snippets
+        return self
+
     def get_book(self):
         return catalogue.models.Book.objects.get(id=self.book_id)
 
@@ -432,6 +441,7 @@ class SearchResult(object):
             raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
         self.fragments += other.fragments
         self.sections += other.sections
+        self.snippets += other.snippets
         self.scores.update(other.scores)
         if other.score > self.score:
             self.score = other.score
@@ -458,38 +468,75 @@ class SearchResult(object):
 
 class MultiSearch(Search):
     """Class capable of IMDb-like searching"""
-    def get_tokens(self, queryreader):
-        if isinstance(queryreader, str) or isinstance(queryreader, unicode):
-            queryreader = StringReader(queryreader)
-        queryreader.reset()
-        tokens = self.analyzer.reusableTokenStream('content', queryreader)
+    def get_tokens(self, searched, field='content'):
+        """returns tokens analyzed by a proper (for a field) analyzer
+        argument can be: StringReader, string/unicode, or tokens. In the last case
+        they will just be returned (so we can reuse tokens, if we don't change the analyzer)
+        """
+        if isinstance(searched, str) or isinstance(searched, unicode):
+            searched = StringReader(searched)
+        elif isinstance(searched, list):
+            return searched
+
+        searched.reset()
+        tokens = self.analyzer.reusableTokenStream(field, searched)
         toks = []
         while tokens.incrementToken():
             cta = tokens.getAttribute(CharTermAttribute.class_)
             toks.append(cta.toString())
         return toks
 
-    def make_phrase(self, tokens, field='content', slop=2):
-        phrase = PhraseQuery()
-        phrase.setSlop(slop)
-        for t in tokens:
-            term = Term(field, t)
-            phrase.add(term)
+    def fuzziness(self, fuzzy):
+        if not fuzzy:
+            return None
+        if isinstance(fuzzy, float) and fuzzy > 0.0 and fuzzy <= 1.0:
+            return fuzzy
+        else:
+            return 0.5
+
+    def make_phrase(self, tokens, field='content', slop=2, fuzzy=False):
+        if fuzzy:
+            phrase = MultiPhraseQuery()
+            for t in tokens:
+                term = Term(field, t)
+                fuzzterm = FuzzyTermEnum(self.searcher.getIndexReader(), term, self.fuzziness(fuzzy))
+                fuzzterms = []
+
+                while True:
+                    #                    print("fuzz %s" % unicode(fuzzterm.term()).encode('utf-8'))
+                    ft = fuzzterm.term()
+                    if ft:
+                        fuzzterms.append(ft)
+                    if not fuzzterm.next(): break
+                if fuzzterms:
+                    phrase.add(JArray('object')(fuzzterms, Term))
+                else:
+                    phrase.add(term)
+        else:
+            phrase = PhraseQuery()
+            phrase.setSlop(slop)
+            for t in tokens:
+                term = Term(field, t)
+                phrase.add(term)
         return phrase
 
-    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD):
+    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
         q = BooleanQuery()
         for t in tokens:
             term = Term(field, t)
-            q.add(BooleanClause(TermQuery(term), modal))
+            if fuzzy:
+                term = FuzzyQuery(term, self.fuzziness(fuzzy))
+            else:
+                term = TermQuery(term)
+            q.add(BooleanClause(term, modal))
         return q
 
     def content_query(self, query):
         return BlockJoinQuery(query, self.parent_filter,
                               BlockJoinQuery.ScoreMode.Total)
 
-    def search_perfect_book(self, tokens, max_results=20):
-        qrys = [self.make_phrase(tokens, field=fld) for fld in ['author', 'title']]
+    def search_perfect_book(self, searched, max_results=20, fuzzy=False):
+        qrys = [self.make_phrase(self.get_tokens(searched, field=fld), field=fld, fuzzy=fuzzy) for fld in ['author', 'title']]
 
         books = []
         for q in qrys:
@@ -498,37 +545,51 @@ class MultiSearch(Search):
                 books.append(SearchResult(self.searcher, found))
         return books
 
-    def search_perfect_parts(self, tokens, max_results=20):
-        qrys = [self.make_phrase(tokens, field=fld) for fld in ['content']]
+    def search_perfect_parts(self, searched, max_results=20, fuzzy=False):
+        qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['content']]
 
         books = []
         for q in qrys:
             top = self.searcher.search(q, max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found))
+                books.append(SearchResult(self.searcher, found).add_snippets(self.get_snippets(found, q)))
 
         return books
 
-    def search_everywhere(self, tokens, max_results=20):
+    def search_everywhere(self, searched, max_results=20, fuzzy=False):
+        books = []
+
+        # content only query : themes x content
+        q = BooleanQuery()
+
+        tokens = self.get_tokens(searched)
+        q.add(BooleanClause(self.make_term_query(tokens, field='themes', fuzzy=fuzzy), BooleanClause.Occur.MUST))
+        q.add(BooleanClause(self.make_term_query(tokens, field='content', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        topDocs = self.searcher.search(q, max_results)
+        for found in topDocs.scoreDocs:
+            books.append(SearchResult(self.searcher, found))
+
+        # joined query themes/content x author/title/epochs/genres/kinds
         q = BooleanQuery()
         in_meta = BooleanQuery()
         in_content = BooleanQuery()
 
         for fld in ['themes', 'content']:
-            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld), BooleanClause.Occur.SHOULD))
+            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
 
-        for fld in ['author', 'title', 'epochs', 'genres', 'kinds']:
-            in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld), BooleanClause.Occur.SHOULD))
+        in_meta.add(BooleanClause(self.make_term_query(self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        for fld in ['title', 'epochs', 'genres', 'kinds']:
+            in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
         q.add(BooleanClause(in_meta, BooleanClause.Occur.MUST))
         in_content_join = self.content_query(in_content)
         q.add(BooleanClause(in_content_join, BooleanClause.Occur.MUST))
-
+        #        import pdb; pdb.set_trace()
         collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
 
         self.searcher.search(q, collector)
-
-        books = []
 
         top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
         if top_groups:
@@ -579,7 +640,7 @@ class MultiSearch(Search):
 
         return None
 
-    
+
     def do_search(self, query, max_results=50, collector=None):
         tops = self.searcher.search(query, max_results)
         #tops = self.searcher.search(p_content, max_results)
@@ -591,3 +652,16 @@ class MultiSearch(Search):
             bks.append(b)
             print "%s (%d) -> %f" % (b, b.id, found.score)
         return (bks, tops.totalHits)
+
+    def get_snippets(self, scoreDoc, query, field='content'):
+        htmlFormatter = SimpleHTMLFormatter()
+        highlighter = Highlighter(htmlFormatter, QueryScorer(query))
+
+        stored = self.searcher.doc(scoreDoc.doc)
+        text = stored.get(field)
+        tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
+        #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
+        snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
+        print('snips: %s' % snip)
+
+        return [snip]
