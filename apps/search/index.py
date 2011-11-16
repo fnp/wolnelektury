@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
+from lucene import SimpleFSDirectory, IndexWriter, CheckIndex, \
+    File, Field, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
     QueryParser, PerFieldAnalyzerWrapper, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
@@ -11,11 +12,15 @@ from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
     FuzzyQuery, FuzzyTermEnum, Sort, Integer, \
     SimpleHTMLFormatter, Highlighter, QueryScorer, TokenSources, TextFragment, \
-    initVM, CLASSPATH, JArray
+    initVM, CLASSPATH, JArray, JavaError
     # KeywordAnalyzer
-JVM = initVM(CLASSPATH)
+
+# Initialize jvm
+JVM = initVM(classpath=CLASSPATH, maxheap=str(400*1024*1024))
+
 import sys
 import os
+import re
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
@@ -47,7 +52,7 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
 
         self.addAnalyzer("KEYWORD", keyword)
         self.addAnalyzer("SIMPLE", simple)
-        self.addAnalyzer("NATURAL", polish)
+        self.addAnalyzer("POLISH", polish)
 
 
 class IndexStore(object):
@@ -62,6 +67,51 @@ class IndexStore(object):
             if exc.errno == errno.EEXIST:
                 pass
             else: raise
+
+
+class IndexChecker(IndexStore):
+    def __init__(self):
+        IndexStore.__init__(self)
+
+    def check(self):
+        checker = CheckIndex(self.store)
+        status = checker.checkIndex()
+        return status
+
+
+class Snippets(object):
+    SNIPPET_DIR = "snippets"
+
+    def __init__(self, book_id):
+        try:
+            os.makedirs(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR))
+        except OSError as exc:
+            if exc.errno == errno.EEXIST:
+                pass
+            else: raise
+        self.book_id = book_id
+        self.file = None
+
+    def open(self, mode='r'):
+        if not 'b' in mode:
+            mode += 'b'
+        self.file = open(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR, str(self.book_id)), mode)
+        self.position = 0
+        return self
+
+    def add(self, snippet):
+        l = len(snippet)
+        self.file.write(snippet.encode('utf-8'))
+        pos = (self.position, l)
+        self.position += l
+        return pos
+
+    def get(self, pos):
+        self.file.seek(pos[0], 0)
+        return self.read(pos[1]).decode('utf-8')
+
+    def close(self):
+        self.file.close()
 
 
 class Index(IndexStore):
@@ -79,8 +129,15 @@ class Index(IndexStore):
                                  IndexWriter.MaxFieldLength.LIMITED)
         return self.index
 
-    def close(self):
+    def optimize(self):
         self.index.optimize()
+
+    def close(self):
+        try:
+            self.index.optimize()
+        except JavaError, je:
+            print "Error during optimize phase, check index: %s" % je
+
         self.index.close()
         self.index = None
 
@@ -95,11 +152,13 @@ class Index(IndexStore):
         doc = self.extract_metadata(book)
         parts = self.extract_content(book)
         block = ArrayList().of_(Document)
-
+        
+        print "adding block."
         for p in parts:
             block.add(p)
         block.add(doc)
         self.index.addDocuments(block)
+        print "added."
 
     master_tags = [
         'opowiadanie',
@@ -168,24 +227,9 @@ class Index(IndexStore):
         wld = WLDocument.from_file(book.xml_file.path)
         root = wld.edoc.getroot()
 
-        # first we build a sequence of top-level items.
-        # book_id
-        # header_index - the 0-indexed position of header element.
-        # content
         master = self.get_master(root)
         if master is None:
             return []
-
-        header_docs = []
-        for header, position in zip(list(master), range(len(master))):
-            if header.tag in self.skip_header_tags:
-                continue
-            doc = self.create_book_doc(book)
-            doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
-            doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
-            content = u' '.join([t for t in header.itertext()])
-            doc.add(Field("content", content, Field.Store.YES, Field.Index.ANALYZED))
-            header_docs.append(doc)
 
         def walker(node):
             yield node, None
@@ -195,50 +239,91 @@ class Index(IndexStore):
             yield None, node
             return
 
+        def fix_format(text):
+            return re.sub("/$", "", text, flags=re.M)
+
+        # header_type
+        # header_index
+        header_docs = []
         # Then we create a document for each fragments
         # fragment_anchor - the anchor
         # themes - list of themes [not indexed]
         fragment_docs = []
         # will contain (framgent id -> { content: [], themes: [] }
         fragments = {}
-        for start, end in walker(master):
-            if start is not None and start.tag == 'begin':
-                fid = start.attrib['id'][1:]
-                fragments[fid] = {'content': [], 'themes': []}
-                fragments[fid]['content'].append(start.tail)
-            elif start is not None and start.tag == 'motyw':
-                fid = start.attrib['id'][1:]
-                fragments[fid]['themes'].append(start.text)
-                fragments[fid]['content'].append(start.tail)
-            elif start is not None and start.tag == 'end':
-                fid = start.attrib['id'][1:]
-                if fid not in fragments:
-                    continue  # a broken <end> node, skip it
-                frag = fragments[fid]
-                del fragments[fid]
+        snippets = Snippets(book.id).open('w')
+        try:
+            for header, position in zip(list(master), range(len(master))):
+                sys.stdout.write("\rsection: %d" % position)
 
-                def jstr(l):
-                    return u' '.join(map(
-                        lambda x: x == None and u'(none)' or unicode(x),
-                        l))
+                if header.tag in self.skip_header_tags:
+                    continue
 
                 doc = self.create_book_doc(book)
-                doc.add(Field("fragment_anchor", fid,
-                              Field.Store.YES, Field.Index.NOT_ANALYZED))
-                doc.add(Field("content",
-                              u' '.join(filter(lambda s: s is not None, frag['content'])),
-                              Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS))
-                doc.add(Field("themes",
-                              u' '.join(filter(lambda s: s is not None, frag['themes'])),
-                              Field.Store.NO, Field.Index.ANALYZED))
 
-                fragment_docs.append(doc)
-            elif start is not None:
-                for frag in fragments.values():
-                    frag['content'].append(start.text)
-            elif end is not None:
-                for frag in fragments.values():
-                    frag['content'].append(end.tail)
+                doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
+                doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
+
+                content = u' '.join([t for t in header.itertext()])
+                content = fix_format(content)
+
+                doc.add(Field("content", content, Field.Store.NO, Field.Index.ANALYZED))
+                snip_pos = snippets.add(content)
+                doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
+                doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[0]))
+
+                header_docs.append(doc)
+
+                for start, end in walker(master):
+                    if start is not None and start.tag == 'begin':
+                        fid = start.attrib['id'][1:]
+                        fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
+                        fragments[fid]['content'].append(start.tail)
+                    elif start is not None and start.tag == 'motyw':
+                        fid = start.attrib['id'][1:]
+                        fragments[fid]['themes'].append(start.text)
+                        fragments[fid]['content'].append(start.tail)
+                    elif start is not None and start.tag == 'end':
+                        fid = start.attrib['id'][1:]
+                        if fid not in fragments:
+                            continue  # a broken <end> node, skip it
+                        frag = fragments[fid]
+                        del fragments[fid]
+
+                        def jstr(l):
+                            return u' '.join(map(
+                                lambda x: x == None and u'(none)' or unicode(x),
+                                l))
+
+                        doc = self.create_book_doc(book)
+
+                        doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
+                        doc.add(NumericField("header_span", Field.Store.YES, True).setIntValue(position - frag['start_section'] + 1))
+                        doc.add(Field("header_type", frag['start_header'], Field.Store.YES, Field.Index.NOT_ANALYZED))
+
+                        doc.add(Field("fragment_anchor", fid,
+                                      Field.Store.YES, Field.Index.NOT_ANALYZED))
+                        doc.add(Field("content",
+                                      u' '.join(filter(lambda s: s is not None, frag['content'])),
+                                      Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS))
+
+                        snip_pos = snippets.add(content)
+                        doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
+                        doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[0]))
+
+                        doc.add(Field("themes",
+                                      u' '.join(filter(lambda s: s is not None, frag['themes'])),
+                                      Field.Store.NO, Field.Index.ANALYZED))
+
+                        fragment_docs.append(doc)
+                    elif start is not None:
+                        for frag in fragments.values():
+                            frag['content'].append(start.text)
+                    elif end is not None:
+                        for frag in fragments.values():
+                            frag['content'].append(end.tail)
+        finally:
+            snippets.close()
 
         return header_docs + fragment_docs
 
@@ -390,31 +475,37 @@ class Search(IndexStore):
 
 
 class SearchResult(object):
-    def __init__(self, searcher, scoreDocs, score=None, highlight_query=None):
+    def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets_cb=None):
         if score:
             self.score = score
         else:
             self.score = scoreDocs.score
 
-        self.fragments = []
-        self.scores = {}
-        self.sections = []
+        self.hits = []
 
         stored = searcher.doc(scoreDocs.doc)
         self.book_id = int(stored.get("book_id"))
 
-        fragment = stored.get("fragment_anchor")
-        if fragment:
-            self.fragments.append(fragment)
-            self.scores[fragment] = scoreDocs.score
-
         header_type = stored.get("header_type")
-        if header_type:
-            sec = (header_type, int(stored.get("header_index")))
-            self.sections.append(sec)
-            self.scores[sec] = scoreDocs.score
+        sec = (header_type, int(stored.get("header_index")))
+        header_span = stored.get('header_span')
+        header_span = header_span is not None and int(header_span) or 1
+        stored = searcher.doc(scoreDocs.doc)
+        self.book_id = int(stored.get("book_id"))
 
-        self.snippets = []
+        fragment = stored.get("fragment_anchor")
+
+        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets_cb': snippets_cb})
+
+        self.hits.append(hit)
+
+    def merge(self, other):
+        if self.book_id != other.book_id:
+            raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
+        self.hits += other.hits
+        if other.score > self.score:
+            self.score = other.score
+        return self
 
     def add_snippets(self, snippets):
         self.snippets += snippets
@@ -427,6 +518,17 @@ class SearchResult(object):
 
     def get_parts(self):
         book = self.book
+
+        def sections_covered(results):
+            frags = filter(lambda r: r[1] is not None, results)
+            sect = filter(lambda r: r[1] is None, results)
+            sect = filter(lambda s: 0 == len(filter(
+                lambda f: s[0][1] >= f[0][1] and s[0][1] < f[0][1] + f[0][2],
+                frags)), sect)
+            print "filtered, non overlapped sections: %s" % sect
+            return frags + sect
+            
+            
         parts = [{"header": s[0], "position": s[1], '_score_key': s} for s in self.sections] \
             + [{"fragment": book.fragments.get(anchor=f), '_score_key':f} for f in self.fragments]
 
@@ -436,16 +538,6 @@ class SearchResult(object):
 
     parts = property(get_parts)
 
-    def merge(self, other):
-        if self.book_id != other.book_id:
-            raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
-        self.fragments += other.fragments
-        self.sections += other.sections
-        self.snippets += other.snippets
-        self.scores.update(other.scores)
-        if other.score > self.score:
-            self.score = other.score
-        return self
 
     def __unicode__(self):
         return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
@@ -578,7 +670,8 @@ class MultiSearch(Search):
         for fld in ['themes', 'content']:
             in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
 
-        in_meta.add(BooleanClause(self.make_term_query(self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+        in_meta.add(BooleanClause(self.make_term_query(
+            self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
         for fld in ['title', 'epochs', 'genres', 'kinds']:
             in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
@@ -640,7 +733,6 @@ class MultiSearch(Search):
 
         return None
 
-
     def do_search(self, query, max_results=50, collector=None):
         tops = self.searcher.search(query, max_results)
         #tops = self.searcher.search(p_content, max_results)
@@ -658,7 +750,14 @@ class MultiSearch(Search):
         highlighter = Highlighter(htmlFormatter, QueryScorer(query))
 
         stored = self.searcher.doc(scoreDoc.doc)
-        text = stored.get(field)
+
+        # locate content.
+        snippets = Snippets(stored.get('book_id')).open()
+        try:
+            text = snippets.get(stored.get('snippets_position'), stored.get('snippets_length'))
+        finally:
+            snippets.close()
+
         tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
         #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
         snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
