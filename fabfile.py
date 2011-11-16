@@ -165,4 +165,4 @@ def restart_webserver():
     print '>>> restart webserver'
     run('touch %(path)s/%(project_name)s.wsgi' % env)
     print '>>> restart Celery'
-    sudo('supervisorctl restart celery.%(project_name)s:' % env)
+    sudo('supervisorctl restart celery.%(project_name)s:' % env, shell=False)
