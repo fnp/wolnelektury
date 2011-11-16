@@ -39,26 +39,21 @@ a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.pl'>free license</
     <div id="intro">
         <p id="tags-description">↓ {% trans "Browse books by categories" %} ↓</p>
         <div id="propaganda">
+
+            <h2>Spot promocyjny</h2>
+            <p><iframe width="260" height="162"
+                src="http://www.youtube.com/embed/IteV_EoTrZE"
+                frameborder="0" allowfullscreen></iframe></p>
+
+
             <h2>Turniej Elektrybałtów</h2>
             <p><a target="_blank" href='http://turniej.wolnelektury.pl'>
                 <img src='{{ STATIC_URL }}img/turniej-maly.png' alt='Logo Turnieju' width='60' height='64' style='float:left;margin:1em;' />
             </a>
-            Ogłaszamy <strong>otwarty konkurs na najlepszego automatycznego poetę</strong>! Konkurs startuje
-            12 września 2011 roku – z okazji 90 rocznicy urodzin Stanisława Lema.
-            Termin nadsyłania prac upływa 10 listopada 2011 roku.
+            Trwa otwarty konkurs na najlepszego <strong>automatycznego poetę</strong>!
+            Zobacz, co potrafią nadesłane programy.
             </p>
             <p class="see-more"><a target="_blank" href="http://turniej.wolnelektury.pl" >Idź do strony konkursu ⇒</a></p>
-
-            <h2>Wolne Lektury na Kindle</h2>
-
-            <p><a target="_blank" href='{{ STATIC_URL }}img/kindle-poster.png'>
-                <img src='{{ STATIC_URL }}img/kindle-poster-260.png' alt='Wolne Lektury na Kindle' width='260' height='260' />
-            </a></p>
-
-            <p>Dobra wiadomość dla wszystkich posiadaczy czytnika Kindle – od
-            dzisiaj książki w bibliotece Wolne Lektury dostępne są w nowym formacie MOBI.</p>
-
-            <p>Życzymy miłego czytania!</p>
 
 
             {% comment %}    <h2>{% trans "Books for every school level" %}</h2>
@@ -68,6 +63,7 @@ a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.pl'>free license</
                 <li><a href="">{% trans "high school" %}</a></li>
             </ul>    {% endcomment %}
 
+            <br/>
             <h2>{% trans "Your shelves with books" %}</h2>
             {% if user.is_authenticated %}
                 {% if shelves %}
@@ -91,8 +87,8 @@ a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.pl'>free license</
                 <p>{% trans "You need to " %} <a class="login-register-link" href="#">{% trans "sign in" %}</a> {% trans "to manage your shelves." %}</p>
             {% endif %}
 
-            <h2>Nowy Leśmianator</h2>
-            <p>Tym razem to Ty decydujesz, co wpadnie do miksera &ndash; a efekt możesz pokazać znajomym!
+            <h2>Leśmianator</h2>
+            <p>Wybierz, co wpadnie do miksera, i pokaż efekt znajomym!
                 </p>
             <p class="see-more" style="clear:both"><a href="{% url lesmianator %}">{% trans "Twórzże się!" %} ⇒</a></p>
 
