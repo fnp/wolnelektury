@@ -1,0 +1,116 @@
+{% load catalogue_tags %}
+<TeXML xmlns="http://getfo.sourceforge.net/texml/ns1">
+    <TeXML escape="0">
+    \documentclass[a4paper, oneside, 11pt]{book}
+
+\usepackage[MeX]{polski}
+
+\usepackage[xetex]{graphicx}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+\usepackage{scalefnt}
+\usepackage[colorlinks=true,linkcolor=black,setpagesize=false,urlcolor=black,xetex]{hyperref}
+
+\setmainfont [
+%ExternalLocation,
+UprightFont = JunicodeWL-Regular,
+ItalicFont = JunicodeWL-Italic,
+BoldFont = JunicodeWL-Regular,
+BoldItalicFont = JunicodeWL-Italic,
+SmallCapsFont = JunicodeWL-Regular,
+SmallCapsFeatures = {Letters={SmallCaps,UppercaseSmallCaps}},
+Numbers=OldStyle,
+Scale=1.04,
+LetterSpace=-1.0
+] {JunicodeWL}
+
+\pagestyle{plain}
+\usepackage{fancyhdr}
+
+\makeatletter
+
+\usepackage{color}
+\definecolor{theme}{gray}{.3}
+
+\setlength{\hoffset}{-1cm}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+
+\setlength{\voffset}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\leftmargin}{0em}
+\setlength{\rightmargin}{0em}
+\setlength{\textheight}{24cm}
+\setlength{\textwidth}{18cm}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lfoot{\footnotesize Katalog biblioteki internetowej WolneLektury.pl, \today}
+\cfoot{}
+\rfoot{\footnotesize \thepage}
+
+\clubpenalty=100000
+\widowpenalty=100000
+
+
+% see http://osdir.com/ml/tex.xetex/2005-10/msg00003.html
+\newsavebox{\ximagebox}\newlength{\ximageheight}
+\newsavebox{\xglyphbox}\newlength{\xglyphheight}
+\newcommand{\xbox}[1]
+{\savebox{\ximagebox}{#1}\settoheight{\ximageheight}{\usebox {\ximagebox}}%
+\savebox{\xglyphbox}{\char32}\settoheight{\xglyphheight}{\usebox {\xglyphbox}}%
+\raisebox{\ximageheight}[0pt][0pt]{%\raisebox{-\xglyphheight}[0pt] [0pt]{%
+\makebox[0pt][l]{\usebox{\xglyphbox}}}%}%
+\usebox{\ximagebox}%
+\raisebox{0pt}[0pt][0pt]{\makebox[0pt][r]{\usebox{\xglyphbox}}}}
+
+
+\newcommand{\name}[1]{%
+\vspace{.5em}\Large{#1}%
+}
+
+
+    \begin{document}
+
+    \noindent \begin{minipage}[t]{.35\textwidth}\vspace{0pt}
+        \href{http://www.wolnelektury.pl}{\xbox{\includegraphics[width=\textwidth]{wl-logo.png}}}
+        \vspace{1em}
+    \end{minipage}
+
+    \begin{minipage}[t]{.65\textwidth}\vspace{0pt}
+
+    \begin{flushright}
+    
+    \section*{Katalog biblioteki internetowej \href{http://www.wolnelektury.pl/}{WolneLektury.pl}.}
+    stan na \today
+
+    \end{flushright}
+
+    \end{minipage}
+
+
+    \begin{tabular}{p{12cm} p{2cm}}
+    
+        <TeXML escape="1">
+            {% book_tree_texml orphans books_by_parent %}
+            {% for author, group in books_by_author.items %}
+                {% if group %}
+                    <cmd name="name"><parm>{{ author }}</parm></cmd>
+                    <ctrl ch='\' />
+
+                    {% book_tree_texml group books_by_parent %}
+                {% endif %}
+            {% endfor %}
+        </TeXML>
+
+    \end{tabular}
+    \end{document}
+    </TeXML>
+</TeXML>

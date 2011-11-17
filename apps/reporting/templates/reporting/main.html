@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load stats catalogue_tags %}
+{% load reporting_stats catalogue_tags %}
 
 {% block title %}Statystyka w  WolneLektury.pl{% endblock %}
 
-{% block bodyid %}tagged-object-list{% endblock %}
+{% block bodyid %}reports-stats{% endblock %}
+
 
 {% block body %}
     <h1>Statystyka</h1>
     {% search_form %}
 
-    <table>
+    <p><a href="{% url reporting_catalogue_pdf %}">Katalog biblioteki w formacie PDF.</a></p>
+
+    <table class="stats">
         <tr><th>Utwory</th></tr>
         <tr><td>Wszystkie utwory:</td><td>{% count_books_all %}</td></tr>
         <tr><td>Utwory z własną treścią:</td><td>{% count_books_nonempty %}</td></tr>
@@ -22,7 +25,11 @@
             <tr><td>{{ mt.type }}:</td>
                 <td>{{ mt.count }}</td>
                 <td>{{ mt.size|filesizeformat }}</td>
-                <td>{{ mt.deprecated }}</td>
+                <td>{{ mt.deprecated }}
+                    {% for m in mt.deprecated_files %}
+                        <br/><a href="{{ m.book.get_absolute_url }}">{{ m }}</a>
+                    {% endfor %}
+                </td>
             </tr>
         {% endfor %}
     </table>

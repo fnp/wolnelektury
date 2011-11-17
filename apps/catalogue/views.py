@@ -83,34 +83,8 @@ def book_list(request, filter=None, template_name='catalogue/book_list.html'):
 
     form = forms.SearchForm()
 
-    books_by_parent = {}
-    books = models.Book.objects.all().order_by('parent_number', 'sort_key').only('title', 'parent', 'slug')
-    if filter:
-        books = books.filter(filter).distinct()
-        book_ids = set((book.pk for book in books))
-        for book in books:
-            parent = book.parent_id
-            if parent not in book_ids:
-                parent = None
-            books_by_parent.setdefault(parent, []).append(book)
-    else:
-        for book in books:
-            books_by_parent.setdefault(book.parent_id, []).append(book)
-
-    orphans = []
-    books_by_author = SortedDict()
+    books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
     books_nav = SortedDict()
-    for tag in models.Tag.objects.filter(category='author'):
-        books_by_author[tag] = []
-
-    for book in books_by_parent.get(None,()):
-        authors = list(book.tags.filter(category='author'))
-        if authors:
-            for author in authors:
-                books_by_author[author].append(book)
-        else:
-            orphans.append(book)
-
     for tag in books_by_author:
         if books_by_author[tag]:
             books_nav.setdefault(tag.sort_key[0], []).append(tag)

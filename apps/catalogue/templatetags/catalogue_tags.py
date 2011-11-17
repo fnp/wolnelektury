@@ -140,6 +140,20 @@ def book_tree(book_list, books_by_parent):
     else:
         return ''
 
+@register.simple_tag
+def book_tree_texml(book_list, books_by_parent, depth=0):
+    return "".join("""
+            <cmd name='hspace'><parm>%(depth)dem</parm></cmd>%(title)s
+            <spec cat='align' />%(audiobook)s
+            <ctrl ch='\\' />
+            %(children)s
+            """ % {
+                "depth": depth,
+                "title": book.title, 
+                "audiobook": "audiobook" if book.has_media('mp3') else "",
+                "children": book_tree_texml(books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
+            } for book in book_list)
+
 
 @register.simple_tag
 def all_editors(extra_info):

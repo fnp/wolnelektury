@@ -1185,3 +1185,9 @@ div.shown-tags p, div.all-tags p {
 #footnotes .pagination {
     margin-top: 1em;
 }
+
+
+/* report */
+.stats td {
+    vertical-align: top;
+}

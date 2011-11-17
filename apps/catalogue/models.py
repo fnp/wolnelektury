@@ -12,6 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.template.loader import render_to_string
+from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
@@ -306,6 +307,7 @@ class Book(models.Model):
     tags     = managers.TagDescriptor(Tag)
 
     html_built = django.dispatch.Signal()
+    published = django.dispatch.Signal()
 
     class AlreadyExists(Exception):
         pass
@@ -734,6 +736,7 @@ class Book(models.Model):
         book.reset_tag_counter()
         book.reset_theme_counter()
 
+        cls.published.send(sender=book)
         return book
 
     def reset_tag_counter(self):
@@ -826,6 +829,43 @@ class Book(models.Model):
             objects = objects.exclude(pk__in=descendants_keys)
 
         return objects
+
+    @classmethod
+    def book_list(cls, filter=None):
+        """Generates a hierarchical listing of all books.
+
+        Books are optionally filtered with a test function.
+
+        """
+
+        books_by_parent = {}
+        books = cls.objects.all().order_by('parent_number', 'sort_key').only('title', 'parent', 'slug')
+        if filter:
+            books = books.filter(filter).distinct()
+            book_ids = set((book.pk for book in books))
+            for book in books:
+                parent = book.parent_id
+                if parent not in book_ids:
+                    parent = None
+                books_by_parent.setdefault(parent, []).append(book)
+        else:
+            for book in books:
+                books_by_parent.setdefault(book.parent_id, []).append(book)
+
+        orphans = []
+        books_by_author = SortedDict()
+        for tag in Tag.objects.filter(category='author'):
+            books_by_author[tag] = []
+
+        for book in books_by_parent.get(None,()):
+            authors = list(book.tags.filter(category='author'))
+            if authors:
+                for author in authors:
+                    books_by_author[author].append(book)
+            else:
+                orphans.append(book)
+
+        return books_by_author, orphans, books_by_parent
 
 
 def _has_factory(ftype):
