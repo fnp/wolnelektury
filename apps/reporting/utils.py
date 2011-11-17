@@ -79,7 +79,7 @@ def generated_file_view(file_name, mime_type, send_name=None, signals=None):
 
     def decorator(func):
         def view(request, *args, **kwargs):
-            if not os.path.exists(file_path) or True:
+            if not os.path.exists(file_path):
                 func(file_path, *args, **kwargs)
 
             if hasattr(send_name, "__call__"):

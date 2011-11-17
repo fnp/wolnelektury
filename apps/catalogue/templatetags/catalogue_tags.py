@@ -141,7 +141,7 @@ def book_tree(book_list, books_by_parent):
         return ''
 
 @register.simple_tag
-def book_tree_texml(book_list, books_by_parent, depth=0):
+def book_tree_texml(book_list, books_by_parent, depth=1):
     return "".join("""
             <cmd name='hspace'><parm>%(depth)dem</parm></cmd>%(title)s
             <spec cat='align' /><cmd name="note"><parm>%(audiobook)s</parm></cmd>
