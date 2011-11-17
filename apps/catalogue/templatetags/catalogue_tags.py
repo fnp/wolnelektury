@@ -144,7 +144,7 @@ def book_tree(book_list, books_by_parent):
 def book_tree_texml(book_list, books_by_parent, depth=0):
     return "".join("""
             <cmd name='hspace'><parm>%(depth)dem</parm></cmd>%(title)s
-            <spec cat='align' />%(audiobook)s
+            <spec cat='align' /><cmd name="note"><parm>%(audiobook)s</parm></cmd>
             <ctrl ch='\\' />
             %(children)s
             """ % {

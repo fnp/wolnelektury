@@ -12,6 +12,8 @@
 \usepackage{scalefnt}
 \usepackage[colorlinks=true,linkcolor=black,setpagesize=false,urlcolor=black,xetex]{hyperref}
 
+\usepackage{longtable}
+
 \setmainfont [
 %ExternalLocation,
 UprightFont = JunicodeWL-Regular,
@@ -31,7 +33,7 @@ LetterSpace=-1.0
 \makeatletter
 
 \usepackage{color}
-\definecolor{theme}{gray}{.3}
+\definecolor{note}{gray}{.3}
 
 \setlength{\hoffset}{-1cm}
 \setlength{\oddsidemargin}{0pt}
@@ -45,7 +47,7 @@ LetterSpace=-1.0
 \setlength{\leftmargin}{0em}
 \setlength{\rightmargin}{0em}
 \setlength{\textheight}{24cm}
-\setlength{\textwidth}{18cm}
+\setlength{\textwidth}{17cm}
 
 
 \pagestyle{fancy}
@@ -73,31 +75,31 @@ LetterSpace=-1.0
 
 
 \newcommand{\name}[1]{%
-\vspace{.5em}\Large{#1}%
+\\
+\Large{#1}%
+}
+
+\newcommand{\note}[1]{%
+\small{\color{note}{#1}}%
 }
 
 
-    \begin{document}
+\begin{document}
 
     \noindent \begin{minipage}[t]{.35\textwidth}\vspace{0pt}
         \href{http://www.wolnelektury.pl}{\xbox{\includegraphics[width=\textwidth]{wl-logo.png}}}
-        \vspace{1em}
     \end{minipage}
 
     \begin{minipage}[t]{.65\textwidth}\vspace{0pt}
-
-    \begin{flushright}
-    
-    \section*{Katalog biblioteki internetowej \href{http://www.wolnelektury.pl/}{WolneLektury.pl}.}
-    stan na \today
-
-    \end{flushright}
-
+        \begin{flushright}
+            \section*{Katalog biblioteki internetowej 
+                \href{http://www.wolnelektury.pl/}{WolneLektury.pl}.}
+            stan na \today
+        \end{flushright}
     \end{minipage}
 
+    \begin{longtable}{p{15cm} p{2cm}}
 
-    \begin{tabular}{p{12cm} p{2cm}}
-    
         <TeXML escape="1">
             {% book_tree_texml orphans books_by_parent %}
             {% for author, group in books_by_author.items %}
@@ -110,7 +112,7 @@ LetterSpace=-1.0
             {% endfor %}
         </TeXML>
 
-    \end{tabular}
+    \end{longtable}
     \end{document}
     </TeXML>
 </TeXML>
