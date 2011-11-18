@@ -2,12 +2,6 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import tempfile
-import zipfile
-import tarfile
-import sys
-import pprint
-import traceback
 import re
 import itertools
 from datetime import datetime
@@ -35,11 +29,9 @@ from django.views.generic.list_detail import object_list
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags
-from newtagging import views as newtagging_views
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
-from slughifi import slughifi
 
 
 staff_required = user_passes_test(lambda user: user.is_staff)
@@ -573,6 +565,10 @@ def download_shelf(request, slug):
     without loading the whole file into memory. A similar approach can
     be used for large dynamic PDF files.
     """
+    from slughifi import slughifi
+    import tempfile
+    import zipfile
+
     shelf = get_object_or_404(models.Tag, slug=slug, category='set')
 
     formats = []
@@ -721,6 +717,9 @@ def import_book(request):
         try:
             book_import_form.save()
         except:
+            import sys
+            import pprint
+            import traceback
             info = sys.exc_info()
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))

@@ -37,7 +37,6 @@ def stats_page(request):
         signals=[Book.published])
 def catalogue_pdf(path):
     books_by_author, orphans, books_by_parent = Book.book_list()
-    print books_by_parent
     render_to_pdf(path, 'reporting/catalogue.texml', locals(), {
             "wl-logo.png": os.path.join(settings.STATIC_ROOT, "img/logo-big.png"),
         })

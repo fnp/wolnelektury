@@ -4,14 +4,9 @@
 #
 import os
 import os.path
-import shutil
-import subprocess
-from tempfile import mkdtemp
-from StringIO import StringIO
 from django.conf import settings
 import logging
 from django.http import HttpResponse
-from django.template.loader import render_to_string
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +20,13 @@ def render_to_pdf(output_path, template, context=None, add_files=None):
     :param dict add_files: a dictionary of additional files XeTeX will need
     """
 
+    from StringIO import StringIO
+    import shutil
+    from tempfile import mkdtemp
+    import subprocess
     import Texml.processor
+    from django.template.loader import render_to_string
+
     rendered = render_to_string(template, context)
     texml = StringIO(rendered.encode('utf-8'))
     tempdir = mkdtemp(prefix = "render_to_pdf-")

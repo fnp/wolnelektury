@@ -3,7 +3,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import forms
-from django.core.files.base import ContentFile
 from django.utils.translation import ugettext_lazy as _
 from slughifi import slughifi
 
@@ -17,6 +16,8 @@ class BookImportForm(forms.Form):
     book_xml = forms.CharField(required=False)
 
     def clean(self):
+        from django.core.files.base import ContentFile
+
         if not self.cleaned_data['book_xml_file']:
             if self.cleaned_data['book_xml']:
                 self.cleaned_data['book_xml_file'] = \

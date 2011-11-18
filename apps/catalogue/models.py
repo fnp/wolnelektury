@@ -10,7 +10,6 @@ import django.dispatch
 from django.core.cache import cache
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from django.core.files import File
 from django.template.loader import render_to_string
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
@@ -23,14 +22,8 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import ExistingFile, ORMDocProvider, create_zip, remove_zip
+from catalogue.utils import create_zip
 
-from librarian import dcparser, html, epub, NoDublinCore
-import mutagen
-from mutagen import id3
-from slughifi import slughifi
-from sortify import sortify
-from os import unlink
 
 TAG_CATEGORIES = (
     ('author', _('author')),
@@ -180,6 +173,8 @@ class Tag(TagBase):
 # TODO: why is this hard-coded ?
 def book_upload_path(ext=None, maxlen=100):
     def get_dynamic_path(media, filename, ext=ext):
+        from slughifi import slughifi
+
         # how to put related book's slug here?
         if not ext:
             if media.type == 'daisy':
@@ -212,6 +207,9 @@ class BookMedia(models.Model):
         verbose_name_plural = _('book media')
 
     def save(self, *args, **kwargs):
+        from slughifi import slughifi
+        from catalogue.utils import ExistingFile, remove_zip
+
         try:
             old = BookMedia.objects.get(pk=self.pk)
         except BookMedia.DoesNotExist, e:
@@ -236,6 +234,8 @@ class BookMedia(models.Model):
         """
             Reads some metadata from the audiobook.
         """
+        import mutagen
+        from mutagen import id3
 
         artist_name = director_name = project = funded_by = ''
         if self.type == 'mp3':
@@ -268,6 +268,8 @@ class BookMedia(models.Model):
         """
             Reads source file SHA1 from audiobok metadata.
         """
+        import mutagen
+        from mutagen import id3
 
         if filetype == 'mp3':
             try:
@@ -321,6 +323,8 @@ class Book(models.Model):
         return self.title
 
     def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
+        from sortify import sortify
+
         self.sort_key = sortify(self.title)
 
         ret = super(Book, self).save(force_insert, force_update)
@@ -465,9 +469,11 @@ class Book(models.Model):
         """ (Re)builds the pdf file.
 
         """
-        from librarian import pdf
         from tempfile import NamedTemporaryFile
-        import os
+        from os import unlink
+        from django.core.files import File
+        from librarian import pdf
+        from catalogue.utils import ORMDocProvider, remove_zip
 
         try:
             pdf_file = NamedTemporaryFile(delete=False)
@@ -487,9 +493,11 @@ class Book(models.Model):
         """ (Re)builds the MOBI file.
 
         """
-        from librarian import mobi
         from tempfile import NamedTemporaryFile
-        import os
+        from os import unlink
+        from django.core.files import File
+        from librarian import mobi
+        from catalogue.utils import ORMDocProvider, remove_zip
 
         try:
             mobi_file = NamedTemporaryFile(suffix='.mobi', delete=False)
@@ -513,6 +521,8 @@ class Book(models.Model):
         from StringIO import StringIO
         from hashlib import sha1
         from django.core.files.base import ContentFile
+        from librarian import epub, NoDublinCore
+        from catalogue.utils import ORMDocProvider, remove_zip
 
         if self.parent:
             # don't need an epub
@@ -551,6 +561,9 @@ class Book(models.Model):
     def build_html(self):
         from tempfile import NamedTemporaryFile
         from markupstring import MarkupString
+        from django.core.files import File
+        from slughifi import slughifi
+        from librarian import html
 
         meta_tags = list(self.tags.filter(
             category__in=('author', 'epoch', 'genre', 'kind')))
@@ -627,6 +640,9 @@ class Book(models.Model):
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
+        from django.core.files import File
+        from librarian import dcparser
+
         # use librarian to parse meta-data
         book_info = dcparser.parse(xml_file)
 
@@ -642,6 +658,8 @@ class Book(models.Model):
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
             build_epub=True, build_txt=True, build_pdf=True, build_mobi=True):
         import re
+        from slughifi import slughifi
+        from sortify import sortify
 
         # check for parts before we do anything
         children = []
