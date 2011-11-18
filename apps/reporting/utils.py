@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from errno import ENOENT
 import os
 import os.path
 from django.conf import settings
@@ -72,7 +73,11 @@ def generated_file_view(file_name, mime_type, send_name=None, signals=None):
         send_name = os.path.basename(file_name)
 
     def signal_handler(*args, **kwargs):
-        os.unlink(file_path)
+        try:
+            os.unlink(file_path)
+        except OSError as oe:
+            if oe.errno != ENOENT:
+                raise oe
 
     if signals:
         for signal in signals:
