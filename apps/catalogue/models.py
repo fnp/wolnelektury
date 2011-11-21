@@ -885,6 +885,19 @@ class Book(models.Model):
 
         return books_by_author, orphans, books_by_parent
 
+    _audiences_pl = {
+        "SP1": (1, u"szkoła podstawowa"),
+        "SP2": (1, u"szkoła podstawowa"),
+        "P": (1, u"szkoła podstawowa"),
+        "G": (2, u"gimnazjum"),
+        "L": (3, u"liceum"),
+        "LP": (3, u"liceum"),
+    }
+    def audiences_pl(self):
+        audiences = self.get_extra_info_value().get('audiences', [])
+        audiences = sorted(set([self._audiences_pl[a] for a in audiences]))
+        return [a[1] for a in audiences]
+
 
 def _has_factory(ftype):
     has = lambda self: bool(getattr(self, "%s_file" % ftype))

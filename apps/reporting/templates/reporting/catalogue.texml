@@ -47,7 +47,7 @@ LetterSpace=-1.0
 \setlength{\leftmargin}{0em}
 \setlength{\rightmargin}{0em}
 \setlength{\textheight}{24cm}
-\setlength{\textwidth}{17cm}
+\setlength{\textwidth}{17.5cm}
 
 
 \pagestyle{fancy}
@@ -98,7 +98,7 @@ LetterSpace=-1.0
         \end{flushright}
     \end{minipage}
 
-    \begin{longtable}{p{15cm} p{2cm}}
+    \begin{longtable}{p{9.5cm} p{5.5cm}r p{2cm}}
 
         <TeXML escape="1">
             {% book_tree_texml orphans books_by_parent %}

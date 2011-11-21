@@ -144,12 +144,14 @@ def book_tree(book_list, books_by_parent):
 def book_tree_texml(book_list, books_by_parent, depth=1):
     return "".join("""
             <cmd name='hspace'><parm>%(depth)dem</parm></cmd>%(title)s
+            <spec cat='align' /><cmd name="note"><parm>%(audiences)s</parm></cmd>
             <spec cat='align' /><cmd name="note"><parm>%(audiobook)s</parm></cmd>
             <ctrl ch='\\' />
             %(children)s
             """ % {
                 "depth": depth,
                 "title": book.title, 
+                "audiences": ", ".join(book.audiences_pl()),
                 "audiobook": "audiobook" if book.has_media('mp3') else "",
                 "children": book_tree_texml(books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
             } for book in book_list)
