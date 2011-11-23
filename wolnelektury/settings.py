@@ -164,7 +164,8 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
 # CSS and JavaScript file groups
 COMPRESS_CSS = {
     'all': {
-        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/jquery.countdown.css', 'css/master.plain.css', 'css/sponsors.css', 'css/facelist_2-0.css',),
+        'source_filenames': ('css/master.css', 'css/jquery.countdown.css',
+                             'css/master.plain.css', 'css/sponsors.css', 'css/facelist_2-0.css', 'css/ui-lightness/jquery-ui-1.8.16.custom.css'),
         'output_filename': 'css/all.min?.css',
     },
     'book': {
@@ -179,11 +180,11 @@ COMPRESS_CSS = {
 
 COMPRESS_JS = {
     'jquery': {
-        'source_filenames': ('js/jquery.js',),
+        'source_filenames': ('js/jquery.js', 'js/jquery-ui-1.8.16.custom.min.js'),
         'output_filename': 'js/jquery.min.js',
     },
     'all': {
-        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js',
+        'source_filenames': ('js/jquery.form.js',
             'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
             'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
             'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',

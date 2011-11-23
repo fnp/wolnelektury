@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from lucene import SimpleFSDirectory, IndexWriter, CheckIndex, \
-    File, Field, \
+    File, Field, Integer, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
     QueryParser, PerFieldAnalyzerWrapper, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
@@ -10,13 +10,14 @@ from lucene import SimpleFSDirectory, IndexWriter, CheckIndex, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
     PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
-    FuzzyQuery, FuzzyTermEnum, Sort, Integer, \
+    FuzzyQuery, FuzzyTermEnum, PrefixTermEnum, Sort, Integer, \
     SimpleHTMLFormatter, Highlighter, QueryScorer, TokenSources, TextFragment, \
+    BooleanFilter, TermsFilter, FilterClause, QueryWrapperFilter, \
     initVM, CLASSPATH, JArray, JavaError
     # KeywordAnalyzer
 
 # Initialize jvm
-JVM = initVM(classpath=CLASSPATH, maxheap=str(400*1024*1024))
+JVM = initVM(CLASSPATH)
 
 import sys
 import os
@@ -24,7 +25,7 @@ import re
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
-import catalogue.models
+from catalogue import models
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
 import atexit
@@ -34,13 +35,20 @@ import traceback
 class WLAnalyzer(PerFieldAnalyzerWrapper):
     def __init__(self):
         polish = PolishAnalyzer(Version.LUCENE_34)
+        polish_gap = PolishAnalyzer(Version.LUCENE_34)
+        #        polish_gap.setPositionIncrementGap(999)
+
         simple = SimpleAnalyzer(Version.LUCENE_34)
+        simple_gap = SimpleAnalyzer(Version.LUCENE_34)
+        #        simple_gap.setPositionIncrementGap(999)
+
         keyword = KeywordAnalyzer(Version.LUCENE_34)
+
         # not sure if needed: there's NOT_ANALYZED meaning basically the same
 
         PerFieldAnalyzerWrapper.__init__(self, polish)
 
-        self.addAnalyzer("tags", simple)
+        self.addAnalyzer("tags", simple_gap)
         self.addAnalyzer("technical_editors", simple)
         self.addAnalyzer("editors", simple)
         self.addAnalyzer("url", keyword)
@@ -49,6 +57,12 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("publisher", simple)
         self.addAnalyzer("author", simple)
         self.addAnalyzer("is_book", keyword)
+
+        self.addAnalyzer("themes", simple_gap)
+        self.addAnalyzer("themes_pl", polish_gap)
+
+        self.addAnalyzer("tag_name", simple_gap)
+        self.addAnalyzer("tag_name_pl", polish_gap)
 
         self.addAnalyzer("KEYWORD", keyword)
         self.addAnalyzer("SIMPLE", simple)
@@ -141,6 +155,18 @@ class Index(IndexStore):
         self.index.close()
         self.index = None
 
+    def index_tags(self):
+        q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
+        self.index.deleteDocuments(q)
+
+        for tag in models.Tag.objects.all():
+            doc = Document()
+            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(tag.id))
+            doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
+            self.index.addDocument(doc)
+
     def remove_book(self, book):
         q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
         self.index.deleteDocuments(q)
@@ -149,16 +175,19 @@ class Index(IndexStore):
         if overwrite:
             self.remove_book(book)
 
-        doc = self.extract_metadata(book)
-        parts = self.extract_content(book)
-        block = ArrayList().of_(Document)
-        
-        print "adding block."
-        for p in parts:
-            block.add(p)
-        block.add(doc)
-        self.index.addDocuments(block)
-        print "added."
+        book_doc = self.create_book_doc(book)
+        meta_fields = self.extract_metadata(book)
+        for f in meta_fields.values():
+            if isinstance(f, list):
+                for elem in f:
+                    book_doc.add(elem)
+            else:
+                book_doc.add(f)
+                
+        self.index.addDocument(book_doc)
+        del book_doc
+
+        self.index_content(book, book_fields=[meta_fields['title'], meta_fields['author']])
 
     master_tags = [
         'opowiadanie',
@@ -182,14 +211,14 @@ class Index(IndexStore):
         return doc
 
     def extract_metadata(self, book):
+        fields = {}
         book_info = dcparser.parse(book.xml_file)
 
         print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
 
-        doc = self.create_book_doc(book)
-        doc.add(Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS))
-        doc.add(Field("tags", ','.join([t.name for t in book.tags]), Field.Store.NO, Field.Index.ANALYZED))
-        doc.add(Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
+        fields['slug'] = Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS)
+        fields['tags'] = [Field("tags", t.name, Field.Store.NO, Field.Index.ANALYZED) for t in book.tags]
+        fields['is_book'] = Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED)
 
         # validator, name
         for field in dcparser.BookInfo.FIELDS:
@@ -203,7 +232,7 @@ class Index(IndexStore):
                     if field.multiple:
                         s = ', '.join(s)
                     try:
-                        doc.add(Field(field.name, s, Field.Store.NO, Field.Index.ANALYZED))
+                        fields[field.name] = Field(field.name, s, Field.Store.NO, Field.Index.ANALYZED)
                     except JavaError as je:
                         raise Exception("failed to add field: %s = '%s', %s(%s)" % (field.name, s, je.message, je.args))
                 elif type_indicator == dcparser.as_person:
@@ -212,18 +241,19 @@ class Index(IndexStore):
                         persons = unicode(p)
                     else:
                         persons = ', '.join(map(unicode, p))
-                    doc.add(Field(field.name, persons, Field.Store.NO, Field.Index.ANALYZED))
+                    fields[field.name] = Field(field.name, persons, Field.Store.NO, Field.Index.ANALYZED)
                 elif type_indicator == dcparser.as_date:
                     dt = getattr(book_info, field.name)
-                    doc.add(Field(field.name, "%04d%02d%02d" % (dt.year, dt.month, dt.day), Field.Store.NO, Field.Index.NOT_ANALYZED))
-        return doc
+                    fields[field.name] = Field(field.name, "%04d%02d%02d" %\
+                                               (dt.year, dt.month, dt.day), Field.Store.NO, Field.Index.NOT_ANALYZED)
+        return fields
 
     def get_master(self, root):
         for master in root.iter():
             if master.tag in self.master_tags:
                 return master
 
-    def extract_content(self, book):
+    def index_content(self, book, book_fields=[]):
         wld = WLDocument.from_file(book.xml_file.path)
         root = wld.edoc.getroot()
 
@@ -242,37 +272,48 @@ class Index(IndexStore):
         def fix_format(text):
             return re.sub("/$", "", text, flags=re.M)
 
-        # header_type
-        # header_index
-        header_docs = []
-        # Then we create a document for each fragments
-        # fragment_anchor - the anchor
-        # themes - list of themes [not indexed]
-        fragment_docs = []
-        # will contain (framgent id -> { content: [], themes: [] }
+        def add_part(snippets, **fields):
+            doc = self.create_book_doc(book)
+            for f in book_fields:
+                doc.add(f)
+
+            doc.add(NumericField('header_index', Field.Store.YES, True).setIntValue(fields["header_index"]))
+            doc.add(NumericField("header_span", Field.Store.YES, True)\
+                    .setIntValue('header_span' in fields and fields['header_span'] or 1))
+            doc.add(Field('header_type', fields["header_type"], Field.Store.YES, Field.Index.NOT_ANALYZED))
+
+            doc.add(Field('content', fields["content"], Field.Store.NO, Field.Index.ANALYZED, \
+                          Field.TermVector.WITH_POSITIONS_OFFSETS))
+
+            snip_pos = snippets.add(content)
+            doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
+            doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[1]))
+
+            if 'fragment_anchor' in fields:
+                doc.add(Field("fragment_anchor", fields['fragment_anchor'],
+                              Field.Store.YES, Field.Index.NOT_ANALYZED))
+                
+            if 'themes' in fields:
+                for theme in fields['themes']:
+                    doc.add(Field("themes", theme, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS))
+                    doc.add(Field("themes_pl", theme, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS))
+
+            return doc
+
         fragments = {}
         snippets = Snippets(book.id).open('w')
         try:
             for header, position in zip(list(master), range(len(master))):
-                sys.stdout.write("\rsection: %d" % position)
 
                 if header.tag in self.skip_header_tags:
                     continue
 
-                doc = self.create_book_doc(book)
-
-                doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
-                doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
-
                 content = u' '.join([t for t in header.itertext()])
                 content = fix_format(content)
 
-                doc.add(Field("content", content, Field.Store.NO, Field.Index.ANALYZED))
-                snip_pos = snippets.add(content)
-                doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
-                doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[0]))
+                doc = add_part(snippets, header_index=position, header_type=header.tag, content=content)
 
-                header_docs.append(doc)
+                self.index.addDocument(doc)
 
                 for start, end in walker(master):
                     if start is not None and start.tag == 'begin':
@@ -295,27 +336,15 @@ class Index(IndexStore):
                                 lambda x: x == None and u'(none)' or unicode(x),
                                 l))
 
-                        doc = self.create_book_doc(book)
+                        doc = add_part(snippets,
+                                       header_type=frag['start_header'],
+                                       header_index=frag['start_section'],
+                                       header_span=position - frag['start_section'] + 1,
+                                       fragment_anchor=fid,
+                                       content=u' '.join(filter(lambda s: s is not None, frag['content'])),
+                                       themes=frag['themes'])
 
-                        doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
-                        doc.add(NumericField("header_span", Field.Store.YES, True).setIntValue(position - frag['start_section'] + 1))
-                        doc.add(Field("header_type", frag['start_header'], Field.Store.YES, Field.Index.NOT_ANALYZED))
-
-                        doc.add(Field("fragment_anchor", fid,
-                                      Field.Store.YES, Field.Index.NOT_ANALYZED))
-                        doc.add(Field("content",
-                                      u' '.join(filter(lambda s: s is not None, frag['content'])),
-                                      Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS))
-
-                        snip_pos = snippets.add(content)
-                        doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
-                        doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[0]))
-
-                        doc.add(Field("themes",
-                                      u' '.join(filter(lambda s: s is not None, frag['themes'])),
-                                      Field.Store.NO, Field.Index.ANALYZED))
-
-                        fragment_docs.append(doc)
+                        self.index.addDocument(doc)
                     elif start is not None:
                         for frag in fragments.values():
                             frag['content'].append(start.text)
@@ -325,7 +354,6 @@ class Index(IndexStore):
         finally:
             snippets.close()
 
-        return header_docs + fragment_docs
 
     def __enter__(self):
         self.open()
@@ -438,7 +466,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+            bks.append(models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
     def search(self, query, max_results=50):
@@ -449,7 +477,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+            bks.append(models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
     def bsearch(self, query, max_results=50):
@@ -460,7 +488,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+            bks.append(models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
 # TokenStream tokenStream = analyzer.tokenStream(fieldName, reader);
@@ -512,7 +540,7 @@ class SearchResult(object):
         return self
 
     def get_book(self):
-        return catalogue.models.Book.objects.get(id=self.book_id)
+        return models.Book.objects.get(id=self.book_id)
 
     book = property(get_book)
 
@@ -663,32 +691,32 @@ class MultiSearch(Search):
             books.append(SearchResult(self.searcher, found))
 
         # joined query themes/content x author/title/epochs/genres/kinds
-        q = BooleanQuery()
-        in_meta = BooleanQuery()
-        in_content = BooleanQuery()
+        # q = BooleanQuery()
+        # in_meta = BooleanQuery()
+        # in_content = BooleanQuery()
 
-        for fld in ['themes', 'content']:
-            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
+        # for fld in ['themes', 'content']:
+        #     in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
 
-        in_meta.add(BooleanClause(self.make_term_query(
-            self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+        # in_meta.add(BooleanClause(self.make_term_query(
+        #     self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
-        for fld in ['title', 'epochs', 'genres', 'kinds']:
-            in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+        # for fld in ['title', 'epochs', 'genres', 'kinds']:
+        #     in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
-        q.add(BooleanClause(in_meta, BooleanClause.Occur.MUST))
-        in_content_join = self.content_query(in_content)
-        q.add(BooleanClause(in_content_join, BooleanClause.Occur.MUST))
-        #        import pdb; pdb.set_trace()
-        collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
+        # q.add(BooleanClause(in_meta, BooleanClause.Occur.MUST))
+        # in_content_join = self.content_query(in_content)
+        # q.add(BooleanClause(in_content_join, BooleanClause.Occur.MUST))
+        # #        import pdb; pdb.set_trace()
+        # collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
 
-        self.searcher.search(q, collector)
+        # self.searcher.search(q, collector)
 
-        top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
-        if top_groups:
-            for grp in top_groups.groups:
-                for part in grp.scoreDocs:
-                    books.append(SearchResult(self.searcher, part, score=grp.maxScore))
+        # top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
+        # if top_groups:
+        #     for grp in top_groups.groups:
+        #         for part in grp.scoreDocs:
+        #             books.append(SearchResult(self.searcher, part, score=grp.maxScore))
         return books
 
     def multisearch(self, query, max_results=50):
@@ -733,17 +761,17 @@ class MultiSearch(Search):
 
         return None
 
-    def do_search(self, query, max_results=50, collector=None):
-        tops = self.searcher.search(query, max_results)
+    def book_search(self, query, filter=None, max_results=50, collector=None):
+        tops = self.searcher.search(query, filter, max_results)
         #tops = self.searcher.search(p_content, max_results)
 
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            b = catalogue.models.Book.objects.get(id=doc.get("book_id"))
+            b = models.Book.objects.get(id=doc.get("book_id"))
             bks.append(b)
             print "%s (%d) -> %f" % (b, b.id, found.score)
-        return (bks, tops.totalHits)
+        return bks
 
     def get_snippets(self, scoreDoc, query, field='content'):
         htmlFormatter = SimpleHTMLFormatter()
@@ -764,3 +792,89 @@ class MultiSearch(Search):
         print('snips: %s' % snip)
 
         return [snip]
+
+    @staticmethod
+    def enum_to_array(enum):
+        """
+        Converts a lucene TermEnum to array of Terms, suitable for
+        addition to queries
+        """
+        terms = []
+
+        while True:
+            t = enum.term()
+            if t:
+                terms.append(t)
+            if not enum.next(): break
+
+        if terms:
+            return JArray('object')(terms, Term)
+
+    def search_tags(self, query, filter=None, max_results=40):
+        tops = self.searcher.search(query, filter, max_results)
+
+        tags = []
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            tag = models.Tag.objects.get(id=doc.get("tag_id"))
+            tags.append(tag)
+            print "%s (%d) -> %f" % (tag, tag.id, found.score)
+
+        return tags
+
+    def create_prefix_phrase(self, toks, field):
+        q = MultiPhraseQuery()
+        for i in range(len(toks)):
+            t = Term(field, toks[i])
+            if i == len(toks) - 1:
+                pterms = MultiSearch.enum_to_array(PrefixTermEnum(self.searcher.getIndexReader(), t))
+                if pterms:
+                    q.add(pterms)
+                else:
+                    q.add(t)
+            else:
+                q.add(t)
+        return q
+
+    def hint_tags(self, string, max_results=50):
+        toks = self.get_tokens(string, field='SIMPLE')
+        top = BooleanQuery()
+
+        for field in ['tag_name', 'tag_name_pl']:
+            q = self.create_prefix_phrase(toks, field)
+            top.add(BooleanClause(q, BooleanClause.Occur.SHOULD))
+
+        book_cat = TermsFilter()
+        book_cat.addTerm(Term("tag_category", "book"))
+
+        no_book_cat = BooleanFilter()
+        no_book_cat.add(FilterClause(book_cat, BooleanClause.Occur.MUST_NOT))
+
+        return self.search_tags(top, no_book_cat, max_results=max_results)
+
+    def hint_books(self, string, max_results=50):
+        toks = self.get_tokens(string, field='SIMPLE')
+
+        q = self.create_prefix_phrase(toks, 'title')
+        only_books = TermsFilter()
+        only_books.addTerm(Term("is_book", "true"))
+
+        return self.book_search(q, only_books, max_results=max_results)
+
+    def filter_by_tags(self, tags):
+        q = BooleanQuery()
+        
+        for tag in tags:
+            toks = self.get_tokens(tag.name, field='tags')
+            tag_phrase = PhraseQuery()
+            for tok in toks:
+                tag_phrase.add(tok)
+            q.add(BooleanClause(tok, BooleanClause.Occur.MUST))
+
+        return QueryWrapperFilter(q)
+
+    def filtered_categories(self, tags):
+        cats = {}
+        for t in tags:
+            cats[t.category] = True
+        return cats.keys()

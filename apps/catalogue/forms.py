@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from slughifi import slughifi
 
 from catalogue.models import Tag, Book
-from catalogue.fields import JQueryAutoCompleteField
+from catalogue.fields import JQueryAutoCompleteSearchField
 from catalogue import utils
 
 
@@ -30,7 +30,7 @@ class BookImportForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-    q = JQueryAutoCompleteField('/katalog/tags/', {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
+    q = JQueryAutoCompleteSearchField('/newsearch/hint/') # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
     tags = forms.CharField(widget=forms.HiddenInput, required=False)
 
     def __init__(self, *args, **kwargs):
