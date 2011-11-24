@@ -17,26 +17,17 @@
       <li>
 	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
 	<ul>
-	  {% for hit in result.hits %}
+	  {% for hit in result.process_hits %}
 	  <li>
-	    {% for snip in hit.3.snippets %}
+	    {% if hit.fragment %}
+	    <div style="">Tagi/Motywy: {% for tag in hit.themes %}{{tag.name}} {% endfor %}</div>
+	    {% endif %}
+	    {% for snip in hit.snippets %}
 	      {{snip|safe}}<br/>
 	    {% endfor %}
 	  </li>
 	  {% endfor %}
 
-	  {% for part in result.parts %}
-	  {% if part.header %}
-	  <li>W {{part.header}} nr {{part.position}}</li>
-	  {% else %} 
-	  {% if part.fragment %}
-	  <li>
-	    <div style="">Tagi/Motywy: {% for tag in part.fragment.tags %}{{tag.name}} {% endfor %}</div>
-	    {{part.fragment.short_html|safe}}
-	  </li>
-	  {% endif %}
-	  {% endif %}
-	  {% endfor %}
 	</ul>
       </li>
       {% empty %}

@@ -108,7 +108,7 @@ def main(request):
     if 'q' in request.GET:
         tags = request.GET.get('tags', '')
         query = request.GET['q']
-        book_id = request.get('book', None)
+        book_id = request.GET.get('book', None)
         book = None
         if book_id is not None:
             book = get_object_or_404(Book, id=book_id)

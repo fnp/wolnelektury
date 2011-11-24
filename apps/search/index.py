@@ -6,7 +6,7 @@ from lucene import SimpleFSDirectory, IndexWriter, CheckIndex, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
     QueryParser, PerFieldAnalyzerWrapper, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
-    KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
+    KeywordAnalyzer, NumericRangeQuery, NumericRangeFilter, BooleanQuery, \
     BlockJoinQuery, BlockJoinCollector, Filter, TermsFilter, ChainedFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
     PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, \
@@ -560,26 +560,36 @@ class SearchResult(object):
 
     book = property(get_book)
 
-    def get_parts(self):
-        book = self.book
+    def process_hits(self):
+        frags = filter(lambda r: r[1] is not None, self.hits)
+        sect = filter(lambda r: r[1] is None, self.hits)
+        sect = filter(lambda s: 0 == len(filter(
+            lambda f: s[0][1] >= f[0][1] and s[0][1] < f[0][1] + f[0][2],
+            frags)), sect)
 
-        def sections_covered(results):
-            frags = filter(lambda r: r[1] is not None, results)
-            sect = filter(lambda r: r[1] is None, results)
-            sect = filter(lambda s: 0 == len(filter(
-                lambda f: s[0][1] >= f[0][1] and s[0][1] < f[0][1] + f[0][2],
-                frags)), sect)
-            print "filtered, non overlapped sections: %s" % sect
-            return frags + sect
+        hits = []
 
-        parts = [{"header": s[0], "position": s[1], '_score_key': s} for s in self.sections] \
-            + [{"fragment": book.fragments.get(anchor=f), '_score_key':f} for f in self.fragments]
+        for s in sect:
+            m = {'score': s[2],
+                 'header_index': s[0][1]
+                 }
+            m.update(s[3])
+            hits.append(m)
 
-        parts.sort(lambda a, b: cmp(self.scores[a['_score_key']], self.scores[b['_score_key']]))
-        print("bookid: %d parts: %s" % (self.book_id, parts))
-        return parts
+        for f in frags:
+            frag = catalogue.models.Fragment.objects.get(anchor=f[1])
+            m = {'score': f[2],
+                 'fragment': frag,
+                 'themes': frag.tags.filter(category='theme')
+                 }
+            m.update(f[3])
+            hits.append(m)
 
-    parts = property(get_parts)
+        hits.sort(lambda a, b: cmp(a['score'], b['score']), reverse=True)
+
+        print("--- %s" % hits)
+
+        return hits
 
     def __unicode__(self):
         return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
@@ -605,10 +615,10 @@ class Hint(object):
         self.search = search
         self.book_tags = {}
         self.part_tags = []
-        self.book = None
+        self._book = None
 
     def book(self, book):
-        self.book = book
+        self._book = book
 
     def tags(self, tags):
         for t in tags:
@@ -642,12 +652,12 @@ class Hint(object):
         fs = []
         if self.part_tags:
             fs.append(self.tag_filter(self.part_tags, field='themes'))
-        if self.book is not None:
-            bf = TermsFilter()
-            bf.addTerm # TODO
-
+        if self._book is not None:
+            fs.append(NumericRangeFilter.newIntRange('book_id', self._book.id, self._book.id, True, True))
+        return MultiSearch.chain_filters(fs)
+            
     def should_search_for_book(self):
-        return self.book is None
+        return self._book is None
 
     def just_search_in(self, all):
         """Holds logic to figure out which indexes should be search, when we have some hinst already"""
@@ -655,7 +665,7 @@ class Hint(object):
         for field in all:
             if field == 'author' and 'author' in self.book_tags:
                 continue
-            if field == 'title' and self.book is not None:
+            if field == 'title' and self._book is not None:
                 continue
             if (field == 'themes' or field == 'themes_pl') and self.part_tags:
                 continue
@@ -783,42 +793,30 @@ class MultiSearch(Search):
 
         tokens = self.get_tokens(searched)
         if hint is None or hint.just_search_in(['themes_pl']) != []:
-            q.add(BooleanClause(self.make_term_query(tokens, field='themes_pl', fuzzy=fuzzy), BooleanClause.Occur.MUST))
+            q.add(BooleanClause(self.make_term_query(tokens, field='themes_pl',
+                                                     fuzzy=fuzzy), BooleanClause.Occur.MUST))
 
-        q.add(BooleanClause(self.make_term_query(tokens, field='content', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+        q.add(BooleanClause(self.make_term_query(tokens, field='content',
+                                                 fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
             books.append(SearchResult(self.searcher, found))
 
-        # joined query themes/content x author/title/epochs/genres/kinds
-        # q = BooleanQuery()
-        # in_meta = BooleanQuery()
-        # in_content = BooleanQuery()
+        # query themes/content x author/title/tags
+        q = BooleanQuery()
+        in_meta = BooleanQuery()
+        in_content = BooleanQuery()
 
-        # for fld in ['themes', 'content']:
-        #     in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
+        for fld in ['themes', 'content', 'tags', 'author', 'title']:
+            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
 
-        # in_meta.add(BooleanClause(self.make_term_query(
-        #     self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+        topDocs = self.searcher.search(q, only_in, max_results)
+        for found in topDocs.scoreDocs:
+            books.append(SearchResult(self.searcher, found))
 
-        # for fld in ['title', 'epochs', 'genres', 'kinds']:
-        #     in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
-
-        # q.add(BooleanClause(in_meta, BooleanClause.Occur.MUST))
-        # in_content_join = self.content_query(in_content)
-        # q.add(BooleanClause(in_content_join, BooleanClause.Occur.MUST))
-        # #        import pdb; pdb.set_trace()
-        # collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
-
-        # self.searcher.search(q, collector)
-
-        # top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
-        # if top_groups:
-        #     for grp in top_groups.groups:
-        #         for part in grp.scoreDocs:
-        #             books.append(SearchResult(self.searcher, part, score=grp.maxScore))
         return books
+    
 
     def multisearch(self, query, max_results=50):
         """
