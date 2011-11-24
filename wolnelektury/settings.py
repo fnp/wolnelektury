@@ -229,11 +229,12 @@ API_WAIT = 10
 # limit number of filtering tags
 MAX_TAG_LIST = 6
 
-NO_BUILD_EPUB = False
+NO_BUILD_EPUB = True
 NO_BUILD_TXT = False
-NO_BUILD_PDF = False
-NO_BUILD_MOBI = False
+NO_BUILD_PDF = True
+NO_BUILD_MOBI = True
 NO_SEARCH_INDEX = False
+SEARCH_INDEX_PARALLEL = False
 
 ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
 ALL_PDF_ZIP = 'wolnelektury_pl_pdf'

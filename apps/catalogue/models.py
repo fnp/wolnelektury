@@ -626,8 +626,19 @@ class Book(models.Model):
         return result.wait()
 
     def search_index(self):
-        with search.Index() as idx:
+        if settings.SEARCH_INDEX_PARALLEL:
+            if instance(settings.SEARCH_INDEX_PARALLEL, int):
+                idx = search.ReusableIndex(threads=4)
+            else:
+                idx = search.ReusableIndex()
+        else:
+            idx = search.Index()
+            
+        idx.open()
+        try:
             idx.index_book(self)
+        finally:
+            idx.close()
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):

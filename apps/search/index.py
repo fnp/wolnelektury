@@ -1,18 +1,29 @@
 # -*- coding: utf-8 -*-
+
 from django.conf import settings
 from lucene import SimpleFSDirectory, IndexWriter, File, Field, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
-    QueryParser, Term, PerFieldAnalyzerWrapper, \
+    QueryParser, PerFieldAnalyzerWrapper, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
     KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
     BlockJoinQuery, BlockJoinCollector, TermsFilter, \
-    HashSet, BooleanClause, Term
+    HashSet, BooleanClause, Term, CharTermAttribute, \
+    PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
+    FuzzyQuery, FuzzyTermEnum, Sort, Integer, \
+    SimpleHTMLFormatter, Highlighter, QueryScorer, TokenSources, TextFragment, \
+    initVM, CLASSPATH, JArray
     # KeywordAnalyzer
+JVM = initVM(CLASSPATH)
+import sys
 import os
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
 import catalogue.models
+from multiprocessing.pool import ThreadPool
+from threading import current_thread
+import atexit
+import traceback
 
 
 class WLAnalyzer(PerFieldAnalyzerWrapper):
@@ -34,7 +45,9 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("author", simple)
         self.addAnalyzer("is_book", keyword)
 
-        #self.addanalyzer("fragment_anchor", keyword)
+        self.addAnalyzer("KEYWORD", keyword)
+        self.addAnalyzer("SIMPLE", simple)
+        self.addAnalyzer("NATURAL", polish)
 
 
 class IndexStore(object):
@@ -72,7 +85,7 @@ class Index(IndexStore):
         self.index = None
 
     def remove_book(self, book):
-        q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True,True)
+        q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
         self.index.deleteDocuments(q)
 
     def index_book(self, book, overwrite=True):
@@ -97,6 +110,8 @@ class Index(IndexStore):
         'wywiad'
         ]
 
+    skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne']
+
     def create_book_doc(self, book):
         """
         Create a lucene document connected to the book
@@ -109,6 +124,8 @@ class Index(IndexStore):
 
     def extract_metadata(self, book):
         book_info = dcparser.parse(book.xml_file)
+
+        print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
 
         doc = self.create_book_doc(book)
         doc.add(Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS))
@@ -158,14 +175,16 @@ class Index(IndexStore):
         master = self.get_master(root)
         if master is None:
             return []
-        
+
         header_docs = []
         for header, position in zip(list(master), range(len(master))):
+            if header.tag in self.skip_header_tags:
+                continue
             doc = self.create_book_doc(book)
             doc.add(NumericField("header_index", Field.Store.YES, True).setIntValue(position))
             doc.add(Field("header_type", header.tag, Field.Store.YES, Field.Index.NOT_ANALYZED))
             content = u' '.join([t for t in header.itertext()])
-            doc.add(Field("content", content, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("content", content, Field.Store.YES, Field.Index.ANALYZED))
             header_docs.append(doc)
 
         def walker(node):
@@ -202,16 +221,13 @@ class Index(IndexStore):
                     return u' '.join(map(
                         lambda x: x == None and u'(none)' or unicode(x),
                         l))
-                s = u"Fragment %s complete, themes: %s contents: %s" % \
-                      (fid, jstr(frag['themes']), jstr(frag['content']))
-                print(s.encode('utf-8'))
 
                 doc = self.create_book_doc(book)
                 doc.add(Field("fragment_anchor", fid,
                               Field.Store.YES, Field.Index.NOT_ANALYZED))
                 doc.add(Field("content",
                               u' '.join(filter(lambda s: s is not None, frag['content'])),
-                              Field.Store.NO, Field.Index.ANALYZED))
+                              Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS_OFFSETS))
                 doc.add(Field("themes",
                               u' '.join(filter(lambda s: s is not None, frag['themes'])),
                               Field.Store.NO, Field.Index.ANALYZED))
@@ -234,10 +250,67 @@ class Index(IndexStore):
         self.close()
 
 
+def log_exception_wrapper(f):
+    def _wrap(*a):
+        try:
+            f(*a)
+        except Exception, e:
+            print("Error in indexing thread: %s" % e)
+            traceback.print_exc()
+            raise e
+    return _wrap
+
+
+class ReusableIndex(Index):
+    """
+    Works like index, but does not close/optimize Lucene index
+    until program exit (uses atexit hook).
+    This is usefull for importbooks command.
+
+    if you cannot rely on atexit, use ReusableIndex.close_reusable() yourself.
+    """
+    index = None
+    pool = None
+    pool_jobs = None
+
+    def open(self, analyzer=None, threads=4):
+        if ReusableIndex.index is not None:
+            self.index = ReusableIndex.index
+        else:
+            print("opening index")
+            ReusableIndex.pool = ThreadPool(threads, initializer=lambda: JVM.attachCurrentThread() )
+            ReusableIndex.pool_jobs = []
+            Index.open(self, analyzer)
+            ReusableIndex.index = self.index
+            atexit.register(ReusableIndex.close_reusable)
+
+    def index_book(self, *args, **kw):
+        job = ReusableIndex.pool.apply_async(log_exception_wrapper(Index.index_book), (self,) + args, kw)
+        ReusableIndex.pool_jobs.append(job)
+
+    @staticmethod
+    def close_reusable():
+        if ReusableIndex.index is not None:
+            print("wait for indexing to finish")
+            for job in ReusableIndex.pool_jobs:
+                job.get()
+                sys.stdout.write('.')
+                sys.stdout.flush()
+            print("done.")
+            ReusableIndex.pool.close()
+
+            ReusableIndex.index.optimize()
+            ReusableIndex.index.close()
+            ReusableIndex.index = None
+
+    def close(self):
+        pass
+
+
 class Search(IndexStore):
     def __init__(self, default_field="content"):
         IndexStore.__init__(self)
-        self.analyzer = PolishAnalyzer(Version.LUCENE_34)
+        self.analyzer = WLAnalyzer() #PolishAnalyzer(Version.LUCENE_34)
         ## self.analyzer = WLAnalyzer()
         self.searcher = IndexSearcher(self.store, True)
         self.parser = QueryParser(Version.LUCENE_34, default_field,
@@ -296,9 +369,7 @@ class Search(IndexStore):
 
     def bsearch(self, query, max_results=50):
         q = self.query(query)
-        f = TermsFilter()
-        f.addTerm(Term("is_book", "true"))
-        bjq = BlockJoinQuery(q, f, BlockJoinQuery.ScoreMode.Avg)
+        bjq = BlockJoinQuery(q, self.parent_filter, BlockJoinQuery.ScoreMode.Avg)
 
         tops = self.searcher.search(bjq, max_results)
         bks = []
@@ -306,3 +377,291 @@ class Search(IndexStore):
             doc = self.searcher.doc(found.doc)
             bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
+
+# TokenStream tokenStream = analyzer.tokenStream(fieldName, reader);
+# OffsetAttribute offsetAttribute = tokenStream.getAttribute(OffsetAttribute.class);
+# CharTermAttribute charTermAttribute = tokenStream.getAttribute(CharTermAttribute.class);
+
+# while (tokenStream.incrementToken()) {
+#     int startOffset = offsetAttribute.startOffset();
+#     int endOffset = offsetAttribute.endOffset();
+#     String term = charTermAttribute.toString();
+# }
+
+
+class SearchResult(object):
+    def __init__(self, searcher, scoreDocs, score=None, highlight_query=None):
+        if score:
+            self.score = score
+        else:
+            self.score = scoreDocs.score
+
+        self.fragments = []
+        self.scores = {}
+        self.sections = []
+
+        stored = searcher.doc(scoreDocs.doc)
+        self.book_id = int(stored.get("book_id"))
+
+        fragment = stored.get("fragment_anchor")
+        if fragment:
+            self.fragments.append(fragment)
+            self.scores[fragment] = scoreDocs.score
+
+        header_type = stored.get("header_type")
+        if header_type:
+            sec = (header_type, int(stored.get("header_index")))
+            self.sections.append(sec)
+            self.scores[sec] = scoreDocs.score
+
+        self.snippets = []
+
+    def add_snippets(self, snippets):
+        self.snippets += snippets
+        return self
+
+    def get_book(self):
+        return catalogue.models.Book.objects.get(id=self.book_id)
+
+    book = property(get_book)
+
+    def get_parts(self):
+        book = self.book
+        parts = [{"header": s[0], "position": s[1], '_score_key': s} for s in self.sections] \
+            + [{"fragment": book.fragments.get(anchor=f), '_score_key':f} for f in self.fragments]
+
+        parts.sort(lambda a, b: cmp(self.scores[a['_score_key']], self.scores[b['_score_key']]))
+        print("bookid: %d parts: %s" % (self.book_id, parts))
+        return parts
+
+    parts = property(get_parts)
+
+    def merge(self, other):
+        if self.book_id != other.book_id:
+            raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
+        self.fragments += other.fragments
+        self.sections += other.sections
+        self.snippets += other.snippets
+        self.scores.update(other.scores)
+        if other.score > self.score:
+            self.score = other.score
+        return self
+
+    def __unicode__(self):
+        return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
+
+    @staticmethod
+    def aggregate(*result_lists):
+        books = {}
+        for rl in result_lists:
+            for r in rl:
+                if r.book_id in books:
+                    books[r.book_id].merge(r)
+                    #print(u"already have one with score %f, and this one has score %f" % (books[book.id][0], found.score))
+                else:
+                    books[r.book_id] = r
+        return books.values()
+
+    def __cmp__(self, other):
+        return cmp(self.score, other.score)
+
+
+class MultiSearch(Search):
+    """Class capable of IMDb-like searching"""
+    def get_tokens(self, searched, field='content'):
+        """returns tokens analyzed by a proper (for a field) analyzer
+        argument can be: StringReader, string/unicode, or tokens. In the last case
+        they will just be returned (so we can reuse tokens, if we don't change the analyzer)
+        """
+        if isinstance(searched, str) or isinstance(searched, unicode):
+            searched = StringReader(searched)
+        elif isinstance(searched, list):
+            return searched
+
+        searched.reset()
+        tokens = self.analyzer.reusableTokenStream(field, searched)
+        toks = []
+        while tokens.incrementToken():
+            cta = tokens.getAttribute(CharTermAttribute.class_)
+            toks.append(cta.toString())
+        return toks
+
+    def fuzziness(self, fuzzy):
+        if not fuzzy:
+            return None
+        if isinstance(fuzzy, float) and fuzzy > 0.0 and fuzzy <= 1.0:
+            return fuzzy
+        else:
+            return 0.5
+
+    def make_phrase(self, tokens, field='content', slop=2, fuzzy=False):
+        if fuzzy:
+            phrase = MultiPhraseQuery()
+            for t in tokens:
+                term = Term(field, t)
+                fuzzterm = FuzzyTermEnum(self.searcher.getIndexReader(), term, self.fuzziness(fuzzy))
+                fuzzterms = []
+
+                while True:
+                    #                    print("fuzz %s" % unicode(fuzzterm.term()).encode('utf-8'))
+                    ft = fuzzterm.term()
+                    if ft:
+                        fuzzterms.append(ft)
+                    if not fuzzterm.next(): break
+                if fuzzterms:
+                    phrase.add(JArray('object')(fuzzterms, Term))
+                else:
+                    phrase.add(term)
+        else:
+            phrase = PhraseQuery()
+            phrase.setSlop(slop)
+            for t in tokens:
+                term = Term(field, t)
+                phrase.add(term)
+        return phrase
+
+    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
+        q = BooleanQuery()
+        for t in tokens:
+            term = Term(field, t)
+            if fuzzy:
+                term = FuzzyQuery(term, self.fuzziness(fuzzy))
+            else:
+                term = TermQuery(term)
+            q.add(BooleanClause(term, modal))
+        return q
+
+    def content_query(self, query):
+        return BlockJoinQuery(query, self.parent_filter,
+                              BlockJoinQuery.ScoreMode.Total)
+
+    def search_perfect_book(self, searched, max_results=20, fuzzy=False):
+        qrys = [self.make_phrase(self.get_tokens(searched, field=fld), field=fld, fuzzy=fuzzy) for fld in ['author', 'title']]
+
+        books = []
+        for q in qrys:
+            top = self.searcher.search(q, max_results)
+            for found in top.scoreDocs:
+                books.append(SearchResult(self.searcher, found))
+        return books
+
+    def search_perfect_parts(self, searched, max_results=20, fuzzy=False):
+        qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['content']]
+
+        books = []
+        for q in qrys:
+            top = self.searcher.search(q, max_results)
+            for found in top.scoreDocs:
+                books.append(SearchResult(self.searcher, found).add_snippets(self.get_snippets(found, q)))
+
+        return books
+
+    def search_everywhere(self, searched, max_results=20, fuzzy=False):
+        books = []
+
+        # content only query : themes x content
+        q = BooleanQuery()
+
+        tokens = self.get_tokens(searched)
+        q.add(BooleanClause(self.make_term_query(tokens, field='themes', fuzzy=fuzzy), BooleanClause.Occur.MUST))
+        q.add(BooleanClause(self.make_term_query(tokens, field='content', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        topDocs = self.searcher.search(q, max_results)
+        for found in topDocs.scoreDocs:
+            books.append(SearchResult(self.searcher, found))
+
+        # joined query themes/content x author/title/epochs/genres/kinds
+        q = BooleanQuery()
+        in_meta = BooleanQuery()
+        in_content = BooleanQuery()
+
+        for fld in ['themes', 'content']:
+            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
+
+        in_meta.add(BooleanClause(self.make_term_query(self.get_tokens(searched, field='author'), field='author', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        for fld in ['title', 'epochs', 'genres', 'kinds']:
+            in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        q.add(BooleanClause(in_meta, BooleanClause.Occur.MUST))
+        in_content_join = self.content_query(in_content)
+        q.add(BooleanClause(in_content_join, BooleanClause.Occur.MUST))
+        #        import pdb; pdb.set_trace()
+        collector = BlockJoinCollector(Sort.RELEVANCE, 100, True, True)
+
+        self.searcher.search(q, collector)
+
+        top_groups = collector.getTopGroups(in_content_join, Sort.RELEVANCE, 0, max_results, 0, True)
+        if top_groups:
+            for grp in top_groups.groups:
+                for part in grp.scoreDocs:
+                    books.append(SearchResult(self.searcher, part, score=grp.maxScore))
+        return books
+
+    def multisearch(self, query, max_results=50):
+        """
+        Search strategy:
+        - (phrase) OR -> content
+                      -> title
+                      -> author
+        - (keywords)  -> author
+                      -> motyw
+                      -> tags
+                      -> content
+        """
+        # queryreader = StringReader(query)
+        # tokens = self.get_tokens(queryreader)
+
+        # top_level = BooleanQuery()
+        # Should = BooleanClause.Occur.SHOULD
+
+        # phrase_level = BooleanQuery()
+        # phrase_level.setBoost(1.3)
+
+        # p_content = self.make_phrase(tokens, joined=True)
+        # p_title = self.make_phrase(tokens, 'title')
+        # p_author = self.make_phrase(tokens, 'author')
+
+        # phrase_level.add(BooleanClause(p_content, Should))
+        # phrase_level.add(BooleanClause(p_title, Should))
+        # phrase_level.add(BooleanClause(p_author, Should))
+
+        # kw_level = BooleanQuery()
+
+        # kw_level.add(self.make_term_query(tokens, 'author'), Should)
+        # j_themes = self.make_term_query(tokens, 'themes', joined=True)
+        # kw_level.add(j_themes, Should)
+        # kw_level.add(self.make_term_query(tokens, 'tags'), Should)
+        # j_con = self.make_term_query(tokens, joined=True)
+        # kw_level.add(j_con, Should)
+
+        # top_level.add(BooleanClause(phrase_level, Should))
+        # top_level.add(BooleanClause(kw_level, Should))
+
+        return None
+
+
+    def do_search(self, query, max_results=50, collector=None):
+        tops = self.searcher.search(query, max_results)
+        #tops = self.searcher.search(p_content, max_results)
+
+        bks = []
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            b = catalogue.models.Book.objects.get(id=doc.get("book_id"))
+            bks.append(b)
+            print "%s (%d) -> %f" % (b, b.id, found.score)
+        return (bks, tops.totalHits)
+
+    def get_snippets(self, scoreDoc, query, field='content'):
+        htmlFormatter = SimpleHTMLFormatter()
+        highlighter = Highlighter(htmlFormatter, QueryScorer(query))
+
+        stored = self.searcher.doc(scoreDoc.doc)
+        text = stored.get(field)
+        tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
+        #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
+        snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
+        print('snips: %s' % snip)
+
+        return [snip]
