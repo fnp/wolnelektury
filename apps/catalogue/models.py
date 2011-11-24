@@ -31,6 +31,8 @@ from slughifi import slughifi
 from sortify import sortify
 from os import unlink
 
+import search
+
 TAG_CATEGORIES = (
     ('author', _('author')),
     ('epoch', _('epoch')),
@@ -623,6 +625,10 @@ class Book(models.Model):
         result = create_zip.delay(paths, self.slug)
         return result.wait()
 
+    def search_index(self):
+        with search.Index() as idx:
+            idx.index_book(self)
+
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         # use librarian to parse meta-data
@@ -638,7 +644,8 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
-            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True):
+            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True,
+            search_index=True):
         import re
 
         # check for parts before we do anything
@@ -716,6 +723,9 @@ class Book(models.Model):
 
         if not settings.NO_BUILD_MOBI and build_mobi:
             book.build_mobi()
+
+        if not settings.NO_SEARCH_INDEX and search_index:
+            book.search_index()
 
         book_descendants = list(book.children.all())
         # add l-tag to descendants and their fragments
