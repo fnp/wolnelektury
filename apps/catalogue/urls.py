@@ -20,7 +20,7 @@ urlpatterns = patterns('catalogue.views',
     url(r'^polki/nowa/$', 'new_set', name='new_set'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
-    url(r'^szukaj/$', 'search', name='search'),
+    url(r'^szukaj/$', 'search', name='old_search'),
 
     # zip
     #url(r'^zip/pdf\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),

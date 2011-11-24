@@ -108,7 +108,8 @@ class JQueryAutoCompleteSearchWidget(JQueryAutoCompleteWidget):
         $('#%s')
         .autocomplete($.extend({
           minLength: 0,
-          select: autocomplete_result_handler
+          select: autocomplete_result_handler,
+          focus: function (ui, item) { return false; }
         }, %s))
         .data("autocomplete")._renderItem = autocomplete_format_item;
         """ % (field_id, options)

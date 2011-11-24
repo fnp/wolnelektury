@@ -4,14 +4,16 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.views.decorators import cache
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 
 from catalogue.utils import get_random_hash
-from catalogue.models import Book, Tag, TAG_CATEGORIES
+from catalogue.models import Book, Tag, Fragment, TAG_CATEGORIES
 from catalogue.fields import dumps
 from catalogue.views import JSONResponse
 from catalogue import forms
 from search import MultiSearch, JVM, SearchResult
 from lucene import StringReader
+from suggest.forms import PublishingSuggestForm
 
 import enchant
 
@@ -105,15 +107,25 @@ def main(request):
 
     if 'q' in request.GET:
         tags = request.GET.get('tags', '')
+        query = request.GET['q']
+        book_id = request.get('book', None)
+        book = None
+        if book_id is not None:
+            book = get_object_or_404(Book, id=book_id)
+
         hint = srch.hint()
         try:
             tag_list = Tag.get_tag_list(tags)
         except:
             tag_list = []
 
-        hint.tags(tag_list)
+        if len(query) < 2:
+            return render_to_response('catalogue/search_too_short.html', {'tags': tag_list, 'prefix': query},
+                                      context_instance=RequestContext(request))
 
-        query = request.GET['q']
+        hint.tags(tag_list)
+        hint.book(book)
+
         toks = StringReader(query)
         fuzzy = 'fuzzy' in request.GET
         if fuzzy:
@@ -127,8 +139,26 @@ def main(request):
         for r in results:
             print r.hits
 
-    return render_to_response('newsearch/search.html', {'results': results,
-                                                        'did_you_mean': (query is not None) and
-                                                        did_you_mean(query, srch.get_tokens(query, field='SIMPLE')),
-                                                        'fuzzy': fuzzy},
-                              context_instance=RequestContext(request))
+        if len(results) == 1:
+            if len(results[0].hits) == 0:
+                return HttpResponseRedirect(results[0].book.get_absolute_url())
+            elif len(results[0].hits) == 1 and results[0].hits[0] is not None:
+                frag = Fragment.objects.get(anchor=results[0].hits[0])
+                return HttpResponseRedirect(frag.get_absolute_url())
+        elif len(results) == 0:
+            form = PublishingSuggestForm(initial={"books": query + ", "})
+            return render_to_response('catalogue/search_no_hits.html',
+                                      {'tags': tag_list, 'prefix': query, "pubsuggest_form": form,
+                                       'form': forms.SearchForm()},
+                context_instance=RequestContext(request))
+
+        return render_to_response('catalogue/search_multiple_hits.html',
+                                  {'tags': tag_list, 'prefix': query,
+                                   'results': results, 'from': forms.SearchForm()},
+            context_instance=RequestContext(request))
+
+    # return render_to_response('newsearch/search.html', {'results': results,
+    #                                                     'did_you_mean': (query is not None) and
+    #                                                     did_you_mean(query, srch.get_tokens(query, field='SIMPLE')),
+    #                                                     'fuzzy': fuzzy},
+    #                           context_instance=RequestContext(request))

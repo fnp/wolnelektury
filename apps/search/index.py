@@ -639,10 +639,12 @@ class Hint(object):
             return None
 
     def part_filter(self):
+        fs = []
         if self.part_tags:
-            return self.tag_filter(self.part_tags, field='themes')
-        else:
-            return None
+            fs.append(self.tag_filter(self.part_tags, field='themes'))
+        if self.book is not None:
+            bf = TermsFilter()
+            bf.addTerm # TODO
 
     def should_search_for_book(self):
         return self.book is None
