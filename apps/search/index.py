@@ -7,9 +7,9 @@ from lucene import SimpleFSDirectory, IndexWriter, CheckIndex, \
     QueryParser, PerFieldAnalyzerWrapper, \
     SimpleAnalyzer, PolishAnalyzer, ArrayList, \
     KeywordAnalyzer, NumericRangeQuery, BooleanQuery, \
-    BlockJoinQuery, BlockJoinCollector, TermsFilter, \
+    BlockJoinQuery, BlockJoinCollector, Filter, TermsFilter, ChainedFilter, \
     HashSet, BooleanClause, Term, CharTermAttribute, \
-    PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, BlockJoinQuery, \
+    PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, \
     FuzzyQuery, FuzzyTermEnum, PrefixTermEnum, Sort, Integer, \
     SimpleHTMLFormatter, Highlighter, QueryScorer, TokenSources, TextFragment, \
     BooleanFilter, TermsFilter, FilterClause, QueryWrapperFilter, \
@@ -25,7 +25,7 @@ import re
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
-from catalogue import models
+import catalogue.models
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
 import atexit
@@ -35,11 +35,9 @@ import traceback
 class WLAnalyzer(PerFieldAnalyzerWrapper):
     def __init__(self):
         polish = PolishAnalyzer(Version.LUCENE_34)
-        polish_gap = PolishAnalyzer(Version.LUCENE_34)
         #        polish_gap.setPositionIncrementGap(999)
 
         simple = SimpleAnalyzer(Version.LUCENE_34)
-        simple_gap = SimpleAnalyzer(Version.LUCENE_34)
         #        simple_gap.setPositionIncrementGap(999)
 
         keyword = KeywordAnalyzer(Version.LUCENE_34)
@@ -48,7 +46,7 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
 
         PerFieldAnalyzerWrapper.__init__(self, polish)
 
-        self.addAnalyzer("tags", simple_gap)
+        self.addAnalyzer("tags", simple)
         self.addAnalyzer("technical_editors", simple)
         self.addAnalyzer("editors", simple)
         self.addAnalyzer("url", keyword)
@@ -58,11 +56,11 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("author", simple)
         self.addAnalyzer("is_book", keyword)
 
-        self.addAnalyzer("themes", simple_gap)
-        self.addAnalyzer("themes_pl", polish_gap)
+        self.addAnalyzer("themes", simple)
+        self.addAnalyzer("themes_pl", polish)
 
-        self.addAnalyzer("tag_name", simple_gap)
-        self.addAnalyzer("tag_name_pl", polish_gap)
+        self.addAnalyzer("tag_name", simple)
+        self.addAnalyzer("tag_name_pl", polish)
 
         self.addAnalyzer("KEYWORD", keyword)
         self.addAnalyzer("SIMPLE", simple)
@@ -114,15 +112,19 @@ class Snippets(object):
         return self
 
     def add(self, snippet):
-        l = len(snippet)
-        self.file.write(snippet.encode('utf-8'))
+        txt = snippet.encode('utf-8')
+        l = len(txt)
+        self.file.write(txt)
         pos = (self.position, l)
         self.position += l
+        print "Snip<%s>%s</s>" %(pos, txt)
         return pos
 
     def get(self, pos):
         self.file.seek(pos[0], 0)
-        return self.read(pos[1]).decode('utf-8')
+        txt = self.file.read(pos[1]).decode('utf-8')
+        print "got from snippets %d bytes from %s:" % (len(txt), pos)
+        return txt
 
     def close(self):
         self.file.close()
@@ -159,7 +161,7 @@ class Index(IndexStore):
         q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
         self.index.deleteDocuments(q)
 
-        for tag in models.Tag.objects.all():
+        for tag in catalogue.models.Tag.objects.all():
             doc = Document()
             doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(tag.id))
             doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
@@ -178,12 +180,12 @@ class Index(IndexStore):
         book_doc = self.create_book_doc(book)
         meta_fields = self.extract_metadata(book)
         for f in meta_fields.values():
-            if isinstance(f, list):
+            if isinstance(f, list) or isinstance(f, tuple):
                 for elem in f:
                     book_doc.add(elem)
             else:
                 book_doc.add(f)
-                
+
         self.index.addDocument(book_doc)
         del book_doc
 
@@ -217,7 +219,7 @@ class Index(IndexStore):
         print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
 
         fields['slug'] = Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS)
-        fields['tags'] = [Field("tags", t.name, Field.Store.NO, Field.Index.ANALYZED) for t in book.tags]
+        fields['tags'] = self.add_gaps([Field("tags", t.name, Field.Store.NO, Field.Index.ANALYZED) for t in book.tags], 'tags')
         fields['is_book'] = Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED)
 
         # validator, name
@@ -253,6 +255,12 @@ class Index(IndexStore):
             if master.tag in self.master_tags:
                 return master
 
+    def add_gaps(self, fields, fieldname):
+        def gap():
+            while True:
+                yield Field(fieldname, ' ', Field.Store.NO, Field.Index.NOT_ANALYZED)
+        return reduce(lambda a, b: a + b, zip(fields, gap()))[0:-1]
+
     def index_content(self, book, book_fields=[]):
         wld = WLDocument.from_file(book.xml_file.path)
         root = wld.edoc.getroot()
@@ -285,18 +293,27 @@ class Index(IndexStore):
             doc.add(Field('content', fields["content"], Field.Store.NO, Field.Index.ANALYZED, \
                           Field.TermVector.WITH_POSITIONS_OFFSETS))
 
-            snip_pos = snippets.add(content)
+            snip_pos = snippets.add(fields["content"])
             doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
             doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[1]))
 
             if 'fragment_anchor' in fields:
                 doc.add(Field("fragment_anchor", fields['fragment_anchor'],
                               Field.Store.YES, Field.Index.NOT_ANALYZED))
-                
+
             if 'themes' in fields:
-                for theme in fields['themes']:
-                    doc.add(Field("themes", theme, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS))
-                    doc.add(Field("themes_pl", theme, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS))
+                themes, themes_pl = zip(*[
+                    (Field("themes", theme, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS),
+                     Field("themes_pl", theme, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS))
+                     for theme in fields['themes']])
+
+                themes = self.add_gaps(themes, 'themes')
+                themes_pl = self.add_gaps(themes_pl, 'themes_pl')
+
+                for t in themes:
+                    doc.add(t)
+                for t in themes_pl:
+                    doc.add(t)
 
             return doc
 
@@ -315,7 +332,7 @@ class Index(IndexStore):
 
                 self.index.addDocument(doc)
 
-                for start, end in walker(master):
+                for start, end in walker(header):
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
                         fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
@@ -466,7 +483,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(models.Book.objects.get(id=doc.get("book_id")))
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
     def search(self, query, max_results=50):
@@ -477,7 +494,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(models.Book.objects.get(id=doc.get("book_id")))
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
     def bsearch(self, query, max_results=50):
@@ -488,7 +505,7 @@ class Search(IndexStore):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(models.Book.objects.get(id=doc.get("book_id")))
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
 # TokenStream tokenStream = analyzer.tokenStream(fieldName, reader);
@@ -503,7 +520,9 @@ class Search(IndexStore):
 
 
 class SearchResult(object):
-    def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets_cb=None):
+    def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets=None):
+        self.snippets = []
+
         if score:
             self.score = score
         else:
@@ -515,15 +534,16 @@ class SearchResult(object):
         self.book_id = int(stored.get("book_id"))
 
         header_type = stored.get("header_type")
+        if not header_type:
+            return
+
         sec = (header_type, int(stored.get("header_index")))
         header_span = stored.get('header_span')
         header_span = header_span is not None and int(header_span) or 1
-        stored = searcher.doc(scoreDocs.doc)
-        self.book_id = int(stored.get("book_id"))
 
         fragment = stored.get("fragment_anchor")
 
-        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets_cb': snippets_cb})
+        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets})
 
         self.hits.append(hit)
 
@@ -535,12 +555,8 @@ class SearchResult(object):
             self.score = other.score
         return self
 
-    def add_snippets(self, snippets):
-        self.snippets += snippets
-        return self
-
     def get_book(self):
-        return models.Book.objects.get(id=self.book_id)
+        return catalogue.models.Book.objects.get(id=self.book_id)
 
     book = property(get_book)
 
@@ -555,8 +571,7 @@ class SearchResult(object):
                 frags)), sect)
             print "filtered, non overlapped sections: %s" % sect
             return frags + sect
-            
-            
+
         parts = [{"header": s[0], "position": s[1], '_score_key': s} for s in self.sections] \
             + [{"fragment": book.fragments.get(anchor=f), '_score_key':f} for f in self.fragments]
 
@@ -565,7 +580,6 @@ class SearchResult(object):
         return parts
 
     parts = property(get_parts)
-
 
     def __unicode__(self):
         return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
@@ -584,6 +598,67 @@ class SearchResult(object):
 
     def __cmp__(self, other):
         return cmp(self.score, other.score)
+
+
+class Hint(object):
+    def __init__(self, search):
+        self.search = search
+        self.book_tags = {}
+        self.part_tags = []
+        self.book = None
+
+    def book(self, book):
+        self.book = book
+
+    def tags(self, tags):
+        for t in tags:
+            if t.category in ['author', 'title', 'epoch', 'genre', 'kind']:
+                lst = self.book_tags.get(t.category, [])
+                lst.append(t)
+                self.book_tags[t.category] = lst
+            if t.category in ['theme']:
+                self.part_tags.append(t)
+
+    def tag_filter(self, tags, field='tags'):
+        q = BooleanQuery()
+
+        for tag in tags:
+            toks = self.search.get_tokens(tag.name, field=field)
+            tag_phrase = PhraseQuery()
+            for tok in toks:
+                tag_phrase.add(Term(field, tok))
+            q.add(BooleanClause(tag_phrase, BooleanClause.Occur.MUST))
+
+        return QueryWrapperFilter(q)
+
+    def book_filter(self):
+        tags = reduce(lambda a, b: a + b, self.book_tags.values(), [])
+        if tags:
+            return self.tag_filter(tags)
+        else:
+            return None
+
+    def part_filter(self):
+        if self.part_tags:
+            return self.tag_filter(self.part_tags, field='themes')
+        else:
+            return None
+
+    def should_search_for_book(self):
+        return self.book is None
+
+    def just_search_in(self, all):
+        """Holds logic to figure out which indexes should be search, when we have some hinst already"""
+        some = []
+        for field in all:
+            if field == 'author' and 'author' in self.book_tags:
+                continue
+            if field == 'title' and self.book is not None:
+                continue
+            if (field == 'themes' or field == 'themes_pl') and self.part_tags:
+                continue
+            some.append(field)
+        return some
 
 
 class MultiSearch(Search):
@@ -655,38 +730,62 @@ class MultiSearch(Search):
         return BlockJoinQuery(query, self.parent_filter,
                               BlockJoinQuery.ScoreMode.Total)
 
-    def search_perfect_book(self, searched, max_results=20, fuzzy=False):
-        qrys = [self.make_phrase(self.get_tokens(searched, field=fld), field=fld, fuzzy=fuzzy) for fld in ['author', 'title']]
+    def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
+        fields_to_search = ['author', 'title']
+        only_in = None
+        if hint:
+            if not hint.should_search_for_book():
+                return []
+            fields_to_search = hint.just_search_in(fields_to_search)
+            only_in = hint.book_filter()
+
+        qrys = [self.make_phrase(self.get_tokens(searched, field=fld), field=fld, fuzzy=fuzzy) for fld in fields_to_search]
 
         books = []
         for q in qrys:
-            top = self.searcher.search(q, max_results)
+            top = self.searcher.search(q,
+                                       self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
+                max_results)
             for found in top.scoreDocs:
                 books.append(SearchResult(self.searcher, found))
         return books
 
-    def search_perfect_parts(self, searched, max_results=20, fuzzy=False):
+    def search_perfect_parts(self, searched, max_results=20, fuzzy=False, hint=None):
         qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['content']]
+
+        flt = None
+        if hint:
+            flt = hint.part_filter()
 
         books = []
         for q in qrys:
-            top = self.searcher.search(q, max_results)
+            top = self.searcher.search(q,
+                                       self.chain_filters([self.term_filter(Term('is_book', 'true'), inverse=True),
+                                                           flt
+                                                          ]),
+                                       max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found).add_snippets(self.get_snippets(found, q)))
+                books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q)))
 
         return books
 
-    def search_everywhere(self, searched, max_results=20, fuzzy=False):
+    def search_everywhere(self, searched, max_results=20, fuzzy=False, hint=None):
         books = []
+        only_in = None
+
+        if hint:
+            only_in = hint.part_filter()
 
         # content only query : themes x content
         q = BooleanQuery()
 
         tokens = self.get_tokens(searched)
-        q.add(BooleanClause(self.make_term_query(tokens, field='themes', fuzzy=fuzzy), BooleanClause.Occur.MUST))
+        if hint is None or hint.just_search_in(['themes_pl']) != []:
+            q.add(BooleanClause(self.make_term_query(tokens, field='themes_pl', fuzzy=fuzzy), BooleanClause.Occur.MUST))
+
         q.add(BooleanClause(self.make_term_query(tokens, field='content', fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
-        topDocs = self.searcher.search(q, max_results)
+        topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
             books.append(SearchResult(self.searcher, found))
 
@@ -768,7 +867,7 @@ class MultiSearch(Search):
         bks = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            b = models.Book.objects.get(id=doc.get("book_id"))
+            b = catalogue.models.Book.objects.get(id=doc.get("book_id"))
             bks.append(b)
             print "%s (%d) -> %f" % (b, b.id, found.score)
         return bks
@@ -782,12 +881,14 @@ class MultiSearch(Search):
         # locate content.
         snippets = Snippets(stored.get('book_id')).open()
         try:
-            text = snippets.get(stored.get('snippets_position'), stored.get('snippets_length'))
+            text = snippets.get((int(stored.get('snippets_position')),
+                                 int(stored.get('snippets_length'))))
         finally:
             snippets.close()
 
         tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
         #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
+        #        import pdb; pdb.set_trace()
         snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
         print('snips: %s' % snip)
 
@@ -816,7 +917,7 @@ class MultiSearch(Search):
         tags = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            tag = models.Tag.objects.get(id=doc.get("tag_id"))
+            tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
             tags.append(tag)
             print "%s (%d) -> %f" % (tag, tag.id, found.score)
 
@@ -836,6 +937,18 @@ class MultiSearch(Search):
                 q.add(t)
         return q
 
+    @staticmethod
+    def term_filter(term, inverse=False):
+        only_term = TermsFilter()
+        only_term.addTerm(term)
+
+        if inverse:
+            neg = BooleanFilter()
+            neg.add(FilterClause(only_term, BooleanClause.Occur.MUST_NOT))
+            only_term = neg
+
+        return only_term
+
     def hint_tags(self, string, max_results=50):
         toks = self.get_tokens(string, field='SIMPLE')
         top = BooleanQuery()
@@ -844,11 +957,7 @@ class MultiSearch(Search):
             q = self.create_prefix_phrase(toks, field)
             top.add(BooleanClause(q, BooleanClause.Occur.SHOULD))
 
-        book_cat = TermsFilter()
-        book_cat.addTerm(Term("tag_category", "book"))
-
-        no_book_cat = BooleanFilter()
-        no_book_cat.add(FilterClause(book_cat, BooleanClause.Occur.MUST_NOT))
+        no_book_cat = self.term_filter(Term("tag_category", "book"), inverse=True)
 
         return self.search_tags(top, no_book_cat, max_results=max_results)
 
@@ -856,25 +965,22 @@ class MultiSearch(Search):
         toks = self.get_tokens(string, field='SIMPLE')
 
         q = self.create_prefix_phrase(toks, 'title')
-        only_books = TermsFilter()
-        only_books.addTerm(Term("is_book", "true"))
 
-        return self.book_search(q, only_books, max_results=max_results)
+        return self.book_search(q, self.term_filter(Term("is_book", "true")), max_results=max_results)
 
-    def filter_by_tags(self, tags):
-        q = BooleanQuery()
-        
-        for tag in tags:
-            toks = self.get_tokens(tag.name, field='tags')
-            tag_phrase = PhraseQuery()
-            for tok in toks:
-                tag_phrase.add(tok)
-            q.add(BooleanClause(tok, BooleanClause.Occur.MUST))
-
-        return QueryWrapperFilter(q)
+    @staticmethod
+    def chain_filters(filters, op=ChainedFilter.AND):
+        filters = filter(lambda x: x is not None, filters)
+        if not filters:
+            return None
+        chf = ChainedFilter(JArray('object')(filters, Filter), op)
+        return chf
 
     def filtered_categories(self, tags):
         cats = {}
         for t in tags:
             cats[t.category] = True
         return cats.keys()
+
+    def hint(self):
+        return Hint(self)

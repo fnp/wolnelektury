@@ -27,10 +27,14 @@
       <ol>
       {% for result in results %}
       <li>
-	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book.id}}, score: {{result.score}})</p>
+	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
 	<ul>
-	  {% for snippet in result.snippets %}
-	  <li>{{snippet|safe}}</li>
+	  {% for hit in result.hits %}
+	  <li>
+	    {% for snip in hit.3.snippets %}
+	    {{snip}}<br/>
+	    {% endfor %}
+	  </li>
 	  {% endfor %}
 
 	  {% for part in result.parts %}
