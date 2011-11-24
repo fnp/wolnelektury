@@ -7,9 +7,37 @@
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% title_from_tags tags %}</h1>
-    {% breadcrumbs tags %}
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
+    </form>
 
+    <div id="results">
+      <ol>
+      {% for result in results %}
+      <li>
+	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
+	<ul>
+	  {% for hit in result.process_hits %}
+	  <li>
+	    {% if hit.fragment %}
+	    <div style="">Tagi/Motywy: {% for tag in hit.themes %}{{tag.name}} {% endfor %}</div>
+	    {% endif %}
+	    {% for snip in hit.snippets %}
+	      {{snip|safe}}<br/>
+	    {% endfor %}
+	  </li>
+	  {% endfor %}
+
+	</ul>
+      </li>
+      {% empty %}
+      <p>No results.</p>
+      {% endfor %}
+      </ol>
+    </div>
+
+
+{% comment %}
     <div id="books-list">
         <p>{% trans "More than one result matching the criteria found." %}</p>
         <ul class='matches'>
@@ -24,6 +52,7 @@
         {% endfor %}
         </ul>
     </div>
+{% endcomment %}
 
     <div id="set-window">
         <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>

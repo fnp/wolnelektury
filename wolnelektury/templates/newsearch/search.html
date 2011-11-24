@@ -10,7 +10,7 @@
 
 {% block body %}
     <h1>Search</h1>
-    <form action="{% url newsearch %}" method="get" accept-charset="utf-8" id="search-form-x">
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form-x">
         <p>
 	  <input type="text" name="q" value="{{request.GET.q}}" style="width:250px; font-size: 1.2em;">
 	  <input type="submit" value="{% trans "Search" %}" /> 
@@ -27,10 +27,14 @@
       <ol>
       {% for result in results %}
       <li>
-	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book.id}}, score: {{result.score}})</p>
+	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
 	<ul>
-	  {% for snippet in result.snippets %}
-	  <li>{{snippet|safe}}</li>
+	  {% for hit in result.hits %}
+	  <li>
+	    {% for snip in hit.3.snippets %}
+	      {{snip|safe}}<br/>
+	    {% endfor %}
+	  </li>
 	  {% endfor %}
 
 	  {% for part in result.parts %}
