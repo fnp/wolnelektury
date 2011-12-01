@@ -117,13 +117,11 @@ class Snippets(object):
         self.file.write(txt)
         pos = (self.position, l)
         self.position += l
-        print "Snip<%s>%s</s>" %(pos, txt)
         return pos
 
     def get(self, pos):
         self.file.seek(pos[0], 0)
         txt = self.file.read(pos[1]).decode('utf-8')
-        print "got from snippets %d bytes from %s:" % (len(txt), pos)
         return txt
 
     def close(self):
@@ -317,6 +315,13 @@ class Index(IndexStore):
 
             return doc
 
+        def give_me_utf8(s):
+            if isinstance(s, unicode):
+                return s.encode('utf-8')
+            else:
+                return s
+
+
         fragments = {}
         snippets = Snippets(book.id).open('w')
         try:
@@ -340,7 +345,7 @@ class Index(IndexStore):
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
                         if start.text is not None:
-                            fragments[fid]['themes'] += map(unicode.strip, start.text.split(','))
+                            fragments[fid]['themes'] += map(str.strip, map(give_me_utf8, start.text.split(',')))
                         fragments[fid]['content'].append(start.tail)
                     elif start is not None and start.tag == 'end':
                         fid = start.attrib['id'][1:]
@@ -893,7 +898,6 @@ class MultiSearch(Search):
         #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
         #        import pdb; pdb.set_trace()
         snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
-        print('snips: %s' % snip)
 
         return [snip]
 
