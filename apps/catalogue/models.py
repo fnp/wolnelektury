@@ -23,6 +23,9 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import create_zip
+from shutil import copy
+
+from os import path
 
 
 TAG_CATEGORIES = (
@@ -170,23 +173,25 @@ class Tag(TagBase):
         return '/'.join((Tag.categories_dict[self.category], self.slug))
 
 
+def get_dynamic_path(media, filename, ext=None, maxlen=100):
+    from slughifi import slughifi
+    
+    # how to put related book's slug here?
+    if not ext:
+        if media.type == 'daisy':
+            ext = 'daisy.zip'
+        else:
+            ext = media.type
+    if media is None or not media.name:
+        name = slughifi(filename.split(".")[0])
+    else:
+        name = slughifi(media.name)
+    return 'book/%s/%s.%s' % (ext, name[:maxlen-len('book/%s/.%s' % (ext, ext))-4], ext)
+
+
 # TODO: why is this hard-coded ?
 def book_upload_path(ext=None, maxlen=100):
-    def get_dynamic_path(media, filename, ext=ext):
-        from slughifi import slughifi
-
-        # how to put related book's slug here?
-        if not ext:
-            if media.type == 'daisy':
-                ext = 'daisy.zip'
-            else:
-                ext = media.type
-        if not media.name:
-            name = slughifi(filename.split(".")[0])
-        else:
-            name = slughifi(media.name)
-        return 'book/%s/%s.%s' % (ext, name[:maxlen-len('book/%s/.%s' % (ext, ext))-4], ext)
-    return get_dynamic_path
+    return lambda *args: get_dynamic_path(*args, ext=ext, maxlen=maxlen)
 
 
 class BookMedia(models.Model):
@@ -465,24 +470,30 @@ class Book(models.Model):
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
 
-    def build_pdf(self):
+    def build_pdf(self, customizations=None, file_name=None):
         """ (Re)builds the pdf file.
-
+        customizations - customizations which are passed to LaTeX class file.
+        file_name - save the pdf file under a different name and DO NOT save it in db.
         """
         from tempfile import NamedTemporaryFile
         from os import unlink
         from django.core.files import File
         from librarian import pdf
         from catalogue.utils import ORMDocProvider, remove_zip
+        from django.core.files.move import file_move_safe
 
         try:
             pdf_file = NamedTemporaryFile(delete=False)
             pdf.transform(ORMDocProvider(self),
                       file_path=str(self.xml_file.path),
                       output_file=pdf_file,
+                      customizations=customizations
                       )
 
-            self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
+            if file_name is None:
+                self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
+            else:
+                copy(pdf_file.name, path.join(settings.MEDIA_ROOT, get_dynamic_path(None, file_name, ext='pdf')))
         finally:
             unlink(pdf_file.name)
 

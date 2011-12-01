@@ -583,7 +583,10 @@ function serverTime() {
                 }
             }); 
         }*/       
-
+	$("#custom-pdf-link").toggle(
+	    function(ev) { $(".custom-pdf").show(); return false; },
+	    function(ev) { $(".custom-pdf").hide(); return false; }
+	);
     });
 })(jQuery)
 

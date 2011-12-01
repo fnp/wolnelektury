@@ -40,5 +40,7 @@ urlpatterns = patterns('catalogue.views',
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 
     url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
+
+    url(r'^custompdf/(?P<slug>[a-zA-Z0-9-]+).pdf', 'download_custom_pdf'),
 )
 

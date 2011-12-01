@@ -61,6 +61,16 @@
                     {% for media in book.get_odt %}
                         <a href="{{ media.file.url }}"><img src="{{ STATIC_URL }}img/odt.png" title="{% trans "Download ODT" %} &ndash; {% trans "for reading" %} {% trans "and editing using" %} OpenOffice.org: {{ media.name }}" alt="{% trans "Download ODT" %}" /></a>
                     {% endfor %}
+			
+                    {% if book.pdf_file %}
+			<br/><a href="#" id="custom-pdf-link">{% trans "Dowload customized PDF" %}</a>.
+		    {% endif %}
+			<div style="display: none" class="custom-pdf">
+			  <form action="{% url catalogue.views.download_custom_pdf book.slug %}" method="GET">
+			    {{custom_pdf_form.as_p}}
+			    <input type="submit" value="{% trans "Download" %}"/>
+			  </form>
+			</div>
                 </div>
                 {% if book.has_mp3_file or book.has_ogg_file or book.has_daisy_file %}
                     <p class="header">

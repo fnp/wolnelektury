@@ -8,6 +8,7 @@ import random
 import time
 from base64 import urlsafe_b64encode
 
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.files.uploadedfile import UploadedFile
 from django.utils.hashcompat import sha_constructor
 from django.conf import settings
@@ -18,7 +19,9 @@ from fcntl import flock, LOCK_EX
 from zipfile import ZipFile
 
 from librarian import DocProvider
-
+from reporting.utils import read_chunks
+from celery.task import task
+import catalogue.models
 
 # Use the system (hardware-based) random number generator if it exists.
 if hasattr(random, 'SystemRandom'):
@@ -131,3 +134,23 @@ def remove_zip(zip_slug):
     except OSError as oe:
         if oe.errno != ENOENT:
             raise oe
+
+
+class AttachmentHttpResponse(HttpResponse):
+    """Response serving a file to be downloaded.
+    """
+    def __init__ (self, file_path, file_name, mimetype):
+        super(AttachmentHttpResponse, self).__init__(mimetype=mimetype)
+        self['Content-Disposition'] = 'attachment; filename=%s' % file_name
+        self.file_path = file_path
+        self.file_name = file_name
+
+        with open(self.file_path) as f:
+            for chunk in read_chunks(f):
+                self.write(chunk)
+
+@task
+def create_custom_pdf(book_id, customizations, file_name):
+    book = catalogue.models.Book.objects.get(id=book_id)
+    if not path.exists(file_name):
+        book.build_pdf(customizations=customizations, file_name=file_name)

@@ -7,7 +7,7 @@ from catalogue import models
 
 from nose.tools import raises
 import tempfile
-from os import unlink,path
+from os import unlink, path, makedirs
 
 class BookImportLogicTests(WLTestCase):
 
@@ -258,3 +258,13 @@ class BookImportGenerateTest(WLTestCase):
         parent = models.Book.from_xml_file(input)
         parent.build_pdf()
         self.assertTrue(path.exists(parent.pdf_file.path))
+
+    def test_custom_pdf(self):
+        out = models.get_dynamic_path(None, 'test-custom', ext='pdf')
+        absoulute_path = path.join(settings.MEDIA_ROOT, out)
+        
+        if not path.exists(path.dirname(absoulute_path)):
+            makedirs(path.dirname(absoulute_path))
+
+        self.book.build_pdf(customizations=['nofootnotes', '13pt', 'a4paper'], file_name='test-custom')
+        self.assertTrue(path.exists(absoulute_path))

@@ -28,11 +28,12 @@ from django.views.generic.list_detail import object_list
 
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import split_tags
+from catalogue.utils import split_tags, AttachmentHttpResponse, create_custom_pdf
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
 
+from os import path
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
@@ -253,6 +254,7 @@ def book_detail(request, slug):
     projects = sorted(projects)
 
     form = forms.SearchForm()
+    custom_pdf_form = forms.CustomPDFForm()
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
 
@@ -762,3 +764,23 @@ def download_zip(request, format, slug):
     else:
         raise Http404('No format specified for zip package')
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))
+
+
+def download_custom_pdf(request, slug):
+    book = models.Book.objects.get(slug=slug)
+    if request.method == 'GET':
+        form = forms.CustomPDFForm(request.GET)
+        if form.is_valid():
+            cust = form.customizations
+            h = hash(tuple(cust))
+            pdf_name = '%s-custom-%s' % (book.slug, h)
+            pdf_file = path.join(settings.MEDIA_ROOT, models.get_dynamic_path(None, pdf_name, ext='pdf'))
+
+            if not path.exists(pdf_file):
+                result = create_custom_pdf.delay(book.id, cust, pdf_name)
+                result.wait()
+            return AttachmentHttpResponse(file_name=("%s.pdf" % book.slug), file_path=pdf_file, mimetype="application/pdf")
+        else:
+            raise Http404(_('Incorrect customization options for PDF'))
+    else:
+        raise Http404(_('Bad method'))

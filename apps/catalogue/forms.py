@@ -96,3 +96,52 @@ class DownloadFormatsForm(forms.Form):
     def __init__(self, *args, **kwargs):
          super(DownloadFormatsForm, self).__init__(*args, **kwargs)
 
+
+PDF_PAGE_SIZES = (
+    ('a4paper', _('A4')),
+    ('a5paper', _('A5')),
+)
+
+
+PDF_LEADINGS = (
+    ('', _('Normal leading')),
+    ('onehalfleading', _('One and a half leading')),
+    ('doubleleading', _('Double leading')),
+    )
+
+PDF_FONT_SIZES = (
+    ('11pt', _('Default')),
+    ('13pt', _('Big'))
+    )
+
+
+class CustomPDFForm(forms.Form):
+    nofootnotes = forms.BooleanField(required=False, label=_("Don't show footnotes"))
+    nothemes = forms.BooleanField(required=False, label=_("Don't disply themes"))
+    nowlfont = forms.BooleanField(required=False, label=_("Don't use our custom font"))
+    ##    pagesize = forms.ChoiceField(PDF_PAGE_SIZES, required=True, label=_("Paper size"))
+    leading = forms.ChoiceField(PDF_LEADINGS, required=False, label=_("Leading"))
+    fontsize = forms.ChoiceField(PDF_FONT_SIZES, required=True, label=_("Font size"))
+
+    @property
+    def customizations(self):
+        c = []
+        if self.cleaned_data['nofootnotes']:
+            c.append('nofootnotes')
+            
+        if self.cleaned_data['nothemes']:
+            c.append('nothemes')
+            
+        if self.cleaned_data['nowlfont']:
+            c.append('nowlfont')
+        
+            ##  c.append(self.cleaned_data['pagesize'])
+        c.append(self.cleaned_data['fontsize'])
+
+        if self.cleaned_data['leading']:
+            c.append(self.cleaned_data['leading'])
+
+        c.sort()
+
+        return c
+

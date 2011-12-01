@@ -413,6 +413,11 @@ p .ac_input {
     padding: 0 10px 0 10px;    
 }
 
+#formats .wrap div.download .custom-pdf {
+    text-align: left;
+}
+
+
 #czytamysluchajac {
     margin-top: 2.5em;
 }
