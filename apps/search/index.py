@@ -339,13 +339,16 @@ class Index(IndexStore):
                         fragments[fid]['content'].append(start.tail)
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
-                        fragments[fid]['themes'].append(start.text)
+                        if start.text is not None:
+                            fragments[fid]['themes'] += map(unicode.strip, start.text.split(','))
                         fragments[fid]['content'].append(start.tail)
                     elif start is not None and start.tag == 'end':
                         fid = start.attrib['id'][1:]
                         if fid not in fragments:
                             continue  # a broken <end> node, skip it
                         frag = fragments[fid]
+                        if frag['themes'] == []:
+                            continue  # empty themes list.
                         del fragments[fid]
 
                         def jstr(l):
