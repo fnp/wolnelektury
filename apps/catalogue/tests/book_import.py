@@ -266,5 +266,5 @@ class BookImportGenerateTest(WLTestCase):
         if not path.exists(path.dirname(absoulute_path)):
             makedirs(path.dirname(absoulute_path))
 
-        self.book.build_pdf(customizations=['nofootnotes', '13pt', 'a4paper'], file_name='test-custom')
+        self.book.build_pdf(customizations=['nofootnotes', '13pt', 'a4paper'], file_name=out)
         self.assertTrue(path.exists(absoulute_path))
