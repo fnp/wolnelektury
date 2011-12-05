@@ -8,6 +8,7 @@ from django.db import models
 from django.db.models import permalink, Q
 import django.dispatch
 from django.core.cache import cache
+from django.core.files.storage import DefaultStorage
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
@@ -24,7 +25,8 @@ from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import create_zip
 from shutil import copy
-
+from glob import glob
+import re
 from os import path
 
 
@@ -175,7 +177,7 @@ class Tag(TagBase):
 
 def get_dynamic_path(media, filename, ext=None, maxlen=100):
     from slughifi import slughifi
-    
+
     # how to put related book's slug here?
     if not ext:
         if media.type == 'daisy':
@@ -192,6 +194,27 @@ def get_dynamic_path(media, filename, ext=None, maxlen=100):
 # TODO: why is this hard-coded ?
 def book_upload_path(ext=None, maxlen=100):
     return lambda *args: get_dynamic_path(*args, ext=ext, maxlen=maxlen)
+
+
+def get_customized_pdf_path(book, customizations):
+    """
+    Returns a MEDIA_ROOT relative path for a customized pdf. The name will contain a hash of customization options.
+    """
+    customizations.sort()
+    h = hash(tuple(customizations))
+    pdf_name = '%s-custom-%s' % (book.slug, h)
+    pdf_file = models.get_dynamic_path(None, pdf_name, ext='pdf')
+    return pdf_file
+
+
+def get_existing_customized_pdf(book):
+    """
+    Returns a list of paths to generated customized pdf of a book
+    """
+    pdf_glob = '%s-custom-' % (book.slug,)
+    pdf_glob = get_dynamic_path(None, pdf_glob, ext='pdf')
+    pdf_glob = re.sub(r"[.]([a-z0-9]+)$", "*.\\1", pdf_glob)
+    return glob(path.join(settings.MEDIA_ROOT, pdf_glob))
 
 
 class BookMedia(models.Model):
@@ -480,7 +503,6 @@ class Book(models.Model):
         from django.core.files import File
         from librarian import pdf
         from catalogue.utils import ORMDocProvider, remove_zip
-        from django.core.files.move import file_move_safe
 
         try:
             pdf_file = NamedTemporaryFile(delete=False)
@@ -491,14 +513,22 @@ class Book(models.Model):
                       )
 
             if file_name is None:
-                self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
+                # we'd like to be sure not to overwrite changes happening while
+                # (timely) pdf generation is taking place (async celery scenario)
+                current_self = Book.objects.get(id=self.id)
+                current_self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
+                self.pdf_file = current_self.pdf_file
             else:
-                copy(pdf_file.name, path.join(settings.MEDIA_ROOT, get_dynamic_path(None, file_name, ext='pdf')))
+                print "safing %s" % file_name
+                print "to: %s" % DefaultStorage().path(file_name)
+                DefaultStorage().save(file_name, File(open(pdf_file.name)))
         finally:
             unlink(pdf_file.name)
 
-        # remove zip with all pdf files
+        # remove cached downloadables
         remove_zip(settings.ALL_PDF_ZIP)
+        for customized_pdf in get_existing_customized_pdf(self):
+            unlink(customized_pdf)
 
     def build_mobi(self):
         """ (Re)builds the MOBI file.

@@ -10,6 +10,8 @@ from base64 import urlsafe_b64encode
 
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.files.uploadedfile import UploadedFile
+from django.core.files.base import File
+from django.core.files.storage import DefaultStorage
 from django.utils.hashcompat import sha_constructor
 from django.conf import settings
 from celery.task import task
@@ -145,12 +147,19 @@ class AttachmentHttpResponse(HttpResponse):
         self.file_path = file_path
         self.file_name = file_name
 
-        with open(self.file_path) as f:
+        with open(DefaultStorage().path(self.file_path)) as f:
             for chunk in read_chunks(f):
                 self.write(chunk)
 
 @task
-def create_custom_pdf(book_id, customizations, file_name):
+def async_build_pdf(book_id, customizations, file_name):
+    """
+    A celery task to generate pdf files.
+    Accepts the same args as Book.build_pdf, but with book id as first parameter
+    instead of Book instance
+    """
     book = catalogue.models.Book.objects.get(id=book_id)
-    if not path.exists(file_name):
+    print "will gen %s" % DefaultStorage().path(file_name)
+    if not DefaultStorage().exists(file_name):
         book.build_pdf(customizations=customizations, file_name=file_name)
+    print "done."

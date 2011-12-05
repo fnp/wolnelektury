@@ -28,7 +28,7 @@ from django.views.generic.list_detail import object_list
 
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import split_tags, AttachmentHttpResponse, create_custom_pdf
+from catalogue.utils import split_tags, AttachmentHttpResponse, async_build_pdf
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
@@ -772,12 +772,10 @@ def download_custom_pdf(request, slug):
         form = forms.CustomPDFForm(request.GET)
         if form.is_valid():
             cust = form.customizations
-            h = hash(tuple(cust))
-            pdf_name = '%s-custom-%s' % (book.slug, h)
-            pdf_file = path.join(settings.MEDIA_ROOT, models.get_dynamic_path(None, pdf_name, ext='pdf'))
-
+            pdf_file = models.get_customized_pdf_path(book, cust)
+                
             if not path.exists(pdf_file):
-                result = create_custom_pdf.delay(book.id, cust, pdf_name)
+                result = async_build_pdf.delay(book.id, cust, pdf_file)
                 result.wait()
             return AttachmentHttpResponse(file_name=("%s.pdf" % book.slug), file_path=pdf_file, mimetype="application/pdf")
         else:
