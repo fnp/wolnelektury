@@ -1,5 +1,6 @@
 # Create your views here.
 
+from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -34,8 +35,11 @@ def new_poem(request):
 
 
 @cache.never_cache
-def poem_from_book(request, slug):
-    book = get_object_or_404(Book, slug=slug)
+def poem_from_book(request, book):
+    kwargs = Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(Book, **kwargs)
     user = request.user if request.user.is_authenticated() else None
     text = Poem.write(Continuations.get(book))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)

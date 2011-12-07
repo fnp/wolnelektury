@@ -4,6 +4,7 @@ from piston.authentication import OAuthAuthentication
 from piston.resource import Resource
 
 from api import handlers
+from catalogue.models import Book
 
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
@@ -46,10 +47,10 @@ urlpatterns = patterns(
 
 
     # objects details
-    url(r'^books/(?P<slug>[a-z0-9-]+)/$', book_resource, name="api_book"),
+    url(r'^books/(?P<book>%s)/$' % Book.URLID_RE, book_resource, name="api_book"),
     url(r'^(?P<category>[a-z0-9-]+)/(?P<slug>[a-z0-9-]+)/$',
         tag_resource, name="api_tag"),
-    url(r'^books/(?P<slug>[a-z0-9-]+)/fragments/(?P<anchor>[a-z0-9-]+)/$',
+    url(r'^books/(?P<book>%s)/fragments/(?P<anchor>[a-z0-9-]+)/$' % Book.URLID_RE,
         fragment_resource, name="api_fragment"),
 
     # books by tags

@@ -93,7 +93,7 @@
             {% for book in object_list %}
                 <li>
                     {% if user_is_owner %}
-                        <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">{% trans "Delete" %}</a>
+                        <a href="{% url remove_from_shelf last_tag.slug book.urlid %}" class="remove-from-shelf">{% trans "Delete" %}</a>
                     {% endif %}
                     {{ book.short_html }}</li>
             {% endfor %}
