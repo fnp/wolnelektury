@@ -203,7 +203,7 @@ def get_customized_pdf_path(book, customizations):
     customizations.sort()
     h = hash(tuple(customizations))
     pdf_name = '%s-custom-%s' % (book.slug, h)
-    pdf_file = models.get_dynamic_path(None, pdf_name, ext='pdf')
+    pdf_file = get_dynamic_path(None, pdf_name, ext='pdf')
     return pdf_file
 
 
@@ -518,17 +518,21 @@ class Book(models.Model):
                 current_self = Book.objects.get(id=self.id)
                 current_self.pdf_file.save('%s.pdf' % self.slug, File(open(pdf_file.name)))
                 self.pdf_file = current_self.pdf_file
-            else:
-                print "safing %s" % file_name
-                print "to: %s" % DefaultStorage().path(file_name)
-                DefaultStorage().save(file_name, File(open(pdf_file.name)))
-        finally:
-            unlink(pdf_file.name)
 
-        # remove cached downloadables
-        remove_zip(settings.ALL_PDF_ZIP)
-        for customized_pdf in get_existing_customized_pdf(self):
-            unlink(customized_pdf)
+                # remove cached downloadables
+                remove_zip(settings.ALL_PDF_ZIP)
+
+                for customized_pdf in get_existing_customized_pdf(self):
+                    unlink(customized_pdf)
+            else:
+                print "save %s to: %s" % (file_name, DefaultStorage().path(file_name))
+
+                pdf_django_file = File(open(pdf_file.name))
+                DefaultStorage().save(file_name, pdf_django_file)
+		pdf_django_file.close()
+        finally:
+            pass
+            unlink(pdf_file.name)
 
     def build_mobi(self):
         """ (Re)builds the MOBI file.
