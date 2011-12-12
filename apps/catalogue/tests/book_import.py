@@ -4,6 +4,7 @@ from __future__ import with_statement
 from django.core.files.base import ContentFile, File
 from catalogue.test_utils import *
 from catalogue import models
+from librarian import WLURI
 
 from nose.tools import raises
 import tempfile
@@ -14,13 +15,14 @@ class BookImportLogicTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         self.book_info = BookInfoStub(
-            url=u"http://wolnelektury.pl/example/default-book",
+            url=WLURI.from_slug_and_lang(u"default-book", None),
             about=u"http://wolnelektury.pl/example/URI/default_book",
             title=u"Default Book",
             author=PersonStub(("Jim",), "Lazy"),
             kind="X-Kind",
             genre="X-Genre",
             epoch="X-Epoch",
+            language=u"pol",
         )
 
         self.expected_tags = [
@@ -112,7 +114,7 @@ class BookImportLogicTests(WLTestCase):
     @raises(ValueError)
     def test_book_with_invalid_slug(self):
         """ Book with invalid characters in slug shouldn't be imported """
-        self.book_info.url = "http://wolnelektury.pl/example/default_book"
+        self.book_info.url = WLURI.from_slug_and_lang(u"default_book", None)
         BOOK_TEXT = "<utwor />"
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
 
@@ -240,6 +242,38 @@ class ChildImportTests(WLTestCase):
 
         self.assertEqual(['Kot'], [tag.name for tag in themes],
                         'wrong related theme list')
+
+
+class MultilingualBookImportTest(WLTestCase):
+    def setUp(self):
+        WLTestCase.setUp(self)
+        self.pol_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Joe",), "Doe"),
+            **info_args("A book")
+        )
+
+        self.eng_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Joe",), "Doe"),
+            **info_args("A book", "eng")
+        )
+
+    def test_multilingual_import(self):
+        BOOK_TEXT = """<utwor><opowiadanie><akap>A</akap></opowiadanie></utwor>"""
+
+        book1 = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.pol_info)
+        book2 = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.eng_info)
+
+        self.assertEqual(
+                set([b.language for b in models.Book.objects.all()]),
+                set(['pol', 'eng']),
+                'Books imported in wrong languages.'
+            )
 
 
 class BookImportGenerateTest(WLTestCase):

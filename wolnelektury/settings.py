@@ -234,6 +234,8 @@ ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
 ALL_PDF_ZIP = 'wolnelektury_pl_pdf'
 ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
 
+CATALOGUE_DEFAULT_LANGUAGE = 'pol'
+
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 
 import djcelery

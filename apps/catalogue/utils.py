@@ -66,11 +66,12 @@ class ORMDocProvider(DocProvider):
     def __init__(self, book):
         self.book = book
 
-    def by_slug(self, slug):
-        if slug == self.book.slug:
-            return self.book.xml_file
+    def by_slug_and_lang(self, slug, language):
+        if slug == self.book.slug and language == self.language:
+            return open(self.book.xml_file.path)
         else:
-            return type(self.book).objects.get(slug=slug).xml_file
+            return type(self.book).objects.get(
+                    slug=slug, language=language).xml_file
 
 
 class LockFile(object):

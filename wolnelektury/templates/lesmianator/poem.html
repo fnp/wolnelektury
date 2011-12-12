@@ -15,7 +15,7 @@
                 {# shelf or global mixing #}
                 <a href='' class='menu-link'>Twórzże się jeszcze raz!</a>
             {% else %}{% if book %} 
-                <a href='{% url poem_from_book book.slug %}' class='menu-link'>Twórzże się jeszcze raz!</a>
+                <a href='{% url poem_from_book book.urlid %}' class='menu-link'>Twórzże się jeszcze raz!</a>
             {% endif %}{% endif %}
             <span style='float: right'>Wolne Lektury przepuszczone przez mikser.</a>
         </div>
@@ -40,7 +40,7 @@
             {% if book %}
                 <p>Tekst powstał przez zmiksowanie utworu
                 <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>.<br/>
-                <a href="{% url poem_from_book book.slug %}">Zmiksuj go ponownie</a>
+                <a href="{% url poem_from_book book.urlid %}">Zmiksuj go ponownie</a>
                 albo <a href="{% url lesmianator %}">zobacz</a>, co jeszcze możesz zamieszać.</p>
             {% else %}{% if books %}
                 <p>Tekst powstał przez zmiksowanie utworów:</p>

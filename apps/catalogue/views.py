@@ -204,9 +204,13 @@ def tagged_object_list(request, tags=''):
     )
 
 
-def book_fragments(request, book_slug, theme_slug):
-    book = get_object_or_404(models.Book, slug=book_slug)
-    book_tag = get_object_or_404(models.Tag, slug='l-' + book_slug, category='book')
+def book_fragments(request, book, theme_slug):
+    kwargs = models.Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(models.Book, **kwargs)
+
+    book_tag = book.book_tag()
     theme = get_object_or_404(models.Tag, slug=theme_slug, category='theme')
     fragments = models.Fragment.tagged.with_all([book_tag, theme])
 
@@ -215,11 +219,14 @@ def book_fragments(request, book_slug, theme_slug):
         context_instance=RequestContext(request))
 
 
-def book_detail(request, slug):
+def book_detail(request, book):
+    kwargs = models.Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
     try:
-        book = models.Book.objects.get(slug=slug)
+        book = models.Book.objects.get(**kwargs)
     except models.Book.DoesNotExist:
-        return pdcounter_views.book_stub_detail(request, slug)
+        return pdcounter_views.book_stub_detail(request, kwargs['slug'])
 
     book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
@@ -259,8 +266,12 @@ def book_detail(request, slug):
         context_instance=RequestContext(request))
 
 
-def book_text(request, slug):
-    book = get_object_or_404(models.Book, slug=slug)
+def book_text(request, book):
+    kwargs = models.Book.split_fileid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(models.Book, **kwargs)
+
     if not book.has_html_file():
         raise Http404
     book_themes = {}
@@ -392,7 +403,7 @@ def books_starting_with(prefix):
 
 
 def find_best_matches(query, user=None):
-    """ Finds a Book, Tag, BookStub or Author best matching a query.
+    """ Finds a models.Book, Tag, models.BookStub or Author best matching a query.
 
     Returns a with:
       - zero elements when nothing is found,
@@ -494,11 +505,15 @@ def user_shelves(request):
             context_instance=RequestContext(request))
 
 @cache.never_cache
-def book_sets(request, slug):
+def book_sets(request, book):
     if not request.user.is_authenticated():
         return HttpResponse(_('<p>To maintain your shelves you need to be logged in.</p>'))
 
-    book = get_object_or_404(models.Book, slug=slug)
+    kwargs = models.Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(models.Book, **kwargs)
+
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
     book_sets = book.tags.filter(category='set', user=request.user)
 
@@ -533,7 +548,11 @@ def book_sets(request, slug):
 @require_POST
 @cache.never_cache
 def remove_from_shelf(request, shelf, book):
-    book = get_object_or_404(models.Book, slug=book)
+    kwargs = models.Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(models.Book, **kwargs)
+
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set', user=request.user)
 
     if shelf in book.tags:
@@ -586,15 +605,16 @@ def download_shelf(request, slug):
 
     already = set()
     for book in collect_books(models.Book.tagged.with_all(shelf)):
+        fileid = book.fileid()
         if 'pdf' in formats and book.pdf_file:
             filename = book.pdf_file.path
-            archive.write(filename, str('%s.pdf' % book.slug))
+            archive.write(filename, str('%s.pdf' % fileid))
         if 'mobi' in formats and book.mobi_file:
             filename = book.mobi_file.path
-            archive.write(filename, str('%s.mobi' % book.slug))
+            archive.write(filename, str('%s.mobi' % fileid))
         if book.root_ancestor not in already and 'epub' in formats and book.root_ancestor.epub_file:
             filename = book.root_ancestor.epub_file.path
-            archive.write(filename, str('%s.epub' % book.root_ancestor.slug))
+            archive.write(filename, str('%s.epub' % book.root_ancestor.fileid()))
             already.add(book.root_ancestor)
         if 'odt' in formats and book.has_media("odt"):
             for file in book.get_media("odt"):
@@ -602,7 +622,7 @@ def download_shelf(request, slug):
                 archive.write(filename, str('%s.odt' % slughifi(file.name)))
         if 'txt' in formats and book.txt_file:
             filename = book.txt_file.path
-            archive.write(filename, str('%s.txt' % book.slug))
+            archive.write(filename, str('%s.txt' % fileid))
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
@@ -754,20 +774,26 @@ def tag_info(request, id):
     return HttpResponse(tag.description)
 
 
-def download_zip(request, format, slug):
+def download_zip(request, format, book=None):
+    kwargs = models.Book.split_fileid(book)
+
     url = None
     if format in ('pdf', 'epub', 'mobi'):
         url = models.Book.zip_format(format)
-    elif format == 'audiobook' and slug is not None:
-        book = models.Book.objects.get(slug=slug)
+    elif format == 'audiobook' and kwargs is not None:
+        book = get_object_or_404(models.Book, **kwargs)
         url = book.zip_audiobooks()
     else:
         raise Http404('No format specified for zip package')
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))
 
 
-def download_custom_pdf(request, slug):
-    book = models.Book.objects.get(slug=slug)
+def download_custom_pdf(request, book_fileid):
+    kwargs = models.Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(models.Book, **kwargs)
+
     if request.method == 'GET':
         form = forms.CustomPDFForm(request.GET)
         if form.is_valid():
@@ -777,7 +803,7 @@ def download_custom_pdf(request, slug):
             if not path.exists(pdf_file):
                 result = async_build_pdf.delay(book.id, cust, pdf_file)
                 result.wait()
-            return AttachmentHttpResponse(file_name=("%s.pdf" % book.slug), file_path=pdf_file, mimetype="application/pdf")
+            return AttachmentHttpResponse(file_name=("%s.pdf" % book_fileid), file_path=pdf_file, mimetype="application/pdf")
         else:
             raise Http404(_('Incorrect customization options for PDF'))
     else:

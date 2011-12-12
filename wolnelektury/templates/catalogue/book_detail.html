@@ -39,11 +39,11 @@
             <div id="toggle-description"><p></p></div>
         {% endif %}
         <div id="formats">
-            <p class="change-sets">{% trans "Put a book" %} <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">{% trans "on the shelf!" %}</a></span></p>
+            <p class="change-sets">{% trans "Put a book" %} <span><a href="{% url catalogue.views.book_sets book.urlid %}" class="jqm-trigger">{% trans "on the shelf!" %}</a></span></p>
             <div class="clearboth"></div>
             <div class="wrap">
                 {% if book.has_html_file %}
-                    <a class="online" href="{% url book_text book.slug %}">{% trans "Read online" %}</a>
+                    <a class="online" href="{% url book_text book.fileid %}">{% trans "Read online" %}</a>
                 {% endif %}
                 <div class="download">
                     {% if book.pdf_file %}
@@ -66,7 +66,7 @@
 			<br/><a href="#" id="custom-pdf-link">{% trans "Dowload customized PDF" %}</a>.
 		    {% endif %}
 			<div style="display: none" class="custom-pdf">
-			  <form action="{% url catalogue.views.download_custom_pdf book.slug %}" method="GET">
+			  <form action="{% url catalogue.views.download_custom_pdf book.fileid %}" method="GET">
 			    {{custom_pdf_form.as_p}}
 			    <input type="submit" value="{% trans "Download" %}"/>
 			  </form>
@@ -205,13 +205,13 @@
                 {% endif %}
             </ul>
             <p><a href="{{ book.xml_file.url }}">{% trans "View XML source" %}</a></p>
-            <p><a href="{% url poem_from_book book.slug %}">Miksuj ten utwór</a></p>
+            <p><a href="{% url poem_from_book book.urlid %}">Miksuj ten utwór</a></p>
         </div>
         <div id="themes-list">
             <h2>{% trans "Work's themes " %}</h2>
             <ul>
             {% for theme in book_themes %}
-                <li><a href="{% url book_fragments book.slug,theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
+                <li><a href="{% url book_fragments book.urlid theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
             {% endfor %}
             </ul>
         </div>

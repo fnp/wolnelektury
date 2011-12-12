@@ -3,6 +3,7 @@ from django.test import TestCase
 import shutil
 import tempfile
 from slughifi import slughifi
+from librarian import WLURI
 
 class WLTestCase(TestCase):
     """
@@ -41,12 +42,14 @@ class BookInfoStub(object):
         return dict((key, unicode(value)) for key, value in self.__dict.items())
 
 
-def info_args(title):
+def info_args(title, language=None):
     """ generate some keywords for comfortable BookInfoCreation  """
     slug = unicode(slughifi(title))
+    if language is None:
+        language = u'pol'
     return {
         'title': unicode(title),
-        'slug': slug,
-        'url': u"http://wolnelektury.pl/example/%s" % slug,
+        'url': WLURI.from_slug_and_lang(slug, language),
         'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
+        'language': language,
     }
