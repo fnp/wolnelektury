@@ -789,7 +789,7 @@ def download_zip(request, format, book=None):
 
 
 def download_custom_pdf(request, book_fileid):
-    kwargs = models.Book.split_urlid(book)
+    kwargs = models.Book.split_fileid(book_fileid)
     if kwargs is None:
         raise Http404
     book = get_object_or_404(models.Book, **kwargs)
