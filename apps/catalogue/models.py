@@ -481,7 +481,7 @@ class Book(models.Model):
             formats = []
             # files generated during publication
             if self.has_media("html"):
-                formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', [self.fileid()]), _('Read online')))
+                formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', args=[self.fileid()]), _('Read online')))
             if self.has_media("pdf"):
                 formats.append(u'<a href="%s">PDF</a>' % self.get_media('pdf').url)
             if self.has_media("mobi"):
