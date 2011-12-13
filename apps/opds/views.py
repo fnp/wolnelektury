@@ -332,7 +332,11 @@ class SearchFeed(AcquisitionFeed):
     def get_object(self, request):
         """
         For OPDS 1.1 We should handle a query for search terms
-        and atom:author, atom:contributor, atom:title
+        and criteria provided either as opensearch or 'inline' query.
+        OpenSearch defines fields: atom:author, atom:contributor (treated as translator),
+        atom:title. Inline query provides author, title, categories (treated as book tags),
+        description (treated as content search terms).
+        
         if search terms are provided, we shall search for books
         according to Hint information (from author & contributror & title).
 
