@@ -55,12 +55,15 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("publisher", simple)
         self.addAnalyzer("author", simple)
         self.addAnalyzer("is_book", keyword)
+        # shouldn't the title have two forms? _pl and simple?
 
         self.addAnalyzer("themes", simple)
         self.addAnalyzer("themes_pl", polish)
 
         self.addAnalyzer("tag_name", simple)
         self.addAnalyzer("tag_name_pl", polish)
+
+        self.addAnalyzer("translators", simple)
 
         self.addAnalyzer("KEYWORD", keyword)
         self.addAnalyzer("SIMPLE", simple)
@@ -212,7 +215,7 @@ class Index(IndexStore):
 
     def extract_metadata(self, book):
         fields = {}
-        book_info = dcparser.parse(book.xml_file)
+        book_info = dcparser.parse(open(book.xml_file.path))
 
         print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
 
@@ -494,6 +497,7 @@ class Search(IndexStore):
             bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
+
     def search(self, query, max_results=50):
         query = self.query(query)
         query = self.wrapjoins(query, ["content", "themes"])
@@ -623,10 +627,10 @@ class Hint(object):
         self.search = search
         self.book_tags = {}
         self.part_tags = []
-        self._book = None
+        self._books = []
 
-    def book(self, book):
-        self._book = book
+    def books(self, *books):
+        self._books = books
 
     def tags(self, tags):
         for t in tags:
@@ -660,12 +664,18 @@ class Hint(object):
         fs = []
         if self.part_tags:
             fs.append(self.tag_filter(self.part_tags, field='themes'))
-        if self._book is not None:
-            fs.append(NumericRangeFilter.newIntRange('book_id', self._book.id, self._book.id, True, True))
+            
+        if self._books != []:
+            bf = BooleanFilter()
+            for b in self._books:
+                id_filter = NumericRangeFilter.newIntRange('book_id', b.id, b.id, True, True)
+                bf.add(FilterClause(id_filter, BooleanClause.Occur.SHOULD))
+            fs.append(bf)
+            
         return MultiSearch.chain_filters(fs)
             
     def should_search_for_book(self):
-        return self._book is None
+        return self._books == []
 
     def just_search_in(self, all):
         """Holds logic to figure out which indexes should be search, when we have some hinst already"""
@@ -673,7 +683,7 @@ class Hint(object):
         for field in all:
             if field == 'author' and 'author' in self.book_tags:
                 continue
-            if field == 'title' and self._book is not None:
+            if field == 'title' and self._books != []:
                 continue
             if (field == 'themes' or field == 'themes_pl') and self.part_tags:
                 continue
@@ -746,9 +756,9 @@ class MultiSearch(Search):
             q.add(BooleanClause(term, modal))
         return q
 
-    def content_query(self, query):
-        return BlockJoinQuery(query, self.parent_filter,
-                              BlockJoinQuery.ScoreMode.Total)
+    # def content_query(self, query):
+    #     return BlockJoinQuery(query, self.parent_filter,
+    #                           BlockJoinQuery.ScoreMode.Total)
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
         fields_to_search = ['author', 'title']
@@ -929,6 +939,14 @@ class MultiSearch(Search):
             print "%s (%d) -> %f" % (tag, tag.id, found.score)
 
         return tags
+
+    def search_books(self, query, filter=None, max_results=10):
+        bks = []
+        tops = self.searcher.search(query, filter, max_results)
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+        return bks
 
     def create_prefix_phrase(self, toks, field):
         q = MultiPhraseQuery()

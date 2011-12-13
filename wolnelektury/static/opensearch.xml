@@ -11,7 +11,7 @@
     <Image height="16" width="16" type="image/x-icon">http://www.wolnelektury.pl/static/img/favicon.ico</Image>
     <Image height="64" width="64" type="image/png">http://www.wolnelektury.pl/static/img/wl_icon_64.png</Image>
     <Url type="application/atom+xml;profile=opds-catalog"
-        template="http://www.wolnelektury.pl/opds/search/?q={searchTerms}" />
+        template="http://www.wolnelektury.pl/opds/search/?q={searchTerms}&author={atom:author}&translator={atom:contributor}&title={atom:title}" />
     <Url type="text/html" method="GET" template="http://www.wolnelektury.pl/katalog/szukaj?q={searchTerms}" />
     <Url type="application/x-suggestions+json" method="GET" template="http://www.wolnelektury.pl/katalog/jtags?mozhint=1&amp;q={searchTerms}" />
     <moz:SearchForm>http://www.wolnelektury.pl/katalog/</moz:SearchForm>

@@ -124,7 +124,7 @@ def main(request):
                                       context_instance=RequestContext(request))
 
         hint.tags(tag_list)
-        hint.book(book)
+        hint.books(book)
 
         toks = StringReader(query)
         fuzzy = 'fuzzy' in request.GET

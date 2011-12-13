@@ -5,6 +5,7 @@
 from base64 import b64encode
 import os.path
 from urlparse import urljoin
+from urllib2 import unquote
 
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
@@ -16,7 +17,11 @@ from django.contrib.sites.models import Site
 
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
-from catalogue.views import books_starting_with
+
+from search import MultiSearch, SearchResult, JVM
+from lucene import Term, QueryWrapperFilter, TermQuery
+
+import re
 
 from stats.utils import piwik_track
 
@@ -316,20 +321,120 @@ class UserSetFeed(AcquisitionFeed):
 # no class decorators in python 2.5
 #UserSetFeed = factory_decorator(logged_in_or_basicauth())(UserSetFeed)
 
+
 @piwik_track
 class SearchFeed(AcquisitionFeed):
     description = u"Wyniki wyszukiwania na stronie WolneLektury.pl"
     title = u"Wyniki wyszukiwania"
+
+    INLINE_QUERY_RE = re.compile(r"(author:(?P<author>[^ ]+)|title:(?P<title>[^ ]+)|categories:(?P<categories>[^ ]+)|description:(?P<description>[^ ]+))")
     
     def get_object(self, request):
-        return request.GET.get('q', '')
+        """
+        For OPDS 1.1 We should handle a query for search terms
+        and atom:author, atom:contributor, atom:title
+        if search terms are provided, we shall search for books
+        according to Hint information (from author & contributror & title).
+
+        but if search terms are empty, we should do a different search
+        (perhaps for is_book=True)
+
+        """
+        JVM.attachCurrentThread()
+
+        query = request.GET.get('q', '')
+
+        inline_criteria = re.findall(self.INLINE_QUERY_RE, query)
+        if inline_criteria:
+            def get_criteria(criteria, name, position):
+                e = filter(lambda el: el[0][0:len(name)] == name, criteria)
+                print e
+                if not e:
+                    return None
+                c = e[0][position]
+                print c
+                if c[0] == '"' and c[-1] == '"':
+                    c = c[1:-1]
+                    c = c.replace('+', ' ')
+                return c
+
+            #import pdb; pdb.set_trace()
+            author = get_criteria(inline_criteria, 'author', 1)
+            title = get_criteria(inline_criteria, 'title', 2)
+            translator = None
+            categories = get_criteria(inline_criteria, 'categories', 3)
+            query = get_criteria(inline_criteria, 'description', 4)
+        else:
+            author = request.GET.get('author', '')
+            title = request.GET.get('title', '')
+            translator = request.GET.get('translator', '')
+            categories = None
+            fuzzy = False
+
+
+        srch = MultiSearch()
+        hint = srch.hint()
+
+        # Scenario 1: full search terms provided.
+        # Use auxiliarry information to narrow it and make it better.
+        if query:
+            filters = []
+
+            if author:
+                print "narrow to author %s" % author
+                hint.tags(srch.search_tags(author, filter=srch.term_filter(Term('tag_category', 'author'))))
+
+            if translator:
+                print "filter by translator %s" % translator
+                filters.append(QueryWrapperFilter(
+                    srch.make_phrase(srch.get_tokens(translator, field='translators'),
+                                     field='translators')))
+
+            if categories:
+                filters.append(QueryWrapperFilter(
+                    srch.make_phrase(srch.get_tokens(categories, field="tag_name_pl"),
+                                     field='tag_name_pl')))
+
+            flt = srch.chain_filters(filters)
+            if title:
+                print "hint by book title %s" % title
+                q = srch.make_phrase(srch.get_tokens(title, field='title'), field='title')
+                hint.books(*srch.search_books(q, filter=flt))
+
+            toks = srch.get_tokens(query)
+            print "tokens: %s" % toks
+            #            import pdb; pdb.set_trace()
+            results = SearchResult.aggregate(srch.search_perfect_book(toks, fuzzy=fuzzy, hint=hint),
+                srch.search_perfect_parts(toks, fuzzy=fuzzy, hint=hint),
+                srch.search_everywhere(toks, fuzzy=fuzzy, hint=hint))
+            results.sort(reverse=True)
+            return [r.book for r in results]
+        else:
+            # Scenario 2: since we no longer have to figure out what the query term means to the user,
+            # we can just use filters and not the Hint class.
+            filters = []
+
+            fields = {
+                'author': author,
+                'translators': translator,
+                'title': title
+                }
+
+            for fld, q in fields.items():
+                if q:
+                    filters.append(QueryWrapperFilter(
+                        srch.make_phrase(srch.get_tokens(q, field=fld), field=fld)))
+
+            flt = srch.chain_filters(filters)
+            books = srch.search_books(TermQuery(Term('is_book', 'true')), filter=flt)
+            return books
 
     def get_link(self, query):
-        return "%s?q=%s" % (reverse('search'), query) 
+        return "%s?q=%s" % (reverse('search'), query)
 
-    def items(self, query):
+    def items(self, books):
         try:
-            return books_starting_with(query)
+            return books
         except ValueError:
             # too short a query
             return []
