@@ -12,6 +12,7 @@ from django.core.management.color import color_style
 from django.core.files import File
 
 from catalogue.models import Book
+from picture.models import Picture
 
 
 class Command(BaseCommand):
@@ -30,9 +31,43 @@ class Command(BaseCommand):
             help='Don\'t build PDF file'),
         make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
             help='Wait until specified time (Y-M-D h:m:s)'),
+        make_option('-p', '--picture', action='store_true', dest='import_picture', default=False,
+            help='Import pictures'),
+        
     )
     help = 'Imports books from the specified directories.'
     args = 'directory [directory ...]'
+
+    def import_book(self, file_path, options):
+        verbose = options.get('verbose')
+        file_base, ext = os.path.splitext(file_path)
+        book = Book.from_xml_file(file_path, overwrite=options.get('force'),
+                                  build_epub=options.get('build_epub'),
+                                  build_txt=options.get('build_txt'),
+                                  build_pdf=options.get('build_pdf'),
+                                  build_mobi=options.get('build_mobi'))
+
+        if os.path.isfile(file_base + '.pdf'):
+            book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
+            if verbose:
+                print "Importing %s.pdf" % file_base
+        if os.path.isfile(file_base + '.mobi'):
+            book.mobi_file.save('%s.mobi' % book.slug, File(file(file_base + '.mobi')))
+            if verbose:
+                print "Importing %s.mobi" % file_base
+        if os.path.isfile(file_base + '.epub'):
+            book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
+            if verbose:
+                print "Importing %s.epub" % file_base
+        if os.path.isfile(file_base + '.txt'):
+            book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
+            if verbose:
+                print "Importing %s.txt" % file_base
+        book.save()
+
+    def import_picture(self, file_path, options):
+        picture = Picture.from_xml_file(file_path, overwrite=options.get('force'))
+        return picture
 
     def handle(self, *directories, **options):
         from django.db import transaction
@@ -42,13 +77,14 @@ class Command(BaseCommand):
         verbose = options.get('verbose')
         force = options.get('force')
         show_traceback = options.get('traceback', False)
+        import_picture = options.get('import_picture')
 
         wait_until = None
         if options.get('wait_until'):
             wait_until = time.mktime(time.strptime(options.get('wait_until'), '%Y-%m-%d %H:%M:%S'))
             if verbose > 0:
                 print "Will wait until %s; it's %f seconds from now" % (
-                    time.strftime('%Y-%m-%d %H:%M:%S', 
+                    time.strftime('%Y-%m-%d %H:%M:%S',
                     time.localtime(wait_until)), wait_until - time.time())
 
         # Start transaction management.
@@ -83,34 +119,14 @@ class Command(BaseCommand):
 
                     # Import book files
                     try:
-                        book = Book.from_xml_file(file_path, overwrite=force, 
-                                                  build_epub=options.get('build_epub'),
-                                                  build_txt=options.get('build_txt'),
-                                                  build_pdf=options.get('build_pdf'),
-                                                  build_mobi=options.get('build_mobi'))
+                        if import_picture:
+                            self.import_picture(file_path, options)
+                        else:
+                            self.import_book(file_path, options)
                         files_imported += 1
 
-                        if os.path.isfile(file_base + '.pdf'):
-                            book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
-                            if verbose:
-                                print "Importing %s.pdf" % file_base
-                        if os.path.isfile(file_base + '.mobi'):
-                            book.mobi_file.save('%s.mobi' % book.slug, File(file(file_base + '.mobi')))
-                            if verbose:
-                                print "Importing %s.mobi" % file_base
-                        if os.path.isfile(file_base + '.epub'):
-                            book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
-                            if verbose:
-                                print "Importing %s.epub" % file_base
-                        if os.path.isfile(file_base + '.txt'):
-                            book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
-                            if verbose:
-                                print "Importing %s.txt" % file_base
-
-                        book.save()
-
-                    except Book.AlreadyExists, msg:
-                        print self.style.ERROR('%s: Book already imported. Skipping. To overwrite use --force.' %
+                    except (Book.AlreadyExists, Picture.AlreadyExists):
+                        print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
                             file_path)
                         files_skipped += 1
 
