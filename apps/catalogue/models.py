@@ -168,6 +168,31 @@ class Tag(TagBase):
     def url_chunk(self):
         return '/'.join((Tag.categories_dict[self.category], self.slug))
 
+    @staticmethod
+    def tags_from_info(info):
+        from slughifi import slughifi
+        from sortify import sortify
+        meta_tags = []
+        categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))
+        for field_name, category in categories:
+            try:
+                tag_names = getattr(info, field_name)
+            except:
+                tag_names = [getattr(info, category)]
+            for tag_name in tag_names:
+                tag_sort_key = tag_name
+                if category == 'author':
+                    tag_sort_key = tag_name.last_name
+                    tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
+                tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
+                if created:
+                    tag.name = tag_name
+                    tag.sort_key = sortify(tag_sort_key.lower())
+                    tag.save()
+                meta_tags.append(tag)
+        return meta_tags
+
+
 
 def get_dynamic_path(media, filename, ext=None, maxlen=100):
     from slughifi import slughifi
@@ -712,7 +737,6 @@ class Book(models.Model):
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
             build_epub=True, build_txt=True, build_pdf=True, build_mobi=True):
         import re
-        from slughifi import slughifi
         from sortify import sortify
 
         # check for parts before we do anything
@@ -747,24 +771,7 @@ class Book(models.Model):
         book.set_extra_info_value(book_info.to_dict())
         book.save()
 
-        meta_tags = []
-        categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))
-        for field_name, category in categories:
-            try:
-                tag_names = getattr(book_info, field_name)
-            except:
-                tag_names = [getattr(book_info, category)]
-            for tag_name in tag_names:
-                tag_sort_key = tag_name
-                if category == 'author':
-                    tag_sort_key = tag_name.last_name
-                    tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
-                tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
-                if created:
-                    tag.name = tag_name
-                    tag.sort_key = sortify(tag_sort_key.lower())
-                    tag.save()
-                meta_tags.append(tag)
+        meta_tags = Tag.tags_from_info(book_info)
 
         book.tags = set(meta_tags + book_shelves)
 

@@ -151,6 +151,7 @@ INSTALLED_APPS = [
     'sponsors',
     'stats',
     'suggest',
+    'picture',
 ]
 
 #CACHE_BACKEND = 'locmem:///?max_entries=3000'
