@@ -49,8 +49,8 @@
                     {% if book.pdf_file %}
                         <a href="{{ book.pdf_file.url }}"><img src="{{ STATIC_URL }}img/pdf.png" title="{% trans "Download PDF" %} &ndash; {% trans "for reading" %} {% trans "and printing using" %} Adobe Reader" %}" alt="{% trans "Download PDF" %}" /></a>
                     {% endif %}
-                    {% if book.root_ancestor.epub_file %}
-                        <a href="{{ book.root_ancestor.epub_file.url }}"><img src="{{ STATIC_URL }}img/epub.png" title="{% trans "Download EPUB" %} &ndash; {% trans "for reading" %} {% trans "on mobile devices" %}" alt="{% trans "Download EPUB" %}" /></a>
+                    {% if book.epub_file %}
+                        <a href="{{ book.epub_file.url }}"><img src="{{ STATIC_URL }}img/epub.png" title="{% trans "Download EPUB" %} &ndash; {% trans "for reading" %} {% trans "on mobile devices" %}" alt="{% trans "Download EPUB" %}" /></a>
                     {% endif %}
                     {% if book.mobi_file %}
                         <a href="{{ book.mobi_file.url }}"><img src="{{ STATIC_URL }}img/mobi.png" title="{% trans "Download MOBI" %} &ndash; {% trans "for reading" %} {% trans "on mobile devices" %}" alt="{% trans "Download MOBI" %}" /></a>
@@ -58,9 +58,6 @@
                     {% if book.txt_file %}
                         <a href="{{ book.txt_file.url }}"><img src="{{ STATIC_URL }}img/txt.png" title="{% trans "Download TXT" %} &ndash; {% trans "for reading" %} {% trans "on small displays, for example mobile phones" %}" alt="{% trans "Download TXT" %}" /></a>
                     {% endif %}
-                    {% for media in book.get_odt %}
-                        <a href="{{ media.file.url }}"><img src="{{ STATIC_URL }}img/odt.png" title="{% trans "Download ODT" %} &ndash; {% trans "for reading" %} {% trans "and editing using" %} OpenOffice.org: {{ media.name }}" alt="{% trans "Download ODT" %}" /></a>
-                    {% endfor %}
 			
                     {% if book.pdf_file %}
 			<br/><a href="#" id="custom-pdf-link">{% trans "Dowload customized PDF" %}</a>.

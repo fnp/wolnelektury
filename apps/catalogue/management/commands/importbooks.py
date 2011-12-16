@@ -90,22 +90,13 @@ class Command(BaseCommand):
                                                   build_mobi=options.get('build_mobi'))
                         files_imported += 1
 
-                        if os.path.isfile(file_base + '.pdf'):
-                            book.pdf_file.save('%s.pdf' % book.slug, File(file(file_base + '.pdf')))
-                            if verbose:
-                                print "Importing %s.pdf" % file_base
-                        if os.path.isfile(file_base + '.mobi'):
-                            book.mobi_file.save('%s.mobi' % book.slug, File(file(file_base + '.mobi')))
-                            if verbose:
-                                print "Importing %s.mobi" % file_base
-                        if os.path.isfile(file_base + '.epub'):
-                            book.epub_file.save('%s.epub' % book.slug, File(file(file_base + '.epub')))
-                            if verbose:
-                                print "Importing %s.epub" % file_base
-                        if os.path.isfile(file_base + '.txt'):
-                            book.txt_file.save('%s.txt' % book.slug, File(file(file_base + '.txt')))
-                            if verbose:
-                                print "Importing %s.txt" % file_base
+                        for ebook_format in Book.ebook_formats:
+                            if os.path.isfile(file_base + '.' + ebook_format):
+                                getattr(book, '%s_file' % ebook_format).save(
+                                    '%s.%s' % (book.slug, ebook_format), 
+                                    File(file(file_base + '.' + ebook_format)))
+                                if verbose:
+                                    print "Importing %s.%s" % (file_base, ebook_format)
 
                         book.save()
 

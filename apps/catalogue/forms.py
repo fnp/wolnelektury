@@ -78,20 +78,12 @@ class NewSetForm(forms.Form):
         return new_set
 
 
-FORMATS = (
-    ('mp3', 'MP3'),
-    ('ogg', 'OGG'),
-    ('pdf', 'PDF'),
-    ('odt', 'ODT'),
-    ('txt', 'TXT'),
-    ('epub', 'EPUB'),
-    ('daisy', 'DAISY'),
-    ('mobi', 'MOBI'),
-)
+FORMATS = [(f, f.upper()) for f in Book.ebook_formats]
 
 
 class DownloadFormatsForm(forms.Form):
-    formats = forms.MultipleChoiceField(required=False, choices=FORMATS, widget=forms.CheckboxSelectMultiple)
+    formats = forms.MultipleChoiceField(required=False, choices=FORMATS,
+            widget=forms.CheckboxSelectMultiple)
 
     def __init__(self, *args, **kwargs):
          super(DownloadFormatsForm, self).__init__(*args, **kwargs)

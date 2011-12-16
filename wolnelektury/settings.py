@@ -180,12 +180,12 @@ COMPRESS_CSS = {
 }
 
 COMPRESS_JS = {
-    'jquery': {
-        #'source_filenames': ('js/jquery.js',),
-        'source_filenames': [],
-        'output_filename': 'js/jquery.min.js',
-    },
-    'all': {
+    #~ 'jquery': {
+        #~ #'source_filenames': ('js/jquery.js',),
+        #~ 'source_filenames': [],
+        #~ 'output_filename': 'js/jquery.min.js',
+    #~ },
+    #~ 'all': {
         #~ 'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js',
             #~ 'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
             #~ 'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
@@ -194,19 +194,19 @@ COMPRESS_JS = {
             #~ 'js/jquery.cycle.min.js',
             #~ 'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
             #~ ),
-        'source_filenames': [],
-        'output_filename': 'js/all?.min.js',
-    },
-    'book': {
+        #~ 'source_filenames': [],
+        #~ 'output_filename': 'js/all?.min.js',
+    #~ },
+    #~ 'book': {
         #~ 'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
-        'source_filenames': [],
-        'output_filename': 'js/book?.min.js',
-    },
-    'book_ie': {
+        #~ 'source_filenames': [],
+        #~ 'output_filename': 'js/book?.min.js',
+    #~ },
+    #~ 'book_ie': {
         #~ 'source_filenames': ('js/ierange-m2.js',),
-        'source_filenames': [],
-        'output_filename': 'js/book_ie?.min.js',
-    }
+        #~ 'source_filenames': [],
+        #~ 'output_filename': 'js/book_ie?.min.js',
+    #~ }
 
 }
 

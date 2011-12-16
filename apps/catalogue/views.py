@@ -593,32 +593,18 @@ def download_shelf(request, slug):
     if form.is_valid():
         formats = form.cleaned_data['formats']
     if len(formats) == 0:
-        formats = ['pdf', 'epub', 'mobi', 'odt', 'txt']
+        formats = models.Book.ebook_formats
 
     # Create a ZIP archive
     temp = tempfile.TemporaryFile()
     archive = zipfile.ZipFile(temp, 'w')
 
-    already = set()
     for book in collect_books(models.Book.tagged.with_all(shelf)):
         fileid = book.fileid()
-        if 'pdf' in formats and book.pdf_file:
-            filename = book.pdf_file.path
-            archive.write(filename, str('%s.pdf' % fileid))
-        if 'mobi' in formats and book.mobi_file:
-            filename = book.mobi_file.path
-            archive.write(filename, str('%s.mobi' % fileid))
-        if book.root_ancestor not in already and 'epub' in formats and book.root_ancestor.epub_file:
-            filename = book.root_ancestor.epub_file.path
-            archive.write(filename, str('%s.epub' % book.root_ancestor.fileid()))
-            already.add(book.root_ancestor)
-        if 'odt' in formats and book.has_media("odt"):
-            for file in book.get_media("odt"):
-                filename = file.file.path
-                archive.write(filename, str('%s.odt' % slughifi(file.name)))
-        if 'txt' in formats and book.txt_file:
-            filename = book.txt_file.path
-            archive.write(filename, str('%s.txt' % fileid))
+        for ebook_format in models.Book.ebook_formats:
+            if ebook_format in formats and book.has_media(ebook_format):
+                filename = book.get_media(ebook_format).path
+                archive.write(filename, str('%s.%s' % (fileid, ebook_format)))
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
@@ -637,20 +623,14 @@ def shelf_book_formats(request, shelf):
     """
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set')
 
-    formats = {'pdf': False, 'epub': False, 'mobi': False, 'odt': False, 'txt': False}
+    formats = {}
+    for ebook_format in models.Book.ebook_formats:
+        formats[ebook_format] = False
 
     for book in collect_books(models.Book.tagged.with_all(shelf)):
-        if book.pdf_file:
-            formats['pdf'] = True
-        if book.root_ancestor.epub_file:
-            formats['epub'] = True
-        if book.mobi_file:
-            formats['mobi'] = True
-        if book.txt_file:
-            formats['txt'] = True
-        for format in ('odt',):
-            if book.has_media(format):
-                formats[format] = True
+        for ebook_format in models.Book.ebook_formats:
+            if book.has_media(ebook_format):
+                formats[ebook_format] = True
 
     return HttpResponse(LazyEncoder().encode(formats))
 
@@ -774,7 +754,7 @@ def download_zip(request, format, book=None):
     kwargs = models.Book.split_fileid(book)
 
     url = None
-    if format in ('pdf', 'epub', 'mobi'):
+    if format in models.Book.ebook_formats:
         url = models.Book.zip_format(format)
     elif format == 'audiobook' and kwargs is not None:
         book = get_object_or_404(models.Book, **kwargs)

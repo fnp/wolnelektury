@@ -23,7 +23,7 @@ class Command(BaseCommand):
         make_option('-e', '--exclude', dest='exclude', metavar='SLUG,...',
             help='Exclude specific books by slug')
     )
-    help = 'Prepare data for Lesmianator.'
+    help = 'Prepare ZIP package with files of given type.'
     args = '[%s] output_path.zip' % '|'.join(ftypes)
 
     def handle(self, ftype, path, **options):
@@ -33,7 +33,7 @@ class Command(BaseCommand):
         include = options.get('include')
         exclude = options.get('exclude')
 
-        if ftype in Book.file_types:
+        if ftype in Book.formats:
             field = "%s_file" % ftype
         else:
             print self.style.ERROR('Unknown file type.')
