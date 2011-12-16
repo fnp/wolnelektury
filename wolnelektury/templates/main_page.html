@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load cache i18n catalogue_tags %}
+
+
+{% block body %}
+
+    <blockquote id="big-cite">
+        <a href='http://google.com'>
+        <h2 class="mono">Jarosław Lipszyc poleca:</h2>
+        <p id="big-cite-text">Dobranoc, obróć jeszcze raz na mnie oczęta,<br/>
+        (…) Daj mi pierś ucałować<br/>
+        Dobranoc, zapięta.</p>
+        <p class="mono" id="big-cite-source">Adam Mickiewicz, Dziady część III</p>
+        </a>
+    </blockquote>
+
+
+    {% spaceless %}
+
+
+    <div id="promo-box">
+        <div class="grid-line" id="promo-box-header">
+            <h2 class="mono">Trwa konkurs</h2>
+        </div>
+        <div id="promo-box-body">
+            <p id="promo-box-title" class="mono">Konkurs poezji automatycznej</p>
+            <p>Znacie Leśmianatora? To niewielki skrypt miskujący na życzenie
+            wiersze z Wolnych Lektur.</p>
+        </div>
+    </div>
+
+
+    <h2 class="grid-line"><span class="mono">Ostatnie publikacje</span></h2>
+        {% for book in last_published %}
+            {{ book.mini_box }}
+        {% endfor %}
+
+    <div class="infopages-box">
+        <h2 class="grid-line"><span class='mono'>Aktualności</span></h2>
+        {% cache 1800 latest-blog-posts %}
+            {% latest_blog_posts "http://nowoczesnapolska.org.pl/category/wolne-lektury/feed/" %}
+        {% endcache %}
+    </div>
+
+
+    <div class="infopages-box">
+        <h2 class="grid-line"><span class='mono'>Narzędzia</span></h2>
+
+        <ul>
+            <li><a href="{% url suggest %}" id="suggest-link">{% trans "Report a bug" %}</a></li>
+            <li><a href="{% url suggest %}">Turniej Elektrybałtów</a></li>
+            <li><a href="{% url suggest %}">Leśmianator</a></li>
+            <li><a href="{% url suggest %}">{% trans "Mobile app" %}</a></li>
+            <li><a href="{% url suggest %}">{% trans "Widget" %}</a></li>
+            <li><a href="{% url suggest %}">{% trans "Public domain counter" %}</a></li>
+            <li><a href="{% url suggest %}">{% trans "Missing a book?" %}</a></li>
+        </ul>
+    </div>
+
+
+    <div class="infopages-box">
+        <h2 class="grid-line"><span class='mono'>Informacje</span></h2>
+
+        <ul>
+            <li><a href="{% url suggest %}">{% trans "About the project" %}</a></li>
+            <li><a href="{% url suggest %}">{% trans "You can help us" %}</a></li>
+            <li><a href="{% url suggest %}">{% trans "Copyright" %}</a></li>
+            <li><a href="{% url suggest %}">{% trans "Team" %}</a></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"><img src="{{ STATIC_URL }}img/social/facebook.png" alt="WolneLektury @ Facebook" /></a>
+            <a href="http://nk.pl/profile/30441509"><img src="{{ STATIC_URL }}img/social/naszaklasa.png" alt="WolneLektury @ NK" /></a>
+        </div>
+    </div>
+
+
+    {% endspaceless %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+            {# publication plan consultations - form link #}
+            <div style="clear:right;float:right" class="big-top-link">
+                <a href="{% url suggest_publishing %}" data-ajax="{% url suggest_publishing %}?ajax=1" id="suggest-publishing-link">
+                    {% trans "Didn't find a book? Make a suggestion." %}
+                </a>
+            </div>
+
+
+
+
+        <div id="suggest-window">
+            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+            <div class="target">
+                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+            </div>
+        </div>
+        <div id="suggest-publishing-window">
+            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+            <div class="target">
+                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+            </div>
+        </div>

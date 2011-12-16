@@ -503,6 +503,23 @@ class Book(models.Model):
                 cache.set(cache_key, short_html, CACHE_FOREVER)
             return mark_safe(short_html)
 
+    def mini_box(self):
+        if self.id:
+            cache_key = "Book.mini_boxs/%d" % (self.id, )
+            short_html = cache.get(cache_key)
+        else:
+            short_html = None
+
+        if short_html is None:
+            authors = self.tags.filter(category='author')
+
+            short_html = unicode(render_to_string('catalogue/book_mini_box.html',
+                {'book': self, 'authors': authors, 'STATIC_URL': settings.STATIC_URL}))
+
+            if self.id:
+                cache.set(cache_key, short_html, CACHE_FOREVER)
+        return mark_safe(short_html)
+
     @property
     def root_ancestor(self):
         """ returns the oldest ancestor """

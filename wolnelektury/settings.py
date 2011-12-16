@@ -160,7 +160,13 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
 # CSS and JavaScript file groups
 COMPRESS_CSS = {
     'all': {
-        'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/jquery.countdown.css', 'css/master.plain.css', 'css/sponsors.css', 'css/facelist_2-0.css',),
+        #'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/jquery.countdown.css', 'css/master.plain.css', 'css/sponsors.css', 'css/facelist_2-0.css',),
+        'source_filenames': [
+            'css/base.css',
+            'css/header.css',
+            'css/main_page.css',
+            'css/book_box.css',
+        ],
         'output_filename': 'css/all.min?.css',
     },
     'book': {
@@ -175,26 +181,30 @@ COMPRESS_CSS = {
 
 COMPRESS_JS = {
     'jquery': {
-        'source_filenames': ('js/jquery.js',),
+        #'source_filenames': ('js/jquery.js',),
+        'source_filenames': [],
         'output_filename': 'js/jquery.min.js',
     },
     'all': {
-        'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js',
-            'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
-            'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
-            'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
-            'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
-            'js/jquery.cycle.min.js',
-            'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
-            ),
+        #~ 'source_filenames': ('js/jquery.autocomplete.js', 'js/jquery.form.js',
+            #~ 'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
+            #~ 'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
+            #~ 'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
+            #~ 'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
+            #~ 'js/jquery.cycle.min.js',
+            #~ 'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
+            #~ ),
+        'source_filenames': [],
         'output_filename': 'js/all?.min.js',
     },
     'book': {
-        'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
+        #~ 'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
+        'source_filenames': [],
         'output_filename': 'js/book?.min.js',
     },
     'book_ie': {
-        'source_filenames': ('js/ierange-m2.js',),
+        #~ 'source_filenames': ('js/ierange-m2.js',),
+        'source_filenames': [],
         'output_filename': 'js/book_ie?.min.js',
     }
 

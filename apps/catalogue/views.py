@@ -55,11 +55,7 @@ class JSONResponse(HttpResponse):
         super(JSONResponse, self).__init__(data, mimetype="application/json", **kwargs)
 
 
-def main_page(request):
-    if request.user.is_authenticated():
-        shelves = models.Tag.objects.filter(category='set', user=request.user)
-        new_set_form = forms.NewSetForm()
-
+def catalogue(request):
     tags = models.Tag.objects.exclude(category__in=('set', 'book'))
     for tag in tags:
         tag.count = tag.get_count()
@@ -67,7 +63,7 @@ def main_page(request):
     fragment_tags = categories.get('theme', [])
 
     form = forms.SearchForm()
-    return render_to_response('catalogue/main_page.html', locals(),
+    return render_to_response('catalogue/catalogue.html', locals(),
         context_instance=RequestContext(request))
 
 

@@ -1,0 +1,175 @@
+/* Logo font */
+@font-face {
+    /* IE version */
+    font-family: WL-Logo;
+    src: url(/static/fonts/WL.eot);
+}
+@font-face {
+  font-family: WL-Logo;
+  src: url(/static/fonts/WL.ttf) format("truetype");
+}
+
+
+#header {
+    color: #969696;
+    background: #191919;
+}
+
+#half-header {
+    background: url('/static/img/bg-header.png');
+    background-position: center;
+    background-size: 100%;
+}
+
+#half-header-content {
+    background: #191919;
+}
+
+
+#user-info {
+    float: right;
+    margin: 0;
+}
+
+#logo {
+    position: absolute;
+    top: 4em;
+}
+
+#logo a {
+    font-family: WL-Logo;
+    font-size: 1.9em;
+    color:#f7f7f7;
+}
+
+#logo img {
+    max-width: 15em;
+}
+
+#tagline {
+    display: inline-block;
+    margin-left: 16em;
+}
+
+#search {
+    margin: 0;
+    background: #444;
+    margin-left: 16em;
+    width: 59em;
+}
+
+#search-field {
+    display: inline-block;
+    width: 50em;
+    padding-left: .5;
+    padding-right: .5;
+    padding: .1em .5em 0 .5em;
+}
+
+#search-field input {
+    height: 2.8em;
+    border: none;
+    width: 49.5em;
+    font-size: 1em;
+    padding-left: .5em;
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow:0 0 .5em #444 inset;
+    -moz-box-shadow:0 0 .5em #444 inset;
+    box-shadow: 0 0 .5em #444 inset;
+}
+
+#search-button {
+    display: inline-block;
+    background: #02adb7;
+    padding: 0;
+    margin: 0;
+    width: 8em;
+}
+#search-button button {
+    font-size: 1em;
+    /* should match grid-line */
+    height: 4em;
+    border: none;
+    background: #02adb7;
+    color: white;
+    width: 100%;
+    padding: 0;
+}
+
+#search-button button span {
+    position:relative;
+    top: -.2em;
+}
+
+
+#nav-line {
+    background-color: #e2e2e2;
+    height: 3.95em;
+}
+
+ul#catalogue {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul#catalogue li {
+    background-color: #e2e2e2;
+    float: left;
+}
+ul#catalogue a {
+    display: block;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    /* must match grid-line */
+    height: 2.7em;
+    padding-top: 1.3em;
+}
+
+
+
+#lang-button:after {
+    content: url(/static/img/lang-arrow.png);
+    padding-left: .5em;
+}
+#lang-menu {
+    position: relative;
+    float: right;
+    display: block;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    /* must match grid-line */
+    height: 2.7em;
+    padding-top: 1.3em;
+    background: #f7f7f7;
+}
+
+#lang-menu-items button {
+    display: none;
+    background: #f7f7f7;
+    color: #444;
+    cursor: pointer;
+    width: 100%;
+    border: solid #ddd;
+    border-width: 0 0 1px 0;
+    padding: .5em 0;
+    margin: 0;
+}
+
+#lang-menu:hover button {
+    display: block;
+}
+
+#lang-menu:hover #lang-menu-items {
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    left: 0;
+    /* must match grid-line height */
+    top: 3.9em;
+}
+
+#lang-menu .active {
+    font-weight: bold;
+}

@@ -1,0 +1,55 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    background: #f7f7f7;
+    font-size: .9em;
+    line-height: 1.4em;
+}
+
+
+a {
+    color: #02adb7;
+    text-decoration: none;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+
+.grid-line {
+    height: 2.6em;
+    padding-top: 1.4em;
+    padding-bottom: 0;
+}
+
+.mono, .mono-small {
+    font-family: "Lucida Sans Typewriter", courier;
+    font-size: .9em;
+}
+
+
+.clearboth {
+    clear: both;
+}
+
+#header-content, div#main-content, div#half-header-content {
+    width: 75em;
+    margin: auto;
+}
+
+
+
+
+#footer {
+    font-size: .75em;
+    color: #777;
+    border-top: 1px solid #ddd;
+    margin-top: 2.5em;
+}

@@ -5,14 +5,14 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
 
-from catalogue.forms import SearchForm
-
-from infopages.models import InfoPage
-
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('wolnelektury.views',
+    url(r'^$', 'main_page', name='main_page'),
+)
+
+urlpatterns += patterns('',
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^materialy/', include('lessons.urls')),
     url(r'^opds/', include('opds.urls')),
@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^lesmianator/', include('lesmianator.urls')),
     url(r'^przypisy/', include('dictionary.urls')),
     url(r'^raporty/', include('reporting.urls')),
+    url(r'^info/', include('infopages.urls')),
 
     # Static pages
     url(r'^mozesz-nam-pomoc/$', 'infopages.views.infopage', {'slug': 'help_us'}, name='help_us'),
@@ -45,16 +46,23 @@ urlpatterns = patterns('',
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], 'django.views.static.serve',
         {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
-    url(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'katalog/',
-        'permanent': False}),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
 urlpatterns += patterns('django.views.generic.simple',
     # old static pages - redirected
-    (r'^1procent/$', 'redirect_to', {'url': 'http://nowoczesnapolska.org.pl/wesprzyj_nas/'}),
-    (r'^wolontariat/$', 'redirect_to', {'url': '/mozesz-nam-pomoc/'}),
-    (r'^epub/$', 'redirect_to', {'url': '/katalog/lektury/'}),
+    url(r'^1procent/$', 'redirect_to',
+        {'url': 'http://nowoczesnapolska.org.pl/wesprzyj_nas/'}),
+    url(r'^epub/$', 'redirect_to',
+        {'url': '/katalog/lektury/'}),
+    url(r'^mozesz-nam-pomoc/$', 'redirect_to',
+        {'url': '/info/mozesz-nam-pomoc'}, name='help_us'),
+    url(r'^o-projekcie/$', 'redirect_to',
+        {'url': '/info/o-projekcie'}, name='about_us'),
+    url(r'^widget/$', 'redirect_to',
+        {'url': '/info/widget'}),
+    url(r'^wolontariat/$', 'redirect_to',
+        {'url': '/mozesz-nam-pomoc/'}),
 )
     
 

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags %}
+
+
+{% block bodyid %}catalogue-catalogue{% endblock %}
+
+{% block body %}
+    <h2></a>{% trans "Authors" %}<a name="autorzy"></a></h2>
+    {% tag_list categories.author %}
+
+    <h2>{% trans "Kinds" %}<a name="rodzaje"></a></h2>
+    {% tag_list categories.kind %}
+
+    <h2>{% trans "Genres" %}<a name="gatunki"></a></h2>
+    {% tag_list categories.genre %}
+
+    <h2>{% trans "Epochs" %}<a name="epoki"></a></h2>
+    {% tag_list categories.epoch %}
+
+    <h2>{% trans "Themes and topics" %}<a name="motywy"></a></h2>
+    {% tag_list fragment_tags %}
+{% endblock %}

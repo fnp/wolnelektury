@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	{% load i18n chunks compressed catalogue_tags sponsor_tags %}
+	{% load i18n compressed catalogue_tags sponsor_tags %}
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -18,64 +18,106 @@
         {% endblock %}
     </head>
     <body id="{% block bodyid %}base{% endblock %}">
-        <!--[if lt IE 7]><link href={{ STATIC_URL }}infobar/infobar.css rel=stylesheet>
-        <div id=infobar><a href=http://browsehappy.pl/infobar>
-        {% trans "Internet Explorer cannot display this site properly. Click here to read more..." %}
-        </a></div><div id=viewplot><script src={{ STATIC_URL }}infobar/infobar.js></script><![endif]-->
+
         {% block bodycontent %}
-        <div id="top-message">
-            {% chunk "top-message" %}
-        </div>
-        <div id="header">
+
+        <div id="header" class="grid-line">
+
+        <div id="header-content">
             <div id="logo">
-                <a class="logo" href="/"><img src="{% block logo_url %}{{ STATIC_URL }}img/logo-bez.png{% endblock %}" alt="WolneLektury.pl" />
-                <br/>szkolna biblioteka internetowa</a>
-                {% block tagline %}{% endblock %}
+                <a class="logo" href="/">
+                Wolne Lektury</a>
             </div>
-            <div id="user-info" style="display:none">
+
+            <div id="tagline">
+                <a href=''>1666</a> darmowych lektur do których masz <a href=''>prawo</a>
+            </div>
+
+            <p id="user-info" class="mono">
                 {% if user.is_authenticated %}
-                    <p>
-                        {% trans "Welcome" %}, <strong>{{ user.username }}</strong>
-                        | <a href="{% url user_shelves %}" id="user-shelves-link">{% trans "Your shelves" %}</a>
-                        {% if user.is_staff %}
-                        | <a href="/admin/">{% trans "Administration" %}</a>
-                        {% endif %}
-						| <a href="{% url suggest %}" id="suggest-link">{% trans "Report a bug" %}</a>
-                        | <a href="{% url logout %}?next={{ request.get_full_path }}">{% trans "Logout" %}</a>
-                    </p>
+                    {% trans "Welcome" %}, <strong>{{ user.username }}</strong>
+                    | <a href="{% url user_shelves %}" id="user-shelves-link">{% trans "Your shelves" %}</a>
+                    {% if user.is_staff %}
+                    | <a href="/admin/">{% trans "Administration" %}</a>
+                    {% endif %}
+                    | <a href="{% url logout %}?next={{ request.get_full_path }}">{% trans "Logout" %}</a>
                 {% else %}
-                    <p><a href="{% url suggest %}" id="suggest-link">{% trans "Report a bug" %}</a>
-                        | <a href="{% url login %}" class="login-register-link">{% trans "Sign in" %} / {% trans "Register" %}</a></p>
+                    <a href="{% url login %}" class="login-register-link">{% trans "Sign in" %} / {% trans "Register" %}</a>
                 {% endif %}
-            </div>
-            <div class="social-links" style="float:right">
-                <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"><img src="{{ STATIC_URL }}img/social/facebook.png" alt="WolneLektury @ Facebook" /></a>
-                <a href="http://nk.pl/profile/30441509"><img src="{{ STATIC_URL }}img/social/naszaklasa.png" alt="WolneLektury @ NK" /></a>
-            </div>
-				<form action="{% url django.views.i18n.set_language %}" method="post">
-            <div class="lang-menu" style="float:right;">
-					{% spaceless %}
-					{% for lang in LANGUAGES %}					     
-					    <button type="submit" name="language" title="{{ lang.1 }}"
-							class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} {% if forloop.last %}last{% endif %}" 
-							value="{{ lang.0 }}">{{ lang.0|upper }}</button>
-					{% endfor %}	
-					{% endspaceless %}				
-			</div>
-                </form>
-            {# publication plan consultations - form link #}
-            <div style="clear:right;float:right" class="big-top-link">
-                <a href="{% url suggest_publishing %}" data-ajax="{% url suggest_publishing %}?ajax=1" id="suggest-publishing-link">
-                    {% trans "Didn't find a book? Make a suggestion." %}
-                </a>
-            </div>
+            </p>
+
+
+            <div class="clearboth"></div>
+
+        </div>
+        </div>
+
+        <div id="half-header">
+        <div id="half-header-content">
+
+
+
+            <form id="search">
+                
+                <span id="search-field" class="grid-line">
+                    <input title="np. Leśmian" name="q" autocomplete="off">
+                </span><span id="search-button">
+                    <button type='submit'><span class="mono">{% trans "Search" %}</span></button>
+                </span>
+                
+            </form>
+
+
+
             <div class="clearboth"></div>
         </div>
-        <div id="maincontent">
+        </div>
+
+
+
+        <div id="main-content">
+
+            <div id="nav-line">
+            <ul id="catalogue">
+                <li><a href="{% url book_list %}"><span class='mono'>{% trans "All books" %}</span></a></li>
+                <li><a href="{% url audiobook_list %}"><span class='mono'>{% trans "Audiobooks" %}</span></a></li>
+                <li><a href="{% url daisy_list %}"><span class='mono'>{% trans "DAISY" %}</span></a></li>
+                <li><a href="{% url catalogue %}#autorzy"><span class='mono'>{% trans "Authors" %}</span></a></li>
+                <li><a href="{% url catalogue %}#epoki"><span class='mono'>{% trans "Epochs" %}</span></a></li>
+                <li><a href="{% url catalogue %}#rodzaje"><span class='mono'>{% trans "Kinds" %}</span></a></li>
+                <li><a href="{% url catalogue %}#gatunki"><span class='mono'>{% trans "Genres" %}</span></a></li>
+                <li><a href="{% url catalogue %}#motywy"><span class='mono'>{% trans "Themes" %}</span></a></li>
+            </ul>
+
+            <form action="{% url django.views.i18n.set_language %}" method="post">
+            <div id="lang-menu">
+                <span id='lang-button' class='mono-small'>
+                    {% trans "Language versions" %}</span>
+                <div id="lang-menu-items">
+                {% for lang in LANGUAGES %}
+                    <button type="submit" name="language"
+                        class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} {% if forloop.last %}last{% endif %}"
+                        value="{{ lang.0 }}">{{ lang.1 }}</button>
+                {% endfor %}
+                </div>
+            </div>
+            </form>
+            </div>
+
+            <div class="clearboth"></div>
+
+
+
             {% block body %}
             {% endblock %}
-        </div>
+
+
+
+
         <div class="clearboth"></div>
+
+
+
         <div id="footer">
             <p>
             	{% blocktrans %}
@@ -95,7 +137,11 @@
 
 			{% sponsor_page "footer" %}
         </div>
-        <div id="login-register-window">
+
+        </div>{# end main-content #}
+
+
+        <!--div id="login-register-window">
             <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
             <div class="target">
                 <form method="post" action="{% url login %}" id="login-form" class="cuteform">
@@ -115,27 +161,12 @@
                     </ol>
                 </form>
             </div>
-        </div>
-        <div id="user-shelves-window">
-            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-            <div class="target">
-                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-            </div>
-        </div>
-        <div id="suggest-window">
-            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-            <div class="target">
-                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-            </div>
-        </div>
-        <div id="suggest-publishing-window">
-            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-            <div class="target">
-                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-            </div>
-        </div>
+        </div-->
+
+
         {% endblock bodycontent %}
-        {{ piwik_tag|safe }}
+
+        <!--{{ piwik_tag|safe }}
         <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -143,6 +174,6 @@
         <script type="text/javascript">
         var pageTracker = _gat._getTracker("UA-2576694-1");
         pageTracker._trackPageview();
-        </script>
+        </script>-->
     </body>
 </html>

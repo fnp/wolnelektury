@@ -1,0 +1,30 @@
+.book-mini-box {
+    display: inline-block;
+    margin: 0;
+    width: 12.5em;
+    vertical-align: top;
+}
+
+.book-mini-box a {
+    display: block;
+    color: black;
+    border: 1px solid #ddd;
+    height: 20em;
+    padding: .75em;
+    margin: .1em;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+    overflow: hidden;
+}
+
+.book-mini-box img {
+    width: 10.8em;
+    height: 14.4em;
+    margin-bottom: .3em;
+}
+
+.book-mini-box .author {
+    color: #777;
+}

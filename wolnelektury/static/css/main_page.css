@@ -1,0 +1,80 @@
+#big-cite {
+    background-color: white;
+    padding: 8em;
+    margin: 0;
+}
+
+#big-cite a {
+    color: black;
+    display: block;
+}
+
+#big-cite h2 {
+    margin: 0;
+}
+
+
+#big-cite-text {
+    margin: .5em 0;
+    font-size: 1.75em;
+    line-height: 1.3em;
+}
+
+
+#big-cite-source {
+    color: #02adb7;
+    margin: 0;
+}
+
+
+#promo-box {
+    float: right;
+    width: 24em;
+    /* should match grid-line */
+    margin-top: -4em;
+}
+#promo-box-header {
+    padding-left: 2em;
+    padding-right: 2em;
+    background: #191919;
+    color: white;
+}
+#promo-box-body {
+    border-bottom: 2px solid #efefef;
+    padding: 1.3em 2em;
+    height: 23em;
+    background: #efefef;
+}
+#promo-box-title {
+    color: #02ADB7;
+    height: 2.7em;
+    margin: 0;
+}
+#promo-box-body p {
+    margin-top: 0;
+}
+
+.infopages-box {
+    width: 16.75em;
+    display: inline-block;
+    margin: .5em 0 0 0;
+    padding: 0 1em;
+    vertical-align: top;
+}
+.infopages-box h2 {
+    color: #02ADB7;
+}
+.infopages-box a {
+    color: black;
+}
+
+.infopages-box ol, .infopages-box ul {
+    font-size: .8em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links {
+    margin-top: 1em;
+}

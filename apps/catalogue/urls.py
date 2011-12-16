@@ -8,7 +8,7 @@ from catalogue.models import Book
 
 
 urlpatterns = patterns('catalogue.views',
-    url(r'^$', 'main_page', name='main_page'),
+    url(r'^$', 'catalogue', name='catalogue'),
     url(r'^polki/(?P<shelf>[a-zA-Z0-9-]+)/formaty/$', 'shelf_book_formats', name='shelf_book_formats'),
     url(r'^polki/(?P<shelf>[a-zA-Z0-9-]+)/(?P<book>%s)/usun$' % Book.URLID_RE, 'remove_from_shelf', name='remove_from_shelf'),
     url(r'^polki/$', 'user_shelves', name='user_shelves'),

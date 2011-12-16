@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="book-mini-box">
+    <a href="{{ book.get_absolute_url }}">
+        <img src="{{ STATIC_URL }}img/cover.png"
+                alt="{% trans "Book cover" %}" />
+        {% for author in authors %}
+            <div class="mono author">{{ author }}</div>
+            {{ book.title }}
+        {% endfor %}
+    </a>
+</div>
+
+
