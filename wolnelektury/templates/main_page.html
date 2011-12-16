@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cache i18n catalogue_tags %}
+{% load cache i18n catalogue_tags infopages_tags %}
 
 
 {% block body %}
@@ -48,12 +48,12 @@
 
         <ul>
             <li><a href="{% url suggest %}" id="suggest-link">{% trans "Report a bug" %}</a></li>
-            <li><a href="{% url suggest %}">Turniej Elektrybałtów</a></li>
-            <li><a href="{% url suggest %}">Leśmianator</a></li>
-            <li><a href="{% url suggest %}">{% trans "Mobile app" %}</a></li>
-            <li><a href="{% url suggest %}">{% trans "Widget" %}</a></li>
-            <li><a href="{% url suggest %}">{% trans "Public domain counter" %}</a></li>
-            <li><a href="{% url suggest %}">{% trans "Missing a book?" %}</a></li>
+            <li><a href="http://turniej.wolnelektury.pl">Turniej Elektrybałtów</a></li>
+            <li><a href="{% url lesmianator %}">Leśmianator</a></li>
+            <li><a href="">{% trans "Mobile app" %}</a></li>
+            <li><a href="{% url infopage "widget" %}">{% trans "Widget" %}</a></li>
+            <li><a href="">{% trans "Public domain counter" %}</a></li>
+            <li><a href="{% url suggest_publishing %}">{% trans "Missing a book?" %}</a></li>
         </ul>
     </div>
 
@@ -61,12 +61,7 @@
     <div class="infopages-box">
         <h2 class="grid-line"><span class='mono'>Informacje</span></h2>
 
-        <ul>
-            <li><a href="{% url suggest %}">{% trans "About the project" %}</a></li>
-            <li><a href="{% url suggest %}">{% trans "You can help us" %}</a></li>
-            <li><a href="{% url suggest %}">{% trans "Copyright" %}</a></li>
-            <li><a href="{% url suggest %}">{% trans "Team" %}</a></li>
-        </ul>
+        {% infopages_on_main %}
 
         <div class="social-links">
             <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"><img src="{{ STATIC_URL }}img/social/facebook.png" alt="WolneLektury @ Facebook" /></a>

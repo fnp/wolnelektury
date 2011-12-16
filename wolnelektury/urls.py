@@ -22,11 +22,6 @@ urlpatterns += patterns('',
     url(r'^raporty/', include('reporting.urls')),
     url(r'^info/', include('infopages.urls')),
 
-    # Static pages
-    url(r'^mozesz-nam-pomoc/$', 'infopages.views.infopage', {'slug': 'help_us'}, name='help_us'),
-    url(r'^o-projekcie/$', 'infopages.views.infopage', {'slug': 'about_us'}, name='about_us'),
-    url(r'^widget/$', 'infopages.views.infopage', {'slug': 'widget'}, name='widget'),
-
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -56,13 +51,13 @@ urlpatterns += patterns('django.views.generic.simple',
     url(r'^epub/$', 'redirect_to',
         {'url': '/katalog/lektury/'}),
     url(r'^mozesz-nam-pomoc/$', 'redirect_to',
-        {'url': '/info/mozesz-nam-pomoc'}, name='help_us'),
+        {'url': '/info/mozesz-nam-pomoc'}),
     url(r'^o-projekcie/$', 'redirect_to',
-        {'url': '/info/o-projekcie'}, name='about_us'),
+        {'url': '/info/o-projekcie'}),
     url(r'^widget/$', 'redirect_to',
         {'url': '/info/widget'}),
     url(r'^wolontariat/$', 'redirect_to',
-        {'url': '/mozesz-nam-pomoc/'}),
+        {'url': '/info/mozesz-nam-pomoc/'}),
 )
     
 
