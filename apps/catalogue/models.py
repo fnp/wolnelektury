@@ -3,7 +3,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import namedtuple
-from datetime import datetime
 
 from django.db import models
 from django.db.models import permalink, Q
@@ -25,6 +24,7 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import create_zip
+from catalogue.tasks import touch_tag
 from shutil import copy
 from glob import glob
 import re
@@ -106,25 +106,22 @@ class Tag(TagBase):
     has_description.boolean = True
 
     def get_count(self):
-        """ returns global book count for book tags, fragment count for themes """
+        """Returns global book count for book tags, fragment count for themes."""
 
-        if self.book_count is None:
-            if self.category == 'book':
-                # never used
-                objects = Book.objects.none()
-            elif self.category == 'theme':
-                objects = Fragment.tagged.with_all((self,))
-            else:
-                objects = Book.tagged.with_all((self,)).order_by()
-                if self.category != 'set':
-                    # eliminate descendants
-                    l_tags = Tag.objects.filter(slug__in=[book.book_tag_slug() for book in objects])
-                    descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
-                    if descendants_keys:
-                        objects = objects.exclude(pk__in=descendants_keys)
-            self.book_count = objects.count()
-            self.save()
-        return self.book_count
+        if self.category == 'book':
+            # never used
+            objects = Book.objects.none()
+        elif self.category == 'theme':
+            objects = Fragment.tagged.with_all((self,))
+        else:
+            objects = Book.tagged.with_all((self,)).order_by()
+            if self.category != 'set':
+                # eliminate descendants
+                l_tags = Tag.objects.filter(slug__in=[book.book_tag_slug() for book in objects])
+                descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
+                if descendants_keys:
+                    objects = objects.exclude(pk__in=descendants_keys)
+        return objects.count()
 
     @staticmethod
     def get_tag_list(tags):
@@ -802,14 +799,19 @@ class Book(models.Model):
             book.build_mobi()
 
         book_descendants = list(book.children.all())
+        descendants_tags = set()
         # add l-tag to descendants and their fragments
         while len(book_descendants) > 0:
             child_book = book_descendants.pop(0)
+            descendants_tags.update(child_book.tags)
             child_book.tags = list(child_book.tags) + [book_tag]
             child_book.save()
             for fragment in child_book.fragments.all():
                 fragment.tags = set(list(fragment.tags) + [book_tag])
             book_descendants += list(child_book.children.all())
+
+        for tag in descendants_tags:
+            touch_tag.delay(tag)
 
         book.save()
 
@@ -1034,7 +1036,8 @@ class Fragment(models.Model):
 def _tags_updated_handler(sender, affected_tags, **kwargs):
     # reset tag global counter
     # we want Tag.changed_at updated for API to know the tag was touched
-    Tag.objects.filter(pk__in=[tag.pk for tag in affected_tags]).update(book_count=None, changed_at=datetime.now())
+    for tag in affected_tags:
+        touch_tag.delay(tag)
 
     # if book tags changed, reset book tag counter
     if isinstance(sender, Book) and \

@@ -5,7 +5,7 @@
 {% else %}
     <ul>
         {% for tag in tags %}
-            <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
+            <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.book_count }})</a></li>
         {% endfor %}
     </ul>
 {% endif %}

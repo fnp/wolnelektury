@@ -29,6 +29,7 @@ from django.views.generic.list_detail import object_list
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags, AttachmentHttpResponse, async_build_pdf
+from catalogue.tasks import touch_tag
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
@@ -56,9 +57,11 @@ class JSONResponse(HttpResponse):
 
 
 def catalogue(request):
-    tags = models.Tag.objects.exclude(category__in=('set', 'book'))
+    tags = models.Tag.objects.exclude(
+        category__in=('set', 'book')).exclude(book_count=0)
+    tags = list(tags)
     for tag in tags:
-        tag.count = tag.get_count()
+        tag.count = tag.book_count
     categories = split_tags(tags)
     fragment_tags = categories.get('theme', [])
 
@@ -520,12 +523,10 @@ def book_sets(request, book):
             new_shelves = [models.Tag.objects.get(pk=id) for id in form.cleaned_data['set_ids']]
 
             for shelf in [shelf for shelf in old_shelves if shelf not in new_shelves]:
-                shelf.book_count = None
-                shelf.save()
+                touch_tag(shelf)
 
             for shelf in [shelf for shelf in new_shelves if shelf not in old_shelves]:
-                shelf.book_count = None
-                shelf.save()
+                touch_tag(shelf)
 
             book.tags = new_shelves + list(book.tags.filter(~Q(category='set') | ~Q(user=request.user)))
             if request.is_ajax():
@@ -553,9 +554,7 @@ def remove_from_shelf(request, shelf, book):
 
     if shelf in book.tags:
         models.Tag.objects.remove_tag(book, shelf)
-
-        shelf.book_count = None
-        shelf.save()
+        touch_tag(shelf)
 
         return HttpResponse(_('Book was successfully removed from the shelf'))
     else:

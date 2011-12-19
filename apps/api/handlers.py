@@ -249,9 +249,8 @@ class TagsHandler(BaseHandler):
         except KeyError, e:
             return rc.NOT_FOUND
 
-        tags = Tag.objects.filter(category=category_sng)
-        tags = [t for t in tags if t.get_count() > 0]
-        if tags:
+        tags = Tag.objects.filter(category=category_sng).exclude(book_count=0)
+        if tags.exists():
             return tags
         else:
             return rc.NOT_FOUND
@@ -518,7 +517,7 @@ class CatalogueHandler(BaseHandler):
                     changed_at__gte=since,
                     changed_at__lt=until):
             # only serve non-empty tags
-            if tag.get_count():
+            if tag.book_count:
                 tag_d = cls.tag_dict(tag, fields)
                 updated.append(tag_d)
             elif tag.created_at < since:

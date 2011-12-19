@@ -23,10 +23,10 @@ class Command(BaseCommand):
         db = init_db(last_checked)
         for b in Book.objects.all():
             add_book(db, b)
-        for t in Tag.objects.exclude(category__in=('book', 'set', 'theme')):
+        for t in Tag.objects.exclude(
+                category__in=('book', 'set', 'theme')).exclude(book_count=0):
             # only add non-empty tags
-            if t.get_count():
-                add_tag(db, t)
+            add_tag(db, t)
         db.commit()
         db.close()
         current(last_checked)

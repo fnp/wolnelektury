@@ -229,7 +229,7 @@ class ByCategoryFeed(Feed):
         return feed['title']
 
     def items(self, feed):
-        return (tag for tag in Tag.objects.filter(category=feed['category']) if tag.get_count() > 0)
+        return Tag.objects.filter(category=feed['category']).exclude(book_count=0)
 
     def item_title(self, item):
         return item.name
@@ -280,7 +280,7 @@ class UserFeed(Feed):
         return u"Półki użytkownika %s" % user.username
 
     def items(self, user):
-        return (tag for tag in Tag.objects.filter(category='set', user=user) if tag.get_count() > 0)
+        return Tag.objects.filter(category='set', user=user).exclude(book_count=0)
 
     def item_title(self, item):
         return item.name
