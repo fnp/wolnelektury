@@ -1,10 +1,15 @@
 .sponsors-page {
+    background: white;
     margin-top: 6px;
 }
 
 .sponsors-column {
     float: left;
     width: 150px;
+}
+
+.sponsor-logos {
+    height: 130px;
 }
 
 .sponsors-page img {

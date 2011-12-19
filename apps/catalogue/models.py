@@ -180,7 +180,7 @@ class Tag(TagBase):
                 tag_sort_key = tag_name
                 if category == 'author':
                     tag_sort_key = tag_name.last_name
-                    tag_name = ' '.join(tag_name.first_names) + ' ' + tag_name.last_name
+                    tag_name = tag_name.readable()
                 tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
                 if created:
                     tag.name = tag_name
@@ -356,6 +356,8 @@ class Book(models.Model):
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
 
+    cover = models.FileField(_('cover'), upload_to=book_upload_path('png'),
+                null=True, blank=True)
     ebook_formats = ['pdf', 'epub', 'mobi', 'txt']
     formats = ebook_formats + ['html', 'xml']
 
@@ -570,6 +572,20 @@ class Book(models.Model):
         return WLDocument.from_file(self.xml_file.path,
                 provider=ORMDocProvider(self),
                 parse_dublincore=parse_dublincore)
+
+    def build_cover(self, book_info=None):
+        """(Re)builds the cover image."""
+        from StringIO import StringIO
+        from django.core.files.base import ContentFile
+        from librarian.cover import WLCover
+
+        if book_info is None:
+            book_info = self.wldocument().book_info
+
+        cover = WLCover(book_info).image()
+        imgstr = StringIO()
+        cover.save(imgstr, 'png')
+        self.cover.save(None, ContentFile(imgstr.getvalue()))
 
     def build_pdf(self, customizations=None, file_name=None):
         """ (Re)builds the pdf file.
@@ -788,6 +804,8 @@ class Book(models.Model):
         if book.build_html():
             if not settings.NO_BUILD_TXT and build_txt:
                 book.build_txt()
+
+        book.build_cover(book_info)
 
         if not settings.NO_BUILD_EPUB and build_epub:
             book.build_epub()

@@ -66,3 +66,8 @@
     background-color: #EEE;
     cursor: default;
 }
+
+.sponsors-sponsor img {
+    max-width: 120px;
+    max-height: 120px;
+}

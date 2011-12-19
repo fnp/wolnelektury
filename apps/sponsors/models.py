@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
 from PIL import Image
 
-from sorl.thumbnail.fields import ImageWithThumbnailsField
 from sponsors.fields import JSONField
 from django.core.files.base import ContentFile
 
@@ -19,14 +18,7 @@ THUMB_HEIGHT=120
 class Sponsor(models.Model):
     name = models.CharField(_('name'), max_length=120)
     _description = models.CharField(_('description'), blank=True, max_length=255)
-    logo = ImageWithThumbnailsField(
-        _('logo'),
-        upload_to='sponsorzy/sponsor/logo',
-        thumbnail={
-            'size': (THUMB_WIDTH, THUMB_HEIGHT),
-            'extension': 'png',
-            'options': ['pad', 'detail'],
-        })
+    logo = models.ImageField(_('logo'), upload_to='sponsorzy/sponsor/logo')
     url = models.URLField(_('url'), blank=True, verify_exists=False)
 
     def __unicode__(self):
@@ -67,8 +59,19 @@ class SponsorPage(models.Model):
         sponsors = Sponsor.objects.in_bulk(sponsor_ids)
         sprite = Image.new('RGBA', (THUMB_WIDTH, len(sponsors)*THUMB_HEIGHT))
         for i, sponsor_id in enumerate(sponsor_ids):
-            simg = Image.open(sponsors[sponsor_id].logo.thumbnail.dest)
-            sprite.paste(simg, (0, i*THUMB_HEIGHT))
+            simg = Image.open(sponsors[sponsor_id].logo.path)
+            if simg.size[0] > THUMB_WIDTH or simg.size[1] > THUMB_HEIGHT:
+                size = (
+                    min(THUMB_WIDTH, 
+                        simg.size[0] * THUMB_HEIGHT / simg.size[1]),
+                    min(THUMB_HEIGHT,
+                        simg.size[1] * THUMB_WIDTH / simg.size[0])
+                )
+                simg = simg.resize(size, Image.ANTIALIAS)
+            sprite.paste(simg, (
+                    (THUMB_WIDTH - simg.size[0]) / 2,
+                    i * THUMB_HEIGHT + (THUMB_HEIGHT - simg.size[1]) / 2,
+                    ))
         imgstr = StringIO()
         sprite.save(imgstr, 'png')
 

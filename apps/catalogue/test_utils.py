@@ -24,8 +24,16 @@ class PersonStub(object):
         self.first_names = first_names
         self.last_name = last_name
 
+    def readable(self):
+        return " ".join(self.first_names + (self.last_name,))
+
 
 class BookInfoStub(object):
+    _empty_fields = ['cover_url']
+    # allow single definition for multiple-value fields
+    _salias = {
+        'authors': 'author',
+    }
 
     def __init__(self, **kwargs):
         self.__dict = kwargs
@@ -36,7 +44,15 @@ class BookInfoStub(object):
         return object.__setattr__(self, key, value)
 
     def __getattr__(self, key):
-        return self.__dict[key]
+        try:
+            return self.__dict[key]
+        except KeyError:
+            if key in self._empty_fields:
+                return None
+            elif key in self._salias:
+                return [getattr(self, self._salias[key])]
+            else:
+                raise
 
     def to_dict(self):
         return dict((key, unicode(value)) for key, value in self.__dict.items())
