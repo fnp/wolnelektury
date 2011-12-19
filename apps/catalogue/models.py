@@ -61,7 +61,6 @@ class Tag(TagBase):
     category = models.CharField(_('category'), max_length=50, blank=False, null=False,
         db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(_('description'), blank=True)
-    main_page = models.BooleanField(_('main page'), default=False, db_index=True, help_text=_('Show tag on main page'))
 
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), blank=True, null=True)

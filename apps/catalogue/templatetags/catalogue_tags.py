@@ -280,23 +280,6 @@ def tag_list(tags, choices=None):
     return locals()
 
 
-@register.inclusion_tag('catalogue/folded_tag_list.html')
-def folded_tag_list(tags, title='', choices=None):
-    tags = [tag for tag in tags if tag.count]
-    if choices is None:
-        choices = []
-    some_tags_hidden = False
-    tag_count = len(tags)
-
-    if tag_count == 1:
-        one_tag = tags[0]
-    else:
-        shown_tags = [tag for tag in tags if tag.main_page]
-        if tag_count > len(shown_tags):
-            some_tags_hidden = True
-    return locals()
-
-
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):
     return locals()
