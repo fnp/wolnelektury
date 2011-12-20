@@ -63,7 +63,7 @@ class Picture(models.Model):
         return self.slug
 
     @classmethod
-    def from_xml_file(cls, xml_file, images_path=None, overwrite=False):
+    def from_xml_file(cls, xml_file, image_file=None, overwrite=False):
         """
         Import xml and it's accompanying image file.
         """
@@ -86,11 +86,12 @@ class Picture(models.Model):
 
             picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info)
 
-            img = picture_xml.image_file()
-            try:
-                picture.image_file.save(path.basename(picture_xml.image_path), File(img))
-            finally:
-                img.close()
+            if image_file is not None:
+                img = image_file
+            else:
+                img = picture_xml.image_file()
+
+            picture.image_file.save(path.basename(picture_xml.image_path), File(img))
 
             picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
             picture.save()

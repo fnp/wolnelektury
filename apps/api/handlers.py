@@ -580,3 +580,21 @@ class ChangesHandler(CatalogueHandler):
     @piwik_track
     def read(self, request, since):
         return self.changes(request, since)
+
+
+class PictureHandler(BaseHandler):
+    model = Picture
+    fields = ('slug', 'title')
+    allowed_methods = ('POST',)
+
+    def create(self, request):
+        if not request.user.has_perm('catalogue.add_book'):
+            return rc.FORBIDDEN
+
+        data = json.loads(request.POST.get('data'))
+        form = BookImportForm(data)
+        if form.is_valid():
+            form.save()
+            return rc.CREATED
+        else:
+            return rc.NOT_FOUND
