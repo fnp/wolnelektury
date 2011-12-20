@@ -8,6 +8,13 @@ from django.conf import settings
 
 from api.helpers import timestamp
 from catalogue.models import Book, Tag
+from picture.tests.utils import RequestFactory
+from picture.forms import PictureImportForm
+from picture.models import Picture
+import picture.tests
+from django.core.files.uploadedfile import SimpleUploadedFile
+ 
+from os import path
 
 
 class ApiTest(TestCase):
@@ -135,3 +142,21 @@ class TagTests(TestCase):
         tag = json.loads(self.client.get('/api/authors/joe/').content)
         self.assertEqual(tag['name'], self.tag.name,
                         'Wrong tag details.')
+
+
+class PictureTests(ApiTest):
+    def test_publish(self):
+        slug = "kandinsky-composition-viii"
+        xml = SimpleUploadedFile('composition8.xml', open(path.join(picture.tests.__path__[0], "files", slug + ".xml")).read())
+        img = SimpleUploadedFile('kompozycja-8.png', open(path.join(picture.tests.__path__[0], "files", slug + ".png")).read())
+
+        import_form = PictureImportForm({}, {
+            'picture_xml_file': xml,
+            'picture_image_file': img
+            })
+
+        assert import_form.is_valid()
+        if import_form.is_valid():
+            import_form.save()
+
+        pic = Picture.objects.get(slug=slug)
