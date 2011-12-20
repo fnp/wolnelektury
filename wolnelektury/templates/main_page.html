@@ -47,13 +47,13 @@
         <h2 class="grid-line"><span class='mono'>Narzędzia</span></h2>
 
         <ul>
-            <li><a href="{% url suggest %}" id="suggest-link">{% trans "Report a bug" %}</a></li>
+            <li><a href="{% url suggest %}" id="suggest" class="ajaxable">{% trans "Report a bug or suggestion" %}</a></li>
             <li><a href="http://turniej.wolnelektury.pl">Turniej Elektrybałtów</a></li>
             <li><a href="{% url lesmianator %}">Leśmianator</a></li>
             <li><a href="">{% trans "Mobile app" %}</a></li>
             <li><a href="{% url infopage "widget" %}">{% trans "Widget" %}</a></li>
             <li><a href="">{% trans "Public domain counter" %}</a></li>
-            <li><a href="{% url suggest_publishing %}">{% trans "Missing a book?" %}</a></li>
+            <li><a href="{% url suggest_publishing %}" id="suggest-publishing" class="ajaxable">{% trans "Missing a book?" %}</a></li>
         </ul>
     </div>
 
@@ -72,34 +72,4 @@
 
     {% endspaceless %}
 
-
 {% endblock %}
-
-
-
-
-
-
-
-            {# publication plan consultations - form link #}
-            <div style="clear:right;float:right" class="big-top-link">
-                <a href="{% url suggest_publishing %}" data-ajax="{% url suggest_publishing %}?ajax=1" id="suggest-publishing-link">
-                    {% trans "Didn't find a book? Make a suggestion." %}
-                </a>
-            </div>
-
-
-
-
-        <div id="suggest-window">
-            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-            <div class="target">
-                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-            </div>
-        </div>
-        <div id="suggest-publishing-window">
-            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-            <div class="target">
-                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-            </div>
-        </div>

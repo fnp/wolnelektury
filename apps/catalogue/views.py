@@ -17,15 +17,13 @@ from django.utils.datastructures import SortedDict
 from django.views.decorators.http import require_POST
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.utils import simplejson
-from django.utils.functional import Promise
-from django.utils.encoding import force_unicode
 from django.utils.http import urlquote_plus
 from django.views.decorators import cache
 from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.views.generic.list_detail import object_list
 
+from ajaxable.utils import LazyEncoder, JSONResponse
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags, AttachmentHttpResponse, async_build_pdf
@@ -37,23 +35,6 @@ from suggest.forms import PublishingSuggestForm
 from os import path
 
 staff_required = user_passes_test(lambda user: user.is_staff)
-
-
-class LazyEncoder(simplejson.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Promise):
-            return force_unicode(obj)
-        return obj
-
-# shortcut for JSON reponses
-class JSONResponse(HttpResponse):
-    def __init__(self, data={}, callback=None, **kwargs):
-        # get rid of mimetype
-        kwargs.pop('mimetype', None)
-        data = simplejson.dumps(data)
-        if callback:
-            data = callback + "(" + data + ");" 
-        super(JSONResponse, self).__init__(data, mimetype="application/json", **kwargs)
 
 
 def catalogue(request):
@@ -663,45 +644,6 @@ def delete_shelf(request, slug):
         return HttpResponseRedirect('/')
 
 
-# ==================
-# = Authentication =
-# ==================
-@require_POST
-@cache.never_cache
-def login(request):
-    form = AuthenticationForm(data=request.POST, prefix='login')
-    if form.is_valid():
-        auth.login(request, form.get_user())
-        response_data = {'success': True, 'errors': {}}
-    else:
-        response_data = {'success': False, 'errors': form.errors}
-    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
-
-
-@require_POST
-@cache.never_cache
-def register(request):
-    registration_form = UserCreationForm(request.POST, prefix='registration')
-    if registration_form.is_valid():
-        user = registration_form.save()
-        user = auth.authenticate(
-            username=registration_form.cleaned_data['username'],
-            password=registration_form.cleaned_data['password1']
-        )
-        auth.login(request, user)
-        response_data = {'success': True, 'errors': {}}
-    else:
-        response_data = {'success': False, 'errors': registration_form.errors}
-    return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
-
-
-@cache.never_cache
-def logout_then_redirect(request):
-    auth.logout(request)
-    return HttpResponseRedirect(urlquote_plus(request.GET.get('next', '/'), safe='/?='))
-
-
-
 # =========
 # = Admin =
 # =========
@@ -724,14 +666,6 @@ def import_book(request):
         return HttpResponse(_("Book imported successfully"))
     else:
         return HttpResponse(_("Error importing file: %r") % book_import_form.errors)
-
-
-
-def clock(request):
-    """ Provides server time for jquery.countdown,
-    in a format suitable for Date.parse()
-    """
-    return HttpResponse(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
 
 
 # info views for API

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{{ author.name }} w WolneLektury.pl{% endblock %}
+{% block titleextra %}:: {{ author.name }}{% endblock %}
 
 {% block metadescription %}Licznik domeny publicznej: {{author.name}}.{% endblock %}
 
@@ -9,9 +9,6 @@
 
 {% block body %}
     <h1>{{ author.name }}</h1>
-    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
-    </form>
 
     <div id="books-list">
         {% if author.has_description %}
@@ -42,7 +39,7 @@
             {% else %}
                 <div>
                     <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>
-                    {% include "pdcounter/pd_counter.html" %}
+                    <div id='countdown' data-year='{{ pd_counter }}'></div>
                     <p>{% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
                 </div>
             {% endif %}

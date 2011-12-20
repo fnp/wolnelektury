@@ -9,13 +9,48 @@ from django.core.validators import email_re
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 
-
-from suggest.models import PublishingSuggestion
+from suggest.models import PublishingSuggestion, Suggestion
 
 
 class SuggestForm(forms.Form):
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     description = forms.CharField(label=_('Description'), widget=forms.Textarea, required=True)
+
+    def save(self, request):
+        contact = self.cleaned_data['contact']
+        description = self.cleaned_data['description']
+
+        suggestion = Suggestion(contact=contact,
+            description=description, ip=request.META['REMOTE_ADDR'])
+        if request.user.is_authenticated():
+            suggestion.user = request.user
+        suggestion.save()
+
+        mail_managers(u'Nowa sugestia na stronie WolneLektury.pl', u'''\
+Zgłoszono nową sugestię w serwisie WolneLektury.pl.
+http://%(site)s%(url)s
+
+Użytkownik: %(user)s
+Kontakt: %(contact)s
+
+%(description)s''' % {
+            'site': Site.objects.get_current().domain,
+            'url': reverse('admin:suggest_suggestion_change', args=[suggestion.id]),
+            'user': str(request.user) if request.user.is_authenticated() else '',
+            'contact': contact,
+            'description': description,
+            }, fail_silently=True)
+
+        if email_re.match(contact):
+            send_mail(u'[WolneLektury] ' + _(u'Thank you for your suggestion.'),
+                    _(u"""\
+Thank you for your comment on WolneLektury.pl.
+The suggestion has been referred to the project coordinator.""") +
+u"""
+
+-- 
+""" + _(u'''Message sent automatically. Please do not reply.'''),
+                    'no-reply@wolnelektury.pl', [contact], fail_silently=True)
 
 
 class PublishingSuggestForm(forms.Form):

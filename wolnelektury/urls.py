@@ -4,12 +4,20 @@ import os
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
+import views
 
 
 admin.autodiscover()
 
 urlpatterns = patterns('wolnelektury.views',
     url(r'^$', 'main_page', name='main_page'),
+
+    url(r'^zegar/$', 'clock', name='clock'),
+
+    # Authentication
+    url(r'^uzytkownicy/zaloguj/$', views.LoginFormView(), name='login'),
+    url(r'^uzytkownicy/utworz/$', views.RegisterFormView(), name='register'),
+    url(r'^uzytkownicy/wyloguj/$', 'logout_then_redirect', name='logout'),
 )
 
 urlpatterns += patterns('',
@@ -26,12 +34,6 @@ urlpatterns += patterns('',
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-
-    # Authentication
-    url(r'^uzytkownicy/zaloguj/$', 'catalogue.views.login', name='login'),
-    url(r'^uzytkownicy/wyloguj/$', 'catalogue.views.logout_then_redirect', name='logout'),
-    url(r'^uzytkownicy/utworz/$', 'catalogue.views.register', name='register'),
-    url(r'^uzytkownicy/login/$', 'django.contrib.auth.views.login', name='simple_login'),
 
     # API
     (r'^api/', include('api.urls')),

@@ -29,9 +29,6 @@ urlpatterns = patterns('catalogue.views',
     #url(r'^zip/mobi\.zip$', 'download_zip', {'format': 'mobi', 'slug': None}, 'download_zip_mobi'),
     #url(r'^zip/audiobook/(?P<book>%s)\.zip' % Book.FILEID_RE, 'download_zip', {'format': 'audiobook'}, 'download_zip_audiobook'),
 
-    # tools
-    url(r'^zegar/$', 'clock', name='clock'),
-
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<book>%s)\.html$' % Book.FILEID_RE, 'book_text', name='book_text'),
     url(r'^lektura/(?P<book>%s)/$' % Book.URLID_RE, 'book_detail', name='book_detail'),

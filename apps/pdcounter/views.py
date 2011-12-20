@@ -7,16 +7,14 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from pdcounter import models
-from catalogue import forms
 from suggest.forms import PublishingSuggestForm
 
 
 def book_stub_detail(request, slug):
     book = get_object_or_404(models.BookStub, slug=slug)
     pd_counter = book.pd
-    form = forms.SearchForm()
 
-    pubsuggest_form = PublishingSuggestForm(
+    form = PublishingSuggestForm(
             initial={"books": u"%s — %s, \n" % (book.author, book.title)})
 
     return render_to_response('pdcounter/book_stub_detail.html', locals(),
@@ -26,9 +24,8 @@ def book_stub_detail(request, slug):
 def author_detail(request, slug):
     author = get_object_or_404(models.Author, slug=slug)
     pd_counter = author.goes_to_pd()
-    form = forms.SearchForm()
 
-    pubsuggest_form = PublishingSuggestForm(initial={"books": author.name + ", \n"})
+    form = PublishingSuggestForm(initial={"books": author.name + ", \n"})
 
     return render_to_response('pdcounter/author_detail.html', locals(),
         context_instance=RequestContext(request))

@@ -110,7 +110,7 @@ TEMPLATE_DIRS = [
     path.join(PROJECT_DIR, 'templates'),
 ]
 
-LOGIN_URL = '/uzytkownicy/login/'
+LOGIN_URL = '/uzytkownicy/zaloguj/'
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -137,6 +137,7 @@ INSTALLED_APPS = [
     'modeltranslation',
 
     # our
+    'ajaxable',
     'api',
     'catalogue',
     'chunks',
@@ -161,11 +162,14 @@ CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
 # CSS and JavaScript file groups
 COMPRESS_CSS = {
     'all': {
-        #'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/jquery.countdown.css', 'css/master.plain.css', 'css/sponsors.css', 'css/facelist_2-0.css',),
+        #'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css', 'css/facelist_2-0.css',),
         'source_filenames': [
+            'css/jquery.countdown.css', 
+
             'css/base.css',
             'css/header.css',
             'css/main_page.css',
+            'css/dialogs.css',
             'css/book_box.css',
             'css/sponsors.css',
         ],
@@ -185,15 +189,20 @@ COMPRESS_JS = {
     'base': {
         'source_filenames': (
             'js/jquery.cycle.min.js',
+            'js/jquery.jqmodal.js',
+            'js/jquery.form.js',
+            'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
+            'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
+            'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
+            'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
 
+            'js/locale.js',
+            'js/dialogs.js',
             'js/sponsors.js',
-        
-            #~ 'js/jquery.autocomplete.js', 'js/jquery.form.js',
-            #~ 'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
-            #~ 'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
-            #~ 'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
-            #~ 'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
-            #~ 'js/jquery.jqmodal.js', 'js/jquery.labelify.js', 'js/catalogue.js',
+            'js/pdcounter.js',
+
+            #~ 'js/jquery.autocomplete.js',
+            #~ 'js/jquery.labelify.js', 'js/catalogue.js',
             ),
         'output_filename': 'js/base?.min.js',
     },

@@ -1,9 +1,0 @@
-{% load i18n %}
-<h2>{% trans "Report a bug or suggestion" %}</h2>
-<form id='suggest-form' action="{% url suggest.views.report %}" method="post" accept-charset="utf-8" class="cuteform">
-<ol>
-    <li><label for="id_contact">{{ form.contact.label }}</label> {{ form.contact }}</li>
-	<li><label for="id_description">{{ form.description.label }}</label> {{ form.description }}</li>
-    <li><input type="submit" value="{% trans "Send report" %}"/></li>
-</ol>
-</form>

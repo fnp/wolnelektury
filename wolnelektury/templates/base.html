@@ -41,7 +41,13 @@
                     {% endif %}
                     | <a href="{% url logout %}?next={{ request.get_full_path }}">{% trans "Logout" %}</a>
                 {% else %}
-                    <a href="{% url login %}" class="login-register-link">{% trans "Sign in" %} / {% trans "Register" %}</a>
+                    <a href="{% url login %}?next={{ request.path }}"
+                        id="login" class="ajaxable">
+                            {% trans "Sign in" %}</a>
+                    /
+                    <a href="{% url register %}?next={{ request.path }}"
+                        id="register" class="ajaxable">
+                            {% trans "Register" %}</a>
                 {% endif %}
             </p>
 
@@ -140,34 +146,23 @@
         </div>{# end main-content #}
 
 
-        <!--div id="login-register-window">
-            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+        {# template #}
+        <div id="ajaxable-window" class='dialog-window'>
+            <div class="header mono"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
             <div class="target">
-                <form method="post" action="{% url login %}" id="login-form" class="cuteform">
-                    <h2>{% trans "Sign in" %} / <a href="#" id="show-registration-form" style="font-size: 0.85em; font-weight: normal">{% trans "Register" %}</a></h2>
-                    <p><span id="id_login-__all__"></span></p>
-                    <ol>
-                        {% authentication_form %}
-                        <li><input type="submit" value="{% trans "Sign in" %}" /></li>
-                    </ol>
-                </form>
-                <form method="post" action="{% url register %}" id="registration-form" class="cuteform" style="display: none;">
-                    <h2><a href="#" id="show-login-form" style="font-size: 0.85em; font-weight: normal">{% trans "Sign in" %}</a> / {% trans "Register" %}</h2>
-                    <p><span id="id_registration-__all__"></span></p>
-                    <ol>
-                        {% user_creation_form %}
-                        <li><input type="submit" value="{% trans "Register" %}" /></li>
-                    </ol>
-                </form>
+                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
             </div>
-        </div-->
+        </div>
 
 
         {% endblock bodycontent %}
 
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript">var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";</script>
+        <script type="text/javascript">
+            var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+            var STATIC_URL = "{{ STATIC_URL }}";
+        </script>
         {% compressed_js "base" %}
 
         <!--{{ piwik_tag|safe }}
