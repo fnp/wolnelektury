@@ -15,6 +15,7 @@ from api.helpers import timestamp
 from api.models import Deleted
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment
+from picture.models import Picture
 
 from stats.utils import piwik_track
 
