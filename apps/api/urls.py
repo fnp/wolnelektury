@@ -5,7 +5,6 @@ from piston.resource import Resource
 
 from api import handlers
 from catalogue.models import Book
-from picture.models import Picture
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
 
@@ -23,7 +22,7 @@ tag_resource = Resource(handler=handlers.TagDetailHandler)
 fragment_resource = Resource(handler=handlers.FragmentDetailHandler)
 fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
-picture_resource = Resource(handler=handlers.PictureHandler)
+picture_resource = Resource(handler=handlers.PictureHandler, authentication=auth)
 
 urlpatterns = patterns(
     'piston.authentication',
