@@ -7,7 +7,6 @@ from catalogue.forms import SearchForm
 from dictionary.models import Note
 
 def letter_notes(request, letter=None):
-    form = SearchForm()
     letters = ["0-9"] + [chr(a) for a in range(ord('a'), ord('z')+1)]
     objects = Note.objects.all()
     if letter == "0-9":

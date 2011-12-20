@@ -3,9 +3,13 @@
 {% load catalogue_tags %}
 
 
+{% block titleextra %}{% trans "Catalogue" %}{% endblock %}
+
 {% block bodyid %}catalogue-catalogue{% endblock %}
 
 {% block body %}
+    <h1>{% trans "Catalogue" %}</h1>
+
     <h2></a>{% trans "Authors" %}<a name="autorzy"></a></h2>
     {% tag_list categories.author %}
 

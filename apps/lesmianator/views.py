@@ -8,17 +8,15 @@ from django.views.decorators import cache
 
 from catalogue.utils import get_random_hash
 from catalogue.models import Book, Tag
-from catalogue import forms
 from lesmianator.models import Poem, Continuations
 
 
 def main_page(request):
     last = Poem.objects.all().order_by('-created_at')[:10]
-    form = forms.SearchForm()
     shelves = Tag.objects.filter(user__username='lesmianator')
 
     return render_to_response('lesmianator/lesmianator.html', 
-                {"last": last, "form": form, "shelves": shelves},
+                {"last": last, "shelves": shelves},
                 context_instance=RequestContext(request))
 
 

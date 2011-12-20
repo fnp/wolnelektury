@@ -1,4 +1,3 @@
-from catalogue import forms
 from picture.models import Picture
 from django.utils.datastructures import SortedDict
 from django.shortcuts import render_to_response, get_object_or_404
@@ -7,8 +6,6 @@ from django.template import RequestContext
 
 def picture_list(request, filter=None, template_name='catalogue/picture_list.html'):
     """ generates a listing of all books, optionally filtered with a test function """
-
-    form = forms.SearchForm()
 
     pictures_by_author, orphans = Picture.picture_list()
     books_nav = SortedDict()
@@ -22,7 +19,6 @@ def picture_list(request, filter=None, template_name='catalogue/picture_list.htm
 
 
 def picture_detail(request, picture):
-    form = forms.SearchForm()
     picture = get_object_or_404(Picture, slug=picture)
 
     categories = SortedDict()

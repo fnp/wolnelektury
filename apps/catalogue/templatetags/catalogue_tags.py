@@ -184,22 +184,6 @@ def authentication_form():
     return LoginForm(prefix='login').as_ul()
 
 
-@register.inclusion_tag('catalogue/search_form.html')
-def search_form():
-    return {"form": SearchForm()}
-
-@register.inclusion_tag('catalogue/breadcrumbs.html')
-def breadcrumbs(tags, search_form=True):
-    context = {'tag_list': tags}
-    try:
-        max_tag_list = settings.MAX_TAG_LIST
-    except AttributeError:
-        max_tag_list = -1
-    if search_form and (max_tag_list == -1 or len(tags) < max_tag_list):
-        context['search_form'] = SearchForm(tags=tags)
-    return context
-
-
 @register.tag
 def catalogue_url(parser, token):
     bits = token.split_contents()

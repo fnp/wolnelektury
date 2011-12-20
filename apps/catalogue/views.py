@@ -46,15 +46,12 @@ def catalogue(request):
     categories = split_tags(tags)
     fragment_tags = categories.get('theme', [])
 
-    form = forms.SearchForm()
     return render_to_response('catalogue/catalogue.html', locals(),
         context_instance=RequestContext(request))
 
 
 def book_list(request, filter=None, template_name='catalogue/book_list.html'):
     """ generates a listing of all books, optionally filtered with a test function """
-
-    form = forms.SearchForm()
 
     books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
     books_nav = SortedDict()
@@ -194,7 +191,6 @@ def book_fragments(request, book, theme_slug):
     theme = get_object_or_404(models.Tag, slug=theme_slug, category='theme')
     fragments = models.Fragment.tagged.with_all([book_tag, theme])
 
-    form = forms.SearchForm()
     return render_to_response('catalogue/book_fragments.html', locals(),
         context_instance=RequestContext(request))
 
@@ -240,7 +236,6 @@ def book_detail(request, book):
         projects.add((project, meta.get('funded_by', '')))
     projects = sorted(projects)
 
-    form = forms.SearchForm()
     custom_pdf_form = forms.CustomPDFForm()
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))

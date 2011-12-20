@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load chunks %}
 
-{% block titleextra %}:: {{ page.title }}{% endblock %}
+{% block titleextra %}{{ page.title }}{% endblock %}
 
 {% block metadescription %}{{ left_column|striptags|truncatewords:10 }}{% endblock %}
 

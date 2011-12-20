@@ -2,23 +2,16 @@
 {% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}{% trans "Searching in" %} WolneLektury.pl{% endblock %}
+{% block titleextra %}{% trans "Search" %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% title_from_tags tags %}</h1>
-    {% breadcrumbs tags %}
+    <h1>{% trans "Search" %}</h1>
 
     <div id="books-list">
         <p>{% trans "Sorry! Search query must have at least two characters." %}</p>
         {% include "info/join_us.html" %}
     </div>
 
-    <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-        <div class="target">
-            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-        </div>
-    </div>
 {% endblock %}

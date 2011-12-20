@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block titleextra %}:: {{ author.name }}{% endblock %}
+{% block titleextra %}{{ author.name }}{% endblock %}
 
 {% block metadescription %}Licznik domeny publicznej: {{author.name}}.{% endblock %}
 

@@ -2,14 +2,13 @@
 {% load i18n %}
 {% load reporting_stats catalogue_tags %}
 
-{% block title %}Statystyka w  WolneLektury.pl{% endblock %}
+{% block titleextra %}{% trans "Reports" %}{% endblock %}
 
 {% block bodyid %}reports-stats{% endblock %}
 
 
 {% block body %}
     <h1>Statystyka</h1>
-    {% search_form %}
 
     <p><a href="{% url reporting_catalogue_pdf %}">Katalog biblioteki w formacie PDF.</a></p>
 

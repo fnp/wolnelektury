@@ -4,7 +4,7 @@
 
 {% block bodyid %}document-list-body{% endblock %}
 
-{% block title %}{% trans "Hand-outs for teachers on " %}WolneLektury.pl{% endblock %}
+{% block titleextra %}{% trans "Hand-outs for teachers" %}{% endblock %}
 
 {% block metadescription %}Scenariusze lekcji. Materiały dla nauczycieli na wolnej licencji.{% endblock %}
 
@@ -30,9 +30,7 @@
 {% endblock extrahead %}
 {% block body %}
     <h1>{% trans "Hand-outs for teachers" %}</h1>
-    <form action="{% url search %}" method="GET" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
-    </form>
+
     <div id="document-list">
         {% chunk "document-list" %}
     </div>

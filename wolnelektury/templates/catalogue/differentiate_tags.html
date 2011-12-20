@@ -2,13 +2,12 @@
 {% load i18n %}
 {% load catalogue_tags %}
 
-{% block title %}{% title_from_tags tags %} w WolneLektury.pl{% endblock %}
+{% block titleextra %}{% title_from_tags tags %}{% endblock %}
 
 {% block bodyid %}differentiate_tags{% endblock %}
 
 {% block body %}
     <h1>{% title_from_tags tags %}</h1>
-    {% breadcrumbs tags %}
 
 	<p>{% trans "The criteria are ambiguous. Please select one of the following options:" %}</p>
     <div id="books-list">

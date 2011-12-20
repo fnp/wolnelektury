@@ -2,13 +2,12 @@
 {% load i18n %}
 {% load catalogue_tags pagination_tags switch_tag %}
 
-{% block title %}{% title_from_tags tags %} w WolneLektury.pl{% endblock %}
+{% block titleextra %}{% title_from_tags tags %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
     <h1>{% title_from_tags tags %}</h1>
-    {% breadcrumbs tags %}
 
     {% if only_shelf and not object_list %}
     <div id="books-list">

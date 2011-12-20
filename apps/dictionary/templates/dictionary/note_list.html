@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 {% load i18n pagination_tags %}
-{% load catalogue_tags %}
 
 
 {% block bodyid %}footnotes{% endblock %}
 
-{% block title %}{% trans "Footnotes on WolneLektury.pl" %}{% endblock %}
+{% block titleextra %}{% trans "Footnotes" %}{% endblock %}
 
 
 {% block body %}
     <h1>{% trans "Footnotes" %}</h1>
-    {% search_form %}
 
 
 <p>

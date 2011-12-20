@@ -2,13 +2,12 @@
 {% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block title %}{% trans "Search in WolneLektury.pl" %}{% endblock %}
+{% block titleextra %}{% trans "Search" %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% title_from_tags tags %}</h1>
-    {% breadcrumbs tags %}
+    <h1>{% trans "Search" %}</h1>
 
     <div id="books-list">
         <p>{% trans "Sorry! Search cirteria did not match any resources." %}</p>

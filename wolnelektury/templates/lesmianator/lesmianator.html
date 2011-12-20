@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load catalogue_tags %}
 
-{% block title %}Leśmianator w WolneLektury.pl{% endblock %}
+{% block titleextra %}Leśmianator{% endblock %}
 
 {% block metadescription %}Stwórz własny wierszmiks z utworów znajdujących się na Wolnych Lekturach.{% endblock %}
 
@@ -10,9 +10,6 @@
 
 {% block body %}
     <h1>Leśmianator</h1>
-    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
-        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
-    </form>
 
     <div id="books-list">
         <p>Leśmianator tworzy wierszmiksy – dzięki niemu
