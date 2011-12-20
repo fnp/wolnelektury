@@ -1,0 +1,9 @@
+
+from django.contrib import admin
+from picture.models import Picture
+from sorl.thumbnail.admin import AdminImageMixin
+
+class PictureAdmin(AdminImageMixin, admin.ModelAdmin):
+    pass
+
+admin.site.register(Picture, PictureAdmin)

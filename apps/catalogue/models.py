@@ -174,7 +174,11 @@ class Tag(TagBase):
             try:
                 tag_names = getattr(info, field_name)
             except:
-                tag_names = [getattr(info, category)]
+                try:
+                    tag_names = [getattr(info, category)]
+                except:
+                    # For instance, Pictures do not have 'genre' field.
+                    continue
             for tag_name in tag_names:
                 tag_sort_key = tag_name
                 if category == 'author':

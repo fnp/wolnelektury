@@ -1,8 +1,12 @@
 from django.db import models
 import catalogue.models
-from catalogue.fields import OverwritingFileField
+from django.db.models import permalink
+from sorl.thumbnail import ImageField
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.utils.datastructures import SortedDict
+from librarian import dcparser, picture
+
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
 from os import path
@@ -22,7 +26,7 @@ class Picture(models.Model):
     created_at  = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at  = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     xml_file    = models.FileField('xml_file', upload_to="xml", storage=picture_storage)
-    image_file  = models.FileField(_('image_file'), upload_to="images", storage=picture_storage)
+    image_file  = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
     tags        = managers.TagDescriptor(catalogue.models.Tag)
@@ -36,6 +40,9 @@ class Picture(models.Model):
         verbose_name = _('picture')
         verbose_name_plural = _('pictures')
 
+    URLID_RE = r'[a-z0-9-]+'
+    FILEID_RE = r'[a-z0-9-]+'
+
     def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
         from sortify import sortify
 
@@ -47,6 +54,13 @@ class Picture(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    @permalink
+    def get_absolute_url(self):
+        return ('picture.views.picture_detail', [self.urlid()])
+
+    def urlid(self):
+        return self.slug
 
     @classmethod
     def from_xml_file(cls, xml_file, images_path=None, overwrite=False):
@@ -84,3 +98,37 @@ class Picture(models.Model):
             if close_xml_file:
                 xml_file.close()
         return picture
+
+    @classmethod
+    def picture_list(cls, filter=None):
+        """Generates a hierarchical listing of all pictures
+        Pictures are optionally filtered with a test function.
+        """
+
+        pics = cls.objects.all().order_by('sort_key')\
+            .only('title', 'slug', 'image_file')
+
+        if filter:
+            pics = pics.filter(filter).distinct()
+
+        pics_by_author = SortedDict()
+        orphans = []
+        for tag in catalogue.models.Tag.objects.filter(category='author'):
+            pics_by_author[tag] = []
+
+        for pic in pics:
+            authors = list(pic.tags.filter(category='author'))
+            if authors:
+                for author in authors:
+                    pics_by_author[author].append(pic)
+            else:
+                orphans.append(pic)
+
+        return pics_by_author, orphans
+
+    @property
+    def info(self):
+        if not hasattr(self, '_info'):
+            info = dcparser.parse(self.xml_file.path, picture.PictureInfo)
+            self._info = info
+        return self._info

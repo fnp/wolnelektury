@@ -226,7 +226,7 @@ def book_detail(request, book):
         book = models.Book.objects.get(**kwargs)
     except models.Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, kwargs['slug'])
-
+    
     book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)

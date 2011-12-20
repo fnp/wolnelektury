@@ -17,7 +17,7 @@ Feedparser>=4.1
 # PIL 
 PIL>=1.1.6
 mutagen>=1.17
-sorl-thumbnail>=10,<12
+sorl-thumbnail>=11.09<12
 
 # home-brewed & dependencies
 lxml>=2.2.2

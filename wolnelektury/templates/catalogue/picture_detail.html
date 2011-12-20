@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags pagination_tags %}
+{% load thumbnail %}
+
+
+{% block title %}{{ picture.title }} {% trans "on WolneLektury.pl" %}{% endblock %}
+
+{% block bodyid %}picture-detail{% endblock %}
+
+{% block body %}
+    <h1>{{picture.title}}</h1>
+    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form">
+        <p>{{ form.q }} <input type="submit" value="{% trans "Search" %}" /> <strong>{% trans "or" %}</strong> <a href="{% url main_page %}">{% trans "return to main page" %}</a></p>
+    </form>
+
+    <div id="books-list">
+        <div id='breadcrumbs'>
+            {% if categories.author %}
+                {% for tag in categories.author %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                &#187; 
+            {% endif %}
+        </div>
+
+	{% thumbnail picture.image_file "400x500" upscale="false" as im %}
+	<img style="margin:{{ im|margin:"400x500" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
+	{% endthumbnail %}
+
+        {% if picture.info.license %}
+        <p>{% trans "Work is licensed under " %} <a href="{{ picture.info.license }}">{{ picture.info.license_description }}</a>.</p>
+        {% endif %}
+        <p>{% trans "Based on" %}: {{ picture.info.source_name }}</p>
+        {% if picture.info.description %}
+            <div id="description">
+                <div id='description-long'>{{ picture.info.description|safe }}</div>
+                <div id='description-short'>{{ picture.info.description|safe|truncatewords_html:30 }}</div>
+            </div>
+            <div id="toggle-description"><p></p></div>
+        {% endif %}
+
+    </div>
+
+    <div id="tags-list">
+        <div id="book-info">
+            <h2>{% trans "Details" %}</h2>
+            <ul>
+                <li>
+                    {% trans "Author" %}:
+                    {% for tag in categories.author %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </li>
+                <li>
+                    {% trans "Epoch" %}:
+                    {% for tag in categories.epoch %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </li>
+                <li>
+                    {% trans "Kind" %}:
+                    {% for tag in categories.kind %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </li>
+            </ul>
+            <h2>{% trans "Other resources" %}</h2>
+            <ul>
+                {% if picture.info.source_url %}
+                <li><a href="{{ picture.info.source_url }}">{% trans "Source of the image" %}</a></li>
+                {% endif %}
+                {% if picture.info.about and not hide_about %}
+                <li><a href="{{ picture.info.about }}">{% trans "Image on the Editor's Platform" %}</a></li>
+                {% endif %}
+{% comment %}
+                {% if book.gazeta_link %}
+                <li><a href="{{ book.gazeta_link }}">{% trans "Picture description on Lektury.Gazeta.pl" %}</a></li>
+                {% endif %}
+                {% if book.wiki_link %}
+                <li><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></li>
+                {% endif %}
+{% endcomment %}
+            </ul>
+            <p><a href="{{ picture.xml_file.url }}">{% trans "View XML source" %}</a></p>
+        </div>
+        <div id="themes-list">
+            <h2>{% trans "Work's themes " %}</h2>
+            <ul>
+            {% for theme in picture_themes %}
+                <li><a href="{{ theme.get_absolute_url }}">{{ theme }} ({{ theme.count }})</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="clearboth"></div>
+    </div>
+    <div id="set-window">
+        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+        <div class="target">
+            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+        </div>
+    </div>
+{% endblock %}

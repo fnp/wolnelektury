@@ -1,0 +1,32 @@
+{% extends "catalogue/book_list.html" %}
+{% load i18n %}
+{% load catalogue_tags chunks %}
+{% load thumbnail %}
+
+{% block bodyid %}picture-list{% endblock %}
+
+{% block title %}{% trans "Listing of all pictures on WolneLektury.pl" %}{% endblock %}
+
+{% block picture_list_header %}{% trans "Listing of all pictures" %}{% endblock %}
+
+
+{% block book_list %}
+{% for author, group in pictures_by_author.items %}
+<a name="{{ author.slug }}"/>
+<div class="group">
+  <h2><a href="{{ author.get_absolute_url }}">{{ author }}</a></h2>
+  {% for picture in group %}
+  <div class="picture">
+    {% thumbnail picture.image_file "300x300" as im %}
+    <img style="float: left; margin:{{ im|margin:"300x300" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
+    {% endthumbnail %}
+    <span class="title"><a href="{{picture.get_absolute_url}}">{{picture.title}}</a></span>
+    <br class="clearboth"/>
+  </div>
+  {% endfor %}
+</div>
+  
+{% endfor %}
+
+{% endblock %}
+

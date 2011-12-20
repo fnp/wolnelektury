@@ -12,8 +12,9 @@ from PIL import Image
 from sponsors.fields import JSONField
 from django.core.files.base import ContentFile
 
-THUMB_WIDTH=120
-THUMB_HEIGHT=120
+THUMB_WIDTH = 120
+THUMB_HEIGHT = 120
+
 
 class Sponsor(models.Model):
     name = models.CharField(_('name'), max_length=120)
@@ -57,7 +58,7 @@ class SponsorPage(models.Model):
         for column in self.get_sponsors_value():
             sponsor_ids.extend(column['sponsors'])
         sponsors = Sponsor.objects.in_bulk(sponsor_ids)
-        sprite = Image.new('RGBA', (THUMB_WIDTH, len(sponsors)*THUMB_HEIGHT))
+        sprite = Image.new('RGBA', (THUMB_WIDTH, len(sponsors) * THUMB_HEIGHT))
         for i, sponsor_id in enumerate(sponsor_ids):
             simg = Image.open(sponsors[sponsor_id].logo.path)
             if simg.size[0] > THUMB_WIDTH or simg.size[1] > THUMB_HEIGHT:

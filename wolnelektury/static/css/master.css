@@ -1196,3 +1196,21 @@ div.shown-tags p, div.all-tags p {
 .stats td {
     vertical-align: top;
 }
+
+/* ============ */
+/* = Pictures = */
+/* ============ */
+
+
+#picture-list .picture .title {
+    font-weight: bold;
+}
+
+#picture-list .picture {
+    background-color: white;
+    padding: 0.8em;
+    margin: 0.8em;
+    border: black 1px solid;
+    width: 600px;
+}
+
