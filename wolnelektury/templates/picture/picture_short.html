@@ -1,0 +1,42 @@
+{% load i18n %}
+{% load thumbnail %}
+<div class="picture-box">
+<div class="picture-box-inner">
+    <a href="{{ picture.get_absolute_url }}">
+      {% thumbnail picture.image_file "216x288" as thumb %}
+      <img src="{{thumb.url}}"/>
+      {% endthumbnail %}
+    </a>
+    <div class="picture-box-body">
+        <div class="picture-box-head">
+            <div class="mono author">
+            {% for author in tags.author %}
+                {{ author }}
+            {% endfor %}
+            </div>
+            <div class="title">{{ picture.title }}</div>
+        </div>
+        <div class="tags">
+            {% spaceless %}
+
+            <span class="mono">{% trans "Epoch" %}:&nbsp;</span>
+            <span class="picture-box-tag">
+                {% for tag in tags.epoch %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>
+                {% endfor %}
+            </span>
+
+            <span class="mono">{% trans "Kind" %}:&nbsp;</span>
+            <span class="picture-box-tag">
+                {% for tag in tags.kind %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>
+                {% endfor %}
+            </span>
+
+            {% endspaceless %}
+        </div>
+    </div>
+    <ul class="picture-box-tools">
+    </ul>
+</div>
+</div>
