@@ -490,7 +490,7 @@ class Book(models.Model):
         cache_key = "Book.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
             cache.delete(cache_key % (self.id, lang))
-        cache.delete(cache_key = "Book.mini_box/%d" % (self.id, ))
+        cache.delete("Book.mini_box/%d" % (self.id, ))
         # Fragment.short_html relies on book's tags, so reset it here too
         for fragm in self.fragments.all():
             fragm.reset_short_html()

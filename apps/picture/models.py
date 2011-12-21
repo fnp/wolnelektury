@@ -5,6 +5,10 @@ from sorl.thumbnail import ImageField
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
+from django.template.loader import render_to_string
+from django.core.cache import cache
+from catalogue.utils import split_tags
+from django.utils.safestring import mark_safe
 from librarian import dcparser, picture
 from slughifi import slughifi
 
@@ -50,6 +54,9 @@ class Picture(models.Model):
         self.sort_key = sortify(self.title)
 
         ret = super(Picture, self).save(force_insert, force_update)
+
+        if reset_short_html:
+            self.reset_short_html()
 
         return ret
 
@@ -147,3 +154,30 @@ class Picture(models.Model):
             info = dcparser.parse(self.xml_file.path, picture.PictureInfo)
             self._info = info
         return self._info
+
+    def reset_short_html(self):
+        if self.id is None:
+            return
+
+        cache_key = "Picture.short_html/%d" % (self.id)
+        cache.delete(cache_key)
+
+    def short_html(self):
+        if self.id:
+            cache_key = "Picture.short_html/%d" % (self.id)
+            short_html = cache.get(cache_key)
+        else:
+            short_html = None
+
+        if short_html is not None:
+            return mark_safe(short_html)
+        else:
+            tags = self.tags.filter(category__in=('author', 'kind', 'epoch'))
+            tags = split_tags(tags)
+
+            short_html = unicode(render_to_string('picture/picture_short.html',
+                {'picture': self, 'tags': tags}))
+
+            if self.id:
+                cache.set(cache_key, short_html, catalogue.models.CACHE_FOREVER)
+            return mark_safe(short_html)

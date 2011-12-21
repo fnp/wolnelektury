@@ -170,6 +170,7 @@ COMPRESS_CSS = {
             'css/header.css',
             'css/main_page.css',
             'css/dialogs.css',
+            'css/picture_box.css',
             'css/book_box.css',
             'css/catalogue.css',
             'css/sponsors.css',

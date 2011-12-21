@@ -31,7 +31,9 @@ from catalogue.tasks import touch_tag
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
+from picture.models import Picture
 
+from itertools import chain
 from os import path
 
 staff_required = user_passes_test(lambda user: user.is_staff)
@@ -88,6 +90,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
 
 
 def tagged_object_list(request, tags=''):
+    #    import pdb; pdb.set_trace()
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
@@ -165,6 +168,9 @@ def tagged_object_list(request, tags=''):
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
+
+        # Add pictures
+    objects = Picture.tagged.with_all(tags)|objects
 
     return object_list(
         request,
