@@ -492,7 +492,7 @@ class Book(models.Model):
         cache_key = "Book.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
             cache.delete(cache_key % (self.id, lang))
-        cache.delete(cache_key = "Book.mini_box/%d" % (self.id, ))
+        cache.delete("Book.mini_box/%d" % (self.id, ))
         # Fragment.short_html relies on book's tags, so reset it here too
         for fragm in self.fragments.all():
             fragm.reset_short_html()
@@ -731,7 +731,7 @@ class Book(models.Model):
         result = create_zip.delay(paths, self.fileid())
         return result.wait()
 
-    def search_index(self):
+    def search_index(self, book_info=None):
         if settings.SEARCH_INDEX_PARALLEL:
             if instance(settings.SEARCH_INDEX_PARALLEL, int):
                 idx = search.ReusableIndex(threads=4)
@@ -742,7 +742,7 @@ class Book(models.Model):
             
         idx.open()
         try:
-            idx.index_book(self)
+            idx.index_book(self, book_info)
         finally:
             idx.close()
 
@@ -834,7 +834,7 @@ class Book(models.Model):
             book.build_mobi()
 
         if not settings.NO_SEARCH_INDEX and search_index:
-            book.search_index()
+            book.search_index(book_info)
 
         book_descendants = list(book.children.all())
         descendants_tags = set()

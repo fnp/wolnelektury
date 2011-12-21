@@ -53,7 +53,7 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("source_url", keyword)
         self.addAnalyzer("source_name", simple)
         self.addAnalyzer("publisher", simple)
-        self.addAnalyzer("author", simple)
+        self.addAnalyzer("authors", simple)
         self.addAnalyzer("is_book", keyword)
         # shouldn't the title have two forms? _pl and simple?
 
@@ -174,12 +174,12 @@ class Index(IndexStore):
         q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
         self.index.deleteDocuments(q)
 
-    def index_book(self, book, overwrite=True):
+    def index_book(self, book, book_info=None, overwrite=True):
         if overwrite:
             self.remove_book(book)
 
         book_doc = self.create_book_doc(book)
-        meta_fields = self.extract_metadata(book)
+        meta_fields = self.extract_metadata(book, book_info)
         for f in meta_fields.values():
             if isinstance(f, list) or isinstance(f, tuple):
                 for elem in f:
@@ -190,7 +190,7 @@ class Index(IndexStore):
         self.index.addDocument(book_doc)
         del book_doc
 
-        self.index_content(book, book_fields=[meta_fields['title'], meta_fields['author']])
+        self.index_content(book, book_fields=[meta_fields['title'], meta_fields['authors']])
 
     master_tags = [
         'opowiadanie',
@@ -213,11 +213,11 @@ class Index(IndexStore):
             doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(book.parent.id))
         return doc
 
-    def extract_metadata(self, book):
+    def extract_metadata(self, book, book_info=None):
         fields = {}
-        book_info = dcparser.parse(open(book.xml_file.path))
 
-        print("extract metadata for book %s id=%d, thread%d" % (book.slug, book.id, current_thread().ident))
+        if book_info is None:
+            book_info = dcparser.parse(open(book.xml_file.path))
 
         fields['slug'] = Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS)
         fields['tags'] = self.add_gaps([Field("tags", t.name, Field.Store.NO, Field.Index.ANALYZED) for t in book.tags], 'tags')
@@ -249,6 +249,7 @@ class Index(IndexStore):
                     dt = getattr(book_info, field.name)
                     fields[field.name] = Field(field.name, "%04d%02d%02d" %\
                                                (dt.year, dt.month, dt.day), Field.Store.NO, Field.Index.NOT_ANALYZED)
+
         return fields
 
     def get_master(self, root):
@@ -263,7 +264,7 @@ class Index(IndexStore):
         return reduce(lambda a, b: a + b, zip(fields, gap()))[0:-1]
 
     def index_content(self, book, book_fields=[]):
-        wld = WLDocument.from_file(book.xml_file.path)
+        wld = WLDocument.from_file(book.xml_file.path, parse_dublincore=False)
         root = wld.edoc.getroot()
 
         master = self.get_master(root)
@@ -664,16 +665,16 @@ class Hint(object):
         fs = []
         if self.part_tags:
             fs.append(self.tag_filter(self.part_tags, field='themes'))
-            
+
         if self._books != []:
             bf = BooleanFilter()
             for b in self._books:
                 id_filter = NumericRangeFilter.newIntRange('book_id', b.id, b.id, True, True)
                 bf.add(FilterClause(id_filter, BooleanClause.Occur.SHOULD))
             fs.append(bf)
-            
+
         return MultiSearch.chain_filters(fs)
-            
+
     def should_search_for_book(self):
         return self._books == []
 
@@ -681,7 +682,7 @@ class Hint(object):
         """Holds logic to figure out which indexes should be search, when we have some hinst already"""
         some = []
         for field in all:
-            if field == 'author' and 'author' in self.book_tags:
+            if field == 'authors' and 'author' in self.book_tags:
                 continue
             if field == 'title' and self._books != []:
                 continue
@@ -761,7 +762,7 @@ class MultiSearch(Search):
     #                           BlockJoinQuery.ScoreMode.Total)
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
-        fields_to_search = ['author', 'title']
+        fields_to_search = ['authors', 'title']
         only_in = None
         if hint:
             if not hint.should_search_for_book():
@@ -823,10 +824,10 @@ class MultiSearch(Search):
 
         # query themes/content x author/title/tags
         q = BooleanQuery()
-        in_meta = BooleanQuery()
+        #        in_meta = BooleanQuery()
         in_content = BooleanQuery()
 
-        for fld in ['themes', 'content', 'tags', 'author', 'title']:
+        for fld in ['themes', 'content', 'tags', 'authors', 'title']:
             in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
 
         topDocs = self.searcher.search(q, only_in, max_results)
@@ -834,15 +835,14 @@ class MultiSearch(Search):
             books.append(SearchResult(self.searcher, found))
 
         return books
-    
 
     def multisearch(self, query, max_results=50):
         """
         Search strategy:
         - (phrase) OR -> content
                       -> title
-                      -> author
-        - (keywords)  -> author
+                      -> authors
+        - (keywords)  -> authors
                       -> motyw
                       -> tags
                       -> content
