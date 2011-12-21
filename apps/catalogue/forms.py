@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from slughifi import slughifi
 
 from catalogue.models import Tag, Book
-from catalogue.fields import JQueryAutoCompleteField
+from catalogue.fields import JQueryAutoCompleteSearchField
 from catalogue import utils
 
 
@@ -31,15 +31,20 @@ class BookImportForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-    q = JQueryAutoCompleteField('/katalog/tags/', {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
+    q = JQueryAutoCompleteSearchField('/newsearch/hint/') # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
     tags = forms.CharField(widget=forms.HiddenInput, required=False)
+
+    book = forms.IntegerField(widget=forms.HiddenInput, min_value=0, required=False)
 
     def __init__(self, *args, **kwargs):
         tags = kwargs.pop('tags', [])
+        book = kwargs.pop('book', None)
         super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre')
+        self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre, phrase')
 	    #self.fields['q'].widget.attrs['style'] = ''
         self.fields['tags'].initial = '/'.join(tag.url_chunk for tag in Tag.get_tag_list(tags))
+        if book is not None:
+            self.fields['book'].initial = book.id
 
 
 class UserSetsForm(forms.Form):

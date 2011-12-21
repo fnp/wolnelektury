@@ -60,6 +60,7 @@ USE_I18N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = path.join(PROJECT_DIR, '../media')
 STATIC_ROOT = path.join(PROJECT_DIR, 'static')
+SEARCH_INDEX = path.join(MEDIA_ROOT, 'search')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -153,6 +154,7 @@ INSTALLED_APPS = [
     'stats',
     'suggest',
     'picture',
+    'search',
 ]
 
 #CACHE_BACKEND = 'locmem:///?max_entries=3000'
@@ -248,7 +250,9 @@ MAX_TAG_LIST = 6
 NO_BUILD_EPUB = False
 NO_BUILD_TXT = False
 NO_BUILD_PDF = False
-NO_BUILD_MOBI = False
+NO_BUILD_MOBI = True
+NO_SEARCH_INDEX = False
+SEARCH_INDEX_PARALLEL = False
 
 ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
 ALL_PDF_ZIP = 'wolnelektury_pl_pdf'
@@ -267,6 +271,7 @@ BROKER_PORT = 5672
 BROKER_USER = "guest"
 BROKER_PASSWORD = "guest"
 BROKER_VHOST = "/"
+
 
 
 # Load localsettings, if they exist

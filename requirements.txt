@@ -28,3 +28,6 @@ lxml>=2.2.2
 # celery tasks
 django-celery
 django-kombu
+
+# spell checking
+pyenchant

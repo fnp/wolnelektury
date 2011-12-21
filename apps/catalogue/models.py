@@ -31,6 +31,8 @@ import re
 from os import path
 
 
+import search
+
 TAG_CATEGORIES = (
     ('author', _('author')),
     ('epoch', _('epoch')),
@@ -729,6 +731,21 @@ class Book(models.Model):
         result = create_zip.delay(paths, self.fileid())
         return result.wait()
 
+    def search_index(self):
+        if settings.SEARCH_INDEX_PARALLEL:
+            if instance(settings.SEARCH_INDEX_PARALLEL, int):
+                idx = search.ReusableIndex(threads=4)
+            else:
+                idx = search.ReusableIndex()
+        else:
+            idx = search.Index()
+            
+        idx.open()
+        try:
+            idx.index_book(self)
+        finally:
+            idx.close()
+
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -747,7 +764,8 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
-            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True):
+            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True,
+            search_index=True):
         import re
         from sortify import sortify
 
@@ -814,6 +832,9 @@ class Book(models.Model):
 
         if not settings.NO_BUILD_MOBI and build_mobi:
             book.build_mobi()
+
+        if not settings.NO_SEARCH_INDEX and search_index:
+            book.search_index()
 
         book_descendants = list(book.children.all())
         descendants_tags = set()

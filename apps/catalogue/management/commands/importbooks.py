@@ -29,11 +29,12 @@ class Command(BaseCommand):
             help='Don\'t build TXT file'),
         make_option('-P', '--no-build-pdf', action='store_false', dest='build_pdf', default=True,
             help='Don\'t build PDF file'),
+        make_option('-S', '--no-search-index', action='store_false', dest='search_index', default=True,
+            help='Don\'t build PDF file'),
         make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
             help='Wait until specified time (Y-M-D h:m:s)'),
         make_option('-p', '--picture', action='store_true', dest='import_picture', default=False,
             help='Import pictures'),
-        
     )
     help = 'Imports books from the specified directories.'
     args = 'directory [directory ...]'
@@ -42,10 +43,11 @@ class Command(BaseCommand):
         verbose = options.get('verbose')
         file_base, ext = os.path.splitext(file_path)
         book = Book.from_xml_file(file_path, overwrite=options.get('force'),
-                                  build_epub=options.get('build_epub'),
-                                  build_txt=options.get('build_txt'),
-                                  build_pdf=options.get('build_pdf'),
-                                  build_mobi=options.get('build_mobi'))
+                                                    build_epub=options.get('build_epub'),
+                                                    build_txt=options.get('build_txt'),
+                                                    build_pdf=options.get('build_pdf'),
+                                                    build_mobi=options.get('build_mobi'),
+                                                    search_index=options.get('search_index'))
         fileid = book.fileid()
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
