@@ -10,15 +10,20 @@ class Migration(DataMigration):
         "Write your forwards methods here."
         from StringIO import StringIO
         from django.core.files.base import ContentFile
+        from librarian import ValidationError
         from librarian.cover import WLCover
         from librarian.dcparser import BookInfo
 
-        for book in orm.Book.objects.filter(cover=''):
-            book_info = BookInfo.from_file(book.xml_file.path)
-            cover = WLCover(book_info).image()
-            imgstr = StringIO()
-            cover.save(imgstr, 'png')
-            book.cover.save('book/png/%s.png' % book.slug,
+        for book in orm.Book.objects.filter(cover=None):
+            try:
+                book_info = BookInfo.from_file(book.xml_file.path)
+            except ValidationError:
+                pass
+            else:
+                cover = WLCover(book_info).image()
+                imgstr = StringIO()
+                cover.save(imgstr, 'png')
+                book.cover.save('book/png/%s.png' % book.slug,
                     ContentFile(imgstr.getvalue()))
 
 

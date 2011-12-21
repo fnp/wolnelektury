@@ -1,3 +1,15 @@
+/* Logo font */
+@font-face {
+    /* IE version */
+    font-family: WL-Logo;
+    src: url(/static/fonts/WL.eot);
+}
+@font-face {
+  font-family: WL-Nav;
+  src: url(/static/fonts/WL-Nav.ttf) format("truetype");
+}
+
+
 html {
     margin: 0;
     padding: 0;

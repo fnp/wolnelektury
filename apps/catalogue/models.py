@@ -23,7 +23,7 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import create_zip
+from catalogue.utils import create_zip, split_tags
 from catalogue.tasks import touch_tag
 from shutil import copy
 from glob import glob
@@ -490,6 +490,7 @@ class Book(models.Model):
         cache_key = "Book.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
             cache.delete(cache_key % (self.id, lang))
+        cache.delete(cache_key = "Book.mini_box/%d" % (self.id, ))
         # Fragment.short_html relies on book's tags, so reset it here too
         for fragm in self.fragments.all():
             fragm.reset_short_html()
@@ -504,22 +505,17 @@ class Book(models.Model):
         if short_html is not None:
             return mark_safe(short_html)
         else:
-            tags = self.tags.filter(~Q(category__in=('set', 'theme', 'book')))
-            tags = [mark_safe(u'<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name)) for tag in tags]
+            tags = self.tags.filter(category__in=('author', 'kind', 'genre', 'epoch'))
+            tags = split_tags(tags)
 
             formats = []
             # files generated during publication
-            if self.has_media("html"):
-                formats.append(u'<a href="%s">%s</a>' % (reverse('book_text', args=[self.fileid()]), _('Read online')))
             for ebook_format in self.ebook_formats:
                 if self.has_media(ebook_format):
                     formats.append(u'<a href="%s">%s</a>' % (
-                        self.get_media(ebook_format).url,
+                        "", #self.get_media(ebook_format).url,
                         ebook_format.upper()
                     ))
-            # other files
-            for m in self.media.order_by('type'):
-                formats.append(u'<a href="%s">%s</a>' % (m.file.url, m.type.upper()))
 
             formats = [mark_safe(format) for format in formats]
 
@@ -532,7 +528,7 @@ class Book(models.Model):
 
     def mini_box(self):
         if self.id:
-            cache_key = "Book.mini_boxs/%d" % (self.id, )
+            cache_key = "Book.mini_box/%d" % (self.id, )
             short_html = cache.get(cache_key)
         else:
             short_html = None

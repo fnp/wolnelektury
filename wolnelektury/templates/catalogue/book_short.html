@@ -1,18 +1,71 @@
 {% load i18n %}
-<div class="book">
-    <div class="change-sets">
-        <a href="{% url catalogue.views.book_sets book.urlid %}" class="jqm-trigger">{% trans "Put on the shelf!" %}</a>
-    </div>
-    {% if book.children.all|length %}
-        <div class="book-parent-thumbnail"></div>
-    {% else %}
-        <div class="book-thumbnail"></div>
-    {% endif %}
-    <div class="book-description">
-        <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
-        {% if formats %}
-            <p style="margin: 0">{% trans "Jump to" %}: {{ formats|join:", " }}</p>
+{% load thumbnail %}
+<div class="book-box">
+<div class="book-box-inner">
+    <a href="{{ book.get_absolute_url }}">
+        {% if book.cover %}
+            <img src="
+                {% thumbnail book.cover "216x288" as thumb %}
+                    {{ thumb.url }}
+                {% empty %}
+                    {{ book.cover.url }}
+                {% endthumbnail %}
+            " alt="Cover" />
         {% endif %}
-        <p style="margin: 0">{% trans "Categories" %}: {{ tags|join:", " }}</p>
+    </a>
+    <div class="book-box-body">
+        <div class="book-box-head">
+            <div class="mono author">
+            {% for author in tags.author %}
+                {{ author }}
+            {% endfor %}
+            </div>
+            <div class="title">{{ book.title }}</div>
+        </div>
+        <div class="tags">
+            {% spaceless %}
+
+            <span class="mono">{% trans "Epoch" %}:&nbsp;</span>
+            <span class="book-box-tag">
+                {% for tag in tags.epoch %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>
+                {% endfor %}
+            </span>
+
+            <span class="mono">{% trans "Kind" %}:&nbsp;</span>
+            <span class="book-box-tag">
+                {% for tag in tags.kind %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>
+                {% endfor %}
+            </span>
+
+            <span class="mono">{% trans "Genre" %}:&nbsp;</span>
+            <span class="book-box-tag">
+                {% for tag in tags.genre %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>
+                {% endfor %}
+            </span>
+
+            {% endspaceless %}
+        </div>
     </div>
+    <ul class="book-box-tools">
+        <li class="book-box-read">
+        {% if book.html_file %}
+            <a href="" class="mono">{% trans "Read online" %}</a>
+        {% endif %}
+        </li>
+        <li class="book-box-download">
+            <a class="mono">{% trans "Download" %}</a>
+            <div class="book-box-formats mono">
+                {{ formats|join:"" }}
+            </div>
+        </li>
+        <li class="book-box-audiobook">
+        {% if book.has_mp3_file %}
+            <a href="" class="mono">{% trans "Audiobook" %}</a>
+        {% endif %}
+        </li>
+    </ul>
+</div>
 </div>

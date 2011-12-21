@@ -88,6 +88,7 @@
         {% endif %}
 
         {% if object_list %}
+            {% spaceless %}
             <ol>
             {% for book in object_list %}
                 <li>
@@ -97,6 +98,7 @@
                     {{ book.short_html }}</li>
             {% endfor %}
             </ol>
+            {% endspaceless %}
             {% paginate %}
         {% else %}
             {% trans "Sorry! Search cirteria did not match any resources." %}

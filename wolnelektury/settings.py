@@ -156,7 +156,7 @@ INSTALLED_APPS = [
 ]
 
 #CACHE_BACKEND = 'locmem:///?max_entries=3000'
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
 
 # CSS and JavaScript file groups
@@ -171,6 +171,7 @@ COMPRESS_CSS = {
             'css/main_page.css',
             'css/dialogs.css',
             'css/book_box.css',
+            'css/catalogue.css',
             'css/sponsors.css',
         ],
         'output_filename': 'css/all.min?.css',

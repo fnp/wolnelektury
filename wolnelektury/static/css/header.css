@@ -130,8 +130,10 @@ ul#catalogue a {
 
 
 #lang-button:after {
-    content: url(/static/img/lang-arrow.png);
     padding-left: .5em;
+    content: "↓";
+    font-family: WL-Nav;
+    vertical-align: middle;
 }
 #lang-menu {
     position: relative;

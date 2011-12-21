@@ -1,11 +1,19 @@
-.book-mini-box {
+.book-mini-box, .book-box {
     display: inline-block;
     margin: 0;
-    width: 12.5em;
     vertical-align: top;
 }
 
-.book-mini-box a {
+
+.book-box {
+    width: 37.5em;
+}
+
+.book-mini-box {
+    width: 12.5em;
+}
+
+.book-mini-box a, .book-box-inner {
     display: block;
     color: black;
     border: 1px solid #ddd;
@@ -19,12 +27,73 @@
     overflow: hidden;
 }
 
-.book-mini-box img {
+.book-mini-box a {
+    height: 20em;
+    margin: .1em;
+}
+.book-box-inner {
+    height: 14.4em;
+    margin: .5em;
+}
+
+.book-mini-box img, .book-box img {
     width: 10.8em;
     height: 14.4em;
+}
+.book-mini-box img {
     margin-bottom: .3em;
+}
+.book-box img {
+    float: left;
+    margin-right: 1.5em;
 }
 
 .book-mini-box .author {
     color: #777;
+}
+
+
+.book-box-body {
+    height: 13em;
+    overflow: hidden;
+}
+.book-box-head {
+    min-height: 7em;
+}
+.book-box-tag {
+    font-size: .8em;
+    margin-right: .5em;
+}
+.book-box-download {
+    position: relative;
+}
+.book-box-formats {
+    display: none;
+    top: -2em;
+    position: absolute;
+    height: 2em;
+    width: 100em;
+}
+.book-box-formats a {
+    margin-right: 1em;
+}
+.book-box-download:hover .book-box-formats {
+    display: block;
+}
+
+.book-box-tools a:before {
+    content: "⇩";
+    font-family: WL-Nav;
+    font-size: 2em;
+    margin-right: .25em;
+    vertical-align: middle;
+}
+.book-box-read {
+    width: 10em;
+}
+.book-box-download {
+    width: 6em;
+}
+.book-box-audiobook {
+    width: 6em;
 }
