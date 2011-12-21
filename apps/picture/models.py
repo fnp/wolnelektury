@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
 from librarian import dcparser, picture
+from slughifi import slughifi
 
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
@@ -67,6 +68,7 @@ class Picture(models.Model):
         """
         Import xml and it's accompanying image file.
         """
+        from sortify import sortify
         from django.core.files import File
         from librarian.picture import WLPicture
         close_xml_file = False
@@ -78,27 +80,39 @@ class Picture(models.Model):
             # use librarian to parse meta-data
             picture_xml = WLPicture.from_file(xml_file)
 
-            picture, created = Picture.objects.get_or_create(slug=picture_xml.slug)
+            pict, created = Picture.objects.get_or_create(slug=picture_xml.slug)
             if not created and not overwrite:
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
-            picture.title = picture_xml.picture_info.title
+            pict.title = picture_xml.picture_info.title
 
-            picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info)
+            #            from nose.tools import set_trace; set_trace()
+            motif_tags = set()
+            for part in picture_xml.partiter():
+                for motif in part['themes']:
+                    tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
+                    if created:
+                        tag.name = motif
+                        tag.sort_key = sortify(tag.name)
+                        tag.save()
+                    motif_tags.add(tag)
+
+            pict.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info) + \
+                list(motif_tags)
 
             if image_file is not None:
                 img = image_file
             else:
                 img = picture_xml.image_file()
 
-            picture.image_file.save(path.basename(picture_xml.image_path), File(img))
+            pict.image_file.save(path.basename(picture_xml.image_path), File(img))
 
-            picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
-            picture.save()
+            pict.xml_file.save("%s.xml" % pict.slug, File(xml_file))
+            pict.save()
         finally:
             if close_xml_file:
                 xml_file.close()
-        return picture
+        return pict
 
     @classmethod
     def picture_list(cls, filter=None):

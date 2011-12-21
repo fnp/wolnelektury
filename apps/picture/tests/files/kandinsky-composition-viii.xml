@@ -25,10 +25,10 @@
     </rdf:Description>
   </rdf:RDF>
 
-  <sem type="obiekt" obiekt="kosmos">
+  <sem type="object" object="kosmos">
     <div type="area" x1="17" y1="31" x2="275" y2="309"/>
   </sem>
-  <sem type="obiekt" obiekt="nieporządek">
+  <sem type="theme" theme="nieporządek">
     <div type="area" x1="300" y1="138" x2="976" y2="514"/>
   </sem>
  
