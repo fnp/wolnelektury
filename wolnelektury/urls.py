@@ -32,6 +32,7 @@ urlpatterns += patterns('',
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
+    url(r'^admin/catalogue/picture/import$', 'picture.views.import_picture', name='import_picture'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 

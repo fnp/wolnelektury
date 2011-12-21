@@ -80,12 +80,18 @@ class Picture(models.Model):
         from librarian.picture import WLPicture
         close_xml_file = False
 
+        class SimpleImageStore(object):
+            def path(self_, slug, mime_type):
+                """Returns the image file. Ignores slug ad mime_type."""
+                return image_file
+
         if not isinstance(xml_file, File):
             xml_file = File(open(xml_file))
             close_xml_file = True
         try:
             # use librarian to parse meta-data
-            picture_xml = WLPicture.from_file(xml_file)
+            picture_xml = WLPicture.from_file(xml_file,
+                    image_store=SimpleImageStore)
 
             pict, created = Picture.objects.get_or_create(slug=picture_xml.slug)
             if not created and not overwrite:
@@ -112,7 +118,8 @@ class Picture(models.Model):
             else:
                 img = picture_xml.image_file()
 
-            pict.image_file.save(path.basename(picture_xml.image_path), File(img))
+            # FIXME: hardcoded extension
+            picture.image_file.save("%s.jpg" % picture.slug, File(img))
 
             pict.xml_file.save("%s.xml" % pict.slug, File(xml_file))
             pict.save()
