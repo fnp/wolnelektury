@@ -80,7 +80,7 @@ class Picture(models.Model):
         """
         from sortify import sortify
         from django.core.files import File
-        from librarian.picture import WLPicture
+        from librarian.picture import WLPicture, ImageStore
         close_xml_file = False
         close_image_file = False
         # class SimpleImageStore(object):
@@ -98,7 +98,8 @@ class Picture(models.Model):
 
         try:
             # use librarian to parse meta-data
-            picture_xml = WLPicture.from_file(xml_file)
+            picture_xml = WLPicture.from_file(xml_file,
+                                              image_store=ImageStore(picture_storage.path('images')))
                     # image_store=SimpleImageStore
 
             picture, created = Picture.objects.get_or_create(slug=picture_xml.slug)
