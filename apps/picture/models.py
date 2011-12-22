@@ -9,7 +9,6 @@ from django.template.loader import render_to_string
 from django.core.cache import cache
 from catalogue.utils import split_tags
 from django.utils.safestring import mark_safe
-from librarian import dcparser
 from slughifi import slughifi
 
 from django.utils.translation import ugettext_lazy as _
@@ -168,6 +167,8 @@ class Picture(models.Model):
     @property
     def info(self):
         if not hasattr(self, '_info'):
+            from librarian import dcparser
+            from librarian import picture
             info = dcparser.parse(self.xml_file.path, picture.PictureInfo)
             self._info = info
         return self._info
