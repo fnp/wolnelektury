@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from django.core.cache import cache
 from catalogue.utils import split_tags
 from django.utils.safestring import mark_safe
-from librarian import dcparser, picture
+from librarian import dcparser
 from slughifi import slughifi
 
 from django.utils.translation import ugettext_lazy as _
@@ -74,32 +74,39 @@ class Picture(models.Model):
     def from_xml_file(cls, xml_file, image_file=None, overwrite=False):
         """
         Import xml and it's accompanying image file.
+        If image file is missing, it will be fetched by librarian.picture.ImageStore
+        which looks for an image file in the same directory the xml is, with extension matching
+        its mime type.
         """
         from sortify import sortify
         from django.core.files import File
         from librarian.picture import WLPicture
         close_xml_file = False
+        close_image_file = False
+        # class SimpleImageStore(object):
+        #     def path(self_, slug, mime_type):
+        #         """Returns the image file. Ignores slug ad mime_type."""
+        #         return image_file
 
-        class SimpleImageStore(object):
-            def path(self_, slug, mime_type):
-                """Returns the image file. Ignores slug ad mime_type."""
-                return image_file
+        if image_file is not None and not isinstance(image_file, File):
+            image_file = File(open(image_file))
+            close_image_file = True
 
         if not isinstance(xml_file, File):
             xml_file = File(open(xml_file))
             close_xml_file = True
+
         try:
             # use librarian to parse meta-data
-            picture_xml = WLPicture.from_file(xml_file,
-                    image_store=SimpleImageStore)
+            picture_xml = WLPicture.from_file(xml_file)
+                    # image_store=SimpleImageStore
 
-            pict, created = Picture.objects.get_or_create(slug=picture_xml.slug)
+            picture, created = Picture.objects.get_or_create(slug=picture_xml.slug)
             if not created and not overwrite:
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
-            pict.title = picture_xml.picture_info.title
+            picture.title = picture_xml.picture_info.title
 
-            #            from nose.tools import set_trace; set_trace()
             motif_tags = set()
             for part in picture_xml.partiter():
                 for motif in part['themes']:
@@ -110,7 +117,7 @@ class Picture(models.Model):
                         tag.save()
                     motif_tags.add(tag)
 
-            pict.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info) + \
+            picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info) + \
                 list(motif_tags)
 
             if image_file is not None:
@@ -119,14 +126,16 @@ class Picture(models.Model):
                 img = picture_xml.image_file()
 
             # FIXME: hardcoded extension
-            picture.image_file.save("%s.jpg" % picture.slug, File(img))
+            picture.image_file.save(path.basename(picture_xml.image_path), File(img))
 
-            pict.xml_file.save("%s.xml" % pict.slug, File(xml_file))
-            pict.save()
+            picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
+            picture.save()
         finally:
             if close_xml_file:
                 xml_file.close()
-        return pict
+            if close_image_file:
+                image_file.close()
+        return picture
 
     @classmethod
     def picture_list(cls, filter=None):

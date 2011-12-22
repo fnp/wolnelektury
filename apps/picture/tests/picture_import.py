@@ -19,4 +19,12 @@ class PictureTest(TestCase):
 
         motifs = set([tag.name for tag in picture.tags if tag.category == 'theme'])
         assert motifs == set([u'nieporządek']), 'theme tags are wrong. %s' % motifs
-    
+
+        picture.delete()
+
+    def test_import_with_explicit_image(self):
+        picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/kandinsky-composition-viii.xml"),
+                                        path.join(path.dirname(__file__), "files/kandinsky-composition-viii.png"))
+
+        picture.delete()
+        
