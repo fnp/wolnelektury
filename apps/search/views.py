@@ -67,7 +67,6 @@ def hint(request):
     # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
     # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
 
-    # import pdb; pdb.set_trace()
     
     tags = s.hint_tags(prefix)
     books = s.hint_books(prefix)
@@ -127,7 +126,8 @@ def main(request):
                                       context_instance=RequestContext(request))
 
         hint.tags(tag_list)
-        hint.books(book)
+        if book:
+            hint.books(book)
 
         toks = StringReader(query)
         fuzzy = 'fuzzy' in request.GET

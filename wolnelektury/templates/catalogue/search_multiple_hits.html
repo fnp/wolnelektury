@@ -18,6 +18,7 @@
 	  {% for hit in result.process_hits %}
 	  <li>
 	    {% if hit.fragment %}
+	    <a href="{{hit.fragment.get_absolute_url}}">Idź do fragmentu</a>
 	    <div style="">Tagi/Motywy: {% for tag in hit.themes %}{{tag.name}} {% endfor %}</div>
 	    {% endif %}
 	    {% for snip in hit.snippets %}

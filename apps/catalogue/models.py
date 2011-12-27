@@ -1035,7 +1035,7 @@ class Fragment(models.Model):
         verbose_name_plural = _('fragments')
 
     def get_absolute_url(self):
-        return '%s#m%s' % (self.book.get_html_url(), self.anchor)
+        return '%s#m%s' % (reverse('book_text', args=[self.book.slug]), self.anchor)
 
     def reset_short_html(self):
         if self.id is None:
