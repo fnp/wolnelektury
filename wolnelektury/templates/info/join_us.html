@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load reporting_stats %}
 
-{% count_books_nonempty book_count %}
+{% count_books book_count %}
 <p>
 {% blocktrans count book_count as c %}
 We have {{c}} work published in Wolne Lektury!

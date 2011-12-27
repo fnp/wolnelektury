@@ -201,6 +201,7 @@ COMPRESS_JS = {
             'js/locale.js',
             'js/dialogs.js',
             'js/sponsors.js',
+            'js/base.js',
             'js/pdcounter.js',
 
             #~ 'js/jquery.autocomplete.js',

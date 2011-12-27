@@ -11,8 +11,10 @@
             " alt="Cover" />
         {% endif %}
         {% for author in authors %}
-            <div class="mono author">{{ author }}</div>
-            {{ book.title }}
+            <div class="desc">
+                <span class="mono author">{{ author }}</span>
+                <span class="title">{{ book.title }}</span>
+            </div>
         {% endfor %}
     </a>
 </div>

@@ -7,53 +7,94 @@
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
+    <div class="left-column">
+    <div class="page-desc">
     <h1>{% title_from_tags tags %}</h1>
 
-    {% if only_shelf and not object_list %}
-    <div id="books-list">
-        <h2>{% trans "Your shelf is empty" %}</h2>
-        <p>{% trans "You can put a book on a shelf by entering page of the reading and clicking 'Put on the shelf'." %}</p>
+    {% with tags|last as last_tag %}
+    {% if last_tag.has_description %}
+        <div id="description">
+            <div id='description-long'>{{ last_tag.description|safe }}</div>
+            <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:30 }}</div>
+        </div>
+        <div class="clearboth"></div>
+        <div id="toggle-description"><p></p></div>
+    {% endif %}
+
+
+    <div class="inline-tag-lists">
+    {% if categories.author %}
+        <p><span class="mono">{% trans "Authors" %}:</span>
+        {% inline_tag_list categories.author tags %}
+        </p>
+    {% endif %}
+    {% if categories.kind %}
+        <p><span class="mono">{% trans "Kinds" %}:</span>
+        {% inline_tag_list categories.kind tags %}
+        </p>
+    {% endif %}
+    {% if categories.genre %}
+        <p><span class="mono">{% trans "Genres" %}:</span>
+        {% inline_tag_list categories.genre tags %}
+        </p>
+    {% endif %}
+    {% if categories.epoch %}
+        <p><span class="mono">{% trans "Epochs" %}:</span>
+        {% inline_tag_list categories.epoch tags %}
+        </p>
+    {% endif %}
     </div>
-    {% else %}
+
+    {% if categories.theme %}
+        <div id="themes-list-wrapper">
+            <p><a href="#" id="themes-list-toggle" class="mono">{% trans "Motifs and themes" %}</a></p>
+            <div id="themes-list">
+                {% tag_list categories.theme tags %}
+            </div>
+        </div>
+    {% endif %}
+
+    </div>
+    </div>
+
+
+    <div class="right-column">
+        <a href="" class="cite">
+            <div class="cite-body">
+            Dobranoc, obróć jeszcze raz na mnie oczęta,<br/>
+            (…) Daj mi pierś ucałować<br/>
+            Dobranoc, zapięta.
+            </div>
+            <p class="mono">Adam Mickiewicz, Dziady część III</p>
+        </a>
+
+        <div class="see-also">
+            <h2 class='mono'>{% trans "See also" %}:</h2>
+            <ul>
+                <li><a href="">Wiki</a></li>
+                <li><a href="">Gazeta</a></li>
+            </ul>
+        </div>
+
+        <div class="download">
+            <h2 class='mono'>{% trans "Download" %}:</h2>
+            <ul>
+                <li><a href="">wszystko</a></li>
+                <li><a href="">część</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="clearboth"></div>
+
+
+
+
     {% autopaginate object_list 10 %}
     <div id="books-list">
-        {% with tags|last as last_tag %}
-        {% if last_tag.has_description %}
-            <div id="description">
-                <div id='description-long'>{{ last_tag.description|safe }}</div>
-                <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:30 }}</div>
-            </div>
-            <div class="clearboth"></div>
-            <div id="toggle-description"><p></p></div>
-        {% endif %}
-        {% if only_shelf %}
-            <a id="download-shelf" href="{% url download_shelf last_tag.slug %}">
-                {% trans "Download all books from this shelf" %}
-            </a>
-            <div id="download-shelf-menu" style="display:none;">
-                <form action="{% url download_shelf last_tag.slug %}" method="get" accept-charset="utf-8" id="download-formats-form" data-formats-feed="{% url shelf_book_formats last_tag.slug %}">
-                    <p>{% trans "Choose books' formats which you want to download:" %}</p>
-                    <li data-format="pdf"><label for="id_formats_2"><input type="checkbox" name="formats" value="pdf" id="id_formats_2" /> PDF</label> <em><strong>{% trans "for reading" %}</strong> {% trans "and printing using" %} <a href="http://get.adobe.com/reader/">Adobe Reader</a></em></li>
-                    <li data-format="epub"><label for="id_formats_5"><input type="checkbox" name="formats" value="epub" id="id_formats_5" /> EPUB</label> <em><strong>{% trans "for reading" %}</strong> {% trans "on mobile devices" %}</em></li>
-                    <li data-format="mobi"><label for="id_formats_7"><input type="checkbox" name="formats" value="mobi" id="id_formats_7" /> MOBI</label> <em><strong>{% trans "for reading" %}</strong> {% trans "on mobile devices" %}</em></li>
-                    <li data-format="odt"><label for="id_formats_3"><input type="checkbox" name="formats" value="odt" id="id_formats_3" /> ODT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "and editing using" %} <a href="http://pl.openoffice.org/">OpenOffice.org</a></em></li>
-                    <li data-format="txt"><label for="id_formats_4"><input type="checkbox" name="formats" value="txt" id="id_formats_4" /> TXT</label> <em><strong>{% trans "for reading" %}</strong> {% trans "on small displays, for example mobile phones" %}</em></li>
-                    <li data-format="mp3"><label for="id_formats_0"><input type="checkbox" name="formats" value="mp3" id="id_formats_0" /> MP3</label> <em><strong>{% trans "for listening" %}</strong> {% trans "on favourite MP3 player" %}</em></li>
-                    <li data-format="ogg"><label for="id_formats_1"><input type="checkbox" name="formats" value="ogg" id="id_formats_1" /> Ogg Vorbis</label> <em><strong>{% trans "for listening" %}</strong> &mdash; {% trans "open format" %} <a href="http://www.vorbis.com/">{% trans "Xiph.org Foundation" %}</a></em></li>
-                    <li data-format="daisy"><label for="id_formats_6"><input type="checkbox" name="formats" value="daisy" id="id_formats_6" /> DAISY</label> </li>
-                    <li id="download-formats-form-submit-li"><label><input type="submit" name="submit" value="{% trans "Download" %}" id="download-formats-form-submit" disabled="disabled" />&nbsp;<img src="{{ STATIC_URL }}img/indicator.gif" /></label> <span id="updating-formats">{% trans "Updating list of books' formats on the shelf" %}</span><span id="formats-updated" style="display:none;">{% trans "or" %} <a href="#" id="download-formats-form-cancel">{% trans "cancel" %}</a></span></li>
-                    <div class="clearboth"></div>
-                </form>
-            </div>
-            {% if only_my_shelf %}
-            <div id="toggle-share-shelf"><p>{% trans "Share this shelf" %}</p></div>
-            <div id="share-shelf">
-                <p>{% trans "Copy this link and share it with other people to let them see your shelf." %}
-                <input id="share-shelf-url" value='http://{{ request.META.HTTP_HOST }}{{ request.path }}' />
-                </p>
-            </div>
-			{% endif %}
-        {% endif %}
+
+
         {% if last_tag.gazeta_link %}
         <p><a href="{{ last_tag.gazeta_link }}">
             {% switch last_tag.category %}
@@ -108,36 +149,5 @@
     </div>
 	{% if object_list %}
 	{% comment %} If we didn't find anything there will be nothing on the right side as well {% endcomment %}
-    <div id="tags-list">
-        <div id="categories-list">
-            {% if categories.author %}
-                <h2>{% trans "Authors" %}</h2>
-                {% tag_list categories.author tags %}
-            {% endif %}
-            {% if categories.kind %}
-                <h2>{% trans "Kinds" %}</h2>
-                {% tag_list categories.kind tags %}
-            {% endif %}
-            {% if categories.genre %}
-                <h2>{% trans "Genres" %}</h2>
-                {% tag_list categories.genre tags %}
-            {% endif %}
-            {% if categories.epoch %}
-                <h2>{% trans "Epochs" %}</h2>
-                {% tag_list categories.epoch tags %}
-            {% endif %}
-            {% if only_shelf %}
-                <p><a href="{% url poem_from_set tags.0.slug %}">Miksuj utwory z tej półki</a>
-            {% endif %}
-        </div>
-        <div id="themes-list">
-            {% if categories.theme %}
-                <h2>{% trans "Themes" %}</h2>
-                {% tag_list categories.theme tags %}
-            {% endif %}
-        </div>
-        <div class="clearboth"></div>
-    </div>
 	{% endif %}
-    {% endif %}
 {% endblock %}

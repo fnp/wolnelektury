@@ -11,11 +11,15 @@
 
 
 #header {
+    height: 3em;
+    padding-top: 1.9em;
+    padding-bottom: 0;
     color: #969696;
     background: #191919;
 }
 
 #half-header {
+    padding-bottom: 0;
     background: url('/static/img/bg-header.png');
     background-position: center;
     background-size: 100%;
@@ -33,43 +37,45 @@
 
 #logo {
     position: absolute;
-    top: 4em;
+    top: 1.9em;
+    margin-left: 1.6em;
 }
 
 #logo a {
     font-family: WL-Logo;
-    font-size: 1.9em;
+    font-size: 2.05em;
     color:#f7f7f7;
-}
-
-#logo img {
-    max-width: 15em;
 }
 
 #tagline {
     display: inline-block;
-    margin-left: 16em;
+    margin-left: 24em;
+}
+#tagline span {
+    font-size: 1.1em;
 }
 
-#search {
+#search-area {
     margin: 0;
     background: #444;
-    margin-left: 16em;
-    width: 59em;
+    margin-left: 24em;
+    width: 73.5em;
 }
 
 #search-field {
     display: inline-block;
-    width: 50em;
-    padding-left: .5;
-    padding-right: .5;
-    padding: .1em .5em 0 .5em;
+    width: 63.1em;
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #search-field input {
-    height: 2.8em;
+    padding: 0;
+    height: 3.3em;
     border: none;
-    width: 49.5em;
+    width: 62.6em;
     font-size: 1em;
     padding-left: .5em;
     -webkit-border-radius: .5em;
@@ -85,12 +91,11 @@
     background: #02adb7;
     padding: 0;
     margin: 0;
-    width: 8em;
+    width: 9.4em;
 }
 #search-button button {
     font-size: 1em;
-    /* should match grid-line */
-    height: 4em;
+    height: 4.5em;
     border: none;
     background: #02adb7;
     color: white;
@@ -99,20 +104,20 @@
 }
 
 #search-button button span {
+    font-size: 1.1em;
     position:relative;
-    top: -.2em;
 }
 
 
 #nav-line {
     background-color: #e2e2e2;
-    height: 3.95em;
+    height: 4.9em;
 }
 
 ul#catalogue {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 .6em;
 }
 ul#catalogue li {
     background-color: #e2e2e2;
@@ -120,17 +125,22 @@ ul#catalogue li {
 }
 ul#catalogue a {
     display: block;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding-left: 1.4em;
+    padding-right: 1.4em;
     /* must match grid-line */
-    height: 2.7em;
-    padding-top: 1.3em;
+    height: 3.1em;
+    padding-top: 1.8em;
+}
+ul#catalogue span {
+    font-size: 1.1em;
 }
 
 
-
+#lang-button {
+    color: #aaa;
+}
 #lang-button:after {
-    padding-left: .5em;
+    padding-left: 1em;
     content: "↓";
     font-family: WL-Nav;
     vertical-align: middle;
@@ -139,18 +149,18 @@ ul#catalogue a {
     position: relative;
     float: right;
     display: block;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding-left: 2.5em;
+    padding-right: 2em;
     /* must match grid-line */
-    height: 2.7em;
-    padding-top: 1.3em;
+    height: 3em;
+    padding-top: 1.9em;
     background: #f7f7f7;
 }
 
 #lang-menu-items button {
     display: none;
     background: #f7f7f7;
-    color: #444;
+    color: #777;
     cursor: pointer;
     width: 100%;
     border: solid #ddd;
@@ -173,5 +183,5 @@ ul#catalogue a {
 }
 
 #lang-menu .active {
-    font-weight: bold;
+    color: #000;
 }

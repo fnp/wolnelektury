@@ -2,6 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	{% load i18n compressed catalogue_tags sponsor_tags %}
+    {% load reporting_stats %}
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -20,7 +21,7 @@
 
         {% block bodycontent %}
 
-        <div id="header" class="grid-line">
+        <div id="header">
 
         <div id="header-content">
             <div id="logo">
@@ -29,7 +30,16 @@
             </div>
 
             <div id="tagline">
-                <a href=''>1666</a> darmowych lektur do których masz <a href=''>prawo</a>
+                <span>
+                {% count_books book_count %}
+                {% url book_list as b %}
+                {% url book_list as r %}
+                {% blocktrans count book_count as c %}
+                <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>
+                {% plural %}
+                <a href='{{b}}'>{{c}}</a> free readings you have <a href='{{r}}'>right to</a>
+                {% endblocktrans %}
+                </span>
             </div>
 
             <p id="user-info" class="mono">
@@ -62,9 +72,9 @@
 
 
 
-            <form id="search">
+            <form id="search-area">
                 
-                <span id="search-field" class="grid-line">
+                <span id="search-field">
                     <input title="np. Leśmian" name="q" autocomplete="off">
                 </span><span id="search-button">
                     <button type='submit'><span class="mono">{% trans "Search" %}</span></button>
@@ -84,24 +94,24 @@
 
             <div id="nav-line">
             <ul id="catalogue">
+                <li><a href="{% url catalogue %}#autorzy"><span class='mono'>{% trans "Authors" %}</span></a></li>
+                <li><a href="{% url catalogue %}#gatunki"><span class='mono'>{% trans "Genres" %}</span></a></li>
+                <li><a href="{% url catalogue %}#rodzaje"><span class='mono'>{% trans "Kinds" %}</span></a></li>
+                <li><a href="{% url catalogue %}#epoki"><span class='mono'>{% trans "Epochs" %}</span></a></li>
+                <li><a href="{% url catalogue %}#motywy"><span class='mono'>{% trans "Themes" %}</span></a></li>
                 <li><a href="{% url book_list %}"><span class='mono'>{% trans "All books" %}</span></a></li>
                 <li><a href="{% url audiobook_list %}"><span class='mono'>{% trans "Audiobooks" %}</span></a></li>
                 <li><a href="{% url daisy_list %}"><span class='mono'>{% trans "DAISY" %}</span></a></li>
-                <li><a href="{% url catalogue %}#autorzy"><span class='mono'>{% trans "Authors" %}</span></a></li>
-                <li><a href="{% url catalogue %}#epoki"><span class='mono'>{% trans "Epochs" %}</span></a></li>
-                <li><a href="{% url catalogue %}#rodzaje"><span class='mono'>{% trans "Kinds" %}</span></a></li>
-                <li><a href="{% url catalogue %}#gatunki"><span class='mono'>{% trans "Genres" %}</span></a></li>
-                <li><a href="{% url catalogue %}#motywy"><span class='mono'>{% trans "Themes" %}</span></a></li>
             </ul>
 
             <form action="{% url django.views.i18n.set_language %}" method="post">
             <div id="lang-menu">
-                <span id='lang-button' class='mono-small'>
+                <span id='lang-button' class='mono'>
                     {% trans "Language versions" %}</span>
                 <div id="lang-menu-items">
                 {% for lang in LANGUAGES %}
                     <button type="submit" name="language"
-                        class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} {% if forloop.last %}last{% endif %}"
+                        class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} mono"
                         value="{{ lang.0 }}">{{ lang.1 }}</button>
                 {% endfor %}
                 </div>

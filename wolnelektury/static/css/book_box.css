@@ -6,11 +6,11 @@
 
 
 .book-box {
-    width: 37.5em;
+    width: 48.75em;
 }
 
 .book-mini-box {
-    width: 12.5em;
+    width: 16.15em;
 }
 
 .book-mini-box a, .book-box-inner {
@@ -18,69 +18,97 @@
     color: black;
     border: 1px solid #ddd;
     height: 20em;
-    padding: .75em;
+    padding: .8em 1em;
     margin: .1em;
     background: #fff;
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
     box-shadow: 2px 2px 2px #ddd;
-    overflow: hidden;
 }
 
 .book-mini-box a {
-    height: 20em;
+    height: 27.1em;
     margin: .1em;
+    overflow: hidden;
 }
 .book-box-inner {
-    height: 14.4em;
+    height: 19.75em;
     margin: .5em;
 }
 
 .book-mini-box img, .book-box img {
-    width: 10.8em;
-    height: 14.4em;
+    width: 13.9em;
+    height: 19.3em;
 }
 .book-mini-box img {
-    margin-bottom: .3em;
+    margin-bottom: 1.8em;
 }
 .book-box img {
     float: left;
     margin-right: 1.5em;
 }
 
+.book-mini-box .desc {
+    margin-left:0em;
+}
 .book-mini-box .author {
+    font-size: 1.1em;
     color: #777;
+    display: block;
+}
+.book-mini-box .title {
+    font-size: 1.4em;
 }
 
 
 .book-box-body {
-    height: 13em;
+    height: 17em;
     overflow: hidden;
 }
 .book-box-head {
     min-height: 7em;
+    margin-top: 1.4em;
+    margin-bottom: 1em;
+}
+.book-box-head .author {
+    font-size: 1.1em;
+}
+.book-box-head .title {
+    font-size: 2.4em;
+    margin-top: .3em;
+}
+.book-box-body .tags {
+    font-size: 1.1em;
 }
 .book-box-tag {
-    font-size: .8em;
     margin-right: .5em;
+    margin-left: .4em;
 }
 .book-box-download {
     position: relative;
 }
 .book-box-formats {
     display: none;
-    top: -2em;
     position: absolute;
-    height: 2em;
-    width: 100em;
+
+    border: 1px solid #ddd;
+    padding: .8em 1em;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+    
 }
 .book-box-formats a {
-    margin-right: 1em;
+    display: block;
 }
 .book-box-download:hover .book-box-formats {
     display: block;
 }
 
+.book-box-tools {
+    font-size: 1.1em;
+}
 .book-box-tools a:before {
     content: "⇩";
     font-family: WL-Nav;
@@ -89,11 +117,11 @@
     vertical-align: middle;
 }
 .book-box-read {
-    width: 10em;
+    width: 11em;
 }
 .book-box-download {
-    width: 6em;
+    width: 8em;
 }
 .book-box-audiobook {
-    width: 6em;
+    width: 8em;
 }
