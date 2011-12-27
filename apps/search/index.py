@@ -412,35 +412,23 @@ class ReusableIndex(Index):
     if you cannot rely on atexit, use ReusableIndex.close_reusable() yourself.
     """
     index = None
-    pool = None
-    pool_jobs = None
 
     def open(self, analyzer=None, threads=4):
         if ReusableIndex.index is not None:
             self.index = ReusableIndex.index
         else:
             print("opening index")
-            ReusableIndex.pool = ThreadPool(threads, initializer=lambda: JVM.attachCurrentThread() )
-            ReusableIndex.pool_jobs = []
             Index.open(self, analyzer)
             ReusableIndex.index = self.index
             atexit.register(ReusableIndex.close_reusable)
 
-    def index_book(self, *args, **kw):
-        job = ReusableIndex.pool.apply_async(log_exception_wrapper(Index.index_book), (self,) + args, kw)
-        ReusableIndex.pool_jobs.append(job)
+    # def index_book(self, *args, **kw):
+    #     job = ReusableIndex.pool.apply_async(log_exception_wrapper(Index.index_book), (self,) + args, kw)
+    #     ReusableIndex.pool_jobs.append(job)
 
     @staticmethod
     def close_reusable():
         if ReusableIndex.index is not None:
-            print("wait for indexing to finish")
-            for job in ReusableIndex.pool_jobs:
-                job.get()
-                sys.stdout.write('.')
-                sys.stdout.flush()
-            print("done.")
-            ReusableIndex.pool.close()
-
             ReusableIndex.index.optimize()
             ReusableIndex.index.close()
             ReusableIndex.index = None

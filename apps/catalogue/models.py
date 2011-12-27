@@ -24,7 +24,7 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import create_zip, split_tags
-from catalogue.tasks import touch_tag
+from catalogue.tasks import touch_tag, index_book
 from shutil import copy
 from glob import glob
 import re
@@ -732,17 +732,15 @@ class Book(models.Model):
         return result.wait()
 
     def search_index(self, book_info=None):
-        if settings.SEARCH_INDEX_PARALLEL:
-            if instance(settings.SEARCH_INDEX_PARALLEL, int):
-                idx = search.ReusableIndex(threads=4)
-            else:
-                idx = search.ReusableIndex()
+        if settings.CELERY_ALWAYS_EAGER:
+            idx = search.ReusableIndex()
         else:
             idx = search.Index()
             
         idx.open()
         try:
             idx.index_book(self, book_info)
+            idx.index_tags()
         finally:
             idx.close()
 
@@ -834,7 +832,7 @@ class Book(models.Model):
             book.build_mobi()
 
         if not settings.NO_SEARCH_INDEX and search_index:
-            book.search_index(book_info)
+            index_book.delay(book.id, book_info)
 
         book_descendants = list(book.children.all())
         descendants_tags = set()

@@ -38,7 +38,7 @@ urlpatterns += patterns('',
     # API
     (r'^api/', include('api.urls')),
 
-    url(r'^newsearch/', include('search.urls')),
+    url(r'^fullsearch/', include('search.urls')),
 
     # Static files
     url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve',

@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.views.decorators import cache
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
+from django.utils.translation import ugettext as _
 
 from catalogue.utils import get_random_hash
 from catalogue.models import Book, Tag, Fragment, TAG_CATEGORIES
@@ -50,7 +51,7 @@ def category_name(category):
 def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
-        return JSONResponse(dumps(None))
+        return JSONResponse([])
     JVM.attachCurrentThread()
     s = MultiSearch()
 
@@ -66,6 +67,8 @@ def hint(request):
     # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
     # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
 
+    # import pdb; pdb.set_trace()
+    
     tags = s.hint_tags(prefix)
     books = s.hint_books(prefix)
 
@@ -73,12 +76,12 @@ def hint(request):
 
     return JSONResponse(
         [{'label': t.name,
-          'category': category_name(t.category),
+          'category': _(category_name(t.category)),
           'id': t.id,
           'url': t.get_absolute_url()}
           for t in tags] + \
           [{'label': b.title,
-            'category': category_name('book'),
+            'category': _(category_name('book')),
             'id': b.id,
             'url': b.get_absolute_url()}
             for b in books])

@@ -175,6 +175,8 @@ COMPRESS_CSS = {
             'css/book_box.css',
             'css/catalogue.css',
             'css/sponsors.css',
+            
+            'css/ui-lightness/jquery-ui-1.8.16.custom.css',
         ],
         'output_filename': 'css/all.min?.css',
     },
@@ -199,10 +201,14 @@ COMPRESS_JS = {
             'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
             'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
 
+            'js/jquery-ui-1.8.16.custom.min.js',
+
             'js/locale.js',
             'js/dialogs.js',
             'js/sponsors.js',
             'js/pdcounter.js',
+
+            'js/search.js',
 
             #~ 'js/jquery.autocomplete.js',
             #~ 'js/jquery.labelify.js', 'js/catalogue.js',

@@ -4,7 +4,7 @@
 #
 from datetime import datetime
 from celery.task import task
-
+import catalogue.models
 
 @task
 def touch_tag(tag):
@@ -14,3 +14,8 @@ def touch_tag(tag):
     }
 
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
+
+
+@task
+def index_book(book_id, book_info=None):
+    return catalogue.models.Book.objects.get(id=book_id).search_index(book_info)
