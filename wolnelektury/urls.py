@@ -11,6 +11,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('wolnelektury.views',
     url(r'^$', 'main_page', name='main_page'),
+    url(r'^planowane/$', 'publish_plan', name='publish_plan'),
 
     url(r'^zegar/$', 'clock', name='clock'),
 

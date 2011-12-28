@@ -66,8 +66,8 @@
     display: inline-block;
     width: 63.1em;
     padding-left: .5em;
-    padding-right: .5em;
-    padding-top: 0;
+    padding-right: 0;
+    padding-top: 0.5em;
     padding-bottom: 0;
 }
 
@@ -75,7 +75,7 @@
     padding: 0;
     height: 3.3em;
     border: none;
-    width: 62.6em;
+    width: 63.1em;
     font-size: 1em;
     padding-left: .5em;
     -webkit-border-radius: .5em;
@@ -92,6 +92,7 @@
     padding: 0;
     margin: 0;
     width: 9.4em;
+    float: right;
 }
 #search-button button {
     font-size: 1em;

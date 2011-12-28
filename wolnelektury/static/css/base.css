@@ -90,6 +90,7 @@ h2 {
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
     box-shadow: 2px 2px 2px #ddd;
+    z-index: 500;
 }
 #themes-list ul {
     list-style: none;
