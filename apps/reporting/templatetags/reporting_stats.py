@@ -49,11 +49,11 @@ def count_books_all():
     return Book.objects.all().count()
 
 @register_counter
-def count_books_nonempty():
+def count_books():
     return Book.objects.exclude(html_file='').count()
 
 @register_counter
-def count_books_empty():
+def count_books_parent():
     return Book.objects.filter(html_file='').count()
 
 @register_counter

@@ -22,7 +22,7 @@
         </div>
 
 	{% thumbnail picture.image_file "400x500" upscale="false" as im %}
-	<img style="margin:{{ im|margin:"400x500" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
+	<img style="margin:{{ im|margin:"500x500" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
 	{% endthumbnail %}
 
         {% if picture.info.license %}
@@ -32,7 +32,7 @@
         {% if picture.info.description %}
             <div id="description">
                 <div id='description-long'>{{ picture.info.description|safe }}</div>
-                <div id='description-short'>{{ picture.info.description|safe|truncatewords_html:30 }}</div>
+{%comment%}                <div id='description-short'>{{ picture.info.description|safe|truncatewords_html:30 }}</div>{%endcomment%}
             </div>
             <div id="toggle-description"><p></p></div>
         {% endif %}
@@ -90,11 +90,5 @@
             </ul>
         </div>
         <div class="clearboth"></div>
-    </div>
-    <div id="set-window">
-        <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-        <div class="target">
-            <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
-        </div>
     </div>
 {% endblock %}

@@ -16,6 +16,7 @@ from api.models import Deleted
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment
 from picture.models import Picture
+from picture.forms import PictureImportForm
 
 from stats.utils import piwik_track
 
@@ -589,11 +590,11 @@ class PictureHandler(BaseHandler):
     allowed_methods = ('POST',)
 
     def create(self, request):
-        if not request.user.has_perm('catalogue.add_book'):
+        if not request.user.has_perm('picture.add_picture'):
             return rc.FORBIDDEN
 
         data = json.loads(request.POST.get('data'))
-        form = BookImportForm(data)
+        form = PictureImportForm(data)
         if form.is_valid():
             form.save()
             return rc.CREATED

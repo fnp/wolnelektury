@@ -18,14 +18,30 @@ html {
 body {
     margin: 0;
     background: #f7f7f7;
-    font-size: .9em;
-    line-height: 1.4em;
+    font-size: .625em;
+    font-family: Georgia;
+    /*line-height: 1.4em;*/
 }
 
 
 a {
-    color: #02adb7;
+    color: #01adba;
     text-decoration: none;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: normal;
+    margin-top: .4em
+}
+
+.left-column {
+    width: 48em;
+    float: left;
+}
+.right-column {
+    float:right;
+    width: 48em;
 }
 
 h2 {
@@ -35,15 +51,8 @@ h2 {
 }
 
 
-.grid-line {
-    height: 2.6em;
-    padding-top: 1.4em;
-    padding-bottom: 0;
-}
-
-.mono, .mono-small {
+.mono {
     font-family: "Lucida Sans Typewriter", courier;
-    font-size: .9em;
 }
 
 
@@ -52,15 +61,88 @@ h2 {
 }
 
 #header-content, div#main-content, div#half-header-content {
-    width: 75em;
+    width: 97.5em;
     margin: auto;
 }
 
 
+.page-desc {
+    margin-left: 1.5em;
+}
+.inline-tag-lists {
+    font-size: 1.1em;
+}
+#themes-list-toggle:after {
+    padding-left: 1em;
+    content: "↓";
+    font-family: WL-Nav;
+    vertical-align: middle;
+}
+#themes-list-wrapper {
+    position: relative;
+}
+#themes-list {
+    position: absolute;
+    display: none;
+    border: 1px solid #ddd;
+    padding: 1em;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+}
+#themes-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1em;
+    -moz-column-width: 12em;
+    width: 48em;
+}
+
+
+a.cite {
+    display: block;
+    color: black;
+    background: white;
+    padding: 3em 2em .1em 8em;
+}
+.cite-body {
+    font-size: 1.8em;
+    line-height: 1.3em;
+}
+.cite p {
+    color: #444;
+    font-size: 1.1em;
+    margin-top: 1.6em;
+}
+
+.see-also {
+    margin-left: 8em;
+    float: left;
+    width: 14.3em;
+}
+.download {
+    margin-left: 2em;
+    float: left;
+}
+
+.see-also, .download {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.see-also h2, .download h2 {
+    font-size: 1.1em;
+}
+.see-also ul, .download ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1em;
+}
 
 
 #footer {
-    font-size: .75em;
     color: #777;
     border-top: 1px solid #ddd;
     margin-top: 2.5em;

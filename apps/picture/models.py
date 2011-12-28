@@ -5,7 +5,11 @@ from sorl.thumbnail import ImageField
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
-from librarian import dcparser, picture
+from django.template.loader import render_to_string
+from django.core.cache import cache
+from catalogue.utils import split_tags
+from django.utils.safestring import mark_safe
+from slughifi import slughifi
 
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
@@ -50,6 +54,9 @@ class Picture(models.Model):
 
         ret = super(Picture, self).save(force_insert, force_update)
 
+        if reset_short_html:
+            self.reset_short_html()
+
         return ret
 
     def __unicode__(self):
@@ -66,17 +73,33 @@ class Picture(models.Model):
     def from_xml_file(cls, xml_file, image_file=None, overwrite=False):
         """
         Import xml and it's accompanying image file.
+        If image file is missing, it will be fetched by librarian.picture.ImageStore
+        which looks for an image file in the same directory the xml is, with extension matching
+        its mime type.
         """
+        from sortify import sortify
         from django.core.files import File
-        from librarian.picture import WLPicture
+        from librarian.picture import WLPicture, ImageStore
         close_xml_file = False
+        close_image_file = False
+        # class SimpleImageStore(object):
+        #     def path(self_, slug, mime_type):
+        #         """Returns the image file. Ignores slug ad mime_type."""
+        #         return image_file
+
+        if image_file is not None and not isinstance(image_file, File):
+            image_file = File(open(image_file))
+            close_image_file = True
 
         if not isinstance(xml_file, File):
             xml_file = File(open(xml_file))
             close_xml_file = True
+
         try:
             # use librarian to parse meta-data
-            picture_xml = WLPicture.from_file(xml_file)
+            picture_xml = WLPicture.from_file(xml_file,
+                                              image_store=ImageStore(picture_storage.path('images')))
+                    # image_store=SimpleImageStore
 
             picture, created = Picture.objects.get_or_create(slug=picture_xml.slug)
             if not created and not overwrite:
@@ -84,13 +107,25 @@ class Picture(models.Model):
 
             picture.title = picture_xml.picture_info.title
 
-            picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info)
+            motif_tags = set()
+            for part in picture_xml.partiter():
+                for motif in part['themes']:
+                    tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
+                    if created:
+                        tag.name = motif
+                        tag.sort_key = sortify(tag.name)
+                        tag.save()
+                    motif_tags.add(tag)
+
+            picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info) + \
+                list(motif_tags)
 
             if image_file is not None:
                 img = image_file
             else:
                 img = picture_xml.image_file()
 
+            # FIXME: hardcoded extension
             picture.image_file.save(path.basename(picture_xml.image_path), File(img))
 
             picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
@@ -98,6 +133,8 @@ class Picture(models.Model):
         finally:
             if close_xml_file:
                 xml_file.close()
+            if close_image_file:
+                image_file.close()
         return picture
 
     @classmethod
@@ -130,6 +167,35 @@ class Picture(models.Model):
     @property
     def info(self):
         if not hasattr(self, '_info'):
+            from librarian import dcparser
+            from librarian import picture
             info = dcparser.parse(self.xml_file.path, picture.PictureInfo)
             self._info = info
         return self._info
+
+    def reset_short_html(self):
+        if self.id is None:
+            return
+
+        cache_key = "Picture.short_html/%d" % (self.id)
+        cache.delete(cache_key)
+
+    def short_html(self):
+        if self.id:
+            cache_key = "Picture.short_html/%d" % (self.id)
+            short_html = cache.get(cache_key)
+        else:
+            short_html = None
+
+        if short_html is not None:
+            return mark_safe(short_html)
+        else:
+            tags = self.tags.filter(category__in=('author', 'kind', 'epoch'))
+            tags = split_tags(tags)
+
+            short_html = unicode(render_to_string('picture/picture_short.html',
+                {'picture': self, 'tags': tags}))
+
+            if self.id:
+                cache.set(cache_key, short_html, catalogue.models.CACHE_FOREVER)
+            return mark_safe(short_html)

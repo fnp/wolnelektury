@@ -25,20 +25,24 @@
             <h2 class="mono">Trwa konkurs</h2>
         </div>
         <div id="promo-box-body">
-            <p id="promo-box-title" class="mono">Konkurs poezji automatycznej</p>
+            <p id="promo-box-title" class="mono"><span>Konkurs poezji automatycznej</span></p>
+            <div id="promo-box-content">
             <p>Znacie Leśmianatora? To niewielki skrypt miskujący na życzenie
             wiersze z Wolnych Lektur.</p>
+            </div>
         </div>
     </div>
 
 
-    <h2 class="grid-line"><span class="mono">Ostatnie publikacje</span></h2>
+    <h2 class="main-last"><span class="mono">Ostatnie publikacje</span></h2>
         {% for book in last_published %}
             {{ book.mini_box }}
         {% endfor %}
 
+    <div class="clearboth"></div>
+
     <div class="infopages-box">
-        <h2 class="grid-line"><span class='mono'>Aktualności</span></h2>
+        <h2><span class='mono'>Aktualności</span></h2>
         {% cache 1800 latest-blog-posts %}
             {% latest_blog_posts "http://nowoczesnapolska.org.pl/category/wolne-lektury/feed/" %}
         {% endcache %}
@@ -46,7 +50,7 @@
 
 
     <div class="infopages-box">
-        <h2 class="grid-line"><span class='mono'>Narzędzia</span></h2>
+        <h2><span class='mono'>Narzędzia</span></h2>
 
         <ul>
             <li><a href="{% url suggest %}" id="suggest" class="ajaxable">{% trans "Report a bug or suggestion" %}</a></li>
@@ -61,7 +65,7 @@
 
 
     <div class="infopages-box">
-        <h2 class="grid-line"><span class='mono'>Informacje</span></h2>
+        <h2><span class='mono'>Informacje</span></h2>
 
         {% infopages_on_main %}
 

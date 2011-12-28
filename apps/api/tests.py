@@ -10,9 +10,10 @@ from api.helpers import timestamp
 from catalogue.models import Book, Tag
 from picture.tests.utils import RequestFactory
 from picture.forms import PictureImportForm
-from picture.models import Picture
+from picture.models import Picture, picture_storage
 import picture.tests
 from django.core.files.uploadedfile import SimpleUploadedFile
+
  
 from os import path
 
@@ -160,3 +161,4 @@ class PictureTests(ApiTest):
             import_form.save()
 
         pic = Picture.objects.get(slug=slug)
+

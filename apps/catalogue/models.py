@@ -515,7 +515,7 @@ class Book(models.Model):
             for ebook_format in self.ebook_formats:
                 if self.has_media(ebook_format):
                     formats.append(u'<a href="%s">%s</a>' % (
-                        "", #self.get_media(ebook_format).url,
+                        self.get_media(ebook_format).url,
                         ebook_format.upper()
                     ))
 

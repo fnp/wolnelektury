@@ -1,6 +1,6 @@
 #big-cite {
     background-color: white;
-    padding: 4em 12em;
+    padding: 10.75em 10em 8.5em 18.2em;
     margin: 0;
 }
 
@@ -11,68 +11,101 @@
 
 #big-cite h2 {
     margin: 0;
+    font-size: 1.1em;
 }
 
 
 #big-cite-text {
-    margin: .5em 0;
-    font-size: 1.75em;
-    line-height: 1.3em;
+    margin: .05em;
+    font-size: 2.8em;
+    line-height: 1.2em;
 }
 
 
 #big-cite-source {
     color: #02adb7;
     margin: 0;
+    font-size: 1.1em;
+    margin: 1.1em 0.2em;
 }
 
 
 #promo-box {
     float: right;
-    width: 24em;
-    /* should match grid-line */
-    margin-top: -4em;
+    width: 32em;
+    margin-top: -5.1em;
 }
 #promo-box-header {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-top: 2em;
+    height: 3.1em;
+    padding-bottom: 0;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
     background: #191919;
     color: white;
 }
+#promo-box-header h2 {
+    font-size: 1.1em;
+    padding-top: .1em;
+}
 #promo-box-body {
     border-bottom: 2px solid #efefef;
-    padding: 1.3em 2em;
-    height: 23em;
+    padding: 2em 2.8em;
+    height: 30em;
     background: #efefef;
 }
 #promo-box-title {
     color: #02ADB7;
-    height: 2.7em;
+    height: 2.75em;
     margin: 0;
+}
+#promo-box-title span {
+    font-size: 1.1em;
 }
 #promo-box-body p {
     margin-top: 0;
 }
+#promo-box-content {
+    font-size: 1.2em;
+    line-height: 1.55em;
+    color: #666;
+}
+
+.main-last {
+    padding-top: 1.9em;
+    height: 3.2em;
+    padding-left: 1.9em;
+}
+.main-last span {
+    font-size: 1.1em;
+}
+
 
 .infopages-box {
-    width: 16.75em;
+    width: 20.6em;
     display: inline-block;
     margin: .5em 0 0 0;
-    padding: 0 1em;
+    padding: 0 1.7em;
     vertical-align: top;
 }
 .infopages-box h2 {
     color: #02ADB7;
+    height: 2.8em;
+    padding-top: 2.5em;
+}
+.infopages-box h2 span {
+    font-size: 1.1em;
 }
 .infopages-box a {
     color: black;
 }
 
 .infopages-box ol, .infopages-box ul {
-    font-size: .8em;
+    font-size: 1.1em;
     list-style: none;
     padding: 0;
     margin: 0;
+    line-height: 1.45em;
 }
 
 .social-links {

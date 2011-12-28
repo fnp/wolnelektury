@@ -57,13 +57,12 @@ urlpatterns = patterns(
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})books/$', book_list_resource),
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_books/$', book_list_resource, {"top_level": True}),
 
+    url(r'^pictures/$', picture_resource),
+
     # fragments by book, tags, themes
     # this should be paged
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){1,6})fragments/$', fragment_list_resource),
 
     # tags by category
     url(r'^(?P<category>[a-z0-9-]+)/$', tag_list_resource),
-
-    # picture by slug
-    url(r'^pictures/$', picture_resource)
 )

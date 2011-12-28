@@ -1,0 +1,9 @@
+{% load i18n %}
+{% load catalogue_tags %}
+{% if one_tag %}
+    {% trans "See full category" %} <a href="{% catalogue_url one_tag %}">{{ one_tag }}</a>
+{% else %}
+    {% for tag in tags %}
+        <a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.book_count }})</a>
+    {% endfor %}
+{% endif %}

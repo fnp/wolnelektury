@@ -263,6 +263,14 @@ def tag_list(tags, choices=None):
         one_tag = tags[0]
     return locals()
 
+@register.inclusion_tag('catalogue/inline_tag_list.html')
+def inline_tag_list(tags, choices=None):
+    if choices is None:
+        choices = []
+    if len(tags) == 1:
+        one_tag = tags[0]
+    return locals()
+
 
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):

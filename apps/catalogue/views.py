@@ -26,11 +26,13 @@ from django.views.generic.list_detail import object_list
 from ajaxable.utils import LazyEncoder, JSONResponse
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import split_tags, AttachmentHttpResponse, async_build_pdf
+from catalogue.utils import (split_tags, AttachmentHttpResponse,
+    async_build_pdf, MultiQuerySet)
 from catalogue.tasks import touch_tag
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
+from picture.models import Picture
 
 from os import path
 
@@ -88,6 +90,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
 
 
 def tagged_object_list(request, tags=''):
+    #    import pdb; pdb.set_trace()
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
@@ -166,19 +169,20 @@ def tagged_object_list(request, tags=''):
         only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
 
-    return object_list(
-        request,
-        objects,
-        template_name='catalogue/tagged_object_list.html',
-        extra_context={
+    # Add pictures
+    objects = MultiQuerySet(Picture.tagged.with_all(tags), objects)
+
+    return render_to_response('catalogue/tagged_object_list.html',
+        {
+            'object_list': objects,
             'categories': categories,
             'only_shelf': only_shelf,
             'only_author': only_author,
             'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
             'tags': tags,
-        }
-    )
+        },
+        context_instance=RequestContext(request))
 
 
 def book_fragments(request, book, theme_slug):

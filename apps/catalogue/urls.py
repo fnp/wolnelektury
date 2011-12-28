@@ -7,7 +7,12 @@ from catalogue.feeds import AudiobookFeed
 from catalogue.models import Book
 from picture.models import Picture
 
-urlpatterns = patterns('catalogue.views',
+urlpatterns = patterns('picture.views',
+                       # pictures - currently pictures are coupled with catalogue, hence the url is here
+        url(r'^obraz/?$', 'picture_list'),
+        url(r'^obraz/(?P<picture>%s)/?$' % Picture.URLID_RE, 'picture_detail')
+        ) + \
+    patterns('catalogue.views',
     url(r'^$', 'catalogue', name='catalogue'),
     url(r'^polki/(?P<shelf>[a-zA-Z0-9-]+)/formaty/$', 'shelf_book_formats', name='shelf_book_formats'),
     url(r'^polki/(?P<shelf>[a-zA-Z0-9-]+)/(?P<book>%s)/usun$' % Book.URLID_RE, 'remove_from_shelf', name='remove_from_shelf'),
@@ -41,9 +46,4 @@ urlpatterns = patterns('catalogue.views',
 
     url(r'^custompdf/(?P<book_fileid>%s).pdf' % Book.FILEID_RE, 'download_custom_pdf'),
 
-) + patterns('picture.views',
-        # pictures - currently pictures are coupled with catalogue, hence the url is here
-        url(r'^obraz/?$', 'picture_list'),
-        url(r'^obraz/(?P<picture>%s)/?$' % Picture.URLID_RE, 'picture_detail')
-    )
-
+) 

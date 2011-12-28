@@ -19,16 +19,17 @@
       <dc:date.pd xml:lang="pl">1940</dc:date.pd>
       <dc:type>Image</dc:type>
       <dc:format xml:lang="pl">image/png</dc:format>
-      <dc:format.dimensions.digital xml:lang="pl">1090 x 755 px</dc:format.dimensions.digital>
+      <dc:format.dimensions xml:lang="pl">1090 x 755 px</dc:format.dimensions>
+      <dc:format.checksum.sha1 xml:lang="pl">122b590510ce70cc80e617557f82048ce20f1d7b</dc:format.checksum.sha1>
       <dc:date xml:lang="pl">1923</dc:date>
       <dc:language xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">eng</dc:language>
     </rdf:Description>
   </rdf:RDF>
 
-  <sem type="obiekt" obiekt="kosmos">
+  <sem type="object" object="kosmos">
     <div type="area" x1="17" y1="31" x2="275" y2="309"/>
   </sem>
-  <sem type="obiekt" obiekt="nieporządek">
+  <sem type="theme" theme="nieporządek">
     <div type="area" x1="300" y1="138" x2="976" y2="514"/>
   </sem>
  
