@@ -87,21 +87,37 @@
 .book-box-download {
     position: relative;
 }
+
+.book-box-download a {
+    position: relative;
+    z-index: 1;
+}
+
 .book-box-formats {
     display: none;
     position: absolute;
 
+    width: 16.363em;
     border: 1px solid #ddd;
-    padding: .8em 1em;
+    padding: 3.454em 1.727em .818em 1.727em;
     background: #fff;
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
     box-shadow: 2px 2px 2px #ddd;
-    
+
+    z-index: 0;
+    top: -1.454em;
+    left: -1.727em;
 }
-.book-box-formats a {
+.book-box-formats span {
     display: block;
 }
+ 
+
+.book-box-download:hover .book-box-formats:first {
+    margin-top: 1.454em;
+}
+
 .book-box-download:hover .book-box-formats {
     display: block;
 }
@@ -109,7 +125,7 @@
 .book-box-tools {
     font-size: 1.1em;
 }
-.book-box-tools a:before {
+.book-box-tools a.downarrow:before {
     content: "⇩";
     font-family: WL-Nav;
     font-size: 2em;

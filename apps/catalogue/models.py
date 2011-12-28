@@ -510,16 +510,12 @@ class Book(models.Model):
             tags = self.tags.filter(category__in=('author', 'kind', 'genre', 'epoch'))
             tags = split_tags(tags)
 
-            formats = []
+            formats = {}
             # files generated during publication
             for ebook_format in self.ebook_formats:
                 if self.has_media(ebook_format):
-                    formats.append(u'<a href="%s">%s</a>' % (
-                        self.get_media(ebook_format).url,
-                        ebook_format.upper()
-                    ))
+                    formats[ebook_format] = self.get_media(ebook_format)
 
-            formats = [mark_safe(format) for format in formats]
 
             short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))

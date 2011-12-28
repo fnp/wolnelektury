@@ -49,18 +49,29 @@
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
-            <a href="{% url book_text book.urlid %}" class="mono">{% trans "Read online" %}</a>
+            <a href="{% url book_text book.urlid %}" class="mono downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
         <li class="book-box-download">
-            <a class="mono">{% trans "Download" %}</a>
+            <a class="mono downarrow">{% trans "Download" %}</a>
             <div class="book-box-formats mono">
-                {{ formats|join:"" }}
+	      {% if formats.pdf %}
+	      <span><a href="{{formats.pdf.url}}">PDF</a> do wydruku</span>
+	      {% endif %}
+	      {% if formats.epub %}
+	      <span><a href="{{formats.epub.url}}">EPUB</a> na czytnik</span>
+	      {% endif %}
+	      {% if formats.mobi %}
+	      <span><a href="{{formats.mobi.url}}">MOBI</a> na Kindle</span>
+	      {% endif %}
+	      {% if formats.txt %}
+	      <span><a href="{{formats.txt.url}}">TXT</a> do zadań specjalnych</span>
+	      {% endif %}
             </div>
         </li>
         <li class="book-box-audiobook">
         {% if book.has_mp3_file %}
-            <a href="" class="mono">{% trans "Audiobook" %}</a>
+            <a href="" class="mono downarrow">{% trans "Audiobook" %}</a>
         {% endif %}
         </li>
     </ul>
