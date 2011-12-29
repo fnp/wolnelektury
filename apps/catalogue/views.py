@@ -228,20 +228,49 @@ def book_detail(request, book):
     extra_info = book.get_extra_info_value()
     hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
 
+    custom_pdf_form = forms.CustomPDFForm()
+    return render_to_response('catalogue/book_detail.html', locals(),
+        context_instance=RequestContext(request))
+
+
+def player(request, book):
+    kwargs = models.Book.split_urlid(book)
+    if kwargs is None:
+        raise Http404
+    book = get_object_or_404(models.Book, **kwargs)
+    if not book.has_media('mp3'):
+        raise Http404
+
+    ogg_files = {}
+    for m in book.media.filter(type='ogg').order_by():
+        ogg_files[m.name] = m
+
+    audiobooks = []
+    have_oggs = True
     projects = set()
-    for m in book.media.filter(type='mp3'):
+    for mp3 in book.media.filter(type='mp3'):
         # ogg files are always from the same project
-        meta = m.get_extra_info_value()
+        meta = mp3.get_extra_info_value()
         project = meta.get('project')
         if not project:
             # temporary fallback
             project = u'CzytamySłuchając'
 
         projects.add((project, meta.get('funded_by', '')))
+
+        media = {'mp3': mp3}
+
+        ogg = ogg_files.get(mp3.name)
+        if ogg:
+            media['ogg'] = ogg
+        else:
+            have_oggs = False
+        audiobooks.append(media)
+    print audiobooks
+
     projects = sorted(projects)
 
-    custom_pdf_form = forms.CustomPDFForm()
-    return render_to_response('catalogue/book_detail.html', locals(),
+    return render_to_response('catalogue/player.html', locals(),
         context_instance=RequestContext(request))
 
 
@@ -688,9 +717,9 @@ def download_zip(request, format, book=None):
     url = None
     if format in models.Book.ebook_formats:
         url = models.Book.zip_format(format)
-    elif format == 'audiobook' and kwargs is not None:
+    elif format in ('mp3', 'ogg') and kwargs is not None:
         book = get_object_or_404(models.Book, **kwargs)
-        url = book.zip_audiobooks()
+        url = book.zip_audiobooks(format)
     else:
         raise Http404('No format specified for zip package')
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))

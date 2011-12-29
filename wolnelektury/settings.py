@@ -181,6 +181,12 @@ COMPRESS_CSS = {
         'source_filenames': ('css/master.book.css',),
         'output_filename': 'css/book.min?.css',
     },
+    'player': {
+        'source_filenames': [
+            'jplayer/jplayer.blue.monday.css', 
+        ],
+        'output_filename': 'css/player.min?.css',
+    },
     'simple': {
         'source_filenames': ('css/simple.css',),
         'output_filename': 'css/simple.min?.css',
@@ -208,6 +214,14 @@ COMPRESS_JS = {
             #~ 'js/jquery.labelify.js', 'js/catalogue.js',
             ),
         'output_filename': 'js/base?.min.js',
+    },
+    'player': {
+        'source_filenames': [
+            'jplayer/jquery.jplayer.min.js', 
+            'jplayer/jplayer.playlist.min.js', 
+            'js/player.js', 
+        ],
+        'output_filename': 'js/player.min?.js',
     },
     #~ 'book': {
         #~ 'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
