@@ -257,6 +257,7 @@ ALL_PDF_ZIP = 'wolnelektury_pl_pdf'
 ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
 
 CATALOGUE_DEFAULT_LANGUAGE = 'pol'
+PUBLISH_PLAN_FEED = 'http://redakcja.wolnelektury.pl/documents/track/editor-proofreading/'
 
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 

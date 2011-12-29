@@ -11,6 +11,7 @@ from django.utils.http import urlquote_plus
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
 
+from django.conf import settings
 from ajaxable.utils import AjaxableFormView
 from catalogue.models import Book
 
@@ -77,7 +78,7 @@ def publish_plan(request):
     if plan is None:
         plan = []
         try:
-            feed = feedparser.parse('http://localhost:8000/documents/track/editor-proofreading/')
+            feed = feedparser.parse(settings.PUBLISH_PLAN_FEED)
         except:
             pass
         else:
