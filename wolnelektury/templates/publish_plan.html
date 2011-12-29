@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block titleextra %}{% trans "Publishing plan" %}{% endblock titleextra %}
+
+
+{% block body %}
+<h1>{% trans "Publishing plan" %}</h1>
+
+<ul>
+{% for elem in plan %}
+    <li><a href="{{ elem.link }}">{{ elem.title }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

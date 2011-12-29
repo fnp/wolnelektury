@@ -721,10 +721,10 @@ class Book(models.Model):
                     getattr(settings, "ALL_%s_ZIP" % format_.upper()))
         return result.wait()
 
-    def zip_audiobooks(self):
-        bm = BookMedia.objects.filter(book=self, type='mp3')
+    def zip_audiobooks(self, format_):
+        bm = BookMedia.objects.filter(book=self, type=format_)
         paths = map(lambda bm: (None, bm.file.path), bm)
-        result = create_zip.delay(paths, self.fileid())
+        result = create_zip.delay(paths, "%s_%s" % (self.fileid(), format_))
         return result.wait()
 
     def search_index(self, book_info=None):

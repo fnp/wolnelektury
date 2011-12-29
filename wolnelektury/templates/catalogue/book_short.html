@@ -73,7 +73,7 @@
         </li>
         <li class="book-box-audiobook">
         {% if book.has_mp3_file %}
-            <a href="" class="mono downarrow">{% trans "Audiobook" %}</a>
+            <a href="{% url book_player book.slug %}" class="open-player mono downarrow">{% trans "Listen" %}</a>
         {% endif %}
         </li>
     </ul>

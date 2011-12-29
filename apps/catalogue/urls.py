@@ -29,13 +29,15 @@ urlpatterns = patterns('picture.views',
     url(r'^szukaj/$', 'search', name='old_search'),
 
     # zip
-    #url(r'^zip/pdf\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
-    #url(r'^zip/epub\.zip$', 'download_zip', {'format': 'epub', 'slug': None}, 'download_zip_epub'),
-    #url(r'^zip/mobi\.zip$', 'download_zip', {'format': 'mobi', 'slug': None}, 'download_zip_mobi'),
-    #url(r'^zip/audiobook/(?P<book>%s)\.zip' % Book.FILEID_RE, 'download_zip', {'format': 'audiobook'}, 'download_zip_audiobook'),
+    url(r'^zip/pdf\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
+    url(r'^zip/epub\.zip$', 'download_zip', {'format': 'epub', 'slug': None}, 'download_zip_epub'),
+    url(r'^zip/mobi\.zip$', 'download_zip', {'format': 'mobi', 'slug': None}, 'download_zip_mobi'),
+    url(r'^zip/mp3/(?P<book>%s)\.zip' % Book.FILEID_RE, 'download_zip', {'format': 'mp3'}, 'download_zip_mp3'),
+    url(r'^zip/ogg/(?P<book>%s)\.zip' % Book.FILEID_RE, 'download_zip', {'format': 'ogg'}, 'download_zip_ogg'),
 
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<book>%s)\.html$' % Book.FILEID_RE, 'book_text', name='book_text'),
+    url(r'^lektura/(?P<book>%s)/audiobook/$' % Book.URLID_RE, 'player', name='book_player'),
     url(r'^lektura/(?P<book>%s)/$' % Book.URLID_RE, 'book_detail', name='book_detail'),
     url(r'^lektura/(?P<book>%s)/motyw/(?P<theme_slug>[a-zA-Z0-9-]+)/$' % Book.URLID_RE,
         'book_fragments', name='book_fragments'),

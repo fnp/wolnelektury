@@ -129,11 +129,20 @@
 .book-box-tools {
     font-size: 1.1em;
 }
+
 .book-box-tools a.downarrow:before {
-    content: "⇩";
+    content: "\2609";
     font-family: WL-Nav;
-    font-size: 2em;
-    margin-right: .25em;
+    font-size: 2.25em;
+    margin-right: .15em;
+    vertical-align: middle;
+}
+
+.book-box-audiobook a:before {
+    content: "\266B";
+    font-family: WL-Nav;
+    font-size: 2.25em;
+    margin-right: .15em;
     vertical-align: middle;
 }
 
@@ -147,13 +156,13 @@ ul.book-box-tools {
 }
 
 .book-box-read {
-    width: 11em;
+    width: 11.5em;
 }
 .book-box-download {
-    width: 8em;
+    width: 8.5em;
 }
 .book-box-audiobook {
-    width: 8em;
+    width: 7em;
 }
 
 .book-wide-box .right-column {
