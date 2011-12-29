@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load thumbnail %}
-<div class="book-box">
+<div class="{% block box-class %}book-box{% endblock %}">
 <div class="book-box-inner">
     <a href="{{ book.get_absolute_url }}">
         {% if book.cover %}
@@ -13,6 +13,8 @@
             " alt="Cover" />
         {% endif %}
     </a>
+    {% block right-column %}
+    {% endblock %}
     <div class="book-box-body">
         <div class="book-box-head">
             <div class="mono author">
@@ -75,5 +77,7 @@
         {% endif %}
         </li>
     </ul>
+    {% block box-append %}
+    {% endblock %}
 </div>
 </div>

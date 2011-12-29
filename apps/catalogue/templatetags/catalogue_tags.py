@@ -15,6 +15,7 @@ from django.conf import settings
 from django.utils.translation import ugettext as _
 
 from catalogue.forms import SearchForm
+from catalogue.utils import split_tags
 
 
 register = template.Library()
@@ -274,4 +275,20 @@ def inline_tag_list(tags, choices=None):
 
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):
+    return locals()
+
+
+@register.inclusion_tag('catalogue/book_wide.html')
+def book_wide(book):
+    tags = book.tags.filter(category__in=('author', 'kind', 'genre', 'epoch'))
+    tags = split_tags(tags)
+
+    formats = {}
+    # files generated during publication
+    for ebook_format in book.ebook_formats:
+        if book.has_media(ebook_format):
+            formats[ebook_format] = book.get_media(ebook_format)
+
+    extra_info = book.get_extra_info_value()
+
     return locals()

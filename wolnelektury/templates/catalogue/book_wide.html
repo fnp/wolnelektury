@@ -1,0 +1,35 @@
+{% extends "catalogue/book_short.html" %}
+{% load i18n %}
+
+{% block box-class %}book-wide-box{% endblock %}
+
+{% block right-column %}
+<div class="right-column">
+  <blockquote id="quote" class="cite-body">
+    <div>Ten, który walczy z potworami powinien zadbać, by sam nie stał się potworem. 
+    Gdy długo spoglądamy w otchłań, otchłań spogląda również w nas.</div>
+  </blockquote>
+
+  <div id="other-tools">
+    <h2 class="mono">{% trans "See" %}</h2>
+    <ul>
+      {% if extra_info.source_url %}
+      <li><a href="{{ extra_info.source_url }}">{% trans "Source of the book" %}</a></li>
+      {% endif %}
+      {% if extra_info.about and not hide_about %}
+      <li><a href="{{ extra_info.about }}">{% trans "Book on the Editor's Platform" %}</a></li>
+      {% endif %}
+      {% if book.gazeta_link %}
+      <li><a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a></li>
+      {% endif %}
+      {% if book.wiki_link %}
+      <li><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  <div id="other-download">
+    <h2 class="mono">{% trans "Download" %}</h2>
+    <p>{% trans "Download all audiobooks for this book" %}</p>
+  </div>
+</div>
+{% endblock %}
