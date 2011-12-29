@@ -77,8 +77,8 @@
 
 
     <p>{% trans "Download as" %}:
-        <a href="{% url download_zip_mp3 book.fileid %}">MP3</a>{% if have_oggs %},
-            <a href="{% url download_zip_ogg book.fileid %}">Ogg Vorbis</a>{% endif %}.
+        <a href="{% url download_zip_mp3 book.slug %}">MP3</a>{% if have_oggs %},
+            <a href="{% url download_zip_ogg book.slug %}">Ogg Vorbis</a>{% endif %}.
     </p>
 
 

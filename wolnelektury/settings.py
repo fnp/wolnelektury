@@ -156,7 +156,8 @@ INSTALLED_APPS = [
 ]
 
 #CACHE_BACKEND = 'locmem:///?max_entries=3000'
-#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+#CACHE_BACKEND = None
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
 
 # CSS and JavaScript file groups

@@ -42,7 +42,7 @@
     <div class='dictionary-note'>
     {{ obj.html|safe }}
     <div class='dictionary-note-source'>
-    (<a href='{% url book_text obj.book.fileid %}#{{ obj.anchor }}'>{{ obj.book.pretty_title }}</a>)
+    (<a href='{% url book_text obj.book.slug %}#{{ obj.anchor }}'>{{ obj.book.pretty_title }}</a>)
     </div>
     </div>
 {% endfor %}

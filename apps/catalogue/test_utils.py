@@ -13,10 +13,12 @@ class WLTestCase(TestCase):
         self._MEDIA_ROOT, settings.MEDIA_ROOT = settings.MEDIA_ROOT, tempfile.mkdtemp(prefix='djangotest_')
         settings.NO_BUILD_PDF = settings.NO_BUILD_MOBI = settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = True
         settings.CELERY_ALWAYS_EAGER = True
+        self._CACHE_BACKEND, settings.CACHE_BACKEND = settings.CACHE_BACKEND, 'dummy://'
 
     def tearDown(self):
         shutil.rmtree(settings.MEDIA_ROOT, True)
         settings.MEDIA_ROOT = self._MEDIA_ROOT
+        settings.CACHE_BACKEND = self._CACHE_BACKEND
 
 class PersonStub(object):
 
@@ -29,7 +31,7 @@ class PersonStub(object):
 
 
 class BookInfoStub(object):
-    _empty_fields = ['cover_url']
+    _empty_fields = ['cover_url', 'variant_of']
     # allow single definition for multiple-value fields
     _salias = {
         'authors': 'author',
@@ -65,7 +67,7 @@ def info_args(title, language=None):
         language = u'pol'
     return {
         'title': unicode(title),
-        'url': WLURI.from_slug_and_lang(slug, language),
+        'url': WLURI.from_slug(slug),
         'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
         'language': language,
     }

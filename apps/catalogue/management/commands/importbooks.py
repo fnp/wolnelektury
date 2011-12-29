@@ -46,11 +46,10 @@ class Command(BaseCommand):
                                   build_txt=options.get('build_txt'),
                                   build_pdf=options.get('build_pdf'),
                                   build_mobi=options.get('build_mobi'))
-        fileid = book.fileid()
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
                 getattr(book, '%s_file' % ebook_format).save(
-                    '%s.%s' % (fileid, ebook_format), 
+                    '%s.%s' % (book.slug, ebook_format), 
                     File(file(file_base + '.' + ebook_format)))
                 if verbose:
                     print "Importing %s.%s" % (file_base, ebook_format)

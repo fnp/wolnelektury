@@ -36,11 +36,11 @@
             <div id="toggle-description"><p></p></div>
         {% endif %}
         <div id="formats">
-            <p class="change-sets">{% trans "Put a book" %} <span><a href="{% url catalogue.views.book_sets book.urlid %}" class="jqm-trigger">{% trans "on the shelf!" %}</a></span></p>
+            <p class="change-sets">{% trans "Put a book" %} <span><a href="{% url catalogue.views.book_sets book.slug %}" class="jqm-trigger">{% trans "on the shelf!" %}</a></span></p>
             <div class="clearboth"></div>
             <div class="wrap">
                 {% if book.has_html_file %}
-                    <a class="online" href="{% url book_text book.fileid %}">{% trans "Read online" %}</a>
+                    <a class="online" href="{% url book_text book.slug %}">{% trans "Read online" %}</a>
                 {% endif %}
                 <div class="download">
                     {% if book.pdf_file %}
@@ -60,83 +60,12 @@
 			<br/><a href="#" id="custom-pdf-link">{% trans "Dowload customized PDF" %}</a>.
 		    {% endif %}
 			<div style="display: none" class="custom-pdf">
-			  <form action="{% url catalogue.views.download_custom_pdf book.fileid %}" method="GET">
+			  <form action="{% url catalogue.views.download_custom_pdf book.slug %}" method="GET">
 			    {{custom_pdf_form.as_p}}
 			    <input type="submit" value="{% trans "Download" %}"/>
 			  </form>
 			</div>
                 </div>
-                {% if book.has_mp3_file or book.has_ogg_file or book.has_daisy_file %}
-                    <p class="header">
-                        <span class="desc">{% trans "Audiobooks" %}:</span>
-                        <span class="audiotabs">
-                            {% if book.has_mp3_file %}<span class="active" data-format="mp3">MP3</span>{% endif %}
-                            {% if book.has_ogg_file %}<span data-format="ogg">Ogg Vorbis</span>{% endif %}
-                            {% if book.has_daisy_file %}<span data-format="daisy">DAISY</span>{% endif %}
-                        </span>
-                    </p>
-                    <div class="audiobooks">
-                        <img src="{{ STATIC_URL }}img/speaker.png" id="speaker" alt="Speaker icon"/>
-                        {% if book.has_mp3_file %}
-                            <ul class="audiobook-list" id="mp3-files">
-                            {% for media in book.get_mp3 %}
-                                <li class="mp3Player">
-                                  <a href="{{ media.file.url }}">{{ media.name }}</a><br/>
-                                  {% trans "Artist" %}: {{ media.get_extra_info_value.artist_name }}<br/>
-                                  {% trans "Director"%}: {{ media.get_extra_info_value.director_name }}<br/>
-                                  <object type="application/x-shockwave-flash" style="margin-top: 0.5em" data="{{ STATIC_URL }}player.swf" width="226" height="20">
-                                        <param name="movie" value="{{ STATIC_URL }}player.swf" />
-                                        <param name="bgcolor" value="#ffffff" />
-                                        <param name="FlashVars" value="mp3={{ media.file.url }}&amp;width=226&amp;showvolume=1&amp;bgcolor1=eeeeee&amp;bgcolor2=eeeeee&amp;buttoncolor=666666" />
-                                    </object>
-                                    
-                                </li>
-                            {% endfor %}
-                            </ul>     
-                        {% endif %}
-
-                        {% if book.has_ogg_file %}
-                            <ul class="audiobook-list" id="ogg-files">
-                            {% for media in book.get_ogg %}
-                                <li><a href="{{ media.file.url }}">{{ media.name }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
-                        {% if book.has_daisy_file %}
-                            <ul class="audiobook-list" id="daisy-files">
-                            {% for media in book.get_daisy %}
-                                <li><a href="{{ media.file.url }}">{{ media.name }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div> <!-- /audiobooks -->
-                    {% if projects|length > 1 %}
-                        <p>{% trans "Audiobooks were prepared as a part of the projects:" %}</p>
-                        <ul>
-                        {% for cs, fb in projects %}
-                            <li>
-                            {% if fb %}
-                                {% blocktrans %}{{ cs }}, funded by {{ fb }}{% endblocktrans %}
-                            {% else %}
-                                {{ cs }}
-                            {% endif %}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>
-                        {% with projects.0.0 as cs %}
-                        {% with projects.0.1 as fb %}
-                            {% if fb %}
-                                {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project funded by {{ fb }}.{% endblocktrans %}
-                            {% else %}
-                                {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project.{% endblocktrans %}
-                            {% endif %}
-                        {% endwith %}
-                        {% endwith %}
-                        </p>
-                    {% endif %}
-                {% endif %}
             </div>
         </div>
 
@@ -199,13 +128,13 @@
                 {% endif %}
             </ul>
             <p><a href="{{ book.xml_file.url }}">{% trans "View XML source" %}</a></p>
-            <p><a href="{% url poem_from_book book.urlid %}">Miksuj ten utwór</a></p>
+            <p><a href="{% url poem_from_book book.slug %}">Miksuj ten utwór</a></p>
         </div>
         <div id="themes-list">
             <h2>{% trans "Work's themes " %}</h2>
             <ul>
             {% for theme in book_themes %}
-                <li><a href="{% url book_fragments book.urlid theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
+                <li><a href="{% url book_fragments book.slug theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
             {% endfor %}
             </ul>
         </div>

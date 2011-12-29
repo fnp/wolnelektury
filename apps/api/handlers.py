@@ -99,14 +99,10 @@ class BookDetailHandler(BaseHandler):
         'media', 'url'] + category_singular.keys()
 
     @piwik_track
-    def read(self, request, book):
+    def read(self, request, slug):
         """ Returns details of a book, identified by a slug and lang. """
-        kwargs = Book.split_urlid(book)
-        if not kwargs:
-            return rc.NOT_FOUND
-
         try:
-            return Book.objects.get(**kwargs)
+            return Book.objects.get(slug=slug)
         except Book.DoesNotExist:
             return rc.NOT_FOUND
 
@@ -127,7 +123,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler):
     @classmethod
     def href(cls, book):
         """ Returns an URI for a Book in the API. """
-        return API_BASE + reverse("api_book", args=[book.urlid()])
+        return API_BASE + reverse("api_book", args=[book.slug])
 
     @classmethod
     def url(cls, book):
@@ -269,18 +265,10 @@ class FragmentDetailHandler(BaseHandler):
     fields = ['book', 'anchor', 'text', 'url', 'themes']
 
     @piwik_track
-    def read(self, request, book, anchor):
+    def read(self, request, slug, anchor):
         """ Returns details of a fragment, identified by book slug and anchor. """
-        kwargs = Book.split_urlid(book)
-        if not kwargs:
-            return rc.NOT_FOUND
-
-        fragment_kwargs = {}
-        for field, value in kwargs.items():
-            fragment_kwargs['book__' + field] = value
-
         try:
-            return Fragment.objects.get(anchor=anchor, **fragment_kwargs)
+            return Fragment.objects.get(book__slug=slug, anchor=anchor)
         except Fragment.DoesNotExist:
             return rc.NOT_FOUND
 
@@ -317,7 +305,8 @@ class FragmentsHandler(BaseHandler):
     def href(cls, fragment):
         """ Returns URI in the API for the fragment. """
 
-        return API_BASE + reverse("api_fragment", args=[fragment.book.urlid(), fragment.anchor])
+        return API_BASE + reverse("api_fragment", 
+            args=[fragment.book.slug, fragment.anchor])
 
     @classmethod
     def url(cls, fragment):

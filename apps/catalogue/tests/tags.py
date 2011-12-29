@@ -3,9 +3,6 @@ from catalogue import models
 from catalogue.test_utils import *
 from django.core.files.base import ContentFile
 
-from nose.tools import raises
-
-
 class BooksByTagTests(WLTestCase):
     """ tests the /katalog/category/tag page for found books """
 
@@ -66,12 +63,13 @@ class BooksByTagTests(WLTestCase):
                          ['Child'])
 
 
-
+from django.test import Client
 class TagRelatedTagsTests(WLTestCase):
     """ tests the /katalog/category/tag/ page for related tags """
 
     def setUp(self):
         WLTestCase.setUp(self)
+        self.client = Client()
         author = PersonStub(("Common",), "Man")
 
         gchild_info = BookInfoStub(author=author, genre="GchildGenre", epoch='Epoch', kind="Kind",
@@ -132,13 +130,13 @@ class TagRelatedTagsTests(WLTestCase):
     def test_related_differ(self):
         """ related tags shouldn't include filtering tags """
 
-        cats = self.client.get('/katalog/rodzaj/kind/').context['categories']
+        response = self.client.get('/katalog/rodzaj/kind/')
+        cats = response.context['categories']
         self.assertFalse('Kind' in [tag.name for tag in cats['kind']],
                          'filtering tag wrongly included in related')
         cats = self.client.get('/katalog/motyw/theme/').context['categories']
         self.assertFalse('Theme' in [tag.name for tag in cats['theme']],
                          'filtering theme wrongly included in related')
-
 
     def test_parent_tag_once(self):
         """ if parent and descendants have a common tag, count it only once """
