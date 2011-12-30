@@ -15,7 +15,7 @@ class BookImportLogicTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         self.book_info = BookInfoStub(
-            url=WLURI.from_slug_and_lang(u"default-book", None),
+            url=WLURI.from_slug(u"default-book"),
             about=u"http://wolnelektury.pl/example/URI/default_book",
             title=u"Default Book",
             author=PersonStub(("Jim",), "Lazy"),
@@ -114,7 +114,7 @@ class BookImportLogicTests(WLTestCase):
     @raises(ValueError)
     def test_book_with_invalid_slug(self):
         """ Book with invalid characters in slug shouldn't be imported """
-        self.book_info.url = WLURI.from_slug_and_lang(u"default_book", None)
+        self.book_info.url = WLURI.from_slug(u"default_book")
         BOOK_TEXT = "<utwor />"
         book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
 
@@ -247,12 +247,15 @@ class ChildImportTests(WLTestCase):
 class MultilingualBookImportTest(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
+        common_uri = WLURI.from_slug('common-slug')
+
         self.pol_info = BookInfoStub(
             genre='X-Genre',
             epoch='X-Epoch',
             kind='X-Kind',
             author=PersonStub(("Joe",), "Doe"),
-            **info_args("A book")
+            variant_of=common_uri,
+            **info_args(u"Książka")
         )
 
         self.eng_info = BookInfoStub(
@@ -260,6 +263,7 @@ class MultilingualBookImportTest(WLTestCase):
             epoch='X-Epoch',
             kind='X-Kind',
             author=PersonStub(("Joe",), "Doe"),
+            variant_of=common_uri,
             **info_args("A book", "eng")
         )
 

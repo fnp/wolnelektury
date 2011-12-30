@@ -9,7 +9,7 @@
 {% if not user.tag_set.count %}
     <p>{% trans "You do not have any shelves. You can create one below, if you want to."%}</p>
 {% else %}
-    <form action="{% url catalogue.views.book_sets book.urlid %}" method="POST" id="putOnShelf" accept-charset="utf-8" class="cuteform">
+    <form action="{% url catalogue.views.book_sets book.slug %}" method="POST" id="putOnShelf" accept-charset="utf-8" class="cuteform">
     <ol>
         <li>{{ form.set_ids }}</li>
         <li><input type="submit" value="{% trans "Put on the shelf!" %}"/></li>

@@ -103,8 +103,8 @@ class BookMediaTests(WLTestCase):
         bm.file.save(None, self.file)
         bm.save()
         
-        zip_url = self.book.zip_audiobooks()
-        self.assertEqual('zip/'+self.book.slug+'.zip', zip_url)
+        zip_url = self.book.zip_audiobooks('ogg')
+        self.assertEqual('zip/'+self.book.slug+'_ogg.zip', zip_url)
         self.assertTrue(exists(join(settings.MEDIA_ROOT, zip_url)))
 
         bm2 = models.BookMedia(book=self.book, type='ogg', name="Other title")

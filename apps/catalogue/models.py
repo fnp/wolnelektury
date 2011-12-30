@@ -222,7 +222,7 @@ def get_customized_pdf_path(book, customizations):
     customizations.sort()
     h = hash(tuple(customizations))
 
-    pdf_name = '%s-custom-%s' % (book.fileid(), h)
+    pdf_name = '%s-custom-%s' % (book.slug, h)
     pdf_file = get_dynamic_path(None, pdf_name, ext='pdf')
 
     return pdf_file
@@ -232,7 +232,7 @@ def get_existing_customized_pdf(book):
     """
     Returns a list of paths to generated customized pdf of a book
     """
-    pdf_glob = '%s-custom-' % (book.fileid(),)
+    pdf_glob = '%s-custom-' % (book.slug,)
     pdf_glob = get_dynamic_path(None, pdf_glob, ext='pdf')
     pdf_glob = re.sub(r"[.]([a-z0-9]+)$", "*.\\1", pdf_glob)
     return glob(path.join(settings.MEDIA_ROOT, pdf_glob))
@@ -271,7 +271,7 @@ class BookMedia(models.Model):
         try:
             old = BookMedia.objects.get(pk=self.pk)
         except BookMedia.DoesNotExist, e:
-            pass
+            old = None
         else:
             # if name changed, change the file name, too
             if slughifi(self.name) != slughifi(old.name):
@@ -280,7 +280,9 @@ class BookMedia(models.Model):
         super(BookMedia, self).save(*args, **kwargs)
 
         # remove the zip package for book with modified media
-        remove_zip(self.book.fileid())
+        if old:
+            remove_zip("%s_%s" % (old.book.slug, old.type))
+        remove_zip("%s_%s" % (self.book.slug, self.type))
 
         extra_info = self.get_extra_info_value()
         extra_info.update(self.read_meta())
@@ -349,7 +351,9 @@ class BookMedia(models.Model):
 class Book(models.Model):
     title         = models.CharField(_('title'), max_length=120)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
-    slug          = models.SlugField(_('slug'), max_length=120, db_index=True)
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True,
+            unique=True)
+    common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     language = models.CharField(_('language code'), max_length=3, db_index=True,
                     default=settings.CATALOGUE_DEFAULT_LANGUAGE)
     description   = models.TextField(_('description'), blank=True)
@@ -374,56 +378,16 @@ class Book(models.Model):
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
 
-    URLID_RE = r'[a-z0-9-]+(?:/[a-z]{3})?'
-    FILEID_RE = r'[a-z0-9-]+(?:_[a-z]{3})?'
-
     class AlreadyExists(Exception):
         pass
 
     class Meta:
-        unique_together = [['slug', 'language']]
         ordering = ('sort_key',)
         verbose_name = _('book')
         verbose_name_plural = _('books')
 
     def __unicode__(self):
         return self.title
-
-    def urlid(self, sep='/'):
-        stem = self.slug
-        if self.language != settings.CATALOGUE_DEFAULT_LANGUAGE:
-            stem += sep + self.language
-        return stem
-
-    def fileid(self):
-        return self.urlid('_')
-
-    @staticmethod
-    def split_urlid(urlid, sep='/', default_lang=settings.CATALOGUE_DEFAULT_LANGUAGE):
-        """Splits a URL book id into slug and language code.
-        
-        Returns a dictionary usable i.e. for object lookup, or None.
-
-        >>> Book.split_urlid("a-slug/pol", default_lang="eng")
-        {'slug': 'a-slug', 'language': 'pol'}
-        >>> Book.split_urlid("a-slug", default_lang="eng")
-        {'slug': 'a-slug', 'language': 'eng'}
-        >>> Book.split_urlid("a-slug_pol", "_", default_lang="eng")
-        {'slug': 'a-slug', 'language': 'pol'}
-        >>> Book.split_urlid("a-slug/eng", default_lang="eng")
-
-        """
-        parts = urlid.rsplit(sep, 1)
-        if len(parts) == 2:
-            if parts[1] == default_lang:
-                return None
-            return {'slug': parts[0], 'language': parts[1]}
-        else:
-            return {'slug': urlid, 'language': default_lang}
-
-    @classmethod
-    def split_fileid(cls, fileid):
-        return cls.split_urlid(fileid, '_')
 
     def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
         from sortify import sortify
@@ -439,18 +403,14 @@ class Book(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.book_detail', [self.urlid()])
+        return ('catalogue.views.book_detail', [self.slug])
 
     @property
     def name(self):
         return self.title
 
     def book_tag_slug(self):
-        stem = 'l-' + self.slug
-        if self.language != settings.CATALOGUE_DEFAULT_LANGUAGE:
-            return stem[:116] + ' ' + self.language
-        else:
-            return stem[:120]
+        return ('l-' + self.slug)[:120]
 
     def book_tag(self):
         slug = self.book_tag_slug()
@@ -563,7 +523,7 @@ class Book(models.Model):
     has_daisy_file.boolean = True
 
     def wldocument(self, parse_dublincore=True):
-        from catalogue.utils import ORMDocProvider
+        from catalogue.import_utils import ORMDocProvider
         from librarian.parser import WLDocument
 
         return WLDocument.from_file(self.xml_file.path,
@@ -599,7 +559,7 @@ class Book(models.Model):
             # we'd like to be sure not to overwrite changes happening while
             # (timely) pdf generation is taking place (async celery scenario)
             current_self = Book.objects.get(id=self.id)
-            current_self.pdf_file.save('%s.pdf' % self.fileid(),
+            current_self.pdf_file.save('%s.pdf' % self.slug,
                     File(open(pdf.get_filename())))
             self.pdf_file = current_self.pdf_file
 
@@ -622,7 +582,7 @@ class Book(models.Model):
 
         mobi = self.wldocument().as_mobi()
 
-        self.mobi_file.save('%s.mobi' % self.fileid(), File(open(mobi.get_filename())))
+        self.mobi_file.save('%s.mobi' % self.slug, File(open(mobi.get_filename())))
 
         # remove zip with all mobi files
         remove_zip(settings.ALL_MOBI_ZIP)
@@ -634,7 +594,7 @@ class Book(models.Model):
 
         epub = self.wldocument().as_epub()
 
-        self.epub_file.save('%s.epub' % self.fileid(),
+        self.epub_file.save('%s.epub' % self.slug,
                 File(open(epub.get_filename())))
 
         # remove zip package with all epub files
@@ -644,7 +604,7 @@ class Book(models.Model):
         from django.core.files.base import ContentFile
 
         text = self.wldocument().as_text()
-        self.txt_file.save('%s.txt' % self.fileid(), ContentFile(text.get_string()))
+        self.txt_file.save('%s.txt' % self.slug, ContentFile(text.get_string()))
 
 
     def build_html(self):
@@ -659,7 +619,7 @@ class Book(models.Model):
 
         html_output = self.wldocument(parse_dublincore=False).as_html()
         if html_output:
-            self.html_file.save('%s.html' % self.fileid(),
+            self.html_file.save('%s.html' % self.slug,
                     ContentFile(html_output.get_string()))
 
             # get ancestor l-tags for adding to new fragments
@@ -710,7 +670,7 @@ class Book(models.Model):
         def pretty_file_name(book):
             return "%s/%s.%s" % (
                 b.get_extra_info_value()['author'],
-                b.fileid(),
+                b.slug,
                 format_)
 
         field_name = "%s_file" % format_
@@ -724,7 +684,7 @@ class Book(models.Model):
     def zip_audiobooks(self, format_):
         bm = BookMedia.objects.filter(book=self, type=format_)
         paths = map(lambda bm: (None, bm.file.path), bm)
-        result = create_zip.delay(paths, "%s_%s" % (self.fileid(), format_))
+        result = create_zip.delay(paths, "%s_%s" % (self.slug, format_))
         return result.wait()
 
     def search_index(self, book_info=None):
@@ -768,30 +728,33 @@ class Book(models.Model):
         if hasattr(book_info, 'parts'):
             for part_url in book_info.parts:
                 try:
-                    children.append(Book.objects.get(
-                        slug=part_url.slug, language=part_url.language))
+                    children.append(Book.objects.get(slug=part_url.slug))
                 except Book.DoesNotExist, e:
-                    raise Book.DoesNotExist(_('Book "%s/%s" does not exist.') %
-                            (part_url.slug, part_url.language))
+                    raise Book.DoesNotExist(_('Book "%s" does not exist.') %
+                            part_url.slug)
 
 
         # Read book metadata
         book_slug = book_info.url.slug
-        language = book_info.language
-        if re.search(r'[^a-zA-Z0-9-]', book_slug):
+        if re.search(r'[^a-z0-9-]', book_slug):
             raise ValueError('Invalid characters in slug')
-        book, created = Book.objects.get_or_create(slug=book_slug, language=language)
+        book, created = Book.objects.get_or_create(slug=book_slug)
 
         if created:
             book_shelves = []
         else:
             if not overwrite:
-                raise Book.AlreadyExists(_('Book %s/%s already exists') % (
-                        book_slug, language))
+                raise Book.AlreadyExists(_('Book %s already exists') % (
+                        book_slug))
             # Save shelves for this book
             book_shelves = list(book.tags.filter(category='set'))
 
+        book.language = book_info.language
         book.title = book_info.title
+        if book_info.variant_of:
+            book.common_slug = book_info.variant_of.slug
+        else:
+            book.common_slug = book.slug
         book.set_extra_info_value(book_info.to_dict())
         book.save()
 
@@ -955,7 +918,7 @@ class Book(models.Model):
 
         books_by_parent = {}
         books = cls.objects.all().order_by('parent_number', 'sort_key').only(
-                'title', 'parent', 'slug', 'language')
+                'title', 'parent', 'slug')
         if filter:
             books = books.filter(filter).distinct()
             book_ids = set((book.pk for book in books))

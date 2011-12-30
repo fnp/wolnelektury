@@ -44,9 +44,6 @@ class Picture(models.Model):
         verbose_name = _('picture')
         verbose_name_plural = _('pictures')
 
-    URLID_RE = r'[a-z0-9-]+'
-    FILEID_RE = r'[a-z0-9-]+'
-
     def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
         from sortify import sortify
 
@@ -64,10 +61,7 @@ class Picture(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('picture.views.picture_detail', [self.urlid()])
-
-    def urlid(self):
-        return self.slug
+        return ('picture.views.picture_detail', [self.slug])
 
     @classmethod
     def from_xml_file(cls, xml_file, image_file=None, overwrite=False):

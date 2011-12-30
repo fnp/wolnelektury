@@ -51,7 +51,7 @@
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
-            <a href="{% url book_text book.urlid %}" class="mono downarrow">{% trans "Read online" %}</a>
+            <a href="{% url book_text book.slug %}" class="mono downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
         <li class="book-box-download">

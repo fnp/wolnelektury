@@ -186,11 +186,8 @@ def tagged_object_list(request, tags=''):
         context_instance=RequestContext(request))
 
 
-def book_fragments(request, book, theme_slug):
-    kwargs = models.Book.split_urlid(book)
-    if kwargs is None:
-        raise Http404
-    book = get_object_or_404(models.Book, **kwargs)
+def book_fragments(request, slug, theme_slug):
+    book = get_object_or_404(models.Book, slug=slug)
 
     book_tag = book.book_tag()
     theme = get_object_or_404(models.Tag, slug=theme_slug, category='theme')
@@ -200,12 +197,9 @@ def book_fragments(request, book, theme_slug):
         context_instance=RequestContext(request))
 
 
-def book_detail(request, book):
-    kwargs = models.Book.split_urlid(book)
-    if kwargs is None:
-        raise Http404
+def book_detail(request, slug):
     try:
-        book = models.Book.objects.get(**kwargs)
+        book = models.Book.objects.get(slug=slug)
     except models.Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, kwargs['slug'])
 
@@ -234,11 +228,8 @@ def book_detail(request, book):
         context_instance=RequestContext(request))
 
 
-def player(request, book):
-    kwargs = models.Book.split_urlid(book)
-    if kwargs is None:
-        raise Http404
-    book = get_object_or_404(models.Book, **kwargs)
+def player(request, slug):
+    book = get_object_or_404(models.Book, slug=slug)
     if not book.has_media('mp3'):
         raise Http404
 
@@ -275,11 +266,8 @@ def player(request, book):
         context_instance=RequestContext(request))
 
 
-def book_text(request, book):
-    kwargs = models.Book.split_fileid(book)
-    if kwargs is None:
-        raise Http404
-    book = get_object_or_404(models.Book, **kwargs)
+def book_text(request, slug):
+    book = get_object_or_404(models.Book, slug=slug)
 
     if not book.has_html_file():
         raise Http404
@@ -514,14 +502,11 @@ def user_shelves(request):
             context_instance=RequestContext(request))
 
 @cache.never_cache
-def book_sets(request, book):
+def book_sets(request, slug):
     if not request.user.is_authenticated():
         return HttpResponse(_('<p>To maintain your shelves you need to be logged in.</p>'))
 
-    kwargs = models.Book.split_urlid(book)
-    if kwargs is None:
-        raise Http404
-    book = get_object_or_404(models.Book, **kwargs)
+    book = get_object_or_404(models.Book, slug=slug)
 
     user_sets = models.Tag.objects.filter(category='set', user=request.user)
     book_sets = book.tags.filter(category='set', user=request.user)
@@ -554,11 +539,8 @@ def book_sets(request, book):
 @login_required
 @require_POST
 @cache.never_cache
-def remove_from_shelf(request, shelf, book):
-    kwargs = models.Book.split_urlid(book)
-    if kwargs is None:
-        raise Http404
-    book = get_object_or_404(models.Book, **kwargs)
+def remove_from_shelf(request, shelf, slug):
+    book = get_object_or_404(models.Book, slug=slug)
 
     shelf = get_object_or_404(models.Tag, slug=shelf, category='set', user=request.user)
 
@@ -609,11 +591,10 @@ def download_shelf(request, slug):
     archive = zipfile.ZipFile(temp, 'w')
 
     for book in collect_books(models.Book.tagged.with_all(shelf)):
-        fileid = book.fileid()
         for ebook_format in models.Book.ebook_formats:
             if ebook_format in formats and book.has_media(ebook_format):
                 filename = book.get_media(ebook_format).path
-                archive.write(filename, str('%s.%s' % (fileid, ebook_format)))
+                archive.write(filename, str('%s.%s' % (book.slug, ebook_format)))
     archive.close()
 
     response = HttpResponse(content_type='application/zip', mimetype='application/x-zip-compressed')
@@ -712,25 +693,20 @@ def tag_info(request, id):
     return HttpResponse(tag.description)
 
 
-def download_zip(request, format, book=None):
-    kwargs = models.Book.split_fileid(book)
-
+def download_zip(request, format, slug=None):
     url = None
     if format in models.Book.ebook_formats:
         url = models.Book.zip_format(format)
-    elif format in ('mp3', 'ogg') and kwargs is not None:
-        book = get_object_or_404(models.Book, **kwargs)
+    elif format in ('mp3', 'ogg') and slug is not None:
+        book = get_object_or_404(models.Book, slug=slug)
         url = book.zip_audiobooks(format)
     else:
         raise Http404('No format specified for zip package')
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))
 
 
-def download_custom_pdf(request, book_fileid, method='GET'):
-    kwargs = models.Book.split_fileid(book_fileid)
-    if kwargs is None:
-        raise Http404
-    book = get_object_or_404(models.Book, **kwargs)
+def download_custom_pdf(request, slug, method='GET'):
+    book = get_object_or_404(models.Book, slug=slug)
 
     if request.method == method:
         form = forms.CustomPDFForm(method == 'GET' and request.GET or request.POST)
@@ -741,7 +717,7 @@ def download_custom_pdf(request, book_fileid, method='GET'):
             if not path.exists(pdf_file):
                 result = async_build_pdf.delay(book.id, cust, pdf_file)
                 result.wait()
-            return AttachmentHttpResponse(file_name=("%s.pdf" % book_fileid), file_path=pdf_file, mimetype="application/pdf")
+            return AttachmentHttpResponse(file_name=("%s.pdf" % book.slug), file_path=pdf_file, mimetype="application/pdf")
         else:
             raise Http404(_('Incorrect customization options for PDF'))
     else:

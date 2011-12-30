@@ -20,7 +20,6 @@ from errno import EEXIST, ENOENT
 from fcntl import flock, LOCK_EX
 from zipfile import ZipFile
 
-from librarian import DocProvider
 from reporting.utils import read_chunks
 from celery.task import task
 import catalogue.models
@@ -58,20 +57,6 @@ class ExistingFile(UploadedFile):
 
     def close(self):
         pass
-
-
-class ORMDocProvider(DocProvider):
-    """Used for getting books' children."""
-
-    def __init__(self, book):
-        self.book = book
-
-    def by_slug_and_lang(self, slug, language):
-        if slug == self.book.slug and language == self.language:
-            return open(self.book.xml_file.path)
-        else:
-            return type(self.book).objects.get(
-                    slug=slug, language=language).xml_file
 
 
 class LockFile(object):
@@ -180,7 +165,11 @@ class MultiQuerySet(object):
         return self.count()
         
     def __getitem__(self, item):
-        indices = (offset, stop, step) = item.indices(self.count())
+        try:
+            indices = (offset, stop, step) = item.indices(self.count())
+        except AttributeError:
+            # it's not a slice - make it one
+            return self[item : item + 1][0]
         items = []
         total_len = stop - offset
         for qs in self.querysets:
