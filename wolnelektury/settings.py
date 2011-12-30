@@ -232,16 +232,14 @@ COMPRESS_JS = {
         ],
         'output_filename': 'js/player.min?.js',
     },
-    #~ 'book': {
-        #~ 'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
-        #~ 'source_filenames': [],
-        #~ 'output_filename': 'js/book?.min.js',
-    #~ },
-    #~ 'book_ie': {
-        #~ 'source_filenames': ('js/ierange-m2.js',),
-        #~ 'source_filenames': [],
-        #~ 'output_filename': 'js/book_ie?.min.js',
-    #~ }
+    'book': {
+        'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
+        'output_filename': 'js/book?.min.js',
+    },
+    'book_ie': {
+        'source_filenames': ('js/ierange-m2.js',),
+        'output_filename': 'js/book_ie?.min.js',
+    }
 
 }
 

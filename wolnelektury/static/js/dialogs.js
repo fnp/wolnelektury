@@ -27,14 +27,22 @@
                     hash.w.show();
                 },
                 onLoad: function(hash) {
-                    $('form', hash.w).each(function() {this.action += '?ajax=1';});
+                    $('form', hash.w).each(function() {
+                        if (this.action.search('[\\?&]ajax=1') != -1)
+                            return;
+                        if (this.action.search('\\?') != -1)
+                            this.action += '&ajax=1';
+                        else this.action += '?ajax=1';
+                    });
                     $('form', hash.w).ajaxForm({
                         dataType: 'json',
                         target: $('.target', $window),
                         success: function(response) {
                             if (response.success) {
                                 $('.target', $window).text(response.message);
-                                setTimeout(function() { $window.jqmHide() }, 1000)
+                                setTimeout(function() { $window.jqmHide() }, 1000);
+                                if (response.redirect)
+                                    window.location = response.redirect;
                             }
                             else {
                                 $('.error', $window).remove();

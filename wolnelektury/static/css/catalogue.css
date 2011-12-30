@@ -9,3 +9,49 @@
     margin: 0;
     padding: 0;
 }
+
+
+/* listing of all books */
+#book-list {
+   padding-left: 50px;
+}
+#book-list-nav {
+    position: absolute;
+    right: 50px;
+    width: 200px;
+    border-left: 1px #cfcfcf solid;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#book-list-nav ul {
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+}
+
+.book-list-show-index {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#book-a-list #book-list ol {
+    padding-left: 1em;
+    margin: 0.3em 0 1.2em 0;
+    list-style: none;
+}
+
+#book-a-list #book-list h2 a {
+    color: black;
+}
+
+#book-list-up {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    border-left: 1px #cfcfcf solid;
+    padding: 10px;
+    background-color: white;    
+}
