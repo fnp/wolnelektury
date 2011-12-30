@@ -52,7 +52,7 @@ class AjaxableFormView(object):
                 redirect = request.GET.get('next')
                 if not ajax and redirect:
                     return HttpResponseRedirect(urlquote_plus(
-                            redirect, safe='/?='))
+                            redirect, safe='/?=&'))
                 response_data = {'success': True, 
                     'message': self.success_message, 'redirect': redirect}
             else:
