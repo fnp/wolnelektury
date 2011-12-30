@@ -33,6 +33,7 @@ from os import path
 
 import search
 
+# Those are hard-coded here so that makemessages sees them.
 TAG_CATEGORIES = (
     ('author', _('author')),
     ('epoch', _('epoch')),

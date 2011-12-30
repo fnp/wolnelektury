@@ -14,3 +14,4 @@ class Command(BaseCommand):
             idx.index_book(b, None)
         print 'Reindexing tags.'
         idx.index_tags()
+        idx.close()
