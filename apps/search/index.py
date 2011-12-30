@@ -280,7 +280,7 @@ class Index(IndexStore):
             return
 
         def fix_format(text):
-            return re.sub("/$", "", text, flags=re.M)
+            return re.sub("(?m)/$", "", text)
 
         def add_part(snippets, **fields):
             doc = self.create_book_doc(book)
