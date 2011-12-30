@@ -8,3 +8,6 @@ if [ -n "$VIRTUAL_ENV" ]; then
 else
     echo "No Virtual env enabled, will not add it to TAGS"
 fi
+
+find $ROOT/wolnelektury/static/css -name '*.css' |xargs etags -a -o ${ROOT}/TAGS
+find $ROOT/wolnelektury/static/js -name '*.js' |xargs etags -a -o ${ROOT}/TAGS

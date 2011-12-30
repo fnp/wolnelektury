@@ -90,9 +90,20 @@ function changeBannerText() {
     }
 }
 
-function autocomplete_result_handler(event, item) {
-    $(event.target).closest('form').submit();
+function autocomplete_format_item(ul, item) {
+    return $("<li></li>").data('item.autocomplete', item)
+    .append('<a href="'+item.url+'">'+item.label+ ' ('+item.category+')</a>')
+    .appendTo(ul);
 }
+
+function autocomplete_result_handler(event, ui) {
+    if (ui.item.url != undefined) {
+	location.href = ui.item.url;
+    } else {
+	$(event.target).closest('form').submit();
+    }
+}
+
 function serverTime() {
     var time = null;
     $.ajax({url: '/katalog/zegar/',

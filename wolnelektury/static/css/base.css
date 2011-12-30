@@ -69,9 +69,11 @@ h2 {
 .page-desc {
     margin-left: 1.5em;
 }
+
 .inline-tag-lists {
     font-size: 1.1em;
 }
+
 #themes-list-toggle:after {
     padding-left: 1em;
     content: "↓";

@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load thumbnail %}
-<div class="book-box">
+<div class="{% block box-class %}book-box{% endblock %}">
 <div class="book-box-inner">
     <a href="{{ book.get_absolute_url }}">
         {% if book.cover %}
@@ -13,6 +13,8 @@
             " alt="Cover" />
         {% endif %}
     </a>
+    {% block right-column %}
+    {% endblock %}
     <div class="book-box-body">
         <div class="book-box-head">
             <div class="mono author">
@@ -49,20 +51,33 @@
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
-            <a href="{% url book_text book.slug %}" class="mono">{% trans "Read online" %}</a>
+            <a href="{% url book_text book.slug %}" class="mono downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
         <li class="book-box-download">
-            <a class="mono">{% trans "Download" %}</a>
+            <a class="mono downarrow">{% trans "Download" %}</a>
             <div class="book-box-formats mono">
-                {{ formats|join:"" }}
+	      {% if formats.pdf %}
+	      <span><a href="{{formats.pdf.url}}">PDF</a> do wydruku</span>
+	      {% endif %}
+	      {% if formats.epub %}
+	      <span><a href="{{formats.epub.url}}">EPUB</a> na czytnik</span>
+	      {% endif %}
+	      {% if formats.mobi %}
+	      <span><a href="{{formats.mobi.url}}">MOBI</a> na Kindle</span>
+	      {% endif %}
+	      {% if formats.txt %}
+	      <span><a href="{{formats.txt.url}}">TXT</a> do zadań specjalnych</span>
+	      {% endif %}
             </div>
         </li>
         <li class="book-box-audiobook">
         {% if book.has_mp3_file %}
-            <a href="{% url book_player book.slug %}" class="open-player mono">{% trans "Listen" %}</a>
+            <a href="{% url book_player book.slug %}" class="open-player mono downarrow">{% trans "Listen" %}</a>
         {% endif %}
         </li>
     </ul>
+    {% block box-append %}
+    {% endblock %}
 </div>
 </div>

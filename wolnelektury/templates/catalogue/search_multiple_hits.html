@@ -9,6 +9,34 @@
 {% block body %}
     <h1>{% trans "Search" %}</h1>
 
+    <div id="results">
+      <ol>
+      {% for result in results %}
+      <li>
+	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
+	<ul>
+	  {% for hit in result.process_hits %}
+	  <li>
+	    {% if hit.fragment %}
+	    <a href="{{hit.fragment.get_absolute_url}}">Idź do fragmentu</a>
+	    <div style="">Tagi/Motywy: {% for tag in hit.themes %}{{tag.name}} {% endfor %}</div>
+	    {% endif %}
+	    {% for snip in hit.snippets %}
+	      {{snip|safe}}<br/>
+	    {% endfor %}
+	  </li>
+	  {% endfor %}
+
+	</ul>
+      </li>
+      {% empty %}
+      <p>No results.</p>
+      {% endfor %}
+      </ol>
+    </div>
+
+
+{% comment %}
     <div id="books-list">
         <p>{% trans "More than one result matching the criteria found." %}</p>
         <ul class='matches'>
@@ -23,5 +51,6 @@
         {% endfor %}
         </ul>
     </div>
+{% endcomment %}
 
 {% endblock %}

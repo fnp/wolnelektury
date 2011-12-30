@@ -1,4 +1,4 @@
-.book-mini-box, .book-box {
+.book-wide-box, .book-mini-box, .book-box {
     display: inline-block;
     margin: 0;
     vertical-align: top;
@@ -11,6 +11,10 @@
 
 .book-mini-box {
     width: 16.15em;
+}
+
+.book-wide-box {
+    width: 98.5em;
 }
 
 .book-mini-box a, .book-box-inner {
@@ -36,14 +40,14 @@
     margin: .5em;
 }
 
-.book-mini-box img, .book-box img {
+.book-mini-box img, .book-box img, .book-wide-box img {
     width: 13.9em;
     height: 19.3em;
 }
 .book-mini-box img {
     margin-bottom: 1.8em;
 }
-.book-box img {
+.book-box img, .book-wide-box img {
     float: left;
     margin-right: 1.5em;
 }
@@ -87,21 +91,37 @@
 .book-box-download {
     position: relative;
 }
+
+.book-box-download a {
+    position: relative;
+    z-index: 1;
+}
+
 .book-box-formats {
     display: none;
     position: absolute;
 
+    width: 16.363em;
     border: 1px solid #ddd;
-    padding: .8em 1em;
+    padding: 3.454em 1.727em .818em 1.727em;
     background: #fff;
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
     box-shadow: 2px 2px 2px #ddd;
-    
+
+    z-index: 0;
+    top: -1.454em;
+    left: -1.727em;
 }
-.book-box-formats a {
+.book-box-formats span {
     display: block;
 }
+ 
+
+.book-box-download:hover .book-box-formats:first {
+    margin-top: 1.454em;
+}
+
 .book-box-download:hover .book-box-formats {
     display: block;
 }
@@ -109,20 +129,15 @@
 .book-box-tools {
     font-size: 1.1em;
 }
-.book-box-read a:before {
+
+.book-box-tools a.downarrow:before {
     content: "\2609";
     font-family: WL-Nav;
     font-size: 2.25em;
     margin-right: .15em;
     vertical-align: middle;
 }
-.book-box-download a:before {
-    content: "⇩";
-    font-family: WL-Nav;
-    font-size: 2.25em;
-    margin-right: .15em;
-    vertical-align: middle;
-}
+
 .book-box-audiobook a:before {
     content: "\266B";
     font-family: WL-Nav;
@@ -130,6 +145,16 @@
     margin-right: .15em;
     vertical-align: middle;
 }
+
+ul.book-box-tools {
+    margin: 0;
+    padding: 0;
+}
+
+.book-box-tools li {
+    display: inline-block;
+}
+
 .book-box-read {
     width: 11.5em;
 }
@@ -138,4 +163,39 @@
 }
 .book-box-audiobook {
     width: 7em;
+}
+
+.book-wide-box .right-column {
+    float: right;
+    width: 41.5em;
+}
+
+.book-wide-box blockquote.cite-body {
+    /* @ 18pt */
+    width: 100%; /*23.055em;*/
+    height: 7.222em;
+    background-color: #f7f7f7;
+    margin: 0;
+    position: relative;
+    top: -0.444em;
+    right: -0.555em;
+    vertical-align: center;
+}
+
+.book-wide-box blockquote div {
+    padding: 0.888em;
+}
+
+.book-wide-box #other-tools {
+    float: left;
+    width: 14.5em;
+    margin-left: 1.5em;
+    
+}
+
+
+.book-wide-box #other-download {
+    float: left;
+    width 22.5em;
+    margin: 0em 1.5em 0em 1.5em
 }

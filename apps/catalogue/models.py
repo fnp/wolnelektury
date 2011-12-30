@@ -24,12 +24,14 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import create_zip, split_tags
-from catalogue.tasks import touch_tag
+from catalogue.tasks import touch_tag, index_book
 from shutil import copy
 from glob import glob
 import re
 from os import path
 
+
+import search
 
 TAG_CATEGORIES = (
     ('author', _('author')),
@@ -468,16 +470,12 @@ class Book(models.Model):
             tags = self.tags.filter(category__in=('author', 'kind', 'genre', 'epoch'))
             tags = split_tags(tags)
 
-            formats = []
+            formats = {}
             # files generated during publication
             for ebook_format in self.ebook_formats:
                 if self.has_media(ebook_format):
-                    formats.append(u'<a href="%s">%s</a>' % (
-                        self.get_media(ebook_format).url,
-                        ebook_format.upper()
-                    ))
+                    formats[ebook_format] = self.get_media(ebook_format)
 
-            formats = [mark_safe(format) for format in formats]
 
             short_html = unicode(render_to_string('catalogue/book_short.html',
                 {'book': self, 'tags': tags, 'formats': formats}))
@@ -689,6 +687,19 @@ class Book(models.Model):
         result = create_zip.delay(paths, "%s_%s" % (self.slug, format_))
         return result.wait()
 
+    def search_index(self, book_info=None):
+        if settings.CELERY_ALWAYS_EAGER:
+            idx = search.ReusableIndex()
+        else:
+            idx = search.Index()
+            
+        idx.open()
+        try:
+            idx.index_book(self, book_info)
+            idx.index_tags()
+        finally:
+            idx.close()
+
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -707,7 +718,8 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
-            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True):
+            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True,
+            search_index=True):
         import re
         from sortify import sortify
 
@@ -777,6 +789,9 @@ class Book(models.Model):
 
         if not settings.NO_BUILD_MOBI and build_mobi:
             book.build_mobi()
+
+        if not settings.NO_SEARCH_INDEX and search_index:
+            index_book.delay(book.id, book_info)
 
         book_descendants = list(book.children.all())
         descendants_tags = set()
@@ -979,7 +994,7 @@ class Fragment(models.Model):
         verbose_name_plural = _('fragments')
 
     def get_absolute_url(self):
-        return '%s#m%s' % (self.book.get_html_url(), self.anchor)
+        return '%s#m%s' % (reverse('book_text', args=[self.book.slug]), self.anchor)
 
     def reset_short_html(self):
         if self.id is None:
