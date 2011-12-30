@@ -41,13 +41,6 @@ def did_you_mean(query, tokens):
     return query
 
 
-def category_name(category):
-    try:
-        return filter(lambda c: c[0] == category, TAG_CATEGORIES)[0][1].encode('utf-8')
-    except IndexError:
-        raise KeyError("No category %s" % category)
-
-
 def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
@@ -75,12 +68,12 @@ def hint(request):
 
     return JSONResponse(
         [{'label': t.name,
-          'category': _(category_name(t.category)),
+          'category': _(t.category),
           'id': t.id,
           'url': t.get_absolute_url()}
           for t in tags] + \
           [{'label': b.title,
-            'category': _(category_name('book')),
+            'category': _('book'),
             'id': b.id,
             'url': b.get_absolute_url()}
             for b in books])
