@@ -7,7 +7,7 @@
 {% block body %}
 <h1>{% trans "Publishing plan" %}</h1>
 
-<ul>
+<ul class="normal-text">
 {% for elem in plan %}
     <li><a href="{{ elem.link }}">{{ elem.title }}</a></li>
 {% endfor %}

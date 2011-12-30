@@ -10,11 +10,15 @@
     <h1>{{ page.title }}</h1>
 
     {% autoescape off %}
-    <div class="column-left">
-       {{ left_column }}
+    <div class="left-column">
+        <div class="normal-text">
+            {{ left_column }}
+        </div>
     </div>
-    <div class="column-right">
-       {{ right_column }}
+    <div class="right-column">
+        <div class="normal-text">
+            {{ right_column }}
+        </div>
     </div>
     {% endautoescape %}
 {% endblock %}

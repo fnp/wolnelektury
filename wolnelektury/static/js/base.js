@@ -17,6 +17,15 @@ $('.open-player').click(function(event) {
 });
 
 
+        $('.book-list-index').click(function(){
+            $('.book-list-show-index').hide('slow');
+            if($(this).parent().next('ul:not(:hidden)').length == 0){
+		$(this).parent().next('ul').toggle('slow');
+	    }
+            return false;
+        });
+
+
     });
 })(jQuery)
 

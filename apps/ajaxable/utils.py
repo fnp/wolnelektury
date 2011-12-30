@@ -35,9 +35,8 @@ class AjaxableFormView(object):
     form_class = None
     # override to customize form look
     template = "ajaxable/form.html"
-    # set to redirect after succesful ajax-less post
     submit = _('Send')
-    redirect = None
+    
     title = ''
     success_message = ''
     formname = "form"
@@ -51,10 +50,11 @@ class AjaxableFormView(object):
             if form.is_valid():
                 self.success(form, request)
                 redirect = request.GET.get('next')
-                if not ajax and redirect is not None:
+                if not ajax and redirect:
                     return HttpResponseRedirect(urlquote_plus(
-                                redirect, safe='/?='))
-                response_data = {'success': True, 'message': self.success_message}
+                            redirect, safe='/?='))
+                response_data = {'success': True, 
+                    'message': self.success_message, 'redirect': redirect}
             else:
                 response_data = {'success': False, 'errors': form.errors}
             if ajax:

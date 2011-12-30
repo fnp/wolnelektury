@@ -9,8 +9,6 @@ from infopages.models import InfoPage
 
 
 def infopage(request, slug):
-    page = InfoPage.objects.get(slug=slug)
-
     page = get_object_or_404(InfoPage, slug=slug)
     rc = RequestContext(request)
     left_column = Template(page.left_column).render(rc)

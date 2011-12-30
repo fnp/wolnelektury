@@ -25,9 +25,9 @@ def main_page(request):
 
 class LoginFormView(AjaxableFormView):
     form_class = AuthenticationForm
-    #template = "auth/login.html"
     title = _('Sign in')
     submit = _('Sign in')
+    ajax_redirect = True
 
     def __call__(self, request):
         if request.user.is_authenticated():
@@ -40,9 +40,9 @@ class LoginFormView(AjaxableFormView):
 
 class RegisterFormView(AjaxableFormView):
     form_class = UserCreationForm
-    #template = "auth/register.html"
     title = _('Register')
     submit = _('Register')
+    ajax_redirect = True
 
     def __call__(self, request):
         if request.user.is_authenticated():

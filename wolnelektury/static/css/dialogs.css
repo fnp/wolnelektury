@@ -1,7 +1,11 @@
+.cuteform {
+    font-size: 1.1em;
+}
 .cuteform ol, .cuteform ul {
     padding: 0;
     margin: 0;
     list-style: none;
+    font-style: 1.1em;
 }
 
 .cuteform ol li, .cuteform ul li {
@@ -22,6 +26,9 @@
     color: #BF3024;
     display: block;
 }
+.cuteform .errorlist {
+    color: #BF3024;
+}
 
 
 .jqmOverlay { background-color: #000; }
@@ -36,6 +43,7 @@
 }
 
 .dialog-window div.header {
+    font-size: 1.1em;
     width: 4em;
     background-color: #FFF;
     border-right: 0.3em solid #DDD;
@@ -60,29 +68,30 @@
     font-size: 1.2em;
 }
 
+.dialog-window textarea, .dialog-window input {
+    width: 100%;
+}
 
 #login-window {
-    width: 24em;
+    width: 26em;
 }
 #register-window {
-    width: 24em;
+    width: 26em;
 }
 
 #suggest-window {
-    width: 24em;
+    width: 26em;
 }
 
 #suggest-window textarea {
-    width: 19em;
     height: 6em;
 }
 
 #suggest-publishing-window {
-    width: 26em;
+    width: 29em;
 }
 
 #suggest-publishing-window textarea {
-	width: 21em;
     height: 3em;
 }
 

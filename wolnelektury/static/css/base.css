@@ -43,6 +43,10 @@ h1 {
     float:right;
     width: 48em;
 }
+.normal-text {
+    font-size: 1.3em;
+    line-height: 1.3em;
+}
 
 h2 {
     margin: 0;
@@ -60,7 +64,7 @@ h2 {
     clear: both;
 }
 
-#header-content, div#main-content, div#half-header-content {
+#header-content, div#main-content, div#half-header-content, #footer-content {
     width: 97.5em;
     margin: auto;
 }
@@ -147,6 +151,8 @@ a.cite {
 
 #footer {
     color: #777;
-    border-top: 1px solid #ddd;
-    margin-top: 2.5em;
+    eborder-top: 1px solid #ddd;
+    margin-top: 5em;
+    padding-top:3em;
+    background: #fff;
 }

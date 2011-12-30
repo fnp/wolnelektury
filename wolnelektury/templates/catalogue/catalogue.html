@@ -10,6 +10,7 @@
 {% block body %}
     <h1>{% trans "Catalogue" %}</h1>
 
+    <div class="normal-text">
     <h2></a>{% trans "Authors" %}<a name="autorzy"></a></h2>
     {% tag_list categories.author %}
 
@@ -24,4 +25,5 @@
 
     <h2>{% trans "Themes and topics" %}<a name="motywy"></a></h2>
     {% tag_list fragment_tags %}
+    </div>
 {% endblock %}

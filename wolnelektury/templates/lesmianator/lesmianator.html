@@ -11,7 +11,8 @@
 {% block body %}
     <h1>Leśmianator</h1>
 
-    <div id="books-list">
+    <div class="left-column">
+    <div class="normal-text">
         <p>Leśmianator tworzy wierszmiksy – dzięki niemu
             <a href="{% url new_poem %}">napiszesz wiersz jednym kliknięciem</a>.
             W nowej odsłonie nowe możliwości zabawy – teraz możesz zdecydować, co wrzucasz do miksera,
@@ -28,8 +29,10 @@
             {% endfor %}
     
     </div>
+    </div>
 
-    <div id="tags-list">
+    <div class="right-column">
+    <div class="normal-text">
         <h3>Miksuj utwory</h3>
         <p>Możesz <a href="{% url new_poem %}">zmiksować całą lirykę</a> w naszej bibliotece
         albo tylko jeden konkretny utwór. Jak? Wejdź na
@@ -52,5 +55,6 @@
 
         <p>Miłej zabawy!</p>
 
+    </div>
     </div>
 {% endblock %}
