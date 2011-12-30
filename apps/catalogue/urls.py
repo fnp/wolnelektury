@@ -6,6 +6,7 @@ from django.conf.urls.defaults import *
 from catalogue.feeds import AudiobookFeed
 from catalogue.models import Book
 from picture.models import Picture
+from catalogue.views import CustomPDFFormView
 
 urlpatterns = patterns('picture.views',
                        # pictures - currently pictures are coupled with catalogue, hence the url is here
@@ -47,5 +48,5 @@ urlpatterns = patterns('picture.views',
     url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
 
     url(r'^custompdf/(?P<book_fileid>%s).pdf' % Book.FILEID_RE, 'download_custom_pdf'),
-
+    url(r'^custompdf$', CustomPDFFormView(), name='custom_pdf_form')
 ) 

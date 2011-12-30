@@ -85,3 +85,11 @@
 	width: 21em;
     height: 3em;
 }
+
+#custom-pdf-window {
+    width: 24em;   
+}
+
+#custom-pdf-window label {
+    display: inline;
+}

@@ -12,12 +12,12 @@
 
   <div id="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>
-    <ul>
+    <ul class="inline-items">
       {% if extra_info.source_url %}
-      <li><a href="{{ extra_info.source_url }}">{% trans "Source of the book" %}</a></li>
+      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}</li>
       {% endif %}
       {% if extra_info.about and not hide_about %}
-      <li><a href="{{ extra_info.about }}">{% trans "Book on the Editor's Platform" %}</a></li>
+      <li>{% trans "Book on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
       {% endif %}
       {% if book.gazeta_link %}
       <li><a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a></li>
@@ -29,7 +29,18 @@
   </div>
   <div id="other-download">
     <h2 class="mono">{% trans "Download" %}</h2>
-    <p>{% trans "Download all audiobooks for this book" %}</p>
+    <ul class="inline-items">
+      <li>
+	{% if has_media.mp3 or has_media.ogg %}
+	{% trans "Download all audiobooks for this book" %}: 
+	{% if has_media.mp3 %}<a href="{% url download_zip_mp3 book.slug %}">MP3</a>{% endif %}{% if has_media.mp4 and has_media.ogg %},{% endif %}
+	{% if has_media.ogg %}<a href="{% url download_zip_ogg book.slug %}">OGG</a>{% endif %}.
+	{% endif %}
+      </li>
+      <li>
+	<a href="{% url custom_pdf_form %}?book_id={{book.fileid}}" id="custom-pdf" class="ajaxable">{% trans "Download a custom PDF" %}</a>
+      </li>
+    </ul>
   </div>
 </div>
 {% endblock %}

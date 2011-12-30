@@ -15,6 +15,7 @@
 
 .book-wide-box {
     width: 98.5em;
+    margin-left: -0.1em;
 }
 
 .book-mini-box a, .book-box-inner {
@@ -38,6 +39,10 @@
 .book-box-inner {
     height: 19.75em;
     margin: .5em;
+}
+
+.book-wide-box .book-box-inner {
+    height: 24.4em;
 }
 
 .book-mini-box img, .book-box img, .book-wide-box img {
@@ -69,6 +74,11 @@
     height: 17em;
     overflow: hidden;
 }
+
+.book-wide-box .book-box-body {
+    height: 21.8em;
+}
+
 .book-box-head {
     min-height: 7em;
     margin-top: 1.4em;
@@ -130,6 +140,10 @@
     font-size: 1.1em;
 }
 
+.book-wide-box .book-box-tools {
+    margin-left: 14em;
+}
+
 .book-box-tools a.downarrow:before {
     content: "\2609";
     font-family: WL-Nav;
@@ -186,16 +200,25 @@ ul.book-box-tools {
     padding: 0.888em;
 }
 
+ul.inline-items, ul.inline-items li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.inline-items li {
+    display: inline-block;
+}
+
 .book-wide-box #other-tools {
     float: left;
     width: 14.5em;
-    margin-left: 1.5em;
+    margin: 6em 0 0 1.5em;
     
 }
 
-
 .book-wide-box #other-download {
     float: left;
-    width 22.5em;
-    margin: 0em 1.5em 0em 1.5em
+    width: 22.5em;
+    margin: 6em 1.5em 0em 1.5em
 }
+

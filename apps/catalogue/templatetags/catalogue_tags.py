@@ -291,4 +291,8 @@ def book_wide(book):
 
     extra_info = book.get_extra_info_value()
 
+    has_media = {}
+    for media_format in ['mp3', 'ogg']:
+        has_media[media_format] = book.has_media(media_format)
+
     return locals()

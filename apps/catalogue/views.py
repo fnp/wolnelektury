@@ -23,7 +23,8 @@ from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.views.generic.list_detail import object_list
 
-from ajaxable.utils import LazyEncoder, JSONResponse
+from ajaxable.utils import LazyEncoder, JSONResponse, AjaxableFormView
+
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import (split_tags, AttachmentHttpResponse,
@@ -207,12 +208,12 @@ def book_detail(request, book):
         book = models.Book.objects.get(**kwargs)
     except models.Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, kwargs['slug'])
-    
+
     book_tag = book.book_tag()
     tags = list(book.tags.filter(~Q(category='set')))
     categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number', 'sort_key')
-    
+
     _book = book
     parents = []
     while _book.parent:
@@ -466,7 +467,7 @@ def search(request):
             context_instance=RequestContext(request))
     else:
         form = PublishingSuggestForm(initial={"books": prefix + ", "})
-        return render_to_response('catalogue/search_no_hits.html', 
+        return render_to_response('catalogue/search_no_hits.html',
             {'tags':tag_list, 'prefix':prefix, "pubsuggest_form": form},
             context_instance=RequestContext(request))
 
@@ -477,7 +478,7 @@ def tags_starting_with(request):
     if len(prefix) < 2:
         return HttpResponse('')
     tags_list = []
-    result = ""   
+    result = ""
     for tag in _tags_starting_with(prefix, request.user):
         if not tag.name in tags_list:
             result += "\n" + tag.name
@@ -725,18 +726,18 @@ def download_zip(request, format, book=None):
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))
 
 
-def download_custom_pdf(request, book_fileid):
+def download_custom_pdf(request, book_fileid, method='GET'):
     kwargs = models.Book.split_fileid(book_fileid)
     if kwargs is None:
         raise Http404
     book = get_object_or_404(models.Book, **kwargs)
 
-    if request.method == 'GET':
-        form = forms.CustomPDFForm(request.GET)
+    if request.method == method:
+        form = forms.CustomPDFForm(method == 'GET' and request.GET or request.POST)
         if form.is_valid():
             cust = form.customizations
             pdf_file = models.get_customized_pdf_path(book, cust)
-                
+
             if not path.exists(pdf_file):
                 result = async_build_pdf.delay(book.id, cust, pdf_file)
                 result.wait()
@@ -745,3 +746,15 @@ def download_custom_pdf(request, book_fileid):
             raise Http404(_('Incorrect customization options for PDF'))
     else:
         raise Http404(_('Bad method'))
+
+
+class CustomPDFFormView(AjaxableFormView):
+    form_class = forms.CustomPDFForm
+    title = _('Download custom PDF')
+    submit = _('Download')
+
+    def __call__(self, request):
+        if request.method == 'POST':
+            return download_custom_pdf(request, request.GET['book_id'], method='POST')
+        else:
+            return super(CustomPDFFormView, self).__call__(request)
