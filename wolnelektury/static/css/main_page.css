@@ -12,6 +12,7 @@
 #big-cite h2 {
     margin: 0;
     font-size: 1.1em;
+    color: #575c63;
 }
 
 
@@ -19,11 +20,12 @@
     margin: .05em;
     font-size: 2.8em;
     line-height: 1.2em;
+    color: #191919;
 }
 
 
 #big-cite-source {
-    color: #02adb7;
+    color: #00a1ac;
     margin: 0;
     font-size: 1.1em;
     margin: 1.1em 0.2em;
@@ -68,7 +70,7 @@
 #promo-box-content {
     font-size: 1.2em;
     line-height: 1.55em;
-    color: #666;
+    color: #989898;
 }
 
 .main-last {
@@ -87,6 +89,7 @@
     margin: .5em 0 0 0;
     padding: 0 1.7em;
     vertical-align: top;
+    color: #989898;
 }
 .infopages-box h2 {
     color: #02ADB7;

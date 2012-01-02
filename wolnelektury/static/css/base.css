@@ -25,7 +25,7 @@ body {
 
 
 a {
-    color: #01adba;
+    color: #1199a2; /* #01adba; */
     text-decoration: none;
 }
 
@@ -56,9 +56,32 @@ h2 {
 
 
 .mono {
-    font-family: "Lucida Sans Typewriter", courier;
+    font-family: "Andale Mono", "Lucida Sans Typewriter", "Courier New";
+    font-weight: bold;
 }
 
+.accent1 {
+    color: #191919;
+}
+
+.accent2 {
+    color: #242424;
+}
+
+.accent3 {
+    color: #575c63;
+}
+
+
+.accent4 {
+    color: #707b7a;
+}
+
+.contrast {
+    #1199a2;
+}
+
+/* #281d1c */
 
 .clearboth {
     clear: both;
@@ -74,6 +97,10 @@ h2 {
     margin-left: 1.5em;
 }
 
+.inline-tag-lists p span:first-child {
+    color: #281d1c;
+}
+
 .inline-tag-lists {
     font-size: 1.1em;
 }
@@ -86,6 +113,7 @@ h2 {
 }
 #themes-list-wrapper {
     position: relative;
+    font-size: 1.1em;
 }
 #themes-list {
     position: absolute;

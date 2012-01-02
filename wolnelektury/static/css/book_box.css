@@ -62,11 +62,12 @@
 }
 .book-mini-box .author {
     font-size: 1.1em;
-    color: #777;
+    color: #707b7a;
     display: block;
 }
 .book-mini-box .title {
     font-size: 1.4em;
+    color: #242424;
 }
 
 
@@ -128,7 +129,7 @@
 }
  
 
-.book-box-download:hover .book-box-formats:first {
+.book-box-download:hover .book-box-formats span:first-child {
     margin-top: 1.454em;
 }
 
