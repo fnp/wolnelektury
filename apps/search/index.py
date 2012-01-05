@@ -71,6 +71,11 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
 
 
 class IndexStore(object):
+    """
+    Provides access to search index.
+
+    self.store - lucene index directory
+    """
     def __init__(self):
         self.make_index_dir()
         self.store = SimpleFSDirectory(File(settings.SEARCH_INDEX))
@@ -95,6 +100,11 @@ class IndexChecker(IndexStore):
 
 
 class Snippets(object):
+    """
+    This class manages snippet files for indexed object (book)
+    the snippets are concatenated together, and their positions and
+    lengths are kept in lucene index fields.
+    """
     SNIPPET_DIR = "snippets"
 
     def __init__(self, book_id):
@@ -108,6 +118,9 @@ class Snippets(object):
         self.file = None
 
     def open(self, mode='r'):
+        """
+        Open the snippet file. Call .close() afterwards.
+        """
         if not 'b' in mode:
             mode += 'b'
         self.file = open(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR, str(self.book_id)), mode)
@@ -115,6 +128,10 @@ class Snippets(object):
         return self
 
     def add(self, snippet):
+        """
+        Append a snippet (unicode) to the snippet file.
+        Return a (position, length) tuple
+        """
         txt = snippet.encode('utf-8')
         l = len(txt)
         self.file.write(txt)
@@ -123,17 +140,26 @@ class Snippets(object):
         return pos
 
     def get(self, pos):
+        """
+        Given a tuple of (position, length) return an unicode
+        of the snippet stored there.
+        """
         self.file.seek(pos[0], 0)
         txt = self.file.read(pos[1]).decode('utf-8')
         return txt
 
     def close(self):
+        """Close snippet file"""
         self.file.close()
 
 
-class Index(IndexStore):
+class BaseIndex(IndexStore):
+    """
+    Base index class.
+    Provides basic operations on index: opening, closing, optimizing.
+    """
     def __init__(self, analyzer=None):
-        IndexStore.__init__(self)
+        super(BaseIndex, self).__init__()
         self.index = None
         if not analyzer:
             analyzer = WLAnalyzer()
@@ -158,7 +184,27 @@ class Index(IndexStore):
         self.index.close()
         self.index = None
 
+    def __enter__(self):
+        self.open()
+        return self
+
+    def __exit__(self, type, value, tb):
+        self.close()
+
+
+class Index(BaseIndex):
+    """
+    Class indexing books.
+    """
+    def __init__(self, analyzer=None):
+        super(Index, self).__init__(analyzer)
+
     def index_tags(self):
+        """
+        Re-index global tag list.
+        Removes all tags from index, then index them again.
+        Indexed fields include: id, name (with and without polish stems), category
+        """
         q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
         self.index.deleteDocuments(q)
 
@@ -170,11 +216,28 @@ class Index(IndexStore):
             doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
             self.index.addDocument(doc)
 
+    def create_book_doc(self, book):
+        """
+        Create a lucene document referring book id.
+        """
+        doc = Document()
+        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(book.id))
+        if book.parent is not None:
+            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(book.parent.id))
+        return doc
+
     def remove_book(self, book):
+        """Removes a book from search index.
+        book - Book instance."""
         q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
         self.index.deleteDocuments(q)
 
     def index_book(self, book, book_info=None, overwrite=True):
+        """
+        Indexes the book.
+        Creates a lucene document for extracted metadata
+        and calls self.index_content() to index the contents of the book.
+        """
         if overwrite:
             self.remove_book(book)
 
@@ -203,17 +266,10 @@ class Index(IndexStore):
 
     skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne']
 
-    def create_book_doc(self, book):
-        """
-        Create a lucene document connected to the book
-        """
-        doc = Document()
-        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(book.id))
-        if book.parent is not None:
-            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(book.parent.id))
-        return doc
-
     def extract_metadata(self, book, book_info=None):
+        """
+        Extract metadata from book and returns a map of fields keyed by fieldname
+        """
         fields = {}
 
         if book_info is None:
@@ -252,18 +308,29 @@ class Index(IndexStore):
 
         return fields
 
-    def get_master(self, root):
-        for master in root.iter():
-            if master.tag in self.master_tags:
-                return master
-
     def add_gaps(self, fields, fieldname):
+        """
+        Interposes a list of fields with gap-fields, which are indexed spaces and returns it.
+        This allows for doing phrase queries which do not overlap the gaps (when slop is 0).
+        """
         def gap():
             while True:
                 yield Field(fieldname, ' ', Field.Store.NO, Field.Index.NOT_ANALYZED)
         return reduce(lambda a, b: a + b, zip(fields, gap()))[0:-1]
 
+    def get_master(self, root):
+        """
+        Returns the first master tag from an etree.
+        """
+        for master in root.iter():
+            if master.tag in self.master_tags:
+                return master
+
     def index_content(self, book, book_fields=[]):
+        """
+        Walks the book XML and extract content from it.
+        Adds parts for each header tag and for each fragment.
+        """
         wld = WLDocument.from_file(book.xml_file.path, parse_dublincore=False)
         root = wld.edoc.getroot()
 
@@ -325,7 +392,6 @@ class Index(IndexStore):
             else:
                 return s
 
-
         fragments = {}
         snippets = Snippets(book.id).open('w')
         try:
@@ -384,14 +450,6 @@ class Index(IndexStore):
             snippets.close()
 
 
-    def __enter__(self):
-        self.open()
-        return self
-
-    def __exit__(self, type, value, tb):
-        self.close()
-
-
 def log_exception_wrapper(f):
     def _wrap(*a):
         try:
@@ -437,20 +495,13 @@ class ReusableIndex(Index):
         pass
 
 
-class Search(IndexStore):
-    def __init__(self, default_field="content"):
-        IndexStore.__init__(self)
-        self.analyzer = WLAnalyzer() #PolishAnalyzer(Version.LUCENE_34)
-        ## self.analyzer = WLAnalyzer()
-        self.searcher = IndexSearcher(self.store, True)
-        self.parser = QueryParser(Version.LUCENE_34, default_field,
-                                  self.analyzer)
-
-        self.parent_filter = TermsFilter()
-        self.parent_filter.addTerm(Term("is_book", "true"))
-
-    def query(self, query):
-        return self.parser.parse(query)
+class JoinSearch(object):
+    """
+    This mixin could be used to handle block join queries.
+    (currently unused)
+    """
+    def __init__(self, *args, **kw):
+        super(JoinSearch, self).__init__(*args, **kw)
 
     def wrapjoins(self, query, fields=[]):
         """
@@ -475,29 +526,6 @@ class Search(IndexStore):
             return BlockJoinQuery(query, self.parent_filter,
                                   BlockJoinQuery.ScoreMode.Total)
 
-    def simple_search(self, query, max_results=50):
-        """Returns (books, total_hits)
-        """
-
-        tops = self.searcher.search(self.query(query), max_results)
-        bks = []
-        for found in tops.scoreDocs:
-            doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
-        return (bks, tops.totalHits)
-
-
-    def search(self, query, max_results=50):
-        query = self.query(query)
-        query = self.wrapjoins(query, ["content", "themes"])
-
-        tops = self.searcher.search(query, max_results)
-        bks = []
-        for found in tops.scoreDocs:
-            doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
-        return (bks, tops.totalHits)
-
     def bsearch(self, query, max_results=50):
         q = self.query(query)
         bjq = BlockJoinQuery(q, self.parent_filter, BlockJoinQuery.ScoreMode.Avg)
@@ -508,16 +536,6 @@ class Search(IndexStore):
             doc = self.searcher.doc(found.doc)
             bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
-
-# TokenStream tokenStream = analyzer.tokenStream(fieldName, reader);
-# OffsetAttribute offsetAttribute = tokenStream.getAttribute(OffsetAttribute.class);
-# CharTermAttribute charTermAttribute = tokenStream.getAttribute(CharTermAttribute.class);
-
-# while (tokenStream.incrementToken()) {
-#     int startOffset = offsetAttribute.startOffset();
-#     int endOffset = offsetAttribute.endOffset();
-#     String term = charTermAttribute.toString();
-# }
 
 
 class SearchResult(object):
@@ -544,7 +562,7 @@ class SearchResult(object):
 
         fragment = stored.get("fragment_anchor")
 
-        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets})
+        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': [snippets]})
 
         self.hits.append(hit)
 
@@ -612,16 +630,31 @@ class SearchResult(object):
 
 
 class Hint(object):
+    """
+    Given some hint information (information we already know about)
+    our search target - like author, title (specific book), epoch, genre, kind
+    we can narrow down search using filters.
+    """
     def __init__(self, search):
+        """
+        Accepts a Searcher instance.
+        """
         self.search = search
         self.book_tags = {}
         self.part_tags = []
         self._books = []
 
     def books(self, *books):
+        """
+        Give a hint that we search these books.
+        """
         self._books = books
 
     def tags(self, tags):
+        """
+        Give a hint that these Tag objects (a list of)
+        is necessary.
+        """
         for t in tags:
             if t.category in ['author', 'title', 'epoch', 'genre', 'kind']:
                 lst = self.book_tags.get(t.category, [])
@@ -631,6 +664,10 @@ class Hint(object):
                 self.part_tags.append(t)
 
     def tag_filter(self, tags, field='tags'):
+        """
+        Given a lsit of tags and an optional field (but they are normally in tags field)
+        returns a filter accepting only books with specific tags.
+        """
         q = BooleanQuery()
 
         for tag in tags:
@@ -643,6 +680,9 @@ class Hint(object):
         return QueryWrapperFilter(q)
 
     def book_filter(self):
+        """
+        Filters using book tags (all tag kinds except a theme)
+        """
         tags = reduce(lambda a, b: a + b, self.book_tags.values(), [])
         if tags:
             return self.tag_filter(tags)
@@ -650,6 +690,10 @@ class Hint(object):
             return None
 
     def part_filter(self):
+        """
+        This filter can be used to look for book parts.
+        It filters on book id and/or themes.
+        """
         fs = []
         if self.part_tags:
             fs.append(self.tag_filter(self.part_tags, field='themes'))
@@ -661,7 +705,7 @@ class Hint(object):
                 bf.add(FilterClause(id_filter, BooleanClause.Occur.SHOULD))
             fs.append(bf)
 
-        return MultiSearch.chain_filters(fs)
+        return Search.chain_filters(fs)
 
     def should_search_for_book(self):
         return self._books == []
@@ -680,8 +724,38 @@ class Hint(object):
         return some
 
 
-class MultiSearch(Search):
-    """Class capable of IMDb-like searching"""
+class Search(IndexStore):
+    """
+    Search facilities.
+    """
+    def __init__(self, default_field="content"):
+        IndexStore.__init__(self)
+        self.analyzer = WLAnalyzer()  # PolishAnalyzer(Version.LUCENE_34)
+        # self.analyzer = WLAnalyzer()
+        self.searcher = IndexSearcher(self.store, True)
+        self.parser = QueryParser(Version.LUCENE_34, default_field,
+                                  self.analyzer)
+
+        self.parent_filter = TermsFilter()
+        self.parent_filter.addTerm(Term("is_book", "true"))
+
+    def query(self, query):
+        """Parse query in default Lucene Syntax. (for humans)
+        """
+        return self.parser.parse(query)
+
+    def simple_search(self, query, max_results=50):
+        """Runs a query for books using lucene syntax. (for humans)
+        Returns (books, total_hits)
+        """
+
+        tops = self.searcher.search(self.query(query), max_results)
+        bks = []
+        for found in tops.scoreDocs:
+            doc = self.searcher.doc(found.doc)
+            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+        return (bks, tops.totalHits)
+
     def get_tokens(self, searched, field='content'):
         """returns tokens analyzed by a proper (for a field) analyzer
         argument can be: StringReader, string/unicode, or tokens. In the last case
@@ -701,6 +775,7 @@ class MultiSearch(Search):
         return toks
 
     def fuzziness(self, fuzzy):
+        """Helper method to sanitize fuzziness"""
         if not fuzzy:
             return None
         if isinstance(fuzzy, float) and fuzzy > 0.0 and fuzzy <= 1.0:
@@ -709,6 +784,9 @@ class MultiSearch(Search):
             return 0.5
 
     def make_phrase(self, tokens, field='content', slop=2, fuzzy=False):
+        """
+        Return a PhraseQuery with a series of tokens.
+        """
         if fuzzy:
             phrase = MultiPhraseQuery()
             for t in tokens:
@@ -735,6 +813,11 @@ class MultiSearch(Search):
         return phrase
 
     def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
+        """
+        Returns term queries joined by boolean query.
+        modal - applies to boolean query
+        fuzzy - should the query by fuzzy.
+        """
         q = BooleanQuery()
         for t in tokens:
             term = Term(field, t)
@@ -750,6 +833,10 @@ class MultiSearch(Search):
     #                           BlockJoinQuery.ScoreMode.Total)
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
+        """
+        Search for perfect book matches. Just see if the query matches with some author or title,
+        taking hints into account.
+        """
         fields_to_search = ['authors', 'title']
         only_in = None
         if hint:
@@ -763,13 +850,17 @@ class MultiSearch(Search):
         books = []
         for q in qrys:
             top = self.searcher.search(q,
-                                       self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
+                self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
                 max_results)
             for found in top.scoreDocs:
                 books.append(SearchResult(self.searcher, found))
         return books
 
     def search_perfect_parts(self, searched, max_results=20, fuzzy=False, hint=None):
+        """
+        Search for book parts which containt a phrase perfectly matching (with a slop of 2, default for make_phrase())
+        some part/fragment of the book.
+        """
         qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['content']]
 
         flt = None
@@ -780,8 +871,7 @@ class MultiSearch(Search):
         for q in qrys:
             top = self.searcher.search(q,
                                        self.chain_filters([self.term_filter(Term('is_book', 'true'), inverse=True),
-                                                           flt
-                                                          ]),
+                                                           flt]),
                                        max_results)
             for found in top.scoreDocs:
                 books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q)))
@@ -789,6 +879,11 @@ class MultiSearch(Search):
         return books
 
     def search_everywhere(self, searched, max_results=20, fuzzy=False, hint=None):
+        """
+        Tries to use search terms to match different fields of book (or its parts).
+        E.g. one word can be an author survey, another be a part of the title, and the rest
+        are some words from third chapter.
+        """
         books = []
         only_in = None
 
@@ -824,17 +919,17 @@ class MultiSearch(Search):
 
         return books
 
-    def multisearch(self, query, max_results=50):
-        """
-        Search strategy:
-        - (phrase) OR -> content
-                      -> title
-                      -> authors
-        - (keywords)  -> authors
-                      -> motyw
-                      -> tags
-                      -> content
-        """
+    # def multisearch(self, query, max_results=50):
+    #     """
+    #     Search strategy:
+    #     - (phrase) OR -> content
+    #                   -> title
+    #                   -> authors
+    #     - (keywords)  -> authors
+    #                   -> motyw
+    #                   -> tags
+    #                   -> content
+    #     """
         # queryreader = StringReader(query)
         # tokens = self.get_tokens(queryreader)
 
@@ -864,21 +959,13 @@ class MultiSearch(Search):
         # top_level.add(BooleanClause(phrase_level, Should))
         # top_level.add(BooleanClause(kw_level, Should))
 
-        return None
+        # return None
 
-    def book_search(self, query, filter=None, max_results=50, collector=None):
-        tops = self.searcher.search(query, filter, max_results)
-        #tops = self.searcher.search(p_content, max_results)
-
-        bks = []
-        for found in tops.scoreDocs:
-            doc = self.searcher.doc(found.doc)
-            b = catalogue.models.Book.objects.get(id=doc.get("book_id"))
-            bks.append(b)
-            print "%s (%d) -> %f" % (b, b.id, found.score)
-        return bks
 
     def get_snippets(self, scoreDoc, query, field='content'):
+        """
+        Returns a snippet for found scoreDoc.
+        """
         htmlFormatter = SimpleHTMLFormatter()
         highlighter = Highlighter(htmlFormatter, QueryScorer(query))
 
@@ -897,7 +984,7 @@ class MultiSearch(Search):
         #        import pdb; pdb.set_trace()
         snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
 
-        return [snip]
+        return snip
 
     @staticmethod
     def enum_to_array(enum):
@@ -917,6 +1004,9 @@ class MultiSearch(Search):
             return JArray('object')(terms, Term)
 
     def search_tags(self, query, filter=None, max_results=40):
+        """
+        Search for Tag objects using query.
+        """
         tops = self.searcher.search(query, filter, max_results)
 
         tags = []
@@ -929,6 +1019,9 @@ class MultiSearch(Search):
         return tags
 
     def search_books(self, query, filter=None, max_results=10):
+        """
+        Searches for Book objects using query
+        """
         bks = []
         tops = self.searcher.search(query, filter, max_results)
         for found in tops.scoreDocs:
@@ -941,7 +1034,7 @@ class MultiSearch(Search):
         for i in range(len(toks)):
             t = Term(field, toks[i])
             if i == len(toks) - 1:
-                pterms = MultiSearch.enum_to_array(PrefixTermEnum(self.searcher.getIndexReader(), t))
+                pterms = Search.enum_to_array(PrefixTermEnum(self.searcher.getIndexReader(), t))
                 if pterms:
                     q.add(pterms)
                 else:
@@ -963,6 +1056,10 @@ class MultiSearch(Search):
         return only_term
 
     def hint_tags(self, string, max_results=50):
+        """
+        Return auto-complete hints for tags
+        using prefix search.
+        """
         toks = self.get_tokens(string, field='SIMPLE')
         top = BooleanQuery()
 
@@ -975,14 +1072,22 @@ class MultiSearch(Search):
         return self.search_tags(top, no_book_cat, max_results=max_results)
 
     def hint_books(self, string, max_results=50):
+        """
+        Returns auto-complete hints for book titles
+        Because we do not index 'pseudo' title-tags.
+        Prefix search.
+        """
         toks = self.get_tokens(string, field='SIMPLE')
 
         q = self.create_prefix_phrase(toks, 'title')
 
-        return self.book_search(q, self.term_filter(Term("is_book", "true")), max_results=max_results)
+        return self.search_books(q, self.term_filter(Term("is_book", "true")), max_results=max_results)
 
     @staticmethod
     def chain_filters(filters, op=ChainedFilter.AND):
+        """
+        Chains a filter list together
+        """
         filters = filter(lambda x: x is not None, filters)
         if not filters:
             return None
@@ -990,6 +1095,9 @@ class MultiSearch(Search):
         return chf
 
     def filtered_categories(self, tags):
+        """
+        Return a list of tag categories, present in tags list.
+        """
         cats = {}
         for t in tags:
             cats[t.category] = True

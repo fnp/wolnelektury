@@ -273,7 +273,6 @@ NO_BUILD_TXT = False
 NO_BUILD_PDF = False
 NO_BUILD_MOBI = True
 NO_SEARCH_INDEX = False
-SEARCH_INDEX_PARALLEL = False
 
 ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
 ALL_PDF_ZIP = 'wolnelektury_pl_pdf'

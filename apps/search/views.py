@@ -12,7 +12,7 @@ from catalogue.models import Book, Tag, Fragment, TAG_CATEGORIES
 from catalogue.fields import dumps
 from catalogue.views import JSONResponse
 from catalogue import forms
-from search import MultiSearch, JVM, SearchResult
+from search import Search, JVM, SearchResult
 from lucene import StringReader
 from suggest.forms import PublishingSuggestForm
 
@@ -46,7 +46,7 @@ def hint(request):
     if len(prefix) < 2:
         return JSONResponse([])
     JVM.attachCurrentThread()
-    s = MultiSearch()
+    s = Search()
 
     hint = s.hint()
     try:
@@ -94,7 +94,7 @@ def foo(s, q, tag_list=None):
 def main(request):
     results = {}
     JVM.attachCurrentThread()  # where to put this?
-    srch = MultiSearch()
+    srch = Search()
 
     results = None
     query = None

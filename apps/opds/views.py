@@ -18,7 +18,7 @@ from django.contrib.sites.models import Site
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 
-from search import MultiSearch, SearchResult, JVM
+from search import Search, SearchResult, JVM
 from lucene import Term, QueryWrapperFilter, TermQuery
 
 import re
@@ -376,7 +376,7 @@ class SearchFeed(AcquisitionFeed):
             fuzzy = False
 
 
-        srch = MultiSearch()
+        srch = Search()
         hint = srch.hint()
 
         # Scenario 1: full search terms provided.

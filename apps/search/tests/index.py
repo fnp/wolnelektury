@@ -1,11 +1,13 @@
 from __future__ import with_statement
 
-from search import Index, Search
+from search import Index, Search, IndexStore
 from catalogue import models
 from catalogue.test_utils import WLTestCase
 from lucene import PolishAnalyzer, Version
 #from nose.tools import raises
 from os import path
+
+
 
 
 class BookSearchTests(WLTestCase):

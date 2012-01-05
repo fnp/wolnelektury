@@ -689,7 +689,7 @@ class Book(models.Model):
         return result.wait()
 
     def search_index(self, book_info=None):
-        if settings.CELERY_ALWAYS_EAGER:
+        if hasattr(settings, 'CELERY_ALWAYS_EAGER') and settings.CELERY_ALWAYS_EAGER:
             idx = search.ReusableIndex()
         else:
             idx = search.Index()
