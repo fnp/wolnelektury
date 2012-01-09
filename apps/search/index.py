@@ -54,6 +54,8 @@ class WLAnalyzer(PerFieldAnalyzerWrapper):
         self.addAnalyzer("source_name", simple)
         self.addAnalyzer("publisher", simple)
         self.addAnalyzer("authors", simple)
+        self.addAnalyzer("title", simple)
+
         self.addAnalyzer("is_book", keyword)
         # shouldn't the title have two forms? _pl and simple?
 
@@ -540,14 +542,13 @@ class JoinSearch(object):
 
 class SearchResult(object):
     def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets=None):
-        self.snippets = []
-
         if score:
             self.score = score
         else:
             self.score = scoreDocs.score
 
-        self.hits = []
+        self._hits = []
+        self.hits = None  # processed hits
 
         stored = searcher.doc(scoreDocs.doc)
         self.book_id = int(stored.get("book_id"))
@@ -562,14 +563,14 @@ class SearchResult(object):
 
         fragment = stored.get("fragment_anchor")
 
-        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': [snippets]})
+        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
 
-        self.hits.append(hit)
+        self._hits.append(hit)
 
     def merge(self, other):
         if self.book_id != other.book_id:
             raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
-        self.hits += other.hits
+        self._hits += other._hits
         if other.score > self.score:
             self.score = other.score
         return self
@@ -580,35 +581,65 @@ class SearchResult(object):
     book = property(get_book)
 
     def process_hits(self):
-        frags = filter(lambda r: r[1] is not None, self.hits)
-        sect = filter(lambda r: r[1] is None, self.hits)
+        POSITION = 0
+        FRAGMENT = 1
+        POSITION_INDEX = 1
+        POSITION_SPAN = 2
+        SCORE = 2
+        OTHER = 3
+
+        # to sections and fragments
+        frags = filter(lambda r: r[FRAGMENT] is not None, self._hits)
+        sect = filter(lambda r: r[FRAGMENT] is None, self._hits)
         sect = filter(lambda s: 0 == len(filter(
-            lambda f: s[0][1] >= f[0][1] and s[0][1] < f[0][1] + f[0][2],
+            lambda f: s[POSITION][POSITION_INDEX] >= f[POSITION][POSITION_INDEX]
+            and s[POSITION][POSITION_INDEX] < f[POSITION][POSITION_INDEX] + f[POSITION][POSITION_SPAN],
             frags)), sect)
 
         hits = []
 
+        # remove duplicate fragments
+        fragments = {}
+        for f in frags:
+            fid = f[FRAGMENT]
+            if fid in fragments:
+                if fragments[fid][SCORE] >= f[SCORE]:
+                    continue
+            fragments[fid] = f
+        frags = fragments.values()
+
+        # remove duplicate sections
+        sections = {}
+        
         for s in sect:
-            m = {'score': s[2],
-                 'header_index': s[0][1]
+            si = s[POSITION][POSITION_INDEX]
+            # skip existing
+            if si in sections:
+                if sections[si]['score'] >= s[SCORE]:
+                    continue
+                
+            m = {'score': s[SCORE],
+                 'header_index': s[POSITION][POSITION_INDEX]
                  }
-            m.update(s[3])
-            hits.append(m)
+            m.update(s[OTHER])
+            sections[si] = m
+            
+        hits = sections.values()
 
         for f in frags:
-            frag = catalogue.models.Fragment.objects.get(anchor=f[1])
-            m = {'score': f[2],
+            frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
+            m = {'score': f[SCORE],
                  'fragment': frag,
                  'themes': frag.tags.filter(category='theme')
                  }
-            m.update(f[3])
+            m.update(f[OTHER])
             hits.append(m)
 
         hits.sort(lambda a, b: cmp(a['score'], b['score']), reverse=True)
 
-        print("--- %s" % hits)
+        self.hits = hits
 
-        return hits
+        return self
 
     def __unicode__(self):
         return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
@@ -660,7 +691,7 @@ class Hint(object):
                 lst = self.book_tags.get(t.category, [])
                 lst.append(t)
                 self.book_tags[t.category] = lst
-            if t.category in ['theme']:
+            if t.category in ['theme', 'theme_pl']:
                 self.part_tags.append(t)
 
     def tag_filter(self, tags, field='tags'):
@@ -856,6 +887,33 @@ class Search(IndexStore):
                 books.append(SearchResult(self.searcher, found))
         return books
 
+    def search_book(self, searched, max_results=20, fuzzy=False, hint=None):
+        fields_to_search = ['tags', 'authors', 'title']
+
+        only_in = None
+        if hint:
+            if not hint.should_search_for_book():
+                return []
+            fields_to_search = hint.just_search_in(fields_to_search)
+            only_in = hint.book_filter()
+
+        tokens = self.get_tokens(searched, field='SIMPLE')
+
+        q = BooleanQuery()
+
+        for fld in fields_to_search:
+            q.add(BooleanClause(self.make_term_query(tokens, field=fld,
+                                fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        books = []
+        top = self.searcher.search(q,
+                                   self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
+            max_results)
+        for found in top.scoreDocs:
+            books.append(SearchResult(self.searcher, found))
+
+        return books
+
     def search_perfect_parts(self, searched, max_results=20, fuzzy=False, hint=None):
         """
         Search for book parts which containt a phrase perfectly matching (with a slop of 2, default for make_phrase())
@@ -893,29 +951,40 @@ class Search(IndexStore):
         # content only query : themes x content
         q = BooleanQuery()
 
-        tokens = self.get_tokens(searched)
-        if hint is None or hint.just_search_in(['themes_pl']) != []:
-            q.add(BooleanClause(self.make_term_query(tokens, field='themes_pl',
+        tokens_pl = self.get_tokens(searched, field='content')
+        tokens = self.get_tokens(searched, field='SIMPLE')
+
+        # only search in themes when we do not already filter by themes
+        if hint is None or hint.just_search_in(['themes']) != []:
+            q.add(BooleanClause(self.make_term_query(tokens_pl, field='themes_pl',
                                                      fuzzy=fuzzy), BooleanClause.Occur.MUST))
 
-        q.add(BooleanClause(self.make_term_query(tokens, field='content',
+        q.add(BooleanClause(self.make_term_query(tokens_pl, field='content',
                                                  fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
             books.append(SearchResult(self.searcher, found))
+            print "* %s theme x content: %s" % (searched, books[-1]._hits)
 
         # query themes/content x author/title/tags
         q = BooleanQuery()
-        #        in_meta = BooleanQuery()
         in_content = BooleanQuery()
+        in_meta = BooleanQuery()
 
-        for fld in ['themes', 'content', 'tags', 'authors', 'title']:
-            in_content.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
+        for fld in ['themes_pl', 'content']:
+            in_content.add(BooleanClause(self.make_term_query(tokens_pl, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
+
+        for fld in ['tags', 'authors', 'title']:
+            in_meta.add(BooleanClause(self.make_term_query(tokens, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
+
+        q.add(BooleanClause(in_content, BooleanClause.Occur.MUST))
+        q.add(BooleanClause(in_meta, BooleanClause.Occur.SHOULD))
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
             books.append(SearchResult(self.searcher, found))
+            print "* %s scatter search: %s" % (searched, books[-1]._hits)
 
         return books
 
@@ -981,7 +1050,6 @@ class Search(IndexStore):
 
         tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
         #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
-        #        import pdb; pdb.set_trace()
         snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
 
         return snip

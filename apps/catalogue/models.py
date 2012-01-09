@@ -688,8 +688,8 @@ class Book(models.Model):
         result = create_zip.delay(paths, "%s_%s" % (self.slug, format_))
         return result.wait()
 
-    def search_index(self, book_info=None):
-        if hasattr(settings, 'CELERY_ALWAYS_EAGER') and settings.CELERY_ALWAYS_EAGER:
+    def search_index(self, book_info=None, reuse_index=False):
+        if reuse_index:
             idx = search.ReusableIndex()
         else:
             idx = search.Index()

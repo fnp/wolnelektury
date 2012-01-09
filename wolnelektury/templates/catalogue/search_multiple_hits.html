@@ -15,15 +15,30 @@
       <li>
 	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
 	<ul>
-	  {% for hit in result.process_hits %}
+	  {% for hit in result.hits %}
 	  <li>
 	    {% if hit.fragment %}
 	    <a href="{{hit.fragment.get_absolute_url}}">Idź do fragmentu</a>
 	    <div style="">Tagi/Motywy: {% for tag in hit.themes %}{{tag.name}} {% endfor %}</div>
+	    {# snippets or short html? #}
+	    {% if hit.snippets %}
+	     {% for snip in hit.snippets %}
+	       {{snip|safe}}<br/>
+	     {% endfor %}
+	    {% else %}
+	     {{hit.fragment.short_text|safe}}
 	    {% endif %}
-	    {% for snip in hit.snippets %}
-	      {{snip|safe}}<br/>
-	    {% endfor %}
+	    
+	    {% else %}
+	    {# it's a section #}
+  	     {% if hit.snippets %}
+	      {% for snip in hit.snippets %}
+	        {{snip|safe}}<br/>
+	      {% endfor %}
+	     {% else %}
+	       [section matched but no snippets :-(]
+	     {% endif %}
+	    {% endif %}
 	  </li>
 	  {% endfor %}
 

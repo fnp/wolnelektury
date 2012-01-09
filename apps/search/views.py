@@ -128,12 +128,19 @@ def main(request):
             fuzzy = 0.7
 
         results = SearchResult.aggregate(srch.search_perfect_book(toks, fuzzy=fuzzy, hint=hint),
+                                         srch.search_book(toks, fuzzy=fuzzy, hint=hint),
                                          srch.search_perfect_parts(toks, fuzzy=fuzzy, hint=hint),
                                          srch.search_everywhere(toks, fuzzy=fuzzy, hint=hint))
+
+        for r in results:
+            r.process_hits()
+
         results.sort(reverse=True)
 
         for r in results:
-            print r.hits
+            print "-----"
+            for h in r.hits:
+                print "- %s" % h
 
         if len(results) == 1:
             if len(results[0].hits) == 0:
