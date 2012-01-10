@@ -961,6 +961,25 @@ class FileRecord(models.Model):
     def __unicode__(self):
         return "%s %s.%s" % (self.sha1,  self.slug, self.type)
 
+
+class Collection(models.Model):
+    """A collection of books, which might be defined before publishing them."""
+    title = models.CharField(_('title'), max_length=120, db_index=True)
+    slug = models.SlugField(_('slug'), max_length=120, primary_key=True)
+    description = models.TextField(_('description'), null=True, blank=True)
+
+    models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
+    book_slugs = models.TextField(_('book slugs'))
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = _('collection')
+        verbose_name_plural = _('collections')
+
+    def __unicode__(self):
+        return self.title
+
+
 ###########
 #
 # SIGNALS

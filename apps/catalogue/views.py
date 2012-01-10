@@ -70,7 +70,8 @@ def main_page(request):
         context_instance=RequestContext(request))
 
 
-def book_list(request, filter=None, template_name='catalogue/book_list.html'):
+def book_list(request, filter=None, template_name='catalogue/book_list.html',
+        context=None):
     """ generates a listing of all books, optionally filtered with a test function """
 
     form = forms.SearchForm()
@@ -93,6 +94,17 @@ def audiobook_list(request):
 def daisy_list(request):
     return book_list(request, Q(media__type='daisy'),
                      template_name='catalogue/daisy_list.html')
+
+
+def collection(request, slug):
+    coll = get_object_or_404(models.Collection, slug=slug)
+    slugs = coll.book_slugs.split()
+    # allow URIs
+    slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
+                for slug in slugs]
+    return book_list(request, Q(slug__in=slugs),
+                     template_name='catalogue/collection.html',
+                     context={'collection': coll})
 
 
 def differentiate_tags(request, tags, ambiguous_slugs):

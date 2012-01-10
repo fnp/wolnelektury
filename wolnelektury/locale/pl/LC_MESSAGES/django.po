@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-11 15:45+0200\n"
-"PO-Revision-Date: 2011-10-11 15:46+0100\n"
+"POT-Creation-Date: 2012-01-10 13:04+0100\n"
+"PO-Revision-Date: 2012-01-10 13:04+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -129,24 +129,24 @@ msgstr ""
 #: templates/base.html.py:120
 #: templates/base.html:126
 #: templates/base.html.py:132
-#: templates/catalogue/book_detail.html:208
+#: templates/catalogue/book_detail.html:211
 #: templates/catalogue/book_fragments.html:33
 #: templates/catalogue/differentiate_tags.html:23
 #: templates/catalogue/search_multiple_hits.html:29
 #: templates/catalogue/search_too_short.html:19
-#: templates/catalogue/tagged_object_list.html:142
+#: templates/catalogue/tagged_object_list.html:143
 msgid "Close"
 msgstr "Zamknij"
 
 #: templates/base.html:122
 #: templates/base.html.py:128
 #: templates/base.html:134
-#: templates/catalogue/book_detail.html:210
+#: templates/catalogue/book_detail.html:213
 #: templates/catalogue/book_fragments.html:35
 #: templates/catalogue/differentiate_tags.html:25
 #: templates/catalogue/search_multiple_hits.html:31
 #: templates/catalogue/search_too_short.html:21
-#: templates/catalogue/tagged_object_list.html:144
+#: templates/catalogue/tagged_object_list.html:145
 msgid "Loading"
 msgstr "Ładowanie"
 
@@ -197,7 +197,7 @@ msgstr "Szukaj"
 #: templates/catalogue/book_list.html:13
 #: templates/catalogue/main_page.html:31
 #: templates/catalogue/search_form.html:3
-#: templates/catalogue/tagged_object_list.html:44
+#: templates/catalogue/tagged_object_list.html:45
 #: templates/info/base.html:12
 #: templates/lesmianator/lesmianator.html:14
 #: templates/lessons/document_list.html:34
@@ -273,10 +273,12 @@ msgstr "Pobierz plik PDF"
 #: templates/catalogue/book_detail.html:53
 #: templates/catalogue/book_detail.html:56
 #: templates/catalogue/book_detail.html:59
+#: templates/catalogue/book_detail.html:62
 #: templates/catalogue/tagged_object_list.html:37
 #: templates/catalogue/tagged_object_list.html:38
 #: templates/catalogue/tagged_object_list.html:39
 #: templates/catalogue/tagged_object_list.html:40
+#: templates/catalogue/tagged_object_list.html:41
 msgid "for reading"
 msgstr "do czytania"
 
@@ -290,104 +292,110 @@ msgid "Download EPUB"
 msgstr "Pobierz plik EPUB"
 
 #: templates/catalogue/book_detail.html:53
+#: templates/catalogue/book_detail.html:56
 #: templates/catalogue/tagged_object_list.html:38
+#: templates/catalogue/tagged_object_list.html:39
 msgid "on mobile devices"
 msgstr "na urządzeniach mobilnych"
 
 #: templates/catalogue/book_detail.html:56
+msgid "Download MOBI"
+msgstr "Pobierz plik MOBI"
+
+#: templates/catalogue/book_detail.html:59
 msgid "Download TXT"
 msgstr "Pobierz plik TXT"
 
-#: templates/catalogue/book_detail.html:56
-#: templates/catalogue/tagged_object_list.html:40
+#: templates/catalogue/book_detail.html:59
+#: templates/catalogue/tagged_object_list.html:41
 msgid "on small displays, for example mobile phones"
 msgstr "na małych ekranach, np. na komórce"
 
-#: templates/catalogue/book_detail.html:59
+#: templates/catalogue/book_detail.html:62
 msgid "Download ODT"
 msgstr "Pobierz plik ODT"
 
-#: templates/catalogue/book_detail.html:59
-#: templates/catalogue/tagged_object_list.html:39
+#: templates/catalogue/book_detail.html:62
+#: templates/catalogue/tagged_object_list.html:40
 msgid "and editing using"
 msgstr "i edytowania przy pomocy"
 
-#: templates/catalogue/book_detail.html:64
+#: templates/catalogue/book_detail.html:67
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/catalogue/book_detail.html:78
+#: templates/catalogue/book_detail.html:81
 msgid "Artist"
 msgstr "Czyta"
 
-#: templates/catalogue/book_detail.html:79
+#: templates/catalogue/book_detail.html:82
 msgid "Director"
 msgstr "Reżyseruje"
 
-#: templates/catalogue/book_detail.html:107
+#: templates/catalogue/book_detail.html:110
 msgid "Audiobooks were prepared as a part of the projects:"
 msgstr "Audiobooki przygotowane w ramach projektów:"
 
-#: templates/catalogue/book_detail.html:112
+#: templates/catalogue/book_detail.html:115
 #, python-format
 msgid "%(cs)s, funded by %(fb)s"
 msgstr "%(cs)s, finansowanego przez %(fb)s"
 
-#: templates/catalogue/book_detail.html:124
+#: templates/catalogue/book_detail.html:127
 #, python-format
 msgid "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 msgstr "Audiobooki przygotowane w ramach projektu %(cs)s finansowanego przez %(fb)s."
 
-#: templates/catalogue/book_detail.html:126
+#: templates/catalogue/book_detail.html:129
 #, python-format
 msgid "Audiobooks were prepared as a part of the %(cs)s project."
 msgstr "Audiobooki przygotowane w ramach projektu %(cs)s."
 
-#: templates/catalogue/book_detail.html:152
+#: templates/catalogue/book_detail.html:155
 msgid "Details"
 msgstr "O utworze"
 
-#: templates/catalogue/book_detail.html:155
+#: templates/catalogue/book_detail.html:158
 msgid "Author"
 msgstr "Autor"
 
-#: templates/catalogue/book_detail.html:161
+#: templates/catalogue/book_detail.html:164
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_detail.html:167
+#: templates/catalogue/book_detail.html:170
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_detail.html:173
+#: templates/catalogue/book_detail.html:176
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_detail.html:179
+#: templates/catalogue/book_detail.html:182
 msgid "Other resources"
 msgstr "W innych miejscach"
 
-#: templates/catalogue/book_detail.html:182
+#: templates/catalogue/book_detail.html:185
 msgid "Source of the book"
 msgstr "Źródło lektury"
 
-#: templates/catalogue/book_detail.html:185
+#: templates/catalogue/book_detail.html:188
 msgid "Book on the Editor's Platform"
 msgstr "Utwór na Platformie Redakcyjnej"
 
-#: templates/catalogue/book_detail.html:188
+#: templates/catalogue/book_detail.html:191
 msgid "Book description on Lektury.Gazeta.pl"
 msgstr "Opis lektury w Lektury.Gazeta.pl"
 
-#: templates/catalogue/book_detail.html:191
+#: templates/catalogue/book_detail.html:194
 msgid "Book description on Wikipedia"
 msgstr "Opis lektury w Wikipedii"
 
-#: templates/catalogue/book_detail.html:194
+#: templates/catalogue/book_detail.html:197
 msgid "View XML source"
 msgstr "Źródłowy plik XML"
 
-#: templates/catalogue/book_detail.html:198
+#: templates/catalogue/book_detail.html:201
 msgid "Work's themes "
 msgstr "Motywy w utworze"
 
@@ -508,7 +516,7 @@ msgid "Table of contents"
 msgstr "Spis treści"
 
 #: templates/catalogue/book_text.html:22
-#: templates/catalogue/tagged_object_list.html:133
+#: templates/catalogue/tagged_object_list.html:134
 msgid "Themes"
 msgstr "Motywy"
 
@@ -519,6 +527,10 @@ msgstr "Nota red."
 #: templates/catalogue/book_text.html:24
 msgid "Infobox"
 msgstr "Informacje"
+
+#: templates/catalogue/collection.html:6
+msgid "in WolneLektury.pl"
+msgstr "w WolneLektury.pl"
 
 #: templates/catalogue/daisy_list.html:6
 msgid "Listing of all DAISY files on WolneLektury.pl"
@@ -551,15 +563,15 @@ msgid "Show full category"
 msgstr "Zobacz całą kategorię"
 
 #: templates/catalogue/folded_tag_list.html:13
-#: templates/catalogue/main_page.html:111
-#: templates/catalogue/main_page.html:116
-#: templates/catalogue/main_page.html:155
-#: templates/catalogue/main_page.html:350
+#: templates/catalogue/main_page.html:103
+#: templates/catalogue/main_page.html:108
+#: templates/catalogue/main_page.html:147
+#: templates/catalogue/main_page.html:342
 msgid "See more"
 msgstr "Zobacz więcej"
 
 #: templates/catalogue/folded_tag_list.html:22
-#: templates/catalogue/main_page.html:318
+#: templates/catalogue/main_page.html:310
 msgid "Hide"
 msgstr "Zwiń"
 
@@ -568,7 +580,7 @@ msgid "Shelves containing fragment"
 msgstr "Półki zawierające fragment"
 
 #: templates/catalogue/fragment_sets.html:4
-#: templates/catalogue/main_page.html:85
+#: templates/catalogue/main_page.html:76
 msgid "You do not own any shelves. You can create one below, if you want to."
 msgstr "Nie posiadasz żadnych półek. Jeśli chcesz, możesz utworzyć nową półkę poniżej."
 
@@ -615,143 +627,143 @@ msgstr[2] ""
 msgid "Browse books by categories"
 msgstr "Przeglądaj lektury według wybranych kategorii"
 
-#: templates/catalogue/main_page.html:69
+#: templates/catalogue/main_page.html:59
 msgid "Books for every school level"
 msgstr "Lektury na każdy poziom edukacji"
 
-#: templates/catalogue/main_page.html:71
+#: templates/catalogue/main_page.html:61
 msgid "primary school"
 msgstr "szkoła podstawowa"
 
-#: templates/catalogue/main_page.html:72
+#: templates/catalogue/main_page.html:62
 msgid "gymnasium"
 msgstr "gimnazjum"
 
-#: templates/catalogue/main_page.html:73
+#: templates/catalogue/main_page.html:63
 msgid "high school"
 msgstr "szkoła średnia"
 
-#: templates/catalogue/main_page.html:76
+#: templates/catalogue/main_page.html:67
 #: templates/catalogue/user_shelves.html:2
 msgid "Your shelves with books"
 msgstr "Twoje półki z lekturami"
 
-#: templates/catalogue/main_page.html:81
+#: templates/catalogue/main_page.html:72
 msgid "delete"
 msgstr "usuń"
 
-#: templates/catalogue/main_page.html:90
+#: templates/catalogue/main_page.html:81
 #: templates/catalogue/user_shelves.html:15
 msgid "Create shelf"
 msgstr "Utwórz półkę"
 
-#: templates/catalogue/main_page.html:94
+#: templates/catalogue/main_page.html:86
 msgid "Create your own book set. You can share it with friends by sending them link to your shelf."
 msgstr "Stwórz własny zestaw lektur. Możesz się nim później podzielić z innymi, przesyłając im link do Twojej półki."
 
-#: templates/catalogue/main_page.html:95
+#: templates/catalogue/main_page.html:87
 msgid "You need to "
 msgstr "Aby zarządzać swoimi półkami, musisz się"
 
-#: templates/catalogue/main_page.html:95
+#: templates/catalogue/main_page.html:87
 msgid "sign in"
 msgstr "zalogować"
 
-#: templates/catalogue/main_page.html:95
+#: templates/catalogue/main_page.html:87
 msgid "to manage your shelves."
 msgstr "."
 
-#: templates/catalogue/main_page.html:101
+#: templates/catalogue/main_page.html:93
 msgid "Twórzże się!"
 msgstr ""
 
+#: templates/catalogue/main_page.html:95
 #: templates/catalogue/main_page.html:103
-#: templates/catalogue/main_page.html:111
 msgid "Wolne Lektury Widget"
 msgstr "Widżet Wolne Lektury"
 
-#: templates/catalogue/main_page.html:104
+#: templates/catalogue/main_page.html:96
 msgid "Place our widget - search engine for Wolne Lektury which gives access to free books and audiobooks - on your homepage! Just copy the HTML code below onto your page:"
 msgstr "Umieść widżet – wyszukiwarkę Wolnych Lektur umożliwiającą dostęp do darmowych lektur i audiobooków – na swojej stronie WWW! Po prostu skopiuj poniższy kod HTML na swoją stronę:"
 
-#: templates/catalogue/main_page.html:105
+#: templates/catalogue/main_page.html:97
 msgid "Insert this element in place where you want display the widget"
 msgstr "Umieść ten element w miejscu gdzie chcesz wyświetlić widżet"
 
-#: templates/catalogue/main_page.html:108
+#: templates/catalogue/main_page.html:100
 msgid "Place this element just before closing body tag: &lt;/body&gt;"
 msgstr "Umieść ten element tuż przed zamknięciem taga body: &lt;/body&gt;"
 
-#: templates/catalogue/main_page.html:114
-#: templates/catalogue/main_page.html:116
+#: templates/catalogue/main_page.html:106
+#: templates/catalogue/main_page.html:108
 #: templates/lessons/document_list.html:32
 msgid "Hand-outs for teachers"
 msgstr "Materiały pomocnicze dla nauczycieli"
 
-#: templates/catalogue/main_page.html:115
+#: templates/catalogue/main_page.html:107
 msgid "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
 msgstr "Scenariusze lekcji i inne pomysły na wykorzytanie serwisu WolneLektury.pl podczas nauczania."
 
-#: templates/catalogue/main_page.html:122
-#: templates/catalogue/tagged_object_list.html:112
+#: templates/catalogue/main_page.html:114
+#: templates/catalogue/tagged_object_list.html:113
 msgid "Authors"
 msgstr "Autorzy"
 
-#: templates/catalogue/main_page.html:126
-#: templates/catalogue/tagged_object_list.html:116
+#: templates/catalogue/main_page.html:118
+#: templates/catalogue/tagged_object_list.html:117
 msgid "Kinds"
 msgstr "Rodzaje"
 
-#: templates/catalogue/main_page.html:130
-#: templates/catalogue/tagged_object_list.html:120
+#: templates/catalogue/main_page.html:122
+#: templates/catalogue/tagged_object_list.html:121
 msgid "Genres"
 msgstr "Gatunki"
 
-#: templates/catalogue/main_page.html:134
-#: templates/catalogue/tagged_object_list.html:124
+#: templates/catalogue/main_page.html:126
+#: templates/catalogue/tagged_object_list.html:125
 msgid "Epochs"
 msgstr "Epoki"
 
-#: templates/catalogue/main_page.html:140
-#: templates/catalogue/main_page.html:155
+#: templates/catalogue/main_page.html:132
+#: templates/catalogue/main_page.html:147
 msgid "Themes and topics"
 msgstr "Motywy i tematy"
 
-#: templates/catalogue/main_page.html:143
+#: templates/catalogue/main_page.html:135
 msgid "Themes groups"
 msgstr "Rodziny motywów"
 
-#: templates/catalogue/main_page.html:328
+#: templates/catalogue/main_page.html:320
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/catalogue/main_page.html:332
+#: templates/catalogue/main_page.html:324
 msgid "See our blog"
 msgstr "Zobacz nasz blog"
 
-#: templates/catalogue/main_page.html:335
-#: templates/catalogue/main_page.html:341
+#: templates/catalogue/main_page.html:327
+#: templates/catalogue/main_page.html:333
 msgid "You can help us!"
 msgstr "Możesz nam pomóc!"
 
-#: templates/catalogue/main_page.html:337
+#: templates/catalogue/main_page.html:329
 msgid "Become a volunteer &ndash; an editor, developer or translator."
 msgstr "Zostań naszym redaktorem, programistą lub tłumaczem – wolontariuszem."
 
-#: templates/catalogue/main_page.html:338
+#: templates/catalogue/main_page.html:330
 msgid "Gain new skills and experience."
 msgstr "Zdobądź nowe umiejętności i doświadczenie."
 
-#: templates/catalogue/main_page.html:339
+#: templates/catalogue/main_page.html:331
 msgid "Join an open project of creating an innovative online library."
 msgstr "Weź udział w otwartym projekcie i twórz innowacyjną bibliotekę internetową."
 
-#: templates/catalogue/main_page.html:344
-#: templates/catalogue/main_page.html:350
+#: templates/catalogue/main_page.html:336
+#: templates/catalogue/main_page.html:342
 msgid "About us"
 msgstr "O projekcie"
 
-#: templates/catalogue/main_page.html:346
+#: templates/catalogue/main_page.html:338
 msgid ""
 "\n"
 "\t\t\tInternet library with school readings “Wolne Lektury” (<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by Modern Poland Foundation. It started in 2007 and shares school readings, which are recommended by Ministry of National Education and are in public domain.\n"
@@ -760,7 +772,7 @@ msgstr ""
 "\n"
 "Biblioteka internetowa z lekturami szkolnymi „Wolne Lektury” (<a href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) to projekt realizowany przez fundację Nowoczesna Polska. Działa od 2007 roku i udostępnia w swoich zbiorach lektury szkolne, które są zalecane do użytku przez Ministerstwo Edukacji Narodowej i które trafiły już do domeny publicznej."
 
-#: templates/catalogue/main_page.html:359
+#: templates/catalogue/main_page.html:351
 msgid ""
 "\n"
 "Portions of this page are modifications based on work created and <a href=\"http://code.google.com/policies.html\">shared by Google</a> and used\n"
@@ -790,7 +802,7 @@ msgid "Search in WolneLektury.pl"
 msgstr "Wyszukiwanie w WolneLektury.pl"
 
 #: templates/catalogue/search_no_hits.html:14
-#: templates/catalogue/tagged_object_list.html:101
+#: templates/catalogue/tagged_object_list.html:103
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Przepraszamy! Brak wyników spełniających kryteria podane w zapytaniu."
 
@@ -824,93 +836,93 @@ msgstr "Pobierz wszystkie książki z tej półki"
 msgid "Choose books' formats which you want to download:"
 msgstr "Wybierz formaty książek, które chcesz pobrać:"
 
-#: templates/catalogue/tagged_object_list.html:41
 #: templates/catalogue/tagged_object_list.html:42
+#: templates/catalogue/tagged_object_list.html:43
 msgid "for listening"
 msgstr "do słuchania"
 
-#: templates/catalogue/tagged_object_list.html:41
+#: templates/catalogue/tagged_object_list.html:42
 msgid "on favourite MP3 player"
 msgstr "w ulubionym odtwarzaczu MP3"
 
-#: templates/catalogue/tagged_object_list.html:42
+#: templates/catalogue/tagged_object_list.html:43
 msgid "open format"
 msgstr "otwarty format"
 
-#: templates/catalogue/tagged_object_list.html:42
+#: templates/catalogue/tagged_object_list.html:43
 msgid "Xiph.org Foundation"
 msgstr "fundacji Xiph.Org"
 
-#: templates/catalogue/tagged_object_list.html:44
+#: templates/catalogue/tagged_object_list.html:45
 #: templates/lessons/ajax_document_detail.html:3
 msgid "Download"
 msgstr "Pobierz"
 
-#: templates/catalogue/tagged_object_list.html:44
+#: templates/catalogue/tagged_object_list.html:45
 msgid "Updating list of books' formats on the shelf"
 msgstr "Uaktualnianie listy formatów książek na półce."
 
-#: templates/catalogue/tagged_object_list.html:44
+#: templates/catalogue/tagged_object_list.html:45
 msgid "cancel"
 msgstr "anuluj"
 
-#: templates/catalogue/tagged_object_list.html:49
+#: templates/catalogue/tagged_object_list.html:50
 msgid "Share this shelf"
 msgstr "Podziel się tą półką"
 
-#: templates/catalogue/tagged_object_list.html:51
+#: templates/catalogue/tagged_object_list.html:52
 msgid "Copy this link and share it with other people to let them see your shelf."
 msgstr "Skopiuj ten link i przekaż go osobom, z którymi chcesz się podzielić tą półką."
 
-#: templates/catalogue/tagged_object_list.html:61
+#: templates/catalogue/tagged_object_list.html:62
 #: templates/pdcounter/author_detail.html:27
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr "Przeczytaj omówienia utworów autora w serwisie Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:63
+#: templates/catalogue/tagged_object_list.html:64
 #, python-format
 msgid "Read study of epoch %(last_tag)s on Lektury.Gazeta.pl"
 msgstr "Przeczytaj omówienia z epoki %(last_tag)s w serwisie Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:65
+#: templates/catalogue/tagged_object_list.html:66
 #, python-format
 msgid "Read study of kind %(last_tag)s on Lektury.Gazeta.pl"
 msgstr "Przeczytaj omówienia z rodzaju %(last_tag)s w serwisie Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:67
+#: templates/catalogue/tagged_object_list.html:68
 #, python-format
 msgid "Read study of genre %(last_tag)s on Lektury.Gazeta.pl"
 msgstr "Przeczytaj omówienia z gatunku %(last_tag)s w serwisie Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:69
+#: templates/catalogue/tagged_object_list.html:70
 msgid "Read related study on Lektury.Gazeta.pl"
 msgstr "Przeczytaj powiązane omówienia w serwisie Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:77
+#: templates/catalogue/tagged_object_list.html:78
 #: templates/pdcounter/author_detail.html:32
 msgid "Read article about this author on Wikipedia"
 msgstr "Przeczytaj artykuł o autorze w Wikipedii"
 
-#: templates/catalogue/tagged_object_list.html:79
+#: templates/catalogue/tagged_object_list.html:80
 #, python-format
 msgid "Read article about epoch %(last_tag)s on Wikipedia"
 msgstr "Przeczytaj artykuł o epoce %(last_tag)s w Wikipedii"
 
-#: templates/catalogue/tagged_object_list.html:81
+#: templates/catalogue/tagged_object_list.html:82
 #, python-format
 msgid "Read article about kind %(last_tag)s on Wikipedia"
 msgstr "Przeczytaj artykuł o rodzaju %(last_tag)s w Wikipedii"
 
-#: templates/catalogue/tagged_object_list.html:83
+#: templates/catalogue/tagged_object_list.html:84
 #, python-format
 msgid "Read article about genre %(last_tag)s on Wikipedia"
 msgstr "Przeczytaj artykuł o gatunku %(last_tag)s w Wikipedii"
 
-#: templates/catalogue/tagged_object_list.html:85
+#: templates/catalogue/tagged_object_list.html:86
 msgid "Read related article on Wikipedia"
 msgstr "Przeczytaj powiązany artykuł w Wikipedii"
 
-#: templates/catalogue/tagged_object_list.html:95
+#: templates/catalogue/tagged_object_list.html:96
 msgid "Delete"
 msgstr "Usuń"
 
@@ -1063,9 +1075,6 @@ msgstr "Zaloguj się"
 #~ msgstr ""
 #~ "to profesjonalne nagrania tekstów literackich z naszego zbioru dostępne "
 #~ "na wolnej licencji w formatach MP3, Ogg Vorbis oraz w systemie DAISY."
-
-#~ msgid "Download MP3"
-#~ msgstr "Pobierz plik MP3"
 
 #~ msgid "Download Ogg Vorbis"
 #~ msgstr "Pobierz plik Ogg Vorbis"

@@ -6,7 +6,7 @@ from django.contrib import admin
 from django import forms
 
 from newtagging.admin import TaggableModelAdmin, TaggableModelForm
-from catalogue.models import Tag, Book, Fragment, BookMedia
+from catalogue.models import Tag, Book, Fragment, BookMedia, Collection
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -54,6 +54,11 @@ class FragmentAdmin(TaggableModelAdmin):
     ordering = ('book', 'anchor',)
 
 
+class CollectionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Fragment, FragmentAdmin)
+admin.site.register(Collection, CollectionAdmin)

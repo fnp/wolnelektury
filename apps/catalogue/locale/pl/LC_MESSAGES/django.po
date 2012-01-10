@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-11 15:44+0200\n"
-"PO-Revision-Date: 2011-10-11 15:44+0100\n"
+"POT-Creation-Date: 2012-01-10 13:04+0100\n"
+"PO-Revision-Date: 2012-01-10 13:05+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,218 +22,226 @@ msgstr ""
 msgid "Enter a valid JSON value. Error: %s"
 msgstr "Wprowadź prawidłową wartość JSON. Błąd: %s"
 
-#: forms.py:25
+#: forms.py:26
 msgid "Please supply an XML."
 msgstr "Proszę podać XML."
 
-#: forms.py:39
+#: forms.py:40
 msgid "title, author, theme/topic, epoch, kind, genre"
 msgstr "tytuł, autor, motyw/temat, epoka, rodzaj, gatunek"
 
-#: forms.py:56
+#: forms.py:57
 msgid "Shelves"
 msgstr "Półki"
 
-#: forms.py:69
+#: forms.py:70
 msgid "Name of the new shelf"
 msgstr "nazwa nowej półki"
 
-#: models.py:35
+#: models.py:29
 msgid "author"
 msgstr "autor"
 
-#: models.py:36
+#: models.py:30
 msgid "epoch"
 msgstr "epoka"
 
-#: models.py:37
+#: models.py:31
 msgid "kind"
 msgstr "rodzaj"
 
-#: models.py:38
+#: models.py:32
 msgid "genre"
 msgstr "gatunek"
 
-#: models.py:39
+#: models.py:33
 msgid "theme"
 msgstr "motyw"
 
-#: models.py:40
+#: models.py:34
 msgid "set"
 msgstr "półka"
 
-#: models.py:41 models.py:314
+#: models.py:35
+#: models.py:319
 msgid "book"
 msgstr "książka"
 
-#: models.py:45
+#: models.py:39
 msgid "ODT file"
 msgstr "Plik ODT"
 
-#: models.py:46
+#: models.py:40
 msgid "MP3 file"
 msgstr "Plik MP3"
 
-#: models.py:47
+#: models.py:41
 msgid "OGG file"
 msgstr "Plik OGG"
 
-#: models.py:48
+#: models.py:42
 msgid "DAISY file"
 msgstr "Plik DAISY"
 
-#: models.py:65 models.py:198
+#: models.py:59
+#: models.py:194
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:66 models.py:287 models.py:876
+#: models.py:60
+#: models.py:294
+#: models.py:951
+#: models.py:968
+#: models.py:971
 msgid "slug"
 msgstr "slug"
 
-#: models.py:67 models.py:286
+#: models.py:61
+#: models.py:293
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models.py:68
+#: models.py:62
 msgid "category"
 msgstr "kategoria"
 
-#: models.py:70 models.py:112 models.py:288 models.py:469
+#: models.py:64
+#: models.py:106
+#: models.py:295
+#: models.py:444
+#: models.py:969
 msgid "description"
 msgstr "opis"
 
-#: models.py:71
-msgid "main page"
-msgstr "strona główna"
-
-#: models.py:71
-msgid "Show tag on main page"
-msgstr "Pokazuj tag na stronie głównej"
-
-#: models.py:74
+#: models.py:68
 msgid "book count"
 msgstr "liczba książek"
 
-#: models.py:78 models.py:79 models.py:200 models.py:289 models.py:290
+#: models.py:72
+#: models.py:73
+#: models.py:196
+#: models.py:296
+#: models.py:297
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models.py:96
+#: models.py:90
 msgid "tag"
 msgstr "tag"
 
-#: models.py:97
+#: models.py:91
 msgid "tags"
 msgstr "tagi"
 
-#: models.py:197 models.py:877
+#: models.py:193
+#: models.py:952
 msgid "type"
 msgstr "typ"
 
-#: models.py:199
+#: models.py:195
 msgid "file"
 msgstr "plik"
 
-#: models.py:201 models.py:292
+#: models.py:197
+#: models.py:299
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models.py:210 models.py:211
+#: models.py:206
+#: models.py:207
 msgid "book media"
 msgstr "media książki"
 
-#: models.py:285
+#: models.py:292
+#: models.py:967
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:291
+#: models.py:298
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: models.py:296
-msgid "XML file"
-msgstr "Plik XML"
-
-#: models.py:297
-msgid "HTML file"
-msgstr "Plik HTML"
-
-#: models.py:298
-msgid "PDF file"
-msgstr "Plik PDF"
-
-#: models.py:299
-msgid "EPUB file"
-msgstr "Plik EPUB"
-
-#: models.py:300
-msgid "TXT file"
-msgstr "Plik TXT"
-
-#: models.py:315
+#: models.py:320
 msgid "books"
 msgstr "książki"
 
-#: models.py:435
+#: models.py:408
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: models.py:656
+#: models.py:672
 #, python-format
 msgid "Book with slug = \"%s\" does not exist."
 msgstr "Książki ο slug = \"%s\" nie istnieje."
 
-#: models.py:669
+#: models.py:685
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models.py:844
+#: models.py:900
+#, python-format
+msgid "%s file"
+msgstr "plik %s"
+
+#: models.py:919
 msgid "fragment"
 msgstr "fragment"
 
-#: models.py:845
+#: models.py:920
 msgid "fragments"
 msgstr "fragmenty"
 
-#: models.py:878
+#: models.py:953
 msgid "sha-1 hash"
 msgstr "hash sha-1"
 
-#: models.py:879
+#: models.py:954
 msgid "time"
 msgstr "czas"
 
-#: models.py:883
+#: models.py:958
 msgid "file record"
 msgstr ""
 
-#: models.py:884
+#: models.py:959
 msgid "file records"
 msgstr ""
 
-#: views.py:531
+#: models.py:972
+msgid "book slugs"
+msgstr "slugi książek"
+
+#: models.py:976
+msgid "collection"
+msgstr "kolekcja"
+
+#: models.py:977
+msgid "collections"
+msgstr "kolekcje"
+
+#: views.py:509
 msgid "<p>To maintain your shelves you need to be logged in.</p>"
 msgstr "<p>Aby zarządzać swoimi półkami, musisz się zalogować.</p>"
 
-#: views.py:553
+#: views.py:531
 msgid "<p>Shelves were sucessfully saved.</p>"
 msgstr "<p>Półki zostały zapisane.</p>"
 
-#: views.py:577
+#: views.py:555
 msgid "Book was successfully removed from the shelf"
 msgstr "Usunięto"
 
-#: views.py:579
+#: views.py:557
 msgid "This book is not on the shelf"
 msgstr "Książki nie ma na półce"
 
-#: views.py:689
+#: views.py:676
 #, python-format
 msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 msgstr "<p>Półka <strong>%s</strong> została usunięta</p>"
 
-#: views.py:748
+#: views.py:738
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -244,14 +252,35 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:749
+#: views.py:739
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:751
+#: views.py:741
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
+
+#~ msgid "main page"
+#~ msgstr "strona główna"
+
+#~ msgid "Show tag on main page"
+#~ msgstr "Pokazuj tag na stronie głównej"
+
+#~ msgid "XML file"
+#~ msgstr "Plik XML"
+
+#~ msgid "HTML file"
+#~ msgstr "Plik HTML"
+
+#~ msgid "PDF file"
+#~ msgstr "Plik PDF"
+
+#~ msgid "EPUB file"
+#~ msgstr "Plik EPUB"
+
+#~ msgid "TXT file"
+#~ msgstr "Plik TXT"
 
 #, fuzzy
 #~ msgid "sort_key"
@@ -274,9 +303,6 @@ msgstr "Błąd podczas importowania pliku: %r"
 
 #~ msgid "book stub"
 #~ msgstr "zapowiedź książki"
-
-#~ msgid "book stubs"
-#~ msgstr "zapowiedzi książek"
 
 #~ msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
 #~ msgstr "<p>Półka <strong>%s</strong> została utworzona</p>"
