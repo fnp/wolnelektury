@@ -1,13 +1,21 @@
-#books-list ol {
+.work-list {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-#books-list li {
-    display: inline-block;
+.work-item {
     margin: 0;
     padding: 0;
+}
+
+.books .work-item  {
+    display: inline-block;
+}
+
+
+#tagged-object-list .left-column, #tagged-object-list .right-column {
+    width: 48em;
 }
 
 
@@ -55,3 +63,7 @@
     padding: 10px;
     background-color: white;    
 }
+
+
+
+fragment

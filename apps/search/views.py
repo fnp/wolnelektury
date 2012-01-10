@@ -8,10 +8,9 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpRespons
 from django.utils.translation import ugettext as _
 
 from catalogue.utils import get_random_hash
-from catalogue.models import Book, Tag, Fragment, TAG_CATEGORIES
+from catalogue.models import Book, Tag, Fragment
 from catalogue.fields import dumps
 from catalogue.views import JSONResponse
-from catalogue import forms
 from search import Search, JVM, SearchResult
 from lucene import StringReader
 from suggest.forms import PublishingSuggestForm
@@ -151,13 +150,13 @@ def main(request):
         elif len(results) == 0:
             form = PublishingSuggestForm(initial={"books": query + ", "})
             return render_to_response('catalogue/search_no_hits.html',
-                                      {'tags': tag_list, 'prefix': query, "pubsuggest_form": form,
-                                       'form': forms.SearchForm()},
+                                      {'tags': tag_list, 'prefix': query,
+                                       "form": form},
                 context_instance=RequestContext(request))
 
         return render_to_response('catalogue/search_multiple_hits.html',
                                   {'tags': tag_list, 'prefix': query,
-                                   'results': results, 'from': forms.SearchForm()},
+                                   'results': results},
             context_instance=RequestContext(request))
 
     # return render_to_response('newsearch/search.html', {'results': results,

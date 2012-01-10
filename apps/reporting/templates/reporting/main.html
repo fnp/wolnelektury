@@ -10,7 +10,7 @@
 {% block body %}
     <h1>Statystyka</h1>
 
-    <p><a href="{% url reporting_catalogue_pdf %}">Katalog biblioteki w formacie PDF.</a></p>
+    <div class="normal-text">
 
     <table class="stats">
         <tr><th>Utwory</th></tr>
@@ -26,11 +26,13 @@
                 <td>{{ mt.size|filesizeformat }}</td>
                 <td>{{ mt.deprecated }}
                     {% for m in mt.deprecated_files %}
-                        <br/><a href="{{ m.book.get_absolute_url }}">{{ m }}</a>
+                        <br/><a href="{{ m.book.get_absolute_url }}">{% book_title m.book %}: {{ m }}</a>
                     {% endfor %}
                 </td>
             </tr>
         {% endfor %}
     </table>
+
+    </div>
 
 {% endblock %}

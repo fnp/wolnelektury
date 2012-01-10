@@ -9,15 +9,17 @@
 {% block body %}
     <h1>{% trans "Search" %}</h1>
 
-    <div id="books-list">
+    <div class="left-column">
+    <div class="normal-text">
         <p>{% trans "Sorry! Search cirteria did not match any resources." %}</p>
 
 		<p>{% blocktrans %}Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.
 		As for now we do not support full text search.{% endblocktrans %}</p>
         {% include "info/join_us.html" %}
     </div>
+    </div>
 
-    <div class="column-right block-form">
+    <div class="right-column">
         {% include "publishing_suggest.html" %}
     </div>
 {% endblock %}

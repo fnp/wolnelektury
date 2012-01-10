@@ -219,8 +219,7 @@ COMPRESS_JS = {
 
             'js/search.js',
 
-            #~ 'js/jquery.autocomplete.js',
-            #~ 'js/jquery.labelify.js', 'js/catalogue.js',
+            'js/jquery.labelify.js',
             ),
         'output_filename': 'js/base?.min.js',
     },

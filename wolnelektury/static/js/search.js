@@ -42,8 +42,8 @@ var __bind = function (self, fn) {
 	});
 
     $(function() {
-	$("#search-area input[name=q]").search();
-	
+        $("#search").search().labelify({labelledClass: "blur"});
     });
+
 
 })(jQuery);
