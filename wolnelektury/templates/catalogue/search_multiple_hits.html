@@ -9,6 +9,9 @@
 {% block body %}
     <h1>{% trans "Search" %}</h1>
 
+    {% if did_you_mean %}
+      <span class="did_you_mean">{% trans "Dod you mean" %} <a href="{% url search %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a></b>?</span>
+    {% endif %}
     <div id="results">
       <ol>
       {% for result in results %}

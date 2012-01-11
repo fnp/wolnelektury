@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -20,11 +21,21 @@ import enchant
 dictionary = enchant.Dict('pl_PL')
 
 
+def match_word_re(word):
+    if 'sqlite' in settings.DATABASES['default']['ENGINE']:
+        return r"\b%s\b" % word
+    elif 'mysql' in settings.DATABASES['default']['ENGINE']:
+        return "[[:<:]]%s[[:>:]]" % word
+
+
 def did_you_mean(query, tokens):
     change = {}
-    # sprawdzić, czy słowo nie jest aby autorem - proste szukanie termu w author!
     for t in tokens:
-        print("%s ok? %s, sug: %s" %(t, dictionary.check(t), dictionary.suggest(t)))
+        print("%s ok? %s, sug: %s" % (t, dictionary.check(t), dictionary.suggest(t)))
+        authors = Tag.objects.filter(category='author', name__iregex=match_word_re(t))
+        if len(authors) > 0:
+            continue
+        
         if not dictionary.check(t):
             try:
                 change[t] = dictionary.suggest(t)[0]
@@ -128,6 +139,9 @@ def main(request):
             for h in r.hits:
                 print "- %s" % h
 
+                # Did you mean?
+        suggestion = did_you_mean(query, srch.get_tokens(toks, field="SIMPLE"))
+
         if len(results) == 1:
             if len(results[0].hits) == 0:
                 return HttpResponseRedirect(results[0].book.get_absolute_url())
@@ -137,11 +151,15 @@ def main(request):
         elif len(results) == 0:
             form = PublishingSuggestForm(initial={"books": query + ", "})
             return render_to_response('catalogue/search_no_hits.html',
-                                      {'tags': tag_list, 'prefix': query,
-                                       "form": form},
+                                      {'tags': tag_list,
+                                       'prefix': query,
+                                       "form": form,
+                                       'did_you_mean': suggestion},
                 context_instance=RequestContext(request))
 
         return render_to_response('catalogue/search_multiple_hits.html',
-                                  {'tags': tag_list, 'prefix': query,
-                                   'results': results},
+                                  {'tags': tag_list,
+                                   'prefix': query,
+                                   'results': results,
+                                   'did_you_mean': suggestion},
             context_instance=RequestContext(request))
