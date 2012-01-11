@@ -59,7 +59,6 @@ def hint(request):
     # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
     # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
 
-    
     tags = s.hint_tags(prefix)
     books = s.hint_books(prefix)
 
@@ -76,18 +75,6 @@ def hint(request):
             'id': b.id,
             'url': b.get_absolute_url()}
             for b in books])
-
-
-def foo(s, q, tag_list=None):
-    hint = s.hint()
-    try:
-        tag_list = Tag.get_tag_list(tag_list)
-        hint.tags(tag_list)
-    except:
-        tag_list = None
-
-    q = StringReader(q)
-    return (q, hint)
 
 
 def main(request):
@@ -158,9 +145,3 @@ def main(request):
                                   {'tags': tag_list, 'prefix': query,
                                    'results': results},
             context_instance=RequestContext(request))
-
-    # return render_to_response('newsearch/search.html', {'results': results,
-    #                                                     'did_you_mean': (query is not None) and
-    #                                                     did_you_mean(query, srch.get_tokens(query, field='SIMPLE')),
-    #                                                     'fuzzy': fuzzy},
-    #                           context_instance=RequestContext(request))

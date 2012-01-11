@@ -89,6 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.request',
     'wolnelektury.context_processors.extra_settings',
+    'search.context_processors.search_form',
 )
 
 MIDDLEWARE_CLASSES = [

@@ -75,7 +75,8 @@
             <form id="search-area" action="/fullsearch/">
                 
                 <span id="search-field" class="grid-line">
-                    <input id="search" title="np. Leśmian" name="q" autocomplete="off" data-source="/fullsearch/hint/">
+		  {{search_form.q}}
+<!--                    <input title="np. Leśmian" name="q" autocomplete="off" data-source="/fullsearch/hint/">-->
                 </span><span id="search-button">
                     <button type='submit'><span class="mono">{% trans "Search" %}</span></button>
                 </span>

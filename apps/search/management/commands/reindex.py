@@ -9,7 +9,15 @@ class Command(BaseCommand):
         import search
         idx = search.ReusableIndex()
         idx.open()
-        for b in Book.objects.all():
+
+        if args:
+            books = []
+            for a in args:
+                books += Book.objects.filter(slug=a).all()
+        else:
+            books = Book.objects.all()
+            
+        for b in books:
             print b.title
             idx.index_book(b, None)
         print 'Reindexing tags.'

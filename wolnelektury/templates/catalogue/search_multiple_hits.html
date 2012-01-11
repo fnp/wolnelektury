@@ -31,6 +31,7 @@
 	    
 	    {% else %}
 	    {# it's a section #}
+	    <a href="{% url book_text result.book.slug %}#f{{hit.section_number}}">{{hit.header_index}}</a>
   	     {% if hit.snippets %}
 	      {% for snip in hit.snippets %}
 	        {{snip|safe}}<br/>

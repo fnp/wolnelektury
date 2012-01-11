@@ -104,16 +104,8 @@ class JQueryAutoCompleteSearchWidget(JQueryAutoCompleteWidget):
         super(JQueryAutoCompleteSearchWidget, self).__init__(*args, **kwargs)
 
     def render_js(self, field_id, options):
-        return u"""
-        $('#%s')
-        .autocomplete($.extend({
-          minLength: 0,
-          select: autocomplete_result_handler,
-          focus: function (ui, item) { return false; }
-        }, %s))
-        .data("autocomplete")._renderItem = autocomplete_format_item;
-        """ % (field_id, options)
-
+        return u""
+    
 
 class JQueryAutoCompleteField(forms.CharField):
     def __init__(self, source, options={}, *args, **kwargs):
@@ -125,9 +117,8 @@ class JQueryAutoCompleteField(forms.CharField):
 
 
 class JQueryAutoCompleteSearchField(forms.CharField):
-    def __init__(self, source, options={}, *args, **kwargs):
+    def __init__(self, options={}, *args, **kwargs):
         if 'widget' not in kwargs:
-            options['source'] = source
             kwargs['widget'] = JQueryAutoCompleteSearchWidget(options)
 
         super(JQueryAutoCompleteSearchField, self).__init__(*args, **kwargs)

@@ -9,9 +9,6 @@ from catalogue import forms
 urlpatterns = patterns('',
     url(r'^$', 'django.views.generic.simple.direct_to_template', {
         'template': 'lessons/document_list.html',
-        'extra_context': {
-            'form': forms.SearchForm(),
-        },
     }, name='lessons_document_list'),
 
     url(r'^(?P<slug>[a-zA-Z0-9_-]+)/$', 'lessons.views.document_detail', name='lessons_document_detail'),

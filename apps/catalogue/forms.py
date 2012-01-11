@@ -31,20 +31,15 @@ class BookImportForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-    q = JQueryAutoCompleteSearchField('/newsearch/hint/') # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
-    tags = forms.CharField(widget=forms.HiddenInput, required=False)
+    q = JQueryAutoCompleteSearchField()  # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
 
-    book = forms.IntegerField(widget=forms.HiddenInput, min_value=0, required=False)
-
-    def __init__(self, *args, **kwargs):
-        tags = kwargs.pop('tags', [])
-        book = kwargs.pop('book', None)
+    def __init__(self, source, *args, **kwargs):
+        kwargs['auto_id'] = False
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre, phrase')
-	    #self.fields['q'].widget.attrs['style'] = ''
-        self.fields['tags'].initial = '/'.join(tag.url_chunk for tag in Tag.get_tag_list(tags))
-        if book is not None:
-            self.fields['book'].initial = book.id
+        self.fields['q'].widget.attrs['autocomplete'] = _('off')
+        self.fields['q'].widget.attrs['data-source'] = _(source)
+        self.fields['q'].widget.attrs['id'] = _('search')
 
 
 class UserSetsForm(forms.Form):

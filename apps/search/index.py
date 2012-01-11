@@ -610,20 +610,20 @@ class SearchResult(object):
 
         # remove duplicate sections
         sections = {}
-        
+
         for s in sect:
             si = s[POSITION][POSITION_INDEX]
             # skip existing
             if si in sections:
                 if sections[si]['score'] >= s[SCORE]:
                     continue
-                
+
             m = {'score': s[SCORE],
-                 'header_index': s[POSITION][POSITION_INDEX]
+                 'section_number': s[POSITION][POSITION_INDEX] + 1,
                  }
             m.update(s[OTHER])
             sections[si] = m
-            
+
         hits = sections.values()
 
         for f in frags:
@@ -1029,7 +1029,6 @@ class Search(IndexStore):
         # top_level.add(BooleanClause(kw_level, Should))
 
         # return None
-
 
     def get_snippets(self, scoreDoc, query, field='content'):
         """
