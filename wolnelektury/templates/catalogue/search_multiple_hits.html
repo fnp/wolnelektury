@@ -1,75 +1,23 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags pagination_tags %}
+{% load search_tags pagination_tags %}
 
 {% block titleextra %}{% trans "Search" %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Search" %}</h1>
-
     {% if did_you_mean %}
       <span class="did_you_mean">{% trans "Dod you mean" %} <a href="{% url search %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a></b>?</span>
     {% endif %}
+    <!-- tu pójdą trafienia w tagi: Autorzy - z description oraz motywy i rodzaje (z book_count) -->
+
     <div id="results">
-      <ol>
       {% for result in results %}
-      <li>
-	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
-	<ul>
-	  {% for hit in result.hits %}
-	  <li>
-	    {% if hit.fragment %}
-	    <a href="{{hit.fragment.get_absolute_url}}">Idź do fragmentu</a>
-	    <div style="">Tagi/Motywy: {% for tag in hit.themes %}{{tag.name}} {% endfor %}</div>
-	    {# snippets or short html? #}
-	    {% if hit.snippets %}
-	     {% for snip in hit.snippets %}
-	       {{snip|safe}}<br/>
-	     {% endfor %}
-	    {% else %}
-	     {{hit.fragment.short_text|safe}}
-	    {% endif %}
-	    
-	    {% else %}
-	    {# it's a section #}
-	    <a href="{% url book_text result.book.slug %}#f{{hit.section_number}}">{{hit.header_index}}</a>
-  	     {% if hit.snippets %}
-	      {% for snip in hit.snippets %}
-	        {{snip|safe}}<br/>
-	      {% endfor %}
-	     {% else %}
-	       [section matched but no snippets :-(]
-	     {% endif %}
-	    {% endif %}
-	  </li>
-	  {% endfor %}
-
-	</ul>
-      </li>
-      {% empty %}
-      <p>No results.</p>
+        {% book_searched result %}
       {% endfor %}
-      </ol>
     </div>
 
 
-{% comment %}
-    <div id="books-list">
-        <p>{% trans "More than one result matching the criteria found." %}</p>
-        <ul class='matches'>
-        {% for match, link, type in results %}
-          <li>{% trans type %}: <a href='{{ link }}'>
-            {% ifequal type "book" %}
-                {% book_title match %}
-            {% else %}
-                {{ match.name }}
-            {% endifequal %}
-          </a></li>
-        {% endfor %}
-        </ul>
-    </div>
-{% endcomment %}
 
 {% endblock %}

@@ -408,7 +408,7 @@ class Index(BaseIndex):
                 doc = add_part(snippets, header_index=position, header_type=header.tag, content=content)
 
                 self.index.addDocument(doc)
-
+                
                 for start, end in walker(header):
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
@@ -563,6 +563,8 @@ class SearchResult(object):
 
         fragment = stored.get("fragment_anchor")
 
+        if snippets:
+            snippets = snippets.replace("/\n", "\n")
         hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
 
         self._hits.append(hit)
@@ -630,6 +632,7 @@ class SearchResult(object):
             frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
             m = {'score': f[SCORE],
                  'fragment': frag,
+                 'section_number': f[POSITION][POSITION_INDEX] + 1,
                  'themes': frag.tags.filter(category='theme')
                  }
             m.update(f[OTHER])
@@ -884,7 +887,7 @@ class Search(IndexStore):
                 self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
                 max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found))
+                books.append(SearchResult(self.searcher, found, how_found="search_perfect_book"))
         return books
 
     def search_book(self, searched, max_results=20, fuzzy=False, hint=None):
@@ -910,7 +913,7 @@ class Search(IndexStore):
                                    self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
             max_results)
         for found in top.scoreDocs:
-            books.append(SearchResult(self.searcher, found))
+            books.append(SearchResult(self.searcher, found, how_found="search_book"))
 
         return books
 
@@ -932,7 +935,7 @@ class Search(IndexStore):
                                                            flt]),
                                        max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q)))
+                books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q), how_found='search_perfect_parts'))
 
         return books
 
@@ -964,7 +967,7 @@ class Search(IndexStore):
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
-            books.append(SearchResult(self.searcher, found))
+            books.append(SearchResult(self.searcher, found, how_found='search_everywhere_themesXcontent'))
             print "* %s theme x content: %s" % (searched, books[-1]._hits)
 
         # query themes/content x author/title/tags
@@ -983,7 +986,7 @@ class Search(IndexStore):
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
-            books.append(SearchResult(self.searcher, found))
+            books.append(SearchResult(self.searcher, found, how_found='search_everywhere'))
             print "* %s scatter search: %s" % (searched, books[-1]._hits)
 
         return books
