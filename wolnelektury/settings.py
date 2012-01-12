@@ -162,7 +162,7 @@ CACHES = {
     },
     'api': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/srv/wolnelektury.pl/django_cache/',
+        'LOCATION': path.join(PROJECT_DIR, 'django_cache/'),
         'KEY_PREFIX': 'api',
         'TIMEOUT': 86400,
     },
