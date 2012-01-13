@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,6 +19,14 @@ class Chunk(models.Model):
 
     def __unicode__(self):
         return self.key
+
+    def cache_key(self):
+        return 'chunk_' + self.key
+
+    def save(self, *args, **kwargs):
+        ret = super(Chunk, self).save(*args, **kwargs)
+        cache.delete(self.cache_key())
+        return ret
 
 
 class Attachment(models.Model):

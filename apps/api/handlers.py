@@ -7,6 +7,7 @@ import json
 
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.core.cache import get_cache
 from django.core.urlresolvers import reverse
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
@@ -531,6 +532,16 @@ class CatalogueHandler(BaseHandler):
     def changes(cls, request=None, since=0, until=None, book_fields=None,
                 tag_fields=None, tag_categories=None):
         until = cls.until(until)
+        since = int(since)
+
+        if not since:
+            cache = get_cache('api')
+            key = hash((book_fields, tag_fields, tag_categories,
+                    tuple(sorted(request.GET.items()))
+                  ))
+            value = cache.get(key)
+            if value is not None:
+                return value
 
         changes = {
             'time_checked': timestamp(until)
@@ -546,6 +557,10 @@ class CatalogueHandler(BaseHandler):
                 if field == 'time_checked':
                     continue
                 changes.setdefault(field, {})[model] = changes_by_type[model][field]
+
+        if not since:
+            cache.set(key, changes)
+
         return changes
 
 
