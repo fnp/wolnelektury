@@ -139,7 +139,6 @@ class Snippets(object):
         self.file.write(txt)
         pos = (self.position, l)
         self.position += l
-        print "SSSS %s - %s" % (pos, txt)
         return pos
 
     def get(self, pos):
@@ -213,7 +212,7 @@ class Index(BaseIndex):
 
         for tag in catalogue.models.Tag.objects.all():
             doc = Document()
-            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(tag.id))
+            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
             doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
@@ -224,9 +223,9 @@ class Index(BaseIndex):
         Create a lucene document referring book id.
         """
         doc = Document()
-        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(book.id))
+        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(int(book.id)))
         if book.parent is not None:
-            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(book.parent.id))
+            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(int(book.parent.id)))
         return doc
 
     def remove_book(self, book):
@@ -454,7 +453,7 @@ class Index(BaseIndex):
 
                         # in the end, add a section text.
                 doc = add_part(snippets, header_index=position, header_type=header.tag,
-                               content=fix_format(u' '.join(filter(lambda s: s is not None, frag['content']))))
+                               content=fix_format(u' '.join(filter(lambda s: s is not None, content))))
 
                 self.index.addDocument(doc)
 
