@@ -139,6 +139,7 @@ class Snippets(object):
         self.file.write(txt)
         pos = (self.position, l)
         self.position += l
+        print "SSSS %s - %s" % (pos, txt)
         return pos
 
     def get(self, pos):
@@ -402,27 +403,25 @@ class Index(BaseIndex):
                 if header.tag in self.skip_header_tags:
                     continue
 
-                content = u' '.join([t for t in header.itertext()])
-                content = fix_format(content)
+                # section content
+                content = []
 
-                doc = add_part(snippets, header_index=position, header_type=header.tag, content=content)
-
-                self.index.addDocument(doc)
-                
                 for start, end in walker(header):
+                        # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
                         fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
-                        fragments[fid]['content'].append(start.tail)
+
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
                         if start.text is not None:
                             fragments[fid]['themes'] += map(str.strip, map(give_me_utf8, start.text.split(',')))
-                        fragments[fid]['content'].append(start.tail)
+
                     elif start is not None and start.tag == 'end':
                         fid = start.attrib['id'][1:]
                         if fid not in fragments:
                             continue  # a broken <end> node, skip it
+                                      #                        import pdb; pdb.set_trace()
                         frag = fragments[fid]
                         if frag['themes'] == []:
                             continue  # empty themes list.
@@ -442,12 +441,23 @@ class Index(BaseIndex):
                                        themes=frag['themes'])
 
                         self.index.addDocument(doc)
+
+                        # Collect content.
                     elif start is not None:
                         for frag in fragments.values():
                             frag['content'].append(start.text)
+                        content.append(start.text)
                     elif end is not None:
                         for frag in fragments.values():
                             frag['content'].append(end.tail)
+                        content.append(end.tail)
+
+                        # in the end, add a section text.
+                doc = add_part(snippets, header_index=position, header_type=header.tag,
+                               content=fix_format(u' '.join(filter(lambda s: s is not None, frag['content']))))
+
+                self.index.addDocument(doc)
+
         finally:
             snippets.close()
 
