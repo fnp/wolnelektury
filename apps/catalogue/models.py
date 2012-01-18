@@ -792,7 +792,8 @@ class Book(models.Model):
             book.build_mobi()
 
         if not settings.NO_SEARCH_INDEX and search_index:
-            index_book.delay(book.id, book_info)
+            book.search_index()
+            #index_book.delay(book.id, book_info)
 
         book_descendants = list(book.children.all())
         descendants_tags = set()
