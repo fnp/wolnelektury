@@ -31,7 +31,6 @@ def match_word_re(word):
 def did_you_mean(query, tokens):
     change = {}
     for t in tokens:
-        print("%s ok? %s, sug: %s" % (t, dictionary.check(t), dictionary.suggest(t)))
         authors = Tag.objects.filter(category='author', name__iregex=match_word_re(t))
         if len(authors) > 0:
             continue

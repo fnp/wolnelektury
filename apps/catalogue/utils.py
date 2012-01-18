@@ -19,6 +19,7 @@ from os import mkdir, path, unlink
 from errno import EEXIST, ENOENT
 from fcntl import flock, LOCK_EX
 from zipfile import ZipFile
+from traceback import print_exc
 
 from reporting.utils import read_chunks
 from celery.task import task
@@ -144,11 +145,16 @@ def async_build_pdf(book_id, customizations, file_name):
     Accepts the same args as Book.build_pdf, but with book id as first parameter
     instead of Book instance
     """
-    book = catalogue.models.Book.objects.get(id=book_id)
-    print "will gen %s" % DefaultStorage().path(file_name)
-    if not DefaultStorage().exists(file_name):
-        book.build_pdf(customizations=customizations, file_name=file_name)
-    print "done."
+    try:
+        book = catalogue.models.Book.objects.get(id=book_id)
+        print "will gen %s" % DefaultStorage().path(file_name)
+        if not DefaultStorage().exists(file_name):
+            book.build_pdf(customizations=customizations, file_name=file_name)
+        print "done."
+    except Exception, e:
+        print "Error during pdf creation: %s" % e
+        print_exc
+        raise e
 
 
 class MultiQuerySet(object):

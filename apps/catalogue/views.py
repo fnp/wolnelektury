@@ -585,7 +585,7 @@ class CustomPDFFormView(AjaxableFormView):
             request.GET['next'] = "%s?%s" % (reverse('catalogue.views.download_custom_pdf', args=[request.GET['slug']]),
                                              request.POST.urlencode())
         return super(CustomPDFFormView, self).__call__(request)
-        
+
 
     def success(self, *args):
         pass
