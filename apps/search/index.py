@@ -25,6 +25,7 @@ import re
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
+from lxml import etree
 import catalogue.models
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
@@ -400,6 +401,8 @@ class Index(BaseIndex):
             for header, position in zip(list(master), range(len(master))):
 
                 if header.tag in self.skip_header_tags:
+                    continue
+                if header.tag is etree.Comment:
                     continue
 
                 # section content
