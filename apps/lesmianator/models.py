@@ -18,7 +18,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.conf import settings
 
-from librarian import text
 from catalogue.fields import JSONField
 from catalogue.models import Book, Tag
 
@@ -124,6 +123,8 @@ class Continuations(models.Model):
 
     @classmethod
     def for_book(cls, book, length=3):
+        from librarian import text
+
         # count from this book only
         output = StringIO()
         f = open(book.xml_file.path)

@@ -4,7 +4,6 @@
 #
 from django.db import models
 
-from librarian import html
 from sortify import sortify
 
 from catalogue.models import Book
@@ -21,6 +20,8 @@ class Note(models.Model):
 
 
 def notes_from_book(sender, **kwargs):
+    from librarian import html
+
     Note.objects.filter(book=sender).delete()
     if sender.html_file:
         for anchor, text_str, html_str in html.extract_annotations(sender.html_file.path):
