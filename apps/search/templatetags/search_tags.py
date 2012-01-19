@@ -22,10 +22,10 @@ from catalogue.models import Book
 register = template.Library()
 
 
-@register.inclusion_tag('catalogue/book_searched.html')
-def book_searched(result):
+@register.inclusion_tag('catalogue/book_searched.html', takes_context=True)
+def book_searched(context, result):
     book = Book.objects.get(pk=result.book_id)
-    vals = book_wide(book)
+    vals = book_wide(context, book)
 
     # snippets = []
     # for hit in result.hits:
