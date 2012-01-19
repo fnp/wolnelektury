@@ -25,20 +25,20 @@ def piwik_url(**kw):
 PIWIK_API_VERSION = 1
 
 
+# Retrieve piwik information
+_host = urlparse.urlsplit(settings.PIWIK_URL).netloc
+try:
+    _id_piwik = PiwikSite.objects.get(site=Site.objects.get_current().id).id_site
+except PiwikSite.DoesNotExist:
+    logger.debug("No PiwikSite is configured.")
+    _id_piwik = None
+
 def piwik_track(klass_or_method):
     """Track decorated class or method using Piwik (according to configuration in settings and django-piwik)
     Works for handler classes (executed by __call__) or handler methods. Expects request to be the first parameter
     """
-    # Retrieve piwik information
-    current_site = Site.objects.get_current()
-    piwik_site = PiwikSite.objects.filter(site=current_site.id)
-
-    if len(piwik_site) == 0:
-        logger.debug("No PiwikSite is configured for Site " + current_site.name)
+    if _id_piwik is None:
         return klass_or_method
-
-    id_piwik = piwik_site[0].id_site
-    host = urlparse.urlsplit(settings.PIWIK_URL).netloc
 
     # get target method
     if isclass(klass_or_method):
@@ -48,7 +48,7 @@ def piwik_track(klass_or_method):
         call_func = klass_or_method
 
     def wrap(self, request, *args, **kw):
-        conn = httplib.HTTPConnection(host)
+        conn = httplib.HTTPConnection(_host)
         conn.request('GET', piwik_url(
             rec=1,
             apiv=PIWIK_API_VERSION,
@@ -57,7 +57,7 @@ def piwik_track(klass_or_method):
             cip=urllib.quote(request.META['REMOTE_ADDR']),
             url=urllib.quote('http://' + request.META['HTTP_HOST'] + request.path),
             urlref=urllib.quote(request.META['HTTP_REFERER']) if 'HTTP_REFERER' in request.META else '',
-            idsite=id_piwik))
+            idsite=_id_piwik))
 
         conn.close()
         return call_func(self, request, *args, **kw)
