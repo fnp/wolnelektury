@@ -11,14 +11,18 @@ class WLTestCase(TestCase):
     """
     def setUp(self):
         self._MEDIA_ROOT, settings.MEDIA_ROOT = settings.MEDIA_ROOT, tempfile.mkdtemp(prefix='djangotest_')
-        settings.NO_BUILD_PDF = settings.NO_BUILD_MOBI = settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = True
+        settings.NO_SEARCH_INDEX = settings.NO_BUILD_PDF = settings.NO_BUILD_MOBI = settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = True
         settings.CELERY_ALWAYS_EAGER = True
-        self._CACHE_BACKEND, settings.CACHE_BACKEND = settings.CACHE_BACKEND, 'dummy://'
+        self._CACHES, settings.CACHES = settings.CACHES, {
+            'default': {
+                'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+            }
+        }
 
     def tearDown(self):
         shutil.rmtree(settings.MEDIA_ROOT, True)
         settings.MEDIA_ROOT = self._MEDIA_ROOT
-        settings.CACHE_BACKEND = self._CACHE_BACKEND
+        settings.CACHES = self._CACHES
 
 class PersonStub(object):
 

@@ -15,6 +15,7 @@ class BookSearchTests(WLTestCase):
     def setUp(self):
         JVM.attachCurrentThread()
         WLTestCase.setUp(self)
+        settings.NO_SEARCH_INDEX = False
         settings.SEARCH_INDEX = path.join(settings.MEDIA_ROOT, 'search')
 
         txt = path.join(path.dirname(__file__), 'files/fraszka-do-anusie.xml')
