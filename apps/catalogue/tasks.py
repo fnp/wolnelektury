@@ -5,6 +5,7 @@
 from datetime import datetime
 from celery.task import task
 import catalogue.models
+from traceback import print_exc
 
 @task
 def touch_tag(tag):
@@ -18,4 +19,9 @@ def touch_tag(tag):
 
 @task
 def index_book(book_id, book_info=None):
-    return catalogue.models.Book.objects.get(id=book_id).search_index(book_info)
+    try:
+        return catalogue.models.Book.objects.get(id=book_id).search_index(book_info)
+    except Exception, e:
+        print "Exception during index: %s" % e
+        print_exc()
+        raise e

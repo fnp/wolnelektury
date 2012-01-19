@@ -18,14 +18,28 @@
 
 .book-wide-box {
     width: 98.5em;
+
+    /** This is a fullpage box, it must be aligned with the top menu. 
+        This corresponds to a .1em margin below **/
     margin-left: -0.1em;
+}
+
+/* 
+ * A mini-box wraps it's contents (image + label) in an <a>
+ * other boxes have an inner box as a wrapper.
+ */
+
+.book-box-inner {
+    /* min, so it can grow */
+    min-height: 19.75em; 
+    margin: .5em;
 }
 
 .book-mini-box a, .book-box-inner {
     display: block;
     color: black;
     border: 1px solid #ddd;
-    height: 20em;
+/*    height: 20em; */
     padding: .8em 1em;
     margin: .1em;
     background: #fff;
@@ -39,14 +53,16 @@
     margin: .1em;
     overflow: hidden;
 }
-.book-box-inner {
-    height: 19.75em;
-    margin: .5em;
-}
+
 
 .book-wide-box .book-box-inner {
-    height: 24.4em;
+   /* min, so it can grow */ 
+   min-height: 24.4em;
 }
+
+/*.book-wide-box.search-result .book-box-inner, .book-wide-box.search-result blockquote {
+    height: auto !important;
+}*/
 
 .book-mini-box img, .book-box img, .book-wide-box img {
     width: 13.9em;
@@ -212,8 +228,14 @@ ul.book-box-tools {
     vertical-align: center;
 }
 
-.book-wide-box blockquote div {
+.book-wide-box blockquote div.cite-text {
     padding: 0.888em;
+}
+
+.book-wide-box blockquote p.cite-more {
+    display: inline;
+    font-size: 0.611em;
+    float: right;
 }
 
 ul.inline-items, ul.inline-items li {
@@ -225,20 +247,18 @@ ul.inline-items li {
     display: inline-block;
 }
 
-.book-wide-box #other-tools {
+.book-wide-box .other-tools {
     float: left;
     width: 14.5em;
     margin: 6em 0 0 1.5em;
     
 }
 
-.book-wide-box #other-download {
+.book-wide-box .other-download {
     float: left;
     width: 22.5em;
-    margin: 6em 1.5em 0em 1.5em
+    margin: 6em 1.5em 0em 1.5em;
 }
-
-
 
 
 .star {
@@ -274,3 +294,7 @@ ul.inline-items li {
     display: none;
 }
 
+.snippets .snippet-text {
+    font-size: 1.2em;
+    margin: 1.083em 0em;
+}

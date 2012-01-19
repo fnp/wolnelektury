@@ -6,12 +6,13 @@
 {% block right-column %}
 <div class="right-column">
   <blockquote id="quote" class="cite-body">
+    {% block quote %}
     <div>Ten, który walczy z potworami powinien zadbać, by sam nie stał się potworem. 
     Gdy długo spoglądamy w otchłań, otchłań spogląda również w nas.</div>
+    {% endblock %}
   </blockquote>
 
-
-  <div id="other-tools">
+  <div class="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>
     <ul class="inline-items">
       {% if extra_info.source_url %}
@@ -28,7 +29,7 @@
       {% endif %}
     </ul>
   </div>
-  <div id="other-download">
+  <div class="other-download">
     <h2 class="mono">{% trans "Download" %}</h2>
     <ul class="inline-items">
       <li>

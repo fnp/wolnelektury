@@ -147,6 +147,10 @@ hr {
 	border-right: none;
 }
 
+#lang-menu-items {
+    z-index: 1;
+}
+
 /* ======================== */
 /* = Footer with sponsors = */
 /* ======================== */

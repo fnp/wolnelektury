@@ -25,6 +25,7 @@ import re
 import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
+from lxml import etree
 import catalogue.models
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
@@ -212,7 +213,7 @@ class Index(BaseIndex):
 
         for tag in catalogue.models.Tag.objects.all():
             doc = Document()
-            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(tag.id))
+            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
             doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
@@ -223,9 +224,9 @@ class Index(BaseIndex):
         Create a lucene document referring book id.
         """
         doc = Document()
-        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(book.id))
+        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(int(book.id)))
         if book.parent is not None:
-            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(book.parent.id))
+            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(int(book.parent.id)))
         return doc
 
     def remove_book(self, book):
@@ -401,28 +402,28 @@ class Index(BaseIndex):
 
                 if header.tag in self.skip_header_tags:
                     continue
+                if header.tag is etree.Comment:
+                    continue
 
-                content = u' '.join([t for t in header.itertext()])
-                content = fix_format(content)
-
-                doc = add_part(snippets, header_index=position, header_type=header.tag, content=content)
-
-                self.index.addDocument(doc)
+                # section content
+                content = []
 
                 for start, end in walker(header):
+                        # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
                         fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
-                        fragments[fid]['content'].append(start.tail)
+
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
                         if start.text is not None:
                             fragments[fid]['themes'] += map(str.strip, map(give_me_utf8, start.text.split(',')))
-                        fragments[fid]['content'].append(start.tail)
+
                     elif start is not None and start.tag == 'end':
                         fid = start.attrib['id'][1:]
                         if fid not in fragments:
                             continue  # a broken <end> node, skip it
+                                      #                        import pdb; pdb.set_trace()
                         frag = fragments[fid]
                         if frag['themes'] == []:
                             continue  # empty themes list.
@@ -442,12 +443,23 @@ class Index(BaseIndex):
                                        themes=frag['themes'])
 
                         self.index.addDocument(doc)
+
+                        # Collect content.
                     elif start is not None:
                         for frag in fragments.values():
                             frag['content'].append(start.text)
+                        content.append(start.text)
                     elif end is not None:
                         for frag in fragments.values():
                             frag['content'].append(end.tail)
+                        content.append(end.tail)
+
+                        # in the end, add a section text.
+                doc = add_part(snippets, header_index=position, header_type=header.tag,
+                               content=fix_format(u' '.join(filter(lambda s: s is not None, content))))
+
+                self.index.addDocument(doc)
+
         finally:
             snippets.close()
 
@@ -563,6 +575,8 @@ class SearchResult(object):
 
         fragment = stored.get("fragment_anchor")
 
+        if snippets:
+            snippets = snippets.replace("/\n", "\n")
         hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
 
         self._hits.append(hit)
@@ -630,6 +644,7 @@ class SearchResult(object):
             frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
             m = {'score': f[SCORE],
                  'fragment': frag,
+                 'section_number': f[POSITION][POSITION_INDEX] + 1,
                  'themes': frag.tags.filter(category='theme')
                  }
             m.update(f[OTHER])
@@ -884,7 +899,7 @@ class Search(IndexStore):
                 self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
                 max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found))
+                books.append(SearchResult(self.searcher, found, how_found="search_perfect_book"))
         return books
 
     def search_book(self, searched, max_results=20, fuzzy=False, hint=None):
@@ -910,7 +925,7 @@ class Search(IndexStore):
                                    self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
             max_results)
         for found in top.scoreDocs:
-            books.append(SearchResult(self.searcher, found))
+            books.append(SearchResult(self.searcher, found, how_found="search_book"))
 
         return books
 
@@ -932,7 +947,7 @@ class Search(IndexStore):
                                                            flt]),
                                        max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q)))
+                books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q), how_found='search_perfect_parts'))
 
         return books
 
@@ -964,7 +979,7 @@ class Search(IndexStore):
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
-            books.append(SearchResult(self.searcher, found))
+            books.append(SearchResult(self.searcher, found, how_found='search_everywhere_themesXcontent'))
             print "* %s theme x content: %s" % (searched, books[-1]._hits)
 
         # query themes/content x author/title/tags
@@ -983,7 +998,7 @@ class Search(IndexStore):
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
-            books.append(SearchResult(self.searcher, found))
+            books.append(SearchResult(self.searcher, found, how_found='search_everywhere'))
             print "* %s scatter search: %s" % (searched, books[-1]._hits)
 
         return books
