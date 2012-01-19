@@ -1,0 +1,18 @@
+{% extends "ajaxable/form.html" %}
+{% load i18n %}
+
+{% block extra %}
+
+
+<h1>{% trans "or register" %}:</h1>
+
+<form action="{% url register %}" method="post" accept-charset="utf-8" class="cuteform">
+<ol>
+    <div id="id_register-__all__"></div>
+    {{ register_form.as_ul }}
+    <li><input type="submit" value="{{ register_submit }}"/></li>
+</ol>
+</form>
+
+
+{% endblock %}

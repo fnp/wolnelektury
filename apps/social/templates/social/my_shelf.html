@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags %}
+
+{% block titleextra %}{% trans "My shelf" %}{% endblock %}
+
+{% block logout %}/{% endblock %}
+
+{% block body %}
+
+    <h1>{% trans "My shelf" %}</h1>
+
+    {% work_list books %}
+
+{% endblock %}

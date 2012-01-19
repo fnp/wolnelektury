@@ -35,9 +35,11 @@
 
 
     <h2 class="main-last"><span class="mono">Ostatnie publikacje</span></h2>
-        {% for book in last_published %}
-            {{ book.mini_box }}
-        {% endfor %}
+        {% cache 300 last-published-on-main %}
+            {% for book in last_published %}
+                {% book_mini book %}
+            {% endfor %}
+        {% endcache %}
 
     <div class="clearboth"></div>
 
@@ -66,8 +68,9 @@
 
     <div class="infopages-box">
         <h2><span class='mono'>Informacje</span></h2>
-
-        {% infopages_on_main %}
+        {% cache 300 infopages-on-main LANGUAGE_CODE %}
+            {% infopages_on_main %}
+        {% endcache %}
 
         <div class="social-links">
             <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"><img src="{{ STATIC_URL }}img/social/facebook.png" alt="WolneLektury @ Facebook" /></a>

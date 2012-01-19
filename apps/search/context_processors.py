@@ -1,6 +1,6 @@
 
-from catalogue.forms import SearchForm
 from django.core.urlresolvers import reverse
+from search.forms import SearchForm
 
 
 def search_form(request):

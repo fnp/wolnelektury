@@ -10,6 +10,7 @@
     Gdy długo spoglądamy w otchłań, otchłań spogląda również w nas.</div>
   </blockquote>
 
+
   <div id="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>
     <ul class="inline-items">
@@ -31,10 +32,10 @@
     <h2 class="mono">{% trans "Download" %}</h2>
     <ul class="inline-items">
       <li>
-	{% if has_media.mp3 or has_media.ogg %}
+	{% if related.media.mp3 or related.media.ogg %}
 	{% trans "Download all audiobooks for this book" %}: 
-	{% if has_media.mp3 %}<a href="{% url download_zip_mp3 book.slug %}">MP3</a>{% endif %}{% if has_media.mp4 and has_media.ogg %},{% endif %}
-	{% if has_media.ogg %}<a href="{% url download_zip_ogg book.slug %}">OGG</a>{% endif %}.
+	{% if related.media.mp3 %}<a href="{% url download_zip_mp3 book.slug %}">MP3</a>{% endif %}{% if related.media.mp3 and related.media.ogg %},{% endif %}
+	{% if related.media.ogg %}<a href="{% url download_zip_ogg book.slug %}">OGG</a>{% endif %}.
 	{% endif %}
       </li>
       <li>

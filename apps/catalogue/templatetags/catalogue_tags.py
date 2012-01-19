@@ -8,15 +8,14 @@ import datetime
 from django import template
 from django.template import Node, Variable
 from django.utils.encoding import smart_str
+from django.core.cache import get_cache
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db.models import Q
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
-from catalogue.forms import SearchForm
 from catalogue.utils import split_tags
-
 
 register = template.Library()
 
@@ -278,21 +277,43 @@ def book_info(book):
     return locals()
 
 
-@register.inclusion_tag('catalogue/book_wide.html')
-def book_wide(book):
-    tags = book.tags.filter(category__in=('author', 'kind', 'genre', 'epoch'))
-    tags = split_tags(tags)
-
+@register.inclusion_tag('catalogue/book_wide.html', takes_context=True)
+def book_wide(context, book):
     formats = {}
     # files generated during publication
     for ebook_format in book.ebook_formats:
         if book.has_media(ebook_format):
             formats[ebook_format] = book.get_media(ebook_format)
 
-    extra_info = book.get_extra_info_value()
+    return {
+        'related': book.related_info(),
+        'book': book,
+        'formats': formats,
+        'extra_info': book.get_extra_info_value(),
+        'request': context.get('request'),
+    }
 
-    has_media = {}
-    for media_format in ['mp3', 'ogg']:
-        has_media[media_format] = book.has_media(media_format)
 
+@register.inclusion_tag('catalogue/book_short.html', takes_context=True)
+def book_short(context, book):
+    return {
+        'related': book.related_info(),
+        'book': book,
+        'request': context.get('request'),
+    }
+
+
+@register.inclusion_tag('catalogue/book_mini_box.html')
+def book_mini(book):
+    return {
+        'related': book.related_info(),
+        'book': book,
+    }
+
+
+@register.inclusion_tag('catalogue/work-list.html', takes_context=True)
+def work_list(context, object_list):
+    request = context.get('request')
+    if object_list:
+        object_type = type(object_list[0]).__name__
     return locals()

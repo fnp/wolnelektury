@@ -43,6 +43,7 @@ class RegisterFormView(AjaxableFormView):
     title = _('Register')
     submit = _('Register')
     ajax_redirect = True
+    form_prefix = 'register'
 
     def __call__(self, request):
         if request.user.is_authenticated():
@@ -56,6 +57,16 @@ class RegisterFormView(AjaxableFormView):
             password=form.cleaned_data['password1']
         )
         auth.login(request, user)
+
+
+class LoginRegisterFormView(LoginFormView):
+    template = 'auth/login_register.html'
+
+    def extra_context(self):
+        return {
+            "register_form": UserCreationForm(prefix='register'),
+            "register_submit": _('Register'),
+        }
 
 
 @never_cache

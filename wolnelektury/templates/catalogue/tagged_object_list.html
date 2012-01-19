@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags pagination_tags switch_tag %}
+{% load catalogue_tags switch_tag %}
 
 {% block titleextra %}{% title_from_tags tags %}{% endblock %}
 
@@ -91,7 +91,6 @@
 
 
 
-    {% autopaginate object_list 10 %}
     <div id="books-list">
 
 
@@ -129,25 +128,11 @@
         {% endif %}
 
         {% if object_list %}
-            {% spaceless %}
-            <ol class='work-list'>
-            {% for book in object_list %}
-                <li class='work-item'>
-                    {% if user_is_owner %}
-                        <a href="{% url remove_from_shelf last_tag.slug book.slug %}" class="remove-from-shelf">{% trans "Delete" %}</a>
-                    {% endif %}
-                    {{ book.short_html }}</li>
-            {% endfor %}
-            </ol>
-            {% endspaceless %}
-            {% paginate %}
+            {% work_list object_list %}
         {% else %}
             {% trans "Sorry! Search cirteria did not match any resources." %}
             {% include "info/join_us.html" %}
         {% endif %}
         {% endwith %}
     </div>
-	{% if object_list %}
-	{% comment %} If we didn't find anything there will be nothing on the right side as well {% endcomment %}
-	{% endif %}
 {% endblock %}

@@ -1,0 +1,18 @@
+{% load pagination_tags %}
+{% load book_short from catalogue_tags %}
+
+{% autopaginate object_list 10 %}
+{% spaceless %}
+<ol class='work-list'>
+{% for item in object_list %}
+    <li class='{{ object_type }}-item'>
+        {% if object_type == 'Book' %}
+            {% book_short item %}
+        {% else %}
+            {{ item.short_html }}
+        {% endif %}
+    </li>
+{% endfor %}
+</ol>
+{% endspaceless %}
+{% paginate %}

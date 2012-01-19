@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	{% load i18n compressed catalogue_tags sponsor_tags %}
-    {% load reporting_stats %}
+	{% load cache compressed i18n %}
+    {% load catalogue_tags reporting_stats sponsor_tags %}
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -31,25 +31,27 @@
 
             <div id="tagline">
                 <span>
-                {% count_books book_count %}
-                {% url book_list as b %}
-                {% url book_list as r %}
-                {% blocktrans count book_count as c %}
-                <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>
-                {% plural %}
-                <a href='{{b}}'>{{c}}</a> free readings you have <a href='{{r}}'>right to</a>
-                {% endblocktrans %}
+                {% cache 300 tagline %}
+                    {% url book_list as b %}
+                    {% url book_list as r %}
+                        {% count_books book_count %}
+                    {% blocktrans count book_count as c %}
+                    <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>
+                    {% plural %}
+                    <a href='{{b}}'>{{c}}</a> free readings you have <a href='{{r}}'>right to</a>
+                    {% endblocktrans %}
+                {% endcache %}
                 </span>
             </div>
 
             <p id="user-info" class="mono">
                 {% if user.is_authenticated %}
                     {% trans "Welcome" %}, <strong>{{ user.username }}</strong>
-                    | <a href="{% url user_shelves %}" id="user-shelves-link">{% trans "Your shelves" %}</a>
+                    | <a href="{% url social_my_shelf %}" id="user-shelves-link">{% trans "My shelf" %}</a>
                     {% if user.is_staff %}
                     | <a href="/admin/">{% trans "Administration" %}</a>
                     {% endif %}
-                    | <a href="{% url logout %}?next={{ request.get_full_path }}">{% trans "Logout" %}</a>
+                    | <a href="{% url logout %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
                 {% else %}
                     <a href="{% url login %}?next={{ request.path }}"
                         id="login" class="ajaxable">

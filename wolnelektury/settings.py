@@ -156,11 +156,19 @@ INSTALLED_APPS = [
     'suggest',
     'picture',
     'search',
+    'social',
 ]
 
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            '127.0.0.1:11211',
+        ]
+    },
+    'permanent': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'TIMEOUT': 2419200,
         'LOCATION': [
             '127.0.0.1:11211',
         ]

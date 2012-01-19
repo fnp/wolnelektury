@@ -7,7 +7,7 @@ from collections import namedtuple
 from django.db import models
 from django.db.models import permalink, Q
 import django.dispatch
-from django.core.cache import cache
+from django.core.cache import get_cache
 from django.core.files.storage import DefaultStorage
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
@@ -17,6 +17,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
 from django.db.models.signals import post_save, m2m_changed, pre_delete
+import jsonfield
 
 from django.conf import settings
 
@@ -29,7 +30,6 @@ from shutil import copy
 from glob import glob
 import re
 from os import path
-
 
 import search
 
@@ -44,8 +44,8 @@ TAG_CATEGORIES = (
     ('book', _('book')),
 )
 
-# not quite, but Django wants you to set a timeout
-CACHE_FOREVER = 2419200  # 28 days
+
+permanent_cache = get_cache('permanent')
 
 
 class TagSubcategoryManager(models.Manager):
@@ -372,6 +372,9 @@ class Book(models.Model):
     formats = ebook_formats + ['html', 'xml']
 
     parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
+
+    _related_info = jsonfield.JSONField(blank=True, null=True, editable=False)
+
     objects  = models.Manager()
     tagged   = managers.ModelTaggedItemManager(Tag)
     tags     = managers.TagDescriptor(Tag)
@@ -450,57 +453,10 @@ class Book(models.Model):
         if self.id is None:
             return
 
-        cache_key = "Book.short_html/%d/%s"
-        for lang, langname in settings.LANGUAGES:
-            cache.delete(cache_key % (self.id, lang))
-        cache.delete("Book.mini_box/%d" % (self.id, ))
+        type(self).objects.filter(pk=self.pk).update(_related_info=None)
         # Fragment.short_html relies on book's tags, so reset it here too
         for fragm in self.fragments.all():
             fragm.reset_short_html()
-
-    def short_html(self):
-        if self.id:
-            cache_key = "Book.short_html/%d/%s" % (self.id, get_language())
-            short_html = cache.get(cache_key)
-        else:
-            short_html = None
-
-        if short_html is not None:
-            return mark_safe(short_html)
-        else:
-            tags = self.tags.filter(category__in=('author', 'kind', 'genre', 'epoch'))
-            tags = split_tags(tags)
-
-            formats = {}
-            # files generated during publication
-            for ebook_format in self.ebook_formats:
-                if self.has_media(ebook_format):
-                    formats[ebook_format] = self.get_media(ebook_format)
-
-
-            short_html = unicode(render_to_string('catalogue/book_short.html',
-                {'book': self, 'tags': tags, 'formats': formats}))
-
-            if self.id:
-                cache.set(cache_key, short_html, CACHE_FOREVER)
-            return mark_safe(short_html)
-
-    def mini_box(self):
-        if self.id:
-            cache_key = "Book.mini_box/%d" % (self.id, )
-            short_html = cache.get(cache_key)
-        else:
-            short_html = None
-
-        if short_html is None:
-            authors = self.tags.filter(category='author')
-
-            short_html = unicode(render_to_string('catalogue/book_mini_box.html',
-                {'book': self, 'authors': authors, 'STATIC_URL': settings.STATIC_URL}))
-
-            if self.id:
-                cache.set(cache_key, short_html, CACHE_FOREVER)
-        return mark_safe(short_html)
 
     def has_description(self):
         return len(self.description) > 0
@@ -818,12 +774,30 @@ class Book(models.Model):
         cls.published.send(sender=book)
         return book
 
+    def related_info(self):
+        """Keeps info about related objects (tags, media) in cache field."""
+        if self._related_info is not None:
+            return self._related_info
+        else:
+            rel = {'tags': {}, 'media': {}}
+            tags = self.tags.filter(category__in=(
+                    'author', 'kind', 'genre', 'epoch'))
+            tags = split_tags(tags)
+            for category in tags:
+                rel['tags'][category] = [
+                        (t.name, t.get_absolute_url()) for t in tags[category]]
+            for media_format in BookMedia.formats:
+                rel['media'][media_format] = self.has_media(media_format)
+            if self.pk:
+                type(self).objects.filter(pk=self.pk).update(_related_info=rel)
+            return rel
+
     def reset_tag_counter(self):
         if self.id is None:
             return
 
         cache_key = "Book.tag_counter/%d" % self.id
-        cache.delete(cache_key)
+        permanent_cache.delete(cache_key)
         if self.parent:
             self.parent.reset_tag_counter()
 
@@ -831,7 +805,7 @@ class Book(models.Model):
     def tag_counter(self):
         if self.id:
             cache_key = "Book.tag_counter/%d" % self.id
-            tags = cache.get(cache_key)
+            tags = permanent_cache.get(cache_key)
         else:
             tags = None
 
@@ -844,7 +818,7 @@ class Book(models.Model):
                 tags[tag.pk] = 1
 
             if self.id:
-                cache.set(cache_key, tags, CACHE_FOREVER)
+                permanent_cache.set(cache_key, tags)
         return tags
 
     def reset_theme_counter(self):
@@ -852,7 +826,7 @@ class Book(models.Model):
             return
 
         cache_key = "Book.theme_counter/%d" % self.id
-        cache.delete(cache_key)
+        permanent_cache.delete(cache_key)
         if self.parent:
             self.parent.reset_theme_counter()
 
@@ -860,7 +834,7 @@ class Book(models.Model):
     def theme_counter(self):
         if self.id:
             cache_key = "Book.theme_counter/%d" % self.id
-            tags = cache.get(cache_key)
+            tags = permanent_cache.get(cache_key)
         else:
             tags = None
 
@@ -871,7 +845,7 @@ class Book(models.Model):
                     tags[tag.pk] = tags.get(tag.pk, 0) + 1
 
             if self.id:
-                cache.set(cache_key, tags, CACHE_FOREVER)
+                permanent_cache.set(cache_key, tags)
         return tags
 
     def pretty_title(self, html_links=False):
@@ -1003,12 +977,12 @@ class Fragment(models.Model):
 
         cache_key = "Fragment.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
-            cache.delete(cache_key % (self.id, lang))
+            permanent_cache.delete(cache_key % (self.id, lang))
 
     def short_html(self):
         if self.id:
             cache_key = "Fragment.short_html/%d/%s" % (self.id, get_language())
-            short_html = cache.get(cache_key)
+            short_html = permanent_cache.get(cache_key)
         else:
             short_html = None
 
@@ -1018,7 +992,7 @@ class Fragment(models.Model):
             short_html = unicode(render_to_string('catalogue/fragment_short.html',
                 {'fragment': self}))
             if self.id:
-                cache.set(cache_key, short_html, CACHE_FOREVER)
+                permanent_cache.set(cache_key, short_html)
             return mark_safe(short_html)
 
 

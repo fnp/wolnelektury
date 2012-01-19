@@ -4,11 +4,8 @@
 #
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from slughifi import slughifi
 
-from catalogue.models import Tag, Book
-from catalogue.fields import JQueryAutoCompleteSearchField
-from catalogue import utils
+from catalogue.models import Book
 
 
 class BookImportForm(forms.Form):
@@ -28,55 +25,6 @@ class BookImportForm(forms.Form):
 
     def save(self, commit=True, **kwargs):
         return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True, **kwargs)
-
-
-class SearchForm(forms.Form):
-    q = JQueryAutoCompleteSearchField()  # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
-
-    def __init__(self, source, *args, **kwargs):
-        kwargs['auto_id'] = False
-        super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['q'].widget.attrs['id'] = _('search')
-        self.fields['q'].widget.attrs['autocomplete'] = _('off')
-        self.fields['q'].widget.attrs['data-source'] = _(source)
-        if not 'q' in self.data:
-            self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre, phrase')
-
-
-class UserSetsForm(forms.Form):
-    def __init__(self, book, user, *args, **kwargs):
-        super(UserSetsForm, self).__init__(*args, **kwargs)
-        self.fields['set_ids'] = forms.ChoiceField(
-            choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user)],
-        )
-
-
-class ObjectSetsForm(forms.Form):
-    def __init__(self, obj, user, *args, **kwargs):
-        super(ObjectSetsForm, self).__init__(*args, **kwargs)
-        self.fields['set_ids'] = forms.MultipleChoiceField(
-            label=_('Shelves'),
-            required=False,
-            choices=[(tag.id, "%s (%s)" % (tag.name, tag.book_count)) for tag in Tag.objects.filter(category='set', user=user)],
-            initial=[tag.id for tag in obj.tags.filter(category='set', user=user)],
-            widget=forms.CheckboxSelectMultiple
-        )
-
-
-class NewSetForm(forms.Form):
-    name = forms.CharField(max_length=50, required=True)
-
-    def __init__(self, *args, **kwargs):
-        super(NewSetForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['title'] = _('Name of the new shelf')
-
-    def save(self, user, commit=True):
-        name = self.cleaned_data['name']
-        new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=name.lower(),
-            category='set', user=user)
-
-        new_set.save()
-        return new_set
 
 
 FORMATS = [(f, f.upper()) for f in Book.ebook_formats]

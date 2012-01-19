@@ -10,12 +10,14 @@
                 {% endthumbnail %}
             " alt="Cover" />
         {% endif %}
-        {% for author in authors %}
-            <div class="desc">
-                <span class="mono author">{{ author }}</span>
-                <span class="title">{{ book.title }}</span>
-            </div>
-        {% endfor %}
+        <div class="desc">
+            <span class="mono author">
+                {% for name, url in related.tags.author %}
+                    {{ name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </span>
+            <span class="title">{{ book.title }}</span>
+        </div>
     </a>
 </div>
 

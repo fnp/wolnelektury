@@ -1,5 +1,8 @@
-.book-wide-box, .book-mini-box, .book-box {
+.book-mini-box, .Book-item {
     display: inline-block;
+}
+
+.book-wide-box, .book-box {
     margin: 0;
     vertical-align: top;
 }
@@ -74,6 +77,7 @@
 .book-box-body {
     height: 17em;
     overflow: hidden;
+    position: relative;
 }
 
 .book-wide-box .book-box-body {
@@ -145,12 +149,22 @@
     margin-left: 14em;
 }
 
-.book-box-tools a.downarrow:before {
+.book-box-read a:before {
     content: "\2609";
     font-family: WL-Nav;
     font-size: 2.25em;
     margin-right: .15em;
     vertical-align: middle;
+    font-weight: normal;
+}
+
+.book-box-download a:before {
+    content: "\21E9";
+    font-family: WL-Nav;
+    font-size: 2.25em;
+    margin-right: .15em;
+    vertical-align: middle;
+    font-weight: normal;
 }
 
 .book-box-audiobook a:before {
@@ -159,6 +173,7 @@
     font-size: 2.25em;
     margin-right: .15em;
     vertical-align: middle;
+    font-weight: normal;
 }
 
 ul.book-box-tools {
@@ -221,5 +236,41 @@ ul.inline-items li {
     float: left;
     width: 22.5em;
     margin: 6em 1.5em 0em 1.5em
+}
+
+
+
+
+.star {
+    font-size: 2.25em;
+    margin-right: .5em;
+    position: absolute;
+    right: 0;
+}
+.star button::-moz-focus-inner {
+    padding: 0;
+    border: 0
+}
+.if-unlike button {
+    font-size: 1em;
+    font-family: inherit;
+    border: 0;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.if-like a {
+    display:block;
+    text-align:right;
+    padding: 0;
+}
+
+.like .if-unlike {
+    display: none;
+}
+
+.unlike .if-like {
+    display: none;
 }
 
