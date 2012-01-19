@@ -7,7 +7,6 @@
     vertical-align: top;
 }
 
-
 .book-box {
     width: 48.75em;
 }
@@ -17,7 +16,7 @@
 }
 
 .book-wide-box {
-    width: 98.5em;
+    width: 97.5em;
 
     /** This is a fullpage box, it must be aligned with the top menu. 
         This corresponds to a .1em margin below **/
@@ -60,11 +59,34 @@
    min-height: 24.4em;
 }
 
+.search-result {
+    width: 97.5em;
+}
+
+.search-result .book-box-body {
+    width: 31em;
+}
+
+.book-list-header {
+    width: 97.5em;
+    padding: 0em;
+    margin-left: -0.1em;
+}
+
+.book-list-header .book-box-inner {
+    min-height: 1em;
+}
+
+.book-list-header p {
+    font-size: 2.4em;
+    margin: 0.5em;
+}
+
 /*.book-wide-box.search-result .book-box-inner, .book-wide-box.search-result blockquote {
     height: auto !important;
 }*/
 
-.book-mini-box img, .book-box img, .book-wide-box img {
+.book-mini-box img, .book-box img, .book-wide-box img, .search-result img {
     width: 13.9em;
     height: 19.3em;
 }
@@ -292,9 +314,17 @@ ul.inline-items li {
 
 .unlike .if-like {
     display: none;
+
+.snippets {
+    width: 44em;
+    float: right;
 }
 
 .snippets .snippet-text {
     font-size: 1.2em;
     margin: 1.083em 0em;
+}
+
+.snipptes .anchor {
+    display: none;
 }

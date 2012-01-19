@@ -12,11 +12,79 @@
     {% endif %}
     <!-- tu pójdą trafienia w tagi: Autorzy - z description oraz motywy i rodzaje (z book_count) -->
 
-    <div id="results">
-      {% for result in results %}
-        {% book_searched result %}
-      {% endfor %}
+
+    {% if results.author %}
+    <div class="book-list-header">
+      <div class="book-box-inner">
+	<p>{% trans "Results by authors" %}</p>
+      </div>
     </div>
+    <div>
+      <ol class="work-list">
+	{% for author in results.author %}
+	<li class="work-item">
+	  {{author.book.short_html}}
+	</li>
+	{% endfor %}
+      </ol>
+    </div>
+    {% endif %}
+
+    {% if results.title %}
+    <div class="book-list-header">
+      <div class="book-box-inner">
+      <p>{% trans "Results by title" %}</p>
+      </div>
+    </div>
+    <div>
+      <ol class="work-list">
+	{% for result in results.title %}
+	<li class="work-item">
+	  {{result.book.short_html}}
+	</li>
+	{% endfor %}
+      </ol>
+    </div>
+    {% endif %}
+
+    {% if results.content %}
+    {% for result in results.content %}
+    <div class="book-list-header">
+      <div class="book-box-inner">
+      <p>{% trans "Results in text" %}</p>
+      </div>
+    </div>
+    <div>
+      <ol class="work-list">
+	{% for result in results.title %}
+	<li class="work-item">
+          {% book_searched result %}
+	</li>
+	{% endfor %}
+      </ol>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if results.other %}
+    {% for result in results.other %}
+    <div class="book-list-header">
+      <div class="book-box-inner">
+	<p>{% trans "Other results" %}</p>
+      </div>
+    </div>
+    <div>
+      <ol class="work-list">
+	{% for result in results.other %}
+	<li class="work-item">
+          {% book_searched result %}
+	</li>
+	{% endfor %}
+      </ol>
+    </div>
+    {% endfor %}
+    {% endif %}
+
 
 
 

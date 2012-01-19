@@ -1,34 +1,27 @@
-{% extends "catalogue/book_wide.html" %}
+{% extends "catalogue/book_short.html" %}
 {% load i18n %}
 
 
-{% block box-class %}book-wide-box search-result{% endblock %}
+{% block box-class %}search-result{% endblock %}
 
-{% block quote %}
-{% if hits.0.snippets %}
-  <div class="cite-text"><a href="{% url book_text book.slug %}#f{{hits.0.section_number}}">{{hits.0.snippets.0|safe}}</a></div>
-{% else %}{% if hits.0.fragment %}
-  <div class="cite-text"><a href="{{hits.0.fragment.get_absolute_url}}">{{hits.0.fragment.short_text|safe}}</a></div>
-{% endif %}{% endif %}
-
-{% if hits.1 %}
-  <p class="cite-more mono"><a class="see-more-snippets" href="#snippets-{{book.id}}">{% trans "See more" %}</a></p>
-{% endif %}
-{% endblock %}
-
-
-{% block box-append %}
-<div class="snippets ui-helper-hidden">
-<a name="snippets-{{book.id}}">
-{% for hit in hits %}
+{% block right-column %}
+<div class="snippets">
+  {% for hit in hits %}
   {% if hit.snippets %}
-    <div class="snippet-text"><a href="{% url book_text book.slug %}#f{{hit.section_number}}">{{hit.snippets.0|safe}}</a></div>
+  <p>In text:</p>
+  <div class="snippet-text"><a href="{% url book_text book.slug %}#f{{hit.section_number}}">{{hit.snippets.0|safe}}</a></div>
   {% else %}
-    {% if hit.fragment %}
-      <div class="snippet-text"><a href="{{hit.fragment.get_absolute_url}}">{{hit.fragment.short_text|safe}}</a></div>
-    {% endif %}
+  {% if hit.fragment %}
+  <div class="snippet-text">
+    <p>{% trans "In fragment" %}
+      {% if hit.themes_hit %}{% trans ", for themes:" %}{% for t in hit.themes_hit %}{{t.name}} {% endfor %}{% endif %}
+    </p>
+    <a href="{{hit.fragment.get_absolute_url}}">{{hit.fragment.short_text|safe}}</a>
+  </div>
   {% endif %}
-{% endfor %}
-</a>
+  {% endif %}
+  {% endfor %}
 </div>
+
 {% endblock %}
+

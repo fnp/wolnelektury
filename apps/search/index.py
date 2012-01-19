@@ -553,11 +553,15 @@ class JoinSearch(object):
 
 
 class SearchResult(object):
-    def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets=None):
+    def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets=None, searched=None, tokens_cache=None):
+        if tokens_cache is None: tokens_cache = {}
+            
         if score:
-            self.score = score
+            self._score = score
         else:
-            self.score = scoreDocs.score
+            self._score = scoreDocs.score
+            
+        self.boost = 1.0
 
         self._hits = []
         self.hits = None  # processed hits
@@ -580,6 +584,14 @@ class SearchResult(object):
         hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
 
         self._hits.append(hit)
+
+        self.searcher = searcher
+        self.searched = searched
+        self.tokens_cache = tokens_cache
+
+    @property
+    def score(self):
+        return self._score * self.boost
 
     def merge(self, other):
         if self.book_id != other.book_id:
@@ -642,10 +654,25 @@ class SearchResult(object):
 
         for f in frags:
             frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
+
+            # Figure out if we were searching for a token matching some word in theme name.
+            themes = frag.tags.filter(category='theme')
+            themes_hit = []
+            if self.searched is not None:
+                tokens = self.searcher.get_tokens(self.searched, 'POLISH', tokens_cache=self.tokens_cache)
+                for theme in themes:
+                    name_tokens = self.searcher.get_tokens(theme.name, 'POLISH')
+                    for t in tokens:
+                        if name_tokens.index(t):
+                            if not theme in themes_hit:
+                                themes_hit.append(theme)
+                            break
+
             m = {'score': f[SCORE],
                  'fragment': frag,
                  'section_number': f[POSITION][POSITION_INDEX] + 1,
-                 'themes': frag.tags.filter(category='theme')
+                 'themes': themes,
+                 'themes_hit': themes_hit
                  }
             m.update(f[OTHER])
             hits.append(m)
@@ -802,11 +829,14 @@ class Search(IndexStore):
             bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
-    def get_tokens(self, searched, field='content'):
+    def get_tokens(self, searched, field='content', cached=None):
         """returns tokens analyzed by a proper (for a field) analyzer
         argument can be: StringReader, string/unicode, or tokens. In the last case
         they will just be returned (so we can reuse tokens, if we don't change the analyzer)
         """
+        if cached is not None and field in cached:
+            return cached[field]
+
         if isinstance(searched, str) or isinstance(searched, unicode):
             searched = StringReader(searched)
         elif isinstance(searched, list):
@@ -818,6 +848,10 @@ class Search(IndexStore):
         while tokens.incrementToken():
             cta = tokens.getAttribute(CharTermAttribute.class_)
             toks.append(cta.toString())
+
+        if cached is not None:
+            cached[field] = toks
+
         return toks
 
     def fuzziness(self, fuzzy):
@@ -874,9 +908,39 @@ class Search(IndexStore):
             q.add(BooleanClause(term, modal))
         return q
 
-    # def content_query(self, query):
-    #     return BlockJoinQuery(query, self.parent_filter,
-    #                           BlockJoinQuery.ScoreMode.Total)
+    def search_phrase(self, searched, field, book=True, max_results=20, fuzzy=False,
+                      filters=None, tokens_cache=None, boost=None):
+        if filters is None: filters = []
+        if tokens_cache is None: tokens_cache = {}
+
+        tokens = self.get_tokens(searched, field, cached=tokens_cache)
+
+        query = self.make_phrase(tokens, field=field, fuzzy=fuzzy)
+        if book:
+            filters.append(self.term_filter(Term('is_book', 'true')))
+        top = self.searcher.search(query, self.chain_filters(filters), max_results)
+
+        return [SearchResult(self.searcher, found) for found in top.scoreDocs]
+
+    def search_some(self, searched, fields, book=True, max_results=20, fuzzy=False,
+                    filters=None, tokens_cache=None, boost=None):
+        if filters is None: filters = []
+        if tokens_cache is None: tokens_cache = {}
+
+        if book:
+            filters.append(self.term_filter(Term('is_book', 'true')))
+
+        query = BooleanQuery()
+
+        for fld in fields:
+            tokens = self.get_tokens(searched, fld, cached=tokens_cache)
+
+            query.add(BooleanClause(self.make_term_query(tokens, field=fld,
+                                fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
+
+        top = self.searcher.search(query, self.chain_filters(filters), max_results)
+
+        return [SearchResult(self.searcher, found, searched=searched, tokens_cache=tokens_cache) for found in top.scoreDocs]
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
         """
@@ -931,7 +995,7 @@ class Search(IndexStore):
 
     def search_perfect_parts(self, searched, max_results=20, fuzzy=False, hint=None):
         """
-        Search for book parts which containt a phrase perfectly matching (with a slop of 2, default for make_phrase())
+        Search for book parts which contains a phrase perfectly matching (with a slop of 2, default for make_phrase())
         some part/fragment of the book.
         """
         qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['content']]
@@ -951,12 +1015,13 @@ class Search(IndexStore):
 
         return books
 
-    def search_everywhere(self, searched, max_results=20, fuzzy=False, hint=None):
+    def search_everywhere(self, searched, max_results=20, fuzzy=False, hint=None, tokens_cache=None):
         """
         Tries to use search terms to match different fields of book (or its parts).
         E.g. one word can be an author survey, another be a part of the title, and the rest
         are some words from third chapter.
         """
+        if tokens_cache is None: tokens_cache = {}
         books = []
         only_in = None
 
@@ -966,8 +1031,8 @@ class Search(IndexStore):
         # content only query : themes x content
         q = BooleanQuery()
 
-        tokens_pl = self.get_tokens(searched, field='content')
-        tokens = self.get_tokens(searched, field='SIMPLE')
+        tokens_pl = self.get_tokens(searched, field='content', cached=tokens_cache)
+        tokens = self.get_tokens(searched, field='SIMPLE', cached=tokens_cache)
 
         # only search in themes when we do not already filter by themes
         if hint is None or hint.just_search_in(['themes']) != []:
@@ -1171,7 +1236,7 @@ class Search(IndexStore):
         Chains a filter list together
         """
         filters = filter(lambda x: x is not None, filters)
-        if not filters:
+        if not filters or filters is []:
             return None
         chf = ChainedFilter(JArray('object')(filters, Filter), op)
         return chf

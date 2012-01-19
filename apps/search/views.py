@@ -119,28 +119,39 @@ def main(request):
             hint.books(book)
 
         toks = StringReader(query)
+        tokens_cache = {}
         fuzzy = 'fuzzy' in request.GET
         if fuzzy:
             fuzzy = 0.7
 
-        results = SearchResult.aggregate(srch.search_perfect_book(toks, fuzzy=fuzzy, hint=hint),
-                                         srch.search_book(toks, fuzzy=fuzzy, hint=hint),
-                                         srch.search_perfect_parts(toks, fuzzy=fuzzy, hint=hint),
-                                         srch.search_everywhere(toks, fuzzy=fuzzy, hint=hint))
+        author_results = srch.search_phrase(toks, 'authors', fuzzy=fuzzy, tokens_cache=tokens_cache)
+        title_results = srch.search_phrase(toks, 'title', fuzzy=fuzzy, tokens_cache=tokens_cache)
 
-        for r in results:
-            r.process_hits()
+        # Boost main author/title results with mixed search, and save some of its results for end of list.
+        # boost author, title results
+        author_title_mixed = srch.search_some(toks, ['authors', 'title', 'tags'], fuzzy=fuzzy, tokens_cache=tokens_cache)
+        author_title_rest = []
+        for b in author_title_mixed:
+            bks = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
+            for b2 in bks:
+                b2.boost *= 1.1
+            if bks is []:
+                author_title_rest.append(b)
+        
+        text_phrase = SearchResult.aggregate(srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache))
+        [r.process_hits() for r in text_phrase]
+        
+        everywhere = SearchResult.aggregate(srch.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache), author_title_rest)
+        [r.process_hits() for r in everywhere]
 
-        results.sort(reverse=True)
+        for res in [author_results, title_results, text_phrase, everywhere]:
+            res.sort(reverse=True)
 
-        for r in results:
-            print "-----"
-            for h in r.hits:
-                print "- %s" % h
-
-                # Did you mean?
         suggestion = did_you_mean(query, srch.get_tokens(toks, field="SIMPLE"))
 
+        results = author_results + title_results + text_phrase + everywhere
+        results.sort(reverse=True)
+        
         if len(results) == 1:
             if len(results[0].hits) == 0:
                 return HttpResponseRedirect(results[0].book.get_absolute_url())
@@ -159,6 +170,9 @@ def main(request):
         return render_to_response('catalogue/search_multiple_hits.html',
                                   {'tags': tag_list,
                                    'prefix': query,
-                                   'results': results,
+                                   'results': { 'author': author_results,
+                                                'title': title_results,
+                                                'content': text_phrase,
+                                                'other': everywhere},
                                    'did_you_mean': suggestion},
             context_instance=RequestContext(request))
