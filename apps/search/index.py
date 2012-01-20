@@ -653,7 +653,11 @@ class SearchResult(object):
         hits = sections.values()
 
         for f in frags:
-            frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
+            try:
+                frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
+            except catalogue.models.Fragment.DoesNotExist:
+                # stale index
+                continue
 
             # Figure out if we were searching for a token matching some word in theme name.
             themes = frag.tags.filter(category='theme')

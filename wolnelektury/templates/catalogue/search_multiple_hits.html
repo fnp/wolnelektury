@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load search_tags pagination_tags %}
+{% load catalogue_tags search_tags pagination_tags %}
 
 {% block titleextra %}{% trans "Search" %}{% endblock %}
 
@@ -23,7 +23,7 @@
       <ol class="work-list">
 	{% for author in results.author %}
 	<li class="work-item">
-	  {{author.book.short_html}}
+	  {% book_short author.book %}
 	</li>
 	{% endfor %}
       </ol>
@@ -40,7 +40,7 @@
       <ol class="work-list">
 	{% for result in results.title %}
 	<li class="work-item">
-	  {{result.book.short_html}}
+	  {% book_short result.book %}
 	</li>
 	{% endfor %}
       </ol>

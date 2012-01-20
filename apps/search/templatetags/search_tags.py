@@ -25,7 +25,6 @@ register = template.Library()
 @register.inclusion_tag('catalogue/book_searched.html', takes_context=True)
 def book_searched(context, result):
     book = Book.objects.get(pk=result.book_id)
-    vals = book_wide(context, book)
 
     # snippets = []
     # for hit in result.hits:
@@ -36,10 +35,15 @@ def book_searched(context, result):
 
     # We don't need hits which lead to sections but do not have
     # snippets.
-    vals['hits'] = filter(lambda h: 'fragment' in h or
-                          h['snippets'], result.hits)
+    hits = filter(lambda h: 'fragment' in h or
+                  h['snippets'], result.hits)
 
-    for hit in vals['hits']:
+    for hit in hits:
         hit['snippets'] = map(lambda s: s.replace("\n", "<br />").replace('---', '&mdash;'), hit['snippets'])
 
-    return vals
+    return {
+        'related': book.related_info(),
+        'book': book,
+        'request': context.get('request'),
+        'hits': hits,
+    }
