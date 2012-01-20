@@ -1,5 +1,6 @@
 .book-mini-box, .Book-item {
     display: inline-block;
+    vertical-align: top;
 }
 
 .book-wide-box, .book-box {

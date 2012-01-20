@@ -111,6 +111,14 @@
     line-height: 1.45em;
 }
 
-.social-links {
+
+.infopages-box .social-links {
     margin-top: 1em;
+}
+
+.infopages-box .social-links a {
+    font-family: WL-Nav;
+    font-size: 3em;
+    color: #281d1c;
+    margin-right: .2em;
 }
