@@ -94,7 +94,7 @@
 .book-mini-box img {
     margin-bottom: 1.8em;
 }
-.book-box img, .book-wide-box img {
+.book-box-inner img, .book-wide-box img {
     float: left;
     margin-right: 1.5em;
 }
