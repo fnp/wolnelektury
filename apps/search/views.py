@@ -138,11 +138,9 @@ def main(request):
             if bks is []:
                 author_title_rest.append(b)
         
-        text_phrase = SearchResult.aggregate(srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache))
-        [r.process_hits() for r in text_phrase]
+        text_phrase = SearchResult.aggregate(srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False))
         
         everywhere = SearchResult.aggregate(srch.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache), author_title_rest)
-        [r.process_hits() for r in everywhere]
 
         for res in [author_results, title_results, text_phrase, everywhere]:
             res.sort(reverse=True)
@@ -153,11 +151,12 @@ def main(request):
         results.sort(reverse=True)
         
         if len(results) == 1:
-            if len(results[0].hits) == 0:
-                return HttpResponseRedirect(results[0].book.get_absolute_url())
-            elif len(results[0].hits) == 1 and results[0].hits[0] is not None:
-                frag = Fragment.objects.get(anchor=results[0].hits[0])
+            fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
+            if len(fragment_hits) == 1:
+                anchor = fragment_hits[0]['fragment']
+                frag = Fragment.objects.get(anchor=anchor)
                 return HttpResponseRedirect(frag.get_absolute_url())
+            return HttpResponseRedirect(results[0].book.get_absolute_url())
         elif len(results) == 0:
             form = PublishingSuggestForm(initial={"books": query + ", "})
             return render_to_response('catalogue/search_no_hits.html',

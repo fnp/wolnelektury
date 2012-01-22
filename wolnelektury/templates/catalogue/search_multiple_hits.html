@@ -48,7 +48,6 @@
     {% endif %}
 
     {% if results.content %}
-    {% for result in results.content %}
     <div class="book-list-header">
       <div class="book-box-inner">
       <p>{% trans "Results in text" %}</p>
@@ -56,18 +55,16 @@
     </div>
     <div>
       <ol class="work-list">
-	{% for result in results.title %}
+	{% for result in results.content %}
 	<li class="work-item">
           {% book_searched result %}
 	</li>
 	{% endfor %}
       </ol>
     </div>
-    {% endfor %}
     {% endif %}
 
     {% if results.other %}
-    {% for result in results.other %}
     <div class="book-list-header">
       <div class="book-box-inner">
 	<p>{% trans "Other results" %}</p>
@@ -82,7 +79,6 @@
 	{% endfor %}
       </ol>
     </div>
-    {% endfor %}
     {% endif %}
 
 

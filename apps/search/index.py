@@ -397,8 +397,9 @@ class Index(BaseIndex):
 
         fragments = {}
         snippets = Snippets(book.id).open('w')
+        position = 0
         try:
-            for header, position in zip(list(master), range(len(master))):
+            for header in list(master):
 
                 if header.tag in self.skip_header_tags:
                     continue
@@ -459,6 +460,7 @@ class Index(BaseIndex):
                                content=fix_format(u' '.join(filter(lambda s: s is not None, content))))
 
                 self.index.addDocument(doc)
+                position += 1
 
         finally:
             snippets.close()
@@ -564,7 +566,7 @@ class SearchResult(object):
         self.boost = 1.0
 
         self._hits = []
-        self.hits = None  # processed hits
+        self._processed_hits = None  # processed hits
 
         stored = searcher.doc(scoreDocs.doc)
         self.book_id = int(stored.get("book_id"))
@@ -606,7 +608,11 @@ class SearchResult(object):
 
     book = property(get_book)
 
-    def process_hits(self):
+    @property
+    def hits(self):
+        if self._processed_hits is not None:
+            return self._processed_hits
+
         POSITION = 0
         FRAGMENT = 1
         POSITION_INDEX = 1
@@ -683,9 +689,9 @@ class SearchResult(object):
 
         hits.sort(lambda a, b: cmp(a['score'], b['score']), reverse=True)
 
-        self.hits = hits
+        self._processed_hits = hits
 
-        return self
+        return hits
 
     def __unicode__(self):
         return u'SearchResult(book_id=%d, score=%d)' % (self.book_id, self.score)
@@ -913,7 +919,7 @@ class Search(IndexStore):
         return q
 
     def search_phrase(self, searched, field, book=True, max_results=20, fuzzy=False,
-                      filters=None, tokens_cache=None, boost=None):
+                      filters=None, tokens_cache=None, boost=None, snippets=False):
         if filters is None: filters = []
         if tokens_cache is None: tokens_cache = {}
 
@@ -924,7 +930,7 @@ class Search(IndexStore):
             filters.append(self.term_filter(Term('is_book', 'true')))
         top = self.searcher.search(query, self.chain_filters(filters), max_results)
 
-        return [SearchResult(self.searcher, found) for found in top.scoreDocs]
+        return [SearchResult(self.searcher, found, snippets=(snippets and self.get_snippets(found, query) or None)) for found in top.scoreDocs]
 
     def search_some(self, searched, fields, book=True, max_results=20, fuzzy=False,
                     filters=None, tokens_cache=None, boost=None):
@@ -944,7 +950,7 @@ class Search(IndexStore):
 
         top = self.searcher.search(query, self.chain_filters(filters), max_results)
 
-        return [SearchResult(self.searcher, found, searched=searched, tokens_cache=tokens_cache) for found in top.scoreDocs]
+        return [SearchResult(self.searcher, found, searched=searched, tokens_cache=tokens_cache, snippets=self.get_snippets(found, query)) for found in top.scoreDocs]
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
         """
@@ -1123,11 +1129,15 @@ class Search(IndexStore):
 
         stored = self.searcher.doc(scoreDoc.doc)
 
+        position = stored.get('snippets_position')
+        length = stored.get('snippets_length')
+        if position is None or length is None:
+            return None
         # locate content.
         snippets = Snippets(stored.get('book_id')).open()
         try:
-            text = snippets.get((int(stored.get('snippets_position')),
-                                 int(stored.get('snippets_length'))))
+            text = snippets.get((int(position),
+                                 int(length)))
         finally:
             snippets.close()
 
