@@ -1,16 +1,14 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
+{% load promo_fragment from catalogue_tags %}
 
 {% block box-class %}book-wide-box{% endblock %}
 
 {% block right-column %}
 <div class="right-column">
-  <blockquote id="quote" class="cite-body">
-    {% block quote %}
-    <div>Ten, który walczy z potworami powinien zadbać, by sam nie stał się potworem. 
-    Gdy długo spoglądamy w otchłań, otchłań spogląda również w nas.</div>
-    {% endblock %}
-  </blockquote>
+    <div class="quote">
+  {% promo_fragment book %}
+  </div>
 
   <div class="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>

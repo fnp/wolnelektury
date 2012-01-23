@@ -2,8 +2,9 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import feedparser
 import datetime
+import feedparser
+import re
 
 from django import template
 from django.template import Node, Variable
@@ -13,9 +14,11 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db.models import Q
 from django.conf import settings
+from django.template.defaultfilters import stringfilter
 from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
+from catalogue.models import Book, Fragment
 
 register = template.Library()
 
@@ -291,6 +294,7 @@ def book_wide(context, book):
         'formats': formats,
         'extra_info': book.get_extra_info_value(),
         'request': context.get('request'),
+        'fragment': book.choose_fragment(),
     }
 
 
@@ -317,3 +321,34 @@ def work_list(context, object_list):
     if object_list:
         object_type = type(object_list[0]).__name__
     return locals()
+
+
+@register.inclusion_tag('catalogue/chosen_fragment.html')
+def promo_fragment(arg=None):
+    if arg is None:
+        fragments = Fragment.objects.all().order_by('?')
+        fragment = fragments[0] if fragments.exists() else None
+    elif isinstance(arg, Book):
+        fragment = arg.choose_fragment()
+    else:
+        fragments = Fragment.tagged.with_all(arg).order_by('?')
+        fragment = fragments[0] if fragments.exists() else None
+
+    return {
+        'fragment': fragment,
+    }
+
+
+@register.filter
+@stringfilter
+def removewholetags(value, tags):
+    """Removes a space separated list of [X]HTML tags from the output.
+
+    FIXME: It makes the assumption the removed tags aren't nested.
+
+    """
+    tags = [re.escape(tag) for tag in tags.split()]
+    tags_re = u'(%s)' % u'|'.join(tags)
+    tag_re = re.compile(ur'<%s[^>]*>.*?</\s*\1\s*>' % tags_re, re.U)
+    value = tag_re.sub(u'', value)
+    return value

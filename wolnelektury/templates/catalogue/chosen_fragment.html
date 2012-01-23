@@ -1,0 +1,11 @@
+{% load i18n %}
+{% load removewholetags from catalogue_tags %}
+
+{% if fragment %}
+<a href="{{ fragment.get_absolute_url }}" class="cite">
+    <blockquote class="cite-body">
+        {{ fragment.text|removewholetags:"a"|truncatewords_html:15|safe }}
+    </blockquote>
+    <p class="mono">Adam Mickiewicz, Dziady część III</p>
+</a>
+{% endif %}

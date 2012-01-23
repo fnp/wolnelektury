@@ -239,28 +239,6 @@ ul.book-box-tools {
     width: 41.5em;
 }
 
-.book-wide-box blockquote.cite-body {
-    /* @ 18pt */
-    width: 100%; /*23.055em;*/
-    height: 7.222em;
-    background-color: #f7f7f7;
-    margin: 0;
-    position: relative;
-    top: -0.444em;
-    right: -0.555em;
-    vertical-align: center;
-}
-
-.book-wide-box blockquote div.cite-text {
-    padding: 0.888em;
-}
-
-.book-wide-box blockquote p.cite-more {
-    display: inline;
-    font-size: 0.611em;
-    float: right;
-}
-
 ul.inline-items, ul.inline-items li {
     margin: 0;
     padding: 0;
@@ -315,6 +293,7 @@ ul.inline-items li {
 
 .unlike .if-like {
     display: none;
+}
 
 .snippets {
     width: 44em;
@@ -326,6 +305,38 @@ ul.inline-items li {
     margin: 1.083em 0em;
 }
 
-.snipptes .anchor {
+.snippets .anchor {
     display: none;
+}
+
+
+.cite blockquote p {
+    margin: 0;
+}
+
+.cite blockquote {
+    padding: 0;
+    margin: 0;
+}
+
+.book-wide-box .cite {
+    /* @ 18pt */
+    width: 100%; /*23.055em;*/
+    height: 7.222em;
+    background-color: #f7f7f7;
+    margin: 0;
+    position: relative;
+    top: -0.444em;
+    right: -0.555em;
+    vertical-align: center;
+}
+
+.abook-wide-box blockquote div.cite-text {
+    padding: 0.888em;
+}
+
+.abook-wide-box blockquote p.cite-more {
+    display: inline;
+    font-size: 0.611em;
+    float: right;
 }

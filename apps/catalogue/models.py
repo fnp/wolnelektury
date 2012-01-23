@@ -610,8 +610,9 @@ class Book(models.Model):
 
                 text = fragment.to_string()
                 short_text = ''
-                if (len(MarkupString(text)) > 240):
-                    short_text = unicode(MarkupString(text)[:160])
+                markup = MarkupString(text)
+                if (len(markup) > 240):
+                    short_text = unicode(markup[:160])
                 new_fragment = Fragment.objects.create(anchor=fragment.id, book=self,
                     text=text, short_text=short_text)
 
@@ -934,6 +935,16 @@ class Book(models.Model):
         audiences = self.get_extra_info_value().get('audiences', [])
         audiences = sorted(set([self._audiences_pl[a] for a in audiences]))
         return [a[1] for a in audiences]
+
+    def choose_fragment(self):
+        tag = self.book_tag()
+        fragments = Fragment.tagged.with_any([tag])
+        if fragments.exists():
+            return fragments.order_by('?')[0]
+        elif self.parent:
+            return self.parent.choose_fragment()
+        else:
+            return None
 
 
 def _has_factory(ftype):
