@@ -12,7 +12,7 @@
     {% endif %}
     <!-- tu pójdą trafienia w tagi: Autorzy - z description oraz motywy i rodzaje (z book_count) -->
 
-
+    {% spaceless %}
     {% if results.author %}
     <div class="book-list-header">
       <div class="book-box-inner">
@@ -22,7 +22,7 @@
     <div>
       <ol class="work-list">
 	{% for author in results.author %}
-	<li class="work-item">
+	<li class="Book-item">
 	  {% book_short author.book %}
 	</li>
 	{% endfor %}
@@ -39,7 +39,7 @@
     <div>
       <ol class="work-list">
 	{% for result in results.title %}
-	<li class="work-item">
+	<li class="Book-item">
 	  {% book_short result.book %}
 	</li>
 	{% endfor %}
@@ -56,7 +56,7 @@
     <div>
       <ol class="work-list">
 	{% for result in results.content %}
-	<li class="work-item">
+	<li class="Book-item">
           {% book_searched result %}
 	</li>
 	{% endfor %}
@@ -73,14 +73,14 @@
     <div>
       <ol class="work-list">
 	{% for result in results.other %}
-	<li class="work-item">
+	<li class="Book-item">
           {% book_searched result %}
 	</li>
 	{% endfor %}
       </ol>
     </div>
     {% endif %}
-
+    {% endspaceless %}
 
 
 

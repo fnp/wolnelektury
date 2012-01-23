@@ -83,9 +83,15 @@
     margin: 0.5em;
 }
 
-/*.book-wide-box.search-result .book-box-inner, .book-wide-box.search-result blockquote {
-    height: auto !important;
-}*/
+
+/* 
+ * ingenous float containment hack 
+ * http://www.mikepadgett.com/technology/technical/alternative-to-the-pie-clearfix-hack/
+ */
+.search-result .book-box-inner {
+    height: 1%;
+    overflow: hidden;
+}
 
 .book-mini-box img, .book-box img, .book-wide-box img, .search-result img {
     width: 13.9em;
