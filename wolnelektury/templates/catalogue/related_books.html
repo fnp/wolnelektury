@@ -1,0 +1,7 @@
+{% load book_mini from catalogue_tags %}
+
+{% spaceless %}
+{% for book in books %}
+    {% book_mini book %}
+{% endfor %}
+{% endspaceless %}

@@ -339,6 +339,27 @@ def fragment_promo(arg=None):
     }
 
 
+@register.inclusion_tag('catalogue/related_books.html')
+def related_books(book, limit=6):
+    related = list(Book.objects.filter(
+        common_slug=book.common_slug).exclude(pk=book.pk)[:limit])
+    limit -= len(related)
+    if limit:
+        tagged = Book.tagged.with_any(book.tags).exclude(pk=book.pk)
+        book_tag = book.book_tag()
+        for rel_book in tagged:
+            if book_tag in rel_book.tags.all():
+                continue
+            related += [rel_book]
+            limit -= 1
+            if not limit:
+                break
+
+    return {
+        'books': related,
+    }
+
+
 @register.filter
 @stringfilter
 def removewholetags(value, tags):
