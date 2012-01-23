@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
 from django.template.loader import render_to_string
-from django.core.cache import cache
+from django.core.cache import get_cache
 from catalogue.utils import split_tags
 from django.utils.safestring import mark_safe
 from slughifi import slughifi
@@ -172,12 +172,12 @@ class Picture(models.Model):
             return
 
         cache_key = "Picture.short_html/%d" % (self.id)
-        cache.delete(cache_key)
+        get_cache('permanent').delete(cache_key)
 
     def short_html(self):
         if self.id:
             cache_key = "Picture.short_html/%d" % (self.id)
-            short_html = cache.get(cache_key)
+            short_html = get_cache('permanent').get(cache_key)
         else:
             short_html = None
 
@@ -191,5 +191,5 @@ class Picture(models.Model):
                 {'picture': self, 'tags': tags}))
 
             if self.id:
-                cache.set(cache_key, short_html, catalogue.models.CACHE_FOREVER)
+                get_cache('permanent').set(cache_key, short_html)
             return mark_safe(short_html)

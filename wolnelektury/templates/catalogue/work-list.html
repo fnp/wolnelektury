@@ -6,10 +6,10 @@
 <ol class='work-list'>
 {% for item in object_list %}
     <li class='{{ object_type }}-item'>
-        {% if object_type == 'Book' %}
-            {% book_short item %}
-        {% else %}
+        {% if item.short_html %}
             {{ item.short_html }}
+        {% else %}
+            {% book_short item %}
         {% endif %}
     </li>
 {% endfor %}
