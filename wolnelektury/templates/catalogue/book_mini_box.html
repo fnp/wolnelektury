@@ -3,7 +3,7 @@
     <a href="{{ book.get_absolute_url }}">
         {% if book.cover %}
             <img src="
-                {% thumbnail book.cover "216x288" as thumb %}
+                {% thumbnail book.cover "139x193" as thumb %}
                     {{ thumb.url }}
                 {% empty %}
                     {{ book.cover.url }}
