@@ -314,35 +314,3 @@ ul.inline-items li {
 .snippets .anchor {
     display: none;
 }
-
-
-.cite blockquote p {
-    margin: 0;
-}
-
-.cite blockquote {
-    padding: 0;
-    margin: 0;
-}
-
-.book-wide-box .cite {
-    /* @ 18pt */
-    width: 100%; /*23.055em;*/
-    height: 7.222em;
-    background-color: #f7f7f7;
-    margin: 0;
-    position: relative;
-    top: -0.444em;
-    right: -0.555em;
-    vertical-align: center;
-}
-
-.abook-wide-box blockquote div.cite-text {
-    padding: 0.888em;
-}
-
-.abook-wide-box blockquote p.cite-more {
-    display: inline;
-    font-size: 0.611em;
-    float: right;
-}

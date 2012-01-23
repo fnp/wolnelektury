@@ -1,4 +1,3 @@
-{% load i18n %}
 {% load removewholetags from catalogue_tags %}
 
 {% if fragment %}
@@ -6,6 +5,6 @@
     <blockquote class="cite-body">
         {{ fragment.text|removewholetags:"a"|truncatewords_html:15|safe }}
     </blockquote>
-    <p class="mono">Adam Mickiewicz, Dziady część III</p>
+    <p class="mono">{{ fragment.book.pretty_title }}</p>
 </a>
 {% endif %}

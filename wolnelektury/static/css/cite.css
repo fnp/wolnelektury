@@ -1,0 +1,78 @@
+a.cite {
+    display: block;
+    color: black;
+    background: white;
+    padding: 3em 2em .1em 8em;
+}
+.cite-body {
+    font-size: 1.8em;
+    line-height: 1.3em;
+}
+.cite p {
+    color: #444;
+    font-size: 1.1em;
+    margin-top: 1.6em;
+}
+
+.cite .vip {
+    margin-top: 0;
+}
+
+
+
+
+#big-cite {
+    background-color: white;
+    /*padding: 10.75em 10em 8.5em 18.2em;*/
+    padding: 0;
+    margin: 0;
+}
+
+#big-cite .cite {
+    padding: 10.75em 10em 8.5em 18.2em;
+}
+
+#big-cite h2 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #575c63;
+}
+
+
+#big-cite .cite-body {
+    margin: .05em;
+    font-size: 2.8em;
+    line-height: 1.2em;
+    color: #191919;
+}
+
+
+#big-cite .source {
+    color: #00a1ac;
+    margin: 0;
+    font-size: 1.1em;
+    margin: 1.1em 0.2em;
+}
+
+
+
+
+.cite blockquote p {
+    margin: 0;
+}
+
+.cite blockquote {
+    padding: 0;
+    margin: 0;
+}
+
+.book-wide-box .cite {
+    position: relative;
+    top: -0.8em;
+    right: -1em;
+    background-color: #f7f7f7;
+    vertical-align: center;
+    width: 39.5em;
+    margin: 0;
+    padding: 1em;
+}

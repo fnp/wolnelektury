@@ -1,0 +1,18 @@
+{% load i18n %}
+
+{% if cite %}
+<a href="{{ cite.get_absolute_url }}" class="cite">
+    {% if cite.vip %}
+        <p class='vip'>{{ cite.vip }} {% trans "recommends" %}:</p>
+    {% endif %}
+    <blockquote class="cite-body">
+        {{ cite.text|linebreaks|safe }}
+    </blockquote>
+    <p class="source mono">{{ cite.book.pretty_title }}</p>
+</a>
+{% else %}
+    {% if fallback %}
+        {% load fragment_promo from catalogue_tags %}
+        {% fragment_promo ctx %}
+    {% endif %}
+{% endif %}

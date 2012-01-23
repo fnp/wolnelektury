@@ -323,8 +323,8 @@ def work_list(context, object_list):
     return locals()
 
 
-@register.inclusion_tag('catalogue/chosen_fragment.html')
-def promo_fragment(arg=None):
+@register.inclusion_tag('catalogue/fragment_promo.html')
+def fragment_promo(arg=None):
     if arg is None:
         fragments = Fragment.objects.all().order_by('?')
         fragment = fragments[0] if fragments.exists() else None

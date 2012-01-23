@@ -1,21 +1,14 @@
 {% extends "base.html" %}
-{% load cache i18n catalogue_tags infopages_tags %}
+{% load cache i18n catalogue_tags infopages_tags social_tags %}
 
 
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
 {% block body %}
 
-    <blockquote id="big-cite">
-        <a href='http://google.com'>
-        <h2 class="mono">Jarosław Lipszyc poleca:</h2>
-        <p id="big-cite-text">Dobranoc, obróć jeszcze raz na mnie oczęta,<br/>
-        (…) Daj mi pierś ucałować<br/>
-        Dobranoc, zapięta.</p>
-        <p class="mono" id="big-cite-source">Adam Mickiewicz, Dziady część III</p>
-        </a>
-    </blockquote>
-
+    <div id="big-cite">
+        {% cite_promo %}
+    </div>
 
     {% spaceless %}
 

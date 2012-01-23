@@ -190,6 +190,7 @@ COMPRESS_CSS = {
             'css/jquery.countdown.css', 
 
             'css/base.css',
+            'css/cite.css',
             'css/header.css',
             'css/main_page.css',
             'css/dialogs.css',

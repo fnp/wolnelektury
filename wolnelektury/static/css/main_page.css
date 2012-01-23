@@ -1,36 +1,3 @@
-#big-cite {
-    background-color: white;
-    padding: 10.75em 10em 8.5em 18.2em;
-    margin: 0;
-}
-
-#big-cite a {
-    color: black;
-    display: block;
-}
-
-#big-cite h2 {
-    margin: 0;
-    font-size: 1.1em;
-    color: #575c63;
-}
-
-
-#big-cite-text {
-    margin: .05em;
-    font-size: 2.8em;
-    line-height: 1.2em;
-    color: #191919;
-}
-
-
-#big-cite-source {
-    color: #00a1ac;
-    margin: 0;
-    font-size: 1.1em;
-    margin: 1.1em 0.2em;
-}
-
 
 #promo-box {
     float: right;

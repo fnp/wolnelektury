@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags switch_tag %}
+{% load catalogue_tags switch_tag social_tags %}
 
 {% block titleextra %}{% title_from_tags tags %}{% endblock %}
 
@@ -59,7 +59,7 @@
 
 
     <div class="right-column">
-        {% promo_fragment tags %}
+        {% cite_promo tags 1 %}
 
         <div class="see-also">
             <h2 class='mono'>{% trans "See also" %}:</h2>

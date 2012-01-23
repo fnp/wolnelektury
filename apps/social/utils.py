@@ -1,7 +1,8 @@
 from django.db.models import Q
-from catalogue.models import Tag
+from catalogue.models import Book, Tag
 from catalogue import utils
 from catalogue.tasks import touch_tag
+from social.models import Cite
 
 
 def likes(user, work):
@@ -33,3 +34,10 @@ def set_sets(user, work, sets):
 
     # delete empty tags
     Tag.objects.filter(category='set', user=user, book_count=0).delete()
+
+
+def cites_for_tags(tags):
+    """Returns a QuerySet with all Cites for books with given tags."""
+    books = Book.tagged.with_all(tags).order_by().values_list('id', flat=True)
+    books = list(books)
+    return Cite.objects.filter(book__id__in=books)

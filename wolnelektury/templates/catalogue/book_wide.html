@@ -1,13 +1,13 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
-{% load promo_fragment from catalogue_tags %}
+{% load cite_promo from social_tags %}
 
 {% block box-class %}book-wide-box{% endblock %}
 
 {% block right-column %}
 <div class="right-column">
     <div class="quote">
-  {% promo_fragment book %}
+  {% cite_promo book 1 %}
   </div>
 
   <div class="other-tools">
