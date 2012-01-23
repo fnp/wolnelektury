@@ -24,18 +24,6 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = {
-    'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-    'NAME': 'mkoziej_wl', # Or path to database file if using sqlite3.
-    'USER': 'mkoziej',                      # Not used with sqlite3.
-    'PASSWORD': 'pelolpe',                  # Not used with sqlite3.
-}
-
-DATABASE_OPTIONS = {
-   "init_command": "SET storage_engine=INNODB DEFAULT CHARSET=utf8",
-}
-
-
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
