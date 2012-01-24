@@ -1,0 +1,18 @@
+.social-shelf-tags {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+}
+
+.social-shelf-tags li {
+    display: inline-block;
+    margin-right:1em;
+}
+
+.social-shelf-tags a {
+    display: block;
+    padding: .3em 1em;
+    background: #ABDADE;
+    color: #0b838d;
+    border-radius: 1em;
+}

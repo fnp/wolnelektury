@@ -1,8 +1,28 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
+{% load tag_list from catalogue_tags %}
 {% load cite_promo from social_tags %}
 
+
 {% block box-class %}book-wide-box{% endblock %}
+
+
+{% block book-box-extra-info %}
+{% if themes %}
+    <div id="themes-list-wrapper">
+        <p><a class="mono" id="themes-list-toggle"
+                href="#">{% trans "motifs and themes" %}</a></p>
+        <div id="themes-list">
+            <ul>
+            {% for theme in themes %}
+                <li><a href="{% url book_fragments book.urlid theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
 
 {% block right-column %}
 <div class="right-column">
@@ -12,10 +32,11 @@
 
   <div class="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>
-    <ul class="inline-items">
+    <ul class="plain">
       {% if extra_info.source_url %}
       <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}</li>
       {% endif %}
+      <li><a href="{{ book.xml_file.url }}">{% trans "Source XML file" %}</a></li>
       {% if extra_info.about and not hide_about %}
       <li>{% trans "Book on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
       {% endif %}
@@ -25,11 +46,12 @@
       {% if book.wiki_link %}
       <li><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></li>
       {% endif %}
+      <li><a href="{% url poem_from_book book.slug %}">{% trans "Mix this book" %}</a></li>
     </ul>
   </div>
   <div class="other-download">
     <h2 class="mono">{% trans "Download" %}</h2>
-    <ul class="inline-items">
+    <ul class="plain">
       <li>
 	{% if related.media.mp3 or related.media.ogg %}
 	{% trans "Download all audiobooks for this book" %}: 

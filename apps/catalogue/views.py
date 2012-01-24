@@ -213,29 +213,9 @@ def book_detail(request, slug):
     try:
         book = models.Book.objects.get(slug=slug)
     except models.Book.DoesNotExist:
-        return pdcounter_views.book_stub_detail(request, kwargs['slug'])
+        return pdcounter_views.book_stub_detail(request, slug)
 
-    book_tag = book.book_tag()
-    tags = list(book.tags.filter(~Q(category='set')))
-    categories = split_tags(tags)
     book_children = book.children.all().order_by('parent_number', 'sort_key')
-
-    _book = book
-    parents = []
-    while _book.parent:
-        parents.append(_book.parent)
-        _book = _book.parent
-    parents = reversed(parents)
-
-    theme_counter = book.theme_counter
-    book_themes = models.Tag.objects.filter(pk__in=theme_counter.keys())
-    for tag in book_themes:
-        tag.count = theme_counter[tag.pk]
-
-    extra_info = book.get_extra_info_value()
-    hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
-
-    custom_pdf_form = forms.CustomPDFForm()
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
 

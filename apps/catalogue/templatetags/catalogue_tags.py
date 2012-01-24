@@ -17,8 +17,9 @@ from django.conf import settings
 from django.template.defaultfilters import stringfilter
 from django.utils.translation import ugettext as _
 
+from catalogue import forms
 from catalogue.utils import split_tags
-from catalogue.models import Book, Fragment
+from catalogue.models import Book, Fragment, Tag
 
 register = template.Library()
 
@@ -282,27 +283,29 @@ def book_info(book):
 
 @register.inclusion_tag('catalogue/book_wide.html', takes_context=True)
 def book_wide(context, book):
-    formats = {}
-    # files generated during publication
-    for ebook_format in book.ebook_formats:
-        if book.has_media(ebook_format):
-            formats[ebook_format] = book.get_media(ebook_format)
+    theme_counter = book.theme_counter
+    book_themes = Tag.objects.filter(pk__in=theme_counter.keys())
+    for tag in book_themes:
+        tag.count = theme_counter[tag.pk]
+    extra_info = book.get_extra_info_value()
+    hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
 
     return {
-        'related': book.related_info(),
         'book': book,
-        'formats': formats,
+        'related': book.related_info(),
         'extra_info': book.get_extra_info_value(),
+        'hide_about': hide_about,
+        'themes': book_themes,
+        'custom_pdf_form': forms.CustomPDFForm(),
         'request': context.get('request'),
-        'fragment': book.choose_fragment(),
     }
 
 
 @register.inclusion_tag('catalogue/book_short.html', takes_context=True)
 def book_short(context, book):
     return {
-        'related': book.related_info(),
         'book': book,
+        'related': book.related_info(),
         'request': context.get('request'),
     }
 
@@ -310,8 +313,8 @@ def book_short(context, book):
 @register.inclusion_tag('catalogue/book_mini_box.html')
 def book_mini(book):
     return {
-        'related': book.related_info(),
         'book': book,
+        'related': book.related_info(),
     }
 
 

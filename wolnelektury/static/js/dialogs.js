@@ -79,6 +79,7 @@
                                 $('.target', $window).text(response.message);
                                 setTimeout(function() { $window.jqmHide() }, 1000);
                                 $form.submit();
+                                location.reload();
                             }
                             else {
                                 $('.error', $window).remove();
@@ -145,7 +146,7 @@
         };
 
         var ajaxable_callbacks = {
-            'social-book-sets': update_star
+            'social-book-sets': location.reload
         };
 
 

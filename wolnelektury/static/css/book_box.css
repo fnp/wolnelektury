@@ -112,6 +112,9 @@
     font-size: 1.1em;
     color: #707b7a;
     display: block;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .book-mini-box .title {
     font-size: 1.4em;
@@ -126,13 +129,16 @@
 }
 
 .book-wide-box .book-box-body {
-    height: 21.8em;
+    min-height: 17em;
 }
 
 .book-box-head {
     min-height: 7em;
     margin-top: 1.4em;
     margin-bottom: 1em;
+}
+.book-box-head a {
+    color: black;
 }
 .book-box-head .author {
     font-size: 1.1em;
@@ -194,6 +200,12 @@
     margin-left: 14em;
 }
 
+.book-wide-box #themes-list-wrapper {
+    margin-left: 14em;
+}
+
+
+
 .book-box-read a:before {
     content: "\2609";
     font-family: WL-Nav;
@@ -203,7 +215,7 @@
     font-weight: normal;
 }
 
-.book-box-download a:before {
+.book-box-download a.downarrow:before {
     content: "\21E9";
     font-family: WL-Nav;
     font-size: 2.25em;
@@ -263,7 +275,7 @@ ul.inline-items li {
 
 .book-wide-box .other-download {
     float: left;
-    width: 22.5em;
+    width: 22em;
     margin: 6em 1.5em 0em 1.5em;
 }
 

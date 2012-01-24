@@ -782,14 +782,26 @@ class Book(models.Model):
             return self._related_info
         else:
             rel = {'tags': {}, 'media': {}}
+
             tags = self.tags.filter(category__in=(
                     'author', 'kind', 'genre', 'epoch'))
             tags = split_tags(tags)
             for category in tags:
                 rel['tags'][category] = [
                         (t.name, t.get_absolute_url()) for t in tags[category]]
+
             for media_format in BookMedia.formats:
                 rel['media'][media_format] = self.has_media(media_format)
+
+            book = self
+            parents = []
+            while book.parent:
+                parents.append((book.parent.title, book.parent.slug))
+                book = book.parent
+            parents = parents[::-1]
+            if parents:
+                rel['parents'] = parents
+
             if self.pk:
                 type(self).objects.filter(pk=self.pk).update(_related_info=rel)
             return rel

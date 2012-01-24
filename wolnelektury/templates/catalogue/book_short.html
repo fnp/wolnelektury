@@ -38,10 +38,12 @@
         <div class="book-box-head">
             <div class="mono author">
                 {% for name, url in related.tags.author %}
-                    {{ name }}{% if not forloop.last %}, {% endif %}
+                    <a href="{{ url }}">{{ name }}</a>{% if not forloop.last %},
+                {% endif %}{% endfor %}{% for title, slug in related.parents %},
+                    <a href="{% url book_detail slug %}">{{ title }}</a>
                 {% endfor %}
             </div>
-            <div class="title">{{ book.title }}</div>
+            <div class="title"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></div>
         </div>
         <div class="tags">
             {% spaceless %}
@@ -65,8 +67,13 @@
             </span>
 
             {% endspaceless %}
+
+            {% shelf_tags book %}
         </div>
     </div>
+
+    {% block book-box-extra-info %}{% endblock %}
+
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
@@ -76,17 +83,17 @@
         <li class="book-box-download">
             <a class="mono downarrow">{% trans "Download" %}</a>
             <div class="book-box-formats mono">
-	      {% if formats.pdf %}
-	      <span><a href="{{formats.pdf.url}}">PDF</a> do wydruku</span>
+	      {% if book.pdf_file %}
+	      <span><a href="{{ book.pdf_file.url}}">PDF</a> do wydruku</span>
 	      {% endif %}
-	      {% if formats.epub %}
-	      <span><a href="{{formats.epub.url}}">EPUB</a> na czytnik</span>
+	      {% if  book.epub_file %}
+	      <span><a href="{{ book.epub_file.url}}">EPUB</a> na czytnik</span>
 	      {% endif %}
-	      {% if formats.mobi %}
-	      <span><a href="{{formats.mobi.url}}">MOBI</a> na Kindle</span>
+	      {% if  book.mobi_file %}
+	      <span><a href="{{ book.mobi_file.url}}">MOBI</a> na Kindle</span>
 	      {% endif %}
-	      {% if formats.txt %}
-	      <span><a href="{{formats.txt.url}}">TXT</a> do zadań specjalnych</span>
+	      {% if  book.txt_file %}
+	      <span><a href="{{ book.txt_file.url}}">TXT</a> do zadań specjalnych</span>
 	      {% endif %}
             </div>
         </li>
@@ -98,5 +105,6 @@
     </ul>
     {% block box-append %}
     {% endblock %}
+    <div class="clearboth"></div>
 </div>
 </div>

@@ -62,33 +62,11 @@
         {% cite_promo tags 1 %}
 
         <div class="see-also">
+            {% if last_tag.gazeta_link or last_tag.wiki_link %}
             <h2 class='mono'>{% trans "See also" %}:</h2>
             <ul>
-                <li><a href="">Wiki</a></li>
-                <li><a href="">Gazeta</a></li>
-            </ul>
-        </div>
-
-        <div class="download">
-            <h2 class='mono'>{% trans "Download" %}:</h2>
-            <ul>
-                <li><a href="">wszystko</a></li>
-                <li><a href="">część</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="clearboth"></div>
-
-
-
-
-    <div id="books-list">
-
-
         {% if last_tag.gazeta_link %}
-        <p><a href="{{ last_tag.gazeta_link }}">
+        <li><a href="{{ last_tag.gazeta_link }}">
             {% switch last_tag.category %}
                 {% case "author" %}
                     {% trans "Read work's study of this author on Lektury.Gazeta.pl" %}
@@ -101,10 +79,10 @@
                 {% else %}
                     {% trans "Read related study on Lektury.Gazeta.pl" %}
             {% endswitch %}
-        </a></p>
+        </a></li>
         {% endif %}
         {% if last_tag.wiki_link %}
-        <p><a href="{{ last_tag.wiki_link }}">
+        <li><a href="{{ last_tag.wiki_link }}">
         	{% switch last_tag.category %}
 			    {% case "author" %}
 				    {% trans "Read article about this author on Wikipedia" %}
@@ -117,9 +95,33 @@
 				{% else %}
 				    {% trans "Read related article on Wikipedia" %}
 			{% endswitch %}
-        </a></p>
+        </a></li>
         {% endif %}
 
+
+
+            </ul>
+            {% endif %}
+        </div>
+
+        <div class="download">
+            {% comment %}
+            <h2 class='mono'>{% trans "Download" %}:</h2>
+            <ul>
+                <li><a href="">wszystko</a></li>
+                <li><a href="">część</a></li>
+            </ul>
+            {% endcomment %}
+        </div>
+
+    </div>
+
+    <div class="clearboth"></div>
+
+
+
+
+    <div id="books-list">
         {% if object_list %}
             {% work_list object_list %}
         {% else %}

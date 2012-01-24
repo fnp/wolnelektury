@@ -198,7 +198,8 @@ COMPRESS_CSS = {
             'css/book_box.css',
             'css/catalogue.css',
             'css/sponsors.css',
-            
+
+            'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
         ],
         'output_filename': 'css/all.min?.css',

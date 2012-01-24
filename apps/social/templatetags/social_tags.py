@@ -29,3 +29,13 @@ def cite_promo(ctx=None, fallback=False):
         'fallback': fallback,
         'ctx': ctx,
     }
+
+
+@register.inclusion_tag('social/shelf_tags.html', takes_context=True)
+def shelf_tags(context, book):
+    user = context['request'].user
+    if not user.is_authenticated():
+        tags = []
+    else:
+        tags = book.tags.filter(category='set', user=user).exclude(name='')
+    return {'tags': tags}

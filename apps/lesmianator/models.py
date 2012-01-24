@@ -123,16 +123,15 @@ class Continuations(models.Model):
 
     @classmethod
     def for_book(cls, book, length=3):
-        from librarian import text
-
         # count from this book only
         output = StringIO()
-        f = open(book.xml_file.path)
-        text.transform(f, output, False, ('raw-text',))
-        f.close()
+        wldoc = book.wldocument(parse_dublincore=False)
+        output = wldoc.as_text(('raw-text',)).get_string()
+        del wldoc
+
         conts = {}
         last_word = ''
-        for letter in output.getvalue().decode('utf-8').strip().lower():
+        for letter in output.decode('utf-8').strip().lower():
             mydict = conts.setdefault(last_word, {})
             mydict.setdefault(letter, 0)
             mydict[letter] += 1
