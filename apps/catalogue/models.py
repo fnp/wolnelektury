@@ -788,7 +788,7 @@ class Book(models.Model):
             tags = split_tags(tags)
             for category in tags:
                 rel['tags'][category] = [
-                        (t.name, t.get_absolute_url()) for t in tags[category]]
+                        (t.name, t.slug) for t in tags[category]]
 
             for media_format in BookMedia.formats:
                 rel['media'][media_format] = self.has_media(media_format)

@@ -292,6 +292,7 @@ def book_wide(context, book):
 
     return {
         'book': book,
+        'main_link': reverse('book_text', args=[book.slug]),
         'related': book.related_info(),
         'extra_info': book.get_extra_info_value(),
         'hide_about': hide_about,
@@ -305,6 +306,7 @@ def book_wide(context, book):
 def book_short(context, book):
     return {
         'book': book,
+        'main_link': book.get_absolute_url(),
         'related': book.related_info(),
         'request': context.get('request'),
     }
@@ -354,6 +356,13 @@ def related_books(book, limit=6):
     return {
         'books': related,
     }
+
+
+@register.simple_tag
+def tag_url(category, slug):
+    return reverse('catalogue.views.tagged_object_list', args=[
+        '/'.join((Tag.categories_dict[category], slug))
+    ])
 
 
 @register.filter

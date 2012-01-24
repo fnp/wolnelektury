@@ -1,11 +1,11 @@
 {% load i18n %}
-{% load social_tags %}
+{% load catalogue_tags social_tags %}
 {% load thumbnail %}
 <div class="{% block box-class %}book-box{% endblock %}">
 <div class="book-box-inner" style="position: relative;">
 
 
-    <a href="{{ book.get_absolute_url }}">
+    <a href="{{ main_link }}">
         {% if book.cover %}
             <img src="
                 {% thumbnail book.cover "139x193" as thumb %}
@@ -37,32 +37,32 @@
 
         <div class="book-box-head">
             <div class="mono author">
-                {% for name, url in related.tags.author %}
-                    <a href="{{ url }}">{{ name }}</a>{% if not forloop.last %},
+                {% for name, slug in related.tags.author %}
+                    <a href="{% tag_url 'author' slug %}">{{ name }}</a>{% if not forloop.last %},
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
                     <a href="{% url book_detail slug %}">{{ title }}</a>
                 {% endfor %}
             </div>
-            <div class="title"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></div>
+            <div class="title"><a href="{{ main_link }}">{{ book.title }}</a></div>
         </div>
         <div class="tags">
             {% spaceless %}
 
             <span class="mono">{% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for name, url in related.tags.epoch %}
-                    <a href="{{ url }}">{{ name }} </a>
+                {% for name, slug in related.tags.epoch %}
+                    <a href="{% tag_url 'epoch' slug %}">{{ name }} </a>
                 {% endfor %}
             </span>
 
             <span class="mono">{% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for name, url in related.tags.kind %}
-                    <a href="{{ url }}">{{ name }} </a>
+                {% for name, slug in related.tags.kind %}
+                    <a href="{% tag_url 'kind' slug %}">{{ name }} </a>
                 {% endfor %}
             </span>
 
             <span class="mono">{% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for name, url in related.tags.genre %}
-                    <a href="{{ url }}">{{ name }} </a>
+                {% for name, slug in related.tags.genre %}
+                    <a href="{% tag_url 'genre' slug %}">{{ name }} </a>
                 {% endfor %}
             </span>
 

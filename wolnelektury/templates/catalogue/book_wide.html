@@ -15,7 +15,7 @@
         <div id="themes-list">
             <ul>
             {% for theme in themes %}
-                <li><a href="{% url book_fragments book.urlid theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
+                <li><a href="{% url book_fragments book.slug theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
             {% endfor %}
             </ul>
         </div>
