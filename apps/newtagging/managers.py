@@ -35,11 +35,13 @@ class ModelTaggedItemManager(models.Manager):
         super(ModelTaggedItemManager, self).__init__()
         self.intermediary_table_model = tag_model.objects.intermediary_table_model
 
-    def related_to(self, obj, queryset=None, num=None):
+    def related_to(self, obj, queryset=None, num=None, ignore_by_tag=None):
         if queryset is None:
-            return self.intermediary_table_model.objects.get_related(obj, self.model, num=num)
+            return self.intermediary_table_model.objects.get_related(
+                obj, self.model, num=num, ignore_by_tag=ignore_by_tag)
         else:
-            return self.intermediary_table_model.objects.get_related(obj, queryset, num=num)
+            return self.intermediary_table_model.objects.get_related(
+                obj, queryset, num=num, ignore_by_tag=ignore_by_tag)
 
     def with_all(self, tags, queryset=None):
         if queryset is None:

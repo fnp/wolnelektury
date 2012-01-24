@@ -439,7 +439,7 @@ class TaggedItemManager(models.Manager):
         else:
             return model._default_manager.none()
 
-    def get_related(self, obj, queryset_or_model, num=None):
+    def get_related(self, obj, queryset_or_model, num=None, ignore_by_tag=None):
         """
         Retrieve a list of instances of the specified model which share
         tags with the model instance ``obj``, ordered by the number of
@@ -447,6 +447,8 @@ class TaggedItemManager(models.Manager):
 
         If ``num`` is given, a maximum of ``num`` instances will be
         returned.
+
+        If ``ignore_by_tag`` is given, object tagged with it will be ignored.
         """
         queryset, model = get_queryset_and_model(queryset_or_model)
         model_table = qn(model._meta.db_table)
@@ -466,6 +468,15 @@ class TaggedItemManager(models.Manager):
             # instances for the same model.
             query += """
           AND related_tagged_item.object_id != %(tagged_item)s.object_id"""
+        if ignore_by_tag is not None:
+            query += """
+                AND NOT EXISTS (
+                    SELECT * FROM %(tagged_item)s
+                        WHERE %(tagged_item)s.object_id = %(model_pk)s
+                          AND %(tagged_item)s.content_type_id = %(content_type_id)s
+                          AND %(ignore_id)s = %(tagged_item)s.tag_id
+                )
+            """
         query += """
         GROUP BY %(model_pk)s
         ORDER BY %(count)s DESC
@@ -479,6 +490,7 @@ class TaggedItemManager(models.Manager):
             'content_type_id': content_type.pk,
             'related_content_type_id': related_content_type.pk,
             'limit_offset': num is not None and connection.ops.limit_offset_sql(num) or '',
+            'ignore_id': ignore_by_tag.id if ignore_by_tag else None,
         }
 
         cursor = connection.cursor()
