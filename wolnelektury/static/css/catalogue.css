@@ -66,4 +66,9 @@
 
 
 
-fragment
+.catalogue-catalogue h2 {
+    font-size: 2em;
+}
+.catalogue-catalogue ul {
+    -moz-column-width: 30em;
+}

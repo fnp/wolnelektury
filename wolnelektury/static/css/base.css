@@ -93,6 +93,16 @@ h2 {
     clear: both;
 }
 
+.white-box {
+    border: 1px solid #ddd;
+    padding: 1em;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+
 #header-content, div#main-content, div#half-header-content, #footer-content {
     width: 97.5em;
     margin: auto;

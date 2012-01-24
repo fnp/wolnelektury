@@ -10,25 +10,26 @@
 {% block body %}
     <h1>{% trans "Catalogue" %}</h1>
 
-    <div class="normal-text">
+    <div class="normal-text catalogue-catalogue">
 
     <p><a href="{% url reporting_catalogue_pdf %}">
         {% trans "Download the catalogue in PDF format." %}
     </a></p>
 
-    <h2></a>{% trans "Authors" %}<a name="autorzy"></a></h2>
-    {% tag_list categories.author %}
+    <h2 class="white-box">{% trans "Authors" %}<a name="autorzy"></a></h2>
+    <div class="white-box">{% tag_list categories.author %}</div>
 
-    <h2>{% trans "Kinds" %}<a name="rodzaje"></a></h2>
-    {% tag_list categories.kind %}
+    <h2 class="white-box">{% trans "Kinds" %}<a name="rodzaje"></a></h2>
+    <div class="white-box">{% tag_list categories.kind %}</div>
 
-    <h2>{% trans "Genres" %}<a name="gatunki"></a></h2>
-    {% tag_list categories.genre %}
+    <h2 class="white-box">{% trans "Genres" %}<a name="gatunki"></a></h2>
+    <div class="white-box">{% tag_list categories.genre %}</div>
 
-    <h2>{% trans "Epochs" %}<a name="epoki"></a></h2>
-    {% tag_list categories.epoch %}
+    <h2 class="white-box">{% trans "Epochs" %}<a name="epoki"></a></h2>
+    <div class="white-box">{% tag_list categories.epoch %}</div>
 
-    <h2>{% trans "Themes and topics" %}<a name="motywy"></a></h2>
-    {% tag_list fragment_tags %}
+    <h2 class="white-box">{% trans "Themes and topics" %}<a name="motywy"></a></h2>
+    <div class="white-box">{% tag_list fragment_tags %}</div>
+
     </div>
 {% endblock %}
