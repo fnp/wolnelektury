@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cache i18n catalogue_tags infopages_tags social_tags %}
+{% load cache chunks i18n catalogue_tags infopages_tags social_tags %}
 
 
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
@@ -14,21 +14,12 @@
 
 
     <div id="promo-box">
-        <div class="grid-line" id="promo-box-header">
-            <h2 class="mono">Trwa konkurs</h2>
-        </div>
-        <div id="promo-box-body" class="accent4">
-            <p id="promo-box-title" class="mono"><span>Konkurs poezji automatycznej</span></p>
-            <div id="promo-box-content">
-            <p>Znacie Leśmianatora? To niewielki skrypt miskujący na życzenie
-            wiersze z Wolnych Lektur.</p>
-            </div>
-        </div>
+        {% chunk "promo" %}
     </div>
 
 
     <h2 class="main-last"><span class="mono">Ostatnie publikacje</span></h2>
-        {% cache 300 last-published-on-main %}
+        {% cache 60 last-published-on-main %}
             {% for book in last_published %}
                 {% book_mini book %}
             {% endfor %}
