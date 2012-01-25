@@ -40,8 +40,7 @@
                 {% for name, slug in related.tags.author %}
                     <a href="{% tag_url 'author' slug %}">{{ name }}</a>{% if not forloop.last %},
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
-                    <a href="{% url book_detail slug %}">{{ title }}</a>
-                {% endfor %}
+                    <a href="{% url book_detail slug %}">{{ title }}</a>{% endfor %}
             </div>
             <div class="title"><a href="{{ main_link }}">{{ book.title }}</a></div>
         </div>

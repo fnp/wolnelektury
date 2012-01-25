@@ -1,7 +1,7 @@
 {% load i18n %}
 
 {% if cite %}
-<a href="{{ cite.get_absolute_url }}" class="cite">
+<a href="{{ cite.link }}" class="cite{% if cite.small %} cite-small{% endif %}">
     {% if cite.vip %}
         <p class='vip mono'>{{ cite.vip }} {% trans "recommends" %}:</p>
     {% endif %}

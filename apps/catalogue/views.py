@@ -4,32 +4,25 @@
 #
 import re
 import itertools
-from datetime import datetime
 
 from django.conf import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
-from django.db.models import Count, Sum, Q
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.datastructures import SortedDict
-from django.views.decorators.http import require_POST
-from django.contrib import auth
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.http import urlquote_plus
-from django.views.decorators import cache
 from django.utils import translation
 from django.utils.translation import ugettext as _
-from django.views.generic.list_detail import object_list
 
-from ajaxable.utils import LazyEncoder, JSONResponse, AjaxableFormView
+from ajaxable.utils import JSONResponse, AjaxableFormView
 
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import (split_tags, AttachmentHttpResponse,
     async_build_pdf, MultiQuerySet)
-from catalogue.tasks import touch_tag
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm

@@ -21,6 +21,11 @@ a.cite {
 }
 
 
+/* a long cite displays smaller */ 
+.cite-small .cite-body {
+	font-size: 1.4em;
+}
+
 
 
 #big-cite {
@@ -45,6 +50,10 @@ a.cite {
     font-size: 2.8em;
     line-height: 1.2em;
     color: #191919;
+}
+/* a long cite displays smaller */ 
+#big-cite .cite-small .cite-body {
+	font-size: 2em;
 }
 
 
