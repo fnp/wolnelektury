@@ -3,7 +3,7 @@
 {% if fragment %}
 <a href="{{ fragment.get_absolute_url }}" class="cite">
     <blockquote class="cite-body">
-        {{ fragment.text|removewholetags:"a"|truncatewords_html:15|safe }}
+        {{ fragment.get_short_text|safe }}
     </blockquote>
     <p class="mono">{{ fragment.book.pretty_title }}</p>
 </a>

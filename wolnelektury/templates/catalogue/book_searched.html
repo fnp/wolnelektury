@@ -16,7 +16,7 @@
     <p>{% trans "In fragment" %}
       {% if hit.themes_hit %}{% trans ", for themes:" %}{% for t in hit.themes_hit %}{{t.name}} {% endfor %}{% endif %}
     </p>
-    <a href="{{hit.fragment.get_absolute_url}}">{{hit.fragment.short_text|safe}}</a>
+    <a href="{{hit.fragment.get_absolute_url}}">{{hit.fragment.get_short_text|safe}}</a>
   </div>
   {% endif %}
   {% endif %}

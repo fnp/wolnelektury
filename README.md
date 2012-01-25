@@ -116,7 +116,7 @@ django-compress
  - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
  - Type: library (Django application)
  
- django-chunks
+django-chunks
 -------------
  - Source: [Google Code](http://code.google.com/p/django-chunks/)
  - Authors: Clint Ecker <clintecker@gmail.com>
@@ -131,19 +131,7 @@ django-newtagging
  - Type: library (Django aplication)
  - Notes: Aplication based on  [django-tagging](http://code.google.com/p/django-tagging/), also [MIT](http://www.opensource.org/licenses/mit-license.php) license.
  
-django-piston (0.2.3rc)
-------------------------
- - http://bitbucket.org/jespern/django-piston/wiki/Home
 
-markupstring
-------------
- - Source: [ASPN Cookbook](http://code.activestate.com/recipes/389023/)
- - Authors: Thomas Hinkle
- - License: [MIT License](http://code.activestate.com/help/terms/)
- - Type: library
- - Notes: Patched by Marek Stępniowski <marek@stepniowski.com> to accept Unicode strings
- 
- 
 Authors
 =======
  
