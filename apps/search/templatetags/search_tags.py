@@ -44,6 +44,7 @@ def book_searched(context, result):
     return {
         'related': book.related_info(),
         'book': book,
+        'main_link': book.get_absolute_url(),
         'request': context.get('request'),
         'hits': hits,
     }

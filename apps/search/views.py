@@ -15,7 +15,7 @@ from catalogue.views import JSONResponse
 from search import Search, JVM, SearchResult
 from lucene import StringReader
 from suggest.forms import PublishingSuggestForm
-
+import re
 import enchant
 
 dictionary = enchant.Dict('pl_PL')
@@ -140,13 +140,35 @@ def main(request):
         
         text_phrase = SearchResult.aggregate(srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False))
         
-        everywhere = SearchResult.aggregate(srch.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache), author_title_rest)
+        everywhere = srch.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache)
+
+        def already_found(results):
+            def f(e):
+                for r in results:
+                    if e.book_id == r.book_id:
+                        results.append(e)
+                        return True
+                return False
+            return f
+        f = already_found(author_results + title_results)
+        everywhere = filter(lambda x: not f(x), everywhere)
+
+        author_results = SearchResult.aggregate(author_results)
+        title_results = SearchResult.aggregate(title_results)
+        
+        everywhere = SearchResult.aggregate(everywhere, author_title_rest)
 
         for res in [author_results, title_results, text_phrase, everywhere]:
             res.sort(reverse=True)
-
+            for r in res:
+                for h in r.hits:
+                    h['snippets'] = map(lambda s:
+                                        re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"", 
+                                                re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", s)[0])[0], h['snippets'])
+                    
         suggestion = did_you_mean(query, srch.get_tokens(toks, field="SIMPLE"))
-
+        print "dym? %s" % repr(suggestion).encode('utf-8')
+        
         results = author_results + title_results + text_phrase + everywhere
         results.sort(reverse=True)
         

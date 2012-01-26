@@ -103,7 +103,6 @@ def differentiate_tags(request, tags, ambiguous_slugs):
 
 
 def tagged_object_list(request, tags=''):
-    #    import pdb; pdb.set_trace()
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:

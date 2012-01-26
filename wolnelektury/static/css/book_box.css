@@ -319,8 +319,10 @@ ul.inline-items li {
 }
 
 .snippets .snippet-text {
+    background: #f7f7f7;
     font-size: 1.2em;
     margin: 1.083em 0em;
+    padding: 1em;
 }
 
 .snippets .anchor {

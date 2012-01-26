@@ -8,7 +8,7 @@
 
 {% block body %}
     {% if did_you_mean %}
-      <span class="did_you_mean">{% trans "Dod you mean" %} <a href="{% url search %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a></b>?</span>
+      <span class="did_you_mean">{% trans "Did you mean" %} <a href="{% url search %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a>?</span>
     {% endif %}
     <!-- tu pójdą trafienia w tagi: Autorzy - z description oraz motywy i rodzaje (z book_count) -->
 

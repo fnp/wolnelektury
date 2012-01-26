@@ -256,7 +256,7 @@ class Index(BaseIndex):
         self.index.addDocument(book_doc)
         del book_doc
 
-        self.index_content(book, book_fields=[meta_fields['title'], meta_fields['authors']])
+        self.index_content(book, book_fields=[meta_fields['title'], meta_fields['authors'], meta_fields['published_date']])
 
     master_tags = [
         'opowiadanie',
@@ -264,10 +264,21 @@ class Index(BaseIndex):
         'dramat_wierszowany_l',
         'dramat_wierszowany_lp',
         'dramat_wspolczesny', 'liryka_l', 'liryka_lp',
-        'wywiad'
+        'wywiad',
         ]
 
+    ignore_content_tags = [
+        'uwaga', 'extra',
+        'zastepnik_tekstu', 'sekcja_asterysk', 'separator_linia', 'zastepnik_wersu',
+        'didaskalia',
+        'naglowek_aktu', 'naglowek_sceny', 'naglowek_czesc',
+        ]
+
+    footnote_tags = ['pa', 'pt', 'pr', 'pe']
+
     skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne']
+
+    published_date_re = re.compile("([0-9]+)[\]. ]*$")
 
     def extract_metadata(self, book, book_info=None):
         """
@@ -309,6 +320,13 @@ class Index(BaseIndex):
                     fields[field.name] = Field(field.name, "%04d%02d%02d" %\
                                                (dt.year, dt.month, dt.day), Field.Store.NO, Field.Index.NOT_ANALYZED)
 
+        # get published date
+        source = book_info.source_name
+        match = self.published_date_re.search(source)
+        print("published date is %s %s" % (match, match is not None and match.groups()))
+        if match is not None:
+            fields["published_date"] = Field("published_date", str(match.groups()[0]), Field.Store.YES, Field.Index.NOT_ANALYZED)
+
         return fields
 
     def add_gaps(self, fields, fieldname):
@@ -341,15 +359,26 @@ class Index(BaseIndex):
         if master is None:
             return []
 
-        def walker(node):
+        def walker(node, ignore_tags=[]):
             yield node, None
-            for child in list(node):
+            for child in filter(lambda n: n.tag not in ignore_tags, list(node)):
                 for b, e in walker(child):
                     yield b, e
             yield None, node
             return
 
         def fix_format(text):
+            #            separator = [u" ", u"\t", u".", u";", u","]
+            if isinstance(text, list):
+                # need to join it first
+                text = filter(lambda s: s is not None, content)
+                text = u' '.join(text)
+                # for i in range(len(text)):
+                #     if i > 0:
+                #         if text[i][0] not in separator\
+                #             and text[i - 1][-1] not in separator:
+                #          text.insert(i, u" ")
+
             return re.sub("(?m)/$", "", text)
 
         def add_part(snippets, **fields):
@@ -408,9 +437,21 @@ class Index(BaseIndex):
 
                 # section content
                 content = []
+                footnote = None
 
-                for start, end in walker(header):
-                        # handle fragments and themes.
+                for start, end in walker(header, ignore_tags=self.ignore_content_tags):
+                    # handle footnotes
+                    if start is not None and start.tag in self.footnote_tags:
+                        footnote = ' '.join(start.itertext())
+                    elif end is not None and footnote is not None and end.tag in self.footnote_tags:
+                        doc = add_part(snippets, header_index=position, header_type=header.tag,
+                                       content=footnote)
+
+                        self.index.addDocument(doc)
+
+                        footnote = None
+
+                    # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
                         fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
@@ -430,17 +471,12 @@ class Index(BaseIndex):
                             continue  # empty themes list.
                         del fragments[fid]
 
-                        def jstr(l):
-                            return u' '.join(map(
-                                lambda x: x == None and u'(none)' or unicode(x),
-                                l))
-
                         doc = add_part(snippets,
                                        header_type=frag['start_header'],
                                        header_index=frag['start_section'],
                                        header_span=position - frag['start_section'] + 1,
                                        fragment_anchor=fid,
-                                       content=u' '.join(filter(lambda s: s is not None, frag['content'])),
+                                       content=fix_format(frag['content']),
                                        themes=frag['themes'])
 
                         self.index.addDocument(doc)
@@ -457,7 +493,7 @@ class Index(BaseIndex):
 
                         # in the end, add a section text.
                 doc = add_part(snippets, header_index=position, header_type=header.tag,
-                               content=fix_format(u' '.join(filter(lambda s: s is not None, content))))
+                               content=fix_format(content))
 
                 self.index.addDocument(doc)
                 position += 1
@@ -555,20 +591,20 @@ class JoinSearch(object):
 
 
 class SearchResult(object):
-    def __init__(self, searcher, scoreDocs, score=None, how_found=None, snippets=None, searched=None, tokens_cache=None):
+    def __init__(self, search, scoreDocs, score=None, how_found=None, snippets=None, searched=None, tokens_cache=None):
         if tokens_cache is None: tokens_cache = {}
-            
+
         if score:
             self._score = score
         else:
             self._score = scoreDocs.score
-            
+
         self.boost = 1.0
 
         self._hits = []
         self._processed_hits = None  # processed hits
 
-        stored = searcher.doc(scoreDocs.doc)
+        stored = search.searcher.doc(scoreDocs.doc)
         self.book_id = int(stored.get("book_id"))
 
         header_type = stored.get("header_type")
@@ -581,13 +617,19 @@ class SearchResult(object):
 
         fragment = stored.get("fragment_anchor")
 
+        pd = stored.get("published_date")
+        if pd is None:
+            print "published_date is none for book %d" % self.book_id
+            pd = 0
+        self.published_date = int(pd)
+
         if snippets:
             snippets = snippets.replace("/\n", "\n")
         hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
 
         self._hits.append(hit)
 
-        self.searcher = searcher
+        self.search = search
         self.searched = searched
         self.tokens_cache = tokens_cache
 
@@ -669,11 +711,12 @@ class SearchResult(object):
             themes = frag.tags.filter(category='theme')
             themes_hit = []
             if self.searched is not None:
-                tokens = self.searcher.get_tokens(self.searched, 'POLISH', tokens_cache=self.tokens_cache)
+                tokens = self.search.get_tokens(self.searched, 'POLISH', cached=self.tokens_cache)
                 for theme in themes:
-                    name_tokens = self.searcher.get_tokens(theme.name, 'POLISH')
+                    name_tokens = self.search.get_tokens(theme.name, 'POLISH')
+                    print "THEME HIT: %s in %s" % (tokens, name_tokens)
                     for t in tokens:
-                        if name_tokens.index(t):
+                        if t in name_tokens:
                             if not theme in themes_hit:
                                 themes_hit.append(theme)
                             break
@@ -709,7 +752,12 @@ class SearchResult(object):
         return books.values()
 
     def __cmp__(self, other):
-        return cmp(self.score, other.score)
+        c = cmp(self.score, other.score)
+        if c == 0:
+            # this is inverted, because earlier date is better
+            return cmp(other.published_date, self.published_date)
+        else:
+            return c
 
 
 class Hint(object):
@@ -930,7 +978,7 @@ class Search(IndexStore):
             filters.append(self.term_filter(Term('is_book', 'true')))
         top = self.searcher.search(query, self.chain_filters(filters), max_results)
 
-        return [SearchResult(self.searcher, found, snippets=(snippets and self.get_snippets(found, query) or None)) for found in top.scoreDocs]
+        return [SearchResult(self, found, snippets=(snippets and self.get_snippets(found, query) or None), searched=searched) for found in top.scoreDocs]
 
     def search_some(self, searched, fields, book=True, max_results=20, fuzzy=False,
                     filters=None, tokens_cache=None, boost=None):
@@ -950,7 +998,8 @@ class Search(IndexStore):
 
         top = self.searcher.search(query, self.chain_filters(filters), max_results)
 
-        return [SearchResult(self.searcher, found, searched=searched, tokens_cache=tokens_cache, snippets=self.get_snippets(found, query)) for found in top.scoreDocs]
+        return [SearchResult(self, found, searched=searched, tokens_cache=tokens_cache,
+                             snippets=self.get_snippets(found, query)) for found in top.scoreDocs]
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
         """
@@ -973,7 +1022,7 @@ class Search(IndexStore):
                 self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
                 max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found, how_found="search_perfect_book"))
+                books.append(SearchResult(self, found, how_found="search_perfect_book"))
         return books
 
     def search_book(self, searched, max_results=20, fuzzy=False, hint=None):
@@ -999,7 +1048,7 @@ class Search(IndexStore):
                                    self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
             max_results)
         for found in top.scoreDocs:
-            books.append(SearchResult(self.searcher, found, how_found="search_book"))
+            books.append(SearchResult(self, found, how_found="search_book"))
 
         return books
 
@@ -1021,7 +1070,7 @@ class Search(IndexStore):
                                                            flt]),
                                        max_results)
             for found in top.scoreDocs:
-                books.append(SearchResult(self.searcher, found, snippets=self.get_snippets(found, q), how_found='search_perfect_parts'))
+                books.append(SearchResult(self, found, snippets=self.get_snippets(found, q), how_found='search_perfect_parts'))
 
         return books
 
@@ -1054,7 +1103,7 @@ class Search(IndexStore):
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
-            books.append(SearchResult(self.searcher, found, how_found='search_everywhere_themesXcontent'))
+            books.append(SearchResult(self, found, how_found='search_everywhere_themesXcontent', searched=searched))
             print "* %s theme x content: %s" % (searched, books[-1]._hits)
 
         # query themes/content x author/title/tags
@@ -1073,7 +1122,7 @@ class Search(IndexStore):
 
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
-            books.append(SearchResult(self.searcher, found, how_found='search_everywhere'))
+            books.append(SearchResult(self, found, how_found='search_everywhere', searched=searched))
             print "* %s scatter search: %s" % (searched, books[-1]._hits)
 
         return books
