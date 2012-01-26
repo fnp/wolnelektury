@@ -2,7 +2,7 @@
 .hasCountdown {
 	/*border: 1px solid #ccc;
 	background-color: #eee;*/
-	margin: 20px 0 50px 0;
+	margin: 1em 0 7em 0;
 }
 .countdown_rtl {
 	direction: rtl;
@@ -44,8 +44,8 @@
 	text-align: center;
 }
 .countdown_amount {
-	font-size: 350%;
-	line-height: 32px;
+	font-size: 3.5em;
+	line-height: 1.4em;
 }
 .countdown_descr {
 	display: block;

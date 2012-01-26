@@ -31,7 +31,7 @@
 
             <div id="tagline">
                 <span>
-                {% cache 300 tagline LANGUAGE_CODE %}
+                {% cache 60 tagline LANGUAGE_CODE %}
                     {% url book_list as b %}
                     {% url book_list as r %}
                         {% count_books book_count %}
@@ -96,7 +96,7 @@
         <div id="main-content">
 
             <div id="nav-line">
-            	{% cache 300 catalogue-menu LANGUAGE_CODE %}
+            	{% cache 60 catalogue-menu LANGUAGE_CODE %}
             		{% catalogue_menu %}
             	{% endcache %}
 

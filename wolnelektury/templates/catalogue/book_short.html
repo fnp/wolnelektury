@@ -45,27 +45,26 @@
             <div class="title"><a href="{{ main_link }}">{{ book.title }}</a></div>
         </div>
         <div class="tags">
-            {% spaceless %}
-
-            <span class="mono">{% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for name, slug in related.tags.epoch %}
-                    <a href="{% tag_url 'epoch' slug %}">{{ name }} </a>
+            <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
+            	{% for name, slug in related.tags.epoch %}
+            		<a href="{% tag_url 'epoch' slug %}">{{ name }}</a>
+            		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
                 {% endfor %}
             </span>
 
-            <span class="mono">{% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for name, slug in related.tags.kind %}
-                    <a href="{% tag_url 'kind' slug %}">{{ name }} </a>
+            <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
+            	{% for name, slug in related.tags.kind %}
+            		<a href="{% tag_url 'kind' slug %}">{{ name }}</a>
+            		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
                 {% endfor %}
             </span>
 
-            <span class="mono">{% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for name, slug in related.tags.genre %}
-                    <a href="{% tag_url 'genre' slug %}">{{ name }} </a>
+            <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
+            	{% for name, slug in related.tags.genre %}
+            		<a href="{% tag_url 'genre' slug %}">{{ name }}</a>
+            		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
                 {% endfor %}
             </span>
-
-            {% endspaceless %}
 
             {% shelf_tags book %}
         </div>

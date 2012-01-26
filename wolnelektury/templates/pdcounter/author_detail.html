@@ -8,9 +8,10 @@
 {% block bodyid %}author-detail{% endblock %}
 
 {% block body %}
-    <h1>{{ author.name }}</h1>
 
-    <div id="books-list">
+    <div class="left-column">
+    <h1>{{ author.name }}</h1>
+	<div class="normal-text white-box">
         {% if author.has_description %}
             <div id="description">
                 <div id='description-long'>{{ author.description|safe }}</div>
@@ -46,8 +47,9 @@
         {% endif %}
         {% include "info/join_us.html" %}
     </div>
+    </div>
 
-    <div class="column-right block-form">
+    <div class="right-column block-form">
         {% include "publishing_suggest.html" %}
     </div>
 {% endblock %}

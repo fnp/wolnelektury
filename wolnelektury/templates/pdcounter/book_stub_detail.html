@@ -8,9 +8,10 @@
 {% block bodyid %}book-stub-detail{% endblock %}
 
 {% block body %}
+    <div class="left-column">
     <h1>{{ book.author }}, {{ book.title }}</h1>
+	<div class="normal-text white-box">
 
-    <div id="books-list">
     {% if book.in_pd %}
 		<p>{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
 	{% else %}
@@ -25,8 +26,9 @@
 	{% endif %}
     {% include "info/join_us.html" %}
     </div>
+    </div>
 
-    <div class="column-right block-form">
+    <div class="right-column block-form">
         {% include "publishing_suggest.html" %}
     </div>
 {% endblock %}

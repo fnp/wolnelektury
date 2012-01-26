@@ -52,7 +52,7 @@
 
     <div class="infopages-box">
         <h2><span class='mono'>Informacje</span></h2>
-        {% cache 300 infopages-on-main LANGUAGE_CODE %}
+        {% cache 60 infopages-on-main LANGUAGE_CODE %}
             {% infopages_on_main %}
         {% endcache %}
 
