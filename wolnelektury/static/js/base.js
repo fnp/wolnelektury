@@ -61,6 +61,23 @@
 
 
 
+		(function() {
+			var $current = null;
+			$('.hidden-box-wrapper').each(function() {
+				var $hidden = $('.hidden-box', this);
+				$('.hidden-box-trigger', this).click(function(event) {
+					event.preventDefault();
+					if ($current == $hidden) {
+						$current = null;
+						$hidden.hide('fast');
+					} else {
+						$current && $current.hide('fast');
+						$hidden.show('fast');
+						$current = $hidden;
+					} 
+				});
+			});
+		})();
 
 
 

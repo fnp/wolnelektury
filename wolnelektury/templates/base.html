@@ -31,7 +31,7 @@
 
             <div id="tagline">
                 <span>
-                {% cache 300 tagline %}
+                {% cache 300 tagline LANGUAGE_CODE %}
                     {% url book_list as b %}
                     {% url book_list as r %}
                         {% count_books book_count %}
@@ -96,16 +96,9 @@
         <div id="main-content">
 
             <div id="nav-line">
-            <ul id="catalogue">
-                <li><a href="{% url catalogue %}#autorzy"><span class='mono'>{% trans "Authors" %}</span></a></li>
-                <li><a href="{% url catalogue %}#gatunki"><span class='mono'>{% trans "Genres" %}</span></a></li>
-                <li><a href="{% url catalogue %}#rodzaje"><span class='mono'>{% trans "Kinds" %}</span></a></li>
-                <li><a href="{% url catalogue %}#epoki"><span class='mono'>{% trans "Epochs" %}</span></a></li>
-                <li><a href="{% url catalogue %}#motywy"><span class='mono'>{% trans "Themes" %}</span></a></li>
-                <li><a href="{% url book_list %}"><span class='mono'>{% trans "All books" %}</span></a></li>
-                <li><a href="{% url audiobook_list %}"><span class='mono'>{% trans "Audiobooks" %}</span></a></li>
-                <li><a href="{% url daisy_list %}"><span class='mono'>{% trans "DAISY" %}</span></a></li>
-            </ul>
+            	{% cache 300 catalogue-menu LANGUAGE_CODE %}
+            		{% catalogue_menu %}
+            	{% endcache %}
 
             <form action="{% url django.views.i18n.set_language %}" method="post">
             <div id="lang-menu">

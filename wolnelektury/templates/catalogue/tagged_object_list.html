@@ -46,9 +46,10 @@
     </div>
 
     {% if categories.theme %}
-        <div id="themes-list-wrapper">
-            <p><a href="#" id="themes-list-toggle" class="mono">{% trans "Motifs and themes" %}</a></p>
-            <div id="themes-list">
+        <div class="hidden-box-wrapper">
+            <p><a href="#" class="hidden-box-trigger theme-list-link" class="mono">
+            	{% trans "Motifs and themes" %}</a></p>
+            <div class="hidden-box">
                 {% tag_list categories.theme tags %}
             </div>
         </div>

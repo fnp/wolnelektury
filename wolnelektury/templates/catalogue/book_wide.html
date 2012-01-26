@@ -9,10 +9,10 @@
 
 {% block book-box-extra-info %}
 {% if themes %}
-    <div id="themes-list-wrapper">
-        <p><a class="mono" id="themes-list-toggle"
+    <div class="hidden-box-wrapper" id="theme-list-wrapper">
+        <p><a class="mono hidden-box-trigger theme-list-link"
                 href="#">{% trans "motifs and themes" %}</a></p>
-        <div id="themes-list">
+        <div class="hidden-box">
             <ul>
             {% for theme in themes %}
                 <li><a href="{% url book_fragments book.slug theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>

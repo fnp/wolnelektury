@@ -358,6 +358,15 @@ def related_books(book, limit=6):
     }
 
 
+@register.inclusion_tag('catalogue/menu.html')
+def catalogue_menu():
+    tags = Tag.objects.filter(
+            category__in=('author', 'epoch', 'genre', 'kind', 'theme')
+        ).exclude(book_count=0)
+    return split_tags(tags)
+    
+
+
 @register.simple_tag
 def tag_url(category, slug):
     return reverse('catalogue.views.tagged_object_list', args=[

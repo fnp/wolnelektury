@@ -137,16 +137,16 @@
     height: 4.9em;
 }
 
-ul#catalogue {
+ul#menu {
     list-style: none;
     padding: 0;
     margin: 0 0 0 .6em;
 }
-ul#catalogue li {
+li.menu {
     background-color: #e2e2e2;
     float: left;
 }
-ul#catalogue a {
+a.menu {
     display: block;
     padding-left: 1.4em;
     padding-right: 1.4em;
@@ -154,7 +154,7 @@ ul#catalogue a {
     height: 3.1em;
     padding-top: 1.8em;
 }
-ul#catalogue span {
+a.menu span {
     font-size: 1.1em;
 }
 
