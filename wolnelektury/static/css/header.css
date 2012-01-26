@@ -27,6 +27,7 @@
 
 #half-header-content {
     background: #191919;
+    color: #989898;
 }
 
 
@@ -58,6 +59,7 @@
 #search-area {
     margin: 0;
     background: #444;
+    color: white;
     margin-left: 24em;
     width: 73.5em;
 }
@@ -108,6 +110,7 @@
 #search-button {
     display: inline-block;
     background: #02adb7;
+    color: white;
     padding: 0;
     margin: 0;
     width: 9.4em;
