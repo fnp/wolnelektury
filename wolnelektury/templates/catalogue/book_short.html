@@ -40,8 +40,7 @@
                 {% for name, slug in related.tags.author %}
                     <a href="{% tag_url 'author' slug %}">{{ name }}</a>{% if not forloop.last %},
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
-                    <a href="{% url book_detail slug %}">{{ title }}</a>
-                {% endfor %}
+                    <a href="{% url book_detail slug %}">{{ title }}</a>{% endfor %}
             </div>
             <div class="title"><a href="{{ main_link }}">{{ book.title }}</a></div>
         </div>
@@ -72,8 +71,6 @@
         </div>
     </div>
 
-    {% block book-box-extra-info %}{% endblock %}
-
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
@@ -103,6 +100,7 @@
         {% endif %}
         </li>
     </ul>
+    {% block book-box-extra-info %}{% endblock %}
     {% block box-append %}
     {% endblock %}
     <div class="clearboth"></div>

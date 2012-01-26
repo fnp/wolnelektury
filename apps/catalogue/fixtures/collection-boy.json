@@ -3,7 +3,7 @@
         "pk": "promo",
         "model": "chunks.chunk",
         "fields": {
-            "content": "<h2>Biblioteczka Boya</h2>\r\n\r\n<p>T\u0142umaczenia literatury francuskiej i nie tylko.</p>\r\n\r\n<p class=\"see-more\"><a href=\"/katalog/lektury/boy/\" >Biblioteczka Boya \u21d2</a></p>",
+            "content": "<div class=\"grid-line\" id=\"promo-box-header\"><h2 class=\"mono\">\r\n\r\n\r\nOh Boy!\r\n\r\n\r\n</h2></div><div id=\"promo-box-body\" class=\"accent4\"><p id=\"promo-box-title\" class=\"mono\"><span>\r\n\r\n\r\nBiblioteczka Boya\r\n\r\n\r\n</span></p><div id=\"promo-box-content\">\r\n\r\n\r\n<p>T\u0142umaczenia literatury francuskiej i nie tylko.</p>\r\n\r\n<p class=\"see-more\"><a href=\"/katalog/lektury/boy/\" >Biblioteczka Boya \u21d2</a></p>\r\n\r\n\r\n</div></div>",
             "description": "boks promocyjny na g\u0142\u00f3wnej"
         }
     },

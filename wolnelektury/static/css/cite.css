@@ -4,16 +4,19 @@ a.cite {
     background: white;
     padding: 3em 2em .1em 8em;
 }
-.cite-body {
+.book-wide-box .cite-body,
+#tagged-object-list .cite-body
+ {
     font-size: 1.8em;
     line-height: 1.3em;
 }
-.cite p {
+.book-wide-box .source,
+#tagged-object-list .source
+{
     color: #444;
     font-size: 1.1em;
     margin-top: 1.6em;
 }
-
 .cite .vip {
     margin: 0;
     color: #575C63;
@@ -21,16 +24,27 @@ a.cite {
 }
 
 
+/* a long cite displays smaller */ 
+.cite-small .cite-body span {
+	font-size: 1.4em;
+}
+
 
 
 #big-cite {
-    background-color: white;
+    background-color: #5f3e1c; /* average image color */
+    color: white;
     padding: 0;
     margin: 0;
+    background-image: url(/static/img/backdrop/boltron-3212284622.jpg);
+    background-size: 100%;
+    background-position: 50% 50%;
 }
 
 #big-cite .cite {
-    padding: 10.75em 10em 8.5em 18.2em;
+    padding: 4.6em 4em 4.8em 0;
+    background: none;
+    color: white;
 }
 
 #big-cite h2 {
@@ -41,19 +55,49 @@ a.cite {
 
 
 #big-cite .cite-body {
-    margin: .05em;
-    font-size: 2.8em;
-    line-height: 1.2em;
-    color: #191919;
+    margin: .05em .05em .05em 17.5em;
+}
+#big-cite .cite-body span {
+    font-size: 3em;
+    line-height: 1.16em;
+}
+
+#big-cite .vip {
+	float:left;
+	text-align:right;
+	width: 14.7em;
+	margin-top: .25em;
+}
+
+#big-cite .vip span {
+	font-size:1.1em;
+}
+
+#big-cite .cite-body span,
+#big-cite .vip span,
+#big-cite .source span
+{
+	color: white;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.6);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+/* a long cite displays smaller */ 
+#big-cite .cite-small .cite-body span {
+	font-size: 2em;
 }
 
 
 #big-cite .source {
-    color: #00a1ac;
-    margin: 0;
-    font-size: 1.1em;
-    margin: 1.1em 0.2em;
+    margin: 1.6em 0.2em 1.6em 17.5em;
 }
+#big-cite .source span {
+    font-size: 1.1em;
+}
+
 
 
 
@@ -72,7 +116,7 @@ a.cite {
     top: -0.8em;
     right: -1em;
     background-color: #f7f7f7;
-    vertical-align: center;
+    vertical-align: middle;
     width: 39.5em;
     margin: 0;
     padding: 1em;

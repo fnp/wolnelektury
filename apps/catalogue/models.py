@@ -24,7 +24,7 @@ from django.conf import settings
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
-from catalogue.utils import create_zip, split_tags
+from catalogue.utils import create_zip, split_tags, truncate_html_words
 from catalogue.tasks import touch_tag, index_book
 from shutil import copy
 from glob import glob
@@ -565,7 +565,6 @@ class Book(models.Model):
 
 
     def build_html(self):
-        from markupstring import MarkupString
         from django.core.files.base import ContentFile
         from slughifi import slughifi
         from librarian import html
@@ -609,10 +608,9 @@ class Book(models.Model):
                     continue
 
                 text = fragment.to_string()
-                short_text = ''
-                markup = MarkupString(text)
-                if (len(markup) > 240):
-                    short_text = unicode(markup[:160])
+                short_text = truncate_html_words(text, 15)
+                if text == short_text:
+                    short_text = ''
                 new_fragment = Fragment.objects.create(anchor=fragment.id, book=self,
                     text=text, short_text=short_text)
 
@@ -1002,6 +1000,10 @@ class Fragment(models.Model):
         cache_key = "Fragment.short_html/%d/%s"
         for lang, langname in settings.LANGUAGES:
             permanent_cache.delete(cache_key % (self.id, lang))
+
+    def get_short_text(self):
+        """Returns short version of the fragment."""
+        return self.short_text if self.short_text else self.text
 
     def short_html(self):
         if self.id:

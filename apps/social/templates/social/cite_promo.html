@@ -1,14 +1,14 @@
 {% load i18n %}
 
 {% if cite %}
-<a href="{{ cite.get_absolute_url }}" class="cite">
+<a href="{{ cite.link }}" class="cite{% if cite.small %} cite-small{% endif %}">
     {% if cite.vip %}
-        <p class='vip mono'>{{ cite.vip }} {% trans "recommends" %}:</p>
+        <p class='vip mono'><span>{{ cite.vip }} {% trans "recommends" %}:</span></p>
     {% endif %}
     <blockquote class="cite-body">
-        {{ cite.text|linebreaks|safe }}
+        <span>{{ cite.text|linebreaksbr|safe }}</span>
     </blockquote>
-    <p class="source mono">{{ cite.book.pretty_title }}</p>
+    <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
 </a>
 {% else %}
     {% if fallback %}

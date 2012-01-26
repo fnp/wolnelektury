@@ -12,20 +12,27 @@ register = template.Library()
 register.filter('likes', likes)
 
 
-@register.inclusion_tag('social/cite_promo.html')
-def cite_promo(ctx=None, fallback=False):
+@register.inclusion_tag('social/cite_promo.html', takes_context=True)
+def cite_promo(context, ctx=None, fallback=False):
     """Choose"""
-    if ctx is None:
-        cites = Cite.objects.all()
-    elif isinstance(ctx, Book):
-        cites = ctx.cite_set.all()
-        if not cites.exists():
-            cites = cites_for_tags([ctx.book_tag()])
-    else:
-        cites = cites_for_tags(ctx)
+    try:
+        request = context['request']
+        assert request.user.is_staff
+        assert 'choose_cite' in request.GET
+        cite = Cite.objects.get(pk=request.GET['choose_cite'])
+    except AssertionError, Cite.DoesNotExist:
+        if ctx is None:
+            cites = Cite.objects.all()
+        elif isinstance(ctx, Book):
+            cites = ctx.cite_set.all()
+            if not cites.exists():
+                cites = cites_for_tags([ctx.book_tag()])
+        else:
+            cites = cites_for_tags(ctx)
+        cite = cites.order_by('?')[0] if cites.exists() else None
 
     return {
-        'cite': cites.order_by('?')[0] if cites.exists() else None,
+        'cite': cite,
         'fallback': fallback,
         'ctx': ctx,
     }

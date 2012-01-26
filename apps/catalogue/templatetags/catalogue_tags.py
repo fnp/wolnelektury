@@ -363,18 +363,3 @@ def tag_url(category, slug):
     return reverse('catalogue.views.tagged_object_list', args=[
         '/'.join((Tag.categories_dict[category], slug))
     ])
-
-
-@register.filter
-@stringfilter
-def removewholetags(value, tags):
-    """Removes a space separated list of [X]HTML tags from the output.
-
-    FIXME: It makes the assumption the removed tags aren't nested.
-
-    """
-    tags = [re.escape(tag) for tag in tags.split()]
-    tags_re = u'(%s)' % u'|'.join(tags)
-    tag_re = re.compile(ur'<%s[^>]*>.*?</\s*\1\s*>' % tags_re, re.U)
-    value = tag_re.sub(u'', value)
-    return value

@@ -7,4 +7,8 @@ from django.contrib import admin
 from social.models import Cite
 
 
-admin.site.register(Cite)
+class CiteAdmin(admin.ModelAdmin):
+    list_display = ['text', 'vip', 'small']
+
+
+admin.site.register(Cite, CiteAdmin)
