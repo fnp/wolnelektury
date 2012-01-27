@@ -31,7 +31,7 @@
                 <span>
                 {% cache 60 tagline LANGUAGE_CODE %}
                     {% url book_list as b %}
-                    {% url book_list as r %}
+                    {% url infopage 'o-projekcie' as r %}
                         {% count_books book_count %}
                     {% blocktrans count book_count as c %}
                     <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>

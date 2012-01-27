@@ -46,6 +46,8 @@
         </div>
 
         <div class="tags">
+        	{% spaceless %}
+
             <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
             	{% for name, slug in related.tags.epoch %}
             		<a href="{% tag_url 'epoch' slug %}">{{ name }}</a>
@@ -67,6 +69,7 @@
                 {% endfor %}
             </span>
 
+           {% endspaceless %}
         </div>
     </div>
     {% shelf_tags book %}

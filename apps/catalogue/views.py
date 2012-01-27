@@ -16,6 +16,7 @@ from django.utils.datastructures import SortedDict
 from django.utils.http import urlquote_plus
 from django.utils import translation
 from django.utils.translation import ugettext as _
+from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import JSONResponse, AjaxableFormView
 
@@ -95,6 +96,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
                 context_instance=RequestContext(request))
 
 
+@never_cache
 def tagged_object_list(request, tags=''):
     try:
         tags = models.Tag.get_tag_list(tags)
@@ -202,6 +204,7 @@ def book_fragments(request, slug, theme_slug):
         context_instance=RequestContext(request))
 
 
+@never_cache
 def book_detail(request, slug):
     try:
         book = models.Book.objects.get(slug=slug)
