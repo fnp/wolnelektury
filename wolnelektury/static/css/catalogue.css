@@ -112,8 +112,12 @@
 	margin-bottom: .5em;
 }
 .inline-body ul {
-	-moz-column-width: 11em;
+	a-moz-column-width: 11em;
 	list-style: none;
 	padding: 0;
 	margin: 0;
+}
+.inline-body li {
+	display: inline;
+	margin-right: 1em;
 }

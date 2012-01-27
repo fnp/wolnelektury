@@ -140,7 +140,7 @@ h2 {
     position: absolute;
     display: none;
     border: 1px solid #ddd;
-    padding: 1em;
+    padding: 1em 1em .5em 1em;
     background: #fff;
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
@@ -154,6 +154,9 @@ h2 {
     font-size: 1.1em;
     -moz-column-width: 12em;
     width: 48em;
+}
+.hidden-box li {
+	margin-bottom: .5em;
 }
 
 
