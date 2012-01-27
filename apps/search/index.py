@@ -642,7 +642,7 @@ class SearchResult(object):
             raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
         self._hits += other._hits
         if other.score > self.score:
-            self.score = other.score
+            self._score = other._score
         return self
 
     def get_book(self):
@@ -714,7 +714,6 @@ class SearchResult(object):
                 tokens = self.search.get_tokens(self.searched, 'POLISH', cached=self.tokens_cache)
                 for theme in themes:
                     name_tokens = self.search.get_tokens(theme.name, 'POLISH')
-                    print "THEME HIT: %s in %s" % (tokens, name_tokens)
                     for t in tokens:
                         if t in name_tokens:
                             if not theme in themes_hit:
@@ -967,13 +966,13 @@ class Search(IndexStore):
         return q
 
     def search_phrase(self, searched, field, book=True, max_results=20, fuzzy=False,
-                      filters=None, tokens_cache=None, boost=None, snippets=False):
+                      filters=None, tokens_cache=None, boost=None, snippets=False, slop=2):
         if filters is None: filters = []
         if tokens_cache is None: tokens_cache = {}
 
         tokens = self.get_tokens(searched, field, cached=tokens_cache)
 
-        query = self.make_phrase(tokens, field=field, fuzzy=fuzzy)
+        query = self.make_phrase(tokens, field=field, fuzzy=fuzzy, slop=slop)
         if book:
             filters.append(self.term_filter(Term('is_book', 'true')))
         top = self.searcher.search(query, self.chain_filters(filters), max_results)
@@ -981,7 +980,7 @@ class Search(IndexStore):
         return [SearchResult(self, found, snippets=(snippets and self.get_snippets(found, query) or None), searched=searched) for found in top.scoreDocs]
 
     def search_some(self, searched, fields, book=True, max_results=20, fuzzy=False,
-                    filters=None, tokens_cache=None, boost=None):
+                    filters=None, tokens_cache=None, boost=None, snippets=True):
         if filters is None: filters = []
         if tokens_cache is None: tokens_cache = {}
 
@@ -999,7 +998,7 @@ class Search(IndexStore):
         top = self.searcher.search(query, self.chain_filters(filters), max_results)
 
         return [SearchResult(self, found, searched=searched, tokens_cache=tokens_cache,
-                             snippets=self.get_snippets(found, query)) for found in top.scoreDocs]
+                             snippets=(snippets and self.get_snippets(found, query) or None)) for found in top.scoreDocs]
 
     def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
         """

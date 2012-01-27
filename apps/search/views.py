@@ -137,20 +137,25 @@ def main(request):
                 b2.boost *= 1.1
             if bks is []:
                 author_title_rest.append(b)
-        
-        text_phrase = SearchResult.aggregate(srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False))
-        
+
+        # Do a phrase search but a term search as well - this can give us better snippets then search_everywhere,
+        # Because the query is using only one field.
+        text_phrase = SearchResult.aggregate(
+            srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False, slop=4),
+            srch.search_some(toks, ['content'], tokens_cache=tokens_cache, snippets=True, book=False))
+
         everywhere = srch.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache)
 
         def already_found(results):
             def f(e):
                 for r in results:
                     if e.book_id == r.book_id:
+                        e.boost = 0.9
                         results.append(e)
                         return True
                 return False
             return f
-        f = already_found(author_results + title_results)
+        f = already_found(author_results + title_results + text_phrase)
         everywhere = filter(lambda x: not f(x), everywhere)
 
         author_results = SearchResult.aggregate(author_results)

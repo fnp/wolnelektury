@@ -36,7 +36,7 @@ def book_searched(context, result):
     # We don't need hits which lead to sections but do not have
     # snippets.
     hits = filter(lambda h: 'fragment' in h or
-                  h['snippets'], result.hits)
+                  h['snippets'], result.hits)[0:5]
 
     for hit in hits:
         hit['snippets'] = map(lambda s: s.replace("\n", "<br />").replace('---', '&mdash;'), hit['snippets'])
@@ -49,3 +49,4 @@ def book_searched(context, result):
         'hits': hits,
         'main_link': book.get_absolute_url(),
     }
+
