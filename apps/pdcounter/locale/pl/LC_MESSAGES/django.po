@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 13:52+0000\n"
-"PO-Revision-Date: 2010-08-25 11:02\n"
-"Last-Translator: <radek.czajka@gmail.com>\n"
+"POT-Creation-Date: 2012-01-27 16:40+0100\n"
+"PO-Revision-Date: 2012-01-27 16:40+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,15 +21,17 @@ msgstr ""
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:13 models.py:64
+#: models.py:13
+#: models.py:64
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
 #: models.py:14
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models.py:15 models.py:41
+#: models.py:15
+#: models.py:41
 msgid "description"
 msgstr "opis"
 
@@ -37,7 +39,8 @@ msgstr "opis"
 msgid "year of death"
 msgstr "rok śmierci"
 
-#: models.py:22 models.py:62
+#: models.py:22
+#: models.py:62
 msgid "author"
 msgstr "autor"
 
@@ -57,15 +60,13 @@ msgstr "trafia do domeny publicznej"
 msgid "translator"
 msgstr "tłumacz"
 
-#: models.py:66
-msgid "year of translator's death"
-msgstr "rok śmierci tłumacza"
-
-#: models.py:70
+#: models.py:69
 msgid "book stub"
 msgstr "zapowiedź książki"
 
-#: models.py:71
+#: models.py:70
 msgid "book stubs"
 msgstr "zapowiedzi książek"
 
+#~ msgid "year of translator's death"
+#~ msgstr "rok śmierci tłumacza"

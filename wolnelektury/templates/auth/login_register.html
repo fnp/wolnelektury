@@ -6,7 +6,8 @@
 
 <h1>{% trans "or register" %}:</h1>
 
-<form action="{% url register %}" method="post" accept-charset="utf-8" class="cuteform">
+<form action="{% url register %}" method="post" accept-charset="utf-8"
+	class="cuteform hidelabels">
 <ol>
     <div id="id_register-__all__"></div>
     {{ register_form.as_ul }}

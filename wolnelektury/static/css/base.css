@@ -34,6 +34,9 @@ h1 {
     font-weight: normal;
     margin-top: .4em
 }
+h1 a {
+	color: inherit;
+}
 
 ul.plain {
     list-style:none;
@@ -137,7 +140,7 @@ h2 {
     position: absolute;
     display: none;
     border: 1px solid #ddd;
-    padding: 1em;
+    padding: 1em 1em .5em 1em;
     background: #fff;
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
@@ -151,6 +154,9 @@ h2 {
     font-size: 1.1em;
     -moz-column-width: 12em;
     width: 48em;
+}
+.hidden-box li {
+	margin-bottom: .5em;
 }
 
 
@@ -178,6 +184,12 @@ h2 {
     font-size: 1.1em;
 }
 
+.pagination {
+	display: block;
+	font-size: 1.2em;
+	padding: .5em;
+	text-align:center;
+}
 
 #footer {
     color: #767676;

@@ -3,7 +3,9 @@
 {% if one_tag %}
     {% trans "See full category" %} <a href="{% catalogue_url one_tag %}">{{ one_tag }}</a>
 {% else %}
+	<ul>
     {% for tag in tags %}
-        <a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.book_count }})</a>
+        <li><a href="{% catalogue_url choices tag %}">{{ tag }}&nbsp;({{ tag.book_count }})</a></li>
     {% endfor %}
+    </ul>
 {% endif %}

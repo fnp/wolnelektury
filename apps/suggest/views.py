@@ -18,6 +18,7 @@ class PublishingSuggestionFormView(AjaxableFormView):
 
 class SuggestionFormView(AjaxableFormView):
     form_class = forms.SuggestForm
+    placeholdize = True
     title = _('Report a bug or suggestion')
     submit = _('Send report')
     success_message = _('Report was sent successfully.')

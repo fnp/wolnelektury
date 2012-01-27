@@ -46,6 +46,7 @@ def my_shelf(request):
 
 class ObjectSetsFormView(AjaxableFormView):
     form_class = forms.ObjectSetsForm
+    placeholdize = True
     template = 'social/sets_form.html'
     ajax_redirect = True
     POST_login = True

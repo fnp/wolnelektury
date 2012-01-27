@@ -14,8 +14,8 @@ class SearchForm(forms.Form):
     def __init__(self, source, *args, **kwargs):
         kwargs['auto_id'] = False
         super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['q'].widget.attrs['id'] = _('search')
-        self.fields['q'].widget.attrs['autocomplete'] = _('off')
-        self.fields['q'].widget.attrs['data-source'] = _(source)
+        self.fields['q'].widget.attrs['id'] = 'search'
+        self.fields['q'].widget.attrs['autocomplete'] = 'off'
+        self.fields['q'].widget.attrs['data-source'] = source
         if not 'q' in self.data:
             self.fields['q'].widget.attrs['title'] = _('title, author, theme/topic, epoch, kind, genre, phrase')

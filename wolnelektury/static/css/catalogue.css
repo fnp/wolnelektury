@@ -72,3 +72,52 @@
 .catalogue-catalogue ul {
     -moz-column-width: 30em;
 }
+
+
+#description {
+	margin-bottom: 2em;
+}
+#description dl {
+	margin-top: 0;
+}
+#description dt {
+	display: inline;
+	font-weight: bold;
+	margin: 0;
+}
+#description dd {
+	display: inline;
+	margin: 0;
+}
+#description .meta {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#description .meta li {
+	text-align:right;
+	color: #666;
+	font-size: .9em;
+}
+
+.inline-header {
+	display: inline-block;
+	vertical-align: top;
+	width: 7em;
+}
+.inline-body {
+	width: 35em;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: .5em;
+}
+.inline-body ul {
+	a-moz-column-width: 11em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.inline-body li {
+	display: inline;
+	margin-right: 1em;
+}

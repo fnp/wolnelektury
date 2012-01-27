@@ -4,17 +4,11 @@
 #
 import datetime
 import feedparser
-import re
 
 from django import template
-from django.template import Node, Variable
-from django.utils.encoding import smart_str
-from django.core.cache import get_cache
+from django.template import Node, Variable, Template, Context
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.db.models import Q
-from django.conf import settings
-from django.template.defaultfilters import stringfilter
 from django.utils.translation import ugettext as _
 
 from catalogue import forms
@@ -50,6 +44,15 @@ def capfirst(text):
     except IndexError:
         return ''
 
+
+@register.simple_tag
+def html_title_from_tags(tags):
+    if len(tags) < 2:
+        return title_from_tags(tags)
+    template = Template("{{ category }}: <a href='{{ tag.get_absolute_url }}'>{{ tag.name }}</a>")
+    return capfirst(",<br/>".join(
+        template.render(Context({'tag': tag, 'category': _(tag.category)})) for tag in tags))
+    
 
 
 def simple_title(tags):

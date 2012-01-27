@@ -1,4 +1,4 @@
-a.cite {
+.cite {
     display: block;
     color: black;
     background: white;
@@ -32,7 +32,7 @@ a.cite {
 
 
 #big-cite {
-    background-color: #5f3e1c; /* average image color */
+    background-color: #45321f; /* average image color */
     color: white;
     padding: 0;
     margin: 0;
@@ -95,7 +95,7 @@ a.cite {
     margin: 1.6em 0.2em 1.6em 17.5em;
 }
 #big-cite .source span {
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
 
@@ -120,4 +120,18 @@ a.cite {
     width: 39.5em;
     margin: 0;
     padding: 1em;
+}
+
+
+.Fragment-item .fragment {
+	color: black;
+	display: block;
+}
+.Fragment-item .toggle {
+	font-size: 1.1em;
+	display:block;
+	padding: .5em 0;
+}
+.Fragment-item {
+	margin-bottom: 2em;
 }
