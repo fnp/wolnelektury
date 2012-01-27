@@ -44,6 +44,7 @@
             </div>
             <div class="title"><a href="{{ main_link }}">{{ book.title }}</a></div>
         </div>
+
         <div class="tags">
             <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
             	{% for name, slug in related.tags.epoch %}
@@ -66,9 +67,9 @@
                 {% endfor %}
             </span>
 
-            {% shelf_tags book %}
         </div>
     </div>
+    {% shelf_tags book %}
 
     <ul class="book-box-tools">
         <li class="book-box-read">

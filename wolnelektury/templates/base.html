@@ -1,11 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 	{% load cache compressed i18n %}
     {% load catalogue_tags reporting_stats sponsor_tags %}
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Content-Style-Type" content="text/css" />
         <meta name="description" 
             content="{% block metadescription %}Darmowe opracowane, pełne teksty lektur, e-booki, audiobooki i pliki DAISY na wolnej licencji.{% endblock %}" />
         <title>{% block title %}{% trans "Wolne Lektury" %} :: 
@@ -76,12 +74,12 @@
 
             <form id="search-area" action="/fullsearch/">
                 
-                <span id="search-field" class="grid-line">
+                <div id="search-field" class="grid-line">
 		  {{search_form.q}}
 <!--                    <input title="np. Leśmian" name="q" autocomplete="off" data-source="/fullsearch/hint/">-->
-                </span><span id="search-button">
+                </div><div id="search-button">
                     <button type='submit'><span class="mono">{% trans "Search" %}</span></button>
-                </span>
+                </div>
                 
                 <div class="clearboth"></div>
             </form>

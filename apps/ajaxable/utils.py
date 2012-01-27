@@ -53,6 +53,12 @@ def require_login(request):
         return HttpResponseRedirect('/uzytkownicy/zaloguj')# next?=request.build_full_path())
 
 
+def placeholdized(form):
+    for field in form.fields.values():
+        field.widget.attrs['placeholder'] = field.label
+    return form
+
+
 class AjaxableFormView(object):
     """Subclass this to create an ajaxable view for any form.
 
@@ -60,6 +66,7 @@ class AjaxableFormView(object):
 
     """
     form_class = None
+    placeholdize = False
     # override to customize form look
     template = "ajaxable/form.html"
     submit = _('Send')
@@ -74,6 +81,7 @@ class AjaxableFormView(object):
     @method_decorator(vary_on_headers('X-Requested-With'))
     def __call__(self, request, *args, **kwargs):
         """A view displaying a form, or JSON if request is AJAX."""
+        #form_class = placeholdized(self.form_class) if self.placeholdize else self.form_class
         form_args, form_kwargs = self.form_args(request, *args, **kwargs)
         if self.form_prefix:
             form_kwargs['prefix'] = self.form_prefix
@@ -104,6 +112,8 @@ class AjaxableFormView(object):
                 else:
                     errors = form.errors
                 response_data = {'success': False, 'errors': errors}
+            else:
+                response_data = None
             if request.is_ajax():
                 return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
         else:
@@ -115,9 +125,12 @@ class AjaxableFormView(object):
             response_data = None
 
         template = self.template if request.is_ajax() else self.full_template
+        if self.placeholdize:
+            form = placeholdized(form)
         context = {
                 self.formname: form, 
                 "title": self.title,
+                "placeholdize": self.placeholdize,
                 "submit": self.submit,
                 "response_data": response_data,
                 "ajax_template": self.template,

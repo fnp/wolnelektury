@@ -73,11 +73,22 @@
     width: 100%;
 }
 
+.hidelabels label {
+	width: 1px;
+	height: 1px;
+	overflow:hidden;
+}
+
+
+
 #login-window {
     width: 26em;
 }
 #register-window {
     width: 26em;
+}
+#context-login-window {
+	width: 26em;
 }
 
 #suggest-window {

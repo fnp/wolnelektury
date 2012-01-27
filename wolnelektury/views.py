@@ -14,6 +14,7 @@ from django.views.decorators.cache import never_cache
 from django.conf import settings
 from ajaxable.utils import AjaxableFormView
 from catalogue.models import Book
+from ajaxable.utils import placeholdized
 
 
 def main_page(request):
@@ -25,6 +26,7 @@ def main_page(request):
 
 class LoginFormView(AjaxableFormView):
     form_class = AuthenticationForm
+    placeholdize = True
     title = _('Sign in')
     submit = _('Sign in')
     ajax_redirect = True
@@ -40,6 +42,7 @@ class LoginFormView(AjaxableFormView):
 
 class RegisterFormView(AjaxableFormView):
     form_class = UserCreationForm
+    placeholdize = True
     title = _('Register')
     submit = _('Register')
     ajax_redirect = True
@@ -51,7 +54,7 @@ class RegisterFormView(AjaxableFormView):
         return super(RegisterFormView, self).__call__(request)
 
     def success(self, form, request):
-        user = form.save()
+        form.save()
         user = auth.authenticate(
             username=form.cleaned_data['username'],
             password=form.cleaned_data['password1']
@@ -61,10 +64,11 @@ class RegisterFormView(AjaxableFormView):
 
 class LoginRegisterFormView(LoginFormView):
     template = 'auth/login_register.html'
+    title = _('You have to be logged in to continue')
 
     def extra_context(self):
         return {
-            "register_form": UserCreationForm(prefix='register'),
+            "register_form": placeholdized(UserCreationForm(prefix='register')),
             "register_submit": _('Register'),
         }
 

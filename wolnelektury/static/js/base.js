@@ -35,27 +35,23 @@
             $(this).addClass('short');
 
             if (button && short_text) button.html(short_text);
-            if (button) button.hover(
-                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-                function() { $(this).css({background: '#EEE'}); }
-            ).click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
-            short_el.hover(
-                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-                function() { $(this).css({background: '#FFF'}); }
-            ).click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
-            long_el.hover(
-                function() { $(this).css({background: '#F3F3F3', cursor: 'pointer'}); },
-                function() { $(this).css({background: '#FFF'}); }
-            ).click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
+            if (button) button.click(toggle_fun(cont, short_el, long_el, button, short_text, long_text));
         };
 
 
         // Fragments
-        $('.fragment-short-text').each(function() {
-            var fragment = $(this).closest('.fragment');
-            fragment.toggle_slide({
-                short_el: $(this),
-                long_el: fragment.find('.fragment-text')
+        $('.fragment-with-short').each(function() {
+            $(this).toggle_slide({
+                short_el: $('.fragment-short-text', this),
+                long_el: $('.fragment-long-text', this),
+                button: $('.toggle', this)
+            })
+        });
+        $('#description').each(function() {
+            $(this).toggle_slide({
+                short_el: $('#description-short', this),
+                long_el: $('#description-long', this),
+                button: $(this)
             })
         });
 

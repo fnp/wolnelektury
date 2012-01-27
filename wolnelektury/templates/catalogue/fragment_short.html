@@ -1,4 +1,34 @@
 {% load i18n %}
+
+<div class="cite {% if fragment.short_text %}fragment-with-short{% endif %}">
+	{% if fragment.short_text %}
+	<div class="fragment-short-text">
+    	<blockquote class="cite-body">
+			<a href="{{ fragment.get_absolute_url }}" class="fragment">
+		    	{{ fragment.short_text|safe }}
+			</a>
+	    </blockquote>
+		<a href="#" class="toggle mono">↓ {% trans "Expand fragment" %} ↓</a>
+    </div>
+    {% endif %}
+	<div class="fragment-long-text" {% if fragment.short_text %}style="display:none;"{% endif %}>
+    <blockquote class="cite-body fragment-text">
+		<a href="{{ fragment.get_absolute_url }}" class="fragment">
+        {{ fragment.text|safe }}
+		</a>
+    </blockquote>
+		{% if fragment.short_text %}
+		<a href="#" class="toggle mono">↑ {% trans "Hide fragment" %} ↑</a>
+		{% endif %}
+    </div>
+<p class="mono source">{{ fragment.book.pretty_title }}</p>
+</div>
+
+
+
+
+
+{% comment %}
 {% load catalogue_tags %}
 <div class="fragment">
     {% if fragment.short_text %}
@@ -19,3 +49,4 @@
     </div>
     <div class="clearboth"></div>
 </div>
+{% endcomment %}
