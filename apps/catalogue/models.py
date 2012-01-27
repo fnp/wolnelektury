@@ -763,7 +763,7 @@ class Book(models.Model):
             book_descendants += list(child_book.children.all())
 
         for tag in descendants_tags:
-            touch_tag.delay(tag)
+            touch_tag(tag)
 
         book.save()
 
@@ -1051,7 +1051,7 @@ def _tags_updated_handler(sender, affected_tags, **kwargs):
     # reset tag global counter
     # we want Tag.changed_at updated for API to know the tag was touched
     for tag in affected_tags:
-        touch_tag.delay(tag)
+        touch_tag(tag)
 
     # if book tags changed, reset book tag counter
     if isinstance(sender, Book) and \
