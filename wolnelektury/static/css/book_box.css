@@ -196,12 +196,13 @@
 }
 
 .book-box-tools {
-	width: 30em;
+	width: 46em;
     font-size: 1.1em;
 }
 
 .book-wide-box .book-box-tools {
     margin-left: 14em;
+    width: 32em;
 }
 
 .book-wide-box #theme-list-wrapper {
