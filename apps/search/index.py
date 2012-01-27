@@ -276,7 +276,7 @@ class Index(BaseIndex):
 
     footnote_tags = ['pa', 'pt', 'pr', 'pe']
 
-    skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne']
+    skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne', '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF']
 
     published_date_re = re.compile("([0-9]+)[\]. ]*$")
 
@@ -426,9 +426,8 @@ class Index(BaseIndex):
 
         fragments = {}
         snippets = Snippets(book.id).open('w')
-        position = 0
         try:
-            for header in list(master):
+            for header, position in zip(list(master), range(len(master))):
 
                 if header.tag in self.skip_header_tags:
                     continue
@@ -441,15 +440,15 @@ class Index(BaseIndex):
 
                 for start, end in walker(header, ignore_tags=self.ignore_content_tags):
                     # handle footnotes
-                    if start is not None and start.tag in self.footnote_tags:
-                        footnote = ' '.join(start.itertext())
-                    elif end is not None and footnote is not None and end.tag in self.footnote_tags:
-                        doc = add_part(snippets, header_index=position, header_type=header.tag,
-                                       content=footnote)
+                    # if start is not None and start.tag in self.footnote_tags:
+                    #     footnote = ' '.join(start.itertext())
+                    # elif end is not None and footnote is not None and end.tag in self.footnote_tags:
+                    #     doc = add_part(snippets, header_index=position, header_type=header.tag,
+                    #                    content=footnote)
 
-                        self.index.addDocument(doc)
+                    #     self.index.addDocument(doc)
 
-                        footnote = None
+                    #     footnote = None
 
                     # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
@@ -496,7 +495,6 @@ class Index(BaseIndex):
                                content=fix_format(content))
 
                 self.index.addDocument(doc)
-                position += 1
 
         finally:
             snippets.close()
