@@ -17,6 +17,7 @@ from catalogue.models import Book
 from ajaxable.utils import placeholdized
 
 
+@never_cache
 def main_page(request):
     last_published = Book.objects.exclude(html_file='').order_by('-created_at')[:4]
 
