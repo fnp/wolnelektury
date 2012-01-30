@@ -14,7 +14,7 @@
     {% with tags|last as last_tag %}
     {% if last_tag.has_description %}
         <div id="description" class="normal-text">
-            <div id='description-long' style="diplay:none">{{ last_tag.description|safe }}</div>
+            <div id='description-long' style="display:none">{{ last_tag.description|safe }}</div>
             <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:40 }}</div>
         </div>
     {% endif %}
@@ -64,6 +64,28 @@
             </div>
         </div>
     {% endif %}
+
+
+	{% if theme_is_set %}
+        <div class="see-also">
+            {% if last_tag.gazeta_link or last_tag.wiki_link %}
+            <h2 class='mono'>{% trans "See also" %}:</h2>
+            <ul>
+        {% if last_tag.gazeta_link %}
+        <li><a href="{{ last_tag.gazeta_link }}">
+        	{% trans "in Lektury.Gazeta.pl" %}
+        </a></li>
+        {% endif %}
+        {% if last_tag.wiki_link %}
+        <li><a href="{{ last_tag.wiki_link }}">
+			{% trans "in Wikipedia" %}
+        </a></li>
+        {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+
 
     </div>
     </div>

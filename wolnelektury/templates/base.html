@@ -72,9 +72,10 @@
 
 
 
-            <form id="search-area" action="/fullsearch/">
+            <form id="search-area" action="/fullsearch/" class="hidelabels">
                 
                 <div id="search-field" class="grid-line">
+                	<label for="search">{{search_form.q.label}}</label>
 		  {{search_form.q}}
 <!--                    <input title="np. Leśmian" name="q" autocomplete="off" data-source="/fullsearch/hint/">-->
                 </div><div id="search-button">

@@ -240,8 +240,6 @@ COMPRESS_JS = {
             'js/pdcounter.js',
 
             'js/search.js',
-
-            'js/jquery.labelify.js',
             ),
         'output_filename': 'js/base?.min.js',
     },

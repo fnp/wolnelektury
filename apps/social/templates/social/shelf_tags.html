@@ -1,4 +1,4 @@
-{% if tags %}
+{% if tags.exists %}
 <ul class='social-shelf-tags'>
     {% for tag in tags %}
         <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>

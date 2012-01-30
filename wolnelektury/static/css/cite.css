@@ -134,4 +134,10 @@
 }
 .Fragment-item {
 	margin-bottom: 2em;
+	/* white-box */
+	border: 1px solid #ddd;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
 }

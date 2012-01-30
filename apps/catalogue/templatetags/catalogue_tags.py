@@ -7,6 +7,7 @@ import feedparser
 
 from django import template
 from django.template import Node, Variable, Template, Context
+from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext as _
@@ -266,17 +267,14 @@ def latest_blog_posts(feed_url, posts_to_show=5):
 def tag_list(tags, choices=None):
     if choices is None:
         choices = []
-    if len(tags) == 1:
+    if len(tags) == 1 and tags[0].category not in [t.category for t in choices]:
         one_tag = tags[0]
     return locals()
 
+
 @register.inclusion_tag('catalogue/inline_tag_list.html')
 def inline_tag_list(tags, choices=None):
-    if choices is None:
-        choices = []
-    if len(tags) == 1:
-        one_tag = tags[0]
-    return locals()
+    return tag_list(tags, choices)
 
 
 @register.inclusion_tag('catalogue/book_info.html')
@@ -348,14 +346,23 @@ def fragment_promo(arg=None):
 
 
 @register.inclusion_tag('catalogue/related_books.html')
-def related_books(book, limit=6):
-    related = list(Book.objects.filter(
-        common_slug=book.common_slug).exclude(pk=book.pk)[:limit])
-    limit -= len(related)
-    if limit:
-        related += Book.tagged.related_to(book,
-                Book.objects.exclude(common_slug=book.common_slug),
-                ignore_by_tag=book.book_tag())[:limit]
+def related_books(book, limit=6, random=1):
+    cache_key = "catalogue.related_books.%d.%d" % (book.id, limit - random)
+    related = cache.get(cache_key)
+    if related is None:
+        print 'not in cache'
+        related = list(Book.objects.filter(
+            common_slug=book.common_slug).exclude(pk=book.pk)[:limit])
+        limit -= len(related)
+        if limit > random:
+            related += Book.tagged.related_to(book,
+                    Book.objects.exclude(common_slug=book.common_slug),
+                    ignore_by_tag=book.book_tag())[:limit-random]
+        cache.set(cache_key, related, 1800)
+    if random:
+        related += list(Book.objects.exclude(
+                        pk__in=[b.pk for b in related] + [book.pk]
+                    ).order_by('?')[:random])
     return {
         'books': related,
     }

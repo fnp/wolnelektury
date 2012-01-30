@@ -19,7 +19,8 @@ class UserSetsForm(forms.Form):
 
 
 class ObjectSetsForm(forms.Form):
-    tags = forms.CharField(label=_('Tags (comma-separated)'), required=False)
+    tags = forms.CharField(label=_('Tags (comma-separated)'), required=False,
+                           widget=forms.Textarea())
 
     def __init__(self, obj, user, *args, **kwargs):
         self._obj = obj

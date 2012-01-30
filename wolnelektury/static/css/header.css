@@ -74,7 +74,7 @@
     width: 63.1em;
     padding-left: .5em;
     padding-right: 0;
-    padding-top: 0.6em;
+    padding-top: 0.5em;
     padding-bottom: 0;
 }
 
@@ -106,7 +106,16 @@
     background-color: #fff;
     color: #000;
 }
-#search.blur {
+
+#search:-webkit-input-placeholder
+{
+    font-family: Georgia;
+    font-style: italic;
+    color: #888;
+}
+
+#search:-moz-placeholder
+{
     font-family: Georgia;
     font-style: italic;
     color: #888;
@@ -184,6 +193,10 @@ a.menu span {
     height: 3em;
     padding-top: 1.9em;
     background: #f7f7f7;
+}
+
+#lang-menu-items {
+	z-index: 9999;
 }
 
 #lang-menu-items button {

@@ -41,9 +41,6 @@ var __bind = function (self, fn) {
 
 	});
 
-    $(function() {
-        $("#search").search().labelify({labelledClass: "blur"});
-
 	$(".search-result .see-more-snippets").click(function() {
 	    $(this).closest('.search-result').find('.snippets').removeClass('ui-helper-hidden');
 	    });

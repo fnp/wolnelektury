@@ -160,30 +160,6 @@ h2 {
 }
 
 
-.see-also {
-    margin-left: 8em;
-    float: left;
-    width: 14.3em;
-}
-.download {
-    margin-left: 2em;
-    float: left;
-}
-
-.see-also, .download {
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-.see-also h2, .download h2 {
-    font-size: 1.1em;
-}
-.see-also ul, .download ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 1.1em;
-}
-
 .pagination {
 	display: block;
 	font-size: 1.2em;

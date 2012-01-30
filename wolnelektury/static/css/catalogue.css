@@ -76,6 +76,7 @@
 
 #description {
 	margin-bottom: 2em;
+	cursor: pointer;
 }
 #description dl {
 	margin-top: 0;
@@ -88,6 +89,9 @@
 #description dd {
 	display: inline;
 	margin: 0;
+}
+#description p {
+	margin-top: 0;
 }
 #description .meta {
 	list-style: none;
@@ -120,4 +124,33 @@
 .inline-body li {
 	display: inline;
 	margin-right: 1em;
+}
+
+
+.see-also {
+    margin-left: 8em;
+    float: left;
+    width: 14.3em;
+}
+.download {
+    margin-left: 2em;
+    float: left;
+}
+
+.see-also, .download {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.see-also h2, .download h2 {
+    font-size: 1.1em;
+}
+.see-also ul, .download ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.left-column .see-also {
+	margin-left: 0;
 }
