@@ -1,8 +1,8 @@
 /* Logo font */
 @font-face {
     /* IE version */
-    font-family: WL-Logo;
-    src: url(/static/fonts/WL.eot);
+    font-family: WL-Nav;
+    src: url(/static/fonts/WL-Nav.eot);
 }
 @font-face {
   font-family: WL-Nav;
@@ -23,7 +23,9 @@ body {
     /*line-height: 1.4em;*/
 }
 
-
+a img {
+	border: 0;
+}
 a {
     color: #1199a2; /* #01adba; */
     text-decoration: none;
@@ -152,37 +154,15 @@ h2 {
     padding: 0;
     margin: 0;
     font-size: 1.1em;
+    column-width: 12em;
     -moz-column-width: 12em;
+    -webkit-column-width: 12em;
     width: 48em;
 }
 .hidden-box li {
 	margin-bottom: .5em;
 }
 
-
-.see-also {
-    margin-left: 8em;
-    float: left;
-    width: 14.3em;
-}
-.download {
-    margin-left: 2em;
-    float: left;
-}
-
-.see-also, .download {
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-.see-also h2, .download h2 {
-    font-size: 1.1em;
-}
-.see-also ul, .download ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 1.1em;
-}
 
 .pagination {
 	display: block;
@@ -196,4 +176,10 @@ h2 {
     margin-top: 5em;
     padding-top:3em;
     background: #fff;
+}
+
+/* just on search page */
+.top-tag-list {
+    margin-top: 2.2em;
+    margin-bottom: 1.6em;
 }

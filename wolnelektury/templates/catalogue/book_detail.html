@@ -16,8 +16,6 @@
 
 
 <h2 class="main-last"><span class="mono">{% trans "See also" %}:</span></h2>
-{% cache 1800 book-detail-related book.slug %}
-    {% related_books book %}
-{% endcache %}
+{% related_books book %}
 
 {% endblock %}

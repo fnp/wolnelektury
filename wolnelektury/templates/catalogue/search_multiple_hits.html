@@ -11,7 +11,43 @@
       <span class="did_you_mean">{% trans "Did you mean" %} <a href="{% url search %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a>?</span>
     {% endif %}
     <!-- tu pójdą trafienia w tagi: Autorzy - z description oraz motywy i rodzaje (z book_count) -->
+      <div class="inline-tag-lists top-tag-list">
+	{% if tags.author %}
+	<div>
+	  <div class="mono inline-header">{% trans "Authors" %}:</div>
+	  <div class="inline-body">
+	    {% inline_tag_list tags.author %}
+	  </div>
+	</div>
+	{% endif %}
+	{% if tags.kind %}
+	<div>
+	  <div class="mono inline-header">{% trans "Kinds" %}:</div>
+	  <div class="inline-body">
+	    {% inline_tag_list tags.kind %}
+	  </div>
+	</div>
+	{% endif %}
+	{% if tags.genre %}
+	<div>
+	  <div class="mono inline-header">{% trans "Genres" %}:</div>
+	  <div class="inline-body">
+	    {% inline_tag_list tags.genre  %}
+	  </div>
+	</div>
+	{% endif %}
+	{% if tags.epoch %}
+	<div class="inline-tag-list">
+	  <div class="mono inline-header">{% trans "Epochs" %}:</div>
+	  <div class="inline-body">
+	    {% inline_tag_list tags.epoch  %}
+	  </div>
+	</div>
+	{% endif %}
+      </div>
 
+
+    
     {% if results.author %}
     <div class="book-list-header">
       <div class="book-box-inner">
@@ -20,11 +56,7 @@
     </div>
     <div>
       <ol class="work-list">
-	{% for author in results.author %}
-	<li class="Book-item">
-	  {% book_short author.book %}
-	</li>
-	{% endfor %}
+	{% for author in results.author %}<li class="Book-item">{% book_short author.book %}</li>{% endfor %}
       </ol>
     </div>
     {% endif %}
@@ -37,11 +69,9 @@
     </div>
     <div>
       <ol class="work-list">
-	{% for result in results.title %}
-	<li class="Book-item">
+	{% for result in results.title %}<li class="Book-item">
 	  {% book_short result.book %}
-	</li>
-	{% endfor %}
+	</li>{% endfor %}
       </ol>
     </div>
     {% endif %}

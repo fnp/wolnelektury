@@ -204,6 +204,12 @@ COMPRESS_CSS = {
         ],
         'output_filename': 'css/all.min?.css',
     },
+    'ie': {
+        'source_filenames': [
+            'css/ie.css',
+        ],
+        'output_filename': 'css/ie.min?.css',
+    },
     'book': {
         'source_filenames': ('css/master.book.css',),
         'output_filename': 'css/book.min?.css',
@@ -240,8 +246,6 @@ COMPRESS_JS = {
             'js/pdcounter.js',
 
             'js/search.js',
-
-            'js/jquery.labelify.js',
             ),
         'output_filename': 'js/base?.min.js',
     },

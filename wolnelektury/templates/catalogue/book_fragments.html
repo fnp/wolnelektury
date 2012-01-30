@@ -1,29 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags pagination_tags %}
+{% load work_list from catalogue_tags %}
 
 {% block titleextra %}{% trans "Theme" %} {{ theme }} {% trans "in work " %} {{ book }}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Theme" %} {{ theme }} {% trans "in work " %} {{ book }} </h1>
-
-    {% autopaginate fragments 10 %}
-    <div id="books-list">
-        <ol>
-        {% for fragment in fragments %}
-            <li>{{ fragment.short_html }}</li>
-        {% endfor %}
-        </ol>
-        {% paginate %}
+    <div class="left-column">
+    <h1>{% trans "Theme" %}
+    	<a href="{{ theme.get_absolute_url }}">{{ theme }}</a>
+    	<br/>{% trans "in work " %}
+    	<a href="{{ book.get_absolute_url }}">{{ book }}</a></h1>
     </div>
-    <div id="tags-list">
-        <div id="categories-list">
-            {% trans "See description" %} <a href="{{ book.get_absolute_url }}">{% trans "of the book "%} {{ book }}</a>
-        </div>
-        <div id="themes-list">
-        </div>
-        <div class="clearboth"></div>
+
+    <div class="right-column">
+        {% work_list fragments %}
     </div>
 {% endblock %}

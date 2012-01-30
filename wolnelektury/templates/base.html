@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 	{% load cache compressed i18n %}
     {% load catalogue_tags reporting_stats sponsor_tags %}
     <head>
@@ -11,6 +11,11 @@
         <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png" />
         <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury" href="{{ STATIC_URL }}opensearch.xml" />
         {% compressed_css "all" %}
+        <!--[if IE]>
+        	{% compressed_css "ie" %}
+        <![endif]-->
+        <!--script src="{{ STATIC_URL }}js/modernizr.custom.13352.js"></script-->
+        <script src="{{ STATIC_URL }}js/modernizr-latest.js"></script>
 
         {% block extrahead %}
         {% endblock %}
@@ -18,6 +23,8 @@
     <body id="{% block bodyid %}base{% endblock %}">
 
         {% block bodycontent %}
+
+		<div id="header-bg"></div>
 
         <div id="header">
 
@@ -72,9 +79,10 @@
 
 
 
-            <form id="search-area" action="/fullsearch/">
+            <form id="search-area" action="/fullsearch/" class="hidelabels">
                 
                 <div id="search-field" class="grid-line">
+                	<label for="search">{{search_form.q.label}}</label>
 		  {{search_form.q}}
 <!--                    <input title="np. Leśmian" name="q" autocomplete="off" data-source="/fullsearch/hint/">-->
                 </div><div id="search-button">

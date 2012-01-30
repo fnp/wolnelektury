@@ -10,6 +10,14 @@
 }
 
 
+#header-bg {
+	z-index: -1;
+	background: #191919;
+	position: absolute;
+	width: 50%;
+	height: 9.4em;
+}
+
 #header {
     height: 3em;
     padding-top: 1.9em;
@@ -20,9 +28,6 @@
 
 #half-header {
     padding-bottom: 0;
-    background: url('/static/img/bg-header.png');
-    background-position: center;
-    background-size: 100%;
 }
 
 #half-header-content {
@@ -38,7 +43,7 @@
 
 #logo {
     position: absolute;
-    top: 1.9em;
+    top: -1.6em;
     margin-left: 1.5em;
 }
 
@@ -46,6 +51,7 @@
     font-family: WL-Logo;
     font-size: 2.05em;
     color:#f7f7f7;
+    line-height: 7em;
 }
 
 #tagline {
@@ -74,7 +80,7 @@
     width: 63.1em;
     padding-left: .5em;
     padding-right: 0;
-    padding-top: 0.6em;
+    padding-top: 0.5em;
     padding-bottom: 0;
 }
 
@@ -101,12 +107,31 @@
     -webkit-box-shadow:0 0 .38em #444 inset;
     -moz-box-shadow:0 0 .38em #444 inset;
     box-shadow: 0 0 .5em #444 inset;
+    line-height: 2.5em;
 
     font-family: Georgia;
     background-color: #fff;
     color: #000;
 }
-#search.blur {
+
+/* styling search placeholder */
+
+#search:-webkit-input-placeholder
+{
+    font-family: Georgia;
+    font-style: italic;
+    color: #888;
+}
+
+#search.placeholder
+{
+    font-family: Georgia;
+    font-style: italic;
+    color: #888;
+}
+
+#search:-moz-placeholder
+{
     font-family: Georgia;
     font-style: italic;
     color: #888;
@@ -184,6 +209,10 @@ a.menu span {
     height: 3em;
     padding-top: 1.9em;
     background: #f7f7f7;
+}
+
+#lang-menu-items {
+	z-index: 9999;
 }
 
 #lang-menu-items button {
