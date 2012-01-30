@@ -332,9 +332,10 @@ class Index(BaseIndex):
 
         # get published date
         source = book_info.source_name
-        match = self.published_date_re.search(source)
-        if match is not None:
-            fields["published_date"] = Field("published_date", str(match.groups()[0]), Field.Store.YES, Field.Index.NOT_ANALYZED)
+        if hasattr(book_info, 'source_name'):
+            match = self.published_date_re.search(source)
+            if match is not None:
+                fields["published_date"] = Field("published_date", str(match.groups()[0]), Field.Store.YES, Field.Index.NOT_ANALYZED)
 
         return fields
 
