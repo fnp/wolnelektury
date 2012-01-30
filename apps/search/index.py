@@ -323,7 +323,6 @@ class Index(BaseIndex):
         # get published date
         source = book_info.source_name
         match = self.published_date_re.search(source)
-        print("published date is %s %s" % (match, match is not None and match.groups()))
         if match is not None:
             fields["published_date"] = Field("published_date", str(match.groups()[0]), Field.Store.YES, Field.Index.NOT_ANALYZED)
 
@@ -617,7 +616,6 @@ class SearchResult(object):
 
         pd = stored.get("published_date")
         if pd is None:
-            print "published_date is none for book %d" % self.book_id
             pd = 0
         self.published_date = int(pd)
 
