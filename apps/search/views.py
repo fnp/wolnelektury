@@ -8,7 +8,7 @@ from django.views.decorators import cache
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.utils.translation import ugettext as _
 
-from catalogue.utils import get_random_hash
+from catalogue.utils import split_tags
 from catalogue.models import Book, Tag, Fragment
 from catalogue.fields import dumps
 from catalogue.views import JSONResponse
@@ -34,7 +34,7 @@ def did_you_mean(query, tokens):
         authors = Tag.objects.filter(category='author', name__iregex=match_word_re(t))
         if len(authors) > 0:
             continue
-        
+
         if not dictionary.check(t):
             try:
                 change[t] = dictionary.suggest(t)[0]
@@ -69,7 +69,7 @@ def hint(request):
     # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
     # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
 
-    tags = s.hint_tags(prefix)
+    tags = s.hint_tags(prefix, pdcounter=True)
     books = s.hint_books(prefix)
 
     # TODO DODAC TU HINTY
@@ -97,26 +97,28 @@ def main(request):
     fuzzy = False
 
     if 'q' in request.GET:
-        tags = request.GET.get('tags', '')
+        # tags = request.GET.get('tags', '')
         query = request.GET['q']
-        book_id = request.GET.get('book', None)
-        book = None
-        if book_id is not None:
-            book = get_object_or_404(Book, id=book_id)
+        # book_id = request.GET.get('book', None)
+        # book = None
+        # if book_id is not None:
+        #     book = get_object_or_404(Book, id=book_id)
 
-        hint = srch.hint()
-        try:
-            tag_list = Tag.get_tag_list(tags)
-        except:
-            tag_list = []
+        # hint = srch.hint()
+        # try:
+        #     tag_list = Tag.get_tag_list(tags)
+        # except:
+        #     tag_list = []
 
         if len(query) < 2:
-            return render_to_response('catalogue/search_too_short.html', {'tags': tag_list, 'prefix': query},
+            return render_to_response('catalogue/search_too_short.html', {'prefix': query},
                                       context_instance=RequestContext(request))
 
-        hint.tags(tag_list)
-        if book:
-            hint.books(book)
+        # hint.tags(tag_list)
+        # if book:
+        #     hint.books(book)
+        tags = srch.hint_tags(query, pdcounter=True, prefix=False)
+        tags = split_tags(tags)
 
         toks = StringReader(query)
         tokens_cache = {}
@@ -160,7 +162,7 @@ def main(request):
 
         author_results = SearchResult.aggregate(author_results)
         title_results = SearchResult.aggregate(title_results)
-        
+
         everywhere = SearchResult.aggregate(everywhere, author_title_rest)
 
         for res in [author_results, title_results, text_phrase, everywhere]:
@@ -168,15 +170,15 @@ def main(request):
             for r in res:
                 for h in r.hits:
                     h['snippets'] = map(lambda s:
-                                        re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"", 
+                                        re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
                                                 re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", s)[0])[0], h['snippets'])
-                    
+
         suggestion = did_you_mean(query, srch.get_tokens(toks, field="SIMPLE"))
         print "dym? %s" % repr(suggestion).encode('utf-8')
-        
+
         results = author_results + title_results + text_phrase + everywhere
         results.sort(reverse=True)
-        
+
         if len(results) == 1:
             fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
             if len(fragment_hits) == 1:
@@ -187,14 +189,15 @@ def main(request):
         elif len(results) == 0:
             form = PublishingSuggestForm(initial={"books": query + ", "})
             return render_to_response('catalogue/search_no_hits.html',
-                                      {'tags': tag_list,
+                                      {'tags': tags,
                                        'prefix': query,
                                        "form": form,
                                        'did_you_mean': suggestion},
                 context_instance=RequestContext(request))
 
+        print "TAGS: %s" % tags
         return render_to_response('catalogue/search_multiple_hits.html',
-                                  {'tags': tag_list,
+                                  {'tags': tags,
                                    'prefix': query,
                                    'results': { 'author': author_results,
                                                 'title': title_results,

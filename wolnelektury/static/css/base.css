@@ -177,3 +177,9 @@ h2 {
     padding-top:3em;
     background: #fff;
 }
+
+/* just on search page */
+.top-tag-list {
+    margin-top: 2.2em;
+    margin-bottom: 1.6em;
+}

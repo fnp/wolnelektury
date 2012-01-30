@@ -7,63 +7,65 @@
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <div class="left-column">
-    <div class="page-desc">
+<div class="left-column">
+  <div class="page-desc">
     <h1>{% html_title_from_tags tags %}</h1>
 
     {% with tags|last as last_tag %}
     {% if last_tag.has_description %}
-        <div id="description" class="normal-text">
-            <div id='description-long' style="display:none">{{ last_tag.description|safe }}</div>
-            <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:40 }}</div>
-        </div>
+    <div id="description" class="normal-text">
+      <div id='description-long' style="display:none">{{ last_tag.description|safe }}</div>
+      <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:40 }}</div>
+    </div>
     {% endif %}
 
-
+    <div class="clearboth"></div>
     <div class="inline-tag-lists">
-    {% if categories.author %}
-    	<div>
-	        <div class="mono inline-header">{% trans "Authors" %}:</div>
-    	    <div class="inline-body">
-			    {% inline_tag_list categories.author tags %}
-        	</div>
+      {% if categories.author %}
+      <div>
+	<div class="mono inline-header">{% trans "Authors" %}:</div>
+    	<div class="inline-body">
+	  {% inline_tag_list categories.author tags %}
         </div>
-    {% endif %}
-    {% if categories.kind %}
-    	<div>
-	        <div class="mono inline-header">{% trans "Kinds" %}:</div>
-    	    <div class="inline-body">
-			    {% inline_tag_list categories.kind tags %}
-        	</div>
+      </div>
+      {% endif %}
+      {% if categories.kind %}
+      <div>
+	<div class="mono inline-header">{% trans "Kinds" %}:</div>
+    	<div class="inline-body">
+	  {% inline_tag_list categories.kind tags %}
         </div>
-    {% endif %}
-    {% if categories.genre %}
-    	<div>
-	        <div class="mono inline-header">{% trans "Genres" %}:</div>
-    	    <div class="inline-body">
-			    {% inline_tag_list categories.genre tags %}
-        	</div>
+      </div>
+      {% endif %}
+      {% if categories.genre %}
+      <div>
+	<div class="mono inline-header">{% trans "Genres" %}:</div>
+    	<div class="inline-body">
+	  {% inline_tag_list categories.genre tags %}
         </div>
-    {% endif %}
-    {% if categories.epoch %}
-    	<div class="inline-tag-list">
-	        <div class="mono inline-header">{% trans "Epochs" %}:</div>
-    	    <div class="inline-body">
-			    {% inline_tag_list categories.epoch tags %}
-        	</div>
+      </div>
+      {% endif %}
+      {% if categories.epoch %}
+      <div class="inline-tag-list">
+	<div class="mono inline-header">{% trans "Epochs" %}:</div>
+    	<div class="inline-body">
+	  {% inline_tag_list categories.epoch tags %}
         </div>
-    {% endif %}
+      </div>
+      {% endif %}
+
+      {% if categories.theme %}
+      <div class="hidden-box-wrapper">
+	<p><a href="#" class="hidden-box-trigger theme-list-link mono">
+            {% trans "Motifs and themes" %}</a></p>
+	<div class="hidden-box">
+          {% tag_list categories.theme tags %}
+	</div>
+      </div>
+      {% endif %}
     </div>
 
-    {% if categories.theme %}
-        <div class="hidden-box-wrapper">
-            <p><a href="#" class="hidden-box-trigger theme-list-link mono">
-            	{% trans "Motifs and themes" %}</a></p>
-            <div class="hidden-box">
-                {% tag_list categories.theme tags %}
-            </div>
-        </div>
-    {% endif %}
+    <div class="clearboth"></div>
 
 
 	{% if theme_is_set %}
