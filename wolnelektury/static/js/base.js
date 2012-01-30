@@ -73,7 +73,21 @@
 					} 
 				});
 			});
+			$('body').click(function(e) {
+				if ($current == null) return;
+				var p = $(e.target);
+				while (p.length) {
+					if (p == $current)
+						return;
+					if (p.hasClass('hidden-box-trigger'))
+						return;
+					p = p.parent();
+				}
+				$current.hide('fast');
+				$current = null;
+			});
 		})();
+		
 
 
 

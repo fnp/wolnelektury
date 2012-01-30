@@ -70,7 +70,9 @@
     font-size: 2em;
 }
 .catalogue-catalogue ul {
+    column-width: 30em;
     -moz-column-width: 30em;
+    -webkit-column-width: 30em;
 }
 
 
@@ -116,7 +118,6 @@
 	margin-bottom: .5em;
 }
 .inline-body ul {
-	a-moz-column-width: 11em;
 	list-style: none;
 	padding: 0;
 	margin: 0;

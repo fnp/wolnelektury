@@ -1,8 +1,8 @@
 /* Logo font */
 @font-face {
     /* IE version */
-    font-family: WL-Logo;
-    src: url(/static/fonts/WL.eot);
+    font-family: WL-Nav;
+    src: url(/static/fonts/WL-Nav.eot);
 }
 @font-face {
   font-family: WL-Nav;
@@ -23,7 +23,9 @@ body {
     /*line-height: 1.4em;*/
 }
 
-
+a img {
+	border: 0;
+}
 a {
     color: #1199a2; /* #01adba; */
     text-decoration: none;
@@ -152,7 +154,9 @@ h2 {
     padding: 0;
     margin: 0;
     font-size: 1.1em;
+    column-width: 12em;
     -moz-column-width: 12em;
+    -webkit-column-width: 12em;
     width: 48em;
 }
 .hidden-box li {
