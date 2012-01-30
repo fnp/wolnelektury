@@ -359,11 +359,18 @@ class Index(BaseIndex):
             return []
 
         def walker(node, ignore_tags=[]):
-            yield node, None
-            for child in filter(lambda n: n.tag not in ignore_tags, list(node)):
-                for b, e in walker(child):
-                    yield b, e
-            yield None, node
+
+            if node.tag not in ignore_tags:
+                yield node, None, None
+                if node.text is not None:
+                    yield None, node.text, None
+                for child in list(node):
+                    for b, t, e in walker(child):
+                        yield b, t, e
+                yield None, None, node
+
+            if node.tail is not None:
+                yield None, node.tail, None
             return
 
         def fix_format(text):
@@ -435,35 +442,50 @@ class Index(BaseIndex):
 
                 # section content
                 content = []
-                footnote = None
+                footnote = []
 
-                for start, end in walker(header, ignore_tags=self.ignore_content_tags):
+                def all_content(text):
+                    for frag in fragments.values():
+                        frag['content'].append(text)
+                    content.append(text)
+                handle_text = [all_content]
+
+
+                for start, text, end in walker(header, ignore_tags=self.ignore_content_tags):
                     # handle footnotes
-                    # if start is not None and start.tag in self.footnote_tags:
-                    #     footnote = ' '.join(start.itertext())
-                    # elif end is not None and footnote is not None and end.tag in self.footnote_tags:
-                    #     doc = add_part(snippets, header_index=position, header_type=header.tag,
-                    #                    content=footnote)
-
-                    #     self.index.addDocument(doc)
-
-                    #     footnote = None
-
+                    if start is not None and start.tag in self.footnote_tags:
+                        footnote = []
+                        def collect_footnote(t):
+                            footnote.append(t)
+                        handle_text.append(collect_footnote)
+                    elif end is not None and footnote is not [] and end.tag in self.footnote_tags:
+                        handle_text.pop()
+                        doc = add_part(snippets, header_index=position, header_type=header.tag,
+                                       content=u''.join(footnote),
+                                       is_footnote=Field("is_footnote", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
+                
+                        self.index.addDocument(doc)
+                        print "@ footnote text: %s" % footnote
+                        footnote = []
+                    
                     # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
                         fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
 
+                    # themes for this fragment
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
+                        handle_text.append(None)
                         if start.text is not None:
                             fragments[fid]['themes'] += map(str.strip, map(give_me_utf8, start.text.split(',')))
+                    elif end is not None and end.tag == 'motyw':
+                        handle_text.pop()
 
                     elif start is not None and start.tag == 'end':
                         fid = start.attrib['id'][1:]
                         if fid not in fragments:
                             continue  # a broken <end> node, skip it
-                                      #                        import pdb; pdb.set_trace()
                         frag = fragments[fid]
                         if frag['themes'] == []:
                             continue  # empty themes list.
@@ -476,22 +498,20 @@ class Index(BaseIndex):
                                        fragment_anchor=fid,
                                        content=fix_format(frag['content']),
                                        themes=frag['themes'])
-
+                        print '@ FRAG %s' % frag['content']
                         self.index.addDocument(doc)
 
                         # Collect content.
-                    elif start is not None:
-                        for frag in fragments.values():
-                            frag['content'].append(start.text)
-                        content.append(start.text)
-                    elif end is not None:
-                        for frag in fragments.values():
-                            frag['content'].append(end.tail)
-                        content.append(end.tail)
+
+                    if text is not None and handle_text is not []:
+                        hdl = handle_text[-1]
+                        if hdl is not None:
+                            hdl(text)
 
                         # in the end, add a section text.
                 doc = add_part(snippets, header_index=position, header_type=header.tag,
                                content=fix_format(content))
+                print '@ CONTENT: %s' % fix_format(content)
 
                 self.index.addDocument(doc)
 

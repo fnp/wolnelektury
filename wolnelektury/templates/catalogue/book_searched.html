@@ -8,7 +8,7 @@
 <div class="snippets">
   {% for hit in hits %}
   {% if hit.snippets %}
-  <div class="snippet-text"><a href="{% url book_text book.slug %}#sect{{hit.section_number}}">{{hit.snippets.0|safe}}</a></div>
+  <div class="snippet-text"><a href="{% url book_text book.slug %}#s{{hit.section_number}}">{{hit.snippets.0|safe}}</a></div>
   {% else %}
   {% if hit.fragment %}
   <div class="snippet-text">
