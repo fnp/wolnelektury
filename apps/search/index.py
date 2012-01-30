@@ -759,8 +759,6 @@ class SearchResult(object):
     def __cmp__(self, other):
         c = cmp(self.score, other.score)
         if c == 0:
-            if not hasattr(other,'published_date') or not hasattr(self, 'published_date'):
-                import pdb; pdb.set_trace()
             # this is inverted, because earlier date is better
             return cmp(other.published_date, self.published_date)
         else:
