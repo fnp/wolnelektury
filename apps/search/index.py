@@ -27,6 +27,7 @@ from librarian import dcparser
 from librarian.parser import WLDocument
 from lxml import etree
 import catalogue.models
+from pdcounter.models import Author as PDCounterAuthor
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
 import atexit
@@ -217,6 +218,15 @@ class Index(BaseIndex):
             doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
+            self.index.addDocument(doc)
+
+        for pdtag in PDCounterAuthor.objects.all():
+            doc = Document()
+            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(pdtag.id)))
+            doc.add(Field("tag_name", pdtag.name, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("tag_name_pl", pdtag.name, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("tag_category", 'pdcounter', Field.Store.NO, Field.Index.NOT_ANALYZED))
+            doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
             self.index.addDocument(doc)
 
     def create_book_doc(self, book):
@@ -604,26 +614,25 @@ class SearchResult(object):
         stored = search.searcher.doc(scoreDocs.doc)
         self.book_id = int(stored.get("book_id"))
 
-        header_type = stored.get("header_type")
-        if not header_type:
-            return
-
-        sec = (header_type, int(stored.get("header_index")))
-        header_span = stored.get('header_span')
-        header_span = header_span is not None and int(header_span) or 1
-
-        fragment = stored.get("fragment_anchor")
-
         pd = stored.get("published_date")
         if pd is None:
             pd = 0
         self.published_date = int(pd)
 
-        if snippets:
-            snippets = snippets.replace("/\n", "\n")
-        hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
+        header_type = stored.get("header_type")
+        # we have a content hit in some header of fragment
+        if header_type is not None:
+            sec = (header_type, int(stored.get("header_index")))
+            header_span = stored.get('header_span')
+            header_span = header_span is not None and int(header_span) or 1
 
-        self._hits.append(hit)
+            fragment = stored.get("fragment_anchor")
+
+            if snippets:
+                snippets = snippets.replace("/\n", "\n")
+            hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
+
+            self._hits.append(hit)
 
         self.search = search
         self.searched = searched
@@ -749,6 +758,8 @@ class SearchResult(object):
     def __cmp__(self, other):
         c = cmp(self.score, other.score)
         if c == 0:
+            if not hasattr(other,'published_date') or not hasattr(self, 'published_date'):
+                import pdb; pdb.set_trace()
             # this is inverted, because earlier date is better
             return cmp(other.published_date, self.published_date)
         else:
@@ -1208,19 +1219,27 @@ class Search(IndexStore):
         if terms:
             return JArray('object')(terms, Term)
 
-    def search_tags(self, query, filter=None, max_results=40):
+    def search_tags(self, query, filters=None, max_results=40, pdcounter=False):
         """
         Search for Tag objects using query.
         """
-        tops = self.searcher.search(query, filter, max_results)
+        if not pdcounter:
+            filters = self.chain_filters([filter, self.term_filter(Term('is_pdcounter', 'true'), inverse=True)])
+        tops = self.searcher.search(query, filters, max_results)
 
         tags = []
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
-            tags.append(tag)
-            print "%s (%d) -> %f" % (tag, tag.id, found.score)
-
+            is_pdcounter = doc.get('is_pdcounter')
+            if is_pdcounter:
+                tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
+            else:
+                tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
+                # don't add the pdcounter tag if same tag already exists
+            if not (is_pdcounter and filter(lambda t: tag.slug == t.slug, tags)):
+                tags.append(tag)
+                #            print "%s (%d) -> %f" % (tag, tag.id, found.score)
+        print 'returning %s' % tags
         return tags
 
     def search_books(self, query, filter=None, max_results=10):
@@ -1234,7 +1253,7 @@ class Search(IndexStore):
             bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return bks
 
-    def create_prefix_phrase(self, toks, field):
+    def make_prefix_phrase(self, toks, field):
         q = MultiPhraseQuery()
         for i in range(len(toks)):
             t = Term(field, toks[i])
@@ -1260,7 +1279,7 @@ class Search(IndexStore):
 
         return only_term
 
-    def hint_tags(self, string, max_results=50):
+    def hint_tags(self, string, max_results=50, pdcounter=True, prefix=True):
         """
         Return auto-complete hints for tags
         using prefix search.
@@ -1269,14 +1288,17 @@ class Search(IndexStore):
         top = BooleanQuery()
 
         for field in ['tag_name', 'tag_name_pl']:
-            q = self.create_prefix_phrase(toks, field)
+            if prefix:
+                q = self.make_prefix_phrase(toks, field)
+            else:
+                q = self.make_term_query(toks, field)
             top.add(BooleanClause(q, BooleanClause.Occur.SHOULD))
 
         no_book_cat = self.term_filter(Term("tag_category", "book"), inverse=True)
 
-        return self.search_tags(top, no_book_cat, max_results=max_results)
+        return self.search_tags(top, no_book_cat, max_results=max_results, pdcounter=pdcounter)
 
-    def hint_books(self, string, max_results=50):
+    def hint_books(self, string, max_results=50, prefix=True):
         """
         Returns auto-complete hints for book titles
         Because we do not index 'pseudo' title-tags.
@@ -1284,7 +1306,10 @@ class Search(IndexStore):
         """
         toks = self.get_tokens(string, field='SIMPLE')
 
-        q = self.create_prefix_phrase(toks, 'title')
+        if prefix:
+            q = self.make_prefix_phrase(toks, 'title')
+        else:
+            q = self.make_term_query(toks, 'title')
 
         return self.search_books(q, self.term_filter(Term("is_book", "true")), max_results=max_results)
 

@@ -38,12 +38,6 @@ var __bind = function (self, fn) {
 	},
 	
 
-
-	});
-
-	$(".search-result .see-more-snippets").click(function() {
-	    $(this).closest('.search-result').find('.snippets').removeClass('ui-helper-hidden');
-	    });
     });
 
 

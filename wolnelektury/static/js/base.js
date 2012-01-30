@@ -100,6 +100,8 @@ $('.open-player').click(function(event) {
             return false;
         });
 
+	$(function(){
+	    $("#search").search();});
 
     });
 })(jQuery)
