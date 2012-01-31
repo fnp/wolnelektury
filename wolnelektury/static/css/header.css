@@ -97,6 +97,8 @@
     font-family: Georgia;
     background-color: #fff;
     color: #000;
+    z-index: 200;
+    position: relative;
 }
 
 /* styling search placeholder */
