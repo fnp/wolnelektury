@@ -331,11 +331,13 @@ class Index(BaseIndex):
                                                (dt.year, dt.month, dt.day), Field.Store.NO, Field.Index.NOT_ANALYZED)
 
         # get published date
-        source = book_info.source_name
-        if hasattr(book_info, 'source_name'):
-            match = self.published_date_re.search(source)
+        pd = None
+        if hasattr(book_info, 'source_name') and book_info.source_name:
+            match = self.published_date_re.search(book_info.source_name)
             if match is not None:
-                fields["published_date"] = Field("published_date", str(match.groups()[0]), Field.Store.YES, Field.Index.NOT_ANALYZED)
+                pd = str(match.groups()[0])
+        if not pd: pd = ""
+        fields["published_date"] = Field("published_date", pd, Field.Store.YES, Field.Index.NOT_ANALYZED)
 
         return fields
 
@@ -476,7 +478,7 @@ class Index(BaseIndex):
                                        is_footnote=Field("is_footnote", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
                 
                         self.index.addDocument(doc)
-                        print "@ footnote text: %s" % footnote
+                        #print "@ footnote text: %s" % footnote
                         footnote = []
                     
                     # handle fragments and themes.
@@ -509,7 +511,7 @@ class Index(BaseIndex):
                                        fragment_anchor=fid,
                                        content=fix_format(frag['content']),
                                        themes=frag['themes'])
-                        print '@ FRAG %s' % frag['content']
+                        #print '@ FRAG %s' % frag['content']
                         self.index.addDocument(doc)
 
                         # Collect content.
@@ -522,7 +524,7 @@ class Index(BaseIndex):
                         # in the end, add a section text.
                 doc = add_part(snippets, header_index=position, header_type=header.tag,
                                content=fix_format(content))
-                print '@ CONTENT: %s' % fix_format(content)
+                #print '@ CONTENT: %s' % fix_format(content)
 
                 self.index.addDocument(doc)
 

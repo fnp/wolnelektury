@@ -6,7 +6,7 @@ import os
 import sys
 import time
 from optparse import make_option
-
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
@@ -14,6 +14,7 @@ from django.core.files import File
 from catalogue.models import Book
 from picture.models import Picture
 
+from search import Index
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
@@ -47,7 +48,8 @@ class Command(BaseCommand):
                                                     build_txt=options.get('build_txt'),
                                                     build_pdf=options.get('build_pdf'),
                                                     build_mobi=options.get('build_mobi'),
-                                                    search_index=options.get('search_index'))
+                                                    search_index=options.get('search_index'),
+                                                    search_index_reuse=True, search_index_tags=False)
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
                 getattr(book, '%s_file' % ebook_format).save(
@@ -80,6 +82,14 @@ class Command(BaseCommand):
                     time.strftime('%Y-%m-%d %H:%M:%S',
                     time.localtime(wait_until)), wait_until - time.time())
 
+        if options.get('search_index') and not settings.NO_SEARCH_INDEX:
+            index = Index()
+            index.open()
+            try:
+                index.index_tags()
+            finally:
+                index.close()
+
         # Start transaction management.
         transaction.commit_unless_managed()
         transaction.enter_transaction_management()
@@ -87,7 +97,7 @@ class Command(BaseCommand):
 
         files_imported = 0
         files_skipped = 0
-
+        
         for dir_name in directories:
             if not os.path.isdir(dir_name):
                 print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)

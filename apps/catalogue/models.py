@@ -643,7 +643,7 @@ class Book(models.Model):
         result = create_zip.delay(paths, "%s_%s" % (self.slug, format_))
         return result.wait()
 
-    def search_index(self, book_info=None, reuse_index=False):
+    def search_index(self, book_info=None, reuse_index=False, index_tags=True):
         if reuse_index:
             idx = search.ReusableIndex()
         else:
@@ -652,7 +652,8 @@ class Book(models.Model):
         idx.open()
         try:
             idx.index_book(self, book_info)
-            idx.index_tags()
+            if index_tags:
+                idx.index_tags()
         finally:
             idx.close()
 
@@ -675,7 +676,7 @@ class Book(models.Model):
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
             build_epub=True, build_txt=True, build_pdf=True, build_mobi=True,
-            search_index=True):
+            search_index=True, search_index_tags=True, search_index_reuse=False):
         import re
         from sortify import sortify
 
@@ -747,7 +748,7 @@ class Book(models.Model):
             book.build_mobi()
 
         if not settings.NO_SEARCH_INDEX and search_index:
-            book.search_index()
+            book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
             #index_book.delay(book.id, book_info)
 
         book_descendants = list(book.children.all())
