@@ -23,9 +23,12 @@
     background: #efefef;
 }
 #promo-box-title {
-    color: #02ADB7;
+    color: #0d777e;
     height: 2.75em;
     margin: 0;
+}
+#promo-box-title a {
+	color: #0d777e;
 }
 #promo-box-title span {
     font-size: 1.1em;
@@ -36,7 +39,7 @@
 #promo-box-content {
     font-size: 1.2em;
     line-height: 1.55em;
-    color: #989898;
+    color: #6c6c6c;
 }
 
 .main-last {
@@ -58,7 +61,7 @@
     color: #989898;
 }
 .infopages-box h2 {
-    color: #02ADB7;
+    color: #017e85;
     height: 2.8em;
     padding-top: 2.5em;
 }

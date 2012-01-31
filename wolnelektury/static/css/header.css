@@ -25,6 +25,9 @@
     color: #989898;
     background: #191919;
 }
+#header a {
+	color: #17CFDB;
+}
 
 #half-header {
     padding-bottom: 0;
@@ -60,11 +63,7 @@
 }
 #tagline span {
     font-size: 1.3em;
-    color: #ccc;
-}
-#tagline a,
-#user-info a {
-	color: #17cfdb;
+    color: #bbb;
 }
 
 #search-area {
@@ -120,26 +119,26 @@
 {
     font-family: Georgia;
     font-style: italic;
-    color: #888;
+    color: #767676;
 }
 
 #search.placeholder
 {
     font-family: Georgia;
     font-style: italic;
-    color: #888;
+    color: #767676;
 }
 
 #search:-moz-placeholder
 {
     font-family: Georgia;
     font-style: italic;
-    color: #888;
+    color: #767676;
 }
 
 #search-button {
     display: inline-block;
-    background: #02adb7;
+    background: #018189;
     color: white;
     padding: 0;
     margin: 0;
@@ -150,7 +149,7 @@
     font-size: 1em;
     height: 4.5em;
     border: none;
-    background: #02adb7;
+    background: #018189;
     color: white;
     width: 100%;
     padding: 0;
@@ -184,6 +183,7 @@ a.menu {
     /* must match grid-line */
     height: 3.1em;
     padding-top: 1.8em;
+    color: #0c7076;
 }
 a.menu span {
     font-size: 1.1em;
@@ -191,7 +191,7 @@ a.menu span {
 
 
 #lang-button {
-    color: #aaa;
+    color: #717171;
 }
 #lang-button:after {
     padding-left: 1em;
@@ -218,7 +218,7 @@ a.menu span {
 #lang-menu-items button {
     display: none;
     background: #f7f7f7;
-    color: #777;
+    color: #6f6f6f;
     cursor: pointer;
     width: 100%;
     border: solid #ddd;

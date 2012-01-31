@@ -110,7 +110,7 @@
 }
 .book-mini-box .author {
     font-size: 1.1em;
-    color: #707b7a;
+    color: #6d7877;
     display: block;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -310,6 +310,7 @@ ul.inline-items li {
     background: none;
     margin: 0;
     padding: 0;
+    color: #757575;
 }
 
 .if-like a {
