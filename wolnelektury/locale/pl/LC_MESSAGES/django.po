@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-30 12:37+0100\n"
-"PO-Revision-Date: 2012-01-30 12:39+0100\n"
+"POT-Creation-Date: 2012-01-31 17:04+0100\n"
+"PO-Revision-Date: 2012-01-31 17:04+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -21,14 +21,14 @@ msgstr ""
 
 #: views.py:31
 #: views.py:32
-#: templates/base.html:56
+#: templates/base.html:63
 msgid "Sign in"
 msgstr "Zaloguj się"
 
 #: views.py:47
 #: views.py:48
 #: views.py:73
-#: templates/base.html:60
+#: templates/base.html:67
 msgid "Register"
 msgstr "Załóż konto"
 
@@ -73,11 +73,12 @@ msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr "Serwis Wolnelektury.pl jest obecnie niedostępny z powodu prac konserwacyjnych."
 
 #: templates/base.html:9
+#: templates/catalogue/book_text.html:8
 #: templates/catalogue/player.html:10
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base.html:36
+#: templates/base.html:43
 #, python-format
 msgid ""
 "\n"
@@ -100,23 +101,23 @@ msgstr[2] ""
 "                    <a href='%(b)s'>%(c)s</a> darmowych utworów do których <a href='%(r)s'>masz prawo</a>\n"
 "                    "
 
-#: templates/base.html:47
+#: templates/base.html:54
 msgid "Welcome"
 msgstr "Witaj"
 
-#: templates/base.html:48
+#: templates/base.html:55
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/base.html:50
+#: templates/base.html:57
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/base.html:52
+#: templates/base.html:59
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base.html:82
+#: templates/base.html:89
 #: templates/catalogue/search_multiple_hits.html:5
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
@@ -126,11 +127,11 @@ msgstr "Wyloguj"
 msgid "Search"
 msgstr "Szukaj"
 
-#: templates/base.html:105
+#: templates/base.html:112
 msgid "Language versions"
 msgstr "Wersje językowe"
 
-#: templates/base.html:135
+#: templates/base.html:142
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
@@ -143,7 +144,7 @@ msgstr ""
 "Reprodukcje cyfrowe wykonane przez <a href=\"http://www.bn.org.pl/\">Bibliotekę Narodową</a>, <a href=\"http://www.bs.katowice.pl/\">Bibliotekę Śląską</a> i <a href=\"http://www.bibliotekaelblaska.pl/\">Bibliotekę Elbląską</a> z egzemplarzy pochodzących ze zbiorów BN, BŚ i BE.\n"
 "Hosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>."
 
-#: templates/base.html:142
+#: templates/base.html:149
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
@@ -153,11 +154,11 @@ msgstr ""
 "\n"
 "Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17, e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>"
 
-#: templates/base.html:158
+#: templates/base.html:165
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/base.html:160
+#: templates/base.html:167
 msgid "Loading"
 msgstr "Ładowanie"
 
@@ -237,8 +238,8 @@ msgstr ""
 "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
 
 #: templates/catalogue/book_detail.html:18
-#: templates/catalogue/tagged_object_list.html:72
-#: templates/catalogue/tagged_object_list.html:102
+#: templates/catalogue/tagged_object_list.html:74
+#: templates/catalogue/tagged_object_list.html:104
 msgid "See also"
 msgstr "Zobacz też"
 
@@ -327,6 +328,7 @@ msgid "Read online"
 msgstr "Czytaj online"
 
 #: templates/catalogue/book_short.html:84
+#: templates/catalogue/book_text.html:26
 #: templates/catalogue/book_wide.html:53
 #: templates/lessons/ajax_document_detail.html:3
 msgid "Download"
@@ -353,8 +355,12 @@ msgstr "Nota red."
 msgid "Infobox"
 msgstr "Informacje"
 
+#: templates/catalogue/book_text.html:25
+msgid "Book's page"
+msgstr "Strona utworu"
+
 #: templates/catalogue/book_wide.html:14
-#: templates/catalogue/tagged_object_list.html:61
+#: templates/catalogue/tagged_object_list.html:60
 msgid "Motifs and themes"
 msgstr "Motywy i tematy"
 
@@ -413,24 +419,28 @@ msgstr "Pobierz katalog w formacie PDF."
 
 #: templates/catalogue/catalogue.html:19
 #: templates/catalogue/menu.html:7
+#: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
 msgid "Authors"
 msgstr "Autorzy"
 
 #: templates/catalogue/catalogue.html:22
 #: templates/catalogue/menu.html:17
+#: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
 msgid "Kinds"
 msgstr "Rodzaje"
 
 #: templates/catalogue/catalogue.html:25
 #: templates/catalogue/menu.html:12
+#: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
 msgid "Genres"
 msgstr "Gatunki"
 
 #: templates/catalogue/catalogue.html:28
 #: templates/catalogue/menu.html:22
+#: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
 msgid "Epochs"
 msgstr "Epoki"
@@ -576,24 +586,24 @@ msgstr "Audiobooki przygotowane w ramach projektu %(cs)s."
 msgid "Did you mean"
 msgstr "Czy chodziło Ci o"
 
-#: templates/catalogue/search_multiple_hits.html:18
+#: templates/catalogue/search_multiple_hits.html:54
 msgid "Results by authors"
 msgstr "Znalezieni autorzy"
 
-#: templates/catalogue/search_multiple_hits.html:35
+#: templates/catalogue/search_multiple_hits.html:67
 msgid "Results by title"
 msgstr "Znalezione w tytułach"
 
-#: templates/catalogue/search_multiple_hits.html:52
+#: templates/catalogue/search_multiple_hits.html:82
 msgid "Results in text"
 msgstr "Znalezione w treści"
 
-#: templates/catalogue/search_multiple_hits.html:69
+#: templates/catalogue/search_multiple_hits.html:99
 msgid "Other results"
 msgstr "Inne wyniki"
 
 #: templates/catalogue/search_no_hits.html:19
-#: templates/catalogue/tagged_object_list.html:144
+#: templates/catalogue/tagged_object_list.html:146
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Przepraszamy! Brak wyników spełniających kryteria podane w zapytaniu."
 
@@ -607,13 +617,13 @@ msgstr "Wyszukiwarka obsługuje takie kryteria jak tytuł, autor, motyw/temat, e
 msgid "Sorry! Search query must have at least two characters."
 msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 
-#: templates/catalogue/tagged_object_list.html:76
-#: templates/catalogue/tagged_object_list.html:106
+#: templates/catalogue/tagged_object_list.html:78
+#: templates/catalogue/tagged_object_list.html:108
 msgid "in Lektury.Gazeta.pl"
 msgstr "w serwisie Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:81
-#: templates/catalogue/tagged_object_list.html:111
+#: templates/catalogue/tagged_object_list.html:83
+#: templates/catalogue/tagged_object_list.html:113
 msgid "in Wikipedia"
 msgstr "w Wikipedii"
 
@@ -817,9 +827,6 @@ msgstr "Zaloguj się"
 
 #~ msgid "on"
 #~ msgstr "w"
-
-#~ msgid "return to book's page"
-#~ msgstr "wróć do strony utworu"
 
 #~ msgid "Listing of all works on WolneLektury.pl"
 #~ msgstr "Spis wszystkich utworów w WolneLektury.pl"

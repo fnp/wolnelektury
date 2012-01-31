@@ -99,7 +99,6 @@ def publish_plan(request):
             pass
         else:
             for i in range(len(feed['entries'])):
-                print i
                 plan.append({
                     'title': feed['entries'][i].title,
                     'link': feed['entries'][i].link,

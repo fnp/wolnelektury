@@ -350,7 +350,6 @@ def related_books(book, limit=6, random=1):
     cache_key = "catalogue.related_books.%d.%d" % (book.id, limit - random)
     related = cache.get(cache_key)
     if related is None:
-        print 'not in cache'
         related = list(Book.objects.filter(
             common_slug=book.common_slug).exclude(pk=book.pk)[:limit])
         limit -= len(related)
