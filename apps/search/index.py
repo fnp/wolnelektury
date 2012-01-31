@@ -554,7 +554,7 @@ class ReusableIndex(Index):
     index = None
 
     def open(self, analyzer=None, threads=4):
-        if ReusableIndex.index is not None:
+        if ReusableIndex.index:
             self.index = ReusableIndex.index
         else:
             print("opening index")
@@ -568,13 +568,15 @@ class ReusableIndex(Index):
 
     @staticmethod
     def close_reusable():
-        if ReusableIndex.index is not None:
+        if ReusableIndex.index:
+            print("closing index")
             ReusableIndex.index.optimize()
             ReusableIndex.index.close()
             ReusableIndex.index = None
 
     def close(self):
-        pass
+        if ReusableIndex.index:
+            ReusableIndex.index.commit()
 
 
 class JoinSearch(object):
