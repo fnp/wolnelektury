@@ -127,7 +127,8 @@ class Command(BaseCommand):
                         else:
                             self.import_book(file_path, options)
                         files_imported += 1
-
+                        transaction.commit()
+                        
                     except (Book.AlreadyExists, Picture.AlreadyExists):
                         print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
                             file_path)
