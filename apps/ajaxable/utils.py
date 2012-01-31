@@ -81,8 +81,8 @@ class AjaxableFormView(object):
     @method_decorator(vary_on_headers('X-Requested-With'))
     def __call__(self, request, *args, **kwargs):
         """A view displaying a form, or JSON if request is AJAX."""
-        #form_class = placeholdized(self.form_class) if self.placeholdize else self.form_class
-        form_args, form_kwargs = self.form_args(request, *args, **kwargs)
+        obj = self.get_object(request, *args, **kwargs)
+        form_args, form_kwargs = self.form_args(request, obj)
         if self.form_prefix:
             form_kwargs['prefix'] = self.form_prefix
 
@@ -124,12 +124,19 @@ class AjaxableFormView(object):
             form = self.form_class(*form_args, **form_kwargs)
             response_data = None
 
-        template = self.template if request.is_ajax() else self.full_template
+        title = self.title
+        if request.is_ajax():
+            template = self.template
+        else:
+            template = self.full_template
+            cd = self.context_description(request, obj)
+            if cd:
+                title += ": " + cd
         if self.placeholdize:
             form = placeholdized(form)
         context = {
                 self.formname: form, 
-                "title": self.title,
+                "title": title,
                 "placeholdize": self.placeholdize,
                 "submit": self.submit,
                 "response_data": response_data,
@@ -137,17 +144,25 @@ class AjaxableFormView(object):
                 "view_args": args,
                 "view_kwargs": kwargs,
             }
-        context.update(self.extra_context())
+        context.update(self.extra_context(request, obj))
         return render_to_response(template, context,
             context_instance=RequestContext(request))
 
-    def form_args(self, request, *args, **kwargs):
+    def get_object(self, request, *args, **kwargs):
+        """Override to parse view args and get some associated data."""
+        return None
+
+    def form_args(self, request, obj):
         """Override to parse view args and give additional args to the form."""
         return (), {}
 
-    def extra_context(self):
+    def extra_context(self, request, obj):
         """Override to pass something to template."""
         return {}
+
+    def context_description(self, request, obj):
+        """Description to appear in standalone form, but not in AJAX form."""
+        return ""
 
     def success(self, form, request):
         """What to do when the form is valid.

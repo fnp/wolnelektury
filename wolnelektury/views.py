@@ -67,7 +67,7 @@ class LoginRegisterFormView(LoginFormView):
     template = 'auth/login_register.html'
     title = _('You have to be logged in to continue')
 
-    def extra_context(self):
+    def extra_context(self, request, obj):
         return {
             "register_form": placeholdized(UserCreationForm(prefix='register')),
             "register_submit": _('Register'),

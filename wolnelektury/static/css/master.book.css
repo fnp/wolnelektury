@@ -26,6 +26,12 @@ img {
     border: none;
 }
 
+#logo {
+    font-size: 1.5em;
+}
+#logo a {
+    color: black;
+}
 
 #menu {
     position: fixed;
@@ -48,19 +54,22 @@ img {
 #menu li a {
     display: block;
     float: left;
-    width: 7.5em;
     height: 1.5em;
     margin-left: 0.5em;
     text-align: center;
     color: #FFF;
+    padding: 0 1em;
+}
+#menu li a.menu {
+    padding-right: 1.5em;
 }
 
-#menu li a:hover, #menu li a:active {
+#menu li a.menu:hover, #menu li a.menu:active {
     color: #000;
     background: #FFF url(/static/img/arrow-down.png) no-repeat center right;
 }
 
-#menu li a.selected {
+#menu li a.menu.selected {
     color: #000;
     background: #FFF url(/static/img/arrow-up.png) no-repeat center right;
 }
@@ -91,6 +100,22 @@ img {
     border-right: 0.25em solid #DDD;
     display: none;
     height: 16em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    opacity: 0.9;
+    z-index: 99;
+}
+#download {
+    position: fixed;
+    left: 0em;
+    top: 1.5em;
+    width: 37em;
+    padding: 1.5em;
+    background: #FFF;
+    border-bottom: 0.25em solid #DDD;
+    border-right: 0.25em solid #DDD;
+    display: none;
+    height: 10em;
     overflow-x: hidden;
     overflow-y: auto;
     opacity: 0.9;

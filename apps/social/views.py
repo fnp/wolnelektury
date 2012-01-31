@@ -51,9 +51,14 @@ class ObjectSetsFormView(AjaxableFormView):
     ajax_redirect = True
     POST_login = True
 
-    def form_args(self, request, slug):
-        book = get_object_or_404(Book, slug=slug)
-        return (book, request.user), {}
+    def get_object(self, request, slug):
+        return get_object_or_404(Book, slug=slug)
+
+    def context_description(self, request, obj):
+        return obj.pretty_title()
+
+    def form_args(self, request, obj):
+        return (obj, request.user), {}
 
 
 def unlike_book(request, slug):

@@ -1,15 +1,3 @@
-/* Logo font */
-@font-face {
-    /* IE version */
-    font-family: WL-Logo;
-    src: url(/static/fonts/WL.eot);
-}
-@font-face {
-  font-family: WL-Logo;
-  src: url(/static/fonts/WL.ttf) format("truetype");
-}
-
-
 #header-bg {
 	z-index: -1;
 	background: #191919;
@@ -51,10 +39,8 @@
 }
 
 #logo a {
-    font-family: WL-Logo;
-    font-size: 2.05em;
     color:#f7f7f7;
-    line-height: 7em;
+    font-size: 2.05em;
 }
 
 #tagline {

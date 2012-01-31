@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <title>{% block title %}WolneLektury.pl{% endblock %}</title>
+        <title>{% trans "Wolne Lektury" %} :: {{ book.pretty_title }}</title>
         <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/x-icon" />
         {% compressed_css "book" %}
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -18,18 +18,37 @@
     <body>
         <div id="menu">
             <ul>
-                <li><a href="#toc">{% trans "Table of contents" %}</a></li>
-                <li><a href="#themes">{% trans "Themes" %}</a></li>
-                <li><a href="#nota_red">{% trans "Edit. note" %}</a></li>
-                <li><a href="#info">{% trans "Infobox" %}</a></li>
+                <li><a class="menu" href="#toc">{% trans "Table of contents" %}</a></li>
+                <li><a class="menu" href="#themes">{% trans "Themes" %}</a></li>
+                <li><a class="menu" href="#nota_red">{% trans "Edit. note" %}</a></li>
+                <li><a class="menu" href="#info">{% trans "Infobox" %}</a></li>
+                <li><a href="{{ book.get_absolute_url }}">{% trans "Book's page" %}</a></li>
+                <li><a class="menu" href="#download">{% trans "Download" %}</a></li>
             </ul>
         </div>
         <div id="info">
             {% book_info book %}
         </div>
+        <div id="download">
+            <ul>
+            {% if book.pdf_file %}
+            <li><a href="{{ book.pdf_file.url}}">PDF</a> do wydruku</li>
+            {% endif %}
+            {% if  book.epub_file %}
+            <li><a href="{{ book.epub_file.url}}">EPUB</a> na czytnik</li>
+            {% endif %}
+            {% if  book.mobi_file %}
+            <li><a href="{{ book.mobi_file.url}}">MOBI</a> na Kindle</li>
+            {% endif %}
+            {% if  book.txt_file %}
+            <li><a href="{{ book.txt_file.url}}">TXT</a> do zadań specjalnych</li>
+            {% endif %}
+            <li><a href="{% url custom_pdf_form %}?slug={{ book.slug }}">PDF?</a></li>
+            </ul>
+        </div>
         <div id="header">
             <div id="logo">
-                <a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="WolneLektury.pl - logo" /></a>
+                <a href="/">Wolne Lektury</a>
             </div>
         </div>
         <div id="themes">

@@ -32,7 +32,7 @@ $(function() {
         scrollToAnchor($(this).attr('href'));
     });
 
-    $('#menu li a').toggle(function() {
+    $('#menu li a.menu').toggle(function() {
         $('#menu li a.selected').click();
         $(this).addClass('selected');
         $($(this).attr('href')).slideDown('fast');

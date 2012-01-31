@@ -198,6 +198,7 @@ COMPRESS_CSS = {
             'css/book_box.css',
             'css/catalogue.css',
             'css/sponsors.css',
+            'css/logo.css',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
@@ -211,7 +212,10 @@ COMPRESS_CSS = {
         'output_filename': 'css/ie.min?.css',
     },
     'book': {
-        'source_filenames': ('css/master.book.css',),
+        'source_filenames': [
+            'css/logo.css',
+            'css/master.book.css',
+        ],
         'output_filename': 'css/book.min?.css',
     },
     'player': {

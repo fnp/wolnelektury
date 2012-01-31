@@ -2,7 +2,7 @@
 {% load cache i18n %}
 {% load catalogue_tags pagination_tags %}
 
-{% block titleextra %}{{ book.title }}{% endblock %}
+{% block titleextra %}{{ book.pretty_title }}{% endblock %}
 
 {% block metadescription %}{% book_title book %}. {{ block.super }}{% endblock %}
 
