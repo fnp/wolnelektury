@@ -25,7 +25,7 @@ div.jp-video {
 
 	font-family:Verdana, Arial, sans-serif;
 	line-height:1.6;
-	color: #666;
+	color: #565656;
 	border:1px solid #009be3;
 	background-color:#eee;
 	position:relative;
@@ -75,6 +75,10 @@ div.jp-interface {
 	position: relative;
 	background-color:#eee;
 	width:100%;
+}
+
+div.jp-interface a {
+	color: #0c767d;
 }
 
 div.jp-audio div.jp-type-single div.jp-interface {
@@ -431,14 +435,14 @@ div.jp-type-playlist div.jp-playlist span.jp-free-media {
 	margin-right:10px;
 }
 div.jp-type-playlist div.jp-playlist span.jp-free-media a{
-	color:#666;
+	color:#565656;
 }
 div.jp-type-playlist div.jp-playlist span.jp-free-media a:hover{
 	color:#0d88c1;
 }
 span.jp-artist {
 	font-size:.8em;
-	color:#666;
+	color:#565656;
 }
 
 /* @end */

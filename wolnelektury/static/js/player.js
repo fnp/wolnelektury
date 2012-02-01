@@ -1,11 +1,12 @@
 (function($) {
     $(function() {
 
-
-        $("#jplayer").jPlayer({
+      $("#jplayer").each(function() {
+      	var $self = $(this);
+        $self.jPlayer({
             swfPath: "/static/jplayer/",
             solution: "html,flash",
-            supplied: $(this).attr('data-supplied'),
+            supplied: $self.attr('data-supplied'),
     
             ready: function() {
                 var player = $(this);
@@ -27,7 +28,7 @@
                 });
             }
         });
-
+      });
 
     });
 })(jQuery)
