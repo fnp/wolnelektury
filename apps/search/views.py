@@ -37,7 +37,9 @@ def did_you_mean(query, tokens):
 
         if not dictionary.check(t):
             try:
-                change[t] = dictionary.suggest(t)[0]
+                change_to = dictionary.suggest(t)[0].lower()
+                if change_to != t.lower():
+                    change[t] = change_to
             except IndexError:
                 pass
 
@@ -94,7 +96,7 @@ def main(request):
 
     results = None
     query = None
-    fuzzy = False
+    fuzzy = False #0.8
 
     if 'q' in request.GET:
         # tags = request.GET.get('tags', '')
@@ -117,14 +119,11 @@ def main(request):
         # hint.tags(tag_list)
         # if book:
         #     hint.books(book)
-        tags = srch.hint_tags(query, pdcounter=True, prefix=False)
+        tags = srch.hint_tags(query, pdcounter=True, prefix=False, fuzzy=fuzzy)
         tags = split_tags(tags)
 
         toks = StringReader(query)
         tokens_cache = {}
-        fuzzy = 'fuzzy' in request.GET
-        if fuzzy:
-            fuzzy = 0.7
 
         author_results = srch.search_phrase(toks, 'authors', fuzzy=fuzzy, tokens_cache=tokens_cache)
         title_results = srch.search_phrase(toks, 'title', fuzzy=fuzzy, tokens_cache=tokens_cache)
@@ -182,9 +181,9 @@ def main(request):
         if len(results) == 1:
             fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
             if len(fragment_hits) == 1:
-                anchor = fragment_hits[0]['fragment']
-                frag = Fragment.objects.get(anchor=anchor)
-                return HttpResponseRedirect(frag.get_absolute_url())
+                #anchor = fragment_hits[0]['fragment']
+                #frag = Fragment.objects.get(anchor=anchor)
+                return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
             return HttpResponseRedirect(results[0].book.get_absolute_url())
         elif len(results) == 0:
             form = PublishingSuggestForm(initial={"books": query + ", "})

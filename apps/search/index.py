@@ -1212,17 +1212,25 @@ class Search(IndexStore):
         if position is None or length is None:
             return None
         # locate content.
-        snippets = Snippets(stored.get('book_id')).open()
+        book_id = int(stored.get('book_id'))
+        snippets = Snippets(book_id).open()
         try:
-            text = snippets.get((int(position),
-                                 int(length)))
-        finally:
-            snippets.close()
+            try:
+                text = snippets.get((int(position),
+                                     int(length)))
+            finally:
+                snippets.close()
 
-        tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
-        #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
-        snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
+            tokenStream = TokenSources.getAnyTokenStream(self.searcher.getIndexReader(), scoreDoc.doc, field, self.analyzer)
+            #  highlighter.getBestTextFragments(tokenStream, text, False, 10)
+            snip = highlighter.getBestFragments(tokenStream, text, 3, "...")
 
+        except Exception, e:
+            e2 = e
+            if hasattr(e, 'getJavaException'):
+                e2 = unicode(e.getJavaException())
+            raise Exception("Problem fetching snippets for book %d, @%d len=%d" % (book_id, int(position), int(length)),
+                e2)
         return snip
 
     @staticmethod
@@ -1302,7 +1310,7 @@ class Search(IndexStore):
 
         return only_term
 
-    def hint_tags(self, string, max_results=50, pdcounter=True, prefix=True):
+    def hint_tags(self, string, max_results=50, pdcounter=True, prefix=True, fuzzy=False):
         """
         Return auto-complete hints for tags
         using prefix search.
@@ -1314,14 +1322,14 @@ class Search(IndexStore):
             if prefix:
                 q = self.make_prefix_phrase(toks, field)
             else:
-                q = self.make_term_query(toks, field)
+                q = self.make_term_query(toks, field, fuzzy=fuzzy)
             top.add(BooleanClause(q, BooleanClause.Occur.SHOULD))
 
         no_book_cat = self.term_filter(Term("tag_category", "book"), inverse=True)
 
         return self.search_tags(top, no_book_cat, max_results=max_results, pdcounter=pdcounter)
 
-    def hint_books(self, string, max_results=50, prefix=True):
+    def hint_books(self, string, max_results=50, prefix=True, fuzzy=False):
         """
         Returns auto-complete hints for book titles
         Because we do not index 'pseudo' title-tags.
@@ -1332,7 +1340,7 @@ class Search(IndexStore):
         if prefix:
             q = self.make_prefix_phrase(toks, 'title')
         else:
-            q = self.make_term_query(toks, 'title')
+            q = self.make_term_query(toks, 'title', fuzzy=fuzzy)
 
         return self.search_books(q, self.term_filter(Term("is_book", "true")), max_results=max_results)
 
