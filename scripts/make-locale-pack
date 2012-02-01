@@ -1,0 +1,53 @@
+#!/bin/bash
+
+ME=$0
+ROOT=$(git rev-parse --show-toplevel)
+DST=`mktemp -d`/wl-lokalizacja
+mkdir -p $DST
+MANAGE=$ROOT/wolnelektury/manage.py
+
+
+export_po()
+{
+    for langdir in $ROOT/wolnelektury/locale/*; do
+       lang=`basename $langdir`
+       mkdir -p $DST/$lang
+       cp -v ${ROOT}/wolnelektury/locale/${lang}/LC_MESSAGES/django.po $DST/${lang}/wolnelektury.po
+    done
+    
+    for appdir in $ROOT/apps/*; do
+	app=`basename $appdir`
+	if [ -d $ROOT/apps/$app/locale ]; then
+	for langdir in $ROOT/apps/$app/locale/*; do
+	    lang=`basename $langdir`
+	    mkdir -p $DST/$lang
+	    cp -v ${ROOT}/apps/${app}/locale/${lang}/LC_MESSAGES/django.po $DST/${lang}/${app}.po
+	done
+	fi
+    done
+
+    cp -v ${ROOT}/wolnelektury/static/js/locale.js $DST/locale.js.txt
+    cp -v ${ROOT}/apps/infopages/fixtures/infopages.json $DST/infopages.json
+
+    ${0}-json.py $DST/infopages.json
+}
+
+
+cd $ROOT/wolnelektury
+echo "Generate po for WL"
+$MANAGE makemessages --all
+
+cd $ROOT/apps
+for i in *; do
+    echo "Generate po for app $i"
+    ( cd $i; $MANAGE makemessages --all;
+	)
+done
+
+export_po
+
+PACK=`pwd`/wl-lokalizacja.zip
+( cd $DST; cd ..; zip -r $PACK wl-lokalizacja; )
+
+rm -r $DST
+
