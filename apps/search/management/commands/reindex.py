@@ -7,7 +7,9 @@ class Command(BaseCommand):
     
     option_list = BaseCommand.option_list + (
         make_option('-n', '--book-id', action='store_true', dest='book_id', default=False,
-            help='book id'),
+            help='book id instead of slugs'),
+        make_option('-t', '--just-tags', action='store_true', dest='just_tags', default=False,
+            help='just reindex tags'),
     )
     def handle(self, *args, **opts):
         from catalogue.models import Book
@@ -15,19 +17,20 @@ class Command(BaseCommand):
         idx = search.ReusableIndex()
         idx.open()
 
-        if args:
-            books = []
-            for a in args:
-                if opts['book_id']:
-                    books += Book.objects.filter(id=int(a)).all()
-                else:
-                    books += Book.objects.filter(slug=a).all()
-        else:
-            books = Book.objects.all()
-            
-        for b in books:
-            print b.title
-            idx.index_book(b)
+        if not opts['just_tags']:
+            if args:
+                books = []
+                for a in args:
+                    if opts['book_id']:
+                        books += Book.objects.filter(id=int(a)).all()
+                    else:
+                        books += Book.objects.filter(slug=a).all()
+            else:
+                books = Book.objects.all()
+                
+            for b in books:
+                print b.title
+                idx.index_book(b)
         print 'Reindexing tags.'
         idx.index_tags()
         idx.close()
