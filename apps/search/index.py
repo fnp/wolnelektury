@@ -732,7 +732,7 @@ class SearchResult(object):
 
         for f in frags:
             try:
-                frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT])
+                frag = catalogue.models.Fragment.objects.get(anchor=f[FRAGMENT], book__id=self.book_id)
             except catalogue.models.Fragment.DoesNotExist:
                 # stale index
                 continue
