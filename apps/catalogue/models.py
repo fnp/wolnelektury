@@ -16,7 +16,7 @@ from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
-from django.db.models.signals import post_save, m2m_changed, pre_delete
+from django.db.models.signals import post_save, m2m_changed, pre_delete, post_delete
 import jsonfield
 
 from django.conf import settings
@@ -1073,8 +1073,20 @@ def _pre_delete_handler(sender, instance, **kwargs):
         instance.book.save()
 pre_delete.connect(_pre_delete_handler)
 
+
 def _post_save_handler(sender, instance, **kwargs):
     """ refresh all the short_html stuff on BookMedia update """
     if sender == BookMedia:
         instance.book.save()
 post_save.connect(_post_save_handler)
+
+
+@django.dispatch.receiver(post_delete, sender=Book)
+def _remove_book_from_index_handler(sender, instance, **kwargs):
+    """ remove the book from search index, when it is deleted."""
+    idx = search.Index()
+    idx.open(timeout=10000)  # 10 seconds timeout.
+    try:
+        idx.remove_book(instance)
+    finally:
+        idx.close()

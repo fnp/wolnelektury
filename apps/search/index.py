@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from lucene import SimpleFSDirectory, IndexWriter, CheckIndex, \
+from lucene import SimpleFSDirectory, IndexWriter, IndexWriterConfig, CheckIndex, \
     File, Field, Integer, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
     QueryParser, PerFieldAnalyzerWrapper, \
@@ -169,11 +169,13 @@ class BaseIndex(IndexStore):
             analyzer = WLAnalyzer()
         self.analyzer = analyzer
 
-    def open(self, analyzer=None):
+    def open(self, analyzer=None, timeout=None):
         if self.index:
             raise Exception("Index is already opened")
-        self.index = IndexWriter(self.store, self.analyzer,\
-                                 IndexWriter.MaxFieldLength.LIMITED)
+        conf = IndexWriterConfig(Version.LUCENE_34, analyzer)
+        if timeout:
+            conf.setWriteLockTimeout(long(timeout))
+        self.index = IndexWriter(self.store, conf)
         return self.index
 
     def optimize(self):
@@ -553,12 +555,12 @@ class ReusableIndex(Index):
     """
     index = None
 
-    def open(self, analyzer=None, threads=4):
+    def open(self, analyzer=None, **kw):
         if ReusableIndex.index:
             self.index = ReusableIndex.index
         else:
             print("opening index")
-            Index.open(self, analyzer)
+            Index.open(self, analyzer, **kw)
             ReusableIndex.index = self.index
             atexit.register(ReusableIndex.close_reusable)
 
