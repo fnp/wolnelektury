@@ -234,7 +234,6 @@ class Index(BaseIndex):
         for pdtag in PDCounterBook.objects.all():
             doc = Document()
             doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(pdtag.id)))
-            print pdtag.title
             doc.add(Field("tag_name", pdtag.title, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_name_pl", pdtag.title, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_category", 'pd_book', Field.Store.YES, Field.Index.NOT_ANALYZED))
