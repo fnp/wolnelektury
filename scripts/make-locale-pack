@@ -33,16 +33,20 @@ export_po()
 }
 
 
+( 
 cd $ROOT/wolnelektury
 echo "Generate po for WL"
 $MANAGE makemessages --all
+)
 
+(
 cd $ROOT/apps
 for i in *; do
     echo "Generate po for app $i"
     ( cd $i; $MANAGE makemessages --all;
 	)
 done
+)
 
 export_po
 

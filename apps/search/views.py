@@ -77,7 +77,7 @@ def hint(request):
     def category_name(c):
         if c.startswith('pd_'):
             c=c[len('pd_'):]
-            return _(c)
+        return _(c)
 
     return JSONResponse(
         [{'label': t.name,
