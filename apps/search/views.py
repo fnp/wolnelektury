@@ -74,11 +74,14 @@ def hint(request):
     tags = s.hint_tags(prefix, pdcounter=True)
     books = s.hint_books(prefix)
 
-    # TODO DODAC TU HINTY
+    def category_name(c):
+        if c.startswith('pd_'):
+            c=c[len('pd_'):]
+            return _(c)
 
     return JSONResponse(
         [{'label': t.name,
-          'category': _(t.category),
+          'category': category_name(t.category),
           'id': t.id,
           'url': t.get_absolute_url()}
           for t in tags] + \

@@ -27,7 +27,7 @@ from librarian import dcparser
 from librarian.parser import WLDocument
 from lxml import etree
 import catalogue.models
-from pdcounter.models import Author as PDCounterAuthor
+from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
 import atexit
@@ -169,10 +169,10 @@ class BaseIndex(IndexStore):
             analyzer = WLAnalyzer()
         self.analyzer = analyzer
 
-    def open(self, analyzer=None, timeout=None):
+    def open(self, timeout=None):
         if self.index:
             raise Exception("Index is already opened")
-        conf = IndexWriterConfig(Version.LUCENE_34, analyzer)
+        conf = IndexWriterConfig(Version.LUCENE_34, self.analyzer)
         if timeout:
             conf.setWriteLockTimeout(long(timeout))
         self.index = IndexWriter(self.store, conf)
@@ -227,7 +227,17 @@ class Index(BaseIndex):
             doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(pdtag.id)))
             doc.add(Field("tag_name", pdtag.name, Field.Store.NO, Field.Index.ANALYZED))
             doc.add(Field("tag_name_pl", pdtag.name, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_category", 'pdcounter', Field.Store.NO, Field.Index.NOT_ANALYZED))
+            doc.add(Field("tag_category", 'pd_author', Field.Store.YES, Field.Index.NOT_ANALYZED))
+            doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
+            self.index.addDocument(doc)
+
+        for pdtag in PDCounterBook.objects.all():
+            doc = Document()
+            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(pdtag.id)))
+            print pdtag.title
+            doc.add(Field("tag_name", pdtag.title, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("tag_name_pl", pdtag.title, Field.Store.NO, Field.Index.ANALYZED))
+            doc.add(Field("tag_category", 'pd_book', Field.Store.YES, Field.Index.NOT_ANALYZED))
             doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
             self.index.addDocument(doc)
 
@@ -264,7 +274,6 @@ class Index(BaseIndex):
                     book_doc.add(elem)
             else:
                 book_doc.add(f)
-
         self.index.addDocument(book_doc)
         del book_doc
 
@@ -1264,8 +1273,15 @@ class Search(IndexStore):
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
             is_pdcounter = doc.get('is_pdcounter')
-            if is_pdcounter:
-                tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
+            category = doc.get('tag_category')
+            if is_pdcounter == 'true':
+                if category == 'pd_author':
+                    tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
+                elif category == 'pd_book':
+                    tag = PDCounterBook.objects.get(id=doc.get('tag_id'))
+                    tag.category = 'pd_book'  # make it look more lik a tag.
+                else:
+                    print "Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)
             else:
                 tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
                 # don't add the pdcounter tag if same tag already exists
