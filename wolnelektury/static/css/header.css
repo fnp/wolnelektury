@@ -231,3 +231,16 @@ a.menu span {
 #lang-menu .active {
     color: #000;
 }
+
+.search-hint-label {
+    display: inline-block;
+    width: 25em;
+    font-size: 1.1em;
+    line-height: 1.636em;
+}
+
+.search-hint-category {
+    font-size: 1.1em;
+    line-height: 1.636em;
+    
+}

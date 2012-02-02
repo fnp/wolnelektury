@@ -29,7 +29,8 @@ var __bind = function (self, fn) {
    
 	render_item: function (ul, item) {
 	    return $("<li></li>").data('item.autocomplete', item)
-		.append('<a href="'+item.url+'">'+item.label+ ' ('+item.category+')</a>')
+		.append('<span class="search-hint-label"><a href="'+item.url+'">'+item.label+'</a></span>'+
+			'<span class="search-hint-category mono">'+item.category+'</span>')
 		.appendTo(ul);
 	},
 

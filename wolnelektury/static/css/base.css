@@ -26,10 +26,28 @@ body {
 a img {
 	border: 0;
 }
+
 a {
     color: #0d7e85; /*#1199a2;*/ /* #01adba; */
     text-decoration: none;
 }
+
+/* jquery UI overrides us */
+.ui-menu .ui-menu-item a {
+    color: #0d7e85 !important;
+    line-height: 1.636em !important;
+}
+
+.ui-widget {
+    font-family: Georgia !important;
+    font-size: 1em !important;
+}
+
+.ui-widget-content {
+    background: #EEEEEE !important; /* #E2E2E2 ? */
+    border-radius: 0px !important;
+}
+
 
 h1 {
     font-size: 3.5em;

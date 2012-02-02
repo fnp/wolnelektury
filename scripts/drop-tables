@@ -1,0 +1,5 @@
+#!/bin/bash
+DATABASE=$1
+USERNAME=$2
+PASSWORD=$3
+mysqldump -u$USERNAME -p$PASSWORD --add-drop-table --no-data $DATABASE | grep ^DROP | mysql -u$USERNAME -p$PASSWORD $DATABASE
