@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.core.management.base import (BaseCommand, CommandError,
                                          NoArgsCommand)
+from optparse import make_option
 
 from modeltranslation.translator import translator
 from modeltranslation.utils import build_localized_fieldname
@@ -11,8 +12,15 @@ class Command(NoArgsCommand):
     help = 'Updates the default translation fields of all or the specified' \
            'translated application using the value of the original field.'
 
+    option_list = BaseCommand.option_list + (
+        make_option('-d', '--default', action='store', dest='default', default=None), )
+
+
     def handle(self, **options):
-        default_lang = settings.LANGUAGES[0][0]
+        if options['default']:
+            default_lang = options['default']
+        else:
+            default_lang = settings.LANGUAGES[0][0]
         print "Using default language:", default_lang
 
         for model, trans_opts in translator._registry.items():

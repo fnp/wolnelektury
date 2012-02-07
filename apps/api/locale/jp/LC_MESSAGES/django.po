@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-07 15:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/api/main.html:4
+msgid "WolneLektury.pl API"
+msgstr ""
+
+#: templates/api/main.html:13
+msgid ""
+"\n"
+"WolneLektury.pl API resides under <code>http://www.wolnelektury.pl/api/</"
+"code>.\n"
+"You can use it to access information about books, their fragments and\n"
+"their metadata.\n"
+msgstr ""
+
+#: templates/api/main.html:21
+msgid ""
+"\n"
+"Default data serialization format is\n"
+"<a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>,\n"
+"but you can also use XML by appending <code>?format=xml</code>\n"
+"query parameter to each URL.\n"
+msgstr ""
+
+#: templates/api/main.html:30
+msgid ""
+"\n"
+"The URLs in WolneLektury.pl API are:\n"
+msgstr ""
+
+#: templates/api/main.html:36
+msgid "List of all books"
+msgstr ""
+
+#: templates/api/main.html:38
+msgid "List of all authors"
+msgstr ""
+
+#: templates/api/main.html:39
+msgid "List of all epochs"
+msgstr ""
+
+#: templates/api/main.html:40
+msgid "List of all genres"
+msgstr ""
+
+#: templates/api/main.html:41
+msgid "List of all kinds"
+msgstr ""
+
+#: templates/api/main.html:43
+msgid "List of all themes"
+msgstr ""
+
+#: templates/api/main.html:49
+#, python-format
+msgid ""
+"\n"
+"Each element of those lists contains a link (in a \"href\") attibute\n"
+"which points to individual resource's details, i.e.:\n"
+"<a href=\"%(e1)s\">%(e1)s</a> or\n"
+"<a href=\"%(e2)s\">%(e2)s</a>.\n"
+msgstr ""
+
+#: templates/api/main.html:58
+#, python-format
+msgid ""
+"\n"
+"You can combine authors, epochs, genres and kinds to find only books "
+"matching\n"
+"those criteria. For instance:\n"
+"<a href=\"%(e)s\">%(e)s</a>.\n"
+msgstr ""
+
+#: templates/api/main.html:66
+#, python-format
+msgid ""
+"\n"
+"If you only want top-level books and not all the children, you can use /"
+"parent_books/, as in:\n"
+"<a href=\"%(e)s\">%(e)s</a>.\n"
+msgstr ""
+
+#: templates/api/main.html:74
+#, python-format
+msgid ""
+"\n"
+"The same way, using also books and themes, you can search for a list of "
+"fragments:\n"
+"<a href=\"%(e)s\">%(e)s</a>. \n"
+"Again, each entry has a \"href\" attribute which links to the fragment's "
+"details, i.e.:\n"
+"<a href=\"%(f)s\">%(f)s</a>. \n"
+msgstr ""
