@@ -149,6 +149,17 @@ def book_tree(book_list, books_by_parent):
         return ''
 
 @register.simple_tag
+def audiobook_tree(book_list, books_by_parent):
+    text = "".join("<li><a class='open-player' href='%s'>%s</a>%s</li>" % (
+        reverse("book_player", args=[book.slug]), book.title, audiobook_tree(books_by_parent.get(book, ()), books_by_parent)
+        ) for book in book_list)
+
+    if text:
+        return "<ol>%s</ol>" % text
+    else:
+        return ''
+
+@register.simple_tag
 def book_tree_texml(book_list, books_by_parent, depth=1):
     return "".join("""
             <cmd name='hspace'><parm>%(depth)dem</parm></cmd>%(title)s

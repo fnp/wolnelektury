@@ -379,7 +379,7 @@ div.jp-playlist ul {
 	list-style-type:none;
 	margin:0;
 	padding:0 20px;
-	font-size:.72em;
+	font-size:.8em;
 }
 
 div.jp-title li {
@@ -411,10 +411,10 @@ div.jp-type-playlist div.jp-playlist a {
 	text-decoration: none;
 }
 div.jp-type-playlist div.jp-playlist a:hover {
-	color:#0d88c1;
+	color:#0D7E85;
 }
 div.jp-type-playlist div.jp-playlist a.jp-playlist-current {
-	color:#0d88c1;
+	color:#0D7E85;
 }
 
 div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove {
@@ -426,7 +426,7 @@ div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove {
 	color:#666;
 }
 div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove:hover {
-	color:#0d88c1;
+	color:#0D7E85;
 }
 div.jp-type-playlist div.jp-playlist span.jp-free-media {
 	float:right;
@@ -438,7 +438,7 @@ div.jp-type-playlist div.jp-playlist span.jp-free-media a{
 	color:#565656;
 }
 div.jp-type-playlist div.jp-playlist span.jp-free-media a:hover{
-	color:#0d88c1;
+	color:#0D7E85;
 }
 span.jp-artist {
 	font-size:.8em;
