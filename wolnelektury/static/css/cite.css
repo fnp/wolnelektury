@@ -24,12 +24,6 @@
 }
 
 
-/* a long cite displays smaller */ 
-.cite-small .cite-body span {
-	font-size: 1.4em;
-}
-
-
 
 #big-cite {
     background-color: #bd9a89; /* average image color */
