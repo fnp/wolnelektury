@@ -20,6 +20,8 @@ for ip in data:
     dst3 = os.path.join(dst2, ip['fields']['slug'])
     mkdir(dst3)
     for fld, val in ip['fields'].items():
+        if val is None:
+            val = ''
         if filter(lambda x: fld.startswith(x),
                   ['title', 'left_column', 'right_column']):
             o = open(os.path.join(dst3, fld+".txt"),'w')

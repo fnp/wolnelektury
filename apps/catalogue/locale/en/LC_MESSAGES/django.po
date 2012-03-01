@@ -2,257 +2,216 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-25 10:24+0000\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
 "PO-Revision-Date: 2010-08-25 10:45\n"
 "Last-Translator: <radek.czajka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 
-#: fields.py:47
+#: fields.py:42
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
 msgstr "Enter a valid JSON value. Error: %s"
 
-#: forms.py:28
-msgid "title, author, theme/topic, epoch, kind, genre"
-msgstr "title, author, motifs/theme, period, form, genre"
+#: forms.py:23
+msgid "Please supply an XML."
+msgstr ""
 
-#: forms.py:45
-msgid "Shelves"
-msgstr "Shelves"
+#: forms.py:42
+msgid "A4"
+msgstr ""
 
-#: forms.py:58
-msgid "Name of the new shelf"
-msgstr "Name of the new shelf"
+#: forms.py:43
+msgid "A5"
+msgstr ""
 
-#: models.py:25 models.py:585
+#: forms.py:48
+msgid "Normal leading"
+msgstr ""
+
+#: forms.py:49
+msgid "One and a half leading"
+msgstr ""
+
+#: forms.py:50
+msgid "Double leading"
+msgstr ""
+
+#: forms.py:54
+msgid "Default"
+msgstr ""
+
+#: forms.py:55
+msgid "Big"
+msgstr ""
+
+#: forms.py:60
+msgid "Don't show footnotes"
+msgstr ""
+
+#: forms.py:61
+msgid "Don't disply themes"
+msgstr ""
+
+#: forms.py:62
+msgid "Don't use our custom font"
+msgstr ""
+
+#: forms.py:64
+msgid "Leading"
+msgstr ""
+
+#: forms.py:65
+msgid "Font size"
+msgstr ""
+
+#: models.py:38
 msgid "author"
 msgstr "author"
 
-#: models.py:26
+#: models.py:39
 msgid "epoch"
 msgstr "period"
 
-#: models.py:27
+#: models.py:40
 msgid "kind"
 msgstr "form"
 
-#: models.py:28
+#: models.py:41
 msgid "genre"
 msgstr "genre"
 
-#: models.py:29
+#: models.py:42
 msgid "theme"
 msgstr "motif"
 
-#: models.py:30
+#: models.py:43
 msgid "set"
 msgstr "set"
 
-#: models.py:31 models.py:204
+#: models.py:44 models.py:390
 msgid "book"
 msgstr "book"
 
-#: models.py:45
+#: models.py:61 models.py:253
 msgid "name"
 msgstr "name"
 
-#: models.py:46 models.py:170 models.py:587 models.py:612
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
 msgid "slug"
 msgstr "Slug"
 
-#: models.py:47
+#: models.py:63 models.py:354
 msgid "sort key"
 msgstr "Sort key"
 
-#: models.py:48
+#: models.py:64
 msgid "category"
 msgstr "Category"
 
-#: models.py:50 models.py:87 models.py:171 models.py:306
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
 msgid "description"
 msgstr "Description"
 
-#: models.py:51
-msgid "main page"
-msgstr "Main page"
-
-#: models.py:51
-msgid "Show tag on main page"
-msgstr "Show tag on main page"
-
-#: models.py:54
+#: models.py:69
 msgid "book count"
 msgstr "Number of books"
 
-#: models.py:55
-msgid "year of death"
-msgstr "Year of death"
-
-#: models.py:71
-msgid "tag"
-msgstr "tag"
-
-#: models.py:72
-msgid "tags"
-msgstr "tags"
-
-#: models.py:169 models.py:584
-msgid "title"
-msgstr "Title"
-
-#: models.py:172
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
 msgid "creation date"
 msgstr "Date of publication"
 
-#: models.py:173
-msgid "short HTML"
-msgstr "short HTML"
+#: models.py:91
+msgid "tag"
+msgstr "tag"
 
-#: models.py:174
-msgid "parent number"
-msgstr "Parent number"
+#: models.py:92
+msgid "tags"
+msgstr "tags"
 
-#: models.py:175
+#: models.py:249 models.py:972
+#, fuzzy, python-format
+msgid "%s file"
+msgstr "XML file"
+
+#: models.py:252
+msgid "type"
+msgstr ""
+
+#: models.py:254
+#, fuzzy
+msgid "file"
+msgstr "XML file"
+
+#: models.py:256 models.py:364
 msgid "extra information"
 msgstr "Additional information"
 
-#: models.py:181
-msgid "XML file"
-msgstr "XML file"
+#: models.py:265 models.py:266
+msgid "book media"
+msgstr ""
 
-#: models.py:182
-msgid "HTML file"
-msgstr "HTML file"
+#: models.py:353 models.py:1028
+msgid "title"
+msgstr "Title"
 
-#: models.py:183
-msgid "PDF file"
-msgstr "PDF file"
+#: models.py:358
+msgid "language code"
+msgstr ""
 
-#: models.py:184
-msgid "EPUB file"
-msgstr "EPUB file"
+#: models.py:363
+msgid "parent number"
+msgstr "Parent number"
 
-#: models.py:185
-msgid "ODT file"
-msgstr "ODT file"
+#: models.py:369
+msgid "cover"
+msgstr ""
 
-#: models.py:186
-msgid "TXT file"
-msgstr "TXT file"
-
-#: models.py:187
-msgid "MP3 file"
-msgstr "MP3 file"
-
-#: models.py:188
-msgid "OGG file"
-msgstr "OGG file"
-
-msgid "DAISY file"
-msgstr "DAISY file"
-
-#: models.py:205
+#: models.py:391
 msgid "books"
 msgstr "Books"
 
-#: models.py:263
-msgid "Read online"
-msgstr "Read online"
+#: models.py:690
+#, fuzzy, python-format
+msgid "Book \"%s\" does not exist."
+msgstr "Book with slug = \"%s\" does not exist."
 
-#: models.py:403
+#: models.py:704
 #, python-format
 msgid "Book %s already exists"
 msgstr "Book %s already exists"
 
-#: models.py:444
-#, python-format
-msgid "Book with slug = \"%s\" does not exist."
-msgstr "Book with slug = \"%s\" does not exist."
-
-#: models.py:565
+#: models.py:991
 msgid "fragment"
 msgstr "Fragment"
 
-#: models.py:566
+#: models.py:992
 msgid "fragments"
 msgstr "Fragments"
 
-#: models.py:586
-msgid "goes to public domain"
-msgstr "Goes to public domain"
-
-#: models.py:588
-msgid "translator"
-msgstr "Translator"
-
-#: models.py:589
-msgid "year of translator's death"
-msgstr "Year of translator's death"
-
-#: models.py:593
-msgid "book stub"
-msgstr "Book stub"
-
-#: models.py:594
-msgid "book stubs"
+#: models.py:1033
+#, fuzzy
+msgid "book slugs"
 msgstr "Book stubs"
 
-#: models.py:613
-msgid "type"
+#: models.py:1037
+msgid "collection"
 msgstr ""
 
-#: models.py:614
-msgid "sha-1 hash"
+#: models.py:1038
+msgid "collections"
 msgstr ""
 
-#: models.py:615
-msgid "time"
-msgstr "time"
-
-#: models.py:619
-msgid "file record"
-msgstr ""
-
-#: models.py:620
-msgid "file records"
-msgstr ""
-
-#: views.py:452
-msgid "<p>To maintain your shelves you need to be logged in.</p>"
-msgstr "<p>To administer your shelves you need to be logged in.</p>"
-
-#: views.py:470
-msgid "<p>Shelves were sucessfully saved.</p>"
-msgstr "<p>Shelves were sucessfully saved.</p>"
-
-#: views.py:494
-msgid "Book was successfully removed from the shelf"
-msgstr "Book was successfully removed from the shelf"
-
-#: views.py:496
-msgid "This book is not on the shelf"
-msgstr "This book is not on the shelf"
-
-#: views.py:599
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
-msgstr "<p>Shelf <strong>%s</strong> was successfully created</p>"
-
-#: views.py:614
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
-msgstr "<p>Shelf <strong>%s</strong> was successfully removed</p>"
-
-#: views.py:673
+#: views.py:500
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -263,14 +222,111 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:674
+#: views.py:501
 msgid "Book imported successfully"
 msgstr "Book imported succesfully"
 
-#: views.py:676
+#: views.py:503
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Error occured while importing file: %r"
+
+#: views.py:547
+msgid "Incorrect customization options for PDF"
+msgstr ""
+
+#: views.py:549
+msgid "Bad method"
+msgstr ""
+
+#: views.py:554
+msgid "Download custom PDF"
+msgstr ""
+
+#: views.py:555
+msgid "Download"
+msgstr ""
+
+#~ msgid "title, author, theme/topic, epoch, kind, genre"
+#~ msgstr "title, author, motifs/theme, period, form, genre"
+
+#~ msgid "Shelves"
+#~ msgstr "Shelves"
+
+#~ msgid "Name of the new shelf"
+#~ msgstr "Name of the new shelf"
+
+#~ msgid "main page"
+#~ msgstr "Main page"
+
+#~ msgid "Show tag on main page"
+#~ msgstr "Show tag on main page"
+
+#~ msgid "year of death"
+#~ msgstr "Year of death"
+
+#~ msgid "short HTML"
+#~ msgstr "short HTML"
+
+#~ msgid "HTML file"
+#~ msgstr "HTML file"
+
+#~ msgid "PDF file"
+#~ msgstr "PDF file"
+
+#~ msgid "EPUB file"
+#~ msgstr "EPUB file"
+
+#~ msgid "ODT file"
+#~ msgstr "ODT file"
+
+#~ msgid "TXT file"
+#~ msgstr "TXT file"
+
+#~ msgid "MP3 file"
+#~ msgstr "MP3 file"
+
+#~ msgid "OGG file"
+#~ msgstr "OGG file"
+
+#~ msgid "DAISY file"
+#~ msgstr "DAISY file"
+
+#~ msgid "Read online"
+#~ msgstr "Read online"
+
+#~ msgid "goes to public domain"
+#~ msgstr "Goes to public domain"
+
+#~ msgid "translator"
+#~ msgstr "Translator"
+
+#~ msgid "year of translator's death"
+#~ msgstr "Year of translator's death"
+
+#~ msgid "book stub"
+#~ msgstr "Book stub"
+
+#~ msgid "time"
+#~ msgstr "time"
+
+#~ msgid "<p>To maintain your shelves you need to be logged in.</p>"
+#~ msgstr "<p>To administer your shelves you need to be logged in.</p>"
+
+#~ msgid "<p>Shelves were sucessfully saved.</p>"
+#~ msgstr "<p>Shelves were sucessfully saved.</p>"
+
+#~ msgid "Book was successfully removed from the shelf"
+#~ msgstr "Book was successfully removed from the shelf"
+
+#~ msgid "This book is not on the shelf"
+#~ msgstr "This book is not on the shelf"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
+#~ msgstr "<p>Shelf <strong>%s</strong> was successfully created</p>"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
+#~ msgstr "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 
 #~ msgid "Today is %(month)s, %(day)s."
 #~ msgstr "Today is %(month)s, %(day)s."

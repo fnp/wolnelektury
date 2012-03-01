@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 13:52+0000\n"
-"PO-Revision-Date: 2010-08-07 20:25+0100\n"
-"Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
+"PO-Revision-Date: 2012-02-22 20:58+0100\n"
+"Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "nom"
 
 #: models.py:13 models.py:64
 msgid "slug"
-msgstr "slug"
+msgstr "ébauche"
 
 #: models.py:14
 msgid "sort key"
@@ -41,9 +41,8 @@ msgid "author"
 msgstr "auteur"
 
 #: models.py:23
-#, fuzzy
 msgid "authors"
-msgstr "auteur"
+msgstr "auteurs"
 
 #: models.py:61
 msgid "title"
@@ -57,15 +56,13 @@ msgstr "entre dans le domaine public"
 msgid "translator"
 msgstr "traducteur"
 
-#: models.py:66
-msgid "year of translator's death"
-msgstr "année de la mort du traducteur"
-
-#: models.py:70
+#: models.py:69
 msgid "book stub"
 msgstr "ébauche du livre"
 
-#: models.py:71
+#: models.py:70
 msgid "book stubs"
 msgstr "ébauches des livres"
 
+#~ msgid "year of translator's death"
+#~ msgstr "année de la mort du traducteur"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 16:43+0100\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
 "PO-Revision-Date: 2011-06-09 13:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,15 +85,15 @@ msgstr "sugestia publikacji"
 msgid "publishing suggestions"
 msgstr "sugestie publikacji"
 
-#: views.py:14 views.py:22
+#: views.py:14 views.py:21
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: views.py:16 views.py:24
+#: views.py:16 views.py:23
 msgid "Report was sent successfully."
 msgstr "Zgłoszenie zostało wysłane."
 
-#: views.py:23 templates/publishing_suggest.html:15
+#: views.py:22 templates/publishing_suggest.html:15
 msgid "Send report"
 msgstr "Wyślij zgłoszenie"
 

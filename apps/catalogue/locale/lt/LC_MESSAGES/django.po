@@ -7,264 +7,211 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 11:21+0200\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
 "PO-Revision-Date: 2010-07-12 19:07+0100\n"
 "Last-Translator: Alicja Sinkiewicz <alicja.sinkiewicz@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: fields.py:47
+#: fields.py:42
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
 msgstr "Įvėsk atitinkama vertybę JSON. Klaida: %s"
 
-#: forms.py:28
-msgid "title, author, theme/topic, epoch, kind, genre"
-msgstr "Pavadinimas , autorius, motyvas /tema, gadynė, 	rūšis, sortas"
+#: forms.py:23
+msgid "Please supply an XML."
+msgstr ""
 
-#: forms.py:44
-msgid "Shelves"
-msgstr "Lentynos"
+#: forms.py:42
+msgid "A4"
+msgstr ""
 
-#: forms.py:57
-msgid "Name of the new shelf"
-msgstr "Naujos lentynos pavadinimas"
+#: forms.py:43
+msgid "A5"
+msgstr ""
 
-#: models.py:24
-#: models.py:363
+#: forms.py:48
+msgid "Normal leading"
+msgstr ""
+
+#: forms.py:49
+msgid "One and a half leading"
+msgstr ""
+
+#: forms.py:50
+msgid "Double leading"
+msgstr ""
+
+#: forms.py:54
+msgid "Default"
+msgstr ""
+
+#: forms.py:55
+msgid "Big"
+msgstr ""
+
+#: forms.py:60
+msgid "Don't show footnotes"
+msgstr ""
+
+#: forms.py:61
+msgid "Don't disply themes"
+msgstr ""
+
+#: forms.py:62
+msgid "Don't use our custom font"
+msgstr ""
+
+#: forms.py:64
+msgid "Leading"
+msgstr ""
+
+#: forms.py:65
+msgid "Font size"
+msgstr ""
+
+#: models.py:38
 msgid "author"
 msgstr "autorius"
 
-#: models.py:25
+#: models.py:39
 msgid "epoch"
 msgstr "gadynė"
 
-#: models.py:26
+#: models.py:40
 msgid "kind"
 msgstr "rūšis"
 
-#: models.py:27
+#: models.py:41
 msgid "genre"
 msgstr "sortas"
 
-#: models.py:28
+#: models.py:42
 msgid "theme"
 msgstr "motyvas"
 
-#: models.py:29
+#: models.py:43
 msgid "set"
 msgstr "rinkinys"
 
-#: models.py:30
-#: models.py:322
+#: models.py:44 models.py:390
 msgid "book"
 msgstr "knyga"
 
-#: models.py:44
-#: migrations/0001_initial.py:47
+#: models.py:61 models.py:253
 msgid "name"
 msgstr "pavadinimas"
 
-#: models.py:45
-#: models.py:103
-#: models.py:365
-#: migrations/0001_initial.py:19
-#: migrations/0001_initial.py:48
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
 msgid "slug"
 msgstr "slugas"
 
-#: models.py:46
-#: migrations/0001_initial.py:49
+#: models.py:63 models.py:354
 msgid "sort key"
 msgstr "rūšiavimo raktas"
 
-#: models.py:47
-#: migrations/0001_initial.py:50
+#: models.py:64
 msgid "category"
 msgstr "kategorija  "
 
-#: models.py:49
-#: models.py:60
-#: models.py:104
-#: models.py:185
-#: migrations/0001_initial.py:20
-#: migrations/0001_initial.py:51
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
 msgid "description"
 msgstr "aprašymas"
 
-#: models.py:50
-#: migrations/0001_initial.py:52
-msgid "main page"
-msgstr "pagrindinis puslapis"
-
-#: models.py:50
-#: migrations/0001_initial.py:52
-msgid "Show tag on main page"
-msgstr "Parodyk tagą pagrindinemę puslapyję"
-
-#: models.py:53
-#: migrations/0001_initial.py:54
+#: models.py:69
 msgid "book count"
 msgstr "knygų skaičius"
 
-#: models.py:54
-msgid "year of death"
-msgstr "mirimo metai"
-
-#: models.py:80
-#: migrations/0001_initial.py:61
-msgid "tag"
-msgstr "tagas"
-
-#: models.py:81
-msgid "tags"
-msgstr "tagai"
-
-#: models.py:102
-#: models.py:362
-#: migrations/0001_initial.py:18
-msgid "title"
-msgstr "pavadinimas"
-
-#: models.py:105
-#: migrations/0001_initial.py:21
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
 msgid "creation date"
 msgstr "sukūrimo data"
 
-#: models.py:106
-#: migrations/0001_initial.py:22
-msgid "short HTML"
-msgstr "trumpas  HTML"
+#: models.py:91
+msgid "tag"
+msgstr "tagas"
 
-#: models.py:107
-#: migrations/0001_initial.py:23
-msgid "parent number"
-msgstr "vieno iš tėvų numeris "
+#: models.py:92
+msgid "tags"
+msgstr "tagai"
 
-#: models.py:108
+#: models.py:249 models.py:972
+#, fuzzy, python-format
+msgid "%s file"
+msgstr "XML failas "
+
+#: models.py:252
+msgid "type"
+msgstr ""
+
+#: models.py:254
+#, fuzzy
+msgid "file"
+msgstr "XML failas "
+
+#: models.py:256 models.py:364
 msgid "extra information"
 msgstr "papildomos informacijos"
 
-#: models.py:114
-#: migrations/0001_initial.py:24
-msgid "XML file"
-msgstr "XML failas "
+#: models.py:265 models.py:266
+msgid "book media"
+msgstr ""
 
-#: models.py:115
-#: migrations/0001_initial.py:25
-msgid "HTML file"
-msgstr "HTML failas"
+#: models.py:353 models.py:1028
+msgid "title"
+msgstr "pavadinimas"
 
-#: models.py:116
-#: migrations/0001_initial.py:26
-msgid "PDF file"
-msgstr "PDF failas"
+#: models.py:358
+msgid "language code"
+msgstr ""
 
-msgid "EPUB file"
-msgstr "EPUB failas"
+#: models.py:363
+msgid "parent number"
+msgstr "vieno iš tėvų numeris "
 
-#: models.py:117
-#: migrations/0001_initial.py:27
-msgid "ODT file"
-msgstr "ODT failas"
+#: models.py:369
+msgid "cover"
+msgstr ""
 
-#: models.py:118
-#: migrations/0001_initial.py:28
-msgid "TXT file"
-msgstr "TXT failsa"
+#: models.py:391
+msgid "books"
+msgstr "knygos"
 
-#: models.py:119
-msgid "MP3 file"
-msgstr "MP3 failas"
+#: models.py:690
+#, fuzzy, python-format
+msgid "Book \"%s\" does not exist."
+msgstr "Knyga su slug = \"%s\" neegzistuoja."
 
-#: models.py:120
-msgid "OGG file"
-msgstr "OGG failas"
-
-msgid "DAISY file"
-msgstr "DAISY failas"
-
-#: models.py:141
-msgid "Read online"
-msgstr "Skaityk online"
-
-#: models.py:221
+#: models.py:704
 #, python-format
 msgid "Book %s already exists"
 msgstr "Knyga %s jau egzistuoja"
 
-#: models.py:264
-#, python-format
-msgid "Book with slug = \"%s\" does not exist."
-msgstr "Knyga su slug = \"%s\" neegzistuoja."
-
-#: models.py:323
-msgid "books"
-msgstr "knygos"
-
-#: models.py:357
+#: models.py:991
 msgid "fragment"
 msgstr "fragmentas"
 
-#: models.py:358
+#: models.py:992
 msgid "fragments"
 msgstr "fragmentai"
 
-#: models.py:364
-msgid "goes to public domain"
-msgstr "keliauja į viešą tinklapį  "
-
-#: models.py:366
-msgid "translator"
-msgstr "vertėjas"
-
-#: models.py:367
-msgid "year of translator's death"
-msgstr "vertėjo mirimo metai"
-
-#: models.py:385
-msgid "book stub"
-msgstr "knygos paskelbimas"
-
-#: models.py:386
-msgid "book stubs"
+#: models.py:1033
+#, fuzzy
+msgid "book slugs"
 msgstr "knygu paskelbimai"
 
-#: views.py:339
-msgid "<p>To maintain your shelves you need to be logged in.</p>"
-msgstr "<p>Kad valdyti savo lentynom, turi prisijungti.</p>"
+#: models.py:1037
+msgid "collection"
+msgstr ""
 
-#: views.py:357
-msgid "<p>Shelves were sucessfully saved.</p>"
-msgstr "<p>Lentynos liko užrašytos.</p>"
+#: models.py:1038
+msgid "collections"
+msgstr ""
 
-#: views.py:381
-msgid "Book was successfully removed from the shelf"
-msgstr "pašalinta"
-
-#: views.py:383
-msgid "This book is not on the shelf"
-msgstr "Lentynoje trūksta knygos"
-
-#: views.py:479
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
-msgstr "<p>Lentyna <strong>%s</strong> sukurta</p>"
-
-#: views.py:494
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
-msgstr "<p>Lentyna <strong>%s</strong>pašalinta</p>"
-
-#: views.py:553
-#, python-format
-msgid "Today is %(month)s, %(day)s."
-msgstr "Šiandien yra %(month)s, %(day)s."
-
-#: views.py:554
+#: views.py:500
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -275,20 +222,114 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:555
+#: views.py:501
 msgid "Book imported successfully"
 msgstr "knygos importavimas"
 
-#: views.py:557
+#: views.py:503
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Failo klaida imortavimo metu: %r"
 
-#: migrations/0001_initial.py:62
-msgid "content type"
-msgstr "turinio rūšis"
+#: views.py:547
+msgid "Incorrect customization options for PDF"
+msgstr ""
 
-#: migrations/0001_initial.py:63
-msgid "object id"
-msgstr "id obiektas"
+#: views.py:549
+msgid "Bad method"
+msgstr ""
 
+#: views.py:554
+msgid "Download custom PDF"
+msgstr ""
+
+#: views.py:555
+msgid "Download"
+msgstr ""
+
+#~ msgid "title, author, theme/topic, epoch, kind, genre"
+#~ msgstr "Pavadinimas , autorius, motyvas /tema, gadynė, \trūšis, sortas"
+
+#~ msgid "Shelves"
+#~ msgstr "Lentynos"
+
+#~ msgid "Name of the new shelf"
+#~ msgstr "Naujos lentynos pavadinimas"
+
+#~ msgid "main page"
+#~ msgstr "pagrindinis puslapis"
+
+#~ msgid "Show tag on main page"
+#~ msgstr "Parodyk tagą pagrindinemę puslapyję"
+
+#~ msgid "year of death"
+#~ msgstr "mirimo metai"
+
+#~ msgid "short HTML"
+#~ msgstr "trumpas  HTML"
+
+#~ msgid "HTML file"
+#~ msgstr "HTML failas"
+
+#~ msgid "PDF file"
+#~ msgstr "PDF failas"
+
+#~ msgid "EPUB file"
+#~ msgstr "EPUB failas"
+
+#~ msgid "ODT file"
+#~ msgstr "ODT failas"
+
+#~ msgid "TXT file"
+#~ msgstr "TXT failsa"
+
+#~ msgid "MP3 file"
+#~ msgstr "MP3 failas"
+
+#~ msgid "OGG file"
+#~ msgstr "OGG failas"
+
+#~ msgid "DAISY file"
+#~ msgstr "DAISY failas"
+
+#~ msgid "Read online"
+#~ msgstr "Skaityk online"
+
+#~ msgid "goes to public domain"
+#~ msgstr "keliauja į viešą tinklapį  "
+
+#~ msgid "translator"
+#~ msgstr "vertėjas"
+
+#~ msgid "year of translator's death"
+#~ msgstr "vertėjo mirimo metai"
+
+#~ msgid "book stub"
+#~ msgstr "knygos paskelbimas"
+
+#~ msgid "<p>To maintain your shelves you need to be logged in.</p>"
+#~ msgstr "<p>Kad valdyti savo lentynom, turi prisijungti.</p>"
+
+#~ msgid "<p>Shelves were sucessfully saved.</p>"
+#~ msgstr "<p>Lentynos liko užrašytos.</p>"
+
+#~ msgid "Book was successfully removed from the shelf"
+#~ msgstr "pašalinta"
+
+#~ msgid "This book is not on the shelf"
+#~ msgstr "Lentynoje trūksta knygos"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
+#~ msgstr "<p>Lentyna <strong>%s</strong> sukurta</p>"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
+#~ msgstr "<p>Lentyna <strong>%s</strong>pašalinta</p>"
+
+#~ msgid "Today is %(month)s, %(day)s."
+#~ msgstr "Šiandien yra %(month)s, %(day)s."
+
+#~ msgid "content type"
+#~ msgstr "turinio rūšis"
+
+#~ msgid "object id"
+#~ msgstr "id obiektas"

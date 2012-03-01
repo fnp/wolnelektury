@@ -22,7 +22,13 @@ var LOCALE_TEXTS = {
     },
     "uk":{
         "Loading": "Завантажується"
-    }
+    },
+    "jp":{
+        "Loading": "負荷"
+    },
+    "it":{
+	"Loading": "caricamento"
+    },
 }
 function gettext(text) {
     return LOCALE_TEXTS[LANGUAGE_CODE][text];

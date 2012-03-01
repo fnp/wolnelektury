@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 15:44+0100\n"
+"POT-Creation-Date: 2012-03-01 11:25+0100\n"
 "PO-Revision-Date: 2012-02-07 15:50+0100\n"
 "Last-Translator: Marcin Koziej <marcin@lolownia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,16 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: views.py:31
-#: views.py:32
-#: templates/base.html:63
+#: views.py:31 views.py:32 templates/base.html:63
 msgid "Sign in"
 msgstr "Zaloguj"
 
-#: views.py:47
-#: views.py:48
-#: views.py:73
-#: templates/base.html:67
+#: views.py:47 views.py:48 views.py:73 templates/base.html:67
 msgid "Register"
 msgstr ""
 
@@ -42,24 +37,28 @@ msgid "Page not found"
 msgstr ""
 
 #: templates/404.html:14
-msgid "We are sorry, but this page does not exist. Please check if you entered correct address or go to "
+msgid ""
+"We are sorry, but this page does not exist. Please check if you entered "
+"correct address or go to "
 msgstr ""
 
 #: templates/404.html:14
 msgid "main page"
 msgstr ""
 
-#: templates/500.html:6
-#: templates/500.html.py:54
+#: templates/500.html:6 templates/500.html.py:54
 msgid "Server error"
 msgstr ""
 
 #: templates/500.html:55
-msgid "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our <a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the error.</p>"
+msgid ""
+"<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
+"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
+"error.</p>"
 msgstr ""
 
-#: templates/503.html:6
-#: templates/503.html.py:54
+#: templates/503.html:6 templates/503.html.py:54
 msgid "Service unavailable"
 msgstr ""
 
@@ -67,9 +66,8 @@ msgstr ""
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr ""
 
-#: templates/base.html:9
-#: templates/catalogue/book_text.html:8
-#: templates/catalogue/player.html:8
+#: templates/base.html:9 templates/base.html.py:34
+#: templates/catalogue/book_text.html:8 templates/catalogue/player.html:8
 msgid "Wolne Lektury"
 msgstr ""
 
@@ -77,11 +75,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a href='%(r)s'>right to</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
+"href='%(r)s'>right to</a>\n"
 "                    "
 msgid_plural ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a href='%(r)s'>right to</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
+"href='%(r)s'>right to</a>\n"
 "                    "
 msgstr[0] ""
 msgstr[1] ""
@@ -102,8 +102,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:89
-#: templates/catalogue/search_multiple_hits.html:5
+#: templates/base.html:89 templates/catalogue/search_multiple_hits.html:5
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
 #: templates/catalogue/search_too_short.html:5
@@ -119,8 +118,12 @@ msgstr ""
 #: templates/base.html:142
 msgid ""
 "\n"
-"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
-"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
+"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
+"org.pl/\">Modern Poland Foundation</a>.\n"
+"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
+"\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
+"\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
+"\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
 "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
 "\t\t\t\t"
 msgstr ""
@@ -128,8 +131,10 @@ msgstr ""
 #: templates/base.html:149
 msgid ""
 "\n"
-"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
+"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
+"lok. 125, tel/fax: (22) 621-30-17\n"
+"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+"\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 msgstr ""
 
@@ -145,6 +150,18 @@ msgstr ""
 msgid "Wolne Lektury internet library"
 msgstr ""
 
+#: templates/main_page.html:21
+msgid "Recent publications"
+msgstr ""
+
+#: templates/main_page.html:31
+msgid "News"
+msgstr ""
+
+#: templates/main_page.html:39
+msgid "Utilities"
+msgstr ""
+
 #: templates/main_page.html:42
 msgid "Report a bug or suggestion"
 msgstr ""
@@ -157,18 +174,20 @@ msgstr ""
 msgid "Missing a book?"
 msgstr ""
 
-#: templates/main_page.html:47
-#: templates/publish_plan.html:4
+#: templates/main_page.html:47 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
+msgstr ""
+
+#: templates/main_page.html:53
+msgid "Information"
 msgstr ""
 
 #: templates/main_page.html:73
 msgid "Image used:"
 msgstr ""
 
-#: templates/admin/base_site.html:4
-#: templates/admin/base_site.html.py:7
+#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
 msgid "Site administration"
 msgstr ""
 
@@ -240,7 +259,8 @@ msgid ""
 "        distributed. If there are any additional copyrighted materials\n"
 "        provided with this work (such as annotations, motifs etc.), those\n"
 "        materials are licensed under the \n"
-"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
+"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
+"Commons Attribution-ShareAlike 3.0</a>\n"
 "        license."
 msgstr ""
 
@@ -252,8 +272,7 @@ msgstr ""
 msgid "Edited and annotated by:"
 msgstr ""
 
-#: templates/catalogue/book_list.html:7
-#: templates/catalogue/book_list.html:10
+#: templates/catalogue/book_list.html:7 templates/catalogue/book_list.html:10
 msgid "Listing of all works"
 msgstr ""
 
@@ -269,8 +288,7 @@ msgstr ""
 msgid "Put a book on the shelf!"
 msgstr ""
 
-#: templates/catalogue/book_sets.html:3
-#: templates/catalogue/book_sets.html:6
+#: templates/catalogue/book_sets.html:3 templates/catalogue/book_sets.html:6
 #: templates/catalogue/fragment_sets.html:16
 msgid "Create new shelf"
 msgstr ""
@@ -304,10 +322,27 @@ msgid "Read online"
 msgstr ""
 
 #: templates/catalogue/book_short.html:84
-#: templates/catalogue/book_text.html:26
-#: templates/catalogue/book_wide.html:53
+#: templates/catalogue/book_text.html:26 templates/catalogue/book_wide.html:53
 #: templates/lessons/ajax_document_detail.html:3
 msgid "Download"
+msgstr ""
+
+#: templates/catalogue/book_short.html:87
+#: templates/catalogue/book_text.html:35
+msgid "to print"
+msgstr ""
+
+#: templates/catalogue/book_short.html:90
+msgid "for an e-book reader"
+msgstr ""
+
+#: templates/catalogue/book_short.html:93
+#: templates/catalogue/book_text.html:41
+msgid "for Kindle"
+msgstr ""
+
+#: templates/catalogue/book_short.html:96
+msgid "for advanced usage"
 msgstr ""
 
 #: templates/catalogue/book_short.html:102
@@ -318,8 +353,7 @@ msgstr ""
 msgid "Table of contents"
 msgstr ""
 
-#: templates/catalogue/book_text.html:22
-#: templates/catalogue/menu.html:27
+#: templates/catalogue/book_text.html:22 templates/catalogue/menu.html:27
 msgid "Themes"
 msgstr ""
 
@@ -335,8 +369,15 @@ msgstr ""
 msgid "Book's page"
 msgstr ""
 
-#: templates/catalogue/book_text.html:46
-#: templates/catalogue/book_wide.html:63
+#: templates/catalogue/book_text.html:38
+msgid "for a reader"
+msgstr ""
+
+#: templates/catalogue/book_text.html:44
+msgid "for advanced usege"
+msgstr ""
+
+#: templates/catalogue/book_text.html:46 templates/catalogue/book_wide.html:63
 msgid "Download a custom PDF"
 msgstr ""
 
@@ -385,8 +426,7 @@ msgstr ""
 msgid "Download all audiobooks for this book"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:6
-#: templates/catalogue/catalogue.html:11
+#: templates/catalogue/catalogue.html:6 templates/catalogue/catalogue.html:11
 msgid "Catalogue"
 msgstr ""
 
@@ -394,29 +434,25 @@ msgstr ""
 msgid "Download the catalogue in PDF format."
 msgstr ""
 
-#: templates/catalogue/catalogue.html:19
-#: templates/catalogue/menu.html:7
+#: templates/catalogue/catalogue.html:19 templates/catalogue/menu.html:7
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
 msgid "Authors"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:22
-#: templates/catalogue/menu.html:17
+#: templates/catalogue/catalogue.html:22 templates/catalogue/menu.html:17
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
 msgid "Kinds"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:25
-#: templates/catalogue/menu.html:12
+#: templates/catalogue/catalogue.html:25 templates/catalogue/menu.html:12
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
 msgid "Genres"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:28
-#: templates/catalogue/menu.html:22
+#: templates/catalogue/catalogue.html:28 templates/catalogue/menu.html:22
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
 msgid "Epochs"
@@ -439,7 +475,8 @@ msgstr ""
 msgid ""
 "System DAISY to uznany na całym świecie format udostępniania książek\n"
 "dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
-"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez ograniczeń."
+"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
+"ograniczeń."
 msgstr ""
 
 #: templates/catalogue/differentiate_tags.html:12
@@ -547,7 +584,8 @@ msgstr ""
 
 #: templates/catalogue/player.html:111
 #, python-format
-msgid "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
+msgid ""
+"Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 msgstr ""
 
 #: templates/catalogue/player.html:113
@@ -583,7 +621,8 @@ msgstr ""
 
 #: templates/catalogue/search_no_hits.html:21
 msgid ""
-"Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.\n"
+"Search engine supports following criteria: title, author, theme/topic, "
+"epoch, kind and genre.\n"
 "\t\tAs for now we do not support full text search."
 msgstr ""
 
@@ -678,28 +717,40 @@ msgstr ""
 
 #: templates/pdcounter/author_detail.html:36
 #: templates/pdcounter/author_detail.html:44
-msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works."
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this author's works."
 msgstr ""
 
 #: templates/pdcounter/author_detail.html:39
-msgid "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon."
+msgid ""
+"This author's works are in public domain and will be published on Internet "
+"school library of Wolne Lektury soon."
 msgstr ""
 
 #: templates/pdcounter/author_detail.html:42
-msgid "This author's works will become part of public domain and will be allowed to be published without restrictions in"
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in"
 msgstr ""
 
 #: templates/pdcounter/book_stub_detail.html:16
-msgid "This work is in public domain and will be published on Internet school library of Wolne Lektury soon."
+msgid ""
+"This work is in public domain and will be published on Internet school "
+"library of Wolne Lektury soon."
 msgstr ""
 
 #: templates/pdcounter/book_stub_detail.html:19
-msgid "This work will become part of public domain and will be allowed to be published without restrictions in"
+msgid ""
+"This work will become part of public domain and will be allowed to be "
+"published without restrictions in"
 msgstr ""
 
 #: templates/pdcounter/book_stub_detail.html:21
 #: templates/pdcounter/book_stub_detail.html:24
-msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work."
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this work."
 msgstr ""
 
 #: templates/pdcounter/book_stub_detail.html:23
@@ -713,15 +764,15 @@ msgstr ""
 
 #: templates/piston/authorize_token.html:9
 #, python-format
-msgid "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</strong>."
+msgid ""
+"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
+"strong>."
 msgstr ""
 
-#: templates/registration/login.html:4
-#: templates/registration/login.html:7
+#: templates/registration/login.html:4 templates/registration/login.html:7
 msgid "Login to Wolne Lektury"
 msgstr ""
 
 #: templates/registration/login.html:14
 msgid "Login"
 msgstr ""
-

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 13:52+0000\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,15 +57,13 @@ msgstr "входить у суспільне надбання"
 msgid "translator"
 msgstr "перекладач"
 
-#: models.py:66
-msgid "year of translator's death"
-msgstr "рік смерті перекладача"
-
-#: models.py:70
+#: models.py:69
 msgid "book stub"
 msgstr "заготовка книжки"
 
-#: models.py:71
+#: models.py:70
 msgid "book stubs"
 msgstr "заготовки книжок"
 
+#~ msgid "year of translator's death"
+#~ msgstr "рік смерті перекладача"

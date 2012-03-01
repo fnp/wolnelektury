@@ -7,32 +7,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 14:24+0200\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
 "PO-Revision-Date: 2010-08-08 18:29+0100\n"
 "Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:14
-#: models.py:37
+#: models.py:20 models.py:36
 msgid "name"
 msgstr "назва"
 
-#: models.py:15
+#: models.py:21
 msgid "description"
 msgstr "опис"
 
-#: models.py:17
+#: models.py:22
 msgid "logo"
 msgstr "логотип"
 
-#: models.py:24
+#: models.py:23
 msgid "url"
 msgstr "url"
 
-#: models.py:38
+#: models.py:37
 msgid "sponsors"
 msgstr "спонсори"
-

@@ -32,16 +32,16 @@
         <div id="download">
             <ul>
             {% if book.pdf_file %}
-            <li><a href="{{ book.pdf_file.url}}">PDF</a> do wydruku</li>
+            <li><a href="{{ book.pdf_file.url}}">PDF</a> {% trans "to print" %}</li>
             {% endif %}
             {% if  book.epub_file %}
-            <li><a href="{{ book.epub_file.url}}">EPUB</a> na czytnik</li>
+            <li><a href="{{ book.epub_file.url}}">EPUB</a> {% trans "for a reader" %}</li>
             {% endif %}
             {% if  book.mobi_file %}
-            <li><a href="{{ book.mobi_file.url}}">MOBI</a> na Kindle</li>
+            <li><a href="{{ book.mobi_file.url}}">MOBI</a> {% trans "for Kindle" %}</li>
             {% endif %}
             {% if  book.txt_file %}
-            <li><a href="{{ book.txt_file.url}}">TXT</a> do zadań specjalnych</li>
+            <li><a href="{{ book.txt_file.url}}">TXT</a> {% trans "for advanced usege" %}</li>
             {% endif %}
             <li><a href="{% url custom_pdf_form %}?slug={{ book.slug }}">{% trans "Download a custom PDF" %}</a></li>
             </ul>

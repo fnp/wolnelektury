@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: fields.py:42
+#, python-format
+msgid "Enter a valid JSON value. Error: %s"
+msgstr ""
+
+#: forms.py:23
+msgid "Please supply an XML."
+msgstr ""
+
+#: forms.py:42
+msgid "A4"
+msgstr ""
+
+#: forms.py:43
+msgid "A5"
+msgstr ""
+
+#: forms.py:48
+msgid "Normal leading"
+msgstr ""
+
+#: forms.py:49
+msgid "One and a half leading"
+msgstr ""
+
+#: forms.py:50
+msgid "Double leading"
+msgstr ""
+
+#: forms.py:54
+msgid "Default"
+msgstr ""
+
+#: forms.py:55
+msgid "Big"
+msgstr ""
+
+#: forms.py:60
+msgid "Don't show footnotes"
+msgstr ""
+
+#: forms.py:61
+msgid "Don't disply themes"
+msgstr ""
+
+#: forms.py:62
+msgid "Don't use our custom font"
+msgstr ""
+
+#: forms.py:64
+msgid "Leading"
+msgstr ""
+
+#: forms.py:65
+msgid "Font size"
+msgstr ""
+
+#: models.py:38
+msgid "author"
+msgstr ""
+
+#: models.py:39
+msgid "epoch"
+msgstr ""
+
+#: models.py:40
+msgid "kind"
+msgstr ""
+
+#: models.py:41
+msgid "genre"
+msgstr ""
+
+#: models.py:42
+msgid "theme"
+msgstr ""
+
+#: models.py:43
+msgid "set"
+msgstr ""
+
+#: models.py:44 models.py:390
+msgid "book"
+msgstr ""
+
+#: models.py:61 models.py:253
+msgid "name"
+msgstr ""
+
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
+msgid "slug"
+msgstr ""
+
+#: models.py:63 models.py:354
+msgid "sort key"
+msgstr ""
+
+#: models.py:64
+msgid "category"
+msgstr ""
+
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
+msgid "description"
+msgstr ""
+
+#: models.py:69
+msgid "book count"
+msgstr ""
+
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
+msgid "creation date"
+msgstr ""
+
+#: models.py:91
+msgid "tag"
+msgstr ""
+
+#: models.py:92
+msgid "tags"
+msgstr ""
+
+#: models.py:249 models.py:972
+#, python-format
+msgid "%s file"
+msgstr ""
+
+#: models.py:252
+msgid "type"
+msgstr ""
+
+#: models.py:254
+msgid "file"
+msgstr ""
+
+#: models.py:256 models.py:364
+msgid "extra information"
+msgstr ""
+
+#: models.py:265 models.py:266
+msgid "book media"
+msgstr ""
+
+#: models.py:353 models.py:1028
+msgid "title"
+msgstr ""
+
+#: models.py:358
+msgid "language code"
+msgstr ""
+
+#: models.py:363
+msgid "parent number"
+msgstr ""
+
+#: models.py:369
+msgid "cover"
+msgstr ""
+
+#: models.py:391
+msgid "books"
+msgstr ""
+
+#: models.py:690
+#, python-format
+msgid "Book \"%s\" does not exist."
+msgstr ""
+
+#: models.py:704
+#, python-format
+msgid "Book %s already exists"
+msgstr ""
+
+#: models.py:991
+msgid "fragment"
+msgstr ""
+
+#: models.py:992
+msgid "fragments"
+msgstr ""
+
+#: models.py:1033
+msgid "book slugs"
+msgstr ""
+
+#: models.py:1037
+msgid "collection"
+msgstr ""
+
+#: models.py:1038
+msgid "collections"
+msgstr ""
+
+#: views.py:500
+#, python-format
+msgid ""
+"An error occurred: %(exception)s\n"
+"\n"
+"%(tb)s"
+msgstr ""
+
+#: views.py:501
+msgid "Book imported successfully"
+msgstr ""
+
+#: views.py:503
+#, python-format
+msgid "Error importing file: %r"
+msgstr ""
+
+#: views.py:547
+msgid "Incorrect customization options for PDF"
+msgstr ""
+
+#: views.py:549
+msgid "Bad method"
+msgstr ""
+
+#: views.py:554
+msgid "Download custom PDF"
+msgstr ""
+
+#: views.py:555
+msgid "Download"
+msgstr ""

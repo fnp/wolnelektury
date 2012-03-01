@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 16:32+0100\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
 "PO-Revision-Date: 2012-01-27 16:36+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,26 +98,19 @@ msgstr "motyw"
 msgid "set"
 msgstr "półka"
 
-#: models.py:44
-#: models.py:390
+#: models.py:44 models.py:390
 msgid "book"
 msgstr "książka"
 
-#: models.py:61
-#: models.py:253
+#: models.py:61 models.py:253
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:62
-#: models.py:355
-#: models.py:357
-#: models.py:1028
-#: models.py:1031
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
 msgid "slug"
 msgstr "slug"
 
-#: models.py:63
-#: models.py:354
+#: models.py:63 models.py:354
 msgid "sort key"
 msgstr "klucz sortowania"
 
@@ -125,11 +118,7 @@ msgstr "klucz sortowania"
 msgid "category"
 msgstr "kategoria"
 
-#: models.py:66
-#: models.py:107
-#: models.py:360
-#: models.py:463
-#: models.py:1029
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
 msgid "description"
 msgstr "opis"
 
@@ -137,11 +126,7 @@ msgstr "opis"
 msgid "book count"
 msgstr "liczba książek"
 
-#: models.py:73
-#: models.py:74
-#: models.py:255
-#: models.py:361
-#: models.py:362
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
 msgid "creation date"
 msgstr "data utworzenia"
 
@@ -153,8 +138,7 @@ msgstr "tag"
 msgid "tags"
 msgstr "tagi"
 
-#: models.py:249
-#: models.py:971
+#: models.py:249 models.py:972
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -167,18 +151,15 @@ msgstr "typ"
 msgid "file"
 msgstr "plik"
 
-#: models.py:256
-#: models.py:364
+#: models.py:256 models.py:364
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models.py:265
-#: models.py:266
+#: models.py:265 models.py:266
 msgid "book media"
 msgstr "media książki"
 
-#: models.py:353
-#: models.py:1027
+#: models.py:353 models.py:1028
 msgid "title"
 msgstr "tytuł"
 
@@ -198,37 +179,37 @@ msgstr "okładka"
 msgid "books"
 msgstr "książki"
 
-#: models.py:689
+#: models.py:690
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models.py:703
+#: models.py:704
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models.py:990
+#: models.py:991
 msgid "fragment"
 msgstr "fragment"
 
-#: models.py:991
+#: models.py:992
 msgid "fragments"
 msgstr "fragmenty"
 
-#: models.py:1032
+#: models.py:1033
 msgid "book slugs"
 msgstr "slugi utworów"
 
-#: models.py:1036
+#: models.py:1037
 msgid "collection"
 msgstr "kolekcja"
 
-#: models.py:1037
+#: models.py:1038
 msgid "collections"
 msgstr "kolekcje"
 
-#: views.py:497
+#: views.py:500
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -239,28 +220,28 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:498
+#: views.py:501
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:500
+#: views.py:503
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:544
+#: views.py:547
 msgid "Incorrect customization options for PDF"
 msgstr "Niepoprawne opcje dla PDF"
 
-#: views.py:546
+#: views.py:549
 msgid "Bad method"
 msgstr "Zła metoda"
 
-#: views.py:551
+#: views.py:554
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:552
+#: views.py:555
 msgid "Download"
 msgstr "Pobierz"
 

@@ -18,7 +18,7 @@
     </div>
 
 
-    <h2 class="main-last"><span class="mono">Ostatnie publikacje</span></h2>
+    <h2 class="main-last"><span class="mono">{% trans "Recent publications" %}</span></h2>
         {% cache 60 last-published-on-main %}
             {% for book in last_published %}
                 {% book_mini book %}
@@ -28,7 +28,7 @@
     <div class="clearboth"></div>
 
     <div class="infopages-box">
-        <h2><span class='mono'>Aktualności</span></h2>
+        <h2><span class='mono'>{% trans "News" %}</span></h2>
         {% cache 1800 latest-blog-posts %}
             {% latest_blog_posts "http://nowoczesnapolska.org.pl/category/wolne-lektury/feed/" %}
         {% endcache %}
@@ -36,7 +36,7 @@
 
 
     <div class="infopages-box">
-        <h2><span class='mono'>Narzędzia</span></h2>
+        <h2><span class='mono'>{% trans "Utilities" %}</span></h2>
 
         <ul>
             <li><a href="{% url suggest %}" id="suggest" class="ajaxable">{% trans "Report a bug or suggestion" %}</a></li>
@@ -50,7 +50,7 @@
 
 
     <div class="infopages-box">
-        <h2><span class='mono'>Informacje</span></h2>
+        <h2><span class='mono'>{% trans "Information" %}</span></h2>
         {% cache 60 infopages-on-main LANGUAGE_CODE %}
             {% infopages_on_main %}
         {% endcache %}

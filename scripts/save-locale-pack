@@ -1,0 +1,46 @@
+#!/bin/bash
+
+ME=$0
+ROOT=$(git rev-parse --show-toplevel)
+MANAGE=$ROOT/wolnelektury/manage.py
+
+LOCALIZED=$1
+if [ ! -d "$LOCALIZED" ]; then
+    echo "$0 w-lokalizacje [lang]"
+    exit 1
+fi
+LNG=$2
+
+load_lang()
+{
+    L=$1
+    for pofile in $LOCALIZED/$L/*.po; do
+	app=`basename $pofile .po`
+	echo $app
+	if [ "$app" = "wolnelektury" ]; then
+	    cp -v $pofile $ROOT/wolnelektury/locale/$L/LC_MESSAGES/django.po
+	else
+	    cp -v $pofile $ROOT/apps/$app/locale/$L/LC_MESSAGES/django.po
+	fi
+    done
+}
+
+if [ -n "$LNG" ]; then
+    load_lang $LNG
+else
+    echo "remember to update language list in this script"
+    for l in pl de en lt fr ru es uk jp it; do
+	load_lang $LNG
+    done
+fi
+
+${0}-json.py $LOCALIZED/infopages.json $LNG
+cp -v $LOCALIZED/infopages.json ${ROOT}/apps/infopages/fixtures/infopages.json
+cp -v $LOCALIZED/locale.js.txt ${ROOT}/wolnelektury/static/js/locale.js
+
+for i in $ROOT/apps/*; do 
+    cd $i;
+    env PYTHONPATH=$ROOT ${VIRTUAL_ENV}/bin/django-admin.py compilemessages --settings=wolnelektury.settings
+done
+cd $ROOT/wolnelektury
+env PYTHONPATH=$ROOT ${VIRTUAL_ENV}/bin/django-admin.py compilemessages --settings=wolnelektury.settings

@@ -7,260 +7,211 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 11:21+0200\n"
-"PO-Revision-Date: 2010-08-07 20:25+0100\n"
-"Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
+"POT-Creation-Date: 2012-03-01 11:26+0100\n"
+"PO-Revision-Date: 2012-02-23 17:16+0100\n"
+"Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fields.py:47
+#: fields.py:42
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
 msgstr "Entrer une valeur JSON valide. Erreur: %s."
 
-#: forms.py:28
-msgid "title, author, theme/topic, epoch, kind, genre"
-msgstr "titre, auteur, thème/sujet, époque, type, genre"
+#: forms.py:23
+msgid "Please supply an XML."
+msgstr "Fournissez un XML, s'il vous plaît."
 
-#: forms.py:44
-msgid "Shelves"
-msgstr "Etagères"
+#: forms.py:42
+msgid "A4"
+msgstr "A4"
 
-#: forms.py:57
-msgid "Name of the new shelf"
-msgstr "Nom de l'étagère nouvelle"
+#: forms.py:43
+msgid "A5"
+msgstr "A5"
 
-#: models.py:24
-#: models.py:363
+#: forms.py:48
+msgid "Normal leading"
+msgstr "Interligne normal"
+
+#: forms.py:49
+msgid "One and a half leading"
+msgstr "Interligne et demi"
+
+#: forms.py:50
+msgid "Double leading"
+msgstr "Interligne double"
+
+#: forms.py:54
+msgid "Default"
+msgstr "Implicite"
+
+#: forms.py:55
+msgid "Big"
+msgstr "Grand(e)(s)"
+
+#: forms.py:60
+msgid "Don't show footnotes"
+msgstr "Ne montre pas d'annotations"
+
+#: forms.py:61
+msgid "Don't disply themes"
+msgstr "N'affiche pas de thèmes"
+
+#: forms.py:62
+msgid "Don't use our custom font"
+msgstr "N'utilise pas notre caractère usuel"
+
+#: forms.py:64
+msgid "Leading"
+msgstr "Interligne"
+
+#: forms.py:65
+msgid "Font size"
+msgstr "Taille des caractères"
+
+#: models.py:38
 msgid "author"
 msgstr "auteur"
 
-#: models.py:25
+#: models.py:39
 msgid "epoch"
 msgstr "époque"
 
-#: models.py:26
+#: models.py:40
 msgid "kind"
 msgstr "type"
 
-#: models.py:27
+#: models.py:41
 msgid "genre"
 msgstr "genre"
 
-#: models.py:28
+#: models.py:42
 msgid "theme"
 msgstr "thème"
 
-#: models.py:29
+#: models.py:43
 msgid "set"
 msgstr "série"
 
-#: models.py:30
-#: models.py:322
+#: models.py:44 models.py:390
 msgid "book"
 msgstr "livre"
 
-#: models.py:44
-#: migrations/0001_initial.py:47
+#: models.py:61 models.py:253
 msgid "name"
 msgstr "nom"
 
-#: models.py:45
-#: models.py:103
-#: models.py:365
-#: migrations/0001_initial.py:19
-#: migrations/0001_initial.py:48
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
 msgid "slug"
-msgstr "slug"
+msgstr "ébauche"
 
-#: models.py:46
-#: migrations/0001_initial.py:49
+#: models.py:63 models.py:354
 msgid "sort key"
 msgstr "critère de tri"
 
-#: models.py:47
-#: migrations/0001_initial.py:50
+#: models.py:64
 msgid "category"
 msgstr "catégorie"
 
-#: models.py:49
-#: models.py:60
-#: models.py:104
-#: models.py:185
-#: migrations/0001_initial.py:20
-#: migrations/0001_initial.py:51
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
 msgid "description"
 msgstr "description"
 
-#: models.py:50
-#: migrations/0001_initial.py:52
-msgid "main page"
-msgstr "page d'accueil"
-
-#: models.py:50
-#: migrations/0001_initial.py:52
-msgid "Show tag on main page"
-msgstr "Montrer le tag au page d'accueil"
-
-#: models.py:53
-#: migrations/0001_initial.py:54
+#: models.py:69
 msgid "book count"
 msgstr "nombre des livres"
 
-#: models.py:54
-msgid "year of death"
-msgstr "année de la mort"
-
-#: models.py:80
-#: migrations/0001_initial.py:61
-msgid "tag"
-msgstr "tag"
-
-#: models.py:81
-msgid "tags"
-msgstr "tags"
-
-#: models.py:102
-#: models.py:362
-#: migrations/0001_initial.py:18
-msgid "title"
-msgstr "titre"
-
-#: models.py:105
-#: migrations/0001_initial.py:21
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
 msgid "creation date"
 msgstr "date de création"
 
-#: models.py:106
-#: migrations/0001_initial.py:22
-msgid "short HTML"
-msgstr "HTML court"
+#: models.py:91
+msgid "tag"
+msgstr "tag"
 
-#: models.py:107
-#: migrations/0001_initial.py:23
-msgid "parent number"
-msgstr "nombre de parent"
+#: models.py:92
+msgid "tags"
+msgstr "tags"
 
-#: models.py:108
+#: models.py:249 models.py:972
+#, python-format
+msgid "%s file"
+msgstr "fichier %s"
+
+#: models.py:252
+msgid "type"
+msgstr "type"
+
+#: models.py:254
+msgid "file"
+msgstr "fichier"
+
+#: models.py:256 models.py:364
 msgid "extra information"
 msgstr "information supplémentaire"
 
-#: models.py:114
-#: migrations/0001_initial.py:24
-msgid "XML file"
-msgstr "fichier XML"
+#: models.py:265 models.py:266
+msgid "book media"
+msgstr "book media"
 
-#: models.py:115
-#: migrations/0001_initial.py:25
-msgid "HTML file"
-msgstr "fichier HTML"
+#: models.py:353 models.py:1028
+msgid "title"
+msgstr "titre"
 
-#: models.py:116
-#: migrations/0001_initial.py:26
-msgid "PDF file"
-msgstr "fichier PDF"
+#: models.py:358
+msgid "language code"
+msgstr "code de langue"
 
-#: models.py:117
-#: migrations/0001_initial.py:27
-msgid "ODT file"
-msgstr "fichier ODT"
+#: models.py:363
+msgid "parent number"
+msgstr "nombre de parent"
 
-#: models.py:118
-#: migrations/0001_initial.py:28
-msgid "TXT file"
-msgstr "fichier TXT"
+#: models.py:369
+msgid "cover"
+msgstr "couverture"
 
-#: models.py:119
-msgid "MP3 file"
-msgstr "fichier MP3"
+#: models.py:391
+msgid "books"
+msgstr "livres"
 
-#: models.py:120
-msgid "OGG file"
-msgstr "fichier OGG"
+#: models.py:690
+#, python-format
+msgid "Book \"%s\" does not exist."
+msgstr "Livre \"%s\" n'existe pas."
 
-msgid "DAISY file"
-msgstr "fichier DAISY"
-
-#: models.py:141
-msgid "Read online"
-msgstr "Lire en ligne"
-
-#: models.py:221
+#: models.py:704
 #, python-format
 msgid "Book %s already exists"
 msgstr "Livre %s existe déjà"
 
-#: models.py:264
-#, python-format
-msgid "Book with slug = \"%s\" does not exist."
-msgstr "Livre au slug = \"%s\" n'existe pas."
-
-#: models.py:323
-msgid "books"
-msgstr "livres"
-
-#: models.py:357
+#: models.py:991
 msgid "fragment"
 msgstr "extrait"
 
-#: models.py:358
+#: models.py:992
 msgid "fragments"
 msgstr "extraits"
 
-#: models.py:364
-msgid "goes to public domain"
-msgstr "entre dans le domaine public"
-
-#: models.py:366
-msgid "translator"
-msgstr "traducteur"
-
-#: models.py:367
-msgid "year of translator's death"
-msgstr "année de la mort du traducteur"
-
-#: models.py:385
-msgid "book stub"
-msgstr "ébauche du livre"
-
-#: models.py:386
-msgid "book stubs"
+#: models.py:1033
+#, fuzzy
+msgid "book slugs"
 msgstr "ébauches des livres"
 
-#: views.py:339
-msgid "<p>To maintain your shelves you need to be logged in.</p>"
-msgstr "<p>Connectez-vous pour gérer vos étagères.</p>"
+#: models.py:1037
+msgid "collection"
+msgstr "collection"
 
-#: views.py:357
-msgid "<p>Shelves were sucessfully saved.</p>"
-msgstr "<p>Les étagères <strong>%s</strong>ont été enregistrées</p>"
+#: models.py:1038
+msgid "collections"
+msgstr "collections"
 
-#: views.py:381
-msgid "Book was successfully removed from the shelf"
-msgstr "Le livre a été supprimé de l'étagère"
-
-#: views.py:383
-msgid "This book is not on the shelf"
-msgstr "Le livre n'est pas sur l'étagère"
-
-#: views.py:479
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
-msgstr "<p>L'étagère <strong>%s</strong>a été créée</p>"
-
-#: views.py:494
-#, python-format
-msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
-msgstr "<p>L'étagère <strong>%s</strong>a été supprimée</p>"
-
-#: views.py:553
-#, python-format
-#msgid "Today is %(month)s, %(day)s."
-#msgstr "Aujourd'hui nous sommes le"
-
-#: views.py:554
+# msgid "Today is %(month)s, %(day)s."
+# msgstr "Aujourd'hui nous sommes le"
+#: views.py:500
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -271,20 +222,108 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:555
+#: views.py:501
 msgid "Book imported successfully"
 msgstr "Livre importé avec succès"
 
-#: views.py:557
+#: views.py:503
 #, python-format
 msgid "Error importing file: %r"
-msgstr "Erreur dans l'importation du fichier: %r"
+msgstr "Erreur pendant l'importation du fichier: %r"
 
-#: migrations/0001_initial.py:62
-msgid "content type"
-msgstr "type du contenu"
+#: views.py:547
+msgid "Incorrect customization options for PDF"
+msgstr "Options de personnalisation incorrectes pour PDF"
 
-#: migrations/0001_initial.py:63
-msgid "object id"
-msgstr "ID de l'objet"
+#: views.py:549
+msgid "Bad method"
+msgstr "Mauvaise méthode"
 
+#: views.py:554
+msgid "Download custom PDF"
+msgstr "Téléchargez un PDF personnalisé"
+
+#: views.py:555
+msgid "Download"
+msgstr "Téléchargez"
+
+#~ msgid "title, author, theme/topic, epoch, kind, genre"
+#~ msgstr "titre, auteur, thème/sujet, époque, type, genre"
+
+#~ msgid "Shelves"
+#~ msgstr "Etagères"
+
+#~ msgid "Name of the new shelf"
+#~ msgstr "Nom de l'étagère nouvelle"
+
+#~ msgid "main page"
+#~ msgstr "page d'accueil"
+
+#~ msgid "Show tag on main page"
+#~ msgstr "Montrer le tag au page d'accueil"
+
+#~ msgid "year of death"
+#~ msgstr "année de la mort"
+
+#~ msgid "short HTML"
+#~ msgstr "HTML court"
+
+#~ msgid "HTML file"
+#~ msgstr "fichier HTML"
+
+#~ msgid "PDF file"
+#~ msgstr "fichier PDF"
+
+#~ msgid "ODT file"
+#~ msgstr "fichier ODT"
+
+#~ msgid "TXT file"
+#~ msgstr "fichier TXT"
+
+#~ msgid "MP3 file"
+#~ msgstr "fichier MP3"
+
+#~ msgid "OGG file"
+#~ msgstr "fichier OGG"
+
+#~ msgid "DAISY file"
+#~ msgstr "fichier DAISY"
+
+#~ msgid "Read online"
+#~ msgstr "Lire en ligne"
+
+#~ msgid "goes to public domain"
+#~ msgstr "entre dans le domaine public"
+
+#~ msgid "translator"
+#~ msgstr "traducteur"
+
+#~ msgid "year of translator's death"
+#~ msgstr "année de la mort du traducteur"
+
+#~ msgid "book stub"
+#~ msgstr "ébauche du livre"
+
+#~ msgid "<p>To maintain your shelves you need to be logged in.</p>"
+#~ msgstr "<p>Connectez-vous pour gérer vos étagères.</p>"
+
+#~ msgid "<p>Shelves were sucessfully saved.</p>"
+#~ msgstr "<p>Les étagères <strong>%s</strong>ont été enregistrées</p>"
+
+#~ msgid "Book was successfully removed from the shelf"
+#~ msgstr "Le livre a été supprimé de l'étagère"
+
+#~ msgid "This book is not on the shelf"
+#~ msgstr "Le livre n'est pas sur l'étagère"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
+#~ msgstr "<p>L'étagère <strong>%s</strong>a été créée</p>"
+
+#~ msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
+#~ msgstr "<p>L'étagère <strong>%s</strong>a été supprimée</p>"
+
+#~ msgid "content type"
+#~ msgstr "type du contenu"
+
+#~ msgid "object id"
+#~ msgstr "ID de l'objet"
