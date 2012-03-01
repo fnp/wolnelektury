@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 11:26+0100\n"
-"PO-Revision-Date: 2010-07-12 19:41+0100\n"
-"Last-Translator: Alicja Sinkiewicz <alicja.sinkiewicz@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-01 16:13+0100\n"
+"Last-Translator: Aneta\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,34 +19,34 @@ msgstr ""
 
 #: admin.py:38
 msgid "tags"
-msgstr "tagai"
+msgstr "žymės"
 
 #: models.py:530
 msgid "tag"
-msgstr "tagas"
+msgstr "žymė"
 
 #: models.py:531
 msgid "content type"
-msgstr "turinio rūšis "
+msgstr "turinio tipas"
 
 #: models.py:532
 msgid "object id"
-msgstr "id obiektas"
+msgstr "objekto ID"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."
-msgstr ""
-"sutagintas_objektų _ sąrašas turi būti iššaukas su queryset arba su modeliu."
+msgstr "tagged_object_list must be called with a queryset or a model."
 
 #: views.py:32
 msgid "tagged_object_list must be called with a tag model."
-msgstr "sutagintas_objektų _ sąrašas turi būti iššaukas su tago modeliu."
+msgstr "tagged_object_ list must be called with a tag model."
 
 #: views.py:34
 msgid "tagged_object_list must be called with a tag."
-msgstr "sutagintas_objektų _ sąrašas turi būti iššaukas su tagu."
+msgstr "tagged_object_ list turi must be called with a tag."
 
 #: views.py:38
 #, python-format
 msgid "No tags found matching \"%s\"."
-msgstr "Ne surado tagu tinkančių prie \"%s\"."
+msgstr "Nerasta atitinkančių žymių  \"%s\"."
+

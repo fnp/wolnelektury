@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 11:26+0100\n"
-"PO-Revision-Date: 2010-07-12 19:07+0100\n"
-"Last-Translator: Alicja Sinkiewicz <alicja.sinkiewicz@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-01 16:13+0100\n"
+"Last-Translator: Aneta\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,59 +20,59 @@ msgstr ""
 #: fields.py:42
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
-msgstr "Įvėsk atitinkama vertybę JSON. Klaida: %s"
+msgstr "Įvėsti atitinkamą vertybę JSON. Klaida: %s"
 
 #: forms.py:23
 msgid "Please supply an XML."
-msgstr ""
+msgstr "Prašome pateikti XML."
 
 #: forms.py:42
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: forms.py:43
 msgid "A5"
-msgstr ""
+msgstr "A5"
 
 #: forms.py:48
 msgid "Normal leading"
-msgstr ""
+msgstr "Normalus intervalas"
 
 #: forms.py:49
 msgid "One and a half leading"
-msgstr ""
+msgstr "Pusantro intervalo"
 
 #: forms.py:50
 msgid "Double leading"
-msgstr ""
+msgstr "Dvigubasis intervalas"
 
 #: forms.py:54
 msgid "Default"
-msgstr ""
+msgstr "Numatytasis "
 
 #: forms.py:55
 msgid "Big"
-msgstr ""
+msgstr "Didelis"
 
 #: forms.py:60
 msgid "Don't show footnotes"
-msgstr ""
+msgstr "Nerodyti išnašų"
 
 #: forms.py:61
 msgid "Don't disply themes"
-msgstr ""
+msgstr "Nerodyti motyvų"
 
 #: forms.py:62
 msgid "Don't use our custom font"
-msgstr ""
+msgstr "Nenaudoti derinčių šriftų"
 
 #: forms.py:64
 msgid "Leading"
-msgstr ""
+msgstr "eilučių intervalas"
 
 #: forms.py:65
 msgid "Font size"
-msgstr ""
+msgstr "Šrifto dydis"
 
 #: models.py:38
 msgid "author"
@@ -80,7 +80,7 @@ msgstr "autorius"
 
 #: models.py:39
 msgid "epoch"
-msgstr "gadynė"
+msgstr "epocha"
 
 #: models.py:40
 msgid "kind"
@@ -88,7 +88,7 @@ msgstr "rūšis"
 
 #: models.py:41
 msgid "genre"
-msgstr "sortas"
+msgstr "žanras"
 
 #: models.py:42
 msgid "theme"
@@ -98,27 +98,38 @@ msgstr "motyvas"
 msgid "set"
 msgstr "rinkinys"
 
-#: models.py:44 models.py:390
+#: models.py:44
+#: models.py:390
 msgid "book"
 msgstr "knyga"
 
-#: models.py:61 models.py:253
+#: models.py:61
+#: models.py:253
 msgid "name"
 msgstr "pavadinimas"
 
-#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
+#: models.py:62
+#: models.py:355
+#: models.py:357
+#: models.py:1029
+#: models.py:1032
 msgid "slug"
-msgstr "slugas"
+msgstr "slug"
 
-#: models.py:63 models.py:354
+#: models.py:63
+#: models.py:354
 msgid "sort key"
-msgstr "rūšiavimo raktas"
+msgstr "rikiavimo raktas"
 
 #: models.py:64
 msgid "category"
 msgstr "kategorija  "
 
-#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
+#: models.py:66
+#: models.py:107
+#: models.py:360
+#: models.py:463
+#: models.py:1030
 msgid "description"
 msgstr "aprašymas"
 
@@ -126,64 +137,72 @@ msgstr "aprašymas"
 msgid "book count"
 msgstr "knygų skaičius"
 
-#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
+#: models.py:73
+#: models.py:74
+#: models.py:255
+#: models.py:361
+#: models.py:362
 msgid "creation date"
 msgstr "sukūrimo data"
 
 #: models.py:91
 msgid "tag"
-msgstr "tagas"
+msgstr "žymė"
 
 #: models.py:92
 msgid "tags"
-msgstr "tagai"
+msgstr "žymės"
 
-#: models.py:249 models.py:972
-#, fuzzy, python-format
+#: models.py:249
+#: models.py:972
+#, python-format
 msgid "%s file"
-msgstr "XML failas "
+msgstr "%s failas "
 
 #: models.py:252
 msgid "type"
-msgstr ""
+msgstr "tipas"
 
 #: models.py:254
-#, fuzzy
 msgid "file"
-msgstr "XML failas "
+msgstr "failas "
 
-#: models.py:256 models.py:364
+#: models.py:256
+#: models.py:364
 msgid "extra information"
 msgstr "papildomos informacijos"
 
-#: models.py:265 models.py:266
+#: models.py:265
+#: models.py:266
 msgid "book media"
-msgstr ""
+msgstr "book media"
 
-#: models.py:353 models.py:1028
+#: models.py:353
+#: models.py:1028
 msgid "title"
 msgstr "pavadinimas"
 
 #: models.py:358
 msgid "language code"
-msgstr ""
+msgstr "kalbos kodas"
 
+# sprawdz
 #: models.py:363
 msgid "parent number"
-msgstr "vieno iš tėvų numeris "
+msgstr "pirminis numeris"
 
 #: models.py:369
 msgid "cover"
-msgstr ""
+msgstr "viršelis"
 
 #: models.py:391
 msgid "books"
 msgstr "knygos"
 
 #: models.py:690
-#, fuzzy, python-format
+#, python-format
 msgid "Book \"%s\" does not exist."
-msgstr "Knyga su slug = \"%s\" neegzistuoja."
+msgstr "Knyga \"%s\" neegzistuoja."
 
 #: models.py:704
 #, python-format
@@ -199,17 +218,16 @@ msgid "fragments"
 msgstr "fragmentai"
 
 #: models.py:1033
-#, fuzzy
 msgid "book slugs"
-msgstr "knygu paskelbimai"
+msgstr "book slugs"
 
 #: models.py:1037
 msgid "collection"
-msgstr ""
+msgstr "kolekcija"
 
 #: models.py:1038
 msgid "collections"
-msgstr ""
+msgstr "kolekcijos"
 
 #: views.py:500
 #, python-format
@@ -224,28 +242,28 @@ msgstr ""
 
 #: views.py:501
 msgid "Book imported successfully"
-msgstr "knygos importavimas"
+msgstr "Knyga buvo sėkmingai importuota"
 
 #: views.py:503
 #, python-format
 msgid "Error importing file: %r"
-msgstr "Failo klaida imortavimo metu: %r"
+msgstr "Importuojant failą įvyko klaida: %r"
 
 #: views.py:547
 msgid "Incorrect customization options for PDF"
-msgstr ""
+msgstr "Neteisingi PDF  tinkinimo pasirinkimai"
 
 #: views.py:549
 msgid "Bad method"
-msgstr ""
+msgstr "Blogas metodas"
 
 #: views.py:554
 msgid "Download custom PDF"
-msgstr ""
+msgstr "Atsisiųsti PDF failą"
 
 #: views.py:555
 msgid "Download"
-msgstr ""
+msgstr "Atsisiųsti"
 
 #~ msgid "title, author, theme/topic, epoch, kind, genre"
 #~ msgstr "Pavadinimas , autorius, motyvas /tema, gadynė, \trūšis, sortas"

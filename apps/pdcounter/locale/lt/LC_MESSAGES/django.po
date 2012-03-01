@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 11:26+0100\n"
-"PO-Revision-Date: 2010-07-12 19:07+0100\n"
-"Last-Translator: Alicja Sinkiewicz <alicja.sinkiewicz@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-01 16:13+0100\n"
+"Last-Translator: Aneta\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,30 +21,32 @@ msgstr ""
 msgid "name"
 msgstr "pavadinimas"
 
-#: models.py:13 models.py:64
+#: models.py:13
+#: models.py:64
 msgid "slug"
-msgstr "slugas"
+msgstr "slug"
 
 #: models.py:14
 msgid "sort key"
-msgstr "rūšiavimo raktas"
+msgstr "rikiavimo raktas"
 
-#: models.py:15 models.py:41
+#: models.py:15
+#: models.py:41
 msgid "description"
-msgstr "aprašymas"
+msgstr "aprašas"
 
 #: models.py:16
 msgid "year of death"
-msgstr "mirimo metai"
+msgstr "mirties metai"
 
-#: models.py:22 models.py:62
+#: models.py:22
+#: models.py:62
 msgid "author"
 msgstr "autorius"
 
 #: models.py:23
-#, fuzzy
 msgid "authors"
-msgstr "autorius"
+msgstr "autoriai"
 
 #: models.py:61
 msgid "title"
@@ -52,7 +54,7 @@ msgstr "pavadinimas"
 
 #: models.py:63
 msgid "goes to public domain"
-msgstr "keliauja į viešą tinklapį  "
+msgstr "į viešąją sritį"
 
 #: models.py:65
 msgid "translator"
@@ -60,11 +62,11 @@ msgstr "vertėjas"
 
 #: models.py:69
 msgid "book stub"
-msgstr "knygos paskelbimas"
+msgstr "book stub"
 
 #: models.py:70
 msgid "book stubs"
-msgstr "knygu paskelbimai"
+msgstr "book stubs"
 
 #~ msgid "year of translator's death"
 #~ msgstr "vertėjo mirimo metai"
