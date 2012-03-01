@@ -650,9 +650,10 @@ class SearchResult(object):
         self.book_id = int(stored.get("book_id"))
 
         pd = stored.get("published_date")
-        if pd is None:
-            pd = 0
-        self.published_date = int(pd)
+        try:
+            self.published_date = int(pd)
+        except ValueError:
+            self.published_date = 0
 
         header_type = stored.get("header_type")
         # we have a content hit in some header of fragment
