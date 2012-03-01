@@ -1,0 +1,17 @@
+#player h1 {
+	font-size: 2em;
+	margin: .5em;
+}
+
+.player-info {
+	margin: 1em;
+}
+
+
+.play {
+	cursor: pointer;
+}
+
+.play:hover {
+	color: #0D7E85;
+}

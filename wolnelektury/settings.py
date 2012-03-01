@@ -223,6 +223,7 @@ COMPRESS_CSS = {
     'player': {
         'source_filenames': [
             'jplayer/jplayer.blue.monday.css', 
+            'css/player.css', 
         ],
         'output_filename': 'css/player.min?.css',
     },

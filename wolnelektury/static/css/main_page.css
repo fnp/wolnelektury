@@ -80,6 +80,9 @@
     line-height: 1.45em;
 }
 
+.infopages-box li {
+	margin-bottom: .25em;
+}
 
 .infopages-box .social-links {
     margin-top: 1em;

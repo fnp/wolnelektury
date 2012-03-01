@@ -246,9 +246,10 @@ def player(request, slug):
         else:
             have_oggs = False
         audiobooks.append(media)
-    print audiobooks
 
     projects = sorted(projects)
+
+    extra_info = book.get_extra_info_value()
 
     return render_to_response('catalogue/player.html', locals(),
         context_instance=RequestContext(request))
