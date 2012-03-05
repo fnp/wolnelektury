@@ -14,13 +14,13 @@ LNG=$2
 load_lang()
 {
     L=$1
-    for pofile in $LOCALIZED/$L/*.po; do
-	app=`basename $pofile .po`
+    for pofile in "$LOCALIZED/$L/"*.po; do
+	app=`basename "$pofile" .po`
 	echo $app
 	if [ "$app" = "wolnelektury" ]; then
-	    cp -v $pofile $ROOT/wolnelektury/locale/$L/LC_MESSAGES/django.po
+	    cp -v "$pofile" "$ROOT/wolnelektury/locale/$L/LC_MESSAGES/django.po"
 	else
-	    cp -v $pofile $ROOT/apps/$app/locale/$L/LC_MESSAGES/django.po
+	    cp -v "$pofile" "$ROOT/apps/$app/locale/$L/LC_MESSAGES/django.po"
 	fi
     done
 }
@@ -34,9 +34,9 @@ else
     done
 fi
 
-${0}-json.py $LOCALIZED/infopages.json $LNG
-cp -v $LOCALIZED/infopages.json ${ROOT}/apps/infopages/fixtures/infopages.json
-cp -v $LOCALIZED/locale.js.txt ${ROOT}/wolnelektury/static/js/locale.js
+${0}-json.py "$LOCALIZED/infopages.json" $LNG
+cp -v "$LOCALIZED/infopages.json" ${ROOT}/apps/infopages/fixtures/infopages.json
+cp -v "$LOCALIZED/locale.js.txt" ${ROOT}/wolnelektury/static/js/locale.js
 
 for i in $ROOT/apps/*; do 
     cd $i;
