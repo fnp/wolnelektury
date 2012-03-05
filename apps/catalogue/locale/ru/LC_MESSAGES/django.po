@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"POT-Creation-Date: 2012-03-05 12:05+0100\n"
 "PO-Revision-Date: 2012-03-04 22:10+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,26 +98,19 @@ msgstr "мотив"
 msgid "set"
 msgstr "набор"
 
-#: models.py:44
-#: models.py:390
+#: models.py:44 models.py:390
 msgid "book"
 msgstr "книга"
 
-#: models.py:61
-#: models.py:253
+#: models.py:61 models.py:253
 msgid "name"
 msgstr "название"
 
-#: models.py:62
-#: models.py:355
-#: models.py:357
-#: models.py:1029
-#: models.py:1032
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
 msgid "slug"
 msgstr "slug"
 
-#: models.py:63
-#: models.py:354
+#: models.py:63 models.py:354
 msgid "sort key"
 msgstr "ключ сортировки "
 
@@ -125,11 +118,7 @@ msgstr "ключ сортировки "
 msgid "category"
 msgstr "категория"
 
-#: models.py:66
-#: models.py:107
-#: models.py:360
-#: models.py:463
-#: models.py:1030
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
 msgid "description"
 msgstr "описание"
 
@@ -137,11 +126,7 @@ msgstr "описание"
 msgid "book count"
 msgstr "число книг"
 
-#: models.py:73
-#: models.py:74
-#: models.py:255
-#: models.py:361
-#: models.py:362
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
 msgid "creation date"
 msgstr "дата создания"
 
@@ -153,8 +138,7 @@ msgstr "таг"
 msgid "tags"
 msgstr "таги"
 
-#: models.py:249
-#: models.py:972
+#: models.py:249 models.py:972
 #, fuzzy, python-format
 msgid "%s file"
 msgstr "XML файл"
@@ -168,18 +152,15 @@ msgstr "тип"
 msgid "file"
 msgstr "XML файл"
 
-#: models.py:256
-#: models.py:364
+#: models.py:256 models.py:364
 msgid "extra information"
 msgstr "дополнительная информация"
 
-#: models.py:265
-#: models.py:266
+#: models.py:265 models.py:266
 msgid "book media"
 msgstr "аудиокнига"
 
-#: models.py:353
-#: models.py:1028
+#: models.py:353 models.py:1028
 msgid "title"
 msgstr "заглавие"
 
@@ -230,7 +211,7 @@ msgstr "сбор"
 msgid "collections"
 msgstr "сборы"
 
-#: views.py:500
+#: views.py:501
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -241,28 +222,28 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:501
+#: views.py:502
 msgid "Book imported successfully"
 msgstr "Вы удачно заимпортировали книгу"
 
-#: views.py:503
+#: views.py:504
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Ошибка импорта файла: %r"
 
-#: views.py:547
+#: views.py:548
 msgid "Incorrect customization options for PDF"
 msgstr "Неправильные параметры настройки для PDF"
 
-#: views.py:549
+#: views.py:550
 msgid "Bad method"
 msgstr "Плохой метод"
 
-#: views.py:554
+#: views.py:555
 msgid "Download custom PDF"
 msgstr "Скачать PDF пользователя"
 
-#: views.py:555
+#: views.py:556
 msgid "Download"
 msgstr "Загрузить"
 

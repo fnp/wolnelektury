@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"POT-Creation-Date: 2012-03-05 12:05+0100\n"
 "PO-Revision-Date: 2012-02-28 12:01+0100\n"
 "Last-Translator: Aneta <afroneta@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,8 @@ msgstr "id de objeto"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."
-msgstr "lista_de_objetos_agregados debe ser llamada con un queryset o un modelo."
+msgstr ""
+"lista_de_objetos_agregados debe ser llamada con un queryset o un modelo."
 
 #: views.py:32
 msgid "tagged_object_list must be called with a tag model."
@@ -48,4 +49,3 @@ msgstr "lista_de_objetos_agregados debe ser nombrada con un tag."
 #, python-format
 msgid "No tags found matching \"%s\"."
 msgstr "No se han encontrado tags correspondientes \"%s\"."
-

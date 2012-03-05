@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:57+0100\n"
+"POT-Creation-Date: 2012-03-05 12:05+0100\n"
 "PO-Revision-Date: 2012-03-04 22:11+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:16
-#: forms.py:57
+#: forms.py:16 forms.py:57
 msgid "Contact"
 msgstr "Контакт"
 
@@ -25,13 +24,11 @@ msgstr "Контакт"
 msgid "Description"
 msgstr "Описание"
 
-#: forms.py:45
-#: forms.py:100
+#: forms.py:45 forms.py:100
 msgid "Thank you for your suggestion."
 msgstr "Спасибо за Ваше предложение."
 
-#: forms.py:46
-#: forms.py:101
+#: forms.py:46 forms.py:101
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -39,18 +36,15 @@ msgstr ""
 "Спасибо за Ваш комментарий на  WolneLektury.pl. \n"
 "Предложение было передано координатору проекта."
 
-#: forms.py:52
-#: forms.py:107
+#: forms.py:52 forms.py:107
 msgid "Message sent automatically. Please do not reply."
 msgstr "Сообщение отправлено автоматически. Пожалуйста, не отвечайте."
 
-#: forms.py:58
-#: models.py:27
+#: forms.py:58 models.py:27
 msgid "books"
 msgstr "книги"
 
-#: forms.py:59
-#: models.py:28
+#: forms.py:59 models.py:28
 msgid "audiobooks"
 msgstr "аудиокниги"
 
@@ -58,8 +52,7 @@ msgstr "аудиокниги"
 msgid "One of these fields is required."
 msgstr "Требуется одно из этих полей."
 
-#: models.py:10
-#: models.py:26
+#: models.py:10 models.py:26
 msgid "contact"
 msgstr "контакт"
 
@@ -67,13 +60,11 @@ msgstr "контакт"
 msgid "description"
 msgstr "описание"
 
-#: models.py:12
-#: models.py:29
+#: models.py:12 models.py:29
 msgid "creation date"
 msgstr "дата создания"
 
-#: models.py:13
-#: models.py:30
+#: models.py:13 models.py:30
 msgid "IP address"
 msgstr "IP-адрес"
 
@@ -93,18 +84,15 @@ msgstr "издательское предложение"
 msgid "publishing suggestions"
 msgstr "издательские предложения"
 
-#: views.py:14
-#: views.py:21
+#: views.py:14 views.py:21
 msgid "Report a bug or suggestion"
 msgstr "Сообщитe об ошибке или предложении"
 
-#: views.py:16
-#: views.py:23
+#: views.py:16 views.py:23
 msgid "Report was sent successfully."
 msgstr "Отчет отправлен успешно."
 
-#: views.py:22
-#: templates/publishing_suggest.html:15
+#: views.py:22 templates/publishing_suggest.html:15
 msgid "Send report"
 msgstr "Отправить отчет"
 
@@ -115,4 +103,3 @@ msgstr "Вы не нашли книгу? Сделайте предложение
 #: templates/publishing_suggest.html:9
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Я хотел/а бы найти на сайте WolneLektury.pl этих..."
-
