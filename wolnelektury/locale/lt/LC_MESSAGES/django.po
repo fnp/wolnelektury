@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-07 16:56+0100\n"
-"PO-Revision-Date: 2012-03-01 16:13+0100\n"
-"Last-Translator: Aneta\n"
+"PO-Revision-Date: 2012-03-03 16:52+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Tinklalapis neegzistuoja"
 
 #: templates/404.html:10
 msgid "Page not found"
-msgstr "puslapis nerastas"
+msgstr "Puslapis nerastas"
 
 #: templates/404.html:14
 msgid "We are sorry, but this page does not exist. Please check if you entered correct address or go to "
@@ -49,7 +49,7 @@ msgstr "Atsiprašome, bet šis tinklalapis neegzistuoja. Prašome patvirtinti ar
 
 #: templates/404.html:14
 msgid "main page"
-msgstr "pagrindinis puslapis"
+msgstr "pagrindinį puslapį"
 
 #: templates/500.html:6
 #: templates/500.html.py:54
@@ -58,7 +58,7 @@ msgstr "Serverio klaida"
 
 #: templates/500.html:55
 msgid "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our <a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the error.</p>"
-msgstr "<p>Interneto svetainė yra laikinai neprieinama. Aplankykite mūsų <a href='http://nowoczesnapolska.org.pl'>blogą</a>.</p><p>Praneškite<a href='mailto:fundacja@nowoczesnapolska.org.pl'>administratoriams</a>apie klaidą.</p>\""
+msgstr "<p>Interneto svetainė yra laikinai neprieinama. Aplankykite mūsų <a href='http://nowoczesnapolska.org.pl'>blogą</a>.</p> <p>Praneškite<a href='mailto:fundacja@nowoczesnapolska.org.pl'>administratoriams</a> apie klaidą.</p>\""
 
 #: templates/503.html:6
 #: templates/503.html.py:54
@@ -87,15 +87,15 @@ msgid_plural ""
 "                    "
 msgstr[0] ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a>nemokamas kūrinys į kurį <a href='%(r)s'>turite teisę</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> nemokamas kūrinys į kurį <a href='%(r)s'>turite teisę</a>\n"
 "                    "
 msgstr[1] ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a>nemokami kūriniai į kuriuos <a href='%(r)s'>turite teisę</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> nemokami kūriniai į kuriuos <a href='%(r)s'>turite teisę</a>\n"
 "                    "
 msgstr[2] ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a>nemokamų kūrinių į kuriuos <a href='%(r)s'>turite teisę</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> nemokamų kūrinių į kuriuos <a href='%(r)s'>turite teisę</a>\n"
 "                    "
 
 #: templates/base.html:54
@@ -137,8 +137,8 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tProjektas Wolne Lektury yra<a href=\"http://nowoczesnapolska.org.pl/\">fondo Šiuolaikinė Lenkija</a>vadovaujamas.\n"
-"Skaitmeninės reprodukcijos yra <a href=\"http://www.bn.org.pl/\"> Nacionalinės bibliotekos</a>, <a href=\"http://www.bs.katowice.pl/\">Silezijos bibliotekos</a> ir <a href=\"http://www.bibliotekaelblaska.pl/\">Elbingo bibliotekos</a> paruoštos, remiantis šių bibliotekų ištekliais.\n"
+"\t\t\t\tProjektas Wolne Lektury yra <a href=\"http://nowoczesnapolska.org.pl/\">fondo Šiuolaikinė Lenkija</a> vadovaujamas.\n"
+"\t\t\t\tSkaitmeninės reprodukcijos yra <a href=\"http://www.bn.org.pl/\"> Nacionalinės bibliotekos</a>, <a href=\"http://www.bs.katowice.pl/\">Silezijos bibliotekos</a> ir <a href=\"http://www.bibliotekaelblaska.pl/\">Elbingo bibliotekos</a> paruoštos, remiantis šių bibliotekų ištekliais.\n"
 "\t\t\t\tPriegloba: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
 "\t\t\t\t"
 
@@ -160,7 +160,7 @@ msgstr "Uždaryti"
 
 #: templates/base.html:167
 msgid "Loading"
-msgstr "Pakrovimas"
+msgstr "Kraunama"
 
 #: templates/main_page.html:5
 msgid "Wolne Lektury internet library"
@@ -235,7 +235,7 @@ msgid ""
 msgstr ""
 "Fondo Šiuolaikinė Lenkija privalomos literatūros audio knygų rinkinys.\n"
 "Galite juo naudotis nemokamai ir be apribojimų.\n"
-"Audio knygas yra garsių aktorių įrašomos, tokių kaip Danuta Stenka ir Jan Peszek."
+"Audio knygos yra garsių aktorių įrašytos, tokių kaip Danuta Stenka ir Jan Peszek."
 
 #: templates/catalogue/book_detail.html:18
 #: templates/catalogue/tagged_object_list.html:74
@@ -269,7 +269,7 @@ msgid ""
 msgstr ""
 "Šio visuomenės srities kūrinio autorių teisė neapima,\n"
 "tai reiškia, kad gali būti laisvai naudojamas bei\n"
-"platinamas. Ar su šiuo kūriniu yra pateikiamos bet kokios\n"
+"platinamas. Jei su šiuo kūriniu yra pateikiamos bet kokios\n"
 "papildomos autorinių teisių saugomos medžiagos (kaip pastabos, motyvai ir t.t.), šios\n"
 "medžiagos yra licencijuotos pagal\n"
 "<a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
@@ -563,7 +563,7 @@ msgstr "Artistas"
 
 #: templates/catalogue/player.html:60
 msgid "Director"
-msgstr " Režisierus"
+msgstr "Režisierus"
 
 #: templates/catalogue/player.html:77
 msgid "Download as"
@@ -624,7 +624,7 @@ msgstr ""
 
 #: templates/catalogue/search_too_short.html:13
 msgid "Sorry! Search query must have at least two characters."
-msgstr "Atsiprašome! Paieškos užklausa turi susidėti mažiausiai iš dviejų simbolių.\""
+msgstr "Atsiprašome! Paieškos užklausa turi susidėti mažiausiai iš dviejų simbolių."
 
 #: templates/catalogue/tagged_object_list.html:78
 #: templates/catalogue/tagged_object_list.html:108
@@ -668,19 +668,19 @@ msgid_plural ""
 "or transferring 1&#37; of your income tax</a>.\n"
 msgstr[0] ""
 "\n"
-"Turime %(c)s kūrinį publikuotą Wolne Lektury interneto svetainėjė!\n"
+"Turime %(c)s kūrinį publikuotą Wolne Lektury interneto svetainėje!\n"
 "Padėkite mums plėtoti biblioteką ir nemokamai bendrinti naujus kūrinius\n"
 "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">remdami mus finansiškai\n"
 "arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
 msgstr[1] ""
 "\n"
-"Turime %(c)s kūrinius publikuotus Wolne Lektury interneto svetainėjė!\n"
+"Turime %(c)s kūrinius publikuotus Wolne Lektury interneto svetainėje!\n"
 "Padėkite mums plėtoti biblioteką ir nemokamai bendrinti naujus kūrinius\n"
 "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">remdami mus finansiškai\n"
 "arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
 msgstr[2] ""
 "\n"
-"Turime %(c)s kūrinių publikuotų Wolne Lektury interneto svetainėjė!\n"
+"Turime %(c)s kūrinių publikuotų Wolne Lektury interneto svetainėje!\n"
 "Padėkite mums plėtoti biblioteką ir nemokamai bendrinti naujus kūrinius\n"
 "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">remdami mus finansiškai\n"
 "arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
@@ -692,7 +692,7 @@ msgid ""
 "a publication by yourself by logging into the Editorial Platform."
 msgstr ""
 "Tapkite redaktoriumi Wolne Lektury interneto svetainės! Sužinokite ar\n"
-"šiuo metu dirbame su jūsų ieškomų kūriniu ir paruoškite\n"
+"šiuo metu dirbame su jūsų ieškomu kūriniu ir paruoškite\n"
 "jūsų leidinį prisijungdami prie Redakcinės Platformos."
 
 #: templates/info/join_us.html:23
@@ -733,7 +733,7 @@ msgstr "Šio autoriaus  kūriniai yra autorinių teisių saugomi ."
 #: templates/pdcounter/author_detail.html:36
 #: templates/pdcounter/author_detail.html:44
 msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works."
-msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Sužinokite</a> kodėl šio autoriaus kūriniai negali būti publikuojami internetinėje bibliotekoje.\""
+msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Sužinokite</a> kodėl šio autoriaus kūriniai negali būti publikuojami internetinėje bibliotekoje."
 
 #: templates/pdcounter/author_detail.html:39
 msgid "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon."
@@ -758,7 +758,7 @@ msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Sužin
 
 #: templates/pdcounter/book_stub_detail.html:23
 msgid "This work is copyrighted."
-msgstr "Šis kūrinis apimtas autoriaus teisę."
+msgstr "Šis kūrinis yra autorinių teisių saugomas."
 
 #: templates/piston/authorize_token.html:4
 #: templates/piston/authorize_token.html:7

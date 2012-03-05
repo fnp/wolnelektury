@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 11:25+0100\n"
+"POT-Creation-Date: 2012-03-01 16:53+0100\n"
 "PO-Revision-Date: 2012-01-31 17:04+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,8 +78,8 @@ msgstr ""
 "Serwis Wolnelektury.pl jest obecnie niedostępny z powodu prac "
 "konserwacyjnych."
 
-#: templates/base.html:9 templates/base.html.py:34
-#: templates/catalogue/book_text.html:8 templates/catalogue/player.html:8
+#: templates/base.html:9 templates/catalogue/book_text.html:8
+#: templates/catalogue/player.html:10
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
@@ -251,20 +251,20 @@ msgstr "Importuj książkę"
 msgid "or register"
 msgstr "albo załóż konto"
 
-#: templates/catalogue/audiobook_list.html:6
-#: templates/catalogue/audiobook_list.html:15
+#: templates/catalogue/audiobook_list.html:7
+#: templates/catalogue/audiobook_list.html:16
 msgid "Listing of all audiobooks"
 msgstr "Spis wszystkich audiobooków"
 
-#: templates/catalogue/audiobook_list.html:11
+#: templates/catalogue/audiobook_list.html:12
 msgid "Latest MP3 audiobooks"
 msgstr "Ostatnio dodane audiobooki w formacie MP3"
 
-#: templates/catalogue/audiobook_list.html:12
+#: templates/catalogue/audiobook_list.html:13
 msgid "Latest Ogg Vorbis audiobooks"
 msgstr "Ostatnio dodane audiobooki w formacie Ogg Vorbis"
 
-#: templates/catalogue/audiobook_list.html:18
+#: templates/catalogue/audiobook_list.html:19
 msgid ""
 "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
 "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
@@ -417,7 +417,7 @@ msgstr "Nota red."
 msgid "Infobox"
 msgstr "Informacje"
 
-#: templates/catalogue/book_text.html:25
+#: templates/catalogue/book_text.html:25 templates/catalogue/player.html:33
 msgid "Book's page"
 msgstr "Strona utworu"
 
@@ -623,35 +623,35 @@ msgstr "Motywy w utworze"
 msgid "Listing of all pictures"
 msgstr "Spis wszystkich obrazów"
 
-#: templates/catalogue/player.html:59
-msgid "Artist"
-msgstr "Czyta"
-
-#: templates/catalogue/player.html:60
-msgid "Director"
-msgstr "Reżyseruje"
-
-#: templates/catalogue/player.html:77
+#: templates/catalogue/player.html:34
 msgid "Download as"
 msgstr "Pobierz jako"
 
-#: templates/catalogue/player.html:94
+#: templates/catalogue/player.html:90
+msgid "Artist"
+msgstr "Czyta"
+
+#: templates/catalogue/player.html:91
+msgid "Director"
+msgstr "Reżyseruje"
+
+#: templates/catalogue/player.html:110
 msgid "Audiobooks were prepared as a part of the projects:"
 msgstr "Audiobooki przygotowane w ramach projektów:"
 
-#: templates/catalogue/player.html:99
+#: templates/catalogue/player.html:115
 #, python-format
 msgid "%(cs)s, funded by %(fb)s"
 msgstr "%(cs)s, finansowanego przez %(fb)s"
 
-#: templates/catalogue/player.html:111
+#: templates/catalogue/player.html:127
 #, python-format
 msgid ""
 "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 msgstr ""
 "Audiobooki przygotowane w ramach projektu %(cs)s finansowanego przez %(fb)s."
 
-#: templates/catalogue/player.html:113
+#: templates/catalogue/player.html:129
 #, python-format
 msgid "Audiobooks were prepared as a part of the %(cs)s project."
 msgstr "Audiobooki przygotowane w ramach projektu %(cs)s."

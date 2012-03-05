@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-07 16:56+0100\n"
-"PO-Revision-Date: 2012-03-01 16:13+0100\n"
-"Last-Translator: Aneta\n"
+"PO-Revision-Date: 2012-03-02 18:14+0100\n"
+"Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: fields.py:42
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
-msgstr "Įvėsti atitinkamą vertybę JSON. Klaida: %s"
+msgstr "Įvesti atitinkamą vertybę JSON. Klaida: %s"
 
 #: forms.py:23
 msgid "Please supply an XML."

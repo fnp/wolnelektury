@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 11:26+0100\n"
+"POT-Creation-Date: 2012-03-01 16:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,7 +209,7 @@ msgstr ""
 msgid "collections"
 msgstr ""
 
-#: views.py:500
+#: views.py:501
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -217,27 +217,27 @@ msgid ""
 "%(tb)s"
 msgstr ""
 
-#: views.py:501
+#: views.py:502
 msgid "Book imported successfully"
 msgstr ""
 
-#: views.py:503
+#: views.py:504
 #, python-format
 msgid "Error importing file: %r"
 msgstr ""
 
-#: views.py:547
+#: views.py:548
 msgid "Incorrect customization options for PDF"
 msgstr ""
 
-#: views.py:549
+#: views.py:550
 msgid "Bad method"
 msgstr ""
 
-#: views.py:554
+#: views.py:555
 msgid "Download custom PDF"
 msgstr ""
 
-#: views.py:555
+#: views.py:556
 msgid "Download"
 msgstr ""
