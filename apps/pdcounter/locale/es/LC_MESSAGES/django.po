@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 16:54+0100\n"
-"PO-Revision-Date: 2010-08-25 10:48\n"
-"Last-Translator: <radek.czajka@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-02-23 10:35+0100\n"
+"Last-Translator: Aneta <afroneta@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 msgid "name"
 msgstr "nombre"
 
-#: models.py:13 models.py:64
+#: models.py:13
+#: models.py:64
 msgid "slug"
 msgstr "slug"
 
@@ -29,7 +30,8 @@ msgstr "slug"
 msgid "sort key"
 msgstr "clave de clasificación"
 
-#: models.py:15 models.py:41
+#: models.py:15
+#: models.py:41
 msgid "description"
 msgstr "descripción"
 
@@ -37,7 +39,8 @@ msgstr "descripción"
 msgid "year of death"
 msgstr "año de muerte"
 
-#: models.py:22 models.py:62
+#: models.py:22
+#: models.py:62
 msgid "author"
 msgstr "autor"
 
