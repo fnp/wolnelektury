@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 16:53+0100\n"
-"PO-Revision-Date: 2010-08-26 13:13+0100\n"
-"Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-04 17:30+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: models.py:12
-#, fuzzy
 msgid "title"
 msgstr "заголовок"
 
 #: models.py:13
 msgid "slug"
-msgstr "слуґ"
+msgstr "slug"
 
 #: models.py:14
 msgid "file"
@@ -43,7 +42,7 @@ msgstr "опис"
 
 #: models.py:19
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: models.py:30
 msgid "document"
@@ -52,3 +51,4 @@ msgstr "документ"
 #: models.py:30
 msgid "documents"
 msgstr "документи"
+
