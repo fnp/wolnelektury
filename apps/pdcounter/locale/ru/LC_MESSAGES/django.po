@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 16:54+0100\n"
-"PO-Revision-Date: 2010-08-25 11:02\n"
-"Last-Translator: <radek.czajka@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-04 22:11+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 msgid "name"
 msgstr "название"
 
-#: models.py:13 models.py:64
+#: models.py:13
+#: models.py:64
 msgid "slug"
 msgstr "slug"
 
@@ -29,7 +30,8 @@ msgstr "slug"
 msgid "sort key"
 msgstr "ключ сортировки "
 
-#: models.py:15 models.py:41
+#: models.py:15
+#: models.py:41
 msgid "description"
 msgstr "описание"
 
@@ -37,14 +39,14 @@ msgstr "описание"
 msgid "year of death"
 msgstr "год смерти"
 
-#: models.py:22 models.py:62
+#: models.py:22
+#: models.py:62
 msgid "author"
 msgstr "автор"
 
 #: models.py:23
-#, fuzzy
 msgid "authors"
-msgstr "автор"
+msgstr "авторы"
 
 #: models.py:61
 msgid "title"
@@ -52,7 +54,7 @@ msgstr "заглавие"
 
 #: models.py:63
 msgid "goes to public domain"
-msgstr "идти к публичной домене"
+msgstr "идёт к публичной домене"
 
 #: models.py:65
 msgid "translator"

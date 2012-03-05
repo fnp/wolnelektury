@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 16:53+0100\n"
-"PO-Revision-Date: 2010-06-02 17:08+0100\n"
-"Last-Translator: I <moth_04@yahoo.pl>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-04 22:11+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -34,8 +34,7 @@ msgstr "ID объекта"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."
-msgstr ""
-"список таг-объектов должен сочетаться с набором вопросов или с моделью."
+msgstr "список таг-объектов должен сочетаться с набором вопросов или с моделью."
 
 #: views.py:32
 msgid "tagged_object_list must be called with a tag model."
@@ -49,3 +48,4 @@ msgstr "список таг-объектов должен сочетаться �
 #, python-format
 msgid "No tags found matching \"%s\"."
 msgstr "Никакой таг не соответствует \"%s\"."
+
