@@ -36,6 +36,9 @@ fi
 
 cp -v ${ROOT}/apps/infopages/fixtures/infopages.json "$LOCALIZED/infopages.json"
 ${0}-json.py "$LOCALIZED/infopages.json" $LNG
+if [ ! "$?" = 0 ]; then
+    exit 1;
+fi
 cp -v "$LOCALIZED/infopages.json" ${ROOT}/apps/infopages/fixtures/infopages.json
 cp -v "$LOCALIZED/locale.js.txt" ${ROOT}/wolnelektury/static/js/locale.js
 

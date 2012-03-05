@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-01 16:53+0100\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
 "PO-Revision-Date: 2012-02-22 20:52+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:11 models.py:33
+#: models.py:11
+#: models.py:33
 msgid "key"
 msgstr "clé"
 
@@ -51,3 +52,4 @@ msgstr "pièce jointe"
 #: models.py:38
 msgid "attachments"
 msgstr "pièces jointes"
+
