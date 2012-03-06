@@ -17,8 +17,6 @@
 }
 
 .book-wide-box {
-    width: 97.5em;
-
     /** This is a fullpage box, it must be aligned with the top menu. 
         This corresponds to a .1em margin below **/
     margin-left: -0.1em;
@@ -60,16 +58,11 @@
    min-height: 24.4em;
 }
 
-.search-result {
-    width: 97.5em;
-}
-
 .search-result .book-box-body {
     width: 31em;
 }
 
 .book-list-header {
-    width: 97.5em;
     padding: 0em;
     margin-left: -0.1em;
 }
@@ -202,6 +195,9 @@
     font-size: 1.1em;
 }
 
+.book-wide-box {
+	min-width: 48.75em;
+}
 .book-wide-box .book-box-tools {
     margin-left: 14em;
     width: 32em;
@@ -209,6 +205,7 @@
 
 .book-wide-box #theme-list-wrapper {
     margin-left: 15.4em;
+	margin-bottom: 3em;
 	width: 30em;
 }
 
@@ -258,11 +255,6 @@ ul.book-box-tools {
 }
 .book-box-audiobook {
     width: 7em;
-}
-
-.book-wide-box .right-column {
-    float: right;
-    width: 41.5em;
 }
 
 ul.inline-items, ul.inline-items li {
@@ -327,11 +319,6 @@ ul.inline-items li {
 
 .unlike .if-like {
     display: none;
-}
-
-.snippets {
-    width: 44em;
-    float: right;
 }
 
 .snippets .snippet-text {

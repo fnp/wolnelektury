@@ -207,6 +207,13 @@ COMPRESS_CSS = {
         ],
         'output_filename': 'css/all.min?.css',
     },
+    'screen': {
+        'source_filenames': ['css/screen.css'],
+        'output_filename': ['css/screen.min?.css'],
+        'extra_context': {
+            'media': 'screen and (min-width: 800px)',
+        },
+    },
     'ie': {
         'source_filenames': [
             'css/ie.css',

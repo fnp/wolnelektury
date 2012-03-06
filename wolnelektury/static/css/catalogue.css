@@ -14,15 +14,12 @@
 }
 
 
-#tagged-object-list .left-column, #tagged-object-list .right-column {
-    width: 48em;
-}
-
-
 /* listing of all books */
 #book-list {
    padding-left: 50px;
 }
+/* FIXME: MEDIA?
+ * 
 #book-list-nav {
     position: absolute;
     right: 50px;
@@ -31,6 +28,7 @@
     padding: 10px;
     font-size: 1.2em;
 }
+ */
 
 #book-list-nav ul {
     list-style-type: none;
@@ -112,7 +110,6 @@
 	width: 7em;
 }
 .inline-body {
-	width: 35em;
 	display: inline-block;
 	vertical-align: top;
 	margin-bottom: .5em;

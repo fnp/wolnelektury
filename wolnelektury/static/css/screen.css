@@ -1,0 +1,132 @@
+.left-column {
+    width: 47em;
+    float: left;
+}
+.right-column {
+    float:right;
+    width: 47em;
+}
+
+.hidden-box ul {
+	width: 48em;
+}
+
+#header-content, div#main-content, div#half-header-content, #footer-content {
+    width: 97.5em;
+    margin: auto;
+}
+
+#promo-box {
+    float: right;
+    margin-top: -5.1em;
+}
+
+#promo-box-body {
+	height: 30em;
+}
+
+#big-cite .vip {
+	float:left;
+	text-align:right;
+	width: 14.7em;
+}
+
+#big-cite .cite-body {
+    margin-left: 17.5em;
+}
+
+#big-cite .source {
+    margin-left: 17.5em;
+}
+
+
+.book-wide-box {
+    width: 97.5em;
+}
+.book-wide-box .book-box-body {
+	width: 38.2em;
+}
+
+
+#tagged-object-list .left-column, #tagged-object-list .right-column {
+    width: 48em;
+}
+
+
+
+
+.inline-body {
+	width: 35em;
+}
+
+
+.search-result {
+    width: 97.5em;
+}
+
+
+.book-list-header {
+    width: 97.5em;
+}
+
+.book-wide-box .right-column {
+    width: 41.5em;
+    margin-top: -23em;
+}
+
+.book-wide-box #theme-list-wrapper {
+	margin-bottom: 0;
+}
+
+.snippets {
+    width: 44em;
+    float: right;
+    margin-top: -20em;
+}
+
+/* LOGO */
+
+#logo a {
+	line-height: 7em;
+}
+
+
+/* HEADER */
+
+#header {
+    height: 3em;
+}
+
+#logo {
+    position: absolute;
+    top: -1.6em;
+}
+
+#user-info {
+    float: right;
+    padding: 0 !important;
+    margin-left: 0;
+}
+
+#tagline {
+    display: inline-block;
+    margin-left: 25.5em;
+}
+
+#search-area {
+    margin-left: 24em;
+    width: 73.5em;
+}
+
+#search-field {
+    width: 63.1em;
+    padding-right: 0 !important;
+}
+
+#search {
+    width: 47.47em;
+}
+
+#search-button {
+	float: right;
+}

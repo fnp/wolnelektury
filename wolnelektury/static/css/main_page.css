@@ -1,8 +1,6 @@
 
 #promo-box {
-    float: right;
     width: 32em;
-    margin-top: -5.1em;
 }
 #promo-box-header {
     padding-top: 2em;
@@ -19,7 +17,6 @@
 #promo-box-body {
     border-bottom: 2px solid #efefef;
     padding: 2em 2.8em;
-    height: 30em;
     background: #efefef;
 }
 #promo-box-title {
@@ -89,7 +86,7 @@
 }
 
 .infopages-box .social-links a {
-    font-family: WL-Nav;
+    font-family: WL-Nav, courier;
     font-size: 3em;
     color: #281d1c;
     margin-right: .2em;
