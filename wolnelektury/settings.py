@@ -286,17 +286,6 @@ COMPRESS_VERSION = True
 COMPRESS_CSS_FILTERS = None
 
 THUMBNAIL_QUALITY = 95
-THUMBNAIL_EXTENSION = 'png'
-
-THUMBNAIL_PROCESSORS = (
-    # Default processors
-    'sorl.thumbnail.processors.colorspace',
-    'sorl.thumbnail.processors.autocrop',
-    'sorl.thumbnail.processors.scale_and_crop',
-    'sorl.thumbnail.processors.filters',
-    # Custom processors
-    'sponsors.processors.add_padding',
-)
 
 TRANSLATION_REGISTRY = "wolnelektury.translation"
 
