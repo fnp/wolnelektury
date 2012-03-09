@@ -92,6 +92,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'wolnelektury.context_processors.extra_settings',
     'search.context_processors.search_form',
+    "allauth.context_processors.allauth",
+    "allauth.account.context_processors.account",
 )
 
 MIDDLEWARE_CLASSES = [
@@ -114,6 +116,12 @@ TEMPLATE_DIRS = [
     path.join(PROJECT_DIR, 'templates'),
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+EMAIL_CONFIRMATION_DAYS = 2
 LOGIN_URL = '/uzytkownicy/zaloguj/'
 
 LOGIN_REDIRECT_URL = '/'
@@ -135,6 +143,16 @@ INSTALLED_APPS = [
     'djcelery',
     'djkombu',
     #    'django_nose',
+
+    #allauth stuff
+    'emailconfirmation',
+    'uni_form',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.openid',
+    #'allauth.facebook',
+    #'allauth.twitter',
 
     # included
     'compress',

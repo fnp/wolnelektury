@@ -27,6 +27,7 @@ def main_page(request):
 
 class LoginFormView(AjaxableFormView):
     form_class = AuthenticationForm
+    template = "auth/login.html"
     placeholdize = True
     title = _('Sign in')
     submit = _('Sign in')

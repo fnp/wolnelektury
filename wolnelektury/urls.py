@@ -32,6 +32,7 @@ urlpatterns += patterns('',
     url(r'^raporty/', include('reporting.urls')),
     url(r'^info/', include('infopages.urls')),
     url(r'^ludzie/', include('social.urls')),
+    url(r'^uzytkownicy/', include('allauth.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
