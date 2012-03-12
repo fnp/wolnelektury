@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-05 12:21+0100\n"
-"PO-Revision-Date: 2010-06-09 16:44+0100\n"
-"Last-Translator: K Izdebska <villdeo.tess@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-04 20:05+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "description"
 
 #: models.py:19
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: models.py:30
 msgid "document"
@@ -51,3 +51,4 @@ msgstr "document"
 #: models.py:30
 msgid "documents"
 msgstr "documents"
+

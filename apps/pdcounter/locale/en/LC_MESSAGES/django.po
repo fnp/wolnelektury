@@ -7,21 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-05 12:21+0100\n"
-"PO-Revision-Date: 2010-08-25 10:45\n"
-"Last-Translator: <radek.czajka@gmail.com>\n"
+"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"PO-Revision-Date: 2012-03-04 20:05+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 
 #: models.py:12
 msgid "name"
 msgstr "name"
 
-#: models.py:13 models.py:64
+#: models.py:13
+#: models.py:64
 msgid "slug"
 msgstr "Slug"
 
@@ -29,7 +31,8 @@ msgstr "Slug"
 msgid "sort key"
 msgstr "Sort key"
 
-#: models.py:15 models.py:41
+#: models.py:15
+#: models.py:41
 msgid "description"
 msgstr "Description"
 
@@ -37,7 +40,8 @@ msgstr "Description"
 msgid "year of death"
 msgstr "Year of death"
 
-#: models.py:22 models.py:62
+#: models.py:22
+#: models.py:62
 msgid "author"
 msgstr "author"
 
