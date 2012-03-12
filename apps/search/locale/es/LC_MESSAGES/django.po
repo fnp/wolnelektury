@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-05 12:21+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-05 13:07+0100\n"
+"PO-Revision-Date: 2012-03-07 22:44+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,12 +19,13 @@ msgstr ""
 
 #: forms.py:12
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: forms.py:21
 msgid "title, author, theme/topic, epoch, kind, genre, phrase"
-msgstr ""
+msgstr "título, autor, tema, época , tipo, género, frase"
 
 #: views.py:89
 msgid "book"
-msgstr ""
+msgstr "libro"
+

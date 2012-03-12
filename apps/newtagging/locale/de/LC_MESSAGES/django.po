@@ -47,5 +47,5 @@ msgstr ""
 #: views.py:38
 #, python-format
 msgid "No tags found matching \"%s\"."
-msgstr "Keine entsprechende Tags zu \"%s\ gefunden"
+msgstr "Keine entsprechende Tags zu \"%s\" gefunden"
 
