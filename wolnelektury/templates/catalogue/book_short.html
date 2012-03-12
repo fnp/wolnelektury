@@ -16,8 +16,6 @@
             " alt="Cover" />
         {% endif %}
     </a>
-    {% block right-column %}
-    {% endblock %}
     <div class="book-box-body">
 
 
@@ -105,6 +103,8 @@
     </ul>
     {% block book-box-extra-info %}{% endblock %}
     {% block box-append %}
+    {% endblock %}
+    {% block right-column %}
     {% endblock %}
     <div class="clearboth"></div>
 </div>

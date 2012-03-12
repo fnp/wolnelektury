@@ -9,7 +9,9 @@
   src: url(/static/fonts/WL.ttf) format("truetype");
 }
 
+#logo {
+	margin-left: 1.5em;
+}
 #logo a {
     font-family: WL-Logo;
-    line-height: 7em;
 }

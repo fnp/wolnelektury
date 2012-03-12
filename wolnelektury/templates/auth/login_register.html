@@ -3,6 +3,12 @@
 
 {% block extra %}
 
+<h2>{% trans "or join accounts:" %}</h2>
+
+<ul class="socialauth">
+{% include "socialaccount/snippets/provider_list.html" %}
+</ul>
+
 
 <h1>{% trans "or register" %}:</h1>
 

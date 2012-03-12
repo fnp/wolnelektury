@@ -92,6 +92,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'wolnelektury.context_processors.extra_settings',
     'search.context_processors.search_form',
+    "allauth.context_processors.allauth",
+    "allauth.account.context_processors.account",
 )
 
 MIDDLEWARE_CLASSES = [
@@ -114,6 +116,12 @@ TEMPLATE_DIRS = [
     path.join(PROJECT_DIR, 'templates'),
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+EMAIL_CONFIRMATION_DAYS = 2
 LOGIN_URL = '/uzytkownicy/zaloguj/'
 
 LOGIN_REDIRECT_URL = '/'
@@ -135,6 +143,16 @@ INSTALLED_APPS = [
     'djcelery',
     'djkombu',
     #    'django_nose',
+
+    #allauth stuff
+    'emailconfirmation',
+    'uni_form',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.openid',
+    #'allauth.facebook',
+    #'allauth.twitter',
 
     # included
     'compress',
@@ -206,6 +224,13 @@ COMPRESS_CSS = {
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
         ],
         'output_filename': 'css/all.min?.css',
+    },
+    'screen': {
+        'source_filenames': ['css/screen.css'],
+        'output_filename': ['css/screen.min?.css'],
+        'extra_context': {
+            'media': 'screen and (min-width: 800px)',
+        },
     },
     'ie': {
         'source_filenames': [
@@ -279,17 +304,6 @@ COMPRESS_VERSION = True
 COMPRESS_CSS_FILTERS = None
 
 THUMBNAIL_QUALITY = 95
-THUMBNAIL_EXTENSION = 'png'
-
-THUMBNAIL_PROCESSORS = (
-    # Default processors
-    'sorl.thumbnail.processors.colorspace',
-    'sorl.thumbnail.processors.autocrop',
-    'sorl.thumbnail.processors.scale_and_crop',
-    'sorl.thumbnail.processors.filters',
-    # Custom processors
-    'sponsors.processors.add_padding',
-)
 
 TRANSLATION_REGISTRY = "wolnelektury.translation"
 

@@ -7,7 +7,6 @@
 }
 
 #header {
-    height: 3em;
     padding-top: 1.9em;
     padding-bottom: 0;
     color: #989898;
@@ -27,17 +26,6 @@
 }
 
 
-#user-info {
-    float: right;
-    margin: 0;
-}
-
-#logo {
-    position: absolute;
-    top: -1.6em;
-    margin-left: 1.5em;
-}
-
 #logo a {
     color:#f7f7f7;
     font-size: 2.05em;
@@ -45,27 +33,30 @@
 }
 
 #tagline {
-    display: inline-block;
-    margin-left: 25.5em;
+	margin-left: 1.5em;
 }
+
 #tagline span {
     font-size: 1.3em;
     color: #bbb;
+}
+
+#user-info {
+    margin: 0;
+    padding: 1em 0;
+    margin-left: 1.5em;
 }
 
 #search-area {
     margin: 0;
     background: #444;
     color: white;
-    margin-left: 24em;
-    width: 73.5em;
 }
 
 #search-field {
     display: inline-block;
-    width: 63.1em;
     padding-left: .5em;
-    padding-right: 0;
+    padding-right: .5em;
     padding-top: 0.5em;
     padding-bottom: 0;
 }
@@ -84,7 +75,6 @@
     -moz-box-shadow:0 0 .5em #444 inset;
     box-shadow: 0 0 .5em #444 inset;*/
     height: 2.54em;
-    width: 47.47em;
     padding-left: 1em;
     -webkit-border-radius: .38em;
     -moz-border-radius: .38em;
@@ -132,7 +122,6 @@
     padding: 0;
     margin: 0;
     width: 9.4em;
-    float: right;
 }
 #search-button button {
     font-size: 1em;

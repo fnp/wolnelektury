@@ -64,14 +64,6 @@ ul.plain {
     padding: 0;
 }
 
-.left-column {
-    width: 47em;
-    float: left;
-}
-.right-column {
-    float:right;
-    width: 47em;
-}
 .normal-text {
     font-size: 1.3em;
     line-height: 1.3em;
@@ -125,13 +117,6 @@ h2 {
     box-shadow: 2px 2px 2px #ddd;
 }
 
-
-#header-content, div#main-content, div#half-header-content, #footer-content {
-    width: 97.5em;
-    margin: auto;
-}
-
-
 .page-desc {
     margin-left: 1.5em;
 }
@@ -175,7 +160,6 @@ h2 {
     column-width: 12em;
     -moz-column-width: 12em;
     -webkit-column-width: 12em;
-    width: 48em;
 }
 .hidden-box li {
 	margin-bottom: .5em;

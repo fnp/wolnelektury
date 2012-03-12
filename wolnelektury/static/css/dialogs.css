@@ -115,3 +115,14 @@
 #custom-pdf-window label {
     display: inline;
 }
+
+
+.socialauth {
+	margin: 1em 0;
+	padding: 0;
+}
+.socialauth li {
+	display: inline;
+	list-style: none;
+	margin-right: 1em;
+}

@@ -1,0 +1,14 @@
+{% extends "ajaxable/form.html" %}
+{% load i18n %}
+
+{% block extra %}
+
+<h2>{% trans "or join accounts:" %}</h2>
+
+<ul class="socialauth">
+{% include "socialaccount/snippets/provider_list.html" %}
+</ul>
+
+{% endblock %}
+
+
