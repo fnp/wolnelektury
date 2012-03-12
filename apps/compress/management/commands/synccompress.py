@@ -18,6 +18,7 @@ class Command(NoArgsCommand):
         from compress.utils import needs_update, filter_css, filter_js
 
         for name, css in settings.COMPRESS_CSS.items():
+            print css['output_filename']
             u, version = needs_update(css['output_filename'], 
                 css['source_filenames'])
 

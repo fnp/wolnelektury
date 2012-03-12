@@ -227,7 +227,7 @@ COMPRESS_CSS = {
     },
     'screen': {
         'source_filenames': ['css/screen.css'],
-        'output_filename': ['css/screen.min?.css'],
+        'output_filename': 'css/screen.min?.css',
         'extra_context': {
             'media': 'screen and (min-width: 800px)',
         },
