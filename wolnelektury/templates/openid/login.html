@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load ajaxable_tags %}
+
+
+{% block titleextra %}{% trans "OpenID Sign In" %}{% endblock %}
+
+
+{% block body %}
+
+<h1>{% trans 'OpenID Sign In' %}</h1>
+
+
+<form class="cuteform hidelabels" method="post" action="{% url openid_login %}">
+<ul>
+	{% csrf_token %}
+	{% with form|placeholdize as f %}
+    	{{ f.as_ul }}
+    {% endwith %}
+    <li><input type="submit" value='{% trans "Login" %}' /></li>
+</ul>
+</form>
+
+{% endblock %}

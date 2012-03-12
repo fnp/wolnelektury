@@ -1,14 +1,17 @@
-{% extends "ajaxable/form.html" %}
 {% load i18n %}
+<h1>{{ title }}</h1>
 
-{% block extra %}
+<form action="{{ request.get_full_path }}" method="post" accept-charset="utf-8"
+	class="cuteform{% if placeholdize %} hidelabels{% endif %}">
+<ol>
+    <div id="id_{% if form_prefix %}{{ form_prefix }}-{% endif %}__all__"></div>
+    {{ form.as_ul }}
+    <li><a href="{% url account_reset_password %}">{% trans "Forgot your password?" %}</a></li>
+    <li><input type="submit" value="{{ submit }}"/></li>
+</ol>
+</form>
 
-<h2>{% trans "or join accounts:" %}</h2>
+<h1>{% trans "or merge accounts:" %}</h1>
 
-<ul class="socialauth">
 {% include "socialaccount/snippets/provider_list.html" %}
-</ul>
-
-{% endblock %}
-
 
