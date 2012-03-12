@@ -2,6 +2,7 @@ from datetime import datetime
 import feedparser
 
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.cache import cache
 from django.http import HttpResponse, HttpResponseRedirect
@@ -107,4 +108,10 @@ def publish_plan(request):
         cache.set(cache_key, plan, 1800)
 
     return render_to_response("publish_plan.html", {'plan': plan},
+        context_instance=RequestContext(request))
+
+
+@login_required
+def user_settings(request):
+    return render_to_response("user.html",
         context_instance=RequestContext(request))

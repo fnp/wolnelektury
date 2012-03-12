@@ -16,10 +16,11 @@ urlpatterns = patterns('wolnelektury.views',
     url(r'^zegar/$', 'clock', name='clock'),
 
     # Authentication
-    url(r'^uzytkownicy/zaloguj/$', views.LoginFormView(), name='login'),
-    url(r'^uzytkownicy/utworz/$', views.RegisterFormView(), name='register'),
-    url(r'^uzytkownicy/wyloguj/$', 'logout_then_redirect', name='logout'),
-    url(r'^uzytkownicy/zaloguj-utworz/$', views.LoginRegisterFormView(), name='login_register'),
+    url(r'^uzytkownik/$', 'user_settings', name='user_settings'),
+    url(r'^uzytkownik/login/$', views.LoginFormView(), name='login'),
+    url(r'^uzytkownik/signup/$', views.RegisterFormView(), name='register'),
+    url(r'^uzytkownik/logout/$', 'logout_then_redirect', name='logout'),
+    url(r'^uzytkownik/zaloguj-utworz/$', views.LoginRegisterFormView(), name='login_register'),
 )
 
 urlpatterns += patterns('',
@@ -32,7 +33,7 @@ urlpatterns += patterns('',
     url(r'^raporty/', include('reporting.urls')),
     url(r'^info/', include('infopages.urls')),
     url(r'^ludzie/', include('social.urls')),
-    url(r'^uzytkownicy/', include('allauth.urls')),
+    url(r'^uzytkownik/', include('allauth.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),

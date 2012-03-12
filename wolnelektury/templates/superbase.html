@@ -60,7 +60,17 @@
 
             <p id="user-info" class="mono">
                 {% if user.is_authenticated %}
-                    {% trans "Welcome" %}, <strong>{{ user.username }}</strong>
+                    {% trans "Welcome" %}, 
+                    	<span class="hidden-box-wrapper">
+                    		<a href="{% url user_settings %}" class="hidden-box-trigger">
+                    			<strong>{{ user.username }}</strong>
+                    		</a>
+                    		<span id="user-menu" class="hidden-box">
+                    			<a href="{% url account_set_password %}">{% trans "Password" %}</a><br/>
+                    			<a href="{% url account_email %}">{% trans "E-mail" %}</a><br/>
+                    			<a href="{% url socialaccount_connections %}">{% trans "Social accounts" %}</a><br/>
+                    		</span>
+                    	</span>
                     | <a href="{% url social_my_shelf %}" id="user-shelves-link">{% trans "My shelf" %}</a>
                     {% if user.is_staff %}
                     | <a href="/admin/">{% trans "Administration" %}</a>
@@ -197,5 +207,8 @@
         var pageTracker = _gat._getTracker("UA-2576694-1");
         pageTracker._trackPageview();
         </script>-->
+
+		{% block extrabody %}
+		{% endblock %}
     </body>
 </html>

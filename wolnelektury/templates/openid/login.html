@@ -14,9 +14,7 @@
 <form class="cuteform hidelabels" method="post" action="{% url openid_login %}">
 <ul>
 	{% csrf_token %}
-	{% with form|placeholdize as f %}
-    	{{ f.as_ul }}
-    {% endwith %}
+	{{ form|placeholdized_ul }}
     <li><input type="submit" value='{% trans "Login" %}' /></li>
 </ul>
 </form>

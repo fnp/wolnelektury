@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block titleextra %}{% trans "E-mail Address Confirmation" %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans "E-mail Address Confirmation" %}</h1>
+    {% if email_address %}
+        <p class="normal-text">{% blocktrans with email_address.email as email and email_address.user as user %}You have confirmed that <a href="mailto:{{email}}">{{ email }}</a> is an e-mail address for user '{{ user }}'.{% endblocktrans %}</p>
+    {% else %}
+        <p class="normal-text">{% trans "Invalid confirmation key." %}</p>
+    {% endif %}
+{% endblock %}

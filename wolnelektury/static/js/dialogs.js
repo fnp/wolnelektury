@@ -58,7 +58,7 @@
             $('body').append($window);
 
             $window.jqm({
-                ajax: '/uzytkownicy/zaloguj-utworz/?next=' + escape(window.location),
+                ajax: '/uzytkownik/zaloguj-utworz/?next=' + escape(window.location),
                 ajaxText: '<p><img src="' + STATIC_URL + 'img/indicator.gif" alt="*"/> ' + gettext("Loading") + '</p>',
                 target: $('.target', $window)[0],
                 overlay: 60,

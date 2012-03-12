@@ -143,6 +143,7 @@ h2 {
 }
 .hidden-box {
     position: absolute;
+    left: 0;
     display: none;
     border: 1px solid #ddd;
     padding: 1em 1em .5em 1em;
