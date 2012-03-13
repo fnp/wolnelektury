@@ -1,11 +1,6 @@
 {% load allauth_tags %}
 {% load catalogue_tags %}
 
-{% if allauth.facebook_enabled %}
-{% fbconnect %}
-{% endif %}
-
-<ul class="socialauth">
 {% if allauth.openid_enabled %}
 <li><a title="Google" class="socialaccount_provider google" href="{% openid_login_url openid="https://www.google.com/accounts/o8/id" %}">
 	<img alt="Google" src="{{ STATIC_URL }}img/auth/google.png" /></a></li>
@@ -27,4 +22,3 @@
 	<img alt="OpenID" src="{{ STATIC_URL }}img/auth/openid.png" /></a></li>
 <!--li><a title="Hyves" class="socialaccount_provider hyves" href="{% openid_login_url openid="http://hyves.nl" %}">Hyves</a></li-->
 {% endif %}
-</ul>

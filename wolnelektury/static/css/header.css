@@ -241,6 +241,7 @@ a.menu span {
 	left: 0;
 	top: 2em;
 	width: 15em;
+	line-height:1.6em;
 }
 #user-menu a {
 	color: #0D7E85;
