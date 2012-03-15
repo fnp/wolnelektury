@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load uni_form_tags %}
+
+{% block head_title %}{% trans "OpenID Sign In" %}{% endblock %}
+
+{% block body %}
+
+<h1>{% trans 'OpenID Sign In' %}</h1>
+
+
+<form id="openid_login_form" class="openid_login uniForm" method="post" action="{% url openid_login %}">
+{% csrf_token %}
+<fieldset class="inlineLabels">
+
+{#{form|as_uni_form}#}
+<div id="div_id_openid" class="ctrlHolder">
+<label for="id_openid" class="requiredField">
+OpenID<span class="asteriskField">*</span>
+</label>
+<input id="id_openid" type="text" class="textInput textinput" name="openid" />
+</div>
+
+
+<div class="buttonHolder">
+<button type="submit">{% trans "Sign In" %}</button>
+</div>
+</fieldset>
+</form>
+
+{% endblock %}

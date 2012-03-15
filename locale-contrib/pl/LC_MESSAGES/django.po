@@ -1,0 +1,518 @@
+# Polish translations for PROJECT.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-03-13 15:12+0100\n"
+"PO-Revision-Date: 2012-03-13 15:39+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"Language-Team: pl <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:36
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:167
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:341
+msgid "Password"
+msgstr "Hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:40
+msgid "Remember Me"
+msgstr "Zapamiętaj mnie"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:52
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:113
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:284
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:363
+msgid "E-mail"
+msgstr "E-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:57
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:104
+msgid "Username"
+msgstr "Login"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:85
+msgid "This account is currently inactive."
+msgstr "Konto jest nieaktywne."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:88
+msgid "The e-mail address and/or password you specified are not correct."
+msgstr "Podany e-mail i/lub hasło są niepoprawne."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:90
+msgid "The username and/or password you specified are not correct."
+msgstr "Podany login i/lub hasło są niepoprawne."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:116
+msgid "E-mail (optional)"
+msgstr "E-mail (opcjonalnie)"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:127
+msgid "Usernames can only contain letters, numbers and underscores."
+msgstr "Login może zawierać tylko litery, cyfry i znaki podkreślenia."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:133
+msgid "This username is already taken. Please choose another."
+msgstr "Ten login jest zajęty. Proszę wybrać inny."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:141
+msgid "A user is registered with this e-mail address."
+msgstr "Istnieje użytkownik o tym adresie e-mail."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:171
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:345
+msgid "Password (again)"
+msgstr "Hasło (ponownie)"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:198
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:330
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:352
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:428
+msgid "You must type the same password each time."
+msgstr "Proszę wpisać dwa razy to samo hasło."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:234
+msgid "Your e-mail address has already been verified"
+msgstr "Adres e-mail jest już zweryfikowany."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:244
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/utils.py:93
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:101
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:117
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s"
+msgstr "E-mail potwierdzający wysłany do %(email)s"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:292
+msgid "This e-mail address already associated with this account."
+msgstr "Ten adres e-mail jest już używany przez to konto."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:293
+msgid "This e-mail address already associated with another account."
+msgstr "Ten adres e-mail jest już używany przez inne konto."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:310
+msgid "Current Password"
+msgstr "Aktualne hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:314
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:411
+msgid "New Password"
+msgstr "Nowe hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:318
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:415
+msgid "New Password (again)"
+msgstr "Nowe hasło (ponownie)"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:324
+msgid "Please type your current password."
+msgstr "Proszę wpisać swoje aktualne hasło."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:373
+msgid "The e-mail address is not assigned to any user account"
+msgstr "Ten adres e-mail nie jest używany przez żadne konto."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/forms.py:393
+msgid "Password Reset E-mail"
+msgstr "E-mail resetujący hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/utils.py:72
+#, python-format
+msgid "Successfully signed in as %(user)s."
+msgstr "Zalogowano jako  %(user)s."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:133
+#, python-format
+msgid "Removed e-mail address %(email)s"
+msgstr "Usunięto adres e-mail %(email)s"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:147
+msgid "Primary e-mail address set"
+msgstr "Ustawiono główny adres e-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:168
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:241
+msgid "Password successfully changed."
+msgstr "Hasło zostało zmienione."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:191
+msgid "Password successfully set."
+msgstr "Hasło zostało ustawione."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/account/views.py:255
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/logout.html:10
+msgid "You have signed out."
+msgstr "Wylogowano."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/openid/forms.py:6
+msgid "OpenID"
+msgstr "OpenID"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/forms.py:32
+msgid "Your local account has no password setup."
+msgstr "Twoje konto nie ma ustawionego hasła."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/forms.py:36
+msgid "Your local account has no verified e-mail address."
+msgstr "Twoje konto nie ma potwierdzonego adresu e-mail."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/helpers.py:112
+msgid "The social account has been connected to your existing account"
+msgstr "Konto społecznościowe zostało podłączone do Twojego konta."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:89
+#, python-format
+msgid "Invalid response while obtaining request token from \"%s\"."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:111
+#, python-format
+msgid "Invalid response while obtaining access token from \"%s\"."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:124
+#, python-format
+msgid "No request token saved for \"%s\"."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:172
+#, python-format
+msgid "No access token saved for \"%s\"."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:192
+#, python-format
+msgid "No access to private resources at \"%s\"."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/socialaccount/views.py:68
+msgid "The social account has been disconnected"
+msgstr "Konto społecznościowe zostało odłączone."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:6
+msgid "Account"
+msgstr "Konto"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:9
+msgid "E-mail Addresses"
+msgstr "Adresy e-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:12
+msgid "The following e-mail addresses are associated to your account:"
+msgstr "Z Twoim kontem są związane następujące adresy e-mail:"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:26
+msgid "Verified"
+msgstr "Potwierdzony"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:28
+msgid "Unverified"
+msgstr "Nie potwierdzony"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:30
+msgid "Primary"
+msgstr "Główny"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:36
+msgid "Make Primary"
+msgstr "Ustaw główny"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:37
+msgid "Re-send Verification"
+msgstr "Ponownie prześlij link potwierdzający"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:38
+msgid "Remove"
+msgstr "Usuń"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:45
+msgid "Warning:"
+msgstr "Uwaga:"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:45
+msgid "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc."
+msgstr "Nie masz ustawionego żadnego adresu e-mail. Dodanie adresu e-mail umożliwi odzyskanie konta w przypadku utraty hasła."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:50
+msgid "Add E-mail Address"
+msgstr "Dodaj adres e-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:57
+msgid "Add E-mail"
+msgstr "Dodaj e-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/email.html:69
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Czy na pewno usunąć wybrany adres e-mail?"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/language_change.html:6
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/language_change.html:9
+msgid "Language"
+msgstr "Język"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/language_change.html:11
+msgid "Pinax can be used in your preferred language."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/language_change.html:18
+msgid "Change my language"
+msgstr "Zmień język"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/login.html:7
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/login.html:12
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/login.html:47
+msgid "Sign In"
+msgstr "Zaloguj"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/login.html:20
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a \n"
+"href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and sign in\n"
+"below:"
+msgstr ""
+"Zaloguj za pomocą konta zewnętrznego, albo <a \n"
+"href=\"%(signup_url)s\">zarejestruj się</a> w serwisie %(site_name)s i zaloguj poniżej:"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/login.html:28
+msgid "or"
+msgstr "lub"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/login.html:45
+msgid "Forgot Password?"
+msgstr "Nie pamiętasz hasła?"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/logout.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/logout.html:8
+msgid "Signed Out"
+msgstr "Wylogowano"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_change.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_change.html:8
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_change.html:15
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:8
+msgid "Change Password"
+msgstr "Zmień hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:8
+msgid "Delete Password"
+msgstr "Usuń hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:9
+msgid "You may delete your password since you are currently logged in using OpenID."
+msgstr "Możesz usunąć hasło, ponieważ jesteś zalogowany/-a za pomocą OpenID."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:12
+msgid "delete my password"
+msgstr "usuń moje hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete_done.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete_done.html:8
+msgid "Password Deleted"
+msgstr "Hasło usunięte"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_delete_done.html:9
+msgid "Your password has been deleted."
+msgstr "Twoje hasło zostało usunięte."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:7
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:11
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_done.html:6
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr "Odzyskiwanie hasła"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:16
+msgid "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it."
+msgstr "Nie pamiętasz swojego hasła? Wpisz adres e-mail, a wyślemy Ci e-mail umożliwiający zresetowanie go."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:23
+msgid "Reset My Password"
+msgstr "Odzyskaj hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:28
+#, python-format
+msgid "If you have any trouble resetting your password, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Jeśli masz problem z odzyskaniem hasła, napisz do nas pod <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_done.html:15
+#, python-format
+msgid "We have sent you an e-mail. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "E-mail został wysłany. Jeśli nie otrzymasz go w ciągu kilku minut, napisz do nas pod <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr "Błędny klucz"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid "The password reset link was invalid, possibly because it has already been used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</a>."
+msgstr "Link resetujący hasło jest nieprawidłowy, być może ponieważ został już wcześniej użyty. Spróbuj <a href=\"%(passwd_reset_url)s\">zresetować hasło ponownie</a>."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:20
+msgid "change password"
+msgstr "zmień hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:25
+msgid "Your password is now changed."
+msgstr "Hasło zostało zmienione."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_reset_key_message.txt:9
+#, python-format
+msgid ""
+"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click the link below to reset your password.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"In case you forgot, your username is %(username)s.\n"
+"\n"
+"Thanks for using our site!\n"
+msgstr ""
+"Otrzymujesz tego e-maila, ponieważ zostaliśmy poproszeni o zresetowanie hasła dla konta w serwisie %(site_domain)s.\n"
+"Możesz go zignorować, jeśli prośba nie pochodzi od Ciebie. Wejdź pod poniższy link, aby zresetować swoje hasło.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"W razie czego, Twój login to: %(username)s.\n"
+"\n"
+"Miłego czytania!\n"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_set.html:6
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_set.html:9
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/password_set.html:16
+msgid "Set Password"
+msgstr "Ustaw hasło"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/signup.html:6
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:6
+msgid "Signup"
+msgstr "Rejestracja"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/signup.html:9
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/signup.html:24
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:9
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:22
+msgid "Sign Up"
+msgstr "Zarejestruj się"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/signup.html:14
+msgid "Already have an account?"
+msgstr "Masz już konto?"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/signup.html:14
+msgid "Sign in"
+msgstr "Zaloguj się"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:6
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:9
+msgid "Timezone"
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:11
+msgid "Pinax can localize all times into your preferred timezone. Change your timezone below."
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:18
+msgid "Change my timezone"
+msgstr ""
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/verification_sent.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/verification_sent.html:8
+msgid "Verify Your E-mail Address"
+msgstr "Potwierdź swój adres e-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/verification_sent.html:10
+#, python-format
+msgid "We have sent you an e-mail to <b>%(email)s</b> for verification. Follow the link provided to finalize the signup process. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Na adres <b>%(email)s</b> został wysłany e-mail w celu potwierdzenia konta. W treści e-maila znajduje się link, pod który trzeba przejść w celu dokończenia rejestracji. Jeśli nie dostaniesz go w ciągu kilku minut, napisz do nas pod <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr "Zwróć uwagę"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr "jesteś już zalogowany/-a jako %(user_display)s."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:8
+msgid "E-mail Address Confirmation"
+msgstr "Potwierdzenie adresu e-mail"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:11
+#, python-format
+msgid "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for user '%(user)s'."
+msgstr "Adres <a href=\"mailto:%(email)s\">%(email)s</a> został właśnie powierdzony jako e-mail dla użytkownika '%(user)s'."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:13
+msgid "Invalid confirmation key."
+msgstr "Niepoprawny klucz potwierdzający."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/openid/login.html:10
+msgid "OpenID Sign In"
+msgstr "Logowanie przy użyciu OpenID"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/account_inactive.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/account_inactive.html:8
+msgid "Account Inactive"
+msgstr "Konto nieaktywne"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/account_inactive.html:10
+msgid "This account is inactive."
+msgstr "To konto jest nieaktywne."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/authentication_error.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr "Błąd podczas logowania przy użyciu sieci społecznościowej."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/authentication_error.html:10
+msgid "An error occured while attempting to login via your social network account."
+msgstr "Podczas próby zalogowania za pośrednictwej konta w sieci społecznościowej wystąpił błąd."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:8
+msgid "Account Connections"
+msgstr "Powiązania konta"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:11
+msgid "You can sign in to your account using any of the following third party accounts:"
+msgstr "Możesz zalogować się na swoje konto używając następujących kont zewnętrznych:"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:46
+msgid "Add a 3rd Party Account"
+msgstr "Dodaj konto zewnętrzne"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/login_cancelled.html:5
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr "Logowanie anulowane"
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/login_cancelled.html:13
+#, python-format
+msgid "You decided to cancel logging in to our site using one of your exisiting accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr "Logowanie do serwisu za pomocą istniejącego konta zostało anulowane. Jeśli był to błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
+
+#: /home/rczajka/workspace/virtualenv/wolnelektury-2.6/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:12
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to \n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+"Za chwilę użyjesz konta w serwisie %(provider_name)s aby zalogować się \n"
+"do serwisu %(site_name)s. Zanim to nastąpi, wypełnij proszę ten krótki formularz:"
+

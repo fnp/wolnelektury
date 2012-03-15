@@ -108,6 +108,7 @@ MIDDLEWARE_CLASSES = [
     'maintenancemode.middleware.MaintenanceModeMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'
@@ -122,7 +123,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 EMAIL_CONFIRMATION_DAYS = 2
-LOGIN_URL = '/uzytkownicy/zaloguj/'
+LOGIN_URL = '/uzytkownik/login/'
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -219,6 +220,7 @@ COMPRESS_CSS = {
             'css/catalogue.css',
             'css/sponsors.css',
             'css/logo.css',
+            'css/auth.css',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
@@ -340,6 +342,10 @@ BROKER_PASSWORD = "guest"
 BROKER_VHOST = "/"
 
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+
+LOCALE_PATHS = [
+    path.join(PROJECT_DIR, '../locale-contrib')
+]
 
 # Load localsettings, if they exist
 try:

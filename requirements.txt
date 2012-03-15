@@ -12,6 +12,7 @@ django-allauth
 
 python-memcached
 piwik
+python-fb
 
 # Feedparser 
 Feedparser>=4.1

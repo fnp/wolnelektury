@@ -1,15 +1,17 @@
-{% extends "simple_base.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 
-{% block "title" %}{% trans "Authorize access to Wolne Lektury" %}{% endblock %}
+{% block titleextra %}{% trans "Authorize access to Wolne Lektury" %}{% endblock %}
 
-{% block "body" %}
+{% block body %}
     <h1>{% trans "Authorize access to Wolne Lektury" %}</h1>
 
+	<div class="normal-text">
     <p>{% blocktrans %}Confirm to authorize access to Wolne Lektury as user <strong>{{ user}}</strong>.{% endblocktrans %}</p>
 
     <form action="{% url piston.authentication.oauth_user_auth %}" method="POST">
       {{ form.as_p }}
       <button type="submit">Confirm</button>
     </form>
+    </div>
 {% endblock %}
