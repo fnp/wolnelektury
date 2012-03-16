@@ -1,7 +1,7 @@
-#auth-page p {
+#auth-page #main-content p {
 	font-size: 1.2em;
 }
-#auth-page h2 {
+#auth-page #main-content h2 {
 	font-size: 2em;
 	margin-top: 1em;
 }
