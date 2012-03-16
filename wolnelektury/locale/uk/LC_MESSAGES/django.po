@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-05 13:06+0100\n"
-"PO-Revision-Date: 2012-03-07 13:56+0100\n"
-"Last-Translator: Aneta\n"
+"POT-Creation-Date: 2012-03-12 13:49+0100\n"
+"PO-Revision-Date: 2012-03-13 13:17+0100\n"
+"Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: views.py:31
 #: views.py:32
-#: templates/base.html:63
+#: views.py:33
+#: templates/superbase.html:72
 msgid "Sign in"
 msgstr "Увійти"
 
-#: views.py:47
 #: views.py:48
-#: views.py:73
-#: templates/base.html:67
+#: views.py:49
+#: views.py:74
+#: templates/superbase.html:76
 msgid "Register"
 msgstr "Зареєструватися"
 
-#: views.py:68
+#: views.py:69
 msgid "You have to be logged in to continue"
 msgstr "Щоб продовжити, треба увійти в свій акаунт."
 
@@ -68,13 +68,56 @@ msgstr "Послуга недоступна"
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr "У зв'язку з технічними роботами сервіс Wolnelektury.pl тимчасово недоступний."
 
-#: templates/base.html:9
+#: templates/main_page.html:5
+#: templates/main_page.html.py:6
+msgid "Wolne Lektury internet library"
+msgstr "Електронна бібліотека WolneLektury.pl"
+
+#: templates/main_page.html:22
+msgid "Recent publications"
+msgstr "останні публікації"
+
+#: templates/main_page.html:32
+msgid "News"
+msgstr "Новості"
+
+#: templates/main_page.html:40
+msgid "Utilities"
+msgstr "утиліти"
+
+#: templates/main_page.html:43
+msgid "Report a bug or suggestion"
+msgstr "Повідомити про помилку або надіслати свої пропозиції"
+
+#: templates/main_page.html:46
+msgid "Widget"
+msgstr "Віджет"
+
+#: templates/main_page.html:47
+msgid "Missing a book?"
+msgstr "Не знайшли книжки?"
+
+#: templates/main_page.html:48
+#: templates/publish_plan.html:4
+#: templates/publish_plan.html.py:8
+msgid "Publishing plan"
+msgstr "План публікації"
+
+#: templates/main_page.html:54
+msgid "Information"
+msgstr "інформація"
+
+#: templates/main_page.html:74
+msgid "Image used:"
+msgstr "Використано графіку:"
+
+#: templates/superbase.html:17
 #: templates/catalogue/book_text.html:8
 #: templates/catalogue/player.html:10
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base.html:43
+#: templates/superbase.html:52
 #, python-format
 msgid ""
 "\n"
@@ -97,23 +140,23 @@ msgstr[2] ""
 "                    <a href='%(b)s'>%(c)s</a> безкоштовні тексти, до яких маєш <a href='%(r)s'>право</a>\n"
 "                    "
 
-#: templates/base.html:54
+#: templates/superbase.html:63
 msgid "Welcome"
 msgstr "Ласкаво просимо"
 
-#: templates/base.html:55
+#: templates/superbase.html:64
 msgid "My shelf"
 msgstr "Моя полиця"
 
-#: templates/base.html:57
+#: templates/superbase.html:66
 msgid "Administration"
 msgstr "Адміністрація"
 
-#: templates/base.html:59
+#: templates/superbase.html:68
 msgid "Logout"
 msgstr "Вийти "
 
-#: templates/base.html:89
+#: templates/superbase.html:98
 #: templates/catalogue/search_multiple_hits.html:5
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
@@ -123,11 +166,11 @@ msgstr "Вийти "
 msgid "Search"
 msgstr "Пошук"
 
-#: templates/base.html:112
+#: templates/superbase.html:121
 msgid "Language versions"
 msgstr "Мовні версії"
 
-#: templates/base.html:142
+#: templates/superbase.html:151
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
@@ -141,7 +184,7 @@ msgstr ""
 "\t\t\t\tХостинг: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
 "\t\t\t\t"
 
-#: templates/base.html:149
+#: templates/superbase.html:158
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
@@ -153,55 +196,13 @@ msgstr ""
 "                eлектронна пошта: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 
-#: templates/base.html:165
+#: templates/superbase.html:174
 msgid "Close"
 msgstr "Закрити"
 
-#: templates/base.html:167
+#: templates/superbase.html:176
 msgid "Loading"
 msgstr "Завантажується"
-
-#: templates/main_page.html:5
-msgid "Wolne Lektury internet library"
-msgstr "Електронна бібліотека WolneLektury.pl"
-
-#: templates/main_page.html:21
-msgid "Recent publications"
-msgstr "останні публікації"
-
-#: templates/main_page.html:31
-msgid "News"
-msgstr "Новості"
-
-#: templates/main_page.html:39
-msgid "Utilities"
-msgstr "утиліти"
-
-#: templates/main_page.html:42
-msgid "Report a bug or suggestion"
-msgstr "Повідомити про помилку або надіслати свої пропозиції"
-
-#: templates/main_page.html:45
-msgid "Widget"
-msgstr "Віджет"
-
-#: templates/main_page.html:46
-msgid "Missing a book?"
-msgstr "Не знайшли книжки?"
-
-#: templates/main_page.html:47
-#: templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
-msgid "Publishing plan"
-msgstr "План публікації"
-
-#: templates/main_page.html:53
-msgid "Information"
-msgstr "інформація"
-
-#: templates/main_page.html:73
-msgid "Image used:"
-msgstr "Використано графіку:"
 
 #: templates/admin/base_site.html:4
 #: templates/admin/base_site.html.py:7
@@ -225,7 +226,12 @@ msgstr "спрощений"
 msgid "Import book"
 msgstr "Імпортувати книжку"
 
-#: templates/auth/login_register.html:7
+#: templates/auth/login.html:6
+#: templates/auth/login_register.html:6
+msgid "or join accounts:"
+msgstr "або увійти під своїм акаунтом"
+
+#: templates/auth/login_register.html:13
 msgid "or register"
 msgstr "або зареєструватися"
 
@@ -252,7 +258,7 @@ msgstr ""
 "Можна нею користуватися безкоштовно і без обмежень.\n"
 "Аудіокниги зачитують відомі актори, серед яких Данута Стенка та Ян Пешек."
 
-#: templates/catalogue/book_detail.html:18
+#: templates/catalogue/book_detail.html:20
 #: templates/catalogue/tagged_object_list.html:74
 #: templates/catalogue/tagged_object_list.html:104
 msgid "See also"
@@ -329,52 +335,52 @@ msgstr "В вас немає жодних полиць. Нижче ви може
 msgid "Put on the shelf!"
 msgstr "Покласти на полицю!"
 
-#: templates/catalogue/book_short.html:51
+#: templates/catalogue/book_short.html:49
 #: templates/catalogue/picture_detail.html:54
 #: templates/picture/picture_short.html:22
 msgid "Epoch"
 msgstr "Епоха"
 
-#: templates/catalogue/book_short.html:58
+#: templates/catalogue/book_short.html:56
 #: templates/catalogue/picture_detail.html:60
 #: templates/picture/picture_short.html:29
 msgid "Kind"
 msgstr "Рід"
 
-#: templates/catalogue/book_short.html:65
+#: templates/catalogue/book_short.html:63
 msgid "Genre"
 msgstr "Жанр"
 
-#: templates/catalogue/book_short.html:80
+#: templates/catalogue/book_short.html:78
 msgid "Read online"
 msgstr "Читати онлайн"
 
-#: templates/catalogue/book_short.html:84
+#: templates/catalogue/book_short.html:82
 #: templates/catalogue/book_text.html:26
 #: templates/catalogue/book_wide.html:53
 #: templates/lessons/ajax_document_detail.html:3
 msgid "Download"
 msgstr "Завантажити"
 
-#: templates/catalogue/book_short.html:87
+#: templates/catalogue/book_short.html:85
 #: templates/catalogue/book_text.html:35
 msgid "to print"
 msgstr "друкувати"
 
-#: templates/catalogue/book_short.html:90
+#: templates/catalogue/book_short.html:88
 msgid "for an e-book reader"
 msgstr "для інтернетного читача"
 
-#: templates/catalogue/book_short.html:93
+#: templates/catalogue/book_short.html:91
 #: templates/catalogue/book_text.html:41
 msgid "for Kindle"
 msgstr "для Kindle"
 
-#: templates/catalogue/book_short.html:96
+#: templates/catalogue/book_short.html:94
 msgid "for advanced usage"
 msgstr "для досвіченого користувача"
 
-#: templates/catalogue/book_short.html:102
+#: templates/catalogue/book_short.html:100
 msgid "Listen"
 msgstr "Слухати"
 

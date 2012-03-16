@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
-"PO-Revision-Date: 2012-03-10 13:31+0100\n"
+"POT-Creation-Date: 2012-03-12 13:49+0100\n"
+"PO-Revision-Date: 2012-03-13 23:57+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 
-#: views.py:31
 #: views.py:32
-#: templates/base.html:63
+#: views.py:33
+#: templates/superbase.html:72
 msgid "Sign in"
 msgstr "Sign in"
 
-#: views.py:47
 #: views.py:48
-#: views.py:73
-#: templates/base.html:67
+#: views.py:49
+#: views.py:74
+#: templates/superbase.html:76
 msgid "Register"
 msgstr "Register"
 
-#: views.py:68
+#: views.py:69
 msgid "You have to be logged in to continue"
 msgstr "You have to be logged in to continue"
 
@@ -68,13 +68,56 @@ msgstr "Service unavailable"
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr "The website Wolnelektury.pl is currently unavailable due to maintainance."
 
-#: templates/base.html:9
+#: templates/main_page.html:5
+#: templates/main_page.html.py:6
+msgid "Wolne Lektury internet library"
+msgstr "Wolne Lektury Internet library"
+
+#: templates/main_page.html:22
+msgid "Recent publications"
+msgstr "Latest publications"
+
+#: templates/main_page.html:32
+msgid "News"
+msgstr "News"
+
+#: templates/main_page.html:40
+msgid "Utilities"
+msgstr "Tools"
+
+#: templates/main_page.html:43
+msgid "Report a bug or suggestion"
+msgstr "Report an error or make a suggestion"
+
+#: templates/main_page.html:46
+msgid "Widget"
+msgstr "Widget"
+
+#: templates/main_page.html:47
+msgid "Missing a book?"
+msgstr "Missing a book?"
+
+#: templates/main_page.html:48
+#: templates/publish_plan.html:4
+#: templates/publish_plan.html.py:8
+msgid "Publishing plan"
+msgstr "Publishing plan"
+
+#: templates/main_page.html:54
+msgid "Information"
+msgstr "Information"
+
+#: templates/main_page.html:74
+msgid "Image used:"
+msgstr "Image used:"
+
+#: templates/superbase.html:17
 #: templates/catalogue/book_text.html:8
-#: templates/catalogue/player.html:8
+#: templates/catalogue/player.html:10
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base.html:43
+#: templates/superbase.html:52
 #, python-format
 msgid ""
 "\n"
@@ -93,23 +136,23 @@ msgstr[1] ""
 "                    <a href='%(b)s'>%(c)s</a> free readings you have <a href='%(r)s'>right to</a>\n"
 "                    "
 
-#: templates/base.html:54
+#: templates/superbase.html:63
 msgid "Welcome"
 msgstr "Welcome"
 
-#: templates/base.html:55
+#: templates/superbase.html:64
 msgid "My shelf"
 msgstr "My shelf"
 
-#: templates/base.html:57
+#: templates/superbase.html:66
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/base.html:59
+#: templates/superbase.html:68
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:89
+#: templates/superbase.html:98
 #: templates/catalogue/search_multiple_hits.html:5
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
@@ -119,11 +162,11 @@ msgstr "Logout"
 msgid "Search"
 msgstr "Search"
 
-#: templates/base.html:112
+#: templates/superbase.html:121
 msgid "Language versions"
 msgstr "Language versions"
 
-#: templates/base.html:142
+#: templates/superbase.html:151
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
@@ -137,7 +180,7 @@ msgstr ""
 "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
 "\t\t\t\t\""
 
-#: templates/base.html:149
+#: templates/superbase.html:158
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
@@ -149,39 +192,13 @@ msgstr ""
 "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 
-#: templates/base.html:165
+#: templates/superbase.html:174
 msgid "Close"
 msgstr "Close"
 
-#: templates/base.html:167
+#: templates/superbase.html:176
 msgid "Loading"
 msgstr "Loading"
-
-#: templates/main_page.html:5
-msgid "Wolne Lektury internet library"
-msgstr "Wolne Lektury Internet library"
-
-#: templates/main_page.html:42
-msgid "Report a bug or suggestion"
-msgstr "Report an error or make a suggestion"
-
-#: templates/main_page.html:45
-msgid "Widget"
-msgstr "Widget"
-
-#: templates/main_page.html:46
-msgid "Missing a book?"
-msgstr "Missing a book?"
-
-#: templates/main_page.html:47
-#: templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
-msgid "Publishing plan"
-msgstr "Publishing plan"
-
-#: templates/main_page.html:73
-msgid "Image used:"
-msgstr "Image used:"
 
 #: templates/admin/base_site.html:4
 #: templates/admin/base_site.html.py:7
@@ -205,24 +222,29 @@ msgstr "simplified"
 msgid "Import book"
 msgstr "Import book"
 
-#: templates/auth/login_register.html:7
+#: templates/auth/login.html:6
+#: templates/auth/login_register.html:6
+msgid "or join accounts:"
+msgstr "or join accounts:"
+
+#: templates/auth/login_register.html:13
 msgid "or register"
 msgstr "or register"
 
-#: templates/catalogue/audiobook_list.html:6
-#: templates/catalogue/audiobook_list.html:15
+#: templates/catalogue/audiobook_list.html:7
+#: templates/catalogue/audiobook_list.html:16
 msgid "Listing of all audiobooks"
 msgstr "List of the audiobooks"
 
-#: templates/catalogue/audiobook_list.html:11
+#: templates/catalogue/audiobook_list.html:12
 msgid "Latest MP3 audiobooks"
 msgstr "Latest MP3 audiobooks"
 
-#: templates/catalogue/audiobook_list.html:12
+#: templates/catalogue/audiobook_list.html:13
 msgid "Latest Ogg Vorbis audiobooks"
 msgstr "Latest Ogg Vorbis audiobooks"
 
-#: templates/catalogue/audiobook_list.html:18
+#: templates/catalogue/audiobook_list.html:19
 msgid ""
 "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
 "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
@@ -232,7 +254,7 @@ msgstr ""
 "It is free of charge and you can use it without any limits. \n"
 "Audiobooks are recorded with the participation of famous Polish actors like Danuta Stenka or Jan Peszek."
 
-#: templates/catalogue/book_detail.html:18
+#: templates/catalogue/book_detail.html:20
 #: templates/catalogue/tagged_object_list.html:74
 #: templates/catalogue/tagged_object_list.html:104
 msgid "See also"
@@ -309,34 +331,53 @@ msgstr "You do not have any shelves. You can create one below, if you want to."
 msgid "Put on the shelf!"
 msgstr "Put on the shelf!"
 
-#: templates/catalogue/book_short.html:51
+#: templates/catalogue/book_short.html:49
 #: templates/catalogue/picture_detail.html:54
 #: templates/picture/picture_short.html:22
 msgid "Epoch"
 msgstr "Period"
 
-#: templates/catalogue/book_short.html:58
+#: templates/catalogue/book_short.html:56
 #: templates/catalogue/picture_detail.html:60
 #: templates/picture/picture_short.html:29
 msgid "Kind"
 msgstr "Form"
 
-#: templates/catalogue/book_short.html:65
+#: templates/catalogue/book_short.html:63
 msgid "Genre"
 msgstr "Genre"
 
-#: templates/catalogue/book_short.html:80
+#: templates/catalogue/book_short.html:78
 msgid "Read online"
 msgstr "Read online"
 
-#: templates/catalogue/book_short.html:84
+#: templates/catalogue/book_short.html:82
 #: templates/catalogue/book_text.html:26
 #: templates/catalogue/book_wide.html:53
 #: templates/lessons/ajax_document_detail.html:3
 msgid "Download"
 msgstr "Download"
 
-#: templates/catalogue/book_short.html:102
+#: templates/catalogue/book_short.html:85
+#: templates/catalogue/book_text.html:35
+msgid "to print"
+msgstr "to print"
+
+#: templates/catalogue/book_short.html:88
+msgid "for an e-book reader"
+msgstr "for an e-book reader"
+
+#: templates/catalogue/book_short.html:91
+#: templates/catalogue/book_text.html:41
+msgid "for Kindle"
+msgstr "for Kindle"
+
+#: templates/catalogue/book_short.html:94
+#, fuzzy
+msgid "for advanced usage"
+msgstr "advanced"
+
+#: templates/catalogue/book_short.html:100
 msgid "Listen"
 msgstr "Listen"
 
@@ -358,8 +399,18 @@ msgid "Infobox"
 msgstr "Infobox"
 
 #: templates/catalogue/book_text.html:25
+#: templates/catalogue/player.html:33
 msgid "Book's page"
 msgstr "Book's page"
+
+#: templates/catalogue/book_text.html:38
+msgid "for a reader"
+msgstr "for a reader"
+
+#: templates/catalogue/book_text.html:44
+#, fuzzy
+msgid "for advanced usege"
+msgstr "advanced"
 
 #: templates/catalogue/book_text.html:46
 #: templates/catalogue/book_wide.html:63
@@ -553,33 +604,33 @@ msgstr "Work's themes "
 msgid "Listing of all pictures"
 msgstr "List of all pictures"
 
-#: templates/catalogue/player.html:59
-msgid "Artist"
-msgstr "Reader"
-
-#: templates/catalogue/player.html:60
-msgid "Director"
-msgstr "Director"
-
-#: templates/catalogue/player.html:77
+#: templates/catalogue/player.html:34
 msgid "Download as"
 msgstr "Download as"
 
-#: templates/catalogue/player.html:94
+#: templates/catalogue/player.html:90
+msgid "Artist"
+msgstr "Reader"
+
+#: templates/catalogue/player.html:91
+msgid "Director"
+msgstr "Director"
+
+#: templates/catalogue/player.html:110
 msgid "Audiobooks were prepared as a part of the projects:"
 msgstr "Audiobooks were prepared as a part of the following projects:"
 
-#: templates/catalogue/player.html:99
+#: templates/catalogue/player.html:115
 #, python-format
 msgid "%(cs)s, funded by %(fb)s"
 msgstr "%(cs)s, funded by %(fb)s"
 
-#: templates/catalogue/player.html:111
+#: templates/catalogue/player.html:127
 #, python-format
 msgid "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 msgstr "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 
-#: templates/catalogue/player.html:113
+#: templates/catalogue/player.html:129
 #, python-format
 msgid "Audiobooks were prepared as a part of the %(cs)s project."
 msgstr "Audiobooks were prepared as a part of the %(cs)s project."

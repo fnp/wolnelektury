@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"POT-Creation-Date: 2012-03-12 13:49+0100\n"
 "PO-Revision-Date: 2012-03-09 11:33+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,4 +51,3 @@ msgstr "Dokument"
 #: models.py:30
 msgid "documents"
 msgstr "Dokumente"
-

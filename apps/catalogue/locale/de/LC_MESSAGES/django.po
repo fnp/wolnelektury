@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"POT-Creation-Date: 2012-03-12 13:49+0100\n"
 "PO-Revision-Date: 2012-03-09 11:32+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,26 +98,19 @@ msgstr "Motiv"
 msgid "set"
 msgstr "Buchregal"
 
-#: models.py:44
-#: models.py:390
+#: models.py:44 models.py:390
 msgid "book"
 msgstr "Buch"
 
-#: models.py:61
-#: models.py:253
+#: models.py:61 models.py:253
 msgid "name"
 msgstr "Name"
 
-#: models.py:62
-#: models.py:355
-#: models.py:357
-#: models.py:1029
-#: models.py:1032
+#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
 msgid "slug"
 msgstr "Slug"
 
-#: models.py:63
-#: models.py:354
+#: models.py:63 models.py:354
 msgid "sort key"
 msgstr "Sortierschlüssel"
 
@@ -125,11 +118,7 @@ msgstr "Sortierschlüssel"
 msgid "category"
 msgstr "Kategorie"
 
-#: models.py:66
-#: models.py:107
-#: models.py:360
-#: models.py:463
-#: models.py:1030
+#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
 msgid "description"
 msgstr "Beschreibung"
 
@@ -137,11 +126,7 @@ msgstr "Beschreibung"
 msgid "book count"
 msgstr "Anzahl der Bücher"
 
-#: models.py:73
-#: models.py:74
-#: models.py:255
-#: models.py:361
-#: models.py:362
+#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
 msgid "creation date"
 msgstr "Erstellungsdatum"
 
@@ -153,8 +138,7 @@ msgstr "Tag"
 msgid "tags"
 msgstr "Tags"
 
-#: models.py:249
-#: models.py:972
+#: models.py:249 models.py:972
 #, python-format
 msgid "%s file"
 msgstr "%s XML-Datei"
@@ -168,18 +152,15 @@ msgstr "Typ"
 msgid "file"
 msgstr "XML-Datei"
 
-#: models.py:256
-#: models.py:364
+#: models.py:256 models.py:364
 msgid "extra information"
 msgstr "zusätzliche Informationen"
 
-#: models.py:265
-#: models.py:266
+#: models.py:265 models.py:266
 msgid "book media"
 msgstr "book media"
 
-#: models.py:353
-#: models.py:1028
+#: models.py:353 models.py:1028
 msgid "title"
 msgstr "Titel"
 
@@ -229,7 +210,7 @@ msgstr "Sammlung"
 msgid "collections"
 msgstr "Sammlungen"
 
-#: views.py:500
+#: views.py:501
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -240,28 +221,28 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:501
+#: views.py:502
 msgid "Book imported successfully"
 msgstr "Buch wurde erfolgreich importiert"
 
-#: views.py:503
+#: views.py:504
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Fehler beim Importieren der Datei: %r"
 
-#: views.py:547
+#: views.py:548
 msgid "Incorrect customization options for PDF"
 msgstr "Falsche Anpassungsoptionen für PDF-Datei"
 
-#: views.py:549
+#: views.py:550
 msgid "Bad method"
 msgstr "Falsche Methode"
 
-#: views.py:554
+#: views.py:555
 msgid "Download custom PDF"
 msgstr "PDF-Datei herunterladen"
 
-#: views.py:555
+#: views.py:556
 msgid "Download"
 msgstr "Herunterladen"
 

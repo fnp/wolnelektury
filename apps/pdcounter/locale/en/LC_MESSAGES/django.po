@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"POT-Creation-Date: 2012-03-12 13:49+0100\n"
 "PO-Revision-Date: 2012-03-04 20:05+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,7 @@ msgstr ""
 msgid "name"
 msgstr "name"
 
-#: models.py:13
-#: models.py:64
+#: models.py:13 models.py:64
 msgid "slug"
 msgstr "Slug"
 
@@ -31,8 +30,7 @@ msgstr "Slug"
 msgid "sort key"
 msgstr "Sort key"
 
-#: models.py:15
-#: models.py:41
+#: models.py:15 models.py:41
 msgid "description"
 msgstr "Description"
 
@@ -40,8 +38,7 @@ msgstr "Description"
 msgid "year of death"
 msgstr "Year of death"
 
-#: models.py:22
-#: models.py:62
+#: models.py:22 models.py:62
 msgid "author"
 msgstr "author"
 

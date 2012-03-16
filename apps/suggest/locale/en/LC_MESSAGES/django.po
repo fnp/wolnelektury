@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 16:56+0100\n"
+"POT-Creation-Date: 2012-03-12 13:49+0100\n"
 "PO-Revision-Date: 2012-03-10 13:06+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 
-#: forms.py:16
-#: forms.py:57
+#: forms.py:16 forms.py:57
 msgid "Contact"
 msgstr "Contact"
 
@@ -26,13 +25,11 @@ msgstr "Contact"
 msgid "Description"
 msgstr "Description"
 
-#: forms.py:45
-#: forms.py:100
+#: forms.py:45 forms.py:100
 msgid "Thank you for your suggestion."
 msgstr "Thank you for your suggestion."
 
-#: forms.py:46
-#: forms.py:101
+#: forms.py:46 forms.py:101
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -40,18 +37,15 @@ msgstr ""
 "Thank you for your suggestion concerning WolneLektury.pl \n"
 "Your suggestion was sent to the project coordinator."
 
-#: forms.py:52
-#: forms.py:107
+#: forms.py:52 forms.py:107
 msgid "Message sent automatically. Please do not reply."
 msgstr "This message was sent automatically. Please do not reply."
 
-#: forms.py:58
-#: models.py:27
+#: forms.py:58 models.py:27
 msgid "books"
 msgstr "books"
 
-#: forms.py:59
-#: models.py:28
+#: forms.py:59 models.py:28
 msgid "audiobooks"
 msgstr "audiobooks"
 
@@ -59,8 +53,7 @@ msgstr "audiobooks"
 msgid "One of these fields is required."
 msgstr "One of these fields is required."
 
-#: models.py:10
-#: models.py:26
+#: models.py:10 models.py:26
 msgid "contact"
 msgstr "Contact"
 
@@ -68,13 +61,11 @@ msgstr "Contact"
 msgid "description"
 msgstr "description"
 
-#: models.py:12
-#: models.py:29
+#: models.py:12 models.py:29
 msgid "creation date"
 msgstr "creation date"
 
-#: models.py:13
-#: models.py:30
+#: models.py:13 models.py:30
 msgid "IP address"
 msgstr "IP address"
 
@@ -94,18 +85,15 @@ msgstr "publishing suggestion"
 msgid "publishing suggestions"
 msgstr "publishing suggestions"
 
-#: views.py:14
-#: views.py:21
+#: views.py:14 views.py:21
 msgid "Report a bug or suggestion"
 msgstr "Report an error or make a suggestion"
 
-#: views.py:16
-#: views.py:23
+#: views.py:16 views.py:23
 msgid "Report was sent successfully."
 msgstr "publishing suggestion"
 
-#: views.py:22
-#: templates/publishing_suggest.html:15
+#: views.py:22 templates/publishing_suggest.html:15
 msgid "Send report"
 msgstr "send a suggestion"
 
@@ -116,4 +104,3 @@ msgstr "Didn't find a book? Make a suggestion."
 #: templates/publishing_suggest.html:9
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "I would like to find the following items on WolneLektury.pl:"
-
