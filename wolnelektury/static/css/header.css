@@ -184,9 +184,12 @@ a.menu span {
     padding-left: 2.5em;
     padding-right: 2em;
     /* must match grid-line */
-    height: 3em;
-    padding-top: 1.9em;
+    height: 3.3em;
+    padding-top: 1.6em;
     background: #f7f7f7;
+}
+#lang-menu .lang-flag {
+	font-size: 1.3em;
 }
 
 #lang-menu-items {
