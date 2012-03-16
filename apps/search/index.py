@@ -214,7 +214,7 @@ class Index(BaseIndex):
         q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
         self.index.deleteDocuments(q)
 
-        for tag in catalogue.models.Tag.objects.all():
+        for tag in catalogue.models.Tag.objects.exclude(category='set'):
             doc = Document()
             doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
             doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
