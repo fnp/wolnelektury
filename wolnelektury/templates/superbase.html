@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" xmlns:og="http://opengraphprotocol.org/schema/">
+<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 	{% load cache compressed i18n %}
     {% load catalogue_tags reporting_stats sponsor_tags %}
     <head>
@@ -8,7 +8,7 @@
         <meta property="og:site_name" content="Wolne Lektury" />
         <meta property="og:title" content="{% block ogtitle %}{% endblock %}" />
         <meta property="og:type" content="{% block ogtype %}website{% endblock %}" />
-        <meta property="og:image" content="{% block ogimage %}http://static.wolnelektury.pl/img/logo-bez.png{% endblock %}" />
+        <meta property="og:image" content="{% block ogimage %}{{ FULL_STATIC_URL }}img/wiatrak.png{% endblock %}" />
         <meta name="description" 
             content="{% block metadescription %}Darmowe opracowane, pełne teksty lektur, e-booki, audiobooki i pliki DAISY na wolnej licencji.{% endblock %}" />
         {% block ogextra %}{% endblock %}
@@ -23,8 +23,6 @@
         <!--[if IE]>
         	{% compressed_css "ie" %}
         <![endif]-->
-        <!--script src="{{ STATIC_URL }}js/modernizr.custom.13352.js"></script-->
-        <script src="{{ STATIC_URL }}js/modernizr-latest.js"></script>
 
         {% block extrahead %}
         {% endblock %}
@@ -210,5 +208,8 @@
 
 		{% block extrabody %}
 		{% endblock %}
+
+        <script src="{{ STATIC_URL }}js/modernizr.custom.19652.js"></script>
+        <!--script src="{{ STATIC_URL }}js/modernizr-latest.js"></script-->
     </body>
 </html>

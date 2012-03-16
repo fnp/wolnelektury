@@ -36,7 +36,9 @@ class LoginFormView(AjaxableFormView):
 
     def __call__(self, request):
         if request.user.is_authenticated():
-            return HttpResponseRedirect('/')
+            return self.redirect_or_refresh(request, '/',
+                message=_('Already logged in as user %(user)s', ) %
+                            {'user': request.user.username})
         return super(LoginFormView, self).__call__(request)
 
     def success(self, form, request):
@@ -53,7 +55,9 @@ class RegisterFormView(AjaxableFormView):
 
     def __call__(self, request):
         if request.user.is_authenticated():
-            return HttpResponseRedirect('/')
+            return self.redirect_or_refresh(request, '/',
+                message=_('Already logged in as user %(user)s', ) %
+                            {'user': request.user.username})
         return super(RegisterFormView, self).__call__(request)
 
     def success(self, form, request):

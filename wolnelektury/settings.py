@@ -138,7 +138,7 @@ INSTALLED_APPS = [
     'pagination',
     'piston',
     'piwik.django',
-    'rosetta',
+    #'rosetta',
     'south',
     'sorl.thumbnail',
     'djcelery',

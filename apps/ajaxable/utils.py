@@ -4,7 +4,6 @@ from django.http import (HttpResponse, HttpResponseRedirect,
         HttpResponseForbidden)
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.utils.cache import patch_vary_headers
 from django.utils.encoding import force_unicode
 from django.utils.functional import Promise
 from django.utils.http import urlquote_plus
@@ -147,6 +146,16 @@ class AjaxableFormView(object):
         context.update(self.extra_context(request, obj))
         return render_to_response(template, context,
             context_instance=RequestContext(request))
+
+    def redirect_or_refresh(self, request, path, message=None):
+        """If the form is AJAX, refresh the page. If not, go to `path`.""" 
+        if request.is_ajax():
+            output = "<script>window.location.reload()</script>"
+            if message:
+                output = "<div class='normal-text'>" + message + "</div>" + output
+            return HttpResponse(output);
+        else:
+            return HttpResponseRedirect(path)
 
     def get_object(self, request, *args, **kwargs):
         """Override to parse view args and get some associated data."""

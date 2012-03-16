@@ -26,6 +26,12 @@ export_po()
 	fi
     done
 
+    for langdir in $ROOT/locale-contrib/*/; do
+        lang = `basename $langdir`
+        mkdir -p "$DST/$lang"
+        cp -v "${langdir}LC_MESSAGES/django.po" "${DST}/$lang/contrib.po"
+    done
+
     cp -v ${ROOT}/wolnelektury/static/js/locale.js $DST/locale.js.txt
     cp -v ${ROOT}/apps/infopages/fixtures/infopages.json $DST/infopages.json
 
@@ -46,6 +52,11 @@ for i in *; do
     ( cd $i; $MANAGE makemessages --all;
 	)
 done
+)
+
+(
+	pybabel extract -F "$ROOT/babel.cfg" -o "$ROOT/locale-contrib/django.pot" \
+	  "`python -c 'import os,allauth; print os.path.dirname(allauth.__file__)'`"
 )
 
 export_po

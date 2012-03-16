@@ -5,7 +5,7 @@
 <div class="book-box-inner" style="position: relative;">
 
 
-    <a href="{{ main_link }}">
+    {% if main_link %}<a href="{{ main_link }}">{% endif %}
         {% if book.cover %}
             <img src="
                 {% thumbnail book.cover "139x193" as thumb %}
@@ -15,7 +15,7 @@
                 {% endthumbnail %}
             " alt="Cover" />
         {% endif %}
-    </a>
+    {% if main_link %}</a>{% endif %}
     <div class="book-box-body">
 
 
@@ -40,7 +40,11 @@
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
                     <a href="{% url book_detail slug %}">{{ title }}</a>{% endfor %}
             </div>
-            <div class="title"><a href="{{ main_link }}">{{ book.title }}</a></div>
+            <div class="title">
+				{% if main_link %}<a href="{{ main_link }}">{% endif %}
+					{{ book.title }}
+			    {% if main_link %}</a>{% endif %}
+			</div>
         </div>
 
         <div class="tags">

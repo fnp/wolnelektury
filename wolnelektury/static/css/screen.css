@@ -130,3 +130,14 @@
 #search-button {
 	float: right;
 }
+
+
+/* Book list */
+
+#book-list-nav {
+    border-left: 1px solid #CFCFCF;
+    padding: .75em;
+    position: absolute;
+    right: 4em;
+    width: 25em;
+}

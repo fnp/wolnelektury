@@ -308,7 +308,7 @@ def book_wide(context, book):
 
     return {
         'book': book,
-        'main_link': reverse('book_text', args=[book.slug]),
+        'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
         'related': book.related_info(),
         'extra_info': book.get_extra_info_value(),
         'hide_about': hide_about,
