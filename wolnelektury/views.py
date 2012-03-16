@@ -47,6 +47,7 @@ class LoginFormView(AjaxableFormView):
 
 class RegisterFormView(AjaxableFormView):
     form_class = UserCreationForm
+    template = "auth/register.html"
     placeholdize = True
     title = _('Register')
     submit = _('Register')

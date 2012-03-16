@@ -1,0 +1,15 @@
+{% extends "ajaxable/form.html" %}
+{% load i18n %}
+
+
+{% block extra %}
+
+<h1>{% trans "Sign in using:" %}</h1>
+
+<ul class="socialaccount_providers">
+{% include "socialaccount/snippets/provider_list.html" %}
+</ul>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% endblock %}
