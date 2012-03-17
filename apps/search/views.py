@@ -51,6 +51,7 @@ def did_you_mean(query, tokens):
 
     return query
 
+JVM.attachCurrentThread()
 search = Search()
 
 def hint(request):
