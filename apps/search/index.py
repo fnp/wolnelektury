@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from lucene import SimpleFSDirectory, IndexWriter, IndexWriterConfig, CheckIndex, \
+from lucene import SimpleFSDirectory, NIOFSDirectory, IndexWriter, IndexWriterConfig, CheckIndex, \
     File, Field, Integer, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
     QueryParser, PerFieldAnalyzerWrapper, \
@@ -82,7 +82,7 @@ class IndexStore(object):
     """
     def __init__(self):
         self.make_index_dir()
-        self.store = SimpleFSDirectory(File(settings.SEARCH_INDEX))
+        self.store = NIOFSDirectory(File(settings.SEARCH_INDEX))
 
     def make_index_dir(self):
         try:

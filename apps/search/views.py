@@ -51,15 +51,15 @@ def did_you_mean(query, tokens):
 
     return query
 
+search = Search()
 
 def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
         return JSONResponse([])
     JVM.attachCurrentThread()
-    s = Search()
 
-    hint = s.hint()
+    hint = search.hint()
     try:
         tags = request.GET.get('tags', '')
         hint.tags(Tag.get_tag_list(tags))
@@ -71,8 +71,8 @@ def hint(request):
     # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
     # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
 
-    tags = s.hint_tags(prefix, pdcounter=True)
-    books = s.hint_books(prefix)
+    tags = search.hint_tags(prefix, pdcounter=True)
+    books = search.hint_books(prefix)
 
     def category_name(c):
         if c.startswith('pd_'):
@@ -95,7 +95,6 @@ def hint(request):
 def main(request):
     results = {}
     JVM.attachCurrentThread()  # where to put this?
-    srch = Search()
 
     results = None
     query = None
@@ -109,7 +108,7 @@ def main(request):
         # if book_id is not None:
         #     book = get_object_or_404(Book, id=book_id)
 
-        # hint = srch.hint()
+        # hint = search.hint()
         # try:
         #     tag_list = Tag.get_tag_list(tags)
         # except:
@@ -122,18 +121,18 @@ def main(request):
         # hint.tags(tag_list)
         # if book:
         #     hint.books(book)
-        tags = srch.hint_tags(query, pdcounter=True, prefix=False, fuzzy=fuzzy)
+        tags = search.hint_tags(query, pdcounter=True, prefix=False, fuzzy=fuzzy)
         tags = split_tags(tags)
 
         toks = StringReader(query)
         tokens_cache = {}
 
-        author_results = srch.search_phrase(toks, 'authors', fuzzy=fuzzy, tokens_cache=tokens_cache)
-        title_results = srch.search_phrase(toks, 'title', fuzzy=fuzzy, tokens_cache=tokens_cache)
+        author_results = search.search_phrase(toks, 'authors', fuzzy=fuzzy, tokens_cache=tokens_cache)
+        title_results = search.search_phrase(toks, 'title', fuzzy=fuzzy, tokens_cache=tokens_cache)
 
         # Boost main author/title results with mixed search, and save some of its results for end of list.
         # boost author, title results
-        author_title_mixed = srch.search_some(toks, ['authors', 'title', 'tags'], fuzzy=fuzzy, tokens_cache=tokens_cache)
+        author_title_mixed = search.search_some(toks, ['authors', 'title', 'tags'], fuzzy=fuzzy, tokens_cache=tokens_cache)
         author_title_rest = []
         for b in author_title_mixed:
             bks = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
@@ -145,10 +144,10 @@ def main(request):
         # Do a phrase search but a term search as well - this can give us better snippets then search_everywhere,
         # Because the query is using only one field.
         text_phrase = SearchResult.aggregate(
-            srch.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False, slop=4),
-            srch.search_some(toks, ['content'], tokens_cache=tokens_cache, snippets=True, book=False))
+            search.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False, slop=4),
+            search.search_some(toks, ['content'], tokens_cache=tokens_cache, snippets=True, book=False))
 
-        everywhere = srch.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache)
+        everywhere = search.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache)
 
         def already_found(results):
             def f(e):
@@ -175,7 +174,7 @@ def main(request):
                                         re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
                                                 re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", s)[0])[0], h['snippets'])
 
-        suggestion = did_you_mean(query, srch.get_tokens(toks, field="SIMPLE"))
+        suggestion = did_you_mean(query, search.get_tokens(toks, field="SIMPLE"))
         print "dym? %s" % repr(suggestion).encode('utf-8')
 
         results = author_results + title_results + text_phrase + everywhere
