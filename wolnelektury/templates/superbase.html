@@ -123,20 +123,21 @@
             		{% catalogue_menu %}
             	{% endcache %}
 
-            <form action="{% url django.views.i18n.set_language %}" method="post">
             <div id="lang-menu" class="hoverget">
                 <span id='lang-button' class='mono hoverclick'>
                     <span class="lang-flag">⚐</span>
                     {% trans "Language versions" %}</span>
                 <div id="lang-menu-items">
                 {% for lang in LANGUAGES %}
-                    <button type="submit" name="language"
+                    <form action="{% url django.views.i18n.set_language %}" method="post">
+                    <input type="hidden" name="language" value="{{ lang.0 }}" />
+                    <button type="submit"
                         class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} mono"
-                        value="{{ lang.0 }}">{{ lang.1 }}</button>
+                        >{{ lang.1 }}</button>
+    	            </form>
                 {% endfor %}
                 </div>
             </div>
-            </form>
             </div>
 
             <div class="clearboth"></div>

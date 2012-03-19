@@ -206,6 +206,7 @@ a.menu span {
     border-width: 0 0 1px 0;
     padding: .5em 0;
     margin: 0;
+    font-size: 1.3em;
 }
 
 #lang-menu:hover button,
