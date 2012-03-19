@@ -10,11 +10,18 @@ from catalogue.views import CustomPDFFormView
 SLUG = r'[a-z0-9-]*'
 
 urlpatterns = patterns('picture.views',
-                       # pictures - currently pictures are coupled with catalogue, hence the url is here
-        url(r'^obraz/?$', 'picture_list'),
-        url(r'^obraz/(?P<picture>%s)/?$' % SLUG, 'picture_detail')
-        ) + \
-    patterns('catalogue.views',
+    # pictures - currently pictures are coupled with catalogue, hence the url is here
+    url(r'^obraz/?$', 'picture_list'),
+    url(r'^obraz/(?P<picture>%s)/?$' % SLUG, 'picture_detail')
+)
+
+urlpatterns += patterns('django.views.generic.simple',
+    # old static pages - redirected
+    url(r'^szukaj/$', 'redirect_to',
+        {'url': '/szukaj/'}),
+)
+
+urlpatterns += patterns('catalogue.views',
     url(r'^$', 'catalogue', name='catalogue'),
 
     url(r'^lektury/$', 'book_list', name='book_list'),
@@ -46,10 +53,4 @@ urlpatterns = patterns('picture.views',
     url(r'^custompdf$', CustomPDFFormView(), name='custom_pdf_form'),
     url(r'^custompdf/(?P<slug>%s).pdf' % SLUG, 'download_custom_pdf'),
 
-)
-
-urlpatterns += patterns('django.views.generic.simple',
-    # old static pages - redirected
-    url(r'^szukaj/$', 'redirect_to',
-        {'url': '/szukaj/'}),
 )
