@@ -18,7 +18,7 @@ urlpatterns = patterns('picture.views',
 urlpatterns += patterns('django.views.generic.simple',
     # old static pages - redirected
     url(r'^szukaj/$', 'redirect_to',
-        {'url': '/szukaj/'}),
+        {'url': '/szukaj/', 'query_string': True}),
 )
 
 urlpatterns += patterns('catalogue.views',
