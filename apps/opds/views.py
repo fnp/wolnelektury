@@ -2,10 +2,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from base64 import b64encode
 import os.path
 from urlparse import urljoin
-from urllib2 import unquote
 
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
@@ -187,10 +185,10 @@ class AcquisitionFeed(Feed):
             return u''
 
     def item_enclosure_url(self, book):
-        return full_url(book.root_ancestor.epub_file.url)
+        return full_url(book.epub_file.url)
 
     def item_enclosure_length(self, book):
-        return book.root_ancestor.epub_file.size
+        return book.epub_file.size
 
 @piwik_track
 class RootFeed(Feed):

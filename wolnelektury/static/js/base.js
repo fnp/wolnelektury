@@ -114,6 +114,8 @@ $('.open-player').click(function(event) {
             return false;
         });
 
+	$('.hoverclick').click(function() {$(this).closest('.hoverget').toggleClass('hover');});
+
 	$(function(){
 	    $("#search").search();});
 

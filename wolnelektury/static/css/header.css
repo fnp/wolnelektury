@@ -208,11 +208,13 @@ a.menu span {
     margin: 0;
 }
 
-#lang-menu:hover button {
+#lang-menu:hover button,
+#lang-menu.hover button {
     display: block;
 }
 
-#lang-menu:hover #lang-menu-items {
+#lang-menu:hover #lang-menu-items,
+#lang-menu.hover #lang-menu-items {
     position: absolute;
     width: 100%;
     padding: 0;

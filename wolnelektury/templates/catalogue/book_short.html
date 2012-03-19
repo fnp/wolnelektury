@@ -82,8 +82,8 @@
             <a href="{% url book_text book.slug %}" class="mono downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
-        <li class="book-box-download">
-            <a class="mono downarrow">{% trans "Download" %}</a>
+        <li class="book-box-download hoverget">
+            <a class="mono downarrow hoverclick">{% trans "Download" %}</a>
             <div class="book-box-formats mono">
 	      {% if book.pdf_file %}
 	      <span><a href="{{ book.pdf_file.url}}">PDF</a> {% trans "to print" %}</span>

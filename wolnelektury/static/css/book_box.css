@@ -180,13 +180,13 @@
 .book-box-formats span {
     display: block;
 }
- 
 
-.book-box-download:hover .book-box-formats span:first-child {
+.book-box-download .book-box-formats span:first-child {
     margin-top: 1.454em;
 }
 
-.book-box-download:hover .book-box-formats {
+.book-box-download:hover .book-box-formats,
+.book-box-download.hover .book-box-formats {
     display: block;
 }
 

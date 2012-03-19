@@ -17,7 +17,7 @@ stylesheet.setAttribute('rel', 'stylesheet');
 stylesheet.setAttribute('href', 'http://'+host+'/static/css/widget.css');
 linkLogo.setAttribute('href', 'http://'+host);
 logo.setAttribute('src', 'http://'+host+'/static/img/logo.png');
-form.setAttribute('action', 'http://'+host+'/katalog/szukaj/');
+form.setAttribute('action', 'http://'+host+'/fullsearch/');
 form.setAttribute('method', 'get');
 form.setAttribute('accept-charset', 'utf-8');
 form.setAttribute('id', 'wl-form');
