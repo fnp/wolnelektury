@@ -117,7 +117,7 @@ class BookDetails(object):
         return book.children.all()
 
     @classmethod
-    def audio(cls, book):
+    def media(cls, book):
         """ Returns all media for a book. """
         return book.media.all()
 
@@ -134,7 +134,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'audio', 'url'] + book_tag_categories
+        'media', 'url'] + book_tag_categories
 
     @piwik_track
     def read(self, request, book):
