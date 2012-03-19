@@ -4,6 +4,7 @@
 
 from datetime import datetime, timedelta
 import json
+from urlparse import urljoin
 
 from django.conf import settings
 from django.contrib.sites.models import Site
@@ -96,7 +97,7 @@ class BookDetails(object):
 
     @classmethod
     def author(cls, book):
-        return ", ".join(t.name for t in book.tags.filter(category='author'))
+        return ",".join(t[0] for t in book.related_info()['tags']['author'])
 
     @classmethod
     def href(cls, book):
@@ -111,15 +112,18 @@ class BookDetails(object):
 
     @classmethod
     def children(cls, book):
-        """ Returns all media for a book. """
+        """ Returns all children for a book. """
 
         return book.children.all()
 
     @classmethod
-    def media(cls, book):
+    def audio(cls, book):
         """ Returns all media for a book. """
-
         return book.media.all()
+
+    @classmethod
+    def cover(cls, book):
+        return MEDIA_BASE + book.cover.url if book.cover else ''
 
 
 
@@ -130,7 +134,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url'] + book_tag_categories
+        'audio', 'url'] + book_tag_categories
 
     @piwik_track
     def read(self, request, book):
@@ -148,7 +152,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = ['author', 'href', 'title', 'url']
+    fields = ['author', 'href', 'title', 'url', 'cover']
 
     @piwik_track
     def read(self, request, tags, top_level=False):
@@ -186,6 +190,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 
 
 class BooksHandler(BookDetailHandler):
+    allowed_methods = ('GET', 'POST')
     model = Book
     fields = ['author', 'href', 'title', 'url']
     anonymous = AnonymousBooksHandler
