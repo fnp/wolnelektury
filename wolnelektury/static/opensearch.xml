@@ -8,12 +8,12 @@
     <Developer>Fundacja Nowoczesna Polska</Developer>
     <Language>pl</Language>
     <Contact>fundacja@nowoczesnapolska.org.pl</Contact>
-    <Image height="16" width="16" type="image/x-icon">http://www.wolnelektury.pl/static/img/favicon.ico</Image>
-    <Image height="64" width="64" type="image/png">http://www.wolnelektury.pl/static/img/wl_icon_64.png</Image>
+    <Image height="16" width="16" type="image/x-icon">http://static.wolnelektury.pl/static/img/favicon.ico</Image>
+    <Image height="64" width="64" type="image/png">http://static.wolnelektury.pl/static/img/wl_icon_64.png</Image>
     <Url type="application/atom+xml;profile=opds-catalog"
-        template="http://www.wolnelektury.pl/opds/search/?q={searchTerms}&amp;author={atom:author}&amp;translator={atom:contributor}&amp;title={atom:title}" />
-    <Url type="text/html" method="GET" template="http://www.wolnelektury.pl/katalog/szukaj?q={searchTerms}" />
+        template="http://wolnelektury.pl/opds/search/?q={searchTerms}&amp;author={atom:author}&amp;translator={atom:contributor}&amp;title={atom:title}" />
+    <Url type="text/html" method="GET" template="http://wolnelektury.pl/szukaj?q={searchTerms}" />
     <Url type="application/x-suggestions+json" method="GET" template="http://www.wolnelektury.pl/katalog/jtags?mozhint=1&amp;q={searchTerms}" />
-    <moz:SearchForm>http://www.wolnelektury.pl/katalog/</moz:SearchForm>
+    <moz:SearchForm>http://wolnelektury.pl/</moz:SearchForm>
     <Query role="example" searchTerms="słowa" />
 </OpenSearchDescription>

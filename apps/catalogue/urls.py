@@ -4,8 +4,6 @@
 #
 from django.conf.urls.defaults import *
 from catalogue.feeds import AudiobookFeed
-from catalogue.models import Book
-from picture.models import Picture
 from catalogue.views import CustomPDFFormView
 
 
@@ -25,7 +23,7 @@ urlpatterns = patterns('picture.views',
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
-    url(r'^szukaj/$', 'search', name='old_search'),
+    #url(r'^szukaj/$', 'search', name='old_search'),
 
     # zip
     url(r'^zip/pdf\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
@@ -48,4 +46,10 @@ urlpatterns = patterns('picture.views',
     url(r'^custompdf$', CustomPDFFormView(), name='custom_pdf_form'),
     url(r'^custompdf/(?P<slug>%s).pdf' % SLUG, 'download_custom_pdf'),
 
-) 
+)
+
+urlpatterns += patterns('django.views.generic.simple',
+    # old static pages - redirected
+    url(r'^szukaj/$', 'redirect_to',
+        {'url': '/szukaj/'}),
+)
