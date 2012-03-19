@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.datastructures import SortedDict
 from django.utils.http import urlquote_plus
 from django.utils import translation
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, ugettext_lazy
 from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import JSONResponse, AjaxableFormView
@@ -552,8 +552,8 @@ def download_custom_pdf(request, slug, method='GET'):
 
 class CustomPDFFormView(AjaxableFormView):
     form_class = forms.CustomPDFForm
-    title = _('Download custom PDF')
-    submit = _('Download')
+    title = ugettext_lazy('Download custom PDF')
+    submit = ugettext_lazy('Download')
 
     def __call__(self, request):
         from copy import copy
