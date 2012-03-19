@@ -194,10 +194,10 @@ class AcquisitionFeed(Feed):
 class RootFeed(Feed):
     feed_type = OPDSFeed
     title = u'Wolne Lektury'
-    link = u'http://www.wolnelektury.pl/'
+    link = u'http://wolnelektury.pl/'
     description = u"Spis utworów na stronie http://WolneLektury.pl"
     author_name = u"Wolne Lektury"
-    author_link = u"http://www.wolnelektury.pl/"
+    author_link = u"http://wolnelektury.pl/"
 
     def items(self):
         return _root_feeds
@@ -214,10 +214,10 @@ class RootFeed(Feed):
 @piwik_track
 class ByCategoryFeed(Feed):
     feed_type = OPDSFeed
-    link = u'http://www.wolnelektury.pl/'
+    link = u'http://wolnelektury.pl/'
     description = u"Spis utworów na stronie http://WolneLektury.pl"
     author_name = u"Wolne Lektury"
-    author_link = u"http://www.wolnelektury.pl/"
+    author_link = u"http://wolnelektury.pl/"
 
     def get_object(self, request, category):
         feed = [feed for feed in _root_feeds if feed['category']==category]
@@ -274,7 +274,7 @@ class UserFeed(Feed):
     link = u'http://www.wolnelektury.pl/'
     description = u"Półki użytkownika na stronie http://WolneLektury.pl"
     author_name = u"Wolne Lektury"
-    author_link = u"http://www.wolnelektury.pl/"
+    author_link = u"http://wolnelektury.pl/"
 
     def get_object(self, request):
         return request.user

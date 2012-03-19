@@ -3,12 +3,12 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import forms
+from django.contrib.sites.models import Site
 from django.core.mail import send_mail, mail_managers
 from django.core.urlresolvers import reverse
 from django.core.validators import email_re
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-
 from suggest.models import PublishingSuggestion, Suggestion
 
 
