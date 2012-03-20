@@ -9,12 +9,6 @@ MANAGE=$ROOT/wolnelektury/manage.py
 
 export_po()
 {
-    for langdir in $ROOT/wolnelektury/locale/*; do
-       lang=`basename $langdir`
-       mkdir -p $DST/$lang
-       cp -v ${ROOT}/wolnelektury/locale/${lang}/LC_MESSAGES/django.po $DST/${lang}/wolnelektury.po
-    done
-    
     for appdir in $ROOT/apps/*; do
 	app=`basename $appdir`
 	if [ -d $ROOT/apps/$app/locale ]; then
@@ -26,7 +20,7 @@ export_po()
 	fi
     done
 
-    for langdir in $ROOT/locale-contrib/*/; do
+    for langdir in $ROOT/wolnelektury/locale-contrib/*/; do
         lang = `basename $langdir`
         mkdir -p "$DST/$lang"
         cp -v "${langdir}LC_MESSAGES/django.po" "${DST}/$lang/contrib.po"
@@ -39,24 +33,25 @@ export_po()
 }
 
 
-( 
-cd $ROOT/wolnelektury
-echo "Generate po for WL"
-$MANAGE makemessages --all
-)
-
 (
 cd $ROOT/apps
 for i in *; do
-    echo "Generate po for app $i"
-    ( cd $i; $MANAGE makemessages --all;
-	)
+    if [ -e "$i/locale" ]; then
+        echo "Generate po for app $i"
+        ( cd $i; $MANAGE makemessages --all;
+	    )
+	else
+	    echo "Skipping app $i"
+	fi
 done
 )
 
 (
-	pybabel extract -F "$ROOT/babel.cfg" -o "$ROOT/locale-contrib/django.pot" \
-	  "`python -c 'import os,allauth; print os.path.dirname(allauth.__file__)'`"
+    pybabel extract -F "$ROOT/babel.cfg" \
+      -o "$ROOT/wolnelektury/locale-contrib/django.pot" \
+      "`python -c 'import os,allauth; print os.path.dirname(allauth.__file__)'`"
+    pybabel update -D django -i "$ROOT/wolnelektury/locale-contrib/django.pot" \
+      -d "$ROOT/wolnelektury/locale-contrib"
 )
 
 export_po

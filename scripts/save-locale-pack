@@ -17,8 +17,8 @@ load_lang()
     for pofile in "$LOCALIZED/$L/"*.po; do
 	app=`basename "$pofile" .po`
 	echo $app
-	if [ "$app" = "wolnelektury" ]; then
-	    cp -v "$pofile" "$ROOT/wolnelektury/locale/$L/LC_MESSAGES/django.po"
+	if [ "$app" = "contrib" ]; then
+	    cp -v "$pofile" "$ROOT/wolnelektury/locale-contrib/$L/LC_MESSAGES/django.po"
 	else
 	    cp -v "$pofile" "$ROOT/apps/$app/locale/$L/LC_MESSAGES/django.po"
 	fi
@@ -46,5 +46,4 @@ for i in $ROOT/apps/*; do
     cd $i;
     env PYTHONPATH=$ROOT ${VIRTUAL_ENV}/bin/django-admin.py compilemessages --settings=wolnelektury.settings
 done
-cd $ROOT/wolnelektury
-env PYTHONPATH=$ROOT ${VIRTUAL_ENV}/bin/django-admin.py compilemessages --settings=wolnelektury.settings
+pybabel compile -D django -d $ROOT/wolnelektury/locale-contrib
