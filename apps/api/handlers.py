@@ -134,7 +134,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url'] + book_tag_categories
+        'media', 'url', 'cover'] + book_tag_categories
 
     @piwik_track
     def read(self, request, book):

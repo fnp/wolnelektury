@@ -15,11 +15,16 @@ urlpatterns = patterns('picture.views',
     url(r'^obraz/(?P<picture>%s)/?$' % SLUG, 'picture_detail')
 )
 
-urlpatterns += patterns('django.views.generic.simple',
-    # old static pages - redirected
-    url(r'^szukaj/$', 'redirect_to',
-        {'url': '/szukaj/', 'query_string': True}),
+# workaround for Django ticket #17111; redirect when resolved
+urlpatterns += patterns('search.views',
+    url(r'^szukaj/$', 'main'),  
 )
+#urlpatterns += patterns('django.views.generic.simple',
+#    # old search page - redirected
+#    url(r'^szukaj/$', 'redirect_to',
+#        
+#        {'url': '/szukaj/', 'query_string': True}),  
+#)
 
 urlpatterns += patterns('catalogue.views',
     url(r'^$', 'catalogue', name='catalogue'),
