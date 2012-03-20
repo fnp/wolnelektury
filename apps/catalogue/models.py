@@ -227,7 +227,7 @@ def get_customized_pdf_path(book, customizations):
     """
     h = customizations_hash(customizations)
     pdf_name = '%s-custom-%s' % (book.slug, h)
-    pdf_file = get_dynamic_path(None, pdf_name, ext='pdf')
+    pdf_file = pdf_name + '.pdf'
 
     return pdf_file
 

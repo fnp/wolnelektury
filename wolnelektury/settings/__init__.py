@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     'picture',
     'search',
     'social',
+    'waiter',
 ]
 
 # Load localsettings, if they exist

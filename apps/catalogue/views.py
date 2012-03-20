@@ -7,7 +7,7 @@ import itertools
 
 from django.conf import settings
 from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.db.models import Q
@@ -30,6 +30,7 @@ from suggest.forms import PublishingSuggestForm
 from picture.models import Picture
 
 from os import path
+from waiter.models import WaitedFile
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
@@ -540,10 +541,11 @@ def download_custom_pdf(request, slug, method='GET'):
             cust = form.customizations
             pdf_file = models.get_customized_pdf_path(book, cust)
 
-            if not path.exists(pdf_file):
-                result = async_build_pdf.delay(book.id, cust, pdf_file)
-                result.wait()
-            return AttachmentHttpResponse(file_name=("%s.pdf" % book.slug), file_path=pdf_file, mimetype="application/pdf")
+            url = WaitedFile.order(pdf_file,
+                    lambda p: async_build_pdf.delay(book.id, cust, p),
+                    "%s: %s" % (book.pretty_title(), ", ".join(cust))
+                )
+            return redirect(url)
         else:
             raise Http404(_('Incorrect customization options for PDF'))
     else:

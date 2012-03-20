@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titleextra %}Prosię ciekać{% endblock %}
+
+
+{% block extrahead %}
+	{# TODO: Not like that! What are you, caveman?! #}
+	<meta http-equiv="refresh" content="{% if file_url %}0; url={{ file_url }}{% else %}5{% endif %}" />
+{% endblock %}
+
+
+{% block body %}
+	{% if file_url %}
+	<p>Plik jest gotowy! Jeśli pobieranie nie zacznie się automatycznie,
+		oto <a href="{{ file_url }}">bezpośredni link</a>.</p>
+	{% else %}
+		<p>Idź na kawę. To trochę potrwa.</p>
+
+		<p>{{ waiting_for.description }}</p>
+	{% endif %}
+{% endblock %}
