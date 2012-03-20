@@ -216,13 +216,16 @@ def book_upload_path(ext=None, maxlen=100):
     return lambda *args: get_dynamic_path(*args, ext=ext, maxlen=maxlen)
 
 
+def customizations_hash(customizations):
+    customizations.sort()
+    return hash(tuple(customizations))
+
+
 def get_customized_pdf_path(book, customizations):
     """
     Returns a MEDIA_ROOT relative path for a customized pdf. The name will contain a hash of customization options.
     """
-    customizations.sort()
-    h = hash(tuple(customizations))
-
+    h = customizations_hash(customizations)
     pdf_name = '%s-custom-%s' % (book.slug, h)
     pdf_file = get_dynamic_path(None, pdf_name, ext='pdf')
 

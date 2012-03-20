@@ -1,5 +1,5 @@
 {% load allauth_tags %}
-{% load catalogue_tags %}
+{% load common_tags %}
 
 {% if allauth.openid_enabled %}
 <li><a title="Google" class="socialaccount_provider google" href="{% openid_login_url openid="https://www.google.com/accounts/o8/id" %}">

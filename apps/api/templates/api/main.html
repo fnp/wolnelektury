@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+{% load url from future %}
 {% load i18n %}
+{% load common_tags %}
 
 {% block title %}{% trans "WolneLektury.pl API" %}{% endblock %}
 
@@ -9,9 +11,11 @@
 
 <h1>API</h1>
 
+<div class="normal-text white-box">
 <p>
-{% blocktrans %}
-WolneLektury.pl API resides under <code>http://www.wolnelektury.pl/api/</code>.
+{% url "api" as u %}
+{% blocktrans with u=u|build_absolute_uri:request %}
+WolneLektury.pl API resides under <code>{{ u }}</code>.
 You can use it to access information about books, their fragments and
 their metadata.
 {% endblocktrans %}
@@ -20,7 +24,7 @@ their metadata.
 <p>
 {% blocktrans %}
 Default data serialization format is
-<a href="http://en.wikipedia.org/wiki/JSON">JSON</a>,
+<a href="http://en.wikipedia.org/wiki/JSON">JSON</a>, 
 but you can also use XML by appending <code>?format=xml</code>
 query parameter to each URL.
 {% endblocktrans %}
@@ -44,8 +48,8 @@ The URLs in WolneLektury.pl API are:
 </ul>
 
 <p>
-{% url api_book "studnia-i-wahadlo" as e1 %}
-{% url api_tag "authors" "edgar-allan-poe" as e2 %}
+{% url "api_book" "studnia-i-wahadlo" as e1 %}
+{% url "api_tag" "authors" "edgar-allan-poe" as e2 %}
 {% blocktrans %}
 Each element of those lists contains a link (in a "href") attibute
 which points to individual resource's details, i.e.:
@@ -70,7 +74,7 @@ If you only want top-level books and not all the children, you can use /parent_b
 </p>
 
 <p>
-{% url api_fragment "sen-nocy-letniej" "1290526312912-3814598192" as f %}
+{% url "api_fragment" "sen-nocy-letniej" "1290526312912-3814598192" as f %}
 {% blocktrans with "/api/authors/william-shakespeare/themes/zabawa/fragments/" as e %}
 The same way, using also books and themes, you can search for a list of fragments:
 <a href="{{e}}">{{e}}</a>. 
@@ -78,5 +82,5 @@ Again, each entry has a "href" attribute which links to the fragment's details, 
 <a href="{{f}}">{{f}}</a>. 
 {% endblocktrans %}
 </p>
-
+</div>
 {% endblock %}

@@ -7,50 +7,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
-"PO-Revision-Date: 2011-09-12 05:22+0100\n"
+"POT-Creation-Date: 2012-03-20 12:49+0100\n"
+"PO-Revision-Date: 2012-03-20 12:50+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: templates/api/main.html:4
+#: templates/api/main.html:6
 msgid "WolneLektury.pl API"
 msgstr "API serwisu WolneLektury.pl"
 
-#: templates/api/main.html:13
+#: templates/api/main.html:17
+#, python-format
 msgid ""
 "\n"
-"WolneLektury.pl API resides under <code>http://www.wolnelektury.pl/api/</"
-"code>.\n"
+"WolneLektury.pl API resides under <code>%(u)s</code>.\n"
 "You can use it to access information about books, their fragments and\n"
 "their metadata.\n"
 msgstr ""
 "\n"
-"API serwisu WolneLektury.pl znajduje się pod adresem <code>http://www."
-"wolnelektury.pl/api/</code>.\n"
-"Za jego pomocą można uzyskać informacje o utworach, ich fragmentach i "
-"metadanych.\n"
+"API serwisu WolneLektury.pl znajduje się pod adresem <code>%(u)s</code>.\n"
+"Za jego pomocą można uzyskać informacje o utworach, ich fragmentach i metadanych.\n"
 
-#: templates/api/main.html:21
+#: templates/api/main.html:25
 msgid ""
 "\n"
 "Default data serialization format is\n"
-"<a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>,\n"
+"<a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>, \n"
 "but you can also use XML by appending <code>?format=xml</code>\n"
 "query parameter to each URL.\n"
 msgstr ""
 "\n"
-"Dane domyślnie są serializowane w formacie <a href=\"http://pl.wikipedia.org/"
-"wiki/JSON\">JSON</a>,ale dostępny jest też format XML – wystarczy dodać "
-"parametr <code>?format=xml</code>\n"
+"Dane domyślnie są serializowane w formacie <a href=\"http://pl.wikipedia.org/wiki/JSON\">JSON</a>,\n"
+"ale dostępny jest też format XML – wystarczy dodać parametr <code>?format=xml</code>\n"
 "do każdego zapytania.\n"
 
-#: templates/api/main.html:30
+#: templates/api/main.html:34
 msgid ""
 "\n"
 "The URLs in WolneLektury.pl API are:\n"
@@ -58,31 +54,31 @@ msgstr ""
 "\n"
 "API Wolnych Lektur zawiera następujące adresy URL:\n"
 
-#: templates/api/main.html:36
+#: templates/api/main.html:40
 msgid "List of all books"
 msgstr "Lista utworów"
 
-#: templates/api/main.html:38
+#: templates/api/main.html:42
 msgid "List of all authors"
 msgstr "Lista autorów"
 
-#: templates/api/main.html:39
+#: templates/api/main.html:43
 msgid "List of all epochs"
 msgstr "Lista epok"
 
-#: templates/api/main.html:40
+#: templates/api/main.html:44
 msgid "List of all genres"
 msgstr "Lista gatunków literackich"
 
-#: templates/api/main.html:41
+#: templates/api/main.html:45
 msgid "List of all kinds"
 msgstr "Lista rodzajów literackich"
 
-#: templates/api/main.html:43
+#: templates/api/main.html:47
 msgid "List of all themes"
 msgstr "Lista motywów i tematów literackich"
 
-#: templates/api/main.html:49
+#: templates/api/main.html:53
 #, python-format
 msgid ""
 "\n"
@@ -92,50 +88,40 @@ msgid ""
 "<a href=\"%(e2)s\">%(e2)s</a>.\n"
 msgstr ""
 "\n"
-"Każdy element na tych listach zawiera adres (w atrybucie „href”), pod którym "
-"można znaleźć szczegółowe dane, np. <a href=\"%(e1)s\">%(e1)s</a> czy <a "
-"href=\"%(e2)s\">%(e2)s</a>.\n"
+"Każdy element na tych listach zawiera adres (w atrybucie „href”), pod którym można znaleźć szczegółowe dane, np. <a href=\"%(e1)s\">%(e1)s</a> czy <a href=\"%(e2)s\">%(e2)s</a>.\n"
 
-#: templates/api/main.html:58
+#: templates/api/main.html:62
 #, python-format
 msgid ""
 "\n"
-"You can combine authors, epochs, genres and kinds to find only books "
-"matching\n"
+"You can combine authors, epochs, genres and kinds to find only books matching\n"
 "those criteria. For instance:\n"
 "<a href=\"%(e)s\">%(e)s</a>.\n"
 msgstr ""
 "\n"
-"Można łączyć autorów, epoki, gatunki i rodzaje, aby wybrać tylko utwory "
-"odpowiadające zadanym kryteriom. Na przykład: <a href=\"%(e)s\">%(e)s</a>.\n"
+"Można łączyć autorów, epoki, gatunki i rodzaje, aby wybrać tylko utwory odpowiadające zadanym kryteriom. Na przykład: <a href=\"%(e)s\">%(e)s</a>.\n"
 
-#: templates/api/main.html:66
+#: templates/api/main.html:70
 #, python-format
 msgid ""
 "\n"
-"If you only want top-level books and not all the children, you can use /"
-"parent_books/, as in:\n"
+"If you only want top-level books and not all the children, you can use /parent_books/, as in:\n"
 "<a href=\"%(e)s\">%(e)s</a>.\n"
 msgstr ""
 "\n"
-"Aby spośród wszystkich pasujących wybrać tylko utwory najwyższego poziomu "
-"(pomijając ich podutwory), można użyć zapytania /parent_books/, np.: <a href="
-"\"%(e)s\">%(e)s</a>.\n"
+"Aby spośród wszystkich pasujących wybrać tylko utwory najwyższego poziomu (pomijając ich podutwory), można użyć zapytania /parent_books/, np.: <a href=\"%(e)s\">%(e)s</a>.\n"
 
-#: templates/api/main.html:74
+#: templates/api/main.html:78
 #, python-format
 msgid ""
 "\n"
-"The same way, using also books and themes, you can search for a list of "
-"fragments:\n"
+"The same way, using also books and themes, you can search for a list of fragments:\n"
 "<a href=\"%(e)s\">%(e)s</a>. \n"
-"Again, each entry has a \"href\" attribute which links to the fragment's "
-"details, i.e.:\n"
+"Again, each entry has a \"href\" attribute which links to the fragment's details, i.e.:\n"
 "<a href=\"%(f)s\">%(f)s</a>. \n"
 msgstr ""
 "\n"
-"W ten sam sposób, filtrując dodatkowo według lektur lub motywów, można "
-"wyszukiwać fragmenty:<a href=\"%(e)s\">%(e)s</a>. \n"
-"Każdy element uzyskanej listy w atrybucie „href” zawiera link do "
-"szczegółowego opisu danego fragmentu, np.:\n"
+"W ten sam sposób, filtrując dodatkowo według lektur lub motywów, można wyszukiwać fragmenty:<a href=\"%(e)s\">%(e)s</a>. \n"
+"Każdy element uzyskanej listy w atrybucie „href” zawiera link do szczegółowego opisu danego fragmentu, np.:\n"
 "<a href=\"%(f)s\">%(f)s</a>. \n"
+

@@ -5,6 +5,7 @@
 import os.path
 from datetime import date
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Count
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -13,6 +14,7 @@ from catalogue.models import Book, BookMedia
 from reporting.utils import render_to_pdf, generated_file_view
 
 
+@staff_member_required
 def stats_page(request):
     media = BookMedia.objects.count()
     media_types = BookMedia.objects.values('type').\

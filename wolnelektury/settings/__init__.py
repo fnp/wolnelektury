@@ -1,0 +1,102 @@
+# -*- coding: utf-8 -*-
+# Django settings for wolnelektury project.
+from os import path
+
+from settings.basic import *
+from settings.auth import *
+from settings.cache import *
+from settings.celery import *
+from settings.custom import *
+from settings.locale import *
+from settings.static import *
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'wolnelektury_core.context_processors.extra_settings',
+    'search.context_processors.search_form',
+    "allauth.context_processors.allauth",
+    "allauth.account.context_processors.account",
+)
+
+MIDDLEWARE_CLASSES = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'pagination.middleware.PaginationMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'piwik.django.middleware.PiwikMiddleware',
+    'maintenancemode.middleware.MaintenanceModeMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+]
+
+ROOT_URLCONF = 'wolnelektury.urls'
+
+INSTALLED_APPS = [
+    # external
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'pagination',
+    'piston',
+    'piwik.django',
+    #'rosetta',
+    'south',
+    'sorl.thumbnail',
+    'djcelery',
+    'djkombu',
+    #    'django_nose',
+
+    #allauth stuff
+    'emailconfirmation',
+    'uni_form',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.openid',
+    #'allauth.facebook',
+    #'allauth.twitter',
+
+    # included
+    'compress',
+    'modeltranslation',
+
+    # our
+    'wolnelektury_core',
+    'ajaxable',
+    'api',
+    'catalogue',
+    'chunks',
+    'dictionary',
+    'infopages',
+    'lesmianator',
+    #'lessons',
+    'newtagging',
+    'opds',
+    'pdcounter',
+    'reporting',
+    'sponsors',
+    'stats',
+    'suggest',
+    'picture',
+    'search',
+    'social',
+]
+
+# Load localsettings, if they exist
+try:
+    from localsettings import *
+except ImportError:
+    pass
+

@@ -32,7 +32,7 @@ urlpatterns = patterns(
 
 ) + patterns('',
     url(r'^$', 'django.views.generic.simple.direct_to_template',
-            {'template': 'api/main.html'}),
+            {'template': 'api/main.html'}, name='api'),
 
 
     # changes handlers

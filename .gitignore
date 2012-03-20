@@ -12,6 +12,9 @@ dev.sqlite
 /wolnelektury/static/css/book.min*.css
 /wolnelektury/static/js/book*.min.js
 /wolnelektury/static/js/jquery.min.js
+/wolnelektury/static/css/ie.min*.css
+/wolnelektury/static/css/screen.min*.css
+/wolnelektury/static/js/base*.min.js
 
 # Python garbage
 *.pyc
@@ -35,3 +38,4 @@ thumbs.db
 TAGS
 
 media
+search_index

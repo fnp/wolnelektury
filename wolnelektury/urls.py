@@ -4,12 +4,12 @@ import os
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
-import views
+import wolnelektury_core.views
 
 
 admin.autodiscover()
 
-urlpatterns = patterns('wolnelektury.views',
+urlpatterns = patterns('wolnelektury_core.views',
     url(r'^$', 'main_page', name='main_page'),
     url(r'^planowane/$', 'publish_plan', name='publish_plan'),
 
@@ -17,15 +17,15 @@ urlpatterns = patterns('wolnelektury.views',
 
     # Authentication
     url(r'^uzytkownik/$', 'user_settings', name='user_settings'),
-    url(r'^uzytkownik/login/$', views.LoginFormView(), name='login'),
-    url(r'^uzytkownik/signup/$', views.RegisterFormView(), name='register'),
+    url(r'^uzytkownik/login/$', wolnelektury_core.views.LoginFormView(), name='login'),
+    url(r'^uzytkownik/signup/$', wolnelektury_core.views.RegisterFormView(), name='register'),
     url(r'^uzytkownik/logout/$', 'logout_then_redirect', name='logout'),
-    url(r'^uzytkownik/zaloguj-utworz/$', views.LoginRegisterFormView(), name='login_register'),
+    url(r'^uzytkownik/zaloguj-utworz/$', wolnelektury_core.views.LoginRegisterFormView(), name='login_register'),
 )
 
 urlpatterns += patterns('',
     url(r'^katalog/', include('catalogue.urls')),
-    url(r'^materialy/', include('lessons.urls')),
+    #url(r'^materialy/', include('lessons.urls')),
     url(r'^opds/', include('opds.urls')),
     url(r'^sugestia/', include('suggest.urls')),
     url(r'^lesmianator/', include('lesmianator.urls')),

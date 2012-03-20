@@ -45,10 +45,6 @@ def capfirst(text):
     except IndexError:
         return ''
 
-@register.filter
-def build_absolute_uri(uri, request):
-    return request.build_absolute_uri(uri)
-
 
 @register.simple_tag
 def html_title_from_tags(tags):
