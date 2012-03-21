@@ -54,8 +54,14 @@ urlpatterns = patterns(
         fragment_resource, name="api_fragment"),
 
     # books by tags
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})books/$', book_list_resource),
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_books/$', book_list_resource, {"top_level": True}),
+    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})books/$',
+        book_list_resource, name='api_book_list'),
+    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_books/$',
+        book_list_resource, {"top_level": True}, name='api_parent_book_list'),
+    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})audiobooks/$',
+        book_list_resource, {"audiobooks": True}, name='api_audiobook_list'),
+    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})daisy/$',
+        book_list_resource, {"daisy": True}, name='api_daisy_list'),
 
     url(r'^pictures/$', picture_resource),
 
@@ -64,5 +70,5 @@ urlpatterns = patterns(
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){1,6})fragments/$', fragment_list_resource),
 
     # tags by category
-    url(r'^(?P<category>[a-z0-9-]+)/$', tag_list_resource),
+    url(r'^(?P<category>[a-z0-9-]+)/$', tag_list_resource, name='api_tag_list'),
 )

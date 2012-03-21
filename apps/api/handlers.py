@@ -83,13 +83,22 @@ class BookMediaHandler(BaseHandler):
     """ Responsible for representing media in Books. """
 
     model = BookMedia
-    fields = ['name', 'type', 'url']
+    fields = ['name', 'type', 'url', 'artist', 'director']
 
     @classmethod
     def url(cls, media):
         """ Link to media on site. """
 
         return MEDIA_BASE + media.file.url
+
+    @classmethod
+    def artist(cls, media):
+        return media.get_extra_info_value().get('artist_name', '')
+
+    @classmethod
+    def director(cls, media):
+        return media.get_extra_info_value().get('director_name', '')
+        
 
 
 class BookDetails(object):
@@ -134,7 +143,8 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover'] + book_tag_categories
+        'media', 'url', 'cover'] + [
+            category_plural[c] for c in book_tag_categories]
 
     @piwik_track
     def read(self, request, book):
@@ -155,7 +165,8 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     fields = ['author', 'href', 'title', 'url', 'cover']
 
     @piwik_track
-    def read(self, request, tags, top_level=False):
+    def read(self, request, tags, top_level=False,
+                audiobooks=False, daisy=False):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -175,17 +186,22 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 return books if books else rc.NOT_FOUND
             else:
                 books = Book.tagged.with_all(tags)
-        elif top_level:
-            books = Book.objects.filter(parent=None)
         else:
             books = Book.objects.all()
+            
+        if top_level:
+            books = books.filter(parent=None)
+        if audiobooks:
+            books = books.filter(media__type='mp3')
+        if daisy:
+            books = books.filter(media__type='daisy')
 
         if books.exists():
             return books
         else:
             return rc.NOT_FOUND
 
-    def create(self, request, tags, top_level=False):
+    def create(self, request, *args, **kwargs):
         return rc.FORBIDDEN
 
 
@@ -195,7 +211,7 @@ class BooksHandler(BookDetailHandler):
     fields = ['author', 'href', 'title', 'url']
     anonymous = AnonymousBooksHandler
 
-    def create(self, request, tags, top_level=False):
+    def create(self, request, *args, **kwargs):
         if not request.user.has_perm('catalogue.add_book'):
             return rc.FORBIDDEN
 
