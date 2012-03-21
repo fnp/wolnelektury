@@ -42,14 +42,15 @@ Kontakt: %(contact)s
             }, fail_silently=True)
 
         if email_re.match(contact):
-            send_mail(u'[WolneLektury] ' + _(u'Thank you for your suggestion.'),
-                    _(u"""\
+            send_mail(u'[WolneLektury] ' +
+                    ugettext(u'Thank you for your suggestion.'),
+                    ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator.""") +
 u"""
 
 -- 
-""" + _(u'''Message sent automatically. Please do not reply.'''),
+""" + ugettext(u'''Message sent automatically. Please do not reply.'''),
                     'no-reply@wolnelektury.pl', [contact], fail_silently=True)
 
 
@@ -60,7 +61,7 @@ class PublishingSuggestForm(forms.Form):
 
     def clean(self, *args, **kwargs):
         if not self.cleaned_data['books'] and not self.cleaned_data['audiobooks']:
-            msg = _(u"One of these fields is required.")
+            msg = ugettext(u"One of these fields is required.")
             self._errors["books"] = self.error_class([msg])
             self._errors["audiobooks"] = self.error_class([msg])
         return super(PublishingSuggestForm, self).clean(*args, **kwargs)

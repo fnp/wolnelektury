@@ -35,7 +35,7 @@ class DownloadFormatsForm(forms.Form):
             widget=forms.CheckboxSelectMultiple)
 
     def __init__(self, *args, **kwargs):
-         super(DownloadFormatsForm, self).__init__(*args, **kwargs)
+        super(DownloadFormatsForm, self).__init__(*args, **kwargs)
 
 
 PDF_PAGE_SIZES = (
