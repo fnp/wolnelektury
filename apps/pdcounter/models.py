@@ -6,7 +6,8 @@ from django.db import models
 from django.db.models import permalink
 from django.utils.translation import ugettext as _
 from datetime import datetime
-
+from django.db.models.signals import post_save, post_delete
+import search
 
 class Author(models.Model):
     name = models.CharField(_('name'), max_length=50, db_index=True)
@@ -85,3 +86,19 @@ class BookStub(models.Model):
 
     def pretty_title(self, html_links=False):
         return ', '.join((self.author, self.title))
+
+
+def update_index(sender, instance, **kwargs):
+    print "update pd index %s [update %s]" % (instance, 'created' in kwargs)
+    search.JVM.attachCurrentThread()
+    idx = search.Index()
+    idx.open()
+    try:
+        idx.index_tags(instance, remove_only=not 'created' in kwargs)
+    finally:
+        idx.close()
+
+post_delete.connect(update_index, Author)
+post_delete.connect(update_index, BookStub)
+post_save.connect(update_index, Author)
+post_save.connect(update_index, BookStub)

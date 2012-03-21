@@ -5,6 +5,7 @@ from settings.paths import PROJECT_DIR
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = path.join(PROJECT_DIR, '../media/')
 STATIC_ROOT = path.join(PROJECT_DIR, 'static/')
+SEARCH_INDEX = path.join(PROJECT_DIR, '../search_index/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).

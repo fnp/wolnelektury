@@ -54,6 +54,7 @@ def did_you_mean(query, tokens):
 JVM.attachCurrentThread()
 search = Search()
 
+
 def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
@@ -77,7 +78,7 @@ def hint(request):
 
     def category_name(c):
         if c.startswith('pd_'):
-            c=c[len('pd_'):]
+            c = c[len('pd_'):]
         return _(c)
 
     return JSONResponse(
@@ -101,109 +102,117 @@ def main(request):
     query = None
     fuzzy = False #0.8
 
-    if 'q' in request.GET:
-        # tags = request.GET.get('tags', '')
-        query = request.GET['q']
-        # book_id = request.GET.get('book', None)
-        # book = None
-        # if book_id is not None:
-        #     book = get_object_or_404(Book, id=book_id)
+    query = request.GET.get('q','')
+    # book_id = request.GET.get('book', None)
+    # book = None
+    # if book_id is not None:
+    #     book = get_object_or_404(Book, id=book_id)
 
-        # hint = search.hint()
-        # try:
-        #     tag_list = Tag.get_tag_list(tags)
-        # except:
-        #     tag_list = []
+    # hint = search.hint()
+    # try:
+    #     tag_list = Tag.get_tag_list(tags)
+    # except:
+    #     tag_list = []
 
-        if len(query) < 2:
-            return render_to_response('catalogue/search_too_short.html', {'prefix': query},
-                                      context_instance=RequestContext(request))
+    if len(query) < 2:
+        return render_to_response('catalogue/search_too_short.html', {'prefix': query},
+                                  context_instance=RequestContext(request))
 
-        # hint.tags(tag_list)
-        # if book:
-        #     hint.books(book)
-        tags = search.hint_tags(query, pdcounter=True, prefix=False, fuzzy=fuzzy)
-        tags = split_tags(tags)
+    # hint.tags(tag_list)
+    # if book:
+    #     hint.books(book)
+    tags = search.hint_tags(query, pdcounter=True, prefix=False, fuzzy=fuzzy)
+    tags = split_tags(tags)
 
-        toks = StringReader(query)
-        tokens_cache = {}
+    toks = StringReader(query)
+    tokens_cache = {}
 
-        author_results = search.search_phrase(toks, 'authors', fuzzy=fuzzy, tokens_cache=tokens_cache)
-        title_results = search.search_phrase(toks, 'title', fuzzy=fuzzy, tokens_cache=tokens_cache)
+    author_results = search.search_phrase(toks, 'authors', fuzzy=fuzzy, tokens_cache=tokens_cache)
+    title_results = search.search_phrase(toks, 'title', fuzzy=fuzzy, tokens_cache=tokens_cache)
 
-        # Boost main author/title results with mixed search, and save some of its results for end of list.
-        # boost author, title results
-        author_title_mixed = search.search_some(toks, ['authors', 'title', 'tags'], fuzzy=fuzzy, tokens_cache=tokens_cache)
-        author_title_rest = []
-        for b in author_title_mixed:
-            bks = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
-            for b2 in bks:
-                b2.boost *= 1.1
-            if bks is []:
-                author_title_rest.append(b)
+    # Boost main author/title results with mixed search, and save some of its results for end of list.
+    # boost author, title results
+    author_title_mixed = search.search_some(toks, ['authors', 'title', 'tags'], fuzzy=fuzzy, tokens_cache=tokens_cache)
+    author_title_rest = []
+    for b in author_title_mixed:
+        bks = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
+        for b2 in bks:
+            b2.boost *= 1.1
+        if bks is []:
+            author_title_rest.append(b)
 
-        # Do a phrase search but a term search as well - this can give us better snippets then search_everywhere,
-        # Because the query is using only one field.
-        text_phrase = SearchResult.aggregate(
-            search.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False, slop=4),
-            search.search_some(toks, ['content'], tokens_cache=tokens_cache, snippets=True, book=False))
+    # Do a phrase search but a term search as well - this can give us better snippets then search_everywhere,
+    # Because the query is using only one field.
+    text_phrase = SearchResult.aggregate(
+        search.search_phrase(toks, 'content', fuzzy=fuzzy, tokens_cache=tokens_cache, snippets=True, book=False, slop=4),
+        search.search_some(toks, ['content'], tokens_cache=tokens_cache, snippets=True, book=False))
 
-        everywhere = search.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache)
+    everywhere = search.search_everywhere(toks, fuzzy=fuzzy, tokens_cache=tokens_cache)
 
-        def already_found(results):
-            def f(e):
-                for r in results:
-                    if e.book_id == r.book_id:
-                        e.boost = 0.9
-                        results.append(e)
-                        return True
-                return False
-            return f
-        f = already_found(author_results + title_results + text_phrase)
-        everywhere = filter(lambda x: not f(x), everywhere)
+    def already_found(results):
+        def f(e):
+            for r in results:
+                if e.book_id == r.book_id:
+                    e.boost = 0.9
+                    results.append(e)
+                    return True
+            return False
+        return f
+    f = already_found(author_results + title_results + text_phrase)
+    everywhere = filter(lambda x: not f(x), everywhere)
 
-        author_results = SearchResult.aggregate(author_results)
-        title_results = SearchResult.aggregate(title_results)
+    author_results = SearchResult.aggregate(author_results)
+    title_results = SearchResult.aggregate(title_results)
 
-        everywhere = SearchResult.aggregate(everywhere, author_title_rest)
+    everywhere = SearchResult.aggregate(everywhere, author_title_rest)
 
-        for res in [author_results, title_results, text_phrase, everywhere]:
-            res.sort(reverse=True)
-            for r in res:
-                for h in r.hits:
-                    h['snippets'] = map(lambda s:
-                                        re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
-                                                re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", s)[0])[0], h['snippets'])
+    for res in [author_results, title_results, text_phrase, everywhere]:
+        res.sort(reverse=True)
+        for r in res:
+            for h in r.hits:
+                h['snippets'] = map(lambda s:
+                                    re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
+                                            re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", s)[0])[0], h['snippets'])
 
-        suggestion = did_you_mean(query, search.get_tokens(toks, field="SIMPLE"))
-        print "dym? %s" % repr(suggestion).encode('utf-8')
+    suggestion = did_you_mean(query, search.get_tokens(toks, field="SIMPLE"))
 
-        results = author_results + title_results + text_phrase + everywhere
-        results.sort(reverse=True)
+    def ensure_exists(r):
+        try:
+            return r.book
+        except Book.DoesNotExist:
+            return False
 
-        if len(results) == 1:
-            fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
-            if len(fragment_hits) == 1:
-                #anchor = fragment_hits[0]['fragment']
-                #frag = Fragment.objects.get(anchor=anchor)
-                return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
-            return HttpResponseRedirect(results[0].book.get_absolute_url())
-        elif len(results) == 0:
-            form = PublishingSuggestForm(initial={"books": query + ", "})
-            return render_to_response('catalogue/search_no_hits.html',
-                                      {'tags': tags,
-                                       'prefix': query,
-                                       "form": form,
-                                       'did_you_mean': suggestion},
-                context_instance=RequestContext(request))
+    author_results = filter(ensure_exists, author_results)
+    title_results = filter(ensure_exists, title_results)
+    text_phrase = filter(ensure_exists, text_phrase)
+    everywhere = filter(ensure_exists, everywhere)
 
-        print "TAGS: %s" % tags
-        return render_to_response('catalogue/search_multiple_hits.html',
+    results = author_results + title_results + text_phrase + everywhere
+    # ensure books do exists & sort them
+    results.sort(reverse=True)
+
+    if len(results) == 1:
+        fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
+        if len(fragment_hits) == 1:
+            #anchor = fragment_hits[0]['fragment']
+            #frag = Fragment.objects.get(anchor=anchor)
+            return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
+        return HttpResponseRedirect(results[0].book.get_absolute_url())
+    elif len(results) == 0:
+        form = PublishingSuggestForm(initial={"books": query + ", "})
+        return render_to_response('catalogue/search_no_hits.html',
                                   {'tags': tags,
                                    'prefix': query,
-                                   'results': { 'author': author_results,
-                                                'title': title_results,
-                                                'content': text_phrase,
-                                                'other': everywhere},
+                                   "form": form,
                                    'did_you_mean': suggestion},
             context_instance=RequestContext(request))
+
+    return render_to_response('catalogue/search_multiple_hits.html',
+                              {'tags': tags,
+                               'prefix': query,
+                               'results': { 'author': author_results,
+                                            'title': title_results,
+                                            'content': text_phrase,
+                                            'other': everywhere},
+                               'did_you_mean': suggestion},
+        context_instance=RequestContext(request))

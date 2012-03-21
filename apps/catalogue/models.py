@@ -1087,9 +1087,11 @@ post_save.connect(_post_save_handler)
 @django.dispatch.receiver(post_delete, sender=Book)
 def _remove_book_from_index_handler(sender, instance, **kwargs):
     """ remove the book from search index, when it is deleted."""
+    search.JVM.attachCurrentThread()
     idx = search.Index()
     idx.open(timeout=10000)  # 10 seconds timeout.
     try:
         idx.remove_book(instance)
+        idx.index_tags()
     finally:
         idx.close()

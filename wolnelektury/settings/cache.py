@@ -23,4 +23,3 @@ CACHES = {
     },
 }
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY=True
-SEARCH_INDEX = path.join(PROJECT_DIR, '../search_index/')

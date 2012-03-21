@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from lucene import SimpleFSDirectory, NIOFSDirectory, IndexWriter, IndexWriterConfig, CheckIndex, \
+from django.dispatch import Signal
+from lucene import SimpleFSDirectory, NIOFSDirectory, IndexWriter, IndexReader, IndexWriterConfig, CheckIndex, \
     File, Field, Integer, \
     NumericField, Version, Document, JavaError, IndexSearcher, \
     QueryParser, PerFieldAnalyzerWrapper, \
@@ -92,6 +93,9 @@ class IndexStore(object):
                 pass
             else: raise
 
+    def close(self):
+        self.store.close()
+
 
 class IndexChecker(IndexStore):
     def __init__(self):
@@ -111,7 +115,7 @@ class Snippets(object):
     """
     SNIPPET_DIR = "snippets"
 
-    def __init__(self, book_id):
+    def __init__(self, book_id, revision=None):
         try:
             os.makedirs(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR))
         except OSError as exc:
@@ -119,7 +123,15 @@ class Snippets(object):
                 pass
             else: raise
         self.book_id = book_id
+        self.revision = revision
         self.file = None
+
+    @property
+    def path(self):
+        if self.revision: fn = "%d.%d" % (self.book_id, self.revision)
+        else: fn = "%d" % self.book_id
+
+        return os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR, fn)
 
     def open(self, mode='r'):
         """
@@ -127,7 +139,17 @@ class Snippets(object):
         """
         if not 'b' in mode:
             mode += 'b'
-        self.file = open(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR, str(self.book_id)), mode)
+
+        if 'w' in mode:
+            if os.path.exists(self.path):
+                self.revision = 1
+                while True:
+                    if not os.path.exists(self.path):
+                        break
+                    self.revision += 1
+            print "using %s" % self.path
+
+        self.file = open(self.path, mode)
         self.position = 0
         return self
 
@@ -155,6 +177,17 @@ class Snippets(object):
     def close(self):
         """Close snippet file"""
         self.file.close()
+
+    def remove(self):
+        self.revision = None
+        try:
+            os.unlink(self.path)
+            self.revision = 0
+            while True:
+                self.revision += 1
+                os.unlink(self.path)
+        except OSError:
+            pass
 
 
 class BaseIndex(IndexStore):
@@ -190,12 +223,19 @@ class BaseIndex(IndexStore):
         self.index.close()
         self.index = None
 
+        index_changed.send_robust(self)
+
+        super(BaseIndex, self).close()
+
     def __enter__(self):
         self.open()
         return self
 
     def __exit__(self, type, value, tb):
         self.close()
+
+
+index_changed = Signal()
 
 
 class Index(BaseIndex):
@@ -205,40 +245,66 @@ class Index(BaseIndex):
     def __init__(self, analyzer=None):
         super(Index, self).__init__(analyzer)
 
-    def index_tags(self):
+    def index_tags(self, *tags, **kw):
         """
         Re-index global tag list.
         Removes all tags from index, then index them again.
         Indexed fields include: id, name (with and without polish stems), category
         """
-        q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
-        self.index.deleteDocuments(q)
+        remove_only = kw.get('remove_only', False)
+        # first, remove tags from index.
+        if tags:
+            q = BooleanQuery()
+            for tag in tags:
+                b_id_cat = BooleanQuery()
 
-        for tag in catalogue.models.Tag.objects.exclude(category='set'):
-            doc = Document()
-            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
-            doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
-            self.index.addDocument(doc)
+                q_id = NumericRangeQuery.newIntRange("tag_id", tag.id, tag.id, True, True)
+                b_id_cat.add(q_id, BooleanClause.Occur.MUST)
 
-        for pdtag in PDCounterAuthor.objects.all():
-            doc = Document()
-            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(pdtag.id)))
-            doc.add(Field("tag_name", pdtag.name, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_name_pl", pdtag.name, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_category", 'pd_author', Field.Store.YES, Field.Index.NOT_ANALYZED))
-            doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
-            self.index.addDocument(doc)
+                if isinstance(tag, PDCounterAuthor):
+                    q_cat = TermQuery(Term('tag_category', 'pd_author'))
+                elif isinstance(tag, PDCounterBook):
+                    q_cat = TermQuery(Term('tag_category', 'pd_book'))
+                else:
+                    q_cat = TermQuery(Term('tag_category', tag.category))
+                b_id_cat.add(q_cat, BooleanClause.Occur.MUST)
 
-        for pdtag in PDCounterBook.objects.all():
-            doc = Document()
-            doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(pdtag.id)))
-            doc.add(Field("tag_name", pdtag.title, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_name_pl", pdtag.title, Field.Store.NO, Field.Index.ANALYZED))
-            doc.add(Field("tag_category", 'pd_book', Field.Store.YES, Field.Index.NOT_ANALYZED))
-            doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
-            self.index.addDocument(doc)
+                q.add(b_id_cat, BooleanClause.Occur.SHOULD)
+        else:  # all
+            q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
+            self.index.deleteDocuments(q)
+
+        if not remove_only:
+            # then add them [all or just one passed]
+            if not tags:
+                tags = catalogue.models.Tag.objects.exclude(category='set') + \
+                    PDCounterAuthor.objects.all() + \
+                    PDCounterBook.objects.all()
+
+            for tag in tags:
+                if isinstance(tag, PDCounterAuthor):
+                    doc = Document()
+                    doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
+                    doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
+                    doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
+                    doc.add(Field("tag_category", 'pd_author', Field.Store.YES, Field.Index.NOT_ANALYZED))
+                    doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
+                    self.index.addDocument(doc)
+                elif isinstance(tag, PDCounterBook):
+                    doc = Document()
+                    doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
+                    doc.add(Field("tag_name", tag.title, Field.Store.NO, Field.Index.ANALYZED))
+                    doc.add(Field("tag_name_pl", tag.title, Field.Store.NO, Field.Index.ANALYZED))
+                    doc.add(Field("tag_category", 'pd_book', Field.Store.YES, Field.Index.NOT_ANALYZED))
+                    doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
+                    self.index.addDocument(doc)
+                else:
+                    doc = Document()
+                    doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
+                    doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
+                    doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
+                    doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
+                    self.index.addDocument(doc)
 
     def create_book_doc(self, book):
         """
@@ -250,11 +316,15 @@ class Index(BaseIndex):
             doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(int(book.parent.id)))
         return doc
 
-    def remove_book(self, book):
+    def remove_book(self, book, remove_snippets=True):
         """Removes a book from search index.
         book - Book instance."""
         q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
         self.index.deleteDocuments(q)
+
+        if remove_snippets:
+            snippets = Snippets(book.id)
+            snippets.remove()
 
     def index_book(self, book, book_info=None, overwrite=True):
         """
@@ -263,7 +333,9 @@ class Index(BaseIndex):
         and calls self.index_content() to index the contents of the book.
         """
         if overwrite:
-            self.remove_book(book)
+            # we don't remove snippets, since they might be still needed by
+            # threads using not reopened index
+            self.remove_book(book, remove_snippets=False)
 
         book_doc = self.create_book_doc(book)
         meta_fields = self.extract_metadata(book, book_info)
@@ -420,12 +492,16 @@ class Index(BaseIndex):
                     .setIntValue('header_span' in fields and fields['header_span'] or 1))
             doc.add(Field('header_type', fields["header_type"], Field.Store.YES, Field.Index.NOT_ANALYZED))
 
+            print ">>[%s]>%s<<<" % (fields.get('fragment_anchor', ''), fields['content'])
+
             doc.add(Field('content', fields["content"], Field.Store.NO, Field.Index.ANALYZED, \
                           Field.TermVector.WITH_POSITIONS_OFFSETS))
 
             snip_pos = snippets.add(fields["content"])
             doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
             doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[1]))
+            if snippets.revision:
+                doc.add(NumericField("snippets_revision", Field.Store.YES, True).setIntValue(snippets.revision))
 
             if 'fragment_anchor' in fields:
                 doc.add(Field("fragment_anchor", fields['fragment_anchor'],
@@ -584,6 +660,8 @@ class ReusableIndex(Index):
             ReusableIndex.index.close()
             ReusableIndex.index = None
 
+            index_changed.send_robust(None)
+
     def close(self):
         if ReusableIndex.index:
             ReusableIndex.index.commit()
@@ -687,6 +765,8 @@ class SearchResult(object):
         return self
 
     def get_book(self):
+        if hasattr(self, '_book'):
+            return self._book
         return catalogue.models.Book.objects.get(id=self.book_id)
 
     book = property(get_book)
@@ -705,7 +785,10 @@ class SearchResult(object):
 
         # to sections and fragments
         frags = filter(lambda r: r[FRAGMENT] is not None, self._hits)
+
         sect = filter(lambda r: r[FRAGMENT] is None, self._hits)
+
+        # sections not covered by fragments
         sect = filter(lambda s: 0 == len(filter(
             lambda f: s[POSITION][POSITION_INDEX] >= f[POSITION][POSITION_INDEX]
             and s[POSITION][POSITION_INDEX] < f[POSITION][POSITION_INDEX] + f[POSITION][POSITION_SPAN],
@@ -713,15 +796,20 @@ class SearchResult(object):
 
         hits = []
 
-        # remove duplicate fragments
-        fragments = {}
-        for f in frags:
-            fid = f[FRAGMENT]
-            if fid in fragments:
-                if fragments[fid][SCORE] >= f[SCORE]:
-                    continue
-            fragments[fid] = f
-        frags = fragments.values()
+        def remove_duplicates(lst, keyfn, compare):
+            els = {}
+            for e in lst:
+                eif = keyfn(e)
+                if eif in els:
+                    if compare(els[eif], e) >= 1:
+                        continue
+                els[eif] = e
+            return els.values()
+
+        # remove fragments with duplicated fid's and duplicated snippets
+        frags = remove_duplicates(frags, lambda f: f[FRAGMENT], lambda a, b: cmp(a[SCORE], b[SCORE]))
+        frags = remove_duplicates(frags, lambda f: f[OTHER]['snippets'] and f[OTHER]['snippets'][0] or hash(f),
+                                  lambda a, b: cmp(a[SCORE], b[SCORE]))
 
         # remove duplicate sections
         sections = {}
@@ -903,12 +991,32 @@ class Search(IndexStore):
         IndexStore.__init__(self)
         self.analyzer = WLAnalyzer()  # PolishAnalyzer(Version.LUCENE_34)
         # self.analyzer = WLAnalyzer()
-        self.searcher = IndexSearcher(self.store, True)
+        reader = IndexReader.open(self.store, True)
+        self.searcher = IndexSearcher(reader)
         self.parser = QueryParser(Version.LUCENE_34, default_field,
                                   self.analyzer)
 
         self.parent_filter = TermsFilter()
         self.parent_filter.addTerm(Term("is_book", "true"))
+        index_changed.connect(self.reopen)
+
+    def close(self):
+        reader = self.searcher.getIndexReader()
+        self.searcher.close()
+        reader.close()
+        super(Search, self).close()
+        index_changed.disconnect(self.reopen)
+
+    def reopen(self, **unused):
+        reader = self.searcher.getIndexReader()
+        rdr = reader.reopen()
+        print "got signal to reopen index"
+        if not rdr.equals(reader):
+            print "will reopen index"
+            oldsearch = self.searcher
+            self.searcher = IndexSearcher(rdr)
+            oldsearch.close()
+            reader.close()
 
     def query(self, query):
         """Parse query in default Lucene Syntax. (for humans)
@@ -1222,9 +1330,11 @@ class Search(IndexStore):
         length = stored.get('snippets_length')
         if position is None or length is None:
             return None
+        revision = stored.get('snippets_revision')
+        if revision: revision = int(revision)
         # locate content.
         book_id = int(stored.get('book_id'))
-        snippets = Snippets(book_id).open()
+        snippets = Snippets(book_id, revision=revision).open()
         try:
             try:
                 text = snippets.get((int(position),
@@ -1274,19 +1384,24 @@ class Search(IndexStore):
             doc = self.searcher.doc(found.doc)
             is_pdcounter = doc.get('is_pdcounter')
             category = doc.get('tag_category')
-            if is_pdcounter == 'true':
-                if category == 'pd_author':
-                    tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
-                elif category == 'pd_book':
-                    tag = PDCounterBook.objects.get(id=doc.get('tag_id'))
-                    tag.category = 'pd_book'  # make it look more lik a tag.
+            try:
+                if is_pdcounter == 'true':
+                    if category == 'pd_author':
+                        tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
+                    elif category == 'pd_book':
+                        tag = PDCounterBook.objects.get(id=doc.get('tag_id'))
+                        tag.category = 'pd_book'  # make it look more lik a tag.
+                    else:
+                        print "Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)
                 else:
-                    print "Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)
-            else:
-                tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
-                # don't add the pdcounter tag if same tag already exists
-            if not (is_pdcounter and filter(lambda t: tag.slug == t.slug, tags)):
-                tags.append(tag)
+                    tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
+                    # don't add the pdcounter tag if same tag already exists
+                if not (is_pdcounter and filter(lambda t: tag.slug == t.slug, tags)):
+                    tags.append(tag)
+            except catalogue.models.Tag.DoesNotExist: pass
+            except PDCounterAuthor.DoesNotExist: pass
+            except PDCounterBook.DoesNotExist: pass
+
                 #            print "%s (%d) -> %f" % (tag, tag.id, found.score)
         print 'returning %s' % tags
         return tags
@@ -1299,7 +1414,9 @@ class Search(IndexStore):
         tops = self.searcher.search(query, filter, max_results)
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+            try:
+                bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
+            except catalogue.models.Book.DoesNotExist: pass
         return bks
 
     def make_prefix_phrase(self, toks, field):
