@@ -1371,13 +1371,13 @@ class Search(IndexStore):
         if terms:
             return JArray('object')(terms, Term)
 
-    def search_tags(self, query, filter=None, max_results=40, pdcounter=False):
+    def search_tags(self, query, filt=None, max_results=40, pdcounter=False):
         """
         Search for Tag objects using query.
         """
         if not pdcounter:
-            filters = self.chain_filters([filter, self.term_filter(Term('is_pdcounter', 'true'), inverse=True)])
-        tops = self.searcher.search(query, filter, max_results)
+            filters = self.chain_filters([filt, self.term_filter(Term('is_pdcounter', 'true'), inverse=True)])
+        tops = self.searcher.search(query, filt, max_results)
 
         tags = []
         for found in tops.scoreDocs:
@@ -1406,12 +1406,12 @@ class Search(IndexStore):
 
         return tags
 
-    def search_books(self, query, filter=None, max_results=10):
+    def search_books(self, query, filt=None, max_results=10):
         """
         Searches for Book objects using query
         """
         bks = []
-        tops = self.searcher.search(query, filter, max_results)
+        tops = self.searcher.search(query, filt, max_results)
         for found in tops.scoreDocs:
             doc = self.searcher.doc(found.doc)
             try:
