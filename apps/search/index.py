@@ -31,9 +31,11 @@ import catalogue.models
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from multiprocessing.pool import ThreadPool
 from threading import current_thread
+from itertools import chain
 import atexit
 import traceback
-
+import logging
+log = logging.getLogger('search')
 
 class WLAnalyzer(PerFieldAnalyzerWrapper):
     def __init__(self):
@@ -147,7 +149,6 @@ class Snippets(object):
                     if not os.path.exists(self.path):
                         break
                     self.revision += 1
-            print "using %s" % self.path
 
         self.file = open(self.path, mode)
         self.position = 0
@@ -218,7 +219,7 @@ class BaseIndex(IndexStore):
         try:
             self.index.optimize()
         except JavaError, je:
-            print "Error during optimize phase, check index: %s" % je
+            log.error("Error during optimize phase, check index: %s" % je)
 
         self.index.close()
         self.index = None
@@ -277,9 +278,9 @@ class Index(BaseIndex):
         if not remove_only:
             # then add them [all or just one passed]
             if not tags:
-                tags = catalogue.models.Tag.objects.exclude(category='set') + \
-                    PDCounterAuthor.objects.all() + \
-                    PDCounterBook.objects.all()
+                tags = chain(catalogue.models.Tag.objects.exclude(category='set'), \
+                    PDCounterAuthor.objects.all(), \
+                    PDCounterBook.objects.all())
 
             for tag in tags:
                 if isinstance(tag, PDCounterAuthor):
@@ -492,8 +493,6 @@ class Index(BaseIndex):
                     .setIntValue('header_span' in fields and fields['header_span'] or 1))
             doc.add(Field('header_type', fields["header_type"], Field.Store.YES, Field.Index.NOT_ANALYZED))
 
-            print ">>[%s]>%s<<<" % (fields.get('fragment_anchor', ''), fields['content'])
-
             doc.add(Field('content', fields["content"], Field.Store.NO, Field.Index.ANALYZED, \
                           Field.TermVector.WITH_POSITIONS_OFFSETS))
 
@@ -623,7 +622,7 @@ def log_exception_wrapper(f):
         try:
             f(*a)
         except Exception, e:
-            print("Error in indexing thread: %s" % e)
+            log.error("Error in indexing thread: %s" % e)
             traceback.print_exc()
             raise e
     return _wrap
@@ -643,7 +642,6 @@ class ReusableIndex(Index):
         if ReusableIndex.index:
             self.index = ReusableIndex.index
         else:
-            print("opening index")
             Index.open(self, analyzer, **kw)
             ReusableIndex.index = self.index
             atexit.register(ReusableIndex.close_reusable)
@@ -655,7 +653,6 @@ class ReusableIndex(Index):
     @staticmethod
     def close_reusable():
         if ReusableIndex.index:
-            print("closing index")
             ReusableIndex.index.optimize()
             ReusableIndex.index.close()
             ReusableIndex.index = None
@@ -808,7 +805,7 @@ class SearchResult(object):
 
         # remove fragments with duplicated fid's and duplicated snippets
         frags = remove_duplicates(frags, lambda f: f[FRAGMENT], lambda a, b: cmp(a[SCORE], b[SCORE]))
-        frags = remove_duplicates(frags, lambda f: f[OTHER]['snippets'] and f[OTHER]['snippets'][0] or hash(f),
+        frags = remove_duplicates(frags, lambda f: f[OTHER]['snippets'] and f[OTHER]['snippets'][0] or f[FRAGMENT],
                                   lambda a, b: cmp(a[SCORE], b[SCORE]))
 
         # remove duplicate sections
@@ -874,7 +871,6 @@ class SearchResult(object):
             for r in rl:
                 if r.book_id in books:
                     books[r.book_id].merge(r)
-                    #print(u"already have one with score %f, and this one has score %f" % (books[book.id][0], found.score))
                 else:
                     books[r.book_id] = r
         return books.values()
@@ -1010,9 +1006,8 @@ class Search(IndexStore):
     def reopen(self, **unused):
         reader = self.searcher.getIndexReader()
         rdr = reader.reopen()
-        print "got signal to reopen index"
         if not rdr.equals(reader):
-            print "will reopen index"
+            log.debug('Reopening index')
             oldsearch = self.searcher
             self.searcher = IndexSearcher(rdr)
             oldsearch.close()
@@ -1081,7 +1076,6 @@ class Search(IndexStore):
                 fuzzterms = []
 
                 while True:
-                    #                    print("fuzz %s" % unicode(fuzzterm.term()).encode('utf-8'))
                     ft = fuzzterm.term()
                     if ft:
                         fuzzterms.append(ft)
@@ -1252,7 +1246,6 @@ class Search(IndexStore):
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
             books.append(SearchResult(self, found, how_found='search_everywhere_themesXcontent', searched=searched))
-            print "* %s theme x content: %s" % (searched, books[-1]._hits)
 
         # query themes/content x author/title/tags
         q = BooleanQuery()
@@ -1271,7 +1264,6 @@ class Search(IndexStore):
         topDocs = self.searcher.search(q, only_in, max_results)
         for found in topDocs.scoreDocs:
             books.append(SearchResult(self, found, how_found='search_everywhere', searched=searched))
-            print "* %s scatter search: %s" % (searched, books[-1]._hits)
 
         return books
 
@@ -1332,9 +1324,17 @@ class Search(IndexStore):
             return None
         revision = stored.get('snippets_revision')
         if revision: revision = int(revision)
+
         # locate content.
         book_id = int(stored.get('book_id'))
-        snippets = Snippets(book_id, revision=revision).open()
+        snippets = Snippets(book_id, revision=revision)
+
+        try:
+            snippets.open()
+        except IOError, e:
+            log.error("Cannot open snippet file for book id = %d [rev=%d], %s" % (book_id, revision, e))
+            return []
+
         try:
             try:
                 text = snippets.get((int(position),
@@ -1371,13 +1371,13 @@ class Search(IndexStore):
         if terms:
             return JArray('object')(terms, Term)
 
-    def search_tags(self, query, filters=None, max_results=40, pdcounter=False):
+    def search_tags(self, query, filter=None, max_results=40, pdcounter=False):
         """
         Search for Tag objects using query.
         """
         if not pdcounter:
             filters = self.chain_filters([filter, self.term_filter(Term('is_pdcounter', 'true'), inverse=True)])
-        tops = self.searcher.search(query, filters, max_results)
+        tops = self.searcher.search(query, filter, max_results)
 
         tags = []
         for found in tops.scoreDocs:
@@ -1402,8 +1402,8 @@ class Search(IndexStore):
             except PDCounterAuthor.DoesNotExist: pass
             except PDCounterBook.DoesNotExist: pass
 
-                #            print "%s (%d) -> %f" % (tag, tag.id, found.score)
-        print 'returning %s' % tags
+        log.debug('search_tags: %s' % tags)
+
         return tags
 
     def search_books(self, query, filter=None, max_results=10):
