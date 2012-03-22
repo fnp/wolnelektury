@@ -22,7 +22,7 @@ from ajaxable.utils import JSONResponse, AjaxableFormView
 
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import (split_tags, AttachmentHttpResponse,
+from catalogue.utils import (split_tags,
     async_build_pdf, MultiQuerySet)
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
@@ -543,7 +543,7 @@ def download_custom_pdf(request, slug, method='GET'):
 
             url = WaitedFile.order(pdf_file,
                     lambda p: async_build_pdf.delay(book.id, cust, p),
-                    "%s: %s" % (book.pretty_title(), ", ".join(cust))
+                    book.pretty_title()
                 )
             return redirect(url)
         else:

@@ -1,21 +1,92 @@
 {% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
 
-{% block titleextra %}Prosię ciekać{% endblock %}
+{% block titleextra %}
+{% if file_url %}
+    {% trans "The file is ready for download!" %}
+{% else %}
+    {% if waiting %}
+        {% trans "Your file is being prepared, please wait." %}
+    {% else %}
+        {% trans "Something went wrong." %}
+    {% endif %}
+{% endif %}
+{% endblock %}
 
 
 {% block extrahead %}
-	{# TODO: Not like that! What are you, caveman?! #}
-	<meta http-equiv="refresh" content="{% if file_url %}0; url={{ file_url }}{% else %}5{% endif %}" />
+{% if file_url %}
+    <meta http-equiv="refresh" content="3; url={{ file_url }}" />
+{% else %}
+    {% if waiting %}
+        <noscript>
+            <meta http-equiv="refresh" content="10" />
+        </noscript>
+    {% endif %}
+{% endif %}
 {% endblock %}
 
 
 {% block body %}
-	{% if file_url %}
-	<p>Plik jest gotowy! Jeśli pobieranie nie zacznie się automatycznie,
-		oto <a href="{{ file_url }}">bezpośredni link</a>.</p>
-	{% else %}
-		<p>Idź na kawę. To trochę potrwa.</p>
+{% if file_url %}
+    <h1>{% trans "The file is ready for download!" %}</h1>
 
-		<p>{{ waiting_for.description }}</p>
-	{% endif %}
+    <div class="normal-text white-box">
+    <p>{% blocktrans %}Your file is ready!
+        If the download doesn't start in a few seconds,
+        feel free to use this <a href="{{ file_url }}">direct link</a>.{% endblocktrans %}</p>
+    </div>
+{% else %}
+ {% if waiting %}
+    <h1>{% trans "Your file is being prepared, please wait." %}</h1>
+
+    <div class="normal-text">
+    <p>{% blocktrans with d=waiting.description %}The file you requested was: <em>{{d}}</em>.{% endblocktrans %}</p>
+
+    <p>{% blocktrans %}<strong>Be aware:</strong> Generating the file can take a while.
+        Please be patient, or bookmark this page and come back later.</p>{% endblocktrans %}
+    </div>
+ {% else %}
+    <h1>{% trans "Something went wrong." %}</h1>
+
+    <div class="normal-text">
+    {% url 'suggest' as s %}
+    <p>{% blocktrans %}Something seems to have gone wrong while generating your file.
+        Please order it again or <a id='suggest' class='ajaxable' href="{{s}}">complain to us</a> about it.{% endblocktrans %}</p>
+    </div>
+ {% endif %}
+{% endif %}
+	
+{% endblock %}
+
+{% block extrabody %}
+{% if waiting %}
+<script language="JavaScript">
+<!--
+(function($) {
+    $(function(){
+
+function wait() {
+    $.ajax({
+        href: '',
+        success: function(data) {
+            if (data) {
+                location.reload();
+            }
+            else
+                setTimeout(wait, 10*1000);
+        },
+        error: function() {
+            setTimeout(wait, 10*1000);
+        }
+    });
+}
+setTimeout(wait, 10*1000);
+
+    });
+})(jQuery);
+//-->
+</script>
+{% endif %}
 {% endblock %}

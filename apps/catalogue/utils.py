@@ -140,7 +140,7 @@ class AttachmentHttpResponse(HttpResponse):
             for chunk in read_chunks(f):
                 self.write(chunk)
 
-@task
+@task(rate_limit=settings.CATALOGUE_CUSTOMPDF_RATE_LIMIT)
 def async_build_pdf(book_id, customizations, file_name):
     """
     A celery task to generate pdf files.

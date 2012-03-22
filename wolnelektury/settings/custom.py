@@ -21,3 +21,5 @@ ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
 
 CATALOGUE_DEFAULT_LANGUAGE = 'pol'
 PUBLISH_PLAN_FEED = 'http://redakcja.wolnelektury.pl/documents/track/editor-proofreading/?published=false'
+
+CATALOGUE_CUSTOMPDF_RATE_LIMIT = '6/m'

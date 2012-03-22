@@ -1,12 +1,19 @@
 from os.path import join
 from waiter.models import WaitedFile
 from waiter.settings import WAITER_URL
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 
 def wait(request, path):
     if WaitedFile.exists(path):
         file_url = join(WAITER_URL, path)
     else:
-        waiting_for = get_object_or_404(WaitedFile, path=path)
-        # TODO: check if not stale, inform the user and send some mail if so.
-    return render(request, "waiter/wait.html", locals())
+        file_url = ""
+        waiting = get_object_or_404(WaitedFile, path=path)
+        if waiting.is_stale():
+            waiting = None
+
+    if request.is_ajax():
+        return HttpResponse(file_url)
+    else:
+        return render(request, "waiter/wait.html", locals())

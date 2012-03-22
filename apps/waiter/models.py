@@ -1,7 +1,9 @@
 from os.path import join, abspath, exists
+from django.core.urlresolvers import reverse
 from django.db import models
 from waiter.settings import WAITER_ROOT, WAITER_URL
-from django.core.urlresolvers import reverse
+from djcelery.models import TaskMeta
+
 
 class WaitedFile(models.Model):
     path = models.CharField(max_length=255, unique=True, db_index=True)
@@ -23,14 +25,27 @@ class WaitedFile(models.Model):
         Won't open a path leading outside of WAITER_ROOT.
         """
         abs_path = cls.abspath(path)
-        # Pre-fetch objects to avoid minor race condition
+        # Pre-fetch objects for deletion to avoid minor race condition
         relevant = [o.id for o in cls.objects.filter(path=path)]
-        print abs_path
         if exists(abs_path):
             cls.objects.filter(id__in=relevant).delete()
             return True
         else:
             return False
+
+    def is_stale(self):
+        if self.task is None:
+            # Race; just let the other task roll. 
+            return False
+        try:
+            meta = TaskMeta.objects.get(task_id=self.task)
+            assert meta.status in (u'PENDING', u'STARTED', u'SUCCESS', u'RETRY')
+        except TaskMeta.DoesNotExist:
+            # Might happen it's not yet there.
+            pass
+        except AssertionError:
+            return True
+        return False
 
     @classmethod
     def order(cls, path, task_creator, description=None):
@@ -38,16 +53,16 @@ class WaitedFile(models.Model):
         Returns an URL for the user to follow.
         If the file is ready, returns download URL.
         If not, starts preparing it and returns waiting URL.
+
+        task_creator: function taking a path and generating the file;
+        description: a string or string proxy with a description for user;
         """
         already = cls.exists(path)
         if not already:
             waited, created = cls.objects.get_or_create(path=path)
-            if created:
-                # TODO: makedirs
+            if created or waited.is_stale():
                 waited.task = task_creator(cls.abspath(path))
-                print waited.task
                 waited.description = description
                 waited.save()
-            # TODO: it the task exists, if stale delete, send some mail and restart
             return reverse("waiter", args=[path])
         return join(WAITER_URL, path)
