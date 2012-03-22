@@ -22,4 +22,9 @@ ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
 CATALOGUE_DEFAULT_LANGUAGE = 'pol'
 PUBLISH_PLAN_FEED = 'http://redakcja.wolnelektury.pl/documents/track/editor-proofreading/?published=false'
 
-CATALOGUE_CUSTOMPDF_RATE_LIMIT = '6/m'
+# limit rate for custom PDF creation
+CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
+
+# set to 'new' or 'old' to skip time-consuming test
+# for TeX morefloats library version
+LIBRARIAN_PDF_MOREFLOATS = None

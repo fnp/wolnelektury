@@ -30,6 +30,7 @@ from shutil import copy
 from glob import glob
 import re
 from os import path
+from waiter.settings import WAITER_ROOT
 
 import search
 
@@ -226,7 +227,7 @@ def get_customized_pdf_path(book, customizations):
     Returns a MEDIA_ROOT relative path for a customized pdf. The name will contain a hash of customization options.
     """
     h = customizations_hash(customizations)
-    pdf_name = '%s-custom-%s' % (book.slug, h)
+    pdf_name = '%s/%s-custom-%s' % (book.slug, book.slug, h)
     pdf_file = pdf_name + '.pdf'
 
     return pdf_file
@@ -236,10 +237,8 @@ def get_existing_customized_pdf(book):
     """
     Returns a list of paths to generated customized pdf of a book
     """
-    pdf_glob = '%s-custom-' % (book.slug,)
-    pdf_glob = get_dynamic_path(None, pdf_glob, ext='pdf')
-    pdf_glob = re.sub(r"[.]([a-z0-9]+)$", "*.\\1", pdf_glob)
-    return glob(path.join(settings.MEDIA_ROOT, pdf_glob))
+    pdf_glob = path.join(WAITER_ROOT, book.slug, '*')
+    return glob(pdf_glob)
 
 
 class BookMedia(models.Model):
@@ -513,7 +512,8 @@ class Book(models.Model):
         from django.core.files import File
         from catalogue.utils import remove_zip
 
-        pdf = self.wldocument().as_pdf(customizations=customizations)
+        pdf = self.wldocument().as_pdf(customizations=customizations,
+            morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
 
         if file_name is None:
             # we'd like to be sure not to overwrite changes happening while
