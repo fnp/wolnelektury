@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models
-
+from celery.task import task
 from sortify import sortify
 
 from catalogue.models import Book
@@ -19,15 +19,17 @@ class Note(models.Model):
         ordering = ['sort_key']
 
 
-def notes_from_book(sender, **kwargs):
-    from librarian import html
-
-    Note.objects.filter(book=sender).delete()
-    if sender.html_file:
-        for anchor, text_str, html_str in html.extract_annotations(sender.html_file.path):
-            Note.objects.create(book=sender, anchor=anchor,
+@task(ignore_result=True)
+def build_notes(book_id):
+    book = Book.objects.get(pk=book_id)
+    Note.objects.filter(book=book).delete()
+    if book.html_file:
+        from librarian import html
+        for anchor, text_str, html_str in html.extract_annotations(book.html_file.path):
+            Note.objects.create(book=book, anchor=anchor,
                                html=html_str, 
                                sort_key=sortify(text_str).strip()[:128])
-
-# always re-extract notes after making a HTML in a Book
-Book.html_built.connect(notes_from_book)
+    
+@Book.html_built.connect
+def notes_from_book(sender, **kwargs):
+    build_notes.delat(sender)

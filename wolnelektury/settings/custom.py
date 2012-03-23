@@ -22,7 +22,10 @@ ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
 CATALOGUE_DEFAULT_LANGUAGE = 'pol'
 PUBLISH_PLAN_FEED = 'http://redakcja.wolnelektury.pl/documents/track/editor-proofreading/?published=false'
 
-# limit rate for custom PDF creation
+# limit rate for ebooks creation
+CATALOGUE_PDF_RATE_LIMIT = '1/m'
+CATALOGUE_EPUB_RATE_LIMIT = '6/m'
+CATALOGUE_MOBI_RATE_LIMIT = '5/m'
 CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
 
 # set to 'new' or 'old' to skip time-consuming test

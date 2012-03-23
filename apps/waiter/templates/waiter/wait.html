@@ -78,8 +78,8 @@ function wait() {
             else
                 setTimeout(wait, 10*1000);
         },
-        error: function() {
-            setTimeout(wait, 10*1000);
+        error: function(xhr) {
+            location.reload();
         }
     });
 }

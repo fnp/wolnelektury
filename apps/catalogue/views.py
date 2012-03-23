@@ -22,14 +22,13 @@ from ajaxable.utils import JSONResponse, AjaxableFormView
 
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import (split_tags,
-    async_build_pdf, MultiQuerySet)
+from catalogue.utils import split_tags, MultiQuerySet, get_customized_pdf_path
+from catalogue.tasks import build_custom_pdf
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
 from picture.models import Picture
 
-from os import path
 from waiter.models import WaitedFile
 
 staff_required = user_passes_test(lambda user: user.is_staff)
@@ -539,10 +538,10 @@ def download_custom_pdf(request, slug, method='GET'):
         form = forms.CustomPDFForm(method == 'GET' and request.GET or request.POST)
         if form.is_valid():
             cust = form.customizations
-            pdf_file = models.get_customized_pdf_path(book, cust)
+            pdf_file = get_customized_pdf_path(book, cust)
 
             url = WaitedFile.order(pdf_file,
-                    lambda p: async_build_pdf.delay(book.id, cust, p),
+                    lambda p: build_custom_pdf.delay(book.id, cust, p),
                     book.pretty_title()
                 )
             return redirect(url)

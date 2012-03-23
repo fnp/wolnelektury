@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table('waiter_waitedfile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('path', self.gf('django.db.models.fields.CharField')(unique=True, max_length=255, db_index=True)),
-            ('task', self.gf('django.db.models.fields.CharField')(max_length=64, null=True)),
+            ('task', self.gf('picklefield.fields.PickledObjectField')(null=True)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
         ))
         db.send_create_signal('waiter', ['WaitedFile'])
@@ -30,7 +30,7 @@ class Migration(SchemaMigration):
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'path': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255', 'db_index': 'True'}),
-            'task': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True'})
+            'task': ('picklefield.fields.PickledObjectField', [], {'null': 'True'})
         }
     }
 

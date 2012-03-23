@@ -5,10 +5,9 @@
 from collections import namedtuple
 
 from django.db import models
-from django.db.models import permalink, Q
+from django.db.models import permalink
 import django.dispatch
 from django.core.cache import get_cache
-from django.core.files.storage import DefaultStorage
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
@@ -16,7 +15,7 @@ from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 from django.core.urlresolvers import reverse
-from django.db.models.signals import post_save, m2m_changed, pre_delete, post_delete
+from django.db.models.signals import post_save, pre_delete, post_delete
 import jsonfield
 
 from django.conf import settings
@@ -25,12 +24,8 @@ from newtagging.models import TagBase, tags_updated
 from newtagging import managers
 from catalogue.fields import JSONField, OverwritingFileField
 from catalogue.utils import create_zip, split_tags, truncate_html_words
-from catalogue.tasks import touch_tag, index_book
-from shutil import copy
-from glob import glob
+from catalogue import tasks
 import re
-from os import path
-from waiter.settings import WAITER_ROOT
 
 import search
 
@@ -215,30 +210,6 @@ def get_dynamic_path(media, filename, ext=None, maxlen=100):
 # TODO: why is this hard-coded ?
 def book_upload_path(ext=None, maxlen=100):
     return lambda *args: get_dynamic_path(*args, ext=ext, maxlen=maxlen)
-
-
-def customizations_hash(customizations):
-    customizations.sort()
-    return hash(tuple(customizations))
-
-
-def get_customized_pdf_path(book, customizations):
-    """
-    Returns a MEDIA_ROOT relative path for a customized pdf. The name will contain a hash of customization options.
-    """
-    h = customizations_hash(customizations)
-    pdf_name = '%s/%s-custom-%s' % (book.slug, book.slug, h)
-    pdf_file = pdf_name + '.pdf'
-
-    return pdf_file
-
-
-def get_existing_customized_pdf(book):
-    """
-    Returns a list of paths to generated customized pdf of a book
-    """
-    pdf_glob = path.join(WAITER_ROOT, book.slug, '*')
-    return glob(pdf_glob)
 
 
 class BookMedia(models.Model):
@@ -503,70 +474,6 @@ class Book(models.Model):
         cover.save(imgstr, 'png')
         self.cover.save(None, ContentFile(imgstr.getvalue()))
 
-    def build_pdf(self, customizations=None, file_name=None):
-        """ (Re)builds the pdf file.
-        customizations - customizations which are passed to LaTeX class file.
-        file_name - save the pdf file under a different name and DO NOT save it in db.
-        """
-        from os import unlink
-        from django.core.files import File
-        from catalogue.utils import remove_zip
-
-        pdf = self.wldocument().as_pdf(customizations=customizations,
-            morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
-
-        if file_name is None:
-            # we'd like to be sure not to overwrite changes happening while
-            # (timely) pdf generation is taking place (async celery scenario)
-            current_self = Book.objects.get(id=self.id)
-            current_self.pdf_file.save('%s.pdf' % self.slug,
-                    File(open(pdf.get_filename())))
-            self.pdf_file = current_self.pdf_file
-
-            # remove cached downloadables
-            remove_zip(settings.ALL_PDF_ZIP)
-
-            for customized_pdf in get_existing_customized_pdf(self):
-                unlink(customized_pdf)
-        else:
-            print "saving %s" % file_name
-            print "to: %s" % DefaultStorage().path(file_name)
-            DefaultStorage().save(file_name, File(open(pdf.get_filename())))
-
-    def build_mobi(self):
-        """ (Re)builds the MOBI file.
-
-        """
-        from django.core.files import File
-        from catalogue.utils import remove_zip
-
-        mobi = self.wldocument().as_mobi()
-
-        self.mobi_file.save('%s.mobi' % self.slug, File(open(mobi.get_filename())))
-
-        # remove zip with all mobi files
-        remove_zip(settings.ALL_MOBI_ZIP)
-
-    def build_epub(self):
-        """(Re)builds the epub file."""
-        from django.core.files import File
-        from catalogue.utils import remove_zip
-
-        epub = self.wldocument().as_epub()
-
-        self.epub_file.save('%s.epub' % self.slug,
-                File(open(epub.get_filename())))
-
-        # remove zip package with all epub files
-        remove_zip(settings.ALL_EPUB_ZIP)
-
-    def build_txt(self):
-        from django.core.files.base import ContentFile
-
-        text = self.wldocument().as_text()
-        self.txt_file.save('%s.txt' % self.slug, ContentFile(text.get_string()))
-
-
     def build_html(self):
         from django.core.files.base import ContentFile
         from slughifi import slughifi
@@ -636,15 +543,13 @@ class Book(models.Model):
         books = Book.objects.filter(parent=None).exclude(**{field_name: ""})
         paths = [(pretty_file_name(b), getattr(b, field_name).path)
                     for b in books]
-        result = create_zip.delay(paths,
+        return create_zip(paths,
                     getattr(settings, "ALL_%s_ZIP" % format_.upper()))
-        return result.wait()
 
     def zip_audiobooks(self, format_):
         bm = BookMedia.objects.filter(book=self, type=format_)
         paths = map(lambda bm: (None, bm.file.path), bm)
-        result = create_zip.delay(paths, "%s_%s" % (self.slug, format_))
-        return result.wait()
+        return create_zip(paths, "%s_%s" % (self.slug, format_))
 
     def search_index(self, book_info=None, reuse_index=False, index_tags=True):
         if reuse_index:
@@ -680,8 +585,6 @@ class Book(models.Model):
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
             build_epub=True, build_txt=True, build_pdf=True, build_mobi=True,
             search_index=True, search_index_tags=True, search_index_reuse=False):
-        import re
-        from sortify import sortify
 
         # check for parts before we do anything
         children = []
@@ -737,18 +640,18 @@ class Book(models.Model):
 
         if book.build_html():
             if not settings.NO_BUILD_TXT and build_txt:
-                book.build_txt()
+                tasks.build_txt.delay(book.pk)
 
         book.build_cover(book_info)
 
         if not settings.NO_BUILD_EPUB and build_epub:
-            book.build_epub()
+            tasks.build_epub.delay(book.pk)
 
         if not settings.NO_BUILD_PDF and build_pdf:
-            book.build_pdf()
+            tasks.build_pdf.delay(book.pk)
 
         if not settings.NO_BUILD_MOBI and build_mobi:
-            book.build_mobi()
+            tasks.build_mobi.delay(book.pk)
 
         if not settings.NO_SEARCH_INDEX and search_index:
             book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
@@ -767,7 +670,7 @@ class Book(models.Model):
             book_descendants += list(child_book.children.all())
 
         for tag in descendants_tags:
-            touch_tag(tag)
+            tasks.touch_tag(tag)
 
         book.save()
 
@@ -1055,7 +958,7 @@ def _tags_updated_handler(sender, affected_tags, **kwargs):
     # reset tag global counter
     # we want Tag.changed_at updated for API to know the tag was touched
     for tag in affected_tags:
-        touch_tag(tag)
+        tasks.touch_tag(tag)
 
     # if book tags changed, reset book tag counter
     if isinstance(sender, Book) and \

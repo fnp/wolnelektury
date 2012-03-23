@@ -8,6 +8,7 @@ django-rosetta>=0.5.3
 django-maintenancemode>=0.9
 django-piston
 django-jsonfield
+django-picklefield
 django-allauth
 django-honeypot
 

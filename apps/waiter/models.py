@@ -1,21 +1,16 @@
-from os.path import join, abspath, exists
+from os.path import join, isfile
 from django.core.urlresolvers import reverse
 from django.db import models
-from waiter.settings import WAITER_ROOT, WAITER_URL
 from djcelery.models import TaskMeta
+from waiter.settings import WAITER_URL
+from waiter.utils import check_abspath
+from picklefield import PickledObjectField
 
 
 class WaitedFile(models.Model):
     path = models.CharField(max_length=255, unique=True, db_index=True)
-    task = models.CharField(max_length=64, null=True, editable=False)
+    task = PickledObjectField(null=True, editable=False)
     description = models.CharField(max_length=255, null=True, blank=True)
-
-    @staticmethod
-    def abspath(path):
-        abs_path = abspath(join(WAITER_ROOT, path))
-        if not abs_path.startswith(WAITER_ROOT):
-            raise ValueError('Path not inside WAITER_ROOT.')
-        return abs_path
 
     @classmethod
     def exists(cls, path):
@@ -24,10 +19,10 @@ class WaitedFile(models.Model):
         `path` is relative to WAITER_ROOT.
         Won't open a path leading outside of WAITER_ROOT.
         """
-        abs_path = cls.abspath(path)
+        abs_path = check_abspath(path)
         # Pre-fetch objects for deletion to avoid minor race condition
         relevant = [o.id for o in cls.objects.filter(path=path)]
-        if exists(abs_path):
+        if isfile(abs_path):
             cls.objects.filter(id__in=relevant).delete()
             return True
         else:
@@ -37,13 +32,7 @@ class WaitedFile(models.Model):
         if self.task is None:
             # Race; just let the other task roll. 
             return False
-        try:
-            meta = TaskMeta.objects.get(task_id=self.task)
-            assert meta.status in (u'PENDING', u'STARTED', u'SUCCESS', u'RETRY')
-        except TaskMeta.DoesNotExist:
-            # Might happen it's not yet there.
-            pass
-        except AssertionError:
+        if self.task.status not in (u'PENDING', u'STARTED', u'SUCCESS', u'RETRY'):
             return True
         return False
 
@@ -61,7 +50,7 @@ class WaitedFile(models.Model):
         if not already:
             waited, created = cls.objects.get_or_create(path=path)
             if created or waited.is_stale():
-                waited.task = task_creator(cls.abspath(path))
+                waited.task = task_creator(check_abspath(path))
                 waited.description = description
                 waited.save()
             return reverse("waiter", args=[path])
