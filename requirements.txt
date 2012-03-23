@@ -9,6 +9,7 @@ django-maintenancemode>=0.9
 django-piston
 django-jsonfield
 django-allauth
+django-honeypot
 
 python-memcached
 piwik

@@ -39,7 +39,8 @@
     </div>
 {% else %}
  {% if waiting %}
-    <h1>{% trans "Your file is being prepared, please wait." %}</h1>
+    <h1><img src="{{ STATIC_URL }}img/indicator.gif" alt="{% trans 'Please wait' %}"/>
+        {% trans "Your file is being prepared, please wait." %}</h1>
 
     <div class="normal-text">
     <p>{% blocktrans with d=waiting.description %}The file you requested was: <em>{{d}}</em>.{% endblocktrans %}</p>

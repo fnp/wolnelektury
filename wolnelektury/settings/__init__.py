@@ -6,6 +6,7 @@ from settings.basic import *
 from settings.auth import *
 from settings.cache import *
 from settings.celery import *
+from settings.contrib import *
 from settings.custom import *
 from settings.locale import *
 from settings.static import *
@@ -27,6 +28,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
@@ -41,6 +43,7 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'wolnelektury.urls'
 
 INSTALLED_APPS = [
+    'wolnelektury_core',
     # external
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +59,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'djcelery',
     'djkombu',
+    'honeypot',
     #    'django_nose',
 
     #allauth stuff
@@ -73,7 +77,6 @@ INSTALLED_APPS = [
     'modeltranslation',
 
     # our
-    'wolnelektury_core',
     'ajaxable',
     'api',
     'catalogue',

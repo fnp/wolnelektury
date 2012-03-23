@@ -3,11 +3,13 @@
 
 <form action="{% url social_unlike_book view_kwargs.slug %}" method="post" accept-charset="utf-8"
 	class="cuteform{% if placeholdize %} hidelabels{% endif %}">
+{% csrf_token %}
     <input type="submit" value="{% trans "Remove from my shelf" %}"/>
 </form>
 
 <form action="{{ request.get_full_path }}" method="post" accept-charset="utf-8"
 	class="cuteform{% if placeholdize %} hidelabels{% endif %}">
+{% csrf_token %}
 <ol>
     <div id="id___all__"></div>
     {{ form.as_ul }}

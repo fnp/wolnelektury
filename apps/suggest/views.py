@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from ajaxable.utils import AjaxableFormView
 from suggest import forms
-from suggest.models import Suggestion, PublishingSuggestion
 
 
 class PublishingSuggestionFormView(AjaxableFormView):
@@ -14,6 +13,7 @@ class PublishingSuggestionFormView(AjaxableFormView):
     title = _('Report a bug or suggestion')
     template = "publishing_suggest.html"
     success_message = _('Report was sent successfully.')
+    honeypot = True
 
 
 class SuggestionFormView(AjaxableFormView):
@@ -21,3 +21,4 @@ class SuggestionFormView(AjaxableFormView):
     title = _('Report a bug or suggestion')
     submit = _('Send report')
     success_message = _('Report was sent successfully.')
+    honeypot = True
