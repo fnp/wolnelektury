@@ -384,7 +384,7 @@ class SearchFeed(AcquisitionFeed):
 
             if author:
                 print "narrow to author %s" % author
-                hint.tags(srch.search_tags(author, filter=srch.term_filter(Term('tag_category', 'author'))))
+                hint.tags(srch.search_tags(author, filt=srch.term_filter(Term('tag_category', 'author'))))
 
             if translator:
                 print "filter by translator %s" % translator
@@ -401,7 +401,7 @@ class SearchFeed(AcquisitionFeed):
             if title:
                 print "hint by book title %s" % title
                 q = srch.make_phrase(srch.get_tokens(title, field='title'), field='title')
-                hint.books(*srch.search_books(q, filter=flt))
+                hint.books(*srch.search_books(q, filt=flt))
 
             toks = srch.get_tokens(query)
             print "tokens: %s" % toks
@@ -428,7 +428,7 @@ class SearchFeed(AcquisitionFeed):
                         srch.make_phrase(srch.get_tokens(q, field=fld), field=fld)))
 
             flt = srch.chain_filters(filters)
-            books = srch.search_books(TermQuery(Term('is_book', 'true')), filter=flt)
+            books = srch.search_books(TermQuery(Term('is_book', 'true')), filt=flt)
             return books
 
     def get_link(self, query):
