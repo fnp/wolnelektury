@@ -41,6 +41,7 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = 'wolnelektury.urls'
 
 INSTALLED_APPS = [
+    'wolnelektury_core',
     # external
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,7 +74,6 @@ INSTALLED_APPS = [
     'modeltranslation',
 
     # our
-    'wolnelektury_core',
     'ajaxable',
     'api',
     'catalogue',
