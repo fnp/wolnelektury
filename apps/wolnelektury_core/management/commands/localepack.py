@@ -101,6 +101,7 @@ class CustomLocale(Locale):
         for lc in zip(*languages)[0]:
             shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
                          self.po_file(lc))
+        os.system('pybabel compile -D django -d %s' % os.dirname(self.out_file))
 
 
 SOURCES = []
