@@ -309,7 +309,6 @@ def book_wide(context, book):
         'extra_info': book.get_extra_info_value(),
         'hide_about': hide_about,
         'themes': book_themes,
-        'custom_pdf_form': forms.CustomPDFForm(),
         'request': context.get('request'),
     }
 

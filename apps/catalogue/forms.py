@@ -6,6 +6,10 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from catalogue.models import Book
+from waiter.models import WaitedFile
+from django.core.exceptions import ValidationError
+from catalogue.utils import get_customized_pdf_path
+from catalogue.tasks import build_custom_pdf
 
 
 class BookImportForm(forms.Form):
@@ -61,12 +65,21 @@ CUSTOMIZATION_OPTIONS = (
 
 
 class CustomPDFForm(forms.Form):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, book, *args, **kwargs):
         super(CustomPDFForm, self).__init__(*args, **kwargs)
+        self.book = book
         for name, label in CUSTOMIZATION_FLAGS:
             self.fields[name] = forms.BooleanField(required=False, label=label)
         for name, label, choices in CUSTOMIZATION_OPTIONS:
             self.fields[name] = forms.ChoiceField(choices, label=label)
+
+    def clean(self):
+        self.cleaned_data['cust'] = self.customizations
+        self.cleaned_data['path'] = get_customized_pdf_path(self.book,
+            self.cleaned_data['cust'])
+        if not WaitedFile.can_order(self.cleaned_data['path']):
+            raise ValidationError(_('Queue is full. Please try again later.'))
+        return self.cleaned_data
 
     @property
     def customizations(self):
@@ -78,3 +91,12 @@ class CustomPDFForm(forms.Form):
             c.append(self.cleaned_data[name])
         c.sort()
         return c
+
+    def save(self, *args, **kwargs):
+        url = WaitedFile.order(self.cleaned_data['path'],
+            lambda p: build_custom_pdf.delay(self.book.id,
+                self.cleaned_data['cust'], p),
+            self.book.pretty_title()
+            )
+        #return redirect(url)
+        return {"redirect": url}

@@ -101,14 +101,16 @@ class AjaxableFormView(object):
             form = self.form_class(*form_args, **form_kwargs)
             if form.is_valid():
                 add_args = self.success(form, request)
-                redirect = request.GET.get('next')
-                if not request.is_ajax() and redirect:
-                    return HttpResponseRedirect(urlquote_plus(
-                            redirect, safe='/?=&'))
-                response_data = {'success': True, 
-                    'message': self.success_message, 'redirect': redirect}
+                response_data = {
+                    'success': True, 
+                    'message': self.success_message,
+                    'redirect': request.GET.get('next')
+                    }
                 if add_args:
                     response_data.update(add_args)
+                if not request.is_ajax() and response_data['redirect']:
+                    return HttpResponseRedirect(urlquote_plus(
+                            response_data['redirect'], safe='/?=&'))
             elif request.is_ajax():
                 # Form was sent with errors. Send them back.
                 if self.form_prefix:

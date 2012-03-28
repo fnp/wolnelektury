@@ -62,7 +62,7 @@
 	{% endif %}
       </li>
       <li>
-	<a href="{% url custom_pdf_form %}?slug={{book.slug}}" id="custom-pdf" class="ajaxable">{% trans "Download a custom PDF" %}</a>
+	<a href="{% url custom_pdf_form book.slug %}" id="custom-pdf" class="ajaxable">{% trans "Download a custom PDF" %}</a>
       </li>
     </ul>
   </div>
