@@ -38,7 +38,7 @@ def poem_from_book(request, slug):
     user = request.user if request.user.is_authenticated() else None
     text = Poem.write(Continuations.get(book))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
-    p.set_created_from_value([book.id])
+    p.created_from = [book.id]
     p.save()
 
     return render_to_response('lesmianator/poem.html', 
@@ -53,7 +53,7 @@ def poem_from_set(request, shelf):
     text = Poem.write(Continuations.get(tag))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
     books = Book.tagged.with_any((tag,))
-    p.set_created_from_value([b.id for b in books])
+    p.created_from = [b.id for b in books]
     p.save()
 
     book = books[0] if len(books) == 1 else None
@@ -66,7 +66,7 @@ def get_poem(request, poem):
     p = get_object_or_404(Poem, slug=poem)
     p.visit()
     if p.created_from:
-        books = Book.objects.filter(id__in=p.get_created_from_value())
+        books = Book.objects.filter(id__in=p.created_from)
         book = books[0] if len(books) == 1 else None
     else:
         books = book = None

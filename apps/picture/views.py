@@ -23,7 +23,7 @@ def picture_detail(request, picture):
     picture = get_object_or_404(Picture, slug=picture)
 
     categories = SortedDict()
-    for tag in picture.tags:
+    for tag in picture.tags.iterator():
         categories.setdefault(tag.category, []).append(tag)
 
     picture_themes = []

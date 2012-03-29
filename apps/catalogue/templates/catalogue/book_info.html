@@ -2,9 +2,9 @@
 {% load catalogue_tags %}
 
 <p>
-    {% if book.get_extra_info_value.license %}
+    {% if book.extra_info.license %}
         {% trans "This work is licensed under:" %}
-        <a href="{{ book.get_extra_info_value.license }}">{{ book.get_extra_info_value.license_description }}</a>
+        <a href="{{ book.extra_info.license }}">{{ book.extra_info.license_description }}</a>
     {% else %}
         {% blocktrans %}This work isn't covered by copyright and is part of the
         public domain, which means it can be freely used, published and
@@ -16,15 +16,15 @@
     {% endif %}
 </p>
 
-{% if book.get_extra_info_value.source_name %}
-  <p>{% trans "Text prepared based on:" %} {{ book.get_extra_info_value.source_name }}</p>
+{% if book.extra_info.source_name %}
+  <p>{% trans "Text prepared based on:" %} {{ book.extra_info.source_name }}</p>
 {% endif %}
 
-{% if book.get_extra_info_value.description %}
-  <p>{{ book.get_extra_info_value.description }}</p>
+{% if book.extra_info.description %}
+  <p>{{ book.extra_info.description }}</p>
 {% endif %}
 
-{% if book.get_extra_info_value.editor or book.get_extra_info_value.technical_editor %}
+{% if book.extra_info.editor or book.extra_info.technical_editor %}
   <p>{% trans "Edited and annotated by:" %}
-      {% all_editors book.get_extra_info_value %}.</p>
+      {% all_editors book.extra_info %}.</p>
 {% endif %}

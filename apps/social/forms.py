@@ -14,7 +14,8 @@ class UserSetsForm(forms.Form):
     def __init__(self, book, user, *args, **kwargs):
         super(UserSetsForm, self).__init__(*args, **kwargs)
         self.fields['set_ids'] = forms.ChoiceField(
-            choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user)],
+            choices=[(tag.id, tag.name) for tag in
+                Tag.objects.filter(category='set', user=user).iterator()],
         )
 
 
@@ -28,7 +29,7 @@ class ObjectSetsForm(forms.Form):
         data = kwargs.setdefault('data', {})
         if 'tags' not in data and user.is_authenticated():
             data['tags'] = ', '.join(t.name
-                for t in obj.tags.filter(category='set', user=user) if t.name)
+                for t in obj.tags.filter(category='set', user=user).iterator() if t.name)
         super(ObjectSetsForm, self).__init__(*args, **kwargs)
 
     def save(self, request):

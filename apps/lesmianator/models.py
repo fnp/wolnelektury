@@ -18,7 +18,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.conf import settings
 
-from catalogue.fields import JSONField
+from jsonfield import JSONField
 from catalogue.models import Book, Tag
 
 
@@ -138,19 +138,19 @@ class Continuations(models.Model):
             last_word = last_word[-length+1:] + letter
         # add children
         return reduce(cls.join_conts, 
-                      (cls.get(child) for child in book.children.all()),
+                      (cls.get(child) for child in book.children.all().iterator()),
                       conts)
 
     @classmethod
     def for_set(cls, tag):
         # book contains its descendants, we don't want them twice
         books = Book.tagged.with_any((tag,))
-        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books])
-        descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
+        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books.iterator()])
+        descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags).iterator()]
         if descendants_keys:
             books = books.exclude(pk__in=descendants_keys)
 
-        cont_tabs = (cls.get(b) for b in books)
+        cont_tabs = (cls.get(b) for b in books.iterator())
         return reduce(cls.join_conts, cont_tabs)
 
     @classmethod
@@ -158,7 +158,7 @@ class Continuations(models.Model):
         object_type = ContentType.objects.get_for_model(sth)
         should_keys = set([sth.id])
         if isinstance(sth, Tag):
-            should_keys = set(b.pk for b in Book.tagged.with_any((sth,)))
+            should_keys = set(b.pk for b in Book.tagged.with_any((sth,)).iterator())
         try:
             obj = cls.objects.get(content_type=object_type, object_id=sth.id)
             if not obj.pickle:

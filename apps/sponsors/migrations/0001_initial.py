@@ -7,29 +7,30 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-
+        
         # Adding model 'Sponsor'
         db.create_table('sponsors_sponsor', (
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('logo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
-            ('_description', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=120)),
+            ('_description', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
+            ('logo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
         ))
         db.send_create_signal('sponsors', ['Sponsor'])
 
         # Adding model 'SponsorPage'
         db.create_table('sponsors_sponsorpage', (
-            ('_html', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('sponsors', self.gf('sponsors.fields.JSONField')(default={})),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=120)),
+            ('sponsors', self.gf('jsonfield.fields.JSONField')(default={})),
+            ('_html', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('sprite', self.gf('django.db.models.fields.files.ImageField')(max_length=100, blank=True)),
         ))
         db.send_create_signal('sponsors', ['SponsorPage'])
 
 
     def backwards(self, orm):
-
+        
         # Deleting model 'Sponsor'
         db.delete_table('sponsors_sponsor')
 
@@ -51,7 +52,8 @@ class Migration(SchemaMigration):
             '_html': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'sponsors': ('sponsors.fields.JSONField', [], {'default': '{}'})
+            'sponsors': ('jsonfield.fields.JSONField', [], {'default': '{}'}),
+            'sprite': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'blank': 'True'})
         }
     }
 

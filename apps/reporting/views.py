@@ -21,7 +21,7 @@ def stats_page(request):
             annotate(count=Count('type')).\
             order_by('type')
     for mt in media_types:
-        mt['size'] = sum(b.file.size for b in BookMedia.objects.filter(type=mt['type']))
+        mt['size'] = sum(b.file.size for b in BookMedia.objects.filter(type=mt['type']).iterator())
         if mt['type'] in ('mp3', 'ogg'):
             deprecated = BookMedia.objects.filter(
                     type=mt['type'], source_sha1=None)

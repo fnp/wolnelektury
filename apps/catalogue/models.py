@@ -22,7 +22,7 @@ from django.conf import settings
 
 from newtagging.models import TagBase, tags_updated
 from newtagging import managers
-from catalogue.fields import JSONField, OverwritingFileField
+from catalogue.fields import OverwritingFileField
 from catalogue.utils import create_zip, split_tags, truncate_html_words
 from catalogue import tasks
 import re
@@ -115,8 +115,8 @@ class Tag(TagBase):
             objects = Book.tagged.with_all((self,)).order_by()
             if self.category != 'set':
                 # eliminate descendants
-                l_tags = Tag.objects.filter(slug__in=[book.book_tag_slug() for book in objects])
-                descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
+                l_tags = Tag.objects.filter(slug__in=[book.book_tag_slug() for book in objects.iterator()])
+                descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags).iterator()]
                 if descendants_keys:
                     objects = objects.exclude(pk__in=descendants_keys)
         return objects.count()
@@ -226,7 +226,7 @@ class BookMedia(models.Model):
     name        = models.CharField(_('name'), max_length="100")
     file        = OverwritingFileField(_('file'), upload_to=book_upload_path())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
-    extra_info  = JSONField(_('extra information'), default='{}', editable=False)
+    extra_info  = jsonfield.JSONField(_('extra information'), default='{}', editable=False)
     book = models.ForeignKey('Book', related_name='media')
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
@@ -258,9 +258,9 @@ class BookMedia(models.Model):
             remove_zip("%s_%s" % (old.book.slug, old.type))
         remove_zip("%s_%s" % (self.book.slug, self.type))
 
-        extra_info = self.get_extra_info_value()
+        extra_info = self.extra_info
         extra_info.update(self.read_meta())
-        self.set_extra_info_value(extra_info)
+        self.extra_info = extra_info
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
         return super(BookMedia, self).save(*args, **kwargs)
 
@@ -334,7 +334,7 @@ class Book(models.Model):
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info    = JSONField(_('extra information'), default='{}')
+    extra_info    = jsonfield.JSONField(_('extra information'), default='{}')
     gazeta_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
@@ -428,7 +428,7 @@ class Book(models.Model):
 
         type(self).objects.filter(pk=self.pk).update(_related_info=None)
         # Fragment.short_html relies on book's tags, so reset it here too
-        for fragm in self.fragments.all():
+        for fragm in self.fragments.all().iterator():
             fragm.reset_short_html()
 
     def has_description(self):
@@ -545,14 +545,14 @@ class Book(models.Model):
     def zip_format(format_):
         def pretty_file_name(book):
             return "%s/%s.%s" % (
-                b.get_extra_info_value()['author'],
+                b.extra_info['author'],
                 b.slug,
                 format_)
 
         field_name = "%s_file" % format_
         books = Book.objects.filter(parent=None).exclude(**{field_name: ""})
         paths = [(pretty_file_name(b), getattr(b, field_name).path)
-                    for b in books]
+                    for b in books.iterator()]
         return create_zip(paths,
                     getattr(settings, "ALL_%s_ZIP" % format_.upper()))
 
@@ -628,7 +628,7 @@ class Book(models.Model):
             book.common_slug = book_info.variant_of.slug
         else:
             book.common_slug = book.slug
-        book.set_extra_info_value(book_info.to_dict())
+        book.extra_info = book_info.to_dict()
         book.save()
 
         meta_tags = Tag.tags_from_info(book_info)
@@ -675,7 +675,7 @@ class Book(models.Model):
             descendants_tags.update(child_book.tags)
             child_book.tags = list(child_book.tags) + [book_tag]
             child_book.save()
-            for fragment in child_book.fragments.all():
+            for fragment in child_book.fragments.all().iterator():
                 fragment.tags = set(list(fragment.tags) + [book_tag])
             book_descendants += list(child_book.children.all())
 
@@ -723,7 +723,7 @@ class Book(models.Model):
 
     def related_themes(self):
         theme_counter = self.theme_counter
-        book_themes = Tag.objects.filter(pk__in=theme_counter.keys())
+        book_themes = list(Tag.objects.filter(pk__in=theme_counter.keys()))
         for tag in book_themes:
             tag.count = theme_counter[tag.pk]
         return book_themes
@@ -747,10 +747,10 @@ class Book(models.Model):
 
         if tags is None:
             tags = {}
-            for child in self.children.all().order_by():
+            for child in self.children.all().order_by().iterator():
                 for tag_pk, value in child.tag_counter.iteritems():
                     tags[tag_pk] = tags.get(tag_pk, 0) + value
-            for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by():
+            for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by().iterator():
                 tags[tag.pk] = 1
 
             if self.id:
@@ -776,8 +776,8 @@ class Book(models.Model):
 
         if tags is None:
             tags = {}
-            for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by():
-                for tag in fragment.tags.filter(category='theme').order_by():
+            for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by().iterator():
+                for tag in fragment.tags.filter(category='theme').order_by().iterator():
                     tags[tag.pk] = tags.get(tag.pk, 0) + 1
 
             if self.id:
@@ -812,8 +812,9 @@ class Book(models.Model):
         # get relevant books and their tags
         objects = cls.tagged.with_all(tags)
         # eliminate descendants
-        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in objects])
-        descendants_keys = [book.pk for book in cls.tagged.with_any(l_tags)]
+        l_tags = Tag.objects.filter(category='book',
+            slug__in=[book.book_tag_slug() for book in objects.iterator()])
+        descendants_keys = [book.pk for book in cls.tagged.with_any(l_tags).iterator()]
         if descendants_keys:
             objects = objects.exclude(pk__in=descendants_keys)
 
@@ -832,19 +833,20 @@ class Book(models.Model):
                 'title', 'parent', 'slug')
         if filter:
             books = books.filter(filter).distinct()
-            book_ids = set((book.pk for book in books))
-            for book in books:
+            
+            book_ids = set(b['pk'] for b in books.values("pk").iterator())
+            for book in books.iterator():
                 parent = book.parent_id
                 if parent not in book_ids:
                     parent = None
                 books_by_parent.setdefault(parent, []).append(book)
         else:
-            for book in books:
+            for book in books.iterator():
                 books_by_parent.setdefault(book.parent_id, []).append(book)
 
         orphans = []
         books_by_author = SortedDict()
-        for tag in Tag.objects.filter(category='author'):
+        for tag in Tag.objects.filter(category='author').iterator():
             books_by_author[tag] = []
 
         for book in books_by_parent.get(None,()):
@@ -866,7 +868,7 @@ class Book(models.Model):
         "LP": (3, u"liceum"),
     }
     def audiences_pl(self):
-        audiences = self.get_extra_info_value().get('audiences', [])
+        audiences = self.extra_info.get('audiences', [])
         audiences = sorted(set([self._audiences_pl[a] for a in audiences]))
         return [a[1] for a in audiences]
 

@@ -87,8 +87,8 @@
             </span>
             <div class='play'>{{ i.mp3.name }}
             <div class='extra-info'>
-              {% trans "Artist" %}: <span class='artist'>{{ i.mp3.get_extra_info_value.artist_name }}</span>,
-              {% trans "Director" %}: <span class='director'>{{ i.mp3.get_extra_info_value.director_name }}</span>
+              {% trans "Artist" %}: <span class='artist'>{{ i.mp3.extra_info.artist_name }}</span>,
+              {% trans "Director" %}: <span class='director'>{{ i.mp3.extra_info.director_name }}</span>
             </div>
             </div>
           </li>

@@ -10,7 +10,6 @@ from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
 from catalogue.models import Book, Tag, Fragment
-from catalogue.fields import dumps
 from catalogue.views import JSONResponse
 from search import Search, JVM, SearchResult
 from lucene import StringReader
