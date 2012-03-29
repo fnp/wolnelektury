@@ -6,6 +6,10 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from catalogue.models import Book
+from waiter.models import WaitedFile
+from django.core.exceptions import ValidationError
+from catalogue.utils import get_customized_pdf_path
+from catalogue.tasks import build_custom_pdf
 
 
 class BookImportForm(forms.Form):
@@ -38,51 +42,61 @@ class DownloadFormatsForm(forms.Form):
         super(DownloadFormatsForm, self).__init__(*args, **kwargs)
 
 
-PDF_PAGE_SIZES = (
-    ('a4paper', _('A4')),
-    ('a5paper', _('A5')),
-)
-
-
-PDF_LEADINGS = (
-    ('', _('Normal leading')),
-    ('onehalfleading', _('One and a half leading')),
-    ('doubleleading', _('Double leading')),
+CUSTOMIZATION_FLAGS = (
+    ('nofootnotes', _("Don't show footnotes")),
+    ('nothemes', _("Don't disply themes")),
+    ('nowlfont', _("Don't use our custom font")),
     )
-
-PDF_FONT_SIZES = (
-    ('11pt', _('Default')),
-    ('13pt', _('Big'))
+CUSTOMIZATION_OPTIONS = (
+    ('leading', _("Leading"), (
+        ('defaultleading', _('Normal leading')),
+        ('onehalfleading', _('One and a half leading')),
+        ('doubleleading', _('Double leading')),
+        )),
+    ('fontsize', _("Font size"), (
+        ('11pt', _('Default')),
+        ('13pt', _('Big'))
+        )),
+#    ('pagesize', _("Paper size"), (
+#        ('a4paper', _('A4')),
+#        ('a5paper', _('A5')),
+#        )),
     )
 
 
 class CustomPDFForm(forms.Form):
-    nofootnotes = forms.BooleanField(required=False, label=_("Don't show footnotes"))
-    nothemes = forms.BooleanField(required=False, label=_("Don't disply themes"))
-    nowlfont = forms.BooleanField(required=False, label=_("Don't use our custom font"))
-    ##    pagesize = forms.ChoiceField(PDF_PAGE_SIZES, required=True, label=_("Paper size"))
-    leading = forms.ChoiceField(PDF_LEADINGS, required=False, label=_("Leading"))
-    fontsize = forms.ChoiceField(PDF_FONT_SIZES, required=True, label=_("Font size"))
+    def __init__(self, book, *args, **kwargs):
+        super(CustomPDFForm, self).__init__(*args, **kwargs)
+        self.book = book
+        for name, label in CUSTOMIZATION_FLAGS:
+            self.fields[name] = forms.BooleanField(required=False, label=label)
+        for name, label, choices in CUSTOMIZATION_OPTIONS:
+            self.fields[name] = forms.ChoiceField(choices, label=label)
+
+    def clean(self):
+        self.cleaned_data['cust'] = self.customizations
+        self.cleaned_data['path'] = get_customized_pdf_path(self.book,
+            self.cleaned_data['cust'])
+        if not WaitedFile.can_order(self.cleaned_data['path']):
+            raise ValidationError(_('Queue is full. Please try again later.'))
+        return self.cleaned_data
 
     @property
     def customizations(self):
         c = []
-        if self.cleaned_data['nofootnotes']:
-            c.append('nofootnotes')
-            
-        if self.cleaned_data['nothemes']:
-            c.append('nothemes')
-            
-        if self.cleaned_data['nowlfont']:
-            c.append('nowlfont')
-        
-            ##  c.append(self.cleaned_data['pagesize'])
-        c.append(self.cleaned_data['fontsize'])
-
-        if self.cleaned_data['leading']:
-            c.append(self.cleaned_data['leading'])
-
+        for name, label in CUSTOMIZATION_FLAGS:
+            if self.cleaned_data.get(name):
+                c.append(name)
+        for name, label, choices in CUSTOMIZATION_OPTIONS:
+            c.append(self.cleaned_data[name])
         c.sort()
-
         return c
 
+    def save(self, *args, **kwargs):
+        url = WaitedFile.order(self.cleaned_data['path'],
+            lambda p: build_custom_pdf.delay(self.book.id,
+                self.cleaned_data['cust'], p),
+            self.book.pretty_title()
+            )
+        #return redirect(url)
+        return {"redirect": url}

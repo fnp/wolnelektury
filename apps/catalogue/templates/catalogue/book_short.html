@@ -27,6 +27,7 @@
     </div>
     <div class="if-unlike">
         <form id="social-like-book-{{ book.slug }}" data-callback='social-like-book' method='post' class='ajax-form' action='{% url social_like_book book.slug %}'>
+            {% csrf_token %}
             <button type='submit'>☆</button>
         </form>
     </div>

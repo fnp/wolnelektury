@@ -9,23 +9,18 @@ import re
 import time
 from base64 import urlsafe_b64encode
 
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
+from django.http import HttpResponse
 from django.core.files.uploadedfile import UploadedFile
-from django.core.files.base import File
 from django.core.files.storage import DefaultStorage
 from django.utils.encoding import force_unicode
 from django.utils.hashcompat import sha_constructor
 from django.conf import settings
-from celery.task import task
 from os import mkdir, path, unlink
 from errno import EEXIST, ENOENT
 from fcntl import flock, LOCK_EX
 from zipfile import ZipFile
-from traceback import print_exc
 
 from reporting.utils import read_chunks
-from celery.task import task
-import catalogue.models
 
 # Use the system (hardware-based) random number generator if it exists.
 if hasattr(random, 'SystemRandom'):
@@ -84,7 +79,7 @@ class LockFile(object):
         self.lock.close()
 
 
-@task
+#@task
 def create_zip(paths, zip_slug):
     """
     Creates a zip in MEDIA_ROOT/zip directory containing files from path.
@@ -139,25 +134,6 @@ class AttachmentHttpResponse(HttpResponse):
         with open(DefaultStorage().path(self.file_path)) as f:
             for chunk in read_chunks(f):
                 self.write(chunk)
-
-@task
-def async_build_pdf(book_id, customizations, file_name):
-    """
-    A celery task to generate pdf files.
-    Accepts the same args as Book.build_pdf, but with book id as first parameter
-    instead of Book instance
-    """
-    try:
-        book = catalogue.models.Book.objects.get(id=book_id)
-        print "will gen %s" % DefaultStorage().path(file_name)
-        if not DefaultStorage().exists(file_name):
-            book.build_pdf(customizations=customizations, file_name=file_name)
-        print "done."
-    except Exception, e:
-        print "Error during pdf creation: %s" % e
-        print_exc
-        raise e
-
 
 class MultiQuerySet(object):
     def __init__(self, *args, **kwargs):
@@ -260,3 +236,24 @@ def truncate_html_words(s, num, end_text='...'):
         out += '</%s>' % tag
     # Return string
     return out
+
+
+def customizations_hash(customizations):
+    customizations.sort()
+    return hash(tuple(customizations))
+
+
+def get_customized_pdf_path(book, customizations):
+    """
+    Returns a MEDIA_ROOT relative path for a customized pdf. The name will contain a hash of customization options.
+    """
+    h = customizations_hash(customizations)
+    return 'book/%s/%s-custom-%s.pdf' % (book.slug, book.slug, h)
+
+
+def clear_custom_pdf(book):
+    """
+    Returns a list of paths to generated customized pdf of a book
+    """
+    from waiter.utils import clear_cache
+    clear_cache('book/%s' % book.slug)

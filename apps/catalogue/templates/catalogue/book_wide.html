@@ -52,7 +52,6 @@
     </ul>
   </div>
   <div class="other-download">
-  	{% if related.media.mp3 or related.media.ogg %}
     <h2 class="mono">{% trans "Download" %}</h2>
     <ul class="plain">
       <li>
@@ -62,13 +61,10 @@
 	{% if related.media.ogg %}<a href="{% url download_zip_ogg book.slug %}">OGG</a>{% endif %}.
 	{% endif %}
       </li>
-      {% comment %}
       <li>
-	<a href="{% url custom_pdf_form %}?slug={{book.slug}}" id="custom-pdf" class="ajaxable">{% trans "Download a custom PDF" %}</a>
+	<a href="{% url custom_pdf_form book.slug %}" id="custom-pdf" class="ajaxable">{% trans "Download a custom PDF" %}</a>
       </li>
-      {% endcomment %}
     </ul>
-    {% endif %}
   </div>
 </div>
 {% endblock %}

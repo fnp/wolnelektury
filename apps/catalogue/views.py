@@ -7,7 +7,7 @@ import itertools
 
 from django.conf import settings
 from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.db.models import Q
@@ -22,14 +22,11 @@ from ajaxable.utils import JSONResponse, AjaxableFormView
 
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import (split_tags, AttachmentHttpResponse,
-    async_build_pdf, MultiQuerySet)
+from catalogue.utils import split_tags, MultiQuerySet
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
 from picture.models import Picture
-
-from os import path
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
@@ -531,43 +528,18 @@ def download_zip(request, format, slug=None):
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))
 
 
-def download_custom_pdf(request, slug, method='GET'):
-    book = get_object_or_404(models.Book, slug=slug)
-
-    if request.method == method:
-        form = forms.CustomPDFForm(method == 'GET' and request.GET or request.POST)
-        if form.is_valid():
-            cust = form.customizations
-            pdf_file = models.get_customized_pdf_path(book, cust)
-
-            if not path.exists(pdf_file):
-                result = async_build_pdf.delay(book.id, cust, pdf_file)
-                result.wait()
-            return AttachmentHttpResponse(file_name=("%s.pdf" % book.slug), file_path=pdf_file, mimetype="application/pdf")
-        else:
-            raise Http404(_('Incorrect customization options for PDF'))
-    else:
-        raise Http404(_('Bad method'))
-
-
 class CustomPDFFormView(AjaxableFormView):
     form_class = forms.CustomPDFForm
     title = ugettext_lazy('Download custom PDF')
     submit = ugettext_lazy('Download')
+    honeypot = True
 
-    def __call__(self, request):
-        from copy import copy
-        if request.method == 'POST':
-            request.GET = copy(request.GET)
-            request.GET['next'] = "%s?%s" % (reverse('catalogue.views.download_custom_pdf', args=[request.GET.get('slug')]),
-                                             request.POST.urlencode())
-        return super(CustomPDFFormView, self).__call__(request)
+    def form_args(self, request, obj):
+        """Override to parse view args and give additional args to the form."""
+        return (obj,), {}
 
-    def get_object(self, request):
-        return get_object_or_404(models.Book, slug=request.GET.get('slug'))
+    def get_object(self, request, slug, *args, **kwargs):
+        return get_object_or_404(models.Book, slug=slug)
 
     def context_description(self, request, obj):
         return obj.pretty_title()
-
-    def success(self, *args):
-        pass

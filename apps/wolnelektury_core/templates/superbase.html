@@ -130,6 +130,7 @@
                 <div id="lang-menu-items">
                 {% for lang in LANGUAGES %}
                     <form action="{% url django.views.i18n.set_language %}" method="post">
+                    {% csrf_token %}
                     <input type="hidden" name="language" value="{{ lang.0 }}" />
                     <button type="submit"
                         class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} mono"
