@@ -2,12 +2,13 @@
 from optparse import make_option
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.core.management.color import color_style
 from django.core.management import call_command
+from modeltranslation.management.commands.translation2po import get_languages
 
 import os
 import shutil
 import tempfile
+import sys
 
 import allauth
 
@@ -53,12 +54,14 @@ class AppLocale(Locale):
                          os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'))
 
     def generate(self, languages):
+        wd = os.getcwd()
         os.chdir(self.path)
-        print "in %s" % os.getcwd()
         try:
             call_command('makemessages', all=True)
         except:
             pass
+        finally:
+            os.chdir(wd)
 
 
 class ModelTranslation(Locale):
@@ -69,7 +72,7 @@ class ModelTranslation(Locale):
         call_command('translation2po', self.appname, directory=output_directory)
 
     def load(self, input_directory, languages):
-        call_command('translation2po', self.appname, directory=input_directory, load=True)
+        call_command('translation2po', self.appname, directory=input_directory, load=True, lang=','.join(zip(*languages)[0]))
 
 
 class CustomLocale(Locale):
@@ -112,7 +115,7 @@ for appn in settings.INSTALLED_APPS:
         try:
             SOURCES.append(AppLocale(app))
         except LookupError, e:
-            print "no locales in %s" % app
+            print "no locales in %s" % app.__name__
 
 SOURCES.append(ModelTranslation('infopages'))
 SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
@@ -121,12 +124,15 @@ SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load', default=False),
+        make_option('-L', '--lang', help='load just one language', dest='lang', default=None),
+        make_option('-d', '--directory', help='load from this directory', dest='directory', default=None),
         make_option('-o', '--outfile', help='Resulting zip file', dest='outfile', default='./wl-locale.zip'),
+        make_option('-m', '--merge', help='Use git to merge. Please use with clean working directory.', dest='merge', default=False),
         )
     help = 'Make a locale pack'
     args = ''
 
-    def handle(self, *a, **options):
+    def save(self, options):
         tmp_dir = tempfile.mkdtemp('-wl-locale')
         out_dir = os.path.join(tmp_dir, 'wl-locale')
         os.mkdir(out_dir)
@@ -140,9 +146,31 @@ class Command(BaseCommand):
                 src.save(out_dir, settings.LANGUAGES)
                 #                src.save(settings.LANGUAGES)
 
+            # write out revision
+            rev = os.popen('git rev-parse HEAD').read()
+            rf = open(os.path.join(out_dir, '.revision'), 'w')
+            rf.write(rev)
+            rf.close()
+
             packname = options.get('outfile')
             packname_b = os.path.basename(packname).split('.')[0]
             fmt = '.'.join(os.path.basename(packname).split('.')[1:])
             shutil.make_archive(packname_b, fmt, root_dir=os.path.dirname(out_dir), base_dir=os.path.basename(out_dir))
         finally:
             shutil.rmtree(tmp_dir, ignore_errors=True)
+
+    def load(self, options):
+        if not options['directory'] or not os.path.exists(options['directory']):
+            print "Directory not provided or does not exist, please use -d"
+            sys.exit(1)
+
+        langs = get_languages(options['lang'])
+
+        for src in SOURCES:
+            src.load(options['directory'], langs)
+
+    def handle(self, *a, **options):
+        if options['load']:
+            self.load(options)
+        else:
+            self.save(options)
