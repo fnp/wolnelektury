@@ -131,7 +131,7 @@ def install_requirements():
     "Install the required packages from the requirements file using pip"
     print '>>> install requirements'
     require('release', provided_by=[deploy])
-    run('cd %(path)s; %(pip)s install -E . -r %(path)s/releases/%(release)s/requirements.txt' % env, pty=True)
+    run('cd %(path)s; %(pip)s install -E ve -r %(path)s/releases/%(release)s/requirements.txt' % env, pty=True)
 
 def copy_localsettings():
     "Copy localsettings.py from root directory to release directory (if this file exists)"
@@ -156,9 +156,9 @@ def migrate():
     print '>>> migrate'
     require('project_name', provided_by=[staging, production])
     with cd('%(path)s/releases/current/%(project_name)s' % env):
-        run('../../../bin/python manage.py syncdb --noinput' % env, pty=True)
+        run('../../../ve/bin/python manage.py syncdb --noinput' % env, pty=True)
         if env.use_south:
-            run('../../../bin/python manage.py migrate' % env, pty=True)
+            run('../../../ve/bin/python manage.py migrate' % env, pty=True)
 
 def restart_webserver():
     "Restart the web server"

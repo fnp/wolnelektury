@@ -3,7 +3,10 @@ from waiter.models import WaitedFile
 from waiter.settings import WAITER_URL
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.views.decorators.cache import never_cache
 
+
+@never_cache
 def wait(request, path):
     if WaitedFile.exists(path):
         file_url = join(WAITER_URL, path)

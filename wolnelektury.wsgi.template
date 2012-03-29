@@ -1,6 +1,6 @@
 #!%(python)s
 import site
-site.addsitedir('%(path)s/lib/python2.6/site-packages')
+site.addsitedir('%(path)s/ve/lib/python2.6/site-packages')
 
 import os
 from os.path import abspath, dirname, join
