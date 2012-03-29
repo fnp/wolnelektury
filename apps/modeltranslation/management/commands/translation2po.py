@@ -45,6 +45,8 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-d', '--directory', help='Specify which directory should hold generated PO files', dest='directory'),
         make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load', default=False),
+        make_option('-L', '--language', help='locales to load', dest='lang', default=None),
+        make_option('-n', '--poname', help='name of the po file [no extension]', dest='poname', default=None),
         )
     help = 'Export models from app to po files'
     args = 'app'
@@ -62,7 +64,9 @@ class Command(BaseCommand):
         return r
 
     def handle(self, appname, **options):
+        if not options['poname']: options['poname'] = appname
         app = __import__(appname)
+
         if options['load']:
             objects = {}
             modmod = {}
@@ -71,8 +75,17 @@ class Command(BaseCommand):
                     objects[md.__name__] = {}
                     modmod['model'] = md
 
+<<<<<<< Updated upstream
             for lng in zip(*settings.LANGUAGES)[0]:
                 pofile = os.path.join(options['directory'], lng, appname + '.po')
+=======
+            languages = get_languages(options['lang'])
+
+            for lng in zip(*languages)[0]:
+                pofile = os.path.join(options['directory'], lng, options['poname'] + '.po')
+                if not os.path.exists(pofile): raise OSError('%s po file: %s not found' % (appname, pofile))
+                print pofile
+>>>>>>> Stashed changes
                 po = polib.pofile(pofile)
                 for entry in po:
                     loc, pk = entry.occurrences[0]
@@ -111,4 +124,4 @@ class Command(BaseCommand):
             for lng, po in pofiles.items():
                 try: os.makedirs(os.path.join(directory, lng))
                 except OSError: pass
-                po.save(os.path.join(directory, lng, '%s.po' % appname))
+                po.save(os.path.join(directory, lng, '%s.po' % options['poname']))

@@ -50,8 +50,9 @@ class AppLocale(Locale):
 
     def load(self, input_directory, languages):
         for lc in zip(*languages)[0]:
-            shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
-                         os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'))
+            if os.path.exists(os.path.join(input_directory, lc, self.name + '.po')):
+                shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
+                             os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'))
 
     def generate(self, languages):
         wd = os.getcwd()
@@ -65,14 +66,16 @@ class AppLocale(Locale):
 
 
 class ModelTranslation(Locale):
-    def __init__(self, appname):
+    def __init__(self, appname, poname=None):
         self.appname = appname
+        self.poname = poname and poname or appname
 
     def save(self, output_directory, languages):
-        call_command('translation2po', self.appname, directory=output_directory)
+        call_command('translation2po', self.appname, directory=output_directory, poname=self.poname)
 
     def load(self, input_directory, languages):
-        call_command('translation2po', self.appname, directory=input_directory, load=True, lang=','.join(zip(*languages)[0]))
+        call_command('translation2po', self.appname, directory=input_directory,
+                     load=True, lang=','.join(zip(*languages)[0]), poname=self.poname)
 
 
 class CustomLocale(Locale):
@@ -104,7 +107,7 @@ class CustomLocale(Locale):
         for lc in zip(*languages)[0]:
             shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
                          self.po_file(lc))
-        os.system('pybabel compile -D django -d %s' % os.dirname(self.out_file))
+        os.system('pybabel compile -D django -d %s' % os.path.dirname(self.out_file))
 
 
 SOURCES = []
@@ -117,7 +120,7 @@ for appn in settings.INSTALLED_APPS:
         except LookupError, e:
             print "no locales in %s" % app.__name__
 
-SOURCES.append(ModelTranslation('infopages'))
+SOURCES.append(ModelTranslation('infopages', 'infopages_db'))
 SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
 
 
