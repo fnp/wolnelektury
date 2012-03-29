@@ -7,8 +7,7 @@ from catalogue import models
 from librarian import WLURI
 
 from nose.tools import raises
-import tempfile
-from os import unlink, path, makedirs
+from os import path, makedirs
 
 class BookImportLogicTests(WLTestCase):
 
@@ -237,9 +236,7 @@ class ChildImportTests(WLTestCase):
         </opowiadanie></utwor>
         """
         child = models.Book.from_text_and_meta(ContentFile(CHILD_TEXT), self.child_info, overwrite=True)
-
-        themes = self.client.get(parent.get_absolute_url()).context['book_themes']
-
+        themes = parent.related_themes()
         self.assertEqual(['Kot'], [tag.name for tag in themes],
                         'wrong related theme list')
 
@@ -283,26 +280,30 @@ class MultilingualBookImportTest(WLTestCase):
 class BookImportGenerateTest(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
-        input = path.join(path.dirname(__file__), 'files/fraszka-do-anusie.xml')
-        self.book = models.Book.from_xml_file(input)
+        xml = path.join(path.dirname(__file__), 'files/fraszka-do-anusie.xml')
+        self.book = models.Book.from_xml_file(xml)
 
     def test_gen_pdf(self):
         self.book.build_pdf()
-        self.assertTrue(path.exists(self.book.pdf_file.path))
+        book = models.Book.objects.get(pk=self.book.pk)
+        self.assertTrue(path.exists(book.pdf_file.path))
 
     def test_gen_pdf_parent(self):
         """This book contains a child."""
-        input = path.join(path.dirname(__file__), "files/fraszki.xml")
-        parent = models.Book.from_xml_file(input)
+        xml = path.join(path.dirname(__file__), "files/fraszki.xml")
+        parent = models.Book.from_xml_file(xml)
         parent.build_pdf()
+        parent = models.Book.objects.get(pk=parent.pk)
         self.assertTrue(path.exists(parent.pdf_file.path))
 
     def test_custom_pdf(self):
+        from catalogue.tasks import build_custom_pdf
         out = models.get_dynamic_path(None, 'test-custom', ext='pdf')
         absoulute_path = path.join(settings.MEDIA_ROOT, out)
         
         if not path.exists(path.dirname(absoulute_path)):
             makedirs(path.dirname(absoulute_path))
 
-        self.book.build_pdf(customizations=['nofootnotes', '13pt', 'a4paper'], file_name=out)
+        build_custom_pdf(self.book.id,
+            customizations=['nofootnotes', '13pt', 'a4paper'], file_name=out)
         self.assertTrue(path.exists(absoulute_path))

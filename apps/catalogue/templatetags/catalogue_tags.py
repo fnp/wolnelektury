@@ -295,10 +295,7 @@ def book_info(book):
 
 @register.inclusion_tag('catalogue/book_wide.html', takes_context=True)
 def book_wide(context, book):
-    theme_counter = book.theme_counter
-    book_themes = Tag.objects.filter(pk__in=theme_counter.keys())
-    for tag in book_themes:
-        tag.count = theme_counter[tag.pk]
+    book_themes = book.related_themes()
     extra_info = book.get_extra_info_value()
     hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
 

@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import with_statement
 
-from django.core.files.base import ContentFile, File
-from catalogue.test_utils import *
-from catalogue import models
-from librarian import WLURI
+from os import path
+from django.test import TestCase
 from picture.models import Picture
-
-from nose.tools import raises
-import tempfile
-from os import unlink, path, makedirs
 
 
 class PictureTest(TestCase):

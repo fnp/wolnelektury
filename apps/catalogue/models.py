@@ -244,7 +244,7 @@ class BookMedia(models.Model):
 
         try:
             old = BookMedia.objects.get(pk=self.pk)
-        except BookMedia.DoesNotExist, e:
+        except BookMedia.DoesNotExist:
             old = None
         else:
             # if name changed, change the file name, too
@@ -398,18 +398,18 @@ class Book(models.Model):
             book_tag.save()
         return book_tag
 
-    def has_media(self, type):
-        if type in Book.formats:
-            return bool(getattr(self, "%s_file" % type))
+    def has_media(self, type_):
+        if type_ in Book.formats:
+            return bool(getattr(self, "%s_file" % type_))
         else:
-            return self.media.filter(type=type).exists()
+            return self.media.filter(type=type_).exists()
 
-    def get_media(self, type):
-        if self.has_media(type):
-            if type in Book.formats:
-                return getattr(self, "%s_file" % type)
+    def get_media(self, type_):
+        if self.has_media(type_):
+            if type_ in Book.formats:
+                return getattr(self, "%s_file" % type_)
             else:                                             
-                return self.media.filter(type=type)
+                return self.media.filter(type=type_)
         else:
             return None
 
@@ -531,6 +531,16 @@ class Book(models.Model):
             return True
         return False
 
+    # Thin wrappers for builder tasks
+    def build_pdf(self, *args, **kwargs):
+        return tasks.build_pdf.delay(self.pk, *args, **kwargs)
+    def build_epub(self, *args, **kwargs):
+        return tasks.build_epub.delay(self.pk, *args, **kwargs)
+    def build_mobi(self, *args, **kwargs):
+        return tasks.build_mobi.delay(self.pk, *args, **kwargs)
+    def build_txt(self, *args, **kwargs):
+        return tasks.build_txt.delay(self.pk, *args, **kwargs)
+
     @staticmethod
     def zip_format(format_):
         def pretty_file_name(book):
@@ -592,7 +602,7 @@ class Book(models.Model):
             for part_url in book_info.parts:
                 try:
                     children.append(Book.objects.get(slug=part_url.slug))
-                except Book.DoesNotExist, e:
+                except Book.DoesNotExist:
                     raise Book.DoesNotExist(_('Book "%s" does not exist.') %
                             part_url.slug)
 
@@ -640,18 +650,18 @@ class Book(models.Model):
 
         if book.build_html():
             if not settings.NO_BUILD_TXT and build_txt:
-                tasks.build_txt.delay(book.pk)
+                book.build_txt()
 
         book.build_cover(book_info)
 
         if not settings.NO_BUILD_EPUB and build_epub:
-            tasks.build_epub.delay(book.pk)
+            book.build_epub()
 
         if not settings.NO_BUILD_PDF and build_pdf:
-            tasks.build_pdf.delay(book.pk)
+            book.build_pdf()
 
         if not settings.NO_BUILD_MOBI and build_mobi:
-            tasks.build_mobi.delay(book.pk)
+            book.build_mobi()
 
         if not settings.NO_SEARCH_INDEX and search_index:
             book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
@@ -710,6 +720,13 @@ class Book(models.Model):
             if self.pk:
                 type(self).objects.filter(pk=self.pk).update(_related_info=rel)
             return rel
+
+    def related_themes(self):
+        theme_counter = self.theme_counter
+        book_themes = Tag.objects.filter(pk__in=theme_counter.keys())
+        for tag in book_themes:
+            tag.count = theme_counter[tag.pk]
+        return book_themes
 
     def reset_tag_counter(self):
         if self.id is None:

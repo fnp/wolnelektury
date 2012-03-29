@@ -42,8 +42,32 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'wolnelektury.urls'
 
-INSTALLED_APPS = [
+# These are the ones we should test.
+INSTALLED_APPS_OUR = [
     'wolnelektury_core',
+    # our
+    'ajaxable',
+    'api',
+    'catalogue',
+    'chunks',
+    'dictionary',
+    'infopages',
+    'lesmianator',
+    #'lessons',
+    'newtagging',
+    'opds',
+    'pdcounter',
+    'reporting',
+    'sponsors',
+    'stats',
+    'suggest',
+    'picture',
+    'search',
+    'social',
+    'waiter',
+    ]
+
+INSTALLED_APPS_CONTRIB = [
     # external
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,28 +99,9 @@ INSTALLED_APPS = [
     # included
     'compress',
     'modeltranslation',
+    ]
 
-    # our
-    'ajaxable',
-    'api',
-    'catalogue',
-    'chunks',
-    'dictionary',
-    'infopages',
-    'lesmianator',
-    #'lessons',
-    'newtagging',
-    'opds',
-    'pdcounter',
-    'reporting',
-    'sponsors',
-    'stats',
-    'suggest',
-    'picture',
-    'search',
-    'social',
-    'waiter',
-]
+INSTALLED_APPS = INSTALLED_APPS_OUR + INSTALLED_APPS_CONTRIB
 
 # Load localsettings, if they exist
 try:
