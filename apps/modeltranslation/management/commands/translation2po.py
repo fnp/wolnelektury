@@ -41,6 +41,13 @@ def make_po(language=''):
     return po
 
 
+def get_languages(langs):
+    if not langs: return settings.LANGUAGES
+    langs = langs.split(',')
+    lm = dict(settings.LANGUAGES)
+    return map(lambda l: (l, lm.get(l, l)), langs)
+
+
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-d', '--directory', help='Specify which directory should hold generated PO files', dest='directory'),
@@ -75,17 +82,11 @@ class Command(BaseCommand):
                     objects[md.__name__] = {}
                     modmod['model'] = md
 
-<<<<<<< Updated upstream
-            for lng in zip(*settings.LANGUAGES)[0]:
-                pofile = os.path.join(options['directory'], lng, appname + '.po')
-=======
             languages = get_languages(options['lang'])
 
             for lng in zip(*languages)[0]:
                 pofile = os.path.join(options['directory'], lng, options['poname'] + '.po')
                 if not os.path.exists(pofile): raise OSError('%s po file: %s not found' % (appname, pofile))
-                print pofile
->>>>>>> Stashed changes
                 po = polib.pofile(pofile)
                 for entry in po:
                     loc, pk = entry.occurrences[0]

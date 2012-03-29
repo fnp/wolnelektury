@@ -130,10 +130,18 @@ class Command(BaseCommand):
         make_option('-L', '--lang', help='load just one language', dest='lang', default=None),
         make_option('-d', '--directory', help='load from this directory', dest='directory', default=None),
         make_option('-o', '--outfile', help='Resulting zip file', dest='outfile', default='./wl-locale.zip'),
-        make_option('-m', '--merge', help='Use git to merge. Please use with clean working directory.', dest='merge', default=False),
+        make_option('-m', '--merge', help='Use git to merge. Please use with clean working directory.', action='store_true', dest='merge', default=False),
+        make_option('-M', '--message', help='commit message', dest='message', default='New locale'),
+
         )
     help = 'Make a locale pack'
     args = ''
+
+    def current_rev(self):
+        return os.popen('git rev-parse HEAD').read()
+
+    def current_branch(self):
+        return os.popen("git branch |grep '^[*]' | cut -c 3-").read()
 
     def save(self, options):
         tmp_dir = tempfile.mkdtemp('-wl-locale')
@@ -150,7 +158,7 @@ class Command(BaseCommand):
                 #                src.save(settings.LANGUAGES)
 
             # write out revision
-            rev = os.popen('git rev-parse HEAD').read()
+            rev = self.current_rev()
             rf = open(os.path.join(out_dir, '.revision'), 'w')
             rf.write(rev)
             rf.close()
@@ -163,10 +171,6 @@ class Command(BaseCommand):
             shutil.rmtree(tmp_dir, ignore_errors=True)
 
     def load(self, options):
-        if not options['directory'] or not os.path.exists(options['directory']):
-            print "Directory not provided or does not exist, please use -d"
-            sys.exit(1)
-
         langs = get_languages(options['lang'])
 
         for src in SOURCES:
@@ -174,6 +178,33 @@ class Command(BaseCommand):
 
     def handle(self, *a, **options):
         if options['load']:
+            if not options['directory'] or not os.path.exists(options['directory']):
+                print "Directory not provided or does not exist, please use -d"
+                sys.exit(1)
+                
+            if options['merge']: self.merge_setup(options['directory'])
             self.load(options)
+            if options['merge']: self.merge_finish(options['message'])
         else:
             self.save(options)
+
+    merge_branch = 'wl-locale-merge'
+    last_branch = None
+    
+    def merge_setup(self, directory):
+        self.last_branch = self.current_branch()
+        rev = open(os.path.join(directory, '.revision')).read()
+
+        self.system('git checkout -b %s %s' % (self.merge_branch, rev))
+
+    def merge_finish(self, message):
+        self.system('git commit -a -m "%s"' % message.replace('"', '\\"'))
+        self.system('git checkout %s' % self.last_branch)
+        self.system('git merge -s recursive -X theirs %s' % self.merge_branch)
+        self.system('git branch -d %s' % self.merge_branch)
+
+    def system(self, fmt, *args):
+        code = os.system(fmt % args)
+        if code != 0:
+            raise OSError('Command %s returned with exit code %d' % (fmt % args, code))
+        return code
