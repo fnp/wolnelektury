@@ -37,6 +37,11 @@ urlpatterns += patterns('catalogue.views',
     url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
     #url(r'^szukaj/$', 'search', name='old_search'),
 
+    url(r'^custompdf/(?P<slug>%s)/$' % SLUG, CustomPDFFormView(), name='custom_pdf_form'),
+
+    url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
+
+
     # zip
     url(r'^zip/pdf\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
     url(r'^zip/epub\.zip$', 'download_zip', {'format': 'epub', 'slug': None}, 'download_zip_epub'),
@@ -51,11 +56,6 @@ urlpatterns += patterns('catalogue.views',
     url(r'^lektura/(?P<slug>%s)/motyw/(?P<theme_slug>[a-zA-Z0-9-]+)/$' % SLUG,
         'book_fragments', name='book_fragments'),
 
+    # This should be the last pattern.
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
-
-    url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
-
-    url(r'^custompdf$', CustomPDFFormView(), name='custom_pdf_form'),
-    url(r'^custompdf/(?P<slug>%s).pdf' % SLUG, 'download_custom_pdf'),
-
 )

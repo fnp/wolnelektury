@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+from django.core.files.base import ContentFile
+from django.test import Client
 from catalogue import models
 from catalogue.test_utils import *
-from django.core.files.base import ContentFile
+
 
 class BooksByTagTests(WLTestCase):
     """ tests the /katalog/category/tag page for found books """
@@ -63,7 +65,6 @@ class BooksByTagTests(WLTestCase):
                          ['Child'])
 
 
-from django.test import Client
 class TagRelatedTagsTests(WLTestCase):
     """ tests the /katalog/category/tag/ page for related tags """
 
@@ -173,7 +174,7 @@ class CleanTagRelationTests(WLTestCase):
             <end id="m01" />
             </akap></opowiadanie></utwor>
             """
-        book = models.Book.from_text_and_meta(ContentFile(book_text), book_info)
+        self.book = models.Book.from_text_and_meta(ContentFile(book_text), book_info)
 
     def test_delete_objects(self):
         """ there should be no related tags left after deleting some objects """
@@ -190,8 +191,8 @@ class CleanTagRelationTests(WLTestCase):
         """ there should be no tag relations left after deleting tags """
 
         models.Tag.objects.all().delete()
-        cats = self.client.get('/katalog/lektura/book/').context['categories']
-        self.assertEqual(cats, {})
+        self.assertEqual(len(self.book.related_info()['tags']), 0)
+        self.assertEqual(len(self.book.related_themes()), 0)
         self.assertEqual(models.Tag.intermediary_table_model.objects.all().count(), 0,
                          "orphaned TagRelation objects left")
 
@@ -219,13 +220,14 @@ class TestIdenticalTag(WLTestCase):
 
     def test_book_tags(self):
         """ there should be all related tags in relevant categories """
-        models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
+        book = models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
 
-        context = self.client.get('/katalog/lektura/tag/').context
+        related_info = book.related_info()
+        related_themes = book.related_themes()
         for category in 'author', 'kind', 'genre', 'epoch':
-            self.assertTrue('tag' in [tag.slug for tag in context['categories'][category]],
+            self.assertTrue('tag' in [tag[1] for tag in related_info['tags'][category]],
                             'missing related tag for %s' % category)
-        self.assertTrue('tag' in [tag.slug for tag in context['book_themes']])
+        self.assertTrue('tag' in [tag.slug for tag in related_themes])
 
     def test_qualified_url(self):
         models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
@@ -259,27 +261,28 @@ class BookTagsTests(WLTestCase):
                 <end id="m01" />
                 </akap></opowiadanie></utwor>
                 """ % info.title.encode('utf-8')
-            book = models.Book.from_text_and_meta(ContentFile(book_text), info)
+            models.Book.from_text_and_meta(ContentFile(book_text), info)
 
     def test_book_tags(self):
         """ book should have own tags and whole tree's themes """
 
-        context = self.client.get('/katalog/lektura/parent/').context
+        book = models.Book.objects.get(slug='parent')
+        related_info = book.related_info()
+        related_themes = book.related_themes()
 
-        self.assertEqual([tag.name for tag in context['categories']['author']],
-                         ['Common Man'])
-        self.assertEqual([tag.name for tag in context['categories']['kind']],
-                         ['Kind'])
-        self.assertEqual([(tag.name, tag.count) for tag in context['book_themes']],
+        self.assertEqual(related_info['tags']['author'],
+                         [('Common Man', 'common-man')])
+        self.assertEqual(related_info['tags']['kind'],
+                         [('Kind', 'kind')])
+        self.assertEqual([(tag.name, tag.count) for tag in related_themes],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 
     def test_main_page_tags(self):
         """ test main page tags and counts """
-
-        context = self.client.get('/katalog/').context
-
-        self.assertEqual([(tag.name, tag.count) for tag in context['categories']['author']],
+        from catalogue.templatetags.catalogue_tags import catalogue_menu
+        menu = catalogue_menu()
+        self.assertEqual([(tag.name, tag.book_count) for tag in menu['author']],
                          [('Jim Lazy', 1), ('Common Man', 1)])
-        self.assertEqual([(tag.name, tag.count) for tag in context['fragment_tags']],
+        self.assertEqual([(tag.name, tag.book_count) for tag in menu['theme']],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 

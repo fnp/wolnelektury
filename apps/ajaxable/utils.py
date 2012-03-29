@@ -10,6 +10,7 @@ from django.utils.http import urlquote_plus
 from django.utils import simplejson
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.vary import vary_on_headers
+from honeypot.decorators import verify_honeypot_value
 
 
 class LazyEncoder(simplejson.JSONEncoder):
@@ -76,6 +77,7 @@ class AjaxableFormView(object):
     formname = "form"
     form_prefix = None
     full_template = "ajaxable/form_on_page.html"
+    honeypot = False
 
     @method_decorator(vary_on_headers('X-Requested-With'))
     def __call__(self, request, *args, **kwargs):
@@ -86,6 +88,11 @@ class AjaxableFormView(object):
             form_kwargs['prefix'] = self.form_prefix
 
         if request.method == "POST":
+            if self.honeypot:
+                response = verify_honeypot_value(request, None)
+                if response:
+                    return response
+
             # do I need to be logged in?
             if self.POST_login and not request.user.is_authenticated():
                 return require_login(request)
@@ -94,14 +101,16 @@ class AjaxableFormView(object):
             form = self.form_class(*form_args, **form_kwargs)
             if form.is_valid():
                 add_args = self.success(form, request)
-                redirect = request.GET.get('next')
-                if not request.is_ajax() and redirect:
-                    return HttpResponseRedirect(urlquote_plus(
-                            redirect, safe='/?=&'))
-                response_data = {'success': True, 
-                    'message': self.success_message, 'redirect': redirect}
+                response_data = {
+                    'success': True, 
+                    'message': self.success_message,
+                    'redirect': request.GET.get('next')
+                    }
                 if add_args:
                     response_data.update(add_args)
+                if not request.is_ajax() and response_data['redirect']:
+                    return HttpResponseRedirect(urlquote_plus(
+                            response_data['redirect'], safe='/?=&'))
             elif request.is_ajax():
                 # Form was sent with errors. Send them back.
                 if self.form_prefix:
@@ -136,6 +145,7 @@ class AjaxableFormView(object):
         context = {
                 self.formname: form, 
                 "title": title,
+                "honeypot": self.honeypot,
                 "placeholdize": self.placeholdize,
                 "submit": self.submit,
                 "response_data": response_data,

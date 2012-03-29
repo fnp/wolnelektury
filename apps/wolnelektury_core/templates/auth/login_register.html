@@ -1,5 +1,6 @@
 {% extends "auth/login.html" %}
 {% load i18n %}
+{% load honeypot %}
 
 {% block extra %}
 
@@ -9,6 +10,8 @@
 
 <form action="{% url register %}" method="post" accept-charset="utf-8"
 	class="cuteform hidelabels">
+{% csrf_token %}
+{% honeypot_render_field %}
 <ol>
     <div id="id_register-__all__"></div>
     {{ register_form.as_ul }}

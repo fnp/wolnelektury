@@ -5,7 +5,18 @@
 
 {% block branding %}
 <h1 id="site-name">{% trans "Site administration" %} - WolneLektury.pl</h1>
-<p style="float: right; font-size: 11px; padding-right: 10px;"><a href="/rosetta/">{% trans "Translations" %}</a></p>
+<p style="font-size: 11px;margin-left:10px;">
+    <!--a href="/rosetta/">{% trans "Translations" %}</a-->
+    <a href="/admin/chunks/chunk/promo/">promobox</a> |
+    <a href="/admin/social/cite">cytaty</a> |
+    <a href="/admin/infopages/infopage/">info</a> |
+    <a href="/admin/catalogue/book/">książki</a> |
+    <a href="/admin/catalogue/tag/">tagi</a> |
+    <a href="/admin/catalogue/collection/">kolekcje</a> |
+    <a href="/admin/pdcounter/">licznik domeny</a> |
+    <a href="/admin/sponsors/">sponsorzy</a> |
+    <a href="/admin/suggest/suggestion/">sugestie</a>
+</p>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

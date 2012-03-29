@@ -6,6 +6,7 @@ from settings.basic import *
 from settings.auth import *
 from settings.cache import *
 from settings.celery import *
+from settings.contrib import *
 from settings.custom import *
 from settings.locale import *
 from settings.static import *
@@ -27,6 +28,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
@@ -40,39 +42,9 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'wolnelektury.urls'
 
-INSTALLED_APPS = [
+# These are the ones we should test.
+INSTALLED_APPS_OUR = [
     'wolnelektury_core',
-    # external
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    'pagination',
-    'piston',
-    'piwik.django',
-    #'rosetta',
-    'south',
-    'sorl.thumbnail',
-    'djcelery',
-    'djkombu',
-    #    'django_nose',
-
-    #allauth stuff
-    'emailconfirmation',
-    'uni_form',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.openid',
-    #'allauth.facebook',
-    #'allauth.twitter',
-
-    # included
-    'compress',
-    'modeltranslation',
-
     # our
     'ajaxable',
     'api',
@@ -92,7 +64,44 @@ INSTALLED_APPS = [
     'picture',
     'search',
     'social',
-]
+    'waiter',
+    ]
+
+INSTALLED_APPS_CONTRIB = [
+    # external
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'pagination',
+    'piston',
+    'piwik.django',
+    #'rosetta',
+    'south',
+    'sorl.thumbnail',
+    'djcelery',
+    'djkombu',
+    'honeypot',
+    #    'django_nose',
+
+    #allauth stuff
+    'emailconfirmation',
+    'uni_form',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.openid',
+    #'allauth.facebook',
+    #'allauth.twitter',
+
+    # included
+    'compress',
+    'modeltranslation',
+    ]
+
+INSTALLED_APPS = INSTALLED_APPS_OUR + INSTALLED_APPS_CONTRIB
 
 # Load localsettings, if they exist
 try:

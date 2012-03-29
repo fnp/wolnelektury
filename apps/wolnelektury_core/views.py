@@ -53,6 +53,7 @@ class RegisterFormView(AjaxableFormView):
     submit = _('Register')
     ajax_redirect = True
     form_prefix = 'register'
+    honeypot = True
 
     def __call__(self, request):
         if request.user.is_authenticated():
