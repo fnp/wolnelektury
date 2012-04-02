@@ -339,7 +339,10 @@ class Index(BaseIndex):
             self.remove_book(book, remove_snippets=False)
 
         book_doc = self.create_book_doc(book)
-        meta_fields = self.extract_metadata(book, book_info)
+        meta_fields = self.extract_metadata(book, book_info, dc_only=['source_name', 'authors', 'title'])
+        # let's not index it - it's only used for extracting publish date
+        del meta_fields['source_name']
+        
         for f in meta_fields.values():
             if isinstance(f, list) or isinstance(f, tuple):
                 for elem in f:
@@ -373,7 +376,7 @@ class Index(BaseIndex):
 
     published_date_re = re.compile("([0-9]+)[\]. ]*$")
 
-    def extract_metadata(self, book, book_info=None):
+    def extract_metadata(self, book, book_info=None, dc_only=None):
         """
         Extract metadata from book and returns a map of fields keyed by fieldname
         """
@@ -388,6 +391,8 @@ class Index(BaseIndex):
 
         # validator, name
         for field in dcparser.BookInfo.FIELDS:
+            if dc_only and field.name not in dc_only:
+                continue
             if hasattr(book_info, field.name):
                 if not getattr(book_info, field.name):
                     continue
