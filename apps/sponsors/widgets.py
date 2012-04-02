@@ -23,7 +23,7 @@ class SponsorPageWidget(forms.Textarea):
 
     def render(self, name, value, attrs=None):
         output = [super(SponsorPageWidget, self).render(name, value, attrs)]
-        sponsors = [(unicode(obj), obj.pk, obj.logo.url) for obj in models.Sponsor.objects.all()]
+        sponsors = [(unicode(obj), obj.pk, obj.logo.url) for obj in models.Sponsor.objects.all().iterator()]
         sponsors_js = ', '.join('{name: "%s", id: %d, image: "%s"}' % sponsor for sponsor in sponsors)
         output.append(u'<script type="text/javascript">addEvent(window, "load", function(e) {')
         # TODO: "id_" is hard-coded here. This should instead use the correct

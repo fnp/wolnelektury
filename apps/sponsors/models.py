@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
 from PIL import Image
 
-from sponsors.fields import JSONField
+from jsonfield import JSONField
 from django.core.files.base import ContentFile
 
 THUMB_WIDTH = 120
@@ -41,7 +41,7 @@ class SponsorPage(models.Model):
     def populated_sponsors(self):
         result = []
         offset = 0
-        for column in self.get_sponsors_value():
+        for column in self.sponsors:
             result_group = {'name': column['name'], 'sponsors': []}
             sponsor_objects = Sponsor.objects.in_bulk(column['sponsors'])
             for sponsor_pk in column['sponsors']:
@@ -55,7 +55,7 @@ class SponsorPage(models.Model):
 
     def render_sprite(self):
         sponsor_ids = []
-        for column in self.get_sponsors_value():
+        for column in self.sponsors:
             sponsor_ids.extend(column['sponsors'])
         sponsors = Sponsor.objects.in_bulk(sponsor_ids)
         sprite = Image.new('RGBA', (THUMB_WIDTH, len(sponsors) * THUMB_HEIGHT))

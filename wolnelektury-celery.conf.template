@@ -4,7 +4,7 @@
 ; =========================================
 
 [program:celery.%(project_name)s]
-command=%(path)s/bin/python %(path)s/releases/current/%(project_name)s/manage.py celeryd --loglevel=INFO
+command=%(path)s/ve/bin/python %(path)s/releases/current/%(project_name)s/manage.py celeryd --loglevel=INFO
 directory=%(path)s/releases/current/%(project_name)s
 user=%(user)s
 numprocs=2

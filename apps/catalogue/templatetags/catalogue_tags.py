@@ -206,7 +206,6 @@ def authentication_form():
 @register.tag
 def catalogue_url(parser, token):
     bits = token.split_contents()
-    tag_name = bits[0]
 
     tags_to_add = []
     tags_to_remove = []
@@ -296,14 +295,14 @@ def book_info(book):
 @register.inclusion_tag('catalogue/book_wide.html', takes_context=True)
 def book_wide(context, book):
     book_themes = book.related_themes()
-    extra_info = book.get_extra_info_value()
+    extra_info = book.extra_info
     hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
 
     return {
         'book': book,
         'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
         'related': book.related_info(),
-        'extra_info': book.get_extra_info_value(),
+        'extra_info': extra_info,
         'hide_about': hide_about,
         'themes': book_themes,
         'request': context.get('request'),

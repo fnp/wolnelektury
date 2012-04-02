@@ -132,13 +132,14 @@ def tagged_object_list(request, tags=''):
 
         if shelf_tags:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
-            l_tags = models.Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books])
+            l_tags = models.Tag.objects.filter(category='book',
+                slug__in=[book.book_tag_slug() for book in books.iterator()])
             fragments = models.Fragment.tagged.with_any(l_tags, fragments)
 
         # newtagging goes crazy if we just try:
         #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True,
         #                    extra={'where': ["catalogue_tag.category != 'book'"]})
-        fragment_keys = [fragment.pk for fragment in fragments]
+        fragment_keys = [fragment.pk for fragment in fragments.iterator()]
         if fragment_keys:
             related_tags = models.Fragment.tags.usage(counts=True,
                                 filters={'pk__in': fragment_keys},
@@ -156,7 +157,7 @@ def tagged_object_list(request, tags=''):
         # get related tags from `tag_counter` and `theme_counter`
         related_counts = {}
         tags_pks = [tag.pk for tag in tags]
-        for book in objects:
+        for book in objects.iterator():
             for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
                 if tag_pk in tags_pks:
                     continue
@@ -219,15 +220,15 @@ def player(request, slug):
         raise Http404
 
     ogg_files = {}
-    for m in book.media.filter(type='ogg').order_by():
+    for m in book.media.filter(type='ogg').order_by().iterator():
         ogg_files[m.name] = m
 
     audiobooks = []
     have_oggs = True
     projects = set()
-    for mp3 in book.media.filter(type='mp3'):
+    for mp3 in book.media.filter(type='mp3').iterator():
         # ogg files are always from the same project
-        meta = mp3.get_extra_info_value()
+        meta = mp3.extra_info
         project = meta.get('project')
         if not project:
             # temporary fallback
@@ -246,7 +247,7 @@ def player(request, slug):
 
     projects = sorted(projects)
 
-    extra_info = book.get_extra_info_value()
+    extra_info = book.extra_info
 
     return render_to_response('catalogue/player.html', locals(),
         context_instance=RequestContext(request))
@@ -258,8 +259,8 @@ def book_text(request, slug):
     if not book.has_html_file():
         raise Http404
     book_themes = {}
-    for fragment in book.fragments.all():
-        for theme in fragment.tags.filter(category='theme'):
+    for fragment in book.fragments.all().iterator():
+        for theme in fragment.tags.filter(category='theme').iterator():
             book_themes.setdefault(theme, []).append(fragment)
 
     book_themes = book_themes.items()

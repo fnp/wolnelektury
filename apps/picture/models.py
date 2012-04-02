@@ -148,7 +148,7 @@ class Picture(models.Model):
         for tag in catalogue.models.Tag.objects.filter(category='author'):
             pics_by_author[tag] = []
 
-        for pic in pics:
+        for pic in pics.iterator():
             authors = list(pic.tags.filter(category='author'))
             if authors:
                 for author in authors:

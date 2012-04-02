@@ -259,7 +259,7 @@ class ByTagFeed(AcquisitionFeed):
 
     def items(self, tag):
         books = Book.tagged.with_any([tag])
-        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books])
+        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books.iterator()])
         descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
         if descendants_keys:
             books = books.exclude(pk__in=descendants_keys)

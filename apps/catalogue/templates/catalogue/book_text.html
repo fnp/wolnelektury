@@ -43,7 +43,7 @@
             {% if  book.txt_file %}
             <li><a href="{{ book.txt_file.url}}">TXT</a> {% trans "for advanced usage" %}</li>
             {% endif %}
-            <li><a href="{% url custom_pdf_form %}?slug={{ book.slug }}">{% trans "Download a custom PDF" %}</a></li>
+            <li><a href="{% url custom_pdf_form book.slug %}">{% trans "Download a custom PDF" %}</a></li>
             </ul>
         </div>
         <div id="header">

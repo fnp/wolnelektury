@@ -62,7 +62,6 @@ INSTALLED_APPS_OUR = [
     'stats',
     'suggest',
     'picture',
-    'search',
     'social',
     'waiter',
     ]

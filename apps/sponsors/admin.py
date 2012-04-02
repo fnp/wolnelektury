@@ -3,10 +3,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
-from django.conf import settings
-
+from jsonfield import JSONField
 from sponsors import models
-from sponsors import fields
 from sponsors import widgets
 
 
@@ -18,7 +16,7 @@ class SponsorAdmin(admin.ModelAdmin):
 
 class SponsorPageAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        fields.JSONField: {'widget': widgets.SponsorPageWidget},
+        JSONField: {'widget': widgets.SponsorPageWidget},
     }
     list_display = ('name',)
     search_fields = ('name',)

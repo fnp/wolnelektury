@@ -13,6 +13,7 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('book', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['catalogue.Book'])),
             ('text', self.gf('django.db.models.fields.TextField')()),
+            ('small', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('vip', self.gf('django.db.models.fields.CharField')(max_length=128, null=True, blank=True)),
             ('link', self.gf('django.db.models.fields.URLField')(max_length=200)),
         ))
@@ -35,7 +36,7 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'epub_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'extra_info': ('catalogue.fields.JSONField', [], {'default': "'{}'"}),
+            'extra_info': ('jsonfield.fields.JSONField', [], {'default': "'{}'"}),
             'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
             'html_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -52,10 +53,11 @@ class Migration(SchemaMigration):
             'xml_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
         },
         'social.cite': {
-            'Meta': {'object_name': 'Cite'},
+            'Meta': {'ordering': "('vip', 'text')", 'object_name': 'Cite'},
             'book': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['catalogue.Book']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'link': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
+            'small': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'text': ('django.db.models.fields.TextField', [], {}),
             'vip': ('django.db.models.fields.CharField', [], {'max_length': '128', 'null': 'True', 'blank': 'True'})
         }

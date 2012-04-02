@@ -93,11 +93,11 @@ class BookMediaHandler(BaseHandler):
 
     @classmethod
     def artist(cls, media):
-        return media.get_extra_info_value().get('artist_name', '')
+        return media.extra_info.get('artist_name', '')
 
     @classmethod
     def director(cls, media):
-        return media.get_extra_info_value().get('director_name', '')
+        return media.extra_info.get('director_name', '')
         
 
 
@@ -422,7 +422,7 @@ class CatalogueHandler(BaseHandler):
         else:
             fields = all_fields
 
-        extra_info = book.get_extra_info_value()
+        extra_info = book.extra_info
 
         obj = {}
         for field in fields:
@@ -437,7 +437,7 @@ class CatalogueHandler(BaseHandler):
 
             elif field in BookMedia.formats:
                 media = []
-                for m in book.media.filter(type=field):
+                for m in book.media.filter(type=field).iterator():
                     media.append({
                         'url': m.file.url,
                         'size': m.file.size,
@@ -449,10 +449,10 @@ class CatalogueHandler(BaseHandler):
                 obj[field] = book.get_absolute_url()
 
             elif field == 'tags':
-                obj[field] = [t.id for t in book.tags.exclude(category__in=('book', 'set'))]
+                obj[field] = [t.id for t in book.tags.exclude(category__in=('book', 'set')).iterator()]
 
             elif field == 'author':
-                obj[field] = ", ".join(t.name for t in book.tags.filter(category='author'))
+                obj[field] = ", ".join(t.name for t in book.tags.filter(category='author').iterator())
 
             elif field == 'parent':
                 obj[field] = book.parent_id
@@ -489,7 +489,7 @@ class CatalogueHandler(BaseHandler):
 
         last_change = since
         for book in Book.objects.filter(changed_at__gte=since,
-                    changed_at__lt=until):
+                    changed_at__lt=until).iterator():
             book_d = cls.book_dict(book, fields)
             updated.append(book_d)
         if updated:
@@ -498,7 +498,7 @@ class CatalogueHandler(BaseHandler):
         for book in Deleted.objects.filter(content_type=Book, 
                     deleted_at__gte=since,
                     deleted_at__lt=until,
-                    created_at__lt=since):
+                    created_at__lt=since).iterator():
             deleted.append(book.id)
         if deleted:
             changes['deleted'] = deleted
@@ -524,7 +524,7 @@ class CatalogueHandler(BaseHandler):
                 obj[field] = tag.get_absolute_url()
 
             elif field == 'books':
-                obj[field] = [b.id for b in Book.tagged_top_level([tag])]
+                obj[field] = [b.id for b in Book.tagged_top_level([tag]).iterator()]
 
             elif field == 'sort_key':
                 obj[field] = tag.sort_key
@@ -562,7 +562,7 @@ class CatalogueHandler(BaseHandler):
 
         for tag in Tag.objects.filter(category__in=categories, 
                     changed_at__gte=since,
-                    changed_at__lt=until):
+                    changed_at__lt=until).iterator():
             # only serve non-empty tags
             if tag.book_count:
                 tag_d = cls.tag_dict(tag, fields)
@@ -576,7 +576,7 @@ class CatalogueHandler(BaseHandler):
                 content_type=Tag, 
                     deleted_at__gte=since,
                     deleted_at__lt=until,
-                    created_at__lt=since):
+                    created_at__lt=since).iterator():
             deleted.append(tag.id)
         if deleted:
             changes['deleted'] = deleted
