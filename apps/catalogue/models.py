@@ -27,7 +27,6 @@ from catalogue.utils import create_zip, split_tags, truncate_html_words
 from catalogue import tasks
 import re
 
-import search
 
 # Those are hard-coded here so that makemessages sees them.
 TAG_CATEGORIES = (
@@ -562,6 +561,7 @@ class Book(models.Model):
         return create_zip(paths, "%s_%s" % (self.slug, format_))
 
     def search_index(self, book_info=None, reuse_index=False, index_tags=True):
+        import search
         if reuse_index:
             idx = search.ReusableIndex()
         else:
@@ -1006,14 +1006,16 @@ def _post_save_handler(sender, instance, **kwargs):
 post_save.connect(_post_save_handler)
 
 
-@django.dispatch.receiver(post_delete, sender=Book)
-def _remove_book_from_index_handler(sender, instance, **kwargs):
-    """ remove the book from search index, when it is deleted."""
-    search.JVM.attachCurrentThread()
-    idx = search.Index()
-    idx.open(timeout=10000)  # 10 seconds timeout.
-    try:
-        idx.remove_book(instance)
-        idx.index_tags()
-    finally:
-        idx.close()
+if not settings.NO_SEARCH_INDEX:
+    @django.dispatch.receiver(post_delete, sender=Book)
+    def _remove_book_from_index_handler(sender, instance, **kwargs):
+        """ remove the book from search index, when it is deleted."""
+        import search
+        search.JVM.attachCurrentThread()
+        idx = search.Index()
+        idx.open(timeout=10000)  # 10 seconds timeout.
+        try:
+            idx.remove_book(instance)
+            idx.index_tags()
+        finally:
+            idx.close()
