@@ -370,6 +370,11 @@ class SearchFeed(AcquisitionFeed):
             author = request.GET.get('author', '')
             title = request.GET.get('title', '')
             translator = request.GET.get('translator', '')
+
+            # Our client didn't handle the opds placeholders
+            if author == '{atom:author}': author = ''       
+            if title == '{atom:title}': title = ''
+            if translator == '{atom:contributor}': translator = ''
             categories = None
             fuzzy = False
 
