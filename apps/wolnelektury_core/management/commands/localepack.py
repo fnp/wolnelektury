@@ -49,6 +49,7 @@ class AppLocale(Locale):
                 shutil.copy2(os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'),
                           os.path.join(output_directory, lc, self.name + '.po'))
 
+
     def load(self, input_directory, languages):
         for lc in zip(*languages)[0]:
             if os.path.exists(os.path.join(input_directory, lc, self.name + '.po')):
@@ -57,6 +58,16 @@ class AppLocale(Locale):
                     os.makedirs(os.path.dirname(out))
                 shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
                              out)
+
+        wd = os.getcwd()
+        os.chdir(self.path)
+        try:
+            call_command('compilemessages', settings='wolnelektury.settings')
+        except:
+            pass
+        finally:
+            os.chdir(wd)
+
 
     def generate(self, languages):
         wd = os.getcwd()
