@@ -9,6 +9,7 @@ import os
 import shutil
 import tempfile
 import sys
+import zipfile
 
 import allauth
 
@@ -144,8 +145,15 @@ class Command(BaseCommand):
         return os.popen("git branch |grep '^[*]' | cut -c 3-").read()
 
     def save(self, options):
+        packname = options.get('outfile')
+        packname_b = os.path.basename(packname).split('.')[0]
+        fmt = '.'.join(os.path.basename(packname).split('.')[1:])
+
+        if fmt != 'zip':
+            raise NotImplementedError('Sorry. Only zip format supported at the moment.')
+
         tmp_dir = tempfile.mkdtemp('-wl-locale')
-        out_dir = os.path.join(tmp_dir, 'wl-locale')
+        out_dir = os.path.join(tmp_dir, packname)
         os.mkdir(out_dir)
 
         try:
@@ -163,10 +171,14 @@ class Command(BaseCommand):
             rf.write(rev)
             rf.close()
 
-            packname = options.get('outfile')
-            packname_b = os.path.basename(packname).split('.')[0]
-            fmt = '.'.join(os.path.basename(packname).split('.')[1:])
-            shutil.make_archive(packname_b, fmt, root_dir=os.path.dirname(out_dir), base_dir=os.path.basename(out_dir))
+
+            cwd = os.getcwd()
+            try:
+                os.chdir(os.path.dirname(out_dir))
+                self.system('zip -r %s %s' % (os.path.join(cwd, packname_b+'.zip'), os.path.basename(out_dir)))
+            finally:
+                os.chdir(cwd)
+                #            shutil.make_archive(packname_b, fmt, root_dir=os.path.dirname(out_dir), base_dir=os.path.basename(out_dir))
         finally:
             shutil.rmtree(tmp_dir, ignore_errors=True)
 
