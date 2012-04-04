@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-09 15:57+0100\n"
-"PO-Revision-Date: 2012-02-22 12:25+0100\n"
+"PO-Revision-Date: 2012-04-04 13:43+0200\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -157,7 +157,7 @@ msgstr "i tag"
 #: models.py:972
 #, python-format
 msgid "%s file"
-msgstr "i % di file"
+msgstr "i %s di file"
 
 #: models.py:252
 msgid "type"
