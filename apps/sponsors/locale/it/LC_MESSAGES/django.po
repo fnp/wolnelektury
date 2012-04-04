@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-05 13:07+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-02-09 15:57+0100\n"
+"PO-Revision-Date: 2012-02-21 17:43+0100\n"
+"Last-Translator: xxxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -18,22 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:20 models.py:36
+#: models.py:20
+#: models.py:36
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: models.py:21
 msgid "description"
-msgstr ""
+msgstr "descrizione"
 
 #: models.py:22
 msgid "logo"
-msgstr ""
+msgstr "logo"
 
 #: models.py:23
 msgid "url"
-msgstr ""
+msgstr "url"
 
-#: models.py:37
+#: modelello.py:37
 msgid "sponsors"
-msgstr ""
+msgstr "gli sponsor"
