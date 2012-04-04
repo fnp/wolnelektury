@@ -10,6 +10,7 @@ from catalogue.models import Book
 
 
 class Note(models.Model):
+    """Represents a single annotation from a book."""
     book = models.ForeignKey(Book)
     anchor = models.CharField(max_length=64)
     html = models.TextField()
