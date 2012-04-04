@@ -26,5 +26,5 @@ LANGUAGES = tuple(sorted([
     ('es', u'español'),
     ('uk', u'українська'),
 #    ('jp', u'日本語'),
-#    ('it', u'italiano'),
+    ('it', u'italiano'),
 ], key=lambda x: x[0]))
