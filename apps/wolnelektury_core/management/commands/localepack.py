@@ -45,9 +45,12 @@ class AppLocale(Locale):
     def save(self, output_directory, languages):
         for lc in languages:
             lc = lc[0]
+            out = os.path.join(output_directory, lc, self.name + '.po')
             if os.path.exists(os.path.join(self.path, 'locale', lc)):
+                if not os.path.exists(os.path.dirname(out)):
+                    os.makedirs(os.path.dirname(dir))
                 shutil.copy2(os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'),
-                         os.path.join(output_directory, lc, self.name + '.po'))
+                         out)
 
     def load(self, input_directory, languages):
         for lc in zip(*languages)[0]:
