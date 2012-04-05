@@ -167,7 +167,7 @@ class Command(BaseCommand):
             raise NotImplementedError('Sorry. Only zip format supported at the moment.')
 
         tmp_dir = tempfile.mkdtemp('-wl-locale')
-        out_dir = os.path.join(tmp_dir, packname)
+        out_dir = os.path.join(tmp_dir, packname_b)
         os.mkdir(out_dir)
 
         try:

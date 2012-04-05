@@ -115,9 +115,13 @@ class Command(BaseCommand):
                                 po = make_po(cur_lang)
                                 pofiles[cur_lang] = po
 
+                            k = getattr(obj, '%s_%s' % (fld, settings.LANGUAGE_CODE))
+                            if k is None: k = ''
+                            v = getattr(obj, locfld)
+                            if v is None: v = ''
                             entry = polib.POEntry(
-                                msgid=getattr(obj, '%s_%s' % (fld, settings.LANGUAGE_CODE)),
-                                msgstr=getattr(obj, locfld),
+                                msgid=k,
+                                msgstr=v,
                                 occurrences=[('%s/%s/%s' % (appname, md.__name__, locfld), obj.id)])
                             po.append(entry)
 
@@ -125,4 +129,5 @@ class Command(BaseCommand):
             for lng, po in pofiles.items():
                 try: os.makedirs(os.path.join(directory, lng))
                 except OSError: pass
+                print lng, options
                 po.save(os.path.join(directory, lng, '%s.po' % options['poname']))
