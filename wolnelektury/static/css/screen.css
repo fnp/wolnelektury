@@ -84,12 +84,6 @@
     margin-top: -20em;
 }
 
-/* LOGO */
-
-#logo a {
-	line-height: 7em;
-}
-
 
 /* HEADER */
 
@@ -99,7 +93,7 @@
 
 #logo {
     position: absolute;
-    top: -1.6em;
+    top: 0;
 }
 
 #user-info {

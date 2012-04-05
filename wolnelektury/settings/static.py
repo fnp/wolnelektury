@@ -34,7 +34,6 @@ COMPRESS_CSS = {
             'css/book_box.css',
             'css/catalogue.css',
             'css/sponsors.css',
-            'css/logo.css',
             'css/auth.css',
 
             'css/social/shelf_tags.css',
@@ -57,7 +56,6 @@ COMPRESS_CSS = {
     },
     'book': {
         'source_filenames': [
-            'css/logo.css',
             'css/master.book.css',
         ],
         'output_filename': 'css/book.min?.css',
