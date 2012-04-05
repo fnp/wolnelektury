@@ -317,14 +317,19 @@ class Index(BaseIndex):
             doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(int(book.parent.id)))
         return doc
 
-    def remove_book(self, book, remove_snippets=True):
+    def remove_book(self, book_or_id, remove_snippets=True):
         """Removes a book from search index.
         book - Book instance."""
-        q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
+        if isinstance(book_or_id, catalogue.models.Book):
+            book_id = book_or_id.id
+        else:
+            book_id = book_or_id
+
+        q = NumericRangeQuery.newIntRange("book_id", book_id, book_id, True, True)
         self.index.deleteDocuments(q)
 
         if remove_snippets:
-            snippets = Snippets(book.id)
+            snippets = Snippets(book_id)
             snippets.remove()
 
     def index_book(self, book, book_info=None, overwrite=True):
@@ -1060,6 +1065,7 @@ class Search(IndexStore):
 
         return toks
 
+    @staticmethod
     def fuzziness(self, fuzzy):
         """Helper method to sanitize fuzziness"""
         if not fuzzy:
@@ -1097,6 +1103,7 @@ class Search(IndexStore):
                 phrase.add(term)
         return phrase
 
+    @staticmethod
     def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
         """
         Returns term queries joined by boolean query.
