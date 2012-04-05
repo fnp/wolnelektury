@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-05 13:06+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-02-09 15:57+0100\n"
+"PO-Revision-Date: 2012-04-04 13:43+0200\n"
+"Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,224 +20,246 @@ msgstr ""
 #: fields.py:42
 #, python-format
 msgid "Enter a valid JSON value. Error: %s"
-msgstr ""
+msgstr "Inserire un valore valido JSON. Errore: %s"
 
 #: forms.py:23
 msgid "Please supply an XML."
-msgstr ""
+msgstr "Si prega di fornire un XML."
 
 #: forms.py:42
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: forms.py:43
 msgid "A5"
-msgstr ""
+msgstr "A5"
 
 #: forms.py:48
 msgid "Normal leading"
-msgstr ""
+msgstr "Interlinea normale"
 
 #: forms.py:49
 msgid "One and a half leading"
-msgstr ""
+msgstr " Interlinea 1,5"
 
 #: forms.py:50
 msgid "Double leading"
-msgstr ""
+msgstr "Interlinea doppia"
 
 #: forms.py:54
 msgid "Default"
-msgstr ""
+msgstr "Predefinito"
 
 #: forms.py:55
 msgid "Big"
-msgstr ""
+msgstr "Grande"
 
 #: forms.py:60
 msgid "Don't show footnotes"
-msgstr ""
+msgstr "Non mostrare le note"
 
 #: forms.py:61
 msgid "Don't disply themes"
-msgstr ""
+msgstr "Non visualizzare i temi"
 
 #: forms.py:62
 msgid "Don't use our custom font"
-msgstr ""
+msgstr "Non utilizzare il nostro font personalizzato"
 
 #: forms.py:64
 msgid "Leading"
-msgstr ""
+msgstr "Interlinea"
 
 #: forms.py:65
 msgid "Font size"
-msgstr ""
+msgstr "Grandezza del carattere"
 
 #: models.py:38
 msgid "author"
-msgstr ""
+msgstr "autore"
 
 #: models.py:39
 msgid "epoch"
-msgstr ""
+msgstr "epoca"
 
 #: models.py:40
 msgid "kind"
-msgstr ""
+msgstr "categoria"
 
 #: models.py:41
 msgid "genre"
-msgstr ""
+msgstr "genere"
 
 #: models.py:42
 msgid "theme"
-msgstr ""
+msgstr "tema"
 
 #: models.py:43
 msgid "set"
-msgstr ""
+msgstr "raccolta"
 
-#: models.py:44 models.py:390
+#: models.py:44
+#: models.py:390
 msgid "book"
-msgstr ""
+msgstr "libro"
 
-#: models.py:61 models.py:253
+#: models.py:61
+#: models.py:253
 msgid "name"
-msgstr ""
+msgstr "nome"
 
-#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
+#: models.py:62
+#: models.py:355
+#: models.py:357
+#: models.py:1029
+#: models.py:1032
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
-#: models.py:63 models.py:354
+#: models.py:63
+#: models.py:354
 msgid "sort key"
-msgstr ""
+msgstr "chiave di ordinamento"
 
 #: models.py:64
 msgid "category"
-msgstr ""
+msgstr "categoria"
 
-#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
+#: models.py:66
+#: models.py:107
+#: models.py:360
+#: models.py:463
+#: models.py:1030
 msgid "description"
-msgstr ""
+msgstr "descrizione"
 
 #: models.py:69
 msgid "book count"
-msgstr ""
+msgstr "conteggio dei libri"
 
-#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
+#: models.py:73
+#: models.py:74
+#: models.py:255
+#: models.py:361
+#: models.py:362
 msgid "creation date"
-msgstr ""
+msgstr "data di creazione"
 
 #: models.py:91
 msgid "tag"
-msgstr ""
+msgstr "tag"
 
 #: models.py:92
 msgid "tags"
-msgstr ""
+msgstr "i tag"
 
-#: models.py:249 models.py:972
+#: models.py:249
+#: models.py:972
 #, python-format
 msgid "%s file"
-msgstr ""
+msgstr "i %s di file"
 
 #: models.py:252
 msgid "type"
-msgstr ""
+msgstr "tipo"
 
 #: models.py:254
 msgid "file"
-msgstr ""
+msgstr "file"
 
-#: models.py:256 models.py:364
+#: models.py:256
+#: models.py:364
 msgid "extra information"
-msgstr ""
+msgstr " ulteriori informazioni"
 
-#: models.py:265 models.py:266
+#: models.py:265
+#: models.py:266
 msgid "book media"
-msgstr ""
+msgstr "book media"
 
-#: models.py:353 models.py:1028
+#: models.py:353
+#: models.py:1028
 msgid "title"
-msgstr ""
+msgstr "titolo"
 
 #: models.py:358
 msgid "language code"
-msgstr ""
+msgstr "codice della lingua"
 
 #: models.py:363
 msgid "parent number"
-msgstr ""
+msgstr "numero del genitore"
 
 #: models.py:369
 msgid "cover"
-msgstr ""
+msgstr "copertina"
 
 #: models.py:391
 msgid "books"
-msgstr ""
+msgstr "Libri"
 
 #: models.py:690
 #, python-format
 msgid "Book \"%s\" does not exist."
-msgstr ""
+msgstr "Il libro \"%s\" non esiste."
 
 #: models.py:704
 #, python-format
 msgid "Book %s already exists"
-msgstr ""
+msgstr "Il libro %s esiste già"
 
 #: models.py:991
 msgid "fragment"
-msgstr ""
+msgstr "Frammento"
 
 #: models.py:992
 msgid "fragments"
-msgstr ""
+msgstr "Frammenti"
 
 #: models.py:1033
 msgid "book slugs"
-msgstr ""
+msgstr " slug del libro "
 
 #: models.py:1037
 msgid "collection"
-msgstr ""
+msgstr "raccolta"
 
 #: models.py:1038
 msgid "collections"
-msgstr ""
+msgstr " raccolte"
 
-#: views.py:501
+#: views.py:500
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
 "\n"
 "%(tb)s"
 msgstr ""
+"Si e verificato un errore: %(exception)s   \n"
+"\n"
+"%(tb)s"
 
-#: views.py:502
+#: views.py:501
 msgid "Book imported successfully"
-msgstr ""
+msgstr "Libro scaricato con successo"
 
-#: views.py:504
+#: views.py:503
 #, python-format
 msgid "Error importing file: %r"
-msgstr ""
+msgstr "Errore dell'importazione del file: %r"
 
-#: views.py:548
+#: views.py:547
 msgid "Incorrect customization options for PDF"
-msgstr ""
+msgstr "Opzioni di personalizzazione non corrette per PDF"
 
-#: views.py:550
+#: views.py:549
 msgid "Bad method"
-msgstr ""
+msgstr "Metodo non corretto"
+
+#: views.py:554
+msgid "Download custom PDF"
+msgstr "Scarica PDF personalizzato"
 
 #: views.py:555
-msgid "Download custom PDF"
-msgstr ""
-
-#: views.py:556
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
