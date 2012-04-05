@@ -346,7 +346,8 @@ class Index(BaseIndex):
         book_doc = self.create_book_doc(book)
         meta_fields = self.extract_metadata(book, book_info, dc_only=['source_name', 'authors', 'title'])
         # let's not index it - it's only used for extracting publish date
-        del meta_fields['source_name']
+        if 'source_name' in meta_fields:
+            del meta_fields['source_name']
         
         for f in meta_fields.values():
             if isinstance(f, list) or isinstance(f, tuple):
@@ -1066,7 +1067,7 @@ class Search(IndexStore):
         return toks
 
     @staticmethod
-    def fuzziness(self, fuzzy):
+    def fuzziness(fuzzy):
         """Helper method to sanitize fuzziness"""
         if not fuzzy:
             return None
@@ -1104,7 +1105,7 @@ class Search(IndexStore):
         return phrase
 
     @staticmethod
-    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
+    def make_term_query(tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
         """
         Returns term queries joined by boolean query.
         modal - applies to boolean query
