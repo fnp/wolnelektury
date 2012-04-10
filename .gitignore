@@ -7,14 +7,7 @@ dev.sqlite
 *.log
 
 # Compress output
-/wolnelektury/static/css/all.min*.css
-/wolnelektury/static/js/all*.min.js
-/wolnelektury/static/css/book.min*.css
-/wolnelektury/static/js/book*.min.js
-/wolnelektury/static/js/jquery.min.js
-/wolnelektury/static/css/ie.min*.css
-/wolnelektury/static/css/screen.min*.css
-/wolnelektury/static/js/base*.min.js
+/static
 
 # Python garbage
 *.pyc

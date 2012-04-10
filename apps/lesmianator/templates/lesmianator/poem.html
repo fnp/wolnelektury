@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static from staticfiles %}
 {% load compressed %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -6,7 +7,7 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{% block title %}WolneLektury.pl{% endblock %}</title>
-        <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
         {% compressed_css "book" %}
     </head>
     <body>
@@ -20,7 +21,7 @@
             <span style='float: right'>Wolne Lektury przepuszczone przez mikser.</a>
         </div>
         <div id="header">
-            <a href="/"><img src="{{ STATIC_URL }}img/logo-220.png" alt="Wolne Lektury" /></a>
+            <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" /></a>
         </div>
         <div id="book-text">
             <h1>

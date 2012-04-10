@@ -18,15 +18,8 @@
         Allow from all
     </Directory>
         
-    Alias /admin-media %(path)s/admin-media
-    <Directory %(path)s/admin-media>
-        Options Indexes
-        Order allow,deny
-        Allow from all
-    </Directory>
-
-    Alias /static %(path)s/releases/current/%(project_name)s/static
-    <Directory %(path)s/releases/current/%(project_name)s/static>
+    Alias /static %(path)s/releases/current/static
+    <Directory %(path)s/releases/current/static>
         Options Indexes
         Order allow,deny
         Allow from all

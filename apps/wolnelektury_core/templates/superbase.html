@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 	{% load cache compressed i18n %}
+	{% load static from staticfiles %}
     {% load catalogue_tags reporting_stats sponsor_tags %}
     <head>
         <meta charset="utf-8">
@@ -16,10 +17,13 @@
 
         <title>{% block title %}{% trans "Wolne Lektury" %} :: 
             {% block titleextra %}{% endblock %}{% endblock %}</title>
-        <link rel="icon" href="{{ STATIC_URL }}img/favicon.png" type="image/png" />
-        <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury" href="{{ STATIC_URL }}opensearch.xml" />
+        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png" />
+        <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury" 
+            href="{% static "opensearch.xml" %}" />
         {% compressed_css "all" %}
-        {% compressed_css "screen" %}
+        <link href="{% static "css/core.css" %}" rel="stylesheet" type="text/css" media="screen" />
+        <link href="{% static "css/antiscreen.css" %}" rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" />
+        {#% compressed_css "handheld" %#}
         <!--[if IE]>
         	{% compressed_css "ie" %}
         <![endif]-->
@@ -38,7 +42,7 @@
         <div id="header-content">
             <div id="logo">
                 <a class="logo" href="/">
-                <img id="logo-image" src="{{ STATIC_URL }}img/logo-neon.png" /></a>
+                <img id="logo-image" src="{% static "img/logo-neon.png" %}" /></a>
             </div>
 
             <div id="tagline">
@@ -185,7 +189,7 @@
         <div id="ajaxable-window" class='dialog-window'>
             <div class="header mono"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
             <div class="target">
-                <p><img src="{{ STATIC_URL }}img/indicator.gif" alt="*"/> {% trans "Loading" %}</p>
+                <p><img src="{% static "img/indicator.gif" %}" alt="*"/> {% trans "Loading" %}</p>
             </div>
         </div>
 
@@ -213,7 +217,6 @@
 		{% block extrabody %}
 		{% endblock %}
 
-        <script src="{{ STATIC_URL }}js/modernizr.custom.19652.js"></script>
-        <!--script src="{{ STATIC_URL }}js/modernizr-latest.js"></script-->
+        <script src="{% static "js/modernizr.custom.19652.js" %}"></script>
     </body>
 </html>
