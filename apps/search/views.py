@@ -14,6 +14,7 @@ from catalogue.views import JSONResponse
 from search import Search, JVM, SearchResult
 from lucene import StringReader
 from suggest.forms import PublishingSuggestForm
+from time import sleep
 import re
 import enchant
 
@@ -50,8 +51,21 @@ def did_you_mean(query, tokens):
 
     return query
 
+
 JVM.attachCurrentThread()
-search = Search()
+_search = None
+
+
+def get_search():
+    global _search
+
+    while _search is False:
+        sleep(1)
+
+    if _search is None:
+        _search = False
+        _search = Search()
+    return _search
 
 
 def hint(request):
@@ -60,6 +74,7 @@ def hint(request):
         return JSONResponse([])
     JVM.attachCurrentThread()
 
+    search = get_search()
     hint = search.hint()
     try:
         tags = request.GET.get('tags', '')
@@ -117,6 +132,7 @@ def main(request):
         return render_to_response('catalogue/search_too_short.html', {'prefix': query},
                                   context_instance=RequestContext(request))
 
+    search = get_search()
     # hint.tags(tag_list)
     # if book:
     #     hint.books(book)

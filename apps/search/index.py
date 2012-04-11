@@ -317,14 +317,19 @@ class Index(BaseIndex):
             doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(int(book.parent.id)))
         return doc
 
-    def remove_book(self, book, remove_snippets=True):
+    def remove_book(self, book_or_id, remove_snippets=True):
         """Removes a book from search index.
         book - Book instance."""
-        q = NumericRangeQuery.newIntRange("book_id", book.id, book.id, True, True)
+        if isinstance(book_or_id, catalogue.models.Book):
+            book_id = book_or_id.id
+        else:
+            book_id = book_or_id
+
+        q = NumericRangeQuery.newIntRange("book_id", book_id, book_id, True, True)
         self.index.deleteDocuments(q)
 
         if remove_snippets:
-            snippets = Snippets(book.id)
+            snippets = Snippets(book_id)
             snippets.remove()
 
     def index_book(self, book, book_info=None, overwrite=True):
@@ -339,7 +344,11 @@ class Index(BaseIndex):
             self.remove_book(book, remove_snippets=False)
 
         book_doc = self.create_book_doc(book)
-        meta_fields = self.extract_metadata(book, book_info)
+        meta_fields = self.extract_metadata(book, book_info, dc_only=['source_name', 'authors', 'title'])
+        # let's not index it - it's only used for extracting publish date
+        if 'source_name' in meta_fields:
+            del meta_fields['source_name']
+        
         for f in meta_fields.values():
             if isinstance(f, list) or isinstance(f, tuple):
                 for elem in f:
@@ -373,7 +382,7 @@ class Index(BaseIndex):
 
     published_date_re = re.compile("([0-9]+)[\]. ]*$")
 
-    def extract_metadata(self, book, book_info=None):
+    def extract_metadata(self, book, book_info=None, dc_only=None):
         """
         Extract metadata from book and returns a map of fields keyed by fieldname
         """
@@ -388,6 +397,8 @@ class Index(BaseIndex):
 
         # validator, name
         for field in dcparser.BookInfo.FIELDS:
+            if dc_only and field.name not in dc_only:
+                continue
             if hasattr(book_info, field.name):
                 if not getattr(book_info, field.name):
                     continue
@@ -1055,7 +1066,8 @@ class Search(IndexStore):
 
         return toks
 
-    def fuzziness(self, fuzzy):
+    @staticmethod
+    def fuzziness(fuzzy):
         """Helper method to sanitize fuzziness"""
         if not fuzzy:
             return None
@@ -1092,7 +1104,8 @@ class Search(IndexStore):
                 phrase.add(term)
         return phrase
 
-    def make_term_query(self, tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
+    @staticmethod
+    def make_term_query(tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
         """
         Returns term queries joined by boolean query.
         modal - applies to boolean query

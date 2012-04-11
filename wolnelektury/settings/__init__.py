@@ -63,6 +63,7 @@ INSTALLED_APPS_OUR = [
     'picture',
     'social',
     'waiter',
+    'search',
     ]
 
 INSTALLED_APPS_CONTRIB = [
