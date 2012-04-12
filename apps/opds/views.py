@@ -16,10 +16,13 @@ from django.contrib.sites.models import Site
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 
-from search import Search, SearchResult, JVM
+from search.views import get_search, SearchResult, JVM
 from lucene import Term, QueryWrapperFilter, TermQuery
 
+import logging
 import re
+
+log = logging.getLogger('opds')
 
 from stats.utils import piwik_track
 
@@ -345,22 +348,21 @@ class SearchFeed(AcquisitionFeed):
         JVM.attachCurrentThread()
 
         query = request.GET.get('q', '')
-
+        
         inline_criteria = re.findall(self.INLINE_QUERY_RE, query)
         if inline_criteria:
             def get_criteria(criteria, name, position):
                 e = filter(lambda el: el[0][0:len(name)] == name, criteria)
-                print e
+                log.info("get_criteria: %s" % e)
                 if not e:
                     return None
                 c = e[0][position]
-                print c
+                log.info("get_criteria: %s" % c)
                 if c[0] == '"' and c[-1] == '"':
                     c = c[1:-1]
                     c = c.replace('+', ' ')
                 return c
 
-            #import pdb; pdb.set_trace()
             author = get_criteria(inline_criteria, 'author', 1)
             title = get_criteria(inline_criteria, 'title', 2)
             translator = None
@@ -378,8 +380,7 @@ class SearchFeed(AcquisitionFeed):
             categories = None
             fuzzy = False
 
-
-        srch = Search()
+        srch = get_search()
         hint = srch.hint()
 
         # Scenario 1: full search terms provided.
@@ -388,11 +389,11 @@ class SearchFeed(AcquisitionFeed):
             filters = []
 
             if author:
-                print "narrow to author %s" % author
+                log.info( "narrow to author %s" % author)
                 hint.tags(srch.search_tags(author, filt=srch.term_filter(Term('tag_category', 'author'))))
 
             if translator:
-                print "filter by translator %s" % translator
+                log.info( "filter by translator %s" % translator)
                 filters.append(QueryWrapperFilter(
                     srch.make_phrase(srch.get_tokens(translator, field='translators'),
                                      field='translators')))
@@ -404,18 +405,25 @@ class SearchFeed(AcquisitionFeed):
 
             flt = srch.chain_filters(filters)
             if title:
-                print "hint by book title %s" % title
+                log.info( "hint by book title %s" % title)
                 q = srch.make_phrase(srch.get_tokens(title, field='title'), field='title')
                 hint.books(*srch.search_books(q, filt=flt))
 
             toks = srch.get_tokens(query)
-            print "tokens: %s" % toks
-            #            import pdb; pdb.set_trace()
+            log.info("tokens for query: %s" % toks)
+            
             results = SearchResult.aggregate(srch.search_perfect_book(toks, fuzzy=fuzzy, hint=hint),
                 srch.search_perfect_parts(toks, fuzzy=fuzzy, hint=hint),
                 srch.search_everywhere(toks, fuzzy=fuzzy, hint=hint))
             results.sort(reverse=True)
-            return [r.book for r in results]
+            books = []
+            for r in results:
+                try:
+                    books.append(r.book)
+                except Book.DoesNotExist:
+                    pass
+            log.info("books: %s" % books)
+            return books
         else:
             # Scenario 2: since we no longer have to figure out what the query term means to the user,
             # we can just use filters and not the Hint class.
