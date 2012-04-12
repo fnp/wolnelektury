@@ -32,7 +32,7 @@ lxml>=2.2.2
 # MySQL-python>=1.2,<2.0
 
 # celery tasks
-django-celery
+django-celery>=2.5.1
 django-kombu
 
 # spell checking

@@ -49,12 +49,12 @@ CUSTOMIZATION_FLAGS = (
     )
 CUSTOMIZATION_OPTIONS = (
     ('leading', _("Leading"), (
-        ('defaultleading', _('Normal leading')),
+        ('', _('Normal leading')),
         ('onehalfleading', _('One and a half leading')),
         ('doubleleading', _('Double leading')),
         )),
     ('fontsize', _("Font size"), (
-        ('11pt', _('Default')),
+        ('', _('Default')),
         ('13pt', _('Big'))
         )),
 #    ('pagesize', _("Paper size"), (
@@ -71,7 +71,7 @@ class CustomPDFForm(forms.Form):
         for name, label in CUSTOMIZATION_FLAGS:
             self.fields[name] = forms.BooleanField(required=False, label=label)
         for name, label, choices in CUSTOMIZATION_OPTIONS:
-            self.fields[name] = forms.ChoiceField(choices, label=label)
+            self.fields[name] = forms.ChoiceField(choices, required=False, label=label)
 
     def clean(self):
         self.cleaned_data['cust'] = self.customizations
@@ -88,11 +88,16 @@ class CustomPDFForm(forms.Form):
             if self.cleaned_data.get(name):
                 c.append(name)
         for name, label, choices in CUSTOMIZATION_OPTIONS:
-            c.append(self.cleaned_data[name])
+            option = self.cleaned_data.get(name)
+            if option:
+                c.append(option)
         c.sort()
         return c
 
     def save(self, *args, **kwargs):
+        if not self.cleaned_data['cust'] and self.book.pdf_file:
+            # Don't build with default options, just redirect to the standard file.
+            return {"redirect": self.book.pdf_file.url}
         url = WaitedFile.order(self.cleaned_data['path'],
             lambda p: build_custom_pdf.delay(self.book.id,
                 self.cleaned_data['cust'], p),
