@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static from staticfiles %}
 {% load url from future %}
 
 {% block titleextra %}
@@ -39,7 +40,7 @@
     </div>
 {% else %}
  {% if waiting %}
-    <h1><img src="{{ STATIC_URL }}img/indicator.gif" alt="{% trans 'Please wait' %}"/>
+    <h1><img src="{% static "img/indicator.gif" %}" alt="{% trans 'Please wait' %}"/>
         {% trans "Your file is being prepared, please wait." %}</h1>
 
     <div class="normal-text">

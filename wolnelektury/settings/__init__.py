@@ -53,7 +53,6 @@ INSTALLED_APPS_OUR = [
     'dictionary',
     'infopages',
     'lesmianator',
-    #'lessons',
     'newtagging',
     'opds',
     'pdcounter',
@@ -75,7 +74,9 @@ INSTALLED_APPS_CONTRIB = [
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.staticfiles',
     'pagination',
+    'pipeline',
     'piston',
     'piwik.django',
     #'rosetta',
@@ -97,7 +98,6 @@ INSTALLED_APPS_CONTRIB = [
     #'allauth.twitter',
 
     # included
-    'compress',
     'modeltranslation',
     ]
 

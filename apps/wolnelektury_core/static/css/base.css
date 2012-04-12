@@ -1,0 +1,189 @@
+/* Logo font */
+@font-face {
+    /* IE version */
+    font-family: WL-Nav;
+    src: url(/static/fonts/WL-Nav.eot);
+}
+@font-face {
+  font-family: WL-Nav;
+  src: url(/static/fonts/WL-Nav.ttf) format("truetype");
+}
+
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    background: #f7f7f7;
+    font-size: .625em;
+    font-family: Georgia;
+    /*line-height: 1.4em;*/
+}
+
+a img {
+	border: 0;
+}
+
+a {
+    color: #0d7e85; /*#1199a2;*/ /* #01adba; */
+    text-decoration: none;
+}
+
+/* jquery UI overrides us */
+.ui-menu .ui-menu-item a {
+    color: #0d7e85 !important;
+    line-height: 1.636em !important;
+}
+
+.ui-widget {
+    font-family: Georgia !important;
+    font-size: 1em !important;
+}
+
+.ui-widget-content {
+    background: #EEEEEE !important; /* #E2E2E2 ? */
+    border-radius: 0px !important;
+}
+
+
+h1 {
+    font-size: 3.5em;
+    font-weight: normal;
+    margin-top: .4em
+}
+h1 a {
+	color: inherit;
+}
+
+ul.plain {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+.normal-text {
+    font-size: 1.3em;
+    line-height: 1.3em;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+
+.mono {
+    font-family: "Andale Mono", "Lucida Sans Typewriter", "Courier New";
+/*    font-weight: bold; */
+}
+
+.accent1 {
+    color: #191919;
+}
+
+.accent2 {
+    color: #242424;
+}
+
+.accent3 {
+    color: #575c63;
+}
+
+
+.accent4 {
+    color: #707b7a;
+}
+
+.contrast {
+    #1199a2;
+}
+
+/* #281d1c */
+
+.clearboth {
+    clear: both;
+}
+
+.white-box {
+    border: 1px solid #ddd;
+    padding: 1em;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.page-desc {
+    margin-left: 1.5em;
+}
+
+.inline-tag-lists p span:first-child {
+    color: #281d1c;
+}
+
+.inline-tag-lists {
+    font-size: 1.1em;
+}
+
+.theme-list-link:after {
+    padding-left: 1em;
+    content: "↓";
+    font-family: WL-Nav;
+    vertical-align: middle;
+}
+.theme-list-link {
+    font-size: 1.1em;
+}
+.hidden-box-wrapper {
+    position: relative;
+}
+.hidden-box {
+    position: absolute;
+    left: 0;
+    display: none;
+    border: 1px solid #ddd;
+    padding: 1em 1em .5em 1em;
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+    z-index: 500;
+}
+.hidden-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1em;
+}
+.hidden-box li {
+	margin-bottom: .5em;
+}
+
+
+.pagination {
+	display: block;
+	font-size: 1.2em;
+	padding: .5em;
+	text-align:center;
+}
+
+#footer {
+    color: #767676;
+    margin-top: 5em;
+    padding-top:3em;
+    background: #fff;
+    border-top: 1px solid #ddd;
+}
+#footer p {
+	margin: .25em 0;
+}
+
+/* just on search page */
+.top-tag-list {
+    margin-top: 2.2em;
+    margin-bottom: 1.6em;
+}

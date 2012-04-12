@@ -4,7 +4,7 @@ from settings.paths import PROJECT_DIR
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = path.join(PROJECT_DIR, '../media/')
-STATIC_ROOT = path.join(PROJECT_DIR, 'static/')
+STATIC_ROOT = path.join(PROJECT_DIR, '../static/')
 SEARCH_INDEX = path.join(PROJECT_DIR, '../search_index/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -13,15 +13,10 @@ SEARCH_INDEX = path.join(PROJECT_DIR, '../search_index/')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin-media/'
-
 # CSS and JavaScript file groups
-COMPRESS_CSS = {
+PIPELINE_CSS = {
     'all': {
-        #'source_filenames': ('css/master.css', 'css/jquery.autocomplete.css', 'css/master.plain.css', 'css/facelist_2-0.css',),
+        # styles both for mobile and for big screen
         'source_filenames': [
             'css/jquery.countdown.css', 
 
@@ -33,49 +28,40 @@ COMPRESS_CSS = {
             'css/picture_box.css',
             'css/book_box.css',
             'css/catalogue.css',
-            'css/sponsors.css',
-            'css/logo.css',
+            'sponsors/css/sponsors.css',
             'css/auth.css',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
         ],
-        'output_filename': 'css/all.min?.css',
-    },
-    'screen': {
-        'source_filenames': ['css/screen.css'],
-        'output_filename': 'css/screen.min?.css',
-        'extra_context': {
-            'media': 'screen and (min-width: 800px)',
-        },
+        'output_filename': 'css/compressed/all.css',
     },
     'ie': {
         'source_filenames': [
             'css/ie.css',
         ],
-        'output_filename': 'css/ie.min?.css',
+        'output_filename': 'css/compressed/ie.css',
     },
     'book': {
         'source_filenames': [
-            'css/logo.css',
             'css/master.book.css',
         ],
-        'output_filename': 'css/book.min?.css',
+        'output_filename': 'css/compressed/book.css',
     },
     'player': {
         'source_filenames': [
             'jplayer/jplayer.blue.monday.css', 
-            'css/player.css', 
+            'player/player.css', 
         ],
-        'output_filename': 'css/player.min?.css',
+        'output_filename': 'css/compressed/player.css',
     },
     'simple': {
         'source_filenames': ('css/simple.css',),
-        'output_filename': 'css/simple.min?.css',
+        'output_filename': 'css/compressed/simple.css',
     },
 }
 
-COMPRESS_JS = {
+PIPELINE_JS = {
     'base': {
         'source_filenames': (
             'js/jquery.cycle.min.js',
@@ -90,32 +76,33 @@ COMPRESS_JS = {
 
             'js/locale.js',
             'js/dialogs.js',
-            'js/sponsors.js',
             'js/base.js',
-            'js/pdcounter.js',
+            'pdcounter/pdcounter.js',
+            'sponsors/js/sponsors.js',
 
             'js/search.js',
             ),
-        'output_filename': 'js/base?.min.js',
+        'output_filename': 'js/base.min.js',
     },
     'player': {
         'source_filenames': [
             'jplayer/jquery.jplayer.min.js', 
             'jplayer/jplayer.playlist.min.js', 
-            'js/player.js', 
+            'player/player.js', 
         ],
-        'output_filename': 'js/player.min?.js',
+        'output_filename': 'js/player.min.js',
     },
     'book': {
         'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
-        'output_filename': 'js/book?.min.js',
+        'output_filename': 'js/book.min.js',
     },
     'book_ie': {
         'source_filenames': ('js/ierange-m2.js',),
-        'output_filename': 'js/book_ie?.min.js',
+        'output_filename': 'js/book_ie.min.js',
     }
 
 }
 
-COMPRESS_VERSION = True
-COMPRESS_CSS_FILTERS = None
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+PIPELINE_CSS_COMPRESSOR = None
+PIPELINE_JS_COMPRESSOR = None

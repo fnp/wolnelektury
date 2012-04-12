@@ -53,6 +53,10 @@ class TagSubcategoryManager(models.Manager):
 
 
 class Tag(TagBase):
+    """A tag attachable to books and fragments (and possibly anything).
+    
+    Used to represent searchable metadata (authors, epochs, genres, kinds),
+    fragment themes (motifs) and some book hierarchy related kludges."""
     name = models.CharField(_('name'), max_length=50, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
@@ -212,6 +216,7 @@ def book_upload_path(ext=None, maxlen=100):
 
 
 class BookMedia(models.Model):
+    """Represents media attached to a book."""
     FileFormat = namedtuple("FileFormat", "name ext")
     formats = SortedDict([
         ('mp3', FileFormat(name='MP3', ext='mp3')),
@@ -322,6 +327,7 @@ class BookMedia(models.Model):
 
 
 class Book(models.Model):
+    """Represents a book imported from WL-XML."""
     title         = models.CharField(_('title'), max_length=120)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     slug = models.SlugField(_('slug'), max_length=120, db_index=True,
@@ -532,12 +538,16 @@ class Book(models.Model):
 
     # Thin wrappers for builder tasks
     def build_pdf(self, *args, **kwargs):
+        """(Re)builds PDF."""
         return tasks.build_pdf.delay(self.pk, *args, **kwargs)
     def build_epub(self, *args, **kwargs):
+        """(Re)builds EPUB."""
         return tasks.build_epub.delay(self.pk, *args, **kwargs)
     def build_mobi(self, *args, **kwargs):
+        """(Re)builds MOBI."""
         return tasks.build_mobi.delay(self.pk, *args, **kwargs)
     def build_txt(self, *args, **kwargs):
+        """(Re)builds TXT."""
         return tasks.build_txt.delay(self.pk, *args, **kwargs)
 
     @staticmethod
@@ -803,7 +813,7 @@ class Book(models.Model):
 
     @classmethod
     def tagged_top_level(cls, tags):
-        """ Returns top-level books tagged with `tags'.
+        """ Returns top-level books tagged with `tags`.
 
         It only returns those books which don't have ancestors which are
         also tagged with those tags.
@@ -885,7 +895,8 @@ class Book(models.Model):
 
 def _has_factory(ftype):
     has = lambda self: bool(getattr(self, "%s_file" % ftype))
-    has.short_description = t.upper()
+    has.short_description = ftype.upper()
+    has.__doc__ = None
     has.boolean = True
     has.__name__ = "has_%s_file" % ftype
     return has
@@ -902,6 +913,7 @@ for t in Book.formats:
 
 
 class Fragment(models.Model):
+    """Represents a themed fragment of a book."""
     text = models.TextField()
     short_text = models.TextField(editable=False)
     anchor = models.CharField(max_length=120)
