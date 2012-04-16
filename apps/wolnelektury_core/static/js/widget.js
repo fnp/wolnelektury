@@ -51,10 +51,18 @@ scriptSearch.setAttribute('type', 'text/javascript');
 scriptSearch.setAttribute('src', 'http://'+host+'/static/js/search.js');
 scriptSearch.setAttribute('id', 'wl-search-script')
 
-
 body[0].appendChild(scriptJ);
-body[0].appendChild(scriptUI);
-body[0].appendChild(scriptSearch);
+scriptJ.onload = function() { body[0].appendChild(scriptUI); };
+scriptJ.onreadystatechange = function() { if (scriptJ.readyState == 'complete') { scriptJ.onload(); } };
+
+scriptUI.onload = function() { body[0].appendChild(scriptSearch); };
+scriptUI.onreadystatechange = function() { if (scriptUI.readyState == 'complete') { scriptUI.onload(); } };
+
+scriptSearch.onload = function() {
+    	var s = $('#id_qq');
+	s.search({source: s.attr('data-source')});
+}
+scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { scriptSearch.onload(); } };
 
 /* append elements to widget */
 widget.appendChild(stylesheet);
@@ -83,24 +91,5 @@ if(widget.getAttribute('width') == '140'){
     widget.style.width = "140px";
 }
 
-var wl_loaded_scripts = {};
 
-function wl_initialize_after_load(just_loaded) {
-    wl_loaded_scripts[just_loaded] = true;
-    if (wl_loaded_scripts.jquery 
-	&& wl_loaded_scripts.ui 
-	&& wl_loaded_scripts.search) {
-	var s = $('#id_qq');
-	s.search({source: s.attr('data-source')});
-    }
-}
-
-scriptJ.onload = function() { wl_initialize_after_load('jquery'); };
-scriptJ.onreadystatechange = function() { if (scriptJ.readyState == 'complete') { wl_initialize_after_load('jquery'); } };
-
-scriptUI.onload = function() { wl_initialize_after_load('ui'); };
-scriptUI.onreadystatechange = function() { if (scriptUI.readyState == 'complete') { wl_initialize_after_load('jquery'); } };
-
-scriptSearch.onload = function() { wl_initialize_after_load('search'); };
-scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { wl_initialize_after_load('jquery'); } };
 
