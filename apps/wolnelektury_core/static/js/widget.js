@@ -41,24 +41,20 @@ var scriptJ = document.createElement('script');
 scriptJ.setAttribute('type', 'text/javascript');
 scriptJ.setAttribute('src', 'http://'+host+'/static/js/jquery.js');
 
-var scriptAutoComplete = document.createElement('script');
-scriptAutoComplete.setAttribute('type', 'text/javascript');
-scriptAutoComplete.setAttribute('src', 'http://'+host+'/static/js/jquery-ui-1.8.2.custom.min.js');
-scriptAutoComplete.setAttribute('id', 'wl-jquery-ui-script')
+var scriptUI = document.createElement('script');
+scriptUI.setAttribute('type', 'text/javascript');
+scriptUI.setAttribute('src', 'http://'+host+'/static/js/jquery-ui-1.8.2.custom.min.js');
+scriptUI.setAttribute('id', 'wl-jquery-ui-script')
 
 var scriptSearch = document.createElement('script');
 scriptSearch.setAttribute('type', 'text/javascript');
 scriptSearch.setAttribute('src', 'http://'+host+'/static/js/search.js');
 scriptSearch.setAttribute('id', 'wl-search-script')
 
-var scriptInit = document.createElement('script');
-scriptInit.setAttribute('type', 'text/javascript');
-scriptInit.setAttribute('src', 'http://'+host+'/static/js/widgetInit.js');
 
 body[0].appendChild(scriptJ);
-body[0].appendChild(scriptAutoComplete);
+body[0].appendChild(scriptUI);
 body[0].appendChild(scriptSearch);
-body[0].appendChild(scriptInit);
 
 /* append elements to widget */
 widget.appendChild(stylesheet);
@@ -86,3 +82,19 @@ if(widget.getAttribute('width') == '140'){
     inputText.setAttribute('size', '10');
     widget.style.width = "140px";
 }
+
+var wl_loaded_scripts = {};
+
+function wl_initialize_after_load(just_loaded) {
+    wl_loaded_scripts[just_loaded] = true;
+    if (wl_loaded_scripts.jquery 
+	&& wl_loaded_scripts.ui 
+	&& wl_loaded_scripts.search) {
+	var s = $('#id_qq');
+	s.search({source: s.attr('data-source')});
+    }
+}
+
+scriptJ.onload = function() { wl_initialize_after_load('jquery'); };
+scriptUI.onload = function() { wl_initialize_after_load('ui'); };
+scriptSearch.onload = function() { wl_initialize_after_load('search'); };
