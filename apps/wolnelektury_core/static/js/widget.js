@@ -96,5 +96,11 @@ function wl_initialize_after_load(just_loaded) {
 }
 
 scriptJ.onload = function() { wl_initialize_after_load('jquery'); };
+scriptJ.onreadystatechange = function() { if (scriptJ.readyState == 'complete') { wl_initialize_after_load('jquery'); } };
+
 scriptUI.onload = function() { wl_initialize_after_load('ui'); };
+scriptUI.onreadystatechange = function() { if (scriptUI.readyState == 'complete') { wl_initialize_after_load('jquery'); } };
+
 scriptSearch.onload = function() { wl_initialize_after_load('search'); };
+scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { wl_initialize_after_load('jquery'); } };
+
