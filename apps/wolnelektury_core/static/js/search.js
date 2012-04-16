@@ -16,7 +16,9 @@ var __bind = function (self, fn) {
 		focus: function() { return false; },
 		source: this.element.data('source'),
 	    };
-	    this.element.autocomplete(opts).data("autocomplete")._renderItem = __bind(this, this.render_item);
+
+	    this.element.autocomplete($.extend(opts, this.options))
+		.data("autocomplete")._renderItem = __bind(this, this.render_item);
 	},
 
 	enter: function(event, ui) {
@@ -32,7 +34,7 @@ var __bind = function (self, fn) {
 		.append('<a href="'+item.url+'"><span class="search-hint-label">'+item.label+'</span>'+
 			'<span class="search-hint-category mono">'+item.category+'</span></a>')
 		.appendTo(ul);
-	},
+	}, 
 
 	destroy: function() {
 
