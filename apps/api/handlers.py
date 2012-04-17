@@ -106,7 +106,7 @@ class BookDetails(object):
 
     @classmethod
     def author(cls, book):
-        return ",".join(t[0] for t in book.related_info()['tags']['author'])
+        return ",".join(t[0] for t in book.related_info()['tags'].get('author', []))
 
     @classmethod
     def href(cls, book):
@@ -410,7 +410,7 @@ class CatalogueHandler(BaseHandler):
     def book_dict(book, fields=None):
         all_fields = ['url', 'title', 'description',
                       'gazeta_link', 'wiki_link',
-                      ] + Book.formats + BookMedia.formats + [
+                      ] + Book.formats + BookMedia.formats.keys() + [
                       'parent', 'parent_number',
                       'tags',
                       'license', 'license_description', 'source_name',

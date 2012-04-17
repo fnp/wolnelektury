@@ -1,31 +1,26 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
-
-from django.test import TestCase
-from django.utils import simplejson as json
-from django.conf import settings
-
-from api.helpers import timestamp
-from catalogue.models import Book, Tag
-from picture.tests.utils import RequestFactory
-from picture.forms import PictureImportForm
-from picture.models import Picture, picture_storage
-import picture.tests
-from django.core.files.uploadedfile import SimpleUploadedFile
-
- 
 from os import path
 
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase
+from django.test.utils import override_settings
+from django.utils import simplejson as json
 
+from catalogue.models import Book, Tag
+from picture.forms import PictureImportForm
+from picture.models import Picture
+import picture.tests
+
+
+@override_settings(
+    API_WAIT=-1, 
+    CACHES = {'api': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+              'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+              'permanent': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}
+)
 class ApiTest(TestCase):
-
-    def setUp(self):
-        self.old_api_wait = settings.API_WAIT
-        settings.API_WAIT = -1
-
-    def tearDown(self):
-        settings.API_WAIT = self.old_api_wait
+    pass
 
 
 class ChangesTest(ApiTest):
