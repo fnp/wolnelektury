@@ -14,7 +14,7 @@ from django.utils.translation import ugettext as _
 
 from catalogue import forms
 from catalogue.utils import split_tags
-from catalogue.models import Book, Fragment, Tag
+from catalogue.models import Book, BookMedia, Fragment, Tag
 
 register = template.Library()
 
@@ -387,3 +387,22 @@ def tag_url(category, slug):
     return reverse('catalogue.views.tagged_object_list', args=[
         '/'.join((Tag.categories_dict[category], slug))
     ])
+
+
+@register.simple_tag
+def download_audio(book, daisy=True):
+    related = book.related_info()
+    links = []
+    if related['media'].get('mp3'):
+        links.append("<a href='%s'>%s</a>" %
+            (reverse('download_zip_mp3', args=[book.slug]),
+                BookMedia.formats['mp3'].name))
+    if related['media'].get('ogg'):
+        links.append("<a href='%s'>%s</a>" %
+            (reverse('download_zip_ogg', args=[book.slug]),
+                BookMedia.formats['ogg'].name))
+    if daisy and related['media'].get('daisy'):
+        for dsy in book.get_media('daisy'):
+            links.append("<a href='%s'>%s</a>" %
+                (dsy.file.url, BookMedia.formats['daisy'].name))
+    return ", ".join(links)

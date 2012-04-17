@@ -79,6 +79,7 @@ PIPELINE_JS = {
             'js/base.js',
             'pdcounter/pdcounter.js',
             'sponsors/js/sponsors.js',
+            'player/openplayer.js',
 
             'js/search.js',
             ),
@@ -93,7 +94,13 @@ PIPELINE_JS = {
         'output_filename': 'js/player.min.js',
     },
     'book': {
-        'source_filenames': ('js/jquery.eventdelegation.js', 'js/jquery.scrollto.js', 'js/jquery.highlightfade.js', 'js/book.js',),
+        'source_filenames': [
+            'js/jquery.eventdelegation.js',
+            'js/jquery.scrollto.js',
+            'js/jquery.highlightfade.js',
+            'js/book.js',
+            'player/openplayer.js',
+        ],
         'output_filename': 'js/book.min.js',
     },
     'book_ie': {

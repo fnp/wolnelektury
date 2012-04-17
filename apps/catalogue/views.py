@@ -265,6 +265,7 @@ def book_text(request, slug):
 
     book_themes = book_themes.items()
     book_themes.sort(key=lambda s: s[0].sort_key)
+    related = book.related_info()
     return render_to_response('catalogue/book_text.html', locals(),
         context_instance=RequestContext(request))
 
