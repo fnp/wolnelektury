@@ -70,6 +70,7 @@ def deploy():
     copy_localsettings()
     symlink_current_release()
     migrate()
+    collectstatic()
     restart_webserver()
 
 def deploy_version(version):
@@ -159,6 +160,13 @@ def migrate():
         run('../../../ve/bin/python manage.py syncdb --noinput' % env, pty=True)
         if env.use_south:
             run('../../../ve/bin/python manage.py migrate' % env, pty=True)
+
+def collectstatic():
+    """Collect static files"""
+    print '>>> collectstatic'
+    require('project_name', provided_by=[staging, production])
+    with cd('%(path)s/releases/current/%(project_name)s' % env):
+        run('../../../ve/bin/python manage.py collectstatic --noinput' % env, pty=True)
 
 def restart_webserver():
     "Restart the web server"
