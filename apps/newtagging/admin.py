@@ -15,7 +15,7 @@ class FilteredSelectMultiple(forms.SelectMultiple):
     def _media(self):
         from django.conf import settings
         js = ['js/SelectBox.js' , 'js/SelectFilter2.js']
-        return forms.Media(js=['%s%s' % (settings.ADMIN_MEDIA_PREFIX, url) for url in js])
+        return forms.Media(js=['%sadmin/%s' % (settings.STATIC_URL, url) for url in js])
     media = property(_media)
 
     def __init__(self, verbose_name, is_stacked, attrs=None, choices=()):
@@ -30,7 +30,7 @@ class FilteredSelectMultiple(forms.SelectMultiple):
         # TODO: "id_" is hard-coded here. This should instead use the correct
         # API to determine the ID dynamically.
         output.append(u'SelectFilter.init("id_%s", "%s", %s, "%s"); });</script>\n' % \
-            (name, self.verbose_name.replace('"', '\\"'), int(self.is_stacked), settings.ADMIN_MEDIA_PREFIX))
+            (name, self.verbose_name.replace('"', '\\"'), int(self.is_stacked), settings.STATIC_URL + "admin/"))
         return mark_safe(u''.join(output))
 
 
