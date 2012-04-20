@@ -18,7 +18,7 @@ from lucene import SimpleFSDirectory, NIOFSDirectory, IndexWriter, IndexReader, 
     # KeywordAnalyzer
 
 # Initialize jvm
-JVM = initVM(CLASSPATH)
+JVM = initVM(CLASSPATH, maxheap=settings.JVM_MAXHEAP)
 
 import sys
 import os
