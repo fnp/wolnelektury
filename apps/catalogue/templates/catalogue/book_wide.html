@@ -1,6 +1,6 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
-{% load download_audio tag_list from catalogue_tags %}
+{% load download_audio tag_list custom_pdf_link_li from catalogue_tags %}
 {% load cite_promo from social_tags %}
 
 
@@ -60,9 +60,7 @@
 	    {% download_audio book %}. 
 	{% endif %}
       </li>
-      <li>
-	<a href="{% url custom_pdf_form book.slug %}" id="custom-pdf" class="ajaxable">{% trans "Download a custom PDF" %}</a>
-      </li>
+      {% custom_pdf_link_li book %}
     </ul>
   </div>
 </div>

@@ -5,6 +5,7 @@
 import datetime
 import feedparser
 
+from django.conf import settings
 from django import template
 from django.template import Node, Variable, Template, Context
 from django.core.cache import cache
@@ -12,7 +13,6 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext as _
 
-from catalogue import forms
 from catalogue.utils import split_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag
 
@@ -406,3 +406,11 @@ def download_audio(book, daisy=True):
             links.append("<a href='%s'>%s</a>" %
                 (dsy.file.url, BookMedia.formats['daisy'].name))
     return ", ".join(links)
+
+
+@register.inclusion_tag("catalogue/snippets/custom_pdf_link_li.html")
+def custom_pdf_link_li(book):
+    return {
+        'book': book,
+        'NO_CUSTOM_PDF': settings.NO_CUSTOM_PDF,
+    }

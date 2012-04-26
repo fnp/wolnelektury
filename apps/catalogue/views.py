@@ -536,6 +536,11 @@ class CustomPDFFormView(AjaxableFormView):
     submit = ugettext_lazy('Download')
     honeypot = True
 
+    def __call__(self, *args, **kwargs):
+        if settings.NO_CUSTOM_PDF:
+            raise Http404('Custom PDF is disabled')
+        return super(CustomPDFFormView, self).__call__(*args, **kwargs)
+
     def form_args(self, request, obj):
         """Override to parse view args and give additional args to the form."""
         return (obj,), {}

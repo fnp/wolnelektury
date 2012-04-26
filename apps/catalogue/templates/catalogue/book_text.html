@@ -49,7 +49,7 @@
             {% if book.txt_file %}
             <li><a href="{{ book.txt_file.url}}">TXT</a> {% trans "for advanced usage" %}</li>
             {% endif %}
-            <li><a href="{% url "custom_pdf_form" book.slug %}">{% trans "Download a custom PDF" %}</a></li>
+            {% custom_pdf_link_li book %}
             {% if related.media.mp3 or related.media.ogg or related.media.daisy %}
                 <li>{% trans "Download all audiobooks for this book" %}:
                     {% download_audio book %}</li> 

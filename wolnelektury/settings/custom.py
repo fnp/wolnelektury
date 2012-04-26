@@ -9,6 +9,7 @@ NO_BUILD_EPUB = False
 NO_BUILD_TXT = False
 # You'll need XeLaTeX to generate PDF files.
 NO_BUILD_PDF = True
+NO_CUSTOM_PDF = True
 # You'll need Calibre installed to generate MOBI files.
 NO_BUILD_MOBI = True
 

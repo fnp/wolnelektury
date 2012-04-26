@@ -1,0 +1,8 @@
+{% load i18n %}
+{% load url from future %}
+{% if not NO_CUSTOM_PDF %}
+<li>
+    <a href="{% url 'custom_pdf_form' book.slug %}" id="custom-pdf"
+        class="ajaxable">{% trans "Download a custom PDF" %}</a>
+</li>
+{% endif %}
