@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
 from piston.authentication import OAuthAuthentication, oauth_access_token 
 from piston.resource import Resource
 
@@ -32,8 +33,7 @@ urlpatterns = patterns(
     url(r'^oauth/access_token/$', csrf_exempt(oauth_access_token)),
 
 ) + patterns('',
-    url(r'^$', 'django.views.generic.simple.direct_to_template',
-            {'template': 'api/main.html'}, name='api'),
+    url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
 
 
     # changes handlers
