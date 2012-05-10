@@ -54,6 +54,7 @@ class Command(BaseCommand):
         make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load', default=False),
         make_option('-L', '--language', help='locales to load', dest='lang', default=None),
         make_option('-n', '--poname', help='name of the po file [no extension]', dest='poname', default=None),
+        make_option('-k', '--keep-running', help='keep running even when missing an input file', dest='keep_running', default=False, action='store_true'),
         )
     help = 'Export models from app to po files'
     args = 'app'
@@ -86,7 +87,11 @@ class Command(BaseCommand):
 
             for lng in zip(*languages)[0]:
                 pofile = os.path.join(options['directory'], lng, options['poname'] + '.po')
-                if not os.path.exists(pofile): raise OSError('%s po file: %s not found' % (appname, pofile))
+                if not os.path.exists(pofile): 
+                    if options['keep_running']:
+                        continue
+                    else:
+                        raise OSError('%s po file: %s not found' % (appname, pofile))
                 po = polib.pofile(pofile)
                 for entry in po:
                     loc, pk = entry.occurrences[0]

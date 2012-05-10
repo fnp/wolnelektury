@@ -95,7 +95,7 @@ class ModelTranslation(Locale):
 
     def load(self, input_directory, languages):
         call_command('translation2po', self.appname, directory=input_directory,
-                     load=True, lang=','.join(zip(*languages)[0]), poname=self.poname)
+                     load=True, lang=','.join(zip(*languages)[0]), poname=self.poname, keep_running=True)
 
 
 class CustomLocale(Locale):
