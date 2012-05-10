@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
 "PO-Revision-Date: 2012-03-09 11:35+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: forms.py:12
+#: forms.py:12 templates/newsearch/search.html:16
 msgid "Search"
 msgstr "Suchen"
 
@@ -25,6 +25,6 @@ msgstr "Suchen"
 msgid "title, author, theme/topic, epoch, kind, genre, phrase"
 msgstr "Titel, Autor, Thema, Epoche, Art, Gattung, Satz"
 
-#: views.py:89
+#: views.py:91
 msgid "book"
 msgstr "Buch"

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
-"PO-Revision-Date: 2012-03-15 01:27+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"PO-Revision-Date: 2012-04-11 22:56+0100\n"
+"Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -43,15 +43,15 @@ msgstr "Chunks"
 
 #: models.py:33
 msgid "A unique name for this attachment"
-msgstr "Die einzigartige Bezeichnung für dieses Attachment"
+msgstr "Die einzigartige Bezeichnung für diese Beilage"
 
 #: models.py:38
 msgid "attachment"
-msgstr "Attachment"
+msgstr "Beilage"
 
 #: models.py:38
 msgid "attachments"
-msgstr "Attachments"
+msgstr "Beilagen"
 
 #~ msgid "title"
 #~ msgstr "Titel"
