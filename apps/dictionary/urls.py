@@ -3,10 +3,10 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls.defaults import *
-
+from dictionary.views import NotesView
 
 urlpatterns = patterns('dictionary.views',
-    url(r'^$', 'letter_notes', name='dictionary_notes'),
-    url(r'(?P<letter>[a-z]|0-9)/$', 'letter_notes', name='dictionary_notes'),
+    url(r'^$', NotesView.as_view(), name='dictionary_notes'),
+    url(r'(?P<letter>[a-z]|0-9)/$', NotesView.as_view(), name='dictionary_notes'),
 )
 

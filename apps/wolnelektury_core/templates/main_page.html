@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
 {% load cache chunks i18n catalogue_tags infopages_tags social_tags %}
 
 
@@ -67,9 +68,13 @@
 
         <div class="social-links">
             <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"
-                title='Wolne Lektury @ Facebook'>f</a>
+                title='Wolne Lektury @ Facebook'>
+                <img src="{% static "img/social/f.png" %}" />
+            </a>
             <a href="http://nk.pl/profile/30441509"
-                title='Wolne Lektury @ NK'>nk</a>
+                title='Wolne Lektury @ NK'>
+                <img src="{% static "img/social/nk.png" %}" />
+            </a>
         </div>
     </div>
 

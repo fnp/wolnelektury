@@ -265,6 +265,7 @@ def book_text(request, slug):
 
     book_themes = book_themes.items()
     book_themes.sort(key=lambda s: s[0].sort_key)
+    related = book.related_info()
     return render_to_response('catalogue/book_text.html', locals(),
         context_instance=RequestContext(request))
 
@@ -534,6 +535,11 @@ class CustomPDFFormView(AjaxableFormView):
     title = ugettext_lazy('Download custom PDF')
     submit = ugettext_lazy('Download')
     honeypot = True
+
+    def __call__(self, *args, **kwargs):
+        if settings.NO_CUSTOM_PDF:
+            raise Http404('Custom PDF is disabled')
+        return super(CustomPDFFormView, self).__call__(*args, **kwargs)
 
     def form_args(self, request, obj):
         """Override to parse view args and give additional args to the form."""

@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
-from piston.authentication import OAuthAuthentication
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
+from piston.authentication import OAuthAuthentication, oauth_access_token 
 from piston.resource import Resource
 
 from api import handlers
-from catalogue.models import Book
+from api.helpers import CsrfExemptResource
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
 
@@ -12,7 +14,7 @@ book_changes_resource = Resource(handler=handlers.BookChangesHandler)
 tag_changes_resource = Resource(handler=handlers.TagChangesHandler)
 changes_resource = Resource(handler=handlers.ChangesHandler)
 
-book_list_resource = Resource(handler=handlers.BooksHandler, authentication=auth)
+book_list_resource = CsrfExemptResource(handler=handlers.BooksHandler, authentication=auth)
 #book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 
@@ -22,17 +24,16 @@ tag_resource = Resource(handler=handlers.TagDetailHandler)
 fragment_resource = Resource(handler=handlers.FragmentDetailHandler)
 fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
-picture_resource = Resource(handler=handlers.PictureHandler, authentication=auth)
+picture_resource = CsrfExemptResource(handler=handlers.PictureHandler, authentication=auth)
 
 urlpatterns = patterns(
     'piston.authentication',
     url(r'^oauth/request_token/$', 'oauth_request_token'),
     url(r'^oauth/authorize/$', 'oauth_user_auth'),
-    url(r'^oauth/access_token/$', 'oauth_access_token'),
+    url(r'^oauth/access_token/$', csrf_exempt(oauth_access_token)),
 
 ) + patterns('',
-    url(r'^$', 'django.views.generic.simple.direct_to_template',
-            {'template': 'api/main.html'}, name='api'),
+    url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
 
 
     # changes handlers

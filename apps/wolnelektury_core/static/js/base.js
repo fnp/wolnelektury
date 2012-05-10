@@ -97,15 +97,6 @@ $('#themes-list-toggle').click(function(event) {
 });
 
 
-$('.open-player').click(function(event) {
-    event.preventDefault();
-    window.open($(this).attr('href'),
-        'player',
-        'width=422, height=500'
-        );
-});
-
-
         $('.book-list-index').click(function(){
             $('.book-list-show-index').hide('slow');
             if($(this).parent().next('ul:not(:hidden)').length == 0){

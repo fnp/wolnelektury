@@ -8,9 +8,10 @@ Requirements
 * `Python 2.6+ <http://python.org>`_
 * Everyting from the ``requirements.txt`` file
 * a library for your database of choice
- (see `DBs supported by Django <http://docs.djangoproject.com/en/dev/topics/install/#get-your-database-running>`_)
-* `puLucene <https://github.com/fnp/pylucene/>`_ for search
-* Librarian dependencies, see lib/librarian/README.md
+  (see `DBs supported by Django <http://docs.djangoproject.com/en/dev/topics/install/#get-your-database-running>`_)
+* `pyLucene <https://github.com/fnp/pylucene/>`_ for search
+* Librarian dependencies for generating PDF and MOBI files, 
+  see lib/librarian/README.md
 
 
 Installation

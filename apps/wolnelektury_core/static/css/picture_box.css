@@ -82,8 +82,7 @@
 }
 
 .picture-box-tools a:before {
-    content: "⇩";
-    font-family: WL-Nav;
+    content: url("/static/img/download.png");
     font-size: 2em;
     margin-right: .25em;
     vertical-align: middle;

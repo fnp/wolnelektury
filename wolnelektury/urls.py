@@ -4,6 +4,7 @@ import os
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
+from django.views.generic import RedirectView
 import wolnelektury_core.views
 
 
@@ -55,20 +56,20 @@ urlpatterns += patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
-urlpatterns += patterns('django.views.generic.simple',
+urlpatterns += patterns('',
     # old static pages - redirected
-    url(r'^1procent/$', 'redirect_to',
-        {'url': 'http://nowoczesnapolska.org.pl/wesprzyj_nas/'}),
-    url(r'^epub/$', 'redirect_to',
-        {'url': '/katalog/lektury/'}),
-    url(r'^mozesz-nam-pomoc/$', 'redirect_to',
-        {'url': '/info/mozesz-nam-pomoc'}),
-    url(r'^o-projekcie/$', 'redirect_to',
-        {'url': '/info/o-projekcie'}),
-    url(r'^widget/$', 'redirect_to',
-        {'url': '/info/widget'}),
-    url(r'^wolontariat/$', 'redirect_to',
-        {'url': '/info/mozesz-nam-pomoc/'}),
+    url(r'^1procent/$', RedirectView.as_view(
+        url='http://nowoczesnapolska.org.pl/wesprzyj_nas/')),
+    url(r'^epub/$', RedirectView.as_view(
+        url='/katalog/lektury/')),
+    url(r'^mozesz-nam-pomoc/$', RedirectView.as_view(
+        url='/info/mozesz-nam-pomoc')),
+    url(r'^o-projekcie/$', RedirectView.as_view(
+        url='/info/o-projekcie')),
+    url(r'^widget/$', RedirectView.as_view(
+        url='/info/widget')),
+    url(r'^wolontariat/$', RedirectView.as_view(
+        url='/info/mozesz-nam-pomoc/')),
 )
     
 

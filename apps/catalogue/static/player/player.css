@@ -15,3 +15,7 @@
 .play:hover {
 	color: #0D7E85;
 }
+
+.daisy-list {
+    list-style: none;
+}

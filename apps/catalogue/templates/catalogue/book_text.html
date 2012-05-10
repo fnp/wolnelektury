@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load url from future %}
 {% load static from staticfiles %}
 {% load chunks compressed catalogue_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -25,6 +26,10 @@
                 <li><a class="menu" href="#info">{% trans "Infobox" %}</a></li>
                 <li><a href="{{ book.get_absolute_url }}">{% trans "Book's page" %}</a></li>
                 <li><a class="menu" href="#download">{% trans "Download" %}</a></li>
+                {% if related.media.mp3 or related.media.ogg %}
+                    <li><a class="open-player" target="_blank" href="{% url "book_player" book.slug %}">
+                        {% trans "Listen" %}</a></li>
+                {% endif %}
             </ul>
         </div>
         <div id="info">
@@ -35,16 +40,20 @@
             {% if book.pdf_file %}
             <li><a href="{{ book.pdf_file.url}}">PDF</a> {% trans "to print" %}</li>
             {% endif %}
-            {% if  book.epub_file %}
+            {% if book.epub_file %}
             <li><a href="{{ book.epub_file.url}}">EPUB</a> {% trans "for a reader" %}</li>
             {% endif %}
-            {% if  book.mobi_file %}
+            {% if book.mobi_file %}
             <li><a href="{{ book.mobi_file.url}}">MOBI</a> {% trans "for Kindle" %}</li>
             {% endif %}
-            {% if  book.txt_file %}
+            {% if book.txt_file %}
             <li><a href="{{ book.txt_file.url}}">TXT</a> {% trans "for advanced usage" %}</li>
             {% endif %}
-            <li><a href="{% url custom_pdf_form book.slug %}">{% trans "Download a custom PDF" %}</a></li>
+            {% custom_pdf_link_li book %}
+            {% if related.media.mp3 or related.media.ogg or related.media.daisy %}
+                <li>{% trans "Download all audiobooks for this book" %}:
+                    {% download_audio book %}</li> 
+            {% endif %}
             </ul>
         </div>
         <div id="header">
