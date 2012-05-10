@@ -10,6 +10,7 @@ from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
 from catalogue.models import Book, Tag, Fragment
+from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from catalogue.views import JSONResponse
 from search import Search, JVM, SearchResult
 from lucene import StringReader
@@ -89,6 +90,18 @@ def hint(request):
 
     tags = search.hint_tags(prefix, pdcounter=True)
     books = search.hint_books(prefix)
+
+    
+    def is_dupe(tag):
+        if isinstance(tag, PDCounterAuthor):
+            if filter(lambda t: t.slug == tag.slug and t != tag, tags):
+                return True
+        elif isinstance(tag, PDCounterBook):
+            if filter(lambda b: b.slug == tag.slug, tags):
+                return True
+        return False
+
+    tags = filter(lambda t: not is_dupe(t), tags)
 
     def category_name(c):
         if c.startswith('pd_'):

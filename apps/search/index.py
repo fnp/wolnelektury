@@ -1409,8 +1409,9 @@ class Search(IndexStore):
                 else:
                     tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
                     # don't add the pdcounter tag if same tag already exists
-                if not (is_pdcounter and filter(lambda t: tag.slug == t.slug, tags)):
-                    tags.append(tag)
+
+                tags.append(tag)
+
             except catalogue.models.Tag.DoesNotExist: pass
             except PDCounterAuthor.DoesNotExist: pass
             except PDCounterBook.DoesNotExist: pass
