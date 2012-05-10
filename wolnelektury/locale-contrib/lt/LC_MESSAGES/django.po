@@ -1,0 +1,519 @@
+# Lithuanian translations for PROJECT.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"PO-Revision-Date: 2012-04-05 16:03+0100\n"
+"Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
+"Language-Team: lt <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:36
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:167
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:341
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:40
+msgid "Remember Me"
+msgstr "Įsiminti mane"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:52
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:113
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:284
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:363
+msgid "E-mail"
+msgstr "El. paštas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:57
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:104
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:85
+msgid "This account is currently inactive."
+msgstr "Ši paskyra yra šiuo metu neaktyvi."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:88
+msgid "The e-mail address and/or password you specified are not correct."
+msgstr "El. pašto adresas ir/arba slaptažodis nėra teisingas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:90
+msgid "The username and/or password you specified are not correct."
+msgstr "Vartotojo vardas ir/arba slaptažodis nėra teisingas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:116
+msgid "E-mail (optional)"
+msgstr "El. paštas (pasirenkamas)"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:127
+msgid "Usernames can only contain letters, numbers and underscores."
+msgstr "Vartotojo vardas gali būti sudarytas tik iš raidžių, skaičių ir pabraukimo brūkšnelių."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:133
+msgid "This username is already taken. Please choose another."
+msgstr "Šis vartotojo vardas yra užimtas. Prašome pasirinkite kitą."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:141
+msgid "A user is registered with this e-mail address."
+msgstr "Šiuo elektroninio pašto adresu jau yra užsiregistravęs vartotojas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:171
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:345
+msgid "Password (again)"
+msgstr "Slaptažodis (pakartoti)"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:198
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:330
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:352
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:428
+msgid "You must type the same password each time."
+msgstr "Kiekvieną kartą turite įvesti tokį patį slaptažodį."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:234
+msgid "Your e-mail address has already been verified"
+msgstr "Jūsų el.pašto adresas jau buvo patikrintas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:244
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/utils.py:93
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:101
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:117
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s"
+msgstr "El. pašto patvirtinimas buvo išsiųstas į %(email)s"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:292
+msgid "This e-mail address already associated with this account."
+msgstr "Šis el. pašto adresas jau yra susietas su šia paskyra."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:293
+msgid "This e-mail address already associated with another account."
+msgstr "Šis el. pašto adresas jau yra susietas su kita paskyra."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:310
+msgid "Current Password"
+msgstr "Dabartinis slaptažodis"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:314
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:411
+msgid "New Password"
+msgstr "Naujas slaptažodis"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:318
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:415
+msgid "New Password (again)"
+msgstr "Naujas slaptažodis (pakartoti)"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:324
+msgid "Please type your current password."
+msgstr "Prašome įvesti jūsų dabartinį slaptažodį."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:373
+msgid "The e-mail address is not assigned to any user account"
+msgstr "Šis el. pašto adresas nėra priskirtas jokio vartotojo paskyrai."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/forms.py:393
+msgid "Password Reset E-mail"
+msgstr "Slaptažodžio atstatymo el. laiškas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/utils.py:72
+#, python-format
+msgid "Successfully signed in as %(user)s."
+msgstr "Sėkmingai prisijungęs kaip %(user)s."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:133
+#, python-format
+msgid "Removed e-mail address %(email)s"
+msgstr "Pašalintas el. pašto adresas %(email)s"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:147
+msgid "Primary e-mail address set"
+msgstr "Nustatytas pagrindinis el. pašto adresas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:168
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:241
+msgid "Password successfully changed."
+msgstr "Slaptažodis sėkmingai pakeistas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:191
+msgid "Password successfully set."
+msgstr "Slaptažodis sėkmingai nustatytas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/account/views.py:255
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:10
+msgid "You have signed out."
+msgstr "Jūs atsijungėte."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/openid/forms.py:6
+msgid "OpenID"
+msgstr "OpenID"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/forms.py:32
+msgid "Your local account has no password setup."
+msgstr "Jūsų vietinės paskyros slaptažodis dar yra nenustatytas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/forms.py:36
+msgid "Your local account has no verified e-mail address."
+msgstr "Jūsų vietinės paskyros el. pašto adresas dar nepatikrintas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/helpers.py:112
+msgid "The social account has been connected to your existing account"
+msgstr "Ši socialinė paskyra buvo prijungta prie jūsų paskyros"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/oauth.py:89
+#, python-format
+msgid "Invalid response while obtaining request token from \"%s\"."
+msgstr "Neteisingas atsakas gaunant užklausos žetoną iš \"%s\"."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/oauth.py:111
+#, python-format
+msgid "Invalid response while obtaining access token from \"%s\"."
+msgstr "Neteisingas atsakas gaunant prieigos žetoną iš \"%s\"."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/oauth.py:124
+#, python-format
+msgid "No request token saved for \"%s\"."
+msgstr "Nėra užklausos žetono įrašyto \"%s\"."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/oauth.py:172
+#, python-format
+msgid "No access token saved for \"%s\"."
+msgstr "Nėra prieigos žetono įrašyto \"%s\"."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/oauth.py:192
+#, python-format
+msgid "No access to private resources at \"%s\"."
+msgstr "Trūksta prieigos prie privačių išteklių \"%s\"."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/socialaccount/views.py:68
+msgid "The social account has been disconnected"
+msgstr "Socialinė paskyra buvo atjungta"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:6
+msgid "Account"
+msgstr "Paskyra"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:9
+msgid "E-mail Addresses"
+msgstr "El. pašto adresai"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:12
+msgid "The following e-mail addresses are associated to your account:"
+msgstr "Šie el. pašto adresai yra priskirti jūsų paskyrai:"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:26
+msgid "Verified"
+msgstr "Patikrintas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:28
+msgid "Unverified"
+msgstr "Nepatikrintas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:30
+msgid "Primary"
+msgstr "Pirminis"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:36
+msgid "Make Primary"
+msgstr "Padaryti pirminiu"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:37
+msgid "Re-send Verification"
+msgstr "Dar kartą siųsti patikrinimą"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:38
+msgid "Remove"
+msgstr "Pašalinti"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:45
+msgid "Warning:"
+msgstr "Įspėjimas:"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:45
+msgid "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc."
+msgstr "Šiuo metu neturite nustatyto jokio el. pašto adreso. Jūs tikrai turėtumėte pridėti el. pašto adresą, kad gautumėte pranešimus, atstatytumėte jūsų slaptažodį ir t.t."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:50
+msgid "Add E-mail Address"
+msgstr "Pridėti el. pašto adresą"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:57
+msgid "Add E-mail"
+msgstr "Pridėti el. paštą"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/email.html:69
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Ar esate tikri, kad norite pašalinti pasirinktą  el. pašto adresą?"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/language_change.html:6
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/language_change.html:9
+msgid "Language"
+msgstr "Kalba"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/language_change.html:11
+msgid "Pinax can be used in your preferred language."
+msgstr "Pinax gali būti naudojamas jūsų pageidaujama kalba."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/language_change.html:18
+msgid "Change my language"
+msgstr "Keisti kalbą"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/login.html:7
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/login.html:12
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/login.html:47
+msgid "Sign In"
+msgstr "Prisijungti"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/login.html:20
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a \n"
+"href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and sign in\n"
+"below:"
+msgstr ""
+"Prašome prisijungti su viena\n"
+"iš jūsų third party paskyrų. Arba <a \n"
+"href=\"%(signup_url)s\">užsiregistruoti</a> %(site_name)s paskyrai sukurti ir prisijungti\n"
+"žemiau:"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/login.html:28
+msgid "or"
+msgstr "arba"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/login.html:45
+msgid "Forgot Password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:8
+msgid "Signed Out"
+msgstr "Atsijungęs"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_change.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_change.html:8
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_change.html:15
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:8
+msgid "Change Password"
+msgstr "Keisti slaptažodį"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete.html:8
+msgid "Delete Password"
+msgstr "Pašalinti slaptažodį"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete.html:9
+msgid "You may delete your password since you are currently logged in using OpenID."
+msgstr "Galite pašalinti jūsų slaptažodį, nes esate prisijungę naudodamiesi OpenID."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete.html:12
+msgid "delete my password"
+msgstr "pašalinti mano slaptažodį"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete_done.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete_done.html:8
+msgid "Password Deleted"
+msgstr "Slaptažodis pašalintas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_delete_done.html:9
+msgid "Your password has been deleted."
+msgstr "Jūsų slaptažodis pašalintas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:7
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:11
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_done.html:6
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr "Slaptažodžio atstatymas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:16
+msgid "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it."
+msgstr "Pamiršote slaptažodį? Įveskite jūsų el. pašto adresą žemiau ir mes išsiųsime jums el. laišką leidžiantį jį atstatyti."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:23
+msgid "Reset My Password"
+msgstr "Atstatyti mano slaptažodį"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:28
+#, python-format
+msgid "If you have any trouble resetting your password, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Jei turite problemų su jūsų slaptažodžio atstatymu, susisiekite su mumis <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_done.html:15
+#, python-format
+msgid "We have sent you an e-mail. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Jums išsiuntėme el. laišką. Jei to negausite per kelias minutes, susisiekite su mumis <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr "Blogas žetonas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid "The password reset link was invalid, possibly because it has already been used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</a>."
+msgstr "Atstatymo slaptažodžio nuoroda buvo netinkama, galbūt, nes jau buvo panaudota. Prašome paprašyti <a href=\"%(passwd_reset_url)s\">naujo slaptažodžio atstatymo</a>."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:20
+msgid "change password"
+msgstr "keisti slaptažodį"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:25
+msgid "Your password is now changed."
+msgstr "Jūsų slaptažodis pakeistas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_key_message.txt:9
+#, python-format
+msgid ""
+"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click the link below to reset your password.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"In case you forgot, your username is %(username)s.\n"
+"\n"
+"Thanks for using our site!\n"
+msgstr ""
+"Gavote šį el. laišką, nes paprašėte, arba kitas asmuo paprašė, atstatyti slaptažodį jūsų paskyrai čia %(site_domain)s.\n"
+"Galite į jį nekreipti dėmesio jei neprašėte slaptažodžio atstatymo. Paspauskite jūsų slaptažodžio atstatymui skirtą nuorodą.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"Jūsų vartotojo vardas yra %(username)s"
+"\n"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_set.html:6
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_set.html:9
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/password_set.html:16
+msgid "Set Password"
+msgstr "Nustatyti slaptažodį"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:6
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:6
+msgid "Signup"
+msgstr "Registracija"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:9
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:24
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:9
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:22
+msgid "Sign Up"
+msgstr "Registruotis"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:14
+msgid "Already have an account?"
+msgstr "Jau turite paskyrą?"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:14
+msgid "Sign in"
+msgstr "Prisijungti"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/timezone_change.html:6
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/timezone_change.html:9
+msgid "Timezone"
+msgstr "Laiko juosta"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/timezone_change.html:11
+msgid "Pinax can localize all times into your preferred timezone. Change your timezone below."
+msgstr "Pinax gali pritaikyti laiką prie jūsų pasirinktos laiko juostos. Keiskite laiko juostą žemiau."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/timezone_change.html:18
+msgid "Change my timezone"
+msgstr "Keisti mano laiko juostą"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/verification_sent.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/verification_sent.html:8
+msgid "Verify Your E-mail Address"
+msgstr "Patikrinkite jūsų el. pašto adresą"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/verification_sent.html:10
+#, python-format
+msgid "We have sent you an e-mail to <b>%(email)s</b> for verification. Follow the link provided to finalize the signup process. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Išsiuntėme patvirtinimo el. laišką į <b>%(email)s</b>. Paspauskite pateiktą nuorodą, norėdami baigti registracijos procesą. Jei to negausite per kelias minutes, susisiekite su mumis <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr "Pastaba"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr "jūs jau esate prisijungęs kaip %(user_display)s."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/emailconfirmation/confirm_email.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/emailconfirmation/confirm_email.html:8
+msgid "E-mail Address Confirmation"
+msgstr "El. pašto adreso patvirtinimas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/emailconfirmation/confirm_email.html:11
+#, python-format
+msgid "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for user '%(user)s'."
+msgstr "Patvirtinote, kad <a href=\"mailto:%(email)s\">%(email)s</a> yra '%(user)s' vartotojo el. pašto adresas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/emailconfirmation/confirm_email.html:13
+msgid "Invalid confirmation key."
+msgstr "Netinkamas patvirtinimo raktas."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/openid/login.html:10
+msgid "OpenID Sign In"
+msgstr "OpenID prisijungimas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/account_inactive.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/account_inactive.html:8
+msgid "Account Inactive"
+msgstr "Paskyra neaktyvi"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/account_inactive.html:10
+msgid "This account is inactive."
+msgstr "Ši paskyra neaktyvi."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/authentication_error.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/authentication_error.html:8
+msgid "Social Network Login Failure"
+msgstr "Klaida "
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/authentication_error.html:10
+msgid "An error occured while attempting to login via your social network account."
+msgstr "Įvyko klaida prisijungiant per jūsų socialinio tinklo paskyrą."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:8
+msgid "Account Connections"
+msgstr "Paskyros jungtys"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:11
+msgid "You can sign in to your account using any of the following third party accounts:"
+msgstr "Galite prisijungti prie jūsų paskyros naudodamiesi šiomis 3rd party paskyromis:"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:46
+msgid "Add a 3rd Party Account"
+msgstr "Pridėti 3rd Party Paskyra"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/login_cancelled.html:5
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/login_cancelled.html:9
+msgid "Login Cancelled"
+msgstr "Prisijungimas atšauktas"
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/login_cancelled.html:13
+#, python-format
+msgid "You decided to cancel logging in to our site using one of your exisiting accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr "Nusprendėte atšaukti prisijungimą prie mūsų interneto svetainės naudodamiesi viena iš jūsų paskyrų. Jei įvyko klaida, prašome pradėti čia <a href=\"%(login_url)s\">sign in</a>."
+
+#: /home/marcin/.virtualenvs/wl/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:12
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to \n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+"Jūs ruošiatės naudotis jūsų %(provider_name)s paskyra, kad prisijungtumėte prie \n"
+"%(site_name)s. Prašome užpildyti šią formą:"
+

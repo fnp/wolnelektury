@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
-"PO-Revision-Date: 2012-03-01 16:13+0100\n"
-"Last-Translator: Aneta\n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"PO-Revision-Date: 2012-04-03 18:01+0100\n"
+"Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,53 +17,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: models.py:12
+#: models.py:13
 msgid "name"
 msgstr "pavadinimas"
 
-#: models.py:13 models.py:64
+#: models.py:14
+#: models.py:65
 msgid "slug"
 msgstr "slug"
 
-#: models.py:14
+#: models.py:15
 msgid "sort key"
 msgstr "rikiavimo raktas"
 
-#: models.py:15 models.py:41
+#: models.py:16
+#: models.py:42
 msgid "description"
 msgstr "aprašas"
 
-#: models.py:16
+#: models.py:17
 msgid "year of death"
 msgstr "mirties metai"
 
-#: models.py:22 models.py:62
+#: models.py:23
+#: models.py:63
 msgid "author"
 msgstr "autorius"
 
-#: models.py:23
+#: models.py:24
 msgid "authors"
 msgstr "autoriai"
 
-#: models.py:61
+#: models.py:62
 msgid "title"
 msgstr "pavadinimas"
 
-#: models.py:63
+#: models.py:64
 msgid "goes to public domain"
 msgstr "į viešąją sritį"
 
-#: models.py:65
+#: models.py:66
 msgid "translator"
 msgstr "vertėjas"
 
-#: models.py:69
+#: models.py:70
 msgid "book stub"
 msgstr "book stub"
 
-#: models.py:70
+#: models.py:71
 msgid "book stubs"
 msgstr "book stubs"
+
+#: templates/pdcounter/author_detail.html:25
+msgid "Read work's study of this author on Lektury.Gazeta.pl"
+msgstr "Skaitykite šio autoriaus kūrinio aprašymą interneto svetainėje Lektury.Gazeta.pl"
+
+#: templates/pdcounter/author_detail.html:30
+msgid "Read article about this author on Wikipedia"
+msgstr "Skaitykite straipsnį apie šį autorių Vikipedijoje"
+
+#: templates/pdcounter/author_detail.html:35
+msgid "This author's works are copyrighted."
+msgstr "Šio autoriaus  kūriniai yra autorinių teisių saugomi."
+
+#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:44
+msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works."
+msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Sužinokite</a> kodėl šio autoriaus kūriniai negali būti publikuojami internetinėje bibliotekoje."
+
+#: templates/pdcounter/author_detail.html:39
+msgid "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon."
+msgstr "Šio autoriaus kūriniai yra viešai prieinami ir netrukus bus publikuoti interneto svetainės Wolne Lektury internetinėje bibliotekoje.  "
+
+#: templates/pdcounter/author_detail.html:42
+msgid "This author's works will become part of public domain and will be allowed to be published without restrictions in"
+msgstr "Šio autoriaus kūriniai netrukus bus viešai prieinami ir galės būti publikuojami be apribojimų"
+
+#: templates/pdcounter/book_stub_detail.html:16
+msgid "This work is in public domain and will be published on Internet school library of Wolne Lektury soon."
+msgstr "Šis kūrinys yra viešai prieinamas ir netrukus bus publikuotas interneto svetainės Wolne Lektury internetinėje bibliotekoje."
+
+#: templates/pdcounter/book_stub_detail.html:19
+msgid "This work will become part of public domain and will be allowed to be published without restrictions in"
+msgstr "Šis kūrinys netrukus bus viešai prieinamas ir galės būti publikuojamas be apribojimų"
+
+#: templates/pdcounter/book_stub_detail.html:21
+#: templates/pdcounter/book_stub_detail.html:24
+msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work."
+msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Sužinokite</a> kodėl šis kūrinys negali būti publikuojamas internetinėje bibliotekoje."
+
+#: templates/pdcounter/book_stub_detail.html:23
+msgid "This work is copyrighted."
+msgstr "Šis kūrinis yra autorinių teisių saugomas."
 
 #~ msgid "year of translator's death"
 #~ msgstr "vertėjo mirimo metai"
