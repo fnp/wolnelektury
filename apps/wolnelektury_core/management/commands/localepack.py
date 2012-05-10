@@ -27,6 +27,11 @@ class Locale(object):
     def generate(self, languages):
         pass
 
+def copy_f(frm, to):
+    "I can create a necessary dest directiories, yey!"
+    if not os.path.exists(os.path.dirname(to)):
+        os.makedirs(os.path.dirname(to))
+    shutil.copyfile(frm,to)
 
 class AppLocale(Locale):
     def __init__(self, appmod):
@@ -46,7 +51,7 @@ class AppLocale(Locale):
         for lc in languages:
             lc = lc[0]
             if os.path.exists(os.path.join(self.path, 'locale', lc)):
-                shutil.copy2(os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'),
+                copy_f(os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'),
                           os.path.join(output_directory, lc, self.name + '.po'))
 
 
@@ -56,7 +61,7 @@ class AppLocale(Locale):
                 out = os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po')
                 if not os.path.exists(os.path.dirname(out)):
                     os.makedirs(os.path.dirname(out))
-                shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
+                copy_f(os.path.join(input_directory, lc, self.name + '.po'),
                              out)
 
         wd = os.getcwd()
@@ -115,12 +120,12 @@ class CustomLocale(Locale):
     def save(self, output_directory, languages):
         for lc in zip(*languages)[0]:
             if os.path.exists(self.po_file(lc)):
-                shutil.copy2(self.po_file(lc),
+                copy_f(self.po_file(lc),
                              os.path.join(output_directory, lc, self.name + '.po'))
 
     def load(self, input_directory, languages):
         for lc in zip(*languages)[0]:
-            shutil.copy2(os.path.join(input_directory, lc, self.name + '.po'),
+            copy_f(os.path.join(input_directory, lc, self.name + '.po'),
                          self.po_file(lc))
         os.system('pybabel compile -D django -d %s' % os.path.dirname(self.out_file))
 
