@@ -26,7 +26,11 @@ PIWIK_API_VERSION = 1
 
 
 # Retrieve piwik information
-_host = urlparse.urlsplit(settings.PIWIK_URL).netloc
+try:
+    _host = urlparse.urlsplit(settings.PIWIK_URL).netloc
+except AttributeError:
+    logger.debug("PIWIK_URL not configured.")
+    _host = None
 try:
     _id_piwik = PiwikSite.objects.get(site=Site.objects.get_current().id).id_site
 except PiwikSite.DoesNotExist:
@@ -69,5 +73,4 @@ def piwik_track(klass_or_method):
         klass.__call__ = wrap
         return klass
     else:
-        print klass_or_method
         return wrap
