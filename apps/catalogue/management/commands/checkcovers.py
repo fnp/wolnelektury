@@ -44,7 +44,7 @@ class Command(BaseCommand):
         by_license = defaultdict(list)
         no_license = []
 
-        re_flickr = re.compile(ur'https?://(?:www.)?flickr.com/photos/([^/]*)/.*')
+        re_flickr = re.compile(ur'https?://(?:www\.|secure\.)?flickr.com/photos/([^/]*)/.*')
         re_license = re.compile(ur'.*,\s*(CC.*)')
 
         with transaction.commit_on_success():
