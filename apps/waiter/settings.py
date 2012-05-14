@@ -1,10 +1,10 @@
-from os.path import join
+from os.path import abspath, join
 from django.conf import settings
 
 try:
-    WAITER_ROOT = settings.WAITER_ROOT
+    WAITER_ROOT = abspath(settings.WAITER_ROOT)
 except AttributeError:
-    WAITER_ROOT = join(settings.MEDIA_ROOT, 'waiter')
+    WAITER_ROOT = abspath(join(settings.MEDIA_ROOT, 'waiter'))
 
 try:
     WAITER_URL = settings.WAITER_URL
