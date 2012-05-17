@@ -8,6 +8,7 @@ var __bind = function (self, fn) {
 	options: {
           minLength: 0,
 	  dataType: "json",
+          host: '',
         },
 
 	_create: function() {
@@ -32,7 +33,7 @@ var __bind = function (self, fn) {
    
 	render_item: function (ul, item) {
 	    return $("<li></li>").data('item.autocomplete', item)
-		.append('<a href="'+item.url+'"><span class="search-hint-label">'+item.label+'</span>'+
+		.append('<a href="'+this.options.host+item.url+'"><span class="search-hint-label">'+item.label+'</span>'+
 			'<span class="search-hint-category mono">'+item.category+'</span></a>')
 		.appendTo(ul);
 	}, 

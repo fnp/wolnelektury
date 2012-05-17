@@ -71,7 +71,8 @@ scriptSearch.onload = function() {
                                 error: function() { cb([]); }
                     });
                         },
-            dataType: "jsonp"});
+            dataType: "jsonp",
+            host: "http://"+host});
 }
 scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { scriptSearch.onload(); } };
 
