@@ -25,7 +25,7 @@ var __bind = function (self, fn) {
 
 	enter: function(event, ui) {
 	    if (ui.item.url != undefined) {
-		location.href = ui.item.url;
+		location.href = this.options.host+ui.item.url;
 	    } else {
 		this.element.closest('form').submit();
 	    }
