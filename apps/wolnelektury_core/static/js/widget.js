@@ -10,7 +10,7 @@ var body        = document.getElementsByTagName('body')
 var stylesheet = document.createElement('link');
 var stylesheetJQUI = document.createElement('linl');
 
-var host = 'www.wolnelektury.pl';
+var host = 'wolnelektury.pl';
 
 /* set attributes of created elements */
 stylesheet.setAttribute('type', 'text/css');
