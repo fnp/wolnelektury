@@ -18,6 +18,7 @@ from suggest.forms import PublishingSuggestForm
 from time import sleep
 import re
 import enchant
+import json
 
 dictionary = enchant.Dict('pl_PL')
 
@@ -108,17 +109,23 @@ def hint(request):
             c = c[len('pd_'):]
         return _(c)
 
-    return JSONResponse(
-        [{'label': t.name,
-          'category': category_name(t.category),
-          'id': t.id,
-          'url': t.get_absolute_url()}
-          for t in tags] + \
-          [{'label': b.title,
-            'category': _('book'),
-            'id': b.id,
-            'url': b.get_absolute_url()}
-            for b in books])
+    callback = request.GET.get('callback', None)
+    data = [{'label': t.name,
+              'category': category_name(t.category),
+              'id': t.id,
+              'url': t.get_absolute_url()}
+              for t in tags] + \
+              [{'label': b.title,
+                'category': _('book'),
+                'id': b.id,
+                'url': b.get_absolute_url()}
+                for b in books]
+    if callback:
+        return HttpResponse("%s(%s);" % (callback, json.dumps(data)),
+                            content_type="application/json; charset=utf-8")
+    else:
+        return JSONResponse(data)
+            
 
 
 def main(request):

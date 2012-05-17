@@ -7,6 +7,7 @@ var __bind = function (self, fn) {
     $.widget("wl.search", {
 	options: {
           minLength: 0,
+	  dataType: "json",
         },
 
 	_create: function() {
@@ -15,6 +16,7 @@ var __bind = function (self, fn) {
 		select: __bind(this, this.enter),
 		focus: function() { return false; },
 		source: this.element.data('source'),
+		dataType: options.dataType,
 	    };
 
 	    this.element.autocomplete($.extend(opts, this.options))
