@@ -60,7 +60,18 @@ scriptUI.onreadystatechange = function() { if (scriptUI.readyState == 'complete'
 
 scriptSearch.onload = function() {
     	var s = $('#id_qq');
-	s.search({source: s.attr('data-source'), dataType: "jsonp"});
+        var url = s.attr('data-source');
+        s.search({source: 
+                        function(req, cb) {
+                        $.ajax({url: url,
+                                dataType: "jsonp",
+                                data: { term: req.term },
+                                type: "GET",
+                                success: function(data) { cb(data); },
+                                error: function() { cb([]); }
+                    });
+                        },
+            dataType: "jsonp"});
 }
 scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { scriptSearch.onload(); } };
 
