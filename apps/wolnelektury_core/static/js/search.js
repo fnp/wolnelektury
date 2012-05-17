@@ -11,12 +11,23 @@ var __bind = function (self, fn) {
         },
 
 	_create: function() {
+            console.log("dataType: " + this.options.dataType);
+            var url = this.element.data('source');
 	    var opts = { 
 		minLength: this.options.minLength,
 		select: __bind(this, this.enter),
 		focus: function() { return false; },
-		source: this.element.data('source'),
-		dataType: options.dataType,
+		source: function(req, cb) {
+                    $.ajax({url: url,
+                            dataType: "jsonp",
+                            type: "GET",
+                            success: function(data) {
+                                cb(data);
+                            },
+                            error: function() { cb([]); }
+
+                });
+                },
 	    };
 
 	    this.element.autocomplete($.extend(opts, this.options))

@@ -60,7 +60,7 @@ scriptUI.onreadystatechange = function() { if (scriptUI.readyState == 'complete'
 
 scriptSearch.onload = function() {
     	var s = $('#id_qq');
-	s.search({source: s.attr('data-source')});
+	s.search({source: s.attr('data-source'), dataType: "jsonp"});
 }
 scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { scriptSearch.onload(); } };
 
