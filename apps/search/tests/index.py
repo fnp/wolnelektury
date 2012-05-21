@@ -47,8 +47,7 @@ class BookSearchTests(WLTestCase):
             b.book_id == self.book.id
         a = SearchResult.aggregate(books)
         # just one fragment hit.
-        assert len(filter(lambda x: x[1], a[0].hits)) == 1
-        print a[0].process_hits()
+        assert len(a[0].hits) == 1
 
     def test_search_perfect_author_title(self):
         books = self.search.search_perfect_book("szarzyński anusie")
