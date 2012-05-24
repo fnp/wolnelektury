@@ -11,7 +11,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from catalogue.models import Book, BookMedia
-from reporting.utils import render_to_pdf, generated_file_view
+from reporting.utils import render_to_pdf, render_to_csv, generated_file_view
 
 
 @staff_member_required
@@ -42,3 +42,11 @@ def catalogue_pdf(path):
     render_to_pdf(path, 'reporting/catalogue.texml', locals(), {
             "wl-logo.png": os.path.join(settings.STATIC_ROOT, "img/logo-big.png"),
         })
+
+
+@generated_file_view('reports/katalog.csv', 'application/csv', 
+        send_name=lambda: 'wolnelektury_%s.csv' % date.today(),
+        signals=[Book.published])
+def catalogue_csv(path):
+    books_by_author, orphans, books_by_parent = Book.book_list()
+    render_to_csv(path, 'reporting/catalogue.csv', locals())

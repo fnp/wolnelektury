@@ -1,0 +1,1 @@
+{% load catalogue_tags %}{% book_tree_texml "" orphans books_by_parent %}{% for author, group in books_by_author.items %}{% if group %}{% book_tree_csv author group books_by_parent %}{% endif %}{% endfor %}

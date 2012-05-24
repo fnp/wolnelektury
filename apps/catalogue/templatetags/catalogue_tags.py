@@ -55,7 +55,6 @@ def html_title_from_tags(tags):
         template.render(Context({'tag': tag, 'category': _(tag.category)})) for tag in tags))
     
 
-
 def simple_title(tags):
     title = []
     for tag in tags:
@@ -169,12 +168,35 @@ def book_tree_texml(book_list, books_by_parent, depth=1):
             %(children)s
             """ % {
                 "depth": depth,
-                "title": book.title, 
+                "title": book.title,
                 "audiences": ", ".join(book.audiences_pl()),
                 "audiobook": "audiobook" if book.has_media('mp3') else "",
                 "children": book_tree_texml(books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
             } for book in book_list)
 
+
+@register.simple_tag
+def book_tree_csv(author, book_list, books_by_parent, depth=1, max_depth=3, delimeter="\t"):
+    def quote_if_necessary(s):
+        try:
+            s.index(delimeter)
+            s.replace('"', '\\"')
+            return '"%s"' % s
+        except ValueError:
+            return s
+        
+    return "".join("""%(author)s%(d)s%(preindent)s%(title)s%(d)s%(postindent)s%(audiences)s%(d)s%(audiobook)s
+%(children)s""" % {
+                "d": delimeter,
+                "preindent": delimeter * (depth - 1),
+                "postindent": delimeter * (max_depth - depth), 
+                "depth": depth,
+                "author": quote_if_necessary(author.name),
+                "title": quote_if_necessary(book.title),
+                "audiences": ", ".join(book.audiences_pl()),
+                "audiobook": "audiobook" if book.has_media('mp3') else "",
+                "children": book_tree_csv(author, books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
+            } for book in book_list)
 
 @register.simple_tag
 def all_editors(extra_info):

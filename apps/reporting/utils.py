@@ -59,6 +59,27 @@ def render_to_pdf(output_path, template, context=None, add_files=None):
         shutil.rmtree(tempdir)
 
 
+def render_to_csv(output_path, template, context=None, add_files=None):
+    """Renders a TeXML document into a PDF file.
+
+    :param str output_path: is where the PDF file should go
+    :param str template: is a TeXML template path
+    :param context: is context for rendering the template
+    :param dict add_files: a dictionary of additional files XeTeX will need
+    """
+
+    from django.template.loader import render_to_string
+    
+    try:
+        os.makedirs(os.path.dirname(output_path))
+    except:
+        pass
+
+    rendered = render_to_string(template, context)
+    with open(output_path, 'w') as csv_file:
+        csv_file.write(rendered.encode('utf-8'))
+        
+
 def read_chunks(f, size=8192):
     chunk = f.read(size)
     while chunk:
