@@ -346,7 +346,7 @@ class Book(models.Model):
 
     cover = models.FileField(_('cover'), upload_to=book_upload_path('png'),
                 null=True, blank=True)
-    ebook_formats = ['pdf', 'epub', 'mobi', 'txt']
+    ebook_formats = ['pdf', 'epub', 'mobi', 'fb2', 'txt']
     formats = ebook_formats + ['html', 'xml']
 
     parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
@@ -546,6 +546,9 @@ class Book(models.Model):
     def build_mobi(self, *args, **kwargs):
         """(Re)builds MOBI."""
         return tasks.build_mobi.delay(self.pk, *args, **kwargs)
+    def build_fb2(self, *args, **kwargs):
+        """(Re)build FB2"""
+        return tasks.build_fb2.delay(self.pk, *args, **kwargs)
     def build_txt(self, *args, **kwargs):
         """(Re)builds TXT."""
         return tasks.build_txt.delay(self.pk, *args, **kwargs)
@@ -603,7 +606,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
-            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True,
+            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True, build_fb2=True,
             search_index=True, search_index_tags=True, search_index_reuse=False):
 
         # check for parts before we do anything
@@ -672,6 +675,9 @@ class Book(models.Model):
 
         if not settings.NO_BUILD_MOBI and build_mobi:
             book.build_mobi()
+
+        if not settings.NO_BUILD_FB2 and build_fb2:
+            book.build_fb2()
 
         if not settings.NO_SEARCH_INDEX and search_index:
             book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)

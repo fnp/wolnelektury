@@ -7,15 +7,18 @@ MAX_TAG_LIST = 6
 NO_SEARCH_INDEX = False
 NO_BUILD_EPUB = False
 NO_BUILD_TXT = False
+NO_BUILD_FB2 = False
 # You'll need XeLaTeX to generate PDF files.
 NO_BUILD_PDF = True
 NO_CUSTOM_PDF = True
 # You'll need Calibre installed to generate MOBI files.
 NO_BUILD_MOBI = True
 
+
 ALL_EPUB_ZIP = 'wolnelektury_pl_epub'
 ALL_PDF_ZIP = 'wolnelektury_pl_pdf'
 ALL_MOBI_ZIP = 'wolnelektury_pl_mobi'
+ALL_FB2_ZIP = 'wolnelektury_pl_fb2'
 
 CATALOGUE_DEFAULT_LANGUAGE = 'pol'
 PUBLISH_PLAN_FEED = 'http://redakcja.wolnelektury.pl/documents/track/editor-proofreading/?published=false'
