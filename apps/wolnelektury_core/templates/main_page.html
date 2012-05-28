@@ -37,7 +37,7 @@
     <div class="infopages-box">
         <h2><span class='mono'>{% trans "News" %}</span></h2>
         {% cache 1800 latest-blog-posts %}
-            {% latest_blog_posts "http://nowoczesnapolska.org.pl/category/wolne-lektury/feed/" %}
+            {% latest_blog_posts "http://nowoczesnapolska.org.pl/feed/" %}
         {% endcache %}
     </div>
 
