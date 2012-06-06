@@ -1,23 +1,22 @@
 # -*- coding: utf-8 -*-
 import datetime
 from south.db import db
-from south.v2 import SchemaMigration
+from south.v2 import DataMigration
 from django.db import models
+from sortify import sortify
 
 
-class Migration(SchemaMigration):
+class Migration(DataMigration):
 
     def forwards(self, orm):
-        # Adding field 'Book.fb2_file'
-        db.add_column('catalogue_book', 'fb2_file',
-                      self.gf('django.db.models.fields.files.FileField')(default='', max_length=100, blank=True),
-                      keep_default=False)
-
+        "Write your forwards methods here."
+        for theme in orm.Tag.objects.filter(category='theme'):
+            theme.sort_key = sortify(theme.sort_key)
+            theme.save()
 
     def backwards(self, orm):
-        # Deleting field 'Book.fb2_file'
-        db.delete_column('catalogue_book', 'fb2_file')
-
+        "Write your backwards methods here."
+        pass
 
     models = {
         'auth.group': {
@@ -133,3 +132,4 @@ class Migration(SchemaMigration):
     }
 
     complete_apps = ['catalogue']
+    symmetrical = True

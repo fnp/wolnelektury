@@ -482,6 +482,7 @@ class Book(models.Model):
     def build_html(self):
         from django.core.files.base import ContentFile
         from slughifi import slughifi
+        from sortify import sortify
         from librarian import html
 
         meta_tags = list(self.tags.filter(
@@ -516,7 +517,7 @@ class Book(models.Model):
                     tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
                     if created:
                         tag.name = theme_name
-                        tag.sort_key = theme_name.lower()
+                        tag.sort_key = sortify(theme_name.lower())
                         tag.save()
                     themes.append(tag)
                 if not themes:
