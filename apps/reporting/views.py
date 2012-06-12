@@ -30,6 +30,9 @@ def stats_page(request):
         else:
             mt['deprecated'] = '-'
 
+    licenses = set(((b.extra_info.get('license'), b.extra_info.get('license_description'))
+        for b in Book.objects.all().iterator() if b.extra_info.get('license')))
+
     return render_to_response('reporting/main.html',
                 locals(), context_instance=RequestContext(request))
 

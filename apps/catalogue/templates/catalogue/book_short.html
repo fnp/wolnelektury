@@ -5,18 +5,23 @@
 <div class="book-box-inner" style="position: relative;">
 
 
-    {% if main_link %}<a href="{{ main_link }}">{% endif %}
-        {% if book.cover %}
+<div class="cover-area">
+    {% if book.cover %}
+        {% if main_link %}<a href="{{ main_link }}">{% endif %}
             <img src="
                 {% thumbnail book.cover "139x193" as thumb %}
                     {{ thumb.url }}
                 {% empty %}
                     {{ book.cover.url }}
                 {% endthumbnail %}
-            " alt="Cover" />
-        {% endif %}
-    {% if main_link %}</a>{% endif %}
-    <div class="book-box-body">
+            " alt="Cover" class="cover" />
+        {% if main_link %}</a>{% endif %}
+    {% endif %}
+    {% block cover-area-extra %}{% endblock %}
+</div>
+
+
+<div class="book-box-body">
 
 
 <div class="star {% if not request.user|likes:book %}un{% endif %}like">

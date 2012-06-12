@@ -12,6 +12,8 @@
 
     <div class="normal-text">
 
+    <h3>Audiobooki</h3>
+
     <table class="stats">
         <tr><th>Utwory</th></tr>
         <tr><td>Utwory:</td><td>{% count_books %}</td></tr>
@@ -32,6 +34,14 @@
             </tr>
         {% endfor %}
     </table>
+
+    <h3>Licencje</h3>
+    <ul>
+    {% for license, license_description in licenses %}
+        <li>{{ license }} ({{ license_description }})</li>
+    {% endfor %}
+    </ul>
+
 
     </div>
 

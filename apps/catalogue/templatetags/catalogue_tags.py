@@ -15,6 +15,7 @@ from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag
+from catalogue.constants import LICENSES
 
 register = template.Library()
 
@@ -435,4 +436,17 @@ def custom_pdf_link_li(book):
     return {
         'book': book,
         'NO_CUSTOM_PDF': settings.NO_CUSTOM_PDF,
+    }
+
+
+@register.inclusion_tag("catalogue/snippets/license_icon.html")
+def license_icon(license_url):
+    """Creates a license icon, if the license_url is known."""
+    known = LICENSES.get(license_url)
+    if known is None:
+        return {}
+    return {
+        "license_url": license_url,
+        "icon": "img/licenses/%s.png" % known['icon'],
+        "license_description": known['description'],
     }

@@ -1,10 +1,18 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
-{% load download_audio tag_list custom_pdf_link_li from catalogue_tags %}
+{% load download_audio tag_list custom_pdf_link_li license_icon from catalogue_tags %}
 {% load cite_promo from social_tags %}
 
 
 {% block box-class %}book-wide-box{% endblock %}
+
+
+{% block cover-area-extra %}
+{% if extra_info.license %}
+    {% license_icon extra_info.license %}
+{% endif %}
+{% endblock %}
+
 
 
 {% block book-box-extra-info %}

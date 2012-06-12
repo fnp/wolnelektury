@@ -88,14 +88,19 @@
 }
 */
 
-.book-mini-box img, .book-box img, .book-wide-box img, .search-result img {
+.book-mini-box img.cover,
+.book-box img.cover,
+.book-wide-box img.cover,
+.search-result img.cover {
     width: 13.9em;
     height: 19.3em;
 }
-.book-mini-box img {
+.book-mini-box img.cover {
     margin-bottom: 1.8em;
 }
-.book-box-inner img, .book-wide-box img {
+.book-box-inner .cover-area,
+.book-wide-box .cover-area
+{
     float: left;
     margin-right: 1.5em;
 }
@@ -282,6 +287,11 @@ ul.inline-items li {
 	font-size: 1.1em;
 }
 
+
+.book-wide-box .license-icon {
+    display:block;
+    margin-top: .5em
+}
 
 
 .star {
