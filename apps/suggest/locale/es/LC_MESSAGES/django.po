@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
 "PO-Revision-Date: 2012-02-18 13:20+0100\n"
 "Last-Translator: Anna Jopp <aniajopp@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:16 forms.py:57
+#: forms.py:16 forms.py:58
 msgid "Contact"
 msgstr "Contacto"
 
@@ -24,11 +24,11 @@ msgstr "Contacto"
 msgid "Description"
 msgstr "Descripción"
 
-#: forms.py:45 forms.py:100
+#: forms.py:46 forms.py:101
 msgid "Thank you for your suggestion."
 msgstr "Gracias por tu sugerencia"
 
-#: forms.py:46 forms.py:101
+#: forms.py:47 forms.py:102
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -36,19 +36,19 @@ msgstr ""
 "Gracias por tu comentario en WolneLektury.pl La sugerencia ha sido remitida "
 "a el coordinador del proyecto"
 
-#: forms.py:52 forms.py:107
+#: forms.py:53 forms.py:108
 msgid "Message sent automatically. Please do not reply."
 msgstr "La mensaje enviado automaticamente. No conteste por favor."
 
-#: forms.py:58 models.py:27
+#: forms.py:59 models.py:27
 msgid "books"
 msgstr "libros"
 
-#: forms.py:59 models.py:28
+#: forms.py:60 models.py:28
 msgid "audiobooks"
 msgstr "audiolibros"
 
-#: forms.py:63
+#: forms.py:64
 msgid "One of these fields is required."
 msgstr "Uno de estos campos es requerido"
 
