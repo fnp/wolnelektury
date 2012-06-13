@@ -7,63 +7,107 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
-"PO-Revision-Date: 2012-03-04 17:30+0100\n"
-"Last-Translator: xxx <xxx>\n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"PO-Revision-Date: 2012-05-28 14:18+0100\n"
+"Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:12
+#: models.py:13
 msgid "name"
 msgstr "назва"
 
-#: models.py:13 models.py:64
+#: models.py:14
+#: models.py:65
 msgid "slug"
 msgstr "slug"
 
-#: models.py:14
+#: models.py:15
 msgid "sort key"
 msgstr "ключ сортування"
 
-#: models.py:15 models.py:41
+#: models.py:16
+#: models.py:42
 msgid "description"
 msgstr "опис"
 
-#: models.py:16
+#: models.py:17
 msgid "year of death"
 msgstr "дата смерті"
 
-#: models.py:22 models.py:62
+#: models.py:23
+#: models.py:63
 msgid "author"
 msgstr "автор"
 
-#: models.py:23
-#, fuzzy
+#: models.py:24
 msgid "authors"
-msgstr "автор"
+msgstr "автори"
 
-#: models.py:61
+#: models.py:62
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:63
+#: models.py:64
 msgid "goes to public domain"
 msgstr "входить у суспільне надбання"
 
-#: models.py:65
+#: models.py:66
 msgid "translator"
 msgstr "перекладач"
 
-#: models.py:69
+#: models.py:70
 msgid "book stub"
 msgstr "заготовка книжки"
 
-#: models.py:70
+#: models.py:71
 msgid "book stubs"
 msgstr "заготовки книжок"
+
+#: templates/pdcounter/author_detail.html:25
+msgid "Read work's study of this author on Lektury.Gazeta.pl"
+msgstr "Прочитати обговорення твору автора на Lektury.Gazeta.pl"
+
+#: templates/pdcounter/author_detail.html:30
+msgid "Read article about this author on Wikipedia"
+msgstr "Прочитати статтю про автора у Вікіпедії"
+
+#: templates/pdcounter/author_detail.html:35
+msgid "This author's works are copyrighted."
+msgstr "Твори цього автора охороняються авторським правом."
+
+#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:44
+msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works."
+msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Дізнайтеся</a>, чому електронні бібліотеки не можуть опублікувати творів цього автора."
+
+#: templates/pdcounter/author_detail.html:39
+msgid "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon."
+msgstr "Твори цього автора є частиною суспільного надбання і скоро будуть опубліковані у шкільній електронній бібліотеці Wolne Lektury."
+
+#: templates/pdcounter/author_detail.html:42
+msgid "This author's works will become part of public domain and will be allowed to be published without restrictions in"
+msgstr "Твори цього автора стануть частиною суспільного надбання і можна буде їх вільно публікувати у"
+
+#: templates/pdcounter/book_stub_detail.html:16
+msgid "This work is in public domain and will be published on Internet school library of Wolne Lektury soon."
+msgstr "Цей твір є частиною суспільного надбання і скоро буде опублікований у шкільній електронній бібліотеці Wolne Lektury."
+
+#: templates/pdcounter/book_stub_detail.html:19
+msgid "This work will become part of public domain and will be allowed to be published without restrictions in"
+msgstr "Цей твір стане частиною суспільного надбання і можна буде його вільно публікувати у"
+
+#: templates/pdcounter/book_stub_detail.html:21
+#: templates/pdcounter/book_stub_detail.html:24
+msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work."
+msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Дізнайтеся</a>, чому електронні бібліотеки не можуть опублікувати цього твору."
+
+#: templates/pdcounter/book_stub_detail.html:23
+msgid "This work is copyrighted."
+msgstr "Цей твір охороняється авторським правом."
 
 #~ msgid "year of translator's death"
 #~ msgstr "рік смерті перекладача"

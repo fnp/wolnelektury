@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
-"PO-Revision-Date: 2012-03-04 17:30+0100\n"
-"Last-Translator: xxx <xxx>\n"
+"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"PO-Revision-Date: 2012-05-30 17:24+0100\n"
+"Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -97,19 +97,26 @@ msgstr "тема"
 msgid "set"
 msgstr "вибір"
 
-#: models.py:44 models.py:390
+#: models.py:44
+#: models.py:393
 msgid "book"
 msgstr "книжка"
 
-#: models.py:61 models.py:253
+#: models.py:61
+#: models.py:256
 msgid "name"
 msgstr "назва"
 
-#: models.py:62 models.py:355 models.py:357 models.py:1029 models.py:1032
+#: models.py:62
+#: models.py:358
+#: models.py:360
+#: models.py:1032
+#: models.py:1035
 msgid "slug"
 msgstr "slug"
 
-#: models.py:63 models.py:354
+#: models.py:63
+#: models.py:357
 msgid "sort key"
 msgstr "ключ сортування"
 
@@ -117,7 +124,11 @@ msgstr "ключ сортування"
 msgid "category"
 msgstr "категорія"
 
-#: models.py:66 models.py:107 models.py:360 models.py:463 models.py:1030
+#: models.py:66
+#: models.py:107
+#: models.py:363
+#: models.py:466
+#: models.py:1033
 msgid "description"
 msgstr "опис"
 
@@ -125,7 +136,11 @@ msgstr "опис"
 msgid "book count"
 msgstr "кількість книжок"
 
-#: models.py:73 models.py:74 models.py:255 models.py:361 models.py:362
+#: models.py:73
+#: models.py:74
+#: models.py:258
+#: models.py:364
+#: models.py:365
 msgid "creation date"
 msgstr "дата створення"
 
@@ -137,74 +152,78 @@ msgstr "теґ"
 msgid "tags"
 msgstr "теґи"
 
-#: models.py:249 models.py:972
+#: models.py:252
+#: models.py:975
 #, python-format
 msgid "%s file"
 msgstr "файл %s"
 
-#: models.py:252
+#: models.py:255
 msgid "type"
 msgstr "тип"
 
-#: models.py:254
+#: models.py:257
 msgid "file"
 msgstr "файл"
 
-#: models.py:256 models.py:364
+#: models.py:259
+#: models.py:367
 msgid "extra information"
 msgstr "додаткова інформація"
 
-#: models.py:265 models.py:266
+#: models.py:268
+#: models.py:269
 msgid "book media"
 msgstr "book media"
 
-#: models.py:353 models.py:1028
+#: models.py:356
+#: models.py:1031
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:358
+#: models.py:361
 msgid "language code"
 msgstr "мовний код"
 
-#: models.py:363
+#: models.py:366
 msgid "parent number"
 msgstr "номер батька"
 
-#: models.py:369
+#: models.py:372
 msgid "cover"
 msgstr "обкладинка"
 
-#: models.py:391
+#: models.py:394
 msgid "books"
 msgstr "книжки"
 
-#: models.py:690
+#: models.py:693
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Книжка \"%s\" не існує."
 
-#: models.py:704
+#: models.py:707
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книжка %s вже існує"
 
-#: models.py:991
+#: models.py:994
 msgid "fragment"
 msgstr "фрагмент"
 
-#: models.py:992
+#: models.py:995
 msgid "fragments"
 msgstr "фрагменти"
 
-#: models.py:1033
+#: models.py:1036
 msgid "book slugs"
 msgstr "slugs книжок"
 
-#: models.py:1037
+#: models.py:1040
 msgid "collection"
 msgstr "колекція"
 
-#: models.py:1038
+#: models.py:1041
 msgid "collections"
 msgstr "колекції"
 
@@ -241,17 +260,479 @@ msgid "Download custom PDF"
 msgstr "Завантажити настроюваний PDF"
 
 #: views.py:556
+#: templates/catalogue/book_short.html:86
+#: templates/catalogue/book_text.html:26
+#: templates/catalogue/book_wide.html:56
 msgid "Download"
 msgstr "Завантажити"
 
+#: templates/catalogue/audiobook_list.html:7
+#: templates/catalogue/audiobook_list.html:16
+msgid "Listing of all audiobooks"
+msgstr "Список усіх аудіокниг"
+
+#: templates/catalogue/audiobook_list.html:12
+msgid "Latest MP3 audiobooks"
+msgstr "Останні аудіокниги MP3"
+
+#: templates/catalogue/audiobook_list.html:13
+msgid "Latest Ogg Vorbis audiobooks"
+msgstr "Останні аудіокниги Ogg Vorbis"
+
+#: templates/catalogue/audiobook_list.html:19
+msgid ""
+"Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
+"Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
+"Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
+msgstr ""
+"Аудіотека шкільної літератури Фонду Сучасна Польща (Fundacja Nowoczesna Polska).\n"
+"Можна нею користуватися безкоштовно і без обмежень.\n"
+"Аудіокниги зачитують відомі актори, серед яких Данута Стенка та Ян Пешек."
+
+#: templates/catalogue/book_detail.html:20
+#: templates/catalogue/tagged_object_list.html:74
+#: templates/catalogue/tagged_object_list.html:104
+msgid "See also"
+msgstr "Дивіться також"
+
+#: templates/catalogue/book_fragments.html:5
+#: templates/catalogue/book_fragments.html:11
+msgid "Theme"
+msgstr "Тема"
+
+#: templates/catalogue/book_fragments.html:5
+#: templates/catalogue/book_fragments.html:13
+msgid "in work "
+msgstr "у творі"
+
+#: templates/catalogue/book_info.html:6
+msgid "This work is licensed under:"
+msgstr "Цей твір є доступним на ліцензії:"
+
+#: templates/catalogue/book_info.html:9
+msgid ""
+"This work isn't covered by copyright and is part of the\n"
+"        public domain, which means it can be freely used, published and\n"
+"        distributed. If there are any additional copyrighted materials\n"
+"        provided with this work (such as annotations, motifs etc.), those\n"
+"        materials are licensed under the \n"
+"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
+"        license.\n"
+msgstr ""
+"Цей твір не охороняється авторським правом і є частиною\n"
+"        суспільного надбання, що означає, що можна ним вільно користовуватися, його публікувати та\n"
+"        розповсюджувати. Якщо текст супроводжується додатковими матеріалами\n"
+"        (примітками, літературними мотивами тощо), які охороняються авторським правом,\n"
+"        доступ до цих додаткових матеріалів надається на ліцензії \n"
+"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
+
+#: templates/catalogue/book_info.html:20
+msgid "Text prepared based on:"
+msgstr "Текст підготовлено на основі"
+
+#: templates/catalogue/book_info.html:28
+msgid "Edited and annotated by:"
+msgstr "Редагування та примітки:"
+
+#: templates/catalogue/book_list.html:7
+#: templates/catalogue/book_list.html:10
+msgid "Listing of all works"
+msgstr "Список усіх творів"
+
+#: templates/catalogue/book_list.html:21
+msgid "Table of Content"
+msgstr "Зміст"
+
+#: templates/catalogue/book_list.html:48
+msgid "↑ top ↑"
+msgstr "↑ вгору ↑"
+
+#: templates/catalogue/book_sets.html:2
+msgid "Put a book on the shelf!"
+msgstr "Покласти книжку на полицю!"
+
+#: templates/catalogue/book_sets.html:3
+#: templates/catalogue/book_sets.html:6
+#: templates/catalogue/fragment_sets.html:16
+msgid "Create new shelf"
+msgstr "Створити нову полицю"
+
+#: templates/catalogue/book_sets.html:10
+msgid "You do not have any shelves. You can create one below, if you want to."
+msgstr "У вас немає жодних полиць. Можете створити полицю нижче, якщо бажаєте."
+
+#: templates/catalogue/book_sets.html:15
+msgid "Put on the shelf!"
+msgstr "Покласти на полицю!"
+
+#: templates/catalogue/book_short.html:53
+#: templates/catalogue/picture_detail.html:54
+msgid "Epoch"
+msgstr "Епоха"
+
+#: templates/catalogue/book_short.html:60
+#: templates/catalogue/picture_detail.html:60
+msgid "Kind"
+msgstr "Рід"
+
+#: templates/catalogue/book_short.html:67
+msgid "Genre"
+msgstr "Жанр"
+
+#: templates/catalogue/book_short.html:82
+msgid "Read online"
+msgstr "Читати онлайн"
+
+#: templates/catalogue/book_short.html:89
+#: templates/catalogue/book_text.html:35
+msgid "to print"
+msgstr "до друку"
+
+#: templates/catalogue/book_short.html:92
+msgid "for an e-book reader"
+msgstr "для рідера електронних книг"
+
+#: templates/catalogue/book_short.html:95
+#: templates/catalogue/book_text.html:41
+msgid "for Kindle"
+msgstr "на Kindle"
+
+#: templates/catalogue/book_short.html:98
+#: templates/catalogue/book_text.html:44
+msgid "for advanced usage"
+msgstr "для розширеного користування"
+
+#: templates/catalogue/book_short.html:104
+msgid "Listen"
+msgstr "Послухати"
+
+#: templates/catalogue/book_text.html:8
+#: templates/catalogue/player.html:10
+msgid "Wolne Lektury"
+msgstr "Wolne Lektury"
+
+#: templates/catalogue/book_text.html:21
+msgid "Table of contents"
+msgstr "Зміст"
+
+#: templates/catalogue/book_text.html:22
+#: templates/catalogue/menu.html:27
+msgid "Themes"
+msgstr "Теми"
+
+#: templates/catalogue/book_text.html:23
+msgid "Edit. note"
+msgstr "Редакторський коментар"
+
+#: templates/catalogue/book_text.html:24
+msgid "Infobox"
+msgstr "Інфобокс"
+
+#: templates/catalogue/book_text.html:25
+#: templates/catalogue/player.html:33
+msgid "Book's page"
+msgstr "Сторінка книжки"
+
+#: templates/catalogue/book_text.html:38
+msgid "for a reader"
+msgstr "на рідер"
+
+#: templates/catalogue/book_text.html:46
+msgid "Download a custom PDF"
+msgstr "Завантажити настроюваний PDF"
+
+#: templates/catalogue/book_wide.html:14
+#: templates/catalogue/tagged_object_list.html:60
+msgid "Motifs and themes"
+msgstr "Мотиви та теми"
+
+#: templates/catalogue/book_wide.html:36
+msgid "See"
+msgstr "Дивись"
+
+#: templates/catalogue/book_wide.html:39
+msgid "Source"
+msgstr "Джерело"
+
+#: templates/catalogue/book_wide.html:39
+msgid "of the book"
+msgstr "книжки"
+
+#: templates/catalogue/book_wide.html:41
+msgid "Source XML file"
+msgstr "Файл джерела XML"
+
+#: templates/catalogue/book_wide.html:43
+msgid "Book on"
+msgstr "Книжка на"
+
+#: templates/catalogue/book_wide.html:43
+msgid "Editor's Platform"
+msgstr "Платформа редагування"
+
+#: templates/catalogue/book_wide.html:46
+msgid "Book description on Lektury.Gazeta.pl"
+msgstr "Опис книжки на Lektury.Gazeta.pl"
+
+#: templates/catalogue/book_wide.html:49
+msgid "Book description on Wikipedia"
+msgstr "Опис книжки на Вікіпедії"
+
+#: templates/catalogue/book_wide.html:51
+msgid "Mix this book"
+msgstr "Міксувати цю книжку"
+
+#: templates/catalogue/book_wide.html:60
+msgid "Download all audiobooks for this book"
+msgstr "Завантажити усі аудіокниги для цієї книжки"
+
+#: templates/catalogue/catalogue.html:6
+#: templates/catalogue/catalogue.html:11
+msgid "Catalogue"
+msgstr "Каталог"
+
+#: templates/catalogue/catalogue.html:16
+msgid "Download the catalogue in PDF format."
+msgstr "Завантажити каталог у форматі PDF"
+
+#: templates/catalogue/catalogue.html:19
+#: templates/catalogue/menu.html:7
+#: templates/catalogue/search_multiple_hits.html:17
+#: templates/catalogue/tagged_object_list.html:26
+msgid "Authors"
+msgstr "Автори"
+
+#: templates/catalogue/catalogue.html:22
+#: templates/catalogue/menu.html:17
+#: templates/catalogue/search_multiple_hits.html:25
+#: templates/catalogue/tagged_object_list.html:34
+msgid "Kinds"
+msgstr "Роди"
+
+#: templates/catalogue/catalogue.html:25
+#: templates/catalogue/menu.html:12
+#: templates/catalogue/search_multiple_hits.html:33
+#: templates/catalogue/tagged_object_list.html:42
+msgid "Genres"
+msgstr "Жанри"
+
+#: templates/catalogue/catalogue.html:28
+#: templates/catalogue/menu.html:22
+#: templates/catalogue/search_multiple_hits.html:41
+#: templates/catalogue/tagged_object_list.html:50
+msgid "Epochs"
+msgstr "Епохи"
+
+#: templates/catalogue/catalogue.html:31
+msgid "Themes and topics"
+msgstr "Теми"
+
+#: templates/catalogue/daisy_list.html:6
+#: templates/catalogue/daisy_list.html:12
+msgid "Listing of all DAISY files"
+msgstr "Список усіх файлів DAISY"
+
+#: templates/catalogue/daisy_list.html:9
+msgid "Latest DAISY audiobooks"
+msgstr "Останні аудіокниги DAISY"
+
+#: templates/catalogue/daisy_list.html:15
+msgid ""
+"System DAISY to uznany na całym świecie format udostępniania książek\n"
+"dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
+"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez ograniczeń."
+msgstr ""
+"Система DAISY це визнаний у всьому світі формат надавання доступу до книжок\n"
+" котрий відповідає потребам осіб слабозорих, сліпих, а також інших осіб\n"
+" які мають труднощі з читанням. Можете ними користуватися безкоштовно і без обмежень."
+
+#: templates/catalogue/differentiate_tags.html:12
+msgid "The criteria are ambiguous. Please select one of the following options:"
+msgstr "Критерії неоднозначні. Виберіть один з варіантів нижче:"
+
+#: templates/catalogue/fragment_sets.html:2
+msgid "Shelves containing fragment"
+msgstr "Полиці, які містять фрагмент"
+
+#: templates/catalogue/fragment_sets.html:4
+msgid "You do not own any shelves. You can create one below, if you want to."
+msgstr "У Вас немає жодних полиць. Можете створити одну нижче, якщо бажаєте."
+
+#: templates/catalogue/fragment_sets.html:9
+msgid "Save all shelves"
+msgstr "Зберегти усі полиці"
+
+#: templates/catalogue/fragment_short.html:12
+msgid "Expand fragment"
+msgstr "Розвинути фрагмент"
+
+#: templates/catalogue/fragment_short.html:22
+msgid "Hide fragment"
+msgstr "Сховати фрагмент"
+
+#: templates/catalogue/inline_tag_list.html:4
+#: templates/catalogue/tag_list.html:4
+msgid "See full category"
+msgstr "Дивитись повну категорію"
+
+#: templates/catalogue/menu.html:32
+msgid "All books"
+msgstr "Усі книжки"
+
+#: templates/catalogue/menu.html:36
+msgid "Audiobooks"
+msgstr "Аудіокниги"
+
+#: templates/catalogue/menu.html:40
+msgid "DAISY"
+msgstr "DAISY"
+
+#: templates/catalogue/picture_detail.html:29
+msgid "Work is licensed under "
+msgstr "Твір на ліцензії"
+
+#: templates/catalogue/picture_detail.html:31
+msgid "Based on"
+msgstr "На основі"
+
+#: templates/catalogue/picture_detail.html:45
+msgid "Details"
+msgstr "Деталі"
+
+#: templates/catalogue/picture_detail.html:48
+msgid "Author"
+msgstr "Автор"
+
+#: templates/catalogue/picture_detail.html:66
+msgid "Other resources"
+msgstr "Інші ресурси"
+
+#: templates/catalogue/picture_detail.html:69
+msgid "Source of the image"
+msgstr "Джерело графіки"
+
+#: templates/catalogue/picture_detail.html:72
+msgid "Image on the Editor's Platform"
+msgstr "Графіка на редакторській платформі"
+
+#: templates/catalogue/picture_detail.html:83
+msgid "View XML source"
+msgstr "Дивитись джерело XML"
+
+#: templates/catalogue/picture_detail.html:86
+msgid "Work's themes "
+msgstr "Теми у творі"
+
+#: templates/catalogue/picture_list.html:8
+#: templates/catalogue/picture_list.html:10
+msgid "Listing of all pictures"
+msgstr "Список усіх графік"
+
+#: templates/catalogue/player.html:34
+msgid "Download as"
+msgstr "Завантажити як"
+
+#: templates/catalogue/player.html:90
+msgid "Artist"
+msgstr "Художник"
+
+#: templates/catalogue/player.html:91
+msgid "Director"
+msgstr "Режисер"
+
+#: templates/catalogue/player.html:110
+msgid "Audiobooks were prepared as a part of the projects:"
+msgstr "Аудіокниги виготовлено в рамках проектів:"
+
+#: templates/catalogue/player.html:115
+#, python-format
+msgid "%(cs)s, funded by %(fb)s"
+msgstr "%(cs)s, фінансованого із коштів %(fb)s"
+
+#: templates/catalogue/player.html:127
+#, python-format
+msgid "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
+msgstr "Аудіокниги виготовлено в рамках проекту %(cs)s, фінансованого із коштів %(fb)s."
+
+#: templates/catalogue/player.html:129
+#, python-format
+msgid "Audiobooks were prepared as a part of the %(cs)s project."
+msgstr "Аудіокниги виготовлено в рамках проекту %(cs)s."
+
+#: templates/catalogue/search_multiple_hits.html:5
+#: templates/catalogue/search_no_hits.html:5
+#: templates/catalogue/search_no_hits.html:10
+#: templates/catalogue/search_too_short.html:5
+#: templates/catalogue/search_too_short.html:10
+msgid "Search"
+msgstr "Пошук"
+
+#: templates/catalogue/search_multiple_hits.html:11
+#: templates/catalogue/search_no_hits.html:16
+msgid "Did you mean"
+msgstr "Ви мали на увазі"
+
+#: templates/catalogue/search_multiple_hits.html:54
+msgid "Results by authors"
+msgstr "Результати за авторами"
+
+#: templates/catalogue/search_multiple_hits.html:67
+msgid "Results by title"
+msgstr "Результати за заголовком"
+
+#: templates/catalogue/search_multiple_hits.html:82
+msgid "Results in text"
+msgstr "Результати в тексті"
+
+#: templates/catalogue/search_multiple_hits.html:99
+msgid "Other results"
+msgstr "Інші результати"
+
+#: templates/catalogue/search_no_hits.html:19
+#: templates/catalogue/tagged_object_list.html:146
+msgid "Sorry! Search cirteria did not match any resources."
+msgstr "На жаль, Ваші критерії пошуку не відповідають жодним результатам."
+
+#: templates/catalogue/search_no_hits.html:21
+msgid ""
+"Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.\n"
+"\t\tAs for now we do not support full text search."
+msgstr ""
+"Система пошуку дозволяє здійснювати пошук за наступними критеріями: заголовок, автор, тема, епоха, рід та жанр.\n"
+"\t\tНа даний момент пошук у повному обсязі тексту не є можливим."
+
+#: templates/catalogue/search_too_short.html:13
+msgid "Sorry! Search query must have at least two characters."
+msgstr "На жаль, для пошуку потрібно ввести щонайменше два знаки."
+
+#: templates/catalogue/tagged_object_list.html:78
+#: templates/catalogue/tagged_object_list.html:108
+msgid "in Lektury.Gazeta.pl"
+msgstr "на Lektury.Gazeta.pl"
+
+#: templates/catalogue/tagged_object_list.html:83
+#: templates/catalogue/tagged_object_list.html:113
+msgid "in Wikipedia"
+msgstr "на Вікіпедії"
+
+#: templates/catalogue/user_shelves.html:2
+msgid "Your shelves with books"
+msgstr "Ваші полиці з книжками"
+
+#: templates/catalogue/user_shelves.html:6
+msgid "remove"
+msgstr "видалити"
+
+#: templates/catalogue/user_shelves.html:10
+msgid "You do not own any shelves. You can create one below if you want to"
+msgstr "У Вас немає жодної полиці. Можете створити одну нижче, якщо бажаєте."
+
+#: templates/catalogue/user_shelves.html:15
+msgid "Create shelf"
+msgstr "Створити полицю"
+
 #~ msgid "title, author, theme/topic, epoch, kind, genre"
 #~ msgstr "заголовок, автор, тема, епоха, рід, жанр"
-
-#~ msgid "Shelves"
-#~ msgstr "Полиці"
-
-#~ msgid "Name of the new shelf"
-#~ msgstr "Назва нової полиці"
 
 #~ msgid "main page"
 #~ msgstr "головна сторінка"
@@ -286,12 +767,6 @@ msgstr "Завантажити"
 #~ msgid "OGG file"
 #~ msgstr "файл OGG"
 
-#~ msgid "DAISY file"
-#~ msgstr "файл DAISY"
-
-#~ msgid "Read online"
-#~ msgstr "Читати онлайн"
-
 #~ msgid "goes to public domain"
 #~ msgstr "входить у суспільне надбання"
 
@@ -312,9 +787,6 @@ msgstr "Завантажити"
 
 #~ msgid "Book was successfully removed from the shelf"
 #~ msgstr "Книжку було успішно видалено з полиці"
-
-#~ msgid "This book is not on the shelf"
-#~ msgstr "Цієї книжки немає на полиці"
 
 #~ msgid "<p>Shelf <strong>%s</strong> was successfully created</p>"
 #~ msgstr "<p>Полицю <strong>%s</strong> успішно створено</p>"
