@@ -390,7 +390,7 @@ class SearchFeed(AcquisitionFeed):
 
             if author:
                 log.info( "narrow to author %s" % author)
-                hint.tags(srch.search_tags(author, filt=srch.term_filter(Term('tag_category', 'author'))))
+                hint.tags(srch.search_tags(srch.get_tokens(author, field='authors'), filt=srch.term_filter(Term('tag_category', 'author'))))
 
             if translator:
                 log.info( "filter by translator %s" % translator)
