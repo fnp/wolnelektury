@@ -12,4 +12,8 @@
 
     {% work_list books %}
 
+    {% if not books %}
+    {% trans "Add works to your shelf by clicking on the star on the page of the work. The work will then show up on My shelf page." %}
+    {# trans "Aby dodać pozycję do swojej półki, należy zaznaczyć gwiazdkę znajdującą się na stronie utworu. Po jej zaznaczeniu publikacja pojawi się w zakładce Moja półka" #}
+    {% endif %}
 {% endblock %}
