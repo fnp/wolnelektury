@@ -17,10 +17,10 @@ from lucene import StringReader
 from suggest.forms import PublishingSuggestForm
 from time import sleep
 import re
-import enchant
+#import enchant
 import json
 
-dictionary = enchant.Dict('pl_PL')
+#dictionary = enchant.Dict('en_US')
 
 
 def match_word_re(word):
@@ -37,13 +37,14 @@ def did_you_mean(query, tokens):
         if len(authors) > 0:
             continue
 
-        if not dictionary.check(t):
-            try:
-                change_to = dictionary.suggest(t)[0].lower()
-                if change_to != t.lower():
-                    change[t] = change_to
-            except IndexError:
-                pass
+        if False:
+            if not dictionary.check(t):
+                try:
+                    change_to = dictionary.suggest(t)[0].lower()
+                    if change_to != t.lower():
+                        change[t] = change_to
+                except IndexError:
+                    pass
 
     if change == {}:
         return None

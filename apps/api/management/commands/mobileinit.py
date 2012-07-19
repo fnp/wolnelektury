@@ -71,7 +71,8 @@ def init_db(last_checked):
     schema = """
 CREATE TABLE book (
     id INTEGER PRIMARY KEY, 
-    title VARCHAR, 
+    title VARCHAR,
+    cover VARCHAR,
     html_file VARCHAR, 
     html_file_size INTEGER, 
     parent INTEGER,
@@ -117,9 +118,9 @@ def current(last_checked):
 
 book_sql = """
     INSERT INTO book 
-        (id, title, html_file,  html_file_size, parent, parent_number, sort_key, pretty_size, authors) 
+        (id, title, cover, html_file,  html_file_size, parent, parent_number, sort_key, pretty_size, authors) 
     VALUES 
-        (:id, :title, :html_file, :html_file_size, :parent, :parent_number, :sort_key, :size_str, :authors);
+        (:id, :title, :cover, :html_file, :html_file_size, :parent, :parent_number, :sort_key, :size_str, :authors);
 """
 book_tag_sql = "INSERT INTO book_tag (book, tag) VALUES (:book, :tag);"
 tag_sql = """
@@ -144,6 +145,10 @@ def add_book(db, book):
         html_file_size = book.html_file.size
     else:
         html_file = html_file_size = None
+    if book.cover:
+        cover = book.cover.url
+    else:
+        cover = None
     parent = book.parent_id
     parent_number = book.parent_number
     sort_key = book.sort_key
@@ -154,7 +159,8 @@ def add_book(db, book):
 
 def add_tag(db, tag):
     id = tag.id
-    category = categories[tag.category]
+    #    category = categories[tag.category] # localized names here?
+    category = tag.category
     name = tag.name
     sort_key = tag.sort_key
 
