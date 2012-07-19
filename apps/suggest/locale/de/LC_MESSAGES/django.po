@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"POT-Creation-Date: 2012-07-19 11:40+0200\n"
 "PO-Revision-Date: 2012-03-08 11:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,22 +85,22 @@ msgstr "Vorschlag publizieren"
 msgid "publishing suggestions"
 msgstr "Vorschläge publizieren"
 
-#: views.py:14 views.py:21
+#: views.py:13 views.py:21
 msgid "Report a bug or suggestion"
 msgstr "Melden Sie einen Bug oder einen Vorschlag"
 
-#: views.py:16 views.py:23
+#: views.py:15 views.py:23
 msgid "Report was sent successfully."
 msgstr "Der Bericht wurde erfolgreich gesendet."
 
-#: views.py:22 templates/publishing_suggest.html:15
+#: views.py:22 templates/publishing_suggest.html:18
 msgid "Send report"
 msgstr "Bericht senden"
 
-#: templates/publishing_suggest.html:2
+#: templates/publishing_suggest.html:4
 msgid "Didn't find a book? Make a suggestion."
 msgstr "Hast Du kein Buch gefunden? Mach einen Vorschlag."
 
-#: templates/publishing_suggest.html:9
+#: templates/publishing_suggest.html:12
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Ich würde gerne auf WolneLektury ... finden."

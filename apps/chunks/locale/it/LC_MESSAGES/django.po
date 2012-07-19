@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 15:57+0100\n"
+"POT-Creation-Date: 2012-07-19 11:39+0200\n"
 "PO-Revision-Date: 2012-02-21 16:52+0100\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:11
-#: models.py:33
+#: models.py:11 models.py:33
 msgid "key"
 msgstr "Chiave"
 
@@ -53,4 +52,3 @@ msgstr "allegato"
 #: models.py:38
 msgid "attachments"
 msgstr "allegati"
-

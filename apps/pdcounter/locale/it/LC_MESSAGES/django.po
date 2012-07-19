@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 15:57+0100\n"
+"POT-Creation-Date: 2012-07-19 11:39+0200\n"
 "PO-Revision-Date: 2012-02-21 17:06+0100\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,131 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: admin.py:38
-msgid "tags"
-msgstr "i tag"
+#: models.py:13
+msgid "name"
+msgstr ""
 
-#: models.py:530
-msgid "tag"
-msgstr "tag"
+#: models.py:14 models.py:65
+msgid "slug"
+msgstr ""
 
-#: models.py:531
-msgid "content type"
-msgstr "tipo di contenuto"
+#: models.py:15
+msgid "sort key"
+msgstr ""
 
-#: models.py:532
-msgid "object id"
-msgstr "oggetto id"
+#: models.py:16 models.py:42
+msgid "description"
+msgstr ""
 
-#: views.py:30
-msgid "tagged_object_list must be called with a queryset or a model."
-msgstr "L'elenco degli oggetti taggati deve essere chiamato con un queryset o un modello."
+#: models.py:17
+msgid "year of death"
+msgstr ""
 
-#: views.py:32
-msgid "tagged_object_list must be called with a tag model."
-msgstr "L’elenco degli oggetti taggati deve essere chiamato con un modello tag."
+#: models.py:23 models.py:63
+msgid "author"
+msgstr ""
 
-#: views.py:34
-msgid "tagged_object_list must be called with a tag."
-msgstr "L’elenco degli oggetti taggati deve essere chiamato con un tag."
+#: models.py:24
+msgid "authors"
+msgstr ""
 
-#: views.py:38
-#, python-format
-msgid "No tags found matching \"%s\"."
-msgstr "Non sono stati trovati tag corrispondenti \"%s\"."
+#: models.py:62
+msgid "title"
+msgstr ""
+
+#: models.py:64
+msgid "goes to public domain"
+msgstr ""
+
+#: models.py:66
+msgid "translator"
+msgstr ""
+
+#: models.py:70
+msgid "book stub"
+msgstr ""
+
+#: models.py:71
+msgid "book stubs"
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:25
+msgid "Read work's study of this author on Lektury.Gazeta.pl"
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:30
+msgid "Read article about this author on Wikipedia"
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:35
+msgid "This author's works are copyrighted."
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:44
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this author's works."
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:39
+msgid ""
+"This author's works are in public domain and will be published on Internet "
+"school library of Wolne Lektury soon."
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:42
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in"
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:16
+msgid ""
+"This work is in public domain and will be published on Internet school "
+"library of Wolne Lektury soon."
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:19
+msgid ""
+"This work will become part of public domain and will be allowed to be "
+"published without restrictions in"
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:21
+#: templates/pdcounter/book_stub_detail.html:24
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this work."
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:23
+msgid "This work is copyrighted."
+msgstr ""
+
+#~ msgid "tags"
+#~ msgstr "i tag"
+
+#~ msgid "tag"
+#~ msgstr "tag"
+
+#~ msgid "content type"
+#~ msgstr "tipo di contenuto"
+
+#~ msgid "object id"
+#~ msgstr "oggetto id"
+
+#~ msgid "tagged_object_list must be called with a queryset or a model."
+#~ msgstr ""
+#~ "L'elenco degli oggetti taggati deve essere chiamato con un queryset o un "
+#~ "modello."
+
+#~ msgid "tagged_object_list must be called with a tag model."
+#~ msgstr ""
+#~ "L’elenco degli oggetti taggati deve essere chiamato con un modello tag."
+
+#~ msgid "tagged_object_list must be called with a tag."
+#~ msgstr "L’elenco degli oggetti taggati deve essere chiamato con un tag."
+
+#~ msgid "No tags found matching \"%s\"."
+#~ msgstr "Non sono stati trovati tag corrispondenti \"%s\"."

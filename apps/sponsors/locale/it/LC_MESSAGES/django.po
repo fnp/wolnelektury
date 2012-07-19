@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 15:57+0100\n"
+"POT-Creation-Date: 2012-07-19 11:40+0200\n"
 "PO-Revision-Date: 2012-02-21 17:43+0100\n"
 "Last-Translator: xxxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:20
-#: models.py:36
+#: models.py:20 models.py:36
 msgid "name"
 msgstr "nome"
 
@@ -34,6 +33,6 @@ msgstr "logo"
 msgid "url"
 msgstr "url"
 
-#: modelello.py:37
+#: models.py:37
 msgid "sponsors"
 msgstr "gli sponsor"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 13:49+0100\n"
+"POT-Creation-Date: 2012-07-19 11:39+0200\n"
 "PO-Revision-Date: 2012-01-27 16:40+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,53 +17,107 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 
-#: models.py:12
+#: models.py:13
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:13 models.py:64
+#: models.py:14 models.py:65
 msgid "slug"
 msgstr "slug"
 
-#: models.py:14
+#: models.py:15
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models.py:15 models.py:41
+#: models.py:16 models.py:42
 msgid "description"
 msgstr "opis"
 
-#: models.py:16
+#: models.py:17
 msgid "year of death"
 msgstr "rok śmierci"
 
-#: models.py:22 models.py:62
+#: models.py:23 models.py:63
 msgid "author"
 msgstr "autor"
 
-#: models.py:23
+#: models.py:24
 msgid "authors"
 msgstr "autorzy"
 
-#: models.py:61
+#: models.py:62
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:63
+#: models.py:64
 msgid "goes to public domain"
 msgstr "trafia do domeny publicznej"
 
-#: models.py:65
+#: models.py:66
 msgid "translator"
 msgstr "tłumacz"
 
-#: models.py:69
+#: models.py:70
 msgid "book stub"
 msgstr "zapowiedź książki"
 
-#: models.py:70
+#: models.py:71
 msgid "book stubs"
 msgstr "zapowiedzi książek"
+
+#: templates/pdcounter/author_detail.html:25
+msgid "Read work's study of this author on Lektury.Gazeta.pl"
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:30
+msgid "Read article about this author on Wikipedia"
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:35
+msgid "This author's works are copyrighted."
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:44
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this author's works."
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:39
+msgid ""
+"This author's works are in public domain and will be published on Internet "
+"school library of Wolne Lektury soon."
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:42
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in"
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:16
+msgid ""
+"This work is in public domain and will be published on Internet school "
+"library of Wolne Lektury soon."
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:19
+msgid ""
+"This work will become part of public domain and will be allowed to be "
+"published without restrictions in"
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:21
+#: templates/pdcounter/book_stub_detail.html:24
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this work."
+msgstr ""
+
+#: templates/pdcounter/book_stub_detail.html:23
+msgid "This work is copyrighted."
+msgstr ""
 
 #~ msgid "year of translator's death"
 #~ msgstr "rok śmierci tłumacza"

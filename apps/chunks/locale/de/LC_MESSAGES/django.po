@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"POT-Creation-Date: 2012-07-19 11:39+0200\n"
 "PO-Revision-Date: 2012-04-11 22:56+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: \n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:11
-#: models.py:33
+#: models.py:11 models.py:33
 msgid "key"
 msgstr "Schlüssel"
 

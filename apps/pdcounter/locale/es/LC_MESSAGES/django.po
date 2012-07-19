@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-22 14:37+0100\n"
+"POT-Creation-Date: 2012-07-19 11:39+0200\n"
 "PO-Revision-Date: 2012-05-17 22:05+0100\n"
 "Last-Translator: KG <kamila.gawron87@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,7 @@ msgstr ""
 msgid "name"
 msgstr "nombre"
 
-#: models.py:14
-#: models.py:65
+#: models.py:14 models.py:65
 msgid "slug"
 msgstr "slug"
 
@@ -30,8 +29,7 @@ msgstr "slug"
 msgid "sort key"
 msgstr "clave de clasificación"
 
-#: models.py:16
-#: models.py:42
+#: models.py:16 models.py:42
 msgid "description"
 msgstr "descripción"
 
@@ -39,8 +37,7 @@ msgstr "descripción"
 msgid "year of death"
 msgstr "año de muerte"
 
-#: models.py:23
-#: models.py:63
+#: models.py:23 models.py:63
 msgid "author"
 msgstr "autor"
 
@@ -82,29 +79,54 @@ msgstr "Las obras de este autor tienen todos los derechos de autor reservados."
 
 #: templates/pdcounter/author_detail.html:36
 #: templates/pdcounter/author_detail.html:44
-msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works."
-msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a>  el porqué las bibliotecas virtuales no pueden publicar las obras de este autor."
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this author's works."
+msgstr ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a>  el porqué las bibliotecas virtuales no pueden publicar las obras de este "
+"autor."
 
 #: templates/pdcounter/author_detail.html:39
-msgid "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon."
-msgstr "Las obras de este autor son de dominio público y pronto serán publicadas en Biblioteca virtual de Wolne Lektury."
+msgid ""
+"This author's works are in public domain and will be published on Internet "
+"school library of Wolne Lektury soon."
+msgstr ""
+"Las obras de este autor son de dominio público y pronto serán publicadas en "
+"Biblioteca virtual de Wolne Lektury."
 
 #: templates/pdcounter/author_detail.html:42
-msgid "This author's works will become part of public domain and will be allowed to be published without restrictions in"
-msgstr "Las obras de este autor van a ser parte de dominio público y pronto serán publicadas sin restricciones en"
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in"
+msgstr ""
+"Las obras de este autor van a ser parte de dominio público y pronto serán "
+"publicadas sin restricciones en"
 
 #: templates/pdcounter/book_stub_detail.html:16
-msgid "This work is in public domain and will be published on Internet school library of Wolne Lektury soon."
-msgstr "Esta obra es de dominio público y pronto será publicada en Biblioteca virtual de Wolne Lektury."
+msgid ""
+"This work is in public domain and will be published on Internet school "
+"library of Wolne Lektury soon."
+msgstr ""
+"Esta obra es de dominio público y pronto será publicada en Biblioteca "
+"virtual de Wolne Lektury."
 
 #: templates/pdcounter/book_stub_detail.html:19
-msgid "This work will become part of public domain and will be allowed to be published without restrictions in"
-msgstr "Esta obra va a ser parte de dominio público y pronto será publicada sin restricciones en"
+msgid ""
+"This work will become part of public domain and will be allowed to be "
+"published without restrictions in"
+msgstr ""
+"Esta obra va a ser parte de dominio público y pronto será publicada sin "
+"restricciones en"
 
 #: templates/pdcounter/book_stub_detail.html:21
 #: templates/pdcounter/book_stub_detail.html:24
-msgid "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work."
-msgstr "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> el porqué las bibliotecas virtuales no pueden publicar esta obra."
+msgid ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> why Internet libraries can't publish this work."
+msgstr ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
+"a> el porqué las bibliotecas virtuales no pueden publicar esta obra."
 
 #: templates/pdcounter/book_stub_detail.html:23
 msgid "This work is copyrighted."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 15:57+0100\n"
+"POT-Creation-Date: 2012-07-19 11:39+0200\n"
 "PO-Revision-Date: 2012-02-18 13:41+0100\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,9 @@ msgstr "oggetto id"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."
-msgstr "L’elenco degli oggetti taggati deve essere chiamato con un queryset oppure un modello. "
+msgstr ""
+"L’elenco degli oggetti taggati deve essere chiamato con un queryset oppure "
+"un modello. "
 
 #: views.py:32
 msgid "tagged_object_list must be called with a tag model."
