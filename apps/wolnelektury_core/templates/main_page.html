@@ -36,8 +36,9 @@
 
     <div class="infopages-box">
         <h2><span class='mono'>{% trans "News" %}</span></h2>
+	{# 135 is the id of new publications category of our master blog. perhaps this URL should go to settings. #}
         {% cache 1800 latest-blog-posts %}
-            {% latest_blog_posts "http://nowoczesnapolska.org.pl/feed/" %}
+            {% latest_blog_posts "http://nowoczesnapolska.org.pl/feed/?cat=-135" %}
         {% endcache %}
     </div>
 
