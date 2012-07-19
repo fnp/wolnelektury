@@ -107,7 +107,7 @@ LetterSpace=-1.0
                     <cmd name="name"><parm>{{ author }}</parm></cmd>
                     <ctrl ch='\' />
 
-                    {% book_tree_texml author group books_by_parent %}
+                    {% book_tree_texml group books_by_parent %}
                 {% endif %}
             {% endfor %}
         </TeXML>
