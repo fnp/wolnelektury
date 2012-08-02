@@ -11,7 +11,7 @@
 <form action="{% url register %}" method="post" accept-charset="utf-8"
 	class="cuteform hidelabels">
 {% csrf_token %}
-{% honeypot_render_field %}
+{% render_honeypot_field %}
 <ol>
     <div id="id_register-__all__"></div>
     {{ register_form.as_ul }}
