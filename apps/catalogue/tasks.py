@@ -29,56 +29,51 @@ def index_book(book_id, book_info=None):
         raise e
 
 
+def _build_ebook(book_id, ext, transform):
+    """Generic ebook builder."""
+    from django.core.files import File
+    from catalogue.models import Book
+
+    book = Book.objects.get(pk=book_id)
+    out = transform(book.wldocument())
+    field_name = '%s_file' % ext
+    # Update instead of saving the model to avoid race condition.
+    getattr(book, field_name).save('%s.%s' % (book.slug, ext),
+            File(open(out.get_filename())),
+            save=False
+        )
+    Book.objects.filter(pk=book_id).update(**{
+            field_name: getattr(book, field_name)
+        })
+
+
 @task(ignore_result=True)
 def build_txt(book_id):
     """(Re)builds the TXT file for a book."""
-    from django.core.files.base import ContentFile
-    from catalogue.models import Book
-
-    text = Book.objects.get(pk=book_id).wldocument().as_text()
-
-    # Save the file in new instance. Building TXT takes time and we don't want
-    # to overwrite any interim changes.
-    book = Book.objects.get(id=book_id)
-    book.txt_file.save('%s.txt' % book.slug, ContentFile(text.get_string()))
+    _build_ebook(book_id, 'txt', lambda doc: doc.as_text())
 
 
 @task(ignore_result=True, rate_limit=settings.CATALOGUE_PDF_RATE_LIMIT)
 def build_pdf(book_id):
     """(Re)builds the pdf file for a book."""
-    from django.core.files import File
     from catalogue.models import Book
     from catalogue.utils import remove_zip
     from waiter.utils import clear_cache
 
-    pdf = Book.objects.get(pk=book_id).wldocument().as_pdf(
-            morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
-
-    # Save the file in new instance. Building PDF takes time and we don't want
-    # to overwrite any interim changes.
-    book = Book.objects.get(id=book_id)
-    book.pdf_file.save('%s.pdf' % book.slug,
-             File(open(pdf.get_filename())))
-
+    _build_ebook(book_id, 'pdf',
+        lambda doc: doc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS))
     # Remove cached downloadables
     remove_zip(settings.ALL_PDF_ZIP)
+    book = Book.objects.get(pk=book_id)
     clear_cache(book.slug)
 
 
 @task(ignore_result=True, rate_limit=settings.CATALOGUE_EPUB_RATE_LIMIT)
 def build_epub(book_id):
     """(Re)builds the EPUB file for a book."""
-    from django.core.files import File
-    from catalogue.models import Book
     from catalogue.utils import remove_zip
 
-    epub = Book.objects.get(pk=book_id).wldocument().as_epub()
-    # Save the file in new instance. Building EPUB takes time and we don't want
-    # to overwrite any interim changes.
-    book = Book.objects.get(id=book_id)
-    book.epub_file.save('%s.epub' % book.slug,
-             File(open(epub.get_filename())))
-
+    _build_ebook(book_id, 'epub', lambda doc: doc.as_epub())
     # remove zip with all epub files
     remove_zip(settings.ALL_EPUB_ZIP)
 
@@ -86,36 +81,20 @@ def build_epub(book_id):
 @task(ignore_result=True, rate_limit=settings.CATALOGUE_MOBI_RATE_LIMIT)
 def build_mobi(book_id):
     """(Re)builds the MOBI file for a book."""
-    from django.core.files import File
-    from catalogue.models import Book
     from catalogue.utils import remove_zip
 
-    mobi = Book.objects.get(pk=book_id).wldocument().as_mobi()
-    # Save the file in new instance. Building MOBI takes time and we don't want
-    # to overwrite any interim changes.
-    book = Book.objects.get(id=book_id)
-    book.mobi_file.save('%s.mobi' % book.slug,
-             File(open(mobi.get_filename())))
-
+    _build_ebook(book_id, 'mobi', lambda doc: doc.as_mobi())
     # remove zip with all mobi files
     remove_zip(settings.ALL_MOBI_ZIP)
 
 
-@task(ignore_result=True, rate_limit=settings.CATALOGUE_MOBI_RATE_LIMIT)
+@task(ignore_result=True, rate_limit=settings.CATALOGUE_FB2_RATE_LIMIT)
 def build_fb2(book_id, *args, **kwargs):
-    """(Re)builds the MOBI file for a book."""
-    from django.core.files import File
-    from catalogue.models import Book
+    """(Re)builds the FB2 file for a book."""
     from catalogue.utils import remove_zip
 
-    fb2 = Book.objects.get(pk=book_id).wldocument().as_fb2()
-    # Save the file in new instance. Building FB2 takes time and we don't want
-    # to overwrite any interim changes.
-    book = Book.objects.get(id=book_id)
-    book.fb2_file.save('%s.fb2' % book.slug,
-             File(open(fb2.get_filename())))
-
-    # remove zip with all mobi files
+    _build_ebook(book_id, 'fb2', lambda doc: doc.as_fb2())
+    # remove zip with all fb2 files
     remove_zip(settings.ALL_FB2_ZIP)
 
 

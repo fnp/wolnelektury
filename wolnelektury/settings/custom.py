@@ -26,6 +26,7 @@ PUBLISH_PLAN_FEED = 'http://redakcja.wolnelektury.pl/documents/track/editor-proo
 # limit rate for ebooks creation
 CATALOGUE_PDF_RATE_LIMIT = '1/m'
 CATALOGUE_EPUB_RATE_LIMIT = '6/m'
+CATALOGUE_FB2_RATE_LIMIT = '5/m'
 CATALOGUE_MOBI_RATE_LIMIT = '5/m'
 CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
 
