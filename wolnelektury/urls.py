@@ -45,6 +45,8 @@ urlpatterns += patterns('',
 
     # API
     (r'^api/', include('api.urls')),
+    # OAIPMH
+    (r'^oaipmh/', include('oai.urls')),
 
     url(r'^szukaj/', include('search.urls')),
 
