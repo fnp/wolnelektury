@@ -26,7 +26,7 @@ class BookMetadataTest(WLTestCase):
         self.xml = XMLTreeServer(self.catalogue, mr, nsmap)
 
     def test_get_record(self):
-        sch = self.xml.getRecord(record='lubie-kiedy-kobieta',
+        sch = self.xml.getRecord(identifier='lubie-kiedy-kobieta',
                                  metadataPrefix='oai_dc')
         etree.dump(sch.getroot())
         sch = self.xml.listRecords(metadataPrefix='oai_dc')
