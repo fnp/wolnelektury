@@ -1,0 +1,63 @@
+<utwor>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="http://redakcja.wolnelektury.pl/documents/book/przerwa_tetmajer__lubie_kiedy_kobieta/">
+<dc:creator xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Przerwa-Tetmajer, Kazimierz</dc:creator>
+<dc:title xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Lubię, kiedy kobieta...</dc:title>
+<dc:contributor.editor xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Kozioł, Paweł</dc:contributor.editor>
+<dc:contributor.technical_editor xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Niedziałkowska, Marta</dc:contributor.technical_editor>
+<dc:publisher xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Modernizm</dc:subject.period>
+<dc:subject.type xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Liryka</dc:subject.type>
+<dc:subject.genre xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Wiersz</dc:subject.genre>
+<dc:description xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Śląską z egzemplarza pochodzącego ze zbiorów BŚ.</dc:description>
+<dc:identifier.url xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">http://wolnelektury.pl/katalog/lektura/lubie-kiedy-kobieta</dc:identifier.url>
+<dc:source xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Kazimierz Przerwa-Tetmajer, Wybór poezji, nakł. Gebethnera i Wolffa, Warszawa-Kraków 1897</dc:source>
+<dc:rights xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">Domena publiczna - Kazimierz Przerwa-Tetmajer zm. 1940</dc:rights>
+<dc:date.pd xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">1940</dc:date.pd>
+<dc:format xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">xml</dc:format>
+<dc:type xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">text</dc:type>
+<dc:type xml:lang="en" xmlns:dc="http://purl.org/dc/elements/1.1/">text</dc:type>
+<dc:date xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">2010-10-12</dc:date>
+<dc:audience xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">L</dc:audience>
+<dc:language xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">pol</dc:language></rdf:Description>
+</rdf:RDF>
+
+
+<liryka_l>
+<autor_utworu>Kazimierz Przerwa-Tetmajer</autor_utworu>
+
+<nazwa_utworu>Lubię, kiedy kobieta...</nazwa_utworu>
+
+<strofa>Lubię, kiedy kobieta omdlewa w objęciu,/
+Kiedy w lubieżnym zwisa przez ramię przegięciu,/
+<begin id="b1288014720458-1717646767"/><motyw id="m1288014720458-1717646767">Pożądanie</motyw>Gdy jej oczy zachodzą mgłą, twarz cała blednie,/
+I wargi się wilgotne rozchylą bezwiednie.</strofa>
+
+
+<strofa>
+Lubię, kiedy ją rozkosz i żądza oniemi,/
+Gdy wpija się w ramiona palcami drżącemi,/
+Gdy krótkim, urywanym oddycha oddechem,/
+I oddaje się cała z mdlejącym uśmiechem.
+<end id="e1288014720458-1717646767"/></strofa>
+
+
+<strofa><begin id="b1288014780333-48828945"/><motyw id="m1288014780333-48828945">Wstyd</motyw>I lubię ten wstyd, co się kobiecie zabrania/
+Przyznać, że czuje rozkosz, że moc pożądania/
+Zwalcza ją, a sycenie żądzy oszalenia<pe><slowo_obce>oszaleniać</slowo_obce> (neol.) --- czynić szalonym.</pe>,/
+Gdy szuka ust, a lęka się słów i spojrzenia.
+<end id="e1288014780333-48828945"/></strofa>
+
+
+<strofa><begin id="b1288014533484-249140150"/><motyw id="m1288014533484-249140150">Poeta, Mizoginia</motyw>Lubię to --- i tę chwilę lubię, gdy koło mnie/
+Wyczerpana, zmęczona leży nieprzytomnie,/
+A myśl moja już od niej wybiega skrzydlata/
+W nieskończone przestrzenie nieziemskiego świata.
+<end id="e1288014533484-249140150"/></strofa>
+
+
+</liryka_l>
+
+
+
+</utwor>

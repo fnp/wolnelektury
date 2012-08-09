@@ -64,6 +64,7 @@ INSTALLED_APPS_OUR = [
     'social',
     'waiter',
     'search',
+    'oai',
     ]
 
 INSTALLED_APPS_CONTRIB = [
@@ -85,7 +86,7 @@ INSTALLED_APPS_CONTRIB = [
     'djcelery',
     'djkombu',
     'honeypot',
-    #    'django_nose',
+    'django_nose',
 
     #allauth stuff
     'emailconfirmation',
