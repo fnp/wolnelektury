@@ -59,7 +59,7 @@ class Catalogue(common.ResumptionOAIPMH):
             earliest_change or earliest_delete
 
         # admins
-        self.admin_emails = [u.email for u in User.objects.filter(is_superuser=True)]
+        self.admin_emails = [u.email for u in User.objects.filter(is_superuser=True).exclude(email__exact=u'')]
 
     def metadata(self, book):
         xml = etree.parse(book.xml_file)
