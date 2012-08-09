@@ -101,7 +101,7 @@ class Catalogue(common.ResumptionOAIPMH):
     def books(self, tag, from_, until):
         if tag:
             # we do not support sets, since they are problematic for deleted books.
-            raise errror.NoSetHierarchyError()
+            raise errror.NoSetHierarchyError("Wolne Lektury does not support sets.")
             # books = Book.tagged.with_all([tag])
         else:
             books = Book.objects.all()
@@ -127,10 +127,10 @@ class Catalogue(common.ResumptionOAIPMH):
         cs = s.split(':')
         if len(cs) == 2:
             if not cs[0] in Catalogue.TAG_CATEGORIES:
-                raise error.NoSetHierarchyError()
+                raise error.NoSetHierarchyError("No category part in set")
             tag = Tag.objects.get(slug=cs[1], category=cs[0])
             return tag
-        raise error.NoSetHierarchyError()
+        raise error.NoSetHierarchyError("Setspec should have two components: category:slug")
 
     def getRecord(self, **kw):
         """
@@ -146,11 +146,10 @@ Returns (header, metadata, about) for given record.
                 deleted_book = Deleted.objects.get(content_type=book_type,
                                                   slug=slug)
             except:
-                raise error.IdDoesNotExistError()
+                raise error.IdDoesNotExistError("No item for this identifier")
             return self.record_for_book(deleted_book)
 
     def listIdentifiers(self, **kw):
-        print "list identifiers %s" % (kw, )
         records = [self.record_for_book(book, headers_only=True) for
                    book in self.books(None,
                            kw.get('from_', None),
@@ -170,12 +169,12 @@ returns result, token
         return records, None
 
     def listMetadataFormats(self, **kw):
-        return [('oaidc',
+        return [('oai_dc',
                  'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
                  server.NS_OAIDC)]
 
     def listSets(self, **kw):
-        raise error.NoSetHierarchyError()
+        raise error.NoSetHierarchyError("Wolne Lektury does not support sets.")
         # tags = []
         # for category in Catalogue.TAG_CATEGORIES:
         #     for tag in Tag.objects.filter(category=category):
