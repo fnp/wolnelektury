@@ -10,7 +10,7 @@ from datetime import datetime
 from lxml import etree
 from lxml.etree import ElementTree
 from django.db.models import Q
-
+from django.conf import settings
 
 wl_dc_reader = metadata.MetadataReader(
     fields={
@@ -58,9 +58,6 @@ class Catalogue(common.ResumptionOAIPMH):
         self.earliest_datestamp = earliest_change <= earliest_delete and \
             earliest_change or earliest_delete
 
-        # admins
-        self.admin_emails = [u.email for u in User.objects.filter(is_superuser=True).exclude(email__exact=u'')]
-
     def metadata(self, book):
         xml = etree.parse(book.xml_file)
         md = wl_dc_reader(xml)
@@ -89,7 +86,7 @@ class Catalogue(common.ResumptionOAIPMH):
             'Wolne Lektury',  # generate
             '%s/oaipmh' % WL_BASE,  # generate
             '2.0',  # version
-            self.admin_emails,  # adminEmails
+            [m[1] for m in settings.MANAGERS],  # adminEmails
             self.earliest_datestamp,  # earliest datestamp of any change
             'persistent',  # deletedRecord
             'YYYY-MM-DDThh:mm:ssZ',  # granularity
