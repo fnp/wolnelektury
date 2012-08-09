@@ -516,6 +516,7 @@ def create_intermediary_table_model(model):
     class Meta:
         db_table = '%s_relation' % model._meta.db_table
         unique_together = (('tag', 'content_type', 'object_id'),)
+        app_label = model._meta.app_label
 
     def obj_unicode(self):
         try:

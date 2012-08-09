@@ -297,7 +297,7 @@ class BookImportGenerateTest(WLTestCase):
         self.assertTrue(path.exists(parent.pdf_file.path))
 
     def test_custom_pdf(self):
-        from catalogue.tasks import build_custom_pdf
+        from catalogue.utils import build_custom_pdf
         out = models.get_dynamic_path(None, 'test-custom', ext='pdf')
         absoulute_path = path.join(settings.MEDIA_ROOT, out)
         
