@@ -70,8 +70,8 @@ class Catalogue(common.ResumptionOAIPMH):
         meta = None
         identifier = str(WLURI.from_slug(book.slug))
         if isinstance(book, Book):
-            setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
-            header = common.Header(identifier, book.changed_at, setSpec, False)
+            #            setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
+            header = common.Header(identifier, book.changed_at, [], False)
             if not headers_only:
                 meta = common.Metadata(self.metadata(book))
             about = None
@@ -100,7 +100,9 @@ class Catalogue(common.ResumptionOAIPMH):
 
     def books(self, tag, from_, until):
         if tag:
-            books = Book.tagged.with_all([tag])
+            # we do not support sets, since they are problematic for deleted books.
+            raise errror.NoSetHierarchyError()
+            # books = Book.tagged.with_all([tag])
         else:
             books = Book.objects.all()
         deleted = Deleted.objects.filter(slug__isnull=False)
@@ -110,7 +112,6 @@ class Catalogue(common.ResumptionOAIPMH):
         if from_:
             books = books.filter(changed_at__gte=from_)
             deleted = deleted.filter(deleted_at__gte=from_)
-            print "DELETED:%s" % deleted
         if until:
             books = books.filter(changed_at__lte=until)
             deleted = deleted.filter(deleted_at__lte=until)
@@ -151,9 +152,7 @@ Returns (header, metadata, about) for given record.
     def listIdentifiers(self, **kw):
         print "list identifiers %s" % (kw, )
         records = [self.record_for_book(book, headers_only=True) for
-                   book in self.books(
-                       self.setspec_to_tag(
-                           kw.get('set', None)),
+                   book in self.books(None,
                            kw.get('from_', None),
                            kw.get('until', None))]
         return records, None
@@ -164,9 +163,7 @@ can get a resumptionToken kw.
 returns result, token
         """
         records = [self.record_for_book(book) for
-                   book in self.books(
-                       self.setspec_to_tag(
-                           kw.get('set', None)),
+                   book in self.books(None,
                            kw.get('from_', None),
                            kw.get('until', None))]
 
@@ -179,11 +176,11 @@ returns result, token
 
     def listSets(self, **kw):
         tags = []
-        for category in Catalogue.TAG_CATEGORIES:
-            for tag in Tag.objects.filter(category=category):
-                tags.append(("%s:%s" % (tag.category, tag.slug),
-                             tag.name,
-                             tag.description))
+        # for category in Catalogue.TAG_CATEGORIES:
+        #     for tag in Tag.objects.filter(category=category):
+        #         tags.append(("%s:%s" % (tag.category, tag.slug),
+        #                      tag.name,
+        #                      tag.description))
         return tags, None
 
 
