@@ -146,7 +146,7 @@ Returns (header, metadata, about) for given record.
                 deleted_book = Deleted.objects.get(content_type=book_type,
                                                   slug=slug)
             except:
-                raise error.NoRecordsMatchError()
+                raise error.IdDoesNotExistError()
             return self.record_for_book(deleted_book)
 
     def listIdentifiers(self, **kw):
@@ -175,12 +175,13 @@ returns result, token
                  server.NS_OAIDC)]
 
     def listSets(self, **kw):
-        tags = []
+        raise error.NoSetHierarchyError()
+        # tags = []
         # for category in Catalogue.TAG_CATEGORIES:
         #     for tag in Tag.objects.filter(category=category):
         #         tags.append(("%s:%s" % (tag.category, tag.slug),
         #                      tag.name,
         #                      tag.description))
-        return tags, None
+        # return tags, None
 
 
