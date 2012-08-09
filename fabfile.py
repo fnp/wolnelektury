@@ -29,7 +29,7 @@ def production():
     env.path = '/srv/wolnelektury.pl'
     env.python = '/usr/bin/python'
     env.virtualenv = '/usr/bin/virtualenv'
-    env.pip = '/usr/bin/pip'
+    env.pip = 've/bin/pip'
 
 # =========
 # = Tasks =
