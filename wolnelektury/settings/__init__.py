@@ -86,7 +86,7 @@ INSTALLED_APPS_CONTRIB = [
     'djcelery',
     'djkombu',
     'honeypot',
-    'django_nose',
+    #'django_nose',
 
     #allauth stuff
     'emailconfirmation',
