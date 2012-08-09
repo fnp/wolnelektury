@@ -52,7 +52,7 @@ class Catalogue(common.ResumptionOAIPMH):
 
         try:
             earliest_delete = \
-                Deleted.objects.ordery_by('deleted_at')[0].deleted_at
+                Deleted.objects.exclude(slug__exact=u'').ordery_by('deleted_at')[0].deleted_at
         except: earliest_delete = year_zero
 
         self.earliest_datestamp = earliest_change <= earliest_delete and \
@@ -102,7 +102,7 @@ class Catalogue(common.ResumptionOAIPMH):
             # books = Book.tagged.with_all([tag])
         else:
             books = Book.objects.all()
-        deleted = Deleted.objects.filter(slug__isnull=False)
+        deleted = Deleted.objects.exclude(slug__exact=u'')
 
         books = books.order_by('changed_at')
         deleted = deleted.order_by('deleted_at')
