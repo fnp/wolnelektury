@@ -3,6 +3,7 @@ from catalogue.models import Book, Tag
 from api.models import Deleted
 from api.handlers import WL_BASE
 from librarian.dcparser import BookInfo
+from librarian import WLURI
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -67,28 +68,32 @@ class Catalogue(common.ResumptionOAIPMH):
 
     def record_for_book(self, book, headers_only=False):
         meta = None
+        identifier = str(WLURI.from_slug(book.slug))
         if isinstance(book, Book):
-            header = common.Header(book.slug, book.changed_at, [], False)
+            setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
+            header = common.Header(identifier, book.changed_at, setSpec, False)
             if not headers_only:
                 meta = common.Metadata(self.metadata(book))
             about = None
         elif isinstance(book, Deleted):
-            header = common.Header(book.slug, book.deleted_at, [], True)
+            header = common.Header(identifier, book.deleted_at, [], True)
             if not headers_only:
                 meta = common.Metadata({})
             about = None
+        if headers_only:
+            return header
         return header, meta, about
 
     def identify(self, **kw):
         ident = common.Identify(
             'Wolne Lektury',  # generate
             '%s/oaipmh' % WL_BASE,  # generate
-            '1.1',  # version
+            '2.0',  # version
             self.admin_emails,  # adminEmails
             self.earliest_datestamp,  # earliest datestamp of any change
             'persistent',  # deletedRecord
             'YYYY-MM-DDThh:mm:ssZ',  # granularity
-            'identity',  # compression
+            ['identity'],  # compression
             []  # descriptions
             )
         return ident
@@ -98,15 +103,17 @@ class Catalogue(common.ResumptionOAIPMH):
             books = Book.tagged.with_all([tag])
         else:
             books = Book.objects.all()
-        deleted = Deleted.objects.all()
+        deleted = Deleted.objects.filter(slug__isnull=False)
 
         books = books.order_by('changed_at')
+        deleted = deleted.order_by('deleted_at')
         if from_:
             books = books.filter(changed_at__gte=from_)
             deleted = deleted.filter(deleted_at__gte=from_)
+            print "DELETED:%s" % deleted
         if until:
             books = books.filter(changed_at__lte=until)
-            deleted = deleted.filter(deleted_at__gte=until)
+            deleted = deleted.filter(deleted_at__lte=until)
         return list(books) + list(deleted)
 
     @staticmethod
@@ -128,7 +135,7 @@ class Catalogue(common.ResumptionOAIPMH):
         """
 Returns (header, metadata, about) for given record.
         """
-        slug = kw['record']
+        slug = WLURI(kw['identifier']).slug
         try:
             book = Book.objects.get(slug=slug)
             return self.record_for_book(book)
@@ -142,13 +149,14 @@ Returns (header, metadata, about) for given record.
             return self.record_for_book(deleted_book)
 
     def listIdentifiers(self, **kw):
+        print "list identifiers %s" % (kw, )
         records = [self.record_for_book(book, headers_only=True) for
                    book in self.books(
                        self.setspec_to_tag(
                            kw.get('set', None)),
-                           kw.get('from', None),
+                           kw.get('from_', None),
                            kw.get('until', None))]
-        return records
+        return records, None
 
     def listRecords(self, **kw):
         """
@@ -159,7 +167,7 @@ returns result, token
                    book in self.books(
                        self.setspec_to_tag(
                            kw.get('set', None)),
-                           kw.get('from', None),
+                           kw.get('from_', None),
                            kw.get('until', None))]
 
         return records, None
@@ -176,4 +184,6 @@ returns result, token
                 tags.append(("%s:%s" % (tag.category, tag.slug),
                              tag.name,
                              tag.description))
-        return tags
+        return tags, None
+
+

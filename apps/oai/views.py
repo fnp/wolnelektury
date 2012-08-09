@@ -13,6 +13,5 @@ server = ServerBase(Catalogue(), metadata_registry, ns_map)
 
 
 def oaipmh(request):
-    print request.GET
     resp = server.handleRequest(request.GET)
     return HttpResponse(resp)
