@@ -353,15 +353,15 @@ class Book(models.Model):
 
         # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
+        book.build_cover(book_info)
 
         # delete old fragments when overwriting
         book.fragments.all().delete()
 
         if book.build_html():
+            # No direct saves behind this point.
             if not settings.NO_BUILD_TXT and build_txt:
                 book.build_txt()
-
-        book.build_cover(book_info)
 
         if not settings.NO_BUILD_EPUB and build_epub:
             book.build_epub()
@@ -393,8 +393,6 @@ class Book(models.Model):
 
         for tag in descendants_tags:
             tasks.touch_tag(tag)
-
-        book.save()
 
         # refresh cache
         book.reset_tag_counter()
