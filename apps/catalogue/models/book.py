@@ -344,12 +344,17 @@ class Book(models.Model):
 
         book.tags = set(meta_tags + book_shelves)
 
-        book_tag = book.book_tag()
-
+        obsolete_children = set(b for b in book.children.all() if b not in children)
         for n, child_book in enumerate(children):
             child_book.parent = book
             child_book.parent_number = n
             child_book.save()
+        # Disown unfaithful children and let them cope on their own.
+        for child in obsolete_children:
+            child.parent = None
+            child.parent_number = 0
+            child.save()
+            tasks.fix_tree_tags.delay(child)
 
         # Save XML and HTML files
         book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
@@ -379,27 +384,46 @@ class Book(models.Model):
             book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
             #index_book.delay(book.id, book_info)
 
-        book_descendants = list(book.children.all())
-        descendants_tags = set()
-        # add l-tag to descendants and their fragments
-        while len(book_descendants) > 0:
-            child_book = book_descendants.pop(0)
-            descendants_tags.update(child_book.tags)
-            child_book.tags = list(child_book.tags) + [book_tag]
-            child_book.save()
-            for fragment in child_book.fragments.all().iterator():
-                fragment.tags = set(list(fragment.tags) + [book_tag])
-            book_descendants += list(child_book.children.all())
-
-        for tag in descendants_tags:
-            tasks.touch_tag(tag)
-
-        # refresh cache
-        book.reset_tag_counter()
-        book.reset_theme_counter()
-
+        tasks.fix_tree_tags.delay(book)
         cls.published.send(sender=book)
         return book
+
+    def fix_tree_tags(self):
+        """Fixes the l-tags on the book's subtree.
+
+        Makes sure that:
+        * the book has its parents book-tags,
+        * its fragments have the book's and its parents book-tags,
+        * runs those for every child book too,
+        * touches all relevant tags,
+        * resets tag and theme counter on the book and its ancestry.
+        """
+        def fix_subtree(book, parent_tags):
+            affected_tags = set(book.tags)
+            book.tags = list(book.tags.exclude(category='book')) + parent_tags
+            sub_parent_tags = parent_tags + [book.book_tag()]
+            for frag in book.fragments.all():
+                affected_tags.update(frag.tags)
+                frag.tags = list(frag.tags.exclude(category='book')) + sub_parent_tags
+            for child in book.children.all():
+                affected_tags.update(fix_subtree(child, sub_parent_tags))
+            return affected_tags
+
+        parent_tags = []
+        parent = self.parent
+        while parent is not None:
+            parent_tags.append(parent.book_tag())
+            parent = parent.parent
+
+        affected_tags = fix_subtree(self, parent_tags)
+        for tag in affected_tags:
+            tasks.touch_tag(tag)
+
+        book = self
+        while book is not None:
+            book.reset_tag_counter()
+            book.reset_theme_counter()
+            book = book.parent
 
     def related_info(self):
         """Keeps info about related objects (tags, media) in cache field."""

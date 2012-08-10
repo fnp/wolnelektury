@@ -9,6 +9,8 @@ class WLTestCase(TestCase):
     """
         Generic base class for tests. Adds settings freeze and clears MEDIA_ROOT.
     """
+    longMessage = True
+
     def setUp(self):
         self._MEDIA_ROOT, settings.MEDIA_ROOT = settings.MEDIA_ROOT, tempfile.mkdtemp(prefix='djangotest_')
         settings.NO_SEARCH_INDEX = settings.NO_BUILD_PDF = settings.NO_BUILD_MOBI = settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = settings.NO_BUILD_FB2 = True
@@ -23,6 +25,7 @@ class WLTestCase(TestCase):
         shutil.rmtree(settings.MEDIA_ROOT, True)
         settings.MEDIA_ROOT = self._MEDIA_ROOT
         settings.CACHES = self._CACHES
+
 
 class PersonStub(object):
 

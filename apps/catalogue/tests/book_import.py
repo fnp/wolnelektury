@@ -241,6 +241,140 @@ class ChildImportTests(WLTestCase):
                         'wrong related theme list')
 
 
+class TreeImportTest(WLTestCase):
+    def setUp(self):
+        WLTestCase.setUp(self)
+        self.child_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Joe",), "Doe"),
+            **info_args("Child")
+        )
+        self.CHILD_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01">Pies</motyw>
+                Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+        self.child = models.Book.from_text_and_meta(
+            ContentFile(self.CHILD_TEXT), self.child_info)
+
+        self.book_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Joe",), "Doe"),
+            parts=[self.child_info.url],
+            **info_args("Book")
+        )
+        self.BOOK_TEXT = """<utwor />"""
+        self.book = models.Book.from_text_and_meta(
+            ContentFile(self.BOOK_TEXT), self.book_info)
+
+        self.parent_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='X-Kind',
+            author=PersonStub(("Jim",), "Lazy"),
+            parts=[self.book_info.url],
+            **info_args("Parent")
+        )
+        self.PARENT_TEXT = """<utwor />"""
+        self.parent = models.Book.from_text_and_meta(
+            ContentFile(self.PARENT_TEXT), self.parent_info)
+
+    def test_ok(self):
+        self.assertEqual(
+                list(self.client.get('/katalog/gatunek/x-genre/'
+                    ).context['object_list']),
+                [self.parent],
+                u"There should be only parent on common tag page."
+            )
+        pies = models.Tag.objects.get(slug='pies')
+        self.assertEqual(self.parent.theme_counter, {pies.pk: 1},
+                u"There should be child theme in parent theme counter."
+            )
+        epoch = models.Tag.objects.get(slug='x-epoch')
+        self.assertEqual(epoch.book_count, 1,
+                u"There should be only parent in common tag's counter."
+            )
+
+    def test_child_republish(self):
+        CHILD_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01">Pies, Kot</motyw>
+                Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+        models.Book.from_text_and_meta(
+            ContentFile(CHILD_TEXT), self.child_info, overwrite=True)
+        self.assertEqual(
+                list(self.client.get('/katalog/gatunek/x-genre/'
+                    ).context['object_list']),
+                [self.parent],
+                u"There should only be parent on common tag page."
+            )
+        pies = models.Tag.objects.get(slug='pies')
+        kot = models.Tag.objects.get(slug='kot')
+        self.assertEqual(self.parent.theme_counter, {pies.pk: 1, kot.pk: 1},
+                u"There should be child themes in parent theme counter."
+            )
+        epoch = models.Tag.objects.get(slug='x-epoch')
+        self.assertEqual(epoch.book_count, 1,
+                u"There should only be parent in common tag's counter."
+            )
+
+    def test_book_change_child(self):
+        second_child_info = BookInfoStub(
+            genre='X-Genre',
+            epoch='X-Epoch',
+            kind='Other-Kind',
+            author=PersonStub(("Joe",), "Doe"),
+            **info_args("Second Child")
+        )
+        SECOND_CHILD_TEXT = """<utwor>
+        <opowiadanie>
+            <akap><begin id="m01" /><motyw id="m01">Kot</motyw>
+                Ala ma kota<end id="m01" /></akap>
+        </opowiadanie></utwor>
+        """
+        # Import a second child.
+        second_child = models.Book.from_text_and_meta(
+            ContentFile(SECOND_CHILD_TEXT), second_child_info)
+        # The book has only this new child now.
+        self.book_info.parts = [second_child_info.url]
+        self.book = models.Book.from_text_and_meta(
+            ContentFile(self.BOOK_TEXT), self.book_info, overwrite=True)
+
+        self.assertEqual(
+                set(self.client.get('/katalog/gatunek/x-genre/'
+                    ).context['object_list']),
+                set([self.parent, self.child]),
+                u"There should be parent and old child on common tag page."
+            )
+        kot = models.Tag.objects.get(slug='kot')
+        self.assertEqual(self.parent.theme_counter, {kot.pk: 1},
+                u"There should only be new child themes in parent theme counter."
+            )
+        epoch = models.Tag.objects.get(slug='x-epoch')
+        self.assertEqual(epoch.book_count, 2,
+                u"There should be parent and old child in common tag's counter."
+            )
+        self.assertEqual(
+                list(self.client.get('/katalog/lektura/parent/motyw/kot/'
+                    ).context['fragments']),
+                [second_child.fragments.all()[0]],
+                u"There should be new child's fragments on parent's theme page."
+            )
+        self.assertEqual(
+                list(self.client.get('/katalog/lektura/parent/motyw/pies/'
+                    ).context['fragments']),
+                [],
+                u"There should be no old child's fragments on parent's theme page."
+            )
+
+
 class MultilingualBookImportTest(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
