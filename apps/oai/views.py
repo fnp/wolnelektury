@@ -9,7 +9,7 @@ metadata_registry = MetadataRegistry()
 metadata_registry.registerWriter('oai_dc', oai_dc_writer)
 ns_map = {'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI}
 
-server = ServerBase(Catalogue(), metadata_registry, ns_map)
+server = ServerBase(Catalogue(metadata_registry), metadata_registry, ns_map)
 
 
 def oaipmh(request):

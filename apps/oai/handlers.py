@@ -3,7 +3,6 @@ from catalogue.models import Book, Tag
 from api.models import Deleted
 from api.handlers import WL_BASE
 from librarian.dcparser import BookInfo
-from librarian import WLURI
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -11,6 +10,8 @@ from lxml import etree
 from lxml.etree import ElementTree
 from django.db.models import Q
 from django.conf import settings
+from django.contrib.sites.models import Site
+
 
 wl_dc_reader = metadata.MetadataReader(
     fields={
@@ -39,8 +40,11 @@ wl_dc_reader = metadata.MetadataReader(
 class Catalogue(common.ResumptionOAIPMH):
     TAG_CATEGORIES = ['author', 'epoch', 'kind', 'genre']
     
-    def __init__(self):
+    def __init__(self, metadata_registry):
         super(Catalogue, self).__init__()
+        self.metadata_registry = metadata_registry
+
+        self.oai_id = "oai:"+Site.objects.get_current().domain+":%s"
 
         # earliest change
         year_zero = datetime(1990, 1, 1, 0, 0, 0)
@@ -59,13 +63,16 @@ class Catalogue(common.ResumptionOAIPMH):
             earliest_change or earliest_delete
 
     def metadata(self, book):
-        xml = etree.parse(book.xml_file)
+        try:
+            xml = etree.parse(book.xml_file)
+        finally:
+            book.xml_file.close()
         md = wl_dc_reader(xml)
         return md.getMap()
 
     def record_for_book(self, book, headers_only=False):
         meta = None
-        identifier = str(WLURI.from_slug(book.slug))
+        identifier = self.slug_to_identifier(book.slug)
         if isinstance(book, Book):
             #            setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
             header = common.Header(identifier, book.changed_at, [], False)
@@ -133,7 +140,7 @@ class Catalogue(common.ResumptionOAIPMH):
         """
 Returns (header, metadata, about) for given record.
         """
-        slug = WLURI(kw['identifier']).slug
+        slug = self.identifier_to_slug(kw['identifier'])
         try:
             book = Book.objects.get(slug=slug)
             return self.record_for_book(book)
@@ -146,7 +153,20 @@ Returns (header, metadata, about) for given record.
                 raise error.IdDoesNotExistError("No item for this identifier")
             return self.record_for_book(deleted_book)
 
+    def validate_kw(self, kw):
+        if 'resumptionToken' in kw:
+            raise error.BadResumptionTokenError("No resumption token support at this point")
+        if 'metadataPrefix' in kw and not self.metadata_registry.hasWriter(kw['metadataPrefix']):
+            raise error.CannotDisseminateFormatError("This format is not supported")
+
+    def identifier_to_slug(self, ident):
+        return ident.split(':')[-1]
+
+    def slug_to_identifier(self, slug):
+        return self.oai_id % slug
+
     def listIdentifiers(self, **kw):
+        self.validate_kw(kw)
         records = [self.record_for_book(book, headers_only=True) for
                    book in self.books(None,
                            kw.get('from_', None),
@@ -158,6 +178,7 @@ Returns (header, metadata, about) for given record.
 can get a resumptionToken kw.
 returns result, token
         """
+        self.validate_kw(kw)
         records = [self.record_for_book(book) for
                    book in self.books(None,
                            kw.get('from_', None),
@@ -166,9 +187,22 @@ returns result, token
         return records, None
 
     def listMetadataFormats(self, **kw):
-        return [('oai_dc',
+        formats = [('oai_dc',
                  'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
                  server.NS_OAIDC)]
+        if 'identifier' in kw:
+            slug = self.identifier_to_slug(kw['identifier'])
+            try:
+                b = Book.objects.get(slug=slug)
+                return formats
+            except:
+                try:
+                    d = Deleted.objects.get(slug=slug)
+                    return []
+                except:
+                    raise error.IdDoesNotExistError("This id does not exist")
+        else:
+            return formats
 
     def listSets(self, **kw):
         raise error.NoSetHierarchyError("Wolne Lektury does not support sets.")
