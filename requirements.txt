@@ -10,7 +10,10 @@ django-piston<=0.2.3
 #django-jsonfield
 -e git+git://github.com/bradjasper/django-jsonfield.git@2f427368ad70bf8d9a0580df58ec0eb0654d62ae#egg=django-jsonfield
 django-picklefield
-django-allauth>=0.4,<0.5
+#django-allauth>=0.4,<0.5
+# version of django-allauth 0.4 with install script fixed
+-e git+git://github.com/pennersr/django-allauth.git@3a03db9b2ecca370af228df367bd8fa52afea5ea#egg=django-allauth
+
 django-honeypot
 django-uni-form
 
