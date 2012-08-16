@@ -16,7 +16,7 @@ class NotesView(ListView):
             objects = objects.filter(sort_key__regex=r"^[0-9]")
         elif self.letter:
             objects = objects.filter(sort_key__startswith=self.letter)
-        return ListView.get_queryset(self)
+        return objects
 
     def get_context_data(self, **kwargs):
         context = super(NotesView, self).get_context_data(**kwargs)
