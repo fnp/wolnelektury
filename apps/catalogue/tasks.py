@@ -103,7 +103,7 @@ def build_fb2(book_id, *args, **kwargs):
     remove_zip(settings.ALL_FB2_ZIP)
 
 
-@task(rate_limit=settings.CATALOGUE_CUSTOMPDF_RATE_LIMIT)
+@task(ignore_result=True, rate_limit=settings.CATALOGUE_CUSTOMPDF_RATE_LIMIT)
 def build_custom_pdf(book_id, customizations, file_name):
     """Builds a custom PDF file."""
     from django.core.files import File
@@ -116,3 +116,20 @@ def build_custom_pdf(book_id, customizations, file_name):
                 customizations=customizations,
                 morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
         DefaultStorage().save(file_name, File(open(pdf.get_filename())))
+
+
+@task(ignore_result=True)
+def build_cover(book_id):
+    """(Re)builds the cover image."""
+    from StringIO import StringIO
+    from django.core.files.base import ContentFile
+    from librarian.cover import WLCover
+    from catalogue.models import Book
+
+    book = Book.objects.get(pk=book_id)
+    book_info = book.wldocument().book_info
+    cover = WLCover(book_info).image()
+    imgstr = StringIO()
+    cover.save(imgstr, 'png')
+    book.cover.save(None, ContentFile(imgstr.getvalue()), save=False)
+    Book.objects.filter(pk=book_id).update(cover=book.cover)

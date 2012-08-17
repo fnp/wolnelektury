@@ -160,20 +160,6 @@ class Book(models.Model):
                 provider=ORMDocProvider(self),
                 parse_dublincore=parse_dublincore)
 
-    def build_cover(self, book_info=None):
-        """(Re)builds the cover image."""
-        from StringIO import StringIO
-        from django.core.files.base import ContentFile
-        from librarian.cover import WLCover
-
-        if book_info is None:
-            book_info = self.wldocument().book_info
-
-        cover = WLCover(book_info).image()
-        imgstr = StringIO()
-        cover.save(imgstr, 'png')
-        self.cover.save(None, ContentFile(imgstr.getvalue()))
-
     def build_html(self):
         from django.core.files.base import ContentFile
         from slughifi import slughifi
@@ -233,6 +219,9 @@ class Book(models.Model):
         return False
 
     # Thin wrappers for builder tasks
+    def build_cover(self):
+        """(Re)builds the cover image."""
+        return tasks.build_cover.delay(self.pk)
     def build_pdf(self, *args, **kwargs):
         """(Re)builds PDF."""
         return tasks.build_pdf.delay(self.pk, *args, **kwargs)
@@ -315,7 +304,6 @@ class Book(models.Model):
                     raise Book.DoesNotExist(_('Book "%s" does not exist.') %
                             part_url.slug)
 
-
         # Read book metadata
         book_slug = book_info.url.slug
         if re.search(r'[^a-z0-9-]', book_slug):
@@ -356,17 +344,23 @@ class Book(models.Model):
             child.save()
             tasks.fix_tree_tags.delay(child)
 
-        # Save XML and HTML files
+        # Save XML file
         book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
-        book.build_cover(book_info)
 
         # delete old fragments when overwriting
         book.fragments.all().delete()
+        # Build HTML, fix the tree tags, build cover.
+        has_own_text = bool(book.build_html())
+        tasks.fix_tree_tags.delay(book)
+        book.build_cover(book_info)
+        
+        # No saves behind this point.
 
-        if book.build_html():
-            # No direct saves behind this point.
+        if has_own_text:
             if not settings.NO_BUILD_TXT and build_txt:
                 book.build_txt()
+            if not settings.NO_BUILD_FB2 and build_fb2:
+                book.build_fb2()
 
         if not settings.NO_BUILD_EPUB and build_epub:
             book.build_epub()
@@ -377,14 +371,10 @@ class Book(models.Model):
         if not settings.NO_BUILD_MOBI and build_mobi:
             book.build_mobi()
 
-        if not settings.NO_BUILD_FB2 and build_fb2:
-            book.build_fb2()
-
         if not settings.NO_SEARCH_INDEX and search_index:
             book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
             #index_book.delay(book.id, book_info)
 
-        tasks.fix_tree_tags.delay(book)
         cls.published.send(sender=book)
         return book
 

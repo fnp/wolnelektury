@@ -4,7 +4,7 @@
 {% load common_tags catalogue_tags pagination_tags %}
 
 {% block titleextra %}{{ book.pretty_title }}{% endblock %}
-{% block ogimage %}{{ book.cover.url|build_absolute_uri:request }}{% endblock %}
+{% block ogimage %}{% if book.cover %}{{ book.cover.url|build_absolute_uri:request }}{% endif %}{% endblock %}
 
 {% block metadescription %}{% book_title book %}. {{ block.super }}{% endblock %}
 
