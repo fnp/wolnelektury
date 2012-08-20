@@ -1,26 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from django.dispatch import Signal
-from lucene import SimpleFSDirectory, NIOFSDirectory, IndexWriter, IndexReader, IndexWriterConfig, CheckIndex, \
-    File, Field, Integer, \
-    NumericField, Version, Document, JavaError, IndexSearcher, \
-    QueryParser, PerFieldAnalyzerWrapper, \
-    SimpleAnalyzer, PolishAnalyzer, ArrayList, \
-    KeywordAnalyzer, NumericRangeQuery, NumericRangeFilter, BooleanQuery, \
-    BlockJoinQuery, BlockJoinCollector, Filter, TermsFilter, ChainedFilter, \
-    HashSet, BooleanClause, Term, CharTermAttribute, \
-    PhraseQuery, MultiPhraseQuery, StringReader, TermQuery, \
-    FuzzyQuery, FuzzyTermEnum, PrefixTermEnum, Sort, Integer, \
-    SimpleHTMLFormatter, Highlighter, QueryScorer, TokenSources, TextFragment, \
-    BooleanFilter, TermsFilter, FilterClause, QueryWrapperFilter, \
-    initVM, CLASSPATH, JArray, JavaError
-    # KeywordAnalyzer
 
-# Initialize jvm
-JVM = initVM(CLASSPATH, maxheap=settings.JVM_MAXHEAP)
-
-import sys
 import os
 import re
 import errno
@@ -29,84 +10,17 @@ from librarian.parser import WLDocument
 from lxml import etree
 import catalogue.models
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
-from multiprocessing.pool import ThreadPool
-from threading import current_thread
 from itertools import chain
-import atexit
 import traceback
 import logging
 log = logging.getLogger('search')
-
-class WLAnalyzer(PerFieldAnalyzerWrapper):
-    def __init__(self):
-        polish = PolishAnalyzer(Version.LUCENE_34)
-        #        polish_gap.setPositionIncrementGap(999)
-
-        simple = SimpleAnalyzer(Version.LUCENE_34)
-        #        simple_gap.setPositionIncrementGap(999)
-
-        keyword = KeywordAnalyzer(Version.LUCENE_34)
-
-        # not sure if needed: there's NOT_ANALYZED meaning basically the same
-
-        PerFieldAnalyzerWrapper.__init__(self, polish)
-
-        self.addAnalyzer("tags", simple)
-        self.addAnalyzer("technical_editors", simple)
-        self.addAnalyzer("editors", simple)
-        self.addAnalyzer("url", keyword)
-        self.addAnalyzer("source_url", keyword)
-        self.addAnalyzer("source_name", simple)
-        self.addAnalyzer("publisher", simple)
-        self.addAnalyzer("authors", simple)
-        self.addAnalyzer("title", simple)
-
-        self.addAnalyzer("is_book", keyword)
-        # shouldn't the title have two forms? _pl and simple?
-
-        self.addAnalyzer("themes", simple)
-        self.addAnalyzer("themes_pl", polish)
-
-        self.addAnalyzer("tag_name", simple)
-        self.addAnalyzer("tag_name_pl", polish)
-
-        self.addAnalyzer("translators", simple)
-
-        self.addAnalyzer("KEYWORD", keyword)
-        self.addAnalyzer("SIMPLE", simple)
-        self.addAnalyzer("POLISH", polish)
+import sunburnt
+import highlight
 
 
-class IndexStore(object):
-    """
-    Provides access to search index.
-
-    self.store - lucene index directory
-    """
-    def __init__(self):
-        self.make_index_dir()
-        self.store = NIOFSDirectory(File(settings.SEARCH_INDEX))
-
-    def make_index_dir(self):
-        try:
-            os.makedirs(settings.SEARCH_INDEX)
-        except OSError as exc:
-            if exc.errno == errno.EEXIST:
-                pass
-            else: raise
-
-    def close(self):
-        self.store.close()
-
-
-class IndexChecker(IndexStore):
-    def __init__(self):
-        IndexStore.__init__(self)
-
-    def check(self):
-        checker = CheckIndex(self.store)
-        status = checker.checkIndex()
-        return status
+class SolrIndex(object):
+    def __init__(self, mode=None):
+        self.index = highlight.HLSolrInterface(settings.SOLR, mode=mode)
 
 
 class Snippets(object):
@@ -191,60 +105,38 @@ class Snippets(object):
             pass
 
 
-class BaseIndex(IndexStore):
-    """
-    Base index class.
-    Provides basic operations on index: opening, closing, optimizing.
-    """
-    def __init__(self, analyzer=None):
-        super(BaseIndex, self).__init__()
-        self.index = None
-        if not analyzer:
-            analyzer = WLAnalyzer()
-        self.analyzer = analyzer
-
-    def open(self, timeout=None):
-        if self.index:
-            raise Exception("Index is already opened")
-        conf = IndexWriterConfig(Version.LUCENE_34, self.analyzer)
-        if timeout:
-            conf.setWriteLockTimeout(long(timeout))
-        self.index = IndexWriter(self.store, conf)
-        return self.index
-
-    def optimize(self):
-        self.index.optimize()
-
-    def close(self):
-        try:
-            self.index.optimize()
-        except JavaError, je:
-            log.error("Error during optimize phase, check index: %s" % je)
-
-        self.index.close()
-        self.index = None
-
-        index_changed.send_robust(self)
-
-        super(BaseIndex, self).close()
-
-    def __enter__(self):
-        self.open()
-        return self
-
-    def __exit__(self, type, value, tb):
-        self.close()
-
-
-index_changed = Signal()
-
-
-class Index(BaseIndex):
+class Index(SolrIndex):
     """
     Class indexing books.
     """
-    def __init__(self, analyzer=None):
-        super(Index, self).__init__(analyzer)
+    def __init__(self):
+        super(Index, self).__init__()
+
+    def delete_query(self, *queries):
+        """
+        index.delete(queries=...) doesn't work, so let's reimplement it
+        using deletion of list of uids.
+        """
+        uids = set()
+        for q in queries:
+            if isinstance(q, sunburnt.search.LuceneQuery):
+                q = self.index.query(q)
+            q.field_limiter.update(['uid'])
+            st = 0
+            rows = 100
+            while True:
+                ids = q.paginate(start=st, rows=rows).execute()
+                if not len(ids):
+                    break
+                for res in ids:
+                    uids.add(res['uid'])
+                st+=rows
+                #        print "Will delete %s" % ','.join([x for x in uids])
+        if uids:
+            self.index.delete(uids)
+            return True
+        else:
+            return False
 
     def index_tags(self, *tags, **kw):
         """
@@ -255,25 +147,23 @@ class Index(BaseIndex):
         remove_only = kw.get('remove_only', False)
         # first, remove tags from index.
         if tags:
-            q = BooleanQuery()
+            tag_qs = []
             for tag in tags:
-                b_id_cat = BooleanQuery()
-
-                q_id = NumericRangeQuery.newIntRange("tag_id", tag.id, tag.id, True, True)
-                b_id_cat.add(q_id, BooleanClause.Occur.MUST)
+                q_id = self.index.Q(tag_id=tag.id)
 
                 if isinstance(tag, PDCounterAuthor):
-                    q_cat = TermQuery(Term('tag_category', 'pd_author'))
+                    q_cat = self.index.Q(tag_category='pd_author')
                 elif isinstance(tag, PDCounterBook):
-                    q_cat = TermQuery(Term('tag_category', 'pd_book'))
+                    q_cat = self.index.Q(tag_category='pd_book')
                 else:
-                    q_cat = TermQuery(Term('tag_category', tag.category))
-                b_id_cat.add(q_cat, BooleanClause.Occur.MUST)
+                    q_cat = self.index.Q(tag_category=tag.category)
 
-                q.add(b_id_cat, BooleanClause.Occur.SHOULD)
+                q_id_cat = self.index.Q(q_id & q_cat)
+                tag_qs.append(q_id_cat)
+            self.delete_query(tag_qs)
         else:  # all
-            q = NumericRangeQuery.newIntRange("tag_id", 0, Integer.MAX_VALUE, True, True)
-            self.index.deleteDocuments(q)
+            q = self.index.Q(tag_id__any=True)
+            self.delete_query(q)
 
         if not remove_only:
             # then add them [all or just one passed]
@@ -284,37 +174,41 @@ class Index(BaseIndex):
 
             for tag in tags:
                 if isinstance(tag, PDCounterAuthor):
-                    doc = Document()
-                    doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
-                    doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
-                    doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
-                    doc.add(Field("tag_category", 'pd_author', Field.Store.YES, Field.Index.NOT_ANALYZED))
-                    doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
-                    self.index.addDocument(doc)
+                    doc = {
+                        "tag_id": int(tag.id),
+                        "tag_name": tag.name,
+                        "tag_name_pl": tag.name,
+                        "tag_category": 'pd_author',
+                        "is_pdcounter": True
+                        }
                 elif isinstance(tag, PDCounterBook):
-                    doc = Document()
-                    doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
-                    doc.add(Field("tag_name", tag.title, Field.Store.NO, Field.Index.ANALYZED))
-                    doc.add(Field("tag_name_pl", tag.title, Field.Store.NO, Field.Index.ANALYZED))
-                    doc.add(Field("tag_category", 'pd_book', Field.Store.YES, Field.Index.NOT_ANALYZED))
-                    doc.add(Field("is_pdcounter", 'true', Field.Store.YES, Field.Index.NOT_ANALYZED))
-                    self.index.addDocument(doc)
+                    doc = {
+                        "tag_id": int(tag.id),
+                        "tag_name": tag.title,
+                        "tag_name_pl": tag.title,
+                        "tag_category": 'pd_book',
+                        "is_pdcounter": True
+                        }
                 else:
-                    doc = Document()
-                    doc.add(NumericField("tag_id", Field.Store.YES, True).setIntValue(int(tag.id)))
-                    doc.add(Field("tag_name", tag.name, Field.Store.NO, Field.Index.ANALYZED))
-                    doc.add(Field("tag_name_pl", tag.name, Field.Store.NO, Field.Index.ANALYZED))
-                    doc.add(Field("tag_category", tag.category, Field.Store.NO, Field.Index.NOT_ANALYZED))
-                    self.index.addDocument(doc)
+                    doc = {
+                        "tag_id": int(tag.id),
+                        "tag_name": tag.name,
+                        "tag_name_pl": tag.name,
+                        "tag_category": tag.category,
+                        "is_pdcounter": False
+                        }
+                doc['uid'] = "tag%d" % tag.id
+                self.index.add(doc)
 
     def create_book_doc(self, book):
         """
         Create a lucene document referring book id.
         """
-        doc = Document()
-        doc.add(NumericField("book_id", Field.Store.YES, True).setIntValue(int(book.id)))
+        doc = {
+            'book_id': int(book.id),
+            }
         if book.parent is not None:
-            doc.add(NumericField("parent_id", Field.Store.YES, True).setIntValue(int(book.parent.id)))
+            doc["parent_id"] = int(book.parent.id)
         return doc
 
     def remove_book(self, book_or_id, remove_snippets=True):
@@ -325,8 +219,7 @@ class Index(BaseIndex):
         else:
             book_id = book_or_id
 
-        q = NumericRangeQuery.newIntRange("book_id", book_id, book_id, True, True)
-        self.index.deleteDocuments(q)
+        self.delete_query(self.index.Q(book_id=book_id))
 
         if remove_snippets:
             snippets = Snippets(book_id)
@@ -348,17 +241,18 @@ class Index(BaseIndex):
         # let's not index it - it's only used for extracting publish date
         if 'source_name' in meta_fields:
             del meta_fields['source_name']
-        
-        for f in meta_fields.values():
-            if isinstance(f, list) or isinstance(f, tuple):
-                for elem in f:
-                    book_doc.add(elem)
-            else:
-                book_doc.add(f)
-        self.index.addDocument(book_doc)
+
+        for n, f in meta_fields.items():
+            book_doc[n] = f
+
+        book_doc['uid'] = "book%s" % book_doc['book_id']
+        self.index.add(book_doc)
         del book_doc
 
-        self.index_content(book, book_fields=[meta_fields['title'], meta_fields['authors'], meta_fields['published_date']])
+        self.index_content(book, book_fields={
+            'title': meta_fields['title'],
+            'authors': meta_fields['authors'],
+            'published_date': meta_fields['published_date']})
 
     master_tags = [
         'opowiadanie',
@@ -391,9 +285,9 @@ class Index(BaseIndex):
         if book_info is None:
             book_info = dcparser.parse(open(book.xml_file.path))
 
-        fields['slug'] = Field("slug", book.slug, Field.Store.NO, Field.Index.ANALYZED_NO_NORMS)
-        fields['tags'] = self.add_gaps([Field("tags", t.name, Field.Store.NO, Field.Index.ANALYZED) for t in book.tags], 'tags')
-        fields['is_book'] = Field("is_book", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED)
+        fields['slug'] = book.slug
+        fields['tags'] = [t.name  for t in book.tags]
+        fields['is_book'] = True
 
         # validator, name
         for field in dcparser.BookInfo.FIELDS:
@@ -408,21 +302,17 @@ class Index(BaseIndex):
                     s = getattr(book_info, field.name)
                     if field.multiple:
                         s = ', '.join(s)
-                    try:
-                        fields[field.name] = Field(field.name, s, Field.Store.NO, Field.Index.ANALYZED)
-                    except JavaError as je:
-                        raise Exception("failed to add field: %s = '%s', %s(%s)" % (field.name, s, je.message, je.args))
+                    fields[field.name] = s
                 elif type_indicator == dcparser.as_person:
                     p = getattr(book_info, field.name)
                     if isinstance(p, dcparser.Person):
                         persons = unicode(p)
                     else:
                         persons = ', '.join(map(unicode, p))
-                    fields[field.name] = Field(field.name, persons, Field.Store.NO, Field.Index.ANALYZED)
+                    fields[field.name] = persons
                 elif type_indicator == dcparser.as_date:
                     dt = getattr(book_info, field.name)
-                    fields[field.name] = Field(field.name, "%04d%02d%02d" %\
-                                               (dt.year, dt.month, dt.day), Field.Store.NO, Field.Index.NOT_ANALYZED)
+                    fields[field.name] = dt
 
         # get published date
         pd = None
@@ -431,19 +321,19 @@ class Index(BaseIndex):
             if match is not None:
                 pd = str(match.groups()[0])
         if not pd: pd = ""
-        fields["published_date"] = Field("published_date", pd, Field.Store.YES, Field.Index.NOT_ANALYZED)
+        fields["published_date"] = pd
 
         return fields
 
-    def add_gaps(self, fields, fieldname):
-        """
-        Interposes a list of fields with gap-fields, which are indexed spaces and returns it.
-        This allows for doing phrase queries which do not overlap the gaps (when slop is 0).
-        """
-        def gap():
-            while True:
-                yield Field(fieldname, ' ', Field.Store.NO, Field.Index.NOT_ANALYZED)
-        return reduce(lambda a, b: a + b, zip(fields, gap()))[0:-1]
+    # def add_gaps(self, fields, fieldname):
+    #     """
+    #     Interposes a list of fields with gap-fields, which are indexed spaces and returns it.
+    #     This allows for doing phrase queries which do not overlap the gaps (when slop is 0).
+    #     """
+    #     def gap():
+    #         while True:
+    #             yield Field(fieldname, ' ', Field.Store.NO, Field.Index.NOT_ANALYZED)
+    #     return reduce(lambda a, b: a + b, zip(fields, gap()))[0:-1]
 
     def get_master(self, root):
         """
@@ -453,7 +343,7 @@ class Index(BaseIndex):
             if master.tag in self.master_tags:
                 return master
 
-    def index_content(self, book, book_fields=[]):
+    def index_content(self, book, book_fields={}):
         """
         Walks the book XML and extract content from it.
         Adds parts for each header tag and for each fragment.
@@ -496,41 +386,31 @@ class Index(BaseIndex):
 
         def add_part(snippets, **fields):
             doc = self.create_book_doc(book)
-            for f in book_fields:
-                doc.add(f)
+            for n, v in book_fields.items():
+                doc[n] = v
 
-            doc.add(NumericField('header_index', Field.Store.YES, True).setIntValue(fields["header_index"]))
-            doc.add(NumericField("header_span", Field.Store.YES, True)\
-                    .setIntValue('header_span' in fields and fields['header_span'] or 1))
-            doc.add(Field('header_type', fields["header_type"], Field.Store.YES, Field.Index.NOT_ANALYZED))
+            doc['header_index'] = fields["header_index"]
+            doc['header_span'] = 'header_span' in fields and fields['header_span'] or 1
+            doc['header_type'] = fields['header_type']
 
-            doc.add(Field('content', fields["content"], Field.Store.NO, Field.Index.ANALYZED, \
-                          Field.TermVector.WITH_POSITIONS_OFFSETS))
+            doc['text'] = fields['text']
 
-            snip_pos = snippets.add(fields["content"])
-            doc.add(NumericField("snippets_position", Field.Store.YES, True).setIntValue(snip_pos[0]))
-            doc.add(NumericField("snippets_length", Field.Store.YES, True).setIntValue(snip_pos[1]))
+            # snippets
+            snip_pos = snippets.add(fields["text"])
+
+            doc['snippets_position'] = snip_pos[0]
+            doc['snippets_length'] = snip_pos[1]
             if snippets.revision:
-                doc.add(NumericField("snippets_revision", Field.Store.YES, True).setIntValue(snippets.revision))
+                doc["snippets_revision"] = snippets.revision
 
             if 'fragment_anchor' in fields:
-                doc.add(Field("fragment_anchor", fields['fragment_anchor'],
-                              Field.Store.YES, Field.Index.NOT_ANALYZED))
+                doc["fragment_anchor"] = fields['fragment_anchor']
 
             if 'themes' in fields:
-                themes, themes_pl = zip(*[
-                    (Field("themes", theme, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS),
-                     Field("themes_pl", theme, Field.Store.NO, Field.Index.ANALYZED, Field.TermVector.WITH_POSITIONS))
-                     for theme in fields['themes']])
-
-                themes = self.add_gaps(themes, 'themes')
-                themes_pl = self.add_gaps(themes_pl, 'themes_pl')
-
-                for t in themes:
-                    doc.add(t)
-                for t in themes_pl:
-                    doc.add(t)
-
+                doc['themes'] = fields['themes']
+            doc['uid'] = "part%s%s%s" % (doc['header_index'],
+                                         doc['header_span'],
+                                         doc.get('fragment_anchor',''))
             return doc
 
         def give_me_utf8(s):
@@ -555,39 +435,40 @@ class Index(BaseIndex):
 
                 def all_content(text):
                     for frag in fragments.values():
-                        frag['content'].append(text)
+                        frag['text'].append(text)
                     content.append(text)
                 handle_text = [all_content]
-
 
                 for start, text, end in walker(header, ignore_tags=self.ignore_content_tags):
                     # handle footnotes
                     if start is not None and start.tag in self.footnote_tags:
                         footnote = []
+
                         def collect_footnote(t):
                             footnote.append(t)
+
                         handle_text.append(collect_footnote)
                     elif end is not None and footnote is not [] and end.tag in self.footnote_tags:
                         handle_text.pop()
                         doc = add_part(snippets, header_index=position, header_type=header.tag,
-                                       content=u''.join(footnote),
-                                       is_footnote=Field("is_footnote", 'true', Field.Store.NO, Field.Index.NOT_ANALYZED))
-                
-                        self.index.addDocument(doc)
+                                       text=u''.join(footnote),
+                                       is_footnote=True)
+
+                        self.index.add(doc)
                         #print "@ footnote text: %s" % footnote
                         footnote = []
-                    
+
                     # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
-                        fragments[fid] = {'content': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
+                        fragments[fid] = {'text': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
 
                     # themes for this fragment
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
                         handle_text.append(None)
                         if start.text is not None:
-                            fragments[fid]['themes'] += map(str.strip, map(give_me_utf8, start.text.split(',')))
+                            fragments[fid]['themes'] += map(unicode.strip, map(unicode, (start.text.split(','))))
                     elif end is not None and end.tag == 'motyw':
                         handle_text.pop()
 
@@ -605,10 +486,10 @@ class Index(BaseIndex):
                                        header_index=frag['start_section'],
                                        header_span=position - frag['start_section'] + 1,
                                        fragment_anchor=fid,
-                                       content=fix_format(frag['content']),
+                                       text=fix_format(frag['text']),
                                        themes=frag['themes'])
                         #print '@ FRAG %s' % frag['content']
-                        self.index.addDocument(doc)
+                        self.index.add(doc)
 
                         # Collect content.
 
@@ -618,141 +499,51 @@ class Index(BaseIndex):
                             hdl(text)
 
                         # in the end, add a section text.
-                doc = add_part(snippets, header_index=position, header_type=header.tag,
-                               content=fix_format(content))
+                doc = add_part(snippets, header_index=position,
+                               header_type=header.tag, text=fix_format(content))
                 #print '@ CONTENT: %s' % fix_format(content)
 
-                self.index.addDocument(doc)
+                self.index.add(doc)
 
         finally:
             snippets.close()
 
 
-def log_exception_wrapper(f):
-    def _wrap(*a):
-        try:
-            f(*a)
-        except Exception, e:
-            log.error("Error in indexing thread: %s" % e)
-            traceback.print_exc()
-            raise e
-    return _wrap
-
-
-class ReusableIndex(Index):
-    """
-    Works like index, but does not close/optimize Lucene index
-    until program exit (uses atexit hook).
-    This is usefull for importbooks command.
-
-    if you cannot rely on atexit, use ReusableIndex.close_reusable() yourself.
-    """
-    index = None
-
-    def open(self, analyzer=None, **kw):
-        if ReusableIndex.index:
-            self.index = ReusableIndex.index
-        else:
-            Index.open(self, analyzer, **kw)
-            ReusableIndex.index = self.index
-            atexit.register(ReusableIndex.close_reusable)
-
-    # def index_book(self, *args, **kw):
-    #     job = ReusableIndex.pool.apply_async(log_exception_wrapper(Index.index_book), (self,) + args, kw)
-    #     ReusableIndex.pool_jobs.append(job)
-
-    @staticmethod
-    def close_reusable():
-        if ReusableIndex.index:
-            ReusableIndex.index.optimize()
-            ReusableIndex.index.close()
-            ReusableIndex.index = None
-
-            index_changed.send_robust(None)
-
-    def close(self):
-        if ReusableIndex.index:
-            ReusableIndex.index.commit()
-
-
-class JoinSearch(object):
-    """
-    This mixin could be used to handle block join queries.
-    (currently unused)
-    """
-    def __init__(self, *args, **kw):
-        super(JoinSearch, self).__init__(*args, **kw)
-
-    def wrapjoins(self, query, fields=[]):
-        """
-        This functions modifies the query in a recursive way,
-        so Term and Phrase Queries contained, which match
-        provided fields are wrapped in a BlockJoinQuery,
-        and so delegated to children documents.
-        """
-        if BooleanQuery.instance_(query):
-            qs = BooleanQuery.cast_(query)
-            for clause in qs:
-                clause = BooleanClause.cast_(clause)
-                clause.setQuery(self.wrapjoins(clause.getQuery(), fields))
-            return qs
-        else:
-            termset = HashSet()
-            query.extractTerms(termset)
-            for t in termset:
-                t = Term.cast_(t)
-                if t.field() not in fields:
-                    return query
-            return BlockJoinQuery(query, self.parent_filter,
-                                  BlockJoinQuery.ScoreMode.Total)
-
-    def bsearch(self, query, max_results=50):
-        q = self.query(query)
-        bjq = BlockJoinQuery(q, self.parent_filter, BlockJoinQuery.ScoreMode.Avg)
-
-        tops = self.searcher.search(bjq, max_results)
-        bks = []
-        for found in tops.scoreDocs:
-            doc = self.searcher.doc(found.doc)
-            bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
-        return (bks, tops.totalHits)
-
 
 class SearchResult(object):
-    def __init__(self, search, scoreDocs, score=None, how_found=None, snippets=None, searched=None, tokens_cache=None):
+    def __init__(self, search, doc, how_found=None, snippets=None, searched=None, tokens_cache=None):
         if tokens_cache is None: tokens_cache = {}
 
-        if score:
-            self._score = score
+        if 'score' in doc:
+            self._score = doc['score']
         else:
-            self._score = scoreDocs.score
+            self._score = 0
 
         self.boost = 1.0
 
         self._hits = []
         self._processed_hits = None  # processed hits
 
-        stored = search.searcher.doc(scoreDocs.doc)
-        self.book_id = int(stored.get("book_id"))
+        self.book_id = int(doc["book_id"])
 
-        pd = stored.get("published_date")
+        pd = doc["published_date"]
         try:
             self.published_date = int(pd)
         except ValueError:
             self.published_date = 0
 
-        header_type = stored.get("header_type")
+        header_type = doc.get("header_type", None)
         # we have a content hit in some header of fragment
         if header_type is not None:
-            sec = (header_type, int(stored.get("header_index")))
-            header_span = stored.get('header_span')
+            sec = (header_type, int(doc["header_index"]))
+            header_span = doc['header_span']
             header_span = header_span is not None and int(header_span) or 1
 
-            fragment = stored.get("fragment_anchor")
+            fragment = doc.get("fragment_anchor", None)
 
             if snippets:
                 snippets = snippets.replace("/\n", "\n")
-            hit = (sec + (header_span,), fragment, scoreDocs.score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
+            hit = (sec + (header_span,), fragment, self._score, {'how_found': how_found, 'snippets': snippets and [snippets] or []})
 
             self._hits.append(hit)
 
@@ -990,11 +781,11 @@ class Hint(object):
         return some
 
 
-class Search(IndexStore):
+class Search(SolrIndex):
     """
     Search facilities.
     """
-    def __init__(self, default_field="content"):
+    def __init__(self, default_field="text"):
         IndexStore.__init__(self)
         self.analyzer = WLAnalyzer()  # PolishAnalyzer(Version.LUCENE_34)
         # self.analyzer = WLAnalyzer()
@@ -1041,7 +832,7 @@ class Search(IndexStore):
             bks.append(catalogue.models.Book.objects.get(id=doc.get("book_id")))
         return (bks, tops.totalHits)
 
-    def get_tokens(self, searched, field='content', cached=None):
+    def get_tokens(self, searched, field='text', cached=None):
         """returns tokens analyzed by a proper (for a field) analyzer
         argument can be: StringReader, string/unicode, or tokens. In the last case
         they will just be returned (so we can reuse tokens, if we don't change the analyzer)
@@ -1076,7 +867,7 @@ class Search(IndexStore):
         else:
             return 0.5
 
-    def make_phrase(self, tokens, field='content', slop=2, fuzzy=False):
+    def make_phrase(self, tokens, field='text', slop=2, fuzzy=False):
         """
         Return a PhraseQuery with a series of tokens.
         """
@@ -1105,7 +896,7 @@ class Search(IndexStore):
         return phrase
 
     @staticmethod
-    def make_term_query(tokens, field='content', modal=BooleanClause.Occur.SHOULD, fuzzy=False):
+    def make_term_query(tokens, field='text', modal='BooleanClause.Occur.SHOULD XXX', fuzzy=False):
         """
         Returns term queries joined by boolean query.
         modal - applies to boolean query
@@ -1212,7 +1003,7 @@ class Search(IndexStore):
         Search for book parts which contains a phrase perfectly matching (with a slop of 2, default for make_phrase())
         some part/fragment of the book.
         """
-        qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['content']]
+        qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['text']]
 
         flt = None
         if hint:
@@ -1245,7 +1036,7 @@ class Search(IndexStore):
         # content only query : themes x content
         q = BooleanQuery()
 
-        tokens_pl = self.get_tokens(searched, field='content', cached=tokens_cache)
+        tokens_pl = self.get_tokens(searched, field='text', cached=tokens_cache)
         tokens = self.get_tokens(searched, field='SIMPLE', cached=tokens_cache)
 
         # only search in themes when we do not already filter by themes
@@ -1253,7 +1044,7 @@ class Search(IndexStore):
             q.add(BooleanClause(self.make_term_query(tokens_pl, field='themes_pl',
                                                      fuzzy=fuzzy), BooleanClause.Occur.MUST))
 
-        q.add(BooleanClause(self.make_term_query(tokens_pl, field='content',
+        q.add(BooleanClause(self.make_term_query(tokens_pl, field='text',
                                                  fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
 
         topDocs = self.searcher.search(q, only_in, max_results)
@@ -1265,7 +1056,7 @@ class Search(IndexStore):
         in_content = BooleanQuery()
         in_meta = BooleanQuery()
 
-        for fld in ['themes_pl', 'content']:
+        for fld in ['themes_pl', 'text']:
             in_content.add(BooleanClause(self.make_term_query(tokens_pl, field=fld, fuzzy=False), BooleanClause.Occur.SHOULD))
 
         for fld in ['tags', 'authors', 'title']:
@@ -1322,7 +1113,7 @@ class Search(IndexStore):
 
         # return None
 
-    def get_snippets(self, scoreDoc, query, field='content'):
+    def get_snippets(self, scoreDoc, query, field='text'):
         """
         Returns a snippet for found scoreDoc.
         """
@@ -1494,7 +1285,7 @@ class Search(IndexStore):
         return self.search_books(q, self.term_filter(Term("is_book", "true")), max_results=max_results)
 
     @staticmethod
-    def chain_filters(filters, op=ChainedFilter.AND):
+    def chain_filters(filters, op='XXXChainedFilter.AND'):
         """
         Chains a filter list together
         """

@@ -42,4 +42,6 @@ pyenchant
 # OAI-PMH
 pyoai
 
+egenix-mx-base
+sunburnt
 
