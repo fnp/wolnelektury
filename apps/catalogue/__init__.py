@@ -11,7 +11,7 @@ class Settings(AppSettings):
     """Default settings for catalogue app."""
     DEFAULT_LANGUAGE = u'pol'
     # PDF needs TeXML + XeLaTeX, MOBI needs Calibre.
-    DONT_BUILD = {'pdf', 'mobi'}
+    DONT_BUILD = set(['pdf', 'mobi'])
     FORMAT_ZIPS = {
             'epub': 'wolnelektury_pl_epub',
             'pdf': 'wolnelektury_pl_pdf',
