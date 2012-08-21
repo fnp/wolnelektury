@@ -17,11 +17,11 @@ class EbookFieldFile(FieldFile):
 
     def build(self):
         """Build the ebook immediately."""
-        return self.field.builder(self)
+        return self.field.builder.build(self)
 
     def build_delay(self):
         """Builds the ebook in a delayed task."""
-        return self.field.builder.delay(self)
+        return self.field.builder.delay(self.instance, self.field.attname)
 
 
 class EbookField(models.FileField):
@@ -74,7 +74,11 @@ class BuildEbook(Task):
         """
         return getattr(wldoc, "as_%s" % fieldfile.field.format_name)()
 
-    def run(self, fieldfile):
+    def run(self, obj, field_name):
+        """Just run `build` on FieldFile, can't pass it directly to Celery."""
+        return self.build(getattr(obj, field_name))
+
+    def build(self, fieldfile):
         book = fieldfile.instance
         out = self.transform(book.wldocument(), fieldfile)
         fieldfile.save(None, File(open(out.get_filename())), save=False)
@@ -103,15 +107,15 @@ class BuildPdf(BuildEbook):
     def transform(wldoc, fieldfile):
         return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
 
-    def run(self, fieldfile):
-        BuildEbook.run(self, fieldfile)
+    def build(self, fieldfile):
+        BuildEbook.build(self, fieldfile)
         clear_cache(fieldfile.instance.slug)
 
 
 @BuildEbook.register('html')
 @task(ignore_result=True)
 class BuildHtml(BuildEbook):
-    def run(self, fieldfile):
+    def build(self, fieldfile):
         from django.core.files.base import ContentFile
         from slughifi import slughifi
         from sortify import sortify
