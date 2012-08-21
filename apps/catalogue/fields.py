@@ -8,8 +8,7 @@ from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
 from catalogue.utils import remove_zip, truncate_html_words
-from celery import Task
-from celery.task import task
+from celery.task import Task, task
 from waiter.utils import clear_cache
 
 
