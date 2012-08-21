@@ -2,3 +2,4 @@ nose>=0.11
 django-nose
 nosexcover
 polib
+mock

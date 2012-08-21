@@ -275,10 +275,11 @@ class Book(models.Model):
         obsolete_children = set(b for b in book.children.all()
                                 if b not in children)
         for n, child_book in enumerate(children):
+            new_child = child_book.parent != book
             child_book.parent = book
             child_book.parent_number = n
             child_book.save()
-            if cover_changed:
+            if new_child or cover_changed:
                 child_book.parent_cover_changed()
         # Disown unfaithful children and let them cope on their own.
         for child in obsolete_children:
