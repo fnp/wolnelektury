@@ -1,30 +1,29 @@
-from django.conf import settings
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from django.test import TestCase
-import shutil
+from django.test.utils import override_settings
 import tempfile
 from slughifi import slughifi
 from librarian import WLURI
 
+@override_settings(
+    MEDIA_ROOT=tempfile.mkdtemp(prefix='djangotest_'),
+    CATALOGUE_DONT_BUILD={'pdf', 'mobi', 'epub', 'txt', 'fb2', 'cover'},
+    NO_SEARCH_INDEX = True,
+    CELERY_ALWAYS_EAGER = True,
+    CACHES={
+            'api': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+            'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+            'permanent': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+        },
+)
 class WLTestCase(TestCase):
     """
         Generic base class for tests. Adds settings freeze and clears MEDIA_ROOT.
     """
     longMessage = True
-
-    def setUp(self):
-        self._MEDIA_ROOT, settings.MEDIA_ROOT = settings.MEDIA_ROOT, tempfile.mkdtemp(prefix='djangotest_')
-        settings.NO_SEARCH_INDEX = settings.NO_BUILD_PDF = settings.NO_BUILD_MOBI = settings.NO_BUILD_EPUB = settings.NO_BUILD_TXT = settings.NO_BUILD_FB2 = True
-        settings.CELERY_ALWAYS_EAGER = True
-        self._CACHES, settings.CACHES = settings.CACHES, {
-            'default': {
-                'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-            }
-        }
-
-    def tearDown(self):
-        shutil.rmtree(settings.MEDIA_ROOT, True)
-        settings.MEDIA_ROOT = self._MEDIA_ROOT
-        settings.CACHES = self._CACHES
 
 
 class PersonStub(object):

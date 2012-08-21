@@ -22,14 +22,9 @@ class Command(BaseCommand):
             help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
         make_option('-f', '--force', action='store_true', dest='force', default=False,
             help='Overwrite works already in the catalogue'),
-        make_option('-E', '--no-build-epub', action='store_false', dest='build_epub', default=True,
-            help='Don\'t build EPUB file'),
-        make_option('-M', '--no-build-mobi', action='store_false', dest='build_mobi', default=True,
-            help='Don\'t build MOBI file'),
-        make_option('-T', '--no-build-txt', action='store_false', dest='build_txt', default=True,
-            help='Don\'t build TXT file'),
-        make_option('-P', '--no-build-pdf', action='store_false', dest='build_pdf', default=True,
-            help='Don\'t build PDF file'),
+        make_option('-D', '--dont-build', dest='dont_build',
+            metavar="FORMAT,...",
+            help="Skip building specified formats"),
         make_option('-S', '--no-search-index', action='store_false', dest='search_index', default=True,
             help='Skip indexing imported works for search'),
         make_option('-w', '--wait-until', dest='wait_until', metavar='TIME',
@@ -42,22 +37,25 @@ class Command(BaseCommand):
 
     def import_book(self, file_path, options):
         verbose = options.get('verbose')
+        if options.get('dont_build'):
+            dont_build = options.get('dont_build').lower().split(',')
+        else:
+            dont_build = None
         file_base, ext = os.path.splitext(file_path)
         book = Book.from_xml_file(file_path, overwrite=options.get('force'),
-                                                    build_epub=options.get('build_epub'),
-                                                    build_txt=options.get('build_txt'),
-                                                    build_pdf=options.get('build_pdf'),
-                                                    build_mobi=options.get('build_mobi'),
-                                                    search_index=options.get('search_index'),
-                                                    search_index_reuse=True, search_index_tags=False)
+                                  dont_build=dont_build,
+                                  search_index=options.get('search_index'),
+                                  search_index_reuse=True,
+                                  search_index_tags=False)
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
                 getattr(book, '%s_file' % ebook_format).save(
                     '%s.%s' % (book.slug, ebook_format), 
-                    File(file(file_base + '.' + ebook_format)))
+                    File(file(file_base + '.' + ebook_format)),
+                    save=False
+                    )
                 if verbose:
                     print "Importing %s.%s" % (file_base, ebook_format)
-
         book.save()
 
     def import_picture(self, file_path, options):
