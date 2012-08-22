@@ -105,11 +105,20 @@ class BuildTxt(BuildEbook):
 class BuildPdf(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
+        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
+            cover=True)
 
     def build(self, fieldfile):
         BuildEbook.build(self, fieldfile)
         clear_cache(fieldfile.instance.slug)
+
+
+@BuildEbook.register('epub')
+@task(ignore_result=True)
+class BuildEpub(BuildEbook):
+    @staticmethod
+    def transform(wldoc, fieldfile):
+        return wldoc.as_epub(cover=True)
 
 
 @BuildEbook.register('html')

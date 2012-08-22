@@ -16,6 +16,6 @@ EBOOK_FORMATS_WITHOUT_CHILDREN = ['txt', 'fb2']
 # Those will be generated for all books.
 EBOOK_FORMATS_WITH_CHILDREN = ['pdf', 'epub', 'mobi']
 # Those will be generated when inherited cover changes.
-EBOOK_FORMATS_WITH_COVERS = ['mobi']
+EBOOK_FORMATS_WITH_COVERS = ['pdf', 'epub', 'mobi']
 
 EBOOK_FORMATS = EBOOK_FORMATS_WITHOUT_CHILDREN + EBOOK_FORMATS_WITH_CHILDREN
