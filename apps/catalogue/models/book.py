@@ -274,13 +274,14 @@ class Book(models.Model):
         cover_changed = old_cover != book.cover_info()
         obsolete_children = set(b for b in book.children.all()
                                 if b not in children)
+        notify_cover_changed = []
         for n, child_book in enumerate(children):
             new_child = child_book.parent != book
             child_book.parent = book
             child_book.parent_number = n
             child_book.save()
             if new_child or cover_changed:
-                child_book.parent_cover_changed()
+                notify_cover_changed.append(child_book)
         # Disown unfaithful children and let them cope on their own.
         for child in obsolete_children:
             child.parent = None
@@ -288,7 +289,7 @@ class Book(models.Model):
             child.save()
             tasks.fix_tree_tags.delay(child)
             if old_cover:
-                child.parent_cover_changed()
+                notify_cover_changed.append(child)
 
         # delete old fragments when overwriting
         book.fragments.all().delete()
@@ -311,6 +312,9 @@ class Book(models.Model):
         if not settings.NO_SEARCH_INDEX and search_index:
             book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
             #index_book.delay(book.id, book_info)
+
+        for child in notify_cover_changed:
+            child.parent_cover_changed()
 
         cls.published.send(sender=book)
         return book

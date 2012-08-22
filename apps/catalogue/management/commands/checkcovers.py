@@ -5,6 +5,7 @@
 from optparse import make_option
 from django.contrib.sites.models import Site
 from django.core.management.base import BaseCommand
+from catalogue import app_settings
 
 
 def ancestor_has_cover(book):
@@ -39,13 +40,15 @@ class Command(BaseCommand):
 
         without_cover = []
         with_ancestral_cover = []
-        by_flickr_author = defaultdict(list)
-        not_flickr = []
-        by_license = defaultdict(list)
+        not_redakcja = []
+        bad_license = defaultdict(list)
         no_license = []
 
-        re_flickr = re.compile(ur'https?://(?:www\.|secure\.)?flickr.com/photos/([^/]*)/.*')
         re_license = re.compile(ur'.*,\s*(CC.*)')
+
+        redakcja_url = app_settings.REDAKCJA_URL
+        good_license = re.compile("(%s)" % ")|(".join(
+                            app_settings.GOOD_LICENSES))
 
         with transaction.commit_on_success():
             for book in Book.objects.all().order_by('slug').iterator():
@@ -56,76 +59,71 @@ class Command(BaseCommand):
                     else:
                         without_cover.append(book)
                 else:
-                    match = re_flickr.match(extra_info.get('cover_source', ''))
-                    if match:
-                        by_flickr_author[match.group(1)].append(book)
-                    else:
-                        not_flickr.append(book)
+                    if not extra_info.get('cover_source', ''
+                                ).startswith(redakcja_url):
+                        not_redakcja.append(book)
                     match = re_license.match(extra_info.get('cover_by', ''))
                     if match:
-                        by_license[match.group(1)].append(book)
+                        if not good_license.match(match.group(1)):
+                            bad_license[match.group(1)].append(book)
                     else:
                         no_license.append(book)
 
-        print """%d books with no covers, %d with ancestral covers.
-Licenses used: %s (%d covers without license).
-Flickr authors: %s (%d covers not from flickr).
+        print """%d books with no covers, %d with inherited covers.
+Bad licenses used: %s (%d covers without license).
+%d covers not from %s.
 """ % (
             len(without_cover),
             len(with_ancestral_cover),
-            ", ".join(sorted(by_license.keys())),
+            ", ".join(sorted(bad_license.keys())) or "none",
             len(no_license),
-            ", ".join(sorted(by_flickr_author.keys())),
-            len(not_flickr),
+            len(not_redakcja),
+            redakcja_url,
             )
 
         if verbose:
-            print
-            print "By license:"
-            print "==========="
-            for lic, books in by_license.items():
+            if bad_license:
                 print
-                print lic
-                for book in books:
+                print "Bad license:"
+                print "============"
+                for lic, books in bad_license.items():
+                    print
+                    print lic
+                    for book in books:
+                        print full_url(book)
+
+            if no_license:
+                print
+                print "No license:"
+                print "==========="
+                for book in no_license:
+                    print
+                    print full_url(book)
+                    print book.extra_info.get('cover_by')
+                    print book.extra_info.get('cover_source')
+                    print book.extra_info.get('cover_url')
+
+            if not_redakcja:
+                print
+                print "Not from Redakcja or source missing:"
+                print "===================================="
+                for book in not_redakcja:
+                    print
+                    print full_url(book)
+                    print book.extra_info.get('cover_by')
+                    print book.extra_info.get('cover_source')
+                    print book.extra_info.get('cover_url')
+
+            if without_cover:
+                print
+                print "No cover:"
+                print "========="
+                for book in without_cover:
                     print full_url(book)
 
-            print
-            print "No license:"
-            print "==========="
-            for book in no_license:
+            if with_ancestral_cover:
                 print
-                print full_url(book)
-                print book.extra_info.get('cover_by')
-                print book.extra_info.get('cover_source')
-                print book.extra_info.get('cover_url')
-
-            print
-            print "By Flickr author:"
-            print "================="
-            for author, books in by_flickr_author.items():
-                print
-                print "author: http://flickr.com/photos/%s/" % author
-                for book in books:
+                print "With ancestral cover:"
+                print "====================="
+                for book in with_ancestral_cover:
                     print full_url(book)
-
-            print
-            print "Not from Flickr or source missing:"
-            print "=================================="
-            for book in not_flickr:
-                print
-                print full_url(book)
-                print book.extra_info.get('cover_by')
-                print book.extra_info.get('cover_source')
-                print book.extra_info.get('cover_url')
-
-            print
-            print "No cover:"
-            print "========="
-            for book in without_cover:
-                print full_url(book)
-
-            print
-            print "With ancestral cover:"
-            print "====================="
-            for book in with_ancestral_cover:
-                print full_url(book)

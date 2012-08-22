@@ -19,6 +19,9 @@ class Settings(AppSettings):
             'fb2': 'wolnelektury_pl_fb2',
         }
 
+    REDAKCJA_URL = "http://redakcja.wolnelektury.pl"
+    GOOD_LICENSES = set([r'CC BY \d\.\d', r'CC BY-SA \d\.\d'])
+
     def _more_DONT_BUILD(self, value):
         for format_ in ['cover', 'pdf', 'epub', 'mobi', 'fb2', 'txt']:
             attname = 'NO_BUILD_%s' % format_.upper()
