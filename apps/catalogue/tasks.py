@@ -43,7 +43,14 @@ def build_custom_pdf(book_id, customizations, file_name):
 
     print "will gen %s" % DefaultStorage().path(file_name)
     if not DefaultStorage().exists(file_name):
+        kwargs = {
+            'cover': True,
+        }
+        if 'no-cover' in customizations:
+            kwargs['cover'] = False
+            customizations.remove('no-cover')
         pdf = Book.objects.get(pk=book_id).wldocument().as_pdf(
                 customizations=customizations,
-                morefloats=settings.LIBRARIAN_PDF_MOREFLOATS)
+                morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
+                **kwargs)
         DefaultStorage().save(file_name, File(open(pdf.get_filename())))
