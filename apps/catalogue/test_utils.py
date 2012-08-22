@@ -2,11 +2,14 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from os.path import abspath, dirname, join
+import tempfile
+from traceback import extract_stack
 from django.test import TestCase
 from django.test.utils import override_settings
-import tempfile
 from slughifi import slughifi
 from librarian import WLURI
+
 
 @override_settings(
     MEDIA_ROOT=tempfile.mkdtemp(prefix='djangotest_'),
@@ -77,3 +80,13 @@ def info_args(title, language=None):
         'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
         'language': language,
     }
+
+
+def get_fixture(path, app=None):
+    if app is not None:
+        mod_path = app.__file__
+        f_path = join(dirname(abspath(mod_path)), 'tests/files', path)
+    else:
+        mod_path = extract_stack(limit=2)[0][0]
+        f_path = join(dirname(abspath(mod_path)), 'files', path)
+    return f_path
