@@ -7,8 +7,8 @@
 {% block right-column %}
 <div class="snippets">
   {% for hit in hits %}
-  {% if hit.snippets %}
-  <div class="snippet-text"><a href="{% url book_text book.slug %}#sec{{hit.section_number}}">{{hit.snippets.0|safe}}</a></div>
+  {% if hit.snippet %}
+  <div class="snippet-text"><a href="{% url book_text book.slug %}#sec{{hit.section_number}}">{{hit.snippet|safe}}</a></div>
   {% else %}
   {% if hit.fragment %}
   <div class="snippet-text">

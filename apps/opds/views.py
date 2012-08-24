@@ -16,7 +16,7 @@ from django.contrib.sites.models import Site
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 
-from search.views import get_search, SearchResult, JVM
+from search.views import Search, SearchResult
 from lucene import Term, QueryWrapperFilter, TermQuery
 
 import logging
@@ -92,7 +92,7 @@ class OPDSFeed(Atom1Feed):
                                 {u"href": reverse("opds_authors"),
                                  u"rel": u"start",
                                  u"type": u"application/atom+xml"})
-        handler.addQuickElement(u"link", None, 
+        handler.addQuickElement(u"link", None,
                                 {u"href": full_url(os.path.join(settings.STATIC_URL, "opensearch.xml")),
                                  u"rel": u"search",
                                  u"type": u"application/opensearchdescription+xml"})
@@ -329,7 +329,7 @@ class SearchFeed(AcquisitionFeed):
     title = u"Wyniki wyszukiwania"
 
     INLINE_QUERY_RE = re.compile(r"(author:(?P<author>[^ ]+)|title:(?P<title>[^ ]+)|categories:(?P<categories>[^ ]+)|description:(?P<description>[^ ]+))")
-    
+
     def get_object(self, request):
         """
         For OPDS 1.1 We should handle a query for search terms
@@ -337,7 +337,7 @@ class SearchFeed(AcquisitionFeed):
         OpenSearch defines fields: atom:author, atom:contributor (treated as translator),
         atom:title. Inline query provides author, title, categories (treated as book tags),
         description (treated as content search terms).
-        
+
         if search terms are provided, we shall search for books
         according to Hint information (from author & contributror & title).
 
@@ -345,10 +345,9 @@ class SearchFeed(AcquisitionFeed):
         (perhaps for is_book=True)
 
         """
-        JVM.attachCurrentThread()
 
         query = request.GET.get('q', '')
-        
+
         inline_criteria = re.findall(self.INLINE_QUERY_RE, query)
         if inline_criteria:
             def get_criteria(criteria, name, position):
@@ -374,13 +373,13 @@ class SearchFeed(AcquisitionFeed):
             translator = request.GET.get('translator', '')
 
             # Our client didn't handle the opds placeholders
-            if author == '{atom:author}': author = ''       
+            if author == '{atom:author}': author = ''
             if title == '{atom:title}': title = ''
             if translator == '{atom:contributor}': translator = ''
             categories = None
             fuzzy = False
 
-        srch = get_search()
+        srch = Search()
         hint = srch.hint()
 
         # Scenario 1: full search terms provided.
@@ -389,12 +388,12 @@ class SearchFeed(AcquisitionFeed):
             filters = []
 
             if author:
-                log.info( "narrow to author %s" % author)
-                hint.tags(srch.search_tags(srch.make_phrase(srch.get_tokens(author, field='authors'), field='authors'), 
+                log.info("narrow to author %s" % author)
+                hint.tags(srch.search_tags(srch.make_phrase(srch.get_tokens(author, field='authors'), field='authors'),
                                             filt=srch.term_filter(Term('tag_category', 'author'))))
 
             if translator:
-                log.info( "filter by translator %s" % translator)
+                log.info("filter by translator %s" % translator)
                 filters.append(QueryWrapperFilter(
                     srch.make_phrase(srch.get_tokens(translator, field='translators'),
                                      field='translators')))
@@ -406,13 +405,13 @@ class SearchFeed(AcquisitionFeed):
 
             flt = srch.chain_filters(filters)
             if title:
-                log.info( "hint by book title %s" % title)
+                log.info("hint by book title %s" % title)
                 q = srch.make_phrase(srch.get_tokens(title, field='title'), field='title')
                 hint.books(*srch.search_books(q, filt=flt))
 
             toks = srch.get_tokens(query)
             log.info("tokens for query: %s" % toks)
-            
+
             results = SearchResult.aggregate(srch.search_perfect_book(toks, fuzzy=fuzzy, hint=hint),
                 srch.search_perfect_parts(toks, fuzzy=fuzzy, hint=hint),
                 srch.search_everywhere(toks, fuzzy=fuzzy, hint=hint))

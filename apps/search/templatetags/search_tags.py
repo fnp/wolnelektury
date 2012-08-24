@@ -35,18 +35,25 @@ def book_searched(context, result):
 
     # We don't need hits which lead to sections but do not have
     # snippets.
-    hits = filter(lambda h: 'fragment' in h or
-                  h['snippets'], result.hits)[0:5]
+    hits = filter(lambda (idx, h):
+                  result.snippets[idx] is not None
+                  or 'fragment' in h, enumerate(result.hits))
+    print "[tmpl: from %d hits selected %d]" % (len(result.hits), len(hits))
 
-    for hit in hits:
-        hit['snippets'] = map(lambda s: s.replace("\n", "<br />").replace('---', '&mdash;'), hit['snippets'])
+    for (idx, hit) in hits:
+        # currently we generate one snipper per hit though.
+        if 'fragment' in hit:
+            continue
+        snip = result.snippets[idx]
+        # fix some formattting
+        snip = snip.replace("\n", "<br />").replace('---', '&mdash;')
+        hit['snippet'] = snip
 
     return {
         'related': book.related_info(),
         'book': book,
         'main_link': book.get_absolute_url(),
         'request': context.get('request'),
-        'hits': hits,
+        'hits': zip(*hits)[1],
         'main_link': book.get_absolute_url(),
     }
-
