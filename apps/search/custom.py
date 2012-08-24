@@ -8,8 +8,6 @@ import copy
 
 
 class TermVectorOptions(search.Options):
-    option_name = "tv"
-
     def __init__(self, schema, original=None):
         self.schema = schema
         if original is None:
@@ -30,7 +28,8 @@ class TermVectorOptions(search.Options):
 
     def options(self):
         opts = {}
-        opts['tv'] = 'true'
+        if self.positions or self.fields:
+            opts['tv'] = 'true'
         if self.positions:
             opts['tv.positions'] = 'true'
         if self.fields:
@@ -72,12 +71,12 @@ def __term_vector(self, positions=False, fields=None):
     newself.term_vectorer.update(positions, fields)
     return newself
 setattr(search.SolrSearch, 'term_vector', __term_vector)
-__original__init_common_modules = search.SolrSearch._init_common_modules
 
 
 def __patched__init_common_modules(self):
     __original__init_common_modules(self)
     self.term_vectorer = TermVectorOptions(self.schema)
+__original__init_common_modules = search.SolrSearch._init_common_modules
 setattr(search.SolrSearch, '_init_common_modules', __patched__init_common_modules)
 
 
@@ -118,7 +117,6 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             end = int(wrd.xpath("int[@name='end']")[0].text)
             matches.add((start, end))
 
-        print matches
         if matches:
             return self.substring(kwargs['text'], matches,
                             margins=kwargs.get('margins', 30),
@@ -127,8 +125,8 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             return None
 
     def analyze(self, **kwargs):
-        doc = self._analyze(self, **kwargs)
-        terms = doc.xpath("/lst[@name='index']/arr[last()]/lst/str[1]")
+        doc = self._analyze(**kwargs)
+        terms = doc.xpath("//lst[@name='index']/arr[last()]/lst/str[1]")
         terms = map(lambda n: unicode(n.text), terms)
         return terms
 
@@ -154,3 +152,4 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             snip = snip[:s + off] + mark[0] + snip[s + off:]
             # maybe break on word boundaries
         return snip
+

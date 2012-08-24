@@ -116,6 +116,9 @@ def main(request):
             context_instance=RequestContext(request))
     search = Search()
 
+    theme_terms = search.index.analyze(text=query, field="themes_pl") \
+        + search.index.analyze(text=query, field="themes")
+
             # change hints
     tags = search.hint_tags(query, pdcounter=True, prefix=False)
     tags = split_tags(tags)
@@ -125,7 +128,7 @@ def main(request):
 
     # Boost main author/title results with mixed search, and save some of its results for end of list.
     # boost author, title results
-    author_title_mixed = search.search_some(query, ['authors', 'title', 'tags'])
+    author_title_mixed = search.search_some(query, ['authors', 'title', 'tags'], query_terms=theme_terms)
     author_title_rest = []
 
     for b in author_title_mixed:
@@ -139,9 +142,9 @@ def main(request):
     # Because the query is using only one field.
     text_phrase = SearchResult.aggregate(
         search.search_phrase(query, 'text', snippets=True, book=False),
-        search.search_some(query, ['text'], snippets=True, book=False))
+        search.search_some(query, ['text'], snippets=True, book=False, query_terms=theme_terms))
 
-    everywhere = search.search_everywhere(query)
+    everywhere = search.search_everywhere(query, query_terms=theme_terms)
 
     def already_found(results):
         def f(e):

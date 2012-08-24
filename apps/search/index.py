@@ -202,7 +202,6 @@ class Index(SolrIndex):
                         "uid": "tag%d" % tag.id
                         }
                 self.index.add(doc)
-                print "%s %s" % (doc['tag_name'], doc['tag_category'])
 
     def create_book_doc(self, book):
         """
@@ -518,12 +517,13 @@ class Index(SolrIndex):
 
 
 class SearchResult(object):
-    def __init__(self, doc, how_found=None, query=None):
+    def __init__(self, doc, how_found=None, query=None, query_terms=None):
         #        self.search = search
         self.boost = 1.0
         self._hits = []
         self._processed_hits = None  # processed hits
         self.snippets = []
+        self.query_terms = query_terms
 
         if 'score' in doc:
             self._score = doc['score']
@@ -551,7 +551,9 @@ class SearchResult(object):
             hit = (sec + (header_span,), fragment, self._score, {
                 'how_found': how_found,
                 'snippets_pos': snippets_pos,
-                'snippets_revision': snippets_rev
+                'snippets_revision': snippets_rev,
+                'themes': doc.get('themes', []),
+                'themes_pl': doc.get('themes_pl', [])
                 })
 
             self._hits.append(hit)
@@ -559,7 +561,7 @@ class SearchResult(object):
     def __unicode__(self):
         return u"<SR id=%d %d(%d) hits score=%f %d snippets" % \
             (self.book_id, len(self._hits), self._processed_hits and len(self._processed_hits) or -1, self._score, len(self.snippets))
-    
+
     def __str__(self):
         return unicode(self).encode('utf-8')
 
@@ -647,19 +649,26 @@ class SearchResult(object):
             except catalogue.models.Fragment.DoesNotExist:
                 # stale index
                 continue
-
+            print f
             # Figure out if we were searching for a token matching some word in theme name.
             themes = frag.tags.filter(category='theme')
-            themes_hit = []
-            # if self.searched is not None:
-            #     tokens = self.search.get_tokens(self.searched, 'POLISH', cached=self.tokens_cache)
-            #     for theme in themes:
-            #         name_tokens = self.search.get_tokens(theme.name, 'POLISH')
-            #         for t in tokens:
-            #             if t in name_tokens:
-            #                 if not theme in themes_hit:
-            #                     themes_hit.append(theme)
-            #                 break
+            themes_hit = set()
+            if self.query_terms is not None:
+                for i in range(0, len(f[self.OTHER]['themes'])):
+                    tms = f[self.OTHER]['themes'][i].split(r' +') + f[self.OTHER]['themes_pl'][i].split(' ')
+                    tms = map(unicode.lower, tms)
+                    for qt in self.query_terms:
+                        if qt in tms:
+                            themes_hit.add(f[self.OTHER]['themes'][i])
+                            break
+
+            def theme_by_name(n):
+                th = filter(lambda t: t.name == n, themes)
+                if th:
+                    return th[0]
+                else:
+                    return None
+            themes_hit = filter(lambda a: a is not None, map(theme_by_name, themes_hit))
 
             m = {'score': f[self.SCORE],
                  'fragment': frag,
@@ -802,8 +811,7 @@ class Search(SolrIndex):
         return [SearchResult(found, how_found=u'search_phrase') for found in res]
 
     def search_some(self, searched, fields, book=True,
-                    filters=None,
-                    snippets=True):
+                    filters=None, snippets=True, query_terms=None):
         assert isinstance(fields, list)
         if filters is None: filters = []
         if book: filters.append(self.index.Q(is_book=True))
@@ -816,7 +824,7 @@ class Search(SolrIndex):
         query = self.index.query(query)
         query = self.apply_filters(query, filters).field_limit(score=True, all_fields=True)
         res = query.execute()
-        return [SearchResult(found, how_found='search_some') for found in res]
+        return [SearchResult(found, how_found='search_some', query_terms=query_terms) for found in res]
 
     # def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
     #     """
@@ -891,7 +899,7 @@ class Search(SolrIndex):
 
     #     return books
 
-    def search_everywhere(self, searched):
+    def search_everywhere(self, searched, query_terms=None):
         """
         Tries to use search terms to match different fields of book (or its parts).
         E.g. one word can be an author survey, another be a part of the title, and the rest
@@ -899,7 +907,6 @@ class Search(SolrIndex):
         """
         books = []
         # content only query : themes x content
-
         q = self.make_term_query(searched, 'text')
         q_themes = self.make_term_query(searched, 'themes_pl')
 
@@ -907,7 +914,7 @@ class Search(SolrIndex):
         res = query.execute()
 
         for found in res:
-            books.append(SearchResult(found, how_found='search_everywhere_themesXcontent'))
+            books.append(SearchResult(found, how_found='search_everywhere_themesXcontent', query_terms=query_terms))
 
         # query themes/content x author/title/tags
         in_content = self.index.Q()
@@ -921,8 +928,9 @@ class Search(SolrIndex):
 
         q = in_content & in_meta
         res = self.index.query(q).field_limit(score=True, all_fields=True).execute()
+
         for found in res:
-            books.append(SearchResult(found, how_found='search_everywhere'))
+            books.append(SearchResult(found, how_found='search_everywhere', query_terms=query_terms))
 
         return books
 
