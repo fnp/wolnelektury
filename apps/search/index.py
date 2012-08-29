@@ -250,7 +250,6 @@ class Index(SolrIndex):
             book_doc[n] = f
 
         book_doc['uid'] = "book%s" % book_doc['book_id']
-        print "ADD 2 %s" % book_doc
         self.index.add(book_doc)
         del book_doc
         book_fields = {
@@ -462,7 +461,6 @@ class Index(SolrIndex):
                         doc = add_part(snippets, header_index=position, header_type=header.tag,
                                        text=u''.join(footnote),
                                        is_footnote=True)
-                        print "ADD 3 %s" % doc
                         self.index.add(doc)
                         #print "@ footnote text: %s" % footnote
                         footnote = []
@@ -498,7 +496,6 @@ class Index(SolrIndex):
                                        text=fix_format(frag['text']),
                                        themes=frag['themes'])
                         #print '@ FRAG %s' % frag['content']
-                        print "ADD 4 %s" % doc
                         self.index.add(doc)
 
                         # Collect content.
@@ -513,7 +510,6 @@ class Index(SolrIndex):
                                header_type=header.tag, text=fix_format(content))
                 #print '@ CONTENT: %s' % fix_format(content)
 
-                print "ADD 5 %s" % doc
                 self.index.add(doc)
 
         finally:
