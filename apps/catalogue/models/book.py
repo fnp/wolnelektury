@@ -269,20 +269,20 @@ class Book(models.Model):
         paths = map(lambda bm: (None, bm.file.path), bm)
         return create_zip(paths, "%s_%s" % (self.slug, format_))
 
-    def search_index(self, book_info=None, reuse_index=False, index_tags=True):
+    def search_index(self, book_info=None, index=None, index_tags=True, commit=True):
         import search
-        if reuse_index:
-            idx = search.ReusableIndex()
-        else:
-            idx = search.Index()
-            
-        idx.open()
+        if index is None:
+            index = search.Index()
         try:
-            idx.index_book(self, book_info)
+            index.index_book(self, book_info)
             if index_tags:
                 idx.index_tags()
-        finally:
-            idx.close()
+            if commit:
+                index.index.commit()
+        except Exception, e:
+            index.index.rollback()
+            raise e
+
 
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
@@ -303,7 +303,7 @@ class Book(models.Model):
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
             build_epub=True, build_txt=True, build_pdf=True, build_mobi=True, build_fb2=True,
-            search_index=True, search_index_tags=True, search_index_reuse=False):
+            search_index=True, search_index_tags=True):
 
         # check for parts before we do anything
         children = []
@@ -381,8 +381,7 @@ class Book(models.Model):
             book.build_fb2()
 
         if not settings.NO_SEARCH_INDEX and search_index:
-            book.search_index(index_tags=search_index_tags, reuse_index=search_index_reuse)
-            #index_book.delay(book.id, book_info)
+            tasks.index_book.delay(book.id, book_info=book_info, index_tags=search_index_tags)
 
         tasks.fix_tree_tags.delay(book)
         cls.published.send(sender=book)

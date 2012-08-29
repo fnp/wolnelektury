@@ -49,11 +49,11 @@ class Command(BaseCommand):
                                                     build_pdf=options.get('build_pdf'),
                                                     build_mobi=options.get('build_mobi'),
                                                     search_index=options.get('search_index'),
-                                                    search_index_reuse=True, search_index_tags=False)
+                                                    search_index_tags=False)
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
                 getattr(book, '%s_file' % ebook_format).save(
-                    '%s.%s' % (book.slug, ebook_format), 
+                    '%s.%s' % (book.slug, ebook_format),
                     File(file(file_base + '.' + ebook_format)))
                 if verbose:
                     print "Importing %s.%s" % (file_base, ebook_format)
@@ -82,13 +82,15 @@ class Command(BaseCommand):
                     time.strftime('%Y-%m-%d %H:%M:%S',
                     time.localtime(wait_until)), wait_until - time.time())
 
+        index = None
         if options.get('search_index') and not settings.NO_SEARCH_INDEX:
             index = Index()
-            index.open()
             try:
                 index.index_tags()
-            finally:
-                index.close()
+                index.index.commit()
+            except Exception, e:
+                index.index.rollback()
+                raise e
 
         # Start transaction management.
         transaction.commit_unless_managed()
@@ -97,7 +99,7 @@ class Command(BaseCommand):
 
         files_imported = 0
         files_skipped = 0
-        
+
         for dir_name in directories:
             if not os.path.isdir(dir_name):
                 print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
@@ -128,7 +130,7 @@ class Command(BaseCommand):
                             self.import_book(file_path, options)
                         files_imported += 1
                         transaction.commit()
-                        
+
                     except (Book.AlreadyExists, Picture.AlreadyExists):
                         print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
                             file_path)
@@ -160,4 +162,3 @@ class Command(BaseCommand):
 
         transaction.commit()
         transaction.leave_transaction_management()
-

@@ -24,10 +24,10 @@ def fix_tree_tags(book):
 
 
 @task
-def index_book(book_id, book_info=None):
+def index_book(book_id, book_info=None, **kwargs):
     from catalogue.models import Book
     try:
-        return Book.objects.get(id=book_id).search_index(book_info)
+        return Book.objects.get(id=book_id).search_index(book_info, **kwargs)
     except Exception, e:
         print "Exception during index: %s" % e
         print_exc()

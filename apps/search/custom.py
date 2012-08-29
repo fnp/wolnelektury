@@ -85,9 +85,9 @@ class CustomSolrInterface(sunburnt.SolrInterface):
     def __init__(self, url, schemadoc=None, http_connection=None, mode='', retry_timeout=-1, max_length_get_url=sunburnt.MAX_LENGTH_GET_URL):
         self.conn = CustomSolrConnection(url, http_connection, retry_timeout, max_length_get_url)
         self.schemadoc = schemadoc
-        if mode == 'r':
+        if 'w' not in mode:
             self.writeable = False
-        elif mode == 'w':
+        elif 'r' not in mode:
             self.readable = False
         self.init_schema()
 
