@@ -201,7 +201,6 @@ class Index(SolrIndex):
                         "is_pdcounter": False,
                         "uid": "tag%d" % tag.id
                         }
-                print "ADD 1 %s" % doc
                 self.index.add(doc)
 
     def create_book_doc(self, book):
@@ -649,7 +648,6 @@ class SearchResult(object):
             except catalogue.models.Fragment.DoesNotExist:
                 # stale index
                 continue
-            print f
             # Figure out if we were searching for a token matching some word in theme name.
             themes = frag.tags.filter(category='theme')
             themes_hit = set()
@@ -954,7 +952,6 @@ class Search(SolrIndex):
                     continue
                 text = snippets.get((int(position),
                                      int(length)))
-                print "== %s -- %s ==" % (query, text)
                 snip = self.index.highlight(text=text, field=field, q=query)
                 snips[idx] = snip
                 if snip:
