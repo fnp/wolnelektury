@@ -2,11 +2,11 @@
 from __future__ import with_statement
 
 from os import path
-from django.test import TestCase
 from picture.models import Picture
+from catalogue.test_utils import WLTestCase
 
 
-class PictureTest(TestCase):
+class PictureTest(WLTestCase):
     
     def test_import(self):
         picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/kandinsky-composition-viii.xml"))

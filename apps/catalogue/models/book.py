@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import re
-from django.conf import settings
+from django.conf import settings as settings
 from django.core.cache import get_cache
 from django.db import models
 from django.db.models import permalink
@@ -11,8 +11,11 @@ import django.dispatch
 from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
+from catalogue import constants
+from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, split_tags, truncate_html_words, book_upload_path
+from catalogue.utils import create_zip, split_tags, book_upload_path
+from catalogue import app_settings
 from catalogue import tasks
 from newtagging import managers
 
@@ -28,7 +31,7 @@ class Book(models.Model):
             unique=True)
     common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     language = models.CharField(_('language code'), max_length=3, db_index=True,
-                    default=settings.CATALOGUE_DEFAULT_LANGUAGE)
+                    default=app_settings.DEFAULT_LANGUAGE)
     description   = models.TextField(_('description'), blank=True)
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
@@ -38,12 +41,13 @@ class Book(models.Model):
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
 
-    cover = models.FileField(_('cover'), upload_to=book_upload_path('png'),
-                null=True, blank=True)
-    ebook_formats = ['pdf', 'epub', 'mobi', 'fb2', 'txt']
+    cover = EbookField('cover', _('cover'),
+                upload_to=book_upload_path('jpg'), null=True, blank=True)
+    ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
-    parent        = models.ForeignKey('self', blank=True, null=True, related_name='children')
+    parent = models.ForeignKey('self', blank=True, null=True,
+        related_name='children')
 
     _related_info = jsonfield.JSONField(blank=True, null=True, editable=False)
 
@@ -152,117 +156,33 @@ class Book(models.Model):
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
 
-    def wldocument(self, parse_dublincore=True):
+    def wldocument(self, parse_dublincore=True, inherit=True):
         from catalogue.import_utils import ORMDocProvider
         from librarian.parser import WLDocument
 
+        if inherit and self.parent:
+            meta_fallbacks = self.parent.cover_info()
+        else:
+            meta_fallbacks = None
+
         return WLDocument.from_file(self.xml_file.path,
                 provider=ORMDocProvider(self),
-                parse_dublincore=parse_dublincore)
-
-    def build_cover(self, book_info=None):
-        """(Re)builds the cover image."""
-        from StringIO import StringIO
-        from django.core.files.base import ContentFile
-        from librarian.cover import WLCover
-
-        if book_info is None:
-            book_info = self.wldocument().book_info
-
-        cover = WLCover(book_info).image()
-        imgstr = StringIO()
-        cover.save(imgstr, 'png')
-        self.cover.save(None, ContentFile(imgstr.getvalue()))
-
-    def build_html(self):
-        from django.core.files.base import ContentFile
-        from slughifi import slughifi
-        from sortify import sortify
-        from librarian import html
-
-        meta_tags = list(self.tags.filter(
-            category__in=('author', 'epoch', 'genre', 'kind')))
-        book_tag = self.book_tag()
-
-        html_output = self.wldocument(parse_dublincore=False).as_html()
-        if html_output:
-            self.html_file.save('%s.html' % self.slug,
-                    ContentFile(html_output.get_string()))
-
-            # get ancestor l-tags for adding to new fragments
-            ancestor_tags = []
-            p = self.parent
-            while p:
-                ancestor_tags.append(p.book_tag())
-                p = p.parent
-
-            # Delete old fragments and create them from scratch
-            self.fragments.all().delete()
-            # Extract fragments
-            closed_fragments, open_fragments = html.extract_fragments(self.html_file.path)
-            for fragment in closed_fragments.values():
-                try:
-                    theme_names = [s.strip() for s in fragment.themes.split(',')]
-                except AttributeError:
-                    continue
-                themes = []
-                for theme_name in theme_names:
-                    if not theme_name:
-                        continue
-                    tag, created = Tag.objects.get_or_create(slug=slughifi(theme_name), category='theme')
-                    if created:
-                        tag.name = theme_name
-                        tag.sort_key = sortify(theme_name.lower())
-                        tag.save()
-                    themes.append(tag)
-                if not themes:
-                    continue
-
-                text = fragment.to_string()
-                short_text = truncate_html_words(text, 15)
-                if text == short_text:
-                    short_text = ''
-                new_fragment = Fragment.objects.create(anchor=fragment.id, book=self,
-                    text=text, short_text=short_text)
-
-                new_fragment.save()
-                new_fragment.tags = set(meta_tags + themes + [book_tag] + ancestor_tags)
-            self.save()
-            self.html_built.send(sender=self)
-            return True
-        return False
-
-    # Thin wrappers for builder tasks
-    def build_pdf(self, *args, **kwargs):
-        """(Re)builds PDF."""
-        return tasks.build_pdf.delay(self.pk, *args, **kwargs)
-    def build_epub(self, *args, **kwargs):
-        """(Re)builds EPUB."""
-        return tasks.build_epub.delay(self.pk, *args, **kwargs)
-    def build_mobi(self, *args, **kwargs):
-        """(Re)builds MOBI."""
-        return tasks.build_mobi.delay(self.pk, *args, **kwargs)
-    def build_fb2(self, *args, **kwargs):
-        """(Re)build FB2"""
-        return tasks.build_fb2.delay(self.pk, *args, **kwargs)
-    def build_txt(self, *args, **kwargs):
-        """(Re)builds TXT."""
-        return tasks.build_txt.delay(self.pk, *args, **kwargs)
+                parse_dublincore=parse_dublincore,
+                meta_fallbacks=meta_fallbacks)
 
     @staticmethod
     def zip_format(format_):
         def pretty_file_name(book):
             return "%s/%s.%s" % (
-                b.extra_info['author'],
-                b.slug,
+                book.extra_info['author'],
+                book.slug,
                 format_)
 
         field_name = "%s_file" % format_
         books = Book.objects.filter(parent=None).exclude(**{field_name: ""})
         paths = [(pretty_file_name(b), getattr(b, field_name).path)
                     for b in books.iterator()]
-        return create_zip(paths,
-                    getattr(settings, "ALL_%s_ZIP" % format_.upper()))
+        return create_zip(paths, app_settings.FORMAT_ZIPS[format_])
 
     def zip_audiobooks(self, format_):
         bm = BookMedia.objects.filter(book=self, type=format_)
@@ -302,8 +222,11 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
-            build_epub=True, build_txt=True, build_pdf=True, build_mobi=True, build_fb2=True,
-            search_index=True, search_index_tags=True):
+            dont_build=None, search_index=True,
+            search_index_tags=True):
+        if dont_build is None:
+            dont_build = set()
+        dont_build = set.union(set(dont_build), set(app_settings.DONT_BUILD))
 
         # check for parts before we do anything
         children = []
@@ -315,7 +238,6 @@ class Book(models.Model):
                     raise Book.DoesNotExist(_('Book "%s" does not exist.') %
                             part_url.slug)
 
-
         # Read book metadata
         book_slug = book_info.url.slug
         if re.search(r'[^a-z0-9-]', book_slug):
@@ -324,12 +246,17 @@ class Book(models.Model):
 
         if created:
             book_shelves = []
+            old_cover = None
         else:
             if not overwrite:
                 raise Book.AlreadyExists(_('Book %s already exists') % (
                         book_slug))
             # Save shelves for this book
             book_shelves = list(book.tags.filter(category='set'))
+            old_cover = book.cover_info()
+
+        # Save XML file
+        book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
 
         book.language = book_info.language
         book.title = book_info.title
@@ -344,46 +271,50 @@ class Book(models.Model):
 
         book.tags = set(meta_tags + book_shelves)
 
-        obsolete_children = set(b for b in book.children.all() if b not in children)
+        cover_changed = old_cover != book.cover_info()
+        obsolete_children = set(b for b in book.children.all()
+                                if b not in children)
+        notify_cover_changed = []
         for n, child_book in enumerate(children):
+            new_child = child_book.parent != book
             child_book.parent = book
             child_book.parent_number = n
             child_book.save()
+            if new_child or cover_changed:
+                notify_cover_changed.append(child_book)
         # Disown unfaithful children and let them cope on their own.
         for child in obsolete_children:
             child.parent = None
             child.parent_number = 0
             child.save()
             tasks.fix_tree_tags.delay(child)
-
-        # Save XML and HTML files
-        book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
-        book.build_cover(book_info)
+            if old_cover:
+                notify_cover_changed.append(child)
 
         # delete old fragments when overwriting
         book.fragments.all().delete()
+        # Build HTML, fix the tree tags, build cover.
+        has_own_text = bool(book.html_file.build())
+        tasks.fix_tree_tags.delay(book)
+        if 'cover' not in dont_build:
+            book.cover.build_delay()
+        
+        # No saves behind this point.
 
-        if book.build_html():
-            # No direct saves behind this point.
-            if not settings.NO_BUILD_TXT and build_txt:
-                book.build_txt()
-
-        if not settings.NO_BUILD_EPUB and build_epub:
-            book.build_epub()
-
-        if not settings.NO_BUILD_PDF and build_pdf:
-            book.build_pdf()
-
-        if not settings.NO_BUILD_MOBI and build_mobi:
-            book.build_mobi()
-
-        if not settings.NO_BUILD_FB2 and build_fb2:
-            book.build_fb2()
+        if has_own_text:
+            for format_ in constants.EBOOK_FORMATS_WITHOUT_CHILDREN:
+                if format_ not in dont_build:
+                    getattr(book, '%s_file' % format_).build_delay()
+        for format_ in constants.EBOOK_FORMATS_WITH_CHILDREN:
+            if format_ not in dont_build:
+                getattr(book, '%s_file' % format_).build_delay()
 
         if not settings.NO_SEARCH_INDEX and search_index:
             tasks.index_book.delay(book.id, book_info=book_info, index_tags=search_index_tags)
 
-        tasks.fix_tree_tags.delay(book)
+        for child in notify_cover_changed:
+            child.parent_cover_changed()
+
         cls.published.send(sender=book)
         return book
 
@@ -403,7 +334,8 @@ class Book(models.Model):
             sub_parent_tags = parent_tags + [book.book_tag()]
             for frag in book.fragments.all():
                 affected_tags.update(frag.tags)
-                frag.tags = list(frag.tags.exclude(category='book')) + sub_parent_tags
+                frag.tags = list(frag.tags.exclude(category='book')
+                                    ) + sub_parent_tags
             for child in book.children.all():
                 affected_tags.update(fix_subtree(child, sub_parent_tags))
             return affected_tags
@@ -423,6 +355,36 @@ class Book(models.Model):
             book.reset_tag_counter()
             book.reset_theme_counter()
             book = book.parent
+
+    def cover_info(self, inherit=True):
+        """Returns a dictionary to serve as fallback for BookInfo.
+
+        For now, the only thing inherited is the cover image.
+        """
+        need = False
+        info = {}
+        for field in ('cover_url', 'cover_by', 'cover_source'):
+            val = self.extra_info.get(field)
+            if val:
+                info[field] = val
+            else:
+                need = True
+        if inherit and need and self.parent is not None:
+            parent_info = self.parent.cover_info()
+            parent_info.update(info)
+            info = parent_info
+        return info
+
+    def parent_cover_changed(self):
+        """Called when parent book's cover image is changed."""
+        if not self.cover_info(inherit=False):
+            if 'cover' not in app_settings.DONT_BUILD:
+                self.cover.build_delay()
+            for format_ in constants.EBOOK_FORMATS_WITH_COVERS:
+                if format_ not in app_settings.DONT_BUILD:
+                    getattr(self, '%s_file' % format_).build_delay()
+            for child in self.children.all():
+                child.parent_cover_changed()
 
     def related_info(self):
         """Keeps info about related objects (tags, media) in cache field."""
@@ -616,20 +578,9 @@ class Book(models.Model):
             return None
 
 
-def _has_factory(ftype):
-    has = lambda self: bool(getattr(self, "%s_file" % ftype))
-    has.short_description = ftype.upper()
-    has.__doc__ = None
-    has.boolean = True
-    has.__name__ = "has_%s_file" % ftype
-    return has
-
-    
 # add the file fields
-for t in Book.formats:
-    field_name = "%s_file" % t
-    models.FileField(_("%s file" % t.upper()),
-            upload_to=book_upload_path(t),
-            blank=True).contribute_to_class(Book, field_name)
-
-    setattr(Book, "has_%s_file" % t, _has_factory(t))
+for format_ in Book.formats:
+    field_name = "%s_file" % format_
+    EbookField(format_, _("%s file" % format_.upper()),
+            upload_to=book_upload_path(format_),
+            blank=True, default='').contribute_to_class(Book, field_name)

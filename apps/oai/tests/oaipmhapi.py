@@ -19,8 +19,9 @@ class BookMetadataTest(WLTestCase):
         xml = path.join(path.dirname(__file__), 'files/antygona.xml')
         self.book2 = models.Book.from_xml_file(xml)
 
-        self.catalogue = Catalogue()
         mr = MetadataRegistry()
+        self.catalogue = Catalogue(mr)
+
         mr.registerWriter('oai_dc', oai_dc_writer)
         nsmap = {'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI}
         self.xml = XMLTreeServer(self.catalogue, mr, nsmap)

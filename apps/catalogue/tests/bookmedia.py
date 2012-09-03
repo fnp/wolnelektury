@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from os.path import basename, exists, join, dirname
 from django.core.files.base import ContentFile, File
 

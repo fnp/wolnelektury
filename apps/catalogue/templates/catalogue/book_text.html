@@ -46,6 +46,9 @@
             {% if book.mobi_file %}
             <li><a href="{{ book.mobi_file.url}}">MOBI</a> {% trans "for Kindle" %}</li>
             {% endif %}
+            {% if  book.fb2_file %}
+            <li><a href="{{ book.fb2_file.url}}">FB2</a> {% trans "FictionBook" %}</li>
+            {% endif %}
             {% if book.txt_file %}
             <li><a href="{{ book.txt_file.url}}">TXT</a> {% trans "for advanced usage" %}</li>
             {% endif %}

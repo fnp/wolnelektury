@@ -1,33 +1,24 @@
 # -*- coding: utf-8 -*-
-
-from __future__ import with_statement
-
 from django.conf import settings
-from search import Index, Search, IndexStore, JVM, SearchResult
-from catalogue import models
+from django.test.utils import override_settings
 from catalogue.test_utils import WLTestCase
 from lucene import PolishAnalyzer, Version
-#from nose.tools import raises
 from os import path
+import tempfile
+from catalogue import models
+from search import Search, SearchResult
 
 
+@override_settings(
+    SEARCH_INDEX = tempfile.mkdtemp(prefix='djangotest_search_'),
+)
 class BookSearchTests(WLTestCase):
     def setUp(self):
-        JVM.attachCurrentThread()
         WLTestCase.setUp(self)
-        settings.NO_SEARCH_INDEX = False
-        settings.SEARCH_INDEX = path.join(settings.MEDIA_ROOT, 'search')
 
         txt = path.join(path.dirname(__file__), 'files/fraszka-do-anusie.xml')
-        self.book = models.Book.from_xml_file(txt)
-
-        index = Index()
-        index.open()
-        try:
-            index.index_book(self.book)
-        except:
-            index.close()
-
+        with self.settings(NO_SEARCH_INDEX=False):
+            self.book = models.Book.from_xml_file(txt)
         self.search = Search()
 
     def test_search_perfect_book_author(self):

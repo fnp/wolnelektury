@@ -13,13 +13,11 @@ class DictionaryTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         self.book_info = BookInfoStub(
-            url=u"http://wolnelektury.pl/example/default-book",
-            about=u"http://wolnelektury.pl/example/URI/default_book",
-            title=u"Default Book",
             author=PersonStub(("Jim",), "Lazy"),
             kind="X-Kind",
             genre="X-Genre",
             epoch="X-Epoch",
+            **info_args(u"Default Book")
         )
 
     def test_book_with_footnote(self):

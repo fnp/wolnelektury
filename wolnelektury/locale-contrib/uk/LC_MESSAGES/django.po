@@ -7,288 +7,265 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-07-19 11:40+0200\n"
-"PO-Revision-Date: 2012-06-01 16:44+0100\n"
-"Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
+"POT-Creation-Date: 2012-08-14 17:40+0200\n"
+"PO-Revision-Date: 2012-08-14 17:49+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: uk <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:36
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:167
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:341
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:36
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:191
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:358
 msgid "Password"
 msgstr "Пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:40
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:40
 msgid "Remember Me"
 msgstr "Запам’ятати мене"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:52
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:113
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:284
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:363
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:52
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:139
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:301
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:380
 msgid "E-mail"
 msgstr "E-mail"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:57
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:104
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:57
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:130
 msgid "Username"
 msgstr "Ім’я користувача"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:85
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:85
 msgid "This account is currently inactive."
 msgstr "Акаунт на даний момент є неактивним."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:88
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:88
 msgid "The e-mail address and/or password you specified are not correct."
 msgstr "Вказані електронна адреса та/або пароль неправильні."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:90
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:90
 msgid "The username and/or password you specified are not correct."
 msgstr "Вказані ім’я користувача та/або пароль неправильні."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:116
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:142
 msgid "E-mail (optional)"
 msgstr "E-mail (факультативно)"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:127
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:153
 msgid "Usernames can only contain letters, numbers and underscores."
 msgstr "Ім’я користувача може містити тільки букви, цифри та підчеркування."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:133
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:159
 msgid "This username is already taken. Please choose another."
 msgstr "Це ім’я користувача вже використано. Будь ласка, виберіть інше."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:141
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:167
 msgid "A user is registered with this e-mail address."
 msgstr "Користувач з такою електронною адресою вже існує."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:171
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:345
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:195
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:362
 msgid "Password (again)"
 msgstr "Пароль (повторити)"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:198
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:330
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:352
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:428
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:225
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:347
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:369
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:444
 msgid "You must type the same password each time."
 msgstr "Впишіть двічі такий самий пароль."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:234
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:260
 msgid "Your e-mail address has already been verified"
 msgstr "Вашу електронну адресу підтверджено."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:244
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/utils.py:93
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:101
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:117
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:270
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/utils.py:123
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:93
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:109
 #, python-format
 msgid "Confirmation e-mail sent to %(email)s"
 msgstr "Подвідомлення для підтвердження реєстрації вислано на %(email)s"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:292
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:309
 msgid "This e-mail address already associated with this account."
 msgstr "Ця електронна адреса вже пов'язана з цім акаунтом."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:293
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:310
 msgid "This e-mail address already associated with another account."
 msgstr "Ця електронна адреса вже пов'язана з іншим акаунтом."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:310
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:327
 msgid "Current Password"
 msgstr "Актуальний пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:314
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:411
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:331
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:427
 msgid "New Password"
 msgstr "Новий пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:318
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:415
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:335
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:431
 msgid "New Password (again)"
 msgstr "Новий пароль (повторити)"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:324
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:341
 msgid "Please type your current password."
 msgstr "Введіть будь ласка Ваш теперішній пароль."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:373
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:390
 msgid "The e-mail address is not assigned to any user account"
 msgstr "Ця електронна адреса не пов'язана з жодним акаунтом."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/forms.py:393
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:409
 msgid "Password Reset E-mail"
 msgstr "Повідомлення для встановлення нового паролю"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/utils.py:72
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/utils.py:84
 #, python-format
 msgid "Successfully signed in as %(user)s."
 msgstr "Ви успішно увійшли як %(user)s."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:133
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:125
 #, python-format
 msgid "Removed e-mail address %(email)s"
 msgstr "Видалено електронну адресу %(email)s"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:147
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:139
 msgid "Primary e-mail address set"
 msgstr "Встановлено основну електронну адресу"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:168
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:241
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:160
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:233
 msgid "Password successfully changed."
 msgstr "Пароль успішно змінено."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:191
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:183
 msgid "Password successfully set."
 msgstr "Успішно встановлено пароль."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/account/views.py:255
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/logout.html:10
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:247
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/logout.html:10
 msgid "You have signed out."
 msgstr "Ви вийшли з акаунту."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/openid/forms.py:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/openid/forms.py:6
 msgid "OpenID"
 msgstr "OpenID"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/forms.py:32
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/forms.py:33
 msgid "Your local account has no password setup."
 msgstr "Для Вашого локального акаунту не встановлено пароля."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/forms.py:36
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/forms.py:37
 msgid "Your local account has no verified e-mail address."
-msgstr ""
-"Для Вашого локального акаунту не встановлено перевіреної електронної "
-"адреси."
+msgstr "Для Вашого локального акаунту не встановлено перевіреної електронної адреси."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/helpers.py:112
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/helpers.py:111
 msgid "The social account has been connected to your existing account"
 msgstr "Ваш обліковий запис у соціальній мережі пов'язано з існуючим акаунтом."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:89
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:89
 #, python-format
 msgid "Invalid response while obtaining request token from \"%s\"."
 msgstr ""
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:111
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:111
 #, python-format
 msgid "Invalid response while obtaining access token from \"%s\"."
 msgstr ""
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:124
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:124
 #, python-format
 msgid "No request token saved for \"%s\"."
 msgstr ""
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:172
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:172
 #, python-format
 msgid "No access token saved for \"%s\"."
 msgstr ""
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/oauth.py:192
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:192
 #, python-format
 msgid "No access to private resources at \"%s\"."
 msgstr ""
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/socialaccount/views.py:68
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/views.py:68
 msgid "The social account has been disconnected"
 msgstr "Обліковий запис в соціальній мережі від'єднано."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:5
 msgid "Account"
 msgstr "Акаунт"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:8
 msgid "E-mail Addresses"
 msgstr "Електронні адреси"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:12
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:10
 msgid "The following e-mail addresses are associated to your account:"
 msgstr "З Вашим акаунтом пов'язані наступні електронні адреси:"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:26
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:24
 msgid "Verified"
 msgstr "Перевірено"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:28
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:26
 msgid "Unverified"
 msgstr "Неперевірено"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:30
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:28
 msgid "Primary"
 msgstr "Основна"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:36
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:34
 msgid "Make Primary"
 msgstr "Зробити основною"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:37
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:35
 msgid "Re-send Verification"
 msgstr "Надіслати ще раз повідомлення для перевірки"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:38
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:36
 msgid "Remove"
 msgstr "Видалити"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:45
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:43
 msgid "Warning:"
 msgstr "Попередження:"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:45
-msgid ""
-"You currently do not have any e-mail address set up. You should really "
-"add an e-mail address so you can receive notifications, reset your "
-"password, etc."
-msgstr ""
-"Ви не додали жодної електронної адреси. Рекомендуємо Вам додати адресу, "
-"для цього щоб отримувати повідомлення, мати можливість відновлення паролю"
-" тощо."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:43
+msgid "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc."
+msgstr "Ви не додали жодної електронної адреси. Рекомендуємо Вам додати адресу, для цього щоб отримувати повідомлення, мати можливість відновлення паролю тощо."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:50
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:48
 msgid "Add E-mail Address"
 msgstr "Додати електронну адресу"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:57
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:53
 msgid "Add E-mail"
 msgstr "Додати електронну адресу"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/email.html:69
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:63
 msgid "Do you really want to remove the selected e-mail address?"
 msgstr "Чи справді хочете видалити вибрану адресу?"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/language_change.html:6
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/language_change.html:9
-msgid "Language"
-msgstr "Мова"
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/language_change.html:11
-msgid "Pinax can be used in your preferred language."
-msgstr "Платформою Pinax можна користуватися на вибраній Вами мові."
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/language_change.html:18
-msgid "Change my language"
-msgstr "Змінити мову"
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/login.html:7
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/login.html:12
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/login.html:47
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:11
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:43
 msgid "Sign In"
 msgstr "Увійти в акаунт"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/login.html:20
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:19
 #, python-format
 msgid ""
 "Please sign in with one\n"
 "of your existing third party accounts. Or, <a \n"
-"href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and sign "
-"in\n"
+"href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and sign in\n"
 "below:"
 msgstr ""
 "Увійдіть за допомогою\n"
@@ -296,120 +273,96 @@ msgstr ""
 "href=\"%(signup_url)s\">увійти</a> в акаунт %(site_name)s та увійти\n"
 "нижче:"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/login.html:28
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:27
 msgid "or"
 msgstr "або"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/login.html:45
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:42
 msgid "Forgot Password?"
 msgstr "Забули пароль?"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/logout.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/logout.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/logout.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/logout.html:8
 msgid "Signed Out"
 msgstr "Ви вийшли з акаунту."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_change.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_change.html:8
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_change.html:15
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_change.html:4
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_change.html:7
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_change.html:12
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:4
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:7
 msgid "Change Password"
 msgstr "Змінити пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete.html:8
 msgid "Delete Password"
 msgstr "Видалити пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:9
-msgid ""
-"You may delete your password since you are currently logged in using "
-"OpenID."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete.html:9
+msgid "You may delete your password since you are currently logged in using OpenID."
 msgstr "Можете видалити свій пароль, тому що зараз ви увійшли за допомогою OpenID."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete.html:12
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete.html:12
 msgid "delete my password"
 msgstr "видалити мій пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete_done.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete_done.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete_done.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete_done.html:8
 msgid "Password Deleted"
 msgstr "Пароль видалено"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_delete_done.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete_done.html:9
 msgid "Your password has been deleted."
 msgstr "Ваш пароль видалено."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:7
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:11
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_done.html:6
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_done.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:10
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_done.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_done.html:9
 msgid "Password Reset"
 msgstr "Зміна паролю"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:16
-msgid ""
-"Forgotten your password? Enter your e-mail address below, and we'll send "
-"you an e-mail allowing you to reset it."
-msgstr ""
-"Забули пароль? Введіть свою електронну адресу, щоб отримати інструкції "
-"щодо встановлення нового паролю."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:15
+msgid "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it."
+msgstr "Забули пароль? Введіть свою електронну адресу, щоб отримати інструкції щодо встановлення нового паролю."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:23
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:20
 msgid "Reset My Password"
 msgstr "Змінити мій пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset.html:28
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:23
 #, python-format
-msgid ""
-"If you have any trouble resetting your password, contact us at <a "
-"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr ""
-"Якщо у Вас виникають проблеми зі зміною паролю, напишіть нам на адресу, "
-"<a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid "If you have any trouble resetting your password, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Якщо у Вас виникають проблеми зі зміною паролю, напишіть нам на адресу, <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_done.html:15
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_done.html:15
 #, python-format
-msgid ""
-"We have sent you an e-mail. If you do not receive it within a few "
-"minutes, contact us at <a "
-"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr ""
-"Вам було вислано повідомлення. Якщо не отримаєте його протягом кількох "
-"хвилин, напишіть на адресу <a "
-"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid "We have sent you an e-mail. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Вам було вислано повідомлення. Якщо не отримаєте його протягом кількох хвилин, напишіть на адресу <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:7
 msgid "Bad Token"
 msgstr ""
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:12
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:11
 #, python-format
-msgid ""
-"The password reset link was invalid, possibly because it has already been"
-" used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
-"reset</a>."
-msgstr ""
-"Посилання на зміну пароля було неправильним, тому що його вже "
-"використали. Будь ласка, замовте <a href=\"%(passwd_reset_url)s\">ще одну"
-" зміну пароля</a>."
+msgid "The password reset link was invalid, possibly because it has already been used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</a>."
+msgstr "Посилання на зміну пароля було неправильним, тому що його вже використали. Будь ласка, замовте <a href=\"%(passwd_reset_url)s\">ще одну зміну пароля</a>."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:20
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:17
 msgid "change password"
 msgstr "змінити пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_from_key.html:25
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:20
 msgid "Your password is now changed."
 msgstr "Ваш пароль змінено."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_reset_key_message.txt:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_key_message.txt:9
 #, python-format
 msgid ""
-"You're receiving this e-mail because you or someone else has requested a "
-"password for your user account at %(site_domain)s.\n"
-"It can be safely ignored if you did not request a password reset. Click "
-"the link below to reset your password.\n"
+"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click the link below to reset your password.\n"
 "\n"
 "%(password_reset_url)s\n"
 "\n"
@@ -417,10 +370,8 @@ msgid ""
 "\n"
 "Thanks for using our site!\n"
 msgstr ""
-"Ви отримали це повідомлення, тому що хтось попросив про зміну пароля для "
-"Вашого акаунту на сайті %(site_domain)s.\n"
-"Якщо ви не просили про зміну, можете проігнорувати це повідомлення. Для "
-"зміни пароля натисніть посилання.\n"
+"Ви отримали це повідомлення, тому що хтось попросив про зміну пароля для Вашого акаунту на сайті %(site_domain)s.\n"
+"Якщо ви не просили про зміну, можете проігнорувати це повідомлення. Для зміни пароля натисніть посилання.\n"
 "\n"
 "%(password_reset_url)s\n"
 "\n"
@@ -428,161 +379,155 @@ msgstr ""
 "\n"
 "Дякуємо за користування нашим сайтом!\n"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_set.html:6
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_set.html:9
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/password_set.html:16
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_set.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_set.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_set.html:13
 msgid "Set Password"
 msgstr "Встановити пароль"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/signup.html:6
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:5
 msgid "Signup"
 msgstr "Реєстрація"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/signup.html:9
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/signup.html:24
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:9
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:22
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:21
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:19
 msgid "Sign Up"
 msgstr "Реєструватися"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/signup.html:14
-msgid "Already have an account?"
-msgstr "У вас вже є акаунт?"
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/signup.html:14
-msgid "Sign in"
-msgstr "Увійти"
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:6
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:9
-msgid "Timezone"
-msgstr "Часовий пояс"
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:11
-msgid ""
-"Pinax can localize all times into your preferred timezone. Change your "
-"timezone below."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:13
+#, python-format
+msgid "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
-"Pinax може змінити усі години у відповідності до Вашого часового пояса. "
-"Часовий пояс можна змінити нижче."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/timezone_change.html:18
-msgid "Change my timezone"
-msgstr "Змінити часовий пояс"
-
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/verification_sent.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/verification_sent.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verification_sent.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verification_sent.html:8
 msgid "Verify Your E-mail Address"
 msgstr "Перевірити електронну адресу"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/verification_sent.html:10
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verification_sent.html:10
 #, python-format
-msgid ""
-"We have sent you an e-mail to <b>%(email)s</b> for verification. Follow "
-"the link provided to finalize the signup process. If you do not receive "
-"it within a few minutes, contact us at <a "
-"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr ""
-"Вам було надіслано повідомлення на <b>%(email)s</b> для перевірення "
-"адреси. Натисніть отримане посилання, щоб завершити процес реєстрації. "
-"Якщо не отримажте повідомлення протягом кількох хвилин, напишіть нам на "
-"адресу <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid "We have sent you an e-mail to <b>%(email)s</b> for verification. Follow the link provided to finalize the signup process. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgstr "Вам було надіслано повідомлення на <b>%(email)s</b> для перевірення адреси. Натисніть отримане посилання, щоб завершити процес реєстрації. Якщо не отримажте повідомлення протягом кількох хвилин, напишіть нам на адресу <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/snippets/already_logged_in.html:5
 msgid "Note"
 msgstr "Увага"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/snippets/already_logged_in.html:5
 #, python-format
 msgid "you are already logged in as %(user_display)s."
 msgstr "ви вже увійшли як користувач %(user_display)s."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:8
 msgid "E-mail Address Confirmation"
 msgstr "Підтвердження електронної адреси."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:11
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:11
 #, python-format
-msgid ""
-"You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
-"e-mail address for user '%(user)s'."
-msgstr ""
-"Ви підтвердили, що адреса <a href=\"mailto:%(email)s\">%(email)s</a> є "
-"адресою коричтувача '%(user)s'."
+msgid "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for user '%(user)s'."
+msgstr "Ви підтвердили, що адреса <a href=\"mailto:%(email)s\">%(email)s</a> є адресою коричтувача '%(user)s'."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/emailconfirmation/confirm_email.html:13
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:13
 msgid "Invalid confirmation key."
 msgstr "Неправильний ключ підтвердження."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/openid/login.html:10
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/email_confirmation_message.txt:4
+#, python-format
+msgid ""
+"User '%(user)s' at %(site_name)s has given this as an email address.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/email_confirmation_subject.txt:1
+#, fuzzy
+msgid "Confirm E-mail Address"
+msgstr "Встановлено основну електронну адресу"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/openid/login.html:9
 msgid "OpenID Sign In"
 msgstr "Увійти за допомогою OpenID"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/account_inactive.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/account_inactive.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/account_inactive.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/account_inactive.html:8
 msgid "Account Inactive"
 msgstr "Неактивний акаунт"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/account_inactive.html:10
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/account_inactive.html:10
 msgid "This account is inactive."
 msgstr "Цей акаунт неактивний."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/authentication_error.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/authentication_error.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/authentication_error.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/authentication_error.html:8
 msgid "Social Network Login Failure"
 msgstr "Неможливо увійти в систему за допомогою соціальної мережі."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/authentication_error.html:10
-msgid ""
-"An error occured while attempting to login via your social network "
-"account."
-msgstr ""
-"Під час спроби увійти за допомоги облікового запису у соціальній мережі "
-"наступила помилка."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/authentication_error.html:10
+msgid "An error occured while attempting to login via your social network account."
+msgstr "Під час спроби увійти за допомоги облікового запису у соціальній мережі наступила помилка."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:8
 msgid "Account Connections"
 msgstr "Пов’язані облікові записи"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:11
-msgid ""
-"You can sign in to your account using any of the following third party "
-"accounts:"
-msgstr ""
-"Можете увійти у Ваш акаунт за допомогою облікових записів у наступних "
-"системах:"
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:11
+msgid "You can sign in to your account using any of the following third party accounts:"
+msgstr "Можете увійти у Ваш акаунт за допомогою облікових записів у наступних системах:"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/connections.html:46
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:46
 msgid "Add a 3rd Party Account"
 msgstr "Додати обліковий запис у іншій системі"
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/login_cancelled.html:5
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/login_cancelled.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:9
 msgid "Login Cancelled"
 msgstr "Спробу увійти в систему скасовано."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/login_cancelled.html:13
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:13
 #, python-format
-msgid ""
-"You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a "
-"href=\"%(login_url)s\">sign in</a>."
-msgstr ""
-"Ви вирішили скасувати спробу увійти в систему за допомогою вже існуючого "
-"облікового запису. Якщо це помилка, перейдіть до <a "
-"href=\"%(login_url)s\">увійти</a>."
+msgid "You decided to cancel logging in to our site using one of your exisiting accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr "Ви вирішили скасувати спробу увійти в систему за допомогою вже існуючого облікового запису. Якщо це помилка, перейдіть до <a href=\"%(login_url)s\">увійти</a>."
 
-#: /srv/wolnelektury.pl/ve/lib/python2.6/site-packages/allauth/templates/socialaccount/signup.html:12
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:11
 #, python-format
 msgid ""
 "You are about to use your %(provider_name)s account to login to \n"
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
-"Хочете скористатися вашим обліковим записом %(provider_name)s щоб увійти "
-"на сайт \n"
-"%(site_name)s. Для завершення процесу, заповніть будь ласка наступну "
-"форму:"
+"Хочете скористатися вашим обліковим записом %(provider_name)s щоб увійти на сайт \n"
+"%(site_name)s. Для завершення процесу, заповніть будь ласка наступну форму:"
 
+#~ msgid "Language"
+#~ msgstr "Мова"
+
+#~ msgid "Pinax can be used in your preferred language."
+#~ msgstr "Платформою Pinax можна користуватися на вибраній Вами мові."
+
+#~ msgid "Change my language"
+#~ msgstr "Змінити мову"
+
+#~ msgid "Already have an account?"
+#~ msgstr "У вас вже є акаунт?"
+
+#~ msgid "Sign in"
+#~ msgstr "Увійти"
+
+#~ msgid "Timezone"
+#~ msgstr "Часовий пояс"
+
+#~ msgid ""
+#~ "Pinax can localize all times into "
+#~ "your preferred timezone. Change your "
+#~ "timezone below."
+#~ msgstr ""
+#~ "Pinax може змінити усі години у "
+#~ "відповідності до Вашого часового пояса. "
+#~ "Часовий пояс можна змінити нижче."
+
+#~ msgid "Change my timezone"
+#~ msgstr "Змінити часовий пояс"

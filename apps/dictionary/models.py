@@ -21,8 +21,7 @@ class Note(models.Model):
 
 
 @task(ignore_result=True)
-def build_notes(book_id):
-    book = Book.objects.get(pk=book_id)
+def build_notes(book):
     Note.objects.filter(book=book).delete()
     if book.html_file:
         from librarian import html
@@ -31,6 +30,6 @@ def build_notes(book_id):
                                html=html_str, 
                                sort_key=sortify(text_str).strip()[:128])
     
-@Book.html_built.connect
 def notes_from_book(sender, **kwargs):
-    build_notes.delat(sender)
+    build_notes.delay(sender)
+Book.html_built.connect(notes_from_book)

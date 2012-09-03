@@ -24,7 +24,7 @@ class Command(BaseCommand):
             help='Exclude specific books by slug')
     )
     help = 'Prepare ZIP package with files of given type.'
-    args = '[%s] output_path.zip' % '|'.join(ftypes)
+    args = '[%s] output_path.zip' % '|'.join(Book.formats)
 
     def handle(self, ftype, path, **options):
         self.style = color_style()

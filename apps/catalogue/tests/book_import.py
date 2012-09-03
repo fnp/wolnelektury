@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import with_statement
+from django.conf import settings
 
 from django.core.files.base import ContentFile, File
 from catalogue.test_utils import *
@@ -418,7 +418,7 @@ class BookImportGenerateTest(WLTestCase):
         self.book = models.Book.from_xml_file(xml)
 
     def test_gen_pdf(self):
-        self.book.build_pdf()
+        self.book.pdf_file.build()
         book = models.Book.objects.get(pk=self.book.pk)
         self.assertTrue(path.exists(book.pdf_file.path))
 
@@ -426,7 +426,7 @@ class BookImportGenerateTest(WLTestCase):
         """This book contains a child."""
         xml = path.join(path.dirname(__file__), "files/fraszki.xml")
         parent = models.Book.from_xml_file(xml)
-        parent.build_pdf()
+        parent.pdf_file.build()
         parent = models.Book.objects.get(pk=parent.pk)
         self.assertTrue(path.exists(parent.pdf_file.path))
 

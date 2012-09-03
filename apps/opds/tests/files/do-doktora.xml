@@ -1,0 +1,56 @@
+<utwor>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="http://redakcja.wolnelektury.pl/documents/book/fraszki-ksiegi-trzecie-do-doktora-fraszka-a-doktor-to-sa-dwi/">
+<dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Kochanowski, Jan</dc:creator>
+<dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Do doktora (Fraszka a doktor — to są dwie rzeczy przeciwne...)</dc:title>
+<dc:relation.isPartOf xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">http://wolnelektury.pl/lektura/fraszki-ksiegi-trzecie</dc:relation.isPartOf>
+<dc:contributor.editor xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Krzyżanowski, Julian</dc:contributor.editor>
+<dc:contributor.editor xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Otwinowska, Barbara</dc:contributor.editor>
+<dc:contributor.editor xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Sekuła, Aleksandra</dc:contributor.editor>
+<dc:contributor.technical_editor xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Sutkowska, Olga</dc:contributor.technical_editor>
+<dc:contributor.technical_editor xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Gałecki, Dariusz</dc:contributor.technical_editor>
+<dc:contributor.translator xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Fikcyjny, Tłumacz</dc:contributor.translator>
+<dc:publisher xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Fundacja Nowoczesna Polska</dc:publisher>
+<dc:subject.period xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Renesans</dc:subject.period>
+<dc:subject.type xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Liryka</dc:subject.type>
+<dc:subject.genre xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Fraszka</dc:subject.genre>
+<dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Publikacja zrealizowana w ramach projektu Wolne Lektury (http://wolnelektury.pl). Reprodukcja cyfrowa wykonana przez Bibliotekę Narodową z egzemplarza pochodzącego ze zbiorów BN.</dc:description>
+<dc:identifier.url xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">http://wolnelektury.pl/katalog/lektura/fraszki-ksiegi-trzecie-do-doktora-fraszka-a-doktor-to-sa-dwi</dc:identifier.url>
+<dc:source.URL xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">http://www.polona.pl/dlibra/doccontent2?id=1499&amp;from=editionindex&amp;dirids=1</dc:source.URL>
+<dc:source xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Jan Kochanowski, Dzieła polskie, tom 1, Państwowy Instytut Wydawniczy, wyd. 8, Warszawa, 1976</dc:source>
+<dc:rights xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">Domena publiczna - Jan Kochanowski zm. 1584</dc:rights>
+<dc:date.pd xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">1584</dc:date.pd>
+<dc:format xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">xml</dc:format>
+<dc:type xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">text</dc:type>
+<dc:type xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">text</dc:type>
+<dc:date xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">2007-09-07</dc:date>
+<dc:audience xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">SP2</dc:audience>
+<dc:audience xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">G</dc:audience>
+<dc:audience xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">L</dc:audience>
+<dc:language xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="pl">pol</dc:language>
+<dc:relation.coverImage.url xmlns:dc="http://purl.org/dc/elements/1.1/">http://redakcja.wolnelektury.pl/media/dynamic/cover/image/607.jpg</dc:relation.coverImage.url>
+<dc:relation.coverImage.attribution xmlns:dc="http://purl.org/dc/elements/1.1/">Artondra Hall@Flickr, CC BY 2.0</dc:relation.coverImage.attribution>
+<dc:relation.coverImage.source xmlns:dc="http://purl.org/dc/elements/1.1/">http://redakcja.wolnelektury.pl/cover/image/607</dc:relation.coverImage.source>
+</rdf:Description>
+</rdf:RDF>
+  <liryka_l>
+
+<autor_utworu>Jan Kochanowski</autor_utworu>
+
+<dzielo_nadrzedne>Fraszki, Księgi wtóre</dzielo_nadrzedne>
+
+<nazwa_utworu>Do doktora<pr>Żartobliwy ton każe przypuszczać, iż adresatem wierszyka jest Jakub Montanus (por. przyp. do fr. II 49).</pr></nazwa_utworu>
+
+
+
+<strofa>Fraszka a doktor --- to są dwie rzeczy przeciwne;/
+Przeto u mnie, doktorze, twe żądanie dziwne,/
+Że do mnie ślesz po fraszki, tak daleko k'temu;/
+Ja jednak dosyć czynię rozkazaniu twemu./
+Ty strzeż swojej powagi, nie baw się fraszkami,/
+Ale mi je odeśli prędkimi nogami,/
+A nie dziwuj się, że je tak drogo szacuję,/
+Bo chocia fraszki, przedsię w nich doktory czuję.</strofa>
+
+</liryka_l>
+</utwor>

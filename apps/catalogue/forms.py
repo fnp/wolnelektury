@@ -46,6 +46,7 @@ CUSTOMIZATION_FLAGS = (
     ('nofootnotes', _("Don't show footnotes")),
     ('nothemes', _("Don't disply themes")),
     ('nowlfont', _("Don't use our custom font")),
+    ('no-cover', _("Without cover")),
     )
 CUSTOMIZATION_OPTIONS = (
     ('leading', _("Leading"), (
