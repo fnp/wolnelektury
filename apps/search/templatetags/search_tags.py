@@ -42,7 +42,7 @@ def book_searched(context, result):
 
     for (idx, hit) in hits:
         # currently we generate one snipper per hit though.
-        if 'fragment' in hit:
+        if result.snippets[idx] is None:
             continue
         snip = result.snippets[idx]
         # fix some formattting

@@ -968,6 +968,7 @@ class Search(SolrIndex):
         snips = map(lambda s: s and s.replace("/\n", "\n"), snips)
 
         searchresult.snippets = snips
+
         return snips
 
     def hint_tags(self, query, pdcounter=True, prefix=True):

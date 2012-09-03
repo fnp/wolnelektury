@@ -48,7 +48,6 @@ class Command(BaseCommand):
                                                     build_txt=options.get('build_txt'),
                                                     build_pdf=options.get('build_pdf'),
                                                     build_mobi=options.get('build_mobi'),
-                                                    search_index=options.get('search_index'),
                                                     search_index_tags=False)
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):

@@ -119,8 +119,8 @@ class CustomSolrInterface(sunburnt.SolrInterface):
 
         if matches:
             return self.substring(kwargs['text'], matches,
-                            margins=kwargs.get('margins', 30),
-            mark=kwargs.get('mark', ("<b>", "</b>")))
+                margins=kwargs.get('margins', 30),
+                mark=kwargs.get('mark', ("<b>", "</b>")))
         else:
             return None
 
@@ -151,5 +151,6 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             snip = snip[:e + off] + mark[1] + snip[e + off:]
             snip = snip[:s + off] + mark[0] + snip[s + off:]
             # maybe break on word boundaries
+
         return snip
 

@@ -29,11 +29,9 @@
       <li>
 	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
 	<ul>
-	  {% for hit in result.hits %}
+	  {% for snip in hit.snippets %}
 	  <li>
-	    {% for snip in hit.3.snippets %}
-	      {{snip|safe}}<br/>
-	    {% endfor %}
+	    {{snip|safe}}<br/>
 	  </li>
 	  {% endfor %}
 
