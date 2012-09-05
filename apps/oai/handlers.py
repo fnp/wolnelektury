@@ -27,6 +27,8 @@ wl_dc_reader = metadata.MetadataReader(
     'identifier':  ('textList', 'rdf:RDF/rdf:Description/dc:identifier.url/text()'),
     'source':      ('textList', 'rdf:RDF/rdf:Description/dc:source/text()'),
     'language':    ('textList', 'rdf:RDF/rdf:Description/dc:language/text()'),
+    'isPartOf':     ('textList', 'rdf:RDF/rdf:Description/dc:relation.isPartOf/text()'),
+    'hasPart':     ('textList', 'rdf:RDF/rdf:Description/dc:relation.hasPart/text()'),
     #    'relation':    ('textList', 'rdf:RDF/rdf:Description/dc:relation/text()'),
     #    'coverage':    ('textList', 'rdf:RDF/rdf:Description/dc:coverage/text()'),
     'rights':      ('textList', 'rdf:RDF/rdf:Description/dc:rights/text()')
