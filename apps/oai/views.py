@@ -1,17 +1,39 @@
 
 from oai.handlers import Catalogue
-from oaipmh.server import ServerBase, oai_dc_writer, NS_OAIDC, NS_DC, NS_XSI
+from oaipmh.server import ServerBase, oai_dc_writer, NS_OAIDC, NS_DC, NS_XSI, nsoaidc, nsdc
 from oaipmh.metadata import MetadataRegistry
 from django.http import HttpResponse
-from lxml.etree import tostring
+from lxml.etree import tostring, SubElement
 
-metadata_registry = MetadataRegistry()
-metadata_registry.registerWriter('oai_dc', oai_dc_writer)
+
 ns_map = {'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI}
 
-server = ServerBase(Catalogue(metadata_registry), metadata_registry, ns_map)
+
+def fbc_oai_dc_writer(element, metadata):
+    """FBC notified us that original writer does not output all necessary namespace declarations.
+    """
+    e_dc = SubElement(element, nsoaidc('dc'),
+                      nsmap={'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI})
+    e_dc.set('{%s}schemaLocation' % NS_XSI,
+             '%s http://www.openarchives.org/OAI/2.0/oai_dc.xsd' % NS_OAIDC)
+    map = metadata.getMap()
+    for name in [
+        'title', 'creator', 'subject', 'description', 'publisher',
+        'contributor', 'date', 'type', 'format', 'identifier',
+        'source', 'language', 'relation', 'coverage', 'rights',
+        'isPartOf', 'hasPart']:
+        for value in map.get(name, []):
+            e = SubElement(e_dc, nsdc(name))
+            e.text = value
+               
+
+metadata_registry = MetadataRegistry()
+metadata_registry.registerWriter('oai_dc', fbc_oai_dc_writer)
+
+server = ServerBase(Catalogue(metadata_registry), metadata_registry,
+    {'topxsi': NS_XSI})
 
 
 def oaipmh(request):
     resp = server.handleRequest(request.GET)
-    return HttpResponse(resp)
+    return HttpResponse(resp, content_type='application/xml')
