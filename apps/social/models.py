@@ -10,7 +10,7 @@ from catalogue.models import Book
 
 
 class Cite(models.Model):
-    book = models.ForeignKey(Book, verbose_name=_('book'))
+    book = models.ForeignKey(Book, verbose_name=_('book'), null=True, blank=True)
     text = models.TextField(_('text'))
     small = models.BooleanField(_('small'), default=False,
         help_text=_('Make this cite display smaller.'))
@@ -21,6 +21,8 @@ class Cite(models.Model):
 
     image = models.ImageField(_('image'), upload_to='social/cite',
                 null=True, blank=True)
+    image_shift = models.IntegerField(_('shift'), null=True, blank=True,
+                help_text=_(u'Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.'))
     image_title = models.CharField(_('title'), max_length=255,
                 null=True, blank=True)
     image_author = models.CharField(_('author'),

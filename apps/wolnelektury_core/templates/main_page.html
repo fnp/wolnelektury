@@ -7,7 +7,11 @@
 {% block ogtitle %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
 {% block body %}
-    <div id="big-cite"{% if cite.image %}style="background-image: url('{{ cite.image.url }}');"{% endif %} >
+    <div id="big-cite"{% if cite.image %}
+        style="
+            background-image: url('{{ cite.image.url }}');
+            background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;
+        "{% endif %} >
         {% render_cite cite %}
     </div>
 

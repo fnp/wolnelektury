@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-06 15:41+0200\n"
-"PO-Revision-Date: 2012-09-06 15:43+0100\n"
+"POT-Creation-Date: 2012-09-06 17:09+0200\n"
+"PO-Revision-Date: 2012-09-06 17:10+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -55,7 +55,7 @@ msgid "VIP"
 msgstr "VIP"
 
 #: models.py:18
-#: models.py:28
+#: models.py:30
 msgid "link"
 msgstr "odnośnik"
 
@@ -68,26 +68,34 @@ msgid "Sticky cites will take precedense."
 msgstr "Przyklejone cytaty mają pierwszeństwo."
 
 #: models.py:24
+msgid "shift"
+msgstr "przesunięcie"
+
+#: models.py:25
+msgid "Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%."
+msgstr "Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 do dolnej. Domyślne jest 50%."
+
+#: models.py:26
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:26
+#: models.py:28
 msgid "author"
 msgstr "autor"
 
-#: models.py:29
+#: models.py:31
 msgid "license name"
 msgstr "nazwa licencji"
 
-#: models.py:31
+#: models.py:33
 msgid "license link"
 msgstr "adres licencji"
 
-#: models.py:35
+#: models.py:37
 msgid "cite"
 msgstr "cytat"
 
-#: models.py:36
+#: models.py:38
 msgid "cites"
 msgstr "cytaty"
 
