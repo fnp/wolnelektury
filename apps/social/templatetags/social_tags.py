@@ -12,9 +12,9 @@ register = template.Library()
 register.filter('likes', likes)
 
 
-@register.inclusion_tag('social/cite_promo.html', takes_context=True)
-def cite_promo(context, ctx=None, fallback=False):
-    """Choose"""
+@register.assignment_tag(takes_context=True)
+def choose_cite(context, ctx=None):
+    """Choose a cite for main page, for book or for set of tags."""
     try:
         request = context['request']
         assert request.user.is_staff
@@ -29,10 +29,21 @@ def cite_promo(context, ctx=None, fallback=False):
                 cites = cites_for_tags([ctx.book_tag()])
         else:
             cites = cites_for_tags(ctx)
-        cite = cites.order_by('?')[0] if cites.exists() else None
+        cite = cites.order_by('-sticky', '?')[0] if cites.exists() else None
+    return cite
 
+
+@register.inclusion_tag('social/cite_promo.html')
+def render_cite(cite):
     return {
         'cite': cite,
+    }
+
+
+@register.inclusion_tag('social/cite_promo.html', takes_context=True)
+def cite_promo(context, ctx=None, fallback=False):
+    return {
+        'cite': choose_cite(context, ctx),
         'fallback': fallback,
         'ctx': ctx,
     }

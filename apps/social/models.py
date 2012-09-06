@@ -10,14 +10,30 @@ from catalogue.models import Book
 
 
 class Cite(models.Model):
-    book = models.ForeignKey(Book)
+    book = models.ForeignKey(Book, verbose_name=_('book'))
     text = models.TextField(_('text'))
-    small = models.BooleanField(_('small'), default=False, help_text=_('Make this cite display smaller.'))
+    small = models.BooleanField(_('small'), default=False,
+        help_text=_('Make this cite display smaller.'))
     vip = models.CharField(_('VIP'), max_length=128, null=True, blank=True)
     link = models.URLField(_('link'))
+    sticky = models.BooleanField(_('sticky'), default=False, db_index=True,
+        help_text=_('Sticky cites will take precedense.'))
+
+    image = models.ImageField(_('image'), upload_to='social/cite',
+                null=True, blank=True)
+    image_title = models.CharField(_('title'), max_length=255,
+                null=True, blank=True)
+    image_author = models.CharField(_('author'),
+                max_length=255, blank=True, null=True)
+    image_link = models.URLField(_('link'), blank=True, null=True)
+    image_license = models.CharField(_('license name'),
+                max_length=255, blank=True, null=True)
+    image_license_link = models.URLField(_('license link'), blank=True, null=True)
 
     class Meta:
         ordering = ('vip', 'text')
+        verbose_name = _('cite')
+        verbose_name_plural = _('cites')
 
     def __unicode__(self):
         return u"%s: %s…" % (self.vip, self.text[:60])

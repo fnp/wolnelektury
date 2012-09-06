@@ -16,11 +16,13 @@ from django.conf import settings
 from ajaxable.utils import AjaxableFormView
 from catalogue.models import Book
 from ajaxable.utils import placeholdized
+from social.templatetags.social_tags import choose_cite
 
 
 @never_cache
 def main_page(request):
     last_published = Book.objects.filter(parent=None).order_by('-created_at')[:4]
+    cite = choose_cite(RequestContext(request))
 
     return render_to_response("main_page.html", locals(),
         context_instance=RequestContext(request))
