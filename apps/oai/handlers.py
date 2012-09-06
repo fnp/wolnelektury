@@ -39,14 +39,21 @@ wl_dc_reader = metadata.MetadataReader(
     )
 
 
+NS_DCTERMS = "http://purl.org/dc/terms/"
+
+
+def nsdcterms(name):
+    return '{%s}%s' % (NS_DCTERMS, name)
+
+
 class Catalogue(common.ResumptionOAIPMH):
     TAG_CATEGORIES = ['author', 'epoch', 'kind', 'genre']
-    
+
     def __init__(self, metadata_registry):
         super(Catalogue, self).__init__()
         self.metadata_registry = metadata_registry
 
-        self.oai_id = "oai:"+Site.objects.get_current().domain+":%s"
+        self.oai_id = "oai:" + Site.objects.get_current().domain + ":%s"
 
         # earliest change
         year_zero = datetime(1990, 1, 1, 0, 0, 0)
@@ -107,7 +114,7 @@ class Catalogue(common.ResumptionOAIPMH):
     def books(self, tag, from_, until):
         if tag:
             # we do not support sets, since they are problematic for deleted books.
-            raise errror.NoSetHierarchyError("Wolne Lektury does not support sets.")
+            raise error.NoSetHierarchyError("Wolne Lektury does not support sets.")
             # books = Book.tagged.with_all([tag])
         else:
             books = Book.objects.all()
@@ -189,9 +196,13 @@ returns result, token
         return records, None
 
     def listMetadataFormats(self, **kw):
-        formats = [('oai_dc',
-                 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
-                 server.NS_OAIDC)]
+        formats = [
+            ('oai_dc',
+             'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
+             server.NS_OAIDC),
+            ('qdc',
+             'http://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd',
+             NS_DCTERMS)]
         if 'identifier' in kw:
             slug = self.identifier_to_slug(kw['identifier'])
             try:
@@ -215,5 +226,3 @@ returns result, token
         #                      tag.name,
         #                      tag.description))
         # return tags, None
-
-
