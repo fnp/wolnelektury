@@ -13,25 +13,28 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 
 
+WL_DC_READER_XPATH = '(.|*)/rdf:RDF/rdf:Description/%s/text()' 
 wl_dc_reader = metadata.MetadataReader(
     fields={
-    'title':       ('textList', 'rdf:RDF/rdf:Description/dc:title/text()'),
-    'creator':     ('textList', 'rdf:RDF/rdf:Description/dc:creator/text()'),
-    'subject':     ('textList', 'rdf:RDF/rdf:Description/dc:subject.period/text() | rdf:RDF/rdf:Description/dc:subject.type/text() | rdf:RDF/rdf:Description/dc:subject.genre/text()'),
-    'description': ('textList', 'rdf:RDF/rdf:Description/dc:description/text()'),
-    'publisher':   ('textList', 'rdf:RDF/rdf:Description/dc:publisher/text()'),
-    'contributor': ('textList', 'rdf:RDF/rdf:Description/dc:contributor.editor/text() | rdf:RDF/rdf:Description/dc:contributor.translator/text() | rdf:RDF/rdf:Description/dc:contributor.technical_editor/text()'),
-    'date':        ('textList', 'rdf:RDF/rdf:Description/dc:date/text()'),
-    'type':        ('textList', 'rdf:RDF/rdf:Description/dc:type/text()'),
-    'format':      ('textList', 'rdf:RDF/rdf:Description/dc:format/text()'),
-    'identifier':  ('textList', 'rdf:RDF/rdf:Description/dc:identifier.url/text()'),
-    'source':      ('textList', 'rdf:RDF/rdf:Description/dc:source/text()'),
-    'language':    ('textList', 'rdf:RDF/rdf:Description/dc:language/text()'),
-    'isPartOf':     ('textList', 'rdf:RDF/rdf:Description/dc:relation.isPartOf/text()'),
-    'hasPart':     ('textList', 'rdf:RDF/rdf:Description/dc:relation.hasPart/text()'),
+    'title':       ('textList', WL_DC_READER_XPATH % 'dc:title'),
+    'creator':     ('textList', WL_DC_READER_XPATH % 'dc:creator'),
+    'subject':     ('textList', (WL_DC_READER_XPATH + ' | ' + WL_DC_READER_XPATH + ' | ' + WL_DC_READER_XPATH) %
+                    ('dc:subject.period', 'dc:subject.type', 'dc:subject.genre')),
+    'description': ('textList', WL_DC_READER_XPATH % 'dc:description'),
+    'publisher':   ('textList', WL_DC_READER_XPATH % 'dc:publisher'),
+    'contributor': ('textList', (WL_DC_READER_XPATH + ' | ' + WL_DC_READER_XPATH + ' | ' + WL_DC_READER_XPATH) %
+                    ('dc:contributor.editor', 'dc:contributor.translator', 'dc:contributor.technical_editor')),
+    'date':        ('textList', WL_DC_READER_XPATH % 'dc:date'),
+    'type':        ('textList', WL_DC_READER_XPATH % 'dc:type'),
+    'format':      ('textList', WL_DC_READER_XPATH % 'dc:format'),
+    'identifier':  ('textList', WL_DC_READER_XPATH % 'dc:identifier.url'),
+    'source':      ('textList', WL_DC_READER_XPATH % 'dc:source'),
+    'language':    ('textList', WL_DC_READER_XPATH % 'dc:language'),
+    #'isPartOf':     ('textList', 'rdf:RDF/rdf:Description/dc:relation.isPartOf/text()'),
+    'hasPart':     ('textList', WL_DC_READER_XPATH % 'dc:relation.hasPart'),
     #    'relation':    ('textList', 'rdf:RDF/rdf:Description/dc:relation/text()'),
     #    'coverage':    ('textList', 'rdf:RDF/rdf:Description/dc:coverage/text()'),
-    'rights':      ('textList', 'rdf:RDF/rdf:Description/dc:rights/text()')
+    'rights':      ('textList', WL_DC_READER_XPATH % 'dc:rights')
     },
     namespaces={
     'dc': 'http://purl.org/dc/elements/1.1/',
