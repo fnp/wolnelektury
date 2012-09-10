@@ -34,7 +34,7 @@ def book_searched(context, result):
     hits = filter(lambda (idx, h):
                   result.snippets[idx] is not None
                   or 'fragment' in h, enumerate(result.hits))
-    print "[tmpl: from %d hits selected %d]" % (len(result.hits), len(hits))
+        #    print "[tmpl: from %d hits selected %d]" % (len(result.hits), len(hits))
 
     for (idx, hit) in hits:
         # currently we generate one snipper per hit though.
@@ -43,7 +43,7 @@ def book_searched(context, result):
         snip = result.snippets[idx]
         # fix some formattting
         snip = re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
-                              re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", snip))
+                              re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", snip)[0])[0]
 
         snip = snip.replace("\n", "<br />").replace('---', '&mdash;')
         hit['snippet'] = snip
