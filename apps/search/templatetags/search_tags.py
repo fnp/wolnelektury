@@ -6,15 +6,11 @@
 # import datetime
 
 from django import template
-from django.template import Node, Variable
-from django.utils.encoding import smart_str
-from django.core.urlresolvers import reverse
 # from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 # from django.db.models import Q
-from django.conf import settings
 # from django.utils.translation import ugettext as _
-from catalogue.templatetags.catalogue_tags import book_wide
 from catalogue.models import Book
+import re
 # from catalogue.forms import SearchForm
 # from catalogue.utils import split_tags
 
