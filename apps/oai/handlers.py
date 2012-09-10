@@ -3,6 +3,7 @@ from catalogue.models import Book, Tag
 from api.models import Deleted
 from api.handlers import WL_BASE
 from librarian.dcparser import BookInfo
+from librarian import WLURI
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -80,7 +81,10 @@ class Catalogue(common.ResumptionOAIPMH):
         finally:
             book.xml_file.close()
         md = wl_dc_reader(xml)
-        return md.getMap()
+        m = md.getMap()
+        if book.parent:
+            m['isPartOf'] = [str(WLURI.from_slug(book.parent.slug))]
+        return m
 
     def record_for_book(self, book, headers_only=False):
         meta = None

@@ -8,7 +8,9 @@
     <blockquote class="cite-body">
         <span>{{ cite.text|linebreaksbr|safe }}</span>
     </blockquote>
+    {% if cite.book %}
     <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
+    {% endif %}
 </a>
 {% else %}
     {% if fallback %}
