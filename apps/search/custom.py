@@ -134,18 +134,22 @@ class CustomSolrInterface(sunburnt.SolrInterface):
         start = None
         end = None
         totlen = len(text)
-        matches_margins = map(lambda (s, e): (max(0, s - margins), min(totlen, e + margins)), matches)
-        (start, end) = matches_margins[0]
-
-        for (s, e) in matches_margins[1:]:
+        matches_margins = map(lambda (s, e):
+                              ((s, e),
+                               (max(0, s - margins), min(totlen, e + margins))),
+                                  matches)
+        (start, end) = matches_margins[0][1]
+        matches = []
+        for (m, (s, e)) in matches_margins[1:]:
             if end < s or start > e:
                 continue
             start = min(start, s)
             end = max(end, e)
-
+            matches.append(m)
+            
         snip = text[start:end]
-        matches = list(matches)
         matches.sort(lambda a, b: cmp(b[0], a[0]))
+
         for (s, e) in matches:
             off = - start
             snip = snip[:e + off] + mark[1] + snip[e + off:]

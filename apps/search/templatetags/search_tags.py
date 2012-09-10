@@ -46,6 +46,9 @@ def book_searched(context, result):
             continue
         snip = result.snippets[idx]
         # fix some formattting
+        snip = re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
+                              re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", snip))
+
         snip = snip.replace("\n", "<br />").replace('---', '&mdash;')
         hit['snippet'] = snip
 
@@ -54,6 +57,6 @@ def book_searched(context, result):
         'book': book,
         'main_link': book.get_absolute_url(),
         'request': context.get('request'),
-        'hits': zip(*hits)[1],
+        'hits': hits and zip(*hits)[1] or [],
         'main_link': book.get_absolute_url(),
     }

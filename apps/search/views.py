@@ -168,17 +168,9 @@ def main(request):
                        ('text', text_phrase),
                        ('text', everywhere)]:
         res.sort(reverse=True)
-        print "get snips %s, res size %d" % (field, len(res))
         for r in res:
-            print "Get snippets for %s" % r
             search.get_snippets(r, query, field, 3)
-        # for r in res:
-        #     for h in r.hits:
-        #         h['snippets'] = map(lambda s:
-        #                             re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
-        #                                     re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", s)[0])[0], h['snippets'])
 
-    # suggestion = did_you_mean(query, search.get_tokens(toks, field="SIMPLE"))
     suggestion = u''
 
     def ensure_exists(r):
