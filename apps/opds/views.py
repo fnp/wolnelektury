@@ -18,7 +18,7 @@ from catalogue.models import Book, Tag
 
 from search.views import Search, SearchResult
 from lucene import Term, QueryWrapperFilter, TermQuery
-
+import operator
 import logging
 import re
 
@@ -328,7 +328,34 @@ class SearchFeed(AcquisitionFeed):
     description = u"Wyniki wyszukiwania na stronie WolneLektury.pl"
     title = u"Wyniki wyszukiwania"
 
-    INLINE_QUERY_RE = re.compile(r"(author:(?P<author>[^ ]+)|title:(?P<title>[^ ]+)|categories:(?P<categories>[^ ]+)|description:(?P<description>[^ ]+))")
+    QUOTE_OR_NOT = r'(?:(?=["])"([^"]+)"|([^ ]+))'
+    INLINE_QUERY_RE = re.compile(
+        r"author:" + QUOTE_OR_NOT +
+        "|translator:" + QUOTE_OR_NOT +
+        "|title:" + QUOTE_OR_NOT +
+        "|categories:" + QUOTE_OR_NOT +
+        "|description:" + QUOTE_OR_NOT +
+        "|text:" + QUOTE_OR_NOT
+        )
+    MATCHES = {
+        'author': (0, 1),
+        'translator': (2, 3),
+        'title': (4, 5),
+        'categories': (6, 7),
+        'description': (8, 9),
+        'text': (10, 11),
+        }
+
+    PARAMS_TO_FIELDS = {
+        'author': 'authors',
+        'translator': 'translators',
+        #        'title': 'title',
+        'categories': 'tag_name_pl',
+        'description': 'text',
+        #        'text': 'text',
+        }
+
+    ATOM_PLACEHOLDER = re.compile(r"^{(atom|opds):\w+}$")
 
     def get_object(self, request):
         """
@@ -350,99 +377,62 @@ class SearchFeed(AcquisitionFeed):
 
         inline_criteria = re.findall(self.INLINE_QUERY_RE, query)
         if inline_criteria:
-            def get_criteria(criteria, name, position):
-                e = filter(lambda el: el[0][0:len(name)] == name, criteria)
-                log.info("get_criteria: %s" % e)
-                if not e:
-                    return None
-                c = e[0][position]
-                log.info("get_criteria: %s" % c)
-                if c[0] == '"' and c[-1] == '"':
-                    c = c[1:-1]
-                    c = c.replace('+', ' ')
-                return c
+            remains = re.sub(self.INLINE_QUERY_RE, '', query)
+            remains = re.sub(r'[ \t]+', ' ', remains)
 
-            author = get_criteria(inline_criteria, 'author', 1)
-            title = get_criteria(inline_criteria, 'title', 2)
-            translator = None
-            categories = get_criteria(inline_criteria, 'categories', 3)
-            query = get_criteria(inline_criteria, 'description', 4)
+            def get_criteria(criteria, name):
+                for c in criteria:
+                    for p in self.MATCHES[name]:
+                        if c[p]:
+                            if p % 2 == 0:
+                                return c[p].replace('+', ' ')
+                            return c[p]
+                return None
+
+            criteria = dict(map(
+                lambda cn: (cn, get_criteria(inline_criteria, cn)),
+                ['author', 'translator', 'title', 'categories',
+                 'description', 'text']))
+            query = remains
+            # empty query and text set case?
+            log.debug("Inline query = [%s], criteria: %s" % (query, criteria))
         else:
-            author = request.GET.get('author', '')
-            title = request.GET.get('title', '')
-            translator = request.GET.get('translator', '')
+            def remove_dump_data(val):
+                """Some clients don't get opds placeholders and just send them."""
+                if self.ATOM_PLACEHOLDER.match(val):
+                    return ''
+                return val
 
-            # Our client didn't handle the opds placeholders
-            if author == '{atom:author}': author = ''
-            if title == '{atom:title}': title = ''
-            if translator == '{atom:contributor}': translator = ''
-            categories = None
-            fuzzy = False
+            criteria = dict([(cn, remove_dump_data(request.GET.get(cn, '')))
+                        for cn in self.MATCHES.keys()])
+            # query is set above.
+            log.debug("Inline query = [%s], criteria: %s" % (query, criteria))
 
         srch = Search()
-        hint = srch.hint()
 
-        # Scenario 1: full search terms provided.
-        # Use auxiliarry information to narrow it and make it better.
+        book_hit_filter = srch.index.Q(book_id__any=True)
+        filters = [book_hit_filter] + [srch.index.Q(
+            **{self.PARAMS_TO_FIELDS.get(cn, cn): criteria[cn]}
+            ) for cn in self.MATCHES.keys() if cn in criteria
+            if criteria[cn]]
+
         if query:
-            filters = []
-
-            if author:
-                log.info("narrow to author %s" % author)
-                hint.tags(srch.search_tags(srch.make_phrase(srch.get_tokens(author, field='authors'), field='authors'),
-                                            filt=srch.term_filter(Term('tag_category', 'author'))))
-
-            if translator:
-                log.info("filter by translator %s" % translator)
-                filters.append(QueryWrapperFilter(
-                    srch.make_phrase(srch.get_tokens(translator, field='translators'),
-                                     field='translators')))
-
-            if categories:
-                filters.append(QueryWrapperFilter(
-                    srch.make_phrase(srch.get_tokens(categories, field="tag_name_pl"),
-                                     field='tag_name_pl')))
-
-            flt = srch.chain_filters(filters)
-            if title:
-                log.info("hint by book title %s" % title)
-                q = srch.make_phrase(srch.get_tokens(title, field='title'), field='title')
-                hint.books(*srch.search_books(q, filt=flt))
-
-            toks = srch.get_tokens(query)
-            log.info("tokens for query: %s" % toks)
-
-            results = SearchResult.aggregate(srch.search_perfect_book(toks, fuzzy=fuzzy, hint=hint),
-                srch.search_perfect_parts(toks, fuzzy=fuzzy, hint=hint),
-                srch.search_everywhere(toks, fuzzy=fuzzy, hint=hint))
-            results.sort(reverse=True)
-            books = []
-            for r in results:
-                try:
-                    books.append(r.book)
-                except Book.DoesNotExist:
-                    pass
-            log.info("books: %s" % books)
-            return books
+            q = srch.index.query(
+                reduce(operator.or_,
+                       [srch.index.Q(**{self.PARAMS_TO_FIELDS.get(cn, cn): query})
+                        for cn in self.MATCHES.keys()],
+                srch.index.Q()))
         else:
-            # Scenario 2: since we no longer have to figure out what the query term means to the user,
-            # we can just use filters and not the Hint class.
-            filters = []
+            q = srch.index.query(srch.index.Q())
 
-            fields = {
-                'author': author,
-                'translators': translator,
-                'title': title
-                }
+        q = srch.apply_filters(q, filters).field_limit(score=True, fields=['book_id'])
+        results = q.execute()
 
-            for fld, q in fields.items():
-                if q:
-                    filters.append(QueryWrapperFilter(
-                        srch.make_phrase(srch.get_tokens(q, field=fld), field=fld)))
-
-            flt = srch.chain_filters(filters)
-            books = srch.search_books(TermQuery(Term('is_book', 'true')), filt=flt)
-            return books
+        book_scores = dict([(r['book_id'], r['score']) for r in results])
+        books = Book.objects.filter(id__in=set([r['book_id'] for r in results]))
+        books = list(books)
+        books.sort(reverse=True, key=lambda book: book_scores[book.id])
+        return books
 
     def get_link(self, query):
         return "%s?q=%s" % (reverse('search'), query)

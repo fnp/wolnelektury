@@ -9,6 +9,7 @@ from django.test import TestCase
 from django.test.utils import override_settings
 from slughifi import slughifi
 from librarian import WLURI
+from django.conf import settings
 
 
 @override_settings(
@@ -21,6 +22,7 @@ from librarian import WLURI
             'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
             'permanent': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
         },
+    SOLR = settings.SOLR_TEST,
 )
 class WLTestCase(TestCase):
     """

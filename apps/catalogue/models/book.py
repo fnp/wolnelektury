@@ -196,7 +196,7 @@ class Book(models.Model):
         try:
             index.index_book(self, book_info)
             if index_tags:
-                idx.index_tags()
+                index.index_tags()
             if commit:
                 index.index.commit()
         except Exception, e:

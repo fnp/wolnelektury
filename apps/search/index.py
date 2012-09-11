@@ -18,6 +18,7 @@ import sunburnt
 import custom
 import operator
 
+log = logging.getLogger('search')
 
 class SolrIndex(object):
     def __init__(self, mode=None):
@@ -240,7 +241,7 @@ class Index(SolrIndex):
             self.remove_book(book, remove_snippets=False)
 
         book_doc = self.create_book_doc(book)
-        meta_fields = self.extract_metadata(book, book_info, dc_only=['source_name', 'authors', 'title'])
+        meta_fields = self.extract_metadata(book, book_info, dc_only=['source_name', 'authors', 'translators', 'title'])
         # let's not index it - it's only used for extracting publish date
         if 'source_name' in meta_fields:
             del meta_fields['source_name']
@@ -256,6 +257,7 @@ class Index(SolrIndex):
             'authors': meta_fields['authors'],
             'published_date': meta_fields['published_date']
             }
+
         if 'translators' in meta_fields:
             book_fields['translators'] = meta_fields['translators']
 
@@ -791,6 +793,7 @@ class Search(SolrIndex):
         modal - applies to boolean query
         fuzzy - should the query by fuzzy.
         """
+        if query is None: query = ''
         q = self.index.Q()
         q = reduce(modal, map(lambda s: self.index.Q(**{field: s}),
                         query.split(r" ")), q)
