@@ -146,6 +146,7 @@ class Index(SolrIndex):
         Removes all tags from index, then index them again.
         Indexed fields include: id, name (with and without polish stems), category
         """
+        log.debug("Indexing tags")
         remove_only = kw.get('remove_only', False)
         # first, remove tags from index.
         if tags:

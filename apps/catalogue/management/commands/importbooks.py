@@ -11,6 +11,10 @@ from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
 
+from wolnelektury_core.management.profile import profile
+import objgraph
+import gc
+
 from catalogue.models import Book
 from picture.models import Picture
 
@@ -60,11 +64,12 @@ class Command(BaseCommand):
         picture = Picture.from_xml_file(file_path, overwrite=options.get('force'))
         return picture
 
+    #    @profile
     def handle(self, *directories, **options):
         from django.db import transaction
 
         self.style = color_style()
-
+        
         verbose = options.get('verbose')
         force = options.get('force')
         show_traceback = options.get('traceback', False)
@@ -123,10 +128,15 @@ class Command(BaseCommand):
                         if import_picture:
                             self.import_picture(file_path, options)
                         else:
+                            objgraph.show_growth()
                             self.import_book(file_path, options)
+                            objgraph.show_growth()
+                            print "--------------------"
+                            
                         files_imported += 1
                         transaction.commit()
-
+                        ## track.
+                        
                     except (Book.AlreadyExists, Picture.AlreadyExists):
                         print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
                             file_path)
