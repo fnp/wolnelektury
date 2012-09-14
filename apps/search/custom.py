@@ -5,7 +5,7 @@ import urllib
 import warnings
 from sunburnt import search
 import copy
-
+from httplib2 import socket
 
 class TermVectorOptions(search.Options):
     def __init__(self, schema, original=None):
@@ -89,7 +89,11 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             self.writeable = False
         elif 'r' not in mode:
             self.readable = False
-        self.init_schema()
+        try:
+            self.init_schema()
+        except socket.error, e:
+            raise socket.error, "Cannot connect to Solr server, and search indexing is enabled (%s)" % str(e)
+            
 
     def _analyze(self, **kwargs):
         if not self.readable:
