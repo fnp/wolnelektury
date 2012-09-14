@@ -13,13 +13,12 @@ from django.core.files import File
 from catalogue.utils import trim_query_log
 
 from wolnelektury_core.management.profile import profile
-import objgraph
-import gc
 
 from catalogue.models import Book
 from picture.models import Picture
 
 from search import Index
+
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
@@ -130,14 +129,10 @@ class Command(BaseCommand):
                         if import_picture:
                             self.import_picture(file_path, options)
                         else:
-                            objgraph.show_growth()
                             self.import_book(file_path, options)
-                            objgraph.show_growth()
-                            print "--------------------"
-                            
+
                         files_imported += 1
                         transaction.commit()
-                        ## track.
                         
                     except (Book.AlreadyExists, Picture.AlreadyExists):
                         print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
