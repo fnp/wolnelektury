@@ -10,6 +10,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
+from catalogue.utils import trim_query_log
 
 from wolnelektury_core.management.profile import profile
 import objgraph
@@ -109,6 +110,7 @@ class Command(BaseCommand):
                 files = sorted(os.listdir(dir_name))
                 postponed = {}
                 while files:
+                    trim_query_log(0)
                     file_name = files.pop(0)
                     file_path = os.path.join(dir_name, file_name)
                     file_base, ext = os.path.splitext(file_path)

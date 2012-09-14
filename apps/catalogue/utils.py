@@ -300,3 +300,16 @@ class AppSettings(object):
         if hasattr(self, more):
             value = getattr(self, more)(value)
         return value
+
+
+def trim_query_log(trim_to=25):
+    """
+connection.queries includes all SQL statements -- INSERTs, UPDATES, SELECTs, etc. Each time your app hits the database, the query will be recorded.
+This can sometimes occupy lots of memory, so trim it here a bit.
+    """
+    if settings.DEBUG:
+        from django.db import connection
+        connection.queries = trim_to > 0 \
+            and connection.queries[-trim_to:] \
+            or []
+        
