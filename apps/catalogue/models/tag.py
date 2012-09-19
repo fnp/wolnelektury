@@ -71,6 +71,13 @@ class Tag(TagBase):
     def get_absolute_url(self):
         return ('catalogue.views.tagged_object_list', [self.url_chunk])
 
+    @classmethod
+    @permalink
+    def create_url(cls, category, slug):
+        return ('catalogue.views.tagged_object_list', [
+                '/'.join((cls.categories_dict[category], slug))
+            ])
+
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')

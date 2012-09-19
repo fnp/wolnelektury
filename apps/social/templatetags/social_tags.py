@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from random import randint
 from django import template
 from catalogue.models import Book
 from social.models import Cite
@@ -29,7 +30,16 @@ def choose_cite(context, ctx=None):
                 cites = cites_for_tags([ctx.book_tag()])
         else:
             cites = cites_for_tags(ctx)
-        cite = cites.order_by('-sticky', '?')[0] if cites.exists() else None
+        stickies = cites.filter(sticky=True)
+        count = stickies.count()
+        if count:
+            cite = stickies[randint(0, count - 1)]
+        else:
+            count = cites.count()
+            if count:
+                cite = cites[randint(0, count - 1)]
+            else:
+                cite = None
     return cite
 
 
