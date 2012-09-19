@@ -6,7 +6,9 @@ import re
 import itertools
 
 from django.conf import settings
+from django.core.cache import get_cache
 from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
@@ -29,6 +31,7 @@ from suggest.forms import PublishingSuggestForm
 from picture.models import Picture
 
 staff_required = user_passes_test(lambda user: user.is_staff)
+permanent_cache = get_cache('permanent')
 
 
 def catalogue(request):
@@ -45,27 +48,39 @@ def catalogue(request):
 
 
 def book_list(request, filter=None, template_name='catalogue/book_list.html',
-        context=None):
+        nav_template_name='catalogue/snippets/book_list_nav.html',
+        list_template_name='catalogue/snippets/book_list.html',
+        cache_key='catalogue.book_list',
+        context=None,
+        ):
     """ generates a listing of all books, optionally filtered with a test function """
-
-    books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
-    books_nav = SortedDict()
-    for tag in books_by_author:
-        if books_by_author[tag]:
-            books_nav.setdefault(tag.sort_key[0], []).append(tag)
-
+    cached = permanent_cache.get(cache_key)
+    if cached is not None:
+        rendered_nav, rendered_book_list = cached
+    else:
+        books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
+        books_nav = SortedDict()
+        for tag in books_by_author:
+            if books_by_author[tag]:
+                books_nav.setdefault(tag.sort_key[0], []).append(tag)
+        rendered_nav = render_to_string(nav_template_name, locals())
+        rendered_book_list = render_to_string(list_template_name, locals())
+        permanent_cache.set(cache_key, (rendered_nav, rendered_book_list))
     return render_to_response(template_name, locals(),
         context_instance=RequestContext(request))
 
 
 def audiobook_list(request):
     return book_list(request, Q(media__type='mp3') | Q(media__type='ogg'),
-                     template_name='catalogue/audiobook_list.html')
+                     template_name='catalogue/audiobook_list.html',
+                     list_template_name='catalogue/snippets/audiobook_list.html',
+                     cache_key='catalogue.audiobook_list')
 
 
 def daisy_list(request):
     return book_list(request, Q(media__type='daisy'),
-                     template_name='catalogue/daisy_list.html')
+                     template_name='catalogue/daisy_list.html',
+                     cache_key='catalogue.daisy_list')
 
 
 def collection(request, slug):
@@ -76,6 +91,7 @@ def collection(request, slug):
                 for slug in slugs]
     return book_list(request, Q(slug__in=slugs),
                      template_name='catalogue/collection.html',
+                     cache_key='catalogue.collection:%s' % coll.slug,
                      context={'collection': coll})
 
 

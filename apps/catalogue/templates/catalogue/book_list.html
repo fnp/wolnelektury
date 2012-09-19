@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags chunks %}
+{% load catalogue_tags %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
@@ -19,29 +19,11 @@
 
     <div id="book-list-nav" class="normal-text">
         {% trans "Table of Content" %}
-        {% for index, authors in books_nav.items %}
-                <ul>
-                    <li><a class="book-list-index" href="#">{{ index|upper }}</a></li>
-                    <ul class="book-list-show-index">
-                    {% for author in authors %}
-                        <li><a href="#{{ author.slug }}">{{ author }}</a></li>
-                    {% endfor %}
-                    </ul>
-                </ul>
-        {% endfor %}    
+        {{ rendered_nav }}
     </div>
     <div id="book-list" class="normal-text">
       {% block book_list %}
-        {% book_tree orphans books_by_parent %}
-        {% for author, group in books_by_author.items %}
-            {% if group %}
-                <a name="{{ author.slug }}"></a>
-                <div class="group">
-                    <h2><a href="{{ author.get_absolute_url }}">{{ author }}</a></h2>
-                    {% book_tree group books_by_parent %}
-                </div>
-            {% endif %}
-        {% endfor %}
+        {{ rendered_book_list }}
       {% endblock %}
     </div>
     <div id="book-list-up">

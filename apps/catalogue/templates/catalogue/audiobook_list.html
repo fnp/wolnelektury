@@ -20,17 +20,3 @@
 Możecie z niej korzystać bezpłatnie i bez ograniczeń.
 Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek.{% endblocktrans %}</p>
 {% endblock %}
-
-
-{% block book_list %}
-    {% audiobook_tree orphans books_by_parent %}
-    {% for author, group in books_by_author.items %}
-        {% if group %}
-            <a name="{{ author.slug }}"></a>
-            <div class="group">
-                <h2><a href="{{ author.get_absolute_url }}">{{ author }}</a></h2>
-                {% audiobook_tree group books_by_parent %}
-            </div>
-        {% endif %}
-    {% endfor %}
-{% endblock %}

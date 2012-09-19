@@ -3,11 +3,15 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
+from django.core.cache import get_cache
 from django.db.models.signals import post_save, pre_delete, post_delete
 import django.dispatch
-from catalogue.models import Tag, BookMedia, Book, Fragment
+from catalogue.models import Tag, BookMedia, Book, Fragment, Collection
 from catalogue import tasks
 from newtagging.models import tags_updated
+
+
+permanent_cache = get_cache('permanent')
 
 
 def _tags_updated_handler(sender, affected_tags, **kwargs):
@@ -40,7 +44,15 @@ def _post_save_handler(sender, instance, **kwargs):
     """ refresh all the short_html stuff on BookMedia update """
     if sender == BookMedia:
         instance.book.save()
+    elif sender == Collection:
+        permanent_cache.delete('catalogue.collection:%s' % instance.slug)
 post_save.connect(_post_save_handler)
+
+
+def post_publish(sender, **kwargs):
+    permanent_cache.delete_many(['catalogue.book_list',
+            'catalogue.audiobook_list', 'catalogue.daisy_list'])
+Book.published.connect(post_publish)
 
 
 if not settings.NO_SEARCH_INDEX:
