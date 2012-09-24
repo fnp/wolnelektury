@@ -1,6 +1,7 @@
 from __future__ import with_statement # needed for python 2.5
 from fabric.api import *
 from fabric.contrib import files
+from fabric.context_managers import path
 
 import os
 
@@ -30,6 +31,7 @@ def production():
     env.python = '/usr/bin/python'
     env.virtualenv = '/usr/bin/virtualenv'
     env.pip = 've/bin/pip'
+    env.restart_webserver = restart_gunicorn_debian
 
 # =========
 # = Tasks =
@@ -72,6 +74,7 @@ def deploy():
     migrate()
     collectstatic()
     restart_webserver()
+    restart_celery()
 
 def deploy_version(version):
     "Specify a specific version to be made live"
@@ -81,6 +84,7 @@ def deploy_version(version):
         run('rm releases/previous; mv releases/current releases/previous;', pty=True)
         run('ln -s %(version)s releases/current' % env, pty=True)
     restart_webserver()
+    restart_celery()
 
 def rollback():
     """
@@ -94,6 +98,7 @@ def rollback():
         run('mv releases/previous releases/current;', pty=True)
         run('mv releases/_previous releases/previous;', pty=True)
     restart_webserver()
+    restart_celery()
 
 
 # =====================================================================
@@ -168,9 +173,24 @@ def collectstatic():
     with cd('%(path)s/releases/current/%(project_name)s' % env):
         run('../../../ve/bin/python manage.py collectstatic --noinput' % env, pty=True)
 
+def restart_gunicorn_debian():
+    """Restarts gunicorn server using debian script."""
+    print '>>> restart gunicorn'
+    require('project_name', provided_by=[staging, production])
+    with path('/sbin'):
+        sudo('gunicorn-debian restart %(project_name)s' % env, shell=False)
+
 def restart_webserver():
-    "Restart the web server"
-    print '>>> restart webserver'
-    run('touch %(path)s/%(project_name)s.wsgi' % env)
+    """Restarts the web server."""
+    if hasattr(env, 'restart_webserver'):
+        env.restart_webserver()
+    else:
+        require('project_name', provided_by=[staging, production])
+        print '>>> restart webserver'
+        run('touch %(path)s/%(project_name)s.wsgi' % env)
+
+def restart_celery():
+    """Restarts the Celery task queue manager."""
     print '>>> restart Celery'
+    require('project_name', provided_by=[staging, production])
     sudo('supervisorctl restart celery.%(project_name)s:' % env, shell=False)
