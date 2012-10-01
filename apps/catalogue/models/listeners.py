@@ -44,15 +44,15 @@ def _post_save_handler(sender, instance, **kwargs):
     """ refresh all the short_html stuff on BookMedia update """
     if sender == BookMedia:
         instance.book.save()
-        permanent_cache.delete('catalogue.audiobook_list')
+        permanent_cache.delete_many([
+            'catalogue.audiobook_list', 'catalogue.daisy_list'])
     elif sender == Collection:
         permanent_cache.delete('catalogue.collection:%s' % instance.slug)
 post_save.connect(_post_save_handler)
 
 
 def post_publish(sender, **kwargs):
-    permanent_cache.delete_many(['catalogue.book_list',
-        'catalogue.daisy_list'])
+    permanent_cache.delete('catalogue.book_list')
 Book.published.connect(post_publish)
 
 
