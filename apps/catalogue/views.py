@@ -25,6 +25,7 @@ from ajaxable.utils import JSONResponse, AjaxableFormView
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags, MultiQuerySet
+from catalogue.templatetags.catalogue_tags import tag_list
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
@@ -43,8 +44,16 @@ def catalogue(request):
     categories = split_tags(tags)
     fragment_tags = categories.get('theme', [])
 
-    return render_to_response('catalogue/catalogue.html', locals(),
-        context_instance=RequestContext(request))
+    if request.is_ajax():
+        render_tag_list = lambda x: render_to_string(
+            'catalogue/tag_list.html', tag_list(x))
+        output = {'theme': render_tag_list(fragment_tags)}
+        for category, tags in categories.items():
+            output[category] = render_tag_list(tags)
+        return JSONResponse(output)
+    else:
+        return render_to_response('catalogue/catalogue.html', locals(),
+            context_instance=RequestContext(request))
 
 
 def book_list(request, filter=None, template_name='catalogue/book_list.html',

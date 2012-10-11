@@ -404,11 +404,13 @@ def related_books(book, limit=6, random=1):
 
 @register.inclusion_tag('catalogue/menu.html')
 def catalogue_menu():
-    tags = Tag.objects.filter(
-            category__in=('author', 'epoch', 'genre', 'kind', 'theme')
-        ).exclude(book_count=0)
-    return split_tags(tags)
-    
+    return {'categories': [
+                ('author', _('Authors'), 'autorzy'),
+                ('genre', _('Genres'), 'gatunki'),
+                ('kind', _('Kinds'), 'rodzaje'),
+                ('epoch', _('Epochs'), 'epoki'),
+                ('theme', _('Themes'), 'autorzy'),
+        ]}
 
 
 @register.simple_tag
