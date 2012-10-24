@@ -6,6 +6,8 @@ import warnings
 from sunburnt import search
 import copy
 from httplib2 import socket
+import re
+
 
 class TermVectorOptions(search.Options):
     def __init__(self, schema, original=None):
@@ -93,7 +95,6 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             self.init_schema()
         except socket.error, e:
             raise socket.error, "Cannot connect to Solr server, and search indexing is enabled (%s)" % str(e)
-            
 
     def _analyze(self, **kwargs):
         if not self.readable:
@@ -134,6 +135,25 @@ class CustomSolrInterface(sunburnt.SolrInterface):
         terms = map(lambda n: unicode(n.text), terms)
         return terms
 
+    def expand_margins(self, text, start, end):
+        totlen = len(text)
+
+        def is_boundary(x):
+            ws = re.compile(r"\W", re.UNICODE)
+            return bool(ws.match(x))
+
+        while start > 0:
+            if is_boundary(text[start - 1]):
+                break
+            start -= 1
+
+        while end < totlen:
+            if is_boundary(text[end + 1]):
+                break
+            end += 1
+
+        return (start, end)
+
     def substring(self, text, matches, margins=30, mark=("<b>", "</b>")):
         start = None
         end = None
@@ -142,23 +162,28 @@ class CustomSolrInterface(sunburnt.SolrInterface):
                               ((s, e),
                                (max(0, s - margins), min(totlen, e + margins))),
                                   matches)
+        matches_margins = map(lambda (m, (s, e)):
+                              (m, self.expand_margins(text, s, e)),
+            matches_margins)
+
+            # lets start with first match
         (start, end) = matches_margins[0][1]
-        matches = []
+        matches = [matches_margins[0][0]]
+
         for (m, (s, e)) in matches_margins[1:]:
             if end < s or start > e:
                 continue
             start = min(start, s)
             end = max(end, e)
             matches.append(m)
-            
+
         snip = text[start:end]
         matches.sort(lambda a, b: cmp(b[0], a[0]))
+        print matches
 
         for (s, e) in matches:
             off = - start
             snip = snip[:e + off] + mark[1] + snip[e + off:]
             snip = snip[:s + off] + mark[0] + snip[s + off:]
-            # maybe break on word boundaries
 
         return snip
-

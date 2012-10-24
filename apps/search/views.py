@@ -188,14 +188,15 @@ def main(request):
     # ensure books do exists & sort them
     results.sort(reverse=True)
 
-    if len(results) == 1:
-        fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
-        if len(fragment_hits) == 1:
-            #anchor = fragment_hits[0]['fragment']
-            #frag = Fragment.objects.get(anchor=anchor)
-            return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
-        return HttpResponseRedirect(results[0].book.get_absolute_url())
-    elif len(results) == 0:
+    # We don't want to redirect to book text, but rather display result page even with one result.
+    # if len(results) == 1:
+    #     fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
+    #     if len(fragment_hits) == 1:
+    #         #anchor = fragment_hits[0]['fragment']
+    #         #frag = Fragment.objects.get(anchor=anchor)
+    #         return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
+    #     return HttpResponseRedirect(results[0].book.get_absolute_url())
+    if len(results) == 0:
         form = PublishingSuggestForm(initial={"books": query + ", "})
         return render_to_response('catalogue/search_no_hits.html',
                                   {'tags': tags,

@@ -548,7 +548,7 @@ class SearchResult(object):
             header_span = header_span is not None and int(header_span) or 1
             fragment = doc.get("fragment_anchor", None)
             snippets_pos = (doc['snippets_position'], doc['snippets_length'])
-            snippets_rev = doc['snippets_revision']
+            snippets_rev = doc.get('snippets_revision', None)
 
             hit = (sec + (header_span,), fragment, self._score, {
                 'how_found': how_found,
@@ -561,7 +561,7 @@ class SearchResult(object):
             self._hits.append(hit)
 
     def __unicode__(self):
-        return u"<SR id=%d %d(%d) hits score=%f %d snippets" % \
+        return u"<SR id=%d %d(%d) hits score=%f %d snippets>" % \
             (self.book_id, len(self._hits), self._processed_hits and len(self._processed_hits) or -1, self._score, len(self.snippets))
 
     def __str__(self):
@@ -725,68 +725,6 @@ class Search(SolrIndex):
     def __init__(self, default_field="text"):
         super(Search, self).__init__(mode='r')
 
-    # def get_tokens(self, searched, field='text', cached=None):
-    #     """returns tokens analyzed by a proper (for a field) analyzer
-    #     argument can be: StringReader, string/unicode, or tokens. In the last case
-    #     they will just be returned (so we can reuse tokens, if we don't change the analyzer)
-    #     """
-    #     if cached is not None and field in cached:
-    #         return cached[field]
-
-    #     if isinstance(searched, str) or isinstance(searched, unicode):
-    #         searched = StringReader(searched)
-    #     elif isinstance(searched, list):
-    #         return searched
-
-    #     searched.reset()
-    #     tokens = self.analyzer.reusableTokenStream(field, searched)
-    #     toks = []
-    #     while tokens.incrementToken():
-    #         cta = tokens.getAttribute(CharTermAttribute.class_)
-    #         toks.append(cta.toString())
-
-    #     if cached is not None:
-    #         cached[field] = toks
-
-    #     return toks
-
-    # @staticmethod
-    # def fuzziness(fuzzy):
-    #     """Helper method to sanitize fuzziness"""
-    #     if not fuzzy:
-    #         return None
-    #     if isinstance(fuzzy, float) and fuzzy > 0.0 and fuzzy <= 1.0:
-    #         return fuzzy
-    #     else:
-    #         return 0.5
-
-    # def make_phrase(self, tokens, field='text', slop=2, fuzzy=False):
-    #     """
-    #     Return a PhraseQuery with a series of tokens.
-    #     """
-    #     if fuzzy:
-    #         phrase = MultiPhraseQuery()
-    #         for t in tokens:
-    #             term = Term(field, t)
-    #             fuzzterm = FuzzyTermEnum(self.searcher.getIndexReader(), term, self.fuzziness(fuzzy))
-    #             fuzzterms = []
-
-    #             while True:
-    #                 ft = fuzzterm.term()
-    #                 if ft:
-    #                     fuzzterms.append(ft)
-    #                 if not fuzzterm.next(): break
-    #             if fuzzterms:
-    #                 phrase.add(JArray('object')(fuzzterms, Term))
-    #             else:
-    #                 phrase.add(term)
-    #     else:
-    #         phrase = PhraseQuery()
-    #         phrase.setSlop(slop)
-    #         for t in tokens:
-    #             term = Term(field, t)
-    #             phrase.add(term)
-    #     return phrase
 
     def make_term_query(self, query, field='text', modal=operator.or_):
         """
@@ -828,78 +766,6 @@ class Search(SolrIndex):
         res = query.execute()
         return [SearchResult(found, how_found='search_some', query_terms=query_terms) for found in res]
 
-    # def search_perfect_book(self, searched, max_results=20, fuzzy=False, hint=None):
-    #     """
-    #     Search for perfect book matches. Just see if the query matches with some author or title,
-    #     taking hints into account.
-    #     """
-    #     fields_to_search = ['authors', 'title']
-    #     only_in = None
-    #     if hint:
-    #         if not hint.should_search_for_book():
-    #             return []
-    #         fields_to_search = hint.just_search_in(fields_to_search)
-    #         only_in = hint.book_filter()
-
-    #     qrys = [self.make_phrase(self.get_tokens(searched, field=fld), field=fld, fuzzy=fuzzy) for fld in fields_to_search]
-
-    #     books = []
-    #     for q in qrys:
-    #         top = self.searcher.search(q,
-    #             self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
-    #             max_results)
-    #         for found in top.scoreDocs:
-    #             books.append(SearchResult(self, found, how_found="search_perfect_book"))
-    #     return books
-
-    # def search_book(self, searched, max_results=20, fuzzy=False, hint=None):
-    #     fields_to_search = ['tags', 'authors', 'title']
-
-    #     only_in = None
-    #     if hint:
-    #         if not hint.should_search_for_book():
-    #             return []
-    #         fields_to_search = hint.just_search_in(fields_to_search)
-    #         only_in = hint.book_filter()
-
-    #     tokens = self.get_tokens(searched, field='SIMPLE')
-
-    #     q = BooleanQuery()
-
-    #     for fld in fields_to_search:
-    #         q.add(BooleanClause(self.make_term_query(tokens, field=fld,
-    #                             fuzzy=fuzzy), BooleanClause.Occur.SHOULD))
-
-    #     books = []
-    #     top = self.searcher.search(q,
-    #                                self.chain_filters([only_in, self.term_filter(Term('is_book', 'true'))]),
-    #         max_results)
-    #     for found in top.scoreDocs:
-    #         books.append(SearchResult(self, found, how_found="search_book"))
-
-    #     return books
-
-    # def search_perfect_parts(self, searched, max_results=20, fuzzy=False, hint=None):
-    #     """
-    #     Search for book parts which contains a phrase perfectly matching (with a slop of 2, default for make_phrase())
-    #     some part/fragment of the book.
-    #     """
-    #     qrys = [self.make_phrase(self.get_tokens(searched), field=fld, fuzzy=fuzzy) for fld in ['text']]
-
-    #     flt = None
-    #     if hint:
-    #         flt = hint.part_filter()
-
-    #     books = []
-    #     for q in qrys:
-    #         top = self.searcher.search(q,
-    #                                    self.chain_filters([self.term_filter(Term('is_book', 'true'), inverse=True),
-    #                                                        flt]),
-    #                                    max_results)
-    #         for found in top.scoreDocs:
-    #             books.append(SearchResult(self, found, snippets=self.get_snippets(found, q), how_found='search_perfect_parts'))
-
-    #     return books
 
     def search_everywhere(self, searched, query_terms=None):
         """
@@ -1055,33 +921,6 @@ class Search(SolrIndex):
             except catalogue.models.Book.DoesNotExist: pass
         return bks
  
-    # def make_prefix_phrase(self, toks, field):
-    #     q = MultiPhraseQuery()
-    #     for i in range(len(toks)):
-    #         t = Term(field, toks[i])
-    #         if i == len(toks) - 1:
-    #             pterms = Search.enum_to_array(PrefixTermEnum(self.searcher.getIndexReader(), t))
-    #             if pterms:
-    #                 q.add(pterms)
-    #             else:
-    #                 q.add(t)
-    #         else:
-    #             q.add(t)
-    #     return q
-
-    # @staticmethod
-    # def term_filter(term, inverse=False):
-    #     only_term = TermsFilter()
-    #     only_term.addTerm(term)
-
-    #     if inverse:
-    #         neg = BooleanFilter()
-    #         neg.add(FilterClause(only_term, BooleanClause.Occur.MUST_NOT))
-    #         only_term = neg
-
-    #     return only_term
-
-
 
     @staticmethod
     def apply_filters(query, filters):
@@ -1093,15 +932,3 @@ class Search(SolrIndex):
         for f in filters:
             query = query.query(f)
         return query
-
-    # def filtered_categories(self, tags):
-    #     """
-    #     Return a list of tag categories, present in tags list.
-    #     """
-    #     cats = {}
-    #     for t in tags:
-    #         cats[t.category] = True
-    #     return cats.keys()
-
-    # def hint(self):
-    #     return Hint(self)
