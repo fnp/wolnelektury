@@ -59,6 +59,7 @@
 
 		(function() {
 			var $current = null;
+            var menu_loaded = false;
 			$('.hidden-box-wrapper').each(function() {
 				var $hidden = $('.hidden-box', this);
 				$('.hidden-box-trigger', this).click(function(event) {
@@ -70,6 +71,17 @@
 						$current && $current.hide('fast');
 						$hidden.show('fast');
 						$current = $hidden;
+                        if ($(this).hasClass('load-menu') && !menu_loaded) {
+                            $.ajax({
+                                url: '/katalog/',
+                                dataType: "json",
+                            }).done(function(data) {
+                                $.each(data, function(index, value) {
+                                    $('#menu-' + index).html(value);
+                                });
+                                menu_loaded = true;
+                            });
+                        }
 					} 
 				});
 			});

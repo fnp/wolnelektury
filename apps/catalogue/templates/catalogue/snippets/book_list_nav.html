@@ -1,0 +1,10 @@
+{% for index, authors in books_nav.items %}
+    <ul>
+        <li><a class="book-list-index" href="#">{{ index|upper }}</a></li>
+        <ul class="book-list-show-index">
+        {% for author in authors %}
+            <li><a href="#{{ author.slug }}">{{ author }}</a></li>
+        {% endfor %}
+        </ul>
+    </ul>
+{% endfor %}

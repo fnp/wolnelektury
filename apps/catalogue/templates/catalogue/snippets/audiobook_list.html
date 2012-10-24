@@ -1,0 +1,12 @@
+{% load catalogue_tags %}
+
+{% audiobook_tree orphans books_by_parent %}
+{% for author, group in books_by_author.items %}
+    {% if group %}
+        <a name="{{ author.slug }}"></a>
+        <div class="group">
+            <h2><a href="{{ author.get_absolute_url }}">{{ author }}</a></h2>
+            {% audiobook_tree group books_by_parent %}
+        </div>
+    {% endif %}
+{% endfor %}

@@ -38,6 +38,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'realip_middleware.SetRemoteAddrFromXRealIP',
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'

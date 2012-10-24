@@ -86,6 +86,11 @@ class Book(models.Model):
     def get_absolute_url(self):
         return ('catalogue.views.book_detail', [self.slug])
 
+    @staticmethod
+    @permalink
+    def create_url(slug):
+        return ('catalogue.views.book_detail', [slug])
+
     @property
     def name(self):
         return self.title
@@ -481,19 +486,19 @@ class Book(models.Model):
 
     def pretty_title(self, html_links=False):
         book = self
-        names = list(book.tags.filter(category='author'))
-
-        books = []
-        while book:
-            books.append(book)
-            book = book.parent
-        names.extend(reversed(books))
+        rel_info = book.related_info()
+        names = [(name, Tag.create_url('author', slug))
+                    for name, slug in rel_info['tags']['author']]
+        if 'parents' in rel_info:
+            books = [(name, Book.create_url(slug))
+                        for name, slug in rel_info['parents']]
+            names.extend(reversed(books))
+        names.append((self.title, self.get_absolute_url()))
 
         if html_links:
-            names = ['<a href="%s">%s</a>' % (tag.get_absolute_url(), tag.name) for tag in names]
+            names = ['<a href="%s">%s</a>' % (tag[1], tag[0]) for tag in names]
         else:
-            names = [tag.name for tag in names]
-
+            names = [tag[0] for tag in names]
         return ', '.join(names)
 
     @classmethod

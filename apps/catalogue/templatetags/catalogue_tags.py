@@ -4,6 +4,7 @@
 #
 import datetime
 import feedparser
+from random import randint
 
 from django.conf import settings
 from django import template
@@ -388,9 +389,14 @@ def related_books(book, limit=6, random=1):
                     ignore_by_tag=book.book_tag())[:limit-random]
         cache.set(cache_key, related, 1800)
     if random:
-        related += list(Book.objects.exclude(
-                        pk__in=[b.pk for b in related] + [book.pk]
-                    ).order_by('?')[:random])
+        random_books = Book.objects.exclude(
+                        pk__in=[b.pk for b in related] + [book.pk])
+        if random == 1:
+            count = random_books.count()
+            if count:
+                related.append(random_books[randint(0, count - 1)])
+        else:
+            related += list(random_books.order_by('?')[:random])
     return {
         'books': related,
     }
@@ -398,18 +404,18 @@ def related_books(book, limit=6, random=1):
 
 @register.inclusion_tag('catalogue/menu.html')
 def catalogue_menu():
-    tags = Tag.objects.filter(
-            category__in=('author', 'epoch', 'genre', 'kind', 'theme')
-        ).exclude(book_count=0)
-    return split_tags(tags)
-    
+    return {'categories': [
+                ('author', _('Authors'), 'autorzy'),
+                ('genre', _('Genres'), 'gatunki'),
+                ('kind', _('Kinds'), 'rodzaje'),
+                ('epoch', _('Epochs'), 'epoki'),
+                ('theme', _('Themes'), 'autorzy'),
+        ]}
 
 
 @register.simple_tag
 def tag_url(category, slug):
-    return reverse('catalogue.views.tagged_object_list', args=[
-        '/'.join((Tag.categories_dict[category], slug))
-    ])
+    return Tag.create_url(category, slug)
 
 
 @register.simple_tag
