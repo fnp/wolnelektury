@@ -26,9 +26,14 @@ class Command(BaseCommand):
                         books += Book.objects.filter(slug=a).all()
             else:
                 books = Book.objects.all()
-                
-            for b in books:
-                print b.title
-                idx.index_book(b)
+
+            try:
+                for b in books:
+                    print b.title
+                    idx.index_book(b)
+                    idx.index.commit()
+            except:
+                idx.index.rollback()
         print 'Reindexing tags.'
         idx.index_tags()
+        idx.index.commit()
