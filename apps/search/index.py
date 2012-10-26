@@ -914,10 +914,15 @@ class Search(SolrIndex):
         Searches for Book objects using query
         """
         bks = []
+        bks_found = set()
+        query = query.query(is_book=True)
         res = self.apply_filters(query, filters).field_limit(['book_id'])
         for r in res:
             try:
-                bks.append(catalogue.models.Book.objects.get(id=r['book_id']))
+                bid = r['book_id']
+                if not bid in bks_found:
+                    bks.append(catalogue.models.Book.objects.get(id=bid))
+                    bks_found.add(bid)
             except catalogue.models.Book.DoesNotExist: pass
         return bks
  
