@@ -14,9 +14,8 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         from catalogue.models import Book
         import search
-        idx = search.ReusableIndex()
-        idx.open()
-
+        idx = search.Index()
+        
         if not opts['just_tags']:
             if args:
                 books = []
@@ -33,4 +32,3 @@ class Command(BaseCommand):
                 idx.index_book(b)
         print 'Reindexing tags.'
         idx.index_tags()
-        idx.close()
