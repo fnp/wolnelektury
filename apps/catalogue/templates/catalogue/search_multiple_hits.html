@@ -61,6 +61,19 @@
     </div>
     {% endif %}
 
+    {% if results.translator %}
+    <div class="book-list-header">
+      <div class="book-box-inner">
+	<p>{% trans "Results by translators" %}</p>
+      </div>
+    </div>
+    <div>
+      <ol class="work-list">
+	{% for translator in results.translator %}<li class="Book-item">{% book_short translator.book %}</li>{% endfor %}
+      </ol>
+    </div>
+    {% endif %}
+
     {% if results.title %}
     <div class="book-list-header">
       <div class="book-box-inner">

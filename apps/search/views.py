@@ -124,15 +124,17 @@ def main(request):
     tags = split_tags(tags)
 
     author_results = search.search_phrase(query, 'authors', book=True)
+    translator_results = search.search_phrase(query, 'translators', book=True)
+
     title_results = search.search_phrase(query, 'title', book=True)
 
     # Boost main author/title results with mixed search, and save some of its results for end of list.
     # boost author, title results
-    author_title_mixed = search.search_some(query, ['authors', 'title', 'tags'], query_terms=theme_terms)
+    author_title_mixed = search.search_some(query, ['authors', 'translators', 'title', 'tags'], query_terms=theme_terms)
     author_title_rest = []
 
     for b in author_title_mixed:
-        also_in_mixed = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
+        also_in_mixed = filter(lambda ba: ba.book_id == b.book_id, author_results + translator_results + title_results)
         for b2 in also_in_mixed:
             b2.boost *= 1.1
         if also_in_mixed is []:
@@ -155,15 +157,17 @@ def main(request):
                     return True
             return False
         return f
-    f = already_found(author_results + title_results + text_phrase)
+    f = already_found(author_results + translator_results + title_results + text_phrase)
     everywhere = filter(lambda x: not f(x), everywhere)
 
     author_results = SearchResult.aggregate(author_results)
+    translator_results = SearchResult.aggregate(translator_results)
     title_results = SearchResult.aggregate(title_results)
 
     everywhere = SearchResult.aggregate(everywhere, author_title_rest)
 
     for field, res in [('authors', author_results),
+                       ('translators', translator_results),
                        ('title', title_results),
                        ('text', text_phrase),
                        ('text', everywhere)]:
@@ -180,11 +184,12 @@ def main(request):
             return False
 
     author_results = filter(ensure_exists, author_results)
+    translator_results = filter(ensure_exists, translator_results)
     title_results = filter(ensure_exists, title_results)
     text_phrase = filter(ensure_exists, text_phrase)
     everywhere = filter(ensure_exists, everywhere)
 
-    results = author_results + title_results + text_phrase + everywhere
+    results = author_results + translator_results + title_results + text_phrase + everywhere
     # ensure books do exists & sort them
     results.sort(reverse=True)
 
@@ -209,6 +214,7 @@ def main(request):
                               {'tags': tags,
                                'prefix': query,
                                'results': {'author': author_results,
+                                           'translator': translator_results,
                                            'title': title_results,
                                            'content': text_phrase,
                                            'other': everywhere},

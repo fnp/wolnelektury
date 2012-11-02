@@ -832,7 +832,8 @@ class Search(SolrIndex):
             log.error("Cannot open snippet file for book id = %d [rev=%d], %s" % (book_id, revision, e))
             return []
         finally:
-            snippets.close()
+            if snippets:
+                snippets.close()
 
             # remove verse end markers..
         snips = map(lambda s: s and s.replace("/\n", "\n"), snips)
@@ -867,6 +868,8 @@ class Search(SolrIndex):
         res = self.apply_filters(query, filters).execute()
 
         tags = []
+        pd_tags = []
+
         for doc in res:
             is_pdcounter = doc.get('is_pdcounter', False)
             category = doc.get('tag_category')
@@ -879,15 +882,17 @@ class Search(SolrIndex):
                         tag.category = 'pd_book'  # make it look more lik a tag.
                     else:
                         print "Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)
+                    pd_tags.append(tag)
                 else:
                     tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
-                    # don't add the pdcounter tag if same tag already exists
-
-                tags.append(tag)
+                    tags.append(tag)
 
             except catalogue.models.Tag.DoesNotExist: pass
             except PDCounterAuthor.DoesNotExist: pass
             except PDCounterBook.DoesNotExist: pass
+
+        tags_slugs = set(map(lambda t: t.slug, tags))
+        tags = tags + filter(lambda t: not t.slug in tags_slugs, pd_tags)
 
         log.debug('search_tags: %s' % tags)
 
