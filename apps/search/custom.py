@@ -147,7 +147,7 @@ class CustomSolrInterface(sunburnt.SolrInterface):
                 break
             start -= 1
 
-        while end < totlen:
+        while end < totlen - 1:
             if is_boundary(text[end + 1]):
                 break
             end += 1
