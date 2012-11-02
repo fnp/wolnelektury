@@ -93,7 +93,8 @@ class Snippets(object):
 
     def close(self):
         """Close snippet file"""
-        self.file.close()
+        if self.file:
+            self.file.close()
 
     def remove(self):
         self.revision = None
