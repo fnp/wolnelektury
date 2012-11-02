@@ -830,11 +830,10 @@ class Search(SolrIndex):
                 idx += 1
 
         except IOError, e:
-            log.error("Cannot open snippet file for book id = %d [rev=%d], %s" % (book_id, revision, e))
+            log.error("Cannot open snippet file for book id = %d [rev=%s], %s" % (book_id, revision, e))
             return []
         finally:
-            if snippets:
-                snippets.close()
+            snippets.close()
 
             # remove verse end markers..
         snips = map(lambda s: s and s.replace("/\n", "\n"), snips)
