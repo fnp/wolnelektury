@@ -12,6 +12,7 @@ from django.core.cache import get_cache
 from django.core.urlresolvers import reverse
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
+from sorl.thumbnail import default
 
 from api.helpers import timestamp
 from api.models import Deleted
@@ -134,6 +135,11 @@ class BookDetails(object):
     def cover(cls, book):
         return MEDIA_BASE + book.cover.url if book.cover else ''
 
+    @classmethod
+    def cover_thumb(cls, book):
+        return MEDIA_BASE + default.backend.get_thumbnail(
+                    book.cover, "139x193").url
+
 
 
 class BookDetailHandler(BaseHandler, BookDetails):
@@ -143,7 +149,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover'] + [
+        'media', 'url', 'cover', 'cover_thumb'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -192,9 +198,9 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         if top_level:
             books = books.filter(parent=None)
         if audiobooks:
-            books = books.filter(media__type='mp3')
+            books = books.filter(media__type='mp3').distinct()
         if daisy:
-            books = books.filter(media__type='daisy')
+            books = books.filter(media__type='daisy').distinct()
 
         if books.exists():
             return books
