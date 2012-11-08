@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 14:06+0200\n"
-"PO-Revision-Date: 2012-08-22 14:12+0100\n"
+"POT-Creation-Date: 2012-11-08 16:21+0100\n"
+"PO-Revision-Date: 2012-11-08 16:21+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -73,7 +73,7 @@ msgstr "Duży"
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: views.py:500
+#: views.py:525
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -84,20 +84,20 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:501
+#: views.py:526
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:503
+#: views.py:528
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:535
+#: views.py:560
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:536
+#: views.py:561
 #: templates/catalogue/book_short.html:92
 #: templates/catalogue/book_text.html:28
 #: templates/catalogue/book_wide.html:63
@@ -127,10 +127,10 @@ msgid "language code"
 msgstr "Kod języka"
 
 #: models/book.py:35
-#: models/book.py:140
+#: models/book.py:145
 #: models/collection.py:13
 #: models/tag.py:34
-#: models/tag.py:76
+#: models/tag.py:83
 msgid "description"
 msgstr "opis"
 
@@ -164,17 +164,17 @@ msgstr "książka"
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:238
+#: models/book.py:243
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:252
+#: models/book.py:257
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:585
+#: models/book.py:589
 #: models/bookmedia.py:22
 #, python-format
 msgid "%s file"
@@ -331,7 +331,7 @@ msgstr ""
 msgid "Table of Content"
 msgstr ""
 
-#: templates/catalogue/book_list.html:48
+#: templates/catalogue/book_list.html:30
 msgid "↑ top ↑"
 msgstr ""
 
@@ -415,7 +415,7 @@ msgid "Table of contents"
 msgstr ""
 
 #: templates/catalogue/book_text.html:24
-#: templates/catalogue/menu.html:27
+#: templatetags/catalogue_tags.py:412
 #, fuzzy
 msgid "Themes"
 msgstr "motyw"
@@ -497,32 +497,32 @@ msgid "Download the catalogue in PDF format."
 msgstr ""
 
 #: templates/catalogue/catalogue.html:19
-#: templates/catalogue/menu.html:7
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
+#: templatetags/catalogue_tags.py:408
 #, fuzzy
 msgid "Authors"
 msgstr "autor"
 
 #: templates/catalogue/catalogue.html:22
-#: templates/catalogue/menu.html:17
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
+#: templatetags/catalogue_tags.py:410
 msgid "Kinds"
 msgstr ""
 
 #: templates/catalogue/catalogue.html:25
-#: templates/catalogue/menu.html:12
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
+#: templatetags/catalogue_tags.py:409
 #, fuzzy
 msgid "Genres"
 msgstr "gatunek"
 
 #: templates/catalogue/catalogue.html:28
-#: templates/catalogue/menu.html:22
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
+#: templatetags/catalogue_tags.py:411
 #, fuzzy
 msgid "Epochs"
 msgstr "epoka"
@@ -580,17 +580,21 @@ msgstr "fragment"
 msgid "See full category"
 msgstr "kategoria"
 
-#: templates/catalogue/menu.html:32
+#: templates/catalogue/menu.html:9
+msgid "Please wait…"
+msgstr ""
+
+#: templates/catalogue/menu.html:16
 #, fuzzy
 msgid "All books"
 msgstr "książki"
 
-#: templates/catalogue/menu.html:36
+#: templates/catalogue/menu.html:20
 #, fuzzy
 msgid "Audiobooks"
 msgstr "książki"
 
-#: templates/catalogue/menu.html:40
+#: templates/catalogue/menu.html:24
 #, fuzzy
 msgid "DAISY"
 msgstr "Plik DAISY"
@@ -683,19 +687,23 @@ msgstr ""
 msgid "Did you mean"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:54
-msgid "Results by authors"
-msgstr ""
-
-#: templates/catalogue/search_multiple_hits.html:67
+#: templates/catalogue/search_multiple_hits.html:52
 msgid "Results by title"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:82
+#: templates/catalogue/search_multiple_hits.html:67
+msgid "Results by authors"
+msgstr ""
+
+#: templates/catalogue/search_multiple_hits.html:80
+msgid "Results by translators"
+msgstr "Znalezieni tłumacze"
+
+#: templates/catalogue/search_multiple_hits.html:93
 msgid "Results in text"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:99
+#: templates/catalogue/search_multiple_hits.html:110
 msgid "Other results"
 msgstr ""
 
@@ -825,9 +833,6 @@ msgstr ""
 
 #~ msgid "goes to public domain"
 #~ msgstr "trafia do domeny publicznej"
-
-#~ msgid "translator"
-#~ msgstr "tłumacz"
 
 #~ msgid "year of translator's death"
 #~ msgstr "rok śmierci tłumacza"
