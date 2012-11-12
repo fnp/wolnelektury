@@ -15,6 +15,7 @@ tag_changes_resource = Resource(handler=handlers.TagChangesHandler)
 changes_resource = Resource(handler=handlers.ChangesHandler)
 
 book_list_resource = CsrfExemptResource(handler=handlers.BooksHandler, authentication=auth)
+ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 #book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 
@@ -57,8 +58,12 @@ urlpatterns = patterns(
     # books by tags
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})books/$',
         book_list_resource, name='api_book_list'),
+    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})ebooks/$',
+        ebook_list_resource, name='api_ebook_list'),
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_books/$',
         book_list_resource, {"top_level": True}, name='api_parent_book_list'),
+    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_ebooks/$',
+        ebook_list_resource, {"top_level": True}, name='api_parent_ebook_list'),
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})audiobooks/$',
         book_list_resource, {"audiobooks": True}, name='api_audiobook_list'),
     url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})daisy/$',

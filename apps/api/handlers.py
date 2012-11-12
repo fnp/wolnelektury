@@ -230,6 +230,10 @@ class BooksHandler(BookDetailHandler):
             return rc.NOT_FOUND
 
 
+class EBooksHandler(AnonymousBooksHandler):
+    fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats)
+
+
 # add categorized tags fields for Book
 def _tags_getter(category):
     @classmethod
