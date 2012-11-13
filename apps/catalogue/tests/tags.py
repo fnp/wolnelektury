@@ -277,12 +277,11 @@ class BookTagsTests(WLTestCase):
         self.assertEqual([(tag.name, tag.count) for tag in related_themes],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 
-    def test_main_page_tags(self):
+    def test_catalogue_tags(self):
         """ test main page tags and counts """
-        from catalogue.templatetags.catalogue_tags import catalogue_menu
-        menu = catalogue_menu()
-        self.assertEqual([(tag.name, tag.book_count) for tag in menu['author']],
+        context = self.client.get('/katalog/').context
+        self.assertEqual([(tag.name, tag.book_count) for tag in context['categories']['author']],
                          [('Jim Lazy', 1), ('Common Man', 1)])
-        self.assertEqual([(tag.name, tag.book_count) for tag in menu['theme']],
+        self.assertEqual([(tag.name, tag.book_count) for tag in context['categories']['theme']],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 

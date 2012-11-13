@@ -138,7 +138,7 @@ class BookDetails(object):
     @classmethod
     def cover_thumb(cls, book):
         return MEDIA_BASE + default.backend.get_thumbnail(
-                    book.cover, "139x193").url
+                    book.cover, "139x193").url if book.cover else ''
 
 
 
