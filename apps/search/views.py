@@ -3,7 +3,6 @@
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
 from django.views.decorators import cache
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.utils.translation import ugettext as _
@@ -13,9 +12,7 @@ from catalogue.models import Book, Tag, Fragment
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from catalogue.views import JSONResponse
 from search import Search, SearchResult
-from lucene import StringReader
 from suggest.forms import PublishingSuggestForm
-from time import sleep
 import re
 #import enchant
 import json
@@ -26,6 +23,13 @@ def match_word_re(word):
         return r"\b%s\b" % word
     elif 'mysql' in settings.DATABASES['default']['ENGINE']:
         return "[[:<:]]%s[[:>:]]" % word
+
+
+query_syntax_chars = re.compile(r"[\\/*:(){}]")
+
+
+def remove_query_syntax_chars(query, replace=' '):
+    return query_syntax_chars.sub(' ', query)
 
 
 def did_you_mean(query, tokens):
@@ -58,6 +62,8 @@ def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
         return JSONResponse([])
+
+    prefix = remove_query_syntax_chars(prefix)
 
     search = Search()
     # tagi beda ograniczac tutaj
@@ -114,6 +120,9 @@ def main(request):
         return render_to_response('catalogue/search_too_short.html',
                                   {'prefix': query},
             context_instance=RequestContext(request))
+
+    query = remove_query_syntax_chars(query)
+    
     search = Search()
 
     theme_terms = search.index.analyze(text=query, field="themes_pl") \
@@ -191,7 +200,8 @@ def main(request):
 
     results = author_results + translator_results + title_results + text_phrase + everywhere
     # ensure books do exists & sort them
-    results.sort(reverse=True)
+    for res in (author_results, translator_results, title_results, text_phrase, everywhere):
+        res.sort(reverse=True)
 
     # We don't want to redirect to book text, but rather display result page even with one result.
     # if len(results) == 1:
