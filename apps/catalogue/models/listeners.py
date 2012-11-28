@@ -61,7 +61,6 @@ if not settings.NO_SEARCH_INDEX:
     def _remove_book_from_index_handler(sender, instance, **kwargs):
         """ remove the book from search index, when it is deleted."""
         import search
-        search.JVM.attachCurrentThread()
         idx = search.Index()
         idx.open(timeout=10000)  # 10 seconds timeout.
         try:

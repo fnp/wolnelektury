@@ -92,7 +92,6 @@ if not settings.NO_SEARCH_INDEX:
     def update_index(sender, instance, **kwargs):
         import search
         print "update pd index %s [update %s]" % (instance, 'created' in kwargs)
-        search.JVM.attachCurrentThread()
         idx = search.Index()
         idx.open()
         try:
