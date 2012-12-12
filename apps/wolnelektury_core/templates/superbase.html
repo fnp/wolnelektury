@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="{{ LANGUAGE_CODE }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 	{% load cache compressed i18n %}
 	{% load static from staticfiles %}
     {% load catalogue_tags reporting_stats sponsor_tags %}
@@ -42,7 +42,8 @@
         <div id="header-content">
             <div id="logo">
                 <a class="logo" href="/">
-                <img id="logo-image" src="{% static "img/logo-neon.png" %}" /></a>
+                <img id="logo-image" src="{% static "img/logo-neon.png" %}"
+                    alt="Wolne Lektury" /></a>
             </div>
 
             <div id="tagline">
@@ -135,6 +136,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="language" value="{{ lang.0 }}" />
                     <button type="submit"
+                        lang="{{ lang.0 }}"
                         class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} mono"
                         >{{ lang.1 }}</button>
     	            </form>

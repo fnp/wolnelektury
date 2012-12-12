@@ -345,9 +345,11 @@ def book_short(context, book):
 
 @register.inclusion_tag('catalogue/book_mini_box.html')
 def book_mini(book):
+    author_str = ", ".join(name
+        for name, url in book.related_info()['tags']['author'])
     return {
         'book': book,
-        'related': book.related_info(),
+        'author_str': author_str,
     }
 
 
