@@ -311,6 +311,11 @@ def inline_tag_list(tags, choices=None):
     return tag_list(tags, choices)
 
 
+@register.inclusion_tag('catalogue/collection_list.html')
+def collection_list(collections):
+    return locals()
+
+
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):
     return locals()

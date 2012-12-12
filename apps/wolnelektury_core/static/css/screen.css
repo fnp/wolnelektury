@@ -18,6 +18,11 @@
     -webkit-column-width: 12em;
 }
 
+#menu-collections ul {
+    width: 18em;
+}
+
+
 #header-content, div#main-content, div#half-header-content, #footer-content {
     width: 97.5em;
     margin: auto;

@@ -23,4 +23,12 @@
 		<a href="{% url daisy_list %}" class="menu">
 			<span class='mono'>{% trans "DAISY" %}</span></a>
 	</li>
+
+	<li class="hidden-box-wrapper menu">
+		<a href="{% url catalogue %}#kolekcje" class="hidden-box-trigger menu load-menu">
+			<span class='mono'>{% trans "Collections" %}</span></a>
+		<div class="hidden-box" id="menu-collections">
+            <img src="{% static "img/indicator.gif" %}" alt="{% trans "Please wait…" %}" />
+        </div>
+	</li>
 </ul>

@@ -21,11 +21,10 @@ from django.utils.translation import ugettext as _, ugettext_lazy
 from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import JSONResponse, AjaxableFormView
-
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags, MultiQuerySet
-from catalogue.templatetags.catalogue_tags import tag_list
+from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
@@ -43,6 +42,7 @@ def catalogue(request):
         tag.count = tag.book_count
     categories = split_tags(tags)
     fragment_tags = categories.get('theme', [])
+    collections = models.Collection.objects.all()
 
     if request.is_ajax():
         render_tag_list = lambda x: render_to_string(
@@ -50,6 +50,8 @@ def catalogue(request):
         output = {'theme': render_tag_list(fragment_tags)}
         for category, tags in categories.items():
             output[category] = render_tag_list(tags)
+        output['collections'] = render_to_string(
+            'catalogue/collection_list.html', collection_list(collections))
         return JSONResponse(output)
     else:
         return render_to_response('catalogue/catalogue.html', locals(),

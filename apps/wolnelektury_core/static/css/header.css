@@ -153,6 +153,10 @@ a.menu {
     padding-top: 1.8em;
     color: #0c7076;
 }
+#menu a.hidden-box-trigger:hover {
+    border-bottom: 3px solid white;
+    margin-bottom: -3px;
+}
 a.menu span {
     font-size: 1.1em;
 }

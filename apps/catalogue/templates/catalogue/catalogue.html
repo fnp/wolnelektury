@@ -20,16 +20,19 @@
     <div class="white-box">{% tag_list categories.author %}</div>
 
     <h2 class="white-box">{% trans "Kinds" %}<a name="rodzaje"></a></h2>
-    <div class="white-box">{% tag_list categories.kind %}</div>
+    <div class="white-box" lang="pl">{% tag_list categories.kind %}</div>
 
     <h2 class="white-box">{% trans "Genres" %}<a name="gatunki"></a></h2>
-    <div class="white-box">{% tag_list categories.genre %}</div>
+    <div class="white-box" lang="pl">{% tag_list categories.genre %}</div>
 
     <h2 class="white-box">{% trans "Epochs" %}<a name="epoki"></a></h2>
-    <div class="white-box">{% tag_list categories.epoch %}</div>
+    <div class="white-box" lang="pl">{% tag_list categories.epoch %}</div>
 
     <h2 class="white-box">{% trans "Themes and topics" %}<a name="motywy"></a></h2>
-    <div class="white-box">{% tag_list fragment_tags %}</div>
+    <div class="white-box" lang="pl">{% tag_list fragment_tags %}</div>
+
+    <h2 class="white-box">{% trans "Collections" %}<a name="kolekcje"></a></h2>
+    <div class="white-box" lang="pl">{% collection_list collections %}</div>
 
     </div>
 {% endblock %}

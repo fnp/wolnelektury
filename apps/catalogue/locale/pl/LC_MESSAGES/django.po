@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-08 16:21+0100\n"
-"PO-Revision-Date: 2012-11-08 16:21+0100\n"
+"POT-Creation-Date: 2012-12-12 14:09+0100\n"
+"PO-Revision-Date: 2012-12-12 14:09+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -73,7 +73,7 @@ msgstr "Duży"
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: views.py:525
+#: views.py:528
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -84,20 +84,20 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:526
+#: views.py:529
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:528
+#: views.py:531
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:560
+#: views.py:563
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:561
+#: views.py:564
 #: templates/catalogue/book_short.html:92
 #: templates/catalogue/book_text.html:28
 #: templates/catalogue/book_wide.html:63
@@ -415,7 +415,7 @@ msgid "Table of contents"
 msgstr ""
 
 #: templates/catalogue/book_text.html:24
-#: templatetags/catalogue_tags.py:412
+#: templatetags/catalogue_tags.py:416
 #, fuzzy
 msgid "Themes"
 msgstr "motyw"
@@ -499,7 +499,7 @@ msgstr ""
 #: templates/catalogue/catalogue.html:19
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
-#: templatetags/catalogue_tags.py:408
+#: templatetags/catalogue_tags.py:412
 #, fuzzy
 msgid "Authors"
 msgstr "autor"
@@ -507,14 +507,14 @@ msgstr "autor"
 #: templates/catalogue/catalogue.html:22
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
-#: templatetags/catalogue_tags.py:410
+#: templatetags/catalogue_tags.py:414
 msgid "Kinds"
 msgstr ""
 
 #: templates/catalogue/catalogue.html:25
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
-#: templatetags/catalogue_tags.py:409
+#: templatetags/catalogue_tags.py:413
 #, fuzzy
 msgid "Genres"
 msgstr "gatunek"
@@ -522,7 +522,7 @@ msgstr "gatunek"
 #: templates/catalogue/catalogue.html:28
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
-#: templatetags/catalogue_tags.py:411
+#: templatetags/catalogue_tags.py:415
 #, fuzzy
 msgid "Epochs"
 msgstr "epoka"
@@ -530,6 +530,11 @@ msgstr "epoka"
 #: templates/catalogue/catalogue.html:31
 msgid "Themes and topics"
 msgstr ""
+
+#: templates/catalogue/catalogue.html:34
+#: templates/catalogue/menu.html:29
+msgid "Collections"
+msgstr "Kolekcje"
 
 #: templates/catalogue/daisy_list.html:6
 #: templates/catalogue/daisy_list.html:12
@@ -581,6 +586,7 @@ msgid "See full category"
 msgstr "kategoria"
 
 #: templates/catalogue/menu.html:9
+#: templates/catalogue/menu.html.py:31
 msgid "Please wait…"
 msgstr ""
 
