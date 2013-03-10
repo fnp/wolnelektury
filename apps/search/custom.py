@@ -179,7 +179,6 @@ class CustomSolrInterface(sunburnt.SolrInterface):
 
         snip = text[start:end]
         matches.sort(lambda a, b: cmp(b[0], a[0]))
-        print matches
 
         for (s, e) in matches:
             off = - start

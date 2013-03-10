@@ -134,7 +134,6 @@ class Index(SolrIndex):
                 for res in ids:
                     uids.add(res['uid'])
                 st += rows
-                #        print "Will delete %s" % ','.join([x for x in uids])
         if uids:
             self.index.delete(uids)
             return True
@@ -465,7 +464,6 @@ class Index(SolrIndex):
                                        text=u''.join(footnote),
                                        is_footnote=True)
                         self.index.add(doc)
-                        #print "@ footnote text: %s" % footnote
                         footnote = []
 
                     # handle fragments and themes.
@@ -498,7 +496,6 @@ class Index(SolrIndex):
                                        fragment_anchor=fid,
                                        text=fix_format(frag['text']),
                                        themes=frag['themes'])
-                        #print '@ FRAG %s' % frag['content']
                         self.index.add(doc)
 
                         # Collect content.
@@ -511,7 +508,6 @@ class Index(SolrIndex):
                         # in the end, add a section text.
                 doc = add_part(snippets, header_index=position,
                                header_type=header.tag, text=fix_format(content))
-                #print '@ CONTENT: %s' % fix_format(content)
 
                 self.index.add(doc)
 
@@ -881,7 +877,7 @@ class Search(SolrIndex):
                         tag = PDCounterBook.objects.get(id=doc.get('tag_id'))
                         tag.category = 'pd_book'  # make it look more lik a tag.
                     else:
-                        print "Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)
+                        print ("Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)).encode('utf-8')
                     pd_tags.append(tag)
                 else:
                     tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
