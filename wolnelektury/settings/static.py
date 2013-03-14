@@ -33,6 +33,8 @@ PIPELINE_CSS = {
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
+
+            'css/annoy.css',
         ],
         'output_filename': 'css/compressed/all.css',
     },
@@ -45,6 +47,8 @@ PIPELINE_CSS = {
     'book': {
         'source_filenames': [
             'css/master.book.css',
+
+            'css/annoy.css',
         ],
         'output_filename': 'css/compressed/book.css',
     },
@@ -80,8 +84,9 @@ PIPELINE_JS = {
             'pdcounter/pdcounter.js',
             'sponsors/js/sponsors.js',
             'player/openplayer.js',
-
             'js/search.js',
+
+            'js/annoy.js',
             ),
         'output_filename': 'js/base.min.js',
     },
@@ -100,6 +105,8 @@ PIPELINE_JS = {
             'js/jquery.highlightfade.js',
             'js/book.js',
             'player/openplayer.js',
+
+            'js/annoy.js',
         ],
         'output_filename': 'js/book.min.js',
     },

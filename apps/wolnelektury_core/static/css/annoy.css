@@ -1,0 +1,52 @@
+#annoy-on {
+    font-size: 13px;
+    line-height: 1.15em;
+
+    padding: .1em 1em;
+    background: orange;
+    z-index: 200;
+    font-family: Arial, sans-serif;
+    display: block;
+    padding: 0 1em;
+    width: 1em;
+    text-align:center;
+    border-radius: 0 0 0 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: black;
+}
+
+#annoy {
+    font-size: 13px;
+    line-height: 1.15em;
+    padding: 1em 5em 1em 0;
+    display: none;
+    background: orange;
+    font-family: Arial, sans-serif;
+    position: relative;
+    z-index: 200;
+}
+#annoy p {
+    margin: 0 0 0 10em;;
+}
+#annoy a {
+    color: #4E56C8;
+}
+
+#annoy a#annoy-off {
+    padding: .5em 1em .5em;
+    width: 1em;
+    text-align:center;
+    font-family: Arial, sans-serif;
+    display: block;
+
+    border-radius: 0 0 0 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: black;
+}
+#annoy a#annoy-off:hover {
+    cursor: pointer;
+}
