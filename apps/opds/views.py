@@ -17,7 +17,6 @@ from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 
 from search.views import Search, SearchResult
-from lucene import Term, QueryWrapperFilter, TermQuery
 import operator
 import logging
 import re
