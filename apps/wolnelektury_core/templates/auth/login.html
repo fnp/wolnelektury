@@ -7,7 +7,7 @@
 <ol>
     <div id="id_{% if form_prefix %}{{ form_prefix }}-{% endif %}__all__"></div>
     {{ form.as_ul }}
-    <li><a href="{% url account_reset_password %}">{% trans "Forgot Password?" %}</a></li>
+    <li><a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></li>
     <li><input type="submit" value="{{ submit }}"/></li>
 </ol>
 </form>

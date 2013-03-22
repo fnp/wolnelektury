@@ -8,7 +8,7 @@
 
 <h1>{% trans "or register" %}:</h1>
 
-<form action="{% url register %}" method="post" accept-charset="utf-8"
+<form action="{% url 'register' %}" method="post" accept-charset="utf-8"
 	class="cuteform hidelabels">
 {% csrf_token %}
 {% render_honeypot_field %}

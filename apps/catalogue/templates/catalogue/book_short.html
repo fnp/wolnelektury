@@ -26,12 +26,12 @@
 
 <div class="star {% if not request.user|likes:book %}un{% endif %}like">
     <div class="if-like" >
-        <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets' class='ajaxable' href='{% url social_book_sets book.slug %}'>
+        <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets' class='ajaxable' href='{% url "social_book_sets" book.slug %}'>
             ★
         </a>
     </div>
     <div class="if-unlike">
-        <form id="social-like-book-{{ book.slug }}" data-callback='social-like-book' method='post' class='ajax-form' action='{% url social_like_book book.slug %}'>
+        <form id="social-like-book-{{ book.slug }}" data-callback='social-like-book' method='post' class='ajax-form' action='{% url "social_like_book" book.slug %}'>
             {% csrf_token %}
             <button type='submit'>☆</button>
         </form>
@@ -44,7 +44,7 @@
                 {% for name, slug in related.tags.author %}
                     <a href="{% tag_url 'author' slug %}">{{ name }}</a>{% if not forloop.last %},
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
-                    <a href="{% url book_detail slug %}">{{ title }}</a>{% endfor %}
+                    <a href="{% url 'book_detail' slug %}">{{ title }}</a>{% endfor %}
             </div>
             <div class="title">
 				{% if main_link %}<a href="{{ main_link }}">{% endif %}
@@ -85,7 +85,7 @@
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
-            <a href="{% url book_text book.slug %}" class="mono downarrow">{% trans "Read online" %}</a>
+            <a href="{% url 'book_text' book.slug %}" class="mono downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
         <li class="book-box-download hoverget">
@@ -110,7 +110,7 @@
         </li>
         <li class="book-box-audiobook">
         {% if related.media.mp3 or related.media.ogg %}
-            <a href="{% url book_player book.slug %}" class="open-player mono downarrow">{% trans "Listen" %}</a>
+            <a href="{% url 'book_player' book.slug %}" class="open-player mono downarrow">{% trans "Listen" %}</a>
         {% endif %}
         </li>
     </ul>

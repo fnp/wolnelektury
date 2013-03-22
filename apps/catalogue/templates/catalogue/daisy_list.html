@@ -6,7 +6,7 @@
 {% block titleextra %}{% trans "Listing of all DAISY files" %}{% endblock %}
 
 {% block extrahead %}
-    <link rel="alternate" type="application/atom+xml" title="{% trans "Latest DAISY audiobooks" %}" href="{% url audiobook_feed 'daisy' %}" />
+    <link rel="alternate" type="application/atom+xml" title="{% trans "Latest DAISY audiobooks" %}" href="{% url 'audiobook_feed' 'daisy' %}" />
 {% endblock %}
 
 {% block book_list_header %}{% trans "Listing of all DAISY files" %}{% endblock %}

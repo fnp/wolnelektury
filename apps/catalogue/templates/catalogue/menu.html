@@ -3,7 +3,7 @@
 <ul id="menu">
     {% for category, name, hash in categories %}
 	<li class="hidden-box-wrapper menu">
-		<a href="{% url catalogue %}#{{ hash }}" class="hidden-box-trigger menu load-menu">
+		<a href="{% url 'catalogue' %}#{{ hash }}" class="hidden-box-trigger menu load-menu">
 			<span class='mono'>{{ name }}</span></a>
 		<div class="hidden-box" id="menu-{{ category }}">
             <img src="{% static "img/indicator.gif" %}" alt="{% trans "Please wait…" %}" />
@@ -12,7 +12,7 @@
     {% endfor %}
 
 	<li class="hidden-box-wrapper menu">
-		<a href="{% url catalogue %}#kolekcje" class="hidden-box-trigger menu load-menu">
+		<a href="{% url 'catalogue' %}#kolekcje" class="hidden-box-trigger menu load-menu">
 			<span class='mono'>{% trans "Collections" %}</span></a>
 		<div class="hidden-box" id="menu-collections">
             <img src="{% static "img/indicator.gif" %}" alt="{% trans "Please wait…" %}" />
@@ -20,15 +20,15 @@
 	</li>
 
 	<li class="menu">
-		<a href="{% url book_list %}" class="menu">
+		<a href="{% url 'book_list' %}" class="menu">
 			<span class='mono'>{% trans "All books" %}</span></a>
 	</li>
 	<li class="menu">
-		<a href="{% url audiobook_list %}" class="menu">
+		<a href="{% url 'audiobook_list' %}" class="menu">
 			<span class='mono'>{% trans "Audiobooks" %}</span></a>
 	</li>
 	<li class="menu">
-		<a href="{% url daisy_list %}" class="menu">
+		<a href="{% url 'daisy_list' %}" class="menu">
 			<span class='mono'>{% trans "DAISY" %}</span></a>
 	</li>
 </ul>
