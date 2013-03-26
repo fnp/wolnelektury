@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load time_tags %}
 
 {% block titleextra %}{{ author.name }}{% endblock %}
 
@@ -40,7 +41,7 @@
             {% else %}
                 <div>
                     <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>
-                    <div id='countdown' data-year='{{ pd_counter }}'></div>
+                    <div class='countdown' data-until='{{ pd_counter|local_to_utc|utc_for_js }}'></div>
                     <p>{% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
                 </div>
             {% endif %}

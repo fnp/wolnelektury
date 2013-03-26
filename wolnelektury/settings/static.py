@@ -30,6 +30,7 @@ PIPELINE_CSS = {
             'css/catalogue.css',
             'sponsors/css/sponsors.css',
             'css/auth.css',
+            'funding/funding.scss',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
@@ -120,3 +121,7 @@ PIPELINE_JS = {
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 PIPELINE_CSS_COMPRESSOR = None
 PIPELINE_JS_COMPRESSOR = None
+
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.sass.SASSCompiler',
+)

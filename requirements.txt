@@ -1,9 +1,10 @@
+-i http://pypi.nowoczesnapolska.org.pl/simple/ 
 --find-links=http://www.pythonware.com/products/pil/
 
 # django
 Django>=1.4,<1.5
 South>=0.7 # migrations for django
-django-pipeline>=1.2
+django-pipeline>=1.2.24,<1.3
 django-pagination>=1.0
 django-maintenancemode>=0.10
 django-piston==0.2.2
@@ -13,6 +14,7 @@ django-picklefield
 #django-allauth>=0.4,<0.5
 # version of django-allauth 0.4 with install script fixed
 -e git+git://github.com/pennersr/django-allauth.git@3a03db9b2ecca370af228df367bd8fa52afea5ea#egg=django-allauth
+pytz
 
 django-honeypot
 django-uni-form

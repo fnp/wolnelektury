@@ -91,10 +91,10 @@ def logout_then_redirect(request):
 
 
 def clock(request):
-    """ Provides server time for jquery.countdown,
+    """ Provides server UTC time for jquery.countdown,
     in a format suitable for Date.parse()
     """
-    return HttpResponse(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
+    return HttpResponse(datetime.utcnow().strftime('%Y/%m/%d %H:%M:%S UTC'))
 
 
 def publish_plan(request):

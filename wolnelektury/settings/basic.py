@@ -30,6 +30,7 @@ SOLR_TEST = "http://localhost:8983/solr/wl_test/"
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
 TIME_ZONE = 'Europe/Warsaw'
+USE_TZ = True
 
 SITE_ID = 1
 

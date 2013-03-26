@@ -1,0 +1,17 @@
+.standalone-funding {
+  border: 1px solid black; }
+
+.funding {
+  font-size: 1.5em;
+  padding: 0;
+  padding: .5em 1em;
+  background-image: url(/static/img/green-pixel.png);
+  background-repeat: repeat-y; }
+  .funding a {
+    color: black; }
+
+.funding-plus {
+  background: rgba(13, 126, 133, 0.2); }
+
+.funding-minus {
+  background: rgba(255, 0, 0, 0.2); }

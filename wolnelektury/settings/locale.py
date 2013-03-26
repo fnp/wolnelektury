@@ -5,6 +5,7 @@ from settings.paths import PROJECT_DIR
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
+USE_L10N = True
 
 LOCALE_PATHS = [
     path.join(PROJECT_DIR, 'locale-contrib')

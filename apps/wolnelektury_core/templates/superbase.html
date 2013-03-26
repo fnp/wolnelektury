@@ -2,7 +2,7 @@
 <html lang="{{ LANGUAGE_CODE }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 	{% load cache compressed i18n %}
 	{% load static from staticfiles %}
-    {% load catalogue_tags reporting_stats sponsor_tags %}
+    {% load catalogue_tags funding_tags reporting_stats sponsor_tags %}
     <head>
         <meta charset="utf-8">
         <meta name="application-name" content="Wolne Lektury" />
@@ -121,9 +121,8 @@
         </div>
 
 
-
         <div id="main-content">
-
+            {% funding link=1 %}
             <div id="nav-line">
                 {% catalogue_menu %}
 

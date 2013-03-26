@@ -25,6 +25,9 @@
     color: #989898;
 }
 
+#logo a, #logo img {
+    display: block;
+}
 
 #tagline {
 	margin-left: 1.5em;

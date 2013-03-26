@@ -1,3 +1,5 @@
+-i http://pypi.nowoczesnapolska.org.pl/simple/ 
+
 django-debug-toolbar
 polib
 BabelDjango

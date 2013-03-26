@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load funding_tags %}
+
+{% block titleextra %}Funding{% endblock %}
+
+{% block body %}
+<h1>Funding!</h1>
+
+<ul class="plain">
+{% for funding in object_list %}
+    <li class="white-box normal-text" style="margin-bottom:1em;">
+        <p>{{ funding.start }} – {{ funding.end }}</p>
+        {% funding funding link=1 add_class="standalone-funding" %}
+        {% if funding.state == "win" %}
+            {% if funding.book_url %}
+                <p><a href="{{ funding.book_url }}">Zobacz opublikowaną książkę</a></p>
+            {% else %}
+                <p>Termin publikacji: {{ funding.term }}</p>
+            {% endif %}
+        {% elif funding.state == "lose" %}
+            <p>Cel finansowania nie został osiągnięty. Zgromadzone środki
+            zostały przekazane na Fundusz Wolnych Lektur.</p>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

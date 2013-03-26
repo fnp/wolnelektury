@@ -1,0 +1,23 @@
+.standalone-funding {
+    border: 1px solid black;
+}
+
+.funding {
+    font-size: 1.5em;
+    padding: 0;
+    padding: .5em 1em;
+    background-image: url(/static/img/green-pixel.png);
+    background-repeat: repeat-y;
+
+    a {
+        color: black;
+    }
+}
+
+.funding-plus {
+    background: fade-out(#0D7E85, .8);
+}
+
+.funding-minus {
+    background: fade-out(red, .8);
+}

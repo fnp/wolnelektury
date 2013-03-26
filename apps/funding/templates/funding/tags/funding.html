@@ -1,0 +1,11 @@
+{% load time_tags %}
+<div
+    class="funding {{ add_class }}"
+    style="background-size: {{ percentage|stringformat:'.2f' }}% 1px;">
+    {% if link %}<a href="{{ offer.get_absolute_url }}">{% endif %}
+    {{ offer }};
+    zebraliśmy {{ offer.sum }} z {{ offer.target }}{% if offer.state = 'running' %};
+    do końca: <strong class="countdown inline" data-until='{{ offer.end|local_to_utc|utc_for_js }}'></strong>
+    {% endif %}
+    {% if link %}</a>{% endif %}
+</div>

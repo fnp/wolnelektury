@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block titleextra %}Fundusz Wolnych Lektur{% endblock %}
+
+{% block body %}
+
+<h1>Fundusz Wolnych Lektur</h1>
+<p>Suma: {{ amount }}</p>
+
+<ul class="plain">
+    {% for entry in log %}
+    <li class="white-box normal-text funding-plus">
+        {{ entry.end }} +{{ entry.sum }}
+        <span style="float:right">Częściowa zbiórka na: {{ entry }}</span>
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

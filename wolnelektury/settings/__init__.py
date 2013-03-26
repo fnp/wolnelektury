@@ -66,6 +66,7 @@ INSTALLED_APPS_OUR = [
     'waiter',
     'search',
     'oai',
+    'funding',
     ]
 
 INSTALLED_APPS_CONTRIB = [

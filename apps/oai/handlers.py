@@ -12,6 +12,7 @@ from lxml.etree import ElementTree
 from django.db.models import Q
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.utils import timezone
 
 
 WL_DC_READER_XPATH = '(.|*)/rdf:RDF/rdf:Description/%s/text()' 
@@ -60,7 +61,7 @@ class Catalogue(common.ResumptionOAIPMH):
         self.oai_id = "oai:" + Site.objects.get_current().domain + ":%s"
 
         # earliest change
-        year_zero = datetime(1990, 1, 1, 0, 0, 0)
+        year_zero = timezone.make_aware(datetime(1990, 1, 1, 0, 0, 0), timezone.utc)
 
         try:
             earliest_change = \

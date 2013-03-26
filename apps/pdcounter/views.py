@@ -2,8 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-#from datetime import datetime
-
+from datetime import datetime
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from pdcounter import models
@@ -12,7 +11,7 @@ from suggest.forms import PublishingSuggestForm
 
 def book_stub_detail(request, slug):
     book = get_object_or_404(models.BookStub, slug=slug)
-    pd_counter = book.pd
+    pd_counter = datetime(book.pd, 1, 1)
 
     form = PublishingSuggestForm(
             initial={"books": u"%s — %s, \n" % (book.author, book.title)})
@@ -23,7 +22,7 @@ def book_stub_detail(request, slug):
 
 def author_detail(request, slug):
     author = get_object_or_404(models.Author, slug=slug)
-    pd_counter = author.goes_to_pd()
+    pd_counter = datetime(author.goes_to_pd(), 1, 1)
 
     form = PublishingSuggestForm(initial={"books": author.name + ", \n"})
 

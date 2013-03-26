@@ -1,8 +1,7 @@
 (function($) {
     $(function() {
 
-
-        $('#countdown').each(function() {
+        $('.countdown').each(function() {
             var $this = $(this);
 
             var serverTime = function() {
@@ -24,11 +23,17 @@
                 $.countdown.setDefaults($.countdown.regional['']);
             }
 
-            var d = new Date($this.attr('data-year'), 0, 1);
-            function re() {location.reload()};
-            $this.countdown({until: d, format: 'ydHMS', serverSync: serverTime,
-                onExpiry: re, alwaysExpire: true});
-
+            var options = {
+                until: new Date($this.attr('data-until')),
+                format: 'ydHMS',
+                serverSync: serverTime,
+                onExpiry: function(){location.reload()}, // TODO: no reload
+            };
+            if ($this.hasClass('inline')) {
+                options.layout = '{dn} {dl} {hnn}{sep}{mnn}{sep}{snn}';
+            }
+            
+            $this.countdown(options);
         });
 
 
