@@ -1,21 +1,24 @@
 # Create your views here.
-from django.views.generic import TemplateView
-from .models import Offer
+from django.core.urlresolvers import reverse
+from django.shortcuts import redirect, get_object_or_404
+from django.views.generic import TemplateView, FormView, DetailView
+from .forms import DummyForm
+from .models import Offer, Spent
 
 
 def mix(*streams):
     substreams = []
-    for stream, read_date in streams:
+    for stream, read_date, tag in streams:
         iterstream = iter(stream)
         try:
             item = next(iterstream)
         except StopIteration:
             pass
         else:
-            substreams.append([read_date(item), item, iterstream, read_date])
+            substreams.append([read_date(item), item, iterstream, read_date, tag])
     while substreams:
         i, substream = max(enumerate(substreams), key=lambda x: x[0])
-        yield substream[1]
+        yield substream[4], substream[1]
         try:
             item = next(substream[2])
         except StopIteration:
@@ -28,12 +31,56 @@ class WLFundView(TemplateView):
     template_name = "funding/wlfund.html"
 
     def get_context_data(self):
+        def add_total(total, it):
+            for tag, e in it:
+                e.total = total
+                if tag == 'spent':
+                    total += e.amount
+                else:
+                    total -= e.sum()
+                yield tag, e
+
         ctx = super(WLFundView, self).get_context_data()
         offers = [o for o in Offer.objects.all() if o.state() == 'lose' and o.sum()]
-        amount = sum(o.sum() for o in offers)
+        amount = sum(o.sum() for o in offers) - sum(o.amount for o in Spent.objects.all())
         print offers
 
-        #offers = (o for o in Offer.objects.all() if o.state() == 'lose' and o.sum())
         ctx['amount'] = amount
-        ctx['log'] = mix((offers, lambda x: x.end))
+        ctx['log'] = add_total(amount, mix(
+            (offers, lambda x: x.end, 'offer'),
+            (Spent.objects.all(), lambda x: x.timestamp, 'spent'),
+        ))
+        return ctx
+
+
+class OfferDetailView(FormView):
+    form_class = DummyForm
+    template_name = "funding/offer_detail.html"
+
+    def dispatch(self, request, slug):
+        self.object = get_object_or_404(Offer.public(), slug=slug)
+        return super(OfferDetailView, self).dispatch(request, slug)
+
+    def get_form(self, form_class):
+        if self.request.method == 'POST':
+            return form_class(self.object, self.request.POST)
+        else:
+            return form_class(self.object)
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(OfferDetailView, self).get_context_data(*args, **kwargs)
+        ctx['object'] = self.object
+        return ctx
+
+    def form_valid(self, form):
+        form.save()
+        return redirect(reverse("funding_thanks"))
+
+
+class ThanksView(TemplateView):
+    template_name = "funding/thanks.html"
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(ThanksView, self).get_context_data(*args, **kwargs)
+        ctx['object'] = Offer.current()
         return ctx

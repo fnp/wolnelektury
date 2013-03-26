@@ -5,6 +5,7 @@ dev.sqlite
 *~
 *.orig
 *.log
+.sass-cache
 
 # Compress output
 /static

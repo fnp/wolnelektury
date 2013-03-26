@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+{% load url from future %}
 {% load funding_tags %}
+{% load uni_form_tags %}
 
 {% block titleextra %}{{ object }}{% endblock %}
 
@@ -8,24 +10,28 @@
 <h1>{{ object }}</h1>
 <div class="white-box normal-text">
 
-{% funding object add_class="standalone-funding" %}
+{% funding object %}
 
 {% if object.state == 'running' %}
 
 
 <h3>Wpłać:</h3>
-<form>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|as_uni_form }}
+<!--
     {% for perk in object.get_perks %}
         <br/><label><input type="radio" name="amount" value="{{ perk.price }}" /> {{perk.price}} zł: {{perk.name}}</label>
     {% endfor %}
     <br/><label><input type="radio" name="amount" value="" /> Dowolną kwotę:</label>
         <input name="amount" size="5" /> zł
     </label>
-
-
+-->
     <br/><button type="submit">Wpłać!</button>
 </form>
 {% endif %}
+
+<p><a href="{% url 'funding' %}">Zobacz wszystkie zbiórki.</a></p>
 </div>
 
 

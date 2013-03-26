@@ -6,13 +6,14 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _, ugettext as __
 from datetime import date, datetime
+from catalogue.models import Book
 
 
 class Offer(models.Model):
     author = models.CharField(_('author'), max_length=255)
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'))
-    book_url = models.URLField(_('book URL'), blank=True)
+    book = models.ForeignKey(Book, null=True, blank=True)
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
     target = models.DecimalField(_('target'), decimal_places=2, max_digits=10)
     start = models.DateField(_('start'))
@@ -100,3 +101,12 @@ class Funding(models.Model):
 
     def __unicode__(self):
         return "%s payed %s for %s" % (self.name, self.amount, self.offer)
+
+
+class Spent(models.Model):
+    amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
+    timestamp = models.DateField(_('when'))
+    book = models.ForeignKey(Book)
+
+    def __unicode__(self):
+        return u"Spent: %s" % unicode(self.book)

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 {% load funding_tags %}
 
 {% block titleextra %}Funding{% endblock %}
@@ -19,7 +20,7 @@
             {% endif %}
         {% elif funding.state == "lose" %}
             <p>Cel finansowania nie został osiągnięty. Zgromadzone środki
-            zostały przekazane na Fundusz Wolnych Lektur.</p>
+            zostały przekazane na <a href="{% url 'funding_wlfund' %}">Fundusz Wolnych Lektur</a>.</p>
         {% endif %}
     </li>
 {% endfor %}

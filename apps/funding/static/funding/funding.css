@@ -1,17 +1,27 @@
-.standalone-funding {
-  border: 1px solid black; }
-
 .funding {
   font-size: 1.5em;
   padding: 0;
   padding: .5em 1em;
   background-image: url(/static/img/green-pixel.png);
-  background-repeat: repeat-y; }
+  background-repeat: repeat-y;
+  background-color: rgba(13, 126, 133, 0.2); }
   .funding a {
+    display: block;
     color: black; }
 
-.funding-plus {
-  background: rgba(13, 126, 133, 0.2); }
-
-.funding-minus {
-  background: rgba(255, 0, 0, 0.2); }
+.wlfund {
+  width: 100%;
+  border-collapse: collapse; }
+  .wlfund td {
+    padding: 0 0 1em 0;
+    text-align: center; }
+  .wlfund td:last-child {
+    text-align: right; }
+  .wlfund td div {
+    padding: 1em;
+    box-shadow: 0 2px 0 #DDDDDD; }
+  .wlfund .funding-plus td div {
+    background: rgba(13, 126, 133, 0.2); }
+  .wlfund .funding-minus td div {
+    bbackground: rgba(255, 0, 0, 0.2);
+    background: white; }
