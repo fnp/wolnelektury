@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-27 17:10+0100\n"
-"PO-Revision-Date: 2013-03-27 17:10+0100\n"
+"POT-Creation-Date: 2013-03-27 17:36+0100\n"
+"PO-Revision-Date: 2013-03-27 17:36+0100\n"
 "Last-Translator: Radek Czajka <radek.czajka@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -198,8 +198,8 @@ msgid "Book"
 msgstr "Książka"
 
 #: templates/funding/wlfund.html:34
-msgid "Money from partial fundraiser"
-msgstr "Pieniądze z częściowej zbiórki"
+msgid "Excessive money from fundraiser"
+msgstr "Pieniądze pozostałe ze zbiórki"
 
 #: templates/funding/tags/funding.html:10
 msgid "Support a book:"

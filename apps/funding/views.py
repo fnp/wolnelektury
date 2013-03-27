@@ -21,7 +21,7 @@ def mix(*streams):
         else:
             substreams.append([read_date(item), item, iterstream, read_date, tag])
     while substreams:
-        i, substream = max(enumerate(substreams), key=lambda x: x[0])
+        i, substream = max(enumerate(substreams), key=lambda x: x[1][0])
         yield substream[4], substream[1]
         try:
             item = next(substream[2])
@@ -41,12 +41,21 @@ class WLFundView(TemplateView):
                 if tag == 'spent':
                     total += e.amount
                 else:
-                    total -= e.sum()
+                    total -= e.wlfund
                 yield tag, e
 
         ctx = super(WLFundView, self).get_context_data()
-        offers = [o for o in Offer.objects.all() if o.state() == 'lose' and o.sum()]
-        amount = sum(o.sum() for o in offers) - sum(o.amount for o in Spent.objects.all())
+        offers = []
+        for o in Offer.objects.all():
+            if o.state() == 'lose':
+                o.wlfund = o.sum()
+                if o.wlfund > 0:
+                    offers.append(o)
+            elif o.state() == 'win':
+                o.wlfund = o.sum() - o.target
+                if o.wlfund > 0:
+                    offers.append(o)
+        amount = sum(o.wlfund for o in offers) - sum(o.amount for o in Spent.objects.all())
         print offers
 
         ctx['amount'] = amount

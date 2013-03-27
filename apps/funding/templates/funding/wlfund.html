@@ -29,9 +29,9 @@
     {% else %}
         <tr class="funding-plus">
             <td><div>{{ entry.end }}</div></td>
-            <td><div>+{{ entry.sum }} zł</div></td>
+            <td><div>+{{ entry.wlfund }} zł</div></td>
             <td><div>{{ entry.total }} zł</div></td>
-            <td><div>{% trans "Money from partial fundraiser" %}:
+            <td><div>{% trans "Excessive money from fundraiser" %}:
                 <a href="{{ entry.get_absolute_url }}">
                 {{ entry }}</a></div></td>
         </tr>
