@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load funding_tags %}
 
-{% block titleextra %}Dziękujemy!{% endblock %}
+{% block titleextra %}{% trans "Thank you!" %}{% endblock %}
 
 {% block body %}
 
-<h1>Dziękujemy!</h1>
+<h1>{% trans "Thank you!" %}</h1>
 <div class="white-box normal-text">
 
-Dziękujemy za wsparcie!
+{% trans "Thank you for your support!" %}
 
-<p><a href="{{ object.get_absolute_url }}">Wróć do strony aktualnej zbiórki.</a></p>
+<p><a href="{{ object.get_absolute_url }}">{% trans "Go back to the current fundraiser." %}</a></p>
 </div>
 
 

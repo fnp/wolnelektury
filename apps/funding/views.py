@@ -1,4 +1,8 @@
-# Create your views here.
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import TemplateView, FormView, DetailView
@@ -65,7 +69,7 @@ class OfferDetailView(FormView):
         if self.request.method == 'POST':
             return form_class(self.object, self.request.POST)
         else:
-            return form_class(self.object)
+            return form_class(self.object, initial={'amount': settings.FUNDING_DEFAULT})
 
     def get_context_data(self, *args, **kwargs):
         ctx = super(OfferDetailView, self).get_context_data(*args, **kwargs)

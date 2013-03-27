@@ -1,33 +1,37 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block titleextra %}Fundusz Wolnych Lektur{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury Fund" %}{% endblock %}
 
 {% block body %}
 
-<h1>Fundusz Wolnych Lektur</h1>
+<h1>{% trans "Wolne Lektury Fund" %}</h1>
 
 
 <table class="normal-text wlfund">
 
-    <tr class=""><td><div>Bilans:</div></td><td><div>{{ amount }}</div></td><td colspan="2"><div>&nbsp;</div></td></tr>
-
-
+    <tr>
+        <td><div>{% trans "Balance" %}:</div></td>
+        <td><div>&nbsp;</div></td>
+        <td><div>{{ amount }} zł</div></td>
+        <td><div>&nbsp;</div></td>
+    </tr>
 
     {% for tag, entry in log %}
     {% if tag == 'spent' %}
         <tr class="funding-minus">
             <td><div>{{ entry.timestamp }}</div></td>
-            <td><div>{{ entry.total }}</div></td>
-            <td><div>-{{ entry.amount }}&nbsp;zł</div></td>
-            <td><div>Książka: <a href="{{ entry.book.get_absolute_url }}">
+            <td><div>-{{ entry.amount }} zł</div></td>
+            <td><div>{{ entry.total }} zł</div></td>
+            <td><div>{% trans "Book" %}: <a href="{{ entry.book.get_absolute_url }}">
                 {{ entry.book }}</a></div></td>
         </tr>
     {% else %}
         <tr class="funding-plus">
             <td><div>{{ entry.end }}</div></td>
-            <td><div>{{ entry.total }}</div></td>
-            <td><div>+{{ entry.sum }}&nbsp;zł</div></td>
-            <td><div>Pieniądze z częściowej zbiórki: 
+            <td><div>+{{ entry.sum }} zł</div></td>
+            <td><div>{{ entry.total }} zł</div></td>
+            <td><div>{% trans "Money from partial fundraiser" %}:
                 <a href="{{ entry.get_absolute_url }}">
                 {{ entry }}</a></div></td>
         </tr>

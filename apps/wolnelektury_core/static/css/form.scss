@@ -1,0 +1,26 @@
+form table {
+    th {
+        vertical-align: top;
+        text-align: left;
+        font-weight: normal;
+    }
+    td {
+        padding-bottom: 1em;
+    }
+
+    .required th:after {
+        content: " *";
+    }
+
+    .errorlist {
+        color: red;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .helptext {
+        color: #888;
+        font-size: .9em;
+        font-style: italic;
+    }
+}

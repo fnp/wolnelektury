@@ -1,11 +1,23 @@
+{% load i18n %}
 {% load time_tags %}
-<div
+{% if offer %}
+<a
     class="funding {{ add_class }}"
-    style="background-size: {{ percentage|stringformat:'.2f' }}% 1px;">
-    {% if link %}<a href="{{ offer.get_absolute_url }}">{% endif %}
-    {{ offer }};
-    zebraliśmy {{ offer.sum }} z {{ offer.target }}{% if offer.state = 'running' %};
-    do końca: <strong class="countdown inline" data-until='{{ offer.end|local_to_utc|utc_for_js }}'></strong>
+    style="background-size: {{ percentage|stringformat:'.2f' }}% 1px;"
+    {% if link %}href="{{ offer.get_absolute_url }}"{% endif %}
+    >
+    {% if is_current %}
+        {% trans "Support a book:" %}
     {% endif %}
-    {% if link %}</a>{% endif %}
-</div>
+    <em>{{ offer }}</em>
+    <span style="float:right">
+    {% trans "collected" %}: <em>{{ offer.sum }} / {{ offer.target }} zł</em>
+    {% if is_current %}
+        <span style="margin-left: 2em;">{% trans "until fundraiser end" %}:
+            <strong class="countdown inline" data-until='{{ offer.end|local_to_utc|utc_for_js }}'></strong>
+        </span>
+    {% endif %}
+    </span>
+    <div style="clear:both"></div>
+</a>
+{% endif %}

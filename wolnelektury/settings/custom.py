@@ -16,3 +16,5 @@ CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
 # set to 'new' or 'old' to skip time-consuming test
 # for TeX morefloats library version
 LIBRARIAN_PDF_MOREFLOATS = None
+
+FUNDING_DEFAULT = 20

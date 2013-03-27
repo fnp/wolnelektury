@@ -1,0 +1,35 @@
+{% load url from future %}
+{% load i18n %}
+{% if state == "running" %}
+    <p class="normal-text">
+        {% blocktrans with due=offer.due end=offer.end %}If the target is met
+        by {{ end }}, this book will be published by {{ due }}.{% endblocktrans %}
+    </p>
+    <p class="normal-text">
+        {% url 'funding_wlfund' as url %}
+        {% blocktrans %}Any excessive money will be transfered to the
+        <a href="{{ url }}">Wolne Lektury Fund</a>.{% endblocktrans %}
+    </p>
+{% elif state == "win" %}
+    {% if offer.book %}
+        <p class="normal-text">{% trans "See the published book:" %}
+            <a href="{{ offer.book.get_absolute_url }}">{{ offer.book }}</a>.</p>
+    {% else %}
+            <p class="normal-text">{% trans "Funding target has been met!" %}</p>
+        <p class="normal-text">{% trans "The book will be published by:" %} {{ offer.due }}.
+        {% if offer.redakcja_url %}
+            {% with url=offer.redakcja_url %}
+            {% blocktrans %}You can follow the work on the <a href="{{ url }}">Editorial Platform</a>.{% endblocktrans %}
+            {% endwith %}
+        {% endif %}
+        </p>
+    {% endif %}
+{% elif state == "lose" %}
+    <p class="normal-text">{% trans "Funding target has not been met." %}
+    {% if offer.sum %}
+        {% url 'funding_wlfund' as url %}
+        {% blocktrans %}Collected funds have been transfered to the
+        <a href="{{ url }}">Wolne Lektury Fund</a>.{% endblocktrans %}
+    {% endif %}
+    </p>
+{% endif %}

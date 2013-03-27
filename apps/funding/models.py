@@ -13,11 +13,14 @@ class Offer(models.Model):
     author = models.CharField(_('author'), max_length=255)
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'))
-    book = models.ForeignKey(Book, null=True, blank=True)
+    book = models.ForeignKey(Book, null=True, blank=True,
+        help_text=_('Published book.'))
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
     target = models.DecimalField(_('target'), decimal_places=2, max_digits=10)
     start = models.DateField(_('start'))
     end = models.DateField(_('end'))
+    due = models.DateField(_('due'),
+        help_text=_('When will it be published if the money is raised.'))
 
     class Meta:
         verbose_name = _('offer')
@@ -29,6 +32,9 @@ class Offer(models.Model):
 
     def get_absolute_url(self):
         return reverse('funding_offer', args=[self.slug])
+
+    def is_current(self):
+        return self.start <= date.today() <= self.end
 
     @classmethod
     def current(cls):
@@ -52,9 +58,10 @@ class Offer(models.Model):
             perks = perks.filter(price__lte=amount)
         return perks
 
-    def fund(self, name, email, amount):
+    def fund(self, name, email, amount, anonymous=False):
         funding = self.funding_set.create(
             name=name, email=email, amount=amount,
+            anonymous=anonymous,
             payed_at=datetime.now())
         funding.perks = self.get_perks(amount)
         return funding
@@ -91,8 +98,9 @@ class Funding(models.Model):
     name = models.CharField(_('name'), max_length=127)
     email = models.EmailField(_('email'))
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
-    payed_at = models.DateTimeField(_('payed_at'))
+    payed_at = models.DateTimeField(_('payed at'))
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
+    anonymous = models.BooleanField(_('anonymous'))
 
     class Meta:
         verbose_name = _('funding')
@@ -107,6 +115,11 @@ class Spent(models.Model):
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     timestamp = models.DateField(_('when'))
     book = models.ForeignKey(Book)
+
+    class Meta:
+        verbose_name = _('money spent on a book')
+        verbose_name_plural = _('money spent on books')
+        ordering = ['-timestamp']
 
     def __unicode__(self):
         return u"Spent: %s" % unicode(self.book)

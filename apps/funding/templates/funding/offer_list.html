@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 {% load url from future %}
+{% load i18n %}
 {% load funding_tags %}
 
-{% block titleextra %}Funding{% endblock %}
+{% block titleextra %}{% trans "Support Wolne Lektury" %}{% endblock %}
 
 {% block body %}
-<h1>Funding!</h1>
+<h1>{% trans "Support Wolne Lektury" %}</h1>
 
 <ul class="plain">
 {% for funding in object_list %}
-    <li class="white-box normal-text" style="margin-bottom:1em;">
-        <p>{{ funding.start }} – {{ funding.end }}</p>
-        {% funding funding link=1 add_class="standalone-funding" %}
-        {% if funding.state == "win" %}
-            {% if funding.book_url %}
-                <p><a href="{{ funding.book_url }}">Zobacz opublikowaną książkę</a></p>
-            {% else %}
-                <p>Termin publikacji: {{ funding.term }}</p>
-            {% endif %}
-        {% elif funding.state == "lose" %}
-            <p>Cel finansowania nie został osiągnięty. Zgromadzone środki
-            zostały przekazane na <a href="{% url 'funding_wlfund' %}">Fundusz Wolnych Lektur</a>.</p>
+    <li class="white-box funding-{% if funding.is_current %}current{% else %}stale{% endif %}">
+        <p class="normal-text">{{ funding.start }} – {{ funding.end }}
+        {% if not funding.is_current %}
+            ({% trans "funding closed" %})
         {% endif %}
+        </p>
+        {% funding funding link=1 %}
+        {% offer_detail_head funding %}
     </li>
 {% endfor %}
 </ul>

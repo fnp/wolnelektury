@@ -1,15 +1,12 @@
-.funding {
+a.funding {
     font-size: 1.5em;
-    padding: 0;
     padding: .5em 1em;
+    display: block;
+    color: black;
+
     background-image: url(/static/img/green-pixel.png);
     background-repeat: repeat-y;
     background-color: fade-out(#0D7E85, .8);
-
-    a {
-        display: block;
-        color: black;
-    }
 }
 
 .wlfund {
@@ -37,5 +34,15 @@
     .funding-minus td div {
         bbackground: fade-out(red, .8);
         background: white;
+    }
+}
+
+
+.funding-current {
+    margin-bottom: 3em;
+}
+.funding-stale {
+    .funding {
+        opacity: .5;
     }
 }

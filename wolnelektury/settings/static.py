@@ -31,6 +31,7 @@ PIPELINE_CSS = {
             'sponsors/css/sponsors.css',
             'css/auth.css',
             'funding/funding.scss',
+            'css/form.scss',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
@@ -123,5 +124,7 @@ PIPELINE_CSS_COMPRESSOR = None
 PIPELINE_JS_COMPRESSOR = None
 
 PIPELINE_COMPILERS = (
-    'pipeline.compilers.sass.SASSCompiler',
+    'pyscss_compiler.PySCSSCompiler',
 )
+PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
+PIPELINE_PYSCSS_ARGUMENTS = ''
