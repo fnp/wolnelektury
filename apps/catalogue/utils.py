@@ -45,7 +45,7 @@ def split_tags(tags):
 
 
 def get_dynamic_path(media, filename, ext=None, maxlen=100):
-    from slughifi import slughifi
+    from fnpdjango.utils.text.slughifi import slughifi
 
     # how to put related book's slug here?
     if not ext:

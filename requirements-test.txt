@@ -1,3 +1,5 @@
+-i http://pypi.nowoczesnapolska.org.pl/simple/ 
+
 nose>=0.11
 django-nose
 nosexcover
