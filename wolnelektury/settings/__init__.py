@@ -2,14 +2,14 @@
 # Django settings for wolnelektury project.
 from os import path
 
-from settings.basic import *
-from settings.auth import *
-from settings.cache import *
-from settings.celery import *
-from settings.contrib import *
-from settings.custom import *
-from settings.locale import *
-from settings.static import *
+from .basic import *
+from .auth import *
+from .cache import *
+from .celery import *
+from .contrib import *
+from .custom import *
+from .locale import *
+from .static import *
 
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -107,7 +107,6 @@ INSTALLED_APPS = INSTALLED_APPS_OUR + INSTALLED_APPS_CONTRIB
 
 # Load localsettings, if they exist
 try:
-    from localsettings import *
+    from wolnelektury.localsettings import *
 except ImportError:
     pass
-
