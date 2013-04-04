@@ -69,9 +69,12 @@
 
     <div class="infopages-box">
         <h2><span class='mono'>{% trans "Information" %}</span></h2>
+        <ul>
+            <li><a href="http://nowoczesnapolska.org.pl/prywatnosc/">{% trans "Privacy policy" %}</a></li>
         {% cache 60 infopages-on-main LANGUAGE_CODE %}
             {% infopages_on_main %}
         {% endcache %}
+        </ul>
 
         <div class="social-links">
             <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"

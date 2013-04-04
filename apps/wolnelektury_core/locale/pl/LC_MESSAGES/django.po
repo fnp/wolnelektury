@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:38+0200\n"
-"PO-Revision-Date: 2012-03-16 14:40+0100\n"
+"POT-Creation-Date: 2013-04-04 17:19+0200\n"
+"PO-Revision-Date: 2013-04-04 17:19+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -17,23 +17,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "X-Poedit-Language: Polish\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: views.py:33 views.py:34 templates/superbase.html:84
+#: views.py:35
+#: views.py:36
+#: templates/superbase.html:86
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: views.py:40 views.py:61
+#: views.py:42
+#: views.py:63
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Zalogowano jako %(user)s"
 
-#: views.py:52 views.py:53 views.py:81 templates/superbase.html:88
+#: views.py:54
+#: views.py:55
+#: views.py:83
+#: templates/superbase.html:90
 msgid "Register"
 msgstr "Załóż konto"
 
-#: views.py:76
+#: views.py:78
 msgid "You have to be logged in to continue"
 msgstr "Zaloguj się, aby kontynuować"
 
@@ -46,89 +51,85 @@ msgid "Page not found"
 msgstr "Strona nie znaleziona"
 
 #: templates/404.html:14
-msgid ""
-"We are sorry, but this page does not exist. Please check if you entered "
-"correct address or go to "
-msgstr ""
-"Przepraszamy, ale ta strona nie istnieje. Sprawdź czy podałeś dobry adres, "
-"lub przejdź do"
+msgid "We are sorry, but this page does not exist. Please check if you entered correct address or go to "
+msgstr "Przepraszamy, ale ta strona nie istnieje. Sprawdź czy podałeś dobry adres, lub przejdź do"
 
 #: templates/404.html:14
 msgid "main page"
 msgstr "strony głównej"
 
-#: templates/500.html:6 templates/500.html.py:17
+#: templates/500.html:6
+#: templates/500.html.py:17
 msgid "Server error"
 msgstr "Błąd serwera"
 
 #: templates/500.html:19
-msgid ""
-"<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
-"error.</p>"
+msgid "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our <a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the error.</p>"
 msgstr ""
-"<p>Serwis Wolnelektury.pl jest chwilowo niedostępny. Odwiedź naszego <a "
-"href='http://nowoczesnapolska.org.pl'>bloga</a></p>\n"
-"<p>Powiadom <a href='mailto:fundacja@nowoczesnapolska.org."
-"pl'>administratorów</a> o błędzie.</p>"
+"<p>Serwis Wolnelektury.pl jest chwilowo niedostępny. Odwiedź naszego <a href='http://nowoczesnapolska.org.pl'>bloga</a></p>\n"
+"<p>Powiadom <a href='mailto:fundacja@nowoczesnapolska.org.pl'>administratorów</a> o błędzie.</p>"
 
-#: templates/503.html:6 templates/503.html.py:17
+#: templates/503.html:6
+#: templates/503.html.py:17
 msgid "Service unavailable"
 msgstr "Serwis niedostępny"
 
 #: templates/503.html:19
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
-msgstr ""
-"Serwis Wolnelektury.pl jest obecnie niedostępny z powodu prac "
-"konserwacyjnych."
+msgstr "Serwis Wolnelektury.pl jest obecnie niedostępny z powodu prac konserwacyjnych."
 
-#: templates/main_page.html:6 templates/main_page.html.py:7
+#: templates/main_page.html:6
+#: templates/main_page.html.py:7
 msgid "Wolne Lektury internet library"
 msgstr "Biblioteka internetowa Wolne Lektury"
 
-#: templates/main_page.html:20
+#: templates/main_page.html:23
 msgid "What's new?"
 msgstr "Co nowego?"
 
-#: templates/main_page.html:28
+#: templates/main_page.html:31
 msgid "Recent publications"
 msgstr "Ostatnie publikacje"
 
-#: templates/main_page.html:38
+#: templates/main_page.html:41
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/main_page.html:46
+#: templates/main_page.html:50
 msgid "Utilities"
 msgstr "Narzędzia"
 
-#: templates/main_page.html:49
+#: templates/main_page.html:53
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: templates/main_page.html:53
+#: templates/main_page.html:56
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: templates/main_page.html:55
+#: templates/main_page.html:58
 msgid "Widget"
 msgstr "Widget"
 
-#: templates/main_page.html:56
+#: templates/main_page.html:59
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: templates/main_page.html:57 templates/publish_plan.html:4
+#: templates/main_page.html:60
+#: templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: templates/main_page.html:64
+#: templates/main_page.html:71
 msgid "Information"
 msgstr "Informacje"
 
-#: templates/main_page.html:88
+#: templates/main_page.html:73
+msgid "Privacy policy"
+msgstr "Polityka prywatności"
+
+#: templates/main_page.html:98
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
@@ -136,63 +137,61 @@ msgstr "Użyto obrazu:"
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/superbase.html:54
+#: templates/superbase.html:56
 #, python-format
 msgid ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> free reading you have <a href='%(r)s'>right to</a>\n"
 "                    "
 msgid_plural ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> free readings you have <a href='%(r)s'>right to</a>\n"
 "                    "
 msgstr[0] ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> darmowy utwór do której <a "
-"href='%(r)s'>masz prawo</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> darmowy utwór do której <a href='%(r)s'>masz prawo</a>\n"
 "                    "
 msgstr[1] ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> darmowe utwory do których <a "
-"href='%(r)s'>masz prawo</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> darmowe utwory do których <a href='%(r)s'>masz prawo</a>\n"
 "                    "
 msgstr[2] ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> darmowych utworów do których "
-"<a href='%(r)s'>masz prawo</a>\n"
+"                    <a href='%(b)s'>%(c)s</a> darmowych utworów do których <a href='%(r)s'>masz prawo</a>\n"
 "                    "
 
-#: templates/superbase.html:65
+#: templates/superbase.html:67
 msgid "Welcome"
 msgstr "Witaj"
 
-#: templates/superbase.html:71 templates/user.html:12
+#: templates/superbase.html:73
+#: templates/user.html:12
 msgid "Password"
 msgstr "Hasło"
 
-#: templates/superbase.html:72 templates/user.html:13
+#: templates/superbase.html:74
+#: templates/user.html:13
 msgid "E-mail"
 msgstr "E-mail"
 
-#: templates/superbase.html:73 templates/user.html:14
+#: templates/superbase.html:75
+#: templates/user.html:14
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
 
-#: templates/superbase.html:76
+#: templates/superbase.html:78
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/superbase.html:78
+#: templates/superbase.html:80
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/superbase.html:80
+#: templates/superbase.html:82
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/superbase.html:110
+#: templates/superbase.html:112
 msgid "Search"
 msgstr "Szukaj"
 
@@ -200,55 +199,44 @@ msgstr "Szukaj"
 msgid "Language versions"
 msgstr "Wersje językowe"
 
-#: templates/superbase.html:166
+#: templates/superbase.html:167
 msgid ""
 "\n"
-"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
-"org.pl/\">Modern Poland Foundation</a>.\n"
-"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
-"\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
-"\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-"\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
+"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
+"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
 "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"Wolne Lektury to projekt prowadzony przez <a href=\"http://nowoczesnapolska."
-"org.pl/\">fundację Nowoczesna Polska</a>. \n"
-"Reprodukcje cyfrowe wykonane przez <a href=\"http://www.bn.org.pl/"
-"\">Bibliotekę Narodową</a>, <a href=\"http://www.bs.katowice.pl/"
-"\">Bibliotekę Śląską</a> i <a href=\"http://www.bibliotekaelblaska.pl/"
-"\">Bibliotekę Elbląską</a> z egzemplarzy pochodzących ze zbiorów BN, BŚ i "
-"BE.\n"
+"Wolne Lektury to projekt prowadzony przez <a href=\"http://nowoczesnapolska.org.pl/\">fundację Nowoczesna Polska</a>. \n"
+"Reprodukcje cyfrowe wykonane przez <a href=\"http://www.bn.org.pl/\">Bibliotekę Narodową</a>, <a href=\"http://www.bs.katowice.pl/\">Bibliotekę Śląską</a> i <a href=\"http://www.bibliotekaelblaska.pl/\">Bibliotekę Elbląską</a> z egzemplarzy pochodzących ze zbiorów BN, BŚ i BE.\n"
 "Hosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>."
 
-#: templates/superbase.html:173
+#: templates/superbase.html:174
 msgid ""
 "\n"
-"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
-"lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-"\">fundacja@nowoczesnapolska.org.pl</a>\n"
+"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17\n"
+"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. "
-"125, tel/fax: (22) 621-30-17, e-mail: <a href=\"mailto:"
-"fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>"
+"Fundacja Nowoczesna Polska, 00-514 Warszawa, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17, e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>"
 
-#: templates/superbase.html:190
+#: templates/superbase.html:191
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/superbase.html:192
+#: templates/superbase.html:193
 msgid "Loading"
 msgstr "Ładowanie"
 
-#: templates/user.html:5 templates/user.html.py:9
+#: templates/user.html:5
+#: templates/user.html.py:9
 msgid "User"
 msgstr "Użytkownik"
 
-#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
+#: templates/admin/base_site.html:4
+#: templates/admin/base_site.html.py:7
 msgid "Site administration"
 msgstr "Administracja stroną"
 
@@ -273,7 +261,8 @@ msgstr "Importuj książkę"
 msgid "Forgot Password?"
 msgstr "Nie pamiętasz hasła?"
 
-#: templates/auth/login.html:15 templates/auth/register.html:7
+#: templates/auth/login.html:15
+#: templates/auth/register.html:7
 msgid "Sign in using:"
 msgstr "Zaloguj się używając:"
 
@@ -297,38 +286,27 @@ msgid_plural ""
 "or transferring 1&#37; of your income tax</a>.\n"
 msgstr[0] ""
 "\n"
-"W serwisie Wolne Lektury już teraz opublikowany jest %(c)s utwór! Pomóż w "
-"rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://"
-"nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; "
-"podatku</a>.\n"
+"W serwisie Wolne Lektury już teraz opublikowany jest %(c)s utwór! Pomóż w rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; podatku</a>.\n"
 msgstr[1] ""
 "\n"
-"W serwisie Wolne Lektury już teraz opublikowane są %(c)s utwory! Pomóż w "
-"rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://"
-"nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; "
-"podatku</a>.\n"
+"W serwisie Wolne Lektury już teraz opublikowane są %(c)s utwory! Pomóż w rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; podatku</a>.\n"
 msgstr[2] ""
 "\n"
-"W serwisie Wolne Lektury już teraz opublikowanych jest %(c)s utworów! Pomóż "
-"w rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://"
-"nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; "
-"podatku</a>.\n"
+"W serwisie Wolne Lektury już teraz opublikowanych jest %(c)s utworów! Pomóż w rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; podatku</a>.\n"
 
 #: templates/info/join_us.html:20
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
 "we're currently working on a reading you're looking for and prepare\n"
 "a publication by yourself by logging into the Editorial Platform."
-msgstr ""
-"Zostań redaktorem lub redaktorką Wolnych Lektur! Sprawdź, czy obecnie "
-"pracujemy nad publikacją wyszukiwanej przez ciebie lektury i samodzielnie "
-"przygotuj publikację logując się na Platformie Redakcyjnej."
+msgstr "Zostań redaktorem lub redaktorką Wolnych Lektur! Sprawdź, czy obecnie pracujemy nad publikacją wyszukiwanej przez ciebie lektury i samodzielnie przygotuj publikację logując się na Platformie Redakcyjnej."
 
 #: templates/info/join_us.html:23
 msgid "More..."
 msgstr "Więcej..."
 
-#: templates/openid/login.html:6 templates/openid/login.html.py:10
+#: templates/openid/login.html:6
+#: templates/openid/login.html.py:10
 msgid "OpenID Sign In"
 msgstr "Logowanie przez OpenID"
 
@@ -353,11 +331,8 @@ msgstr "Zezwól na dostęp do Wolnych Lektur"
 
 #: templates/piston/authorize_token.html:10
 #, python-format
-msgid ""
-"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-"strong>."
-msgstr ""
-"Potwierdź dostęp do Wolnych Lektur jako użytkownik <strong>%(user)s</strong>."
+msgid "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</strong>."
+msgstr "Potwierdź dostęp do Wolnych Lektur jako użytkownik <strong>%(user)s</strong>."
 
 #: templates/socialaccount/connections.html:5
 #: templates/socialaccount/connections.html:8
@@ -365,19 +340,15 @@ msgid "Account Connections"
 msgstr "Powiązania konta"
 
 #: templates/socialaccount/connections.html:11
-msgid ""
-"You can sign in to your account using any of the following third party "
-"accounts:"
-msgstr ""
-"Możesz się zalogować na swoje konto używając następujących kont zewnętrznych:"
+msgid "You can sign in to your account using any of the following third party accounts:"
+msgstr "Możesz się zalogować na swoje konto używając następujących kont zewnętrznych:"
 
 #: templates/socialaccount/connections.html:35
 msgid "Remove"
 msgstr "Usuń"
 
 #: templates/socialaccount/connections.html:43
-msgid ""
-"You currently have no social network accounts connected to this account."
+msgid "You currently have no social network accounts connected to this account."
 msgstr "Aktualnie do Twojego konta nie są podłączone żadne konta zewnętrzne."
 
 #: templates/socialaccount/connections.html:46
@@ -391,13 +362,8 @@ msgstr "Anulowano logowanie"
 
 #: templates/socialaccount/login_cancelled.html:14
 #, python-format
-msgid ""
-"You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
-"\">sign in</a>."
-msgstr ""
-"Logowanie przy użyciu zewnętrznego konta zostało anulowane. Jeśli był to "
-"błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
+msgid "You decided to cancel logging in to our site using one of your exisiting accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr "Logowanie przy użyciu zewnętrznego konta zostało anulowane. Jeśli był to błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
 
 #~ msgid "Listing of all audiobooks"
 #~ msgstr "Spis wszystkich audiobooków"
@@ -681,8 +647,8 @@ msgstr ""
 #~ msgid ""
 #~ "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 #~ msgstr ""
-#~ "Audiobooki przygotowane w ramach projektu %(cs)s finansowanego przez "
-#~ "%(fb)s."
+#~ "Audiobooki przygotowane w ramach projektu %(cs)s finansowanego przez %(fb)"
+#~ "s."
 
 #~ msgid "Audiobooks were prepared as a part of the %(cs)s project."
 #~ msgstr "Audiobooki przygotowane w ramach projektu %(cs)s."
@@ -902,6 +868,7 @@ msgstr ""
 #~ "under\n"
 #~ "a <a href='http://creativecommons.org/licenses/by-sa/3.0/deed.pl'>free "
 #~ "license</a>.\n"
+
 #~ msgid_plural ""
 #~ "\n"
 #~ "%(c)s books from <a href='http://domenapubliczna.org'>public domain</a> "
