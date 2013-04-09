@@ -4,8 +4,8 @@
 ; =========================================
 
 [program:celery.%(project_name)s]
-command=%(path)s/ve/bin/python %(path)s/releases/current/%(project_name)s/manage.py celeryd --loglevel=INFO
-directory=%(path)s/releases/current/%(project_name)s
+command=%(path)s/ve/bin/python %(path)s/releases/current/manage.py celeryd --loglevel=INFO
+directory=%(path)s/releases/current/
 user=%(user)s
 numprocs=2
 process_name=wolnelektury-celery-%%(process_num)d
