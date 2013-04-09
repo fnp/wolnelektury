@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:39+0200\n"
-"PO-Revision-Date: 2012-04-03 17:54+0100\n"
-"Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
+"POT-Creation-Date: 2013-04-09 10:34+0200\n"
+"PO-Revision-Date: 2013-04-09 10:40+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -37,175 +37,43 @@ msgstr "Nerodyti motyvų"
 msgid "Don't use our custom font"
 msgstr "Nenaudoti derinčių šriftų"
 
-#: forms.py:51
+#: forms.py:49
+msgid "Without cover"
+msgstr ""
+
+#: forms.py:52
 msgid "Leading"
 msgstr "eilučių intervalas"
 
-#: forms.py:52
+#: forms.py:53
 msgid "Normal leading"
 msgstr "Normalus intervalas"
 
-#: forms.py:53
+#: forms.py:54
 msgid "One and a half leading"
 msgstr "Pusantro intervalo"
 
-#: forms.py:54
+#: forms.py:55
 msgid "Double leading"
 msgstr "Dvigubasis intervalas"
 
-#: forms.py:56
+#: forms.py:57
 msgid "Font size"
 msgstr "Šrifto dydis"
 
-#: forms.py:57
+#: forms.py:58
 msgid "Default"
 msgstr "Numatytasis "
 
-#: forms.py:58
+#: forms.py:59
 msgid "Big"
 msgstr "Didelis"
 
-#: forms.py:81
+#: forms.py:82
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: models.py:33
-msgid "author"
-msgstr "autorius"
-
-#: models.py:34
-msgid "epoch"
-msgstr "epocha"
-
-#: models.py:35
-msgid "kind"
-msgstr "rūšis"
-
-#: models.py:36
-msgid "genre"
-msgstr "žanras"
-
-#: models.py:37
-msgid "theme"
-msgstr "motyvas"
-
-#: models.py:38
-msgid "set"
-msgstr "rinkinys"
-
-#: models.py:39 models.py:368
-msgid "book"
-msgstr "knyga"
-
-#: models.py:60 models.py:230
-msgid "name"
-msgstr "pavadinimas"
-
-#: models.py:61 models.py:333 models.py:335 models.py:973 models.py:976
-msgid "slug"
-msgstr "slug"
-
-#: models.py:62 models.py:332
-msgid "sort key"
-msgstr "rikiavimo raktas"
-
-#: models.py:63
-msgid "category"
-msgstr "kategorija  "
-
-#: models.py:65 models.py:106 models.py:338 models.py:441 models.py:974
-msgid "description"
-msgstr "aprašymas"
-
-#: models.py:68
-msgid "book count"
-msgstr "knygų skaičius"
-
-#: models.py:72 models.py:73 models.py:232 models.py:339 models.py:340
-msgid "creation date"
-msgstr "sukūrimo data"
-
-#: models.py:90
-msgid "tag"
-msgstr "žymė"
-
-#: models.py:91
-msgid "tags"
-msgstr "žymės"
-
-#: models.py:226 models.py:915
-#, python-format
-msgid "%s file"
-msgstr "%s failas "
-
-#: models.py:229
-msgid "type"
-msgstr "tipas"
-
-#: models.py:231
-msgid "file"
-msgstr "failas "
-
-#: models.py:233 models.py:342
-msgid "extra information"
-msgstr "papildomos informacijos"
-
-#: models.py:242 models.py:243
-msgid "book media"
-msgstr "book media"
-
-#: models.py:331 models.py:972
-msgid "title"
-msgstr "pavadinimas"
-
-#: models.py:336
-msgid "language code"
-msgstr "kalbos kodas"
-
-# sprawdz
-#: models.py:341
-msgid "parent number"
-msgstr "pirminis numeris"
-
-#: models.py:347
-msgid "cover"
-msgstr "viršelis"
-
-#: models.py:369
-msgid "books"
-msgstr "knygos"
-
-#: models.py:620
-#, python-format
-msgid "Book \"%s\" does not exist."
-msgstr "Knyga \"%s\" neegzistuoja."
-
-#: models.py:634
-#, python-format
-msgid "Book %s already exists"
-msgstr "Knyga %s jau egzistuoja"
-
-#: models.py:935
-msgid "fragment"
-msgstr "fragmentas"
-
-#: models.py:936
-msgid "fragments"
-msgstr "fragmentai"
-
-#: models.py:977
-msgid "book slugs"
-msgstr "book slugs"
-
-#: models.py:981
-msgid "collection"
-msgstr "kolekcija"
-
-#: models.py:982
-msgid "collections"
-msgstr "kolekcijos"
-
-#: views.py:500
+#: views.py:527
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -216,23 +84,180 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:501
+#: views.py:528
 msgid "Book imported successfully"
 msgstr "Knyga buvo sėkmingai importuota"
 
-#: views.py:503
+#: views.py:530
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Importuojant failą įvyko klaida: %r"
 
-#: views.py:535
+#: views.py:562
 msgid "Download custom PDF"
 msgstr "Sukurti ir atsisiųsti PDF failą"
 
-#: views.py:536 templates/catalogue/book_short.html:92
-#: templates/catalogue/book_text.html:28 templates/catalogue/book_wide.html:63
+#: views.py:563
+#: templates/catalogue/book_short.html:92
+#: templates/catalogue/book_text.html:29
+#: templates/catalogue/book_wide.html:63
 msgid "Download"
 msgstr "Atsisiųsti"
+
+#: models/book.py:28
+#: models/collection.py:11
+msgid "title"
+msgstr "pavadinimas"
+
+#: models/book.py:29
+#: models/tag.py:31
+msgid "sort key"
+msgstr "rikiavimo raktas"
+
+#: models/book.py:30
+#: models/book.py:32
+#: models/collection.py:12
+#: models/collection.py:15
+#: models/tag.py:30
+msgid "slug"
+msgstr "slug"
+
+#: models/book.py:33
+msgid "language code"
+msgstr "kalbos kodas"
+
+#: models/book.py:35
+#: models/book.py:145
+#: models/collection.py:13
+#: models/tag.py:34
+#: models/tag.py:83
+msgid "description"
+msgstr "aprašymas"
+
+#: models/book.py:36
+#: models/book.py:37
+#: models/bookmedia.py:28
+#: models/tag.py:41
+#: models/tag.py:42
+msgid "creation date"
+msgstr "sukūrimo data"
+
+# sprawdz
+#: models/book.py:38
+msgid "parent number"
+msgstr "pirminis numeris"
+
+#: models/book.py:39
+#: models/bookmedia.py:29
+msgid "extra information"
+msgstr "papildomos informacijos"
+
+#: models/book.py:44
+msgid "cover"
+msgstr "viršelis"
+
+#: models/book.py:66
+#: models/tag.py:20
+msgid "book"
+msgstr "knyga"
+
+#: models/book.py:67
+msgid "books"
+msgstr "knygos"
+
+#: models/book.py:243
+#, python-format
+msgid "Book \"%s\" does not exist."
+msgstr "Knyga \"%s\" neegzistuoja."
+
+#: models/book.py:257
+#, python-format
+msgid "Book %s already exists"
+msgstr "Knyga %s jau egzistuoja"
+
+#: models/book.py:589
+#: models/bookmedia.py:22
+#, python-format
+msgid "%s file"
+msgstr "%s failas "
+
+#: models/bookmedia.py:25
+msgid "type"
+msgstr "tipas"
+
+#: models/bookmedia.py:26
+#: models/tag.py:29
+msgid "name"
+msgstr "pavadinimas"
+
+#: models/bookmedia.py:27
+msgid "file"
+msgstr "failas "
+
+#: models/bookmedia.py:38
+#: models/bookmedia.py:39
+msgid "book media"
+msgstr "book media"
+
+#: models/collection.py:16
+msgid "book slugs"
+msgstr "book slugs"
+
+#: models/collection.py:20
+msgid "collection"
+msgstr "kolekcija"
+
+#: models/collection.py:21
+msgid "collections"
+msgstr "kolekcijos"
+
+#: models/fragment.py:32
+msgid "fragment"
+msgstr "fragmentas"
+
+#: models/fragment.py:33
+msgid "fragments"
+msgstr "fragmentai"
+
+#: models/tag.py:14
+msgid "author"
+msgstr "autorius"
+
+#: models/tag.py:15
+msgid "epoch"
+msgstr "epocha"
+
+#: models/tag.py:16
+msgid "kind"
+msgstr "rūšis"
+
+#: models/tag.py:17
+msgid "genre"
+msgstr "žanras"
+
+#: models/tag.py:18
+msgid "theme"
+msgstr "motyvas"
+
+#: models/tag.py:19
+msgid "set"
+msgstr "rinkinys"
+
+#: models/tag.py:32
+msgid "category"
+msgstr "kategorija  "
+
+#: models/tag.py:37
+msgid "book count"
+msgstr "knygų skaičius"
+
+#: models/tag.py:59
+msgid "tag"
+msgstr "žymė"
+
+#: models/tag.py:60
+msgid "tags"
+msgstr "žymės"
 
 #: templates/catalogue/audiobook_list.html:7
 #: templates/catalogue/audiobook_list.html:16
@@ -255,8 +280,7 @@ msgid ""
 msgstr ""
 "Fondo Šiuolaikinė Lenkija privalomos literatūros audio knygų rinkinys.\n"
 "Galite juo naudotis nemokamai ir be apribojimų.\n"
-"Audio knygos yra garsių aktorių įrašomos, tokių kaip Danuta Stenka ir Jan "
-"Peszek."
+"Audio knygos yra garsių aktorių įrašomos, tokių kaip Danuta Stenka ir Jan Peszek."
 
 #: templates/catalogue/book_detail.html:20
 #: templates/catalogue/tagged_object_list.html:74
@@ -285,18 +309,15 @@ msgid ""
 "        distributed. If there are any additional copyrighted materials\n"
 "        provided with this work (such as annotations, motifs etc.), those\n"
 "        materials are licensed under the \n"
-"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
-"Commons Attribution-ShareAlike 3.0</a>\n"
+"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
 "        license."
 msgstr ""
 "Šio visuomenės srities kūrinio autorių teisė neapima,\n"
 "tai reiškia, kad gali būti laisvai naudojamas bei\n"
 "platinamas. Jei su šiuo kūriniu yra pateikiamos bet kokios\n"
-"papildomos autorinių teisių saugomos medžiagos (kaip pastabos, motyvai ir t."
-"t.), šios\n"
+"papildomos autorinių teisių saugomos medžiagos (kaip pastabos, motyvai ir t.t.), šios\n"
 "medžiagos yra licencijuotos pagal\n"
-"<a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons "
-"Attribution-ShareAlike 3.0</a>\n"
+"<a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
 "licenciją."
 
 #: templates/catalogue/book_info.html:20
@@ -311,7 +332,8 @@ msgstr "Redagavimas ir pastabos:"
 msgid "Cover image by:"
 msgstr ""
 
-#: templates/catalogue/book_list.html:7 templates/catalogue/book_list.html:10
+#: templates/catalogue/book_list.html:7
+#: templates/catalogue/book_list.html:10
 msgid "Listing of all works"
 msgstr "Visų kūrinių sąrašas"
 
@@ -319,7 +341,7 @@ msgstr "Visų kūrinių sąrašas"
 msgid "Table of Content"
 msgstr "Turinys"
 
-#: templates/catalogue/book_list.html:48
+#: templates/catalogue/book_list.html:30
 msgid "↑ top ↑"
 msgstr "↑į viršų↑"
 
@@ -327,16 +349,15 @@ msgstr "↑į viršų↑"
 msgid "Put a book on the shelf!"
 msgstr "Padėkite knygą į lentyną!"
 
-#: templates/catalogue/book_sets.html:3 templates/catalogue/book_sets.html:6
+#: templates/catalogue/book_sets.html:3
+#: templates/catalogue/book_sets.html:6
 #: templates/catalogue/fragment_sets.html:16
 msgid "Create new shelf"
 msgstr "Sukurti naują lentyną"
 
 #: templates/catalogue/book_sets.html:10
 msgid "You do not have any shelves. You can create one below, if you want to."
-msgstr ""
-"Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną "
-"žemiau."
+msgstr "Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną žemiau."
 
 #: templates/catalogue/book_sets.html:15
 msgid "Put on the shelf!"
@@ -361,7 +382,7 @@ msgid "Read online"
 msgstr "Skaityti online"
 
 #: templates/catalogue/book_short.html:95
-#: templates/catalogue/book_text.html:41
+#: templates/catalogue/book_text.html:42
 msgid "to print"
 msgstr "Spausdinti"
 
@@ -370,53 +391,58 @@ msgid "for an e-book reader"
 msgstr "e-knygos skaitytojui"
 
 #: templates/catalogue/book_short.html:101
-#: templates/catalogue/book_text.html:47
+#: templates/catalogue/book_text.html:48
 msgid "for Kindle"
 msgstr "skaityklei Kindle"
 
 #: templates/catalogue/book_short.html:104
+#: templates/catalogue/book_text.html:51
 msgid "FictionBook"
 msgstr ""
 
 #: templates/catalogue/book_short.html:107
-#: templates/catalogue/book_text.html:50
+#: templates/catalogue/book_text.html:54
 msgid "for advanced usage"
 msgstr " išplėstiniam naudojimui"
 
 #: templates/catalogue/book_short.html:113
-#: templates/catalogue/book_text.html:31
+#: templates/catalogue/book_text.html:32
 msgid "Listen"
 msgstr "Klausytis"
 
-#: templates/catalogue/book_text.html:10 templates/catalogue/player.html:11
+#: templates/catalogue/book_text.html:10
+#: templates/catalogue/player.html:11
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/catalogue/book_text.html:23
+#: templates/catalogue/book_text.html:24
 msgid "Table of contents"
 msgstr "Turinys"
 
-#: templates/catalogue/book_text.html:24 templates/catalogue/menu.html:27
+#: templates/catalogue/book_text.html:25
+#: templatetags/catalogue_tags.py:419
 msgid "Themes"
 msgstr "Motyvai"
 
-#: templates/catalogue/book_text.html:25
+#: templates/catalogue/book_text.html:26
 msgid "Edit. note"
 msgstr "Redaguoti pastabą"
 
-#: templates/catalogue/book_text.html:26
+#: templates/catalogue/book_text.html:27
 msgid "Infobox"
 msgstr "Infobox"
 
-#: templates/catalogue/book_text.html:27 templates/catalogue/player.html:34
+#: templates/catalogue/book_text.html:28
+#: templates/catalogue/player.html:34
 msgid "Book's page"
 msgstr "Knygos puslapis"
 
-#: templates/catalogue/book_text.html:44
+#: templates/catalogue/book_text.html:45
 msgid "for a reader"
 msgstr "skaitytojui"
 
-#: templates/catalogue/book_text.html:54 templates/catalogue/book_wide.html:67
+#: templates/catalogue/book_text.html:58
+#: templates/catalogue/book_wide.html:67
 msgid "Download all audiobooks for this book"
 msgstr "Atsisiųsti visas šios knygos audio knygas"
 
@@ -461,7 +487,8 @@ msgstr "Knygos aprašymas Vikipedijoje"
 msgid "Mix this book"
 msgstr "Maišyti šią knygą"
 
-#: templates/catalogue/catalogue.html:6 templates/catalogue/catalogue.html:11
+#: templates/catalogue/catalogue.html:6
+#: templates/catalogue/catalogue.html:11
 msgid "Catalogue"
 msgstr "Katalogas"
 
@@ -469,33 +496,43 @@ msgstr "Katalogas"
 msgid "Download the catalogue in PDF format."
 msgstr "Atsisiųsti katalogą PDF formatu."
 
-#: templates/catalogue/catalogue.html:19 templates/catalogue/menu.html:7
+#: templates/catalogue/catalogue.html:19
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
+#: templatetags/catalogue_tags.py:415
 msgid "Authors"
 msgstr "Autoriai"
 
-#: templates/catalogue/catalogue.html:22 templates/catalogue/menu.html:17
+#: templates/catalogue/catalogue.html:22
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
+#: templatetags/catalogue_tags.py:417
 msgid "Kinds"
 msgstr "Rūšys"
 
-#: templates/catalogue/catalogue.html:25 templates/catalogue/menu.html:12
+#: templates/catalogue/catalogue.html:25
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
+#: templatetags/catalogue_tags.py:416
 msgid "Genres"
 msgstr "Žanrai"
 
-#: templates/catalogue/catalogue.html:28 templates/catalogue/menu.html:22
+#: templates/catalogue/catalogue.html:28
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
+#: templatetags/catalogue_tags.py:418
 msgid "Epochs"
 msgstr "Epochos"
 
 #: templates/catalogue/catalogue.html:31
 msgid "Themes and topics"
 msgstr "Motyvai ir temos"
+
+#: templates/catalogue/catalogue.html:34
+#: templates/catalogue/menu.html:16
+#, fuzzy
+msgid "Collections"
+msgstr "kolekcijos"
 
 #: templates/catalogue/daisy_list.html:6
 #: templates/catalogue/daisy_list.html:12
@@ -510,19 +547,15 @@ msgstr "Naujosios DAISY audio knygos"
 msgid ""
 "System DAISY to uznany na całym świecie format udostępniania książek\n"
 "dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
-"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
-"ograniczeń."
+"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez ograniczeń."
 msgstr ""
 "DAISY sistema yra visame pasaulyje pripažintas knygų bendrinimo formatas\n"
 "pritaikytas  silpnesnio regėjimo žmonėms, akliesiems bei kitiems\n"
-"skaitymo problemų turintiems žmonėms.Galite jomis naudotis nemokamai ir be "
-"apribojimų."
+"skaitymo problemų turintiems žmonėms.Galite jomis naudotis nemokamai ir be apribojimų."
 
 #: templates/catalogue/differentiate_tags.html:12
 msgid "The criteria are ambiguous. Please select one of the following options:"
-msgstr ""
-"Paieškos kriterijai nėra tikslūs. Prašome išrinkti vieną iš žemiau nurodytų "
-"galimybių:"
+msgstr "Paieškos kriterijai nėra tikslūs. Prašome išrinkti vieną iš žemiau nurodytų galimybių:"
 
 #: templates/catalogue/fragment_sets.html:2
 msgid "Shelves containing fragment"
@@ -530,9 +563,7 @@ msgstr "Lentynos turinčios fragmentus "
 
 #: templates/catalogue/fragment_sets.html:4
 msgid "You do not own any shelves. You can create one below, if you want to."
-msgstr ""
-"Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną "
-"žemiau."
+msgstr "Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną žemiau."
 
 #: templates/catalogue/fragment_sets.html:9
 msgid "Save all shelves"
@@ -551,15 +582,20 @@ msgstr "Slėpti fragmentą"
 msgid "See full category"
 msgstr "Žiūrėti visą kategoriją"
 
-#: templates/catalogue/menu.html:32
+#: templates/catalogue/menu.html:9
+#: templates/catalogue/menu.html.py:18
+msgid "Please wait…"
+msgstr ""
+
+#: templates/catalogue/menu.html:24
 msgid "All books"
 msgstr "Visos knygos"
 
-#: templates/catalogue/menu.html:36
+#: templates/catalogue/menu.html:28
 msgid "Audiobooks"
 msgstr "Audio knygos"
 
-#: templates/catalogue/menu.html:40
+#: templates/catalogue/menu.html:32
 msgid "DAISY"
 msgstr "DAISY "
 
@@ -627,10 +663,8 @@ msgstr "\"%(cs)s, %(fb)s finansuotų"
 
 #: templates/catalogue/player.html:125
 #, python-format
-msgid ""
-"Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
-msgstr ""
-"Audio knygos buvo paruoštos kaip dalis %(fb)s. finansuoto %(cs)s projekto."
+msgid "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
+msgstr "Audio knygos buvo paruoštos kaip dalis %(fb)s. finansuoto %(cs)s projekto."
 
 #: templates/catalogue/player.html:127
 #, python-format
@@ -650,19 +684,24 @@ msgstr "Ieškoti"
 msgid "Did you mean"
 msgstr "Gal turėjote omenyje"
 
-#: templates/catalogue/search_multiple_hits.html:54
-msgid "Results by authors"
-msgstr "Rezultatai pagal autorius"
-
-#: templates/catalogue/search_multiple_hits.html:67
+#: templates/catalogue/search_multiple_hits.html:52
 msgid "Results by title"
 msgstr "Rezultatai pagal pavadinimą"
 
-#: templates/catalogue/search_multiple_hits.html:82
+#: templates/catalogue/search_multiple_hits.html:67
+msgid "Results by authors"
+msgstr "Rezultatai pagal autorius"
+
+#: templates/catalogue/search_multiple_hits.html:80
+#, fuzzy
+msgid "Results by translators"
+msgstr "Rezultatai pagal autorius"
+
+#: templates/catalogue/search_multiple_hits.html:93
 msgid "Results in text"
 msgstr "Rezultatai tekste"
 
-#: templates/catalogue/search_multiple_hits.html:99
+#: templates/catalogue/search_multiple_hits.html:110
 msgid "Other results"
 msgstr "Kiti rezultatai"
 
@@ -673,18 +712,15 @@ msgstr "Atsiprašome! Rezultatų, atitinkančių paieškos kriterijus nėra."
 
 #: templates/catalogue/search_no_hits.html:21
 msgid ""
-"Search engine supports following criteria: title, author, theme/topic, "
-"epoch, kind and genre.\n"
+"Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.\n"
 "\t\tAs for now we do not support full text search."
 msgstr ""
-"Paieškos sistema palaiko nurodytus kriterijus: pavadinimas, autorius, tema, "
-"epocha, rūšis ir žanras.\n"
+"Paieškos sistema palaiko nurodytus kriterijus: pavadinimas, autorius, tema, epocha, rūšis ir žanras.\n"
 "\t\t Kol kas negalima atlikti viso teksto paieškos."
 
 #: templates/catalogue/search_too_short.html:13
 msgid "Sorry! Search query must have at least two characters."
-msgstr ""
-"Atsiprašome! Paieškos užklausa turi susidėti mažiausiai iš dviejų simbolių."
+msgstr "Atsiprašome! Paieškos užklausa turi susidėti mažiausiai iš dviejų simbolių."
 
 #: templates/catalogue/tagged_object_list.html:78
 #: templates/catalogue/tagged_object_list.html:108
@@ -706,9 +742,7 @@ msgstr "pašalinti"
 
 #: templates/catalogue/user_shelves.html:10
 msgid "You do not own any shelves. You can create one below if you want to"
-msgstr ""
-"Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną "
-"žemiau."
+msgstr "Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną žemiau."
 
 #: templates/catalogue/user_shelves.html:15
 msgid "Create shelf"
