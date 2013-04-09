@@ -3,7 +3,7 @@
 
 <h1>{% trans "Didn't find a book? Make a suggestion." %}</h1>
 
-<form id='suggest-publishing-form' action="{% url suggest_publishing %}" method="post" accept-charset="utf-8" class="cuteform">
+<form id='suggest-publishing-form' action="{% url 'suggest_publishing' %}" method="post" accept-charset="utf-8" class="cuteform">
 {% csrf_token %}
 {% render_honeypot_field %}
 <ol>

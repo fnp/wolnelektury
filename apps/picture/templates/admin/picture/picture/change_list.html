@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-    <form action="{% url import_picture %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'import_picture' %}" method="post" enctype="multipart/form-data">
         <p>XML: <input type="file" id="id_picture_xml_file" name="picture_xml_file" /><br/>
             {% trans "Image" %}: <input type="file" id="id_picture_image_file" name="picture_image_file" /><br/>
             <input type="submit" value="{% trans "Import picture" %}"/></p>

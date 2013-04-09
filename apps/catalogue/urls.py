@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls.defaults import *
+from django.views.generic import RedirectView
 from catalogue.feeds import AudiobookFeed
 from catalogue.views import CustomPDFFormView
 
@@ -15,16 +16,11 @@ urlpatterns = patterns('picture.views',
     url(r'^obraz/(?P<picture>%s)/?$' % SLUG, 'picture_detail')
 )
 
-# workaround for Django ticket #17111; redirect when resolved
-urlpatterns += patterns('search.views',
-    url(r'^szukaj/$', 'main'),  
+urlpatterns += patterns('',
+    # old search page - redirected
+    url(r'^szukaj/$', RedirectView.as_view(
+            url='/szukaj/', query_string=True)),
 )
-#urlpatterns += patterns('django.views.generic.simple',
-#    # old search page - redirected
-#    url(r'^szukaj/$', 'redirect_to',
-#        
-#        {'url': '/szukaj/', 'query_string': True}),  
-#)
 
 urlpatterns += patterns('catalogue.views',
     url(r'^$', 'catalogue', name='catalogue'),
@@ -35,7 +31,6 @@ urlpatterns += patterns('catalogue.views',
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
-    #url(r'^szukaj/$', 'search', name='old_search'),
 
     url(r'^custompdf/(?P<slug>%s)/$' % SLUG, CustomPDFFormView(), name='custom_pdf_form'),
 

@@ -4,6 +4,7 @@
 #
 from __future__ import with_statement
 
+import hashlib
 import random
 import re
 import time
@@ -13,7 +14,6 @@ from django.http import HttpResponse
 from django.core.files.uploadedfile import UploadedFile
 from django.core.files.storage import DefaultStorage
 from django.utils.encoding import force_unicode
-from django.utils.hashcompat import sha_constructor
 from django.conf import settings
 from os import mkdir, path, unlink
 from errno import EEXIST, ENOENT
@@ -31,7 +31,7 @@ MAX_SESSION_KEY = 18446744073709551616L     # 2 << 63
 
 
 def get_random_hash(seed):
-    sha_digest = sha_constructor('%s%s%s%s' %
+    sha_digest = hashlib.sha1('%s%s%s%s' %
         (randrange(0, MAX_SESSION_KEY), time.time(), unicode(seed).encode('utf-8', 'replace'),
         settings.SECRET_KEY)).digest()
     return urlsafe_b64encode(sha_digest).replace('=', '').replace('_', '-').lower()
@@ -45,7 +45,7 @@ def split_tags(tags):
 
 
 def get_dynamic_path(media, filename, ext=None, maxlen=100):
-    from slughifi import slughifi
+    from fnpdjango.utils.text.slughifi import slughifi
 
     # how to put related book's slug here?
     if not ext:

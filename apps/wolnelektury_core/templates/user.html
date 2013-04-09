@@ -9,9 +9,9 @@
 <h1>{% trans "User" %}</h1>
 
 <div class='normal-text'>
-<p><a href="{% url account_set_password %}">{% trans "Password" %}</a></p>
-<p><a href="{% url account_email %}">{% trans "E-mail" %}</a></p>
-<p><a href="{% url socialaccount_connections %}">{% trans "Social accounts" %}</a></p>
+<p><a href="{% url 'account_set_password' %}">{% trans "Password" %}</a></p>
+<p><a href="{% url 'account_email' %}">{% trans "E-mail" %}</a></p>
+<p><a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a></p>
 </div>
 
 {% endblock %}

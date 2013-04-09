@@ -40,7 +40,7 @@ class BookMedia(models.Model):
         app_label = 'catalogue'
 
     def save(self, *args, **kwargs):
-        from slughifi import slughifi
+        from fnpdjango.utils.text.slughifi import slughifi
         from catalogue.utils import ExistingFile, remove_zip
 
         try:

@@ -4,7 +4,7 @@ Tagging related views.
 """
 from django.http import Http404
 from django.utils.translation import ugettext as _
-from django.views.generic.list_detail import object_list
+from django.views.generic import ListView
 
 
 def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=None,
@@ -44,5 +44,5 @@ def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=Non
         kwargs['extra_context']['related_tags'] = \
             tag_model.objects.related_for_model(tag_instances, queryset_or_model,
                                           counts=related_tag_counts)
-    return object_list(request, queryset, **kwargs)
+    return ListView.as_view(queryset=queryset)(request, **kwargs)
 

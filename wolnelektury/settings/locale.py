@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from os import path
-from settings.paths import PROJECT_DIR
+from .paths import PROJECT_DIR
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.

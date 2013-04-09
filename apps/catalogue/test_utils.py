@@ -7,7 +7,7 @@ import tempfile
 from traceback import extract_stack
 from django.test import TestCase
 from django.test.utils import override_settings
-from slughifi import slughifi
+from fnpdjango.utils.text.slughifi import slughifi
 from librarian import WLURI
 from django.conf import settings
 

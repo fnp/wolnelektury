@@ -26,7 +26,6 @@ urlpatterns = patterns('wolnelektury_core.views',
 
 urlpatterns += patterns('',
     url(r'^katalog/', include('catalogue.urls')),
-    #url(r'^materialy/', include('lessons.urls')),
     url(r'^opds/', include('opds.urls')),
     url(r'^sugestia/', include('suggest.urls')),
     url(r'^lesmianator/', include('lesmianator.urls')),
