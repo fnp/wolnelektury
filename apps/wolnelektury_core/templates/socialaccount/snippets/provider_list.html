@@ -1,20 +1,22 @@
+{% load socialaccount %}
 {% load static from staticfiles %}
-{% load allauth_tags %}
-{% load common_tags %}
 
-{% if allauth.openid_enabled %}
-<li><a title="Google" class="socialaccount_provider google" href="{% openid_login_url openid="https://www.google.com/accounts/o8/id" %}">
-	<img alt="Google" src="{% static "img/auth/google.png" %}" /></a></li>
-{% endif %}
-{% if allauth.facebook_enabled %}
-<li><a title="Facebook" class="socialaccount_provider facebook" href="{% facebook_login_url next=request.GET.next|build_absolute_uri:request %}">
-	<img alt="Facebook" src="{% static "img/auth/facebook.png" %}" /></a></li>
-{% endif %}
-{% if allauth.twitter_enabled %}
-<li><a title="Twitter" class="socialaccount_provider twitter" href="{% twitter_login_url %}">
-	<img alt="Twitter" src="{% static "img/auth/twitter.png" %}" /></a></li>
-{% endif %}
-{% if allauth.openid_enabled %}
-<li><a title="OpenID" class="socialaccount_provider openid" href="{% openid_login_url %}">
-	<img alt="OpenID" src="{% static "img/auth/openid.png" %}" /></a></li>
-{% endif %}
+{% for provider in socialaccount.providers %}
+    {% if provider.id == "openid" %}
+        {% for brand in provider.get_brands %}
+            <li>
+                <a title="{{brand.name}}" 
+                    class="socialaccount_provider {{provider.id}} {{brand.id}}" 
+                    href="{% provider_login_url provider.id openid=brand.openid_url %}"
+                    ><img alt="{{ brand.name }}"
+                        src="{% static 'img/auth/'|add:brand.id|add:'.png' %}" /></a>
+            </li>
+        {% endfor %}
+    {% endif %}
+    <li>
+        <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+            href="{% provider_login_url provider.id %}"
+            ><img alt="{{ provider.name }}"
+                src="{% static 'img/auth/'|add:provider.id|add:'.png' %}" /></a>
+    </li>
+{% endfor %}

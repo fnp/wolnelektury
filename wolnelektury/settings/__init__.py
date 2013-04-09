@@ -20,8 +20,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'wolnelektury_core.context_processors.extra_settings',
     'search.context_processors.search_form',
-    "allauth.context_processors.allauth",
+
     "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
 )
 
 MIDDLEWARE_CLASSES = [
@@ -90,14 +91,13 @@ INSTALLED_APPS_CONTRIB = [
     #'django_nose',
 
     #allauth stuff
-    'emailconfirmation',
     'uni_form',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.openid',
-    #'allauth.facebook',
-    #'allauth.twitter',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.twitter',
 
     # included
     'modeltranslation',

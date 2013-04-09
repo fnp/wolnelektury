@@ -7,277 +7,382 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-08-14 17:40+0200\n"
+"POT-Creation-Date: 2013-04-09 15:30+0200\n"
 "PO-Revision-Date: 2012-08-14 17:50+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: lt <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:36
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:191
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:358
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:31
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:47
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:233
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:351
 msgid "Password"
 msgstr "Slaptažodis"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:40
+msgid "Password must be a minimum of {0} characters."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:49
 msgid "Remember Me"
 msgstr "Įsiminti mane"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:52
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:139
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:60
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:173
+#, fuzzy
+msgid "E-mail address"
+msgstr "El. pašto adresai"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:61
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:182
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:301
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:380
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:368
 msgid "E-mail"
 msgstr "El. paštas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:57
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:130
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:66
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:67
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:166
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:170
 msgid "Username"
 msgstr "Vartotojo vardas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:85
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:74
+msgid "Username or e-mail"
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:108
 msgid "This account is currently inactive."
 msgstr "Ši paskyra yra šiuo metu neaktyvi."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:88
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:112
 msgid "The e-mail address and/or password you specified are not correct."
 msgstr "El. pašto adresas ir/arba slaptažodis nėra teisingas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:90
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:116
 msgid "The username and/or password you specified are not correct."
 msgstr "Vartotojo vardas ir/arba slaptažodis nėra teisingas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:142
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:119
+#, fuzzy
+msgid "The login and/or password you specified are not correct."
+msgstr "Vartotojo vardas ir/arba slaptažodis nėra teisingas."
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:185
 msgid "E-mail (optional)"
 msgstr "El. paštas (pasirenkamas)"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:153
-msgid "Usernames can only contain letters, numbers and underscores."
-msgstr "Vartotojo vardas gali būti sudarytas tik iš raidžių, skaičių ir pabraukimo brūkšnelių."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:193
+#, fuzzy
+msgid "Usernames can only contain letters, digits and @/./+/-/_."
+msgstr ""
+"Vartotojo vardas gali būti sudarytas tik iš raidžių, skaičių ir "
+"pabraukimo brūkšnelių."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:159
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:197
+msgid "Username can not be used. Please use other username."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:204
 msgid "This username is already taken. Please choose another."
 msgstr "Šis vartotojo vardas yra užimtas. Prašome pasirinkite kitą."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:167
-msgid "A user is registered with this e-mail address."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:212
+#, fuzzy
+msgid "A user is already registered with this e-mail address."
 msgstr "Šiuo elektroninio pašto adresu jau yra užsiregistravęs vartotojas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:195
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:362
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:234
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:352
 msgid "Password (again)"
 msgstr "Slaptažodis (pakartoti)"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:225
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:347
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:369
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:444
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:262
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:341
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:357
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:425
 msgid "You must type the same password each time."
 msgstr "Kiekvieną kartą turite įvesti tokį patį slaptažodį."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:260
-msgid "Your e-mail address has already been verified"
-msgstr "Jūsų el.pašto adresas jau buvo patikrintas."
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:270
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/utils.py:123
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:93
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:109
-#, python-format
-msgid "Confirmation e-mail sent to %(email)s"
-msgstr "El. pašto patvirtinimas buvo išsiųstas į %(email)s"
-
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:309
-msgid "This e-mail address already associated with this account."
+#, fuzzy
+msgid "This e-mail address is already associated with this account."
 msgstr "Šis el. pašto adresas jau yra susietas su šia paskyra."
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:310
-msgid "This e-mail address already associated with another account."
+#, fuzzy
+msgid "This e-mail address is already associated with another account."
 msgstr "Šis el. pašto adresas jau yra susietas su kita paskyra."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:327
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:329
 msgid "Current Password"
 msgstr "Dabartinis slaptažodis"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:331
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:427
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:330
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:413
 msgid "New Password"
 msgstr "Naujas slaptažodis"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:335
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:431
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:331
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:414
 msgid "New Password (again)"
 msgstr "Naujas slaptažodis (pakartoti)"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:341
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:335
 msgid "Please type your current password."
 msgstr "Prašome įvesti jūsų dabartinį slaptažodį."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:390
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:378
 msgid "The e-mail address is not assigned to any user account"
 msgstr "Šis el. pašto adresas nėra priskirtas jokio vartotojo paskyrai."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/forms.py:409
-msgid "Password Reset E-mail"
-msgstr "Slaptažodžio atstatymo el. laiškas"
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/models.py:30
+#, fuzzy
+msgid "email address"
+msgstr "El. pašto adresai"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/utils.py:84
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/models.py:31
+#, fuzzy
+msgid "email addresses"
+msgstr "El. pašto adresai"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/models.py:81
+#, fuzzy
+msgid "email confirmation"
+msgstr "El. pašto adreso patvirtinimas"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/models.py:82
+#, fuzzy
+msgid "email confirmations"
+msgstr "El. pašto adreso patvirtinimas"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/utils.py:89
 #, python-format
 msgid "Successfully signed in as %(user)s."
 msgstr "Sėkmingai prisijungęs kaip %(user)s."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:125
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/utils.py:237
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:216
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:235
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s"
+msgstr "El. pašto patvirtinimas buvo išsiųstas į %(email)s"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:141
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:253
+#, fuzzy, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)"
+msgstr "Pašalintas el. pašto adresas %(email)s"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:263
 #, python-format
 msgid "Removed e-mail address %(email)s"
 msgstr "Pašalintas el. pašto adresas %(email)s"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:139
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:289
+#, fuzzy
+msgid "Your primary e-mail address must be verified"
+msgstr "Jūsų el.pašto adresas jau buvo patikrintas."
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:301
 msgid "Primary e-mail address set"
 msgstr "Nustatytas pagrindinis el. pašto adresas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:160
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:233
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:330
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:407
 msgid "Password successfully changed."
 msgstr "Slaptažodis sėkmingai pakeistas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:183
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:355
 msgid "Password successfully set."
 msgstr "Slaptažodis sėkmingai nustatytas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:247
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/account/views.py:423
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/logout.html:10
 msgid "You have signed out."
 msgstr "Jūs atsijungėte."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/openid/forms.py:6
-msgid "OpenID"
-msgstr "OpenID"
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/forms.py:33
-msgid "Your local account has no password setup."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/forms.py:47
+#, fuzzy
+msgid "Your account has no password set up."
 msgstr "Jūsų vietinės paskyros slaptažodis dar yra nenustatytas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/forms.py:37
-msgid "Your local account has no verified e-mail address."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/forms.py:51
+#, fuzzy
+msgid "Your account has no verified e-mail address."
 msgstr "Jūsų vietinės paskyros el. pašto adresas dar nepatikrintas."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/helpers.py:111
-msgid "The social account has been connected to your existing account"
-msgstr "Ši socialinė paskyra buvo prijungta prie jūsų paskyros"
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/helpers.py:129
+#, fuzzy
+msgid "The social account has been connected"
+msgstr "Socialinė paskyra buvo atjungta"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:89
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/views.py:66
+msgid "The social account has been disconnected"
+msgstr "Socialinė paskyra buvo atjungta"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/providers/oauth/client.py:78
 #, python-format
 msgid "Invalid response while obtaining request token from \"%s\"."
 msgstr "Neteisingas atsakas gaunant užklausos žetoną iš \"%s\"."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:111
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/providers/oauth/client.py:102
 #, python-format
 msgid "Invalid response while obtaining access token from \"%s\"."
 msgstr "Neteisingas atsakas gaunant prieigos žetoną iš \"%s\"."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:124
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/providers/oauth/client.py:115
 #, python-format
 msgid "No request token saved for \"%s\"."
 msgstr "Nėra užklausos žetono įrašyto \"%s\"."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:172
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/providers/oauth/client.py:160
 #, python-format
 msgid "No access token saved for \"%s\"."
 msgstr "Nėra prieigos žetono įrašyto \"%s\"."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/oauth.py:192
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/providers/oauth/client.py:178
 #, python-format
 msgid "No access to private resources at \"%s\"."
 msgstr "Trūksta prieigos prie privačių išteklių \"%s\"."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/socialaccount/views.py:68
-msgid "The social account has been disconnected"
-msgstr "Socialinė paskyra buvo atjungta"
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:6
 msgid "Account"
 msgstr "Paskyra"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:9
 msgid "E-mail Addresses"
 msgstr "El. pašto adresai"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:10
-msgid "The following e-mail addresses are associated to your account:"
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:11
+#, fuzzy
+msgid "The following e-mail addresses are associated with your account:"
 msgstr "Šie el. pašto adresai yra priskirti jūsų paskyrai:"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:24
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:25
 msgid "Verified"
 msgstr "Patikrintas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:26
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:27
 msgid "Unverified"
 msgstr "Nepatikrintas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:28
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:29
 msgid "Primary"
 msgstr "Pirminis"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:34
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:35
 msgid "Make Primary"
 msgstr "Padaryti pirminiu"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:35
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:36
 msgid "Re-send Verification"
 msgstr "Dar kartą siųsti patikrinimą"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:36
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:37
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:35
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:43
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:44
 msgid "Warning:"
 msgstr "Įspėjimas:"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:43
-msgid "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc."
-msgstr "Šiuo metu neturite nustatyto jokio el. pašto adreso. Jūs tikrai turėtumėte pridėti el. pašto adresą, kad gautumėte pranešimus, atstatytumėte jūsų slaptažodį ir t.t."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:44
+msgid ""
+"You currently do not have any e-mail address set up. You should really "
+"add an e-mail address so you can receive notifications, reset your "
+"password, etc."
+msgstr ""
+"Šiuo metu neturite nustatyto jokio el. pašto adreso. Jūs tikrai "
+"turėtumėte pridėti el. pašto adresą, kad gautumėte pranešimus, "
+"atstatytumėte jūsų slaptažodį ir t.t."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:48
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:49
 msgid "Add E-mail Address"
 msgstr "Pridėti el. pašto adresą"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:53
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:54
 msgid "Add E-mail"
 msgstr "Pridėti el. paštą"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:63
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email.html:64
 msgid "Do you really want to remove the selected e-mail address?"
 msgstr "Ar esate tikri, kad norite pašalinti pasirinktą  el. pašto adresą?"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirm.html:7
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirm.html:11
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirmed.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirmed.html:11
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email/email_confirmation_subject.txt:3
+#, fuzzy
+msgid "Confirm E-mail Address"
+msgstr "Nustatytas pagrindinis el. pašto adresas"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirm.html:17
+#, fuzzy, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
+"e-mail address for user %(user_display)s."
+msgstr ""
+"Patvirtinote, kad <a href=\"mailto:%(email)s\">%(email)s</a> yra "
+"'%(user)s' vartotojo el. pašto adresas."
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirm.html:21
+msgid "Confirm"
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirm.html:28
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email_confirmed.html:15
+#, fuzzy, python-format
+msgid ""
+"You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
+"e-mail address for user %(user_display)s."
+msgstr ""
+"Patvirtinote, kad <a href=\"mailto:%(email)s\">%(email)s</a> yra "
+"'%(user)s' vartotojo el. pašto adresas."
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:7
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:11
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:43
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:39
 msgid "Sign In"
 msgstr "Prisijungti"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:19
-#, python-format
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:16
+#, fuzzy, python-format
 msgid ""
 "Please sign in with one\n"
-"of your existing third party accounts. Or, <a \n"
-"href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and sign in\n"
-"below:"
+"of your existing third party accounts. Or, <a "
+"href=\"%(signup_url)s\">sign up</a> \n"
+"for a %(site_name)s account and sign in below:"
 msgstr ""
 "Prašome prisijungti su viena\n"
 "iš jūsų third party paskyrų. Arba <a \n"
-"href=\"%(signup_url)s\">užsiregistruoti</a> %(site_name)s paskyrai sukurti ir prisijungti\n"
+"href=\"%(signup_url)s\">užsiregistruoti</a> %(site_name)s paskyrai "
+"sukurti ir prisijungti\n"
 "žemiau:"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:27
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:24
 msgid "or"
 msgstr "arba"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:42
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/login.html:38
 msgid "Forgot Password?"
 msgstr "Pamiršote slaptažodį?"
 
@@ -289,8 +394,8 @@ msgstr "Atsijungęs"
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_change.html:4
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_change.html:7
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_change.html:12
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:4
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:7
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:8
 msgid "Change Password"
 msgstr "Keisti slaptažodį"
 
@@ -300,8 +405,12 @@ msgid "Delete Password"
 msgstr "Pašalinti slaptažodį"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete.html:9
-msgid "You may delete your password since you are currently logged in using OpenID."
-msgstr "Galite pašalinti jūsų slaptažodį, nes esate prisijungę naudodamiesi OpenID."
+msgid ""
+"You may delete your password since you are currently logged in using "
+"OpenID."
+msgstr ""
+"Galite pašalinti jūsų slaptažodį, nes esate prisijungę naudodamiesi "
+"OpenID."
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_delete.html:12
 msgid "delete my password"
@@ -324,58 +433,53 @@ msgid "Password Reset"
 msgstr "Slaptažodžio atstatymas"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:15
-msgid "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it."
-msgstr "Pamiršote slaptažodį? Įveskite jūsų el. pašto adresą žemiau ir mes išsiųsime jums el. laišką leidžiantį jį atstatyti."
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send "
+"you an e-mail allowing you to reset it."
+msgstr ""
+"Pamiršote slaptažodį? Įveskite jūsų el. pašto adresą žemiau ir mes "
+"išsiųsime jums el. laišką leidžiantį jį atstatyti."
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:20
 msgid "Reset My Password"
 msgstr "Atstatyti mano slaptažodį"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset.html:23
-#, python-format
-msgid "If you have any trouble resetting your password, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr "Jei turite problemų su jūsų slaptažodžio atstatymu, susisiekite su mumis <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_done.html:15
-#, python-format
-msgid "We have sent you an e-mail. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr "Jums išsiuntėme el. laišką. Jei to negausite per kelias minutes, susisiekite su mumis <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+#, fuzzy, python-format
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"Jums išsiuntėme el. laišką. Jei to negausite per kelias minutes, "
+"susisiekite su mumis <a "
+"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:7
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:8
 msgid "Bad Token"
 msgstr "Blogas žetonas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:11
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:12
 #, python-format
-msgid "The password reset link was invalid, possibly because it has already been used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</a>."
-msgstr "Atstatymo slaptažodžio nuoroda buvo netinkama, galbūt, nes jau buvo panaudota. Prašome paprašyti <a href=\"%(passwd_reset_url)s\">naujo slaptažodžio atstatymo</a>."
+msgid ""
+"The password reset link was invalid, possibly because it has already been"
+" used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
+"reset</a>."
+msgstr ""
+"Atstatymo slaptažodžio nuoroda buvo netinkama, galbūt, nes jau buvo "
+"panaudota. Prašome paprašyti <a href=\"%(passwd_reset_url)s\">naujo "
+"slaptažodžio atstatymo</a>."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:17
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:18
 msgid "change password"
 msgstr "keisti slaptažodį"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:20
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_from_key.html:21
 msgid "Your password is now changed."
 msgstr "Jūsų slaptažodis pakeistas."
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_reset_key_message.txt:9
-#, python-format
-msgid ""
-"You're receiving this e-mail because you or someone else has requested a password for your user account at %(site_domain)s.\n"
-"It can be safely ignored if you did not request a password reset. Click the link below to reset your password.\n"
-"\n"
-"%(password_reset_url)s\n"
-"\n"
-"In case you forgot, your username is %(username)s.\n"
-"\n"
-"Thanks for using our site!\n"
-msgstr ""
-"Gavote šį el. laišką, nes paprašėte, arba kitas asmuo paprašė, atstatyti slaptažodį jūsų paskyrai čia %(site_domain)s.\n"
-"Galite į jį nekreipti dėmesio jei neprašėte slaptažodžio atstatymo. Paspauskite jūsų slaptažodžio atstatymui skirtą nuorodą.\n"
-"\n"
-"%(password_reset_url)s\n"
-"\n"
-"Jūsų vartotojo vardas yra %(username)s\n"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_set.html:5
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/password_set.html:8
@@ -383,32 +487,105 @@ msgstr ""
 msgid "Set Password"
 msgstr "Nustatyti slaptažodį"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:5
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:6
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:5
 msgid "Signup"
 msgstr "Registracija"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:8
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:21
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:19
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:8
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:19
 msgid "Sign Up"
 msgstr "Registruotis"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:13
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup.html:11
 #, python-format
-msgid "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign "
+"in</a>."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup_closed.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup_closed.html:9
+msgid "Sign Up Closed"
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/signup_closed.html:11
+msgid "We are sorry, but the sign up is currently closed."
 msgstr ""
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verification_sent.html:5
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verification_sent.html:8
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verified_email_required.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verified_email_required.html:9
 msgid "Verify Your E-mail Address"
 msgstr "Patikrinkite jūsų el. pašto adresą"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verification_sent.html:10
 #, python-format
-msgid "We have sent you an e-mail to <b>%(email)s</b> for verification. Follow the link provided to finalize the signup process. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
-msgstr "Išsiuntėme patvirtinimo el. laišką į <b>%(email)s</b>. Paspauskite pateiktą nuorodą, norėdami baigti registracijos procesą. Jei to negausite per kelias minutes, susisiekite su mumis <a href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+msgid ""
+"We have sent an e-mail to <a href=\"mailto:%(email)s\">%(email)s</a> for "
+"verification. Follow the link provided to finalize the signup process. "
+"Please contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verified_email_required.html:15
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verified_email_required.html:19
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/verified_email_required.html:21
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change "
+"your e-mail address</a>."
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email/email_confirmation_message.txt:4
+#, python-format
+msgid ""
+"User %(user_display)s at %(site_name)s has given this as an email "
+"address.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email/password_reset_key_message.txt:9
+#, python-format
+msgid ""
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account at %(site_domain)s.\n"
+"It can be safely ignored if you did not request a password reset. Click "
+"the link below to reset your password.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"In case you forgot, your username is %(username)s.\n"
+"\n"
+"Thanks for using our site!\n"
+msgstr ""
+"Gavote šį el. laišką, nes paprašėte, arba kitas asmuo paprašė, atstatyti "
+"slaptažodį jūsų paskyrai čia %(site_domain)s.\n"
+"Galite į jį nekreipti dėmesio jei neprašėte slaptažodžio atstatymo. "
+"Paspauskite jūsų slaptažodžio atstatymui skirtą nuorodą.\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+"Jūsų vartotojo vardas yra %(username)s\n"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr "Slaptažodžio atstatymo el. laiškas"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/account/snippets/already_logged_in.html:5
 msgid "Note"
@@ -419,34 +596,7 @@ msgstr "Pastaba"
 msgid "you are already logged in as %(user_display)s."
 msgstr "jūs jau esate prisijungęs kaip %(user_display)s."
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:5
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:8
-msgid "E-mail Address Confirmation"
-msgstr "El. pašto adreso patvirtinimas"
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:11
-#, python-format
-msgid "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail address for user '%(user)s'."
-msgstr "Patvirtinote, kad <a href=\"mailto:%(email)s\">%(email)s</a> yra '%(user)s' vartotojo el. pašto adresas."
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/confirm_email.html:13
-msgid "Invalid confirmation key."
-msgstr "Netinkamas patvirtinimo raktas."
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/email_confirmation_message.txt:4
-#, python-format
-msgid ""
-"User '%(user)s' at %(site_name)s has given this as an email address.\n"
-"\n"
-"To confirm this is correct, go to %(activate_url)s\n"
-msgstr ""
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/emailconfirmation/email_confirmation_subject.txt:1
-#, fuzzy
-msgid "Confirm E-mail Address"
-msgstr "Nustatytas pagrindinis el. pašto adresas"
-
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/openid/login.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/openid/login.html:10
 msgid "OpenID Sign In"
 msgstr "OpenID prisijungimas"
 
@@ -465,7 +615,10 @@ msgid "Social Network Login Failure"
 msgstr "Klaida "
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/authentication_error.html:10
-msgid "An error occured while attempting to login via your social network account."
+#, fuzzy
+msgid ""
+"An error occurred while attempting to login via your social network "
+"account."
 msgstr "Įvyko klaida prisijungiant per jūsų socialinio tinklo paskyrą."
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:5
@@ -474,22 +627,37 @@ msgid "Account Connections"
 msgstr "Paskyros jungtys"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:11
-msgid "You can sign in to your account using any of the following third party accounts:"
-msgstr "Galite prisijungti prie jūsų paskyros naudodamiesi šiomis 3rd party paskyromis:"
+msgid ""
+"You can sign in to your account using any of the following third party "
+"accounts:"
+msgstr ""
+"Galite prisijungti prie jūsų paskyros naudodamiesi šiomis 3rd party "
+"paskyromis:"
+
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:43
+#, fuzzy
+msgid "You currently have no social network accounts connected to this account."
+msgstr "Ši socialinė paskyra buvo prijungta prie jūsų paskyros"
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/connections.html:46
 msgid "Add a 3rd Party Account"
 msgstr "Pridėti 3rd Party Paskyra"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:5
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:9
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:6
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:10
 msgid "Login Cancelled"
 msgstr "Prisijungimas atšauktas"
 
-#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:13
-#, python-format
-msgid "You decided to cancel logging in to our site using one of your exisiting accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
-msgstr "Nusprendėte atšaukti prisijungimą prie mūsų interneto svetainės naudodamiesi viena iš jūsų paskyrų. Jei įvyko klaida, prašome pradėti čia <a href=\"%(login_url)s\">sign in</a>."
+#: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/login_cancelled.html:14
+#, fuzzy, python-format
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts. If this was a mistake, please proceed to <a "
+"href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+"Nusprendėte atšaukti prisijungimą prie mūsų interneto svetainės "
+"naudodamiesi viena iš jūsų paskyrų. Jei įvyko klaida, prašome pradėti čia"
+" <a href=\"%(login_url)s\">sign in</a>."
 
 #: /home/rczajka/.virtualenvs/wolnelektury/src/django-allauth/allauth/templates/socialaccount/signup.html:11
 #, python-format
@@ -497,35 +665,44 @@ msgid ""
 "You are about to use your %(provider_name)s account to login to \n"
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
-"Jūs ruošiatės naudotis jūsų %(provider_name)s paskyra, kad prisijungtumėte prie \n"
+"Jūs ruošiatės naudotis jūsų %(provider_name)s paskyra, kad "
+"prisijungtumėte prie \n"
 "%(site_name)s. Prašome užpildyti šią formą:"
 
-#~ msgid "Language"
-#~ msgstr "Kalba"
-
-#~ msgid "Pinax can be used in your preferred language."
-#~ msgstr "Pinax gali būti naudojamas jūsų pageidaujama kalba."
-
-#~ msgid "Change my language"
-#~ msgstr "Keisti kalbą"
-
-#~ msgid "Already have an account?"
-#~ msgstr "Jau turite paskyrą?"
-
-#~ msgid "Sign in"
-#~ msgstr "Prisijungti"
-
-#~ msgid "Timezone"
-#~ msgstr "Laiko juosta"
+#~ msgid "OpenID"
+#~ msgstr "OpenID"
 
 #~ msgid ""
-#~ "Pinax can localize all times into "
-#~ "your preferred timezone. Change your "
-#~ "timezone below."
+#~ "If you have any trouble resetting "
+#~ "your password, contact us at <a "
+#~ "href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 #~ msgstr ""
-#~ "Pinax gali pritaikyti laiką prie jūsų"
-#~ " pasirinktos laiko juostos. Keiskite laiko"
-#~ " juostą žemiau."
+#~ "Jei turite problemų su jūsų slaptažodžio"
+#~ " atstatymu, susisiekite su mumis <a "
+#~ "href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#~ msgid "Change my timezone"
-#~ msgstr "Keisti mano laiko juostą"
+#~ msgid ""
+#~ "We have sent you an e-mail to "
+#~ "<b>%(email)s</b> for verification. Follow the"
+#~ " link provided to finalize the signup"
+#~ " process. If you do not receive "
+#~ "it within a few minutes, contact "
+#~ "us at <a "
+#~ "href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+#~ msgstr ""
+#~ "Išsiuntėme patvirtinimo el. laišką į "
+#~ "<b>%(email)s</b>. Paspauskite pateiktą nuorodą, "
+#~ "norėdami baigti registracijos procesą. Jei "
+#~ "to negausite per kelias minutes, "
+#~ "susisiekite su mumis <a "
+#~ "href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+
+#~ msgid "Invalid confirmation key."
+#~ msgstr "Netinkamas patvirtinimo raktas."
+
+#~ msgid ""
+#~ "User '%(user)s' at %(site_name)s has given this as an email address.\n"
+#~ "\n"
+#~ "To confirm this is correct, go to %(activate_url)s\n"
+#~ msgstr ""
+
