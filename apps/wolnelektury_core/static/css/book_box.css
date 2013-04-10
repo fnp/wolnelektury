@@ -286,6 +286,11 @@ ul.inline-items li {
 .book-wide-box .other-download ul {
 	font-size: 1.1em;
 }
+.book-wide-box .other-tools h2,
+.book-wide-box .other-download h2 {
+    margin: 0;
+}
+
 
 
 .book-wide-box .license-icon {

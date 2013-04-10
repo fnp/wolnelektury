@@ -49,6 +49,11 @@
     list-style: none;
 }
 
+#book-a-list #book-list h2 {
+    font-size: 1em;
+    margin: 0;
+}
+
 #book-a-list #book-list h2 a {
     color: black;
 }
@@ -66,6 +71,7 @@
 
 .catalogue-catalogue h2 {
     font-size: 2em;
+    margin: 0;
 }
 .catalogue-catalogue ul {
     column-width: 30em;
@@ -141,6 +147,7 @@
 }
 .see-also h2, .download h2 {
     font-size: 1.1em;
+    margin: 0;
 }
 .see-also ul, .download ul {
     list-style: none;

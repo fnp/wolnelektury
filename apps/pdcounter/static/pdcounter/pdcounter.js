@@ -30,7 +30,7 @@
                 onExpiry: function(){location.reload()}, // TODO: no reload
             };
             if ($this.hasClass('inline')) {
-                options.layout = '{dn} {dl} {hnn}{sep}{mnn}{sep}{snn}';
+                options.layout = '{d<}{dn} {dl} {d>}{hnn}{sep}{mnn}{sep}{snn}';
             }
             
             $this.countdown(options);

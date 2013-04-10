@@ -90,6 +90,7 @@ INSTALLED_APPS_CONTRIB = [
     'djkombu',
     'honeypot',
     #'django_nose',
+    'fnpdjango',
 
     #allauth stuff
     'uni_form',

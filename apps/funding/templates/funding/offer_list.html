@@ -8,9 +8,13 @@
 {% block body %}
 <h1>{% trans "Support Wolne Lektury" %}</h1>
 
-<ul class="plain">
 {% for funding in object_list %}
-    <li class="white-box funding-{% if funding.is_current %}current{% else %}stale{% endif %}">
+    {% if funding.is_current %}
+        <h2>{% trans "Current fundraiser:" %}</h2>
+    {% elif forloop.is_first %}
+        <h2>{% trans "Previous fundraisers:" %}</h2>
+    {% endif %}
+    <div class="white-box funding-{% if funding.is_current %}current{% else %}stale{% endif %}">
         <p class="normal-text">{{ funding.start }} – {{ funding.end }}
         {% if not funding.is_current %}
             ({% trans "funding closed" %})
@@ -18,8 +22,10 @@
         </p>
         {% funding funding link=1 %}
         {% offer_detail_head funding %}
-    </li>
+    </div>
+    {% if funding.is_current and not forloop.is_last %}
+        <h2>{% trans "Previous fundraisers:" %}</h2>
+    {% endif %}
 {% endfor %}
-</ul>
 
 {% endblock %}

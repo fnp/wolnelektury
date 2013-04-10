@@ -20,12 +20,12 @@
             <p>Przygotowaliśmy kilka propozycji na start – możesz wybrać jedną z nich,
             albo ułożyć sobie własną, niepowtarzalną mieszankę.</p>
         <ul>
-            <li><h2><a href="{% url 'poem_from_book' 'liryki-lozanskie' %}">Adam Mickiewicz, Liryki lozańskie</a></h2></li>
-            <li><h2><a href="{% url 'poem_from_book' 'sonety-krymskie' %}">Adam Mickiewicz, Sonety krymskie</a></h2></li>
-            <li><h2><a href="{% url 'poem_from_book' 'hymny' %}">Jan Kasprowicz, Hymny</a></h2></li>
-            <li><h2><a href="{% url 'poem_from_book' 'bogurodzica' %}">Bogurodzica</a></h2></li>
+            <li><a href="{% url 'poem_from_book' 'liryki-lozanskie' %}">Adam Mickiewicz, Liryki lozańskie</a></li>
+            <li><a href="{% url 'poem_from_book' 'sonety-krymskie' %}">Adam Mickiewicz, Sonety krymskie</a></li>
+            <li><a href="{% url 'poem_from_book' 'hymny' %}">Jan Kasprowicz, Hymny</a></li>
+            <li><a href="{% url 'poem_from_book' 'bogurodzica' %}">Bogurodzica</a></li>
             {% for s in shelves %}
-                <li><h2><a href="{% url 'poem_from_set' s.slug %}">{{ s.name }}</a></h2></li>
+                <li><a href="{% url 'poem_from_set' s.slug %}">{{ s.name }}</a></li>
             {% endfor %}
     
     </div>

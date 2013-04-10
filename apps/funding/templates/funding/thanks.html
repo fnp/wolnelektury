@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load funding_tags %}
+{% load fnp_share %}
 
 {% block titleextra %}{% trans "Thank you!" %}{% endblock %}
 
@@ -11,7 +11,14 @@
 
 {% trans "Thank you for your support!" %}
 
-<p><a href="{{ object.get_absolute_url }}">{% trans "Go back to the current fundraiser." %}</a></p>
+
+
+{% url 'funding_current' as current %}
+<p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
+
+{% url 'funding_current' as current %}
+<p>{% share current 'y' %}</p>
+
 </div>
 
 

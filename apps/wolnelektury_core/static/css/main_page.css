@@ -10,6 +10,7 @@
 }
 #promo-box-header h2 {
     font-size: 1.3em;
+    margin: 0;
 }
 #promo-box-body {
     border-bottom: 2px solid #efefef;
@@ -45,6 +46,8 @@
     padding-top: 1.9em;
     height: 3.2em;
     padding-left: 1.9em;
+    margin: 0;
+    font-size: 1em;
 }
 .main-last span {
     font-size: 1.1em;
@@ -63,6 +66,8 @@
     color: #017e85;
     height: 2.8em;
     padding-top: 2.5em;
+    font-size: 1em;
+    margin: 0;
 }
 .infopages-box h2 span {
     font-size: 1.1em;

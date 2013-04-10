@@ -3,14 +3,14 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls import patterns, url
-from django.views.generic import ListView, FormView, TemplateView
 
 from .models import Offer
-from .views import WLFundView, OfferDetailView, ThanksView
+from .views import WLFundView, OfferDetailView, ThanksView, OfferListView
 
 
 urlpatterns = patterns('',
-    url(r'^$', ListView.as_view(queryset=Offer.public()), name='funding'),
+    url(r'^$', OfferDetailView.as_view(), name='funding_current'),
+    url(r'^lektura/$', OfferListView.as_view(), name='funding'),
     url(r'^lektura/(?P<slug>[^/]+)/$', OfferDetailView.as_view(), name='funding_offer'),
     url(r'^dziekujemy/$', ThanksView.as_view(), name='funding_thanks'),
     url(r'^fundusz/$', WLFundView.as_view(), name='funding_wlfund'),

@@ -11,10 +11,11 @@
     {% endif %}
     <em>{{ offer }}</em>
     <span style="float:right">
-    {% trans "collected" %}: <em>{{ offer.sum }} / {{ offer.target }} zł</em>
+    <span style="display:inline-block;margin-right: 1.5em;">{% trans "missing" %}: <em>{{ missing }} zł</em></span>
+    <span style="display:inline-block;margin-right: 1.5em;">{% trans "collected" %}: <em>{{ sum }} </em></span>
     {% if is_current %}
-        <span style="margin-left: 2em;">{% trans "until fundraiser end" %}:
-            <strong class="countdown inline" data-until='{{ offer.end|local_to_utc|utc_for_js }}'></strong>
+        <span style="display:inline-block;margin-right: 0em;">{% trans "until fundraiser end" %}:
+            <strong class="countdown inline mono" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></strong>
         </span>
     {% endif %}
     </span>

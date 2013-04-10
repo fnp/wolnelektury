@@ -7,6 +7,10 @@ a.funding {
     background-image: url(/static/img/green-pixel.png);
     background-repeat: repeat-y;
     background-color: fade-out(#0D7E85, .8);
+
+    .mono {
+        font-size: .9em;
+    }
 }
 
 .wlfund {
@@ -38,9 +42,6 @@ a.funding {
 }
 
 
-.funding-current {
-    margin-bottom: 3em;
-}
 .funding-stale {
     .funding {
         opacity: .5;

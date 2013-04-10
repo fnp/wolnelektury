@@ -4,8 +4,9 @@
 #
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic import TemplateView, FormView, DetailView
+from django.views.generic import TemplateView, FormView, DetailView, ListView
 from .forms import DummyForm
 from .models import Offer, Spent
 
@@ -70,8 +71,13 @@ class OfferDetailView(FormView):
     form_class = DummyForm
     template_name = "funding/offer_detail.html"
 
-    def dispatch(self, request, slug):
-        self.object = get_object_or_404(Offer.public(), slug=slug)
+    def dispatch(self, request, slug=None):
+        if slug:
+            self.object = get_object_or_404(Offer.public(), slug=slug)
+        else:
+            self.object = Offer.current()
+            if self.object is None:
+                raise Http404
         return super(OfferDetailView, self).dispatch(request, slug)
 
     def get_form(self, form_class):
@@ -83,11 +89,22 @@ class OfferDetailView(FormView):
     def get_context_data(self, *args, **kwargs):
         ctx = super(OfferDetailView, self).get_context_data(*args, **kwargs)
         ctx['object'] = self.object
+        if self.object.is_current():
+            ctx['funding_no_show_current'] = True
         return ctx
 
     def form_valid(self, form):
         form.save()
         return redirect(reverse("funding_thanks"))
+
+
+class OfferListView(ListView):
+    queryset = Offer.public()
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(OfferListView, self).get_context_data(*args, **kwargs)
+        ctx['funding_no_show_current'] = True
+        return ctx
 
 
 class ThanksView(TemplateView):
