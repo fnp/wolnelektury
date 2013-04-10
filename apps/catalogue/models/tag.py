@@ -146,7 +146,7 @@ class Tag(TagBase):
 
     @staticmethod
     def tags_from_info(info):
-        from slughifi import slughifi
+        from fnpdjango.utils.text.slughifi import slughifi
         from sortify import sortify
         meta_tags = []
         categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))

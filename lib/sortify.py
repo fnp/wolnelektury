@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-from slughifi import char_map
+from fnpdjango.utils.text.slughifi import char_map
 
 
 # Specifies diacritics order.

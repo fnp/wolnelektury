@@ -2,20 +2,24 @@
 --find-links=http://www.pythonware.com/products/pil/
 
 # django
-Django>=1.4,<1.5
+Django>=1.5,<1.6
+fnpdjango>=0.1.6,<0.2
 South>=0.7 # migrations for django
 django-pipeline>=1.2.24,<1.3
 django-pagination>=1.0
 django-maintenancemode>=0.10
-django-piston>=0.2.2,<0.2.3
-#django-jsonfield
--e git+git://github.com/bradjasper/django-jsonfield.git@2f427368ad70bf8d9a0580df58ec0eb0654d62ae#egg=django-jsonfield
+django-piston>=0.2.2.1,<0.2.3
+django-jsonfield>=0.9,<0.10
 django-picklefield
-#django-allauth>=0.4,<0.5
-# version of django-allauth 0.4 with install script fixed
--e git+git://github.com/pennersr/django-allauth.git@3a03db9b2ecca370af228df367bd8fa52afea5ea#egg=django-allauth
+
+#django-allauth<0.10 with migration fix
+-e git+git://github.com/rczajka/django-allauth.git@4ecda71b81f9311dea4febe1d2d0105f23c642c7#egg=django-allauth
+
 pytz
 pyScss
+
+# Some contrib apps still need it
+simplejson
 
 django-honeypot
 django-uni-form
@@ -50,4 +54,3 @@ pyoai
 
 egenix-mx-base
 sunburnt
-

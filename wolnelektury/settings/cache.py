@@ -1,5 +1,5 @@
 from os import path
-from settings.paths import PROJECT_DIR
+from .paths import PROJECT_DIR
 
 CACHES = {
     'default': {

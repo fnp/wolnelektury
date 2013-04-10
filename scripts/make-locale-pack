@@ -4,7 +4,7 @@ ME=$0
 ROOT=$(git rev-parse --show-toplevel)
 DST=`mktemp -d`/wl-lokalizacja
 mkdir -p $DST
-MANAGE=$ROOT/wolnelektury/manage.py
+MANAGE=$ROOT/manage.py
 
 
 export_po()

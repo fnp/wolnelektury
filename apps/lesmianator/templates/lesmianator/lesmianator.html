@@ -14,18 +14,18 @@
     <div class="left-column">
     <div class="normal-text">
         <p>Leśmianator tworzy wierszmiksy – dzięki niemu
-            <a href="{% url new_poem %}">napiszesz wiersz jednym kliknięciem</a>.
+            <a href="{% url 'new_poem' %}">napiszesz wiersz jednym kliknięciem</a>.
             W nowej odsłonie nowe możliwości zabawy – teraz możesz zdecydować, co wrzucasz do miksera,
             a swoimi dziełami podzielić się z&nbsp;przyjaciółmi!</p>
             <p>Przygotowaliśmy kilka propozycji na start – możesz wybrać jedną z nich,
             albo ułożyć sobie własną, niepowtarzalną mieszankę.</p>
         <ul>
-            <li><h2><a href="{% url poem_from_book 'liryki-lozanskie' %}">Adam Mickiewicz, Liryki lozańskie</a></h2></li>
-            <li><h2><a href="{% url poem_from_book 'sonety-krymskie' %}">Adam Mickiewicz, Sonety krymskie</a></h2></li>
-            <li><h2><a href="{% url poem_from_book 'hymny' %}">Jan Kasprowicz, Hymny</a></h2></li>
-            <li><h2><a href="{% url poem_from_book 'bogurodzica' %}">Bogurodzica</a></h2></li>
+            <li><h2><a href="{% url 'poem_from_book' 'liryki-lozanskie' %}">Adam Mickiewicz, Liryki lozańskie</a></h2></li>
+            <li><h2><a href="{% url 'poem_from_book' 'sonety-krymskie' %}">Adam Mickiewicz, Sonety krymskie</a></h2></li>
+            <li><h2><a href="{% url 'poem_from_book' 'hymny' %}">Jan Kasprowicz, Hymny</a></h2></li>
+            <li><h2><a href="{% url 'poem_from_book' 'bogurodzica' %}">Bogurodzica</a></h2></li>
             {% for s in shelves %}
-                <li><h2><a href="{% url poem_from_set s.slug %}">{{ s.name }}</a></h2></li>
+                <li><h2><a href="{% url 'poem_from_set' s.slug %}">{{ s.name }}</a></h2></li>
             {% endfor %}
     
     </div>
@@ -34,18 +34,18 @@
     <div class="right-column">
     <div class="normal-text">
         <h3>Miksuj utwory</h3>
-        <p>Możesz <a href="{% url new_poem %}">zmiksować całą lirykę</a> w naszej bibliotece
+        <p>Możesz <a href="{% url 'new_poem' %}">zmiksować całą lirykę</a> w naszej bibliotece
         albo tylko jeden konkretny utwór. Jak? Wejdź na
-        <a href="{% url book_detail 'do-m' %}">stronę utworu</a>,
+        <a href="{% url 'book_detail' 'do-m' %}">stronę utworu</a>,
         kliknij w link „miksuj ten utwór” – i gotowe!</p>
 
         <h3>Miksuj półki</h3>
         <p>Załóż konto, poukładaj swoje ulubione książki na półkach i miksuj
         w dowolnych konfiguracjach. Nic prostszego, niż zmieszać
-        <a href="{% url tagged_object_list 'autor/boleslaw-lesmian' %}">Leśmiana</a> z
-        <a href="{% url tagged_object_list 'autor/kazimierz-przerwa-tetmajer' %}">Tetmajerem</a>,
-        a <a href="{% url tagged_object_list 'autor/stefan-zeromski' %}">Żeromskiego</a> z
-        <a href="{% url tagged_object_list 'autor/henryk-sienkiewicz' %}">Sienkiewiczem</a>
+        <a href="{% url 'tagged_object_list' 'autor/boleslaw-lesmian' %}">Leśmiana</a> z
+        <a href="{% url 'tagged_object_list' 'autor/kazimierz-przerwa-tetmajer' %}">Tetmajerem</a>,
+        a <a href="{% url 'tagged_object_list' 'autor/stefan-zeromski' %}">Żeromskiego</a> z
+        <a href="{% url 'tagged_object_list' 'autor/henryk-sienkiewicz' %}">Sienkiewiczem</a>
         – wystarczy wrzucić ich utwory na półkę i kliknąć
         w link „miksuj utwory z tej półki”.</p>
 

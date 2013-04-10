@@ -5,7 +5,7 @@ from os import path
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.test.utils import override_settings
-from django.utils import simplejson as json
+import json
 
 from catalogue.models import Book, Tag
 from picture.forms import PictureImportForm

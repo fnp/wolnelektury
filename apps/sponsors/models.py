@@ -20,7 +20,7 @@ class Sponsor(models.Model):
     name = models.CharField(_('name'), max_length=120)
     _description = models.CharField(_('description'), blank=True, max_length=255)
     logo = models.ImageField(_('logo'), upload_to='sponsorzy/sponsor/logo')
-    url = models.URLField(_('url'), blank=True, verify_exists=False)
+    url = models.URLField(_('url'), blank=True)
 
     def __unicode__(self):
         return self.name

@@ -10,7 +10,7 @@
 
 {% block body %}
     <h1>Search</h1>
-    <form action="{% url search %}" method="get" accept-charset="utf-8" id="search-form-x">
+    <form action="{% url 'search' %}" method="get" accept-charset="utf-8" id="search-form-x">
         <p>
 	  <input type="text" name="q" value="{{request.GET.q}}" style="width:250px; font-size: 1.2em;">
 	  <input type="submit" value="{% trans "Search" %}" /> 

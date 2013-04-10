@@ -2,7 +2,7 @@
 
 ME=$0
 ROOT=$(git rev-parse --show-toplevel)
-MANAGE=$ROOT/wolnelektury/manage.py
+MANAGE=$ROOT/manage.py
 
 LOCALIZED=$1
 if [ ! -d "$LOCALIZED" ]; then

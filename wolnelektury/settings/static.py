@@ -1,5 +1,5 @@
 from os import path
-from settings.paths import PROJECT_DIR
+from .paths import PROJECT_DIR
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"

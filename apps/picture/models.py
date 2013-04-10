@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from django.core.cache import get_cache
 from catalogue.utils import split_tags
 from django.utils.safestring import mark_safe
-from slughifi import slughifi
+from fnpdjango.utils.text.slughifi import slughifi
 
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers

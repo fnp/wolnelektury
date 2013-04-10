@@ -7,13 +7,13 @@ from django.template import RequestContext
 from django.utils.encoding import force_unicode
 from django.utils.functional import Promise
 from django.utils.http import urlquote_plus
-from django.utils import simplejson
+import json
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.vary import vary_on_headers
 from honeypot.decorators import verify_honeypot_value
 
 
-class LazyEncoder(simplejson.JSONEncoder):
+class LazyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Promise):
             return force_unicode(obj)
@@ -24,7 +24,7 @@ class JSONResponse(HttpResponse):
     def __init__(self, data={}, callback=None, **kwargs):
         # get rid of mimetype
         kwargs.pop('mimetype', None)
-        data = simplejson.dumps(data)
+        data = json.dumps(data)
         if callback:
             data = callback + "(" + data + ");" 
         super(JSONResponse, self).__init__(data, mimetype="application/json", **kwargs)

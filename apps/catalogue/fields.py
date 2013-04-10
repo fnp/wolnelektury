@@ -126,7 +126,7 @@ class BuildEpub(BuildEbook):
 class BuildHtml(BuildEbook):
     def build(self, fieldfile):
         from django.core.files.base import ContentFile
-        from slughifi import slughifi
+        from fnpdjango.utils.text.slughifi import slughifi
         from sortify import sortify
         from librarian import html
         from catalogue.models import Fragment, Tag

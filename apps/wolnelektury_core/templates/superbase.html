@@ -50,8 +50,8 @@
             <div id="tagline">
                 <span>
                 {% cache 60 tagline LANGUAGE_CODE %}
-                    {% url book_list as b %}
-                    {% url infopage 'prawa' as r %}
+                    {% url 'book_list' as b %}
+                    {% url 'infopage' 'prawa' as r %}
                         {% count_books book_count %}
                     {% blocktrans count book_count as c %}
                     <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>
@@ -66,26 +66,26 @@
                 {% if user.is_authenticated %}
                     {% trans "Welcome" %}, 
                     	<span class="hidden-box-wrapper">
-                    		<a href="{% url user_settings %}" class="hidden-box-trigger">
+                    		<a href="{% url 'user_settings' %}" class="hidden-box-trigger">
                     			<strong>{{ user.username }}</strong>
                     		</a>
                     		<span id="user-menu" class="hidden-box">
-                    			<a href="{% url account_set_password %}">{% trans "Password" %}</a><br/>
-                    			<a href="{% url account_email %}">{% trans "E-mail" %}</a><br/>
-                    			<a href="{% url socialaccount_connections %}">{% trans "Social accounts" %}</a><br/>
+                    			<a href="{% url 'account_set_password' %}">{% trans "Password" %}</a><br/>
+                    			<a href="{% url 'account_email' %}">{% trans "E-mail" %}</a><br/>
+                    			<a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a><br/>
                     		</span>
                     	</span>
-                    | <a href="{% url social_my_shelf %}" id="user-shelves-link">{% trans "My shelf" %}</a>
+                    | <a href="{% url 'social_my_shelf' %}" id="user-shelves-link">{% trans "My shelf" %}</a>
                     {% if user.is_staff %}
                     | <a href="/admin/">{% trans "Administration" %}</a>
                     {% endif %}
-                    | <a href="{% url logout %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
+                    | <a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
                 {% else %}
-                    <a href="{% url login %}?next={{ request.path }}"
+                    <a href="{% url 'login' %}?next={{ request.path }}"
                         id="login" class="ajaxable">
                             {% trans "Sign in" %}</a>
                     /
-                    <a href="{% url register %}?next={{ request.path }}"
+                    <a href="{% url 'register' %}?next={{ request.path }}"
                         id="register" class="ajaxable">
                             {% trans "Register" %}</a>
                 {% endif %}
@@ -102,7 +102,7 @@
 
 
 
-            <form id="search-area" action="{% url search %}" class="hidelabels">
+            <form id="search-area" action="{% url 'search' %}" class="hidelabels">
                 
                 <div id="search-field" class="grid-line">
                 	<label for="search">{{search_form.q.label}}</label>
@@ -132,7 +132,7 @@
                     {% trans "Language versions" %}</span>
                 <div id="lang-menu-items">
                 {% for lang in LANGUAGES %}
-                    <form action="{% url django.views.i18n.set_language %}" method="post">
+                    <form action="{% url 'django.views.i18n.set_language' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="language" value="{{ lang.0 }}" />
                     <button type="submit"
@@ -205,14 +205,6 @@
         {% compressed_js "base" %}
 
         {{ piwik_tag|safe }}
-        <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script type="text/javascript">
-        var pageTracker = _gat._getTracker("UA-2576694-1");
-        pageTracker._trackPageview();
-        </script>
 
 		{% block extrabody %}
 		{% endblock %}

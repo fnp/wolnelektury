@@ -19,6 +19,7 @@ from django.utils.http import urlquote_plus
 from django.utils import translation
 from django.utils.translation import ugettext as _, ugettext_lazy
 from django.views.decorators.cache import never_cache
+from django.views.decorators.vary import vary_on_headers
 
 from ajaxable.utils import JSONResponse, AjaxableFormView
 from catalogue import models
@@ -34,6 +35,7 @@ staff_required = user_passes_test(lambda user: user.is_staff)
 permanent_cache = get_cache('permanent')
 
 
+@vary_on_headers('X-Requested-With')
 def catalogue(request):
     tags = models.Tag.objects.exclude(
         category__in=('set', 'book')).exclude(book_count=0)

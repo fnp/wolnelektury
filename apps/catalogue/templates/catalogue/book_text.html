@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load url from future %}
 {% load static from staticfiles %}
 {% load chunks compressed catalogue_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -76,13 +75,5 @@
         </div>
         {{ book.html_file.read|safe }}
         {{ piwik_tag|safe }}
-        <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script type="text/javascript">
-        var pageTracker = _gat._getTracker("UA-2576694-1");
-        pageTracker._trackPageview();
-        </script>
     </body>
 </html>
