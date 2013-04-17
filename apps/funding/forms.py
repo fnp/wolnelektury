@@ -1,20 +1,20 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _, ugettext as __
-from .models import Offer
+from .models import Funding
 from .widgets import PerksAmountWidget
 
 
 class DummyForm(forms.Form):
     required_css_class = 'required'
 
-    name = forms.CharField(label=_("Name"))
+    amount = forms.DecimalField(label=_("Amount"), decimal_places=2,
+        widget=PerksAmountWidget())
+    name = forms.CharField(label=_("Name"), required=False)
     anonymous = forms.BooleanField(label=_("Anonymously"),
         required=False,
         help_text=_("Check if you don't want your name to be visible publicly."))
     email = forms.EmailField(label=_("E-mail"),
-        help_text=_("Won't be publicised."))
-    amount = forms.DecimalField(label=_("Amount"), decimal_places=2,
-        widget=PerksAmountWidget())
+        help_text=_("Won't be publicised."), required=False)
 
     def __init__(self, offer, *args, **kwargs):
         self.offer = offer
@@ -32,7 +32,8 @@ class DummyForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
-        return self.offer.fund(
+        return Funding.objects.create(
+            offer=self.offer,
             name=self.cleaned_data['name'],
             email=self.cleaned_data['email'],
             amount=self.cleaned_data['amount'],

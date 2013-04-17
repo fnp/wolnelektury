@@ -2,13 +2,16 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.views.decorators.cache import never_cache
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, FormView, DetailView, ListView
+from getpaid.forms import PaymentMethodForm
 from .forms import DummyForm
-from .models import Offer, Spent
+from .models import Offer, Spent, Funding
 
 
 def mix(*streams):
@@ -91,11 +94,12 @@ class OfferDetailView(FormView):
         ctx['object'] = self.object
         if self.object.is_current():
             ctx['funding_no_show_current'] = True
+            ctx['payment_form'] = PaymentMethodForm('PLN', initial={'order': self.object})
         return ctx
 
     def form_valid(self, form):
-        form.save()
-        return redirect(reverse("funding_thanks"))
+        funding = form.save()
+        return redirect(funding.get_absolute_url())
 
 
 class OfferListView(ListView):
@@ -107,10 +111,17 @@ class OfferListView(ListView):
         return ctx
 
 
-class ThanksView(TemplateView):
-    template_name = "funding/thanks.html"
+class FundingView(DetailView):
+    model = Funding
+
+    @method_decorator(never_cache)
+    def dispatch(self, *args, **kwargs):
+        return super(FundingView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, *args, **kwargs):
-        ctx = super(ThanksView, self).get_context_data(*args, **kwargs)
-        ctx['object'] = Offer.current()
+        ctx = super(FundingView, self).get_context_data(*args, **kwargs)
+        if self.object.offer.is_current():
+            ctx['funding_no_show_current'] = True
+            ctx['payment_form'] = PaymentMethodForm('PLN', initial={'order': self.object})
         return ctx
+

@@ -41,7 +41,7 @@
 <div class="white-box normal-text">
     
     <table class="wlfund">
-    {% for funding in object.funding_set.all %}
+    {% for funding in object.funding_payed.all %}
         <tr class="funding-plus">
             <td><div>{{ funding.payed_at.date }}</div></td>
             <td><div>

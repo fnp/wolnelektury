@@ -2,14 +2,16 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from datetime import date, datetime
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _, ugettext as __
-from datetime import date, datetime
+import getpaid
 from catalogue.models import Book
 
 
 class Offer(models.Model):
+    """ A fundraiser for a particular book. """
     author = models.CharField(_('author'), max_length=255)
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'))
@@ -38,6 +40,7 @@ class Offer(models.Model):
 
     @classmethod
     def current(cls):
+        """ Returns current fundraiser or None. """
         today = date.today()
         objects = cls.objects.filter(start__lte=today, end__gte=today)
         try:
@@ -47,10 +50,16 @@ class Offer(models.Model):
 
     @classmethod
     def public(cls):
+        """ QuerySet for all current and past fundraisers. """
         today = date.today()
         return cls.objects.filter(start__lte=today)        
 
     def get_perks(self, amount=None):
+        """ Finds all the perks for the offer.
+        
+        If amount is provided, returns the perks you get for it.
+
+        """
         perks = Perk.objects.filter(
                 models.Q(offer=self) | models.Q(offer=None)
             )
@@ -58,16 +67,13 @@ class Offer(models.Model):
             perks = perks.filter(price__lte=amount)
         return perks
 
-    def fund(self, name, email, amount, anonymous=False):
-        funding = self.funding_set.create(
-            name=name, email=email, amount=amount,
-            anonymous=anonymous,
-            payed_at=datetime.now())
-        funding.perks = self.get_perks(amount)
-        return funding
+    def funding_payed(self):
+        """ QuerySet for all completed payments for the offer. """
+        return Funding.payed().filter(offer=self)
 
     def sum(self):
-        return self.funding_set.aggregate(s=models.Sum('amount'))['s'] or 0
+        """ The money gathered. """
+        return self.funding_payed().aggregate(s=models.Sum('amount'))['s'] or 0
 
     def state(self):
         if self.sum() >= self.target:
@@ -79,6 +85,11 @@ class Offer(models.Model):
 
 
 class Perk(models.Model):
+    """ A perk offer.
+    
+    If no attached to a particular Offer, applies to all.
+
+    """
     offer = models.ForeignKey(Offer, verbose_name=_('offer'), null=True, blank=True)
     price = models.DecimalField(_('price'), decimal_places=2, max_digits=10)
     name = models.CharField(_('name'), max_length=255)
@@ -94,13 +105,23 @@ class Perk(models.Model):
 
 
 class Funding(models.Model):
+    """ A person paying in a fundraiser.
+
+    The payment was completed if and only if payed_at is set.
+
+    """
     offer = models.ForeignKey(Offer, verbose_name=_('offer'))
-    name = models.CharField(_('name'), max_length=127)
-    email = models.EmailField(_('email'))
+    name = models.CharField(_('name'), max_length=127, blank=True)
+    email = models.EmailField(_('email'), blank=True)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
-    payed_at = models.DateTimeField(_('payed at'))
+    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
     anonymous = models.BooleanField(_('anonymous'))
+
+    @classmethod
+    def payed(cls):
+        """ QuerySet for all completed payments. """
+        return cls.objects.exclude(payed_at=None)
 
     class Meta:
         verbose_name = _('funding')
@@ -110,8 +131,15 @@ class Funding(models.Model):
     def __unicode__(self):
         return "%s payed %s for %s" % (self.name, self.amount, self.offer)
 
+    def get_absolute_url(self):
+        return reverse('funding_funding', args=[self.pk])
+
+# Register the Funding model with django-getpaid for payments.
+getpaid.register_to_payment(Funding, unique=False, related_name='payment')
+
 
 class Spent(models.Model):
+    """ Some of the remaining money spent on a book. """
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     timestamp = models.DateField(_('when'))
     book = models.ForeignKey(Book)
@@ -123,3 +151,18 @@ class Spent(models.Model):
 
     def __unicode__(self):
         return u"Spent: %s" % unicode(self.book)
+
+
+def new_payment_query_listener(sender, order=None, payment=None, **kwargs):
+    """ Set payment details for getpaid. """
+    payment.amount = order.amount
+    payment.currency = 'PLN'
+getpaid.signals.new_payment_query.connect(new_payment_query_listener)
+
+
+def payment_status_changed_listener(sender, instance, old_status, new_status, **kwargs):
+    """ React to status changes from getpaid. """
+    if old_status != 'paid' and new_status == 'paid':
+        instance.order.payed_at = datetime.now()
+        instance.order.save()
+getpaid.signals.payment_status_changed.connect(payment_status_changed_listener)

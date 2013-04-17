@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load funding_tags %}
+{% load fnp_share %}
+
+
+{% block titleextra %}
+    {% if object.payed_at %}
+        {% trans "Thank you!" %}
+    {% else %}
+        {{ object }}
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+
+
+{% if object.payed_at %}
+
+<h1>{% trans "Thank you!" %}</h1>
+<div class="white-box normal-text">
+
+{% trans "Thank you for your support!" %}
+
+
+
+{% url 'funding_current' as current %}
+<p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
+
+{% url 'funding_current' as current %}
+<p>{% share current 'y' %}</p>
+
+</div>
+
+
+
+{% else %}
+
+
+<h1>{{ object }}</h1>
+
+<div class="white-box normal-text">
+<form action="{% url 'getpaid-new-payment' currency='PLN' %}" method="post">
+    {% csrf_token %}
+    {{ payment_form.as_p }}
+    <input type="submit" value="Continue">
+</form>
+</div>
+
+
+{% endif %}
+{% endblock %}

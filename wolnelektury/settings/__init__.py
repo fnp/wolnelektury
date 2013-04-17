@@ -70,6 +70,11 @@ INSTALLED_APPS_OUR = [
     'funding',
     ]
 
+GETPAID_BACKENDS = (
+    'getpaid.backends.dummy',
+    'getpaid.backends.payu',
+)
+
 INSTALLED_APPS_CONTRIB = [
     # external
     'django.contrib.auth',
@@ -91,6 +96,9 @@ INSTALLED_APPS_CONTRIB = [
     'honeypot',
     #'django_nose',
     'fnpdjango',
+    'getpaid',
+    'getpaid.backends.dummy',
+    'getpaid.backends.payu',
 
     #allauth stuff
     'uni_form',
