@@ -4,21 +4,23 @@ from .models import Funding
 from .widgets import PerksAmountWidget
 
 
-class DummyForm(forms.Form):
+class FundingForm(forms.Form):
     required_css_class = 'required'
 
     amount = forms.DecimalField(label=_("Amount"), decimal_places=2,
         widget=PerksAmountWidget())
-    name = forms.CharField(label=_("Name"), required=False)
-    anonymous = forms.BooleanField(label=_("Anonymously"),
-        required=False,
-        help_text=_("Check if you don't want your name to be visible publicly."))
-    email = forms.EmailField(label=_("E-mail"),
-        help_text=_("Won't be publicised."), required=False)
+    name = forms.CharField(label=_("Name"), required=False,
+        help_text=_("Optional name for public list of contributors. <br/>"
+            "Leave empty if you prefer to remain anonymous. <br/>"
+            "If we need any data for your perks, we'll get to you by e-mail anyway."))
+    email = forms.EmailField(label=_("Contact e-mail"),
+        help_text=_("Won't be publicised. <br/>"
+            "We'll use it to contact you about your perks and fundraiser status updates.<br/> "
+            "Leave empty if you prefer not to be contacted by us."), required=False)
 
     def __init__(self, offer, *args, **kwargs):
         self.offer = offer
-        super(DummyForm, self).__init__(*args, **kwargs)
+        super(FundingForm, self).__init__(*args, **kwargs)
         self.fields['amount'].widget.form_instance = self
 
     def clean_amount(self):
@@ -37,6 +39,5 @@ class DummyForm(forms.Form):
             name=self.cleaned_data['name'],
             email=self.cleaned_data['email'],
             amount=self.cleaned_data['amount'],
-            anonymous=self.cleaned_data['anonymous'],
         )
 

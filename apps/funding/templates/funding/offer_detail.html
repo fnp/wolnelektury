@@ -24,7 +24,7 @@
                 {% csrf_token %}
                 <table>
                 {{ form.as_table }}
-                <tr><td></td><td><button type="submit">Wpłać!</button></td></tr>
+                <tr><td></td><td><button class="honking" type="submit">Wpłać!</button></td></tr>
                 </table>
             </form>
 
@@ -45,10 +45,10 @@
         <tr class="funding-plus">
             <td><div>{{ funding.payed_at.date }}</div></td>
             <td><div>
-                {% if funding.anonymous %}
-                    <em>{% trans "Anonymous" %}</em>
-                {% else %}
+                {% if funding.name %}
                     {{ funding.name }}
+                {% else %}
+                    <em>{% trans "Anonymous" %}</em>
                 {% endif %}
             </div></td>
             <td><div>+{{ funding.amount }} zł</div></td>

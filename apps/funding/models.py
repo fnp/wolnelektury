@@ -62,7 +62,7 @@ class Offer(models.Model):
         """
         perks = Perk.objects.filter(
                 models.Q(offer=self) | models.Q(offer=None)
-            )
+            ).exclude(end_date__lt=date.today())
         if amount is not None:
             perks = perks.filter(price__lte=amount)
         return perks
@@ -94,6 +94,7 @@ class Perk(models.Model):
     price = models.DecimalField(_('price'), decimal_places=2, max_digits=10)
     name = models.CharField(_('name'), max_length=255)
     description = models.TextField(_('description'), blank=True)
+    end_date = models.DateField(_('end date'), null=True, blank=True)
 
     class Meta:
         verbose_name = _('perk')
@@ -116,7 +117,8 @@ class Funding(models.Model):
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
-    anonymous = models.BooleanField(_('anonymous'))
+
+    # Any additional info needed for perks?
 
     @classmethod
     def payed(cls):
@@ -129,7 +131,7 @@ class Funding(models.Model):
         ordering = ['-payed_at']
 
     def __unicode__(self):
-        return "%s payed %s for %s" % (self.name, self.amount, self.offer)
+        return unicode(self.offer)
 
     def get_absolute_url(self):
         return reverse('funding_funding', args=[self.pk])
@@ -140,9 +142,9 @@ getpaid.register_to_payment(Funding, unique=False, related_name='payment')
 
 class Spent(models.Model):
     """ Some of the remaining money spent on a book. """
+    book = models.ForeignKey(Book)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     timestamp = models.DateField(_('when'))
-    book = models.ForeignKey(Book)
 
     class Meta:
         verbose_name = _('money spent on a book')

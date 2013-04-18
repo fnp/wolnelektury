@@ -47,3 +47,15 @@ a.funding {
         opacity: .5;
     }
 }
+
+
+button.honking {
+    background: #018189;
+    font-size: 1.5em;
+    padding: .5em;
+    color: white;
+    border: 0;
+}
+button.honking:hover {
+    background: lighten(#018189, .1);
+}

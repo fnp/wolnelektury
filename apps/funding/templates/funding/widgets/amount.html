@@ -1,4 +1,5 @@
 {% load i18n %}
+<div style="font-size: 1.5em; line-height:1.5em;">
 {% if perks %}
     {% for perk in perks %}
         <label>
@@ -15,3 +16,4 @@
 {% else %}
     <input name="{{ name }}" value="{{ value|default_if_none:'' }}" {% if value != None %}{% endif %} />
 {% endif %}
+</div>

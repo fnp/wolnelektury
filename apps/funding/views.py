@@ -9,8 +9,9 @@ from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, FormView, DetailView, ListView
-from getpaid.forms import PaymentMethodForm
-from .forms import DummyForm
+import getpaid.backends.payu
+from getpaid.models import Payment
+from .forms import FundingForm
 from .models import Offer, Spent, Funding
 
 
@@ -71,8 +72,9 @@ class WLFundView(TemplateView):
 
 
 class OfferDetailView(FormView):
-    form_class = DummyForm
+    form_class = FundingForm
     template_name = "funding/offer_detail.html"
+    backend = 'getpaid.backends.payu'
 
     def dispatch(self, request, slug=None):
         if slug:
@@ -94,12 +96,15 @@ class OfferDetailView(FormView):
         ctx['object'] = self.object
         if self.object.is_current():
             ctx['funding_no_show_current'] = True
-            ctx['payment_form'] = PaymentMethodForm('PLN', initial={'order': self.object})
         return ctx
 
     def form_valid(self, form):
         funding = form.save()
-        return redirect(funding.get_absolute_url())
+        # Skip getpaid.forms.PaymentMethodForm, go directly to the broker.
+        payment = Payment.create(funding, self.backend)
+        gateway_url = payment.get_processor()(payment).get_gateway_url(self.request)
+        payment.change_status('in_progress')
+        return redirect(gateway_url)
 
 
 class OfferListView(ListView):
@@ -111,17 +116,13 @@ class OfferListView(ListView):
         return ctx
 
 
-class FundingView(DetailView):
-    model = Funding
-
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(FundingView, self).dispatch(*args, **kwargs)
+class ThanksView(TemplateView):
+    template_name = "funding/thanks.html"
 
     def get_context_data(self, *args, **kwargs):
-        ctx = super(FundingView, self).get_context_data(*args, **kwargs)
-        if self.object.offer.is_current():
-            ctx['funding_no_show_current'] = True
-            ctx['payment_form'] = PaymentMethodForm('PLN', initial={'order': self.object})
+        ctx = super(ThanksView, self).get_context_data(*args, **kwargs)
+        ctx['funding_no_show_current'] = True
         return ctx
 
+class NoThanksView(TemplateView):
+    template_name = "funding/no_thanks.html"

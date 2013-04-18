@@ -11,13 +11,14 @@
 
 {% trans "Thank you for your support!" %}
 
+{% url 'funding_current' as c %}
+<p>{% blocktrans %}Your support will appear on the <a href="{{ c }}">
+current fundraiser page</a> shortly.{% endblocktrans %}</p>
 
 
-{% url 'funding_current' as current %}
-<p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
+<p>{% trans "Tell your friends about the fundraiser!" %}</p>
 
-{% url 'funding_current' as current %}
-<p>{% share current 'y' %}</p>
+<p>{% share current _("I support Wolne Lektury.") %}</p>
 
 </div>
 
