@@ -31,6 +31,8 @@
         </div>
     {% endif %}
 
+    <div class="normal-text">{{ object.description|safe }}</div>
+
     <p class="normal-text"><a href="{% url 'funding' %}">Zobacz wszystkie zbiórki.</a></p>
 
 </div>

@@ -15,14 +15,15 @@ class Offer(models.Model):
     author = models.CharField(_('author'), max_length=255)
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'))
-    book = models.ForeignKey(Book, null=True, blank=True,
-        help_text=_('Published book.'))
-    redakcja_url = models.URLField(_('redakcja URL'), blank=True)
+    description = models.TextField(_('description'), blank=True)
     target = models.DecimalField(_('target'), decimal_places=2, max_digits=10)
     start = models.DateField(_('start'))
     end = models.DateField(_('end'))
     due = models.DateField(_('due'),
         help_text=_('When will it be published if the money is raised.'))
+    redakcja_url = models.URLField(_('redakcja URL'), blank=True)
+    book = models.ForeignKey(Book, null=True, blank=True,
+        help_text=_('Published book.'))
 
     class Meta:
         verbose_name = _('offer')
