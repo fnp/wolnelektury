@@ -45,8 +45,8 @@ from successful fundraisers.{% endblocktrans %}
             <td><div>{% trans "Money remaining from the fundraiser for" %}:
                 <a href="{{ entry.get_absolute_url }}">
                 {{ entry }}</a></div></td>
-            <td><div>{{ entry.total }} zł</div></td>
             <td><div>+{{ entry.wlfund }} zł</div></td>
+            <td><div>{{ entry.total }} zł</div></td>
         </tr>
     {% endif %}
     {% endfor %}
