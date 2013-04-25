@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.db.models.fields import Field, CharField
+from django.utils.translation import string_concat
 
 from modeltranslation.utils import get_language, build_localized_fieldname
 
@@ -44,12 +45,8 @@ class TranslationField(Field):
 
         # Copy the verbose name and append a language suffix (will e.g. in the
         # admin). This might be a proxy function so we have to check that here.
-        if hasattr(translated_field.verbose_name, '_proxy____unicode_cast'):
-            verbose_name = \
-                translated_field.verbose_name._proxy____unicode_cast()
-        else:
-            verbose_name = translated_field.verbose_name
-        self.verbose_name = '%s [%s]' % (verbose_name, language)
+        self.verbose_name = string_concat(translated_field.verbose_name,
+            ' [%s]' % (language, ))
 
     def pre_save(self, model_instance, add):
         val = super(TranslationField, self).pre_save(model_instance, add)

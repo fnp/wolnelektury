@@ -121,6 +121,7 @@ class ThanksView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         ctx = super(ThanksView, self).get_context_data(*args, **kwargs)
+        ctx['offer'] = Offer.current()
         ctx['funding_no_show_current'] = True
         return ctx
 

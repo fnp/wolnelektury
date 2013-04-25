@@ -1,0 +1,25 @@
+{% load i18n %}
+
+{% if offer.is_current %}
+    {% if offer.is_win %}
+        <p class="normal-text">
+            {% blocktrans with due=offer.due end=offer.end %}The fundraiser
+            ends on {{ end }}. The book will be published by {{ due }}.{% endblocktrans %}
+        </p>
+    {% else %}
+    <p class="normal-text">
+        {% blocktrans with due=offer.due end=offer.end %}If the target is met
+        by {{ end }}, this book will be published by {{ due }}.{% endblocktrans %}
+    </p>
+    {% endif %}
+{% else %}
+    {% if offer.is_win %}
+        <p class="normal-text">
+            {% trans "Full amount was successfully raised!" %}
+        </p>
+    {% else %}
+        <p class="normal-text">
+            {% trans "The amount needed was not raised." %}
+        </p>
+    {% endif %}
+{% endif %}

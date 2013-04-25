@@ -1,17 +1,57 @@
-a.funding {
-    font-size: 1.5em;
-    padding: .5em 1em;
-    display: block;
-    color: black;
+.funding {
+    background: orange;
 
-    background-image: url(/static/img/green-pixel.png);
-    background-repeat: repeat-y;
-    background-color: fade-out(#0D7E85, .8);
-
-    .mono {
-        font-size: .9em;
+    a.call {
+        font-size: 1.5em;
+        height: 1.2em;
+        width: 13em;
+        position: relative;
+        padding: .35em .5em;
+        margin: .5em;
+        display: inline-block;
+        vertical-align: top;
+        box-shadow: 0.2em 0.2em 0.3em #888888;
+        text-align: center;
+        background: white;
+        color: #4E56C8;
+    }
+    a.call:hover {
+        box-shadow: none;
+        top: .1em;
+        left: .1em;
+    }
+    .description {
+        display: inline-block;
+        padding-left: .6em;
+    }
+    strong {
+        font-size: 1.5em;
+        padding: .2em .2em 0;
+        display: block;
+        a {
+            color: black;
+        }
+    }
+    .progress {
+        .piece {
+            font-size: 1.3em;
+            padding: .3em .5em;
+        }
+        width: 95.7em;
+        margin: .1em .3em .4em;
+        border-radius: 2em;
+        background-image: url(/static/img/progress-pixel.png);
+        background-repeat: repeat-y;
+        background-color: fade-out(#ec6d00, .5);
+        box-shadow: .1em .1em .1em #888;
+    }
+    .with-button .progress {
+        width: 73em;
     }
 }
+
+
+
 
 .wlfund {
     width: 100%;
@@ -36,17 +76,10 @@ a.funding {
     }
 
     .funding-minus td div {
-        bbackground: fade-out(red, .8);
         background: white;
     }
 }
 
-
-.funding-stale {
-    .funding {
-        opacity: .5;
-    }
-}
 
 
 button.honking {
@@ -55,7 +88,12 @@ button.honking {
     padding: .5em;
     color: white;
     border: 0;
+    box-shadow: 0.2em 0.2em 0.3em #888888;
+    position: relative;
 }
 button.honking:hover {
-    background: lighten(#018189, .1);
+    box-shadow: none;
+    top: .1em;
+    left: .1em;
+    
 }

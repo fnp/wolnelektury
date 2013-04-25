@@ -23,10 +23,16 @@ def funding(context, offer=None, link=False, add_class=""):
     }
 
 
-@register.inclusion_tag("funding/tags/offer_detail_head.html")
-def offer_detail_head(offer):
+@register.inclusion_tag("funding/tags/offer_status.html")
+def offer_status(offer):
     return {
         'offer': offer,
-        'state': offer.state(),
     }
     
+@register.inclusion_tag("funding/tags/offer_status_more.html")
+def offer_status_more(offer):
+    return {
+        'offer': offer,
+    }
+
+

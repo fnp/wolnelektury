@@ -1,39 +1,49 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block titleextra %}{% trans "Wolne Lektury Fund" %}{% endblock %}
+{% block titleextra %}{% trans "Remaining funds" %}{% endblock %}
 
 {% block body %}
 
-<h1>{% trans "Wolne Lektury Fund" %}</h1>
+<h1>{% trans "Remaining funds" %}</h1>
+
+<div class="left-column normal-text">
+<p>{% blocktrans with r="http://redakcja.wolnelektury.pl/" %}If
+the full amount needed for publishing a book is not raised in time,
+the funds are spent on <a href="{{r}}">other books waiting for
+publication</a>. The same thing happens with any money remaining
+from successful fundraisers.{% endblocktrans %}</p>
+<p>{% trans "Spending these remaining funds is recorded in this table." %}</p>
+</div>
 
 
 <table class="normal-text wlfund">
 
     <tr>
+        <td><div>{% trans "Date" %}:</div></td>
+        <td><div>{% trans "Title" %}:</div></td>
+        <td><div>{% trans "Amount" %}:</div></td>
         <td><div>{% trans "Balance" %}:</div></td>
-        <td><div>&nbsp;</div></td>
-        <td><div>{{ amount }} zł</div></td>
-        <td><div>&nbsp;</div></td>
     </tr>
 
     {% for tag, entry in log %}
     {% if tag == 'spent' %}
         <tr class="funding-minus">
             <td><div>{{ entry.timestamp }}</div></td>
+            <td>{% trans "Money spent on publishing the book" %}:
+                <a href="{{ entry.book.get_absolute_url }}">
+                {{ entry.book }}</a></td>
             <td><div>-{{ entry.amount }} zł</div></td>
             <td><div>{{ entry.total }} zł</div></td>
-            <td><div>{% trans "Book" %}: <a href="{{ entry.book.get_absolute_url }}">
-                {{ entry.book }}</a></div></td>
         </tr>
     {% else %}
         <tr class="funding-plus">
             <td><div>{{ entry.end }}</div></td>
-            <td><div>+{{ entry.wlfund }} zł</div></td>
-            <td><div>{{ entry.total }} zł</div></td>
-            <td><div>{% trans "Excessive money from fundraiser" %}:
+            <td>{% trans "Money remaining from the fundraiser for" %}:
                 <a href="{{ entry.get_absolute_url }}">
-                {{ entry }}</a></div></td>
+                {{ entry }}</a></td>
+            <td><div>{{ entry.total }} zł</div></td>
+            <td><div>+{{ entry.wlfund }} zł</div></td>
         </tr>
     {% endif %}
     {% endfor %}

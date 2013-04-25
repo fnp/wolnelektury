@@ -2,30 +2,44 @@
 {% load url from future %}
 {% load i18n %}
 {% load funding_tags %}
+{% load pagination_tags %}
 
-{% block titleextra %}{% trans "Support Wolne Lektury" %}{% endblock %}
+{% block titleextra %}{% trans "All fundraisers" %}{% endblock %}
+
+{% block bodyid %}funding-offer-list{% endblock %}
 
 {% block body %}
-<h1>{% trans "Support Wolne Lektury" %}</h1>
+<h1>{% trans "All fundraisers" %}</h1>
 
-{% for funding in object_list %}
-    {% if funding.is_current %}
+
+{% autopaginate object_list 10 %}
+{% for offer in object_list %}
+{% with is_win=offer.is_win is_current=offer.is_current %}
+
+    {% if is_current %}
         <h2>{% trans "Current fundraiser:" %}</h2>
     {% elif forloop.is_first %}
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}
-    <div class="white-box funding-{% if funding.is_current %}current{% else %}stale{% endif %}">
-        <p class="normal-text">{{ funding.start }} – {{ funding.end }}
-        {% if not funding.is_current %}
-            ({% trans "funding closed" %})
-        {% endif %}
-        </p>
-        {% funding funding link=1 %}
-        {% offer_detail_head funding %}
+
+    <div class="normal-text">
+        {% offer_status offer %}
     </div>
-    {% if funding.is_current and not forloop.is_last %}
+
+    {% funding offer link=1 %}
+
+
+    <div class="white-box normal-text">
+        {% offer_status_more offer %}
+    </div>
+
+    </div>
+    {% if is_current and not forloop.is_last %}
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}
+
+{% endwith %}
 {% endfor %}
+{% paginate %}
 
 {% endblock %}

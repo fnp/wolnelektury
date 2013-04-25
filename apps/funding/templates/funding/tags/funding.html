@@ -1,24 +1,37 @@
 {% load i18n %}
 {% load time_tags %}
 {% if offer %}
-<a
-    class="funding {{ add_class }}"
-    style="background-size: {{ percentage|stringformat:'.2f' }}% 1px;"
-    {% if link %}href="{{ offer.get_absolute_url }}"{% endif %}
+{% spaceless %}
+<div class="funding" style="">
+    {% if link and is_current %}
+        <a class="call" href="{{ offer.get_absolute_url }}">
+            {% trans "Support a book!" %}</a>
+    {% endif %}
+    <div class="description {% if link and is_current %}with-button{% endif %}"
+        style="display: inline-block;">
+    <strong>
+        {% if link %}<a href="{{ offer.get_absolute_url }}">{% endif %}
+        {{ offer }}
+        {% if link %}</a>{% endif %}
+    </strong>
+    <div class="progress"
+        style="text-align: center; background-size: {{ percentage|stringformat:'.2f' }}% 1px;"
     >
-    {% if is_current %}
-        {% trans "Support a book:" %}
-    {% endif %}
-    <em>{{ offer }}</em>
-    <span style="float:right">
-    <span style="display:inline-block;margin-right: 1.5em;">{% trans "missing" %}: <em>{{ missing }} zł</em></span>
-    <span style="display:inline-block;margin-right: 1.5em;">{% trans "collected" %}: <em>{{ sum }} </em></span>
-    {% if is_current %}
-        <span style="display:inline-block;margin-right: 0em;">{% trans "until fundraiser end" %}:
-            <strong class="countdown inline mono" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></strong>
-        </span>
-    {% endif %}
-    </span>
-    <div style="clear:both"></div>
-</a>
+        {% if sum %}
+            <span class="piece" style="float:left">{% trans "collected" %}: <em>{{ sum }} </em></span>
+        {% endif %}
+        {% if not is_win %}
+            <span class="piece" style="float: right">{% trans "missing" %}: <em>{{ missing }} zł</em></span>
+        {% endif %}
+        {% if is_current %}
+            <span class="piece" style="display:inline-block;margin-right: 0em;">{% trans "until fundraiser end" %}:
+                <span class="countdown inline" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></span>
+            </span>
+        {% endif %}
+
+        <div style="clear: both"></div>
+    </div>
+    </div>
+</div>
+{% endspaceless %}
 {% endif %}

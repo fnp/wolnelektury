@@ -31,13 +31,24 @@ class Offer(models.Model):
         ordering = ['-end']
 
     def __unicode__(self):
-        return u"%s – %s" % (self.author, self.title)
+        return u"%s - %s" % (self.author, self.title)
 
     def get_absolute_url(self):
         return reverse('funding_offer', args=[self.slug])
 
     def is_current(self):
         return self.start <= date.today() <= self.end
+
+    def is_win(self):
+        return self.sum() >= self.target
+
+    def remaining(self):
+        if self.is_current():
+            return None
+        if self.is_win():
+            return self.sum() - self.target
+        else:
+            return self.sum()
 
     @classmethod
     def current(cls):
@@ -75,14 +86,6 @@ class Offer(models.Model):
     def sum(self):
         """ The money gathered. """
         return self.funding_payed().aggregate(s=models.Sum('amount'))['s'] or 0
-
-    def state(self):
-        if self.sum() >= self.target:
-            return 'win'
-        elif self.start <= date.today() <= self.end:
-            return 'running'
-        else:
-            return 'lose'
 
 
 class Perk(models.Model):

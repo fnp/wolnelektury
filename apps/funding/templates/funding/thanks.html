@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load fnp_share %}
 
-{% block titleextra %}{% trans "Thank you!" %}{% endblock %}
+{% block titleextra %}{% trans "Thank you for your support!" %}{% endblock %}
 
 {% block body %}
 
@@ -11,12 +11,25 @@
 
 {% trans "Thank you for your support!" %}
 
-{% url 'funding_current' as c %}
-<p>{% blocktrans %}Your support will appear on the <a href="{{ c }}">
-current fundraiser page</a> shortly.{% endblocktrans %}</p>
+{% if offer.is_win %}
+    <p>{% trans "Full amount was successfully raised!" %}</p>
+
+    <p>{% blocktrans with due=offer.due end=offer.end %}The fundraiser
+            ends on {{ end }}. The book will be published by {{ due }}.{% endblocktrans %}</p>
+{% else %}
+    <p>{% blocktrans with b=object.title due=offer.due end=offer.end %}Your
+    donation will be spent on publishing
+    the book {{ b }} if the full amount is raised by {{ end }}.
+    The book will then be published by {{ due }}.{% endblocktrans %}</p>
+{% endif %}
+
+<p>{% include "funding/snippets/any_remaining.html" %}</p>
+
+{% url 'funding_current' as current %}
+<p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
 
 
-<p>{% trans "Tell your friends about the fundraiser!" %}</p>
+<p>{% trans "Tell your friends!" %}</p>
 
 <p>{% share current _("I support Wolne Lektury.") %}</p>
 
