@@ -1,13 +1,13 @@
 {% load i18n %}
 
 {% if offer.is_current %}
-        <p class="normal-text">
+        <p>
             {% include "funding/snippets/any_remaining.html" %}
         </p>
 {% else %}
-    <p class="date normal-text">{{ offer.start }} – {{ offer.end }}</p>
+    <p class="date">{{ offer.start }} – {{ offer.end }}</p>
     {% if offer.is_win %}
-        <p class="normal-text">
+        <p>
             {% if offer.book %}
                 {% blocktrans with bu=offer.book.get_absolute_url bt=offer.book %}The book
                 <a href="{{ bu }}">{{ bt }}</a> has been already published.{% endblocktrans %}
@@ -23,6 +23,6 @@
     {% endif %}
 
     {% if offer.remaining %}
-        <p class="normal-text">{% include "funding/snippets/any_remaining.html" %}</p>
+        <p>{% include "funding/snippets/any_remaining.html" %}</p>
     {% endif %}
 {% endif %}

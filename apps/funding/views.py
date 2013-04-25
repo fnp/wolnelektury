@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from datetime import date
 from django.views.decorators.cache import never_cache
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -51,13 +52,14 @@ class WLFundView(TemplateView):
 
         ctx = super(WLFundView, self).get_context_data()
         offers = []
-        for o in Offer.objects.all():
-            if o.state() == 'lose':
-                o.wlfund = o.sum()
+        
+        for o in Offer.past():
+            if o.is_win():
+                o.wlfund = o.sum() - o.target
                 if o.wlfund > 0:
                     offers.append(o)
-            elif o.state() == 'win':
-                o.wlfund = o.sum() - o.target
+            else:
+                o.wlfund = o.sum()
                 if o.wlfund > 0:
                     offers.append(o)
         amount = sum(o.wlfund for o in offers) - sum(o.amount for o in Spent.objects.all())
@@ -77,12 +79,13 @@ class OfferDetailView(FormView):
     backend = 'getpaid.backends.payu'
 
     def dispatch(self, request, slug=None):
-        if slug:
-            self.object = get_object_or_404(Offer.public(), slug=slug)
-        else:
-            self.object = Offer.current()
-            if self.object is None:
-                raise Http404
+        if getattr(self, 'object', None) is None:
+            if slug:
+                self.object = get_object_or_404(Offer.public(), slug=slug)
+            else:
+                self.object = Offer.current()
+                if self.object is None:
+                    raise Http404
         return super(OfferDetailView, self).dispatch(request, slug)
 
     def get_form(self, form_class):
@@ -102,9 +105,19 @@ class OfferDetailView(FormView):
         funding = form.save()
         # Skip getpaid.forms.PaymentMethodForm, go directly to the broker.
         payment = Payment.create(funding, self.backend)
-        gateway_url = payment.get_processor()(payment).get_gateway_url(self.request)
+        gateway_url_tuple = payment.get_processor()(payment).get_gateway_url(self.request)
         payment.change_status('in_progress')
-        return redirect(gateway_url)
+        return redirect(gateway_url_tuple[0])
+
+
+class CurrentView(OfferDetailView):
+    def dispatch(self, request, slug=None):
+        self.object = Offer.current()
+        if self.object is None:
+            raise Http404
+        elif slug != self.object.slug:
+            return redirect(reverse('funding_current', args=[self.object.slug]))
+        return super(CurrentView, self).dispatch(request, slug)
 
 
 class OfferListView(ListView):

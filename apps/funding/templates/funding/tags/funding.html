@@ -4,21 +4,20 @@
 {% spaceless %}
 <div class="funding" style="">
     {% if link and is_current %}
-        <a class="call" href="{{ offer.get_absolute_url }}">
+        <a class="call honking" href="{% url 'funding_current' offer.slug %}">
             {% trans "Support a book!" %}</a>
     {% endif %}
     <div class="description {% if link and is_current %}with-button{% endif %}"
         style="display: inline-block;">
+    {% if link %}<a href="{% if is_current %}{% url 'funding_current' offer.slug %}{% else %}{{ offer.get_absolute_url }}{% endif %}">{% endif %}
     <strong>
-        {% if link %}<a href="{{ offer.get_absolute_url }}">{% endif %}
         {{ offer }}
-        {% if link %}</a>{% endif %}
     </strong>
     <div class="progress"
         style="text-align: center; background-size: {{ percentage|stringformat:'.2f' }}% 1px;"
     >
         {% if sum %}
-            <span class="piece" style="float:left">{% trans "collected" %}: <em>{{ sum }} </em></span>
+            <span class="piece" style="float:left">{% trans "collected" %}: <em>{{ sum }} zł</em></span>
         {% endif %}
         {% if not is_win %}
             <span class="piece" style="float: right">{% trans "missing" %}: <em>{{ missing }} zł</em></span>
@@ -31,6 +30,7 @@
 
         <div style="clear: both"></div>
     </div>
+    {% if link %}</a>{% endif %}
     </div>
 </div>
 {% endspaceless %}

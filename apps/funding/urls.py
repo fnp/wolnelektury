@@ -6,11 +6,13 @@ from django.conf.urls import patterns, url, include
 
 from .models import Offer
 from .views import (WLFundView, OfferDetailView, OfferListView,
-                ThanksView, NoThanksView)
+                ThanksView, NoThanksView, CurrentView)
 
 
 urlpatterns = patterns('',
-    url(r'^$', OfferDetailView.as_view(), name='funding_current'),
+
+    url(r'^$', CurrentView.as_view(), name='funding_current'),
+    url(r'^teraz/(?P<slug>[^/]+)/$', CurrentView.as_view(), name='funding_current'),
     url(r'^lektura/$', OfferListView.as_view(), name='funding'),
     url(r'^lektura/(?P<slug>[^/]+)/$', OfferDetailView.as_view(), name='funding_offer'),
     url(r'^fundusz/$', WLFundView.as_view(), name='funding_wlfund'),

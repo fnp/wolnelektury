@@ -3,9 +3,12 @@
 {% load i18n %}
 {% load funding_tags %}
 {% load pagination_tags %}
+{% load fnp_share %}
 
 
 {% block titleextra %}{{ object }}{% endblock %}
+
+{% block metadescription %}Wesprzyj kolejną publikację Wolnych Lektur!{% endblock %}
 
 
 {% block body %}
@@ -16,8 +19,12 @@
 
 {% funding object %}
 <div class="white-box">
+    <div class="normal-text">
     {% offer_status object %}
     {% offer_status_more object %}
+    <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
+    </div>
+    
 
     {% if object.is_current %}
         <div class="normal-text">
@@ -26,10 +33,18 @@
                 {% csrf_token %}
                 <table>
                 {{ form.as_table }}
-                <tr><td></td><td><button class="honking" type="submit">{% trans "Donate!" %}</button></td></tr>
+                <tr><td></td><td>
+                    <button type="submit" style="border: none; background: none; cursor: pointer">
+                    <img alt="{% trans 'Donate!' %}" src="http://static.payu.com/pl/standard/partners/buttons/payu_account_button_01.png" />
+                    </button>
+                    </td></tr>
                 </table>
             </form>
         </div>
+
+        {% url 'funding_current' object.slug as current %}
+        <p class="normal-text">{% trans "Tell your friends!" %}</p>
+        <p class="share">{% share current _("Support Wolne Lektury!") "big" %}</p>
     {% endif %}
 
     <p class="normal-text"><a href="{% url 'funding' %}">{% trans "See all fundraisers." %}</a></p>

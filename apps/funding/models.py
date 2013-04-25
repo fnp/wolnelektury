@@ -61,10 +61,16 @@ class Offer(models.Model):
             return None
 
     @classmethod
+    def past(cls):
+        """ QuerySet for all current and past fundraisers. """
+        today = date.today()
+        return cls.objects.filter(end__lt=today)
+
+    @classmethod
     def public(cls):
         """ QuerySet for all current and past fundraisers. """
         today = date.today()
-        return cls.objects.filter(start__lte=today)        
+        return cls.objects.filter(start__lte=today)
 
     def get_perks(self, amount=None):
         """ Finds all the perks for the offer.
@@ -165,6 +171,11 @@ def new_payment_query_listener(sender, order=None, payment=None, **kwargs):
     payment.currency = 'PLN'
 getpaid.signals.new_payment_query.connect(new_payment_query_listener)
 
+
+def user_data_query_listener(sender, order, user_data, **kwargs):
+    """ Set user data for payment. """
+    user_data['email'] = order.email
+getpaid.signals.user_data_query.connect(user_data_query_listener)
 
 def payment_status_changed_listener(sender, instance, old_status, new_status, **kwargs):
     """ React to status changes from getpaid. """

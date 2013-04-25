@@ -12,7 +12,10 @@
 the full amount needed for publishing a book is not raised in time,
 the funds are spent on <a href="{{r}}">other books waiting for
 publication</a>. The same thing happens with any money remaining
-from successful fundraisers.{% endblocktrans %}</p>
+from successful fundraisers.{% endblocktrans %}
+
+<a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
+
 <p>{% trans "Spending these remaining funds is recorded in this table." %}</p>
 </div>
 
@@ -30,18 +33,18 @@ from successful fundraisers.{% endblocktrans %}</p>
     {% if tag == 'spent' %}
         <tr class="funding-minus">
             <td><div>{{ entry.timestamp }}</div></td>
-            <td>{% trans "Money spent on publishing the book" %}:
+            <td><div>{% trans "Money spent on publishing the book" %}:
                 <a href="{{ entry.book.get_absolute_url }}">
-                {{ entry.book }}</a></td>
+                {{ entry.book }}</a></div></td>
             <td><div>-{{ entry.amount }} zł</div></td>
             <td><div>{{ entry.total }} zł</div></td>
         </tr>
     {% else %}
         <tr class="funding-plus">
             <td><div>{{ entry.end }}</div></td>
-            <td>{% trans "Money remaining from the fundraiser for" %}:
+            <td><div>{% trans "Money remaining from the fundraiser for" %}:
                 <a href="{{ entry.get_absolute_url }}">
-                {{ entry }}</a></td>
+                {{ entry }}</a></div></td>
             <td><div>{{ entry.total }} zł</div></td>
             <td><div>+{{ entry.wlfund }} zł</div></td>
         </tr>

@@ -55,4 +55,4 @@ pyoai
 egenix-mx-base
 sunburnt
 
-django-getpaid
+django-getpaid>=1.4,<1.5

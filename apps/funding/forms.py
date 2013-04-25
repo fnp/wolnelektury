@@ -15,7 +15,7 @@ class FundingForm(forms.Form):
             "If we need any data for your perks, we'll get to you by e-mail anyway."))
     email = forms.EmailField(label=_("Contact e-mail"),
         help_text=_("Won't be publicised. <br/>"
-            "We'll use it to contact you about your perks and fundraiser status updates.<br/> "
+            "We'll use it to contact you about your perks and fundraiser status and payment updates.<br/> "
             "Leave empty if you prefer not to be contacted by us."), required=False)
 
     def __init__(self, offer, *args, **kwargs):

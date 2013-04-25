@@ -16,6 +16,7 @@ def funding(context, offer=None, link=False, add_class=""):
         'offer': offer,
         'sum': offer_sum,
         'is_current': offer.is_current(),
+        'is_win': offer_sum >= offer.target,
         'missing': offer.target - offer_sum,
         'percentage': 100 * offer_sum / offer.target,
         'link': link,

@@ -2,35 +2,28 @@
     background: orange;
 
     a.call {
-        font-size: 1.5em;
         height: 1.2em;
         width: 13em;
-        position: relative;
         padding: .35em .5em;
         margin: .5em;
         display: inline-block;
         vertical-align: top;
-        box-shadow: 0.2em 0.2em 0.3em #888888;
         text-align: center;
-        background: white;
-        color: #4E56C8;
-    }
-    a.call:hover {
-        box-shadow: none;
-        top: .1em;
-        left: .1em;
+
+        background: lighten(#018189, .05);
     }
     .description {
         display: inline-block;
         padding-left: .6em;
+        a {
+            display: block;
+            color: black;
+        }
     }
     strong {
         font-size: 1.5em;
         padding: .2em .2em 0;
         display: block;
-        a {
-            color: black;
-        }
     }
     .progress {
         .piece {
@@ -82,7 +75,7 @@
 
 
 
-button.honking {
+.honking {
     background: #018189;
     font-size: 1.5em;
     padding: .5em;
@@ -91,9 +84,20 @@ button.honking {
     box-shadow: 0.2em 0.2em 0.3em #888888;
     position: relative;
 }
-button.honking:hover {
+.honking:hover {
     box-shadow: none;
     top: .1em;
     left: .1em;
-    
+}
+
+
+
+.share {
+    a {
+        margin-right: 1.5em;
+
+        img {
+            vertical-align: middle;
+        }
+    }
 }

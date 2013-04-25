@@ -71,7 +71,6 @@ INSTALLED_APPS_OUR = [
     ]
 
 GETPAID_BACKENDS = (
-    'getpaid.backends.dummy',
     'getpaid.backends.payu',
 )
 
@@ -97,7 +96,6 @@ INSTALLED_APPS_CONTRIB = [
     #'django_nose',
     'fnpdjango',
     'getpaid',
-    'getpaid.backends.dummy',
     'getpaid.backends.payu',
 
     #allauth stuff

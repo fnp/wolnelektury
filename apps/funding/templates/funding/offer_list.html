@@ -22,7 +22,7 @@
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}
 
-    <div class="normal-text">
+    <div class="white-box normal-text">
         {% offer_status offer %}
     </div>
 
@@ -33,7 +33,6 @@
         {% offer_status_more offer %}
     </div>
 
-    </div>
     {% if is_current and not forloop.is_last %}
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}

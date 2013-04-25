@@ -17,21 +17,22 @@
     <p>{% blocktrans with due=offer.due end=offer.end %}The fundraiser
             ends on {{ end }}. The book will be published by {{ due }}.{% endblocktrans %}</p>
 {% else %}
-    <p>{% blocktrans with b=object.title due=offer.due end=offer.end %}Your
+    <p>{% blocktrans with b=offer.title due=offer.due end=offer.end %}Your
     donation will be spent on publishing
     the book {{ b }} if the full amount is raised by {{ end }}.
     The book will then be published by {{ due }}.{% endblocktrans %}</p>
 {% endif %}
 
-<p>{% include "funding/snippets/any_remaining.html" %}</p>
+<p>{% include "funding/snippets/any_remaining.html" %}
 
-{% url 'funding_current' as current %}
+<a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
+
+{% url 'funding_current' offer.slug as current %}
 <p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
 
 
 <p>{% trans "Tell your friends!" %}</p>
-
-<p>{% share current _("I support Wolne Lektury.") %}</p>
+<p class="share">{% share current _("I support Wolne Lektury.") "big" %}</p>
 
 </div>
 
