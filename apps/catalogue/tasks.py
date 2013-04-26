@@ -6,13 +6,14 @@ from datetime import datetime
 from traceback import print_exc
 from celery.task import task
 from django.conf import settings
+from wolnelektury.utils import localtime_to_utc
 
 
 # TODO: move to model?
 def touch_tag(tag):
     update_dict = {
         'book_count': tag.get_count(),
-        'changed_at': datetime.now(),
+        'changed_at': localtime_to_utc(datetime.now()),
     }
 
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
