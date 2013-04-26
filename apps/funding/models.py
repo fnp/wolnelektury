@@ -17,8 +17,8 @@ class Offer(models.Model):
     slug = models.SlugField(_('slug'))
     description = models.TextField(_('description'), blank=True)
     target = models.DecimalField(_('target'), decimal_places=2, max_digits=10)
-    start = models.DateField(_('start'))
-    end = models.DateField(_('end'))
+    start = models.DateField(_('start'), db_index=True)
+    end = models.DateField(_('end'), db_index=True)
     due = models.DateField(_('due'),
         help_text=_('When will it be published if the money is raised.'))
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
@@ -125,7 +125,7 @@ class Funding(models.Model):
     name = models.CharField(_('name'), max_length=127, blank=True)
     email = models.EmailField(_('email'), blank=True)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
-    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
+    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True, db_index=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
 
     # Any additional info needed for perks?

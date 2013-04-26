@@ -8,7 +8,6 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
-from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, FormView, DetailView, ListView
 import getpaid.backends.payu
 from getpaid.models import Payment
@@ -63,12 +62,11 @@ class WLFundView(TemplateView):
                 if o.wlfund > 0:
                     offers.append(o)
         amount = sum(o.wlfund for o in offers) - sum(o.amount for o in Spent.objects.all())
-        print offers
 
         ctx['amount'] = amount
         ctx['log'] = add_total(amount, mix(
             (offers, lambda x: x.end, 'offer'),
-            (Spent.objects.all(), lambda x: x.timestamp, 'spent'),
+            (Spent.objects.all().select_related(), lambda x: x.timestamp, 'spent'),
         ))
         return ctx
 
