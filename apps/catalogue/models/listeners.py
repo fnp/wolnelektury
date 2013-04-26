@@ -53,6 +53,7 @@ post_save.connect(_post_save_handler)
 
 def post_publish(sender, **kwargs):
     permanent_cache.delete('catalogue.book_list')
+    permanent_cache.delete('catalogue.catalogue')
 Book.published.connect(post_publish)
 
 

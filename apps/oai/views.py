@@ -44,7 +44,6 @@ def qdc_writer(element, metadata):
 
     for name in ['hasPart', 'isPartOf']:
         for value in map.get(name, []):
-            print "%s %s" % (name, value)
             e = SubElement(element, nsdcterms(name), nsmap=nsmap)
             e.text = value
 

@@ -26,7 +26,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = [
-    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -37,7 +36,6 @@ MIDDLEWARE_CLASSES = [
     'piwik.django.middleware.PiwikMiddleware',
     'maintenancemode.middleware.MaintenanceModeMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
 ]

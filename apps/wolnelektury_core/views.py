@@ -19,7 +19,6 @@ from ajaxable.utils import placeholdized
 from social.templatetags.social_tags import choose_cite
 
 
-@never_cache
 def main_page(request):
     last_published = Book.objects.filter(parent=None).order_by('-created_at')[:4]
     cite = choose_cite(RequestContext(request))
@@ -90,6 +89,7 @@ def logout_then_redirect(request):
     return HttpResponseRedirect(urlquote_plus(request.GET.get('next', '/'), safe='/?='))
 
 
+@never_cache
 def clock(request):
     """ Provides server time for jquery.countdown,
     in a format suitable for Date.parse()
