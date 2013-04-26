@@ -18,7 +18,6 @@ from django.utils.datastructures import SortedDict
 from django.utils.http import urlquote_plus
 from django.utils import translation
 from django.utils.translation import ugettext as _, ugettext_lazy
-from django.views.decorators.cache import never_cache
 from django.views.decorators.vary import vary_on_headers
 
 from ajaxable.utils import JSONResponse, AjaxableFormView
@@ -37,16 +36,17 @@ permanent_cache = get_cache('permanent')
 
 @vary_on_headers('X-Requested-With')
 def catalogue(request):
-    tags = models.Tag.objects.exclude(
-        category__in=('set', 'book')).exclude(book_count=0)
-    tags = list(tags)
-    for tag in tags:
-        tag.count = tag.book_count
-    categories = split_tags(tags)
-    fragment_tags = categories.get('theme', [])
-    collections = models.Collection.objects.all()
-
-    if request.is_ajax():
+    cache_key='catalogue.catalogue'
+    output = permanent_cache.get(cache_key)
+    if output is None:
+        tags = models.Tag.objects.exclude(
+            category__in=('set', 'book')).exclude(book_count=0)
+        tags = list(tags)
+        for tag in tags:
+            tag.count = tag.book_count
+        categories = split_tags(tags)
+        fragment_tags = categories.get('theme', [])
+        collections = models.Collection.objects.all()
         render_tag_list = lambda x: render_to_string(
             'catalogue/tag_list.html', tag_list(x))
         output = {'theme': render_tag_list(fragment_tags)}
@@ -54,13 +54,16 @@ def catalogue(request):
             output[category] = render_tag_list(tags)
         output['collections'] = render_to_string(
             'catalogue/collection_list.html', collection_list(collections))
+        permanent_cache.set(cache_key, output)
+    if request.is_ajax():
         return JSONResponse(output)
     else:
         return render_to_response('catalogue/catalogue.html', locals(),
             context_instance=RequestContext(request))
 
 
-def book_list(request, filter=None, template_name='catalogue/book_list.html',
+def book_list(request, filter=None, get_filter=None,
+        template_name='catalogue/book_list.html',
         nav_template_name='catalogue/snippets/book_list_nav.html',
         list_template_name='catalogue/snippets/book_list.html',
         cache_key='catalogue.book_list',
@@ -71,6 +74,8 @@ def book_list(request, filter=None, template_name='catalogue/book_list.html',
     if cached is not None:
         rendered_nav, rendered_book_list = cached
     else:
+        if get_filter:
+            filter = get_filter()
         books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
         books_nav = SortedDict()
         for tag in books_by_author:
@@ -98,11 +103,13 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(models.Collection, slug=slug)
-    slugs = coll.book_slugs.split()
-    # allow URIs
-    slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
-                for slug in slugs]
-    return book_list(request, Q(slug__in=slugs),
+    def get_filter():
+        slugs = coll.book_slugs.split()
+        # allow URIs
+        slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
+                    for slug in slugs]
+        return Q(slug__in=slugs)
+    return book_list(request, get_filter=get_filter,
                      template_name='catalogue/collection.html',
                      cache_key='catalogue.collection:%s' % coll.slug,
                      context={'collection': coll})
@@ -122,7 +129,6 @@ def differentiate_tags(request, tags, ambiguous_slugs):
                 context_instance=RequestContext(request))
 
 
-@never_cache
 def tagged_object_list(request, tags=''):
     try:
         tags = models.Tag.get_tag_list(tags)
@@ -231,7 +237,6 @@ def book_fragments(request, slug, theme_slug):
         context_instance=RequestContext(request))
 
 
-@never_cache
 def book_detail(request, slug):
     try:
         book = models.Book.objects.get(slug=slug)
@@ -287,13 +292,6 @@ def book_text(request, slug):
 
     if not book.has_html_file():
         raise Http404
-    book_themes = {}
-    for fragment in book.fragments.all().iterator():
-        for theme in fragment.tags.filter(category='theme').iterator():
-            book_themes.setdefault(theme, []).append(fragment)
-
-    book_themes = book_themes.items()
-    book_themes.sort(key=lambda s: s[0].sort_key)
     related = book.related_info()
     return render_to_response('catalogue/book_text.html', locals(),
         context_instance=RequestContext(request))

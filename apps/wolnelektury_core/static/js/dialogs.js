@@ -148,7 +148,7 @@
         };
 
         var ajaxable_callbacks = {
-            'social-book-sets': location.reload
+            'social-book-sets': function() {location.reload();}
         };
 
 

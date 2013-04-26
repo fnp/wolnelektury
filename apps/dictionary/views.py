@@ -11,7 +11,7 @@ class NotesView(ListView):
         self.letters = ["0-9"] + [chr(a) for a in range(ord('a'), ord('z')+1)]
         self.letter = self.kwargs.get('letter')
 
-        objects = Note.objects.all()
+        objects = Note.objects.select_related('book').all()
         if self.letter == "0-9":
             objects = objects.filter(sort_key__regex=r"^[0-9]")
         elif self.letter:

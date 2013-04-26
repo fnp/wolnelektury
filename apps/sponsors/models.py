@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import json
 import time
 from StringIO import StringIO
 from django.db import models
@@ -85,6 +86,9 @@ class SponsorPage(models.Model):
     html = property(fget=html)
 
     def save(self, *args, **kwargs):
+        if isinstance(self.sponsors, basestring):
+            # Walkaround for weird jsonfield 'no-decode' optimization.
+            self.sponsors = json.loads(self.sponsors)
         self.render_sprite()
         self._html = render_to_string('sponsors/page.html', {
             'sponsors': self.populated_sponsors(),
