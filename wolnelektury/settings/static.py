@@ -30,6 +30,7 @@ PIPELINE_CSS = {
             'css/catalogue.css',
             'sponsors/css/sponsors.css',
             'css/auth.css',
+            'libraries/libraries.css',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
