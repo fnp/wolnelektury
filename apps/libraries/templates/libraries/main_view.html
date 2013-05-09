@@ -5,10 +5,10 @@
 
 
 {% block body %}
-    <h1>{% trans 'Libraries directory' %}</h1>
+    <h1>{% trans 'Libraries directory' %}: {{ catalog.name }}</h1>
 
     <div class="libraries-list">
-        {% for library in libraries %}
+        {% for library in catalog.libraries.all %}
         <div class="libraries-list-item">
             <div class="libraries-list-item-header"><a href="{{library.url}}">{{library.name}}</a></div>
             <div class="libraries-list-item-description">
