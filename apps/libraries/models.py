@@ -15,7 +15,11 @@ class Catalog(models.Model):
     def __unicode__(self):
         return self.name
         
-    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('library_view', [self.slug])
+        
+        
 class Library(models.Model):
     """Represent a single library in the libraries dictionary"""
 

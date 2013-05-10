@@ -1,22 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block titleextra %}{% trans 'Libraries directory' %}{% endblock %}
+{% block titleextra %}{% trans 'Library directories' %}{% endblock %}
 
 
 {% block body %}
-    <h1>{% trans 'Libraries directory' %}: {{ catalog.name }}</h1>
-
-    <div class="libraries-list">
-        {% for library in catalog.libraries.all %}
-        <div class="libraries-list-item">
-            <div class="libraries-list-item-header"><a href="{{library.url}}">{{library.name}}</a></div>
-            <div class="libraries-list-item-description">
-                
-                {% autoescape off %}{{library.description}}{% endautoescape%}
-            </div>
-        </div>
+    <h1>{% trans 'Library directories' %}</h1>
+    <ul>
+        {% for catalog in catalogs %}
+            <li><a href="{{catalog.get_absolute_url}}">{{catalog}}</a></li>
         {% endfor %}
-    </div>
+    </ul>
 
 {% endblock %}
