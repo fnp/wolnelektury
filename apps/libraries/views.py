@@ -9,7 +9,7 @@ def main_view(request):
     context['catalogs'] = Catalog.objects.all()
     return render_to_response('libraries/main_view.html', context_instance = context)
 
-def library_view(request, slug):
+def catalog_view(request, slug):
     context = RequestContext(request)
     context['catalog'] = get_object_or_404(Catalog.objects.filter(slug = slug).select_related())
-    return render_to_response('libraries/library_view.html', context_instance = context)
+    return render_to_response('libraries/catalog_view.html', context_instance = context)
