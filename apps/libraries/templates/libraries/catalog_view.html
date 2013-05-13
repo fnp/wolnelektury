@@ -10,10 +10,10 @@
     <div class="libraries-list">
         {% for library in catalog.libraries.all %}
         <div class="libraries-list-item">
-            <div class="libraries-list-item-header"><a href="{{library.url}}">{{library.name}}</a></div>
+            <div class="libraries-list-item-header"><a href="{{library.get_absolute_url}}">{{library.name}}</a></div>
             <div class="libraries-list-item-description">
                 
-                {% autoescape off %}{{library.description}}{% endautoescape%}
+                
             </div>
         </div>
         {% endfor %}
