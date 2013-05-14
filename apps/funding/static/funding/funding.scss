@@ -1,9 +1,11 @@
 .funding {
     background: orange;
-
+    margin: auto;
+    padding: 5px;
+    width: 97.5em;
     a.call {
         height: 1.2em;
-        width: 13em;
+        width: 9em;
         padding: .35em .5em;
         margin: .5em;
         display: inline-block;
@@ -18,12 +20,13 @@
         a {
             display: block;
             color: black;
+            padding: 0 3px;
         }
     }
     strong {
         font-size: 1.5em;
-        padding: .2em .2em 0;
-        display: block;
+        padding: .2em 0 0;
+        //display: block;
     }
     .progress {
         .piece {
@@ -31,7 +34,7 @@
             padding: .3em .5em;
         }
         width: 95.7em;
-        margin: .1em .3em .4em;
+        margin: .3em 0 .4em;
         border-radius: 2em;
         background-image: url(/static/img/progress-pixel.png);
         background-repeat: repeat-y;
@@ -41,9 +44,17 @@
     .with-button .progress {
         width: 73em;
     }
+    
+    .funding-title {
+        font-size: 1.1em;
+    }
+    .funding-title-strong {
+        @extend .funding-title;
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    
 }
-
-
 
 
 .wlfund {
