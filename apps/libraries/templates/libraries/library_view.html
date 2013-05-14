@@ -6,10 +6,8 @@
 
 {% block body %}
     <h1>{{ library.name }}</h1>
-    <div class="left-column">
-        <div class="normal-text">
-            <p>Adres strony www: <a href="{{library.url}}">{{library.url}}</a></p>
-            {% autoescape off %}{{library.description}}{% endautoescape%}
-        </div>
+    <div class="normal-text">
+        <p>Adres strony www: <a href="{{library.url}}">{{library.url}}</a></p>
+        {% autoescape off %}{{library.description}}{% endautoescape%}
     </div>
 {% endblock %}
