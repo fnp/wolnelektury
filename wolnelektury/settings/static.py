@@ -87,7 +87,8 @@ PIPELINE_JS = {
             'sponsors/js/sponsors.js',
             'player/openplayer.js',
             'js/search.js',
-
+            'funding/funding.js',
+            
             'js/annoy.js',
             ),
         'output_filename': 'js/base.min.js',

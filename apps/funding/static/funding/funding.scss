@@ -2,6 +2,7 @@
     background: orange;
     margin: auto;
     padding: 5px 0;
+    position: relative;
     a.call {
         height: 1.2em;
         width: 9em;
@@ -52,7 +53,11 @@
         font-weight: bold;
         font-size: 1.5em;
     }
-    
+    .close {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+    }
 }
 
 .funding-top-header {
@@ -115,4 +120,16 @@
             vertical-align: middle;
         }
     }
+}
+
+.funding-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index:2;
+    background: orange;
+    cursor:pointer;
+    padding: .2em 1em;
+    border-radius: 0 0 0 1em;
+    font-size: 13px;
 }

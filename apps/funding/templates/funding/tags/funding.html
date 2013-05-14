@@ -2,7 +2,8 @@
 {% load time_tags %}
 {% if offer %}
 {% spaceless %}
-<div class="funding {{ add_class }}" style="">
+<div class="funding {{ add_class }}" data-offer-id="{{offer.id}}" style="">
+    {% if closeable %}<a href="#" class="close">X</a>{% endif %}
     {% if link and is_current %}
         <div style="float:left; padding-right: .6em;">
             <a class="call honking" href="{% url 'funding_current' offer.slug %}">
@@ -39,5 +40,8 @@
     </div>
     <div style="clear: both"></div>
 </div>
+{% if closeable %}
+    <div class="funding-handle">{% trans "Help free the book!" %}</div>
+{% endif %}
 {% endspaceless %}
 {% endif %}
