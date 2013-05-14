@@ -2,7 +2,7 @@
 {% load time_tags %}
 {% if offer %}
 {% spaceless %}
-<div class="funding" style="">
+<div class="funding {{ add_class }}" style="">
     {% if link and is_current %}
         <div style="float:left; padding-right: .6em;">
             <a class="call honking" href="{% url 'funding_current' offer.slug %}">

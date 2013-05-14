@@ -1,8 +1,7 @@
 .funding {
     background: orange;
     margin: auto;
-    padding: 5px;
-    width: 97.5em;
+    padding: 5px 0;
     a.call {
         height: 1.2em;
         width: 9em;
@@ -42,7 +41,7 @@
         box-shadow: .1em .1em .1em #888;
     }
     .with-button .progress {
-        width: 73em;
+        width: 78em;
     }
     
     .funding-title {
@@ -54,6 +53,11 @@
         font-size: 1.5em;
     }
     
+}
+
+.funding-top-header {
+    @extend: .funding;
+    width: 97.5em;
 }
 
 
