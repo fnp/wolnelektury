@@ -16,7 +16,7 @@
     <div class="description {% if link and is_current %}with-button{% endif %}"
         style="display: inline-block;">
     {% if link %}<a href="{% if is_current %}{% url 'funding_current' offer.slug %}{% else %}{{ offer.get_absolute_url }}{% endif %}">{% endif %}
-    {% if is_current %}<strong style="">{% trans "Help free the book!" %}</strong>{% endif %}
+    {% if is_current %}<strong style="margin-right: .6em;">{% trans "Help free the book!" %}</strong>{% endif %}
     <span class="funding-title{% if not is_current %}-strong{% endif %}">{{ offer }}</span>
 
     <div class="progress"
