@@ -25,10 +25,10 @@
         style="text-align: center; background-size: {{ percentage|stringformat:'.2f' }}% 1px;"
     >
         {% if sum %}
-            <span class="piece" style="float:left">{% trans "missing" %}: {{ missing }} zł</span>
+            <span class="piece" style="float:left">{% trans "collected" %}: {{ sum }} zł</span>
         {% endif %}
         {% if not is_win %}
-            <span class="piece" style="float: right">{% trans "collected" %}: {{ sum }} zł</span>
+            <span class="piece" style="float: right">{% trans "needed" %}: {{ offer.target }} zł</span>
         {% endif %}
         {% if is_current %}
             <span class="piece" style="display:inline-block;margin-right: 0em;">{% trans "until fundraiser end" %}:

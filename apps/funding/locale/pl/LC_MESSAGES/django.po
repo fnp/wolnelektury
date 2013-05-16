@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-16 12:40+0200\n"
+"POT-Creation-Date: 2013-05-16 16:06+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,8 +39,8 @@ msgid ""
 "We'll use it to contact you about your perks and fundraiser status and "
 "payment updates.<br/> Won't be publicised."
 msgstr ""
-"Użyjemy go do kontaktu w sprawie prezentów i informacji o zmianach statusu zbiórki i kolejnych akcjach.<br/>"
-"Nie będzie publikowany."
+"Użyjemy go do kontaktu w sprawie prezentów i informacji o zmianach statusu "
+"zbiórki i kolejnych akcjach.<br/>Nie będzie publikowany."
 
 #: models.py:15
 msgid "author"
@@ -303,20 +303,20 @@ msgstr ""
 msgid "Support!"
 msgstr "Wesprzyj!"
 
-#: templates/funding/tags/funding.html:19
-#: templates/funding/tags/funding.html:44
+#: templates/funding/tags/funding.html:20
+#: templates/funding/tags/funding.html:46
 msgid "Help free the book!"
 msgstr "Pomóż uwolnić książkę!"
 
-#: templates/funding/tags/funding.html:26
-msgid "missing"
-msgstr "brakuje"
-
-#: templates/funding/tags/funding.html:29
+#: templates/funding/tags/funding.html:28
 msgid "collected"
 msgstr "zebrane"
 
-#: templates/funding/tags/funding.html:32
+#: templates/funding/tags/funding.html:31
+msgid "needed"
+msgstr "potrzebujemy"
+
+#: templates/funding/tags/funding.html:34
 msgid "until fundraiser end"
 msgstr "do końca zbiórki"
 
