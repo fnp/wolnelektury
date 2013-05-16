@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-14 12:28+0200\n"
+"POT-Creation-Date: 2013-05-16 12:19+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr "tytuł"
 msgid "slug"
 msgstr "slug"
 
-#: models.py:18 models.py:106
+#: models.py:18 models.py:112
 msgid "description"
 msgstr "opis"
 
@@ -95,63 +95,71 @@ msgstr "URL na Redakcji"
 msgid "Published book."
 msgstr "Opublikowana książka."
 
-#: models.py:29 models.py:103 models.py:124
+#: models.py:27
+msgid "Cover"
+msgstr "Okładka"
+
+#: models.py:31
+msgid "Cover preview"
+msgstr "Podgląd okładki"
+
+#: models.py:35 models.py:109 models.py:130
 msgid "offer"
 msgstr "zbiórka"
 
-#: models.py:30
+#: models.py:36
 msgid "offers"
 msgstr "zbiórki"
 
-#: models.py:104
+#: models.py:110
 msgid "price"
 msgstr "cena"
 
-#: models.py:105 models.py:125
+#: models.py:111 models.py:131
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:107
+#: models.py:113
 msgid "end date"
 msgstr "data końcowa"
 
-#: models.py:110
+#: models.py:116
 msgid "perk"
 msgstr "prezent"
 
-#: models.py:111 models.py:129
+#: models.py:117 models.py:135
 msgid "perks"
 msgstr "prezenty"
 
-#: models.py:126
+#: models.py:132
 msgid "email"
 msgstr "e-mail"
 
-#: models.py:127 models.py:156
+#: models.py:133 models.py:162
 msgid "amount"
 msgstr "kwota"
 
-#: models.py:128
+#: models.py:134
 msgid "payed at"
 msgstr "data wpłaty"
 
-#: models.py:139
+#: models.py:145
 msgid "funding"
 msgstr "wpłata"
 
-#: models.py:140
+#: models.py:146
 msgid "fundings"
 msgstr "wpłaty"
 
-#: models.py:157
+#: models.py:163
 msgid "when"
 msgstr "kiedy"
 
-#: models.py:160
+#: models.py:166
 msgid "money spent on a book"
 msgstr "pieniądze wydane na książkę"
 
-#: models.py:161
+#: models.py:167
 msgid "money spent on books"
 msgstr "pieniądze wydane na książki"
 
@@ -167,36 +175,36 @@ msgstr "Twoje wsparcie nie zostało zaksięgowane."
 msgid "Go back to the current fundraiser."
 msgstr "Wróć do aktualnej zbiórki."
 
-#: templates/funding/offer_detail.html:25 templates/funding/thanks.html:28
-#: templates/funding/wlfund.html:17 templates/funding/tags/funding.html:11
+#: templates/funding/offer_detail.html:27 templates/funding/thanks.html:28
+#: templates/funding/wlfund.html:17 templates/funding/tags/funding.html:12
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
 
-#: templates/funding/offer_detail.html:31
+#: templates/funding/offer_detail.html:34
 msgid "Support the publication"
 msgstr "Wesprzyj publikację"
 
-#: templates/funding/offer_detail.html:38
+#: templates/funding/offer_detail.html:41
 msgid "Donate!"
 msgstr "Wpłać!"
 
-#: templates/funding/offer_detail.html:46 templates/funding/thanks.html:34
+#: templates/funding/offer_detail.html:49 templates/funding/thanks.html:34
 msgid "Tell your friends!"
 msgstr "Powiedz swoim znajomym!"
 
-#: templates/funding/offer_detail.html:47
+#: templates/funding/offer_detail.html:50
 msgid "Support Wolne Lektury!"
 msgstr "Wesprzyj Wolne Lektury!"
 
-#: templates/funding/offer_detail.html:50
+#: templates/funding/offer_detail.html:53
 msgid "See all fundraisers."
 msgstr "Zobacz wszystkie zbiórki."
 
-#: templates/funding/offer_detail.html:55
+#: templates/funding/offer_detail.html:58
 msgid "Supporters"
 msgstr "Wpłaty"
 
-#: templates/funding/offer_detail.html:69
+#: templates/funding/offer_detail.html:72
 msgid "Anonymous"
 msgstr "Anonim"
 
@@ -300,23 +308,24 @@ msgstr ""
 "Wszelkie <a href=\"%(wlfund)s\">pozostałe środki</a> przeznaczymy na inne "
 "książki czekające na publikację w serwisie."
 
-#: templates/funding/tags/funding.html:9
+#: templates/funding/tags/funding.html:10
 msgid "Support!"
 msgstr "Wesprzyj!"
 
-#: templates/funding/tags/funding.html:18
+#: templates/funding/tags/funding.html:19
+#: templates/funding/tags/funding.html:44
 msgid "Help free the book!"
 msgstr "Pomóż uwolnić książkę!"
 
-#: templates/funding/tags/funding.html:24
+#: templates/funding/tags/funding.html:26
 msgid "missing"
 msgstr "brakuje"
 
-#: templates/funding/tags/funding.html:27
+#: templates/funding/tags/funding.html:29
 msgid "collected"
 msgstr "zebrane"
 
-#: templates/funding/tags/funding.html:30
+#: templates/funding/tags/funding.html:32
 msgid "until fundraiser end"
 msgstr "do końca zbiórki"
 
