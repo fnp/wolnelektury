@@ -22,6 +22,7 @@
             <img src="{{ object.cover.url }}" class="funding-cover"/>
         {% endif %}
         <div class="normal-text">
+        <h3>{% trans "Help free the book!" %}</h3>
         {{ object.description|safe }}
         {% offer_status object %}
         {% offer_status_more object %}

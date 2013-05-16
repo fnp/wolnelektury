@@ -141,4 +141,8 @@
 
 .funding-details-intro {
     padding-top: 1em;
+    
+    h3:first-of-type {
+        margin-top: 0;
+    }
 }
