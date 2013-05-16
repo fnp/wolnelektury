@@ -10,13 +10,10 @@ class FundingForm(forms.Form):
     amount = forms.DecimalField(label=_("Amount"), decimal_places=2,
         widget=PerksAmountWidget())
     name = forms.CharField(label=_("Name"), required=False,
-        help_text=_("Optional name for public list of contributors. <br/>"
-            "Leave empty if you prefer to remain anonymous. <br/>"
-            "If we need any data for your perks, we'll get to you by e-mail anyway."))
+        help_text=_("Optional name for public list of contributors"))
     email = forms.EmailField(label=_("Contact e-mail"),
-        help_text=_("Won't be publicised. <br/>"
-            "We'll use it to contact you about your perks and fundraiser status and payment updates.<br/> "
-            "Leave empty if you prefer not to be contacted by us."), required=False)
+        help_text=_("We'll use it to contact you about your perks and fundraiser status and payment updates.<br/> "
+            "Won't be publicised."), required=False)
 
     def __init__(self, offer, *args, **kwargs):
         self.offer = offer

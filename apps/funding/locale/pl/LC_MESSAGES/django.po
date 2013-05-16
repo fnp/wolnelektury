@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-16 12:19+0200\n"
+"POT-Creation-Date: 2013-05-16 12:40+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,32 +24,23 @@ msgstr "Kwota"
 
 #: forms.py:12
 msgid "Name"
-msgstr "Imię i nazwisko"
+msgstr "Imię i nazwisko na listę darczyńców"
 
 #: forms.py:13
-msgid ""
-"Optional name for public list of contributors. <br/>Leave empty if you "
-"prefer to remain anonymous. <br/>If we need any data for your perks, we'll "
-"get to you by e-mail anyway."
-msgstr ""
-"Opcjonalnie imię i nazwisko lub pseudonim do listy darczyńców. <br/>Zostaw "
-"puste, jeśli wolisz pozostać anonimową/anonimowym.<br/>Jeśli będziemy "
-"potrzebować Twoich danych, by wysłać Ci prezenty, zwrócimy się do Ciebie e-"
-"mailem."
+msgid "Optional name for public list of contributors"
+msgstr "Opcjonalnie imię i nazwisko lub pseudonim do listy darczyńców."
 
-#: forms.py:16
+#: forms.py:14
 msgid "Contact e-mail"
 msgstr "E-mail kontaktowy"
 
-#: forms.py:17
+#: forms.py:15
 msgid ""
-"Won't be publicised. <br/>We'll use it to contact you about your perks and "
-"fundraiser status and payment updates.<br/> Leave empty if you prefer not to "
-"be contacted by us."
+"We'll use it to contact you about your perks and fundraiser status and "
+"payment updates.<br/> Won't be publicised."
 msgstr ""
-"Nie będzie publikowany.<br/>Użyjemy go do kontaktu w sprawie prezentów i "
-"informacji o zmianach statusu zbiórki i płatności.<br/>Nie wypełniaj, jeśli "
-"nie chcesz abyśmy się z Tobą kontaktowali."
+"Użyjemy go do kontaktu w sprawie prezentów i informacji o zmianach statusu zbiórki i kolejnych akcjach.<br/>"
+"Nie będzie publikowany."
 
 #: models.py:15
 msgid "author"
