@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("funding/tags/funding.html", takes_context=True)
-def funding(context, offer=None, link=False, closeable=False, add_class=""):
+def funding(context, offer=None, link=False, closeable=False, show_title=True, add_class=""):
     if offer is None and context.get('funding_no_show_current') is None:
         offer = Offer.current()
     if offer is None:
@@ -21,6 +21,7 @@ def funding(context, offer=None, link=False, closeable=False, add_class=""):
         'percentage': 100 * offer_sum / offer.target,
         'link': link,
         'closeable': closeable,
+        'show_title': show_title,
         'add_class': add_class,
     }
 

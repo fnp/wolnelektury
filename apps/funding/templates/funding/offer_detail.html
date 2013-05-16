@@ -17,14 +17,18 @@
 
 <div class="normal-text">{{ object.description|safe }}</div>
 
-{% funding object %}
+{% funding object show_title=False %}
 <div class="white-box">
+    {% if object.cover %}
+        <img src="{{ object.cover.url }}" class="funding-cover"/>
+    {% endif %}
     <div class="normal-text">
     {% offer_status object %}
     {% offer_status_more object %}
     <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
     </div>
     
+    <div style="clear:both;"></div>
 
     {% if object.is_current %}
         <div class="normal-text">
