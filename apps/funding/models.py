@@ -24,7 +24,13 @@ class Offer(models.Model):
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
     book = models.ForeignKey(Book, null=True, blank=True,
         help_text=_('Published book.'))
-
+    cover = models.ImageField(_('cover'), upload_to = 'funding/covers')
+        
+    def cover_img_tag(self):
+        return u'<img src="%s" />' % self.cover.url
+    cover_img_tag.short_description = _('Cover preview')
+    cover_img_tag.allow_tags = True
+        
     class Meta:
         verbose_name = _('offer')
         verbose_name_plural = _('offers')

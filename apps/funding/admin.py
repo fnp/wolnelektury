@@ -6,6 +6,7 @@ class OfferAdmin(admin.ModelAdmin):
     model = Offer
     list_display = ['title', 'author', 'target', 'sum', 'is_win', 'start', 'end', 'due']
     search_fields = ['title', 'author']
+    readonly_fields = ('cover_img_tag',)
 
 
 class PerkAdmin(admin.ModelAdmin):
