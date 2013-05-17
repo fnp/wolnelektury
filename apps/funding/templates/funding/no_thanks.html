@@ -11,10 +11,11 @@
 
 <p>{% trans "You're support has not been processed successfully." %}</p>
 
-
 {% url 'funding_current' as current %}
+<p>
+{% blocktrans with current=current %}Return to the <a href="{{current}}">current fundraiser</a> and try again or try to use a different payment method.{% endblocktrans %}
+</p>
 
-<p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
 
 </div>
 
