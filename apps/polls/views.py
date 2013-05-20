@@ -10,7 +10,7 @@ from forms import PollForm
 @require_http_methods(['GET', 'POST'])
 def poll(request, slug):
     
-    poll = get_object_or_404(Poll, slug = slug)
+    poll = get_object_or_404(Poll, slug = slug, open = True)
     
     if request.method == 'POST':
         redirect_to = reverse('poll', args = [slug])
