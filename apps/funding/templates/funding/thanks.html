@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load fnp_share %}
+{% load polls_tags %}
 
 {% block titleextra %}{% trans "Thank you for your support!" %}{% endblock %}
 
@@ -31,9 +32,13 @@
 <p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
 
 
-<p>{% trans "Tell your friends!" %}</p>
+<h3>{% trans "Tell your friends!" %}</h3>
 <p class="share">{% share current _("I support Wolne Lektury.") "big" %}</p>
 
+{% if offer.poll %}
+    <h3>{% trans "Vote for a book for the next fundraiser" %}</h3>
+    {% poll offer.poll %}
+{% endif %}
 </div>
 
 

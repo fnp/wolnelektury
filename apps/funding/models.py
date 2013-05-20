@@ -8,6 +8,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _, ugettext as __
 import getpaid
 from catalogue.models import Book
+from polls.models import Poll
 
 
 class Offer(models.Model):
@@ -25,6 +26,7 @@ class Offer(models.Model):
     book = models.ForeignKey(Book, null=True, blank=True,
         help_text=_('Published book.'))
     cover = models.ImageField(_('Cover'), upload_to = 'funding/covers')
+    poll = models.ForeignKey(Poll, help_text = _('Poll'),  null = True, on_delete = models.SET_NULL)
         
     def cover_img_tag(self):
         return u'<img src="%s" />' % self.cover.url
