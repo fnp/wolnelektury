@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load polls_tags %}
+
+{% block titleextra %}{{poll.question}}{% endblock %}
+
+
+{% block body %}
+    <div class="normal-text">
+        {% if voted_already %}
+            <p class="poll-msg">{% trans "Thanks for voting! You can see current results below." %}</p>
+        {% endif %}
+        {% poll poll %}
+    </div>
+{% endblock %}

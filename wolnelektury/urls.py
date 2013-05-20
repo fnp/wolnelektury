@@ -36,6 +36,7 @@ urlpatterns += patterns('',
     url(r'^uzytkownik/', include('allauth.urls')),
     url(r'^czekaj/', include('waiter.urls')),
     url(r'^wesprzyj/', include('funding.urls')),
+    url(r'^ankieta/', include('polls.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),

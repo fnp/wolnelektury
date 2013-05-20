@@ -1,0 +1,31 @@
+{% load i18n %}
+
+{% if poll %}
+    {% if voted_already %}
+        {% if show_results %}
+            <div class="poll">
+                <p>{{poll.question}}</p>
+                <ul>
+                {% for item in poll.items.all %}
+                    <li>
+                        {{item.content}}
+                        <div class="poll-bar"><div class="poll-bar-inner"
+                        {% if vote_count %}
+                                style="width:{{item.vote_ratio|stringformat:"f"}}%;"
+                        {% endif %}
+                        ></div></div>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="poll">
+            <p>{{poll.question}}</p>
+            <form action="{{poll.get_absolute_url}}" method="post">{% csrf_token %}
+            {{ form.vote }}
+            <input type="submit" value="{% trans "Submit" %}" />
+            </form>
+        </div>
+    {% endif %}
+{% endif %}

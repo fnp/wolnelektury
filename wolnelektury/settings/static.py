@@ -31,6 +31,7 @@ PIPELINE_CSS = {
             'sponsors/css/sponsors.css',
             'css/auth.css',
             'funding/funding.scss',
+            'polls/polls.scss',
             'css/form.scss',
 
             'css/social/shelf_tags.css',

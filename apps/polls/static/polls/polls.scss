@@ -1,0 +1,21 @@
+.poll {
+    width: 400px;
+    ul {
+        list-style-type: none;
+    }
+}
+
+.poll-bar {
+    border: solid 1px #ddd;
+    height:6px;
+    margin-bottom: 10px;
+}
+
+.poll-bar-inner {
+    background: orange;
+    height: 6px;
+}
+
+.poll-msg {
+    font-weight: bold;
+}
