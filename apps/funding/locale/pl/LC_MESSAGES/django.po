@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 10:32+0200\n"
+"POT-Creation-Date: 2013-05-22 10:40+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,18 +246,14 @@ msgid ""
 "            ends on %(end)s. The book will be published by %(due)s."
 msgstr "Zbiórka kończy się %(end)s. Książka zostanie opublikowana do %(due)s."
 
-#: templates/funding/thanks.html:21
+#: templates/funding/thanks.html:22
 #, python-format
 msgid ""
-"Your\n"
-"    donation will be spent on publishing\n"
-"    the book %(b)s if the full amount is raised by %(end)s.\n"
-"    The book will then be published by %(due)s."
-msgstr ""
-"Pieniądze przez Ciebie wpłacone zostaną przekazane na publikację książki "
-"%(b)s, jeśli do %(end)s uda nam się zebrać pełną kwotę potrzebną na "
-"digitalizację, redakcję techniczną i literacką. Książka zostanie wówczas "
-"opublikowana do %(due)s."
+"Your donation will be spent on digitizing, compiling and\n"
+"        publishing the book %(b)s in multiple formats. We will contact you "
+"if you qualify for perks."
+msgstr "Pieniądze przez Ciebie  wpłacone przeznaczymy na na digitalizację, opracowanie"
+"i udostępnienie książki w serwisie w wielu formatach. Jeśli wybrałeś nagrody, skontaktujemy się z Tobą mailowo."
 
 #: templates/funding/thanks.html:32
 msgid "Go back to the current fundraiser."
@@ -386,3 +382,4 @@ msgstr "Możesz śledzić prace na <a href=\"%(r)s\">Platformie Redakcyjnej</a>.
 #: templates/funding/widgets/amount.html:13
 msgid "Other amount"
 msgstr "Inna kwota"
+

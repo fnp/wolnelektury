@@ -18,10 +18,10 @@
     <p>{% blocktrans with due=offer.due end=offer.end %}The fundraiser
             ends on {{ end }}. The book will be published by {{ due }}.{% endblocktrans %}</p>
 {% else %}
-    <p>{% blocktrans with b=offer.title due=offer.due end=offer.end %}Your
-    donation will be spent on publishing
-    the book {{ b }} if the full amount is raised by {{ end }}.
-    The book will then be published by {{ due }}.{% endblocktrans %}</p>
+    <p>
+        {% blocktrans with b=offer.title %}Your donation will be spent on digitizing, compiling and
+        publishing the book {{ b }} in multiple formats. We will contact you if you qualify for perks.{% endblocktrans %}
+    </p>
 {% endif %}
 
 <p>{% include "funding/snippets/any_remaining.html" %}
