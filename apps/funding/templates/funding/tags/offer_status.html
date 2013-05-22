@@ -8,8 +8,12 @@
         </p>
     {% else %}
     <p>
-        {% blocktrans with due=offer.due end=offer.end %}If the target is met
-        by {{ end }}, this book will be published by {{ due }}.{% endblocktrans %}
+        <strong>{% blocktrans with target=offer.target|floatformat %}W need {{target}} zł to digitize it,
+        compile it and publish for free in multiple formats.{% endblocktrans %}</strong>
+    </p>
+    <p>
+        {% blocktrans with end=offer.end %}If we raise enought money before {{end}} we will
+        publish it and make it available for everyone.{% endblocktrans %}
     </p>
     {% endif %}
 {% else %}

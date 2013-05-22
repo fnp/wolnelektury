@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-20 14:06+0200\n"
+"POT-Creation-Date: 2013-05-22 10:32+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,119 +42,119 @@ msgstr ""
 "Użyjemy go do kontaktu w sprawie prezentów i informacji o zmianach statusu "
 "zbiórki i kolejnych akcjach.<br/>Nie będzie publikowany."
 
-#: models.py:15
+#: models.py:16
 msgid "author"
 msgstr "autor"
 
-#: models.py:16
+#: models.py:17
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:17
+#: models.py:18
 msgid "slug"
 msgstr "slug"
 
-#: models.py:18 models.py:113
+#: models.py:19 models.py:114
 msgid "description"
 msgstr "opis"
 
-#: models.py:19
+#: models.py:20
 msgid "target"
 msgstr "kwota docelowa"
 
-#: models.py:20
+#: models.py:21
 msgid "start"
 msgstr "początek"
 
-#: models.py:21
+#: models.py:22
 msgid "end"
 msgstr "koniec"
 
-#: models.py:22
+#: models.py:23
 msgid "due"
 msgstr "data publikacji"
 
-#: models.py:23
+#: models.py:24
 msgid "When will it be published if the money is raised."
 msgstr "Kiedy książka zostanie opublikowana, jeśli uda się zebrać pieniądze."
 
-#: models.py:24
+#: models.py:25
 msgid "redakcja URL"
 msgstr "URL na Redakcji"
 
-#: models.py:26
+#: models.py:27
 msgid "Published book."
 msgstr "Opublikowana książka."
 
-#: models.py:27
+#: models.py:28
 msgid "Cover"
 msgstr "Okładka"
 
-#: models.py:28
+#: models.py:29
 msgid "Poll"
 msgstr "Ankieta"
 
-#: models.py:32
+#: models.py:33
 msgid "Cover preview"
 msgstr "Podgląd okładki"
 
-#: models.py:36 models.py:110 models.py:131
+#: models.py:37 models.py:111 models.py:132
 msgid "offer"
 msgstr "zbiórka"
 
-#: models.py:37
+#: models.py:38
 msgid "offers"
 msgstr "zbiórki"
 
-#: models.py:111
+#: models.py:112
 msgid "price"
 msgstr "cena"
 
-#: models.py:112 models.py:132
+#: models.py:113 models.py:133
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:114
+#: models.py:115
 msgid "end date"
 msgstr "data końcowa"
 
-#: models.py:117
+#: models.py:118
 msgid "perk"
 msgstr "prezent"
 
-#: models.py:118 models.py:136
+#: models.py:119 models.py:137
 msgid "perks"
 msgstr "prezenty"
 
-#: models.py:133
+#: models.py:134
 msgid "email"
 msgstr "e-mail"
 
-#: models.py:134 models.py:163
+#: models.py:135 models.py:164
 msgid "amount"
 msgstr "kwota"
 
-#: models.py:135
+#: models.py:136
 msgid "payed at"
 msgstr "data wpłaty"
 
-#: models.py:146
+#: models.py:147
 msgid "funding"
 msgstr "wpłata"
 
-#: models.py:147
+#: models.py:148
 msgid "fundings"
 msgstr "wpłaty"
 
-#: models.py:164
+#: models.py:165
 msgid "when"
 msgstr "kiedy"
 
-#: models.py:167
+#: models.py:168
 msgid "money spent on a book"
 msgstr "pieniądze wydane na książkę"
 
-#: models.py:168
+#: models.py:169
 msgid "money spent on books"
 msgstr "pieniądze wydane na książki"
 
@@ -175,7 +175,7 @@ msgstr ""
 "Wróć do <a href=\"%(current)s\">aktualnej zbiórki</a> i spróbuj ponownie lub "
 "użyj innej metody płatności."
 
-#: templates/funding/offer_detail.html:25
+#: templates/funding/offer_detail.html:25 templates/funding/offer_list.html:29
 #: templates/funding/tags/funding.html:20
 #: templates/funding/tags/funding.html:46
 msgid "Help free the book!"
@@ -235,7 +235,7 @@ msgid "Thank you!"
 msgstr "Dziękujemy!"
 
 #: templates/funding/thanks.html:16
-#: templates/funding/tags/offer_status.html:18
+#: templates/funding/tags/offer_status.html:22
 msgid "Full amount was successfully raised!"
 msgstr "Udało się zebrać pełną kwotę!"
 
@@ -317,10 +317,10 @@ msgstr "Pieniądze pozostałe ze zbiórki na"
 #, python-format
 msgid ""
 "Any <a href=\"%(wlfund)s\">remaining funds</a> will be spent\n"
-"on other books waiting to be published in the library."
+"on other books waiting to be published."
 msgstr ""
 "Wszelkie <a href=\"%(wlfund)s\">pozostałe środki</a> przeznaczymy na inne "
-"książki czekające na publikację w serwisie."
+"książki czekające na publikację."
 
 #: templates/funding/tags/funding.html:10
 msgid "Support!"
@@ -341,13 +341,22 @@ msgstr "do końca zbiórki"
 #: templates/funding/tags/offer_status.html:11
 #, python-format
 msgid ""
-"If the target is met\n"
-"        by %(end)s, this book will be published by %(due)s."
+"W need %(target)s zł to digitize it,\n"
+"        compile it and publish for free in multiple formats."
 msgstr ""
-"Jeśli do %(end)s uda się zebrać pełną kwotę, książka zostanie opublikowana "
-"do %(due)s."
+"Potrzebujemy %(target)s zł, by ją zdigitalizować, opracować i bezpłatnie "
+"udostępnić w serwisie w wielu formatach."
 
-#: templates/funding/tags/offer_status.html:22
+#: templates/funding/tags/offer_status.html:15
+#, python-format
+msgid ""
+"If we raise enought money before %(end)s we will\n"
+"        publish it and make it available for everyone."
+msgstr ""
+"Jeśli do %(end)s uda się zebrać pełną kwotę, opublikujemy ją i będzie "
+"dostępna dla wszystkich"
+
+#: templates/funding/tags/offer_status.html:26
 msgid "The amount needed was not raised."
 msgstr "Nie udało się zebrać pełnej kwoty."
 

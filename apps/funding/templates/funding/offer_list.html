@@ -22,14 +22,14 @@
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}
 
+    {% funding offer link=1 show_title_calling=False %}
+
     <div class="white-box normal-text">
+        {% if is_current %}
+            <h3>{% trans "Help free the book!" %}</h3>
+            {{ offer.description|safe }}
+        {% endif %}
         {% offer_status offer %}
-    </div>
-
-    {% funding offer link=1 %}
-
-
-    <div class="white-box normal-text">
         {% offer_status_more offer %}
     </div>
 
