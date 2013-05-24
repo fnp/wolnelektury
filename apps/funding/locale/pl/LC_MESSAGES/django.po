@@ -252,8 +252,8 @@ msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
 "        publishing the book %(b)s in multiple formats. We will contact you "
 "if you qualify for perks."
-msgstr "Pieniądze przez Ciebie  wpłacone przeznaczymy na na digitalizację, opracowanie"
-"i udostępnienie książki w serwisie w wielu formatach. Jeśli wybrałeś nagrody, skontaktujemy się z Tobą mailowo."
+msgstr "Pieniądze przez Ciebie  wpłacone przeznaczymy na digitalizację, opracowanie"
+" i udostępnienie książki %(b)s w serwisie w wielu formatach. Jeśli wybrałeś nagrody, skontaktujemy się z Tobą mailowo."
 
 #: templates/funding/thanks.html:32
 msgid "Go back to the current fundraiser."
@@ -265,7 +265,7 @@ msgstr "Wspieram Wolne Lektury"
 
 #: templates/funding/thanks.html:39
 msgid "Vote for a book for the next fundraiser"
-msgstr "Pomóż wybrać nastęną książkę, na którą będziemy zbierać pieniądze"
+msgstr "Pomóż wybrać następną książkę, na którą będziemy zbierać pieniądze"
 
 #: templates/funding/wlfund.html:4 templates/funding/wlfund.html.py:8
 msgid "Remaining funds"
