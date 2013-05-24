@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 10:40+0200\n"
+"POT-Creation-Date: 2013-05-24 15:50+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -252,8 +252,10 @@ msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
 "        publishing the book %(b)s in multiple formats. We will contact you "
 "if you qualify for perks."
-msgstr "Pieniądze przez Ciebie  wpłacone przeznaczymy na digitalizację, opracowanie"
-" i udostępnienie książki %(b)s w serwisie w wielu formatach. Jeśli wybrałeś nagrody, skontaktujemy się z Tobą mailowo."
+msgstr ""
+"Pieniądze przez Ciebie  wpłacone przeznaczymy na digitalizację, opracowanie "
+"i udostępnienie książki %(b)s w serwisie w wielu formatach. Jeśli wybrałeś "
+"nagrody, skontaktujemy się z Tobą mailowo."
 
 #: templates/funding/thanks.html:32
 msgid "Go back to the current fundraiser."
@@ -294,8 +296,8 @@ msgid "Date"
 msgstr "Data"
 
 #: templates/funding/wlfund.html:27
-msgid "Title"
-msgstr "Tytuł"
+msgid "Operation"
+msgstr "Rozdysponowanie środków"
 
 #: templates/funding/wlfund.html:29
 msgid "Balance"
@@ -356,6 +358,10 @@ msgstr ""
 msgid "The amount needed was not raised."
 msgstr "Nie udało się zebrać pełnej kwoty."
 
+#: templates/funding/tags/offer_status_more.html:8
+msgid "Fundraiser span"
+msgstr "Termin zbiórki"
+
 #: templates/funding/tags/offer_status_more.html:12
 #, python-format
 msgid ""
@@ -382,4 +388,3 @@ msgstr "Możesz śledzić prace na <a href=\"%(r)s\">Platformie Redakcyjnej</a>.
 #: templates/funding/widgets/amount.html:13
 msgid "Other amount"
 msgstr "Inna kwota"
-

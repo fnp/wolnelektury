@@ -5,7 +5,7 @@
             {% include "funding/snippets/any_remaining.html" %}
         </p>
 {% else %}
-    <p class="date">{{ offer.start }} – {{ offer.end }}</p>
+    <p class="date">{% trans "Fundraiser span" %}: {{ offer.start }} – {{ offer.end }}</p>
     {% if offer.is_win %}
         <p>
             {% if offer.book %}
