@@ -4,6 +4,7 @@
 {% load funding_tags %}
 {% load pagination_tags %}
 {% load fnp_share %}
+{% load thumbnail %}
 
 
 {% block titleextra %}{{ object }}{% endblock %}
@@ -19,7 +20,13 @@
 <div class="white-box">
     <div class="funding-details-intro">
         {% if object.cover %}
-            <img src="{{ object.cover.url }}" class="funding-cover"/>
+            <img src="
+                {% thumbnail object.cover "139x193" as thumb %}
+                    {{ thumb.url }}
+                {% empty %}
+                    {{ object.cover.url }}
+                {% endthumbnail %}
+            " alt="Cover" class="funding-cover" />
         {% endif %}
         <div class="normal-text">
         <h3>{% trans "Help free the book!" %}</h3>
