@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import json
 from collections import namedtuple
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -60,6 +61,9 @@ class BookMedia(models.Model):
         remove_zip("%s_%s" % (self.book.slug, self.type))
 
         extra_info = self.extra_info
+        if isinstance(extra_info, basestring):
+            # Walkaround for weird jsonfield 'no-decode' optimization.
+            extra_info = json.loads(extra_info)
         extra_info.update(self.read_meta())
         self.extra_info = extra_info
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)

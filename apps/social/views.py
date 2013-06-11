@@ -61,7 +61,10 @@ class ObjectSetsFormView(AjaxableFormView):
         return (obj, request.user), {}
 
 
+@require_POST
 def unlike_book(request, slug):
+    if not request.user.is_authenticated():
+        return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
     if likes(request.user, book):
         set_sets(request.user, book, [])

@@ -61,17 +61,6 @@
         <div id="header">
             <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" /></a>
         </div>
-        <div id="themes">
-            <ol>
-                {% for theme, fragments in book_themes %}
-                <li>{{ theme }}:
-                    {% for fragment in fragments %}
-                        <a href="#m{{ fragment.anchor }}">{{ forloop.counter }}</a>
-                    {% endfor %}
-                </li>
-                {% endfor %}
-            </ol>
-        </div>
         {{ book.html_file.read|safe }}
         {{ piwik_tag|safe }}
     </body>
