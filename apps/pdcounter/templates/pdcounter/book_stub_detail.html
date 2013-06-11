@@ -3,7 +3,7 @@
 
 {% block titleextra %}{{ book.title }}{% endblock %}
 
-{% block metadescription %}Licznik domeny publicznej: {{ book.title }}.{% endblock %}
+{% block metadescription %}{% trans "Public domain counter" %}: {{ book.title }}.{% endblock %}
 
 {% block bodyid %}book-stub-detail{% endblock %}
 
@@ -13,7 +13,7 @@
 	<div class="normal-text white-box">
 
     {% if book.in_pd %}
-		<p>{% trans "This work is in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
+		<p>{% trans "This work is in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
 	{% else %}
 	    {% if book.pd %}
 			<p>{% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}</p>
