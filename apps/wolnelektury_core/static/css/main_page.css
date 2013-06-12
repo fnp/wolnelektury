@@ -48,6 +48,10 @@
 }
 .main-last span {
     font-size: 1.1em;
+    color: black;
+}
+.main-last span:after {
+    content: " >";
 }
 
 

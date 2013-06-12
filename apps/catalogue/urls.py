@@ -3,9 +3,10 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls.defaults import *
-from django.views.generic import RedirectView
+from django.views.generic import ListView, RedirectView
 from catalogue.feeds import AudiobookFeed
 from catalogue.views import CustomPDFFormView
+from catalogue.models import Book
 
 
 SLUG = r'[a-z0-9-]*'
@@ -31,6 +32,9 @@ urlpatterns += patterns('catalogue.views',
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
+    url(r'^nowe/$', ListView.as_view(
+        queryset=Book.objects.filter(parent=None).order_by('-created_at'),
+        template_name='catalogue/recent_list.html'), name='recent_list'),
 
     url(r'^custompdf/(?P<slug>%s)/$' % SLUG, CustomPDFFormView(), name='custom_pdf_form'),
 
