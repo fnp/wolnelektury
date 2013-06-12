@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags %}
+
+{% block titleextra %}{% trans "Recent audiobooks" %}{% endblock %}
+
+{% block bodyid %}recent-list{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Recent audiobooks" %}</h1>
+
+    <div id="books-list">
+        {% work_list object_list %}
+    </div>
+{% endblock %}

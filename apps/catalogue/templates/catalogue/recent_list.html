@@ -9,6 +9,13 @@
 {% block body %}
     <h1>{% trans "Recent publications" %}</h1>
 
+    {% url 'recent_audiobooks_list' as a %}
+    {% url 'recent_daisy_list' as d %}
+    <p class='normal-text'>
+        {% blocktrans %}You can also see <a href="{{a}}">recent audiobooks</a>
+        and <a href="{{d}}">recent DAISY files</a>.{% endblocktrans %}
+    </p>
+
     <div id="books-list">
         {% work_list object_list %}
     </div>

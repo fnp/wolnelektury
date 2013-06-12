@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf.urls.defaults import *
+from django.db.models import Max
 from django.views.generic import ListView, RedirectView
 from catalogue.feeds import AudiobookFeed
 from catalogue.views import CustomPDFFormView
@@ -35,6 +36,12 @@ urlpatterns += patterns('catalogue.views',
     url(r'^nowe/$', ListView.as_view(
         queryset=Book.objects.filter(parent=None).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),
+    url(r'^nowe/audiobooki/$', ListView.as_view(
+        queryset=Book.objects.filter(media__type__in=('mp3', 'ogg')).annotate(m=Max('media__uploaded_at')).order_by('-m'),
+            template_name='catalogue/recent_audiobooks_list.html'), name='recent_audiobooks_list'),
+    url(r'^nowe/daisy/$', ListView.as_view(
+        queryset=Book.objects.filter(media__type='daisy').annotate(m=Max('media__uploaded_at')).order_by('-m'),
+            template_name='catalogue/recent_daisy_list.html'), name='recent_daisy_list'),
 
     url(r'^custompdf/(?P<slug>%s)/$' % SLUG, CustomPDFFormView(), name='custom_pdf_form'),
 

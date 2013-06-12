@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 11:04+0200\n"
-"PO-Revision-Date: 2013-06-12 11:05+0100\n"
+"POT-Creation-Date: 2013-06-12 12:48+0200\n"
+"PO-Revision-Date: 2013-06-12 12:54+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -621,10 +621,29 @@ msgstr ""
 msgid "Audiobooks were prepared as a part of the %(cs)s project."
 msgstr "Audiobooki przygotowane w ramach projektu %(cs)s."
 
+#: templates/catalogue/recent_audiobooks_list.html:5
+#: templates/catalogue/recent_audiobooks_list.html:10
+msgid "Recent audiobooks"
+msgstr "Ostatnio dodane audiobooki"
+
+#: templates/catalogue/recent_daisy_list.html:5
+#: templates/catalogue/recent_daisy_list.html:10
+msgid "Recent DAISY files"
+msgstr "Ostatnio dodane pliki DAISY"
+
 #: templates/catalogue/recent_list.html:5
 #: templates/catalogue/recent_list.html:10
 msgid "Recent publications"
 msgstr "Ostatnie publikacje"
+
+#: templates/catalogue/recent_list.html:15
+#, python-format
+msgid ""
+"You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
+"        and <a href=\"%(d)s\">recent DAISY files</a>."
+msgstr ""
+"Zobacz też listę <a href=\"%(a)s\">ostatnio dodanych audiobooków</a>\n"
+"       i <a href=\"%(d)s\">plików DAISY</a>."
 
 #: templates/catalogue/search_multiple_hits.html:5
 #: templates/catalogue/search_no_hits.html:5
