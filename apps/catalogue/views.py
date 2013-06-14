@@ -103,13 +103,7 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(models.Collection, slug=slug)
-    def get_filter():
-        slugs = coll.book_slugs.split()
-        # allow URIs
-        slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
-                    for slug in slugs]
-        return Q(slug__in=slugs)
-    return book_list(request, get_filter=get_filter,
+    return book_list(request, get_filter=coll.get_query,
                      template_name='catalogue/collection.html',
                      cache_key='catalogue.collection:%s' % coll.slug,
                      context={'collection': coll})
