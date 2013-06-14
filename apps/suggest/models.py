@@ -10,7 +10,7 @@ class Suggestion(models.Model):
     contact = models.CharField(_('contact'), blank=True, max_length=120)
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
-    ip = models.IPAddressField(_('IP address'))
+    ip = models.GenericIPAddressField(_('IP address'))
     user = models.ForeignKey(User, blank=True, null=True)
 
     class Meta:
