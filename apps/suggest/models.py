@@ -27,7 +27,7 @@ class PublishingSuggestion(models.Model):
     books = models.TextField(_('books'), null=True, blank=True)
     audiobooks = models.TextField(_('audiobooks'), null=True, blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True)
-    ip = models.IPAddressField(_('IP address'))
+    ip = models.GenericIPAddressField(_('IP address'))
     user = models.ForeignKey(User, blank=True, null=True)
 
     class Meta:
