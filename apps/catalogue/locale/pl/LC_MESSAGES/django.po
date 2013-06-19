@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 12:48+0200\n"
-"PO-Revision-Date: 2013-06-12 12:54+0100\n"
+"POT-Creation-Date: 2013-06-19 14:10+0200\n"
+"PO-Revision-Date: 2013-06-19 14:10+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr "Duży"
 msgid "Queue is full. Please try again later."
 msgstr "Kolejka jest pełna. Proszę spróbować ponownie później."
 
-#: views.py:527
+#: views.py:521
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -85,20 +85,20 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:528
+#: views.py:522
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:530
+#: views.py:524
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:562
+#: views.py:556
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:563 templates/catalogue/book_short.html:92
+#: views.py:557 templates/catalogue/book_short.html:92
 #: templates/catalogue/book_text.html:27 templates/catalogue/book_wide.html:63
 msgid "Download"
 msgstr "Pobierz"
@@ -107,12 +107,12 @@ msgstr "Pobierz"
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:29 models/tag.py:31
+#: models/book.py:29 models/tag.py:32
 msgid "sort key"
 msgstr "klucz sortowania"
 
 #: models/book.py:30 models/book.py:32 models/collection.py:12
-#: models/collection.py:15 models/tag.py:30
+#: models/collection.py:15 models/tag.py:31
 msgid "slug"
 msgstr "slug"
 
@@ -121,12 +121,12 @@ msgid "language code"
 msgstr "Kod języka"
 
 #: models/book.py:35 models/book.py:145 models/collection.py:13
-#: models/tag.py:34 models/tag.py:83
+#: models/tag.py:35 models/tag.py:89
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:36 models/book.py:37 models/bookmedia.py:29 models/tag.py:41
-#: models/tag.py:42
+#: models/book.py:36 models/book.py:37 models/bookmedia.py:29 models/tag.py:42
+#: models/tag.py:43
 msgid "creation date"
 msgstr "data utworzenia"
 
@@ -142,7 +142,7 @@ msgstr "dodatkowe informacje"
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:66 models/tag.py:20
+#: models/book.py:66 models/tag.py:21
 msgid "book"
 msgstr "książka"
 
@@ -169,7 +169,7 @@ msgstr "plik %s"
 msgid "type"
 msgstr "typ"
 
-#: models/bookmedia.py:27 models/tag.py:29
+#: models/bookmedia.py:27 models/tag.py:30
 msgid "name"
 msgstr "nazwa"
 
@@ -201,45 +201,53 @@ msgstr "fragment"
 msgid "fragments"
 msgstr "fragmenty"
 
-#: models/tag.py:14
+#: models/tag.py:15
 msgid "author"
 msgstr "autor"
 
-#: models/tag.py:15
+#: models/tag.py:16
 msgid "epoch"
 msgstr "epoka"
 
-#: models/tag.py:16
+#: models/tag.py:17
 msgid "kind"
 msgstr "rodzaj"
 
-#: models/tag.py:17
+#: models/tag.py:18
 msgid "genre"
 msgstr "gatunek"
 
-#: models/tag.py:18
+#: models/tag.py:19
 msgid "theme"
 msgstr "motyw"
 
-#: models/tag.py:19
+#: models/tag.py:20
 msgid "set"
 msgstr "półka"
 
-#: models/tag.py:32
+#: models/tag.py:33
 msgid "category"
 msgstr "kategoria"
 
-#: models/tag.py:37
+#: models/tag.py:38
 msgid "book count"
 msgstr "liczba książek"
 
-#: models/tag.py:59
+#: models/tag.py:60
 msgid "tag"
 msgstr "tag"
 
-#: models/tag.py:60
+#: models/tag.py:61
 msgid "tags"
 msgstr "tagi"
+
+#: models/tag.py:78
+msgid ""
+"Book tags can't have attached links. Set them directly on the book instead "
+"of it's tag."
+msgstr ""
+"Tagi typu książka nie mogą mieć ustawionych linków. Ustaw je bezpośrednio "
+"dla książki, zamiast dla jej tagu."
 
 #: templates/catalogue/audiobook_list.html:7
 #: templates/catalogue/audiobook_list.html:16
