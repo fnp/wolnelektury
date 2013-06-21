@@ -352,7 +352,7 @@ msgid ""
 "        publish it and make it available for everyone."
 msgstr ""
 "Jeśli do %(end)s uda się zebrać pełną kwotę, opublikujemy ją i będzie "
-"dostępna dla wszystkich"
+"dostępna dla wszystkich."
 
 #: templates/funding/tags/offer_status.html:26
 msgid "The amount needed was not raised."
