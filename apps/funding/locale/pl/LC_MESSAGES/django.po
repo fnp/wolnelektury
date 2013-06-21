@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-24 15:50+0200\n"
+"POT-Creation-Date: 2013-06-21 16:32+0200\n"
 "PO-Revision-Date: 2013-04-25 13:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,42 +175,42 @@ msgstr ""
 "Wróć do <a href=\"%(current)s\">aktualnej zbiórki</a> i spróbuj ponownie lub "
 "użyj innej metody płatności."
 
-#: templates/funding/offer_detail.html:25 templates/funding/offer_list.html:29
+#: templates/funding/offer_detail.html:32 templates/funding/offer_list.html:29
 #: templates/funding/tags/funding.html:20
 #: templates/funding/tags/funding.html:46
 msgid "Help free the book!"
 msgstr "Pomóż uwolnić książkę!"
 
-#: templates/funding/offer_detail.html:29 templates/funding/thanks.html:29
+#: templates/funding/offer_detail.html:36 templates/funding/thanks.html:29
 #: templates/funding/wlfund.html:17 templates/funding/tags/funding.html:12
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
 
-#: templates/funding/offer_detail.html:37
+#: templates/funding/offer_detail.html:44
 msgid "Support the publication"
 msgstr "Wesprzyj publikację"
 
-#: templates/funding/offer_detail.html:44
+#: templates/funding/offer_detail.html:51
 msgid "Donate!"
 msgstr "Wpłać!"
 
-#: templates/funding/offer_detail.html:52 templates/funding/thanks.html:35
+#: templates/funding/offer_detail.html:59 templates/funding/thanks.html:35
 msgid "Tell your friends!"
 msgstr "Powiedz swoim znajomym!"
 
-#: templates/funding/offer_detail.html:53
+#: templates/funding/offer_detail.html:60
 msgid "Support Wolne Lektury!"
 msgstr "Wesprzyj Wolne Lektury!"
 
-#: templates/funding/offer_detail.html:56
+#: templates/funding/offer_detail.html:63
 msgid "See all fundraisers."
 msgstr "Zobacz wszystkie zbiórki."
 
-#: templates/funding/offer_detail.html:61
+#: templates/funding/offer_detail.html:68
 msgid "Supporters"
 msgstr "Wpłaty"
 
-#: templates/funding/offer_detail.html:75
+#: templates/funding/offer_detail.html:82
 msgid "Anonymous"
 msgstr "Anonim"
 
@@ -311,7 +311,7 @@ msgstr "Pieniądze przeznaczone na opublikowanie książki"
 msgid "Money remaining from the fundraiser for"
 msgstr "Pieniądze pozostałe ze zbiórki na"
 
-#: templates/funding/snippets/any_remaining.html:3
+#: templates/funding/snippets/any_remaining.html:4
 #, python-format
 msgid ""
 "Any <a href=\"%(wlfund)s\">remaining funds</a> will be spent\n"
@@ -319,6 +319,14 @@ msgid ""
 msgstr ""
 "Wszelkie <a href=\"%(wlfund)s\">pozostałe środki</a> przeznaczymy na inne "
 "książki czekające na publikację."
+
+#: templates/funding/snippets/any_remaining.html:7
+msgid ""
+"We will supplement every book with your name as a donor, no matter how\n"
+"big your support will be."
+msgstr ""
+"Niezależnie od wysokości wpłaty, przy każdej książce zamieścimy imienne "
+"podziękowanie."
 
 #: templates/funding/tags/funding.html:10
 msgid "Support!"
