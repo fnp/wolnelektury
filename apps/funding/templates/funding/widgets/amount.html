@@ -1,11 +1,11 @@
 {% load i18n %}
-<div style="font-size: 1.5em; line-height:1.5em;">
+<div style="line-height:2em;">
 {% if perks %}
     {% for perk in perks %}
         <label>
             <input type="radio" name="{{ perks_input_name }}" value="{{ perk.price }}"
                     {% if perk.chosen %}checked="checked"{% endif %} />
-                {{ perk.price }} zł ({{ perk.name }})
+                <span style="font-size: 1.5em; ">{{ perk.price }} zł</span> ({{ perk.name }})
         </label><br/>
     {% endfor %}
     <label>
