@@ -27,3 +27,10 @@ class Collection(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ("collection", [self.slug])
+
+    def get_query(self):
+        slugs = self.book_slugs.split()
+        # allow URIs
+        slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
+                    for slug in slugs]
+        return models.Q(slug__in=slugs)

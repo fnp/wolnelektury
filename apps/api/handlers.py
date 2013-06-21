@@ -17,7 +17,7 @@ from sorl.thumbnail import default
 from api.helpers import timestamp
 from api.models import Deleted
 from catalogue.forms import BookImportForm
-from catalogue.models import Book, Tag, BookMedia, Fragment
+from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from picture.models import Picture
 from picture.forms import PictureImportForm
 
@@ -256,6 +256,52 @@ def _file_getter(format):
     return get_file
 for format in Book.formats:
     setattr(BookDetails, format, _file_getter(format))
+
+
+class CollectionDetails(object):
+    """Custom Collection fields."""
+
+    @classmethod
+    def href(cls, collection):
+        """ Returns URI in the API for the collection. """
+
+        return API_BASE + reverse("api_collection", args=[collection.slug])
+
+    @classmethod
+    def url(cls, collection):
+        """ Returns URL on the site. """
+
+        return WL_BASE + collection.get_absolute_url()
+
+    @classmethod
+    def books(cls, collection):
+        return Book.objects.filter(collection.get_query())
+
+
+
+class CollectionDetailHandler(BaseHandler, CollectionDetails):
+    allowed_methods = ('GET',)
+    fields = ['url', 'title', 'description', 'books']
+
+    @piwik_track
+    def read(self, request, slug):
+        print slug
+        """ Returns details of a collection, identified by slug. """
+        try:
+            return Collection.objects.get(slug=slug)
+        except Collection.DoesNotExist:
+            return rc.NOT_FOUND
+
+
+class CollectionsHandler(BaseHandler, CollectionDetails):
+    allowed_methods = ('GET',)
+    model = Collection
+    fields = ['url', 'href', 'title']
+
+    @piwik_track
+    def read(self, request):
+        """ Returns all collections. """
+        return Collection.objects.all()
 
 
 class TagDetails(object):

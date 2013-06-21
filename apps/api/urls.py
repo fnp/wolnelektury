@@ -19,6 +19,9 @@ ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 #book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 
+collection_resource = Resource(handler=handlers.CollectionDetailHandler)
+collection_list_resource = Resource(handler=handlers.CollectionsHandler)
+
 tag_list_resource = Resource(handler=handlers.TagsHandler)
 tag_resource = Resource(handler=handlers.TagDetailHandler)
 
@@ -47,6 +50,10 @@ urlpatterns = patterns(
     url(r'book/(?P<id>\d*?)/info\.html$', 'catalogue.views.book_info'),
     url(r'tag/(?P<id>\d*?)/info\.html$', 'catalogue.views.tag_info'),
 
+
+    # books by collections
+    url(r'^collections/$', collection_list_resource, name="api_collections"),
+    url(r'^collections/(?P<slug>[^/]+)/$', collection_resource, name="api_collection"),
 
     # objects details
     url(r'^books/(?P<book>[a-z0-9-]+)/$', book_resource, name="api_book"),

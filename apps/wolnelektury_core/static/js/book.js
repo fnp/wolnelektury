@@ -19,6 +19,9 @@ $(function() {
     if ($('#toc li').length == 0) {
         $('#menu li a[href="#toc"]').remove();
     }
+    if ($('#themes li').length == 0) {
+        $('#menu li a[href="#themes"]').remove();
+    }
     if ($('#nota_red').length == 0) {
         $('#menu li a[href="#nota_red"]').remove();
     }

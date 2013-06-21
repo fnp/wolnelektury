@@ -3,9 +3,10 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import permalink
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 from newtagging.models import TagBase
 
 
@@ -70,6 +71,11 @@ class Tag(TagBase):
     @permalink
     def get_absolute_url(self):
         return ('catalogue.views.tagged_object_list', [self.url_chunk])
+
+    def clean(self):
+        if self.category == 'book' and (self.gazeta_link or self.wiki_link):
+            raise ValidationError(ugettext(
+                u"Book tags can't have attached links. Set them directly on the book instead of it's tag."))
 
     @classmethod
     @permalink

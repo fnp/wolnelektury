@@ -35,7 +35,7 @@ class Sponsor(models.Model):
 
 class SponsorPage(models.Model):
     name = models.CharField(_('name'), max_length=120)
-    sponsors = JSONField(_('sponsors'), default={})
+    sponsors = JSONField(_('sponsors'), default='{}')
     _html = models.TextField(blank=True, editable=False)
     sprite = models.ImageField(upload_to='sponsorzy/sprite', blank=True)
 

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block titleextra %}{% trans 'Library directories' %}{% endblock %}
+
+
+{% block body %}
+    <h1>{% trans 'Library directories' %}</h1>
+    <div class="left-column">
+        <div class="normal-text">
+            <ul>
+            {% for catalog in catalogs %}
+                <li><a href="{{catalog.get_absolute_url}}">{{catalog}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

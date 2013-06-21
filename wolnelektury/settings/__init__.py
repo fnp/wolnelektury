@@ -66,7 +66,8 @@ INSTALLED_APPS_OUR = [
     'search',
     'oai',
     'funding',
-    'polls'
+    'polls',
+    'libraries',
     ]
 
 GETPAID_BACKENDS = (

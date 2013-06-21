@@ -4,7 +4,7 @@
 
 {% block titleextra %}{{ author.name }}{% endblock %}
 
-{% block metadescription %}Licznik domeny publicznej: {{author.name}}.{% endblock %}
+{% block metadescription %}{% trans "Public domain counter" %}: {{author.name}}.{% endblock %}
 
 {% block bodyid %}author-detail{% endblock %}
 
@@ -37,7 +37,7 @@
             {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
         {% else %}
             {% if author.in_pd %}
-                <p>{% trans "This author's works are in public domain and will be published on Internet school library of Wolne Lektury soon." %}</p>
+                <p>{% trans "This author's works are in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
             {% else %}
                 <div>
                     <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>

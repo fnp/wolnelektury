@@ -560,6 +560,7 @@ class Book(models.Model):
         return books_by_author, orphans, books_by_parent
 
     _audiences_pl = {
+        "SP": (1, u"szkoła podstawowa"),
         "SP1": (1, u"szkoła podstawowa"),
         "SP2": (1, u"szkoła podstawowa"),
         "P": (1, u"szkoła podstawowa"),
@@ -569,7 +570,7 @@ class Book(models.Model):
     }
     def audiences_pl(self):
         audiences = self.extra_info.get('audiences', [])
-        audiences = sorted(set([self._audiences_pl[a] for a in audiences]))
+        audiences = sorted(set([self._audiences_pl.get(a, (99, a)) for a in audiences]))
         return [a[1] for a in audiences]
 
     def choose_fragment(self):
