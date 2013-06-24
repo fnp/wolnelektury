@@ -37,7 +37,7 @@ urlpatterns += patterns('catalogue.views',
         queryset=Book.objects.filter(parent=None).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),
     url(r'^nowe/audiobooki/$', ListView.as_view(
-        queryset=Book.objects.filter(media__type__in=('mp3', 'ogg')).annotate(m=Max('media__uploaded_at')).order_by('-m'),
+        queryset=Book.objects.filter(media__type='ogg').annotate(m=Max('media__uploaded_at')).order_by('-m'),
             template_name='catalogue/recent_audiobooks_list.html'), name='recent_audiobooks_list'),
     url(r'^nowe/daisy/$', ListView.as_view(
         queryset=Book.objects.filter(media__type='daisy').annotate(m=Max('media__uploaded_at')).order_by('-m'),
