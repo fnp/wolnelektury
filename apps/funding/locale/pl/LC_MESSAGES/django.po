@@ -325,8 +325,7 @@ msgid ""
 "We will supplement every book with your name as a donor, no matter how\n"
 "big your support will be."
 msgstr ""
-"Niezależnie od wysokości wpłaty, przy każdej książce zamieścimy imienne "
-"podziękowanie."
+"Zostaniesz umieszczony na liście darczyńców, niezależnie od wysokości wpłaty."
 
 #: templates/funding/tags/funding.html:10
 msgid "Support!"
