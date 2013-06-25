@@ -29,7 +29,7 @@ class Offer(models.Model):
     book = models.ForeignKey(Book, null=True, blank=True,
         help_text=_('Published book.'))
     cover = models.ImageField(_('Cover'), upload_to = 'funding/covers')
-    poll = models.ForeignKey(Poll, help_text = _('Poll'),  null = True, on_delete = models.SET_NULL)
+    poll = models.ForeignKey(Poll, help_text = _('Poll'),  null = True, blank = True, on_delete = models.SET_NULL)
         
     def cover_img_tag(self):
         return u'<img src="%s" />' % self.cover.url
