@@ -31,10 +31,12 @@ class FundingForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
-        return Funding.objects.create(
+        funding = Funding.objects.create(
             offer=self.offer,
             name=self.cleaned_data['name'],
             email=self.cleaned_data['email'],
             amount=self.cleaned_data['amount'],
         )
+        funding.perks = funding.offer.get_perks(funding.amount)
+        return funding
 
