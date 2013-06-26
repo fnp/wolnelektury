@@ -83,10 +83,10 @@
                 {% endif %}
             </td>
             <td>{{ funding.amount }}&nbsp;zł</td>
-            <td>
+            <td>&nbsp;
                 {% for perk in funding.perks.all %}
                     {{ perk.name }}{% if not forloop.last %},{% endif %}
-                {% endfor %}&nbsp;
+                {% endfor %}
             </td>
     {% endfor %}
     </table>
