@@ -114,7 +114,7 @@ class Perk(models.Model):
     offer = models.ForeignKey(Offer, verbose_name=_('offer'), null=True, blank=True)
     price = models.DecimalField(_('price'), decimal_places=2, max_digits=10)
     name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), blank=True)
+    long_name = models.CharField(_('long name'), max_length=255)
     end_date = models.DateField(_('end date'), null=True, blank=True)
 
     class Meta:

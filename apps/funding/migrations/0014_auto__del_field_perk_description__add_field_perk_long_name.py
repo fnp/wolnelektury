@@ -6,20 +6,25 @@ from django.db import models
 
 
 class Migration(SchemaMigration):
-    depends_on = (
-        ("polls", "0001_initial"),
-    )
 
     def forwards(self, orm):
-        # Adding field 'Offer.poll'
-        db.add_column(u'funding_offer', 'poll',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['polls.Poll'], null=True, on_delete=models.SET_NULL),
+        # Deleting field 'Perk.description'
+        db.delete_column(u'funding_perk', 'description')
+
+        # Adding field 'Perk.long_name'
+        db.add_column(u'funding_perk', 'long_name',
+                      self.gf('django.db.models.fields.CharField')(default=u'', max_length=255),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting field 'Offer.poll'
-        db.delete_column(u'funding_offer', 'poll_id')
+        # Adding field 'Perk.description'
+        db.add_column(u'funding_perk', 'description',
+                      self.gf('django.db.models.fields.TextField')(default='', blank=True),
+                      keep_default=False)
+
+        # Deleting field 'Perk.long_name'
+        db.delete_column(u'funding_perk', 'long_name')
 
 
     models = {
@@ -54,6 +59,7 @@ class Migration(SchemaMigration):
             'amount': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language_code': ('django.db.models.fields.CharField', [], {'max_length': '2', 'null': 'True', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '127', 'blank': 'True'}),
             'offer': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['funding.Offer']"}),
             'payed_at': ('django.db.models.fields.DateTimeField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
@@ -68,7 +74,7 @@ class Migration(SchemaMigration):
             'due': ('django.db.models.fields.DateField', [], {}),
             'end': ('django.db.models.fields.DateField', [], {'db_index': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'poll': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['polls.Poll']", 'null': 'True', 'on_delete': 'models.SET_NULL'}),
+            'poll': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['polls.Poll']", 'null': 'True', 'on_delete': 'models.SET_NULL', 'blank': 'True'}),
             'redakcja_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
             'start': ('django.db.models.fields.DateField', [], {'db_index': 'True'}),
@@ -77,9 +83,9 @@ class Migration(SchemaMigration):
         },
         u'funding.perk': {
             'Meta': {'ordering': "['-price']", 'object_name': 'Perk'},
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'end_date': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'long_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'offer': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['funding.Offer']", 'null': 'True', 'blank': 'True'}),
             'price': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'})

@@ -11,7 +11,7 @@ class OfferAdmin(admin.ModelAdmin):
 
 class PerkAdmin(admin.ModelAdmin):
     model = Perk
-    list_display = ['name', 'price', 'end_date', 'offer']
+    list_display = ['name', 'long_name', 'price', 'end_date', 'offer']
 
 
 class FundingAdmin(admin.ModelAdmin):

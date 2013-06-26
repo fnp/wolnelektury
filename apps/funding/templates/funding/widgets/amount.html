@@ -5,7 +5,7 @@
         <label>
             <input type="radio" name="{{ perks_input_name }}" value="{{ perk.price }}"
                     {% if perk.chosen %}checked="checked"{% endif %} />
-                <span style="font-size: 1.5em; ">{{ perk.price }} zł</span> ({{ perk.name }})
+                <span style="font-size: 1.5em; ">{{ perk.price }} zł</span> ({{ perk.long_name }})
         </label><br/>
     {% endfor %}
     <label>
