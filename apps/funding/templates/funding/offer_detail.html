@@ -74,20 +74,20 @@
     {% autopaginate fundings 10 %}
     {% for funding in fundings %}
         <tr class="funding-plus">
-            <td><div>{{ funding.payed_at.date }}</div></td>
-            <td><div>
+            <td class="oneline">{{ funding.payed_at.date }}</td>
+            <td>
                 {% if funding.name %}
                     {{ funding.name }}
                 {% else %}
                     <em>{% trans "Anonymous" %}</em>
                 {% endif %}
-            </div></td>
-            <td><div>{{ funding.amount }} zł</div></td>
-            <td><div>
+            </td>
+            <td>{{ funding.amount }}&nbsp;zł</td>
+            <td>
                 {% for perk in funding.perks.all %}
                     {{ perk.name }}{% if not forloop.last %},{% endif %}
                 {% endfor %}&nbsp;
-            </div></td>
+            </td>
     {% endfor %}
     </table>
     

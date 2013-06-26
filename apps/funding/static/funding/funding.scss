@@ -38,7 +38,7 @@
         border-radius: 2em;
         background-image: url(/static/img/progress-pixel.png);
         background-repeat: repeat-y;
-        background-color: fade-out(#ec6d00, .5);
+        background-color: mix(#ec6d00, orange, .5);
         box-shadow: .1em .1em .1em #888;
     }
     .with-button .progress {
@@ -68,28 +68,32 @@
 
 .wlfund {
     width: 100%;
-    border-collapse: collapse;
+    border-spacing:0;
 
     td {
-        padding: 0 0 1em 0;
+        padding: 1em .5em 1em;
         text-align: center;
+        border-top: 1em solid rgba(255, 255, 255, 0);
+        border-bottom: 2px solid #DDDDDD;
+
+        background-clip: padding-box;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding;
+    }
+    td.oneline {
+        white-space: nowrap;
     }
 
     td:last-child {
         text-align: right;
     }
 
-    td div {
-        padding: 1em;
-        box-shadow: 0 2px 0 #DDDDDD;
+    .funding-plus td {
+        background-color: mix(#0D7E85, white, .2);
     }
 
-    .funding-plus td div {
-        background: fade-out(#0D7E85, .8);
-    }
-
-    .funding-minus td div {
-        background: white;
+    .funding-minus td {
+        background-color: white;
     }
 }
 
