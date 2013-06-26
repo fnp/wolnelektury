@@ -1,5 +1,5 @@
 from django import forms
-from django.utils.translation import ugettext_lazy as _, ugettext as __
+from django.utils.translation import ugettext_lazy as _, ugettext as __, get_language
 from .models import Funding
 from .widgets import PerksAmountWidget
 
@@ -36,6 +36,7 @@ class FundingForm(forms.Form):
             name=self.cleaned_data['name'],
             email=self.cleaned_data['email'],
             amount=self.cleaned_data['amount'],
+            language_code = get_language(),
         )
         funding.perks = funding.offer.get_perks(funding.amount)
         return funding

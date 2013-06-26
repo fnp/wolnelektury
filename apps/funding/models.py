@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.db import models
-from django.utils.translation import ugettext_lazy as _, ugettext as __
+from django.utils.translation import ugettext_lazy as _, ugettext as __, override
 import getpaid
 from catalogue.models import Book
 from polls.models import Poll
@@ -138,6 +138,7 @@ class Funding(models.Model):
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True, db_index=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
+    language_code = models.CharField(max_length = 2, null = True, blank = True)
 
     # Any additional info needed for perks?
 
@@ -194,14 +195,15 @@ def payment_status_changed_listener(sender, instance, old_status, new_status, **
         instance.order.payed_at = datetime.now()
         instance.order.save()
         if instance.order.email:
-            send_thank_you_email(instance.order.name, instance.order.email)
+            send_thank_you_email(instance.order.name, instance.order.email, instance.order.language_code)
 getpaid.signals.payment_status_changed.connect(payment_status_changed_listener)
 
-def send_thank_you_email(name, address):
-    send_mail(_('Thank you for your support!'), 
-            render_to_string('funding/email.txt', dict(name = name)),
-            getattr(settings, 'CONTACT_EMAIL', 'wolnelektury@nowoczesnapolska.org.pl'),
-            [address],
-            fail_silently=False
-            )
+def send_thank_you_email(name, address, language_code):
+    with override(language_code or 'pl'):
+        send_mail(_('Thank you for your support!'), 
+                render_to_string('funding/email.txt', dict(name = name)),
+                getattr(settings, 'CONTACT_EMAIL', 'wolnelektury@nowoczesnapolska.org.pl'),
+                [address],
+                fail_silently=False
+                )
  
