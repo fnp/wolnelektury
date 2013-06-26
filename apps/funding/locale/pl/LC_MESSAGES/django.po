@@ -7,40 +7,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-25 11:55+0200\n"
-"PO-Revision-Date: 2013-04-25 13:03+0100\n"
+"POT-Creation-Date: 2013-06-26 15:26+0200\n"
+"PO-Revision-Date: 2013-06-26 15:26+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: forms.py:10 templates/funding/wlfund.html:28
+#: forms.py:12 templates/funding/wlfund.html:27
 msgid "Amount"
 msgstr "Kwota"
 
-#: forms.py:12
+#: forms.py:14
 msgid "Name"
 msgstr "Imię i nazwisko na listę darczyńców"
 
-#: forms.py:13
+#: forms.py:15
 msgid "Optional name for public list of contributors"
 msgstr "Opcjonalnie imię i nazwisko lub pseudonim do listy darczyńców."
 
-#: forms.py:14
+#: forms.py:16
 msgid "Contact e-mail"
 msgstr "E-mail kontaktowy"
 
-#: forms.py:15
+#: forms.py:17
 msgid ""
 "We'll use it to contact you about your perks and fundraiser status and "
 "payment updates.<br/> Won't be publicised."
 msgstr ""
 "Użyjemy go do kontaktu w sprawie prezentów i informacji o zmianach statusu "
 "zbiórki i kolejnych akcjach.<br/>Nie będzie publikowany."
+
+#: forms.py:28
+#, python-format
+msgid "The minimum amount is %(amount)s PLN."
+msgstr "Minimalna kwota wpłaty to %(amount)s zł."
+
+#: forms.py:34
+msgid "This offer is out of date."
+msgstr "Ta zbiórka jest już nieaktywna."
 
 #: models.py:19
 msgid "author"
@@ -54,7 +63,7 @@ msgstr "tytuł"
 msgid "slug"
 msgstr "slug"
 
-#: models.py:22 models.py:117
+#: models.py:22
 msgid "description"
 msgstr "opis"
 
@@ -114,6 +123,10 @@ msgstr "cena"
 msgid "name"
 msgstr "nazwa"
 
+#: models.py:117
+msgid "long name"
+msgstr "długa nazwa"
+
 #: models.py:118
 msgid "end date"
 msgstr "data końcowa"
@@ -130,7 +143,7 @@ msgstr "prezenty"
 msgid "email"
 msgstr "e-mail"
 
-#: models.py:138 models.py:167
+#: models.py:138 models.py:168
 msgid "amount"
 msgstr "kwota"
 
@@ -138,27 +151,27 @@ msgstr "kwota"
 msgid "payed at"
 msgstr "data wpłaty"
 
-#: models.py:150
+#: models.py:151
 msgid "funding"
 msgstr "wpłata"
 
-#: models.py:151
+#: models.py:152
 msgid "fundings"
 msgstr "wpłaty"
 
-#: models.py:168
+#: models.py:169
 msgid "when"
 msgstr "kiedy"
 
-#: models.py:171
+#: models.py:172
 msgid "money spent on a book"
 msgstr "pieniądze wydane na książkę"
 
-#: models.py:172
+#: models.py:173
 msgid "money spent on books"
 msgstr "pieniądze wydane na książki"
 
-#: models.py:202 templates/funding/thanks.html:6
+#: models.py:203 templates/funding/thanks.html:6
 #: templates/funding/thanks.html.py:13
 msgid "Thank you for your support!"
 msgstr "Dziękujemy za Twoje wsparcie!"
@@ -324,23 +337,23 @@ msgstr ""
 msgid "Spending these remaining funds is recorded in this table."
 msgstr "W poniższej tabeli rejetrujemy wydatkowanie tych środków."
 
-#: templates/funding/wlfund.html:26
+#: templates/funding/wlfund.html:25
 msgid "Date"
 msgstr "Data"
 
-#: templates/funding/wlfund.html:27
+#: templates/funding/wlfund.html:26
 msgid "Operation"
 msgstr "Rozdysponowanie środków"
 
-#: templates/funding/wlfund.html:29
+#: templates/funding/wlfund.html:28
 msgid "Balance"
 msgstr "Bilans"
 
-#: templates/funding/wlfund.html:36
+#: templates/funding/wlfund.html:35
 msgid "Money spent on publishing the book"
 msgstr "Pieniądze przeznaczone na opublikowanie książki"
 
-#: templates/funding/wlfund.html:45
+#: templates/funding/wlfund.html:44
 msgid "Money remaining from the fundraiser for"
 msgstr "Pieniądze pozostałe ze zbiórki na"
 

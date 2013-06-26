@@ -1,5 +1,7 @@
+from django.conf import settings
 from django import forms
-from django.utils.translation import ugettext_lazy as _, ugettext as __, get_language
+from django.utils import formats
+from django.utils.translation import ugettext_lazy as _, ugettext, get_language
 from .models import Funding
 from .widgets import PerksAmountWidget
 
@@ -21,13 +23,18 @@ class FundingForm(forms.Form):
         self.fields['amount'].widget.form_instance = self
 
     def clean_amount(self):
-        if self.cleaned_data['amount'] <= 0:
-            raise forms.ValidationError(__("Enter positive amount."))
+        if self.cleaned_data['amount'] < settings.FUNDING_MIN_AMOUNT:
+            min_amount = settings.FUNDING_MIN_AMOUNT
+            if isinstance(settings.FUNDING_MIN_AMOUNT, float):
+                min_amount = formats.number_format(settings.FUNDING_MIN_AMOUNT, 2)
+            raise forms.ValidationError(
+                ugettext("The minimum amount is %(amount)s PLN.") % {
+                    'amount': min_amount})
         return self.cleaned_data['amount']
 
     def clean(self):
         if not self.offer.is_current():
-            raise forms.ValidationError(__("This offer is out of date."))
+            raise forms.ValidationError(ugettext("This offer is out of date."))
         return self.cleaned_data
 
     def save(self):
