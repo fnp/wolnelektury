@@ -10,6 +10,8 @@ LICENSES = {
         'description': _('Creative Commons Attribution-ShareAlike 3.0 Unported'),
     },
 }
+LICENSES['http://creativecommons.org/licenses/by-sa/3.0/deed.pl'] = \
+    LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
 
 # Those will be generated only for books with own HTML.
 EBOOK_FORMATS_WITHOUT_CHILDREN = ['txt', 'fb2']
