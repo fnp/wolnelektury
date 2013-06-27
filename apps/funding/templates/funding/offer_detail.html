@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load url from future %}
-{% load i18n %}
+{% load i18n static %}
 {% load funding_tags %}
 {% load pagination_tags %}
 {% load fnp_share %}
@@ -48,7 +48,7 @@
                 {{ form.as_table }}
                 <tr><td></td><td>
                     <button type="submit" style="border: none; background: none; cursor: pointer">
-                    <img alt="{% trans 'Donate!' %}" src="http://static.payu.com/pl/standard/partners/buttons/payu_account_button_01.png" />
+                    <img alt="{% trans 'Donate!' %}" src="{% static 'img/payu.png %}" />
                     </button>
                     </td></tr>
                 </table>

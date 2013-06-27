@@ -15,13 +15,13 @@ var host = 'wolnelektury.pl';
 /* set attributes of created elements */
 stylesheet.setAttribute('type', 'text/css');
 stylesheet.setAttribute('rel', 'stylesheet');
-stylesheet.setAttribute('href', 'http://'+host+'/static/css/widget.css');
+stylesheet.setAttribute('href', '//'+host+'/static/css/widget.css');
 stylesheetJQUI.setAttribute('type', 'text/css');
 stylesheetJQUI.setAttribute('rel', 'stylesheet');
-stylesheetJQUI.setAttribute('href', 'http://'+host+'/static/css/ui-lightness/jquery-ui-1.8.16.custom.css');
-linkLogo.setAttribute('href', 'http://'+host);
-logo.setAttribute('src', 'http://'+host+'/static/img/logo-bez.png');
-form.setAttribute('action', 'http://'+host+'/szukaj/');
+stylesheetJQUI.setAttribute('href', '//'+host+'/static/css/ui-lightness/jquery-ui-1.8.16.custom.css');
+linkLogo.setAttribute('href', '//'+host);
+logo.setAttribute('src', '//'+host+'/static/img/logo-bez.png');
+form.setAttribute('action', '//'+host+'/szukaj/');
 form.setAttribute('method', 'get');
 form.setAttribute('accept-charset', 'utf-8');
 form.setAttribute('id', 'wl-form');
@@ -30,25 +30,25 @@ inputText.setAttribute('title', 'tytul, autor, motyw/temat, epoka, rodzaj, gatun
 inputText.setAttribute('value', '');
 inputText.setAttribute('name', 'q');
 inputText.setAttribute('id', 'id_qq');
-inputText.setAttribute('data-source', 'http://'+host+'/szukaj/hint');
+inputText.setAttribute('data-source', '//'+host+'/szukaj/hint/');
 /*inputText.setAttribute('size', '13');*/
 inputSubmit.setAttribute('type', 'image');
-inputSubmit.setAttribute('src', 'http://'+host+'/static/img/search.png');
+inputSubmit.setAttribute('src', '//'+host+'/static/img/search.png');
 /* inputSubmit.setAttribute('style', 'position:relative; top:5px; margin-left:5px');*/
 
 /* import jquery and autocomplete */
 var scriptJ = document.createElement('script');
 scriptJ.setAttribute('type', 'text/javascript');
-scriptJ.setAttribute('src', 'http://'+host+'/static/js/jquery.js');
+scriptJ.setAttribute('src', '//'+host+'/static/js/jquery.js');
 
 var scriptUI = document.createElement('script');
 scriptUI.setAttribute('type', 'text/javascript');
-scriptUI.setAttribute('src', 'http://'+host+'/static/js/jquery-ui-1.8.2.custom.min.js');
+scriptUI.setAttribute('src', '//'+host+'/static/js/jquery-ui-1.8.2.custom.min.js');
 scriptUI.setAttribute('id', 'wl-jquery-ui-script')
 
 var scriptSearch = document.createElement('script');
 scriptSearch.setAttribute('type', 'text/javascript');
-scriptSearch.setAttribute('src', 'http://'+host+'/static/js/search.js');
+scriptSearch.setAttribute('src', '//'+host+'/static/js/search.js');
 scriptSearch.setAttribute('id', 'wl-search-script')
 
 body[0].appendChild(scriptJ);
@@ -72,7 +72,7 @@ scriptSearch.onload = function() {
                     });
                         },
             dataType: "jsonp",
-            host: "http://"+host});
+            host: "//"+host});
 }
 scriptSearch.onreadystatechange = function() { if (scriptSearch.readyState == 'complete') { scriptSearch.onload(); } };
 
