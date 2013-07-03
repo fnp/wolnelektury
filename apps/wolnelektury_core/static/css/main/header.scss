@@ -1,0 +1,191 @@
+@import "tools";
+
+$header_bg: #191919;
+
+
+#header-wrapper {
+    position: relative;
+
+    /* Upper-half both sides dark background */
+    &:before {
+        content: " ";
+        display: block;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        @include size-px(bottom, 45);
+        left: 0;
+        width: 100%;
+        background-color: $header_bg;
+    }
+
+    /* Left-side dark background */
+    &:after {
+        content: " ";
+        display: block;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        background-color: $header_bg;
+    }
+}
+
+
+header#main {
+    @include size-px(line-height, 20); /* Make links easier to click when wrapped. */
+    background-color: $header_bg;
+    color: #bbb;
+
+    @media screen and (min-width: 62.5em) {
+        position: relative;
+        @include size-px(height, 94);
+        @include size-px(width, 975);
+        margin: auto;
+    }
+
+    a {
+        color: #17CFDB;
+    }
+
+    #logo {
+        display: block;
+        @include size-px(height, 94);
+        @include size-px(width, 94);
+
+        @media screen and (min-width: 24em) {
+            float: left;
+        }
+
+        img {
+            display: block;
+        }
+    }
+
+    #tagline {
+        margin-top: 0;
+        @include size-px(margin-left, 5);
+        @include size-px(margin-right, 5);
+        padding-top: 0;
+        @include size-px(font-size, 13);
+
+        @media screen and (min-width: 24em) {
+            @include size-px(padding-top, 6);
+            text-align: right;
+        }
+
+        @media screen and (min-width: 62.5em) {
+            position: absolute;
+            @include size-px(top, 10);
+            @include size-px(left, 255);
+            @include size-px(margin-left, 0);
+        }
+    }
+
+    #user-info {
+        margin-top: 0;
+        @include size-px(margin-left, 5);
+        @include size-px(margin-right, 5);
+        padding-top: 0;
+        @include mono;
+        @include size-px(font-size, 10);
+
+        @media screen and (min-width: 24em) {
+            @include size-px(padding-top, 15);
+            text-align: right;
+        }
+        @media screen and (min-width: 62.5em) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include size-px(margin-left, 0);
+        }
+
+        #user-menu {
+            display: none;
+        }
+    }
+
+    form#search-area {
+        position: relative;
+        clear: both;
+        @include size-px(height, 45);
+        background: #444444;
+        color: white;
+
+        @media screen and (min-width: 62.5em) {
+            position: absolute;
+            @include size-px(top, 49);
+            @include size-px(left, 240);
+            @include size-px(right, 0);
+        }
+
+        #search-field {
+            position: absolute;
+            @include size-px(top, 5);
+            @include size-px(left, 5);
+            @include size-px(right, 113);
+
+            label {
+                @include hidden-label;
+            }
+            input#search {
+                z-index: 200;
+                position: relative;
+                @include size-px(height, 33);
+                width: 100%;
+                padding: 0;
+                @include size-px(padding-left, 13);
+                @include size-px(line-height, 32.5);
+
+                border: none;
+                @include size-px(border-radius, 5);
+                box-shadow: 0 0 0.5em #444444 inset;
+
+                font-family: Georgia;
+                @include size-px(font-size, 13);
+                background-color: white;
+                color: black;
+
+                /* styling search placeholder */
+                &::placeholder
+                {
+                    font-family: Georgia;
+                    font-style: italic;
+                    color: #767676;
+                }
+                &::-webkit-input-placeholder
+                {
+                    font-family: Georgia;
+                    font-style: italic;
+                    color: #767676;
+                }
+                &::-moz-placeholder
+                {
+                    font-family: Georgia;
+                    font-style: italic;
+                    color: #767676;
+                }
+            }
+        }
+        button {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include size-px(height, 45);
+            @include size-px(width, 94);
+            margin: 0;
+            padding: 0;
+
+            border: none;
+
+            @include mono;
+            @include size-px(font-size, 11);
+            background: #018189;
+            color: white;
+        }
+    }
+}

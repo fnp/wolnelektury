@@ -1,0 +1,26 @@
+.hidden-box-wrapper {
+    position: relative;
+
+    .hidden-box {
+        position: absolute;
+        left: 0;
+        display: none;
+        border: 1px solid #ddd;
+        padding: 1em 1em .5em 1em;
+        background: #fff;
+        -moz-box-shadow: 2px 2px 2px #ddd;
+        -webkit-box-shadow: 2px 2px 2px #ddd;
+        box-shadow: 2px 2px 2px #ddd;
+        z-index: 500;
+
+        .hidden-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.1em;
+            .hidden-box li {
+                margin-bottom: .5em;
+            }
+        }
+    }
+}

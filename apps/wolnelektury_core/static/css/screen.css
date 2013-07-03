@@ -23,33 +23,9 @@
 }
 
 
-#header-content, div#main-content, div#half-header-content, #footer-content {
-    width: 97.5em;
-    margin: auto;
-}
 
-#promo-box {
-    float: right;
-    margin-top: -5.1em;
-}
 
-#promo-box-body {
-	height: 30em;
-}
 
-#big-cite .vip {
-	float:left;
-	text-align:right;
-	width: 14.7em;
-}
-
-#big-cite .cite-body {
-    margin-left: 17.5em;
-}
-
-#big-cite .source {
-    margin-left: 17.5em;
-}
 
 
 .book-wide-box {
@@ -99,42 +75,9 @@
 
 /* HEADER */
 
-#header {
-    height: 3em;
-    padding-top: 1.9em;
-}
-
-#logo {
-    position: absolute;
-    top: 0;
-}
-
 #user-info {
     float: right;
     padding: 0;
-}
-
-#tagline {
-    display: inline-block;
-    margin-left: 25.5em;
-}
-
-#search-area {
-    margin-left: 24em;
-    width: 73.5em;
-}
-
-#search-field {
-    width: 63.1em;
-    padding-right: 0;
-}
-
-#search {
-    width: 47.47em;
-}
-
-#search-button {
-	float: right;
 }
 
 #promo-box {

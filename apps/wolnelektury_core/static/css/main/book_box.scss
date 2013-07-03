@@ -1,0 +1,56 @@
+@import "tools";
+
+@mixin inner-box {
+    display: block;
+    color: black;
+    border-style: solid;
+    border-color: #ddd;
+    @include size-px(border-width, 1);
+    @include size-px(margin, 1);
+    @include size-px(padding-top, 8);
+    @include size-px(padding-bottom, 8);
+    @include size-px(padding-left, 10);
+    @include size-px(padding-right, 10);
+    background: #fff;
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+}
+@mixin cover-thumb {
+    @include size-px(height, 193);
+    @include size-px(width, 139);
+}
+
+
+.book-mini-box {
+    @include size-px(width, 161.5);
+    display: inline-block;
+    vertical-align: top;
+
+    a {
+        @include inner-box;
+        @include size-px(height, 271);
+        @include size-px(margin, 1);
+        overflow: hidden;
+    }
+    img.cover {
+        @include cover-thumb;
+        @include size-px(margin-bottom, 18);
+    }
+    .desc {
+        margin-left: 0;
+    }
+    .author {
+        @include size-px(font-size, 11);
+        @include mono;
+        color: #6d7877;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .title {
+        @include size-px(font-size, 14);
+        color: #242424;
+    }
+}

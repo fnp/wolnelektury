@@ -1,0 +1,29 @@
+@import "tools";
+
+/* Basic colors and fonts */
+body {
+    font-family: Georgia;
+    background: #f7f7f7;
+    color: black;
+}
+
+a {
+    color: #0d7e85;
+    text-decoration: none;
+
+    img {
+        border: 0;
+    }
+}
+
+
+/* Basic layout */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.clearboth {
+    clear: both;
+}

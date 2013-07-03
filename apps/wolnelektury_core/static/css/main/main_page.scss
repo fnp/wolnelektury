@@ -1,0 +1,272 @@
+@import "tools";
+
+#big-cite {
+    background-color: #444;
+    color: white;
+    padding: 0;
+    margin: 0;
+    background-size: 100%;
+    background-position: 50% 68%;
+    background-repeat: repeat-y;
+
+    background-image: url(/static/img/backdrop/book-drawer2.jpg);
+
+    @media screen and (min-width: 62.5em) {
+        background-image: url(/static/img/backdrop/book-drawer2.jpg);
+    }
+
+    .cite {
+        @include size-px(padding-top, 46);
+        @include size-px(padding-bottom, 48);
+        @include size-px(padding-left, 0);
+        @include size-px(padding-right, 10);
+        background: none;
+        color: white;
+
+        @media screen and (min-width: 30em) {
+            @include size-px(padding-right, 40);
+        }
+
+        .vip {
+            @include size-px(margin-left, 10);
+            @include size-px(margin-top, 2.5);
+            @include size-px(margin-bottom, 5);
+            @include size-px(font-size, 11);
+
+            @media screen and (min-width: 16em) {
+                padding-left: 10%;
+                @include size-px(margin-left, -18);
+            }
+
+            @media screen and (min-width: 62.5em) {
+                float: left;
+                padding-left: 0;
+                @include size-px(margin-left, 16);
+                text-align: right;
+                @include size-px(width, 147);
+            }
+        }
+
+        .cite-body {
+            @include size-px(margin, .5);
+            @include size-px(font-size, 20);
+            line-height: 1.16em;
+
+            @media screen and (min-width: 30em) {
+                @include size-px(font-size, 30);
+            }
+        }
+
+        .source {
+            @include size-px(margin-top, 16);
+            @include size-px(margin-bottom, 16);
+            @include size-px(margin-right, 2);
+            @include size-px(font-size, 12);
+        }
+
+        /* Make cite body and source slide to the left. */
+        .cite-body, .source {
+            @include size-px(margin-left, 10);
+
+            @media screen and (min-width: 16em) {
+                padding-left: 21.9%;
+                @include size-px(margin-left, -38);
+            }
+
+            @media screen and (min-width: 62.5em) {
+                padding-left: 0;
+                @include size-px(margin-left, 175);
+            }
+        }
+
+        /* Semi-transparent background. */
+        .cite-body span,
+        .vip span,
+        .source span {
+            color: white;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.6);
+            /* For IE 5.5 - 7*/
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+            /* For IE 8*/
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+        }
+    }
+
+    /* a long cite displays smaller */ 
+    .cite-small .cite-body {
+        @include size-px(font-size, 16);
+        @media screen and (min-width: 30em) {
+            @include size-px(font-size, 20);
+        }
+    }
+
+    h2 {
+        margin: 0;
+        @include size-px(font-size, 11);
+        color: #575c63;
+    }
+}
+
+
+#promo-box {
+    @include size-px(margin-top, 16);
+
+    @media screen and (min-width: 33em) {
+        float: right;
+        @include size-px(margin-top, -51);
+        @include size-px(width, 320);
+    }
+
+    h1 {
+        @include size-px(padding-top, 20);
+        @include size-px(height, 31);
+        margin: 0;
+        padding-bottom: 0;
+        @include size-px(padding-left, 10);
+        @include size-px(padding-right, 5);
+        background: #191919;
+        color: white;
+        @include mono;
+        @include size-px(font-size, 13);
+        font-weight: normal;
+
+        @media screen and (min-width: 33em) {
+            @include size-px(padding-left, 25);
+            @include size-px(padding-right, 25);
+        }
+    }
+
+    #promo-box-body {
+        @include size-px(padding-top, 20);
+        @include size-px(padding-bottom, 20);
+        @include size-px(padding-left, 5);
+        @include size-px(padding-right, 5);
+        border-bottom-style: solid;
+        border-bottom-color: #efefef;
+        @include size-px(border-bottom-width, 2);
+        background: #efefef;
+
+        @media screen and (min-width: 33em) {
+            @include size-px(padding-left, 28);
+            @include size-px(padding-right, 28);
+        }
+
+        @media screen and (min-width: 62.5em) {
+            @include size-px(height, 300);
+        }
+
+        a {
+            display: block;
+            color: #6c6c6c;
+        }
+        p {
+            margin-top: 0;
+            @include size-px(font-size, 12);
+            line-height: 1.55em;
+            color: #6c6c6c;
+        }    
+        h2, h3 {
+            color: #0d777e;
+            @include size-px(font-size, 11);
+            @include size-px(height, 27.5);
+            margin: 0;
+            @include mono;
+            font-weight: normal;
+
+            &:after {
+                content: " >";
+            }
+        }
+    }
+}
+
+
+#main-last {
+    h1 {
+        @include size-px(height, 32);
+        margin: 0;
+        @include size-px(padding-top, 19);
+        @include size-px(padding-left, 10);
+
+        @include size-px(font-size, 11);
+        @include mono;
+        font-weight: normal;
+
+        @media screen and (min-width: 33em) {
+            @include size-px(padding-left, 19);
+        }
+
+        a {
+            color: black;
+
+            &:after {
+                content: " >";
+            }
+        }
+    }
+    .book-mini-box:nth-child(3) {
+        @media screen and (min-width: 30em) {
+            margin-right: 3em;
+        }
+        @media screen and (min-width: 33em) {
+            margin-right: 0;
+        }
+    }
+}
+
+
+.infopages-box {
+    margin: 0;
+    @include size-px(margin-top, 5);
+    padding-top: 0;
+    padding-bottom: 0;
+    @include size-px(padding-left, 5);
+    @include size-px(padding-right, 5);
+    vertical-align: top;
+    color: #989898;
+
+    @media screen and (min-width: 20em) {
+        display: inline-block;
+        @include size-px(width, 206);
+        @include size-px(padding-left, 17);
+        @include size-px(padding-right, 17);
+    }
+
+    h1 {
+        @include size-px(height, 28);
+        margin: 0;
+        @include size-px(padding-top, 25);
+        @include size-px(font-size, 11);
+        color: #017e85;
+        font-weight: normal;
+        @include mono;
+    }
+
+    a {
+        color: black;
+    }
+
+    ol, ul {
+        @include size-px(font-size, 11);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        line-height: 1.45em;
+
+        li {
+            @include size-px(margin-bottom, 8);
+            @media screen and (min-width: 62.5em) {
+                @include size-px(margin-bottom, 2.5);
+            }
+        }
+    }
+
+    .social-links {
+        @include size-px(margin-top, 10);
+
+        a {
+            @include size-px(margin-right, 6);
+        }
+    }
+}

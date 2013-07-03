@@ -7,47 +7,47 @@
 {% block ogtitle %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
 {% block body %}
-    <div id="big-cite"{% if cite.image %}
+    <section id="big-cite"{% if cite.image %}
         style="
             background-image: url('{{ cite.image.url }}');
             background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;
         "{% endif %} >
         {% render_cite cite %}
-    </div>
+    </section>
 
     {% spaceless %}
 
 
-    <div id="promo-box">
-		<div id="promo-box-header"><h2 class="mono">
-			{% trans "What's new?" %}
-		</h2></div>
-		<div id="promo-box-body">
-        	{% chunk "promo" %}
-      	</div>
-    </div>
+    <section id="promo-box">
+        <h1>{% trans "What's new?" %}</h1>
+        <div id="promo-box-body">
+            {% chunk "promo" %}
+        </div>
+    </section>
 
 
-    <h2 class="main-last"><a href="{% url 'recent_list' %}"><span class="mono">{% trans "Recent publications" %}</span></a></h2>
+    <section id="main-last">
+        <h1><a href="{% url 'recent_list' %}">{% trans "Recent publications" %}</a></h1>
         {% cache 60 last-published-on-main %}
             {% for book in last_published %}
                 {% book_mini book %}
             {% endfor %}
         {% endcache %}
+    </section>
 
     <div class="clearboth"></div>
 
-    <div class="infopages-box">
-        <h2><span class='mono'>{% trans "News" %}</span></h2>
+    <section class="infopages-box">
+        <h1>{% trans "News" %}</h1>
 	{# 135 is the id of new publications category of our master blog. perhaps this URL should go to settings. #}
         {% cache 1800 latest-blog-posts %}
             {% latest_blog_posts "http://nowoczesnapolska.org.pl/feed/?cat=-135" %}
         {% endcache %}
-    </div>
+    </section>
 
 
-    <div class="infopages-box">
-        <h2><span class='mono'>{% trans "Utilities" %}</span></h2>
+    <section class="infopages-box">
+        <h1>{% trans "Utilities" %}</h2>
 
         <ul>
             <li><a href="{% url 'suggest' %}" id="suggest" class="ajaxable">{% trans "Report a bug or suggestion" %}</a></li>
@@ -64,11 +64,11 @@
             <li><a href="http://polski.wolnelektury.pl" lang="pl">Materiały do nauki j. polskiego</a></li>
             
         </ul>
-    </div>
+    </section>
 
 
-    <div class="infopages-box">
-        <h2><span class='mono'>{% trans "Information" %}</span></h2>
+    <section class="infopages-box">
+        <h1>{% trans "Information" %}</h1>
         <ul>
             <li><a href="http://nowoczesnapolska.org.pl/prywatnosc/">{% trans "Privacy policy" %}</a></li>
         {% cache 60 infopages-on-main LANGUAGE_CODE %}
@@ -86,7 +86,7 @@
                 <img src="{% static "img/social/nk.png" %}" alt="Wolne Lektury @ NK.pl" />
             </a>
         </div>
-    </div>
+    </section>
 
 
     {% endspaceless %}

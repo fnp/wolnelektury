@@ -14,30 +14,24 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 # CSS and JavaScript file groups
+
+
 PIPELINE_CSS = {
-    'all': {
+    'main': {
         # styles both for mobile and for big screen
         'source_filenames': [
             'css/jquery.countdown.css', 
 
-            'css/base.css',
-            'css/cite.css',
-            'css/header.css',
-            'css/main_page.css',
-            'css/dialogs.css',
-            'css/picture_box.css',
-            'css/book_box.css',
-            'css/catalogue.css',
+            'css/main/*.scss',
+
             'sponsors/css/sponsors.css',
-            'css/auth.css',
             'funding/funding.scss',
             'polls/polls.scss',
-            'css/form.scss',
 
             'css/social/shelf_tags.css',
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
         ],
-        'output_filename': 'css/compressed/all.css',
+        'output_filename': 'css/compressed/main.css',
     },
     'ie': {
         'source_filenames': [

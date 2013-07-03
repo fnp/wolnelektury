@@ -1,9 +1,3 @@
-.cite {
-    display: block;
-    color: black;
-    background: white;
-    padding: 3em 2em .1em 8em;
-}
 .book-wide-box .cite-body,
 #tagged-object-list .cite-body
  {
@@ -17,93 +11,6 @@
     font-size: 1.1em;
     margin-top: 1.6em;
 }
-.cite .vip {
-    margin: 0;
-    color: #575C63;
-    font-size: 1.1em;
-}
-
-
-
-#big-cite {
-    background-color: #444;
-    color: white;
-    padding: 0;
-    margin: 0;
-    background-image: url(/static/img/backdrop/book-drawer2.jpg);
-    background-size: 100%;
-    background-position: 50% 68%;
-    background-repeat: no-repeat;
-}
-
-#big-cite .cite {
-    padding: 4.6em 4em 4.8em 0;
-    background: none;
-    color: white;
-}
-
-#big-cite h2 {
-    margin: 0;
-    font-size: 1.1em;
-    color: #575c63;
-}
-
-
-#big-cite .cite-body {
-    margin: .05em .05em .05em 1em;
-}
-#big-cite .cite-body span {
-    font-size: 3em;
-    line-height: 1.16em;
-}
-
-#big-cite .vip {
-	margin-left: 1em;
-	margin-top: .25em;
-}
-
-#big-cite .vip span {
-	font-size:1.1em;
-}
-
-#big-cite .cite-body span,
-#big-cite .vip span,
-#big-cite .source span
-{
-	color: white;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.6);
-	/* For IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-}
-/* a long cite displays smaller */ 
-#big-cite .cite-small .cite-body span {
-	font-size: 2em;
-}
-
-
-#big-cite .source {
-    margin: 1.6em 0.2em 1.6em 1em;
-}
-#big-cite .source span {
-    font-size: 1.2em;
-}
-
-
-
-
-
-.cite blockquote p {
-    margin: 0;
-}
-
-.cite blockquote {
-    padding: 0;
-    margin: 0;
-}
-
 .book-wide-box .cite {
     position: relative;
     top: -1em;

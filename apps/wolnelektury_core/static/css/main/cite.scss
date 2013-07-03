@@ -1,0 +1,26 @@
+@import "tools";
+
+.cite {
+    display: block;
+    color: black;
+    background: white;
+    @include size-px(padding-top, 30);
+    @include size-px(padding-bottom, 1);
+    @include size-px(padding-left, 80);
+    @include size-px(padding-right, 20);
+
+    blockquote {
+        padding: 0;
+        margin: 0;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .vip {
+        margin: 0;
+        color: #575C63;
+        @include size-px(font-size, 11);
+    }
+}

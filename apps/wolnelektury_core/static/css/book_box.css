@@ -12,9 +12,7 @@
     width: 48.75em;
 }
 
-.book-mini-box {
-    width: 16.15em;
-}
+
 
 .book-wide-box {
     /** This is a fullpage box, it must be aligned with the top menu. 
@@ -46,11 +44,6 @@
     box-shadow: 2px 2px 2px #ddd;
 }
 
-.book-mini-box a {
-    height: 27.1em;
-    margin: .1em;
-    overflow: hidden;
-}
 
 
 .book-wide-box .book-box-inner {
@@ -95,30 +88,11 @@
     width: 13.9em;
     height: 19.3em;
 }
-.book-mini-box img.cover {
-    margin-bottom: 1.8em;
-}
 .book-box-inner .cover-area,
 .book-wide-box .cover-area
 {
     float: left;
     margin-right: 1.5em;
-}
-
-.book-mini-box .desc {
-    margin-left:0em;
-}
-.book-mini-box .author {
-    font-size: 1.1em;
-    color: #6d7877;
-    display: block;
-    overflow:hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.book-mini-box .title {
-    font-size: 1.4em;
-    color: #242424;
 }
 
 

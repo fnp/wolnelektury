@@ -10,6 +10,9 @@ dev.sqlite
 # Compress output
 /static
 
+# SCSS output
+/apps/wolnelektury_core/static/css/main/*.css
+
 # Python garbage
 *.pyc
 .coverage

@@ -1,0 +1,141 @@
+@import "tools";
+
+.dialog-window {
+    position: absolute;
+    display: none;
+    background-color: transparent;
+    @include size-px(margin-top, -5);
+    @include size-px(margin-left, 0);
+    left: 0 !important;
+    right: 0;
+
+    @media screen and (min-width: 30em) {
+        left: none;
+        right: none;
+        @include size-px(width, 200);
+        @include size-px(margin-left, 10);
+    }
+
+    div.header {
+        @include mono;
+        @include size-px(font-size, 11);
+        width: 4em;
+        background-color: #FFF;
+        padding: 1em;
+        right: 0;
+        left: auto;
+        float: right;
+        text-align: center;
+
+        @media screen and (min-width: 30em) {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            border-right: 0.3em solid #DDD;
+        }
+    }
+
+    div.target {
+        background-color: #FFF;
+        color: black;
+        border-bottom: 0.3em solid #DDD;
+        padding: 1em 10px;
+        clear: both;
+
+        @media screen and (min-width: 30em) {
+            border-right: 0.3em solid #DDD;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    }
+
+    h1 {
+        @include size-px(font-size, 12);
+        font-weight: normal;
+        margin-top: .4em;
+    }
+
+    textarea, input {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+.cuteform {
+    @include size-px(font-size, 11);
+
+    ol, ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        @include size-px(font-size, 11);
+
+        li {
+            margin-top: 0.7em;
+        }
+    }
+
+    label {
+        display: block;
+    }
+
+    span.help-text {
+        display: block;
+        font-size: 0.8em;
+        color: #999;
+    }
+
+    .error {
+        color: #BF3024;
+        display: block;
+    }
+
+    .errorlist {
+        color: #BF3024;
+    }
+}
+
+
+.jqmOverlay { background-color: #000; }
+
+
+
+.hidelabels label {
+    @include hidden-label;
+}
+
+
+@media screen and (min-width: 30em) {
+    #login-window {
+        @include size-px(width, 260);
+    }
+    #register-window {
+        width: 26em;
+    }
+    #context-login-window {
+        width: 26em;
+    }
+    #suggest-window {
+        width: 26em;
+    }
+    #suggest-publishing-window {
+        width: 29em;
+    }
+    #custom-pdf-window {
+        width: 24em;   
+    }
+}
+
+#suggest-window textarea {
+    height: 6em;
+}
+#suggest-publishing-window textarea {
+    height: 3em;
+}
+#custom-pdf-window label {
+    display: inline;
+}

@@ -5,6 +5,7 @@
     {% load catalogue_tags funding_tags reporting_stats sponsor_tags %}
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="application-name" content="Wolne Lektury" />
         <meta property="og:site_name" content="Wolne Lektury" />
         <meta property="og:title" content="{% block ogtitle %}{% endblock %}" />
@@ -17,13 +18,10 @@
 
         <title>{% block title %}{% trans "Wolne Lektury" %} :: 
             {% block titleextra %}{% endblock %}{% endblock %}</title>
-        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png" />
+        <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
         <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury" 
-            href="{% static "opensearch.xml" %}" />
-        {% compressed_css "all" %}
-        <link href="{% static "css/core.css" %}" rel="stylesheet" type="text/css" media="screen" />
-        <link href="{% static "css/antiscreen.css" %}" rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" />
-        {#% compressed_css "handheld" %#}
+            href="{% static 'opensearch.xml' %}" />
+        {% compressed_css "main" %}
         <!--[if IE]>
         	{% compressed_css "ie" %}
         <![endif]-->
@@ -34,45 +32,26 @@
     <body id="{% block bodyid %}base{% endblock %}">
 
         {% block bodycontent %}
-		<div id="header-bg"></div>
+        <div id="header-wrapper">
+        <header id="main">
+            <a href="/" id="logo">
+                <img src="{% static 'img/logo-neon.png' %}"
+                    alt="Wolne Lektury" />
+            </a>
 
-        <div id="header">
-
-        <div id="header-content">
-            <div id="logo">
-                <a class="logo" href="/">
-                <img id="logo-image" src="{% static "img/logo-neon.png" %}"
-                    alt="Wolne Lektury" /></a>
-            </div>
-
-            <div id="tagline">
-                <span>
-                {% cache 60 tagline LANGUAGE_CODE %}
-                    {% url 'book_list' as b %}
-                    {% url 'infopage' 'prawa' as r %}
-                        {% count_books book_count %}
-                    {% blocktrans count book_count as c %}
-                    <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>
-                    {% plural %}
-                    <a href='{{b}}'>{{c}}</a> free readings you have <a href='{{r}}'>right to</a>
-                    {% endblocktrans %}
-                {% endcache %}
-                </span>
-            </div>
-
-            <p id="user-info" class="mono">
+            <p id="user-info">
                 {% if user.is_authenticated %}
                     {% trans "Welcome" %}, 
-                    	<span class="hidden-box-wrapper">
-                    		<a href="{% url 'user_settings' %}" class="hidden-box-trigger">
-                    			<strong>{{ user.username }}</strong>
-                    		</a>
-                    		<span id="user-menu" class="hidden-box">
-                    			<a href="{% url 'account_set_password' %}">{% trans "Password" %}</a><br/>
-                    			<a href="{% url 'account_email' %}">{% trans "E-mail" %}</a><br/>
-                    			<a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a><br/>
-                    		</span>
-                    	</span>
+                    <span class="hidden-box-wrapper">
+                        <a href="{% url 'user_settings' %}" class="hidden-box-trigger">
+                            <strong>{{ user.username }}</strong>
+                        </a>
+                        <span id="user-menu" class="hidden-box">
+                            <a href="{% url 'account_set_password' %}">{% trans "Password" %}</a><br/>
+                            <a href="{% url 'account_email' %}">{% trans "E-mail" %}</a><br/>
+                            <a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a><br/>
+                        </span>
+                    </span>
                     | <a href="{% url 'social_my_shelf' %}" id="user-shelves-link">{% trans "My shelf" %}</a>
                     {% if user.is_staff %}
                     | <a href="/admin/">{% trans "Administration" %}</a>
@@ -89,43 +68,35 @@
                 {% endif %}
             </p>
 
+            <p id="tagline">
+                {% cache 60 tagline LANGUAGE_CODE %}
+                    {% url 'book_list' as b %}
+                    {% url 'infopage' 'prawa' as r %}
+                        {% count_books book_count %}
+                    {% blocktrans count book_count as c %}
+                    <a href='{{b}}'>{{c}}</a> free reading you have <a href='{{r}}'>right to</a>
+                    {% plural %}
+                    <a href='{{b}}'>{{c}}</a> free readings you have <a href='{{r}}'>right to</a>
+                    {% endblocktrans %}
+                {% endcache %}
+            </p>
 
-            <div class="clearboth"></div>
-
-        </div>
-        </div>
-
-        <div id="half-header">
-        <div id="half-header-content">
-
-
-
-            <form id="search-area" action="{% url 'search' %}" class="hidelabels">
-                
-                <div id="search-field" class="grid-line">
-                	<label for="search">{{search_form.q.label}}</label>
-		  {{search_form.q}}
-<!--                    <input title="np. Leśmian" name="q" autocomplete="off" data-source="/fullsearch/hint/">-->
-                </div><div id="search-button">
-                    <button type='submit'><span class="mono">{% trans "Search" %}</span></button>
-                </div>
-                
-                <div class="clearboth"></div>
+            <form id="search-area" action="{% url 'search' %}">
+                <div id="search-field">
+                    <label for="search">{{search_form.q.label}}</label>
+                        {{search_form.q}}
+                </div><button type='submit'>{% trans "Search" %}</button>
             </form>
 
-
-
-        </div>
+        </header>
         </div>
 
 
-        <div id="main-content">
-            
-            <div id="nav-line">
-                {% catalogue_menu %}
+        <nav id="nav-line">
+            {% catalogue_menu %}
 
             <div id="lang-menu" class="hoverget">
-                <span id='lang-button' class='mono hoverclick'>
+                <span id='lang-button' class='hoverclick'>
                     <span class="lang-flag">⚐</span>
                     {% trans "Language versions" %}</span>
                 <div id="lang-menu-items">
@@ -135,31 +106,26 @@
                     <input type="hidden" name="language" value="{{ lang.0 }}" />
                     <button type="submit"
                         lang="{{ lang.0 }}"
-                        class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %} mono"
+                        class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %}"
                         >{{ lang.1 }}</button>
-    	            </form>
+                    </form>
                 {% endfor %}
                 </div>
             </div>
-            </div>
 
             <div class="clearboth"></div>
+        </nav>
 
 
-
+        <div id="main-content">
             {% block body %}
             {% endblock %}
+            <div class="clearboth"></div>
+        </div>
 
 
-
-
-        <div class="clearboth"></div>
-
-        </div>{# end main-content #}
-
-
-        <div id="footer">
-        <div id="footer-content">
+        <div id="footer-wrapper">
+        <footer id="main">
             <p>
             	{% blocktrans %}
 				Wolne Lektury is a project lead by <a href="http://nowoczesnapolska.org.pl/">Modern Poland Foundation</a>.
@@ -178,14 +144,14 @@
             {% block add_footer %}{% endblock %}
 
 			{% sponsor_page "footer" %}
-        </div>
+        </footer>
         </div>
 
 
 
         {# template #}
         <div id="ajaxable-window" class='dialog-window'>
-            <div class="header mono"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+            <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
             <div class="target">
                 <p><img src="{% static "img/indicator.gif" %}" alt="*"/> {% trans "Loading" %}</p>
             </div>

@@ -1,0 +1,17 @@
+@mixin size-px($name, $size) {
+    #{$name}: $size + px;
+    #{$name}: ($size / 16) + rem;
+}
+@mixin font-size-px($size) {
+    @include size-px(font-size, $size);
+}
+
+@mixin mono {
+    font-family: "Andale Mono", "Lucida Sans Typewriter", "Courier New";
+}
+@mixin hidden-label {
+    display: block;
+    width: 1px;
+    height: 1px;
+    overflow:hidden;
+}

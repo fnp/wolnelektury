@@ -1,0 +1,8 @@
+@import "tools";
+
+@media screen and (min-width: 62.5em) {
+    #main-content {
+        @include size-px(width, 975);
+        margin: auto;
+    }
+}
