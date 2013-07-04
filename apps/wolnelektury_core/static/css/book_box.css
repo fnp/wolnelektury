@@ -1,51 +1,21 @@
-.book-mini-box, .Book-item {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.book-wide-box, .book-box {
+.book-wide-box {
     margin: 0;
     vertical-align: top;
 }
-
-.book-box {
-    width: 48.75em;
-}
-
-
-
 .book-wide-box {
     /** This is a fullpage box, it must be aligned with the top menu. 
         This corresponds to a .1em margin below **/
     margin-left: -0.1em;
 }
 
+
+
+
+
 /* 
  * A mini-box wraps it's contents (image + label) in an <a>
  * other boxes have an inner box as a wrapper.
  */
-
-.book-box-inner {
-    /* min, so it can grow */
-    min-height: 19.75em; 
-    margin: .5em;
-}
-
-.book-mini-box a, .book-box-inner {
-    display: block;
-    color: black;
-    border: 1px solid #ddd;
-/*    height: 20em; */
-    padding: .8em 1em;
-    margin: .1em;
-    background: #fff;
-    -moz-box-shadow: 2px 2px 2px #ddd;
-    -webkit-box-shadow: 2px 2px 2px #ddd;
-    box-shadow: 2px 2px 2px #ddd;
-}
-
-
-
 .book-wide-box .book-box-inner {
    /* min, so it can grow */ 
    min-height: 24.4em;
@@ -81,97 +51,8 @@
 }
 */
 
-.book-mini-box img.cover,
-.book-box img.cover,
-.book-wide-box img.cover,
-.search-result img.cover {
-    width: 13.9em;
-    height: 19.3em;
-}
-.book-box-inner .cover-area,
-.book-wide-box .cover-area
-{
-    float: left;
-    margin-right: 1.5em;
-}
-
-
-.book-box-body {
-    height: 17em;
-    overflow:hidden;
-    position: relative;
-}
-
 .book-wide-box .book-box-body {
     min-height: 17em;
-}
-
-.book-box-head {
-    min-height: 7em;
-    padding-top: 1.4em;
-    margin-bottom: 1em;
-}
-.book-box-head a {
-    color: black;
-}
-.book-box-head .author {
-    font-size: 1.1em;
-    max-width: 24em;
-}
-.book-box-head .title {
-    font-size: 2.4em;
-    height: 2.4em;
-    overflow:hidden;
-    margin-top: .3em;
-}
-.book-box-body .tags {
-    font-size: 1.1em;
-}
-.book-box-tag {
-    margin-right: .5em;
-    margin-left: .4em;
-}
-.book-box-download {
-    position: relative;
-}
-
-.book-box-download a {
-    position: relative;
-    z-index: 101;
-}
-
-.book-box-formats {
-    display: none;
-    position: absolute;
-
-    width: 16.363em;
-    border: 1px solid #ddd;
-    padding: 3.454em 1.727em .818em 1.727em;
-    background: #fff;
-    -moz-box-shadow: 2px 2px 2px #ddd;
-    -webkit-box-shadow: 2px 2px 2px #ddd;
-    box-shadow: 2px 2px 2px #ddd;
-
-    z-index: 100;
-    top: -1.454em;
-    left: -1.727em;
-}
-.book-box-formats span {
-    display: block;
-}
-
-.book-box-download .book-box-formats span:first-child {
-    margin-top: 1.454em;
-}
-
-.book-box-download:hover .book-box-formats,
-.book-box-download.hover .book-box-formats {
-    display: block;
-}
-
-.book-box-tools {
-	width: 46em;
-    font-size: 1.1em;
 }
 
 .book-wide-box {
@@ -189,49 +70,6 @@
 }
 
 
-
-.book-box-read a:before {
-    content: url("/static/img/read.png");
-    font-size: 2.25em;
-    margin-right: .15em;
-    vertical-align: middle;
-    font-weight: normal;
-}
-
-.book-box-download a.downarrow:before {
-    content: url("/static/img/download.png");
-    font-size: 2.25em;
-    margin-right: .15em;
-    vertical-align: middle;
-    font-weight: normal;
-}
-
-.book-box-audiobook a:before {
-    content: url("/static/img/listen.png");
-    font-size: 2.25em;
-    margin-right: .15em;
-    vertical-align: middle;
-    font-weight: normal;
-}
-
-ul.book-box-tools {
-    margin: 0;
-    padding: 0;
-}
-
-.book-box-tools li {
-    display: inline-block;
-}
-
-.book-box-read {
-    width: 11.5em;
-}
-.book-box-download {
-    width: 8.5em;
-}
-.book-box-audiobook {
-    width: 7em;
-}
 
 ul.inline-items, ul.inline-items li {
     margin: 0;
@@ -273,39 +111,6 @@ ul.inline-items li {
 }
 
 
-.star {
-    font-size: 2.25em;
-    margin-right: .5em;
-    position: absolute;
-    right: 0;
-}
-.star button::-moz-focus-inner {
-    padding: 0;
-    border: 0
-}
-.if-unlike button {
-    font-size: 1em;
-    font-family: inherit;
-    border: 0;
-    background: none;
-    margin: 0;
-    padding: 0;
-    color: #757575;
-}
-
-.if-like a {
-    display:block;
-    text-align:right;
-    padding: 0;
-}
-
-.like .if-unlike {
-    display: none;
-}
-
-.unlike .if-like {
-    display: none;
-}
 
 .snippets .snippet-text {
     background: #f7f7f7;

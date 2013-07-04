@@ -1,5 +1,9 @@
 {% load i18n static %}
 
+<a id="show-menu" href="{% url 'catalogue' %}">
+    <span class="long">{% trans "Catalogue of the library" %}</span>
+    <span class="short">{% trans "Catalogue" %}</span>
+</a>
 <ul id="menu">
     {% for category, name, hash in categories %}
 	<li class="hidden-box-wrapper menu">

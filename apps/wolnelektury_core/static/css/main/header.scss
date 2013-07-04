@@ -69,10 +69,11 @@ header#main {
         @include size-px(margin-left, 5);
         @include size-px(margin-right, 5);
         padding-top: 0;
-        @include size-px(font-size, 13);
+        @include size-px(font-size, 11);
 
         @media screen and (min-width: 24em) {
             @include size-px(padding-top, 6);
+            @include size-px(font-size, 13);
             text-align: right;
         }
 
@@ -91,6 +92,7 @@ header#main {
         padding-top: 0;
         @include mono;
         @include size-px(font-size, 10);
+        position: relative;
 
         @media screen and (min-width: 24em) {
             @include size-px(padding-top, 15);
@@ -101,10 +103,34 @@ header#main {
             top: 0;
             right: 0;
             @include size-px(margin-left, 0);
+            @include size-px(margin-right, 0);
+        }
+
+        /* We want submenu on far left on small screens. */
+        .hidden-box-wrapper {
+            position: static;
+            @media screen and (min-width: 24em) {
+                position: relative;
+            }
         }
 
         #user-menu {
             display: none;
+
+            text-align: left;
+            line-height:1.6em;
+            left: 0;
+            right: 0;
+            top: 2em;
+
+            @media screen and (min-width: 15em) {
+                right: auto;
+                width: 15em;
+            }
+
+            a {
+                color: #0D7E85;
+            }
         }
     }
 

@@ -1,10 +1,26 @@
 @import "tools";
 
+
+/* Basic layout */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.clearboth {
+    clear: both;
+}
+
+
+
 /* Basic colors and fonts */
 body {
     font-family: Georgia;
     background: #f7f7f7;
     color: black;
+
+    @include size-px(font-size, 13);
 }
 
 a {
@@ -16,14 +32,16 @@ a {
     }
 }
 
+h1 {
+    @include size-px(font-size, 35);
+    font-weight: normal;
+    @include size-px(margin-top, 14);
 
-/* Basic layout */
-html, body {
-    margin: 0;
-    padding: 0;
+    a {
+        color: inherit;
+    }
 }
 
-
-.clearboth {
-    clear: both;
+.normal-text {
+    line-height: 1.3em;
 }

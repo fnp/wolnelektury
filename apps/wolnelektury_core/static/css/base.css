@@ -15,14 +15,11 @@
 }
 
 
-h1 {
-    font-size: 3.5em;
-    font-weight: normal;
-    margin-top: .4em
-}
-h1 a {
-	color: inherit;
-}
+
+
+
+
+
 
 ul.plain {
     list-style:none;
@@ -30,10 +27,9 @@ ul.plain {
     padding: 0;
 }
 
-.normal-text {
-    font-size: 1.3em;
-    line-height: 1.3em;
-}
+
+
+
 
 h2 {
     font-size: 2em;

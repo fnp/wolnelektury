@@ -98,7 +98,8 @@
             <div id="lang-menu" class="hoverget">
                 <span id='lang-button' class='hoverclick'>
                     <span class="lang-flag">⚐</span>
-                    {% trans "Language versions" %}</span>
+                    <span class="label">{% trans "Language versions" %}</span>
+                </span>
                 <div id="lang-menu-items">
                 {% for lang in LANGUAGES %}
                     <form action="{% url 'django.views.i18n.set_language' %}" method="post">

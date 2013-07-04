@@ -16,9 +16,14 @@
     -webkit-box-shadow: 2px 2px 2px #ddd;
     box-shadow: 2px 2px 2px #ddd;
 }
-@mixin cover-thumb {
+
+img.cover {
     @include size-px(height, 193);
     @include size-px(width, 139);
+}
+.cover-area {
+    float: left;
+    @include size-px(margin-right, 15);
 }
 
 
@@ -34,7 +39,6 @@
         overflow: hidden;
     }
     img.cover {
-        @include cover-thumb;
         @include size-px(margin-bottom, 18);
     }
     .desc {
@@ -53,4 +57,201 @@
         @include size-px(font-size, 14);
         color: #242424;
     }
+}
+
+
+
+.work-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .Book-item {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+.book-box {
+    @include size-px(width, 487.5);
+    margin: 0;
+    vertical-align: top;
+
+    .book-box-inner {
+        @include inner-box;
+        @include size-px(min-height, 197.5);
+    }
+}
+
+.book-box-body {
+    @include size-px(height, 170);
+    overflow:hidden;
+    position: relative;
+
+    .book-box-head {
+        @include size-px(min-height, 70);
+        @include size-px(padding-top, 14);
+        @include size-px(margin-bottom, 10);
+
+        a {
+            color: black;
+        }
+        .author {
+            @include size-px(font-size, 11);
+            @include size-px(max-width, 264);
+            @include mono;
+        }
+        .title {
+            @include size-px(font-size, 24);
+            @include size-px(height, 57.6);
+            @include size-px(margin-top, 7.2);
+            overflow:hidden;
+        }
+    }
+
+    .tags {
+        @include size-px(font-size, 11);
+
+        .mono {
+            @include mono;
+        }
+
+        .book-box-tag {
+            @include size-px(margin-left, 4.4);
+            @include size-px(margin-right, 5.5);
+        }
+    }
+
+}
+
+
+
+.book-box-tools {
+    @include size-px(font-size, 11);
+    @include size-px(width, 506);
+    margin: 0;
+    padding: 0;
+    @include mono;
+
+    li {
+        display: inline-block;
+    }
+
+    .book-box-read {
+        @include size-px(width, 126.5);
+
+        a {
+            @include mono;
+        }
+
+        a:before {
+            content: url("/static/img/read.png");
+            @include size-px(font-size, 25);
+            @include size-px(margin-right, 3.71);
+            vertical-align: middle;
+            font-weight: normal;
+        }
+    }
+
+    .book-box-download {
+        position: relative;
+        @include size-px(width, 93.5);
+
+        a {
+            position: relative;
+            z-index: 101;
+
+            &.downarrow:before {
+                content: url("/static/img/download.png");
+                @include size-px(font-size, 25);
+                @include size-px(margin-right, 3.71);
+                vertical-align: middle;
+                font-weight: normal;
+            }
+        }
+
+        .book-box-formats {
+            display: none;
+            position: absolute;
+
+            @include size-px(width, 180);
+            border-color: #ddd;
+            border-style: solid;
+            @include size-px(border-width, 1);
+            @include size-px(padding-top, 38);
+            @include size-px(padding-bottom, 9);
+            @include size-px(padding-left, 19);
+            @include size-px(padding-right, 19);
+            background: #fff;
+            -moz-box-shadow: 2px 2px 2px #ddd;
+            -webkit-box-shadow: 2px 2px 2px #ddd;
+            box-shadow: 2px 2px 2px #ddd;
+
+            z-index: 100;
+
+            @include size-px(top, -16);
+            @include size-px(left, -19);
+
+            span {
+                display: block;
+
+                &:first-child {
+                    @include size-px(margin-top, 16);
+                }
+            }
+        }
+
+        &:hover .book-box-formats,
+        &.hover .book-box-formats {
+            display: block;
+        }
+    }
+
+    .book-box-audiobook {
+        @include size-px(width, 77);
+
+        a:before {
+            content: url("/static/img/listen.png");
+            @include size-px(font-size, 25);
+            @include size-px(margin-right, 3.71);
+            vertical-align: middle;
+            font-weight: normal;
+        }
+
+    }
+}
+
+
+
+
+.star {
+    @include size-px(font-size, 22.5);
+    @include size-px(margin-right, 11.25);
+    position: absolute;
+    right: 0;
+
+    button::-moz-focus-inner {
+        padding: 0;
+        border: 0
+    }
+    .if-unlike button {
+        font-size: 1em;
+        font-family: inherit;
+        border: 0;
+        background: none;
+        margin: 0;
+        padding: 0;
+        color: #757575;
+    }
+    .if-like a {
+        display:block;
+        text-align:right;
+        padding: 0;
+    }
+}
+.like .if-unlike {
+    display: none;
+}
+.unlike .if-like {
+    display: none;
 }

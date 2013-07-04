@@ -101,6 +101,10 @@
 		})();
 		
 
+$('#show-menu').click(function(event) {
+    event.preventDefault();
+    $('#menu').toggle('slow');
+});
 
 
 $('#themes-list-toggle').click(function(event) {

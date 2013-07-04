@@ -11,12 +11,6 @@
     width: 47em;
 }
 
-.hidden-box ul {
-	width: 48em;
-    column-width: 12em;
-    -moz-column-width: 12em;
-    -webkit-column-width: 12em;
-}
 
 #menu-collections ul {
     width: 18em;
@@ -73,16 +67,7 @@
 }
 
 
-/* HEADER */
 
-#user-info {
-    float: right;
-    padding: 0;
-}
-
-#promo-box {
-    width: 32em;
-}
 
 
 /* Book list */
