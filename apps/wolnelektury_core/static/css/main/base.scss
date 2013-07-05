@@ -42,6 +42,63 @@ h1 {
     }
 }
 
+h2 {
+    @include size-px(font-size, 20);
+    font-weight: normal;
+}
+
+h3 {
+    @include size-px(font-size, 15);
+    font-weight: normal;
+}
+
+
 .normal-text {
     line-height: 1.3em;
+}
+
+.white-box {
+    @include size-px(padding, 10);
+    @include white-box;
+}
+
+
+ul.plain {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.theme-list-link {
+    @include mono;
+    @include size-px(font-size, 11);
+    
+    &:after {
+        @include size-px(padding-left, 11);
+        content: url("/static/img/arrow-teal.png");
+        vertical-align: middle;
+    }
+}
+
+
+.left-column, .right-column {
+    @include size-px(max-width, 600);
+}
+@media screen and (min-width: 62.5em) {
+    .left-column {
+        @include size-px(width, 470);
+        float: left;
+    }
+    .right-column {
+        @include size-px(width, 470);
+        float:right;
+    }
+}
+
+.pagination {
+    display: block;
+    @include size-px(font-size, 12);
+    @include size-px(padding, 6);
+    text-align:center;
 }

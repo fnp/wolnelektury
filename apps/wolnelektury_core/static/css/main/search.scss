@@ -1,0 +1,90 @@
+@import "tools";
+
+/* jquery UI overrides us */
+.ui-menu .ui-menu-item a {
+    color: #0d7e85 !important;
+    line-height: 1.636em !important;
+}
+
+.ui-widget {
+    font-family: Georgia !important;
+    font-size: 10px !important;
+    font-size: .625rem !important;
+}
+
+.ui-widget-content {
+    background: #EEEEEE !important; /* #E2E2E2 ? */
+    border-radius: 0px !important;
+}
+
+
+
+.inline-tag-lists p span:first-child {
+    color: #281d1c;
+}
+
+/* just on search page */
+.top-tag-list {
+    @include size-px(margin-top, 22);
+    @include size-px(margin-bottom, 16);
+}
+
+
+.search-result {
+    @include size-px(width, 975);
+
+    .book-box-body {
+        @include size-px(width, 310);
+    }
+}
+
+
+
+.book-list-header {
+    @include size-px(width, 975);
+    padding: 0em;
+    @include size-px(margin-left, -1);
+
+    .book-box-inner {
+        min-height: 1em;
+    }
+
+    p {
+        @include size-px(font-size, 24);
+        @include size-px(margin, 5);
+    }
+}
+
+.snippets {
+    @include size-px(width, 440);
+    float: right;
+    @include size-px(margin-top, -200);
+
+    .snippet-text {
+        @include size-px(font-size, 12);
+        @include size-px(margin-top, 13);
+        @include size-px(margin-bottom, 13);
+        @include size-px(margin-left, 0);
+        @include size-px(margin-right, 0);
+        @include size-px(padding, 12);
+        background: #f7f7f7;
+    }
+
+    .anchor {
+        display: none;
+    }
+}
+
+
+.search-hint-label {
+    display: inline-block;
+    @include size-px(font-size, 11);
+    @include size-px(width, 275);
+    line-height: 1.636em;
+}
+
+.search-hint-category {
+    @include size-px(font-size, 11);
+    line-height: 1.636em;
+}
+

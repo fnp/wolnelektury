@@ -22,10 +22,6 @@
         <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury" 
             href="{% static 'opensearch.xml' %}" />
         {% compressed_css "main" %}
-        <!--[if IE]>
-        	{% compressed_css "ie" %}
-        <![endif]-->
-
         {% block extrahead %}
         {% endblock %}
     </head>

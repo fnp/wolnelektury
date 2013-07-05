@@ -29,15 +29,13 @@ PIPELINE_CSS = {
             'polls/polls.scss',
 
             'css/social/shelf_tags.css',
+
+            'uni_form/uni-form.css',
+            'uni_form/default.uni-form.css',
+
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
         ],
         'output_filename': 'css/compressed/main.css',
-    },
-    'ie': {
-        'source_filenames': [
-            'css/ie.css',
-        ],
-        'output_filename': 'css/compressed/ie.css',
     },
     'book': {
         'source_filenames': [
@@ -79,6 +77,8 @@ PIPELINE_JS = {
             'player/openplayer.js',
             'js/search.js',
             'funding/funding.js',
+            
+            'uni_form/uni-form.js',
             ),
         'output_filename': 'js/base.min.js',
     },

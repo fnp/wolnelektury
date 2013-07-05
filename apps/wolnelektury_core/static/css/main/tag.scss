@@ -1,0 +1,104 @@
+@import "tools";
+
+.page-desc {
+    @include size-px(margin-left, 15);
+}
+
+#tagged-object-list {
+    @media screen and (min-width: 62.5em) {
+        .left-column, .right-column {
+            @include size-px(width, 480);
+        }
+    }
+
+    .see-also, .download {
+        float: left;
+        @include size-px(margin-top, 20);
+        @include size-px(margin-bottom, 20);
+
+        h2 {
+            @include mono;
+            @include size-px(font-size, 11);
+            margin: 0;
+        }
+
+        ul {
+            @include size-px(font-size, 11);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .see-also {
+        @include size-px(margin-left, 80);
+        @include size-px(width, 143);
+    }
+    .download {
+        @include size-px(margin-left, 20);
+    }
+
+    .left-column .see-also {
+        margin-left: 0;
+    }
+}
+
+#description {
+    @include size-px(margin-bottom, 26);
+    cursor: pointer;
+
+    dl {
+        margin-top: 0;
+    }
+    dt {
+        display: inline;
+        font-weight: bold;
+        margin: 0;
+    }
+    dd {
+        display: inline;
+        margin: 0;
+    }
+    p {
+        margin-top: 0;
+    }
+    #description .meta {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    #description .meta li {
+        text-align: right;
+        color: #666;
+        @include size-px(font-size, 11.7);
+    }
+}
+
+.inline-tag-lists {
+    @include size-px(font-size, 11);
+
+    .inline-header {
+        @include mono;
+        display: inline-block;
+        vertical-align: top;
+        @include size-px(width, 77);
+    }
+
+    .inline-body {
+        display: inline-block;
+        vertical-align: top;
+        @include size-px(margin-bottom, 5.5);
+        @include size-px(width, 385);
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                display: inline-block;
+                @include size-px(margin-right, 11);
+            }
+        }
+    }
+}

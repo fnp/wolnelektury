@@ -17,16 +17,16 @@
 
     <a name="top"></a>
 
-    <div id="book-list-nav" class="normal-text">
-        {% trans "Table of Content" %}
-        {{ rendered_nav }}
+    <div id="book-list-nav">
+        <h2>{% trans "Table of Content" %}</h2>
+        <div id="book-list-nav-index">
+            {{ rendered_nav }}
+        </div>
     </div>
-    <div id="book-list" class="normal-text">
+    <div id="book-list">
       {% block book_list %}
         {{ rendered_book_list }}
       {% endblock %}
     </div>
-    <div id="book-list-up">
-        <p><a href="#top">{% trans "↑ top ↑" %}</a></p>
-    </div>
+    <a id="book-list-up" href="#top">{% trans "↑ top ↑" %}</a>
 {% endblock %}

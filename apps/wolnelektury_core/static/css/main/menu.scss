@@ -51,13 +51,14 @@
         top: 49px;
         left: 0;
         right: 10px;
+        z-index: 400;
 
         @media screen and (min-width: 24em) {
             right: auto;
         }
 
         @media screen and (min-width: 53em) {
-            display: block;
+            display: block !important;
             position: static;
             @include size-px(margin-left, 6);
         }

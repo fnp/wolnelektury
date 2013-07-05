@@ -105,6 +105,10 @@ $('#show-menu').click(function(event) {
     event.preventDefault();
     $('#menu').toggle('slow');
 });
+$('#book-list-nav h2').click(function(event) {
+    event.preventDefault();
+    $('#book-list-nav-index').toggle();
+});
 
 
 $('#themes-list-toggle').click(function(event) {

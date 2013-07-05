@@ -1,0 +1,19 @@
+@import "tools";
+
+.Fragment-item {
+    @include size-px(margin-bottom, 20);
+    @include white-box;
+
+    .fragment {
+        color: black;
+        display: block;
+    }
+    .toggle {
+        @include size-px(font-size, 11);
+        display: block;
+        @include size-px(padding-top, 5);
+        @include size-px(padding-bottom, 5);
+        @include size-px(padding-left, 0);
+        @include size-px(padding-right, 0);
+    }
+}

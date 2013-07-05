@@ -1,0 +1,31 @@
+/* listing of all books */
+
+@import "tools";
+
+.catalogue-catalogue {
+    ul {
+        column-width: 25em;
+        -moz-column-width: 25em;
+        -webkit-column-width: 25em;
+
+        @include size-px(padding-left, 10);
+
+        @media screen and (min-width: 20em) {
+            @include size-px(padding-left, 40);
+        }
+
+        li {
+            margin-bottom: 1em;
+
+            @media screen and (min-width: 62.5em) {
+                margin-bottom: .5em;
+            }
+        }
+    }
+
+    h2 {
+        @include size-px(font-size, 26);
+        margin: 0;
+        @include size-px(padding, 26);
+    }
+}

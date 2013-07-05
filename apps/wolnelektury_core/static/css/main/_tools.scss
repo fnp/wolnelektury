@@ -2,16 +2,28 @@
     #{$name}: $size + px;
     #{$name}: ($size / 16) + rem;
 }
-@mixin font-size-px($size) {
-    @include size-px(font-size, $size);
-}
 
 @mixin mono {
     font-family: "Andale Mono", "Lucida Sans Typewriter", "Courier New";
 }
+
 @mixin hidden-label {
     display: block;
     width: 1px;
     height: 1px;
     overflow:hidden;
+}
+
+@mixin white-box {
+    border-color: #ddd;
+    border-style: solid;
+    @include size-px(border-width, 1);
+    background: #fff;
+
+    -moz-box-shadow: 2px 2px 2px #ddd;
+    -webkit-box-shadow: 2px 2px 2px #ddd;
+    box-shadow: 2px 2px 2px #ddd;
+    -moz-box-shadow: .125rem .125rem .125rem #ddd;
+    -webkit-box-shadow: .125rem .125rem .125rem #ddd;
+    box-shadow: .125rem .125rem .125rem #ddd;
 }

@@ -9,6 +9,17 @@
     @include size-px(padding-left, 80);
     @include size-px(padding-right, 20);
 
+    .vip {
+        margin: 0;
+        color: #575C63;
+        @include size-px(font-size, 11);
+    }
+
+    .cite-body {
+        @include size-px(font-size, 18);
+        line-height: 1.3em;
+    }
+
     blockquote {
         padding: 0;
         margin: 0;
@@ -18,9 +29,22 @@
         }
     }
 
-    .vip {
-        margin: 0;
-        color: #575C63;
+    .source
+    {
+        color: #444;
+        @include mono;
         @include size-px(font-size, 11);
+        @include size-px(margin-top, 16);
     }
+}
+
+
+
+
+.book-wide-box .cite {
+    background-color: #f7f7f7;
+    vertical-align: middle;
+    @include size-px(width, 395);
+    margin: 0;
+    @include size-px(padding, 10);
 }

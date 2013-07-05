@@ -2,23 +2,10 @@
 {% load catalogue_tags social_tags %}
 {% load thumbnail %}
 <div class="{% block box-class %}book-box{% endblock %}">
-<div class="book-box-inner" style="position: relative;">
+<div class="book-box-inner">
+<div class="book-left-column">
 
 
-<div class="cover-area">
-    {% if book.cover %}
-        {% if main_link %}<a href="{{ main_link }}">{% endif %}
-            <img src="
-                {% thumbnail book.cover "139x193" as thumb %}
-                    {{ thumb.url }}
-                {% empty %}
-                    {{ book.cover.url }}
-                {% endthumbnail %}
-            " alt="Cover" class="cover" />
-        {% if main_link %}</a>{% endif %}
-    {% endif %}
-    {% block cover-area-extra %}{% endblock %}
-</div>
 
 
 <div class="book-box-body">
@@ -40,7 +27,7 @@
 
 
         <div class="book-box-head">
-            <div class="mono author">
+            <div class="author">
                 {% for name, slug in related.tags.author %}
                     <a href="{% tag_url 'author' slug %}">{{ name }}</a>{% if not forloop.last %},
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
@@ -53,29 +40,46 @@
 			</div>
         </div>
 
+<div class="cover-area">
+    {% if book.cover %}
+        {% if main_link %}<a href="{{ main_link }}">{% endif %}
+            <img src="
+                {% thumbnail book.cover "139x193" as thumb %}
+                    {{ thumb.url }}
+                {% empty %}
+                    {{ book.cover.url }}
+                {% endthumbnail %}
+            " alt="Cover" class="cover" />
+        {% if main_link %}</a>{% endif %}
+    {% endif %}
+    {% block cover-area-extra %}{% endblock %}
+</div>
         <div class="tags">
         	{% spaceless %}
 
+            <span class="category">
             <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
             	{% for name, slug in related.tags.epoch %}
             		<a href="{% tag_url 'epoch' slug %}">{{ name }}</a>
-            		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
+            		{% if not forloop.last %}<span>, </span>{% endif %}
                 {% endfor %}
-            </span>
+            </span></span>
 
+            <span class="category">
             <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
             	{% for name, slug in related.tags.kind %}
             		<a href="{% tag_url 'kind' slug %}">{{ name }}</a>
-            		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
+            		{% if not forloop.last %}<span>, </span>{% endif %}
                 {% endfor %}
-            </span>
+            </span></span>
 
+            <span class="category">
             <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
             	{% for name, slug in related.tags.genre %}
             		<a href="{% tag_url 'genre' slug %}">{{ name }}</a>
-            		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
+            		{% if not forloop.last %}<span>, </span>{% endif %}
                 {% endfor %}
-            </span>
+            </span></span>
 
            {% endspaceless %}
         </div>
@@ -85,12 +89,12 @@
     <ul class="book-box-tools">
         <li class="book-box-read">
         {% if book.html_file %}
-            <a href="{% url 'book_text' book.slug %}" class="mono downarrow">{% trans "Read online" %}</a>
+            <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
         <li class="book-box-download hoverget">
-            <a class="mono downarrow hoverclick">{% trans "Download" %}</a>
-            <div class="book-box-formats mono">
+            <a class="downarrow hoverclick">{% trans "Download" %}</a>
+            <div class="book-box-formats">
 	      {% if book.pdf_file %}
 	      <span><a href="{{ book.pdf_file.url}}">PDF</a> {% trans "to print" %}</span>
 	      {% endif %}
@@ -110,13 +114,14 @@
         </li>
         <li class="book-box-audiobook">
         {% if related.media.mp3 or related.media.ogg %}
-            <a href="{% url 'book_player' book.slug %}" class="open-player mono downarrow">{% trans "Listen" %}</a>
+            <a href="{% url 'book_player' book.slug %}" class="open-player downarrow">{% trans "Listen" %}</a>
         {% endif %}
         </li>
     </ul>
     {% block book-box-extra-info %}{% endblock %}
     {% block box-append %}
     {% endblock %}
+    </div>
     {% block right-column %}
     {% endblock %}
     <div class="clearboth"></div>

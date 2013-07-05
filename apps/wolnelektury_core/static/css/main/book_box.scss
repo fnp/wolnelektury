@@ -3,29 +3,44 @@
 @mixin inner-box {
     display: block;
     color: black;
-    border-style: solid;
-    border-color: #ddd;
-    @include size-px(border-width, 1);
     @include size-px(margin, 1);
     @include size-px(padding-top, 8);
     @include size-px(padding-bottom, 8);
     @include size-px(padding-left, 10);
     @include size-px(padding-right, 10);
-    background: #fff;
-    -moz-box-shadow: 2px 2px 2px #ddd;
-    -webkit-box-shadow: 2px 2px 2px #ddd;
-    box-shadow: 2px 2px 2px #ddd;
+
+    @include white-box;
 }
 
-img.cover {
-    @include size-px(height, 193);
-    @include size-px(width, 139);
+.book-mini-box img.cover {
+        @include size-px(height, 193);
+        @include size-px(width, 139);
 }
+
+
 .cover-area {
     float: left;
     @include size-px(margin-right, 15);
-}
+    @include size-px(margin-bottom, 5);
+    
 
+    @media screen and (min-width: 32em) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-right: 0;
+    }
+
+    img.cover {
+        @include size-px(height, 193 / 2);
+        @include size-px(width, 139 / 2);
+
+        @media screen and (min-width: 20em) {
+            @include size-px(height, 193);
+            @include size-px(width, 139);
+        }
+    }
+}
 
 .book-mini-box {
     @include size-px(width, 161.5);
@@ -67,58 +82,188 @@ img.cover {
     list-style: none;
 
     .Book-item {
-        display: inline-block;
+        @media screen and (min-width: 32em) {
+            display: inline-block;
+        }
         vertical-align: top;
     }
 }
 
+
 .book-box {
-    @include size-px(width, 487.5);
     margin: 0;
     vertical-align: top;
 
+    @media screen and (min-width: 32em) {
+        @include size-px(width, 487.5);
+    }
+
     .book-box-inner {
+        position: relative;
         @include inner-box;
         @include size-px(min-height, 197.5);
     }
 }
 
+
+.book-wide-box {
+    margin: 0;
+    vertical-align: top;
+
+    @media screen and (min-width: 62.5em) {
+        @include size-px(width, 975);
+    }
+
+    .book-box-inner {
+        position: relative;
+        @include size-px(min-height, 244);
+        @include inner-box;
+        @include size-px(margin-left, 0);
+        @include size-px(margin-right, 0);
+
+        .book-left-column { /* FIXME */
+            @include size-px(max-width, 600);
+
+            @media screen and (min-width: 62.5em) {
+                float: left;
+                @include size-px(width, 536);
+            }
+        }
+
+        .license-icon {
+            display: block;
+            @include size-px(margin-top, 5);
+        }
+
+        @media screen and (min-width: 62.5em) {
+            .book-box-head,
+            .tags,
+            .book-box-tools {
+                @include size-px(width, 382);
+            }
+        }
+
+        #theme-list-wrapper {
+            @include size-px(margin-left, 154);
+            margin-bottom: 0;
+            @include size-px(width, 300);
+
+            p {
+                @include size-px(margin-top, 10);
+                @include size-px(margin-bottom, 10);
+            }
+        }
+
+        .right-column {
+            @include size-px(margin-top, 16);
+
+            @media screen and (min-width: 62.5em) {
+                @include size-px(width, 415);
+                // Eat the padding
+                @include size-px(margin-top, -8);
+                @include size-px(margin-right, -10);
+            }
+
+            .other-tools,
+            .other-download {
+                float: left;
+                @include size-px(width, 145);
+                @include size-px(margin-top, 50);
+                @include size-px(margin-bottom, 0);
+                @include size-px(margin-left, 5);
+                @include size-px(margin-right, 0);
+                @include size-px(font-size, 11);
+
+                h2 {
+                    margin: 0;
+                    @include size-px(font-size, 11);
+                    @include mono;
+                }
+            }
+            .other-download {
+                @include size-px(margin-left, 15);
+                @include size-px(width, 220);
+            }
+        }
+    }
+}
+
+
 .book-box-body {
-    @include size-px(height, 170);
-    overflow:hidden;
+    margin-bottom: 1em;
+    @media screen and (min-width: 32em) {
+        margin-bottom: 0;
+        @include size-px(height, 170);
+    }
     position: relative;
 
     .book-box-head {
-        @include size-px(min-height, 70);
         @include size-px(padding-top, 14);
         @include size-px(margin-bottom, 10);
+
+        @media screen and (min-width: 32em) {
+            @include size-px(min-height, 70);
+            @include size-px(width, 310);
+            float: right;
+        }
 
         a {
             color: black;
         }
         .author {
             @include size-px(font-size, 11);
-            @include size-px(max-width, 264);
             @include mono;
+            line-height: 1.2em;
+            max-height: 2.4em;
+            overflow: hidden;
+
+            @media screen and (min-width: 32em) {
+                @include size-px(max-width, 264);
+            }
         }
         .title {
             @include size-px(font-size, 24);
-            @include size-px(height, 57.6);
+            line-height: 1.2em;
             @include size-px(margin-top, 7.2);
-            overflow:hidden;
+            margin-bottom: .5em;
+
+            @media screen and (min-width: 32em) {
+                margin-bottom: 0;
+                height: 2.4em;
+                overflow: hidden;
+            }
         }
     }
 
     .tags {
         @include size-px(font-size, 11);
+        line-height: 1.2em;
 
-        .mono {
-            @include mono;
+        @media screen and (min-width: 32em) {
+            @include size-px(width, 310);
+            float: right;
+            clear: right;
+            max-height: 4.8em;
+            overflow: hidden;
         }
 
-        .book-box-tag {
-            @include size-px(margin-left, 4.4);
-            @include size-px(margin-right, 5.5);
+        .category {
+            display: block;
+            margin-top: .5em;
+            margin-bottom: .5em;
+
+            @media screen and (min-width: 32em) {
+                display: inline;
+            }
+
+            .mono {
+                @include mono;
+            }
+
+            .book-box-tag {
+                @include size-px(margin-left, 4.4);
+                @include size-px(margin-right, 5.5);
+            }
         }
     }
 
@@ -128,17 +273,35 @@ img.cover {
 
 .book-box-tools {
     @include size-px(font-size, 11);
-    @include size-px(width, 506);
     margin: 0;
     padding: 0;
-    @include mono;
+    list-style: none;
+
+    clear: left;
+
+    @media screen and (min-width: 20em) {
+        clear: none;
+        @include size-px(margin-left, 139 + 15);
+    }
+
+    @media screen and (min-width: 32em) {
+        @include size-px(width, 310);
+        float: right;
+        clear: right;
+    }
 
     li {
-        display: inline-block;
+        @include mono;
+
+        @media screen and (min-width: 32em) {
+            display: inline-block;
+        }
     }
 
     .book-box-read {
-        @include size-px(width, 126.5);
+        @media screen and (min-width: 32em) {
+            @include size-px(width, 126.5);
+        }
 
         a {
             @include mono;
@@ -155,48 +318,63 @@ img.cover {
 
     .book-box-download {
         position: relative;
-        @include size-px(width, 93.5);
+
+        @media screen and (min-width: 32em) {
+            @include size-px(width, 93.5);
+        }
 
         a {
             position: relative;
             z-index: 101;
 
-            &.downarrow:before {
-                content: url("/static/img/download.png");
-                @include size-px(font-size, 25);
-                @include size-px(margin-right, 3.71);
-                vertical-align: middle;
-                font-weight: normal;
+            &.downarrow {
+                color: black;
+
+                @media screen and (min-width: 32em) {
+                    color: #0D7E85;
+                }
+
+                &:before {
+                    content: url("/static/img/download.png");
+                    @include size-px(font-size, 25);
+                    @include size-px(margin-right, 3.71);
+                    vertical-align: middle;
+                    font-weight: normal;
+                }
             }
         }
 
         .book-box-formats {
-            display: none;
-            position: absolute;
+            @include size-px(padding-left, 25);
 
-            @include size-px(width, 180);
-            border-color: #ddd;
-            border-style: solid;
-            @include size-px(border-width, 1);
-            @include size-px(padding-top, 38);
-            @include size-px(padding-bottom, 9);
-            @include size-px(padding-left, 19);
-            @include size-px(padding-right, 19);
-            background: #fff;
-            -moz-box-shadow: 2px 2px 2px #ddd;
-            -webkit-box-shadow: 2px 2px 2px #ddd;
-            box-shadow: 2px 2px 2px #ddd;
+            @media screen and (min-width: 32em) {
+                display: none;
+                position: absolute;
 
-            z-index: 100;
+                @include size-px(width, 180);
+                @include size-px(padding-top, 38);
+                @include size-px(padding-bottom, 9);
+                @include size-px(padding-left, 19);
+                @include size-px(padding-right, 19);
 
-            @include size-px(top, -16);
-            @include size-px(left, -19);
+                @include white-box;
+
+                z-index: 100;
+
+                @include size-px(top, -16);
+                @include size-px(left, -19);
+            }
 
             span {
                 display: block;
+                @include size-px(margin-top, 16);
 
-                &:first-child {
-                    @include size-px(margin-top, 16);
+                @media screen and (min-width: 32em) {
+                    @include size-px(margin-top, 0);
+
+                    &:first-child {
+                        @include size-px(margin-top, 16);
+                    }
                 }
             }
         }
@@ -208,7 +386,9 @@ img.cover {
     }
 
     .book-box-audiobook {
-        @include size-px(width, 77);
+        @media screen and (min-width: 32em) {
+            @include size-px(width, 77);
+        }
 
         a:before {
             content: url("/static/img/listen.png");
@@ -254,4 +434,22 @@ img.cover {
 }
 .unlike .if-like {
     display: none;
+}
+
+
+#book-detail .see-also {
+    h1 {
+        @include size-px(height, 32);
+        margin: 0;
+        @include size-px(padding-top, 19);
+        @include size-px(padding-left, 10);
+
+        @include size-px(font-size, 11);
+        @include mono;
+        font-weight: normal;
+
+        @media screen and (min-width: 33em) {
+            @include size-px(padding-left, 19);
+        }
+    }
 }
