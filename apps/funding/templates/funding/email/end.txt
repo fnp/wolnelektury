@@ -1,0 +1,42 @@
+{% extends "funding/email/base.txt" %}
+{% load i18n %}
+
+
+{% block body %}{% if is_win %}
+{% blocktrans %}we succesfully collected the full amount needed
+for the book you contributed to:{% endblocktrans %}
+
+  {{ offer.author }} – {{ offer.title }}
+  http://{{ site.domain }}{{ offer.get_absolute_url }}
+
+{% blocktrans %}We will now digitize it, develop and publish it in the library,
+in various formats, free for everyone.{% endblocktrans %}
+{% if funding.name %}
+{% blocktrans %}Your name will be included on the list of contributors, irrespectively
+of the amount of your contribution.{% endblocktrans %}
+{% endif %}{# funding.name #}{% if funding.perks.exists %}
+{% blocktrans %}We will contact you again about details needed
+to deliver your perks.{% endblocktrans %}
+{% endif %}{# funding.perks.exists #}{% if remaining %}
+{% blocktrans with r=remaining %}All of the money remaining after this fundraiser ({{ x }} PLN)
+will be spent on liberating other books still waiting for publication.{% endblocktrans %}
+{% blocktrans %}You can see how we're spending these funds on this page:{% endblocktrans %}
+http://{{ site.domain }}{% url 'funding_wlfund' %}
+{% endif %}{# remaining #}{% else %}{# !is_win #}
+{% blocktrans %}unfortunately, we were unable to collect the full amount needed
+for the book you contributed to:{% endblocktrans %}
+
+  {{ offer.author }} – {{ offer.title }}
+  http://{{ site.domain }}{{ offer.get_absolute_url }}
+{% if remaining %}
+{% blocktrans with x=remaining %}All of the money we collected in this fundraiser ({{ x }} PLN)
+will be spent on liberating other books still waiting for publication.{% endblocktrans %}
+{% blocktrans %}You can see how we're spending these funds on this page:{% endblocktrans %}
+http://{{ site.domain }}{% url 'funding_wlfund' %}
+{% endif %}{# remaining #}{% endif %}{# is_win #}{% if current %}
+{% blocktrans %}If you'd like to help liberate another book, or invite your friends
+to do so, we're currently raising money for:{% endblocktrans %}
+
+  {{ current.author }} – {{ current.title }}
+  http://{{ site.domain }}{% url 'funding_current' %}
+{% endif %}{% endblock %}

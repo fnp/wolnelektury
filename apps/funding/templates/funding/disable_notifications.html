@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load fnp_share %}
+
+{% block titleextra %}{% trans "Payment failed" %}{% endblock %}
+
+{% block body %}
+
+<h1>{% trans "Disable notifications" %}</h1>
+<div class="white-box normal-text">
+
+{% if view.object.notifications %}
+
+<p>{% blocktrans with e=view.object.email %}Are you sure you want to disable notifications for address {{e}}?{% endblocktrans %}</p>
+<form method="post" action="">
+    <button>{% trans "Disable notifications" %}</button>
+</form>
+
+{% else %}
+
+<p>{% blocktrans with e=view.object.email %}Notifications for address {{e}} have been successfully disabled.{% endblocktrans %}</p>
+
+{% endif %}
+
+{% url 'funding_current' as current %}
+<p>
+{% blocktrans with current=current %}Return to the <a href="{{current}}">current fundraiser</a>.{% endblocktrans %}
+</p>
+
+
+</div>
+
+
+{% endblock %}

@@ -3,15 +3,18 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import date, datetime
+from urllib import urlencode
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.db import models
-from django.utils.translation import ugettext_lazy as _, ugettext as __, override
+from django.utils.translation import ugettext_lazy as _, ugettext, override
 import getpaid
 from catalogue.models import Book
+from catalogue.utils import get_random_hash
 from polls.models import Poll
+from django.contrib.sites.models import Site
 
 
 class Offer(models.Model):
@@ -46,6 +49,15 @@ class Offer(models.Model):
 
     def get_absolute_url(self):
         return reverse('funding_offer', args=[self.slug])
+
+    def save(self, *args, **kw):
+        published_now = (self.book_id is not None and 
+            self.pk is not None and
+            type(self).objects.values('book').get(pk=self.pk)['book'] != self.book_id)
+        retval = super(Offer, self).save(*args, **kw)
+        if published_now:
+            self.notify_published()
+        return retval
 
     def is_current(self):
         return self.start <= date.today() <= self.end
@@ -104,6 +116,48 @@ class Offer(models.Model):
         """ The money gathered. """
         return self.funding_payed().aggregate(s=models.Sum('amount'))['s'] or 0
 
+    def notify_all(self, subject, template_name, extra_context=None):
+        Funding.notify_funders(
+            subject, template_name, extra_context,
+            query_filter=models.Q(offer=self)
+        )
+
+    def notify_end(self):
+        assert not self.is_current()
+        self.notify_all(
+            _('The fundraiser has ended!'),
+            'funding/email/end.txt', {
+                'offer': self,
+                'is_win': self.is_win(),
+                'remaining': self.remaining(),
+                'current': self.current(),
+            })
+
+    def notify_near(self):
+        assert self.is_current()
+        sum_ = self.sum()
+        need = self.target - sum_
+        self.notify_all(
+            _('The fundraiser will end soon!'),
+            'funding/email/near.txt', {
+                'days': (self.end - date.today()).days + 1,
+                'offer': self,
+                'is_win': self.is_win(),
+                'sum': sum_,
+                'need': need,
+            })
+
+    def notify_published(self):
+        assert self.book is not None
+        self.notify_all(
+            _('The book you helped fund has been published.'),
+            'funding/email/published.txt', {
+                'offer': self,
+                'book': self.book,
+                'author': ", ".join(a[0] for a in self.book.related_info()['tags']['author']),
+                'current': self.current(),
+            })
+
 
 class Perk(models.Model):
     """ A perk offer.
@@ -134,29 +188,75 @@ class Funding(models.Model):
     """
     offer = models.ForeignKey(Offer, verbose_name=_('offer'))
     name = models.CharField(_('name'), max_length=127, blank=True)
-    email = models.EmailField(_('email'), blank=True)
+    email = models.EmailField(_('email'), blank=True, db_index=True)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True, db_index=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
     language_code = models.CharField(max_length = 2, null = True, blank = True)
-
-    # Any additional info needed for perks?
-
-    @classmethod
-    def payed(cls):
-        """ QuerySet for all completed payments. """
-        return cls.objects.exclude(payed_at=None)
+    notifications = models.BooleanField(_('notifications'), default=True, db_index=True)
+    notify_key = models.CharField(max_length=32)
 
     class Meta:
         verbose_name = _('funding')
         verbose_name_plural = _('fundings')
         ordering = ['-payed_at']
 
+    @classmethod
+    def payed(cls):
+        """ QuerySet for all completed payments. """
+        return cls.objects.exclude(payed_at=None)
+
     def __unicode__(self):
         return unicode(self.offer)
 
     def get_absolute_url(self):
         return reverse('funding_funding', args=[self.pk])
+
+    def get_disable_notifications_url(self):
+        return "%s?%s" % (reverse("funding_disable_notifications"),
+            urlencode({
+                'email': self.email,
+                'key': self.notify_key,
+            }))
+
+    def save(self, *args, **kwargs):
+        if self.email and not self.notify_key:
+            self.notify_key = get_random_hash(self.email)
+        return super(Funding, self).save(*args, **kwargs)
+
+    @classmethod
+    def notify_funders(cls, subject, template_name, extra_context=None,
+                query_filter=None, payed_only=True):
+        funders = cls.objects.exclude(email="").filter(notifications=True)
+        if payed_only:
+            funders = funders.exclude(payed_at=None)
+        if query_filter is not None:
+            funders = funders.filter(query_filter)
+        emails = set()
+        for funder in funders:
+            if funder.email in emails:
+                continue
+            emails.add(funder.email)
+            funder.notify(subject, template_name, extra_context)
+
+    def notify(self, subject, template_name, extra_context=None):
+        context = {
+            'funding': self,
+            'site': Site.objects.get_current(),
+        }
+        context.update(extra_context)
+        with override(self.language_code or 'pl'):
+            send_mail(subject,
+                render_to_string(template_name, context),
+                getattr(settings, 'CONTACT_EMAIL', 'wolnelektury@nowoczesnapolska.org.pl'),
+                [self.email],
+                fail_silently=False
+            )
+
+    def disable_notifications(self):
+        """Disables all notifications for this e-mail address."""
+        type(self).objects.filter(email=self.email).update(notifications=False)
+
 
 # Register the Funding model with django-getpaid for payments.
 getpaid.register_to_payment(Funding, unique=False, related_name='payment')
@@ -195,15 +295,8 @@ def payment_status_changed_listener(sender, instance, old_status, new_status, **
         instance.order.payed_at = datetime.now()
         instance.order.save()
         if instance.order.email:
-            send_thank_you_email(instance.order.name, instance.order.email, instance.order.language_code)
+            instance.order.notify(
+                _('Thank you for your support!'),
+                'funding/email/thanks.txt'
+            )
 getpaid.signals.payment_status_changed.connect(payment_status_changed_listener)
-
-def send_thank_you_email(name, address, language_code):
-    with override(language_code or 'pl'):
-        send_mail(_('Thank you for your support!'), 
-                render_to_string('funding/email.txt', dict(name = name)),
-                getattr(settings, 'CONTACT_EMAIL', 'wolnelektury@nowoczesnapolska.org.pl'),
-                [address],
-                fail_silently=False
-                )
- 

@@ -6,7 +6,7 @@ from django.conf.urls import patterns, url, include
 
 from .models import Offer
 from .views import (WLFundView, OfferDetailView, OfferListView,
-                ThanksView, NoThanksView, CurrentView)
+                ThanksView, NoThanksView, CurrentView, DisableNotifications)
 
 
 urlpatterns = patterns('',
@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     
     url(r'^dziekujemy/$', ThanksView.as_view(), name='funding_thanks'),
     url(r'^niepowodzenie/$', NoThanksView.as_view(), name='funding_nothanks'),
+
+    url(r'^wylacz_email/$', DisableNotifications.as_view(), name='funding_disable_notifications'),
     
     url(r'^getpaid/', include('getpaid.urls')),
 )

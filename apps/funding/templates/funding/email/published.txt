@@ -1,0 +1,17 @@
+{% extends "funding/email/base.txt" %}
+{% load i18n %}
+{% block body %}
+{% blocktrans %}we have just published the book you contributed to:{% endblocktrans %}
+
+  {{ author }} – {{ offer.book.title }}
+  http://{{ site.domain }}{{ offer.book.get_absolute_url }}
+
+{% blocktrans %}Thanks to you, it is now available for free,
+in various formats, to everyone.{% endblocktrans %}
+{% if current %}
+{% blocktrans %}If you'd like to help liberate another book, or invite your friends
+to do so, we're currently raising money for:{% endblocktrans %}
+
+  {{ current.author }} – {{ current.title }}
+  http://{{ site.domain }}{% url 'funding_current' %}
+{% endif %}{% endblock %}

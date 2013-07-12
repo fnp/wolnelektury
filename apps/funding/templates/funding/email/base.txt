@@ -1,0 +1,10 @@
+{% autoescape off %}{% load i18n %}{% trans 'Hi' %}{% if funding.name %} {{ funding.name }}{% endif %},
+{% block body %}
+{% endblock %}
+{% blocktrans %}Cheers,
+Wolne Lektury team{% endblocktrans %}
+
+-- 
+{% blocktrans %}If you don't want to receive any more updates, please visit this page:{% endblocktrans %}
+http://{{site.domain}}{{ funding.get_disable_notifications_url }}
+{% endautoescape %}
