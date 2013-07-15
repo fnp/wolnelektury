@@ -252,7 +252,8 @@ class Funding(models.Model):
             'funding': self,
             'site': Site.objects.get_current(),
         }
-        context.update(extra_context)
+        if extra_context:
+            context.update(extra_context)
         with override(self.language_code or app_settings.DEFAULT_LANGUAGE):
             send_mail(subject,
                 render_to_string(template_name, context),
