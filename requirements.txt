@@ -52,7 +52,7 @@ pyenchant
 # OAI-PMH
 pyoai
 
-egenix-mx-base
+## egenix-mx-base  # Doesn't play nice with mx in dist-packages.
 sunburnt
 
 django-getpaid>=1.4,<1.5

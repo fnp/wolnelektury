@@ -63,9 +63,5 @@ if not settings.NO_SEARCH_INDEX:
         """ remove the book from search index, when it is deleted."""
         import search
         idx = search.Index()
-        idx.open(timeout=10000)  # 10 seconds timeout.
-        try:
-            idx.remove_book(instance)
-            idx.index_tags()
-        finally:
-            idx.close()
+        idx.remove_book(instance)
+        idx.index_tags()
