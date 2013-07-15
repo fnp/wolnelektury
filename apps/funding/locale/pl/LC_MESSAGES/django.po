@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-15 10:35+0200\n"
-"PO-Revision-Date: 2013-07-15 10:37+0100\n"
+"POT-Creation-Date: 2013-07-15 12:55+0200\n"
+"PO-Revision-Date: 2013-07-15 12:57+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,171 +18,179 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: forms.py:12 templates/funding/wlfund.html:27
+#: forms.py:16 templates/funding/wlfund.html:27
 msgid "Amount"
 msgstr "Kwota"
 
-#: forms.py:14
+#: forms.py:18
 msgid "Name"
 msgstr "Imię i nazwisko na listę darczyńców"
 
-#: forms.py:15
+#: forms.py:19
 msgid "Optional name for public list of contributors"
 msgstr "Opcjonalnie imię i nazwisko lub pseudonim do listy darczyńców."
 
-#: forms.py:16
+#: forms.py:20
 msgid "Contact e-mail"
 msgstr "E-mail kontaktowy"
 
-#: forms.py:17
+#: forms.py:21
 msgid ""
 "We'll use it to contact you about the <strong>details needed for your perks</"
 "strong>,<br/>and to send you updates about your payment and the fundraiser "
 "status (which you can always turn off).<br/>Your e-mail won't be publicised."
 msgstr ""
 "Użyjemy go do kontaktu w sprawie <strong>danych potrzebnych do realizacji "
-"prezentów</strong>,<br/>i informowania Cię o zmianach statusu płatności i "
+"prezentów</strong><br/>i do informowania Cię o zmianach statusu płatności i "
 "zbiórki (z czego zawsze możesz zrezygnować).<br/>Twój adres e-mail nie "
 "będzie upubliczniony."
 
-#: forms.py:32
+#: forms.py:36
 #, python-format
 msgid "The minimum amount is %(amount)s PLN."
 msgstr "Minimalna kwota wpłaty to %(amount)s zł."
 
-#: forms.py:38
+#: forms.py:42
 msgid "This offer is out of date."
 msgstr "Ta zbiórka jest już nieaktywna."
 
-#: models.py:22
+#: models.py:23
 msgid "author"
 msgstr "autor"
 
-#: models.py:23
+#: models.py:24
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:24
+#: models.py:25
 msgid "slug"
 msgstr "slug"
 
-#: models.py:25
+#: models.py:26
 msgid "description"
 msgstr "opis"
 
-#: models.py:26
+#: models.py:27
 msgid "target"
 msgstr "kwota docelowa"
 
-#: models.py:27
+#: models.py:28
 msgid "start"
 msgstr "początek"
 
-#: models.py:28
+#: models.py:29
 msgid "end"
 msgstr "koniec"
 
-#: models.py:29
+#: models.py:30
 msgid "redakcja URL"
 msgstr "URL na Redakcji"
 
-#: models.py:31
+#: models.py:32
 msgid "Published book."
 msgstr "Opublikowana książka."
 
-#: models.py:32
+#: models.py:33
 msgid "Cover"
 msgstr "Okładka"
 
-#: models.py:33
+#: models.py:34
 msgid "Poll"
 msgstr "Ankieta"
 
+#: models.py:36
+msgid "Near-end notifications sent"
+msgstr "Wysłano powiadomienia przed końcem"
+
 #: models.py:37
+msgid "End notifications sent"
+msgstr "Wysłano powiadomienia o zakończeniu"
+
+#: models.py:41
 msgid "Cover preview"
 msgstr "Podgląd okładki"
 
-#: models.py:41 models.py:166 models.py:187
+#: models.py:45 models.py:176 models.py:197
 msgid "offer"
 msgstr "zbiórka"
 
-#: models.py:42
+#: models.py:46
 msgid "offers"
 msgstr "zbiórki"
 
-#: models.py:126
+#: models.py:131
 msgid "The fundraiser has ended!"
 msgstr "Zbiórka dobiegła końca!"
 
-#: models.py:139
+#: models.py:147
 msgid "The fundraiser will end soon!"
 msgstr "Zbiórka niedługo się zakończy!"
 
-#: models.py:151
+#: models.py:161
 msgid "The book you helped fund has been published."
 msgstr "Książka, którą pomogłeś/-aś ufundować, została opublikowana."
 
-#: models.py:167
+#: models.py:177
 msgid "price"
 msgstr "cena"
 
-#: models.py:168 models.py:188
+#: models.py:178 models.py:198
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:169
+#: models.py:179
 msgid "long name"
 msgstr "długa nazwa"
 
-#: models.py:170
+#: models.py:180
 msgid "end date"
 msgstr "data końcowa"
 
-#: models.py:173
+#: models.py:183
 msgid "perk"
 msgstr "prezent"
 
-#: models.py:174 models.py:192
+#: models.py:184 models.py:202
 msgid "perks"
 msgstr "prezenty"
 
-#: models.py:189
+#: models.py:199
 msgid "email"
 msgstr "e-mail"
 
-#: models.py:190 models.py:266
+#: models.py:200 models.py:277
 msgid "amount"
 msgstr "kwota"
 
-#: models.py:191
+#: models.py:201
 msgid "payed at"
 msgstr "data wpłaty"
 
-#: models.py:194
+#: models.py:204
 msgid "notifications"
 msgstr "powiadomienia"
 
-#: models.py:198
+#: models.py:208
 msgid "funding"
 msgstr "wpłata"
 
-#: models.py:199
+#: models.py:209
 msgid "fundings"
 msgstr "wpłaty"
 
-#: models.py:267
+#: models.py:278
 msgid "when"
 msgstr "kiedy"
 
-#: models.py:270
+#: models.py:281
 msgid "money spent on a book"
 msgstr "pieniądze wydane na książkę"
 
-#: models.py:271
+#: models.py:282
 msgid "money spent on books"
 msgstr "pieniądze wydane na książki"
 
-#: models.py:297 templates/funding/thanks.html:6
+#: models.py:308 templates/funding/thanks.html:6
 #: templates/funding/thanks.html.py:13
 msgid "Thank you for your support!"
 msgstr "Dziękujemy za Twoje wsparcie!"
@@ -363,6 +371,10 @@ msgstr "Pieniądze przeznaczone na opublikowanie książki"
 msgid "Money remaining from the fundraiser for"
 msgstr "Pieniądze pozostałe ze zbiórki na"
 
+#: templates/funding/wlfund.html:53
+msgid "There are no previous fundraisers to show yet."
+msgstr "Nie ma jeszcze żadnych zakończonych zbiórek."
+
 #: templates/funding/email/base.txt:1
 msgid "Hi"
 msgstr "Cześć"
@@ -372,7 +384,7 @@ msgid ""
 "Cheers,\n"
 "Wolne Lektury team"
 msgstr ""
-"Pozdrawiamy,\n"
+"Pozdrawiamy\n"
 "zespół Wolnych Lektur"
 
 #: templates/funding/email/base.txt:8
