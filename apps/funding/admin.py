@@ -4,7 +4,7 @@ from .models import Offer, Perk, Funding, Spent
 
 class OfferAdmin(admin.ModelAdmin):
     model = Offer
-    list_display = ['title', 'author', 'target', 'sum', 'is_win', 'start', 'end', 'due']
+    list_display = ['title', 'author', 'target', 'sum', 'is_win', 'start', 'end']
     search_fields = ['title', 'author']
     readonly_fields = ('cover_img_tag',)
 

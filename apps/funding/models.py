@@ -26,8 +26,6 @@ class Offer(models.Model):
     target = models.DecimalField(_('target'), decimal_places=2, max_digits=10)
     start = models.DateField(_('start'), db_index=True)
     end = models.DateField(_('end'), db_index=True)
-    due = models.DateField(_('due'),
-        help_text=_('When will it be published if the money is raised.'))
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
     book = models.ForeignKey(Book, null=True, blank=True,
         help_text=_('Published book.'))
