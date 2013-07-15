@@ -4,7 +4,6 @@
 #
 from datetime import date
 from django.views.decorators.cache import never_cache
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
@@ -12,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView, DetailView, ListView
 import getpaid.backends.payu
 from getpaid.models import Payment
+from . import app_settings
 from .forms import FundingForm
 from .models import Offer, Spent, Funding
 
@@ -92,7 +92,7 @@ class OfferDetailView(FormView):
         if self.request.method == 'POST':
             return form_class(self.object, self.request.POST)
         else:
-            return form_class(self.object, initial={'amount': settings.FUNDING_DEFAULT})
+            return form_class(self.object, initial={'amount': app_settings.DEFAULT_AMOUNT})
 
     def get_context_data(self, *args, **kwargs):
         ctx = super(OfferDetailView, self).get_context_data(*args, **kwargs)

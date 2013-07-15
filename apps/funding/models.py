@@ -15,6 +15,7 @@ from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from polls.models import Poll
 from django.contrib.sites.models import Site
+from . import app_settings
 
 
 class Offer(models.Model):
@@ -31,7 +32,10 @@ class Offer(models.Model):
         help_text=_('Published book.'))
     cover = models.ImageField(_('Cover'), upload_to = 'funding/covers')
     poll = models.ForeignKey(Poll, help_text = _('Poll'),  null = True, blank = True, on_delete = models.SET_NULL)
-        
+
+    notified_near = models.DateTimeField(_('Near-end notifications sent'), blank=True, null=True)
+    notified_end = models.DateTimeField(_('End notifications sent'), blank=True, null=True)
+
     def cover_img_tag(self):
         return u'<img src="%s" />' % self.cover.url
     cover_img_tag.short_description = _('Cover preview')
@@ -120,7 +124,8 @@ class Offer(models.Model):
             query_filter=models.Q(offer=self)
         )
 
-    def notify_end(self):
+    def notify_end(self, force=False):
+        if not force and self.notified_end: return
         assert not self.is_current()
         self.notify_all(
             _('The fundraiser has ended!'),
@@ -130,8 +135,11 @@ class Offer(models.Model):
                 'remaining': self.remaining(),
                 'current': self.current(),
             })
+        self.notified_end = datetime.now()
+        self.save()
 
-    def notify_near(self):
+    def notify_near(self, force=False):
+        if not force and self.notified_near: return
         assert self.is_current()
         sum_ = self.sum()
         need = self.target - sum_
@@ -144,6 +152,8 @@ class Offer(models.Model):
                 'sum': sum_,
                 'need': need,
             })
+        self.notified_near = datetime.now()
+        self.save()
 
     def notify_published(self):
         assert self.book is not None
@@ -243,7 +253,7 @@ class Funding(models.Model):
             'site': Site.objects.get_current(),
         }
         context.update(extra_context)
-        with override(self.language_code or 'pl'):
+        with override(self.language_code or app_settings.DEFAULT_LANGUAGE):
             send_mail(subject,
                 render_to_string(template_name, context),
                 getattr(settings, 'CONTACT_EMAIL', 'wolnelektury@nowoczesnapolska.org.pl'),
