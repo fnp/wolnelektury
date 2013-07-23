@@ -7,7 +7,7 @@ from django.test import TestCase
 from .models import Offer, Perk, Funding
 
 
-class FundTest(TestCase):
+class PerksTest(TestCase):
     def setUp(self):
         self.today = date.today()
         self.offer1 = Offer.objects.create(
@@ -28,3 +28,49 @@ class FundTest(TestCase):
         self.assertEqual(
             set(self.offer1.get_perks(70)),
             set([perk, perk1]))
+
+
+class FundingTest(TestCase):
+    def setUp(self):
+        self.today = date.today()
+        self.offer_past = Offer.objects.create(
+            author='an-author', title='past', slug='past',
+            target=100, start=self.today-timedelta(1), end=self.today-timedelta(1))
+        self.offer_current = Offer.objects.create(
+            author='an-author', title='current', slug='current',
+            target=100, start=self.today, end=self.today)
+        self.offer_future = Offer.objects.create(
+            author='an-author', title='future', slug='future',
+            target=100, start=self.today+timedelta(1), end=self.today+timedelta(1))
+
+    def test_current(self):
+        self.assertTrue(self.offer_current.is_current())
+        self.assertFalse(self.offer_past.is_current())
+        self.assertEqual(Offer.current(), self.offer_current)
+        self.assertEqual(
+            set(Offer.past()),
+            set([self.offer_past])
+        )
+        self.assertEqual(
+            set(Offer.public()),
+            set([self.offer_past, self.offer_current])
+        )
+
+    def test_interrupt(self):
+        # A new offer starts, ending the previously current one.
+        offer_interrupt = Offer.objects.create(
+            author='an-author', title='interrupt', slug='interrupt',
+            target=100, start=self.today-timedelta(1), end=self.today+timedelta(1))
+
+        self.assertTrue(offer_interrupt.is_current())
+        self.assertFalse(self.offer_current.is_current())
+        self.assertEqual(Offer.current(), offer_interrupt)
+        self.assertEqual(
+            set(Offer.past()),
+            set([self.offer_past, self.offer_current])
+        )
+        self.assertEqual(
+            set(Offer.public()),
+            set([self.offer_past, self.offer_current, offer_interrupt])
+        )
+
