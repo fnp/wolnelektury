@@ -115,7 +115,7 @@ class CurrentView(OfferDetailView):
     def dispatch(self, request, slug=None):
         self.object = Offer.current()
         if self.object is None:
-            raise Http404
+            return redirect(reverse('funding'))
         elif slug != self.object.slug:
             return redirect(reverse('funding_current', args=[self.object.slug]))
         return super(CurrentView, self).dispatch(request, slug)

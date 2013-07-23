@@ -62,7 +62,7 @@ class Offer(models.Model):
         return retval
 
     def is_current(self):
-        return self.start <= date.today() <= self.end
+        return self.start <= date.today() <= self.end and self == self.current()
 
     def is_win(self):
         return self.sum() >= self.target
@@ -77,9 +77,16 @@ class Offer(models.Model):
 
     @classmethod
     def current(cls):
-        """ Returns current fundraiser or None. """
+        """ Returns current fundraiser or None.
+
+        Current fundraiser is the one that:
+        - has already started,
+        - hasn't yet ended,
+        - if there's more than one of those, it's the one that ends last.
+
+        """
         today = date.today()
-        objects = cls.objects.filter(start__lte=today, end__gte=today)
+        objects = cls.objects.filter(start__lte=today, end__gte=today).order_by('-end')
         try:
             return objects[0]
         except IndexError:
@@ -87,9 +94,12 @@ class Offer(models.Model):
 
     @classmethod
     def past(cls):
-        """ QuerySet for all current and past fundraisers. """
-        today = date.today()
-        return cls.objects.filter(end__lt=today)
+        """ QuerySet for all past fundraisers. """
+        objects = cls.public()
+        current = cls.current()
+        if current is not None:
+            objects = objects.exclude(pk=current.pk)
+        return objects
 
     @classmethod
     def public(cls):

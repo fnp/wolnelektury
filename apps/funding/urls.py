@@ -12,6 +12,7 @@ from .views import (WLFundView, OfferDetailView, OfferListView,
 urlpatterns = patterns('',
 
     url(r'^$', CurrentView.as_view(), name='funding_current'),
+    url(r'^teraz/$', CurrentView.as_view()),
     url(r'^teraz/(?P<slug>[^/]+)/$', CurrentView.as_view(), name='funding_current'),
     url(r'^lektura/$', OfferListView.as_view(), name='funding'),
     url(r'^lektura/(?P<slug>[^/]+)/$', OfferDetailView.as_view(), name='funding_offer'),

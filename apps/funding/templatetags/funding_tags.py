@@ -8,6 +8,10 @@ register = template.Library()
 def funding(context, offer=None, link=False, closeable=False, show_title=True, show_title_calling = True, add_class=""):
     if offer is None and context.get('funding_no_show_current') is None:
         offer = Offer.current()
+        is_current = True
+    elif offer is not None:
+        is_current = offer.is_current()
+
     if offer is None:
         return {}
 
@@ -15,7 +19,7 @@ def funding(context, offer=None, link=False, closeable=False, show_title=True, s
     return {
         'offer': offer,
         'sum': offer_sum,
-        'is_current': offer.is_current(),
+        'is_current': is_current,
         'is_win': offer_sum >= offer.target,
         'missing': offer.target - offer_sum,
         'percentage': 100 * offer_sum / offer.target,
