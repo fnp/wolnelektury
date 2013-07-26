@@ -124,6 +124,9 @@ class Offer(models.Model):
         """ QuerySet for all completed payments for the offer. """
         return Funding.payed().filter(offer=self)
 
+    def funders(self):
+        return self.funding_payed().order_by('-amount', 'payed_at')
+
     def sum(self):
         """ The money gathered. """
         return self.funding_payed().aggregate(s=models.Sum('amount'))['s'] or 0
