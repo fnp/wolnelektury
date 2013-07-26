@@ -12,7 +12,7 @@
                 {% blocktrans with bu=offer.book.get_absolute_url bt=offer.book %}The book
                 <a href="{{ bu }}">{{ bt }}</a> has been already published.{% endblocktrans %}
             {% else %}
-                {% if offer.redakcja_link %}
+                {% if offer.redakcja_url %}
                     {% blocktrans with r=offer.redakcja_url %}You can follow
                     the work on the <a href="{{ r }}">Editorial Platform</a>.{% endblocktrans %}
                 {% endif %}
