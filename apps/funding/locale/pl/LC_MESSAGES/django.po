@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-26 10:00+0200\n"
-"PO-Revision-Date: 2013-07-26 10:01+0100\n"
+"PO-Revision-Date: 2013-07-30 14:26+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,8 @@ msgstr "Imię i nazwisko na listę darczyńców"
 
 #: forms.py:19
 msgid "Optional name for public list of contributors"
-msgstr "Opcjonalnie imię i nazwisko lub pseudonim do listy darczyńców."
+msgstr ""
+"Opcjonalnie imię i nazwisko lub pseudonim do publicznej listy darczyńców."
 
 #: forms.py:20
 msgid "Contact e-mail"
