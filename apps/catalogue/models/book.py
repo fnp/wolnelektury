@@ -75,7 +75,7 @@ class Book(models.Model):
 
         self.sort_key = sortify(self.title)
 
-        ret = super(Book, self).save(force_insert, force_update)
+        ret = super(Book, self).save(force_insert, force_update, **kwargs)
 
         if reset_short_html:
             self.reset_short_html()
@@ -511,10 +511,11 @@ class Book(models.Model):
         """
         # get relevant books and their tags
         objects = cls.tagged.with_all(tags)
+        parents = objects.filter(html_file='').only('slug')
         # eliminate descendants
         l_tags = Tag.objects.filter(category='book',
-            slug__in=[book.book_tag_slug() for book in objects.iterator()])
-        descendants_keys = [book.pk for book in cls.tagged.with_any(l_tags).iterator()]
+            slug__in=[book.book_tag_slug() for book in parents.iterator()])
+        descendants_keys = [book.pk for book in cls.tagged.with_any(l_tags).only('pk').iterator()]
         if descendants_keys:
             objects = objects.exclude(pk__in=descendants_keys)
 

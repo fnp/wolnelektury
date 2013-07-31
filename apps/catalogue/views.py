@@ -186,7 +186,7 @@ def tagged_object_list(request, tags=''):
         # get related tags from `tag_counter` and `theme_counter`
         related_counts = {}
         tags_pks = [tag.pk for tag in tags]
-        for book in objects.iterator():
+        for book in objects:
             for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
                 if tag_pk in tags_pks:
                     continue
