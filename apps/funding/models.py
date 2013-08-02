@@ -233,6 +233,9 @@ class Funding(models.Model):
     def get_absolute_url(self):
         return reverse('funding_funding', args=[self.pk])
 
+    def perk_names(self):
+        return ", ".join(perk.name for perk in self.perks.all())
+
     def get_disable_notifications_url(self):
         return "%s?%s" % (reverse("funding_disable_notifications"),
             urlencode({
