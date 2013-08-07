@@ -29,6 +29,12 @@
       {% all_editors book.extra_info %}.</p>
 {% endif %}
 
+{% if book.extra_info.funders %}
+  <p>{% trans "Publication funded by:" %}
+      {% for funder in book.extra_info.funders %}{{ funder }}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}
+  </p>
+{% endif %}
+
 {% if book.extra_info.cover_by %}
   <p>{% trans "Cover image by:" %}
       <a href="{{ book.extra_info.cover_source }}">
