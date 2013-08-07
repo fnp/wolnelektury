@@ -106,10 +106,6 @@ class BookDetails(object):
     """Custom fields used for representing Books."""
 
     @classmethod
-    def author(cls, book):
-        return ",".join(t[0] for t in book.related_info()['tags'].get('author', []))
-
-    @classmethod
     def href(cls, book):
         """ Returns an URI for a Book in the API. """
         return API_BASE + reverse("api_book", args=[book.slug])
@@ -168,7 +164,12 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = ['author', 'href', 'title', 'url', 'cover']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb']
+
+    @classmethod
+    def genres(cls, book):
+        """ Returns all media for a book. """
+        return book.tags.filter(category='genre')
 
     @piwik_track
     def read(self, request, tags, top_level=False,
@@ -214,7 +215,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = ['author', 'href', 'title', 'url']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb']
     anonymous = AnonymousBooksHandler
 
     def create(self, request, *args, **kwargs):
@@ -240,8 +241,14 @@ def _tags_getter(category):
     def get_tags(cls, book):
         return book.tags.filter(category=category)
     return get_tags
+def _tag_getter(category):
+    @classmethod
+    def get_tag(cls, book):
+        return ", ".join(t[0] for t in book.related_info()['tags'].get(category, []))
+    return get_tag
 for plural, singular in category_singular.items():
     setattr(BookDetails, plural, _tags_getter(singular))
+    setattr(BookDetails, singular, _tag_getter(singular))
 
 # add fields for files in Book
 def _file_getter(format):
