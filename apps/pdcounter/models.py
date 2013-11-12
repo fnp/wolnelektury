@@ -91,13 +91,8 @@ class BookStub(models.Model):
 if not settings.NO_SEARCH_INDEX:
     def update_index(sender, instance, **kwargs):
         import search
-        print "update pd index %s [update %s]" % (instance, 'created' in kwargs)
         idx = search.Index()
-        idx.open()
-        try:
-            idx.index_tags(instance, remove_only=not 'created' in kwargs)
-        finally:
-            idx.close()
+        idx.index_tags(instance, remove_only=not 'created' in kwargs)
     
     post_delete.connect(update_index, Author)
     post_delete.connect(update_index, BookStub)

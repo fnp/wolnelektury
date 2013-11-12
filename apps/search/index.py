@@ -163,7 +163,7 @@ class Index(SolrIndex):
 
                 q_id_cat = self.index.Q(q_id & q_cat)
                 tag_qs.append(q_id_cat)
-            self.delete_query(tag_qs)
+            self.delete_query(*tag_qs)
         else:  # all
             q = self.index.Q(tag_id__any=True)
             self.delete_query(q)

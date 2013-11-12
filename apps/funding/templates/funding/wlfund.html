@@ -48,7 +48,12 @@ from successful fundraisers.{% endblocktrans %}
             <td>{{ entry.total }}&nbsp;zł</td>
         </tr>
     {% endif %}
+    {% empty %}
+        <tr><td colspan="4" style="text-align:center; color: #888;">
+            <em>{% trans "There are no previous fundraisers to show yet." %}</em>
+        </td></tr>
     {% endfor %}
 </table>
+
 
 {% endblock %}

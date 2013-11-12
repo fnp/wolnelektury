@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-19 14:10+0200\n"
-"PO-Revision-Date: 2013-06-19 14:10+0100\n"
+"POT-Creation-Date: 2013-08-07 12:31+0200\n"
+"PO-Revision-Date: 2013-08-07 12:32+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Błąd podczas importowania pliku: %r"
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:557 templates/catalogue/book_short.html:92
+#: views.py:557 templates/catalogue/book_short.html:96
 #: templates/catalogue/book_text.html:27 templates/catalogue/book_wide.html:63
 msgid "Download"
 msgstr "Pobierz"
@@ -272,7 +272,7 @@ msgstr ""
 "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
 "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
 
-#: templates/catalogue/book_detail.html:20
+#: templates/catalogue/book_detail.html:21
 #: templates/catalogue/tagged_object_list.html:74
 #: templates/catalogue/tagged_object_list.html:104
 msgid "See also"
@@ -303,7 +303,7 @@ msgid ""
 "Commons Attribution-ShareAlike 3.0</a>\n"
 "        license."
 msgstr ""
-"Ten utwór nie jest chroniony prawem autorskim i&nbsp;znajduje się w&nbsp;"
+"Ten utwór nie jest objęty majątkowym prawem autorskim i&nbsp;znajduje się w&nbsp;"
 "domenie publicznej, co oznacza że możesz go swobodnie wykorzystywać, "
 "publikować i&nbsp;rozpowszechniać. Jeśli utwór opatrzony jest dodatkowymi "
 "materiałami (przypisy, motywy literackie etc.), które podlegają prawu "
@@ -320,6 +320,10 @@ msgid "Edited and annotated by:"
 msgstr "Opracowanie redakcyjne i przypisy:"
 
 #: templates/catalogue/book_info.html:33
+msgid "Publication funded by:"
+msgstr "Publikację ufundowali i ufundowały:"
+
+#: templates/catalogue/book_info.html:41
 msgid "Cover image by:"
 msgstr "Ilustracja na okładce:"
 
@@ -331,53 +335,53 @@ msgstr "Spis wszystkich utworów"
 msgid "Table of Content"
 msgstr "Spis treści"
 
-#: templates/catalogue/book_list.html:30
+#: templates/catalogue/book_list.html:31
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:59
+#: templates/catalogue/book_short.html:61
 #: templates/catalogue/picture_detail.html:54
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:66
+#: templates/catalogue/book_short.html:69
 #: templates/catalogue/picture_detail.html:60
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:73
+#: templates/catalogue/book_short.html:77
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:88
+#: templates/catalogue/book_short.html:92
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:95
+#: templates/catalogue/book_short.html:99
 #: templates/catalogue/book_text.html:40
 msgid "to print"
 msgstr "do druku"
 
-#: templates/catalogue/book_short.html:98
+#: templates/catalogue/book_short.html:102
 msgid "for an e-book reader"
 msgstr "na czytnik e-booków"
 
-#: templates/catalogue/book_short.html:101
+#: templates/catalogue/book_short.html:105
 #: templates/catalogue/book_text.html:46
 msgid "for Kindle"
 msgstr "na Kindle"
 
-#: templates/catalogue/book_short.html:104
+#: templates/catalogue/book_short.html:108
 #: templates/catalogue/book_text.html:49
 msgid "FictionBook"
 msgstr "FictionBook"
 
-#: templates/catalogue/book_short.html:107
+#: templates/catalogue/book_short.html:111
 #: templates/catalogue/book_text.html:52
 msgid "for advanced usage"
 msgstr "do zadań specjalnych"
 
-#: templates/catalogue/book_short.html:113
+#: templates/catalogue/book_short.html:117
 #: templates/catalogue/book_text.html:30
 msgid "Listen"
 msgstr "Słuchaj"
@@ -456,6 +460,7 @@ msgid "Mix this book"
 msgstr "Miksuj treść utworu"
 
 #: templates/catalogue/catalogue.html:6 templates/catalogue/catalogue.html:11
+#: templates/catalogue/menu.html:5
 msgid "Catalogue"
 msgstr "Katalog"
 
@@ -495,7 +500,7 @@ msgstr "Epoki"
 msgid "Themes and topics"
 msgstr "Motywy i tematy"
 
-#: templates/catalogue/catalogue.html:34 templates/catalogue/menu.html:16
+#: templates/catalogue/catalogue.html:34 templates/catalogue/menu.html:20
 msgid "Collections"
 msgstr "Kolekcje"
 
@@ -539,19 +544,23 @@ msgstr "Zwiń fragment"
 msgid "See full category"
 msgstr "Zobacz całą kategorię"
 
-#: templates/catalogue/menu.html:9 templates/catalogue/menu.html.py:18
+#: templates/catalogue/menu.html:4
+msgid "Catalogue of the library"
+msgstr ""
+
+#: templates/catalogue/menu.html:13 templates/catalogue/menu.html.py:22
 msgid "Please wait…"
 msgstr "Proszę czekać…"
 
-#: templates/catalogue/menu.html:24
+#: templates/catalogue/menu.html:28
 msgid "All books"
 msgstr "Wszystkie utwory"
 
-#: templates/catalogue/menu.html:28
+#: templates/catalogue/menu.html:32
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/catalogue/menu.html:32
+#: templates/catalogue/menu.html:36
 msgid "DAISY"
 msgstr "DAISY"
 

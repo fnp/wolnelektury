@@ -4,13 +4,14 @@
 #
 from datetime import date
 from django.views.decorators.cache import never_cache
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView, DetailView, ListView
 import getpaid.backends.payu
 from getpaid.models import Payment
+from . import app_settings
 from .forms import FundingForm
 from .models import Offer, Spent, Funding
 
@@ -76,6 +77,7 @@ class OfferDetailView(FormView):
     template_name = "funding/offer_detail.html"
     backend = 'getpaid.backends.payu'
 
+    @csrf_exempt
     def dispatch(self, request, slug=None):
         if getattr(self, 'object', None) is None:
             if slug:
@@ -90,7 +92,7 @@ class OfferDetailView(FormView):
         if self.request.method == 'POST':
             return form_class(self.object, self.request.POST)
         else:
-            return form_class(self.object, initial={'amount': settings.FUNDING_DEFAULT})
+            return form_class(self.object, initial={'amount': app_settings.DEFAULT_AMOUNT})
 
     def get_context_data(self, *args, **kwargs):
         ctx = super(OfferDetailView, self).get_context_data(*args, **kwargs)
@@ -109,10 +111,11 @@ class OfferDetailView(FormView):
 
 
 class CurrentView(OfferDetailView):
+    @csrf_exempt
     def dispatch(self, request, slug=None):
         self.object = Offer.current()
         if self.object is None:
-            raise Http404
+            return redirect(reverse('funding'))
         elif slug != self.object.slug:
             return redirect(reverse('funding_current', args=[self.object.slug]))
         return super(CurrentView, self).dispatch(request, slug)
@@ -136,5 +139,20 @@ class ThanksView(TemplateView):
         ctx['funding_no_show_current'] = True
         return ctx
 
+
 class NoThanksView(TemplateView):
     template_name = "funding/no_thanks.html"
+
+
+class DisableNotifications(TemplateView):
+    template_name = "funding/disable_notifications.html"
+
+    @csrf_exempt
+    def dispatch(self, request):
+        self.object = get_object_or_404(Funding, 
+            email=request.GET.get('email'), notify_key=request.GET.get('key'))
+        return super(DisableNotifications, self).dispatch(request)
+
+    def post(self, *args, **kwargs):
+        self.object.disable_notifications()
+        return redirect(self.request.get_full_path())

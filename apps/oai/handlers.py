@@ -15,6 +15,8 @@ from django.contrib.sites.models import Site
 from django.utils import timezone
 
 
+make_time_naive = lambda d: timezone.localtime(d).replace(tzinfo=None)
+
 WL_DC_READER_XPATH = '(.|*)/rdf:RDF/rdf:Description/%s/text()' 
 wl_dc_reader = metadata.MetadataReader(
     fields={
@@ -92,12 +94,12 @@ class Catalogue(common.ResumptionOAIPMH):
         identifier = self.slug_to_identifier(book.slug)
         if isinstance(book, Book):
             #            setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
-            header = common.Header(identifier, book.changed_at, [], False)
+            header = common.Header(identifier, make_time_naive(book.changed_at), [], False)
             if not headers_only:
                 meta = common.Metadata(self.metadata(book))
             about = None
         elif isinstance(book, Deleted):
-            header = common.Header(identifier, book.deleted_at, [], True)
+            header = common.Header(identifier, make_time_naive(book.deleted_at), [], True)
             if not headers_only:
                 meta = common.Metadata({})
             about = None
@@ -111,7 +113,7 @@ class Catalogue(common.ResumptionOAIPMH):
             '%s/oaipmh' % WL_BASE,  # generate
             '2.0',  # version
             [m[1] for m in settings.MANAGERS],  # adminEmails
-            self.earliest_datestamp,  # earliest datestamp of any change
+            make_time_naive(self.earliest_datestamp),  # earliest datestamp of any change
             'persistent',  # deletedRecord
             'YYYY-MM-DDThh:mm:ssZ',  # granularity
             ['identity'],  # compression

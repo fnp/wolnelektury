@@ -11,7 +11,8 @@ from suggest.forms import PublishingSuggestForm
 
 def book_stub_detail(request, slug):
     book = get_object_or_404(models.BookStub, slug=slug)
-    pd_counter = datetime(book.pd, 1, 1)
+    if book.pd and not book.in_pd():
+        pd_counter = datetime(book.pd, 1, 1)
 
     form = PublishingSuggestForm(
             initial={"books": u"%s — %s, \n" % (book.author, book.title)})
@@ -22,7 +23,8 @@ def book_stub_detail(request, slug):
 
 def author_detail(request, slug):
     author = get_object_or_404(models.Author, slug=slug)
-    pd_counter = datetime(author.goes_to_pd(), 1, 1)
+    if not author.alive():
+        pd_counter = datetime(author.goes_to_pd(), 1, 1)
 
     form = PublishingSuggestForm(initial={"books": author.name + ", \n"})
 

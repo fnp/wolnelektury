@@ -1,0 +1,18 @@
+{% extends "funding/email/base.txt" %}
+{% load i18n %}
+
+{% block body %}
+{% blocktrans count days as d %}there's only {{ d }} day left until the end of the fundraiser for:
+{% plural %}There're only {{ d }} days left until the end of the fundraiser for:
+{% endblocktrans %}
+  {{ offer.author }} – {{ offer.title }}
+
+{% blocktrans with x=sum %}We managed to collect {{x}} PLN so far.{% endblocktrans %}
+{% if is_win %}
+{% blocktrans %}The fundraiser is a success already, but the more money
+we collect, the more other books we'll publish.{% endblocktrans %}
+{% else %}{% blocktrans with x=need %}We still need {{ x }} PLN more.{% endblocktrans %}
+{% endif %}
+{% trans "There's still time to let your friends know about the fundraiser!" %}
+http://{{ site.domain }}{% url 'funding_current' %}
+{% endblock %}

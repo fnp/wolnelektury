@@ -3,8 +3,10 @@
 {% if offer.is_current %}
     {% if offer.is_win %}
         <p>
-            {% blocktrans with due=offer.due end=offer.end %}The fundraiser
-            ends on {{ end }}. The book will be published by {{ due }}.{% endblocktrans %}
+            {% blocktrans with end=offer.end %}The fundraiser
+            ends on {{ end }}. The full amount has been successfully
+            raised, but you can still contribute and help liberate
+            more books.{% endblocktrans %}
         </p>
     {% else %}
     <p>

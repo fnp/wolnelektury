@@ -13,12 +13,14 @@
 
 
 {% autopaginate object_list 10 %}
+{% if page_obj.number == 1 %}
+    <h2>{% trans "Current fundraiser:" %}</h2>
+{% endif %}
+
 {% for offer in object_list %}
 {% with is_win=offer.is_win is_current=offer.is_current %}
-
-    {% if is_current %}
-        <h2>{% trans "Current fundraiser:" %}</h2>
-    {% elif forloop.is_first %}
+    {% if not is_current  and forloop.first and page_obj.number == 1 %}
+        <p class="normal-text">{% trans "No fundraiser is currently running." %}</p>
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}
 
@@ -33,7 +35,7 @@
         {% offer_status_more offer %}
     </div>
 
-    {% if is_current and not forloop.is_last %}
+    {% if is_current and not forloop.last %}
         <h2>{% trans "Previous fundraisers:" %}</h2>
     {% endif %}
 

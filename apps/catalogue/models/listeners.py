@@ -40,6 +40,14 @@ def _pre_delete_handler(sender, instance, **kwargs):
 pre_delete.connect(_pre_delete_handler)
 
 
+def _post_delete_handler(sender, instance, **kwargs):
+    """ refresh Book on BookMedia delete """
+    if sender == Collection:
+        permanent_cache.delete('catalogue.collection:%s' % instance.slug)
+        permanent_cache.delete('catalogue.catalogue')
+post_delete.connect(_post_delete_handler)
+
+
 def _post_save_handler(sender, instance, **kwargs):
     """ refresh all the short_html stuff on BookMedia update """
     if sender == BookMedia:
@@ -48,6 +56,7 @@ def _post_save_handler(sender, instance, **kwargs):
             'catalogue.audiobook_list', 'catalogue.daisy_list'])
     elif sender == Collection:
         permanent_cache.delete('catalogue.collection:%s' % instance.slug)
+        permanent_cache.delete('catalogue.catalogue')
 post_save.connect(_post_save_handler)
 
 
@@ -63,9 +72,5 @@ if not settings.NO_SEARCH_INDEX:
         """ remove the book from search index, when it is deleted."""
         import search
         idx = search.Index()
-        idx.open(timeout=10000)  # 10 seconds timeout.
-        try:
-            idx.remove_book(instance)
-            idx.index_tags()
-        finally:
-            idx.close()
+        idx.remove_book(instance)
+        idx.index_tags()

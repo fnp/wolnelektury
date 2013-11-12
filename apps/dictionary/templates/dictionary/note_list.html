@@ -35,7 +35,7 @@
 {% blocktrans count object_list.count as c %}{{c}} footnote found{% plural %}{{c}} footnotes found{% endblocktrans %}
 </p>
 
-{% if object_list %}
+{% if object_list.exists %}
 
 {% autopaginate object_list 100 %}
 {% paginate %}

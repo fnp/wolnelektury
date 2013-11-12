@@ -1,0 +1,14 @@
+{% extends "funding/email/base.txt" %}
+{% load i18n %}
+
+
+{% block body %}
+{% trans 'Thank you for your support - thanks to you we will set another book free.' %}{% if funding.name %}
+
+{% trans 'The book will be supplemented with your name as a donor.' %}{% endif %} 
+{% if funding.perks.exists %}
+{% blocktrans %}We will contact you about details needed for your perks.{% endblocktrans %}
+{% endif %}{# funding.perks.exists #}
+{% blocktrans %}We will keep you informed about status changes to this fundraiser
+and the upcoming ones that we plan to launch.{% endblocktrans %}
+{% endblock %}
