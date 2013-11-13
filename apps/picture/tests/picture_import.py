@@ -22,3 +22,12 @@ class PictureTest(WLTestCase):
 
         picture.delete()
         
+
+    def test_import_2(self):
+        picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/pejzaz-i-miasto-krzyzanowski-chmury.xml"),
+                                        path.join(path.dirname(__file__), "files/pejzaz-i-miasto-krzyzanowski-chmury.jpg"),
+                                        overwrite=True)
+        cats = set([t.category for t in picture.tags])
+        assert 'genre' in cats
+        assert 'kind' in cats
+
