@@ -1,0 +1,14 @@
+.Fragment-item {
+    @include size(margin-bottom, 20px);
+    @include white-box;
+
+    .fragment {
+        color: black;
+        display: block;
+    }
+    .toggle {
+        @include size(font-size, 11px);
+        display: block;
+        @include size(padding, 5px 0);
+    }
+}

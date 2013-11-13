@@ -1,0 +1,174 @@
+.funding {
+    background: orange;
+    margin: auto;
+    @include size(padding, 5px 0);
+    position: relative;
+    .close {
+        @include size(font-size, 10px);
+    }
+    .call-area {
+        float:left;
+        @include size(padding-right, 6px);
+    }
+    a.call {
+        @include size(height, 18px);
+
+        @include size(padding, 5.25px 7.5px);
+        @include size(margin, 7.5px);
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+
+        background: lighten(#018189, .05);
+        @include size(width, 135px);
+    }
+    .learn-more {
+        text-align: center;
+        margin: auto;
+        @include size(font-size, 10px);
+        padding: .5em;
+        @include min-screen(420px) {
+            padding: 0;
+        }
+    }
+    .description {
+        @include size(padding-left, 6px);
+
+        a {
+            display: block;
+            color: black;
+            @include size(padding, 0 3px);
+        }
+    }
+    strong {
+        @include size(font-size, 15px);
+        @include size(padding, 3px 0 0);
+    }
+    .progress {
+        .piece {
+            @include size(font-size, 13px);
+            @include size(padding, 4px 6px);
+        }
+        @include size(margin, 3px 12px 4px 0);
+        @include size(border-radius, 20px);
+        background-image: url(/static/img/progress-pixel.png);
+        background-repeat: repeat-y;
+        background-color: mix(#ec6d00, orange, .5);
+        @include box-shadow(1px 1px 1px #888);
+    }
+    .with-button {
+        clear: left;
+        @include min-screen(420px) {
+            clear: none;
+            @include size(margin-left, 171px);
+        }
+    }
+
+    .funding-title {
+        @include size(font-size, 11px);
+    }
+    .funding-title-strong {
+        @extend .funding-title;
+        font-weight: bold;
+        @include size(font-size, 15px);
+    }
+    .close {
+        position: absolute;
+        top: 0px;
+        @include size(right, 5px);
+    }
+}
+
+.funding-top-header {
+    @extend .funding;
+
+    @include min-screen(1000px) {
+        @include size(width, 975px);
+    }
+}
+
+
+.wlfund {
+    width: 100%;
+    border-spacing:0;
+
+    td {
+        @include size(padding, 10px 5px 10px);
+        text-align: center;
+        @include size(border-top, 10px solid rgba(255, 255, 255, 0));
+        @include size(border-bottom, 2px solid #DDDDDD);
+
+        background-clip: padding-box;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding;
+    }
+    td.oneline {
+        white-space: nowrap;
+    }
+
+    td:last-child {
+        text-align: right;
+    }
+
+    .funding-plus td {
+        background-color: mix(#0D7E85, white, .2);
+    }
+
+    .funding-minus td {
+        background-color: white;
+    }
+}
+
+
+
+.honking {
+    background: #018189;
+    @include size(font-size, 15px);
+    @include size(padding, 7.5px);
+    color: white;
+    border: 0;
+    @include box-shadow(3px 3px 4.5px #888888);
+    position: relative;
+}
+.honking:hover {
+    @include box-shadow(none);
+    @include size(top, 1px);
+    @include size(left, 1px);
+}
+
+
+
+.share {
+    a {
+        @include size(margin-right, 15px);
+
+        img {
+            vertical-align: middle;
+        }
+    }
+}
+
+.funding-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background: orange;
+    cursor: pointer;
+    @include size(padding, 2.6px 13px);
+    @include size(border-radius, 0 0 0 10px);
+    @include size(font-size, 13px);
+}
+
+.funding-cover {
+    float: left;
+    @include size(margin-right, 10px);
+}
+
+.funding-details-intro {
+    @include size(padding-top, 10px);
+    
+    h3:first-of-type {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,26 @@
+#footer-wrapper {
+    @include size(margin-top, 50px);
+    @include size(padding-top, 30px);
+    background: #fff;
+    color: #767676;
+    @include size(border-top, 1px solid #ddd);
+}
+
+footer#main {
+    @include size(font-size, 10px);
+    @include size(margin-left, 5px);
+    @include size(margin-right, 5px);
+
+    @media screen and (min-width: 62.5em) {
+        @include size(width, 975px);
+        margin: auto;
+    }
+
+    p {
+        @include size(margin-top, 2.5px);
+        @include size(margin-bottom, 2.5px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+

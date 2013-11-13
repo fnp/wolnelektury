@@ -1,17 +1,15 @@
 /* listing of all books */
 
-@import "tools";
-
 .catalogue-catalogue {
     ul {
         column-width: 25em;
         -moz-column-width: 25em;
         -webkit-column-width: 25em;
 
-        @include size-px(padding-left, 10);
+        @include size(padding-left, 10px);
 
         @media screen and (min-width: 20em) {
-            @include size-px(padding-left, 40);
+            @include size(padding-left, 40px);
         }
 
         li {
@@ -24,8 +22,8 @@
     }
 
     h2 {
-        @include size-px(font-size, 26);
+        @include size(font-size, 26px);
         margin: 0;
-        @include size-px(padding, 26);
+        @include size(padding, 26px);
     }
 }

@@ -1,29 +1,27 @@
-@import "tools";
-
 .page-desc {
-    @include size-px(margin-left, 15);
+    @include size(margin-left, 15px);
 }
 
 #tagged-object-list {
     @media screen and (min-width: 62.5em) {
         .left-column, .right-column {
-            @include size-px(width, 480);
+            @include size(width, 480px);
         }
     }
 
     .see-also, .download {
         float: left;
-        @include size-px(margin-top, 20);
-        @include size-px(margin-bottom, 20);
+        @include size(margin-top, 20px);
+        @include size(margin-bottom, 20px);
 
         h2 {
             @include mono;
-            @include size-px(font-size, 11);
+            @include size(font-size, 11px);
             margin: 0;
         }
 
         ul {
-            @include size-px(font-size, 11);
+            @include size(font-size, 11px);
             list-style: none;
             padding: 0;
             margin: 0;
@@ -31,11 +29,11 @@
     }
 
     .see-also {
-        @include size-px(margin-left, 80);
-        @include size-px(width, 143);
+        @include size(margin-left, 80px);
+        @include size(width, 143px);
     }
     .download {
-        @include size-px(margin-left, 20);
+        @include size(margin-left, 20px);
     }
 
     .left-column .see-also {
@@ -44,7 +42,7 @@
 }
 
 #description {
-    @include size-px(margin-bottom, 26);
+    @include size(margin-bottom, 26px);
     cursor: pointer;
 
     dl {
@@ -70,25 +68,25 @@
     #description .meta li {
         text-align: right;
         color: #666;
-        @include size-px(font-size, 11.7);
+        @include size(font-size, 11.7px);
     }
 }
 
 .inline-tag-lists {
-    @include size-px(font-size, 11);
+    @include size(font-size, 11px);
 
     .inline-header {
         @include mono;
         display: inline-block;
         vertical-align: top;
-        @include size-px(width, 77);
+        @include size(width, 77px);
     }
 
     .inline-body {
         display: inline-block;
         vertical-align: top;
-        @include size-px(margin-bottom, 5.5);
-        @include size-px(width, 385);
+        @include size(margin-bottom, 5.5px);
+        @include size(width, 385px);
 
         ul {
             list-style: none;
@@ -97,7 +95,7 @@
 
             li {
                 display: inline-block;
-                @include size-px(margin-right, 11);
+                @include size(margin-right, 11px);
             }
         }
     }

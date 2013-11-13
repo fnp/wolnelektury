@@ -1,5 +1,3 @@
-@import "tools";
-
 .hidden-box-wrapper {
     position: relative;
 
@@ -7,7 +5,7 @@
         position: absolute;
         left: 0;
         display: none;
-        padding: 1em 1em .5em 1em;
+        @include size(padding, 10px 10px 5px 10px);
         @include white-box;
 
         z-index: 500;
@@ -16,22 +14,22 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            @include size-px(font-size, 11);
+            @include size(font-size, 11px);
 
-            @include size-px(column-width, 132);
-            @include size-px(-moz-column-width, 132);
-            @include size-px(-webkit-column-width, 132);
+            @include size(column-width, 132px);
+            @include size(-moz-column-width, 132px);
+            @include size(-webkit-column-width, 132px);
 
             @media screen and (min-width: 24em) {
-                @include size-px(width, 320);
+                @include size(width, 320px);
             }
 
             @media screen and (min-width: 34em) {
-                @include size-px(width, 480);
+                @include size(width, 480px);
             }
 
             @media screen and (min-width: 62.5em) {
-                @include size-px(width, 528);
+                @include size(width, 528px);
             }
 
 
@@ -49,7 +47,7 @@
 
 @media screen and (min-width: 24em) {
     #menu-collections ul {
-        @include size-px(width, 180);
+        @include size(width, 180px);
     }
 }
 

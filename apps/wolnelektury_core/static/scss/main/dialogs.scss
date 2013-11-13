@@ -1,23 +1,21 @@
-@import "tools";
-
 .dialog-window {
     position: absolute;
     display: none;
     background-color: transparent;
-    @include size-px(margin-top, -5);
-    @include size-px(margin-left, 10);
-    @include size-px(width, 200);
+    @include size(margin-top, -5px);
+    @include size(margin-left, 10px);
+    @include size(width, 200px);
 
     @media screen and (max-width: 29.999999em) {
         left: 0 !important;
         right: 0;
-        @include size-px(margin-left, 0);
+        @include size(margin-left, 0);
         width: auto;
     }
 
     div.header {
         @include mono;
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         width: 4em;
         background-color: #FFF;
         padding: 1em;
@@ -48,7 +46,7 @@
     }
 
     h1 {
-        @include size-px(font-size, 12);
+        @include size(font-size, 12px);
         font-weight: normal;
         margin-top: .4em;
     }
@@ -65,13 +63,13 @@
 
 
 .cuteform {
-    @include size-px(font-size, 11);
+    @include size(font-size, 11px);
 
     ol, ul {
         padding: 0;
         margin: 0;
         list-style: none;
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
 
         li {
             margin-top: 0.7em;
@@ -110,7 +108,7 @@
 
 @media screen and (min-width: 30em) {
     #login-window {
-        @include size-px(width, 260);
+        @include size(width, 260px);
     }
     #register-window {
         width: 26em;

@@ -1,5 +1,3 @@
-@import "tools";
-
 #big-cite {
     background-color: #444;
     color: white;
@@ -16,66 +14,63 @@
     }
 
     .cite {
-        @include size-px(padding-top, 46);
-        @include size-px(padding-bottom, 48);
-        @include size-px(padding-left, 0);
-        @include size-px(padding-right, 10);
+        @include size(padding, 46px 10px 48px 0);
         background: none;
         color: white;
 
         @media screen and (min-width: 30em) {
-            @include size-px(padding-right, 40);
+            @include size(padding-right, 40px);
         }
 
         .vip {
-            @include size-px(margin-left, 10);
-            @include size-px(margin-top, 2.5);
-            @include size-px(margin-bottom, 5);
-            @include size-px(font-size, 11);
+            @include size(margin-left, 10px);
+            @include size(margin-top, 2.5px);
+            @include size(margin-bottom, 5px);
+            @include size(font-size, 11px);
 
             @media screen and (min-width: 16em) {
                 padding-left: 10%;
-                @include size-px(margin-left, -18);
+                @include size(margin-left, -18px);
             }
 
             @media screen and (min-width: 62.5em) {
                 float: left;
                 padding-left: 0;
-                @include size-px(margin-left, 16);
+                @include size(margin-left, 16px);
                 text-align: right;
-                @include size-px(width, 147);
+                @include size(width, 147px);
             }
         }
 
         .cite-body {
-            @include size-px(margin, .5);
-            @include size-px(font-size, 20);
+            @include size(margin, .5px);
+            @include size(font-size, 20px);
             line-height: 1.16em;
 
             @media screen and (min-width: 30em) {
-                @include size-px(font-size, 30);
+                @include size(font-size, 30px);
             }
         }
 
         .source {
-            @include size-px(margin-top, 16);
-            @include size-px(margin-bottom, 16);
-            @include size-px(margin-right, 2);
-            @include size-px(font-size, 12);
+            @include size(margin-top, 16px);
+            @include size(margin-bottom, 16px);
+            @include size(margin-right, 2px);
+            @include size(font-size, 12px);
         }
 
         /* Make cite body and source slide to the left. */
         .cite-body, .source {
-            @include size-px(margin-left, 10);
+            @include size(margin-left, 10px);
 
             @media screen and (min-width: 16em) {
                 padding-left: 21.9%;
-                @include size-px(margin-left, -38);
+                @include size(margin-left, -38px);
             }
 
             @media screen and (min-width: 62.5em) {
                 padding-left: 0;
-                @include size-px(margin-left, 175);
+                @include size(margin-left, 175px);
             }
         }
 
@@ -95,65 +90,57 @@
 
     /* a long cite displays smaller */ 
     .cite-small .cite-body {
-        @include size-px(font-size, 16);
+        @include size(font-size, 16px);
         @media screen and (min-width: 30em) {
-            @include size-px(font-size, 20);
+            @include size(font-size, 20px);
         }
     }
 
     h2 {
         margin: 0;
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         color: #575c63;
     }
 }
 
 
 #promo-box {
-    @include size-px(margin-top, 16);
+    @include size(margin-top, 16px);
 
     @media screen and (min-width: 33em) {
         float: right;
-        @include size-px(margin-top, -51);
-        @include size-px(width, 320);
+        @include size(margin-top, -51px);
+        @include size(width, 320px);
     }
 
     h1 {
-        @include size-px(padding-top, 20);
-        @include size-px(height, 31);
+        @include size(padding, 20px 5px 0 10px);
+        @include size(height, 31px);
         margin: 0;
-        padding-bottom: 0;
-        @include size-px(padding-left, 10);
-        @include size-px(padding-right, 5);
         background: #191919;
         color: white;
         @include mono;
-        @include size-px(font-size, 13);
+        @include size(font-size, 13px);
         font-weight: normal;
 
         @media screen and (min-width: 33em) {
-            @include size-px(padding-left, 25);
-            @include size-px(padding-right, 25);
+            @include size(padding-left, 25px);
+            @include size(padding-right, 25px);
         }
     }
 
     #promo-box-body {
-        @include size-px(padding-top, 20);
-        @include size-px(padding-bottom, 20);
-        @include size-px(padding-left, 5);
-        @include size-px(padding-right, 5);
-        border-bottom-style: solid;
-        border-bottom-color: #efefef;
-        @include size-px(border-bottom-width, 2);
+        @include size(padding, 20px 5px);
+        @include size(border-bottom, 2px solid #efefef);
         background: #efefef;
 
         @media screen and (min-width: 33em) {
-            @include size-px(padding-left, 28);
-            @include size-px(padding-right, 28);
+            @include size(padding-left, 28px);
+            @include size(padding-right, 28px);
         }
 
         @media screen and (min-width: 62.5em) {
-            @include size-px(height, 300);
+            @include size(height, 300px);
         }
 
         a {
@@ -162,14 +149,14 @@
         }
         p {
             margin-top: 0;
-            @include size-px(font-size, 12);
+            @include size(font-size, 12px);
             line-height: 1.55em;
             color: #6c6c6c;
         }    
         h2, h3 {
             color: #0d777e;
-            @include size-px(font-size, 11);
-            @include size-px(height, 27.5);
+            @include size(font-size, 11px);
+            @include size(height, 27.5px);
             margin: 0;
             @include mono;
             font-weight: normal;
@@ -184,17 +171,17 @@
 
 #main-last {
     h1 {
-        @include size-px(height, 32);
+        @include size(height, 32px);
         margin: 0;
-        @include size-px(padding-top, 19);
-        @include size-px(padding-left, 10);
+        @include size(padding-top, 19px);
+        @include size(padding-left, 10px);
 
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         @include mono;
         font-weight: normal;
 
         @media screen and (min-width: 33em) {
-            @include size-px(padding-left, 19);
+            @include size(padding-left, 19px);
         }
 
         a {
@@ -218,26 +205,23 @@
 
 .infopages-box {
     margin: 0;
-    @include size-px(margin-top, 5);
-    padding-top: 0;
-    padding-bottom: 0;
-    @include size-px(padding-left, 5);
-    @include size-px(padding-right, 5);
+    @include size(margin-top, 5px);
+    @include size(padding, 0 5px);
     vertical-align: top;
     color: #989898;
 
     @media screen and (min-width: 20em) {
         display: inline-block;
-        @include size-px(width, 206);
-        @include size-px(padding-left, 17);
-        @include size-px(padding-right, 17);
+        @include size(width, 206px);
+        @include size(padding-left, 17px);
+        @include size(padding-right, 17px);
     }
 
     h1 {
-        @include size-px(height, 28);
+        @include size(height, 28px);
         margin: 0;
-        @include size-px(padding-top, 25);
-        @include size-px(font-size, 11);
+        @include size(padding-top, 25px);
+        @include size(font-size, 11px);
         color: #017e85;
         font-weight: normal;
         @include mono;
@@ -248,25 +232,25 @@
     }
 
     ol, ul {
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         list-style: none;
         padding: 0;
         margin: 0;
         line-height: 1.45em;
 
         li {
-            @include size-px(margin-bottom, 8);
+            @include size(margin-bottom, 8px);
             @media screen and (min-width: 62.5em) {
-                @include size-px(margin-bottom, 2.5);
+                @include size(margin-bottom, 2.5px);
             }
         }
     }
 
     .social-links {
-        @include size-px(margin-top, 10);
+        @include size(margin-top, 10px);
 
         a {
-            @include size-px(margin-right, 6);
+            @include size(margin-right, 6px);
         }
     }
 }

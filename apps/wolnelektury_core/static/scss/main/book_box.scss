@@ -1,28 +1,21 @@
-@import "tools";
-
 @mixin inner-box {
     display: block;
     color: black;
-    @include size-px(margin, 1);
-    @include size-px(padding-top, 8);
-    @include size-px(padding-bottom, 8);
-    @include size-px(padding-left, 10);
-    @include size-px(padding-right, 10);
-
+    @include size(margin, 1px);
+    @include size(padding, 8px 10px);
     @include white-box;
 }
 
 .book-mini-box img.cover {
-        @include size-px(height, 193);
-        @include size-px(width, 139);
+        @include size(height, 193px);
+        @include size(width, 139px);
 }
 
 
 .cover-area {
     float: left;
-    @include size-px(margin-right, 15);
-    @include size-px(margin-bottom, 5);
-    
+    @include size(margin-right, 15px);
+    @include size(margin-bottom, 5px);
 
     @media screen and (min-width: 32em) {
         position: absolute;
@@ -32,35 +25,35 @@
     }
 
     img.cover {
-        @include size-px(height, 193 / 2);
-        @include size-px(width, 139 / 2);
+        @include size(height, 193px / 2);
+        @include size(width, 139px / 2);
 
         @media screen and (min-width: 20em) {
-            @include size-px(height, 193);
-            @include size-px(width, 139);
+            @include size(height, 193px);
+            @include size(width, 139px);
         }
     }
 }
 
 .book-mini-box {
-    @include size-px(width, 161.5);
+    @include size(width, 161.5px);
     display: inline-block;
     vertical-align: top;
 
     a {
         @include inner-box;
-        @include size-px(height, 271);
-        @include size-px(margin, 1);
+        @include size(height, 271px);
+        @include size(margin, 1px);
         overflow: hidden;
     }
     img.cover {
-        @include size-px(margin-bottom, 18);
+        @include size(margin-bottom, 18px);
     }
     .desc {
         margin-left: 0;
     }
     .author {
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         @include mono;
         color: #6d7877;
         display: block;
@@ -69,7 +62,7 @@
         white-space: nowrap;
     }
     .title {
-        @include size-px(font-size, 14);
+        @include size(font-size, 14px);
         color: #242424;
     }
 }
@@ -95,13 +88,13 @@
     vertical-align: top;
 
     @media screen and (min-width: 32em) {
-        @include size-px(width, 487.5);
+        @include size(width, 487.5px);
     }
 
     .book-box-inner {
         position: relative;
         @include inner-box;
-        @include size-px(min-height, 197.5);
+        @include size(min-height, 197.5px);
     }
 }
 
@@ -111,78 +104,78 @@
     vertical-align: top;
 
     @media screen and (min-width: 62.5em) {
-        @include size-px(width, 975);
+        @include size(width, 975px);
     }
 
     .book-box-inner {
         position: relative;
-        @include size-px(min-height, 244);
+        @include size(min-height, 244px);
         @include inner-box;
-        @include size-px(margin-left, 0);
-        @include size-px(margin-right, 0);
+        @include size(margin-left, 0);
+        @include size(margin-right, 0);
 
         .book-left-column { /* FIXME */
-            @include size-px(max-width, 600);
+            @include size(max-width, 600px);
 
             @media screen and (min-width: 62.5em) {
                 float: left;
-                @include size-px(width, 536);
+                @include size(width, 536px);
             }
         }
 
         .license-icon {
             display: block;
-            @include size-px(margin-top, 5);
+            @include size(margin-top, 5px);
         }
 
         @media screen and (min-width: 62.5em) {
             .book-box-head,
             .tags,
             .book-box-tools {
-                @include size-px(width, 382);
+                @include size(width, 382px);
             }
         }
 
         #theme-list-wrapper {
-            @include size-px(margin-left, 154);
+            @include size(margin-left, 154px);
             margin-bottom: 0;
-            @include size-px(width, 300);
+            @include size(width, 300px);
 
             p {
-                @include size-px(margin-top, 10);
-                @include size-px(margin-bottom, 10);
+                @include size(margin-top, 10px);
+                @include size(margin-bottom, 10px);
             }
         }
 
         .right-column {
-            @include size-px(margin-top, 16);
+            @include size(margin-top, 16px);
 
             @media screen and (min-width: 62.5em) {
-                @include size-px(width, 415);
+                @include size(width, 415px);
                 // Eat the padding
-                @include size-px(margin-top, -8);
-                @include size-px(margin-right, -10);
+                @include size(margin-top, -8px);
+                @include size(margin-right, -10px);
             }
 
             .other-tools,
             .other-download {
                 float: left;
-                @include size-px(width, 145);
-                @include size-px(margin-top, 50);
-                @include size-px(margin-bottom, 0);
-                @include size-px(margin-left, 5);
-                @include size-px(margin-right, 0);
-                @include size-px(font-size, 11);
+                @include size(width, 145px);
+                @include size(margin-top, 50px);
+                @include size(margin-bottom, 0);
+                @include size(margin-left, 5px);
+                @include size(margin-right, 0);
+                @include size(font-size, 11px);
 
                 h2 {
                     margin: 0;
-                    @include size-px(font-size, 11);
+                    @include size(font-size, 11px);
                     @include mono;
                 }
             }
             .other-download {
-                @include size-px(margin-left, 15);
-                @include size-px(width, 220);
+                @include size(margin-left, 15px);
+                @include size(width, 220px);
             }
         }
     }
@@ -190,20 +183,20 @@
 
 
 .book-box-body {
-    margin-bottom: 1em;
+    @include size(margin-bottom, 10px);
     @media screen and (min-width: 32em) {
         margin-bottom: 0;
-        @include size-px(height, 170);
+        @include size(height, 170px);
     }
     position: relative;
 
     .book-box-head {
-        @include size-px(padding-top, 14);
-        @include size-px(margin-bottom, 10);
+        @include size(padding-top, 14px);
+        @include size(margin-bottom, 10px);
 
         @media screen and (min-width: 32em) {
-            @include size-px(min-height, 70);
-            @include size-px(width, 310);
+            @include size(min-height, 70px);
+            @include size(width, 310px);
             float: right;
         }
 
@@ -211,46 +204,46 @@
             color: black;
         }
         .author {
-            @include size-px(font-size, 11);
+            @include size(font-size, 11px);
             @include mono;
-            line-height: 1.2em;
-            max-height: 2.4em;
+            @include size(line-height, 13.2px);
+            @include size(max-height, 26.4px);
             overflow: hidden;
 
             @media screen and (min-width: 32em) {
-                @include size-px(max-width, 264);
+                @include size(max-width, 264px);
             }
         }
         .title {
-            @include size-px(font-size, 24);
+            @include size(font-size, 24px);
             line-height: 1.2em;
-            @include size-px(margin-top, 7.2);
-            margin-bottom: .5em;
+            @include size(margin-top, 7.2px);
+            @include size(margin-bottom, 12px);
 
             @media screen and (min-width: 32em) {
                 margin-bottom: 0;
-                height: 2.4em;
+                @include size(height, 57.6px);
                 overflow: hidden;
             }
         }
     }
 
     .tags {
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         line-height: 1.2em;
 
         @media screen and (min-width: 32em) {
-            @include size-px(width, 310);
+            @include size(width, 310px);
             float: right;
             clear: right;
-            max-height: 4.8em;
+            @include size(max-height, 57.6px);
             overflow: hidden;
         }
 
         .category {
             display: block;
-            margin-top: .5em;
-            margin-bottom: .5em;
+            @include size(margin-top, 6px);
+            @include size(margin-bottom, 6px);
 
             @media screen and (min-width: 32em) {
                 display: inline;
@@ -261,8 +254,8 @@
             }
 
             .book-box-tag {
-                @include size-px(margin-left, 4.4);
-                @include size-px(margin-right, 5.5);
+                @include size(margin-left, 4.4px);
+                @include size(margin-right, 5.5px);
             }
         }
     }
@@ -272,7 +265,7 @@
 
 
 .book-box-tools {
-    @include size-px(font-size, 11);
+    @include size(font-size, 11px);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -281,11 +274,11 @@
 
     @media screen and (min-width: 20em) {
         clear: none;
-        @include size-px(margin-left, 139 + 15);
+        @include size(margin-left, 139px + 15px);
     }
 
     @media screen and (min-width: 32em) {
-        @include size-px(width, 310);
+        @include size(width, 310px);
         float: right;
         clear: right;
     }
@@ -300,7 +293,7 @@
 
     .book-box-read {
         @media screen and (min-width: 32em) {
-            @include size-px(width, 126.5);
+            @include size(width, 126.5px);
         }
 
         a {
@@ -309,8 +302,8 @@
 
         a:before {
             content: url("/static/img/read.png");
-            @include size-px(font-size, 25);
-            @include size-px(margin-right, 3.71);
+            @include size(font-size, 25px);
+            @include size(margin-right, 3.71px);
             vertical-align: middle;
             font-weight: normal;
         }
@@ -320,7 +313,7 @@
         position: relative;
 
         @media screen and (min-width: 32em) {
-            @include size-px(width, 93.5);
+            @include size(width, 93.5px);
         }
 
         a {
@@ -336,8 +329,8 @@
 
                 &:before {
                     content: url("/static/img/download.png");
-                    @include size-px(font-size, 25);
-                    @include size-px(margin-right, 3.71);
+                    @include size(font-size, 25px);
+                    @include size(margin-right, 3.71px);
                     vertical-align: middle;
                     font-weight: normal;
                 }
@@ -345,35 +338,35 @@
         }
 
         .book-box-formats {
-            @include size-px(padding-left, 25);
+            @include size(padding-left, 25px);
 
             @media screen and (min-width: 32em) {
                 display: none;
                 position: absolute;
 
-                @include size-px(width, 180);
-                @include size-px(padding-top, 38);
-                @include size-px(padding-bottom, 9);
-                @include size-px(padding-left, 19);
-                @include size-px(padding-right, 19);
+                @include size(width, 180px);
+                @include size(padding-top, 38px);
+                @include size(padding-bottom, 9px);
+                @include size(padding-left, 19px);
+                @include size(padding-right, 19px);
 
                 @include white-box;
 
                 z-index: 100;
 
-                @include size-px(top, -16);
-                @include size-px(left, -19);
+                @include size(top, -16px);
+                @include size(left, -19px);
             }
 
             span {
                 display: block;
-                @include size-px(margin-top, 16);
+                @include size(margin-top, 16px);
 
                 @media screen and (min-width: 32em) {
-                    @include size-px(margin-top, 0);
+                    @include size(margin-top, 0);
 
                     &:first-child {
-                        @include size-px(margin-top, 16);
+                        @include size(margin-top, 16px);
                     }
                 }
             }
@@ -387,13 +380,13 @@
 
     .book-box-audiobook {
         @media screen and (min-width: 32em) {
-            @include size-px(width, 77);
+            @include size(width, 77px);
         }
 
         a:before {
             content: url("/static/img/listen.png");
-            @include size-px(font-size, 25);
-            @include size-px(margin-right, 3.71);
+            @include size(font-size, 25px);
+            @include size(margin-right, 3.71px);
             vertical-align: middle;
             font-weight: normal;
         }
@@ -405,8 +398,8 @@
 
 
 .star {
-    @include size-px(font-size, 22.5);
-    @include size-px(margin-right, 11.25);
+    @include size(font-size, 22.5px);
+    @include size(margin-right, 11.25px);
     position: absolute;
     right: 0;
 
@@ -439,17 +432,17 @@
 
 #book-detail .see-also {
     h1 {
-        @include size-px(height, 32);
+        @include size(height, 32px);
         margin: 0;
-        @include size-px(padding-top, 19);
-        @include size-px(padding-left, 10);
+        @include size(padding-top, 19px);
+        @include size(padding-left, 10px);
 
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
         @include mono;
         font-weight: normal;
 
         @media screen and (min-width: 33em) {
-            @include size-px(padding-left, 19);
+            @include size(padding-left, 19px);
         }
     }
 }

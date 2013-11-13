@@ -1,5 +1,3 @@
-@import "tools";
-
 $header_bg: #191919;
 
 
@@ -13,7 +11,7 @@ $header_bg: #191919;
         z-index: -1;
         position: absolute;
         top: 0;
-        @include size-px(bottom, 45);
+        @include size(bottom, 45px);
         left: 0;
         width: 100%;
         background-color: $header_bg;
@@ -35,14 +33,14 @@ $header_bg: #191919;
 
 
 header#main {
-    @include size-px(line-height, 20); /* Make links easier to click when wrapped. */
+    @include size(line-height, 20px); /* Make links easier to click when wrapped. */
     background-color: $header_bg;
     color: #bbb;
 
     @media screen and (min-width: 62.5em) {
         position: relative;
-        @include size-px(height, 94);
-        @include size-px(width, 975);
+        @include size(height, 94px);
+        @include size(width, 975px);
         margin: auto;
     }
 
@@ -52,8 +50,8 @@ header#main {
 
     #logo {
         display: block;
-        @include size-px(height, 94);
-        @include size-px(width, 94);
+        @include size(height, 94px);
+        @include size(width, 94px);
 
         @media screen and (min-width: 24em) {
             float: left;
@@ -66,44 +64,44 @@ header#main {
 
     #tagline {
         margin-top: 0;
-        @include size-px(margin-left, 5);
-        @include size-px(margin-right, 5);
+        @include size(margin-left, 5px);
+        @include size(margin-right, 5px);
         padding-top: 0;
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
 
         @media screen and (min-width: 24em) {
-            @include size-px(padding-top, 6);
-            @include size-px(font-size, 13);
+            @include size(padding-top, 6px);
+            @include size(font-size, 13px);
             text-align: right;
         }
 
         @media screen and (min-width: 62.5em) {
             position: absolute;
-            @include size-px(top, 10);
-            @include size-px(left, 255);
-            @include size-px(margin-left, 0);
+            @include size(top, 10px);
+            @include size(left, 255px);
+            @include size(margin-left, 0px);
         }
     }
 
     #user-info {
         margin-top: 0;
-        @include size-px(margin-left, 5);
-        @include size-px(margin-right, 5);
+        @include size(margin-left, 5px);
+        @include size(margin-right, 5px);
         padding-top: 0;
         @include mono;
-        @include size-px(font-size, 10);
+        @include size(font-size, 10px);
         position: relative;
 
         @media screen and (min-width: 24em) {
-            @include size-px(padding-top, 15);
+            @include size(padding-top, 15px);
             text-align: right;
         }
         @media screen and (min-width: 62.5em) {
             position: absolute;
             top: 0;
             right: 0;
-            @include size-px(margin-left, 0);
-            @include size-px(margin-right, 0);
+            @include size(margin-left, 0);
+            @include size(margin-right, 0);
         }
 
         /* We want submenu on far left on small screens. */
@@ -137,22 +135,22 @@ header#main {
     form#search-area {
         position: relative;
         clear: both;
-        @include size-px(height, 45);
+        @include size(height, 45px);
         background: #444444;
         color: white;
 
         @media screen and (min-width: 62.5em) {
             position: absolute;
-            @include size-px(top, 49);
-            @include size-px(left, 240);
-            @include size-px(right, 0);
+            @include size(top, 49px);
+            @include size(left, 240px);
+            @include size(right, 0);
         }
 
         #search-field {
             position: absolute;
-            @include size-px(top, 5);
-            @include size-px(left, 5);
-            @include size-px(right, 113);
+            @include size(top, 5px);
+            @include size(left, 5px);
+            @include size(right, 113px);
 
             label {
                 @include hidden-label;
@@ -160,18 +158,18 @@ header#main {
             input#search {
                 z-index: 200;
                 position: relative;
-                @include size-px(height, 33);
+                @include size(height, 33px);
                 width: 100%;
                 padding: 0;
-                @include size-px(padding-left, 13);
-                @include size-px(line-height, 32.5);
+                @include size(padding-left, 13px);
+                @include size(line-height, 32.5px);
 
                 border: none;
-                @include size-px(border-radius, 5);
-                box-shadow: 0 0 0.5em #444444 inset;
+                @include size(border-radius, 5px);
+                @include box-shadow(0 0 6.5px #444444 inset);
 
                 font-family: Georgia;
-                @include size-px(font-size, 13);
+                @include size(font-size, 13px);
                 background-color: white;
                 color: black;
 
@@ -201,15 +199,15 @@ header#main {
             position: absolute;
             top: 0;
             right: 0;
-            @include size-px(height, 45);
-            @include size-px(width, 94);
+            @include size(height, 45px);
+            @include size(width, 94px);
             margin: 0;
             padding: 0;
 
             border: none;
 
             @include mono;
-            @include size-px(font-size, 11);
+            @include size(font-size, 11px);
             background: #018189;
             color: white;
         }

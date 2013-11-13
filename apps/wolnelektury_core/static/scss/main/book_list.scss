@@ -1,19 +1,17 @@
 /* listing of all books */
 
-@import "tools";
-
 #book-a-list {
     #book-list-nav {
-        @include size-px(border-width, 0);
-        @include size-px(border-bottom-width, 1);
+        @include size(border-width, 0);
+        @include size(border-bottom-width, 1px);
         border-style: solid;
         border-color: #CFCFCF;
-        @include size-px(padding, 9.75);
+        @include size(padding, 9.75px);
         line-height: 2em;
 
         @media screen and (min-width: 30em) {
-            @include size-px(border-bottom-width, 0);
-            @include size-px(border-left-width, 1);
+            @include size(border-bottom-width, 0px);
+            @include size(border-left-width, 1px);
             float: right;
             width: 50%;
         }
@@ -26,7 +24,7 @@
             cursor: pointer;
 
             &:after {
-                @include size-px(padding-left, 10);
+                @include size(padding-left, 10px);
                 content: url("/static/img/arrow-gray.png");
                 vertical-align: top;
             }
@@ -51,7 +49,7 @@
 
         ul {
             list-style-type: none;
-            @include size-px(margin, 5);
+            @include size(margin, 5px);
             padding: 0;
         }
         .book-list-show-index {
@@ -60,24 +58,21 @@
     }
 
     #book-list {
-        @include size-px(padding-left, 5);
+        @include size(padding-left, 5px);
         line-height: 2em;
 
         @media screen and (min-width: 62.5em) {
-            @include size-px(padding-left, 50);
+            @include size(padding-left, 50px);
             line-height: 1.3em;
         }
 
         ol {
-            @include size-px(padding-left, 13);
-            @include size-px(margin-top, 4);
-            @include size-px(margin-bottom, 15.6);
-            @include size-px(margin-left, 0);
-            @include size-px(margin-right, 0);
+            @include size(padding-left, 13px);
+            @include size(margin, 4px 0 15.6px 0);
             list-style: none;
         }
         h2 {
-            @include size-px(font-size, 13);
+            @include size(font-size, 13px);
             margin: 0;
             a {
                 color: black;
@@ -88,15 +83,10 @@
     #book-list-up {
         display: block;
         position: fixed;
-        @include size-px(bottom, 50);
-        @include size-px(right, 50);
-        @include size-px(border-left-width, 1);
-        border-left-style: solid;
-        border-left-color: #CFCFCF;
-        @include size-px(padding-top, 20);
-        @include size-px(padding-bottom, 20);
-        @include size-px(padding-left, 10);
-        @include size-px(padding-right, 10);
+        @include size(bottom, 50px);
+        @include size(right, 50px);
+        @include size(border-left, solid 1px #CFCFCF);
+        @include size(padding, 20px 10px);
         background-color: white;    
     }
 }

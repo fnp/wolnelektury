@@ -1,0 +1,70 @@
+$default-em-size: 16px;
+
+@mixin size($name, $args) {
+    $rems: snowflake;
+    @each $val in $args {
+        $remval: $val;
+        @if type-of($val) == number {
+            @if unit($val) == "px" {
+                $remval: $val / $default-em-size * 1rem;
+            }
+        }
+        // Workaround for PySCSS issue with appending to empty lists.
+        @if $rems == snowflake {
+            $rems: $remval;
+        }
+        @else {
+            $rems: append($rems, $remval);
+        }
+    }
+    #{$name}: $args;
+    #{$name}: $rems;
+}
+
+@mixin min-screen($size) {
+    @if unit($size) == "px" {
+        $size: $size / $default-em-size * 1em;
+    }
+
+    @media screen and (min-width: $size) {
+        @content;
+    }
+}
+
+
+@mixin vendors($name, $args) {
+    @include size(-moz + $name, $args);
+    @include size(-webkit + $name, $args);
+    @include size(-moz + $name, $args);
+}
+
+@mixin vendors($names, $args) {
+    @each $name in $names {
+        @include size($name, $args);
+    }
+}
+
+@mixin box-shadow($args) {
+    @include vendors(
+        -moz-box-shadow
+        -webkit-box-shadow
+        box-shadow,
+            $args);
+}
+
+@mixin mono {
+    font-family: "Andale Mono", "Lucida Sans Typewriter", "Courier New";
+}
+
+@mixin hidden-label {
+    display: block;
+    @include size(width, 1px);
+    @include size(height, 1px);
+    overflow: hidden;
+}
+
+@mixin white-box {
+    @include size(border, 1px solid #ddd);
+    background: #fff;
+    @include box-shadow(2px 2px 2px #ddd);
+}

@@ -1,22 +1,17 @@
-@import "tools";
-
 .cite {
     display: block;
     color: black;
     background: white;
-    @include size-px(padding-top, 30);
-    @include size-px(padding-bottom, 1);
-    @include size-px(padding-left, 80);
-    @include size-px(padding-right, 20);
+    @include size(padding, 30px 20px 1px 80px);
 
     .vip {
         margin: 0;
         color: #575C63;
-        @include size-px(font-size, 11);
+        @include size(font-size, 11px);
     }
 
     .cite-body {
-        @include size-px(font-size, 18);
+        @include size(font-size, 18px);
         line-height: 1.3em;
     }
 
@@ -33,8 +28,8 @@
     {
         color: #444;
         @include mono;
-        @include size-px(font-size, 11);
-        @include size-px(margin-top, 16);
+        @include size(font-size, 11px);
+        @include size(margin-top, 16px);
     }
 }
 
@@ -44,7 +39,7 @@
 .book-wide-box .cite {
     background-color: #f7f7f7;
     vertical-align: middle;
-    @include size-px(width, 395);
+    @include size(width, 395px);
     margin: 0;
-    @include size-px(padding, 10);
+    @include size(padding, 10px);
 }

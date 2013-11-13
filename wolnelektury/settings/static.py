@@ -22,18 +22,15 @@ PIPELINE_CSS = {
         'source_filenames': [
             'css/jquery.countdown.css', 
 
-            'css/main/*.scss',
-
             'sponsors/css/sponsors.css',
-            'funding/funding.scss',
-            'polls/polls.scss',
-
             'css/social/shelf_tags.css',
 
             'uni_form/uni-form.css',
             'uni_form/default.uni-form.css',
 
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
+
+            'scss/all.scss',
         ],
         'output_filename': 'css/compressed/main.css',
     },
