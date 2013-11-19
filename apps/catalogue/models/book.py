@@ -391,6 +391,10 @@ class Book(models.Model):
             for child in self.children.all():
                 child.parent_cover_changed()
 
+    def other_versions(self):
+        """Find other versions (i.e. in other languages) of the book."""
+        return type(self).objects.filter(common_slug=self.common_slug).exclude(pk=self.pk)
+
     def related_info(self):
         """Keeps info about related objects (tags, media) in cache field."""
         if self._related_info is not None:

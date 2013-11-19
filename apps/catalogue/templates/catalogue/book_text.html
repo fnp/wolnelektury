@@ -29,6 +29,9 @@
                     <li><a class="open-player" target="_blank" href="{% url "book_player" book.slug %}">
                         {% trans "Listen" %}</a></li>
                 {% endif %}
+                {% if book.other_versions.exists %}
+                    <li><a class="menu" href="#other-versions">Inne wersje</a></li>
+                {% endif %}
             </ul>
         </div>
         <div id="info">
@@ -58,10 +61,31 @@
             {% endif %}
             </ul>
         </div>
+        {% if book.other_versions.exists %}
+        <div id="other-versions">
+            <ul>
+            {% for version in book.other_versions %}
+                <li>{{ version.pretty_title }}:
+                    <br/><a href="#" class="display-other" data-other="{{ version.html_file.url }}">porównaj</a>,
+                    <a href="{{ version.get_absolute_url }}">przejdź</a>.
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
         <div id="header">
             <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" /></a>
         </div>
-        {{ book.html_file.read|safe }}
+
+        <div style="position:relative; margin: 4.5em 0">
+            {{ book.html_file.read|safe }}
+            <div id="other-text"
+                style="display:none;position: absolute; top: 0; left: 780px; border-left: 1px solid #ddd">
+                <a id="other-text-close" href="#" style="position: absolute; top: -1.5em;">(zamknij)</a>
+                <div id="other-text-waiter">wait...</div>
+                <div id="other-text-body" style="display: none;"></div>
+            </div>
+        </div>
         {{ piwik_tag|safe }}
     </body>
 </html>

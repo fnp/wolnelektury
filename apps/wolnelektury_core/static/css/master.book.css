@@ -11,8 +11,12 @@ a {
 }
 
 #book-text {
-    margin: 3em;
+    margin: 0 3em;
     max-width: 36em;
+}
+
+#other-text #book-text {
+    width: 36em;
 }
 
 /* ================================== */
@@ -89,7 +93,7 @@ img {
 }
 
 
-#toc, #themes, #nota_red, #info {
+#toc, #themes, #nota_red, #info, #other-versions {
     position: fixed;
     left: 0em;
     top: 1.5em;
@@ -163,7 +167,7 @@ img {
 /* =================================================== */
 h1 {
     font-size: 3em;
-    margin: 1.5em 0;
+    margin: 0 0 1.5em 0;
     text-align: center;
     line-height: 1.5em;
     font-weight: bold;
