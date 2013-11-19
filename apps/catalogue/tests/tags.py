@@ -225,7 +225,7 @@ class TestIdenticalTag(WLTestCase):
         related_info = book.related_info()
         related_themes = book.related_themes()
         for category in 'author', 'kind', 'genre', 'epoch':
-            self.assertTrue('tag' in [tag[1] for tag in related_info['tags'][category]],
+            self.assertTrue('tag' in [tag['slug'] for tag in related_info['tags'][category]],
                             'missing related tag for %s' % category)
         self.assertTrue('tag' in [tag.slug for tag in related_themes])
 
@@ -271,9 +271,9 @@ class BookTagsTests(WLTestCase):
         related_themes = book.related_themes()
 
         self.assertEqual(related_info['tags']['author'],
-                         [('Common Man', 'common-man')])
+                         [{'pl': 'Common Man', 'slug': 'common-man'}])
         self.assertEqual(related_info['tags']['kind'],
-                         [('Kind', 'kind')])
+                         [{'pl': 'Kind', 'slug': 'kind'}])
         self.assertEqual([(tag.name, tag.count) for tag in related_themes],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 

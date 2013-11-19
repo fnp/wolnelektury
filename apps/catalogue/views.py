@@ -17,7 +17,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.datastructures import SortedDict
 from django.utils.http import urlquote_plus
 from django.utils import translation
-from django.utils.translation import ugettext as _, ugettext_lazy
+from django.utils.translation import get_language, ugettext as _, ugettext_lazy
 from django.views.decorators.vary import vary_on_headers
 
 from ajaxable.utils import JSONResponse, AjaxableFormView
@@ -36,7 +36,7 @@ permanent_cache = get_cache('permanent')
 
 @vary_on_headers('X-Requested-With')
 def catalogue(request):
-    cache_key='catalogue.catalogue'
+    cache_key='catalogue.catalogue/' + get_language()
     output = permanent_cache.get(cache_key)
     if output is None:
         tags = models.Tag.objects.exclude(
@@ -70,6 +70,7 @@ def book_list(request, filter=None, get_filter=None,
         context=None,
         ):
     """ generates a listing of all books, optionally filtered with a test function """
+    cache_key = "%s/%s" % (cache_key, get_language())
     cached = permanent_cache.get(cache_key)
     if cached is not None:
         rendered_nav, rendered_book_list = cached

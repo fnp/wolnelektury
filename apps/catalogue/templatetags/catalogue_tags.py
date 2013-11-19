@@ -14,7 +14,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext as _
 
-from catalogue.utils import split_tags
+from catalogue.utils import split_tags, related_tag_name as _related_tag_name
 from catalogue.models import Book, BookMedia, Fragment, Tag
 from catalogue.constants import LICENSES
 
@@ -350,8 +350,8 @@ def book_short(context, book):
 
 @register.inclusion_tag('catalogue/book_mini_box.html')
 def book_mini(book):
-    author_str = ", ".join(name
-        for name, url in book.related_info()['tags']['author'])
+    author_str = ", ".join(related_tag_name(tag)
+        for tag in book.related_info()['tags']['author'])
     return {
         'book': book,
         'author_str': author_str,
@@ -463,3 +463,8 @@ def license_icon(license_url):
         "icon": "img/licenses/%s.png" % known['icon'],
         "license_description": known['description'],
     }
+
+
+@register.simple_tag
+def related_tag_name(tag, lang=None):
+    return _related_tag_name(tag, lang)
