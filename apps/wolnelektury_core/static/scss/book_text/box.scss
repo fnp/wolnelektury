@@ -1,0 +1,27 @@
+/* TODO:
+There should be a JS-less way of seeing at least some of
+the hidden boxes (TOC and Themes).
+*/
+
+.box, #toc, #themes, #nota_red {
+    display: none;
+
+    position: fixed;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    max-width: 380px;
+    padding: 10px;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 100000;
+
+    color: black;
+    background: white;
+    opacity: .9;
+
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #191919;
+}

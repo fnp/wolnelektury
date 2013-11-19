@@ -1,0 +1,78 @@
+/* Button for showing menu */
+#menu-toggle-on {
+    width: 20px;
+    height: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #191919;
+    color: white;
+    text-align: center;
+    z-index: 500;
+
+    @include min-screen(240px) {
+        width: 30px;
+        height: 30px;
+    }
+
+    @include min-screen(320px) {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+#menu {
+    display: none;
+    z-index: 1000;
+
+    width: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: #191919;
+    height: 100%;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+
+            a {
+                padding: 10px 0;
+                color: white;
+                display: block;
+                text-decoration: none;
+
+                &.active {
+                    background: white;
+                    color: black;
+                }
+
+                .label {
+                    display: block;
+                    font-size: 12px;
+                }
+            }
+        }
+
+    }
+}
+
+/* body class for showing menu */
+.menu-showed #menu {
+    display: block;
+}
+
+/* menu showing by default */
+@include min-screen(640px) {
+    #menu {
+        display: block;
+    }
+    /* body class for hiding menu */
+    .menu-hidden #menu {
+        display: none;
+    }
+}

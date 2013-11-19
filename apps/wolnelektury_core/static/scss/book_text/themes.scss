@@ -1,0 +1,101 @@
+nav #menu-themes {
+    display: none;
+}
+
+/* Add a missing header. */
+#themes:before {
+    content: "Motywy";
+}
+
+
+
+
+@mixin theme-hidden {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-right: -20px;
+    border: none;
+    padding: 0;
+
+    &:before {
+        content: "▲";
+        color: #ccc;
+        text-align:  center;
+        display: block;
+    }
+
+    @include min-screen(240px) {
+        width: 30px;
+        margin-right: -30px;
+        &:before {
+            font-size: 2em;
+        }
+    }
+
+    @include min-screen(320px) {
+        width: 44px;
+        margin-right: -44px;
+        &:before {
+            font-size: 3em;
+        }
+    }
+
+    &.showing {
+        @include theme-showing;
+    }
+
+}
+
+@mixin theme-showing {
+    @include size(width, 120px);
+    height: auto;
+    overflow: visible;
+    margin-left: 30px;
+
+    border-left: 1px solid #DDDDDD;
+    color: #777;
+    padding: 0 0 0 8px;
+
+    &:before {
+        display: none;
+    }
+}
+
+.theme-begin {
+    @include theme-hidden;
+
+    position: relative;
+    float: right;
+    margin-bottom: 8px;
+    clear: both;
+    line-height: 1.5em;
+    text-align: left;
+    z-index: 60000;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+
+    @include min-screen(600px) {
+        @include theme-showing;
+        margin-right: -160px;
+    }
+
+    &.showing {
+        @include theme-showing;
+    }
+}
+
+
+@include min-screen(600px) {
+    .always-hide-themes {
+        .theme-begin {
+            @include theme-hidden;
+        }
+    }
+}

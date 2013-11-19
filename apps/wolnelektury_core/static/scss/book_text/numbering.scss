@@ -1,0 +1,64 @@
+@mixin hide-line-numbers {
+    float: left;
+    margin-left: -20px;
+
+    width: 20px;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    color: white;
+    text-align: right;
+
+    &:hover, &:active {
+        color: #ccc;
+        background-color: #CCC;
+    }
+
+    &:before {
+        content: "#";
+        display: block;
+        float: left;
+        width: 9px;
+        height: 100%;
+        overflow: hidden;
+        border-right: 1px solid #ccc;
+    }
+
+    @include min-screen(240px) {
+        width: 30px;
+        margin-left: -30px;
+
+        &:before {
+            width: 14px;
+        }
+    }
+}
+
+
+.anchor {
+    @include hide-line-numbers;
+
+    @include min-screen(320px) {
+        /* Show line numbers. */
+        margin-left: -50px;
+        width: 44px;
+        height: auto;
+        padding: 2px;
+        text-align: center;
+        color: #ccc;
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+@include min-screen(320px) {
+    .always-hide-line-numbers {
+        /* Cancel showing line numbers. */
+        .anchor {
+            @include hide-line-numbers;
+        }
+    }
+}

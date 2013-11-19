@@ -1,0 +1,35 @@
+@mixin switch-on {
+    background: #aaa;
+}
+@mixin switch-off {
+    background: none;
+}
+.settings-switch {
+    display: block;
+    padding: .5em;
+    margin: .5em;
+    border: 1px solid #aaa;
+    border-radius: 1em;
+}
+
+nav #menu-settings {
+    display: none;
+}
+
+#settings-annotations {@include switch-on;}
+.no-annotations {
+    #settings-annotations {@include switch-off;}
+    .annotation {display: none;}
+}
+
+#settings-themes {@include switch-on;}
+.always-hide-themes {
+    #settings-themes {@include switch-off;}
+}
+
+#settings-line-numbers {@include switch-on;}
+.always-hide-line-numbers {
+    #settings-line-numbers {@include switch-off;}
+}
+
+

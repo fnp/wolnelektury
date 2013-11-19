@@ -1,0 +1,84 @@
+/*
+ * #big-pane
+ * Everything besides the menu.
+ */
+@include min-screen(640px) {
+    #big-pane {
+        margin-left: 80px;
+    }
+    .menu-hidden {
+        #big-pane {
+            margin-left: 0;
+        }
+    }
+}
+
+
+
+/*
+ * #main-text
+ *
+ * This is where the text lives
+ * together with line numbers, themes and stuff.
+ */
+
+@mixin left-without-numbers {
+    padding-left: 20px;
+    @include min-screen(240px) {
+        padding-left: 30px;
+    }
+}
+
+@mixin right-without-themes {
+    padding-right: 20px;
+    @include min-screen(240px) {
+        padding-right: 30px;
+    }
+    @include min-screen(320px) {
+        padding-right: 44px;
+    }
+}
+
+#main-text {
+    @include left-without-numbers;
+    @include right-without-themes;
+
+    /* make room for line numbers */
+    @include min-screen(320px) {
+        padding-left: 50px;
+    }
+
+    /* make room for themes */
+    @include min-screen(600px) {
+        padding-right: 160px;
+    }
+}
+
+.always-hide-line-numbers {
+    /* Cancel making room for line numbers. */
+    #main-text {
+        @include left-without-numbers;
+    }
+}
+
+.always-hide-themes {
+    /* Cancel making room for themes. */
+    #main-text {
+        @include right-without-themes;
+    }
+}
+
+
+
+
+
+
+
+#book-text {
+    max-width: 600px;
+    margin: 20px auto;
+    
+    h1 {
+        margin-top: 0px;
+    }
+}

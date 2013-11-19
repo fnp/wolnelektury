@@ -1,0 +1,35 @@
+nav #menu-other {
+    display: none;
+}
+
+
+#other-text {
+    display: none;
+}
+
+#main-pane.with-other-text {
+
+    #main-text {
+        display: table-cell;
+        padding-left: 40px;
+        @include min-screen(1px) {
+            width: 300px;
+        }
+
+        @include min-screen(1000px) {
+            width: 400px;
+        }
+    }
+
+    #other-text {
+        display: table-cell;
+        padding-left: 40px;
+        @include min-screen(1px) {
+            width: 300px;
+        }
+
+        @include min-screen(1000px) {
+            width: 400px;
+        }
+    }
+}

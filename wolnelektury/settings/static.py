@@ -30,7 +30,7 @@ PIPELINE_CSS = {
 
             'css/ui-lightness/jquery-ui-1.8.16.custom.css',
 
-            'scss/all.scss',
+            'scss/main.scss',
         ],
         'output_filename': 'css/compressed/main.css',
     },
@@ -39,6 +39,13 @@ PIPELINE_CSS = {
             'css/master.book.css',
         ],
         'output_filename': 'css/compressed/book.css',
+    },
+    'book_text': {
+        'source_filenames': [
+            'scss/book_text.scss',
+            'css/new.book.css',
+        ],
+        'output_filename': 'css/compressed/book_text.css',
     },
     'player': {
         'source_filenames': [
@@ -97,6 +104,12 @@ PIPELINE_JS = {
         ],
         'output_filename': 'js/book.min.js',
     },
+    'book_text': {
+        'source_filenames': [
+            'js/book_text/*.js',
+        ],
+        'output_filename': 'js/book_text.js',
+    },
     'book_ie': {
         'source_filenames': ('js/ierange-m2.js',),
         'output_filename': 'js/book_ie.min.js',
@@ -109,7 +122,12 @@ PIPELINE_CSS_COMPRESSOR = None
 PIPELINE_JS_COMPRESSOR = None
 
 PIPELINE_COMPILERS = (
-    'pyscss_compiler.PySCSSCompiler',
+    'pipeline.compilers.sass.SASSCompiler',
+    # We could probably use PySCSS instead,
+    # but they have some serious problems, like:
+    # https://github.com/Kronuz/pyScss/issues/166 (empty list syntax)
+    # https://github.com/Kronuz/pyScss/issues/258 (bad @media order)
+    #'pyscss_compiler.PySCSSCompiler',
 )
-PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
-PIPELINE_PYSCSS_ARGUMENTS = ''
+#PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
+#PIPELINE_PYSCSS_ARGUMENTS = ''
