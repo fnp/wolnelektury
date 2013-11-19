@@ -7,6 +7,7 @@ from django.core.files import File
 from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
+from catalogue.constants import LANGUAGES_3TO2
 from catalogue.utils import remove_zip, truncate_html_words
 from celery.task import Task, task
 from waiter.utils import clear_cache
@@ -140,6 +141,11 @@ class BuildHtml(BuildEbook):
         html_output = self.transform(
                         book.wldocument(parse_dublincore=False),
                         fieldfile)
+        lang = book.language
+        lang = LANGUAGES_3TO2.get(lang, lang)
+        if lang not in [ln[0] for ln in settings.LANGUAGES]:
+            lang = None
+
         if html_output:
             fieldfile.save(None, ContentFile(html_output.get_string()),
                     save=False)
@@ -167,14 +173,26 @@ class BuildHtml(BuildEbook):
                 for theme_name in theme_names:
                     if not theme_name:
                         continue
-                    tag, created = Tag.objects.get_or_create(
-                                        slug=slughifi(theme_name),
-                                        category='theme')
-                    if created:
-                        tag.name = theme_name
-                        tag.sort_key = sortify(theme_name.lower())
-                        tag.save()
-                    themes.append(tag)
+                    if lang == settings.LANGUAGE_CODE:
+                        # Allow creating themes if book in default language.
+                        tag, created = Tag.objects.get_or_create(
+                                            slug=slughifi(theme_name),
+                                            category='theme')
+                        if created:
+                            tag.name = theme_name
+                            setattr(tag, "name_%s" % lang, theme_name)
+                            tag.sort_key = sortify(theme_name.lower())
+                            tag.save()
+                        themes.append(tag)
+                    elif lang is not None:
+                        # Don't create unknown themes in non-default languages.
+                        try:
+                            tag = Tag.objects.get(category='theme',
+                                    **{"name_%s" % lang: theme_name})
+                        except Tag.DoesNotExist:
+                            pass
+                        else:
+                            themes.append(tag)
                 if not themes:
                     continue
 

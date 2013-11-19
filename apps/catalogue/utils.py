@@ -317,7 +317,7 @@ This can sometimes occupy lots of memory, so trim it here a bit.
 
 def related_tag_name(tag_info, language=None):
     return tag_info.get("name_%s" % (language or get_language()),
-        tag_info.get("name_%s" % settings.LANGUAGE_CODE))
+        tag_info.get("name_%s" % settings.LANGUAGE_CODE, ""))
 
 
 def delete_from_cache_by_language(cache, key_template):

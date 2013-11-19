@@ -271,9 +271,9 @@ class BookTagsTests(WLTestCase):
         related_themes = book.related_themes()
 
         self.assertEqual(related_info['tags']['author'],
-                         [{'pl': 'Common Man', 'slug': 'common-man'}])
+                         [{'name_pl': 'Common Man', 'slug': 'common-man'}])
         self.assertEqual(related_info['tags']['kind'],
-                         [{'pl': 'Kind', 'slug': 'kind'}])
+                         [{'name_pl': 'Kind', 'slug': 'kind'}])
         self.assertEqual([(tag.name, tag.count) for tag in related_themes],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 
