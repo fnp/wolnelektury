@@ -9,7 +9,7 @@ django-pipeline>=1.2.24,<1.3
 django-pagination>=1.0
 django-maintenancemode>=0.10
 django-piston>=0.2.2.1,<0.2.3
--e git+git://github.com/bradjasper/django-jsonfield.git@e67ec8c3652e61d8b47cc8db012a63f5ad39323d#egg=django-jsonfield
+jsonfield>=0.9.20
 django-picklefield
 
 #django-allauth<0.10 with migration fix

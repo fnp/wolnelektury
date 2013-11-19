@@ -36,7 +36,7 @@ class Book(models.Model):
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info    = jsonfield.JSONField(_('extra information'), default='{}')
+    extra_info    = jsonfield.JSONField(_('extra information'), default={})
     gazeta_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
