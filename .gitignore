@@ -11,7 +11,7 @@ dev.sqlite
 /static
 
 # SCSS output
-scss/*.css
+apps/wolnelektury_core/static/scss/*.css
 
 # Python garbage
 *.pyc
