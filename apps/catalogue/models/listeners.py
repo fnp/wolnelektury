@@ -8,6 +8,7 @@ from django.db.models.signals import post_save, pre_delete, post_delete
 import django.dispatch
 from catalogue.models import Tag, BookMedia, Book, Fragment, Collection
 from catalogue import tasks
+from catalogue.utils import delete_from_cache_by_language
 from newtagging.models import tags_updated
 
 
@@ -43,8 +44,8 @@ pre_delete.connect(_pre_delete_handler)
 def _post_delete_handler(sender, instance, **kwargs):
     """ refresh Book on BookMedia delete """
     if sender == Collection:
-        permanent_cache.delete('catalogue.collection:%s' % instance.slug)
-        permanent_cache.delete('catalogue.catalogue')
+        delete_from_cache_by_language(permanent_cache, 'catalogue.collection:%s/%%s' % instance.slug)
+        delete_from_cache_by_language(permanent_cache, 'catalogue.catalogue/%s')
 post_delete.connect(_post_delete_handler)
 
 
@@ -52,17 +53,17 @@ def _post_save_handler(sender, instance, **kwargs):
     """ refresh all the short_html stuff on BookMedia update """
     if sender == BookMedia:
         instance.book.save()
-        permanent_cache.delete_many([
-            'catalogue.audiobook_list', 'catalogue.daisy_list'])
+        delete_from_cache_by_language(permanent_cache, 'catalogue.audiobook_list/%s')
+        delete_from_cache_by_language(permanent_cache, 'catalogue.daisy_list/%s')
     elif sender == Collection:
-        permanent_cache.delete('catalogue.collection:%s' % instance.slug)
-        permanent_cache.delete('catalogue.catalogue')
+        delete_from_cache_by_language(permanent_cache, 'catalogue.collection:%s/%%s' % instance.slug)
+        delete_from_cache_by_language(permanent_cache, 'catalogue.catalogue/%s')
 post_save.connect(_post_save_handler)
 
 
 def post_publish(sender, **kwargs):
-    permanent_cache.delete('catalogue.book_list')
-    permanent_cache.delete('catalogue.catalogue')
+    delete_from_cache_by_language(permanent_cache, 'catalogue.book_list/%s')
+    delete_from_cache_by_language(permanent_cache, 'catalogue.catalogue/%s')
 Book.published.connect(post_publish)
 
 

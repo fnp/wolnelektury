@@ -18,6 +18,7 @@ from api.helpers import timestamp
 from api.models import Deleted
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
+from catalogue.utils import related_tag_name
 from picture.models import Picture
 from picture.forms import PictureImportForm
 
@@ -244,7 +245,7 @@ def _tags_getter(category):
 def _tag_getter(category):
     @classmethod
     def get_tag(cls, book):
-        return ", ".join(t[0] for t in book.related_info()['tags'].get(category, []))
+        return ", ".join(related_tag_name(t) for t in book.related_info()['tags'].get(category, []))
     return get_tag
 for plural, singular in category_singular.items():
     setattr(BookDetails, plural, _tags_getter(singular))

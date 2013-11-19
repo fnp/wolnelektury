@@ -21,3 +21,18 @@ EBOOK_FORMATS_WITH_CHILDREN = ['pdf', 'epub', 'mobi']
 EBOOK_FORMATS_WITH_COVERS = ['pdf', 'epub', 'mobi']
 
 EBOOK_FORMATS = EBOOK_FORMATS_WITHOUT_CHILDREN + EBOOK_FORMATS_WITH_CHILDREN
+
+LANGUAGES_3TO2 = {
+    'deu': 'de',
+    'ger': 'de',
+    'eng': 'en',
+    'spa': 'es',
+    'fra': 'fr',
+    'fre': 'fr',
+    'ita': 'it',
+    'jpn': 'jp',
+    'lit': 'lt',
+    'pol': 'pl',
+    'rus': 'ru',
+    'ukr': 'uk',
+}

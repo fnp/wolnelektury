@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import re
-from django.conf import settings as settings
+from django.conf import settings
 from django.core.cache import get_cache
 from django.db import models
 from django.db.models import permalink
@@ -14,7 +14,7 @@ import jsonfield
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, split_tags, book_upload_path
+from catalogue.utils import create_zip, split_tags, book_upload_path, related_tag_name
 from catalogue import app_settings
 from catalogue import tasks
 from newtagging import managers
@@ -36,7 +36,7 @@ class Book(models.Model):
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info    = jsonfield.JSONField(_('extra information'), default='{}')
+    extra_info    = jsonfield.JSONField(_('extra information'), default={})
     gazeta_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
     # files generated during publication
@@ -402,8 +402,15 @@ class Book(models.Model):
                     'author', 'kind', 'genre', 'epoch'))
             tags = split_tags(tags)
             for category in tags:
-                rel['tags'][category] = [
-                        (t.name, t.slug) for t in tags[category]]
+                cat = []
+                for tag in tags[category]:
+                    tag_info = {'slug': tag.slug}
+                    for lc, ln in settings.LANGUAGES:
+                        tag_name = getattr(tag, "name_%s" % lc)
+                        if tag_name:
+                            tag_info["name_%s" % lc] = tag_name
+                    cat.append(tag_info)
+                rel['tags'][category] = cat
 
             for media_format in BookMedia.formats:
                 rel['media'][media_format] = self.has_media(media_format)
@@ -487,8 +494,8 @@ class Book(models.Model):
     def pretty_title(self, html_links=False):
         book = self
         rel_info = book.related_info()
-        names = [(name, Tag.create_url('author', slug))
-                    for name, slug in rel_info['tags']['author']]
+        names = [(related_tag_name(tag), Tag.create_url('author', tag['slug']))
+                    for tag in rel_info['tags'].get('author', ())]
         if 'parents' in rel_info:
             books = [(name, Book.create_url(slug))
                         for name, slug in rel_info['parents']]

@@ -28,7 +28,7 @@
 
     <section id="main-last">
         <h1><a href="{% url 'recent_list' %}">{% trans "Recent publications" %}</a></h1>
-        {% cache 60 last-published-on-main %}
+        {% cache 60 last-published-on-main LANGUAGE_CODE %}
             {% for book in last_published %}
                 {% book_mini book %}
             {% endfor %}

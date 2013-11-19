@@ -14,6 +14,7 @@ from django.http import HttpResponse
 from django.core.files.uploadedfile import UploadedFile
 from django.core.files.storage import DefaultStorage
 from django.utils.encoding import force_unicode
+from django.utils.translation import get_language
 from django.conf import settings
 from os import mkdir, path, unlink
 from errno import EEXIST, ENOENT
@@ -312,4 +313,12 @@ This can sometimes occupy lots of memory, so trim it here a bit.
         connection.queries = trim_to > 0 \
             and connection.queries[-trim_to:] \
             or []
-        
+
+
+def related_tag_name(tag_info, language=None):
+    return tag_info.get("name_%s" % (language or get_language()),
+        tag_info.get("name_%s" % settings.LANGUAGE_CODE, ""))
+
+
+def delete_from_cache_by_language(cache, key_template):
+    cache.delete_many([key_template % lc for lc, ln in settings.LANGUAGES])
