@@ -101,6 +101,7 @@ PIPELINE_JS = {
             'js/jquery.eventdelegation.js',
             'js/jquery.scrollto.js',
             'js/jquery.highlightfade.js',
+            'js/book_text/other.js',
             'js/book.js',
             'player/openplayer.js',
         ],
