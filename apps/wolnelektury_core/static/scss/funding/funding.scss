@@ -53,7 +53,7 @@
         @include size(border-radius, 20px);
         background-image: url(/static/img/progress-pixel.png);
         background-repeat: repeat-y;
-        background-color: mix(#ec6d00, orange, .5);
+        background-color: #F68900;
         @include box-shadow(1px 1px 1px #888);
     }
     .with-button {
