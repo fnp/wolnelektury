@@ -184,7 +184,7 @@ class Picture(models.Model):
         if short_html is not None:
             return mark_safe(short_html)
         else:
-            tags = self.tags.filter(category__in=('author', 'kind', 'epoch'))
+            tags = self.tags.filter(category__in=('author', 'kind', 'epoch', 'genre'))
             tags = split_tags(tags)
 
             short_html = unicode(render_to_string('picture/picture_short.html',

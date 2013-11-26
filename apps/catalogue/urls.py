@@ -14,8 +14,10 @@ SLUG = r'[a-z0-9-]*'
 
 urlpatterns = patterns('picture.views',
     # pictures - currently pictures are coupled with catalogue, hence the url is here
-    url(r'^obraz/?$', 'picture_list'),
-    url(r'^obraz/(?P<picture>%s)/?$' % SLUG, 'picture_detail')
+    url(r'^obraz/?$', 'picture_list_thumb'),
+    url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
+    url(r'^obraz/(?P<slug>%s)/?$' % SLUG, 'picture_detail'),
+
 )
 
 urlpatterns += patterns('',

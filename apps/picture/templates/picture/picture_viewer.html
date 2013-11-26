@@ -1,0 +1,52 @@
+{% load i18n %}
+{% load static from staticfiles %}
+{% load chunks compressed catalogue_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+{# XXX było: picture.pretty_title #}
+        <title>{% trans "Wolne Lektury" %} :: {{ picture.title }}</title>
+        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
+        {% compressed_css "picture" %}
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        {% compressed_js "book" %}
+	<!-- old IE support -->
+
+    </head>
+    <body>
+        <div id="menu">
+            <ul>
+                <li><a class="menu" href="#themes">{% trans "Themes" %}</a></li>
+                <li><a class="menu" href="#objects">{% trans "Objects" %}</a></li>
+		<!-- XXX do we have this? -->
+                <li><a class="menu" href="#nota_red">{% trans "Edit. note" %}</a></li>
+                <li><a class="menu" href="#info">{% trans "Infobox" %}</a></li>
+                <li><a href="{{ picture.get_absolute_url }}">{% trans "Picture's page" %}</a></li>
+<!-- XXX -->
+                <li><a class="menu" href="#download">{% trans "Download" %}</a></li>
+            </ul>
+        </div>
+        <div id="info">
+            {# book_info book #}
+        </div>
+<!-- do something with the logo        <div id="header">
+            <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" /></a>
+        </div>-->
+
+	<!-- main picture view -->
+	<div id="picture-view">
+	  <ul class="toolbar">
+	    <li class="button plus"><a href="#">&#x2795;<!-- heavy plus sign --></a></li>
+	    <li class="button minus"><a href="#">&#x2796;<!-- heavy minus sign --></a>
+	    </li>
+	  </ul>
+	  <div class="picture-wrap">
+	    <img class="canvas" src="{{ picture.image_file.url }}"/>
+	  </div>
+	</div>
+        {{ piwik_tag|safe }}
+    </body>
+</html

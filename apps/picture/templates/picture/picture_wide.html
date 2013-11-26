@@ -1,0 +1,70 @@
+{% extends "picture/picture_short.html" %}
+{% load i18n %}
+{% load picture_tags thumbnail %}
+{% load cite_promo from social_tags %}
+
+
+{% block box-class %}book-wide-box{% endblock %}
+
+{% block picture-view %}
+{% thumbnail picture.image_file "535" upscale="false" as thumb %}
+<img class="cover" src="{{thumb.url}}"/>
+{% endthumbnail %}
+{% endblock %}
+
+
+{% block book-box-extra-info %}
+{% if themes %}
+    <div class="hidden-box-wrapper" id="theme-list-wrapper">
+        <p><a class="mono hidden-box-trigger theme-list-link"
+                href="#">{% trans "Motifs and themes" %}</a></p>
+        <div class="hidden-box">
+            <ul>
+            {% for theme in themes %}
+                <li><a href="{% url 'book_fragments' book.slug theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% else %}
+	<p>&nbsp;</p>
+{% endif %}
+{% endblock %}
+
+
+{% block right-column %}
+<div class="right-column">
+   INFO
+  {% comment %}<div class="other-tools">
+    <h2 class="mono">{% trans "See" %}</h2>
+    <ul class="plain">
+      {% if extra_info.source_url %}
+      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}</li>
+      {% endif %}
+      <li><a href="{{ book.xml_file.url }}">{% trans "Source XML file" %}</a></li>
+      {% if extra_info.about and not hide_about %}
+      <li>{% trans "Book on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
+      {% endif %}
+      {% if book.gazeta_link %}
+      <li><a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a></li>
+      {% endif %}
+      {% if book.wiki_link %}
+      <li><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></li>
+      {% endif %}
+      <li><a href="{% url 'poem_from_book' book.slug %}">{% trans "Mix this book" %}</a></li>
+    </ul>
+  </div>
+  <div class="other-download">
+    <h2 class="mono">{% trans "Download" %}</h2>
+    <ul class="plain">
+      <li>
+	{% if related.media.mp3 or related.media.ogg or related.media.daisy %}
+        {% trans "Download all audiobooks for this book" %}:
+	    {% download_audio book %}.
+	{% endif %}
+      </li>
+      {% custom_pdf_link_li book %}
+    </ul>
+  </div>{% endcomment %}
+</div>
+{% endblock %}

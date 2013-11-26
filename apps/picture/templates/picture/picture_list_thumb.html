@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load chunks %}
+{% load picture_tags %}
+{% load thumbnail %}
+
+{% block bodyid %}picture-list{% endblock %}
+
+{% block titleextra %}{% trans "Listing of all pictures" %}{% endblock %}
+
+
+{% block body %}
+    <h1>{% block book_list_header %}{% trans "Listing of all pictures" %}{% endblock %}</h1>
+
+
+    <div class='clearboth'></div>
+<div id="books-list">
+  <ol class="work-list">{% spaceless %}
+{% for picture in picture_list %}
+   <li class="Book-item">
+ {% picture_short picture %} 
+   </li>
+{% endfor %}
+  {% endspaceless %}</ol>
+</div>
+
+
+
+{% endblock %}

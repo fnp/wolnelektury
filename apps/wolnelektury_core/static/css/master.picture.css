@@ -1,0 +1,39 @@
+ 
+#picture-view img.canvas {
+    width: 700px;
+    margin: 3rem auto 1rem auto;
+    display: block;
+//    position: fixed;
+}
+
+#picture-view .toolbar {
+    position: fixed;
+    top: 1.5rem;
+    right: 0rem;
+    background: #333;
+    color: #FFF;
+    opacity: 0.9;
+    z-index: 99;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+#picture-view .toolbar .button a {
+    display: block;
+    height:1.5rem;
+    width:1.5rem;
+    text-align: center;
+    color: #FFF;
+    padding: 0.2rem;
+    text-decoration: none;
+}
+
+#picture-view .toolbar .button a:link,
+#picture-view .toolbar .button a:visited {
+    color: #FFF;
+}
+
+#picture-view .toolbar.button a:active {
+    color: yellow;
+}
