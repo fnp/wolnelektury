@@ -57,7 +57,6 @@ urlpatterns += patterns('catalogue.views',
 
     # Public interface. Do not change this URLs.
     url(r'^lektura/(?P<slug>%s)\.html$' % SLUG, 'book_text', name='book_text'),
-    url(r'^lektura/(?P<slug>%s)\.html2$' % SLUG, 'book_text2'),
     url(r'^lektura/(?P<slug>%s)/audiobook/$' % SLUG, 'player', name='book_player'),
     url(r'^lektura/(?P<slug>%s)/$' % SLUG, 'book_detail', name='book_detail'),
     url(r'^lektura/(?P<slug>%s)/motyw/(?P<theme_slug>[a-zA-Z0-9-]+)/$' % SLUG,

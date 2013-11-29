@@ -3,33 +3,50 @@ nav #menu-other {
 }
 
 
+#other {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 1em 0;
+
+        li {
+            display: inline-block;
+
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+
+.other-text-close {
+    background: #000;
+    color: #ddd;
+    opacity: .5;
+    text-align: center;
+    padding: .5em;
+    font-weight: bold;
+}
+
+
 #other-text {
+    position: relative;
+    display: none;
+
+    .other-text-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.other-text-close {
     display: none;
 }
 
-#main-pane.with-other-text {
-
-    #main-text {
-        display: table-cell;
-        padding-left: 40px;
-        @include min-screen(1px) {
-            width: 300px;
-        }
-
-        @include min-screen(1000px) {
-            width: 400px;
-        }
-    }
-
-    #other-text {
-        display: table-cell;
-        padding-left: 40px;
-        @include min-screen(1px) {
-            width: 300px;
-        }
-
-        @include min-screen(1000px) {
-            width: 400px;
-        }
+.with-other-text {
+    .other-text-close {
+        display: block;
     }
 }

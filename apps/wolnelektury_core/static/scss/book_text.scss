@@ -1,5 +1,6 @@
 @import "tools";
 
+@import "book_text/const";
 @import "book_text/body";
 @import "book_text/box";
 @import "book_text/info";
@@ -11,3 +12,8 @@
 @import "book_text/themes";
 @import "book_text/toc";
 
+@import "main/book_box";
+@import "book_text/book_box";
+
+@import "main/auth";
+@import "main/dialogs";

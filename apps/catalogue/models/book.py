@@ -95,6 +95,12 @@ class Book(models.Model):
     def name(self):
         return self.title
 
+    def language_code(self):
+        return constants.LANGUAGES_3TO2.get(self.language, self.language)
+
+    def language_name(self):
+        return dict(settings.LANGUAGES).get(self.language_code(), "")
+
     def book_tag_slug(self):
         return ('l-' + self.slug)[:120]
 

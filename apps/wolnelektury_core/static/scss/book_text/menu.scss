@@ -1,29 +1,60 @@
+%menu-toggle {
+    position: relative;
+    padding: 0;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        height: 5px;
+        border-top: 15px double #ddd;
+        border-bottom: 5px solid #ddd;
+    }
+}
+
 /* Button for showing menu */
 #menu-toggle-on {
-    width: 20px;
-    height: 20px;
+    @extend %menu-toggle;
+    @include size(width, $W_NONUMBERS_TINY);
     position: fixed;
     top: 0;
     left: 0;
     background: #191919;
-    color: white;
+    color: #ddd;
     text-align: center;
-    z-index: 500;
+    z-index: 100;
+    @include size(height, 44px);
 
-    @include min-screen(240px) {
-        width: 30px;
-        height: 30px;
+    @include min-screen($S_NONUMBERS_TINY_MAX) {
+        @include size(width, $W_NONUMBERS);
     }
 
-    @include min-screen(320px) {
-        width: 44px;
-        height: 44px;
+    @include min-screen($S_NUMBERS) {
+        @include size(width, 44px);
+    }
+
+    &:before {
+        left: 5px;
+        right: 5px;
+        @include min-screen(240px) {
+            left: 8px;
+            right: 8px;
+        }
     }
 }
 
+#menu-toggle-off {
+    @extend %menu-toggle;
+    height: 24px;
+    &:before {
+        left: 25px;
+        right: 25px;
+    }
+}
+
+
 #menu {
     display: none;
-    z-index: 1000;
+    z-index: 101;
 
     width: 80px;
     position: fixed;
@@ -32,6 +63,8 @@
     text-align: center;
     background: #191919;
     height: 100%;
+
+    line-height: 1.1em;
 
     ul {
         list-style: none;

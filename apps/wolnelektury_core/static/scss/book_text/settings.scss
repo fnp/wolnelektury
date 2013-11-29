@@ -1,15 +1,27 @@
 @mixin switch-on {
     background: #aaa;
+    border-top-color: #888;
+    border-left-color: #888;
+    border-bottom-color: #ddd;
+    border-right-color: #ddd;
+
+    border-width: 2px;
+    border-style: solid;
+
 }
 @mixin switch-off {
     background: none;
+    border-color: #aaa;
 }
 .settings-switch {
     display: block;
     padding: .5em;
     margin: .5em;
-    border: 1px solid #aaa;
+    //border: 1px solid #aaa;
     border-radius: 1em;
+    color: black;
+    border-width: 2px;
+    border-style: solid;
 }
 
 nav #menu-settings {

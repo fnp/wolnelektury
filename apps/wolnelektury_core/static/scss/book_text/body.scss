@@ -2,9 +2,17 @@
  * #big-pane
  * Everything besides the menu.
  */
-@include min-screen(640px) {
+#big-pane {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    @include min-screen($W_BOOK_TEXT_MAX) {
+        justify-content: center;
+    }
+}
+@include min-screen($S_MENU) {
     #big-pane {
-        margin-left: 80px;
+        @include size(margin-left, $W_MENU);
     }
     .menu-hidden {
         #big-pane {
@@ -23,62 +31,87 @@
  */
 
 @mixin left-without-numbers {
-    padding-left: 20px;
-    @include min-screen(240px) {
-        padding-left: 30px;
+    @include size(padding-left, $W_NONUMBERS_TINY);
+    @include min-screen($S_NONUMBERS_TINY_MAX) {
+        @include size(padding-left, $W_NONUMBERS);
     }
 }
 
 @mixin right-without-themes {
-    padding-right: 20px;
-    @include min-screen(240px) {
-        padding-right: 30px;
+    @include size(padding-right, $W_NOTHEMES_TINY);
+    @include min-screen($S_NOTHEMES_TINY_MAX) {
+        @include size(padding-right, $W_NOTHEMES_SMALL);
     }
-    @include min-screen(320px) {
-        padding-right: 44px;
+    @include min-screen($S_NOTHEMES_SMALL_MAX) {
+        @include size(padding-right, $W_NOTHEMES);
     }
 }
 
-#main-text {
+#main-text, #other-text {
     @include left-without-numbers;
     @include right-without-themes;
+    @include size(min-width, $W_BOOK_TEXT_MIN);
 
     /* make room for line numbers */
-    @include min-screen(320px) {
-        padding-left: 50px;
+    @include min-screen($S_NUMBERS) {
+        @include size(padding-left, $W_NUMBERS);
     }
 
     /* make room for themes */
-    @include min-screen(600px) {
-        padding-right: 160px;
+    @include min-screen($S_THEMES) {
+        @include size(padding-right, $W_THEMES);
     }
 }
 
 .always-hide-line-numbers {
     /* Cancel making room for line numbers. */
-    #main-text {
+    #main-text, #other-text {
         @include left-without-numbers;
     }
 }
 
-.always-hide-themes {
-    /* Cancel making room for themes. */
-    #main-text {
-        @include right-without-themes;
+@include min-screen($S_THEMES) {
+    .always-hide-themes {
+        /* Cancel making room for themes. */
+        #main-text, #other-text {
+            @include right-without-themes;
+        }
     }
 }
 
+.with-other-text {
+    #main-text, #other-text {
+        @include right-without-themes;
 
+        @include min-screen($S_THEMES_WOTHER) {
+            @include size(padding-right, $W_THEMES);
+        }
+    }
+}
 
 
 
 
 
 #book-text {
-    max-width: 600px;
-    margin: 20px auto;
-    
+    @include size(max-width, $W_BOOK_TEXT_MAX);
+    @include size(margin, 20px auto);
+
+    font-size: .8em;
+
+    @include min-screen($S_SMALL_TEXT_MAX) {
+        font-size: 1em;
+    }
+
     h1 {
-        margin-top: 0px;
+        margin-top: 0;
+    }
+}
+.with-other-text {
+    #book-text {
+        font-size: .8em;
+        @include min-screen($S_SMALL_TEXT_MAX_WOTHER) {
+            font-size: 1em;
+        }
     }
 }

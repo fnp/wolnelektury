@@ -72,6 +72,7 @@ header#main {
         @media screen and (min-width: 24em) {
             @include size(padding-top, 6px);
             @include size(font-size, 13px);
+            @include size(margin-left, 180px);
             text-align: right;
         }
 
@@ -94,6 +95,7 @@ header#main {
 
         @media screen and (min-width: 24em) {
             @include size(padding-top, 15px);
+            @include size(margin-left, 180px);
             text-align: right;
         }
         @media screen and (min-width: 62.5em) {

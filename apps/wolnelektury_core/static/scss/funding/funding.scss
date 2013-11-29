@@ -16,19 +16,28 @@
         @include size(padding, 5.25px 7.5px);
         @include size(margin, 7.5px);
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
         text-align: center;
 
         background: lighten(#018189, .05);
         @include size(width, 135px);
+
+        @include min-screen(420px) {
+            vertical-align: top;
+        }
     }
     .learn-more {
         text-align: center;
         margin: auto;
         @include size(font-size, 10px);
         padding: .5em;
+        
+        @include min-screen(300px) {
+            display: inline;
+        }
         @include min-screen(420px) {
             padding: 0;
+            display: block;
         }
     }
     .description {
@@ -55,6 +64,40 @@
         background-repeat: repeat-y;
         background-color: #F68900;
         @include box-shadow(1px 1px 1px #888);
+
+        .progress-collected {
+            float:left;
+            &:after {
+                content: " / ";
+            }
+            @include min-screen(500px) {
+                &:after {
+                    content: none;
+                }
+            }
+        }
+        .progress-target {
+            float: left;
+            padding-left: 0;
+            @include min-screen(500px) {
+                float: right;
+                @include size(padding-left, 6px);
+            }
+        }
+        .progress-extralabel {
+            display: none;
+            @include min-screen(500px) {
+                display: inline;
+            }
+        }
+        .progress-until {
+            display: inline-block;
+            margin-right: 0em;
+            text-align: right;
+            @include min-screen(500px) {
+                text-align: center;
+            }
+        }
     }
     .with-button {
         clear: left;
@@ -66,6 +109,10 @@
 
     .funding-title {
         @include size(font-size, 11px);
+        display: block;
+        @include min-screen(640px) {
+            display: inline;
+        }
     }
     .funding-title-strong {
         @extend .funding-title;

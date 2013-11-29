@@ -39,7 +39,9 @@
 .book-wide-box .cite {
     background-color: #f7f7f7;
     vertical-align: middle;
-    @include size(width, 395px);
+    @include min-screen(1000px) {
+        @include size(width, 395px);
+    }
     margin: 0;
     @include size(padding, 10px);
 }

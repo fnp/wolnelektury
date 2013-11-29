@@ -1,6 +1,6 @@
 body {
     font-size: 16px;
-    font: Georgia, "Times New Roman", serif;
+    font-family: Georgia, "Times New Roman", serif;
     line-height: 1.5em;
     margin: 0;
 }
@@ -45,8 +45,7 @@ a {
 }
 
 #info p {
-    text-align: justify;
-    margin: 1.5em 0 0;
+    margin: 1em 0 0;
 }
 
 /* =================================================== */
@@ -91,7 +90,7 @@ p {
 .annotation {
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: .75em;
     padding-left: 2px;
     position: relative;
     top: -4px;

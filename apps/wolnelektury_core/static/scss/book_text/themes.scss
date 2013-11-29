@@ -8,8 +8,6 @@ nav #menu-themes {
 }
 
 
-
-
 @mixin theme-hidden {
     width: 20px;
     height: 20px;
@@ -21,7 +19,7 @@ nav #menu-themes {
     &:before {
         content: "▲";
         color: #ccc;
-        text-align:  center;
+        text-align: center;
         display: block;
     }
 
@@ -37,7 +35,7 @@ nav #menu-themes {
         width: 44px;
         margin-right: -44px;
         &:before {
-            font-size: 3em;
+            font-size: 2.5em;
         }
     }
 
@@ -52,6 +50,7 @@ nav #menu-themes {
     height: auto;
     overflow: visible;
     margin-left: 30px;
+    font-size: .9em;
 
     border-left: 1px solid #DDDDDD;
     color: #777;
@@ -65,15 +64,15 @@ nav #menu-themes {
 .theme-begin {
     @include theme-hidden;
 
+    font-size: .9em;
     position: relative;
     float: right;
     margin-bottom: 8px;
     clear: both;
     line-height: 1.5em;
     text-align: left;
-    z-index: 60000;
+    z-index: 60;
 
-    font-size: 16px;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -92,10 +91,19 @@ nav #menu-themes {
 }
 
 
-@include min-screen(600px) {
-    .always-hide-themes {
-        .theme-begin {
-            @include theme-hidden;
+.always-hide-themes {
+    .theme-begin {
+        @include theme-hidden;
+    }
+}
+
+.with-other-text {
+    .theme-begin {
+        @include theme-hidden;
+
+        @include min-screen(1200px) {
+            @include theme-showing;
+            margin-right: -160px;
         }
     }
 }

@@ -107,7 +107,11 @@ PIPELINE_JS = {
     },
     'book_text': {
         'source_filenames': [
+            'js/jquery.form.js',
+            'js/jquery.jqmodal.js',
             'js/book_text/*.js',
+            'js/locale.js',
+            'js/dialogs.js',
         ],
         'output_filename': 'js/book_text.js',
     },

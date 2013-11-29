@@ -81,6 +81,13 @@
                 {% endfor %}
             </span></span>
 
+            {% if show_lang %}
+            <span class="category">
+            <span class="mono"> {% trans "Language" %}:</span>&nbsp;<span class="book-box-tag">
+                <a>{{ book.language_name }}</a>
+            </span></span>
+            {% endif %}
+
            {% endspaceless %}
         </div>
     </div>

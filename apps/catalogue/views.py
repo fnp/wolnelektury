@@ -290,14 +290,6 @@ def book_text(request, slug):
     related = book.related_info()
     return render_to_response('catalogue/book_text.html', locals(),
         context_instance=RequestContext(request))
-def book_text2(request, slug):
-    book = get_object_or_404(models.Book, slug=slug)
-
-    if not book.has_html_file():
-        raise Http404
-    related = book.related_info()
-    return render_to_response('catalogue/book_text_new.html', locals(),
-        context_instance=RequestContext(request))
 
 
 # ==========

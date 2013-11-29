@@ -7,21 +7,44 @@ the hidden boxes (TOC and Themes).
     display: none;
 
     position: fixed;
-    left: 80px;
+    @include size(left, $W_MENU);
     top: 0;
-    bottom: 0;
-    max-width: 380px;
-    padding: 10px;
+    right: 0;
+
+    max-height: 100%;
+    @include size(max-width, 380px);
+    @include size(padding, 10px 10px 30px 10px);
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    z-index: 100000;
+    z-index: 100;
 
     color: black;
-    background: white;
-    opacity: .9;
+    background: #fff;
+    box-shadow: 2px 2px 2px #444;
 
-    border-width: 0 2px 2px 0;
+    @include size(border-width, 0 1px 1px 0);
     border-style: solid;
-    border-color: #191919;
+    border-color: #444;
+
+    @include size(font-size, 14px);
+    line-height: 1.2em;
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+
+
+#box-underlay {
+    display: none;
+    position: fixed;
+    @include size(left, $W_MENU);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background:#000;
+    opacity: .5;
+    z-index: 99;
 }

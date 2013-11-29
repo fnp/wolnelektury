@@ -24,13 +24,13 @@
         style="text-align: center; background-size: {{ percentage|stringformat:'.2f' }}% 1px;"
     >
         {% if sum %}
-            <span class="piece" style="float:left">{% trans "collected" %}: {{ sum }} zł</span>
+            <span class="piece progress-collected">{% trans "collected" %}: {{ sum }} zł</span>
         {% endif %}
         {% if not is_win %}
-            <span class="piece" style="float: right">{% trans "needed" %}: {{ offer.target }} zł</span>
+            <span class="piece progress-target"><span class="{% if sum %}progress-extralabel{% endif %}">{% trans "needed" %}: </span>{{ offer.target }} zł</span>
         {% endif %}
         {% if is_current %}
-            <span class="piece" style="display:inline-block;margin-right: 0em;">{% trans "until fundraiser end" %}:
+            <span class="piece progress-until"><span class="progress-extralabel">{% trans "until fundraiser end" %}:</span>
                 <span class="countdown inline" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></span>
             </span>
         {% else %}

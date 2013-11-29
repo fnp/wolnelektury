@@ -1,8 +1,8 @@
 @mixin hide-line-numbers {
     float: left;
-    margin-left: -20px;
+    margin-left: -$W_NONUMBERS_TINY;
 
-    width: 20px;
+    width: $W_NONUMBERS_TINY;
     height: 100%;
     padding: 0;
     overflow: hidden;
@@ -19,18 +19,18 @@
         content: "#";
         display: block;
         float: left;
-        width: 9px;
+        width: $W_NONUMBERS_TINY / 2 - 1px;
         height: 100%;
         overflow: hidden;
         border-right: 1px solid #ccc;
     }
 
-    @include min-screen(240px) {
-        width: 30px;
-        margin-left: -30px;
+    @include min-screen($S_NONUMBERS_TINY_MAX) {
+        width: $W_NONUMBERS;
+        margin-left: -$W_NONUMBERS;
 
         &:before {
-            width: 14px;
+            width: $W_NONUMBERS / 2 - 1;
         }
     }
 }
@@ -39,10 +39,11 @@
 .anchor {
     @include hide-line-numbers;
 
-    @include min-screen(320px) {
+    @include min-screen($S_NUMBERS) {
         /* Show line numbers. */
-        margin-left: -50px;
-        width: 44px;
+        font-size: .8em;
+        margin-left: -$W_NUMBERS;
+        width: $W_NUMBERS - 4px;
         height: auto;
         padding: 2px;
         text-align: center;
@@ -54,7 +55,7 @@
     }
 }
 
-@include min-screen(320px) {
+@include min-screen($S_NUMBERS) {
     .always-hide-line-numbers {
         /* Cancel showing line numbers. */
         .anchor {

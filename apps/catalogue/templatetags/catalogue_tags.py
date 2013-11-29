@@ -16,7 +16,7 @@ from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags, related_tag_name as _related_tag_name
 from catalogue.models import Book, BookMedia, Fragment, Tag
-from catalogue.constants import LICENSES
+from catalogue.constants import LICENSES, LANGUAGES_3TO2
 
 register = template.Library()
 
@@ -335,6 +335,7 @@ def book_wide(context, book):
         'hide_about': hide_about,
         'themes': book_themes,
         'request': context.get('request'),
+        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
     }
 
 
@@ -345,16 +346,19 @@ def book_short(context, book):
         'main_link': book.get_absolute_url(),
         'related': book.related_info(),
         'request': context.get('request'),
+        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
     }
 
 
 @register.inclusion_tag('catalogue/book_mini_box.html')
-def book_mini(book):
+def book_mini(book, with_link=True):
     author_str = ", ".join(related_tag_name(tag)
         for tag in book.related_info()['tags'].get('author', ()))
     return {
         'book': book,
         'author_str': author_str,
+        'with_link': with_link,
+        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
     }
 
 
