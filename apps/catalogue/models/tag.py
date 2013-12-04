@@ -19,6 +19,7 @@ TAG_CATEGORIES = (
     ('theme', _('theme')),
     ('set', _('set')),
     ('book', _('book')),
+    ('thing', _('thing')), # things shown on pictures
 )
 
 

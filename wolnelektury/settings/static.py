@@ -128,5 +128,5 @@ PIPELINE_JS_COMPRESSOR = None
 PIPELINE_COMPILERS = (
     'pyscss_compiler.PySCSSCompiler',
 )
-PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
+PIPELINE_PYSCSS_BINARY = '/usr/bin/env /home/staging/wolnelektury.pl/ve/bin/pyscss'
 PIPELINE_PYSCSS_ARGUMENTS = ''

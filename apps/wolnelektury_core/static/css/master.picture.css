@@ -1,32 +1,94 @@
+
+#picture-view {
+    width: 100%;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+}
  
-#picture-view img.canvas {
-    width: 700px;
+#picture-view .picture-wrap {
     margin: 3rem auto 1rem auto;
     display: block;
-//    position: fixed;
+//    position: absolute;
 }
 
-#picture-view .toolbar {
+#picture-view .picture-wrap {
+    width: 700px;
+}
+
+#picture-view .picture-wrap {
+    height: 500px;
+}
+
+
+.picture-wrap img.original {
+    width: 100%;
+}
+
+.picture-wrap img.loading {
+    margin-left: -10000px;
+}
+
+.picture-wrap .mark {
+    border: 2px solid rgba(200, 200, 200, 0.7);
+    position: absolute;
+    display: block;
+}
+
+.picture-wrap .mark .label {
+    position: absolute;
+    display: none; /*block;*/
+    color: rgba(200, 200, 200, 0.8);
+    font-size: 0.9rem;
+    bottom: -1.5em;
+}
+
+
+.toolbar {
     position: fixed;
     top: 1.5rem;
-    right: 0rem;
-    background: #333;
+    left: 0rem;
     color: #FFF;
-    opacity: 0.9;
     z-index: 99;
     list-style: none; 
     padding: 0;
     margin: 0;
 }
 
-#picture-view .toolbar .button a {
+.toolbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    background-color: #222;
+}
+
+.toolbar .button a {
+    background: #333;
+    opacity: 0.9;
     display: block;
     height:1.5rem;
-    width:1.5rem;
+
     text-align: center;
     color: #FFF;
     padding: 0.2rem;
     text-decoration: none;
+}
+
+.toolbar .button .dropdown-body a {
+    height: 1.2rem;
+}
+
+#picture-view .toolbar .button.square a {
+    width:1.5rem;
+}
+
+li.button {
+    clear: both;
+}
+li.button.square {
+    clear: none;
+    float: left;
 }
 
 #picture-view .toolbar .button a:link,

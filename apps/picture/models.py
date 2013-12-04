@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction
 import catalogue.models
 from django.db.models import permalink
 from sorl.thumbnail import ImageField
@@ -10,13 +10,21 @@ from django.core.cache import get_cache
 from catalogue.utils import split_tags
 from django.utils.safestring import mark_safe
 from fnpdjango.utils.text.slughifi import slughifi
+from picture import tasks
+from StringIO import StringIO
+import jsonfield
+import itertools
+
+from PIL import Image
 
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
 from os import path
 
 
-picture_storage = FileSystemStorage(location=path.join(settings.MEDIA_ROOT, 'pictures'), base_url=settings.MEDIA_URL + "pictures/")
+picture_storage = FileSystemStorage(location=path.join(
+        settings.MEDIA_ROOT, 'pictures'),
+        base_url=settings.MEDIA_URL + "pictures/")
 
 
 class Picture(models.Model):
@@ -31,6 +39,9 @@ class Picture(models.Model):
     changed_at  = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     xml_file    = models.FileField('xml_file', upload_to="xml", storage=picture_storage)
     image_file  = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
+    html_file   = models.FileField('html_file', upload_to="html", storage=picture_storage)
+    areas       = jsonfield.JSONField(_('picture areas'), default='{}', editable=False)
+
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
     tags        = managers.TagDescriptor(catalogue.models.Tag)
@@ -64,7 +75,7 @@ class Picture(models.Model):
         return ('picture.views.picture_detail', [self.slug])
 
     @classmethod
-    def from_xml_file(cls, xml_file, image_file=None, overwrite=False):
+    def from_xml_file(cls, xml_file, image_file=None, image_store=None, overwrite=False):
         """
         Import xml and it's accompanying image file.
         If image file is missing, it will be fetched by librarian.picture.ImageStore
@@ -76,10 +87,7 @@ class Picture(models.Model):
         from librarian.picture import WLPicture, ImageStore
         close_xml_file = False
         close_image_file = False
-        # class SimpleImageStore(object):
-        #     def path(self_, slug, mime_type):
-        #         """Returns the image file. Ignores slug ad mime_type."""
-        #         return image_file
+
 
         if image_file is not None and not isinstance(image_file, File):
             image_file = File(open(image_file))
@@ -88,12 +96,12 @@ class Picture(models.Model):
         if not isinstance(xml_file, File):
             xml_file = File(open(xml_file))
             close_xml_file = True
-
+        
         try:
             # use librarian to parse meta-data
-            picture_xml = WLPicture.from_file(xml_file,
-                                              image_store=ImageStore(picture_storage.path('images')))
-                    # image_store=SimpleImageStore
+            if image_store is None:
+                image_store = ImageStore(picture_storage.path('images'))
+            picture_xml = WLPicture.from_file(xml_file, image_store=image_store)
 
             picture, created = Picture.objects.get_or_create(slug=picture_xml.slug)
             if not created and not overwrite:
@@ -102,34 +110,79 @@ class Picture(models.Model):
             picture.title = picture_xml.picture_info.title
 
             motif_tags = set()
+            thing_tags = set()
+            area_data = {'themes':{}, 'things':{}}
+
             for part in picture_xml.partiter():
-                for motif in part['themes']:
-                    tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
+                if picture_xml.frame:
+                    c = picture_xml.frame[0]
+                    part['coords'] = [[p[0] - c[0], p[1] - c[1]] for p in part['coords']]
+                if part.get('object', None) is not None:
+                    objname = part['object']
+                    tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(objname), category='thing')
                     if created:
-                        tag.name = motif
+                        tag.name = objname
                         tag.sort_key = sortify(tag.name)
                         tag.save()
-                    motif_tags.add(tag)
+                    thing_tags.add(tag)
+                    area_data['things'][tag.slug] = {
+                        'object': part['object'],
+                        'coords': part['coords'],
+                        }
+                else:
+                    for motif in part['themes']:
+                        tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
+                        if created:
+                            tag.name = motif
+                            tag.sort_key = sortify(tag.name)
+                            tag.save()
+                        motif_tags.add(tag)
+                        area_data['themes'][tag.slug] = {
+                            'theme': motif,
+                            'coords': part['coords']
+                            }
 
             picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info) + \
-                list(motif_tags)
+                list(motif_tags) + list(thing_tags)
+            picture.areas = area_data
 
             if image_file is not None:
                 img = image_file
             else:
                 img = picture_xml.image_file()
 
-            # FIXME: hardcoded extension
-            picture.image_file.save(path.basename(picture_xml.image_path), File(img))
+            modified = cls.crop_to_frame(picture_xml, img)
+            # FIXME: hardcoded extension - detect from DC format or orginal filename
+            picture.image_file.save(path.basename(picture_xml.image_path), File(modified))
 
             picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
             picture.save()
+            tasks.generate_picture_html(picture.id)
+
+        except Exception, ex:
+            print "Rolling back a transaction"
+            transaction.rollback()
+            raise ex
+
         finally:
             if close_xml_file:
                 xml_file.close()
             if close_image_file:
                 image_file.close()
+
+        transaction.commit()
+
         return picture
+
+    @classmethod
+    def crop_to_frame(cls, wlpic, image_file):
+        if wlpic.frame is None:
+            return image_file
+        img = Image.open(image_file)
+        img = img.crop(itertools.chain(*wlpic.frame))
+        contents = StringIO()
+        img.save(contents, format='png', quality=95)
+        return contents
 
     @classmethod
     def picture_list(cls, filter=None):
@@ -187,8 +240,9 @@ class Picture(models.Model):
             tags = self.tags.filter(category__in=('author', 'kind', 'epoch', 'genre'))
             tags = split_tags(tags)
 
-            short_html = unicode(render_to_string('picture/picture_short.html',
-                {'picture': self, 'tags': tags}))
+            short_html = unicode(render_to_string(
+                    'picture/picture_short.html',
+                    {'picture': self, 'tags': tags}))
 
             if self.id:
                 get_cache('permanent').set(cache_key, short_html)

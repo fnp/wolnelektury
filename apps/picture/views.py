@@ -10,7 +10,8 @@ from picture.models import Picture
 def picture_list(request, filter=None, template_name='catalogue/picture_list.html'):
     """ generates a listing of all books, optionally filtered with a test function """
 
-    pictures_by_author, orphans = Picture.picture_list()
+    pictures_by_author, orphans = Picture.picture_list(
+        filter={'image_file__isnull':False})
     books_nav = SortedDict()
     for tag in pictures_by_author:
         if pictures_by_author[tag]:
@@ -21,7 +22,7 @@ def picture_list(request, filter=None, template_name='catalogue/picture_list.htm
 
 
 def picture_list_thumb(request, filter=None, template_name='picture/picture_list_thumb.html'):
-    picture_list = Picture.objects.all()
+    picture_list = Picture.objects.filter(image_file__isnull=False)
     return render_to_response(template_name, locals(),
                               context_instance=RequestContext(request))
 

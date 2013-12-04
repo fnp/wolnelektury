@@ -11,7 +11,7 @@ from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
 from catalogue.utils import trim_query_log
-
+from librarian.picture import ImageStore
 from wolnelektury_core.management.profile import profile
 
 from catalogue.models import Book
@@ -60,8 +60,16 @@ class Command(BaseCommand):
                     print "Importing %s.%s" % (file_base, ebook_format)
         book.save()
 
-    def import_picture(self, file_path, options):
-        picture = Picture.from_xml_file(file_path, overwrite=options.get('force'))
+    def import_picture(self, file_path, options, continue_on_error=True):
+        try:
+            image_store = ImageStore(os.path.dirname(file_path))
+            picture = Picture.from_xml_file(file_path, image_store=image_store, overwrite=options.get('force'))
+        except Exception, ex:
+            if continue_on_error:                
+                print "%s: %s" % (file_path, ex)
+                return
+            else:
+                raise ex
         return picture
 
     #    @profile
