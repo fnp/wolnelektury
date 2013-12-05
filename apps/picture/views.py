@@ -6,12 +6,13 @@ from django.template import RequestContext
 from django.core.paginator import Paginator
 from picture.models import Picture
 
-
-def picture_list(request, filter=None, template_name='catalogue/picture_list.html'):
+# was picture/picture_list.html list (without thumbs)
+def picture_list(request, filter=None, get_filter=None, template_name='catalogue/picture_list.html', cache_key=None, context=None):
     """ generates a listing of all books, optionally filtered with a test function """
 
-    pictures_by_author, orphans = Picture.picture_list(
-        filter={'image_file__isnull':False})
+    if get_filter:
+        filt = get_filter()
+    pictures_by_author, orphans = Picture.picture_list(filt)
     books_nav = SortedDict()
     for tag in pictures_by_author:
         if pictures_by_author[tag]:
@@ -21,8 +22,12 @@ def picture_list(request, filter=None, template_name='catalogue/picture_list.htm
         context_instance=RequestContext(request))
 
 
-def picture_list_thumb(request, filter=None, template_name='picture/picture_list_thumb.html'):
-    picture_list = Picture.objects.filter(image_file__isnull=False)
+def picture_list_thumb(request, filter=None, get_filter=None, template_name='picture/picture_list_thumb.html', cache_key=None, context=None):
+    book_list = Picture.objects.all()
+    if filter:
+        book_list = book_list.filter(filter)
+    if get_filter:
+        book_list = book_list.filter(get_filter())
     return render_to_response(template_name, locals(),
                               context_instance=RequestContext(request))
 

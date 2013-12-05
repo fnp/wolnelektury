@@ -111,6 +111,7 @@ PIPELINE_JS = {
             'js/book.js',
             'js/picture.js',
             'player/openplayer.js',
+            'js/progressSpin.min.js',
         ],
         'output_filename': 'js/book.min.js',
     },

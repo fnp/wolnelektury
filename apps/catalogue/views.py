@@ -29,6 +29,7 @@ from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
 from picture.models import Picture
+from picture.views import picture_list_thumb
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 permanent_cache = get_cache('permanent')
@@ -38,20 +39,36 @@ permanent_cache = get_cache('permanent')
 def catalogue(request):
     cache_key='catalogue.catalogue'
     output = permanent_cache.get(cache_key)
+
     if output is None:
         tags = models.Tag.objects.exclude(
-            category__in=('set', 'book')).exclude(book_count=0)
+            category__in=('set', 'book')).exclude(book_count=0, picture_count=0)
         tags = list(tags)
         for tag in tags:
-            tag.count = tag.book_count
+            tag.count = tag.book_count + tag.picture_count
         categories = split_tags(tags)
         fragment_tags = categories.get('theme', [])
         collections = models.Collection.objects.all()
+
         render_tag_list = lambda x: render_to_string(
             'catalogue/tag_list.html', tag_list(x))
-        output = {'theme': render_tag_list(fragment_tags)}
+        has_pictures = lambda x: filter(lambda y: y.picture_count>0, x)
+        has_books = lambda x: filter(lambda y: y.book_count>0, x)
+        def render_split(tags):
+            with_books = has_books(tags)
+            with_pictures = has_pictures(tags)
+            ctx = {}
+            if with_books:
+                ctx['books'] = render_tag_list(with_books)
+            if with_pictures:
+                ctx['pictures'] = render_tag_list(with_pictures)
+            return render_to_string('catalogue/tag_list_split.html', ctx)
+
+        output = {'theme': {}}
+        output['theme'] = render_split(fragment_tags)
         for category, tags in categories.items():
-            output[category] = render_tag_list(tags)
+            output[category] = render_split(tags)
+            
         output['collections'] = render_to_string(
             'catalogue/collection_list.html', collection_list(collections))
         permanent_cache.set(cache_key, output)
@@ -103,8 +120,16 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(models.Collection, slug=slug)
-    return book_list(request, get_filter=coll.get_query,
-                     template_name='catalogue/collection.html',
+    if coll.kind == 'book':
+        view = book_list
+        tmpl = "catalogue/collection.html"
+    elif coll.kind == 'picture':
+        view = picture_list_thumb
+        tmpl = "picture/collection.html"
+    else:
+        raise ValueError('How do I show this kind of collection? %s' % coll.kind)
+    return view(request, get_filter=coll.get_query,
+                     template_name=tmpl,
                      cache_key='catalogue.collection:%s' % coll.slug,
                      context={'collection': coll})
 

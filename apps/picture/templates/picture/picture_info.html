@@ -1,0 +1,17 @@
+ 
+<div id="picture-themes" class="dropdown-body">
+  <ul>
+{% for slug, theme in themes.items %}
+<li><a href="#theme-{{slug}}" data-coords="{{theme.coords}}">{{theme.theme}}</a></li>
+{% endfor %}
+  </ul>
+</div> 
+
+<div id="picture-objects" class="dropdown-body">
+  <ul>
+{% for slug, thing in things.items %}
+<li><a href="#object-{{slug}}" data-coords="{{thing.coords}}">{{thing.object}}</a></li>
+{% endfor %}
+  </ul>
+</div>
+

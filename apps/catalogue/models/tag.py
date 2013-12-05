@@ -37,6 +37,7 @@ class Tag(TagBase):
 
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), blank=True, null=True)
+    picture_count = models.IntegerField(_('picture count'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
@@ -53,6 +54,7 @@ class Tag(TagBase):
         'gatunek': 'genre',
         'motyw': 'theme',
         'polka': 'set',
+        'obiekt': 'thing',
     }
     categories_dict = dict((item[::-1] for item in categories_rev.iteritems()))
 
@@ -109,6 +111,22 @@ class Tag(TagBase):
                     objects = objects.exclude(pk__in=descendants_keys)
         return objects.count()
 
+    # I shouldn't break the get_count() api 
+    # just to include pictures.
+    def get_picture_count(self):
+        from picture.models import Picture
+        
+        if self.category == 'book':
+            # never used
+            objects = Book.objects.none()
+        elif self.category == 'theme':
+            objects = Picture.tagged.with_all((self,))
+        elif self.category == 'thing':
+            objects = Picture.tagged.with_all((self,))
+        else:
+            objects = Picture.tagged.with_all((self,)).order_by()
+        return objects.count()
+        
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):

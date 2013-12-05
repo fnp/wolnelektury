@@ -40,7 +40,7 @@ class Picture(models.Model):
     xml_file    = models.FileField('xml_file', upload_to="xml", storage=picture_storage)
     image_file  = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
     html_file   = models.FileField('html_file', upload_to="html", storage=picture_storage)
-    areas       = jsonfield.JSONField(_('picture areas'), default='{}', editable=False)
+    areas       = jsonfield.JSONField(_('picture areas'), default={}, editable=False)
 
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)

@@ -1,0 +1,10 @@
+{% load i18n %}
+{% if books %}
+<p class="mono">{% trans "Literatura" %}
+{{books|safe}}
+{% endif %}
+
+{% if pictures %}
+<p class="mono">{% trans "Obrazy" %}
+{{pictures|safe}}
+{% endif %}

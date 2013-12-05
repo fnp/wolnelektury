@@ -10,7 +10,7 @@
         {% endfor %}
         {% else %}
         {% for tag in tags %}
-            <li><a href="{{ tag.get_absolute_url }}">{{ tag }}&nbsp;({{ tag.book_count }})</a></li>
+            <li><a href="{{ tag.get_absolute_url }}">{{ tag }}&nbsp;({{ tag.count }})</a></li>
         {% endfor %}
         {% endif %}
     </ul>
