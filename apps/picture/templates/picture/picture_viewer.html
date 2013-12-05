@@ -18,20 +18,20 @@
 
     </head>
     <body>
-        <div id="menu">
+        <div id="menu" class="moveright">
             <ul>
 <!--                <li><a class="menu" href="#themes">{% trans "Themes" %}</a></li>
                 <li><a class="menu" href="#objects">{% trans "Objects" %}</a></li>-->
 		<!-- XXX do we have this? -->
-                <li><a class="menu" href="#nota_red">{% trans "Edit. note" %}</a></li>
+<!--                <li><a class="menu" href="#nota_red">{% trans "Edit. note" %}</a></li>-->
                 <li><a class="menu" href="#info">{% trans "Infobox" %}</a></li>
                 <li><a href="{{ picture.get_absolute_url }}">{% trans "Picture's page" %}</a></li>
 <!-- XXX -->
                 <li><a class="menu" href="#download">{% trans "Download" %}</a></li>
             </ul>
         </div>
-        <div id="info">
-            {# book_info book #}
+        <div id="info" class="moveright">
+            {% book_info picture %}
         </div>
 	{{ picture.html_file.read|safe }}
 
@@ -53,5 +53,14 @@
 	</div>
         {{ piwik_tag|safe }}
 	<div id="spinner"></div>
+	<div id="sponsors">
+	  <div>
+	    <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" ></img>
+	      </a>
+	    </div>
+	  <div>
+	    <a href="http://www.nck.pl"><img src="{% static "img/logo_nck.jpg" %}" alt="Narodowe Centrum Kultury" ></img></a>
+	  </div>
+	</div>
     </body>
 </html

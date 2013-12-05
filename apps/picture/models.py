@@ -41,6 +41,9 @@ class Picture(models.Model):
     image_file  = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
     html_file   = models.FileField('html_file', upload_to="html", storage=picture_storage)
     areas       = jsonfield.JSONField(_('picture areas'), default={}, editable=False)
+    extra_info    = jsonfield.JSONField(_('extra information'), default={})
+    culturepl_link   = models.CharField(blank=True, max_length=240)
+    wiki_link     = models.CharField(blank=True, max_length=240)
 
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
@@ -108,6 +111,7 @@ class Picture(models.Model):
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
             picture.title = picture_xml.picture_info.title
+            picture.extra_info = picture_xml.picture_info.to_dict()
 
             motif_tags = set()
             thing_tags = set()

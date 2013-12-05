@@ -42,6 +42,13 @@
                 {% endfor %}
             </span>
 
+            <span class="mono">{% trans "Genre" %}:&nbsp;</span>
+            <span class="book-box-tag">
+                {% for tag in tags.genre %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </span>
+
             {% endspaceless %}
         </div>
     </div>
@@ -61,6 +68,11 @@
 	</div>-->
       </li>
     </ul>
+    {% block book-box-extra-info %}{% endblock %}
+    {% block box-append %}
+    {% endblock %}
+    {% block right-column %}
+    {% endblock %}
     <div class="clearboth"/>
 </div>
 </div>

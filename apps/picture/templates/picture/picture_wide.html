@@ -14,16 +14,27 @@
 
 
 {% block book-box-extra-info %}
-{% if themes %}
+{% if themes or things%}
     <div class="hidden-box-wrapper" id="theme-list-wrapper">
         <p><a class="mono hidden-box-trigger theme-list-link"
-                href="#">{% trans "Motifs and themes" %}</a></p>
+                href="#">{% trans "Motifs, themes and objects" %}</a></p>
         <div class="hidden-box">
-            <ul>
+	  {% if themes %}
+	  <p>{% trans "Motifs and themes" %}</p>
+          <ul>
             {% for theme in themes %}
-                <li><a href="{% url 'book_fragments' book.slug theme.slug %}">{{ theme }} ({{ theme.count }})</a></li>
-            {% endfor %}
+            <li><a href="{% url 'picture_viewer' picture.slug %}#theme-{{theme.slug}}">{{ theme }}{# ({{ theme.picture_count }})#}</a></li>
+		{% endfor %}
             </ul>
+	    {% endif %}
+	    {% if things %}
+	  <p>{% trans "Objects" %}</p>
+          <ul>
+            {% for thing in things %}
+            <li><a href="{% url 'picture_viewer' picture.slug %}#object-{{thing.slug}}">{{ thing }}{# ({{ thing.picture_count }})#}</a></li>
+            {% endfor %}
+          </ul>
+	  {% endif %}
         </div>
     </div>
 {% else %}
@@ -34,37 +45,38 @@
 
 {% block right-column %}
 <div class="right-column">
-   INFO
-  {% comment %}<div class="other-tools">
+  <div class="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>
     <ul class="plain">
       {% if extra_info.source_url %}
-      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}</li>
+      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the picture" %}</li>
       {% endif %}
-      <li><a href="{{ book.xml_file.url }}">{% trans "Source XML file" %}</a></li>
+      <li><a href="{{ picture.xml_file.url }}">{% trans "Source XML file" %}</a></li>
       {% if extra_info.about and not hide_about %}
-      <li>{% trans "Book on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
+      <li>{% trans "Picture on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
       {% endif %}
-      {% if book.gazeta_link %}
-      <li><a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a></li>
+      {% if picture.culturepl_link %}
+      <li><a href="{{ picture.culturepl_link }}">{% trans "Picture description on Lektury.Gazeta.pl" %}</a></li>
       {% endif %}
-      {% if book.wiki_link %}
-      <li><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></li>
+      {% if picture.wiki_link %}
+      <li><a href="{{ picture.wiki_link }}">{% trans "Picture description on Wikipedia" %}</a></li>
       {% endif %}
-      <li><a href="{% url 'poem_from_book' book.slug %}">{% trans "Mix this book" %}</a></li>
     </ul>
   </div>
+
+  {% comment %}
   <div class="other-download">
     <h2 class="mono">{% trans "Download" %}</h2>
     <ul class="plain">
       <li>
 	{% if related.media.mp3 or related.media.ogg or related.media.daisy %}
         {% trans "Download all audiobooks for this book" %}:
-	    {% download_audio book %}.
+	{% download_audio book %}.
 	{% endif %}
       </li>
       {% custom_pdf_link_li book %}
     </ul>
-  </div>{% endcomment %}
+  </div>
+  {% endcomment %}
 </div>
 {% endblock %}

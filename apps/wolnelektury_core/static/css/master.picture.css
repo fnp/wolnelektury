@@ -4,12 +4,16 @@
     position:absolute;
     top: 0;
     bottom: 0;
+    z-index: 10;
 }
  
 #picture-view .picture-wrap {
     margin: 3rem auto 1rem auto;
     display: block;
-//    position: absolute;
+    z-index: 10;
+}
+#picture-view .picture-wrap img {
+    z-index: 10;
 }
 
 #picture-view .picture-wrap {
@@ -46,13 +50,17 @@
 
 .toolbar {
     position: fixed;
-    top: 1.5rem;
+    //top: 1.5rem;
     left: 0rem;
     color: #FFF;
     z-index: 99;
     list-style: none; 
     padding: 0;
     margin: 0;
+    
+    background: #333;
+    opacity: 0.9;
+    width: 8rem;
 }
 
 .toolbar ul {
@@ -64,14 +72,14 @@
 }
 
 .toolbar .button a {
-    background: #333;
-    opacity: 0.9;
+    //background: #333;
+    //opacity: 0.9;
     display: block;
     height:1.5rem;
 
     text-align: center;
     color: #FFF;
-    padding: 0.2rem;
+    padding: 0.2rem 0;
     text-decoration: none;
 }
 
@@ -80,7 +88,7 @@
 }
 
 #picture-view .toolbar .button.square a {
-    width:1.5rem;
+    width: 4rem; //1.5rem;
 }
 
 li.button {
@@ -98,4 +106,25 @@ li.button.square {
 
 #picture-view .toolbar.button a:active {
     color: yellow;
+}
+
+.moveright {
+    margin-left: 8rem !important;
+}
+
+#sponsors {
+    position: absolute;
+    display: block;
+    top: 3.5rem;
+    right: 2rem;
+    z-index:1;
+    width: 9rem;
+}
+#sponsors div {
+    z-index: -10;
+}
+
+#sponsors img {
+    width: 100%;
+    z-index: -10;
 }

@@ -38,7 +38,10 @@ def picture_detail(request, slug):
     for tag in picture.tags.iterator():
         categories.setdefault(tag.category, []).append(tag)
 
-    picture_themes = []
+    themes = categories.get('theme', [])
+    things = categories.get('thing', [])
+
+    extra_info = picture.extra_info
 
     return render_to_response("picture/picture_detail.html", locals(),
                               context_instance=RequestContext(request))
