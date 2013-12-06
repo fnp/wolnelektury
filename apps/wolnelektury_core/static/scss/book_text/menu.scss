@@ -100,7 +100,7 @@
 }
 
 /* menu showing by default */
-@include min-screen(640px) {
+@include min-screen($S_MENU) {
     #menu {
         display: block;
     }
