@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -185,14 +186,26 @@ class Tag(TagBase):
                     # For instance, Pictures do not have 'genre' field.
                     continue
             for tag_name in tag_names:
+                lang = getattr(tag_name, 'lang', settings.LANGUAGE_CODE)
                 tag_sort_key = tag_name
                 if category == 'author':
                     tag_sort_key = tag_name.last_name
                     tag_name = tag_name.readable()
-                tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
-                if created:
-                    tag.name = tag_name
-                    tag.sort_key = sortify(tag_sort_key.lower())
-                    tag.save()
-                meta_tags.append(tag)
+                if lang == settings.LANGUAGE_CODE:
+                    # Allow creating new tag, if it's in default language.
+                    tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
+                    if created:
+                        tag.name = tag_name
+                        setattr(tag, "name_%s" % lang, tag_name)
+                        tag.sort_key = sortify(tag_sort_key.lower())
+                        tag.save()
+                    meta_tags.append(tag)
+                else:
+                    # Ignore unknown tags in non-default languages.
+                    try:
+                        tag = Tag.objects.get(category=category, **{"name_%s" % lang: tag_name})
+                    except Tag.DoesNotExist:
+                        pass
+                    else:
+                        meta_tags.append(tag)
         return meta_tags

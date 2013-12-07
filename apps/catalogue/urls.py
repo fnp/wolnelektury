@@ -34,7 +34,7 @@ urlpatterns += patterns('catalogue.views',
     url(r'^audiobooki/$', 'audiobook_list', name='audiobook_list'),
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
-    url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
+    url(r'^jtags/?$', 'json_tags_starting_with', name='jhint'),
     url(r'^nowe/$', ListView.as_view(
         queryset=Book.objects.filter(parent=None).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),

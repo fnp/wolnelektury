@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load cache i18n %}
+{% load i18n %}
 {% load thumbnail %}
-{% load common_tags catalogue_tags pagination_tags %}
+{% load common_tags catalogue_tags %}
 
 {% block titleextra %}{{ book.pretty_title }}{% endblock %}
 {% block ogimage %}{% if book.cover %}{{ book.cover.url|build_absolute_uri:request }}{% endif %}{% endblock %}

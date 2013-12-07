@@ -41,8 +41,8 @@
 
         <div class="book-box-head">
             <div class="mono author">
-                {% for name, slug in related.tags.author %}
-                    <a href="{% tag_url 'author' slug %}">{{ name }}</a>{% if not forloop.last %},
+                {% for tag in related.tags.author %}
+                    <a href="{% tag_url 'author' tag.slug %}">{% related_tag_name tag %}</a>{% if not forloop.last %},
                 {% endif %}{% endfor %}{% for title, slug in related.parents %},
                     <a href="{% url 'book_detail' slug %}">{{ title }}</a>{% endfor %}
             </div>
@@ -57,22 +57,22 @@
         	{% spaceless %}
 
             <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
-            	{% for name, slug in related.tags.epoch %}
-            		<a href="{% tag_url 'epoch' slug %}">{{ name }}</a>
+            	{% for tag in related.tags.epoch %}
+            		<a href="{% tag_url 'epoch' tag.slug %}">{% related_tag_name tag %}</a>
             		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
                 {% endfor %}
             </span>
 
             <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
-            	{% for name, slug in related.tags.kind %}
-            		<a href="{% tag_url 'kind' slug %}">{{ name }}</a>
+            	{% for tag in related.tags.kind %}
+            		<a href="{% tag_url 'kind' tag.slug %}">{% related_tag_name tag %}</a>
             		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
                 {% endfor %}
             </span>
 
             <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
-            	{% for name, slug in related.tags.genre %}
-            		<a href="{% tag_url 'genre' slug %}">{{ name }}</a>
+            	{% for tag in related.tags.genre %}
+            		<a href="{% tag_url 'genre' tag.slug %}">{% related_tag_name tag %}</a>
             		{% if not forloop.last %}<span>,&nbsp;</span>{% endif %}
                 {% endfor %}
             </span>

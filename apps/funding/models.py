@@ -12,7 +12,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _, ugettext, override
 import getpaid
 from catalogue.models import Book
-from catalogue.utils import get_random_hash
+from catalogue.utils import get_random_hash, related_tag_name
 from polls.models import Poll
 from django.contrib.sites.models import Site
 from . import app_settings
@@ -175,7 +175,7 @@ class Offer(models.Model):
             'funding/email/published.txt', {
                 'offer': self,
                 'book': self.book,
-                'author': ", ".join(a[0] for a in self.book.related_info()['tags']['author']),
+                'author': ", ".join(related_tag_name(a) for a in self.book.related_info()['tags']['author']),
                 'current': self.current(),
             })
 

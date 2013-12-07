@@ -29,7 +29,7 @@
 
 
     <h2 class="main-last"><a href="{% url 'recent_list' %}"><span class="mono">{% trans "Recent publications" %}</span></a></h2>
-        {% cache 60 last-published-on-main %}
+        {% cache 60 last-published-on-main LANGUAGE_CODE %}
             {% for book in last_published %}
                 {% book_mini book %}
             {% endfor %}
