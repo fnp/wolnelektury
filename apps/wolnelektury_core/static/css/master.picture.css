@@ -11,6 +11,7 @@
     margin: 3rem auto 1rem auto;
     display: block;
     z-index: 10;
+    cursor: move;
 }
 #picture-view .picture-wrap img {
     z-index: 10;

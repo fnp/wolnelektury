@@ -110,6 +110,7 @@ PIPELINE_JS = {
             'js/jquery.highlightfade.js',
             'js/book.js',
             'js/picture.js',
+            'js/raphael-min.js',
             'player/openplayer.js',
             'js/progressSpin.min.js',
         ],
