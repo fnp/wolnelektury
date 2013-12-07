@@ -27,7 +27,7 @@
                 <li><a class="menu" href="#info">{% trans "Infobox" %}</a></li>
                 <li><a href="{{ picture.get_absolute_url }}">{% trans "Picture's page" %}</a></li>
 <!-- XXX -->
-                <li><a class="menu" href="#download">{% trans "Download" %}</a></li>
+                <li><a href="{{ picture.image_file.url }}">{% trans "Download" %}</a></li>
             </ul>
         </div>
         <div id="info" class="moveright">

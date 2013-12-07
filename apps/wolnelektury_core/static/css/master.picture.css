@@ -122,10 +122,10 @@ li.button.square {
     width: 9rem;
 }
 #sponsors div {
-    z-index: -10;
+    z-index: 10;
 }
 
 #sponsors img {
     width: 100%;
-    z-index: -10;
+    z-index: 10;
 }

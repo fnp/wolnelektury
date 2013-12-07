@@ -39,6 +39,7 @@
 	    self.spinner = $("#spinner").progressSpin();
 
 	    $(original).load(function() {
+		console.log("loaded original");
 		self._original_loaded = true;
 		self.spinner.stop();
 		var cb = self.original_loaded;
@@ -80,8 +81,8 @@
 	    return self;
 	},
 
-	natural_size: function() { 
-	    var img = this.element.find('img').get(0);
+	natural_size: function() {
+	    var img = this.element.find('img.original').get(0);
 	    return [ img.naturalWidth, img.naturalHeight ] 
 	},
 
@@ -124,7 +125,7 @@
 	    var new_width  = ratio * this.initial_size[0];
 	    var new_height = ratio * this.initial_size[1];
 	    var target = {
-//		'width': new_width,
+		'width': new_width,
 		'left': Math.max(0, 
 				 this.initial_position.left 
 				 - (new_width - this.initial_size[0])/2),
@@ -136,7 +137,7 @@
 	    this._zoom = level;
 
 	    this.element.css(target);
-	    this.element.find(".original").width(new_width);
+	   
 
 //	    this.element.animate(target, 1200); // default duration=400
 	},

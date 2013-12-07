@@ -3,6 +3,7 @@
 {% load chunks %}
 {% load picture_tags %}
 {% load thumbnail %}
+{% load static %}
 
 {% block bodyid %}picture-list{% endblock %}
 
@@ -13,7 +14,10 @@
     <h1>{% block book_list_header %}{% trans "Listing of all pictures" %}{% endblock %}</h1>
 
     <div class="left-column"><div class="normal-text">
-        {% block book_list_info %}{% endblock %}
+        {% block book_list_info %}
+<a href="http://www.nck.pl"><img style="float:right; width:100px;" src="{% static "img/logo_nck_200trans.png" %}" alt="Narodowe Centrum Kultury" ></img></a>
+<p>Galeria zawiera obrazy, rysunki, rzeźby, fotografie pochodzące z kolekcji Muzeum Narodowego w Warszawie. Każde z dzieł oznaczyliśmy motywami występującymi w sztuce i w literaturze. Galerię można więc przeglądać w poszukiwaniu ilustracji do tekstów literackich, a także pod kątem określonych przedmiotów i postaci występujących w sztukach wizualnych. </p>
+{% endblock %}
     </div></div>
 
     <div class='clearboth'></div>
