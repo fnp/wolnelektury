@@ -1,10 +1,18 @@
 {% load i18n %}
 {% if books %}
-<p class="mono">{% trans "Literature" %}
-{{books|safe}}
+<div class="simple-toggler-scope">
+<p class="mono">
+  <a href="#" class="simple-toggler">{% trans "Literature" %}</a>
+</p>
+<div class="simple-hidden-box">{{books|safe}}</div>
+</div>
 {% endif %}
 
 {% if pictures %}
-<p class="mono">{% trans "Gallery" %}
-{{pictures|safe}}
+<div class="simple-toggler-scope">
+<p class="mono">
+  <a href="#" class="simple-toggler">{% trans "Gallery" %}</a>
+</p>
+<div class="simple-hidden-box">{{pictures|safe}}</div>
+</div>
 {% endif %}

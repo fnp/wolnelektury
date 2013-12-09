@@ -73,6 +73,11 @@
             {% if last_tag.gazeta_link or last_tag.wiki_link %}
             <h2 class='mono'>{% trans "See also" %}:</h2>
             <ul>
+        {% if last_tag.culturepl_link %}
+        <li><a href="{{ last_tag.gazeta_link }}">
+        	{% trans "in Culture.pl" %}
+        </a></li>
+        {% endif %}
         {% if last_tag.gazeta_link %}
         <li><a href="{{ last_tag.gazeta_link }}">
         	{% trans "in Lektury.Gazeta.pl" %}

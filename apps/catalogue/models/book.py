@@ -74,6 +74,7 @@ class Book(models.Model):
         from sortify import sortify
 
         self.sort_key = sortify(self.title)
+        self.title = unicode(self.title) # ???
 
         ret = super(Book, self).save(force_insert, force_update, **kwargs)
 

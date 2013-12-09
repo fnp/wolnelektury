@@ -28,24 +28,24 @@
         <div class="tags">
             {% spaceless %}
 
-            <span class="mono">{% trans "Epoch" %}:&nbsp;</span>
+            <span class="mono"> {% trans "Epoch" %}:&nbsp;</span>
             <span class="book-box-tag">
                 {% for tag in tags.epoch %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>{% if not forloop.last %},{% endif %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}
                 {% endfor %}
             </span>
 
-            <span class="mono">{% trans "Kind" %}:&nbsp;</span>
+            <span class="mono"> {% trans "Kind" %}:&nbsp;</span>
             <span class="book-box-tag">
                 {% for tag in tags.kind %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>{% if not forloop.last %},{% endif %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}
                 {% endfor %}
             </span>
 
-            <span class="mono">{% trans "Genre" %}:&nbsp;</span>
+            <span class="mono"> {% trans "Genre" %}:&nbsp;</span>
             <span class="book-box-tag">
                 {% for tag in tags.genre %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }} </a>{% if not forloop.last %},{% endif %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}
                 {% endfor %}
             </span>
 

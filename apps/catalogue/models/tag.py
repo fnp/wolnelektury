@@ -40,6 +40,7 @@ class Tag(TagBase):
     book_count = models.IntegerField(_('book count'), blank=True, null=True)
     picture_count = models.IntegerField(_('picture count'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
+    culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
@@ -119,7 +120,7 @@ class Tag(TagBase):
         
         if self.category == 'book':
             # never used
-            objects = Book.objects.none()
+            objects = Picture.objects.none()
         elif self.category == 'theme':
             objects = Picture.tagged.with_all((self,))
         elif self.category == 'thing':
@@ -195,10 +196,15 @@ class Tag(TagBase):
                     # Allow creating new tag, if it's in default language.
                     tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
                     if created:
+                        tag_name = unicode(tag_name)
                         tag.name = tag_name
                         setattr(tag, "name_%s" % lang, tag_name)
                         tag.sort_key = sortify(tag_sort_key.lower())
-                        tag.save()
+                        try:
+                            tag.save()
+                        except Exception, e:
+                            import pdb; pdb.set_trace()
+                            raise e
                     meta_tags.append(tag)
                 else:
                     # Ignore unknown tags in non-default languages.

@@ -129,3 +129,8 @@ li.button.square {
     width: 100%;
     z-index: 10;
 }
+
+#spinner {
+    height: 1em;
+    z-index:10;
+}

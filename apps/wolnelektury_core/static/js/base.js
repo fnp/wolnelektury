@@ -85,13 +85,15 @@
 					} 
 				});
 			});
+		    /* this kinda breaks the whole page. */
 			$('body').click(function(e) {
 				if ($current == null) return;
 				var p = $(e.target);
 				while (p.length) {
 					if (p == $current)
 						return;
-					if (p.hasClass('hidden-box-trigger'))
+					if (p.hasClass('hidden-box-trigger') 
+					    || p.hasClass('simple-toggler'))
 						return;
 					p = p.parent();
 				}
@@ -121,6 +123,19 @@ $('#themes-list-toggle').click(function(event) {
 
 	$(function(){
 	    $("#search").search();});
+
+      $('body').on('click', '.simple-toggler' , function(ev) {
+	ev.preventDefault();
+	var scope = $(this).closest('.simple-toggler-scope');
+	scope.find('.simple-hidden-box').each(function(){ 
+	  var $this = $(this);
+	  if ($this.is(':hidden')) {
+	    $this.show();
+	  } else { 
+	    $this.hide();
+	  }
+	  });
+      });
 
     });
 })(jQuery);

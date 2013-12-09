@@ -16,7 +16,7 @@ def touch_tag(tag):
         'picture_count': tag.get_picture_count(),
         'changed_at': localtime_to_utc(datetime.now()),
     }
-    print update_dict
+
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
 
 
