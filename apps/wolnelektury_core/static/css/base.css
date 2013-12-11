@@ -182,3 +182,7 @@ h3 {
     margin-top: 2.2em;
     margin-bottom: 1.6em;
 }
+
+.simple-hidden-initially {
+    display: none;
+}
