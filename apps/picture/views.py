@@ -37,7 +37,7 @@ def picture_list_thumb(request, filter=None, get_filter=None, template_name='pic
 def picture_detail(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
 
-    theme_things = split_tags(picture.related_themes_things())
+    theme_things = split_tags(picture.related_themes())
 
     # categories = SortedDict()
     # for tag in picture.tags.iterator():

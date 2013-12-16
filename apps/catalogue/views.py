@@ -273,15 +273,14 @@ def tagged_object_list(request, tags=''):
             categories = split_tags(related_tags)
             del related_tags
 
-            logging.info("Returning %d picutres and %d books" % (pictures.count(), books.count()))
-            objects = SortedMultiQuerySet(pictures, books, order_by='sort_key_author')
+        logging.info("Returning %d picutres and %d books" % (pictures.count(), books.count()))
+        objects = SortedMultiQuerySet(pictures, books, order_by='sort_key_author')
 
 
 
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
-
 
     return render_to_response('catalogue/tagged_object_list.html',
         {
