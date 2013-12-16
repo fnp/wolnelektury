@@ -192,6 +192,52 @@ class MultiQuerySet(object):
                     stop = total_len - len(items)
                     continue
 
+class SortedMultiQuerySet(MultiQuerySet):
+    def __init__(self, *args, **kwargs):
+        self.order_by = kwargs.pop('order_by', None)
+        self.sortfn = kwargs.pop('sortfn', None)
+        if self.order_by is not None:
+            self.sortfn = lambda a, b: cmp(getattr(a, self.order_by), 
+                                           getattr(b, self.order_by))
+        super(SortedMultiQuerySet, self).__init__(*args, **kwargs)
+
+    def __getitem__(self, item):
+        sort_heads = [0] * len(self.querysets)
+        try:
+            indices = (offset, stop, step) = item.indices(self.count())
+        except AttributeError:
+            # it's not a slice - make it one
+            return self[item : item + 1][0]
+        items = []
+        total_len = stop - offset
+        skipped = 0
+        i_s = range(len(sort_heads))
+
+        while len(items) < total_len:
+            candidate = None
+            for i in i_s:
+                def get_next():
+                    return self.querysets[i][sort_heads[i]]
+                try:
+                    if candidate is None:
+                        candidate = get_next()
+                    else:
+                        competitor = get_next()
+                        if self.sortfn(candidate, competitor) > 0:
+                            candidate = competitor
+                except IndexError:
+                    continue # continue next sort_head
+                sort_heads[i] += 1
+            # we have no more elements:
+            if candidate is None:
+                break
+            if skipped < offset:
+                skipped += 1
+                continue # continue next item
+            items.append(candidate)
+        
+        return items
+
 
 def truncate_html_words(s, num, end_text='...'):
     """Truncates HTML to a certain number of words (not counting tags and

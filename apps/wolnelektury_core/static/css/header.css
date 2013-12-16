@@ -150,8 +150,8 @@ li.menu {
 }
 a.menu {
     display: block;
-    padding-left: 1.4em;
-    padding-right: 1.4em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
     /* must match grid-line */
     height: 3.1em;
     padding-top: 1.8em;

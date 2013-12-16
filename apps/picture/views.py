@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.core.paginator import Paginator
 from picture.models import Picture
+from catalogue.utils import split_tags
 
 # was picture/picture_list.html list (without thumbs)
 def picture_list(request, filter=None, get_filter=None, template_name='catalogue/picture_list.html', cache_key=None, context=None):
@@ -36,12 +37,14 @@ def picture_list_thumb(request, filter=None, get_filter=None, template_name='pic
 def picture_detail(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
 
-    categories = SortedDict()
-    for tag in picture.tags.iterator():
-        categories.setdefault(tag.category, []).append(tag)
+    theme_things = split_tags(picture.related_themes_things())
 
-    themes = categories.get('theme', [])
-    things = categories.get('thing', [])
+    # categories = SortedDict()
+    # for tag in picture.tags.iterator():
+    #     categories.setdefault(tag.category, []).append(tag)
+
+    themes = theme_things.get('theme', [])
+    things = theme_things.get('thing', [])
 
     extra_info = picture.extra_info
 

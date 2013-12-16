@@ -55,9 +55,6 @@
       {% if extra_info.about and not hide_about %}
       <li>{% trans "Picture on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
       {% endif %}
-      {% if picture.culturepl_link %}
-      <li><a href="{{ picture.culturepl_link }}">{% trans "Picture description on Lektury.Gazeta.pl" %}</a></li>
-      {% endif %}
       {% if picture.wiki_link %}
       <li><a href="{{ picture.wiki_link }}">{% trans "Picture description on Wikipedia" %}</a></li>
       {% endif %}

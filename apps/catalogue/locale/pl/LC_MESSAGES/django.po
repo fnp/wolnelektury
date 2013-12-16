@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 09:19+0100\n"
-"PO-Revision-Date: 2013-12-16 09:29+0100\n"
+"PO-Revision-Date: 2013-12-16 15:51+0100\n"
 "Last-Translator: Marcin Koziej <marcinkoziej@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -321,7 +321,7 @@ msgstr ""
 
 #: templates/catalogue/book_info.html:20
 msgid "Resource prepared based on:"
-msgstr "Tekst opracowany na podstawie:"
+msgstr "Zasób opracowany na podstawie:"
 
 #: templates/catalogue/book_info.html:28
 msgid "Edited and annotated by:"

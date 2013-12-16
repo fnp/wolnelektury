@@ -14,7 +14,7 @@ SLUG = r'[a-z0-9-]*'
 
 urlpatterns = patterns('picture.views',
     # pictures - currently pictures are coupled with catalogue, hence the url is here
-    url(r'^obraz/?$', 'picture_list_thumb'),
+    url(r'^obraz/?$', 'picture_list_thumb', name='picture_list_thumb'),
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
     url(r'^obraz/(?P<slug>%s)/?$' % SLUG, 'picture_detail'),
 
@@ -65,7 +65,5 @@ urlpatterns += patterns('catalogue.views',
         'book_fragments', name='book_fragments'),
 
     # This should be the last pattern.
-    url(r'^literatura/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'literature': True, 'gallery': False}, name='tagged_object_list'),
-    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'literature': False, 'gallery': True}, name='tagged_object_list'),
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 )
