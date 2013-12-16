@@ -18,8 +18,8 @@ def generate_picture_html(picture_id):
 
     
     html_text = unicode(render_to_string('picture/picture_info.html', {
-                'things': pic.areas['things'], 
-                'themes': pic.areas['themes'],
+                'things': pic.areas_json['things'], 
+                'themes': pic.areas_json['themes'],
                 }))
     pic.html_file.save("%s.html" % pic.slug, ContentFile(html_text))
 

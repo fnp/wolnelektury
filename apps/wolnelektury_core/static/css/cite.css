@@ -120,12 +120,12 @@
 	color: black;
 	display: block;
 }
-.Fragment-item .toggle {
+.Fragment-item .toggle, .PictureArea-item .toggle {
 	font-size: 1.1em;
 	display:block;
 	padding: .5em 0;
 }
-.Fragment-item {
+.Fragment-item, .PictureArea-item {
 	margin-bottom: 2em;
 	/* white-box */
 	border: 1px solid #ddd;
@@ -133,4 +133,25 @@
     -moz-box-shadow: 2px 2px 2px #ddd;
     -webkit-box-shadow: 2px 2px 2px #ddd;
     box-shadow: 2px 2px 2px #ddd;
+}
+
+.area {
+    display: block;
+    color: black;
+    background: white;
+    padding: 3em 2em 2em 2em;
+    position:relative;
+    clear: both;
+}
+
+.area .area-thumbnail {
+    display:block;
+    width:100px;
+    float: left;
+}
+
+.area .area-description {
+    float: right;
+    padding: 1em 1em;
+    width: 16rem; /* FIX */
 }

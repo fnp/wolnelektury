@@ -15,10 +15,10 @@ class CustomCroppingEngine(pil_engine.Engine):
     """
     def create(self, image, geometry, options):
         image = self.orientation(image, geometry, options)
-    image = self.colorspace(image, geometry, options)
-    image = self.crop(image, geometry, options)
-    image = self.scale(image, geometry, options)
-    return image
+        image = self.colorspace(image, geometry, options)
+        image = self.crop(image, geometry, options)
+        image = self.scale(image, geometry, options)
+        return image
 
     def _crop_parse(self, crop, xy_image, xy_window):
         """
@@ -38,10 +38,10 @@ class CustomCroppingEngine(pil_engine.Engine):
             unit = m.group('unit')
             if unit == '%':
                 value = epsilon * value / 100.0
-                return int(max(0, min(value, epsilon)))
+            return int(max(0, min(value, epsilon)))
         x1 = get_offset(x1, xy_image[0])
-        y1 = get_offset(y1, xy_image[0])
-        x2 = get_offset(x2, xy_image[1])
+        y1 = get_offset(y1, xy_image[1])
+        x2 = get_offset(x2, xy_image[0])
         y2 = get_offset(y2, xy_image[1])
         return x1, y1, x2, y2
 

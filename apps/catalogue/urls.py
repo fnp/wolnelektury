@@ -65,5 +65,7 @@ urlpatterns += patterns('catalogue.views',
         'book_fragments', name='book_fragments'),
 
     # This should be the last pattern.
+    url(r'^literatura/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'literature': True, 'gallery': False}, name='tagged_object_list'),
+    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'literature': False, 'gallery': True}, name='tagged_object_list'),
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 )

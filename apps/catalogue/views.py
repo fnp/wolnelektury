@@ -28,9 +28,9 @@ from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
-from picture.models import Picture
+from picture.models import Picture, PictureArea
 from picture.views import picture_list_thumb
-
+import logging
 staff_required = user_passes_test(lambda user: user.is_staff)
 permanent_cache = get_cache('permanent')
 
@@ -149,16 +149,21 @@ def differentiate_tags(request, tags, ambiguous_slugs):
                 context_instance=RequestContext(request))
 
 
-def tagged_object_list(request, tags=''):
+# TODO: Rewrite this hellish piece of code which tries to do everything
+def tagged_object_list(request, tags='', gallery=True, literature=True):
+    # preliminary tests and conditions
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
+        # Perhaps the user is asking about an author in Public Domain
+        # counter (they are not represented in tags)
         chunks = tags.split('/')
         if len(chunks) == 2 and chunks[0] == 'autor':
             return pdcounter_views.author_detail(request, chunks[1])
         else:
             raise Http404
     except models.Tag.MultipleObjectsReturned, e:
+        # Ask the user to disambiguate
         return differentiate_tags(request, e.tags, e.ambiguous_slugs)
     except models.Tag.UrlDeprecationWarning, e:
         return HttpResponsePermanentRedirect(reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)]))
@@ -172,20 +177,31 @@ def tagged_object_list(request, tags=''):
     if len([tag for tag in tags if tag.category == 'book']):
         raise Http404
 
+    # beginning of digestion
+
     theme_is_set = [tag for tag in tags if tag.category == 'theme']
     shelf_is_set = [tag for tag in tags if tag.category == 'set']
     only_shelf = shelf_is_set and len(tags) == 1
     only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
 
+
     objects = only_author = None
     categories = {}
+    object_queries = []
 
     if theme_is_set:
         shelf_tags = [tag for tag in tags if tag.category == 'set']
         fragment_tags = [tag for tag in tags if tag.category != 'set']
-        fragments = models.Fragment.tagged.with_all(fragment_tags)
+        if literature:
+            fragments = models.Fragment.tagged.with_all(fragment_tags)
+        else:
+            fragments = models.Fragment.objects.none()
+        if gallery:
+            areas = PictureArea.tagged.with_all(fragment_tags)
+        else:
+            areas = PictureArea.objects.none()
 
-        if shelf_tags:
+        if shelf_tags and literature:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
             l_tags = models.Tag.objects.filter(category='book',
                 slug__in=[book.book_tag_slug() for book in books.iterator()])
@@ -194,43 +210,65 @@ def tagged_object_list(request, tags=''):
         # newtagging goes crazy if we just try:
         #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True,
         #                    extra={'where': ["catalogue_tag.category != 'book'"]})
+
+        related_tags = []
+
         fragment_keys = [fragment.pk for fragment in fragments.iterator()]
         if fragment_keys:
             related_tags = models.Fragment.tags.usage(counts=True,
                                 filters={'pk__in': fragment_keys},
                                 extra={'where': ["catalogue_tag.category != 'book'"]})
             related_tags = (tag for tag in related_tags if tag not in fragment_tags)
-            categories = split_tags(related_tags)
+            categories = split_tags(related_tags, categories)
 
-            objects = fragments
+        object_queries.insert(0, fragments)
+
+        area_keys = [area.pk for area in areas.iterator()]
+        if area_keys:
+            related_tags = PictureArea.tags.usage(counts=True,
+                                                         filters={'pk__in': area_keys})
+            related_tags = (tag for tag in related_tags if tag not in fragment_tags)     
+                                                      
+            categories = split_tags(related_tags, categories)
+        object_queries.append(areas)
+        objects = MultiQuerySet(*object_queries)
     else:
-        if shelf_is_set:
-            objects = models.Book.tagged.with_all(tags)
+        if literature:
+            if shelf_is_set:
+                books = models.Book.tagged.with_all(tags)
+            else:
+                books = models.Book.tagged_top_level(tags)
         else:
-            objects = models.Book.tagged_top_level(tags)
+            books = models.Book.objects.none()
 
-        # get related tags from `tag_counter` and `theme_counter`
-        related_counts = {}
-        tags_pks = [tag.pk for tag in tags]
-        for book in objects:
-            for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
-                if tag_pk in tags_pks:
-                    continue
-                related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
-        related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
-        related_tags = [tag for tag in related_tags if tag not in tags]
-        for tag in related_tags:
-            tag.count = related_counts[tag.pk]
+        if gallery:
+            pictures = Picture.tagged.with_all(tags)
+        else:
+            pictures = Picture.objects.none()
+            
+        if literature and books.count() > 0:
+            # get related tags from `tag_counter` and `theme_counter`
+            related_counts = {}
+            tags_pks = [tag.pk for tag in tags]
+            for book in books:
+                for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
+                    if tag_pk in tags_pks:
+                        continue
+                    related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
+            related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
+            related_tags = [tag for tag in related_tags if tag not in tags]
+            for tag in related_tags:
+                tag.count = related_counts[tag.pk]
 
-        categories = split_tags(related_tags)
-        del related_tags
+            categories = split_tags(related_tags)
+            del related_tags
+
+        objects = MultiQuerySet(pictures, books)
 
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
 
-    # Add pictures
-    objects = MultiQuerySet(Picture.tagged.with_all(tags), objects)
 
     return render_to_response('catalogue/tagged_object_list.html',
         {

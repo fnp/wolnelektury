@@ -1,15 +1,16 @@
 {% load pagination_tags %}
-{% load book_short from catalogue_tags %}
+{% load book_short class_name book_short from catalogue_tags %}
 {% load picture_short from picture_tags %}
 
 {% autopaginate object_list 10 %}
 {% spaceless %}
 <ol class='work-list'>
 {% for item in object_list %}
-    <li class='Book-item'>
+    <li class='{% class_name item %}-item'>
         {% if item.short_html %}
             {{ item.short_html }}
-        {% elif object_type == "Picture"  %}
+{# since we are using shor_html eerywhere, is it needed anymore? #}
+        {% elif item.object_type == "Picture"  %}
             {% picture_short item %}
         {% else %}
             {% book_short item %}

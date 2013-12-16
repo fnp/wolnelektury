@@ -6,14 +6,19 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
 from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 from django.core.cache import get_cache
-from catalogue.utils import split_tags
+from catalogue.utils import split_tags, related_tag_name
 from django.utils.safestring import mark_safe
 from fnpdjango.utils.text.slughifi import slughifi
 from picture import tasks
 from StringIO import StringIO
 import jsonfield
 import itertools
+import logging
+logging.basicConfig(level=logging.DEBUG)
+from sorl.thumbnail import get_thumbnail, default
+from .engine import CustomCroppingEngine
 
 from PIL import Image
 
@@ -25,6 +30,32 @@ from os import path
 picture_storage = FileSystemStorage(location=path.join(
         settings.MEDIA_ROOT, 'pictures'),
         base_url=settings.MEDIA_URL + "pictures/")
+
+
+class PictureArea(models.Model):
+    picture = models.ForeignKey('picture.Picture', related_name='areas')
+    area = jsonfield.JSONField(_('area'), default={}, editable=False)
+    kind = models.CharField(_('kind'), max_length=10, blank=False, 
+                           null=False, db_index=True, 
+                           choices=(('thing', _('thing')), 
+                                    ('theme', _('theme'))))
+
+    objects     = models.Manager()
+    tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
+    tags        = managers.TagDescriptor(catalogue.models.Tag)
+
+    @classmethod
+    def rectangle(cls, picture, kind, coords):
+        pa = PictureArea()
+        pa.picture = picture
+        pa.kind = kind
+        pa.area = coords
+        return pa
+
+    def short_html(self):
+        short_html = unicode(render_to_string(
+                'picture/picturearea_short.html', {'area': self}))
+        return mark_safe(short_html)
 
 
 class Picture(models.Model):
@@ -40,10 +71,13 @@ class Picture(models.Model):
     xml_file    = models.FileField('xml_file', upload_to="xml", storage=picture_storage)
     image_file  = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
     html_file   = models.FileField('html_file', upload_to="html", storage=picture_storage)
-    areas       = jsonfield.JSONField(_('picture areas'), default={}, editable=False)
+    areas_json       = jsonfield.JSONField(_('picture areas JSON'), default={}, editable=False)
     extra_info    = jsonfield.JSONField(_('extra information'), default={})
     culturepl_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
+
+    width       = models.IntegerField(null=True)
+    height      = models.IntegerField(null=True)
 
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
@@ -110,7 +144,8 @@ class Picture(models.Model):
             if not created and not overwrite:
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
-            picture.title = picture_xml.picture_info.title
+            picture.areas.all().delete()
+            picture.title = unicode(picture_xml.picture_info.title)
             picture.extra_info = picture_xml.picture_info.to_dict()
 
             motif_tags = set()
@@ -128,27 +163,39 @@ class Picture(models.Model):
                         tag.name = objname
                         tag.sort_key = sortify(tag.name)
                         tag.save()
-                    thing_tags.add(tag)
+                    #thing_tags.add(tag)
                     area_data['things'][tag.slug] = {
                         'object': part['object'],
                         'coords': part['coords'],
                         }
+                    area = PictureArea.rectangle(picture, 'thing', part['coords'])
+                    area.save()
+                    _tags = set()
+                    _tags.add(tag)
+                    area.tags = _tags
                 else:
+                    _tags = set()
                     for motif in part['themes']:
                         tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
                         if created:
                             tag.name = motif
                             tag.sort_key = sortify(tag.name)
                             tag.save()
-                        motif_tags.add(tag)
+                        #motif_tags.add(tag)
+                        _tags.add(tag)
                         area_data['themes'][tag.slug] = {
                             'theme': motif,
                             'coords': part['coords']
                             }
 
+                    logging.debug("coords for theme: %s" % part['coords'])
+                    area = PictureArea.rectangle(picture, 'theme', part['coords'])
+                    area.save()
+                    area.tags = _tags
+
             picture.tags = catalogue.models.Tag.tags_from_info(picture_xml.picture_info) + \
                 list(motif_tags) + list(thing_tags)
-            picture.areas = area_data
+            picture.areas_json = area_data
 
             if image_file is not None:
                 img = image_file
@@ -156,15 +203,19 @@ class Picture(models.Model):
                 img = picture_xml.image_file()
 
             modified = cls.crop_to_frame(picture_xml, img)
+            picture.width, picture.height = modified.size
+
+            modified_file = StringIO()
+            modified.save(modified_file, format='png', quality=95)
             # FIXME: hardcoded extension - detect from DC format or orginal filename
-            picture.image_file.save(path.basename(picture_xml.image_path), File(modified))
+            picture.image_file.save(path.basename(picture_xml.image_path), File(modified_file))
 
             picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
             picture.save()
             tasks.generate_picture_html(picture.id)
 
         except Exception, ex:
-            print "Rolling back a transaction"
+            logging.exception("Exception during import, rolling back")
             transaction.rollback()
             raise ex
 
@@ -180,13 +231,11 @@ class Picture(models.Model):
 
     @classmethod
     def crop_to_frame(cls, wlpic, image_file):
-        if wlpic.frame is None:
-            return image_file
         img = Image.open(image_file)
+        if wlpic.frame is None:
+            return img
         img = img.crop(itertools.chain(*wlpic.frame))
-        contents = StringIO()
-        img.save(contents, format='png', quality=95)
-        return contents
+        return img
 
     @classmethod
     def picture_list(cls, filter=None):
@@ -251,3 +300,17 @@ class Picture(models.Model):
             if self.id:
                 get_cache('permanent').set(cache_key, short_html)
             return mark_safe(short_html)
+
+    def pretty_title(self, html_links=False):
+        picture = self
+        # TODO Add translations (related_tag_info)
+        names = [(tag.name,
+                  catalogue.models.Tag.create_url('author', tag.slug))
+                 for tag in self.tags.filter(category='author')]
+        names.append((self.title, self.get_absolute_url()))
+
+        if html_links:
+            names = ['<a href="%s">%s</a>' % (tag[1], tag[0]) for tag in names]
+        else:
+            names = [tag[0] for tag in names]
+        return ', '.join(names)

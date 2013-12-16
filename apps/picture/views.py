@@ -51,7 +51,6 @@ def picture_detail(request, slug):
 
 def picture_viewer(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
-    
     return render_to_response("picture/picture_viewer.html", locals(),
                               context_instance=RequestContext(request))
                               

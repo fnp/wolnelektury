@@ -10,3 +10,21 @@
 .picture li.book-box-download {
     width: 15em;
 }
+
+
+.Picture-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 48.5em;
+    float: left;
+}
+
+
+.picture.book-wide-box .other-tools {
+    margin: 5em 0 0 0;
+}
+
+
+.picture.book-wide-box #theme-list-wrapper {
+    margin-left: 55em;
+}

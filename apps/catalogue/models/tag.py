@@ -116,13 +116,13 @@ class Tag(TagBase):
     # I shouldn't break the get_count() api 
     # just to include pictures.
     def get_picture_count(self):
-        from picture.models import Picture
+        from picture.models import Picture, PictureArea
         
         if self.category == 'book':
             # never used
             objects = Picture.objects.none()
         elif self.category == 'theme':
-            objects = Picture.tagged.with_all((self,))
+            objects = PictureArea.tagged.with_all((self,))
         elif self.category == 'thing':
             objects = Picture.tagged.with_all((self,))
         else:
@@ -200,11 +200,8 @@ class Tag(TagBase):
                         tag.name = tag_name
                         setattr(tag, "name_%s" % lang, tag_name)
                         tag.sort_key = sortify(tag_sort_key.lower())
-                        try:
-                            tag.save()
-                        except Exception, e:
-                            import pdb; pdb.set_trace()
-                            raise e
+                        tag.save()
+
                     meta_tags.append(tag)
                 else:
                     # Ignore unknown tags in non-default languages.

@@ -38,8 +38,12 @@ def get_random_hash(seed):
     return urlsafe_b64encode(sha_digest).replace('=', '').replace('_', '-').lower()
 
 
-def split_tags(tags):
-    result = {}
+def split_tags(tags, initial=None):
+    if initial is None:
+        result = {}
+    else:
+        result = initial
+    
     for tag in tags:
         result.setdefault(tag.category, []).append(tag)
     return result
