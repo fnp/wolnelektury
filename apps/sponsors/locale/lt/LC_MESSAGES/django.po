@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:40+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2012-03-01 16:13+0100\n"
 "Last-Translator: Aneta\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: models.py:20 models.py:36
+#: models.py:21 models.py:37
 msgid "name"
 msgstr "pavadinimas"
 
-#: models.py:21
+#: models.py:22
 msgid "description"
 msgstr "aprašymas"
 
-#: models.py:22
+#: models.py:23
 msgid "logo"
 msgstr "logotipas"
 
-#: models.py:23
+#: models.py:24
 msgid "url"
 msgstr "url"
 
-#: models.py:37
+#: models.py:38
 msgid "sponsors"
 msgstr "rėmėjai"

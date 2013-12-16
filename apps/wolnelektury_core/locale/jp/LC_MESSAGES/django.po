@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:38+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2012-02-07 15:50+0100\n"
 "Last-Translator: Marcin Koziej <marcin@lolownia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,20 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: views.py:33 views.py:34 templates/superbase.html:84
+#: views.py:34 views.py:35 templates/superbase.html:85
 msgid "Sign in"
 msgstr "Zaloguj"
 
-#: views.py:40 views.py:61
+#: views.py:41 views.py:62
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr ""
 
-#: views.py:52 views.py:53 views.py:81 templates/superbase.html:88
+#: views.py:53 views.py:54 views.py:82 templates/superbase.html:89
 msgid "Register"
 msgstr ""
 
-#: views.py:76
+#: views.py:77
 msgid "You have to be logged in to continue"
 msgstr ""
 
@@ -75,48 +75,52 @@ msgstr ""
 msgid "Wolne Lektury internet library"
 msgstr ""
 
-#: templates/main_page.html:20
+#: templates/main_page.html:23
 msgid "What's new?"
 msgstr ""
 
-#: templates/main_page.html:28
+#: templates/main_page.html:31
 msgid "Recent publications"
 msgstr ""
 
-#: templates/main_page.html:38
+#: templates/main_page.html:41
 msgid "News"
 msgstr ""
 
-#: templates/main_page.html:46
+#: templates/main_page.html:50
 msgid "Utilities"
 msgstr ""
 
-#: templates/main_page.html:49
+#: templates/main_page.html:53
 msgid "Report a bug or suggestion"
 msgstr ""
 
-#: templates/main_page.html:53
+#: templates/main_page.html:56
 msgid "Download the catalogue in PDF format."
 msgstr ""
 
-#: templates/main_page.html:55
+#: templates/main_page.html:58
 msgid "Widget"
 msgstr ""
 
-#: templates/main_page.html:56
+#: templates/main_page.html:59
 msgid "Missing a book?"
 msgstr ""
 
-#: templates/main_page.html:57 templates/publish_plan.html:4
+#: templates/main_page.html:60 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr ""
 
-#: templates/main_page.html:64
+#: templates/main_page.html:71
 msgid "Information"
 msgstr ""
 
-#: templates/main_page.html:88
+#: templates/main_page.html:73
+msgid "Privacy policy"
+msgstr ""
+
+#: templates/main_page.html:98
 msgid "Image used:"
 msgstr ""
 
@@ -124,7 +128,7 @@ msgstr ""
 msgid "Wolne Lektury"
 msgstr ""
 
-#: templates/superbase.html:54
+#: templates/superbase.html:55
 #, python-format
 msgid ""
 "\n"
@@ -139,43 +143,43 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/superbase.html:65
+#: templates/superbase.html:66
 msgid "Welcome"
 msgstr ""
 
-#: templates/superbase.html:71 templates/user.html:12
+#: templates/superbase.html:72 templates/user.html:12
 msgid "Password"
 msgstr ""
 
-#: templates/superbase.html:72 templates/user.html:13
+#: templates/superbase.html:73 templates/user.html:13
 msgid "E-mail"
 msgstr ""
 
-#: templates/superbase.html:73 templates/user.html:14
+#: templates/superbase.html:74 templates/user.html:14
 msgid "Social accounts"
 msgstr ""
 
-#: templates/superbase.html:76
+#: templates/superbase.html:77
 msgid "My shelf"
 msgstr ""
 
-#: templates/superbase.html:78
+#: templates/superbase.html:79
 msgid "Administration"
 msgstr ""
 
-#: templates/superbase.html:80
+#: templates/superbase.html:81
 msgid "Logout"
 msgstr ""
 
-#: templates/superbase.html:110
+#: templates/superbase.html:111
 msgid "Search"
 msgstr ""
 
-#: templates/superbase.html:133
+#: templates/superbase.html:131
 msgid "Language versions"
 msgstr ""
 
-#: templates/superbase.html:166
+#: templates/superbase.html:165
 msgid ""
 "\n"
 "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
@@ -188,7 +192,7 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/superbase.html:173
+#: templates/superbase.html:172
 msgid ""
 "\n"
 "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
@@ -198,11 +202,11 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 
-#: templates/superbase.html:190
+#: templates/superbase.html:189
 msgid "Close"
 msgstr ""
 
-#: templates/superbase.html:192
+#: templates/superbase.html:191
 msgid "Loading"
 msgstr ""
 
@@ -308,22 +312,22 @@ msgstr ""
 msgid "Account Connections"
 msgstr ""
 
-#: templates/socialaccount/connections.html:11
+#: templates/socialaccount/connections.html:12
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr ""
 
-#: templates/socialaccount/connections.html:35
+#: templates/socialaccount/connections.html:36
 msgid "Remove"
 msgstr ""
 
-#: templates/socialaccount/connections.html:43
+#: templates/socialaccount/connections.html:44
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr ""
 
-#: templates/socialaccount/connections.html:46
+#: templates/socialaccount/connections.html:47
 msgid "Add a 3rd Party Account"
 msgstr ""
 
@@ -332,7 +336,7 @@ msgstr ""
 msgid "Login Cancelled"
 msgstr ""
 
-#: templates/socialaccount/login_cancelled.html:14
+#: templates/socialaccount/login_cancelled.html:15
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "

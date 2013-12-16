@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-07 12:31+0200\n"
-"PO-Revision-Date: 2013-08-07 12:32+0100\n"
-"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"POT-Creation-Date: 2013-12-16 09:19+0100\n"
+"PO-Revision-Date: 2013-12-16 09:29+0100\n"
+"Last-Translator: Marcin Koziej <marcinkoziej@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "Duży"
 msgid "Queue is full. Please try again later."
 msgstr "Kolejka jest pełna. Proszę spróbować ponownie później."
 
-#: views.py:521
+#: views.py:585
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -85,20 +85,20 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:522
+#: views.py:586
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:524
+#: views.py:588
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:556
+#: views.py:620
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:557 templates/catalogue/book_short.html:96
+#: views.py:621 templates/catalogue/book_short.html:92
 #: templates/catalogue/book_text.html:27 templates/catalogue/book_wide.html:63
 msgid "Download"
 msgstr "Pobierz"
@@ -107,12 +107,12 @@ msgstr "Pobierz"
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:29 models/tag.py:32
+#: models/book.py:29 models/tag.py:34
 msgid "sort key"
 msgstr "klucz sortowania"
 
 #: models/book.py:30 models/book.py:32 models/collection.py:12
-#: models/collection.py:15 models/tag.py:31
+#: models/collection.py:15 models/tag.py:33
 msgid "slug"
 msgstr "slug"
 
@@ -120,13 +120,13 @@ msgstr "slug"
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:35 models/book.py:145 models/collection.py:13
-#: models/tag.py:35 models/tag.py:89
+#: models/book.py:35 models/book.py:146 models/collection.py:13
+#: models/tag.py:37 models/tag.py:94
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:36 models/book.py:37 models/bookmedia.py:29 models/tag.py:42
-#: models/tag.py:43
+#: models/book.py:36 models/book.py:37 models/bookmedia.py:29 models/tag.py:46
+#: models/tag.py:47
 msgid "creation date"
 msgstr "data utworzenia"
 
@@ -142,7 +142,7 @@ msgstr "dodatkowe informacje"
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:66 models/tag.py:21
+#: models/book.py:66 models/collection.py:18 models/tag.py:22
 msgid "book"
 msgstr "książka"
 
@@ -150,17 +150,17 @@ msgstr "książka"
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:243
+#: models/book.py:244
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:257
+#: models/book.py:258
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:590 models/bookmedia.py:23
+#: models/book.py:599 models/bookmedia.py:23
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -169,7 +169,7 @@ msgstr "plik %s"
 msgid "type"
 msgstr "typ"
 
-#: models/bookmedia.py:27 models/tag.py:30
+#: models/bookmedia.py:27 models/tag.py:32
 msgid "name"
 msgstr "nazwa"
 
@@ -185,11 +185,15 @@ msgstr "media książki"
 msgid "book slugs"
 msgstr "slugi utworów"
 
-#: models/collection.py:20
+#: models/collection.py:18 models/tag.py:18
+msgid "kind"
+msgstr "rodzaj"
+
+#: models/collection.py:22
 msgid "collection"
 msgstr "kolekcja"
 
-#: models/collection.py:21
+#: models/collection.py:23
 msgid "collections"
 msgstr "kolekcje"
 
@@ -201,47 +205,51 @@ msgstr "fragment"
 msgid "fragments"
 msgstr "fragmenty"
 
-#: models/tag.py:15
+#: models/tag.py:16
 msgid "author"
 msgstr "autor"
 
-#: models/tag.py:16
+#: models/tag.py:17
 msgid "epoch"
 msgstr "epoka"
 
-#: models/tag.py:17
-msgid "kind"
-msgstr "rodzaj"
-
-#: models/tag.py:18
+#: models/tag.py:19
 msgid "genre"
 msgstr "gatunek"
 
-#: models/tag.py:19
+#: models/tag.py:20
 msgid "theme"
 msgstr "motyw"
 
-#: models/tag.py:20
+#: models/tag.py:21
 msgid "set"
 msgstr "półka"
 
-#: models/tag.py:33
+#: models/tag.py:23
+msgid "thing"
+msgstr "przedmiot"
+
+#: models/tag.py:35
 msgid "category"
 msgstr "kategoria"
 
-#: models/tag.py:38
+#: models/tag.py:40
 msgid "book count"
 msgstr "liczba książek"
 
-#: models/tag.py:60
+#: models/tag.py:41
+msgid "picture count"
+msgstr "liczba obrazów"
+
+#: models/tag.py:65
 msgid "tag"
 msgstr "tag"
 
-#: models/tag.py:61
+#: models/tag.py:66
 msgid "tags"
 msgstr "tagi"
 
-#: models/tag.py:78
+#: models/tag.py:83
 msgid ""
 "Book tags can't have attached links. Set them directly on the book instead "
 "of it's tag."
@@ -272,9 +280,9 @@ msgstr ""
 "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
 "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
 
-#: templates/catalogue/book_detail.html:21
+#: templates/catalogue/book_detail.html:20
 #: templates/catalogue/tagged_object_list.html:74
-#: templates/catalogue/tagged_object_list.html:104
+#: templates/catalogue/tagged_object_list.html:109
 msgid "See also"
 msgstr "Zobacz też"
 
@@ -303,8 +311,8 @@ msgid ""
 "Commons Attribution-ShareAlike 3.0</a>\n"
 "        license."
 msgstr ""
-"Ten utwór nie jest objęty majątkowym prawem autorskim i&nbsp;znajduje się w&nbsp;"
-"domenie publicznej, co oznacza że możesz go swobodnie wykorzystywać, "
+"Ten utwór nie jest objęty majątkowym prawem autorskim i&nbsp;znajduje się "
+"w&nbsp;domenie publicznej, co oznacza że możesz go swobodnie wykorzystywać, "
 "publikować i&nbsp;rozpowszechniać. Jeśli utwór opatrzony jest dodatkowymi "
 "materiałami (przypisy, motywy literackie etc.), które podlegają prawu "
 "autorskiemu, to te dodatkowe materiały udostępnione są na licencji <a href="
@@ -312,7 +320,7 @@ msgstr ""
 "Na tych samych warunkach 3.0</a>."
 
 #: templates/catalogue/book_info.html:20
-msgid "Text prepared based on:"
+msgid "Resource prepared based on:"
 msgstr "Tekst opracowany na podstawie:"
 
 #: templates/catalogue/book_info.html:28
@@ -323,7 +331,7 @@ msgstr "Opracowanie redakcyjne i przypisy:"
 msgid "Publication funded by:"
 msgstr "Publikację ufundowali i ufundowały:"
 
-#: templates/catalogue/book_info.html:41
+#: templates/catalogue/book_info.html:39
 msgid "Cover image by:"
 msgstr "Ilustracja na okładce:"
 
@@ -335,53 +343,53 @@ msgstr "Spis wszystkich utworów"
 msgid "Table of Content"
 msgstr "Spis treści"
 
-#: templates/catalogue/book_list.html:31
+#: templates/catalogue/book_list.html:30
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:61
+#: templates/catalogue/book_short.html:59
 #: templates/catalogue/picture_detail.html:54
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:69
+#: templates/catalogue/book_short.html:66
 #: templates/catalogue/picture_detail.html:60
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:77
+#: templates/catalogue/book_short.html:73
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:92
+#: templates/catalogue/book_short.html:88
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:99
+#: templates/catalogue/book_short.html:95
 #: templates/catalogue/book_text.html:40
 msgid "to print"
 msgstr "do druku"
 
-#: templates/catalogue/book_short.html:102
+#: templates/catalogue/book_short.html:98
 msgid "for an e-book reader"
 msgstr "na czytnik e-booków"
 
-#: templates/catalogue/book_short.html:105
+#: templates/catalogue/book_short.html:101
 #: templates/catalogue/book_text.html:46
 msgid "for Kindle"
 msgstr "na Kindle"
 
-#: templates/catalogue/book_short.html:108
+#: templates/catalogue/book_short.html:104
 #: templates/catalogue/book_text.html:49
 msgid "FictionBook"
 msgstr "FictionBook"
 
-#: templates/catalogue/book_short.html:111
+#: templates/catalogue/book_short.html:107
 #: templates/catalogue/book_text.html:52
 msgid "for advanced usage"
 msgstr "do zadań specjalnych"
 
-#: templates/catalogue/book_short.html:117
+#: templates/catalogue/book_short.html:113
 #: templates/catalogue/book_text.html:30
 msgid "Listen"
 msgstr "Słuchaj"
@@ -394,7 +402,7 @@ msgstr "Wolne Lektury"
 msgid "Table of contents"
 msgstr "Spis treści"
 
-#: templates/catalogue/book_text.html:23 templatetags/catalogue_tags.py:419
+#: templates/catalogue/book_text.html:23 templatetags/catalogue_tags.py:420
 msgid "Themes"
 msgstr "Motywy"
 
@@ -460,7 +468,6 @@ msgid "Mix this book"
 msgstr "Miksuj treść utworu"
 
 #: templates/catalogue/catalogue.html:6 templates/catalogue/catalogue.html:11
-#: templates/catalogue/menu.html:5
 msgid "Catalogue"
 msgstr "Katalog"
 
@@ -471,28 +478,28 @@ msgstr "Pobierz katalog w formacie PDF."
 #: templates/catalogue/catalogue.html:19
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
-#: templatetags/catalogue_tags.py:415
+#: templatetags/catalogue_tags.py:416
 msgid "Authors"
 msgstr "Autorzy"
 
 #: templates/catalogue/catalogue.html:22
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
-#: templatetags/catalogue_tags.py:417
+#: templatetags/catalogue_tags.py:418
 msgid "Kinds"
 msgstr "Rodzaje"
 
 #: templates/catalogue/catalogue.html:25
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
-#: templatetags/catalogue_tags.py:416
+#: templatetags/catalogue_tags.py:417
 msgid "Genres"
 msgstr "Gatunki"
 
 #: templates/catalogue/catalogue.html:28
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
-#: templatetags/catalogue_tags.py:418
+#: templatetags/catalogue_tags.py:419
 msgid "Epochs"
 msgstr "Epoki"
 
@@ -500,7 +507,7 @@ msgstr "Epoki"
 msgid "Themes and topics"
 msgstr "Motywy i tematy"
 
-#: templates/catalogue/catalogue.html:34 templates/catalogue/menu.html:20
+#: templates/catalogue/catalogue.html:34 templates/catalogue/menu.html:16
 msgid "Collections"
 msgstr "Kolekcje"
 
@@ -544,23 +551,19 @@ msgstr "Zwiń fragment"
 msgid "See full category"
 msgstr "Zobacz całą kategorię"
 
-#: templates/catalogue/menu.html:4
-msgid "Catalogue of the library"
-msgstr ""
-
-#: templates/catalogue/menu.html:13 templates/catalogue/menu.html.py:22
+#: templates/catalogue/menu.html:9 templates/catalogue/menu.html.py:18
 msgid "Please wait…"
 msgstr "Proszę czekać…"
 
-#: templates/catalogue/menu.html:28
+#: templates/catalogue/menu.html:24
 msgid "All books"
 msgstr "Wszystkie utwory"
 
-#: templates/catalogue/menu.html:32
+#: templates/catalogue/menu.html:28
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/catalogue/menu.html:36
+#: templates/catalogue/menu.html:32
 msgid "DAISY"
 msgstr "DAISY"
 
@@ -696,7 +699,7 @@ msgid "Other results"
 msgstr "Inne wyniki"
 
 #: templates/catalogue/search_no_hits.html:19
-#: templates/catalogue/tagged_object_list.html:146
+#: templates/catalogue/tagged_object_list.html:151
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Przepraszamy! Brak wyników spełniających kryteria podane w zapytaniu."
 
@@ -714,13 +717,25 @@ msgstr ""
 msgid "Sorry! Search query must have at least two characters."
 msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 
+#: templates/catalogue/tag_list_split.html:5
+msgid "Literature"
+msgstr "Literatura"
+
+#: templates/catalogue/tag_list_split.html:14
+msgid "Gallery"
+msgstr "Galeria"
+
 #: templates/catalogue/tagged_object_list.html:78
-#: templates/catalogue/tagged_object_list.html:108
-msgid "in Lektury.Gazeta.pl"
-msgstr "w serwisie Lektury.Gazeta.pl"
+msgid "in Culture.pl"
+msgstr "w Culture.pl"
 
 #: templates/catalogue/tagged_object_list.html:83
 #: templates/catalogue/tagged_object_list.html:113
+msgid "in Lektury.Gazeta.pl"
+msgstr "w serwisie Lektury.Gazeta.pl"
+
+#: templates/catalogue/tagged_object_list.html:88
+#: templates/catalogue/tagged_object_list.html:118
 msgid "in Wikipedia"
 msgstr "w Wikipedii"
 

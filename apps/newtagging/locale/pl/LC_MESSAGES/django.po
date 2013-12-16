@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:39+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2010-05-19 16:20\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "tags"
 msgstr "tagi"
 
-#: models.py:530
+#: models.py:531
 msgid "tag"
 msgstr "tag"
 
-#: models.py:531
+#: models.py:532
 msgid "content type"
 msgstr "typ zawartości"
 
-#: models.py:532
+#: models.py:533
 msgid "object id"
 msgstr "id obiektu"
 
