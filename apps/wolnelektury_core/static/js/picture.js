@@ -147,6 +147,10 @@
       this._ratio = ratio;
 
       this.element.css(target);
+      if (this._initial_mark) {
+	this._initial_mark = this.redrawMark(this._initial_mark);
+      }
+
     },
 
     allowedPosition: function(off) {
@@ -188,7 +192,12 @@
       return undefined;
 
     },
-
+    redrawMark: function(mark) {
+      var $mark = $(mark);
+      var $newmark = this.createMark($mark.data('mark'));
+      $mark.remove();
+      return $newmark;
+    },
     // mark
     // {
     //  label: "...",
@@ -216,6 +225,8 @@
       $mark.width(coords[1][0] - coords[0][0]);
       $mark.height(coords[1][1] - coords[0][1]);
       $mark.css({left: coords[0][0], top: coords[0][1]});
+
+      $mark.data('mark', mark);
       return $mark.get(0);
     },
   });
