@@ -29,8 +29,8 @@ def picture_list_thumb(request, filter=None, get_filter=None, template_name='pic
         book_list = book_list.filter(filter)
     if get_filter:
         book_list = book_list.filter(get_filter())
+    book_list = book_list.order_by('sort_key_author')
     book_list = list(book_list)
-    book_list.sort(lambda a,b: cmp(a.extra_info['authors'][0], b.extra_info['authors'][0]))
     return render_to_response(template_name, locals(),
                               context_instance=RequestContext(request))
 
