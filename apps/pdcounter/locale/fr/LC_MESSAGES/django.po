@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:39+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2012-02-22 20:58+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,57 +64,62 @@ msgstr "ébauche du livre"
 msgid "book stubs"
 msgstr "ébauches des livres"
 
-#: templates/pdcounter/author_detail.html:25
+#: templates/pdcounter/author_detail.html:7
+#: templates/pdcounter/book_stub_detail.html:7
+msgid "Public domain counter"
+msgstr ""
+
+#: templates/pdcounter/author_detail.html:26
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr ""
 
-#: templates/pdcounter/author_detail.html:30
+#: templates/pdcounter/author_detail.html:31
 msgid "Read article about this author on Wikipedia"
 msgstr ""
 
-#: templates/pdcounter/author_detail.html:35
+#: templates/pdcounter/author_detail.html:36
 msgid "This author's works are copyrighted."
 msgstr ""
 
-#: templates/pdcounter/author_detail.html:36
-#: templates/pdcounter/author_detail.html:44
+#: templates/pdcounter/author_detail.html:37
+#: templates/pdcounter/author_detail.html:45
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
 msgstr ""
 
-#: templates/pdcounter/author_detail.html:39
+#: templates/pdcounter/author_detail.html:40
 msgid ""
 "This author's works are in public domain and will be published on Internet "
-"school library of Wolne Lektury soon."
+"library of Wolne Lektury soon."
 msgstr ""
 
-#: templates/pdcounter/author_detail.html:42
+#: templates/pdcounter/author_detail.html:43
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
 msgstr ""
 
-#: templates/pdcounter/book_stub_detail.html:16
+#: templates/pdcounter/book_stub_detail.html:17
 msgid ""
-"This work is in public domain and will be published on Internet school "
-"library of Wolne Lektury soon."
+"This work is in public domain and will be published on Internet library of "
+"Wolne Lektury soon."
 msgstr ""
 
-#: templates/pdcounter/book_stub_detail.html:19
+#: templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
 "published without restrictions in"
 msgstr ""
 
-#: templates/pdcounter/book_stub_detail.html:21
-#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:22
+#: templates/pdcounter/book_stub_detail.html:25
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
 msgstr ""
 
-#: templates/pdcounter/book_stub_detail.html:23
+#: templates/pdcounter/book_stub_detail.html:24
 msgid "This work is copyrighted."
 msgstr ""
 

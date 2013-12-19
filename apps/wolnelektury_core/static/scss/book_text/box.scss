@@ -3,7 +3,7 @@ There should be a JS-less way of seeing at least some of
 the hidden boxes (TOC and Themes).
 */
 
-.box, #toc, #themes, #nota_red {
+.box, #toc, #themes, #nota_red, #objects {
     display: none;
 
     position: fixed;

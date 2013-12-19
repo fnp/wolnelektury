@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:39+0200\n"
+"POT-Creation-Date: 2013-12-16 09:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,174 +37,43 @@ msgstr ""
 msgid "Don't use our custom font"
 msgstr ""
 
-#: forms.py:51
-msgid "Leading"
+#: forms.py:49
+msgid "Without cover"
 msgstr ""
 
 #: forms.py:52
-msgid "Normal leading"
+msgid "Leading"
 msgstr ""
 
 #: forms.py:53
-msgid "One and a half leading"
+msgid "Normal leading"
 msgstr ""
 
 #: forms.py:54
+msgid "One and a half leading"
+msgstr ""
+
+#: forms.py:55
 msgid "Double leading"
 msgstr ""
 
-#: forms.py:56
+#: forms.py:57
 msgid "Font size"
 msgstr ""
 
-#: forms.py:57
+#: forms.py:58
 msgid "Default"
 msgstr ""
 
-#: forms.py:58
+#: forms.py:59
 msgid "Big"
 msgstr ""
 
-#: forms.py:81
+#: forms.py:82
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: models.py:33
-msgid "author"
-msgstr ""
-
-#: models.py:34
-msgid "epoch"
-msgstr ""
-
-#: models.py:35
-msgid "kind"
-msgstr ""
-
-#: models.py:36
-msgid "genre"
-msgstr ""
-
-#: models.py:37
-msgid "theme"
-msgstr ""
-
-#: models.py:38
-msgid "set"
-msgstr ""
-
-#: models.py:39 models.py:368
-msgid "book"
-msgstr ""
-
-#: models.py:60 models.py:230
-msgid "name"
-msgstr ""
-
-#: models.py:61 models.py:333 models.py:335 models.py:973 models.py:976
-msgid "slug"
-msgstr ""
-
-#: models.py:62 models.py:332
-msgid "sort key"
-msgstr ""
-
-#: models.py:63
-msgid "category"
-msgstr ""
-
-#: models.py:65 models.py:106 models.py:338 models.py:441 models.py:974
-msgid "description"
-msgstr ""
-
-#: models.py:68
-msgid "book count"
-msgstr ""
-
-#: models.py:72 models.py:73 models.py:232 models.py:339 models.py:340
-msgid "creation date"
-msgstr ""
-
-#: models.py:90
-msgid "tag"
-msgstr ""
-
-#: models.py:91
-msgid "tags"
-msgstr ""
-
-#: models.py:226 models.py:915
-#, python-format
-msgid "%s file"
-msgstr ""
-
-#: models.py:229
-msgid "type"
-msgstr ""
-
-#: models.py:231
-msgid "file"
-msgstr ""
-
-#: models.py:233 models.py:342
-msgid "extra information"
-msgstr ""
-
-#: models.py:242 models.py:243
-msgid "book media"
-msgstr ""
-
-#: models.py:331 models.py:972
-msgid "title"
-msgstr ""
-
-#: models.py:336
-msgid "language code"
-msgstr ""
-
-#: models.py:341
-msgid "parent number"
-msgstr ""
-
-#: models.py:347
-msgid "cover"
-msgstr ""
-
-#: models.py:369
-msgid "books"
-msgstr ""
-
-#: models.py:620
-#, python-format
-msgid "Book \"%s\" does not exist."
-msgstr ""
-
-#: models.py:634
-#, python-format
-msgid "Book %s already exists"
-msgstr ""
-
-#: models.py:935
-msgid "fragment"
-msgstr ""
-
-#: models.py:936
-msgid "fragments"
-msgstr ""
-
-#: models.py:977
-msgid "book slugs"
-msgstr ""
-
-#: models.py:981
-msgid "collection"
-msgstr ""
-
-#: models.py:982
-msgid "collections"
-msgstr ""
-
-#: views.py:500
+#: views.py:585
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -212,22 +81,174 @@ msgid ""
 "%(tb)s"
 msgstr ""
 
-#: views.py:501
+#: views.py:586
 msgid "Book imported successfully"
 msgstr ""
 
-#: views.py:503
+#: views.py:588
 #, python-format
 msgid "Error importing file: %r"
 msgstr ""
 
-#: views.py:535
+#: views.py:620
 msgid "Download custom PDF"
 msgstr ""
 
-#: views.py:536 templates/catalogue/book_short.html:92
-#: templates/catalogue/book_text.html:28 templates/catalogue/book_wide.html:63
+#: views.py:621 templates/catalogue/book_short.html:92
+#: templates/catalogue/book_text.html:27 templates/catalogue/book_wide.html:63
 msgid "Download"
+msgstr ""
+
+#: models/book.py:28 models/collection.py:11
+msgid "title"
+msgstr ""
+
+#: models/book.py:29 models/tag.py:34
+msgid "sort key"
+msgstr ""
+
+#: models/book.py:30 models/book.py:32 models/collection.py:12
+#: models/collection.py:15 models/tag.py:33
+msgid "slug"
+msgstr ""
+
+#: models/book.py:33
+msgid "language code"
+msgstr ""
+
+#: models/book.py:35 models/book.py:146 models/collection.py:13
+#: models/tag.py:37 models/tag.py:94
+msgid "description"
+msgstr ""
+
+#: models/book.py:36 models/book.py:37 models/bookmedia.py:29 models/tag.py:46
+#: models/tag.py:47
+msgid "creation date"
+msgstr ""
+
+#: models/book.py:38
+msgid "parent number"
+msgstr ""
+
+#: models/book.py:39 models/bookmedia.py:30
+msgid "extra information"
+msgstr ""
+
+#: models/book.py:44
+msgid "cover"
+msgstr ""
+
+#: models/book.py:66 models/collection.py:18 models/tag.py:22
+msgid "book"
+msgstr ""
+
+#: models/book.py:67
+msgid "books"
+msgstr ""
+
+#: models/book.py:244
+#, python-format
+msgid "Book \"%s\" does not exist."
+msgstr ""
+
+#: models/book.py:258
+#, python-format
+msgid "Book %s already exists"
+msgstr ""
+
+#: models/book.py:599 models/bookmedia.py:23
+#, python-format
+msgid "%s file"
+msgstr ""
+
+#: models/bookmedia.py:26
+msgid "type"
+msgstr ""
+
+#: models/bookmedia.py:27 models/tag.py:32
+msgid "name"
+msgstr ""
+
+#: models/bookmedia.py:28
+msgid "file"
+msgstr ""
+
+#: models/bookmedia.py:39 models/bookmedia.py:40
+msgid "book media"
+msgstr ""
+
+#: models/collection.py:16
+msgid "book slugs"
+msgstr ""
+
+#: models/collection.py:18 models/tag.py:18
+msgid "kind"
+msgstr ""
+
+#: models/collection.py:22
+msgid "collection"
+msgstr ""
+
+#: models/collection.py:23
+msgid "collections"
+msgstr ""
+
+#: models/fragment.py:32
+msgid "fragment"
+msgstr ""
+
+#: models/fragment.py:33
+msgid "fragments"
+msgstr ""
+
+#: models/tag.py:16
+msgid "author"
+msgstr ""
+
+#: models/tag.py:17
+msgid "epoch"
+msgstr ""
+
+#: models/tag.py:19
+msgid "genre"
+msgstr ""
+
+#: models/tag.py:20
+msgid "theme"
+msgstr ""
+
+#: models/tag.py:21
+msgid "set"
+msgstr ""
+
+#: models/tag.py:23
+msgid "thing"
+msgstr ""
+
+#: models/tag.py:35
+msgid "category"
+msgstr ""
+
+#: models/tag.py:40
+msgid "book count"
+msgstr ""
+
+#: models/tag.py:41
+msgid "picture count"
+msgstr ""
+
+#: models/tag.py:65
+msgid "tag"
+msgstr ""
+
+#: models/tag.py:66
+msgid "tags"
+msgstr ""
+
+#: models/tag.py:83
+msgid ""
+"Book tags can't have attached links. Set them directly on the book instead "
+"of it's tag."
 msgstr ""
 
 #: templates/catalogue/audiobook_list.html:7
@@ -252,7 +273,7 @@ msgstr ""
 
 #: templates/catalogue/book_detail.html:20
 #: templates/catalogue/tagged_object_list.html:74
-#: templates/catalogue/tagged_object_list.html:104
+#: templates/catalogue/tagged_object_list.html:109
 msgid "See also"
 msgstr ""
 
@@ -283,7 +304,7 @@ msgid ""
 msgstr ""
 
 #: templates/catalogue/book_info.html:20
-msgid "Text prepared based on:"
+msgid "Resource prepared based on:"
 msgstr ""
 
 #: templates/catalogue/book_info.html:28
@@ -291,6 +312,10 @@ msgid "Edited and annotated by:"
 msgstr ""
 
 #: templates/catalogue/book_info.html:33
+msgid "Publication funded by:"
+msgstr ""
+
+#: templates/catalogue/book_info.html:39
 msgid "Cover image by:"
 msgstr ""
 
@@ -302,25 +327,8 @@ msgstr ""
 msgid "Table of Content"
 msgstr ""
 
-#: templates/catalogue/book_list.html:48
+#: templates/catalogue/book_list.html:30
 msgid "↑ top ↑"
-msgstr ""
-
-#: templates/catalogue/book_sets.html:2
-msgid "Put a book on the shelf!"
-msgstr ""
-
-#: templates/catalogue/book_sets.html:3 templates/catalogue/book_sets.html:6
-#: templates/catalogue/fragment_sets.html:16
-msgid "Create new shelf"
-msgstr ""
-
-#: templates/catalogue/book_sets.html:10
-msgid "You do not have any shelves. You can create one below, if you want to."
-msgstr ""
-
-#: templates/catalogue/book_sets.html:15
-msgid "Put on the shelf!"
 msgstr ""
 
 #: templates/catalogue/book_short.html:59
@@ -342,7 +350,7 @@ msgid "Read online"
 msgstr ""
 
 #: templates/catalogue/book_short.html:95
-#: templates/catalogue/book_text.html:41
+#: templates/catalogue/book_text.html:40
 msgid "to print"
 msgstr ""
 
@@ -351,53 +359,54 @@ msgid "for an e-book reader"
 msgstr ""
 
 #: templates/catalogue/book_short.html:101
-#: templates/catalogue/book_text.html:47
+#: templates/catalogue/book_text.html:46
 msgid "for Kindle"
 msgstr ""
 
 #: templates/catalogue/book_short.html:104
+#: templates/catalogue/book_text.html:49
 msgid "FictionBook"
 msgstr ""
 
 #: templates/catalogue/book_short.html:107
-#: templates/catalogue/book_text.html:50
+#: templates/catalogue/book_text.html:52
 msgid "for advanced usage"
 msgstr ""
 
 #: templates/catalogue/book_short.html:113
-#: templates/catalogue/book_text.html:31
+#: templates/catalogue/book_text.html:30
 msgid "Listen"
 msgstr ""
 
-#: templates/catalogue/book_text.html:10 templates/catalogue/player.html:11
+#: templates/catalogue/book_text.html:9 templates/catalogue/player.html:11
 msgid "Wolne Lektury"
 msgstr ""
 
-#: templates/catalogue/book_text.html:23
+#: templates/catalogue/book_text.html:22
 msgid "Table of contents"
 msgstr ""
 
-#: templates/catalogue/book_text.html:24 templates/catalogue/menu.html:27
+#: templates/catalogue/book_text.html:23 templatetags/catalogue_tags.py:420
 msgid "Themes"
 msgstr ""
 
-#: templates/catalogue/book_text.html:25
+#: templates/catalogue/book_text.html:24
 msgid "Edit. note"
 msgstr ""
 
-#: templates/catalogue/book_text.html:26
+#: templates/catalogue/book_text.html:25
 msgid "Infobox"
 msgstr ""
 
-#: templates/catalogue/book_text.html:27 templates/catalogue/player.html:34
+#: templates/catalogue/book_text.html:26 templates/catalogue/player.html:34
 msgid "Book's page"
 msgstr ""
 
-#: templates/catalogue/book_text.html:44
+#: templates/catalogue/book_text.html:43
 msgid "for a reader"
 msgstr ""
 
-#: templates/catalogue/book_text.html:54 templates/catalogue/book_wide.html:67
+#: templates/catalogue/book_text.html:56 templates/catalogue/book_wide.html:67
 msgid "Download all audiobooks for this book"
 msgstr ""
 
@@ -450,32 +459,40 @@ msgstr ""
 msgid "Download the catalogue in PDF format."
 msgstr ""
 
-#: templates/catalogue/catalogue.html:19 templates/catalogue/menu.html:7
+#: templates/catalogue/catalogue.html:19
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
+#: templatetags/catalogue_tags.py:416
 msgid "Authors"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:22 templates/catalogue/menu.html:17
+#: templates/catalogue/catalogue.html:22
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
+#: templatetags/catalogue_tags.py:418
 msgid "Kinds"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:25 templates/catalogue/menu.html:12
+#: templates/catalogue/catalogue.html:25
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
+#: templatetags/catalogue_tags.py:417
 msgid "Genres"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:28 templates/catalogue/menu.html:22
+#: templates/catalogue/catalogue.html:28
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
+#: templatetags/catalogue_tags.py:419
 msgid "Epochs"
 msgstr ""
 
 #: templates/catalogue/catalogue.html:31
 msgid "Themes and topics"
+msgstr ""
+
+#: templates/catalogue/catalogue.html:34 templates/catalogue/menu.html:16
+msgid "Collections"
 msgstr ""
 
 #: templates/catalogue/daisy_list.html:6
@@ -499,18 +516,6 @@ msgstr ""
 msgid "The criteria are ambiguous. Please select one of the following options:"
 msgstr ""
 
-#: templates/catalogue/fragment_sets.html:2
-msgid "Shelves containing fragment"
-msgstr ""
-
-#: templates/catalogue/fragment_sets.html:4
-msgid "You do not own any shelves. You can create one below, if you want to."
-msgstr ""
-
-#: templates/catalogue/fragment_sets.html:9
-msgid "Save all shelves"
-msgstr ""
-
 #: templates/catalogue/fragment_short.html:12
 msgid "Expand fragment"
 msgstr ""
@@ -524,15 +529,19 @@ msgstr ""
 msgid "See full category"
 msgstr ""
 
-#: templates/catalogue/menu.html:32
+#: templates/catalogue/menu.html:9 templates/catalogue/menu.html.py:18
+msgid "Please wait…"
+msgstr ""
+
+#: templates/catalogue/menu.html:24
 msgid "All books"
 msgstr ""
 
-#: templates/catalogue/menu.html:36
+#: templates/catalogue/menu.html:28
 msgid "Audiobooks"
 msgstr ""
 
-#: templates/catalogue/menu.html:40
+#: templates/catalogue/menu.html:32
 msgid "DAISY"
 msgstr ""
 
@@ -609,6 +618,28 @@ msgstr ""
 msgid "Audiobooks were prepared as a part of the %(cs)s project."
 msgstr ""
 
+#: templates/catalogue/recent_audiobooks_list.html:5
+#: templates/catalogue/recent_audiobooks_list.html:10
+msgid "Recent audiobooks"
+msgstr ""
+
+#: templates/catalogue/recent_daisy_list.html:5
+#: templates/catalogue/recent_daisy_list.html:10
+msgid "Recent DAISY files"
+msgstr ""
+
+#: templates/catalogue/recent_list.html:5
+#: templates/catalogue/recent_list.html:10
+msgid "Recent publications"
+msgstr ""
+
+#: templates/catalogue/recent_list.html:15
+#, python-format
+msgid ""
+"You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
+"        and <a href=\"%(d)s\">recent DAISY files</a>."
+msgstr ""
+
 #: templates/catalogue/search_multiple_hits.html:5
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
@@ -622,24 +653,28 @@ msgstr ""
 msgid "Did you mean"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:54
-msgid "Results by authors"
-msgstr ""
-
-#: templates/catalogue/search_multiple_hits.html:67
+#: templates/catalogue/search_multiple_hits.html:52
 msgid "Results by title"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:82
+#: templates/catalogue/search_multiple_hits.html:67
+msgid "Results by authors"
+msgstr ""
+
+#: templates/catalogue/search_multiple_hits.html:80
+msgid "Results by translators"
+msgstr ""
+
+#: templates/catalogue/search_multiple_hits.html:93
 msgid "Results in text"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:99
+#: templates/catalogue/search_multiple_hits.html:110
 msgid "Other results"
 msgstr ""
 
 #: templates/catalogue/search_no_hits.html:19
-#: templates/catalogue/tagged_object_list.html:146
+#: templates/catalogue/tagged_object_list.html:151
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr ""
 
@@ -654,33 +689,29 @@ msgstr ""
 msgid "Sorry! Search query must have at least two characters."
 msgstr ""
 
+#: templates/catalogue/tag_list_split.html:5
+msgid "Literature"
+msgstr ""
+
+#: templates/catalogue/tag_list_split.html:14
+msgid "Gallery"
+msgstr ""
+
 #: templates/catalogue/tagged_object_list.html:78
-#: templates/catalogue/tagged_object_list.html:108
-msgid "in Lektury.Gazeta.pl"
+msgid "in Culture.pl"
 msgstr ""
 
 #: templates/catalogue/tagged_object_list.html:83
 #: templates/catalogue/tagged_object_list.html:113
+msgid "in Lektury.Gazeta.pl"
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:88
+#: templates/catalogue/tagged_object_list.html:118
 msgid "in Wikipedia"
 msgstr ""
 
-#: templates/catalogue/user_shelves.html:2
-msgid "Your shelves with books"
-msgstr ""
-
-#: templates/catalogue/user_shelves.html:6
-msgid "remove"
-msgstr ""
-
-#: templates/catalogue/user_shelves.html:10
-msgid "You do not own any shelves. You can create one below if you want to"
-msgstr ""
-
-#: templates/catalogue/user_shelves.html:15
-msgid "Create shelf"
-msgstr ""
-
-#: templates/catalogue/snippets/custom_pdf_link_li.html:6
+#: templates/catalogue/snippets/custom_pdf_link_li.html:5
 msgid "Download a custom PDF"
 msgstr ""
 

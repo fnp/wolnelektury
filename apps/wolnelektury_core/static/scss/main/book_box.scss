@@ -216,6 +216,15 @@
     }
 }
 
+/* FIXME: RWD */
+.picture.book-wide-box .right-column {
+    float: none;
+    @include size(width, 415px);
+    top: 0;
+    @include size(margin-left, 550px);
+    margin-top: 0em;
+}
+
 
 .book-box-body {
     @include size(margin-bottom, 10px);

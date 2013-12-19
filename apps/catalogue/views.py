@@ -23,13 +23,14 @@ from django.views.decorators.vary import vary_on_headers
 from ajaxable.utils import JSONResponse, AjaxableFormView
 from catalogue import models
 from catalogue import forms
-from catalogue.utils import split_tags, MultiQuerySet
+from catalogue.utils import split_tags, MultiQuerySet, SortedMultiQuerySet
 from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
-from picture.models import Picture
-
+from picture.models import Picture, PictureArea
+from picture.views import picture_list_thumb
+import logging
 staff_required = user_passes_test(lambda user: user.is_staff)
 permanent_cache = get_cache('permanent')
 
@@ -38,20 +39,40 @@ permanent_cache = get_cache('permanent')
 def catalogue(request):
     cache_key='catalogue.catalogue/' + get_language()
     output = permanent_cache.get(cache_key)
+
     if output is None:
         tags = models.Tag.objects.exclude(
-            category__in=('set', 'book')).exclude(book_count=0)
+            category__in=('set', 'book')).exclude(book_count=0, picture_count=0)
         tags = list(tags)
         for tag in tags:
-            tag.count = tag.book_count
+            tag.count = tag.book_count + tag.picture_count
         categories = split_tags(tags)
         fragment_tags = categories.get('theme', [])
         collections = models.Collection.objects.all()
+
         render_tag_list = lambda x: render_to_string(
             'catalogue/tag_list.html', tag_list(x))
-        output = {'theme': render_tag_list(fragment_tags)}
+        has_pictures = lambda x: filter(lambda y: y.picture_count>0, x)
+        has_books = lambda x: filter(lambda y: y.book_count>0, x)
+        def render_split(tags):
+            with_books = has_books(tags)
+            with_pictures = has_pictures(tags)
+            ctx = {}
+            if with_books:
+                ctx['books'] = render_tag_list(with_books)
+            if with_pictures:
+                ctx['pictures'] = render_tag_list(with_pictures)
+            return render_to_string('catalogue/tag_list_split.html', ctx)
+
+        output = {'theme': {}}
+        output['theme'] = render_tag_list(fragment_tags)
         for category, tags in categories.items():
-            output[category] = render_tag_list(tags)
+            if category in ('author', 'theme'):
+                output[category] = render_tag_list(tags)
+            else:
+                output[category] = render_split(tags)
+            
+            
         output['collections'] = render_to_string(
             'catalogue/collection_list.html', collection_list(collections))
         permanent_cache.set(cache_key, output)
@@ -104,8 +125,16 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(models.Collection, slug=slug)
-    return book_list(request, get_filter=coll.get_query,
-                     template_name='catalogue/collection.html',
+    if coll.kind == 'book':
+        view = book_list
+        tmpl = "catalogue/collection.html"
+    elif coll.kind == 'picture':
+        view = picture_list_thumb
+        tmpl = "picture/collection.html"
+    else:
+        raise ValueError('How do I show this kind of collection? %s' % coll.kind)
+    return view(request, get_filter=coll.get_query,
+                     template_name=tmpl,
                      cache_key='catalogue.collection:%s' % coll.slug,
                      context={'collection': coll})
 
@@ -124,16 +153,21 @@ def differentiate_tags(request, tags, ambiguous_slugs):
                 context_instance=RequestContext(request))
 
 
+# TODO: Rewrite this hellish piece of code which tries to do everything
 def tagged_object_list(request, tags=''):
+    # preliminary tests and conditions
     try:
         tags = models.Tag.get_tag_list(tags)
     except models.Tag.DoesNotExist:
+        # Perhaps the user is asking about an author in Public Domain
+        # counter (they are not represented in tags)
         chunks = tags.split('/')
         if len(chunks) == 2 and chunks[0] == 'autor':
             return pdcounter_views.author_detail(request, chunks[1])
         else:
             raise Http404
     except models.Tag.MultipleObjectsReturned, e:
+        # Ask the user to disambiguate
         return differentiate_tags(request, e.tags, e.ambiguous_slugs)
     except models.Tag.UrlDeprecationWarning, e:
         return HttpResponsePermanentRedirect(reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)]))
@@ -147,18 +181,22 @@ def tagged_object_list(request, tags=''):
     if len([tag for tag in tags if tag.category == 'book']):
         raise Http404
 
+    # beginning of digestion
     theme_is_set = [tag for tag in tags if tag.category == 'theme']
     shelf_is_set = [tag for tag in tags if tag.category == 'set']
     only_shelf = shelf_is_set and len(tags) == 1
     only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
 
+
     objects = only_author = None
     categories = {}
+    object_queries = []
 
     if theme_is_set:
         shelf_tags = [tag for tag in tags if tag.category == 'set']
         fragment_tags = [tag for tag in tags if tag.category != 'set']
         fragments = models.Fragment.tagged.with_all(fragment_tags)
+        areas = PictureArea.tagged.with_all(fragment_tags)
 
         if shelf_tags:
             books = models.Book.tagged.with_all(shelf_tags).order_by()
@@ -169,43 +207,80 @@ def tagged_object_list(request, tags=''):
         # newtagging goes crazy if we just try:
         #related_tags = models.Tag.objects.usage_for_queryset(fragments, counts=True,
         #                    extra={'where': ["catalogue_tag.category != 'book'"]})
+
+        related_tags = []
+
         fragment_keys = [fragment.pk for fragment in fragments.iterator()]
         if fragment_keys:
             related_tags = models.Fragment.tags.usage(counts=True,
                                 filters={'pk__in': fragment_keys},
                                 extra={'where': ["catalogue_tag.category != 'book'"]})
             related_tags = (tag for tag in related_tags if tag not in fragment_tags)
-            categories = split_tags(related_tags)
+            categories = split_tags(related_tags, categories)
 
-            objects = fragments
+        object_queries.insert(0, fragments)
+
+        area_keys = [area.pk for area in areas.iterator()]
+        if area_keys:
+            related_tags = PictureArea.tags.usage(counts=True,
+                                                         filters={'pk__in': area_keys})
+            related_tags = (tag for tag in related_tags if tag not in fragment_tags)     
+                                                      
+            categories = split_tags(related_tags, categories)
+
+        # we want the Pictures to go first
+        object_queries.insert(0, areas)
+        objects = MultiQuerySet(*object_queries)
     else:
         if shelf_is_set:
-            objects = models.Book.tagged.with_all(tags)
+            books = models.Book.tagged.with_all(tags).order_by('sort_key_author')
         else:
-            objects = models.Book.tagged_top_level(tags)
+            books = models.Book.tagged_top_level(tags).order_by('sort_key_author')
 
-        # get related tags from `tag_counter` and `theme_counter`
-        related_counts = {}
-        tags_pks = [tag.pk for tag in tags]
-        for book in objects:
-            for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
-                if tag_pk in tags_pks:
-                    continue
-                related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
-        related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
-        related_tags = [tag for tag in related_tags if tag not in tags]
-        for tag in related_tags:
-            tag.count = related_counts[tag.pk]
+        pictures = Picture.tagged.with_all(tags).order_by('sort_key_author')
+            
+        if books.count() > 0:
+            # get related tags from `tag_counter` and `theme_counter`
+            related_counts = {}
+            tags_pks = [tag.pk for tag in tags]
+            for book in books:
+                for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
+                    if tag_pk in tags_pks:
+                        continue
+                    related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
+            related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
+            related_tags = [tag for tag in related_tags if tag not in tags]
+            for tag in related_tags:
+                tag.count = related_counts[tag.pk]
 
-        categories = split_tags(related_tags)
-        del related_tags
+            categories = split_tags(related_tags)
+            del related_tags
+
+        if pictures.count() > 0:
+            related_counts = {}
+            tags_pks = [tag.pk for tag in tags]
+            for picture in pictures:
+                for tag_pk, value in itertools.chain(picture.tag_counter.iteritems(), picture.theme_counter.iteritems()):
+                    if tag_pk in tags_pks:
+                        continue
+                    logging.info("counting tag not in tags_pks: %d", tag_pk)
+                    related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
+            related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
+            related_tags = [tag for tag in related_tags if tag not in tags]
+            for tag in related_tags:
+                tag.count = related_counts[tag.pk]
+
+            categories = split_tags(related_tags)
+            del related_tags
+
+        logging.info("Returning %d picutres and %d books" % (pictures.count(), books.count()))
+        objects = SortedMultiQuerySet(pictures, books, order_by='sort_key_author')
+
+
 
     if not objects:
         only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
-
-    # Add pictures
-    objects = MultiQuerySet(Picture.tagged.with_all(tags), objects)
 
     return render_to_response('catalogue/tagged_object_list.html',
         {

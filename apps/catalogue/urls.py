@@ -14,8 +14,10 @@ SLUG = r'[a-z0-9-]*'
 
 urlpatterns = patterns('picture.views',
     # pictures - currently pictures are coupled with catalogue, hence the url is here
-    url(r'^obraz/?$', 'picture_list'),
-    url(r'^obraz/(?P<picture>%s)/?$' % SLUG, 'picture_detail')
+    url(r'^obraz/?$', 'picture_list_thumb', name='picture_list_thumb'),
+    url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
+    url(r'^obraz/(?P<slug>%s)/?$' % SLUG, 'picture_detail'),
+
 )
 
 urlpatterns += patterns('',
@@ -32,7 +34,7 @@ urlpatterns += patterns('catalogue.views',
     url(r'^audiobooki/$', 'audiobook_list', name='audiobook_list'),
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
-    url(r'^jtags/$', 'json_tags_starting_with', name='jhint'),
+    url(r'^jtags/?$', 'json_tags_starting_with', name='jhint'),
     url(r'^nowe/$', ListView.as_view(
         queryset=Book.objects.filter(parent=None).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),

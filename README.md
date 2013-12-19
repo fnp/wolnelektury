@@ -30,20 +30,21 @@ Dependencies
 How to deploy (development version)
 =============
 
-1. Checkout the source code from Github
+1. Checkout the source code from Github and enter the directory
 2. Install libraries (we recommend using pip):
 
     pip install -r requirements.txt
-    
+    git submodule update --init
+
 3. Setup your local configuration based on settings.py. You need to generate a new SECRET_KEY, database stuff and domain related stuff.
 4. Populate database:
     
-    ./wolnelektury/manage.py syncdb
-    ./wolnelektury/manage.py migrate
+    ./manage.py syncdb
+    ./manage.py migrate
 
 5. Run the server
 
-   ./wolnelektury/manage.py runserver
+   ./manage.py runserver
 
     
 6. Import some books which are available on http://www.wolnelektury.pl or on bitbucket mirror: http://bitbucket.org/lqc/wlbooks/
@@ -108,13 +109,6 @@ feedparser
 
 Internal (means we hacked on sources of those): 
 ---------
- 
-django-compress
----------------
- - Source: [Google Code](http://code.google.com/p/django-compress/)
- - Authors: Andreas Pelme <andreas.pelme@gmail.com>
- - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Type: library (Django application)
  
 django-chunks
 -------------

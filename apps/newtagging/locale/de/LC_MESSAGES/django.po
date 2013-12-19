@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:39+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2012-03-13 12:19+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: \n"
@@ -20,15 +20,15 @@ msgstr ""
 msgid "tags"
 msgstr "Tags"
 
-#: models.py:530
+#: models.py:531
 msgid "tag"
 msgstr "Tag"
 
-#: models.py:531
+#: models.py:532
 msgid "content type"
 msgstr "Inhaltstyp"
 
-#: models.py:532
+#: models.py:533
 msgid "object id"
 msgstr "Objekt-ID"
 

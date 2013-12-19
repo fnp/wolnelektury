@@ -47,6 +47,13 @@ PIPELINE_CSS = {
         ],
         'output_filename': 'css/compressed/book_text.css',
     },
+    'picture': {
+        'source_filenames': [
+            'css/master.book.css',
+            'css/master.picture.css',
+        ],
+        'output_filename': 'css/compressed/picture.css',
+    },
     'player': {
         'source_filenames': [
             'jplayer/jplayer.blue.monday.css', 
@@ -101,7 +108,10 @@ PIPELINE_JS = {
             'js/jquery.highlightfade.js',
             'js/book_text/other.js',
             'js/book.js',
+            'js/picture.js',
+            'js/raphael-min.js',
             'player/openplayer.js',
+            'js/progressSpin.min.js',
         ],
         'output_filename': 'js/book.min.js',
     },

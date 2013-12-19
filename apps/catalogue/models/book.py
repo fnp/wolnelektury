@@ -27,6 +27,7 @@ class Book(models.Model):
     """Represents a book imported from WL-XML."""
     title         = models.CharField(_('title'), max_length=120)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
+    sort_key_author = models.CharField(_('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
     slug = models.SlugField(_('slug'), max_length=120, db_index=True,
             unique=True)
     common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
@@ -74,6 +75,7 @@ class Book(models.Model):
         from sortify import sortify
 
         self.sort_key = sortify(self.title)
+        self.title = unicode(self.title) # ???
 
         ret = super(Book, self).save(force_insert, force_update, **kwargs)
 
@@ -145,6 +147,14 @@ class Book(models.Model):
         # Fragment.short_html relies on book's tags, so reset it here too
         for fragm in self.fragments.all().iterator():
             fragm.reset_short_html()
+
+        try: 
+            author = self.tags.filter(category='author')[0].sort_key
+        except IndexError:
+            author = u''
+        type(self).objects.filter(pk=self.pk).update(sort_key_author=author)
+
+
 
     def has_description(self):
         return len(self.description) > 0
@@ -414,7 +424,7 @@ class Book(models.Model):
             for category in tags:
                 cat = []
                 for tag in tags[category]:
-                    tag_info = {'slug': tag.slug}
+                    tag_info = {'slug': tag.slug, 'name': tag.name}
                     for lc, ln in settings.LANGUAGES:
                         tag_name = getattr(tag, "name_%s" % lc)
                         if tag_name:
@@ -506,6 +516,8 @@ class Book(models.Model):
         rel_info = book.related_info()
         names = [(related_tag_name(tag), Tag.create_url('author', tag['slug']))
                     for tag in rel_info['tags'].get('author', ())]
+        import logging
+        logging.info("%s, %s" % (book.slug, unicode(rel_info['tags'].get('author', ()))))
         if 'parents' in rel_info:
             books = [(name, Book.create_url(slug))
                         for name, slug in rel_info['parents']]

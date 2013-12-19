@@ -1,91 +1,29 @@
-/* This need reviewing and updating before any pictures are published. */
+.book-wide-box.picture img.cover {
+    width: 53.5em;
+    height: auto;
+}
 
-.picture-mini-box, .picture-box {
+.picture.book-wide-box .book-box-tools {
+    margin-left:  50em; // 535px image + 15px margin @ 11pt
+}
+
+.picture li.book-box-download {
+    width: 15em;
+}
+
+
+.Picture-item {
     display: inline-block;
-    margin: 0;
     vertical-align: top;
-}
-
-
-.picture-box {
-    width: 37.5em;
-}
-
-.picture-mini-box {
-    width: 12.5em;
-}
-
-.picture-mini-box a, .picture-box-inner {
-    display: block;
-    color: black;
-    border: 1px solid #ddd;
-    height: 20em;
-    padding: .75em;
-    margin: .1em;
-    background: #fff;
-    -moz-box-shadow: 2px 2px 2px #ddd;
-    -webkit-box-shadow: 2px 2px 2px #ddd;
-    box-shadow: 2px 2px 2px #ddd;
-    overflow: hidden;
-}
-
-.picture-mini-box a {
-    height: 20em;
-    margin: .1em;
-}
-.picture-box-inner {
-    height: 14.4em;
-    margin: .5em;
-}
-
-.picture-mini-box img, .picture-box img {
-    width: 10.8em;
-    height: 14.4em;
-}
-.picture-mini-box img {
-    margin-bottom: .3em;
-}
-.picture-box img {
     float: left;
-    margin-right: 1.5em;
-}
-
-.picture-mini-box .author {
-    color: #777;
 }
 
 
-.picture-box-body {
-    height: 13em;
-    overflow: hidden;
-}
-.picture-box-head {
-    min-height: 7em;
-}
-.picture-box-tag {
-    font-size: .8em;
-    margin-right: .5em;
-}
-.picture-box-download {
-    position: relative;
-}
-.picture-box-formats {
-    display: none;
-    top: -2em;
-    position: absolute;
-    height: 2em;
-    width: 100em;
-}
-.picture-box-formats a {
-    margin-right: 1em;
-}
-.picture-box-download:hover .picture-box-formats {
-    display: block;
+.picture.book-wide-box .other-tools {
+    margin: 5em 0 0 0;
 }
 
-.picture-box-tools a:before {
-    content: url("/static/img/download.png");
-    font-size: 2em;
-    margin-right: .25em;
-    vertical-align: middle;
+
+.picture.book-wide-box #theme-list-wrapper {
+    margin-left: 55em;
 }

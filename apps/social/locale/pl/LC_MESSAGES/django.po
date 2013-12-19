@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-06 17:09+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2012-09-06 17:10+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,14 +15,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2)\n"
 
 #: admin.py:16
 msgid "Background"
 msgstr "Obraz tła"
 
-#: admin.py:25
-#: models.py:22
+#: admin.py:25 models.py:22
 msgid "image"
 msgstr "obraz"
 
@@ -54,8 +54,7 @@ msgstr "Sprawia, że cytat wyświetla się mniejszym fontem."
 msgid "VIP"
 msgstr "VIP"
 
-#: models.py:18
-#: models.py:30
+#: models.py:18 models.py:30
 msgid "link"
 msgstr "odnośnik"
 
@@ -72,8 +71,11 @@ msgid "shift"
 msgstr "przesunięcie"
 
 #: models.py:25
-msgid "Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%."
-msgstr "Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 do dolnej. Domyślne jest 50%."
+msgid ""
+"Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%."
+msgstr ""
+"Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 "
+"do dolnej. Domyślne jest 50%."
 
 #: models.py:26
 msgid "title"
@@ -103,16 +105,19 @@ msgstr "cytaty"
 msgid "recommends"
 msgstr "poleca"
 
-#: templates/social/my_shelf.html:5
-#: templates/social/my_shelf.html.py:11
+#: templates/social/my_shelf.html:5 templates/social/my_shelf.html.py:11
 msgid "My shelf"
 msgstr "Moja półka"
 
 #: templates/social/my_shelf.html:16
-msgid "Add works to your shelf by clicking on the star on the page of the work. The work will then show up on My shelf page."
-msgstr "Aby dodać pozycję do swojej półki, należy zaznaczyć gwiazdkę znajdującą się na stronie utworu. Po jej zaznaczeniu publikacja pojawi się w zakładce Moja półka."
+msgid ""
+"Add works to your shelf by clicking on the star on the page of the work. The "
+"work will then show up on My shelf page."
+msgstr ""
+"Aby dodać pozycję do swojej półki, należy zaznaczyć gwiazdkę znajdującą się "
+"na stronie utworu. Po jej zaznaczeniu publikacja pojawi się w zakładce Moja "
+"półka."
 
 #: templates/social/sets_form.html:7
 msgid "Remove from my shelf"
 msgstr "Usuń z mojej półki"
-

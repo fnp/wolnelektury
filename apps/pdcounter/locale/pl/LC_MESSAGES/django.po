@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-11 15:46+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2013-06-11 15:47+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,25 +66,25 @@ msgstr "zapowiedź książki"
 msgid "book stubs"
 msgstr "zapowiedzi książek"
 
-#: templates/pdcounter/author_detail.html:6
-#: templates/pdcounter/book_stub_detail.html:6
+#: templates/pdcounter/author_detail.html:7
+#: templates/pdcounter/book_stub_detail.html:7
 msgid "Public domain counter"
 msgstr "Licznik domeny publicznej"
 
-#: templates/pdcounter/author_detail.html:25
+#: templates/pdcounter/author_detail.html:26
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr "Przeczytaj omówienia utworów autora w serwisie Lektury.Gazeta.pl"
 
-#: templates/pdcounter/author_detail.html:30
+#: templates/pdcounter/author_detail.html:31
 msgid "Read article about this author on Wikipedia"
 msgstr "Przeczytaj artykuł o autorze w Wikipedii"
 
-#: templates/pdcounter/author_detail.html:35
+#: templates/pdcounter/author_detail.html:36
 msgid "This author's works are copyrighted."
 msgstr "Dzieła tego autora objęte są prawem autorskim."
 
-#: templates/pdcounter/author_detail.html:36
-#: templates/pdcounter/author_detail.html:44
+#: templates/pdcounter/author_detail.html:37
+#: templates/pdcounter/author_detail.html:45
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -92,7 +93,7 @@ msgstr ""
 "się</a>, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego "
 "autora."
 
-#: templates/pdcounter/author_detail.html:39
+#: templates/pdcounter/author_detail.html:40
 msgid ""
 "This author's works are in public domain and will be published on Internet "
 "library of Wolne Lektury soon."
@@ -100,7 +101,7 @@ msgstr ""
 "Dzieła tego autora znajdują się w domenie publicznej i niedługo zostaną "
 "opublikowane w bibliotece internetowej Wolne Lektury."
 
-#: templates/pdcounter/author_detail.html:42
+#: templates/pdcounter/author_detail.html:43
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
@@ -108,7 +109,7 @@ msgstr ""
 "Dzieła tego autora przejdą do zasobów domeny publicznej i będą mogły być "
 "publikowane bez żadnych ograniczeń za"
 
-#: templates/pdcounter/book_stub_detail.html:16
+#: templates/pdcounter/book_stub_detail.html:17
 msgid ""
 "This work is in public domain and will be published on Internet library of "
 "Wolne Lektury soon."
@@ -116,7 +117,7 @@ msgstr ""
 "Ten utwór znajduje się w domenie publicznej i niedługo zostanie opublikowany "
 "w bibliotece internetowej Wolne Lektury."
 
-#: templates/pdcounter/book_stub_detail.html:19
+#: templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
 "published without restrictions in"
@@ -124,8 +125,8 @@ msgstr ""
 "Ten utwór przejdzie do zasobów domeny publicznej i będzie mógł być "
 "publikowany bez żadnych ograniczeń za"
 
-#: templates/pdcounter/book_stub_detail.html:21
-#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:22
+#: templates/pdcounter/book_stub_detail.html:25
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
@@ -133,7 +134,7 @@ msgstr ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Dowiedz "
 "się</a>, dlaczego biblioteki internetowe nie mogą udostępniać tego utworu."
 
-#: templates/pdcounter/book_stub_detail.html:23
+#: templates/pdcounter/book_stub_detail.html:24
 msgid "This work is copyrighted."
 msgstr "Ten utwór objęty jest prawem autorskim."
 

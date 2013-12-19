@@ -20,6 +20,7 @@ TAG_CATEGORIES = (
     ('theme', _('theme')),
     ('set', _('set')),
     ('book', _('book')),
+    ('thing', _('thing')), # things shown on pictures
 )
 
 
@@ -37,7 +38,9 @@ class Tag(TagBase):
 
     user = models.ForeignKey(User, blank=True, null=True)
     book_count = models.IntegerField(_('book count'), blank=True, null=True)
+    picture_count = models.IntegerField(_('picture count'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
+    culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
     created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
@@ -53,6 +56,7 @@ class Tag(TagBase):
         'gatunek': 'genre',
         'motyw': 'theme',
         'polka': 'set',
+        'obiekt': 'thing',
     }
     categories_dict = dict((item[::-1] for item in categories_rev.iteritems()))
 
@@ -109,6 +113,22 @@ class Tag(TagBase):
                     objects = objects.exclude(pk__in=descendants_keys)
         return objects.count()
 
+    # I shouldn't break the get_count() api 
+    # just to include pictures.
+    def get_picture_count(self):
+        from picture.models import Picture, PictureArea
+        
+        if self.category == 'book':
+            # never used
+            objects = Picture.objects.none()
+        elif self.category == 'theme':
+            objects = PictureArea.tagged.with_all((self,))
+        elif self.category == 'thing':
+            objects = Picture.tagged.with_all((self,))
+        else:
+            objects = Picture.tagged.with_all((self,)).order_by()
+        return objects.count()
+        
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):
@@ -176,10 +196,12 @@ class Tag(TagBase):
                     # Allow creating new tag, if it's in default language.
                     tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
                     if created:
+                        tag_name = unicode(tag_name)
                         tag.name = tag_name
                         setattr(tag, "name_%s" % lang, tag_name)
                         tag.sort_key = sortify(tag_sort_key.lower())
                         tag.save()
+
                     meta_tags.append(tag)
                 else:
                     # Ignore unknown tags in non-default languages.

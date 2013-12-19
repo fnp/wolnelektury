@@ -93,7 +93,7 @@ img {
 }
 
 
-#toc, #themes, #nota_red, #info, #other-versions {
+#toc, #themes, #nota_red, #info, #other-versions, #objects {
     position: fixed;
     left: 0em;
     top: 1.5em;
@@ -126,7 +126,7 @@ img {
     z-index: 99;
 }
 
-#toc ol, #themes ol {
+#toc ol, #themes ol, #objects ol {
     list-style: none;
     padding: 0;
     margin: 0;

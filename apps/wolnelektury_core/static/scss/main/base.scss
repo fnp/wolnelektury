@@ -99,3 +99,7 @@ ul.plain {
     @include size(padding, 6px);
     text-align:center;
 }
+
+.simple-hidden-initially {
+    display: none;
+}

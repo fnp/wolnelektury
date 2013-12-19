@@ -1,4 +1,4 @@
-.Fragment-item {
+.Fragment-item, .PictureArea-item {
     @include size(margin-bottom, 20px);
     @include white-box;
 
@@ -10,5 +10,26 @@
         @include size(font-size, 11px);
         display: block;
         @include size(padding, 5px 0);
+    }
+}
+
+.area {
+    display: block;
+    color: black;
+    background: white;
+    @include size(padding, 30px 20px 20px 20px);
+    position: relative;
+    clear: both;
+
+    .area-thumbnail {
+        display:block;
+        @include size(width, 100px);
+        float: left;
+    }
+
+    .area-description {
+        float: right;
+        @include size(padding, 10px);
+        @include size(width, 256px);
     }
 }

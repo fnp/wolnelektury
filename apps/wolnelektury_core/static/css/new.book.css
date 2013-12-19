@@ -13,7 +13,7 @@ a {
 /* ================================== */
 /* = Header with logo and menu      = */
 /* ================================== */
-#toc ol, #themes ol {
+#toc ol, #themes ol, #objects ol {
     list-style: none;
     padding: 0;
     margin: 0;

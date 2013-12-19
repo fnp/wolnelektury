@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-10 10:38+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:9
+#: models.py:9 models.py:27
 msgid "slug"
 msgstr ""
 
@@ -35,28 +35,26 @@ msgstr "katalog"
 msgid "catalogs"
 msgstr "katalogi"
 
-#: models.py:28
+#: models.py:29
 msgid "url"
 msgstr "url"
 
-#: models.py:29
+#: models.py:30
 msgid "description"
 msgstr "opis"
 
-#: models.py:32
+#: models.py:33
 msgid "library"
 msgstr "biblioteka"
 
-#: models.py:33
+#: models.py:34
 msgid "libraries"
 msgstr "biblioteki"
 
-#: templates/libraries/library_view.html:4
-#: templates/libraries/library_view.html:8
+#: templates/libraries/catalog_view.html:4
 msgid "Libraries directory"
 msgstr "Katalog bibliotek"
 
 #: templates/libraries/main_view.html:4 templates/libraries/main_view.html:8
 msgid "Library directories"
 msgstr "Katalogi bibliotek"
-

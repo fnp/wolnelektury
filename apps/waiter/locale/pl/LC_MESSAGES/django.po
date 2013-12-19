@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-19 11:40+0200\n"
+"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: 2012-03-22 15:54+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
 
-#: templates/waiter/wait.html:8 templates/waiter/wait.html.py:34
+#: templates/waiter/wait.html:7 templates/waiter/wait.html.py:33
 msgid "The file is ready for download!"
 msgstr "Plik jest gotowy do pobrania!"
 
-#: templates/waiter/wait.html:11 templates/waiter/wait.html.py:44
+#: templates/waiter/wait.html:10 templates/waiter/wait.html.py:43
 msgid "Your file is being prepared, please wait."
 msgstr "Plik jest generowany, proszę czekać."
 
-#: templates/waiter/wait.html:13 templates/waiter/wait.html.py:53
+#: templates/waiter/wait.html:12 templates/waiter/wait.html.py:52
 msgid "Something went wrong."
 msgstr "Coś poszło nie tak."
 
-#: templates/waiter/wait.html:37
+#: templates/waiter/wait.html:36
 #, python-format
 msgid ""
 "Your file is ready!\n"
@@ -41,16 +41,16 @@ msgstr ""
 "Jeśli pobieranie nie zacznie się w ciągu kilku sekund,\n"
 "skorzystaj z tego <a href=\"%(file_url)s\">bezpośredniego linku</a>."
 
-#: templates/waiter/wait.html:43
+#: templates/waiter/wait.html:42
 msgid "Please wait"
 msgstr ""
 
-#: templates/waiter/wait.html:47
+#: templates/waiter/wait.html:46
 #, python-format
 msgid "The file you requested was: <em>%(d)s</em>."
 msgstr "Zamówiony plik to: <em>%(d)s</em>."
 
-#: templates/waiter/wait.html:49
+#: templates/waiter/wait.html:48
 msgid ""
 "<strong>Be aware:</strong> Generating the file can take a while.\n"
 "        Please be patient, or bookmark this page and come back later.</p>"
@@ -58,7 +58,7 @@ msgstr ""
 "<strong>Uwaga:</strong> Generowanie pliku może trwać dłuższą chwilę.\n"
 "Poczekaj cierpliwie, albo dodaj tę stronę do zakładek i wróć później.</p>"
 
-#: templates/waiter/wait.html:57
+#: templates/waiter/wait.html:56
 #, python-format
 msgid ""
 "Something seems to have gone wrong while generating your file.\n"
