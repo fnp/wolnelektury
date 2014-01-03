@@ -5,32 +5,36 @@
 from django.contrib.sites.models import Site
 from piwik.django.models import PiwikSite
 from django.conf import settings
+from datetime import datetime
 import logging
 from functools import update_wrapper
-import httplib
-import urlparse
 import urllib
 from random import random
 from inspect import isclass
+from .tasks import track_request
 
 logger = logging.getLogger(__name__)
 
 
-def piwik_url(**kw):
-    url = settings.PIWIK_URL + u"/piwik.php?"
-    url += u'&'.join([k + u"=" + str(v) for k, v in kw.items()])
-    logger.info("piwik url: %s" % url)
-    return url
+def piwik_url(request):
+    return urllib.urlencode(dict(
+        idsite=_id_piwik,
+        rec=1,
+        url='http://%s%s' % (request.META['HTTP_HOST'], request.path),
+        rand=int(random() * 0x10000),
+        apiv=PIWIK_API_VERSION,
+        urlref=request.META.get('HTTP_REFERER', ''),
+        ua=request.META.get('HTTP_USER_AGENT', ''),
+        lang=request.META.get('HTTP_ACCEPT_LANGUAGE', ''),
+        token_auth=getattr(settings, 'PIWIK_TOKEN', ''),
+        cip=request.META['REMOTE_ADDR'],
+        cdt=datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+    ))
 
 PIWIK_API_VERSION = 1
 
 
 # Retrieve piwik information
-try:
-    _host = urlparse.urlsplit(settings.PIWIK_URL).netloc
-except AttributeError:
-    logger.debug("PIWIK_URL not configured.")
-    _host = None
 try:
     _id_piwik = PiwikSite.objects.get(site=Site.objects.get_current().id).id_site
 except PiwikSite.DoesNotExist:
@@ -52,18 +56,7 @@ def piwik_track(klass_or_method):
         call_func = klass_or_method
 
     def wrap(self, request, *args, **kw):
-        conn = httplib.HTTPConnection(_host)
-        conn.request('GET', piwik_url(
-            rec=1,
-            apiv=PIWIK_API_VERSION,
-            rand=int(random() * 0x10000),
-            token_auth=urllib.quote(settings.PIWIK_TOKEN),
-            cip=urllib.quote(request.META['REMOTE_ADDR']),
-            url=urllib.quote('http://' + request.META['HTTP_HOST'] + request.path),
-            urlref=urllib.quote(request.META['HTTP_REFERER']) if 'HTTP_REFERER' in request.META else '',
-            idsite=_id_piwik))
-
-        conn.close()
+        track_request.delay(piwik_url(request))
         return call_func(self, request, *args, **kw)
 
     # and wrap it
