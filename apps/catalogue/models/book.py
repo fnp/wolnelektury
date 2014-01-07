@@ -44,6 +44,9 @@ class Book(models.Model):
 
     cover = EbookField('cover', _('cover'),
                 upload_to=book_upload_path('jpg'), null=True, blank=True)
+    # Cleaner version of cover for thumbs
+    cover_thumb = EbookField('cover_thumb', _('cover thumbnail'),
+                upload_to=book_upload_path('th.jpg'), null=True, blank=True)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
@@ -313,6 +316,7 @@ class Book(models.Model):
         tasks.fix_tree_tags.delay(book)
         if 'cover' not in dont_build:
             book.cover.build_delay()
+            book.cover_thumb.build_delay()
         
         # No saves behind this point.
 
@@ -395,6 +399,7 @@ class Book(models.Model):
         if not self.cover_info(inherit=False):
             if 'cover' not in app_settings.DONT_BUILD:
                 self.cover.build_delay()
+                self.cover_thumb.build_delay()
             for format_ in constants.EBOOK_FORMATS_WITH_COVERS:
                 if format_ not in app_settings.DONT_BUILD:
                     getattr(self, '%s_file' % format_).build_delay()

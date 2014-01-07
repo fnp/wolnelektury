@@ -209,6 +209,15 @@ class BuildHtml(BuildEbook):
             return True
         return False
 
+@BuildEbook.register('cover_thumb')
+@task(ignore_result=True)
+class BuildCoverThumb(BuildEbook):
+    @classmethod
+    def transform(cls, wldoc, fieldfile):
+        from librarian.cover import WLCover
+        return WLCover(wldoc.book_info, height=193).output_file()
+
+
 
 class OverwritingFieldFile(FieldFile):
     """
