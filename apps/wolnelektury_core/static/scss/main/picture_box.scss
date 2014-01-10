@@ -1,0 +1,33 @@
+.picture {
+    &.book-wide-box {
+        img.cover {
+            width: 53.5em;
+            height: auto;
+        }
+
+        .book-box-tools {
+            margin-left:  50em; // 535px image + 15px margin @ 11pt
+        }
+
+        .other-tools {
+            margin: 5em 0 0 0;
+        }
+        #theme-list-wrapper {
+            margin-left: 55em;
+        }
+    }
+
+    li.book-box-download {
+        width: 15em;
+    }
+}
+
+
+.work-list {
+    .Picture-item {
+        @include min-screen($S_BOOK_SHORT_FULL) {
+            display: inline-block;
+        }
+        vertical-align: top;
+    }
+}

@@ -21,7 +21,7 @@
     <div class="right-column" id="logo-space">
       {% block book_list_logos %}
       <a href="http://www.nck.pl">
-	<img style="float:right; width:200px" src="{% static "img/logo_nck_200horiz_trans.png" %}" alt="Narodowe Centrum Kultury" ></img></a>
+	<img style="float:right; width:200px; margin:1em" src="{% static "img/logo_nck_200horiz_trans.png" %}" alt="Narodowe Centrum Kultury" ></img></a>
       {% endblock %}
     </div>
 
@@ -29,7 +29,7 @@
 <div id="books-list">
   <ol class="work-list">{% spaceless %}
 {% for picture in book_list %}
-   <li class="Book-item">
+   <li class="Picture-item">
  {% picture_short picture %} 
    </li>
 {% endfor %}

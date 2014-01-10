@@ -1,6 +1,7 @@
 
 #picture-view {
-    width: 100%;
+    left: 0;
+    right: 0;
     position:absolute;
     top: 0;
     bottom: 0;
@@ -9,17 +10,12 @@
  
 #picture-view .picture-wrap {
     background-repeat: no-repeat;
-    margin: 3rem auto 1rem auto;
+    margin: 0 auto 0 auto;
     display: block;
     position: relative;
     z-index: 10;
 //    cursor: move;
 
-}
-
-
-.picture-wrap img.loading {
-    margin-left: -10000px;
 }
 
 .picture-wrap .mark {
@@ -37,100 +33,28 @@
 //    bottom: -1.5em;
 }
 
-
-.toolbar {
-    position: fixed;
-    //top: 1.5rem;
-    left: 0rem;
-    color: #FFF;
-    z-index: 99;
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-    
-    background: #333;
-    opacity: 0.9;
-    width: 8rem;
-}
-
-.toolbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.8rem;
-    background-color: #222;
-}
-
-.toolbar .button.inactive a:active,
-.toolbar .button.inactive a:link,
-.toolbar .button.inactive a:visited
+.button.inactive:active,
+.button.inactive:link,
+.button.inactive:visited
 {
     color: #606060 !important;
     cursor: not-allowed;
 }
 
-.toolbar .button a {
-    //background: #333;
-    //opacity: 0.9;
-    display: block;
-    height:1.5rem;
-
-    text-align: center;
-    color: #FFF;
-    padding: 0.2rem 0;
-    text-decoration: none;
-}
-
-.toolbar .button .dropdown-body a {
-    height: 1.2rem;
-    white-space: nowrap;
-}
-
-#picture-view .toolbar .button.square a {
-    width: 4rem; //1.5rem;
-    font-weight: bold;
-}
-
-li.button {
-    clear: both;
-}
-li.button.square {
-    clear: none;
-    float: left;
-}
-
-.toolbar .button a:link,
-.toolbar .button a:visited {
-    color: #FFF;
-}
-
-#picture-view .toolbar.button a:active {
-    color: yellow;
-}
-
-.moveright {
-    margin-left: 8rem !important;
-}
-
 #sponsors {
-    position: absolute;
-    display: block;
-    left: 0;
-    bottom: 0;
-    width: 8rem;
-
-    z-index:1;
+    margin-top: 3em;
 }
-#sponsors div {
-    z-index: 10;
-}
-
 #sponsors img {
     width: 100%;
-    z-index: 10;
 }
 
 #spinner {
     height: 1em;
     z-index:10;
 }
+
+.dropdown-body {
+    font-size: 0.8rem;
+    background-color: #444;
+}
+

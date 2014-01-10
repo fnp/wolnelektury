@@ -6,6 +6,9 @@ function hide_menu_boxes() {
     $("#menu .active").each(function() {
         $(this).removeClass("active");
         $("#" + $(this).attr("data-box")).hide();
+        if ($(this).hasClass('dropdown')) {
+            $($(this).attr('href')).slideUp('fast');
+        }
     });
     $("#box-underlay").hide();
 }
@@ -64,7 +67,20 @@ $("#menu a").each(function() {
             }
         });
     }
-    else {
+    else if ($(this).hasClass('dropdown')) {
+        $(this).click(function(e) {
+            e.preventDefault();
+            var showing = $(this).hasClass("active");
+            hide_menu_boxes();
+            if (!showing) {
+                $("body").addClass("menu-showed");
+                $("#sponsors:not(:hidden)").fadeOut();
+                $(this).addClass("active");
+                $($(this).attr('href')).slideDown('fast');
+            }
+        });
+    }
+    else if (!$(this).hasClass('button')) {
         $(this).click(release_menu);
     }
 });

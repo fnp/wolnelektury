@@ -1,29 +1,24 @@
+{% extends "catalogue/viewer_base.html" %}
 {% load i18n %}
-{% load static from staticfiles %}
-{% load compressed %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <title>{% block title %}WolneLektury.pl{% endblock %}</title>
-        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
-        {% compressed_css "book" %}
-    </head>
-    <body>
-        <div id="menu">
-            {% if shelf or not books %}
-                {# shelf or global mixing #}
-                <a href='' class='menu-link'>Twórzże się jeszcze raz!</a>
-            {% else %}{% if book %} 
-                <a href='{% url "poem_from_book" book.slug %}' class='menu-link'>Twórzże się jeszcze raz!</a>
-            {% endif %}{% endif %}
-            <span style='float: right'>Wolne Lektury przepuszczone przez mikser.</a>
-        </div>
-        <div id="header">
-            <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" /></a>
-        </div>
-        <div id="book-text">
+
+
+{% block title %}Leśmianator{% endblock %}
+
+
+{% block menu %}
+    <li><a href='{% url 'lesmianator' %}'><span class="label">Wolne Lektury przepuszczone przez mikser.</span></a></li>
+    {% if shelf or not books %}
+        {# shelf or global mixing #}
+        <li><a href=''><span class='label'>Twórzże się jeszcze raz!</span></a></li>
+    {% else %}{% if book %} 
+        <li><a href='{% url "poem_from_book" book.slug %}'><span class='label'>Twórzże się jeszcze raz!</span></a></li>
+    {% endif %}{% endif %}
+{% endblock menu %}
+
+
+
+{% block main-text %}
+    <div id="book-text">
             <h1>
                 <span class="author">Leśmianator</span>
                 <span class="title">***</span>
@@ -66,6 +61,5 @@
             <div>
         </div>
         </div>
-        {{ piwik_tag|safe }}
-    </body>
-</html>
+    </div>
+{% endblock main-text %}

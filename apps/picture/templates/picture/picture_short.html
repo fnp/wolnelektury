@@ -2,70 +2,74 @@
 {% load thumbnail %}
 {% load catalogue_tags social_tags %}
 {% load picture_tags %}
-
 <div class="{% block box-class %}book-box{% endblock %} picture">
-<div class="book-box-inner" style="position:relative">
+<div class="book-box-inner">
+<div class="book-left-column">
+
+<div class="book-box-body">
+
+        <div class="book-box-head">
+            <div class="author">
+                {% for tag in tags.author %}
+                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>{% if not forloop.last %},
+                {% endif %}{% endfor %}
+            </div>
+            <div class="title">
+				{% if main_link %}<a href="{{ main_link }}">{% endif %}
+					{{ picture.title }}
+			    {% if main_link %}</a>{% endif %}
+			</div>
+        </div>
+
+
+
   <div class="cover-area">
     {% block picture-view %}
-    <a href="{{ picture.get_absolute_url }}">
+    {% if main_link %}<a href="{{ main_link }}">{% endif %}
       {% thumbnail picture.image_file "216x288" crop="center" as thumb %}
       <img class="cover" src="{{thumb.url}}"/>
       {% endthumbnail %}
-    </a>
+    {% if main_link %}</a>{% endif %}
     {% endblock %}
      {# what about licensing icons here #}
   </div>
-    <div class="book-box-body">
-      
-        <div class="book-box-head">
-            <div class="mono author">
-            {% for author in tags.author %}
-                <a href="{% tag_url 'author' author.slug %}">{{ author }}</a>{% if not forloop.last %},{% endif %}
-            {% endfor %}
-            </div>
-            <div class="title"><a href="{{ picture.get_absolute_url }}">{{ picture.title }}</a></div>
-        </div>
+     
         <div class="tags">
             {% spaceless %}
 
-            <span class="mono"> {% trans "Epoch" %}:&nbsp;</span>
-            <span class="book-box-tag">
-                {% for tag in tags.epoch %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}
+            <span class="category">
+            <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
+            	{% for tag in tags.epoch %}
+            		<a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+            		{% if not forloop.last %}<span>, </span>{% endif %}
                 {% endfor %}
-            </span>
+            </span></span>
 
-            <span class="mono"> {% trans "Kind" %}:&nbsp;</span>
-            <span class="book-box-tag">
-                {% for tag in tags.kind %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}
+            <span class="category">
+            <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
+            	{% for tag in tags.kind %}
+            		<a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+            		{% if not forloop.last %}<span>, </span>{% endif %}
                 {% endfor %}
-            </span>
+            </span></span>
 
-            <span class="mono"> {% trans "Genre" %}:&nbsp;</span>
-            <span class="book-box-tag">
-                {% for tag in tags.genre %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}
+            <span class="category">
+            <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
+            	{% for tag in tags.genre %}
+            		<a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+            		{% if not forloop.last %}<span>, </span>{% endif %}
                 {% endfor %}
-            </span>
+            </span></span>
 
             {% endspaceless %}
         </div>
     </div>
     <ul class="book-box-tools">
       <li class="book-box-read">
-        <a href="{% url 'picture_viewer' picture.slug %}" class="mono downarrow">{% trans "View online" %}</a>
+        <a href="{% url 'picture_viewer' picture.slug %}" class="downarrow">{% trans "View online" %}</a>
       </li>
       <li class="book-box-download">
-	<a href="{{picture.image_file.url}}" class="mono downarrow">{% trans "download original" %}</a>
-      </li>
-<!--      <li class="book-box-download hoverget">
-        <a class="mono downarrow hoverclick">{% trans "Download" %}</a>
-        <div class="book-box-formats mono">
-	  {% if picture.image_file %}
-	  <span><a href="{{ picture.image_file.url}}">JPG</a> {% trans "original" %}</span>
-	  {% endif %}
-	</div>-->
+        <a href="{{picture.image_file.url}}" class="downarrow">{% trans "download original" %}</a>
       </li>
     </ul>
     {% block book-box-extra-info %}{% endblock %}
@@ -73,6 +77,7 @@
     {% endblock %}
     {% block right-column %}
     {% endblock %}
-    <div class="clearboth"/>
+    <div class="clearboth"></div>
+</div>
 </div>
 </div>

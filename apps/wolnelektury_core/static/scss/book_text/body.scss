@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
+    position: relative;
     @include min-screen($W_BOOK_TEXT_MAX) {
         justify-content: center;
     }
@@ -20,6 +21,30 @@
         }
     }
 }
+
+#picture-viewer #big-pane {
+    @include size(margin-left, $W_NONUMBERS_TINY);
+
+    @include min-screen($S_NONUMBERS_TINY_MAX) {
+        @include size(margin-left, $W_NONUMBERS);
+    }
+
+    @include min-screen($S_NUMBERS) {
+        @include size(margin-left, 44px);
+    }
+}
+
+@include min-screen($S_MENU) {
+    #picture-viewer #big-pane {
+        @include size(margin-left, $W_MENU);
+    }
+    .menu-hidden {
+        #big-pane {
+            margin-left: 44px;
+        }
+    }
+}
+
 
 
 

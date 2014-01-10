@@ -44,6 +44,8 @@ PIPELINE_CSS = {
         'source_filenames': [
             'scss/book_text.scss',
             'css/new.book.css',
+
+            'css/master.picture.css',
         ],
         'output_filename': 'css/compressed/book_text.css',
     },
@@ -108,10 +110,10 @@ PIPELINE_JS = {
             'js/jquery.highlightfade.js',
             'js/book_text/other.js',
             'js/book.js',
-            'js/picture.js',
+
             'js/raphael-min.js',
-            'player/openplayer.js',
             'js/progressSpin.min.js',
+            'js/picture.js',
         ],
         'output_filename': 'js/book.min.js',
     },
@@ -122,6 +124,12 @@ PIPELINE_JS = {
             'js/book_text/*.js',
             'js/locale.js',
             'js/dialogs.js',
+
+            'js/jquery.highlightfade.js',
+            'js/raphael-min.js',
+            'player/openplayer.js',
+            'js/progressSpin.min.js',
+            'js/picture.js',
         ],
         'output_filename': 'js/book_text.js',
     },

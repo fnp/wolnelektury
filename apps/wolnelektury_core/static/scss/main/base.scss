@@ -52,6 +52,11 @@ h3 {
 
 .normal-text {
     line-height: 1.3em;
+    @include size(margin, 0 5px);
+
+    @media screen and (min-width: 62.5em) {
+        margin: 0;
+    }
 }
 
 .white-box {

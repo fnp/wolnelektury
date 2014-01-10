@@ -364,18 +364,29 @@
             position: relative;
             z-index: 101;
 
+            @mixin downarrow {
+                color: #0D7E85;
+
+                &:before {
+                    content: url("/static/img/download.png");
+                    @include size(font-size, 25px);
+                    @include size(margin-right, 3.71px);
+                    vertical-align: middle;
+                    font-weight: normal;
+                    display: inline;
+                }
+            }
+
             &.downarrow {
-                color: black;
-
-                @include min-screen($S_BOOK_SHORT_FULL) {
-                    color: #0D7E85;
-
+                @include downarrow;
+                &.hoverclick {
+                    color: black;
                     &:before {
-                        content: url("/static/img/download.png");
-                        @include size(font-size, 25px);
-                        @include size(margin-right, 3.71px);
-                        vertical-align: middle;
-                        font-weight: normal;
+                        display: none;
+                    }
+
+                    @include min-screen($S_BOOK_SHORT_FULL) {
+                        @include downarrow;
                     }
                 }
             }

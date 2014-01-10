@@ -11,18 +11,8 @@
     }
 }
 
-/* Button for showing menu */
-#menu-toggle-on {
-    @extend %menu-toggle;
+#no-menu {
     @include size(width, $W_NONUMBERS_TINY);
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #191919;
-    color: #ddd;
-    text-align: center;
-    z-index: 100;
-    @include size(height, 44px);
 
     @include min-screen($S_NONUMBERS_TINY_MAX) {
         @include size(width, $W_NONUMBERS);
@@ -32,12 +22,24 @@
         @include size(width, 44px);
     }
 
-    &:before {
-        left: 5px;
-        right: 5px;
-        @include min-screen(240px) {
-            left: 8px;
-            right: 8px;
+    /* Button for showing menu */
+    #menu-toggle-on {
+        @extend %menu-toggle;
+        display: block;
+        background: #191919;
+        color: #ddd;
+        text-align: center;
+        z-index: 100;
+        @include size(height, 44px);
+        padding: 0;
+
+        &:before {
+            left: 5px;
+            right: 5px;
+            @include min-screen(240px) {
+                left: 8px;
+                right: 8px;
+            }
         }
     }
 }
@@ -54,17 +56,19 @@
 
 #menu {
     display: none;
-    z-index: 101;
-
     width: 80px;
+    height: 100%;
+}
+
+#menu, #no-menu {
+    z-index: 101;
     position: fixed;
     top: 0;
     left: 0;
     text-align: center;
-    background: #191919;
-    height: 100%;
-
     line-height: 1.1em;
+    background: #191919;
+    color: #ddd;
 
     ul {
         list-style: none;
@@ -95,8 +99,13 @@
 }
 
 /* body class for showing menu */
-.menu-showed #menu {
-    display: block;
+.menu-showed {
+    #menu {
+        display: block;
+    }
+    #no-menu {
+        display: none;
+    }
 }
 
 /* menu showing by default */
@@ -104,8 +113,16 @@
     #menu {
         display: block;
     }
-    /* body class for hiding menu */
-    .menu-hidden #menu {
+    #no-menu {
         display: none;
+    }
+    /* body class for hiding menu */
+    .menu-hidden {
+        #menu {
+            display: none;
+        }
+        #no-menu {
+            display: block;
+        }
     }
 }
