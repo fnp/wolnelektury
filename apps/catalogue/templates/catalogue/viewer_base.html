@@ -67,7 +67,8 @@
         </script>
         {% compressed_js "book_text" %}
 
-        <script src="{% static "js/modernizr.custom.19652.js" %}"></script>
+        {{ piwik_tag|safe }}
         {% block extrabody %}{% endblock %}
+        <script src="{% static "js/modernizr.custom.19652.js" %}"></script>
     </body>
 </html>

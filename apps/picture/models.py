@@ -233,6 +233,8 @@ class Picture(models.Model):
                 img = picture_xml.image_file()
 
             modified = cls.crop_to_frame(picture_xml, img)
+            modified = cls.add_source_note(picture_xml, modified)
+
             picture.width, picture.height = modified.size
 
             modified_file = StringIO()
@@ -266,6 +268,26 @@ class Picture(models.Model):
             return img
         img = img.crop(itertools.chain(*wlpic.frame))
         return img
+
+    @staticmethod
+    def add_source_note(wlpic, img):
+        from PIL import ImageDraw, ImageFont
+        from librarian import get_resource
+
+        annotated = Image.new(img.mode, 
+                (img.size[0], img.size[1] + 40), 
+                (255, 255, 255)
+            )
+        annotated.paste(img, (0, 0))
+        annotation = Image.new(img.mode, (3000, 120), (255, 255, 255))
+        ImageDraw.Draw(annotation).text(
+            (30, 15),
+            wlpic.picture_info.source_name,
+            (0, 0, 0),
+            font=ImageFont.truetype(get_resource("fonts/DejaVuSerif.ttf"), 75)
+        )
+        annotated.paste(annotation.resize((1000, 40), Image.ANTIALIAS), (0, img.size[1]))
+        return annotated
 
     @classmethod
     def picture_list(cls, filter=None):

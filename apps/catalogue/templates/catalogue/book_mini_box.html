@@ -1,17 +1,11 @@
-{% load thumbnail %}
 <div class="book-mini-box">
     <div class="book-mini-box-inner">
     {% if with_link %}
     <a href="{{ book.get_absolute_url }}">
     {% endif %}
         {% if book.cover %}
-            <img src="
-                {% thumbnail book.cover "139x193" as thumb %}
-                    {{ thumb.url }}
-                {% empty %}
-                    {{ book.cover.url }}
-                {% endthumbnail %}
-            " alt="{{ author_str }} – {{ book.title }}" class="cover" />
+            <img src="{{ book.cover_thumb.url }}"
+                alt="{{ author_str }} – {{ book.title }}" class="cover" />
         {% endif %}
         {% if show_lang %}
             <span class="language" title="{{ book.language_name }}">{{ book.language_code }}</span>

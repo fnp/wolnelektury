@@ -19,7 +19,7 @@
 
 	        {% if book.cover %}
             <img src="
-                {% thumbnail book.cover "101x140" as thumb %}
+                {% thumbnail book.cover_thumb "101x140" as thumb %}
                     {{ thumb.url }}
                 {% empty %}
                     {{ book.cover.url }}

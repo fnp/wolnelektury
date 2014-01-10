@@ -24,7 +24,7 @@ class BookMedia(models.Model):
             for k, t in formats.items()]
 
     type        = models.CharField(_('type'), db_index=True, choices=format_choices, max_length="100")
-    name        = models.CharField(_('name'), max_length="100")
+    name        = models.CharField(_('name'), max_length=512)
     file        = OverwritingFileField(_('file'), upload_to=book_upload_path())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     extra_info  = jsonfield.JSONField(_('extra information'), default={}, editable=False)

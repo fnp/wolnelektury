@@ -1,6 +1,5 @@
 {% load i18n %}
 {% load catalogue_tags social_tags %}
-{% load thumbnail %}
 <div class="{% block box-class %}book-box{% endblock %}">
 <div class="book-box-inner">
 <div class="book-left-column">
@@ -43,13 +42,8 @@
 <div class="cover-area">
     {% if book.cover %}
         {% if main_link %}<a href="{{ main_link }}">{% endif %}
-            <img src="
-                {% thumbnail book.cover "139x193" as thumb %}
-                    {{ thumb.url }}
-                {% empty %}
-                    {{ book.cover.url }}
-                {% endthumbnail %}
-            " alt="Cover" class="cover" />
+            <img src="{{ book.cover_thumb.url }}"
+                alt="Cover" class="cover" />
         {% if main_link %}</a>{% endif %}
     {% endif %}
     {% block cover-area-extra %}{% endblock %}
