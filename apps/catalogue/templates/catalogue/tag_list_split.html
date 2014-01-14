@@ -1,14 +1,10 @@
 {% load i18n %}
 {% if books %}
-<p>
-  <a href="#">{% trans "Literature" %}:</a>
-</p>
+<p>{% trans "Literature" %}:</p>
 <div>{{books|safe}}</div>
 {% endif %}
 
 {% if pictures %}
-<p>
-  <a href="#">{% trans "Gallery" %}:</a>
-</p>
+<p>{% trans "Gallery" %}:</p>
 <div>{{pictures|safe}}</div>
 {% endif %}
