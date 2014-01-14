@@ -191,7 +191,8 @@ div.kwestia div.stanza {
 
 p.paragraph {
     text-align: justify;
-    margin: 1.5em 0 0;
+    margin: 0;
+    text-indent: 1.5em;
 }
 
 p.motto {
