@@ -230,7 +230,6 @@
       return $mark.get(0);
     },
   });
-}(jQuery));
 
 
 $(document).ready(function() {
@@ -249,3 +248,4 @@ $(document).ready(function() {
 
 });
 
+}(jQuery));
