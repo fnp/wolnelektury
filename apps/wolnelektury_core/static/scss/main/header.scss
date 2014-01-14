@@ -37,6 +37,8 @@ header#main {
     background-color: $header_bg;
     color: #bbb;
 
+    text-align:center;
+
     @media screen and (min-width: 62.5em) {
         position: relative;
         @include size(height, 94px);
@@ -51,14 +53,10 @@ header#main {
     #logo {
         display: block;
         @include size(height, 94px);
-        @include size(width, 94px);
 
         @media screen and (min-width: 24em) {
+            @include size(width, 173px);
             float: left;
-        }
-
-        img {
-            display: block;
         }
     }
 

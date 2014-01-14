@@ -9,7 +9,7 @@
 
 {% block menu %}
 <li><a href="{{ book.get_absolute_url }}" id="menu-book" data-box="book-short">
-    <img src="{% thumbnail book.cover '80x111' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover.url }}{% endthumbnail %}"
+    <img src="{% thumbnail book.cover_thumb '80x111' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover_thumb.url }}{% endthumbnail %}"
         width="80" height="111"
         alt="{{ book.pretty_title }}"
         title="{{ book.pretty_title }}">

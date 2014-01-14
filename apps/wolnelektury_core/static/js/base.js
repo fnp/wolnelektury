@@ -77,7 +77,23 @@
                                 dataType: "json",
                             }).done(function(data) {
                                 $.each(data, function(index, value) {
-                                    $('#menu-' + index).html(value);
+                                    var $menuitem = $('#menu-' + index);
+                                    $menuitem.html(value);
+                                    var $minisearch = $("<input class='mini-search' style='margin-bottom: 1em' />");
+                                    $minisearch.keyup(function() {
+                                        var s = $(this).val().toLowerCase();
+                                        if (s) {
+                                            $("li", $menuitem).each(function() {
+                                                if ($("a", this).text().toLowerCase().indexOf(s) != -1)
+                                                    $(this).show();
+                                                else $(this).hide();
+                                            });
+                                        }
+                                        else {
+                                            $("li", $menuitem).css("display", "");
+                                        }
+                                    });
+                                    $menuitem.prepend($minisearch);
                                 });
                                 menu_loaded = true;
                             });
@@ -93,7 +109,8 @@
 					if (p == $current)
 						return;
 					if (p.hasClass('hidden-box-trigger') 
-					    || p.hasClass('simple-toggler'))
+					    || p.hasClass('simple-toggler')
+                        || p.hasClass('mini-search'))
 						return;
 					p = p.parent();
 				}

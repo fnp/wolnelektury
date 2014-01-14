@@ -3,8 +3,6 @@
  * Everything besides the menu.
  */
 #big-pane {
-    display: flex;
-    flex-direction: row;
     justify-content: left;
     position: relative;
     @include min-screen($W_BOOK_TEXT_MAX) {
@@ -105,6 +103,10 @@
 }
 
 .with-other-text {
+    #big-pane {
+        display: flex;
+        flex-direction: row;
+    }
     #main-text, #other-text {
         @include right-without-themes;
 
