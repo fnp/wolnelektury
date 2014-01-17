@@ -11,7 +11,7 @@
         }
 
         .book-box-head, .tags, .book-box-tools {
-            margin: 0;
+            margin-left: 0;
         }
 
         
@@ -27,7 +27,7 @@
         }
 
         .book-box-tools, .tags, #theme-list-wrapper {
-            clear: left;
+            clear: both;
             margin-left: 0;
         }
         .book-box-body {
@@ -41,11 +41,11 @@
                 margin-bottom: 0;
             }
             .book-box-tools, .tags {
-                clear: none;
+                clear: right;
             }
 
             #theme-list-wrapper {
-                clear: none;
+                clear: right;
                 @include size(margin-left, 550px);
             }
         }
