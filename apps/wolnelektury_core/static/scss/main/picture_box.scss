@@ -1,19 +1,53 @@
 .picture {
     &.book-wide-box {
-        img.cover {
-            width: 53.5em;
-            height: auto;
+        .cover-area {
+            position: static;
+            @include size(margin-right, 15px);
+
+            img.cover {
+                @include size(width, 535px);
+                height: auto;
+            }
         }
 
-        .book-box-tools {
-            margin-left:  50em; // 535px image + 15px margin @ 11pt
+        .book-box-head, .tags, .book-box-tools {
+            margin: 0;
+        }
+
+        
+        @media screen and (min-width: 62.5em) {
+            .book-box-head, .tags, .book-box-tools {
+                float: right;
+                @include size(width, 403px);
+            }
         }
 
         .other-tools {
             margin: 5em 0 0 0;
         }
-        #theme-list-wrapper {
-            margin-left: 55em;
+
+        .book-box-tools, .tags, #theme-list-wrapper {
+            clear: left;
+            margin-left: 0;
+        }
+        .book-box-body {
+            height: auto;
+            margin-bottom: 1em;
+        }
+
+        @media screen and (min-width: 50em) {
+            .book-box-body {
+                @include size(height, 170px);
+                margin-bottom: 0;
+            }
+            .book-box-tools, .tags {
+                clear: none;
+            }
+
+            #theme-list-wrapper {
+                clear: none;
+                @include size(margin-left, 550px);
+            }
         }
     }
 

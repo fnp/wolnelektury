@@ -216,13 +216,14 @@
     }
 }
 
-/* FIXME: RWD */
-.picture.book-wide-box .right-column {
-    float: none;
-    @include size(width, 415px);
-    top: 0;
-    @include size(margin-left, 550px);
-    margin-top: 0em;
+@media screen and (min-width: 50em) {
+    .picture.book-wide-box .right-column {
+        float: none;
+        @include size(width, 415px);
+        top: 0;
+        @include size(margin-left, 550px);
+        margin-top: 0em;
+    }
 }
 
 
