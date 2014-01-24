@@ -20,7 +20,7 @@ from social.templatetags.social_tags import choose_cite
 
 
 def main_page(request):
-    last_published = Book.objects.filter(parent=None).order_by('-created_at')[:4]
+    last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:4]
     cite = choose_cite(RequestContext(request))
 
     return render_to_response("main_page.html", locals(),

@@ -20,7 +20,8 @@ class Cite(models.Model):
         help_text=_('Sticky cites will take precedense.'))
 
     image = models.ImageField(_('image'), upload_to='social/cite',
-                null=True, blank=True)
+                null=True, blank=True,
+        help_text=_('Best image is exactly 975px wide and weights under 100kB.'))
     image_shift = models.IntegerField(_('shift'), null=True, blank=True,
                 help_text=_(u'Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.'))
     image_title = models.CharField(_('title'), max_length=255,

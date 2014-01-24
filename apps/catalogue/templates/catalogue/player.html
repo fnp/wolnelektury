@@ -17,12 +17,12 @@
     </head>
     <body id="{% block bodyid %}player{% endblock %}">
 
-	        {% if book.cover %}
+	        {% if book.cover_thumb %}
             <img src="
                 {% thumbnail book.cover_thumb "101x140" as thumb %}
                     {{ thumb.url }}
                 {% empty %}
-                    {{ book.cover.url }}
+                    {{ book.cover_thumb.url }}
                 {% endthumbnail %}
             " alt="Cover" style="float: left; margin: .5em 1em 1em 1em;" />
         {% endif %}

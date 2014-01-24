@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
-"PO-Revision-Date: 2012-09-06 17:10+0100\n"
+"POT-Creation-Date: 2014-01-24 10:06+0100\n"
+"PO-Revision-Date: 2014-01-24 10:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: admin.py:16
 msgid "Background"
@@ -54,7 +54,7 @@ msgstr "Sprawia, że cytat wyświetla się mniejszym fontem."
 msgid "VIP"
 msgstr "VIP"
 
-#: models.py:18 models.py:30
+#: models.py:18 models.py:31
 msgid "link"
 msgstr "odnośnik"
 
@@ -67,37 +67,41 @@ msgid "Sticky cites will take precedense."
 msgstr "Przyklejone cytaty mają pierwszeństwo."
 
 #: models.py:24
+msgid "Best image is exactly 975px wide and weights under 100kB."
+msgstr "Najlepszy obraz ma szerokość 975px i waży poniżej 100kB."
+
+#: models.py:25
 msgid "shift"
 msgstr "przesunięcie"
 
-#: models.py:25
+#: models.py:26
 msgid ""
 "Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%."
 msgstr ""
 "Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 "
 "do dolnej. Domyślne jest 50%."
 
-#: models.py:26
+#: models.py:27
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:28
+#: models.py:29
 msgid "author"
 msgstr "autor"
 
-#: models.py:31
+#: models.py:32
 msgid "license name"
 msgstr "nazwa licencji"
 
-#: models.py:33
+#: models.py:34
 msgid "license link"
 msgstr "adres licencji"
 
-#: models.py:37
+#: models.py:38
 msgid "cite"
 msgstr "cytat"
 
-#: models.py:38
+#: models.py:39
 msgid "cites"
 msgstr "cytaty"
 
