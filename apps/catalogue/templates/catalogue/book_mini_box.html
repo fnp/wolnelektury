@@ -3,7 +3,7 @@
     {% if with_link %}
     <a href="{{ book.get_absolute_url }}">
     {% endif %}
-        {% if book.cover %}
+        {% if book.cover_thumb %}
             <img src="{{ book.cover_thumb.url }}"
                 alt="{{ author_str }} – {{ book.title }}" class="cover" />
         {% endif %}
