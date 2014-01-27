@@ -388,17 +388,14 @@ def fragment_promo(arg=None):
 
 
 @register.inclusion_tag('catalogue/related_books.html')
-def related_books(book, limit=6, random=1):
+def related_books(book, limit=6, random=1, taken=0):
+    limit = limit - taken
     cache_key = "catalogue.related_books.%d.%d" % (book.id, limit - random)
     related = cache.get(cache_key)
     if related is None:
-        related = list(Book.objects.filter(
-            common_slug=book.common_slug).exclude(pk=book.pk)[:limit])
-        limit -= len(related)
-        if limit > random:
-            related += Book.tagged.related_to(book,
-                    Book.objects.exclude(common_slug=book.common_slug),
-                    ignore_by_tag=book.book_tag())[:limit-random]
+        related = Book.tagged.related_to(book,
+                Book.objects.exclude(common_slug=book.common_slug),
+                ignore_by_tag=book.book_tag())[:limit-random]
         cache.set(cache_key, related, 1800)
     if random:
         random_books = Book.objects.exclude(

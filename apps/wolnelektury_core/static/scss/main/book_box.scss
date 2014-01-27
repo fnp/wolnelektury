@@ -6,11 +6,6 @@
     @include white-box;
 }
 
-.book-mini-box img.cover {
-    @include size(height, 193px);
-    @include size(width, 139px);
-}
-
 
 .cover-area {
     float: left;
@@ -36,20 +31,35 @@
 }
 
 .book-mini-box {
-    @include size(width, 161.5px);
+    /* Original design fits 6 boxes horizontally in 975px (162.5px each),
+     * but we really want to fit 2 boxes on a 320px mobile screen. */
+
+    @include size(width, 160px);
     display: inline-block;
     vertical-align: top;
+
+    @include min-screen(350px) {
+        @include size(width, 162.5px);
+    }
 
     .book-mini-box-inner {
         @include inner-box;
         @include size(height, 271px);
         @include size(margin, 1px);
+        @include size(padding, 8px 9px);
         overflow: hidden;
+
+        @include min-screen(350px) {
+            @include size(padding, 8px 10px);
+        }
+
         a {
             display: block;
         }
     }
     img.cover {
+        @include size(height, 193px);
+        @include size(width, 139px);
         @include size(margin-bottom, 18px);
     }
     .language {

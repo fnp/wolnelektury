@@ -15,10 +15,20 @@
 
 {% work_list book_children %}
 
-
-<section class="see-also">
-<h1>{% trans "See also" %}:</h1>
-{% related_books book %}
+{% spaceless %}
+{% if book.other_versions %}
+<section class="see-also" style="display: inline-block;">
+<h1>{% trans "Other versions" %}:</h1>
+{% for rel in book.other_versions %}
+    {% book_mini rel %}
+{% endfor %}
 </section>
+{% endif %}
+
+<section class="see-also" style="display: inline-block;">
+<h1>{% trans "See also" %}:</h1>
+{% related_books book taken=book.other_versions|length %}
+</section>
+{% endspaceless %}
 
 {% endblock %}
