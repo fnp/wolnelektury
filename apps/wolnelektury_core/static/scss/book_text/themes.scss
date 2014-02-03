@@ -49,13 +49,13 @@ nav #menu-themes {
     @include size(width, 120px);
     height: auto;
     overflow: visible;
-    include @size(margin-left, 30px);
-    include @size(font-size, 14.4px);
+    @include size(margin-left, 30px);
+    @include size(font-size, 14.4px);
     text-indent: 0;
 
-    include @size(border-left, 1px solid #DDDDDD);
+    @include size(border-left, 1px solid #DDDDDD);
     color: #777;
-    include @size(padding, 0 0 0 8px);
+    @include size(padding, 0 0 0 8px);
 
     &:before {
         display: none;
