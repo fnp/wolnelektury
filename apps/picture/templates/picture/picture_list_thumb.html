@@ -15,8 +15,8 @@
 
     <div class="left-column"><div class="normal-text">
         {% block book_list_info %}
-<p>Galeria zawiera obrazy, rysunki, rzeźby, fotografie pochodzące ze zbiorów Muzeum Narodowego w Warszawie. Każde z dzieł oznaczyliśmy motywami i tematami występującymi w sztuce i w literaturze. Galerię można więc przeglądać w poszukiwaniu ilustracji do tekstów literackich, a także pod kątem określonych przedmiotów i postaci występujących w sztukach wizualnych.</p>
-{% endblock %}
+            {% chunk 'picture-list' %}
+        {% endblock %}
     </div></div>
     <div class="right-column" id="logo-space">
       {% block book_list_logos %}

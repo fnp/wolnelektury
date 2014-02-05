@@ -1,6 +1,6 @@
 from django.core.cache import cache
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, get_language
 
 
 class Chunk(models.Model):
@@ -20,12 +20,13 @@ class Chunk(models.Model):
     def __unicode__(self):
         return self.key
 
-    def cache_key(self):
-        return 'chunk_' + self.key
+    @staticmethod
+    def cache_key(key):
+        return 'chunk/%s/%s' % (key, get_language())
 
     def save(self, *args, **kwargs):
         ret = super(Chunk, self).save(*args, **kwargs)
-        cache.delete(self.cache_key())
+        cache.delete(self.cache_key(self.key))
         return ret
 
 

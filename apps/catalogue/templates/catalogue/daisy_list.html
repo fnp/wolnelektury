@@ -1,5 +1,6 @@
 {% extends "catalogue/book_list.html" %}
 {% load i18n %}
+{% load chunks %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
@@ -12,7 +13,5 @@
 {% block book_list_header %}{% trans "Listing of all DAISY files" %}{% endblock %}
 
 {% block book_list_info %}
-<p>{% blocktrans %}System DAISY to uznany na całym świecie format udostępniania książek
-dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób
-mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez ograniczeń.{% endblocktrans %}</p>
+{% chunk 'daisy-list' %}
 {% endblock %}

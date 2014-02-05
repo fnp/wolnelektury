@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 12:45+0100\n"
-"PO-Revision-Date: 2013-12-19 12:46+0100\n"
+"POT-Creation-Date: 2014-02-05 11:21+0100\n"
+"PO-Revision-Date: 2014-02-05 11:21+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Błąd podczas importowania pliku: %r"
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:633 templates/catalogue/book_short.html:103
+#: views.py:633 templates/catalogue/book_short.html:97
 #: templates/catalogue/book_wide.html:63
 msgid "Download"
 msgstr "Pobierz"
@@ -125,7 +125,7 @@ msgstr "slug"
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:36 models/book.py:161 models/collection.py:13
+#: models/book.py:36 models/book.py:164 models/collection.py:13
 #: models/tag.py:37 models/tag.py:94
 msgid "description"
 msgstr "opis"
@@ -147,25 +147,29 @@ msgstr "dodatkowe informacje"
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:67 models/collection.py:18 models/tag.py:22
+#: models/book.py:48
+msgid "cover thumbnail"
+msgstr "podgląd okładki"
+
+#: models/book.py:70 models/collection.py:18 models/tag.py:22
 msgid "book"
 msgstr "książka"
 
-#: models/book.py:68
+#: models/book.py:71
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:259
+#: models/book.py:262
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:273
+#: models/book.py:276
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:620 models/bookmedia.py:23
+#: models/book.py:625 models/bookmedia.py:23
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -262,30 +266,25 @@ msgstr ""
 "Tagi typu książka nie mogą mieć ustawionych linków. Ustaw je bezpośrednio "
 "dla książki, zamiast dla jej tagu."
 
-#: templates/catalogue/audiobook_list.html:7
-#: templates/catalogue/audiobook_list.html:16
+#: templates/catalogue/audiobook_list.html:8
+#: templates/catalogue/audiobook_list.html:17
 msgid "Listing of all audiobooks"
 msgstr "Spis wszystkich audiobooków"
 
-#: templates/catalogue/audiobook_list.html:12
+#: templates/catalogue/audiobook_list.html:13
 msgid "Latest MP3 audiobooks"
 msgstr "Ostatnio dodane audiobooki w formacie MP3"
 
-#: templates/catalogue/audiobook_list.html:13
+#: templates/catalogue/audiobook_list.html:14
 msgid "Latest Ogg Vorbis audiobooks"
 msgstr "Ostatnio dodane audiobooki w formacie Ogg Vorbis"
 
-#: templates/catalogue/audiobook_list.html:19
-msgid ""
-"Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
-"Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
-"Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
-msgstr ""
-"Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
-"Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
-"Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
-
 #: templates/catalogue/book_detail.html:21
+#: templates/catalogue/book_text.html:20
+msgid "Other versions"
+msgstr "Inne wersje"
+
+#: templates/catalogue/book_detail.html:29
 #: templates/catalogue/tagged_object_list.html:74
 #: templates/catalogue/tagged_object_list.html:109
 msgid "See also"
@@ -340,125 +339,114 @@ msgstr "Publikację ufundowali i ufundowały:"
 msgid "Cover image by:"
 msgstr "Ilustracja na okładce:"
 
-#: templates/catalogue/book_list.html:7 templates/catalogue/book_list.html:10
+#: templates/catalogue/book_list.html:8 templates/catalogue/book_list.html:11
+#: templates/catalogue/picture_list.html:8
+#: templates/catalogue/picture_list.html:10
 msgid "Listing of all works"
 msgstr "Spis wszystkich utworów"
 
-#: templates/catalogue/book_list.html:21
+#: templates/catalogue/book_list.html:24
 msgid "Table of Content"
 msgstr "Spis treści"
 
-#: templates/catalogue/book_list.html:31
+#: templates/catalogue/book_list.html:34
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:61
+#: templates/catalogue/book_short.html:55
 #: templates/catalogue/picture_detail.html:54
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:69
+#: templates/catalogue/book_short.html:63
 #: templates/catalogue/picture_detail.html:60
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:77
+#: templates/catalogue/book_short.html:71
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:86
+#: templates/catalogue/book_short.html:80
 msgid "Language"
 msgstr "Język"
 
-#: templates/catalogue/book_short.html:99
+#: templates/catalogue/book_short.html:93
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:106
+#: templates/catalogue/book_short.html:100
 msgid "to print"
 msgstr "do druku"
 
-#: templates/catalogue/book_short.html:109
+#: templates/catalogue/book_short.html:103
 msgid "for an e-book reader"
 msgstr "na czytnik e-booków"
 
-#: templates/catalogue/book_short.html:112
+#: templates/catalogue/book_short.html:106
 msgid "for Kindle"
 msgstr "na Kindle"
 
-#: templates/catalogue/book_short.html:115
+#: templates/catalogue/book_short.html:109
 msgid "FictionBook"
 msgstr "FictionBook"
 
-#: templates/catalogue/book_short.html:118
+#: templates/catalogue/book_short.html:112
 msgid "for advanced usage"
 msgstr "do zadań specjalnych"
 
-#: templates/catalogue/book_short.html:124
+#: templates/catalogue/book_short.html:118
 msgid "Listen"
 msgstr "Słuchaj"
 
-#: templates/catalogue/book_text.html:10 templates/catalogue/player.html:11
-msgid "Wolne Lektury"
-msgstr "Wolne Lektury"
-
-#: templates/catalogue/book_text.html:34
-msgid "Other versions"
-msgstr "Inne wersje"
-
-#: templates/catalogue/book_text.html:40
+#: templates/catalogue/book_text.html:26
 msgid "Table of contents"
 msgstr "Spis treści"
 
-#: templates/catalogue/book_text.html:44 templatetags/catalogue_tags.py:424
+#: templates/catalogue/book_text.html:30 templatetags/catalogue_tags.py:421
 msgid "Themes"
 msgstr "Motywy"
 
-#: templates/catalogue/book_text.html:48
-#: templates/catalogue/book_text.html:100
+#: templates/catalogue/book_text.html:34 templates/catalogue/book_text.html:91
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: templates/catalogue/book_text.html:52
+#: templates/catalogue/book_text.html:38
 msgid "Edit. note"
 msgstr "Nota red."
 
-#: templates/catalogue/book_text.html:56
+#: templates/catalogue/book_text.html:42
 msgid "Infobox"
 msgstr "Informacje"
 
-#: templates/catalogue/book_text.html:68
-#: templates/catalogue/book_text.html:114
+#: templates/catalogue/book_text.html:56
+#: templates/catalogue/viewer_base.html:53
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/catalogue/book_text.html:69
+#: templates/catalogue/book_text.html:57
 msgid "Please wait..."
 msgstr "Proszę czekać…"
 
-#: templates/catalogue/book_text.html:82
+#: templates/catalogue/book_text.html:73
 msgid "Other versions of the book"
 msgstr "Inne wersje utworu"
 
-#: templates/catalogue/book_text.html:83
+#: templates/catalogue/book_text.html:74
 msgid "Close the other version"
 msgstr "Zamknij drugą wersję"
 
-#: templates/catalogue/book_text.html:101
+#: templates/catalogue/book_text.html:92
 msgid "Display line numbers"
 msgstr "Wyświetlaj numerację"
 
-#: templates/catalogue/book_text.html:102
+#: templates/catalogue/book_text.html:93
 msgid "Display themes"
 msgstr "Wyświetlaj motywy"
 
-#: templates/catalogue/book_text.html:103
+#: templates/catalogue/book_text.html:94
 msgid "Display footnotes"
 msgstr "Wyświetlaj przypisy"
-
-#: templates/catalogue/book_text.html:116
-msgid "Loading"
-msgstr "Ładowanie"
 
 #: templates/catalogue/book_wide.html:22
 #: templates/catalogue/tagged_object_list.html:60
@@ -517,28 +505,28 @@ msgstr "Pobierz katalog w formacie PDF."
 #: templates/catalogue/catalogue.html:19
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
-#: templatetags/catalogue_tags.py:420
+#: templatetags/catalogue_tags.py:417
 msgid "Authors"
 msgstr "Autorzy"
 
 #: templates/catalogue/catalogue.html:22
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
-#: templatetags/catalogue_tags.py:422
+#: templatetags/catalogue_tags.py:419
 msgid "Kinds"
 msgstr "Rodzaje"
 
 #: templates/catalogue/catalogue.html:25
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
-#: templatetags/catalogue_tags.py:421
+#: templatetags/catalogue_tags.py:418
 msgid "Genres"
 msgstr "Gatunki"
 
 #: templates/catalogue/catalogue.html:28
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
-#: templatetags/catalogue_tags.py:423
+#: templatetags/catalogue_tags.py:420
 msgid "Epochs"
 msgstr "Epoki"
 
@@ -550,26 +538,14 @@ msgstr "Motywy i tematy"
 msgid "Collections"
 msgstr "Kolekcje"
 
-#: templates/catalogue/daisy_list.html:6
-#: templates/catalogue/daisy_list.html:12
+#: templates/catalogue/daisy_list.html:7
+#: templates/catalogue/daisy_list.html:13
 msgid "Listing of all DAISY files"
 msgstr "Spis wszystkich plików DAISY"
 
-#: templates/catalogue/daisy_list.html:9
+#: templates/catalogue/daisy_list.html:10
 msgid "Latest DAISY audiobooks"
 msgstr "Ostatnio dodane audiobooki w formacie DAISY"
-
-#: templates/catalogue/daisy_list.html:15
-msgid ""
-"System DAISY to uznany na całym świecie format udostępniania książek\n"
-"dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
-"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
-"ograniczeń."
-msgstr ""
-"System DAISY to uznany na całym świecie format udostępniania książek\n"
-"dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
-"mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
-"ograniczeń."
 
 #: templates/catalogue/differentiate_tags.html:12
 msgid "The criteria are ambiguous. Please select one of the following options:"
@@ -610,7 +586,7 @@ msgstr "Audiobooki"
 msgid "DAISY"
 msgstr "DAISY"
 
-#: templates/catalogue/menu.html:40 templates/catalogue/tag_list_split.html:14
+#: templates/catalogue/menu.html:40 templates/catalogue/tag_list_split.html:8
 msgid "Gallery"
 msgstr "Galeria"
 
@@ -650,10 +626,9 @@ msgstr "Źródłowy plik XML"
 msgid "Work's themes "
 msgstr "Motywy w utworze"
 
-#: templates/catalogue/picture_list.html:8
-#: templates/catalogue/picture_list.html:10
-msgid "Listing of all pictures"
-msgstr "Spis wszystkich obrazów"
+#: templates/catalogue/player.html:11 templates/catalogue/viewer_base.html:9
+msgid "Wolne Lektury"
+msgstr "Wolne Lektury"
 
 #: templates/catalogue/player.html:34
 msgid "Book's page"
@@ -768,7 +743,7 @@ msgstr ""
 msgid "Sorry! Search query must have at least two characters."
 msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 
-#: templates/catalogue/tag_list_split.html:5
+#: templates/catalogue/tag_list_split.html:3
 msgid "Literature"
 msgstr "Literatura"
 
@@ -787,6 +762,10 @@ msgstr "w serwisie Lektury.Gazeta.pl"
 msgid "in Wikipedia"
 msgstr "w Wikipedii"
 
+#: templates/catalogue/viewer_base.html:55
+msgid "Loading"
+msgstr "Ładowanie"
+
 #: templates/catalogue/snippets/custom_pdf_link_li.html:5
 msgid "Download a custom PDF"
 msgstr "Stwórz własny plik PDF"
@@ -795,6 +774,29 @@ msgstr "Stwórz własny plik PDF"
 #: templates/catalogue/snippets/license_icon.html:8
 msgid "Free license"
 msgstr "Wolna licencja"
+
+#~ msgid ""
+#~ "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
+#~ "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
+#~ "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
+#~ msgstr ""
+#~ "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
+#~ "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
+#~ "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
+
+#~ msgid ""
+#~ "System DAISY to uznany na całym świecie format udostępniania książek\n"
+#~ "dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
+#~ "mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
+#~ "ograniczeń."
+#~ msgstr ""
+#~ "System DAISY to uznany na całym świecie format udostępniania książek\n"
+#~ "dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
+#~ "mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
+#~ "ograniczeń."
+
+#~ msgid "Listing of all pictures"
+#~ msgstr "Spis wszystkich obrazów"
 
 #~ msgid "for a reader"
 #~ msgstr "na czytnik"

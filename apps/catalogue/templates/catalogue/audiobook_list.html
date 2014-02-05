@@ -1,6 +1,7 @@
 {% extends "catalogue/book_list.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
+{% load chunks %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
@@ -16,7 +17,5 @@
 {% block book_list_header %}{% trans "Listing of all audiobooks" %}{% endblock %}
 
 {% block book_list_info %}
-<p style='margin-bottom:2em;'>{% blocktrans %}Audioteka lektur szkolnych fundacji Nowoczesna Polska.
-Możecie z niej korzystać bezpłatnie i bez ograniczeń.
-Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek.{% endblocktrans %}</p>
+{% chunk 'audiobook-list' %}
 {% endblock %}

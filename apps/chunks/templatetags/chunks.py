@@ -9,45 +9,23 @@ Chunk = models.get_model('chunks', 'chunk')
 Attachment = models.get_model('chunks', 'attachment')
 
 
-def do_get_chunk(parser, token):
-    # split_contents() knows not to split quoted strings.
-    tokens = token.split_contents()
-    if len(tokens) < 2 or len(tokens) > 3:
-        raise template.TemplateSyntaxError, "%r tag should have either 2 or 3 arguments" % (tokens[0],)
-    if len(tokens) == 2:
-        tag_name, key = tokens
-        cache_time = 0
-    if len(tokens) == 3:
-        tag_name, key, cache_time = tokens
-    # Check to see if the key is properly double/single quoted
-    if not (key[0] == key[-1] and key[0] in ('"', "'")):
-        raise template.TemplateSyntaxError, "%r tag's argument should be in quotes" % tag_name
-    # Send key without quotes and caching time
-    return ChunkNode(key[1:-1], cache_time)
+@register.simple_tag
+def chunk(key, cache_time=0):
+    try:
+        cache_key = Chunk.cache_key(key)
+        c = cache.get(cache_key)
+        if c is None:
+            c = Chunk.objects.get(key=key)
+            cache.set(cache_key, c, int(cache_time))
+        content = c.content
+    except Chunk.DoesNotExist:
+        n = Chunk(key=key)
+        n.save()
+        return ''
+    return content
 
 
-class ChunkNode(template.Node):
-    def __init__(self, key, cache_time=0):
-       self.key = key
-       self.cache_time = cache_time
-
-    def render(self, context):
-        try:
-            cache_key = 'chunk_' + self.key
-            c = cache.get(cache_key)
-            if c is None:
-                c = Chunk.objects.get(key=self.key)
-                cache.set(cache_key, c, int(self.cache_time))
-            content = c.content
-        except Chunk.DoesNotExist:
-            n = Chunk(key=self.key)
-            n.save()
-            return ''
-        return content
-
-register.tag('chunk', do_get_chunk)
-
-
+@register.simple_tag
 def attachment(key, cache_time=0):
     try:
         cache_key = 'attachment_' + key
@@ -58,6 +36,3 @@ def attachment(key, cache_time=0):
         return c.attachment.url
     except Attachment.DoesNotExist:
         return ''
-
-register.simple_tag(attachment)
-

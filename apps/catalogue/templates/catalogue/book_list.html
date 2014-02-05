@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
+{% load chunks %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
@@ -9,8 +10,10 @@
 {% block body %}
     <h1>{% block book_list_header %}{% trans "Listing of all works" %}{% endblock %}</h1>
 
-    <div class="left-column"><div class="normal-text">
-        {% block book_list_info %}{% endblock %}
+    <div class="left-column"><div class="normal-text" style="margin-bottom: 2em">
+        {% block book_list_info %}
+            {% chunk 'book-list' %}
+        {% endblock %}
     </div></div>
 
     <div style='clear:both;'></div>

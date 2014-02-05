@@ -3,6 +3,7 @@
 	{% load cache compressed i18n %}
 	{% load static from staticfiles %}
     {% load catalogue_tags funding_tags reporting_stats sponsor_tags %}
+    {% load chunks %}
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -124,24 +125,9 @@
 
         <div id="footer-wrapper">
         <footer id="main">
-            <p>
-            	{% blocktrans %}
-				Wolne Lektury is a project lead by <a href="http://nowoczesnapolska.org.pl/">Modern Poland Foundation</a>.
-				Digital reproductions are made by <a href="http://www.bn.org.pl/">The National Library</a>, <a href="http://www.bs.katowice.pl/">Biblioteka Śląska</a> and <a href="http://www.bibliotekaelblaska.pl/">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.
-				Hosting: <a href="http://www.icm.edu.pl/">ICM</a>.
-				{% endblocktrans %}
-            </p>
-            <p>
-            	{% blocktrans %}
-				Modern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 lok. 125, tel/fax: (22) 621-30-17
-                e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a>
-				{% endblocktrans %}
-            </p>
-            <p>Nowa strona biblioteki Wolne Lektury powstała dzięki środkom otrzymanym w ramach Programu Operacyjnego Fundusz Inicjatyw Obywatelskich, Senatu RP (zadanie realizowane w ramach zlecania przez Kancelarię Senatu zadań w zakresie opieki nad Polonią i Polakami za granicą w 2011 r.) oraz Narodowego Instytutu Audiowizualnego w ramach programu Dziedzictwo Cyfrowe.</p>
-
+            {% chunk 'footer' %}
             {% block add_footer %}{% endblock %}
-
-			{% sponsor_page "footer" %}
+            {% sponsor_page "footer" %}
         </footer>
         </div>
 
