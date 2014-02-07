@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-06 16:52+0100\n"
-"PO-Revision-Date: 2014-02-06 16:53+0100\n"
+"POT-Creation-Date: 2014-02-07 16:36+0100\n"
+"PO-Revision-Date: 2014-02-07 16:36+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -110,8 +111,9 @@ msgstr "Importuj obraz"
 
 #: templates/picture/picture_list_thumb.html:10
 #: templates/picture/picture_list_thumb.html:14
+msgctxt "gallery"
 msgid "Listing of all works"
-msgstr "Lista wszystkich dzieł"
+msgstr "Spis wszystkich dzieł"
 
 #: templates/picture/picture_short.html:40
 msgid "Epoch"
