@@ -239,43 +239,35 @@ def tagged_object_list(request, tags=''):
 
         pictures = Picture.tagged.with_all(tags).order_by('sort_key_author')
             
+        related_counts = {}
         if books.count() > 0:
             # get related tags from `tag_counter` and `theme_counter`
-            related_counts = {}
             tags_pks = [tag.pk for tag in tags]
             for book in books:
                 for tag_pk, value in itertools.chain(book.tag_counter.iteritems(), book.theme_counter.iteritems()):
                     if tag_pk in tags_pks:
                         continue
                     related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
-            related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
-            related_tags = [tag for tag in related_tags if tag not in tags]
-            for tag in related_tags:
-                tag.count = related_counts[tag.pk]
-
-            categories = split_tags(related_tags)
-            del related_tags
 
         if pictures.count() > 0:
-            related_counts = {}
             tags_pks = [tag.pk for tag in tags]
             for picture in pictures:
                 for tag_pk, value in itertools.chain(picture.tag_counter.iteritems(), picture.theme_counter.iteritems()):
                     if tag_pk in tags_pks:
                         continue
-                    logging.info("counting tag not in tags_pks: %d", tag_pk)
                     related_counts[tag_pk] = related_counts.get(tag_pk, 0) + value
-            related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
-            related_tags = [tag for tag in related_tags if tag not in tags]
-            for tag in related_tags:
-                tag.count = related_counts[tag.pk]
 
-            categories = split_tags(related_tags)
-            del related_tags
+        related_tags = models.Tag.objects.filter(pk__in=related_counts.keys())
+        related_tags = [tag for tag in related_tags if tag not in tags]
 
-        logging.info("Returning %d picutres and %d books" % (pictures.count(), books.count()))
+        for tag in related_tags:
+            tag.count = related_counts[tag.pk]
+
+        categories = split_tags(related_tags)
+        del related_tags
+
+
         objects = SortedMultiQuerySet(pictures, books, order_by='sort_key_author')
-
 
 
     if not objects:

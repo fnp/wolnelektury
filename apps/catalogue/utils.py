@@ -215,22 +215,25 @@ class SortedMultiQuerySet(MultiQuerySet):
 
         while len(items) < total_len:
             candidate = None
+            candidate_i = None
             for i in i_s:
                 def get_next():
                     return self.querysets[i][sort_heads[i]]
                 try:
                     if candidate is None:
                         candidate = get_next()
+                        candidate_i = i
                     else:
                         competitor = get_next()
                         if self.sortfn(candidate, competitor) > 0:
                             candidate = competitor
+                            candidate_i = i
                 except IndexError:
                     continue # continue next sort_head
-                sort_heads[i] += 1
             # we have no more elements:
             if candidate is None:
                 break
+            sort_heads[candidate_i] += 1
             if skipped < offset:
                 skipped += 1
                 continue # continue next item
