@@ -7,3 +7,5 @@ SOUTH_MIGRATION_MODULES = {
     'getpaid' : 'wolnelektury.migrations.getpaid',
     'payu': 'wolnelektury.migrations.getpaid_payu',
 }
+
+GETPAID_ORDER_DESCRIPTION = "{% load funding_tags %}{{ order|sanitize_payment_title }}"
