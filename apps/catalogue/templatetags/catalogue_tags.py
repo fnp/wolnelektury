@@ -366,8 +366,8 @@ def book_mini(book, with_link=True):
 def work_list(context, object_list):
     request = context.get('request')
     for obj in object_list:
-        obj.object_type = type(object_list[0]).__name__
-
+        obj.object_type = type(obj).__name__
+        
     return locals()
 
 
