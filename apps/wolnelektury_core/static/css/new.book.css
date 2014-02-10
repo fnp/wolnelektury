@@ -182,7 +182,7 @@ div.kwestia {
 }
 
 div.stanza {
-    margin: 1.5em 0 0;
+    margin: 1.5em 0;
 }
 
 div.kwestia div.stanza {
@@ -195,7 +195,7 @@ p.paragraph {
     text-indent: 1.5em;
 }
 
-p.motto {
+.motto {
     text-align: justify;
     font-style: italic;
     margin: 1.5em 0 0;
@@ -204,6 +204,7 @@ p.motto {
 p.motto_podpis {
     font-size: 0.875em;
     text-align: right;
+    margin-bottom: 1.5em;
 }
 
 div.fragment {
