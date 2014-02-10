@@ -1,5 +1,6 @@
 from django import template
 from ..models import Offer
+from ..utils import sanitize_payment_title
 
 register = template.Library()
 
@@ -43,4 +44,4 @@ def offer_status_more(offer):
         'offer': offer,
     }
 
-
+register.filter(sanitize_payment_title)
