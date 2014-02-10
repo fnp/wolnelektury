@@ -13,6 +13,20 @@
     .cite-body {
         @include size(font-size, 18px);
         line-height: 1.3em;
+
+        h4 {
+            margin: 0;
+        }
+        .didaskalia {
+            font-style: italic;
+        }
+        .verse {
+            // Cancel any indentation.
+            padding-left: 0 !important;
+        }
+        .person {
+            font-style: inherit;
+        }
     }
 
     blockquote {
