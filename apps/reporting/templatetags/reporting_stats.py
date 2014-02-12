@@ -50,11 +50,11 @@ def count_books_all():
 
 @register_counter
 def count_books():
-    return Book.objects.exclude(html_file='').count()
+    return Book.objects.filter(children=None).count()
 
 @register_counter
 def count_books_parent():
-    return Book.objects.filter(html_file='').count()
+    return Book.objects.exclude(children=None).count()
 
 @register_counter
 def count_books_root():

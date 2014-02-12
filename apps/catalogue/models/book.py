@@ -545,7 +545,7 @@ class Book(models.Model):
         """
         # get relevant books and their tags
         objects = cls.tagged.with_all(tags)
-        parents = objects.filter(html_file='').only('slug')
+        parents = objects.exclude(children=None).only('slug')
         # eliminate descendants
         l_tags = Tag.objects.filter(category='book',
             slug__in=[book.book_tag_slug() for book in parents.iterator()])
