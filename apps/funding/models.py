@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.db import models
+from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, ugettext, override
 import getpaid
 from catalogue.models import Book
@@ -148,7 +149,7 @@ class Offer(models.Model):
                 'remaining': self.remaining(),
                 'current': self.current(),
             })
-        self.notified_end = datetime.now()
+        self.notified_end = datetime.utcnow().replace(tzinfo=utc)
         self.save()
 
     def notify_near(self, force=False):
@@ -165,7 +166,7 @@ class Offer(models.Model):
                 'sum': sum_,
                 'need': need,
             })
-        self.notified_near = datetime.now()
+        self.notified_near = datetime.utcnow().replace(tzinfo=utc)
         self.save()
 
     def notify_published(self):
@@ -273,7 +274,7 @@ class Funding(models.Model):
         with override(self.language_code or app_settings.DEFAULT_LANGUAGE):
             send_mail(subject,
                 render_to_string(template_name, context),
-                getattr(settings, 'CONTACT_EMAIL', 'wolnelektury@nowoczesnapolska.org.pl'),
+                settings.CONTACT_EMAIL,
                 [self.email],
                 fail_silently=False
             )
@@ -317,7 +318,7 @@ getpaid.signals.user_data_query.connect(user_data_query_listener)
 def payment_status_changed_listener(sender, instance, old_status, new_status, **kwargs):
     """ React to status changes from getpaid. """
     if old_status != 'paid' and new_status == 'paid':
-        instance.order.payed_at = datetime.now()
+        instance.order.payed_at = datetime.utcnow().replace(tzinfo=utc)
         instance.order.save()
         if instance.order.email:
             instance.order.notify(

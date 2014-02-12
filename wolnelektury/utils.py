@@ -1,10 +1,16 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import pytz
 from django.utils import timezone
 from django.conf import settings
 
+tz = pytz.timezone(settings.TIME_ZONE)
+
 def localtime_to_utc(localtime):
     return timezone.utc.normalize(
-        pytz.timezone(settings.TIME_ZONE).localize(localtime)
+        tz.localize(localtime)
     )
 
 def utc_for_js(dt):

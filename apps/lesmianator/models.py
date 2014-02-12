@@ -10,6 +10,7 @@ from StringIO import StringIO
 from django.core.files.base import ContentFile
 from django.db import models
 from django.db.models import permalink
+from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.db.models.signals import m2m_changed
@@ -40,7 +41,7 @@ class Poem(models.Model):
 
     def visit(self):
         self.view_count += 1
-        self.seen_at = datetime.now()
+        self.seen_at = datetime.utcnow().replace(tzinfo=utc)
         self.save()
 
     def __unicode__(self):

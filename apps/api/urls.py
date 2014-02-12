@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls.defaults import *
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
+from django.conf.urls import patterns, url
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from piston.authentication import OAuthAuthentication, oauth_access_token 

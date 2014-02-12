@@ -1,4 +1,7 @@
-
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from oai.handlers import Catalogue, NS_DCTERMS, nsdcterms
 from oaipmh.server import ServerBase, oai_dc_writer, NS_OAIDC, NS_DC, NS_XSI, nsoaidc, nsdc
 from oaipmh.metadata import MetadataRegistry

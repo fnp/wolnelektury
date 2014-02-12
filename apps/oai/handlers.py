@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from oaipmh import server, common, metadata, error
 from catalogue.models import Book, Tag
 from api.models import Deleted

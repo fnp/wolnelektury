@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
-
+#
 from datetime import datetime, timedelta
 import json
 from urlparse import urljoin
@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.cache import get_cache
 from django.core.urlresolvers import reverse
+from django.utils.timezone import utc
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
@@ -21,6 +22,7 @@ from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.utils import related_tag_name
 from picture.models import Picture
 from picture.forms import PictureImportForm
+from wolnelektury.utils import tz
 
 from stats.utils import piwik_track
 
@@ -466,7 +468,7 @@ class CatalogueHandler(BaseHandler):
         """
         # set to five minutes ago, to avoid concurrency issues
         if t is None:
-            t = datetime.now() - timedelta(seconds=settings.API_WAIT)
+            t = datetime.utcnow().replace(tzinfo=utc) - timedelta(seconds=settings.API_WAIT)
         # set to whole second in case DB supports something smaller
         return t.replace(microsecond=0)
 
@@ -537,7 +539,7 @@ class CatalogueHandler(BaseHandler):
 
     @classmethod
     def book_changes(cls, request=None, since=0, until=None, fields=None):
-        since = datetime.fromtimestamp(int(since))
+        since = datetime.fromtimestamp(int(since), tz)
         until = cls.until(until)
 
         changes = {
@@ -603,7 +605,7 @@ class CatalogueHandler(BaseHandler):
 
     @classmethod
     def tag_changes(cls, request=None, since=0, until=None, fields=None, categories=None):
-        since = datetime.fromtimestamp(int(since))
+        since = datetime.fromtimestamp(int(since), tz)
         until = cls.until(until)
 
         changes = {

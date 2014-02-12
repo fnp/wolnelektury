@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from django import template
 from django.template import Node, Variable, Template, Context
 from catalogue.utils import split_tags
