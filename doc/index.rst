@@ -10,7 +10,6 @@ Welcome to Wolne Lektury's documentation!
    :maxdepth: 2
 
    installation
-   publishing   
    architecture
    reference
 

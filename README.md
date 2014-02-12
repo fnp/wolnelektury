@@ -24,8 +24,7 @@ Dependencies
 ============
 
  * All packages listed in requirements.txt
- * Python libraries from lib directory
- * Django applications from apps directory
+ * Sass>=3.2
 
 How to deploy (development version)
 =============

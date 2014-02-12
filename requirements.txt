@@ -16,7 +16,6 @@ django-picklefield
 -e git+git://github.com/rczajka/django-allauth.git@4ecda71b81f9311dea4febe1d2d0105f23c642c7#egg=django-allauth
 
 pytz
-pyScss
 
 # Some contrib apps still need it
 simplejson

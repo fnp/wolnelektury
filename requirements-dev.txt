@@ -4,3 +4,4 @@ django-debug-toolbar
 polib
 BabelDjango
 Fabric
+sphinx
