@@ -418,7 +418,7 @@ def catalogue_menu():
                 ('genre', _('Genres'), 'gatunki'),
                 ('kind', _('Kinds'), 'rodzaje'),
                 ('epoch', _('Epochs'), 'epoki'),
-                ('theme', _('Themes'), 'autorzy'),
+                ('theme', _('Themes'), 'motywy'),
         ]}
 
 
