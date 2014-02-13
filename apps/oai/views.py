@@ -3,10 +3,10 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from oai.handlers import Catalogue, NS_DCTERMS, nsdcterms
-from oaipmh.server import ServerBase, oai_dc_writer, NS_OAIDC, NS_DC, NS_XSI, nsoaidc, nsdc
+from oaipmh.server import ServerBase, NS_OAIDC, NS_DC, NS_XSI, nsoaidc, nsdc
 from oaipmh.metadata import MetadataRegistry
 from django.http import HttpResponse
-from lxml.etree import tostring, SubElement
+from lxml.etree import SubElement
 
 
 
@@ -29,12 +29,12 @@ def fbc_oai_dc_writer(element, metadata):
         for value in map.get(name, []):
             e = SubElement(e_dc, nsdc(name))
             e.text = value
-               
+
 
 def qdc_writer(element, metadata):
     """FBC notified us that original writer does not output all necessary namespace declarations.
     """
-    nsmap={'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI, 'dcterms': NS_DCTERMS}
+    nsmap = {'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI, 'dcterms': NS_DCTERMS}
     map = metadata.getMap()
     for name in [
         'title', 'creator', 'subject', 'description', 'publisher',

@@ -52,7 +52,7 @@ class Command(BaseCommand):
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
                 getattr(book, '%s_file' % ebook_format).save(
-                    '%s.%s' % (book.slug, ebook_format), 
+                    '%s.%s' % (book.slug, ebook_format),
                     File(file(file_base + '.' + ebook_format)),
                     save=False
                     )
@@ -65,7 +65,7 @@ class Command(BaseCommand):
             image_store = ImageStore(os.path.dirname(file_path))
             picture = Picture.from_xml_file(file_path, image_store=image_store, overwrite=options.get('force'))
         except Exception, ex:
-            if continue_on_error:                
+            if continue_on_error:
                 print "%s: %s" % (file_path, ex)
                 return
             else:
@@ -77,10 +77,8 @@ class Command(BaseCommand):
         from django.db import transaction
 
         self.style = color_style()
-        
+
         verbose = options.get('verbose')
-        force = options.get('force')
-        show_traceback = options.get('traceback', False)
         import_picture = options.get('import_picture')
 
         wait_until = None
@@ -141,7 +139,7 @@ class Command(BaseCommand):
 
                         files_imported += 1
                         transaction.commit()
-                        
+
                     except (Book.AlreadyExists, Picture.AlreadyExists):
                         print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
                             file_path)

@@ -5,15 +5,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
-#~ from django.utils.datastructures import SortedDict
 from django.views.decorators.http import require_POST
-#~ from django.contrib import auth
-#~ from django.views.decorators import cache
-from django.utils.translation import ugettext as _
 
-from ajaxable.utils import LazyEncoder, JSONResponse, AjaxableFormView
+from ajaxable.utils import JSONResponse, AjaxableFormView
 
-from catalogue.models import Book, Tag
+from catalogue.models import Book
 from social import forms
 from social.utils import get_set, likes, set_sets
 

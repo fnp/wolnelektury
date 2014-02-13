@@ -4,7 +4,6 @@
 #
 from datetime import datetime, timedelta
 import json
-from urlparse import urljoin
 
 from django.conf import settings
 from django.contrib.sites.models import Site
@@ -39,7 +38,7 @@ category_singular = {
     'themes': 'theme',
     'books': 'book',
 }
-category_plural={}
+category_plural = {}
 for k, v in category_singular.items():
     category_plural[v] = k
 
@@ -104,7 +103,6 @@ class BookMediaHandler(BaseHandler):
     @classmethod
     def director(cls, media):
         return media.extra_info.get('director_name', '')
-        
 
 
 class BookDetails(object):
@@ -200,7 +198,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 books = Book.tagged.with_all(tags)
         else:
             books = Book.objects.all()
-            
+
         if top_level:
             books = books.filter(parent=None)
         if audiobooks:
@@ -297,7 +295,6 @@ class CollectionDetailHandler(BaseHandler, CollectionDetails):
 
     @piwik_track
     def read(self, request, slug):
-        print slug
         """ Returns details of a collection, identified by slug. """
         try:
             return Collection.objects.get(slug=slug)
@@ -386,7 +383,7 @@ class FragmentDetails(object):
     def href(cls, fragment):
         """ Returns URI in the API for the fragment. """
 
-        return API_BASE + reverse("api_fragment", 
+        return API_BASE + reverse("api_fragment",
             args=[fragment.book.slug, fragment.anchor])
 
     @classmethod
@@ -563,7 +560,7 @@ class CatalogueHandler(BaseHandler):
         if updated:
             changes['updated'] = updated
 
-        for book in Deleted.objects.filter(content_type=Book, 
+        for book in Deleted.objects.filter(content_type=Book,
                     deleted_at__gte=since,
                     deleted_at__lt=until,
                     created_at__lt=since).iterator():
@@ -628,7 +625,7 @@ class CatalogueHandler(BaseHandler):
         updated = []
         deleted = []
 
-        for tag in Tag.objects.filter(category__in=categories, 
+        for tag in Tag.objects.filter(category__in=categories,
                     changed_at__gte=since,
                     changed_at__lt=until).iterator():
             # only serve non-empty tags
@@ -641,7 +638,7 @@ class CatalogueHandler(BaseHandler):
             changes['updated'] = updated
 
         for tag in Deleted.objects.filter(category__in=categories,
-                content_type=Tag, 
+                content_type=Tag,
                     deleted_at__gte=since,
                     deleted_at__lt=until,
                     created_at__lt=since).iterator():

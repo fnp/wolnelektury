@@ -82,10 +82,10 @@ class BookMedia(models.Model):
                 audio = id3.ID3(self.file.path)
                 artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
                 director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
-                project = ", ".join([t.data for t in audio.getall('PRIV') 
-                        if t.owner=='wolnelektury.pl?project'])
-                funded_by = ", ".join([t.data for t in audio.getall('PRIV') 
-                        if t.owner=='wolnelektury.pl?funded_by'])
+                project = ", ".join([t.data for t in audio.getall('PRIV')
+                        if t.owner == 'wolnelektury.pl?project'])
+                funded_by = ", ".join([t.data for t in audio.getall('PRIV')
+                        if t.owner == 'wolnelektury.pl?funded_by'])
             except:
                 pass
         elif self.type == 'ogg':
@@ -113,14 +113,14 @@ class BookMedia(models.Model):
         if filetype == 'mp3':
             try:
                 audio = id3.ID3(filepath)
-                return [t.data for t in audio.getall('PRIV') 
-                        if t.owner=='wolnelektury.pl?flac_sha1'][0]
+                return [t.data for t in audio.getall('PRIV')
+                        if t.owner == 'wolnelektury.pl?flac_sha1'][0]
             except:
                 return None
         elif filetype == 'ogg':
             try:
                 audio = mutagen.File(filepath)
-                return audio.get('flac_sha1', [None])[0] 
+                return audio.get('flac_sha1', [None])[0]
             except:
                 return None
         else:

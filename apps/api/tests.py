@@ -16,7 +16,7 @@ import picture.tests
 
 
 @override_settings(
-    API_WAIT=-1, 
+    API_WAIT=-1,
     CACHES = {'api': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
               'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
               'permanent': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}
@@ -35,10 +35,10 @@ class ChangesTest(ApiTest):
         book.save()
 
         changes = json.loads(self.client.get('/api/changes/0.json?book_fields=title&tag_fields=name').content)
-        self.assertEqual(changes['updated']['books'], 
+        self.assertEqual(changes['updated']['books'],
                          [{'id': book.id, 'title': book.title}],
                          'Invalid book format in changes')
-        self.assertEqual(changes['updated']['tags'], 
+        self.assertEqual(changes['updated']['tags'],
                          [{'id': tag.id, 'name': tag.name}],
                          'Invalid tag format in changes')
 
@@ -157,5 +157,4 @@ class PictureTests(ApiTest):
         if import_form.is_valid():
             import_form.save()
 
-        pic = Picture.objects.get(slug=slug)
-
+        Picture.objects.get(slug=slug)

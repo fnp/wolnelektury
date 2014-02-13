@@ -200,7 +200,7 @@ class BuildHtml(BuildEbook):
                 short_text = truncate_html_words(text, 15)
                 if text == short_text:
                     short_text = ''
-                new_fragment = Fragment.objects.create(anchor=fragment.id, 
+                new_fragment = Fragment.objects.create(anchor=fragment.id,
                         book=book, text=text, short_text=short_text)
 
                 new_fragment.save()

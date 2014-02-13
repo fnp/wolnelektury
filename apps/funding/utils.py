@@ -11,8 +11,8 @@ from fnpdjango.utils.text.slughifi import char_map
 # with the notable exception of backslash.
 sane_in_payu_title = re.escape(
     string.uppercase +
-    string.lowercase + 
-    u'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ' + 
+    string.lowercase +
+    u'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ' +
     string.digits +
     ' ' +
     "".join(set(string.punctuation) - set('\\'))

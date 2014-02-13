@@ -9,7 +9,7 @@ from django.conf import settings
 from django.core.cache import get_cache
 from django.template import RequestContext
 from django.template.loader import render_to_string
-from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.db.models import Q
@@ -30,14 +30,14 @@ from pdcounter import views as pdcounter_views
 from suggest.forms import PublishingSuggestForm
 from picture.models import Picture, PictureArea
 from picture.views import picture_list_thumb
-import logging
+
 staff_required = user_passes_test(lambda user: user.is_staff)
 permanent_cache = get_cache('permanent')
 
 
 @vary_on_headers('X-Requested-With')
 def catalogue(request):
-    cache_key='catalogue.catalogue/' + get_language()
+    cache_key = 'catalogue.catalogue/' + get_language()
     output = permanent_cache.get(cache_key)
 
     if output is None:
@@ -52,8 +52,8 @@ def catalogue(request):
 
         render_tag_list = lambda x: render_to_string(
             'catalogue/tag_list.html', tag_list(x))
-        has_pictures = lambda x: filter(lambda y: y.picture_count>0, x)
-        has_books = lambda x: filter(lambda y: y.book_count>0, x)
+        has_pictures = lambda x: filter(lambda y: y.picture_count > 0, x)
+        has_books = lambda x: filter(lambda y: y.book_count > 0, x)
         def render_split(tags):
             with_books = has_books(tags)
             with_pictures = has_pictures(tags)
@@ -71,8 +71,7 @@ def catalogue(request):
                 output[category] = render_tag_list(tags)
             else:
                 output[category] = render_split(tags)
-            
-            
+
         output['collections'] = render_to_string(
             'catalogue/collection_list.html', collection_list(collections))
         permanent_cache.set(cache_key, output)
@@ -224,8 +223,8 @@ def tagged_object_list(request, tags=''):
         if area_keys:
             related_tags = PictureArea.tags.usage(counts=True,
                                                          filters={'pk__in': area_keys})
-            related_tags = (tag for tag in related_tags if tag not in fragment_tags)     
-                                                      
+            related_tags = (tag for tag in related_tags if tag not in fragment_tags)
+
             categories = split_tags(related_tags, categories)
 
         # we want the Pictures to go first
@@ -238,7 +237,7 @@ def tagged_object_list(request, tags=''):
             books = models.Book.tagged_top_level(tags).order_by('sort_key_author')
 
         pictures = Picture.tagged.with_all(tags).order_by('sort_key_author')
-            
+
         related_counts = {}
         if books.count() > 0:
             # get related tags from `tag_counter` and `theme_counter`
@@ -496,7 +495,7 @@ def find_best_matches(query, user=None):
     book_titles = set(match.pretty_title().lower() for match in result
                       if isinstance(match, models.Book))
     authors = set(match.name.lower() for match in result
-                  if isinstance(match, models.Tag) and match.category=='author')
+                  if isinstance(match, models.Tag) and match.category == 'author')
     result = tuple(res for res in result if not (
                  (isinstance(res, pdcounter_models.BookStub) and res.pretty_title().lower() in book_titles)
                  or (isinstance(res, pdcounter_models.Author) and res.name.lower() in authors)

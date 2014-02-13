@@ -2,14 +2,11 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from datetime import date
-from django.views.decorators.cache import never_cache
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView, FormView, DetailView, ListView
-import getpaid.backends.payu
+from django.views.generic import TemplateView, FormView, ListView
 from getpaid.models import Payment
 from . import app_settings
 from .forms import FundingForm
@@ -52,7 +49,7 @@ class WLFundView(TemplateView):
 
         ctx = super(WLFundView, self).get_context_data()
         offers = []
-        
+
         for o in Offer.past():
             if o.is_win():
                 o.wlfund = o.sum() - o.target
@@ -149,7 +146,7 @@ class DisableNotifications(TemplateView):
 
     @csrf_exempt
     def dispatch(self, request):
-        self.object = get_object_or_404(Funding, 
+        self.object = get_object_or_404(Funding,
             email=request.GET.get('email'), notify_key=request.GET.get('key'))
         return super(DisableNotifications, self).dispatch(request)
 

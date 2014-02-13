@@ -4,7 +4,7 @@
 #
 from django.conf import settings
 
-from django.core.files.base import ContentFile, File
+from django.core.files.base import ContentFile
 from catalogue.test_utils import *
 from catalogue import models
 from librarian import WLURI
@@ -118,7 +118,7 @@ class BookImportLogicTests(WLTestCase):
         """ Book with invalid characters in slug shouldn't be imported """
         self.book_info.url = WLURI.from_slug(u"default_book")
         BOOK_TEXT = "<utwor />"
-        book = models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        models.Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
 
     def test_book_replace_title(self):
         BOOK_TEXT = """<utwor />"""
@@ -438,7 +438,7 @@ class BookImportGenerateTest(WLTestCase):
         from catalogue.utils import get_dynamic_path
         out = get_dynamic_path(None, 'test-custom', ext='pdf')
         absoulute_path = path.join(settings.MEDIA_ROOT, out)
-        
+
         if not path.exists(path.dirname(absoulute_path)):
             makedirs(path.dirname(absoulute_path))
 

@@ -58,7 +58,7 @@ def pretty_size(size):
     value = re.sub('[^a-zA-Z0-9\\s\\-]{1}', replace_char, value)
     value = value.lower()
     value = re.sub(r'[^a-z0-9{|}]+', '~', value)
-    
+
     return value.encode('ascii', 'ignore')
 
 
@@ -113,7 +113,7 @@ def current(last_checked):
         'initial.db-%d' % last_checked,
         target,
     )
-    
+
 
 
 book_sql = """
@@ -130,9 +130,9 @@ tag_sql = """
         (:id, :category, :name, :sort_key, :book_ids);
 """
 categories = {'author': 'autor',
-              'epoch': 'epoka', 
-              'genre': 'gatunek', 
-              'kind': 'rodzaj', 
+              'epoch': 'epoka',
+              'genre': 'gatunek',
+              'kind': 'rodzaj',
               'theme': 'motyw'
               }
 

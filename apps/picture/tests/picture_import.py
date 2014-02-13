@@ -10,7 +10,7 @@ from catalogue.test_utils import WLTestCase
 
 
 class PictureTest(WLTestCase):
-    
+
     def test_import(self):
         picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/kandinsky-composition-viii.xml"))
 
@@ -24,7 +24,7 @@ class PictureTest(WLTestCase):
                                         path.join(path.dirname(__file__), "files/kandinsky-composition-viii.png"))
 
         picture.delete()
-        
+
 
     def test_import_2(self):
         picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/pejzaz-i-miasto-krzyzanowski-chmury.xml"),

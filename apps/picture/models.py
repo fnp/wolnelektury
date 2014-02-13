@@ -12,16 +12,13 @@ from django.utils.datastructures import SortedDict
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.core.cache import get_cache
-from catalogue.utils import split_tags, related_tag_name
-from django.utils.safestring import mark_safe
+from catalogue.utils import split_tags
 from fnpdjango.utils.text.slughifi import slughifi
 from picture import tasks
 from StringIO import StringIO
 import jsonfield
 import itertools
 import logging
-from sorl.thumbnail import get_thumbnail, default
-from .engine import CustomCroppingEngine
 
 from PIL import Image
 
@@ -40,9 +37,9 @@ picture_storage = FileSystemStorage(location=path.join(
 class PictureArea(models.Model):
     picture = models.ForeignKey('picture.Picture', related_name='areas')
     area = jsonfield.JSONField(_('area'), default={}, editable=False)
-    kind = models.CharField(_('kind'), max_length=10, blank=False, 
-                           null=False, db_index=True, 
-                           choices=(('thing', _('thing')), 
+    kind = models.CharField(_('kind'), max_length=10, blank=False,
+                           null=False, db_index=True,
+                           choices=(('thing', _('thing')),
                                     ('theme', _('theme'))))
 
     objects     = models.Manager()
@@ -72,7 +69,7 @@ class PictureArea(models.Model):
             short_html = permanent_cache.get(cache_key)
         else:
             short_html = None
-    
+
         if short_html is not None:
             return mark_safe(short_html)
         else:
@@ -166,7 +163,7 @@ class Picture(models.Model):
         if not isinstance(xml_file, File):
             xml_file = File(open(xml_file))
             close_xml_file = True
-        
+
         try:
             # use librarian to parse meta-data
             if image_store is None:
@@ -278,8 +275,8 @@ class Picture(models.Model):
         from PIL import ImageDraw, ImageFont
         from librarian import get_resource
 
-        annotated = Image.new(img.mode, 
-                (img.size[0], img.size[1] + 40), 
+        annotated = Image.new(img.mode,
+                (img.size[0], img.size[1] + 40),
                 (255, 255, 255)
             )
         annotated.paste(img, (0, 0))
@@ -332,12 +329,12 @@ class Picture(models.Model):
     def reset_short_html(self):
         if self.id is None:
             return
-        
+
         type(self).objects.filter(pk=self.pk).update(_related_info=None)
         for area in self.areas.all().iterator():
             area.reset_short_html()
 
-        try: 
+        try:
             author = self.tags.filter(category='author')[0].sort_key
         except IndexError:
             author = u''
@@ -402,13 +399,13 @@ class Picture(models.Model):
                             tag_info["name_%s" % lc] = tag_name
                     cat.append(tag_info)
                 rel['tags'][category] = cat
-            
+
 
             if self.pk:
                 type(self).objects.filter(pk=self.pk).update(_related_info=rel)
             return rel
 
-    # copied from book.py, figure out 
+    # copied from book.py, figure out
     def related_themes(self):
         # self.theme_counter hides a computation, so a line below actually makes sense
         theme_counter = self.theme_counter
@@ -462,7 +459,7 @@ class Picture(models.Model):
         if tags is None:
             tags = {}
             for area in PictureArea.objects.filter(picture=self).order_by().iterator():
-                for tag in area.tags.filter(category__in=('theme','thing')).order_by().iterator():
+                for tag in area.tags.filter(category__in=('theme', 'thing')).order_by().iterator():
                     tags[tag.pk] = tags.get(tag.pk, 0) + 1
 
             if self.id:

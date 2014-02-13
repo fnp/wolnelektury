@@ -37,7 +37,7 @@ def stats_page(request):
                 locals(), context_instance=RequestContext(request))
 
 
-@generated_file_view('reports/katalog.pdf', 'application/pdf', 
+@generated_file_view('reports/katalog.pdf', 'application/pdf',
         send_name=lambda: 'wolnelektury_%s.pdf' % date.today(),
         signals=[Book.published])
 def catalogue_pdf(path):
@@ -47,7 +47,7 @@ def catalogue_pdf(path):
         })
 
 
-@generated_file_view('reports/katalog.csv', 'application/csv', 
+@generated_file_view('reports/katalog.csv', 'application/csv',
         send_name=lambda: 'wolnelektury_%s.csv' % date.today(),
         signals=[Book.published])
 def catalogue_csv(path):

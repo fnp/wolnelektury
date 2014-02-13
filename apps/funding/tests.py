@@ -4,7 +4,7 @@
 #
 from datetime import date, timedelta
 from django.test import TestCase
-from .models import Offer, Perk, Funding
+from .models import Offer, Perk
 
 
 class PerksTest(TestCase):

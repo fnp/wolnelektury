@@ -9,11 +9,9 @@ from StringIO import StringIO
 
 from django.core.files.base import ContentFile
 from django.db import models
-from django.db.models import permalink
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
-from django.db.models.signals import m2m_changed
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -138,7 +136,7 @@ class Continuations(models.Model):
             mydict[letter] += 1
             last_word = last_word[-length+1:] + letter
         # add children
-        return reduce(cls.join_conts, 
+        return reduce(cls.join_conts,
                       (cls.get(child) for child in book.children.all().iterator()),
                       conts)
 

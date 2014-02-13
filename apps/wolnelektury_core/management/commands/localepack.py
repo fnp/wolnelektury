@@ -12,7 +12,6 @@ import os
 import shutil
 import tempfile
 import sys
-import zipfile
 
 import allauth
 
@@ -34,7 +33,7 @@ def copy_f(frm, to):
     "I can create a necessary dest directiories, yey!"
     if not os.path.exists(os.path.dirname(to)):
         os.makedirs(os.path.dirname(to))
-    shutil.copyfile(frm,to)
+    shutil.copyfile(frm, to)
 
 class AppLocale(Locale):
     def __init__(self, appmod):
@@ -215,7 +214,7 @@ class Command(BaseCommand):
             if not options['directory'] or not os.path.exists(options['directory']):
                 print "Directory not provided or does not exist, please use -d"
                 sys.exit(1)
-                
+
             if options['merge']: self.merge_setup(options['directory'])
             self.load(options)
             if options['merge']: self.merge_finish(options['message'])
@@ -224,7 +223,7 @@ class Command(BaseCommand):
 
     merge_branch = 'wl-locale-merge'
     last_branch = None
-    
+
     def merge_setup(self, directory):
         self.last_branch = self.current_branch()
         rev = open(os.path.join(directory, '.revision')).read()

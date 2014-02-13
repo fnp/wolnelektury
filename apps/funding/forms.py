@@ -48,7 +48,7 @@ class FundingForm(forms.Form):
             name=self.cleaned_data['name'],
             email=self.cleaned_data['email'],
             amount=self.cleaned_data['amount'],
-            language_code = get_language(),
+            language_code=get_language(),
         )
         funding.perks = funding.offer.get_perks(funding.amount)
         return funding

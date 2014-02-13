@@ -14,7 +14,7 @@ class Command(BaseCommand):
     help = 'Sends relevant funding notifications.'
 
     def handle(self, **options):
-        
+
         from datetime import date, timedelta
         from funding.models import Offer
         from funding import app_settings
@@ -27,7 +27,7 @@ class Command(BaseCommand):
             offer.notify_end()
 
         current = Offer.current()
-        if (current is not None and 
+        if (current is not None and
                 current.end <= date.today() + timedelta(app_settings.DAYS_NEAR - 1) and
                 not current.notified_near):
             if verbose:

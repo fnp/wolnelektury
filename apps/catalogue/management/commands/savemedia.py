@@ -5,7 +5,6 @@
 import os.path
 
 from django.core.management.base import BaseCommand
-from django.core.files import File
 
 from catalogue.models import Book, BookMedia
 from catalogue.utils import ExistingFile

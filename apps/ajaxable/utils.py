@@ -30,7 +30,7 @@ class JSONResponse(HttpResponse):
         kwargs.pop('mimetype', None)
         data = json.dumps(data)
         if callback:
-            data = callback + "(" + data + ");" 
+            data = callback + "(" + data + ");"
         super(JSONResponse, self).__init__(data, mimetype="application/json", **kwargs)
 
 
@@ -74,7 +74,7 @@ class AjaxableFormView(object):
     # override to customize form look
     template = "ajaxable/form.html"
     submit = _('Send')
-    
+
     title = ''
     success_message = ''
     POST_login = False
@@ -106,7 +106,7 @@ class AjaxableFormView(object):
             if form.is_valid():
                 add_args = self.success(form, request)
                 response_data = {
-                    'success': True, 
+                    'success': True,
                     'message': self.success_message,
                     'redirect': request.GET.get('next')
                     }
@@ -147,7 +147,7 @@ class AjaxableFormView(object):
         if self.placeholdize:
             form = placeholdized(form)
         context = {
-                self.formname: form, 
+                self.formname: form,
                 "title": title,
                 "honeypot": self.honeypot,
                 "placeholdize": self.placeholdize,
@@ -162,12 +162,12 @@ class AjaxableFormView(object):
             context_instance=RequestContext(request))
 
     def redirect_or_refresh(self, request, path, message=None):
-        """If the form is AJAX, refresh the page. If not, go to `path`.""" 
+        """If the form is AJAX, refresh the page. If not, go to `path`."""
         if request.is_ajax():
             output = "<script>window.location.reload()</script>"
             if message:
                 output = "<div class='normal-text'>" + message + "</div>" + output
-            return HttpResponse(output);
+            return HttpResponse(output)
         else:
             return HttpResponseRedirect(path)
 
@@ -189,7 +189,7 @@ class AjaxableFormView(object):
 
     def success(self, form, request):
         """What to do when the form is valid.
-        
+
         By default, just save the form.
 
         """

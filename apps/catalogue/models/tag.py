@@ -26,7 +26,7 @@ TAG_CATEGORIES = (
 
 class Tag(TagBase):
     """A tag attachable to books and fragments (and possibly anything).
-    
+
     Used to represent searchable metadata (authors, epochs, genres, kinds),
     fragment themes (motifs) and some book hierarchy related kludges."""
     name = models.CharField(_('name'), max_length=50, db_index=True)
@@ -43,8 +43,8 @@ class Tag(TagBase):
     culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
-    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
-    changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
+    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
 
     class UrlDeprecationWarning(DeprecationWarning):
         pass
@@ -113,11 +113,11 @@ class Tag(TagBase):
                     objects = objects.exclude(pk__in=descendants_keys)
         return objects.count()
 
-    # I shouldn't break the get_count() api 
+    # I shouldn't break the get_count() api
     # just to include pictures.
     def get_picture_count(self):
         from picture.models import Picture, PictureArea
-        
+
         if self.category == 'book':
             # never used
             objects = Picture.objects.none()
@@ -128,7 +128,7 @@ class Tag(TagBase):
         else:
             objects = Picture.tagged.with_all((self,)).order_by()
         return objects.count()
-        
+
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):
@@ -146,7 +146,7 @@ class Tag(TagBase):
                 else:
                     try:
                         real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
-                        deprecated = True 
+                        deprecated = True
                     except Tag.MultipleObjectsReturned, e:
                         ambiguous_slugs.append(name)
 

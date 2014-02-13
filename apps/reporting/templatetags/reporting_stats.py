@@ -2,13 +2,9 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import feedparser
 from functools import wraps
-import datetime
-
 from django import template
-
-from catalogue.models import Book, BookMedia
+from catalogue.models import Book
 
 
 register = template.Library()

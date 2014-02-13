@@ -4,7 +4,6 @@
 #
 from catalogue.test_utils import WLTestCase
 from catalogue import models
-from nose.tools import raises
 from oai.handlers import *
 from oaipmh.server import *
 from os import path
@@ -29,9 +28,9 @@ class BookMetadataTest(WLTestCase):
         self.xml = XMLTreeServer(self.catalogue, mr, nsmap)
 
     def test_get_record(self):
-        sch = self.xml.getRecord(identifier='lubie-kiedy-kobieta',
+        self.xml.getRecord(identifier='lubie-kiedy-kobieta',
                                  metadataPrefix='oai_dc')
-        sch = self.xml.listRecords(metadataPrefix='oai_dc')
+        self.xml.listRecords(metadataPrefix='oai_dc')
 
     def test_selecting(self):
         records, token = self.catalogue.listRecords(**{'set': 'epoch:starozytnosc'})

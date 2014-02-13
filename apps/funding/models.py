@@ -10,7 +10,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.db import models
 from django.utils.timezone import utc
-from django.utils.translation import ugettext_lazy as _, ugettext, override
+from django.utils.translation import ugettext_lazy as _, override
 import getpaid
 from catalogue.models import Book
 from catalogue.utils import get_random_hash, related_tag_name
@@ -31,8 +31,8 @@ class Offer(models.Model):
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
     book = models.ForeignKey(Book, null=True, blank=True,
         help_text=_('Published book.'))
-    cover = models.ImageField(_('Cover'), upload_to = 'funding/covers')
-    poll = models.ForeignKey(Poll, help_text = _('Poll'),  null = True, blank = True, on_delete = models.SET_NULL)
+    cover = models.ImageField(_('Cover'), upload_to='funding/covers')
+    poll = models.ForeignKey(Poll, help_text=_('Poll'), null=True, blank=True, on_delete=models.SET_NULL)
 
     notified_near = models.DateTimeField(_('Near-end notifications sent'), blank=True, null=True)
     notified_end = models.DateTimeField(_('End notifications sent'), blank=True, null=True)
@@ -41,7 +41,7 @@ class Offer(models.Model):
         return u'<img src="%s" />' % self.cover.url
     cover_img_tag.short_description = _('Cover preview')
     cover_img_tag.allow_tags = True
-        
+
     class Meta:
         verbose_name = _('offer')
         verbose_name_plural = _('offers')
@@ -54,7 +54,7 @@ class Offer(models.Model):
         return reverse('funding_offer', args=[self.slug])
 
     def save(self, *args, **kw):
-        published_now = (self.book_id is not None and 
+        published_now = (self.book_id is not None and
             self.pk is not None and
             type(self).objects.values('book').get(pk=self.pk)['book'] != self.book_id)
         retval = super(Offer, self).save(*args, **kw)
@@ -110,7 +110,7 @@ class Offer(models.Model):
 
     def get_perks(self, amount=None):
         """ Finds all the perks for the offer.
-        
+
         If amount is provided, returns the perks you get for it.
 
         """
@@ -183,7 +183,7 @@ class Offer(models.Model):
 
 class Perk(models.Model):
     """ A perk offer.
-    
+
     If no attached to a particular Offer, applies to all.
 
     """
@@ -214,7 +214,7 @@ class Funding(models.Model):
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True, db_index=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
-    language_code = models.CharField(max_length = 2, null = True, blank = True)
+    language_code = models.CharField(max_length=2, null=True, blank=True)
     notifications = models.BooleanField(_('notifications'), default=True, db_index=True)
     notify_key = models.CharField(max_length=32)
 

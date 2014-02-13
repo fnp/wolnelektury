@@ -20,7 +20,7 @@ def date_to_utc(date, day_end=False):
     """
     if day_end:
         date += datetime.timedelta(1)
-    localtime = datetime.datetime.combine(date, datetime.time(0,0))
+    localtime = datetime.datetime.combine(date, datetime.time(0, 0))
     return timezone.utc.normalize(
         pytz.timezone(settings.TIME_ZONE).localize(localtime)
     )

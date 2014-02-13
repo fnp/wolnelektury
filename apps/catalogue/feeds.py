@@ -5,7 +5,6 @@
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
-from django.db.models import Q
 
 from catalogue import models
 
@@ -52,7 +51,7 @@ class AudiobookFeed(Feed):
         return item.name
 
     def item_categories(self, item):
-        return sorted(set(author.name for author in 
+        return sorted(set(author.name for author in
                             item.book.tags.filter(category='author').iterator()))
 
     def item_description(self, item):

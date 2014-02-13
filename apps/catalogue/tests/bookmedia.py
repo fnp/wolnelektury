@@ -4,7 +4,7 @@
 #
 from django.conf import settings
 from os.path import basename, exists, join, dirname
-from django.core.files.base import ContentFile, File
+from django.core.files.base import ContentFile
 
 from catalogue.test_utils import *
 from catalogue import models, utils
@@ -18,13 +18,13 @@ class BookMediaTests(WLTestCase):
         self.book = models.Book.objects.create(slug='test-book')
 
     def test_diacritics(self):
-        bm = models.BookMedia(book=self.book, type="ogg", 
+        bm = models.BookMedia(book=self.book, type="ogg",
                     name=u"Zażółć gęślą jaźń")
         bm.file.save(None, self.file)
         self.assertEqual(basename(bm.file.name), 'zazolc-gesla-jazn.ogg')
 
     def test_long_name(self):
-        bm = models.BookMedia(book=self.book, type="ogg", 
+        bm = models.BookMedia(book=self.book, type="ogg",
                     name="Some very very very very very very very very very very very very very very very very long file name")
         bm.file.save(bm.name, self.file)
 
@@ -106,7 +106,7 @@ class BookMediaTests(WLTestCase):
         bm = models.BookMedia(book=self.book, type='ogg', name="Title")
         bm.file.save(None, self.file)
         bm.save()
-        
+
         zip_url = self.book.zip_audiobooks('ogg')
         self.assertEqual('zip/'+self.book.slug+'_ogg.zip', zip_url)
         self.assertTrue(exists(join(settings.MEDIA_ROOT, zip_url)))

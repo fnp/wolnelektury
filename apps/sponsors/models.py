@@ -64,7 +64,7 @@ class SponsorPage(models.Model):
             simg = Image.open(sponsors[sponsor_id].logo.path)
             if simg.size[0] > THUMB_WIDTH or simg.size[1] > THUMB_HEIGHT:
                 size = (
-                    min(THUMB_WIDTH, 
+                    min(THUMB_WIDTH,
                         simg.size[0] * THUMB_HEIGHT / simg.size[1]),
                     min(THUMB_HEIGHT,
                         simg.size[1] * THUMB_WIDTH / simg.size[0])

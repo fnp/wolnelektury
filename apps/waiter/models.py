@@ -19,7 +19,7 @@ class WaitedFile(models.Model):
     @classmethod
     def exists(cls, path):
         """Returns opened file or None.
-        
+
         `path` is relative to WAITER_ROOT.
         Won't open a path leading outside of WAITER_ROOT.
         """
@@ -41,7 +41,7 @@ class WaitedFile(models.Model):
 
     def is_stale(self):
         if self.task is None:
-            # Race; just let the other task roll. 
+            # Race; just let the other task roll.
             return False
         if self.task.status not in (u'PENDING', u'STARTED', u'SUCCESS', u'RETRY'):
             return True

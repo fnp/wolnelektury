@@ -30,7 +30,7 @@ def render_to_pdf(output_path, template, context=None, add_files=None):
 
     rendered = render_to_string(template, context)
     texml = StringIO(rendered.encode('utf-8'))
-    tempdir = mkdtemp(prefix = "render_to_pdf-")
+    tempdir = mkdtemp(prefix="render_to_pdf-")
     tex_path = os.path.join(tempdir, "doc.tex")
     with open(tex_path, 'w') as tex_file:
         Texml.processor.process(texml, tex_file, encoding="utf-8")
@@ -69,7 +69,7 @@ def render_to_csv(output_path, template, context=None, add_files=None):
     """
 
     from django.template.loader import render_to_string
-    
+
     try:
         os.makedirs(os.path.dirname(output_path))
     except:
@@ -78,7 +78,7 @@ def render_to_csv(output_path, template, context=None, add_files=None):
     rendered = render_to_string(template, context)
     with open(output_path, 'w') as csv_file:
         csv_file.write(rendered.encode('utf-8'))
-        
+
 
 def read_chunks(f, size=8192):
     chunk = f.read(size)
@@ -89,7 +89,6 @@ def read_chunks(f, size=8192):
 
 def generated_file_view(file_name, mime_type, send_name=None, signals=None):
     file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-    file_url = os.path.join(settings.MEDIA_URL, file_name)
     if send_name is None:
         send_name = os.path.basename(file_name)
 

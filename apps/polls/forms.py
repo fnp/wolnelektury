@@ -6,8 +6,8 @@ from django import forms
 
 
 class PollForm(forms.Form):
-    vote = forms.ChoiceField(widget = forms.RadioSelect)
-    
+    vote = forms.ChoiceField(widget=forms.RadioSelect)
+
     def __init__(self, *args, **kwargs):
         poll = kwargs.pop('poll', None)
         super(PollForm, self).__init__(*args, **kwargs)

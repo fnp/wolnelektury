@@ -27,9 +27,9 @@ def build_notes(book):
         from librarian import html
         for anchor, text_str, html_str in html.extract_annotations(book.html_file.path):
             Note.objects.create(book=book, anchor=anchor,
-                               html=html_str, 
+                               html=html_str,
                                sort_key=sortify(text_str).strip()[:128])
-    
+
 def notes_from_book(sender, **kwargs):
     build_notes.delay(sender)
 Book.html_built.connect(notes_from_book)

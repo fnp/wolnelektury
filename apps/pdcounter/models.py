@@ -93,7 +93,7 @@ if not settings.NO_SEARCH_INDEX:
         import search
         idx = search.Index()
         idx.index_tags(instance, remove_only=not 'created' in kwargs)
-    
+
     post_delete.connect(update_index, Author)
     post_delete.connect(update_index, BookStub)
     post_save.connect(update_index, Author)

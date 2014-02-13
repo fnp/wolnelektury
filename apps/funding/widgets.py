@@ -3,7 +3,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from decimal import Decimal
-from django.conf import settings
 from django import forms
 from django.template.loader import render_to_string
 
@@ -37,5 +36,3 @@ class PerksAmountWidget(forms.Textarea):
     def value_from_datadict(self, data, files, name):
         num_str = data.get(self.perks_input_name(name)) or data[name]
         return num_str.replace(',', '.')
-            
-    

@@ -16,7 +16,7 @@ from django.contrib.sites.models import Site
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 
-from search.views import Search, SearchResult
+from search.views import Search
 import operator
 import logging
 import re
@@ -111,6 +111,7 @@ class OPDSFeed(Atom1Feed):
                  u"length": self._book_parent_img_size,
                  u"type": u"image/png"})
         if item['pubdate'] is not None:
+            # FIXME: rfc3339_date is undefined, is this ever run?
             handler.addQuickElement(u"updated", rfc3339_date(item['pubdate']).decode('utf-8'))
 
         # Author information.
@@ -127,6 +128,7 @@ class OPDSFeed(Atom1Feed):
         if item['unique_id'] is not None:
             unique_id = item['unique_id']
         else:
+            # FIXME: get_tag_uri is undefined, is this ever run?
             unique_id = get_tag_uri(item['link'], item['pubdate'])
         handler.addQuickElement(u"id", unique_id)
 
@@ -222,7 +224,7 @@ class ByCategoryFeed(Feed):
     author_link = u"http://wolnelektury.pl/"
 
     def get_object(self, request, category):
-        feed = [feed for feed in _root_feeds if feed['category']==category]
+        feed = [feed for feed in _root_feeds if feed['category'] == category]
         if feed:
             feed = feed[0]
         else:

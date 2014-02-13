@@ -43,7 +43,7 @@ def split_tags(tags, initial=None):
         result = {}
     else:
         result = initial
-    
+
     for tag in tags:
         result.setdefault(tag.category, []).append(tag)
     return result
@@ -149,7 +149,7 @@ def remove_zip(zip_slug):
 class AttachmentHttpResponse(HttpResponse):
     """Response serving a file to be downloaded.
     """
-    def __init__ (self, file_path, file_name, mimetype):
+    def __init__(self, file_path, file_name, mimetype):
         super(AttachmentHttpResponse, self).__init__(mimetype=mimetype)
         self['Content-Disposition'] = 'attachment; filename=%s' % file_name
         self.file_path = file_path
@@ -163,15 +163,15 @@ class MultiQuerySet(object):
     def __init__(self, *args, **kwargs):
         self.querysets = args
         self._count = None
-    
+
     def count(self):
         if not self._count:
             self._count = sum(len(qs) for qs in self.querysets)
         return self._count
-    
+
     def __len__(self):
         return self.count()
-        
+
     def __getitem__(self, item):
         try:
             indices = (offset, stop, step) = item.indices(self.count())
@@ -197,7 +197,7 @@ class SortedMultiQuerySet(MultiQuerySet):
         self.order_by = kwargs.pop('order_by', None)
         self.sortfn = kwargs.pop('sortfn', None)
         if self.order_by is not None:
-            self.sortfn = lambda a, b: cmp(getattr(a, self.order_by), 
+            self.sortfn = lambda a, b: cmp(getattr(a, self.order_by),
                                            getattr(b, self.order_by))
         super(SortedMultiQuerySet, self).__init__(*args, **kwargs)
 
@@ -238,7 +238,7 @@ class SortedMultiQuerySet(MultiQuerySet):
                 skipped += 1
                 continue # continue next item
             items.append(candidate)
-        
+
         return items
 
 

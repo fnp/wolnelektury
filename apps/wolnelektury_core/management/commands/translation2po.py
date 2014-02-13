@@ -3,7 +3,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import os
-import sys
 import time
 from optparse import make_option
 from django.conf import settings
@@ -90,7 +89,7 @@ class Command(BaseCommand):
 
             for lng in zip(*languages)[0]:
                 pofile = os.path.join(options['directory'], lng, options['poname'] + '.po')
-                if not os.path.exists(pofile): 
+                if not os.path.exists(pofile):
                     if options['keep_running']:
                         continue
                     else:

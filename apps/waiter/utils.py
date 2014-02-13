@@ -18,4 +18,3 @@ def clear_cache(path):
     abs_path = check_abspath(path)
     if exists(abs_path):
         rmtree(abs_path)
-    

@@ -14,9 +14,9 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext as _
 
-from catalogue.utils import split_tags, related_tag_name as _related_tag_name
+from catalogue.utils import related_tag_name as _related_tag_name
 from catalogue.models import Book, BookMedia, Fragment, Tag
-from catalogue.constants import LICENSES, LANGUAGES_3TO2
+from catalogue.constants import LICENSES
 
 register = template.Library()
 
@@ -55,7 +55,7 @@ def html_title_from_tags(tags):
     template = Template("{{ category }}: <a href='{{ tag.get_absolute_url }}'>{{ tag.name }}</a>")
     return capfirst(",<br/>".join(
         template.render(Context({'tag': tag, 'category': _(tag.category)})) for tag in tags))
-    
+
 
 def simple_title(tags):
     title = []
@@ -186,12 +186,12 @@ def book_tree_csv(author, book_list, books_by_parent, depth=1, max_depth=3, deli
             return '"%s"' % s
         except ValueError:
             return s
-        
+
     return "".join("""%(author)s%(d)s%(preindent)s%(title)s%(d)s%(postindent)s%(audiences)s%(d)s%(audiobook)s
 %(children)s""" % {
                 "d": delimeter,
                 "preindent": delimeter * (depth - 1),
-                "postindent": delimeter * (max_depth - depth), 
+                "postindent": delimeter * (max_depth - depth),
                 "depth": depth,
                 "author": quote_if_necessary(author.name),
                 "title": quote_if_necessary(book.title),
@@ -285,7 +285,7 @@ def latest_blog_posts(feed_url, posts_to_show=5):
         posts = []
         for i in range(posts_to_show):
             pub_date = feed['entries'][i].updated_parsed
-            published = datetime.date(pub_date[0], pub_date[1], pub_date[2] )
+            published = datetime.date(pub_date[0], pub_date[1], pub_date[2])
             posts.append({
                 'title': feed['entries'][i].title,
                 'summary': feed['entries'][i].summary,
@@ -367,7 +367,7 @@ def work_list(context, object_list):
     request = context.get('request')
     for obj in object_list:
         obj.object_type = type(obj).__name__
-        
+
     return locals()
 
 

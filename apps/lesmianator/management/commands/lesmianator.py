@@ -3,8 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import re
-import sys
-from cPickle import load, dump
+from cPickle import dump
 from optparse import make_option
 
 from django.core.management.base import BaseCommand
@@ -78,7 +77,7 @@ class Command(BaseCommand):
             text = unicode(m.group(1), 'utf-8').lower()
             for letter in text:
                 mydict = lesmianator.setdefault(last_word, {})
-                myval = mydict.setdefault(letter, 0)
+                mydict.setdefault(letter, 0)
                 mydict[letter] += 1
                 last_word = last_word[-2:] + letter
             f.close()
@@ -99,4 +98,4 @@ class Command(BaseCommand):
         dump(lesmianator, open(path, 'w'))
         if verbose >= 1:
             print "%d processed, %d skipped" % (processed, skipped)
-            print "Results dumped to %s" % path 
+            print "Results dumped to %s" % path

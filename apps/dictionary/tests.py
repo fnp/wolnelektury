@@ -5,7 +5,6 @@
 from django.core.files.base import ContentFile
 from catalogue.test_utils import *
 from catalogue.models import Book
-from dictionary.models import Note
 
 
 class DictionaryTests(WLTestCase):

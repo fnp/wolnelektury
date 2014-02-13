@@ -39,7 +39,7 @@ class Settings(AppSettings):
             attname = 'ALL_%s_ZIP' % format_.upper()
             if hasattr(settings, attname):
                 logging.warn("%s is deprecated, "
-                        "use CATALOGUE_FORMAT_ZIPS[%s] instead", 
+                        "use CATALOGUE_FORMAT_ZIPS[%s] instead",
                             attname, format_)
                 value[format_] = getattr(settings, attname)
         return value

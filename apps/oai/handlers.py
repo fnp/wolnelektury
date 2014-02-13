@@ -6,14 +6,10 @@ from oaipmh import server, common, metadata, error
 from catalogue.models import Book, Tag
 from api.models import Deleted
 from api.handlers import WL_BASE
-from librarian.dcparser import BookInfo
 from librarian import WLURI
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import User
 from datetime import datetime
 from lxml import etree
-from lxml.etree import ElementTree
-from django.db.models import Q
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.utils import timezone
@@ -21,7 +17,7 @@ from django.utils import timezone
 
 make_time_naive = lambda d: timezone.localtime(d).replace(tzinfo=None)
 
-WL_DC_READER_XPATH = '(.|*)/rdf:RDF/rdf:Description/%s/text()' 
+WL_DC_READER_XPATH = '(.|*)/rdf:RDF/rdf:Description/%s/text()'
 wl_dc_reader = metadata.MetadataReader(
     fields={
     'title':       ('textList', WL_DC_READER_XPATH % 'dc:title'),

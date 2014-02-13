@@ -42,7 +42,7 @@ class CoverTests(WLTestCase):
         parent = Book.from_text_and_meta(ContentFile(self.TEXT), self.parent,
                     overwrite=True)
         self.assertEqual(parent_cover_changed.call_count, 0)
-        
+
         # Now change cover in parent.
         parent_cover_changed.reset_mock()
         self.parent.cover_url = "http://example.com/other-cover.jpg"

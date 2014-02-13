@@ -2,10 +2,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
 from django.views.decorators import cache
 
 from catalogue.utils import get_random_hash
@@ -17,7 +15,7 @@ def main_page(request):
     last = Poem.objects.all().order_by('-created_at')[:10]
     shelves = Tag.objects.filter(user__username='lesmianator')
 
-    return render_to_response('lesmianator/lesmianator.html', 
+    return render_to_response('lesmianator/lesmianator.html',
                 {"last": last, "shelves": shelves},
                 context_instance=RequestContext(request))
 
@@ -29,7 +27,7 @@ def new_poem(request):
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
     p.save()
 
-    return render_to_response('lesmianator/poem.html', 
+    return render_to_response('lesmianator/poem.html',
                 {"poem": p},
                 context_instance=RequestContext(request))
 
@@ -43,7 +41,7 @@ def poem_from_book(request, slug):
     p.created_from = [book.id]
     p.save()
 
-    return render_to_response('lesmianator/poem.html', 
+    return render_to_response('lesmianator/poem.html',
                 {"poem": p, "books": [book], "book": book},
                 context_instance=RequestContext(request))
 
@@ -60,7 +58,7 @@ def poem_from_set(request, shelf):
 
     book = books[0] if len(books) == 1 else None
 
-    return render_to_response('lesmianator/poem.html', 
+    return render_to_response('lesmianator/poem.html',
                 {"poem": p, "shelf": tag, "books": books, "book": book},
                 context_instance=RequestContext(request))
 
@@ -73,7 +71,7 @@ def get_poem(request, poem):
     else:
         books = book = None
 
-    return render_to_response('lesmianator/poem.html', 
+    return render_to_response('lesmianator/poem.html',
                 {"poem": p, "books": books, "book": book},
                 context_instance=RequestContext(request))
 

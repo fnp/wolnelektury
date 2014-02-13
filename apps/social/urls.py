@@ -17,4 +17,4 @@ urlpatterns = patterns('social.views',
     #~ url(r'^polki/(?P<slug>[a-zA-Z0-9-]+)/usun/$', 'delete_shelf', name='delete_shelf'),
     #~ url(r'^polki/(?P<slug>[a-zA-Z0-9-]+)\.zip$', 'download_shelf', name='download_shelf'),
     #~ url(r'^polki/nowa/$', 'new_set', name='new_set'),
-) 
+)

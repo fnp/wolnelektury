@@ -9,7 +9,7 @@ from pdcounter.models import BookStub, Author
 
 class BookStubAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'slug', 'pd')
-    search_fields = ('title','author')
+    search_fields = ('title', 'author')
     ordering = ('title',)
 
     prepopulated_fields = {'slug': ('title',)}

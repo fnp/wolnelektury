@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import permission_required
 from django.utils.datastructures import SortedDict
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.core.paginator import Paginator
 from picture.models import Picture
 from catalogue.utils import split_tags
 
@@ -59,7 +58,7 @@ def picture_viewer(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
     return render_to_response("picture/picture_viewer.html", locals(),
                               context_instance=RequestContext(request))
-                              
+
 
 # =========
 # = Admin =

@@ -21,7 +21,7 @@ def choose_cite(context, ctx=None):
         assert request.user.is_staff
         assert 'choose_cite' in request.GET
         cite = Cite.objects.get(pk=request.GET['choose_cite'])
-    except AssertionError, Cite.DoesNotExist:
+    except (AssertionError, Cite.DoesNotExist):
         if ctx is None:
             cites = Cite.objects.all()
         elif isinstance(ctx, Book):
