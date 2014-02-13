@@ -3,7 +3,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib.sites.models import Site
-from piwik.django.models import PiwikSite
 from django.conf import settings
 from datetime import datetime
 import logging
@@ -18,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 def piwik_url(request):
     return urllib.urlencode(dict(
-        idsite=_id_piwik,
+        idsite=getattr(settings, 'PIWIK_SITE_ID', '0'),
         rec=1,
         url='http://%s%s' % (request.META['HTTP_HOST'], request.path),
         rand=int(random() * 0x10000),
@@ -34,18 +33,11 @@ def piwik_url(request):
 PIWIK_API_VERSION = 1
 
 
-# Retrieve piwik information
-try:
-    _id_piwik = PiwikSite.objects.get(site=Site.objects.get_current().id).id_site
-except PiwikSite.DoesNotExist:
-    logger.debug("No PiwikSite is configured.")
-    _id_piwik = None
-
 def piwik_track(klass_or_method):
     """Track decorated class or method using Piwik (according to configuration in settings and django-piwik)
     Works for handler classes (executed by __call__) or handler methods. Expects request to be the first parameter
     """
-    if _id_piwik is None:
+    if not getattr(settings, 'PIWIK_SITE_ID', 0):
         return klass_or_method
 
     # get target method

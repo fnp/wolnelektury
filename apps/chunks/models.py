@@ -9,8 +9,8 @@ class Chunk(models.Model):
     any template with the use of a special template tag.
     """
     key = models.CharField(_('key'), help_text=_('A unique name for this chunk of content'), primary_key=True, max_length=255)
-    description = models.CharField(_('description'), blank=True, max_length=255)
-    content = models.TextField(_('content'), blank=True)
+    description = models.CharField(_('description'), blank=True, null=True, max_length=255)
+    content = models.TextField(_('content'), blank=True, null=True)
 
     class Meta:
         ordering = ('key',)

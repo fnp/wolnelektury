@@ -521,8 +521,6 @@ class Book(models.Model):
         rel_info = book.related_info()
         names = [(related_tag_name(tag), Tag.create_url('author', tag['slug']))
                     for tag in rel_info['tags'].get('author', ())]
-        import logging
-        logging.info("%s, %s" % (book.slug, unicode(rel_info['tags'].get('author', ()))))
         if 'parents' in rel_info:
             books = [(name, Book.create_url(slug))
                         for name, slug in rel_info['parents']]

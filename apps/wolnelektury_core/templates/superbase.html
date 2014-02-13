@@ -4,6 +4,7 @@
 	{% load static from staticfiles %}
     {% load catalogue_tags funding_tags reporting_stats sponsor_tags %}
     {% load chunks %}
+    {% load piwik_tags %}
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -152,11 +153,11 @@
         </script>
         {% compressed_js "base" %}
 
-        {{ piwik_tag|safe }}
+        {% tracking_code %}
 
 		{% block extrabody %}
 		{% endblock %}
 
-        <script src="{% static "js/modernizr.custom.19652.js" %}"></script>
+        <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>
     </body>
 </html>

@@ -72,15 +72,15 @@ PIPELINE_CSS = {
 PIPELINE_JS = {
     'base': {
         'source_filenames': (
-            'js/jquery.cycle.min.js',
-            'js/jquery.jqmodal.js',
-            'js/jquery.form.js',
-            'js/jquery.countdown.js', 'js/jquery.countdown-pl.js',
-            'js/jquery.countdown-de.js', 'js/jquery.countdown-uk.js',
-            'js/jquery.countdown-es.js', 'js/jquery.countdown-lt.js',
-            'js/jquery.countdown-ru.js', 'js/jquery.countdown-fr.js',
+            'js/contrib/jquery.cycle.min.js',
+            'js/contrib/jquery.jqmodal.js',
+            'js/contrib/jquery.form.js',
+            'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
+            'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',
+            'js/contrib/jquery.countdown-es.js', 'js/contrib/jquery.countdown-lt.js',
+            'js/contrib/jquery.countdown-ru.js', 'js/contrib/jquery.countdown-fr.js',
 
-            'js/jquery-ui-1.8.16.custom.min.js',
+            'js/contrib/jquery-ui-1.8.16.custom.min.js',
 
             'js/locale.js',
             'js/dialogs.js',
@@ -105,36 +105,36 @@ PIPELINE_JS = {
     },
     'book': {
         'source_filenames': [
-            'js/jquery.eventdelegation.js',
-            'js/jquery.scrollto.js',
-            'js/jquery.highlightfade.js',
+            'js/contrib/jquery.eventdelegation.js',
+            'js/contrib/jquery.scrollto.js',
+            'js/contrib/jquery.highlightfade.js',
             'js/book_text/other.js',
             'js/book.js',
 
-            'js/raphael-min.js',
-            'js/progressSpin.min.js',
+            'js/contrib/raphael-min.js',
+            'js/contrib/progressSpin.min.js',
             'js/picture.js',
         ],
         'output_filename': 'js/book.min.js',
     },
     'book_text': {
         'source_filenames': [
-            'js/jquery.form.js',
-            'js/jquery.jqmodal.js',
+            'js/contrib/jquery.form.js',
+            'js/contrib/jquery.jqmodal.js',
             'js/book_text/*.js',
             'js/locale.js',
             'js/dialogs.js',
 
-            'js/jquery.highlightfade.js',
-            'js/raphael-min.js',
+            'js/contrib/jquery.highlightfade.js',
+            'js/contrib/raphael-min.js',
             'player/openplayer.js',
-            'js/progressSpin.min.js',
+            'js/contrib/progressSpin.min.js',
             'js/picture.js',
         ],
         'output_filename': 'js/book_text.js',
     },
     'book_ie': {
-        'source_filenames': ('js/ierange-m2.js',),
+        'source_filenames': ('js/contrib/ierange-m2.js',),
         'output_filename': 'js/book_ie.min.js',
     }
 

@@ -1,4 +1,7 @@
-
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import os
 import sys
 import time
@@ -6,6 +9,7 @@ from optparse import make_option
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
+from django.db import models
 
 import polib
 import modeltranslation.models
@@ -18,7 +22,7 @@ def metadata(language=''):
 
     return {
         'Project-Id-Version': '1.0',
-        'Report-Msgid-Bugs-To': 'marcin.koziej@nowoczesnapolska.org.pl',
+        'Report-Msgid-Bugs-To': settings.CONTACT_EMAIL,
         'POT-Creation-Date': '%s' % t,
         'PO-Revision-Date': '%s' % t,
         'Last-Translator': 'you <you@example.com>',
@@ -27,11 +31,6 @@ def metadata(language=''):
         'Content-Type': 'text/plain; charset=utf-8',
         'Content-Transfer-Encoding': '8bit',
         }
-
-
-def lang(field_name):
-    "Get the language code from localized field name"
-    return field_name.split('_')[-1]
 
 
 def make_po(language=''):
@@ -50,7 +49,7 @@ def get_languages(langs):
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
-        make_option('-d', '--directory', help='Specify which directory should hold generated PO files', dest='directory'),
+        make_option('-d', '--directory', help='Specify which directory should hold generated PO files', dest='directory', default=''),
         make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load', default=False),
         make_option('-L', '--language', help='locales to load', dest='lang', default=None),
         make_option('-n', '--poname', help='name of the po file [no extension]', dest='poname', default=None),
@@ -60,16 +59,20 @@ class Command(BaseCommand):
     args = 'app'
 
     def get_models(self, app):
-        r = []
         for mdname in dir(app.models):
             if mdname[0] == '_': continue
             md = getattr(app.models, mdname)
             try:
+                assert issubclass(md, models.Model)
+            except (AssertionError, TypeError):
+                continue
+
+            try:
                 opts = translator.get_options_for_model(md)
-                r.append((md, opts))
             except NotRegistered:
                 continue
-        return r
+            else:
+                yield (md, opts)
 
     def handle(self, appname, **options):
         if not options['poname']: options['poname'] = appname
@@ -94,8 +97,8 @@ class Command(BaseCommand):
                         raise OSError('%s po file: %s not found' % (appname, pofile))
                 po = polib.pofile(pofile)
                 for entry in po:
-                    loc, pk = entry.occurrences[0]
-                    _appname, modelname, fieldname = loc.split('/')
+                    loc, _ignored = entry.occurrences[0]
+                    _appname, modelname, fieldname, pk = loc.split('/')
                     try:
                         obj = objects[modelname][pk]
                     except KeyError:
@@ -111,28 +114,23 @@ class Command(BaseCommand):
             pofiles = {}
             for md, opts in self.get_models(app):
                 for obj in md.objects.all().order_by('pk'):
-                    for fld in opts.fields:
-                        for locfld in opts.localized_fieldnames[fld]:
-                            cur_lang = lang(locfld)
+                    for fld, locflds in opts.local_fields.items():
+                        k = getattr(obj, '%s_%s' % (fld, settings.LANGUAGE_CODE)) or ''
+                        for locfld in locflds:
+                            cur_lang = locfld.language
                             try:
                                 po = pofiles[cur_lang]
                             except:
                                 po = make_po(cur_lang)
                                 pofiles[cur_lang] = po
-
-                            k = getattr(obj, '%s_%s' % (fld, settings.LANGUAGE_CODE))
-                            if k is None: k = ''
-                            v = getattr(obj, locfld)
-                            if v is None: v = ''
+                            v = locfld.value_from_object(obj) or ''
                             entry = polib.POEntry(
                                 msgid=k,
                                 msgstr=v,
-                                occurrences=[('%s/%s/%s' % (appname, md.__name__, locfld), obj.id)])
+                                occurrences=[('%s/%s/%s/%s' % (appname, md.__name__, locfld.name, str(obj.pk)), 0)])
                             po.append(entry)
 
             directory = options['directory']
             for lng, po in pofiles.items():
-                try: os.makedirs(os.path.join(directory, lng))
-                except OSError: pass
-                print lng, options
+                os.makedirs(os.path.join(directory, lng))
                 po.save(os.path.join(directory, lng, '%s.po' % options['poname']))

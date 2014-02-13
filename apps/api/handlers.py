@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.cache import get_cache
 from django.core.urlresolvers import reverse
+from django.utils.functional import lazy
 from django.utils.timezone import utc
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
@@ -26,7 +27,8 @@ from wolnelektury.utils import tz
 
 from stats.utils import piwik_track
 
-API_BASE = WL_BASE = MEDIA_BASE = 'http://' + Site.objects.get_current().domain
+API_BASE = WL_BASE = MEDIA_BASE = lazy(
+    lambda: u'http://' + Site.objects.get_current().domain, unicode)()
 
 
 category_singular = {

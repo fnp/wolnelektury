@@ -56,77 +56,35 @@ How to deploy (development version)
    Translation strings are based on gettext and can be found under 'locale' dir.
    There are also JavaScript files for jQuery countdown plugin (static/js/jquery.countdown-*.js).
 
-Full list of used open-source software
-======================================
+Bundled software
+================
 
-External
---------
+* django-chunks
+  in `apps/chunks`
+  based on [django-chunks](http://code.google.com/p/django-chunks/)
+  by Clint Ecker <clintecker@gmail.com>,
+  [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+* [django-newtagging](http://www.bitbucket.org/zuber/django-newtagging/)
+  in `apps/newtagging`
+  by Marek Stępniowski <marek@stepniowski.com>,
+  [MIT License](http://www.opensource.org/licenses/mit-license.php),
+  based on [django-tagging](http://code.google.com/p/django-tagging/), also under [MIT License](http://www.opensource.org/licenses/mit-license.php)
+* [jPlayer](http://jplayer.org/)
+  in `apps/catalogue/static/jplayer`
+  by Happyworm,
+  [MIT License](http://opensource.org/licenses/MIT)
+* [Switch template tag](http://djangosnippets.org/snippets/967/)
+  in `apps/wolnelektury_core/templatetags/switch_tag.py`
+  by adurdin
+* [Cropping engine for sorl-thumbnail](http://timmyomahony.com/blog/custom-cropping-engine-sorl-thumbnail/)
+  in `apps/picture/engine.py`
+  by Timmy O'Mahony
+* Javascript in `apps/wolnelektury_core/static/js/contrib`
+  with relevant attribution and licensing
+  
 
-django
---------
- - Source: [djangoproject.com](http://www.djangoproject.com/)
- - Authors: [many authors](http://code.djangoproject.com/browser/django/trunk/AUTHORS)
- - License: [BSD License](http://code.djangoproject.com/browser/django/trunk/LICENSE)
- - Type: framework
-
-django-pagination
------------------
- - Source: [Google Code](http://code.google.com/p/django-pagination/)
- - Authors: James Tauber <jtauber@gmail.com>, leidel@gmail.com
- - License: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Type: library (django application)
-
-django-rosetta
------------------
- - Source: [Google Code](http://code.google.com/p/django-rosetta/)
- - Authors: James Tauber <jtauber@gmail.com>, leidel@gmail.com
- - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Type: library (django application)
-
- 
-Django South
-------------
-- Source: [aercode.org](http://south.aeracode.org/)
-- Authors: Andrew Godwin <andrew@aeracode.org>, Andy McCurdy <sedrik@gmail.com>
-- License: [Apache License 2.0](http://www.opensource.org/licenses/apache2.0.php)
-- Type: library (django application)
-
-lxml
----------
- - Source: [codespeak.net](http://codespeak.net/lxml/index.html#download)
- - Authors: [many authors](http://codespeak.net/lxml/credits.html)
- - License: [BSD License](http://codespeak.net/lxml/index.html#license)
- - Type: library
- 
-feedparser
-----------
- - Source: [Google Code](http://code.google.com/p/feedparser/)
- - Authors: Mark Pilgrim <pilgrim@gmail.com>
- - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Type: library
-
-
-Internal (means we hacked on sources of those): 
----------
- 
-django-chunks
--------------
- - Source: [Google Code](http://code.google.com/p/django-chunks/)
- - Authors: Clint Ecker <clintecker@gmail.com>
- - License: [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
- - Type: library (Django application)
- 
-django-newtagging
------------------
- - Source: [BitBucket](http://www.bitbucket.org/zuber/django-newtagging/)
- - Authors: Marek Stępniowski <marek@stepniowski.com>
- - License: [MIT License](http://www.opensource.org/licenses/mit-license.php)
- - Type: library (Django aplication)
- - Notes: Aplication based on  [django-tagging](http://code.google.com/p/django-tagging/), also [MIT](http://www.opensource.org/licenses/mit-license.php) license.
- 
 
 Authors
 =======
- 
  * Marek Stępniowski  <marek@stepniowski.com>
  * Łukasz Rekucki <lrekucki@gmail.com>

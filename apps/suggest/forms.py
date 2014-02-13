@@ -6,7 +6,7 @@ from django import forms
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail, mail_managers
 from django.core.urlresolvers import reverse
-from django.core.validators import email_re
+from django.core.validators import validate_email
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from suggest.models import PublishingSuggestion, Suggestion
@@ -41,7 +41,7 @@ Kontakt: %(contact)s
             'description': description,
             }, fail_silently=True)
 
-        if email_re.match(contact):
+        if validate_email(contact):
             send_mail(u'[WolneLektury] ' +
                     ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\
@@ -96,7 +96,7 @@ Audiobooki:
             'audiobooks': audiobooks,
             }, fail_silently=True)
 
-        if email_re.match(contact):
+        if validate_email(contact):
             send_mail(u'[WolneLektury] ' +
                     ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\

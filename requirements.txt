@@ -2,7 +2,7 @@
 --find-links=http://www.pythonware.com/products/pil/
 
 # django
-Django>=1.5,<1.6
+Django>=1.6,<1.7
 fnpdjango>=0.1.8,<0.2
 South>=0.7 # migrations for django
 django-pipeline>=1.2.24,<1.3
@@ -11,6 +11,7 @@ django-maintenancemode>=0.10
 django-piston>=0.2.2.1,<0.2.3
 jsonfield>=0.9.20
 django-picklefield
+django-modeltranslation
 
 #django-allauth<0.10 with migration fix
 -e git+git://github.com/rczajka/django-allauth.git@4ecda71b81f9311dea4febe1d2d0105f23c642c7#egg=django-allauth
@@ -24,7 +25,7 @@ django-honeypot
 django-uni-form
 
 python-memcached
-piwik
+django-piwik
 python-fb
 
 # Feedparser 
