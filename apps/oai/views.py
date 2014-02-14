@@ -6,6 +6,7 @@ from oai.handlers import Catalogue, NS_DCTERMS, nsdcterms
 from oaipmh.server import ServerBase, NS_OAIDC, NS_DC, NS_XSI, nsoaidc, nsdc
 from oaipmh.metadata import MetadataRegistry
 from django.http import HttpResponse
+from django.utils.functional import SimpleLazyObject
 from lxml.etree import SubElement
 
 
@@ -57,8 +58,10 @@ metadata_registry.registerWriter('oai_dc', fbc_oai_dc_writer)
 metadata_registry.registerWriter('qdc', qdc_writer)
 
 
-server = ServerBase(Catalogue(metadata_registry), metadata_registry,
-    {'topxsi': NS_XSI})
+server = SimpleLazyObject(lambda: 
+    ServerBase(Catalogue(metadata_registry), metadata_registry,
+        {'topxsi': NS_XSI})
+    )
 
 
 def oaipmh(request):

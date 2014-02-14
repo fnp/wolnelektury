@@ -8,8 +8,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
 import jsonfield
+from fnpdjango.utils.text.slughifi import slughifi
 from catalogue.fields import OverwritingFileField
-from catalogue.utils import book_upload_path
 
 
 class BookMedia(models.Model):
@@ -23,11 +23,13 @@ class BookMedia(models.Model):
     format_choices = [(k, _('%s file') % t.name)
             for k, t in formats.items()]
 
-    type        = models.CharField(_('type'), db_index=True, choices=format_choices, max_length="100")
-    name        = models.CharField(_('name'), max_length=512)
-    file        = OverwritingFileField(_('file'), upload_to=book_upload_path())
+    type = models.CharField(_('type'), db_index=True, choices=format_choices, max_length=20)
+    name = models.CharField(_('name'), max_length=512)
+    file = OverwritingFileField(_('file'), max_length=600,
+        upload_to=lambda i, _n: 'book/%(ext)s/%(name)s.%(ext)s' % {
+                    'ext': i.ext(), 'name': slughifi(i.name)})
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
-    extra_info  = jsonfield.JSONField(_('extra information'), default={}, editable=False)
+    extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
     book = models.ForeignKey('Book', related_name='media')
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
@@ -101,6 +103,9 @@ class BookMedia(models.Model):
             return {}
         return {'artist_name': artist_name, 'director_name': director_name,
                 'project': project, 'funded_by': funded_by}
+
+    def ext(self):
+        return self.formats[self.type].ext
 
     @staticmethod
     def read_source_sha1(filepath, filetype):

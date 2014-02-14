@@ -49,25 +49,6 @@ def split_tags(tags, initial=None):
     return result
 
 
-def get_dynamic_path(media, filename, ext=None, maxlen=100):
-    from fnpdjango.utils.text.slughifi import slughifi
-
-    # how to put related book's slug here?
-    if not ext:
-        # BookMedia case
-        ext = media.formats[media.type].ext
-    if media is None or not media.name:
-        name = slughifi(filename.split(".")[0])
-    else:
-        name = slughifi(media.name)
-    return 'book/%s/%s.%s' % (ext, name[:maxlen-len('book/%s/.%s' % (ext, ext))-4], ext)
-
-
-# TODO: why is this hard-coded ?
-def book_upload_path(ext=None, maxlen=100):
-    return lambda *args: get_dynamic_path(*args, ext=ext, maxlen=maxlen)
-
-
 class ExistingFile(UploadedFile):
 
     def __init__(self, path, *args, **kwargs):

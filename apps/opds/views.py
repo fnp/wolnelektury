@@ -12,6 +12,7 @@ from django.utils.feedgenerator import Atom1Feed
 from django.conf import settings
 from django.http import Http404
 from django.contrib.sites.models import Site
+from django.utils.functional import lazy
 
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
@@ -64,21 +65,22 @@ _root_feeds = (
 )
 
 
+current_domain = lazy(lambda: Site.objects.get_current().domain, str)()
 def full_url(url):
-    return urljoin("http://%s" % Site.objects.get_current().domain, url)
+    return urljoin("http://%s" % current_domain, url)
 
 
 class OPDSFeed(Atom1Feed):
     link_rel = u"subsection"
     link_type = u"application/atom+xml"
 
-    _book_parent_img = full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png"))
+    _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")))()
     try:
         _book_parent_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book-parent.png")))
     except:
         _book_parent_img_size = ''
 
-    _book_img = full_url(os.path.join(settings.STATIC_URL, "img/book.png"))
+    _book_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book.png")))()
     try:
         _book_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book.png")))
     except:

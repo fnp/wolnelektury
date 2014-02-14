@@ -6,6 +6,7 @@ from optparse import make_option
 from django.contrib.sites.models import Site
 from django.core.management.base import BaseCommand
 from catalogue import app_settings
+from django.utils.functional import lazy
 
 
 def ancestor_has_cover(book):
@@ -16,7 +17,7 @@ def ancestor_has_cover(book):
     return False
 
 
-current_domain = Site.objects.get_current().domain
+current_domain = lazy(lambda: Site.objects.get_current().domain, str)()
 def full_url(obj):
     return 'http://%s%s' % (
                 current_domain,

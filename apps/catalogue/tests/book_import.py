@@ -435,8 +435,7 @@ class BookImportGenerateTest(WLTestCase):
 
     def test_custom_pdf(self):
         from catalogue.tasks import build_custom_pdf
-        from catalogue.utils import get_dynamic_path
-        out = get_dynamic_path(None, 'test-custom', ext='pdf')
+        out = 'test-custom.pdf'
         absoulute_path = path.join(settings.MEDIA_ROOT, out)
 
         if not path.exists(path.dirname(absoulute_path)):

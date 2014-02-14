@@ -140,7 +140,7 @@ PIPELINE_JS = {
 
 }
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_STORAGE = 'wolnelektury.utils.GzipPipelineCachedStorage'
 PIPELINE_CSS_COMPRESSOR = None
 PIPELINE_JS_COMPRESSOR = None
 

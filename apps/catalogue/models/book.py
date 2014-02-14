@@ -11,14 +11,16 @@ import django.dispatch
 from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
+from fnpdjango.storage import BofhFileSystemStorage
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, split_tags, book_upload_path, related_tag_name
+from catalogue.utils import create_zip, split_tags, related_tag_name
 from catalogue import app_settings
 from catalogue import tasks
 from newtagging import managers
 
+bofh_storage = BofhFileSystemStorage()
 
 permanent_cache = get_cache('permanent')
 
@@ -43,10 +45,14 @@ class Book(models.Model):
     # files generated during publication
 
     cover = EbookField('cover', _('cover'),
-                upload_to=book_upload_path('jpg'), null=True, blank=True)
+            null=True, blank=True,
+            upload_to=lambda i, n: 'book/cover/%s.jpg' % i.slug,
+            storage=bofh_storage, max_length=255)
     # Cleaner version of cover for thumbs
-    cover_thumb = EbookField('cover_thumb', _('cover thumbnail'),
-                upload_to=book_upload_path('th.jpg'), null=True, blank=True)
+    cover_thumb = EbookField('cover_thumb', _('cover thumbnail'), 
+            null=True, blank=True,
+            upload_to=lambda i, n: 'book/cover_thumb/%s.jpg' % i.slug,
+            max_length=255)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
@@ -620,6 +626,13 @@ class Book(models.Model):
 # add the file fields
 for format_ in Book.formats:
     field_name = "%s_file" % format_
+    upload_to = (lambda upload_path:
+            lambda i, n: upload_path % i.slug
+        )('book/%s/%%s.%s' % (format_, format_))
     EbookField(format_, _("%s file" % format_.upper()),
-            upload_to=book_upload_path(format_),
-            blank=True, default='').contribute_to_class(Book, field_name)
+        upload_to=upload_to,
+        storage=bofh_storage,
+        max_length=255,
+        blank=True,
+        default=''
+    ).contribute_to_class(Book, field_name)
