@@ -37,7 +37,7 @@ class Poll(models.Model):
         return self.items.all().aggregate(models.Sum('vote_count'))['vote_count__sum']
 
     def voted(self, session):
-        return self.id in session.get(USED_POLLS_KEY, set())
+        return self.id in session.get(USED_POLLS_KEY, [])
 
 
 class PollItem(models.Model):
@@ -60,5 +60,5 @@ class PollItem(models.Model):
     def vote(self, session):
         self.vote_count = self.vote_count + 1
         self.save()
-        session.setdefault(USED_POLLS_KEY, set()).add(self.poll.id)
+        session.setdefault(USED_POLLS_KEY, []).append(self.poll.id)
         session.save()
