@@ -12,9 +12,7 @@ django-piston>=0.2.2.1,<0.2.3
 jsonfield>=0.9.20
 django-picklefield
 django-modeltranslation
-
-#django-allauth<0.10 with migration fix
--e git+git://github.com/rczajka/django-allauth.git@4ecda71b81f9311dea4febe1d2d0105f23c642c7#egg=django-allauth
+django-allauth>=0.15,<0.16
 
 pytz
 
