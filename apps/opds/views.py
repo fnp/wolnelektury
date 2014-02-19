@@ -74,13 +74,13 @@ class OPDSFeed(Atom1Feed):
     link_rel = u"subsection"
     link_type = u"application/atom+xml"
 
-    _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")))()
+    _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")), str)()
     try:
         _book_parent_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book-parent.png")))
     except:
         _book_parent_img_size = ''
 
-    _book_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book.png")))()
+    _book_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book.png")), str)()
     try:
         _book_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book.png")))
     except:

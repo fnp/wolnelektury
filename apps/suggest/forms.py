@@ -4,6 +4,7 @@
 #
 from django import forms
 from django.contrib.sites.models import Site
+from django.core.exceptions import ValidationError
 from django.core.mail import send_mail, mail_managers
 from django.core.urlresolvers import reverse
 from django.core.validators import validate_email
@@ -41,7 +42,11 @@ Kontakt: %(contact)s
             'description': description,
             }, fail_silently=True)
 
-        if validate_email(contact):
+        try:
+            validate_email(contact)
+        except ValidationError:
+            pass
+        else:
             send_mail(u'[WolneLektury] ' +
                     ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\
@@ -96,7 +101,11 @@ Audiobooki:
             'audiobooks': audiobooks,
             }, fail_silently=True)
 
-        if validate_email(contact):
+        try:
+            validate_email(contact)
+        except ValidationError:
+            pass
+        else:
             send_mail(u'[WolneLektury] ' +
                     ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\
