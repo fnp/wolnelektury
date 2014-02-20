@@ -15,3 +15,10 @@
 .sponsors-page img {
     float: left;
 }
+
+.sponsors-page a {
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+}
