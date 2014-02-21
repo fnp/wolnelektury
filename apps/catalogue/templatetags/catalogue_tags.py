@@ -365,9 +365,6 @@ def book_mini(book, with_link=True):
 @register.inclusion_tag('catalogue/work-list.html', takes_context=True)
 def work_list(context, object_list):
     request = context.get('request')
-    for obj in object_list:
-        obj.object_type = type(obj).__name__
-
     return locals()
 
 
@@ -472,7 +469,7 @@ def related_tag_name(tag, lang=None):
     return _related_tag_name(tag, lang)
 
 
-@register.simple_tag
+@register.filter
 def class_name(obj):
     return obj.__class__.__name__
 
