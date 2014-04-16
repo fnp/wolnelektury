@@ -6,8 +6,8 @@
 \usepackage[MeX]{polski}
 
 \usepackage[xetex]{graphicx}
-\usepackage{xunicode}
 \usepackage{xltxtra}
+\usepackage{xunicode}
 
 \usepackage{scalefnt}
 \usepackage[colorlinks=true,linkcolor=black,setpagesize=false,urlcolor=black,xetex]{hyperref}
