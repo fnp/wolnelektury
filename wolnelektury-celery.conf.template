@@ -4,7 +4,7 @@
 ; =========================================
 
 [program:celery.%(project_name)s]
-command=%(path)s/ve/bin/python %(path)s/releases/current/manage.py celeryd --loglevel=INFO
+command=%(path)s/ve/bin/celery -A wolnelektury worker -l info
 directory=%(path)s/releases/current/
 user=%(user)s
 numprocs=2

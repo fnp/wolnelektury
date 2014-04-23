@@ -159,8 +159,7 @@ def add_book(db, book):
 
 def add_tag(db, tag):
     id = tag.id
-    #    category = categories[tag.category] # localized names here?
-    category = tag.category
+    category = categories[tag.category]
     name = tag.name
     sort_key = tag.sort_key
 

@@ -90,7 +90,7 @@ INSTALLED_APPS_CONTRIB = [
     'south',
     'sorl.thumbnail',
     'djcelery',
-    'djkombu',
+    'kombu.transport.django',
     'honeypot',
     #'django_nose',
     'fnpdjango',
