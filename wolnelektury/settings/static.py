@@ -140,7 +140,7 @@ PIPELINE_JS = {
 
 }
 
-STATICFILES_STORAGE = 'wolnelektury.utils.GzipPipelineCachedStorage'
+STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
 PIPELINE_CSS_COMPRESSOR = None
 PIPELINE_JS_COMPRESSOR = None
 
