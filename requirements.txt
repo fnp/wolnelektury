@@ -12,7 +12,7 @@ django-piston>=0.2.2.1,<0.2.3
 jsonfield>=0.9.20
 django-picklefield
 django-modeltranslation
-django-allauth>=0.15,<0.16
+django-allauth>=0.16,<0.17
 
 pytz
 
@@ -29,8 +29,7 @@ python-fb
 # Feedparser 
 Feedparser>=5.1
 
-# PIL 
-PIL>=1.1.6
+Pillow
 mutagen>=1.17
 sorl-thumbnail>=11.09,<12
 
@@ -53,4 +52,4 @@ pyoai
 ## egenix-mx-base  # Doesn't play nice with mx in dist-packages.
 sunburnt
 
-django-getpaid>=1.4,<1.5
+django-getpaid>=1.6,<1.7
