@@ -5,9 +5,12 @@
 {% load pagination_tags %}
 {% load fnp_share %}
 {% load thumbnail %}
+{% load build_absolute_uri from fnp_common %}
 
 
 {% block titleextra %}{{ object }}{% endblock %}
+
+{% block ogimage %}{{ object.cover.url|build_absolute_uri:request }}{% endblock %}
 
 {% block metadescription %}Wesprzyj kolejną publikację Wolnych Lektur!{% endblock %}
 
@@ -32,6 +35,7 @@
         <h3>{% trans "Help free the book!" %}</h3>
         {{ object.description|safe }}
         {% offer_status object %}
+        <a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
         {% offer_status_more object %}
         <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
         </div>
