@@ -58,7 +58,7 @@
 	if (initial_hash.startsWith('#object-')) {
 	  $("[href=#picture-objects]").trigger('click');
 	} else if (initial_hash.startsWith('#theme-')) {
-	  $("[href=#picutre-themes]").trigger('click');
+	  $("[href=#picture-themes]").trigger('click');
 	}
 	mk = $("[href=" + initial_hash + "]").eq(0);
 	self._initial_mark = self.createMark({
