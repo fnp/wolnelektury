@@ -54,10 +54,12 @@
       }
       var initial_hash = window.location.hash;
       if (initial_hash) {
-	var mk = null;
-	if (initial_hash.startsWith('#object-')) {
+	var mk = null,
+        objectPrefix = '#object-',
+        themePrefix = '#theme-';
+	if (initial_hash.substr(0, objectPrefix.length) === objectPrefix) {
 	  $("[href=#picture-objects]").trigger('click');
-	} else if (initial_hash.startsWith('#theme-')) {
+	} else if (initial_hash.substr(0, themePrefix.length) === themePrefix) {
 	  $("[href=#picture-themes]").trigger('click');
 	}
 	mk = $("[href=" + initial_hash + "]").eq(0);
