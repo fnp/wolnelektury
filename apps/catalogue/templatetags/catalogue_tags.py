@@ -5,6 +5,7 @@
 import datetime
 import feedparser
 from random import randint
+from urlparse import urlparse
 
 from django.conf import settings
 from django import template
@@ -16,7 +17,7 @@ from django.utils.translation import ugettext as _
 
 from catalogue.utils import related_tag_name as _related_tag_name
 from catalogue.models import Book, BookMedia, Fragment, Tag
-from catalogue.constants import LICENSES
+from catalogue.constants import LICENSES, SOURCE_NAMES
 
 register = template.Library()
 
@@ -326,6 +327,7 @@ def book_wide(context, book):
     book_themes = book.related_themes()
     extra_info = book.extra_info
     hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
+    stage_note, stage_note_url = book.stage_note()
 
     return {
         'book': book,
@@ -336,17 +338,23 @@ def book_wide(context, book):
         'themes': book_themes,
         'request': context.get('request'),
         'show_lang': book.language_code() != settings.LANGUAGE_CODE,
+        'stage_note': stage_note,
+        'stage_note_url': stage_note_url,
     }
 
 
 @register.inclusion_tag('catalogue/book_short.html', takes_context=True)
 def book_short(context, book):
+    stage_note, stage_note_url = book.stage_note()
+
     return {
         'book': book,
         'main_link': book.get_absolute_url(),
         'related': book.related_info(),
         'request': context.get('request'),
         'show_lang': book.language_code() != settings.LANGUAGE_CODE,
+        'stage_note': stage_note,
+        'stage_note_url': stage_note_url,
     }
 
 
@@ -473,3 +481,8 @@ def related_tag_name(tag, lang=None):
 def class_name(obj):
     return obj.__class__.__name__
 
+
+@register.simple_tag
+def source_name(url):
+    netloc = urlparse(url).netloc
+    return SOURCE_NAMES.get(netloc, netloc)

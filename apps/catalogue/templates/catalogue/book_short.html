@@ -82,6 +82,12 @@
             </span></span>
             {% endif %}
 
+            {% if stage_note %}
+            <br><span class="category">
+                <a{% if stage_note_url %} href="{{ stage_note_url }}"{% endif %}>{{ stage_note }}</a>
+            </span>
+            {% endif %}
+
            {% endspaceless %}
         </div>
     </div>

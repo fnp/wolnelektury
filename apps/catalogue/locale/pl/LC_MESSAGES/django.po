@@ -1,16 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-05 11:21+0100\n"
-"PO-Revision-Date: 2014-02-05 11:21+0100\n"
+"POT-Creation-Date: 2014-06-30 10:37+0200\n"
+"PO-Revision-Date: 2014-06-30 10:34+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
+"pl>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,6 +21,10 @@ msgstr ""
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 "Creative Commons Uznanie autorstwa – Na tych samych warunkach 3.0 Unported"
+
+#: constants.py:41 constants.py:42
+msgid "Wikisource"
+msgstr "Wikiźródła"
 
 #: forms.py:27
 msgid "Please supply an XML."
@@ -74,7 +78,7 @@ msgstr "Duży"
 msgid "Queue is full. Please try again later."
 msgstr "Kolejka jest pełna. Proszę spróbować ponownie później."
 
-#: views.py:597
+#: views.py:588
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -85,91 +89,95 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:598
+#: views.py:589
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:600
+#: views.py:591
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:632
+#: views.py:623
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
-#: views.py:633 templates/catalogue/book_short.html:97
-#: templates/catalogue/book_wide.html:63
+#: views.py:624 templates/catalogue/book_short.html:103
+#: templates/catalogue/book_wide.html:64
 msgid "Download"
 msgstr "Pobierz"
 
-#: models/book.py:28 models/collection.py:11
+#: models/book.py:30 models/collection.py:11
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:29 models/tag.py:34
+#: models/book.py:31 models/tag.py:34
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models/book.py:30
+#: models/book.py:32
 #, fuzzy
 msgid "sort key by author"
 msgstr "Znalezieni autorzy"
 
-#: models/book.py:31 models/book.py:33 models/collection.py:12
+#: models/book.py:33 models/book.py:35 models/collection.py:12
 #: models/collection.py:15 models/tag.py:33
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:34
+#: models/book.py:36
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:36 models/book.py:164 models/collection.py:13
+#: models/book.py:38 models/book.py:170 models/collection.py:13
 #: models/tag.py:37 models/tag.py:94
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:37 models/book.py:38 models/bookmedia.py:29 models/tag.py:46
+#: models/book.py:39 models/book.py:40 models/bookmedia.py:31 models/tag.py:46
 #: models/tag.py:47
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models/book.py:39
+#: models/book.py:41
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: models/book.py:40 models/bookmedia.py:30
+#: models/book.py:42 models/bookmedia.py:32
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models/book.py:45
+#: models/book.py:47
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:48
+#: models/book.py:52
 msgid "cover thumbnail"
 msgstr "podgląd okładki"
 
-#: models/book.py:70 models/collection.py:18 models/tag.py:22
+#: models/book.py:76 models/collection.py:18 models/tag.py:22
 msgid "book"
 msgstr "książka"
 
-#: models/book.py:71
+#: models/book.py:77
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:262
+#: models/book.py:268
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:276
+#: models/book.py:282
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:625 models/bookmedia.py:23
+#: models/book.py:618
+msgid "This work needs modernisation"
+msgstr "Ten utwór wymaga uwspółcześnienia"
+
+#: models/book.py:637 models/bookmedia.py:23
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -186,7 +194,7 @@ msgstr "nazwa"
 msgid "file"
 msgstr "plik"
 
-#: models/bookmedia.py:39 models/bookmedia.py:40
+#: models/bookmedia.py:41 models/bookmedia.py:42
 msgid "book media"
 msgstr "media książki"
 
@@ -371,31 +379,31 @@ msgstr "Gatunek"
 msgid "Language"
 msgstr "Język"
 
-#: templates/catalogue/book_short.html:93
+#: templates/catalogue/book_short.html:99
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:100
+#: templates/catalogue/book_short.html:106
 msgid "to print"
 msgstr "do druku"
 
-#: templates/catalogue/book_short.html:103
+#: templates/catalogue/book_short.html:109
 msgid "for an e-book reader"
 msgstr "na czytnik e-booków"
 
-#: templates/catalogue/book_short.html:106
+#: templates/catalogue/book_short.html:112
 msgid "for Kindle"
 msgstr "na Kindle"
 
-#: templates/catalogue/book_short.html:109
+#: templates/catalogue/book_short.html:115
 msgid "FictionBook"
 msgstr "FictionBook"
 
-#: templates/catalogue/book_short.html:112
+#: templates/catalogue/book_short.html:118
 msgid "for advanced usage"
 msgstr "do zadań specjalnych"
 
-#: templates/catalogue/book_short.html:118
+#: templates/catalogue/book_short.html:124
 msgid "Listen"
 msgstr "Słuchaj"
 
@@ -465,31 +473,35 @@ msgstr "Źródło"
 msgid "of the book"
 msgstr "utworu"
 
-#: templates/catalogue/book_wide.html:49
+#: templates/catalogue/book_wide.html:48
+msgid "in"
+msgstr "w serwisie"
+
+#: templates/catalogue/book_wide.html:50
 msgid "Source XML file"
 msgstr "Źródłowy plik XML"
 
-#: templates/catalogue/book_wide.html:51
+#: templates/catalogue/book_wide.html:52
 msgid "Book on"
 msgstr "Utwór na"
 
-#: templates/catalogue/book_wide.html:51
+#: templates/catalogue/book_wide.html:52
 msgid "Editor's Platform"
 msgstr "Platformie Redakcyjnej"
 
-#: templates/catalogue/book_wide.html:54
+#: templates/catalogue/book_wide.html:55
 msgid "Book description on Lektury.Gazeta.pl"
 msgstr "Opis lektury w Lektury.Gazeta.pl"
 
-#: templates/catalogue/book_wide.html:57
+#: templates/catalogue/book_wide.html:58
 msgid "Book description on Wikipedia"
 msgstr "Opis lektury w Wikipedii"
 
-#: templates/catalogue/book_wide.html:59
+#: templates/catalogue/book_wide.html:60
 msgid "Mix this book"
 msgstr "Miksuj treść utworu"
 
-#: templates/catalogue/book_wide.html:67
+#: templates/catalogue/book_wide.html:68
 msgid "Download all audiobooks for this book"
 msgstr "Pobierz wszystkie audiobooki tego utworu"
 

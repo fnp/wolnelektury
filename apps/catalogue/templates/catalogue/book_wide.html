@@ -1,6 +1,6 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
-{% load download_audio tag_list custom_pdf_link_li license_icon from catalogue_tags %}
+{% load download_audio tag_list custom_pdf_link_li license_icon source_name from catalogue_tags %}
 {% load cite_promo from social_tags %}
 
 
@@ -44,7 +44,8 @@
     <h2 class="mono">{% trans "See" %}</h2>
     <ul class="plain">
       {% if extra_info.source_url %}
-      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}</li>
+      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}
+        {% trans "in" %} {% source_name extra_info.source_url %}</li>
       {% endif %}
       <li><a href="{{ book.xml_file.url }}">{% trans "Source XML file" %}</a></li>
       {% if extra_info.about and not hide_about %}

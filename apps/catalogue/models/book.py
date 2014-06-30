@@ -8,6 +8,7 @@ from django.core.cache import get_cache
 from django.db import models
 from django.db.models import permalink
 import django.dispatch
+from django.core.urlresolvers import reverse
 from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
@@ -611,6 +612,14 @@ class Book(models.Model):
         audiences = self.extra_info.get('audiences', [])
         audiences = sorted(set([self._audiences_pl.get(a, (99, a)) for a in audiences]))
         return [a[1] for a in audiences]
+
+    def stage_note(self):
+        stage = self.extra_info.get('stage')
+        if stage and stage < '0.4':
+            return (_('This work needs modernisation'),
+                    reverse('infopage', args=['wymagajace-uwspolczesnienia']))
+        else:
+            return None, None
 
     def choose_fragment(self):
         tag = self.book_tag()
