@@ -484,6 +484,11 @@ def class_name(obj):
 
 @register.simple_tag
 def source_name(url):
+    url = url.lstrip()
     netloc = urlparse(url).netloc
+    if not netloc:
+        netloc = urlparse('http://' + url).netloc
+    if not netloc:
+        return ''
     source, created = Source.objects.get_or_create(netloc=netloc)
     return source.name or netloc
