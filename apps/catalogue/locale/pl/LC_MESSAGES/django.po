@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-30 10:37+0200\n"
-"PO-Revision-Date: 2014-06-30 10:34+0100\n"
+"POT-Creation-Date: 2014-07-01 09:28+0200\n"
+"PO-Revision-Date: 2014-07-01 09:28+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -21,10 +21,6 @@ msgstr ""
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 "Creative Commons Uznanie autorstwa – Na tych samych warunkach 3.0 Unported"
-
-#: constants.py:41 constants.py:42
-msgid "Wikisource"
-msgstr "Wikiźródła"
 
 #: forms.py:27
 msgid "Please supply an XML."
@@ -107,77 +103,77 @@ msgstr "Stwórz własny PDF"
 msgid "Download"
 msgstr "Pobierz"
 
-#: models/book.py:30 models/collection.py:11
+#: models/book.py:31 models/collection.py:11
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:31 models/tag.py:34
+#: models/book.py:32 models/tag.py:34
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models/book.py:32
+#: models/book.py:33
 #, fuzzy
 msgid "sort key by author"
 msgstr "Znalezieni autorzy"
 
-#: models/book.py:33 models/book.py:35 models/collection.py:12
+#: models/book.py:34 models/book.py:36 models/collection.py:12
 #: models/collection.py:15 models/tag.py:33
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:36
+#: models/book.py:37
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:38 models/book.py:170 models/collection.py:13
+#: models/book.py:39 models/book.py:171 models/collection.py:13
 #: models/tag.py:37 models/tag.py:94
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:39 models/book.py:40 models/bookmedia.py:31 models/tag.py:46
+#: models/book.py:40 models/book.py:41 models/bookmedia.py:31 models/tag.py:46
 #: models/tag.py:47
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models/book.py:41
+#: models/book.py:42
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: models/book.py:42 models/bookmedia.py:32
+#: models/book.py:43 models/bookmedia.py:32
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models/book.py:47
+#: models/book.py:48
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:52
+#: models/book.py:53
 msgid "cover thumbnail"
 msgstr "podgląd okładki"
 
-#: models/book.py:76 models/collection.py:18 models/tag.py:22
+#: models/book.py:77 models/collection.py:18 models/tag.py:22
 msgid "book"
 msgstr "książka"
 
-#: models/book.py:77
+#: models/book.py:78
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:268
+#: models/book.py:269
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:282
+#: models/book.py:283
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:618
+#: models/book.py:619
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: models/book.py:637 models/bookmedia.py:23
+#: models/book.py:641 models/bookmedia.py:23
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -186,7 +182,7 @@ msgstr "plik %s"
 msgid "type"
 msgstr "typ"
 
-#: models/bookmedia.py:27 models/tag.py:32
+#: models/bookmedia.py:27 models/source.py:12 models/tag.py:32
 msgid "name"
 msgstr "nazwa"
 
@@ -221,6 +217,18 @@ msgstr "fragment"
 #: models/fragment.py:33
 msgid "fragments"
 msgstr "fragmenty"
+
+#: models/source.py:11
+msgid "network location"
+msgstr "położenie sieciowe"
+
+#: models/source.py:16
+msgid "source"
+msgstr "źródło"
+
+#: models/source.py:17
+msgid "sources"
+msgstr "źródła"
 
 #: models/tag.py:16
 msgid "author"
@@ -411,7 +419,7 @@ msgstr "Słuchaj"
 msgid "Table of contents"
 msgstr "Spis treści"
 
-#: templates/catalogue/book_text.html:30 templatetags/catalogue_tags.py:421
+#: templates/catalogue/book_text.html:30 templatetags/catalogue_tags.py:426
 msgid "Themes"
 msgstr "Motywy"
 
@@ -517,28 +525,28 @@ msgstr "Pobierz katalog w formacie PDF."
 #: templates/catalogue/catalogue.html:19
 #: templates/catalogue/search_multiple_hits.html:17
 #: templates/catalogue/tagged_object_list.html:26
-#: templatetags/catalogue_tags.py:417
+#: templatetags/catalogue_tags.py:422
 msgid "Authors"
 msgstr "Autorzy"
 
 #: templates/catalogue/catalogue.html:22
 #: templates/catalogue/search_multiple_hits.html:25
 #: templates/catalogue/tagged_object_list.html:34
-#: templatetags/catalogue_tags.py:419
+#: templatetags/catalogue_tags.py:424
 msgid "Kinds"
 msgstr "Rodzaje"
 
 #: templates/catalogue/catalogue.html:25
 #: templates/catalogue/search_multiple_hits.html:33
 #: templates/catalogue/tagged_object_list.html:42
-#: templatetags/catalogue_tags.py:418
+#: templatetags/catalogue_tags.py:423
 msgid "Genres"
 msgstr "Gatunki"
 
 #: templates/catalogue/catalogue.html:28
 #: templates/catalogue/search_multiple_hits.html:41
 #: templates/catalogue/tagged_object_list.html:50
-#: templatetags/catalogue_tags.py:420
+#: templatetags/catalogue_tags.py:425
 msgid "Epochs"
 msgstr "Epoki"
 
@@ -786,6 +794,9 @@ msgstr "Stwórz własny plik PDF"
 #: templates/catalogue/snippets/license_icon.html:8
 msgid "Free license"
 msgstr "Wolna licencja"
+
+#~ msgid "Wikisource"
+#~ msgstr "Wikiźródła"
 
 #~ msgid ""
 #~ "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"

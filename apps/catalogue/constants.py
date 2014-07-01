@@ -36,9 +36,3 @@ LANGUAGES_3TO2 = {
     'rus': 'ru',
     'ukr': 'uk',
 }
-
-SOURCE_NAMES = {
-    u'pl.wikisource.org': _(u'Wikisource'),
-    u'de.wikisource.org': _(u'Wikisource'),
-    u'www.polona.pl': u'CBN&nbsp;Polona',
-}

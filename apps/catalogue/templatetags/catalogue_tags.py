@@ -16,8 +16,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext as _
 
 from catalogue.utils import related_tag_name as _related_tag_name
-from catalogue.models import Book, BookMedia, Fragment, Tag
-from catalogue.constants import LICENSES, SOURCE_NAMES
+from catalogue.models import Book, BookMedia, Fragment, Tag, Source
+from catalogue.constants import LICENSES
 
 register = template.Library()
 
@@ -485,4 +485,5 @@ def class_name(obj):
 @register.simple_tag
 def source_name(url):
     netloc = urlparse(url).netloc
-    return SOURCE_NAMES.get(netloc, netloc)
+    source, created = Source.objects.get_or_create(netloc=netloc)
+    return source.name or netloc
