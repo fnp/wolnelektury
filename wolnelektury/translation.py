@@ -4,7 +4,7 @@
 #
 
 from modeltranslation.translator import translator, TranslationOptions
-from catalogue.models import Collection, Tag
+from catalogue.models import Collection, Tag, Source
 from infopages.models import InfoPage
 from chunks.models import Chunk
 
@@ -17,10 +17,14 @@ class TagTranslationOptions(TranslationOptions):
 class CollectionTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
+class SourceTranslationOptions(TranslationOptions):
+    fields = ('name',)
+
 class ChunkTranslationOptions(TranslationOptions):
     fields = ('content',)
 
 translator.register(InfoPage, InfoPageTranslationOptions)
 translator.register(Tag, TagTranslationOptions)
 translator.register(Collection, CollectionTranslationOptions)
+translator.register(Source, SourceTranslationOptions)
 translator.register(Chunk, ChunkTranslationOptions)

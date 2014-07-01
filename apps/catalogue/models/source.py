@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 class Source(models.Model):
     """A collection of books, which might be defined before publishing them."""
     netloc = models.CharField(_('network location'), max_length=120, primary_key=True)
-    name = models.CharField(_('name'), max_length=120)
+    name = models.CharField(_('name'), max_length=120, blank=True)
 
     class Meta:
         ordering = ('netloc',)
