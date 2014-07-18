@@ -146,6 +146,9 @@ class BuildHtml(BuildEbook):
         if lang not in [ln[0] for ln in settings.LANGUAGES]:
             lang = None
 
+        # Delete old fragments, create from scratch if necessary.
+        book.fragments.all().delete()
+
         if html_output:
             fieldfile.save(None, ContentFile(html_output.get_string()),
                     save=False)
@@ -160,8 +163,6 @@ class BuildHtml(BuildEbook):
                 ancestor_tags.append(p.book_tag())
                 p = p.parent
 
-            # Delete old fragments and create them from scratch
-            book.fragments.all().delete()
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(fieldfile.path)
             for fragment in closed_fragments.values():
@@ -205,6 +206,7 @@ class BuildHtml(BuildEbook):
 
                 new_fragment.save()
                 new_fragment.tags = set(meta_tags + themes + [book_tag] + ancestor_tags)
+            book.fix_tree_tags()
             book.html_built.send(sender=book)
             return True
         return False

@@ -322,18 +322,16 @@ class Book(models.Model):
             if old_cover:
                 notify_cover_changed.append(child)
 
-        # delete old fragments when overwriting
-        book.fragments.all().delete()
-        # Build HTML, fix the tree tags, build cover.
-        has_own_text = bool(book.html_file.build())
-        tasks.fix_tree_tags.delay(book)
+        # No saves beyond this point.
+
+        # Build cover.
         if 'cover' not in dont_build:
             book.cover.build_delay()
             book.cover_thumb.build_delay()
 
-        # No saves behind this point.
-
-        if has_own_text:
+        # Build HTML and ebooks.
+        if not children:
+            book.html_file.build_delay()
             for format_ in constants.EBOOK_FORMATS_WITHOUT_CHILDREN:
                 if format_ not in dont_build:
                     getattr(book, '%s_file' % format_).build_delay()
