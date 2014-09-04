@@ -2,7 +2,9 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from unittest import skipIf
 from lxml import etree
+from django.conf import settings
 from django.core.files.base import ContentFile
 import catalogue
 from catalogue.test_utils import (BookInfoStub, PersonStub, info_args,
@@ -14,6 +16,8 @@ from search import Index, Search
 AtomNS = XMLNamespace("http://www.w3.org/2005/Atom")
 
 
+@skipIf(getattr(settings, 'NO_SEARCH_INDEX', False),
+    u'Requires search server and NO_SEARCH_INDEX=False.')
 class OpdsSearchTests(WLTestCase):
     """Tests search feed in OPDS.."""
     def setUp(self):
@@ -22,11 +26,10 @@ class OpdsSearchTests(WLTestCase):
         index.index.delete_all()
         index.index.commit()
 
-        with self.settings(NO_SEARCH_INDEX=False):
-            self.do_doktora = Book.from_xml_file(
-                get_fixture('do-doktora.xml'))
-            self.do_anusie = Book.from_xml_file(
-                get_fixture('fraszka-do-anusie.xml', catalogue))
+        self.do_doktora = Book.from_xml_file(
+            get_fixture('do-doktora.xml'))
+        self.do_anusie = Book.from_xml_file(
+            get_fixture('fraszka-do-anusie.xml', catalogue))
 
     def assert_finds(self, query, books):
         """Takes a query and tests against books expected to be found."""

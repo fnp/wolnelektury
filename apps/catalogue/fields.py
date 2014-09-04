@@ -134,22 +134,23 @@ class BuildHtml(BuildEbook):
 
         book = fieldfile.instance
 
-        meta_tags = list(book.tags.filter(
-            category__in=('author', 'epoch', 'genre', 'kind')))
-        book_tag = book.book_tag()
-
         html_output = self.transform(
                         book.wldocument(parse_dublincore=False),
                         fieldfile)
-        lang = book.language
-        lang = LANGUAGES_3TO2.get(lang, lang)
-        if lang not in [ln[0] for ln in settings.LANGUAGES]:
-            lang = None
 
         # Delete old fragments, create from scratch if necessary.
         book.fragments.all().delete()
 
         if html_output:
+            meta_tags = list(book.tags.filter(
+                category__in=('author', 'epoch', 'genre', 'kind')))
+            book_tag = book.book_tag()
+
+            lang = book.language
+            lang = LANGUAGES_3TO2.get(lang, lang)
+            if lang not in [ln[0] for ln in settings.LANGUAGES]:
+                lang = None
+
             fieldfile.save(None, ContentFile(html_output.get_string()),
                     save=False)
             type(book).objects.filter(pk=book.pk).update(**{
@@ -209,6 +210,7 @@ class BuildHtml(BuildEbook):
             book.fix_tree_tags()
             book.html_built.send(sender=book)
             return True
+        book.fix_tree_tags()
         return False
 
 @BuildEbook.register('cover_thumb')

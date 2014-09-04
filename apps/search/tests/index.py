@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from unittest import skipIf
 from django.conf import settings
 from django.test.utils import override_settings
 from catalogue.test_utils import WLTestCase, get_fixture
@@ -16,6 +17,8 @@ import opds
 @override_settings(
     SEARCH_INDEX = tempfile.mkdtemp(prefix='djangotest_search_'),
 )
+@skipIf(getattr(settings, 'NO_SEARCH_INDEX', False),
+    u'Requires search server and NO_SEARCH_INDEX=False.')
 class BookSearchTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
@@ -25,11 +28,10 @@ class BookSearchTests(WLTestCase):
         index.delete_query(self.search.index.query(uid="*"))
         index.index.commit()
 
-        with self.settings(NO_SEARCH_INDEX=False):
-            self.do_doktora = Book.from_xml_file(
-                get_fixture('do-doktora.xml', opds))
-            self.do_anusie = Book.from_xml_file(
-                get_fixture('fraszka-do-anusie.xml', catalogue))
+        self.do_doktora = Book.from_xml_file(
+            get_fixture('do-doktora.xml', opds))
+        self.do_anusie = Book.from_xml_file(
+            get_fixture('fraszka-do-anusie.xml', catalogue))
 
     def test_search_perfect_book_author(self):
         books = self.search.search_books(self.search.index.query(authors=u"sęp szarzyński"))

@@ -330,8 +330,8 @@ class Book(models.Model):
             book.cover_thumb.build_delay()
 
         # Build HTML and ebooks.
+        book.html_file.build_delay()
         if not children:
-            book.html_file.build_delay()
             for format_ in constants.EBOOK_FORMATS_WITHOUT_CHILDREN:
                 if format_ not in dont_build:
                     getattr(book, '%s_file' % format_).build_delay()

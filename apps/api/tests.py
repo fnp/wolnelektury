@@ -17,6 +17,7 @@ import picture.tests
 
 @override_settings(
     API_WAIT=-1,
+    NO_SEARCH_INDEX = True,
     CACHES = {'api': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
               'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
               'permanent': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}}

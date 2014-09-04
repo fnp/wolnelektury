@@ -14,8 +14,15 @@ class PictureTest(WLTestCase):
     def test_import(self):
         picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/kandinsky-composition-viii.xml"))
 
-        motifs = set([tag.name for tag in picture.tags if tag.category == 'theme'])
-        assert motifs == set([u'nieporządek']), 'theme tags are wrong. %s' % motifs
+        themes = set()
+        for area in picture.areas.all():
+            themes.update([(tag.category, tag.name)
+                for tag in area.tags if tag.category in (u'theme', u'thing')])
+        assert themes == set([(u'theme', u'nieporządek'), (u'thing', u'kosmos')]), \
+            'Bad themes on Picture areas: %s' % themes
+
+        pic_themes = set([tag.name for tag in picture.tags if tag.category in ('theme', 'object')])
+        assert not pic_themes, 'Unwanted themes set on Pictures: %s' % pic_themes
 
         picture.delete()
 
@@ -27,10 +34,10 @@ class PictureTest(WLTestCase):
 
 
     def test_import_2(self):
-        picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/pejzaz-i-miasto-krzyzanowski-chmury.xml"),
-                                        path.join(path.dirname(__file__), "files/pejzaz-i-miasto-krzyzanowski-chmury.jpg"),
+        picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/kandinsky-composition-viii.xml"),
+                                        path.join(path.dirname(__file__), "files/kandinsky-composition-viii.png"),
                                         overwrite=True)
         cats = set([t.category for t in picture.tags])
-        assert 'genre' in cats
+        assert 'epoch' in cats
         assert 'kind' in cats
 
