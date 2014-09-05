@@ -1,46 +1,56 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import sorl.thumbnail.fields
+import jsonfield.fields
+import django.core.files.storage
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Picture'
-        db.create_table(u'picture_picture', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=120)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=120)),
-            ('sort_key', self.gf('django.db.models.fields.CharField')(max_length=120, db_index=True)),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
-            ('changed_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, db_index=True, blank=True)),
-            ('xml_file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('image_file', self.gf('sorl.thumbnail.fields.ImageField')(max_length=100)),
-            ('html_file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal(u'picture', ['Picture'])
+    dependencies = [
+    ]
 
-
-    def backwards(self, orm):
-        # Deleting model 'Picture'
-        db.delete_table(u'picture_picture')
-
-
-    models = {
-        u'picture.picture': {
-            'Meta': {'ordering': "('sort_key',)", 'object_name': 'Picture'},
-            'changed_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'html_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image_file': ('sorl.thumbnail.fields.ImageField', [], {'max_length': '100'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '120'}),
-            'sort_key': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'xml_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
-        }
-    }
-
-    complete_apps = ['picture']
+    operations = [
+        migrations.CreateModel(
+            name='Picture',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=120, verbose_name='Title')),
+                ('slug', models.SlugField(unique=True, max_length=120, verbose_name='Slug')),
+                ('sort_key', models.CharField(verbose_name='Sort key', max_length=120, editable=False, db_index=True)),
+                ('sort_key_author', models.CharField(default='', verbose_name='sort key by author', max_length=120, editable=False, db_index=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
+                ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
+                ('xml_file', models.FileField(upload_to=b'xml', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=b'/home/rczajka/workspace/wolnelektury/media/pictures'), verbose_name=b'xml_file')),
+                ('image_file', sorl.thumbnail.fields.ImageField(upload_to=b'images', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=b'/home/rczajka/workspace/wolnelektury/media/pictures'), verbose_name='image_file')),
+                ('html_file', models.FileField(upload_to=b'html', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=b'/home/rczajka/workspace/wolnelektury/media/pictures'), verbose_name=b'html_file')),
+                ('areas_json', jsonfield.fields.JSONField(default={}, verbose_name='picture areas JSON', editable=False)),
+                ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information')),
+                ('culturepl_link', models.CharField(max_length=240, blank=True)),
+                ('wiki_link', models.CharField(max_length=240, blank=True)),
+                ('_related_info', jsonfield.fields.JSONField(null=True, editable=False, blank=True)),
+                ('width', models.IntegerField(null=True)),
+                ('height', models.IntegerField(null=True)),
+            ],
+            options={
+                'ordering': ('sort_key',),
+                'verbose_name': 'picture',
+                'verbose_name_plural': 'pictures',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='PictureArea',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('area', jsonfield.fields.JSONField(default={}, verbose_name='area', editable=False)),
+                ('kind', models.CharField(db_index=True, max_length=10, verbose_name='form', choices=[(b'thing', 'thing'), (b'theme', 'motif')])),
+                ('picture', models.ForeignKey(related_name=b'areas', to='picture.Picture')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+    ]

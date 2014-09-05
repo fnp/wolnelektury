@@ -33,6 +33,11 @@ class EbookField(models.FileField):
         super(EbookField, self).__init__(*args, **kwargs)
         self.format_name = format_name
 
+    def deconstruct(self):
+        name, path, args, kwargs = super(EbookField, self).deconstruct()
+        args.insert(0, self.format_name)
+        return name, path, args, kwargs
+
     @property
     def builder(self):
         """Finds a celery task suitable for the format of the field."""
@@ -44,7 +49,7 @@ class EbookField(models.FileField):
         def has(model_instance):
             return bool(getattr(model_instance, self.attname, None))
         has.__doc__ = None
-        has.__name__ = "has_%s" % self.attname
+        has.__name__ = str("has_%s" % self.attname)
         has.short_description = self.name
         has.boolean = True
         setattr(cls, 'has_%s' % self.attname, has)

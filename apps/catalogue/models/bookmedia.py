@@ -12,6 +12,10 @@ from fnpdjango.utils.text.slughifi import slughifi
 from catalogue.fields import OverwritingFileField
 
 
+def _file_upload_to(i, _n):
+    return 'book/%(ext)s/%(name)s.%(ext)s' % {
+            'ext': i.ext(), 'name': slughifi(i.name)}
+
 class BookMedia(models.Model):
     """Represents media attached to a book."""
     FileFormat = namedtuple("FileFormat", "name ext")
@@ -20,14 +24,13 @@ class BookMedia(models.Model):
         ('ogg', FileFormat(name='Ogg Vorbis', ext='ogg')),
         ('daisy', FileFormat(name='DAISY', ext='daisy.zip')),
     ])
-    format_choices = [(k, _('%s file') % t.name)
+    format_choices = [(k, _('%s file' % t.name))
             for k, t in formats.items()]
 
     type = models.CharField(_('type'), db_index=True, choices=format_choices, max_length=20)
     name = models.CharField(_('name'), max_length=512)
     file = OverwritingFileField(_('file'), max_length=600,
-        upload_to=lambda i, _n: 'book/%(ext)s/%(name)s.%(ext)s' % {
-                    'ext': i.ext(), 'name': slughifi(i.name)})
+        upload_to=_file_upload_to)
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
     book = models.ForeignKey('Book', related_name='media')

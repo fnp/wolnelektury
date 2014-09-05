@@ -1,55 +1,41 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Poll'
-        db.create_table(u'polls_poll', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('question', self.gf('django.db.models.fields.TextField')()),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
-            ('open', self.gf('django.db.models.fields.BooleanField')(default=False)),
-        ))
-        db.send_create_signal(u'polls', ['Poll'])
+    dependencies = [
+    ]
 
-        # Adding model 'PollItem'
-        db.create_table(u'polls_pollitem', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('poll', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['polls.Poll'])),
-            ('content', self.gf('django.db.models.fields.TextField')()),
-            ('vote_count', self.gf('django.db.models.fields.IntegerField')(default=0)),
-        ))
-        db.send_create_signal(u'polls', ['PollItem'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'Poll'
-        db.delete_table(u'polls_poll')
-
-        # Deleting model 'PollItem'
-        db.delete_table(u'polls_pollitem')
-
-
-    models = {
-        u'polls.poll': {
-            'Meta': {'object_name': 'Poll'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'open': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'question': ('django.db.models.fields.TextField', [], {}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
-        },
-        u'polls.pollitem': {
-            'Meta': {'object_name': 'PollItem'},
-            'content': ('django.db.models.fields.TextField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'poll': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['polls.Poll']"}),
-            'vote_count': ('django.db.models.fields.IntegerField', [], {'default': '0'})
-        }
-    }
-
-    complete_apps = ['polls']
+    operations = [
+        migrations.CreateModel(
+            name='Poll',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('question', models.TextField(verbose_name='question')),
+                ('slug', models.SlugField(verbose_name='Slug')),
+                ('open', models.BooleanField(default=False, verbose_name='open')),
+            ],
+            options={
+                'verbose_name': 'Poll',
+                'verbose_name_plural': 'Polls',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='PollItem',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content', models.TextField(verbose_name='content')),
+                ('vote_count', models.IntegerField(default=0, verbose_name='vote count')),
+                ('poll', models.ForeignKey(related_name=b'items', to='polls.Poll')),
+            ],
+            options={
+                'verbose_name': 'vote item',
+                'verbose_name_plural': 'vote items',
+            },
+            bases=(models.Model,),
+        ),
+    ]

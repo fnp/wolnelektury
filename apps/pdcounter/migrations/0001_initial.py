@@ -1,68 +1,49 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'Author'
-        db.create_table('pdcounter_author', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=50, db_index=True)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=120, unique=True, db_index=True)),
-            ('sort_key', self.gf('django.db.models.fields.CharField')(max_length=120, db_index=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('death', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('gazeta_link', self.gf('django.db.models.fields.CharField')(max_length=240, blank=True)),
-            ('wiki_link', self.gf('django.db.models.fields.CharField')(max_length=240, blank=True)),
-        ))
-        db.send_create_signal('pdcounter', ['Author'])
-
-        # Adding model 'BookStub'
-        db.create_table('pdcounter_bookstub', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=120)),
-            ('author', self.gf('django.db.models.fields.CharField')(max_length=120)),
-            ('pd', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=120, unique=True, db_index=True)),
-            ('translator', self.gf('django.db.models.fields.TextField')(blank=True)),
-        ))
-        db.send_create_signal('pdcounter', ['BookStub'])
+from django.db import models, migrations
 
 
-    def backwards(self, orm):
-        
-        # Deleting model 'Author'
-        db.delete_table('pdcounter_author')
+class Migration(migrations.Migration):
 
-        # Deleting model 'BookStub'
-        db.delete_table('pdcounter_bookstub')
+    dependencies = [
+    ]
 
-
-    models = {
-        'pdcounter.author': {
-            'Meta': {'ordering': "('sort_key',)", 'object_name': 'Author'},
-            'death': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'unique': 'True', 'db_index': 'True'}),
-            'sort_key': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'}),
-            'wiki_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'})
-        },
-        'pdcounter.bookstub': {
-            'Meta': {'ordering': "('title',)", 'object_name': 'BookStub'},
-            'author': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'pd': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'unique': 'True', 'db_index': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'translator': ('django.db.models.fields.TextField', [], {'blank': 'True'})
-        }
-    }
-
-    complete_apps = ['pdcounter']
+    operations = [
+        migrations.CreateModel(
+            name='Author',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50, verbose_name='name', db_index=True)),
+                ('slug', models.SlugField(unique=True, max_length=120, verbose_name='Slug')),
+                ('sort_key', models.CharField(max_length=120, verbose_name='Sort key', db_index=True)),
+                ('description', models.TextField(verbose_name='Description', blank=True)),
+                ('death', models.IntegerField(null=True, verbose_name='Year of death', blank=True)),
+                ('gazeta_link', models.CharField(max_length=240, blank=True)),
+                ('wiki_link', models.CharField(max_length=240, blank=True)),
+            ],
+            options={
+                'ordering': ('sort_key',),
+                'verbose_name': 'author',
+                'verbose_name_plural': 'authors',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BookStub',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=120, verbose_name='Title')),
+                ('author', models.CharField(max_length=120, verbose_name='author')),
+                ('pd', models.IntegerField(null=True, verbose_name='Goes to public domain', blank=True)),
+                ('slug', models.SlugField(unique=True, max_length=120, verbose_name='Slug')),
+                ('translator', models.TextField(verbose_name='Translator', blank=True)),
+            ],
+            options={
+                'ordering': ('title',),
+                'verbose_name': 'Book stub',
+                'verbose_name_plural': 'Book stubs',
+            },
+            bases=(models.Model,),
+        ),
+    ]

@@ -1,102 +1,104 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import django.db.models.deletion
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Offer'
-        db.create_table('funding_offer', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('author', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
-            ('book_url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('redakcja_url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('target', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
-            ('start', self.gf('django.db.models.fields.DateField')()),
-            ('end', self.gf('django.db.models.fields.DateField')()),
-        ))
-        db.send_create_signal('funding', ['Offer'])
+    dependencies = [
+        ('polls', '0001_initial'),
+        ('catalogue', '0001_initial'),
+    ]
 
-        # Adding model 'Perk'
-        db.create_table('funding_perk', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('offer', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['funding.Offer'], null=True)),
-            ('price', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-        ))
-        db.send_create_signal('funding', ['Perk'])
-
-        # Adding model 'Funding'
-        db.create_table('funding_funding', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('offer', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['funding.Offer'])),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=127)),
-            ('email', self.gf('django.db.models.fields.EmailField')(max_length=75)),
-            ('amount', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
-            ('payed_at', self.gf('django.db.models.fields.DateTimeField')()),
-        ))
-        db.send_create_signal('funding', ['Funding'])
-
-        # Adding M2M table for field perks on 'Funding'
-        db.create_table('funding_funding_perks', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('funding', models.ForeignKey(orm['funding.funding'], null=False)),
-            ('perk', models.ForeignKey(orm['funding.perk'], null=False))
-        ))
-        db.create_unique('funding_funding_perks', ['funding_id', 'perk_id'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'Offer'
-        db.delete_table('funding_offer')
-
-        # Deleting model 'Perk'
-        db.delete_table('funding_perk')
-
-        # Deleting model 'Funding'
-        db.delete_table('funding_funding')
-
-        # Removing M2M table for field perks on 'Funding'
-        db.delete_table('funding_funding_perks')
-
-
-    models = {
-        'funding.funding': {
-            'Meta': {'ordering': "['-payed_at']", 'object_name': 'Funding'},
-            'amount': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '127'}),
-            'offer': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['funding.Offer']"}),
-            'payed_at': ('django.db.models.fields.DateTimeField', [], {}),
-            'perks': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['funding.Perk']", 'symmetrical': 'False'})
-        },
-        'funding.offer': {
-            'Meta': {'ordering': "['-end']", 'object_name': 'Offer'},
-            'author': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'book_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'end': ('django.db.models.fields.DateField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'redakcja_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
-            'start': ('django.db.models.fields.DateField', [], {}),
-            'target': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        'funding.perk': {
-            'Meta': {'ordering': "['-price']", 'object_name': 'Perk'},
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'offer': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['funding.Offer']", 'null': 'True'}),
-            'price': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'})
-        }
-    }
-
-    complete_apps = ['funding']
+    operations = [
+        migrations.CreateModel(
+            name='Funding',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=127, verbose_name='name', blank=True)),
+                ('email', models.EmailField(db_index=True, max_length=75, verbose_name='email', blank=True)),
+                ('amount', models.DecimalField(verbose_name='amount', max_digits=10, decimal_places=2)),
+                ('payed_at', models.DateTimeField(db_index=True, null=True, verbose_name='payed at', blank=True)),
+                ('language_code', models.CharField(max_length=2, null=True, blank=True)),
+                ('notifications', models.BooleanField(default=True, db_index=True, verbose_name='notifications')),
+                ('notify_key', models.CharField(max_length=32)),
+            ],
+            options={
+                'ordering': ['-payed_at'],
+                'verbose_name': 'funding',
+                'verbose_name_plural': 'fundings',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Offer',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('author', models.CharField(max_length=255, verbose_name='author')),
+                ('title', models.CharField(max_length=255, verbose_name='Title')),
+                ('slug', models.SlugField(verbose_name='Slug')),
+                ('description', models.TextField(verbose_name='Description', blank=True)),
+                ('target', models.DecimalField(verbose_name='target', max_digits=10, decimal_places=2)),
+                ('start', models.DateField(verbose_name='start', db_index=True)),
+                ('end', models.DateField(verbose_name='end', db_index=True)),
+                ('redakcja_url', models.URLField(verbose_name='redakcja URL', blank=True)),
+                ('cover', models.ImageField(upload_to=b'funding/covers', verbose_name='Cover')),
+                ('notified_near', models.DateTimeField(null=True, verbose_name='Near-end notifications sent', blank=True)),
+                ('notified_end', models.DateTimeField(null=True, verbose_name='End notifications sent', blank=True)),
+                ('book', models.ForeignKey(blank=True, to='catalogue.Book', help_text='Published book.', null=True)),
+                ('poll', models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, blank=True, to='polls.Poll', help_text='Poll', null=True)),
+            ],
+            options={
+                'ordering': ['-end'],
+                'verbose_name': 'offer',
+                'verbose_name_plural': 'offers',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Perk',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('price', models.DecimalField(verbose_name='price', max_digits=10, decimal_places=2)),
+                ('name', models.CharField(max_length=255, verbose_name='name')),
+                ('long_name', models.CharField(max_length=255, verbose_name='long name')),
+                ('end_date', models.DateField(null=True, verbose_name='end date', blank=True)),
+                ('offer', models.ForeignKey(verbose_name='offer', blank=True, to='funding.Offer', null=True)),
+            ],
+            options={
+                'ordering': ['-price'],
+                'verbose_name': 'perk',
+                'verbose_name_plural': 'perks',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Spent',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('amount', models.DecimalField(verbose_name='amount', max_digits=10, decimal_places=2)),
+                ('timestamp', models.DateField(verbose_name='when')),
+                ('book', models.ForeignKey(to='catalogue.Book')),
+            ],
+            options={
+                'ordering': ['-timestamp'],
+                'verbose_name': 'money spent on a book',
+                'verbose_name_plural': 'money spent on books',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='funding',
+            name='offer',
+            field=models.ForeignKey(verbose_name='offer', to='funding.Offer'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='funding',
+            name='perks',
+            field=models.ManyToManyField(to='funding.Perk', verbose_name='perks', blank=True),
+            preserve_default=True,
+        ),
+    ]

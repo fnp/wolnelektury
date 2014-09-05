@@ -26,6 +26,16 @@ bofh_storage = BofhFileSystemStorage()
 permanent_cache = get_cache('permanent')
 
 
+def _cover_upload_to(i, n):
+    return 'book/cover/%s.jpg' % i.slug
+def _cover_thumb_upload_to(i, n):
+    return 'book/cover_thumb/%s.jpg' % i.slug,
+def _ebook_upload_to(upload_path):
+    def _upload_to(i, n):
+        return upload_path % i.slug
+    return _upload_to
+
+
 class Book(models.Model):
     """Represents a book imported from WL-XML."""
     title         = models.CharField(_('title'), max_length=120)
@@ -47,12 +57,12 @@ class Book(models.Model):
 
     cover = EbookField('cover', _('cover'),
             null=True, blank=True,
-            upload_to=lambda i, n: 'book/cover/%s.jpg' % i.slug,
+            upload_to=_cover_upload_to,
             storage=bofh_storage, max_length=255)
     # Cleaner version of cover for thumbs
     cover_thumb = EbookField('cover_thumb', _('cover thumbnail'), 
             null=True, blank=True,
-            upload_to=lambda i, n: 'book/cover_thumb/%s.jpg' % i.slug,
+            upload_to=_cover_thumb_upload_to,
             max_length=255)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
@@ -633,9 +643,7 @@ class Book(models.Model):
 # add the file fields
 for format_ in Book.formats:
     field_name = "%s_file" % format_
-    upload_to = (lambda upload_path:
-            lambda i, n: upload_path % i.slug
-        )('book/%s/%%s.%s' % (format_, format_))
+    upload_to = _ebook_upload_to('book/%s/%%s.%s' % (format_, format_))
     EbookField(format_, _("%s file" % format_.upper()),
         upload_to=upload_to,
         storage=bofh_storage,

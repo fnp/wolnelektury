@@ -11,8 +11,6 @@ from django.views.generic import RedirectView
 import wolnelektury_core.views
 
 
-admin.autodiscover()
-
 urlpatterns = patterns('wolnelektury_core.views',
     url(r'^$', 'main_page', name='main_page'),
     url(r'^planowane/$', 'publish_plan', name='publish_plan'),

@@ -1,242 +1,221 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'Tag'
-        db.create_table('catalogue_tag', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=50, db_index=True)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=120, db_index=True)),
-            ('sort_key', self.gf('django.db.models.fields.CharField')(max_length=120, db_index=True)),
-            ('category', self.gf('django.db.models.fields.CharField')(max_length=50, db_index=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
-            ('book_count', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('gazeta_link', self.gf('django.db.models.fields.CharField')(max_length=240, blank=True)),
-            ('wiki_link', self.gf('django.db.models.fields.CharField')(max_length=240, blank=True)),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
-            ('changed_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, db_index=True, blank=True)),
-        ))
-        db.send_create_signal('catalogue', ['Tag'])
-
-        # Adding unique constraint on 'Tag', fields ['slug', 'category']
-        db.create_unique('catalogue_tag', ['slug', 'category'])
-
-        # Adding model 'TagRelation'
-        db.create_table('catalogue_tag_relation', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('tag', self.gf('django.db.models.fields.related.ForeignKey')(related_name='items', to=orm['catalogue.Tag'])),
-            ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
-            ('object_id', self.gf('django.db.models.fields.PositiveIntegerField')(db_index=True)),
-        ))
-        db.send_create_signal('catalogue', ['TagRelation'])
-
-        # Adding unique constraint on 'TagRelation', fields ['tag', 'content_type', 'object_id']
-        db.create_unique('catalogue_tag_relation', ['tag_id', 'content_type_id', 'object_id'])
-
-        # Adding model 'BookMedia'
-        db.create_table('catalogue_bookmedia', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('type', self.gf('django.db.models.fields.CharField')(max_length='100')),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length='100')),
-            ('file', self.gf('catalogue.fields.OverwritingFileField')(max_length=100)),
-            ('uploaded_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('extra_info', self.gf('jsonfield.fields.JSONField')(default='{}')),
-            ('book', self.gf('django.db.models.fields.related.ForeignKey')(related_name='media', to=orm['catalogue.Book'])),
-            ('source_sha1', self.gf('django.db.models.fields.CharField')(max_length=40, null=True, blank=True)),
-        ))
-        db.send_create_signal('catalogue', ['BookMedia'])
-
-        # Adding model 'Book'
-        db.create_table('catalogue_book', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=120)),
-            ('sort_key', self.gf('django.db.models.fields.CharField')(max_length=120, db_index=True)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=120, db_index=True)),
-            ('common_slug', self.gf('django.db.models.fields.SlugField')(max_length=120, db_index=True)),
-            ('language', self.gf('django.db.models.fields.CharField')(default='pol', max_length=3, db_index=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
-            ('changed_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, db_index=True, blank=True)),
-            ('parent_number', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('extra_info', self.gf('jsonfield.fields.JSONField')(default='{}')),
-            ('gazeta_link', self.gf('django.db.models.fields.CharField')(max_length=240, blank=True)),
-            ('wiki_link', self.gf('django.db.models.fields.CharField')(max_length=240, blank=True)),
-            ('cover', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True, blank=True)),
-            ('parent', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='children', null=True, to=orm['catalogue.Book'])),
-            ('_related_info', self.gf('jsonfield.fields.JSONField')(null=True, blank=True)),
-            ('pdf_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('epub_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('mobi_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('txt_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('html_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('xml_file', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-        ))
-        db.send_create_signal('catalogue', ['Book'])
-
-        # Adding model 'Fragment'
-        db.create_table('catalogue_fragment', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('text', self.gf('django.db.models.fields.TextField')()),
-            ('short_text', self.gf('django.db.models.fields.TextField')()),
-            ('anchor', self.gf('django.db.models.fields.CharField')(max_length=120)),
-            ('book', self.gf('django.db.models.fields.related.ForeignKey')(related_name='fragments', to=orm['catalogue.Book'])),
-        ))
-        db.send_create_signal('catalogue', ['Fragment'])
-
-        # Adding model 'Collection'
-        db.create_table('catalogue_collection', (
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=120, db_index=True)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=120, primary_key=True, db_index=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('book_slugs', self.gf('django.db.models.fields.TextField')()),
-        ))
-        db.send_create_signal('catalogue', ['Collection'])
+from django.db import models, migrations
+import fnpdjango.storage
+import jsonfield.fields
+import catalogue.fields
+import catalogue.models.bookmedia
+from django.conf import settings
+import catalogue.models.book
 
 
-    def backwards(self, orm):
-        
-        # Removing unique constraint on 'TagRelation', fields ['tag', 'content_type', 'object_id']
-        db.delete_unique('catalogue_tag_relation', ['tag_id', 'content_type_id', 'object_id'])
+class Migration(migrations.Migration):
 
-        # Removing unique constraint on 'Tag', fields ['slug', 'category']
-        db.delete_unique('catalogue_tag', ['slug', 'category'])
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('contenttypes', '0001_initial'),
+    ]
 
-        # Deleting model 'Tag'
-        db.delete_table('catalogue_tag')
-
-        # Deleting model 'TagRelation'
-        db.delete_table('catalogue_tag_relation')
-
-        # Deleting model 'BookMedia'
-        db.delete_table('catalogue_bookmedia')
-
-        # Deleting model 'Book'
-        db.delete_table('catalogue_book')
-
-        # Deleting model 'Fragment'
-        db.delete_table('catalogue_fragment')
-
-        # Deleting model 'Collection'
-        db.delete_table('catalogue_collection')
-
-
-    models = {
-        'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        'auth.permission': {
-            'Meta': {'ordering': "('content_type__app_label', 'content_type__model', 'codename')", 'unique_together': "(('content_type', 'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        'catalogue.book': {
-            'Meta': {'ordering': "('sort_key',)", 'object_name': 'Book'},
-            '_related_info': ('jsonfield.fields.JSONField', [], {'null': 'True', 'blank': 'True'}),
-            'changed_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'common_slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'db_index': 'True'}),
-            'cover': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'epub_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'extra_info': ('jsonfield.fields.JSONField', [], {'default': "'{}'"}),
-            'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
-            'html_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'language': ('django.db.models.fields.CharField', [], {'default': "'pol'", 'max_length': '3', 'db_index': 'True'}),
-            'mobi_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['catalogue.Book']"}),
-            'parent_number': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'pdf_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '120', 'db_index': 'True'}),
-            'sort_key': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'txt_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'wiki_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
-            'xml_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
-        },
-        'catalogue.bookmedia': {
-            'Meta': {'ordering': "('type', 'name')", 'object_name': 'BookMedia'},
-            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'to': "orm['catalogue.Book']"}),
-            'extra_info': ('jsonfield.fields.JSONField', [], {'default': "'{}'"}),
-            'file': ('catalogue.fields.OverwritingFileField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
-            'source_sha1': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'blank': 'True'}),
-            'type': ('django.db.models.fields.CharField', [], {'max_length': "'100'"}),
-            'uploaded_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'})
-        },
-        'catalogue.collection': {
-            'Meta': {'ordering': "('title',)", 'object_name': 'Collection'},
-            'book_slugs': ('django.db.models.fields.TextField', [], {}),
-            'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'primary_key': 'True', 'db_index': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'})
-        },
-        'catalogue.fragment': {
-            'Meta': {'ordering': "('book', 'anchor')", 'object_name': 'Fragment'},
-            'anchor': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'book': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'fragments'", 'to': "orm['catalogue.Book']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'short_text': ('django.db.models.fields.TextField', [], {}),
-            'text': ('django.db.models.fields.TextField', [], {})
-        },
-        'catalogue.tag': {
-            'Meta': {'ordering': "('sort_key',)", 'unique_together': "(('slug', 'category'),)", 'object_name': 'Tag'},
-            'book_count': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'category': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'}),
-            'changed_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'db_index': 'True'}),
-            'sort_key': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'wiki_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'})
-        },
-        'catalogue.tagrelation': {
-            'Meta': {'unique_together': "(('tag', 'content_type', 'object_id'),)", 'object_name': 'TagRelation', 'db_table': "'catalogue_tag_relation'"},
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'object_id': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
-            'tag': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'items'", 'to': "orm['catalogue.Tag']"})
-        },
-        'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        }
-    }
-
-    complete_apps = ['catalogue']
+    operations = [
+        migrations.CreateModel(
+            name='Book',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=120, verbose_name='Title')),
+                ('sort_key', models.CharField(verbose_name='Sort key', max_length=120, editable=False, db_index=True)),
+                ('sort_key_author', models.CharField(default='', verbose_name='sort key by author', max_length=120, editable=False, db_index=True)),
+                ('slug', models.SlugField(unique=True, max_length=120, verbose_name='Slug')),
+                ('common_slug', models.SlugField(max_length=120, verbose_name='Slug')),
+                ('language', models.CharField(default=b'pol', max_length=3, verbose_name='language code', db_index=True)),
+                ('description', models.TextField(verbose_name='Description', blank=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
+                ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
+                ('parent_number', models.IntegerField(default=0, verbose_name='Parent number')),
+                ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information')),
+                ('gazeta_link', models.CharField(max_length=240, blank=True)),
+                ('wiki_link', models.CharField(max_length=240, blank=True)),
+                ('cover', catalogue.fields.EbookField(b'cover', upload_to=catalogue.models.book._cover_upload_to, storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, null=True, verbose_name='cover')),
+                ('cover_thumb', catalogue.fields.EbookField(b'cover_thumb', max_length=255, upload_to=catalogue.models.book._cover_thumb_upload_to, null=True, verbose_name='cover thumbnail', blank=True)),
+                ('_related_info', jsonfield.fields.JSONField(null=True, editable=False, blank=True)),
+                ('txt_file', catalogue.fields.EbookField(b'txt', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='TXT file')),
+                ('fb2_file', catalogue.fields.EbookField(b'fb2', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='FB2 file')),
+                ('pdf_file', catalogue.fields.EbookField(b'pdf', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='PDF file')),
+                ('epub_file', catalogue.fields.EbookField(b'epub', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='EPUB file')),
+                ('mobi_file', catalogue.fields.EbookField(b'mobi', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='MOBI file')),
+                ('html_file', catalogue.fields.EbookField(b'html', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='HTML file')),
+                ('xml_file', catalogue.fields.EbookField(b'xml', default=b'', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=None, max_length=255, blank=True, verbose_name='XML file')),
+                ('parent', models.ForeignKey(related_name=b'children', blank=True, to='catalogue.Book', null=True)),
+            ],
+            options={
+                'ordering': ('sort_key',),
+                'verbose_name': 'book',
+                'verbose_name_plural': 'Books',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='BookMedia',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('type', models.CharField(db_index=True, max_length=20, verbose_name='type', choices=[(b'mp3', 'MP3 file'), (b'ogg', 'Ogg Vorbis file'), (b'daisy', 'DAISY file')])),
+                ('name', models.CharField(max_length=512, verbose_name='name')),
+                ('file', catalogue.fields.OverwritingFileField(upload_to=catalogue.models.bookmedia._file_upload_to, max_length=600, verbose_name='XML file')),
+                ('uploaded_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
+                ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information', editable=False)),
+                ('source_sha1', models.CharField(max_length=40, null=True, editable=False, blank=True)),
+                ('book', models.ForeignKey(related_name=b'media', to='catalogue.Book')),
+            ],
+            options={
+                'ordering': ('type', 'name'),
+                'verbose_name': 'book media',
+                'verbose_name_plural': 'book media',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Collection',
+            fields=[
+                ('title', models.CharField(max_length=120, verbose_name='Title', db_index=True)),
+                ('title_de', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_en', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_es', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_fr', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_it', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_lt', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_pl', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_ru', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('title_uk', models.CharField(max_length=120, null=True, verbose_name='Title', db_index=True)),
+                ('slug', models.SlugField(max_length=120, serialize=False, verbose_name='Slug', primary_key=True)),
+                ('description', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_de', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_en', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_es', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_fr', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_it', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_lt', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_pl', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_ru', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_uk', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('book_slugs', models.TextField(verbose_name='Book stubs')),
+                ('kind', models.CharField(default=b'book', max_length=10, verbose_name='form', db_index=True, choices=[(b'book', 'book'), (b'picture', b'picture')])),
+            ],
+            options={
+                'ordering': ('title',),
+                'verbose_name': 'collection',
+                'verbose_name_plural': 'collections',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Fragment',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('text', models.TextField()),
+                ('short_text', models.TextField(editable=False)),
+                ('anchor', models.CharField(max_length=120)),
+                ('book', models.ForeignKey(related_name=b'fragments', to='catalogue.Book')),
+            ],
+            options={
+                'ordering': ('book', 'anchor'),
+                'verbose_name': 'Fragment',
+                'verbose_name_plural': 'Fragments',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Source',
+            fields=[
+                ('netloc', models.CharField(max_length=120, serialize=False, verbose_name='network location', primary_key=True)),
+                ('name', models.CharField(max_length=120, verbose_name='name', blank=True)),
+                ('name_de', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_en', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_es', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_fr', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_it', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_lt', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_pl', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_ru', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+                ('name_uk', models.CharField(max_length=120, null=True, verbose_name='name', blank=True)),
+            ],
+            options={
+                'ordering': ('netloc',),
+                'verbose_name': 'source',
+                'verbose_name_plural': 'sources',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Tag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50, verbose_name='name', db_index=True)),
+                ('name_de', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_en', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_es', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_fr', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_it', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_lt', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_pl', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_ru', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('name_uk', models.CharField(max_length=50, null=True, verbose_name='name', db_index=True)),
+                ('slug', models.SlugField(max_length=120, verbose_name='Slug')),
+                ('sort_key', models.CharField(max_length=120, verbose_name='Sort key', db_index=True)),
+                ('category', models.CharField(db_index=True, max_length=50, verbose_name='Category', choices=[(b'author', 'author'), (b'epoch', 'period'), (b'kind', 'form'), (b'genre', 'genre'), (b'theme', 'motif'), (b'set', 'set'), (b'book', 'book'), (b'thing', 'thing')])),
+                ('description', models.TextField(verbose_name='Description', blank=True)),
+                ('description_de', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_en', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_es', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_fr', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_it', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_lt', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_pl', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_ru', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('description_uk', models.TextField(null=True, verbose_name='Description', blank=True)),
+                ('book_count', models.IntegerField(null=True, verbose_name='Number of books', blank=True)),
+                ('picture_count', models.IntegerField(null=True, verbose_name='picture count', blank=True)),
+                ('gazeta_link', models.CharField(max_length=240, blank=True)),
+                ('culturepl_link', models.CharField(max_length=240, blank=True)),
+                ('wiki_link', models.CharField(max_length=240, blank=True)),
+                ('wiki_link_de', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_en', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_es', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_fr', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_it', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_lt', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_pl', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_ru', models.CharField(max_length=240, null=True, blank=True)),
+                ('wiki_link_uk', models.CharField(max_length=240, null=True, blank=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
+                ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
+                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+            ],
+            options={
+                'ordering': ('sort_key',),
+                'verbose_name': 'tag',
+                'verbose_name_plural': 'tags',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='TagRelation',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('object_id', models.PositiveIntegerField(verbose_name='object id', db_index=True)),
+                ('content_type', models.ForeignKey(verbose_name='content type', to='contenttypes.ContentType')),
+                ('tag', models.ForeignKey(related_name=b'items', verbose_name='tag', to='catalogue.Tag')),
+            ],
+            options={
+                'db_table': 'catalogue_tag_relation',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AlterUniqueTogether(
+            name='tagrelation',
+            unique_together=set([('tag', 'content_type', 'object_id')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='tag',
+            unique_together=set([('slug', 'category')]),
+        ),
+    ]

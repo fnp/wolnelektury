@@ -1,52 +1,33 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'Deleted'
-        db.create_table('api_deleted', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('object_id', self.gf('django.db.models.fields.IntegerField')()),
-            ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(db_index=True)),
-            ('deleted_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
-        ))
-        db.send_create_signal('api', ['Deleted'])
-
-        # Adding unique constraint on 'Deleted', fields ['content_type', 'object_id']
-        db.create_unique('api_deleted', ['content_type_id', 'object_id'])
+from django.db import models, migrations
 
 
-    def backwards(self, orm):
-        
-        # Removing unique constraint on 'Deleted', fields ['content_type', 'object_id']
-        db.delete_unique('api_deleted', ['content_type_id', 'object_id'])
+class Migration(migrations.Migration):
 
-        # Deleting model 'Deleted'
-        db.delete_table('api_deleted')
+    dependencies = [
+        ('contenttypes', '0001_initial'),
+    ]
 
-
-    models = {
-        'api.deleted': {
-            'Meta': {'unique_together': "(('content_type', 'object_id'),)", 'object_name': 'Deleted'},
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'db_index': 'True'}),
-            'deleted_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'object_id': ('django.db.models.fields.IntegerField', [], {})
-        },
-        'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        }
-    }
-
-    complete_apps = ['api']
+    operations = [
+        migrations.CreateModel(
+            name='Deleted',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('object_id', models.IntegerField()),
+                ('slug', models.SlugField(max_length=120, verbose_name='Slug', blank=True)),
+                ('category', models.CharField(db_index=True, max_length=64, null=True, blank=True)),
+                ('created_at', models.DateTimeField(editable=False, db_index=True)),
+                ('deleted_at', models.DateTimeField(auto_now_add=True, db_index=True)),
+                ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AlterUniqueTogether(
+            name='deleted',
+            unique_together=set([('content_type', 'object_id')]),
+        ),
+    ]

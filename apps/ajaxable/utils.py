@@ -31,7 +31,7 @@ class JSONResponse(HttpResponse):
         data = json.dumps(data)
         if callback:
             data = callback + "(" + data + ");"
-        super(JSONResponse, self).__init__(data, mimetype="application/json", **kwargs)
+        super(JSONResponse, self).__init__(data, content_type="application/json", **kwargs)
 
 
 def method_decorator(function_decorator):

@@ -1,66 +1,39 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'Cite'
-        db.create_table('social_cite', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('book', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['catalogue.Book'])),
-            ('text', self.gf('django.db.models.fields.TextField')()),
-            ('small', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('vip', self.gf('django.db.models.fields.CharField')(max_length=128, null=True, blank=True)),
-            ('link', self.gf('django.db.models.fields.URLField')(max_length=200)),
-        ))
-        db.send_create_signal('social', ['Cite'])
+from django.db import models, migrations
 
 
-    def backwards(self, orm):
-        
-        # Deleting model 'Cite'
-        db.delete_table('social_cite')
+class Migration(migrations.Migration):
 
+    dependencies = [
+        ('catalogue', '0001_initial'),
+    ]
 
-    models = {
-        'catalogue.book': {
-            'Meta': {'ordering': "('sort_key',)", 'object_name': 'Book'},
-            '_related_info': ('jsonfield.fields.JSONField', [], {'null': 'True', 'blank': 'True'}),
-            'changed_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'common_slug': ('django.db.models.fields.SlugField', [], {'max_length': '120', 'db_index': 'True'}),
-            'cover': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'epub_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'extra_info': ('jsonfield.fields.JSONField', [], {'default': "'{}'"}),
-            'gazeta_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
-            'html_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'language': ('django.db.models.fields.CharField', [], {'default': "'pol'", 'max_length': '3', 'db_index': 'True'}),
-            'mobi_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['catalogue.Book']"}),
-            'parent_number': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'pdf_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '120', 'db_index': 'True'}),
-            'sort_key': ('django.db.models.fields.CharField', [], {'max_length': '120', 'db_index': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '120'}),
-            'txt_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'}),
-            'wiki_link': ('django.db.models.fields.CharField', [], {'max_length': '240', 'blank': 'True'}),
-            'xml_file': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
-        },
-        'social.cite': {
-            'Meta': {'ordering': "('vip', 'text')", 'object_name': 'Cite'},
-            'book': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['catalogue.Book']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'link': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
-            'small': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'text': ('django.db.models.fields.TextField', [], {}),
-            'vip': ('django.db.models.fields.CharField', [], {'max_length': '128', 'null': 'True', 'blank': 'True'})
-        }
-    }
-
-    complete_apps = ['social']
+    operations = [
+        migrations.CreateModel(
+            name='Cite',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('text', models.TextField(verbose_name='text')),
+                ('small', models.BooleanField(default=False, help_text='Make this cite display smaller.', verbose_name='small')),
+                ('vip', models.CharField(max_length=128, null=True, verbose_name='VIP', blank=True)),
+                ('link', models.URLField(verbose_name='link')),
+                ('sticky', models.BooleanField(default=False, help_text='Sticky cites will take precedense.', db_index=True, verbose_name='sticky')),
+                ('image', models.ImageField(help_text='Best image is exactly 975px wide and weights under 100kB.', upload_to=b'social/cite', null=True, verbose_name='image', blank=True)),
+                ('image_shift', models.IntegerField(help_text='Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.', null=True, verbose_name='shift', blank=True)),
+                ('image_title', models.CharField(max_length=255, null=True, verbose_name='Title', blank=True)),
+                ('image_author', models.CharField(max_length=255, null=True, verbose_name='author', blank=True)),
+                ('image_link', models.URLField(null=True, verbose_name='link', blank=True)),
+                ('image_license', models.CharField(max_length=255, null=True, verbose_name='license name', blank=True)),
+                ('image_license_link', models.URLField(null=True, verbose_name='license link', blank=True)),
+                ('book', models.ForeignKey(verbose_name='book', blank=True, to='catalogue.Book', null=True)),
+            ],
+            options={
+                'ordering': ('vip', 'text'),
+                'verbose_name': 'cite',
+                'verbose_name_plural': 'cites',
+            },
+            bases=(models.Model,),
+        ),
+    ]

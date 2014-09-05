@@ -74,6 +74,9 @@ GETPAID_BACKENDS = (
 )
 
 INSTALLED_APPS_CONTRIB = [
+    # Should be before django.contrib.admin
+    'modeltranslation',
+
     # external
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,7 +90,7 @@ INSTALLED_APPS_CONTRIB = [
     'piston',
     'piwik',
     #'rosetta',
-    'south',
+    #'south',
     'sorl.thumbnail',
     'djcelery',
     'kombu.transport.django',
@@ -105,9 +108,6 @@ INSTALLED_APPS_CONTRIB = [
     'allauth.socialaccount.providers.openid',
     'allauth.socialaccount.providers.facebook',
     #'allauth.socialaccount.providers.twitter',
-
-    # included
-    'modeltranslation',
     ]
 
 INSTALLED_APPS = INSTALLED_APPS_OUR + INSTALLED_APPS_CONTRIB

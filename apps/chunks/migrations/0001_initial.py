@@ -1,49 +1,49 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Chunk'
-        db.create_table(u'chunks_chunk', (
-            ('key', self.gf('django.db.models.fields.CharField')(max_length=255, primary_key=True)),
-            ('description', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
-            ('content', self.gf('django.db.models.fields.TextField')(blank=True)),
-        ))
-        db.send_create_signal(u'chunks', ['Chunk'])
+    dependencies = [
+    ]
 
-        # Adding model 'Attachment'
-        db.create_table(u'chunks_attachment', (
-            ('key', self.gf('django.db.models.fields.CharField')(max_length=255, primary_key=True)),
-            ('attachment', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal(u'chunks', ['Attachment'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'Chunk'
-        db.delete_table(u'chunks_chunk')
-
-        # Deleting model 'Attachment'
-        db.delete_table(u'chunks_attachment')
-
-
-    models = {
-        u'chunks.attachment': {
-            'Meta': {'ordering': "('key',)", 'object_name': 'Attachment'},
-            'attachment': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'key': ('django.db.models.fields.CharField', [], {'max_length': '255', 'primary_key': 'True'})
-        },
-        u'chunks.chunk': {
-            'Meta': {'ordering': "('key',)", 'object_name': 'Chunk'},
-            'content': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'description': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'key': ('django.db.models.fields.CharField', [], {'max_length': '255', 'primary_key': 'True'})
-        }
-    }
-
-    complete_apps = ['chunks']
+    operations = [
+        migrations.CreateModel(
+            name='Attachment',
+            fields=[
+                ('key', models.CharField(help_text='A unique name for this attachment', max_length=255, serialize=False, verbose_name='key', primary_key=True)),
+                ('attachment', models.FileField(upload_to=b'chunks/attachment')),
+            ],
+            options={
+                'ordering': ('key',),
+                'verbose_name': 'attachment',
+                'verbose_name_plural': 'attachments',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Chunk',
+            fields=[
+                ('key', models.CharField(help_text='A unique name for this piece of content', max_length=255, serialize=False, verbose_name='key', primary_key=True)),
+                ('description', models.CharField(max_length=255, null=True, verbose_name='Description', blank=True)),
+                ('content', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_de', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_en', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_es', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_fr', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_it', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_lt', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_pl', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_ru', models.TextField(null=True, verbose_name='content', blank=True)),
+                ('content_uk', models.TextField(null=True, verbose_name='content', blank=True)),
+            ],
+            options={
+                'ordering': ('key',),
+                'verbose_name': 'piece',
+                'verbose_name_plural': 'pieces',
+            },
+            bases=(models.Model,),
+        ),
+    ]
