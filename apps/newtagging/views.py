@@ -36,7 +36,7 @@ def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=Non
     tag_instances = tag_model.get_tag_list(tags)
     if tag_instances is None:
         raise Http404(_('No tags found matching "%s".') % tags)
-    queryset = tag_model.intermediary_table_model.objects.get_intersection_by_model(queryset_or_model, tag_instances)
+    queryset = tag_model.intermediary_table_model.objects.get_by_model(queryset_or_model, tag_instances)
     if not kwargs.has_key('extra_context'):
         kwargs['extra_context'] = {}
     kwargs['extra_context']['tags'] = tag_instances
