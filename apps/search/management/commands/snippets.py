@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **opts):
         from catalogue.models import Book
-        import search
+        from search.index import Search
 
         if opts['check']:
             sfn = glob(settings.SEARCH_INDEX+'snippets/*')
@@ -39,7 +39,7 @@ class Command(BaseCommand):
                     except UnicodeDecodeError, ude:
                         print "error in snippets %d" % bkid
         if opts['check2']:
-            s = search.Search()
+            s = Search()
             reader = s.searcher.getIndexReader()
             numdocs = reader.numDocs()
             for did in range(numdocs):

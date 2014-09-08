@@ -23,16 +23,6 @@ class LazyEncoder(json.JSONEncoder):
             return force_unicode(obj)
         return obj
 
-# shortcut for JSON reponses
-class JSONResponse(HttpResponse):
-    def __init__(self, data={}, callback=None, **kwargs):
-        # get rid of mimetype
-        kwargs.pop('mimetype', None)
-        data = json.dumps(data)
-        if callback:
-            data = callback + "(" + data + ");"
-        super(JSONResponse, self).__init__(data, content_type="application/json", **kwargs)
-
 
 def method_decorator(function_decorator):
     """Converts a function decorator to a method decorator.

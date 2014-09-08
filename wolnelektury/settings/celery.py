@@ -1,5 +1,4 @@
 BROKER_URL = 'django://'
-CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 CELERY_SEND_TASK_ERROR_EMAILS = True

@@ -7,11 +7,12 @@ import catalogue.models
 from django.db.models import permalink
 from sorl.thumbnail import ImageField
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
-from django.core.cache import get_cache
+from django.core.cache import caches
 from catalogue.utils import split_tags
 from fnpdjango.utils.text.slughifi import slughifi
 from picture import tasks
@@ -27,7 +28,7 @@ from newtagging import managers
 from os import path
 
 
-permanent_cache = get_cache('permanent')
+permanent_cache = caches['permanent']
 
 picture_storage = FileSystemStorage(location=path.join(
         settings.MEDIA_ROOT, 'pictures'),
@@ -45,6 +46,7 @@ class PictureArea(models.Model):
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
     tags        = managers.TagDescriptor(catalogue.models.Tag)
+    tag_relations = GenericRelation(catalogue.models.Tag.intermediary_table_model)
 
     @classmethod
     def rectangle(cls, picture, kind, coords):
@@ -112,6 +114,7 @@ class Picture(models.Model):
     objects     = models.Manager()
     tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
     tags        = managers.TagDescriptor(catalogue.models.Tag)
+    tag_relations = GenericRelation(catalogue.models.Tag.intermediary_table_model)
 
     class AlreadyExists(Exception):
         pass

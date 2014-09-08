@@ -5,3 +5,4 @@ polib
 BabelDjango
 Fabric
 sphinx
+pyinotify

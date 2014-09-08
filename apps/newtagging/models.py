@@ -3,12 +3,11 @@
 Models and managers for generic tagging.
 """
 
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import connection, models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.base import ModelBase
-from django.db.models.loading import get_model # D1.7: apps?
 from django.core.exceptions import ObjectDoesNotExist
 from django.dispatch import Signal
 
@@ -162,7 +161,7 @@ class TaggedItemManager(models.Manager):
         tag_count = len(tags)
         if not tag_count:
             # No existing tags were given
-            return queryset
+            return queryset.none()
         elif tag_count == 1:
             # Optimisation for single tag - fall through to the simpler
             # query below.
@@ -180,7 +179,7 @@ class TaggedItemManager(models.Manager):
         queryset, model = get_queryset_and_model(queryset_or_model)
         tags = self.tag_model.get_tag_list(tags)
         if not tags:
-            return queryset
+            return queryset.none()
         # TODO: presumes reverse generic relation
         return queryset.filter(tag_relations__tag__in=tags)
 
@@ -194,7 +193,7 @@ class TaggedItemManager(models.Manager):
         # TODO: presumes reverse generic relation.
         # Do we know it's 'tags'?
         return queryset.filter(tag_relations__tag__in=obj.tags).annotate(
-            count=models.Count('pk')).order_by('-count').exclude(obj=obj.pk)
+            count=models.Count('pk')).order_by('-count').exclude(pk=obj.pk)
 
 
 ##########
@@ -222,7 +221,7 @@ def create_intermediary_table_model(model):
         'tag': models.ForeignKey(model, verbose_name=_('tag'), related_name='items'),
         'content_type': models.ForeignKey(ContentType, verbose_name=_('content type')),
         'object_id': models.PositiveIntegerField(_('object id'), db_index=True),
-        'content_object': generic.GenericForeignKey('content_type', 'object_id'),
+        'content_object': GenericForeignKey('content_type', 'object_id'),
         '__unicode__': obj_unicode,
     }
 

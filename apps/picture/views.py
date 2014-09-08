@@ -2,8 +2,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from collections import OrderedDict
 from django.contrib.auth.decorators import permission_required
-from django.utils.datastructures import SortedDict
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from picture.models import Picture
@@ -16,7 +16,7 @@ def picture_list(request, filter=None, get_filter=None, template_name='catalogue
     if get_filter:
         filt = get_filter()
     pictures_by_author, orphans = Picture.picture_list(filt)
-    books_nav = SortedDict()
+    books_nav = OrderedDict()
     for tag in pictures_by_author:
         if pictures_by_author[tag]:
             books_nav.setdefault(tag.sort_key[0], []).append(tag)

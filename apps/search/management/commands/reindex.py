@@ -51,8 +51,8 @@ class Command(BaseCommand):
     )
     def handle(self, *args, **opts):
         from catalogue.models import Book
-        import search
-        idx = search.Index()
+        from search.index import Index
+        idx = Index()
         
         if not opts['just_tags']:
             if args:

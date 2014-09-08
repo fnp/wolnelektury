@@ -399,8 +399,8 @@ def related_books(book, limit=6, random=1, taken=0):
     related = cache.get(cache_key)
     if related is None:
         related = Book.tagged.related_to(book,
-                Book.objects.exclude(common_slug=book.common_slug),
-                ignore_by_tag=book.book_tag())[:limit-random]
+                Book.objects.exclude(common_slug=book.common_slug)
+                ).exclude(tag_relations__tag=book.book_tag())[:limit-random]
         cache.set(cache_key, related, 1800)
     if random:
         random_books = Book.objects.exclude(
@@ -408,11 +408,14 @@ def related_books(book, limit=6, random=1, taken=0):
         if random == 1:
             count = random_books.count()
             if count:
-                related.append(random_books[randint(0, count - 1)])
+                random_related = [random_books[randint(0, count - 1)]]
         else:
-            related += list(random_books.order_by('?')[:random])
+            random_related = list(random_books.order_by('?')[:random])
+    else:
+        random_related = []
     return {
         'books': related,
+        'random_related': random_related,
     }
 
 

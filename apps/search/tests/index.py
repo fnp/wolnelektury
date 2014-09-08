@@ -9,7 +9,7 @@ from catalogue.test_utils import WLTestCase, get_fixture
 from os import path
 import tempfile
 from catalogue.models import Book, Tag
-from search import Index, Search, SearchResult
+from search.index import Index, Search, SearchResult
 import catalogue
 import opds
 

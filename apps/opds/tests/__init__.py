@@ -11,7 +11,7 @@ from catalogue.test_utils import (BookInfoStub, PersonStub, info_args,
         WLTestCase, get_fixture)
 from catalogue.models import Book
 from librarian import WLURI, XMLNamespace
-from search import Index, Search
+from search.index import Index, Search
 
 AtomNS = XMLNamespace("http://www.w3.org/2005/Atom")
 

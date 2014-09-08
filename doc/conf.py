@@ -18,15 +18,13 @@ import sys, os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 sys.path += [
-    os.path.abspath('../wolnelektury'),
+    os.path.abspath('..'),
     os.path.abspath('../apps'),
     os.path.abspath('../lib'),
     os.path.abspath('../lib/librarian'),
 ]
 
-from django.core.management import setup_environ
-import settings
-setup_environ(settings)
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wolnelektury.settings")
 
 
 
@@ -53,7 +51,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Wolne Lektury'
-copyright = u'2007-2012, Fundacja Nowoczesna Polska'
+copyright = u'2007-2014, Fundacja Nowoczesna Polska'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

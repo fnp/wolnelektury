@@ -6,14 +6,13 @@ from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.views.decorators import cache
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
 from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
 from catalogue.models import Book, Tag, Fragment
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
-from catalogue.views import JSONResponse
-from search import Search, SearchResult
+from search.index import Search, SearchResult
 from suggest.forms import PublishingSuggestForm
 import re
 #import enchant
@@ -63,7 +62,7 @@ def did_you_mean(query, tokens):
 def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
-        return JSONResponse([])
+        return JsonResponse([])
 
     prefix = remove_query_syntax_chars(prefix)
 
@@ -107,7 +106,7 @@ def hint(request):
         return HttpResponse("%s(%s);" % (callback, json.dumps(data)),
                             content_type="application/json; charset=utf-8")
     else:
-        return JSONResponse(data)
+        return JsonResponse(data)
 
 
 def main(request):

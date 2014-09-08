@@ -2,11 +2,11 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from collections import OrderedDict
 import json
 from collections import namedtuple
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.datastructures import SortedDict
 import jsonfield
 from fnpdjango.utils.text.slughifi import slughifi
 from catalogue.fields import OverwritingFileField
@@ -19,7 +19,7 @@ def _file_upload_to(i, _n):
 class BookMedia(models.Model):
     """Represents media attached to a book."""
     FileFormat = namedtuple("FileFormat", "name ext")
-    formats = SortedDict([
+    formats = OrderedDict([
         ('mp3', FileFormat(name='MP3', ext='mp3')),
         ('ogg', FileFormat(name='Ogg Vorbis', ext='ogg')),
         ('daisy', FileFormat(name='DAISY', ext='daisy.zip')),

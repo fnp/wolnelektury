@@ -5,9 +5,8 @@ THUMBNAIL_QUALITY = 95
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'pl'
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'pl'
 
-SOUTH_MIGRATION_MODULES = {
+MIGRATION_MODULES = {
     'getpaid' : 'wolnelektury.migrations.getpaid',
-    'payu': 'wolnelektury.migrations.getpaid_payu',
 }
 
 GETPAID_ORDER_DESCRIPTION = "{% load funding_tags %}{{ order|sanitize_payment_title }}"

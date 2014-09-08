@@ -23,6 +23,7 @@ License
 Dependencies
 ============
 
+ * Python 2.7
  * All packages listed in requirements.txt
  * Sass>=3.2
 
@@ -38,7 +39,6 @@ How to deploy (development version)
 3. Setup your local configuration based on settings.py. You need to generate a new SECRET_KEY, database stuff and domain related stuff.
 4. Populate database:
     
-    ./manage.py syncdb
     ./manage.py migrate
 
 5. Run the server

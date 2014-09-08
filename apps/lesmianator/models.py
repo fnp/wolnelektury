@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.conf import settings
 
 from jsonfield import JSONField
@@ -103,7 +103,7 @@ class Continuations(models.Model):
     pickle = models.FileField(_('Continuations file'), upload_to='lesmianator')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey('content_type', 'object_id')
 
     class Meta:
         unique_together = (('content_type', 'object_id'), )

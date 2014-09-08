@@ -15,7 +15,7 @@ class ModelTagManager(models.Manager):
         super(ModelTagManager, self).__init__()
         self.tag_model = tag_model
 
-    def get_query_set(self):
+    def get_queryset(self):
         content_type = ContentType.objects.get_for_model(self.model)
         return self.tag_model.objects.filter(
             items__content_type__pk=content_type.pk).distinct()
@@ -35,13 +35,13 @@ class ModelTaggedItemManager(models.Manager):
         super(ModelTaggedItemManager, self).__init__()
         self.intermediary_table_model = tag_model.objects.intermediary_table_model
 
-    def related_to(self, obj, queryset=None, num=None, ignore_by_tag=None):
+    def related_to(self, obj, queryset=None):
         if queryset is None:
             return self.intermediary_table_model.objects.get_related(
-                obj, self.model, num=num, ignore_by_tag=ignore_by_tag)
+                obj, self.model)
         else:
             return self.intermediary_table_model.objects.get_related(
-                obj, queryset, num=num, ignore_by_tag=ignore_by_tag)
+                obj, queryset)
 
     def with_all(self, tags, queryset=None):
         if queryset is None:

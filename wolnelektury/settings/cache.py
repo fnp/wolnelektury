@@ -10,7 +10,7 @@ CACHES = {
     },
     'permanent': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'TIMEOUT': 2419200,
+        'TIMEOUT': None,
         'LOCATION': [
             '127.0.0.1:11211',
         ]

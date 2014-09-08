@@ -3,7 +3,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
-from django.core.cache import get_cache
+from django.contrib.contenttypes.fields import GenericRelation
+from django.core.cache import caches
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.template.loader import render_to_string
@@ -13,7 +14,7 @@ from newtagging import managers
 from catalogue.models import Tag
 
 
-permanent_cache = get_cache('permanent')
+permanent_cache = caches['permanent']
 
 
 class Fragment(models.Model):
@@ -26,6 +27,7 @@ class Fragment(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
+    tag_relations = GenericRelation(Tag.intermediary_table_model)
 
     class Meta:
         ordering = ('book', 'anchor',)

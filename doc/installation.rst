@@ -5,7 +5,7 @@ Setup
 Requirements
 ------------
 
-* `Python 2.6+ <http://python.org>`_
+* `Python 2.7 <http://python.org>`_
 * Python requiremets: ``pip install -r requirements.txt``
 * a library for your database of choice
   (see `DBs supported by Django <http://docs.djangoproject.com/en/dev/topics/install/#get-your-database-running>`_)
@@ -29,7 +29,7 @@ Run the dev server with::
 Some tasks (like generating e-books) run in a seperate
 Celery process by default, so you'll also need to run::
 
-    ./manage.py celeryd --loglevel=INFO
+    celery -A wolnelektury worker --loglevel=INFO
 
 Or, if you don't want to run a separate Celery daemon, set this
 in your ``localsettings.py``::

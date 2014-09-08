@@ -2,14 +2,15 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from collections import OrderedDict
 import re
 from django.conf import settings
-from django.core.cache import get_cache
+from django.core.cache import caches
 from django.db import models
 from django.db.models import permalink
 import django.dispatch
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.urlresolvers import reverse
-from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
@@ -23,13 +24,15 @@ from newtagging import managers
 
 bofh_storage = BofhFileSystemStorage()
 
-permanent_cache = get_cache('permanent')
+permanent_cache = caches['permanent']
 
 
 def _cover_upload_to(i, n):
     return 'book/cover/%s.jpg' % i.slug
+
 def _cover_thumb_upload_to(i, n):
     return 'book/cover_thumb/%s.jpg' % i.slug,
+
 def _ebook_upload_to(upload_path):
     def _upload_to(i, n):
         return upload_path % i.slug
@@ -75,6 +78,7 @@ class Book(models.Model):
     objects  = models.Manager()
     tagged   = managers.ModelTaggedItemManager(Tag)
     tags     = managers.TagDescriptor(Tag)
+    tag_relations = GenericRelation(Tag.intermediary_table_model)
 
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
@@ -231,9 +235,9 @@ class Book(models.Model):
         return create_zip(paths, "%s_%s" % (self.slug, format_))
 
     def search_index(self, book_info=None, index=None, index_tags=True, commit=True):
-        import search
         if index is None:
-            index = search.Index()
+            from search.index import Index
+            index = Index()
         try:
             index.index_book(self, book_info)
             if index_tags:
@@ -593,7 +597,7 @@ class Book(models.Model):
                 books_by_parent.setdefault(book.parent_id, []).append(book)
 
         orphans = []
-        books_by_author = SortedDict()
+        books_by_author = OrderedDict()
         for tag in Tag.objects.filter(category='author').iterator():
             books_by_author[tag] = []
 
@@ -639,13 +643,16 @@ class Book(models.Model):
         else:
             return None
 
-
 # add the file fields
 for format_ in Book.formats:
     field_name = "%s_file" % format_
-    upload_to = _ebook_upload_to('book/%s/%%s.%s' % (format_, format_))
+    # This weird globals() assignment makes Django migrations comfortable.
+    _upload_to = _ebook_upload_to('book/%s/%%s.%s' % (format_, format_))
+    _upload_to.__name__ = '_%s_upload_to' % format_
+    globals()[_upload_to.__name__] = _upload_to
+
     EbookField(format_, _("%s file" % format_.upper()),
-        upload_to=upload_to,
+        upload_to=_upload_to,
         storage=bofh_storage,
         max_length=255,
         blank=True,

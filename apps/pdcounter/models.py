@@ -90,8 +90,8 @@ class BookStub(models.Model):
 
 if not settings.NO_SEARCH_INDEX:
     def update_index(sender, instance, **kwargs):
-        import search
-        idx = search.Index()
+        from search.index import Index
+        idx = Index()
         idx.index_tags(instance, remove_only=not 'created' in kwargs)
 
     post_delete.connect(update_index, Author)

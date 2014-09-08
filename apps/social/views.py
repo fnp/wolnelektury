@@ -3,11 +3,11 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
-from ajaxable.utils import JSONResponse, AjaxableFormView
+from ajaxable.utils import AjaxableFormView
 
 from catalogue.models import Book
 from social import forms
@@ -29,7 +29,7 @@ def like_book(request, slug):
         set_sets(request.user, book, [tag])
 
     if request.is_ajax():
-        return JSONResponse({"success": True, "msg": "ok", "like": True})
+        return JsonResponse({"success": True, "msg": "ok", "like": True})
     else:
         return redirect(book)
 
@@ -66,6 +66,6 @@ def unlike_book(request, slug):
         set_sets(request.user, book, [])
 
     if request.is_ajax():
-        return JSONResponse({"success": True, "msg": "ok", "like": False})
+        return JsonResponse({"success": True, "msg": "ok", "like": False})
     else:
         return redirect(book)

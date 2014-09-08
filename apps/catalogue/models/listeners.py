@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
-from django.core.cache import get_cache
+from django.core.cache import caches
 from django.db.models.signals import post_save, pre_delete, post_delete
 import django.dispatch
 from catalogue.models import Tag, BookMedia, Book, Fragment, Collection
@@ -12,7 +12,7 @@ from catalogue.utils import delete_from_cache_by_language
 from newtagging.models import tags_updated
 
 
-permanent_cache = get_cache('permanent')
+permanent_cache = caches['permanent']
 
 
 def _tags_updated_handler(sender, affected_tags, **kwargs):
@@ -71,7 +71,7 @@ if not settings.NO_SEARCH_INDEX:
     @django.dispatch.receiver(post_delete, sender=Book)
     def _remove_book_from_index_handler(sender, instance, **kwargs):
         """ remove the book from search index, when it is deleted."""
-        import search
-        idx = search.Index()
+        from search.index import Index
+        idx = Index()
         idx.remove_book(instance)
         idx.index_tags()

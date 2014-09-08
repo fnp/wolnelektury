@@ -4,4 +4,7 @@
 {% for book in books %}
     {% book_mini book %}
 {% endfor %}
+{% for book in random_related %}
+    {% book_mini book %}
+{% endfor %}
 {% endspaceless %}

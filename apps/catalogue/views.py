@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from collections import OrderedDict
 import re
 import itertools
 
@@ -10,17 +11,16 @@ from django.core.cache import get_cache
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.utils.datastructures import SortedDict
 from django.utils.http import urlquote_plus
 from django.utils import translation
 from django.utils.translation import get_language, ugettext as _, ugettext_lazy
 from django.views.decorators.vary import vary_on_headers
 
-from ajaxable.utils import JSONResponse, AjaxableFormView
+from ajaxable.utils import AjaxableFormView
 from catalogue import models
 from catalogue import forms
 from catalogue.utils import split_tags, MultiQuerySet, SortedMultiQuerySet
@@ -76,7 +76,7 @@ def catalogue(request):
             'catalogue/collection_list.html', collection_list(collections))
         permanent_cache.set(cache_key, output)
     if request.is_ajax():
-        return JSONResponse(output)
+        return JsonResponse(output)
     else:
         return render_to_response('catalogue/catalogue.html', locals(),
             context_instance=RequestContext(request))
@@ -98,7 +98,7 @@ def book_list(request, filter=None, get_filter=None,
         if get_filter:
             filter = get_filter()
         books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
-        books_nav = SortedDict()
+        books_nav = OrderedDict()
         for tag in books_by_author:
             if books_by_author[tag]:
                 books_nav.setdefault(tag.sort_key[0], []).append(tag)
@@ -212,8 +212,8 @@ def tagged_object_list(request, tags=''):
         fragment_keys = [fragment.pk for fragment in fragments.iterator()]
         if fragment_keys:
             related_tags = models.Fragment.tags.usage(counts=True,
-                                filters={'pk__in': fragment_keys},
-                                extra={'where': ["catalogue_tag.category != 'book'"]})
+                                filters={'pk__in': fragment_keys}).exclude(
+                                category='book')
             related_tags = (tag for tag in related_tags if tag not in fragment_tags)
             categories = split_tags(related_tags, categories)
 
@@ -564,7 +564,7 @@ def json_tags_starting_with(request, callback=None):
         result = [prefix, tags_list]
     else:
         result = {"matches": tags_list}
-    return JSONResponse(result, callback)
+    return JsonResponse(result, callback)
 
 
 # =========

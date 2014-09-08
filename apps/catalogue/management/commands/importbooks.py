@@ -17,7 +17,7 @@ from wolnelektury_core.management.profile import profile
 from catalogue.models import Book
 from picture.models import Picture
 
-from search import Index
+from search.index import Index
 
 
 class Command(BaseCommand):

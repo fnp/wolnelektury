@@ -212,3 +212,7 @@ class Tag(TagBase):
                     else:
                         meta_tags.append(tag)
         return meta_tags
+
+
+# Pickle complains about not having this.
+TagRelation = Tag.intermediary_table_model
