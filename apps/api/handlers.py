@@ -19,7 +19,6 @@ from api.helpers import timestamp
 from api.models import Deleted
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
-from catalogue.utils import related_tag_name
 from picture.models import Picture
 from picture.forms import PictureImportForm
 from wolnelektury.utils import tz
@@ -54,10 +53,11 @@ def read_tags(tags, allowed):
     :raises: ValueError when tags can't be found
     """
     if not tags:
-        return []
+        return [], []
 
     tags = tags.strip('/').split('/')
     real_tags = []
+    books = []
     while tags:
         category = tags.pop(0)
         slug = tags.pop(0)
@@ -70,15 +70,14 @@ def read_tags(tags, allowed):
         if not category in allowed:
             raise ValueError('Category not allowed.')
 
-        # !^%@#$^#!
         if category == 'book':
-            slug = 'l-' + slug
+            books.append(Book.objects.get(slug=slug))
 
         try:
             real_tags.append(Tag.objects.get(category=category, slug=slug))
         except Tag.DoesNotExist:
             raise ValueError('Tag not found')
-    return real_tags
+    return real_tags, books
 
 
 # RESTful handlers
@@ -186,7 +185,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
              are returned.
         """
         try:
-            tags = read_tags(tags, allowed=book_tag_categories)
+            tags, ancestors_ = read_tags(tags, allowed=book_tag_categories)
         except ValueError:
             return rc.NOT_FOUND
 
@@ -247,7 +246,7 @@ def _tags_getter(category):
 def _tag_getter(category):
     @classmethod
     def get_tag(cls, book):
-        return ", ".join(related_tag_name(t) for t in book.related_info()['tags'].get(category, []))
+        return ', '.join(tag.name for tag in book.tags.filter(category=category))
     return get_tag
 for plural, singular in category_singular.items():
     setattr(BookDetails, plural, _tags_getter(singular))
@@ -369,7 +368,7 @@ class TagsHandler(BaseHandler, TagDetails):
         except KeyError, e:
             return rc.NOT_FOUND
 
-        tags = Tag.objects.filter(category=category_sng).exclude(book_count=0)
+        tags = Tag.objects.filter(category=category_sng).exclude(items=None)
         if tags.exists():
             return tags
         else:
@@ -433,7 +432,7 @@ class FragmentsHandler(BaseHandler, FragmentDetails):
 
         """
         try:
-            tags = read_tags(tags, allowed=self.categories)
+            tags, ancestors = read_tags(tags, allowed=self.categories)
         except ValueError:
             return rc.NOT_FOUND
         fragments = Fragment.tagged.with_all(tags).select_related('book')
@@ -514,7 +513,7 @@ class CatalogueHandler(BaseHandler):
                 obj[field] = book.get_absolute_url()
 
             elif field == 'tags':
-                obj[field] = [t.id for t in book.tags.exclude(category__in=('book', 'set')).iterator()]
+                obj[field] = [t.id for t in book.tags.exclude(category='set').iterator()]
 
             elif field == 'author':
                 obj[field] = ", ".join(t.name for t in book.tags.filter(category='author').iterator())
@@ -627,13 +626,16 @@ class CatalogueHandler(BaseHandler):
 
         for tag in Tag.objects.filter(category__in=categories,
                     changed_at__gte=since,
-                    changed_at__lt=until).iterator():
-            # only serve non-empty tags
-            if tag.book_count:
-                tag_d = cls.tag_dict(tag, fields)
-                updated.append(tag_d)
-            elif tag.created_at < since:
-                deleted.append(tag.id)
+                    changed_at__lt=until
+                    ).exclude(items=None).iterator():
+            tag_d = cls.tag_dict(tag, fields)
+            updated.append(tag_d)
+        for tag in Tag.objects.filter(category__in=categories,
+                    created_at__lt=since,
+                    changed_at__gte=since,
+                    changed_at__lt=until,
+                    items=None).iterator():
+            deleted.append(tag.id)
         if updated:
             changes['updated'] = updated
 

@@ -42,20 +42,20 @@ class Command(BaseCommand):
                             print "To resolve: republish parent book."
                             print
 
-                # Check for parent l-tags.
+                # Check for ancestry.
                 parents = []
                 parent = book.parent
                 while parent:
                     parents.append(parent)
                     parent = parent.parent
-                ltags = [b.book_tag() for b in parents]
-                if set(ltags) != set(book.tags.filter(category='book')):
+                ancestors = list(book.ancestor.all())
+                if set(ancestors) != set(parents):
                     if options['verbose']:
-                        print "Wrong book tags for book:", book
-                        print "Is:       ", ", ".join(sorted(t.slug for t in book.tags.filter(category='book')))
-                        print "Should be:", ", ".join(sorted(t.slug for t in ltags))
+                        print "Wrong ancestry for book:", book
+                        print "Is:       ", ", ".join(ancestors)
+                        print "Should be:", ", ".join(parents)
                     if not options['dry_run']:
-                        book.tags = ltags + list(book.tags.exclude(category='book'))
+                        book.fix_tree_tags()
                         if options['verbose']:
                             print "Fixed."
                     if options['verbose']:

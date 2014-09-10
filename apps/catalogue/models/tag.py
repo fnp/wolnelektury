@@ -19,7 +19,6 @@ TAG_CATEGORIES = (
     ('genre', _('genre')),
     ('theme', _('theme')),
     ('set', _('set')),
-    ('book', _('book')),
     ('thing', _('thing')), # things shown on pictures
 )
 
@@ -37,8 +36,6 @@ class Tag(TagBase):
     description = models.TextField(_('description'), blank=True)
 
     user = models.ForeignKey(User, blank=True, null=True)
-    book_count = models.IntegerField(_('book count'), blank=True, null=True)
-    picture_count = models.IntegerField(_('picture count'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
@@ -77,11 +74,6 @@ class Tag(TagBase):
     def get_absolute_url(self):
         return ('catalogue.views.tagged_object_list', [self.url_chunk])
 
-    def clean(self):
-        if self.category == 'book' and (self.gazeta_link or self.wiki_link):
-            raise ValidationError(ugettext(
-                u"Book tags can't have attached links. Set them directly on the book instead of it's tag."))
-
     @classmethod
     @permalink
     def create_url(cls, category, slug):
@@ -93,41 +85,6 @@ class Tag(TagBase):
         return len(self.description) > 0
     has_description.short_description = _('description')
     has_description.boolean = True
-
-    def get_count(self):
-        """Returns global book count for book tags, fragment count for themes."""
-        from catalogue.models import Book, Fragment
-
-        if self.category == 'book':
-            # never used
-            objects = Book.objects.none()
-        elif self.category == 'theme':
-            objects = Fragment.tagged.with_all((self,))
-        else:
-            objects = Book.tagged.with_all((self,)).order_by()
-            if self.category != 'set':
-                # eliminate descendants
-                l_tags = Tag.objects.filter(slug__in=[book.book_tag_slug() for book in objects.iterator()])
-                descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags).iterator()]
-                if descendants_keys:
-                    objects = objects.exclude(pk__in=descendants_keys)
-        return objects.count()
-
-    # I shouldn't break the get_count() api
-    # just to include pictures.
-    def get_picture_count(self):
-        from picture.models import Picture, PictureArea
-
-        if self.category == 'book':
-            # never used
-            objects = Picture.objects.none()
-        elif self.category == 'theme':
-            objects = PictureArea.tagged.with_all((self,))
-        elif self.category == 'thing':
-            objects = Picture.tagged.with_all((self,))
-        else:
-            objects = Picture.tagged.with_all((self,)).order_by()
-        return objects.count()
 
     @staticmethod
     def get_tag_list(tags):
@@ -145,7 +102,7 @@ class Tag(TagBase):
                     category = Tag.categories_rev[name]
                 else:
                     try:
-                        real_tags.append(Tag.objects.exclude(category='book').get(slug=name))
+                        real_tags.append(Tag.objects.get(slug=name))
                         deprecated = True
                     except Tag.MultipleObjectsReturned, e:
                         ambiguous_slugs.append(name)

@@ -852,7 +852,7 @@ class Search(SolrIndex):
                 q |= self.index.Q(**{field: query + "*"})
             else:
                 q |= self.make_term_query(query, field=field)
-        qu = self.index.query(q).exclude(tag_category="book")
+        qu = self.index.query(q)
 
         return self.search_tags(qu, pdcounter=pdcounter)
 

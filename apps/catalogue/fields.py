@@ -149,7 +149,6 @@ class BuildHtml(BuildEbook):
         if html_output:
             meta_tags = list(book.tags.filter(
                 category__in=('author', 'epoch', 'genre', 'kind')))
-            book_tag = book.book_tag()
 
             lang = book.language
             lang = LANGUAGES_3TO2.get(lang, lang)
@@ -161,13 +160,6 @@ class BuildHtml(BuildEbook):
             type(book).objects.filter(pk=book.pk).update(**{
                 fieldfile.field.attname: fieldfile
             })
-
-            # get ancestor l-tags for adding to new fragments
-            ancestor_tags = []
-            p = book.parent
-            while p:
-                ancestor_tags.append(p.book_tag())
-                p = p.parent
 
             # Extract fragments
             closed_fragments, open_fragments = html.extract_fragments(fieldfile.path)
@@ -211,11 +203,9 @@ class BuildHtml(BuildEbook):
                         book=book, text=text, short_text=short_text)
 
                 new_fragment.save()
-                new_fragment.tags = set(meta_tags + themes + [book_tag] + ancestor_tags)
-            book.fix_tree_tags()
+                new_fragment.tags = set(meta_tags + themes)
             book.html_built.send(sender=book)
             return True
-        book.fix_tree_tags()
         return False
 
 @BuildEbook.register('cover_thumb')

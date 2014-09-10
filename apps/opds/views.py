@@ -238,7 +238,7 @@ class ByCategoryFeed(Feed):
         return feed['title']
 
     def items(self, feed):
-        return Tag.objects.filter(category=feed['category']).exclude(book_count=0)
+        return Tag.objects.filter(category=feed['category']).exclude(items=None)
 
     def item_title(self, item):
         return item.name
@@ -264,13 +264,7 @@ class ByTagFeed(AcquisitionFeed):
         return get_object_or_404(Tag, category=category, slug=slug)
 
     def items(self, tag):
-        books = Book.tagged.with_any([tag])
-        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books.iterator()])
-        descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags)]
-        if descendants_keys:
-            books = books.exclude(pk__in=descendants_keys)
-
-        return books
+        return Book.tagged_top_level([tag])
 
 
 @factory_decorator(logged_in_or_basicauth())
@@ -289,7 +283,7 @@ class UserFeed(Feed):
         return u"Półki użytkownika %s" % user.username
 
     def items(self, user):
-        return Tag.objects.filter(category='set', user=user).exclude(book_count=0)
+        return Tag.objects.filter(category='set', user=user).exclude(items=None)
 
     def item_title(self, item):
         return item.name
@@ -299,9 +293,6 @@ class UserFeed(Feed):
 
     def item_description(self):
         return u''
-
-# no class decorators in python 2.5
-#UserFeed = factory_decorator(logged_in_or_basicauth())(UserFeed)
 
 
 @factory_decorator(logged_in_or_basicauth())
@@ -321,9 +312,6 @@ class UserSetFeed(AcquisitionFeed):
 
     def items(self, tag):
         return Book.tagged.with_any([tag])
-
-# no class decorators in python 2.5
-#UserSetFeed = factory_decorator(logged_in_or_basicauth())(UserSetFeed)
 
 
 @piwik_track

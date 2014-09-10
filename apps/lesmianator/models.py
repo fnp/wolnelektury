@@ -142,13 +142,7 @@ class Continuations(models.Model):
 
     @classmethod
     def for_set(cls, tag):
-        # book contains its descendants, we don't want them twice
-        books = Book.tagged.with_any((tag,))
-        l_tags = Tag.objects.filter(category='book', slug__in=[book.book_tag_slug() for book in books.iterator()])
-        descendants_keys = [book.pk for book in Book.tagged.with_any(l_tags).iterator()]
-        if descendants_keys:
-            books = books.exclude(pk__in=descendants_keys)
-
+        books = Book.tagged_top_level([tag])
         cont_tabs = (cls.get(b) for b in books.iterator())
         return reduce(cls.join_conts, cont_tabs)
 

@@ -104,6 +104,7 @@ class TagManager(models.Manager):
         of field lookups to be applied to the given Model as the
         ``filters`` argument.
         """
+        # TODO: Do we really need this filters stuff?
         if filters is None: filters = {}
 
         queryset = model._default_manager.filter()
@@ -158,18 +159,15 @@ class TaggedItemManager(models.Manager):
         """
         queryset, model = get_queryset_and_model(queryset_or_model)
         tags = self.tag_model.get_tag_list(tags)
-        tag_count = len(tags)
-        if not tag_count:
+        if not tags:
             # No existing tags were given
             return queryset.none()
-        elif tag_count == 1:
-            # Optimisation for single tag - fall through to the simpler
-            # query below.
-            return queryset.filter(tag_relations__tag=tags[0])
 
         # TODO: presumes reverse generic relation
-        return queryset.filter(tag_relations__tag__in=tags
-            ).annotate(count=models.Count('pk')).filter(count=len(tags))
+        # Multiple joins are WAY faster than having-count, at least on Postgres 9.1.
+        for tag in tags:
+            queryset = queryset.filter(tag_relations__tag=tag)
+        return queryset
 
     def get_union_by_model(self, queryset_or_model, tags):
         """

@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from random import randint
+from django.db.models import Q
 from django import template
 from catalogue.models import Book
 from social.models import Cite
@@ -25,9 +26,7 @@ def choose_cite(context, ctx=None):
         if ctx is None:
             cites = Cite.objects.all()
         elif isinstance(ctx, Book):
-            cites = ctx.cite_set.all()
-            if not cites.exists():
-                cites = cites_for_tags([ctx.book_tag()])
+            cites = Cite.objects.filter(Q(book=ctx) | Q(book__ancestor=ctx))
         else:
             cites = cites_for_tags(ctx)
         stickies = cites.filter(sticky=True)

@@ -23,7 +23,7 @@
 	  <p>{% trans "Motifs and themes" %}</p>
           <ul>
             {% for theme in themes %}
-            <li><a href="{% url 'picture_viewer' picture.slug %}#theme-{{theme.slug}}">{{ theme }}{# ({{ theme.picture_count }})#}</a></li>
+            <li><a href="{% url 'picture_viewer' picture.slug %}#theme-{{theme.slug}}">{{ theme }}</a></li>
 		{% endfor %}
             </ul>
 	    {% endif %}
@@ -31,7 +31,7 @@
 	  <p>{% trans "Objects" %}</p>
           <ul>
             {% for thing in things %}
-            <li><a href="{% url 'picture_viewer' picture.slug %}#object-{{thing.slug}}">{{ thing }}{# ({{ thing.picture_count }})#}</a></li>
+            <li><a href="{% url 'picture_viewer' picture.slug %}#object-{{thing.slug}}">{{ thing }}</a></li>
             {% endfor %}
           </ul>
 	  {% endif %}

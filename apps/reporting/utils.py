@@ -113,7 +113,7 @@ def generated_file_view(file_name, mime_type, send_name=None, signals=None):
             else:
                 name = send_name
 
-            response = HttpResponse(mimetype=mime_type)
+            response = HttpResponse(content_type=mime_type)
             response['Content-Disposition'] = 'attachment; filename=%s' % name
             with open(file_path) as f:
                 for chunk in read_chunks(f):

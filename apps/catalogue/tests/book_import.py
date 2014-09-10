@@ -295,13 +295,15 @@ class TreeImportTest(WLTestCase):
                 u"There should be only parent on common tag page."
             )
         pies = models.Tag.objects.get(slug='pies')
-        self.assertEqual(self.parent.theme_counter, {pies.pk: 1},
+        themes = self.parent.related_themes()
+        self.assertEqual(len(themes), 1,
                 u"There should be child theme in parent theme counter."
             )
-        epoch = models.Tag.objects.get(slug='x-epoch')
-        self.assertEqual(epoch.book_count, 1,
-                u"There should be only parent in common tag's counter."
-            )
+        # TODO: book_count is deprecated, update here.
+        #~ epoch = models.Tag.objects.get(slug='x-epoch')
+        #~ self.assertEqual(epoch.book_count, 1,
+                #~ u"There should be only parent in common tag's counter."
+            #~ )
 
     def test_child_republish(self):
         CHILD_TEXT = """<utwor>
@@ -320,13 +322,14 @@ class TreeImportTest(WLTestCase):
             )
         pies = models.Tag.objects.get(slug='pies')
         kot = models.Tag.objects.get(slug='kot')
-        self.assertEqual(self.parent.theme_counter, {pies.pk: 1, kot.pk: 1},
+        self.assertEqual(len(self.parent.related_themes()), 2,
                 u"There should be child themes in parent theme counter."
             )
-        epoch = models.Tag.objects.get(slug='x-epoch')
-        self.assertEqual(epoch.book_count, 1,
-                u"There should only be parent in common tag's counter."
-            )
+        # TODO: book_count is deprecated, update here.
+        #~ epoch = models.Tag.objects.get(slug='x-epoch')
+        #~ self.assertEqual(epoch.book_count, 1,
+                #~ u"There should only be parent in common tag's counter."
+            #~ )
 
     def test_book_change_child(self):
         second_child_info = BookInfoStub(
@@ -357,13 +360,14 @@ class TreeImportTest(WLTestCase):
                 u"There should be parent and old child on common tag page."
             )
         kot = models.Tag.objects.get(slug='kot')
-        self.assertEqual(self.parent.theme_counter, {kot.pk: 1},
+        self.assertEqual(len(self.parent.related_themes()), 1,
                 u"There should only be new child themes in parent theme counter."
             )
         epoch = models.Tag.objects.get(slug='x-epoch')
-        self.assertEqual(epoch.book_count, 2,
-                u"There should be parent and old child in common tag's counter."
-            )
+        # book_count deprecated, update test.
+        #~ self.assertEqual(epoch.book_count, 2,
+                #~ u"There should be parent and old child in common tag's counter."
+            #~ )
         self.assertEqual(
                 list(self.client.get('/katalog/lektura/parent/motyw/kot/'
                     ).context['fragments']),

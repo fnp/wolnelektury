@@ -37,11 +37,9 @@ def set_sets(user, work, sets):
         touch_tag(shelf)
 
     # delete empty tags
-    Tag.objects.filter(category='set', user=user, book_count=0).delete()
+    Tag.objects.filter(category='set', user=user, items=None).delete()
 
 
 def cites_for_tags(tags):
     """Returns a QuerySet with all Cites for books with given tags."""
-    books = Book.tagged.with_all(tags).order_by().values_list('id', flat=True)
-    books = list(books)
-    return Cite.objects.filter(book__id__in=books)
+    return Cite.objects.filter(book__in=Book.tagged.with_all(tags))

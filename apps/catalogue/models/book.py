@@ -3,10 +3,11 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import OrderedDict
+from random import randint
 import re
 from django.conf import settings
 from django.core.cache import caches
-from django.db import models
+from django.db import connection, models, transaction
 from django.db.models import permalink
 import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
@@ -17,7 +18,7 @@ from fnpdjango.storage import BofhFileSystemStorage
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, split_tags, related_tag_name
+from catalogue.utils import create_zip, split_tags
 from catalogue import app_settings
 from catalogue import tasks
 from newtagging import managers
@@ -72,8 +73,8 @@ class Book(models.Model):
 
     parent = models.ForeignKey('self', blank=True, null=True,
         related_name='children')
-
-    _related_info = jsonfield.JSONField(blank=True, null=True, editable=False)
+    ancestor = models.ManyToManyField('self', blank=True, null=True,
+        editable=False, related_name='descendant', symmetrical=False)
 
     objects  = models.Manager()
     tagged   = managers.ModelTaggedItemManager(Tag)
@@ -127,18 +128,6 @@ class Book(models.Model):
     def language_name(self):
         return dict(settings.LANGUAGES).get(self.language_code(), "")
 
-    def book_tag_slug(self):
-        return ('l-' + self.slug)[:120]
-
-    def book_tag(self):
-        slug = self.book_tag_slug()
-        book_tag, created = Tag.objects.get_or_create(slug=slug, category='book')
-        if created:
-            book_tag.name = self.title[:50]
-            book_tag.sort_key = self.title.lower()
-            book_tag.save()
-        return book_tag
-
     def has_media(self, type_):
         if type_ in Book.formats:
             return bool(getattr(self, "%s_file" % type_))
@@ -167,7 +156,6 @@ class Book(models.Model):
         if self.id is None:
             return
 
-        type(self).objects.filter(pk=self.pk).update(_related_info=None)
         # Fragment.short_html relies on book's tags, so reset it here too
         for fragm in self.fragments.all().iterator():
             fragm.reset_short_html()
@@ -336,6 +324,8 @@ class Book(models.Model):
             if old_cover:
                 notify_cover_changed.append(child)
 
+        cls.fix_tree_tags()
+
         # No saves beyond this point.
 
         # Build cover.
@@ -362,43 +352,38 @@ class Book(models.Model):
         cls.published.send(sender=book)
         return book
 
-    def fix_tree_tags(self):
-        """Fixes the l-tags on the book's subtree.
-
-        Makes sure that:
-        * the book has its parents book-tags,
-        * its fragments have the book's and its parents book-tags,
-        * runs those for every child book too,
-        * touches all relevant tags,
-        * resets tag and theme counter on the book and its ancestry.
-        """
-        def fix_subtree(book, parent_tags):
-            affected_tags = set(book.tags)
-            book.tags = list(book.tags.exclude(category='book')) + parent_tags
-            sub_parent_tags = parent_tags + [book.book_tag()]
-            for frag in book.fragments.all():
-                affected_tags.update(frag.tags)
-                frag.tags = list(frag.tags.exclude(category='book')
-                                    ) + sub_parent_tags
-            for child in book.children.all():
-                affected_tags.update(fix_subtree(child, sub_parent_tags))
-            return affected_tags
-
-        parent_tags = []
-        parent = self.parent
-        while parent is not None:
-            parent_tags.append(parent.book_tag())
-            parent = parent.parent
-
-        affected_tags = fix_subtree(self, parent_tags)
-        for tag in affected_tags:
-            tasks.touch_tag(tag)
-
-        book = self
-        while book is not None:
-            book.reset_tag_counter()
-            book.reset_theme_counter()
-            book = book.parent
+    @classmethod
+    def fix_tree_tags(cls):
+        """Fixes the ancestry cache."""
+        # TODO: table names
+        with transaction.atomic():
+            cursor = connection.cursor()
+            if connection.vendor == 'postgres':
+                cursor.execute("TRUNCATE catalogue_book_ancestor")
+                cursor.execute("""
+                    WITH RECURSIVE ancestry AS (
+                        SELECT book.id, book.parent_id
+                        FROM catalogue_book AS book
+                        WHERE book.parent_id IS NOT NULL
+                        UNION
+                        SELECT ancestor.id, book.parent_id
+                        FROM ancestry AS ancestor, catalogue_book AS book
+                        WHERE ancestor.parent_id = book.id
+                            AND book.parent_id IS NOT NULL
+                        )
+                    INSERT INTO catalogue_book_ancestor
+                        (from_book_id, to_book_id)
+                        SELECT id, parent_id
+                        FROM ancestry
+                        ORDER BY id;
+                    """)
+            else:
+                cursor.execute("DELETE FROM catalogue_book_ancestor")
+                for b in cls.objects.exclude(parent=None):
+                    parent = b.parent
+                    while parent is not None:
+                        b.ancestor.add(parent)
+                        parent = parent.parent
 
     def cover_info(self, inherit=True):
         """Returns a dictionary to serve as fallback for BookInfo.
@@ -419,6 +404,11 @@ class Book(models.Model):
             info = parent_info
         return info
 
+    def related_themes(self):
+        return Tag.objects.usage_for_queryset(
+            Fragment.objects.filter(models.Q(book=self) | models.Q(book__ancestor=self)),
+            counts=True).filter(category='theme')
+
     def parent_cover_changed(self):
         """Called when parent book's cover image is changed."""
         if not self.cover_info(inherit=False):
@@ -435,116 +425,19 @@ class Book(models.Model):
         """Find other versions (i.e. in other languages) of the book."""
         return type(self).objects.filter(common_slug=self.common_slug).exclude(pk=self.pk)
 
-    def related_info(self):
-        """Keeps info about related objects (tags, media) in cache field."""
-        if self._related_info is not None:
-            return self._related_info
-        else:
-            rel = {'tags': {}, 'media': {}}
-
-            tags = self.tags.filter(category__in=(
-                    'author', 'kind', 'genre', 'epoch'))
-            tags = split_tags(tags)
-            for category in tags:
-                cat = []
-                for tag in tags[category]:
-                    tag_info = {'slug': tag.slug, 'name': tag.name}
-                    for lc, ln in settings.LANGUAGES:
-                        tag_name = getattr(tag, "name_%s" % lc)
-                        if tag_name:
-                            tag_info["name_%s" % lc] = tag_name
-                    cat.append(tag_info)
-                rel['tags'][category] = cat
-
-            for media_format in BookMedia.formats:
-                rel['media'][media_format] = self.has_media(media_format)
-
-            book = self
-            parents = []
-            while book.parent:
-                parents.append((book.parent.title, book.parent.slug))
-                book = book.parent
-            parents = parents[::-1]
-            if parents:
-                rel['parents'] = parents
-
-            if self.pk:
-                type(self).objects.filter(pk=self.pk).update(_related_info=rel)
-            return rel
-
-    def related_themes(self):
-        theme_counter = self.theme_counter
-        book_themes = list(Tag.objects.filter(pk__in=theme_counter.keys()))
-        for tag in book_themes:
-            tag.count = theme_counter[tag.pk]
-        return book_themes
-
-    def reset_tag_counter(self):
-        if self.id is None:
-            return
-
-        cache_key = "Book.tag_counter/%d" % self.id
-        permanent_cache.delete(cache_key)
-        if self.parent:
-            self.parent.reset_tag_counter()
-
-    @property
-    def tag_counter(self):
-        if self.id:
-            cache_key = "Book.tag_counter/%d" % self.id
-            tags = permanent_cache.get(cache_key)
-        else:
-            tags = None
-
-        if tags is None:
-            tags = {}
-            for child in self.children.all().order_by().iterator():
-                for tag_pk, value in child.tag_counter.iteritems():
-                    tags[tag_pk] = tags.get(tag_pk, 0) + value
-            for tag in self.tags.exclude(category__in=('book', 'theme', 'set')).order_by().iterator():
-                tags[tag.pk] = 1
-
-            if self.id:
-                permanent_cache.set(cache_key, tags)
-        return tags
-
-    def reset_theme_counter(self):
-        if self.id is None:
-            return
-
-        cache_key = "Book.theme_counter/%d" % self.id
-        permanent_cache.delete(cache_key)
-        if self.parent:
-            self.parent.reset_theme_counter()
-
-    @property
-    def theme_counter(self):
-        if self.id:
-            cache_key = "Book.theme_counter/%d" % self.id
-            tags = permanent_cache.get(cache_key)
-        else:
-            tags = None
-
-        if tags is None:
-            tags = {}
-            for fragment in Fragment.tagged.with_any([self.book_tag()]).order_by().iterator():
-                for tag in fragment.tags.filter(category='theme').order_by().iterator():
-                    tags[tag.pk] = tags.get(tag.pk, 0) + 1
-
-            if self.id:
-                permanent_cache.set(cache_key, tags)
-        return tags
+    def parents(self):
+        books = []
+        parent = self.parent
+        while parent is not None:
+            books.insert(0, parent)
+            parent = parent.parent
+        return books
 
     def pretty_title(self, html_links=False):
-        book = self
-        rel_info = book.related_info()
-        names = [(related_tag_name(tag), Tag.create_url('author', tag['slug']))
-                    for tag in rel_info['tags'].get('author', ())]
-        if 'parents' in rel_info:
-            books = [(name, Book.create_url(slug))
-                        for name, slug in rel_info['parents']]
-            names.extend(reversed(books))
-        names.append((self.title, self.get_absolute_url()))
+        names = [(tag.name, tag.get_absolute_url())
+            for tag in self.tags.filter(category='author')]
+        books = self.parents() + [self]
+        names.extend([(b.title, b.get_absolute_url()) for b in books])
 
         if html_links:
             names = ['<a href="%s">%s</a>' % (tag[1], tag[0]) for tag in names]
@@ -560,17 +453,8 @@ class Book(models.Model):
         also tagged with those tags.
 
         """
-        # get relevant books and their tags
         objects = cls.tagged.with_all(tags)
-        parents = objects.exclude(children=None).only('slug')
-        # eliminate descendants
-        l_tags = Tag.objects.filter(category='book',
-            slug__in=[book.book_tag_slug() for book in parents.iterator()])
-        descendants_keys = [book.pk for book in cls.tagged.with_any(l_tags).only('pk').iterator()]
-        if descendants_keys:
-            objects = objects.exclude(pk__in=descendants_keys)
-
-        return objects
+        return objects.exclude(ancestor__in=objects)
 
     @classmethod
     def book_list(cls, filter=None):
@@ -634,14 +518,18 @@ class Book(models.Model):
             return None, None
 
     def choose_fragment(self):
-        tag = self.book_tag()
-        fragments = Fragment.tagged.with_any([tag])
-        if fragments.exists():
-            return fragments.order_by('?')[0]
+        fragments = self.fragments.order_by()
+        fragments_count = fragments.count()
+        if not fragments_count and self.children.exists():
+            fragments = Fragment.objects.filter(book__ancestor=self).order_by()
+            fragments_count = fragments.count()
+        if fragments_count:
+            return fragments[randint(0, fragments_count - 1)]
         elif self.parent:
             return self.parent.choose_fragment()
         else:
             return None
+
 
 # add the file fields
 for format_ in Book.formats:

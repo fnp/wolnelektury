@@ -17,7 +17,6 @@ def picture_short(context, picture):
     context.update({
         'picture': picture,
         'main_link': picture.get_absolute_url(),
-        # 'related': picture.related_info(),
         'request': context.get('request'),
         'tags': split_tags(picture.tags),
         })
@@ -28,7 +27,6 @@ def picture_wide(context, picture):
     context.update({
         'picture': picture,
         'main_link': picture.get_absolute_url(),
-        # 'related': picture.related_info(),
         'request': context.get('request'),
         'tags': split_tags(picture.tags),
         })

@@ -178,8 +178,8 @@ class SortedMultiQuerySet(MultiQuerySet):
         self.order_by = kwargs.pop('order_by', None)
         self.sortfn = kwargs.pop('sortfn', None)
         if self.order_by is not None:
-            self.sortfn = lambda a, b: cmp(getattr(a, self.order_by),
-                                           getattr(b, self.order_by))
+            self.sortfn = lambda a, b: cmp((getattr(a, f) for f in self.order_by),
+                                           (getattr(b, f) for f in self.order_by))
         super(SortedMultiQuerySet, self).__init__(*args, **kwargs)
 
     def __getitem__(self, item):
@@ -347,11 +347,6 @@ This can sometimes occupy lots of memory, so trim it here a bit.
         connection.queries = trim_to > 0 \
             and connection.queries[-trim_to:] \
             or []
-
-
-def related_tag_name(tag_info, language=None):
-    return tag_info.get("name_%s" % (language or get_language()),
-        tag_info.get("name_%s" % settings.LANGUAGE_CODE, ""))
 
 
 def delete_from_cache_by_language(cache, key_template):

@@ -15,7 +15,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext as _
 
-from catalogue.utils import related_tag_name as _related_tag_name
+from catalogue.utils import split_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
 
@@ -324,23 +324,12 @@ def book_info(book):
 
 @register.inclusion_tag('catalogue/book_wide.html', takes_context=True)
 def book_wide(context, book):
-    book_themes = book.related_themes()
-    extra_info = book.extra_info
-    hide_about = extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
-    stage_note, stage_note_url = book.stage_note()
-
-    return {
-        'book': book,
-        'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
-        'related': book.related_info(),
-        'extra_info': extra_info,
-        'hide_about': hide_about,
-        'themes': book_themes,
-        'request': context.get('request'),
-        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
-        'stage_note': stage_note,
-        'stage_note_url': stage_note_url,
-    }
+    ctx = book_short(context, book)
+    ctx['extra_info'] = book.extra_info
+    ctx['hide_about'] = ctx['extra_info'].get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
+    ctx['themes'] = book.related_themes()
+    ctx['main_link'] = reverse('book_text', args=[book.slug]) if book.html_file else None
+    return ctx
 
 
 @register.inclusion_tag('catalogue/book_short.html', takes_context=True)
@@ -349,8 +338,10 @@ def book_short(context, book):
 
     return {
         'book': book,
+        'has_audio': book.has_media('mp3'),
         'main_link': book.get_absolute_url(),
-        'related': book.related_info(),
+        'parents': book.parents(),
+        'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
         'request': context.get('request'),
         'show_lang': book.language_code() != settings.LANGUAGE_CODE,
         'stage_note': stage_note,
@@ -360,8 +351,8 @@ def book_short(context, book):
 
 @register.inclusion_tag('catalogue/book_mini_box.html')
 def book_mini(book, with_link=True):
-    author_str = ", ".join(related_tag_name(tag)
-        for tag in book.related_info()['tags'].get('author', ()))
+    author_str = ", ".join(tag.name
+        for tag in book.tags.filter(category='author'))
     return {
         'book': book,
         'author_str': author_str,
@@ -378,14 +369,19 @@ def work_list(context, object_list):
 
 @register.inclusion_tag('catalogue/fragment_promo.html')
 def fragment_promo(arg=None):
-    if arg is None:
-        fragments = Fragment.objects.all().order_by('?')
-        fragment = fragments[0] if fragments.exists() else None
-    elif isinstance(arg, Book):
+    if isinstance(arg, Book):
         fragment = arg.choose_fragment()
     else:
-        fragments = Fragment.tagged.with_all(arg).order_by('?')
-        fragment = fragments[0] if fragments.exists() else None
+        if arg is None:
+            fragments = Fragment.objects.all()
+        else:
+            fragments = Fragment.tagged.with_all(arg)
+        fragments = fragments.order_by().only('id')
+        fragments_count = fragments.count()
+        if fragments_count:
+            fragment = fragments.order_by()[randint(0, fragments_count - 1)]
+        else:
+            fragment = None
 
     return {
         'fragment': fragment,
@@ -400,7 +396,7 @@ def related_books(book, limit=6, random=1, taken=0):
     if related is None:
         related = Book.tagged.related_to(book,
                 Book.objects.exclude(common_slug=book.common_slug)
-                ).exclude(tag_relations__tag=book.book_tag())[:limit-random]
+                ).exclude(ancestor=book)[:limit-random]
         cache.set(cache_key, related, 1800)
     if random:
         random_books = Book.objects.exclude(
@@ -437,7 +433,6 @@ def tag_url(category, slug):
 
 @register.simple_tag
 def download_audio(book, daisy=True):
-    related = book.related_info()
     links = []
     if related['media'].get('mp3'):
         links.append("<a href='%s'>%s</a>" %
@@ -473,11 +468,6 @@ def license_icon(license_url):
         "icon": "img/licenses/%s.png" % known['icon'],
         "license_description": known['description'],
     }
-
-
-@register.simple_tag
-def related_tag_name(tag, lang=None):
-    return _related_tag_name(tag, lang)
 
 
 @register.filter

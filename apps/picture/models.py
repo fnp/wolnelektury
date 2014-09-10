@@ -106,8 +106,6 @@ class Picture(models.Model):
     culturepl_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
 
-    _related_info = jsonfield.JSONField(blank=True, null=True, editable=False)
-
     width       = models.IntegerField(null=True)
     height      = models.IntegerField(null=True)
 
@@ -333,7 +331,6 @@ class Picture(models.Model):
         if self.id is None:
             return
 
-        type(self).objects.filter(pk=self.pk).update(_related_info=None)
         for area in self.areas.all().iterator():
             area.reset_short_html()
 
@@ -350,7 +347,7 @@ class Picture(models.Model):
     def short_html(self):
         if self.id:
             cache_key = "Picture.short_html/%d/%s" % (self.id, get_language())
-            short_html = get_cache('permanent').get(cache_key)
+            short_html = permanent_cache.get(cache_key)
         else:
             short_html = None
 
@@ -365,12 +362,11 @@ class Picture(models.Model):
                     {'picture': self, 'tags': tags}))
 
             if self.id:
-                get_cache('permanent').set(cache_key, short_html)
+                permanent_cache.set(cache_key, short_html)
             return mark_safe(short_html)
 
     def pretty_title(self, html_links=False):
         picture = self
-        # TODO Add translations (related_tag_info)
         names = [(tag.name,
                   catalogue.models.Tag.create_url('author', tag.slug))
                  for tag in self.tags.filter(category='author')]
@@ -382,89 +378,7 @@ class Picture(models.Model):
             names = [tag[0] for tag in names]
         return ', '.join(names)
 
-    def related_info(self):
-        """Keeps info about related objects (tags) in cache field."""
-        if self._related_info is not None:
-            return self._related_info
-        else:
-            rel = {'tags': {}}
-
-            tags = self.tags.filter(category__in=(
-                    'author', 'kind', 'genre', 'epoch'))
-            tags = split_tags(tags)
-            for category in tags:
-                cat = []
-                for tag in tags[category]:
-                    tag_info = {'slug': tag.slug, 'name': tag.name}
-                    for lc, ln in settings.LANGUAGES:
-                        tag_name = getattr(tag, "name_%s" % lc)
-                        if tag_name:
-                            tag_info["name_%s" % lc] = tag_name
-                    cat.append(tag_info)
-                rel['tags'][category] = cat
-
-
-            if self.pk:
-                type(self).objects.filter(pk=self.pk).update(_related_info=rel)
-            return rel
-
     # copied from book.py, figure out
     def related_themes(self):
-        # self.theme_counter hides a computation, so a line below actually makes sense
-        theme_counter = self.theme_counter
-        picture_themes = list(catalogue.models.Tag.objects.filter(pk__in=theme_counter.keys()))
-        for tag in picture_themes:
-            tag.count = theme_counter[tag.pk]
-        return picture_themes
-
-    def reset_tag_counter(self):
-        if self.id is None:
-            return
-
-        cache_key = "Picture.tag_counter/%d" % self.id
-        permanent_cache.delete(cache_key)
-        if self.parent:
-            self.parent.reset_tag_counter()
-
-    @property
-    def tag_counter(self):
-        if self.id:
-            cache_key = "Picture.tag_counter/%d" % self.id
-            tags = permanent_cache.get(cache_key)
-        else:
-            tags = None
-
-        if tags is None:
-            tags = {}
-            # do we need to do this? there are no children here.
-            for tag in self.tags.exclude(category__in=('book', 'theme', 'thing', 'set')).order_by().iterator():
-                tags[tag.pk] = 1
-
-            if self.id:
-                permanent_cache.set(cache_key, tags)
-        return tags
-
-    def reset_theme_counter(self):
-        if self.id is None:
-            return
-
-        cache_key = "Picture.theme_counter/%d" % self.id
-        permanent_cache.delete(cache_key)
-
-    @property
-    def theme_counter(self):
-        if self.id:
-            cache_key = "Picture.theme_counter/%d" % self.id
-            tags = permanent_cache.get(cache_key)
-        else:
-            tags = None
-
-        if tags is None:
-            tags = {}
-            for area in PictureArea.objects.filter(picture=self).order_by().iterator():
-                for tag in area.tags.filter(category__in=('theme', 'thing')).order_by().iterator():
-                    tags[tag.pk] = tags.get(tag.pk, 0) + 1
-
-            if self.id:
-                permanent_cache.set(cache_key, tags)
-        return tags
+        return catalogue.models.Tag.usage_for_queryset(
+            self.areas.all(), counts=True).filter(category__in=('theme', 'thing'))

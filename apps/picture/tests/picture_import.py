@@ -21,7 +21,7 @@ class PictureTest(WLTestCase):
         assert themes == set([(u'theme', u'nieporządek'), (u'thing', u'kosmos')]), \
             'Bad themes on Picture areas: %s' % themes
 
-        pic_themes = set([tag.name for tag in picture.tags if tag.category in ('theme', 'object')])
+        pic_themes = set([tag.name for tag in picture.tags if tag.category in ('theme', 'thing')])
         assert not pic_themes, 'Unwanted themes set on Pictures: %s' % pic_themes
 
         picture.delete()
