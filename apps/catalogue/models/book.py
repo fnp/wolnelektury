@@ -18,7 +18,7 @@ from fnpdjango.storage import BofhFileSystemStorage
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, split_tags
+from catalogue.utils import create_zip
 from catalogue import app_settings
 from catalogue import tasks
 from newtagging import managers
@@ -64,7 +64,7 @@ class Book(models.Model):
             upload_to=_cover_upload_to,
             storage=bofh_storage, max_length=255)
     # Cleaner version of cover for thumbs
-    cover_thumb = EbookField('cover_thumb', _('cover thumbnail'), 
+    cover_thumb = EbookField('cover_thumb', _('cover thumbnail'),
             null=True, blank=True,
             upload_to=_cover_thumb_upload_to,
             max_length=255)
@@ -165,8 +165,6 @@ class Book(models.Model):
         except IndexError:
             author = u''
         type(self).objects.filter(pk=self.pk).update(sort_key_author=author)
-
-
 
     def has_description(self):
         return len(self.description) > 0

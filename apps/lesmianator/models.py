@@ -168,7 +168,7 @@ class Continuations(models.Model):
             elif isinstance(sth, Tag):
                 conts = cls.for_set(sth)
             else:
-                raise NotImplemented('Lesmianator continuations: only Book and Tag supported')
+                raise NotImplementedError('Lesmianator continuations: only Book and Tag supported')
 
             c, created = cls.objects.get_or_create(content_type=object_type, object_id=sth.id)
             c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps((should_keys, conts))))

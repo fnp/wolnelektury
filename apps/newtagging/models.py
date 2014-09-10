@@ -228,8 +228,8 @@ def create_intermediary_table_model(model):
 
 class TagMeta(ModelBase):
     "Metaclass for tag models (models inheriting from TagBase)."
-    def __new__(cls, name, bases, attrs):
-        model = super(TagMeta, cls).__new__(cls, name, bases, attrs)
+    def __new__(mcs, name, bases, attrs):
+        model = super(TagMeta, mcs).__new__(mcs, name, bases, attrs)
         if not model._meta.abstract:
             # Create an intermediary table and register custom managers for concrete models
             model.intermediary_table_model = create_intermediary_table_model(model)

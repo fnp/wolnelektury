@@ -434,15 +434,15 @@ def tag_url(category, slug):
 @register.simple_tag
 def download_audio(book, daisy=True):
     links = []
-    if related['media'].get('mp3'):
+    if book.has_media('mp3'):
         links.append("<a href='%s'>%s</a>" %
             (reverse('download_zip_mp3', args=[book.slug]),
                 BookMedia.formats['mp3'].name))
-    if related['media'].get('ogg'):
+    if book.has_media('ogg'):
         links.append("<a href='%s'>%s</a>" %
             (reverse('download_zip_ogg', args=[book.slug]),
                 BookMedia.formats['ogg'].name))
-    if daisy and related['media'].get('daisy'):
+    if daisy and book.has_media('daisy'):
         for dsy in book.get_media('daisy'):
             links.append("<a href='%s'>%s</a>" %
                 (dsy.file.url, BookMedia.formats['daisy'].name))

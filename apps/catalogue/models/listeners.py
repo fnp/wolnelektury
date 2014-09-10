@@ -6,10 +6,8 @@ from django.conf import settings
 from django.core.cache import caches
 from django.db.models.signals import post_save, pre_delete, post_delete
 import django.dispatch
-from catalogue.models import Tag, BookMedia, Book, Fragment, Collection
-from catalogue import tasks
+from catalogue.models import BookMedia, Book, Collection
 from catalogue.utils import delete_from_cache_by_language
-from newtagging.models import tags_updated
 
 
 permanent_cache = caches['permanent']

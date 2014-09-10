@@ -4,7 +4,6 @@
 #
 from collections import OrderedDict
 import re
-import itertools
 
 from django.conf import settings
 from django.core.cache import get_cache
@@ -190,7 +189,7 @@ def tagged_object_list(request, tags=''):
     only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
 
 
-    objects = only_author = None
+    objects =  None
     categories = {}
     object_queries = []
 
@@ -240,7 +239,6 @@ def tagged_object_list(request, tags=''):
 
 
     if not objects:
-        only_author = len(tags) == 1 and tags[0].category == 'author'
         objects = models.Book.objects.none()
 
     return render_to_response('catalogue/tagged_object_list.html',
@@ -248,7 +246,6 @@ def tagged_object_list(request, tags=''):
             'object_list': objects,
             'categories': categories,
             'only_shelf': only_shelf,
-            #~ 'only_author': only_author,
             'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
             'tags': tags,

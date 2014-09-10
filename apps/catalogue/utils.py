@@ -14,7 +14,6 @@ from django.http import HttpResponse
 from django.core.files.uploadedfile import UploadedFile
 from django.core.files.storage import DefaultStorage
 from django.utils.encoding import force_unicode
-from django.utils.translation import get_language
 from django.conf import settings
 from os import mkdir, path, unlink
 from errno import EEXIST, ENOENT
@@ -155,7 +154,7 @@ class MultiQuerySet(object):
 
     def __getitem__(self, item):
         try:
-            indices = (offset, stop, step) = item.indices(self.count())
+            (offset, stop, step) = item.indices(self.count())
         except AttributeError:
             # it's not a slice - make it one
             return self[item : item + 1][0]
@@ -185,7 +184,7 @@ class SortedMultiQuerySet(MultiQuerySet):
     def __getitem__(self, item):
         sort_heads = [0] * len(self.querysets)
         try:
-            indices = (offset, stop, step) = item.indices(self.count())
+            (offset, stop, step) = item.indices(self.count())
         except AttributeError:
             # it's not a slice - make it one
             return self[item : item + 1][0]

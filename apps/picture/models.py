@@ -380,5 +380,5 @@ class Picture(models.Model):
 
     # copied from book.py, figure out
     def related_themes(self):
-        return catalogue.models.Tag.usage_for_queryset(
+        return catalogue.models.Tag.objects.usage_for_queryset(
             self.areas.all(), counts=True).filter(category__in=('theme', 'thing'))
