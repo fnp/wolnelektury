@@ -86,7 +86,7 @@
         display: inline-block;
         vertical-align: top;
         @include size(margin-bottom, 5.5px);
-        @include size(width, 385px);
+        @include size(max-width, 385px);
 
         ul {
             list-style: none;

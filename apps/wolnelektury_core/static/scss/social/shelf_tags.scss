@@ -1,0 +1,40 @@
+.social-shelf-tags {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+
+    @include min-screen($S_BOOK_SHORT_FULL) {
+        position: absolute;
+        top: 134px;
+        left: 152px;
+        padding: 10px 10px 5px 10px;
+        margin: 10px 0;
+        width: 310px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:hover {
+            overflow: visible;
+            text-overflow: ellipsis;
+            white-space: normal;
+            z-index: 1000;
+            background: #fff;
+            box-shadow: 0 0 2px #ddd;
+        }
+    }
+
+    li {
+        display: inline-block;
+        margin-right: .5em;
+        margin-bottom: .5em;
+
+        a {
+            display: block;
+            padding: .2em .9em;
+            background: #ABDADE;
+            color: #08646b;
+            border-radius: 1em;
+        }
+    }
+}

@@ -28,17 +28,41 @@
 
 
 .search-result {
-    @include size(width, 975px);
+    @include size(border, 1px solid #ddd);
+    @include size(box-shadow, 2px 2px 2px #ddd);
+    @include size(margin, 1px);
+    background: white;
 
-    .book-box-body {
-        @include size(width, 310px);
+    @include min-screen($S_BOOK_SHORT_FULL) {
+        @include size(width, $W_BOOK_SHORT_FULL -4px);
+    }
+
+    @media screen and (min-width: 62.5em) {
+        @include size(width, 965px);
+        @include size(padding-right, 8px);
+    }
+
+    .book-box {
+        display: inline-block;
+
+        @include min-screen($S_BOOK_SHORT_FULL) {
+            @include size(width, $W_BOOK_SHORT_FULL - 4px);
+        }
+
+        .book-box-inner {
+            border: none;
+            box-shadow: none;
+            margin: 0;
+        }
     }
 }
 
 
 
 .book-list-header {
-    @include size(width, 975px);
+    @media screen and (min-width: 62.5em) {
+        @include size(width, 975px);
+    }
     padding: 0em;
     @include size(margin-left, -1px);
 
@@ -53,9 +77,10 @@
 }
 
 .snippets {
-    @include size(width, 440px);
-    float: right;
-    @include size(margin-top, -200px);
+    @media screen and (min-width: 62.5em) {
+        @include size(width, 440px);
+        float: right;
+    }
 
     .snippet-text {
         @include size(font-size, 12px);

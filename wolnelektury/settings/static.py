@@ -20,10 +20,9 @@ PIPELINE_CSS = {
     'main': {
         # styles both for mobile and for big screen
         'source_filenames': [
-            'css/jquery.countdown.css', 
+            'css/jquery.countdown.css',
 
             'sponsors/css/sponsors.css',
-            'css/social/shelf_tags.css',
 
             'uni_form/uni-form.css',
             'uni_form/default.uni-form.css',
@@ -58,8 +57,8 @@ PIPELINE_CSS = {
     },
     'player': {
         'source_filenames': [
-            'jplayer/jplayer.blue.monday.css', 
-            'player/player.css', 
+            'jplayer/jplayer.blue.monday.css',
+            'player/player.css',
         ],
         'output_filename': 'css/compressed/player.css',
     },
@@ -90,16 +89,16 @@ PIPELINE_JS = {
             'player/openplayer.js',
             'js/search.js',
             'funding/funding.js',
-            
+
             'uni_form/uni-form.js',
             ),
         'output_filename': 'js/base.min.js',
     },
     'player': {
         'source_filenames': [
-            'jplayer/jquery.jplayer.min.js', 
-            'jplayer/jplayer.playlist.min.js', 
-            'player/player.js', 
+            'jplayer/jquery.jplayer.min.js',
+            'jplayer/jplayer.playlist.min.js',
+            'player/player.js',
         ],
         'output_filename': 'js/player.min.js',
     },
