@@ -1,5 +1,6 @@
 localsettings.py
 dev.sqlite
+fabfile_local.py
 *.db
 *.db-journal
 *~
@@ -37,3 +38,4 @@ TAGS
 media
 search_index
 doc/_build
+reports

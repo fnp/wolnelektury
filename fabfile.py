@@ -1,4 +1,8 @@
 from fnpdjango.deploy import *
+try:
+    from fabfile_local import *
+except ImportError:
+    pass
 
 
 env.project_name = 'wolnelektury'
