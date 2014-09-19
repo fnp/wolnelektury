@@ -1,4 +1,4 @@
--i http://py.mdrn.pl/simple/
+-i https://py.mdrn.pl:8443/simple/
 
 # django
 Django>=1.7,<1.8

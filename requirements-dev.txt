@@ -1,4 +1,4 @@
--i http://pypi.nowoczesnapolska.org.pl/simple/ 
+-i https://py.mdrn.pl:8443/simple/
 
 django-debug-toolbar
 polib

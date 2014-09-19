@@ -17,6 +17,7 @@ apps/wolnelektury_core/static/scss/*.css
 # Python garbage
 *.pyc
 .coverage
+coverage.xml
 pip-log.txt
 nosetests.xml
 
@@ -39,3 +40,4 @@ media
 search_index
 doc/_build
 reports
+

@@ -1,4 +1,4 @@
--i http://pypi.nowoczesnapolska.org.pl/simple/ 
+-i https://py.mdrn.pl:8443/simple/
 
 nose>=0.11
 django-nose
