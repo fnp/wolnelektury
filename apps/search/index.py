@@ -940,3 +940,7 @@ class Search(SolrIndex):
         for f in filters:
             query = query.query(f)
         return query
+
+
+if getattr(settings, 'SEARCH_MOCK', False):
+    from .mock_search import Search

@@ -59,10 +59,11 @@ def did_you_mean(query, tokens):
     # return query
 
 
+@cache.never_cache
 def hint(request):
     prefix = request.GET.get('term', '')
     if len(prefix) < 2:
-        return JsonResponse([])
+        return JsonResponse([], safe=False)
 
     prefix = remove_query_syntax_chars(prefix)
 
@@ -106,9 +107,10 @@ def hint(request):
         return HttpResponse("%s(%s);" % (callback, json.dumps(data)),
                             content_type="application/json; charset=utf-8")
     else:
-        return JsonResponse(data)
+        return JsonResponse(data, safe=False)
 
 
+@cache.never_cache
 def main(request):
     results = {}
 
