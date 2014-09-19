@@ -73,7 +73,7 @@
 						$current = $hidden;
                         if ($(this).hasClass('load-menu') && !menu_loaded) {
                             $.ajax({
-                                url: '/katalog/',
+                                url: '/katalog/' + LANGUAGE_CODE + '.json',
                                 dataType: "json",
                             }).done(function(data) {
                                 $.each(data, function(index, value) {

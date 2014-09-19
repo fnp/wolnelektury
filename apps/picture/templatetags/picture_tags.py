@@ -12,16 +12,6 @@ register = template.Library()
 
 cropper = CustomCroppingEngine()
 
-@register.inclusion_tag('picture/picture_short.html', takes_context=True)
-def picture_short(context, picture):
-    context.update({
-        'picture': picture,
-        'main_link': picture.get_absolute_url(),
-        'request': context.get('request'),
-        'tags': split_tags(picture.tags),
-        })
-    return context
-
 @register.inclusion_tag('picture/picture_wide.html', takes_context=True)
 def picture_wide(context, picture):
     context.update({

@@ -8,4 +8,3 @@ from catalogue.models.fragment import Fragment
 from catalogue.models.book import Book
 from catalogue.models.collection import Collection
 from catalogue.models.source import Source
-from catalogue.models.listeners import *

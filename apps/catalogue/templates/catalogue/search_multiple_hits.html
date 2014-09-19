@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags search_tags pagination_tags %}
+{% load pagination_tags %}
+{% load inline_tag_list from catalogue_tags %}
+{% load book_searched from search_tags %}
+{% load ssi_include from ssify %}
 
 {% block titleextra %}{% trans "Search" %}{% endblock %}
 
@@ -55,7 +58,7 @@
     <div>
       <ol class="work-list">
 	{% for result in results.title %}<li class="Book-item">
-	  {% book_short result.book %}
+	  {% ssi_include 'catalogue_book_short' pk=result.book.pk %}
 	</li>{% endfor %}
       </ol>
     </div>
@@ -69,7 +72,7 @@
     </div>
     <div>
       <ol class="work-list">
-	{% for author in results.author %}<li class="Book-item">{% book_short author.book %}</li>{% endfor %}
+	{% for author in results.author %}<li class="Book-item">{% ssi_include 'catalogue_book_short' pk=author.book.pk %}</li>{% endfor %}
       </ol>
     </div>
     {% endif %}
@@ -82,7 +85,7 @@
     </div>
     <div>
       <ol class="work-list">
-	{% for translator in results.translator %}<li class="Book-item">{% book_short translator.book %}</li>{% endfor %}
+	{% for translator in results.translator %}<li class="Book-item">{% ssi_include 'catalogue_book_short' pk=translator.book.pk %}</li>{% endfor %}
       </ol>
     </div>
     {% endif %}

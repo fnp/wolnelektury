@@ -1,0 +1,18 @@
+{% spaceless %}
+
+{% if cite.image %}
+    {% if cite.image_link %}<a href="{{ cite.image_link }}">{% endif %}
+    {% if cite.image_title %}
+        {{ cite.image_title }}{% else %}
+        untitled{% endif %}{% if cite.image_link %}</a>{% endif %},
+    {% if cite.image_author %}{{ cite.image_author }},{% endif %}
+    {% if cite.image_license_link %}<a href="{{ cite.image_license_link }}">{% endif %}
+    {{ cite.image_license }}
+    {% if cite.image_license_link %}</a>{% endif %}
+{% else %}
+    <a href="http://www.flickr.com/photos/lou/430980641/">books about architecture</a>,
+    saikofish@Flickr,
+    <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY NC SA</a>.
+{% endif %}
+
+{% endspaceless %}

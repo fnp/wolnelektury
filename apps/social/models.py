@@ -4,8 +4,9 @@
 #
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 from django.core.urlresolvers import reverse
-
+from ssify import flush_ssi_includes
 from catalogue.models import Book
 
 
@@ -44,3 +45,18 @@ class Cite(models.Model):
     def get_absolute_url(self):
         """This is used for testing."""
         return "%s?choose_cite=%d" % (reverse('main_page'), self.id)
+
+    def save(self, *args, **kwargs):
+        ret = super(Cite, self).save(*args, **kwargs)
+        self.flush_includes()
+        return ret
+
+    def flush_includes(self):
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/ludzie/cite/%s.%s.html',
+                '/ludzie/cite_main/%s.%s.html',
+            ]
+            for lang in [lc for (lc, _ln) in settings.LANGUAGES]] +
+            ['/ludzie/cite_info/%s.html' % self.pk])

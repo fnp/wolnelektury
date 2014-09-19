@@ -18,12 +18,17 @@ class Command(BaseCommand):
         from datetime import date, timedelta
         from funding.models import Offer
         from funding import app_settings
+        from django.core.cache import caches
+        from django.conf import settings
 
         verbose = options['verbose']
 
         for offer in Offer.past().filter(notified_end=None):
             if verbose:
                 print 'Notify end:', offer
+            # The 'WL fund' list needs to be updated.
+            caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
+            offer.flush_includes()
             offer.notify_end()
 
         current = Offer.current()

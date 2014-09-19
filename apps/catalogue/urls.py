@@ -18,6 +18,8 @@ urlpatterns = patterns('picture.views',
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
     url(r'^obraz/(?P<slug>%s)/$' % SLUG, 'picture_detail'),
 
+    url(r'^p/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'picture_short', name='picture_short'),
+    url(r'^pa/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'picturearea_short', name='picture_area_short'),
 )
 
 urlpatterns += patterns('',
@@ -63,6 +65,15 @@ urlpatterns += patterns('catalogue.views',
     url(r'^lektura/(?P<slug>%s)/$' % SLUG, 'book_detail', name='book_detail'),
     url(r'^lektura/(?P<slug>%s)/motyw/(?P<theme_slug>[a-zA-Z0-9-]+)/$' % SLUG,
         'book_fragments', name='book_fragments'),
+
+    # Includes.
+    url(r'^(?P<lang>[^/]+)\.json$', 'catalogue_json'),
+    url(r'^b/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', 'book_mini', name='catalogue_book_mini'),
+    url(r'^b/(?P<pk>\d+)/mini_nolink\.(?P<lang>.+)\.html', 'book_mini', {'with_link': False}, name='catalogue_book_mini_nolink'),
+    url(r'^b/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'book_short', name='catalogue_book_short'),
+    url(r'^b/(?P<pk>\d+)/wide\.(?P<lang>.+)\.html', 'book_wide', name='catalogue_book_wide'),
+    url(r'^f/(?P<pk>\d+)/promo\.(?P<lang>.+)\.html', 'fragment_promo', name='catalogue_fragment_promo'),
+    url(r'^f/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'fragment_short', name='catalogue_fragment_short'),
 
     # This should be the last pattern.
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),

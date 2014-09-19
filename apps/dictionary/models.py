@@ -30,6 +30,6 @@ def build_notes(book):
                                html=html_str,
                                sort_key=sortify(text_str).strip()[:128])
 
-def notes_from_book(sender, **kwargs):
-    build_notes.delay(sender)
+def notes_from_book(sender, instance, **kwargs):
+    build_notes.delay(instance)
 Book.html_built.connect(notes_from_book)

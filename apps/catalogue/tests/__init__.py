@@ -8,3 +8,4 @@ from catalogue.tests.cover import *
 from catalogue.tests.search import *
 from catalogue.tests.tags import *
 from catalogue.tests.templatetags import *
+from .test_visit import *

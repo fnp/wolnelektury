@@ -55,7 +55,7 @@ class Command(BaseCommand):
                         print "Is:       ", ", ".join(ancestors)
                         print "Should be:", ", ".join(parents)
                     if not options['dry_run']:
-                        book.fix_tree_tags()
+                        book.repopulate_ancestors()
                         if options['verbose']:
                             print "Fixed."
                     if options['verbose']:

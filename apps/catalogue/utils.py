@@ -2,8 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from __future__ import with_statement
-
+from collections import defaultdict
 import hashlib
 import random
 import re
@@ -37,14 +36,21 @@ def get_random_hash(seed):
     return urlsafe_b64encode(sha_digest).replace('=', '').replace('_', '-').lower()
 
 
-def split_tags(tags, initial=None):
-    if initial is None:
-        result = {}
+def split_tags(*tag_lists):
+    if len(tag_lists) == 1:
+        result = defaultdict(list)
+        for tag in tag_lists[0]:
+            result[tag.category].append(tag)
     else:
-        result = initial
-
-    for tag in tags:
-        result.setdefault(tag.category, []).append(tag)
+        result = defaultdict(dict)
+        for tag_list in tag_lists:
+            for tag in tag_list:
+                try:
+                    result[tag.category][tag.pk].count += tag.count
+                except KeyError:
+                    result[tag.category][tag.pk] = tag
+        for k, v in result.items():
+            result[k] = sorted(v.values(), key=lambda tag: tag.sort_key)
     return result
 
 

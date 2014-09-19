@@ -26,17 +26,21 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = [
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'ssify.middleware.SsiMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'ssify.middleware.PrepareForCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    'ssify.middleware.LocaleMiddleware',
     'maintenancemode.middleware.MaintenanceModeMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'
@@ -89,15 +93,13 @@ INSTALLED_APPS_CONTRIB = [
     'pipeline',
     'piston',
     'piwik',
-    #'rosetta',
-    #'south',
     'sorl.thumbnail',
     'kombu.transport.django',
     'honeypot',
-    #'django_nose',
     'fnpdjango',
     'getpaid',
     'getpaid.backends.payu',
+    'ssify',
 
     #allauth stuff
     'uni_form',

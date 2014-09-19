@@ -18,11 +18,6 @@ def touch_tag(tag):
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
 
 
-@task(ignore_result=True)
-def fix_tree_tags(book):
-    book.fix_tree_tags()
-
-
 @task
 def index_book(book_id, book_info=None, **kwargs):
     from catalogue.models import Book

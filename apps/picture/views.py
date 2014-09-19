@@ -4,10 +4,11 @@
 #
 from collections import OrderedDict
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.template import RequestContext
-from picture.models import Picture
+from picture.models import Picture, PictureArea
 from catalogue.utils import split_tags
+from ssify import ssi_included
 
 # was picture/picture_list.html list (without thumbs)
 def picture_list(request, filter=None, get_filter=None, template_name='catalogue/picture_list.html', cache_key=None, context=None):
@@ -87,3 +88,23 @@ def import_picture(request):
         return HttpResponse(_("Error importing file: %r") % import_form.errors)
 
 
+@ssi_included
+def picture_short(request, pk):
+    picture = get_object_or_404(Picture, pk=pk)
+
+    return render(request, 'picture/picture_short.html', {
+        'picture': picture,
+        'main_link': picture.get_absolute_url(),
+        'request': request,
+        'tags': split_tags(picture.tags),
+        })
+
+
+@ssi_included
+def picturearea_short(request, pk):
+    area = get_object_or_404(PictureArea, pk=pk)
+    theme = area.tags.filter(category='theme')
+    theme = theme and theme[0] or None
+    thing = area.tags.filter(category='thing')
+    thing = thing and thing[0] or None
+    return render(request, 'picture/picturearea_short.html', locals())

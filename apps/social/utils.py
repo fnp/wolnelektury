@@ -2,15 +2,44 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from collections import defaultdict
+from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
+from django.utils.functional import lazy
 from catalogue.models import Book, Tag
 from catalogue import utils
 from catalogue.tasks import touch_tag
 from social.models import Cite
 
 
-def likes(user, work):
-    return user.is_authenticated() and work.tags.filter(category='set', user=user).exists()
+def likes(user, work, request=None):
+    if not user.is_authenticated():
+        return False
+
+    if request is None:
+        return work.tags.filter(category='set', user=user).exists()
+
+    if not hasattr(request, 'social_likes'):
+        # tuple: unchecked, checked, liked
+        request.social_likes = defaultdict(lambda:(set(), set(), set()))
+
+    ct = ContentType.objects.get_for_model(type(work))
+    likes_t = request.social_likes[ct.pk]
+    if work.pk in likes_t[1]:
+        return work.pk in likes_t[2]
+    else:
+        likes_t[0].add(work.pk)
+        def _likes():
+            if likes_t[0]:
+                ids = tuple(likes_t[0])
+                likes_t[0].clear()
+                likes_t[2].update(Tag.intermediary_table_model.objects.filter(
+                    content_type_id=ct.pk, tag__user_id=user.pk,
+                    object_id__in=ids
+                ).distinct().values_list('object_id', flat=True))
+                likes_t[1].update(ids)
+            return work.pk in likes_t[2]
+        return lazy(_likes, bool)()
 
 
 def get_set(user, name):

@@ -3,11 +3,14 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
+from django.core.cache import caches
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import permalink
+from django.dispatch import Signal
 from django.utils.translation import ugettext_lazy as _
 from newtagging.models import TagBase
+from ssify import flush_ssi_includes
 
 
 # Those are hard-coded here so that makemessages sees them.
@@ -42,6 +45,8 @@ class Tag(TagBase):
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
 
+    after_change = Signal(providing_args=['instance', 'languages'])
+
     class UrlDeprecationWarning(DeprecationWarning):
         pass
 
@@ -62,6 +67,60 @@ class Tag(TagBase):
         verbose_name_plural = _('tags')
         unique_together = (("slug", "category"),)
         app_label = 'catalogue'
+
+    def save(self, *args, **kwargs):
+        flush_cache = flush_all_includes = False
+        if self.pk and self.category != 'set':
+            # Flush the whole views cache.
+            # Seem a little harsh, but changed tag names, descriptions
+            # and links come up at any number of places.
+            flush_cache = True
+
+            # Find in which languages we need to flush related includes.
+            old_self = type(self).objects.get(pk=self.pk)
+            # Category shouldn't normally be changed, but just in case.
+            if self.category != old_self.category:
+                flush_all_includes = True
+            languages_changed = self.languages_changed(old_self)
+
+        ret = super(Tag, self).save(*args, **kwargs)
+
+        if flush_cache:
+            caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
+            if flush_all_includes:
+                flush_ssi_includes()
+            else:
+                self.flush_includes()
+            self.after_change.send(sender=type(self), instance=self, languages=languages_changed)
+
+        return ret
+
+    def languages_changed(self, old):
+        all_langs = [lc for (lc, _ln) in settings.LANGUAGES]
+        if (old.category, old.slug) != (self.category, self.slug):
+            return all_langs
+        languages = set()
+        for lang in all_langs:
+            name_field = 'name_%s' % lang
+            if getattr(old, name_field) != getattr(self, name_field):
+                languages.add(lang)
+        return languages
+
+    def flush_includes(self, languages=True):
+        if not languages:
+            return
+        if languages is True:
+            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/api/include/tag/%d.%s.json',
+                '/api/include/tag/%d.%s.xml',
+                ]
+            for lang in languages
+            ])
+        flush_ssi_includes([
+            '/katalog/%s.json' % lang for lang in languages])
 
     def __unicode__(self):
         return self.name

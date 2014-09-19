@@ -31,8 +31,7 @@ class BooksByTagTests(WLTestCase):
 
     def test_nonexistent_tag(self):
         """ Looking for a non-existent tag should yield 404 """
-        # NOTE: this yields a false positive, 'cause of URL change
-        self.assertEqual(404, self.client.get('/katalog/autor/czeslaw_milosz/').status_code)
+        self.assertEqual(404, self.client.get('/katalog/autor/czeslaw-milosz/').status_code)
 
     def test_book_tag(self):
         """ Looking for a book tag isn't permitted """
@@ -105,7 +104,8 @@ class TagRelatedTagsTests(WLTestCase):
         """ empty tag should have no related tags """
 
         cats = self.client.get('/katalog/autor/empty/').context['categories']
-        self.assertEqual(cats, {}, 'tags related to empty tag')
+        self.assertEqual({k: v for (k, v) in cats.items() if v}, {},
+            'tags related to empty tag')
 
     def test_has_related(self):
         """ related own and descendants' tags should be generated """
@@ -115,7 +115,7 @@ class TagRelatedTagsTests(WLTestCase):
                         'missing `author` related tag')
         self.assertTrue('Epoch' in [tag.name for tag in cats['epoch']],
                         'missing `epoch` related tag')
-        self.assertFalse("kind" in cats,
+        self.assertFalse(cats.get("kind", False),
                         "There should be no child-only related `kind` tags")
         self.assertTrue("Genre" in [tag.name for tag in cats['genre']],
                         'missing `genre` related tag')
@@ -135,7 +135,7 @@ class TagRelatedTagsTests(WLTestCase):
 
         response = self.client.get('/katalog/rodzaj/kind/')
         cats = response.context['categories']
-        self.assertFalse('kind' in cats,
+        self.assertFalse(cats.get('kind', False),
                          'filtering tag wrongly included in related')
         cats = self.client.get('/katalog/motyw/theme/').context['categories']
         self.assertFalse('Theme' in [tag.name for tag in cats['theme']],
@@ -155,11 +155,22 @@ class TagRelatedTagsTests(WLTestCase):
 
         cats = self.client.get('/katalog/epoka/epoch/').context['categories']
         self.assertTrue(('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
-                    'wrong related kind tags on tag page')
+                    'wrong related kind tags on tag page, got: ' +
+                    unicode([(tag.name, tag.count) for tag in cats['kind']]))
 
         # all occurencies of theme should be counted
         self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
                     'wrong related theme count')
+
+    def test_query_child_tag(self):
+        """
+        If child and parent have a common tag, but parent isn't included
+        in the result, child should still count.
+        """
+        cats = self.client.get('/katalog/gatunek/childgenre/').context['categories']
+        self.assertTrue(('Epoch', 2) in [(tag.name, tag.count) for tag in cats['epoch']],
+                    'wrong related kind tags on tag page, got: ' +
+                    unicode([(tag.name, tag.count) for tag in cats['epoch']]))
 
 
 class CleanTagRelationTests(WLTestCase):
@@ -183,7 +194,7 @@ class CleanTagRelationTests(WLTestCase):
 
         models.Book.objects.all().delete()
         cats = self.client.get('/katalog/rodzaj/k/').context['categories']
-        self.assertEqual(cats, {})
+        self.assertEqual({k: v for (k, v) in cats.items() if v}, {})
         self.assertEqual(models.Fragment.objects.all().count(), 0,
                          "orphaned fragments left")
         self.assertEqual(models.Tag.intermediary_table_model.objects.all().count(), 0,
@@ -236,7 +247,7 @@ class TestIdenticalTag(WLTestCase):
             context = self.client.get('/katalog/%s/tag/' % localcat).context
             self.assertEqual(1, len(context['object_list']))
             self.assertNotEqual({}, context['categories'])
-            self.assertFalse(cat in context['categories'])
+            self.assertFalse(context['categories'].get(cat, False))
 
 
 class BookTagsTests(WLTestCase):
@@ -281,6 +292,6 @@ class BookTagsTests(WLTestCase):
         context = self.client.get('/katalog/').context
         self.assertEqual([(tag.name, tag.count) for tag in context['categories']['author']],
                          [('Jim Lazy', 1), ('Common Man', 1)])
-        self.assertEqual([(tag.name, tag.count) for tag in context['fragment_tags']],
+        self.assertEqual([(tag.name, tag.count) for tag in context['categories']['theme']],
                          [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
 

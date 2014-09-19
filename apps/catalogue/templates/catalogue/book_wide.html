@@ -1,7 +1,8 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
-{% load download_audio tag_list custom_pdf_link_li license_icon source_name from catalogue_tags %}
-{% load cite_promo from social_tags %}
+{% load choose_fragment download_audio tag_list custom_pdf_link_li license_icon source_name from catalogue_tags %}
+{% load choose_cite from social_tags %}
+{% load ssi_include from ssify %}
 
 
 {% block box-class %}book-wide-box{% endblock %}
@@ -36,8 +37,15 @@
 
 {% block right-column %}
 <div class="right-column">
-    <div class="quote">
-  {% cite_promo book 1 %}
+  <div class="quote">
+    {% choose_cite book.pk as cite_promo %}
+    {% choose_fragment book.pk unless=cite_promo as fragment_promo %}
+    {{ cite_promo.if }}
+        {% ssi_include 'social_cite' pk=cite_promo %}
+    {{ cite_promo.endif }}
+    {{ fragment_promo.if }}
+        {% ssi_include 'catalogue_fragment_promo' pk=fragment_promo %}
+    {{ fragment_promo.endif }}
   </div>
 
   <div class="other-tools">

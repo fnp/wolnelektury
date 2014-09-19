@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
-{% load chunks %}
+{% load ssi_include from ssify %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
 {% block titleextra %}{% trans "Listing of all works" %}{% endblock %}
 
 {% block body %}
+{% spaceless %}
+
     <h1>{% block book_list_header %}{% trans "Listing of all works" %}{% endblock %}</h1>
 
     <div class="left-column"><div class="normal-text" style="margin-bottom: 2em">
         {% block book_list_info %}
-            {% chunk 'book-list' %}
+            {% ssi_include 'chunk' key='book-list' %}
         {% endblock %}
     </div></div>
 
@@ -32,4 +34,6 @@
       {% endblock %}
     </div>
     <a id="book-list-up" href="#top">{% trans "↑ top ↑" %}</a>
+
+{% endspaceless %}
 {% endblock %}

@@ -1,5 +1,7 @@
+{% spaceless %}
 {% load i18n %}
-{% load catalogue_tags social_tags %}
+{% load catalogue_tags ssify %}
+{% load likes_book book_shelf_tags from social_tags %}
 <div class="{% block box-class %}book-box{% endblock %}">
 <div class="book-box-inner">
 <div class="book-left-column">
@@ -10,15 +12,14 @@
 <div class="book-box-body">
 
 
-<div class="star {% if not request.user|likes:book %}un{% endif %}like">
+{% likes_book book.pk as likes %}
+<div class="star {{ likes.if }}{{ likes.else }}un{{ likes.endif }}like">
     <div class="if-like" >
-        <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets' class='ajaxable' href='{% url "social_book_sets" book.slug %}'>
-            ★
-        </a>
+        <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets' class='ajaxable' href='{% url "social_book_sets" book.slug %}'>★</a>
     </div>
     <div class="if-unlike">
         <form id="social-like-book-{{ book.slug }}" data-callback='social-like-book' method='post' class='ajax-form' action='{% url "social_like_book" book.slug %}'>
-            {% csrf_token %}
+            {% ssi_csrf_token %}
             <button type='submit'>☆</button>
         </form>
     </div>
@@ -33,17 +34,14 @@
                     <a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a>{% endfor %}
             </div>
             <div class="title">
-                {% if main_link %}<a href="{{ main_link }}">{% endif %}
-                    {{ book.title }}
-                {% if main_link %}</a>{% endif %}
+                {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
             </div>
         </div>
 
 <div class="cover-area">
     {% if book.cover_thumb %}
         {% if main_link %}<a href="{{ main_link }}">{% endif %}
-            <img src="{{ book.cover_thumb.url }}"
-                alt="Cover" class="cover" />
+            <img src="{{ book.cover_thumb.url }}" alt="Cover" class="cover" />
         {% if main_link %}</a>{% endif %}
     {% endif %}
     {% block cover-area-extra %}{% endblock %}
@@ -91,7 +89,7 @@
            {% endspaceless %}
         </div>
     </div>
-    {% shelf_tags book %}
+    {% book_shelf_tags book.pk %}
 
     <ul class="book-box-tools">
         <li class="book-box-read">
@@ -134,3 +132,4 @@
     <div class="clearboth"></div>
 </div>
 </div>
+{% endspaceless %}

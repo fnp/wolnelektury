@@ -2,33 +2,32 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from datetime import datetime
+from datetime import date, datetime
 import feedparser
 
+from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.cache import cache
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.utils.http import urlquote_plus
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
 
-from django.conf import settings
 from ajaxable.utils import AjaxableFormView
-from catalogue.models import Book
 from ajaxable.utils import placeholdized
-from social.templatetags.social_tags import choose_cite
+from catalogue.models import Book
+from ssify import ssi_included
 
 
 def main_page(request):
     last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:4]
-    cite = choose_cite(RequestContext(request))
 
-    return render_to_response("main_page.html", locals(),
-        context_instance=RequestContext(request))
+    return render(request, "main_page.html", {
+        'last_published': last_published,
+    })
 
 
 class LoginFormView(AjaxableFormView):
@@ -119,11 +118,30 @@ def publish_plan(request):
                     })
         cache.set(cache_key, plan, 1800)
 
-    return render_to_response("publish_plan.html", {'plan': plan},
-        context_instance=RequestContext(request))
+    return render(request, "publish_plan.html", {'plan': plan})
 
 
 @login_required
 def user_settings(request):
-    return render_to_response("user.html",
-        context_instance=RequestContext(request))
+    return render(request, "user.html")
+
+
+@ssi_included(use_lang=False, timeout=1800)
+def latest_blog_posts(request, feed_url=None, posts_to_show=5):
+    if feed_url is None:
+        feed_url = settings.LATEST_BLOG_POSTS
+    try:
+        feed = feedparser.parse(str(feed_url))
+        posts = []
+        for i in range(posts_to_show):
+            pub_date = feed['entries'][i].published_parsed
+            published = date(pub_date[0], pub_date[1], pub_date[2])
+            posts.append({
+                'title': feed['entries'][i].title,
+                'summary': feed['entries'][i].summary,
+                'link': feed['entries'][i].link,
+                'date': published,
+                })
+    except:
+        posts = []
+    return render(request, 'latest_blog_posts.html', {'posts': posts})

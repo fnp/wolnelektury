@@ -2,8 +2,6 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import os
-
 from django.conf.urls import include, patterns, url
 from django.conf import settings
 from django.contrib import admin
@@ -23,6 +21,11 @@ urlpatterns = patterns('wolnelektury_core.views',
     url(r'^uzytkownik/signup/$', wolnelektury_core.views.RegisterFormView(), name='register'),
     url(r'^uzytkownik/logout/$', 'logout_then_redirect', name='logout'),
     url(r'^uzytkownik/zaloguj-utworz/$', wolnelektury_core.views.LoginRegisterFormView(), name='login_register'),
+
+    # Includes.
+    url(r'^latests_blog_posts.html$',
+        wolnelektury_core.views.latest_blog_posts,
+        name='latest_blog_posts'),
 )
 
 urlpatterns += patterns('',
@@ -38,7 +41,9 @@ urlpatterns += patterns('',
     url(r'^czekaj/', include('waiter.urls')),
     url(r'^wesprzyj/', include('funding.urls')),
     url(r'^ankieta/', include('polls.urls')),
-    url(r'^biblioteki', include('libraries.urls')),
+    url(r'^biblioteki/', include('libraries.urls')),
+    url(r'^chunks/', include('chunks.urls')),
+    url(r'^sponsors/', include('sponsors.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
@@ -76,9 +81,3 @@ urlpatterns += patterns('',
     url(r'^wolontariat/$', RedirectView.as_view(
         url='/info/mozesz-nam-pomoc/')),
 )
-    
-
-if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
-        url(r'^rosetta/', include('rosetta.urls')),
-    )

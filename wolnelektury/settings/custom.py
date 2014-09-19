@@ -1,6 +1,3 @@
-# seconds until a changes appears in the changes api
-API_WAIT = 10
-
 # limit number of filtering tags
 MAX_TAG_LIST = 6
 
@@ -16,3 +13,5 @@ CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
 # set to 'new' or 'old' to skip time-consuming test
 # for TeX morefloats library version
 LIBRARIAN_PDF_MOREFLOATS = None
+
+LATEST_BLOG_POSTS = "http://nowoczesnapolska.org.pl/feed/?cat=-135"

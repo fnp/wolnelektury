@@ -1,6 +1,7 @@
-from django.core.cache import cache
+from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext_lazy as _, get_language
+from django.utils.translation import ugettext_lazy as _
+from ssify import flush_ssi_includes
 
 
 class Chunk(models.Model):
@@ -9,8 +10,8 @@ class Chunk(models.Model):
     any template with the use of a special template tag.
     """
     key = models.CharField(_('key'), help_text=_('A unique name for this chunk of content'), primary_key=True, max_length=255)
-    description = models.CharField(_('description'), blank=True, null=True, max_length=255)
-    content = models.TextField(_('content'), blank=True, null=True)
+    description = models.CharField(_('description'), blank=True, max_length=255)
+    content = models.TextField(_('content'), blank=True)
 
     class Meta:
         ordering = ('key',)
@@ -20,14 +21,16 @@ class Chunk(models.Model):
     def __unicode__(self):
         return self.key
 
-    @staticmethod
-    def cache_key(key):
-        return 'chunk/%s/%s' % (key, get_language())
-
     def save(self, *args, **kwargs):
         ret = super(Chunk, self).save(*args, **kwargs)
-        cache.delete(self.cache_key(self.key))
+        self.flush_includes()
         return ret
+
+    def flush_includes(self):
+        flush_ssi_includes([
+            '/chunks/chunk/%s.%s.html' % (self.key, lang)
+            for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
+
 
 
 class Attachment(models.Model):
@@ -40,4 +43,3 @@ class Attachment(models.Model):
 
     def __unicode__(self):
         return self.key
-

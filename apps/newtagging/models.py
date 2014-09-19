@@ -71,7 +71,7 @@ class TagManager(models.Manager):
             if tag not in current_tags:
                 self.intermediary_table_model._default_manager.create(tag=tag, content_object=obj)
 
-        tags_updated.send(sender=obj, affected_tags=tags_to_add + tags_for_removal)
+        tags_updated.send(sender=type(obj), instance=obj, affected_tags=tags_to_add + tags_for_removal)
 
     def remove_tag(self, obj, tag):
         """
@@ -179,7 +179,7 @@ class TaggedItemManager(models.Manager):
         if not tags:
             return queryset.none()
         # TODO: presumes reverse generic relation
-        return queryset.filter(tag_relations__tag__in=tags)
+        return queryset.filter(tag_relations__tag__in=tags).distinct()
 
     def get_related(self, obj, queryset_or_model):
         """

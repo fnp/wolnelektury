@@ -1,3 +1,4 @@
+{% spaceless %}
 {% load i18n static %}
 
 <a id="show-menu" href="{% url 'catalogue' %}">
@@ -7,8 +8,7 @@
 <ul id="menu">
     {% for category, name, hash in categories %}
 	<li class="hidden-box-wrapper menu">
-		<a href="{% url 'catalogue' %}#{{ hash }}" class="hidden-box-trigger menu load-menu">
-			{{ name }}</a>
+		<a href="{% url 'catalogue' %}#{{ hash }}" class="hidden-box-trigger menu load-menu">{{ name }}</a>
 		<div class="hidden-box" id="menu-{{ category }}">
             <img src="{% static "img/indicator.gif" %}" alt="{% trans "Please wait…" %}" />
         </div>
@@ -16,24 +16,20 @@
     {% endfor %}
 
 	<li class="hidden-box-wrapper menu">
-		<a href="{% url 'catalogue' %}#kolekcje" class="hidden-box-trigger menu load-menu">
-			{% trans "Collections" %}</a>
+		<a href="{% url 'catalogue' %}#kolekcje" class="hidden-box-trigger menu load-menu">{% trans "Collections" %}</a>
 		<div class="hidden-box" id="menu-collections">
             <img src="{% static "img/indicator.gif" %}" alt="{% trans "Please wait…" %}" />
         </div>
 	</li>
 
 	<li class="menu">
-		<a href="{% url 'book_list' %}" class="menu">
-			{% trans "All books" %}</a>
+		<a href="{% url 'book_list' %}" class="menu">{% trans "All books" %}</a>
 	</li>
 	<li class="menu">
-		<a href="{% url 'audiobook_list' %}" class="menu">
-			{% trans "Audiobooks" %}</a>
+		<a href="{% url 'audiobook_list' %}" class="menu">{% trans "Audiobooks" %}</a>
 	</li>
 	<li class="menu">
-		<a href="{% url 'daisy_list' %}" class="menu">
-			{% trans "DAISY" %}</a>
+		<a href="{% url 'daisy_list' %}" class="menu">{% trans "DAISY" %}</a>
 	</li>
 	<li class="menu">
 		<a href="{% url 'picture_list_thumb' %}" class="menu">
@@ -41,3 +37,5 @@
 	</li>
 
 </ul>
+
+{% endspaceless %}

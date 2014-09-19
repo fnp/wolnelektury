@@ -1,10 +1,16 @@
-{% load book_mini from catalogue_tags %}
-
 {% spaceless %}
+{% load catalogue_random_book from catalogue_tags %}
+{% load ssi_include from ssify %}
+
 {% for book in books %}
-    {% book_mini book %}
+    {% ssi_include 'catalogue_book_mini' pk=book.pk %}
 {% endfor %}
-{% for book in random_related %}
-    {% book_mini book %}
-{% endfor %}
+
+{% if random %}
+    {% catalogue_random_book random_excluded as random_pk %}
+    {{ random_pk.if }}
+        {% ssi_include 'catalogue_book_mini' pk=random_pk %}
+    {{ random_pk.endif }}
+{% endif %}
+
 {% endspaceless %}

@@ -7,15 +7,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from piston.authentication import OAuthAuthentication, oauth_access_token
 from piston.resource import Resource
-
+from ssify import ssi_included
 from api import handlers
 from api.helpers import CsrfExemptResource
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
-
-book_changes_resource = Resource(handler=handlers.BookChangesHandler)
-tag_changes_resource = Resource(handler=handlers.TagChangesHandler)
-changes_resource = Resource(handler=handlers.ChangesHandler)
 
 book_list_resource = CsrfExemptResource(handler=handlers.BooksHandler, authentication=auth)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
@@ -33,6 +29,21 @@ fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
 picture_resource = CsrfExemptResource(handler=handlers.PictureHandler, authentication=auth)
 
+
+@ssi_included
+def incl(request, model, pk, emitter_format):
+    resource = {
+        'book': book_list_resource,
+        'fragment': fragment_list_resource,
+        'tag': tag_list_resource,
+        }[model]
+    resp = resource(request, pk=pk, emitter_format=emitter_format)
+    if emitter_format == 'xml':
+        # Ugly, but quick way of stripping <?xml?> header and <response> tags.
+        resp.content = resp.content[49:-11]
+    return resp
+
+
 urlpatterns = patterns(
     'piston.authentication',
     url(r'^oauth/request_token/$', 'oauth_request_token'),
@@ -41,18 +52,12 @@ urlpatterns = patterns(
 
 ) + patterns('',
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
-
-
-    # changes handlers
-    url(r'^book_changes/(?P<since>\d*?)\.(?P<emitter_format>xml|json|yaml)$', book_changes_resource),
-    url(r'^tag_changes/(?P<since>\d*?)\.(?P<emitter_format>xml|json|yaml)$', tag_changes_resource),
-    # used by mobile app
-    url(r'^changes/(?P<since>\d*?)\.(?P<emitter_format>xml|json|yaml)$', changes_resource),
+    url(r'^include/(?P<model>book|fragment|tag)/(?P<pk>\d+)\.(?P<lang>.+)\.(?P<emitter_format>xml|json)$',
+        incl, name='api_include'),
 
     # info boxes (used by mobile app)
     url(r'book/(?P<id>\d*?)/info\.html$', 'catalogue.views.book_info'),
     url(r'tag/(?P<id>\d*?)/info\.html$', 'catalogue.views.tag_info'),
-
 
     # books by collections
     url(r'^collections/$', collection_list_resource, name="api_collections"),

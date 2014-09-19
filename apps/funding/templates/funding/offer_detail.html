@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load url from future %}
 {% load i18n static %}
-{% load funding_tags %}
 {% load pagination_tags %}
 {% load fnp_share %}
 {% load thumbnail %}
 {% load build_absolute_uri from fnp_common %}
+{% load ssi_include from ssify %}
 
 
 {% block titleextra %}{{ object }}{% endblock %}
@@ -19,7 +19,7 @@
 
 <h1>{{ object }}</h1>
 
-{% funding object show_title=False %}
+{% ssi_include 'funding_detail_bar' pk=object.pk %}
 <div class="white-box">
     <div class="funding-details-intro">
         {% if object.cover %}
@@ -34,9 +34,9 @@
         <div class="normal-text">
         <h3>{% trans "Help free the book!" %}</h3>
         {{ object.description|safe }}
-        {% offer_status object %}
+        {% ssi_include 'funding_status' pk=object.pk %}
         <a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
-        {% offer_status_more object %}
+        {% ssi_include 'funding_status_more' pk=object.pk %}
         <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
         </div>
         
@@ -71,31 +71,7 @@
 <h2>{% trans "Supporters" %}:</h2>
 
 <div class="white-box normal-text">
-{% with object.funding_payed.all as fundings %}
-    
-    <table class="wlfund">
-    {% autopaginate fundings 10 %}
-    {% for funding in fundings %}
-        <tr class="funding-plus">
-            <td class="oneline">{{ funding.payed_at.date }}</td>
-            <td>
-                {% if funding.name %}
-                    {{ funding.name }}
-                {% else %}
-                    <em>{% trans "Anonymous" %}</em>
-                {% endif %}
-            </td>
-            <td>{{ funding.amount }}&nbsp;zł</td>
-            <td>&nbsp;
-                {% for perk in funding.perks.all %}
-                    {{ perk.name }}{% if not forloop.last %},{% endif %}
-                {% endfor %}
-            </td>
-    {% endfor %}
-    </table>
-    
-    {% paginate %}
-{% endwith %}
+    {% ssi_include 'funding_fundings' pk=object.pk page=page %}
 </div>
 
 {% endblock %}

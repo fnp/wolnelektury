@@ -6,107 +6,108 @@ from collections import OrderedDict
 import re
 
 from django.conf import settings
-from django.core.cache import get_cache
 from django.template import RequestContext
 from django.template.loader import render_to_string
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.http import urlquote_plus
 from django.utils import translation
-from django.utils.translation import get_language, ugettext as _, ugettext_lazy
-from django.views.decorators.vary import vary_on_headers
+from django.utils.translation import ugettext as _, ugettext_lazy
 
 from ajaxable.utils import AjaxableFormView
-from catalogue import models
-from catalogue import forms
-from .helpers import get_related_tags, get_fragment_related_tags, tags_usage_for_books, tags_usage_for_works, tags_usage_for_fragments
-from catalogue.utils import split_tags, MultiQuerySet, SortedMultiQuerySet
-from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
-from suggest.forms import PublishingSuggestForm
 from picture.models import Picture, PictureArea
 from picture.views import picture_list_thumb
+from ssify import ssi_included, ssi_expect, SsiVariable as V
+from suggest.forms import PublishingSuggestForm
+from catalogue import forms
+from catalogue.helpers import get_top_level_related_tags
+from catalogue import models
+from catalogue.utils import split_tags, MultiQuerySet, SortedMultiQuerySet
+from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 
 staff_required = user_passes_test(lambda user: user.is_staff)
-permanent_cache = get_cache('permanent')
 
 
-@vary_on_headers('X-Requested-With')
-def catalogue(request):
-    #cache_key = 'catalogue.catalogue/' + get_language()
-    #output = permanent_cache.get(cache_key)
-    output = None
+def catalogue(request, as_json=False):
+    common_categories = ('author',)
+    split_categories = ('epoch', 'genre', 'kind')
 
-    if output is None:
-        common_categories = ('author',)
-        split_categories = ('epoch', 'genre', 'kind')
+    categories = split_tags(
+        get_top_level_related_tags(categories=common_categories),
+        models.Tag.objects.usage_for_model(
+            models.Fragment, counts=True).filter(category='theme'),
+        models.Tag.objects.usage_for_model(
+            Picture, counts=True).filter(category__in=common_categories),
+        models.Tag.objects.usage_for_model(
+            PictureArea, counts=True).filter(
+            category='theme')
+    )
+    book_categories = split_tags(
+        get_top_level_related_tags(categories=split_categories)
+        )
+    picture_categories = split_tags(
+        models.Tag.objects.usage_for_model(
+            Picture, counts=True).filter(
+            category__in=split_categories),
+        )
 
-        categories = split_tags(tags_usage_for_works(common_categories))
-        book_categories = split_tags(tags_usage_for_books(split_categories))
-        picture_categories = split_tags(
-            models.Tag.objects.usage_for_model(Picture, counts=True).filter(
-                category__in=split_categories))
-        # we want global usage for themes
-        fragment_tags = list(tags_usage_for_fragments(('theme',)))
-        collections = models.Collection.objects.all()
+    collections = models.Collection.objects.all()
 
-        render_tag_list = lambda x: render_to_string(
-            'catalogue/tag_list.html', tag_list(x))
+    def render_tag_list(tags):
+        render_to_string('catalogue/tag_list.html', tag_list(tags))
 
-        def render_split(with_books, with_pictures):
-            ctx = {}
-            if with_books:
-                ctx['books'] = render_tag_list(with_books)
-            if with_pictures:
-                ctx['pictures'] = render_tag_list(with_pictures)
-            return render_to_string('catalogue/tag_list_split.html', ctx)
+    def render_split(with_books, with_pictures):
+        ctx = {}
+        if with_books:
+            ctx['books'] = render_tag_list(with_books)
+        if with_pictures:
+            ctx['pictures'] = render_tag_list(with_pictures)
+        return render_to_string('catalogue/tag_list_split.html', ctx)
 
-        output = {}
-        output['theme'] = render_tag_list(fragment_tags)
-        for category in common_categories:
-            output[category] = render_tag_list(categories.get(category, []))
-        for category in split_categories:
-            output[category] = render_split(
-                book_categories.get(category, []),
-                picture_categories.get(category, []))
+    output = {}
+    output['theme'] = render_tag_list(categories.get('theme', []))
+    for category in common_categories:
+        output[category] = render_tag_list(categories.get(category, []))
+    for category in split_categories:
+        output[category] = render_split(
+            book_categories.get(category, []),
+            picture_categories.get(category, []))
 
-        output['collections'] = render_to_string(
-            'catalogue/collection_list.html', collection_list(collections))
-        #permanent_cache.set(cache_key, output)
-    if request.is_ajax():
+    output['collections'] = render_to_string(
+        'catalogue/collection_list.html', collection_list(collections))
+    if as_json:
         return JsonResponse(output)
     else:
         return render_to_response('catalogue/catalogue.html', locals(),
             context_instance=RequestContext(request))
 
 
+@ssi_included
+def catalogue_json(request):
+    return catalogue(request, True)
+
+
 def book_list(request, filter=None, get_filter=None,
         template_name='catalogue/book_list.html',
         nav_template_name='catalogue/snippets/book_list_nav.html',
         list_template_name='catalogue/snippets/book_list.html',
-        cache_key='catalogue.book_list',
         context=None,
         ):
     """ generates a listing of all books, optionally filtered with a test function """
-    cache_key = "%s/%s" % (cache_key, get_language())
-    cached = permanent_cache.get(cache_key)
-    if cached is not None:
-        rendered_nav, rendered_book_list = cached
-    else:
-        if get_filter:
-            filter = get_filter()
-        books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
-        books_nav = OrderedDict()
-        for tag in books_by_author:
-            if books_by_author[tag]:
-                books_nav.setdefault(tag.sort_key[0], []).append(tag)
-        rendered_nav = render_to_string(nav_template_name, locals())
-        rendered_book_list = render_to_string(list_template_name, locals())
-        permanent_cache.set(cache_key, (rendered_nav, rendered_book_list))
+    if get_filter:
+        filter = get_filter()
+    books_by_author, orphans, books_by_parent = models.Book.book_list(filter)
+    books_nav = OrderedDict()
+    for tag in books_by_author:
+        if books_by_author[tag]:
+            books_nav.setdefault(tag.sort_key[0], []).append(tag)
+    rendered_nav = render_to_string(nav_template_name, locals())
+    rendered_book_list = render_to_string(list_template_name, locals())
     return render_to_response(template_name, locals(),
         context_instance=RequestContext(request))
 
@@ -115,13 +116,13 @@ def audiobook_list(request):
     return book_list(request, Q(media__type='mp3') | Q(media__type='ogg'),
                      template_name='catalogue/audiobook_list.html',
                      list_template_name='catalogue/snippets/audiobook_list.html',
-                     cache_key='catalogue.audiobook_list')
+                     )
 
 
 def daisy_list(request):
     return book_list(request, Q(media__type='daisy'),
                      template_name='catalogue/daisy_list.html',
-                     cache_key='catalogue.daisy_list')
+                     )
 
 
 def collection(request, slug):
@@ -136,7 +137,6 @@ def collection(request, slug):
         raise ValueError('How do I show this kind of collection? %s' % coll.kind)
     return view(request, get_filter=coll.get_query,
                      template_name=tmpl,
-                     cache_key='catalogue.collection:%s' % coll.slug,
                      context={'collection': coll})
 
 
@@ -179,19 +179,14 @@ def tagged_object_list(request, tags=''):
     except AttributeError:
         pass
 
-    if len([tag for tag in tags if tag.category == 'book']):
-        raise Http404
-
     # beginning of digestion
     theme_is_set = [tag for tag in tags if tag.category == 'theme']
     shelf_is_set = [tag for tag in tags if tag.category == 'set']
     only_shelf = shelf_is_set and len(tags) == 1
     only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
+    tags_pks = [tag.pk for tag in tags]
 
-
-    objects =  None
-    categories = {}
-    object_queries = []
+    objects = None
 
     if theme_is_set:
         shelf_tags = [tag for tag in tags if tag.category == 'set']
@@ -200,46 +195,52 @@ def tagged_object_list(request, tags=''):
         areas = PictureArea.tagged.with_all(fragment_tags)
 
         if shelf_tags:
-            # FIXME: book tags here
             books = models.Book.tagged.with_all(shelf_tags).order_by()
-            l_tags = models.Tag.objects.filter(category='book',
-                slug__in=[book.book_tag_slug() for book in books.iterator()])
-            fragments = models.Fragment.tagged.with_any(l_tags, fragments)
+            fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
+            areas = PictureArea.objects.none()
 
-        related_tags = get_fragment_related_tags(tags)
-        categories = split_tags(related_tags, categories)
-        object_queries.insert(0, fragments)
-
-        area_keys = [area.pk for area in areas.iterator()]
-        if area_keys:
-            related_tags = PictureArea.tags.usage(counts=True,
-                                                         filters={'pk__in': area_keys})
-            related_tags = (tag for tag in related_tags if tag not in fragment_tags)
-
-            categories = split_tags(related_tags, categories)
+        categories = split_tags(
+            models.Tag.objects.usage_for_queryset(fragments, counts=True
+                ).exclude(pk__in=tags_pks),
+            models.Tag.objects.usage_for_queryset(areas, counts=True
+                ).exclude(pk__in=tags_pks)
+            )
 
         # we want the Pictures to go first
-        object_queries.insert(0, areas)
-        objects = MultiQuerySet(*object_queries)
+        objects = MultiQuerySet(areas, fragments)
     else:
+        all_books = models.Book.tagged.with_all(tags)
         if shelf_is_set:
-            books = models.Book.tagged.with_all(tags).order_by(
-                'sort_key_author', 'title')
+            books = all_books.order_by('sort_key_author', 'title')
+            pictures = Pictures.objects.none()
+            related_book_tags = models.Tag.objects.usage_for_queryset(
+                books, counts=True).exclude(
+                category='set').exclude(pk__in=tags_pks)
         else:
             books = models.Book.tagged_top_level(tags).order_by(
                 'sort_key_author', 'title')
+            pictures = Picture.tagged.with_all(tags).order_by(
+                'sort_key_author', 'title')
+            related_book_tags = get_top_level_related_tags(tags)
 
-        pictures = Picture.tagged.with_all(tags).order_by(
-            'sort_key_author', 'title')
+        fragments = models.Fragment.objects.filter(book__in=all_books)
+        areas = PictureArea.objects.filter(picture__in=pictures)
 
-        categories = split_tags(get_related_tags(tags))
+        categories = split_tags(
+            related_book_tags,
+            models.Tag.objects.usage_for_queryset(
+                pictures, counts=True).exclude(pk__in=tags_pks),
+            models.Tag.objects.usage_for_queryset(
+                fragments, counts=True).filter(
+                category='theme').exclude(pk__in=tags_pks),
+            models.Tag.objects.usage_for_queryset(
+                areas, counts=True).filter(
+                category__in=('theme', 'thing')).exclude(
+                pk__in=tags_pks),
+        )
 
         objects = SortedMultiQuerySet(pictures, books,
             order_by=('sort_key_author', 'title'))
-
-
-    if not objects:
-        objects = models.Book.objects.none()
 
     return render_to_response('catalogue/tagged_object_list.html',
         {
@@ -249,6 +250,7 @@ def tagged_object_list(request, tags=''):
             'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
             'tags': tags,
+            'tags_ids': tags_pks,
             'theme_is_set': theme_is_set,
         },
         context_instance=RequestContext(request))
@@ -342,7 +344,7 @@ def _no_diacritics_regexp(query):
 
 def unicode_re_escape(query):
     """ Unicode-friendly version of re.escape """
-    return re.sub('(?u)(\W)', r'\\\1', query)
+    return re.sub(r'(?u)(\W)', r'\\\1', query)
 
 def _word_starts_with(name, prefix):
     """returns a Q object getting models having `name` contain a word
@@ -429,10 +431,10 @@ def _get_result_link(match, tag_list):
 
 def _get_result_type(match):
     if isinstance(match, models.Book) or isinstance(match, pdcounter_models.BookStub):
-        type = 'book'
+        match_type = 'book'
     else:
-        type = match.category
-    return type
+        match_type = match.category
+    return match_type
 
 
 def books_starting_with(prefix):
@@ -603,3 +605,84 @@ class CustomPDFFormView(AjaxableFormView):
 
     def context_description(self, request, obj):
         return obj.pretty_title()
+
+
+####
+# Includes
+####
+
+
+@ssi_included
+def book_mini(request, pk, with_link=True):
+    book = get_object_or_404(models.Book, pk=pk)
+    author_str = ", ".join(tag.name
+        for tag in book.tags.filter(category='author'))
+    return render(request, 'catalogue/book_mini_box.html', {
+        'book': book,
+        'author_str': author_str,
+        'with_link': with_link,
+        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
+    })
+
+
+@ssi_included(get_ssi_vars=lambda pk: (lambda ipk: (
+        ('ssify.get_csrf_token',),
+        ('social_tags.likes_book', (ipk,)),
+        ('social_tags.book_shelf_tags', (ipk,)),
+    ))(ssi_expect(pk, int)))
+def book_short(request, pk):
+    book = get_object_or_404(models.Book, pk=pk)
+    stage_note, stage_note_url = book.stage_note()
+
+    return render(request, 'catalogue/book_short.html', {
+        'book': book,
+        'has_audio': book.has_media('mp3'),
+        'main_link': book.get_absolute_url(),
+        'parents': book.parents(),
+        'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
+        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
+        'stage_note': stage_note,
+        'stage_note_url': stage_note_url,
+    })
+
+
+@ssi_included(get_ssi_vars=lambda pk: book_short.get_ssi_vars(pk) +
+    (lambda ipk: (
+        ('social_tags.choose_cite', [ipk]),
+        ('catalogue_tags.choose_fragment', [ipk], {
+            'unless': V('social_tags.choose_cite', [ipk])}),
+    ))(ssi_expect(pk, int)))
+def book_wide(request, pk):
+    book = get_object_or_404(models.Book, pk=pk)
+    stage_note, stage_note_url = book.stage_note()
+    extra_info = book.extra_info
+
+    return render(request, 'catalogue/book_wide.html', {
+        'book': book,
+        'has_audio': book.has_media('mp3'),
+        'parents': book.parents(),
+        'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
+        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
+        'stage_note': stage_note,
+        'stage_note_url': stage_note_url,
+
+        'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
+        'extra_info': extra_info,
+        'hide_about': extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl'),
+        'themes': book.related_themes(),
+    })
+
+
+@ssi_included
+def fragment_short(request, pk):
+    fragment = get_object_or_404(models.Fragment, pk=pk)
+    return render(request, 'catalogue/fragment_short.html',
+        {'fragment': fragment})
+
+
+@ssi_included
+def fragment_promo(request, pk):
+    fragment = get_object_or_404(models.Fragment, pk=pk)
+    return render(request, 'catalogue/fragment_promo.html', {
+        'fragment': fragment
+    })

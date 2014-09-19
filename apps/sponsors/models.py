@@ -12,6 +12,7 @@ from PIL import Image
 
 from jsonfield import JSONField
 from django.core.files.base import ContentFile
+from ssify import flush_ssi_includes
 
 THUMB_WIDTH = 120
 THUMB_HEIGHT = 120
@@ -94,7 +95,12 @@ class SponsorPage(models.Model):
             'sponsors': self.populated_sponsors(),
             'page': self
         })
-        return super(SponsorPage, self).save(*args, **kwargs)
+        ret = super(SponsorPage, self).save(*args, **kwargs)
+        self.flush_includes()
+        return ret
+
+    def flush_includes(self):
+        flush_ssi_includes(['/sponsors/page/%s.html' % self.name])
 
     def __unicode__(self):
         return self.name

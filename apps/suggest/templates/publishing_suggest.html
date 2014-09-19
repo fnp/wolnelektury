@@ -1,10 +1,11 @@
 {% load i18n %}
 {% load honeypot %}
+{% load ssi_csrf_token from ssify %}
 
 <h1>{% trans "Didn't find a book? Make a suggestion." %}</h1>
 
 <form id='suggest-publishing-form' action="{% url 'suggest_publishing' %}" method="post" accept-charset="utf-8" class="cuteform">
-{% csrf_token %}
+{% ssi_csrf_token %}
 {% render_honeypot_field %}
 <ol>
     <li><span class="error">{{ form.contact.errors }}</span><label for="id_contact">{{ form.contact.label }}</label> {{ form.contact }}</li>

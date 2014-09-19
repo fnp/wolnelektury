@@ -4,18 +4,19 @@
 #
 from datetime import date, datetime
 from urllib import urlencode
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
-from django.conf import settings
-from django.template.loader import render_to_string
 from django.db import models
+from django.template.loader import render_to_string
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, override
 import getpaid
+from ssify import flush_ssi_includes
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from polls.models import Poll
-from django.contrib.sites.models import Site
 from . import app_settings
 
 
@@ -58,9 +59,26 @@ class Offer(models.Model):
             self.pk is not None and
             type(self).objects.values('book').get(pk=self.pk)['book'] != self.book_id)
         retval = super(Offer, self).save(*args, **kw)
+        self.flush_includes()
         if published_now:
             self.notify_published()
         return retval
+
+    def flush_includes(self):
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/wesprzyj/o/%d/top-bar.%s.html',
+                '/wesprzyj/o/%d/detail-bar.%s.html',
+                '/wesprzyj/o/%d/list-bar.%s.html',
+                '/wesprzyj/o/%d/status.%s.html',
+                '/wesprzyj/o/%d/status-more.%s.html',
+                ] + [
+                    '/wesprzyj/o/%%d/fundings/%d.%%s.html' % page
+                    for page in range(1, len(self.funding_payed()) // 10 + 2)
+                ]
+            for lang in [lc for (lc, _ln) in settings.LANGUAGES]
+            ])
 
     def is_current(self):
         return self.start <= date.today() <= self.end and self == self.current()
@@ -247,7 +265,9 @@ class Funding(models.Model):
     def save(self, *args, **kwargs):
         if self.email and not self.notify_key:
             self.notify_key = get_random_hash(self.email)
-        return super(Funding, self).save(*args, **kwargs)
+        ret = super(Funding, self).save(*args, **kwargs)
+        self.offer.flush_includes()
+        return ret
 
     @classmethod
     def notify_funders(cls, subject, template_name, extra_context=None,

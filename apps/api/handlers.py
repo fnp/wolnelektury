@@ -2,28 +2,23 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from datetime import datetime, timedelta
 import json
 
-from django.conf import settings
 from django.contrib.sites.models import Site
-from django.core.cache import get_cache
 from django.core.urlresolvers import reverse
 from django.utils.functional import lazy
-from django.utils.timezone import utc
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
 
-from api.helpers import timestamp
-from api.models import Deleted
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from picture.models import Picture
 from picture.forms import PictureImportForm
-from wolnelektury.utils import tz
 
 from stats.utils import piwik_track
+
+from . import emitters # Register our emitters
 
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
     lambda: u'http://' + Site.objects.get_current().domain, unicode)()
@@ -71,7 +66,10 @@ def read_tags(tags, allowed):
             raise ValueError('Category not allowed.')
 
         if category == 'book':
-            books.append(Book.objects.get(slug=slug))
+            try:
+                books.append(Book.objects.get(slug=slug))
+            except Book.DoesNotExist:
+                raise ValueError('Unknown book.')
 
         try:
             real_tags.append(Tag.objects.get(category=category, slug=slug))
@@ -174,8 +172,8 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         return book.tags.filter(category='genre')
 
     @piwik_track
-    def read(self, request, tags, top_level=False,
-                audiobooks=False, daisy=False):
+    def read(self, request, tags=None, top_level=False,
+                audiobooks=False, daisy=False, pk=None):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -184,8 +182,14 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
              it's children are aren't. By default all books matching the tags
              are returned.
         """
+        if pk is not None:
+            try:
+                return Book.objects.get(pk=pk)
+            except Book.DoesNotExist:
+                return rc.NOT_FOUND
+
         try:
-            tags, ancestors_ = read_tags(tags, allowed=book_tag_categories)
+            tags, _ancestors = read_tags(tags, allowed=book_tag_categories)
         except ValueError:
             return rc.NOT_FOUND
 
@@ -360,8 +364,13 @@ class TagsHandler(BaseHandler, TagDetails):
     fields = ['name', 'href', 'url']
 
     @piwik_track
-    def read(self, request, category):
+    def read(self, request, category=None, pk=None):
         """ Lists all tags in the category (eg. all themes). """
+        if pk is not None:
+            try:
+                return Tag.objects.exclude(category='set').get(pk=pk)
+            except Book.DoesNotExist:
+                return rc.NOT_FOUND
 
         try:
             category_sng = category_singular[category]
@@ -440,274 +449,6 @@ class FragmentsHandler(BaseHandler, FragmentDetails):
             return fragments
         else:
             return rc.NOT_FOUND
-
-
-
-# Changes handlers
-
-class CatalogueHandler(BaseHandler):
-
-    @staticmethod
-    def fields(request, name):
-        fields_str = request.GET.get(name) if request is not None else None
-        return fields_str.split(',') if fields_str is not None else None
-
-    @staticmethod
-    def until(t=None):
-        """ Returns time suitable for use as upper time boundary for check.
-
-            Used to avoid issues with time between setting the change stamp
-            and actually saving the model in database.
-            Cuts the microsecond part to avoid issues with DBs where time has
-            more precision.
-
-            :param datetime t: manually sets the upper boundary
-
-        """
-        # set to five minutes ago, to avoid concurrency issues
-        if t is None:
-            t = datetime.utcnow().replace(tzinfo=utc) - timedelta(seconds=settings.API_WAIT)
-        # set to whole second in case DB supports something smaller
-        return t.replace(microsecond=0)
-
-    @staticmethod
-    def book_dict(book, fields=None):
-        all_fields = ['url', 'title', 'description',
-                      'gazeta_link', 'wiki_link',
-                      ] + Book.formats + BookMedia.formats.keys() + [
-                      'parent', 'parent_number',
-                      'tags',
-                      'license', 'license_description', 'source_name',
-                      'technical_editors', 'editors',
-                      'author', 'sort_key',
-                     ]
-        if fields:
-            fields = (f for f in fields if f in all_fields)
-        else:
-            fields = all_fields
-
-        extra_info = book.extra_info
-
-        obj = {}
-        for field in fields:
-
-            if field in Book.formats:
-                f = getattr(book, field+'_file')
-                if f:
-                    obj[field] = {
-                        'url': f.url,
-                        'size': f.size,
-                    }
-
-            elif field in BookMedia.formats:
-                media = []
-                for m in book.media.filter(type=field).iterator():
-                    media.append({
-                        'url': m.file.url,
-                        'size': m.file.size,
-                    })
-                if media:
-                    obj[field] = media
-
-            elif field == 'url':
-                obj[field] = book.get_absolute_url()
-
-            elif field == 'tags':
-                obj[field] = [t.id for t in book.tags.exclude(category='set').iterator()]
-
-            elif field == 'author':
-                obj[field] = ", ".join(t.name for t in book.tags.filter(category='author').iterator())
-
-            elif field == 'parent':
-                obj[field] = book.parent_id
-
-            elif field in ('license', 'license_description', 'source_name',
-                      'technical_editors', 'editors'):
-                f = extra_info.get(field)
-                if f:
-                    obj[field] = f
-
-            else:
-                f = getattr(book, field)
-                if f:
-                    obj[field] = f
-
-        obj['id'] = book.id
-        return obj
-
-    @classmethod
-    def book_changes(cls, request=None, since=0, until=None, fields=None):
-        since = datetime.fromtimestamp(int(since), tz)
-        until = cls.until(until)
-
-        changes = {
-            'time_checked': timestamp(until)
-        }
-
-        if not fields:
-            fields = cls.fields(request, 'book_fields')
-
-        added = []
-        updated = []
-        deleted = []
-
-        last_change = since
-        for book in Book.objects.filter(changed_at__gte=since,
-                    changed_at__lt=until).iterator():
-            book_d = cls.book_dict(book, fields)
-            updated.append(book_d)
-        if updated:
-            changes['updated'] = updated
-
-        for book in Deleted.objects.filter(content_type=Book,
-                    deleted_at__gte=since,
-                    deleted_at__lt=until,
-                    created_at__lt=since).iterator():
-            deleted.append(book.id)
-        if deleted:
-            changes['deleted'] = deleted
-
-        return changes
-
-    @staticmethod
-    def tag_dict(tag, fields=None):
-        all_fields = ('name', 'category', 'sort_key', 'description',
-                      'gazeta_link', 'wiki_link',
-                      'url', 'books',
-                     )
-
-        if fields:
-            fields = (f for f in fields if f in all_fields)
-        else:
-            fields = all_fields
-
-        obj = {}
-        for field in fields:
-
-            if field == 'url':
-                obj[field] = tag.get_absolute_url()
-
-            elif field == 'books':
-                obj[field] = [b.id for b in Book.tagged_top_level([tag]).iterator()]
-
-            elif field == 'sort_key':
-                obj[field] = tag.sort_key
-
-            else:
-                f = getattr(tag, field)
-                if f:
-                    obj[field] = f
-
-        obj['id'] = tag.id
-        return obj
-
-    @classmethod
-    def tag_changes(cls, request=None, since=0, until=None, fields=None, categories=None):
-        since = datetime.fromtimestamp(int(since), tz)
-        until = cls.until(until)
-
-        changes = {
-            'time_checked': timestamp(until)
-        }
-
-        if not fields:
-            fields = cls.fields(request, 'tag_fields')
-        if not categories:
-            categories = cls.fields(request, 'tag_categories')
-
-        all_categories = ('author', 'epoch', 'kind', 'genre')
-        if categories:
-            categories = (c for c in categories if c in all_categories)
-        else:
-            categories = all_categories
-
-        updated = []
-        deleted = []
-
-        for tag in Tag.objects.filter(category__in=categories,
-                    changed_at__gte=since,
-                    changed_at__lt=until
-                    ).exclude(items=None).iterator():
-            tag_d = cls.tag_dict(tag, fields)
-            updated.append(tag_d)
-        for tag in Tag.objects.filter(category__in=categories,
-                    created_at__lt=since,
-                    changed_at__gte=since,
-                    changed_at__lt=until,
-                    items=None).iterator():
-            deleted.append(tag.id)
-        if updated:
-            changes['updated'] = updated
-
-        for tag in Deleted.objects.filter(category__in=categories,
-                content_type=Tag,
-                    deleted_at__gte=since,
-                    deleted_at__lt=until,
-                    created_at__lt=since).iterator():
-            deleted.append(tag.id)
-        if deleted:
-            changes['deleted'] = deleted
-
-        return changes
-
-    @classmethod
-    def changes(cls, request=None, since=0, until=None, book_fields=None,
-                tag_fields=None, tag_categories=None):
-        until = cls.until(until)
-        since = int(since)
-
-        if not since:
-            cache = get_cache('api')
-            key = hash((book_fields, tag_fields, tag_categories,
-                    tuple(sorted(request.GET.items()))
-                  ))
-            value = cache.get(key)
-            if value is not None:
-                return value
-
-        changes = {
-            'time_checked': timestamp(until)
-        }
-
-        changes_by_type = {
-            'books': cls.book_changes(request, since, until, book_fields),
-            'tags': cls.tag_changes(request, since, until, tag_fields, tag_categories),
-        }
-
-        for model in changes_by_type:
-            for field in changes_by_type[model]:
-                if field == 'time_checked':
-                    continue
-                changes.setdefault(field, {})[model] = changes_by_type[model][field]
-
-        if not since:
-            cache.set(key, changes)
-
-        return changes
-
-
-class BookChangesHandler(CatalogueHandler):
-    allowed_methods = ('GET',)
-
-    @piwik_track
-    def read(self, request, since):
-        return self.book_changes(request, since)
-
-
-class TagChangesHandler(CatalogueHandler):
-    allowed_methods = ('GET',)
-
-    @piwik_track
-    def read(self, request, since):
-        return self.tag_changes(request, since)
-
-
-class ChangesHandler(CatalogueHandler):
-    allowed_methods = ('GET',)
-
-    @piwik_track
-    def read(self, request, since):
-        return self.changes(request, since)
 
 
 class PictureHandler(BaseHandler):

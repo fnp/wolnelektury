@@ -6,7 +6,6 @@ from collections import OrderedDict
 from random import randint
 import re
 from django.conf import settings
-from django.core.cache import caches
 from django.db import connection, models, transaction
 from django.db.models import permalink
 import django.dispatch
@@ -15,17 +14,16 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
+from ssify import flush_ssi_includes
+from newtagging import managers
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
 from catalogue.utils import create_zip
 from catalogue import app_settings
 from catalogue import tasks
-from newtagging import managers
 
 bofh_storage = BofhFileSystemStorage()
-
-permanent_cache = caches['permanent']
 
 
 def _cover_upload_to(i, n):
@@ -84,6 +82,8 @@ class Book(models.Model):
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
 
+    short_html_url_name = 'catalogue_book_short'
+
     class AlreadyExists(Exception):
         pass
 
@@ -96,16 +96,19 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
+    def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 
         self.sort_key = sortify(self.title)
         self.title = unicode(self.title) # ???
 
-        ret = super(Book, self).save(force_insert, force_update, **kwargs)
+        try:
+            author = self.tags.filter(category='author')[0].sort_key
+        except IndexError:
+            author = u''
+        self.sort_key_author = author
 
-        if reset_short_html:
-            self.reset_short_html()
+        ret = super(Book, self).save(force_insert, force_update, **kwargs)
 
         return ret
 
@@ -151,20 +154,6 @@ class Book(models.Model):
         return self.get_media("ogg")
     def get_daisy(self):
         return self.get_media("daisy")
-
-    def reset_short_html(self):
-        if self.id is None:
-            return
-
-        # Fragment.short_html relies on book's tags, so reset it here too
-        for fragm in self.fragments.all().iterator():
-            fragm.reset_short_html()
-
-        try:
-            author = self.tags.filter(category='author')[0].sort_key
-        except IndexError:
-            author = u''
-        type(self).objects.filter(pk=self.pk).update(sort_key_author=author)
 
     def has_description(self):
         return len(self.description) > 0
@@ -318,11 +307,10 @@ class Book(models.Model):
             child.parent = None
             child.parent_number = 0
             child.save()
-            tasks.fix_tree_tags.delay(child)
             if old_cover:
                 notify_cover_changed.append(child)
 
-        cls.fix_tree_tags()
+        cls.repopulate_ancestors()
 
         # No saves beyond this point.
 
@@ -347,11 +335,11 @@ class Book(models.Model):
         for child in notify_cover_changed:
             child.parent_cover_changed()
 
-        cls.published.send(sender=book)
+        cls.published.send(sender=cls, instance=book)
         return book
 
     @classmethod
-    def fix_tree_tags(cls):
+    def repopulate_ancestors(cls):
         """Fixes the ancestry cache."""
         # TODO: table names
         with transaction.atomic():
@@ -382,6 +370,24 @@ class Book(models.Model):
                     while parent is not None:
                         b.ancestor.add(parent)
                         parent = parent.parent
+
+    def flush_includes(self, languages=True):
+        if not languages:
+            return
+        if languages is True:
+            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/katalog/b/%d/mini.%s.html',
+                '/katalog/b/%d/mini_nolink.%s.html',
+                '/katalog/b/%d/short.%s.html',
+                '/katalog/b/%d/wide.%s.html',
+                '/api/include/book/%d.%s.json',
+                '/api/include/book/%d.%s.xml',
+                ]
+            for lang in languages
+            ])
 
     def cover_info(self, inherit=True):
         """Returns a dictionary to serve as fallback for BookInfo.

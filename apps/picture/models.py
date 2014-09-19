@@ -10,11 +10,8 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
-from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
-from django.core.cache import caches
-from catalogue.utils import split_tags
 from fnpdjango.utils.text.slughifi import slughifi
+from ssify import flush_ssi_includes
 from picture import tasks
 from StringIO import StringIO
 import jsonfield
@@ -23,12 +20,10 @@ import logging
 
 from PIL import Image
 
-from django.utils.translation import get_language, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
 from os import path
 
-
-permanent_cache = caches['permanent']
 
 picture_storage = FileSystemStorage(location=path.join(
         settings.MEDIA_ROOT, 'pictures'),
@@ -48,6 +43,8 @@ class PictureArea(models.Model):
     tags        = managers.TagDescriptor(catalogue.models.Tag)
     tag_relations = GenericRelation(catalogue.models.Tag.intermediary_table_model)
 
+    short_html_url_name = 'picture_area_short'
+
     @classmethod
     def rectangle(cls, picture, kind, coords):
         pa = PictureArea()
@@ -56,35 +53,18 @@ class PictureArea(models.Model):
         pa.area = coords
         return pa
 
-    def reset_short_html(self):
-        if self.id is None:
+    def flush_includes(self, languages=True):
+        if not languages:
             return
-
-        cache_key = "PictureArea.short_html/%d/%s"
-        for lang, langname in settings.LANGUAGES:
-            permanent_cache.delete(cache_key % (self.id, lang))
-
-
-    def short_html(self):
-        if self.id:
-            cache_key = "PictureArea.short_html/%d/%s" % (self.id, get_language())
-            short_html = permanent_cache.get(cache_key)
-        else:
-            short_html = None
-
-        if short_html is not None:
-            return mark_safe(short_html)
-        else:
-            theme = self.tags.filter(category='theme')
-            theme = theme and theme[0] or None
-            thing = self.tags.filter(category='thing')
-            thing = thing and thing[0] or None
-            area = self
-            short_html = unicode(render_to_string(
-                    'picture/picturearea_short.html', locals()))
-            if self.id:
-                permanent_cache.set(cache_key, short_html)
-            return mark_safe(short_html)
+        if languages is True:
+            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/katalog/pa/%d/short.%s.html',
+                ]
+            for lang in languages
+            ])
 
 
 class Picture(models.Model):
@@ -114,6 +94,8 @@ class Picture(models.Model):
     tags        = managers.TagDescriptor(catalogue.models.Tag)
     tag_relations = GenericRelation(catalogue.models.Tag.intermediary_table_model)
 
+    short_html_url_name = 'picture_short'
+
     class AlreadyExists(Exception):
         pass
 
@@ -123,15 +105,18 @@ class Picture(models.Model):
         verbose_name = _('picture')
         verbose_name_plural = _('pictures')
 
-    def save(self, force_insert=False, force_update=False, reset_short_html=True, **kwargs):
+    def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 
         self.sort_key = sortify(self.title)
 
-        ret = super(Picture, self).save(force_insert, force_update)
+        try:
+            author = self.tags.filter(category='author')[0].sort_key
+        except IndexError:
+            author = u''
+        self.sort_key_author = author
 
-        if reset_short_html:
-            self.reset_short_html()
+        ret = super(Picture, self).save(force_insert, force_update)
 
         return ret
 
@@ -327,48 +312,9 @@ class Picture(models.Model):
             self._info = info
         return self._info
 
-    def reset_short_html(self):
-        if self.id is None:
-            return
-
-        for area in self.areas.all().iterator():
-            area.reset_short_html()
-
-        try:
-            author = self.tags.filter(category='author')[0].sort_key
-        except IndexError:
-            author = u''
-        type(self).objects.filter(pk=self.pk).update(sort_key_author=author)
-
-        cache_key = "Picture.short_html/%d/%s"
-        for lang, langname in settings.LANGUAGES:
-            permanent_cache.delete(cache_key % (self.id, lang))
-
-    def short_html(self):
-        if self.id:
-            cache_key = "Picture.short_html/%d/%s" % (self.id, get_language())
-            short_html = permanent_cache.get(cache_key)
-        else:
-            short_html = None
-
-        if short_html is not None:
-            return mark_safe(short_html)
-        else:
-            tags = self.tags.filter(category__in=('author', 'kind', 'epoch', 'genre'))
-            tags = split_tags(tags)
-
-            short_html = unicode(render_to_string(
-                    'picture/picture_short.html',
-                    {'picture': self, 'tags': tags}))
-
-            if self.id:
-                permanent_cache.set(cache_key, short_html)
-            return mark_safe(short_html)
-
     def pretty_title(self, html_links=False):
         picture = self
-        names = [(tag.name,
-                  catalogue.models.Tag.create_url('author', tag.slug))
+        names = [(tag.name, tag.get_absolute_url())
                  for tag in self.tags.filter(category='author')]
         names.append((self.title, self.get_absolute_url()))
 
@@ -378,7 +324,19 @@ class Picture(models.Model):
             names = [tag[0] for tag in names]
         return ', '.join(names)
 
-    # copied from book.py, figure out
     def related_themes(self):
         return catalogue.models.Tag.objects.usage_for_queryset(
             self.areas.all(), counts=True).filter(category__in=('theme', 'thing'))
+
+    def flush_includes(self, languages=True):
+        if not languages:
+            return
+        if languages is True:
+            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/katalog/p/%d/short.%s.html',
+                ]
+            for lang in languages
+            ])

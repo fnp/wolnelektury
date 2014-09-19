@@ -4,17 +4,12 @@
 #
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
-from django.core.cache import caches
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
-from django.utils.translation import get_language, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
 from catalogue.models import Tag
-
-
-permanent_cache = caches['permanent']
+from ssify import flush_ssi_includes
 
 
 class Fragment(models.Model):
@@ -29,6 +24,8 @@ class Fragment(models.Model):
     tags = managers.TagDescriptor(Tag)
     tag_relations = GenericRelation(Tag.intermediary_table_model)
 
+    short_html_url_name = 'catalogue_fragment_short'
+
     class Meta:
         ordering = ('book', 'anchor',)
         verbose_name = _('fragment')
@@ -38,30 +35,21 @@ class Fragment(models.Model):
     def get_absolute_url(self):
         return '%s#m%s' % (reverse('book_text', args=[self.book.slug]), self.anchor)
 
-    def reset_short_html(self):
-        if self.id is None:
-            return
-
-        cache_key = "Fragment.short_html/%d/%s"
-        for lang, langname in settings.LANGUAGES:
-            permanent_cache.delete(cache_key % (self.id, lang))
-
     def get_short_text(self):
         """Returns short version of the fragment."""
         return self.short_text if self.short_text else self.text
 
-    def short_html(self):
-        if self.id:
-            cache_key = "Fragment.short_html/%d/%s" % (self.id, get_language())
-            short_html = permanent_cache.get(cache_key)
-        else:
-            short_html = None
-
-        if short_html is not None:
-            return mark_safe(short_html)
-        else:
-            short_html = unicode(render_to_string('catalogue/fragment_short.html',
-                {'fragment': self}))
-            if self.id:
-                permanent_cache.set(cache_key, short_html)
-            return mark_safe(short_html)
+    def flush_includes(self, languages=True):
+        if not languages:
+            return
+        if languages is True:
+            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+        flush_ssi_includes([
+            template % (self.pk, lang)
+            for template in [
+                '/katalog/f/%d/short.%s.html',
+                '/api/include/fragment/%d.%s.json',
+                '/api/include/fragment/%d.%s.xml',
+                ]
+            for lang in languages
+            ])

@@ -1,60 +1,51 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
-{% load cache chunks i18n catalogue_tags infopages_tags social_tags %}
+{% load i18n catalogue_tags infopages_tags social_tags %}
+{% load ssi_include from ssify %}
 
 
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 {% block ogtitle %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
-{% block body %}
-    <section id="big-cite"{% if cite.image %}
-        style="
-            background-image: url('{{ cite.image.url }}');
-            background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;
-        "{% endif %} >
-        {% render_cite cite %}
-    </section>
+{% block body %}{% spaceless %}
 
-    {% spaceless %}
+    {% choose_cite as cite_pk %}
+    {{ cite_pk.if }}
+        {% ssi_include 'social_cite_main' pk=cite_pk %}
+    {{ cite_pk.endif }}
+
 
 
     <section id="promo-box">
         <h1>{% trans "What's new?" %}</h1>
         <div id="promo-box-body">
-            {% chunk "promo" %}
+            {% ssi_include 'chunk' key='promo' %}
         </div>
     </section>
 
 
     <section id="main-last">
         <h1><a href="{% url 'recent_list' %}">{% trans "Recent publications" %}</a></h1>
-        {% cache 60 last-published-on-main LANGUAGE_CODE %}
             {% for book in last_published %}
-                {% book_mini book %}
+                {% ssi_include 'catalogue_book_mini' pk=book.pk %}
             {% endfor %}
-        {% endcache %}
     </section>
 
     <div class="clearboth"></div>
 
     <section class="infopages-box">
         <h1>{% trans "News" %}</h1>
-	{# 135 is the id of new publications category of our master blog. perhaps this URL should go to settings. #}
-        {% cache 1800 latest-blog-posts %}
-            {% latest_blog_posts "http://nowoczesnapolska.org.pl/feed/?cat=-135" %}
-        {% endcache %}
+        {% ssi_include 'latest_blog_posts' %}
     </section>
 
 
     <section class="infopages-box">
-        <h1>{% trans "Utilities" %}</h2>
+        <h1>{% trans "Utilities" %}</h1>
 
         <ul>
             <li><a href="{% url 'suggest' %}" id="suggest" class="ajaxable">{% trans "Report a bug or suggestion" %}</a></li>
             <!--li><a href="http://turniej.wolnelektury.pl">Turniej Elektrybałtów</a></li-->
-            <li><a href="{% url 'reporting_catalogue_pdf' %}">
-        		{% trans "Download the catalogue in PDF format." %}
-    		</a></li>
+            <li><a href="{% url 'reporting_catalogue_pdf' %}">{% trans "Download the catalogue in PDF format." %}</a></li>
             <!--li><a href="{% url 'infopage' "widget" %}">{% trans "Widget" %}</a></li-->
             <li><a href="{% url 'suggest_publishing' %}" id="suggest-publishing" class="ajaxable">{% trans "Missing a book?" %}</a></li>
             <li><a href="{% url 'publish_plan' %}">{% trans "Publishing plan" %}</a></li>
@@ -70,45 +61,28 @@
     <section class="infopages-box">
         <h1>{% trans "Information" %}</h1>
         <ul>
-            <li><a href="http://nowoczesnapolska.org.pl/prywatnosc/">{% trans "Privacy policy" %}</a></li>
-        {% cache 60 infopages-on-main LANGUAGE_CODE %}
+            <li><a href="https://nowoczesnapolska.org.pl/prywatnosc/">{% trans "Privacy policy" %}</a></li>
             {% infopages_on_main %}
-        {% endcache %}
         </ul>
 
         <div class="social-links">
-            <a href="http://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268"
-                title='Wolne Lektury @ Facebook'>
+            <a href="https://pl-pl.facebook.com/pages/Wolne-Lektury/203084073268" title='Wolne Lektury @ Facebook'>
                 <img src="{% static "img/social/f.png" %}" alt="Wolne Lektury @ Facebook" />
             </a>
-            <a href="http://nk.pl/profile/30441509"
-                title='Wolne Lektury @ NK'>
+            <a href="https://nk.pl/profile/30441509" title='Wolne Lektury @ NK'>
                 <img src="{% static "img/social/nk.png" %}" alt="Wolne Lektury @ NK.pl" />
             </a>
         </div>
     </section>
 
 
-    {% endspaceless %}
-
-{% endblock %}
+{% endspaceless %}{% endblock %}
 
 
-{% block add_footer %}
-<p>{% trans "Image used:" %} 
-{% if cite.image %}
-    {% if cite.image_link %}<a href="{{ cite.image_link }}">{% endif %}
-    {% if cite.image_title %}
-        {{ cite.image_title }}{% else %}
-        untitled{% endif %}{% if cite.image_link %}</a>{% endif %},
-    {% if cite.image_author %}{{ cite.image_author }},{% endif %}
-    {% if cite.image_license_link %}<a href="{{ cite.image_license_link }}">{% endif %}
-    {{ cite.image_license }}
-    {% if cite.image_license_link %}</a>{% endif %}
-{% else %}
-    <a href="http://www.flickr.com/photos/lou/430980641/">books about architecture</a>,
-    saikofish@Flickr,
-    <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY NC SA</a>.
-{% endif %}
-</p>
-{% endblock %}
+{% block add_footer %}{% spaceless %}
+{{ cite_pk.if }}
+    <p>{% trans "Image used:" %}</p>
+    {% ssi_include 'social_cite_info' pk=cite_pk %}
+    </p>
+{{ cite_pk.endif }}
+{% endspaceless %}{% endblock %}

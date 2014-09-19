@@ -1,6 +1,6 @@
 {% extends "catalogue/viewer_base.html" %}
 {% load i18n %}
-{% load catalogue_tags %}
+{% load catalogue_tags ssify %}
 {% load thumbnail %}
 
 
@@ -49,7 +49,7 @@
 <div id="big-pane" style="">
 
 <article id="main-text">
-{{ book.html_file.read|safe }}
+<!--#include file='{{ book.html_file.url }}'-->
 </article>
 
 <article id="other-text">
@@ -78,7 +78,7 @@
         <li><a class="display-other" 
             data-other="{{ other_version.html_file.url }}"
             href="{% url 'book_text' other_version.slug %}">
-                {% book_mini other_version with_link=False %}
+                {% ssi_include 'catalogue_book_mini_nolink' pk=other_version.pk %}
                 </a>
         </li>
     {% endfor %}
@@ -95,6 +95,6 @@
 </div>
 
 <div class="box" id="book-short">
-    {% book_short book %}
+    {% ssi_include 'catalogue_book_short' pk=book.pk %}
 </div>
 {% endblock footer %}

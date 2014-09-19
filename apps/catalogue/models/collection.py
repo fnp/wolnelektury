@@ -2,8 +2,10 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from ssify import flush_ssi_includes
 
 
 class Collection(models.Model):
@@ -36,3 +38,12 @@ class Collection(models.Model):
         slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
                     for slug in slugs]
         return models.Q(slug__in=slugs)
+
+    def flush_includes(self, languages=True):
+        if not languages:
+            return
+        if languages is True:
+            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+
+        flush_ssi_includes([
+            '/katalog/%s.json' % lang for lang in languages])

@@ -1,10 +1,12 @@
+{% spaceless %}
+
 {% load i18n %}
 {% load catalogue_tags %}
 {% if one_tag %}
     <p>{% trans "See full category" %} <a href="{% catalogue_url one_tag %}">{{ one_tag }}</a></p>
 {% else %}
     <ul>
-    	{% if choices %}
+        {% if choices %}
         {% for tag in tags %}
             <li><a href="{% catalogue_url choices tag %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
         {% endfor %}
@@ -15,3 +17,5 @@
         {% endif %}
     </ul>
 {% endif %}
+
+{% endspaceless %}

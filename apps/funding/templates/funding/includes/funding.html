@@ -1,7 +1,10 @@
+{% spaceless %}
+
 {% load i18n %}
 {% load time_tags %}
+
 {% if offer %}
-{% spaceless %}
+
 <div class="funding {{ add_class }}" data-offer-id="{{offer.id}}" style="">
     {% if closeable %}<a href="#" class="close">X</a>{% endif %}
     {% if link and is_current %}
@@ -44,5 +47,7 @@
 {% if closeable %}
     <div class="funding-handle">{% trans "Help free the book!" %}</div>
 {% endif %}
-{% endspaceless %}
+
 {% endif %}
+
+{% endspaceless %}

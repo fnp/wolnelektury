@@ -1,253 +1,58 @@
-from django.db import connection
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import get_language
-from picture.models import Picture, PictureArea
-from catalogue.models import Fragment, Tag, Book
+from django.db.models import Count
+from .models import Tag, Book
 
 
-def _get_tag_relations_sql(tags):
-    select = """
-        SELECT Rx.object_id, Rx.content_type_id
-        FROM catalogue_tag_relation Rx"""
-    joins = []
-    where = ['WHERE Rx.tag_id = %d' % tags[0].pk]
-    for i, tag in enumerate(tags[1:]):
-        joins.append('INNER JOIN catalogue_tag_relation TR%(i)d '
-            'ON TR%(i)d.object_id = Rx.object_id '
-            'AND TR%(i)d.content_type_id = Rx.content_type_id' % {'i': i})
-        where.append('AND TR%d.tag_id = %d' % (i, tag.pk))
-    return " ".join([select] + joins + where)
+BOOK_CATEGORIES = ('author', 'epoch', 'genre', 'kind')
 
 
+def get_top_level_related_tags(tags=None, categories=BOOK_CATEGORIES):
+    """
+    Finds tags related to given tags through books, and counts their usage.
 
-def get_related_tags(tags):
-    # Get Tag fields for constructing tags in a raw query.
-    tag_fields = ('id', 'category', 'slug', 'sort_key', 'name_%s' % get_language())
-    tag_fields = ', '.join(
-            'T.%s' % connection.ops.quote_name(field)
-        for field in tag_fields)
-    tag_ids = tuple(t.pk for t in tags)
+    Takes ancestry into account: if a tag is applied to a book, its
+    usage on the book's descendants is ignored.
 
-    # This is based on fragments/areas sharing their works tags
-    qs = Tag.objects.raw('''
-        SELECT ''' + tag_fields + ''', COUNT(T.id) count
-        FROM (
-            -- R: TagRelations of all objects tagged with the given tags.
-            WITH R AS (
-                ''' + _get_tag_relations_sql(tags) + '''
+    This is tested for PostgreSQL 9.1+, and might not work elsewhere.
+    It particular, it uses raw SQL using WITH clause, which is
+    supported in SQLite from v. 3.8.3, and is missing in MySQL.
+    http://bugs.mysql.com/bug.php?id=16244
+
+    """
+    # First, find all tag relations of relevant books.
+    bct = ContentType.objects.get_for_model(Book)
+    relations = Tag.intermediary_table_model.objects.filter(
+        content_type=bct)
+    if tags is not None:
+        tagged_books = Book.tagged.with_all(tags).only('pk')
+        relations = relations.filter(
+            object_id__in=tagged_books).exclude(
+            tag_id__in=[tag.pk for tag in tags])
+
+    rel_sql, rel_params = relations.query.sql_with_params()
+
+    # Exclude those relations between a book and a tag,
+    # for which there is a relation between the book's ancestor
+    # and the tag and 
+
+    return Tag.objects.raw('''
+        WITH AllTagged AS (''' + rel_sql + ''')
+        SELECT catalogue_tag.*, COUNT(catalogue_tag.id) AS count
+        FROM catalogue_tag, AllTagged
+        WHERE catalogue_tag.id=AllTagged.tag_id
+            AND catalogue_tag.category IN %s
+            AND NOT EXISTS (
+                SELECT AncestorTagged.id
+                FROM catalogue_book_ancestor Ancestor,
+                    AllTagged AncestorTagged
+                WHERE Ancestor.from_book_id=AllTagged.object_id
+                    AND AncestorTagged.content_type_id=%s
+                    AND AncestorTagged.object_id=Ancestor.to_book_id
+                    AND AncestorTagged.tag_id=AllTagged.tag_id
             )
-
-            SELECT ''' + tag_fields + ''', MAX(R4.object_id) ancestor
-
-            FROM R R1
-
-            -- R2: All tags of the found objects.
-            JOIN catalogue_tag_relation R2
-                ON R2.object_id = R1.object_id
-                    AND R2.content_type_id = R1.content_type_id
-
-            -- Tag data for output.
-            JOIN catalogue_tag T
-                ON T.id=R2.tag_id
-
-            -- Special case for books:
-            -- We want to exclude from output all the relations
-            -- between a book and a tag, if there's a relation between
-            -- the the book's ancestor and the tag in the result.
-            LEFT JOIN catalogue_book_ancestor A
-                ON A.from_book_id = R1.object_id
-                    AND R1.content_type_id = %s
-            LEFT JOIN catalogue_tag_relation R3
-                ON R3.tag_id = R2.tag_id
-                    AND R3.content_type_id = R1.content_type_id
-                    AND R3.object_id = A.to_book_id
-            LEFT JOIN R R4
-                ON R4.object_id = R3.object_id
-                AND R4.content_type_id = R3.content_type_id
-
-            WHERE
-                -- Exclude from the result the tags we started with.
-                R2.tag_id NOT IN %s
-                -- Special case for books: exclude descendants.
-                -- AND R4.object_id IS NULL
-                AND (
-                    -- Only count fragment tags on fragments
-                    -- and book tags for books.
-                    (R2.content_type_id IN %s AND T.category IN %s)
-                    OR
-                    (R2.content_type_id IN %s AND T.category IN %s)
-                )
-
-            GROUP BY T.id, R2.object_id, R2.content_type_id
-
-        ) T
-        -- Now group by tag and count occurencies.
-        WHERE ancestor IS NULL
-        GROUP BY ''' + tag_fields + '''
-        ORDER BY T.sort_key
-        ''', params=(
-            ContentType.objects.get_for_model(Book).pk,
-            tag_ids,
-            tuple(ContentType.objects.get_for_model(model).pk
-                for model in (Fragment, PictureArea)),
-            ('theme', 'object'),
-            tuple(ContentType.objects.get_for_model(model).pk
-                for model in (Book, Picture)),
-            ('author', 'epoch', 'genre', 'kind'),
-        ))
-    return qs
-
-
-def get_fragment_related_tags(tags):
-    tag_fields = ', '.join(
-        'T.%s' % (connection.ops.quote_name(field.column))
-        for field in Tag._meta.fields)
-
-    tag_ids = tuple(t.pk for t in tags)
-        # This is based on fragments/areas sharing their works tags
-    return Tag.objects.raw('''
-        SELECT T.*, COUNT(T.id) count
-        FROM (
-
-            SELECT T.*
-
-            -- R1: TagRelations of all objects tagged with the given tags.
-            FROM (
-                ''' + _get_tag_relations_sql(tags) + '''
-            ) R1
-
-            -- R2: All tags of the found objects.
-            JOIN catalogue_tag_relation R2
-                ON R2.object_id = R1.object_id
-                    AND R2.content_type_id = R1.content_type_id
-
-            -- Tag data for output.
-            JOIN catalogue_tag T
-                ON T.id = R2.tag_id
-
-            WHERE
-                -- Exclude from the result the tags we started with.
-                R2.tag_id NOT IN %s
-            GROUP BY T.id, R2.object_id, R2.content_type_id
-
-        ) T
-        -- Now group by tag and count occurencies.
-        GROUP BY ''' + tag_fields + '''
-        ORDER BY T.sort_key
-        ''', params=(
-            tag_ids,
-        ))
-
-
-def tags_usage_for_books(categories):
-    tag_fields = ', '.join(
-            'T.%s' % (connection.ops.quote_name(field.column))
-        for field in Tag._meta.fields)
-
-    # This is based on fragments/areas sharing their works tags
-    return Tag.objects.raw('''
-        SELECT T.*, COUNT(T.id) count
-        FROM (
-            SELECT T.*
-
-            FROM catalogue_tag_relation R1
-
-            -- Tag data for output.
-            JOIN catalogue_tag T
-                ON T.id=R1.tag_id
-
-            -- We want to exclude from output all the relations
-            -- between a book and a tag, if there's a relation between
-            -- the the book's ancestor and the tag in the result.
-            LEFT JOIN catalogue_book_ancestor A
-                ON A.from_book_id=R1.object_id
-            LEFT JOIN catalogue_tag_relation R3
-                ON R3.tag_id = R1.tag_id
-                    AND R3.content_type_id = R1.content_type_id
-                    AND R3.object_id = A.to_book_id
-
-            WHERE
-                R1.content_type_id = %s
-                -- Special case for books: exclude descendants.
-                AND R3.object_id IS NULL
-                AND T.category IN %s
-
-            -- TODO:
-            -- Shouldn't it just be 'distinct'?
-            -- Maybe it's faster this way.
-            GROUP BY T.id, R1.object_id, R1.content_type_id
-
-        ) T
-        -- Now group by tag and count occurencies.
-        GROUP BY ''' + tag_fields + '''
-        ORDER BY T.sort_key
-        ''', params=(
-            ContentType.objects.get_for_model(Book).pk,
-            tuple(categories),
-        ))
-
-
-def tags_usage_for_works(categories):
-    tag_fields = ', '.join(
-            'T.%s' % (connection.ops.quote_name(field.column))
-        for field in Tag._meta.fields)
-
-    return Tag.objects.raw('''
-        SELECT T.*, COUNT(T.id) count
-        FROM (
-
-            SELECT T.*
-
-            FROM catalogue_tag_relation R1
-
-            -- Tag data for output.
-            JOIN catalogue_tag T
-                ON T.id = R1.tag_id
-
-            -- Special case for books:
-            -- We want to exclude from output all the relations
-            -- between a book and a tag, if there's a relation between
-            -- the the book's ancestor and the tag in the result.
-            LEFT JOIN catalogue_book_ancestor A
-                ON A.from_book_id = R1.object_id
-                    AND R1.content_type_id = %s
-            LEFT JOIN catalogue_tag_relation R3
-                ON R3.tag_id = R1.tag_id
-                    AND R3.content_type_id = R1.content_type_id
-                    AND R3.object_id = A.to_book_id
-
-            WHERE
-                R1.content_type_id IN %s
-                -- Special case for books: exclude descendants.
-                AND R3.object_id IS NULL
-                AND T.category IN %s
-
-            -- TODO:
-            -- Shouldn't it just be 'distinct'?
-            -- Maybe it's faster this way.
-            GROUP BY T.id, R1.object_id, R1.content_type_id
-
-        ) T
-        -- Now group by tag and count occurencies.
-        GROUP BY ''' + tag_fields + '''
-        ORDER BY T.sort_key
-       
-        ''', params=(
-            ContentType.objects.get_for_model(Book).pk,
-            tuple(ContentType.objects.get_for_model(model).pk for model in (Book, Picture)),
-            categories,
-        ))
-
-
-def tags_usage_for_fragments(categories):
-    return Tag.objects.raw('''
-        SELECT t.*, count(t.id)
-        from catalogue_tag_relation r
-        join catalogue_tag t
-            on t.id = r.tag_id
-        where t.category IN %s
-        group by t.id
-        order by t.sort_key
-        ''', params=(
-            categories,
-        ))
+        GROUP BY catalogue_tag.id
+        ORDER BY sort_key''', rel_params + (categories, bct.pk))

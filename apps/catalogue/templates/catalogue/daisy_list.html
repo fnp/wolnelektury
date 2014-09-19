@@ -1,6 +1,6 @@
 {% extends "catalogue/book_list.html" %}
 {% load i18n %}
-{% load chunks %}
+{% load ssi_include from ssify %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
@@ -13,5 +13,5 @@
 {% block book_list_header %}{% trans "Listing of all DAISY files" %}{% endblock %}
 
 {% block book_list_info %}
-{% chunk 'daisy-list' %}
+{% ssi_include 'chunk' key='daisy-list' %}
 {% endblock %}

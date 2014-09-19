@@ -1,0 +1,28 @@
+{% spaceless %}
+
+{% load i18n %}
+{% load pagination_tags %}
+
+<table class="wlfund">
+
+{% for funding in fundings %}
+    <tr class="funding-plus">
+        <td class="oneline">{{ funding.payed_at.date }}</td>
+        <td>
+            {% if funding.name %}
+                {{ funding.name }}
+            {% else %}
+                <em>{% trans "Anonymous" %}</em>
+            {% endif %}
+        </td>
+        <td>{{ funding.amount }}&nbsp;zł</td>
+        <td>&nbsp;
+            {% for perk in funding.perks.all %}
+                {{ perk.name }}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </td>
+{% endfor %}
+</table>
+
+{% endspaceless %}{% paginate %}
+

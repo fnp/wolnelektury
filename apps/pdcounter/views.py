@@ -5,10 +5,12 @@
 from datetime import datetime
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
-from pdcounter import models
+from django.views.decorators import cache
 from suggest.forms import PublishingSuggestForm
+from . import models
 
 
+@cache.never_cache
 def book_stub_detail(request, slug):
     book = get_object_or_404(models.BookStub, slug=slug)
     if book.pd and not book.in_pd():
@@ -21,6 +23,7 @@ def book_stub_detail(request, slug):
         context_instance=RequestContext(request))
 
 
+@cache.never_cache
 def author_detail(request, slug):
     author = get_object_or_404(models.Author, slug=slug)
     if not author.alive():

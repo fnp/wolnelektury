@@ -1,9 +1,11 @@
 {% load i18n %}
+{% load ssi_csrf_token from ssify %}
+
 <h1>{{ title }}</h1>
 
 <form action="{{ request.get_full_path }}" method="post" accept-charset="utf-8"
 	class="cuteform{% if placeholdize %} hidelabels{% endif %}">
-{% csrf_token %}
+{% ssi_csrf_token %}
 <ol>
     <div id="id_{% if form_prefix %}{{ form_prefix }}-{% endif %}__all__"></div>
     {{ form.as_ul }}

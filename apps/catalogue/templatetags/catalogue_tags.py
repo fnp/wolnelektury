@@ -2,20 +2,18 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import datetime
-import feedparser
 from random import randint
 from urlparse import urlparse
 
 from django.conf import settings
 from django import template
 from django.template import Node, Variable, Template, Context
-from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.utils.cache import add_never_cache_headers
 from django.utils.translation import ugettext as _
 
-from catalogue.utils import split_tags
+from ssify import ssi_variable
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
 
@@ -279,25 +277,6 @@ class CatalogueURLNode(Node):
             return reverse('main_page')
 
 
-@register.inclusion_tag('catalogue/latest_blog_posts.html')
-def latest_blog_posts(feed_url, posts_to_show=5):
-    try:
-        feed = feedparser.parse(str(feed_url))
-        posts = []
-        for i in range(posts_to_show):
-            pub_date = feed['entries'][i].published_parsed
-            published = datetime.date(pub_date[0], pub_date[1], pub_date[2])
-            posts.append({
-                'title': feed['entries'][i].title,
-                'summary': feed['entries'][i].summary,
-                'link': feed['entries'][i].link,
-                'date': published,
-                })
-        return {'posts': posts}
-    except:
-        return {'posts': []}
-
-
 @register.inclusion_tag('catalogue/tag_list.html')
 def tag_list(tags, choices=None):
     if choices is None:
@@ -322,96 +301,24 @@ def book_info(book):
     return locals()
 
 
-@register.inclusion_tag('catalogue/book_wide.html', takes_context=True)
-def book_wide(context, book):
-    ctx = book_short(context, book)
-    ctx['extra_info'] = book.extra_info
-    ctx['hide_about'] = ctx['extra_info'].get('about', '').startswith('http://wiki.wolnepodreczniki.pl')
-    ctx['themes'] = book.related_themes()
-    ctx['main_link'] = reverse('book_text', args=[book.slug]) if book.html_file else None
-    return ctx
-
-
-@register.inclusion_tag('catalogue/book_short.html', takes_context=True)
-def book_short(context, book):
-    stage_note, stage_note_url = book.stage_note()
-
-    return {
-        'book': book,
-        'has_audio': book.has_media('mp3'),
-        'main_link': book.get_absolute_url(),
-        'parents': book.parents(),
-        'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
-        'request': context.get('request'),
-        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
-        'stage_note': stage_note,
-        'stage_note_url': stage_note_url,
-    }
-
-
-@register.inclusion_tag('catalogue/book_mini_box.html')
-def book_mini(book, with_link=True):
-    author_str = ", ".join(tag.name
-        for tag in book.tags.filter(category='author'))
-    return {
-        'book': book,
-        'author_str': author_str,
-        'with_link': with_link,
-        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
-    }
-
-
 @register.inclusion_tag('catalogue/work-list.html', takes_context=True)
 def work_list(context, object_list):
     request = context.get('request')
     return locals()
 
 
-@register.inclusion_tag('catalogue/fragment_promo.html')
-def fragment_promo(arg=None):
-    if isinstance(arg, Book):
-        fragment = arg.choose_fragment()
-    else:
-        if arg is None:
-            fragments = Fragment.objects.all()
-        else:
-            fragments = Fragment.tagged.with_all(arg)
-        fragments = fragments.order_by().only('id')
-        fragments_count = fragments.count()
-        if fragments_count:
-            fragment = fragments.order_by()[randint(0, fragments_count - 1)]
-        else:
-            fragment = None
-
-    return {
-        'fragment': fragment,
-    }
-
-
-@register.inclusion_tag('catalogue/related_books.html')
-def related_books(book, limit=6, random=1, taken=0):
+@register.inclusion_tag('catalogue/related_books.html', takes_context=True)
+def related_books(context, book, limit=6, random=1, taken=0):
     limit = limit - taken
-    cache_key = "catalogue.related_books.%d.%d" % (book.id, limit - random)
-    related = cache.get(cache_key)
-    if related is None:
-        related = Book.tagged.related_to(book,
-                Book.objects.exclude(common_slug=book.common_slug)
-                ).exclude(ancestor=book)[:limit-random]
-        cache.set(cache_key, related, 1800)
-    if random:
-        random_books = Book.objects.exclude(
-                        pk__in=[b.pk for b in related] + [book.pk])
-        if random == 1:
-            count = random_books.count()
-            if count:
-                random_related = [random_books[randint(0, count - 1)]]
-        else:
-            random_related = list(random_books.order_by('?')[:random])
-    else:
-        random_related = []
+    related = Book.tagged.related_to(book,
+            Book.objects.exclude(common_slug=book.common_slug)
+            ).exclude(ancestor=book)[:limit-random]
+    random_excluded = [b.pk for b in related] + [book.pk]
     return {
+        'request': context['request'],
         'books': related,
-        'random_related': random_related,
+        'random': random,
+        'random_excluded': random_excluded,
     }
 
 
@@ -424,11 +331,6 @@ def catalogue_menu():
                 ('epoch', _('Epochs'), 'epoki'),
                 ('theme', _('Themes'), 'motywy'),
         ]}
-
-
-@register.simple_tag
-def tag_url(category, slug):
-    return Tag.create_url(category, slug)
 
 
 @register.simple_tag
@@ -485,3 +387,31 @@ def source_name(url):
         return ''
     source, created = Source.objects.get_or_create(netloc=netloc)
     return source.name or netloc
+
+
+@ssi_variable(register, patch_response=[add_never_cache_headers])
+def catalogue_random_book(request, exclude_ids):
+    queryset = Book.objects.exclude(pk__in=exclude_ids)
+    count = queryset.count()
+    if count:
+        return queryset[randint(0, count - 1)].pk
+    else:
+        return None
+
+
+@ssi_variable(register, patch_response=[add_never_cache_headers])
+def choose_fragment(request, book_id=None, tag_ids=None, unless=False):
+    if unless:
+        return None
+
+    if book_id is not None:
+        fragment = Book.objects.get(pk=book_id).choose_fragment()
+    else:
+        if tag_ids is not None:
+            tags = Tag.objects.filter(pk__in=tag_ids)
+            fragments = Fragment.tagged.with_all(tags).order_by().only('id')
+        else:
+            fragments = Fragment.objects.all().order_by().only('id')
+        fragment_count = fragments.count()
+        fragment = fragments[randint(0, fragment_count - 1)] if fragment_count else None
+    return fragment.pk if fragment is not None else None

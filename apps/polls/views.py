@@ -2,15 +2,17 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.views.decorators.http import require_http_methods
-from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.core.urlresolvers import reverse
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
+from django.views.decorators import cache
+from django.views.decorators.http import require_http_methods
 
 from .models import Poll, PollItem
 from .forms import PollForm
 
 
+@cache.never_cache
 @require_http_methods(['GET', 'POST'])
 def poll(request, slug):
 

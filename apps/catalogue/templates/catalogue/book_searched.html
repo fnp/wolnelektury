@@ -1,10 +1,13 @@
-{% extends "catalogue/book_short.html" %}
-{% load i18n catalogue_tags %}
+{% spaceless %}
 
+{% load i18n %}
+{% load inline_tag_list from catalogue_tags %}
+{% load ssi_include from ssify %}
 
-{% block box-class %}search-result{% endblock %}
+<div class="search-result">
 
-{% block right-column %}
+{% ssi_include 'catalogue_book_short' pk=book.pk %}
+
 <div class="snippets">
   {% for hit in hits %}
   {% if hit.snippet %}
@@ -28,5 +31,8 @@
   {% endfor %}
 </div>
 
-{% endblock %}
+<div style="clear: right"></div>
 
+</div>
+
+{% endspaceless %}

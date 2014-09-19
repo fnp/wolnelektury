@@ -1,7 +1,9 @@
-{% if tags.exists %}
+{% spaceless %}
+
 <ul class='social-shelf-tags'>
     {% for tag in tags %}
         <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
     {% endfor %}
 </ul>
-{% endif %}
+
+{% endspaceless %}

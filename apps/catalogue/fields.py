@@ -204,7 +204,7 @@ class BuildHtml(BuildEbook):
 
                 new_fragment.save()
                 new_fragment.tags = set(meta_tags + themes)
-            book.html_built.send(sender=book)
+            book.html_built.send(sender=type(self), instance=book)
             return True
         return False
 
@@ -235,19 +235,3 @@ class OverwritingFieldFile(FieldFile):
 
 class OverwritingFileField(models.FileField):
     attr_class = OverwritingFieldFile
-
-
-try:
-    # check for south
-    from south.modelsinspector import add_introspection_rules
-except ImportError:
-    pass
-else:
-    add_introspection_rules([
-        (
-            [EbookField],
-            [],
-            {'format_name': ('format_name', {})}
-        )
-    ], ["^catalogue\.fields\.EbookField"])
-    add_introspection_rules([], ["^catalogue\.fields\.OverwritingFileField"])

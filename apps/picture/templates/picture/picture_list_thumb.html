@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load chunks %}
-{% load picture_tags %}
-{% load thumbnail %}
 {% load static %}
+{% load ssi_include from ssify %}
 
 {% block bodyid %}picture-list{% endblock %}
 
@@ -15,7 +13,7 @@
 
     <div class="left-column"><div class="normal-text">
         {% block book_list_info %}
-            {% chunk 'picture-list' %}
+            {% ssi_include 'chunk' key='picture-list' %}
         {% endblock %}
     </div></div>
     <div class="right-column" id="logo-space">
@@ -30,7 +28,7 @@
   <ol class="work-list">{% spaceless %}
 {% for picture in book_list %}
    <li class="Picture-item">
- {% picture_short picture %} 
+   {% ssi_include 'picture_short' pk=picture.pk %}
    </li>
 {% endfor %}
   {% endspaceless %}</ol>

@@ -1,22 +1,20 @@
--i http://py.mdrn.pl/simple/ 
+-i http://py.mdrn.pl/simple/
 
 # django
 Django>=1.7,<1.8
 fnpdjango>=0.1.15,<0.2
-South>=0.7 # migrations for django
 django-pipeline>=1.3,<1.4
 django-pagination>=1.0
 django-maintenancemode>=0.10
 django-piston==0.2.2.1.2
-jsonfield>=0.9.20
+jsonfield>=0.9.22,<1.0
 django-picklefield
 django-modeltranslation==0.8b2
-django-allauth>=0.16,<0.17
+# django-allauth>=0.17,<0.18
+# django-allauth pre-0.18 version with Django 1.7 migrations
+-e git+git://github.com/pennersr/django-allauth.git@9cc09402d3dd768bc1221e0bb7a438d6295812f5#egg=django-allauth
 
 pytz
-
-# Some contrib apps still need it
-simplejson
 
 django-honeypot
 django-uni-form
@@ -54,3 +52,4 @@ sunburnt
 django-getpaid>=1.6,<1.7
 httplib2
 Texml
+django-ssify>=0.2.1,<0.3

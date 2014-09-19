@@ -19,3 +19,27 @@ class Source(models.Model):
 
     def __unicode__(self):
         return self.netloc
+
+    def save(self, *args, **kwargs):
+        from catalogue.models import Book
+        try:
+            str(self.pk)
+            old_self = type(self).objects.get(pk=self)
+        except type(self).DoesNotExist:
+            old_name = u''
+            old_netloc = self.netloc
+        else:
+            old_name = old_self.name
+            old_netloc = old_self.netloc
+
+        ret = super(Source, self).save(*args, **kwargs)
+
+        # If something really changed here, find relevant books
+        # and invalidate their cached includes.
+        if old_name != self.name or old_netloc != self.netloc:
+            for book in Book.objects.all():
+                source = book.extra_info.get('source_url', '')
+                if self.netloc in source or (old_netloc != self.netloc
+                        and old_netloc in source):
+                    book.flush_includes()
+        return ret

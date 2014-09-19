@@ -15,14 +15,12 @@ from django.conf import settings
 @override_settings(
     MEDIA_ROOT=tempfile.mkdtemp(prefix='djangotest_'),
     CATALOGUE_DONT_BUILD=set(['pdf', 'mobi', 'epub', 'txt', 'fb2', 'cover']),
-    NO_SEARCH_INDEX = True,
-    CELERY_ALWAYS_EAGER = True,
+    NO_SEARCH_INDEX=True,
+    CELERY_ALWAYS_EAGER=True,
     CACHES={
-            'api': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
             'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
-            'permanent': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
         },
-    SOLR = settings.SOLR_TEST,
+    SOLR=settings.SOLR_TEST,
 )
 class WLTestCase(TestCase):
     """

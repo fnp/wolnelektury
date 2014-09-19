@@ -10,7 +10,6 @@ from django import template
 # from django.db.models import Q
 # from django.utils.translation import ugettext as _
 from catalogue.models import Book
-from catalogue.templatetags.catalogue_tags import book_short
 import re
 # from catalogue.forms import SearchForm
 # from catalogue.utils import split_tags
@@ -49,6 +48,8 @@ def book_searched(context, result):
         snip = snip.replace("\n", "<br />").replace('---', '&mdash;')
         hit['snippet'] = snip
 
-    ctx = book_short(context, book)
-    ctx['hits'] = hits and zip(*hits)[1] or []
-    return ctx
+    return {
+        'request': context['request'],
+        'book': book,
+        'hits':  hits and zip(*hits)[1] or []
+    }
