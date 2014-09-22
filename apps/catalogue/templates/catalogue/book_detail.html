@@ -22,7 +22,7 @@
 <section class="see-also" style="display: inline-block;">
 <h1>{% trans "Other versions" %}:</h1>
 {% for rel in book.other_versions %}
-    {% ssi_include 'book_mini' pk=rel.pk %}
+    {% ssi_include 'catalogue_book_mini' pk=rel.pk %}
 {% endfor %}
 </section>
 {% endif %}

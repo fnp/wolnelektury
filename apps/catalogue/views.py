@@ -59,7 +59,7 @@ def catalogue(request, as_json=False):
     collections = models.Collection.objects.all()
 
     def render_tag_list(tags):
-        render_to_string('catalogue/tag_list.html', tag_list(tags))
+        return render_to_string('catalogue/tag_list.html', tag_list(tags))
 
     def render_split(with_books, with_pictures):
         ctx = {}
@@ -212,7 +212,7 @@ def tagged_object_list(request, tags=''):
         all_books = models.Book.tagged.with_all(tags)
         if shelf_is_set:
             books = all_books.order_by('sort_key_author', 'title')
-            pictures = Pictures.objects.none()
+            pictures = Picture.objects.none()
             related_book_tags = models.Tag.objects.usage_for_queryset(
                 books, counts=True).exclude(
                 category='set').exclude(pk__in=tags_pks)
@@ -531,7 +531,10 @@ def json_tags_starting_with(request, callback=None):
         result = [prefix, tags_list]
     else:
         result = {"matches": tags_list}
-    return JsonResponse(result, callback)
+    response = JsonResponse(result, safe=False)
+    if callback:
+        response.content = callback + "(" + response.content + ");"
+    return response
 
 
 # =========

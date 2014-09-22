@@ -18,5 +18,6 @@ def poll(context, poll, show_results=True, redirect_to=''):
                 form=form,
                 voted_already=voted_already,
                 vote_count=poll.vote_count,
-                show_results=show_results
+                show_results=show_results,
+                request=context.get('request'),
            )
