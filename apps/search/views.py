@@ -73,9 +73,6 @@ def hint(request):
     # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
     # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
 
-    tags = search.hint_tags(prefix, pdcounter=True)
-    books = search.hint_books(prefix)
-
     def is_dupe(tag):
         if isinstance(tag, PDCounterAuthor):
             if filter(lambda t: t.slug == tag.slug and t != tag, tags):
@@ -85,24 +82,47 @@ def hint(request):
                 return True
         return False
 
-    tags = filter(lambda t: not is_dupe(t), tags)
-
     def category_name(c):
         if c.startswith('pd_'):
             c = c[len('pd_'):]
         return _(c)
 
-    callback = request.GET.get('callback', None)
-    data = [{'label': t.name,
-              'category': category_name(t.category),
-              'id': t.id,
-              'url': t.get_absolute_url()}
-              for t in tags] + \
-              [{'label': b.title,
+    try:
+        limit = int(request.GET.get('max', ''))
+    except ValueError:
+        limit = -1
+    else:
+        if limit < 1:
+            limit = -1
+
+    data = []
+
+    tags = search.hint_tags(prefix, pdcounter=True)
+    tags = filter(lambda t: not is_dupe(t), tags)
+    for t in tags:
+        if not limit:
+            break
+        limit -= 1
+        data.append({
+            'label': t.name,
+            'category': category_name(t.category),
+            'id': t.id,
+            'url': t.get_absolute_url()
+            })
+    if limit:
+        books = search.hint_books(prefix)
+        for b in books:
+            if not limit:
+                break
+            limit -= 1
+            data.append({
+                'label': b.title,
                 'category': _('book'),
                 'id': b.id,
-                'url': b.get_absolute_url()}
-                for b in books]
+                'url': b.get_absolute_url()
+                })
+
+    callback = request.GET.get('callback', None)
     if callback:
         return HttpResponse("%s(%s);" % (callback, json.dumps(data)),
                             content_type="application/json; charset=utf-8")

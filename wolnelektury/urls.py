@@ -12,6 +12,7 @@ import wolnelektury_core.views
 urlpatterns = patterns('wolnelektury_core.views',
     url(r'^$', 'main_page', name='main_page'),
     url(r'^planowane/$', 'publish_plan', name='publish_plan'),
+    url(r'^widget\.html$', 'widget', name='widget'),
 
     url(r'^zegar/$', 'clock', name='clock'),
 

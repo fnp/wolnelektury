@@ -1,0 +1,37 @@
+{% spaceless %}
+
+{% load static from staticfiles %}
+{% load compressed %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <base target="_parent" />
+    <title>Widget Wolnych Lektur</title>
+    {% compressed_css 'widget' %}
+</head>
+<body>
+<div id="wl">
+
+<a href="/">
+    <img src="{% static 'img/logo-neon.png' %}">
+</a>
+
+<form action="{% url 'search' %}" method="get" accept-charset="utf-8" id="wl-form">
+    <div id="wl-search">
+        <input data-source="{% url 'search_hint' %}?max=3" id="id_qq" name="q" title="tytuł, autor, motyw/temat, epoka, rodzaj, gatunek, cytat" placeholder="tytuł, autor, motyw/temat, epoka, rodzaj, gatunek, cytat" type="text" value="">
+    </div>
+    <button>
+        <img alt="Szukaj" src="{% static 'img/search.png' %}">
+    </button>
+</form>
+
+</div>
+
+{% compressed_js 'widget' %}
+
+</body>
+</html>
+
+{% endspaceless %}

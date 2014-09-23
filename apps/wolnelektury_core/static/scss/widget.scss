@@ -1,0 +1,150 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+#wl {
+    background-color: #191919;
+    position:relative;
+
+    a, a:visited, a:hover {
+        display: block;
+        line-height: 5.94rem;
+        border: 0;
+
+        img {
+            border: 0;
+            max-width: 100%;
+            margin: 0;
+            vertical-align: middle;
+        }
+    }
+
+    #wl-form {
+        background: #444;
+        color: white;
+        height: 2.8125rem;
+        position: relative;
+    }
+    #wl-search {
+        position: absolute;
+        left: .3125rem;
+        right: 2.9rem;
+        right: 22%;
+        top: .3125rem;
+    }
+
+    #id_qq {
+        font-family: Georgia;
+        font-size: 0.8125rem;
+        
+        background-color: #FFFFFF;
+        border: medium none;
+        border-radius: 0.3125rem;
+        box-shadow: 0 0 0.40625rem #444444 inset;
+        color: #000000;
+        height: 2.0625rem;
+        width: 100%;
+
+        line-height: 2.03125rem;
+        padding: 0 0 0 .8125rem;
+        position: relative;
+        box-sizing: border-box;
+        z-index: 200;
+
+        &::-moz-placeholder {
+            color: #767676;
+            font-family: Georgia;
+            font-style: italic;
+        }
+    }
+
+    button {
+        background: #018189;
+        border: none;
+        color: white;
+        display: inline-block;
+        font-size: .6875rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 2rem;
+
+        width: 20%;
+        height: 2.8125rem;
+        margin: 0;
+        padding: 0;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+}
+
+.ui-menu {
+    width: 100%;
+    font-size: 0.7rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px 0;
+
+    li {
+        clear: right;
+
+        &:nth-child(odd) {
+            background-color: rgba(255,255,255,.95);
+        }
+
+        &:nth-child(even){
+            background-color: rgba(238,238,238,.95);
+        }
+
+        &:hover{
+            background-color: #053469;
+            color:white;
+        }
+
+        .ui-state-hover {
+            background-color: #fdf5ce;
+        }
+
+        .search-hint-label {
+            line-height: 1.636em;
+            display: inline-block;
+            max-width: 80%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .search-hint-category {
+            display: none;
+            @media screen and (min-width: 10em) {
+                display: block;
+            }
+            float: right;
+            font-size: .9em;
+        }
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.ui-corner-all {
+    cursor: pointer;
+    display:block;
+
+    a {
+        text-decoration: none;
+        color: #0D7E85;
+        padding: 5px;
+    }
+}

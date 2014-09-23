@@ -66,6 +66,10 @@ PIPELINE_CSS = {
         'source_filenames': ('css/simple.css',),
         'output_filename': 'css/compressed/simple.css',
     },
+    'widget': {
+        'source_filenames': ('scss/widget.scss',),
+        'output_filename': 'css/compressed/widget.css',
+    },
 }
 
 PIPELINE_JS = {
@@ -135,8 +139,16 @@ PIPELINE_JS = {
     'book_ie': {
         'source_filenames': ('js/contrib/ierange-m2.js',),
         'output_filename': 'js/book_ie.min.js',
-    }
-
+    },
+    'widget': {
+        'source_filenames': (
+            'js/contrib/jquery.js',
+            'js/contrib/jquery-ui-1.8.16.custom.min.js',
+            'js/search.js',
+            'js/widget_run.js',
+        ),
+        'output_filename': 'js/widget.min.js',
+    },
 }
 
 STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'

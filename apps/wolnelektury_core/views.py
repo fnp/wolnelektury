@@ -145,3 +145,8 @@ def latest_blog_posts(request, feed_url=None, posts_to_show=5):
     except:
         posts = []
     return render(request, 'latest_blog_posts.html', {'posts': posts})
+
+
+@ssi_included(use_lang=False)
+def widget(request):
+    return render(request, 'widget.html')
