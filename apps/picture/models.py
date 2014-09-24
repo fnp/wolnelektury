@@ -108,7 +108,7 @@ class Picture(models.Model):
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 
-        self.sort_key = sortify(self.title)
+        self.sort_key = sortify(self.title)[:120]
 
         try:
             author = self.tags.filter(category='author')[0].sort_key
@@ -156,12 +156,12 @@ class Picture(models.Model):
                 image_store = ImageStore(picture_storage.path('images'))
             picture_xml = WLPicture.from_file(xml_file, image_store=image_store)
 
-            picture, created = Picture.objects.get_or_create(slug=picture_xml.slug)
+            picture, created = Picture.objects.get_or_create(slug=picture_xml.slug[:120])
             if not created and not overwrite:
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
             picture.areas.all().delete()
-            picture.title = unicode(picture_xml.picture_info.title)
+            picture.title = unicode(picture_xml.picture_info.title)[:255]
             picture.extra_info = picture_xml.picture_info.to_dict()
 
             picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))
