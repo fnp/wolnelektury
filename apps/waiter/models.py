@@ -39,14 +39,6 @@ class WaitedFile(models.Model):
                 cls.objects.count() < WAITER_MAX_QUEUE
                 )
 
-    def is_stale(self):
-        if self.task is None:
-            # Race; just let the other task roll.
-            return False
-        if self.task.status not in (u'PENDING', u'STARTED', u'SUCCESS', u'RETRY'):
-            return True
-        return False
-
     @classmethod
     def order(cls, path, task_creator, description=None):
         """
@@ -61,7 +53,7 @@ class WaitedFile(models.Model):
         if not already:
             waited, created = cls.objects.get_or_create(path=path)
             if created or waited.is_stale():
-                waited.task = task_creator(check_abspath(path))
+                waited.task = task_creator(check_abspath(path), waited.pk)
                 waited.task_id = waited.task.task_id
                 waited.description = description
                 waited.save()

@@ -100,8 +100,8 @@ class CustomPDFForm(forms.Form):
             # Don't build with default options, just redirect to the standard file.
             return {"redirect": self.book.pdf_file.url}
         url = WaitedFile.order(self.cleaned_data['path'],
-            lambda p: build_custom_pdf.delay(self.book.id,
-                self.cleaned_data['cust'], p),
+            lambda p, waiter_id: build_custom_pdf.delay(self.book.id,
+                self.cleaned_data['cust'], p, waiter_id),
             self.book.pretty_title()
             )
         #return redirect(url)

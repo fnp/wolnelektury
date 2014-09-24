@@ -17,8 +17,6 @@ def wait(request, path):
     else:
         file_url = ""
         waiting = get_object_or_404(WaitedFile, path=path)
-        if waiting.is_stale():
-            waiting = None
 
     if request.is_ajax():
         return HttpResponse(file_url)
