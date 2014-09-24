@@ -72,7 +72,7 @@ class Picture(models.Model):
     Picture resource.
 
     """
-    title       = models.CharField(_('title'), max_length=120)
+    title       = models.CharField(_('title'), max_length=255)
     slug        = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
     sort_key    = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(_('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
@@ -175,36 +175,39 @@ class Picture(models.Model):
                     c = picture_xml.frame[0]
                     part['coords'] = [[p[0] - c[0], p[1] - c[1]] for p in part['coords']]
                 if part.get('object', None) is not None:
-                    objname = part['object']
-                    tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(objname), category='thing')
-                    if created:
-                        tag.name = objname
-                        tag.sort_key = sortify(tag.name)
-                        tag.save()
-                    #thing_tags.add(tag)
-                    area_data['things'][tag.slug] = {
-                        'object': part['object'],
-                        'coords': part['coords'],
-                        }
+                    _tags = set()
+                    for objname in part['object'].split(','):
+                        objname = objname.strip()
+                        tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(objname), category='thing')
+                        if created:
+                            tag.name = objname
+                            tag.sort_key = sortify(tag.name)
+                            tag.save()
+                        #thing_tags.add(tag)
+                        area_data['things'][tag.slug] = {
+                            'object': part['object'],
+                            'coords': part['coords'],
+                            }
+
+                        _tags.add(tag)
                     area = PictureArea.rectangle(picture, 'thing', part['coords'])
                     area.save()
-                    _tags = set()
-                    _tags.add(tag)
                     area.tags = _tags
                 else:
                     _tags = set()
-                    for motif in part['themes']:
-                        tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
-                        if created:
-                            tag.name = motif
-                            tag.sort_key = sortify(tag.name)
-                            tag.save()
-                        #motif_tags.add(tag)
-                        _tags.add(tag)
-                        area_data['themes'][tag.slug] = {
-                            'theme': motif,
-                            'coords': part['coords']
-                            }
+                    for motifs in part['themes']:
+                        for motif in motifs.split(','):
+                            tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
+                            if created:
+                                tag.name = motif
+                                tag.sort_key = sortify(tag.name)
+                                tag.save()
+                            #motif_tags.add(tag)
+                            _tags.add(tag)
+                            area_data['themes'][tag.slug] = {
+                                'theme': motif,
+                                'coords': part['coords']
+                                }
 
                     logging.debug("coords for theme: %s" % part['coords'])
                     area = PictureArea.rectangle(picture, 'theme', part['coords'])
