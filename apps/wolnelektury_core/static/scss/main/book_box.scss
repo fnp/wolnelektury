@@ -153,6 +153,20 @@
             @include size(margin-top, 5px);
         }
 
+        @include min-screen($S_BOOK_SHORT_FULL) {
+             // Show full title on the work's page.
+
+            .book-box-body {
+                height: auto;
+                @include size(min-height, 170px);
+
+                .book-box-head .title {
+                    height: auto;
+                    @include size(min-height, 57.6px);
+                }
+            }
+        }
+
         .book-box-head,
         .tags,
         .book-box-tools {
@@ -292,6 +306,7 @@
     .tags {
         @include size(font-size, 11px);
         line-height: 1.2em;
+        margin-bottom: 5px;
 
         @include min-screen($S_BOOK_SHORT_FULL) {
             clear: right;

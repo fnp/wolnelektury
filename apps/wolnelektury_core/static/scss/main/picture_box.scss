@@ -3,6 +3,9 @@
         .cover-area {
             position: static;
             @include size(margin-right, 15px);
+            @media screen and (min-width: 62.5em) {
+                margin-right: 0;
+            }
 
             img.cover {
                 @include size(width, 535px);
@@ -37,7 +40,8 @@
 
         @media screen and (min-width: 50em) {
             .book-box-body {
-                @include size(height, 170px);
+                height: auto;
+                @include size(min-height, 170px);
                 margin-bottom: 0;
             }
             .book-box-tools, .tags {
