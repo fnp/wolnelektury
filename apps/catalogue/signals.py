@@ -81,13 +81,13 @@ def tag_after_change(sender, instance, languages, **kwargs):
         for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
 
     for model in Book, Picture:
-        for instance in model.tagged.with_all([instance]).only('pk'):
-            instance.flush_includes()
+        for model_instance in model.tagged.with_all([instance]).only('pk'):
+            model_instance.flush_includes()
 
     if instance.category == 'author':
         for model in Fragment, PictureArea:
-            for instance in model.tagged.with_all([instance]).only('pk'):
-                instance.flush_includes()
+            for model_instance in model.tagged.with_all([instance]).only('pk'):
+                model_instance.flush_includes()
 
 
 @receiver(tags_updated)
