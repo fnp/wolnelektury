@@ -14,7 +14,7 @@ def production():
     env.user = 'lektury'
     env.app_path = '/srv/wolnelektury.pl'
     env.services = [
-        DebianGunicorn('wolnelektury'),
+        Supervisord('wolnelektury.gunicorn'),
         Supervisord('celery.wolnelektury:'),
     ]
 

@@ -30,7 +30,7 @@ def _cover_upload_to(i, n):
     return 'book/cover/%s.jpg' % i.slug
 
 def _cover_thumb_upload_to(i, n):
-    return 'book/cover_thumb/%s.jpg' % i.slug,
+    return 'book/cover_thumb/%s.jpg' % i.slug
 
 def _ebook_upload_to(upload_path):
     def _upload_to(i, n):
