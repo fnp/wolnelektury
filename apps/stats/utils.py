@@ -47,7 +47,8 @@ def piwik_track(klass_or_method):
         call_func = klass_or_method
 
     def wrap(self, request, *args, **kw):
-        track_request.delay(piwik_url(request))
+        if getattr(request, 'piwik_track', True):
+            track_request.delay(piwik_url(request))
         return call_func(self, request, *args, **kw)
 
     # and wrap it

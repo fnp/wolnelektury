@@ -37,6 +37,7 @@ def incl(request, model, pk, emitter_format):
         'fragment': fragment_list_resource,
         'tag': tag_list_resource,
         }[model]
+    request.piwik_track = False
     resp = resource(request, pk=pk, emitter_format=emitter_format)
     if emitter_format == 'xml':
         # Ugly, but quick way of stripping <?xml?> header and <response> tags.
