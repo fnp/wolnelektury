@@ -82,7 +82,9 @@ class BuildEbook(Task):
 
     def run(self, obj, field_name):
         """Just run `build` on FieldFile, can't pass it directly to Celery."""
-        return self.build(getattr(obj, field_name))
+        ret = self.build(getattr(obj, field_name))
+        obj.flush_includes()
+        return ret
 
     def build(self, fieldfile):
         book = fieldfile.instance

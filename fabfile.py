@@ -14,8 +14,8 @@ def production():
     env.user = 'lektury'
     env.app_path = '/srv/wolnelektury.pl'
     env.services = [
-        Supervisord('wolnelektury.gunicorn'),
-        Supervisord('celery.wolnelektury:'),
+        Supervisord('wolnelektury'),
+        Supervisord('wolnelektury.celery'),
     ]
 
 
