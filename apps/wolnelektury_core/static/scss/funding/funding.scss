@@ -4,7 +4,12 @@
     @include size(padding, 5px 0);
     position: relative;
     .close {
-        @include size(font-size, 10px);
+        @include mono;
+        @include size(font-size, 16px);
+        position: absolute;
+        top: 0px;
+        right: 0;
+        @include size(padding, 1px 5px 10px 10px);
     }
     .call-area {
         float:left;
@@ -119,11 +124,6 @@
         font-weight: bold;
         @include size(font-size, 15px);
     }
-    .close {
-        position: absolute;
-        top: 0px;
-        @include size(right, 5px);
-    }
 }
 
 .funding-top-header {
@@ -195,7 +195,10 @@
     }
 }
 
-.funding-handle {
+#funding-closeable {
+    display: none;
+}
+#funding-handle {
     position: absolute;
     top: 0;
     right: 0;

@@ -5,7 +5,7 @@
 
 {% if offer %}
 
-<div class="funding {{ add_class }}" data-offer-id="{{offer.id}}" style="">
+<div {% if closeable %}id="funding-closeable" {% endif %}class="funding {{ add_class }}" data-offer-id="{{offer.id}}" style="">
     {% if closeable %}<a href="#" class="close">X</a>{% endif %}
     {% if link and is_current %}
         <div class="call-area">
@@ -45,8 +45,27 @@
     <div style="clear: both"></div>
 </div>
 {% if closeable %}
-    <div class="funding-handle">{% trans "Help free the book!" %}</div>
+    <div id="funding-handle">{% trans "Help free the book!" %}</div>
+
+<script type="text/javascript">(function() {
+var storage = true;
+try {
+    localStorage.setItem('test', 'test');
+    localStorage.removeItem('test');
+} catch (exception) {
+    storage = false;
+}
+if (storage) {
+    var closeable = document.getElementById('funding-closeable');
+    if (localStorage['hide-offer-id'] !== closeable.getAttribute('data-offer-id')) {
+        closeable.style.display = 'block';
+        document.getElementById('funding-handle').style.display = 'none';
+    }
+}
+})();</script>
+
 {% endif %}
+
 
 {% endif %}
 
