@@ -153,7 +153,7 @@ PIPELINE_JS = {
 
 STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
 PIPELINE_CSS_COMPRESSOR = None
-PIPELINE_JS_COMPRESSOR = None
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
 
 PIPELINE_COMPILERS = (
     'pipeline.compilers.sass.SASSCompiler',
