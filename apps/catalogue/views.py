@@ -250,7 +250,7 @@ def tagged_object_list(request, tags=''):
             'only_my_shelf': only_my_shelf,
             'formats_form': forms.DownloadFormatsForm(),
             'tags': tags,
-            'tags_ids': tags_pks,
+            'tag_ids': tags_pks,
             'theme_is_set': theme_is_set,
         },
         context_instance=RequestContext(request))

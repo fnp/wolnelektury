@@ -105,7 +105,7 @@
         {% else %}
 
         {% choose_cite tag_ids=tag_ids as cite_promo_pk %}
-        {% choose_fragment tag_ids=tag_ids unless=cite_promo as fragment_promo_pk %}
+        {% choose_fragment tag_ids=tag_ids unless=cite_promo_pk as fragment_promo_pk %}
         {{ cite_promo_pk.if }}
             {% ssi_include 'social_cite' pk=cite_promo_pk %}
         {{ cite_promo_pk.endif }}
