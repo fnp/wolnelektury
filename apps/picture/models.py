@@ -72,7 +72,7 @@ class Picture(models.Model):
     Picture resource.
 
     """
-    title       = models.CharField(_('title'), max_length=255)
+    title       = models.CharField(_('title'), max_length=32767)
     slug        = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
     sort_key    = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(_('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
@@ -161,7 +161,7 @@ class Picture(models.Model):
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
             picture.areas.all().delete()
-            picture.title = unicode(picture_xml.picture_info.title)[:255]
+            picture.title = unicode(picture_xml.picture_info.title)
             picture.extra_info = picture_xml.picture_info.to_dict()
 
             picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))

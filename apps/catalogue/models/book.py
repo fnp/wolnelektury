@@ -40,7 +40,7 @@ def _ebook_upload_to(upload_path):
 
 class Book(models.Model):
     """Represents a book imported from WL-XML."""
-    title         = models.CharField(_('title'), max_length=120)
+    title         = models.CharField(_('title'), max_length=32767)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(_('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
     slug = models.SlugField(_('slug'), max_length=120, db_index=True,
@@ -99,7 +99,7 @@ class Book(models.Model):
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 
-        self.sort_key = sortify(self.title)
+        self.sort_key = sortify(self.title)[:120]
         self.title = unicode(self.title) # ???
 
         try:
