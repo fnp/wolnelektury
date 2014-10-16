@@ -16,6 +16,7 @@ from django.utils.translation import ugettext as _
 from ssify import ssi_variable
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
+from picture.models import Picture
 
 register = template.Library()
 
@@ -298,7 +299,10 @@ def collection_list(collections):
 
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):
-    return locals()
+    return {
+        'is_picture': isinstance(book, Picture),
+        'book': book,
+    }
 
 
 @register.inclusion_tag('catalogue/work-list.html', takes_context=True)

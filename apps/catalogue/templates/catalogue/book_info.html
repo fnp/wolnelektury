@@ -25,7 +25,11 @@
 {% endif %}
 
 {% if book.extra_info.editor or book.extra_info.technical_editor %}
-  <p>{% trans "Edited and annotated by:" %}
+  <p>{% if is_picture %}
+        {% trans "Edited by:" %}
+    {% else %}
+        {% trans "Edited and annotated by:" %}
+    {% endif %}
       {% all_editors book.extra_info %}.</p>
 {% endif %}
 
