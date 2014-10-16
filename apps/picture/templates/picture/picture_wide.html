@@ -7,7 +7,7 @@
 
 {% block picture-view %}
 <a href="{{ main_link }}">
-{% thumbnail picture.image_file "535" upscale="false" as thumb %}
+{% thumbnail picture.image_file "535" upscale=0 as thumb %}
 <img class="cover" src="{{thumb.url}}"/></a>
 {% endthumbnail %}
 {% endblock %}

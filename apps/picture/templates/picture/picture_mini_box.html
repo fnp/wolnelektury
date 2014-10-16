@@ -1,21 +1,23 @@
+{% spaceless %}
 
 {% load thumbnail %}
 <div class="book-mini-box">
-    <a href="{{ book.get_absolute_url }}">
-        {% if picture.cover %}
-            <img src="
-                {% thumbnail book.cover "139x193" as thumb %}
-                    {{ thumb.url }}
-                {% empty %}
-                    {{ book.cover.url }}
-                {% endthumbnail %}
-            " alt="{{ author_str }} – {{ book.title }}" class="cover" />
+    <div class="book-mini-box-inner">
+    {% if with_link %}
+    <a href="{{ picture.get_absolute_url }}">
+    {% endif %}
+        {% if picture.image_file %}
+            <img src="{% thumbnail picture.image_file "139x193" crop="center" as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}" alt="{{ author_str }} – {{ picture.title }}" class="cover" />
         {% endif %}
         <div class="desc">
             <span class="mono author">{{ author_str }}</span>
-            <span class="title">{{ book.title }}</span>
+            <span class="title">{{ picture.title }}</span>
         </div>
+    {% if with_link %}
     </a>
+    {% endif %}
+    </div>
 </div>
 
 
+{% endspaceless %}

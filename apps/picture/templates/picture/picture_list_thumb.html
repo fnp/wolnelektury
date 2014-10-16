@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load catalogue_tags %}
 {% load static %}
 {% load ssi_include from ssify %}
 
@@ -24,15 +25,11 @@
     </div>
 
     <div class='clearboth'></div>
-<div id="books-list">
-  <ol class="work-list">{% spaceless %}
-{% for picture in book_list %}
-   <li class="Picture-item">
-   {% ssi_include 'picture_short' pk=picture.pk %}
-   </li>
-{% endfor %}
-  {% endspaceless %}</ol>
-</div>
+
+
+
+{% work_list book_list %}
+
 
 
 

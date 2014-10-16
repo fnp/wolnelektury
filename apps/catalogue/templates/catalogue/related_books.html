@@ -1,16 +1,25 @@
 {% spaceless %}
 {% load catalogue_random_book from catalogue_tags %}
+{% load picture_random_picture from picture_tags %}
 {% load ssi_include from ssify %}
+
+{% for pic in pics %}
+    {% ssi_include 'picture_mini' pk=pic.pk %}
+{% endfor %}
 
 {% for book in books %}
     {% ssi_include 'catalogue_book_mini' pk=book.pk %}
 {% endfor %}
 
 {% if random %}
-    {% catalogue_random_book random_excluded as random_pk %}
-    {{ random_pk.if }}
-        {% ssi_include 'catalogue_book_mini' pk=random_pk %}
-    {{ random_pk.endif }}
+    {% catalogue_random_book random_excluded_books as random_book_pk %}
+    {% picture_random_picture random_excluded_pics unless=random_book_pk as random_pic_pk %}
+    {{ random_book_pk.if }}
+        {% ssi_include 'catalogue_book_mini' pk=random_book_pk %}
+    {{ random_book_pk.endif }}
+    {{ random_pic_pk.if }}
+        {% ssi_include 'picture_mini' pk=random_pic_pk %}
+    {{ random_pic_pk.endif }}
 {% endif %}
 
 {% endspaceless %}

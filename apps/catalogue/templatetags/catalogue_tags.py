@@ -2,7 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from random import randint
+from random import randint, random
 from urlparse import urlparse
 
 from django.conf import settings
@@ -311,18 +311,39 @@ def work_list(context, object_list):
     return locals()
 
 
+# TODO: These are no longer just books.
 @register.inclusion_tag('catalogue/related_books.html', takes_context=True)
-def related_books(context, book, limit=6, random=1, taken=0):
+def related_books(context, instance, limit=6, random=1, taken=0):
     limit = limit - taken
-    related = Book.tagged.related_to(book,
-            Book.objects.exclude(common_slug=book.common_slug)
-            ).exclude(ancestor=book)[:limit-random]
-    random_excluded = [b.pk for b in related] + [book.pk]
+    max_books = limit - random
+    is_picture = isinstance(instance, Picture)
+
+    pics_qs = Picture.objects.all()
+    if is_picture:
+        pics_qs = pics_qs.exclude(pk=instance.pk)
+    pics = Picture.tagged.related_to(instance, pics_qs)
+    if pics.exists():
+        # Reserve one spot for an image.
+        max_books -= 1
+
+    books_qs = Book.objects.all()
+    if not is_picture:
+        books_qs = books_qs.exclude(common_slug=instance.common_slug).exclude(ancestor=instance)
+    books = Book.tagged.related_to(instance, books_qs)[:max_books]
+
+    pics = pics[:1 + max_books - books.count()]
+
+    random_excluded_books = [b.pk for b in books]
+    random_excluded_pics = [p.pk for p in pics]
+    (random_excluded_pics if is_picture else random_excluded_books).append(instance.pk)
+
     return {
         'request': context['request'],
-        'books': related,
+        'books': books,
+        'pics': pics,
         'random': random,
-        'random_excluded': random_excluded,
+        'random_excluded_books': random_excluded_books,
+        'random_excluded_pics': random_excluded_pics,
     }
 
 
@@ -395,6 +416,9 @@ def source_name(url):
 
 @ssi_variable(register, patch_response=[add_never_cache_headers])
 def catalogue_random_book(request, exclude_ids):
+    from .. import app_settings
+    if random() < app_settings.RELATED_RANDOM_PICTURE_CHANCE:
+        return None
     queryset = Book.objects.exclude(pk__in=exclude_ids)
     count = queryset.count()
     if count:

@@ -18,6 +18,7 @@ urlpatterns = patterns('picture.views',
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
     url(r'^obraz/(?P<slug>%s)/$' % SLUG, 'picture_detail'),
 
+    url(r'^p/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', 'picture_mini', name='picture_mini'),
     url(r'^p/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'picture_short', name='picture_short'),
     url(r'^pa/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'picturearea_short', name='picture_area_short'),
 )

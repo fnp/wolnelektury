@@ -14,4 +14,13 @@
 
 {% block body %}
   {% picture_wide picture %}
+
+{% spaceless %}
+
+<section class="see-also" style="display: inline-block;">
+<h1>{% trans "See also" %}:</h1>
+{% related_books picture %}
+</section>
+{% endspaceless %}
+
 {% endblock %}

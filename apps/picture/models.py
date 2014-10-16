@@ -340,6 +340,7 @@ class Picture(models.Model):
             template % (self.pk, lang)
             for template in [
                 '/katalog/p/%d/short.%s.html',
+                '/katalog/p/%d/mini.%s.html',
                 ]
             for lang in languages
             ])

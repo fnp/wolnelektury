@@ -89,6 +89,18 @@ def import_picture(request):
 
 
 @ssi_included
+def picture_mini(request, pk, with_link=True):
+    picture = get_object_or_404(Picture, pk=pk)
+    author_str = ", ".join(tag.name
+        for tag in picture.tags.filter(category='author'))
+    return render(request, 'picture/picture_mini_box.html', {
+        'picture': picture,
+        'author_str': author_str,
+        'with_link': with_link,
+    })
+
+
+@ssi_included
 def picture_short(request, pk):
     picture = get_object_or_404(Picture, pk=pk)
 
