@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import template
+from django.core.urlresolvers import reverse
 from catalogue.utils import split_tags
 from ..engine import CustomCroppingEngine
 import sorl.thumbnail.default
@@ -16,7 +17,7 @@ cropper = CustomCroppingEngine()
 def picture_wide(context, picture):
     context.update({
         'picture': picture,
-        'main_link': picture.get_absolute_url(),
+        'main_link': reverse('picture_viewer', args=[picture.slug]),
         'request': context.get('request'),
         'tags': split_tags(picture.tags),
         })
