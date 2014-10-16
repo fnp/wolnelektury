@@ -5,9 +5,12 @@
 from datetime import datetime
 from traceback import print_exc
 from celery.task import task
+from celery.utils.log import get_task_logger
 from django.conf import settings
 from wolnelektury.utils import localtime_to_utc
 from waiter.models import WaitedFile
+
+task_logger = get_task_logger(__name__)
 
 
 # TODO: move to model?
@@ -38,7 +41,7 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
         from django.core.files.storage import DefaultStorage
         from catalogue.models import Book
 
-        print "will gen %s" % DefaultStorage().path(file_name)
+        task_logger.info(DefaultStorage().path(file_name))
         if not DefaultStorage().exists(file_name):
             kwargs = {
                 'cover': True,

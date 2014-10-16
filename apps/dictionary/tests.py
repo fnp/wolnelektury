@@ -23,6 +23,8 @@ class DictionaryTests(WLTestCase):
         BOOK_TEXT = """<utwor>
         <opowiadanie>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
+            <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
+            <akap><pe><slowo_obce>rose</slowo_obce> (color) --- #FF007F.</pe></akap>
         </opowiadanie></utwor>
         """
 
@@ -30,16 +32,21 @@ class DictionaryTests(WLTestCase):
 
         self.assertEqual(
             len(self.client.get('/przypisy/').context['object_list']),
-            1,
+            2,
             'There should be a note on the note list.')
 
         self.assertEqual(
-            len(self.client.get('/przypisy/a/').context['object_list']),
+            len(self.client.get('/przypisy/?ltr=r').context['object_list']),
             0,
             'There should not be a note for the letter A.')
 
         self.assertEqual(
-            len(self.client.get('/przypisy/r/').context['object_list']),
-            1,
+            len(self.client.get('/przypisy/?ltr=r').context['object_list']),
+            2,
+            'There should be a note for the letter R.')
+
+        self.assertEqual(
+            len(self.client.get('/przypisy/?qual=color').context['object_list']),
+            2,
             'There should be a note for the letter R.')
 

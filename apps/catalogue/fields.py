@@ -10,7 +10,10 @@ from catalogue import app_settings
 from catalogue.constants import LANGUAGES_3TO2
 from catalogue.utils import remove_zip, truncate_html_words
 from celery.task import Task, task
+from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
+
+task_logger = get_task_logger(__name__)
 
 
 class EbookFieldFile(FieldFile):
@@ -82,6 +85,7 @@ class BuildEbook(Task):
 
     def run(self, obj, field_name):
         """Just run `build` on FieldFile, can't pass it directly to Celery."""
+        task_logger.info("%s -> %s" % (obj.slug, field_name))
         ret = self.build(getattr(obj, field_name))
         obj.flush_includes()
         return ret

@@ -1,0 +1,9 @@
+.dictionary-note {
+    @include white-box;
+    @include size(padding, 8px);
+    @include size(margin, 10px 0);
+}
+.dictionary-note-source {
+    @include white-box;
+    @include size(padding, 8px);
+}

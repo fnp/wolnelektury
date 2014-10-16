@@ -15,7 +15,7 @@
 <p>
 {% trans "By first letter" %}:
 {% if letter %}
-    <a href='{% url "dictionary_notes" %}'>{% trans "all" %}</a>
+    <a href='?'>{% trans "all" %}</a>
 {% else %}
     <strong>{% trans "all" %}</strong>
 {% endif %}
@@ -25,10 +25,66 @@
     {% if let == letter %}
         <strong>{{ let|upper }}</strong>
     {% else %}
-        <a href='{% url "dictionary_notes" let %}'>{{ let|upper }}</a>
+        <a href='?ltr={{ let }}'>{{ let|upper }}</a>
     {% endif %}
 {% endfor %}
 </p>
+
+<p>
+{% trans "By type" %}:
+{% if fn_type %}
+    <a href='?'>{% trans "all" %}</a>
+{% else %}
+    <strong>{% trans "all" %}</strong>
+{% endif %}
+
+{% for fnt in fn_types %}
+    |
+    {% if fnt == fn_type %}
+        <strong>{{ fnt }}</strong>
+    {% else %}
+        <a href='?type={{ fnt }}'>{{ fnt }}</a>
+    {% endif %}
+{% endfor %}
+</p>
+
+
+<p>
+{% trans "By qualifier" %}:
+{% if qualifier %}
+    <a href='?'>{% trans "all" %}</a>
+{% else %}
+    <strong>{% trans "all" %}</strong>
+{% endif %}
+
+{% for qual in qualifiers %}
+    |
+    {% if qual == qualifier %}
+        <strong>{{ qual }}</strong>
+    {% else %}
+        <a href='?qual={{ qual|urlencode }}'>{{ qual }}</a>
+    {% endif %}
+{% endfor %}
+</p>
+
+<p>
+{% trans "By language" %}:
+{% if language %}
+    <a href='?'>{% trans "all" %}</a>
+{% else %}
+    <strong>{% trans "all" %}</strong>
+{% endif %}
+
+{% for lang in languages %}
+    |
+    {% if lang == language %}
+        <strong>{{ lang }}</strong>
+    {% else %}
+        <a href='?lang={{ lang }}'>{{ lang }}</a>
+    {% endif %}
+{% endfor %}
+</p>
+
 <hr/>
 
 <p>
@@ -41,10 +97,13 @@
 {% paginate %}
 {% for obj in object_list %}
     <div class='dictionary-note'>
-    {{ obj.html|safe }}
-    <div class='dictionary-note-source'>
-    (<a href='{% url "book_text" obj.book.slug %}#{{ obj.anchor }}'>{{ obj.book.pretty_title }}</a>)
-    </div>
+        {{ obj.html|safe }}
+        {% for note_source in obj.notesource_set.all %}
+            <div class='dictionary-note-source'>
+                <a href='{% url "book_text" note_source.book.slug %}#{{ note_source.anchor }}'>{{ note_source.book.pretty_title }}</a>
+                (<a href='{{ note_source.book.extra_info.about }}'>źródło na Platformie Redakcyjnej</a>)
+            </div>
+        {% endfor %}
     </div>
 {% endfor %}
 {% paginate %}

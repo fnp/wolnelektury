@@ -7,6 +7,5 @@ from dictionary.views import NotesView
 
 urlpatterns = patterns('dictionary.views',
     url(r'^$', NotesView.as_view(), name='dictionary_notes'),
-    url(r'(?P<letter>[a-z]|0-9)/$', NotesView.as_view(), name='dictionary_notes'),
 )
 
