@@ -13,6 +13,39 @@
 {% endblock %}
 
 
+{% block extra_categories %}
+{% if picture.extra_info.styles %}
+<span class="category">
+<span class="mono"> {% trans "Style" %}:</span>&nbsp;<span class="book-box-tag">
+    {% for tag in picture.extra_info.styles %}
+        <a>{{ tag }}</a>
+        {% if not forloop.last %}<span>, </span>{% endif %}
+    {% endfor %}
+</span></span>
+{% endif %}
+
+{% if picture.extra_info.medium %}
+<span class="category">
+<span class="mono"> {% trans "Medium" %}:</span>&nbsp;<span class="book-box-tag">
+    <a>{{ picture.extra_info.medium }}</a>
+</span></span>
+{% endif %}
+
+{% if picture.extra_info.original_dimensions %}
+<span class="category">
+<span class="mono"> {% trans "Dimensions" %}:</span>&nbsp;<span class="book-box-tag">
+    <a>{{ picture.extra_info.original_dimensions }}</a>
+</span></span>
+{% endif %}
+
+<span class="category">
+<span class="mono"> {% trans "Date" %}:</span>&nbsp;<span class="book-box-tag">
+    <a>{{ picture.extra_info.created_at }}</a>
+</span></span>
+
+{% endblock %}
+
+
 {% block book-box-extra-info %}
 {% if themes or things%}
     <div class="hidden-box-wrapper" id="theme-list-wrapper">
