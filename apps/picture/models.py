@@ -170,6 +170,9 @@ class Picture(models.Model):
 
             area_data = {'themes':{}, 'things':{}}
 
+            # Treat all names in picture XML as in default language.
+            lang = settings.LANGUAGE_CODE
+
             for part in picture_xml.partiter():
                 if picture_xml.frame:
                     c = picture_xml.frame[0]
@@ -180,7 +183,8 @@ class Picture(models.Model):
                         objname = objname.strip()
                         tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(objname), category='thing')
                         if created:
-                            tag.name = objname
+                            tag.name = objname.capitalize()
+                            setattr(tag, 'name_%s' % lang, tag.name)
                             tag.sort_key = sortify(tag.name)
                             tag.save()
                         #thing_tags.add(tag)
