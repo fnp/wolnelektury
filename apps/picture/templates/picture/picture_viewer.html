@@ -42,7 +42,11 @@
 </a></li>
 
 <li id="sponsors">
-    <a href="http://www.nck.pl"><img src="{% static "img/logo_nck.jpg" %}" alt="Narodowe Centrum Kultury" ></img></a>
+    {% for sponsor in sponsors %}
+        {% thumbnail sponsor.logo "80x200" as logo %}
+            <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}" /></a>
+        {% endthumbnail %}
+    {% endfor %}
 </li>
 
 {% endblock %}
@@ -67,7 +71,11 @@
 	  <div class="sponsors">
 	    <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" ></img>
 	    </a>
-	    <a href="http://www.nck.pl"><img src="{% static "img/logo_nck_200horiz_trans.png" %}" alt="Narodowe Centrum Kultury" ></img></a>
+        {% for sponsor in sponsors %}
+            {% thumbnail sponsor.logo "220x220" as logo %}
+                <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}" /></a>
+            {% endthumbnail %}
+        {% endfor %}
 	  </div>
 
     {% book_info picture %}

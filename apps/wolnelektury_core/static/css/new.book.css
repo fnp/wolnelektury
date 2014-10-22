@@ -48,6 +48,11 @@ a {
     margin: 1em 0 0;
 }
 
+#info .sponsors img {
+    margin-bottom: 1em;
+}
+
+
 /* =================================================== */
 /* = Common elements: headings, paragraphs and lines = */
 /* =================================================== */

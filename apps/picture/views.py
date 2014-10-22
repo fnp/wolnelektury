@@ -9,6 +9,7 @@ from django.template import RequestContext
 from picture.models import Picture, PictureArea
 from catalogue.utils import split_tags
 from ssify import ssi_included
+from sponsors.models import Sponsor
 
 # was picture/picture_list.html list (without thumbs)
 def picture_list(request, filter=None, get_filter=None, template_name='catalogue/picture_list.html', cache_key=None, context=None):
@@ -57,6 +58,11 @@ def picture_detail(request, slug):
 
 def picture_viewer(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
+    sponsors = []
+    for sponsor in picture.extra_info.get('sponsors', []):
+        have_sponsors = Sponsor.objects.filter(name=sponsor)
+        if have_sponsors.exists():
+            sponsors.append(have_sponsors[0])
     return render_to_response("picture/picture_viewer.html", locals(),
                               context_instance=RequestContext(request))
 
