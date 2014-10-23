@@ -2,48 +2,65 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from dictionary.models import Note
+from dictionary.models import Note, Qualifier
 from django.views.generic.list import ListView
-from django.db.models import Count
+from django.db.models import Count, Q
 
 
 class NotesView(ListView):
     def get_queryset(self):
-        self.letters = ["0-9"] + [chr(a) for a in range(ord('a'), ord('z')+1)]
-        self.letter = self.request.GET.get('ltr')
-
-        self.qualifiers = Note.objects.order_by('qualifier').filter(qualifier__startswith='f').values_list(
-            'qualifier', flat=True).distinct()
-        self.qualifier = self.request.GET.get('qual')
-
-        self.languages = Note.objects.order_by('language').values_list(
-            'language', flat=True).distinct()
-        self.language = self.request.GET.get('lang')
-
-        self.fn_types = Note.objects.order_by('fn_type').values_list(
-            'fn_type', flat=True).distinct()
-        self.fn_type = self.request.GET.get('type')
-
         objects = Note.objects.select_related('book').all()
+        filters = {}
 
+        try:
+            self.qualifier = Qualifier.objects.get(qualifier=self.request.GET.get('qual'))
+        except Qualifier.DoesNotExist:
+            self.qualifier = None
+        else:
+            filters['qualifier'] = Q(qualifiers=self.qualifier)
+
+        self.language = self.request.GET.get('lang')
+        if self.language:
+            filters['language'] = Q(language=self.language)
+
+        self.fn_type = self.request.GET.get('type')
+        if self.fn_type:
+            filters['fn_type'] = Q(fn_type=self.fn_type)
+
+        self.letter = self.request.GET.get('ltr')
         if self.letter == "0-9":
             objects = objects.filter(sort_key__regex=r"^[0-9]")
+            #filters['letter'] = Q(sort_key__regex=r"^[0-9]")
         elif self.letter:
             objects = objects.filter(sort_key__startswith=self.letter)
+            #filters['letter'] = Q(sort_key__startswith=self.letter)
 
-        if self.qualifier:
-            objects = objects.filter(qualifier=self.qualifier)
+        self.letters = ["0-9"] + [chr(a) for a in range(ord('a'), ord('z')+1)]
 
-        if self.language:
-            objects = objects.filter(language=self.language)
+        nobj = objects
+        for key, fltr in filters.items():
+            if key != 'qualifier':
+                nobj = nobj.filter(fltr)
+        self.qualifiers = Qualifier.objects.filter(note__in=nobj).distinct()
 
-        if self.fn_type:
-            objects = objects.filter(fn_type=self.fn_type)
+        nobj = objects
+        for key, fltr in filters.items():
+            if key != 'language':
+                nobj = nobj.filter(fltr)
+        self.languages = nobj.order_by('language').values_list(
+            'language', flat=True).distinct()
+
+        nobj = objects
+        for key, fltr in filters.items():
+            if key != 'fn_type':
+                nobj = nobj.filter(fltr)
+        self.fn_types = nobj.order_by('fn_type').values_list(
+            'fn_type', flat=True).distinct()
+
+        for f in filters.values():
+            objects = objects.filter(f)
 
         return objects
-
-        # TODO: wewn. wyszukiwarka, czy wg definiendum?
-        # TODO: filtr języka
 
     def get_context_data(self, **kwargs):
         context = super(NotesView, self).get_context_data(**kwargs)

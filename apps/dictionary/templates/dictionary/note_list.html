@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n pagination_tags %}
+{% load set_get from set_get %}
 
 
 {% block bodyid %}footnotes{% endblock %}
@@ -15,7 +16,7 @@
 <p>
 {% trans "By first letter" %}:
 {% if letter %}
-    <a href='?'>{% trans "all" %}</a>
+    <a href='?{% set_get "page" "ltr" %}'>{% trans "all" %}</a>
 {% else %}
     <strong>{% trans "all" %}</strong>
 {% endif %}
@@ -25,7 +26,7 @@
     {% if let == letter %}
         <strong>{{ let|upper }}</strong>
     {% else %}
-        <a href='?ltr={{ let }}'>{{ let|upper }}</a>
+        <a href='?{% set_get "page" ltr=let %}'>{{ let|upper }}</a>
     {% endif %}
 {% endfor %}
 </p>
@@ -33,7 +34,7 @@
 <p>
 {% trans "By type" %}:
 {% if fn_type %}
-    <a href='?'>{% trans "all" %}</a>
+    <a href='?{% set_get "page" "type" %}'>{% trans "all" %}</a>
 {% else %}
     <strong>{% trans "all" %}</strong>
 {% endif %}
@@ -43,7 +44,7 @@
     {% if fnt == fn_type %}
         <strong>{{ fnt }}</strong>
     {% else %}
-        <a href='?type={{ fnt }}'>{{ fnt }}</a>
+        <a href='?{% set_get "page" type=fnt %}'>{{ fnt }}</a>
     {% endif %}
 {% endfor %}
 </p>
@@ -52,7 +53,7 @@
 <p>
 {% trans "By qualifier" %}:
 {% if qualifier %}
-    <a href='?'>{% trans "all" %}</a>
+    <a href='?{% set_get "page" "qual" %}'>{% trans "all" %}</a>
 {% else %}
     <strong>{% trans "all" %}</strong>
 {% endif %}
@@ -62,7 +63,7 @@
     {% if qual == qualifier %}
         <strong>{{ qual }}</strong>
     {% else %}
-        <a href='?qual={{ qual|urlencode }}'>{{ qual }}</a>
+        <a href='?{% set_get "page" qual=qual.qualifier %}'>{{ qual }}</a>
     {% endif %}
 {% endfor %}
 </p>
@@ -70,7 +71,7 @@
 <p>
 {% trans "By language" %}:
 {% if language %}
-    <a href='?'>{% trans "all" %}</a>
+    <a href='?{% set_get "page" "lang" %}'>{% trans "all" %}</a>
 {% else %}
     <strong>{% trans "all" %}</strong>
 {% endif %}
@@ -80,7 +81,7 @@
     {% if lang == language %}
         <strong>{{ lang }}</strong>
     {% else %}
-        <a href='?lang={{ lang }}'>{{ lang }}</a>
+        <a href='?{% set_get "page" lang=lang %}'>{{ lang }}</a>
     {% endif %}
 {% endfor %}
 </p>

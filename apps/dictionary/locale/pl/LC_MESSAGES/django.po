@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury-dictionary\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
-"PO-Revision-Date: 2011-09-16 16:10+0100\n"
+"POT-Creation-Date: 2014-10-23 16:02+0200\n"
+"PO-Revision-Date: 2014-10-23 16:03+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -17,22 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: templates/dictionary/note_list.html:7
-#: templates/dictionary/note_list.html:11
+#: templates/dictionary/note_list.html:8
+#: templates/dictionary/note_list.html:12
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: templates/dictionary/note_list.html:16
+#: templates/dictionary/note_list.html:17
 msgid "By first letter"
 msgstr "Pierwsza litera"
 
-#: templates/dictionary/note_list.html:18
-#: templates/dictionary/note_list.html:20
+#: templates/dictionary/note_list.html:19
+#: templates/dictionary/note_list.html:21
+#: templates/dictionary/note_list.html:37
+#: templates/dictionary/note_list.html:39
+#: templates/dictionary/note_list.html:56
+#: templates/dictionary/note_list.html:58
+#: templates/dictionary/note_list.html:74
+#: templates/dictionary/note_list.html:76
 msgid "all"
 msgstr "wszystkie"
 
 #: templates/dictionary/note_list.html:35
+msgid "By type"
+msgstr "Według typu"
+
+#: templates/dictionary/note_list.html:54
+msgid "By qualifier"
+msgstr "Według kwalifikatora"
+
+#: templates/dictionary/note_list.html:72
+msgid "By language"
+msgstr "Według języka"
+
+#: templates/dictionary/note_list.html:92
 #, python-format
 msgid "%(c)s footnote found"
 msgid_plural "%(c)s footnotes found"

@@ -24,7 +24,7 @@ class DictionaryTests(WLTestCase):
         <opowiadanie>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
-            <akap><pe><slowo_obce>rose</slowo_obce> (color) --- #FF007F.</pe></akap>
+            <akap><pe><slowo_obce>rose</slowo_obce> (techn.) --- #FF007F.</pe></akap>
         </opowiadanie></utwor>
         """
 
@@ -33,20 +33,20 @@ class DictionaryTests(WLTestCase):
         self.assertEqual(
             len(self.client.get('/przypisy/').context['object_list']),
             2,
-            'There should be a note on the note list.')
+            'There should be two notes on the note list.')
 
         self.assertEqual(
-            len(self.client.get('/przypisy/?ltr=r').context['object_list']),
+            len(self.client.get('/przypisy/?ltr=a').context['object_list']),
             0,
             'There should not be a note for the letter A.')
 
         self.assertEqual(
             len(self.client.get('/przypisy/?ltr=r').context['object_list']),
             2,
-            'There should be a note for the letter R.')
+            'Both notes start with the letter R.')
 
         self.assertEqual(
-            len(self.client.get('/przypisy/?qual=color').context['object_list']),
-            2,
-            'There should be a note for the letter R.')
+            len(self.client.get('/przypisy/?qual=techn.').context['object_list']),
+            1,
+            'There should be a note qualified with \'techn.\' qualifier.')
 
