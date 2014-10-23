@@ -180,16 +180,16 @@ class Picture(models.Model):
                 if part.get('object', None) is not None:
                     _tags = set()
                     for objname in part['object'].split(','):
-                        objname = objname.strip()
+                        objname = objname.strip().capitalize()
                         tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(objname), category='thing')
                         if created:
-                            tag.name = objname.capitalize()
+                            tag.name = objname
                             setattr(tag, 'name_%s' % lang, tag.name)
                             tag.sort_key = sortify(tag.name)
                             tag.save()
                         #thing_tags.add(tag)
                         area_data['things'][tag.slug] = {
-                            'object': part['object'],
+                            'object': objname,
                             'coords': part['coords'],
                             }
 
@@ -232,7 +232,7 @@ class Picture(models.Model):
             picture.width, picture.height = modified.size
 
             modified_file = StringIO()
-            modified.save(modified_file, format='png', quality=95)
+            modified.save(modified_file, format='JPEG', quality=95)
             # FIXME: hardcoded extension - detect from DC format or orginal filename
             picture.image_file.save(path.basename(picture_xml.image_path), File(modified_file))
 
@@ -258,7 +258,7 @@ class Picture(models.Model):
     @classmethod
     def crop_to_frame(cls, wlpic, image_file):
         img = Image.open(image_file)
-        if wlpic.frame is None:
+        if wlpic.frame is None or wlpic.frame == [[0, 0], [-1, -1]]:
             return img
         img = img.crop(itertools.chain(*wlpic.frame))
         return img
@@ -273,14 +273,14 @@ class Picture(models.Model):
                 (255, 255, 255)
             )
         annotated.paste(img, (0, 0))
-        annotation = Image.new(img.mode, (3000, 120), (255, 255, 255))
+        annotation = Image.new('RGB', (img.size[0] * 3, 120), (255, 255, 255))
         ImageDraw.Draw(annotation).text(
             (30, 15),
             wlpic.picture_info.source_name,
             (0, 0, 0),
             font=ImageFont.truetype(get_resource("fonts/DejaVuSerif.ttf"), 75)
         )
-        annotated.paste(annotation.resize((1000, 40), Image.ANTIALIAS), (0, img.size[1]))
+        annotated.paste(annotation.resize((img.size[0], 40), Image.ANTIALIAS), (0, img.size[1]))
         return annotated
 
     @classmethod

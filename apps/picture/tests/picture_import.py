@@ -18,7 +18,7 @@ class PictureTest(WLTestCase):
         for area in picture.areas.all():
             themes.update([(tag.category, tag.name)
                 for tag in area.tags if tag.category in (u'theme', u'thing')])
-        assert themes == set([(u'theme', u'nieporządek'), (u'thing', u'kosmos')]), \
+        assert themes == set([(u'theme', u'nieporządek'), (u'thing', u'Kosmos')]), \
             'Bad themes on Picture areas: %s' % themes
 
         pic_themes = set([tag.name for tag in picture.tags if tag.category in ('theme', 'thing')])
