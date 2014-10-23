@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from os.path import join
+from django.conf import settings
 from django.db import models, migrations
 import sorl.thumbnail.fields
 import jsonfield.fields
 import django.core.files.storage
+from django.utils.encoding import force_bytes
 
 
 class Migration(migrations.Migration):
@@ -23,9 +26,9 @@ class Migration(migrations.Migration):
                 ('sort_key_author', models.CharField(default='', verbose_name='sort key by author', max_length=120, editable=False, db_index=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
                 ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
-                ('xml_file', models.FileField(upload_to=b'xml', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=b'/home/rczajka/workspace/wolnelektury/media/pictures'), verbose_name=b'xml_file')),
-                ('image_file', sorl.thumbnail.fields.ImageField(upload_to=b'images', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=b'/home/rczajka/workspace/wolnelektury/media/pictures'), verbose_name='image_file')),
-                ('html_file', models.FileField(upload_to=b'html', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=b'/home/rczajka/workspace/wolnelektury/media/pictures'), verbose_name=b'html_file')),
+                ('xml_file', models.FileField(upload_to=b'xml', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=join(force_bytes(settings.MEDIA_ROOT), b'pictures')), verbose_name=b'xml_file')),
+                ('image_file', sorl.thumbnail.fields.ImageField(upload_to=b'images', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=join(force_bytes(settings.MEDIA_ROOT), b'pictures')), verbose_name='image_file')),
+                ('html_file', models.FileField(upload_to=b'html', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=join(force_bytes(settings.MEDIA_ROOT), b'pictures')), verbose_name=b'html_file')),
                 ('areas_json', jsonfield.fields.JSONField(default={}, verbose_name='picture areas JSON', editable=False)),
                 ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information')),
                 ('culturepl_link', models.CharField(max_length=240, blank=True)),
