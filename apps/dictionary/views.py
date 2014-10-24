@@ -2,9 +2,10 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from dictionary.models import Note, Qualifier
 from django.views.generic.list import ListView
 from django.db.models import Count, Q
+from .constants import FN_TYPES
+from .models import Note, Qualifier
 
 
 class NotesView(ListView):
@@ -56,6 +57,7 @@ class NotesView(ListView):
                 nobj = nobj.filter(fltr)
         self.fn_types = nobj.order_by('fn_type').values_list(
             'fn_type', flat=True).distinct()
+        self.fn_types = [(fnt, FN_TYPES[fnt]) for fnt in self.fn_types]
 
         for f in filters.values():
             objects = objects.filter(f)

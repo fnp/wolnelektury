@@ -524,7 +524,8 @@
 }
 
 
-#book-detail .see-also {
+#book-detail .see-also,
+#picture-detail .see-also {
     h1 {
         @include size(height, 32px);
         margin: 0;

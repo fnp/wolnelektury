@@ -39,12 +39,12 @@
     <strong>{% trans "all" %}</strong>
 {% endif %}
 
-{% for fnt in fn_types %}
+{% for fnt, fnt_name in fn_types %}
     |
     {% if fnt == fn_type %}
-        <strong>{{ fnt }}</strong>
+        <strong>{{ fnt_name }}</strong>
     {% else %}
-        <a href='?{% set_get "page" type=fnt %}'>{{ fnt }}</a>
+        <a href='?{% set_get "page" type=fnt %}'>{{ fnt_name }}</a>
     {% endif %}
 {% endfor %}
 </p>
