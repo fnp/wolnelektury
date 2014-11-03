@@ -3,7 +3,9 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.views.generic.list import ListView
+from django.conf import settings
 from django.db.models import Count, Q
+from catalogue.constants import LANGUAGES_3TO2
 from .constants import FN_TYPES
 from .models import Note, Qualifier
 
@@ -50,6 +52,10 @@ class NotesView(ListView):
                 nobj = nobj.filter(fltr)
         self.languages = nobj.order_by('language').values_list(
             'language', flat=True).distinct()
+        lang_names = dict(settings.LANGUAGES)
+        self.languages = [
+            (lang, lang_names.get(LANGUAGES_3TO2.get(lang, lang), lang))
+            for lang in self.languages]
 
         nobj = objects
         for key, fltr in filters.items():

@@ -76,12 +76,12 @@
     <strong>{% trans "all" %}</strong>
 {% endif %}
 
-{% for lang in languages %}
+{% for lang, lang_name in languages %}
     |
     {% if lang == language %}
-        <strong>{{ lang }}</strong>
+        <strong>{{ lang_name }}</strong>
     {% else %}
-        <a href='?{% set_get "page" lang=lang %}'>{{ lang }}</a>
+        <a href='?{% set_get "page" lang=lang %}'>{{ lang_name }}</a>
     {% endif %}
 {% endfor %}
 </p>
