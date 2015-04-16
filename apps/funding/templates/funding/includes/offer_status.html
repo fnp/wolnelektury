@@ -10,11 +10,11 @@
         </p>
     {% else %}
     <p>
-        <strong>{% blocktrans with target=offer.target|floatformat %}W need {{target}} zł to digitize it,
+        <strong>{% blocktrans with target=offer.target|floatformat:-2 %}We need {{target}} zł to digitize it,
         compile it and publish for free in multiple formats.{% endblocktrans %}</strong>
     </p>
     <p>
-        {% blocktrans with end=offer.end %}If we raise enought money before {{end}} we will
+        {% blocktrans with end=offer.end %}If we raise enough money before {{end}} we will
         publish it and make it available for everyone.{% endblocktrans %}
     </p>
     {% endif %}
