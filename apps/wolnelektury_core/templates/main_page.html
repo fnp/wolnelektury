@@ -81,7 +81,7 @@
 
 {% block add_footer %}{% spaceless %}
 {{ cite_pk.if }}
-    <p>{% trans "Image used:" %}</p>
+    <p>{% trans "Image used:" %}
     {% ssi_include 'social_cite_info' pk=cite_pk %}
     </p>
 {{ cite_pk.endif }}
