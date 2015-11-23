@@ -30,7 +30,7 @@ class Tag(TagBase):
 
     Used to represent searchable metadata (authors, epochs, genres, kinds),
     fragment themes (motifs) and some book hierarchy related kludges."""
-    name = models.CharField(_('name'), max_length=50, db_index=True)
+    name = models.CharField(_('name'), max_length=120, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
     category = models.CharField(_('category'), max_length=50, blank=False, null=False,
