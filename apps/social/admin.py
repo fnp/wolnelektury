@@ -9,7 +9,7 @@ from social.models import Cite
 
 
 class CiteAdmin(admin.ModelAdmin):
-    list_display = ['text', 'sticky', 'vip', 'small', 'has_image']
+    list_display = ['nonempty_text', 'sticky', 'vip', 'small', 'has_image']
     fieldsets = (
         (None, {'fields': ('book', 'text', 'small', 'vip', 'link', 'sticky')}),
         (
@@ -20,9 +20,15 @@ class CiteAdmin(admin.ModelAdmin):
             )
     )
 
+    def nonempty_text(self, cite):
+        if cite.text.strip():
+            return cite.text
+        return "(%s)" % (cite.image_title.strip() or cite.link)
+    nonempty_text.short_description = _('text')
+
     def has_image(self, cite):
         return bool(cite.image)
-    has_image.description = _('image')
+    has_image.short_description = _('image')
     has_image.boolean = True
 
 
