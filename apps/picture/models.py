@@ -150,7 +150,7 @@ class Picture(models.Model):
             xml_file = File(open(xml_file))
             close_xml_file = True
 
-        try:
+        with transaction.atomic():
             # use librarian to parse meta-data
             if image_store is None:
                 image_store = ImageStore(picture_storage.path('images'))
@@ -240,18 +240,10 @@ class Picture(models.Model):
             picture.save()
             tasks.generate_picture_html(picture.id)
 
-        except Exception, ex:
-            logging.exception("Exception during import, rolling back")
-            transaction.rollback()
-            raise ex
-
-        finally:
-            if close_xml_file:
-                xml_file.close()
-            if close_image_file:
-                image_file.close()
-
-        transaction.commit()
+        if close_xml_file:
+            xml_file.close()
+        if close_image_file:
+            image_file.close()
 
         return picture
 

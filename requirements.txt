@@ -1,19 +1,18 @@
 -i https://py.mdrn.pl:8443/simple/
 
 # django
-Django>=1.7,<1.8
+Django>=1.8,<1.9
 fnpdjango>=0.1.15,<0.2
-django-pipeline>=1.3,<1.4
+django-pipeline>=1.6,<1.7
 jsmin
 django-pagination>=1.0
 django-maintenancemode>=0.10
 django-piston==0.2.2.1.2
-jsonfield>=0.9.22,<1.0
+jsonfield>=1.0.3,<1.1
 django-picklefield
-django-modeltranslation==0.8b2
-# django-allauth>=0.17,<0.18
-# django-allauth pre-0.18 version with Django 1.7 migrations
--e git+git://github.com/pennersr/django-allauth.git@9cc09402d3dd768bc1221e0bb7a438d6295812f5#egg=django-allauth
+django-modeltranslation>=0.10,<0.11
+django-allauth>=0.24,<0.25
+
 
 pytz
 
@@ -24,12 +23,12 @@ python-memcached
 django-piwik
 python-fb
 
-# Feedparser 
+# Feedparser
 Feedparser>=5.1
 
 Pillow
 mutagen>=1.17
-sorl-thumbnail>=11.12.1b,<11.13
+sorl-thumbnail>=12.3,<12.4
 
 # home-brewed & dependencies
 lxml>=2.2.2
@@ -39,7 +38,7 @@ lxml>=2.2.2
 
 # celery tasks
 celery>=3.1.12,<3.2
--e git+git://github.com/rczajka/kombu.git@4ed3622d1e801811410eda503e3eb8a6efd7f86f#egg=kombu
+kombu>=3.0.23,<3.1
 
 # spell checking
 pyenchant
@@ -50,7 +49,7 @@ pyoai
 ## egenix-mx-base  # Doesn't play nice with mx in dist-packages.
 sunburnt
 
-django-getpaid>=1.6,<1.7
+django-getpaid>=1.7,<1.8
 httplib2
 Texml
 django-ssify>=0.2.1,<0.3

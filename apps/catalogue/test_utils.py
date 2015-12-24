@@ -21,6 +21,7 @@ from django.conf import settings
             'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
         },
     SOLR=settings.SOLR_TEST,
+    SSIFY_RENDER=False,
 )
 class WLTestCase(TestCase):
     """

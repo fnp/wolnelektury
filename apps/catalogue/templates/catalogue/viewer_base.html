@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 {% load i18n %}
 {% load static from staticfiles %}
-{% load compressed %}
+{% load pipeline %}
 <html class="no-js">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>{% block title %}{% endblock %} :: {% trans "Wolne Lektury" %}</title>
         <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
-        {% compressed_css "book_text" %}
+        {% stylesheet "book_text" %}
         {% block extrahead %}{% endblock %}
 
     </head>
@@ -65,7 +65,7 @@
             var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
             var STATIC_URL = "{{ STATIC_URL }}";
         </script>
-        {% compressed_js "book_text" %}
+        {% javascript "book_text" %}
 
         {{ piwik_tag|safe }}
         {% block extrabody %}{% endblock %}

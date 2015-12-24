@@ -15,8 +15,8 @@ STATIC_URL = '/static/'
 
 # CSS and JavaScript file groups
 
-
-PIPELINE_CSS = {
+PIPELINE = {
+    'STYLESHEETS': {
     'main': {
         # styles both for mobile and for big screen
         'source_filenames': [
@@ -70,9 +70,8 @@ PIPELINE_CSS = {
         'source_filenames': ('scss/widget.scss',),
         'output_filename': 'css/compressed/widget.css',
     },
-}
-
-PIPELINE_JS = {
+    },
+    'JAVASCRIPT': {
     'base': {
         'source_filenames': (
             'js/contrib/jquery.cycle.min.js',
@@ -149,19 +148,27 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/widget.min.js',
     },
+    },
+    'CSS_COMPRESSOR': None,
+    'JS_COMPRESSOR': 'pipeline.compressors.jsmin.JSMinCompressor',
+    'COMPILERS': (
+        'pipeline.compilers.sass.SASSCompiler',
+        # We could probably use PySCSS instead,
+        # but they have some serious problems, like:
+        # https://github.com/Kronuz/pyScss/issues/166 (empty list syntax)
+        # https://github.com/Kronuz/pyScss/issues/258 (bad @media order)
+        #'pyscss_compiler.PySCSSCompiler',
+    )
 }
 
-STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
-PIPELINE_CSS_COMPRESSOR = None
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+#~ STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
 
-PIPELINE_COMPILERS = (
-    'pipeline.compilers.sass.SASSCompiler',
-    # We could probably use PySCSS instead,
-    # but they have some serious problems, like:
-    # https://github.com/Kronuz/pyScss/issues/166 (empty list syntax)
-    # https://github.com/Kronuz/pyScss/issues/258 (bad @media order)
-    #'pyscss_compiler.PySCSSCompiler',
-)
 #PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
 #PIPELINE_PYSCSS_ARGUMENTS = ''
+
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+]

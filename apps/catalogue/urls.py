@@ -26,7 +26,7 @@ urlpatterns = patterns('picture.views',
 urlpatterns += patterns('',
     # old search page - redirected
     url(r'^szukaj/$', RedirectView.as_view(
-            url='/szukaj/', query_string=True)),
+            url='/szukaj/', query_string=True, permanent=True)),
 )
 
 urlpatterns += patterns('catalogue.views',

@@ -1,7 +1,7 @@
 {% spaceless %}
 
 {% load static from staticfiles %}
-{% load compressed %}
+{% load pipeline %}
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <base target="_parent" />
     <title>Widget Wolnych Lektur</title>
-    {% compressed_css 'widget' %}
+    {% stylesheet 'widget' %}
 </head>
 <body>
 <div id="wl">
@@ -29,7 +29,7 @@
 
 </div>
 
-{% compressed_js 'widget' %}
+{% javascript 'widget' %}
 
 </body>
 </html>

@@ -20,9 +20,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'wolnelektury_core.context_processors.extra_settings',
     'search.context_processors.search_form',
-
-    "allauth.account.context_processors.account",
-    "allauth.socialaccount.context_processors.socialaccount",
 )
 
 MIDDLEWARE_CLASSES = [

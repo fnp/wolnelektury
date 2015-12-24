@@ -71,7 +71,7 @@ class Book(models.Model):
 
     parent = models.ForeignKey('self', blank=True, null=True,
         related_name='children')
-    ancestor = models.ManyToManyField('self', blank=True, null=True,
+    ancestor = models.ManyToManyField('self', blank=True,
         editable=False, related_name='descendant', symmetrical=False)
 
     objects  = models.Manager()

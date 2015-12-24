@@ -12,7 +12,7 @@ from .models import Note, Qualifier
 
 class NotesView(ListView):
     def get_queryset(self):
-        objects = Note.objects.select_related('book').all()
+        objects = Note.objects.all()
         filters = {}
 
         try:

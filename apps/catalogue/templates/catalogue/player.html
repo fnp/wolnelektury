@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     {% load static from staticfiles %}
-    {% load i18n compressed %}
+    {% load i18n pipeline %}
     {% load catalogue_tags %}
     {% load thumbnail %}
     <head>
@@ -11,8 +11,8 @@
         <title>{% trans "Wolne Lektury" %} ::
             {{ book.title }} - {{ audiobook }}</title>
         <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png" />
-        {% compressed_css "all" %}
-        {% compressed_css "player" %}
+        {% stylesheet "all" %}
+        {% stylesheet "player" %}
 
     </head>
     <body id="{% block bodyid %}player{% endblock %}">
@@ -133,7 +133,7 @@
 
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        {% compressed_js "player" %}
+        {% javascript "player" %}
 
         {{ piwik_tag|safe }}
     </body>

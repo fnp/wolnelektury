@@ -70,15 +70,15 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     # old static pages - redirected
     url(r'^1procent/$', RedirectView.as_view(
-        url='http://nowoczesnapolska.org.pl/wesprzyj_nas/')),
+        url='http://nowoczesnapolska.org.pl/wesprzyj_nas/', permanent=True)),
     url(r'^epub/$', RedirectView.as_view(
-        url='/katalog/lektury/')),
+        url='/katalog/lektury/', permanent=False)),
     url(r'^mozesz-nam-pomoc/$', RedirectView.as_view(
-        url='/info/mozesz-nam-pomoc')),
+        url='/info/mozesz-nam-pomoc', permanent=True)),
     url(r'^o-projekcie/$', RedirectView.as_view(
-        url='/info/o-projekcie')),
+        url='/info/o-projekcie', permanent=True)),
     url(r'^widget/$', RedirectView.as_view(
-        url='/info/widget')),
+        url='/info/widget', permanent=True)),
     url(r'^wolontariat/$', RedirectView.as_view(
-        url='/info/mozesz-nam-pomoc/')),
+        url='/info/mozesz-nam-pomoc/', permanent=False)),
 )

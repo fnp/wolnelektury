@@ -28,7 +28,7 @@ class Note(models.Model):
     html = models.TextField()
     sort_key = models.CharField(max_length=128, db_index=True)
     fn_type = models.CharField(max_length=10, db_index=True)
-    qualifiers = models.ManyToManyField(Qualifier, null=True)
+    qualifiers = models.ManyToManyField(Qualifier)
     language = models.CharField(max_length=10, db_index=True)
 
     class Meta:

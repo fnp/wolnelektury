@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% spaceless %}
 <html lang="{{ LANGUAGE_CODE }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
-    {% load compressed i18n %}
+    {% load pipeline i18n %}
     {% load static from staticfiles %}
     {% load catalogue_tags funding_tags reporting_stats %}
     {% load piwik_tags %}
@@ -21,7 +21,7 @@
         <title>{% block title %}{% trans "Wolne Lektury" %} :: {% block titleextra %}{% endblock %}{% endblock %}</title>
         <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
         <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury" href="{% static 'opensearch.xml' %}" />
-        {% compressed_css "main" %}
+        {% stylesheet "main" %}
         {% block extrahead %}
         {% endblock %}
     </head>
@@ -140,7 +140,7 @@
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript">var LANGUAGE_CODE="{{ LANGUAGE_CODE }}"; var STATIC_URL="{{ STATIC_URL }}";</script>
-        {% compressed_js "base" %}
+        {% javascript "base" %}
 
         {% tracking_code %}
 
