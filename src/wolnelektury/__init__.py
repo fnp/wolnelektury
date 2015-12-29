@@ -2,10 +2,6 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.apps import AppConfig
+from .celery import app as celery_app
 
-class WLCoreConfig(AppConfig):
-    name = 'wolnelektury_core'
-
-    def ready(self):
-        from . import signals
+default_app_config = 'wolnelektury.apps.WLCoreConfig'

@@ -12,7 +12,7 @@ from django.core.management.color import color_style
 from django.core.files import File
 from catalogue.utils import trim_query_log
 from librarian.picture import ImageStore
-from wolnelektury_core.management.profile import profile
+from wolnelektury.management.profile import profile
 
 from catalogue.models import Book
 from picture.models import Picture

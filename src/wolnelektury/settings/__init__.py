@@ -18,7 +18,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
-    'wolnelektury_core.context_processors.extra_settings',
+    'wolnelektury.context_processors.extra_settings',
     'search.context_processors.search_form',
 )
 
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'wolnelektury.urls'
 
 # These are the ones we should test.
 INSTALLED_APPS_OUR = [
-    'wolnelektury_core',
+    'wolnelektury',
     # our
     'ajaxable',
     'api',

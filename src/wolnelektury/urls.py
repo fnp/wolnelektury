@@ -6,10 +6,10 @@ from django.conf.urls import include, patterns, url
 from django.conf import settings
 from django.contrib import admin
 from django.views.generic import RedirectView
-import wolnelektury_core.views
+import wolnelektury.views
 
 
-urlpatterns = patterns('wolnelektury_core.views',
+urlpatterns = patterns('wolnelektury.views',
     url(r'^$', 'main_page', name='main_page'),
     url(r'^planowane/$', 'publish_plan', name='publish_plan'),
     url(r'^widget\.html$', 'widget', name='widget'),
@@ -18,14 +18,14 @@ urlpatterns = patterns('wolnelektury_core.views',
 
     # Authentication
     url(r'^uzytkownik/$', 'user_settings', name='user_settings'),
-    url(r'^uzytkownik/login/$', wolnelektury_core.views.LoginFormView(), name='login'),
-    url(r'^uzytkownik/signup/$', wolnelektury_core.views.RegisterFormView(), name='register'),
+    url(r'^uzytkownik/login/$', wolnelektury.views.LoginFormView(), name='login'),
+    url(r'^uzytkownik/signup/$', wolnelektury.views.RegisterFormView(), name='register'),
     url(r'^uzytkownik/logout/$', 'logout_then_redirect', name='logout'),
-    url(r'^uzytkownik/zaloguj-utworz/$', wolnelektury_core.views.LoginRegisterFormView(), name='login_register'),
+    url(r'^uzytkownik/zaloguj-utworz/$', wolnelektury.views.LoginRegisterFormView(), name='login_register'),
 
     # Includes.
     url(r'^latests_blog_posts.html$',
-        wolnelektury_core.views.latest_blog_posts,
+        wolnelektury.views.latest_blog_posts,
         name='latest_blog_posts'),
 )
 
