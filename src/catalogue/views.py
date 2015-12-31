@@ -4,11 +4,12 @@
 #
 from collections import OrderedDict
 import re
+import random
 
 from django.conf import settings
 from django.template import RequestContext
 from django.template.loader import render_to_string
-from django.shortcuts import render_to_response, get_object_or_404, render
+from django.shortcuts import render_to_response, get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 from django.db.models import Q
@@ -24,67 +25,21 @@ from picture.models import Picture, PictureArea
 from picture.views import picture_list_thumb
 from ssify import ssi_included, ssi_expect, SsiVariable as V
 from suggest.forms import PublishingSuggestForm
+from catalogue import constants
 from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue import models
-from catalogue.utils import split_tags, MultiQuerySet, SortedMultiQuerySet
+from catalogue.utils import split_tags
 from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
 
 def catalogue(request, as_json=False):
-    common_categories = ('author',)
-    split_categories = ('epoch', 'genre', 'kind')
-
-    categories = split_tags(
-        get_top_level_related_tags(categories=common_categories),
-        models.Tag.objects.usage_for_model(
-            models.Fragment, counts=True).filter(category='theme'),
-        models.Tag.objects.usage_for_model(
-            Picture, counts=True).filter(category__in=common_categories),
-        models.Tag.objects.usage_for_model(
-            PictureArea, counts=True).filter(
-            category='theme')
-    )
-    book_categories = split_tags(
-        get_top_level_related_tags(categories=split_categories)
-        )
-    picture_categories = split_tags(
-        models.Tag.objects.usage_for_model(
-            Picture, counts=True).filter(
-            category__in=split_categories),
-        )
-
+    books = models.Book.objects.filter(parent=None)
+    pictures = Picture.objects.all()
     collections = models.Collection.objects.all()
-
-    def render_tag_list(tags):
-        return render_to_string('catalogue/tag_list.html', tag_list(tags))
-
-    def render_split(with_books, with_pictures):
-        ctx = {}
-        if with_books:
-            ctx['books'] = render_tag_list(with_books)
-        if with_pictures:
-            ctx['pictures'] = render_tag_list(with_pictures)
-        return render_to_string('catalogue/tag_list_split.html', ctx)
-
-    output = {}
-    output['theme'] = render_tag_list(categories.get('theme', []))
-    for category in common_categories:
-        output[category] = render_tag_list(categories.get(category, []))
-    for category in split_categories:
-        output[category] = render_split(
-            book_categories.get(category, []),
-            picture_categories.get(category, []))
-
-    output['collections'] = render_to_string(
-        'catalogue/collection_list.html', collection_list(collections))
-    if as_json:
-        return JsonResponse(output)
-    else:
-        return render_to_response('catalogue/catalogue.html', locals(),
-            context_instance=RequestContext(request))
+    return render(request, 'catalogue/catalogue.html', locals())
 
 
 @ssi_included
@@ -113,10 +68,20 @@ def book_list(request, filter=None, get_filter=None,
 
 
 def audiobook_list(request):
-    return book_list(request, Q(media__type='mp3') | Q(media__type='ogg'),
-                     template_name='catalogue/audiobook_list.html',
-                     list_template_name='catalogue/snippets/audiobook_list.html',
-                     )
+    books = models.Book.objects.filter(Q(media__type='mp3') | Q(media__type='ogg')).distinct()
+    books = list(books)
+    if len(books) > 3:
+        best = random.sample(books, 3)
+    else:
+        best = books
+
+    daisy = models.Book.objects.filter(media__type='daisy').distinct()
+
+    return render(request, 'catalogue/audiobook_list.html', {
+        'books': books,
+        'best': best,
+        'daisy': daisy,
+        })
 
 
 def daisy_list(request):
@@ -127,17 +92,8 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(models.Collection, slug=slug)
-    if coll.kind == 'book':
-        view = book_list
-        tmpl = "catalogue/collection.html"
-    elif coll.kind == 'picture':
-        view = picture_list_thumb
-        tmpl = "picture/collection.html"
-    else:
-        raise ValueError('How do I show this kind of collection? %s' % coll.kind)
-    return view(request, get_filter=coll.get_query,
-                     template_name=tmpl,
-                     context={'collection': coll})
+    return render(request, 'catalogue/collection.html',
+        {'collection': coll})
 
 
 def differentiate_tags(request, tags, ambiguous_slugs):
@@ -155,7 +111,8 @@ def differentiate_tags(request, tags, ambiguous_slugs):
 
 
 # TODO: Rewrite this hellish piece of code which tries to do everything
-def tagged_object_list(request, tags=''):
+def tagged_object_list(request, tags='', gallery=False):
+    raw_tags = tags
     # preliminary tests and conditions
     try:
         tags = models.Tag.get_tag_list(tags)
@@ -189,58 +146,87 @@ def tagged_object_list(request, tags=''):
     objects = None
 
     if theme_is_set:
+        # Only fragments (or pirctureareas) here.
         shelf_tags = [tag for tag in tags if tag.category == 'set']
         fragment_tags = [tag for tag in tags if tag.category != 'set']
-        fragments = models.Fragment.tagged.with_all(fragment_tags)
-        areas = PictureArea.tagged.with_all(fragment_tags)
+        if gallery:
+            fragments = PictureArea.tagged.with_all(fragment_tags)
+        else:
+            fragments = models.Fragment.tagged.with_all(fragment_tags)
 
         if shelf_tags:
-            books = models.Book.tagged.with_all(shelf_tags).order_by()
-            fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
-            areas = PictureArea.objects.none()
+            if gallery:
+                # TODO: Pictures on shelves not supported yet.
+                raise Http404
+            else:
+                books = models.Book.tagged.with_all(shelf_tags).order_by()
+                fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
 
         categories = split_tags(
             models.Tag.objects.usage_for_queryset(fragments, counts=True
                 ).exclude(pk__in=tags_pks),
-            models.Tag.objects.usage_for_queryset(areas, counts=True
-                ).exclude(pk__in=tags_pks)
             )
 
-        # we want the Pictures to go first
-        objects = MultiQuerySet(areas, fragments)
+        objects = fragments
     else:
-        all_books = models.Book.tagged.with_all(tags)
-        if shelf_is_set:
-            books = all_books.order_by('sort_key_author', 'title')
-            pictures = Picture.objects.none()
-            related_book_tags = models.Tag.objects.usage_for_queryset(
-                books, counts=True).exclude(
-                category='set').exclude(pk__in=tags_pks)
+        if gallery:
+            if shelf_is_set:
+                # TODO: Pictures on shelves not supported yet.
+                raise Http404
+            else:
+                if tags:
+                    objects = Picture.tagged.with_all(tags).order_by(
+                        'sort_key_author', 'title')
+                else:
+                    objects = Picture.objects.all().order_by(
+                        'sort_key_author', 'title')
+            areas = PictureArea.objects.filter(picture__in=objects)
+            categories = split_tags(
+                models.Tag.objects.usage_for_queryset(
+                    objects, counts=True).exclude(pk__in=tags_pks),
+                models.Tag.objects.usage_for_queryset(
+                    areas, counts=True).filter(
+                    category__in=('theme', 'thing')).exclude(
+                    pk__in=tags_pks),
+            )
         else:
-            books = models.Book.tagged_top_level(tags).order_by(
-                'sort_key_author', 'title')
-            pictures = Picture.tagged.with_all(tags).order_by(
-                'sort_key_author', 'title')
+            if tags:
+                all_books = models.Book.tagged.with_all(tags)
+            else:
+                all_books = models.Book.objects.filter(parent=None)
+            if shelf_is_set:
+                objects = all_books.order_by('sort_key_author', 'title')
+                related_book_tags = models.Tag.objects.usage_for_queryset(
+                    objects, counts=True).exclude(
+                    category='set').exclude(pk__in=tags_pks)
+            else:
+                if tags:
+                    objects = models.Book.tagged_top_level(tags).order_by(
+                        'sort_key_author', 'title')
+                else:
+                    objects = all_books.order_by('sort_key_author', 'title')
             related_book_tags = get_top_level_related_tags(tags)
 
-        fragments = models.Fragment.objects.filter(book__in=all_books)
-        areas = PictureArea.objects.filter(picture__in=pictures)
+            fragments = models.Fragment.objects.filter(book__in=all_books)
 
-        categories = split_tags(
-            related_book_tags,
-            models.Tag.objects.usage_for_queryset(
-                pictures, counts=True).exclude(pk__in=tags_pks),
-            models.Tag.objects.usage_for_queryset(
-                fragments, counts=True).filter(
-                category='theme').exclude(pk__in=tags_pks),
-            models.Tag.objects.usage_for_queryset(
-                areas, counts=True).filter(
-                category__in=('theme', 'thing')).exclude(
-                pk__in=tags_pks),
-        )
+            categories = split_tags(
+                related_book_tags,
+                models.Tag.objects.usage_for_queryset(
+                    fragments, counts=True).filter(
+                    category='theme').exclude(pk__in=tags_pks),
+            )
 
-        objects = SortedMultiQuerySet(pictures, books,
-            order_by=('sort_key_author', 'title'))
+    objects = list(objects)
+    if len(objects) > 3:
+        best = random.sample(objects, 3)
+    else:
+        best = objects
+
+    if not gallery and not objects and len(tags) == 1:
+        tag = tags[0]
+        if (tag.category in ('theme', 'thing') and PictureArea.tagged.with_any([tag]).exists() or
+            Picture.tagged.with_any([tag]).exists()):
+                return redirect('tagged_object_list_gallery', raw_tags, permanent=False)
 
     return render_to_response('catalogue/tagged_object_list.html',
         {
@@ -252,6 +238,8 @@ def tagged_object_list(request, tags=''):
             'tags': tags,
             'tag_ids': tags_pks,
             'theme_is_set': theme_is_set,
+            'best': best,
+            'gallery': gallery,
         },
         context_instance=RequestContext(request))
 
@@ -272,16 +260,13 @@ def book_detail(request, slug):
     except models.Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, slug)
 
+    tags = book.tags.exclude(category__in=('set', 'theme'))
     book_children = book.children.all().order_by('parent_number', 'sort_key')
     return render_to_response('catalogue/book_detail.html', locals(),
         context_instance=RequestContext(request))
 
 
-def player(request, slug):
-    book = get_object_or_404(models.Book, slug=slug)
-    if not book.has_media('mp3'):
-        raise Http404
-
+def get_audiobooks(book):
     ogg_files = {}
     for m in book.media.filter(type='ogg').order_by().iterator():
         ogg_files[m.name] = m
@@ -309,6 +294,15 @@ def player(request, slug):
         audiobooks.append(media)
 
     projects = sorted(projects)
+    return audiobooks, projects, have_oggs
+
+
+def player(request, slug):
+    book = get_object_or_404(models.Book, slug=slug)
+    if not book.has_media('mp3'):
+        raise Http404
+
+    audiobooks, projects, have_oggs = get_audiobooks(book)
 
     extra_info = book.extra_info
 
@@ -636,6 +630,7 @@ def book_mini(request, pk, with_link=True):
 def book_short(request, pk):
     book = get_object_or_404(models.Book, pk=pk)
     stage_note, stage_note_url = book.stage_note()
+    audiobooks, projects, have_oggs = get_audiobooks(book)
 
     return render(request, 'catalogue/book_short.html', {
         'book': book,
@@ -646,6 +641,8 @@ def book_short(request, pk):
         'show_lang': book.language_code() != settings.LANGUAGE_CODE,
         'stage_note': stage_note,
         'stage_note_url': stage_note_url,
+        'audiobooks': audiobooks,
+        'have_oggs': have_oggs,
     })
 
 
@@ -659,6 +656,7 @@ def book_wide(request, pk):
     book = get_object_or_404(models.Book, pk=pk)
     stage_note, stage_note_url = book.stage_note()
     extra_info = book.extra_info
+    audiobooks, projects, have_oggs = get_audiobooks(book)
 
     return render(request, 'catalogue/book_wide.html', {
         'book': book,
@@ -672,7 +670,8 @@ def book_wide(request, pk):
         'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
         'extra_info': extra_info,
         'hide_about': extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl'),
-        'themes': book.related_themes(),
+        'audiobooks': audiobooks,
+        'have_oggs': have_oggs,
     })
 
 
@@ -688,4 +687,56 @@ def fragment_promo(request, pk):
     fragment = get_object_or_404(models.Fragment, pk=pk)
     return render(request, 'catalogue/fragment_promo.html', {
         'fragment': fragment
+    })
+
+
+@ssi_included
+def tag_box(request, pk):
+    tag = get_object_or_404(models.Tag, pk=pk)
+    assert tag.category != 'set'
+
+    return render(request, 'catalogue/tag_box.html', {
+        'tag': tag,
+    })
+
+
+@ssi_included
+def collection_box(request, pk):
+    obj = get_object_or_404(models.Collection, pk=pk)
+
+    return render(request, 'catalogue/collection_box.html', {
+        'obj': obj,
+    })
+
+
+def tag_catalogue(request, category):
+    if category == 'theme':
+        tags = models.Tag.objects.usage_for_model(
+            models.Fragment, counts=True).filter(category='theme')
+    else:
+        tags = list(get_top_level_related_tags((), categories=(category,)))
+
+    if len(tags) > 3:
+        best = random.sample(tags, 3)
+    else:
+        best = tags
+
+    return render(request, 'catalogue/tag_catalogue.html', {
+        'tags': tags,
+        'best': best,
+        'title': constants.CATEGORIES_NAME_PLURAL[category],
+    })
+
+
+def collections(request):
+    objects = models.Collection.objects.all()
+
+    if len(objects) > 3:
+        best = random.sample(objects, 3)
+    else:
+        best = objects
+
+    return render(request, 'catalogue/collections.html', {
+        'objects': objects,
+        'best': best,
     })

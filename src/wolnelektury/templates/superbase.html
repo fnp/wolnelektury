@@ -36,33 +36,13 @@
             {{ current_offer.endif }}
         {% endif %}
 
+        <div id="whole-header">
         <div id="header-wrapper">
         <header id="main">
+
             <a href="/" id="logo">
                 <img src="{% static 'img/logo-neon.png' %}" alt="Wolne Lektury" />
             </a>
-
-            <p id="user-info">
-                {% user_username as user_username %}
-                {% user_is_staff as user_is_staff %}
-                {{ user_username.if }}{% trans "Welcome" %}, <span class="hidden-box-wrapper">
-                        <a href="{% url 'user_settings' %}" class="hidden-box-trigger">
-                            <strong>{{ user_username }}</strong>
-                        </a>
-                        <span id="user-menu" class="hidden-box">
-                            <a href="{% url 'account_set_password' %}">{% trans "Password" %}</a><br/>
-                            <a href="{% url 'account_email' %}">{% trans "E-mail" %}</a><br/>
-                            <a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a><br/>
-                        </span>
-                    </span> | <a href="{% url 'social_my_shelf' %}" id="user-shelves-link">{% trans "My shelf" %}</a>
-                {{ user_username.endif }}
-                {{ user_is_staff.if }} | <a href="/admin/">{% trans "Administration" %}</a>
-                {{ user_is_staff.endif }}
-                {{ user_username.if }} | <a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
-                {{ user_username.else }}
-                    <a href="{% url 'login' %}?next={{ request.path }}" id="login" class="ajaxable">{% trans "Sign in" %}</a> / <a href="{% url 'register' %}?next={{ request.path }}" id="register" class="ajaxable">{% trans "Register" %}</a>
-                {{ user_username.endif }}
-            </p>
 
             <p id="tagline">
                     {% url 'book_list' as b %}
@@ -75,24 +55,10 @@
                     {% endblocktrans %}
             </p>
 
-            <form id="search-area" action="{% url 'search' %}">
-                <div id="search-field">
-                    <label for="search">{{search_form.q.label}}</label>
-                        {{search_form.q}}
-                </div><button type='submit'>{% trans "Search" %}</button>
-            </form>
-
-        </header>
-        </div>
-
-
-        <nav id="nav-line">
-            {% catalogue_menu %}
-
             <div id="lang-menu" class="hoverget">
                 <span id='lang-button' class='hoverclick'>
                     <span class="lang-flag">⚐</span>
-                    <span class="label"> {% trans "Language versions" %}</span>
+                    <span class="label"> {% trans "Language" %}</span>
                 </span>
                 <div id="lang-menu-items">
                 {% for lang in LANGUAGES %}
@@ -105,8 +71,53 @@
                 </div>
             </div>
 
-            <div class="clearboth"></div>
-        </nav>
+            <a id="show-menu"></a>
+            <nav id="menu">
+
+            <ul id="user-info">
+                {% user_username as user_username %}
+                {% user_is_staff as user_is_staff %}
+                {{ user_username.if }}<li>
+                        <a href="{% url 'user_settings' %}">
+                            <strong>{{ user_username }}</strong>
+                        </a>
+                    </li>
+                <li><a href="{% url 'social_my_shelf' %}" id="user-shelves-link">{% trans "My shelf" %}</a>
+                </li>
+                {{ user_username.endif }}
+                {{ user_is_staff.if }}<li><a href="/admin/">{% trans "Administration" %}</a></li>
+                {{ user_is_staff.endif }}
+                {{ user_username.if }}<li><a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a></li>
+                {{ user_username.else }}
+                    <li>
+                    <a href="{% url 'login' %}?next={{ request.path }}" id="login">{% trans "Sign in" %}</a> / <a href="{% url 'register' %}?next={{ request.path }}" id="register">{% trans "Register" %}</a>
+                    </li>
+                {{ user_username.endif }}
+            </ul>
+
+
+            <ul id="main-menu">
+                <li><a href="{% url 'book_list' %}">{% trans "Literature" %}</a></li>
+                <li><a href="{% url 'theme_catalogue' %}">{% trans "Themes" %}</a></li>
+                <li><a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a></li>
+                <li><a href="{% url 'gallery' %}">{% trans "Gallery" %}</a></li>
+                <li><a href="{% url 'catalogue' %}">Wszystkie utwory</a></li>
+            </ul>
+
+
+            </nav>
+
+            <form id="search-area" action="{% url 'search' %}">
+                <div id="search-field">
+                    <label for="search">{{search_form.q.label}}</label>
+                        {{search_form.q}}
+                </div><button type='submit'>{% trans "Search" %}</button>
+            </form>
+
+        </header>
+        </div>
+        </div>
+
 
 
         <div id="main-content">

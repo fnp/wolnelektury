@@ -1,21 +1,21 @@
-{% extends "catalogue/book_list.html" %}
+{% extends "base.html" %}
 {% load i18n %}
-{% load catalogue_tags %}
+{% load catalogue_tags switch_tag social_tags %}
 {% load ssi_include from ssify %}
 
-{% block bodyid %}book-a-list{% endblock %}
+{% block titleextra %}{% trans "Audiobooks" %}{% endblock %}
 
-{% block titleextra %}{% trans "Listing of all audiobooks" %}{% endblock %}
+{% block bodyid %}audiobooks{% endblock %}
 
-{% block metadescription %}Darmowe audiobooki na wolnej licencji. Lektury czytane przez znanych aktorów.{% endblock %}
+{% block body %}
+    <h1>{% trans "Audiobooks" %}</h1>
 
-{% block extrahead %}
-    <link rel="alternate" type="application/atom+xml" title="{% trans "Latest MP3 audiobooks" %}" href="{% url 'audiobook_feed' 'mp3' %}" />
-    <link rel="alternate" type="application/atom+xml" title="{% trans "Latest Ogg Vorbis audiobooks" %}" href="{% url 'audiobook_feed' 'ogg' %}" />
-{% endblock %}
+    {% work_list best %}
+    <h2>{% trans "Listing of all audiobooks" %}</h2>
+    {% plain_list books by_author=True %}
 
-{% block book_list_header %}{% trans "Listing of all audiobooks" %}{% endblock %}
+    <h2>{% trans "Listing of all DAISY files" %}</h2>
+    {% plain_list daisy by_author=True %}
 
-{% block book_list_info %}
-{% ssi_include 'chunk' key='audiobook-list' %}
+
 {% endblock %}

@@ -2,57 +2,91 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Count
 from .models import Tag, Book
+from os.path import getmtime
+import cPickle
+from collections import defaultdict
+
 
 
 BOOK_CATEGORIES = ('author', 'epoch', 'genre', 'kind')
 
 
-def get_top_level_related_tags(tags=None, categories=BOOK_CATEGORIES):
+_COUNTERS = None
+_COUNTER_TIME = None
+def get_top_level_related_tags(tags, categories=None):
     """
     Finds tags related to given tags through books, and counts their usage.
 
     Takes ancestry into account: if a tag is applied to a book, its
     usage on the book's descendants is ignored.
-
-    This is tested for PostgreSQL 9.1+, and might not work elsewhere.
-    It particular, it uses raw SQL using WITH clause, which is
-    supported in SQLite from v. 3.8.3, and is missing in MySQL.
-    http://bugs.mysql.com/bug.php?id=16244
-
     """
-    # First, find all tag relations of relevant books.
-    bct = ContentType.objects.get_for_model(Book)
-    relations = Tag.intermediary_table_model.objects.filter(
-        content_type=bct)
-    if tags is not None:
-        tagged_books = Book.tagged.with_all(tags).only('pk')
-        relations = relations.filter(
-            object_id__in=tagged_books).exclude(
-            tag_id__in=[tag.pk for tag in tags])
+    global _COUNTERS, _COUNTER_TIME
+    # First, check that we have a valid and recent version of the counters.
+    if getmtime(settings.CATALOGUE_COUNTERS_FILE) > _COUNTER_TIME:
+        with open(settings.CATALOGUE_COUNTERS_FILE) as f:
+            _COUNTERS = cPickle.load(f)
 
-    rel_sql, rel_params = relations.query.sql_with_params()
+    tagids = tuple(sorted(t.pk for t in tags))
+    try:
+        related_ids = _COUNTERS['next'][tagids]
+    except KeyError:
+        return
 
-    # Exclude those relations between a book and a tag,
-    # for which there is a relation between the book's ancestor
-    # and the tag and 
+    related = Tag.objects.filter(pk__in=related_ids)
 
-    return Tag.objects.raw('''
-        WITH AllTagged AS (''' + rel_sql + ''')
-        SELECT catalogue_tag.*, COUNT(catalogue_tag.id) AS count
-        FROM catalogue_tag, AllTagged
-        WHERE catalogue_tag.id=AllTagged.tag_id
-            AND catalogue_tag.category IN %s
-            AND NOT EXISTS (
-                SELECT AncestorTagged.id
-                FROM catalogue_book_ancestor Ancestor,
-                    AllTagged AncestorTagged
-                WHERE Ancestor.from_book_id=AllTagged.object_id
-                    AND AncestorTagged.content_type_id=%s
-                    AND AncestorTagged.object_id=Ancestor.to_book_id
-                    AND AncestorTagged.tag_id=AllTagged.tag_id
-            )
-        GROUP BY catalogue_tag.id
-        ORDER BY sort_key''', rel_params + (categories, bct.pk))
+    # TODO: do we really need that?
+    if categories is not None:
+        related = related.filter(category__in=categories)
+
+    for tag in related:
+        tag.count = _COUNTERS['count'][tuple(sorted(tagids + (tag.pk,)))]
+        yield tag
+
+    #~ return related
+
+
+def update_counters():
+    def combinations(things):
+        if len(things):
+            for c in combinations(things[1:]):
+                yield c
+                yield (things[0],) + c
+        else:
+            yield ()
+
+    def count_for_book(book, count_by_combination=None, parent_combinations=None):
+        if not parent_combinations:
+            parent_combinations = set()
+        tags = sorted(tuple(t.pk for t in book.tags.filter(category__in=('author', 'genre', 'epoch', 'kind'))))
+        combs = list(combinations(tags))
+        for c in combs:
+            if c not in parent_combinations:
+                count_by_combination[c] += 1
+        combs_for_child = set(list(parent_combinations) + combs)
+        for child in book.children.all():
+            count_for_book(child, count_by_combination, combs_for_child)
+
+    count_by_combination = defaultdict(lambda: 0)
+    for b in Book.objects.filter(parent=None):
+        count_for_book(b, count_by_combination)
+
+    next_combinations = defaultdict(set)
+    # Now build an index of all combinations.
+    for c in count_by_combination.keys():
+        if not c:
+            continue
+        for n in c:
+            rest = tuple(x for x in c if x != n)
+            next_combinations[rest].add(n)
+
+    counters = {
+        "count": dict(count_by_combination),
+        "next": dict(next_combinations),
+    }
+
+    with open(settings.CATALOGUE_COUNTERS_FILE, 'w') as f:
+        cPickle.dump(counters, f)

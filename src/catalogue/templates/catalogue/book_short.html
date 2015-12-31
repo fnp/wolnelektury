@@ -12,40 +12,40 @@
 <div class="book-box-body">
 
 
-{% likes_book book.pk as likes %}
-<div class="star {{ likes.if }}{{ likes.else }}un{{ likes.endif }}like">
-    <div class="if-like" >
-        <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets' class='ajaxable' href='{% url "social_book_sets" book.slug %}'>★</a>
-    </div>
-    <div class="if-unlike">
-        <form id="social-like-book-{{ book.slug }}" data-callback='social-like-book' method='post' class='ajax-form' action='{% url "social_like_book" book.slug %}'>
-            {% ssi_csrf_token %}
-            <button type='submit'>☆</button>
-        </form>
-    </div>
-</div>
-
-
-        <div class="book-box-head">
-            <div class="author">
-                {% for tag in tags.author %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},
-                {% endif %}{% endfor %}{% for parent in parents %},
-                    <a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a>{% endfor %}
-            </div>
-            <div class="title">
-                {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
-            </div>
+    {% likes_book book.pk as likes %}
+    <div class="star {{ likes.if }}{{ likes.else }}un{{ likes.endif }}like">
+        <div class="if-like" >
+            <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets' class='ajaxable' href='{% url "social_book_sets" book.slug %}'>★</a>
         </div>
+        <div class="if-unlike">
+            <form id="social-like-book-{{ book.slug }}" data-callback='social-like-book' method='post' class='ajax-form' action='{% url "social_like_book" book.slug %}'>
+                {% ssi_csrf_token %}
+                <button type='submit'>☆</button>
+            </form>
+        </div>
+    </div>
 
-<div class="cover-area">
-    {% if book.cover_thumb %}
-        {% if main_link %}<a href="{{ main_link }}">{% endif %}
-            <img src="{{ book.cover_thumb.url }}" alt="Cover" class="cover" />
-        {% if main_link %}</a>{% endif %}
-    {% endif %}
-    {% block cover-area-extra %}{% endblock %}
-</div>
+    <div class="book-box-head">
+        <div class="author">
+            {% for tag in tags.author %}
+                <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},
+            {% endif %}{% endfor %}{% for parent in parents %},
+                <a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a>{% endfor %}
+        </div>
+        <div class="title">
+            {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
+        </div>
+    </div>
+
+    <div class="cover-area">
+        {% if book.cover_thumb %}
+            {% if main_link %}<a href="{{ main_link }}">{% endif %}
+                <img src="{{ book.cover_thumb.url }}" alt="Cover" class="cover" />
+            {% if main_link %}</a>{% endif %}
+        {% endif %}
+        {% block cover-area-extra %}{% endblock %}
+    </div>
+
         <div class="tags">
             {% spaceless %}
 
@@ -97,38 +97,106 @@
             <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
         {% endif %}
         </li>
-        <li class="book-box-download hoverget">
-            <a class="downarrow hoverclick">{% trans "Download" %}</a>
+        <li class="book-box-download">
+            <a class="downarrow">{% trans "Download" %}: </a>
             <div class="book-box-formats">
              {% if book.pdf_file %}
-             <span><a href="{{ book.pdf_file.url}}">PDF</a> {% trans "to print" %}</span>
+             <span><a href="{{ book.pdf_file.url}}">PDF</a></span>
              {% endif %}
-             {% if  book.epub_file %}
-             <span><a href="{{ book.epub_file.url}}">EPUB</a> {% trans "for an e-book reader" %}</span>
+             {% custom_pdf_link_li book %}
+             {% if book.epub_file %}
+             <span><a href="{{ book.epub_file.url}}">EPUB</a></span>
              {% endif %}
-             {% if  book.mobi_file %}
-             <span><a href="{{ book.mobi_file.url}}">MOBI</a> {% trans "for Kindle" %}</span>
+             {% if book.mobi_file %}
+             <span><a href="{{ book.mobi_file.url}}">MOBI</a></span>
              {% endif %}
              {% if  book.fb2_file %}
-             <span><a href="{{ book.fb2_file.url}}">FB2</a> {% trans "FictionBook" %}</span>
+             <span><a href="{{ book.fb2_file.url}}">FB2</a></span>
              {% endif %}
              {% if  book.txt_file %}
-             <span><a href="{{ book.txt_file.url}}">TXT</a> {% trans "for advanced usage" %}</span>
+             <span><a href="{{ book.txt_file.url}}">TXT</a></span>
              {% endif %}
+             {% download_audio book %}
             </div>
-        </li>
-        <li class="book-box-audiobook">
-        {% if has_audio %}
-            <a href="{% url 'book_player' book.slug %}" class="open-player downarrow">{% trans "Listen" %}</a>
-        {% endif %}
+
+
         </li>
     </ul>
     {% block book-box-extra-info %}{% endblock %}
     {% block box-append %}
     {% endblock %}
     </div>
+
+
+
+
+
+
     {% block right-column %}
     {% endblock %}
+
+
+{% if audiobooks %}
+<div class="jp-type-playlist">
+  <div id="jplayer" class="jp-jplayer" data-player="jp_container_{{ book.pk }}"
+    data-supplied="{% if have_oggs %}oga,{% endif %}mp3"></div>
+  <div id="jp_container_{{ book.pk }}" class="jp-audio">
+    <div class="jp-type-single">
+        <span class="title"></span>
+      <div class="jp-gui jp-interface">
+        <ul class="jp-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+        </ul>
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+        <div class="jp-time-holder">
+          <div class="jp-current-time"></div>
+          <div class="jp-duration"></div>
+        </div>
+      </div>
+      <div class="jp-playlist">
+        <ul>
+
+        {% for i in audiobooks %}
+          <li data-mp3='{{ i.mp3.file.url }}' data-ogg='{{ i.ogg.file.url }}'>
+            <div class='play'>{{ i.mp3.name }}
+            <div class='extra-info'>
+              {% trans "Artist" %}: <span class='artist'>{{ i.mp3.extra_info.artist_name }}</span>,
+              {% trans "Director" %}: <span class='director'>{{ i.mp3.extra_info.director_name }}</span>
+            </div>
+            </div>
+          </li>
+        {% endfor %}
+
+        </ul>
+      </div>
+
+      <div class="jp-no-solution">
+        <span>Update Required</span>
+        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+      </div>
+    </div>
+  </div>
+<div>
+<a class="play-prev">« {% trans "previous" %}</a>
+{% trans "Part" %} <span class="number">1</span> / {{ audiobooks|length }}
+<a class="play-next">{% trans "next" %} »</a>
+</div>
+</div>
+
+
+{% endif %}
+
+
     <div class="clearboth"></div>
 </div>
 </div>

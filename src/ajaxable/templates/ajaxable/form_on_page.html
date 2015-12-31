@@ -5,10 +5,14 @@
 
 {% block body %}
 
+    <div class="white-box">
+
     {% include ajax_template %}
 
     {% if response_data.message %}
         <p>{{ response_data.message }}</p>
     {% endif %}
+
+    </div>
 
 {% endblock %}

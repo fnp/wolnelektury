@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from ssify import flush_ssi_includes
+import re
 
 
 class Collection(models.Model):
@@ -28,6 +29,12 @@ class Collection(models.Model):
     def __unicode__(self):
         return self.title
 
+    def get_initial(self):
+        try:
+            return re.search(r'\w', self.title, re.U).group(0)
+        except AttributeError:
+            return None
+
     @models.permalink
     def get_absolute_url(self):
         return ("collection", [self.slug])
@@ -38,6 +45,10 @@ class Collection(models.Model):
         slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
                     for slug in slugs]
         return models.Q(slug__in=slugs)
+
+    def get_books(self):
+        from catalogue.models import Book
+        return Book.objects.filter(self.get_query())
 
     def flush_includes(self, languages=True):
         if not languages:

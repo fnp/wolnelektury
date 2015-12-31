@@ -93,20 +93,5 @@
       {% endif %}
     </ul>
   </div>
-
-  {% comment %}
-  <div class="other-download">
-    <h2 class="mono">{% trans "Download" %}</h2>
-    <ul class="plain">
-      <li>
-	{% if related.media.mp3 or related.media.ogg or related.media.daisy %}
-        {% trans "Download all audiobooks for this book" %}:
-	{% download_audio book %}.
-	{% endif %}
-      </li>
-      {% custom_pdf_link_li book %}
-    </ul>
-  </div>
-  {% endcomment %}
 </div>
 {% endblock %}

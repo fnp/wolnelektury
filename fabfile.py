@@ -20,6 +20,14 @@ def production():
 
 
 @task
+def beta():
+    env.hosts = ['giewont.icm.edu.pl']
+    env.user = 'lektury'
+    env.app_path = '/srv/wolnelektury.pl/beta'
+    env.services = []
+
+
+@task
 def staging():
     env.hosts = ['san.nowoczesnapolska.org.pl:2223']
     env.user = 'staging'

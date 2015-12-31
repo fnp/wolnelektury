@@ -88,7 +88,7 @@
         }
     }
 
-    /* a long cite displays smaller */ 
+    /* a long cite displays smaller */
     .cite-small .cite-body {
         @include size(font-size, 16px);
         @media screen and (min-width: 30em) {
@@ -104,66 +104,23 @@
 }
 
 
-#promo-box {
-    @include size(margin-top, 16px);
+#main-library {
+    .main-library-row {
+        position: relative;
 
-    @media screen and (min-width: 33em) {
-        float: right;
-        @include size(margin-top, -51px);
-        @include size(width, 320px);
-    }
+        .covers {
+            white-space: nowrap;
+            width: 90%;
+            overflow-x: hidden;
+            padding-bottom: 2px;
 
-    h1 {
-        @include size(padding, 20px 5px 0 10px);
-        @include size(height, 31px);
-        margin: 0;
-        background: #191919;
-        color: white;
-        @include mono;
-        @include size(font-size, 13px);
-        font-weight: normal;
-
-        @media screen and (min-width: 33em) {
-            @include size(padding-left, 25px);
-            @include size(padding-right, 25px);
         }
-    }
-
-    #promo-box-body {
-        @include size(padding, 20px 5px);
-        @include size(border-bottom, 2px solid #efefef);
-        background: #efefef;
-
-        @media screen and (min-width: 33em) {
-            @include size(padding-left, 28px);
-            @include size(padding-right, 28px);
-        }
-
-        @media screen and (min-width: 62.5em) {
-            @include size(height, 300px);
-        }
-
-        a {
-            display: block;
-            color: #6c6c6c;
-        }
-        p {
-            margin-top: 0;
-            @include size(font-size, 12px);
-            line-height: 1.55em;
-            color: #6c6c6c;
-        }    
-        h2, h3 {
-            color: #0d777e;
-            @include size(font-size, 11px);
-            @include size(height, 27.5px);
-            margin: 0;
-            @include mono;
-            font-weight: normal;
-
-            &:after {
-                content: " >";
-            }
+        .note {
+            position: absolute;
+            right: 0;
+            top: 1px;
+            width: 139px;
+            height: 289px - 22px;
         }
     }
 }
@@ -251,6 +208,56 @@
 
         a {
             @include size(margin-right, 6px);
+        }
+    }
+}
+
+.more {
+    display: block;
+    margin-top: .5em;
+}
+
+
+section {
+    margin-top: 2em;
+}
+
+
+.tag-box-section {
+    @media screen and (min-width: 768px) {
+        display: inline-block;
+        width: 48%;
+        margin-right: 2%;
+        vertical-align: top;
+
+        .tag-box {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+#main-theme {
+    .white-box {
+        position: relative;
+
+        .cite {
+            display: none;
+
+            @media screen and (min-width: 768px) {
+                display: block;
+                position: absolute;
+                right: 1em;
+                top: 7em;
+                background: #F7F7F7;
+                width: 200px;
+                padding-left: 20px;
+            }
+
+            @media screen and (min-width: 1024px) {
+                width: 340px;
+                padding-left: 80px;
+            }
         }
     }
 }

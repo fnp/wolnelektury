@@ -75,7 +75,7 @@ ul.plain {
 .theme-list-link {
     @include mono;
     @include size(font-size, 11px);
-    
+
     &:after {
         @include size(padding-left, 11px);
         content: url("/static/img/arrow-teal.png");
@@ -107,4 +107,56 @@ ul.plain {
 
 .simple-hidden-initially {
     display: none;
+}
+
+
+.plain-list-container {
+    margin: 2em 0;
+    .plain-list {
+        column-count: 2;
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+
+        @media screen and (min-width: 768px) {
+            column-count: 4;
+            -moz-column-count: 4;
+            -webkit-column-count: 4;
+        }
+        @media screen and (min-width: 1024px) {
+            column-count: 5;
+            -moz-column-count: 5;
+            -webkit-column-count: 5;
+        }
+
+        p {
+            margin-top: 0;
+
+            &.header {
+                -webkit-column-break-after: avoid;
+                break-after: avoid;
+            }
+        }
+    }
+
+    .pager {
+        font-size: 18px;
+        margin-top: .5em;
+        text-align: center;
+
+        .current {
+            font-weight: bold;
+            color: black;
+        }
+    }
+}
+
+
+.tag-box {
+    display: block;
+
+    @media screen and (min-width: 768px) {
+        display: inline-block;
+        width: 48%;
+        margin-right: 1%;
+    }
 }

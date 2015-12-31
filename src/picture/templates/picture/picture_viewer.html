@@ -3,6 +3,7 @@
 {% load static from staticfiles %}
 {% load catalogue_tags %}
 {% load thumbnail %}
+{% load ssi_include from ssify %}
 
 
 {% block title %}{{ picture.pretty_title }}{% endblock %}
@@ -23,6 +24,17 @@
 
 {% block menu %}
 <li><a style="width: 50%;display: inline-block;" class="square button plus inactive" href="#">+<!--&#x2795;--><!-- heavy plus sign --></a><a style="width: 50%;display: inline-block;" class="square button minus inactive" href="#">-<!-- &#x2796;--><!-- heavy minus sign --></a></li>
+
+{% spaceless %}
+<li>
+    {% with picture.get_previous as prev %}
+        <a style="width: 50%;display: inline-block;" {% if prev %}href="{% url 'picture_viewer' prev.slug %}"{% endif %}>{% if prev %}&lt;{%endif %}</a>
+    {% endwith %}
+    {% with picture.get_next as next %}
+        <a style="width: 50%;display: inline-block;" {% if next %}href="{% url 'picture_viewer' next.slug %}"{% endif %}>{% if next %}&gt;{% endif %}</a>
+    {% endwith %}
+</li>
+{% endspaceless %}
 
 
 <li><a href="{{ picture.get_absolute_url }}" id="menu-book" data-box="book-short">
@@ -54,7 +66,7 @@
 {% block main %}
 	<div id="picture-view">
 	  {% thumbnail picture.image_file "700x500" as pic %}
-	  <div class="picture-wrap {% if picture.image_file|is_portrait %}portrait{% endif %}" 
+	  <div class="picture-wrap {% if picture.image_file|is_portrait %}portrait{% endif %}"
 	       data-original-width="{{picture.width}}" data-original-height="{{picture.height}}"
            data-original-url="{{ picture.image_file.url }}"
 	       data-width="{{pic.width}}" data-height="{{pic.height}}" style="background-image: url('{{pic.url}}');  width: {{pic.width}}px; height: {{pic.height}}px;">
@@ -82,7 +94,7 @@
 </div>
 
 <div class="box Picture-item" id="book-short">
-    {{ picture.short_html }}
+    {% ssi_include 'picture_short' pk=picture.pk %}
 </div>
 
 {% endblock %}

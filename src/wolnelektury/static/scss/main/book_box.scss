@@ -97,10 +97,10 @@
     list-style: none;
 
     .Book-item {
-        @include min-screen($S_BOOK_SHORT_FULL) {
+        /*@include min-screen($S_BOOK_SHORT_FULL) {
             display: inline-block;
         }
-        vertical-align: top;
+        vertical-align: top;*/
     }
 }
 
@@ -114,15 +114,23 @@
         color: #0D7E85;
     }
 
-    @include min-screen($S_BOOK_SHORT_FULL) {
-        @include size(width, $W_BOOK_SHORT_FULL);
-    }
-
     .book-box-inner {
         position: relative;
         @include inner-box;
         @include size(min-height, 197.5px);
     }
+
+    .jp-type-playlist {
+        margin-top: 24px;
+
+        @media screen and (min-width: 1024px) {
+            position: absolute;
+            margin-top: 0;
+            right: 20px;
+            top: 60px;
+        }
+    }
+
 }
 
 
@@ -238,6 +246,15 @@
             }
         }
     }
+
+    .jp-type-playlist {
+        margin-top: 24px;
+
+        @media screen and (min-width: 1024px) {
+            float: right;
+        }
+    }
+
 }
 
 @media screen and (min-width: 50em) {
@@ -253,10 +270,6 @@
 
 .book-box-body {
     @include size(margin-bottom, 10px);
-    @include min-screen($S_BOOK_SHORT_FULL) {
-        margin-bottom: 0;
-        @include size(height, 170px);
-    }
     position: relative;
 
     .book-box-head,
@@ -353,19 +366,10 @@
 
     li {
         @include mono;
-        margin-top: 1em;
-
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            display: inline-block;
-            margin-top: 0;
-        }
+        margin-top: 0;
     }
 
     .book-box-read {
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            @include size(width, 126.5px);
-        }
-
         a {
             @include mono;
         }
@@ -382,14 +386,7 @@
     .book-box-download {
         position: relative;
 
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            @include size(width, 93.5px);
-        }
-
         a {
-            position: relative;
-            z-index: 101;
-
             @mixin downarrow {
                 color: #0D7E85;
 
@@ -405,86 +402,20 @@
 
             &.downarrow {
                 @include downarrow;
-                &.hoverclick {
-                    color: black;
-                    &:before {
-                        display: none;
-                    }
-
-                    @include min-screen($S_BOOK_SHORT_FULL) {
-                        @include downarrow;
-                    }
-                }
             }
         }
 
         .book-box-formats {
-            @include size(padding-left, 19px);
-
-            @include min-screen($S_BOOK_SHORT_FULL) {
-                display: none;
-                position: absolute;
-
-                @include size(width, 180px);
-                @include size(padding-top, 38px);
-                @include size(padding-bottom, 9px);
-                @include size(padding-left, 19px);
-                @include size(padding-right, 19px);
-
-                @include white-box;
-
-                z-index: 100;
-
-                @include size(top, -16px);
-                @include size(left, -19px);
-            }
-
-            span {
-                display: block;
-                @include size(margin-top, 16px);
+            display: inline-block;
+            max-width: 220px;
+            vertical-align: top;
+            padding-top: 6px;
 
                 a {
-                    &:before {
-                        content: url("/static/img/download.png");
-                        @include size(font-size, 25px);
-                        @include size(margin-right, 3.71px);
-                        vertical-align: middle;
-                        font-weight: normal;
-                    }
+                    display: inline-block;
+                    @include size(padding, .2em 1em);
                 }
-
-                @include min-screen($S_BOOK_SHORT_FULL) {
-                    @include size(margin-top, 0);
-
-                    &:first-child {
-                        @include size(margin-top, 16px);
-                    }
-                    a:before {
-                        display:none;
-                    }
-                }
-            }
         }
-
-        &:hover .book-box-formats,
-        &.hover .book-box-formats {
-            display: block;
-        }
-    }
-
-    .book-box-audiobook {
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            @include size(width, 77px);
-        }
-
-        a:before {
-            content: url("/static/img/listen.png");
-            @include size(font-size, 25px);
-            @include size(margin-right, 3.71px);
-            vertical-align: middle;
-            font-weight: normal;
-        }
-
     }
 }
 

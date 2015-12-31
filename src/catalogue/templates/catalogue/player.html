@@ -6,7 +6,7 @@
     {% load thumbnail %}
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <meta name="description" 
+        <meta name="description"
             content="{{ book.title }} - darmowy audiobook na wolnej licencji" />
         <title>{% trans "Wolne Lektury" %} ::
             {{ book.title }} - {{ audiobook }}</title>
@@ -26,7 +26,7 @@
                 {% endthumbnail %}
             " alt="Cover" style="float: left; margin: .5em 1em 1em 1em;" />
         {% endif %}
-	
+
 
 <h1>{% book_title book %}</h1>
 
@@ -79,10 +79,6 @@
 
         {% for i in audiobooks %}
           <li>
-            <span class='jp-free-media'>
-              (<a class='mp3' href='{{ i.mp3.file.url }}'>mp3</a>{% if i.ogg %}
-              | <a class='ogg' href='{{ i.ogg.file.url }}'>ogg</a>{% endif %})
-            </span>
             <div class='play'>{{ i.mp3.name }}
             <div class='extra-info'>
               {% trans "Artist" %}: <span class='artist'>{{ i.mp3.extra_info.artist_name }}</span>,

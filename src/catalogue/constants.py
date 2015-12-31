@@ -36,3 +36,13 @@ LANGUAGES_3TO2 = {
     'rus': 'ru',
     'ukr': 'uk',
 }
+
+CATEGORIES_NAME_PLURAL = {
+    'author': _('authors'),
+    'epoch': _('epochs'),
+    'kind': _('kinds'),
+    'genre': _('genres'),
+    'theme': _('themes'),
+    'set': _('sets'),
+    'thing': _('things'),
+}

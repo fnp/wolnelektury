@@ -1,10 +1,17 @@
-{% extends "catalogue/book_list.html" %}
+{% extends "base.html" %}
 {% load i18n %}
+{% load catalogue_tags %}
 
-{% block titleextra %}{{ context.collection.title }}{% endblock %}
+{% block titleextra %}{{ collection.title }}{% endblock %}
 
-{% block book_list_header %}{{ context.collection.title }}{% endblock %}
+{% block bodyid %}collection{% endblock %}
 
-{% block book_list_info %}
-{{ context.collection.description|safe }}
+{% block body %}
+    <h1>{{ collection.title }}</h1>
+
+    {{ collection.description|safe }}
+
+    {% plain_list collection.get_books by_author=True %}
+
+
 {% endblock %}

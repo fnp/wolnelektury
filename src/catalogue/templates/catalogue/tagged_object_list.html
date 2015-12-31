@@ -3,165 +3,113 @@
 {% load catalogue_tags switch_tag social_tags %}
 {% load ssi_include from ssify %}
 
-{% block titleextra %}{% title_from_tags tags %}{% endblock %}
+{% block titleextra %}{% if tags %}{% title_from_tags tags %}{% elif gallery %}{% trans "Gallery" %}{% else %}{% trans "Literature" %}{% endif %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-<div class="left-column">
-  <div class="page-desc">
-    <h1>{% html_title_from_tags tags %}</h1>
-
-    {% with tags|last as last_tag %}
-    {% if last_tag.has_description %}
-    <div id="description" class="normal-text">
-      <div id='description-long' style="display:none">{{ last_tag.description|safe }}</div>
-      <div id='description-short'>{{ last_tag.description|safe|truncatewords_html:40 }}</div>
-    </div>
-    {% endif %}
-
-    <div class="clearboth"></div>
-    <div class="inline-tag-lists">
-      {% if categories.author %}
-      <div>
-	<div class="mono inline-header">{% trans "Authors" %}:</div>
-    	<div class="inline-body">
-	  {% inline_tag_list categories.author tags %}
-        </div>
-      </div>
-      {% endif %}
-      {% if categories.kind %}
-      <div>
-	<div class="mono inline-header">{% trans "Kinds" %}:</div>
-    	<div class="inline-body">
-	  {% inline_tag_list categories.kind tags %}
-        </div>
-      </div>
-      {% endif %}
-      {% if categories.genre %}
-      <div>
-	<div class="mono inline-header">{% trans "Genres" %}:</div>
-    	<div class="inline-body">
-	  {% inline_tag_list categories.genre tags %}
-        </div>
-      </div>
-      {% endif %}
-      {% if categories.epoch %}
-      <div class="inline-tag-list">
-	<div class="mono inline-header">{% trans "Epochs" %}:</div>
-    	<div class="inline-body">
-	  {% inline_tag_list categories.epoch tags %}
-        </div>
-      </div>
-      {% endif %}
-
-      {% if categories.theme %}
-      <div class="hidden-box-wrapper">
-	<p><a href="#" class="hidden-box-trigger theme-list-link mono">
-            {% trans "Motifs and themes" %}</a></p>
-	<div class="hidden-box">
-          {% tag_list categories.theme tags %}
-	</div>
-      </div>
-      {% endif %}
-    </div>
-
-    <div class="clearboth"></div>
-
-
-	{% if theme_is_set %}
-        <div class="see-also">
-            {% if last_tag.gazeta_link or last_tag.wiki_link %}
-            <h2 class='mono'>{% trans "See also" %}:</h2>
-            <ul>
-        {% if last_tag.culturepl_link %}
-        <li><a href="{{ last_tag.gazeta_link }}">
-        	{% trans "in Culture.pl" %}
-        </a></li>
+<div class="tabbed-filter">
+    <h1>{% if tags %}
+        {% html_title_from_tags tags %}
+        {% elif gallery %}{% trans "Gallery" %}{% else %}{% trans "Literature" %}
         {% endif %}
-        {% if last_tag.gazeta_link %}
-        <li><a href="{{ last_tag.gazeta_link }}">
-        	{% trans "in Lektury.Gazeta.pl" %}
-        </a></li>
-        {% endif %}
-        {% if last_tag.wiki_link %}
-        <li><a href="{{ last_tag.wiki_link }}">
-			{% trans "in Wikipedia" %}
-        </a></li>
-        {% endif %}
-            </ul>
-            {% endif %}
-        </div>
-    {% endif %}
+    </h1>
 
-
-    </div>
-    </div>
-
-
-    <div class="right-column">
+    <div class="tabs">
+        <a class="tab white-box" data-id="authors">{% trans "Authors" %}</a>
+        <a class="tab white-box" data-id="epochs">{% trans "Epochs" %}</a>
+        <a class="tab white-box" data-id="genres">{% trans "Genres" %}</a>
+        <a class="tab white-box" data-id="kinds">{% trans "Kinds" %}</a>
         {% if theme_is_set %}
-            {% work_list object_list %}
-        {% else %}
-
-        {% choose_cite tag_ids=tag_ids as cite_promo_pk %}
-        {% choose_fragment tag_ids=tag_ids unless=cite_promo_pk as fragment_promo_pk %}
-        {{ cite_promo_pk.if }}
-            {% ssi_include 'social_cite' pk=cite_promo_pk %}
-        {{ cite_promo_pk.endif }}
-        {{ fragment_promo_pk.if }}
-            {% ssi_include 'catalogue_fragment_promo' pk=fragment_promo_pk %}
-        {{ fragment_promo_pk.endif }}
-
-        <div class="see-also">
-            {% if last_tag.gazeta_link or last_tag.wiki_link %}
-            <h2 class='mono'>{% trans "See also" %}:</h2>
-            <ul>
-        {% if last_tag.gazeta_link %}
-        <li><a href="{{ last_tag.gazeta_link }}">
-            {% trans "in Lektury.Gazeta.pl" %}
-        </a></li>
+        <a class="tab white-box" data-id="themes">{% trans "Themes" %}</a>
         {% endif %}
-        {% if last_tag.wiki_link %}
-        <li><a href="{{ last_tag.wiki_link }}">
-	    {% trans "in Wikipedia" %}
-        </a></li>
-        {% endif %}
-	{% if last_tag.culturepl_link %}
-	<li><a href="{{ last_tag.culturepl_link }}">
-	    {% trans "in Culture.pl" %}
-	</a></li>
-	{% endif %}
-            </ul>
-            {% endif %}
-        </div>
-
-        <div class="download">
-            {% comment %}
-            <h2 class='mono'>{% trans "Download" %}:</h2>
-            <ul>
-                <li><a href="">wszystko</a></li>
-                <li><a href="">część</a></li>
-            </ul>
-            {% endcomment %}
-        </div>
-        {% endif %}
-
     </div>
 
-    <div class="clearboth"></div>
+</div>
+<div class="tabbed-filter-contents">
+    <div id="authors" class="white-box normal-text tab-content">
+        {% inline_tag_list categories.author tags 'author' gallery=gallery %}
+    </div>
+    <div id="epochs" class="white-box normal-text tab-content">
+        {% inline_tag_list categories.epoch tags 'epoch' gallery=gallery %}
+    </div>
+    <div id="genres" class="white-box normal-text tab-content">
+        {% inline_tag_list categories.genre tags 'genre' gallery=gallery %}
+    </div>
+    <div id="kinds" class="white-box normal-text tab-content">
+        {% inline_tag_list categories.kind tags 'kind' gallery=gallery %}
+    </div>
+    {% if theme_is_set %}
+        <div id="themes" class="white-box normal-text tab-content">
+            {% inline_tag_list categories.theme tags 'theme' gallery=gallery %}
+        </div>
+    {% endif %}
+</div>
 
 
 
-    {% if not theme_is_set %}
+
+    {% if theme_is_set %}
+        {% work_list object_list %}
+    {% else %}
     <div id="books-list">
         {% if object_list %}
-            {% work_list object_list %}
+            {% work_list best %}
+            <h2>{% trans "All matching works" %}</h2>
+            {% plain_list object_list by_author=True gallery=gallery %}
         {% else %}
             {% trans "Sorry! Search cirteria did not match any resources." %}
             {% include "info/join_us.html" %}
         {% endif %}
     </div>
+
+
+
+
+{% if categories.theme %}
+    <h2>{% trans "Motifs and themes" %}</h2>
+    {% plain_list categories.theme choice=tags gallery=gallery %}
+{% endif %}
+
+
+
+{% endif %}
+
+
+
+    {% for tag in tags %}
+    {% if tag.category != 'set' %}
+    <h2>{% trans tag.category as c %}{{ c|capfirst }}: {{ tag }}</h2>
+        <div class="white-box">
+        {% if tag.has_description %}
+            {{ tag.description|safe }}
+        {% else %}
+            <em>{% trans "No description." %}</em>
+        {% endif %}
+        </div>
+
+        {% if tag.gazeta_link %}
+        <div class="white-box"><a href="{{ tag.gazeta_link }}">
+            {{ tag }} {% trans "in Lektury.Gazeta.pl" %}
+        </a></div>
+        {% endif %}
+        {% if tag.wiki_link %}
+        <div class="white-box">
+        <a href="{{ tag.wiki_link }}">
+            {{ tag }} {% trans "in Wikipedia" %}
+        </a></div>
+        {% endif %}
+        {% if tag.culturepl_link %}
+        <div class="white-box">
+        <a href="{{ tag.culturepl_link }}">
+            {{ tag }} {% trans "in Culture.pl" %}
+        </a></div>
+        {% endif %}
     {% endif %}
-    {% endwith %}
+    {% endfor %}
+
+
+
+
+
 {% endblock %}

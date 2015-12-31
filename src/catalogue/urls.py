@@ -32,7 +32,16 @@ urlpatterns += patterns('',
 urlpatterns += patterns('catalogue.views',
     url(r'^$', 'catalogue', name='catalogue'),
 
-    url(r'^lektury/$', 'book_list', name='book_list'),
+    url(r'^autor/$', 'tag_catalogue', {'category': 'author'}, name='author_catalogue'),
+    url(r'^epoka/$', 'tag_catalogue', {'category': 'epoch'}, name='epoch_catalogue'),
+    url(r'^gatunek/$', 'tag_catalogue', {'category': 'genre'}, name='genre_catalogue'),
+    url(r'^rodzaj/$', 'tag_catalogue', {'category': 'kind'}, name='kind_catalogue'),
+    url(r'^motyw/$', 'tag_catalogue', {'category': 'theme'}, name='theme_catalogue'),
+
+    url(r'^galeria/$', 'tagged_object_list', {'gallery': True}, name='gallery'),
+    url(r'^kolekcje/$', 'collections', name='catalogue_collections'),
+
+    url(r'^lektury/$', 'tagged_object_list', name='book_list'),
     url(r'^lektury/(?P<slug>[a-zA-Z0-9-]+)/$', 'collection', name='collection'),
     url(r'^audiobooki/$', 'audiobook_list', name='audiobook_list'),
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
@@ -75,7 +84,10 @@ urlpatterns += patterns('catalogue.views',
     url(r'^b/(?P<pk>\d+)/wide\.(?P<lang>.+)\.html', 'book_wide', name='catalogue_book_wide'),
     url(r'^f/(?P<pk>\d+)/promo\.(?P<lang>.+)\.html', 'fragment_promo', name='catalogue_fragment_promo'),
     url(r'^f/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'fragment_short', name='catalogue_fragment_short'),
+    url(r'^t/(?P<pk>\d+)/box\.(?P<lang>.+)\.html', 'tag_box', name='catalogue_tag_box'),
+    url(r'^c/(?P<pk>.+)/box\.(?P<lang>.+)\.html', 'collection_box', name='catalogue_collection_box'),
 
     # This should be the last pattern.
+    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'gallery': True}, name='tagged_object_list_gallery'),
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 )

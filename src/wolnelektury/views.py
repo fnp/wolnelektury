@@ -18,16 +18,46 @@ from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
 from ajaxable.utils import placeholdized
-from catalogue.models import Book
+from catalogue.models import Book, Collection, Tag, Fragment
 from ssify import ssi_included
 
 
 def main_page(request):
-    last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:4]
+    ctx = {
+        'last_published': Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:6],
+    }
 
-    return render(request, "main_page.html", {
-        'last_published': last_published,
-    })
+    for category in ('author', 'epoch', 'genre', 'kind'):
+        try:
+            ctx[category] = Tag.objects.filter(category=category).order_by('?')[:1][0]
+        except IndexError:
+            pass
+
+    # FIXME: find this theme and books properly.
+    ctx['theme_books'] = []
+    if Fragment.objects.count():
+        while True:
+            ctx['theme'] = Tag.objects.filter(category='theme').order_by('?')[:1][0]
+            tf = Fragment.tagged.with_any([ctx['theme']]).order_by('?')[:100]
+            if not tf:
+                continue
+            ctx['theme_fragment'] = tf[0]
+            for f in tf:
+                if not f.book in ctx['theme_books']:
+                    ctx['theme_books'].append(f.book)
+                if len(ctx['theme_books']) == 3:
+                    break
+            break
+
+    # Choose a collection for main.
+    try:
+        ctx['collection'] = Collection.objects.order_by('?')[:1][0]
+    except IndexError:
+        pass
+
+    ctx['best'] = Book.objects.order_by('?')[:5]
+
+    return render(request, "main_page.html", ctx)
 
 
 class LoginFormView(AjaxableFormView):

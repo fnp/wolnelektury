@@ -4,6 +4,7 @@
 #
 from random import randint, random
 from urlparse import urlparse
+from django.contrib.contenttypes.models import ContentType
 
 from django.conf import settings
 from django import template
@@ -242,10 +243,26 @@ def catalogue_url(parser, token):
     return CatalogueURLNode(tags_to_add, tags_to_remove)
 
 
+@register.tag
+def catalogue_url_gallery(parser, token):
+    bits = token.split_contents()
+
+    tags_to_add = []
+    tags_to_remove = []
+    for bit in bits[1:]:
+        if bit[0] == '-':
+            tags_to_remove.append(bit[1:])
+        else:
+            tags_to_add.append(bit)
+
+    return CatalogueURLNode(tags_to_add, tags_to_remove, gallery=True)
+
+
 class CatalogueURLNode(Node):
-    def __init__(self, tags_to_add, tags_to_remove):
+    def __init__(self, tags_to_add, tags_to_remove, gallery=False):
         self.tags_to_add = [Variable(tag) for tag in tags_to_add]
         self.tags_to_remove = [Variable(tag) for tag in tags_to_remove]
+        self.gallery = gallery
 
     def render(self, context):
         tags_to_add = []
@@ -273,23 +290,40 @@ class CatalogueURLNode(Node):
                 pass
 
         if len(tag_slugs) > 0:
-            return reverse('tagged_object_list', kwargs={'tags': '/'.join(tag_slugs)})
+            if self.gallery:
+                return reverse('tagged_object_list_gallery', kwargs={'tags': '/'.join(tag_slugs)})
+            else:
+                return reverse('tagged_object_list', kwargs={'tags': '/'.join(tag_slugs)})
         else:
-            return reverse('main_page')
+            return reverse('book_list')
 
 
 @register.inclusion_tag('catalogue/tag_list.html')
-def tag_list(tags, choices=None):
+def tag_list(tags, choices=None, category=None, gallery=False):
+    print(tags, choices, category)
     if choices is None:
         choices = []
-    if len(tags) == 1 and tags[0].category not in [t.category for t in choices]:
+
+    if category is None and tags:
+        category = tags[0].category
+
+    category_choices = [tag for tag in choices if tag.category == category]
+
+    if len(tags) == 1 and category not in [t.category for t in choices]:
         one_tag = tags[0]
+
+    if category is not None:
+        other = Tag.objects.filter(category=category).exclude(pk__in=[t.pk for t in tags]).exclude(pk__in=[t.pk for t in category_choices])
+        # Filter out empty tags.
+        ct = ContentType.objects.get_for_model(Picture if gallery else Book)
+        other = other.filter(items__content_type=ct).distinct()
+
     return locals()
 
 
 @register.inclusion_tag('catalogue/inline_tag_list.html')
-def inline_tag_list(tags, choices=None):
-    return tag_list(tags, choices)
+def inline_tag_list(tags, choices=None, category=None, gallery=False):
+    return tag_list(tags, choices, category, gallery)
 
 
 @register.inclusion_tag('catalogue/collection_list.html')
@@ -309,6 +343,25 @@ def book_info(book):
 def work_list(context, object_list):
     request = context.get('request')
     return locals()
+
+
+
+@register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
+def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, gallery=False, paged=True):
+    names = [(None, [])]
+    last_initial = None
+    for obj in object_list:
+        if with_initials:
+            if by_author:
+                initial = obj.sort_key_author
+            else:
+                initial = obj.get_initial().upper()
+            if initial != last_initial:
+                last_initial = initial
+                names.append((obj.author_str() if by_author else initial, []))
+        names[-1][1].append(obj)
+    return locals()
+
 
 
 # TODO: These are no longer just books.
@@ -347,17 +400,6 @@ def related_books(context, instance, limit=6, random=1, taken=0):
     }
 
 
-@register.inclusion_tag('catalogue/menu.html')
-def catalogue_menu():
-    return {'categories': [
-                ('author', _('Authors'), 'autorzy'),
-                ('genre', _('Genres'), 'gatunki'),
-                ('kind', _('Kinds'), 'rodzaje'),
-                ('epoch', _('Epochs'), 'epoki'),
-                ('theme', _('Themes'), 'motywy'),
-        ]}
-
-
 @register.simple_tag
 def download_audio(book, daisy=True):
     links = []
@@ -373,7 +415,7 @@ def download_audio(book, daisy=True):
         for dsy in book.get_media('daisy'):
             links.append("<a href='%s'>%s</a>" %
                 (dsy.file.url, BookMedia.formats['daisy'].name))
-    return ", ".join(links)
+    return "".join(links)
 
 
 @register.inclusion_tag("catalogue/snippets/custom_pdf_link_li.html")

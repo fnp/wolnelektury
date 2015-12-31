@@ -5,10 +5,10 @@
 {% block head_title %}{% trans "Login Cancelled" %}{% endblock %}
 
 {% block body %}
-    
+<div class="normal-text white-box">
+
 <h1>{% trans "Login Cancelled" %}</h1>
 
-<div class="normal-text white-box">
 {% url 'socialaccount_login' as login_url %}
 {{ login_url }}
 

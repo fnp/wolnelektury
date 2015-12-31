@@ -17,6 +17,7 @@ from StringIO import StringIO
 import jsonfield
 import itertools
 import logging
+import re
 
 from PIL import Image
 
@@ -123,9 +124,30 @@ class Picture(models.Model):
     def __unicode__(self):
         return self.title
 
+    def author_str(self):
+        return ", ".join(str(t) for t in self.tags.filter(category='author'))
+
     @permalink
     def get_absolute_url(self):
         return ('picture.views.picture_detail', [self.slug])
+
+    def get_initial(self):
+        try:
+            return re.search(r'\w', self.title, re.U).group(0)
+        except AttributeError:
+            return ''
+
+    def get_next(self):
+        try:
+            return type(self).objects.filter(sort_key__gt=self.sort_key)[0]
+        except IndexError:
+            return None
+
+    def get_previous(self):
+        try:
+            return type(self).objects.filter(sort_key__lt=self.sort_key).order_by('-sort_key')[0]
+        except IndexError:
+            return None
 
     @classmethod
     def from_xml_file(cls, xml_file, image_file=None, image_store=None, overwrite=False):

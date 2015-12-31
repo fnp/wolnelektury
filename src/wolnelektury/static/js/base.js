@@ -98,7 +98,7 @@
                                 menu_loaded = true;
                             });
                         }
-					} 
+					}
 				});
 			});
 		    /* this kinda breaks the whole page. */
@@ -108,7 +108,7 @@
 				while (p.length) {
 					if (p == $current)
 						return;
-					if (p.hasClass('hidden-box-trigger') 
+					if (p.hasClass('hidden-box-trigger')
 					    || p.hasClass('simple-toggler')
                         || p.hasClass('mini-search'))
 						return;
@@ -118,12 +118,15 @@
 				$current = null;
 			});
 		})();
-		
+
 
 $('#show-menu').click(function(event) {
     event.preventDefault();
-    $('#menu').toggle('slow');
+    //$('#menu').toggle('slow');
+    $('body').toggleClass('menu-on');
 });
+
+
 $('#book-list-nav h2').click(function(event) {
     event.preventDefault();
     $('#book-list-nav-index').toggle();
@@ -152,15 +155,75 @@ $('#themes-list-toggle').click(function(event) {
       $('body').on('click', '.simple-toggler' , function(ev) {
 	ev.preventDefault();
 	var scope = $(this).closest('.simple-toggler-scope');
-	scope.find('.simple-hidden-box').each(function(){ 
+	scope.find('.simple-hidden-box').each(function(){
 	  var $this = $(this);
 	  if ($this.is(':hidden')) {
 	    $this.show();
-	  } else { 
+	  } else {
 	    $this.hide();
 	  }
 	  });
       });
+
+
+    $('.tabbed-filter').each(function() {
+        var tf = this;
+        $('.tab').click(function() {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('#' + $(this).attr('data-id')).hide();
+            }
+            else {
+                var $active = $('.active', tf);
+                $active.removeClass('active');
+                $('#' + $active.attr('data-id')).hide();
+                $(this).addClass('active');
+                $('#' + $(this).attr('data-id')).show();
+            }
+        });
+    });
+
+
+    $('.plain-list-paged').each(function() {
+        // should change on resize?
+        var $plc = $(this);
+        var $pl = $('.plain-list', this);
+
+        var $items = $('p', $pl);
+
+        if ($items.length > 40) {
+            $items.hide();
+            var prev = [0, 0];
+
+            $('.pager', $plc).paging($items.length, {
+                format: '[< ncnnn >]', // define how the navigation should look like and in which order onFormat() get's called
+                perpage: 40,
+                lapping: 0, // don't overlap pages for the moment
+                page: 1, // start at page, can also be "null" or negative
+                onSelect: function (page) {
+                    var data = this.slice;
+                    $items.slice(prev[0], prev[1]).hide();
+                    $items.slice(data[0], data[1]).show();
+                    prev = data;
+                },
+                onFormat: function (type) {
+                    switch (type) {
+                        case 'block': // n and c
+                            return ' <a href="#"' + (this.value == this.page ? ' class="current"' : '') + '>' + this.value + '</a> ';
+                        case 'next': // >
+                            return ' <a href="#">&gt;</a> ';
+                        case 'prev': // <
+                            return ' <a href="#">&lt;</a> ';
+                        case 'first': // [
+                            return '<a href="#">«</a> ';
+                        case 'last': // ]
+                            return ' <a href="#">»</a>';
+                    }
+                }
+            });
+        }
+    });
+
 
     });
 })(jQuery);

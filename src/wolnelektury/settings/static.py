@@ -16,11 +16,13 @@ STATIC_URL = '/static/'
 # CSS and JavaScript file groups
 
 PIPELINE = {
+    'PIPELINE_ENABLED': False,
     'STYLESHEETS': {
     'main': {
         # styles both for mobile and for big screen
         'source_filenames': [
             'css/jquery.countdown.css',
+            'jplayer/jplayer.blue.monday.css',
 
             'sponsors/css/sponsors.css',
 
@@ -77,12 +79,17 @@ PIPELINE = {
             'js/contrib/jquery.cycle.min.js',
             'js/contrib/jquery.jqmodal.js',
             'js/contrib/jquery.form.js',
+            'js/contrib/jquery.paging.min.js',
             'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
             'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',
             'js/contrib/jquery.countdown-es.js', 'js/contrib/jquery.countdown-lt.js',
             'js/contrib/jquery.countdown-ru.js', 'js/contrib/jquery.countdown-fr.js',
 
             'js/contrib/jquery-ui-1.8.16.custom.min.js',
+
+            'jplayer/jquery.jplayer.min.js',
+            'jplayer/jplayer.playlist.min.js',
+            'player/player.js',
 
             'js/locale.js',
             'js/dialogs.js',

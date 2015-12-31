@@ -65,6 +65,8 @@
     position: fixed;
     top: 0;
     left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
     text-align: center;
     line-height: 1.1em;
     background: #191919;

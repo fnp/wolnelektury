@@ -14,6 +14,17 @@
  * Date: 1st September 2011
  */
 
+.jp-audio .title {
+    font-size: 11px;
+    position: relative;
+    left: 10px;
+    top: 5px;
+    z-index: 100;
+}
+.play-prev, .play-next {
+    cursor: pointer;
+}
+
 div.jp-audio,
 div.jp-video {
 
@@ -31,7 +42,7 @@ div.jp-video {
 	position:relative;
 }
 div.jp-audio {
-	width:420px;
+	width: 340px;
 }
 div.jp-video-270p {
 	width:480px;
@@ -111,7 +122,7 @@ div.jp-interface ul.jp-controls {
 }
 
 div.jp-audio ul.jp-controls {
-	width: 380px;
+	width: 320px;
 	padding:20px 20px 0 20px;
 }
 
@@ -198,8 +209,8 @@ div.jp-audio div.jp-progress {
 	height:15px;
 }
 div.jp-audio div.jp-type-single div.jp-progress {
-	left:110px;
-	width:186px;
+	left:70px;
+	width:150px;
 }
 div.jp-audio div.jp-type-playlist div.jp-progress {
 	left:166px;
@@ -243,7 +254,7 @@ a.jp-volume-max {
 
 div.jp-audio div.jp-type-single a.jp-mute,
 div.jp-audio div.jp-type-single a.jp-unmute {
-	margin-left: 210px;	
+	margin-left: 180px;
 }
 
 div.jp-audio div.jp-type-playlist a.jp-mute,
@@ -252,7 +263,7 @@ div.jp-audio div.jp-type-playlist a.jp-unmute {
 }
 
 div.jp-audio a.jp-volume-max {
-	margin-left: 56px;	
+	margin-left: 56px;
 }
 
 div.jp-video a.jp-mute,
@@ -302,7 +313,7 @@ div.jp-volume-bar {
 }
 div.jp-audio div.jp-volume-bar {
 	top:37px;
-	left:330px;
+	left:260px;
 }
 div.jp-video div.jp-volume-bar {
 	top:17px;
@@ -323,8 +334,8 @@ div.jp-audio div.jp-time-holder {
 	top:50px;
 }
 div.jp-audio div.jp-type-single div.jp-time-holder {
-	left:110px;
-	width:186px;
+	left:70px;
+	width:150px;
 }
 div.jp-audio div.jp-type-playlist div.jp-time-holder {
 	left:166px;
@@ -387,6 +398,7 @@ div.jp-title li {
 	font-weight:bold;
 }
 div.jp-playlist li {
+    display: none;
 	padding:5px 0 4px 20px;
 	border-bottom:1px solid #eee;
 }

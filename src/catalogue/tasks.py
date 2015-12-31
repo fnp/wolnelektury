@@ -57,3 +57,9 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
     finally:
         if waiter_id is not None:
             WaitedFile.objects.filter(pk=waiter_id).delete()
+
+
+@task(ignore_result=True)
+def update_counters():
+    from .helpers import update_counters
+    update_counters()

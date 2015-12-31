@@ -128,9 +128,21 @@ class Tag(TagBase):
     def __repr__(self):
         return "Tag(slug=%r)" % self.slug
 
+    def get_initial(self):
+        if self.category == 'author':
+            return self.sort_key[0]
+        elif self.name:
+            return self.name[0]
+        else:
+            return None
+
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.tagged_object_list', [self.url_chunk])
+        return ('tagged_object_list', [self.url_chunk])
+
+    @permalink
+    def get_absolute_gallery_url(self):
+        return ('tagged_object_list_gallery', [self.url_chunk])
 
     @classmethod
     @permalink
@@ -147,6 +159,7 @@ class Tag(TagBase):
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):
+            if not tags: return []
             real_tags = []
             ambiguous_slugs = []
             category = None

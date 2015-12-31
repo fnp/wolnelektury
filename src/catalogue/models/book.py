@@ -55,8 +55,8 @@ class Book(models.Model):
     extra_info    = jsonfield.JSONField(_('extra information'), default={})
     gazeta_link   = models.CharField(blank=True, max_length=240)
     wiki_link     = models.CharField(blank=True, max_length=240)
-    # files generated during publication
 
+    # files generated during publication
     cover = EbookField('cover', _('cover'),
             null=True, blank=True,
             upload_to=_cover_upload_to,
@@ -95,6 +95,15 @@ class Book(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_initial(self):
+        try:
+            return re.search(r'\w', self.title, re.U).group(0)
+        except AttributeError:
+            return None
+
+    def author_str(self):
+        return ", ".join(str(t) for t in self.tags.filter(category='author'))
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
@@ -311,6 +320,7 @@ class Book(models.Model):
                 notify_cover_changed.append(child)
 
         cls.repopulate_ancestors()
+        tasks.update_counters.delay()
 
         # No saves beyond this point.
 

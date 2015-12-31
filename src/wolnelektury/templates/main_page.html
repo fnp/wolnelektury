@@ -14,21 +14,79 @@
         {% ssi_include 'social_cite_main' pk=cite_pk %}
     {{ cite_pk.endif }}
 
-
-
-    <section id="promo-box">
-        <h1>{% trans "What's new?" %}</h1>
-        <div id="promo-box-body">
-            {% ssi_include 'chunk' key='promo' %}
+    <section id="main-library">
+        <h1>W naszej cyfrowej bibliotece znajdziesz</h1>
+        <div class="main-library-row">
+            <div class="covers">
+            {% for b in best %}
+                {% ssi_include 'catalogue_book_mini' pk=b.pk %}
+            {% endfor %}
+            </div>
+            <div class="note white-box normal-text" style="font-size: 18px">
+            i wiele innych książek, wierszy, obrazów, audiobooków…
+            </div>
         </div>
     </section>
 
+    <section id="main-theme">
+        <h1>Motywy i tematy</h1>
+        <div class="white-box normal-text">
+        <h2>{% trans "Theme" %}: {{ theme }}</h2>
+        <p>Utwory, w których występuje ten motyw:</p>
+        {% for book in theme_books %}
+            {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+        {% endfor %}
+        {% if theme_fragment %}
+            {% ssi_include 'catalogue_fragment_promo' pk=theme_fragment.pk %}
+        {% endif %}
+        </div>
+        <a class="more" href="{% url 'theme_catalogue' %}">Zobacz katalog motywów</a>
+    </section>
 
-    <section id="main-last">
-        <h1><a href="{% url 'recent_list' %}">{% trans "Recent publications" %}</a></h1>
+    <section class="tag-box-section">
+        <h1>Autorzy</h1>
+      <a class="tag-box" href="{{ author.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=author.pk %}
+      </a>
+        <a class="more" href="{% url 'author_catalogue' %}">Zobacz katalog autorów</a>
+    </section>
+
+    <section class="tag-box-section">
+        <h1>Gatunki</h1>
+      <a class="tag-box" href="{{ genre.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=genre.pk %}
+      </a>
+        <a class="more" href="{% url 'genre_catalogue' %}">Zobacz katalog gatunków</a>
+    </section>
+
+    <section class="tag-box-section">
+        <h1>Rodzaje</h1>
+      <a class="tag-box" href="{{ kind.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=kind.pk %}
+      </a>
+        <a class="more" href="{% url 'kind_catalogue' %}">Zobacz katalog rodzajów</a>
+    </section>
+
+    <section class="tag-box-section">
+        <h1>Epoki</h1>
+      <a class="tag-box" href="{{ epoch.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=epoch.pk %}
+      </a>
+        <a class="more" href="{% url 'epoch_catalogue' %}">Zobacz katalog epok</a>
+    </section>
+
+    <section>
+        <h1>Kolekcje</h1>
+        {% ssi_include 'catalogue_collection_box' pk=collection.pk %}
+        <a class="more" href="{% url 'catalogue_collections' %}">Zobacz katalog kolekcji</a>
+    </section>
+
+    <section>
+        <h1>{% trans "Recent publications" %}</h1>
             {% for book in last_published %}
                 {% ssi_include 'catalogue_book_mini' pk=book.pk %}
             {% endfor %}
+        <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
     </section>
 
     <div class="clearboth"></div>
@@ -53,7 +111,7 @@
             <li><a href="{% url 'oaipmh' %}">OAI-PMH</a></li>
             <li><a href="{% url 'lesmianator' %}" lang="pl">Leśmianator</a></li>
             <li><a href="http://polski.wolnelektury.pl" lang="pl">Materiały do nauki j. polskiego</a></li>
-            
+
         </ul>
     </section>
 

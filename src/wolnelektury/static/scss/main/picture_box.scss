@@ -17,7 +17,7 @@
             margin-left: 0;
         }
 
-        
+
         @media screen and (min-width: 62.5em) {
             .book-box-head, .tags, .book-box-tools {
                 float: right;
@@ -60,12 +60,3 @@
     }
 }
 
-
-.work-list {
-    .Picture-item {
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            display: inline-block;
-        }
-        vertical-align: top;
-    }
-}

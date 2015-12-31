@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load plain_list from catalogue_tags %}
+{% load ssi_include from ssify %}
+
+{% block titleextra %}{{ title }}{% endblock %}
+
+{% block bodyid %}tag-catalogue{% endblock %}
+
+{% block body %}
+<h1>{{ title|title }} {% trans "on Wolne Lektury" %}</h1>
+
+{% for tag in best %}
+      <a class="tag-box" href="{{ tag.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+      </a>
+{% endfor %}
+
+<h2>All {{ title }}</h2>
+
+{% plain_list tags %}
+
+{% endblock %}

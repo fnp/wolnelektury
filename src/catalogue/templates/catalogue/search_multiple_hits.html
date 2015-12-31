@@ -17,34 +17,42 @@
       <div class="inline-tag-lists top-tag-list">
 	{% if tags.author %}
 	<div>
-	  <div class="mono inline-header">{% trans "Authors" %}:</div>
-	  <div class="inline-body">
-	    {% inline_tag_list tags.author %}
-	  </div>
+	  <h2>{% trans "Authors" %}:</h2>
+      {% for tag in tags.author %}
+      <a class="tag-box" href="{{ tag.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+      </a>
+      {% endfor %}
 	</div>
 	{% endif %}
 	{% if tags.kind %}
 	<div>
-	  <div class="mono inline-header">{% trans "Kinds" %}:</div>
-	  <div class="inline-body">
-	    {% inline_tag_list tags.kind %}
-	  </div>
+	  <h2>{% trans "Kinds" %}:</h2>
+      {% for tag in tags.kind %}
+      <a class="tag-box" href="{{ tag.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+      </a>
+      {% endfor %}
 	</div>
 	{% endif %}
 	{% if tags.genre %}
 	<div>
-	  <div class="mono inline-header">{% trans "Genres" %}:</div>
-	  <div class="inline-body">
-	    {% inline_tag_list tags.genre  %}
-	  </div>
+	  <h2>{% trans "Genres" %}:</h2>
+      {% for tag in tags.genre %}
+      <a class="tag-box" href="{{ tag.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+      </a>
+      {% endfor %}
 	</div>
 	{% endif %}
 	{% if tags.epoch %}
 	<div class="inline-tag-list">
-	  <div class="mono inline-header">{% trans "Epochs" %}:</div>
-	  <div class="inline-body">
-	    {% inline_tag_list tags.epoch  %}
-	  </div>
+	  <h2>{% trans "Epochs" %}:</h2>
+      {% for tag in tags.epoch %}
+      <a class="tag-box" href="{{ tag.get_absolute_url }}">
+      {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+      </a>
+      {% endfor %}
 	</div>
 	{% endif %}
       </div>
@@ -63,7 +71,7 @@
       </ol>
     </div>
     {% endif %}
-    
+
     {% if results.author %}
     <div class="book-list-header">
       <div class="book-box-inner">

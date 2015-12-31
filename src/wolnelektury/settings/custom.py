@@ -1,3 +1,6 @@
+import os
+from .paths import VAR_DIR
+
 # limit number of filtering tags
 MAX_TAG_LIST = 6
 
@@ -15,3 +18,5 @@ CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
 LIBRARIAN_PDF_MOREFLOATS = None
 
 LATEST_BLOG_POSTS = "http://nowoczesnapolska.org.pl/feed/?cat=-135"
+
+CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'catalogue_counters.p')

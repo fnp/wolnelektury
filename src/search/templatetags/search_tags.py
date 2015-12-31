@@ -32,12 +32,15 @@ def book_searched(context, result):
     # We don't need hits which lead to sections but do not have
     # snippets.
     hits = filter(lambda (idx, h):
-                  result.snippets[idx] is not None
-                  or 'fragment' in h, enumerate(result.hits))
+                  'fragment' in h or
+                  result.snippets[idx] is not None,
+                  enumerate(result.hits))
         #    print "[tmpl: from %d hits selected %d]" % (len(result.hits), len(hits))
 
     for (idx, hit) in hits:
         # currently we generate one snipper per hit though.
+        if len(result.snippets) <= idx:
+            break
         if result.snippets[idx] is None:
             continue
         snip = result.snippets[idx]
