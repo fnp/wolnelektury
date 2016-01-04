@@ -6,4 +6,4 @@ BabelDjango
 Fabric
 sphinx
 pyinotify
-fnpdeploy
+fnpdeploy>=0.2.2
