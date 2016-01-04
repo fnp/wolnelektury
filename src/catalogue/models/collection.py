@@ -33,7 +33,7 @@ class Collection(models.Model):
         try:
             return re.search(r'\w', self.title, re.U).group(0)
         except AttributeError:
-            return None
+            return ''
 
     @models.permalink
     def get_absolute_url(self):

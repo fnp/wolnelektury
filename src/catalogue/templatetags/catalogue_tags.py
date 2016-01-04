@@ -348,7 +348,7 @@ def work_list(context, object_list):
 
 @register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
 def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, gallery=False, paged=True):
-    names = [(None, [])]
+    names = [('', [])]
     last_initial = None
     for obj in object_list:
         if with_initials:

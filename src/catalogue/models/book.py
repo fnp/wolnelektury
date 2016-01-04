@@ -100,7 +100,7 @@ class Book(models.Model):
         try:
             return re.search(r'\w', self.title, re.U).group(0)
         except AttributeError:
-            return None
+            return ''
 
     def author_str(self):
         return ", ".join(str(t) for t in self.tags.filter(category='author'))

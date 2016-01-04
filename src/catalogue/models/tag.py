@@ -134,7 +134,7 @@ class Tag(TagBase):
         elif self.name:
             return self.name[0]
         else:
-            return None
+            return ''
 
     @permalink
     def get_absolute_url(self):
