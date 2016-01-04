@@ -42,11 +42,6 @@ def catalogue(request, as_json=False):
     return render(request, 'catalogue/catalogue.html', locals())
 
 
-@ssi_included
-def catalogue_json(request):
-    return catalogue(request, True)
-
-
 def book_list(request, filter=None, get_filter=None,
         template_name='catalogue/book_list.html',
         nav_template_name='catalogue/snippets/book_list_nav.html',

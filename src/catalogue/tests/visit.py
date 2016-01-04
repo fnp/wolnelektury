@@ -45,7 +45,6 @@ class VisitTest(WLTestCase):
                 'autor/jane-doe/',
                 'autor/jane-doe/gatunek/genre/',
                 'autor/jane-doe/gatunek/genre/motyw/theme/',
-                'pl.json',
                 'b/%d/mini.pl.html' % self.book.pk,
                 'b/%d/mini_nolink.pl.html' % self.book.pk,
                 'b/%d/short.pl.html' % self.book.pk,

@@ -1,4 +1,4 @@
-from fnpdjango.deploy import *
+from fnpdeploy import *
 try:
     from fabfile_local import *
 except ImportError:
@@ -13,6 +13,8 @@ def production():
     env.hosts = ['giewont.icm.edu.pl']
     env.user = 'lektury'
     env.app_path = '/srv/wolnelektury.pl'
+    env.django_root_path = 'src'
+    env.requirements_file = 'requirements/requirements.txt'
     env.services = [
         Supervisord('wolnelektury'),
         Supervisord('wolnelektury.celery'),
@@ -24,7 +26,12 @@ def beta():
     env.hosts = ['giewont.icm.edu.pl']
     env.user = 'lektury'
     env.app_path = '/srv/wolnelektury.pl/beta'
-    env.services = []
+    env.ve = '/srv/wolnelektury.pl/ve'
+    env.django_root_path = 'src'
+    env.requirements_file = 'requirements/requirements.txt'
+    env.services = [
+        Supervisord('beta'),
+    ]
 
 
 @task

@@ -77,7 +77,6 @@ urlpatterns += patterns('catalogue.views',
         'book_fragments', name='book_fragments'),
 
     # Includes.
-    url(r'^(?P<lang>[^/]+)\.json$', 'catalogue_json'),
     url(r'^b/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', 'book_mini', name='catalogue_book_mini'),
     url(r'^b/(?P<pk>\d+)/mini_nolink\.(?P<lang>.+)\.html', 'book_mini', {'with_link': False}, name='catalogue_book_mini_nolink'),
     url(r'^b/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'book_short', name='catalogue_book_short'),
