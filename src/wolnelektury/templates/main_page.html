@@ -75,11 +75,13 @@
         <a class="more" href="{% url 'epoch_catalogue' %}">Zobacz katalog epok</a>
     </section>
 
-    <section>
-        <h1>Kolekcje</h1>
-        {% ssi_include 'catalogue_collection_box' pk=collection.pk %}
-        <a class="more" href="{% url 'catalogue_collections' %}">Zobacz katalog kolekcji</a>
-    </section>
+    {% if collection %}
+        <section>
+            <h1>Kolekcje</h1>
+            {% ssi_include 'catalogue_collection_box' pk=collection.pk %}
+            <a class="more" href="{% url 'catalogue_collections' %}">Zobacz katalog kolekcji</a>
+        </section>
+    {% endif %}
 
     <section>
         <h1>{% trans "Recent publications" %}</h1>
