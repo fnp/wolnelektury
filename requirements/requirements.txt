@@ -12,6 +12,7 @@ jsonfield>=1.0.3,<1.1
 django-picklefield
 django-modeltranslation>=0.10,<0.11
 django-allauth>=0.24,<0.25
+django-extensions
 
 
 pytz

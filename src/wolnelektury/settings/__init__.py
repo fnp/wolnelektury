@@ -97,6 +97,7 @@ INSTALLED_APPS_CONTRIB = [
     'getpaid',
     'getpaid.backends.payu',
     'ssify',
+    'django_extensions',
 
     #allauth stuff
     'uni_form',
