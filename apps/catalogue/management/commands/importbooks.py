@@ -10,7 +10,6 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
-from catalogue.utils import trim_query_log
 from librarian.picture import ImageStore
 from wolnelektury_core.management.profile import profile
 
@@ -100,74 +99,67 @@ class Command(BaseCommand):
                 raise e
 
         # Start transaction management.
-        transaction.commit_unless_managed()
-        transaction.enter_transaction_management()
-        transaction.managed(True)
+        with transaction.atomic():
 
-        files_imported = 0
-        files_skipped = 0
+            files_imported = 0
+            files_skipped = 0
 
-        for dir_name in directories:
-            if not os.path.isdir(dir_name):
-                print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
-            else:
-                # files queue
-                files = sorted(os.listdir(dir_name))
-                postponed = {}
-                while files:
-                    trim_query_log(0)
-                    file_name = files.pop(0)
-                    file_path = os.path.join(dir_name, file_name)
-                    file_base, ext = os.path.splitext(file_path)
+            for dir_name in directories:
+                if not os.path.isdir(dir_name):
+                    print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
+                else:
+                    # files queue
+                    files = sorted(os.listdir(dir_name))
+                    postponed = {}
+                    while files:
+                        file_name = files.pop(0)
+                        file_path = os.path.join(dir_name, file_name)
+                        file_base, ext = os.path.splitext(file_path)
 
-                    # Skip files that are not XML files
-                    if not ext == '.xml':
-                        continue
+                        # Skip files that are not XML files
+                        if not ext == '.xml':
+                            continue
 
-                    if verbose > 0:
-                        print "Parsing '%s'" % file_path
-                    else:
-                        sys.stdout.write('.')
-                        sys.stdout.flush()
-
-                    # Import book files
-                    try:
-                        if import_picture:
-                            self.import_picture(file_path, options)
+                        if verbose > 0:
+                            print "Parsing '%s'" % file_path
                         else:
-                            self.import_book(file_path, options)
+                            sys.stdout.write('.')
+                            sys.stdout.flush()
 
-                        files_imported += 1
-                        transaction.commit()
+                        # Import book files
+                        try:
+                            if import_picture:
+                                self.import_picture(file_path, options)
+                            else:
+                                self.import_book(file_path, options)
 
-                    except (Book.AlreadyExists, Picture.AlreadyExists):
-                        print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
-                            file_path)
-                        files_skipped += 1
+                            files_imported += 1
 
-                    except Book.DoesNotExist, e:
-                        if file_name not in postponed or postponed[file_name] < files_imported:
-                            # push it back into the queue, maybe the missing child will show up
-                            if verbose:
-                                print self.style.NOTICE('Waiting for missing children')
-                            files.append(file_name)
-                            postponed[file_name] = files_imported
-                        else:
-                            # we're in a loop, nothing's being imported - some child is really missing
-                            raise e
+                        except (Book.AlreadyExists, Picture.AlreadyExists):
+                            print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
+                                file_path)
+                            files_skipped += 1
 
-        # Print results
-        print
-        print "Results: %d files imported, %d skipped, %d total." % (
-            files_imported, files_skipped, files_imported + files_skipped)
-        print
+                        except Book.DoesNotExist, e:
+                            if file_name not in postponed or postponed[file_name] < files_imported:
+                                # push it back into the queue, maybe the missing child will show up
+                                if verbose:
+                                    print self.style.NOTICE('Waiting for missing children')
+                                files.append(file_name)
+                                postponed[file_name] = files_imported
+                            else:
+                                # we're in a loop, nothing's being imported - some child is really missing
+                                raise e
 
-        if wait_until:
-            print 'Waiting...'
-            try:
-                time.sleep(wait_until - time.time())
-            except IOError:
-                print "it's already too late"
+            # Print results
+            print
+            print "Results: %d files imported, %d skipped, %d total." % (
+                files_imported, files_skipped, files_imported + files_skipped)
+            print
 
-        transaction.commit()
-        transaction.leave_transaction_management()
+            if wait_until:
+                print 'Waiting...'
+                try:
+                    time.sleep(wait_until - time.time())
+                except IOError:
+                    print "it's already too late"
