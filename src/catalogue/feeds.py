@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 
 from catalogue import models
 
+
 def absolute_url(url):
     return "http://%s%s" % (Site.objects.get_current().domain, url)
 
@@ -28,8 +29,8 @@ class AudiobookFeed(Feed):
         'daisy': 'WolneLektury.pl - audiobooki w formacie DAISY',
     }
 
-    def get_object(self, request, type):
-        return {'type': type, 'all': 'all' in request.GET}
+    def get_object(self, request, obj_type):
+        return {'type': obj_type, 'all': 'all' in request.GET}
 
     def title(self, args):
         return self.titles[args['type']]
@@ -52,7 +53,7 @@ class AudiobookFeed(Feed):
 
     def item_categories(self, item):
         return sorted(set(author.name for author in
-                            item.book.tags.filter(category='author').iterator()))
+                      item.book.tags.filter(category='author').iterator()))
 
     def item_description(self, item):
         lines = []

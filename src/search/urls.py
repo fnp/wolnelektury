@@ -4,8 +4,8 @@
 #
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('search.views',
+urlpatterns = patterns(
+    'search.views',
     url(r'^$', 'main', name='search'),
     url(r'^hint/$', 'hint', name='search_hint'),
 )
-

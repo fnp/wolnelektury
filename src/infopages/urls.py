@@ -5,7 +5,7 @@
 from django.conf.urls import patterns, url
 
 
-urlpatterns = patterns('infopages.views',
+urlpatterns = patterns(
+    'infopages.views',
     url(r'^(?P<slug>[a-zA-Z0-9_-]+)/$', 'infopage', name='infopage'),
 )
-

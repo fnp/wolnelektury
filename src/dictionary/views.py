@@ -4,13 +4,24 @@
 #
 from django.views.generic.list import ListView
 from django.conf import settings
-from django.db.models import Count, Q
+from django.db.models import Q
 from catalogue.constants import LANGUAGES_3TO2
 from .constants import FN_TYPES
 from .models import Note, Qualifier
 
 
 class NotesView(ListView):
+    def __init__(self, **kwargs):
+        super(NotesView, self).__init__(**kwargs)
+        self.qualifier = None
+        self.qualifiers = None
+        self.language = None
+        self.languages = None
+        self.fn_type = None
+        self.fn_types = None
+        self.letter = None
+        self.letters = None
+
     def get_queryset(self):
         objects = Note.objects.all()
         filters = {}
@@ -18,7 +29,7 @@ class NotesView(ListView):
         try:
             self.qualifier = Qualifier.objects.get(qualifier=self.request.GET.get('qual'))
         except Qualifier.DoesNotExist:
-            self.qualifier = None
+            pass
         else:
             filters['qualifier'] = Q(qualifiers=self.qualifier)
 
@@ -33,10 +44,10 @@ class NotesView(ListView):
         self.letter = self.request.GET.get('ltr')
         if self.letter == "0-9":
             objects = objects.filter(sort_key__regex=r"^[0-9]")
-            #filters['letter'] = Q(sort_key__regex=r"^[0-9]")
+            # filters['letter'] = Q(sort_key__regex=r"^[0-9]")
         elif self.letter:
             objects = objects.filter(sort_key__startswith=self.letter)
-            #filters['letter'] = Q(sort_key__startswith=self.letter)
+            # filters['letter'] = Q(sort_key__startswith=self.letter)
 
         self.letters = ["0-9"] + [chr(a) for a in range(ord('a'), ord('z')+1)]
 

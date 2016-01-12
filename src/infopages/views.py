@@ -21,5 +21,4 @@ def infopage(request, slug):
     except TemplateSyntaxError:
         left_column = ''
 
-    return render_to_response('infopages/infopage.html', locals(),
-                context_instance=RequestContext(request))
+    return render_to_response('infopages/infopage.html', locals(), context_instance=RequestContext(request))

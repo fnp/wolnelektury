@@ -7,6 +7,7 @@ from django.core.management.base import BaseCommand
 
 from optparse import make_option
 
+
 def query_yes_no(question, default="yes"):
     """Ask a yes/no question via raw_input() and return their answer.
 
@@ -17,9 +18,9 @@ def query_yes_no(question, default="yes"):
 
     The "answer" return value is one of "yes" or "no".
     """
-    valid = {"yes":True,   "y":True,  "ye":True,
-             "no":False,     "n":False}
-    if default == None:
+    valid = {"yes": True, "y": True, "ye": True,
+             "no": False, "n": False}
+    if default is None:
         prompt = " [y/n] "
     elif default == "yes":
         prompt = " [Y/n] "
@@ -36,8 +37,8 @@ def query_yes_no(question, default="yes"):
         elif choice in valid:
             return valid[choice]
         else:
-            sys.stdout.write("Please respond with 'yes' or 'no' "\
-                             "(or 'y' or 'n').\n")
+            sys.stdout.write("Please respond with 'yes' or 'no' (or 'y' or 'n').\n")
+
 
 class Command(BaseCommand):
     help = 'Reindex everything.'
@@ -45,10 +46,11 @@ class Command(BaseCommand):
     
     option_list = BaseCommand.option_list + (
         make_option('-n', '--book-id', action='store_true', dest='book_id', default=False,
-            help='book id instead of slugs'),
+                    help='book id instead of slugs'),
         make_option('-t', '--just-tags', action='store_true', dest='just_tags', default=False,
-            help='just reindex tags'),
+                    help='just reindex tags'),
     )
+
     def handle(self, *args, **opts):
         from catalogue.models import Book
         from search.index import Index

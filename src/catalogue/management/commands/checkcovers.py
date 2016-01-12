@@ -18,6 +18,8 @@ def ancestor_has_cover(book):
 
 
 current_domain = lazy(lambda: Site.objects.get_current().domain, str)()
+
+
 def full_url(obj):
     return 'http://%s%s' % (
                 current_domain,
@@ -27,7 +29,7 @@ def full_url(obj):
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
-            help='Suppress output'),
+                    help='Suppress output'),
     )
     help = 'Checks cover sources and licenses.'
 
@@ -51,7 +53,7 @@ class Command(BaseCommand):
         good_license = re.compile("(%s)" % ")|(".join(
                             app_settings.GOOD_LICENSES))
 
-        with transaction.commit_on_success():
+        with transaction.atomic():
             for book in Book.objects.all().order_by('slug').iterator():
                 extra_info = book.extra_info
                 if not extra_info.get('cover_url'):
@@ -60,8 +62,7 @@ class Command(BaseCommand):
                     else:
                         without_cover.append(book)
                 else:
-                    if not extra_info.get('cover_source', ''
-                                ).startswith(redakcja_url):
+                    if not extra_info.get('cover_source', '').startswith(redakcja_url):
                         not_redakcja.append(book)
                     match = re_license.match(extra_info.get('cover_by', ''))
                     if match:

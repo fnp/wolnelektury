@@ -14,10 +14,10 @@ class CiteAdmin(admin.ModelAdmin):
         (None, {'fields': ('book', 'text', 'small', 'vip', 'link', 'sticky')}),
         (
             _('Background'),
-            {'fields': ('image', 'image_shift', 'image_title', 'image_author',
-                'image_link', 'image_license', 'image_license_link')
-                }
-            )
+            {'fields': (
+                'image', 'image_shift', 'image_title', 'image_author',
+                'image_link', 'image_license', 'image_license_link')},
+        )
     )
 
     def nonempty_text(self, cite):

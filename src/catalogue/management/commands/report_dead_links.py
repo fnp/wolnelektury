@@ -16,22 +16,27 @@ class Command(BaseCommand):
         from urllib2 import urlopen, HTTPError, URLError
         from django.core.urlresolvers import reverse
         from django.contrib.sites.models import Site
-        from django.contrib.sites.shortcuts import get_current_site
 
-        domain = get_current_site(None).domain
+        domain = Site.objects.get_current().domain
 
         fields = [
-            (Book, [
-                ('gazeta_link', lambda b: b.gazeta_link),
-                ('wiki_link', lambda b: b.wiki_link),
-                ('źródło', lambda b: b.extra_info.get('source_url')),
-                ], 'admin:catalogue_book_change'
+            (
+                Book,
+                [
+                    ('gazeta_link', lambda b: b.gazeta_link),
+                    ('wiki_link', lambda b: b.wiki_link),
+                    ('źródło', lambda b: b.extra_info.get('source_url')),
+                ],
+                'admin:catalogue_book_change'
             ),
-            (Picture, [
-                ('gazeta_link', lambda p: p.culturepl_link),
-                ('wiki_link', lambda p: p.wiki_link),
-                ('źródło', lambda p: p.extra_info.get('source_url')),
-                ], 'admin:pictures_picture_change'
+            (
+                Picture,
+                [
+                    ('gazeta_link', lambda p: p.culturepl_link),
+                    ('wiki_link', lambda p: p.wiki_link),
+                    ('źródło', lambda p: p.extra_info.get('source_url')),
+                ],
+                'admin:pictures_picture_change'
             )
         ]
 
@@ -48,7 +53,9 @@ class Command(BaseCommand):
                                 clean = False
                                 print(unicode(obj).encode('utf-8'))
                                 print(('Na stronie: https://%s%s' % (domain, obj.get_absolute_url())).encode('utf-8'))
-                                print(('Administracja: https://%s%s' % (domain, reverse(admin_name, args=[obj.pk]))).encode('utf-8'))
+                                print(
+                                    ('Administracja: https://%s%s' % (domain, reverse(admin_name, args=[obj.pk])))
+                                    .encode('utf-8'))
                                 if obj.extra_info.get('about'):
                                     print(('Redakcja: %s' % (obj.extra_info.get('about'),)).encode('utf-8'))
                             print(('    %s (%s): %s' % (name, getattr(e, 'code', 'błąd'), url)).encode('utf-8'))

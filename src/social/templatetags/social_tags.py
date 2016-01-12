@@ -67,6 +67,7 @@ def book_shelf_tags(request, book_id):
         return None
     book = Book.objects.get(pk=book_id)
     lks = likes(request.user, book, request)
+
     def get_value():
         if not lks:
             return ''

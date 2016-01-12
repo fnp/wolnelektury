@@ -6,14 +6,15 @@ from optparse import make_option
 from django.core.management.base import BaseCommand
 
 from catalogue.models import Book
+from librarian import ParseError
 
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
-            help='Suppress output'),
+                    help='Suppress output'),
         make_option('-d', '--dry-run', action='store_true', dest='dry_run', default=False,
-            help="Just check for problems, don't fix them"),
+                    help="Just check for problems, don't fix them"),
     )
     help = 'Checks integrity of catalogue data.'
 
@@ -22,11 +23,11 @@ class Command(BaseCommand):
 
         verbose = options['verbose']
 
-        with transaction.commit_on_success():
+        with transaction.atomic():
             for book in Book.objects.all().iterator():
                 try:
                     info = book.wldocument().book_info
-                except:
+                except ParseError:
                     if verbose:
                         print "ERROR! Bad XML for book:", book.slug
                         print "To resolve: republish."

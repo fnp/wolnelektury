@@ -12,7 +12,7 @@ char_order = {
 
 def replace_char(m):
     char = m.group()
-    if char_map.has_key(char):
+    if char in char_map:
         order = char_order.get(char, 0)
         return "%s~%d" % (char_map[char], order)
     else:
@@ -37,7 +37,7 @@ def sortify(value):
         value = unicode(value, 'utf-8')
 
     # try to replace chars
-    value = re.sub('[^a-zA-Z0-9\\s\\-]{1}', replace_char, value)
+    value = re.sub('[^a-zA-Z0-9\\s\\-]', replace_char, value)
     value = value.lower()
     value = re.sub(r'[^a-z0-9~]+', ' ', value)
     

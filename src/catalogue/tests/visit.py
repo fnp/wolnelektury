@@ -74,6 +74,6 @@ class VisitTest(WLTestCase):
             for url in urls:
                 print(url)
                 status = self.client.get(prefix + url).status_code
-                self.assertEqual(status, expected_status,
-                    "Wrong status code for '%s'. Expected %d, got %d." % (
-                        prefix + url, expected_status, status))
+                self.assertEqual(
+                    status, expected_status,
+                    "Wrong status code for '%s'. Expected %d, got %d." % (prefix + url, expected_status, status))

@@ -22,7 +22,6 @@ from ajaxable.utils import AjaxableFormView
 from pdcounter import models as pdcounter_models
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
-from picture.views import picture_list_thumb
 from ssify import ssi_included, ssi_expect, SsiVariable as V
 from suggest.forms import PublishingSuggestForm
 from catalogue import constants
@@ -30,7 +29,6 @@ from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue import models
 from catalogue.utils import split_tags
-from catalogue.templatetags.catalogue_tags import tag_list, collection_list
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
@@ -42,12 +40,9 @@ def catalogue(request, as_json=False):
     return render(request, 'catalogue/catalogue.html', locals())
 
 
-def book_list(request, filter=None, get_filter=None,
-        template_name='catalogue/book_list.html',
-        nav_template_name='catalogue/snippets/book_list_nav.html',
-        list_template_name='catalogue/snippets/book_list.html',
-        context=None,
-        ):
+def book_list(request, filter=None, get_filter=None, template_name='catalogue/book_list.html',
+              nav_template_name='catalogue/snippets/book_list_nav.html',
+              list_template_name='catalogue/snippets/book_list.html', context=None):
     """ generates a listing of all books, optionally filtered with a test function """
     if get_filter:
         filter = get_filter()
@@ -58,8 +53,7 @@ def book_list(request, filter=None, get_filter=None,
             books_nav.setdefault(tag.sort_key[0], []).append(tag)
     rendered_nav = render_to_string(nav_template_name, locals())
     rendered_book_list = render_to_string(list_template_name, locals())
-    return render_to_response(template_name, locals(),
-        context_instance=RequestContext(request))
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
 
 
 def audiobook_list(request):
@@ -87,8 +81,7 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(models.Collection, slug=slug)
-    return render(request, 'catalogue/collection.html',
-        {'collection': coll})
+    return render(request, 'catalogue/collection.html', {'collection': coll})
 
 
 def differentiate_tags(request, tags, ambiguous_slugs):
@@ -100,9 +93,9 @@ def differentiate_tags(request, tags, ambiguous_slugs):
             'url_args': '/'.join((beginning, tag.url_chunk, unparsed)).strip('/'),
             'tags': [tag]
         })
-    return render_to_response('catalogue/differentiate_tags.html',
-                {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]},
-                context_instance=RequestContext(request))
+    return render_to_response(
+        'catalogue/differentiate_tags.html', {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]},
+        context_instance=RequestContext(request))
 
 
 # TODO: Rewrite this hellish piece of code which tries to do everything
@@ -123,7 +116,8 @@ def tagged_object_list(request, tags='', gallery=False):
         # Ask the user to disambiguate
         return differentiate_tags(request, e.tags, e.ambiguous_slugs)
     except models.Tag.UrlDeprecationWarning, e:
-        return HttpResponsePermanentRedirect(reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)]))
+        return HttpResponsePermanentRedirect(
+            reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)]))
 
     try:
         if len(tags) > settings.MAX_TAG_LIST:
@@ -158,9 +152,8 @@ def tagged_object_list(request, tags='', gallery=False):
                 fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
 
         categories = split_tags(
-            models.Tag.objects.usage_for_queryset(fragments, counts=True
-                ).exclude(pk__in=tags_pks),
-            )
+            models.Tag.objects.usage_for_queryset(fragments, counts=True).exclude(pk__in=tags_pks),
+        )
 
         objects = fragments
     else:
@@ -220,10 +213,11 @@ def tagged_object_list(request, tags='', gallery=False):
     if not gallery and not objects and len(tags) == 1:
         tag = tags[0]
         if (tag.category in ('theme', 'thing') and PictureArea.tagged.with_any([tag]).exists() or
-            Picture.tagged.with_any([tag]).exists()):
-                return redirect('tagged_object_list_gallery', raw_tags, permanent=False)
+                Picture.tagged.with_any([tag]).exists()):
+            return redirect('tagged_object_list_gallery', raw_tags, permanent=False)
 
-    return render_to_response('catalogue/tagged_object_list.html',
+    return render_to_response(
+        'catalogue/tagged_object_list.html',
         {
             'object_list': objects,
             'categories': categories,
@@ -245,8 +239,7 @@ def book_fragments(request, slug, theme_slug):
     fragments = models.Fragment.tagged.with_all([theme]).filter(
         Q(book=book) | Q(book__ancestor=book))
 
-    return render_to_response('catalogue/book_fragments.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_fragments.html', locals(), context_instance=RequestContext(request))
 
 
 def book_detail(request, slug):
@@ -257,8 +250,7 @@ def book_detail(request, slug):
 
     tags = book.tags.exclude(category__in=('set', 'theme'))
     book_children = book.children.all().order_by('parent_number', 'sort_key')
-    return render_to_response('catalogue/book_detail.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_detail.html', locals(), context_instance=RequestContext(request))
 
 
 def get_audiobooks(book):
@@ -301,8 +293,7 @@ def player(request, slug):
 
     extra_info = book.extra_info
 
-    return render_to_response('catalogue/player.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('catalogue/player.html', locals(), context_instance=RequestContext(request))
 
 
 def book_text(request, slug):
@@ -310,8 +301,7 @@ def book_text(request, slug):
 
     if not book.has_html_file():
         raise Http404
-    return render_to_response('catalogue/book_text.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_text.html', locals(), context_instance=RequestContext(request))
 
 
 # ==========
@@ -323,17 +313,23 @@ def _no_diacritics_regexp(query):
 
     should be locale-aware """
     names = {
-        u'a':u'aąĄ', u'c':u'cćĆ', u'e':u'eęĘ', u'l': u'lłŁ', u'n':u'nńŃ', u'o':u'oóÓ', u's':u'sśŚ', u'z':u'zźżŹŻ',
-        u'ą':u'ąĄ', u'ć':u'ćĆ', u'ę':u'ęĘ', u'ł': u'łŁ', u'ń':u'ńŃ', u'ó':u'óÓ', u'ś':u'śŚ', u'ź':u'źŹ', u'ż':u'żŻ'
+        u'a': u'aąĄ', u'c': u'cćĆ', u'e': u'eęĘ', u'l': u'lłŁ', u'n': u'nńŃ', u'o': u'oóÓ', u's': u'sśŚ',
+        u'z': u'zźżŹŻ',
+        u'ą': u'ąĄ', u'ć': u'ćĆ', u'ę': u'ęĘ', u'ł': u'łŁ', u'ń': u'ńŃ', u'ó': u'óÓ', u'ś': u'śŚ', u'ź': u'źŹ',
+        u'ż': u'żŻ'
         }
+
     def repl(m):
         l = m.group()
         return u"(%s)" % '|'.join(names[l])
+
     return re.sub(u'[%s]' % (u''.join(names.keys())), repl, query)
+
 
 def unicode_re_escape(query):
     """ Unicode-friendly version of re.escape """
     return re.sub(r'(?u)(\W)', r'\\\1', query)
+
 
 def _word_starts_with(name, prefix):
     """returns a Q object getting models having `name` contain a word
@@ -364,8 +360,7 @@ def _sqlite_word_starts_with(name, prefix):
 
     SQLite in Django uses Python re module
     """
-    kwargs = {}
-    kwargs['%s__iregex' % name] = _word_starts_with_regexp(prefix)
+    kwargs = {'%s__iregex' % name: _word_starts_with_regexp(prefix)}
     return Q(**kwargs)
 
 
@@ -376,12 +371,13 @@ elif settings.DATABASE_ENGINE == 'sqlite3':
     _word_starts_with = _sqlite_word_starts_with
 
 
-class App():
+class App:
     def __init__(self, name, view):
         self.name = name
         self._view = view
         self.lower = name.lower()
         self.category = 'application'
+
     def view(self):
         return reverse(*self._view)
 
@@ -404,14 +400,14 @@ def _tags_starting_with(prefix, user=None):
         tags = tags.exclude(category='set')
 
     prefix_regexp = re.compile(_word_starts_with_regexp(prefix))
-    return list(books) + list(tags) + [app for app in _apps if prefix_regexp.search(app.lower)] + list(book_stubs) + list(authors)
+    return list(books) + list(tags) + [app for app in _apps if prefix_regexp.search(app.lower)] + list(book_stubs) + \
+        list(authors)
 
 
 def _get_result_link(match, tag_list):
     if isinstance(match, models.Tag):
         return reverse('catalogue.views.tagged_object_list',
-            kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])}
-        )
+                       kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])})
     elif isinstance(match, App):
         return match.view()
     else:
@@ -453,8 +449,8 @@ def find_best_matches(query, user=None):
     authors = set(match.name.lower() for match in result
                   if isinstance(match, models.Tag) and match.category == 'author')
     result = tuple(res for res in result if not (
-                 (isinstance(res, pdcounter_models.BookStub) and res.pretty_title().lower() in book_titles)
-                 or (isinstance(res, pdcounter_models.Author) and res.name.lower() in authors)
+                 (isinstance(res, pdcounter_models.BookStub) and res.pretty_title().lower() in book_titles) or
+                 (isinstance(res, pdcounter_models.Author) and res.name.lower() in authors)
              ))
 
     exact_matches = tuple(res for res in result if res.name.lower() == query)
@@ -470,25 +466,31 @@ def search(request):
 
     try:
         tag_list = models.Tag.get_tag_list(tags)
-    except:
+    except (models.Tag.DoesNotExist, models.Tag.MultipleObjectsReturned, models.Tag.UrlDeprecationWarning):
         tag_list = []
 
     try:
         result = find_best_matches(prefix, request.user)
     except ValueError:
-        return render_to_response('catalogue/search_too_short.html', {'tags':tag_list, 'prefix':prefix},
+        return render_to_response(
+            'catalogue/search_too_short.html', {'tags': tag_list, 'prefix': prefix},
             context_instance=RequestContext(request))
 
     if len(result) == 1:
         return HttpResponseRedirect(_get_result_link(result[0], tag_list))
     elif len(result) > 1:
-        return render_to_response('catalogue/search_multiple_hits.html',
-            {'tags':tag_list, 'prefix':prefix, 'results':((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)},
+        return render_to_response(
+            'catalogue/search_multiple_hits.html',
+            {
+                'tags': tag_list, 'prefix': prefix,
+                'results': ((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)
+            },
             context_instance=RequestContext(request))
     else:
         form = PublishingSuggestForm(initial={"books": prefix + ", "})
-        return render_to_response('catalogue/search_no_hits.html',
-            {'tags':tag_list, 'prefix':prefix, "pubsuggest_form": form},
+        return render_to_response(
+            'catalogue/search_no_hits.html',
+            {'tags': tag_list, 'prefix': prefix, "pubsuggest_form": form},
             context_instance=RequestContext(request))
 
 
@@ -500,10 +502,11 @@ def tags_starting_with(request):
     tags_list = []
     result = ""
     for tag in _tags_starting_with(prefix, request.user):
-        if not tag.name in tags_list:
+        if tag.name not in tags_list:
             result += "\n" + tag.name
             tags_list.append(tag.name)
     return HttpResponse(result)
+
 
 def json_tags_starting_with(request, callback=None):
     # Callback for JSONP
@@ -514,7 +517,7 @@ def json_tags_starting_with(request, callback=None):
         return HttpResponse('')
     tags_list = []
     for tag in _tags_starting_with(prefix, request.user):
-        if not tag.name in tags_list:
+        if tag.name not in tags_list:
             tags_list.append(tag.name)
     if request.GET.get('mozhint', ''):
         result = [prefix, tags_list]
@@ -544,7 +547,9 @@ def import_book(request):
             info = sys.exc_info()
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
-            return HttpResponse(_("An error occurred: %(exception)s\n\n%(tb)s") % {'exception':exception, 'tb':tb}, mimetype='text/plain')
+            return HttpResponse(
+                    _("An error occurred: %(exception)s\n\n%(tb)s") % {'exception': exception, 'tb': tb},
+                    mimetype='text/plain')
         return HttpResponse(_("Book imported successfully"))
     else:
         return HttpResponse(_("Error importing file: %r") % book_import_form.errors)
@@ -552,21 +557,19 @@ def import_book(request):
 
 # info views for API
 
-def book_info(request, id, lang='pl'):
-    book = get_object_or_404(models.Book, id=id)
+def book_info(request, book_id, lang='pl'):
+    book = get_object_or_404(models.Book, id=book_id)
     # set language by hand
     translation.activate(lang)
-    return render_to_response('catalogue/book_info.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_info.html', locals(), context_instance=RequestContext(request))
 
 
-def tag_info(request, id):
-    tag = get_object_or_404(models.Tag, id=id)
+def tag_info(request, tag_id):
+    tag = get_object_or_404(models.Tag, id=tag_id)
     return HttpResponse(tag.description)
 
 
 def download_zip(request, format, slug=None):
-    url = None
     if format in models.Book.ebook_formats:
         url = models.Book.zip_format(format)
     elif format in ('mp3', 'ogg') and slug is not None:
@@ -607,8 +610,7 @@ class CustomPDFFormView(AjaxableFormView):
 @ssi_included
 def book_mini(request, pk, with_link=True):
     book = get_object_or_404(models.Book, pk=pk)
-    author_str = ", ".join(tag.name
-        for tag in book.tags.filter(category='author'))
+    author_str = ", ".join(tag.name for tag in book.tags.filter(category='author'))
     return render(request, 'catalogue/book_mini_box.html', {
         'book': book,
         'author_str': author_str,
@@ -641,7 +643,8 @@ def book_short(request, pk):
     })
 
 
-@ssi_included(get_ssi_vars=lambda pk: book_short.get_ssi_vars(pk) +
+@ssi_included(
+    get_ssi_vars=lambda pk: book_short.get_ssi_vars(pk) +
     (lambda ipk: (
         ('social_tags.choose_cite', [ipk]),
         ('catalogue_tags.choose_fragment', [ipk], {
@@ -673,16 +676,13 @@ def book_wide(request, pk):
 @ssi_included
 def fragment_short(request, pk):
     fragment = get_object_or_404(models.Fragment, pk=pk)
-    return render(request, 'catalogue/fragment_short.html',
-        {'fragment': fragment})
+    return render(request, 'catalogue/fragment_short.html', {'fragment': fragment})
 
 
 @ssi_included
 def fragment_promo(request, pk):
     fragment = get_object_or_404(models.Fragment, pk=pk)
-    return render(request, 'catalogue/fragment_promo.html', {
-        'fragment': fragment
-    })
+    return render(request, 'catalogue/fragment_promo.html', {'fragment': fragment})
 
 
 @ssi_included

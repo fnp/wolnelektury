@@ -9,12 +9,14 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
 from fnpdjango.utils.text.slughifi import slughifi
+from mutagen import MutagenError
+
 from catalogue.fields import OverwritingFileField
 
 
 def _file_upload_to(i, _n):
-    return 'book/%(ext)s/%(name)s.%(ext)s' % {
-            'ext': i.ext(), 'name': slughifi(i.name)}
+    return 'book/%(ext)s/%(name)s.%(ext)s' % {'ext': i.ext(), 'name': slughifi(i.name)}
+
 
 class BookMedia(models.Model):
     """Represents media attached to a book."""
@@ -24,13 +26,11 @@ class BookMedia(models.Model):
         ('ogg', FileFormat(name='Ogg Vorbis', ext='ogg')),
         ('daisy', FileFormat(name='DAISY', ext='daisy.zip')),
     ])
-    format_choices = [(k, _('%s file' % t.name))
-            for k, t in formats.items()]
+    format_choices = [(k, _('%s file' % t.name)) for k, t in formats.items()]
 
     type = models.CharField(_('type'), db_index=True, choices=format_choices, max_length=20)
     name = models.CharField(_('name'), max_length=512)
-    file = OverwritingFileField(_('file'), max_length=600,
-        upload_to=_file_upload_to)
+    file = OverwritingFileField(_('file'), max_length=600, upload_to=_file_upload_to)
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
     book = models.ForeignKey('Book', related_name='media')
@@ -40,8 +40,8 @@ class BookMedia(models.Model):
         return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
 
     class Meta:
-        ordering            = ('type', 'name')
-        verbose_name        = _('book media')
+        ordering = ('type', 'name')
+        verbose_name = _('book media')
         verbose_name_plural = _('book media')
         app_label = 'catalogue'
 
@@ -86,11 +86,13 @@ class BookMedia(models.Model):
                 audio = id3.ID3(self.file.path)
                 artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
                 director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
-                project = ", ".join([t.data for t in audio.getall('PRIV')
-                        if t.owner == 'wolnelektury.pl?project'])
-                funded_by = ", ".join([t.data for t in audio.getall('PRIV')
-                        if t.owner == 'wolnelektury.pl?funded_by'])
-            except:
+                project = ", ".join([
+                    t.data for t in audio.getall('PRIV')
+                    if t.owner == 'wolnelektury.pl?project'])
+                funded_by = ", ".join([
+                    t.data for t in audio.getall('PRIV')
+                    if t.owner == 'wolnelektury.pl?funded_by'])
+            except MutagenError:
                 pass
         elif self.type == 'ogg':
             try:
@@ -99,7 +101,7 @@ class BookMedia(models.Model):
                 director_name = ', '.join(audio.get('conductor', []))
                 project = ", ".join(audio.get('project', []))
                 funded_by = ", ".join(audio.get('funded_by', []))
-            except:
+            except (MutagenError, AttributeError):
                 pass
         else:
             return {}
@@ -122,13 +124,13 @@ class BookMedia(models.Model):
                 audio = id3.ID3(filepath)
                 return [t.data for t in audio.getall('PRIV')
                         if t.owner == 'wolnelektury.pl?flac_sha1'][0]
-            except:
+            except MutagenError:
                 return None
         elif filetype == 'ogg':
             try:
                 audio = mutagen.File(filepath)
                 return audio.get('flac_sha1', [None])[0]
-            except:
+            except (MutagenError, AttributeError):
                 return None
         else:
             return None

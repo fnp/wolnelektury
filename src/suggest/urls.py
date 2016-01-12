@@ -5,8 +5,8 @@
 from django.conf.urls import patterns, url
 from suggest import views
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$', views.SuggestionFormView(), name='suggest'),
     url(r'^plan/$', views.PublishingSuggestionFormView(), name='suggest_publishing'),
 )
-

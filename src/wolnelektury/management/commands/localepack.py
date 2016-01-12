@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from .translation2po import get_languages
+from wolnelektury.utils import makedirs
 
 import os
 import shutil
@@ -29,11 +30,11 @@ class Locale(object):
     def generate(self, languages):
         pass
 
+
 def copy_f(frm, to):
-    "I can create a necessary dest directiories, yey!"
-    if not os.path.exists(os.path.dirname(to)):
-        os.makedirs(os.path.dirname(to))
+    makedirs(os.path.dirname(to))
     shutil.copyfile(frm, to)
+
 
 class AppLocale(Locale):
     def __init__(self, appmod):
@@ -54,17 +55,14 @@ class AppLocale(Locale):
             lc = lc[0]
             if os.path.exists(os.path.join(self.path, 'locale', lc)):
                 copy_f(os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po'),
-                          os.path.join(output_directory, lc, self.name + '.po'))
-
+                       os.path.join(output_directory, lc, self.name + '.po'))
 
     def load(self, input_directory, languages):
         for lc in zip(*languages)[0]:
             if os.path.exists(os.path.join(input_directory, lc, self.name + '.po')):
                 out = os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po')
-                if not os.path.exists(os.path.dirname(out)):
-                    os.makedirs(os.path.dirname(out))
-                copy_f(os.path.join(input_directory, lc, self.name + '.po'),
-                             out)
+                makedirs(os.path.dirname(out))
+                copy_f(os.path.join(input_directory, lc, self.name + '.po'), out)
 
         wd = os.getcwd()
         os.chdir(self.path)
@@ -74,7 +72,6 @@ class AppLocale(Locale):
             pass
         finally:
             os.chdir(wd)
-
 
     def generate(self, languages):
         wd = os.getcwd()
@@ -123,12 +120,12 @@ class CustomLocale(Locale):
         for lc in zip(*languages)[0]:
             if os.path.exists(self.po_file(lc)):
                 copy_f(self.po_file(lc),
-                             os.path.join(output_directory, lc, self.name + '.po'))
+                       os.path.join(output_directory, lc, self.name + '.po'))
 
     def load(self, input_directory, languages):
         for lc in zip(*languages)[0]:
             copy_f(os.path.join(input_directory, lc, self.name + '.po'),
-                         self.po_file(lc))
+                   self.po_file(lc))
         os.system('pybabel compile -D django -d %s' % os.path.dirname(self.out_file))
 
 
@@ -148,14 +145,15 @@ SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
-        make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load', default=False),
+        make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load',
+                    default=False),
         make_option('-L', '--lang', help='load just one language', dest='lang', default=None),
         make_option('-d', '--directory', help='load from this directory', dest='directory', default=None),
         make_option('-o', '--outfile', help='Resulting zip file', dest='outfile', default='./wl-locale.zip'),
-        make_option('-m', '--merge', help='Use git to merge. Please use with clean working directory.', action='store_true', dest='merge', default=False),
+        make_option('-m', '--merge', help='Use git to merge. Please use with clean working directory.',
+                    action='store_true', dest='merge', default=False),
         make_option('-M', '--message', help='commit message', dest='message', default='New locale'),
-
-        )
+    )
     help = 'Make a locale pack'
     args = ''
 
@@ -192,14 +190,14 @@ class Command(BaseCommand):
             rf.write(rev)
             rf.close()
 
-
             cwd = os.getcwd()
             try:
                 os.chdir(os.path.dirname(out_dir))
                 self.system('zip -r %s %s' % (os.path.join(cwd, packname_b+'.zip'), os.path.basename(out_dir)))
             finally:
                 os.chdir(cwd)
-                #            shutil.make_archive(packname_b, fmt, root_dir=os.path.dirname(out_dir), base_dir=os.path.basename(out_dir))
+                # shutil.make_archive(packname_b, fmt, root_dir=os.path.dirname(out_dir),
+                #                     base_dir=os.path.basename(out_dir))
         finally:
             shutil.rmtree(tmp_dir, ignore_errors=True)
 
@@ -215,9 +213,11 @@ class Command(BaseCommand):
                 print "Directory not provided or does not exist, please use -d"
                 sys.exit(1)
 
-            if options['merge']: self.merge_setup(options['directory'])
+            if options['merge']:
+                self.merge_setup(options['directory'])
             self.load(options)
-            if options['merge']: self.merge_finish(options['message'])
+            if options['merge']:
+                self.merge_finish(options['message'])
         else:
             self.save(options)
 

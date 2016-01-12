@@ -51,8 +51,8 @@ class CustomSolrConnection(sunburnt.SolrConnection):
         qs = urllib.urlencode(params)
         url = "%s?%s" % (self.analysis_url, qs)
         if len(url) > self.max_length_get_url:
-            warnings.warn("Long query URL encountered - POSTing instead of "
-                "GETting. This query will not be cached at the HTTP layer")
+            warnings.warn("Long query URL encountered - POSTing instead of GETting. "
+                          "This query will not be cached at the HTTP layer")
             url = self.analysis_url
             kwargs = dict(
                 method="POST",
@@ -87,7 +87,8 @@ setattr(search.SolrSearch, '_init_common_modules', __patched__init_common_module
 
 class CustomSolrInterface(sunburnt.SolrInterface):
     # just copied from parent and SolrConnection -> CustomSolrConnection
-    def __init__(self, url, schemadoc=None, http_connection=None, mode='', retry_timeout=-1, max_length_get_url=sunburnt.MAX_LENGTH_GET_URL):
+    def __init__(self, url, schemadoc=None, http_connection=None, mode='', retry_timeout=-1,
+                 max_length_get_url=sunburnt.MAX_LENGTH_GET_URL):
         self.conn = CustomSolrConnection(url, http_connection, retry_timeout, max_length_get_url)
         self.schemadoc = schemadoc
         if 'w' not in mode:
@@ -105,10 +106,14 @@ class CustomSolrInterface(sunburnt.SolrInterface):
         args = {
             'analysis_showmatch': True
             }
-        if 'field' in kwargs: args['analysis_fieldname'] = kwargs['field']
-        if 'text' in kwargs: args['analysis_fieldvalue'] = kwargs['text']
-        if 'q' in kwargs: args['q'] = kwargs['q']
-        if 'query' in kwargs: args['q'] = kwargs['q']
+        if 'field' in kwargs:
+            args['analysis_fieldname'] = kwargs['field']
+        if 'text' in kwargs:
+            args['analysis_fieldvalue'] = kwargs['text']
+        if 'q' in kwargs:
+            args['q'] = kwargs['q']
+        if 'query' in kwargs:
+            args['q'] = kwargs['q']
 
         params = map(lambda (k, v): (k.replace('_', '.'), v), sunburnt.params_from_dict(**args))
 
@@ -126,9 +131,8 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             matches.add((start, end))
 
         if matches:
-            return self.substring(kwargs['text'], matches,
-                margins=kwargs.get('margins', 30),
-                mark=kwargs.get('mark', ("<b>", "</b>")))
+            return self.substring(
+                kwargs['text'], matches, margins=kwargs.get('margins', 30), mark=kwargs.get('mark', ("<b>", "</b>")))
         else:
             return None
 
@@ -155,36 +159,29 @@ class CustomSolrInterface(sunburnt.SolrInterface):
                 break
             end += 1
 
-        return (start, end)
+        return start, end
 
     def substring(self, text, matches, margins=30, mark=("<b>", "</b>")):
-        start = None
-        end = None
         totlen = len(text)
-        matches_margins = map(lambda (s, e):
-                              ((s, e),
-                               (max(0, s - margins), min(totlen, e + margins))),
-                                  matches)
-        matches_margins = map(lambda (m, (s, e)):
-                              (m, self.expand_margins(text, s, e)),
-            matches_margins)
+        matches_margins = [
+            ((s, e), self.expand_margins(text, max(0, s - margins), min(totlen, e + margins))) for s, e in matches]
 
-            # lets start with first match
+        # lets start with first match
         (start, end) = matches_margins[0][1]
-        matches = [matches_margins[0][0]]
+        new_matches = [matches_margins[0][0]]
 
         for (m, (s, e)) in matches_margins[1:]:
             if end < s or start > e:
                 continue
             start = min(start, s)
             end = max(end, e)
-            matches.append(m)
+            new_matches.append(m)
 
         snip = text[start:end]
-        matches.sort(lambda a, b: cmp(b[0], a[0]))
+        new_matches.sort(lambda a, b: cmp(b[0], a[0]))
 
-        for (s, e) in matches:
-            off = - start
+        for (s, e) in new_matches:
+            off = -start
             snip = snip[:e + off] + mark[1] + snip[e + off:]
             snip = snip[:s + off] + mark[0] + snip[s + off:]
 

@@ -15,12 +15,11 @@ from .forms import PollForm
 @cache.never_cache
 @require_http_methods(['GET', 'POST'])
 def poll(request, slug):
-
     poll = get_object_or_404(Poll, slug=slug, open=True)
 
     if request.method == 'POST':
-        redirect_to = reverse('poll', args = [slug])
-        form = PollForm(request.POST, poll = poll)
+        redirect_to = reverse('poll', args=[slug])
+        form = PollForm(request.POST, poll=poll)
         if form.is_valid():
             if not poll.voted(request.session):
                 try:

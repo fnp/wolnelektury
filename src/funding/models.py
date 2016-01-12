@@ -9,6 +9,7 @@ from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
 from django.db import models
+from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, override
@@ -30,8 +31,7 @@ class Offer(models.Model):
     start = models.DateField(_('start'), db_index=True)
     end = models.DateField(_('end'), db_index=True)
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
-    book = models.ForeignKey(Book, null=True, blank=True,
-        help_text=_('Published book.'))
+    book = models.ForeignKey(Book, null=True, blank=True, help_text=_('Published book.'))
     cover = models.ImageField(_('Cover'), upload_to='funding/covers')
     poll = models.ForeignKey(Poll, help_text=_('Poll'), null=True, blank=True, on_delete=models.SET_NULL)
 
@@ -55,8 +55,8 @@ class Offer(models.Model):
         return reverse('funding_offer', args=[self.slug])
 
     def save(self, *args, **kw):
-        published_now = (self.book_id is not None and
-            self.pk is not None and
+        published_now = (
+            self.book_id is not None and self.pk is not None and
             type(self).objects.values('book').get(pk=self.pk)['book'] != self.book_id)
         retval = super(Offer, self).save(*args, **kw)
         self.flush_includes()
@@ -157,7 +157,8 @@ class Offer(models.Model):
         )
 
     def notify_end(self, force=False):
-        if not force and self.notified_end: return
+        if not force and self.notified_end:
+            return
         assert not self.is_current()
         self.notify_all(
             _('The fundraiser has ended!'),
@@ -171,7 +172,8 @@ class Offer(models.Model):
         self.save()
 
     def notify_near(self, force=False):
-        if not force and self.notified_near: return
+        if not force and self.notified_near:
+            return
         assert self.is_current()
         sum_ = self.sum()
         need = self.target - sum_
@@ -256,7 +258,8 @@ class Funding(models.Model):
         return ", ".join(perk.name for perk in self.perks.all())
 
     def get_disable_notifications_url(self):
-        return "%s?%s" % (reverse("funding_disable_notifications"),
+        return "%s?%s" % (
+            reverse("funding_disable_notifications"),
             urlencode({
                 'email': self.email,
                 'key': self.notify_key,
@@ -270,8 +273,7 @@ class Funding(models.Model):
         return ret
 
     @classmethod
-    def notify_funders(cls, subject, template_name, extra_context=None,
-                query_filter=None, payed_only=True):
+    def notify_funders(cls, subject, template_name, extra_context=None, query_filter=None, payed_only=True):
         funders = cls.objects.exclude(email="").filter(notifications=True)
         if payed_only:
             funders = funders.exclude(payed_at=None)
@@ -292,12 +294,9 @@ class Funding(models.Model):
         if extra_context:
             context.update(extra_context)
         with override(self.language_code or app_settings.DEFAULT_LANGUAGE):
-            send_mail(subject,
-                render_to_string(template_name, context),
-                settings.CONTACT_EMAIL,
-                [self.email],
-                fail_silently=False
-            )
+            send_mail(
+                subject, render_to_string(template_name, context), settings.CONTACT_EMAIL, [self.email],
+                fail_silently=False)
 
     def disable_notifications(self):
         """Disables all notifications for this e-mail address."""
@@ -323,18 +322,20 @@ class Spent(models.Model):
         return u"Spent: %s" % unicode(self.book)
 
 
+@receiver(getpaid.signals.new_payment_query)
 def new_payment_query_listener(sender, order=None, payment=None, **kwargs):
     """ Set payment details for getpaid. """
     payment.amount = order.amount
     payment.currency = 'PLN'
-getpaid.signals.new_payment_query.connect(new_payment_query_listener)
 
 
+@receiver(getpaid.signals.user_data_query)
 def user_data_query_listener(sender, order, user_data, **kwargs):
     """ Set user data for payment. """
     user_data['email'] = order.email
-getpaid.signals.user_data_query.connect(user_data_query_listener)
 
+
+@receiver(getpaid.signals.payment_status_changed)
 def payment_status_changed_listener(sender, instance, old_status, new_status, **kwargs):
     """ React to status changes from getpaid. """
     if old_status != 'paid' and new_status == 'paid':
@@ -345,4 +346,3 @@ def payment_status_changed_listener(sender, instance, old_status, new_status, **
                 _('Thank you for your support!'),
                 'funding/email/thanks.txt'
             )
-getpaid.signals.payment_status_changed.connect(payment_status_changed_listener)

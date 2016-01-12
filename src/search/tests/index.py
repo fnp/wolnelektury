@@ -6,19 +6,16 @@ from unittest import skipIf
 from django.conf import settings
 from django.test.utils import override_settings
 from catalogue.test_utils import WLTestCase, get_fixture
-from os import path
 import tempfile
-from catalogue.models import Book, Tag
-from search.index import Index, Search, SearchResult
+from catalogue.models import Book
+from search.index import Index, Search
 import catalogue
 import opds
 
 
-@override_settings(
-    SEARCH_INDEX = tempfile.mkdtemp(prefix='djangotest_search_'),
-)
+@override_settings(SEARCH_INDEX=tempfile.mkdtemp(prefix='djangotest_search_'))
 @skipIf(getattr(settings, 'NO_SEARCH_INDEX', False),
-    u'Requires search server and NO_SEARCH_INDEX=False.')
+        u'Requires search server and NO_SEARCH_INDEX=False.')
 class BookSearchTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
@@ -53,4 +50,3 @@ class BookSearchTests(WLTestCase):
     #     a = SearchResult.aggregate(books)
     #     # just one fragment hit.
     #     assert len(a[0].hits) == 1
-

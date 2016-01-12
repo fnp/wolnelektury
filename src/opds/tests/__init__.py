@@ -5,19 +5,16 @@
 from unittest import skipIf
 from lxml import etree
 from django.conf import settings
-from django.core.files.base import ContentFile
 import catalogue
-from catalogue.test_utils import (BookInfoStub, PersonStub, info_args,
-        WLTestCase, get_fixture)
+from catalogue.test_utils import WLTestCase, get_fixture
 from catalogue.models import Book
 from librarian import WLURI, XMLNamespace
-from search.index import Index, Search
+from search.index import Index
 
 AtomNS = XMLNamespace("http://www.w3.org/2005/Atom")
 
 
-@skipIf(getattr(settings, 'NO_SEARCH_INDEX', False),
-    u'Requires search server and NO_SEARCH_INDEX=False.')
+@skipIf(getattr(settings, 'NO_SEARCH_INDEX', False), u'Requires search server and NO_SEARCH_INDEX=False.')
 class OpdsSearchTests(WLTestCase):
     """Tests search feed in OPDS.."""
     def setUp(self):
@@ -37,18 +34,17 @@ class OpdsSearchTests(WLTestCase):
             self.client.get('/opds/search/?%s' % query).content)
         elem_ids = tree.findall('.//%s/%s' % (AtomNS('entry'), AtomNS('id')))
         slugs = [WLURI(elem.text).slug for elem in elem_ids]
-        self.assertEqual(set(slugs), set(b.slug for b in books),
-            u"OPDS search '%s' failed." % query)
+        self.assertEqual(set(slugs), set(b.slug for b in books), u"OPDS search '%s' failed." % query)
 
     def test_opds_search_simple(self):
         """Do a simple q= test, also emulate dumb OPDS clients."""
-        both = set([self.do_doktora, self.do_anusie])
+        both = {self.do_doktora, self.do_anusie}
         self.assert_finds('q=fraszka', both)
         self.assert_finds('q=fraszka&author={opds:author}', both)
 
     def test_opds_search_title(self):
         """Search by title."""
-        both = set([self.do_doktora, self.do_anusie])
+        both = {self.do_doktora, self.do_anusie}
         self.assert_finds('title=fraszka', both)
         self.assert_finds('title=fraszka', both)
         self.assert_finds('q=title:doktora', [self.do_doktora])

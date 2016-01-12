@@ -9,7 +9,8 @@ from django.views.generic import RedirectView
 import wolnelektury.views
 
 
-urlpatterns = patterns('wolnelektury.views',
+urlpatterns = patterns(
+    'wolnelektury.views',
     url(r'^$', 'main_page', name='main_page'),
     url(r'^planowane/$', 'publish_plan', name='publish_plan'),
     url(r'^widget\.html$', 'widget', name='widget'),
@@ -29,7 +30,8 @@ urlpatterns = patterns('wolnelektury.views',
         name='latest_blog_posts'),
 )
 
-urlpatterns += patterns('',
+urlpatterns += patterns(
+    '',
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^opds/', include('opds.urls')),
     url(r'^sugestia/', include('suggest.urls')),
@@ -67,7 +69,8 @@ urlpatterns += patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 
-urlpatterns += patterns('',
+urlpatterns += patterns(
+    '',
     # old static pages - redirected
     url(r'^1procent/$', RedirectView.as_view(
         url='http://nowoczesnapolska.org.pl/wesprzyj_nas/', permanent=True)),

@@ -6,6 +6,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
+
 class Suggestion(models.Model):
     contact = models.CharField(_('contact'), blank=True, max_length=120)
     description = models.TextField(_('description'), blank=True)

@@ -26,57 +26,58 @@ from catalogue import tasks
 bofh_storage = BofhFileSystemStorage()
 
 
-def _cover_upload_to(i, n):
-    return 'book/cover/%s.jpg' % i.slug
+def _make_upload_to(path):
+    def _upload_to(i, n):
+        return path % i.slug
+    return _upload_to
 
-def _cover_thumb_upload_to(i, n):
-    return 'book/cover_thumb/%s.jpg' % i.slug
+
+_cover_upload_to = _make_upload_to('book/cover/%s.jpg')
+_cover_thumb_upload_to = _make_upload_to('book/cover_thumb/%s.jpg')
+
 
 def _ebook_upload_to(upload_path):
-    def _upload_to(i, n):
-        return upload_path % i.slug
-    return _upload_to
+    return _make_upload_to(upload_path)
 
 
 class Book(models.Model):
     """Represents a book imported from WL-XML."""
-    title         = models.CharField(_('title'), max_length=32767)
+    title = models.CharField(_('title'), max_length=32767)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
-    sort_key_author = models.CharField(_('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
-    slug = models.SlugField(_('slug'), max_length=120, db_index=True,
-            unique=True)
+    sort_key_author = models.CharField(
+        _('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
     common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
-    language = models.CharField(_('language code'), max_length=3, db_index=True,
-                    default=app_settings.DEFAULT_LANGUAGE)
-    description   = models.TextField(_('description'), blank=True)
-    created_at    = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
-    changed_at    = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
+    language = models.CharField(_('language code'), max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
+    description = models.TextField(_('description'), blank=True)
+    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info    = jsonfield.JSONField(_('extra information'), default={})
-    gazeta_link   = models.CharField(blank=True, max_length=240)
-    wiki_link     = models.CharField(blank=True, max_length=240)
+    extra_info = jsonfield.JSONField(_('extra information'), default={})
+    gazeta_link = models.CharField(blank=True, max_length=240)
+    wiki_link = models.CharField(blank=True, max_length=240)
 
     # files generated during publication
-    cover = EbookField('cover', _('cover'),
-            null=True, blank=True,
-            upload_to=_cover_upload_to,
-            storage=bofh_storage, max_length=255)
+    cover = EbookField(
+        'cover', _('cover'),
+        null=True, blank=True,
+        upload_to=_cover_upload_to,
+        storage=bofh_storage, max_length=255)
     # Cleaner version of cover for thumbs
-    cover_thumb = EbookField('cover_thumb', _('cover thumbnail'),
-            null=True, blank=True,
-            upload_to=_cover_thumb_upload_to,
-            max_length=255)
+    cover_thumb = EbookField(
+        'cover_thumb', _('cover thumbnail'),
+        null=True, blank=True,
+        upload_to=_cover_thumb_upload_to,
+        max_length=255)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
-    parent = models.ForeignKey('self', blank=True, null=True,
-        related_name='children')
-    ancestor = models.ManyToManyField('self', blank=True,
-        editable=False, related_name='descendant', symmetrical=False)
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
+    ancestor = models.ManyToManyField('self', blank=True, editable=False, related_name='descendant', symmetrical=False)
 
-    objects  = models.Manager()
-    tagged   = managers.ModelTaggedItemManager(Tag)
-    tags     = managers.TagDescriptor(Tag)
+    objects = models.Manager()
+    tagged = managers.ModelTaggedItemManager(Tag)
+    tags = managers.TagDescriptor(Tag)
     tag_relations = GenericRelation(Tag.intermediary_table_model)
 
     html_built = django.dispatch.Signal()
@@ -109,7 +110,7 @@ class Book(models.Model):
         from sortify import sortify
 
         self.sort_key = sortify(self.title)[:120]
-        self.title = unicode(self.title) # ???
+        self.title = unicode(self.title)  # ???
 
         try:
             author = self.tags.filter(category='author')[0].sort_key
@@ -123,12 +124,12 @@ class Book(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.book_detail', [self.slug])
+        return 'catalogue.views.book_detail', [self.slug]
 
     @staticmethod
     @permalink
     def create_url(slug):
-        return ('catalogue.views.book_detail', [slug])
+        return 'catalogue.views.book_detail', [slug]
 
     @property
     def name(self):
@@ -157,10 +158,13 @@ class Book(models.Model):
 
     def get_mp3(self):
         return self.get_media("mp3")
+
     def get_odt(self):
         return self.get_media("odt")
+
     def get_ogg(self):
         return self.get_media("ogg")
+
     def get_daisy(self):
         return self.get_media("daisy")
 
@@ -194,10 +198,11 @@ class Book(models.Model):
         else:
             meta_fallbacks = None
 
-        return WLDocument.from_file(self.xml_file.path,
-                provider=ORMDocProvider(self),
-                parse_dublincore=parse_dublincore,
-                meta_fallbacks=meta_fallbacks)
+        return WLDocument.from_file(
+            self.xml_file.path,
+            provider=ORMDocProvider(self),
+            parse_dublincore=parse_dublincore,
+            meta_fallbacks=meta_fallbacks)
 
     @staticmethod
     def zip_format(format_):
@@ -209,8 +214,7 @@ class Book(models.Model):
 
         field_name = "%s_file" % format_
         books = Book.objects.filter(parent=None).exclude(**{field_name: ""})
-        paths = [(pretty_file_name(b), getattr(b, field_name).path)
-                    for b in books.iterator()]
+        paths = [(pretty_file_name(b), getattr(b, field_name).path) for b in books.iterator()]
         return create_zip(paths, app_settings.FORMAT_ZIPS[format_])
 
     def zip_audiobooks(self, format_):
@@ -232,7 +236,6 @@ class Book(models.Model):
             index.index.rollback()
             raise e
 
-
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -250,9 +253,8 @@ class Book(models.Model):
             xml_file.close()
 
     @classmethod
-    def from_text_and_meta(cls, raw_file, book_info, overwrite=False,
-            dont_build=None, search_index=True,
-            search_index_tags=True):
+    def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
+                           search_index_tags=True):
         if dont_build is None:
             dont_build = set()
         dont_build = set.union(set(dont_build), set(app_settings.DONT_BUILD))
@@ -264,8 +266,7 @@ class Book(models.Model):
                 try:
                     children.append(Book.objects.get(slug=part_url.slug))
                 except Book.DoesNotExist:
-                    raise Book.DoesNotExist(_('Book "%s" does not exist.') %
-                            part_url.slug)
+                    raise Book.DoesNotExist(_('Book "%s" does not exist.') % part_url.slug)
 
         # Read book metadata
         book_slug = book_info.url.slug
@@ -278,8 +279,7 @@ class Book(models.Model):
             old_cover = None
         else:
             if not overwrite:
-                raise Book.AlreadyExists(_('Book %s already exists') % (
-                        book_slug))
+                raise Book.AlreadyExists(_('Book %s already exists') % book_slug)
             # Save shelves for this book
             book_shelves = list(book.tags.filter(category='set'))
             old_cover = book.cover_info()
@@ -349,37 +349,37 @@ class Book(models.Model):
         return book
 
     @classmethod
+    @transaction.atomic
     def repopulate_ancestors(cls):
         """Fixes the ancestry cache."""
         # TODO: table names
-        with transaction.atomic():
-            cursor = connection.cursor()
-            if connection.vendor == 'postgres':
-                cursor.execute("TRUNCATE catalogue_book_ancestor")
-                cursor.execute("""
-                    WITH RECURSIVE ancestry AS (
-                        SELECT book.id, book.parent_id
-                        FROM catalogue_book AS book
-                        WHERE book.parent_id IS NOT NULL
-                        UNION
-                        SELECT ancestor.id, book.parent_id
-                        FROM ancestry AS ancestor, catalogue_book AS book
-                        WHERE ancestor.parent_id = book.id
-                            AND book.parent_id IS NOT NULL
-                        )
-                    INSERT INTO catalogue_book_ancestor
-                        (from_book_id, to_book_id)
-                        SELECT id, parent_id
-                        FROM ancestry
-                        ORDER BY id;
-                    """)
-            else:
-                cursor.execute("DELETE FROM catalogue_book_ancestor")
-                for b in cls.objects.exclude(parent=None):
-                    parent = b.parent
-                    while parent is not None:
-                        b.ancestor.add(parent)
-                        parent = parent.parent
+        cursor = connection.cursor()
+        if connection.vendor == 'postgres':
+            cursor.execute("TRUNCATE catalogue_book_ancestor")
+            cursor.execute("""
+                WITH RECURSIVE ancestry AS (
+                    SELECT book.id, book.parent_id
+                    FROM catalogue_book AS book
+                    WHERE book.parent_id IS NOT NULL
+                    UNION
+                    SELECT ancestor.id, book.parent_id
+                    FROM ancestry AS ancestor, catalogue_book AS book
+                    WHERE ancestor.parent_id = book.id
+                        AND book.parent_id IS NOT NULL
+                    )
+                INSERT INTO catalogue_book_ancestor
+                    (from_book_id, to_book_id)
+                    SELECT id, parent_id
+                    FROM ancestry
+                    ORDER BY id;
+                """)
+        else:
+            cursor.execute("DELETE FROM catalogue_book_ancestor")
+            for b in cls.objects.exclude(parent=None):
+                parent = b.parent
+                while parent is not None:
+                    b.ancestor.add(parent)
+                    parent = parent.parent
 
     def flush_includes(self, languages=True):
         if not languages:
@@ -448,8 +448,7 @@ class Book(models.Model):
         return books
 
     def pretty_title(self, html_links=False):
-        names = [(tag.name, tag.get_absolute_url())
-            for tag in self.tags.filter(category='author')]
+        names = [(tag.name, tag.get_absolute_url()) for tag in self.tags.filter(category='author')]
         books = self.parents() + [self]
         names.extend([(b.title, b.get_absolute_url()) for b in books])
 
@@ -471,7 +470,7 @@ class Book(models.Model):
         return objects.exclude(ancestor__in=objects)
 
     @classmethod
-    def book_list(cls, filter=None):
+    def book_list(cls, book_filter=None):
         """Generates a hierarchical listing of all books.
 
         Books are optionally filtered with a test function.
@@ -481,8 +480,8 @@ class Book(models.Model):
         books_by_parent = {}
         books = cls.objects.all().order_by('parent_number', 'sort_key').only(
                 'title', 'parent', 'slug')
-        if filter:
-            books = books.filter(filter).distinct()
+        if book_filter:
+            books = books.filter(book_filter).distinct()
 
             book_ids = set(b['pk'] for b in books.values("pk").iterator())
             for book in books.iterator():
@@ -518,6 +517,7 @@ class Book(models.Model):
         "L": (3, u"liceum"),
         "LP": (3, u"liceum"),
     }
+
     def audiences_pl(self):
         audiences = self.extra_info.get('audiences', [])
         audiences = sorted(set([self._audiences_pl.get(a, (99, a)) for a in audiences]))
@@ -545,18 +545,21 @@ class Book(models.Model):
             return None
 
 
-# add the file fields
-for format_ in Book.formats:
-    field_name = "%s_file" % format_
-    # This weird globals() assignment makes Django migrations comfortable.
-    _upload_to = _ebook_upload_to('book/%s/%%s.%s' % (format_, format_))
-    _upload_to.__name__ = '_%s_upload_to' % format_
-    globals()[_upload_to.__name__] = _upload_to
+def add_file_fields():
+    for format_ in Book.formats:
+        field_name = "%s_file" % format_
+        # This weird globals() assignment makes Django migrations comfortable.
+        _upload_to = _ebook_upload_to('book/%s/%%s.%s' % (format_, format_))
+        _upload_to.__name__ = '_%s_upload_to' % format_
+        globals()[_upload_to.__name__] = _upload_to
 
-    EbookField(format_, _("%s file" % format_.upper()),
-        upload_to=_upload_to,
-        storage=bofh_storage,
-        max_length=255,
-        blank=True,
-        default=''
-    ).contribute_to_class(Book, field_name)
+        EbookField(
+            format_, _("%s file" % format_.upper()),
+            upload_to=_upload_to,
+            storage=bofh_storage,
+            max_length=255,
+            blank=True,
+            default=''
+        ).contribute_to_class(Book, field_name)
+
+add_file_fields()

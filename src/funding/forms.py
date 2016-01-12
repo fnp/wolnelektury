@@ -13,12 +13,13 @@ from . import app_settings
 class FundingForm(forms.Form):
     required_css_class = 'required'
 
-    amount = forms.DecimalField(label=_("Amount"), decimal_places=2,
-        widget=PerksAmountWidget())
-    name = forms.CharField(label=_("Name"), required=False,
-        help_text=_("Optional name for public list of contributors"))
-    email = forms.EmailField(label=_("Contact e-mail"),
-        help_text=_("We'll use it to contact you about the <strong>details needed for your perks</strong>,<br/>"
+    amount = forms.DecimalField(label=_("Amount"), decimal_places=2, widget=PerksAmountWidget())
+    name = forms.CharField(
+        label=_("Name"), required=False, help_text=_("Optional name for public list of contributors"))
+    email = forms.EmailField(
+        label=_("Contact e-mail"),
+        help_text=_(
+            "We'll use it to contact you about the <strong>details needed for your perks</strong>,<br/>"
             "and to send you updates about your payment and the fundraiser status (which you can always turn off).<br/>"
             "Your e-mail won't be publicised."), required=False)
 
@@ -52,4 +53,3 @@ class FundingForm(forms.Form):
         )
         funding.perks = funding.offer.get_perks(funding.amount)
         return funding
-

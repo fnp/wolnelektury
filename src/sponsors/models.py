@@ -80,7 +80,8 @@ class SponsorPage(models.Model):
 
         if self.sprite:
             self.sprite.delete(save=False)
-        self.sprite.save('sponsorzy/sprite/%s-%d.png' % (self.name, time.time()), ContentFile(imgstr.getvalue()), save=False)
+        self.sprite.save('sponsorzy/sprite/%s-%d.png' % (
+            self.name, time.time()), ContentFile(imgstr.getvalue()), save=False)
 
     def html(self):
         return self._html
@@ -104,4 +105,3 @@ class SponsorPage(models.Model):
 
     def __unicode__(self):
         return self.name
-

@@ -6,11 +6,14 @@
 from modeltranslation.translator import translator, TranslationOptions
 from catalogue.models import Collection, Tag, Source
 
+
 class TagTranslationOptions(TranslationOptions):
     fields = ('name', 'description', 'wiki_link')
 
+
 class CollectionTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
+
 
 class SourceTranslationOptions(TranslationOptions):
     fields = ('name',)

@@ -34,14 +34,13 @@ picture_storage = FileSystemStorage(location=path.join(
 class PictureArea(models.Model):
     picture = models.ForeignKey('picture.Picture', related_name='areas')
     area = jsonfield.JSONField(_('area'), default={}, editable=False)
-    kind = models.CharField(_('kind'), max_length=10, blank=False,
-                           null=False, db_index=True,
-                           choices=(('thing', _('thing')),
-                                    ('theme', _('theme'))))
+    kind = models.CharField(
+        _('kind'), max_length=10, blank=False, null=False, db_index=True,
+        choices=(('thing', _('thing')), ('theme', _('theme'))))
 
-    objects     = models.Manager()
-    tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
-    tags        = managers.TagDescriptor(catalogue.models.Tag)
+    objects = models.Manager()
+    tagged = managers.ModelTaggedItemManager(catalogue.models.Tag)
+    tags = managers.TagDescriptor(catalogue.models.Tag)
     tag_relations = GenericRelation(catalogue.models.Tag.intermediary_table_model)
 
     short_html_url_name = 'picture_area_short'
@@ -73,26 +72,27 @@ class Picture(models.Model):
     Picture resource.
 
     """
-    title       = models.CharField(_('title'), max_length=32767)
-    slug        = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
-    sort_key    = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
-    sort_key_author = models.CharField(_('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
-    created_at  = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
-    changed_at  = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
-    xml_file    = models.FileField('xml_file', upload_to="xml", storage=picture_storage)
-    image_file  = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
-    html_file   = models.FileField('html_file', upload_to="html", storage=picture_storage)
-    areas_json       = jsonfield.JSONField(_('picture areas JSON'), default={}, editable=False)
-    extra_info    = jsonfield.JSONField(_('extra information'), default={})
-    culturepl_link   = models.CharField(blank=True, max_length=240)
-    wiki_link     = models.CharField(blank=True, max_length=240)
+    title = models.CharField(_('title'), max_length=32767)
+    slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
+    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
+    sort_key_author = models.CharField(
+        _('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
+    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
+    changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
+    xml_file = models.FileField('xml_file', upload_to="xml", storage=picture_storage)
+    image_file = ImageField(_('image_file'), upload_to="images", storage=picture_storage)
+    html_file = models.FileField('html_file', upload_to="html", storage=picture_storage)
+    areas_json = jsonfield.JSONField(_('picture areas JSON'), default={}, editable=False)
+    extra_info = jsonfield.JSONField(_('extra information'), default={})
+    culturepl_link = models.CharField(blank=True, max_length=240)
+    wiki_link = models.CharField(blank=True, max_length=240)
 
-    width       = models.IntegerField(null=True)
-    height      = models.IntegerField(null=True)
+    width = models.IntegerField(null=True)
+    height = models.IntegerField(null=True)
 
-    objects     = models.Manager()
-    tagged      = managers.ModelTaggedItemManager(catalogue.models.Tag)
-    tags        = managers.TagDescriptor(catalogue.models.Tag)
+    objects = models.Manager()
+    tagged = managers.ModelTaggedItemManager(catalogue.models.Tag)
+    tags = managers.TagDescriptor(catalogue.models.Tag)
     tag_relations = GenericRelation(catalogue.models.Tag.intermediary_table_model)
 
     short_html_url_name = 'picture_short'
@@ -129,7 +129,7 @@ class Picture(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('picture.views.picture_detail', [self.slug])
+        return 'picture.views.picture_detail', [self.slug]
 
     def get_initial(self):
         try:
@@ -163,7 +163,6 @@ class Picture(models.Model):
         close_xml_file = False
         close_image_file = False
 
-
         if image_file is not None and not isinstance(image_file, File):
             image_file = File(open(image_file))
             close_image_file = True
@@ -190,7 +189,7 @@ class Picture(models.Model):
             motif_tags = set()
             thing_tags = set()
 
-            area_data = {'themes':{}, 'things':{}}
+            area_data = {'themes': {}, 'things': {}}
 
             # Treat all names in picture XML as in default language.
             lang = settings.LANGUAGE_CODE
@@ -203,13 +202,14 @@ class Picture(models.Model):
                     _tags = set()
                     for objname in part['object'].split(','):
                         objname = objname.strip().capitalize()
-                        tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(objname), category='thing')
+                        tag, created = catalogue.models.Tag.objects.get_or_create(
+                            slug=slughifi(objname), category='thing')
                         if created:
                             tag.name = objname
                             setattr(tag, 'name_%s' % lang, tag.name)
                             tag.sort_key = sortify(tag.name)
                             tag.save()
-                        #thing_tags.add(tag)
+                        # thing_tags.add(tag)
                         area_data['things'][tag.slug] = {
                             'object': objname,
                             'coords': part['coords'],
@@ -223,12 +223,13 @@ class Picture(models.Model):
                     _tags = set()
                     for motifs in part['themes']:
                         for motif in motifs.split(','):
-                            tag, created = catalogue.models.Tag.objects.get_or_create(slug=slughifi(motif), category='theme')
+                            tag, created = catalogue.models.Tag.objects.get_or_create(
+                                slug=slughifi(motif), category='theme')
                             if created:
                                 tag.name = motif
                                 tag.sort_key = sortify(tag.name)
                                 tag.save()
-                            #motif_tags.add(tag)
+                            # motif_tags.add(tag)
                             _tags.add(tag)
                             area_data['themes'][tag.slug] = {
                                 'theme': motif,
@@ -282,10 +283,7 @@ class Picture(models.Model):
         from PIL import ImageDraw, ImageFont
         from librarian import get_resource
 
-        annotated = Image.new(img.mode,
-                (img.size[0], img.size[1] + 40),
-                (255, 255, 255)
-            )
+        annotated = Image.new(img.mode, (img.size[0], img.size[1] + 40), (255, 255, 255))
         annotated.paste(img, (0, 0))
         annotation = Image.new('RGB', (img.size[0] * 3, 120), (255, 255, 255))
         ImageDraw.Draw(annotation).text(
@@ -297,14 +295,14 @@ class Picture(models.Model):
         annotated.paste(annotation.resize((img.size[0], 40), Image.ANTIALIAS), (0, img.size[1]))
         return annotated
 
+    # WTF/unused
     @classmethod
     def picture_list(cls, filter=None):
         """Generates a hierarchical listing of all pictures
         Pictures are optionally filtered with a test function.
         """
 
-        pics = cls.objects.all().order_by('sort_key')\
-            .only('title', 'slug', 'image_file')
+        pics = cls.objects.all().order_by('sort_key').only('title', 'slug', 'image_file')
 
         if filter:
             pics = pics.filter(filter).distinct()

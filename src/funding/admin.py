@@ -21,29 +21,33 @@ class PerkAdmin(admin.ModelAdmin):
     list_filter = ['offer']
 
 
-
 class PayedFilter(admin.SimpleListFilter):
     title = _('payment complete')
     parameter_name = 'payed'
+
     def lookups(self, request, model_admin):
         return (
             ('yes', _('Yes')),
             ('no', _('No')),
         )
+
     def queryset(self, request, queryset):
         if self.value() == 'yes':
             return queryset.exclude(payed_at=None)
         elif self.value() == 'no':
             return queryset.filter(payed_at=None)
 
+
 class PerksFilter(admin.SimpleListFilter):
     title = _('perks')
     parameter_name = 'perks'
+
     def lookups(self, request, model_admin):
         return (
             ('yes', _('Yes')),
             ('no', _('No')),
         )
+
     def queryset(self, request, queryset):
         if self.value() == 'yes':
             return queryset.exclude(perks=None)
@@ -56,7 +60,6 @@ class FundingAdmin(admin.ModelAdmin):
     list_display = ['payed_at', 'offer', 'amount', 'name', 'email', 'perk_names']
     search_fields = ['name', 'email', 'offer__title', 'offer__author']
     list_filter = [PayedFilter, 'offer', PerksFilter]
-
 
 
 class SpentAdmin(admin.ModelAdmin):

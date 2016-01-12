@@ -20,7 +20,7 @@ class DictionaryTests(WLTestCase):
         )
 
     def test_book_with_footnote(self):
-        BOOK_TEXT = """<utwor>
+        book_text = """<utwor>
         <opowiadanie>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
@@ -28,7 +28,7 @@ class DictionaryTests(WLTestCase):
         </opowiadanie></utwor>
         """
 
-        book = Book.from_text_and_meta(ContentFile(BOOK_TEXT), self.book_info)
+        book = Book.from_text_and_meta(ContentFile(book_text), self.book_info)
 
         self.assertEqual(
             len(self.client.get('/przypisy/').context['object_list']),
@@ -49,4 +49,3 @@ class DictionaryTests(WLTestCase):
             len(self.client.get('/przypisy/?qual=techn.').context['object_list']),
             1,
             'There should be a note qualified with \'techn.\' qualifier.')
-

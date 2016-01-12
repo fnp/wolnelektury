@@ -8,6 +8,7 @@ import os.path
 from django.conf import settings
 import logging
 from django.http import HttpResponse
+from wolnelektury.utils import makedirs
 
 logger = logging.getLogger(__name__)
 
@@ -47,12 +48,10 @@ def render_to_pdf(output_path, template, context=None, add_files=None):
     cwd = os.getcwd()
     os.chdir(tempdir)
     try:
-        subprocess.check_call(['xelatex', '-interaction=batchmode', tex_path],
+        subprocess.check_call(
+            ['xelatex', '-interaction=batchmode', tex_path],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        try:
-            os.makedirs(os.path.dirname(output_path))
-        except:
-            pass
+        makedirs(os.path.dirname(output_path))
         shutil.move(os.path.join(tempdir, "doc.pdf"), output_path)
     finally:
         os.chdir(cwd)
@@ -70,10 +69,7 @@ def render_to_csv(output_path, template, context=None, add_files=None):
 
     from django.template.loader import render_to_string
 
-    try:
-        os.makedirs(os.path.dirname(output_path))
-    except:
-        pass
+    makedirs(os.path.dirname(output_path))
 
     rendered = render_to_string(template, context)
     with open(output_path, 'w') as csv_file:

@@ -27,24 +27,24 @@ class SsiQS(object):
 
     def get_ssis(self, emitter_format):
         """Yields SSI include statements for the queryset."""
-        url_pattern = reverse('api_include',
-                kwargs={'model': self.queryset.model.__name__.lower(),
-                    'pk': '0000',
-                    'emitter_format': emitter_format,
-                    'lang': get_language(),
-                    })
+        url_pattern = reverse(
+            'api_include',
+            kwargs={
+                'model': self.queryset.model.__name__.lower(),
+                'pk': '0000',
+                'emitter_format': emitter_format,
+                'lang': get_language(),
+            })
         for instance in self.queryset:
-            yield "<!--#include file='%s'-->" % url_pattern.replace('0000',
-                    str(instance.pk))
+            yield "<!--#include file='%s'-->" % url_pattern.replace('0000', str(instance.pk))
 
 
 class SsiEmitterMixin(object):
     def construct(self):
-        if isinstance(self.data, QuerySet) and self.data.model in (Book,
-                Fragment, Tag):
+        if isinstance(self.data, QuerySet) and self.data.model in (Book, Fragment, Tag):
             return SsiQS(self.data)
         else:
-            return super(SsiEmitterMixin, self).construct()
+            return super(SsiEmitterMixin, self).construct()  # WTF
 
 
 class SsiJsonEmitter(SsiEmitterMixin, JSONEmitter):
@@ -67,4 +67,3 @@ class SsiXmlEmitter(SsiEmitterMixin, XMLEmitter):
                 '</resource><resource>'.join(self.construct().get_ssis('xml'))
 
 Emitter.register('xml', SsiXmlEmitter, 'text/xml; charset=utf-8')
-

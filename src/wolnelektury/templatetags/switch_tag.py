@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Source: http://djangosnippets.org/snippets/967/
 # Author: adurdin
 # Posted: August 13, 2008
@@ -58,6 +59,7 @@ def do_switch(parser, token):
         # of Parser.parse() relating to the "parse_until" argument.
         def __init__(self, *names):
             self.names = set(names)
+
         def __contains__(self, token_contents):
             name = token_contents.split()[0]
             return name in self.names
@@ -94,6 +96,7 @@ def do_switch(parser, token):
 
     return SwitchNode(variable, cases)
 
+
 class SwitchNode(Node):
     def __init__(self, variable, cases):
         self.variable = variable
@@ -122,6 +125,7 @@ class SwitchNode(Node):
         except VariableDoesNotExist:
             no_value = True
             value_missing = None
+            value = None
 
         for tests, nodelist in self.cases:
             if tests is None:

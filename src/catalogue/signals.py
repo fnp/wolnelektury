@@ -92,8 +92,7 @@ def tag_after_change(sender, instance, languages, **kwargs):
 
 @receiver(tags_updated)
 def receive_tags_updated(sender, instance, affected_tags, **kwargs):
-    categories = set(tag.category for tag in affected_tags
-        if tag.category not in ('set', 'book'))
+    categories = set(tag.category for tag in affected_tags if tag.category not in ('set', 'book'))
     if not categories:
         return
 

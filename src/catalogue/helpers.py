@@ -3,20 +3,18 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
-from django.contrib.contenttypes.models import ContentType
-from django.db.models import Count
 from .models import Tag, Book
 from os.path import getmtime
 import cPickle
 from collections import defaultdict
 
 
-
 BOOK_CATEGORIES = ('author', 'epoch', 'genre', 'kind')
-
 
 _COUNTERS = None
 _COUNTER_TIME = None
+
+
 def get_top_level_related_tags(tags, categories=None):
     """
     Finds tags related to given tags through books, and counts their usage.
@@ -45,8 +43,6 @@ def get_top_level_related_tags(tags, categories=None):
     for tag in related:
         tag.count = _COUNTERS['count'][tuple(sorted(tagids + (tag.pk,)))]
         yield tag
-
-    #~ return related
 
 
 def update_counters():

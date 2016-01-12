@@ -18,7 +18,8 @@ class Collection(models.Model):
     models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     book_slugs = models.TextField(_('book slugs'))
 
-    kind = models.CharField(_('kind'), max_length=10, blank=False, default='book', db_index=True, choices=((('book'), _('book')), (('picture'), ('picture'))))
+    kind = models.CharField(_('kind'), max_length=10, blank=False, default='book', db_index=True,
+                            choices=(('book', _('book')), ('picture', _('picture'))))
 
     class Meta:
         ordering = ('title',)
@@ -37,13 +38,13 @@ class Collection(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ("collection", [self.slug])
+        return "collection", [self.slug]
 
     def get_query(self):
         slugs = self.book_slugs.split()
         # allow URIs
-        slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug
-                    for slug in slugs]
+        # WTF
+        slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug for slug in slugs]
         return models.Q(slug__in=slugs)
 
     def get_books(self):

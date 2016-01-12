@@ -1,6 +1,7 @@
 from sorl.thumbnail.engines import pil_engine
 from sorl.thumbnail import parsers
 
+
 #
 # Class developed by 
 # http://timmyomahony.com/blog/custom-cropping-engine-sorl-thumbnail/
@@ -34,7 +35,7 @@ class CustomCroppingEngine(pil_engine.Engine):
             m = parsers.bgpos_pat.match(crop)
             if not m:
                 raise parsers.ThumbnailParseError('Unrecognized crop option: %s' % crop)
-            value = int(m.group('value')) # we only take ints in the regexp
+            value = int(m.group('value'))  # we only take ints in the regexp
             unit = m.group('unit')
             if unit == '%':
                 value = epsilon * value / 100.0
@@ -50,7 +51,7 @@ class CustomCroppingEngine(pil_engine.Engine):
         if not crop or crop == 'noop':
             return image
         x_image, y_image = self.get_image_size(image)
-        x1,y1,x2,y2 = self._crop_parse(crop, (x_image, y_image), geometry)
+        x1, y1, x2, y2 = self._crop_parse(crop, (x_image, y_image), geometry)
         return self._crop(image, x1, y1, x2, y2)
 
     def _crop(self, image, x1, y1, x2, y2):

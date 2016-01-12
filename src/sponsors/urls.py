@@ -4,6 +4,7 @@
 #
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('sponsors.views',
+urlpatterns = patterns(
+    'sponsors.views',
     url(r'^page/(?P<name>.+)\.html$', 'page', name='sponsor_page'),
 )

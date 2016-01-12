@@ -27,7 +27,7 @@ class PerksTest(TestCase):
             set())
         self.assertEqual(
             set(self.offer1.get_perks(70)),
-            set([perk, perk1]))
+            {perk, perk1})
 
 
 class FundingTest(TestCase):
@@ -49,11 +49,11 @@ class FundingTest(TestCase):
         self.assertEqual(Offer.current(), self.offer_current)
         self.assertEqual(
             set(Offer.past()),
-            set([self.offer_past])
+            {self.offer_past}
         )
         self.assertEqual(
             set(Offer.public()),
-            set([self.offer_past, self.offer_current])
+            {self.offer_past, self.offer_current}
         )
 
     def test_interrupt(self):
@@ -67,10 +67,9 @@ class FundingTest(TestCase):
         self.assertEqual(Offer.current(), offer_interrupt)
         self.assertEqual(
             set(Offer.past()),
-            set([self.offer_past, self.offer_current])
+            {self.offer_past, self.offer_current}
         )
         self.assertEqual(
             set(Offer.public()),
-            set([self.offer_past, self.offer_current, offer_interrupt])
+            {self.offer_past, self.offer_current, offer_interrupt}
         )
-

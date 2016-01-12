@@ -14,12 +14,13 @@ class BookStubAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
 
+
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'death')
     search_fields = ('name',)
     ordering = ('sort_key', 'name')
 
-    prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',),}
+    prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',)}
 
 
 admin.site.register(BookStub, BookStubAdmin)

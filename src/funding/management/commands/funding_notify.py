@@ -8,8 +8,7 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
-        make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
-            help='Suppress output'),
+        make_option('-q', '--quiet', action='store_false', dest='verbose', default=True, help='Suppress output'),
     )
     help = 'Sends relevant funding notifications.'
 

@@ -6,6 +6,7 @@
 from modeltranslation.translator import translator, TranslationOptions
 from chunks.models import Chunk
 
+
 class ChunkTranslationOptions(TranslationOptions):
     fields = ('content',)
 

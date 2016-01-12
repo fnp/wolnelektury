@@ -6,21 +6,20 @@ from django.conf import settings
 
 import os
 import re
-import errno
 from librarian import dcparser
 from librarian.parser import WLDocument
 from lxml import etree
 import catalogue.models
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from itertools import chain
-import traceback
-import logging
-log = logging.getLogger('search')
 import sunburnt
 import custom
 import operator
+import logging
+from wolnelektury.utils import makedirs
 
 log = logging.getLogger('search')
+
 
 class SolrIndex(object):
     def __init__(self, mode=None):
@@ -36,20 +35,18 @@ class Snippets(object):
     SNIPPET_DIR = "snippets"
 
     def __init__(self, book_id, revision=None):
-        try:
-            os.makedirs(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR))
-        except OSError as exc:
-            if exc.errno == errno.EEXIST:
-                pass
-            else: raise
+        makedirs(os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR))
         self.book_id = book_id
         self.revision = revision
         self.file = None
+        self.position = None
 
     @property
     def path(self):
-        if self.revision: fn = "%d.%d" % (self.book_id, self.revision)
-        else: fn = "%d" % self.book_id
+        if self.revision:
+            fn = "%d.%d" % (self.book_id, self.revision)
+        else:
+            fn = "%d" % self.book_id
 
         return os.path.join(settings.SEARCH_INDEX, self.SNIPPET_DIR, fn)
 
@@ -57,7 +54,7 @@ class Snippets(object):
         """
         Open the snippet file. Call .close() afterwards.
         """
-        if not 'b' in mode:
+        if 'b' not in mode:
             mode += 'b'
 
         if 'w' in mode:
@@ -142,6 +139,7 @@ class Index(SolrIndex):
         else:
             return False
 
+    # WTF
     def index_tags(self, *tags, **kw):
         """
         Re-index global tag list.
@@ -173,8 +171,9 @@ class Index(SolrIndex):
         if not remove_only:
             # then add them [all or just one passed]
             if not tags:
-                tags = chain(catalogue.models.Tag.objects.exclude(category='set'), \
-                    PDCounterAuthor.objects.all(), \
+                tags = chain(
+                    catalogue.models.Tag.objects.exclude(category='set'),
+                    PDCounterAuthor.objects.all(),
                     PDCounterBook.objects.all())
 
             for tag in tags:
@@ -211,11 +210,9 @@ class Index(SolrIndex):
         """
         Create a lucene document referring book id.
         """
-        doc = {
-            'book_id': int(book.id),
-            }
+        doc = {'book_id': int(book.id)}
         if book.parent is not None:
-            doc["parent_id"] = int(book.parent.id)
+            doc['parent_id'] = int(book.parent.id)
         return doc
 
     def remove_book(self, book_or_id, remove_snippets=True):
@@ -284,7 +281,8 @@ class Index(SolrIndex):
 
     footnote_tags = ['pa', 'pt', 'pr', 'pe']
 
-    skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne', '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF']
+    skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne',
+                        '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF']
 
     published_date_re = re.compile("([0-9]+)[\]. ]*$")
 
@@ -298,7 +296,7 @@ class Index(SolrIndex):
             book_info = dcparser.parse(open(book.xml_file.path))
 
         fields['slug'] = book.slug
-        fields['tags'] = [t.name  for t in book.tags]
+        fields['tags'] = [t.name for t in book.tags]
         fields['is_book'] = True
 
         # validator, name
@@ -332,7 +330,8 @@ class Index(SolrIndex):
             match = self.published_date_re.search(book_info.source_name)
             if match is not None:
                 pd = str(match.groups()[0])
-        if not pd: pd = ""
+        if not pd:
+            pd = ""
         fields["published_date"] = pd
 
         return fields
@@ -355,7 +354,7 @@ class Index(SolrIndex):
             if master.tag in self.master_tags:
                 return master
 
-    def index_content(self, book, book_fields={}):
+    def index_content(self, book, book_fields):
         """
         Walks the book XML and extract content from it.
         Adds parts for each header tag and for each fragment.
@@ -367,8 +366,7 @@ class Index(SolrIndex):
         if master is None:
             return []
 
-        def walker(node, ignore_tags=[]):
-
+        def walker(node, ignore_tags=()):
             if node.tag not in ignore_tags:
                 yield node, None, None
                 if node.text is not None:
@@ -383,7 +381,7 @@ class Index(SolrIndex):
             return
 
         def fix_format(text):
-            #            separator = [u" ", u"\t", u".", u";", u","]
+            # separator = [u" ", u"\t", u".", u";", u","]
             if isinstance(text, list):
                 # need to join it first
                 text = filter(lambda s: s is not None, content)
@@ -471,12 +469,13 @@ class Index(SolrIndex):
                     # handle fragments and themes.
                     if start is not None and start.tag == 'begin':
                         fid = start.attrib['id'][1:]
-                        fragments[fid] = {'text': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
+                        fragments[fid] = {
+                            'text': [], 'themes': [], 'start_section': position, 'start_header': header.tag}
 
                     # themes for this fragment
                     elif start is not None and start.tag == 'motyw':
                         fid = start.attrib['id'][1:]
-                        handle_text.append(None)
+                        handle_text.append(lambda text: None)
                         if start.text is not None:
                             fragments[fid]['themes'] += map(unicode.strip, map(unicode, (start.text.split(','))))
                     elif end is not None and end.tag == 'motyw':
@@ -487,7 +486,7 @@ class Index(SolrIndex):
                         if fid not in fragments:
                             continue  # a broken <end> node, skip it
                         frag = fragments[fid]
-                        if frag['themes'] == []:
+                        if not frag['themes']:
                             continue  # empty themes list.
                         del fragments[fid]
 
@@ -504,8 +503,7 @@ class Index(SolrIndex):
 
                     if text is not None and handle_text is not []:
                         hdl = handle_text[-1]
-                        if hdl is not None:
-                            hdl(text)
+                        hdl(text)
 
                         # in the end, add a section text.
                 doc = add_part(snippets, header_index=position,
@@ -525,6 +523,7 @@ class SearchResult(object):
         self._processed_hits = None  # processed hits
         self.snippets = []
         self.query_terms = query_terms
+        self._book = None
 
         if 'score' in doc:
             self._score = doc['score']
@@ -561,7 +560,9 @@ class SearchResult(object):
 
     def __unicode__(self):
         return u"<SR id=%d %d(%d) hits score=%f %d snippets>" % \
-            (self.book_id, len(self._hits), self._processed_hits and len(self._processed_hits) or -1, self._score, len(self.snippets))
+            (self.book_id, len(self._hits),
+             len(self._processed_hits) if self._processed_hits else -1,
+             self._score, len(self.snippets))
 
     def __str__(self):
         return unicode(self).encode('utf-8')
@@ -579,7 +580,7 @@ class SearchResult(object):
         return self
 
     def get_book(self):
-        if hasattr(self, '_book'):
+        if self._book is not None:
             return self._book
         self._book = catalogue.models.Book.objects.get(id=self.book_id)
         return self._book
@@ -605,11 +606,8 @@ class SearchResult(object):
 
         # sections not covered by fragments
         sect = filter(lambda s: 0 == len(filter(
-            lambda f: s[self.POSITION][self.POSITION_INDEX] >= f[self.POSITION][self.POSITION_INDEX]
-            and s[self.POSITION][self.POSITION_INDEX] < f[self.POSITION][self.POSITION_INDEX] + f[self.POSITION][self.POSITION_SPAN],
-            frags)), sect)
-
-        hits = []
+            lambda f: f[self.POSITION][self.POSITION_INDEX] <= s[self.POSITION][self.POSITION_INDEX] <
+                      f[self.POSITION][self.POSITION_INDEX] + f[self.POSITION][self.POSITION_SPAN], frags)), sect)
 
         def remove_duplicates(lst, keyfn, compare):
             els = {}
@@ -713,7 +711,7 @@ class SearchResult(object):
     def snippet_revision(self, idx=0):
         try:
             return self.hits[idx]['snippets_revision']
-        except:
+        except (IndexError, KeyError):
             return None
 
 
@@ -724,25 +722,26 @@ class Search(SolrIndex):
     def __init__(self, default_field="text"):
         super(Search, self).__init__(mode='r')
 
-
     def make_term_query(self, query, field='text', modal=operator.or_):
         """
         Returns term queries joined by boolean query.
         modal - applies to boolean query
         fuzzy - should the query by fuzzy.
         """
-        if query is None: query = ''
+        if query is None:
+            query = ''
         q = self.index.Q()
-        q = reduce(modal, map(lambda s: self.index.Q(**{field: s}),
-                        query.split(r" ")), q)
+        q = reduce(modal, map(lambda s: self.index.Q(**{field: s}), query.split(r" ")), q)
 
         return q
 
     def search_phrase(self, searched, field='text', book=False,
                       filters=None,
                       snippets=False):
-        if filters is None: filters = []
-        if book: filters.append(self.index.Q(is_book=True))
+        if filters is None:
+            filters = []
+        if book:
+            filters.append(self.index.Q(is_book=True))
 
         q = self.index.query(**{field: searched})
         q = self.apply_filters(q, filters).field_limit(score=True, all_fields=True)
@@ -752,8 +751,10 @@ class Search(SolrIndex):
     def search_some(self, searched, fields, book=True,
                     filters=None, snippets=True, query_terms=None):
         assert isinstance(fields, list)
-        if filters is None: filters = []
-        if book: filters.append(self.index.Q(is_book=True))
+        if filters is None:
+            filters = []
+        if book:
+            filters.append(self.index.Q(is_book=True))
 
         query = self.index.Q()
 
@@ -764,7 +765,6 @@ class Search(SolrIndex):
         query = self.apply_filters(query, filters).field_limit(score=True, all_fields=True)
         res = query.execute()
         return [SearchResult(found, how_found='search_some', query_terms=query_terms) for found in res]
-
 
     def search_everywhere(self, searched, query_terms=None):
         """
@@ -860,7 +860,8 @@ class Search(SolrIndex):
         """
         Search for Tag objects using query.
         """
-        if not filters: filters = []
+        if not filters:
+            filters = []
         if not pdcounter:
             filters.append(~self.index.Q(is_pdcounter=True))
         res = self.apply_filters(query, filters).execute()
@@ -872,25 +873,30 @@ class Search(SolrIndex):
             is_pdcounter = doc.get('is_pdcounter', False)
             category = doc.get('tag_category')
             try:
-                if is_pdcounter == True:
+                if is_pdcounter:
                     if category == 'pd_author':
                         tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
                     elif category == 'pd_book':
                         tag = PDCounterBook.objects.get(id=doc.get('tag_id'))
                         tag.category = 'pd_book'  # make it look more lik a tag.
                     else:
-                        print ("Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (int(doc.get('tag_id')), category)).encode('utf-8')
+                        # WTF
+                        print ("Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (
+                            int(doc.get('tag_id')), category)).encode('utf-8')
                     pd_tags.append(tag)
                 else:
                     tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
                     tags.append(tag)
 
-            except catalogue.models.Tag.DoesNotExist: pass
-            except PDCounterAuthor.DoesNotExist: pass
-            except PDCounterBook.DoesNotExist: pass
+            except catalogue.models.Tag.DoesNotExist:
+                pass
+            except PDCounterAuthor.DoesNotExist:
+                pass
+            except PDCounterBook.DoesNotExist:
+                pass
 
         tags_slugs = set(map(lambda t: t.slug, tags))
-        tags = tags + filter(lambda t: not t.slug in tags_slugs, pd_tags)
+        tags = tags + filter(lambda t: t.slug not in tags_slugs, pd_tags)
 
         log.debug('search_tags: %s' % tags)
 
@@ -923,19 +929,20 @@ class Search(SolrIndex):
         for r in res:
             try:
                 bid = r['book_id']
-                if not bid in bks_found:
+                if bid not in bks_found:
                     bks.append(catalogue.models.Book.objects.get(id=bid))
                     bks_found.add(bid)
-            except catalogue.models.Book.DoesNotExist: pass
+            except catalogue.models.Book.DoesNotExist:
+                pass
         return bks
- 
 
     @staticmethod
     def apply_filters(query, filters):
         """
         Apply filters to a query
         """
-        if filters is None: filters = []
+        if filters is None:
+            filters = []
         filters = filter(lambda x: x is not None, filters)
         for f in filters:
             query = query.query(f)

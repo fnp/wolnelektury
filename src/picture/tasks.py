@@ -17,4 +17,3 @@ def generate_picture_html(picture_id):
                 'themes': pic.areas_json['themes'],
                 }))
     pic.html_file.save("%s.html" % pic.slug, ContentFile(html_text))
-

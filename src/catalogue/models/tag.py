@@ -21,7 +21,7 @@ TAG_CATEGORIES = (
     ('genre', _('genre')),
     ('theme', _('theme')),
     ('set', _('set')),
-    ('thing', _('thing')), # things shown on pictures
+    ('thing', _('thing')),  # things shown on pictures
 )
 
 
@@ -33,8 +33,8 @@ class Tag(TagBase):
     name = models.CharField(_('name'), max_length=120, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
-    category = models.CharField(_('category'), max_length=50, blank=False, null=False,
-        db_index=True, choices=TAG_CATEGORIES)
+    category = models.CharField(
+        _('category'), max_length=50, blank=False, null=False, db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(_('description'), blank=True)
 
     user = models.ForeignKey(User, blank=True, null=True)
@@ -138,18 +138,18 @@ class Tag(TagBase):
 
     @permalink
     def get_absolute_url(self):
-        return ('tagged_object_list', [self.url_chunk])
+        return 'tagged_object_list', [self.url_chunk]
 
     @permalink
     def get_absolute_gallery_url(self):
-        return ('tagged_object_list_gallery', [self.url_chunk])
+        return 'tagged_object_list_gallery', [self.url_chunk]
 
     @classmethod
     @permalink
     def create_url(cls, category, slug):
         return ('catalogue.views.tagged_object_list', [
-                '/'.join((cls.categories_dict[category], slug))
-            ])
+            '/'.join((cls.categories_dict[category], slug))
+        ])
 
     def has_description(self):
         return len(self.description) > 0
@@ -159,7 +159,8 @@ class Tag(TagBase):
     @staticmethod
     def get_tag_list(tags):
         if isinstance(tags, basestring):
-            if not tags: return []
+            if not tags:
+                return []
             real_tags = []
             ambiguous_slugs = []
             category = None
@@ -175,7 +176,7 @@ class Tag(TagBase):
                     try:
                         real_tags.append(Tag.objects.get(slug=name))
                         deprecated = True
-                    except Tag.MultipleObjectsReturned, e:
+                    except Tag.MultipleObjectsReturned:
                         ambiguous_slugs.append(name)
 
             if category:
@@ -208,10 +209,10 @@ class Tag(TagBase):
         for field_name, category in categories:
             try:
                 tag_names = getattr(info, field_name)
-            except:
+            except KeyError:
                 try:
                     tag_names = [getattr(info, category)]
-                except:
+                except KeyError:
                     # For instance, Pictures do not have 'genre' field.
                     continue
             for tag_name in tag_names:

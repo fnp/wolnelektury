@@ -52,13 +52,13 @@ class Search(Mock):
             results.append(res)
         return results
 
-    def search_phrase(self, searched, field='text', book=False,
-            filters=None, snippets=False):
+    def search_phrase(self, searched, field='text', book=False, filters=None, snippets=False):
         return self._find_some_books(snippets)
 
     def search_some(self, searched, fields, book=True, filters=None, snippets=True, query_terms=None):
         return self._find_some_books(snippets, query_terms)
 
+    # WTF
     def search_books(self, query, filters=None, max_results=10):
         return self._find_some_books(snippets, max_results=max_results)
 

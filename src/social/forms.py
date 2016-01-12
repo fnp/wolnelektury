@@ -14,8 +14,7 @@ class UserSetsForm(forms.Form):
     def __init__(self, book, user, *args, **kwargs):
         super(UserSetsForm, self).__init__(*args, **kwargs)
         self.fields['set_ids'] = forms.ChoiceField(
-            choices=[(tag.id, tag.name) for tag in
-                Tag.objects.filter(category='set', user=user).iterator()],
+            choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user).iterator()],
         )
 
 
@@ -28,13 +27,11 @@ class ObjectSetsForm(forms.Form):
         self._user = user
         data = kwargs.setdefault('data', {})
         if 'tags' not in data and user.is_authenticated():
-            data['tags'] = ', '.join(t.name
-                for t in obj.tags.filter(category='set', user=user).iterator() if t.name)
+            data['tags'] = ', '.join(t.name for t in obj.tags.filter(category='set', user=user).iterator() if t.name)
         super(ObjectSetsForm, self).__init__(*args, **kwargs)
 
     def save(self, request):
-        tags = [get_set(self._user, tag_name.strip())
-                    for tag_name in self.cleaned_data['tags'].split(',')]
+        tags = [get_set(self._user, tag_name.strip()) for tag_name in self.cleaned_data['tags'].split(',')]
         set_sets(self._user, self._obj, tags)
         return {"like": True}
 
@@ -48,8 +45,7 @@ class NewSetForm(forms.Form):
 
     def save(self, user, commit=True):
         name = self.cleaned_data['name']
-        new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=name.lower(),
-            category='set', user=user)
+        new_set = Tag(name=name, slug=utils.get_random_hash(name), sort_key=name.lower(), category='set', user=user)
 
         new_set.save()
         return new_set

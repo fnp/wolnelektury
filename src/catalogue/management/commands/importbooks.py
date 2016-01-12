@@ -9,8 +9,9 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
+from django.db import transaction
 from librarian.picture import ImageStore
-from wolnelektury.management.profile import profile
+# from wolnelektury.management.profile import profile
 
 from catalogue.models import Book
 from picture.models import Picture
@@ -21,16 +22,16 @@ from search.index import Index
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
-            help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
+                    help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
         make_option('-f', '--force', action='store_true', dest='force', default=False,
-            help='Overwrite works already in the catalogue'),
+                    help='Overwrite works already in the catalogue'),
         make_option('-D', '--dont-build', dest='dont_build',
-            metavar="FORMAT,...",
-            help="Skip building specified formats"),
+                    metavar="FORMAT,...",
+                    help="Skip building specified formats"),
         make_option('-S', '--no-search-index', action='store_false', dest='search_index', default=True,
-            help='Skip indexing imported works for search'),
+                    help='Skip indexing imported works for search'),
         make_option('-p', '--picture', action='store_true', dest='import_picture', default=False,
-            help='Import pictures'),
+                    help='Import pictures'),
     )
     help = 'Imports books from the specified directories.'
     args = 'directory [directory ...]'
@@ -68,16 +69,14 @@ class Command(BaseCommand):
                 raise ex
         return picture
 
-    #    @profile
+    # @profile
+    @transaction.atomic
     def handle(self, *directories, **options):
-        from django.db import transaction
-
         self.style = color_style()
 
         verbose = options.get('verbose')
         import_picture = options.get('import_picture')
 
-        index = None
         if options.get('search_index') and not settings.NO_SEARCH_INDEX:
             index = Index()
             try:
@@ -87,57 +86,56 @@ class Command(BaseCommand):
                 index.index.rollback()
                 raise e
 
-        # Start transaction management.
-        with transaction.atomic():
-            files_imported = 0
-            files_skipped = 0
+        files_imported = 0
+        files_skipped = 0
 
-            for dir_name in directories:
-                if not os.path.isdir(dir_name):
-                    print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
-                else:
-                    # files queue
-                    files = sorted(os.listdir(dir_name))
-                    postponed = {}
-                    while files:
-                        file_name = files.pop(0)
-                        file_path = os.path.join(dir_name, file_name)
-                        file_base, ext = os.path.splitext(file_path)
+        for dir_name in directories:
+            if not os.path.isdir(dir_name):
+                print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
+            else:
+                # files queue
+                files = sorted(os.listdir(dir_name))
+                postponed = {}
+                while files:
+                    file_name = files.pop(0)
+                    file_path = os.path.join(dir_name, file_name)
+                    file_base, ext = os.path.splitext(file_path)
 
-                        # Skip files that are not XML files
-                        if not ext == '.xml':
-                            continue
+                    # Skip files that are not XML files
+                    if not ext == '.xml':
+                        continue
 
-                        if verbose > 0:
-                            print "Parsing '%s'" % file_path
+                    if verbose > 0:
+                        print "Parsing '%s'" % file_path
+                    else:
+                        sys.stdout.write('.')
+                        sys.stdout.flush()
+
+                    # Import book files
+                    try:
+                        if import_picture:
+                            self.import_picture(file_path, options)
                         else:
-                            sys.stdout.write('.')
-                            sys.stdout.flush()
+                            self.import_book(file_path, options)
 
-                        # Import book files
-                        try:
-                            if import_picture:
-                                self.import_picture(file_path, options)
-                            else:
-                                self.import_book(file_path, options)
+                        files_imported += 1
 
-                            files_imported += 1
+                    except (Book.AlreadyExists, Picture.AlreadyExists):
+                        print self.style.ERROR(
+                            '%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
+                            file_path)
+                        files_skipped += 1
 
-                        except (Book.AlreadyExists, Picture.AlreadyExists):
-                            print self.style.ERROR('%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
-                                file_path)
-                            files_skipped += 1
-
-                        except Book.DoesNotExist, e:
-                            if file_name not in postponed or postponed[file_name] < files_imported:
-                                # push it back into the queue, maybe the missing child will show up
-                                if verbose:
-                                    print self.style.NOTICE('Waiting for missing children')
-                                files.append(file_name)
-                                postponed[file_name] = files_imported
-                            else:
-                                # we're in a loop, nothing's being imported - some child is really missing
-                                raise e
+                    except Book.DoesNotExist, e:
+                        if file_name not in postponed or postponed[file_name] < files_imported:
+                            # push it back into the queue, maybe the missing child will show up
+                            if verbose:
+                                print self.style.NOTICE('Waiting for missing children')
+                            files.append(file_name)
+                            postponed[file_name] = files_imported
+                        else:
+                            # we're in a loop, nothing's being imported - some child is really missing
+                            raise e
 
         # Print results
         print

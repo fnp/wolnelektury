@@ -6,6 +6,7 @@
 from modeltranslation.translator import translator, TranslationOptions
 from infopages.models import InfoPage
 
+
 class InfoPageTranslationOptions(TranslationOptions):
     fields = ('title', 'left_column', 'right_column')
 

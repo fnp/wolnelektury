@@ -3,15 +3,14 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import datetime
-import os
 import os.path
-import re
 import sqlite3
 from django.core.management.base import BaseCommand
 
 from api.helpers import timestamp
 from api.settings import MOBILE_INIT_DB
 from catalogue.models import Book, Tag
+from wolnelektury.utils import makedirs
 
 
 class Command(BaseCommand):
@@ -49,23 +48,20 @@ def pretty_size(size):
     if size < 10:
         return "%.1f %s" % (size, unit)
     return "%d %s" % (size, unit)
-
-
-    if not isinstance(value, unicode):
-        value = unicode(value, 'utf-8')
-
-    # try to replace chars
-    value = re.sub('[^a-zA-Z0-9\\s\\-]{1}', replace_char, value)
-    value = value.lower()
-    value = re.sub(r'[^a-z0-9{|}]+', '~', value)
-
-    return value.encode('ascii', 'ignore')
-
+    #
+    # if not isinstance(value, unicode):
+    #     value = unicode(value, 'utf-8')
+    #
+    # # try to replace chars
+    # value = re.sub('[^a-zA-Z0-9\\s\\-]{1}', replace_char, value)
+    # value = value.lower()
+    # value = re.sub(r'[^a-z0-9{|}]+', '~', value)
+    #
+    # return value.encode('ascii', 'ignore')
 
 
 def init_db(last_checked):
-    if not os.path.isdir(MOBILE_INIT_DB):
-        os.makedirs(MOBILE_INIT_DB)
+    makedirs(MOBILE_INIT_DB)
     db = sqlite3.connect(os.path.join(MOBILE_INIT_DB, 'initial.db-%d' % last_checked))
 
     schema = """
@@ -115,7 +111,6 @@ def current(last_checked):
     )
 
 
-
 book_sql = """
     INSERT INTO book 
         (id, title, cover, html_file,  html_file_size, parent, parent_number, sort_key, pretty_size, authors) 
@@ -138,7 +133,6 @@ categories = {'author': 'autor',
 
 
 def add_book(db, book):
-    id = book.id
     title = book.title
     if book.html_file:
         html_file = book.html_file.url
@@ -158,7 +152,6 @@ def add_book(db, book):
 
 
 def add_tag(db, tag):
-    id = tag.id
     category = categories[tag.category]
     name = tag.name
     sort_key = tag.sort_key

@@ -13,8 +13,8 @@ from django.dispatch import Signal
 
 qn = connection.ops.quote_name
 
-
 tags_updated = Signal(providing_args=["affected_tags"])
+
 
 def get_queryset_and_model(queryset_or_model):
     """
@@ -27,7 +27,7 @@ def get_queryset_and_model(queryset_or_model):
     try:
         return queryset_or_model, queryset_or_model.model
     except AttributeError:
-        return queryset_or_model._default_manager.all(), queryset_or_model
+        return queryset_or_model.objects.all(), queryset_or_model
 
 
 ############
@@ -58,18 +58,18 @@ class TagManager(models.Manager):
         updated_tags = self.model.get_tag_list(tags)
 
         # Remove tags which no longer apply
-        tags_for_removal = [tag for tag in current_tags \
-                            if tag not in updated_tags]
+        tags_for_removal = [tag for tag in current_tags if tag not in updated_tags]
         if len(tags_for_removal):
-            self.intermediary_table_model._default_manager.filter(content_type__pk=content_type.pk,
-                                               object_id=obj.pk,
-                                               tag__in=tags_for_removal).delete()
+            self.intermediary_table_model.objects.filter(
+                content_type__pk=content_type.pk,
+                object_id=obj.pk,
+                tag__in=tags_for_removal).delete()
         # Add new tags
         tags_to_add = [tag for tag in updated_tags
                        if tag not in current_tags]
         for tag in tags_to_add:
             if tag not in current_tags:
-                self.intermediary_table_model._default_manager.create(tag=tag, content_object=obj)
+                self.intermediary_table_model.objects.create(tag=tag, content_object=obj)
 
         tags_updated.send(sender=type(obj), instance=obj, affected_tags=tags_to_add + tags_for_removal)
 
@@ -78,8 +78,8 @@ class TagManager(models.Manager):
         Remove tag from an object.
         """
         content_type = ContentType.objects.get_for_model(obj)
-        self.intermediary_table_model._default_manager.filter(content_type__pk=content_type.pk,
-            object_id=obj.pk, tag=tag).delete()
+        self.intermediary_table_model.objects.filter(
+            content_type__pk=content_type.pk, object_id=obj.pk, tag=tag).delete()
 
     def get_for_object(self, obj):
         """
@@ -105,9 +105,10 @@ class TagManager(models.Manager):
         ``filters`` argument.
         """
         # TODO: Do we really need this filters stuff?
-        if filters is None: filters = {}
+        if filters is None:
+            filters = {}
 
-        queryset = model._default_manager.filter()
+        queryset = model.objects.filter()
         for f in filters.items():
             queryset.query.add_filter(f)
         usage = self.usage_for_queryset(queryset, counts)
@@ -122,10 +123,9 @@ class TagManager(models.Manager):
         each tag, indicating how many times it has been used against
         the Model class in question.
         """
-        usage = self.model._default_manager.filter(
+        usage = self.model.objects.filter(
             items__content_type=ContentType.objects.get_for_model(queryset.model),
-            items__object_id__in=queryset
-            )
+            items__object_id__in=queryset)
         if counts:
             usage = usage.annotate(count=models.Count('id'))
         else:
@@ -227,7 +227,7 @@ def create_intermediary_table_model(model):
 
 
 class TagMeta(ModelBase):
-    "Metaclass for tag models (models inheriting from TagBase)."
+    """Metaclass for tag models (models inheriting from TagBase)."""
     def __new__(mcs, name, bases, attrs):
         model = super(TagMeta, mcs).__new__(mcs, name, bases, attrs)
         if not model._meta.abstract:
@@ -256,4 +256,3 @@ class TagBase(models.Model):
             return [tag_list]
         else:
             return tag_list
-

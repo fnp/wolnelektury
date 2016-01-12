@@ -5,9 +5,11 @@
 from time import mktime
 from piston.resource import Resource
 
+
 def timestamp(dtime):
-    "converts a datetime.datetime object to a timestamp int"
+    """converts a datetime.datetime object to a timestamp int"""
     return int(mktime(dtime.timetuple()))
+
 
 class CsrfExemptResource(Resource):
     """A Custom Resource that is csrf exempt"""

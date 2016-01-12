@@ -5,24 +5,20 @@
 import os.path
 
 from django.core.management.base import BaseCommand
+from django.db import transaction
 
 from catalogue.models import Book, BookMedia
 from catalogue.utils import ExistingFile
 
 
 class Command(BaseCommand):
-    help = "Saves uploaded media with a given book and a given name. If media has a source SHA1 info - matching media is replaced."
+    help = "Saves uploaded media with a given book and a given name. " \
+           "If media has a source SHA1 info - matching media is replaced."
     args = 'path slug name'
 
+    @transaction.atomic
     def handle(self, *args, **options):
-        from django.db import transaction
-
         path, slug, name = args
-
-        # Start transaction management.
-        transaction.commit_unless_managed()
-        transaction.enter_transaction_management()
-        transaction.managed(True)
 
         book = Book.objects.get(slug=slug)
 
@@ -45,5 +41,3 @@ class Command(BaseCommand):
         bm.name = name
         bm.file.save(None, ExistingFile(path))
         bm.save()
-        transaction.commit()
-        transaction.leave_transaction_management()

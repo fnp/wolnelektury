@@ -5,6 +5,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+
 class InfoPage(models.Model):
     """An InfoPage is used to display a two-column flatpage."""
 
@@ -24,4 +25,4 @@ class InfoPage(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('infopage', [self.slug])
+        return 'infopage', [self.slug]

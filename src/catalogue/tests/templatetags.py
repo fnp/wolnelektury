@@ -16,7 +16,7 @@ class BookDescTests(WLTestCase):
         authors = PersonStub(("Common",), "Man"), PersonStub(("Jane",), "Doe")
 
         child_info = BookInfoStub(authors=authors, genre="Genre", epoch='Epoch', kind="Kind",
-                                   **info_args(u"Child"))
+                                  **info_args(u"Child"))
         parent_info = BookInfoStub(authors=authors, genre="Genre", epoch='Epoch', kind="Kind",
                                    parts=[child_info.url],
                                    **info_args(u"Parent"))

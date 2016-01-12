@@ -21,7 +21,7 @@ def likes(user, work, request=None):
 
     if not hasattr(request, 'social_likes'):
         # tuple: unchecked, checked, liked
-        request.social_likes = defaultdict(lambda:(set(), set(), set()))
+        request.social_likes = defaultdict(lambda: (set(), set(), set()))
 
     ct = ContentType.objects.get_for_model(type(work))
     likes_t = request.social_likes[ct.pk]
@@ -29,6 +29,7 @@ def likes(user, work, request=None):
         return work.pk in likes_t[2]
     else:
         likes_t[0].add(work.pk)
+
         def _likes():
             if likes_t[0]:
                 ids = tuple(likes_t[0])
@@ -47,8 +48,8 @@ def get_set(user, name):
     try:
         tag = Tag.objects.get(category='set', user=user, name=name)
     except Tag.DoesNotExist:
-        tag = Tag.objects.create(category='set', user=user, name=name,
-                slug=utils.get_random_hash(name), sort_key=name.lower())
+        tag = Tag.objects.create(
+            category='set', user=user, name=name, slug=utils.get_random_hash(name), sort_key=name.lower())
     return tag
 
 

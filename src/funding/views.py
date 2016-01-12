@@ -94,8 +94,8 @@ class OfferDetailView(FormView):
         else:
             return form_class(self.object, initial={'amount': app_settings.DEFAULT_AMOUNT})
 
-    def get_context_data(self, *args, **kwargs):
-        ctx = super(OfferDetailView, self).get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        ctx = super(OfferDetailView, self).get_context_data(**kwargs)
         ctx['object'] = self.object
         ctx['page'] = self.request.GET.get('page', 1)
         if self.object.is_current():
@@ -125,8 +125,8 @@ class CurrentView(OfferDetailView):
 class OfferListView(ListView):
     queryset = Offer.public()
 
-    def get_context_data(self, *args, **kwargs):
-        ctx = super(OfferListView, self).get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        ctx = super(OfferListView, self).get_context_data(**kwargs)
         ctx['funding_no_show_current'] = True
         return ctx
 
@@ -134,8 +134,8 @@ class OfferListView(ListView):
 class ThanksView(TemplateView):
     template_name = "funding/thanks.html"
 
-    def get_context_data(self, *args, **kwargs):
-        ctx = super(ThanksView, self).get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        ctx = super(ThanksView, self).get_context_data(**kwargs)
         ctx['offer'] = Offer.current()
         ctx['funding_no_show_current'] = True
         return ctx
@@ -150,8 +150,7 @@ class DisableNotifications(TemplateView):
 
     @csrf_exempt
     def dispatch(self, request):
-        self.object = get_object_or_404(Funding,
-            email=request.GET.get('email'), notify_key=request.GET.get('key'))
+        self.object = get_object_or_404(Funding, email=request.GET.get('email'), notify_key=request.GET.get('key'))
         return super(DisableNotifications, self).dispatch(request)
 
     def post(self, *args, **kwargs):
@@ -180,36 +179,29 @@ def offer_bar(request, pk, link=False, closeable=False, show_title=True, show_ti
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def top_bar(request, pk):
-    return offer_bar(request, pk,
-        link=True, closeable=True, add_class="funding-top-header")
+    return offer_bar(request, pk, link=True, closeable=True, add_class="funding-top-header")
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def list_bar(request, pk):
-    return offer_bar(request, pk,
-        link=True, show_title_calling=False)
+    return offer_bar(request, pk, link=True, show_title_calling=False)
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def detail_bar(request, pk):
-    return offer_bar(request, pk,
-        show_title=False)
+    return offer_bar(request, pk, show_title=False)
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def offer_status(request, pk):
     offer = get_object_or_404(Offer, pk=pk)
-    return render(request, "funding/includes/offer_status.html", {
-        'offer': offer,
-    })
+    return render(request, "funding/includes/offer_status.html", {'offer': offer})
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def offer_status_more(request, pk):
     offer = get_object_or_404(Offer, pk=pk)
-    return render(request, "funding/includes/offer_status_more.html", {
-        'offer': offer,
-    })
+    return render(request, "funding/includes/offer_status_more.html", {'offer': offer})
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])

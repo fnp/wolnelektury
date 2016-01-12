@@ -16,11 +16,9 @@ def book_stub_detail(request, slug):
     if book.pd and not book.in_pd():
         pd_counter = datetime(book.pd, 1, 1)
 
-    form = PublishingSuggestForm(
-            initial={"books": u"%s — %s, \n" % (book.author, book.title)})
+    form = PublishingSuggestForm(initial={"books": u"%s — %s, \n" % (book.author, book.title)})
 
-    return render_to_response('pdcounter/book_stub_detail.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('pdcounter/book_stub_detail.html', locals(), context_instance=RequestContext(request))
 
 
 @cache.never_cache
@@ -31,5 +29,4 @@ def author_detail(request, slug):
 
     form = PublishingSuggestForm(initial={"books": author.name + ", \n"})
 
-    return render_to_response('pdcounter/author_detail.html', locals(),
-        context_instance=RequestContext(request))
+    return render_to_response('pdcounter/author_detail.html', locals(), context_instance=RequestContext(request))

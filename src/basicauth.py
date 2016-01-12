@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #############################################################################
 # from http://djangosnippets.org/snippets/243/
 
@@ -7,8 +8,8 @@ import base64
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
-#
-def view_or_basicauth(view, request, test_func, realm = "", *args, **kwargs):
+
+def view_or_basicauth(view, request, test_func, realm="", *args, **kwargs):
     """
     This is a helper function used by 'logged_in_or_basicauth' and
     'has_perm_or_basicauth' (deleted) that does the nitty of determining if they
@@ -47,7 +48,7 @@ def view_or_basicauth(view, request, test_func, realm = "", *args, **kwargs):
     
 
 #
-def logged_in_or_basicauth(realm = ""):
+def logged_in_or_basicauth(realm=""):
     """
     A simple decorator that requires a user to be logged in. If they are not
     logged in the request is examined for a 'authorization' header.

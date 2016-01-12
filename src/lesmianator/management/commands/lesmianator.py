@@ -19,11 +19,11 @@ re_text = re.compile(r'\n{3,}(.*?)\n*-----\n', re.S).search
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-t', '--tags', dest='tags', metavar='SLUG,...',
-            help='Use only books tagged with this tags'),
+                    help='Use only books tagged with this tags'),
         make_option('-i', '--include', dest='include', metavar='SLUG,...',
-            help='Include specific books by slug'),
+                    help='Include specific books by slug'),
         make_option('-e', '--exclude', dest='exclude', metavar='SLUG,...',
-            help='Exclude specific books by slug')
+                    help='Exclude specific books by slug')
     )
     help = 'Prepare data for Lesmianator.'
 
@@ -36,7 +36,7 @@ class Command(BaseCommand):
 
         try:
             path = settings.LESMIANATOR_PICKLE
-        except:
+        except AttributeError:
             print self.style.ERROR('LESMIANATOR_PICKLE not set in the settings.')
             return
 
@@ -91,7 +91,7 @@ class Command(BaseCommand):
 
         try:
             dump(lesmianator, open(path, 'w'))
-        except:
+        except IOError:
             print self.style.ERROR("Couldn't write to $s" % path)
             return
 

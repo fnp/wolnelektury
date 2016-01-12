@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from os import path
 from .paths import PROJECT_DIR
 
@@ -15,7 +18,9 @@ LOCALE_PATHS = [
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pl'
 
-gettext = lambda s: s
+
+def gettext(s):
+    return s
 
 LANGUAGES = tuple(sorted([
     ('pl', u'polski'),
@@ -26,6 +31,6 @@ LANGUAGES = tuple(sorted([
     ('ru', u'русский'),
     ('es', u'español'),
     ('uk', u'українська'),
-#    ('jp', u'日本語'),
+    # ('jp', u'日本語'),
     ('it', u'italiano'),
 ], key=lambda x: x[0]))

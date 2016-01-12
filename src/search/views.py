@@ -3,19 +3,18 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators import cache
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
-from catalogue.models import Book, Tag, Fragment
+from catalogue.models import Book
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from search.index import Search, SearchResult
 from suggest.forms import PublishingSuggestForm
 import re
-#import enchant
 import json
 
 
@@ -132,16 +131,11 @@ def hint(request):
 
 @cache.never_cache
 def main(request):
-    results = {}
-
-    results = None
-    query = None
-
     query = request.GET.get('q', '')
 
     if len(query) < 2:
-        return render_to_response('catalogue/search_too_short.html',
-                                  {'prefix': query},
+        return render_to_response(
+            'catalogue/search_too_short.html', {'prefix': query},
             context_instance=RequestContext(request))
 
     query = remove_query_syntax_chars(query)
@@ -151,7 +145,7 @@ def main(request):
     theme_terms = search.index.analyze(text=query, field="themes_pl") \
         + search.index.analyze(text=query, field="themes")
 
-            # change hints
+    # change hints
     tags = search.hint_tags(query, pdcounter=True, prefix=False)
     tags = split_tags(tags)
 
@@ -236,20 +230,28 @@ def main(request):
     #     return HttpResponseRedirect(results[0].book.get_absolute_url())
     if len(results) == 0:
         form = PublishingSuggestForm(initial={"books": query + ", "})
-        return render_to_response('catalogue/search_no_hits.html',
-                                  {'tags': tags,
-                                   'prefix': query,
-                                   "form": form,
-                                   'did_you_mean': suggestion},
+        return render_to_response(
+            'catalogue/search_no_hits.html',
+            {
+                'tags': tags,
+                'prefix': query,
+                'form': form,
+                'did_you_mean': suggestion
+            },
             context_instance=RequestContext(request))
 
-    return render_to_response('catalogue/search_multiple_hits.html',
-                              {'tags': tags,
-                               'prefix': query,
-                               'results': {'author': author_results,
-                                           'translator': translator_results,
-                                           'title': title_results,
-                                           'content': text_phrase,
-                                           'other': everywhere},
-                               'did_you_mean': suggestion},
+    return render_to_response(
+        'catalogue/search_multiple_hits.html',
+        {
+            'tags': tags,
+            'prefix': query,
+            'results': {
+                'author': author_results,
+                'translator': translator_results,
+                'title': title_results,
+                'content': text_phrase,
+                'other': everywhere
+            },
+            'did_you_mean': suggestion
+        },
         context_instance=RequestContext(request))

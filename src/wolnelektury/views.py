@@ -43,7 +43,7 @@ def main_page(request):
                 continue
             ctx['theme_fragment'] = tf[0]
             for f in tf:
-                if not f.book in ctx['theme_books']:
+                if f.book not in ctx['theme_books']:
                     ctx['theme_books'].append(f.book)
                 if len(ctx['theme_books']) == 3:
                     break
@@ -70,9 +70,9 @@ class LoginFormView(AjaxableFormView):
 
     def __call__(self, request):
         if request.user.is_authenticated():
-            return self.redirect_or_refresh(request, '/',
-                message=_('Already logged in as user %(user)s', ) %
-                            {'user': request.user.username})
+            return self.redirect_or_refresh(
+                request, '/',
+                message=_('Already logged in as user %(user)s', ) % {'user': request.user.username})
         return super(LoginFormView, self).__call__(request)
 
     def success(self, form, request):
@@ -91,9 +91,9 @@ class RegisterFormView(AjaxableFormView):
 
     def __call__(self, request):
         if request.user.is_authenticated():
-            return self.redirect_or_refresh(request, '/',
-                message=_('Already logged in as user %(user)s', ) %
-                            {'user': request.user.username})
+            return self.redirect_or_refresh(
+                request, '/',
+                message=_('Already logged in as user %(user)s', ) % {'user': request.user.username})
         return super(RegisterFormView, self).__call__(request)
 
     def success(self, form, request):

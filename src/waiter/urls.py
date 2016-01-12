@@ -4,6 +4,7 @@
 #
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('waiter.views',
+urlpatterns = patterns(
+    'waiter.views',
     url(r'^(?P<path>.*)$', 'wait', name='waiter'),
 )

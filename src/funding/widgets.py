@@ -2,19 +2,20 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from decimal import Decimal
+from decimal import Decimal, DecimalException
 from django import forms
 from django.template.loader import render_to_string
 
 
 class PerksAmountWidget(forms.Textarea):
-    def perks_input_name(self, name):
+    @staticmethod
+    def perks_input_name(name):
         return "_%s_perk" % name
 
     def render(self, name, value, attrs=None):
         try:
             value = Decimal(value)
-        except:
+        except DecimalException:
             pass
         perks = list(self.form_instance.offer.get_perks())
         perk_chosen = False

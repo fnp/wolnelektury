@@ -21,8 +21,7 @@ class SuggestForm(forms.Form):
         contact = self.cleaned_data['contact']
         description = self.cleaned_data['description']
 
-        suggestion = Suggestion(contact=contact,
-            description=description, ip=request.META['REMOTE_ADDR'])
+        suggestion = Suggestion(contact=contact, description=description, ip=request.META['REMOTE_ADDR'])
         if request.user.is_authenticated():
             suggestion.user = request.user
         suggestion.save()
@@ -47,16 +46,12 @@ Kontakt: %(contact)s
         except ValidationError:
             pass
         else:
-            send_mail(u'[WolneLektury] ' +
-                    ugettext(u'Thank you for your suggestion.'),
-                    ugettext(u"""\
+            send_mail(u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
+                      ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator.""") +
-u"""
-
--- 
-""" + ugettext(u'''Message sent automatically. Please do not reply.'''),
-                    'no-reply@wolnelektury.pl', [contact], fail_silently=True)
+                      u'\n\n-- \n' + ugettext(u'''Message sent automatically. Please do not reply.'''),
+                      'no-reply@wolnelektury.pl', [contact], fail_silently=True)
 
 
 class PublishingSuggestForm(forms.Form):
@@ -64,19 +59,20 @@ class PublishingSuggestForm(forms.Form):
     books = forms.CharField(label=_('books'), widget=forms.Textarea, required=False)
     audiobooks = forms.CharField(label=_('audiobooks'), widget=forms.Textarea, required=False)
 
-    def clean(self, *args, **kwargs):
+    def clean(self):
         if not self.cleaned_data['books'] and not self.cleaned_data['audiobooks']:
             msg = ugettext(u"One of these fields is required.")
             self._errors["books"] = self.error_class([msg])
             self._errors["audiobooks"] = self.error_class([msg])
-        return super(PublishingSuggestForm, self).clean(*args, **kwargs)
+        return super(PublishingSuggestForm, self).clean()
 
     def save(self, request):
         contact = self.cleaned_data['contact']
         books = self.cleaned_data['books']
         audiobooks = self.cleaned_data['audiobooks']
 
-        suggestion = PublishingSuggestion(contact=contact, books=books,
+        suggestion = PublishingSuggestion(
+            contact=contact, books=books,
             audiobooks=audiobooks, ip=request.META['REMOTE_ADDR'])
         if request.user.is_authenticated():
             suggestion.user = request.user
@@ -106,13 +102,10 @@ Audiobooki:
         except ValidationError:
             pass
         else:
-            send_mail(u'[WolneLektury] ' +
-                    ugettext(u'Thank you for your suggestion.'),
-                    ugettext(u"""\
+            send_mail(
+                u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
+                ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator.""") +
-u"""
-
--- 
-""" + ugettext(u'''Message sent automatically. Please do not reply.'''),
-                    'no-reply@wolnelektury.pl', [contact], fail_silently=True)
+                u"\n\n-- \n" + ugettext(u'''Message sent automatically. Please do not reply.'''),
+                'no-reply@wolnelektury.pl', [contact], fail_silently=True)

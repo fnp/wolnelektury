@@ -19,4 +19,3 @@ try:
     WAITER_MAX_QUEUE = settings.WAITER_MAX_QUEUE
 except AttributeError:
     WAITER_MAX_QUEUE = 20
-

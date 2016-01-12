@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import cPickle
+from cPickle import PickleError
 from datetime import datetime
 from random import randint
 from StringIO import StringIO
@@ -34,7 +35,7 @@ class Poem(models.Model):
         f = open(settings.LESMIANATOR_PICKLE)
         global_dictionary = cPickle.load(f)
         f.close()
-    except:
+    except (IOError, AttributeError, PickleError):
         global_dictionary = {}
 
     def visit(self):
@@ -149,7 +150,7 @@ class Continuations(models.Model):
     @classmethod
     def get(cls, sth):
         object_type = ContentType.objects.get_for_model(sth)
-        should_keys = set([sth.id])
+        should_keys = {sth.id}
         if isinstance(sth, Tag):
             should_keys = set(b.pk for b in Book.tagged.with_any((sth,)).iterator())
         try:
@@ -174,5 +175,3 @@ class Continuations(models.Model):
             c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps((should_keys, conts))))
             c.save()
             return conts
-
-

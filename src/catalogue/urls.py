@@ -12,7 +12,8 @@ from catalogue.models import Book
 
 SLUG = r'[a-z0-9-]*'
 
-urlpatterns = patterns('picture.views',
+urlpatterns = patterns(
+    'picture.views',
     # pictures - currently pictures are coupled with catalogue, hence the url is here
     url(r'^obraz/$', 'picture_list_thumb', name='picture_list_thumb'),
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
@@ -23,13 +24,15 @@ urlpatterns = patterns('picture.views',
     url(r'^pa/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'picturearea_short', name='picture_area_short'),
 )
 
-urlpatterns += patterns('',
+urlpatterns += patterns(
+    '',
     # old search page - redirected
     url(r'^szukaj/$', RedirectView.as_view(
             url='/szukaj/', query_string=True, permanent=True)),
 )
 
-urlpatterns += patterns('catalogue.views',
+urlpatterns += patterns(
+    'catalogue.views',
     url(r'^$', 'catalogue', name='catalogue'),
 
     url(r'^autor/$', 'tag_catalogue', {'category': 'author'}, name='author_catalogue'),
@@ -52,10 +55,10 @@ urlpatterns += patterns('catalogue.views',
         template_name='catalogue/recent_list.html'), name='recent_list'),
     url(r'^nowe/audiobooki/$', ListView.as_view(
         queryset=Book.objects.filter(media__type='ogg').annotate(m=Max('media__uploaded_at')).order_by('-m'),
-            template_name='catalogue/recent_audiobooks_list.html'), name='recent_audiobooks_list'),
+        template_name='catalogue/recent_audiobooks_list.html'), name='recent_audiobooks_list'),
     url(r'^nowe/daisy/$', ListView.as_view(
         queryset=Book.objects.filter(media__type='daisy').annotate(m=Max('media__uploaded_at')).order_by('-m'),
-            template_name='catalogue/recent_daisy_list.html'), name='recent_daisy_list'),
+        template_name='catalogue/recent_daisy_list.html'), name='recent_daisy_list'),
 
     url(r'^custompdf/(?P<slug>%s)/$' % SLUG, CustomPDFFormView(), name='custom_pdf_form'),
 
@@ -78,7 +81,8 @@ urlpatterns += patterns('catalogue.views',
 
     # Includes.
     url(r'^b/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', 'book_mini', name='catalogue_book_mini'),
-    url(r'^b/(?P<pk>\d+)/mini_nolink\.(?P<lang>.+)\.html', 'book_mini', {'with_link': False}, name='catalogue_book_mini_nolink'),
+    url(r'^b/(?P<pk>\d+)/mini_nolink\.(?P<lang>.+)\.html', 'book_mini', {'with_link': False},
+        name='catalogue_book_mini_nolink'),
     url(r'^b/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', 'book_short', name='catalogue_book_short'),
     url(r'^b/(?P<pk>\d+)/wide\.(?P<lang>.+)\.html', 'book_wide', name='catalogue_book_wide'),
     url(r'^f/(?P<pk>\d+)/promo\.(?P<lang>.+)\.html', 'fragment_promo', name='catalogue_fragment_promo'),
@@ -87,6 +91,7 @@ urlpatterns += patterns('catalogue.views',
     url(r'^c/(?P<pk>.+)/box\.(?P<lang>.+)\.html', 'collection_box', name='catalogue_collection_box'),
 
     # This should be the last pattern.
-    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'gallery': True}, name='tagged_object_list_gallery'),
+    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'gallery': True},
+        name='tagged_object_list_gallery'),
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 )

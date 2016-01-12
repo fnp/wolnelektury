@@ -18,7 +18,7 @@ from picture.forms import PictureImportForm
 
 from stats.utils import piwik_track
 
-from . import emitters # Register our emitters
+from . import emitters  # Register our emitters
 
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
     lambda: u'http://' + Site.objects.get_current().domain, unicode)()
@@ -37,7 +37,6 @@ for k, v in category_singular.items():
     category_plural[v] = k
 
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
-
 
 
 def read_tags(tags, allowed):
@@ -62,7 +61,7 @@ def read_tags(tags, allowed):
         except KeyError:
             raise ValueError('Unknown category.')
 
-        if not category in allowed:
+        if category not in allowed:
             raise ValueError('Category not allowed.')
 
         if category == 'book':
@@ -137,7 +136,6 @@ class BookDetails(object):
                     book.cover, "139x193").url if book.cover else ''
 
 
-
 class BookDetailHandler(BaseHandler, BookDetails):
     """ Main handler for Book objects.
 
@@ -172,8 +170,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         return book.tags.filter(category='genre')
 
     @piwik_track
-    def read(self, request, tags=None, top_level=False,
-                audiobooks=False, daisy=False, pk=None):
+    def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -247,18 +244,27 @@ def _tags_getter(category):
     def get_tags(cls, book):
         return book.tags.filter(category=category)
     return get_tags
+
+
 def _tag_getter(category):
     @classmethod
     def get_tag(cls, book):
         return ', '.join(tag.name for tag in book.tags.filter(category=category))
     return get_tag
-for plural, singular in category_singular.items():
-    setattr(BookDetails, plural, _tags_getter(singular))
-    setattr(BookDetails, singular, _tag_getter(singular))
+
+
+def add_tag_getters():
+    for plural, singular in category_singular.items():
+        setattr(BookDetails, plural, _tags_getter(singular))
+        setattr(BookDetails, singular, _tag_getter(singular))
+
+add_tag_getters()
+
 
 # add fields for files in Book
-def _file_getter(format):
-    field = "%s_file" % format
+def _file_getter(book_format):
+    field = "%s_file" % book_format
+
     @classmethod
     def get_file(cls, book):
         f = getattr(book, field)
@@ -267,8 +273,13 @@ def _file_getter(format):
         else:
             return ''
     return get_file
-for format in Book.formats:
-    setattr(BookDetails, format, _file_getter(format))
+
+
+def add_file_getters():
+    for book_format in Book.formats:
+        setattr(BookDetails, book_format, _file_getter(book_format))
+
+add_file_getters()
 
 
 class CollectionDetails(object):
@@ -289,7 +300,6 @@ class CollectionDetails(object):
     @classmethod
     def books(cls, collection):
         return Book.objects.filter(collection.get_query())
-
 
 
 class CollectionDetailHandler(BaseHandler, CollectionDetails):
@@ -343,7 +353,7 @@ class TagDetailHandler(BaseHandler, TagDetails):
 
         try:
             category_sng = category_singular[category]
-        except KeyError, e:
+        except KeyError:
             return rc.NOT_FOUND
 
         try:
@@ -374,7 +384,7 @@ class TagsHandler(BaseHandler, TagDetails):
 
         try:
             category_sng = category_singular[category]
-        except KeyError, e:
+        except KeyError:
             return rc.NOT_FOUND
 
         tags = Tag.objects.filter(category=category_sng).exclude(items=None)
@@ -391,8 +401,7 @@ class FragmentDetails(object):
     def href(cls, fragment):
         """ Returns URI in the API for the fragment. """
 
-        return API_BASE + reverse("api_fragment",
-            args=[fragment.book.slug, fragment.anchor])
+        return API_BASE + reverse("api_fragment", args=[fragment.book.slug, fragment.anchor])
 
     @classmethod
     def url(cls, fragment):
@@ -430,7 +439,7 @@ class FragmentsHandler(BaseHandler, FragmentDetails):
     fields = ['book', 'url', 'anchor', 'href']
     allowed_methods = ('GET',)
 
-    categories = set(['author', 'epoch', 'kind', 'genre', 'book', 'theme'])
+    categories = {'author', 'epoch', 'kind', 'genre', 'book', 'theme'}
 
     @piwik_track
     def read(self, request, tags):

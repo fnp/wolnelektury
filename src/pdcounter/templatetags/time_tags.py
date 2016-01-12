@@ -11,6 +11,7 @@ from django.utils import timezone
 
 register = template.Library()
 
+
 @register.filter
 def date_to_utc(date, day_end=False):
     """ Converts a datetime.date to UTC datetime.

@@ -2,12 +2,12 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf import settings
-from os.path import basename, exists, join, dirname
+from os.path import basename, exists
 from django.core.files.base import ContentFile
 
 from catalogue.test_utils import *
 from catalogue import models, utils
+
 
 class BookMediaTests(WLTestCase):
 
@@ -18,14 +18,14 @@ class BookMediaTests(WLTestCase):
         self.book = models.Book.objects.create(slug='test-book')
 
     def test_diacritics(self):
-        bm = models.BookMedia(book=self.book, type="ogg",
-                    name=u"Zażółć gęślą jaźń")
+        bm = models.BookMedia(book=self.book, type="ogg", name=u"Zażółć gęślą jaźń")
         bm.file.save(None, self.file)
         self.assertEqual(basename(bm.file.name), 'zazolc-gesla-jazn.ogg')
 
     def test_long_name(self):
-        bm = models.BookMedia(book=self.book, type="ogg",
-                    name="Some very very very very very very very very very very very very very very very very long file name")
+        bm = models.BookMedia(
+            book=self.book, type="ogg",
+            name="Some very very very very very very very very very very very very very very very very long file name")
         bm.file.save(bm.name, self.file)
 
         # reload to see what was really saved
@@ -37,8 +37,7 @@ class BookMediaTests(WLTestCase):
             File gets overwritten with same filename on update.
         """
 
-        bm = models.BookMedia(book=self.book, type='ogg',
-                    name="Some media")
+        bm = models.BookMedia(book=self.book, type='ogg', name="Some media")
         bm.file.save(None, self.file)
         bm.file.save(None, self.file2)
 
@@ -50,11 +49,9 @@ class BookMediaTests(WLTestCase):
             File save doesn't clobber some other media with similar name.
         """
 
-        bm = models.BookMedia(book=self.book, type='ogg',
-            name=u"Tytul")
+        bm = models.BookMedia(book=self.book, type='ogg', name=u"Tytul")
         bm.file.save(None, self.file)
-        bm2 = models.BookMedia(book=self.book, type='ogg',
-            name=u"Tytuł")
+        bm2 = models.BookMedia(book=self.book, type='ogg', name=u"Tytuł")
         bm2.file.save(None, self.file2)
         self.assertEqual(basename(bm.file.name), 'tytul.ogg')
         self.assertNotEqual(basename(bm2.file.name), 'tytul.ogg')

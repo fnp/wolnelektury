@@ -6,6 +6,7 @@ from django.contrib import admin
 
 from suggest.models import Suggestion, PublishingSuggestion
 
+
 class SuggestionAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'contact', 'user', 'description')
 

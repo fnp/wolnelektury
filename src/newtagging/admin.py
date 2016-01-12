@@ -14,7 +14,7 @@ class FilteredSelectMultiple(forms.SelectMultiple):
     """
     def _media(self):
         from django.conf import settings
-        js = ['js/SelectBox.js' , 'js/SelectFilter2.js']
+        js = ['js/SelectBox.js', 'js/SelectFilter2.js']
         return forms.Media(js=['%sadmin/%s' % (settings.STATIC_URL, url) for url in js])
     media = property(_media)
 
@@ -25,17 +25,22 @@ class FilteredSelectMultiple(forms.SelectMultiple):
 
     def render(self, name, value, attrs=None, choices=()):
         from django.conf import settings
-        output = [super(FilteredSelectMultiple, self).render(name, value, attrs, choices)]
-        output.append(u'<script type="text/javascript">addEvent(window, "load", function(e) {')
+        output = [
+            super(FilteredSelectMultiple, self).render(name, value, attrs, choices),
+            u'<script type="text/javascript">addEvent(window, "load", function(e) {',
+            u'SelectFilter.init("id_%s", "%s", %s, "%s"); });</script>\n' % (
+                name, self.verbose_name.replace('"', '\\"'),
+                int(self.is_stacked), settings.STATIC_URL + "admin/")
+        ]
         # TODO: "id_" is hard-coded here. This should instead use the correct
         # API to determine the ID dynamically.
-        output.append(u'SelectFilter.init("id_%s", "%s", %s, "%s"); });</script>\n' % \
-            (name, self.verbose_name.replace('"', '\\"'), int(self.is_stacked), settings.STATIC_URL + "admin/"))
         return mark_safe(u''.join(output))
 
 
 class TaggableModelForm(forms.ModelForm):
-    tags = forms.MultipleChoiceField(label=_('tags').capitalize(), required=False, widget=FilteredSelectMultiple(_('tags'), False))
+    tags = forms.MultipleChoiceField(
+        label=_('tags').capitalize(), required=False,
+        widget=FilteredSelectMultiple(_('tags'), is_stacked=False))
 
     def __init__(self, *args, **kwargs):
         if 'instance' in kwargs:
@@ -64,4 +69,3 @@ class TaggableModelAdmin(admin.ModelAdmin):
         form = super(TaggableModelAdmin, self).get_form(request, obj)
         form.tag_model = self.tag_model
         return form
-

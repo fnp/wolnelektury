@@ -7,9 +7,9 @@ from celery.task import task
 from sortify import sortify
 from celery.utils.log import get_task_logger
 
-task_logger = get_task_logger(__name__)
-
 from catalogue.models import Book
+
+task_logger = get_task_logger(__name__)
 
 
 class Qualifier(models.Model):
@@ -59,10 +59,7 @@ def build_notes(book):
                 sort_key = sortify(text_str).strip()[:128]
 
                 language = book.language
-                note = None
-                notes = Note.objects.filter(sort_key=sort_key,
-                    fn_type=fn_type,
-                    language=language, html=html_str)
+                notes = Note.objects.filter(sort_key=sort_key, fn_type=fn_type, language=language, html=html_str)
                 if notes:
                     note = notes[0]
                 else:

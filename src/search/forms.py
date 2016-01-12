@@ -9,7 +9,8 @@ from search.fields import JQueryAutoCompleteSearchField
 
 
 class SearchForm(forms.Form):
-    q = JQueryAutoCompleteSearchField(label=_('Search'))  # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
+    q = JQueryAutoCompleteSearchField(label=_('Search'))
+    # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
 
     def __init__(self, source, *args, **kwargs):
         kwargs['auto_id'] = False
@@ -17,5 +18,5 @@ class SearchForm(forms.Form):
         self.fields['q'].widget.attrs['id'] = 'search'
         self.fields['q'].widget.attrs['autocomplete'] = 'off'
         self.fields['q'].widget.attrs['data-source'] = source
-        if not 'q' in self.data:
+        if 'q' not in self.data:
             self.fields['q'].widget.attrs['placeholder'] = _('title, author, theme/topic, epoch, kind, genre, phrase')

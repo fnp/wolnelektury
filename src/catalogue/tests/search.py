@@ -7,21 +7,22 @@ from catalogue.test_utils import *
 
 from nose.tools import raises
 
+
 class BasicSearchLogicTests(WLTestCase):
 
     def setUp(self):
         WLTestCase.setUp(self)
         self.author_tag = models.Tag.objects.create(
-                                name=u'Adam Mickiewicz [SubWord]',
-                                category=u'author', slug="one")
+            name=u'Adam Mickiewicz [SubWord]',
+            category=u'author', slug="one")
 
         self.unicode_tag = models.Tag.objects.create(
-                                name=u'Tadeusz Żeleński (Boy)',
-                                category=u'author', slug="two")
+            name=u'Tadeusz Żeleński (Boy)',
+            category=u'author', slug="two")
 
         self.polish_tag = models.Tag.objects.create(
-                                name=u'ĘÓĄŚŁŻŹĆŃęóąśłżźćń',
-                                category=u'author', slug="three")
+            name=u'ĘÓĄŚŁŻŹĆŃęóąśłżźćń',
+            category=u'author', slug="three")
 
     @raises(ValueError)
     def test_empty_query(self):

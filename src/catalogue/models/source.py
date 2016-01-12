@@ -39,7 +39,6 @@ class Source(models.Model):
         if old_name != self.name or old_netloc != self.netloc:
             for book in Book.objects.all():
                 source = book.extra_info.get('source_url', '')
-                if self.netloc in source or (old_netloc != self.netloc
-                        and old_netloc in source):
+                if self.netloc in source or (old_netloc != self.netloc and old_netloc in source):
                     book.flush_includes()
         return ret

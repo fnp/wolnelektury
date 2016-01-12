@@ -15,7 +15,7 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     ordering = ('name',)
 
-    prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',),}
+    prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',)}
     radio_fields = {'category': admin.HORIZONTAL}
 
 
@@ -35,7 +35,7 @@ class BookAdmin(TaggableModelAdmin):
     inlines = [MediaInline]
 
     def change_view(self, request, object_id, extra_context=None):
-        if not request.GET.has_key('advanced'):
+        if 'advanced' not in request.GET:
             self.form = forms.ModelForm
             self.fields = ('title', 'description', 'gazeta_link', 'wiki_link')
             self.readonly_fields = ('title',)
@@ -43,8 +43,7 @@ class BookAdmin(TaggableModelAdmin):
             self.form = TaggableModelForm
             self.fields = None
             self.readonly_fields = ()
-        return super(BookAdmin, self).change_view(request, object_id,
-            extra_context=extra_context)
+        return super(BookAdmin, self).change_view(request, object_id, extra_context=extra_context)
 
 
 class FragmentAdmin(TaggableModelAdmin):

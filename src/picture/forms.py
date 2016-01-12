@@ -35,5 +35,6 @@ class PictureImportForm(forms.Form):
         return super(PictureImportForm, self).clean()
 
     def save(self, commit=True, **kwargs):
-        return Picture.from_xml_file(self.cleaned_data['picture_xml_file'], image_file=self.cleaned_data['picture_image_file'],
-                                     overwrite=True, **kwargs)
+        return Picture.from_xml_file(
+            self.cleaned_data['picture_xml_file'], image_file=self.cleaned_data['picture_image_file'],
+            overwrite=True, **kwargs)

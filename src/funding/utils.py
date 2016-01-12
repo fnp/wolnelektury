@@ -18,9 +18,11 @@ sane_in_payu_title = re.escape(
     "".join(set(string.punctuation) - set('\\'))
 )
 
+
 def replace_char(m):
     char = m.group()
     return char_map.get(char, '')
 
+
 def sanitize_payment_title(value):
-    return re.sub('[^%s]{1}' % sane_in_payu_title, replace_char, unicode(value))
+    return re.sub('[^%s]' % sane_in_payu_title, replace_char, unicode(value))

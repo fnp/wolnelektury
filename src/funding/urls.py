@@ -4,12 +4,12 @@
 #
 from django.conf.urls import patterns, url, include
 
-from .views import (WLFundView, OfferDetailView, OfferListView,
-                ThanksView, NoThanksView, CurrentView, DisableNotifications)
+from .views import WLFundView, OfferDetailView, OfferListView, ThanksView, NoThanksView, CurrentView, \
+    DisableNotifications
 
 
-urlpatterns = patterns('funding.views',
-
+urlpatterns = patterns(
+    'funding.views',
     url(r'^$', CurrentView.as_view(), name='funding_current'),
     url(r'^teraz/$', CurrentView.as_view()),
     url(r'^teraz/(?P<slug>[^/]+)/$', CurrentView.as_view(), name='funding_current'),

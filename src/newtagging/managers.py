@@ -78,4 +78,3 @@ class TagDescriptor(object):
 
     def __del__(self, instance):
         self.tag_model.objects.update_tags(instance, [])
-

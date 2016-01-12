@@ -104,8 +104,7 @@ class TagRelatedTagsTests(WLTestCase):
         """ empty tag should have no related tags """
 
         cats = self.client.get('/katalog/autor/empty/').context['categories']
-        self.assertEqual({k: v for (k, v) in cats.items() if v}, {},
-            'tags related to empty tag')
+        self.assertEqual({k: v for (k, v) in cats.items() if v}, {}, 'tags related to empty tag')
 
     def test_has_related(self):
         """ related own and descendants' tags should be generated """
@@ -116,17 +115,17 @@ class TagRelatedTagsTests(WLTestCase):
         self.assertTrue('Epoch' in [tag.name for tag in cats['epoch']],
                         'missing `epoch` related tag')
         self.assertFalse(cats.get("kind", False),
-                        "There should be no child-only related `kind` tags")
+                         "There should be no child-only related `kind` tags")
         self.assertTrue("Genre" in [tag.name for tag in cats['genre']],
                         'missing `genre` related tag')
         self.assertFalse("ChildGenre" in [tag.name for tag in cats['genre']],
-                        "There should be no child-only related `genre` tags")
+                         "There should be no child-only related `genre` tags")
         self.assertTrue("GchildGenre" in [tag.name for tag in cats['genre']],
                         "missing grandchild's related tag")
         self.assertTrue('Theme' in [tag.name for tag in cats['theme']],
                         "missing related theme")
         self.assertFalse('Child1Theme' in [tag.name for tag in cats['theme']],
-                        "There should be no child-only related `theme` tags")
+                         "There should be no child-only related `theme` tags")
         self.assertTrue('GChildTheme' in [tag.name for tag in cats['theme']],
                         "missing grandchild's related theme")
 
@@ -149,18 +148,18 @@ class TagRelatedTagsTests(WLTestCase):
                          [('Epoch', 1)],
                          'wrong related tag epoch tag on tag page')
 
-
     def test_siblings_tags_count(self):
         """ if children have tags and parent hasn't, count the children """
 
         cats = self.client.get('/katalog/epoka/epoch/').context['categories']
-        self.assertTrue(('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
-                    'wrong related kind tags on tag page, got: ' +
-                    unicode([(tag.name, tag.count) for tag in cats['kind']]))
+        self.assertTrue(
+            ('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
+            'wrong related kind tags on tag page, got: ' +
+            unicode([(tag.name, tag.count) for tag in cats['kind']]))
 
         # all occurencies of theme should be counted
         self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
-                    'wrong related theme count')
+                        'wrong related theme count')
 
     def test_query_child_tag(self):
         """
@@ -169,8 +168,8 @@ class TagRelatedTagsTests(WLTestCase):
         """
         cats = self.client.get('/katalog/gatunek/childgenre/').context['categories']
         self.assertTrue(('Epoch', 2) in [(tag.name, tag.count) for tag in cats['epoch']],
-                    'wrong related kind tags on tag page, got: ' +
-                    unicode([(tag.name, tag.count) for tag in cats['epoch']]))
+                        'wrong related kind tags on tag page, got: ' +
+                        unicode([(tag.name, tag.count) for tag in cats['epoch']]))
 
 
 class CleanTagRelationTests(WLTestCase):
@@ -180,8 +179,7 @@ class CleanTagRelationTests(WLTestCase):
         WLTestCase.setUp(self)
         author = PersonStub(("Common",), "Man")
 
-        book_info = BookInfoStub(author=author, genre="G", epoch='E', kind="K",
-                                   **info_args(u"Book"))
+        book_info = BookInfoStub(author=author, genre="G", epoch='E', kind="K", **info_args(u"Book"))
         book_text = """<utwor><opowiadanie><akap>
             <begin id="m01" /><motyw id="m01">Theme</motyw>Ala ma kota
             <end id="m01" />
@@ -215,11 +213,7 @@ class TestIdenticalTag(WLTestCase):
         WLTestCase.setUp(self)
         author = PersonStub((), "Tag")
 
-        self.book_info = BookInfoStub(author=author,
-                                 genre="tag",
-                                 epoch='tag',
-                                 kind="tag",
-                                   **info_args(u"tag"))
+        self.book_info = BookInfoStub(author=author, genre="tag", epoch='tag', kind="tag", **info_args(u"tag"))
         self.book_text = """<utwor>
             <opowiadanie>
             <akap>
@@ -228,7 +222,6 @@ class TestIdenticalTag(WLTestCase):
             </opowiadanie>
             </utwor>
         """
-
 
     def test_book_tags(self):
         """ there should be all related tags in relevant categories """
@@ -242,7 +235,7 @@ class TestIdenticalTag(WLTestCase):
 
     def test_qualified_url(self):
         models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
-        categories = {'author': 'autor', 'theme': 'motyw', 'epoch': 'epoka', 'kind':'rodzaj', 'genre':'gatunek'}
+        categories = {'author': 'autor', 'theme': 'motyw', 'epoch': 'epoka', 'kind': 'rodzaj', 'genre': 'gatunek'}
         for cat, localcat in categories.iteritems():
             context = self.client.get('/katalog/%s/tag/' % localcat).context
             self.assertEqual(1, len(context['object_list']))
@@ -259,7 +252,7 @@ class BookTagsTests(WLTestCase):
         author2 = PersonStub(("Jim",), "Lazy")
 
         child_info = BookInfoStub(authors=(author1, author2), genre="ChildGenre", epoch='Epoch', kind="ChildKind",
-                                   **info_args(u"Child"))
+                                  **info_args(u"Child"))
         parent_info = BookInfoStub(author=author1, genre="Genre", epoch='Epoch', kind="Kind",
                                    parts=[child_info.url],
                                    **info_args(u"Parent"))

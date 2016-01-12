@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 from django.db.models.signals import post_save, post_delete
 
+
 class Author(models.Model):
     name = models.CharField(_('name'), max_length=50, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
@@ -35,7 +36,7 @@ class Author(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.tagged_object_list', [self.url_chunk])
+        return 'catalogue.views.tagged_object_list', [self.url_chunk]
 
     def has_description(self):
         return len(self.description) > 0
@@ -75,7 +76,7 @@ class BookStub(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('catalogue.views.book_detail', [self.slug])
+        return 'catalogue.views.book_detail', [self.slug]
 
     def in_pd(self):
         return self.pd is not None and self.pd <= datetime.now().year
@@ -92,7 +93,7 @@ if not settings.NO_SEARCH_INDEX:
     def update_index(sender, instance, **kwargs):
         from search.index import Index
         idx = Index()
-        idx.index_tags(instance, remove_only=not 'created' in kwargs)
+        idx.index_tags(instance, remove_only='created' not in kwargs)
 
     post_delete.connect(update_index, Author)
     post_delete.connect(update_index, BookStub)

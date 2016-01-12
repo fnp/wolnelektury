@@ -22,9 +22,9 @@ import operator
 import logging
 import re
 
-log = logging.getLogger('opds')
-
 from stats.utils import piwik_track
+
+log = logging.getLogger('opds')
 
 _root_feeds = (
     {
@@ -66,6 +66,8 @@ _root_feeds = (
 
 
 current_domain = lazy(lambda: Site.objects.get_current().domain, str)()
+
+
 def full_url(url):
     return urljoin("http://%s" % current_domain, url)
 
@@ -77,15 +79,14 @@ class OPDSFeed(Atom1Feed):
     _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")), str)()
     try:
         _book_parent_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book-parent.png")))
-    except:
+    except IOError:
         _book_parent_img_size = ''
 
     _book_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book.png")), str)()
     try:
         _book_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book.png")))
-    except:
+    except IOError:
         _book_img_size = ''
-
 
     def add_root_elements(self, handler):
         super(OPDSFeed, self).add_root_elements(handler)
@@ -98,20 +99,23 @@ class OPDSFeed(Atom1Feed):
                                  u"rel": u"search",
                                  u"type": u"application/opensearchdescription+xml"})
 
-
     def add_item_elements(self, handler, item):
         """ modified from Atom1Feed.add_item_elements """
         handler.addQuickElement(u"title", item['title'])
 
         # add a OPDS Navigation link if there's no enclosure
         if item['enclosure'] is None:
-            handler.addQuickElement(u"link", u"", {u"href": item['link'], u"rel": u"subsection", u"type": u"application/atom+xml"})
+            handler.addQuickElement(
+                u"link", u"", {u"href": item['link'], u"rel": u"subsection", u"type": u"application/atom+xml"})
             # add a "green book" icon
-            handler.addQuickElement(u"link", '',
-                {u"rel": u"http://opds-spec.org/thumbnail",
-                 u"href": self._book_parent_img,
-                 u"length": self._book_parent_img_size,
-                 u"type": u"image/png"})
+            handler.addQuickElement(
+                u"link", '',
+                {
+                    u"rel": u"http://opds-spec.org/thumbnail",
+                    u"href": self._book_parent_img,
+                    u"length": self._book_parent_img_size,
+                    u"type": u"image/png",
+                })
         if item['pubdate'] is not None:
             # FIXME: rfc3339_date is undefined, is this ever run?
             handler.addQuickElement(u"updated", rfc3339_date(item['pubdate']).decode('utf-8'))
@@ -141,17 +145,23 @@ class OPDSFeed(Atom1Feed):
 
         # Enclosure as OPDS Acquisition Link
         if item['enclosure'] is not None:
-            handler.addQuickElement(u"link", '',
-                {u"rel": u"http://opds-spec.org/acquisition",
-                 u"href": item['enclosure'].url,
-                 u"length": item['enclosure'].length,
-                 u"type": item['enclosure'].mime_type})
+            handler.addQuickElement(
+                u"link", '',
+                {
+                    u"rel": u"http://opds-spec.org/acquisition",
+                    u"href": item['enclosure'].url,
+                    u"length": item['enclosure'].length,
+                    u"type": item['enclosure'].mime_type,
+                })
             # add a "red book" icon
-            handler.addQuickElement(u"link", '',
-                {u"rel": u"http://opds-spec.org/thumbnail",
-                 u"href": self._book_img,
-                 u"length": self._book_img_size,
-                 u"type": u"image/png"})
+            handler.addQuickElement(
+                u"link", '',
+                {
+                    u"rel": u"http://opds-spec.org/thumbnail",
+                    u"href": self._book_img,
+                    u"length": self._book_img_size,
+                    u"type": u"image/png",
+                })
 
         # Categories.
         for cat in item['categories']:
@@ -196,6 +206,7 @@ class AcquisitionFeed(Feed):
     def item_enclosure_length(self, book):
         return book.epub_file.size if book.epub_file else None
 
+
 @piwik_track
 class RootFeed(Feed):
     feed_type = OPDSFeed
@@ -216,6 +227,7 @@ class RootFeed(Feed):
 
     def item_description(self, item):
         return item['description']
+
 
 @piwik_track
 class ByCategoryFeed(Feed):
@@ -248,6 +260,7 @@ class ByCategoryFeed(Feed):
 
     def item_description(self):
         return u''
+
 
 @piwik_track
 class ByTagFeed(AcquisitionFeed):
@@ -394,8 +407,9 @@ class SearchFeed(AcquisitionFeed):
                     return ''
                 return val
 
-            criteria = dict([(cn, remove_dump_data(request.GET.get(cn, '')))
-                        for cn in self.MATCHES.keys()])
+            criteria = dict(
+                (cn, remove_dump_data(request.GET.get(cn, '')))
+                for cn in self.MATCHES.keys())
             # query is set above.
             log.debug("Inline query = [%s], criteria: %s" % (query, criteria))
 
@@ -409,10 +423,10 @@ class SearchFeed(AcquisitionFeed):
 
         if query:
             q = srch.index.query(
-                reduce(operator.or_,
-                       [srch.index.Q(**{self.PARAMS_TO_FIELDS.get(cn, cn): query})
-                        for cn in self.MATCHES.keys()],
-                srch.index.Q()))
+                reduce(
+                    operator.or_,
+                    [srch.index.Q(**{self.PARAMS_TO_FIELDS.get(cn, cn): query}) for cn in self.MATCHES.keys()],
+                    srch.index.Q()))
         else:
             q = srch.index.query(srch.index.Q())
 

@@ -4,6 +4,7 @@
 #
 from django.apps import AppConfig
 
+
 class WLCoreConfig(AppConfig):
     name = 'wolnelektury'
 

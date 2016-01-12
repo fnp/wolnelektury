@@ -35,8 +35,7 @@ FORMATS = [(f, f.upper()) for f in Book.ebook_formats]
 
 
 class DownloadFormatsForm(forms.Form):
-    formats = forms.MultipleChoiceField(required=False, choices=FORMATS,
-            widget=forms.CheckboxSelectMultiple)
+    formats = forms.MultipleChoiceField(required=False, choices=FORMATS, widget=forms.CheckboxSelectMultiple)
 
     def __init__(self, *args, **kwargs):
         super(DownloadFormatsForm, self).__init__(*args, **kwargs)
@@ -53,16 +52,16 @@ CUSTOMIZATION_OPTIONS = (
         ('', _('Normal leading')),
         ('onehalfleading', _('One and a half leading')),
         ('doubleleading', _('Double leading')),
-        )),
+    )),
     ('fontsize', _("Font size"), (
         ('', _('Default')),
         ('13pt', _('Big'))
-        )),
-#    ('pagesize', _("Paper size"), (
-#        ('a4paper', _('A4')),
-#        ('a5paper', _('A5')),
-#        )),
-    )
+    )),
+    # ('pagesize', _("Paper size"), (
+    #     ('a4paper', _('A4')),
+    #     ('a5paper', _('A5')),
+    # )),
+)
 
 
 class CustomPDFForm(forms.Form):
@@ -76,8 +75,7 @@ class CustomPDFForm(forms.Form):
 
     def clean(self):
         self.cleaned_data['cust'] = self.customizations
-        self.cleaned_data['path'] = get_customized_pdf_path(self.book,
-            self.cleaned_data['cust'])
+        self.cleaned_data['path'] = get_customized_pdf_path(self.book, self.cleaned_data['cust'])
         if not WaitedFile.can_order(self.cleaned_data['path']):
             raise ValidationError(_('Queue is full. Please try again later.'))
         return self.cleaned_data
@@ -99,10 +97,9 @@ class CustomPDFForm(forms.Form):
         if not self.cleaned_data['cust'] and self.book.pdf_file:
             # Don't build with default options, just redirect to the standard file.
             return {"redirect": self.book.pdf_file.url}
-        url = WaitedFile.order(self.cleaned_data['path'],
-            lambda p, waiter_id: build_custom_pdf.delay(self.book.id,
-                self.cleaned_data['cust'], p, waiter_id),
+        url = WaitedFile.order(
+            self.cleaned_data['path'],
+            lambda p, waiter_id: build_custom_pdf.delay(self.book.id, self.cleaned_data['cust'], p, waiter_id),
             self.book.pretty_title()
-            )
-        #return redirect(url)
+        )
         return {"redirect": url}

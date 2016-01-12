@@ -22,7 +22,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         if value:
             final_attrs['value'] = smart_unicode(value)
 
-        if not self.attrs.has_key('id'):
+        if 'id' not in self.attrs:
             final_attrs['id'] = 'id_%s' % name
 
         html = u'''<input type="text" %(attrs)s/>
@@ -30,7 +30,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
             %(js)s//--></script>
             ''' % {
                 'attrs': flatatt(final_attrs),
-                'js' : self.render_js(final_attrs['id'], self.options),
+                'js': self.render_js(final_attrs['id'], self.options),
             }
 
         return mark_safe(html)
@@ -42,10 +42,12 @@ class JQueryAutoCompleteSearchWidget(JQueryAutoCompleteWidget):
 
     def render_js(self, field_id, options):
         return u""
-    
+
 
 class JQueryAutoCompleteField(forms.CharField):
-    def __init__(self, source, options={}, *args, **kwargs):
+    def __init__(self, source, options=None, *args, **kwargs):
+        if options is None:
+            options = {}
         if 'widget' not in kwargs:
             options['source'] = source
             kwargs['widget'] = JQueryAutoCompleteWidget(options)
@@ -54,7 +56,9 @@ class JQueryAutoCompleteField(forms.CharField):
 
 
 class JQueryAutoCompleteSearchField(forms.CharField):
-    def __init__(self, options={}, *args, **kwargs):
+    def __init__(self, options=None, *args, **kwargs):
+        if options is None:
+            options = {}
         if 'widget' not in kwargs:
             kwargs['widget'] = JQueryAutoCompleteSearchWidget(options)
 

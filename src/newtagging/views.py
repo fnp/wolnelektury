@@ -7,8 +7,8 @@ from django.utils.translation import ugettext as _
 from django.views.generic import ListView
 
 
-def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=None,
-        related_tags=False, related_tag_counts=True, **kwargs):
+def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=None, related_tags=False,
+                       related_tag_counts=True, **kwargs):
     """
     A thin wrapper around
     ``django.views.generic.list_detail.object_list`` which creates a
@@ -37,12 +37,10 @@ def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=Non
     if tag_instances is None:
         raise Http404(_('No tags found matching "%s".') % tags)
     queryset = tag_model.intermediary_table_model.objects.get_by_model(queryset_or_model, tag_instances)
-    if not kwargs.has_key('extra_context'):
+    if 'extra_context' not in kwargs:
         kwargs['extra_context'] = {}
     kwargs['extra_context']['tags'] = tag_instances
     if related_tags:
         kwargs['extra_context']['related_tags'] = \
-            tag_model.objects.related_for_model(tag_instances, queryset_or_model,
-                                          counts=related_tag_counts)
+            tag_model.objects.related_for_model(tag_instances, queryset_or_model, counts=related_tag_counts)
     return ListView.as_view(queryset=queryset)(request, **kwargs)
-

@@ -50,12 +50,12 @@ class BookTests(ApiTest):
         books = self.load_json('/api/authors/joe/books/')
 
         self.assertEqual([b['title'] for b in books], [self.book_tagged.title],
-                        'Wrong tagged book list.')
+                         'Wrong tagged book list.')
 
     def test_detail(self):
         book = self.load_json('/api/books/a-book/')
         self.assertEqual(book['title'], self.book.title,
-                        'Wrong book details.')
+                         'Wrong book details.')
 
 
 class TagTests(ApiTest):
@@ -69,19 +69,21 @@ class TagTests(ApiTest):
     def test_tag_list(self):
         tags = self.load_json('/api/authors/')
         self.assertEqual(len(tags), 1,
-                        'Wrong tag list.')
+                         'Wrong tag list.')
 
     def test_tag_detail(self):
         tag = self.load_json('/api/authors/joe/')
         self.assertEqual(tag['name'], self.tag.name,
-                        'Wrong tag details.')
+                         'Wrong tag details.')
 
 
 class PictureTests(ApiTest):
     def test_publish(self):
         slug = "kandinsky-composition-viii"
-        xml = SimpleUploadedFile('composition8.xml', open(path.join(picture.tests.__path__[0], "files", slug + ".xml")).read())
-        img = SimpleUploadedFile('kompozycja-8.png', open(path.join(picture.tests.__path__[0], "files", slug + ".png")).read())
+        xml = SimpleUploadedFile(
+            'composition8.xml', open(path.join(picture.tests.__path__[0], "files", slug + ".xml")).read())
+        img = SimpleUploadedFile(
+            'kompozycja-8.png', open(path.join(picture.tests.__path__[0], "files", slug + ".png")).read())
 
         import_form = PictureImportForm({}, {
             'picture_xml_file': xml,

@@ -16,9 +16,10 @@ class PictureTest(WLTestCase):
 
         themes = set()
         for area in picture.areas.all():
-            themes.update([(tag.category, tag.name)
+            themes.update([
+                (tag.category, tag.name)
                 for tag in area.tags if tag.category in (u'theme', u'thing')])
-        assert themes == set([(u'theme', u'nieporządek'), (u'thing', u'Kosmos')]), \
+        assert themes == {(u'theme', u'nieporządek'), (u'thing', u'Kosmos')}, \
             'Bad themes on Picture areas: %s' % themes
 
         pic_themes = set([tag.name for tag in picture.tags if tag.category in ('theme', 'thing')])
@@ -32,7 +33,6 @@ class PictureTest(WLTestCase):
 
         picture.delete()
 
-
     def test_import_2(self):
         picture = Picture.from_xml_file(path.join(path.dirname(__file__), "files/kandinsky-composition-viii.xml"),
                                         path.join(path.dirname(__file__), "files/kandinsky-composition-viii.png"),
@@ -40,4 +40,3 @@ class PictureTest(WLTestCase):
         cats = set([t.category for t in picture.tags])
         assert 'epoch' in cats
         assert 'kind' in cats
-

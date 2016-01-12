@@ -14,11 +14,11 @@ from catalogue.models import Book, Tag
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-t', '--tags', dest='tags', metavar='SLUG,...',
-            help='Use only books tagged with this tags'),
+                    help='Use only books tagged with this tags'),
         make_option('-i', '--include', dest='include', metavar='SLUG,...',
-            help='Include specific books by slug'),
+                    help='Include specific books by slug'),
         make_option('-e', '--exclude', dest='exclude', metavar='SLUG,...',
-            help='Exclude specific books by slug')
+                    help='Exclude specific books by slug')
     )
     help = 'Prepare ZIP package with files of given type.'
     args = '[%s] output_path.zip' % '|'.join(Book.formats)

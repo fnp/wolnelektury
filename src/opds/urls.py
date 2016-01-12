@@ -6,7 +6,8 @@ from django.conf.urls import patterns, url
 from opds.views import RootFeed, ByCategoryFeed, ByTagFeed, UserFeed, UserSetFeed, SearchFeed
 
 
-urlpatterns = patterns('opds.views',
+urlpatterns = patterns(
+    'opds.views',
     url(r'^$', RootFeed(), name="opds_authors"),
     url(r'^search/$', SearchFeed(), name="opds_search"),
     url(r'^user/$', UserFeed(), name="opds_user"),

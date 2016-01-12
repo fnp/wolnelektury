@@ -5,7 +5,7 @@
 from django.conf.urls import patterns, url
 from dictionary.views import NotesView
 
-urlpatterns = patterns('dictionary.views',
+urlpatterns = patterns(
+    'dictionary.views',
     url(r'^$', NotesView.as_view(), name='dictionary_notes'),
 )
-

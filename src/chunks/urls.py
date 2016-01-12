@@ -4,6 +4,7 @@
 #
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('chunks.views',
+urlpatterns = patterns(
+    'chunks.views',
     url(r'^chunk/(?P<key>.+)\.(?P<lang>.+)\.html$', 'chunk', name='chunk'),
 )

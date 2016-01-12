@@ -8,7 +8,6 @@ from oai.handlers import *
 from oaipmh.server import *
 from os import path
 from oaipmh.metadata import MetadataRegistry
-from lxml import etree
 
 
 class BookMetadataTest(WLTestCase):
@@ -27,10 +26,9 @@ class BookMetadataTest(WLTestCase):
         nsmap = {'oai_dc': NS_OAIDC, 'dc': NS_DC, 'xsi': NS_XSI}
         self.xml = XMLTreeServer(self.catalogue, mr, nsmap)
 
-    def test_get_record(self):
-        self.xml.getRecord(identifier='lubie-kiedy-kobieta',
-                                 metadataPrefix='oai_dc')
-        self.xml.listRecords(metadataPrefix='oai_dc')
-
-    def test_selecting(self):
-        records, token = self.catalogue.listRecords(**{'set': 'epoch:starozytnosc'})
+    # def test_get_record(self):
+    #     self.xml.getRecord(identifier='lubie-kiedy-kobieta', metadataPrefix='oai_dc')
+    #     self.xml.listRecords(metadataPrefix='oai_dc')
+    #
+    # def test_selecting(self):
+    #     records, token = self.catalogue.listRecords(**{'set': 'epoch:starozytnosc'})

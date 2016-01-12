@@ -24,14 +24,18 @@ register = template.Library()
 
 class RegistrationForm(UserCreationForm):
     def as_ul(self):
-        "Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."
-        return self._html_output(u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>', '</li>', u' %s', False)
+        """Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."""
+        return self._html_output(
+            u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>',
+            '</li>', u' %s', False)
 
 
 class LoginForm(AuthenticationForm):
     def as_ul(self):
-        "Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."
-        return self._html_output(u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>', '</li>', u' %s', False)
+        """Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."""
+        return self._html_output(
+            u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>',
+            '</li>', u' %s', False)
 
 
 def iterable(obj):
@@ -108,8 +112,8 @@ def title_from_tags(tags):
     # Specjalny przypadek "Dramat w twórczości Sofoklesa", wtedy gdy podane
     # są tylko rodzaj literacki i autor
     if 'kind' in self and 'author' in self and len(self) == 2:
-        text = u'%s w twórczości %s' % (unicode(self['kind']),
-            flection.get_case(unicode(self['author']), u'dopełniacz'))
+        text = u'%s w twórczości %s' % (
+            unicode(self['kind']), flection.get_case(unicode(self['author']), u'dopełniacz'))
         return capfirst(text)
 
     # Przypadki ogólniejsze
@@ -150,16 +154,19 @@ def book_tree(book_list, books_by_parent):
     else:
         return ''
 
+
 @register.simple_tag
 def audiobook_tree(book_list, books_by_parent):
     text = "".join("<li><a class='open-player' href='%s'>%s</a>%s</li>" % (
-        reverse("book_player", args=[book.slug]), book.title, audiobook_tree(books_by_parent.get(book, ()), books_by_parent)
-        ) for book in book_list)
+        reverse("book_player", args=[book.slug]), book.title,
+        audiobook_tree(books_by_parent.get(book, ()), books_by_parent)
+    ) for book in book_list)
 
     if text:
         return "<ol>%s</ol>" % text
     else:
         return ''
+
 
 @register.simple_tag
 def book_tree_texml(book_list, books_by_parent, depth=1):
@@ -200,6 +207,7 @@ def book_tree_csv(author, book_list, books_by_parent, depth=1, max_depth=3, deli
                 "audiobook": "audiobook" if book.has_media('mp3') else "",
                 "children": book_tree_csv(author, books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
             } for book in book_list)
+
 
 @register.simple_tag
 def all_editors(extra_info):
@@ -313,7 +321,8 @@ def tag_list(tags, choices=None, category=None, gallery=False):
         one_tag = tags[0]
 
     if category is not None:
-        other = Tag.objects.filter(category=category).exclude(pk__in=[t.pk for t in tags]).exclude(pk__in=[t.pk for t in category_choices])
+        other = Tag.objects.filter(category=category).exclude(pk__in=[t.pk for t in tags])\
+            .exclude(pk__in=[t.pk for t in category_choices])
         # Filter out empty tags.
         ct = ContentType.objects.get_for_model(Picture if gallery else Book)
         other = other.filter(items__content_type=ct).distinct()
@@ -345,9 +354,9 @@ def work_list(context, object_list):
     return locals()
 
 
-
 @register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
-def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, gallery=False, paged=True):
+def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, gallery=False,
+               paged=True):
     names = [('', [])]
     last_initial = None
     for obj in object_list:
@@ -363,11 +372,10 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
     return locals()
 
 
-
 # TODO: These are no longer just books.
 @register.inclusion_tag('catalogue/related_books.html', takes_context=True)
 def related_books(context, instance, limit=6, random=1, taken=0):
-    limit = limit - taken
+    limit -= taken
     max_books = limit - random
     is_picture = isinstance(instance, Picture)
 
@@ -404,17 +412,14 @@ def related_books(context, instance, limit=6, random=1, taken=0):
 def download_audio(book, daisy=True):
     links = []
     if book.has_media('mp3'):
-        links.append("<a href='%s'>%s</a>" %
-            (reverse('download_zip_mp3', args=[book.slug]),
-                BookMedia.formats['mp3'].name))
+        links.append("<a href='%s'>%s</a>" % (
+            reverse('download_zip_mp3', args=[book.slug]), BookMedia.formats['mp3'].name))
     if book.has_media('ogg'):
-        links.append("<a href='%s'>%s</a>" %
-            (reverse('download_zip_ogg', args=[book.slug]),
-                BookMedia.formats['ogg'].name))
+        links.append("<a href='%s'>%s</a>" % (
+            reverse('download_zip_ogg', args=[book.slug]), BookMedia.formats['ogg'].name))
     if daisy and book.has_media('daisy'):
         for dsy in book.get_media('daisy'):
-            links.append("<a href='%s'>%s</a>" %
-                (dsy.file.url, BookMedia.formats['daisy'].name))
+            links.append("<a href='%s'>%s</a>" % (dsy.file.url, BookMedia.formats['daisy'].name))
     return "".join(links)
 
 

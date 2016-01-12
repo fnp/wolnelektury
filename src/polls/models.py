@@ -58,7 +58,7 @@ class PollItem(models.Model):
         return (float(self.vote_count) / self.poll.vote_count) * 100 if self.poll.vote_count else 0
 
     def vote(self, session):
-        self.vote_count = self.vote_count + 1
+        self.vote_count += 1
         self.save()
         session.setdefault(USED_POLLS_KEY, []).append(self.poll.id)
         session.save()

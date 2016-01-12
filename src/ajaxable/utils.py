@@ -4,8 +4,7 @@
 #
 from functools import wraps
 
-from django.http import (HttpResponse, HttpResponseRedirect,
-        HttpResponseForbidden)
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.encoding import force_unicode
@@ -44,7 +43,7 @@ def require_login(request):
     if request.is_ajax():
         return HttpResponseForbidden('Not logged in')
     else:
-        return HttpResponseRedirect('/uzytkownicy/zaloguj')# next?=request.build_full_path())
+        return HttpResponseRedirect('/uzytkownicy/zaloguj')  # next?=request.build_full_path())
 
 
 def placeholdized(form):
@@ -119,8 +118,7 @@ class AjaxableFormView(object):
             if request.is_ajax():
                 return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
         else:
-            if (self.POST_login and not request.user.is_authenticated()
-                    and not request.is_ajax()):
+            if self.POST_login and not request.user.is_authenticated() and not request.is_ajax():
                 return require_login(request)
 
             form = self.form_class(*form_args, **form_kwargs)
@@ -148,8 +146,7 @@ class AjaxableFormView(object):
                 "view_kwargs": kwargs,
             }
         context.update(self.extra_context(request, obj))
-        return render_to_response(template, context,
-            context_instance=RequestContext(request))
+        return render_to_response(template, context, context_instance=RequestContext(request))
 
     def redirect_or_refresh(self, request, path, message=None):
         """If the form is AJAX, refresh the page. If not, go to `path`."""

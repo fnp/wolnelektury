@@ -21,7 +21,7 @@ class Catalog(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('libraries_catalog_view', [self.slug])
+        return 'libraries_catalog_view', [self.slug]
 
 
 class Library(models.Model):

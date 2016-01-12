@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from ssify import ssi_included
 from .models import Chunk
 
+
 @ssi_included
 def chunk(request, key):
     chunk, created = Chunk.objects.get_or_create(key=key)

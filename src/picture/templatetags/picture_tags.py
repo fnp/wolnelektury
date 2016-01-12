@@ -18,6 +18,7 @@ register = template.Library()
 
 cropper = CustomCroppingEngine()
 
+
 @register.inclusion_tag('picture/picture_wide.html', takes_context=True)
 def picture_wide(context, picture):
     context.update({

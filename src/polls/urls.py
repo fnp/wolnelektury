@@ -5,6 +5,7 @@
 from django.conf.urls import patterns, url
 
 
-urlpatterns = patterns('polls.views',
+urlpatterns = patterns(
+    'polls.views',
     url(r'^(?P<slug>[^/]+)$', 'poll', name='poll'),
 )

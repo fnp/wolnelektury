@@ -117,8 +117,7 @@ class BuildTxt(BuildEbook):
 class BuildPdf(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
-            cover=True)
+        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True)
 
     def build(self, fieldfile):
         BuildEbook.build(self, fieldfile)
@@ -161,8 +160,7 @@ class BuildHtml(BuildEbook):
             if lang not in [ln[0] for ln in settings.LANGUAGES]:
                 lang = None
 
-            fieldfile.save(None, ContentFile(html_output.get_string()),
-                    save=False)
+            fieldfile.save(None, ContentFile(html_output.get_string()), save=False)
             type(book).objects.filter(pk=book.pk).update(**{
                 fieldfile.field.attname: fieldfile
             })
@@ -192,8 +190,7 @@ class BuildHtml(BuildEbook):
                     elif lang is not None:
                         # Don't create unknown themes in non-default languages.
                         try:
-                            tag = Tag.objects.get(category='theme',
-                                    **{"name_%s" % lang: theme_name})
+                            tag = Tag.objects.get(category='theme', **{"name_%s" % lang: theme_name})
                         except Tag.DoesNotExist:
                             pass
                         else:
@@ -205,14 +202,14 @@ class BuildHtml(BuildEbook):
                 short_text = truncate_html_words(text, 15)
                 if text == short_text:
                     short_text = ''
-                new_fragment = Fragment.objects.create(anchor=fragment.id,
-                        book=book, text=text, short_text=short_text)
+                new_fragment = Fragment.objects.create(anchor=fragment.id, book=book, text=text, short_text=short_text)
 
                 new_fragment.save()
                 new_fragment.tags = set(meta_tags + themes)
             book.html_built.send(sender=type(self), instance=book)
             return True
         return False
+
 
 @BuildEbook.register('cover_thumb')
 @task(ignore_result=True)
@@ -223,7 +220,6 @@ class BuildCoverThumb(BuildEbook):
         return WLCover(wldoc.book_info, height=193).output_file()
 
 
-
 class OverwritingFieldFile(FieldFile):
     """
         Deletes the old file before saving the new one.
@@ -232,11 +228,9 @@ class OverwritingFieldFile(FieldFile):
     def save(self, name, content, *args, **kwargs):
         leave = kwargs.pop('leave', None)
         # delete if there's a file already and there's a new one coming
-        if not leave and self and (not hasattr(content, 'path') or
-                                   content.path != self.path):
+        if not leave and self and (not hasattr(content, 'path') or content.path != self.path):
             self.delete(save=False)
-        return super(OverwritingFieldFile, self).save(
-                name, content, *args, **kwargs)
+        return super(OverwritingFieldFile, self).save(name, content, *args, **kwargs)
 
 
 class OverwritingFileField(models.FileField):

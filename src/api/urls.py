@@ -15,7 +15,7 @@ auth = OAuthAuthentication(realm="Wolne Lektury")
 
 book_list_resource = CsrfExemptResource(handler=handlers.BooksHandler, authentication=auth)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
-#book_list_resource = Resource(handler=handlers.BooksHandler)
+# book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 
 collection_resource = Resource(handler=handlers.CollectionDetailHandler)
@@ -51,7 +51,8 @@ urlpatterns = patterns(
     url(r'^oauth/authorize/$', 'oauth_user_auth'),
     url(r'^oauth/access_token/$', csrf_exempt(oauth_access_token)),
 
-) + patterns('',
+) + patterns(
+    '',
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
     url(r'^include/(?P<model>book|fragment|tag)/(?P<pk>\d+)\.(?P<lang>.+)\.(?P<emitter_format>xml|json)$',
         incl, name='api_include'),

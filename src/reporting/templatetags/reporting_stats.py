@@ -9,6 +9,7 @@ from catalogue.models import Book
 
 register = template.Library()
 
+
 class StatsNode(template.Node):
     def __init__(self, value, varname=None):
         self.value = value
@@ -44,13 +45,16 @@ def register_counter(f):
 def count_books_all():
     return Book.objects.all().count()
 
+
 @register_counter
 def count_books():
     return Book.objects.filter(children=None).count()
 
+
 @register_counter
 def count_books_parent():
     return Book.objects.exclude(children=None).count()
+
 
 @register_counter
 def count_books_root():

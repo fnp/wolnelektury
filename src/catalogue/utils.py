@@ -30,9 +30,9 @@ MAX_SESSION_KEY = 18446744073709551616L     # 2 << 63
 
 
 def get_random_hash(seed):
-    sha_digest = hashlib.sha1('%s%s%s%s' %
-        (randrange(0, MAX_SESSION_KEY), time.time(), unicode(seed).encode('utf-8', 'replace'),
-        settings.SECRET_KEY)).digest()
+    sha_digest = hashlib.sha1('%s%s%s%s' % (
+        randrange(0, MAX_SESSION_KEY), time.time(), unicode(seed).encode('utf-8', 'replace'), settings.SECRET_KEY)
+    ).digest()
     return urlsafe_b64encode(sha_digest).replace('=', '').replace('_', '-').lower()
 
 
@@ -89,7 +89,7 @@ class LockFile(object):
         self.lock.close()
 
 
-#@task
+# @task
 def create_zip(paths, zip_slug):
     """
     Creates a zip in MEDIA_ROOT/zip directory containing files from path.
@@ -145,6 +145,7 @@ class AttachmentHttpResponse(HttpResponse):
             for chunk in read_chunks(f):
                 self.write(chunk)
 
+
 class MultiQuerySet(object):
     def __init__(self, *args, **kwargs):
         self.querysets = args
@@ -163,7 +164,7 @@ class MultiQuerySet(object):
             (offset, stop, step) = item.indices(self.count())
         except AttributeError:
             # it's not a slice - make it one
-            return self[item : item + 1][0]
+            return self[item:item + 1][0]
         items = []
         total_len = stop - offset
         for qs in self.querysets:
@@ -177,6 +178,7 @@ class MultiQuerySet(object):
                     offset = 0
                     stop = total_len - len(items)
                     continue
+
 
 class SortedMultiQuerySet(MultiQuerySet):
     def __init__(self, *args, **kwargs):
@@ -193,7 +195,7 @@ class SortedMultiQuerySet(MultiQuerySet):
             (offset, stop, step) = item.indices(self.count())
         except AttributeError:
             # it's not a slice - make it one
-            return self[item : item + 1][0]
+            return self[item:item + 1][0]
         items = []
         total_len = stop - offset
         skipped = 0
@@ -215,14 +217,14 @@ class SortedMultiQuerySet(MultiQuerySet):
                             candidate = competitor
                             candidate_i = i
                 except IndexError:
-                    continue # continue next sort_head
+                    continue  # continue next sort_head
             # we have no more elements:
             if candidate is None:
                 break
             sort_heads[candidate_i] += 1
             if skipped < offset:
                 skipped += 1
-                continue # continue next item
+                continue  # continue next item
             items.append(candidate)
 
         return items
@@ -279,7 +281,8 @@ def truncate_html_words(s, num, end_text='...'):
             except ValueError:
                 pass
             else:
-                # SGML: An end tag closes, back to the matching start tag, all unclosed intervening start tags with omitted end tags
+                # SGML: An end tag closes, back to the matching start tag,
+                # all unclosed intervening start tags with omitted end tags
                 open_tags = open_tags[i+1:]
         else:
             # Add it to the start of the open tags list
@@ -333,9 +336,7 @@ class AppSettings(object):
     def __getattribute__(self, name):
         if name.startswith('_'):
             return object.__getattribute__(self, name)
-        value = getattr(settings,
-                         "%s_%s" % (self._prefix, name),
-                         object.__getattribute__(self, name))
+        value = getattr(settings, "%s_%s" % (self._prefix, name), object.__getattribute__(self, name))
         more = "_more_%s" % name
         if hasattr(self, more):
             value = getattr(self, more)(value)

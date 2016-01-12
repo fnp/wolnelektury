@@ -7,16 +7,16 @@ import time
 from optparse import make_option
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.core.management.color import color_style
 from django.db import models
 
 import polib
-import modeltranslation.models
 from modeltranslation.translator import translator, NotRegistered
+
+from wolnelektury.utils import makedirs
 
 
 def metadata(language=''):
-    "get metadata for PO, given language code"
+    """get metadata for PO, given language code"""
     t = time.strftime('%Y-%m-%d %H:%M%z')
 
     return {
@@ -33,14 +33,15 @@ def metadata(language=''):
 
 
 def make_po(language=''):
-    "Create new POFile object for language code"
+    """Create new POFile object for language code"""
     po = polib.POFile()
     po.metadata = metadata(language)
     return po
 
 
 def get_languages(langs):
-    if not langs: return settings.LANGUAGES
+    if not langs:
+        return settings.LANGUAGES
     langs = langs.split(',')
     lm = dict(settings.LANGUAGES)
     return map(lambda l: (l, lm.get(l, l)), langs)
@@ -48,18 +49,22 @@ def get_languages(langs):
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
-        make_option('-d', '--directory', help='Specify which directory should hold generated PO files', dest='directory', default=''),
-        make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load', default=False),
+        make_option('-d', '--directory', help='Specify which directory should hold generated PO files',
+                    dest='directory', default=''),
+        make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load',
+                    default=False),
         make_option('-L', '--language', help='locales to load', dest='lang', default=None),
         make_option('-n', '--poname', help='name of the po file [no extension]', dest='poname', default=None),
-        make_option('-k', '--keep-running', help='keep running even when missing an input file', dest='keep_running', default=False, action='store_true'),
-        )
+        make_option('-k', '--keep-running', help='keep running even when missing an input file', dest='keep_running',
+                    default=False, action='store_true'),
+    )
     help = 'Export models from app to po files'
     args = 'app'
 
     def get_models(self, app):
         for mdname in dir(app.models):
-            if mdname[0] == '_': continue
+            if mdname[0] == '_':
+                continue
             md = getattr(app.models, mdname)
             try:
                 assert issubclass(md, models.Model)
@@ -74,14 +79,15 @@ class Command(BaseCommand):
                 yield (md, opts)
 
     def handle(self, appname, **options):
-        if not options['poname']: options['poname'] = appname
+        if not options['poname']:
+            options['poname'] = appname
         app = __import__(appname)
 
         if options['load']:
             objects = {}
             modmod = {}
             for md, opts in self.get_models(app):
-                if not md.__name__ in objects:
+                if md.__name__ not in objects:
                     objects[md.__name__] = {}
                     modmod['model'] = md
 
@@ -119,7 +125,7 @@ class Command(BaseCommand):
                             cur_lang = locfld.language
                             try:
                                 po = pofiles[cur_lang]
-                            except:
+                            except KeyError:
                                 po = make_po(cur_lang)
                                 pofiles[cur_lang] = po
                             v = locfld.value_from_object(obj) or ''
@@ -131,5 +137,5 @@ class Command(BaseCommand):
 
             directory = options['directory']
             for lng, po in pofiles.items():
-                os.makedirs(os.path.join(directory, lng))
+                makedirs(os.path.join(directory, lng))
                 po.save(os.path.join(directory, lng, '%s.po' % options['poname']))

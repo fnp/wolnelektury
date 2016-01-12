@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from os import path
 from .paths import PROJECT_DIR
 
@@ -13,8 +17,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': path.join(PROJECT_DIR, 'dev.db'), # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # 'postgresql_psycopg2'
+        'NAME': path.join(PROJECT_DIR, 'dev.db'),
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -38,5 +42,5 @@ SITE_ID = 1
 TEMPLATE_LOADERS = [
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 ]
