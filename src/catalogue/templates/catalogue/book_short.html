@@ -189,9 +189,7 @@
 <div>
 {% if audiobooks|length > 1 %}
     <a class="play-prev">« {% trans "previous" %}</a>
-{% endif %}
-{% trans "Part" %} <span class="number">1</span> / {{ audiobooks|length }}
-{% if audiobooks|length > 1 %}
+    {% trans "Part" %} <span class="number">1</span> / {{ audiobooks|length }}
     <a class="play-next">{% trans "next" %} »</a>
 {% endif %}
 </div>
