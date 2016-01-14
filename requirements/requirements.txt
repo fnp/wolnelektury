@@ -28,7 +28,7 @@ python-fb
 Feedparser>=5.1
 
 Pillow
-mutagen>=1.17
+mutagen>=1.31
 sorl-thumbnail>=12.3,<12.4
 
 # home-brewed & dependencies
