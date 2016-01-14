@@ -172,7 +172,7 @@ PIPELINE = {
     )
 }
 
-STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
+# STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
 
 # PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
 # PIPELINE_PYSCSS_ARGUMENTS = ''
