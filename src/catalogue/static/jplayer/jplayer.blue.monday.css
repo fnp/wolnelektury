@@ -14,15 +14,15 @@
  * Date: 1st September 2011
  */
 
+.jp-type-single {
+	padding: 5px 10px 0 10px;
+}
 .jp-audio .title {
-    font-size: 11px;
-    position: relative;
-    left: 10px;
-    top: 5px;
-    z-index: 100;
+	font-size: 11px;
+	z-index: 100;
 }
 .play-prev, .play-next {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 div.jp-audio,
@@ -84,7 +84,8 @@ div.jp-video-full div.jp-interface {
 
 div.jp-interface {
 	position: relative;
-	background-color:#eee;
+	margin-top: -5px;
+	margin-left: -10px;
 	width:100%;
 }
 
@@ -278,7 +279,8 @@ div.jp-video a.jp-mute,
 div.jp-video a.jp-unmute {
 	left: 50px;
 }
-
+
+
 div.jp-video a.jp-volume-max {
 	left: 134px;
 }
@@ -296,7 +298,8 @@ a.jp-unmute {
 a.jp-unmute:hover {
 	background: url("/static/jplayer/jplayer.blue.monday.jpg") -79px -170px no-repeat;
 }
-a.jp-volume-max {
+
+a.jp-volume-max {
 	background: url("/static/jplayer/jplayer.blue.monday.jpg") 0 -186px no-repeat;
 }
 a.jp-volume-max:hover {

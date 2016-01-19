@@ -119,18 +119,31 @@
         @include inner-box;
         @include size(min-height, 197.5px);
     }
+}
+
+
+.audiobook-box {
+    .book-left-column {
+        @media screen and (min-width: 1024px) {
+            display: inline-block;
+            @include size(width, 590px);
+        }
+    }
+
+    .right-column {
+        @media screen and (min-width: 1024px) {
+            @include size(width, 360px);
+        }
+    }
 
     .jp-type-playlist {
         margin-top: 24px;
 
         @media screen and (min-width: 1024px) {
-            position: absolute;
-            margin-top: 0;
-            right: 20px;
-            top: 60px;
+            float: right;
+            margin-top: 48px;
         }
     }
-
 }
 
 
@@ -249,9 +262,11 @@
 
     .jp-type-playlist {
         margin-top: 24px;
+        margin-left: 0.625rem;
 
         @media screen and (min-width: 1024px) {
             float: right;
+            margin-right: 0.625rem;
         }
     }
 
@@ -322,7 +337,6 @@
         margin-bottom: 5px;
 
         @include min-screen($S_BOOK_SHORT_FULL) {
-            clear: right;
             @include size(max-height, 57.6px);
             overflow: hidden;
         }

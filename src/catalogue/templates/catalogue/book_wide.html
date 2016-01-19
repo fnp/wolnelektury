@@ -10,26 +10,31 @@
 
 {% block cover-area-extra %}
 {% if extra_info.license %}
-    {% license_icon extra_info.license %}
+  {% license_icon extra_info.license %}
 {% endif %}
 {% endblock %}
 
 
-
-
-
 {% block right-column %}
-<div class="right-column">
-  <div class="quote">
-    {% choose_cite book.pk as cite_promo %}
-    {% choose_fragment book.pk unless=cite_promo as fragment_promo %}
-    {{ cite_promo.if }}
+  <div class="right-column">
+    <div class="quote">
+      {% choose_cite book.pk as cite_promo %}
+      {% choose_fragment book.pk unless=cite_promo as fragment_promo %}
+      {{ cite_promo.if }}
         {% ssi_include 'social_cite' pk=cite_promo %}
-    {{ cite_promo.endif }}
-    {{ fragment_promo.if }}
+      {{ cite_promo.endif }}
+      {{ fragment_promo.if }}
         {% ssi_include 'catalogue_fragment_promo' pk=fragment_promo %}
-    {{ fragment_promo.endif }}
+      {{ fragment_promo.endif }}
+    </div>
+    {% include 'catalogue/snippets/jplayer.html' %}
   </div>
+{% endblock %}
 
-</div>
+
+{% block book-box-body-pre %}
+    {% include "catalogue/snippets/like_button.html" %}
+{% endblock %}
+
+{% block book-box-pre %}
 {% endblock %}
