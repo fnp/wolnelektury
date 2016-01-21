@@ -347,15 +347,18 @@ def related_books(context, instance, limit=6, random=1, taken=0):
     }
 
 
-@register.inclusion_tag('catalogue/menu.html')
-def catalogue_menu():
-    return {'categories': [
+@register.inclusion_tag('catalogue/menu.html', takes_context=True)
+def catalogue_menu(context):
+    return {
+        'categories': [
                 ('author', _('Authors'), 'autorzy'),
                 ('genre', _('Genres'), 'gatunki'),
                 ('kind', _('Kinds'), 'rodzaje'),
                 ('epoch', _('Epochs'), 'epoki'),
                 ('theme', _('Themes'), 'motywy'),
-        ]}
+        ],
+        'LANGUAGE_CODE': context.get('LANGUAGE_CODE'),
+        }
 
 
 @register.simple_tag
