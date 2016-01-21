@@ -12,7 +12,7 @@ fabfile_local.py
 /var
 
 # SCSS output
-apps/wolnelektury/static/scss/*.css
+src/wolnelektury/static/scss/*.css
 
 # Python garbage
 *.pyc
