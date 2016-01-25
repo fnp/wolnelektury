@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,6 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=3;   plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-
-#: views.py:34 views.py:35 templates/superbase.html:85
-msgid "Sign in"
-msgstr "Вход"
-
-#: views.py:41 views.py:62
-#, python-format
-msgid "Already logged in as user %(user)s"
-msgstr ""
-
-#: views.py:53 views.py:54 views.py:82 templates/superbase.html:89
-msgid "Register"
-msgstr "Зарегистроваться"
-
-#: views.py:77
-msgid "You have to be logged in to continue"
-msgstr "Вы должны войти, чтобы продолжaть"
 
 #: templates/404.html:5
 msgid "Page does not exist"
@@ -82,178 +65,6 @@ msgstr ""
 "По поводу технической поддрежки сайт The Wolnelektury.pl временно не "
 "работает."
 
-#: templates/main_page.html:6 templates/main_page.html.py:7
-msgid "Wolne Lektury internet library"
-msgstr "WolneLektury интернет библиотека"
-
-#: templates/main_page.html:23
-msgid "What's new?"
-msgstr ""
-
-#: templates/main_page.html:31
-msgid "Recent publications"
-msgstr "Последние публикации"
-
-#: templates/main_page.html:41
-msgid "News"
-msgstr "Новости"
-
-#: templates/main_page.html:50
-msgid "Utilities"
-msgstr "Утилиты"
-
-#: templates/main_page.html:53
-msgid "Report a bug or suggestion"
-msgstr "Сообщить об ошибке или предложении"
-
-#: templates/main_page.html:56
-msgid "Download the catalogue in PDF format."
-msgstr "Скачать каталог в PDF формате."
-
-#: templates/main_page.html:58
-msgid "Widget"
-msgstr "Виджет"
-
-#: templates/main_page.html:59
-msgid "Missing a book?"
-msgstr "Потеряли книгу?"
-
-#: templates/main_page.html:60 templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
-msgid "Publishing plan"
-msgstr "Издательский план"
-
-#: templates/main_page.html:71
-msgid "Information"
-msgstr "Информация"
-
-#: templates/main_page.html:73
-msgid "Privacy policy"
-msgstr ""
-
-#: templates/main_page.html:98
-msgid "Image used:"
-msgstr "Используемые изображения:"
-
-#: templates/superbase.html:18
-msgid "Wolne Lektury"
-msgstr "на WolneLektury.pl"
-
-#: templates/superbase.html:55
-#, python-format
-msgid ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
-msgid_plural ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
-msgstr[0] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> бесплатное чтение, котором Вы "
-"<a href='%(r)s'>вправе пользоваться</a>\n"
-"                    "
-msgstr[1] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> бесплатные чтения, которыми Вы "
-"<a href='%(r)s'>вправе пользоваться </a>\n"
-"                    "
-msgstr[2] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> бесплатных чтений, которыми Вы "
-"<a href='%(r)s'>вправе пользоваться </a>\n"
-"                    "
-
-#: templates/superbase.html:66
-msgid "Welcome"
-msgstr "Добро пожаловать"
-
-#: templates/superbase.html:72 templates/user.html:12
-msgid "Password"
-msgstr ""
-
-#: templates/superbase.html:73 templates/user.html:13
-msgid "E-mail"
-msgstr ""
-
-#: templates/superbase.html:74 templates/user.html:14
-#, fuzzy
-msgid "Social accounts"
-msgstr "или присоединитесь к пользователям"
-
-#: templates/superbase.html:77
-msgid "My shelf"
-msgstr "Создать полку"
-
-#: templates/superbase.html:79
-msgid "Administration"
-msgstr "Администрация"
-
-#: templates/superbase.html:81
-msgid "Logout"
-msgstr "Выход"
-
-#: templates/superbase.html:111
-msgid "Search"
-msgstr "Поиск"
-
-#: templates/superbase.html:131
-msgid "Language versions"
-msgstr "Языковые версии"
-
-#: templates/superbase.html:165
-msgid ""
-"\n"
-"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
-"org.pl/\">Modern Poland Foundation</a>.\n"
-"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
-"\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
-"\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-"\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
-"\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tWolne Lektury - это проект под управлением <a href=\"http://"
-"nowoczesnapolska.org.pl/\"> Фонда Молодой Польши </a>.\n"
-"\t\t\t\t Цифровые копии создаются <a href=\"http://www.bn.org.pl/\"> "
-"Народная Библиотека </a>, <a href=\"http://www.bs.katowice.pl/\">Силезская "
-"Библиотека</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-"\">Эльблонгская Библиотека, основанные на ресурсах TNL. \n"
-"\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
-"\t\t\t\t"
-
-#: templates/superbase.html:172
-msgid ""
-"\n"
-"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
-"lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-"\">fundacja@nowoczesnapolska.org.pl</a>\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tФонд Молодой Польши, 00-514 Варшава, ul. Marszałkowska 84/92 lok. "
-"125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-"\">fundacja@nowoczesnapolska.org.pl</a>\n"
-"\t\t\t\t"
-
-#: templates/superbase.html:189
-msgid "Close"
-msgstr "Закройте"
-
-#: templates/superbase.html:191
-msgid "Loading"
-msgstr "Погрузка"
-
-#: templates/user.html:5 templates/user.html.py:9
-msgid "User"
-msgstr ""
-
 #: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
 msgid "Site administration"
 msgstr "Сайт администрации"
@@ -275,16 +86,16 @@ msgstr "упрощенный"
 msgid "Import book"
 msgstr "Импорт книги"
 
-#: templates/auth/login.html:10
+#: templates/auth/login.html:12
 msgid "Forgot Password?"
 msgstr ""
 
-#: templates/auth/login.html:15 templates/auth/register.html:7
+#: templates/auth/login.html:17 templates/auth/register.html:7
 #, fuzzy
 msgid "Sign in using:"
 msgstr "Вход"
 
-#: templates/auth/login_register.html:9
+#: templates/auth/login_register.html:10
 msgid "or register"
 msgstr "или зарегистрироваться"
 
@@ -338,6 +149,65 @@ msgstr ""
 msgid "More..."
 msgstr "Подробнее..."
 
+#: templates/main_page.html:7 templates/main_page.html.py:8
+msgid "Wolne Lektury internet library"
+msgstr "WolneLektury интернет библиотека"
+
+#: templates/main_page.html:34
+msgid "Theme"
+msgstr "Мотив"
+
+#: templates/main_page.html:87
+msgid "Recent publications"
+msgstr "Последние публикации"
+
+#: templates/main_page.html:91
+#, fuzzy
+#| msgid "Recent publications"
+msgid "More recent publications"
+msgstr "Последние публикации"
+
+#: templates/main_page.html:97
+msgid "News"
+msgstr "Новости"
+
+#: templates/main_page.html:103
+msgid "Utilities"
+msgstr "Утилиты"
+
+#: templates/main_page.html:106
+msgid "Report a bug or suggestion"
+msgstr "Сообщить об ошибке или предложении"
+
+#: templates/main_page.html:108
+msgid "Download the catalogue in PDF format."
+msgstr "Скачать каталог в PDF формате."
+
+#: templates/main_page.html:109
+msgid "Footnotes"
+msgstr ""
+
+#: templates/main_page.html:110
+msgid "Missing a book?"
+msgstr "Потеряли книгу?"
+
+#: templates/main_page.html:111 templates/publish_plan.html:4
+#: templates/publish_plan.html.py:8
+msgid "Publishing plan"
+msgstr "Издательский план"
+
+#: templates/main_page.html:122
+msgid "Information"
+msgstr "Информация"
+
+#: templates/main_page.html:124
+msgid "Privacy policy"
+msgstr ""
+
+#: templates/main_page.html:144
+msgid "Image used:"
+msgstr "Используемые изображения:"
+
 #: templates/openid/login.html:6 templates/openid/login.html.py:10
 msgid "OpenID Sign In"
 msgstr ""
@@ -372,32 +242,32 @@ msgstr ""
 "<strong>%(user)s </strong>."
 
 #: templates/socialaccount/connections.html:5
-#: templates/socialaccount/connections.html:8
+#: templates/socialaccount/connections.html:10
 msgid "Account Connections"
 msgstr ""
 
-#: templates/socialaccount/connections.html:12
+#: templates/socialaccount/connections.html:13
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr ""
 
-#: templates/socialaccount/connections.html:36
+#: templates/socialaccount/connections.html:37
 #, fuzzy
 msgid "Remove"
 msgstr "убрать"
 
-#: templates/socialaccount/connections.html:44
+#: templates/socialaccount/connections.html:45
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr ""
 
-#: templates/socialaccount/connections.html:47
+#: templates/socialaccount/connections.html:48
 msgid "Add a 3rd Party Account"
 msgstr ""
 
 #: templates/socialaccount/login_cancelled.html:5
-#: templates/socialaccount/login_cancelled.html:9
+#: templates/socialaccount/login_cancelled.html:10
 msgid "Login Cancelled"
 msgstr ""
 
@@ -408,6 +278,160 @@ msgid ""
 "accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
 "\">sign in</a>."
 msgstr ""
+
+#: templates/superbase.html:21
+msgid "Wolne Lektury"
+msgstr "на WolneLektury.pl"
+
+#: templates/superbase.html:51
+#, python-format
+msgid ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
+"href='%(r)s'>right to</a>\n"
+"                    "
+msgid_plural ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
+"href='%(r)s'>right to</a>\n"
+"                    "
+msgstr[0] ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> бесплатное чтение, котором Вы "
+"<a href='%(r)s'>вправе пользоваться</a>\n"
+"                    "
+msgstr[1] ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> бесплатные чтения, которыми Вы "
+"<a href='%(r)s'>вправе пользоваться </a>\n"
+"                    "
+msgstr[2] ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> бесплатных чтений, которыми Вы "
+"<a href='%(r)s'>вправе пользоваться </a>\n"
+"                    "
+
+#: templates/superbase.html:61
+#, fuzzy
+#| msgid "Language versions"
+msgid "Language"
+msgstr "Языковые версии"
+
+#: templates/superbase.html:85
+msgid "My shelf"
+msgstr "Создать полку"
+
+#: templates/superbase.html:88
+msgid "Administration"
+msgstr "Администрация"
+
+#: templates/superbase.html:90
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/superbase.html:93 views.py:67 views.py:68
+msgid "Sign in"
+msgstr "Вход"
+
+#: templates/superbase.html:93 views.py:86 views.py:87 views.py:115
+msgid "Register"
+msgstr "Зарегистроваться"
+
+#: templates/superbase.html:100
+msgid "Literature"
+msgstr ""
+
+#: templates/superbase.html:101
+msgid "Themes"
+msgstr "Мотивы"
+
+#: templates/superbase.html:102
+msgid "Audiobooks"
+msgstr "Аудиокниги"
+
+#: templates/superbase.html:103
+msgid "Gallery"
+msgstr ""
+
+#: templates/superbase.html:114
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/superbase.html:142
+msgid "Close"
+msgstr "Закройте"
+
+#: templates/superbase.html:144
+msgid "Loading"
+msgstr "Погрузка"
+
+#: templates/user.html:5 templates/user.html.py:11
+msgid "User"
+msgstr ""
+
+#: templates/user.html:13
+msgid "Password"
+msgstr ""
+
+#: templates/user.html:14
+msgid "E-mail"
+msgstr ""
+
+#: templates/user.html:15
+#, fuzzy
+msgid "Social accounts"
+msgstr "или присоединитесь к пользователям"
+
+#: views.py:75 views.py:96
+#, python-format
+msgid "Already logged in as user %(user)s"
+msgstr ""
+
+#: views.py:110
+msgid "You have to be logged in to continue"
+msgstr "Вы должны войти, чтобы продолжaть"
+
+#~ msgid "Widget"
+#~ msgstr "Виджет"
+
+#~ msgid "Welcome"
+#~ msgstr "Добро пожаловать"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://"
+#~ "nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
+#~ "\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
+#~ "\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
+#~ "\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
+#~ "\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
+#~ "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
+#~ "\t\t\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t\tWolne Lektury - это проект под управлением <a href=\"http://"
+#~ "nowoczesnapolska.org.pl/\"> Фонда Молодой Польши </a>.\n"
+#~ "\t\t\t\t Цифровые копии создаются <a href=\"http://www.bn.org.pl/\"> "
+#~ "Народная Библиотека </a>, <a href=\"http://www.bs.katowice.pl/"
+#~ "\">Силезская Библиотека</a> and <a href=\"http://www.bibliotekaelblaska."
+#~ "pl/\">Эльблонгская Библиотека, основанные на ресурсах TNL. \n"
+#~ "\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
+#~ "\t\t\t\t"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
+#~ "lok. 125, tel/fax: (22) 621-30-17\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "\t\t\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t\tФонд Молодой Польши, 00-514 Варшава, ul. Marszałkowska 84/92 lok. "
+#~ "125, tel/fax: (22) 621-30-17\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "\t\t\t\t"
 
 #~ msgid "Listing of all audiobooks"
 #~ msgstr "Список работ"
@@ -430,9 +454,6 @@ msgstr ""
 
 #~ msgid "See also"
 #~ msgstr "Подробнее"
-
-#~ msgid "Theme"
-#~ msgstr "Мотив"
 
 #~ msgid "in work "
 #~ msgstr "в труде"
@@ -523,9 +544,6 @@ msgstr ""
 
 #~ msgid "Table of contents"
 #~ msgstr "Оглавление"
-
-#~ msgid "Themes"
-#~ msgstr "Мотивы"
 
 #~ msgid "Edit. note"
 #~ msgstr "Изменить примечание"
@@ -643,9 +661,6 @@ msgstr ""
 #~ msgid "All books"
 #~ msgstr "Все книги"
 
-#~ msgid "Audiobooks"
-#~ msgstr "Аудиокниги"
-
 #~ msgid "DAISY"
 #~ msgstr "Даисы"
 
@@ -697,8 +712,8 @@ msgstr ""
 #~ msgid ""
 #~ "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
 #~ msgstr ""
-#~ "Аудиокниги были подготовлены в рамках %(cs)s проектa, финансируемого %(fb)"
-#~ "s."
+#~ "Аудиокниги были подготовлены в рамках %(cs)s проектa, финансируемого "
+#~ "%(fb)s."
 
 #~ msgid "Audiobooks were prepared as a part of the %(cs)s project."
 #~ msgstr "Аудиокниги были подготовлены в рамках %(cs)s проектa."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-02-21 17:06+0100\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,51 +17,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:13
+#: models.py:14
 msgid "name"
 msgstr ""
 
-#: models.py:14 models.py:65
+#: models.py:15 models.py:66
 msgid "slug"
 msgstr ""
 
-#: models.py:15
+#: models.py:16
 msgid "sort key"
 msgstr ""
 
-#: models.py:16 models.py:42
+#: models.py:17 models.py:43
 msgid "description"
 msgstr ""
 
-#: models.py:17
+#: models.py:18
 msgid "year of death"
 msgstr ""
 
-#: models.py:23 models.py:63
+#: models.py:24 models.py:64
 msgid "author"
 msgstr ""
 
-#: models.py:24
+#: models.py:25
 msgid "authors"
 msgstr ""
 
-#: models.py:62
+#: models.py:63
 msgid "title"
 msgstr ""
 
-#: models.py:64
+#: models.py:65
 msgid "goes to public domain"
 msgstr ""
 
-#: models.py:66
+#: models.py:67
 msgid "translator"
 msgstr ""
 
-#: models.py:70
+#: models.py:71
 msgid "book stub"
 msgstr ""
 
-#: models.py:71
+#: models.py:72
 msgid "book stubs"
 msgstr ""
 

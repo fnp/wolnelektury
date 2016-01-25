@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2010-05-19 16:20\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: admin.py:38
+#: admin.py:42 admin.py:43
 msgid "tags"
 msgstr "tagi"
 
-#: models.py:531
+#: models.py:219
 msgid "tag"
 msgstr "tag"
 
-#: models.py:532
+#: models.py:220
 msgid "content type"
 msgstr "typ zawartości"
 
-#: models.py:533
+#: models.py:221
 msgid "object id"
 msgstr "id obiektu"
 
 #: views.py:30
 msgid "tagged_object_list must be called with a queryset or a model."
-msgstr ""
+msgstr "tagged_object_list wymaga podania querysetu lub modelu."
 
 #: views.py:32
 msgid "tagged_object_list must be called with a tag model."
-msgstr ""
+msgstr "tagged_object_list wymaga podania modelu tagu."
 
 #: views.py:34
 msgid "tagged_object_list must be called with a tag."
-msgstr ""
+msgstr "tagged_object_list wymaga podania tagu."
 
 #: views.py:38
 #, python-format
 msgid "No tags found matching \"%s\"."
-msgstr ""
+msgstr "Nie znaleziono tagów pasujących do „%s”."

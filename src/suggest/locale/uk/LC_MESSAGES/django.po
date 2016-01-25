@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-03-04 17:31+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:16 forms.py:58
+#: forms.py:17 forms.py:58
 msgid "Contact"
 msgstr "Контакт"
 
-#: forms.py:17
+#: forms.py:18
 msgid "Description"
 msgstr "Опис"
 
-#: forms.py:46 forms.py:101
+#: forms.py:49 forms.py:106
 msgid "Thank you for your suggestion."
 msgstr "Дякуємо за Ваші пропозиції."
 
-#: forms.py:47 forms.py:102
+#: forms.py:50 forms.py:107
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -36,15 +36,15 @@ msgstr ""
 "Дякуємо за Ваш коментар на WolneLektury.pl.\n"
 "Вашу пропозицію передано координатору проекту."
 
-#: forms.py:53 forms.py:108
+#: forms.py:53 forms.py:110
 msgid "Message sent automatically. Please do not reply."
 msgstr "Повідомлення надіслано автоматично. Просимо не відповідати."
 
-#: forms.py:59 models.py:27
+#: forms.py:59 models.py:28
 msgid "books"
 msgstr "книжки"
 
-#: forms.py:60 models.py:28
+#: forms.py:60 models.py:29
 msgid "audiobooks"
 msgstr "аудіокниги"
 
@@ -53,37 +53,49 @@ msgstr "аудіокниги"
 msgid "One of these fields is required."
 msgstr "Одне з цих полів є обов'язковим."
 
-#: models.py:10 models.py:26
+#: models.py:11 models.py:27
 msgid "contact"
 msgstr "контакт"
 
-#: models.py:11
+#: models.py:12
 msgid "description"
 msgstr "опис"
 
-#: models.py:12 models.py:29
+#: models.py:13 models.py:30
 msgid "creation date"
 msgstr "дата створення"
 
-#: models.py:13 models.py:30
+#: models.py:14 models.py:31
 msgid "IP address"
 msgstr "IP-адреса"
 
-#: models.py:18
+#: models.py:19
 msgid "suggestion"
 msgstr "пропозиція"
 
-#: models.py:19
+#: models.py:20
 msgid "suggestions"
 msgstr "пропозиції"
 
-#: models.py:35
+#: models.py:36
 msgid "publishing suggestion"
 msgstr "пропозиція публікації"
 
-#: models.py:36
+#: models.py:37
 msgid "publishing suggestions"
 msgstr "пропозиції публікацій"
+
+#: templates/publishing_suggest.html:5
+msgid "Didn't find a book? Make a suggestion."
+msgstr "Не знайшли книжки, якої шукали? Вишліть свої пропозиції."
+
+#: templates/publishing_suggest.html:13
+msgid "I'd like to find in WolneLektury.pl these…"
+msgstr "Я хотів би/хотіла би знайти на сайті WolneLektury.pl наступні..."
+
+#: templates/publishing_suggest.html:19 views.py:22
+msgid "Send report"
+msgstr "Вислати повідомлення"
 
 #: views.py:13 views.py:21
 msgid "Report a bug or suggestion"
@@ -92,15 +104,3 @@ msgstr "Повідомити про помилку або надіслати п�
 #: views.py:15 views.py:23
 msgid "Report was sent successfully."
 msgstr "Ваше повідомлення надіслано успішно."
-
-#: views.py:22 templates/publishing_suggest.html:18
-msgid "Send report"
-msgstr "Вислати повідомлення"
-
-#: templates/publishing_suggest.html:4
-msgid "Didn't find a book? Make a suggestion."
-msgstr "Не знайшли книжки, якої шукали? Вишліть свої пропозиції."
-
-#: templates/publishing_suggest.html:12
-msgid "I'd like to find in WolneLektury.pl these…"
-msgstr "Я хотів би/хотіла би знайти на сайті WolneLektury.pl наступні..."

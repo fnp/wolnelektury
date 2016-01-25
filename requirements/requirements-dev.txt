@@ -2,7 +2,7 @@
 
 django-debug-toolbar
 polib
-BabelDjango
+django-babel
 Fabric
 sphinx
 pyinotify

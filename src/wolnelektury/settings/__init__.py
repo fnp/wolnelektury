@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 # Django settings for wolnelektury project.
-from os import path
-
 from .basic import *
 from .auth import *
 from .cache import *
@@ -10,6 +8,7 @@ from .contrib import *
 from .custom import *
 from .locale import *
 from .static import *
+from .paths import *
 
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -99,14 +98,14 @@ INSTALLED_APPS_CONTRIB = [
     'ssify',
     'django_extensions',
 
-    #allauth stuff
+    # allauth stuff
     'uni_form',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.openid',
     'allauth.socialaccount.providers.facebook',
-    #'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.twitter',
     ]
 
 INSTALLED_APPS = INSTALLED_APPS_OUR + INSTALLED_APPS_CONTRIB

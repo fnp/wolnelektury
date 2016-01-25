@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:16
+msgid "Background"
+msgstr ""
+
+#: admin.py:27 models.py:15
+msgid "text"
+msgstr ""
+
+#: admin.py:31 models.py:23
+msgid "image"
+msgstr ""
+
+#: forms.py:22
+msgid "Tags (comma-separated)"
+msgstr ""
+
+#: forms.py:44
+msgid "Name of the new shelf"
+msgstr ""
+
+#: models.py:14
+msgid "book"
+msgstr ""
+
+#: models.py:16
+msgid "small"
+msgstr ""
+
+#: models.py:16
+msgid "Make this cite display smaller."
+msgstr ""
+
+#: models.py:17
+msgid "VIP"
+msgstr ""
+
+#: models.py:18 models.py:30
+msgid "link"
+msgstr ""
+
+#: models.py:19
+msgid "sticky"
+msgstr ""
+
+#: models.py:20
+msgid "Sticky cites will take precedense."
+msgstr ""
+
+#: models.py:24
+msgid "Best image is exactly 975px wide and weights under 100kB."
+msgstr ""
+
+#: models.py:26
+msgid "shift"
+msgstr ""
+
+#: models.py:27
+msgid ""
+"Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%."
+msgstr ""
+
+#: models.py:28
+msgid "title"
+msgstr ""
+
+#: models.py:29
+msgid "author"
+msgstr ""
+
+#: models.py:31
+msgid "license name"
+msgstr ""
+
+#: models.py:32
+msgid "license link"
+msgstr ""
+
+#: models.py:36
+msgid "cite"
+msgstr ""
+
+#: models.py:37
+msgid "cites"
+msgstr ""
+
+#: templates/social/cite_promo.html:13
+msgid "recommends"
+msgstr ""
+
+#: templates/social/my_shelf.html:5 templates/social/my_shelf.html.py:11
+msgid "My shelf"
+msgstr ""
+
+#: templates/social/my_shelf.html:16
+msgid ""
+"Add works to your shelf by clicking on the star on the page of the work. The "
+"work will then show up on My shelf page."
+msgstr ""
+
+#: templates/social/sets_form.html:8
+msgid "Remove from my shelf"
+msgstr ""

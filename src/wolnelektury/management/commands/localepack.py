@@ -16,7 +16,7 @@ import sys
 
 import allauth
 
-ROOT = os.path.dirname(settings.PROJECT_DIR)
+ROOT = settings.ROOT_DIR
 
 
 def is_our_app(mod):
@@ -100,7 +100,7 @@ class ModelTranslation(Locale):
 class CustomLocale(Locale):
     def __init__(self, app_dir,
                  config=os.path.join(ROOT, "babel.cfg"),
-                 out_file=os.path.join(ROOT, 'wolnelektury/locale-contrib/django.pot'),
+                 out_file=os.path.join(ROOT, 'src/wolnelektury/locale-contrib/django.pot'),
                  name=None):
         self.app_dir = app_dir
         self.config = config

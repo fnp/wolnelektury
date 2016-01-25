@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-03-04 22:10+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,38 +16,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:11 models.py:33
+#: models.py:16 models.py:41
 msgid "key"
 msgstr "ключ"
 
-#: models.py:11
+#: models.py:16
 msgid "A unique name for this chunk of content"
 msgstr "Уникальное имя для этого фрагмента содержания"
 
-#: models.py:12
+#: models.py:18
 msgid "description"
 msgstr "описание"
 
-#: models.py:13
+#: models.py:19
 msgid "content"
 msgstr "содержание"
 
-#: models.py:17
+#: models.py:23
 msgid "chunk"
 msgstr "фрагмент"
 
-#: models.py:18
+#: models.py:24
 msgid "chunks"
 msgstr "фрагменты"
 
-#: models.py:33
+#: models.py:41
 msgid "A unique name for this attachment"
 msgstr "Уникальное имя для этого приложения"
 
-#: models.py:38
+#: models.py:46
 msgid "attachment"
 msgstr "приложение"
 
-#: models.py:38
+#: models.py:46
 msgid "attachments"
 msgstr "приложения"

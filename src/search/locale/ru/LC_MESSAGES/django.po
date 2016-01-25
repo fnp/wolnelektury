@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:23+0100\n"
 "PO-Revision-Date: 2012-03-04 22:11+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,10 +21,10 @@ msgstr ""
 msgid "Search"
 msgstr "Поиск"
 
-#: forms.py:21
+#: forms.py:22
 msgid "title, author, theme/topic, epoch, kind, genre, phrase"
 msgstr "название, автор, тема/сюжет, епоха, вид, жанр, фраза"
 
-#: views.py:100
+#: views.py:119
 msgid "book"
 msgstr "книга"

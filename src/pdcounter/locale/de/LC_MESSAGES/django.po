@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-04-15 13:43+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: \n"
@@ -17,52 +17,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 
-#: models.py:13
+#: models.py:14
 msgid "name"
 msgstr "Name"
 
-#: models.py:14 models.py:65
+#: models.py:15 models.py:66
 msgid "slug"
 msgstr "Slug"
 
-#: models.py:15
+#: models.py:16
 msgid "sort key"
 msgstr "Sortierschlüssel"
 
-#: models.py:16 models.py:42
+#: models.py:17 models.py:43
 msgid "description"
 msgstr "Beschreibung"
 
-#: models.py:17
+#: models.py:18
 msgid "year of death"
 msgstr "Todesjahr"
 
-#: models.py:23 models.py:63
+#: models.py:24 models.py:64
 msgid "author"
 msgstr "Autor"
 
-#: models.py:24
+#: models.py:25
 #, fuzzy
 msgid "authors"
 msgstr "Autoren"
 
-#: models.py:62
+#: models.py:63
 msgid "title"
 msgstr "Titel"
 
-#: models.py:64
+#: models.py:65
 msgid "goes to public domain"
 msgstr "Gehe zu Public Domain"
 
-#: models.py:66
+#: models.py:67
 msgid "translator"
 msgstr "Übersetzer"
 
-#: models.py:70
+#: models.py:71
 msgid "book stub"
 msgstr "Buchvorschau"
 
-#: models.py:71
+#: models.py:72
 msgid "book stubs"
 msgstr "Buchvorschauen"
 

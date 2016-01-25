@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-31 16:45+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -54,116 +54,115 @@ msgstr "przedmioty"
 msgid "Please supply an XML."
 msgstr "Proszę podać XML."
 
-#: forms.py:46
+#: forms.py:45
 msgid "Don't show footnotes"
 msgstr "Bez przypisów"
 
-#: forms.py:47
+#: forms.py:46
 msgid "Don't disply themes"
 msgstr "Bez motywów"
 
-#: forms.py:48
+#: forms.py:47
 msgid "Don't use our custom font"
 msgstr "Bez naszego kroju pisma"
 
-#: forms.py:49
+#: forms.py:48
 msgid "Without cover"
 msgstr "Bez okładki"
 
-#: forms.py:52
+#: forms.py:51
 msgid "Leading"
 msgstr "Interlinia"
 
-#: forms.py:53
+#: forms.py:52
 msgid "Normal leading"
 msgstr "Zwykła interlinia"
 
-#: forms.py:54
+#: forms.py:53
 msgid "One and a half leading"
 msgstr "Powiększona interlinia"
 
-#: forms.py:55
+#: forms.py:54
 msgid "Double leading"
 msgstr "Podwójna interlinia"
 
-#: forms.py:57
+#: forms.py:56
 msgid "Font size"
 msgstr "Rozmiar tekstu"
 
-#: forms.py:58
+#: forms.py:57
 msgid "Default"
 msgstr "Domyślnie"
 
-#: forms.py:59
+#: forms.py:58
 msgid "Big"
 msgstr "Duży"
 
-#: forms.py:82
+#: forms.py:80
 msgid "Queue is full. Please try again later."
 msgstr "Kolejka jest pełna. Proszę spróbować ponownie później."
 
-#: models/book.py:43 models/collection.py:14
+#: models/book.py:45 models/collection.py:14
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:44 models/tag.py:35
+#: models/book.py:46 models/tag.py:35
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models/book.py:45
-#, fuzzy
+#: models/book.py:48
 msgid "sort key by author"
-msgstr "Znalezieni autorzy"
+msgstr "klucz sortowania wg autora"
 
-#: models/book.py:46 models/book.py:48 models/collection.py:15
+#: models/book.py:49 models/book.py:50 models/collection.py:15
 #: models/collection.py:18 models/tag.py:34
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:49
+#: models/book.py:51
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:51 models/book.py:169 models/collection.py:16
-#: models/tag.py:38 models/tag.py:154
+#: models/book.py:52 models/book.py:173 models/collection.py:16
+#: models/tag.py:38 models/tag.py:156
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:52 models/book.py:53 models/bookmedia.py:34 models/tag.py:45
+#: models/book.py:53 models/book.py:54 models/bookmedia.py:34 models/tag.py:45
 #: models/tag.py:46
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models/book.py:54
+#: models/book.py:55
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: models/book.py:55 models/bookmedia.py:35
+#: models/book.py:56 models/bookmedia.py:35
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models/book.py:60
+#: models/book.py:62
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:65
+#: models/book.py:68
 msgid "cover thumbnail"
 msgstr "podgląd okładki"
 
-#: models/book.py:92 models/collection.py:21
+#: models/book.py:93 models/collection.py:22
 msgid "book"
 msgstr "książka"
 
-#: models/book.py:93
+#: models/book.py:94
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:267
+#: models/book.py:269
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:281
+#: models/book.py:282
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
@@ -172,20 +171,20 @@ msgstr "Książka %s już istnieje"
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: models/book.py:556 models/bookmedia.py:27
+#: models/book.py:557 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
 
-#: models/bookmedia.py:30
+#: models/bookmedia.py:31
 msgid "type"
 msgstr "typ"
 
-#: models/bookmedia.py:31 models/source.py:12 models/tag.py:33
+#: models/bookmedia.py:32 models/source.py:12 models/tag.py:33
 msgid "name"
 msgstr "nazwa"
 
-#: models/bookmedia.py:32
+#: models/bookmedia.py:33
 msgid "file"
 msgstr "plik"
 
@@ -201,11 +200,15 @@ msgstr "slugi utworów"
 msgid "kind"
 msgstr "rodzaj"
 
-#: models/collection.py:25
+#: models/collection.py:22
+msgid "picture"
+msgstr "obraz"
+
+#: models/collection.py:26
 msgid "collection"
 msgstr "kolekcja"
 
-#: models/collection.py:26
+#: models/collection.py:27
 msgid "collections"
 msgstr "kolekcje"
 
@@ -253,7 +256,7 @@ msgstr "półka"
 msgid "thing"
 msgstr "przedmiot"
 
-#: models/tag.py:36
+#: models/tag.py:37
 msgid "category"
 msgstr "kategoria"
 
@@ -402,51 +405,31 @@ msgstr "Spis treści"
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:53
+#: templates/catalogue/book_short.html:43
 #: templates/catalogue/picture_detail.html:54
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:61
+#: templates/catalogue/book_short.html:51
 #: templates/catalogue/picture_detail.html:60
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:69
+#: templates/catalogue/book_short.html:59
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:78
+#: templates/catalogue/book_short.html:68
 msgid "Language"
 msgstr "Język"
 
-#: templates/catalogue/book_short.html:97
+#: templates/catalogue/book_short.html:87
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:101 views.py:588
+#: templates/catalogue/book_short.html:91 views.py:586
 msgid "Download"
 msgstr "Pobierz"
-
-#: templates/catalogue/book_short.html:173 templates/catalogue/player.html:84
-msgid "Artist"
-msgstr "Czyta"
-
-#: templates/catalogue/book_short.html:174 templates/catalogue/player.html:85
-msgid "Director"
-msgstr "Reżyseruje"
-
-#: templates/catalogue/book_short.html:190
-msgid "previous"
-msgstr "poprzednia"
-
-#: templates/catalogue/book_short.html:191
-msgid "Part"
-msgstr "Część"
-
-#: templates/catalogue/book_short.html:192
-msgid "next"
-msgstr "następna"
 
 #: templates/catalogue/book_text.html:26
 msgid "Table of contents"
@@ -617,6 +600,16 @@ msgstr "Strona utworu"
 msgid "Download as"
 msgstr "Pobierz jako"
 
+#: templates/catalogue/player.html:84
+#: templates/catalogue/snippets/jplayer.html:35
+msgid "Artist"
+msgstr "Czyta"
+
+#: templates/catalogue/player.html:85
+#: templates/catalogue/snippets/jplayer.html:36
+msgid "Director"
+msgstr "Reżyseruje"
+
 #: templates/catalogue/player.html:104
 msgid "Audiobooks were prepared as a part of the projects:"
 msgstr "Audiobooki przygotowane w ramach projektów:"
@@ -738,6 +731,18 @@ msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 msgid "Download a custom PDF"
 msgstr "Stwórz własny plik PDF"
 
+#: templates/catalogue/snippets/jplayer.html:53
+msgid "previous"
+msgstr "poprzednia"
+
+#: templates/catalogue/snippets/jplayer.html:54
+msgid "Part"
+msgstr "Część"
+
+#: templates/catalogue/snippets/jplayer.html:55
+msgid "next"
+msgstr "następna"
+
 #: templates/catalogue/snippets/license_icon.html:6
 #: templates/catalogue/snippets/license_icon.html:8
 msgid "Free license"
@@ -779,7 +784,7 @@ msgstr "w Culture.pl"
 msgid "Loading"
 msgstr "Ładowanie"
 
-#: views.py:552
+#: views.py:551
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -799,7 +804,7 @@ msgstr "Książka zaimportowana"
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
 
-#: views.py:587
+#: views.py:585
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
@@ -847,9 +852,6 @@ msgstr "Stwórz własny PDF"
 
 #~ msgid "book count"
 #~ msgstr "liczba książek"
-
-#~ msgid "picture count"
-#~ msgstr "liczba obrazów"
 
 #~ msgid ""
 #~ "Book tags can't have attached links. Set them directly on the book "
@@ -990,7 +992,6 @@ msgstr "Stwórz własny PDF"
 #~ msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 #~ msgstr "<p>Półka <strong>%s</strong> została usunięta</p>"
 
-#, fuzzy
 #~ msgid "sort_key"
 #~ msgstr "klucz sortowania"
 

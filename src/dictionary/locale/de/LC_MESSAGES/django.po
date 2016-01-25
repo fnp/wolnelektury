@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: constants.py:11
+msgid "author's footnotes"
+msgstr ""
+
+#: constants.py:12
+msgid "Wolne Lektury editorial footnotes"
+msgstr ""
+
+#: constants.py:13
+msgid "source editorial footnotes"
+msgstr ""
+
+#: constants.py:14
+msgid "translator's footnotes"
+msgstr ""
+
+#: templates/dictionary/note_list.html:8
+#: templates/dictionary/note_list.html:12
+msgid "Footnotes"
+msgstr ""
+
+#: templates/dictionary/note_list.html:17
+msgid "By first letter"
+msgstr ""
+
+#: templates/dictionary/note_list.html:19
+#: templates/dictionary/note_list.html:21
+#: templates/dictionary/note_list.html:37
+#: templates/dictionary/note_list.html:39
+#: templates/dictionary/note_list.html:56
+#: templates/dictionary/note_list.html:58
+#: templates/dictionary/note_list.html:74
+#: templates/dictionary/note_list.html:76
+msgid "all"
+msgstr ""
+
+#: templates/dictionary/note_list.html:35
+msgid "By type"
+msgstr ""
+
+#: templates/dictionary/note_list.html:54
+msgid "By qualifier"
+msgstr ""
+
+#: templates/dictionary/note_list.html:72
+msgid "By language"
+msgstr ""
+
+#: templates/dictionary/note_list.html:92
+#, python-format
+msgid "%(c)s footnote found"
+msgid_plural "%(c)s footnotes found"
+msgstr[0] ""
+msgstr[1] ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2010-05-19 16:19\n"
 "Last-Translator: <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: models.py:11 models.py:33
+#: models.py:16 models.py:41
 msgid "key"
 msgstr "klucz"
 
-#: models.py:11
+#: models.py:16
 msgid "A unique name for this chunk of content"
 msgstr "Unikalna nazwa dla tego kawałka treści"
 
-#: models.py:12
+#: models.py:18
 msgid "description"
 msgstr "opis"
 
-#: models.py:13
+#: models.py:19
 msgid "content"
 msgstr "zawartość"
 
-#: models.py:17
+#: models.py:23
 msgid "chunk"
 msgstr "kawałek"
 
-#: models.py:18
+#: models.py:24
 msgid "chunks"
 msgstr "kawałki"
 
-#: models.py:33
+#: models.py:41
 msgid "A unique name for this attachment"
 msgstr "Unikalna nazwa dla tego załącznika"
 
-#: models.py:38
+#: models.py:46
 msgid "attachment"
 msgstr "załącznik"
 
-#: models.py:38
+#: models.py:46
 msgid "attachments"
 msgstr "załączniki"

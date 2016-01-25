@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-03-04 22:11+0100\n"
 "Last-Translator: xxx <xxx>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:38
+#: admin.py:42 admin.py:43
 msgid "tags"
 msgstr "таги"
 
-#: models.py:531
+#: models.py:219
 msgid "tag"
 msgstr "таг"
 
-#: models.py:532
+#: models.py:220
 msgid "content type"
 msgstr "тип содержания"
 
-#: models.py:533
+#: models.py:221
 msgid "object id"
 msgstr "ID объекта"
 

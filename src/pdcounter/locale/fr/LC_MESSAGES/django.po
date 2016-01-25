@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-02-22 20:58+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,51 +16,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:13
+#: models.py:14
 msgid "name"
 msgstr "nom"
 
-#: models.py:14 models.py:65
+#: models.py:15 models.py:66
 msgid "slug"
 msgstr "ébauche"
 
-#: models.py:15
+#: models.py:16
 msgid "sort key"
 msgstr "critère de tri"
 
-#: models.py:16 models.py:42
+#: models.py:17 models.py:43
 msgid "description"
 msgstr "description"
 
-#: models.py:17
+#: models.py:18
 msgid "year of death"
 msgstr "année de la mort"
 
-#: models.py:23 models.py:63
+#: models.py:24 models.py:64
 msgid "author"
 msgstr "auteur"
 
-#: models.py:24
+#: models.py:25
 msgid "authors"
 msgstr "auteurs"
 
-#: models.py:62
+#: models.py:63
 msgid "title"
 msgstr "titre"
 
-#: models.py:64
+#: models.py:65
 msgid "goes to public domain"
 msgstr "entre dans le domaine public"
 
-#: models.py:66
+#: models.py:67
 msgid "translator"
 msgstr "traducteur"
 
-#: models.py:70
+#: models.py:71
 msgid "book stub"
 msgstr "ébauche du livre"
 
-#: models.py:71
+#: models.py:72
 msgid "book stubs"
 msgstr "ébauches des livres"
 

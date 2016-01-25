@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -17,23 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-
-#: views.py:34 views.py:35 templates/superbase.html:85
-msgid "Sign in"
-msgstr "Einloggen"
-
-#: views.py:41 views.py:62
-#, python-format
-msgid "Already logged in as user %(user)s"
-msgstr "Eingeloggt als User %(user)s"
-
-#: views.py:53 views.py:54 views.py:82 templates/superbase.html:89
-msgid "Register"
-msgstr "Registrieren"
-
-#: views.py:77
-msgid "You have to be logged in to continue"
-msgstr "Sie müssen eingeloggt sein, um fortzusetzen."
 
 #: templates/404.html:5
 msgid "Page does not exist"
@@ -80,175 +63,6 @@ msgstr "Service nicht verfügbar"
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr "Wolnelektury.pl wegen Wartungsarbeiten momentan nicht verfügbar."
 
-#: templates/main_page.html:6 templates/main_page.html.py:7
-msgid "Wolne Lektury internet library"
-msgstr "Internetbibliothek WolneLektury.pl"
-
-#: templates/main_page.html:23
-msgid "What's new?"
-msgstr "Was Neues?"
-
-#: templates/main_page.html:31
-msgid "Recent publications"
-msgstr "Letzte Publikationen"
-
-#: templates/main_page.html:41
-msgid "News"
-msgstr "News"
-
-#: templates/main_page.html:50
-msgid "Utilities"
-msgstr "Leistungen"
-
-#: templates/main_page.html:53
-msgid "Report a bug or suggestion"
-msgstr "Melden Sie einen Bug oder Vorschlag."
-
-#: templates/main_page.html:56
-msgid "Download the catalogue in PDF format."
-msgstr "Der Katalog als PDF-Datei herunterladen."
-
-#: templates/main_page.html:58
-msgid "Widget"
-msgstr "Widget"
-
-#: templates/main_page.html:59
-#, fuzzy
-msgid "Missing a book?"
-msgstr "Brauchen Sie ein Buch?"
-
-#: templates/main_page.html:60 templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
-msgid "Publishing plan"
-msgstr "Plan der Veröffentlichung"
-
-#: templates/main_page.html:71
-#, fuzzy
-msgid "Information"
-msgstr "Format öffnen"
-
-#: templates/main_page.html:73
-msgid "Privacy policy"
-msgstr ""
-
-#: templates/main_page.html:98
-msgid "Image used:"
-msgstr "das genutzte Bild"
-
-#: templates/superbase.html:18
-msgid "Wolne Lektury"
-msgstr "in WolneLektury.pl"
-
-#: templates/superbase.html:55
-#, python-format
-msgid ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
-msgid_plural ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
-msgstr[0] ""
-"\n"
-"Sie haben <a href='%(b)s'>%(c)s</a> freies Werk <a href='%(r)s'>zur "
-"Verfügung</a>\n"
-"                                        "
-msgstr[1] ""
-"\n"
-"Sie haben <a href='%(b)s'>%(c)s</a> freie Werke <a href='%(r)s'>zur "
-"Verfügung</a>\n"
-"                    "
-
-#: templates/superbase.html:66
-msgid "Welcome"
-msgstr "Willkommen"
-
-#: templates/superbase.html:72 templates/user.html:12
-msgid "Password"
-msgstr "Password"
-
-#: templates/superbase.html:73 templates/user.html:13
-msgid "E-mail"
-msgstr "E-Mail"
-
-#: templates/superbase.html:74 templates/user.html:14
-#, fuzzy
-msgid "Social accounts"
-msgstr "oder melde dich an:"
-
-#: templates/superbase.html:77
-#, fuzzy
-msgid "My shelf"
-msgstr "Mein Bücherregal"
-
-#: templates/superbase.html:79
-msgid "Administration"
-msgstr "Administration"
-
-#: templates/superbase.html:81
-msgid "Logout"
-msgstr "Ausloggen"
-
-#: templates/superbase.html:111
-msgid "Search"
-msgstr "Suchen"
-
-#: templates/superbase.html:131
-msgid "Language versions"
-msgstr "Sprachversionen"
-
-#: templates/superbase.html:165
-msgid ""
-"\n"
-"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
-"org.pl/\">Modern Poland Foundation</a>.\n"
-"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
-"\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
-"\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-"\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
-"\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tWolne Lektury ist das Projekt der<a href=\"http://nowoczesnapolska."
-"org.pl/\">Stiftung Modernes Polen</a>.\n"
-"\t\t\t\tDigitalisierung wird von der <a href=\"http://www.bn.org.pl/"
-"\">Natonalbibliothek</a> ausgeführt, Exemplare aus dem Bücherbestand der "
-"NB. \n"
-"\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
-"\t\t\t\t"
-
-#: templates/superbase.html:172
-msgid ""
-"\n"
-"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
-"lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-"\">fundacja@nowoczesnapolska.org.pl</a>\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t Stiftung Modernes Polen, 00-514 Warschau, Marszałkowska 84/92, "
-"Wohnungsnummer 125, Telefon/Fax: +48 (22) 621-30-17\n"
-"                E-Mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-"\">fundacja@nowoczesnapolska.org.pl</a>\n"
-"\t\t\t\t"
-
-#: templates/superbase.html:189
-msgid "Close"
-msgstr "Schließen"
-
-#: templates/superbase.html:191
-msgid "Loading"
-msgstr "Laden"
-
-#: templates/user.html:5 templates/user.html.py:9
-msgid "User"
-msgstr "User"
-
 #: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
 msgid "Site administration"
 msgstr "Webseite-Administration"
@@ -270,16 +84,16 @@ msgstr "vereinfacht "
 msgid "Import book"
 msgstr "Buch importieren"
 
-#: templates/auth/login.html:10
+#: templates/auth/login.html:12
 msgid "Forgot Password?"
 msgstr "Password vergessen?"
 
-#: templates/auth/login.html:15 templates/auth/register.html:7
+#: templates/auth/login.html:17 templates/auth/register.html:7
 #, fuzzy
 msgid "Sign in using:"
 msgstr "Einloggen"
 
-#: templates/auth/login_register.html:9
+#: templates/auth/login_register.html:10
 msgid "or register"
 msgstr "oder Registrieren"
 
@@ -329,6 +143,67 @@ msgstr ""
 msgid "More..."
 msgstr "Mehr..."
 
+#: templates/main_page.html:7 templates/main_page.html.py:8
+msgid "Wolne Lektury internet library"
+msgstr "Internetbibliothek WolneLektury.pl"
+
+#: templates/main_page.html:34
+msgid "Theme"
+msgstr "Motiv"
+
+#: templates/main_page.html:87
+msgid "Recent publications"
+msgstr "Letzte Publikationen"
+
+#: templates/main_page.html:91
+#, fuzzy
+#| msgid "Recent publications"
+msgid "More recent publications"
+msgstr "Letzte Publikationen"
+
+#: templates/main_page.html:97
+msgid "News"
+msgstr "News"
+
+#: templates/main_page.html:103
+msgid "Utilities"
+msgstr "Leistungen"
+
+#: templates/main_page.html:106
+msgid "Report a bug or suggestion"
+msgstr "Melden Sie einen Bug oder Vorschlag."
+
+#: templates/main_page.html:108
+msgid "Download the catalogue in PDF format."
+msgstr "Der Katalog als PDF-Datei herunterladen."
+
+#: templates/main_page.html:109
+msgid "Footnotes"
+msgstr ""
+
+#: templates/main_page.html:110
+#, fuzzy
+msgid "Missing a book?"
+msgstr "Brauchen Sie ein Buch?"
+
+#: templates/main_page.html:111 templates/publish_plan.html:4
+#: templates/publish_plan.html.py:8
+msgid "Publishing plan"
+msgstr "Plan der Veröffentlichung"
+
+#: templates/main_page.html:122
+#, fuzzy
+msgid "Information"
+msgstr "Format öffnen"
+
+#: templates/main_page.html:124
+msgid "Privacy policy"
+msgstr ""
+
+#: templates/main_page.html:144
+msgid "Image used:"
+msgstr "das genutzte Bild"
+
 #: templates/openid/login.html:6 templates/openid/login.html.py:10
 msgid "OpenID Sign In"
 msgstr "OpenID registrieren"
@@ -362,32 +237,32 @@ msgstr ""
 "Bitte bestätigen Sie den Zugang zu Wolne Lektury <strong>%(user)s</strong>."
 
 #: templates/socialaccount/connections.html:5
-#: templates/socialaccount/connections.html:8
+#: templates/socialaccount/connections.html:10
 msgid "Account Connections"
 msgstr "Konto-Beziehungen"
 
-#: templates/socialaccount/connections.html:12
+#: templates/socialaccount/connections.html:13
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr "Sie können mithilfe folgenden fremden Accounts registrieren."
 
-#: templates/socialaccount/connections.html:36
+#: templates/socialaccount/connections.html:37
 #, fuzzy
 msgid "Remove"
 msgstr "löschen"
 
-#: templates/socialaccount/connections.html:44
+#: templates/socialaccount/connections.html:45
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr "Sie haben noch kein Social-Networt-Konto mit diesem Konto verbunden."
 
-#: templates/socialaccount/connections.html:47
+#: templates/socialaccount/connections.html:48
 msgid "Add a 3rd Party Account"
 msgstr "Füge ein fremdes Konto hinzu"
 
 #: templates/socialaccount/login_cancelled.html:5
-#: templates/socialaccount/login_cancelled.html:9
+#: templates/socialaccount/login_cancelled.html:10
 msgid "Login Cancelled"
 msgstr "Login annulliert"
 
@@ -401,6 +276,158 @@ msgstr ""
 "Sie haben entschieden, sich in dieser Seite nicht mit erschafftn Kontos "
 "einzuloggen. Wenn es aus Versehen passiert ist, gehen Sie bitte <a href="
 "\"%(login_url)s\">Registrieren</a> voran."
+
+#: templates/superbase.html:21
+msgid "Wolne Lektury"
+msgstr "in WolneLektury.pl"
+
+#: templates/superbase.html:51
+#, python-format
+msgid ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
+"href='%(r)s'>right to</a>\n"
+"                    "
+msgid_plural ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
+"href='%(r)s'>right to</a>\n"
+"                    "
+msgstr[0] ""
+"\n"
+"Sie haben <a href='%(b)s'>%(c)s</a> freies Werk <a href='%(r)s'>zur "
+"Verfügung</a>\n"
+"                                        "
+msgstr[1] ""
+"\n"
+"Sie haben <a href='%(b)s'>%(c)s</a> freie Werke <a href='%(r)s'>zur "
+"Verfügung</a>\n"
+"                    "
+
+#: templates/superbase.html:61
+#, fuzzy
+#| msgid "Language versions"
+msgid "Language"
+msgstr "Sprachversionen"
+
+#: templates/superbase.html:85
+#, fuzzy
+msgid "My shelf"
+msgstr "Mein Bücherregal"
+
+#: templates/superbase.html:88
+msgid "Administration"
+msgstr "Administration"
+
+#: templates/superbase.html:90
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: templates/superbase.html:93 views.py:67 views.py:68
+msgid "Sign in"
+msgstr "Einloggen"
+
+#: templates/superbase.html:93 views.py:86 views.py:87 views.py:115
+msgid "Register"
+msgstr "Registrieren"
+
+#: templates/superbase.html:100
+msgid "Literature"
+msgstr ""
+
+#: templates/superbase.html:101
+msgid "Themes"
+msgstr "Motive"
+
+#: templates/superbase.html:102
+msgid "Audiobooks"
+msgstr "Audiobücher"
+
+#: templates/superbase.html:103
+msgid "Gallery"
+msgstr ""
+
+#: templates/superbase.html:114
+msgid "Search"
+msgstr "Suchen"
+
+#: templates/superbase.html:142
+msgid "Close"
+msgstr "Schließen"
+
+#: templates/superbase.html:144
+msgid "Loading"
+msgstr "Laden"
+
+#: templates/user.html:5 templates/user.html.py:11
+msgid "User"
+msgstr "User"
+
+#: templates/user.html:13
+msgid "Password"
+msgstr "Password"
+
+#: templates/user.html:14
+msgid "E-mail"
+msgstr "E-Mail"
+
+#: templates/user.html:15
+#, fuzzy
+msgid "Social accounts"
+msgstr "oder melde dich an:"
+
+#: views.py:75 views.py:96
+#, python-format
+msgid "Already logged in as user %(user)s"
+msgstr "Eingeloggt als User %(user)s"
+
+#: views.py:110
+msgid "You have to be logged in to continue"
+msgstr "Sie müssen eingeloggt sein, um fortzusetzen."
+
+#~ msgid "What's new?"
+#~ msgstr "Was Neues?"
+
+#~ msgid "Widget"
+#~ msgstr "Widget"
+
+#~ msgid "Welcome"
+#~ msgstr "Willkommen"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://"
+#~ "nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
+#~ "\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
+#~ "\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
+#~ "\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
+#~ "\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
+#~ "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
+#~ "\t\t\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t\tWolne Lektury ist das Projekt der<a href=\"http://"
+#~ "nowoczesnapolska.org.pl/\">Stiftung Modernes Polen</a>.\n"
+#~ "\t\t\t\tDigitalisierung wird von der <a href=\"http://www.bn.org.pl/"
+#~ "\">Natonalbibliothek</a> ausgeführt, Exemplare aus dem Bücherbestand der "
+#~ "NB. \n"
+#~ "\t\t\t\tHosting <a href=\"http://eo.pl/\">EO Networks</a>.\n"
+#~ "\t\t\t\t"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
+#~ "lok. 125, tel/fax: (22) 621-30-17\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "\t\t\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t\t\t\t Stiftung Modernes Polen, 00-514 Warschau, Marszałkowska 84/92, "
+#~ "Wohnungsnummer 125, Telefon/Fax: +48 (22) 621-30-17\n"
+#~ "                E-Mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
+#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "\t\t\t\t"
 
 #~ msgid "Listing of all audiobooks"
 #~ msgstr "Audiobücherverzeichnis"
@@ -424,9 +451,6 @@ msgstr ""
 
 #~ msgid "See also"
 #~ msgstr "Sehe auch"
-
-#~ msgid "Theme"
-#~ msgstr "Motiv"
 
 #~ msgid "in work "
 #~ msgstr "im Werk"
@@ -514,9 +538,6 @@ msgstr ""
 
 #~ msgid "Table of contents"
 #~ msgstr "Inhalt"
-
-#~ msgid "Themes"
-#~ msgstr "Motive"
 
 #~ msgid "Edit. note"
 #~ msgstr "Edit. note"
@@ -641,9 +662,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "All books"
 #~ msgstr "Alle Bücher"
-
-#~ msgid "Audiobooks"
-#~ msgstr "Audiobücher"
 
 #~ msgid "DAISY"
 #~ msgstr "DAISY"

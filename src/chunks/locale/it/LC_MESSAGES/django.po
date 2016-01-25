@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2016-01-25 13:22+0100\n"
 "PO-Revision-Date: 2012-02-21 16:52+0100\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: models.py:11 models.py:33
+#: models.py:16 models.py:41
 msgid "key"
 msgstr "Chiave"
 
-#: models.py:11
+#: models.py:16
 msgid "A unique name for this chunk of content"
 msgstr "un nome unico per questo allegato"
 
-#: models.py:12
+#: models.py:18
 msgid "description"
 msgstr "descrizione"
 
-#: models.py:13
+#: models.py:19
 msgid "content"
 msgstr "contenuto"
 
-#: models.py:17
+#: models.py:23
 msgid "chunk"
 msgstr "blocco"
 
-#: models.py:18
+#: models.py:24
 msgid "chunks"
 msgstr "blocchi"
 
-#: models.py:33
+#: models.py:41
 msgid "A unique name for this attachment"
 msgstr "Un nome unico per questo allegato"
 
-#: models.py:38
+#: models.py:46
 msgid "attachment"
 msgstr "allegato"
 
-#: models.py:38
+#: models.py:46
 msgid "attachments"
 msgstr "allegati"
