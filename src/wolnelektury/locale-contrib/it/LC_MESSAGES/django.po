@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-01-25 14:48+0100\n"
+"POT-Creation-Date: 2016-01-25 15:09+0100\n"
 "PO-Revision-Date: 2012-03-22 14:23+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: it\n"
@@ -787,9 +787,6 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "The social account has been disconnected"
-#~ msgstr ""
-
-#~ msgid ""
 #~ msgstr ""
 
 #~ msgid "Signed Out"
