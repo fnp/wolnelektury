@@ -130,8 +130,9 @@
         }
     }
 
-    .right-column {
+    .audiobook-right-column {
         @media screen and (min-width: 1024px) {
+            float: right;
             @include size(width, 360px);
         }
     }
