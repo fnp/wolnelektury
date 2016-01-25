@@ -25,16 +25,16 @@ from ssify import ssi_included
 def main_page(request):
     ctx = {
         'last_published': Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:6],
+        'theme_books': []
     }
 
-    for category in ('author', 'epoch', 'genre', 'kind'):
-        try:
-            ctx[category] = Tag.objects.filter(category=category).order_by('?')[:1][0]
-        except IndexError:
-            pass
+    # for category in ('author', 'epoch', 'genre', 'kind'):
+    #     try:
+    #         ctx[category] = Tag.objects.filter(category=category).order_by('?')[:1][0]
+    #     except IndexError:
+    #         pass
 
     # FIXME: find this theme and books properly.
-    ctx['theme_books'] = []
     if Fragment.objects.count():
         while True:
             ctx['theme'] = Tag.objects.filter(category='theme').order_by('?')[:1][0]

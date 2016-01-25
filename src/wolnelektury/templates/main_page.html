@@ -43,6 +43,7 @@
         <a class="more" href="{% url 'theme_catalogue' %}">Zobacz katalog motywów</a>
     </section>
 
+    {% comment %}
     <section class="tag-box-section">
         <h1>Autorzy</h1>
       <a class="tag-box" href="{{ author.get_absolute_url }}">
@@ -74,6 +75,7 @@
       </a>
         <a class="more" href="{% url 'epoch_catalogue' %}">Zobacz katalog epok</a>
     </section>
+    {% endcomment %}
 
     {% if collection %}
         <section>
