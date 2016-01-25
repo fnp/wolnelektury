@@ -6,8 +6,7 @@
     {% if tag.description %}
     {{ tag.description|safe|truncatewords_html:40 }}
     {% else %}
-    <em>No description</em>
+    <em>{% trans "No description." %}</em>
     {% endif %}
-
 </div>
 {% endspaceless %}

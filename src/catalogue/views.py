@@ -720,6 +720,7 @@ def tag_catalogue(request, category):
         'tags': tags,
         'best': best,
         'title': constants.CATEGORIES_NAME_PLURAL[category],
+        'whole_category': constants.WHOLE_CATEGORY[category],
     })
 
 

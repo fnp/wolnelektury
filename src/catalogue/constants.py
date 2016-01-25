@@ -46,3 +46,13 @@ CATEGORIES_NAME_PLURAL = {
     'set': _('sets'),
     'thing': _('things'),
 }
+
+WHOLE_CATEGORY = {
+    'author': _('All authors'),
+    'epoch': _('All epochs'),
+    'kind': _('All kinds'),
+    'genre': _('All genres'),
+    'theme': _('All themes'),
+    'set': _('All sets'),
+    'thing': _('All things'),
+}
