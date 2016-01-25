@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 13:22+0100\n"
+"POT-Creation-Date: 2016-01-25 14:48+0100\n"
 "PO-Revision-Date: 2013-04-09 10:40+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,48 @@ msgstr ""
 #: constants.py:47
 msgid "things"
 msgstr ""
+
+#: constants.py:51
+#, fuzzy
+#| msgid "author"
+msgid "All authors"
+msgstr "автор"
+
+#: constants.py:52
+#, fuzzy
+#| msgid "epoch"
+msgid "All epochs"
+msgstr "епоха"
+
+#: constants.py:53
+#, fuzzy
+#| msgid "kind"
+msgid "All kinds"
+msgstr "рід"
+
+#: constants.py:54
+#, fuzzy
+#| msgid "genre"
+msgid "All genres"
+msgstr "жанр"
+
+#: constants.py:55
+#, fuzzy
+#| msgid "theme"
+msgid "All themes"
+msgstr "тема"
+
+#: constants.py:56
+#, fuzzy
+#| msgid "collections"
+msgid "All sets"
+msgstr "колекції"
+
+#: constants.py:57
+#, fuzzy
+#| msgid "collections"
+msgid "All things"
+msgstr "колекції"
 
 #: forms.py:27
 msgid "Please supply an XML."
@@ -786,6 +828,13 @@ msgstr ""
 msgid "Free license"
 msgstr ""
 
+#: templates/catalogue/tag_box.html:9
+#: templates/catalogue/tagged_object_list.html:87
+#, fuzzy
+#| msgid "description"
+msgid "No description."
+msgstr "опис"
+
 #: templates/catalogue/tag_catalogue.html:11
 #, fuzzy
 #| msgid "Wolne Lektury"
@@ -803,12 +852,6 @@ msgstr ""
 #: templates/catalogue/tagged_object_list.html:70
 msgid "Motifs and themes"
 msgstr "Мотиви та теми"
-
-#: templates/catalogue/tagged_object_list.html:87
-#, fuzzy
-#| msgid "description"
-msgid "No description."
-msgstr "опис"
 
 #: templates/catalogue/tagged_object_list.html:93
 msgid "in Lektury.Gazeta.pl"

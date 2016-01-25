@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 13:22+0100\n"
+"POT-Creation-Date: 2016-01-25 14:48+0100\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -49,6 +49,34 @@ msgstr "półki"
 #: constants.py:47
 msgid "things"
 msgstr "przedmioty"
+
+#: constants.py:51
+msgid "All authors"
+msgstr "Wszyscy autorzy"
+
+#: constants.py:52
+msgid "All epochs"
+msgstr "Wszystkie epoki"
+
+#: constants.py:53
+msgid "All kinds"
+msgstr "Wszystkie rodzaje"
+
+#: constants.py:54
+msgid "All genres"
+msgstr "Wszystkie gatunki"
+
+#: constants.py:55
+msgid "All themes"
+msgstr "Wszystkie motywy"
+
+#: constants.py:56
+msgid "All sets"
+msgstr "Wszystkie półki"
+
+#: constants.py:57
+msgid "All things"
+msgstr "Wszystkie przedmioty"
 
 #: forms.py:27
 msgid "Please supply an XML."
@@ -748,6 +776,11 @@ msgstr "następna"
 msgid "Free license"
 msgstr "Wolna licencja"
 
+#: templates/catalogue/tag_box.html:9
+#: templates/catalogue/tagged_object_list.html:87
+msgid "No description."
+msgstr "Brak opisu."
+
 #: templates/catalogue/tag_catalogue.html:11
 msgid "on Wolne Lektury"
 msgstr "w Wolnych Lekturach"
@@ -763,10 +796,6 @@ msgstr "Pasujące utwory"
 #: templates/catalogue/tagged_object_list.html:70
 msgid "Motifs and themes"
 msgstr "Motywy i tematy"
-
-#: templates/catalogue/tagged_object_list.html:87
-msgid "No description."
-msgstr "Brak opisu."
 
 #: templates/catalogue/tagged_object_list.html:93
 msgid "in Lektury.Gazeta.pl"
