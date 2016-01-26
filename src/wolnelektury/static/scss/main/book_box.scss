@@ -86,6 +86,7 @@
     .title {
         @include size(font-size, 14px);
         color: #242424;
+        white-space: normal;
     }
 }
 
