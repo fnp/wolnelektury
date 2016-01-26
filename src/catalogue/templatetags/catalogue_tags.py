@@ -490,3 +490,10 @@ def choose_fragment(request, book_id=None, tag_ids=None, unless=False):
         fragment_count = fragments.count()
         fragment = fragments[randint(0, fragment_count - 1)] if fragment_count else None
     return fragment.pk if fragment is not None else None
+
+
+@register.filter
+def strip_tag(html, tag_name):
+    # docelowo może być warto zainstalować BeautifulSoup do takich rzeczy
+    import re
+    return re.sub(r"<.?%s\b[^>]*>" % tag_name, "", html)

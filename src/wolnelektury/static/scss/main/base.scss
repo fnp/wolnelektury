@@ -156,7 +156,9 @@ ul.plain {
 
     @media screen and (min-width: 768px) {
         display: inline-block;
+        vertical-align: top;
         width: 48%;
         margin-right: 1%;
+        @include size(margin-bottom, 10px);
     }
 }
