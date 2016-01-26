@@ -193,7 +193,8 @@ def tagged_object_list(request, tags='', gallery=False):
                         'sort_key_author', 'title')
                 else:
                     objects = all_books.order_by('sort_key_author', 'title')
-            related_book_tags = get_top_level_related_tags(tags)
+                # WTF: was outside if, overwriting value assigned if shelf_is_set
+                related_book_tags = get_top_level_related_tags(tags)
 
             fragments = models.Fragment.objects.filter(book__in=all_books)
 
