@@ -712,12 +712,12 @@ def tag_catalogue(request, category):
     else:
         tags = list(get_top_level_related_tags((), categories=(category,)))
 
-    tags = [tag for tag in tags if tag.description]
+    described_tags = [tag for tag in tags if tag.description]
 
-    if len(tags) > 4:
-        best = random.sample(tags, 4)
+    if len(described_tags) > 4:
+        best = random.sample(described_tags, 4)
     else:
-        best = tags
+        best = described_tags
 
     return render(request, 'catalogue/tag_catalogue.html', {
         'tags': tags,
