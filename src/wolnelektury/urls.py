@@ -77,11 +77,11 @@ urlpatterns += patterns(
     url(r'^epub/$', RedirectView.as_view(
         url='/katalog/lektury/', permanent=False)),
     url(r'^mozesz-nam-pomoc/$', RedirectView.as_view(
-        url='/info/mozesz-nam-pomoc', permanent=True)),
+        url='/info/wlacz-sie-w-prace/', permanent=True)),
     url(r'^o-projekcie/$', RedirectView.as_view(
-        url='/info/o-projekcie', permanent=True)),
+        url='/info/o-projekcie/', permanent=True)),
     url(r'^widget/$', RedirectView.as_view(
-        url='/info/widget', permanent=True)),
+        url='/info/widget/', permanent=True)),
     url(r'^wolontariat/$', RedirectView.as_view(
-        url='/info/mozesz-nam-pomoc/', permanent=False)),
+        url='/info/wlacz-sie-w-prace/', permanent=False)),
 )
