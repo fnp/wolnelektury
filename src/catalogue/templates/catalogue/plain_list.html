@@ -5,12 +5,14 @@
 <div class='{% if paged %}plain-list-paged {% endif %}plain-list-container white-box'>
 <div class='plain-list' style=''>
 {% for initial, object_list in names %}
+    {% if initial_blocks %}<div class="initial-block">{% endif %}
     {% if initial %}
         <p class="header">{{ initial }}</p>
     {% endif %}
     {% for item in object_list %}
         <p><a href="{% if book %}{% url 'book_fragments' book.slug item.slug %}{% elif choice %}{% if gallery %}{% catalogue_url_gallery choice item %}{% else %}{% catalogue_url choice item %}{% endif %}{% elif gallery %}{{ item.get_absolute_gallery_url }}{% else %}{{ item.get_absolute_url }}{% endif %}">{{ item }}{% if item.count %}&nbsp;({{ item.count}}){% endif %}</a></p>
     {% endfor %}
+    {% if initial_blocks %}</div>{% endif %}
 {% endfor %}
 </div>
 <div class="pager"></div>

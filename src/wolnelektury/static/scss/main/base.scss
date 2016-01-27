@@ -136,6 +136,10 @@ ul.plain {
                 break-after: avoid;
             }
         }
+
+        .initial-block {
+            display: inline-block;
+        }
     }
 
     .pager {
