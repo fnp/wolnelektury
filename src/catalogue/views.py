@@ -34,8 +34,8 @@ staff_required = user_passes_test(lambda user: user.is_staff)
 
 
 def catalogue(request, as_json=False):
-    books = models.Book.objects.filter(parent=None)
-    pictures = Picture.objects.all()
+    books = models.Book.objects.filter(parent=None).order_by('sort_key_author', 'sort_key')
+    pictures = Picture.objects.order_by('sort_key_author', 'sort_key')
     collections = models.Collection.objects.all()
     return render(request, 'catalogue/catalogue.html', locals())
 
@@ -163,11 +163,9 @@ def tagged_object_list(request, tags='', gallery=False):
                 raise Http404
             else:
                 if tags:
-                    objects = Picture.tagged.with_all(tags).order_by(
-                        'sort_key_author', 'title')
+                    objects = Picture.tagged.with_all(tags).order_by('sort_key_author', 'sort_key')
                 else:
-                    objects = Picture.objects.all().order_by(
-                        'sort_key_author', 'title')
+                    objects = Picture.objects.all().order_by('sort_key_author', 'sort_key')
             areas = PictureArea.objects.filter(picture__in=objects)
             categories = split_tags(
                 models.Tag.objects.usage_for_queryset(
@@ -183,16 +181,15 @@ def tagged_object_list(request, tags='', gallery=False):
             else:
                 all_books = models.Book.objects.filter(parent=None)
             if shelf_is_set:
-                objects = all_books.order_by('sort_key_author', 'title')
+                objects = all_books.order_by('sort_key_author', 'sort_key')
                 related_book_tags = models.Tag.objects.usage_for_queryset(
                     objects, counts=True).exclude(
                     category='set').exclude(pk__in=tags_pks)
             else:
                 if tags:
-                    objects = models.Book.tagged_top_level(tags).order_by(
-                        'sort_key_author', 'title')
+                    objects = models.Book.tagged_top_level(tags).order_by('sort_key_author', 'sort_key')
                 else:
-                    objects = all_books.order_by('sort_key_author', 'title')
+                    objects = all_books.order_by('sort_key_author', 'sort_key')
                 # WTF: was outside if, overwriting value assigned if shelf_is_set
                 related_book_tags = get_top_level_related_tags(tags)
 

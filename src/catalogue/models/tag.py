@@ -219,7 +219,7 @@ class Tag(TagBase):
                 lang = getattr(tag_name, 'lang', settings.LANGUAGE_CODE)
                 tag_sort_key = tag_name
                 if category == 'author':
-                    tag_sort_key = tag_name.last_name
+                    tag_sort_key = ' '.join((tag_name.last_name,) + tag_name.first_names)
                     tag_name = tag_name.readable()
                 if lang == settings.LANGUAGE_CODE:
                     # Allow creating new tag, if it's in default language.
