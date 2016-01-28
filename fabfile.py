@@ -24,10 +24,17 @@ def production():
 
 
 def update_counters():
-    print '>>> update counters'
+    print '>>> updating counters'
     require('app_path', 'project_name')
     with cd(get_django_root_path('current')):
         run('%(ve)s/bin/python manage.py update_counters' % env, pty=True)
+
+
+def compile_messages():
+    print '>>> compiling messages'
+    require('app_path', 'project_name')
+    with cd(get_django_root_path('current')):
+        run('%(ve)s/bin/python manage.py localepack -c' % env, pty=True)
 
 
 @task
@@ -40,6 +47,7 @@ def beta():
     env.requirements_file = 'requirements/requirements.txt'
     env.pre_collectstatic = [
         update_counters,
+        compile_messages,
     ]
     env.services = [
         Supervisord('beta'),
