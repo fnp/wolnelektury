@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 15:09+0100\n"
+"POT-Creation-Date: 2016-01-28 16:10+0100\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,54 +154,54 @@ msgstr "Електронна бібліотека WolneLektury.pl"
 msgid "Theme"
 msgstr "Тема"
 
-#: templates/main_page.html:87
+#: templates/main_page.html:90
 msgid "Recent publications"
 msgstr "останні публікації"
 
-#: templates/main_page.html:91
+#: templates/main_page.html:94
 #, fuzzy
 #| msgid "Recent publications"
 msgid "More recent publications"
 msgstr "останні публікації"
 
-#: templates/main_page.html:97
+#: templates/main_page.html:100
 msgid "News"
 msgstr "Новості"
 
-#: templates/main_page.html:103
+#: templates/main_page.html:106
 msgid "Utilities"
 msgstr "утиліти"
 
-#: templates/main_page.html:106
+#: templates/main_page.html:109
 msgid "Report a bug or suggestion"
 msgstr "Повідомити про помилку або надіслати свої пропозиції"
 
-#: templates/main_page.html:108
+#: templates/main_page.html:111
 msgid "Download the catalogue in PDF format."
 msgstr "Завантажити каталог у форматі PDF."
 
-#: templates/main_page.html:109
+#: templates/main_page.html:112
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:110
+#: templates/main_page.html:113
 msgid "Missing a book?"
 msgstr "Не знайшли книжки?"
 
-#: templates/main_page.html:111 templates/publish_plan.html:4
+#: templates/main_page.html:114 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "План публікації"
 
-#: templates/main_page.html:122
+#: templates/main_page.html:125
 msgid "Information"
 msgstr "інформація"
 
-#: templates/main_page.html:124
+#: templates/main_page.html:127
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:144
+#: templates/main_page.html:147
 msgid "Image used:"
 msgstr "Використано графіку:"
 

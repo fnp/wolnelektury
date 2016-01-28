@@ -55,7 +55,11 @@
     <div id="books-list">
         {% if object_list %}
             {% work_list best %}
-            <h2>{% trans "All matching works" %}</h2>
+            {% if tags %}
+                <h2>{% trans "All matching works" %}</h2>
+            {% else %}
+                <h2>{% trans "All works" %}</h2>
+            {% endif %}
             {% plain_list object_list by_author=True gallery=gallery %}
         {% else %}
             {% trans "Sorry! Search cirteria did not match any resources." %}

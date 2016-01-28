@@ -12,10 +12,9 @@
     {% with obj.get_books.count|add:-5 as more %}
         {% if more > 0 %}
             <a href="{{ obj.get_absolute_url }}">
-                {% blocktrans with c=more %}and {{ c }} more{% endblocktrans %}
+                {% blocktrans count c=more %}and one more{% plural %}and {{ c }} more{% endblocktrans %}
             </a>
         {% endif %}
     {% endwith %}
-
 </div>
 {% endspaceless %}

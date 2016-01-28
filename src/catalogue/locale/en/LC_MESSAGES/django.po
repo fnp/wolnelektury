@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 15:09+0100\n"
+"POT-Creation-Date: 2016-01-28 16:10+0100\n"
 "PO-Revision-Date: 2013-04-09 10:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -494,7 +494,7 @@ msgstr "language code"
 msgid "Read online"
 msgstr "Read online"
 
-#: templates/catalogue/book_short.html:91 views.py:586
+#: templates/catalogue/book_short.html:91 views.py:584
 msgid "Download"
 msgstr "Download"
 
@@ -554,6 +554,7 @@ msgid "Catalogue"
 msgstr "Catalogue"
 
 #: templates/catalogue/catalogue.html:11
+#: templates/catalogue/tagged_object_list.html:61
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
@@ -591,8 +592,10 @@ msgstr "collections"
 
 #: templates/catalogue/collection_box.html:15
 #, python-format
-msgid "and %(c)s more"
-msgstr ""
+msgid "and one more"
+msgid_plural "and %(c)s more"
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/catalogue/collections.html:17
 #, fuzzy
@@ -788,7 +791,7 @@ msgid "Other results"
 msgstr "Other results"
 
 #: templates/catalogue/search_no_hits.html:19
-#: templates/catalogue/tagged_object_list.html:61
+#: templates/catalogue/tagged_object_list.html:65
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Sorry! Search cirteria did not match any resources."
 
@@ -827,13 +830,6 @@ msgstr ""
 msgid "Free license"
 msgstr ""
 
-#: templates/catalogue/tag_box.html:9
-#: templates/catalogue/tagged_object_list.html:87
-#, fuzzy
-#| msgid "description"
-msgid "No description."
-msgstr "Description"
-
 #: templates/catalogue/tag_catalogue.html:11
 #, fuzzy
 #| msgid "Wolne Lektury"
@@ -844,23 +840,29 @@ msgstr "Wolne Lektury"
 msgid "See full category"
 msgstr "See full category"
 
-#: templates/catalogue/tagged_object_list.html:58
+#: templates/catalogue/tagged_object_list.html:59
 msgid "All matching works"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:70
+#: templates/catalogue/tagged_object_list.html:74
 msgid "Motifs and themes"
 msgstr "Motifs and themes"
 
-#: templates/catalogue/tagged_object_list.html:93
+#: templates/catalogue/tagged_object_list.html:91
+#, fuzzy
+#| msgid "description"
+msgid "No description."
+msgstr "Description"
+
+#: templates/catalogue/tagged_object_list.html:97
 msgid "in Lektury.Gazeta.pl"
 msgstr "in Lektury.Gazeta.pl"
 
-#: templates/catalogue/tagged_object_list.html:99
+#: templates/catalogue/tagged_object_list.html:103
 msgid "in Wikipedia"
 msgstr "in Wikipedia"
 
-#: templates/catalogue/tagged_object_list.html:105
+#: templates/catalogue/tagged_object_list.html:109
 msgid "in Culture.pl"
 msgstr ""
 
@@ -870,7 +872,7 @@ msgstr ""
 msgid "Loading"
 msgstr "Leading"
 
-#: views.py:551
+#: views.py:549
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -881,16 +883,16 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:553
+#: views.py:551
 msgid "Book imported successfully"
 msgstr "Book imported succesfully"
 
-#: views.py:555
+#: views.py:553
 #, python-format
 msgid "Error importing file: %r"
 msgstr "An error occured while importing file: %r"
 
-#: views.py:585
+#: views.py:583
 msgid "Download custom PDF"
 msgstr "Download custom PDF"
 

@@ -5,8 +5,6 @@
   <h2>{% trans tag.category as c %}{{ c|capfirst }}: {{ tag }}</h2>
   {% if tag.description %}
     {{ tag.description|strip_tag:"a"|safe|truncatewords_html:40 }}
-  {% else %}
-    <em>{% trans "No description." %}</em>
   {% endif %}
 </div>
 {% endspaceless %}

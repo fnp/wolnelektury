@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-25 15:09+0100\n"
+"POT-Creation-Date: 2016-01-28 16:10+0100\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -154,52 +154,52 @@ msgstr "Biblioteka internetowa Wolne Lektury"
 msgid "Theme"
 msgstr "Motyw"
 
-#: templates/main_page.html:87
+#: templates/main_page.html:90
 msgid "Recent publications"
 msgstr "Ostatnie publikacje"
 
-#: templates/main_page.html:91
+#: templates/main_page.html:94
 msgid "More recent publications"
 msgstr "Więcej ostatnich publikacji"
 
-#: templates/main_page.html:97
+#: templates/main_page.html:100
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/main_page.html:103
+#: templates/main_page.html:106
 msgid "Utilities"
 msgstr "Narzędzia"
 
-#: templates/main_page.html:106
+#: templates/main_page.html:109
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: templates/main_page.html:108
+#: templates/main_page.html:111
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: templates/main_page.html:109
+#: templates/main_page.html:112
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: templates/main_page.html:110
+#: templates/main_page.html:113
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: templates/main_page.html:111 templates/publish_plan.html:4
+#: templates/main_page.html:114 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: templates/main_page.html:122
+#: templates/main_page.html:125
 msgid "Information"
 msgstr "Informacje"
 
-#: templates/main_page.html:124
+#: templates/main_page.html:127
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: templates/main_page.html:144
+#: templates/main_page.html:147
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
