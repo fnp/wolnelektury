@@ -24,3 +24,5 @@ LIBRARIAN_PDF_MOREFLOATS = None
 LATEST_BLOG_POSTS = "http://nowoczesnapolska.org.pl/feed/?cat=-135"
 
 CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'catalogue_counters.p')
+
+CATALOGUE_MIN_INITIALS = 60

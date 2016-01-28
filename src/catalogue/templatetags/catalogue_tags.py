@@ -359,6 +359,9 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
                paged=True, initial_blocks=False):
     names = [('', [])]
     last_initial = None
+    if len(object_list) < settings.CATALOGUE_MIN_INITIALS and not by_author:
+        with_initials = False
+        initial_blocks = False
     for obj in object_list:
         if with_initials:
             if by_author:

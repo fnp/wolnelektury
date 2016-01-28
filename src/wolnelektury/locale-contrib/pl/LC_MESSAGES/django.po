@@ -507,8 +507,8 @@ msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send "
 "you an e-mail allowing you to reset it."
 msgstr ""
-"Nie pamiętasz swojego hasła? Wpisz adres e-mail, a wyślemy Ci e-mail "
-"umożliwiający zresetowanie go."
+"Nie pamiętasz swojego hasła? Wpisz adres e-mail, a wyślemy Ci wiadomość "
+"umożliwiającą zresetowanie go."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:20
 msgid "Reset My Password"
