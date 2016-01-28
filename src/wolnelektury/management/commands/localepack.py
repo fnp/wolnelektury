@@ -27,6 +27,9 @@ class Locale(object):
     def save(self, output_directory, languages):
         pass
 
+    def compile(self):
+        pass
+
     def generate(self, languages):
         pass
 
@@ -63,7 +66,9 @@ class AppLocale(Locale):
                 out = os.path.join(self.path, 'locale', lc, 'LC_MESSAGES', 'django.po')
                 makedirs(os.path.dirname(out))
                 copy_f(os.path.join(input_directory, lc, self.name + '.po'), out)
+        self.compile()
 
+    def compile(self):
         wd = os.getcwd()
         os.chdir(self.path)
         try:
@@ -126,6 +131,9 @@ class CustomLocale(Locale):
         for lc in zip(*languages)[0]:
             copy_f(os.path.join(input_directory, lc, self.name + '.po'),
                    self.po_file(lc))
+        self.compile()
+
+    def compile(self):
         os.system('pybabel compile -D django -d %s' % os.path.dirname(self.out_file))
 
 
@@ -146,6 +154,10 @@ SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load',
+                    default=False),
+        make_option('-c', '--compile', help='compile messages', action='store_true', dest='compile',
+                    default=False),
+        make_option('-g', '--generate', help='generate messages', action='store_true', dest='generate',
                     default=False),
         make_option('-L', '--lang', help='load just one language', dest='lang', default=None),
         make_option('-d', '--directory', help='load from this directory', dest='directory', default=None),
@@ -201,11 +213,19 @@ class Command(BaseCommand):
         finally:
             shutil.rmtree(tmp_dir, ignore_errors=True)
 
+    def generate(self):
+        for src in SOURCES:
+            src.generate(settings.LANGUAGES)
+
     def load(self, options):
         langs = get_languages(options['lang'])
 
         for src in SOURCES:
             src.load(options['directory'], langs)
+
+    def compile(self):
+        for src in SOURCES:
+            src.compile()
 
     def handle(self, *a, **options):
         if options['load']:
@@ -218,6 +238,10 @@ class Command(BaseCommand):
             self.load(options)
             if options['merge']:
                 self.merge_finish(options['message'])
+        elif options['generate']:
+            self.generate()
+        elif options['compile']:
+            self.compile()
         else:
             self.save(options)
 
