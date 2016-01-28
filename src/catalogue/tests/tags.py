@@ -2,6 +2,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from unittest import skip
+
 from django.core.files.base import ContentFile
 from django.test import Client
 from catalogue import models
@@ -187,6 +189,7 @@ class CleanTagRelationTests(WLTestCase):
             """
         self.book = models.Book.from_text_and_meta(ContentFile(book_text), book_info)
 
+    @skip('Not implemented and not priority')
     def test_delete_objects(self):
         """ there should be no related tags left after deleting some objects """
 
