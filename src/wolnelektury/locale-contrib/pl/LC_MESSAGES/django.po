@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-01-28 16:10+0100\n"
+"POT-Creation-Date: 2016-01-28 17:27+0100\n"
 "PO-Revision-Date: 2013-04-09 15:46+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language: pl\n"
@@ -212,9 +212,8 @@ msgid ""
 "An account already exists with this e-mail address. Please sign in to "
 "that account first, then connect your %s account."
 msgstr ""
-"Istnieje już konto dla tego adresu e-mail. Zaloguj się wpierw na to konto, a "
-"następnie połącz swoje konto %s."
-
+"Istnieje już konto dla tego adresu e-mail. Zaloguj się wpierw na to "
+"konto, a następnie połącz swoje konto %s."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:38
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:71
@@ -644,8 +643,8 @@ msgstr ""
 "Pozdrowienia z %(site_name)s!\n"
 "\n"
 "Dostajesz tę wiadomość, ponieważ użytkownik %(user_display)s na "
-"%(site_domain)s podał ten adres e-mail, aby połączyć go ze swoim "
-"kontem.\n"
+"%(site_domain)s podał ten adres e-mail, aby połączyć go ze swoim kontem."
+"\n"
 "\n"
 "Aby to potwierdzić, przejdź to %(activate_url)s\n"
 
@@ -674,10 +673,10 @@ msgid ""
 msgstr ""
 "Pozdrowienia z %(site_name)s!\n"
 "\n"
-"Dostajesz tę wiadomość, ponieważ Ty lub ktoś inny poprosił o zmianę hasła "
-"do Twojego konta na %(site_domain)s.\n"
-"Możesz to bezpiecznie zignorować, jeśli to nie była Twoja prośba. Kliknij "
-"link poniżej, aby zresetować hasło."
+"Dostajesz tę wiadomość, ponieważ Ty lub ktoś inny poprosił o zmianę hasła"
+" do Twojego konta na %(site_domain)s.\n"
+"Możesz to bezpiecznie zignorować, jeśli to nie była Twoja prośba. Kliknij"
+" link poniżej, aby zresetować hasło."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/password_reset_key_message.txt:8
 #, python-format
@@ -720,7 +719,7 @@ msgstr "Usunięto adres e-mail %(email)s"
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/logged_in.txt:4
 #, python-format
 msgid "Successfully signed in as %(name)s."
-msgstr "Zalogowano jako %(user)s."
+msgstr "Zalogowano jako %(name)s."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/logged_out.txt:2
 msgid "You have signed out."

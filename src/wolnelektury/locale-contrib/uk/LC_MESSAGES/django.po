@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-01-28 16:10+0100\n"
+"POT-Creation-Date: 2016-01-28 17:27+0100\n"
 "PO-Revision-Date: 2012-08-14 17:49+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language: uk\n"
@@ -434,7 +434,7 @@ msgid ""
 "e-mail address for user %(user_display)s."
 msgstr ""
 "Ви підтвердили, що адреса <a href=\"mailto:%(email)s\">%(email)s</a> є "
-"адресою коричтувача '%(user)s'."
+"адресою коричтувача '%(user_display)s'."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirm.html:20
 msgid "Confirm"
@@ -454,7 +454,7 @@ msgid ""
 "e-mail address for user %(user_display)s."
 msgstr ""
 "Ви підтвердили, що адреса <a href=\"mailto:%(email)s\">%(email)s</a> є "
-"адресою коричтувача '%(user)s'."
+"адресою коричтувача '%(user_display)s'."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:6
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:10
@@ -715,7 +715,7 @@ msgstr "Видалено електронну адресу %(email)s"
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/logged_in.txt:4
 #, fuzzy, python-format
 msgid "Successfully signed in as %(name)s."
-msgstr "Ви успішно увійшли як %(user)s."
+msgstr "Ви успішно увійшли як %(name)s."
 
 #: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/logged_out.txt:2
 msgid "You have signed out."
