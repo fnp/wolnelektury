@@ -1,4 +1,7 @@
 from fnpdeploy import *
+
+from catalogue.helpers import update_counters
+
 try:
     from fabfile_local import *
 except ImportError:
@@ -29,6 +32,9 @@ def beta():
     env.ve = '/srv/wolnelektury.pl/ve'
     env.django_root_path = 'src'
     env.requirements_file = 'requirements/requirements.txt'
+    env.pre_collectstatic = [
+        update_counters,
+    ]
     env.services = [
         Supervisord('beta'),
     ]
