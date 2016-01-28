@@ -1,6 +1,5 @@
+# -*- coding: utf-8 -*-
 from fnpdeploy import *
-
-from catalogue.helpers import update_counters
 
 try:
     from fabfile_local import *
@@ -22,6 +21,13 @@ def production():
         Supervisord('wolnelektury'),
         Supervisord('wolnelektury.celery'),
     ]
+
+
+def update_counters():
+    print '>>> update counters'
+    require('app_path', 'project_name')
+    with cd(get_django_root_path('current')):
+        run('%(ve)s/bin/python manage.py update_counters' % env, pty=True)
 
 
 @task
