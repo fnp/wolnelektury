@@ -57,14 +57,15 @@ def book_list(request, filter=None, get_filter=None, template_name='catalogue/bo
 
 
 def audiobook_list(request):
-    books = models.Book.objects.filter(Q(media__type='mp3') | Q(media__type='ogg')).distinct()
+    books = models.Book.objects.filter(media__type__in=('mp3', 'ogg')).distinct().order_by(
+        'sort_key_author', 'sort_key')
     books = list(books)
     if len(books) > 3:
         best = random.sample(books, 3)
     else:
         best = books
 
-    daisy = models.Book.objects.filter(media__type='daisy').distinct()
+    daisy = models.Book.objects.filter(media__type='daisy').distinct().order_by('sort_key_author', 'sort_key')
 
     return render(request, 'catalogue/audiobook_list.html', {
         'books': books,
@@ -163,9 +164,9 @@ def tagged_object_list(request, tags='', gallery=False):
                 raise Http404
             else:
                 if tags:
-                    objects = Picture.tagged.with_all(tags).order_by('sort_key_author', 'sort_key')
+                    objects = Picture.tagged.with_all(tags)
                 else:
-                    objects = Picture.objects.all().order_by('sort_key_author', 'sort_key')
+                    objects = Picture.objects.all()
             areas = PictureArea.objects.filter(picture__in=objects)
             categories = split_tags(
                 models.Tag.objects.usage_for_queryset(
@@ -181,15 +182,15 @@ def tagged_object_list(request, tags='', gallery=False):
             else:
                 all_books = models.Book.objects.filter(parent=None)
             if shelf_is_set:
-                objects = all_books.order_by('sort_key_author', 'sort_key')
+                objects = all_books
                 related_book_tags = models.Tag.objects.usage_for_queryset(
                     objects, counts=True).exclude(
                     category='set').exclude(pk__in=tags_pks)
             else:
                 if tags:
-                    objects = models.Book.tagged_top_level(tags).order_by('sort_key_author', 'sort_key')
+                    objects = models.Book.tagged_top_level(tags)
                 else:
-                    objects = all_books.order_by('sort_key_author', 'sort_key')
+                    objects = all_books
                 # WTF: was outside if, overwriting value assigned if shelf_is_set
                 related_book_tags = get_top_level_related_tags(tags)
 
@@ -201,6 +202,7 @@ def tagged_object_list(request, tags='', gallery=False):
                     fragments, counts=True).filter(
                     category='theme').exclude(pk__in=tags_pks),
             )
+        objects = objects.order_by('sort_key_author', 'sort_key')
 
     objects = list(objects)
     if len(objects) > 3:
