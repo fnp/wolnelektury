@@ -34,7 +34,7 @@ def compile_messages():
     print '>>> compiling messages'
     require('app_path', 'project_name')
     with cd(get_django_root_path('current')):
-        run('%(ve)s/bin/python manage.py localepack -c' % env, pty=True)
+        run('source %(ve)s/bin/activate && python manage.py localepack -c' % env, pty=True)
 
 
 @task
