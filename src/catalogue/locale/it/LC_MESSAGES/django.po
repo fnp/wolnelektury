@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-28 17:27+0100\n"
+"POT-Creation-Date: 2016-02-01 09:35+0100\n"
 "PO-Revision-Date: 2013-04-09 10:39+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -496,7 +496,7 @@ msgstr "codice della lingua"
 msgid "Read online"
 msgstr "Leggi online"
 
-#: templates/catalogue/book_short.html:91 views.py:584
+#: templates/catalogue/book_short.html:91 views.py:586
 msgid "Download"
 msgstr "Scarica"
 
@@ -686,12 +686,16 @@ msgstr "Scarica come"
 
 #: templates/catalogue/player.html:84
 #: templates/catalogue/snippets/jplayer.html:35
-msgid "Artist"
+#, fuzzy
+#| msgid "Artist"
+msgid "Artist:"
 msgstr "Artista"
 
 #: templates/catalogue/player.html:85
 #: templates/catalogue/snippets/jplayer.html:36
-msgid "Director"
+#, fuzzy
+#| msgid "Director"
+msgid "director:"
 msgstr "Direttore"
 
 #: templates/catalogue/player.html:104
@@ -876,7 +880,7 @@ msgstr ""
 msgid "Loading"
 msgstr "Interlinea"
 
-#: views.py:549
+#: views.py:551
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -887,16 +891,16 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:551
+#: views.py:553
 msgid "Book imported successfully"
 msgstr "Libro scaricato con successo"
 
-#: views.py:553
+#: views.py:555
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Errore dell'importazione del file: %r"
 
-#: views.py:583
+#: views.py:585
 msgid "Download custom PDF"
 msgstr "Scarica PDF personalizzato"
 

@@ -60,9 +60,9 @@ class AudiobookFeed(Feed):
         artist = item.extra_info.get('artist_name', None)
         if artist is not None:
             lines.append(u'Czyta: %s' % artist)
-        director = item.extra_info.get('artist_name', None)
+        director = item.extra_info.get('director_name', None)
         if director is not None:
-            lines.append(u'Reżyseruje: %s' % director)
+            lines.append(u'Reżyseria: %s' % director)
         return u'<br/>\n'.join(lines)
 
     def item_link(self, item):
