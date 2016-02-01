@@ -20,7 +20,6 @@ STATIC_URL = '/static/'
 # CSS and JavaScript file groups
 
 PIPELINE = {
-    'PIPELINE_ENABLED': False,
     'STYLESHEETS': {
         'main': {
             # styles both for mobile and for big screen
@@ -172,7 +171,7 @@ PIPELINE = {
     )
 }
 
-# STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
+STATICFILES_STORAGE = 'fnpdjango.utils.pipeline_storage.GzipPipelineCachedStorage'
 
 # PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
 # PIPELINE_PYSCSS_ARGUMENTS = ''
