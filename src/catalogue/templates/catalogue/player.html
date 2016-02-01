@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    {% load static from staticfiles %}
+    {% load i18n pipeline %}
+    {% load catalogue_tags %}
+    {% load thumbnail %}
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="description"
+            content="{{ book.title }} - darmowy audiobook na wolnej licencji" />
+        <title>{% trans "Wolne Lektury" %} ::
+            {{ book.title }} - {{ audiobook }}</title>
+        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png" />
+        {% stylesheet "all" %}
+        {% stylesheet "player" %}
+
+    </head>
+    <body id="{% block bodyid %}player{% endblock %}">
+
+	        {% if book.cover_thumb %}
+            <img src="
+                {% thumbnail book.cover_thumb "101x140" as thumb %}
+                    {{ thumb.url }}
+                {% empty %}
+                    {{ book.cover_thumb.url }}
+                {% endthumbnail %}
+            " alt="Cover" style="float: left; margin: .5em 1em 1em 1em;" />
+        {% endif %}
+
+
+<h1>{% book_title book %}</h1>
+
+<div class="player-info normal-text">
+	<p><a target="_blank" href="{{ book.get_absolute_url }}">{% trans "Book's page" %}</a>.</p>
+	<p>{% trans "Download as" %} {% download_audio book False %}.</p>
+
+    {% if book.has_daisy_file %}
+        <p>DAISY:</p>
+        <ul class="daisy-list">
+        {% for media in book.get_daisy %}
+            <li><a href="{{ media.file.url }}">{{ media.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+<div style="clear: both"></div>
+
+<div class="jp-type-playlist">
+  <div id="jplayer" class="jp-jplayer"
+    data-supplied="{% if have_oggs %}oga,{% endif %}mp3"></div>
+  <div id="jp_container_1" class="jp-audio">
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <ul class="jp-controls">
+          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+          <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+          <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+        </ul>
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+        <div class="jp-time-holder">
+          <div class="jp-current-time"></div>
+          <div class="jp-duration"></div>
+        </div>
+      </div>
+
+      <div class="jp-playlist">
+        <ul>
+
+        {% for i in audiobooks %}
+          <li>
+            <div class='play'>{{ i.mp3.name }}
+            <div class='extra-info'>
+              {% trans "Artist:" %}: <span class='artist'>{{ i.mp3.extra_info.artist_name }}</span>,
+              {% trans "director:" %}: <span class='director'>{{ i.mp3.extra_info.director_name }}</span>
+            </div>
+            </div>
+          </li>
+        {% endfor %}
+
+        </ul>
+      </div>
+
+      <div class="jp-no-solution">
+        <span>Update Required</span>
+        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        {% if projects|length > 1 %}
+            <p>{% trans "Audiobooks were prepared as a part of the projects:" %}</p>
+            <ul>
+            {% for cs, fb in projects %}
+                <li>
+                {% if fb %}
+                    {% blocktrans %}{{ cs }}, funded by {{ fb }}{% endblocktrans %}
+                {% else %}
+                    {{ cs }}
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>
+            {% with projects.0.0 as cs %}
+            {% with projects.0.1 as fb %}
+                {% if fb %}
+                    {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project funded by {{ fb }}.{% endblocktrans %}
+                {% else %}
+                    {% blocktrans %}Audiobooks were prepared as a part of the {{ cs }} project.{% endblocktrans %}
+                {% endif %}
+            {% endwith %}
+            {% endwith %}
+            </p>
+        {% endif %}
+
+
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        {% javascript "player" %}
+
+        {{ piwik_tag|safe }}
+    </body>
+</html>

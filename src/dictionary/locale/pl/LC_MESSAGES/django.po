@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: WolneLektury-dictionary\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-01 09:35+0100\n"
+"PO-Revision-Date: 2014-10-24 11:58+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: constants.py:11
+msgid "author's footnotes"
+msgstr "przypisy autorskie"
+
+#: constants.py:12
+msgid "Wolne Lektury editorial footnotes"
+msgstr "przypisy redaktorów Wolnych Lektur"
+
+#: constants.py:13
+msgid "source editorial footnotes"
+msgstr "przypisy redakcji źródła"
+
+#: constants.py:14
+msgid "translator's footnotes"
+msgstr "przypisy tłumacza"
+
+#: templates/dictionary/note_list.html:8
+#: templates/dictionary/note_list.html:12
+msgid "Footnotes"
+msgstr "Przypisy"
+
+#: templates/dictionary/note_list.html:17
+msgid "By first letter"
+msgstr "Pierwsza litera"
+
+#: templates/dictionary/note_list.html:19
+#: templates/dictionary/note_list.html:21
+#: templates/dictionary/note_list.html:37
+#: templates/dictionary/note_list.html:39
+#: templates/dictionary/note_list.html:56
+#: templates/dictionary/note_list.html:58
+#: templates/dictionary/note_list.html:74
+#: templates/dictionary/note_list.html:76
+msgid "all"
+msgstr "wszystkie"
+
+#: templates/dictionary/note_list.html:35
+msgid "By type"
+msgstr "Według typu"
+
+#: templates/dictionary/note_list.html:54
+msgid "By qualifier"
+msgstr "Według kwalifikatora"
+
+#: templates/dictionary/note_list.html:72
+msgid "By language"
+msgstr "Według języka"
+
+#: templates/dictionary/note_list.html:92
+#, python-format
+msgid "%(c)s footnote found"
+msgid_plural "%(c)s footnotes found"
+msgstr[0] "Znaleziono %(c)s przypis."
+msgstr[1] "Znaleziono %(c)s przypisy."
+msgstr[2] "Znaleziono %(c)s przypisów."
+
+#~ msgid "Footnotes on WolneLektury.pl"
+#~ msgstr "Przypisy w WolneLektury.pl"

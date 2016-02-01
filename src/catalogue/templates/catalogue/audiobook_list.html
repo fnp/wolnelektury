@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load catalogue_tags switch_tag social_tags %}
+{% load ssi_include from ssify %}
+
+{% block titleextra %}{% trans "Audiobooks" %}{% endblock %}
+
+{% block bodyid %}audiobooks{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Audiobooks" %}</h1>
+
+    {% work_list best %}
+    <h2>{% trans "Listing of all audiobooks" %}</h2>
+    {% plain_list books by_author=True %}
+
+    <h2>{% trans "Listing of all DAISY files" %}</h2>
+    {% plain_list daisy by_author=True %}
+
+
+{% endblock %}

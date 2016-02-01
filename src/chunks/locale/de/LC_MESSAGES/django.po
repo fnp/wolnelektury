@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-01 09:35+0100\n"
+"PO-Revision-Date: 2012-04-11 22:56+0100\n"
+"Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:16 models.py:41
+msgid "key"
+msgstr "Schlüssel"
+
+#: models.py:16
+msgid "A unique name for this chunk of content"
+msgstr "Die einzigartige Bezeichnung für dieses Chunk von Inhalten"
+
+#: models.py:18
+msgid "description"
+msgstr "Beschreibung"
+
+#: models.py:19
+msgid "content"
+msgstr "Inhalt"
+
+#: models.py:23
+msgid "chunk"
+msgstr "Chunk"
+
+#: models.py:24
+msgid "chunks"
+msgstr "Chunks"
+
+#: models.py:41
+msgid "A unique name for this attachment"
+msgstr "Die einzigartige Bezeichnung für diese Beilage"
+
+#: models.py:46
+msgid "attachment"
+msgstr "Beilage"
+
+#: models.py:46
+msgid "attachments"
+msgstr "Beilagen"
+
+#~ msgid "title"
+#~ msgstr "Titel"
+
+#~ msgid "slug"
+#~ msgstr "Slug"
+
+#~ msgid "file"
+#~ msgstr "Datei"
+
+#~ msgid "author"
+#~ msgstr "Autor"
+
+#~ msgid "slideshare ID"
+#~ msgstr "Dia-ID"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "document"
+#~ msgstr "Dokument"

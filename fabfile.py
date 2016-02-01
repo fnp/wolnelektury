@@ -1,4 +1,6 @@
-from fnpdjango.deploy import *
+# -*- coding: utf-8 -*-
+from fnpdeploy import *
+
 try:
     from fabfile_local import *
 except ImportError:
@@ -13,9 +15,42 @@ def production():
     env.hosts = ['giewont.icm.edu.pl']
     env.user = 'lektury'
     env.app_path = '/srv/wolnelektury.pl'
+    env.django_root_path = 'src'
+    env.requirements_file = 'requirements/requirements.txt'
     env.services = [
         Supervisord('wolnelektury'),
         Supervisord('wolnelektury.celery'),
+    ]
+
+
+def update_counters():
+    print '>>> updating counters'
+    require('app_path', 'project_name')
+    with cd(get_django_root_path('current')):
+        run('%(ve)s/bin/python manage.py update_counters' % env, pty=True)
+
+
+def compile_messages():
+    print '>>> compiling messages'
+    require('app_path', 'project_name')
+    with cd(get_django_root_path('current')):
+        run('source %(ve)s/bin/activate && python manage.py localepack -c' % env, pty=True)
+
+
+@task
+def beta():
+    env.hosts = ['giewont.icm.edu.pl']
+    env.user = 'lektury'
+    env.app_path = '/srv/wolnelektury.pl/beta'
+    env.ve = '/srv/wolnelektury.pl/ve'
+    env.django_root_path = 'src'
+    env.requirements_file = 'requirements/requirements.txt'
+    env.pre_collectstatic = [
+        update_counters,
+        compile_messages,
+    ]
+    env.services = [
+        Supervisord('beta'),
     ]
 
 

@@ -1,8 +1,0 @@
--i https://py.mdrn.pl:8443/simple/
-
-django-debug-toolbar
-polib
-BabelDjango
-Fabric
-sphinx
-pyinotify

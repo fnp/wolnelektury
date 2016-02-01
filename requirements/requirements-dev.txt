@@ -1,0 +1,7 @@
+-i https://py.mdrn.pl:8443/simple/
+
+django-debug-toolbar
+Fabric
+sphinx
+pyinotify
+fnpdeploy>=0.2.2

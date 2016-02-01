@@ -1,0 +1,24 @@
+.social-shelf-tags {
+    list-style: none;
+    padding: 0;
+
+    position: absolute;
+    top: 10px;
+    right: 50px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    li {
+        display: inline-block;
+        margin-right: .5em;
+        margin-bottom: .5em;
+
+        a {
+            display: block;
+            padding: .2em .9em;
+            background: #ABDADE;
+            color: #08646b;
+            border-radius: 1em;
+        }
+    }
+}

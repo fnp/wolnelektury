@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load common_tags catalogue_tags %}
+{% load ssify %}
+{% load build_absolute_uri from fnp_common %}
+
+{% block titleextra %}{{ book.pretty_title }}{% endblock %}
+{% block ogimage %}{% if book.cover %}{{ book.cover.url|build_absolute_uri:request }}{% endif %}{% endblock %}
+
+{% block metadescription %}{% book_title book %}. {{ block.super }}{% endblock %}
+
+{% block bodyid %}book-detail{% endblock %}
+
+{% block body %}
+
+{% ssi_include 'catalogue_book_wide' pk=book.pk %}
+
+{% work_list book_children %}
+
+{% spaceless %}
+{% if book.other_versions %}
+<section class="see-also" style="display: inline-block;">
+<h1>{% trans "Other versions" %}:</h1>
+{% for rel in book.other_versions %}
+    {% ssi_include 'catalogue_book_mini' pk=rel.pk %}
+{% endfor %}
+</section>
+{% endif %}
+
+<section class="see-also" style="display: inline-block;">
+<h2>{% trans "See also" %}:</h2>
+{% related_books book taken=book.other_versions|length %}
+</section>
+{% endspaceless %}
+
+
+
+{% with book.related_themes as themes %}
+{% if themes %}
+    <h2>{% trans "Themes" %}</h2>
+    {% plain_list themes book=book %}
+{% endif %}
+{% endwith %}
+
+
+
+<h2>{% trans "Information about the work" %}</h2>
+{% for tag in tags %}
+        <div class="white-box">
+            <a style="display:block" href="{{ tag.get_absolute_url }}">
+        {% ssi_include 'catalogue_tag_box' pk=tag.pk %}
+        </a>
+        </div>
+{% endfor %}
+
+
+      {% if extra_info.source_url %}
+      <div class="white-box"><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}
+      {% trans "in" %} {% source_name extra_info.source_url %}</div>
+      {% endif %}
+      <div class="white-box"><a href="{{ book.xml_file.url }}">{% trans "Source XML file" %}</a></div>
+      {% if extra_info.about and not hide_about %}
+      <div class="white-box">{% trans "Book on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></div>
+      {% endif %}
+      {% if book.gazeta_link %}
+      <div class="white-box"><a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a></div>
+      {% endif %}
+      {% if book.wiki_link %}
+      <div class="white-box"><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></div>
+      {% endif %}
+      <div class="white-box"><a href="{% url 'poem_from_book' book.slug %}">{% trans "Mix this book" %}</a></div>
+
+
+
+
+{% endblock %}

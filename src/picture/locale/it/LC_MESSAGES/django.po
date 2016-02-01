@@ -1,0 +1,211 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-01 09:35+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:25
+msgid "Please supply an XML."
+msgstr ""
+
+#: forms.py:33
+msgid "Please supply an image."
+msgstr ""
+
+#: models.py:36
+msgid "area"
+msgstr ""
+
+#: models.py:38
+msgid "kind"
+msgstr ""
+
+#: models.py:39
+msgid "thing"
+msgstr ""
+
+#: models.py:39
+msgid "theme"
+msgstr ""
+
+#: models.py:75
+msgid "title"
+msgstr ""
+
+#: models.py:76
+msgid "slug"
+msgstr ""
+
+#: models.py:77
+msgid "sort key"
+msgstr ""
+
+#: models.py:79
+msgid "sort key by author"
+msgstr ""
+
+#: models.py:80 models.py:81
+msgid "creation date"
+msgstr ""
+
+#: models.py:82
+msgid "xml file"
+msgstr ""
+
+#: models.py:83
+msgid "image file"
+msgstr ""
+
+#: models.py:84
+msgid "html file"
+msgstr ""
+
+#: models.py:85
+msgid "picture areas JSON"
+msgstr ""
+
+#: models.py:86
+msgid "extra information"
+msgstr ""
+
+#: models.py:106
+msgid "picture"
+msgstr ""
+
+#: models.py:107
+msgid "pictures"
+msgstr ""
+
+#: templates/admin/picture/picture/change_list.html:8
+msgid "Image"
+msgstr ""
+
+#: templates/admin/picture/picture/change_list.html:9
+msgid "Import picture"
+msgstr ""
+
+#: templates/picture/picture_detail.html:21
+msgid "See also"
+msgstr ""
+
+#: templates/picture/picture_list_thumb.html:9
+#: templates/picture/picture_list_thumb.html:13
+msgctxt "gallery"
+msgid "Listing of all works"
+msgstr ""
+
+#: templates/picture/picture_short.html:40
+msgid "Epoch"
+msgstr ""
+
+#: templates/picture/picture_short.html:48
+msgid "Kind"
+msgstr ""
+
+#: templates/picture/picture_short.html:56
+msgid "Genre"
+msgstr ""
+
+#: templates/picture/picture_short.html:71
+msgid "View online"
+msgstr ""
+
+#: templates/picture/picture_short.html:74
+msgid "download original"
+msgstr ""
+
+#: templates/picture/picture_viewer.html:48
+#: templates/picture/picture_wide.html:64
+msgid "Objects"
+msgstr ""
+
+#: templates/picture/picture_viewer.html:49
+msgid "Themes"
+msgstr ""
+
+#: templates/picture/picture_viewer.html:53
+msgid "Infobox"
+msgstr ""
+
+#: templates/picture/picture_wide.html:19
+msgid "Style"
+msgstr ""
+
+#: templates/picture/picture_wide.html:29
+msgid "Medium"
+msgstr ""
+
+#: templates/picture/picture_wide.html:36
+msgid "Dimensions"
+msgstr ""
+
+#: templates/picture/picture_wide.html:42
+msgid "Date"
+msgstr ""
+
+#: templates/picture/picture_wide.html:53
+msgid "Motifs, themes and objects"
+msgstr ""
+
+#: templates/picture/picture_wide.html:56
+msgid "Motifs and themes"
+msgstr ""
+
+#: templates/picture/picture_wide.html:82
+msgid "See"
+msgstr ""
+
+#: templates/picture/picture_wide.html:85
+msgid "Source"
+msgstr ""
+
+#: templates/picture/picture_wide.html:85
+msgid "of the picture"
+msgstr ""
+
+#: templates/picture/picture_wide.html:87
+msgid "Source XML file"
+msgstr ""
+
+#: templates/picture/picture_wide.html:89
+msgid "Picture on"
+msgstr ""
+
+#: templates/picture/picture_wide.html:89
+msgid "Editor's Platform"
+msgstr ""
+
+#: templates/picture/picture_wide.html:92
+msgid "Picture description on Wikipedia"
+msgstr ""
+
+#: views.py:93
+#, python-format
+msgid ""
+"An error occurred: %(exception)s\n"
+"\n"
+"%(tb)s"
+msgstr ""
+
+#: views.py:95
+msgid "Picture imported successfully"
+msgstr ""
+
+#: views.py:97
+#, python-format
+msgid "Error importing file: %r"
+msgstr ""

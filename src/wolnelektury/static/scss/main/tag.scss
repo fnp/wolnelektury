@@ -1,0 +1,183 @@
+.tabbed-filter {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4em;
+
+    @media screen and (min-width: 375px) {
+        padding-bottom: 2em;
+    }
+
+    @media screen and (min-width: 1024px) {
+        padding-bottom: 0;
+    }
+
+
+    .tabs {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        float: right;
+        text-align: right;
+
+        .tab {
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: -1px;
+            box-shadow: none;
+
+            &.active {
+                border-bottom-color: white;
+            }
+        }
+    }
+}
+.tabbed-filter-contents {
+    margin-bottom: 2em;
+    .tab-content {
+        display: none;
+        border-top: none;
+
+        ul {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 10px;
+
+            li {
+                display: inline-block;
+                margin-right: 1em;
+                border-radius: 1em;
+                padding: .5em;
+
+                &.header {
+                    width: 6em;
+                }
+
+                &.active {
+                    background: #0D7E85;
+                    color: #ddd;
+
+                    a {
+                        display: inline-block;
+                        width: 1.5em;
+                        text-align: center;
+                        margin-left: .5em;
+                        border-radius: 1em;
+                        background: white;
+                    }
+                }
+
+                &.other {
+                    a {
+                        color: #ddd;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+#tagged-object-list {
+
+
+
+
+
+    @media screen and (min-width: 62.5em) {
+        .left-column, .right-column {
+            @include size(width, 480px);
+        }
+    }
+
+    .see-also, .download {
+        float: left;
+        @include size(margin-top, 20px);
+        @include size(margin-bottom, 20px);
+
+        h2 {
+            @include mono;
+            @include size(font-size, 11px);
+            margin: 0;
+        }
+
+        ul {
+            @include size(font-size, 11px);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .see-also {
+        @include size(margin-left, 80px);
+        @include size(width, 143px);
+    }
+    .download {
+        @include size(margin-left, 20px);
+    }
+
+    .left-column .see-also {
+        margin-left: 0;
+    }
+}
+
+#description {
+    @include size(margin-bottom, 26px);
+    cursor: pointer;
+
+    dl {
+        margin-top: 0;
+    }
+    dt {
+        display: inline;
+        font-weight: bold;
+        margin: 0;
+    }
+    dd {
+        display: inline;
+        margin: 0;
+    }
+    p {
+        margin-top: 0;
+    }
+    #description .meta {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    #description .meta li {
+        text-align: right;
+        color: #666;
+        @include size(font-size, 11.7px);
+    }
+}
+
+.inline-tag-lists {
+    @include size(font-size, 11px);
+
+    .inline-header {
+        @include mono;
+        display: inline-block;
+        vertical-align: top;
+        @include size(width, 77px);
+    }
+
+    .inline-body {
+        display: inline-block;
+        vertical-align: top;
+        @include size(margin-bottom, 5.5px);
+        @include size(max-width, 385px);
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                display: inline-block;
+                @include size(margin-right, 11px);
+            }
+        }
+    }
+}

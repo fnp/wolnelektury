@@ -1,0 +1,979 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-01 09:35+0100\n"
+"PO-Revision-Date: 2013-04-09 10:39+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: constants.py:10
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
+msgstr ""
+
+#: constants.py:41
+#, fuzzy
+#| msgid "author"
+msgid "authors"
+msgstr "autore"
+
+#: constants.py:42
+#, fuzzy
+#| msgid "epoch"
+msgid "epochs"
+msgstr "epoca"
+
+#: constants.py:43
+#, fuzzy
+#| msgid "kind"
+msgid "kinds"
+msgstr "categoria"
+
+#: constants.py:44
+#, fuzzy
+#| msgid "genre"
+msgid "genres"
+msgstr "genere"
+
+#: constants.py:45
+#, fuzzy
+#| msgid "theme"
+msgid "themes"
+msgstr "tema"
+
+#: constants.py:46
+msgid "sets"
+msgstr ""
+
+#: constants.py:47
+msgid "things"
+msgstr ""
+
+#: constants.py:51
+#, fuzzy
+#| msgid "author"
+msgid "All authors"
+msgstr "autore"
+
+#: constants.py:52
+#, fuzzy
+#| msgid "epoch"
+msgid "All epochs"
+msgstr "epoca"
+
+#: constants.py:53
+#, fuzzy
+#| msgid "kind"
+msgid "All kinds"
+msgstr "categoria"
+
+#: constants.py:54
+#, fuzzy
+#| msgid "genre"
+msgid "All genres"
+msgstr "genere"
+
+#: constants.py:55
+#, fuzzy
+#| msgid "theme"
+msgid "All themes"
+msgstr "tema"
+
+#: constants.py:56
+#, fuzzy
+#| msgid "collections"
+msgid "All sets"
+msgstr " raccolte"
+
+#: constants.py:57
+#, fuzzy
+#| msgid "collections"
+msgid "All things"
+msgstr " raccolte"
+
+#: forms.py:27
+msgid "Please supply an XML."
+msgstr "Si prega di fornire un XML."
+
+#: forms.py:45
+msgid "Don't show footnotes"
+msgstr "Non mostrare le note"
+
+#: forms.py:46
+msgid "Don't disply themes"
+msgstr "Non visualizzare i temi"
+
+#: forms.py:47
+msgid "Don't use our custom font"
+msgstr "Non utilizzare il nostro font personalizzato"
+
+#: forms.py:48
+msgid "Without cover"
+msgstr ""
+
+#: forms.py:51
+msgid "Leading"
+msgstr "Interlinea"
+
+#: forms.py:52
+msgid "Normal leading"
+msgstr "Interlinea normale"
+
+#: forms.py:53
+msgid "One and a half leading"
+msgstr " Interlinea 1,5"
+
+#: forms.py:54
+msgid "Double leading"
+msgstr "Interlinea doppia"
+
+#: forms.py:56
+msgid "Font size"
+msgstr "Grandezza del carattere"
+
+#: forms.py:57
+msgid "Default"
+msgstr "Predefinito"
+
+#: forms.py:58
+msgid "Big"
+msgstr "Grande"
+
+#: forms.py:80
+msgid "Queue is full. Please try again later."
+msgstr ""
+
+#: models/book.py:45 models/collection.py:14
+msgid "title"
+msgstr "titolo"
+
+#: models/book.py:46 models/tag.py:35
+msgid "sort key"
+msgstr "chiave di ordinamento"
+
+#: models/book.py:48
+#, fuzzy
+#| msgid "Results by authors"
+msgid "sort key by author"
+msgstr "Risultati per autore"
+
+#: models/book.py:49 models/book.py:50 models/collection.py:15
+#: models/collection.py:18 models/tag.py:34
+msgid "slug"
+msgstr "slug"
+
+#: models/book.py:51
+msgid "language code"
+msgstr "codice della lingua"
+
+#: models/book.py:52 models/book.py:173 models/collection.py:16
+#: models/tag.py:38 models/tag.py:156
+msgid "description"
+msgstr "descrizione"
+
+#: models/book.py:53 models/book.py:54 models/bookmedia.py:34 models/tag.py:45
+#: models/tag.py:46
+msgid "creation date"
+msgstr "data di creazione"
+
+#: models/book.py:55
+msgid "parent number"
+msgstr "numero del genitore"
+
+#: models/book.py:56 models/bookmedia.py:35
+msgid "extra information"
+msgstr " ulteriori informazioni"
+
+#: models/book.py:62
+msgid "cover"
+msgstr "copertina"
+
+#: models/book.py:68
+msgid "cover thumbnail"
+msgstr ""
+
+#: models/book.py:93 models/collection.py:22
+msgid "book"
+msgstr "libro"
+
+#: models/book.py:94
+msgid "books"
+msgstr "Libri"
+
+#: models/book.py:269
+#, python-format
+msgid "Book \"%s\" does not exist."
+msgstr "Il libro \"%s\" non esiste."
+
+#: models/book.py:282
+#, python-format
+msgid "Book %s already exists"
+msgstr "Il libro %s esiste già"
+
+#: models/book.py:529
+msgid "This work needs modernisation"
+msgstr ""
+
+#: models/book.py:557 models/bookmedia.py:29
+#, python-format
+msgid "%s file"
+msgstr "i %s di file"
+
+#: models/bookmedia.py:31
+msgid "type"
+msgstr "tipo"
+
+#: models/bookmedia.py:32 models/source.py:12 models/tag.py:33
+msgid "name"
+msgstr "nome"
+
+#: models/bookmedia.py:33
+msgid "file"
+msgstr "file"
+
+#: models/bookmedia.py:44 models/bookmedia.py:45
+msgid "book media"
+msgstr "book media"
+
+#: models/collection.py:19
+msgid "book slugs"
+msgstr " slug del libro "
+
+#: models/collection.py:21 models/tag.py:20
+msgid "kind"
+msgstr "categoria"
+
+#: models/collection.py:22
+msgid "picture"
+msgstr ""
+
+#: models/collection.py:26
+msgid "collection"
+msgstr "raccolta"
+
+#: models/collection.py:27
+msgid "collections"
+msgstr " raccolte"
+
+#: models/fragment.py:31
+msgid "fragment"
+msgstr "Frammento"
+
+#: models/fragment.py:32
+msgid "fragments"
+msgstr "Frammenti"
+
+#: models/source.py:11
+#, fuzzy
+#| msgid "extra information"
+msgid "network location"
+msgstr " ulteriori informazioni"
+
+#: models/source.py:16
+#, fuzzy
+#| msgid "Source"
+msgid "source"
+msgstr "Fonte"
+
+#: models/source.py:17
+#, fuzzy
+#| msgid "Source"
+msgid "sources"
+msgstr "Fonte"
+
+#: models/tag.py:18
+msgid "author"
+msgstr "autore"
+
+#: models/tag.py:19
+msgid "epoch"
+msgstr "epoca"
+
+#: models/tag.py:21
+msgid "genre"
+msgstr "genere"
+
+#: models/tag.py:22
+msgid "theme"
+msgstr "tema"
+
+#: models/tag.py:23
+msgid "set"
+msgstr "raccolta"
+
+#: models/tag.py:24
+msgid "thing"
+msgstr ""
+
+#: models/tag.py:37
+msgid "category"
+msgstr "categoria"
+
+#: models/tag.py:66
+msgid "tag"
+msgstr "tag"
+
+#: models/tag.py:67
+msgid "tags"
+msgstr "i tag"
+
+#: templates/catalogue/audiobook_list.html:6
+#: templates/catalogue/audiobook_list.html:11
+msgid "Audiobooks"
+msgstr "Audiolibri"
+
+#: templates/catalogue/audiobook_list.html:14
+msgid "Listing of all audiobooks"
+msgstr "Elenco di tutti gli audiolibri "
+
+#: templates/catalogue/audiobook_list.html:17
+#: templates/catalogue/daisy_list.html:7
+#: templates/catalogue/daisy_list.html:13
+msgid "Listing of all DAISY files"
+msgstr "Elenco di tutti i file DAISY "
+
+#: templates/catalogue/book_detail.html:23
+#: templates/catalogue/book_text.html:20
+#, fuzzy
+#| msgid "Other resources"
+msgid "Other versions"
+msgstr "Altre fonti"
+
+#: templates/catalogue/book_detail.html:31
+msgid "See also"
+msgstr "Vedi anche"
+
+#: templates/catalogue/book_detail.html:40
+#: templates/catalogue/book_text.html:30
+#: templates/catalogue/tagged_object_list.html:24
+msgid "Themes"
+msgstr "Temi"
+
+#: templates/catalogue/book_detail.html:47
+msgid "Information about the work"
+msgstr ""
+
+#: templates/catalogue/book_detail.html:58
+msgid "Source"
+msgstr "Fonte"
+
+#: templates/catalogue/book_detail.html:58
+msgid "of the book"
+msgstr "del libro"
+
+#: templates/catalogue/book_detail.html:59
+#, fuzzy
+#| msgid "kind"
+msgid "in"
+msgstr "categoria"
+
+#: templates/catalogue/book_detail.html:61
+msgid "Source XML file"
+msgstr "File di fonte XML"
+
+#: templates/catalogue/book_detail.html:63
+msgid "Book on"
+msgstr "Libro su"
+
+#: templates/catalogue/book_detail.html:63
+msgid "Editor's Platform"
+msgstr " Piattaforma del editore"
+
+#: templates/catalogue/book_detail.html:66
+msgid "Book description on Lektury.Gazeta.pl"
+msgstr "Descrizione del libro su Lektury.Gazeta.pl"
+
+#: templates/catalogue/book_detail.html:69
+msgid "Book description on Wikipedia"
+msgstr "Descrizione del libro su Wikipedia"
+
+#: templates/catalogue/book_detail.html:71
+msgid "Mix this book"
+msgstr "Combina questo libro"
+
+#: templates/catalogue/book_fragments.html:5
+#: templates/catalogue/book_fragments.html:11
+msgid "Theme"
+msgstr "tema"
+
+#: templates/catalogue/book_fragments.html:5
+#: templates/catalogue/book_fragments.html:13
+msgid "in work "
+msgstr "in corso"
+
+#: templates/catalogue/book_info.html:6
+msgid "This work is licensed under:"
+msgstr "Questa opera è pubblicata su licenza:"
+
+#: templates/catalogue/book_info.html:9
+msgid ""
+"This work isn't covered by copyright and is part of the\n"
+"        public domain, which means it can be freely used, published and\n"
+"        distributed. If there are any additional copyrighted materials\n"
+"        provided with this work (such as annotations, motifs etc.), those\n"
+"        materials are licensed under the \n"
+"        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
+"Commons Attribution-ShareAlike 3.0</a>\n"
+"        license."
+msgstr ""
+"Questa opera non è sotto il diritto d'autore e fa parte del\n"
+"pubblico dominio, il che significa che è possibile pubblicarla \n"
+"e distribuirla liberamente. Se un'opera è completata con i materiali "
+"aggiuntivi \n"
+"(le annotazioni, i motivi letterari ecc.) che sono protette dal diritto "
+"d'autore, quei\n"
+"materiali aggiuntivi sono disponibili secondo la \n"
+"  <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
+"Commons Attribution-ShareAlike 3.0</a>\n"
+"licenza."
+
+#: templates/catalogue/book_info.html:20
+#, fuzzy
+msgid "Resource prepared based on:"
+msgstr "Il testo preparato e basato su:"
+
+#: templates/catalogue/book_info.html:29
+msgid "Edited by:"
+msgstr ""
+
+#: templates/catalogue/book_info.html:31
+msgid "Edited and annotated by:"
+msgstr "Curato ed elaborato da:"
+
+#: templates/catalogue/book_info.html:37
+msgid "Publication funded by:"
+msgstr ""
+
+#: templates/catalogue/book_info.html:43
+msgid "Cover image by:"
+msgstr ""
+
+#: templates/catalogue/book_list.html:8 templates/catalogue/book_list.html:13
+#: templates/catalogue/picture_list.html:8
+#: templates/catalogue/picture_list.html:10
+msgid "Listing of all works"
+msgstr "Elenco di tutte le opere"
+
+#: templates/catalogue/book_list.html:26
+msgid "Table of Content"
+msgstr "Indice"
+
+#: templates/catalogue/book_list.html:36
+msgid "↑ top ↑"
+msgstr ""
+
+#: templates/catalogue/book_short.html:43
+#: templates/catalogue/picture_detail.html:54
+msgid "Epoch"
+msgstr "Epoca"
+
+#: templates/catalogue/book_short.html:51
+#: templates/catalogue/picture_detail.html:60
+msgid "Kind"
+msgstr "Categoria"
+
+#: templates/catalogue/book_short.html:59
+msgid "Genre"
+msgstr "Genere"
+
+#: templates/catalogue/book_short.html:68
+#, fuzzy
+#| msgid "language code"
+msgid "Language"
+msgstr "codice della lingua"
+
+#: templates/catalogue/book_short.html:87
+msgid "Read online"
+msgstr "Leggi online"
+
+#: templates/catalogue/book_short.html:91 views.py:586
+msgid "Download"
+msgstr "Scarica"
+
+#: templates/catalogue/book_text.html:26
+msgid "Table of contents"
+msgstr "Indice"
+
+#: templates/catalogue/book_text.html:34 templates/catalogue/book_text.html:91
+msgid "Settings"
+msgstr ""
+
+#: templates/catalogue/book_text.html:38
+msgid "Edit. note"
+msgstr "Modifica. nota"
+
+#: templates/catalogue/book_text.html:42
+msgid "Infobox"
+msgstr "Infobox"
+
+#: templates/catalogue/book_text.html:56
+#: templates/catalogue/viewer_base.html:53
+msgid "Close"
+msgstr ""
+
+#: templates/catalogue/book_text.html:57
+msgid "Please wait..."
+msgstr ""
+
+#: templates/catalogue/book_text.html:73
+msgid "Other versions of the book"
+msgstr ""
+
+#: templates/catalogue/book_text.html:74
+msgid "Close the other version"
+msgstr ""
+
+#: templates/catalogue/book_text.html:92
+#, fuzzy
+#| msgid "parent number"
+msgid "Display line numbers"
+msgstr "numero del genitore"
+
+#: templates/catalogue/book_text.html:93
+#, fuzzy
+#| msgid "Don't disply themes"
+msgid "Display themes"
+msgstr "Non visualizzare i temi"
+
+#: templates/catalogue/book_text.html:94
+#, fuzzy
+#| msgid "Don't show footnotes"
+msgid "Display footnotes"
+msgstr "Non mostrare le note"
+
+#: templates/catalogue/catalogue.html:6
+msgid "Catalogue"
+msgstr "Catalogo"
+
+#: templates/catalogue/catalogue.html:11
+#: templates/catalogue/tagged_object_list.html:61
+#, fuzzy
+#| msgid "All books"
+msgid "All works"
+msgstr "Tutti i libri"
+
+#: templates/catalogue/catalogue.html:17
+msgid "Download the catalogue in PDF format."
+msgstr "Scarica il catalogo nel formato PDF."
+
+#: templates/catalogue/catalogue.html:20
+#: templates/catalogue/tag_list_split.html:3
+#: templates/catalogue/tagged_object_list.html:6
+#: templates/catalogue/tagged_object_list.html:14
+msgid "Literature"
+msgstr ""
+
+#: templates/catalogue/catalogue.html:23
+#: templates/catalogue/collections.html:6
+#: templates/catalogue/collections.html:11
+#, fuzzy
+msgid "Collections"
+msgstr " raccolte"
+
+#: templates/catalogue/catalogue.html:26
+#: templates/catalogue/tag_list_split.html:8
+#: templates/catalogue/tagged_object_list.html:6
+#: templates/catalogue/tagged_object_list.html:14
+msgid "Gallery"
+msgstr ""
+
+#: templates/catalogue/collection_box.html:5
+#, fuzzy
+msgid "Collection"
+msgstr " raccolte"
+
+#: templates/catalogue/collection_box.html:15
+#, python-format
+msgid "and one more"
+msgid_plural "and %(c)s more"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/catalogue/collections.html:17
+#, fuzzy
+#| msgid "collections"
+msgid "All collections"
+msgstr " raccolte"
+
+#: templates/catalogue/daisy_list.html:10
+msgid "Latest DAISY audiobooks"
+msgstr "Ultimi audiolibri DAISY"
+
+#: templates/catalogue/differentiate_tags.html:12
+msgid "The criteria are ambiguous. Please select one of the following options:"
+msgstr ""
+"Questi criteri sono ambigui. Si prega di selezionare una delle seguenti "
+"opzioni:"
+
+#: templates/catalogue/fragment_short.html:12
+msgid "Expand fragment"
+msgstr "Espandi il frammento"
+
+#: templates/catalogue/fragment_short.html:22
+msgid "Hide fragment"
+msgstr "Nascondi il frammento"
+
+#: templates/catalogue/inline_tag_list.html:6
+msgid "Chosen"
+msgstr ""
+
+#: templates/catalogue/inline_tag_list.html:14
+#: templates/catalogue/inline_tag_list.html:23
+msgid "Available"
+msgstr ""
+
+#: templates/catalogue/inline_tag_list.html:32
+msgid "Other"
+msgstr ""
+
+#: templates/catalogue/picture_detail.html:29
+msgid "Work is licensed under "
+msgstr "L'opera è su licenza di"
+
+#: templates/catalogue/picture_detail.html:31
+msgid "Based on"
+msgstr "Basato su"
+
+#: templates/catalogue/picture_detail.html:45
+msgid "Details"
+msgstr "Dettagli"
+
+#: templates/catalogue/picture_detail.html:48
+msgid "Author"
+msgstr "Autore"
+
+#: templates/catalogue/picture_detail.html:66
+msgid "Other resources"
+msgstr "Altre fonti"
+
+#: templates/catalogue/picture_detail.html:69
+msgid "Source of the image"
+msgstr "Fonte dell'immagine"
+
+#: templates/catalogue/picture_detail.html:72
+msgid "Image on the Editor's Platform"
+msgstr "Immagine sulla piattaforma del editore"
+
+#: templates/catalogue/picture_detail.html:83
+msgid "View XML source"
+msgstr "Visualizza la fonte XML"
+
+#: templates/catalogue/picture_detail.html:86
+msgid "Work's themes "
+msgstr "Temi dell'opera"
+
+#: templates/catalogue/player.html:11 templates/catalogue/viewer_base.html:9
+msgid "Wolne Lektury"
+msgstr "Wolne Lektury"
+
+#: templates/catalogue/player.html:34
+msgid "Book's page"
+msgstr "Pagina del libro"
+
+#: templates/catalogue/player.html:35
+msgid "Download as"
+msgstr "Scarica come"
+
+#: templates/catalogue/player.html:84
+#: templates/catalogue/snippets/jplayer.html:35
+#, fuzzy
+#| msgid "Artist"
+msgid "Artist:"
+msgstr "Artista"
+
+#: templates/catalogue/player.html:85
+#: templates/catalogue/snippets/jplayer.html:36
+#, fuzzy
+#| msgid "Director"
+msgid "director:"
+msgstr "Direttore"
+
+#: templates/catalogue/player.html:104
+msgid "Audiobooks were prepared as a part of the projects:"
+msgstr "Gli audilobri sono stati preparati come parte dei seguenti progetti:"
+
+#: templates/catalogue/player.html:109
+#, python-format
+msgid "%(cs)s, funded by %(fb)s"
+msgstr "%(cs)s, creato da %(fb)s // %(cs)s, finanziato da %(fb)s"
+
+#: templates/catalogue/player.html:121
+#, python-format
+msgid ""
+"Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
+msgstr ""
+"Gli audiollibri sono stati preparati come parte del progetto %(cs)s, "
+"finanziato da %(fb)s"
+
+#: templates/catalogue/player.html:123
+#, python-format
+msgid "Audiobooks were prepared as a part of the %(cs)s project."
+msgstr "Gli audiolibri sono stati preparati come parte di progetto %(cs)s."
+
+#: templates/catalogue/recent_audiobooks_list.html:5
+#: templates/catalogue/recent_audiobooks_list.html:10
+#, fuzzy
+msgid "Recent audiobooks"
+msgstr "Ultimi audiolibri MP3"
+
+#: templates/catalogue/recent_daisy_list.html:5
+#: templates/catalogue/recent_daisy_list.html:10
+msgid "Recent DAISY files"
+msgstr ""
+
+#: templates/catalogue/recent_list.html:5
+#: templates/catalogue/recent_list.html:10
+msgid "Recent publications"
+msgstr ""
+
+#: templates/catalogue/recent_list.html:15
+#, python-format
+msgid ""
+"You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
+"        and <a href=\"%(d)s\">recent DAISY files</a>."
+msgstr ""
+
+#: templates/catalogue/search_multiple_hits.html:8
+#: templates/catalogue/search_no_hits.html:5
+#: templates/catalogue/search_no_hits.html:10
+#: templates/catalogue/search_too_short.html:5
+#: templates/catalogue/search_too_short.html:10
+msgid "Search"
+msgstr "Cerca"
+
+#: templates/catalogue/search_multiple_hits.html:14
+#: templates/catalogue/search_no_hits.html:16
+msgid "Did you mean"
+msgstr "Volevi dire"
+
+#: templates/catalogue/search_multiple_hits.html:20
+#: templates/catalogue/tagged_object_list.html:19
+msgid "Authors"
+msgstr "Autori"
+
+#: templates/catalogue/search_multiple_hits.html:30
+#: templates/catalogue/tagged_object_list.html:22
+msgid "Kinds"
+msgstr "Categorie"
+
+#: templates/catalogue/search_multiple_hits.html:40
+#: templates/catalogue/tagged_object_list.html:21
+msgid "Genres"
+msgstr "Generi"
+
+#: templates/catalogue/search_multiple_hits.html:50
+#: templates/catalogue/tagged_object_list.html:20
+msgid "Epochs"
+msgstr "Epoche"
+
+#: templates/catalogue/search_multiple_hits.html:63
+msgid "Results by title"
+msgstr "Risultati per titolo"
+
+#: templates/catalogue/search_multiple_hits.html:78
+msgid "Results by authors"
+msgstr "Risultati per autore"
+
+#: templates/catalogue/search_multiple_hits.html:91
+msgid "Results by translators"
+msgstr ""
+
+#: templates/catalogue/search_multiple_hits.html:104
+msgid "Results in text"
+msgstr "Risultati nel testo"
+
+#: templates/catalogue/search_multiple_hits.html:121
+msgid "Other results"
+msgstr "Altri risultati"
+
+#: templates/catalogue/search_no_hits.html:19
+#: templates/catalogue/tagged_object_list.html:65
+msgid "Sorry! Search cirteria did not match any resources."
+msgstr "Siamo spiacenti!I criteri di ricerca non corrispondono alle risorse."
+
+#: templates/catalogue/search_no_hits.html:21
+msgid ""
+"Search engine supports following criteria: title, author, theme/topic, "
+"epoch, kind and genre.\n"
+"\t\tAs for now we do not support full text search."
+msgstr ""
+"Il motore di ricerca supporta i seguenti criteri: titolo, autore, tema, "
+"epoca, genere.\n"
+"\t\t Per il momento non supportiamo i criteri del testo intero."
+
+#: templates/catalogue/search_too_short.html:13
+msgid "Sorry! Search query must have at least two characters."
+msgstr ""
+"Siamo spiacenti! La ricerca viene effettuata su parole con almeno due "
+"caratteri."
+
+#: templates/catalogue/snippets/custom_pdf_link_li.html:3
+msgid "Download a custom PDF"
+msgstr " Scarica un PDF personalizzato"
+
+#: templates/catalogue/snippets/jplayer.html:53
+msgid "previous"
+msgstr ""
+
+#: templates/catalogue/snippets/jplayer.html:54
+msgid "Part"
+msgstr ""
+
+#: templates/catalogue/snippets/jplayer.html:55
+msgid "next"
+msgstr ""
+
+#: templates/catalogue/snippets/license_icon.html:6
+#: templates/catalogue/snippets/license_icon.html:8
+msgid "Free license"
+msgstr ""
+
+#: templates/catalogue/tag_catalogue.html:11
+#, fuzzy
+#| msgid "Wolne Lektury"
+msgid "on Wolne Lektury"
+msgstr "Wolne Lektury"
+
+#: templates/catalogue/tag_list.html:6
+msgid "See full category"
+msgstr "Vedi tutta la categoria"
+
+#: templates/catalogue/tagged_object_list.html:59
+msgid "All matching works"
+msgstr ""
+
+#: templates/catalogue/tagged_object_list.html:74
+msgid "Motifs and themes"
+msgstr "Motivi e temi"
+
+#: templates/catalogue/tagged_object_list.html:91
+#, fuzzy
+#| msgid "description"
+msgid "No description."
+msgstr "descrizione"
+
+#: templates/catalogue/tagged_object_list.html:97
+msgid "in Lektury.Gazeta.pl"
+msgstr "su Lektury.Gazeta.pl"
+
+#: templates/catalogue/tagged_object_list.html:103
+msgid "in Wikipedia"
+msgstr "su Wikipedia"
+
+#: templates/catalogue/tagged_object_list.html:109
+msgid "in Culture.pl"
+msgstr ""
+
+#: templates/catalogue/viewer_base.html:55
+#, fuzzy
+#| msgid "Leading"
+msgid "Loading"
+msgstr "Interlinea"
+
+#: views.py:551
+#, python-format
+msgid ""
+"An error occurred: %(exception)s\n"
+"\n"
+"%(tb)s"
+msgstr ""
+"Si e verificato un errore: %(exception)s   \n"
+"\n"
+"%(tb)s"
+
+#: views.py:553
+msgid "Book imported successfully"
+msgstr "Libro scaricato con successo"
+
+#: views.py:555
+#, python-format
+msgid "Error importing file: %r"
+msgstr "Errore dell'importazione del file: %r"
+
+#: views.py:585
+msgid "Download custom PDF"
+msgstr "Scarica PDF personalizzato"
+
+#~ msgid "book count"
+#~ msgstr "conteggio dei libri"
+
+#~ msgid "Latest MP3 audiobooks"
+#~ msgstr "Ultimi audiolibri MP3"
+
+#~ msgid "Latest Ogg Vorbis audiobooks"
+#~ msgstr "Ultimi audiolibri Ogg Vorbis"
+
+#~ msgid "Listen"
+#~ msgstr "Ascolta"
+
+#~ msgid "Download all audiobooks for this book"
+#~ msgstr "Scarica tutti gli audiolibri per questo libro."
+
+#~ msgid "See"
+#~ msgstr "Vedi"
+
+#~ msgid "Themes and topics"
+#~ msgstr "temi e argomenti"
+
+#~ msgid "DAISY"
+#~ msgstr "DAISY"
+
+#~ msgid "Listing of all pictures"
+#~ msgstr "Elenco di tutte le immagini"
+
+#~ msgid "Put a book on the shelf!"
+#~ msgstr "Metti il libro sullo scaffale"
+
+#~ msgid "Create new shelf"
+#~ msgstr "Crea un nuovo scaffale"
+
+#~ msgid ""
+#~ "You do not have any shelves. You can create one below, if you want to."
+#~ msgstr "Non hai nessuno scaffale. se vuoi puoi crearne uno, qui sotto."
+
+#~ msgid "Put on the shelf!"
+#~ msgstr "Metti sullo scaffale!"
+
+#~ msgid "Shelves containing fragment"
+#~ msgstr "Gli scaffali che contengono il frammento"
+
+#~ msgid ""
+#~ "You do not own any shelves. You can create one below, if you want to."
+#~ msgstr "Non hai nessuno scaffale. Se vuoi puoi crearne uno, qui sotto."
+
+#~ msgid "Save all shelves"
+#~ msgstr "Salva tutti gli scaffali"
+
+#~ msgid "Your shelves with books"
+#~ msgstr "I tuoi scaffali con i libri"
+
+#~ msgid "You do not own any shelves. You can create one below if you want to"
+#~ msgstr "Non hai nessuno scaffale. se vuoi puoi crearne uno, qui sotto."
+
+#~ msgid "Create shelf"
+#~ msgstr "Crea uno scaffale"
+
+#~ msgid "Enter a valid JSON value. Error: %s"
+#~ msgstr "Inserire un valore valido JSON. Errore: %s"
+
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "A5"
+#~ msgstr "A5"
+
+#~ msgid "Incorrect customization options for PDF"
+#~ msgstr "Opzioni di personalizzazione non corrette per PDF"
+
+#~ msgid "Bad method"
+#~ msgstr "Metodo non corretto"

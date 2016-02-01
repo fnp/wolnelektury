@@ -1,0 +1,168 @@
+/* Basic layout */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.clearboth {
+    clear: both;
+}
+
+
+
+/* Basic colors and fonts */
+body {
+    font-family: Georgia;
+    background: #f7f7f7;
+    color: black;
+
+    @include size(font-size, 13px);
+}
+
+a {
+    color: #0d7e85;
+    text-decoration: none;
+
+    img {
+        border: 0;
+    }
+}
+
+h1 {
+    @include size(font-size, 35px);
+    font-weight: normal;
+    @include size(margin-top, 14px);
+
+    a {
+        color: inherit;
+    }
+}
+
+h2 {
+    @include size(font-size, 20px);
+    font-weight: normal;
+}
+
+h3 {
+    @include size(font-size, 15px);
+    font-weight: normal;
+}
+
+
+.normal-text {
+    line-height: 1.3em;
+    @include size(margin, 0 5px);
+
+    @media screen and (min-width: 62.5em) {
+        margin: 0;
+    }
+}
+
+.white-box {
+    @include size(padding, 10px);
+    @include white-box;
+}
+
+
+ul.plain {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.theme-list-link {
+    @include mono;
+    @include size(font-size, 11px);
+
+    &:after {
+        @include size(padding-left, 11px);
+        content: url("/static/img/arrow-teal.png");
+        vertical-align: middle;
+    }
+}
+
+
+.left-column, .right-column {
+    @include size(max-width, 600px);
+}
+@media screen and (min-width: 62.5em) {
+    .left-column {
+        @include size(width, 470px);
+        float: left;
+    }
+    .right-column {
+        @include size(width, 470px);
+        float:right;
+    }
+}
+
+.pagination {
+    display: block;
+    @include size(font-size, 12px);
+    @include size(padding, 6px);
+    text-align:center;
+}
+
+.simple-hidden-initially {
+    display: none;
+}
+
+
+.plain-list-container {
+    margin: 2em 0;
+    .plain-list {
+        column-count: 2;
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+
+        @media screen and (min-width: 768px) {
+            column-count: 4;
+            -moz-column-count: 4;
+            -webkit-column-count: 4;
+        }
+        @media screen and (min-width: 1024px) {
+            column-count: 5;
+            -moz-column-count: 5;
+            -webkit-column-count: 5;
+        }
+
+        p {
+            margin-top: 0;
+
+            &.header {
+                -webkit-column-break-after: avoid;
+                break-after: avoid;
+            }
+        }
+
+        .initial-block {
+            display: inline-block;
+        }
+    }
+
+    .pager {
+        font-size: 18px;
+        margin-top: .5em;
+        text-align: center;
+
+        .current {
+            font-weight: bold;
+            color: black;
+        }
+    }
+}
+
+
+.tag-box {
+    display: block;
+
+    @media screen and (min-width: 768px) {
+        display: inline-block;
+        vertical-align: top;
+        width: 48%;
+        margin-right: 1%;
+        @include size(margin-bottom, 10px);
+    }
+}

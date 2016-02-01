@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-01 09:35+0100\n"
+"PO-Revision-Date: 2014-10-24 11:48+0100\n"
+"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: forms.py:25
+msgid "Please supply an XML."
+msgstr "Proszę dostarczyć XML."
+
+#: forms.py:33
+msgid "Please supply an image."
+msgstr "Proszę dostarczyć obraz."
+
+#: models.py:36
+msgid "area"
+msgstr "obszar"
+
+#: models.py:38
+msgid "kind"
+msgstr "typ"
+
+#: models.py:39
+msgid "thing"
+msgstr "przedmiot"
+
+#: models.py:39
+msgid "theme"
+msgstr "motyw"
+
+#: models.py:75
+msgid "title"
+msgstr "tytuł"
+
+#: models.py:76
+msgid "slug"
+msgstr "slug"
+
+#: models.py:77
+msgid "sort key"
+msgstr "klucz sortowania"
+
+#: models.py:79
+msgid "sort key by author"
+msgstr "klucz sortowania wg autora"
+
+#: models.py:80 models.py:81
+msgid "creation date"
+msgstr "data stworzenia"
+
+#: models.py:82
+msgid "xml file"
+msgstr "plik xml"
+
+#: models.py:83
+msgid "image file"
+msgstr "plik obrazu"
+
+#: models.py:84
+msgid "html file"
+msgstr "plik html"
+
+#: models.py:85
+msgid "picture areas JSON"
+msgstr "obszary w JSON"
+
+#: models.py:86
+msgid "extra information"
+msgstr "dodatkowa informacja"
+
+#: models.py:106
+msgid "picture"
+msgstr "obraz"
+
+#: models.py:107
+msgid "pictures"
+msgstr "obrazy"
+
+#: templates/admin/picture/picture/change_list.html:8
+msgid "Image"
+msgstr "Obraz"
+
+#: templates/admin/picture/picture/change_list.html:9
+msgid "Import picture"
+msgstr "Importuj obraz"
+
+#: templates/picture/picture_detail.html:21
+msgid "See also"
+msgstr "Zobacz też"
+
+#: templates/picture/picture_list_thumb.html:9
+#: templates/picture/picture_list_thumb.html:13
+msgctxt "gallery"
+msgid "Listing of all works"
+msgstr "Spis wszystkich dzieł"
+
+#: templates/picture/picture_short.html:40
+msgid "Epoch"
+msgstr "Rodzaj"
+
+#: templates/picture/picture_short.html:48
+msgid "Kind"
+msgstr "Typ"
+
+#: templates/picture/picture_short.html:56
+msgid "Genre"
+msgstr "Gatunek"
+
+#: templates/picture/picture_short.html:71
+msgid "View online"
+msgstr "Zobacz online"
+
+#: templates/picture/picture_short.html:74
+msgid "download original"
+msgstr "pobierz oryginał"
+
+#: templates/picture/picture_viewer.html:48
+#: templates/picture/picture_wide.html:64
+msgid "Objects"
+msgstr "Obiekty"
+
+#: templates/picture/picture_viewer.html:49
+msgid "Themes"
+msgstr "Motywy"
+
+#: templates/picture/picture_viewer.html:53
+msgid "Infobox"
+msgstr "Informacja"
+
+#: templates/picture/picture_wide.html:19
+msgid "Style"
+msgstr "Styl"
+
+#: templates/picture/picture_wide.html:29
+msgid "Medium"
+msgstr "Technika"
+
+#: templates/picture/picture_wide.html:36
+msgid "Dimensions"
+msgstr "Wymiary pracy"
+
+#: templates/picture/picture_wide.html:42
+msgid "Date"
+msgstr "Czas powstania"
+
+#: templates/picture/picture_wide.html:53
+msgid "Motifs, themes and objects"
+msgstr "Motywy i obiekty"
+
+#: templates/picture/picture_wide.html:56
+msgid "Motifs and themes"
+msgstr "Motywy"
+
+#: templates/picture/picture_wide.html:82
+msgid "See"
+msgstr "Zobacz"
+
+#: templates/picture/picture_wide.html:85
+msgid "Source"
+msgstr "Źródło"
+
+#: templates/picture/picture_wide.html:85
+msgid "of the picture"
+msgstr "obrazu"
+
+#: templates/picture/picture_wide.html:87
+msgid "Source XML file"
+msgstr "Źródło XML"
+
+#: templates/picture/picture_wide.html:89
+msgid "Picture on"
+msgstr "Obraz na"
+
+#: templates/picture/picture_wide.html:89
+msgid "Editor's Platform"
+msgstr "platformie edytorskiej"
+
+#: templates/picture/picture_wide.html:92
+msgid "Picture description on Wikipedia"
+msgstr "Opis w Wikipedii"
+
+#: views.py:93
+#, python-format
+msgid ""
+"An error occurred: %(exception)s\n"
+"\n"
+"%(tb)s"
+msgstr ""
+"Wystąpił błąd: %(exception)s\n"
+"\n"
+"%(tb)s"
+
+#: views.py:95
+msgid "Picture imported successfully"
+msgstr "Obraz został zimportowany"
+
+#: views.py:97
+#, python-format
+msgid "Error importing file: %r"
+msgstr "Błąd importu pliku: %r"
+
+#~ msgid "Download"
+#~ msgstr "Pobierz"
+
+#~ msgid "original"
+#~ msgstr "oryginał"
+
+#~ msgid "Edit. note"
+#~ msgstr "Nota edytorska"
+
+#~ msgid "Picture's page"
+#~ msgstr "Strona obrazu"
+
+#~ msgid "Picture description on Lektury.Gazeta.pl"
+#~ msgstr "Opis na Lektury.Gazeta.pl"

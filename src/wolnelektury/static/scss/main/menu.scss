@@ -1,0 +1,148 @@
+/* ok */
+
+$menu_width: 200px;
+
+
+/* This is duplication of code for reader menu button. */
+%menu-toggle {
+    position: relative;
+    padding: 0;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        height: 5px;
+        border-top: 15px double #ddd;
+        border-bottom: 5px solid #ddd;
+    }
+}
+
+
+#show-menu {
+    @extend %menu-toggle;
+    display: block;
+    background: #191919;
+    color: #ddd;
+    text-align: center;
+    z-index: 100;
+    @include size(width, 44px);
+    @include size(height, 44px);
+    padding: 0;
+    position: absolute;
+    left: 10px;
+    top: 25px;
+
+    &:before {
+        left: 8px;
+        right: 8px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        display: none;
+    }
+}
+
+body.menu-on {
+    margin-left: $menu_width;
+    margin-right: -$menu_width;
+
+    @media screen and (min-width: 1024px) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #menu {
+        display: block;
+    }
+}
+
+#menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: $menu_width;
+    background: #141414;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 90;
+
+    @media screen and (min-width: 1024px) {
+        display: block;
+        width: 975px;
+        height: 0;
+        overflow: visible;
+        margin: auto;
+        position: absolute;
+        top: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding: .5em 1em;
+
+            @media screen and (min-width: 1024px) {
+                padding: 0;
+            }
+        }
+    }
+}
+
+
+
+
+@media screen and (min-width: 1024px) {
+    #user-info {
+        @include mono;
+        position: absolute;
+        right: 150px;
+        top: 4px;
+        @include size(font-size, 10px);
+        list-style: none;
+
+        li {
+            display: inline;
+
+            &:after {
+                content: " | ";
+            }
+            &:last-child:after {
+                content: "";
+            }
+        }
+    }
+
+    #main-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        background-color: #e2e2e2;
+        position: absolute;
+        top: 94px;
+        @include size(width, 975px);
+
+        li {
+            display: inline-block;
+            @include size(width, 20%);
+
+            a {
+                text-align: center;
+                display: block;
+                @include size(line-height, 13px);
+                @include size(padding, 18px 0 15px);
+                @include size(border-bottom, 3px solid #e2e2e2);
+                color: #0c7076;
+                @include size(font-size, 11px);
+                @include mono;
+
+                &.active {
+                    border-bottom-color: white;
+                }
+            }
+        }
+    }
+}

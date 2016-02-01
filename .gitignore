@@ -7,12 +7,13 @@ fabfile_local.py
 *.orig
 *.log
 .sass-cache
+*.mo
 
 # Compress output
-/static
+/var
 
 # SCSS output
-apps/wolnelektury_core/static/scss/*.css
+src/wolnelektury/static/scss/*.css
 
 # Python garbage
 *.pyc
@@ -39,8 +40,6 @@ thumbs.db
 # Tags file
 TAGS
 
-media
-search_index
 doc/_build
 reports
 

@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-01 09:36+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/waiter/wait.html:7 templates/waiter/wait.html.py:33
+msgid "The file is ready for download!"
+msgstr ""
+
+#: templates/waiter/wait.html:10 templates/waiter/wait.html.py:43
+msgid "Your file is being prepared, please wait."
+msgstr ""
+
+#: templates/waiter/wait.html:12 templates/waiter/wait.html.py:52
+msgid "Something went wrong."
+msgstr ""
+
+#: templates/waiter/wait.html:36
+#, python-format
+msgid ""
+"Your file is ready!\n"
+"        If the download doesn't start in a few seconds,\n"
+"        feel free to use this <a href=\"%(file_url)s\">direct link</a>."
+msgstr ""
+
+#: templates/waiter/wait.html:42
+msgid "Please wait"
+msgstr ""
+
+#: templates/waiter/wait.html:46
+#, python-format
+msgid "The file you requested was: <em>%(d)s</em>."
+msgstr ""
+
+#: templates/waiter/wait.html:48
+msgid ""
+"<strong>Be aware:</strong> Generating the file can take a while.\n"
+"        Please be patient, or bookmark this page and come back later.</p>"
+msgstr ""
+
+#: templates/waiter/wait.html:56
+#, python-format
+msgid ""
+"Something seems to have gone wrong while generating your file.\n"
+"        Please order it again or <a id='suggest' class='ajaxable' href="
+"\"%(s)s\">complain to us</a> about it."
+msgstr ""

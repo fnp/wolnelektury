@@ -1,0 +1,4 @@
+{% load i18n %}
+{% if not NO_CUSTOM_PDF %}
+    <a href="{% url 'custom_pdf_form' book.slug %}">{% trans "Download a custom PDF" %}</a>
+{% endif %}
