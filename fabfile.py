@@ -10,19 +10,6 @@ except ImportError:
 env.project_name = 'wolnelektury'
 
 
-@task
-def production():
-    env.hosts = ['giewont.icm.edu.pl']
-    env.user = 'lektury'
-    env.app_path = '/srv/wolnelektury.pl'
-    env.django_root_path = 'src'
-    env.requirements_file = 'requirements/requirements.txt'
-    env.services = [
-        Supervisord('wolnelektury'),
-        Supervisord('wolnelektury.celery'),
-    ]
-
-
 def update_counters():
     print '>>> updating counters'
     require('app_path', 'project_name')
@@ -35,6 +22,23 @@ def compile_messages():
     require('app_path', 'project_name')
     with cd(get_django_root_path('current')):
         run('source %(ve)s/bin/activate && python manage.py localepack -c' % env, pty=True)
+
+
+@task
+def production():
+    env.hosts = ['giewont.icm.edu.pl']
+    env.user = 'lektury'
+    env.app_path = '/srv/wolnelektury.pl'
+    env.django_root_path = 'src'
+    env.requirements_file = 'requirements/requirements.txt'
+    env.pre_collectstatic = [
+        update_counters,
+        compile_messages,
+    ]
+    env.services = [
+        Supervisord('wolnelektury'),
+        Supervisord('wolnelektury.celery'),
+    ]
 
 
 @task
