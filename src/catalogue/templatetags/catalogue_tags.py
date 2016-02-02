@@ -306,9 +306,9 @@ class CatalogueURLNode(Node):
             return reverse('book_list')
 
 
-@register.inclusion_tag('catalogue/tag_list.html')
+# @register.inclusion_tag('catalogue/tag_list.html')
 def tag_list(tags, choices=None, category=None, gallery=False):
-    print(tags, choices, category)
+    # print(tags, choices, category)
     if choices is None:
         choices = []
 
@@ -319,6 +319,8 @@ def tag_list(tags, choices=None, category=None, gallery=False):
 
     if len(tags) == 1 and category not in [t.category for t in choices]:
         one_tag = tags[0]
+    else:
+        one_tag = None
 
     if category is not None:
         other = Tag.objects.filter(category=category).exclude(pk__in=[t.pk for t in tags])\
@@ -326,8 +328,15 @@ def tag_list(tags, choices=None, category=None, gallery=False):
         # Filter out empty tags.
         ct = ContentType.objects.get_for_model(Picture if gallery else Book)
         other = other.filter(items__content_type=ct).distinct()
+    else:
+        other = []
 
-    return locals()
+    return {
+        'one_tag': one_tag,
+        'choices': choices,
+        'tags': tags,
+        'other': other,
+    }
 
 
 @register.inclusion_tag('catalogue/inline_tag_list.html')
@@ -337,7 +346,7 @@ def inline_tag_list(tags, choices=None, category=None, gallery=False):
 
 @register.inclusion_tag('catalogue/collection_list.html')
 def collection_list(collections):
-    return locals()
+    return {'collections': collections}
 
 
 @register.inclusion_tag('catalogue/book_info.html')
@@ -351,7 +360,7 @@ def book_info(book):
 @register.inclusion_tag('catalogue/work-list.html', takes_context=True)
 def work_list(context, object_list):
     request = context.get('request')
-    return locals()
+    return {'object_list': object_list, 'request': request}
 
 
 @register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
@@ -372,7 +381,14 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
                 last_initial = initial
                 names.append((obj.author_str() if by_author else initial, []))
         names[-1][1].append(obj)
-    return locals()
+    return {
+        'paged': paged,
+        'names': names,
+        'initial_blocks': initial_blocks,
+        'book': book,
+        'gallery': gallery,
+        'choice': choice,
+    }
 
 
 # TODO: These are no longer just books.

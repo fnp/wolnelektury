@@ -14,11 +14,15 @@ from django.views.decorators.cache import never_cache
 def wait(request, path):
     if WaitedFile.exists(path):
         file_url = join(WAITER_URL, path)
+        waiting = None
     else:
-        file_url = ""
+        file_url = None
         waiting = get_object_or_404(WaitedFile, path=path)
 
     if request.is_ajax():
         return HttpResponse(file_url)
     else:
-        return render(request, "waiter/wait.html", locals())
+        return render(request, "waiter/wait.html", {
+            'waiting': waiting,
+            'file_url': file_url,
+        })

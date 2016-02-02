@@ -37,7 +37,7 @@ def picture_list_thumb(request, filter=None, get_filter=None, template_name='pic
         book_list = book_list.filter(get_filter())
     book_list = book_list.order_by('sort_key_author')
     book_list = list(book_list)
-    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+    return render_to_response(template_name, {'book_list': book_list}, context_instance=RequestContext(request))
 
 
 def picture_detail(request, slug):
@@ -49,13 +49,11 @@ def picture_detail(request, slug):
     # for tag in picture.tags.iterator():
     #     categories.setdefault(tag.category, []).append(tag)
 
-    themes = theme_things.get('theme', [])
-    things = theme_things.get('thing', [])
-
-    extra_info = picture.extra_info
-
-    return render_to_response("picture/picture_detail.html", locals(),
-                              context_instance=RequestContext(request))
+    return render_to_response("picture/picture_detail.html", {
+        'picture': picture,
+        'themes': theme_things.get('theme', []),
+        'things': theme_things.get('thing', []),
+    }, context_instance=RequestContext(request))
 
 
 def picture_viewer(request, slug):
@@ -65,8 +63,10 @@ def picture_viewer(request, slug):
         have_sponsors = Sponsor.objects.filter(name=sponsor)
         if have_sponsors.exists():
             sponsors.append(have_sponsors[0])
-    return render_to_response("picture/picture_viewer.html", locals(),
-                              context_instance=RequestContext(request))
+    return render_to_response("picture/picture_viewer.html", {
+        'picture': picture,
+        'sponsors': sponsors,
+    }, context_instance=RequestContext(request))
 
 
 # =========
@@ -123,8 +123,10 @@ def picture_short(request, pk):
 @ssi_included
 def picturearea_short(request, pk):
     area = get_object_or_404(PictureArea, pk=pk)
-    theme = area.tags.filter(category='theme')
-    theme = theme and theme[0] or None
-    thing = area.tags.filter(category='thing')
-    thing = thing and thing[0] or None
-    return render(request, 'picture/picturearea_short.html', locals())
+    themes = area.tags.filter(category='theme')
+    things = area.tags.filter(category='thing')
+    return render(request, 'picture/picturearea_short.html', {
+        'area': area,
+        'theme': themes[0] if themes else None,
+        'thing': things[0] if things else None,
+    })

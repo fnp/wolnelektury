@@ -38,8 +38,9 @@ def like_book(request, slug):
 
 @login_required
 def my_shelf(request):
-    books = Book.tagged.with_any(request.user.tag_set.all())
-    return render(request, 'social/my_shelf.html', locals())
+    return render(request, 'social/my_shelf.html', {
+        'books': Book.tagged.with_any(request.user.tag_set.all())
+    })
 
 
 class ObjectSetsFormView(AjaxableFormView):

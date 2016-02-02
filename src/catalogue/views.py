@@ -33,11 +33,12 @@ from catalogue.utils import split_tags
 staff_required = user_passes_test(lambda user: user.is_staff)
 
 
-def catalogue(request, as_json=False):
-    books = models.Book.objects.filter(parent=None).order_by('sort_key_author', 'sort_key')
-    pictures = Picture.objects.order_by('sort_key_author', 'sort_key')
-    collections = models.Collection.objects.all()
-    return render(request, 'catalogue/catalogue.html', locals())
+def catalogue(request):
+    return render(request, 'catalogue/catalogue.html', {
+        'books': models.Book.objects.filter(parent=None).order_by('sort_key_author', 'sort_key'),
+        'pictures': Picture.objects.order_by('sort_key_author', 'sort_key'),
+        'collections': models.Collection.objects.all(),
+    })
 
 
 def book_list(request, filter=None, get_filter=None, template_name='catalogue/book_list.html',
@@ -51,9 +52,15 @@ def book_list(request, filter=None, get_filter=None, template_name='catalogue/bo
     for tag in books_by_author:
         if books_by_author[tag]:
             books_nav.setdefault(tag.sort_key[0], []).append(tag)
-    rendered_nav = render_to_string(nav_template_name, locals())
-    rendered_book_list = render_to_string(list_template_name, locals())
-    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+    # WTF: dlaczego nie include?
+    return render_to_response(template_name, {
+        'rendered_nav': render_to_string(nav_template_name, {'books_nav': books_nav}),
+        'rendered_book_list': render_to_string(list_template_name, {
+            'books_by_author': books_by_author,
+            'orphans': orphans,
+            'books_by_parent': books_by_parent,
+        })
+    }, context_instance=RequestContext(request))
 
 
 def audiobook_list(request):
@@ -239,7 +246,11 @@ def book_fragments(request, slug, theme_slug):
     fragments = models.Fragment.tagged.with_all([theme]).filter(
         Q(book=book) | Q(book__ancestor=book))
 
-    return render_to_response('catalogue/book_fragments.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_fragments.html', {
+        'book': book,
+        'theme': theme,
+        'fragments': fragments,
+    }, context_instance=RequestContext(request))
 
 
 def book_detail(request, slug):
@@ -248,9 +259,11 @@ def book_detail(request, slug):
     except models.Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, slug)
 
-    tags = book.tags.exclude(category__in=('set', 'theme'))
-    book_children = book.children.all().order_by('parent_number', 'sort_key')
-    return render_to_response('catalogue/book_detail.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_detail.html', {
+        'book': book,
+        'tags': book.tags.exclude(category__in=('set', 'theme')),
+        'book_children': book.children.all().order_by('parent_number', 'sort_key'),
+    }, context_instance=RequestContext(request))
 
 
 def get_audiobooks(book):
@@ -284,6 +297,7 @@ def get_audiobooks(book):
     return audiobooks, projects, have_oggs
 
 
+# używane tylko do audiobook_tree, które jest używane tylko w snippets/audiobook_list.html, które nie jest używane
 def player(request, slug):
     book = get_object_or_404(models.Book, slug=slug)
     if not book.has_media('mp3'):
@@ -291,9 +305,14 @@ def player(request, slug):
 
     audiobooks, projects, have_oggs = get_audiobooks(book)
 
-    extra_info = book.extra_info
+    # extra_info = book.extra_info
 
-    return render_to_response('catalogue/player.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('catalogue/player.html', {
+        'book': book,
+        'audiobook': '',
+        'audiobooks': audiobooks,
+        'projects': projects,
+    }, context_instance=RequestContext(request))
 
 
 def book_text(request, slug):
@@ -301,7 +320,7 @@ def book_text(request, slug):
 
     if not book.has_html_file():
         raise Http404
-    return render_to_response('catalogue/book_text.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_text.html', {'book': book,}, context_instance=RequestContext(request))
 
 
 # ==========
@@ -561,7 +580,7 @@ def book_info(request, book_id, lang='pl'):
     book = get_object_or_404(models.Book, id=book_id)
     # set language by hand
     translation.activate(lang)
-    return render_to_response('catalogue/book_info.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_info.html', {'book': book}, context_instance=RequestContext(request))
 
 
 def tag_info(request, tag_id):
