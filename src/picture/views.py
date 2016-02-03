@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.template import RequestContext
@@ -26,6 +27,7 @@ from sponsors.models import Sponsor
 #             books_nav.setdefault(tag.sort_key[0], []).append(tag)
 #
 #     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+from wolnelektury.utils import ajax
 
 
 def picture_list_thumb(request, filter=None, get_filter=None, template_name='picture/picture_list_thumb.html',
@@ -67,6 +69,29 @@ def picture_viewer(request, slug):
         'picture': picture,
         'sponsors': sponsors,
     }, context_instance=RequestContext(request))
+
+
+@ajax(method='get')
+def picture_page(request, key=None):
+    pictures = Picture.objects.order_by('-id')
+    if key is not None:
+        pictures = pictures.filter(id__lt=key)
+    pictures = pictures[:settings.PICTURE_PAGE_SIZE]
+    picture_data = [
+        {
+            'id': picture.id,
+            'title': picture.title,
+            'author': picture.author_unicode(),
+            'image_url': picture.image_file.url,
+            'width': picture.width,
+            'height': picture.height,
+        }
+        for picture in pictures
+    ]
+    return {
+        'pictures': picture_data,
+        'count': Picture.objects.count(),
+    }
 
 
 # =========

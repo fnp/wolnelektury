@@ -127,6 +127,9 @@ class Picture(models.Model):
     def author_str(self):
         return ", ".join(str(t) for t in self.tags.filter(category='author'))
 
+    def author_unicode(self):
+        return ", ".join(unicode(t) for t in self.tags.filter(category='author'))
+
     @permalink
     def get_absolute_url(self):
         return 'picture.views.picture_detail', [self.slug]
