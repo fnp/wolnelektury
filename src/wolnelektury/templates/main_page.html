@@ -22,9 +22,11 @@
                 {% ssi_include 'catalogue_book_mini' pk=b.pk %}
             {% endfor %}
             </div>
-            <div class="note white-box normal-text" style="font-size: 18px">
-            i wiele innych książek, wierszy, obrazów, audiobooków…
-            </div>
+            <a href="{% url "book_list" %}">
+                <div class="note white-box normal-text" style="font-size: 18px">
+                    i wiele innych książek, wierszy, obrazów, audiobooków…
+                </div>
+            </a>
         </div>
     </section>
 
