@@ -388,10 +388,16 @@
     .book-box-read {
         a {
             @include mono;
+            display: inline-block;
+            background: #0D7E85;
+            color: white;
+            @include size(width, 200px);
+            text-align: center;
+            @include size(margin-bottom, 5px);
         }
 
         a:before {
-            content: url("/static/img/read.png");
+            content: url("/static/img/read-white.png");
             @include size(font-size, 25px);
             @include size(margin-right, 3.71px);
             vertical-align: middle;
