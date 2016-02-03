@@ -57,7 +57,7 @@ class AjaxError(Exception):
     pass
 
 
-def ajax(login_required=True, method=None, template=None, permission_required=None):
+def ajax(login_required=False, method=None, template=None, permission_required=None):
     def decorator(fun):
         @wraps(fun)
         def ajax_view(request):
