@@ -24,6 +24,12 @@ def compile_messages():
         run('source %(ve)s/bin/activate && python manage.py localepack -c' % env, pty=True)
 
 
+class Memcached(Service):
+    def run(self):
+        print '>>> memcached: restart'
+        sudo('service memcached restart', shell=False)
+
+
 @task
 def production():
     env.hosts = ['giewont.icm.edu.pl']
@@ -38,6 +44,7 @@ def production():
     env.services = [
         Supervisord('wolnelektury'),
         Supervisord('wolnelektury.celery'),
+        Memcached(),
     ]
 
 
