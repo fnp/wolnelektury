@@ -321,7 +321,7 @@ def _no_diacritics_regexp(query):
 
     def repl(m):
         l = m.group()
-        return u"(%s)" % '|'.join(names[l])
+        return u"(?:%s)" % '|'.join(names[l])
 
     return re.sub(u'[%s]' % (u''.join(names.keys())), repl, query)
 
