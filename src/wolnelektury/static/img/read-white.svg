@@ -15,7 +15,7 @@
    id="svg6288"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="read-white.svg"
-   inkscape:export-filename="/home/janek/src/wolnelektury/var/static/img/read-white.png"
+   inkscape:export-filename="/home/janek/src/wolnelektury/src/wolnelektury/static/img/read-white.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <sodipodi:namedview
@@ -52,12 +52,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-258.99199,-646.00901)"
+     transform="translate(-258.99199,-645.65414)"
      id="layer1"
      style="fill:#ffffff">
     <g
