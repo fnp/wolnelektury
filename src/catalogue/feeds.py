@@ -29,8 +29,8 @@ class AudiobookFeed(Feed):
         'daisy': 'WolneLektury.pl - audiobooki w formacie DAISY',
     }
 
-    def get_object(self, request, obj_type):
-        return {'type': obj_type, 'all': 'all' in request.GET}
+    def get_object(self, request, type):
+        return {'type': type, 'all': 'all' in request.GET}
 
     def title(self, args):
         return self.titles[args['type']]
