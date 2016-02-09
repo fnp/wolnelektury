@@ -1,314 +1,278 @@
 $header_bg: #191919;
 $small_logo: .9;
 
-
 header#main {
-    @include size(line-height, 20px); /* Make links easier to click when wrapped. */
-    background-color: $header_bg;
-    color: #bbb;
-    position: relative;
+  @include size(line-height, 20px); /* Make links easier to click when wrapped. */
+  background-color: $header_bg;
+  color: #bbb;
+  position: relative;
 
-    Xtext-align:center;
+  Xtext-align: center;
 
-    @media screen and (min-width: 1024px) {
-        width: 975px;
-        margin:auto;
+  @media screen and (min-width: 1024px) {
+    width: 975px;
+    margin: auto;
 
-    }
+  }
 
-    a {
-        color: #17CFDB;
-    }
+  a {
+    color: #17CFDB;
+  }
 
-    #logo {
-        display: block;
-        margin: auto;
+  #logo {
+    display: block;
+    margin: auto;
 
+    @include size(width, 173px);
+    @include size(height, 94px);
+
+    img {
+      @include size(width, $small_logo * 173px);
+      @include size(height, $small_logo * 94px);
+      margin-top: (1 - $small_logo) * 94px / 2;
+      margin-left: (1 - $small_logo) * 173px / 2;
+
+      @media screen and (min-width: 768px) {
         @include size(width, 173px);
         @include size(height, 94px);
-
-        img {
-            @include size(width, $small_logo * 173px);
-            @include size(height, $small_logo * 94px);
-            margin-top: (1 - $small_logo) * 94px / 2;
-            margin-left: (1 - $small_logo) * 173px / 2;
-
-            @media screen and (min-width: 768px) {
-                @include size(width, 173px);
-                @include size(height, 94px);
-                margin-top: 0;
-                margin-left: 0;
-            }
-        }
-
-        @media screen and (min-width: 1024px) {
-            margin-left: 0;
-        }
+        margin-top: 0;
+        margin-left: 0;
+      }
     }
 
-    #tagline {
+    @media screen and (min-width: 1024px) {
+      margin-left: 0;
+    }
+  }
+
+  #tagline {
+    display: none;
+    position: absolute;
+    @include size(top, 3px);
+    @include size(left, 255px);
+    @include size(font-size, 13px);
+
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
+  }
+
+  #lang-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include mono;
+
+    #lang-button {
+      display: block;
+
+      @include size(font-size, 10px);
+      @include size(line-height, 17px);
+      @include size(padding-left, 25px);
+      @include size(padding-right, 20px);
+      @include size(padding-top, 16px);
+      @include size(padding-bottom, 16px);
+
+      .label {
+        &:after {
+          @include size(padding-left, 10px);
+          content: url("/static/img/arrow-gray.png");
+          vertical-align: top;
+        }
+      }
+
+      .lang-flag {
+        @include size(font-size, 13px);
+        @include size(line-height, 15px);
+      }
+    }
+
+    #lang-menu-items {
+      z-index: 9999;
+
+      button {
+        @include mono;
         display: none;
-        position: absolute;
-        @include size(top, 3px);
-        @include size(left, 255px);
+        background: #f7f7f7;
+        color: #6f6f6f;
+        cursor: pointer;
+        width: 100%;
+        margin: 0;
+        @include size(padding, 10px 0);
+
+        @media screen and (min-width: 62.5em) {
+          @include size(padding, 5px 0);
+        }
+
+        border-width: 0;
+        @include size(border-bottom, 1px solid #ddd);
+
         @include size(font-size, 13px);
 
-        @media screen and (min-width: 1024px) {
-            display: block;
+        &.active {
+          color: #000;
         }
+      }
     }
 
-    #lang-menu {
-        display: block;
+    &:hover, &.hover {
+      #lang-menu-items {
         position: absolute;
-        top: 0;
+        padding: 0;
         right: 0;
-
-        @include mono;
-
-        #lang-button {
-            display:block;
-
-            @include size(font-size, 10px);
-            @include size(line-height, 17px);
-            @include size(padding-left, 25px);
-            @include size(padding-right, 20px);
-            @include size(padding-top, 16px);
-            @include size(padding-bottom, 16px);
-
-            .label {
-                &:after {
-                    @include size(padding-left, 10px);
-                    content: url("/static/img/arrow-gray.png");
-                    vertical-align: top;
-                }
-            }
-
-            .lang-flag {
-                @include size(font-size, 13px);
-                @include size(line-height, 15px);
-            }
-        }
-
-
-        #lang-menu-items {
-            z-index: 9999;
-
-            button {
-                @include mono;
-                display: none;
-                background: #f7f7f7;
-                color: #6f6f6f;
-                cursor: pointer;
-                width: 100%;
-                margin: 0;
-                @include size(padding, 10px 0);
-
-                @media screen and (min-width: 62.5em) {
-                    @include size(padding, 5px 0);
-                }
-
-                border-width: 0;
-                @include size(border-bottom, 1px solid #ddd);
-
-                @include size(font-size, 13px);
-
-                &.active {
-                    color: #000;
-                }
-            }
-        }
-
-        &:hover, &.hover {
-            #lang-menu-items {
-                position: absolute;
-                padding: 0;
-                right: 0;
-                width: 100%;
-                button {
-                    display: block;
-                }
-            }
-        }
-
-    }
-
-
-    #main-menu-toggle {
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-
-    X#user-info {
-        margin-top: 0;
-        @include size(margin-left, 5px);
-        @include size(margin-right, 5px);
-        padding-top: 0;
-        @include mono;
-        @include size(font-size, 10px);
-        position: relative;
-
-        @media screen and (min-width: 24em) {
-            @include size(padding-top, 15px);
-            @include size(margin-left, 180px);
-            text-align: right;
-        }
-        @media screen and (min-width: 62.5em) {
-            position: absolute;
-            top: 0;
-            right: 0;
-            @include size(margin-left, 0);
-            @include size(margin-right, 0);
-        }
-
-        /* We want submenu on far left on small screens. */
-        .hidden-box-wrapper {
-            position: static;
-            @media screen and (min-width: 24em) {
-                position: relative;
-            }
-        }
-
-        #user-menu {
-            display: none;
-
-            text-align: left;
-            line-height:1.6em;
-            left: 0;
-            right: 0;
-            top: 2em;
-
-            @media screen and (min-width: 15em) {
-                right: auto;
-                width: 15em;
-            }
-
-            a {
-                color: #0D7E85;
-            }
-        }
-    }
-
-    form#search-area {
-        position: relative;
-        clear: both;
-        @include size(height, 45px);
-        background: #444444;
-        color: white;
-
-        @media screen and (min-width: 1024px) {
-            position: absolute;
-            @include size(top, 49px);
-            @include size(left, 240px);
-            @include size(right, 0);
-        }
-
-        #search-field {
-            position: absolute;
-            @include size(top, 5px);
-            @include size(left, 5px);
-            @include size(right, 113px);
-
-            label {
-                @include hidden-label;
-            }
-            input#search {
-                z-index: 200;
-                position: relative;
-                @include size(height, 33px);
-                width: 100%;
-                padding: 0;
-                @include size(padding-left, 13px);
-                @include size(line-height, 32.5px);
-
-                border: none;
-                @include size(border-radius, 5px);
-                @include box-shadow(0 0 6.5px #444444 inset);
-
-                font-family: Georgia;
-                @include size(font-size, 13px);
-                background-color: white;
-                color: black;
-
-                /* styling search placeholder */
-                &::placeholder
-                {
-                    font-family: Georgia;
-                    font-style: italic;
-                    color: #767676;
-                }
-                &::-webkit-input-placeholder
-                {
-                    font-family: Georgia;
-                    font-style: italic;
-                    color: #767676;
-                }
-                &::-moz-placeholder
-                {
-                    font-family: Georgia;
-                    font-style: italic;
-                    color: #767676;
-                }
-            }
-        }
+        width: 100%;
         button {
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            @include size(height, 45px);
-            @include size(width, 94px);
-            margin: 0;
-            padding: 0;
-
-            border: none;
-
-            @include mono;
-            @include size(font-size, 11px);
-            background: #018189;
-            color: white;
+          display: block;
         }
+      }
     }
+
+  }
+
+  #main-menu-toggle {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  X#user-info {
+    margin-top: 0;
+    @include size(margin-left, 5px);
+    @include size(margin-right, 5px);
+    padding-top: 0;
+    @include mono;
+    @include size(font-size, 10px);
+    position: relative;
+
+    @media screen and (min-width: 24em) {
+      @include size(padding-top, 15px);
+      @include size(margin-left, 180px);
+      text-align: right;
+    }
+    @media screen and (min-width: 62.5em) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include size(margin-left, 0);
+      @include size(margin-right, 0);
+    }
+
+    /* We want submenu on far left on small screens. */
+    .hidden-box-wrapper {
+      position: static;
+      @media screen and (min-width: 24em) {
+        position: relative;
+      }
+    }
+
+    #user-menu {
+      display: none;
+
+      text-align: left;
+      line-height: 1.6em;
+      left: 0;
+      right: 0;
+      top: 2em;
+
+      @media screen and (min-width: 15em) {
+        right: auto;
+        width: 15em;
+      }
+
+      a {
+        color: #0D7E85;
+      }
+    }
+  }
+
+  form#search-area {
+    position: relative;
+    clear: both;
+    @include size(height, 45px);
+    background: #444444;
+    color: white;
+
+    @media screen and (min-width: 1024px) {
+      position: absolute;
+      @include size(top, 49px);
+      @include size(left, 240px);
+      @include size(right, 0);
+    }
+
+    #search-field {
+      position: absolute;
+      @include size(top, 5px);
+      @include size(left, 5px);
+      @include size(right, 113px);
+
+      label {
+        @include hidden-label;
+      }
+      input#search {
+        z-index: 200;
+        position: relative;
+        @include size(height, 33px);
+        width: 100%;
+        padding: 0;
+        @include size(padding-left, 13px);
+        @include size(line-height, 32.5px);
+
+        border: none;
+        @include size(border-radius, 5px);
+        @include box-shadow(0 0 6.5px #444444 inset);
+
+        font-family: Georgia;
+        @include size(font-size, 13px);
+        background-color: white;
+        color: black;
+
+        /* styling search placeholder */
+        &::placeholder {
+          font-family: Georgia;
+          font-style: italic;
+          color: #767676;
+        }
+        &::-webkit-input-placeholder {
+          font-family: Georgia;
+          font-style: italic;
+          color: #767676;
+        }
+        &::-moz-placeholder {
+          font-family: Georgia;
+          font-style: italic;
+          color: #767676;
+        }
+      }
+    }
+    button {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include size(height, 45px);
+      @include size(width, 94px);
+      margin: 0;
+      padding: 0;
+
+      border: none;
+
+      @include mono;
+      @include size(font-size, 11px);
+      background: #018189;
+      color: white;
+    }
+  }
 }
 
-
-
-
-
 @media screen and (min-width: 1024px) {
-    #whole-header {
-        height: 94px + 49px;
-    }
+  #whole-header {
+    height: 94px + 49px;
+  }
 
-    #header-wrapper {
-        position: relative;
-
-        /* Upper-half both sides dark background */
-        &:before {
-            content: " ";
-            display: block;
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            @include size(bottom, 45px);
-            left: 0;
-            width: 100%;
-            background-color: $header_bg;
-        }
-
-        /* Left-side dark background */
-        &:after {
-            content: " ";
-            display: block;
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 50%;
-            background-color: $header_bg;
-        }
-    }
+  #header-wrapper {
+    position: relative;
+    background-color: $header_bg;
+  }
 }
