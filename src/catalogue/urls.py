@@ -43,12 +43,12 @@ urlpatterns += patterns(
     url(r'^rodzaj/$', 'tag_catalogue', {'category': 'kind'}, name='kind_catalogue'),
     url(r'^motyw/$', 'tag_catalogue', {'category': 'theme'}, name='theme_catalogue'),
 
-    url(r'^galeria/$', 'tagged_object_list', {'gallery': True}, name='gallery'),
+    url(r'^galeria/$', 'tagged_object_list', {'list_type': 'gallery'}, name='gallery'),
     url(r'^kolekcje/$', 'collections', name='catalogue_collections'),
 
     url(r'^lektury/$', 'tagged_object_list', name='book_list'),
     url(r'^lektury/(?P<slug>[a-zA-Z0-9-]+)/$', 'collection', name='collection'),
-    url(r'^audiobooki/$', 'audiobook_list', name='audiobook_list'),
+    url(r'^audiobooki/$', 'tagged_object_list', {'list_type': 'audiobooks'}, name='audiobook_list'),
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^jtags/?$', 'json_tags_starting_with', name='jhint'),
@@ -93,7 +93,9 @@ urlpatterns += patterns(
     url(r'^c/(?P<pk>.+)/box\.(?P<lang>.+)\.html', 'collection_box', name='catalogue_collection_box'),
 
     # This should be the last pattern.
-    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'gallery': True},
+    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'list_type': 'gallery'},
         name='tagged_object_list_gallery'),
+    url(r'^audiobooki/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'list_type': 'audiobooks'},
+        name='tagged_object_list_audiobooks'),
     url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
 )

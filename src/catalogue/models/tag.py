@@ -9,6 +9,7 @@ from django.db import models
 from django.db.models import permalink
 from django.dispatch import Signal
 from django.utils.translation import ugettext_lazy as _
+
 from newtagging.models import TagBase
 from ssify import flush_ssi_includes
 
@@ -48,7 +49,9 @@ class Tag(TagBase):
     after_change = Signal(providing_args=['instance', 'languages'])
 
     class UrlDeprecationWarning(DeprecationWarning):
-        pass
+        def __init__(self, tags=None):
+            super(Tag.UrlDeprecationWarning, self).__init__()
+            self.tags = tags
 
     categories_rev = {
         'autor': 'author',
@@ -189,9 +192,7 @@ class Tag(TagBase):
                 e.ambiguous_slugs = ambiguous_slugs
                 raise e
             if deprecated:
-                e = Tag.UrlDeprecationWarning()
-                e.tags = real_tags
-                raise e
+                raise Tag.UrlDeprecationWarning(tags=real_tags)
             return real_tags
         else:
             return TagBase.get_tag_list(tags)

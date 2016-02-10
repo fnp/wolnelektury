@@ -107,9 +107,11 @@ def differentiate_tags(request, tags, ambiguous_slugs):
 
 
 # TODO: Rewrite this hellish piece of code which tries to do everything
-def tagged_object_list(request, tags='', gallery=False):
+def tagged_object_list(request, tags='', list_type='default'):
     raw_tags = tags
     # preliminary tests and conditions
+    gallery = list_type == 'gallery'
+    audiobooks = list_type == 'audiobooks'
     try:
         tags = Tag.get_tag_list(tags)
     except Tag.DoesNotExist:
@@ -134,14 +136,16 @@ def tagged_object_list(request, tags='', gallery=False):
         pass
 
     # beginning of digestion
-    theme_is_set = [tag for tag in tags if tag.category == 'theme']
-    shelf_is_set = [tag for tag in tags if tag.category == 'set']
+    theme_is_set = any(tag.category == 'theme' for tag in tags)
+    shelf_is_set = any(tag.category == 'set' for tag in tags)
     only_shelf = shelf_is_set and len(tags) == 1
-    only_my_shelf = only_shelf and request.user.is_authenticated() and request.user == tags[0].user
+    only_my_shelf = only_shelf and request.user == tags[0].user
     tags_pks = [tag.pk for tag in tags]
 
-    objects = None
+    if gallery and shelf_is_set:
+        raise Http404
 
+    daisy = None
     if theme_is_set:
         # Only fragments (or pirctureareas) here.
         shelf_tags = [tag for tag in tags if tag.category == 'set']
@@ -152,12 +156,9 @@ def tagged_object_list(request, tags='', gallery=False):
             fragments = Fragment.tagged.with_all(fragment_tags)
 
         if shelf_tags:
-            if gallery:
-                # TODO: Pictures on shelves not supported yet.
-                raise Http404
-            else:
-                books = Book.tagged.with_all(shelf_tags).order_by()
-                fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
+            # TODO: Pictures on shelves not supported yet.
+            books = Book.tagged.with_all(shelf_tags).order_by()
+            fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
 
         categories = split_tags(
             Tag.objects.usage_for_queryset(fragments, counts=True).exclude(pk__in=tags_pks),
@@ -166,14 +167,11 @@ def tagged_object_list(request, tags='', gallery=False):
         objects = fragments
     else:
         if gallery:
-            if shelf_is_set:
-                # TODO: Pictures on shelves not supported yet.
-                raise Http404
+            # TODO: Pictures on shelves not supported yet.
+            if tags:
+                objects = Picture.tagged.with_all(tags)
             else:
-                if tags:
-                    objects = Picture.tagged.with_all(tags)
-                else:
-                    objects = Picture.objects.all()
+                objects = Picture.objects.all()
             areas = PictureArea.objects.filter(picture__in=objects)
             categories = split_tags(
                 Tag.objects.usage_for_queryset(
@@ -201,6 +199,14 @@ def tagged_object_list(request, tags='', gallery=False):
                 # WTF: was outside if, overwriting value assigned if shelf_is_set
                 related_book_tags = get_top_level_related_tags(tags)
 
+            if audiobooks:
+                if objects != all_books:
+                    all_books = all_books.filter(media__type__in=('mp3', 'ogg')).distinct()
+                    objects = objects.filter(media__type__in=('mp3', 'ogg')).distinct()
+                else:
+                    all_books = objects = objects.filter(media__type__in=('mp3', 'ogg')).distinct()
+                daisy = objects.filter(media__type='daisy').distinct().order_by('sort_key_author', 'sort_key')
+
             fragments = Fragment.objects.filter(book__in=all_books)
 
             categories = split_tags(
@@ -219,7 +225,8 @@ def tagged_object_list(request, tags='', gallery=False):
 
     if not gallery and not objects and len(tags) == 1:
         tag = tags[0]
-        if (tag.category in ('theme', 'thing') and PictureArea.tagged.with_any([tag]).exists() or
+        if tag.category in ('theme', 'thing') and (
+                PictureArea.tagged.with_any([tag]).exists() or
                 Picture.tagged.with_any([tag]).exists()):
             return redirect('tagged_object_list_gallery', raw_tags, permanent=False)
 
@@ -235,7 +242,8 @@ def tagged_object_list(request, tags='', gallery=False):
             'tag_ids': tags_pks,
             'theme_is_set': theme_is_set,
             'best': best,
-            'gallery': gallery,
+            'list_type': list_type,
+            'daisy': daisy,
         },
         context_instance=RequestContext(request))
 

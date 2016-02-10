@@ -1,37 +1,29 @@
 {% load i18n %}
 {% load catalogue_tags %}
-	{% if choices %}
-        {% if category_choices %}
-            <ul>
-            <li class="header">{% trans "Chosen" %}:</li>
-            {% for tag in category_choices %}
-                <li class="active">{{ tag }} <a href="{% if gallery %}{% catalogue_url_gallery choices -tag %}{% else %}{% catalogue_url choices -tag %}{% endif %}">X</a></li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-        {% if tags %}
+
+{% if choices %}
+    {% if category_choices %}
         <ul>
-        <li class="header">{% trans "Available" %}:</li>
-        {% for tag in tags %}
-            <li><a href="{% if gallery %}{% catalogue_url_gallery choices tag %}{% else %}{% catalogue_url choices tag %}{% endif %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
+        <li class="header">{% trans "Chosen" %}:</li>
+        {% for tag in category_choices %}
+            <li class="active">{{ tag }} <a href="{% catalogue_url list_type choices -tag %}">X</a></li>
         {% endfor %}
         </ul>
-        {% endif %}
-    {% else %}
-        {% if tags %}
-        <ul>
-        <li class="header">{% trans "Available" %}:</li>
-        {% for tag in tags %}
-            <li><a href="{% if gallery %}{{ tag.get_absolute_gallery_url }}{% else %}{{ tag.get_absolute_url }}{% endif %}">{{ tag }} {% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
-        {% endfor %}
-        </ul>
-        {% endif %}
     {% endif %}
-    {% if other %}
-	<ul>
-        <li class="header">{% trans "Other" %}:</li>
-        {% for tag in other %}
-            <li class="other"><a href="{% if gallery %}{{ tag.get_absolute_gallery_url }}{% else %}{{ tag.get_absolute_url }}{% endif %}">{{ tag }}</a></li>
+{% endif %}
+{% if tags %}
+    <ul>
+        <li class="header">{% trans "Available" %}:</li>
+        {% for tag in tags %}
+            <li><a href="{% catalogue_url list_type choices tag %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
         {% endfor %}
     </ul>
-    {% endif %}
+{% endif %}
+{% if other %}
+    <ul>
+        <li class="header">{% trans "Other" %}:</li>
+        {% for tag in other %}
+            <li class="other"><a href="{% catalogue_url list_type tag %}">{{ tag }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
