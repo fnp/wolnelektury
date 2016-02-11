@@ -8,7 +8,6 @@ from django.contrib.contenttypes.models import ContentType
 
 from django.conf import settings
 from django import template
-from django.core.cache import cache
 from django.template import Node, Variable, Template, Context
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -16,6 +15,8 @@ from django.utils.cache import add_never_cache_headers
 from django.utils.translation import ugettext as _
 
 from ssify import ssi_variable
+
+from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
 from picture.models import Picture
@@ -323,17 +324,7 @@ def tag_list(tags, choices=None, category=None, list_type='default'):
         ct = ContentType.objects.get_for_model(Picture if list_type == 'gallery' else Book)
         other = other.filter(items__content_type=ct).distinct()
         if list_type == 'audiobooks':
-            audiobook_tag_ids = cache.get('audiobook_tags')
-            if audiobook_tag_ids is None:
-                books_with_audiobook = Book.objects.filter(media__type__in=('mp3', 'ogg'))\
-                    .distinct().values_list('pk', flat=True)
-                audiobook_tag_ids = Tag.objects.filter(
-                    items__content_type=ct,
-                    items__object_id__in=list(books_with_audiobook)).distinct().values_list('pk', flat=True)
-                audiobook_tag_ids = list(audiobook_tag_ids)
-                cache.set('audiobook_tags', audiobook_tag_ids)
-
-            other = other.filter(id__in=audiobook_tag_ids)
+            other = other.filter(id__in=get_audiobook_tags())
     else:
         other = []
 

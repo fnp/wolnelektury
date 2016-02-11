@@ -182,30 +182,32 @@ def tagged_object_list(request, tags='', list_type='default'):
                     pk__in=tags_pks),
             )
         else:
-            if tags:
-                all_books = Book.tagged.with_all(tags)
-            else:
-                all_books = Book.objects.filter(parent=None)
-            if shelf_is_set:
+            if audiobooks:
+                all_books = Book.objects.filter(media__type__in=('mp3', 'ogg')).distinct()
+                if tags:
+                    all_books = Book.tagged.with_all(tags, all_books)
                 objects = all_books
+                # there's never only the daisy audiobook
+                daisy = objects.filter(media__type='daisy').distinct().order_by('sort_key_author', 'sort_key')
                 related_book_tags = Tag.objects.usage_for_queryset(
                     objects, counts=True).exclude(
                     category='set').exclude(pk__in=tags_pks)
             else:
                 if tags:
-                    objects = Book.tagged_top_level(tags)
+                    all_books = Book.tagged.with_all(tags)
                 else:
+                    all_books = Book.objects.filter(parent=None)
+                if shelf_is_set:
                     objects = all_books
-                # WTF: was outside if, overwriting value assigned if shelf_is_set
-                related_book_tags = get_top_level_related_tags(tags)
-
-            if audiobooks:
-                if objects != all_books:
-                    all_books = all_books.filter(media__type__in=('mp3', 'ogg')).distinct()
-                    objects = objects.filter(media__type__in=('mp3', 'ogg')).distinct()
+                    related_book_tags = Tag.objects.usage_for_queryset(
+                        objects, counts=True).exclude(
+                        category='set').exclude(pk__in=tags_pks)
                 else:
-                    all_books = objects = objects.filter(media__type__in=('mp3', 'ogg')).distinct()
-                daisy = objects.filter(media__type='daisy').distinct().order_by('sort_key_author', 'sort_key')
+                    if tags:
+                        objects = Book.tagged_top_level(tags)
+                    else:
+                        objects = all_books
+                    related_book_tags = get_top_level_related_tags(tags)
 
             fragments = Fragment.objects.filter(book__in=all_books)
 
@@ -228,7 +230,7 @@ def tagged_object_list(request, tags='', list_type='default'):
         if tag.category in ('theme', 'thing') and (
                 PictureArea.tagged.with_any([tag]).exists() or
                 Picture.tagged.with_any([tag]).exists()):
-            return redirect('tagged_object_list_gallery', raw_tags, permanent=False)
+            return redirect('tagged_object_list_gallery', raw_tags)
 
     return render_to_response(
         'catalogue/tagged_object_list.html',
