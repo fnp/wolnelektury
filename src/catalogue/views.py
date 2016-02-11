@@ -232,6 +232,12 @@ def tagged_object_list(request, tags='', list_type='default'):
                 Picture.tagged.with_any([tag]).exists()):
             return redirect('tagged_object_list_gallery', raw_tags)
 
+    # this is becoming more and more hacky
+    if list_type == 'default' and not tags:
+        last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:20]
+    else:
+        last_published = None
+
     return render_to_response(
         'catalogue/tagged_object_list.html',
         {
@@ -246,6 +252,7 @@ def tagged_object_list(request, tags='', list_type='default'):
             'best': best,
             'list_type': list_type,
             'daisy': daisy,
+            'last_published': last_published,
         },
         context_instance=RequestContext(request))
 

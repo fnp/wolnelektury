@@ -46,6 +46,16 @@
     {% endif %}
 </div>
 
+{% if list_type == 'default' and not tags %}
+    <section>
+        <h1>{% trans "Recent publications" %}</h1>
+            {% for book in last_published %}
+                {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+            {% endfor %}
+        <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
+    </section>
+{% endif %}
+
 {% if theme_is_set %}
     {% work_list object_list %}
 {% else %}
