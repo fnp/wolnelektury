@@ -302,7 +302,7 @@ class CatalogueURLNode(Node):
 
 
 # @register.inclusion_tag('catalogue/tag_list.html')
-def tag_list(tags, choices=None, category=None, list_type='default'):
+def tag_list(tags, choices=None, category=None, list_type='books'):
     # print(tags, choices, category)
     if choices is None:
         choices = []
@@ -339,7 +339,7 @@ def tag_list(tags, choices=None, category=None, list_type='default'):
 
 
 @register.inclusion_tag('catalogue/inline_tag_list.html')
-def inline_tag_list(tags, choices=None, category=None, list_type='default'):
+def inline_tag_list(tags, choices=None, category=None, list_type='books'):
     return tag_list(tags, choices, category, list_type)
 
 
@@ -363,7 +363,7 @@ def work_list(context, object_list):
 
 
 @register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
-def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, list_type='default',
+def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, list_type='books',
                paged=True, initial_blocks=False):
     names = [('', [])]
     last_initial = None

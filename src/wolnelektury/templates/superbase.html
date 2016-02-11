@@ -97,11 +97,21 @@
 
 
             <ul id="main-menu">
-                <li><a href="{% url 'book_list' %}">{% trans "Literature" %}</a></li>
-                <li><a href="{% url 'theme_catalogue' %}">{% trans "Themes" %}</a></li>
-                <li><a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a></li>
-                <li><a href="{% url 'gallery' %}">{% trans "Gallery" %}</a></li>
-                <li><a href="{% url 'catalogue' %}">Wszystkie utwory</a></li>
+                <li{% if active_menu_item == 'books' %} class="active"{% endif %}>
+                    <a href="{% url 'book_list' %}">{% trans "Literature" %}</a>
+                </li>
+                <li{% if active_menu_item == 'theme' %} class="active"{% endif %}>
+                    <a href="{% url 'theme_catalogue' %}">{% trans "Themes" %}</a>
+                </li>
+                <li{% if active_menu_item == 'audiobooks' %} class="active"{% endif %}>
+                    <a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a>
+                </li>
+                <li{% if active_menu_item == 'gallery' %} class="active"{% endif %}>
+                    <a href="{% url 'gallery' %}">{% trans "Gallery" %}</a>
+                </li>
+                <li{% if active_menu_item == 'all_works' %} class="active"{% endif %}>
+                    <a href="{% url 'catalogue' %}">{% trans "All works" %}</a>
+                </li>
             </ul>
 
 

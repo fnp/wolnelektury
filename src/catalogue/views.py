@@ -38,6 +38,7 @@ def catalogue(request):
         'books': Book.objects.filter(parent=None).order_by('sort_key_author', 'sort_key'),
         'pictures': Picture.objects.order_by('sort_key_author', 'sort_key'),
         'collections': Collection.objects.all(),
+        'active_menu_item': 'all_works',
     })
 
 
@@ -107,7 +108,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
 
 
 # TODO: Rewrite this hellish piece of code which tries to do everything
-def tagged_object_list(request, tags='', list_type='default'):
+def tagged_object_list(request, tags='', list_type='books'):
     raw_tags = tags
     # preliminary tests and conditions
     gallery = list_type == 'gallery'
@@ -233,7 +234,7 @@ def tagged_object_list(request, tags='', list_type='default'):
             return redirect('tagged_object_list_gallery', raw_tags)
 
     # this is becoming more and more hacky
-    if list_type == 'default' and not tags:
+    if list_type == 'books' and not tags:
         last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:20]
     else:
         last_published = None
@@ -253,6 +254,7 @@ def tagged_object_list(request, tags='', list_type='default'):
             'list_type': list_type,
             'daisy': daisy,
             'last_published': last_published,
+            'active_menu_item': 'theme' if theme_is_set else list_type,
         },
         context_instance=RequestContext(request))
 
@@ -759,6 +761,7 @@ def tag_catalogue(request, category):
         'best': best,
         'title': constants.CATEGORIES_NAME_PLURAL[category],
         'whole_category': constants.WHOLE_CATEGORY[category],
+        'active_menu_item': 'theme' if category == 'theme' else None,
     })
 
 
