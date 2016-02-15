@@ -211,13 +211,13 @@ $('#themes-list-toggle').click(function(event) {
                         case 'block': // n and c
                             return ' <li><a href="#"' + (this.value == this.page ? ' class="current"' : '') + '>' + this.value + '</a></li>';
                         case 'next': // >
-                            return '<li><a href="#">&gt;</a></li>';
+                            return '<li><a href="#">&rsaquo;</a></li>';
                         case 'prev': // <
-                            return '<li><a href="#">&lt;</a></li>';
+                            return '<li><a href="#">&lsaquo;</a></li>';
                         case 'first': // [
-                            return '<li><a href="#">«</a></li>';
+                            return '<li><a href="#">&laquo;</a></li>';
                         case 'last': // ]
-                            return '<li><a href="#">»</a></li>';
+                            return '<li><a href="#">&raquo;</a></li>';
                     }
                 }
             });

@@ -7,12 +7,11 @@ header#main {
   color: #bbb;
   position: relative;
 
-  Xtext-align: center;
+  /*text-align: center;*/
 
   @media screen and (min-width: 1024px) {
     width: 975px;
     margin: auto;
-
   }
 
   a {
@@ -137,7 +136,7 @@ header#main {
     top: 0;
   }
 
-  X#user-info {
+  /*#user-info {
     margin-top: 0;
     @include size(margin-left, 5px);
     @include size(margin-right, 5px);
@@ -159,7 +158,7 @@ header#main {
       @include size(margin-right, 0);
     }
 
-    /* We want submenu on far left on small screens. */
+    !* We want submenu on far left on small screens. *!
     .hidden-box-wrapper {
       position: static;
       @media screen and (min-width: 24em) {
@@ -185,7 +184,7 @@ header#main {
         color: #0D7E85;
       }
     }
-  }
+  }*/
 
   form#search-area {
     position: relative;
