@@ -69,6 +69,9 @@ def set_sets(user, work, sets):
     # delete empty tags
     Tag.objects.filter(category='set', user=user, items=None).delete()
 
+    if isinstance(work, Book):
+        work.update_popularity()
+
 
 def cites_for_tags(tags):
     """Returns a QuerySet with all Cites for books with given tags."""

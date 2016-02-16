@@ -544,6 +544,15 @@ class Book(models.Model):
         else:
             return None
 
+    def update_popularity(self):
+        count = self.tags.filter(category='set').values('user').order_by('user').distinct().count()
+        try:
+            pop = self.popularity
+            pop.count = count
+            pop.save()
+        except BookPopularity.DoesNotExist:
+            BookPopularity.objects.create(book=self, count=count)
+
 
 def add_file_fields():
     for format_ in Book.formats:
@@ -563,3 +572,8 @@ def add_file_fields():
         ).contribute_to_class(Book, field_name)
 
 add_file_fields()
+
+
+class BookPopularity(models.Model):
+    book = models.OneToOneField(Book, related_name='popularity')
+    count = models.IntegerField(default=0)
