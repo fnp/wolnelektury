@@ -9,11 +9,7 @@
 
 {% block body %}
 <div class="tabbed-filter">
-    <h1>{% if tags %}
-        {% html_title_from_tags tags %}
-        {% elif list_type == 'gallery' %}{% trans "Gallery" %}{% elif list_type == 'audiobooks' %}{% trans "Audiobooks" %}{% else %}{% trans "Literature" %}
-        {% endif %}
-    </h1>
+    <h1>{% if tags %}{% html_title_from_tags tags %}{% endif %}</h1>
 
     <div class="tabs">
         <a class="tab white-box" data-id="authors">{% trans "Authors" %}</a>
@@ -49,10 +45,16 @@
 {% if list_type == 'books' and not tags %}
     <section>
         <h1>{% trans "Recent publications" %}</h1>
-            {% for book in last_published %}
-                {% ssi_include 'catalogue_book_mini' pk=book.pk %}
-            {% endfor %}
+        {% for book in last_published %}
+            {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+        {% endfor %}
         <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
+    </section>
+    <section>
+        <h1>{% trans "Most popular books" %}</h1>
+        {% for book in most_popular %}
+            {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+        {% endfor %}
     </section>
 {% endif %}
 

@@ -236,8 +236,10 @@ def tagged_object_list(request, tags='', list_type='books'):
     # this is becoming more and more hacky
     if list_type == 'books' and not tags:
         last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:20]
+        most_popular = Book.objects.exclude(cover_thumb='').order_by('-popularity__count')[:20]
     else:
         last_published = None
+        most_popular = None
 
     return render_to_response(
         'catalogue/tagged_object_list.html',
@@ -254,6 +256,7 @@ def tagged_object_list(request, tags='', list_type='books'):
             'list_type': list_type,
             'daisy': daisy,
             'last_published': last_published,
+            'most_popular': most_popular,
             'active_menu_item': 'theme' if theme_is_set else list_type,
         },
         context_instance=RequestContext(request))
