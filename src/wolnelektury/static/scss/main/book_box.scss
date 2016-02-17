@@ -443,10 +443,14 @@
     @include size(margin-right, 11.25px);
     position: absolute;
     right: 0;
+    z-index: 10;
 
-    button::-moz-focus-inner {
-        padding: 0;
-        border: 0
+    button {
+        cursor: pointer;
+        &::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
     }
     .if-unlike button {
         font-size: 1em;
