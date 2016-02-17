@@ -308,15 +308,13 @@ def get_audiobooks(book):
     return audiobooks, projects, have_oggs
 
 
-# używane tylko do audiobook_tree, które jest używane tylko w snippets/audiobook_list.html, które nie jest używane
+# używane w publicznym interfejsie
 def player(request, slug):
     book = get_object_or_404(Book, slug=slug)
     if not book.has_media('mp3'):
         raise Http404
 
     audiobooks, projects, have_oggs = get_audiobooks(book)
-
-    # extra_info = book.extra_info
 
     return render_to_response('catalogue/player.html', {
         'book': book,
