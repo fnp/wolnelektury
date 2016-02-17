@@ -89,7 +89,7 @@ class Book(models.Model):
         pass
 
     class Meta:
-        ordering = ('sort_key',)
+        ordering = ('sort_key_author', 'sort_key')
         verbose_name = _('book')
         verbose_name_plural = _('books')
         app_label = 'catalogue'

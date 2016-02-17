@@ -32,14 +32,12 @@ from wolnelektury.utils import ajax
 
 def picture_list_thumb(request, filter=None, get_filter=None, template_name='picture/picture_list_thumb.html',
                        cache_key=None, context=None):
-    book_list = Picture.objects.all()
+    pictures = Picture.objects.all()
     if filter:
-        book_list = book_list.filter(filter)
+        pictures = pictures.filter(filter)
     if get_filter:
-        book_list = book_list.filter(get_filter())
-    book_list = book_list.order_by('sort_key_author')
-    book_list = list(book_list)
-    return render_to_response(template_name, {'book_list': book_list}, context_instance=RequestContext(request))
+        pictures = pictures.filter(get_filter())
+    return render_to_response(template_name, {'book_list': list(pictures)}, context_instance=RequestContext(request))
 
 
 def picture_detail(request, slug):

@@ -160,24 +160,24 @@ class Tag(TagBase):
     has_description.boolean = True
 
     @staticmethod
-    def get_tag_list(tags):
-        if isinstance(tags, basestring):
-            if not tags:
+    def get_tag_list(tag_str):
+        if isinstance(tag_str, basestring):
+            if not tag_str:
                 return []
-            real_tags = []
+            tags = []
             ambiguous_slugs = []
             category = None
             deprecated = False
-            tags_splitted = tags.split('/')
+            tags_splitted = tag_str.split('/')
             for name in tags_splitted:
                 if category:
-                    real_tags.append(Tag.objects.get(slug=name, category=category))
+                    tags.append(Tag.objects.get(slug=name, category=category))
                     category = None
                 elif name in Tag.categories_rev:
                     category = Tag.categories_rev[name]
                 else:
                     try:
-                        real_tags.append(Tag.objects.get(slug=name))
+                        tags.append(Tag.objects.get(slug=name))
                         deprecated = True
                     except Tag.MultipleObjectsReturned:
                         ambiguous_slugs.append(name)
@@ -188,14 +188,14 @@ class Tag(TagBase):
             if ambiguous_slugs:
                 # some tags should be qualified
                 e = Tag.MultipleObjectsReturned()
-                e.tags = real_tags
+                e.tags = tags
                 e.ambiguous_slugs = ambiguous_slugs
                 raise e
             if deprecated:
-                raise Tag.UrlDeprecationWarning(tags=real_tags)
-            return real_tags
+                raise Tag.UrlDeprecationWarning(tags=tags)
+            return tags
         else:
-            return TagBase.get_tag_list(tags)
+            return TagBase.get_tag_list(tag_str)
 
     @property
     def url_chunk(self):

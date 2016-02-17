@@ -101,7 +101,7 @@ class Picture(models.Model):
         pass
 
     class Meta:
-        ordering = ('sort_key',)
+        ordering = ('sort_key_author', 'sort_key')
 
         verbose_name = _('picture')
         verbose_name_plural = _('pictures')

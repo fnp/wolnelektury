@@ -39,7 +39,6 @@ def get_top_level_related_tags(tags, categories=None):
 
     related = Tag.objects.filter(pk__in=related_ids)
 
-    # TODO: do we really need that?
     if categories is not None:
         related = related.filter(category__in=categories)
 
