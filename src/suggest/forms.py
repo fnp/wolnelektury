@@ -109,7 +109,7 @@ class PublishingSuggestForm(forms.Form):
                 send_mail(
                     u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\
-    Thank you for your comment on WolneLektury.pl.
-    The suggestion has been referred to the project coordinator.""") +
+Thank you for your comment on WolneLektury.pl.
+The suggestion has been referred to the project coordinator.""") +
                     u"\n\n-- \n" + ugettext(u'''Message sent automatically. Please do not reply.'''),
                     'no-reply@wolnelektury.pl', [contact], fail_silently=True)
