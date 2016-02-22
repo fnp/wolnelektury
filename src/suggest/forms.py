@@ -56,20 +56,23 @@ The suggestion has been referred to the project coordinator.""") +
 
 class PublishingSuggestForm(forms.Form):
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
-    books = forms.CharField(label=_('books'), widget=forms.Textarea, required=False)
-    audiobooks = forms.CharField(label=_('audiobooks'), widget=forms.Textarea, required=False)
+    books = forms.CharField(label=_('books'), widget=forms.Textarea, required=True)
+    ebook = forms.BooleanField(label=_('ebook'), required=False, initial=True)
+    audiobook = forms.BooleanField(label=_('audiobook'), required=False)
 
     def clean(self):
-        if not self.cleaned_data['books'] and not self.cleaned_data['audiobooks']:
-            msg = ugettext(u"One of these fields is required.")
-            self._errors["books"] = self.error_class([msg])
-            self._errors["audiobooks"] = self.error_class([msg])
+        if not self.cleaned_data['ebook'] and not self.cleaned_data['audiobook']:
+            msg = ugettext(u"One of these options is required.")
+            self._errors['ebook'] = self.error_class([msg])
+            self._errors['audiobook'] = self.error_class([msg])
         return super(PublishingSuggestForm, self).clean()
 
     def save(self, request):
         contact = self.cleaned_data['contact']
-        books = self.cleaned_data['books']
-        audiobooks = self.cleaned_data['audiobooks']
+        suggestion_text = self.cleaned_data['books'].strip(', \n\r')
+
+        books = suggestion_text if self.cleaned_data['ebook'] else ''
+        audiobooks = suggestion_text if self.cleaned_data['audiobook'] else ''
 
         suggestion = PublishingSuggestion(
             contact=contact, books=books,
@@ -78,34 +81,35 @@ class PublishingSuggestForm(forms.Form):
             suggestion.user = request.user
         suggestion.save()
 
-        mail_managers(u'Konsultacja planu wydawniczego na WolneLektury.pl', u'''\
-Zgłoszono nową sugestię nt. planu wydawniczego w serwisie WolneLektury.pl.
-%(url)s
+        if not suggestion.is_spam():
+            mail_managers(u'Konsultacja planu wydawniczego na WolneLektury.pl', u'''\
+    Zgłoszono nową sugestię nt. planu wydawniczego w serwisie WolneLektury.pl.
+    %(url)s
 
-Użytkownik: %(user)s
-Kontakt: %(contact)s
+    Użytkownik: %(user)s
+    Kontakt: %(contact)s
 
-Książki:
-%(books)s
+    Książki:
+    %(books)s
 
-Audiobooki:
-%(audiobooks)s''' % {
-            'url': request.build_absolute_uri(reverse('admin:suggest_suggestion_change', args=[suggestion.id])),
-            'user': str(request.user) if request.user.is_authenticated() else '',
-            'contact': contact,
-            'books': books,
-            'audiobooks': audiobooks,
+    Audiobooki:
+    %(audiobooks)s''' % {
+                'url': request.build_absolute_uri(reverse('admin:suggest_suggestion_change', args=[suggestion.id])),
+                'user': str(request.user) if request.user.is_authenticated() else '',
+                'contact': contact,
+                'books': books,
+                'audiobooks': audiobooks,
             }, fail_silently=True)
 
-        try:
-            validate_email(contact)
-        except ValidationError:
-            pass
-        else:
-            send_mail(
-                u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
-                ugettext(u"""\
-Thank you for your comment on WolneLektury.pl.
-The suggestion has been referred to the project coordinator.""") +
-                u"\n\n-- \n" + ugettext(u'''Message sent automatically. Please do not reply.'''),
-                'no-reply@wolnelektury.pl', [contact], fail_silently=True)
+            try:
+                validate_email(contact)
+            except ValidationError:
+                pass
+            else:
+                send_mail(
+                    u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
+                    ugettext(u"""\
+    Thank you for your comment on WolneLektury.pl.
+    The suggestion has been referred to the project coordinator.""") +
+                    u"\n\n-- \n" + ugettext(u'''Message sent automatically. Please do not reply.'''),
+                    'no-reply@wolnelektury.pl', [contact], fail_silently=True)

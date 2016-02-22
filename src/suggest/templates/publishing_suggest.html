@@ -12,10 +12,12 @@
 
     <li>{% trans "I'd like to find in WolneLektury.pl these…" %}</li>
 
-    <li><span class="error">{{ form.books.errors }}</span><label for="id_books">{{ form.books.label }}:</label> {{ form.books }}</li>
+    <li><label for="id_books">{{ form.books.label }}:</label> {{ form.books }}</li>
 
-    <li><span class="error">{{ form.audiobooks.errors }}</span><label for="id_audiobooks">{{ form.audiobooks.label }}:</label> {{ form.audiobooks }}</li>
+    <li class="checkbox"><span class="error">{{ form.ebook.errors }}</span><label for="id_ebook">{{ form.ebook.label }}:</label> {{ form.ebook }}</li>
+    <li class="checkbox"><span class="error">{{ form.audiobook.errors }}</span><label for="id_audiobook">{{ form.audiobook.label }}:</label> {{ form.audiobook }}</li>
 
     <li><input type="submit" value="{% trans "Send report" %}"/></li>
+    <li>{% trans "Remember that we can only publish books in public domain, ie. 70 years after the death of the author!" %}</li>
 </ol>
 </form>

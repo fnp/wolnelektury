@@ -94,6 +94,16 @@
     .errorlist {
         color: #BF3024;
     }
+
+    .checkbox {
+        label {
+            display: inline;
+        }
+
+        input {
+            width: auto;
+        }
+    }
 }
 
 
