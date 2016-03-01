@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load static from staticfiles %}
 {% load pipeline %}
+{% load piwik_tags %}
 <html class="no-js">
     <head>
         <meta charset="utf-8">
@@ -67,7 +68,7 @@
         </script>
         {% javascript "book_text" %}
 
-        {{ piwik_tag|safe }}
+        {% tracking_code %}
         {% block extrabody %}{% endblock %}
         <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>
     </body>
