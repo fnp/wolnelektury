@@ -4,6 +4,7 @@
 #
 from collections import defaultdict
 import hashlib
+import os.path
 import random
 import re
 import time
@@ -345,3 +346,11 @@ class AppSettings(object):
 
 def delete_from_cache_by_language(cache, key_template):
     cache.delete_many([key_template % lc for lc, ln in settings.LANGUAGES])
+
+
+def gallery_path(slug):
+    return os.path.join(settings.MEDIA_ROOT, settings.IMAGE_DIR, slug)
+
+
+def gallery_url(slug):
+    return '%s%s%s/' % (settings.MEDIA_URL, settings.IMAGE_DIR, slug)

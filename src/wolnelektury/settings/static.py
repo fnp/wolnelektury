@@ -17,6 +17,8 @@ SEARCH_INDEX = path.join(VAR_DIR, 'search_index/')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
+IMAGE_DIR = 'book/pictures/'
+
 # CSS and JavaScript file groups
 
 PIPELINE = {

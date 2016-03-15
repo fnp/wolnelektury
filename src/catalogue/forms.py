@@ -2,6 +2,9 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import urllib
+import os.path
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,11 +13,13 @@ from waiter.models import WaitedFile
 from django.core.exceptions import ValidationError
 from catalogue.utils import get_customized_pdf_path
 from catalogue.tasks import build_custom_pdf
+from wolnelektury.utils import makedirs
 
 
 class BookImportForm(forms.Form):
     book_xml_file = forms.FileField(required=False)
     book_xml = forms.CharField(required=False)
+    gallery_url = forms.CharField(required=False)
 
     def clean(self):
         from django.core.files.base import ContentFile
@@ -22,13 +27,14 @@ class BookImportForm(forms.Form):
         if not self.cleaned_data['book_xml_file']:
             if self.cleaned_data['book_xml']:
                 self.cleaned_data['book_xml_file'] = \
-                        ContentFile(self.cleaned_data['book_xml'].encode('utf-8'))
+                    ContentFile(self.cleaned_data['book_xml'].encode('utf-8'))
             else:
                 raise forms.ValidationError(_("Please supply an XML."))
         return super(BookImportForm, self).clean()
 
     def save(self, commit=True, **kwargs):
-        return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True, **kwargs)
+        return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True,
+                                  remote_gallery_url=self.cleaned_data['gallery_url'], **kwargs)
 
 
 FORMATS = [(f, f.upper()) for f in Book.ebook_formats]

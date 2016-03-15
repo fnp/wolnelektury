@@ -4,7 +4,9 @@
 #
 from collections import OrderedDict
 from random import randint
+import os.path
 import re
+import urllib
 from django.conf import settings
 from django.db import connection, models, transaction
 from django.db.models import permalink
@@ -19,9 +21,10 @@ from newtagging import managers
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip
+from catalogue.utils import create_zip, gallery_url, gallery_path
 from catalogue import app_settings
 from catalogue import tasks
+from wolnelektury.utils import makedirs
 
 bofh_storage = BofhFileSystemStorage()
 
@@ -131,6 +134,12 @@ class Book(models.Model):
     def create_url(slug):
         return 'catalogue.views.book_detail', [slug]
 
+    def gallery_path(self):
+        return gallery_path(self.slug)
+
+    def gallery_url(self):
+        return gallery_url(self.slug)
+
     @property
     def name(self):
         return self.title
@@ -236,6 +245,16 @@ class Book(models.Model):
             index.index.rollback()
             raise e
 
+    def download_pictures(self, remote_gallery_url):
+        gallery_path = self.gallery_path()
+        ilustr_elements = list(self.wldocument().edoc.findall('//ilustr'))
+        if ilustr_elements:
+            makedirs(gallery_path)
+            for ilustr in ilustr_elements:
+                ilustr_src = ilustr.get('src')
+                ilustr_path = os.path.join(gallery_path, ilustr_src)
+                urllib.urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
+
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -254,7 +273,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           search_index_tags=True):
+                           search_index_tags=True, remote_gallery_url=None):
         if dont_build is None:
             dont_build = set()
         dont_build = set.union(set(dont_build), set(app_settings.DONT_BUILD))
@@ -321,6 +340,9 @@ class Book(models.Model):
 
         cls.repopulate_ancestors()
         tasks.update_counters.delay()
+
+        if remote_gallery_url:
+            book.download_pictures(remote_gallery_url)
 
         # No saves beyond this point.
 

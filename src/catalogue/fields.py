@@ -8,7 +8,7 @@ from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
 from catalogue.constants import LANGUAGES_3TO2
-from catalogue.utils import remove_zip, truncate_html_words
+from catalogue.utils import remove_zip, truncate_html_words, gallery_path
 from celery.task import Task, task
 from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
@@ -117,7 +117,8 @@ class BuildTxt(BuildEbook):
 class BuildPdf(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True)
+        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
+                            ilustr_path=gallery_path(wldoc.book_info.url.slug))
 
     def build(self, fieldfile):
         BuildEbook.build(self, fieldfile)
