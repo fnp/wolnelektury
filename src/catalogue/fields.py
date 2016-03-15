@@ -8,7 +8,7 @@ from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
 from catalogue.constants import LANGUAGES_3TO2
-from catalogue.utils import remove_zip, truncate_html_words, gallery_path
+from catalogue.utils import remove_zip, truncate_html_words, gallery_path, gallery_url
 from celery.task import Task, task
 from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
@@ -145,9 +145,7 @@ class BuildHtml(BuildEbook):
 
         book = fieldfile.instance
 
-        html_output = self.transform(
-                        book.wldocument(parse_dublincore=False),
-                        fieldfile)
+        html_output = self.transform(book.wldocument(), fieldfile)
 
         # Delete old fragments, create from scratch if necessary.
         book.fragments.all().delete()
@@ -210,6 +208,10 @@ class BuildHtml(BuildEbook):
             book.html_built.send(sender=type(self), instance=book)
             return True
         return False
+
+    @staticmethod
+    def transform(wldoc, fieldfile):
+        return wldoc.as_html(options={'gallery': "'%s'" % gallery_url(wldoc.book_info.url.slug)})
 
 
 @BuildEbook.register('cover_thumb')
