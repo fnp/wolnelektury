@@ -247,6 +247,10 @@ class Book(models.Model):
 
     def download_pictures(self, remote_gallery_url):
         gallery_path = self.gallery_path()
+        # delete previous files, so we don't include old files in ebooks
+        for filename in os.listdir(gallery_path):
+            file_path = os.path.join(gallery_path, filename)
+            os.unlink(file_path)
         ilustr_elements = list(self.wldocument().edoc.findall('//ilustr'))
         if ilustr_elements:
             makedirs(gallery_path)
