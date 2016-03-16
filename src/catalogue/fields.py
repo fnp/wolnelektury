@@ -130,7 +130,15 @@ class BuildPdf(BuildEbook):
 class BuildEpub(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_epub(cover=True)
+        return wldoc.as_epub(cover=True, ilustr_path=gallery_path(wldoc.book_info.url.slug))
+
+
+@BuildEbook.register('mobi')
+@task(ignore_result=True)
+class BuildMobi(BuildEbook):
+    @staticmethod
+    def transform(wldoc, fieldfile):
+        return wldoc.as_mobi(cover=True, ilustr_path=gallery_path(wldoc.book_info.url.slug))
 
 
 @BuildEbook.register('html')
