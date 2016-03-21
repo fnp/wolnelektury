@@ -1,6 +1,21 @@
 $header_bg: #191919;
 $small_logo: .9;
 
+#ads {
+  display: inline-block;
+  width: 100%;
+
+  > a {
+    display: block;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 header#main {
   @include size(line-height, 20px); /* Make links easier to click when wrapped. */
   background-color: $header_bg;
