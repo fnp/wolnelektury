@@ -39,13 +39,6 @@
             {{ current_offer.endif }}
         {% endif %}
 
-        <div id="ads">
-            <a href="https://nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/">
-                <img src="{% static 'img/ads/960x150_wolneLektury.jpg' %}"
-                     alt="Wesprzyj działalność Nowoczesnej Polski"/>
-            </a>
-        </div>
-
         <div id="whole-header">
             <div id="header-wrapper">
                 <header id="main">
@@ -103,6 +96,7 @@
                             {{ user_username.if }}
                             <li><a href="{% url 'logout' %}?next=
 
+
                                     {% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
                             </li>
                             {{ user_username.else }}
@@ -141,6 +135,12 @@
 
 
         <div id="main-content">
+            <div id="banners">
+                <a href="https://nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/">
+                    <img src="{% static 'img/banners/960x150_wolneLektury.jpg' %}"
+                         alt="Wesprzyj działalność Nowoczesnej Polski"/>
+                </a>
+            </div>
             {% block body %}
             {% endblock %}
             <div class="clearboth"></div>

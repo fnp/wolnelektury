@@ -1,7 +1,7 @@
 $header_bg: #191919;
 $small_logo: .9;
 
-#ads {
+#banners {
   display: inline-block;
   width: 100%;
 
@@ -13,6 +13,7 @@ $small_logo: .9;
   img {
     display: block;
     margin: 0 auto;
+    width: 100%
   }
 }
 
