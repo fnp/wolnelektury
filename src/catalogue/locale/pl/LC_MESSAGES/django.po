@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 18:24+0100\n"
+"POT-Creation-Date: 2016-03-30 13:22+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -80,128 +80,128 @@ msgstr "Wszystkie półki"
 msgid "All things"
 msgstr "Wszystkie przedmioty"
 
-#: forms.py:27
+#: forms.py:28
 msgid "Please supply an XML."
 msgstr "Proszę podać XML."
 
-#: forms.py:45
+#: forms.py:47
 msgid "Don't show footnotes"
 msgstr "Bez przypisów"
 
-#: forms.py:46
+#: forms.py:48
 msgid "Don't disply themes"
 msgstr "Bez motywów"
 
-#: forms.py:47
+#: forms.py:49
 msgid "Don't use our custom font"
 msgstr "Bez naszego kroju pisma"
 
-#: forms.py:48
+#: forms.py:50
 msgid "Without cover"
 msgstr "Bez okładki"
 
-#: forms.py:51
+#: forms.py:53
 msgid "Leading"
 msgstr "Interlinia"
 
-#: forms.py:52
+#: forms.py:54
 msgid "Normal leading"
 msgstr "Zwykła interlinia"
 
-#: forms.py:53
+#: forms.py:55
 msgid "One and a half leading"
 msgstr "Powiększona interlinia"
 
-#: forms.py:54
+#: forms.py:56
 msgid "Double leading"
 msgstr "Podwójna interlinia"
 
-#: forms.py:56
+#: forms.py:58
 msgid "Font size"
 msgstr "Rozmiar tekstu"
 
-#: forms.py:57
+#: forms.py:59
 msgid "Default"
 msgstr "Domyślnie"
 
-#: forms.py:58
+#: forms.py:60
 msgid "Big"
 msgstr "Duży"
 
-#: forms.py:80
+#: forms.py:82
 msgid "Queue is full. Please try again later."
 msgstr "Kolejka jest pełna. Proszę spróbować ponownie później."
 
-#: models/book.py:45 models/collection.py:14
+#: models/book.py:48 models/collection.py:14
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:46 models/tag.py:35
+#: models/book.py:49 models/tag.py:35
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: models/book.py:48
+#: models/book.py:51
 msgid "sort key by author"
 msgstr "klucz sortowania wg autora"
 
-#: models/book.py:49 models/book.py:50 models/collection.py:15
+#: models/book.py:52 models/book.py:53 models/collection.py:15
 #: models/collection.py:18 models/tag.py:34
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:51
+#: models/book.py:54
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:52 models/book.py:173 models/collection.py:16
+#: models/book.py:55 models/book.py:182 models/collection.py:16
 #: models/tag.py:38 models/tag.py:156
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:53 models/book.py:54 models/bookmedia.py:34 models/tag.py:45
+#: models/book.py:56 models/book.py:57 models/bookmedia.py:34 models/tag.py:45
 #: models/tag.py:46
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models/book.py:55
+#: models/book.py:58
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: models/book.py:56 models/bookmedia.py:35
+#: models/book.py:59 models/bookmedia.py:35
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models/book.py:62
+#: models/book.py:65
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:68
+#: models/book.py:71
 msgid "cover thumbnail"
 msgstr "podgląd okładki"
 
-#: models/book.py:93 models/collection.py:22
+#: models/book.py:96 models/collection.py:22
 msgid "book"
 msgstr "książka"
 
-#: models/book.py:94
+#: models/book.py:97
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:269
+#: models/book.py:292
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:282
+#: models/book.py:305
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:529
+#: models/book.py:555
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: models/book.py:557 models/bookmedia.py:29
+#: models/book.py:583 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -478,7 +478,7 @@ msgid "Infobox"
 msgstr "Informacje"
 
 #: templates/catalogue/book_text.html:56
-#: templates/catalogue/viewer_base.html:53
+#: templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr "Zamknij"
 
@@ -622,7 +622,7 @@ msgstr "Źródłowy plik XML"
 msgid "Work's themes "
 msgstr "Motywy w utworze"
 
-#: templates/catalogue/player.html:11 templates/catalogue/viewer_base.html:9
+#: templates/catalogue/player.html:11 templates/catalogue/viewer_base.html:10
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
@@ -814,7 +814,7 @@ msgstr "w Wikipedii"
 msgid "in Culture.pl"
 msgstr "w Culture.pl"
 
-#: templates/catalogue/viewer_base.html:55
+#: templates/catalogue/viewer_base.html:56
 msgid "Loading"
 msgstr "Ładowanie"
 

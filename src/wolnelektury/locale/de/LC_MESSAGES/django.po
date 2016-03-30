@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 18:24+0100\n"
+"POT-Creation-Date: 2016-03-30 13:22+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -277,22 +277,32 @@ msgstr ""
 "einzuloggen. Wenn es aus Versehen passiert ist, gehen Sie bitte <a href="
 "\"%(login_url)s\">Registrieren</a> voran."
 
-#: templates/superbase.html:21
+#: templates/superbase.html:23
 msgid "Wolne Lektury"
 msgstr "in WolneLektury.pl"
 
-#: templates/superbase.html:51
-#, python-format
+#: templates/superbase.html:54
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
+#| "href='%(r)s'>right to</a>\n"
+#| "                    "
+#| msgid_plural ""
+#| "\n"
+#| "                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
+#| "href='%(r)s'>right to</a>\n"
+#| "                    "
 msgid ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
+"                            <a href='%(b)s'>%(c)s</a> free reading you have "
+"<a href='%(r)s'>right to</a>\n"
+"                        "
 msgid_plural ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
+"                            <a href='%(b)s'>%(c)s</a> free readings you have "
+"<a href='%(r)s'>right to</a>\n"
+"                        "
 msgstr[0] ""
 "\n"
 "Sie haben <a href='%(b)s'>%(c)s</a> freies Werk <a href='%(r)s'>zur "
@@ -304,58 +314,58 @@ msgstr[1] ""
 "Verfügung</a>\n"
 "                    "
 
-#: templates/superbase.html:61
+#: templates/superbase.html:64
 #, fuzzy
 #| msgid "Language versions"
 msgid "Language"
 msgstr "Sprachversionen"
 
-#: templates/superbase.html:85
+#: templates/superbase.html:90
 #, fuzzy
 msgid "My shelf"
 msgstr "Mein Bücherregal"
 
-#: templates/superbase.html:88
+#: templates/superbase.html:94
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/superbase.html:90
+#: templates/superbase.html:100
 msgid "Logout"
 msgstr "Ausloggen"
 
-#: templates/superbase.html:93 views.py:67 views.py:68
+#: templates/superbase.html:104 views.py:67 views.py:68
 msgid "Sign in"
 msgstr "Einloggen"
 
-#: templates/superbase.html:93 views.py:86 views.py:87 views.py:115
+#: templates/superbase.html:106 views.py:86 views.py:87 views.py:115
 msgid "Register"
 msgstr "Registrieren"
 
-#: templates/superbase.html:100
+#: templates/superbase.html:113
 msgid "Literature"
 msgstr ""
 
-#: templates/superbase.html:101
+#: templates/superbase.html:114
 msgid "Themes"
 msgstr "Motive"
 
-#: templates/superbase.html:102
+#: templates/superbase.html:115
 msgid "Audiobooks"
 msgstr "Audiobücher"
 
-#: templates/superbase.html:103
+#: templates/superbase.html:116
 msgid "Gallery"
 msgstr ""
 
-#: templates/superbase.html:114
+#: templates/superbase.html:128
 msgid "Search"
 msgstr "Suchen"
 
-#: templates/superbase.html:142
+#: templates/superbase.html:162
 msgid "Close"
 msgstr "Schließen"
 
-#: templates/superbase.html:144
+#: templates/superbase.html:164
 msgid "Loading"
 msgstr "Laden"
 

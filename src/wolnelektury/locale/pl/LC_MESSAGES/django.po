@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 18:24+0100\n"
+"POT-Creation-Date: 2016-03-30 13:22+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -274,22 +274,22 @@ msgstr ""
 "Logowanie przy użyciu zewnętrznego konta zostało anulowane. Jeśli był to "
 "błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
 
-#: templates/superbase.html:21
+#: templates/superbase.html:23
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/superbase.html:51
+#: templates/superbase.html:54
 #, python-format
 msgid ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
+"                            <a href='%(b)s'>%(c)s</a> free reading you have "
+"<a href='%(r)s'>right to</a>\n"
+"                        "
 msgid_plural ""
 "\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
+"                            <a href='%(b)s'>%(c)s</a> free readings you have "
+"<a href='%(r)s'>right to</a>\n"
+"                        "
 msgstr[0] ""
 "\n"
 "                    <a href='%(b)s'>%(c)s</a> darmowy utwór do której <a "
@@ -306,55 +306,55 @@ msgstr[2] ""
 "<a href='%(r)s'>masz prawo</a>\n"
 "                    "
 
-#: templates/superbase.html:61
+#: templates/superbase.html:64
 msgid "Language"
 msgstr "Język"
 
-#: templates/superbase.html:85
+#: templates/superbase.html:90
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/superbase.html:88
+#: templates/superbase.html:94
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/superbase.html:90
+#: templates/superbase.html:100
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/superbase.html:93 views.py:67 views.py:68
+#: templates/superbase.html:104 views.py:67 views.py:68
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: templates/superbase.html:93 views.py:86 views.py:87 views.py:115
+#: templates/superbase.html:106 views.py:86 views.py:87 views.py:115
 msgid "Register"
 msgstr "Załóż konto"
 
-#: templates/superbase.html:100
+#: templates/superbase.html:113
 msgid "Literature"
 msgstr "Literatura"
 
-#: templates/superbase.html:101
+#: templates/superbase.html:114
 msgid "Themes"
 msgstr "Motywy"
 
-#: templates/superbase.html:102
+#: templates/superbase.html:115
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/superbase.html:103
+#: templates/superbase.html:116
 msgid "Gallery"
 msgstr "Galeria"
 
-#: templates/superbase.html:114
+#: templates/superbase.html:128
 msgid "Search"
 msgstr "Szukaj"
 
-#: templates/superbase.html:142
+#: templates/superbase.html:162
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/superbase.html:144
+#: templates/superbase.html:164
 msgid "Loading"
 msgstr "Ładowanie"
 

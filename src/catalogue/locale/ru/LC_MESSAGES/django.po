@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 18:24+0100\n"
+"POT-Creation-Date: 2016-03-30 13:22+0200\n"
 "PO-Revision-Date: 2013-04-09 10:40+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,130 +101,130 @@ msgstr "сборы"
 msgid "All things"
 msgstr "сборы"
 
-#: forms.py:27
+#: forms.py:28
 msgid "Please supply an XML."
 msgstr "Укажите, пожалуйста, XML."
 
-#: forms.py:45
+#: forms.py:47
 msgid "Don't show footnotes"
 msgstr "Не показывать сноски"
 
-#: forms.py:46
+#: forms.py:48
 msgid "Don't disply themes"
 msgstr "Не показывать темы"
 
-#: forms.py:47
+#: forms.py:49
 msgid "Don't use our custom font"
 msgstr "Не используйте наш специальный шрифт"
 
-#: forms.py:48
+#: forms.py:50
 msgid "Without cover"
 msgstr ""
 
-#: forms.py:51
+#: forms.py:53
 msgid "Leading"
 msgstr "Ведение"
 
-#: forms.py:52
+#: forms.py:54
 msgid "Normal leading"
 msgstr "Нормальное ведение"
 
-#: forms.py:53
+#: forms.py:55
 msgid "One and a half leading"
 msgstr "1,5 ведения"
 
-#: forms.py:54
+#: forms.py:56
 msgid "Double leading"
 msgstr "Двойное ведение"
 
-#: forms.py:56
+#: forms.py:58
 msgid "Font size"
 msgstr "Размер шрифта"
 
-#: forms.py:57
+#: forms.py:59
 msgid "Default"
 msgstr "Умолчание"
 
-#: forms.py:58
+#: forms.py:60
 msgid "Big"
 msgstr "Большой"
 
-#: forms.py:80
+#: forms.py:82
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: models/book.py:45 models/collection.py:14
+#: models/book.py:48 models/collection.py:14
 msgid "title"
 msgstr "заглавие"
 
-#: models/book.py:46 models/tag.py:35
+#: models/book.py:49 models/tag.py:35
 msgid "sort key"
 msgstr "ключ сортировки "
 
-#: models/book.py:48
+#: models/book.py:51
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Результаты по авторам"
 
-#: models/book.py:49 models/book.py:50 models/collection.py:15
+#: models/book.py:52 models/book.py:53 models/collection.py:15
 #: models/collection.py:18 models/tag.py:34
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:51
+#: models/book.py:54
 msgid "language code"
 msgstr "код языка"
 
-#: models/book.py:52 models/book.py:173 models/collection.py:16
+#: models/book.py:55 models/book.py:182 models/collection.py:16
 #: models/tag.py:38 models/tag.py:156
 msgid "description"
 msgstr "описание"
 
-#: models/book.py:53 models/book.py:54 models/bookmedia.py:34 models/tag.py:45
+#: models/book.py:56 models/book.py:57 models/bookmedia.py:34 models/tag.py:45
 #: models/tag.py:46
 msgid "creation date"
 msgstr "дата создания"
 
-#: models/book.py:55
+#: models/book.py:58
 msgid "parent number"
 msgstr "номер родителя"
 
-#: models/book.py:56 models/bookmedia.py:35
+#: models/book.py:59 models/bookmedia.py:35
 msgid "extra information"
 msgstr "дополнительная информация"
 
-#: models/book.py:62
+#: models/book.py:65
 msgid "cover"
 msgstr "обложка"
 
-#: models/book.py:68
+#: models/book.py:71
 msgid "cover thumbnail"
 msgstr ""
 
-#: models/book.py:93 models/collection.py:22
+#: models/book.py:96 models/collection.py:22
 msgid "book"
 msgstr "книга"
 
-#: models/book.py:94
+#: models/book.py:97
 msgid "books"
 msgstr "книги"
 
-#: models/book.py:269
+#: models/book.py:292
 #, fuzzy, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Книга со slug = \"%s\"  не существует."
 
-#: models/book.py:282
+#: models/book.py:305
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книга %s уже существует"
 
-#: models/book.py:529
+#: models/book.py:555
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:557 models/bookmedia.py:29
+#: models/book.py:583 models/bookmedia.py:29
 #, fuzzy, python-format
 msgid "%s file"
 msgstr "XML файл"
@@ -519,7 +519,7 @@ msgid "Infobox"
 msgstr "Инфобокс"
 
 #: templates/catalogue/book_text.html:56
-#: templates/catalogue/viewer_base.html:53
+#: templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr ""
 
@@ -674,7 +674,7 @@ msgstr "Просмотр XML-источник"
 msgid "Work's themes "
 msgstr "Темы труда"
 
-#: templates/catalogue/player.html:11 templates/catalogue/viewer_base.html:9
+#: templates/catalogue/player.html:11 templates/catalogue/viewer_base.html:10
 msgid "Wolne Lektury"
 msgstr "на WolneLektury.pl"
 
@@ -876,7 +876,7 @@ msgstr "в Википедии"
 msgid "in Culture.pl"
 msgstr ""
 
-#: templates/catalogue/viewer_base.html:55
+#: templates/catalogue/viewer_base.html:56
 #, fuzzy
 #| msgid "Leading"
 msgid "Loading"
