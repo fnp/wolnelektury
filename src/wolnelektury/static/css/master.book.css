@@ -1,6 +1,6 @@
 body {
     font-size: 16px;
-    font: Georgia, "Times New Roman", serif;
+    font-family: Georgia, "Times New Roman", serif;
     line-height: 1.5em;
     margin: 0;
 }
@@ -28,6 +28,8 @@ a {
 
 img {
     border: none;
+    max-width: 36em;
+    margin-top: 1em;
 }
 
 #logo {
@@ -39,8 +41,8 @@ img {
 
 #menu {
     position: fixed;
-    left: 0em;
-    top: 0em;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 1.5em;
     background: #333;
@@ -95,7 +97,7 @@ img {
 
 #toc, #themes, #nota_red, #info, #other-versions, #objects {
     position: fixed;
-    left: 0em;
+    left: 0;
     top: 1.5em;
     width: 37em;
     padding: 1.5em;
@@ -111,7 +113,7 @@ img {
 }
 #download {
     position: fixed;
-    left: 0em;
+    left: 0;
     top: 1.5em;
     width: 37em;
     padding: 1.5em;
