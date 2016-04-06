@@ -370,7 +370,7 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
                 initial = obj.get_initial().upper()
             if initial != last_initial:
                 last_initial = initial
-                names.append((obj.author_str() if by_author else initial, []))
+                names.append((obj.author_unicode() if by_author else initial, []))
         names[-1][1].append(obj)
     return locals()
 

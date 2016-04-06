@@ -147,7 +147,7 @@ def add_book(db, book):
     parent_number = book.parent_number
     sort_key = book.sort_key
     size_str = pretty_size(html_file_size)
-    authors = ", ".join(t.name for t in book.tags.filter(category='author'))
+    authors = book.author_unicode()
     db.execute(book_sql, locals())
 
 

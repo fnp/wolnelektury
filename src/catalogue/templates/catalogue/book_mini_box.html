@@ -5,13 +5,13 @@
     <a href="{{ book.get_absolute_url }}">
     {% endif %}
         {% if book.cover_thumb %}
-            <img src="{{ book.cover_thumb.url }}" alt="{{ author_str }} – {{ book.title }}" class="cover" />
+            <img src="{{ book.cover_thumb.url }}" alt="{{ author }} – {{ book.title }}" class="cover" />
         {% endif %}
         {% if show_lang %}
             <span class="language" title="{{ book.language_name }}">{{ book.language_code }}</span>
         {% endif %}
         <div class="desc">
-            <span class="mono author">{{ author_str }}</span>
+            <span class="mono author">{{ author }}</span>
             <span class="title">{{ book.title }}</span>
         </div>
     {% if with_link %}

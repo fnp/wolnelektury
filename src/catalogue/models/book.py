@@ -106,8 +106,11 @@ class Book(models.Model):
         except AttributeError:
             return ''
 
-    def author_str(self):
-        return ", ".join(str(t) for t in self.tags.filter(category='author'))
+    def authors(self):
+        return self.tags.filter(category='author')
+
+    def author_unicode(self):
+        return ", ".join(self.authors().values_list('name', flat=True))
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
@@ -116,8 +119,8 @@ class Book(models.Model):
         self.title = unicode(self.title)  # ???
 
         try:
-            author = self.tags.filter(category='author')[0].sort_key
-        except IndexError:
+            author = self.authors().first().sort_key
+        except AttributeError:
             author = u''
         self.sort_key_author = author
 
@@ -474,7 +477,7 @@ class Book(models.Model):
         return books
 
     def pretty_title(self, html_links=False):
-        names = [(tag.name, tag.get_absolute_url()) for tag in self.tags.filter(category='author')]
+        names = [(tag.name, tag.get_absolute_url()) for tag in self.authors().only('name', 'category', 'slug')]
         books = self.parents() + [self]
         names.extend([(b.title, b.get_absolute_url()) for b in books])
 
@@ -504,8 +507,7 @@ class Book(models.Model):
         """
 
         books_by_parent = {}
-        books = cls.objects.all().order_by('parent_number', 'sort_key').only(
-                'title', 'parent', 'slug')
+        books = cls.objects.order_by('parent_number', 'sort_key').only('title', 'parent', 'slug')
         if book_filter:
             books = books.filter(book_filter).distinct()
 
@@ -525,7 +527,7 @@ class Book(models.Model):
             books_by_author[tag] = []
 
         for book in books_by_parent.get(None, ()):
-            authors = list(book.tags.filter(category='author'))
+            authors = list(book.authors().only('pk'))
             if authors:
                 for author in authors:
                     books_by_author[author].append(book)

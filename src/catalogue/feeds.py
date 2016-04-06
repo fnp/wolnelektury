@@ -52,8 +52,7 @@ class AudiobookFeed(Feed):
         return item.name
 
     def item_categories(self, item):
-        return sorted(set(author.name for author in
-                      item.book.tags.filter(category='author').iterator()))
+        return sorted(item.book.authors().values_list('name', flat=True))
 
     def item_description(self, item):
         lines = []

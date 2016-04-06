@@ -35,10 +35,10 @@ def main_page(request):
     #         pass
 
     # FIXME: find this theme and books properly.
-    if Fragment.objects.count():
+    if Fragment.objects.exists():
         while True:
             ctx['theme'] = Tag.objects.filter(category='theme').order_by('?')[:1][0]
-            tf = Fragment.tagged.with_any([ctx['theme']]).order_by('?')[:100]
+            tf = Fragment.tagged.with_any([ctx['theme']]).select_related('book').order_by('?')[:100]
             if not tf:
                 continue
             ctx['theme_fragment'] = tf[0]

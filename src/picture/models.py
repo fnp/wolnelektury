@@ -112,8 +112,8 @@ class Picture(models.Model):
         self.sort_key = sortify(self.title)[:120]
 
         try:
-            author = self.tags.filter(category='author')[0].sort_key
-        except IndexError:
+            author = self.authors().first().sort_key
+        except AttributeError:
             author = u''
         self.sort_key_author = author
 
@@ -124,8 +124,11 @@ class Picture(models.Model):
     def __unicode__(self):
         return self.title
 
-    def author_str(self):
-        return ", ".join(str(t) for t in self.tags.filter(category='author'))
+    def authors(self):
+        return self.tags.filter(category='author')
+
+    def author_unicode(self):
+        return ", ".join(self.authors().values_list('name', flat=True))
 
     @permalink
     def get_absolute_url(self):
@@ -313,7 +316,7 @@ class Picture(models.Model):
             pics_by_author[tag] = []
 
         for pic in pics.iterator():
-            authors = list(pic.tags.filter(category='author'))
+            authors = list(pic.authors().only('pk'))
             if authors:
                 for author in authors:
                     pics_by_author[author].append(pic)
@@ -332,9 +335,7 @@ class Picture(models.Model):
         return self._info
 
     def pretty_title(self, html_links=False):
-        picture = self
-        names = [(tag.name, tag.get_absolute_url())
-                 for tag in self.tags.filter(category='author')]
+        names = [(tag.name, tag.get_absolute_url()) for tag in self.authors().only('name', 'category', 'slug')]
         names.append((self.title, self.get_absolute_url()))
 
         if html_links:

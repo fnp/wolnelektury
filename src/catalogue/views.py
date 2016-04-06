@@ -609,11 +609,14 @@ class CustomPDFFormView(AjaxableFormView):
 
 @ssi_included
 def book_mini(request, pk, with_link=True):
-    book = get_object_or_404(models.Book, pk=pk)
-    author_str = ", ".join(tag.name for tag in book.tags.filter(category='author'))
+    # book = get_object_or_404(models.Book, pk=pk)
+    try:
+        book = models.Book.objects.only('cover_thumb', 'title', 'language', 'slug').get(pk=pk)
+    except models.Book.DoesNotExist:
+        raise Http404
     return render(request, 'catalogue/book_mini_box.html', {
         'book': book,
-        'author_str': author_str,
+        'author': book.author_unicode(),
         'with_link': with_link,
         'show_lang': book.language_code() != settings.LANGUAGE_CODE,
     })

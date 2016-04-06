@@ -190,14 +190,14 @@ class AcquisitionFeed(Feed):
 
     def item_author_name(self, book):
         try:
-            return book.tags.filter(category='author')[0].name
-        except KeyError:
+            return book.authors().first().name
+        except AttributeError:
             return u''
 
     def item_author_link(self, book):
         try:
-            return book.tags.filter(category='author')[0].get_absolute_url()
-        except KeyError:
+            return book.authors().first().get_absolute_url()
+        except AttributeError:
             return u''
 
     def item_enclosure_url(self, book):

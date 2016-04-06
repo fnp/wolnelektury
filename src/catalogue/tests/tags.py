@@ -276,7 +276,7 @@ class BookTagsTests(WLTestCase):
         book = models.Book.objects.get(slug='parent')
         related_themes = book.related_themes()
 
-        self.assertEqual([t.slug for t in book.tags.filter(category='author')],
+        self.assertEqual([t.slug for t in book.authors()],
                          ['common-man'])
         self.assertEqual([t.slug for t in book.tags.filter(category='kind')],
                          ['kind'])

@@ -7,10 +7,10 @@
     <a href="{{ picture.get_absolute_url }}">
     {% endif %}
         {% if picture.image_file %}
-            <img src="{% thumbnail picture.image_file "139x193" crop="center" as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}" alt="{{ author_str }} – {{ picture.title }}" class="cover" />
+            <img src="{% thumbnail picture.image_file "139x193" crop="center" as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}" alt="{{ author }} – {{ picture.title }}" class="cover" />
         {% endif %}
         <div class="desc">
-            <span class="mono author">{{ author_str }}</span>
+            <span class="mono author">{{ author }}</span>
             <span class="title">{{ picture.title }}</span>
         </div>
     {% if with_link %}
