@@ -153,7 +153,7 @@ class BuildHtml(BuildEbook):
 
         book = fieldfile.instance
 
-        html_output = self.transform(book.wldocument(), fieldfile)
+        html_output = self.transform(book.wldocument(parse_dublincore=False), fieldfile)
 
         # Delete old fragments, create from scratch if necessary.
         book.fragments.all().delete()
@@ -219,7 +219,14 @@ class BuildHtml(BuildEbook):
 
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_html(options={'gallery': "'%s'" % gallery_url(wldoc.book_info.url.slug)})
+        # ugly, but we can't use wldoc.book_info here
+        from librarian import DCNS
+        url_elem = wldoc.edoc.getroot().find('.//' + DCNS('identifier.url'))
+        if url_elem is None:
+            gallery = ''
+        else:
+            gallery = gallery_url(slug=url_elem.text.rsplit('/', 1)[1])
+        return wldoc.as_html(options={'gallery': "'%s'" % gallery})
 
 
 @BuildEbook.register('cover_thumb')
