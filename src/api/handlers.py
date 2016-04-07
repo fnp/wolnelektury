@@ -206,7 +206,9 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         if daisy:
             books = books.filter(media__type='daisy').distinct()
 
-        if books.exists():
+        books = books.only('slug', 'title', 'cover')
+
+        if books:
             return books
         else:
             return rc.NOT_FOUND
@@ -249,7 +251,7 @@ def _tags_getter(category):
 def _tag_getter(category):
     @classmethod
     def get_tag(cls, book):
-        return ', '.join(tag.name for tag in book.tags.filter(category=category))
+        return ', '.join(book.tags.filter(category=category).values_list('name', flat=True))
     return get_tag
 
 

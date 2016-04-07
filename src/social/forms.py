@@ -27,7 +27,8 @@ class ObjectSetsForm(forms.Form):
         self._user = user
         data = kwargs.setdefault('data', {})
         if 'tags' not in data and user.is_authenticated():
-            data['tags'] = ', '.join(t.name for t in obj.tags.filter(category='set', user=user).iterator() if t.name)
+            data['tags'] = ', '.join(
+                obj.tags.filter(category='set', user=user).exclude(name__in=(None, '')).values_list('name', flat=True))
         super(ObjectSetsForm, self).__init__(*args, **kwargs)
 
     def save(self, request):

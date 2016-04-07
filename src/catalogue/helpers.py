@@ -57,7 +57,7 @@ def update_counters():
     def count_for_book(book, count_by_combination=None, parent_combinations=None):
         if not parent_combinations:
             parent_combinations = set()
-        tags = sorted(tuple(t.pk for t in book.tags.filter(category__in=('author', 'genre', 'epoch', 'kind'))))
+        tags = sorted(book.tags.filter(category__in=('author', 'genre', 'epoch', 'kind')).values_list('pk', flat=True))
         combs = list(combinations(tags))
         for c in combs:
             if c not in parent_combinations:

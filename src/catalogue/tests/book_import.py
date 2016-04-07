@@ -97,7 +97,7 @@ class BookImportLogicTests(WLTestCase):
 
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
         self.assert_([('theme', 'love')],
-                     [(tag.category, tag.slug) for tag in book.fragments.all()[0].tags.filter(category='theme')])
+                     book.fragments.all()[0].tags.filter(category='theme').values_list('category', 'slug'))
 
     def test_book_with_no_theme(self):
         """ fragments with no themes shouldn't be created at all """

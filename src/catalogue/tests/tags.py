@@ -232,7 +232,7 @@ class TestIdenticalTag(WLTestCase):
 
         related_themes = book.related_themes()
         for category in 'author', 'kind', 'genre', 'epoch':
-            self.assertTrue('tag' in [tag.slug for tag in book.tags.filter(category=category)],
+            self.assertTrue('tag' in book.tags.filter(category=category).values_list('slug', flat=True),
                             'missing related tag for %s' % category)
         self.assertTrue('tag' in [tag.slug for tag in related_themes])
 

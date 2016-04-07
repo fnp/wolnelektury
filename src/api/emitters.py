@@ -9,6 +9,7 @@ When outputting a queryset of selected models, instead of returning
 XML or JSON stanzas, SSI include statements are returned.
 
 """
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db.models.query import QuerySet
 from piston.emitters import Emitter, XMLEmitter, JSONEmitter
@@ -41,10 +42,11 @@ class SsiQS(object):
 
 class SsiEmitterMixin(object):
     def construct(self):
-        if isinstance(self.data, QuerySet) and self.data.model in (Book, Fragment, Tag):
+        ssify_api = getattr(settings, 'SSIFY_API', True)
+        if ssify_api and isinstance(self.data, QuerySet) and self.data.model in (Book, Fragment, Tag):
             return SsiQS(self.data)
         else:
-            return super(SsiEmitterMixin, self).construct()  # WTF
+            return super(SsiEmitterMixin, self).construct()
 
 
 class SsiJsonEmitter(SsiEmitterMixin, JSONEmitter):
