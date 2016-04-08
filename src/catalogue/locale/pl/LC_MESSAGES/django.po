@@ -575,7 +575,7 @@ msgstr "Zwiń fragment"
 
 #: templates/catalogue/inline_tag_list.html:6
 msgid "Chosen"
-msgstr "Wybrane"
+msgstr "Wybrano"
 
 #: templates/catalogue/inline_tag_list.html:14
 #: templates/catalogue/inline_tag_list.html:23
@@ -584,7 +584,7 @@ msgstr "Dostępne"
 
 #: templates/catalogue/inline_tag_list.html:32
 msgid "Other"
-msgstr "Inne"
+msgstr "Zobacz też"
 
 #: templates/catalogue/picture_detail.html:29
 msgid "Work is licensed under "
