@@ -11,16 +11,6 @@ from .static import *
 from .paths import *
 
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.request',
-    'wolnelektury.context_processors.extra_settings',
-    'search.context_processors.search_form',
-)
-
 MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'ssify.middleware.SsiMiddleware',

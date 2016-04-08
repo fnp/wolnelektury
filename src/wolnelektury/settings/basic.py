@@ -38,9 +38,23 @@ USE_TZ = True
 
 SITE_ID = 1
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = [
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    # 'django.template.loaders.eggs.Loader',
-]
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'OPTIONS': {
+        'loaders': (
+            ('django.template.loaders.cached.Loader', (
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            )),
+        ),
+        'context_processors': (
+            'django.contrib.auth.context_processors.auth',
+            'django.core.context_processors.debug',
+            'django.core.context_processors.i18n',
+            'django.core.context_processors.media',
+            'django.core.context_processors.request',
+            'wolnelektury.context_processors.extra_settings',
+            'search.context_processors.search_form',
+        ),
+    },
+}]
