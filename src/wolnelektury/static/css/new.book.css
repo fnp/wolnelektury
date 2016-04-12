@@ -10,6 +10,11 @@ a {
     text-decoration: none;
 }
 
+img {
+    max-width: 36em;
+    margin-top: 1em;
+}
+
 /* ================================== */
 /* = Header with logo and menu      = */
 /* ================================== */
