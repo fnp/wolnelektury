@@ -11,7 +11,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="13.0625"
-   height="21"
+   height="9.0397387"
    id="svg6288"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="read-white.svg"
@@ -33,7 +33,7 @@
      showgrid="false"
      inkscape:zoom="11.271642"
      inkscape:cx="6.426905"
-     inkscape:cy="15.412616"
+     inkscape:cy="10.355676"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -52,12 +52,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-258.99199,-645.65414)"
+     transform="translate(-258.99199,-652.55746)"
      id="layer1"
      style="fill:#ffffff">
     <g

@@ -42,6 +42,7 @@
     {% endif %}
 </div>
 
+{% comment %}
 {% if list_type == 'books' and not tags %}
     <section>
         <h1>{% trans "Recent publications" %}</h1>
@@ -57,6 +58,7 @@
         {% endfor %}
     </section>
 {% endif %}
+{% endcomment %}
 
 {% if theme_is_set %}
     {% work_list object_list %}
