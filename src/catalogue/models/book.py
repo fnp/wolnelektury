@@ -153,6 +153,9 @@ class Book(models.Model):
     def language_name(self):
         return dict(settings.LANGUAGES).get(self.language_code(), "")
 
+    def is_foreign(self):
+        return self.language_code() != settings.LANGUAGE_CODE
+
     def has_media(self, type_):
         if type_ in Book.formats:
             return bool(getattr(self, "%s_file" % type_))

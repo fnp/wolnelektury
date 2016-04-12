@@ -3,6 +3,7 @@
 {% load common_tags catalogue_tags %}
 {% load ssify %}
 {% load build_absolute_uri from fnp_common %}
+{% load cache %}
 
 {% block titleextra %}{{ book.pretty_title }}{% endblock %}
 {% block ogimage %}{% if book.cover %}{{ book.cover.url|build_absolute_uri:request }}{% endif %}{% endblock %}
@@ -22,7 +23,10 @@
 <section class="see-also" style="display: inline-block;">
 <h1>{% trans "Other versions" %}:</h1>
 {% for rel in book.other_versions %}
-    {% ssi_include 'catalogue_book_mini' pk=rel.pk %}
+    {% cache 86400 book_mini_box rel.pk %}
+      {% include 'catalogue/book_mini_box.html' with book=rel %}
+    {% endcache %}
+    {#% ssi_include 'catalogue_book_mini' pk=rel.pk %#}
 {% endfor %}
 </section>
 {% endif %}

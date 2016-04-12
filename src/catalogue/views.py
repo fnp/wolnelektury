@@ -616,9 +616,7 @@ def book_mini(request, pk, with_link=True):
         raise Http404
     return render(request, 'catalogue/book_mini_box.html', {
         'book': book,
-        'author': book.author_unicode(),
-        'with_link': with_link,
-        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
+        'no_link': not with_link,
     })
 
 

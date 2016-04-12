@@ -2,13 +2,17 @@
 {% load catalogue_random_book from catalogue_tags %}
 {% load picture_random_picture from picture_tags %}
 {% load ssi_include from ssify %}
+{% load cache %}
 
 {% for pic in pics %}
     {% ssi_include 'picture_mini' pk=pic.pk %}
 {% endfor %}
 
 {% for book in books %}
-    {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+    {% cache 86400 book_mini_box book.pk %}
+      {% include 'catalogue/book_mini_box.html' %}
+    {% endcache %}
+    {#% ssi_include 'catalogue_book_mini' pk=book.pk %#}
 {% endfor %}
 
 {% if random %}

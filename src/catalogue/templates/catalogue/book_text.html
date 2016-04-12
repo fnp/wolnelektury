@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load catalogue_tags ssify %}
 {% load thumbnail %}
+{% load cache %}
 
 
 {% block title %}{{ book.pretty_title }}{% endblock %}
@@ -75,11 +76,15 @@
     <ul>
     {% spaceless %}
     {% for other_version in book.other_versions %}
-        <li><a class="display-other" 
-            data-other="{{ other_version.html_file.url }}"
-            href="{% url 'book_text' other_version.slug %}">
-                {% ssi_include 'catalogue_book_mini_nolink' pk=other_version.pk %}
-                </a>
+        <li>
+          <a class="display-other"
+              data-other="{{ other_version.html_file.url }}"
+              href="{% url 'book_text' other_version.slug %}">
+            {% cache 86400 book_mini_box other_version.pk %}
+              {% include 'catalogue/book_mini_box.html' with book=other_version no_link=True %}
+            {% endcache %}
+            {#% ssi_include 'catalogue_book_mini_nolink' pk=other_version.pk %#}
+          </a>
         </li>
     {% endfor %}
     {% endspaceless %}

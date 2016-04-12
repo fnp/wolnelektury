@@ -1,22 +1,24 @@
 {% spaceless %}
-<div class="book-mini-box">
-    <div class="book-mini-box-inner">
-    {% if with_link %}
-    <a href="{{ book.get_absolute_url }}">
-    {% endif %}
-        {% if book.cover_thumb %}
+  {% with book.author_unicode as author %}
+    <div class="book-mini-box">
+      <div class="book-mini-box-inner">
+        {% if not no_link %}
+          <a href="{{ book.get_absolute_url }}">
+        {% endif %}
+          {% if book.cover_thumb %}
             <img src="{{ book.cover_thumb.url }}" alt="{{ author }} – {{ book.title }}" class="cover" />
-        {% endif %}
-        {% if show_lang %}
+          {% endif %}
+          {% if book.is_foreign %}
             <span class="language" title="{{ book.language_name }}">{{ book.language_code }}</span>
-        {% endif %}
-        <div class="desc">
+          {% endif %}
+          <div class="desc">
             <span class="mono author">{{ author }}</span>
             <span class="title">{{ book.title }}</span>
-        </div>
-    {% if with_link %}
-    </a>
-    {% endif %}
+          </div>
+        {% if not no_link %}
+          </a>
+        {% endif %}
+      </div>
     </div>
-</div>
+  {% endwith %}
 {% endspaceless %}

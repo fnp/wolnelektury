@@ -1,13 +1,17 @@
 {% spaceless %}
 {% load i18n %}
 {% load ssi_include from ssify %}
+{% load cache %}
 <div class="collection-box white-box">
     <h2><a href="{{ obj.get_absolute_url }}">{% trans "Collection" %}: {{ obj }}</a></h2>
     {% if obj.description %}
     {{ obj.description|safe|truncatewords_html:40 }}
     {% endif %}
-    {% for b in obj.get_books|slice:":5" %}
-        {% ssi_include 'catalogue_book_mini' pk=b.pk %}
+    {% for book in obj.get_books|slice:":5" %}
+        {% cache 86400 book_mini_box book.pk %}
+          {% include 'catalogue/book_mini_box.html' %}
+        {% endcache %}
+        {#% ssi_include 'catalogue_book_mini' pk=book.pk %#}
     {% endfor %}
     {% with obj.get_books.count|add:-5 as more %}
         {% if more > 0 %}
