@@ -403,6 +403,9 @@
       @include size(margin-right, 3.71px);
       vertical-align: middle;
       font-weight: normal;
+      // ugly quick fix
+      position: relative;
+      bottom: 2px;
     }
   }
 

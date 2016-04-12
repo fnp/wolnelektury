@@ -133,13 +133,14 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
 def literature(request):
     books = Book.objects.filter(parent=None)
 
-    last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:20]
-    most_popular = Book.objects.exclude(cover_thumb='')\
-                       .order_by('-popularity__count', 'sort_key_author', 'sort_key')[:20]
-    return object_list(request, books, related_tags=get_top_level_related_tags([]), extra={
-        'last_published': last_published,
-        'most_popular': most_popular,
-    })
+    # last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:20]
+    # most_popular = Book.objects.exclude(cover_thumb='')\
+    #                    .order_by('-popularity__count', 'sort_key_author', 'sort_key')[:20]
+    return object_list(request, books, related_tags=get_top_level_related_tags([]))
+    # extra={
+    #     'last_published': last_published,
+    #     'most_popular': most_popular,
+    # })
 
 
 def gallery(request):
@@ -199,7 +200,7 @@ def theme_list(request, tags, list_type):
         books = Book.tagged.with_all(shelf_tags).order_by()
         fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
 
-    if not fragments and len(tags) == 1:
+    if not fragments and len(tags) == 1 and list_type == 'books':
         tag = tags[0]
         if tag.category == 'theme' and (
                 PictureArea.tagged.with_any([tag]).exists() or
@@ -221,7 +222,7 @@ def tagged_object_list(request, tags, list_type):
     if list_type == 'gallery' and any(tag.category == 'set' for tag in tags):
         raise Http404
 
-    if any(tag.category == 'theme' for tag in tags):
+    if any(tag.category in ('theme', 'thing') for tag in tags):
         return theme_list(request, tags, list_type=list_type)
 
     if list_type == 'books':
@@ -261,6 +262,7 @@ def book_fragments(request, slug, theme_slug):
         'book': book,
         'theme': theme,
         'fragments': fragments,
+        'active_menu_item': 'books',
     }, context_instance=RequestContext(request))
 
 
@@ -274,6 +276,7 @@ def book_detail(request, slug):
         'book': book,
         'tags': book.tags.exclude(category__in=('set', 'theme')),
         'book_children': book.children.all().order_by('parent_number', 'sort_key'),
+        'active_menu_item': 'books',
     }, context_instance=RequestContext(request))
 
 
@@ -329,7 +332,7 @@ def book_text(request, slug):
 
     if not book.has_html_file():
         raise Http404
-    return render_to_response('catalogue/book_text.html', {'book': book,}, context_instance=RequestContext(request))
+    return render_to_response('catalogue/book_text.html', {'book': book}, context_instance=RequestContext(request))
 
 
 # ==========
