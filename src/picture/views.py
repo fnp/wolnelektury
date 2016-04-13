@@ -53,6 +53,7 @@ def picture_detail(request, slug):
         'picture': picture,
         'themes': theme_things.get('theme', []),
         'things': theme_things.get('thing', []),
+        'active_menu_item': 'gallery',
     }, context_instance=RequestContext(request))
 
 
