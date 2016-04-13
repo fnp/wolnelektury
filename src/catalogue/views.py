@@ -108,6 +108,11 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
     categories = split_tags(*related_tag_lists)
 
     objects = list(objects)
+
+    if not objects and len(tags) == 1 and list_type == 'books':
+        if PictureArea.tagged.with_any(tags).exists() or Picture.tagged.with_any(tags).exists():
+            return redirect('tagged_object_list_gallery', '/'.join(tag.url_chunk for tag in tags))
+
     if len(objects) > 3:
         best = random.sample(objects, 3)
     else:
@@ -201,10 +206,7 @@ def theme_list(request, tags, list_type):
         fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
 
     if not fragments and len(tags) == 1 and list_type == 'books':
-        tag = tags[0]
-        if tag.category == 'theme' and (
-                PictureArea.tagged.with_any([tag]).exists() or
-                Picture.tagged.with_any([tag]).exists()):
+        if PictureArea.tagged.with_any(tags).exists() or Picture.tagged.with_any(tags).exists():
             return redirect('tagged_object_list_gallery', '/'.join(tag.url_chunk for tag in tags))
 
     return object_list(request, fragments, tags=tags, list_type=list_type, extra={
