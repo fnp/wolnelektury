@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 13:22+0200\n"
+"POT-Creation-Date: 2016-04-13 12:40+0200\n"
 "PO-Revision-Date: 2012-02-23 17:28+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,19 +32,16 @@ msgstr "type du contenu"
 msgid "object id"
 msgstr "Identifiant de l'objet"
 
-#: views.py:30
-msgid "tagged_object_list must be called with a queryset or a model."
-msgstr "tagged_object_list doit être appelé avec un queryset ou un modèle."
-
-#: views.py:32
-msgid "tagged_object_list must be called with a tag model."
-msgstr "tagged_object_list doit être appelé avec un modèle d'étiquette."
-
-#: views.py:34
-msgid "tagged_object_list must be called with a tag."
-msgstr "tagged_object_list doit être appelé avec une étiquette."
-
-#: views.py:38
+#: views.py:31
 #, python-format
 msgid "No tags found matching \"%s\"."
 msgstr "Aucune étiquette correspondant à \"%s\" trouvée."
+
+#~ msgid "tagged_object_list must be called with a queryset or a model."
+#~ msgstr "tagged_object_list doit être appelé avec un queryset ou un modèle."
+
+#~ msgid "tagged_object_list must be called with a tag model."
+#~ msgstr "tagged_object_list doit être appelé avec un modèle d'étiquette."
+
+#~ msgid "tagged_object_list must be called with a tag."
+#~ msgstr "tagged_object_list doit être appelé avec une étiquette."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 13:22+0200\n"
+"POT-Creation-Date: 2016-04-13 12:40+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,62 +137,62 @@ msgstr ""
 msgid "More..."
 msgstr "More..."
 
-#: templates/main_page.html:7 templates/main_page.html.py:8
+#: templates/main_page.html:8 templates/main_page.html.py:9
 msgid "Wolne Lektury internet library"
 msgstr "Wolne Lektury Internet library"
 
-#: templates/main_page.html:34
+#: templates/main_page.html:40
 msgid "Theme"
 msgstr "Theme"
 
-#: templates/main_page.html:90
+#: templates/main_page.html:99
 msgid "Recent publications"
 msgstr "Latest publications"
 
-#: templates/main_page.html:94
+#: templates/main_page.html:106
 #, fuzzy
 #| msgid "Recent publications"
 msgid "More recent publications"
 msgstr "Latest publications"
 
-#: templates/main_page.html:100
+#: templates/main_page.html:112
 msgid "News"
 msgstr "News"
 
-#: templates/main_page.html:106
+#: templates/main_page.html:118
 msgid "Utilities"
 msgstr "Tools"
 
-#: templates/main_page.html:109
+#: templates/main_page.html:121
 msgid "Report a bug or suggestion"
 msgstr "Report an error or make a suggestion"
 
-#: templates/main_page.html:111
+#: templates/main_page.html:123
 msgid "Download the catalogue in PDF format."
 msgstr "Download the catalogue in PDF format."
 
-#: templates/main_page.html:112
+#: templates/main_page.html:124
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:113
+#: templates/main_page.html:125
 msgid "Missing a book?"
 msgstr "Missing a book?"
 
-#: templates/main_page.html:114 templates/publish_plan.html:4
+#: templates/main_page.html:126 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Publishing plan"
 
-#: templates/main_page.html:125
+#: templates/main_page.html:136
 msgid "Information"
 msgstr "Information"
 
-#: templates/main_page.html:127
+#: templates/main_page.html:138
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:147
+#: templates/main_page.html:157
 msgid "Image used:"
 msgstr "Image used:"
 
@@ -266,11 +266,11 @@ msgid ""
 "\">sign in</a>."
 msgstr ""
 
-#: templates/superbase.html:23
+#: templates/superbase.html:22
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/superbase.html:54
+#: templates/superbase.html:53
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -303,29 +303,29 @@ msgstr[1] ""
 "href='%(r)s'>right to</a>\n"
 "                    "
 
-#: templates/superbase.html:64
+#: templates/superbase.html:63
 #, fuzzy
 #| msgid "Language versions"
 msgid "Language"
 msgstr "Language versions"
 
-#: templates/superbase.html:90
+#: templates/superbase.html:89
 msgid "My shelf"
 msgstr "My shelf"
 
-#: templates/superbase.html:94
+#: templates/superbase.html:93
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/superbase.html:100
+#: templates/superbase.html:99
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/superbase.html:104 views.py:67 views.py:68
+#: templates/superbase.html:103 views.py:67 views.py:68
 msgid "Sign in"
 msgstr "Sign in"
 
-#: templates/superbase.html:106 views.py:86 views.py:87 views.py:115
+#: templates/superbase.html:105 views.py:86 views.py:87 views.py:115
 msgid "Register"
 msgstr "Register"
 
@@ -333,27 +333,33 @@ msgstr "Register"
 msgid "Literature"
 msgstr ""
 
-#: templates/superbase.html:114
+#: templates/superbase.html:116
 msgid "Themes"
 msgstr "Themes"
 
-#: templates/superbase.html:115
+#: templates/superbase.html:119
 msgid "Audiobooks"
 msgstr "Audiobooks"
 
-#: templates/superbase.html:116
+#: templates/superbase.html:122
 msgid "Gallery"
 msgstr ""
 
-#: templates/superbase.html:128
+#: templates/superbase.html:125
+#, fuzzy
+#| msgid "All books"
+msgid "All works"
+msgstr "All books"
+
+#: templates/superbase.html:137
 msgid "Search"
 msgstr "Search"
 
-#: templates/superbase.html:162
+#: templates/superbase.html:171
 msgid "Close"
 msgstr "Close"
 
-#: templates/superbase.html:164
+#: templates/superbase.html:173
 msgid "Loading"
 msgstr "Loading"
 
@@ -649,9 +655,6 @@ msgstr "You have to be logged in to continue"
 
 #~ msgid "See full category"
 #~ msgstr "See full category"
-
-#~ msgid "All books"
-#~ msgstr "All books"
 
 #~ msgid "DAISY"
 #~ msgstr "DAISY"
