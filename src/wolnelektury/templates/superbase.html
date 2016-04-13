@@ -10,13 +10,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="application-name" content="Wolne Lektury"/>
-        <meta property="og:site_name" content="Wolne Lektury"/>
-        <meta property="og:title" content="{% block ogtitle %}{{ page_title }}{% endblock %}"/>
-        <meta property="og:type" content="{% block ogtype %}website{% endblock %}"/>
-        <meta property="og:image" content="{% block ogimage %}{{ FULL_STATIC_URL }}img/wiatrak.png{% endblock %}"/>
-        <meta name="description"
-              content="{% block metadescription %}Darmowe, opracowane, pełne teksty lektur, e-booki, audiobooki i pliki DAISY na wolnej licencji.{% endblock %}"/>
+        <meta name="application-name" content="Wolne Lektury" />
+        <meta property="og:site_name" content="Wolne Lektury" />
+        <meta property="og:title" content="{% block ogtitle %}{{ page_title }}{% endblock %}" />
+        <meta property="og:type" content="{% block ogtype %}website{% endblock %}" />
+        <meta property="og:image" content="{% block ogimage %}{{ FULL_STATIC_URL }}img/wiatrak.jpg{% endblock %}" />
+        <meta name="description" content="{% block metadescription %}Darmowe, opracowane, pełne teksty lektur, e-booki, audiobooki i pliki DAISY na wolnej licencji.{% endblock %}" />
         {% block ogextra %}{% endblock %}
 
         <title>
@@ -109,13 +108,23 @@
                         </ul>
 
 
-                        <ul id="main-menu">
-                            <li><a href="{% url 'book_list' %}">{% trans "Literature" %}</a></li>
-                            <li><a href="{% url 'theme_catalogue' %}">{% trans "Themes" %}</a></li>
-                            <li><a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a></li>
-                            <li><a href="{% url 'gallery' %}">{% trans "Gallery" %}</a></li>
-                            <li><a href="{% url 'catalogue' %}">Wszystkie utwory</a></li>
-                        </ul>
+            <ul id="main-menu">
+                <li{% if active_menu_item == 'books' %} class="active"{% endif %}>
+                    <a href="{% url 'book_list' %}">{% trans "Literature" %}</a>
+                </li>
+                <li{% if active_menu_item == 'theme' %} class="active"{% endif %}>
+                    <a href="{% url 'theme_catalogue' %}">{% trans "Themes" %}</a>
+                </li>
+                <li{% if active_menu_item == 'audiobooks' %} class="active"{% endif %}>
+                    <a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a>
+                </li>
+                <li{% if active_menu_item == 'gallery' %} class="active"{% endif %}>
+                    <a href="{% url 'gallery' %}">{% trans "Gallery" %}</a>
+                </li>
+                <li{% if active_menu_item == 'all_works' %} class="active"{% endif %}>
+                    <a href="{% url 'catalogue' %}">{% trans "All works" %}</a>
+                </li>
+            </ul>
 
 
                     </nav>

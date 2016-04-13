@@ -19,6 +19,10 @@ def infopage(request, slug):
     try:
         right_column = Template(page.right_column).render(rc)
     except TemplateSyntaxError:
-        left_column = ''
+        right_column = ''
 
-    return render_to_response('infopages/infopage.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('infopages/infopage.html', {
+        'page': page,
+        'left_column': left_column,
+        'right_columns': right_column,
+    }, context_instance=RequestContext(request))

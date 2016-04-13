@@ -1,3 +1,5 @@
+@import "../tools";
+
 $header_bg: #191919;
 $small_logo: .9;
 
@@ -23,12 +25,11 @@ header#main {
   color: #bbb;
   position: relative;
 
-  Xtext-align: center;
+  /*text-align: center;*/
 
   @media screen and (min-width: 1024px) {
     width: 975px;
     margin: auto;
-
   }
 
   a {
@@ -153,7 +154,7 @@ header#main {
     top: 0;
   }
 
-  X#user-info {
+  /*#user-info {
     margin-top: 0;
     @include size(margin-left, 5px);
     @include size(margin-right, 5px);
@@ -175,7 +176,7 @@ header#main {
       @include size(margin-right, 0);
     }
 
-    /* We want submenu on far left on small screens. */
+    !* We want submenu on far left on small screens. *!
     .hidden-box-wrapper {
       position: static;
       @media screen and (min-width: 24em) {
@@ -201,7 +202,7 @@ header#main {
         color: #0D7E85;
       }
     }
-  }
+  }*/
 
   form#search-area {
     position: relative;
@@ -239,24 +240,24 @@ header#main {
         @include size(border-radius, 5px);
         @include box-shadow(0 0 6.5px #444444 inset);
 
-        font-family: Georgia;
+        font-family: Georgia, serif;
         @include size(font-size, 13px);
         background-color: white;
         color: black;
 
         /* styling search placeholder */
         &::placeholder {
-          font-family: Georgia;
+          font-family: Georgia, serif;
           font-style: italic;
           color: #767676;
         }
         &::-webkit-input-placeholder {
-          font-family: Georgia;
+          font-family: Georgia, serif;
           font-style: italic;
           color: #767676;
         }
         &::-moz-placeholder {
-          font-family: Georgia;
+          font-family: Georgia, serif;
           font-style: italic;
           color: #767676;
         }
@@ -289,31 +290,6 @@ header#main {
 
   #header-wrapper {
     position: relative;
-
-    /* Upper-half both sides dark background */
-    &:before {
-      content: " ";
-      display: block;
-      z-index: -1;
-      position: absolute;
-      top: 0;
-      @include size(bottom, 45px);
-      left: 0;
-      width: 100%;
-      background-color: $header_bg;
-    }
-
-    /* Left-side dark background */
-    &:after {
-      content: " ";
-      display: block;
-      z-index: -1;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 50%;
-      background-color: $header_bg;
-    }
+    background-color: $header_bg;
   }
 }

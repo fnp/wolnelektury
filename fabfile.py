@@ -10,18 +10,26 @@ except ImportError:
 env.project_name = 'wolnelektury'
 
 
-def update_counters():
-    print '>>> updating counters'
-    require('app_path', 'project_name')
-    with cd(get_django_root_path('current')):
-        run('%(ve)s/bin/python manage.py update_counters' % env, pty=True)
+class ManageTask(Task):
+    def __init__(self, name, params='', **kwargs):
+        super(ManageTask, self).__init__(**kwargs)
+        self.name = name
+        self.params = params
+
+    def run(self):
+        require('app_path', 'project_name')
+        with cd(get_django_root_path('current')):
+            run('source %(ve)s/bin/activate && python manage.py %(task)s %(params)s' % {
+                've': env.ve,
+                'task': self.name,
+                'params': self.params,
+            }, pty=True)
 
 
-def compile_messages():
-    print '>>> compiling messages'
-    require('app_path', 'project_name')
-    with cd(get_django_root_path('current')):
-        run('source %(ve)s/bin/activate && python manage.py localepack -c' % env, pty=True)
+class Memcached(Service):
+    def run(self):
+        print '>>> memcached: restart'
+        sudo('service memcached restart', shell=False)
 
 
 @task
@@ -32,12 +40,13 @@ def production():
     env.django_root_path = 'src'
     env.requirements_file = 'requirements/requirements.txt'
     env.pre_collectstatic = [
-        update_counters,
-        compile_messages,
+        ManageTask('update_counters'),
+        ManageTask('localepack', '-c'),
     ]
     env.services = [
         Supervisord('wolnelektury'),
         Supervisord('wolnelektury.celery'),
+        Memcached(),
     ]
 
 
@@ -50,8 +59,8 @@ def beta():
     env.django_root_path = 'src'
     env.requirements_file = 'requirements/requirements.txt'
     env.pre_collectstatic = [
-        update_counters,
-        compile_messages,
+        ManageTask('update_counters'),
+        ManageTask('localepack', '-c'),
     ]
     env.services = [
         Supervisord('beta'),

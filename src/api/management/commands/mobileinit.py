@@ -97,7 +97,7 @@ CREATE TABLE state (last_checked INTEGER);
 """
 
     db.executescript(schema)
-    db.execute("INSERT INTO state VALUES (:last_checked)", locals())
+    db.execute("INSERT INTO state VALUES (:last_checked)", {'last_checked': last_checked})
     return db
 
 
@@ -133,29 +133,30 @@ categories = {'author': 'autor',
 
 
 def add_book(db, book):
-    title = book.title
     if book.html_file:
         html_file = book.html_file.url
         html_file_size = book.html_file.size
     else:
         html_file = html_file_size = None
-    if book.cover:
-        cover = book.cover.url
-    else:
-        cover = None
-    parent = book.parent_id
-    parent_number = book.parent_number
-    sort_key = book.sort_key
-    size_str = pretty_size(html_file_size)
-    authors = book.author_unicode()
-    db.execute(book_sql, locals())
+    db.execute(book_sql, {
+        'title': book.title,
+        'cover': book.cover.url if book.cover else None,
+        'html_file': html_file,
+        'html_file_size': html_file_size,
+        'parent': book.parent_id,
+        'parent_number': book.parent_number,
+        'sort_key': book.sort_key,
+        'size_str': pretty_size(html_file_size),
+        'authors': book.author_unicode(),
+    })
 
 
 def add_tag(db, tag):
-    category = categories[tag.category]
-    name = tag.name
-    sort_key = tag.sort_key
-
     books = Book.tagged_top_level([tag])
-    book_ids = ','.join(str(b.id) for b in books)
-    db.execute(tag_sql, locals())
+    book_ids = ','.join(str(book_id) for book_id in books.values_list('id', flat=True))
+    db.execute(tag_sql, {
+        'category': categories[tag.category],
+        'name': tag.name,
+        'sort_key': tag.sort_key,
+        'book_ids': book_ids,
+    })

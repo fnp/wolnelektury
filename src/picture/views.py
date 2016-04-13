@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.template import RequestContext
@@ -26,18 +27,17 @@ from sponsors.models import Sponsor
 #             books_nav.setdefault(tag.sort_key[0], []).append(tag)
 #
 #     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+from wolnelektury.utils import ajax
 
 
 def picture_list_thumb(request, filter=None, get_filter=None, template_name='picture/picture_list_thumb.html',
                        cache_key=None, context=None):
-    book_list = Picture.objects.all()
+    pictures = Picture.objects.all()
     if filter:
-        book_list = book_list.filter(filter)
+        pictures = pictures.filter(filter)
     if get_filter:
-        book_list = book_list.filter(get_filter())
-    book_list = book_list.order_by('sort_key_author')
-    book_list = list(book_list)
-    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+        pictures = pictures.filter(get_filter())
+    return render_to_response(template_name, {'book_list': list(pictures)}, context_instance=RequestContext(request))
 
 
 def picture_detail(request, slug):
@@ -49,13 +49,11 @@ def picture_detail(request, slug):
     # for tag in picture.tags.iterator():
     #     categories.setdefault(tag.category, []).append(tag)
 
-    themes = theme_things.get('theme', [])
-    things = theme_things.get('thing', [])
-
-    extra_info = picture.extra_info
-
-    return render_to_response("picture/picture_detail.html", locals(),
-                              context_instance=RequestContext(request))
+    return render_to_response("picture/picture_detail.html", {
+        'picture': picture,
+        'themes': theme_things.get('theme', []),
+        'things': theme_things.get('thing', []),
+    }, context_instance=RequestContext(request))
 
 
 def picture_viewer(request, slug):
@@ -65,8 +63,37 @@ def picture_viewer(request, slug):
         have_sponsors = Sponsor.objects.filter(name=sponsor)
         if have_sponsors.exists():
             sponsors.append(have_sponsors[0])
-    return render_to_response("picture/picture_viewer.html", locals(),
-                              context_instance=RequestContext(request))
+    return render_to_response("picture/picture_viewer.html", {
+        'picture': picture,
+        'sponsors': sponsors,
+    }, context_instance=RequestContext(request))
+
+
+@ajax(method='get')
+def picture_page(request, key=None):
+    pictures = Picture.objects.order_by('-id')
+    if key is not None:
+        pictures = pictures.filter(id__lt=key)
+    pictures = pictures[:settings.PICTURE_PAGE_SIZE]
+    picture_data = [
+        {
+            'id': picture.id,
+            'title': picture.title,
+            'author': picture.author_unicode(),
+            'epoch': picture.tag_unicode('epoch'),
+            'kind': picture.tag_unicode('kind'),
+            'genre': picture.tag_unicode('genre'),
+            'style': picture.extra_info['style'],
+            'image_url': picture.image_file.url,
+            'width': picture.width,
+            'height': picture.height,
+        }
+        for picture in pictures
+    ]
+    return {
+        'pictures': picture_data,
+        'count': Picture.objects.count(),
+    }
 
 
 # =========
@@ -122,8 +149,10 @@ def picture_short(request, pk):
 @ssi_included
 def picturearea_short(request, pk):
     area = get_object_or_404(PictureArea, pk=pk)
-    theme = area.tags.filter(category='theme')
-    theme = theme and theme[0] or None
-    thing = area.tags.filter(category='thing')
-    thing = thing and thing[0] or None
-    return render(request, 'picture/picturearea_short.html', locals())
+    themes = area.tags.filter(category='theme')
+    things = area.tags.filter(category='thing')
+    return render(request, 'picture/picturearea_short.html', {
+        'area': area,
+        'theme': themes[0] if themes else None,
+        'thing': things[0] if things else None,
+    })

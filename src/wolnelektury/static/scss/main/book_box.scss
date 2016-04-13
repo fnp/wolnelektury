@@ -1,494 +1,505 @@
+@import "../tools";
+@import "const";
+
 @mixin inner-box {
-    display: block;
-    color: black;
-    @include size(margin, 1px);
-    @include size(padding, 8px 10px);
-    @include white-box;
+  display: block;
+  color: black;
+  @include size(margin, 1px);
+  @include size(padding, 8px 10px);
+  @include white-box;
 }
 
-
 .cover-area {
-    float: left;
-    @include size(margin-right, 15px);
-    @include size(margin-bottom, 5px);
+  float: left;
+  @include size(margin-right, 15px);
+  @include size(margin-bottom, 5px);
 
-    @include min-screen($S_BOOK_SHORT_FULL) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin-right: 0;
+  @include min-screen($S_BOOK_SHORT_FULL) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-right: 0;
+  }
+
+  img.cover {
+    @include size(height, 193px / 2);
+    @include size(width, 139px / 2);
+
+    @include min-screen($S_BOOK_SHORT_MEDIUM) {
+      @include size(height, 193px);
+      @include size(width, 139px);
     }
-
-    img.cover {
-        @include size(height, 193px / 2);
-        @include size(width, 139px / 2);
-
-        @include min-screen($S_BOOK_SHORT_MEDIUM) {
-            @include size(height, 193px);
-            @include size(width, 139px);
-        }
-    }
+  }
 }
 
 .book-mini-box {
-    /* Original design fits 6 boxes horizontally in 975px (162.5px each),
-     * but we really want to fit 2 boxes on a 320px mobile screen. */
+  /* Original design fits 6 boxes horizontally in 975px (162.5px each),
+   * but we really want to fit 2 boxes on a 320px mobile screen. */
 
-    @include size(width, 160px);
-    display: inline-block;
-    vertical-align: top;
+  @include size(width, 160px);
+  display: inline-block;
+  vertical-align: top;
+
+  @include min-screen(350px) {
+    @include size(width, 162.5px);
+  }
+
+  .book-mini-box-inner {
+    @include inner-box;
+    @include size(height, 271px);
+    @include size(margin, 1px);
+    @include size(padding, 8px 9px);
+    overflow: hidden;
 
     @include min-screen(350px) {
-        @include size(width, 162.5px);
+      @include size(padding, 8px 10px);
     }
 
-    .book-mini-box-inner {
-        @include inner-box;
-        @include size(height, 271px);
-        @include size(margin, 1px);
-        @include size(padding, 8px 9px);
-        overflow: hidden;
-
-        @include min-screen(350px) {
-            @include size(padding, 8px 10px);
-        }
-
-        a {
-            display: block;
-        }
+    a {
+      display: block;
     }
-    img.cover {
-        @include size(height, 193px);
-        @include size(width, 139px);
-        @include size(margin-bottom, 18px);
-    }
-    .language {
-        color: #aaa;
-        float: right;
-        @include mono;
-        @include size(font-size, 10px);
-        text-transform: uppercase;
-        position: relative;
-        @include size(top, -20px);
-    }
-    .desc {
-        margin-left: 0;
-    }
-    .author {
-        @include size(font-size, 11px);
-        @include mono;
-        color: #6d7877;
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    .title {
-        @include size(font-size, 14px);
-        color: #242424;
-        white-space: normal;
-    }
+  }
+  img.cover {
+    @include size(height, 193px);
+    @include size(width, 139px);
+    @include size(margin-bottom, 18px);
+  }
+  .language {
+    color: #aaa;
+    float: right;
+    @include mono;
+    @include size(font-size, 10px);
+    text-transform: uppercase;
+    position: relative;
+    @include size(top, -20px);
+  }
+  .desc {
+    margin-left: 0;
+  }
+  .author {
+    @include size(font-size, 11px);
+    @include mono;
+    color: #6d7877;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .title {
+    @include size(font-size, 14px);
+    color: #242424;
+    white-space: normal;
+  }
 }
-
-
 
 .work-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-    .Book-item {
-        /*@include min-screen($S_BOOK_SHORT_FULL) {
-            display: inline-block;
-        }
-        vertical-align: top;*/
+  .Book-item {
+    /*@include min-screen($S_BOOK_SHORT_FULL) {
+        display: inline-block;
     }
+    vertical-align: top;*/
+  }
 }
 
+#books-list .plain-list-container .plain-list {
+  p {
+    line-height: 1.2em;
+    margin-bottom: 20px;
+    &.header {
+      font-weight: bold;
+    }
+  }
+}
 
 .book-box {
-    margin: 0;
-    vertical-align: top;
+  margin: 0;
+  vertical-align: top;
 
-    /* */
-    a {
-        color: #0D7E85;
-    }
+  /* */
+  a {
+    color: #0D7E85;
+  }
 
-    .book-box-inner {
-        position: relative;
-        @include inner-box;
-        @include size(min-height, 197.5px);
-    }
+  .book-box-inner {
+    position: relative;
+    @include inner-box;
+    @include size(min-height, 197.5px);
+  }
 }
-
 
 .audiobook-box {
-    .book-left-column {
-        @media screen and (min-width: 1024px) {
-            display: inline-block;
-            @include size(width, 590px);
-        }
+  .book-left-column {
+    @media screen and (min-width: 1024px) {
+      display: inline-block;
+      @include size(width, 590px);
     }
+  }
 
-    .audiobook-right-column {
-        @media screen and (min-width: 1024px) {
-            float: right;
-            @include size(width, 360px);
-        }
+  .audiobook-right-column {
+    @media screen and (min-width: 1024px) {
+      float: right;
+      @include size(width, 360px);
     }
+  }
 
-    .jp-type-playlist {
-        margin-top: 24px;
+  .jp-type-playlist {
+    margin-top: 24px;
 
-        @media screen and (min-width: 1024px) {
-            float: right;
-            margin-top: 48px;
-        }
+    @media screen and (min-width: 1024px) {
+      float: right;
+      margin-top: 48px;
     }
+  }
 }
-
 
 .book-wide-box {
-    margin: 0;
-    vertical-align: top;
+  margin: 0;
+  vertical-align: top;
 
-    @media screen and (min-width: 62.5em) {
-        @include size(width, 975px);
-    }
+  @media screen and (min-width: 62.5em) {
+    @include size(width, 975px);
+  }
 
-    .book-box-inner {
-        position: relative;
-        @include size(min-height, 244px);
-        @include inner-box;
-        @include size(margin-left, 0);
-        @include size(margin-right, 0);
-
-        .book-left-column { /* FIXME */
-            @media screen and (min-width: 62.5em) {
-                float: left;
-                @include size(width, 536px);
-            }
-        }
-
-        .license-icon {
-            display: block;
-            @include size(margin-top, 5px);
-        }
-
-        @include min-screen($S_BOOK_SHORT_FULL) {
-             // Show full title on the work's page.
-
-            .book-box-body {
-                height: auto;
-                @include size(min-height, 170px);
-
-                .book-box-head .title {
-                    height: auto;
-                    @include size(min-height, 57.6px);
-                }
-            }
-        }
-
-        .book-box-head,
-        .tags,
-        .book-box-tools {
-            @media screen and (min-width: 62.5em) {
-                @include size(width, 382px);
-            }
-        }
-
-        #theme-list-wrapper {
-            @include min-screen($S_BOOK_SHORT_MEDIUM) {
-                @include size(margin-left, 154px);
-                @include size(width, 300px);
-            }
-            margin-bottom: 0;
-
-            p {
-                @include size(margin-top, 10px);
-                @include size(margin-bottom, 10px);
-            }
-        }
-
-        .right-column {
-            @include size(margin-top, 16px);
-            // Eat the padding
-            @include size(margin-left, -10px);
-            @include size(margin-right, -10px);
-            max-width: none;
-
-            @media screen and (min-width: 62.5em) {
-                @include size(width, 415px);
-                // Eat the padding
-                @include size(margin-top, -8px);
-            }
-
-            .other-tools,
-            .other-download {
-                @include size(font-size, 11px);
-                clear: left;
-                @include size(margin-top, 25px);
-                line-height: 1.75em;
-                @include size(margin-left, 15px);
-
-                h2 {
-                    margin: 0;
-                    @include size(font-size, 11px);
-                    @include mono;
-                }
-
-                @include min-screen($S_BOOK_SHORT_FULL) {
-                    float: left;
-                    clear: none;
-                    @include size(width, 145px);
-                    @include size(margin-top, 50px);
-                    @include size(margin-right, 0);
-                    @include size(margin-bottom, 0);
-                    @include size(margin-left, 5px);
-                }
-
-                @include min-screen(1000px) {
-                    @include size(margin-top, 50px);
-                    line-height: 1.2em;
-                }
-            }
-            .other-download {
-                @include min-screen($S_BOOK_SHORT_FULL) {
-                    @include size(margin-left, 15px);
-                    @include size(width, 220px);
-                }
-            }
-        }
-    }
-
-    .jp-type-playlist {
-        margin-top: 24px;
-        margin-left: 0.625rem;
-
-        @media screen and (min-width: 1024px) {
-            float: right;
-            margin-right: 0.625rem;
-        }
-    }
-
-}
-
-@media screen and (min-width: 50em) {
-    .picture.book-wide-box .right-column {
-        float: none;
-        @include size(width, 415px);
-        top: 0;
-        @include size(margin-left, 550px);
-        margin-top: 0em;
-    }
-}
-
-
-.book-box-body {
-    @include size(margin-bottom, 10px);
+  .book-box-inner {
     position: relative;
+    @include size(min-height, 244px);
+    @include inner-box;
+    @include size(margin-left, 0);
+    @include size(margin-right, 0);
+
+    .book-left-column { /* FIXME */
+      @media screen and (min-width: 62.5em) {
+        float: left;
+        @include size(width, 536px);
+      }
+    }
+
+    .license-icon {
+      display: block;
+      @include size(margin-top, 5px);
+    }
+
+    @include min-screen($S_BOOK_SHORT_FULL) {
+      // Show full title on the work's page.
+
+      .book-box-body {
+        height: auto;
+        @include size(min-height, 170px);
+
+        .book-box-head .title {
+          height: auto;
+          @include size(min-height, 57.6px);
+        }
+      }
+    }
 
     .book-box-head,
     .tags,
     .book-box-tools {
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            margin-left: 154px;
-        }
+      @media screen and (min-width: 62.5em) {
+        @include size(width, 382px);
+      }
     }
 
-    .book-box-head {
-        @include size(padding-top, 14px);
+    #theme-list-wrapper {
+      @include min-screen($S_BOOK_SHORT_MEDIUM) {
+        @include size(margin-left, 154px);
+        @include size(width, 300px);
+      }
+      margin-bottom: 0;
+
+      p {
+        @include size(margin-top, 10px);
         @include size(margin-bottom, 10px);
-
-        @include min-screen($S_BOOK_SHORT_FULL) {
-            @include size(min-height, 70px);
-        }
-
-        a {
-            color: black;
-        }
-        .author {
-            @include size(font-size, 11px);
-            @include mono;
-            @include size(line-height, 13.2px);
-            @include size(max-height, 26.4px);
-            overflow: hidden;
-
-            @include min-screen($S_BOOK_SHORT_FULL) {
-                @include size(max-width, 264px);
-            }
-        }
-        .title {
-            @include size(font-size, 24px);
-            line-height: 1.2em;
-            @include size(margin-top, 7.2px);
-            @include size(margin-bottom, 12px);
-
-            @include min-screen($S_BOOK_SHORT_FULL) {
-                margin-bottom: 0;
-                @include size(height, 57.6px);
-                overflow: hidden;
-            }
-        }
+      }
     }
 
-    .tags {
+    .right-column {
+      @include size(margin-top, 16px);
+      // Eat the padding
+      @include size(margin-left, -10px);
+      @include size(margin-right, -10px);
+      max-width: none;
+
+      @media screen and (min-width: 62.5em) {
+        @include size(width, 415px);
+        // Eat the padding
+        @include size(margin-top, -8px);
+      }
+
+      .other-tools,
+      .other-download {
         @include size(font-size, 11px);
-        line-height: 1.2em;
-        margin-bottom: 5px;
+        clear: left;
+        @include size(margin-top, 25px);
+        line-height: 1.75em;
+        @include size(margin-left, 15px);
+
+        h2 {
+          margin: 0;
+          @include size(font-size, 11px);
+          @include mono;
+        }
 
         @include min-screen($S_BOOK_SHORT_FULL) {
-            @include size(max-height, 57.6px);
-            overflow: hidden;
+          float: left;
+          clear: none;
+          @include size(width, 145px);
+          @include size(margin-top, 50px);
+          @include size(margin-right, 0);
+          @include size(margin-bottom, 0);
+          @include size(margin-left, 5px);
         }
 
-        .category {
-            display: block;
-            @include size(margin-top, 6px);
-            @include size(margin-bottom, 6px);
-
-            @include min-screen($S_BOOK_SHORT_FULL) {
-                display: inline;
-            }
-
-            .mono {
-                @include mono;
-            }
-
-            .book-box-tag {
-                @include size(margin-left, 4.4px);
-                @include size(margin-right, 5.5px);
-            }
+        @include min-screen(1000px) {
+          @include size(margin-top, 50px);
+          line-height: 1.2em;
         }
+      }
+      .other-download {
+        @include min-screen($S_BOOK_SHORT_FULL) {
+          @include size(margin-left, 15px);
+          @include size(width, 220px);
+        }
+      }
     }
+  }
+
+  .jp-type-playlist {
+    margin-top: 24px;
+    margin-left: 0.625rem;
+
+    @media screen and (min-width: 1024px) {
+      float: right;
+      margin-right: 0.625rem;
+    }
+  }
 
 }
 
+@media screen and (min-width: 50em) {
+  .picture.book-wide-box .right-column {
+    float: none;
+    @include size(width, 415px);
+    top: 0;
+    @include size(margin-left, 550px);
+    margin-top: 0;
+  }
+}
 
+.book-box-body {
+  @include size(margin-bottom, 10px);
+  position: relative;
+
+  .book-box-head,
+  .tags,
+  .book-box-tools {
+    @include min-screen($S_BOOK_SHORT_FULL) {
+      margin-left: 154px;
+    }
+  }
+
+  .book-box-head {
+    @include size(padding-top, 14px);
+    @include size(margin-bottom, 10px);
+
+    @include min-screen($S_BOOK_SHORT_FULL) {
+      @include size(min-height, 70px);
+    }
+
+    a {
+      color: black;
+    }
+    .author {
+      @include size(font-size, 11px);
+      @include mono;
+      @include size(line-height, 13.2px);
+      @include size(max-height, 26.4px);
+      overflow: hidden;
+
+      @include min-screen($S_BOOK_SHORT_FULL) {
+        @include size(max-width, 264px);
+      }
+    }
+    .title {
+      @include size(font-size, 24px);
+      line-height: 1.2em;
+      @include size(margin-top, 7.2px);
+      @include size(margin-bottom, 12px);
+
+      @include min-screen($S_BOOK_SHORT_FULL) {
+        margin-bottom: 0;
+        @include size(height, 57.6px);
+        overflow: hidden;
+      }
+    }
+  }
+
+  .tags {
+    @include size(font-size, 11px);
+    line-height: 1.2em;
+    margin-bottom: 5px;
+
+    @include min-screen($S_BOOK_SHORT_FULL) {
+      @include size(max-height, 57.6px);
+      overflow: hidden;
+    }
+
+    .category {
+      display: block;
+      @include size(margin-top, 6px);
+      @include size(margin-bottom, 6px);
+
+      @include min-screen($S_BOOK_SHORT_FULL) {
+        display: inline;
+      }
+
+      .mono {
+        @include mono;
+      }
+
+      .book-box-tag {
+        @include size(margin-left, 4.4px);
+        @include size(margin-right, 5.5px);
+      }
+    }
+  }
+
+}
 
 .book-box-tools {
-    @include size(font-size, 11px);
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  @include size(font-size, 11px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-    clear: left;
+  clear: left;
 
-    @include min-screen($S_BOOK_SHORT_MEDIUM) {
-        clear: none;
-        @include size(margin-left, 139px + 15px);
+  @include min-screen($S_BOOK_SHORT_MEDIUM) {
+    clear: none;
+    @include size(margin-left, 139px + 15px);
+  }
+
+  li {
+    @include mono;
+    margin-top: 0;
+  }
+
+  .book-box-read {
+    a {
+      @include mono;
+      display: inline-block;
+      background: #0D7E85;
+      color: white;
+      @include size(width, 200px);
+      text-align: center;
+      @include size(margin-bottom, 5px);
     }
 
-    li {
-        @include mono;
-        margin-top: 0;
+    a:before {
+      content: url("/static/img/read-white.png");
+      @include size(font-size, 25px);
+      @include size(margin-right, 3.71px);
+      vertical-align: middle;
+      font-weight: normal;
+      // ugly quick fix
+      position: relative;
+      bottom: 2px;
+    }
+  }
+
+  .book-box-download {
+    position: relative;
+
+    a {
+      @mixin downarrow {
+        color: #0D7E85;
+
+        &:before {
+          content: url("/static/img/download.png");
+          @include size(font-size, 25px);
+          @include size(margin-right, 3.71px);
+          vertical-align: middle;
+          font-weight: normal;
+          display: inline;
+        }
+      }
+
+      &.downarrow {
+        @include downarrow;
+      }
     }
 
-    .book-box-read {
-        a {
-            @include mono;
-        }
+    .book-box-formats {
+      display: inline-block;
+      max-width: 220px;
+      vertical-align: top;
+      padding-top: 6px;
 
-        a:before {
-            content: url("/static/img/read.png");
-            @include size(font-size, 25px);
-            @include size(margin-right, 3.71px);
-            vertical-align: middle;
-            font-weight: normal;
-        }
+      a {
+        display: inline-block;
+        @include size(padding, .2em 1em);
+      }
     }
-
-    .book-box-download {
-        position: relative;
-
-        a {
-            @mixin downarrow {
-                color: #0D7E85;
-
-                &:before {
-                    content: url("/static/img/download.png");
-                    @include size(font-size, 25px);
-                    @include size(margin-right, 3.71px);
-                    vertical-align: middle;
-                    font-weight: normal;
-                    display: inline;
-                }
-            }
-
-            &.downarrow {
-                @include downarrow;
-            }
-        }
-
-        .book-box-formats {
-            display: inline-block;
-            max-width: 220px;
-            vertical-align: top;
-            padding-top: 6px;
-
-                a {
-                    display: inline-block;
-                    @include size(padding, .2em 1em);
-                }
-        }
-    }
+  }
 }
-
-
-
 
 .star {
-    @include size(font-size, 22.5px);
-    @include size(margin-right, 11.25px);
-    position: absolute;
-    right: 0;
-    z-index: 10;
+  @include size(font-size, 22.5px);
+  @include size(margin-right, 11.25px);
+  position: absolute;
+  right: 0;
+  z-index: 10;
 
-    button {
-        cursor: pointer;
-        &::-moz-focus-inner {
-            padding: 0;
-            border: 0;
-        }
+  button {
+    cursor: pointer;
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0
     }
-    .if-unlike button {
-        font-size: 1em;
-        font-family: inherit;
-        border: 0;
-        background: none;
-        margin: 0;
-        padding: 0;
-        color: #757575;
-    }
-    .if-like a {
-        display:block;
-        text-align:right;
-        padding: 0;
-    }
+  }
+  .if-unlike button {
+    font-size: 1em;
+    font-family: inherit;
+    border: 0;
+    background: none;
+    margin: 0;
+    padding: 0;
+    color: #757575;
+  }
+  .if-like a {
+    display: block;
+    text-align: right;
+    padding: 0;
+  }
 }
+
 .like .if-unlike {
-    display: none;
-}
-.unlike .if-like {
-    display: none;
+  display: none;
 }
 
+.unlike .if-like {
+  display: none;
+}
 
 #book-detail .see-also,
 #picture-detail .see-also {
-    h1 {
-        @include size(height, 32px);
-        margin: 0;
-        @include size(padding-top, 19px);
-        @include size(padding-left, 10px);
+  h1 {
+    @include size(height, 32px);
+    margin: 0;
+    @include size(padding-top, 19px);
+    @include size(padding-left, 10px);
 
-        @include size(font-size, 11px);
-        @include mono;
-        font-weight: normal;
+    @include size(font-size, 11px);
+    @include mono;
+    font-weight: normal;
 
-        @media screen and (min-width: 33em) {
-            @include size(padding-left, 19px);
-        }
+    @media screen and (min-width: 33em) {
+      @include size(padding-left, 19px);
     }
+  }
 }

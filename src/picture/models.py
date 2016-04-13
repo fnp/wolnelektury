@@ -101,7 +101,7 @@ class Picture(models.Model):
         pass
 
     class Meta:
-        ordering = ('sort_key',)
+        ordering = ('sort_key_author', 'sort_key')
 
         verbose_name = _('picture')
         verbose_name_plural = _('pictures')
@@ -127,8 +127,11 @@ class Picture(models.Model):
     def authors(self):
         return self.tags.filter(category='author')
 
+    def tag_unicode(self, category):
+        return ", ".join(self.tags.filter(category=category).values_list('name', flat=True))
+
     def author_unicode(self):
-        return ", ".join(self.authors().values_list('name', flat=True))
+        return self.tag_unicode('author')
 
     @permalink
     def get_absolute_url(self):

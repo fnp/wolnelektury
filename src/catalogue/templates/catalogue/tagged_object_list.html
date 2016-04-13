@@ -3,17 +3,13 @@
 {% load catalogue_tags switch_tag social_tags %}
 {% load ssi_include from ssify %}
 
-{% block titleextra %}{% if tags %}{% title_from_tags tags %}{% elif gallery %}{% trans "Gallery" %}{% else %}{% trans "Literature" %}{% endif %}{% endblock %}
+{% block titleextra %}{% if tags %}{% title_from_tags tags %}{% elif list_type == 'gallery' %}{% trans "Gallery" %}{% elif list_type == 'audiobooks' %}{% trans "Audiobooks" %}{% else %}{% trans "Literature" %}{% endif %}{% endblock %}
 
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
 <div class="tabbed-filter">
-    <h1>{% if tags %}
-        {% html_title_from_tags tags %}
-        {% elif gallery %}{% trans "Gallery" %}{% else %}{% trans "Literature" %}
-        {% endif %}
-    </h1>
+    <h1>{% if tags %}{% html_title_from_tags tags %}{% endif %}</h1>
 
     <div class="tabs">
         <a class="tab white-box" data-id="authors">{% trans "Authors" %}</a>
@@ -21,99 +17,111 @@
         <a class="tab white-box" data-id="genres">{% trans "Genres" %}</a>
         <a class="tab white-box" data-id="kinds">{% trans "Kinds" %}</a>
         {% if theme_is_set %}
-        <a class="tab white-box" data-id="themes">{% trans "Themes" %}</a>
+            <a class="tab white-box" data-id="themes">{% trans "Themes" %}</a>
         {% endif %}
     </div>
-
 </div>
+
 <div class="tabbed-filter-contents">
     <div id="authors" class="white-box normal-text tab-content">
-        {% inline_tag_list categories.author tags 'author' gallery=gallery %}
+        {% inline_tag_list categories.author tags 'author' list_type=list_type %}
     </div>
     <div id="epochs" class="white-box normal-text tab-content">
-        {% inline_tag_list categories.epoch tags 'epoch' gallery=gallery %}
+        {% inline_tag_list categories.epoch tags 'epoch' list_type=list_type %}
     </div>
     <div id="genres" class="white-box normal-text tab-content">
-        {% inline_tag_list categories.genre tags 'genre' gallery=gallery %}
+        {% inline_tag_list categories.genre tags 'genre' list_type=list_type %}
     </div>
     <div id="kinds" class="white-box normal-text tab-content">
-        {% inline_tag_list categories.kind tags 'kind' gallery=gallery %}
+        {% inline_tag_list categories.kind tags 'kind' list_type=list_type %}
     </div>
     {% if theme_is_set %}
         <div id="themes" class="white-box normal-text tab-content">
-            {% inline_tag_list categories.theme tags 'theme' gallery=gallery %}
+            {% inline_tag_list categories.theme tags 'theme' list_type=list_type %}
         </div>
     {% endif %}
 </div>
 
+{% comment %}
+{% if list_type == 'books' and not tags %}
+    <section>
+        <h1>{% trans "Recent publications" %}</h1>
+        {% for book in last_published %}
+            {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+        {% endfor %}
+        <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
+    </section>
+    <section>
+        <h1>{% trans "Most popular books" %}</h1>
+        {% for book in most_popular %}
+            {% ssi_include 'catalogue_book_mini' pk=book.pk %}
+        {% endfor %}
+    </section>
+{% endif %}
+{% endcomment %}
 
-
-
-    {% if theme_is_set %}
-        {% work_list object_list %}
-    {% else %}
+{% if theme_is_set %}
+    {% work_list object_list %}
+{% else %}
     <div id="books-list">
         {% if object_list %}
             {% work_list best %}
             {% if tags %}
                 <h2>{% trans "All matching works" %}</h2>
             {% else %}
-                <h2>{% trans "All works" %}</h2>
+                {% if list_type == 'audiobooks' %}
+                    <h2>{% trans "Listing of all audiobooks" %}</h2>
+                {% else %}
+                    <h2>{% trans "All works" %}</h2>
+                 {% endif %}
             {% endif %}
-            {% plain_list object_list by_author=True gallery=gallery %}
+            {% plain_list object_list by_author=True list_type=list_type %}
+            {% if daisy %}
+                <h2>{% trans "DAISY files" %}</h2>
+                {% plain_list daisy by_author=True %}
+            {% endif %}
         {% else %}
             {% trans "Sorry! Search cirteria did not match any resources." %}
             {% include "info/join_us.html" %}
         {% endif %}
     </div>
 
-
-
-
-{% if categories.theme %}
-    <h2>{% trans "Motifs and themes" %}</h2>
-    {% plain_list categories.theme choice=tags gallery=gallery %}
-{% endif %}
-
-
+    {% if categories.theme and list_type != 'audiobooks' %}
+        <h2>{% trans "Motifs and themes" %}</h2>
+        {% plain_list categories.theme choice=tags list_type=list_type %}
+    {% endif %}
 
 {% endif %}
 
-
-
-    {% for tag in tags %}
+{% for tag in tags %}
     {% if tag.category != 'set' %}
-    <h2>{% trans tag.category as c %}{{ c|capfirst }}: {{ tag }}</h2>
+        <h2>{% trans tag.category as c %}{{ c|capfirst }}: {{ tag }}</h2>
         <div class="white-box">
-        {% if tag.has_description %}
-            {{ tag.description|safe }}
-        {% else %}
-            <em>{% trans "No description." %}</em>
-        {% endif %}
+            {% if tag.has_description %}
+                {{ tag.description|safe }}
+            {% else %}
+                <em>{% trans "No description." %}</em>
+            {% endif %}
         </div>
 
         {% if tag.gazeta_link %}
-        <div class="white-box"><a href="{{ tag.gazeta_link }}">
-            {{ tag }} {% trans "in Lektury.Gazeta.pl" %}
-        </a></div>
+            <div class="white-box"><a href="{{ tag.gazeta_link }}">
+                {{ tag }} {% trans "in Lektury.Gazeta.pl" %}
+            </a></div>
         {% endif %}
         {% if tag.wiki_link %}
-        <div class="white-box">
-        <a href="{{ tag.wiki_link }}">
-            {{ tag }} {% trans "in Wikipedia" %}
-        </a></div>
+            <div class="white-box">
+            <a href="{{ tag.wiki_link }}">
+                {{ tag }} {% trans "in Wikipedia" %}
+            </a></div>
         {% endif %}
         {% if tag.culturepl_link %}
-        <div class="white-box">
-        <a href="{{ tag.culturepl_link }}">
-            {{ tag }} {% trans "in Culture.pl" %}
-        </a></div>
+            <div class="white-box">
+            <a href="{{ tag.culturepl_link }}">
+                {{ tag }} {% trans "in Culture.pl" %}
+            </a></div>
         {% endif %}
     {% endif %}
-    {% endfor %}
-
-
-
-
+{% endfor %}
 
 {% endblock %}

@@ -3,6 +3,9 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
+from django.core.cache import cache
+
 from .models import Tag, Book
 from os.path import getmtime
 import cPickle
@@ -36,7 +39,6 @@ def get_top_level_related_tags(tags, categories=None):
 
     related = Tag.objects.filter(pk__in=related_ids)
 
-    # TODO: do we really need that?
     if categories is not None:
         related = related.filter(category__in=categories)
 
@@ -86,3 +88,16 @@ def update_counters():
 
     with open(settings.CATALOGUE_COUNTERS_FILE, 'w') as f:
         cPickle.dump(counters, f)
+
+
+def get_audiobook_tags():
+    audiobook_tag_ids = cache.get('audiobook_tags')
+    if audiobook_tag_ids is None:
+        books_with_audiobook = Book.objects.filter(media__type__in=('mp3', 'ogg'))\
+            .distinct().values_list('pk', flat=True)
+        audiobook_tag_ids = Tag.objects.filter(
+            items__content_type=ContentType.objects.get_for_model(Book),
+            items__object_id__in=list(books_with_audiobook)).distinct().values_list('pk', flat=True)
+        audiobook_tag_ids = list(audiobook_tag_ids)
+        cache.set('audiobook_tags', audiobook_tag_ids)
+    return audiobook_tag_ids

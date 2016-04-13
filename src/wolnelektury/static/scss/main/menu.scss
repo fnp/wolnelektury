@@ -129,12 +129,16 @@ body.menu-on {
             display: inline-block;
             @include size(width, 20%);
 
+            &.active {
+                background-color: white;
+            }
+
             a {
                 text-align: center;
                 display: block;
                 @include size(line-height, 13px);
                 @include size(padding, 18px 0 15px);
-                @include size(border-bottom, 3px solid #e2e2e2);
+                //@include size(border-bottom, 3px solid #e2e2e2);
                 color: #0c7076;
                 @include size(font-size, 11px);
                 @include mono;

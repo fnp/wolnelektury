@@ -22,9 +22,9 @@
                         if (button && short_text) button.html(short_text);
                     }
                     return false;
-                }
+                };
                 return toggle;
-            }
+            };
             if (long_el.html().length <= short_el.html().length)
                 return;
 
@@ -209,15 +209,15 @@ $('#themes-list-toggle').click(function(event) {
                 onFormat: function (type) {
                     switch (type) {
                         case 'block': // n and c
-                            return ' <a href="#"' + (this.value == this.page ? ' class="current"' : '') + '>' + this.value + '</a> ';
+                            return ' <li><a href="#"' + (this.value == this.page ? ' class="current"' : '') + '>' + this.value + '</a></li>';
                         case 'next': // >
-                            return ' <a href="#">&gt;</a> ';
+                            return '<li><a href="#">&rsaquo;</a></li>';
                         case 'prev': // <
-                            return ' <a href="#">&lt;</a> ';
+                            return '<li><a href="#">&lsaquo;</a></li>';
                         case 'first': // [
-                            return '<a href="#">«</a> ';
+                            return '<li><a href="#">&laquo;</a></li>';
                         case 'last': // ]
-                            return ' <a href="#">»</a>';
+                            return '<li><a href="#">&raquo;</a></li>';
                     }
                 }
             });

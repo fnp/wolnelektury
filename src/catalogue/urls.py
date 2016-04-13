@@ -14,6 +14,8 @@ SLUG = r'[a-z0-9-]*'
 
 urlpatterns = patterns(
     'picture.views',
+
+    url(r'^obraz/strona/$', 'picture_page', name='picture_page'),
     # pictures - currently pictures are coupled with catalogue, hence the url is here
     url(r'^obraz/$', 'picture_list_thumb', name='picture_list_thumb'),
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, 'picture_viewer', name='picture_viewer'),
@@ -41,12 +43,12 @@ urlpatterns += patterns(
     url(r'^rodzaj/$', 'tag_catalogue', {'category': 'kind'}, name='kind_catalogue'),
     url(r'^motyw/$', 'tag_catalogue', {'category': 'theme'}, name='theme_catalogue'),
 
-    url(r'^galeria/$', 'tagged_object_list', {'gallery': True}, name='gallery'),
+    url(r'^galeria/$', 'gallery', name='gallery'),
     url(r'^kolekcje/$', 'collections', name='catalogue_collections'),
 
-    url(r'^lektury/$', 'tagged_object_list', name='book_list'),
+    url(r'^lektury/$', 'literature', name='book_list'),
     url(r'^lektury/(?P<slug>[a-zA-Z0-9-]+)/$', 'collection', name='collection'),
-    url(r'^audiobooki/$', 'audiobook_list', name='audiobook_list'),
+    url(r'^audiobooki/$', 'audiobooks', name='audiobook_list'),
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
     url(r'^tags/$', 'tags_starting_with', name='hint'),
     url(r'^jtags/?$', 'json_tags_starting_with', name='jhint'),
@@ -91,7 +93,10 @@ urlpatterns += patterns(
     url(r'^c/(?P<pk>.+)/box\.(?P<lang>.+)\.html', 'collection_box', name='catalogue_collection_box'),
 
     # This should be the last pattern.
-    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'gallery': True},
+    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'list_type': 'gallery'},
         name='tagged_object_list_gallery'),
-    url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', name='tagged_object_list'),
+    url(r'^audiobooki/(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'list_type': 'audiobooks'},
+        name='tagged_object_list_audiobooks'),
+    url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', 'tagged_object_list', {'list_type': 'books'},
+        name='tagged_object_list'),
 )

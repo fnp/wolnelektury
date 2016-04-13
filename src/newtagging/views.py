@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 from django.views.generic import ListView
 
 
-def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=None, related_tags=False,
+def tagged_object_list(request, queryset_or_model, tag_model, tags, related_tags=False,
                        related_tag_counts=True, **kwargs):
     """
     A thin wrapper around
@@ -25,13 +25,6 @@ def tagged_object_list(request, queryset_or_model=None, tag_model=None, tags=Non
     tag will have a ``count`` attribute indicating the number of items
     which have it in addition to the given tag.
     """
-    # Check attributes
-    if queryset_or_model is None:
-        raise AttributeError(_('tagged_object_list must be called with a queryset or a model.'))
-    if tag_model is None:
-        raise AttributeError(_('tagged_object_list must be called with a tag model.'))
-    if tags is None:
-        raise AttributeError(_('tagged_object_list must be called with a tag.'))
 
     tag_instances = tag_model.get_tag_list(tags)
     if tag_instances is None:

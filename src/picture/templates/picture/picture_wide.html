@@ -81,12 +81,12 @@
   <div class="other-tools">
     <h2 class="mono">{% trans "See" %}</h2>
     <ul class="plain">
-      {% if extra_info.source_url %}
-      <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the picture" %}</li>
+      {% if picture.extra_info.source_url %}
+      <li><a href="{{ picture.extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the picture" %}</li>
       {% endif %}
       <li><a href="{{ picture.xml_file.url }}">{% trans "Source XML file" %}</a></li>
-      {% if extra_info.about and not hide_about %}
-      <li>{% trans "Picture on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
+      {% if picture.extra_info.about and not hide_about %}
+      <li>{% trans "Picture on" %} <a href="{{ picture.extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
       {% endif %}
       {% if picture.wiki_link %}
       <li><a href="{{ picture.wiki_link }}">{% trans "Picture description on Wikipedia" %}</a></li>

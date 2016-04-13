@@ -15,6 +15,8 @@ from django.utils.cache import add_never_cache_headers
 from django.utils.translation import ugettext as _
 
 from ssify import ssi_variable
+
+from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
 from picture.models import Picture
@@ -242,37 +244,23 @@ def catalogue_url(parser, token):
 
     tags_to_add = []
     tags_to_remove = []
-    for bit in bits[1:]:
+    for bit in bits[2:]:
         if bit[0] == '-':
             tags_to_remove.append(bit[1:])
         else:
             tags_to_add.append(bit)
 
-    return CatalogueURLNode(tags_to_add, tags_to_remove)
-
-
-@register.tag
-def catalogue_url_gallery(parser, token):
-    bits = token.split_contents()
-
-    tags_to_add = []
-    tags_to_remove = []
-    for bit in bits[1:]:
-        if bit[0] == '-':
-            tags_to_remove.append(bit[1:])
-        else:
-            tags_to_add.append(bit)
-
-    return CatalogueURLNode(tags_to_add, tags_to_remove, gallery=True)
+    return CatalogueURLNode(bits[1], tags_to_add, tags_to_remove)
 
 
 class CatalogueURLNode(Node):
-    def __init__(self, tags_to_add, tags_to_remove, gallery=False):
+    def __init__(self, list_type, tags_to_add, tags_to_remove):
         self.tags_to_add = [Variable(tag) for tag in tags_to_add]
         self.tags_to_remove = [Variable(tag) for tag in tags_to_remove]
-        self.gallery = gallery
+        self.list_type_var = Variable(list_type)
 
     def render(self, context):
+        list_type = self.list_type_var.resolve(context)
         tags_to_add = []
         tags_to_remove = []
 
@@ -298,17 +286,24 @@ class CatalogueURLNode(Node):
                 pass
 
         if len(tag_slugs) > 0:
-            if self.gallery:
+            if list_type == 'gallery':
                 return reverse('tagged_object_list_gallery', kwargs={'tags': '/'.join(tag_slugs)})
+            elif list_type == 'audiobooks':
+                return reverse('tagged_object_list_audiobooks', kwargs={'tags': '/'.join(tag_slugs)})
             else:
                 return reverse('tagged_object_list', kwargs={'tags': '/'.join(tag_slugs)})
         else:
-            return reverse('book_list')
+            if list_type == 'gallery':
+                return reverse('gallery')
+            elif list_type == 'audiobooks':
+                return reverse('audiobook_list')
+            else:
+                return reverse('book_list')
 
 
-@register.inclusion_tag('catalogue/tag_list.html')
-def tag_list(tags, choices=None, category=None, gallery=False):
-    print(tags, choices, category)
+# @register.inclusion_tag('catalogue/tag_list.html')
+def tag_list(tags, choices=None, category=None, list_type='books'):
+    # print(tags, choices, category)
     if choices is None:
         choices = []
 
@@ -319,25 +314,38 @@ def tag_list(tags, choices=None, category=None, gallery=False):
 
     if len(tags) == 1 and category not in [t.category for t in choices]:
         one_tag = tags[0]
+    else:
+        one_tag = None
 
     if category is not None:
         other = Tag.objects.filter(category=category).exclude(pk__in=[t.pk for t in tags])\
             .exclude(pk__in=[t.pk for t in category_choices])
         # Filter out empty tags.
-        ct = ContentType.objects.get_for_model(Picture if gallery else Book)
+        ct = ContentType.objects.get_for_model(Picture if list_type == 'gallery' else Book)
         other = other.filter(items__content_type=ct).distinct()
+        if list_type == 'audiobooks':
+            other = other.filter(id__in=get_audiobook_tags())
+    else:
+        other = []
 
-    return locals()
+    return {
+        'one_tag': one_tag,
+        'choices': choices,
+        'category_choices': category_choices,
+        'tags': tags,
+        'other': other,
+        'list_type': list_type,
+    }
 
 
 @register.inclusion_tag('catalogue/inline_tag_list.html')
-def inline_tag_list(tags, choices=None, category=None, gallery=False):
-    return tag_list(tags, choices, category, gallery)
+def inline_tag_list(tags, choices=None, category=None, list_type='books'):
+    return tag_list(tags, choices, category, list_type)
 
 
 @register.inclusion_tag('catalogue/collection_list.html')
 def collection_list(collections):
-    return locals()
+    return {'collections': collections}
 
 
 @register.inclusion_tag('catalogue/book_info.html')
@@ -351,11 +359,11 @@ def book_info(book):
 @register.inclusion_tag('catalogue/work-list.html', takes_context=True)
 def work_list(context, object_list):
     request = context.get('request')
-    return locals()
+    return {'object_list': object_list, 'request': request}
 
 
 @register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
-def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, gallery=False,
+def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, list_type='books',
                paged=True, initial_blocks=False):
     names = [('', [])]
     last_initial = None
@@ -372,7 +380,14 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
                 last_initial = initial
                 names.append((obj.author_unicode() if by_author else initial, []))
         names[-1][1].append(obj)
-    return locals()
+    return {
+        'paged': paged,
+        'names': names,
+        'initial_blocks': initial_blocks,
+        'book': book,
+        'list_type': list_type,
+        'choice': choice,
+    }
 
 
 # TODO: These are no longer just books.

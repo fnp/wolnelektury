@@ -49,7 +49,7 @@ class Collection(models.Model):
 
     def get_books(self):
         from catalogue.models import Book
-        return Book.objects.filter(self.get_query()).order_by('sort_key_author', 'sort_key')
+        return Book.objects.filter(self.get_query())
 
     def flush_includes(self, languages=True):
         if not languages:
