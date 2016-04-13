@@ -72,7 +72,7 @@ class AppLocale(Locale):
         wd = os.getcwd()
         os.chdir(self.path)
         try:
-            call_command('compilemessages', settings='wolnelektury.settings')
+            call_command('compilemessages', verbosity=0, settings='wolnelektury.settings')
         except:
             pass
         finally:
