@@ -1,30 +1,25 @@
 {% spaceless %}
+  {% load i18n %}
 
-{% load i18n %}
-
-{% if main %}
+  {% if main %}
     <section id="big-cite"{% if cite.image %} style="background-image: url('{{ cite.image.url }}'); background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;"{% endif %} >
-{% endif %}
+  {% endif %}
 
-{% if cite %}
-
-<a href="{{ cite.link }}" class="cite{% if cite.small %} cite-small{% endif %}">
-    {% if cite.vip %}
+  {% if cite %}
+    <a href="{{ cite.link }}" class="cite{% if cite.small %} cite-small{% endif %}">
+      {% if cite.vip %}
         <p class='vip mono'><span>{{ cite.vip }} {% trans "recommends" %}:</span></p>
-    {% endif %}
-    <blockquote class="cite-body">
+      {% endif %}
+      <blockquote class="cite-body">
         <span>{{ cite.text|linebreaksbr|safe }}</span>
-    </blockquote>
-    {% if cite.book %}
-    <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
-    {% endif %}
-</a>
+      </blockquote>
+      {% if cite.book %}
+        <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
+      {% endif %}
+    </a>
+  {% endif %}
 
-{% endif %}
-
-
-{% if main %}
+  {% if main %}
     </section>
-{% endif %}
-
+  {% endif %}
 {% endspaceless %}

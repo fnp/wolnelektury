@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load reporting_stats catalogue_tags %}
 
@@ -8,41 +8,39 @@
 
 
 {% block body %}
-    <h1>Statystyka</h1>
+  <h1>Statystyka</h1>
 
-    <div class="normal-text">
-
+  <div class="normal-text">
     <h3>Audiobooki</h3>
 
     <table class="stats">
-        <tr><th>Utwory</th></tr>
-        <tr><td>Utwory:</td><td>{% count_books %}</td></tr>
-        <tr><td>Niezależne książki:</td><td>{% count_books_root %}</td></tr>
-        <tr><td>Utwory nadrzędne:</td><td>{% count_books_parent %}</td></tr>
-        <tr><td>Wszystkie utwory:</td><td>{% count_books_all %}</td></tr>
+      <tr><th>Utwory</th></tr>
+      <tr><td>Utwory:</td><td>{% count_books %}</td></tr>
+      <tr><td>Niezależne książki:</td><td>{% count_books_root %}</td></tr>
+      <tr><td>Utwory nadrzędne:</td><td>{% count_books_parent %}</td></tr>
+      <tr><td>Wszystkie utwory:</td><td>{% count_books_all %}</td></tr>
 
-        <tr><th>Media</th><th>Liczba</th><th>Rozmiar</th><th>Do wymiany</th></tr>
-        {% for mt in media_types %}
-            <tr><td>{{ mt.type }}:</td>
-                <td>{{ mt.count }}</td>
-                <td>{{ mt.size|filesizeformat }}</td>
-                <td>{{ mt.deprecated }}
-                    {% for m in mt.deprecated_files %}
-                        <br/><a href="{{ m.book.get_absolute_url }}">{% book_title m.book %}: {{ m }}</a>
-                    {% endfor %}
-                </td>
-            </tr>
-        {% endfor %}
+      <tr><th>Media</th><th>Liczba</th><th>Rozmiar</th><th>Do wymiany</th></tr>
+      {% for mt in media_types %}
+        <tr>
+          <td>{{ mt.type }}:</td>
+          <td>{{ mt.count }}</td>
+          <td>{{ mt.size|filesizeformat }}</td>
+          <td>
+            {{ mt.deprecated }}
+            {% for m in mt.deprecated_files %}
+              <br/><a href="{{ m.book.get_absolute_url }}">{% book_title m.book %}: {{ m }}</a>
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
     </table>
 
     <h3>Licencje</h3>
     <ul>
-    {% for license, license_description in licenses %}
+      {% for license, license_description in licenses %}
         <li>{{ license }} ({{ license_description }})</li>
-    {% endfor %}
+      {% endfor %}
     </ul>
-
-
-    </div>
-
+  </div>
 {% endblock %}

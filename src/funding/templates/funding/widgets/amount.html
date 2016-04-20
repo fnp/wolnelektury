@@ -1,19 +1,23 @@
 {% load i18n %}
+
 <div style="line-height:2em;">
-{% if perks %}
+  {% if perks %}
     {% for perk in perks %}
-        <label>
-            <input type="radio" name="{{ perks_input_name }}" value="{{ perk.price }}"
-                    {% if perk.chosen %}checked="checked"{% endif %} />
-                <span style="font-size: 1.5em; ">{{ perk.price }} zł</span> ({{ perk.long_name }})
-        </label><br/>
+      <label>
+        <input type="radio" name="{{ perks_input_name }}" value="{{ perk.price }}"
+               {% if perk.chosen %}checked="checked"{% endif %}/>
+        <span style="font-size: 1.5em; ">{{ perk.price }} zł</span>
+        ({{ perk.long_name }})
+      </label>
+      <br/>
     {% endfor %}
     <label>
-        <input type="radio" name="{{ perks_input_name }}" value=""
-            {% if not perk_chosen %}checked="checked"{% endif %} /> {% trans "Other amount" %}:
+      <input type="radio" name="{{ perks_input_name }}" value=""
+             {% if not perk_chosen %}checked="checked"{% endif %}/>
+      {% trans "Other amount" %}:
     </label>
-    <input size="5" name="{{ name }}" value="{% if not perk_chosen %}{{ value|default_if_none:'' }}{% endif %}" /> zł
-{% else %}
-    <input name="{{ name }}" value="{{ value|default_if_none:'' }}" {% if value != None %}{% endif %} />
-{% endif %}
+    <input size="5" name="{{ name }}" value="{% if not perk_chosen %}{{ value|default_if_none:'' }}{% endif %}"/> zł
+  {% else %}
+    <input name="{{ name }}" value="{{ value|default_if_none:'' }}"/>
+  {% endif %}
 </div>

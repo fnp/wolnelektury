@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -7,11 +7,9 @@
 {% block bodyid %}collection{% endblock %}
 
 {% block body %}
-    <h1>{{ collection.title }}</h1>
+  <h1>{{ collection.title }}</h1>
 
-    {{ collection.description|safe }}
+  {{ collection.description|safe }}
 
-    {% plain_list collection.get_books by_author=True %}
-
-
+  {% plain_list collection.get_books by_author=True %}
 {% endblock %}

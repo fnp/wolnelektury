@@ -1,21 +1,22 @@
 {% spaceless %}
 
-{% load i18n %}
-{% load catalogue_tags %}
-{% if one_tag %}
+  {% load i18n %}
+  {% load catalogue_tags %}
+
+  {% if one_tag %}
     <p>{% trans "See full category" %} <a href="{% catalogue_url 'default' one_tag %}">{{ one_tag }}</a></p>
-{% else %}
+  {% else %}
     <ul>
-        {% if choices %}
+      {% if choices %}
         {% for tag in tags %}
-            <li><a href="{% catalogue_url 'default' choices tag %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
+          <li><a href="{% catalogue_url 'default' choices tag %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
         {% endfor %}
-        {% else %}
+      {% else %}
         {% for tag in tags %}
-            <li><a href="{{ tag.get_absolute_url }}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
+          <li><a href="{{ tag.get_absolute_url }}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
         {% endfor %}
-        {% endif %}
+      {% endif %}
     </ul>
-{% endif %}
+  {% endif %}
 
 {% endspaceless %}

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -7,14 +7,14 @@
 {% block bodyid %}differentiate_tags{% endblock %}
 
 {% block body %}
-    <h1>{% title_from_tags tags %}</h1>
+  <h1>{% title_from_tags tags %}</h1>
 
-	<p>{% trans "The criteria are ambiguous. Please select one of the following options:" %}</p>
+  <p>{% trans "The criteria are ambiguous. Please select one of the following options:" %}</p>
     <div id="books-list">
-        {% for option in options %}
-        <div class="book-description"
-            <p><a href="{% url 'tagged_object_list' option.url_args %}">{% if tags %}{% title_from_tags tags %}, {% endif %}<em>{%title_from_tags option.tags %}</em>{% if unparsed %}, {{unparsed|join:', '}}{% endif %}</a></p>
-		</div>
-        {% endfor %}
+      {% for option in options %}
+        <div class="book-description">
+          <p><a href="{% url 'tagged_object_list' option.url_args %}">{% if tags %}{% title_from_tags tags %}, {% endif %}<em>{%title_from_tags option.tags %}</em>{% if unparsed %}, {{unparsed|join:', '}}{% endif %}</a></p>
+        </div>
+      {% endfor %}
     </div>
 {% endblock %}

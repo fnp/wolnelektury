@@ -2,69 +2,67 @@
 {% load thumbnail %}
 {% load catalogue_tags social_tags %}
 {% load picture_tags %}
+
 <div class="{% block box-class %}book-box{% endblock %} picture">
-<div class="book-box-inner">
+  <div class="book-box-inner">
+    <div class="book-box-body">
+      <div class="book-box-head">
+          <div class="author">
+              {% for tag in tags.author %}
+                  <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>{% if not forloop.last %},
+              {% endif %}{% endfor %}
+          </div>
+          <div class="title">
+              {% if main_link %}<a href="{{ main_link }}">{% endif %}
+                  {{ picture.title }}
+              {% if main_link %}</a>{% endif %}
+          </div>
+      </div>
 
-<div class="book-box-body">
+      <div class="cover-area">
+        {% block picture-view %}
+        {% if main_link %}<a href="{{ main_link }}">{% endif %}
+          {% thumbnail picture.image_file "216x288" crop="center" as thumb %}
+          <img class="cover" src="{{thumb.url}}"/>
+          {% endthumbnail %}
+        {% if main_link %}</a>{% endif %}
+        {% endblock %}
+         {# what about licensing icons here #}
+      </div>
 
-        <div class="book-box-head">
-            <div class="author">
-                {% for tag in tags.author %}
-                    <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>{% if not forloop.last %},
-                {% endif %}{% endfor %}
-            </div>
-            <div class="title">
-				{% if main_link %}<a href="{{ main_link }}">{% endif %}
-					{{ picture.title }}
-			    {% if main_link %}</a>{% endif %}
-			</div>
-        </div>
-
-
-
-  <div class="cover-area">
-    {% block picture-view %}
-    {% if main_link %}<a href="{{ main_link }}">{% endif %}
-      {% thumbnail picture.image_file "216x288" crop="center" as thumb %}
-      <img class="cover" src="{{thumb.url}}"/>
-      {% endthumbnail %}
-    {% if main_link %}</a>{% endif %}
-    {% endblock %}
-     {# what about licensing icons here #}
-  </div>
-
-        <div class="tags">
-            {% spaceless %}
-
-            <span class="category">
+      <div class="tags">
+        {% spaceless %}
+          <span class="category">
             <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
-            	{% for tag in tags.epoch %}
-            		<a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
-            		{% if not forloop.last %}<span>, </span>{% endif %}
-                {% endfor %}
-            </span></span>
+              {% for tag in tags.epoch %}
+                <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
+                {% if not forloop.last %}<span>, </span>{% endif %}
+              {% endfor %}
+            </span>
+          </span>
 
-            <span class="category">
+          <span class="category">
             <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
-            	{% for tag in tags.kind %}
-            		<a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
-            		{% if not forloop.last %}<span>, </span>{% endif %}
-                {% endfor %}
-            </span></span>
+              {% for tag in tags.kind %}
+                <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
+                {% if not forloop.last %}<span>, </span>{% endif %}
+              {% endfor %}
+            </span>
+          </span>
 
-            <span class="category">
+          <span class="category">
             <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
-            	{% for tag in tags.genre %}
-            		<a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
-            		{% if not forloop.last %}<span>, </span>{% endif %}
-                {% endfor %}
-            </span></span>
+              {% for tag in tags.genre %}
+                <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
+                {% if not forloop.last %}<span>, </span>{% endif %}
+              {% endfor %}
+            </span>
+          </span>
 
-            {% block extra_categories %}
-            {% endblock %}
-
-            {% endspaceless %}
-        </div>
+          {% block extra_categories %}
+          {% endblock %}
+        {% endspaceless %}
+      </div>
     </div>
     <ul class="book-box-tools">
       <li class="book-box-read">
@@ -75,10 +73,8 @@
       </li>
     </ul>
     {% block book-box-extra-info %}{% endblock %}
-    {% block box-append %}
-    {% endblock %}
-    {% block right-column %}
-    {% endblock %}
+    {% block box-append %}{% endblock %}
+    {% block right-column %}{% endblock %}
     <div class="clearboth"></div>
-</div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load url from future %}
 {% load i18n static %}
 {% load pagination_tags %}
@@ -16,62 +16,56 @@
 
 
 {% block body %}
+  <h1>{{ object }}</h1>
 
-<h1>{{ object }}</h1>
-
-{% ssi_include 'funding_detail_bar' pk=object.pk %}
-<div class="white-box">
+  {% ssi_include 'funding_detail_bar' pk=object.pk %}
+  <div class="white-box">
     <div class="funding-details-intro">
-        {% if object.cover %}
-            <img src="
-                {% thumbnail object.cover "139x193" as thumb %}
-                    {{ thumb.url }}
-                {% empty %}
-                    {{ object.cover.url }}
-                {% endthumbnail %}
-            " alt="Cover" class="funding-cover" />
-        {% endif %}
-        <div class="normal-text">
+      {% if object.cover %}
+        <img src="{% thumbnail object.cover "139x193" as thumb %}{{ thumb.url }}{% empty %}{{ object.cover.url }}{% endthumbnail %}"
+             alt="Cover" class="funding-cover" />
+      {% endif %}
+      <div class="normal-text">
         <h3>{% trans "Help free the book!" %}</h3>
         {{ object.description|safe }}
         {% ssi_include 'funding_status' pk=object.pk %}
         <a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
         {% ssi_include 'funding_status_more' pk=object.pk %}
         <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
-        </div>
-        
-        <div style="clear:both;"></div>
+      </div>
+
+      <div style="clear:both;"></div>
     </div>
 
     {% if object.is_current %}
-        <div class="normal-text">
-            <h3>{% trans "Support the publication" %}</h3>
-            <form action="" method="post">
-                <table>
-                {{ form.as_table }}
-                <tr><td></td><td>
-                    <button type="submit" style="border: none; background: none; cursor: pointer">
-                    <img alt="{% trans 'Donate!' %}" src="{% static 'img/payu.png' %}" />
-                    </button>
-                    </td></tr>
-                </table>
-            </form>
-        </div>
+      <div class="normal-text">
+        <h3>{% trans "Support the publication" %}</h3>
+        <form action="" method="post">
+          <table>
+            {{ form.as_table }}
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit" style="border: none; background: none; cursor: pointer">
+                  <img alt="{% trans 'Donate!' %}" src="{% static 'img/payu.png' %}" />
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
 
-        {% url 'funding_current' object.slug as current %}
-        <p class="normal-text">{% trans "Tell your friends!" %}</p>
-        <p class="share">{% share current _("Support Wolne Lektury!") "big" %}</p>
+      {% url 'funding_current' object.slug as current %}
+      <p class="normal-text">{% trans "Tell your friends!" %}</p>
+      <p class="share">{% share current _("Support Wolne Lektury!") "big" %}</p>
     {% endif %}
 
     <p class="normal-text"><a href="{% url 'funding' %}">{% trans "See all fundraisers." %}</a></p>
+  </div>
 
-</div>
+  <h2>{% trans "Supporters" %}:</h2>
 
-
-<h2>{% trans "Supporters" %}:</h2>
-
-<div class="white-box normal-text">
+  <div class="white-box normal-text">
     {% ssi_include 'funding_fundings' pk=object.pk page=page %}
-</div>
-
+  </div>
 {% endblock %}

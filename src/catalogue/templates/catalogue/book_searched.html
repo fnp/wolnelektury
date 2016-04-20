@@ -1,38 +1,34 @@
 {% spaceless %}
+  {% load i18n %}
+  {% load inline_tag_list from catalogue_tags %}
+  {% load ssi_include from ssify %}
 
-{% load i18n %}
-{% load inline_tag_list from catalogue_tags %}
-{% load ssi_include from ssify %}
+  <div class="search-result">
+    {% ssi_include 'catalogue_book_short' pk=book.pk %}
 
-<div class="search-result">
+    <div class="snippets">
+      {% for hit in hits %}
+        {% if hit.snippet %}
+          <div class="snippet-text">
+            <a href="{% url 'book_text' book.slug %}#sec{{hit.section_number}}">{{hit.snippet|safe}}</a>
+          </div>
+        {% elif hit.fragment %}
+          <div class="snippet-text">
+            {% if hit.themes_hit %}
+              {% inline_tag_list hit.themes_hit  %}
+            {% endif %}
+            <a href="{{hit.fragment.get_absolute_url}}">
+              {% if hit.snippet %}
+                {{hit.snippet|safe}}
+              {% else %}
+                {{hit.fragment.text|truncatewords_html:15|safe}}
+              {% endif %}
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
 
-{% ssi_include 'catalogue_book_short' pk=book.pk %}
-
-<div class="snippets">
-  {% for hit in hits %}
-  {% if hit.snippet %}
-  <div class="snippet-text"><a href="{% url 'book_text' book.slug %}#sec{{hit.section_number}}">{{hit.snippet|safe}}</a></div>
-  {% else %}
-  {% if hit.fragment %}
-  <div class="snippet-text">
-    {% if hit.themes_hit %}
-    {% inline_tag_list hit.themes_hit  %}
-    {% endif %}
-    <a href="{{hit.fragment.get_absolute_url}}">
-      {% if hit.snippet %}
-        {{hit.snippet|safe}}
-      {% else %}
-        {{hit.fragment.text|truncatewords_html:15|safe}}
-      {% endif %}
-    </a>
+    <div style="clear: right"></div>
   </div>
-  {% endif %}
-  {% endif %}
-  {% endfor %}
-</div>
-
-<div style="clear: right"></div>
-
-</div>
-
 {% endspaceless %}

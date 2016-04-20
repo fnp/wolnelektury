@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
@@ -7,24 +7,25 @@
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Search" %}</h1>
+  <h1>{% trans "Search" %}</h1>
 
-    <div class="left-column">
+  <div class="left-column">
     <div class="normal-text">
-      <p>    
-	{% if did_you_mean %}
-	<span class="did_you_mean">{% trans "Did you mean" %} <a href="{% url 'search' %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a>?</span>
-	{% endif %}
+      <p>
+        {% if did_you_mean %}
+          <span class="did_you_mean">{% trans "Did you mean" %}
+            <a href="{% url 'search' %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a>?</span>
+        {% endif %}
       </p>
-        <p>{% trans "Sorry! Search cirteria did not match any resources." %}</p>
+      <p>{% trans "Sorry! Search cirteria did not match any resources." %}</p>
 
-		<p>{% blocktrans %}Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.
-		As for now we do not support full text search.{% endblocktrans %}</p>
-        {% include "info/join_us.html" %}
+      <p>{% blocktrans %}Search engine supports following criteria: title, author, theme/topic, epoch, kind and genre.
+        As for now we do not support full text search.{% endblocktrans %}</p>
+      {% include "info/join_us.html" %}
     </div>
-    </div>
+  </div>
 
-    <div class="right-column">
-        {% include "publishing_suggest.html" %}
-    </div>
+  <div class="right-column">
+    {% include "publishing_suggest.html" %}
+  </div>
 {% endblock %}

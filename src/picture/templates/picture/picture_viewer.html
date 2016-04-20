@@ -13,88 +13,92 @@
 
 
 {% block js-dependencies %}
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 {% endblock %}
 
 
 {% block no-menu-extra %}
-<li><a class="square button plus inactive" href="#">+<!--&#x2795;--><!-- heavy plus sign --></a></li><li><a class="square button minus inactive" href="#">-<!-- &#x2796;--><!-- heavy minus sign --></a></li>
+  <li><a class="square button plus inactive" href="#">+<!--&#x2795;--><!-- heavy plus sign --></a></li>
+  <li><a class="square button minus inactive" href="#">-<!-- &#x2796;--><!-- heavy minus sign --></a></li>
 {% endblock %}
 
 
 {% block menu %}
-<li><a style="width: 50%;display: inline-block;" class="square button plus inactive" href="#">+<!--&#x2795;--><!-- heavy plus sign --></a><a style="width: 50%;display: inline-block;" class="square button minus inactive" href="#">-<!-- &#x2796;--><!-- heavy minus sign --></a></li>
+  <li>
+    <a style="width: 50%;display: inline-block;" class="square button plus inactive" href="#">+<!--&#x2795;--><!-- heavy plus sign --></a>
+    <a style="width: 50%;display: inline-block;" class="square button minus inactive" href="#">-<!-- &#x2796;--><!-- heavy minus sign --></a>
+  </li>
 
-{% spaceless %}
-<li>
-    {% with picture.get_previous as prev %}
+  {% spaceless %}
+    <li>
+      {% with picture.get_previous as prev %}
         <a style="width: 50%;display: inline-block;" {% if prev %}href="{% url 'picture_viewer' prev.slug %}"{% endif %}>{% if prev %}&lt;{%endif %}</a>
-    {% endwith %}
-    {% with picture.get_next as next %}
+      {% endwith %}
+      {% with picture.get_next as next %}
         <a style="width: 50%;display: inline-block;" {% if next %}href="{% url 'picture_viewer' next.slug %}"{% endif %}>{% if next %}&gt;{% endif %}</a>
-    {% endwith %}
-</li>
-{% endspaceless %}
+      {% endwith %}
+    </li>
+  {% endspaceless %}
 
+  <li>
+    <a href="{{ picture.get_absolute_url }}" id="menu-book" data-box="book-short">
+      <img src="{% thumbnail picture.image_file '80x200' as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}"
+           width="80"
+           alt="{{ picture.pretty_title }}"
+           title="{{ picture.pretty_title }}">
+    </a>
+  </li>
 
-<li><a href="{{ picture.get_absolute_url }}" id="menu-book" data-box="book-short">
-    <img src="{% thumbnail picture.image_file '80x200' as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}"
-        width="80"
-        alt="{{ picture.pretty_title }}"
-        title="{{ picture.pretty_title }}">
-</a></li>
+  <li><a href="#picture-objects" class="dropdown"><span class="label">{% trans "Objects" %}</span></a></li>
+  <li><a href="#picture-themes" class="dropdown"><span class="label">{% trans "Themes" %}</span></a></li>
 
+  <li id="menu-info">
+    <a href="#info" data-box="info">
+      <span class="label">{% trans "Infobox" %}</span>
+    </a>
+  </li>
 
-<li><a href="#picture-objects" class="dropdown"><span class="label">{% trans "Objects" %}</span></a></li>
-<li><a href="#picture-themes" class="dropdown"><span class="label">{% trans "Themes" %}</span></a></li>
-
-
-<li id="menu-info"><a href="#info" data-box="info">
-    <span class="label">{% trans "Infobox" %}</span>
-</a></li>
-
-<li id="sponsors">
+  <li id="sponsors">
     {% for sponsor in sponsors %}
-        {% thumbnail sponsor.logo "80x200" as logo %}
-            <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}" /></a>
-        {% endthumbnail %}
+      {% thumbnail sponsor.logo "80x200" as logo %}
+        <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}" /></a>
+      {% endthumbnail %}
     {% endfor %}
-</li>
-
+  </li>
 {% endblock %}
 
 {% block main %}
-	<div id="picture-view">
-	  {% thumbnail picture.image_file "700x500" as pic %}
-	  <div class="picture-wrap {% if picture.image_file|is_portrait %}portrait{% endif %}"
-	       data-original-width="{{picture.width}}" data-original-height="{{picture.height}}"
+  <div id="picture-view">
+    {% thumbnail picture.image_file "700x500" as pic %}
+      <div class="picture-wrap {% if picture.image_file|is_portrait %}portrait{% endif %}"
+           data-original-width="{{picture.width}}" data-original-height="{{picture.height}}"
            data-original-url="{{ picture.image_file.url }}"
-	       data-width="{{pic.width}}" data-height="{{pic.height}}" style="background-image: url('{{pic.url}}');  width: {{pic.width}}px; height: {{pic.height}}px;">
-	  </div>
-	  {% endthumbnail %}
-	</div>
+           data-width="{{pic.width}}" data-height="{{pic.height}}" style="background-image: url('{{pic.url}}');  width: {{pic.width}}px; height: {{pic.height}}px;">
+      </div>
+    {% endthumbnail %}
+  </div>
 {% endblock %}
 
 
 {% block footer %}
-{{ picture.html_file.read|safe }}
+  {{ picture.html_file.read|safe }}
 
-<div id="info" class="box">
-	  <div class="sponsors">
-	    <a href="/"><img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury" ></img>
-	    </a>
-        {% for sponsor in sponsors %}
-            {% thumbnail sponsor.logo "220x220" as logo %}
-                <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}" /></a>
-            {% endthumbnail %}
-        {% endfor %}
-	  </div>
+  <div id="info" class="box">
+    <div class="sponsors">
+      <a href="/">
+        <img src="{% static "img/logo-220.png" %}" alt="Wolne Lektury"/>
+      </a>
+      {% for sponsor in sponsors %}
+        {% thumbnail sponsor.logo "220x220" as logo %}
+          <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}"/></a>
+        {% endthumbnail %}
+      {% endfor %}
+    </div>
 
     {% book_info picture %}
-</div>
+  </div>
 
-<div class="box Picture-item" id="book-short">
+  <div class="box Picture-item" id="book-short">
     {% ssi_include 'picture_short' pk=picture.pk %}
-</div>
-
+  </div>
 {% endblock %}

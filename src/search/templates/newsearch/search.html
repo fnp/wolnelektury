@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -9,50 +9,51 @@
 {% block bodyid %}newsearch{% endblock %}
 
 {% block body %}
-    <h1>Search</h1>
-    <form action="{% url 'search' %}" method="get" accept-charset="utf-8" id="search-form-x">
-        <p>
-	  <input type="text" name="q" value="{{request.GET.q}}" style="width:250px; font-size: 1.2em;">
-	  <input type="submit" value="{% trans "Search" %}" /> 
-	  <br />
-	  <input type="checkbox" value="true" name="fuzzy" {% if fuzzy %}checked{% endif %}/> fuzzy.
-	</p>
-    </form>
-    {% if did_you_mean %}
+  <h1>Search</h1>
+  <form action="{% url 'search' %}" method="get" accept-charset="utf-8" id="search-form-x">
+    <p>
+      <input type="text" name="q" value="{{request.GET.q}}" style="width:250px; font-size: 1.2em;"/>
+      <input type="submit" value="{% trans "Search" %}" />
+      <br />
+      <input type="checkbox" value="true" name="fuzzy" {% if fuzzy %}checked{% endif %}/> fuzzy.
+    </p>
+  </form>
+  {% if did_you_mean %}
     Czy miałeś na mysli <a href="?q={{did_you_mean|urlencode}}">{{did_you_mean}}</a>?
-    {% endif %}
+  {% endif %}
 
-
-    <div id="results">
-      <ol>
+  <div id="results">
+    <ol>
       {% for result in results %}
-      <li>
-	<p><a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a> (id: {{result.book_id}}, score: {{result.score}})</p>
-	<ul>
-	  {% for snip in hit.snippets %}
-	  <li>
-	    {{snip|safe}}<br/>
-	  </li>
-	  {% endfor %}
+        <li>
+          <p>
+            <a href="{{result.book.get_absolute_url}}">{{result.book.pretty_title}}</a>
+            (id: {{result.book_id}}, score: {{result.score}})
+          </p>
+          <ul>
+            {% for snip in hit.snippets %}
+              <li>
+                {{snip|safe}}<br/>
+              </li>
+            {% endfor %}
 
-	  {% for part in result.parts %}
-	  {% if part.header %}
-	  <li>W {{part.header}} nr {{part.position}}</li>
-	  {% else %} 
-	  {% if part.fragment %}
-	  <li>
-	    <div style="">Tagi/Motywy: {% for tag in part.fragment.tags %}{{tag.name}} {% endfor %}</div>
-	    {{part.fragment.short_html|safe}}
-	  </li>
-	  {% endif %}
-	  {% endif %}
-	  {% endfor %}
-	</ul>
-      </li>
+            {% for part in result.parts %}
+              {% if part.header %}
+                <li>W {{part.header}} nr {{part.position}}</li>
+              {% else %}
+                {% if part.fragment %}
+                  <li>
+                    <div style="">Tagi/Motywy: {% for tag in part.fragment.tags %}{{tag.name}} {% endfor %}</div>
+                    {{part.fragment.short_html|safe}}
+                  </li>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
       {% empty %}
-      <p>No results.</p>
+        <p>No results.</p>
       {% endfor %}
-      </ol>
-    </div>
-
+    </ol>
+  </div>
 {% endblock %}

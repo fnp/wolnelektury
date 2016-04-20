@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load fnp_share %}
 {% load polls_tags %}
@@ -6,46 +6,38 @@
 {% block titleextra %}{% trans "Thank you for your support!" %}{% endblock %}
 
 {% block body %}
+  <h1>{% trans "Thank you!" %}</h1>
+  <div class="white-box normal-text">
+    <a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
 
-<h1>{% trans "Thank you!" %}</h1>
-<div class="white-box normal-text">
+    <p>{% trans "Thank you for your support!" %}</p>
+    <p>{% blocktrans %}We will contact you if you qualify for perks.{% endblocktrans %}</p>
 
-<a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
+    {% if offer.is_win %}
+      <p>{% trans "Full amount was successfully raised!" %}</p>
+      <p>{% blocktrans with b=offer.title %}Your donation will be spent on digitizing, compiling and
+      publishing the book {{ b }} in multiple formats.{% endblocktrans %}</p>
+    {% else %}
+      <p>{% blocktrans with b=offer.title %}If the full amount needed is raised,
+      your donation will be spent on digitizing, compiling and
+      publishing the book {{ b }} in multiple formats.{% endblocktrans %}</p>
+    {% endif %}
 
-<p>{% trans "Thank you for your support!" %}</p>
-<p>{% blocktrans %}We will contact you if you qualify for perks.{% endblocktrans %}</p>
+    <p>
+      {% include "funding/snippets/any_remaining.html" %}
+      <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.
+    </p>
 
-{% if offer.is_win %}
-    <p>{% trans "Full amount was successfully raised!" %}</p>
-
-    <p>{% blocktrans with b=offer.title %}Your donation will be spent on digitizing, compiling and
-    publishing the book {{ b }} in multiple formats.{% endblocktrans %}</p>
-
-{% else %}
-
-    <p>{% blocktrans with b=offer.title %}If the full amount needed is raised,
-    your donation will be spent on digitizing, compiling and
-    publishing the book {{ b }} in multiple formats.{% endblocktrans %}</p>
-
-{% endif %}
-
-
-<p>{% include "funding/snippets/any_remaining.html" %}
-
-<a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
-
-{% url 'funding_current' offer.slug as current %}
-<p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
+    {% url 'funding_current' offer.slug as current %}
+    <p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
 
 
-<h3>{% trans "Tell your friends!" %}</h3>
-<p class="share">{% share current _("I support Wolne Lektury.") "big" %}</p>
+    <h3>{% trans "Tell your friends!" %}</h3>
+    <p class="share">{% share current _("I support Wolne Lektury.") "big" %}</p>
 
-{% if offer.poll %}
-    <h3>{% trans "Vote for a book for the next fundraiser" %}</h3>
-    {% poll offer.poll %}
-{% endif %}
-</div>
-
-
+    {% if offer.poll %}
+      <h3>{% trans "Vote for a book for the next fundraiser" %}</h3>
+      {% poll offer.poll %}
+    {% endif %}
+  </div>
 {% endblock %}

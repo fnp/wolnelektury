@@ -488,6 +488,7 @@
 
 #book-detail .see-also,
 #picture-detail .see-also {
+  display: inline-block;
   h1 {
     @include size(height, 32px);
     margin: 0;

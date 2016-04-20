@@ -2,45 +2,43 @@
 {% load i18n %}
 
 {% block content_title %}
-    {% if change and 'advanced' in request.GET %}
-        <h1>{{ title }} &mdash; {% trans "advanced" %} </h1>
-    {% else %}
-        {{ block.super }}
-    {% endif %}
+  {% if change and 'advanced' in request.GET %}
+    <h1>{{ title }} &mdash; {% trans "advanced" %} </h1>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
 {% endblock %}
 
 
 {# add an "Advanced" button to tools #}
 
 {% block extrastyle %}
-    {% if change and not is_popup %}
-        {{ block.super }}
-        <style>
-            .object-tools {margin-bottom:0; margin-top:0;}
-            .advancedlink {text-transform: capitalize;}
-        </style>
-    {% else %}
-        {{ block.super }}
-    {% endif %}
+  {% if change and not is_popup %}
+    {{ block.super }}
+    <style>
+      .object-tools {margin-bottom:0; margin-top:0;}
+      .advancedlink {text-transform: capitalize;}
+    </style>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
 {% endblock %}
 
 {% block object-tools %}
-    {% if change and not is_popup %}
-        <div style='margin-bottom: -2em; margin-top: -2.4em; float:right; '>
-        {{ block.super }}
-        <ul class="object-tools"><li>
-        {% if 'advanced' in request.GET %}
+  {% if change and not is_popup %}
+    <div style='margin-bottom: -2em; margin-top: -2.4em; float:right; '>
+      {{ block.super }}
+      <ul class="object-tools">
+        <li>
+          {% if 'advanced' in request.GET %}
             <a href="." class="advancedlink">{% trans "simplified" %}</a>
-        {% else %}
+          {% else %}
             <a href="?advanced" class="advancedlink">{% trans "advanced" %}</a>
-        {% endif %}
-        </li></ul>
-        </div>
-    {% else %}
-        {{ block.super }}
-    {% endif %}
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
 {% endblock %}
-
-
-
-

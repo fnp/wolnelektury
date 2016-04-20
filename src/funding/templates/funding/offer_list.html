@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load url from future %}
 {% load i18n %}
 {% load ssi_include from ssify %}
@@ -9,39 +9,35 @@
 {% block bodyid %}funding-offer-list{% endblock %}
 
 {% block body %}
-<h1>{% trans "All fundraisers" %}</h1>
+  <h1>{% trans "All fundraisers" %}</h1>
 
-
-{% autopaginate object_list 10 %}
-{% if page_obj.number == 1 %}
+  {% autopaginate object_list 10 %}
+  {% if page_obj.number == 1 %}
     <h2>{% trans "Current fundraiser:" %}</h2>
-{% endif %}
+  {% endif %}
 
-{% for offer in object_list %}
-{% with is_win=offer.is_win is_current=offer.is_current %}
-    {% if not is_current  and forloop.first and page_obj.number == 1 %}
+  {% for offer in object_list %}
+    {% with is_win=offer.is_win is_current=offer.is_current %}
+      {% if not is_current  and forloop.first and page_obj.number == 1 %}
         <p class="normal-text">{% trans "No fundraiser is currently running." %}</p>
         <h2>{% trans "Previous fundraisers:" %}</h2>
-    {% endif %}
+      {% endif %}
 
-    {% ssi_include 'funding_list_bar' pk=offer.pk %}
+      {% ssi_include 'funding_list_bar' pk=offer.pk %}
 
-    <div class="white-box normal-text">
+      <div class="white-box normal-text">
         {% if is_current %}
-            <h3>{% trans "Help free the book!" %}</h3>
-            {{ offer.description|safe }}
+          <h3>{% trans "Help free the book!" %}</h3>
+          {{ offer.description|safe }}
         {% endif %}
         {% ssi_include 'funding_status' pk=offer.pk %}
         {% ssi_include 'funding_status_more' pk=offer.pk %}
+      </div>
 
-    </div>
-
-    {% if is_current and not forloop.last %}
+      {% if is_current and not forloop.last %}
         <h2>{% trans "Previous fundraisers:" %}</h2>
-    {% endif %}
-
-{% endwith %}
-{% endfor %}
-{% paginate %}
-
+      {% endif %}
+    {% endwith %}
+  {% endfor %}
+  {% paginate %}
 {% endblock %}

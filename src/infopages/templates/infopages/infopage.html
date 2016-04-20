@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 
 {% block titleextra %}{{ page.title }}{% endblock %}
@@ -6,18 +6,18 @@
 {% block metadescription %}{{ left_column|striptags|truncatewords:10 }}{% endblock %}
 
 {% block body %}
-    <h1>{{ page.title }}</h1>
+  <h1>{{ page.title }}</h1>
 
-    {% autoescape off %}
-    <div class="left-column">
-        <div class="normal-text">
-            {{ left_column }}
-        </div>
+  {% autoescape off %}
+  <div class="left-column">
+    <div class="normal-text">
+      {{ left_column }}
     </div>
-    <div class="right-column">
-        <div class="normal-text">
-            {{ right_column }}
-        </div>
+  </div>
+  <div class="right-column">
+    <div class="normal-text">
+      {{ right_column }}
     </div>
-    {% endautoescape %}
+  </div>
+  {% endautoescape %}
 {% endblock %}

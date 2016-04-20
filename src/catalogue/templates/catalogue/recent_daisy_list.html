@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -7,9 +7,9 @@
 {% block bodyid %}recent-list{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Recent DAISY files" %}</h1>
+  <h1>{% trans "Recent DAISY files" %}</h1>
 
-    <div id="books-list">
-        {% work_list object_list %}
-    </div>
+  <div id="books-list">
+    {% work_list object_list %}
+  </div>
 {% endblock %}

@@ -2,25 +2,25 @@
 {% load book_title_html from catalogue_tags %} 
 
 <div class="cite {% if fragment.short_text %}fragment-with-short{% endif %}">
-	{% if fragment.short_text %}
-	<div class="fragment-short-text">
-    	<blockquote class="cite-body">
-			<a href="{{ fragment.get_absolute_url }}" class="fragment">
-		    	{{ fragment.short_text|safe }}
-			</a>
-	    </blockquote>
-		<a href="#" class="toggle mono">↓ {% trans "Expand fragment" %} ↓</a>
+  {% if fragment.short_text %}
+    <div class="fragment-short-text">
+      <blockquote class="cite-body">
+        <a href="{{ fragment.get_absolute_url }}" class="fragment">
+          {{ fragment.short_text|safe }}
+        </a>
+      </blockquote>
+      <a href="#" class="toggle mono">↓ {% trans "Expand fragment" %} ↓</a>
     </div>
-    {% endif %}
-	<div class="fragment-long-text" {% if fragment.short_text %}style="display:none;"{% endif %}>
+  {% endif %}
+  <div class="fragment-long-text" {% if fragment.short_text %}style="display:none;"{% endif %}>
     <blockquote class="cite-body fragment-text">
-		<a href="{{ fragment.get_absolute_url }}" class="fragment">
+      <a href="{{ fragment.get_absolute_url }}" class="fragment">
         {{ fragment.text|safe }}
-		</a>
+      </a>
     </blockquote>
-		{% if fragment.short_text %}
-		<a href="#" class="toggle mono">↑ {% trans "Hide fragment" %} ↑</a>
-		{% endif %}
-    </div>
-<p class="mono source">{% book_title_html fragment.book %}</p>
+    {% if fragment.short_text %}
+      <a href="#" class="toggle mono">↑ {% trans "Hide fragment" %} ↑</a>
+    {% endif %}
+  </div>
+  <p class="mono source">{% book_title_html fragment.book %}</p>
 </div>

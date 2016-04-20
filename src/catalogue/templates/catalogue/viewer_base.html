@@ -4,72 +4,67 @@
 {% load pipeline %}
 {% load piwik_tags %}
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>{% block title %}{% endblock %} :: {% trans "Wolne Lektury" %}</title>
-        <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
-        {% stylesheet "book_text" %}
-        {% block extrahead %}{% endblock %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{% block title %}{% endblock %} :: {% trans "Wolne Lektury" %}</title>
+    <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
+    {% stylesheet "book_text" %}
+    {% block extrahead %}{% endblock %}
+  </head>
+  <body id="{% block body-id %}reader{% endblock %}">
+    <nav id="no-menu"><ul>
+      <li><a href="#" id="menu-toggle-on"></a></li>
+      {% block no-menu-extra %}{% endblock %}
+    </ul></nav>
 
-    </head>
-    <body id="{% block body-id %}reader{% endblock %}">
-        <nav id="no-menu"><ul>
-            <li><a href="#" id="menu-toggle-on"></a></li>
-            {% block no-menu-extra %}{% endblock %}
-        </ul></nav>
+    <nav id="menu">
+      <ul>
+        <li><a href="#" id="menu-toggle-off"></a></li>
+        <li>
+          <a href="/">
+            <img src="{% static 'img/logo-neon.png' %}" width="80"
+                 alt="Wolne Lektury"
+                 title="Wolne Lektury">
+          </a>
+        </li>
+        {% block menu %}
+        {% endblock menu %}
+      </ul>
+    </nav>
 
-        <nav id="menu"><ul>
-            <li><a href="#" id="menu-toggle-off"></a></li>
-
-            <li><a href="/">
-                <img src="{% static 'img/logo-neon.png' %}" width="80"
-                    alt="Wolne Lektury"
-                    title="Wolne Lektury">
-            </a></li>
-
-            {% block menu %}
-            {% endblock menu %}
-
-        </ul></nav>
-
-        {% block big-pane %}
-        <div id="big-pane">
-
+    <div id="big-pane">
+      {% block big-pane %}
         {% block main %}
-        <article id="main-text">
+          <article id="main-text">
             {% block main-text %}{% endblock %}
-        </article>
+          </article>
         {% endblock main %}
-        {% endblock big-pane %}
+      {% endblock big-pane %}
 
-
-        <footer>
-            {% block footer %}{% endblock %}
-
-            <div id="box-underlay"></div>
-
-            {# template #}
-            <div id="ajaxable-window" class='dialog-window'>
-                <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
-                <div class="target">
-                    <p><img src="{% static "img/indicator.gif" %}" alt="*"/> {% trans "Loading" %}</p>
-                </div>
-            </div>
-        </footer>
-
+      <footer>
+        {% block footer %}{% endblock %}
+        <div id="box-underlay"></div>
+        {# template #}
+        <div id="ajaxable-window" class='dialog-window'>
+          <div class="header"><a href="#" class="jqmClose">{% trans "Close" %}</a></div>
+          <div class="target">
+            <p><img src="{% static "img/indicator.gif" %}" alt="*"/> {% trans "Loading" %}</p>
+          </div>
         </div>
+      </footer>
+    </div>
 
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        {% block js-dependencies %}{% endblock %}
-        <script type="text/javascript">
-            var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
-            var STATIC_URL = "{{ STATIC_URL }}";
-        </script>
-        {% javascript "book_text" %}
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    {% block js-dependencies %}{% endblock %}
+    <script type="text/javascript">
+      var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+      var STATIC_URL = "{{ STATIC_URL }}";
+    </script>
+    {% javascript "book_text" %}
 
-        {% tracking_code %}
-        {% block extrabody %}{% endblock %}
-        <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>
-    </body>
+    {% tracking_code %}
+    {% block extrabody %}{% endblock %}
+    <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>
+  </body>
 </html>

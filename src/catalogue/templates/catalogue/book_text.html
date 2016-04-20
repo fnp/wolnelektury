@@ -9,97 +9,107 @@
 
 
 {% block menu %}
-<li><a href="{{ book.get_absolute_url }}" id="menu-book" data-box="book-short">
-    <img src="{% if book.cover_thumb %}{% thumbnail book.cover_thumb '80x111' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover_thumb.url }}{% endthumbnail %}{% endif %}"
-        width="80" height="111"
-        alt="{{ book.pretty_title }}"
-        title="{{ book.pretty_title }}">
-</a></li>
-
-{% if book.other_versions.exists %}
-    <li id="menu-other"><a href="#" data-box="other">
-        <span class="label">{% trans "Other versions" %}</span>
+  <li>
+    <a href="{{ book.get_absolute_url }}" id="menu-book" data-box="book-short">
+      <img src="{% if book.cover_thumb %}{% thumbnail book.cover_thumb '80x111' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover_thumb.url }}{% endthumbnail %}{% endif %}"
+           width="80" height="111"
+           alt="{{ book.pretty_title }}"
+           title="{{ book.pretty_title }}">
     </a>
+  </li>
+
+  {% if book.other_versions.exists %}
+    <li id="menu-other">
+      <a href="#" data-box="other">
+        <span class="label">{% trans "Other versions" %}</span>
+      </a>
     </li>
-{% endif %}
+  {% endif %}
 
-<li id="menu-toc"><a href="#" data-box="toc">
-    <span class="label">{% trans "Table of contents" %}</span>
-</a></li>
+  <li id="menu-toc">
+    <a href="#" data-box="toc">
+      <span class="label">{% trans "Table of contents" %}</span>
+    </a>
+  </li>
 
-<li id="menu-themes"><a href="#" data-box="themes">
-    <span class="label">{% trans "Themes" %}</span>
-</a></li>
+  <li id="menu-themes">
+    <a href="#" data-box="themes">
+      <span class="label">{% trans "Themes" %}</span>
+    </a>
+  </li>
 
-<li id="menu-settings"><a href="#" data-box="settings">
-    <span class="label">{% trans "Settings" %}</span>
-</a></li>
+  <li id="menu-settings">
+    <a href="#" data-box="settings">
+      <span class="label">{% trans "Settings" %}</span>
+    </a>
+  </li>
 
-<li id="menu-nota_red"><a href="#" data-box="nota_red">
-    <span class="label">{% trans "Edit. note" %}</span>
-</a></li>
+  <li id="menu-nota_red">
+    <a href="#" data-box="nota_red">
+      <span class="label">{% trans "Edit. note" %}</span>
+    </a>
+  </li>
 
-<li id="menu-info"><a href="#info" data-box="info">
-    <span class="label">{% trans "Infobox" %}</span>
-</a></li>
+  <li id="menu-info">
+    <a href="#info" data-box="info">
+      <span class="label">{% trans "Infobox" %}</span>
+    </a>
+  </li>
 {% endblock menu %}
 
 
-
 {% block big-pane %}
-<div id="big-pane" style="">
+  <article id="main-text">
+    <!--#include file='{{ book.html_file.url }}'-->
+  </article>
 
-<article id="main-text">
-<!--#include file='{{ book.html_file.url }}'-->
-</article>
-
-<article id="other-text">
+  <article id="other-text">
     <a class="other-text-close" href="#">{% trans "Close" %}</a>
     <div id="other-text-waiter">{% trans "Please wait..." %}</div>
     <div id="other-text-body" style="display: none;"></div>
-</article>
+  </article>
 {% endblock big-pane %}
 
 
-
-
-
 {% block footer %}
-<div id="info" class="box">
-    {% book_info book %}
-</div>
+  <div id="info" class="box">
+      {% book_info book %}
+  </div>
 
-{% if book.other_versions.exists %}
-<div class="box" id="other">
-    <h2>{% trans "Other versions of the book" %}</h2>
-    <a class="other-text-close" href="#">{% trans "Close the other version" %}</a>
-    <ul>
-    {% spaceless %}
-    {% for other_version in book.other_versions %}
-        <li>
-          <a class="display-other"
-              data-other="{{ other_version.html_file.url }}"
-              href="{% url 'book_text' other_version.slug %}">
-            {% cache 86400 book_mini_box other_version.pk %}
-              {% include 'catalogue/book_mini_box.html' with book=other_version no_link=True %}
-            {% endcache %}
-            {#% ssi_include 'catalogue_book_mini_nolink' pk=other_version.pk %#}
-          </a>
-        </li>
-    {% endfor %}
-    {% endspaceless %}
-    </ul>
-</div>
-{% endif %}
+  {% if book.other_versions.exists %}
+    <div class="box" id="other">
+      <h2>{% trans "Other versions of the book" %}</h2>
+      <a class="other-text-close" href="#">{% trans "Close the other version" %}</a>
+      <ul>
+        {% spaceless %}
+          {% for other_version in book.other_versions %}
+            <li>
+              <a class="display-other"
+                 data-other="{{ other_version.html_file.url }}"
+                 href="{% url 'book_text' other_version.slug %}">
+                {% cache 86400 book_mini_box other_version.pk %}
+                  {% include 'catalogue/book_mini_box.html' with book=other_version no_link=True %}
+                {% endcache %}
+                {#% ssi_include 'catalogue_book_mini_nolink' pk=other_version.pk %#}
+              </a>
+            </li>
+          {% endfor %}
+        {% endspaceless %}
+      </ul>
+    </div>
+  {% endif %}
 
-<div class="box" id="settings">
+  <div class="box" id="settings">
     <h2>{% trans "Settings" %}</h2>
-    <a href="#" class="settings-switch" id="settings-line-numbers" data-setting="always-hide-line-numbers">{% trans "Display line numbers" %}</a><br/>
-    <a href="#" class="settings-switch" id="settings-themes" data-setting="always-hide-themes">{% trans "Display themes" %}</a><br/>
-    <a href="#" class="settings-switch" id="settings-annotations" data-setting="no-annotations">{% trans "Display footnotes" %}</a><br/>
-</div>
+    <a href="#" class="settings-switch" id="settings-line-numbers"
+       data-setting="always-hide-line-numbers">{% trans "Display line numbers" %}</a><br/>
+    <a href="#" class="settings-switch" id="settings-themes"
+       data-setting="always-hide-themes">{% trans "Display themes" %}</a><br/>
+    <a href="#" class="settings-switch" id="settings-annotations"
+       data-setting="no-annotations">{% trans "Display footnotes" %}</a><br/>
+  </div>
 
-<div class="box" id="book-short">
+  <div class="box" id="book-short">
     {% ssi_include 'catalogue_book_short' pk=book.pk %}
-</div>
+  </div>
 {% endblock footer %}

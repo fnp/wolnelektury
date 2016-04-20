@@ -1,19 +1,19 @@
 {% spaceless %}
 
-{% load pagination_tags %}
-{% load class_name from catalogue_tags %}
-{% load ssi_include from ssify %}
+  {% load pagination_tags %}
+  {% load class_name from catalogue_tags %}
+  {% load ssi_include from ssify %}
 
-{% autopaginate object_list 10 %}
+  {% autopaginate object_list 10 %}
 
-<ol class='work-list'>
-{% for item in object_list %}
-    <li class='{{ item|class_name }}-item'>
+  <ol class='work-list'>
+    {% for item in object_list %}
+      <li class='{{ item|class_name }}-item'>
         {% ssi_include item.short_html_url_name pk=item.pk %}
-    </li>
-{% endfor %}
-</ol>
+      </li>
+    {% endfor %}
+  </ol>
 
-{% paginate %}
+  {% paginate %}
 
 {% endspaceless %}

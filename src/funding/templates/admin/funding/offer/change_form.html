@@ -2,30 +2,26 @@
 {% load i18n %}
 
 {% block extrahead %}
-{{ block.super }}
-<script type="text/javascript">
-(function($) {
-    $(document).ready(function($) {
-        $("#generated-switch").click(function() {
-            $('#generated').toggle()
+  {{ block.super }}
+  <script type="text/javascript">
+    (function($) {
+        $(document).ready(function($) {
+            $("#generated-switch").click(function() {
+                $('#generated').toggle()
+            });
         });
-    });
-})(django.jQuery);
-</script>
+    })(django.jQuery);
+  </script>
 {% endblock %}
 
-
-
 {% block pretitle %}
-
-
-<a id="generated-switch">↓ {% trans "fundings" %} ↓</a>
-<div id="generated" style="display:none; padding:1em; border: 1px solid #aaa;">{% spaceless %}
+  <a id="generated-switch">↓ {% trans "fundings" %} ↓</a>
+  <div id="generated" style="display:none; padding:1em; border: 1px solid #aaa;">{% spaceless %}
     {% for funding in original.funders %}
-        {% if funding.name %}
-            &lt;dc:contributor.funding xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">{{ funding.name }}&lt;/dc:contributor.funding><br/>
-        {% endif %}
+      {% if funding.name %}
+        &lt;dc:contributor.funding xml:lang="pl" xmlns:dc="http://purl.org/dc/elements/1.1/">{{ funding.name }}&lt;/dc:contributor.funding><br/>
+      {% endif %}
     {% endfor %}
-{% endspaceless %}</div>
-{{ block.super }}
+  {% endspaceless %}</div>
+  {{ block.super }}
 {% endblock %}

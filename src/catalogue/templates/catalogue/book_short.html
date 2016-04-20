@@ -1,129 +1,127 @@
 {% spaceless %}
-{% load i18n %}
-{% load catalogue_tags %}
-{% load book_shelf_tags from social_tags %}
-<div class="{% block box-class %}book-box{% if audiobooks %} audiobook-box{% endif %}{% endblock %}">
-<div class="book-box-inner">
+  {% load i18n %}
+  {% load catalogue_tags %}
+  {% load book_shelf_tags from social_tags %}
 
-{% block book-box-pre %}
-    {% include "catalogue/snippets/like_button.html" %}
-{% endblock %}
+  <div class="{% block box-class %}book-box{% if audiobooks %} audiobook-box{% endif %}{% endblock %}">
+    <div class="book-box-inner">
 
-<div class="book-left-column">
+    {% block book-box-pre %}
+      {% include "catalogue/snippets/like_button.html" %}
+    {% endblock %}
 
-    <div class="book-box-body">
+    <div class="book-left-column">
+      <div class="book-box-body">
         {% block book-box-body-pre %}
         {% endblock %}
 
         <div class="book-box-head">
-            <div class="author">
-                {% for tag in tags.author %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},
-                {% endif %}{% endfor %}{% for parent in parents %},
-                    <a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a>{% endfor %}
-            </div>
-            <div class="title">
-                {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
-            </div>
+          <div class="author">
+            {% for tag in tags.author %}
+              <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},
+            {% endif %}{% endfor %}{% for parent in parents %},
+              <a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a>{% endfor %}
+          </div>
+          <div class="title">
+            {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
+          </div>
         </div>
 
         <div class="cover-area">
-            {% if book.cover_thumb %}
-                {% if main_link %}<a href="{{ main_link }}">{% endif %}
-                    <img src="{{ book.cover_thumb.url }}" alt="Cover" class="cover" />
-                {% if main_link %}</a>{% endif %}
-            {% endif %}
-            {% block cover-area-extra %}{% endblock %}
+          {% if book.cover_thumb %}
+            {% if main_link %}<a href="{{ main_link }}">{% endif %}
+              <img src="{{ book.cover_thumb.url }}" alt="Cover" class="cover" />
+            {% if main_link %}</a>{% endif %}
+          {% endif %}
+          {% block cover-area-extra %}{% endblock %}
         </div>
 
         <div class="tags">
-            {% spaceless %}
+          <span class="category">
+          <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
+            {% for tag in tags.epoch %}
+              <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+              {% if not forloop.last %}<span>, </span>{% endif %}
+            {% endfor %}
+          </span></span>
 
-            <span class="category">
-            <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for tag in tags.epoch %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
-                    {% if not forloop.last %}<span>, </span>{% endif %}
-                {% endfor %}
-            </span></span>
+          <span class="category">
+          <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
+            {% for tag in tags.kind %}
+              <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+              {% if not forloop.last %}<span>, </span>{% endif %}
+            {% endfor %}
+          </span></span>
 
-            <span class="category">
-            <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for tag in tags.kind %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
-                    {% if not forloop.last %}<span>, </span>{% endif %}
-                {% endfor %}
-            </span></span>
+          <span class="category">
+          <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
+            {% for tag in tags.genre %}
+              <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+              {% if not forloop.last %}<span>, </span>{% endif %}
+            {% endfor %}
+          </span></span>
 
+          {% if show_lang %}
             <span class="category">
-            <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
-                {% for tag in tags.genre %}
-                    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
-                    {% if not forloop.last %}<span>, </span>{% endif %}
-                {% endfor %}
-            </span></span>
-
-            {% if show_lang %}
-            <span class="category">
-            <span class="mono"> {% trans "Language" %}:</span>&nbsp;<span class="book-box-tag">
+              <span class="mono"> {% trans "Language" %}:</span>&nbsp;<span class="book-box-tag">
                 <a>{{ book.language_name }}</a>
-            </span></span>
-            {% endif %}
-
-            {% if stage_note %}
-            <br><span class="category">
-                <a{% if stage_note_url %} href="{{ stage_note_url }}"{% endif %}>{{ stage_note }}</a>
+              </span>
             </span>
-            {% endif %}
+          {% endif %}
 
-           {% endspaceless %}
+          {% if stage_note %}
+            <br>
+            <span class="category">
+              <a{% if stage_note_url %} href="{{ stage_note_url }}"{% endif %}>{{ stage_note }}</a>
+            </span>
+          {% endif %}
         </div>
-    </div>
-    {% book_shelf_tags book.pk %}
+      </div>
+      {% book_shelf_tags book.pk %}
 
-    <ul class="book-box-tools">
+      <ul class="book-box-tools">
         <li class="book-box-read">
-        {% if book.html_file %}
+          {% if book.html_file %}
             <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
-        {% endif %}
+          {% endif %}
         </li>
         <li class="book-box-download">
-            <a class="downarrow">{% trans "Download" %}: </a>
-            <div class="book-box-formats">
-             {% if book.pdf_file %}
-             <span><a href="{{ book.pdf_file.url}}">PDF</a></span>
-             {% endif %}
-             {% custom_pdf_link_li book %}
-             {% if book.epub_file %}
-             <span><a href="{{ book.epub_file.url}}">EPUB</a></span>
-             {% endif %}
-             {% if book.mobi_file %}
-             <span><a href="{{ book.mobi_file.url}}">MOBI</a></span>
-             {% endif %}
-             {% if  book.fb2_file %}
-             <span><a href="{{ book.fb2_file.url}}">FB2</a></span>
-             {% endif %}
-             {% if  book.txt_file %}
-             <span><a href="{{ book.txt_file.url}}">TXT</a></span>
-             {% endif %}
-             {% download_audio book %}
-            </div>
+          <a class="downarrow">{% trans "Download" %}:</a>
+          <div class="book-box-formats">
+            {% if book.pdf_file %}
+              <span><a href="{{ book.pdf_file.url}}">PDF</a></span>
+            {% endif %}
+            {% custom_pdf_link_li book %}
+            {% if book.epub_file %}
+              <span><a href="{{ book.epub_file.url}}">EPUB</a></span>
+            {% endif %}
+            {% if book.mobi_file %}
+              <span><a href="{{ book.mobi_file.url}}">MOBI</a></span>
+            {% endif %}
+            {% if  book.fb2_file %}
+              <span><a href="{{ book.fb2_file.url}}">FB2</a></span>
+            {% endif %}
+            {% if  book.txt_file %}
+              <span><a href="{{ book.txt_file.url}}">TXT</a></span>
+            {% endif %}
+            {% download_audio book %}
+          </div>
         </li>
-    </ul>
-    {% block book-box-extra-info %}{% endblock %}
-    {% block box-append %}
-    {% endblock %}
-</div>
+      </ul>
+      {% block book-box-extra-info %}{% endblock %}
+      {% block box-append %}
+      {% endblock %}
+    </div>
 
-{% block right-column %}
-    {% if audiobooks %}
+    {% block right-column %}
+      {% if audiobooks %}
         <div class="audiobook-right-column">
-            {% include 'catalogue/snippets/jplayer.html' %}
+          {% include 'catalogue/snippets/jplayer.html' %}
         </div>
-    {% endif %}
-{% endblock %}
+      {% endif %}
+    {% endblock %}
 
-<div class="clearboth"></div>
-</div>
-</div>
+    <div class="clearboth"></div>
+    </div>
+  </div>
 {% endspaceless %}

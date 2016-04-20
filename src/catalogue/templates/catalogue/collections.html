@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 {% load ssi_include from ssify %}
@@ -8,15 +8,12 @@
 {% block bodyid %}collections{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Collections" %}</h1>
+  <h1>{% trans "Collections" %}</h1>
 
-    {% for obj in best %}
-        {% ssi_include 'catalogue_collection_box' pk=obj.pk %}
-    {% endfor %}
+  {% for obj in best %}
+    {% ssi_include 'catalogue_collection_box' pk=obj.pk %}
+  {% endfor %}
 
-    <h2>{% trans "All collections" %}</h2>
-    {% plain_list objects %}
-
-
-
+  <h2>{% trans "All collections" %}</h2>
+  {% plain_list objects %}
 {% endblock %}

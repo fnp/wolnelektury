@@ -1,9 +1,7 @@
 {% spaceless %}
-
-<ol>
-{% for post in posts %}
-    <li><a href="{{ post.link }}">{{ post.title }}</a></li>
-{% endfor %}
-</ol>
-
+  <ol>
+    {% for post in posts %}
+      <li><a href="{{ post.link }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ol>
 {% endspaceless %}

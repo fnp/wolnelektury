@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 {% load static %}
@@ -10,16 +10,17 @@
 
 
 {% block body %}
-    <h1>{% block book_list_header %}{% trans "Listing of all works" context "gallery" %}{% endblock %}</h1>
+  <h1>{% block book_list_header %}{% trans "Listing of all works" context "gallery" %}{% endblock %}</h1>
 
-    <div class="left-column"><div class="normal-text">
-        {% block book_list_info %}
-            {% ssi_include 'chunk' key='picture-list' %}
-        {% endblock %}
-    </div></div>
+  <div class="left-column">
+    <div class="normal-text">
+      {% block book_list_info %}
+        {% ssi_include 'chunk' key='picture-list' %}
+      {% endblock %}
+    </div>
+  </div>
 
-    <div class='clearboth'></div>
+  <div class='clearboth'></div>
 
-{% work_list picture_list %}
-
+  {% work_list picture_list %}
 {% endblock %}

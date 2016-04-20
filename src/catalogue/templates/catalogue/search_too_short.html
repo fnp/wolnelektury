@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags pagination_tags %}
 
@@ -7,11 +7,10 @@
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Search" %}</h1>
+  <h1>{% trans "Search" %}</h1>
 
-    <div id="books-list">
-        <p>{% trans "Sorry! Search query must have at least two characters." %}</p>
-        {% include "info/join_us.html" %}
-    </div>
-
+  <div id="books-list">
+    <p>{% trans "Sorry! Search query must have at least two characters." %}</p>
+    {% include "info/join_us.html" %}
+  </div>
 {% endblock %}

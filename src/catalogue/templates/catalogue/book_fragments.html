@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load work_list from catalogue_tags %}
 
@@ -7,14 +7,14 @@
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}
-    <div class="left-column">
-    <h1>{% trans "Theme" %}
-    	<a href="{{ theme.get_absolute_url }}">{{ theme }}</a>
-    	<br/>{% trans "in work " %}
-    	<a href="{{ book.get_absolute_url }}">{{ book }}</a></h1>
-    </div>
+  <div class="left-column">
+  <h1>{% trans "Theme" %}
+    <a href="{{ theme.get_absolute_url }}">{{ theme }}</a>
+    <br/>{% trans "in work " %}
+    <a href="{{ book.get_absolute_url }}">{{ book }}</a></h1>
+  </div>
 
-    <div class="right-column">
-        {% work_list fragments %}
-    </div>
+  <div class="right-column">
+    {% work_list fragments %}
+  </div>
 {% endblock %}

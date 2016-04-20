@@ -2,26 +2,26 @@
 {% load catalogue_tags %}
 
 {% if choices %}
-    {% if category_choices %}
-        <ul>
-        {% for tag in category_choices %}
-            <li class="active">{{ tag }} <a href="{% catalogue_url list_type choices -tag %}">X</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+  {% if category_choices %}
+    <ul>
+      {% for tag in category_choices %}
+        <li class="active">{{ tag }} <a href="{% catalogue_url list_type choices -tag %}">X</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endif %}
 {% if tags %}
-    <ul>
-        {% for tag in tags %}
-            <li><a href="{% catalogue_url list_type choices tag %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
-        {% endfor %}
-    </ul>
+  <ul>
+    {% for tag in tags %}
+      <li><a href="{% catalogue_url list_type choices tag %}">{{ tag }}{% if tag.count %}&nbsp;({{ tag.count }}){% endif %}</a></li>
+    {% endfor %}
+  </ul>
 {% endif %}
 {% if other %}
-    <ul>
-        <li class="header">{% trans "Other" %}:</li>
-        {% for tag in other %}
-            <li class="other"><a href="{% catalogue_url list_type tag %}">{{ tag }}</a></li>
-        {% endfor %}
-    </ul>
+  <ul>
+    <li class="header">{% trans "Other" %}:</li>
+    {% for tag in other %}
+      <li class="other"><a href="{% catalogue_url list_type tag %}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
 {% endif %}

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load time_tags %}
 
@@ -9,27 +9,32 @@
 {% block bodyid %}book-stub-detail{% endblock %}
 
 {% block body %}
-    <div class="left-column">
+  <div class="left-column">
     <h1>{{ book.author }}, {{ book.title }}</h1>
-	<div class="normal-text white-box">
+    <div class="normal-text white-box">
+      {% if book.in_pd %}
+        <p>{% trans "This work is in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
+      {% else %}
+        {% if book.pd %}
+          <p>
+            {% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}
+          </p>
+          <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
+          <p>
+            {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}
+          </p>
+        {% else %}
+          <p>
+            {% trans "This work is copyrighted." %}
+            {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}
+          </p>
+        {% endif %}
+      {% endif %}
+      {% include "info/join_us.html" %}
+    </div>
+  </div>
 
-    {% if book.in_pd %}
-		<p>{% trans "This work is in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
-	{% else %}
-	    {% if book.pd %}
-			<p>{% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}</p>
-            <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
-			<p>{% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}</p>
-		{% else %}
-		    <p>{% trans "This work is copyrighted." %}
-		    {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}</p>
-		{% endif %}
-	{% endif %}
-    {% include "info/join_us.html" %}
-    </div>
-    </div>
-
-    <div class="right-column block-form">
-        {% include "publishing_suggest.html" %}
-    </div>
+  <div class="right-column block-form">
+    {% include "publishing_suggest.html" %}
+  </div>
 {% endblock %}

@@ -4,14 +4,16 @@
 
 <div class="area">
   <div class="area-thumbnail">
-    <a href="{% url 'picture_viewer' area.picture.slug %}{% if theme %}#theme-{{theme.slug}}{% else %}#object-{{thing.slug}}{% endif %}"><img src='{% area_thumbnail_url area "100x100" %}' /></a>
+    <a href="{% url 'picture_viewer' area.picture.slug %}{% if theme %}#theme-{{theme.slug}}{% else %}#object-{{thing.slug}}{% endif %}">
+      <img src='{% area_thumbnail_url area "100x100" %}'/>
+    </a>
   </div>
   {% with area.picture as picture %}
-  <div class="area-description">
-            <div class="mono source">
-	      {% book_title_html picture %}
-	    </div>
-  </div>
-  <div style="clear:both"/>
+    <div class="area-description">
+      <div class="mono source">
+        {% book_title_html picture %}
+      </div>
+    </div>
+    <div style="clear:both"></div>
   {% endwith %}
 </div>

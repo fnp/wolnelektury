@@ -1,9 +1,7 @@
 {% spaceless %}
-
-<ul class='social-shelf-tags'>
+  <ul class='social-shelf-tags'>
     {% for tag in tags %}
-        <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
+      <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
     {% endfor %}
-</ul>
-
+  </ul>
 {% endspaceless %}

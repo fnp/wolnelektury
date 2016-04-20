@@ -1,59 +1,63 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 
 {% block titleextra %}{% trans "Remaining funds" %}{% endblock %}
 
 {% block body %}
+  <h1>{% trans "Remaining funds" %}</h1>
 
-<h1>{% trans "Remaining funds" %}</h1>
+  <div class="left-column normal-text">
+    <p>
+      {% blocktrans with r="http://redakcja.wolnelektury.pl/" %}
+        If the full amount needed for publishing a book is not raised in time,
+        the funds are spent on <a href="{{r}}">other books waiting for
+        publication</a>. The same thing happens with any money remaining
+        from successful fundraisers.
+      {% endblocktrans %}
 
-<div class="left-column normal-text">
-<p>{% blocktrans with r="http://redakcja.wolnelektury.pl/" %}If
-the full amount needed for publishing a book is not raised in time,
-the funds are spent on <a href="{{r}}">other books waiting for
-publication</a>. The same thing happens with any money remaining
-from successful fundraisers.{% endblocktrans %}
+      <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.
+    </p>
 
-<a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
+    <p>{% trans "Spending these remaining funds is recorded in this table." %}</p>
+  </div>
 
-<p>{% trans "Spending these remaining funds is recorded in this table." %}</p>
-</div>
-
-<table class="normal-text wlfund">
+  <table class="normal-text wlfund">
 
     <tr>
-        <td>{% trans "Date" %}:</td>
-        <td>{% trans "Operation" %}:</td>
-        <td>{% trans "Amount" %}:</td>
-        <td>{% trans "Balance" %}:</td>
+      <td>{% trans "Date" %}:</td>
+      <td>{% trans "Operation" %}:</td>
+      <td>{% trans "Amount" %}:</td>
+      <td>{% trans "Balance" %}:</td>
     </tr>
 
     {% for tag, entry in log %}
-    {% if tag == 'spent' %}
+      {% if tag == 'spent' %}
         <tr class="funding-minus">
-            <td class="oneline">{{ entry.timestamp }}</td>
-            <td>{% trans "Money spent on publishing the book" %}:
-                <a href="{{ entry.book.get_absolute_url }}">
-                {{ entry.book }}</a></td>
-            <td>-{{ entry.amount }}&nbsp;zł</td>
-            <td>{{ entry.total }}&nbsp;zł</td>
+          <td class="oneline">{{ entry.timestamp }}</td>
+          <td>
+            {% trans "Money spent on publishing the book" %}:
+            <a href="{{ entry.book.get_absolute_url }}">{{ entry.book }}</a>
+          </td>
+          <td>-{{ entry.amount }}&nbsp;zł</td>
+          <td>{{ entry.total }}&nbsp;zł</td>
         </tr>
-    {% else %}
+      {% else %}
         <tr class="funding-plus">
-            <td class="oneline">{{ entry.end }}</td>
-            <td>{% trans "Money remaining from the fundraiser for" %}:
-                <a href="{{ entry.get_absolute_url }}">
-                {{ entry }}</a></td>
-            <td>+{{ entry.wlfund }}&nbsp;zł</td>
-            <td>{{ entry.total }}&nbsp;zł</td>
+          <td class="oneline">{{ entry.end }}</td>
+          <td>
+            {% trans "Money remaining from the fundraiser for" %}:
+            <a href="{{ entry.get_absolute_url }}">{{ entry }}</a>
+          </td>
+          <td>+{{ entry.wlfund }}&nbsp;zł</td>
+          <td>{{ entry.total }}&nbsp;zł</td>
         </tr>
-    {% endif %}
+      {% endif %}
     {% empty %}
-        <tr><td colspan="4" style="text-align:center; color: #888;">
-            <em>{% trans "There are no previous fundraisers to show yet." %}</em>
-        </td></tr>
+      <tr>
+        <td colspan="4" style="text-align:center; color: #888;">
+          <em>{% trans "There are no previous fundraisers to show yet." %}</em>
+        </td>
+      </tr>
     {% endfor %}
-</table>
-
-
+  </table>
 {% endblock %}

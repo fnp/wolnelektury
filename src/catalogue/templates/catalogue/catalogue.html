@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -8,14 +8,13 @@
 {% block bodyid %}catalogue-catalogue{% endblock %}
 
 {% block body %}
-    <h1>{% trans "All works" %}</h1>
-
-
-    <div class="normal-text catalogue-catalogue">
-
-    <p><a href="{% url 'reporting_catalogue_pdf' %}">
+  <h1>{% trans "All works" %}</h1>
+  <div class="normal-text catalogue-catalogue">
+    <p>
+      <a href="{% url 'reporting_catalogue_pdf' %}">
         {% trans "Download the catalogue in PDF format." %}
-    </a></p>
+      </a>
+    </p>
 
     <h2>{% trans "Literature" %}</h2>
     {% plain_list books by_author=True paged=False initial_blocks=True %}
@@ -25,7 +24,5 @@
 
     <h2>{% trans "Gallery" %}</h2>
     {% plain_list pictures by_author=True paged=False initial_blocks=True %}
-
-
-    </div>
+  </div>
 {% endblock %}

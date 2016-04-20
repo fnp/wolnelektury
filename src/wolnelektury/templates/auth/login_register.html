@@ -4,21 +4,18 @@
 {% load ssi_csrf_token from ssify %}
 
 {% block extra %}
+  {{ block.super }}
 
-{{ block.super }}
+  <h1>{% trans "or register" %}:</h1>
 
-<h1>{% trans "or register" %}:</h1>
-
-<form action="{% url 'register' %}" method="post" accept-charset="utf-8"
-	class="cuteform hidelabels">
-{% ssi_csrf_token %}
-{% render_honeypot_field %}
-<ol>
-    <div id="id_register-__all__"></div>
-    {{ register_form.as_ul }}
-    <li><input type="submit" value="{{ register_submit }}"/></li>
-</ol>
-</form>
-
-
+  <form action="{% url 'register' %}" method="post" accept-charset="utf-8"
+        class="cuteform hidelabels">
+    {% ssi_csrf_token %}
+    {% render_honeypot_field %}
+    <ol>
+      <div id="id_register-__all__"></div>
+      {{ register_form.as_ul }}
+      <li><input type="submit" value="{{ register_submit }}"/></li>
+    </ol>
+  </form>
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 {% load ssi_include from ssify %}
@@ -8,14 +8,13 @@
 {% block titleextra %}{% trans "Listing of all works" %}{% endblock %}
 
 {% block body %}
-{% spaceless %}
-
+  {% spaceless %}
     <h1>{% block book_list_header %}{% trans "Listing of all works" %}{% endblock %}</h1>
 
     <div class="left-column"><div class="normal-text" style="margin-bottom: 2em">
-        {% block book_list_info %}
-            {% ssi_include 'chunk' key='book-list' %}
-        {% endblock %}
+      {% block book_list_info %}
+        {% ssi_include 'chunk' key='book-list' %}
+      {% endblock %}
     </div></div>
 
     <div style='clear:both;'></div>
@@ -23,10 +22,10 @@
     <a name="top"></a>
 
     <div id="book-list-nav">
-        <h2>{% trans "Table of Content" %}</h2>
-        <div id="book-list-nav-index">
-            {{ rendered_nav }}
-        </div>
+      <h2>{% trans "Table of Content" %}</h2>
+      <div id="book-list-nav-index">
+        {{ rendered_nav }}
+      </div>
     </div>
     <div id="book-list">
       {% block book_list %}
@@ -34,6 +33,5 @@
       {% endblock %}
     </div>
     <a id="book-list-up" href="#top">{% trans "↑ top ↑" %}</a>
-
-{% endspaceless %}
+  {% endspaceless %}
 {% endblock %}

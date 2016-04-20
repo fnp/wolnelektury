@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% load time_tags %}
 
@@ -9,48 +9,57 @@
 {% block bodyid %}author-detail{% endblock %}
 
 {% block body %}
-
-    <div class="left-column">
+  <div class="left-column">
     <h1>{{ author.name }}</h1>
-	<div class="normal-text white-box">
-        {% if author.has_description %}
-            <div id="description">
-                <div id='description-long'>{{ author.description|safe }}</div>
-                <div id='description-short'>{{ author.description|safe|truncatewords_html:30 }}</div>
-            </div>
-            <div class="clearboth"></div>
-            <div id="toggle-description"><p></p></div>
-        {% endif %}
-        {% if author.gazeta_link %}
-        <p><a href="{{ author.gazeta_link }}">
+    <div class="normal-text white-box">
+      {% if author.has_description %}
+        <div id="description">
+          <div id='description-long'>{{ author.description|safe }}</div>
+          <div id='description-short'>{{ author.description|safe|truncatewords_html:30 }}</div>
+        </div>
+        <div class="clearboth"></div>
+        <div id="toggle-description"><p></p></div>
+      {% endif %}
+      {% if author.gazeta_link %}
+        <p>
+          <a href="{{ author.gazeta_link }}">
             {% trans "Read work's study of this author on Lektury.Gazeta.pl" %}
-        </a></p>
-        {% endif %}
-        {% if author.wiki_link %}
-        <p><a href="{{ author.wiki_link }}">
+          </a>
+        </p>
+      {% endif %}
+      {% if author.wiki_link %}
+        <p>
+          <a href="{{ author.wiki_link }}">
             {% trans "Read article about this author on Wikipedia" %}
-        </a></p>
-        {% endif %}
+          </a>
+        </p>
+      {% endif %}
 
-        {% if author.alive %}
-            <p>{% trans "This author's works are copyrighted." %}
-            {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
+      {% if author.alive %}
+        <p>
+          {% trans "This author's works are copyrighted." %}
+          {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}
+        </p>
+      {% else %}
+        {% if author.in_pd %}
+          <p>{% trans "This author's works are in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
         {% else %}
-            {% if author.in_pd %}
-                <p>{% trans "This author's works are in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
-            {% else %}
-                <div>
-                    <p>{% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}</p>
-                    <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
-                    <p>{% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}</p>
-                </div>
-            {% endif %}
+          <div>
+            <p>
+              {% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}
+            </p>
+            <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
+            <p>
+              {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}
+            </p>
+          </div>
         {% endif %}
-        {% include "info/join_us.html" %}
+      {% endif %}
+      {% include "info/join_us.html" %}
     </div>
-    </div>
+  </div>
 
-    <div class="right-column block-form">
-        {% include "publishing_suggest.html" %}
-    </div>
+  <div class="right-column block-form">
+    {% include "publishing_suggest.html" %}
+  </div>
 {% endblock %}

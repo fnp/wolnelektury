@@ -1,18 +1,18 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 
 {% block titleextra %}{{ title }}{% endblock %}
 
 {% block body %}
 
-    <div class="white-box">
+  <div class="white-box">
 
-    {% include ajax_template %}
+  {% include ajax_template %}
 
-    {% if response_data.message %}
-        <p>{{ response_data.message }}</p>
-    {% endif %}
+  {% if response_data.message %}
+    <p>{{ response_data.message }}</p>
+  {% endif %}
 
-    </div>
+  </div>
 
 {% endblock %}

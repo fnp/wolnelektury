@@ -1,8 +1,8 @@
 {% if fragment %}
-<a href="{{ fragment.get_absolute_url }}" class="cite">
+  <a href="{{ fragment.get_absolute_url }}" class="cite">
     <blockquote class="cite-body">
-        {{ fragment.get_short_text|safe }}
+      {{ fragment.get_short_text|safe }}
     </blockquote>
     <p class="mono source">{{ fragment.book.pretty_title }}</p>
-</a>
+  </a>
 {% endif %}

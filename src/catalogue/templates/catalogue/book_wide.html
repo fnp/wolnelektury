@@ -1,6 +1,6 @@
 {% extends "catalogue/book_short.html" %}
 {% load i18n %}
-{% load choose_fragment download_audio custom_pdf_link_li license_icon source_name from catalogue_tags %}
+{% load choose_fragment license_icon from catalogue_tags %}
 {% load choose_cite from social_tags %}
 {% load ssi_include from ssify %}
 
@@ -9,9 +9,9 @@
 
 
 {% block cover-area-extra %}
-{% if extra_info.license %}
-  {% license_icon extra_info.license %}
-{% endif %}
+  {% if extra_info.license %}
+    {% license_icon extra_info.license %}
+  {% endif %}
 {% endblock %}
 
 
@@ -33,7 +33,7 @@
 
 
 {% block book-box-body-pre %}
-    {% include "catalogue/snippets/like_button.html" %}
+  {% include "catalogue/snippets/like_button.html" %}
 {% endblock %}
 
 {% block book-box-pre %}

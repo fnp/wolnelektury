@@ -1,18 +1,15 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 
 
 {% block titleextra %}{% trans "User" %}{% endblock %}
 
 {% block body %}
+  <div class="normal-text white-box">
+    <h1>{% trans "User" %}</h1>
 
-<div class="normal-text white-box">
-
-<h1>{% trans "User" %}</h1>
-
-<p><a href="{% url 'account_set_password' %}">{% trans "Password" %}</a></p>
-<p><a href="{% url 'account_email' %}">{% trans "E-mail" %}</a></p>
-<p><a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a></p>
-</div>
-
+    <p><a href="{% url 'account_set_password' %}">{% trans "Password" %}</a></p>
+    <p><a href="{% url 'account_email' %}">{% trans "E-mail" %}</a></p>
+    <p><a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a></p>
+  </div>
 {% endblock %}
