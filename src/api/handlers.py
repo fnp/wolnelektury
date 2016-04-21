@@ -6,6 +6,7 @@ import json
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.db.models import Prefetch
 from django.utils.functional import lazy
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
@@ -13,6 +14,7 @@ from sorl.thumbnail import default
 
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
+from catalogue.models.tag import TagRelation
 from picture.models import Picture
 from picture.forms import PictureImportForm
 
@@ -206,7 +208,14 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         if daisy:
             books = books.filter(media__type='daisy').distinct()
 
-        books = books.only('slug', 'title', 'cover')
+        books = books.only('slug', 'title', 'cover', 'cover_thumb')
+        for category in book_tag_categories:
+            books = books.prefetch_related(
+                Prefetch(
+                    'tag_relations',
+                    queryset=TagRelation.objects.filter(tag__category=category)
+                        .select_related('tag').only('tag__name_pl', 'object_id'),
+                    to_attr='%s_relations' % category))
 
         if books:
             return books
@@ -251,6 +260,8 @@ def _tags_getter(category):
 def _tag_getter(category):
     @classmethod
     def get_tag(cls, book):
+        if hasattr(book, '%s_relations' % category):
+            return ', '.join(rel.tag.name for rel in getattr(book, '%s_relations' % category))
         return ', '.join(book.tags.filter(category=category).values_list('name', flat=True))
     return get_tag
 
