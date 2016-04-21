@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,41 +23,41 @@ msgstr ""
 msgid "The file is ready for download!"
 msgstr ""
 
-#: templates/waiter/wait.html:10 templates/waiter/wait.html.py:43
+#: templates/waiter/wait.html:10 templates/waiter/wait.html.py:46
 msgid "Your file is being prepared, please wait."
 msgstr ""
 
-#: templates/waiter/wait.html:12 templates/waiter/wait.html.py:52
+#: templates/waiter/wait.html:12 templates/waiter/wait.html.py:58
 msgid "Something went wrong."
 msgstr ""
 
-#: templates/waiter/wait.html:36
+#: templates/waiter/wait.html:37
 #, python-format
 msgid ""
 "Your file is ready!\n"
-"        If the download doesn't start in a few seconds,\n"
-"        feel free to use this <a href=\"%(file_url)s\">direct link</a>."
+"          If the download doesn't start in a few seconds,\n"
+"          feel free to use this <a href=\"%(file_url)s\">direct link</a>."
 msgstr ""
 
-#: templates/waiter/wait.html:42
+#: templates/waiter/wait.html:45
 msgid "Please wait"
 msgstr ""
 
-#: templates/waiter/wait.html:46
+#: templates/waiter/wait.html:50
 #, python-format
 msgid "The file you requested was: <em>%(d)s</em>."
 msgstr ""
 
-#: templates/waiter/wait.html:48
+#: templates/waiter/wait.html:53
 msgid ""
 "<strong>Be aware:</strong> Generating the file can take a while.\n"
-"        Please be patient, or bookmark this page and come back later.</p>"
+"            Please be patient, or bookmark this page and come back later."
 msgstr ""
 
-#: templates/waiter/wait.html:56
+#: templates/waiter/wait.html:63
 #, python-format
 msgid ""
 "Something seems to have gone wrong while generating your file.\n"
-"        Please order it again or <a id='suggest' class='ajaxable' href="
+"            Please order it again or <a id='suggest' class='ajaxable' href="
 "\"%(s)s\">complain to us</a> about it."
 msgstr ""

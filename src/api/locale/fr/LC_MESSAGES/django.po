@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,103 +26,112 @@ msgstr ""
 msgid "WolneLektury.pl API"
 msgstr ""
 
-#: templates/api/main.html:16
+#: templates/api/main.html:15
 #, python-format
 msgid ""
 "\n"
-"WolneLektury.pl API resides under <code>%(u)s</code>.\n"
-"You can use it to access information about books, their fragments and\n"
-"their metadata.\n"
+"        WolneLektury.pl API resides under <code>%(u)s</code>.\n"
+"        You can use it to access information about books, their fragments "
+"and\n"
+"        their metadata.\n"
+"      "
 msgstr ""
 
-#: templates/api/main.html:24
+#: templates/api/main.html:23
 msgid ""
 "\n"
-"Default data serialization format is\n"
-"<a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>, \n"
-"but you can also use XML by appending <code>?format=xml</code>\n"
-"query parameter to each URL.\n"
+"        Default data serialization format is\n"
+"        <a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>,\n"
+"        but you can also use XML by appending <code>?format=xml</code>\n"
+"        query parameter to each URL.\n"
+"      "
 msgstr ""
 
-#: templates/api/main.html:33
+#: templates/api/main.html:32
 msgid ""
 "\n"
-"The URLs in WolneLektury.pl API are:\n"
+"        The URLs in WolneLektury.pl API are:\n"
+"      "
 msgstr ""
 
-#: templates/api/main.html:40
+#: templates/api/main.html:39
 msgid "All books"
 msgstr ""
 
-#: templates/api/main.html:42
+#: templates/api/main.html:41
 msgid "Audiobooks"
 msgstr ""
 
-#: templates/api/main.html:44
+#: templates/api/main.html:43
 msgid "DAISY"
 msgstr ""
 
-#: templates/api/main.html:47
+#: templates/api/main.html:46
 msgid "List of all authors"
 msgstr ""
 
-#: templates/api/main.html:49
+#: templates/api/main.html:48
 msgid "List of all epochs"
 msgstr ""
 
-#: templates/api/main.html:51
+#: templates/api/main.html:50
 msgid "List of all genres"
 msgstr ""
 
-#: templates/api/main.html:53
+#: templates/api/main.html:52
 msgid "List of all kinds"
 msgstr ""
 
-#: templates/api/main.html:56
+#: templates/api/main.html:55
 msgid "List of all themes"
 msgstr ""
 
-#: templates/api/main.html:58
+#: templates/api/main.html:57
 msgid "Collections"
 msgstr ""
 
-#: templates/api/main.html:64
+#: templates/api/main.html:63
 #, python-format
 msgid ""
 "\n"
-"Each element of those lists contains a link (in a \"href\") attibute\n"
-"which points to individual resource's details, i.e.:\n"
-"<a href=\"%(e1)s\">%(e1)s</a> or\n"
-"<a href=\"%(e2)s\">%(e2)s</a>.\n"
+"        Each element of those lists contains a link (in a \"href\") "
+"attibute\n"
+"        which points to individual resource's details, i.e.:\n"
+"        <a href=\"%(e1)s\">%(e1)s</a> or\n"
+"        <a href=\"%(e2)s\">%(e2)s</a>.\n"
+"      "
 msgstr ""
 
-#: templates/api/main.html:73
+#: templates/api/main.html:72
 #, python-format
 msgid ""
 "\n"
-"You can combine authors, epochs, genres and kinds to find only books "
+"        You can combine authors, epochs, genres and kinds to find only books "
 "matching\n"
-"those criteria. For instance:\n"
-"<a href=\"%(e)s\">%(e)s</a>.\n"
+"        those criteria. For instance:\n"
+"        <a href=\"%(e)s\">%(e)s</a>.\n"
+"      "
 msgstr ""
 
-#: templates/api/main.html:81
+#: templates/api/main.html:80
 #, python-format
 msgid ""
 "\n"
-"If you only want top-level books and not all the children, you can use /"
-"parent_books/, as in:\n"
-"<a href=\"%(e)s\">%(e)s</a>.\n"
+"        If you only want top-level books and not all the children, you can "
+"use /parent_books/, as in:\n"
+"        <a href=\"%(e)s\">%(e)s</a>.\n"
+"      "
 msgstr ""
 
-#: templates/api/main.html:89
+#: templates/api/main.html:88
 #, python-format
 msgid ""
 "\n"
-"The same way, using also books and themes, you can search for a list of "
-"fragments:\n"
-"<a href=\"%(e)s\">%(e)s</a>. \n"
-"Again, each entry has a \"href\" attribute which links to the fragment's "
-"details, i.e.:\n"
-"<a href=\"%(f)s\">%(f)s</a>. \n"
+"        The same way, using also books and themes, you can search for a list "
+"of fragments:\n"
+"        <a href=\"%(e)s\">%(e)s</a>.\n"
+"        Again, each entry has a \"href\" attribute which links to the "
+"fragment's details, i.e.:\n"
+"        <a href=\"%(f)s\">%(f)s</a>.\n"
+"      "
 msgstr ""

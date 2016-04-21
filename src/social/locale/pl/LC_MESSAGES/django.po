@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2014-01-24 10:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,15 +106,15 @@ msgstr "cytat"
 msgid "cites"
 msgstr "cytaty"
 
-#: templates/social/cite_promo.html:13
+#: templates/social/cite_promo.html:11
 msgid "recommends"
 msgstr "poleca"
 
-#: templates/social/my_shelf.html:5 templates/social/my_shelf.html.py:11
+#: templates/social/my_shelf.html:5 templates/social/my_shelf.html.py:10
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/social/my_shelf.html:16
+#: templates/social/my_shelf.html:15
 msgid ""
 "Add works to your shelf by clicking on the star on the page of the work. The "
 "work will then show up on My shelf page."

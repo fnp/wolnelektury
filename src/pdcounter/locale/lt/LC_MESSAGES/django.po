@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2012-04-03 18:01+0100\n"
 "Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,16 +76,16 @@ msgstr ""
 "Skaitykite šio autoriaus kūrinio aprašymą interneto svetainėje Lektury."
 "Gazeta.pl"
 
-#: templates/pdcounter/author_detail.html:31
+#: templates/pdcounter/author_detail.html:33
 msgid "Read article about this author on Wikipedia"
 msgstr "Skaitykite straipsnį apie šį autorių Vikipedijoje"
 
-#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:40
 msgid "This author's works are copyrighted."
 msgstr "Šio autoriaus  kūriniai yra autorinių teisių saugomi."
 
-#: templates/pdcounter/author_detail.html:37
-#: templates/pdcounter/author_detail.html:45
+#: templates/pdcounter/author_detail.html:41
+#: templates/pdcounter/author_detail.html:53
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -94,7 +94,7 @@ msgstr ""
 "publiczna/'>Sužinokite</a> kodėl šio autoriaus kūriniai negali būti "
 "publikuojami internetinėje bibliotekoje."
 
-#: templates/pdcounter/author_detail.html:40
+#: templates/pdcounter/author_detail.html:45
 #, fuzzy
 msgid ""
 "This author's works are in public domain and will be published on Internet "
@@ -103,7 +103,7 @@ msgstr ""
 "Šio autoriaus kūriniai yra viešai prieinami ir netrukus bus publikuoti "
 "interneto svetainės Wolne Lektury internetinėje bibliotekoje.  "
 
-#: templates/pdcounter/author_detail.html:43
+#: templates/pdcounter/author_detail.html:49
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
@@ -111,7 +111,7 @@ msgstr ""
 "Šio autoriaus kūriniai netrukus bus viešai prieinami ir galės būti "
 "publikuojami be apribojimų"
 
-#: templates/pdcounter/book_stub_detail.html:17
+#: templates/pdcounter/book_stub_detail.html:16
 #, fuzzy
 msgid ""
 "This work is in public domain and will be published on Internet library of "
@@ -128,8 +128,8 @@ msgstr ""
 "Šis kūrinys netrukus bus viešai prieinamas ir galės būti publikuojamas be "
 "apribojimų"
 
-#: templates/pdcounter/book_stub_detail.html:22
-#: templates/pdcounter/book_stub_detail.html:25
+#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:29
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
@@ -138,7 +138,7 @@ msgstr ""
 "publiczna/'>Sužinokite</a> kodėl šis kūrinys negali būti publikuojamas "
 "internetinėje bibliotekoje."
 
-#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Šis kūrinis yra autorinių teisių saugomas."
 

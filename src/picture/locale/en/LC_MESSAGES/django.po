@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,15 +89,15 @@ msgstr ""
 msgid "pictures"
 msgstr ""
 
-#: templates/admin/picture/picture/change_list.html:8
+#: templates/admin/picture/picture/change_list.html:9
 msgid "Image"
 msgstr ""
 
-#: templates/admin/picture/picture/change_list.html:9
+#: templates/admin/picture/picture/change_list.html:10
 msgid "Import picture"
 msgstr ""
 
-#: templates/picture/picture_detail.html:21
+#: templates/picture/picture_detail.html:19
 msgid "See also"
 msgstr ""
 
@@ -107,88 +107,88 @@ msgctxt "gallery"
 msgid "Listing of all works"
 msgstr ""
 
-#: templates/picture/picture_short.html:40
+#: templates/picture/picture_short.html:36
 msgid "Epoch"
 msgstr ""
 
-#: templates/picture/picture_short.html:48
+#: templates/picture/picture_short.html:45
 msgid "Kind"
 msgstr ""
 
-#: templates/picture/picture_short.html:56
+#: templates/picture/picture_short.html:54
 msgid "Genre"
 msgstr ""
 
-#: templates/picture/picture_short.html:71
+#: templates/picture/picture_short.html:69
 msgid "View online"
 msgstr ""
 
-#: templates/picture/picture_short.html:74
+#: templates/picture/picture_short.html:72
 msgid "download original"
 msgstr ""
 
-#: templates/picture/picture_viewer.html:48
-#: templates/picture/picture_wide.html:64
+#: templates/picture/picture_viewer.html:52
+#: templates/picture/picture_wide.html:69
 msgid "Objects"
 msgstr ""
 
-#: templates/picture/picture_viewer.html:49
+#: templates/picture/picture_viewer.html:53
 msgid "Themes"
 msgstr ""
 
-#: templates/picture/picture_viewer.html:53
+#: templates/picture/picture_viewer.html:57
 msgid "Infobox"
 msgstr ""
 
-#: templates/picture/picture_wide.html:19
+#: templates/picture/picture_wide.html:20
 msgid "Style"
 msgstr ""
 
-#: templates/picture/picture_wide.html:29
+#: templates/picture/picture_wide.html:31
 msgid "Medium"
 msgstr ""
 
-#: templates/picture/picture_wide.html:36
+#: templates/picture/picture_wide.html:39
 msgid "Dimensions"
 msgstr ""
 
-#: templates/picture/picture_wide.html:42
+#: templates/picture/picture_wide.html:46
 msgid "Date"
 msgstr ""
 
-#: templates/picture/picture_wide.html:53
+#: templates/picture/picture_wide.html:57
 msgid "Motifs, themes and objects"
 msgstr ""
 
-#: templates/picture/picture_wide.html:56
+#: templates/picture/picture_wide.html:61
 msgid "Motifs and themes"
 msgstr ""
 
-#: templates/picture/picture_wide.html:82
+#: templates/picture/picture_wide.html:87
 msgid "See"
 msgstr ""
 
-#: templates/picture/picture_wide.html:85
+#: templates/picture/picture_wide.html:90
 msgid "Source"
 msgstr ""
 
-#: templates/picture/picture_wide.html:85
+#: templates/picture/picture_wide.html:90
 msgid "of the picture"
 msgstr ""
 
-#: templates/picture/picture_wide.html:87
+#: templates/picture/picture_wide.html:92
 msgid "Source XML file"
 msgstr ""
 
-#: templates/picture/picture_wide.html:89
+#: templates/picture/picture_wide.html:94
 msgid "Picture on"
 msgstr ""
 
-#: templates/picture/picture_wide.html:89
+#: templates/picture/picture_wide.html:94
 msgid "Editor's Platform"
 msgstr ""
 
-#: templates/picture/picture_wide.html:92
+#: templates/picture/picture_wide.html:97
 msgid "Picture description on Wikipedia"
 msgstr ""
 

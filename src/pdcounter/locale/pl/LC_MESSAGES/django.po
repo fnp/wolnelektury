@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2013-06-11 15:47+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,16 +75,16 @@ msgstr "Licznik domeny publicznej"
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr "Przeczytaj omówienia utworów autora w serwisie Lektury.Gazeta.pl"
 
-#: templates/pdcounter/author_detail.html:31
+#: templates/pdcounter/author_detail.html:33
 msgid "Read article about this author on Wikipedia"
 msgstr "Przeczytaj artykuł o autorze w Wikipedii"
 
-#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:40
 msgid "This author's works are copyrighted."
 msgstr "Dzieła tego autora objęte są prawem autorskim."
 
-#: templates/pdcounter/author_detail.html:37
-#: templates/pdcounter/author_detail.html:45
+#: templates/pdcounter/author_detail.html:41
+#: templates/pdcounter/author_detail.html:53
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -93,7 +93,7 @@ msgstr ""
 "się</a>, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego "
 "autora."
 
-#: templates/pdcounter/author_detail.html:40
+#: templates/pdcounter/author_detail.html:45
 msgid ""
 "This author's works are in public domain and will be published on Internet "
 "library of Wolne Lektury soon."
@@ -101,7 +101,7 @@ msgstr ""
 "Dzieła tego autora znajdują się w domenie publicznej i niedługo zostaną "
 "opublikowane w bibliotece internetowej Wolne Lektury."
 
-#: templates/pdcounter/author_detail.html:43
+#: templates/pdcounter/author_detail.html:49
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
@@ -109,7 +109,7 @@ msgstr ""
 "Dzieła tego autora przejdą do zasobów domeny publicznej i będą mogły być "
 "publikowane bez żadnych ograniczeń za"
 
-#: templates/pdcounter/book_stub_detail.html:17
+#: templates/pdcounter/book_stub_detail.html:16
 msgid ""
 "This work is in public domain and will be published on Internet library of "
 "Wolne Lektury soon."
@@ -125,8 +125,8 @@ msgstr ""
 "Ten utwór przejdzie do zasobów domeny publicznej i będzie mógł być "
 "publikowany bez żadnych ograniczeń za"
 
-#: templates/pdcounter/book_stub_detail.html:22
-#: templates/pdcounter/book_stub_detail.html:25
+#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:29
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
@@ -134,7 +134,7 @@ msgstr ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Dowiedz "
 "się</a>, dlaczego biblioteki internetowe nie mogą udostępniać tego utworu."
 
-#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Ten utwór objęty jest prawem autorskim."
 

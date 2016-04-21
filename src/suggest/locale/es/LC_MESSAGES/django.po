@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2012-02-18 13:20+0100\n"
 "Last-Translator: Anna Jopp <aniajopp@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,15 +102,15 @@ msgstr "Sugerencias de publicación"
 msgid "Didn't find a book? Make a suggestion."
 msgstr "No encontraste un libro? Haz una sugerencia."
 
-#: templates/publishing_suggest.html:13
+#: templates/publishing_suggest.html:17
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Me gustaría encontrar estos en WolneLektury.pl"
 
-#: templates/publishing_suggest.html:20 views.py:22
+#: templates/publishing_suggest.html:32 views.py:22
 msgid "Send report"
 msgstr "Envia un report"
 
-#: templates/publishing_suggest.html:21
+#: templates/publishing_suggest.html:33
 msgid ""
 "Remember that we can only publish books in public domain, ie. 70 years after "
 "the death of the author!"

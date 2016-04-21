@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: templates/404.html:5
+#: templates/404.html:4
 msgid "Page does not exist"
 msgstr "Tinklalapis neegzistuoja"
 
-#: templates/404.html:10
+#: templates/404.html:8
 msgid "Page not found"
 msgstr "Puslapis nerastas"
 
-#: templates/404.html:14
+#: templates/404.html:11
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
@@ -35,7 +35,7 @@ msgstr ""
 "Atsiprašome, bet šis tinklalapis neegzistuoja. Prašome patvirtinti ar "
 "įvedėte teisingą adresą arba eikite į"
 
-#: templates/404.html:14
+#: templates/404.html:12
 msgid "main page"
 msgstr "pagrindinį puslapį"
 
@@ -74,15 +74,15 @@ msgid "Translations"
 msgstr "Vertimai"
 
 #: templates/admin/catalogue/book/change_form.html:6
-#: templates/admin/catalogue/book/change_form.html:35
+#: templates/admin/catalogue/book/change_form.html:36
 msgid "advanced"
 msgstr "papildomas"
 
-#: templates/admin/catalogue/book/change_form.html:33
+#: templates/admin/catalogue/book/change_form.html:34
 msgid "simplified"
 msgstr "supaprastintas"
 
-#: templates/admin/catalogue/book/change_list.html:7
+#: templates/admin/catalogue/book/change_list.html:9
 msgid "Import book"
 msgstr "Importuoti knygą"
 
@@ -94,24 +94,144 @@ msgstr "Pamiršote slaptažodį?"
 msgid "Sign in using:"
 msgstr "Prisijungti naudojant:"
 
-#: templates/auth/login_register.html:10
+#: templates/auth/login_register.html:9
 msgid "or register"
 msgstr "arba registruotis "
 
-#: templates/info/join_us.html:6
-#, python-format
+#: templates/base/superbase.html:22
+msgid "Wolne Lektury"
+msgstr "Wolne Lektury"
+
+#: templates/base/superbase.html:52
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
+#| "href='%(r)s'>right to</a>\n"
+#| "                    "
+#| msgid_plural ""
+#| "\n"
+#| "                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
+#| "href='%(r)s'>right to</a>\n"
+#| "                    "
 msgid ""
 "\n"
-"We have %(c)s work published in Wolne Lektury!\n"
-"Help us expand the library and set new readings free by\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a donation\n"
-"or transferring 1&#37; of your income tax</a>.\n"
+"                  <a href='%(b)s'>%(c)s</a> free reading you have <a "
+"href='%(r)s'>right to</a>\n"
+"                "
 msgid_plural ""
 "\n"
-"We have %(c)s works published in Wolne Lektury!\n"
-"Help us expand the library and set new readings free by\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a donation\n"
-"or transferring 1&#37; of your income tax</a>.\n"
+"                  <a href='%(b)s'>%(c)s</a> free readings you have <a "
+"href='%(r)s'>right to</a>\n"
+"                "
+msgstr[0] ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> nemokamas kūrinys į kurį <a "
+"href='%(r)s'>turite teisę</a>\n"
+"                    "
+msgstr[1] ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> nemokami kūriniai į kuriuos <a "
+"href='%(r)s'>turite teisę</a>\n"
+"                    "
+msgstr[2] ""
+"\n"
+"                    <a href='%(b)s'>%(c)s</a> nemokamų kūrinių į kuriuos <a "
+"href='%(r)s'>turite teisę</a>\n"
+"                    "
+
+#: templates/base/superbase.html:62
+#, fuzzy
+#| msgid "Language versions"
+msgid "Language"
+msgstr "Kalbų versijos"
+
+#: templates/base/superbase.html:88
+msgid "My shelf"
+msgstr "Mano lentyna"
+
+#: templates/base/superbase.html:92
+msgid "Administration"
+msgstr "Administracija "
+
+#: templates/base/superbase.html:96
+msgid "Logout"
+msgstr "Atsijungti"
+
+#: templates/base/superbase.html:100 views.py:67 views.py:68
+msgid "Sign in"
+msgstr "Prisijungti  "
+
+#: templates/base/superbase.html:101 views.py:86 views.py:87 views.py:115
+msgid "Register"
+msgstr "Registruotis "
+
+#: templates/base/superbase.html:108
+msgid "Literature"
+msgstr ""
+
+#: templates/base/superbase.html:111
+msgid "Themes"
+msgstr "Motyvai"
+
+#: templates/base/superbase.html:114
+msgid "Audiobooks"
+msgstr "Audio knygos"
+
+#: templates/base/superbase.html:117
+msgid "Gallery"
+msgstr ""
+
+#: templates/base/superbase.html:120
+#, fuzzy
+#| msgid "All books"
+msgid "All works"
+msgstr "Visos knygos"
+
+#: templates/base/superbase.html:129
+msgid "Search"
+msgstr "Ieškoti"
+
+#: templates/base/superbase.html:157
+msgid "Close"
+msgstr "Uždaryti"
+
+#: templates/base/superbase.html:159
+msgid "Loading"
+msgstr "Kraunasi"
+
+#: templates/info/join_us.html:6
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "We have %(c)s work published in Wolne Lektury!\n"
+#| "Help us expand the library and set new readings free by\n"
+#| "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
+#| "donation\n"
+#| "or transferring 1&#37; of your income tax</a>.\n"
+#| msgid_plural ""
+#| "\n"
+#| "We have %(c)s works published in Wolne Lektury!\n"
+#| "Help us expand the library and set new readings free by\n"
+#| "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
+#| "donation\n"
+#| "or transferring 1&#37; of your income tax</a>.\n"
+msgid ""
+"\n"
+"    We have %(c)s work published in Wolne Lektury!\n"
+"    Help us expand the library and set new readings free by\n"
+"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
+"donation\n"
+"    or transferring 1&#37; of your income tax</a>.\n"
+"  "
+msgid_plural ""
+"\n"
+"    We have %(c)s works published in Wolne Lektury!\n"
+"    Help us expand the library and set new readings free by\n"
+"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
+"donation\n"
+"    or transferring 1&#37; of your income tax</a>.\n"
+"  "
 msgstr[0] ""
 "\n"
 "Turime %(c)s kūrinį publikuotą Wolne Lektury interneto svetainėje!\n"
@@ -134,17 +254,22 @@ msgstr[2] ""
 "finansiškai\n"
 "arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
 
-#: templates/info/join_us.html:20
+#: templates/info/join_us.html:22
+#, fuzzy
+#| msgid ""
+#| "Become an editor of Wolne Lektury! Find out if\n"
+#| "we're currently working on a reading you're looking for and prepare\n"
+#| "a publication by yourself by logging into the Editorial Platform."
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
-"we're currently working on a reading you're looking for and prepare\n"
-"a publication by yourself by logging into the Editorial Platform."
+"    we're currently working on a reading you're looking for and prepare\n"
+"    a publication by yourself by logging into the Editorial Platform."
 msgstr ""
 "Tapkite redaktoriumi Wolne Lektury interneto svetainės! Sužinokite ar\n"
 "šiuo metu dirbame su jūsų ieškomu kūriniu ir paruoškite\n"
 "jūsų leidinį prisijungdami prie Redakcinės Platformos."
 
-#: templates/info/join_us.html:23
+#: templates/info/join_us.html:25
 msgid "More..."
 msgstr "Daugiau..."
 
@@ -170,58 +295,58 @@ msgstr "Naujos publikacijos"
 msgid "News"
 msgstr "Naujienos"
 
-#: templates/main_page.html:118
+#: templates/main_page.html:117
 msgid "Utilities"
 msgstr "Priemonės"
 
-#: templates/main_page.html:121
+#: templates/main_page.html:120
 msgid "Report a bug or suggestion"
 msgstr "Praneškite apie klaidą arba teikite pasiūlymus"
 
-#: templates/main_page.html:123
+#: templates/main_page.html:122
 msgid "Download the catalogue in PDF format."
 msgstr "Atsisiųsti katalogą PDF formatu."
 
-#: templates/main_page.html:124
+#: templates/main_page.html:123
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:125
+#: templates/main_page.html:124
 msgid "Missing a book?"
 msgstr "Neradote knygos?"
 
-#: templates/main_page.html:126 templates/publish_plan.html:4
+#: templates/main_page.html:125 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Publikavimo planas"
 
-#: templates/main_page.html:136
+#: templates/main_page.html:134
 msgid "Information"
 msgstr "Informacija"
 
-#: templates/main_page.html:138
+#: templates/main_page.html:136
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:157
+#: templates/main_page.html:156
 msgid "Image used:"
 msgstr "Panaudotas paveikslėlis:"
 
-#: templates/openid/login.html:6 templates/openid/login.html.py:10
+#: templates/openid/login.html:6 templates/openid/login.html.py:9
 msgid "OpenID Sign In"
 msgstr "OpenID Prisijungti"
 
-#: templates/openid/login.html:27
+#: templates/openid/login.html:22
 msgid "Sign In"
 msgstr "Prisijungti  "
 
-#: templates/pagination/pagination.html:5
-#: templates/pagination/pagination.html:7
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
 msgid "previous"
 msgstr "ankstėsnis"
 
-#: templates/pagination/pagination.html:21
-#: templates/pagination/pagination.html:23
+#: templates/pagination/pagination.html:22
+#: templates/pagination/pagination.html:24
 msgid "next"
 msgstr "sekantis "
 
@@ -230,7 +355,7 @@ msgstr "sekantis "
 msgid "Authorize access to Wolne Lektury"
 msgstr "Leisti prieigą prie Wolne Lektury interneto svetainės"
 
-#: templates/piston/authorize_token.html:10
+#: templates/piston/authorize_token.html:11
 #, python-format
 msgid ""
 "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
@@ -281,121 +406,19 @@ msgstr ""
 "viena iš jūsų egzistuojančių paskyrų. Jei įvyko klaida, prašome pradėti čia "
 "<a href=\"%(login_url)s\">sign in</a>."
 
-#: templates/superbase.html:22
-msgid "Wolne Lektury"
-msgstr "Wolne Lektury"
-
-#: templates/superbase.html:53
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-#| "href='%(r)s'>right to</a>\n"
-#| "                    "
-#| msgid_plural ""
-#| "\n"
-#| "                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-#| "href='%(r)s'>right to</a>\n"
-#| "                    "
-msgid ""
-"\n"
-"                            <a href='%(b)s'>%(c)s</a> free reading you have "
-"<a href='%(r)s'>right to</a>\n"
-"                        "
-msgid_plural ""
-"\n"
-"                            <a href='%(b)s'>%(c)s</a> free readings you have "
-"<a href='%(r)s'>right to</a>\n"
-"                        "
-msgstr[0] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> nemokamas kūrinys į kurį <a "
-"href='%(r)s'>turite teisę</a>\n"
-"                    "
-msgstr[1] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> nemokami kūriniai į kuriuos <a "
-"href='%(r)s'>turite teisę</a>\n"
-"                    "
-msgstr[2] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> nemokamų kūrinių į kuriuos <a "
-"href='%(r)s'>turite teisę</a>\n"
-"                    "
-
-#: templates/superbase.html:63
-#, fuzzy
-#| msgid "Language versions"
-msgid "Language"
-msgstr "Kalbų versijos"
-
-#: templates/superbase.html:89
-msgid "My shelf"
-msgstr "Mano lentyna"
-
-#: templates/superbase.html:93
-msgid "Administration"
-msgstr "Administracija "
-
-#: templates/superbase.html:99
-msgid "Logout"
-msgstr "Atsijungti"
-
-#: templates/superbase.html:103 views.py:67 views.py:68
-msgid "Sign in"
-msgstr "Prisijungti  "
-
-#: templates/superbase.html:105 views.py:86 views.py:87 views.py:115
-msgid "Register"
-msgstr "Registruotis "
-
-#: templates/superbase.html:113
-msgid "Literature"
-msgstr ""
-
-#: templates/superbase.html:116
-msgid "Themes"
-msgstr "Motyvai"
-
-#: templates/superbase.html:119
-msgid "Audiobooks"
-msgstr "Audio knygos"
-
-#: templates/superbase.html:122
-msgid "Gallery"
-msgstr ""
-
-#: templates/superbase.html:125
-#, fuzzy
-#| msgid "All books"
-msgid "All works"
-msgstr "Visos knygos"
-
-#: templates/superbase.html:137
-msgid "Search"
-msgstr "Ieškoti"
-
-#: templates/superbase.html:171
-msgid "Close"
-msgstr "Uždaryti"
-
-#: templates/superbase.html:173
-msgid "Loading"
-msgstr "Kraunasi"
-
-#: templates/user.html:5 templates/user.html.py:11
+#: templates/user.html:5 templates/user.html.py:9
 msgid "User"
 msgstr "Vartotojas"
 
-#: templates/user.html:13
+#: templates/user.html:11
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: templates/user.html:14
+#: templates/user.html:12
 msgid "E-mail"
 msgstr "El- paštas"
 
-#: templates/user.html:15
+#: templates/user.html:13
 msgid "Social accounts"
 msgstr "Socialinės paskyros"
 

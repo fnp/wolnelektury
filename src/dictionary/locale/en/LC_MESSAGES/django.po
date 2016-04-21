@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,34 +38,34 @@ msgstr ""
 msgid "Footnotes"
 msgstr ""
 
-#: templates/dictionary/note_list.html:17
+#: templates/dictionary/note_list.html:16
 msgid "By first letter"
 msgstr ""
 
-#: templates/dictionary/note_list.html:19
-#: templates/dictionary/note_list.html:21
-#: templates/dictionary/note_list.html:37
-#: templates/dictionary/note_list.html:39
-#: templates/dictionary/note_list.html:56
-#: templates/dictionary/note_list.html:58
-#: templates/dictionary/note_list.html:74
-#: templates/dictionary/note_list.html:76
+#: templates/dictionary/note_list.html:18
+#: templates/dictionary/note_list.html:20
+#: templates/dictionary/note_list.html:36
+#: templates/dictionary/note_list.html:38
+#: templates/dictionary/note_list.html:55
+#: templates/dictionary/note_list.html:57
+#: templates/dictionary/note_list.html:73
+#: templates/dictionary/note_list.html:75
 msgid "all"
 msgstr ""
 
-#: templates/dictionary/note_list.html:35
+#: templates/dictionary/note_list.html:34
 msgid "By type"
 msgstr ""
 
-#: templates/dictionary/note_list.html:54
+#: templates/dictionary/note_list.html:53
 msgid "By qualifier"
 msgstr ""
 
-#: templates/dictionary/note_list.html:72
+#: templates/dictionary/note_list.html:71
 msgid "By language"
 msgstr ""
 
-#: templates/dictionary/note_list.html:92
+#: templates/dictionary/note_list.html:91
 #, python-format
 msgid "%(c)s footnote found"
 msgid_plural "%(c)s footnotes found"

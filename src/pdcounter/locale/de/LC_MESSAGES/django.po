@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2012-04-15 13:43+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: \n"
@@ -75,16 +75,16 @@ msgstr ""
 msgid "Read work's study of this author on Lektury.Gazeta.pl"
 msgstr "Lesen Sie mehr über diesem Werk bei Lektury.Gazeta.pl"
 
-#: templates/pdcounter/author_detail.html:31
+#: templates/pdcounter/author_detail.html:33
 msgid "Read article about this author on Wikipedia"
 msgstr "Lesen Sie einen Artikel über diesem Autor in Wikipedia"
 
-#: templates/pdcounter/author_detail.html:36
+#: templates/pdcounter/author_detail.html:40
 msgid "This author's works are copyrighted."
 msgstr "Die Urheberrechte für dieses Werk werden geschützt."
 
-#: templates/pdcounter/author_detail.html:37
-#: templates/pdcounter/author_detail.html:45
+#: templates/pdcounter/author_detail.html:41
+#: templates/pdcounter/author_detail.html:53
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -93,7 +93,7 @@ msgstr ""
 "Sie</a> warum Internetbibliotheken die Werke dieses Autors nicht publizieren "
 "dürfen."
 
-#: templates/pdcounter/author_detail.html:40
+#: templates/pdcounter/author_detail.html:45
 #, fuzzy
 msgid ""
 "This author's works are in public domain and will be published on Internet "
@@ -102,7 +102,7 @@ msgstr ""
 "Die Werke dieses Autors sind in Public Domain und werden in Internet-"
 "Schulbibliothek  von Wolne Lektury bald publiziert."
 
-#: templates/pdcounter/author_detail.html:43
+#: templates/pdcounter/author_detail.html:49
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
@@ -110,7 +110,7 @@ msgstr ""
 "Die Werke des Autors werden in Public Domain sein und werden unbegrenzt "
 "publeziert werden dürfen in"
 
-#: templates/pdcounter/book_stub_detail.html:17
+#: templates/pdcounter/book_stub_detail.html:16
 #, fuzzy
 msgid ""
 "This work is in public domain and will be published on Internet library of "
@@ -127,8 +127,8 @@ msgstr ""
 "Die Werke des Autors werden in Public Domain sein und werden unbegrenzt "
 "publeziert werden dürfen in"
 
-#: templates/pdcounter/book_stub_detail.html:22
-#: templates/pdcounter/book_stub_detail.html:25
+#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:29
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
@@ -136,7 +136,7 @@ msgstr ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Erfahren "
 "Sie</a> warum Internetbibliotheken dieses Werk nicht publizieren dürfen."
 
-#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Dieses Werk wird durch das Urheberrecht geschützt."
 

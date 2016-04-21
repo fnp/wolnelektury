@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:40+0200\n"
+"POT-Creation-Date: 2016-04-20 17:32+0200\n"
 "PO-Revision-Date: 2015-04-16 13:13+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "Nie"
 msgid "perks"
 msgstr "prezenty"
 
-#: forms.py:16 templates/funding/wlfund.html:27
+#: forms.py:16 templates/funding/wlfund.html:29
 msgid "Amount"
 msgstr "Kwota"
 
@@ -188,7 +188,7 @@ msgstr "powiadomienia"
 msgid "funding"
 msgstr "wpłata"
 
-#: models.py:243 templates/admin/funding/offer/change_form.html:22
+#: models.py:243 templates/admin/funding/offer/change_form.html:18
 msgid "fundings"
 msgstr "wpłaty"
 
@@ -205,31 +205,31 @@ msgid "money spent on books"
 msgstr "pieniądze wydane na książki"
 
 #: models.py:346 templates/funding/thanks.html:6
-#: templates/funding/thanks.html.py:15
+#: templates/funding/thanks.html.py:13
 msgid "Thank you for your support!"
 msgstr "Dziękujemy za Twoje wsparcie!"
 
 #: templates/funding/disable_notifications.html:5
-#: templates/funding/no_thanks.html:5 templates/funding/no_thanks.html.py:9
+#: templates/funding/no_thanks.html:5 templates/funding/no_thanks.html.py:8
 msgid "Payment failed"
 msgstr "Płatność nie doszła do skutku"
 
-#: templates/funding/disable_notifications.html:9
-#: templates/funding/disable_notifications.html:16
+#: templates/funding/disable_notifications.html:8
+#: templates/funding/disable_notifications.html:15
 msgid "Disable notifications"
 msgstr "Wyłącz powiadomienia"
 
-#: templates/funding/disable_notifications.html:14
+#: templates/funding/disable_notifications.html:12
 #, python-format
 msgid "Are you sure you want to disable notifications for address %(e)s?"
 msgstr "Czy na pewno chcesz wyłączyć powiadomienia dla adresu %(e)s?"
 
-#: templates/funding/disable_notifications.html:21
+#: templates/funding/disable_notifications.html:19
 #, python-format
 msgid "Notifications for address %(e)s have been successfully disabled."
 msgstr "Powiadomienia dla adresu %(e)s zostały wyłączone."
 
-#: templates/funding/disable_notifications.html:27
+#: templates/funding/disable_notifications.html:25
 #, python-format
 msgid "Return to the <a href=\"%(current)s\">current fundraiser</a>."
 msgstr "Wróć do <a href=\"%(current)s\">aktualnej zbiórki</a>."
@@ -382,19 +382,19 @@ msgstr ""
 "Będziemy Cię informować o zmianach statusu tej zbiórki\n"
 "i o kolejnych, które planujemy rozpocząć."
 
-#: templates/funding/includes/funding.html:13
+#: templates/funding/includes/funding.html:12
 msgid "Support!"
 msgstr "Wesprzyj!"
 
 #: templates/funding/includes/funding.html:15
-#: templates/funding/offer_detail.html:40 templates/funding/thanks.html:35
-#: templates/funding/wlfund.html:17
+#: templates/funding/offer_detail.html:34 templates/funding/thanks.html:28
+#: templates/funding/wlfund.html:18
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
 
-#: templates/funding/includes/funding.html:22
+#: templates/funding/includes/funding.html:24
 #: templates/funding/includes/funding.html:48
-#: templates/funding/offer_detail.html:35 templates/funding/offer_list.html:31
+#: templates/funding/offer_detail.html:29 templates/funding/offer_list.html:30
 msgid "Help free the book!"
 msgstr "Pomóż uwolnić książkę!"
 
@@ -410,41 +410,38 @@ msgstr "potrzebujemy"
 msgid "until fundraiser end"
 msgstr "do końca zbiórki"
 
-#: templates/funding/includes/fundings.html:15
+#: templates/funding/includes/fundings.html:13
 msgid "Anonymous"
 msgstr "Anonim"
 
 #: templates/funding/includes/offer_status.html:6
-#, python-format
 msgid ""
 "The fundraiser\n"
-"            ends on %(end)s. The full amount has been successfully\n"
-"            raised, but you can still contribute and help liberate\n"
-"            more books."
+"      ends on %(end)s. The full amount has been successfully\n"
+"      raised, but you can still contribute and help liberate\n"
+"      more books."
 msgstr ""
 "Zbiórka kończy się %(end)s. Pełna kwota została już zebrana,\n"
 " ale ciągle możesz dołożyć się i pomóc uwolnić więcej książek."
 
 #: templates/funding/includes/offer_status.html:13
-#, python-format
 msgid ""
 "We need %(target)s zł to digitize it,\n"
-"        compile it and publish for free in multiple formats."
+"    compile it and publish for free in multiple formats."
 msgstr ""
 "Potrzebujemy %(target)s zł, by ją zdigitalizować, opracować i bezpłatnie "
 "udostępnić w serwisie w wielu formatach."
 
 #: templates/funding/includes/offer_status.html:17
-#, python-format
 msgid ""
 "If we raise enough money before %(end)s we will\n"
-"        publish it and make it available for everyone."
+"    publish it and make it available for everyone."
 msgstr ""
 "Jeśli do %(end)s uda się zebrać pełną kwotę, opublikujemy ją i będzie "
 "dostępna dla wszystkich."
 
 #: templates/funding/includes/offer_status.html:24
-#: templates/funding/thanks.html:19
+#: templates/funding/thanks.html:17
 msgid "Full amount was successfully raised!"
 msgstr "Udało się zebrać pełną kwotę!"
 
@@ -457,26 +454,23 @@ msgid "Fundraiser span"
 msgstr "Termin zbiórki"
 
 #: templates/funding/includes/offer_status_more.html:12
-#, python-format
 msgid ""
 "The book\n"
-"                <a href=\"%(bu)s\">%(bt)s</a> has been already published."
+"        <a href=\"%(bu)s\">%(bt)s</a> has been already published."
 msgstr ""
-"Książka\n"
-"                <a href=\"%(bu)s\">%(bt)s</a> została opublikowana."
+"Książka <a href=\"%(bu)s\">%(bt)s</a> została już opublikowana."
 
 #: templates/funding/includes/offer_status_more.html:16
-#, python-format
 msgid ""
 "You can follow\n"
-"                    the work on the <a href=\"%(r)s\">Editorial Platform</a>."
+"          the work on the <a href=\"%(r)s\">Editorial Platform</a>."
 msgstr "Możesz śledzić prace na <a href=\"%(r)s\">Platformie Redakcyjnej</a>."
 
-#: templates/funding/no_thanks.html:12
+#: templates/funding/no_thanks.html:10
 msgid "You're support has not been processed successfully."
 msgstr "Twoje wsparcie nie zostało zaksięgowane."
 
-#: templates/funding/no_thanks.html:16
+#: templates/funding/no_thanks.html:13
 #, python-format
 msgid ""
 "Return to the <a href=\"%(current)s\">current fundraiser</a> and try again "
@@ -485,27 +479,27 @@ msgstr ""
 "Wróć do <a href=\"%(current)s\">aktualnej zbiórki</a> i spróbuj ponownie lub "
 "użyj innej metody płatności."
 
-#: templates/funding/offer_detail.html:48
+#: templates/funding/offer_detail.html:42
 msgid "Support the publication"
 msgstr "Wesprzyj publikację"
 
-#: templates/funding/offer_detail.html:54
+#: templates/funding/offer_detail.html:50
 msgid "Donate!"
 msgstr "Wpłać!"
 
-#: templates/funding/offer_detail.html:62 templates/funding/thanks.html:41
+#: templates/funding/offer_detail.html:59 templates/funding/thanks.html:35
 msgid "Tell your friends!"
 msgstr "Powiedz swoim znajomym!"
 
-#: templates/funding/offer_detail.html:63
+#: templates/funding/offer_detail.html:60
 msgid "Support Wolne Lektury!"
 msgstr "Wesprzyj Wolne Lektury!"
 
-#: templates/funding/offer_detail.html:66
+#: templates/funding/offer_detail.html:63
 msgid "See all fundraisers."
 msgstr "Zobacz wszystkie zbiórki."
 
-#: templates/funding/offer_detail.html:71
+#: templates/funding/offer_detail.html:66
 msgid "Supporters"
 msgstr "Wpłaty"
 
@@ -513,15 +507,15 @@ msgstr "Wpłaty"
 msgid "All fundraisers"
 msgstr "Wszystkie zbiórki"
 
-#: templates/funding/offer_list.html:17
+#: templates/funding/offer_list.html:16
 msgid "Current fundraiser:"
 msgstr "Aktualna zbiórka:"
 
-#: templates/funding/offer_list.html:23
+#: templates/funding/offer_list.html:22
 msgid "No fundraiser is currently running."
 msgstr "Obecnie nie jest aktywna żadna zbiórka."
 
-#: templates/funding/offer_list.html:24 templates/funding/offer_list.html:40
+#: templates/funding/offer_list.html:23 templates/funding/offer_list.html:38
 msgid "Previous fundraisers:"
 msgstr "Poprzednie zbiórki:"
 
@@ -542,93 +536,92 @@ msgstr ""
 "Zostaniesz umieszczony/-a na liście darczyńców, niezależnie od wysokości "
 "wpłaty."
 
-#: templates/funding/thanks.html:10
+#: templates/funding/thanks.html:9
 msgid "Thank you!"
 msgstr "Dziękujemy!"
 
-#: templates/funding/thanks.html:16
+#: templates/funding/thanks.html:14
 msgid "We will contact you if you qualify for perks."
 msgstr "Skontaktujemy się z Tobą w sprawie prezentów, które wybrałeś/-aś."
 
-#: templates/funding/thanks.html:21
-#, python-format
+#: templates/funding/thanks.html:18
 msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
-"    publishing the book %(b)s in multiple formats."
+"      publishing the book %(b)s in multiple formats."
 msgstr ""
 "Wpłacone przez Ciebie pieniądze przeznaczymy na digitalizację, opracowanie i "
 "udostępnienie książki %(b)s w bibliotece w wielu formatach."
 
-#: templates/funding/thanks.html:26
-#, python-format
+#: templates/funding/thanks.html:21
 msgid ""
 "If the full amount needed is raised,\n"
-"    your donation will be spent on digitizing, compiling and\n"
-"    publishing the book %(b)s in multiple formats."
+"      your donation will be spent on digitizing, compiling and\n"
+"      publishing the book %(b)s in multiple formats."
 msgstr ""
 "Jeśli uda się zebrać pełną kwotę, wpłacone przez Ciebie pieniądze "
 "przeznaczymy na digitalizację, opracowanie i udostępnienie książki %(b)s w "
 "bibliotece w wielu formatach."
 
-#: templates/funding/thanks.html:38
+#: templates/funding/thanks.html:32
 msgid "Go back to the current fundraiser."
 msgstr "Wróć do aktualnej zbiórki."
 
-#: templates/funding/thanks.html:42
+#: templates/funding/thanks.html:36
 msgid "I support Wolne Lektury."
 msgstr "Wspieram Wolne Lektury"
 
-#: templates/funding/thanks.html:45
+#: templates/funding/thanks.html:39
 msgid "Vote for a book for the next fundraiser"
 msgstr "Pomóż wybrać następną książkę, na którą będziemy zbierać pieniądze"
 
-#: templates/funding/widgets/amount.html:13
+#: templates/funding/widgets/amount.html:17
 msgid "Other amount"
 msgstr "Inna kwota"
 
-#: templates/funding/wlfund.html:4 templates/funding/wlfund.html.py:8
+#: templates/funding/wlfund.html:4 templates/funding/wlfund.html.py:7
 msgid "Remaining funds"
 msgstr "Pozostałe środki"
 
 #: templates/funding/wlfund.html:11
-#, python-format
 msgid ""
-"If\n"
-"the full amount needed for publishing a book is not raised in time,\n"
-"the funds are spent on <a href=\"%(r)s\">other books waiting for\n"
-"publication</a>. The same thing happens with any money remaining\n"
-"from successful fundraisers."
+"\n"
+"        If the full amount needed for publishing a book is not raised in "
+"time,\n"
+"        the funds are spent on <a href=\"%(r)s\">other books waiting for\n"
+"        publication</a>. The same thing happens with any money remaining\n"
+"        from successful fundraisers.\n"
+"      "
 msgstr ""
 "Jeśli nie udało się zebrać pełnej kwoty potrzebnej do opublikowania książki, "
 "środki przekazujemy na redakcję <a href=\"%(r)s\">innych utworów "
 "oczekujących na publikację w serwisie</a>. Na ten cel przekazujemy również "
 "nadmiarowe środki ze zbiórek ukończonych sukcesem."
 
-#: templates/funding/wlfund.html:19
+#: templates/funding/wlfund.html:21
 msgid "Spending these remaining funds is recorded in this table."
 msgstr "W poniższej tabeli rejestrujemy wydatkowanie tych środków."
 
-#: templates/funding/wlfund.html:25
+#: templates/funding/wlfund.html:27
 msgid "Date"
 msgstr "Data"
 
-#: templates/funding/wlfund.html:26
+#: templates/funding/wlfund.html:28
 msgid "Operation"
 msgstr "Rozdysponowanie środków"
 
-#: templates/funding/wlfund.html:28
+#: templates/funding/wlfund.html:30
 msgid "Balance"
 msgstr "Bilans"
 
-#: templates/funding/wlfund.html:35
+#: templates/funding/wlfund.html:38
 msgid "Money spent on publishing the book"
 msgstr "Pieniądze przeznaczone na opublikowanie książki"
 
-#: templates/funding/wlfund.html:44
+#: templates/funding/wlfund.html:48
 msgid "Money remaining from the fundraiser for"
 msgstr "Pieniądze pozostałe ze zbiórki na"
 
-#: templates/funding/wlfund.html:53
+#: templates/funding/wlfund.html:58
 msgid "There are no previous fundraisers to show yet."
 msgstr "Nie ma jeszcze żadnych zakończonych zbiórek."
 
