@@ -21,11 +21,14 @@ from ajaxable.utils import placeholdized
 from catalogue.models import Book, Collection, Tag, Fragment
 from ssify import ssi_included
 
+from social.utils import get_or_choose_cite
+
 
 def main_page(request):
     ctx = {
         'last_published': Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:6],
-        'theme_books': []
+        'theme_books': [],
+        'cite': get_or_choose_cite(request),
     }
 
     # for category in ('author', 'epoch', 'genre', 'kind'):

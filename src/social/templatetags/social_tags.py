@@ -2,16 +2,13 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from random import randint
-from django.db.models import Q
 from django import template
 from django.utils.functional import lazy
 from django.utils.cache import add_never_cache_headers
-from catalogue.models import Book, Tag
+from catalogue.models import Book
 from ssify import ssi_variable
 from ssify.utils import ssi_vary_on_cookie
-from social.models import Cite
-from social.utils import likes, cites_for_tags
+from social.utils import likes, get_or_choose_cite
 
 register = template.Library()
 
@@ -21,36 +18,9 @@ def likes_book(request, book_id):
     return likes(request.user, Book.objects.get(pk=book_id), request)
 
 
-def choose_cite(book_id=None, tag_ids=None):
-    """Choose a cite for main page, for book or for set of tags."""
-    if book_id is not None:
-        cites = Cite.objects.filter(Q(book=book_id) | Q(book__ancestor=book_id))
-    elif tag_ids is not None:
-        tags = Tag.objects.filter(pk__in=tag_ids)
-        cites = cites_for_tags(tags)
-    else:
-        cites = Cite.objects.all()
-    stickies = cites.filter(sticky=True)
-    count = stickies.count()
-    if count:
-        cite = stickies[randint(0, count - 1)]
-    else:
-        count = cites.count()
-        if count:
-            cite = cites[randint(0, count - 1)]
-        else:
-            cite = None
-    return cite
-
-
 @ssi_variable(register, name='choose_cite', patch_response=[add_never_cache_headers])
 def choose_cite_tag(request, book_id=None, tag_ids=None):
-    try:
-        assert request.user.is_staff
-        assert 'choose_cite' in request.GET
-        cite = Cite.objects.get(pk=request.GET['choose_cite'])
-    except (AssertionError, Cite.DoesNotExist):
-        cite = choose_cite(book_id, tag_ids)
+    cite = get_or_choose_cite(request, book_id, tag_ids)
     return cite.pk if cite is not None else None
 
 

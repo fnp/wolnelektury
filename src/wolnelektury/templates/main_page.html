@@ -1,8 +1,9 @@
 {% extends "base/base.html" %}
 {% load static from staticfiles %}
-{% load i18n catalogue_tags infopages_tags social_tags %}
+{% load i18n catalogue_tags infopages_tags %}
 {% load ssi_include from ssify %}
 {% load cache %}
+{% get_current_language as LANGUAGE_CODE %}
 
 
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
@@ -10,10 +11,11 @@
 
 {% block body %}
   {% spaceless %}
-    {% choose_cite as cite_pk %}
-    {{ cite_pk.if }}
-      {% ssi_include 'social_cite_main' pk=cite_pk %}
-    {{ cite_pk.endif }}
+    {% if cite %}
+      {% cache 3600 main_cite cite.pk %}
+        {% include "social/cite_promo.html" with main=True %}
+      {% endcache %}
+    {% endif %}
 
     <section id="main-library">
       <h1>W naszej cyfrowej bibliotece znajdziesz</h1>
@@ -23,7 +25,6 @@
             {% cache 86400 book_mini_box book.pk %}
               {% include 'catalogue/book_mini_box.html' %}
             {% endcache %}
-            {#% ssi_include 'catalogue_book_mini' pk=b.pk %#}
           {% endfor %}
         </div>
         <a href="{% url "book_list" %}">
@@ -43,10 +44,11 @@
           {% cache 86400 book_mini_box book.pk %}
             {% include 'catalogue/book_mini_box.html' %}
           {% endcache %}
-          {#% ssi_include 'catalogue_book_mini' pk=book.pk %#}
         {% endfor %}
         {% if theme_fragment %}
-          {% ssi_include 'catalogue_fragment_promo' pk=theme_fragment.pk %}
+          {% cache 3600 fragment_promo theme_fragment.pk %}
+            {% include 'catalogue/fragment_promo.html' with fragment=theme_fragment %}
+          {% endcache %}
         {% endif %}
       </div>
       <a class="more" href="{% url 'theme_catalogue' %}">Zobacz katalog motywów</a>
@@ -89,7 +91,9 @@
     {% if collection %}
       <section>
         <h1>Kolekcje</h1>
-        {% ssi_include 'catalogue_collection_box' pk=collection.pk %}
+        {% cache 3600 collection_box collection.pk LANGUAGE_CODE %}
+          {% include 'catalogue/collection_box.html' %}
+        {% endcache %}
         <a class="more" href="{% url 'catalogue_collections' %}">Zobacz katalog kolekcji</a>
       </section>
     {% endif %}
@@ -100,7 +104,6 @@
           {% cache 86400 book_mini_box book.pk %}
             {% include 'catalogue/book_mini_box.html' %}
           {% endcache %}
-          {#% ssi_include 'catalogue_book_mini' pk=book.pk %#}
         {% endfor %}
       <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
     </section>
@@ -151,10 +154,13 @@
 
 {% block add_footer %}
   {% spaceless %}
-    {{ cite_pk.if }}
-      <p>{% trans "Image used:" %}
-        {% ssi_include 'social_cite_info' pk=cite_pk %}
+    {% if cite %}
+      <p>
+        {% trans "Image used:" %}
+        {% cache 3600 cite_info cite.pk %}
+          {% include 'social/cite_info.html' %}
+        {% endcache %}
       </p>
-    {{ cite_pk.endif }}
+    {% endif %}
   {% endspaceless %}
 {% endblock %}

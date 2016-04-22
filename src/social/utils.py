@@ -3,6 +3,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import defaultdict
+from random import randint
+
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 from django.utils.functional import lazy
@@ -76,3 +78,35 @@ def set_sets(user, work, sets):
 def cites_for_tags(tags):
     """Returns a QuerySet with all Cites for books with given tags."""
     return Cite.objects.filter(book__in=Book.tagged.with_all(tags))
+
+
+# tag_ids is never used
+def choose_cite(book_id=None, tag_ids=None):
+    """Choose a cite for main page, for book or for set of tags."""
+    if book_id is not None:
+        cites = Cite.objects.filter(Q(book=book_id) | Q(book__ancestor=book_id))
+    elif tag_ids is not None:
+        tags = Tag.objects.filter(pk__in=tag_ids)
+        cites = cites_for_tags(tags)
+    else:
+        cites = Cite.objects.all()
+    stickies = cites.filter(sticky=True)
+    count = len(stickies)
+    if count:
+        cites = stickies
+    else:
+        count = len(cites)
+    if count:
+        cite = cites[randint(0, count - 1)]
+    else:
+        cite = None
+    return cite
+
+
+def get_or_choose_cite(request, book_id=None, tag_ids=None):
+    try:
+        assert request.user.is_staff
+        assert 'choose_cite' in request.GET
+        return Cite.objects.get(pk=request.GET['choose_cite'])
+    except (AssertionError, Cite.DoesNotExist):
+        return choose_cite(book_id, tag_ids)

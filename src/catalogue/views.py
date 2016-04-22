@@ -731,10 +731,10 @@ def tag_box(request, pk):
 
 @ssi_included
 def collection_box(request, pk):
-    obj = get_object_or_404(Collection, pk=pk)
+    collection = get_object_or_404(Collection, pk=pk)
 
     return render(request, 'catalogue/collection_box.html', {
-        'obj': obj,
+        'collection': collection,
     })
 
 
