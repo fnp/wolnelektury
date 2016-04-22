@@ -12,7 +12,7 @@ from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
 from django.core.urlresolvers import reverse
-from django.db.models import Q
+from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.http import urlquote_plus
 from django.utils import translation
@@ -29,6 +29,7 @@ from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment
 from catalogue.utils import split_tags
+from catalogue.models.tag import prefetch_relations
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
@@ -103,7 +104,10 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
             else:
                 fragments = Fragment.objects.filter(book__in=objects)
         related_tag_lists.append(
-            Tag.objects.usage_for_queryset(fragments, counts=True).filter(category='theme').exclude(pk__in=tag_ids))
+            Tag.objects.usage_for_queryset(fragments, counts=True).filter(category='theme').exclude(pk__in=tag_ids)
+            .only('name', 'sort_key', 'category', 'slug'))
+        if isinstance(objects, QuerySet):
+            objects = prefetch_relations(objects, 'author')
 
     categories = split_tags(*related_tag_lists)
 

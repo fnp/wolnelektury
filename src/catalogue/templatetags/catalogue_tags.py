@@ -325,6 +325,7 @@ def tag_list(tags, choices=None, category=None, list_type='books'):
         other = other.filter(items__content_type=ct).distinct()
         if list_type == 'audiobooks':
             other = other.filter(id__in=get_audiobook_tags())
+        other = other.only('name', 'slug', 'category')
     else:
         other = []
 

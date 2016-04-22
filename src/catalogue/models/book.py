@@ -22,6 +22,7 @@ from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
 from catalogue.utils import create_zip, gallery_url, gallery_path
+from catalogue.models.tag import prefetched_relations
 from catalogue import app_settings
 from catalogue import tasks
 from wolnelektury.utils import makedirs
@@ -109,8 +110,15 @@ class Book(models.Model):
     def authors(self):
         return self.tags.filter(category='author')
 
+    def tag_unicode(self, category):
+        relations = prefetched_relations(self, category)
+        if relations:
+            return ', '.join(rel.tag.name for rel in relations)
+        else:
+            return ', '.join(self.tags.filter(category=category).values_list('name', flat=True))
+
     def author_unicode(self):
-        return ", ".join(self.authors().values_list('name', flat=True))
+        return self.tag_unicode('author')
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify

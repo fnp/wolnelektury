@@ -7,6 +7,7 @@ from django.core.cache import caches
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import permalink
+from django.db.models.query import Prefetch
 from django.dispatch import Signal
 from django.utils.translation import ugettext_lazy as _
 
@@ -246,3 +247,18 @@ class Tag(TagBase):
 
 # Pickle complains about not having this.
 TagRelation = Tag.intermediary_table_model
+
+
+def prefetch_relations(objects, category, only_name=True):
+    queryset = TagRelation.objects.filter(tag__category=category).select_related('tag')
+    if only_name:
+        queryset = queryset.only('tag__name_pl', 'object_id')
+    return objects.prefetch_related(
+        Prefetch('tag_relations', queryset=queryset, to_attr='%s_relations' % category))
+
+
+def prefetched_relations(obj, category):
+    if hasattr(obj, '%s_relations' % category):
+        return getattr(obj, '%s_relations' % category)
+    else:
+        return None

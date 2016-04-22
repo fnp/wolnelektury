@@ -2,23 +2,23 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from collections import defaultdict
 import hashlib
 import os.path
 import random
 import re
 import time
 from base64 import urlsafe_b64encode
-
-from django.http import HttpResponse
-from django.core.files.uploadedfile import UploadedFile
-from django.core.files.storage import DefaultStorage
-from django.utils.encoding import force_unicode
-from django.conf import settings
-from os import mkdir, path, unlink
+from collections import defaultdict
 from errno import EEXIST, ENOENT
 from fcntl import flock, LOCK_EX
+from os import mkdir, path, unlink
 from zipfile import ZipFile
+
+from django.conf import settings
+from django.core.files.storage import DefaultStorage
+from django.core.files.uploadedfile import UploadedFile
+from django.http import HttpResponse
+from django.utils.encoding import force_unicode
 
 from reporting.utils import read_chunks
 

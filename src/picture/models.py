@@ -12,6 +12,8 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
 from fnpdjango.utils.text.slughifi import slughifi
 from ssify import flush_ssi_includes
+
+from catalogue.models.tag import prefetched_relations
 from picture import tasks
 from StringIO import StringIO
 import jsonfield
@@ -128,7 +130,11 @@ class Picture(models.Model):
         return self.tags.filter(category='author')
 
     def tag_unicode(self, category):
-        return ", ".join(self.tags.filter(category=category).values_list('name', flat=True))
+        relations = prefetched_relations(self, category)
+        if relations:
+            return ', '.join(rel.tag.name for rel in relations)
+        else:
+            return ', '.join(self.tags.filter(category=category).values_list('name', flat=True))
 
     def author_unicode(self):
         return self.tag_unicode('author')
