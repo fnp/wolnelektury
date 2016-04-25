@@ -7,6 +7,8 @@
     {% load piwik_tags %}
     {% load ssi_include ssi_csrf_token from ssify %}
     {% load user_username user_is_staff from common_tags %}
+    {% load cache %}
+    {% get_current_language as LANGUAGE_CODE %}
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -32,10 +34,9 @@
       {% block bodycontent %}
 
         {% if not funding_no_show_current %}
-          {% current_offer as current_offer %}
-          {{ current_offer.if }}
-          {% ssi_include 'funding_top_bar' pk=current_offer %}
-          {{ current_offer.endif }}
+          {% cache 120 funding_top_bar LANGUAGE_CODE %}
+            {% funding_top_bar %}
+          {% endcache %}
         {% endif %}
 
         <div id="whole-header">

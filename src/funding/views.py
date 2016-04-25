@@ -158,11 +158,12 @@ class DisableNotifications(TemplateView):
         return redirect(self.request.get_full_path())
 
 
-def offer_bar(request, pk, link=False, closeable=False, show_title=True, show_title_calling=True, add_class=""):
-    offer = get_object_or_404(Offer, pk=pk)
-    offer_sum = offer.sum()
-
-    return render(request, "funding/includes/funding.html", {
+def offer_bar(offer, link=False, closeable=False, show_title=True, show_title_calling=True, add_class=""):
+    if offer:
+        offer_sum = offer.sum()
+    else:
+        return {}
+    return {
         'offer': offer,
         'sum': offer_sum,
         'is_current': offer.is_current(),
@@ -174,22 +175,28 @@ def offer_bar(request, pk, link=False, closeable=False, show_title=True, show_ti
         'show_title': show_title,
         'show_title_calling': show_title_calling,
         'add_class': add_class,
-    })
+    }
+
+
+def render_offer_bar(request, pk, link=False, closeable=False, show_title=True, show_title_calling=True, add_class=""):
+    offer = get_object_or_404(Offer, pk=pk)
+    return render(request, "funding/includes/funding.html",
+                  offer_bar(offer, link, closeable, show_title, show_title_calling, add_class))
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def top_bar(request, pk):
-    return offer_bar(request, pk, link=True, closeable=True, add_class="funding-top-header")
+    return render_offer_bar(request, pk, link=True, closeable=True, add_class="funding-top-header")
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def list_bar(request, pk):
-    return offer_bar(request, pk, link=True, show_title_calling=False)
+    return render_offer_bar(request, pk, link=True, show_title_calling=False)
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
 def detail_bar(request, pk):
-    return offer_bar(request, pk, show_title=False)
+    return render_offer_bar(request, pk, show_title=False)
 
 
 @ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
