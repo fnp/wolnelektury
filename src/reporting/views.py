@@ -43,7 +43,7 @@ def catalogue_pdf(path):
     render_to_pdf(path, 'reporting/catalogue.texml', {
         'books_by_author': books_by_author,
         'orphans': orphans,
-        'book_by_parent': books_by_parent,
+        'books_by_parent': books_by_parent,
     }, {
         "wl-logo.png": os.path.join(settings.STATIC_ROOT, "img/logo-big.png"),
     })
@@ -56,5 +56,5 @@ def catalogue_csv(path):
     render_to_csv(path, 'reporting/catalogue.csv', {
         'books_by_author': books_by_author,
         'orphans': orphans,
-        'book_by_parent': books_by_parent,
+        'books_by_parent': books_by_parent,
     })
