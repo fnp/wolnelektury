@@ -24,5 +24,5 @@ def infopage(request, slug):
     return render_to_response('infopages/infopage.html', {
         'page': page,
         'left_column': left_column,
-        'right_columns': right_column,
+        'right_column': right_column,
     }, context_instance=RequestContext(request))
