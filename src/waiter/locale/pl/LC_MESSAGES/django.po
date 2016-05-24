@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 17:32+0200\n"
+"POT-Creation-Date: 2016-05-24 16:18+0200\n"
 "PO-Revision-Date: 2012-03-22 15:54+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,7 @@ msgid "Something went wrong."
 msgstr "Coś poszło nie tak."
 
 #: templates/waiter/wait.html:37
+#, python-format
 msgid ""
 "Your file is ready!\n"
 "          If the download doesn't start in a few seconds,\n"
@@ -58,6 +59,7 @@ msgstr ""
 "Poczekaj cierpliwie, albo dodaj tę stronę do zakładek i wróć później.</p>"
 
 #: templates/waiter/wait.html:63
+#, python-format
 msgid ""
 "Something seems to have gone wrong while generating your file.\n"
 "            Please order it again or <a id='suggest' class='ajaxable' href="

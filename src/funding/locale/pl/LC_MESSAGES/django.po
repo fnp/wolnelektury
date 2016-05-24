@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 17:32+0200\n"
+"POT-Creation-Date: 2016-05-24 16:18+0200\n"
 "PO-Revision-Date: 2015-04-16 13:13+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -415,6 +415,7 @@ msgid "Anonymous"
 msgstr "Anonim"
 
 #: templates/funding/includes/offer_status.html:6
+#, python-format
 msgid ""
 "The fundraiser\n"
 "      ends on %(end)s. The full amount has been successfully\n"
@@ -425,6 +426,7 @@ msgstr ""
 " ale ciągle możesz dołożyć się i pomóc uwolnić więcej książek."
 
 #: templates/funding/includes/offer_status.html:13
+#, python-format
 msgid ""
 "We need %(target)s zł to digitize it,\n"
 "    compile it and publish for free in multiple formats."
@@ -433,6 +435,7 @@ msgstr ""
 "udostępnić w serwisie w wielu formatach."
 
 #: templates/funding/includes/offer_status.html:17
+#, python-format
 msgid ""
 "If we raise enough money before %(end)s we will\n"
 "    publish it and make it available for everyone."
@@ -454,13 +457,14 @@ msgid "Fundraiser span"
 msgstr "Termin zbiórki"
 
 #: templates/funding/includes/offer_status_more.html:12
+#, python-format
 msgid ""
 "The book\n"
 "        <a href=\"%(bu)s\">%(bt)s</a> has been already published."
-msgstr ""
-"Książka <a href=\"%(bu)s\">%(bt)s</a> została już opublikowana."
+msgstr "Książka <a href=\"%(bu)s\">%(bt)s</a> została już opublikowana."
 
 #: templates/funding/includes/offer_status_more.html:16
+#, python-format
 msgid ""
 "You can follow\n"
 "          the work on the <a href=\"%(r)s\">Editorial Platform</a>."
@@ -545,6 +549,7 @@ msgid "We will contact you if you qualify for perks."
 msgstr "Skontaktujemy się z Tobą w sprawie prezentów, które wybrałeś/-aś."
 
 #: templates/funding/thanks.html:18
+#, python-format
 msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
 "      publishing the book %(b)s in multiple formats."
@@ -553,6 +558,7 @@ msgstr ""
 "udostępnienie książki %(b)s w bibliotece w wielu formatach."
 
 #: templates/funding/thanks.html:21
+#, python-format
 msgid ""
 "If the full amount needed is raised,\n"
 "      your donation will be spent on digitizing, compiling and\n"
@@ -583,6 +589,7 @@ msgid "Remaining funds"
 msgstr "Pozostałe środki"
 
 #: templates/funding/wlfund.html:11
+#, python-format
 msgid ""
 "\n"
 "        If the full amount needed for publishing a book is not raised in "

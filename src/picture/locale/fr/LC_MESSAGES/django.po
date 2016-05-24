@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 17:32+0200\n"
+"POT-Creation-Date: 2016-05-24 16:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,67 +26,67 @@ msgstr ""
 msgid "Please supply an image."
 msgstr ""
 
-#: models.py:36
+#: models.py:38
 msgid "area"
 msgstr ""
 
-#: models.py:38
+#: models.py:40
 msgid "kind"
 msgstr ""
 
-#: models.py:39
+#: models.py:41
 msgid "thing"
 msgstr ""
 
-#: models.py:39
+#: models.py:41
 msgid "theme"
 msgstr ""
 
-#: models.py:75
+#: models.py:77
 msgid "title"
 msgstr ""
 
-#: models.py:76
+#: models.py:78
 msgid "slug"
 msgstr ""
 
-#: models.py:77
+#: models.py:79
 msgid "sort key"
 msgstr ""
 
-#: models.py:79
+#: models.py:81
 msgid "sort key by author"
 msgstr ""
 
-#: models.py:80 models.py:81
+#: models.py:82 models.py:83
 msgid "creation date"
 msgstr ""
 
-#: models.py:82
+#: models.py:84
 msgid "xml file"
 msgstr ""
 
-#: models.py:83
+#: models.py:85
 msgid "image file"
 msgstr ""
 
-#: models.py:84
+#: models.py:86
 msgid "html file"
 msgstr ""
 
-#: models.py:85
+#: models.py:87
 msgid "picture areas JSON"
 msgstr ""
 
-#: models.py:86
+#: models.py:88
 msgid "extra information"
 msgstr ""
 
-#: models.py:106
+#: models.py:108
 msgid "picture"
 msgstr ""
 
-#: models.py:107
+#: models.py:109
 msgid "pictures"
 msgstr ""
 

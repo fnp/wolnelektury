@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 17:32+0200\n"
+"POT-Creation-Date: 2016-05-24 16:18+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,13 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.3\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: __init__.py:12
+#, python-format
+msgid ""
+"Please enter a correct %(username)s and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
 
 #: templates/404.html:4
 msgid "Page does not exist"
@@ -98,11 +105,11 @@ msgstr "Prisijungti naudojant:"
 msgid "or register"
 msgstr "arba registruotis "
 
-#: templates/base/superbase.html:22
+#: templates/base/superbase.html:24
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base/superbase.html:52
+#: templates/base/superbase.html:53
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -140,63 +147,63 @@ msgstr[2] ""
 "href='%(r)s'>turite teisę</a>\n"
 "                    "
 
-#: templates/base/superbase.html:62
+#: templates/base/superbase.html:63
 #, fuzzy
 #| msgid "Language versions"
 msgid "Language"
 msgstr "Kalbų versijos"
 
-#: templates/base/superbase.html:88
+#: templates/base/superbase.html:89
 msgid "My shelf"
 msgstr "Mano lentyna"
 
-#: templates/base/superbase.html:92
+#: templates/base/superbase.html:93
 msgid "Administration"
 msgstr "Administracija "
 
-#: templates/base/superbase.html:96
+#: templates/base/superbase.html:97
 msgid "Logout"
 msgstr "Atsijungti"
 
-#: templates/base/superbase.html:100 views.py:67 views.py:68
+#: templates/base/superbase.html:101 views.py:70 views.py:71
 msgid "Sign in"
 msgstr "Prisijungti  "
 
-#: templates/base/superbase.html:101 views.py:86 views.py:87 views.py:115
+#: templates/base/superbase.html:102 views.py:89 views.py:90 views.py:118
 msgid "Register"
 msgstr "Registruotis "
 
-#: templates/base/superbase.html:108
+#: templates/base/superbase.html:109
 msgid "Literature"
 msgstr ""
 
-#: templates/base/superbase.html:111
+#: templates/base/superbase.html:112
 msgid "Themes"
 msgstr "Motyvai"
 
-#: templates/base/superbase.html:114
+#: templates/base/superbase.html:115
 msgid "Audiobooks"
 msgstr "Audio knygos"
 
-#: templates/base/superbase.html:117
+#: templates/base/superbase.html:118
 msgid "Gallery"
 msgstr ""
 
-#: templates/base/superbase.html:120
+#: templates/base/superbase.html:121
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Visos knygos"
 
-#: templates/base/superbase.html:129
+#: templates/base/superbase.html:130
 msgid "Search"
 msgstr "Ieškoti"
 
-#: templates/base/superbase.html:157
+#: templates/base/superbase.html:161
 msgid "Close"
 msgstr "Uždaryti"
 
-#: templates/base/superbase.html:159
+#: templates/base/superbase.html:163
 msgid "Loading"
 msgstr "Kraunasi"
 
@@ -273,62 +280,62 @@ msgstr ""
 msgid "More..."
 msgstr "Daugiau..."
 
-#: templates/main_page.html:8 templates/main_page.html.py:9
+#: templates/main_page.html:9 templates/main_page.html.py:10
 msgid "Wolne Lektury internet library"
 msgstr "Wolne Lektury internetinė biblioteka"
 
-#: templates/main_page.html:40
+#: templates/main_page.html:41
 msgid "Theme"
 msgstr "Motyvas"
 
-#: templates/main_page.html:99
+#: templates/main_page.html:103
 msgid "Recent publications"
 msgstr "Naujos publikacijos"
 
-#: templates/main_page.html:106
+#: templates/main_page.html:109
 #, fuzzy
 #| msgid "Recent publications"
 msgid "More recent publications"
 msgstr "Naujos publikacijos"
 
-#: templates/main_page.html:112
+#: templates/main_page.html:115
 msgid "News"
 msgstr "Naujienos"
 
-#: templates/main_page.html:117
+#: templates/main_page.html:120
 msgid "Utilities"
 msgstr "Priemonės"
 
-#: templates/main_page.html:120
+#: templates/main_page.html:123
 msgid "Report a bug or suggestion"
 msgstr "Praneškite apie klaidą arba teikite pasiūlymus"
 
-#: templates/main_page.html:122
+#: templates/main_page.html:125
 msgid "Download the catalogue in PDF format."
 msgstr "Atsisiųsti katalogą PDF formatu."
 
-#: templates/main_page.html:123
+#: templates/main_page.html:126
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:124
+#: templates/main_page.html:127
 msgid "Missing a book?"
 msgstr "Neradote knygos?"
 
-#: templates/main_page.html:125 templates/publish_plan.html:4
+#: templates/main_page.html:128 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Publikavimo planas"
 
-#: templates/main_page.html:134
+#: templates/main_page.html:137
 msgid "Information"
 msgstr "Informacija"
 
-#: templates/main_page.html:136
+#: templates/main_page.html:139
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:156
+#: templates/main_page.html:160
 msgid "Image used:"
 msgstr "Panaudotas paveikslėlis:"
 
@@ -422,12 +429,12 @@ msgstr "El- paštas"
 msgid "Social accounts"
 msgstr "Socialinės paskyros"
 
-#: views.py:75 views.py:96
+#: views.py:78 views.py:99
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Jau esate prisijungęs kaip vartotojas %(user)s"
 
-#: views.py:110
+#: views.py:113
 msgid "You have to be logged in to continue"
 msgstr "Norėdami tęsti, turite būti prisijungę"
 

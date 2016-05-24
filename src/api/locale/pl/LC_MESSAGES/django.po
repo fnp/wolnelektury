@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 17:32+0200\n"
+"POT-Creation-Date: 2016-05-24 16:18+0200\n"
 "PO-Revision-Date: 2013-06-14 11:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,7 @@ msgid "Collections"
 msgstr "Kolekcje"
 
 #: templates/api/main.html:63
+#, python-format
 msgid ""
 "\n"
 "        Each element of those lists contains a link (in a \"href\") "
@@ -119,6 +120,7 @@ msgstr ""
 "href=\"%(e2)s\">%(e2)s</a>.\n"
 
 #: templates/api/main.html:72
+#, python-format
 msgid ""
 "\n"
 "        You can combine authors, epochs, genres and kinds to find only books "
@@ -132,6 +134,7 @@ msgstr ""
 "odpowiadające zadanym kryteriom. Na przykład: <a href=\"%(e)s\">%(e)s</a>.\n"
 
 #: templates/api/main.html:80
+#, python-format
 msgid ""
 "\n"
 "        If you only want top-level books and not all the children, you can "
@@ -145,6 +148,7 @@ msgstr ""
 "\"%(e)s\">%(e)s</a>.\n"
 
 #: templates/api/main.html:88
+#, python-format
 msgid ""
 "\n"
 "        The same way, using also books and themes, you can search for a list "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-20 17:32+0200\n"
+"POT-Creation-Date: 2016-05-24 16:18+0200\n"
 "PO-Revision-Date: 2013-04-09 10:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,78 +153,78 @@ msgstr "Big"
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: models/book.py:48 models/collection.py:14
+#: models/book.py:49 models/collection.py:14
 msgid "title"
 msgstr "Title"
 
-#: models/book.py:49 models/tag.py:36
+#: models/book.py:50 models/tag.py:37
 msgid "sort key"
 msgstr "Sort key"
 
-#: models/book.py:51
+#: models/book.py:52
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Results by authors"
 
-#: models/book.py:52 models/book.py:53 models/collection.py:15
-#: models/collection.py:18 models/tag.py:35
+#: models/book.py:53 models/book.py:54 models/collection.py:15
+#: models/collection.py:18 models/tag.py:36
 msgid "slug"
 msgstr "Slug"
 
-#: models/book.py:54
+#: models/book.py:55
 msgid "language code"
 msgstr "language code"
 
-#: models/book.py:55 models/book.py:188 models/collection.py:16
-#: models/tag.py:39 models/tag.py:159
+#: models/book.py:56 models/book.py:196 models/collection.py:16
+#: models/tag.py:40 models/tag.py:160
 msgid "description"
 msgstr "Description"
 
-#: models/book.py:56 models/book.py:57 models/bookmedia.py:34 models/tag.py:46
-#: models/tag.py:47
+#: models/book.py:57 models/book.py:58 models/bookmedia.py:34 models/tag.py:47
+#: models/tag.py:48
 msgid "creation date"
 msgstr "creation date"
 
-#: models/book.py:58
+#: models/book.py:59
 msgid "parent number"
 msgstr "Parent number"
 
-#: models/book.py:59 models/bookmedia.py:35
+#: models/book.py:60 models/bookmedia.py:35
 msgid "extra information"
 msgstr "Additional information"
 
-#: models/book.py:65
+#: models/book.py:66
 msgid "cover"
 msgstr "cover"
 
-#: models/book.py:71
+#: models/book.py:72
 msgid "cover thumbnail"
 msgstr ""
 
-#: models/book.py:96 models/collection.py:22
+#: models/book.py:97 models/collection.py:22
 msgid "book"
 msgstr "book"
 
-#: models/book.py:97
+#: models/book.py:98
 msgid "books"
 msgstr "Books"
 
-#: models/book.py:299
+#: models/book.py:307
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Book with stub = \"%s\" does not exist."
 
-#: models/book.py:312
+#: models/book.py:320
 #, python-format
 msgid "Book %s already exists"
 msgstr "Book %s already exists"
 
-#: models/book.py:561
+#: models/book.py:569
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:598 models/bookmedia.py:29
+#: models/book.py:606 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "%s file"
@@ -233,7 +233,7 @@ msgstr "%s file"
 msgid "type"
 msgstr "type"
 
-#: models/bookmedia.py:32 models/source.py:12 models/tag.py:34
+#: models/bookmedia.py:32 models/source.py:12 models/tag.py:35
 msgid "name"
 msgstr "name"
 
@@ -249,7 +249,7 @@ msgstr "book media"
 msgid "book slugs"
 msgstr "Book stubs"
 
-#: models/collection.py:21 models/tag.py:21
+#: models/collection.py:21 models/tag.py:22
 msgid "kind"
 msgstr "form"
 
@@ -291,39 +291,39 @@ msgstr "Source"
 msgid "sources"
 msgstr "Source"
 
-#: models/tag.py:19
+#: models/tag.py:20
 msgid "author"
 msgstr "author"
 
-#: models/tag.py:20
+#: models/tag.py:21
 msgid "epoch"
 msgstr "period"
 
-#: models/tag.py:22
+#: models/tag.py:23
 msgid "genre"
 msgstr "genre"
 
-#: models/tag.py:23
+#: models/tag.py:24
 msgid "theme"
 msgstr "motif"
 
-#: models/tag.py:24
+#: models/tag.py:25
 msgid "set"
 msgstr "set"
 
-#: models/tag.py:25
+#: models/tag.py:26
 msgid "thing"
 msgstr ""
 
-#: models/tag.py:38
+#: models/tag.py:39
 msgid "category"
 msgstr "Category"
 
-#: models/tag.py:69
+#: models/tag.py:70
 msgid "tag"
 msgstr "tag"
 
-#: models/tag.py:70
+#: models/tag.py:71
 msgid "tags"
 msgstr "tags"
 
@@ -490,7 +490,7 @@ msgstr "language code"
 msgid "Read online"
 msgstr "Read online"
 
-#: templates/catalogue/book_short.html:89 views.py:619
+#: templates/catalogue/book_short.html:89 views.py:623
 msgid "Download"
 msgstr "Download"
 
@@ -585,7 +585,7 @@ msgstr ""
 msgid "Collection"
 msgstr "collections"
 
-#: templates/catalogue/collection_box.html:19
+#: templates/catalogue/collection_box.html:18
 #, python-format
 msgid "and one more"
 msgid_plural "and %(c)s more"
@@ -888,7 +888,7 @@ msgstr ""
 msgid "Loading"
 msgstr "Leading"
 
-#: views.py:584
+#: views.py:588
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -899,16 +899,16 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:586
+#: views.py:590
 msgid "Book imported successfully"
 msgstr "Book imported succesfully"
 
-#: views.py:588
+#: views.py:592
 #, python-format
 msgid "Error importing file: %r"
 msgstr "An error occured while importing file: %r"
 
-#: views.py:618
+#: views.py:622
 msgid "Download custom PDF"
 msgstr "Download custom PDF"
 
