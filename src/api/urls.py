@@ -58,8 +58,8 @@ urlpatterns = patterns(
         incl, name='api_include'),
 
     # info boxes (used by mobile app)
-    url(r'book/(?P<id>\d*?)/info\.html$', 'catalogue.views.book_info'),
-    url(r'tag/(?P<id>\d*?)/info\.html$', 'catalogue.views.tag_info'),
+    url(r'book/(?P<book_id>\d*?)/info\.html$', 'catalogue.views.book_info'),
+    url(r'tag/(?P<tag_id>\d*?)/info\.html$', 'catalogue.views.tag_info'),
 
     # books by collections
     url(r'^collections/$', collection_list_resource, name="api_collections"),
