@@ -7,6 +7,8 @@ from traceback import print_exc
 from celery.task import task
 from celery.utils.log import get_task_logger
 from django.conf import settings
+
+from catalogue.utils import gallery_path
 from wolnelektury.utils import localtime_to_utc
 from waiter.models import WaitedFile
 
@@ -49,10 +51,12 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
             if 'no-cover' in customizations:
                 kwargs['cover'] = False
                 customizations.remove('no-cover')
-            pdf = Book.objects.get(pk=book_id).wldocument().as_pdf(
-                    customizations=customizations,
-                    morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
-                    **kwargs)
+            wldoc = Book.objects.get(pk=book_id).wldocument()
+            pdf = wldoc.as_pdf(
+                customizations=customizations,
+                morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
+                ilustr_path=gallery_path(wldoc.book_info.url.slug),
+                **kwargs)
             DefaultStorage().save(file_name, File(open(pdf.get_filename())))
     finally:
         if waiter_id is not None:
