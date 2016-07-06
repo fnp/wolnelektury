@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-06 15:28+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -664,6 +664,8 @@ msgstr ""
 #: templates/catalogue/search_multiple_hits.html:8
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
+#: templates/catalogue/search_too_long.html:5
+#: templates/catalogue/search_too_long.html:10
 #: templates/catalogue/search_too_short.html:5
 #: templates/catalogue/search_too_short.html:10
 msgid "Search"
@@ -728,6 +730,10 @@ msgstr ""
 "Wyszukiwarka obsługuje takie kryteria jak tytuł, autor, motyw/temat, epoka, "
 "rodzaj i gatunek utworu. Obecnie nie obsługujemy wyszukiwania fraz w "
 "tekstach utworów."
+
+#: templates/catalogue/search_too_long.html:13
+msgid "Sorry! Search query is too long to be processed."
+msgstr "Przepraszamy! Zapytanie jest zbyt długie."
 
 #: templates/catalogue/search_too_short.html:13
 msgid "Sorry! Search query must have at least two characters."

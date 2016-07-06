@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-06 15:28+0200\n"
 "PO-Revision-Date: 2013-04-09 10:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -722,6 +722,8 @@ msgstr ""
 #: templates/catalogue/search_multiple_hits.html:8
 #: templates/catalogue/search_no_hits.html:5
 #: templates/catalogue/search_no_hits.html:10
+#: templates/catalogue/search_too_long.html:5
+#: templates/catalogue/search_too_long.html:10
 #: templates/catalogue/search_too_short.html:5
 #: templates/catalogue/search_too_short.html:10
 msgid "Search"
@@ -792,6 +794,12 @@ msgstr ""
 "Suchmaschine fördert die folgenden Kriterien: Titel, Autor, Thema/Motiv, "
 "Epoche, Art und Genre. \n"
 "Die Volltextsuche ist noch nicht möglich."
+
+#: templates/catalogue/search_too_long.html:13
+#, fuzzy
+#| msgid "Sorry! Search query must have at least two characters."
+msgid "Sorry! Search query is too long to be processed."
+msgstr "Sorry! Suchfrage muss zumindest zwei Buchstaben enthalten"
 
 #: templates/catalogue/search_too_short.html:13
 msgid "Sorry! Search query must have at least two characters."

@@ -137,6 +137,9 @@ def main(request):
         return render_to_response(
             'catalogue/search_too_short.html', {'prefix': query},
             context_instance=RequestContext(request))
+    elif len(query) > 256:
+        return render_to_response(
+            'catalogue/search_too_long.html', {'prefix': query}, context_instance=RequestContext(request))
 
     query = remove_query_syntax_chars(query)
     
