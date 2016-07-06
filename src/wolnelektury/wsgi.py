@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 import os
-import os.path
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

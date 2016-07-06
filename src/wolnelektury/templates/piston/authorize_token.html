@@ -14,7 +14,7 @@
     <form action="{% url 'piston.authentication.oauth_user_auth' %}" method="POST">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Confirm</button>
+      <button type="submit">{% trans "Confirm" %}</button>
     </form>
   </div>
 {% endblock %}

@@ -28,7 +28,7 @@ class BookImportForm(forms.Form):
                 raise forms.ValidationError(_("Please supply an XML."))
         return super(BookImportForm, self).clean()
 
-    def save(self, commit=True, **kwargs):
+    def save(self, **kwargs):
         return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True,
                                   remote_gallery_url=self.cleaned_data['gallery_url'], **kwargs)
 
