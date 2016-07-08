@@ -52,7 +52,7 @@ class WaitedFile(models.Model):
         already = cls.exists(path)
         if not already:
             waited, created = cls.objects.get_or_create(path=path)
-            if created or waited.is_stale():
+            if created:
                 waited.task = task_creator(check_abspath(path), waited.pk)
                 waited.task_id = waited.task.task_id
                 waited.description = description
