@@ -365,7 +365,14 @@ def _no_diacritics_regexp(query):
 
 def unicode_re_escape(query):
     """ Unicode-friendly version of re.escape """
-    return re.sub(r'(?u)(\W)', r'\\\1', query)
+    s = list(query)
+    for i, c in enumerate(query):
+        if re.match(r'(?u)(\W)', c) and re.match(r'[\x00-\x7e]', c):
+            if c == "\000":
+                s[i] = "\\000"
+            else:
+                s[i] = "\\" + c
+    return query[:0].join(s)
 
 
 def _word_starts_with(name, prefix):
