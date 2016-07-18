@@ -2,36 +2,35 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf.urls import include, patterns, url
+from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib import admin
 from django.views.generic import RedirectView
-import wolnelektury.views
+import django.views.static
+import catalogue.views
+import picture.views
+from . import views
 
 
-urlpatterns = patterns(
-    'wolnelektury.views',
-    url(r'^$', 'main_page', name='main_page'),
-    url(r'^planowane/$', 'publish_plan', name='publish_plan'),
-    url(r'^widget\.html$', 'widget', name='widget'),
+urlpatterns = [
+    url(r'^$', views.main_page, name='main_page'),
+    url(r'^planowane/$', views.publish_plan, name='publish_plan'),
+    url(r'^widget\.html$', views.widget, name='widget'),
 
-    url(r'^zegar/$', 'clock', name='clock'),
+    url(r'^zegar/$', views.clock, name='clock'),
 
     # Authentication
-    url(r'^uzytkownik/$', 'user_settings', name='user_settings'),
-    url(r'^uzytkownik/login/$', wolnelektury.views.LoginFormView(), name='login'),
-    url(r'^uzytkownik/signup/$', wolnelektury.views.RegisterFormView(), name='register'),
-    url(r'^uzytkownik/logout/$', 'logout_then_redirect', name='logout'),
-    url(r'^uzytkownik/zaloguj-utworz/$', wolnelektury.views.LoginRegisterFormView(), name='login_register'),
+    url(r'^uzytkownik/$', views.user_settings, name='user_settings'),
+    url(r'^uzytkownik/login/$', views.LoginFormView(), name='login'),
+    url(r'^uzytkownik/signup/$', views.RegisterFormView(), name='register'),
+    url(r'^uzytkownik/logout/$', views.logout_then_redirect, name='logout'),
+    url(r'^uzytkownik/zaloguj-utworz/$', views.LoginRegisterFormView(), name='login_register'),
 
     # Includes.
-    url(r'^latests_blog_posts.html$',
-        wolnelektury.views.latest_blog_posts,
-        name='latest_blog_posts'),
-)
+    url(r'^latests_blog_posts.html$', views.latest_blog_posts, name='latest_blog_posts'),
+]
 
-urlpatterns += patterns(
-    '',
+urlpatterns += [
     url(r'^katalog/', include('catalogue.urls')),
     url(r'^opds/', include('opds.urls')),
     url(r'^sugestia/', include('suggest.urls')),
@@ -47,30 +46,30 @@ urlpatterns += patterns(
     url(r'^biblioteki/', include('libraries.urls')),
     url(r'^chunks/', include('chunks.urls')),
     url(r'^sponsors/', include('sponsors.urls')),
+    url(r'^newsletter/', include('newsletter.urls')),
 
     # Admin panel
-    url(r'^admin/catalogue/book/import$', 'catalogue.views.import_book', name='import_book'),
-    url(r'^admin/catalogue/picture/import$', 'picture.views.import_picture', name='import_picture'),
+    url(r'^admin/catalogue/book/import$', catalogue.views.import_book, name='import_book'),
+    url(r'^admin/catalogue/picture/import$', picture.views.import_picture, name='import_picture'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     # API
-    (r'^api/', include('api.urls')),
+    url(r'^api/', include('api.urls')),
     # OAIPMH
-    (r'^oaipmh/', include('oai.urls')),
+    url(r'^oaipmh/', include('oai.urls')),
 
     url(r'^szukaj/', include('search.urls')),
 
     # Static files
-    url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve',
+    url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], django.views.static.serve,
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], 'django.views.static.serve',
+    url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], django.views.static.serve,
         {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
     url(r'^i18n/', include('django.conf.urls.i18n')),
-)
+]
 
-urlpatterns += patterns(
-    '',
+urlpatterns += [
     # old static pages - redirected
     url(r'^1procent/$', RedirectView.as_view(
         url='http://nowoczesnapolska.org.pl/wesprzyj_nas/', permanent=True)),
@@ -84,4 +83,4 @@ urlpatterns += patterns(
         url='/info/widget/', permanent=True)),
     url(r'^wolontariat/$', RedirectView.as_view(
         url='/info/wlacz-sie-w-prace/', permanent=False)),
-)
+]

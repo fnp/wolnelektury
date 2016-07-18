@@ -57,7 +57,8 @@ INSTALLED_APPS_OUR = [
     'funding',
     'polls',
     'libraries',
-    ]
+    'newsletter',
+]
 
 GETPAID_BACKENDS = (
     'getpaid.backends.payu',
