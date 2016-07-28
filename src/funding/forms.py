@@ -5,12 +5,14 @@
 from django import forms
 from django.utils import formats
 from django.utils.translation import ugettext_lazy as _, ugettext, get_language
+
+from newsletter.forms import NewsletterForm
 from .models import Funding
 from .widgets import PerksAmountWidget
 from . import app_settings
 
 
-class FundingForm(forms.Form):
+class FundingForm(NewsletterForm):
     required_css_class = 'required'
 
     amount = forms.DecimalField(label=_("Amount"), decimal_places=2, widget=PerksAmountWidget())
@@ -44,6 +46,7 @@ class FundingForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
+        super(FundingForm, self).save()
         funding = Funding.objects.create(
             offer=self.offer,
             name=self.cleaned_data['name'],
