@@ -1,9 +1,20 @@
 {% extends "ajaxable/form.html" %}
 {% load i18n %}
+{% load ajaxable_tags %}
+
+
+{% block form_fields %}
+  {{ form.username|pretty_field }}
+  {{ form.email|pretty_field }}
+  {{ form.password1|pretty_field }}
+  {{ form.password2|pretty_field }}
+  {{ form.agree_newsletter|pretty_checkbox }}
+{% endblock %}
 
 
 {% block extra %}
 
+{% comment %}
 <h1>{% trans "Sign in using:" %}</h1>
 
 <ul class="socialaccount_providers">
@@ -11,5 +22,6 @@
 </ul>
 
 {% include "socialaccount/snippets/login_extra.html" %}
+{% endcomment %}
 
 {% endblock %}

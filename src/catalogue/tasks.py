@@ -48,9 +48,9 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
             kwargs = {
                 'cover': True,
             }
-            if 'no-cover' in customizations:
+            if 'nocover' in customizations:
                 kwargs['cover'] = False
-                customizations.remove('no-cover')
+                customizations.remove('nocover')
             wldoc = Book.objects.get(pk=book_id).wldocument()
             pdf = wldoc.as_pdf(
                 customizations=customizations,

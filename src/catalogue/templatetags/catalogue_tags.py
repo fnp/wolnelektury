@@ -10,7 +10,6 @@ from django.conf import settings
 from django import template
 from django.template import Node, Variable, Template, Context
 from django.core.urlresolvers import reverse
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.cache import add_never_cache_headers
 from django.utils.translation import ugettext as _
 
@@ -22,22 +21,6 @@ from catalogue.constants import LICENSES
 from picture.models import Picture
 
 register = template.Library()
-
-
-class RegistrationForm(UserCreationForm):
-    def as_ul(self):
-        """Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."""
-        return self._html_output(
-            u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>',
-            '</li>', u' %s', False)
-
-
-class LoginForm(AuthenticationForm):
-    def as_ul(self):
-        """Returns this form rendered as HTML <li>s -- excluding the <ul></ul>."""
-        return self._html_output(
-            u'<li>%(errors)s%(label)s %(field)s<span class="help-text">%(help_text)s</span></li>', u'<li>%s</li>',
-            '</li>', u' %s', False)
 
 
 def iterable(obj):
@@ -226,16 +209,6 @@ def all_editors(extra_info):
     return ', '.join(
                      ' '.join(p.strip() for p in person.rsplit(',', 1)[::-1])
                      for person in sorted(set(editors)))
-
-
-@register.simple_tag
-def user_creation_form():
-    return RegistrationForm(prefix='registration').as_ul()
-
-
-@register.simple_tag
-def authentication_form():
-    return LoginForm(prefix='login').as_ul()
 
 
 @register.tag
