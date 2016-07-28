@@ -63,6 +63,7 @@ class AjaxableFormView(object):
     # override to customize form look
     template = "ajaxable/form.html"
     submit = _('Send')
+    action = ''
 
     title = ''
     success_message = ''
@@ -140,6 +141,7 @@ class AjaxableFormView(object):
                 "honeypot": self.honeypot,
                 "placeholdize": self.placeholdize,
                 "submit": self.submit,
+                "action": self.action,
                 "response_data": response_data,
                 "ajax_template": self.template,
                 "view_args": args,

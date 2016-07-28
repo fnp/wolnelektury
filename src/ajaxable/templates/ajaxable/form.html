@@ -3,7 +3,7 @@
 
 <h1>{{ title }}</h1>
 
-<form action="{{ request.get_full_path }}" method="post" accept-charset="utf-8"
+<form action="{{ action }}" method="post" accept-charset="utf-8"
       class="cuteform{% if placeholdize %} hidelabels{% endif %}">
   {% ssi_csrf_token %}
   {% if honeypot %}
@@ -12,7 +12,9 @@
   {% endif %}
   <ol>
     <div id="id_{% if form_prefix %}{{ form_prefix }}-{% endif %}__all__"></div>
-    {{ form.as_ul }}
+    {% block form_fields %}
+      {{ form.as_ul }}
+    {% endblock %}
     <li><input type="submit" value="{{ submit }}"/></li>
   </ol>
 </form>

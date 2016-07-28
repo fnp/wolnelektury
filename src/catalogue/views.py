@@ -628,6 +628,7 @@ class CustomPDFFormView(AjaxableFormView):
     form_class = forms.CustomPDFForm
     title = ugettext_lazy('Download custom PDF')
     submit = ugettext_lazy('Download')
+    template = 'catalogue/custom_pdf_form.html'
     honeypot = True
 
     def __call__(self, *args, **kwargs):

@@ -22,6 +22,7 @@ from catalogue.models import Book, Collection, Tag, Fragment
 from ssify import ssi_included
 
 from social.utils import get_or_choose_cite
+from wolnelektury.forms import RegistrationForm
 
 
 def main_page(request):
@@ -83,7 +84,7 @@ class LoginFormView(AjaxableFormView):
 
 
 class RegisterFormView(AjaxableFormView):
-    form_class = UserCreationForm
+    form_class = RegistrationForm
     template = "auth/register.html"
     placeholdize = True
     title = _('Register')

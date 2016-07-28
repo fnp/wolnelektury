@@ -10,14 +10,18 @@ from django.core.urlresolvers import reverse
 from django.core.validators import validate_email
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+
+from newsletter.forms import NewsletterForm
 from suggest.models import PublishingSuggestion, Suggestion
 
 
-class SuggestForm(forms.Form):
+class SuggestForm(NewsletterForm):
+    email_field = 'contact'
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     description = forms.CharField(label=_('Description'), widget=forms.Textarea, required=True)
 
     def save(self, request):
+        super(SuggestForm, self).save()
         contact = self.cleaned_data['contact']
         description = self.cleaned_data['description']
 
@@ -54,7 +58,8 @@ The suggestion has been referred to the project coordinator.""") +
                       'no-reply@wolnelektury.pl', [contact], fail_silently=True)
 
 
-class PublishingSuggestForm(forms.Form):
+class PublishingSuggestForm(NewsletterForm):
+    email_field = 'contact'
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     books = forms.CharField(label=_('books'), widget=forms.Textarea, required=True)
     ebook = forms.BooleanField(label=_('ebook'), required=False, initial=True)
@@ -68,6 +73,7 @@ class PublishingSuggestForm(forms.Form):
         return super(PublishingSuggestForm, self).clean()
 
     def save(self, request):
+        super(PublishingSuggestForm, self).save()
         contact = self.cleaned_data['contact']
         suggestion_text = self.cleaned_data['books'].strip(', \n\r')
 

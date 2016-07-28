@@ -1,33 +1,16 @@
+{% extends "ajaxable/form.html" %}
 {% load i18n %}
-{% load honeypot %}
-{% load ssi_csrf_token from ssify %}
+{% load ajaxable_tags %}
 
-<h1>{% trans "Didn't find a book? Make a suggestion." %}</h1>
+{% block form_fields %}
+{{ form.contact|pretty_field }}
+  <li>{% trans "I'd like to find in WolneLektury.pl these…" %}</li>
+  {{ form.books|pretty_field }}
+  {{ form.ebook|pretty_checkbox }}
+  {{ form.audiobook|pretty_checkbox }}
+  {{ form.agree_newsletter|pretty_checkbox }}
+{% endblock %}
 
-<form id='suggest-publishing-form' action="{% url 'suggest_publishing' %}" method="post" accept-charset="utf-8" class="cuteform">
-  {% ssi_csrf_token %}
-  {% render_honeypot_field %}
-  <ol>
-    <li>
-      <span class="error">{{ form.contact.errors }}</span>
-      <label for="id_contact">{{ form.contact.label }}</label>
-      {{ form.contact }}
-    </li>
-
-    <li>{% trans "I'd like to find in WolneLektury.pl these…" %}</li>
-
-    <li><label for="id_books">{{ form.books.label }}:</label> {{ form.books }}</li>
-
-    <li class="checkbox">
-      <span class="error">{{ form.ebook.errors }}</span>
-      <label for="id_ebook">{{ form.ebook.label }}:</label>
-      {{ form.ebook }}
-    </li>
-    <li class="checkbox">
-      <span class="error">{{ form.audiobook.errors }}</span>
-      <label for="id_audiobook">{{ form.audiobook.label }}:</label>
-      {{ form.audiobook }}
-    </li>
 
     <li><input type="submit" value="{% trans "Send report" %}"/></li>
     <li>{% trans "Remember that we can only publish books in public domain, ie. 70 years after the death of the author!" %}</li>
