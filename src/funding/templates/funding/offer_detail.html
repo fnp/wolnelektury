@@ -42,7 +42,20 @@
         <h3>{% trans "Support the publication" %}</h3>
         <form action="" method="post">
           <table>
-            {{ form.as_table }}
+            {# FIXME after upgrade to django 1.9 use field_order #}
+            {% for field in form %}
+              {% if field.name != 'agree_newsletter' %}
+                <tr>
+                  <th>{{ field.label }}</th>
+                  <td>
+                    {{ field.errors }}{{ field }}
+                    {% if field.help_text %}<br /><span class="helptext">{{ field.help_text }}</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+            <tr><td></td><td><label>{{ form.agree_newsletter }} {{ form.agree_newsletter.label }}</label></td></tr>
             <tr>
               <td></td>
               <td>
