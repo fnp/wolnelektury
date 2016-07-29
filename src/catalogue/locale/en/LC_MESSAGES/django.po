@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-06 15:28+0200\n"
+"POT-Creation-Date: 2016-07-29 17:40+0200\n"
 "PO-Revision-Date: 2013-04-09 10:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -490,7 +490,8 @@ msgstr "language code"
 msgid "Read online"
 msgstr "Read online"
 
-#: templates/catalogue/book_short.html:89 views.py:623
+#: templates/catalogue/book_short.html:89
+#: templates/catalogue/custom_pdf_form.html:19 views.py:630
 msgid "Download"
 msgstr "Download"
 
@@ -597,6 +598,10 @@ msgstr[1] ""
 #| msgid "collections"
 msgid "All collections"
 msgstr "collections"
+
+#: templates/catalogue/custom_pdf_form.html:6 views.py:629
+msgid "Download custom PDF"
+msgstr "Download custom PDF"
 
 #: templates/catalogue/daisy_list.html:7
 #: templates/catalogue/daisy_list.html:15
@@ -896,7 +901,7 @@ msgstr ""
 msgid "Loading"
 msgstr "Leading"
 
-#: views.py:588
+#: views.py:595
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -907,18 +912,14 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:590
+#: views.py:597
 msgid "Book imported successfully"
 msgstr "Book imported succesfully"
 
-#: views.py:592
+#: views.py:599
 #, python-format
 msgid "Error importing file: %r"
 msgstr "An error occured while importing file: %r"
-
-#: views.py:622
-msgid "Download custom PDF"
-msgstr "Download custom PDF"
 
 #~ msgid "book count"
 #~ msgstr "Number of books"

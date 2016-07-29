@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-29 17:40+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -100,10 +100,6 @@ msgstr "Importuj książkę"
 msgid "Forgot Password?"
 msgstr "Nie pamiętasz hasła?"
 
-#: templates/auth/login.html:17 templates/auth/register.html:7
-msgid "Sign in using:"
-msgstr "Zaloguj się używając:"
-
 #: templates/auth/login_register.html:9
 msgid "or register"
 msgstr "albo załóż konto"
@@ -156,11 +152,11 @@ msgstr "Administracja"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base/superbase.html:101 views.py:70 views.py:71
+#: templates/base/superbase.html:101 views.py:71 views.py:72
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: templates/base/superbase.html:102 views.py:89 views.py:90 views.py:118
+#: templates/base/superbase.html:102 views.py:90 views.py:91 views.py:119
 msgid "Register"
 msgstr "Załóż konto"
 
@@ -335,6 +331,10 @@ msgid ""
 msgstr ""
 "Potwierdź dostęp do Wolnych Lektur jako użytkownik <strong>%(user)s</strong>."
 
+#: templates/piston/authorize_token.html:17
+msgid "Confirm"
+msgstr "Potwierdź"
+
 #: templates/socialaccount/connections.html:5
 #: templates/socialaccount/connections.html:10
 msgid "Account Connections"
@@ -391,14 +391,17 @@ msgstr "E-mail"
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
 
-#: views.py:78 views.py:99
+#: views.py:79 views.py:100
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Zalogowano jako %(user)s"
 
-#: views.py:113
+#: views.py:114
 msgid "You have to be logged in to continue"
 msgstr "Zaloguj się, aby kontynuować"
+
+#~ msgid "Sign in using:"
+#~ msgstr "Zaloguj się używając:"
 
 #~ msgid "What's new?"
 #~ msgstr "Co nowego?"

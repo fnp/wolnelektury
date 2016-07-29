@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-29 17:40+0200\n"
 "PO-Revision-Date: 2011-06-09 13:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: forms.py:17 forms.py:58
+#: forms.py:20 forms.py:63
 msgid "Contact"
 msgstr "Kontakt"
 
-#: forms.py:18
+#: forms.py:21
 msgid "Description"
 msgstr "Opis"
 
-#: forms.py:49 forms.py:110
+#: forms.py:53 forms.py:116
 msgid "Thank you for your suggestion."
 msgstr "Dziękujemy za zgłoszenie."
 
-#: forms.py:50 forms.py:111
+#: forms.py:54 forms.py:117
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -37,23 +37,23 @@ msgstr ""
 "Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
 "Sugestia została przekazana koordynatorce projektu."
 
-#: forms.py:53 forms.py:114
+#: forms.py:57 forms.py:120
 msgid "Message sent automatically. Please do not reply."
 msgstr "Wiadomość wysłana automatycznie. Proszę nie odpowiadać."
 
-#: forms.py:59 models.py:31
+#: forms.py:64 models.py:31
 msgid "books"
 msgstr "książki"
 
-#: forms.py:60
+#: forms.py:65
 msgid "ebook"
 msgstr "ebook"
 
-#: forms.py:61
+#: forms.py:66
 msgid "audiobook"
 msgstr "audiobook"
 
-#: forms.py:65
+#: forms.py:70
 msgid "One of these options is required."
 msgstr "Proszę zaznaczyć co najmniej jedną opcję."
 
@@ -93,19 +93,15 @@ msgstr "sugestia publikacji"
 msgid "publishing suggestions"
 msgstr "sugestie publikacji"
 
-#: templates/publishing_suggest.html:5
-msgid "Didn't find a book? Make a suggestion."
-msgstr "Nie znalazłeś utworu na stronie? Zgłoś sugestię."
-
-#: templates/publishing_suggest.html:17
+#: templates/publishing_suggest.html:7
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Chciałabym/chciałbym znaleźć w bibliotece Wolne Lektury następujące"
 
-#: templates/publishing_suggest.html:32 views.py:22
+#: templates/publishing_suggest.html:15 views.py:16 views.py:26
 msgid "Send report"
 msgstr "Wyślij zgłoszenie"
 
-#: templates/publishing_suggest.html:33
+#: templates/publishing_suggest.html:16
 msgid ""
 "Remember that we can only publish books in public domain, ie. 70 years after "
 "the death of the author!"
@@ -113,10 +109,14 @@ msgstr ""
 "Pamiętaj, że możemy publikować jedynie książki w domenie publicznej, czyli "
 "70 lat po śmierci autora!"
 
-#: views.py:13 views.py:21
-msgid "Report a bug or suggestion"
-msgstr "Zgłoś błąd lub sugestię"
+#: views.py:14
+msgid "Didn't find a book? Make a suggestion."
+msgstr "Nie znalazłeś utworu na stronie? Zgłoś sugestię."
 
-#: views.py:15 views.py:23
+#: views.py:17 views.py:27
 msgid "Report was sent successfully."
 msgstr "Zgłoszenie zostało wysłane."
+
+#: views.py:24
+msgid "Report a bug or suggestion"
+msgstr "Zgłoś błąd lub sugestię"

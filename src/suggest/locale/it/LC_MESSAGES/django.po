@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-29 17:40+0200\n"
 "PO-Revision-Date: 2012-02-21 17:57+0100\n"
 "Last-Translator: xxx\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: forms.py:17 forms.py:58
+#: forms.py:20 forms.py:63
 msgid "Contact"
 msgstr "Contatto"
 
-#: forms.py:18
+#: forms.py:21
 msgid "Description"
 msgstr "Descrizione"
 
-#: forms.py:49 forms.py:110
+#: forms.py:53 forms.py:116
 msgid "Thank you for your suggestion."
 msgstr "Grazie per la sua proposta"
 
-#: forms.py:50 forms.py:111
+#: forms.py:54 forms.py:117
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -37,28 +37,28 @@ msgstr ""
 "Grazie per il commento su WolneLektury.pl. La sua proposta è stata inviata "
 "al coordinatore del progetto. // "
 
-#: forms.py:53 forms.py:114
+#: forms.py:57 forms.py:120
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 "Il messaggio è stato inviato automaticamente. Si prega di non rispondere."
 
-#: forms.py:59 models.py:31
+#: forms.py:64 models.py:31
 msgid "books"
 msgstr "libri"
 
-#: forms.py:60
+#: forms.py:65
 #, fuzzy
 #| msgid "books"
 msgid "ebook"
 msgstr "libri"
 
-#: forms.py:61
+#: forms.py:66
 #, fuzzy
 #| msgid "audiobooks"
 msgid "audiobook"
 msgstr "audiolibri"
 
-#: forms.py:65
+#: forms.py:70
 #, fuzzy
 #| msgid "One of these fields is required."
 msgid "One of these options is required."
@@ -100,31 +100,31 @@ msgstr "pubblica la proposta"
 msgid "publishing suggestions"
 msgstr "pubblica le proposte"
 
-#: templates/publishing_suggest.html:5
-msgid "Didn't find a book? Make a suggestion."
-msgstr "Non hai trovato il libro?Fai una proposta."
-
-#: templates/publishing_suggest.html:17
+#: templates/publishing_suggest.html:7
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Vorrei trovare in WolneLektury.pl questo..."
 
-#: templates/publishing_suggest.html:32 views.py:22
+#: templates/publishing_suggest.html:15 views.py:16 views.py:26
 msgid "Send report"
 msgstr "Invia una notifica"
 
-#: templates/publishing_suggest.html:33
+#: templates/publishing_suggest.html:16
 msgid ""
 "Remember that we can only publish books in public domain, ie. 70 years after "
 "the death of the author!"
 msgstr ""
 
-#: views.py:13 views.py:21
-msgid "Report a bug or suggestion"
-msgstr " Segnala un'errore o un proposta"
+#: views.py:14
+msgid "Didn't find a book? Make a suggestion."
+msgstr "Non hai trovato il libro?Fai una proposta."
 
-#: views.py:15 views.py:23
+#: views.py:17 views.py:27
 msgid "Report was sent successfully."
 msgstr "La notifica è stata inviata con successo."
+
+#: views.py:24
+msgid "Report a bug or suggestion"
+msgstr " Segnala un'errore o un proposta"
 
 #, fuzzy
 #~| msgid ""

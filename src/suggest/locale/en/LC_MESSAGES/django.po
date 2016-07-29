@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-29 17:40+0200\n"
 "PO-Revision-Date: 2012-03-10 13:06+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 
-#: forms.py:17 forms.py:58
+#: forms.py:20 forms.py:63
 msgid "Contact"
 msgstr "Contact"
 
-#: forms.py:18
+#: forms.py:21
 msgid "Description"
 msgstr "Description"
 
-#: forms.py:49 forms.py:110
+#: forms.py:53 forms.py:116
 msgid "Thank you for your suggestion."
 msgstr "Thank you for your suggestion."
 
-#: forms.py:50 forms.py:111
+#: forms.py:54 forms.py:117
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -37,27 +37,27 @@ msgstr ""
 "Thank you for your suggestion concerning WolneLektury.pl \n"
 "Your suggestion was sent to the project coordinator."
 
-#: forms.py:53 forms.py:114
+#: forms.py:57 forms.py:120
 msgid "Message sent automatically. Please do not reply."
 msgstr "This message was sent automatically. Please do not reply."
 
-#: forms.py:59 models.py:31
+#: forms.py:64 models.py:31
 msgid "books"
 msgstr "books"
 
-#: forms.py:60
+#: forms.py:65
 #, fuzzy
 #| msgid "books"
 msgid "ebook"
 msgstr "books"
 
-#: forms.py:61
+#: forms.py:66
 #, fuzzy
 #| msgid "audiobooks"
 msgid "audiobook"
 msgstr "audiobooks"
 
-#: forms.py:65
+#: forms.py:70
 #, fuzzy
 #| msgid "One of these fields is required."
 msgid "One of these options is required."
@@ -99,31 +99,31 @@ msgstr "publishing suggestion"
 msgid "publishing suggestions"
 msgstr "publishing suggestions"
 
-#: templates/publishing_suggest.html:5
-msgid "Didn't find a book? Make a suggestion."
-msgstr "Didn't find a book? Make a suggestion."
-
-#: templates/publishing_suggest.html:17
+#: templates/publishing_suggest.html:7
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "I would like to find the following items on WolneLektury.pl:"
 
-#: templates/publishing_suggest.html:32 views.py:22
+#: templates/publishing_suggest.html:15 views.py:16 views.py:26
 msgid "Send report"
 msgstr "send a suggestion"
 
-#: templates/publishing_suggest.html:33
+#: templates/publishing_suggest.html:16
 msgid ""
 "Remember that we can only publish books in public domain, ie. 70 years after "
 "the death of the author!"
 msgstr ""
 
-#: views.py:13 views.py:21
-msgid "Report a bug or suggestion"
-msgstr "Report an error or make a suggestion"
+#: views.py:14
+msgid "Didn't find a book? Make a suggestion."
+msgstr "Didn't find a book? Make a suggestion."
 
-#: views.py:15 views.py:23
+#: views.py:17 views.py:27
 msgid "Report was sent successfully."
 msgstr "publishing suggestion"
+
+#: views.py:24
+msgid "Report a bug or suggestion"
+msgstr "Report an error or make a suggestion"
 
 #, fuzzy
 #~| msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 16:18+0200\n"
+"POT-Creation-Date: 2016-07-29 17:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,35 +33,35 @@ msgstr ""
 msgid "perks"
 msgstr ""
 
-#: forms.py:16 templates/funding/wlfund.html:29
+#: forms.py:18 templates/funding/wlfund.html:29
 msgid "Amount"
 msgstr ""
 
-#: forms.py:18
+#: forms.py:20
 msgid "Name"
 msgstr ""
 
-#: forms.py:18
+#: forms.py:20
 msgid "Optional name for public list of contributors"
 msgstr ""
 
-#: forms.py:20
+#: forms.py:22
 msgid "Contact e-mail"
 msgstr ""
 
-#: forms.py:22
+#: forms.py:24
 msgid ""
 "We'll use it to contact you about the <strong>details needed for your perks</"
 "strong>,<br/>and to send you updates about your payment and the fundraiser "
 "status (which you can always turn off).<br/>Your e-mail won't be publicised."
 msgstr ""
 
-#: forms.py:37
+#: forms.py:39
 #, python-format
 msgid "The minimum amount is %(amount)s PLN."
 msgstr ""
 
-#: forms.py:43
+#: forms.py:45
 msgid "This offer is out of date."
 msgstr ""
 
@@ -449,23 +449,23 @@ msgstr ""
 msgid "Support the publication"
 msgstr ""
 
-#: templates/funding/offer_detail.html:50
+#: templates/funding/offer_detail.html:63
 msgid "Donate!"
 msgstr ""
 
-#: templates/funding/offer_detail.html:59 templates/funding/thanks.html:35
+#: templates/funding/offer_detail.html:72 templates/funding/thanks.html:35
 msgid "Tell your friends!"
 msgstr ""
 
-#: templates/funding/offer_detail.html:60
+#: templates/funding/offer_detail.html:73
 msgid "Support Wolne Lektury!"
 msgstr ""
 
-#: templates/funding/offer_detail.html:63
+#: templates/funding/offer_detail.html:76
 msgid "See all fundraisers."
 msgstr ""
 
-#: templates/funding/offer_detail.html:66
+#: templates/funding/offer_detail.html:79
 msgid "Supporters"
 msgstr ""
 
