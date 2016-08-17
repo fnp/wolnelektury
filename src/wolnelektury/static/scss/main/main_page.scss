@@ -13,6 +13,10 @@
         background-image: url(/static/img/backdrop/book-drawer2.jpg);
     }
 
+    &.banner {
+        background-image: none;
+    }
+
     .cite {
         @include size(padding, 46px 10px 48px 0);
         background: none;

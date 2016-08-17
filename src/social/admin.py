@@ -11,7 +11,7 @@ from social.models import Cite
 class CiteAdmin(admin.ModelAdmin):
     list_display = ['nonempty_text', 'sticky', 'vip', 'small', 'has_image']
     fieldsets = (
-        (None, {'fields': ('book', 'text', 'small', 'vip', 'link', 'sticky')}),
+        (None, {'fields': ('book', 'text', 'small', 'vip', 'link', 'sticky', 'banner')}),
         (
             _('Background'),
             {'fields': (

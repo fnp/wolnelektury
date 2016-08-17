@@ -18,6 +18,7 @@ class Cite(models.Model):
     link = models.URLField(_('link'))
     sticky = models.BooleanField(_('sticky'), default=False, db_index=True,
                                  help_text=_('Sticky cites will take precedense.'))
+    banner = models.BooleanField(_('banner'), default=False, help_text=_('Adjust size to image, ignore the text'))
 
     image = models.ImageField(
         _('image'), upload_to='social/cite', null=True, blank=True,

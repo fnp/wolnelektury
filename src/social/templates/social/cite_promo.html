@@ -2,19 +2,23 @@
   {% load i18n %}
 
   {% if main %}
-    <section id="big-cite"{% if cite.image %} style="background-image: url('{{ cite.image.url }}'); background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;"{% endif %} >
+    <section id="big-cite"{% if cite.image and not cite.banner %} style="background-image: url('{{ cite.image.url }}'); background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;"{% endif %} {% if cite.banner %}class="banner"{% endif %}>
   {% endif %}
 
   {% if cite %}
-    <a href="{{ cite.link }}" class="cite{% if cite.small %} cite-small{% endif %}">
-      {% if cite.vip %}
-        <p class='vip mono'><span>{{ cite.vip }} {% trans "recommends" %}:</span></p>
-      {% endif %}
-      <blockquote class="cite-body">
-        <span>{{ cite.text|linebreaksbr|safe }}</span>
-      </blockquote>
-      {% if cite.book %}
-        <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
+    <a href="{{ cite.link }}" {% if not cite.banner %}class="cite{% if cite.small %} cite-small{% endif %}{% endif %}">
+      {% if cite.banner %}
+        <img src="{{ cite.image.url }}" width="100%"/>
+      {% else %}
+        {% if cite.vip %}
+          <p class='vip mono'><span>{{ cite.vip }} {% trans "recommends" %}:</span></p>
+        {% endif %}
+        <blockquote class="cite-body">
+          <span>{{ cite.text|linebreaksbr|safe }}</span>
+        </blockquote>
+        {% if cite.book %}
+          <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
+        {% endif %}
       {% endif %}
     </a>
   {% endif %}
