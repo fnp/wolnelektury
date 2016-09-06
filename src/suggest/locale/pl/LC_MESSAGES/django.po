@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 17:40+0200\n"
+"POT-Creation-Date: 2016-09-06 10:49+0200\n"
 "PO-Revision-Date: 2011-06-09 13:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: forms.py:20 forms.py:63
+#: forms.py:21 forms.py:64
 msgid "Contact"
 msgstr "Kontakt"
 
-#: forms.py:21
+#: forms.py:22
 msgid "Description"
 msgstr "Opis"
 
-#: forms.py:53 forms.py:116
+#: forms.py:55 forms.py:117
 msgid "Thank you for your suggestion."
 msgstr "Dziękujemy za zgłoszenie."
 
-#: forms.py:54 forms.py:117
+#: forms.py:56 forms.py:118
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -37,23 +37,19 @@ msgstr ""
 "Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
 "Sugestia została przekazana koordynatorce projektu."
 
-#: forms.py:57 forms.py:120
-msgid "Message sent automatically. Please do not reply."
-msgstr "Wiadomość wysłana automatycznie. Proszę nie odpowiadać."
-
-#: forms.py:64 models.py:31
+#: forms.py:65 models.py:31
 msgid "books"
 msgstr "książki"
 
-#: forms.py:65
+#: forms.py:66
 msgid "ebook"
 msgstr "ebook"
 
-#: forms.py:66
+#: forms.py:67
 msgid "audiobook"
 msgstr "audiobook"
 
-#: forms.py:70
+#: forms.py:71
 msgid "One of these options is required."
 msgstr "Proszę zaznaczyć co najmniej jedną opcję."
 
@@ -120,3 +116,6 @@ msgstr "Zgłoszenie zostało wysłane."
 #: views.py:24
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
+
+#~ msgid "Message sent automatically. Please do not reply."
+#~ msgstr "Wiadomość wysłana automatycznie. Proszę nie odpowiadać."

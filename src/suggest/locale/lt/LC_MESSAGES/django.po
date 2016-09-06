@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 17:40+0200\n"
+"POT-Creation-Date: 2016-09-06 10:49+0200\n"
 "PO-Revision-Date: 2012-03-02 18:19+0100\n"
 "Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:20 forms.py:63
+#: forms.py:21 forms.py:64
 msgid "Contact"
 msgstr "Kontaktas"
 
-#: forms.py:21
+#: forms.py:22
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:53 forms.py:116
+#: forms.py:55 forms.py:117
 msgid "Thank you for your suggestion."
 msgstr "Ačiū už jūsų pasiūlymą."
 
-#: forms.py:54 forms.py:117
+#: forms.py:56 forms.py:118
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -36,27 +36,23 @@ msgstr ""
 "Ačiū už jūsų komentarą WolneLektury.pl interneto svetainėje \n"
 "Pasiūlymas buvo pateiktas projekto koordinatoriui."
 
-#: forms.py:57 forms.py:120
-msgid "Message sent automatically. Please do not reply."
-msgstr "Tai automatiškai sugeneruotas laiškas. Prašome į jį neatsakyti."
-
-#: forms.py:64 models.py:31
+#: forms.py:65 models.py:31
 msgid "books"
 msgstr "knygas"
 
-#: forms.py:65
+#: forms.py:66
 #, fuzzy
 #| msgid "books"
 msgid "ebook"
 msgstr "knygas"
 
-#: forms.py:66
+#: forms.py:67
 #, fuzzy
 #| msgid "audiobooks"
 msgid "audiobook"
 msgstr "audio knygas"
 
-#: forms.py:70
+#: forms.py:71
 #, fuzzy
 #| msgid "One of these fields is required."
 msgid "One of these options is required."
@@ -123,6 +119,9 @@ msgstr "Pranešimas sėkmingai išsiųstas."
 #: views.py:24
 msgid "Report a bug or suggestion"
 msgstr "Praneškite apie klaidą arba teikite pasiūlymus"
+
+#~ msgid "Message sent automatically. Please do not reply."
+#~ msgstr "Tai automatiškai sugeneruotas laiškas. Prašome į jį neatsakyti."
 
 #, fuzzy
 #~| msgid ""

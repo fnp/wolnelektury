@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 17:40+0200\n"
+"POT-Creation-Date: 2016-09-06 10:49+0200\n"
 "PO-Revision-Date: 2012-03-10 13:06+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 
-#: forms.py:20 forms.py:63
+#: forms.py:21 forms.py:64
 msgid "Contact"
 msgstr "Contact"
 
-#: forms.py:21
+#: forms.py:22
 msgid "Description"
 msgstr "Description"
 
-#: forms.py:53 forms.py:116
+#: forms.py:55 forms.py:117
 msgid "Thank you for your suggestion."
 msgstr "Thank you for your suggestion."
 
-#: forms.py:54 forms.py:117
+#: forms.py:56 forms.py:118
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -37,27 +37,23 @@ msgstr ""
 "Thank you for your suggestion concerning WolneLektury.pl \n"
 "Your suggestion was sent to the project coordinator."
 
-#: forms.py:57 forms.py:120
-msgid "Message sent automatically. Please do not reply."
-msgstr "This message was sent automatically. Please do not reply."
-
-#: forms.py:64 models.py:31
+#: forms.py:65 models.py:31
 msgid "books"
 msgstr "books"
 
-#: forms.py:65
+#: forms.py:66
 #, fuzzy
 #| msgid "books"
 msgid "ebook"
 msgstr "books"
 
-#: forms.py:66
+#: forms.py:67
 #, fuzzy
 #| msgid "audiobooks"
 msgid "audiobook"
 msgstr "audiobooks"
 
-#: forms.py:70
+#: forms.py:71
 #, fuzzy
 #| msgid "One of these fields is required."
 msgid "One of these options is required."
@@ -124,6 +120,9 @@ msgstr "publishing suggestion"
 #: views.py:24
 msgid "Report a bug or suggestion"
 msgstr "Report an error or make a suggestion"
+
+#~ msgid "Message sent automatically. Please do not reply."
+#~ msgstr "This message was sent automatically. Please do not reply."
 
 #, fuzzy
 #~| msgid ""

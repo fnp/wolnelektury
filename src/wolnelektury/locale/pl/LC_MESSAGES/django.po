@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 17:40+0200\n"
+"POT-Creation-Date: 2016-09-06 10:49+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -247,9 +247,37 @@ msgstr "Więcej..."
 msgid "Wolne Lektury internet library"
 msgstr "Biblioteka internetowa Wolne Lektury"
 
+#: templates/main_page.html:21
+msgid "In our digital library you will find"
+msgstr "W naszej cyfrowej bibliotece znajdziesz"
+
+#: templates/main_page.html:32
+msgid "and many other books, poems, pictures, audiobooks…"
+msgstr "i wiele innych książek, wierszy, obrazów, audiobooków…"
+
+#: templates/main_page.html:39
+msgid "Motifs and themes"
+msgstr "Motywy i tematy"
+
 #: templates/main_page.html:41
 msgid "Theme"
 msgstr "Motyw"
+
+#: templates/main_page.html:42
+msgid "Explore works with the same theme"
+msgstr "Utwory, w których występuje ten motyw:"
+
+#: templates/main_page.html:54
+msgid "See motifs catalog"
+msgstr "Zobacz katalog motywów"
+
+#: templates/main_page.html:94
+msgid "Collections"
+msgstr "Kolekcje"
+
+#: templates/main_page.html:98
+msgid "See collections catalog"
+msgstr "Zobacz katalog kolekcji"
 
 #: templates/main_page.html:103
 msgid "Recent publications"
@@ -390,6 +418,10 @@ msgstr "E-mail"
 #: templates/user.html:13
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
+
+#: utils.py:116
+msgid "Message sent automatically. Please do not reply."
+msgstr "Wiadomość wysłana automatycznie. Prosimy nie odpowiadać."
 
 #: views.py:79 views.py:100
 #, python-format
@@ -569,9 +601,6 @@ msgstr "Zaloguj się, aby kontynuować"
 
 #~ msgid "Download a custom PDF"
 #~ msgstr "Stwórz własny plik PDF"
-
-#~ msgid "Motifs and themes"
-#~ msgstr "Motywy i tematy"
 
 #~ msgid "See"
 #~ msgstr "Zobacz"
@@ -1015,9 +1044,6 @@ msgstr "Zaloguj się, aby kontynuować"
 
 #~ msgid "Themes groups"
 #~ msgstr "Rodziny motywów"
-
-#~ msgid "See our blog"
-#~ msgstr "Zobacz nasz blog"
 
 #~ msgid "You can help us!"
 #~ msgstr "Możesz nam pomóc!"

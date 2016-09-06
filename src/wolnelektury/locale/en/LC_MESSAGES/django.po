@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 17:40+0200\n"
+"POT-Creation-Date: 2016-09-06 10:49+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -263,9 +263,37 @@ msgstr "More..."
 msgid "Wolne Lektury internet library"
 msgstr "Wolne Lektury Internet library"
 
+#: templates/main_page.html:21
+msgid "In our digital library you will find"
+msgstr ""
+
+#: templates/main_page.html:32
+msgid "and many other books, poems, pictures, audiobooks…"
+msgstr ""
+
+#: templates/main_page.html:39
+msgid "Motifs and themes"
+msgstr "Motifs and themes"
+
 #: templates/main_page.html:41
 msgid "Theme"
 msgstr "Theme"
+
+#: templates/main_page.html:42
+msgid "Explore works with the same theme"
+msgstr ""
+
+#: templates/main_page.html:54
+msgid "See motifs catalog"
+msgstr ""
+
+#: templates/main_page.html:94
+msgid "Collections"
+msgstr ""
+
+#: templates/main_page.html:98
+msgid "See collections catalog"
+msgstr ""
 
 #: templates/main_page.html:103
 msgid "Recent publications"
@@ -408,6 +436,10 @@ msgstr ""
 #, fuzzy
 msgid "Social accounts"
 msgstr "or join accounts:"
+
+#: utils.py:116
+msgid "Message sent automatically. Please do not reply."
+msgstr ""
 
 #: views.py:79 views.py:100
 #, python-format
@@ -594,9 +626,6 @@ msgstr "You have to be logged in to continue"
 
 #~ msgid "Download a custom PDF"
 #~ msgstr "Download a custom PDF"
-
-#~ msgid "Motifs and themes"
-#~ msgstr "Motifs and themes"
 
 #~ msgid "See"
 #~ msgstr "See"

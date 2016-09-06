@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 17:40+0200\n"
+"POT-Creation-Date: 2016-09-06 10:49+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,9 +264,41 @@ msgstr "Más..."
 msgid "Wolne Lektury internet library"
 msgstr "La biblioteca virtual WolneLektury.pl"
 
+#: templates/main_page.html:21
+msgid "In our digital library you will find"
+msgstr ""
+
+#: templates/main_page.html:32
+msgid "and many other books, poems, pictures, audiobooks…"
+msgstr ""
+
+#: templates/main_page.html:39
+msgid "Motifs and themes"
+msgstr "Temas"
+
 #: templates/main_page.html:41
 msgid "Theme"
 msgstr "Tema"
+
+#: templates/main_page.html:42
+msgid "Explore works with the same theme"
+msgstr ""
+
+#: templates/main_page.html:54
+#, fuzzy
+#| msgid "See our blog"
+msgid "See motifs catalog"
+msgstr "Ver nuestro blog"
+
+#: templates/main_page.html:94
+#, fuzzy
+#| msgid "Account Connections"
+msgid "Collections"
+msgstr "Conexiones de la cuenta de usuario"
+
+#: templates/main_page.html:98
+msgid "See collections catalog"
+msgstr ""
 
 #: templates/main_page.html:103
 msgid "Recent publications"
@@ -415,6 +447,10 @@ msgstr "Correo electrónico"
 #: templates/user.html:13
 msgid "Social accounts"
 msgstr "Cuentas sociales"
+
+#: utils.py:116
+msgid "Message sent automatically. Please do not reply."
+msgstr ""
 
 #: views.py:79 views.py:100
 #, python-format
@@ -598,9 +634,6 @@ msgstr "Tienes que iniciar sesión para continuar"
 
 #~ msgid "Download a custom PDF"
 #~ msgstr "Descarga un PDF personalisado"
-
-#~ msgid "Motifs and themes"
-#~ msgstr "Temas"
 
 #~ msgid "See"
 #~ msgstr "Ve"
@@ -978,9 +1011,6 @@ msgstr "Tienes que iniciar sesión para continuar"
 
 #~ msgid "Themes groups"
 #~ msgstr "Grupos de temas"
-
-#~ msgid "See our blog"
-#~ msgstr "Ver nuestro blog"
 
 #~ msgid "You can help us!"
 #~ msgstr "¡Puedes ayudarnos!"

@@ -18,7 +18,7 @@
     {% endif %}
 
     <section id="main-library">
-      <h1>W naszej cyfrowej bibliotece znajdziesz</h1>
+      <h1>{% trans "In our digital library you will find" %}</h1>
       <div class="main-library-row">
         <div class="covers">
           {% for book in best %}
@@ -29,17 +29,17 @@
         </div>
         <a href="{% url "book_list" %}">
           <div class="note white-box normal-text" style="font-size: 18px">
-            i wiele innych książek, wierszy, obrazów, audiobooków…
+            {% trans "and many other books, poems, pictures, audiobooks…" %}
           </div>
         </a>
       </div>
     </section>
 
     <section id="main-theme">
-      <h1>Motywy i tematy</h1>
+      <h1>{% trans "Motifs and themes" %}</h1>
       <div class="white-box normal-text">
         <h2>{% trans "Theme" %}: {{ theme }}</h2>
-        <p>Utwory, w których występuje ten motyw:</p>
+        <p>{% trans "Explore works with the same theme" %}</p>
         {% for book in theme_books %}
           {% cache 86400 book_mini_box book.pk %}
             {% include 'catalogue/book_mini_box.html' %}
@@ -51,7 +51,7 @@
           {% endcache %}
         {% endif %}
       </div>
-      <a class="more" href="{% url 'theme_catalogue' %}">Zobacz katalog motywów</a>
+      <a class="more" href="{% url 'theme_catalogue' %}">{% trans "See motifs catalog" %}</a>
     </section>
 
     {% comment %}
@@ -90,11 +90,11 @@
 
     {% if collection %}
       <section>
-        <h1>Kolekcje</h1>
+        <h1>{% trans "Collections" %}</h1>
         {% cache 3600 collection_box collection.pk LANGUAGE_CODE %}
           {% include 'catalogue/collection_box.html' %}
         {% endcache %}
-        <a class="more" href="{% url 'catalogue_collections' %}">Zobacz katalog kolekcji</a>
+        <a class="more" href="{% url 'catalogue_collections' %}">{% trans "See collections catalog" %}</a>
       </section>
     {% endif %}
 
