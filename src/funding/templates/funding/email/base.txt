@@ -1,6 +1,8 @@
 {% autoescape off %}{% load i18n %}{% trans 'Hi' %}{% if funding.name %} {{ funding.name }}{% endif %},
 {% block body %}
-{% endblock %}
+{% endblock %}{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'pl' %}Chcesz wiedzieć więcej o działaniach realizowanych w ramach projektu Wolne Lektury?
+Zapisz się na nasz newsletter http://{{ site.domain }}{% url 'subscribe' %}, a już nigdy nie przegapisz żadnej publikacji nowej książki czy kolejnej zbiórki.{% endif %}
 {% blocktrans %}Cheers,
 Wolne Lektury team{% endblocktrans %}
 
