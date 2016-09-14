@@ -55,7 +55,13 @@
                 </tr>
               {% endif %}
             {% endfor %}
-            <tr><td></td><td><label>{{ form.agree_newsletter }} {{ form.agree_newsletter.label }}</label></td></tr>
+            <tr>
+              <td></td>
+              <td>
+                <label>{{ form.agree_newsletter }} {{ form.agree_newsletter.label }}</label>
+                <br/><span class="helptext">{{ form.agree_newsletter.help_text }}</span>
+              </td>
+            </tr>
             <tr>
               <td></td>
               <td>
