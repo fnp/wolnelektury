@@ -13,6 +13,7 @@ from django.utils.translation import ugettext
 
 from newsletter.forms import NewsletterForm
 from suggest.models import PublishingSuggestion, Suggestion
+from wolnelektury.utils import send_noreply_mail
 
 
 class SuggestForm(NewsletterForm):
@@ -50,12 +51,12 @@ Kontakt: %(contact)s
         except ValidationError:
             pass
         else:
-            send_mail(u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
-                      ugettext(u"""\
+            send_noreply_mail(
+                ugettext(u'Thank you for your suggestion.'),
+                ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
-The suggestion has been referred to the project coordinator.""") +
-                      u'\n\n-- \n' + ugettext(u'''Message sent automatically. Please do not reply.'''),
-                      'no-reply@wolnelektury.pl', [contact], fail_silently=True)
+The suggestion has been referred to the project coordinator."""),
+                [contact], fail_silently=True)
 
 
 class PublishingSuggestForm(NewsletterForm):
@@ -113,9 +114,8 @@ class PublishingSuggestForm(NewsletterForm):
                 pass
             else:
                 send_mail(
-                    u'[WolneLektury] ' + ugettext(u'Thank you for your suggestion.'),
+                    ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
-The suggestion has been referred to the project coordinator.""") +
-                    u"\n\n-- \n" + ugettext(u'''Message sent automatically. Please do not reply.'''),
-                    'no-reply@wolnelektury.pl', [contact], fail_silently=True)
+The suggestion has been referred to the project coordinator."""),
+                    [contact], fail_silently=True)

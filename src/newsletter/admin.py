@@ -15,7 +15,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
         return my_urls + urls
 
     def extract_subscribers(self, request):
-        return HttpResponse(',\n'.join(Subscription.objects.values_list('email', flat=True)), content_type='text/plain')
+        active_subscriptions = Subscription.objects.filter(active=True)
+        return HttpResponse(',\n'.join(active_subscriptions.values_list('email', flat=True)),
+                            content_type='text/plain')
 
 
 admin.site.register(Subscription, SubscriptionAdmin)

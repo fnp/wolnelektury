@@ -26,8 +26,14 @@ def pretty_field(field, template=None):
             <li>
               <span class="error">%(errors)s</span>
               <label class="nohide"><span class="label">%(label)s: </span>%(input)s</label>
+              <span class="helptext">%(helptext)s</span>
             </li>'''
-    return mark_safe(template % {'errors': field.errors, 'input': field, 'label': field.label})
+    return mark_safe(template % {
+        'errors': field.errors,
+        'input': field,
+        'label': field.label,
+        'helptext': field.help_text,
+    })
 
 
 @register.filter
@@ -36,4 +42,5 @@ def pretty_checkbox(field):
         <li class="checkbox">
           <span class="error">%(errors)s</span>
           <label class="nohide">%(input)s<span class="label"> %(label)s</span></label>
+          <span class="helptext">%(helptext)s</span>
         </li>''')

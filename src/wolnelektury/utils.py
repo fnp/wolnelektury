@@ -9,11 +9,13 @@ from functools import wraps
 import pytz
 from inspect import getargspec
 
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.conf import settings
+from django.utils.translation import ugettext
 
 tz = pytz.timezone(settings.TIME_ZONE)
 
@@ -106,3 +108,10 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
         return ajax_view
 
     return decorator
+
+
+def send_noreply_mail(subject, message, recipient_list, **kwargs):
+    send_mail(
+        u'[WolneLektury] ' + subject,
+        message + u"\n\n-- \n" + ugettext(u'Message sent automatically. Please do not reply.'),
+        'no-reply@wolnelektury.pl', recipient_list, **kwargs)

@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load ssify %}
+{% load honeypot %}
+{% load ajaxable_tags %}
+
+{% block body %}
+  <h1>{{ page_title }}</h1>
+  <form id="subscribe-form" action="" method="post" accept-charset="utf-8" class="cuteform">
+    {% ssi_csrf_token %}
+    {% render_honeypot_field %}
+    <ol>
+      <li>{{ form.email|pretty_field }}</li>
+      <li>{{ form.agree_newsletter|pretty_checkbox }}</li>
+      <li><input type="submit" value="{% trans "Subscribe" %}"/></li>
+    </ol>
+  </form>
+{% endblock %}

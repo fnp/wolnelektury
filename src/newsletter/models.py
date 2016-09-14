@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+import hashlib
+
 from django.db.models import Model, EmailField, DateTimeField, BooleanField
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 
 class Subscription(Model):
@@ -15,3 +18,6 @@ class Subscription(Model):
 
     def __unicode__(self):
         return self.email
+
+    def hashcode(self):
+        return hashlib.sha224(self.email + settings.SECRET_KEY).hexdigest()[:30]
