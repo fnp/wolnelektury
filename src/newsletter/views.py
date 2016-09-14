@@ -25,7 +25,7 @@ def subscribe_form(request):
 
 def subscribed(request):
     return render(request, 'newsletter/subscribed.html', {
-        'page_title': _(u'Subscribed'),
+        'page_title': _(u'Confirmation link sent'),
     })
 
 

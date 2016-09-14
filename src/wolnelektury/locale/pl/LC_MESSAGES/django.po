@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-06 10:49+0200\n"
+"POT-Creation-Date: 2016-09-14 12:34+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -316,15 +316,19 @@ msgstr "Nie znalazłeś/-aś utworu?"
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: templates/main_page.html:137
+#: templates/main_page.html:133
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: templates/main_page.html:138
 msgid "Information"
 msgstr "Informacje"
 
-#: templates/main_page.html:139
+#: templates/main_page.html:140
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: templates/main_page.html:160
+#: templates/main_page.html:161
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
