@@ -33,11 +33,9 @@
 
       {% block bodycontent %}
 
-        {% if not funding_no_show_current %}
-          {% cache 120 funding_top_bar LANGUAGE_CODE %}
-            {% funding_top_bar %}
-          {% endcache %}
-        {% endif %}
+        {% block annoy %}
+          {% include "annoy.html" %}
+        {% endblock %}
 
         <div id="whole-header">
           <div id="header-wrapper">

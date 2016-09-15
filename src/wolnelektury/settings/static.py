@@ -31,6 +31,8 @@ PIPELINE = {
 
                 'sponsors/css/sponsors.css',
 
+                'css/annoy.css',
+
                 'uni_form/uni-form.css',
                 'uni_form/default.uni-form.css',
 
@@ -106,6 +108,8 @@ PIPELINE = {
                 'funding/funding.js',
 
                 'uni_form/uni-form.js',
+
+                'js/annoy.js',
                 ),
             'output_filename': 'js/base.min.js',
         },
