@@ -18,7 +18,7 @@ def subscribe_form(request):
     else:
         form = SubscribeForm()
     return render(request, 'newsletter/subscribe_form.html', {
-        'page_title': _(u'Subscribe'),
+        'page_title': _(u'Subscribe To Newsletter'),
         'form': form,
     })
 

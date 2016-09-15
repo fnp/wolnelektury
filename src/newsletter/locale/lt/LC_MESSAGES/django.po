@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2016-09-15 13:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
 msgstr ""
 
-#: templates/newsletter/subscribe_form.html:15 views.py:21
+#: templates/newsletter/subscribe_form.html:15
 msgid "Subscribe"
 msgstr ""
 
@@ -77,6 +77,10 @@ msgstr ""
 msgid ""
 "You have unsubscribed from Wolne Lektury newsletter. You'll receive a "
 "confirmation by email."
+msgstr ""
+
+#: views.py:21
+msgid "Subscribe To Newsletter"
 msgstr ""
 
 #: views.py:28

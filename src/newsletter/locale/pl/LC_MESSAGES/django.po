@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2016-09-15 13:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jan Szejko <jan.szejko@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "Ekstrakt"
 msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
 msgstr "Potwierdzono subskrypcję newslettera Wolnych Lektur. Dziękujemy!"
 
-#: templates/newsletter/subscribe_form.html:15 views.py:21
+#: templates/newsletter/subscribe_form.html:15
 msgid "Subscribe"
 msgstr "Zapisz się"
 
@@ -81,6 +81,10 @@ msgid ""
 msgstr ""
 "Wypisałaś/eś się z newslettera Wolnych Lektur. Otrzymasz potwierdzenie na "
 "adres email."
+
+#: views.py:21
+msgid "Subscribe To Newsletter"
+msgstr "Zapisz się na newsletter"
 
 #: views.py:28
 msgid "Confirmation link sent"
