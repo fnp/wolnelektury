@@ -8,6 +8,9 @@ from newsletter.models import Subscription
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('email', 'active')
+    list_filter = ('active',)
+
     def get_urls(self):
         urls = super(SubscriptionAdmin, self).get_urls()
         my_urls = [
