@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import template
+from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 
 from ajaxable.utils import placeholdized
@@ -31,8 +32,8 @@ def pretty_field(field, template=None):
     return mark_safe(template % {
         'errors': field.errors,
         'input': field,
-        'label': field.label,
-        'helptext': field.help_text,
+        'label': force_unicode(field.label),
+        'helptext': force_unicode(field.help_text),
     })
 
 
