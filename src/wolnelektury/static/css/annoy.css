@@ -2,13 +2,12 @@
     font-size: 13px;
     line-height: 1.15em;
 
-    padding: .1em 1em;
     background: orange;
     z-index: 200;
     font-family: Arial, sans-serif;
     display: block;
-    padding: 0 1em;
-    width: 1em;
+    padding: 2.6px 13px;
+    /*width: 1em;*/
     text-align:center;
     border-radius: 0 0 0 1em;
     position: absolute;
@@ -20,9 +19,9 @@
 #annoy {
     font-size: 13px;
     line-height: 1.15em;
-    padding: 1em 5em 1em 0;
+    /*padding: 1em 5em 1em 0;*/
     display: none;
-    background: orange;
+    /*background: orange;*/
     font-family: Arial, sans-serif;
     position: relative;
     z-index: 200;
@@ -32,6 +31,17 @@
 }
 #annoy a {
     color: #4E56C8;
+}
+
+#annoy .banner {
+    display: block;
+    margin: auto;
+    width: 975px;
+    background: none;
+}
+
+#annoy .banner img {
+    display: block;
 }
 
 #annoy a#annoy-off {
