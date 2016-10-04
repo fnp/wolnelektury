@@ -1,6 +1,6 @@
 <div class="jp-type-playlist">
-    <div id="jplayer" class="jp-jplayer" data-player="jp_container_1146" data-supplied="mp3"></div>
-    <div id="jp_container_1146" class="jp-audio">
+    <div id="jplayer" class="jp-jplayer" data-player="jp_container_{{ id }}" data-supplied="mp3"></div>
+    <div id="jp_container_{{ id }}" class="jp-audio">
         <div class="jp-type-single">
             <span class="title"></span>
             <div class="jp-gui jp-interface">
@@ -28,7 +28,8 @@
                     <li data-mp3='{{ mp3 }}'>
                         <div class='play'>{{ title }}
                             <div class='extra-info'>
-                                {{ extra }}
+                                {% if artist %}Czyta&nbsp;<span class='artist'>{{ artist }}</span>,{% endif %}
+                                {% if director %}reż.&nbsp;<span class='director'>{{ director }}</span>{% endif %}
                             </div>
                         </div>
                     </li>
