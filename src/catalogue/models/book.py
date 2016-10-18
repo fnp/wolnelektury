@@ -386,6 +386,7 @@ class Book(models.Model):
         for child in notify_cover_changed:
             child.parent_cover_changed()
 
+        book.save()  # update sort_key_author
         cls.published.send(sender=cls, instance=book)
         return book
 
