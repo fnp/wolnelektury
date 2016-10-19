@@ -124,13 +124,13 @@ class BookMedia(models.Model):
                 audio = id3.ID3(filepath)
                 return [t.data for t in audio.getall('PRIV')
                         if t.owner == 'wolnelektury.pl?flac_sha1'][0]
-            except MutagenError:
+            except (MutagenError, IndexError):
                 return None
         elif filetype == 'ogg':
             try:
                 audio = mutagen.File(filepath)
                 return audio.get('flac_sha1', [None])[0]
-            except (MutagenError, AttributeError):
+            except (MutagenError, AttributeError, IndexError):
                 return None
         else:
             return None
