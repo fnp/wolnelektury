@@ -30,6 +30,8 @@ class BookMedia(models.Model):
 
     type = models.CharField(_('type'), db_index=True, choices=format_choices, max_length=20)
     name = models.CharField(_('name'), max_length=512)
+    part_name = models.CharField(_('part name'), default='', max_length=512)
+    index = models.IntegerField(_('index'), default=0)
     file = OverwritingFileField(_('file'), max_length=600, upload_to=_file_upload_to)
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
@@ -47,6 +49,15 @@ class BookMedia(models.Model):
 
     def save(self, *args, **kwargs):
         from catalogue.utils import ExistingFile, remove_zip
+
+        parts_count = BookMedia.objects.filter(book=self.book, type=self.type).count()
+        if parts_count == 1:
+            self.name = self.book.pretty_title()
+        else:
+            no = ('%02d' if parts_count < 100 else '%03d') % self.index
+            self.name = '%s. %s' % (no, self.book.pretty_title())
+            if self.part_name:
+                self.name += ', ' + self.part_name
 
         try:
             old = BookMedia.objects.get(pk=self.pk)
