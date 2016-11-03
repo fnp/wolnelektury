@@ -10,14 +10,6 @@
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 {% block ogtitle %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
-{% block annoy %}
-  {% if not funding_no_show_current %}
-    {% cache 120 funding_top_bar LANGUAGE_CODE %}
-      {% funding_top_bar %}
-    {% endcache %}
-  {% endif %}
-{% endblock %}
-
 {% block body %}
   {% spaceless %}
     {% if cite %}
