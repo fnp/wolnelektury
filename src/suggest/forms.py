@@ -113,7 +113,7 @@ class PublishingSuggestForm(NewsletterForm):
             except ValidationError:
                 pass
             else:
-                send_mail(
+                send_noreply_mail(
                     ugettext(u'Thank you for your suggestion.'),
                     ugettext(u"""\
 Thank you for your comment on WolneLektury.pl.
