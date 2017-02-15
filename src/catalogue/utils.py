@@ -85,7 +85,7 @@ class LockFile(object):
         try:
             unlink(self.lockname)
         except OSError as oe:
-            if oe.errno != EEXIST:
+            if oe.errno != ENOENT:
                 raise oe
         self.lock.close()
 
