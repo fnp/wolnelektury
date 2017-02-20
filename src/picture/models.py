@@ -198,8 +198,6 @@ class Picture(models.Model):
             picture.extra_info = picture_xml.picture_info.to_dict()
 
             picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))
-            motif_tags = set()
-            thing_tags = set()
 
             area_data = {'themes': {}, 'things': {}}
 
@@ -213,7 +211,10 @@ class Picture(models.Model):
                 if part.get('object', None) is not None:
                     _tags = set()
                     for objname in part['object'].split(','):
-                        objname = objname.strip().capitalize()
+                        objname = objname.strip()
+                        assert objname, 'Empty object name'
+                        # str.capitalize() is wrong, because it also lowers letters
+                        objname = objname[0].upper() + objname[1:]
                         tag, created = catalogue.models.Tag.objects.get_or_create(
                             slug=slughifi(objname), category='thing')
                         if created:
@@ -253,7 +254,7 @@ class Picture(models.Model):
                     area.save()
                     area.tags = _tags.union(picture_tags)
 
-            picture.tags = picture_tags.union(motif_tags).union(thing_tags)
+            picture.tags = picture_tags
             picture.areas_json = area_data
 
             if image_file is not None:
