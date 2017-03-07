@@ -34,6 +34,11 @@
                   <div class='extra-info'>
                     {% trans "Artist:" %}&nbsp;<span class='artist'>{{ i.mp3.extra_info.artist_name }}</span>,
                     {% trans "director:" %}&nbsp;<span class='director'>{{ i.mp3.extra_info.director_name }}</span>
+                    <p>
+                      {% with fb=i.mp3.extra_info.funded_by %}
+                        {% if fb %}Dofinansowano ze środków: {{ fb }}.{% endif %}
+                      {% endwith %}
+                    </p>
                   </div>
                 </div>
               </li>
