@@ -47,7 +47,7 @@ kombu>=3.0.23,<3.1
 pyenchant
 
 # OAI-PMH
-pyoai
+pyoai==2.4.4
 
 ## egenix-mx-base  # Doesn't play nice with mx in dist-packages.
 sunburnt
