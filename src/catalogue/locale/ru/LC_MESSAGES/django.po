@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2017-03-08 13:36+0100\n"
 "PO-Revision-Date: 2013-04-09 10:40+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,7 +181,7 @@ msgstr "код языка"
 msgid "description"
 msgstr "описание"
 
-#: models/book.py:57 models/book.py:58 models/bookmedia.py:34 models/tag.py:47
+#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:47
 #: models/tag.py:48
 msgid "creation date"
 msgstr "дата создания"
@@ -190,7 +190,7 @@ msgstr "дата создания"
 msgid "parent number"
 msgstr "номер родителя"
 
-#: models/book.py:60 models/bookmedia.py:35
+#: models/book.py:60 models/bookmedia.py:37
 msgid "extra information"
 msgstr "дополнительная информация"
 
@@ -220,11 +220,11 @@ msgstr "Книга со slug = \"%s\"  не существует."
 msgid "Book %s already exists"
 msgstr "Книга %s уже существует"
 
-#: models/book.py:569
+#: models/book.py:577
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:606 models/bookmedia.py:29
+#: models/book.py:614 models/bookmedia.py:29
 #, fuzzy, python-format
 msgid "%s file"
 msgstr "XML файл"
@@ -239,10 +239,20 @@ msgstr "название"
 
 #: models/bookmedia.py:33
 #, fuzzy
+#| msgid "name"
+msgid "part name"
+msgstr "название"
+
+#: models/bookmedia.py:34
+msgid "index"
+msgstr ""
+
+#: models/bookmedia.py:35
+#, fuzzy
 msgid "file"
 msgstr "XML файл"
 
-#: models/bookmedia.py:44 models/bookmedia.py:45
+#: models/bookmedia.py:46 models/bookmedia.py:47
 msgid "book media"
 msgstr "аудиокнига"
 
@@ -449,10 +459,14 @@ msgid "Edited and annotated by:"
 msgstr "Под редакцией и с комментариями:"
 
 #: templates/catalogue/book_info.html:40
-msgid "Publication funded by:"
+msgid "Publisher:"
 msgstr ""
 
 #: templates/catalogue/book_info.html:47
+msgid "Publication funded by:"
+msgstr ""
+
+#: templates/catalogue/book_info.html:54
 msgid "Cover image by:"
 msgstr ""
 
@@ -835,15 +849,15 @@ msgstr "Артист"
 msgid "director:"
 msgstr "режиссер"
 
-#: templates/catalogue/snippets/jplayer.html:53
+#: templates/catalogue/snippets/jplayer.html:58
 msgid "previous"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:54
+#: templates/catalogue/snippets/jplayer.html:59
 msgid "Part"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:55
+#: templates/catalogue/snippets/jplayer.html:60
 msgid "next"
 msgstr ""
 

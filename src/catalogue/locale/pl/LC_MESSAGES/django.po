@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2017-03-08 13:36+0100\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -158,7 +158,7 @@ msgstr "Kod języka"
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:57 models/book.py:58 models/bookmedia.py:34 models/tag.py:47
+#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:47
 #: models/tag.py:48
 msgid "creation date"
 msgstr "data utworzenia"
@@ -167,7 +167,7 @@ msgstr "data utworzenia"
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: models/book.py:60 models/bookmedia.py:35
+#: models/book.py:60 models/bookmedia.py:37
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
@@ -197,11 +197,11 @@ msgstr "Utwór \"%s\" nie istnieje."
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:569
+#: models/book.py:577
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: models/book.py:606 models/bookmedia.py:29
+#: models/book.py:614 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -215,10 +215,18 @@ msgid "name"
 msgstr "nazwa"
 
 #: models/bookmedia.py:33
+msgid "part name"
+msgstr "nazwa części"
+
+#: models/bookmedia.py:34
+msgid "index"
+msgstr "indeks"
+
+#: models/bookmedia.py:35
 msgid "file"
 msgstr "plik"
 
-#: models/bookmedia.py:44 models/bookmedia.py:45
+#: models/bookmedia.py:46 models/bookmedia.py:47
 msgid "book media"
 msgstr "media książki"
 
@@ -399,10 +407,14 @@ msgid "Edited and annotated by:"
 msgstr "Opracowanie redakcyjne i przypisy:"
 
 #: templates/catalogue/book_info.html:40
+msgid "Publisher:"
+msgstr "Wydawca:"
+
+#: templates/catalogue/book_info.html:47
 msgid "Publication funded by:"
 msgstr "Publikację ufundowali i ufundowały:"
 
-#: templates/catalogue/book_info.html:47
+#: templates/catalogue/book_info.html:54
 msgid "Cover image by:"
 msgstr "Ilustracja na okładce:"
 
@@ -756,15 +768,15 @@ msgstr "Czyta"
 msgid "director:"
 msgstr "reż."
 
-#: templates/catalogue/snippets/jplayer.html:53
+#: templates/catalogue/snippets/jplayer.html:58
 msgid "previous"
 msgstr "poprzednia"
 
-#: templates/catalogue/snippets/jplayer.html:54
+#: templates/catalogue/snippets/jplayer.html:59
 msgid "Part"
 msgstr "Część"
 
-#: templates/catalogue/snippets/jplayer.html:55
+#: templates/catalogue/snippets/jplayer.html:60
 msgid "next"
 msgstr "następna"
 
