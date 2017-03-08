@@ -139,7 +139,11 @@ PIPELINE = {
             'source_filenames': [
                 'js/contrib/jquery.form.js',
                 'js/contrib/jquery.jqmodal.js',
-                'js/book_text/*.js',
+                'js/book_text/info.js',
+                'js/book_text/menu.js',
+                'js/book_text/note.js',
+                'js/book_text/settings.js',
+                'js/book_text/toc.js',
                 'js/locale.js',
                 'js/dialogs.js',
 
