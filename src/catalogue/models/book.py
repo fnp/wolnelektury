@@ -500,6 +500,13 @@ class Book(models.Model):
             names = [tag[0] for tag in names]
         return ', '.join(names)
 
+    def publisher(self):
+        publisher = self.extra_info['publisher']
+        if isinstance(publisher, basestring):
+            return publisher
+        elif isinstance(publisher, list):
+            return ', '.join(publisher)
+
     @classmethod
     def tagged_top_level(cls, tags):
         """ Returns top-level books tagged with `tags`.

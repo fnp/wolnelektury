@@ -35,6 +35,13 @@
   </p>
 {% endif %}
 
+{% if book.extra_info.publisher %}
+  <p>
+    {% trans "Publisher:" %}
+    {{ book.publisher }}
+  </p>
+{% endif %}
+
 {% if book.extra_info.funders %}
   <p>
     {% trans "Publication funded by:" %}
