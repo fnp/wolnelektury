@@ -412,7 +412,7 @@ msgstr "Wydawca:"
 
 #: templates/catalogue/book_info.html:47
 msgid "Publication funded by:"
-msgstr "Publikację ufundowali i ufundowały:"
+msgstr "Publikację wsparli i wsparły:"
 
 #: templates/catalogue/book_info.html:54
 msgid "Cover image by:"
