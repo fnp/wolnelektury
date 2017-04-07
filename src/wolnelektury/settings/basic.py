@@ -6,7 +6,6 @@ from os import path
 from .paths import PROJECT_DIR
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 MAINTENANCE_MODE = False
 
 ADMINS = [
