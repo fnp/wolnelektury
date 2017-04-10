@@ -3,5 +3,4 @@
 nose>=1.3.7
 django-nose>=1.4.2,<1.5
 nosexcover
-polib
 mock

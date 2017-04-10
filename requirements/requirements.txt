@@ -5,7 +5,7 @@ Django>=1.8,<1.9
 fnpdjango>=0.1.15,<0.2
 django-pipeline>=1.6,<1.7
 jsmin
-django-pagination>=1.0
+fnp-django-pagination
 django-maintenancemode>=0.10
 django-piston==0.2.2.1.2
 jsonfield>=1.0.3,<1.1
