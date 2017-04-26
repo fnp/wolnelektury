@@ -81,6 +81,8 @@ urlpatterns += patterns(
     url(r'^lektura/(?P<slug>%s)/motyw/(?P<theme_slug>[a-zA-Z0-9-]+)/$' % SLUG,
         'book_fragments', name='book_fragments'),
 
+    url(r'^okladka-ridero/(?P<slug>%s).png$' % SLUG, 'ridero_cover'),
+
     # Includes.
     url(r'^b/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', 'book_mini', name='catalogue_book_mini'),
     url(r'^b/(?P<pk>\d+)/mini_nolink\.(?P<lang>.+)\.html', 'book_mini', {'with_link': False},
