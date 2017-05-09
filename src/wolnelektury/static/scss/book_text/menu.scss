@@ -48,15 +48,15 @@
     @extend %menu-toggle;
     height: 24px;
     &:before {
-        left: 25px;
-        right: 25px;
+        left: 45px;
+        right: 45px;
     }
 }
 
 
 #menu {
     display: none;
-    width: 80px;
+    width: $W_MENU;
     height: 100%;
 }
 

@@ -42,8 +42,8 @@
 
   <li>
     <a href="{{ picture.get_absolute_url }}" id="menu-book" data-box="book-short">
-      <img src="{% thumbnail picture.image_file '80x200' as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}"
-           width="80"
+      <img src="{% thumbnail picture.image_file '120x300' as thumb %}{{ thumb.url }}{% empty %}{{ picture.image_file.url }}{% endthumbnail %}"
+           width="120"
            alt="{{ picture.pretty_title }}"
            title="{{ picture.pretty_title }}">
     </a>
@@ -60,7 +60,7 @@
 
   <li id="sponsors">
     {% for sponsor in sponsors %}
-      {% thumbnail sponsor.logo "80x200" as logo %}
+      {% thumbnail sponsor.logo "120x300" as logo %}
         <a href="{{ sponsor.url }}" target="_blank"><img src="{{ logo.url }}" alt="{{ sponsor.name }}" /></a>
       {% endthumbnail %}
     {% endfor %}
