@@ -11,7 +11,7 @@ from catalogue.models import Book
 from librarian import RDFNS, DCNS
 
 
-FORMATS = ('HTML', 'PDF', 'TXT', 'EPUB', 'MOBI')
+FORMATS = ('PDF', 'HTML', 'TXT', 'EPUB', 'MOBI')
 
 FORMATS_WITH_CHILDREN = ('PDF', 'EPUB', 'MOBI')
 
@@ -32,40 +32,22 @@ PRODUCT_FORMS_2 = {
     'MOBI': 'E127',
 }
 
-VOLUME_NUMBERS = {
-    u'pierwszy': 1,
-    u'drugi': 2,
-    u'trzeci': 3,
-    u'czwarty': 4,
-    u'piąty': 5,
-    u'szósty': 6,
-    u'I': 1,
-    u'II': 2,
-    u'III': 3,
-    u'IV': 4,
-    u'V': 5,
-    u'VI': 6,
-}
-
 
 def is_institution(name):
     return name.startswith(u'Zgromadzenie Ogólne')
 
 
-VOLUME_SEPARATOR = ', tom '
+VOLUME_SEPARATORS = (u'. część ', u', część ', u', tom ', u'. der tragödie ')
 
 
 def get_volume(title):
-    if VOLUME_SEPARATOR not in title:
-        return title, ''
-    else:
-        vol_idx = title.index(VOLUME_SEPARATOR)
-        stripped = title[:vol_idx]
-        vol_name = title[vol_idx + len(VOLUME_SEPARATOR):]
-        if vol_name in VOLUME_NUMBERS:
-            return stripped, VOLUME_NUMBERS[vol_name]
-        else:
-            return title, ''
+    for volume_separator in VOLUME_SEPARATORS:
+        if volume_separator in title.lower():
+            vol_idx = title.lower().index(volume_separator)
+            stripped = title[:vol_idx]
+            vol_name = title[vol_idx + 2:]
+            return stripped, vol_name
+    return title, ''
 
 
 class Command(BaseCommand):
@@ -74,19 +56,24 @@ class Command(BaseCommand):
         return [e.text for e in desc.findall('.//' + DCNS(tag))]
 
     def handle(self, *args, **options):
+        slugs = [line.strip() for line in sys.stdin]
         writer = csv.writer(sys.stdout)
-        for book in Book.objects.all():
-            desc = book.wldocument().edoc.find('.//' + RDFNS('Description'))
-            formats = FORMATS_WITH_CHILDREN if book.children.exists() else FORMATS
-            for file_format in formats:
-                # imprint = u'Fundacja Nowoczesna Polska'
+        all_books = Book.objects.filter(slug__in=slugs)
+        books_without_children = all_books.filter(children=None)
+        for file_format in FORMATS:
+            if file_format in FORMATS_WITH_CHILDREN:
+                books = all_books
+            else:
+                books = books_without_children
+            for book in books:
+                desc = book.wldocument().edoc.find('.//' + RDFNS('Description'))
                 imprint = '; '.join(self.dc_values(desc, 'publisher'))
                 title, volume = get_volume(book.title)
                 subtitle = ''
                 year = ''
                 publication_date = localtime(book.created_at).date().isoformat()
                 info_date = publication_date
-                author = '; '.join(self.dc_values(desc, 'creator'))
+                author = '; '.join(author.strip() for author in self.dc_values(desc, 'creator'))
                 author_person = author if not is_institution(author) else ''
                 author_institution = author if is_institution(author) else ''
                 publication_type = 'DGO'
@@ -109,5 +96,7 @@ class Command(BaseCommand):
                     product_form1,
                     product_form2,
                     language,
+                    book.slug,
+                    file_format,
                 ]
                 writer.writerow([s.encode('utf-8') for s in row])
