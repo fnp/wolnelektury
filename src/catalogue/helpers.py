@@ -28,8 +28,17 @@ def get_top_level_related_tags(tags, categories=None):
     global _COUNTERS, _COUNTER_TIME
     # First, check that we have a valid and recent version of the counters.
     if getmtime(settings.CATALOGUE_COUNTERS_FILE) > _COUNTER_TIME:
-        with open(settings.CATALOGUE_COUNTERS_FILE) as f:
-            _COUNTERS = cPickle.load(f)
+        for i in xrange(10):
+            try:
+                with open(settings.CATALOGUE_COUNTERS_FILE) as f:
+                    _COUNTERS = cPickle.load(f)
+            except (EOFError, ValueError):
+                if i < 9:
+                    continue
+                else:
+                    raise
+            else:
+                break
 
     tagids = tuple(sorted(t.pk for t in tags))
     try:
