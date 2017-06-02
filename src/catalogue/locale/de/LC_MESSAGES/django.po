@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-08 13:36+0100\n"
+"POT-Creation-Date: 2017-06-02 15:44+0200\n"
 "PO-Revision-Date: 2013-04-09 10:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -176,7 +176,7 @@ msgstr "Slug"
 msgid "language code"
 msgstr "Sprachenkode"
 
-#: models/book.py:56 models/book.py:196 models/collection.py:16
+#: models/book.py:56 models/book.py:197 models/collection.py:16
 #: models/tag.py:40 models/tag.py:160
 msgid "description"
 msgstr "Beschreibung"
@@ -194,37 +194,41 @@ msgstr "Elternnummer"
 msgid "extra information"
 msgstr "zusätzliche Informationen"
 
-#: models/book.py:66
+#: models/book.py:63
+msgid "print on demand"
+msgstr ""
+
+#: models/book.py:67
 msgid "cover"
 msgstr "Umschlag"
 
-#: models/book.py:72
+#: models/book.py:73
 msgid "cover thumbnail"
 msgstr ""
 
-#: models/book.py:97 models/collection.py:22
+#: models/book.py:98 models/collection.py:22
 msgid "book"
 msgstr "Buch"
 
-#: models/book.py:98
+#: models/book.py:99
 msgid "books"
 msgstr "Bücher"
 
-#: models/book.py:307
+#: models/book.py:308
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Buch mit dem Slug = \"%s\" ist nicht vorhanden."
 
-#: models/book.py:320
+#: models/book.py:321
 #, python-format
 msgid "Book %s already exists"
 msgstr "Buch %s ist bereits vorhanden"
 
-#: models/book.py:577
+#: models/book.py:578
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:614 models/bookmedia.py:29
+#: models/book.py:618 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "%s XML-Datei"
@@ -502,7 +506,11 @@ msgstr "Sprachenkode"
 msgid "Read online"
 msgstr "Online lesen"
 
-#: templates/catalogue/book_short.html:89
+#: templates/catalogue/book_short.html:88
+msgid "Print on demand"
+msgstr ""
+
+#: templates/catalogue/book_short.html:92
 #: templates/catalogue/custom_pdf_form.html:19 views.py:630
 msgid "Download"
 msgstr "Herunterladen"
@@ -511,8 +519,7 @@ msgstr "Herunterladen"
 msgid "Table of contents"
 msgstr "Inhaltsverzeichnis"
 
-#: templates/catalogue/book_text.html:43
-#: templates/catalogue/book_text.html:103
+#: templates/catalogue/book_text.html:43 templates/catalogue/book_text.html:103
 msgid "Settings"
 msgstr ""
 
@@ -580,8 +587,7 @@ msgstr "Laden Sie den Katalog als PDF-Datei"
 msgid "Literature"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:22
-#: templates/catalogue/collections.html:6
+#: templates/catalogue/catalogue.html:22 templates/catalogue/collections.html:6
 #: templates/catalogue/collections.html:11
 #, fuzzy
 msgid "Collections"
@@ -615,8 +621,7 @@ msgstr "Sammlungen"
 msgid "Download custom PDF"
 msgstr "PDF-Datei herunterladen"
 
-#: templates/catalogue/daisy_list.html:7
-#: templates/catalogue/daisy_list.html:15
+#: templates/catalogue/daisy_list.html:7 templates/catalogue/daisy_list.html:15
 msgid "Listing of all DAISY files"
 msgstr "Auflistung aller DAISY-Dateien"
 
