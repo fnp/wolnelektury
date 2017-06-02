@@ -13,7 +13,7 @@ from django.db.models import permalink
 import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.urlresolvers import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, get_language
 import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
 from ssify import flush_ssi_includes
@@ -60,6 +60,7 @@ class Book(models.Model):
     extra_info = jsonfield.JSONField(_('extra information'), default={})
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
+    print_on_demand = models.BooleanField(_('print on demand'), default=False)
 
     # files generated during publication
     cover = EbookField(
@@ -600,6 +601,9 @@ class Book(models.Model):
             pop.save()
         except BookPopularity.DoesNotExist:
             BookPopularity.objects.create(book=self, count=count)
+
+    def ridero_link(self):
+        return 'https://ridero.eu/%s/books/wl_%s/' % (get_language(), self.slug.replace('-', '_'))
 
 
 def add_file_fields():

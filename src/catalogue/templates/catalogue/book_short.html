@@ -84,6 +84,9 @@
           {% if book.html_file %}
             <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
           {% endif %}
+          {% if book.print_on_demand %}
+            <a href="{{ book.ridero_link }}" class="downarrow print">{% trans "Print on demand" %}</a>
+          {% endif %}
         </li>
         <li class="book-box-download">
           <a class="downarrow">{% trans "Download" %}:</a>

@@ -395,9 +395,13 @@
       display: inline-block;
       background: #0D7E85;
       color: white;
-      @include size(width, 200px);
+      @include size(width, 170px);
       text-align: center;
       @include size(margin-bottom, 5px);
+      @include  size(margin-right, 30px);
+    }
+    a.print {
+      margin-right: 0;
     }
 
     a:before {
@@ -409,6 +413,10 @@
       // ugly quick fix
       position: relative;
       bottom: 2px;
+    }
+
+    a.print:before {
+      content: url("/static/img/print-white.png");
     }
   }
 
