@@ -121,6 +121,17 @@ class Book(models.Model):
     def author_unicode(self):
         return self.tag_unicode('author')
 
+    def translator(self):
+        translators = self.extra_info.get('translators')
+        if not translators:
+            return None
+        if len(translators) > 3:
+            translators = translators[:2]
+            others = ' i inni'
+        else:
+            others = ''
+        return ', '.join(u'\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators) + others
+
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 

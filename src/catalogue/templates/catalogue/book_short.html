@@ -25,6 +25,11 @@
           <div class="title">
             {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
           </div>
+          {% if book.translator %}
+              <div class="author">
+                  tłum. {{ book.translator }}
+              </div>
+          {% endif %}
         </div>
 
         <div class="cover-area">
