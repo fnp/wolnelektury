@@ -12,8 +12,8 @@ from sponsors import models
 class SponsorPageWidget(forms.Textarea):
     class Media:
         js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js',
+            '//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js',
             settings.STATIC_URL + 'sponsors/js/jquery.json.min.js',
             settings.STATIC_URL + 'sponsors/js/footer_admin.js',
         )
