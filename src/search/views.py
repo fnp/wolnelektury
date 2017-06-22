@@ -132,6 +132,10 @@ def hint(request):
 @cache.never_cache
 def main(request):
     query = request.GET.get('q', '')
+    query = ' '.join(query.split())
+    # filter out private use characters
+    import unicodedata
+    query = ''.join(ch for ch in query if unicodedata.category(ch) == 'Co')
 
     if len(query) < 2:
         return render_to_response(
