@@ -56,3 +56,5 @@ django-getpaid>=1.7,<1.8
 httplib2
 Texml
 django-ssify>=0.2.1,<0.3
+
+raven

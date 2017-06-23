@@ -88,6 +88,7 @@ INSTALLED_APPS_CONTRIB = [
     'getpaid.backends.payu',
     'ssify',
     'django_extensions',
+    'raven.contrib.django.raven_compat',
 
     # allauth stuff
     'uni_form',
