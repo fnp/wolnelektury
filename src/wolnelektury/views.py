@@ -184,3 +184,7 @@ def latest_blog_posts(request, feed_url=None, posts_to_show=5):
 @ssi_included(use_lang=False)
 def widget(request):
     return render(request, 'widget.html')
+
+
+def exception_test(request):
+    raise Exception('Exception test')

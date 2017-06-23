@@ -84,3 +84,7 @@ urlpatterns += [
     url(r'^wolontariat/$', RedirectView.as_view(
         url='/info/wlacz-sie-w-prace/', permanent=False)),
 ]
+
+urlpatterns += [
+    url(r'^error-test/$', views.exception_test),
+]
