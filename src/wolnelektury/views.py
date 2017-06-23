@@ -187,4 +187,8 @@ def widget(request):
 
 
 def exception_test(request):
-    raise Exception('Exception test')
+    msg = request.GET.get('msg')
+    if msg:
+        raise Exception('Exception test: %s' % msg)
+    else:
+        raise Exception('Exception test')
