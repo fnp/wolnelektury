@@ -135,7 +135,7 @@ def main(request):
     query = ' '.join(query.split())
     # filter out private use characters
     import unicodedata
-    query = ''.join(ch for ch in query if unicodedata.category(ch) == 'Co')
+    query = ''.join(ch for ch in query if unicodedata.category(ch) != 'Co')
 
     if len(query) < 2:
         return render_to_response(

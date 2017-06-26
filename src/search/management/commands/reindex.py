@@ -3,6 +3,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import sys
+import traceback
+
 from django.core.management.base import BaseCommand
 
 from optparse import make_option
@@ -74,8 +76,8 @@ class Command(BaseCommand):
                     idx.index_book(b)
                     idx.index.commit()
                     books.pop(0)
-                except Exception, e:
-                    print "Error occured: %s" % e
+                except:
+                    traceback.print_exc()
                     try:
                         # we might not be able to rollback
                         idx.index.rollback()
