@@ -11,7 +11,7 @@ import jsonfield
 from fnpdjango.utils.text.slughifi import slughifi
 from mutagen import MutagenError
 
-from catalogue.fields import OverwritingFileField
+from catalogue.fields import OverwriteStorage
 
 
 def _file_upload_to(i, _n):
@@ -32,7 +32,7 @@ class BookMedia(models.Model):
     name = models.CharField(_('name'), max_length=512)
     part_name = models.CharField(_('part name'), default='', max_length=512)
     index = models.IntegerField(_('index'), default=0)
-    file = OverwritingFileField(_('file'), max_length=600, upload_to=_file_upload_to)
+    file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=OverwriteStorage())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
     book = models.ForeignKey('Book', related_name='media')
@@ -50,7 +50,7 @@ class BookMedia(models.Model):
     def save(self, *args, **kwargs):
         from catalogue.utils import ExistingFile, remove_zip
 
-        parts_count = BookMedia.objects.filter(book=self.book, type=self.type).count()
+        parts_count = 1 + BookMedia.objects.filter(book=self.book, type=self.type).exclude(pk=self.pk).count()
         if parts_count == 1:
             self.name = self.book.pretty_title()
         else:
@@ -66,7 +66,7 @@ class BookMedia(models.Model):
         else:
             # if name changed, change the file name, too
             if slughifi(self.name) != slughifi(old.name):
-                self.file.save(None, ExistingFile(self.file.path), save=False, leave=True)
+                self.file.save(None, ExistingFile(self.file.path), save=False)
 
         super(BookMedia, self).save(*args, **kwargs)
 

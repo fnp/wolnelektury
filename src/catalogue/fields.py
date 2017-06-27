@@ -4,6 +4,7 @@
 #
 from django.conf import settings
 from django.core.files import File
+from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
@@ -238,6 +239,7 @@ class BuildCoverThumb(BuildEbook):
         return WLCover(wldoc.book_info, height=193).output_file()
 
 
+# not used, but needed for migrations
 class OverwritingFieldFile(FieldFile):
     """
         Deletes the old file before saving the new one.
@@ -253,3 +255,10 @@ class OverwritingFieldFile(FieldFile):
 
 class OverwritingFileField(models.FileField):
     attr_class = OverwritingFieldFile
+
+
+class OverwriteStorage(FileSystemStorage):
+
+    def get_available_name(self, name, max_length=None):
+        self.delete(name)
+        return name
