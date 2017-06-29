@@ -51,7 +51,7 @@ class BookMediaTests(WLTestCase):
         bm.file.save(None, self.file2)
 
         self.assertEqual(bm.file.read(), 'Y')
-        self.assertEqual(basename(bm.file.name), '%s-some-media.ogg' % bm.id)
+        self.assertEqual(basename(bm.file.name), 'some-media.ogg')
 
     @skip('broken, but is it needed?')
     def test_no_clobber(self):
