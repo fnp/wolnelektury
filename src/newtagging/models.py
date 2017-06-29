@@ -3,12 +3,9 @@
 Models and managers for generic tagging.
 """
 
-from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import connection, models
-from django.utils.translation import ugettext_lazy as _
 from django.db.models.base import ModelBase
-from django.core.exceptions import ObjectDoesNotExist
 from django.dispatch import Signal
 
 qn = connection.ops.quote_name
@@ -197,42 +194,13 @@ class TaggedItemManager(models.Manager):
 ##########
 # Models #
 ##########
-def create_intermediary_table_model(model):
-    """Create an intermediary table model for the specific tag model"""
-    name = model.__name__ + 'Relation'
-
-    class Meta:
-        db_table = '%s_relation' % model._meta.db_table
-        unique_together = (('tag', 'content_type', 'object_id'),)
-        app_label = model._meta.app_label
-
-    def obj_unicode(self):
-        try:
-            return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
-        except ObjectDoesNotExist:
-            return u'<deleted> [%s]' % self.tag
-
-    # Set up a dictionary to simulate declarations within a class
-    attrs = {
-        '__module__': model.__module__,
-        'Meta': Meta,
-        'tag': models.ForeignKey(model, verbose_name=_('tag'), related_name='items'),
-        'content_type': models.ForeignKey(ContentType, verbose_name=_('content type')),
-        'object_id': models.PositiveIntegerField(_('object id'), db_index=True),
-        'content_object': GenericForeignKey('content_type', 'object_id'),
-        '__unicode__': obj_unicode,
-    }
-
-    return type(name, (models.Model,), attrs)
-
 
 class TagMeta(ModelBase):
     """Metaclass for tag models (models inheriting from TagBase)."""
     def __new__(mcs, name, bases, attrs):
         model = super(TagMeta, mcs).__new__(mcs, name, bases, attrs)
         if not model._meta.abstract:
-            # Create an intermediary table and register custom managers for concrete models
-            model.intermediary_table_model = create_intermediary_table_model(model)
+            # Register custom managers for concrete models
             TagManager(model.intermediary_table_model).contribute_to_class(model, 'objects')
             TaggedItemManager(model).contribute_to_class(model.intermediary_table_model, 'objects')
         return model

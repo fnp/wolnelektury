@@ -3,8 +3,11 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.core.cache import caches
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models import permalink
 from django.db.models.query import Prefetch
@@ -25,6 +28,24 @@ TAG_CATEGORIES = (
     ('set', _('set')),
     ('thing', _('thing')),  # things shown on pictures
 )
+
+
+class TagRelation(models.Model):
+
+    tag = models.ForeignKey('Tag', verbose_name=_('tag'), related_name='items')
+    content_type = models.ForeignKey(ContentType, verbose_name=_('content type'))
+    object_id = models.PositiveIntegerField(_('object id'), db_index=True)
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        db_table = 'catalogue_tag_relation'
+        unique_together = (('tag', 'content_type', 'object_id'),)
+
+    def __unicode__(self):
+        try:
+            return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
+        except ObjectDoesNotExist:
+            return u'<deleted> [%s]' % self.tag
 
 
 class Tag(TagBase):
@@ -48,6 +69,8 @@ class Tag(TagBase):
     changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
 
     after_change = Signal(providing_args=['instance', 'languages'])
+
+    intermediary_table_model = TagRelation
 
     class UrlDeprecationWarning(DeprecationWarning):
         def __init__(self, tags=None):
@@ -243,10 +266,6 @@ class Tag(TagBase):
                     else:
                         meta_tags.append(tag)
         return meta_tags
-
-
-# Pickle complains about not having this.
-TagRelation = Tag.intermediary_table_model
 
 
 def prefetch_relations(objects, category, only_name=True):
