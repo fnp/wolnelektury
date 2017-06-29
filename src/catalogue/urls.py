@@ -82,6 +82,7 @@ urlpatterns += patterns(
         'book_fragments', name='book_fragments'),
 
     url(r'^okladka-ridero/(?P<slug>%s).png$' % SLUG, 'ridero_cover'),
+    url(r'^isbn/(?P<book_format>(pdf|epub|mobi|txt|html))/(?P<slug>%s)/' % SLUG, 'get_isbn'),
 
     # Includes.
     url(r'^b/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', 'book_mini', name='catalogue_book_mini'),

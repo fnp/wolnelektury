@@ -794,3 +794,8 @@ def ridero_cover(request, slug):
     response = HttpResponse(content_type="image/png")
     cover.save(response)
     return response
+
+
+def get_isbn(request, book_format, slug):
+    book = Book.objects.get(slug=slug)
+    return HttpResponse(book.extra_info.get('isbn_%s' % book_format))
