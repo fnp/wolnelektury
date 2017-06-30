@@ -139,7 +139,6 @@ class Index(SolrIndex):
         else:
             return False
 
-    # WTF
     def index_tags(self, *tags, **kw):
         """
         Re-index global tag list.
@@ -828,7 +827,9 @@ class Search(SolrIndex):
                 idx += 1
 
         except IOError, e:
-            log.error("Cannot open snippet file for book id = %d [rev=%s], %s" % (book_id, revision, e))
+            book = catalogue.models.Book.objects.get(id=book_id)
+            if not book.children.exists():
+                log.error("Cannot open snippet file for book id = %d [rev=%s], %s" % (book_id, revision, e))
             return []
         finally:
             snippets.close()
