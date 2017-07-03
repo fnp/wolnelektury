@@ -827,8 +827,10 @@ class Search(SolrIndex):
                 idx += 1
 
         except IOError, e:
-            book = catalogue.models.Book.objects.get(id=book_id)
-            if not book.children.exists():
+            book = catalogue.models.Book.objects.filter(id=book_id)
+            if not book:
+                log.error("Book does not exist for book id = %d" % book_id)
+            elif not book.get().children.exists():
                 log.error("Cannot open snippet file for book id = %d [rev=%s], %s" % (book_id, revision, e))
             return []
         finally:
