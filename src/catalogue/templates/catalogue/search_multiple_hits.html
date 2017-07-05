@@ -21,7 +21,7 @@
         <h2>{% trans "Authors" %}:</h2>
         {% for tag in tags.author %}
           <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+            {% include "catalogue/tag_box.html" %}
           </a>
         {% endfor %}
       </div>
@@ -31,7 +31,7 @@
         <h2>{% trans "Kinds" %}:</h2>
         {% for tag in tags.kind %}
           <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+            {% include "catalogue/tag_box.html" %}
           </a>
         {% endfor %}
       </div>
@@ -41,7 +41,7 @@
         <h2>{% trans "Genres" %}:</h2>
         {% for tag in tags.genre %}
           <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+            {% include "catalogue/tag_box.html" %}
           </a>
         {% endfor %}
       </div>
@@ -51,7 +51,7 @@
         <h2>{% trans "Epochs" %}:</h2>
         {% for tag in tags.epoch %}
           <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+            {% include "catalogue/tag_box.html" %}
           </a>
         {% endfor %}
       </div>
