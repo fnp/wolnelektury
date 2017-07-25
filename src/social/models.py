@@ -12,7 +12,7 @@ from catalogue.models import Book
 
 class Cite(models.Model):
     book = models.ForeignKey(Book, verbose_name=_('book'), null=True, blank=True)
-    text = models.TextField(_('text'))
+    text = models.TextField(_('text'), blank=True)
     small = models.BooleanField(_('small'), default=False, help_text=_('Make this cite display smaller.'))
     vip = models.CharField(_('VIP'), max_length=128, null=True, blank=True)
     link = models.URLField(_('link'))
