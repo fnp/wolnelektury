@@ -266,6 +266,11 @@ em.person {
     font-variant: small-caps;
 }
 
+em.wieksze-odstepy {
+    font-style: normal;
+    word-spacing: 1em;
+}
+
 .verse:after {
     content: "\feff";
 }
