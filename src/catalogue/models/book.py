@@ -572,6 +572,7 @@ class Book(models.Model):
         "SP": (1, u"szkoła podstawowa"),
         "SP1": (1, u"szkoła podstawowa"),
         "SP2": (1, u"szkoła podstawowa"),
+        "SP3": (1, u"szkoła podstawowa"),
         "P": (1, u"szkoła podstawowa"),
         "G": (2, u"gimnazjum"),
         "L": (3, u"liceum"),
