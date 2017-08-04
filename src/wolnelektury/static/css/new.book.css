@@ -277,9 +277,10 @@ em.wieksze-odstepy {
 
 table {
     border-collapse: collapse;
+    width: 100%;
 }
 
-table, td, th {
+table.border, table.border td, table.border th {
     border: 1px solid black;
 }
 
