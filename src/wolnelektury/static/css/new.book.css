@@ -280,8 +280,9 @@ table {
     width: 100%;
 }
 
-table.border, table.border td, table.border th {
+table.border td, table.border th {
     border: 1px solid black;
+    vertical-align: top;
 }
 
 
