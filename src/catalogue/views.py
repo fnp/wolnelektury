@@ -788,9 +788,9 @@ def collections(request):
 
 
 def ridero_cover(request, slug):
-    from librarian.cover import DefaultEbookCover
+    from librarian.cover import make_cover
     wldoc = Book.objects.get(slug=slug).wldocument()
-    cover = DefaultEbookCover(wldoc.book_info, width=980, bleed=20, format='PNG')
+    cover = make_cover(wldoc.book_info, width=980, bleed=20, format='PNG')
     response = HttpResponse(content_type="image/png")
     cover.save(response)
     return response

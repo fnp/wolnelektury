@@ -5,7 +5,7 @@
 from django.core.management.base import BaseCommand
 
 from catalogue.models import Book
-from librarian.cover import DefaultEbookCover
+from librarian.cover import make_cover
 
 
 class Command(BaseCommand):
@@ -19,5 +19,5 @@ class Command(BaseCommand):
         size = options['size']
         bleed = 20 if options['bleed'] else 0
         wldoc = Book.objects.get(slug=slug).wldocument()
-        cover = DefaultEbookCover(wldoc.book_info, width=size, bleed=bleed)
+        cover = make_cover(wldoc.book_info, width=size, bleed=bleed)
         cover.save('%s.jpg' % slug)
