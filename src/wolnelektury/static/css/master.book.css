@@ -12,11 +12,11 @@ a {
 
 #book-text {
     margin: 0 3em;
-    max-width: 36em;
+    max-width: 48em;
 }
 
 #other-text #book-text {
-    width: 36em;
+    width: 48em;
 }
 
 /* ================================== */
@@ -28,7 +28,7 @@ a {
 
 img {
     border: none;
-    max-width: 36em;
+    max-width: 48em;
     margin-top: 1em;
 }
 
