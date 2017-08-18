@@ -29,7 +29,7 @@ class ManageTask(Task):
 class Memcached(Service):
     def run(self):
         print '>>> memcached: restart'
-        sudo('service memcached restart', shell=False)
+        sudo('/etc/init.d/memcached restart', shell=False)
 
 
 @task
