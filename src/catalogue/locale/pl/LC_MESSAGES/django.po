@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-02 15:44+0200\n"
+"POT-Creation-Date: 2017-08-18 17:32+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -24,59 +24,63 @@ msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 "Creative Commons Uznanie autorstwa – Na tych samych warunkach 3.0 Unported"
 
-#: constants.py:41
+#: constants.py:14
+msgid "Free Art License 1.3"
+msgstr "Licencja Wolnej Sztuki 1.3"
+
+#: constants.py:45
 msgid "authors"
 msgstr "autorzy"
 
-#: constants.py:42
+#: constants.py:46
 msgid "epochs"
 msgstr "epoki"
 
-#: constants.py:43
+#: constants.py:47
 msgid "kinds"
 msgstr "rodzaje"
 
-#: constants.py:44
+#: constants.py:48
 msgid "genres"
 msgstr "gatunki"
 
-#: constants.py:45
+#: constants.py:49
 msgid "themes"
 msgstr "motywy"
 
-#: constants.py:46
+#: constants.py:50
 msgid "sets"
 msgstr "półki"
 
-#: constants.py:47
+#: constants.py:51
 msgid "things"
 msgstr "przedmioty"
 
-#: constants.py:51
+#: constants.py:55
 msgid "All authors"
 msgstr "Wszyscy autorzy"
 
-#: constants.py:52
+#: constants.py:56
 msgid "All epochs"
 msgstr "Wszystkie epoki"
 
-#: constants.py:53
+#: constants.py:57
 msgid "All kinds"
 msgstr "Wszystkie rodzaje"
 
-#: constants.py:54
+#: constants.py:58
 msgid "All genres"
 msgstr "Wszystkie gatunki"
 
-#: constants.py:55
+#: constants.py:59
 msgid "All themes"
 msgstr "Wszystkie motywy"
 
-#: constants.py:56
+#: constants.py:60
 msgid "All sets"
 msgstr "Wszystkie półki"
 
-#: constants.py:57
+#: constants.py:61
 msgid "All things"
 msgstr "Wszystkie przedmioty"
 
@@ -136,7 +140,7 @@ msgstr "Kolejka jest pełna. Proszę spróbować ponownie później."
 msgid "title"
 msgstr "tytuł"
 
-#: models/book.py:50 models/tag.py:37
+#: models/book.py:50 models/tag.py:58
 msgid "sort key"
 msgstr "klucz sortowania"
 
@@ -145,7 +149,7 @@ msgid "sort key by author"
 msgstr "klucz sortowania wg autora"
 
 #: models/book.py:53 models/book.py:54 models/collection.py:15
-#: models/collection.py:18 models/tag.py:36
+#: models/collection.py:18 models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
@@ -153,13 +157,13 @@ msgstr "slug"
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:56 models/book.py:197 models/collection.py:16
-#: models/tag.py:40 models/tag.py:160
+#: models/book.py:56 models/book.py:208 models/collection.py:16
+#: models/tag.py:61 models/tag.py:183
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:47
-#: models/tag.py:48
+#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:68
+#: models/tag.py:69
 msgid "creation date"
 msgstr "data utworzenia"
 
@@ -191,21 +195,21 @@ msgstr "książka"
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:308
+#: models/book.py:319
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:321
+#: models/book.py:332
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:578
+#: models/book.py:590
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: models/book.py:618 models/bookmedia.py:29
+#: models/book.py:630 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -214,7 +218,7 @@ msgstr "plik %s"
 msgid "type"
 msgstr "typ"
 
-#: models/bookmedia.py:32 models/source.py:12 models/tag.py:35
+#: models/bookmedia.py:32 models/source.py:12 models/tag.py:56
 msgid "name"
 msgstr "nazwa"
 
@@ -238,7 +242,7 @@ msgstr "media książki"
 msgid "book slugs"
 msgstr "slugi utworów"
 
-#: models/collection.py:21 models/tag.py:22
+#: models/collection.py:21 models/tag.py:25
 msgid "kind"
 msgstr "rodzaj"
 
@@ -274,39 +278,47 @@ msgstr "źródło"
 msgid "sources"
 msgstr "źródła"
 
-#: models/tag.py:20
+#: models/tag.py:23
 msgid "author"
 msgstr "autor"
 
-#: models/tag.py:21
+#: models/tag.py:24
 msgid "epoch"
 msgstr "epoka"
 
-#: models/tag.py:23
+#: models/tag.py:26
 msgid "genre"
 msgstr "gatunek"
 
-#: models/tag.py:24
+#: models/tag.py:27
 msgid "theme"
 msgstr "motyw"
 
-#: models/tag.py:25
+#: models/tag.py:28
 msgid "set"
 msgstr "półka"
 
-#: models/tag.py:26
+#: models/tag.py:29
 msgid "thing"
 msgstr "przedmiot"
 
-#: models/tag.py:39
-msgid "category"
-msgstr "kategoria"
-
-#: models/tag.py:70
+#: models/tag.py:35 models/tag.py:93
 msgid "tag"
 msgstr "tag"
 
-#: models/tag.py:71
+#: models/tag.py:36
+msgid "content type"
+msgstr "typ treści"
+
+#: models/tag.py:37
+msgid "object id"
+msgstr "id obiektu"
+
+#: models/tag.py:60
+msgid "category"
+msgstr "kategoria"
+
+#: models/tag.py:94
 msgid "tags"
 msgstr "tagi"
 
@@ -436,33 +448,33 @@ msgstr "Spis treści"
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:41
+#: templates/catalogue/book_short.html:46
 #: templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:49
+#: templates/catalogue/book_short.html:54
 #: templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:57
+#: templates/catalogue/book_short.html:62
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:66
+#: templates/catalogue/book_short.html:71
 msgid "Language"
 msgstr "Język"
 
-#: templates/catalogue/book_short.html:85
+#: templates/catalogue/book_short.html:90
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:88
+#: templates/catalogue/book_short.html:93
 msgid "Print on demand"
 msgstr "Druk na żądanie"
 
-#: templates/catalogue/book_short.html:92
+#: templates/catalogue/book_short.html:97
 #: templates/catalogue/custom_pdf_form.html:19 views.py:630
 msgid "Download"
 msgstr "Pobierz"

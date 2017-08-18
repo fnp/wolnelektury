@@ -9,6 +9,10 @@ LICENSES = {
         'icon': 'cc-by-sa',
         'description': _('Creative Commons Attribution-ShareAlike 3.0 Unported'),
     },
+    'http://artlibre.org/licence/lal/pl/': {
+        'icon': 'lal',
+        'description': _('Free Art License 1.3'),
+    }
 }
 LICENSES['http://creativecommons.org/licenses/by-sa/3.0/deed.pl'] = \
     LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
