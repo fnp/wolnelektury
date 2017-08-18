@@ -354,6 +354,8 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
                 last_initial = initial
                 names.append((obj.author_unicode() if by_author else initial, []))
         names[-1][1].append(obj)
+    if names[0] == ('', []):
+        del names[0]
     return {
         'paged': paged,
         'names': names,
