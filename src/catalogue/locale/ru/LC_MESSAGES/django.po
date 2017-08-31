@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-02 15:44+0200\n"
+"POT-Creation-Date: 2017-08-30 16:46+0200\n"
 "PO-Revision-Date: 2013-04-09 10:40+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,81 +21,85 @@ msgstr ""
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 
-#: constants.py:41
+#: constants.py:14
+msgid "Free Art License 1.3"
+msgstr ""
+
+#: constants.py:45
 #, fuzzy
 #| msgid "author"
 msgid "authors"
 msgstr "автор"
 
-#: constants.py:42
+#: constants.py:46
 #, fuzzy
 #| msgid "epoch"
 msgid "epochs"
 msgstr "эпоха"
 
-#: constants.py:43
+#: constants.py:47
 #, fuzzy
 #| msgid "kind"
 msgid "kinds"
 msgstr "форма"
 
-#: constants.py:44
+#: constants.py:48
 #, fuzzy
 #| msgid "genre"
 msgid "genres"
 msgstr "жанр"
 
-#: constants.py:45
+#: constants.py:49
 #, fuzzy
 #| msgid "theme"
 msgid "themes"
 msgstr "мотив"
 
-#: constants.py:46
+#: constants.py:50
 msgid "sets"
 msgstr ""
 
-#: constants.py:47
+#: constants.py:51
 msgid "things"
 msgstr ""
 
-#: constants.py:51
+#: constants.py:55
 #, fuzzy
 #| msgid "author"
 msgid "All authors"
 msgstr "автор"
 
-#: constants.py:52
+#: constants.py:56
 #, fuzzy
 #| msgid "epoch"
 msgid "All epochs"
 msgstr "эпоха"
 
-#: constants.py:53
+#: constants.py:57
 #, fuzzy
 #| msgid "kind"
 msgid "All kinds"
 msgstr "форма"
 
-#: constants.py:54
+#: constants.py:58
 #, fuzzy
 #| msgid "genre"
 msgid "All genres"
 msgstr "жанр"
 
-#: constants.py:55
+#: constants.py:59
 #, fuzzy
 #| msgid "theme"
 msgid "All themes"
 msgstr "мотив"
 
-#: constants.py:56
+#: constants.py:60
 #, fuzzy
 #| msgid "collections"
 msgid "All sets"
 msgstr "сборы"
 
-#: constants.py:57
+#: constants.py:61
 #, fuzzy
 #| msgid "collections"
 msgid "All things"
@@ -157,7 +161,7 @@ msgstr ""
 msgid "title"
 msgstr "заглавие"
 
-#: models/book.py:50 models/tag.py:37
+#: models/book.py:50 models/tag.py:58
 msgid "sort key"
 msgstr "ключ сортировки "
 
@@ -168,7 +172,7 @@ msgid "sort key by author"
 msgstr "Результаты по авторам"
 
 #: models/book.py:53 models/book.py:54 models/collection.py:15
-#: models/collection.py:18 models/tag.py:36
+#: models/collection.py:18 models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
@@ -176,13 +180,13 @@ msgstr "slug"
 msgid "language code"
 msgstr "код языка"
 
-#: models/book.py:56 models/book.py:197 models/collection.py:16
-#: models/tag.py:40 models/tag.py:160
+#: models/book.py:56 models/book.py:208 models/collection.py:16
+#: models/tag.py:61 models/tag.py:183
 msgid "description"
 msgstr "описание"
 
-#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:47
-#: models/tag.py:48
+#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:68
+#: models/tag.py:69
 msgid "creation date"
 msgstr "дата создания"
 
@@ -214,21 +218,21 @@ msgstr "книга"
 msgid "books"
 msgstr "книги"
 
-#: models/book.py:308
+#: models/book.py:319
 #, fuzzy, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Книга со slug = \"%s\"  не существует."
 
-#: models/book.py:321
+#: models/book.py:332
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книга %s уже существует"
 
-#: models/book.py:578
+#: models/book.py:590
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:618 models/bookmedia.py:29
+#: models/book.py:630 models/bookmedia.py:29
 #, fuzzy, python-format
 msgid "%s file"
 msgstr "XML файл"
@@ -237,7 +241,7 @@ msgstr "XML файл"
 msgid "type"
 msgstr "тип"
 
-#: models/bookmedia.py:32 models/source.py:12 models/tag.py:35
+#: models/bookmedia.py:32 models/source.py:12 models/tag.py:56
 msgid "name"
 msgstr "название"
 
@@ -265,7 +269,7 @@ msgstr "аудиокнига"
 msgid "book slugs"
 msgstr "анонсы книги"
 
-#: models/collection.py:21 models/tag.py:22
+#: models/collection.py:21 models/tag.py:25
 msgid "kind"
 msgstr "форма"
 
@@ -307,39 +311,47 @@ msgstr "Источник"
 msgid "sources"
 msgstr "Источник"
 
-#: models/tag.py:20
+#: models/tag.py:23
 msgid "author"
 msgstr "автор"
 
-#: models/tag.py:21
+#: models/tag.py:24
 msgid "epoch"
 msgstr "эпоха"
 
-#: models/tag.py:23
+#: models/tag.py:26
 msgid "genre"
 msgstr "жанр"
 
-#: models/tag.py:24
+#: models/tag.py:27
 msgid "theme"
 msgstr "мотив"
 
-#: models/tag.py:25
+#: models/tag.py:28
 msgid "set"
 msgstr "набор"
 
-#: models/tag.py:26
+#: models/tag.py:29
 msgid "thing"
 msgstr ""
 
-#: models/tag.py:39
-msgid "category"
-msgstr "категория"
-
-#: models/tag.py:70
+#: models/tag.py:35 models/tag.py:93
 msgid "tag"
 msgstr "таг"
 
-#: models/tag.py:71
+#: models/tag.py:36
+msgid "content type"
+msgstr "тип содержания"
+
+#: models/tag.py:37
+msgid "object id"
+msgstr "ID объекта"
+
+#: models/tag.py:60
+msgid "category"
+msgstr "категория"
+
+#: models/tag.py:94
 msgid "tags"
 msgstr "таги"
 
@@ -488,35 +500,35 @@ msgstr "Оглавление"
 msgid "↑ top ↑"
 msgstr "↑ топ ↑"
 
-#: templates/catalogue/book_short.html:41
+#: templates/catalogue/book_short.html:47
 #: templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "эпоха"
 
-#: templates/catalogue/book_short.html:49
+#: templates/catalogue/book_short.html:55
 #: templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "форма"
 
-#: templates/catalogue/book_short.html:57
+#: templates/catalogue/book_short.html:63
 msgid "Genre"
 msgstr "жанр"
 
-#: templates/catalogue/book_short.html:66
+#: templates/catalogue/book_short.html:72
 #, fuzzy
 #| msgid "language code"
 msgid "Language"
 msgstr "код языка"
 
-#: templates/catalogue/book_short.html:85
+#: templates/catalogue/book_short.html:91
 msgid "Read online"
 msgstr "Читать онлайн"
 
-#: templates/catalogue/book_short.html:88
-msgid "Print on demand"
+#: templates/catalogue/book_short.html:94
+msgid "Print on demand with"
 msgstr ""
 
-#: templates/catalogue/book_short.html:92
+#: templates/catalogue/book_short.html:99
 #: templates/catalogue/custom_pdf_form.html:19 views.py:630
 msgid "Download"
 msgstr "Загрузить"
@@ -1119,9 +1131,3 @@ msgstr "Ошибка импорта файла: %r"
 
 #~ msgid "Today is %(month)s, %(day)s."
 #~ msgstr "Сегодня %(month)s, %(day)s."
-
-#~ msgid "content type"
-#~ msgstr "тип содержания"
-
-#~ msgid "object id"
-#~ msgstr "ID объекта"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-18 17:32+0200\n"
+"POT-Creation-Date: 2017-08-30 16:46+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -448,33 +448,33 @@ msgstr "Spis treści"
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:46
+#: templates/catalogue/book_short.html:47
 #: templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:54
+#: templates/catalogue/book_short.html:55
 #: templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:62
+#: templates/catalogue/book_short.html:63
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:71
+#: templates/catalogue/book_short.html:72
 msgid "Language"
 msgstr "Język"
 
-#: templates/catalogue/book_short.html:90
+#: templates/catalogue/book_short.html:91
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:93
-msgid "Print on demand"
-msgstr "Druk na żądanie"
+#: templates/catalogue/book_short.html:94
+msgid "Print on demand with"
+msgstr "Druk na żądanie z"
 
-#: templates/catalogue/book_short.html:97
+#: templates/catalogue/book_short.html:99
 #: templates/catalogue/custom_pdf_form.html:19 views.py:630
 msgid "Download"
 msgstr "Pobierz"

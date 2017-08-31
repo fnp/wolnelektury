@@ -2,6 +2,7 @@
   {% load i18n %}
   {% load catalogue_tags %}
   {% load book_shelf_tags from social_tags %}
+  {% load static %}
 
   <div class="{% block box-class %}book-box{% if audiobooks %} audiobook-box{% endif %}{% endblock %}">
     <div class="book-box-inner">
@@ -90,7 +91,8 @@
             <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
           {% endif %}
           {% if book.print_on_demand %}
-            <a href="{{ book.ridero_link }}" class="downarrow print">{% trans "Print on demand" %}</a>
+            <a href="{{ book.ridero_link }}" class="downarrow print">{% trans "Print on demand with" %}
+                <img src="{% static 'img/ridero.png' %}" style="height: 0.8em;"/></a>
           {% endif %}
         </li>
         <li class="book-box-download">

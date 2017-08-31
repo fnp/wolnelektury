@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-02 15:44+0200\n"
+"POT-Creation-Date: 2017-08-30 16:46+0200\n"
 "PO-Revision-Date: 2013-04-09 10:39+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,81 +21,85 @@ msgstr ""
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 
-#: constants.py:41
+#: constants.py:14
+msgid "Free Art License 1.3"
+msgstr ""
+
+#: constants.py:45
 #, fuzzy
 #| msgid "author"
 msgid "authors"
 msgstr "autor"
 
-#: constants.py:42
+#: constants.py:46
 #, fuzzy
 #| msgid "epoch"
 msgid "epochs"
 msgstr "época"
 
-#: constants.py:43
+#: constants.py:47
 #, fuzzy
 #| msgid "kind"
 msgid "kinds"
 msgstr "tipo"
 
-#: constants.py:44
+#: constants.py:48
 #, fuzzy
 #| msgid "genre"
 msgid "genres"
 msgstr "género"
 
-#: constants.py:45
+#: constants.py:49
 #, fuzzy
 #| msgid "theme"
 msgid "themes"
 msgstr "tema"
 
-#: constants.py:46
+#: constants.py:50
 msgid "sets"
 msgstr ""
 
-#: constants.py:47
+#: constants.py:51
 msgid "things"
 msgstr ""
 
-#: constants.py:51
+#: constants.py:55
 #, fuzzy
 #| msgid "author"
 msgid "All authors"
 msgstr "autor"
 
-#: constants.py:52
+#: constants.py:56
 #, fuzzy
 #| msgid "epoch"
 msgid "All epochs"
 msgstr "época"
 
-#: constants.py:53
+#: constants.py:57
 #, fuzzy
 #| msgid "kind"
 msgid "All kinds"
 msgstr "tipo"
 
-#: constants.py:54
+#: constants.py:58
 #, fuzzy
 #| msgid "genre"
 msgid "All genres"
 msgstr "género"
 
-#: constants.py:55
+#: constants.py:59
 #, fuzzy
 #| msgid "theme"
 msgid "All themes"
 msgstr "tema"
 
-#: constants.py:56
+#: constants.py:60
 #, fuzzy
 #| msgid "collections"
 msgid "All sets"
 msgstr "colecciones"
 
-#: constants.py:57
+#: constants.py:61
 #, fuzzy
 #| msgid "collections"
 msgid "All things"
@@ -157,7 +161,7 @@ msgstr ""
 msgid "title"
 msgstr "título"
 
-#: models/book.py:50 models/tag.py:37
+#: models/book.py:50 models/tag.py:58
 msgid "sort key"
 msgstr "clave de clasificación"
 
@@ -168,7 +172,7 @@ msgid "sort key by author"
 msgstr "Resultados por autor"
 
 #: models/book.py:53 models/book.py:54 models/collection.py:15
-#: models/collection.py:18 models/tag.py:36
+#: models/collection.py:18 models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
@@ -176,13 +180,13 @@ msgstr "slug"
 msgid "language code"
 msgstr "código de idioma"
 
-#: models/book.py:56 models/book.py:197 models/collection.py:16
-#: models/tag.py:40 models/tag.py:160
+#: models/book.py:56 models/book.py:208 models/collection.py:16
+#: models/tag.py:61 models/tag.py:183
 msgid "description"
 msgstr "descripción"
 
-#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:47
-#: models/tag.py:48
+#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:68
+#: models/tag.py:69
 msgid "creation date"
 msgstr "fecha de creación"
 
@@ -214,21 +218,21 @@ msgstr "libro"
 msgid "books"
 msgstr "libros"
 
-#: models/book.py:308
+#: models/book.py:319
 #, fuzzy, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Libro con slug = \"%s\" no existe."
 
-#: models/book.py:321
+#: models/book.py:332
 #, python-format
 msgid "Book %s already exists"
 msgstr "Libro %s ya existe"
 
-#: models/book.py:578
+#: models/book.py:590
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:618 models/bookmedia.py:29
+#: models/book.py:630 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "%s archivo"
@@ -237,7 +241,7 @@ msgstr "%s archivo"
 msgid "type"
 msgstr "tipo"
 
-#: models/bookmedia.py:32 models/source.py:12 models/tag.py:35
+#: models/bookmedia.py:32 models/source.py:12 models/tag.py:56
 msgid "name"
 msgstr "nombre"
 
@@ -264,7 +268,7 @@ msgstr "los medios de el libro"
 msgid "book slugs"
 msgstr "vista previa de libros"
 
-#: models/collection.py:21 models/tag.py:22
+#: models/collection.py:21 models/tag.py:25
 msgid "kind"
 msgstr "tipo"
 
@@ -306,39 +310,47 @@ msgstr "Fuente"
 msgid "sources"
 msgstr "Fuente"
 
-#: models/tag.py:20
+#: models/tag.py:23
 msgid "author"
 msgstr "autor"
 
-#: models/tag.py:21
+#: models/tag.py:24
 msgid "epoch"
 msgstr "época"
 
-#: models/tag.py:23
+#: models/tag.py:26
 msgid "genre"
 msgstr "género"
 
-#: models/tag.py:24
+#: models/tag.py:27
 msgid "theme"
 msgstr "tema"
 
-#: models/tag.py:25
+#: models/tag.py:28
 msgid "set"
 msgstr "colección"
 
-#: models/tag.py:26
+#: models/tag.py:29
 msgid "thing"
 msgstr ""
 
-#: models/tag.py:39
-msgid "category"
-msgstr "categoría"
-
-#: models/tag.py:70
+#: models/tag.py:35 models/tag.py:93
 msgid "tag"
 msgstr "tag"
 
-#: models/tag.py:71
+#: models/tag.py:36
+msgid "content type"
+msgstr "tipo de contenido"
+
+#: models/tag.py:37
+msgid "object id"
+msgstr "id de objeto"
+
+#: models/tag.py:60
+msgid "category"
+msgstr "categoría"
+
+#: models/tag.py:94
 msgid "tags"
 msgstr "tags"
 
@@ -489,35 +501,35 @@ msgstr "Tabla de contenido"
 msgid "↑ top ↑"
 msgstr "↑volver arriba↑"
 
-#: templates/catalogue/book_short.html:41
+#: templates/catalogue/book_short.html:47
 #: templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Época"
 
-#: templates/catalogue/book_short.html:49
+#: templates/catalogue/book_short.html:55
 #: templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Género"
 
-#: templates/catalogue/book_short.html:57
+#: templates/catalogue/book_short.html:63
 msgid "Genre"
 msgstr "Subgénero"
 
-#: templates/catalogue/book_short.html:66
+#: templates/catalogue/book_short.html:72
 #, fuzzy
 #| msgid "language code"
 msgid "Language"
 msgstr "código de idioma"
 
-#: templates/catalogue/book_short.html:85
+#: templates/catalogue/book_short.html:91
 msgid "Read online"
 msgstr "Leer en línea"
 
-#: templates/catalogue/book_short.html:88
-msgid "Print on demand"
+#: templates/catalogue/book_short.html:94
+msgid "Print on demand with"
 msgstr ""
 
-#: templates/catalogue/book_short.html:92
+#: templates/catalogue/book_short.html:99
 #: templates/catalogue/custom_pdf_form.html:19 views.py:630
 msgid "Download"
 msgstr "Descargar"
@@ -1130,9 +1142,3 @@ msgstr "Ha ocurrido un error al cargar el archivo: %r"
 
 #~ msgid "<p>Shelf <strong>%s</strong> was successfully removed</p>"
 #~ msgstr "<p>Estante <strong>%s</strong> ha sido eliminado</p>"
-
-#~ msgid "content type"
-#~ msgstr "tipo de contenido"
-
-#~ msgid "object id"
-#~ msgstr "id de objeto"
