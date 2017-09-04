@@ -520,7 +520,7 @@ msgid "Read online"
 msgstr "Lire en ligne"
 
 #: templates/catalogue/book_short.html:94
-msgid "Print on demand with"
+msgid "Print on demand –"
 msgstr ""
 
 #: templates/catalogue/book_short.html:99

@@ -91,7 +91,7 @@
             <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
           {% endif %}
           {% if book.print_on_demand %}
-            <a href="{{ book.ridero_link }}" class="downarrow print">{% trans "Print on demand with" %}
+            <a href="{{ book.ridero_link }}" class="downarrow print">{% trans "Print on demand –" %}
                 <img src="{% static 'img/ridero.png' %}" style="height: 0.8em;"/></a>
           {% endif %}
         </li>
