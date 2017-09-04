@@ -229,6 +229,11 @@
                 });
             }
         });
+
+        /* global tlite */
+        tlite(function (el) {
+            return $(el).hasClass('tlite-tooltip');
+        });
     });
 })(jQuery);
 

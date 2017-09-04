@@ -91,7 +91,7 @@
             <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
           {% endif %}
           {% if book.print_on_demand %}
-            <a href="{{ book.ridero_link }}" class="downarrow print">{% trans "Print on demand –" %}
+            <a href="{{ book.ridero_link }}" class="downarrow print tlite-tooltip" title="{% trans "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia.<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne bezpłatnie." %}">{% trans "Print on demand –" %}
                 <img src="{% static 'img/ridero.png' %}" style="height: 0.8em;"/></a>
           {% endif %}
         </li>

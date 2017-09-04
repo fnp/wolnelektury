@@ -38,6 +38,8 @@ PIPELINE = {
 
                 'css/ui-lightness/jquery-ui-1.8.16.custom.css',
 
+                'css/tlite.css',
+
                 'scss/main.scss',
             ],
             'output_filename': 'css/compressed/main.css',
@@ -93,6 +95,8 @@ PIPELINE = {
                 'js/contrib/jquery.countdown-ru.js', 'js/contrib/jquery.countdown-fr.js',
 
                 'js/contrib/jquery-ui-1.8.16.custom.min.js',
+
+                'js/contrib/tlite.min.js',
 
                 'jplayer/jquery.jplayer.min.js',
                 'jplayer/jplayer.playlist.min.js',
