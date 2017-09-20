@@ -28,3 +28,5 @@ CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'catalogue_counters.p')
 CATALOGUE_MIN_INITIALS = 60
 
 PICTURE_PAGE_SIZE = 20
+
+CONTACT_FORMS_MODULE = 'wolnelektury.contact_forms'

@@ -47,6 +47,7 @@ urlpatterns += [
     url(r'^chunks/', include('chunks.urls')),
     url(r'^sponsors/', include('sponsors.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
+    url(r'^formularz/', include('contact.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', catalogue.views.import_book, name='import_book'),

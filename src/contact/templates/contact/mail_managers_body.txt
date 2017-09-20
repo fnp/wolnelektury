@@ -1,0 +1,12 @@
+{% load pretty_print from contact_tags %}{% load subdomainurls %}Wypełniono formularz {{ form_tag }} na stronie {{ site_name }}.
+
+{% url 'admin:contact_contact_change' None contact.pk %}
+
+{% for k, v in contact.body.items %}
+{{ k }}:
+{{ v|pretty_print }}
+{% endfor %}
+{% for attachment in contact.attachment_set.all %}
+{{ attachment.tag }}:
+http://{{ site_domain }}{{ attachment.get_absolute_url }}
+{% endfor %}

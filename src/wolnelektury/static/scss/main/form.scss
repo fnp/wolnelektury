@@ -8,8 +8,8 @@ form table {
         padding-bottom: 1em;
     }
 
-    .required th:after {
-        content: " *";
+    .required th:before {
+        content: "* ";
     }
 
     .errorlist {

@@ -1,0 +1,1 @@
+{% load i18n %}{% blocktrans %}Thank you for contacting us at {{ site_name }}.{% endblocktrans %}

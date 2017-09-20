@@ -1,0 +1,18 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+{% load admin_urls %}
+
+
+{% block object-tools-items %}
+    {{block.super}}
+    {% if request.GET.form_tag %}
+        {% for extract_type in extract_types %}
+            <li>
+                <a href="{% url 'admin:contact_extract' form_tag=request.GET.form_tag extract_type_slug=extract_type.slug %}?created_at__month={{request.GET.created_at__month}}&created_at__year={{request.GET.created_at__year}}">
+                    {% trans 'Extract' %}: {{extract_type.label}}
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends form.base_template|default:"base/base.html" %}
+{% load chunks %}
+{% load honeypot %}
+
+{% block title %}{{ form.form_title }}{% endblock %}
+
+{% block body %}
+
+    <h1>{% block contact_form_title %}{{ form.form_title }}{% endblock %}</h1>
+
+    <div class="form-info">
+    {% block contact_form_description %}
+        {% chunk "contact_form__"|add:form.form_tag %}
+    {% endblock %}
+    </div>
+
+    <form method="POST" action="." enctype="multipart/form-data" class="submit-form">
+    {% csrf_token %}
+    {% render_honeypot_field %}
+    {% block form %}
+        <table>
+            {{ form.as_table }}
+            <tr><td></td><td><button>{% block contact_form_submit %}{{ form.submit_label }}{% endblock %}</button></td></tr>
+        </table>
+    {% endblock %}
+    </form>
+
+{% endblock %}

@@ -58,6 +58,7 @@ INSTALLED_APPS_OUR = [
     'polls',
     'libraries',
     'newsletter',
+    'contact',
 ]
 
 GETPAID_BACKENDS = (
