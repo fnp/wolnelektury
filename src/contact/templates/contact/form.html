@@ -1,6 +1,7 @@
 {% extends form.base_template|default:"base/base.html" %}
 {% load chunks %}
 {% load honeypot %}
+{% load ssi_csrf_token from ssify %}
 
 {% block title %}{{ form.form_title }}{% endblock %}
 
@@ -15,7 +16,7 @@
     </div>
 
     <form method="POST" action="." enctype="multipart/form-data" class="submit-form">
-    {% csrf_token %}
+    {% ssi_csrf_token %}
     {% render_honeypot_field %}
     {% block form %}
         <table>
