@@ -417,9 +417,8 @@ class Index(SolrIndex):
 
             if 'themes' in fields:
                 doc['themes'] = fields['themes']
-            doc['uid'] = "part%s%s%s" % (doc['header_index'],
-                                         doc['header_span'],
-                                         doc.get('fragment_anchor', ''))
+            doc['uid'] = "part%s-%s-%s-%s" % (
+                book.id, doc['header_index'], doc['header_span'], doc.get('fragment_anchor', ''))
             return doc
 
         def give_me_utf8(s):
@@ -515,8 +514,7 @@ class Index(SolrIndex):
 
 
 class SearchResult(object):
-    def __init__(self, doc, how_found=None, query=None, query_terms=None):
-        #        self.search = search
+    def __init__(self, doc, how_found=None, query_terms=None):
         self.boost = 1.0
         self._hits = []
         self._processed_hits = None  # processed hits
@@ -744,7 +742,7 @@ class Search(SolrIndex):
 
         q = self.index.query(**{field: searched})
         q = self.apply_filters(q, filters).field_limit(score=True, all_fields=True)
-        res = q.execute()
+        res = q.paginate(rows=100).execute()
         return [SearchResult(found, how_found=u'search_phrase') for found in res]
 
     def search_some(self, searched, fields, book=True,
