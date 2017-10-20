@@ -51,6 +51,8 @@ class Command(BaseCommand):
                     help='book id instead of slugs'),
         make_option('-t', '--just-tags', action='store_true', dest='just_tags', default=False,
                     help='just reindex tags'),
+        make_option('--start', dest='start_from', default=None, help='start from this slug'),
+        make_option('--stop', dest='stop_after', default=None, help='stop after this slug'),
     )
 
     def handle(self, *args, **opts):
@@ -67,14 +69,23 @@ class Command(BaseCommand):
                     else:
                         books += Book.objects.filter(slug=a).all()
             else:
-                books = list(Book.objects.all())
-
+                books = list(Book.objects.order_by('slug'))
+            start_from = opts.get('start_from')
+            stop_after = opts.get('stop_after')
+            if start_from:
+                start_from = start_from.replace('-', '')
+            if stop_after:
+                stop_after = stop_after.replace('-', '')
             while books:
                 try:
                     b = books[0]
-                    print b.title
-                    idx.index_book(b)
-                    idx.index.commit()
+                    slug = b.slug.replace('-', '')
+                    if stop_after and slug > stop_after:
+                        break
+                    if not start_from or slug >= start_from:
+                        print b.slug
+                        idx.index_book(b)
+                        idx.index.commit()
                     books.pop(0)
                 except:
                     traceback.print_exc()
