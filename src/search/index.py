@@ -913,8 +913,10 @@ class Search(SolrIndex):
         query = query.strip()
         if prefix:
             q |= self.index.Q(title=query + "*")
+            q |= self.index.Q(title_orig=query + "*")
         else:
             q |= self.make_term_query(query, field='title')
+            q |= self.make_term_query(query, field='title_orig')
         qu = self.index.query(q)
         only_books = self.index.Q(is_book=True)
         return self.search_books(qu, [only_books])
