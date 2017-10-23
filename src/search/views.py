@@ -115,7 +115,7 @@ def hint(request):
                 break
             limit -= 1
             data.append({
-                'label': b.title,
+                'label': '<cite>%s</cite>, %s' % (b.title, b.author_unicode()),
                 'category': _('book'),
                 'id': b.id,
                 'url': b.get_absolute_url()
