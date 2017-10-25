@@ -135,9 +135,11 @@
    <field name="authors" type="text_general" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true"/>
    <field name="translators" type="text_general" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
    <field name="title" type="text_pl" stored="false" indexed="true"/>
-   <field name="title_orig" type="lowercase" stored="true" indexed="true"/>
+   <field name="title_orig" type="lowercase" stored="false" indexed="true"/>
 <!--   <field name="published_date" type="tdate" stored="false" indexed="true"/>-->
    <field name="published_date" type="string" stored="true" indexed="true"/>
+
+   <field name="metadata" type="lowercase" stored="false" indexed="true"/>
 
    <field name="themes" type="lowercase" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
    <field name="themes_pl" type="text_pl" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />

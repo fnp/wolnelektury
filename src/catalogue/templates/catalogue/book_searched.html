@@ -21,7 +21,7 @@
               {% if hit.snippet %}
                 {{hit.snippet|safe}}
               {% else %}
-                {{hit.fragment.text|truncatewords_html:15|safe}}
+                {{hit.fragment.text|truncatewords_html:15|safe}} {# bad, now impossible #}
               {% endif %}
             </a>
           </div>

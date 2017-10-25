@@ -184,5 +184,6 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             off = -start
             snip = snip[:e + off] + mark[1] + snip[e + off:]
             snip = snip[:s + off] + mark[0] + snip[s + off:]
+        snip = re.sub('%s[ \t\n]+%s' % (mark[1], mark[0]), " ", snip)
 
         return snip

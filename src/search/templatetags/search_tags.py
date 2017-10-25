@@ -32,7 +32,6 @@ def book_searched(context, result):
     # We don't need hits which lead to sections but do not have
     # snippets.
     hits = filter(lambda (idx, h):
-                  'fragment' in h or
                   result.snippets[idx] is not None,
                   enumerate(result.hits))
     # print "[tmpl: from %d hits selected %d]" % (len(result.hits), len(hits))
@@ -45,8 +44,8 @@ def book_searched(context, result):
             continue
         snip = result.snippets[idx]
         # fix some formattting
-        snip = re.subn(r"(^[ \t\n]+|[ \t\n]+$)", u"",
-                       re.subn(r"[ \t\n]*\n[ \t\n]*", u"\n", snip)[0])[0]
+        snip = re.sub(r"[ \t\n]*\n[ \t\n]*", u"\n", snip)
+        snip = re.sub(r"(^[ \t\n]+|[ \t\n]+$)", u"", snip)
 
         snip = snip.replace("\n", "<br />").replace('---', '&mdash;')
         hit['snippet'] = snip
@@ -54,5 +53,5 @@ def book_searched(context, result):
     return {
         'request': context['request'],
         'book': book,
-        'hits':  hits and zip(*hits)[1] or []
+        'hits':  zip(*hits)[1] if hits else []
     }

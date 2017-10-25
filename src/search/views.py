@@ -222,7 +222,6 @@ def main(request):
     text_phrase = filter(ensure_exists, text_phrase)
     everywhere = filter(ensure_exists, everywhere)
 
-    results = author_results + translator_results + title_results + text_phrase + everywhere
     # ensure books do exists & sort them
     for res in (author_results, translator_results, title_results, text_phrase, everywhere):
         res.sort(reverse=True)
@@ -235,7 +234,7 @@ def main(request):
     #         #frag = Fragment.objects.get(anchor=anchor)
     #         return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
     #     return HttpResponseRedirect(results[0].book.get_absolute_url())
-    if len(results) == 0:
+    if not (author_results or translator_results or title_results or text_phrase or everywhere):
         form = PublishingSuggestForm(initial={"books": query + ", "})
         return render_to_response(
             'catalogue/search_no_hits.html',

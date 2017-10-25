@@ -272,7 +272,7 @@ class Index(SolrIndex):
         ]
 
     ignore_content_tags = [
-        'uwaga', 'extra',
+        'uwaga', 'extra', 'nota_red',
         'zastepnik_tekstu', 'sekcja_asterysk', 'separator_linia', 'zastepnik_wersu',
         'didaskalia',
         'naglowek_aktu', 'naglowek_sceny', 'naglowek_czesc',
@@ -365,8 +365,8 @@ class Index(SolrIndex):
         if master is None:
             return []
 
-        def walker(node, ignore_tags=()):
-            if node.tag not in ignore_tags:
+        def walker(node):
+            if node.tag not in self.ignore_content_tags:
                 yield node, None, None
                 if node.text is not None:
                     yield None, node.text, None
@@ -421,12 +421,6 @@ class Index(SolrIndex):
                 book.id, doc['header_index'], doc['header_span'], doc.get('fragment_anchor', ''))
             return doc
 
-        def give_me_utf8(s):
-            if isinstance(s, unicode):
-                return s.encode('utf-8')
-            else:
-                return s
-
         fragments = {}
         snippets = Snippets(book.id).open('w')
         try:
@@ -447,7 +441,7 @@ class Index(SolrIndex):
                     content.append(text)
                 handle_text = [all_content]
 
-                for start, text, end in walker(header, ignore_tags=self.ignore_content_tags):
+                for start, text, end in walker(header):
                     # handle footnotes
                     if start is not None and start.tag in self.footnote_tags:
                         footnote = []
@@ -819,9 +813,10 @@ class Search(SolrIndex):
                 text = snippets.get((int(position),
                                      int(length)))
                 snip = self.index.highlight(text=text, field=field, q=query)
-                snips[idx] = snip
-                if snip:
-                    num -= 1
+                if snip not in snips:
+                    snips[idx] = snip
+                    if snip:
+                        num -= 1
                 idx += 1
 
         except IOError, e:
