@@ -61,6 +61,7 @@ class Book(models.Model):
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
     print_on_demand = models.BooleanField(_('print on demand'), default=False)
+    recommended = models.BooleanField(_('recommended'), default=False)
 
     # files generated during publication
     cover = EbookField(
