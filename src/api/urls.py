@@ -30,6 +30,10 @@ fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 picture_resource = CsrfExemptResource(handler=handlers.PictureHandler, authentication=auth)
 
 
+tags_re = r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})'
+paginate_re = r'(?:before/(?P<before>[a-z0-9-]+)/)?(?:after/(?P<after>[a-z0-9-]+)/)?(?:count/(?P<count>[0-9]+)/)?$'
+
+
 @ssi_included
 def incl(request, model, pk, emitter_format):
     resource = {
@@ -73,18 +77,21 @@ urlpatterns = patterns(
         fragment_resource, name="api_fragment"),
 
     # books by tags
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})books/$',
+    url(tags_re + r'books/' + paginate_re,
         book_list_resource, name='api_book_list'),
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})ebooks/$',
+    url(tags_re + r'ebooks/' + paginate_re,
         ebook_list_resource, name='api_ebook_list'),
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_books/$',
+    url(tags_re + r'parent_books/' + paginate_re,
         book_list_resource, {"top_level": True}, name='api_parent_book_list'),
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})parent_ebooks/$',
+    url(tags_re + r'parent_ebooks/' + paginate_re,
         ebook_list_resource, {"top_level": True}, name='api_parent_ebook_list'),
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})audiobooks/$',
+    url(tags_re + r'audiobooks/' + paginate_re,
         book_list_resource, {"audiobooks": True}, name='api_audiobook_list'),
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})daisy/$',
+    url(tags_re + r'daisy/' + paginate_re,
         book_list_resource, {"daisy": True}, name='api_daisy_list'),
+
+    url(r'^recommended/' + paginate_re, book_list_resource, {"recommended": True}, name='api_recommended_list'),
+    url(r'^newest/', book_list_resource, {"newest": True, "count": 20}, name='api_newest_list'),
 
     url(r'^pictures/$', picture_resource),
 

@@ -163,7 +163,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
 
     @classmethod
     def genres(cls, book):
@@ -171,7 +171,9 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         return book.tags.filter(category='genre')
 
     @piwik_track
-    def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None):
+    def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None,
+             recommended=False, newest=False,
+             after=None, before=None, count=None):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -199,6 +201,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 books = Book.tagged.with_all(tags)
         else:
             books = Book.objects.all()
+        books = books.order_by('slug')
 
         if top_level:
             books = books.filter(parent=None)
@@ -206,10 +209,26 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             books = books.filter(media__type='mp3').distinct()
         if daisy:
             books = books.filter(media__type='daisy').distinct()
+        if recommended:
+            books = books.filter(recommended=True)
+        if newest:
+            books = books.order_by('-created_at')
+
+        if after:
+            books = books.filter(slug__gt=after)
+        if before:
+            books = books.filter(slug__lt=before)
 
         books = books.only('slug', 'title', 'cover', 'cover_thumb')
         for category in book_tag_categories:
             books = prefetch_relations(books, category)
+
+        if count:
+            if before:
+                books = list(reversed(books.order_by('-slug')[:count]))
+            else:
+                books = books[:count]
+
         if books:
             return books
         else:
@@ -222,7 +241,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
     anonymous = AnonymousBooksHandler
 
     def create(self, request, *args, **kwargs):
@@ -239,7 +258,7 @@ class BooksHandler(BookDetailHandler):
 
 
 class EBooksHandler(AnonymousBooksHandler):
-    fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats)
+    fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats) + ('slug',)
 
 
 # add categorized tags fields for Book
