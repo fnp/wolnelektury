@@ -9,6 +9,9 @@ from functools import update_wrapper
 import urllib
 from random import random
 from inspect import isclass
+
+from django.utils.encoding import force_str
+
 from .tasks import track_request
 
 logger = logging.getLogger(__name__)
@@ -18,10 +21,10 @@ def piwik_url(request):
     return urllib.urlencode(dict(
         idsite=getattr(settings, 'PIWIK_SITE_ID', '0'),
         rec=1,
-        url='http://%s%s' % (request.META['HTTP_HOST'], request.path),
+        url=force_str('http://%s%s' % (request.META['HTTP_HOST'], request.path)),
         rand=int(random() * 0x10000),
         apiv=PIWIK_API_VERSION,
-        urlref=request.META.get('HTTP_REFERER', ''),
+        urlref=force_str(request.META.get('HTTP_REFERER', '')),
         ua=request.META.get('HTTP_USER_AGENT', ''),
         lang=request.META.get('HTTP_ACCEPT_LANGUAGE', ''),
         token_auth=getattr(settings, 'PIWIK_TOKEN', ''),
