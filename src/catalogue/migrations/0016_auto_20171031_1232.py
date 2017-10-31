@@ -33,5 +33,5 @@ class Migration(migrations.Migration):
             name='has_audience',
             field=models.BooleanField(default=False),
         ),
-        migrations.RunPython(refresh_books, lambda apps, schema_editor: None),
+        migrations.RunPython(refresh_books, migrations.RunPython.noop),
     ]
