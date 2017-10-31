@@ -276,9 +276,9 @@ class FilterBooksHandler(AnonymousBooksHandler):
             is_audiobook = is_audiobook == 'true'
         books = Book.objects.distinct()
         if title_part:
-            books = books.filter(title__icontains=title_part)
+            books = books.filter(title__iregex='\m' + title_part)
         if author_part is not None:
-            books = books.filter(cached_author__icontains=author_part)
+            books = books.filter(cached_author__iregex='\m' + author_part)
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
         if is_audiobook is not None:
