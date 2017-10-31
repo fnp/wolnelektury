@@ -81,6 +81,9 @@ class Book(models.Model):
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     ancestor = models.ManyToManyField('self', blank=True, editable=False, related_name='descendant', symmetrical=False)
 
+    cached_author = models.CharField(blank=True, max_length=240, db_index=True)
+    has_audience = models.BooleanField(default=False)
+
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
@@ -120,7 +123,7 @@ class Book(models.Model):
             return ', '.join(self.tags.filter(category=category).values_list('name', flat=True))
 
     def author_unicode(self):
-        return self.tag_unicode('author')
+        return self.cached_author
 
     def translator(self):
         translators = self.extra_info.get('translators')
@@ -144,6 +147,9 @@ class Book(models.Model):
         except AttributeError:
             author = u''
         self.sort_key_author = author
+
+        self.cached_author = self.tag_unicode('author')
+        self.has_audience = 'audience' in self.extra_info
 
         ret = super(Book, self).save(force_insert, force_update, **kwargs)
 

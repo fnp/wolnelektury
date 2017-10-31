@@ -172,7 +172,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 
     @piwik_track
     def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None,
-             recommended=False, newest=False,
+             recommended=False, newest=False, books=None,
              after=None, before=None, count=None):
         """ Lists all books with given tags.
 
@@ -200,7 +200,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             else:
                 books = Book.tagged.with_all(tags)
         else:
-            books = Book.objects.all()
+            books = books if books is not None else Book.objects.all()
         books = books.order_by('slug')
 
         if top_level:
@@ -259,6 +259,34 @@ class BooksHandler(BookDetailHandler):
 
 class EBooksHandler(AnonymousBooksHandler):
     fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats) + ('slug',)
+
+
+class FilterBooksHandler(AnonymousBooksHandler):
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
+
+    def read(self, request, title_part=None, author_part=None, is_lektura=None, is_audiobook=None,
+             after=None, before=None, count=None):
+        if count is None:
+            count = 50
+        if is_lektura in ('true', 'false'):
+            is_lektura = is_lektura == 'true'
+        else:
+            is_lektura = None
+        if is_audiobook in ('true', 'false'):
+            is_audiobook = is_audiobook == 'true'
+        books = Book.objects.distinct()
+        if title_part:
+            books = books.filter(title__icontains=title_part)
+        if author_part is not None:
+            books = books.filter(cached_author__icontains=author_part)
+        if is_lektura is not None:
+            books = books.filter(has_audience=is_lektura)
+        if is_audiobook is not None:
+            if is_audiobook:
+                books = books.filter(media__type='mp3')
+            else:
+                books = books.exclude(media__type='mp3')
+        return super(FilterBooksHandler, self).read(request, books=books, after=after, before=before, count=count)
 
 
 # add categorized tags fields for Book
