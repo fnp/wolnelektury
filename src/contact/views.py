@@ -1,28 +1,39 @@
 # -*- coding: utf-8 -*-
 from urllib import unquote
 
+import pytz
+from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from django.views.decorators.cache import never_cache
 from fnpdjango.utils.views import serve_file
 from honeypot.decorators import check_honeypot
 
 from .forms import contact_forms
 from .models import Attachment, Contact
 
+tz = pytz.timezone(settings.TIME_ZONE)
+
 
 @check_honeypot
+@never_cache
 def form(request, form_tag, force_enabled=False):
     try:
         form_class = contact_forms[form_tag]
     except KeyError:
         raise Http404
-    if (getattr(form_class, 'disabled', False) and
-            not (force_enabled and request.user.is_superuser)):
-        template = getattr(form_class, 'disabled_template', None)
-        if template:
-            return render(request, template, {'title': form_class.form_title})
-        raise Http404
+    if not (force_enabled and request.user.is_superuser):
+        disabled = getattr(form_class, 'disabled', False)
+        end_tuple = getattr(form_class, 'ends_on')
+        end_time = timezone.datetime(*end_tuple, tzinfo=tz) if end_tuple else None
+        expired = end_time and end_time < timezone.now()
+        if disabled or expired:
+            template = getattr(form_class, 'disabled_template', None)
+            if template:
+                return render(request, template, {'title': form_class.form_title})
+            raise Http404
     if request.method == 'POST':
         form = form_class(request.POST, request.FILES)
     else:

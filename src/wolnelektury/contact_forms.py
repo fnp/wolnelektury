@@ -16,6 +16,8 @@ class KonkursForm(ContactForm):
     form_tag = 'konkurs'
     form_title = u"Konkurs Trzy strony"
     admin_list = ['podpis', 'contact', 'temat']
+    ends_on = (2017, 11, 8)
+    disabled_template = 'contact/disabled_contact_form.html'
 
     opiekun_header = HeaderField(label=u'Dane\xa0Opiekuna/Opiekunki')
     opiekun_nazwisko = forms.CharField(label=u'Imię i nazwisko', max_length=128)
