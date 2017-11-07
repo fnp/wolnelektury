@@ -70,7 +70,7 @@ class KonkursForm(ContactForm):
 
 class WorkshopsForm(ContactForm):
     form_tag = 'warsztaty'
-    form_title = u"Formularz zgłoszeniowy"
+    form_title = u"Wolne Lektury Fest"
     nazwisko = forms.CharField(label=u'Imię i nazwisko uczestnika', max_length=128)
     instytucja = forms.CharField(label=u'Instytucja/organizacja', max_length=128, required=False)
     contact = forms.EmailField(label=u'Adres e-mail', max_length=128)
