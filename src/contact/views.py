@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from urllib import unquote
 
-import pytz
-from django.conf import settings
+from datetime import datetime
 from django.contrib.auth.decorators import permission_required
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
@@ -11,10 +10,9 @@ from django.views.decorators.cache import never_cache
 from fnpdjango.utils.views import serve_file
 from honeypot.decorators import check_honeypot
 
+from wolnelektury.utils import localtime_to_utc
 from .forms import contact_forms
 from .models import Attachment, Contact
-
-tz = pytz.timezone(settings.TIME_ZONE)
 
 
 @check_honeypot
@@ -27,7 +25,7 @@ def form(request, form_tag, force_enabled=False):
     if not (force_enabled and request.user.is_superuser):
         disabled = getattr(form_class, 'disabled', False)
         end_tuple = getattr(form_class, 'ends_on')
-        end_time = timezone.datetime(*end_tuple, tzinfo=tz) if end_tuple else None
+        end_time = localtime_to_utc(datetime(*end_tuple)) if end_tuple else None
         expired = end_time and end_time < timezone.now()
         if disabled or expired:
             template = getattr(form_class, 'disabled_template', None)
