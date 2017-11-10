@@ -24,7 +24,7 @@ def form(request, form_tag, force_enabled=False):
         raise Http404
     if not (force_enabled and request.user.is_superuser):
         disabled = getattr(form_class, 'disabled', False)
-        end_tuple = getattr(form_class, 'ends_on')
+        end_tuple = getattr(form_class, 'ends_on', None)
         end_time = localtime_to_utc(datetime(*end_tuple)) if end_tuple else None
         expired = end_time and end_time < timezone.now()
         if disabled or expired:
