@@ -136,6 +136,9 @@ class Book(models.Model):
             others = ''
         return ', '.join(u'\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators) + others
 
+    def cover_source(self):
+        return self.extra_info.get('cover_source', self.parent.cover_source() if self.parent else '')
+
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 

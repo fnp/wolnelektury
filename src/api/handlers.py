@@ -136,6 +136,11 @@ class BookDetails(object):
         return MEDIA_BASE + default.backend.get_thumbnail(
                     book.cover, "139x193").url if book.cover else ''
 
+    @classmethod
+    def cover_source_image(cls, book):
+        url = book.cover_source()
+        return url.rstrip('/') + '/file/'
+
 
 class BookDetailHandler(BaseHandler, BookDetails):
     """ Main handler for Book objects.
@@ -262,7 +267,7 @@ class EBooksHandler(AnonymousBooksHandler):
 
 
 class FilterBooksHandler(AnonymousBooksHandler):
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'cover_source_image']
 
     def read(self, request, title_part=None, author_part=None, is_lektura=None, is_audiobook=None,
              after=None, before=None, count=None):
