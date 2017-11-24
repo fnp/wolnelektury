@@ -40,13 +40,25 @@ for k, v in category_singular.items():
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 
-def read_tags(tags, allowed):
+def read_tags(tags, request, allowed):
     """ Reads a path of filtering tags.
 
     :param str tags: a path of category and slug pairs, like: authors/an-author/...
     :returns: list of Tag objects
     :raises: ValueError when tags can't be found
     """
+
+    def process(category, slug):
+        if category == 'book':
+            try:
+                books.append(Book.objects.get(slug=slug))
+            except Book.DoesNotExist:
+                raise ValueError('Unknown book.')
+        try:
+            real_tags.append(Tag.objects.get(category=category, slug=slug))
+        except Tag.DoesNotExist:
+            raise ValueError('Tag not found')
+
     if not tags:
         return [], []
 
@@ -64,17 +76,14 @@ def read_tags(tags, allowed):
 
         if category not in allowed:
             raise ValueError('Category not allowed.')
+        process(category, slug)
 
-        if category == 'book':
-            try:
-                books.append(Book.objects.get(slug=slug))
-            except Book.DoesNotExist:
-                raise ValueError('Unknown book.')
-
-        try:
-            real_tags.append(Tag.objects.get(category=category, slug=slug))
-        except Tag.DoesNotExist:
-            raise ValueError('Tag not found')
+    for key in request.GET:
+        if key in category_singular:
+            category = category_singular[key]
+            if category in allowed:
+                for slug in request.GET.getlist(key):
+                    process(category, slug)
     return real_tags, books
 
 
@@ -194,9 +203,16 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 return rc.NOT_FOUND
 
         try:
-            tags, _ancestors = read_tags(tags, allowed=book_tag_categories)
+            tags, _ancestors = read_tags(tags, request, allowed=book_tag_categories)
         except ValueError:
             return rc.NOT_FOUND
+
+        if 'after' in request.GET:
+            after = request.GET['after']
+        if 'before' in request.GET:
+            before = request.GET['before']
+        if 'count' in request.GET:
+            count = request.GET['count']
 
         if tags:
             if top_level:
@@ -234,10 +250,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             else:
                 books = books[:count]
 
-        if books:
-            return books
-        else:
-            return rc.NOT_FOUND
+        return books
 
     def create(self, request, *args, **kwargs):
         return rc.FORBIDDEN
@@ -271,6 +284,15 @@ class FilterBooksHandler(AnonymousBooksHandler):
 
     def read(self, request, title_part=None, author_part=None, is_lektura=None, is_audiobook=None,
              after=None, before=None, count=None):
+        if 'title_part' in request.GET:
+            title_part = request.GET['title_part']
+        if 'author_part' in request.GET:
+            author_part = request.GET['author_part']
+        if 'is_lektura' in request.GET:
+            is_lektura = request.GET['is_lektura']
+        if 'is_audiobook' in request.GET:
+            is_audiobook = request.GET['is_audiobook']
+
         if count is None:
             count = 50
         if is_lektura in ('true', 'false'):
@@ -427,7 +449,7 @@ class TagsHandler(BaseHandler, TagDetails):
     """
     allowed_methods = ('GET',)
     model = Tag
-    fields = ['name', 'href', 'url']
+    fields = ['name', 'href', 'url', 'slug']
 
     @piwik_track
     def read(self, request, category=None, pk=None):
@@ -443,11 +465,24 @@ class TagsHandler(BaseHandler, TagDetails):
         except KeyError:
             return rc.NOT_FOUND
 
-        tags = Tag.objects.filter(category=category_sng).exclude(items=None)
-        if tags.exists():
-            return tags
-        else:
-            return rc.NOT_FOUND
+        after = request.GET.get('after')
+        before = request.GET.get('before')
+        count = request.GET.get('count')
+
+        tags = Tag.objects.filter(category=category_sng).exclude(items=None).order_by('slug')
+
+        if after:
+            tags = tags.filter(slug__gt=after)
+        if before:
+            tags = tags.filter(slug__lt=before)
+
+        if count:
+            if before:
+                tags = list(reversed(tags.order_by('-slug')[:count]))
+            else:
+                tags = tags[:count]
+
+        return tags
 
 
 class FragmentDetails(object):
