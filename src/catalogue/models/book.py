@@ -615,6 +615,13 @@ class Book(models.Model):
         else:
             return None
 
+    def fragment_data(self):
+        fragment = self.choose_fragment()
+        if fragment:
+            return {'title': fragment.book.pretty_title(), 'html': fragment.get_short_text()}
+        else:
+            return None
+
     def update_popularity(self):
         count = self.tags.filter(category='set').values('user').order_by('user').distinct().count()
         try:

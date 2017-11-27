@@ -280,7 +280,8 @@ class EBooksHandler(AnonymousBooksHandler):
 
 
 class FilterBooksHandler(AnonymousBooksHandler):
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'cover_source_image']
+    fields = book_tag_categories + [
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'cover_source_image', 'fragment_data']
 
     def read(self, request, title_part=None, author_part=None, is_lektura=None, is_audiobook=None,
              after=None, before=None, count=None):
