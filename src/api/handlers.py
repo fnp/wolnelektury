@@ -156,7 +156,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover', 'cover_thumb'] + [
+        'media', 'url', 'cover', 'cover_thumb', 'fragment_data'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -279,7 +279,7 @@ class EBooksHandler(AnonymousBooksHandler):
 
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'cover_source_image', 'fragment_data']
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'cover_source_image']
 
     def read(self, request, title_part=None, author_part=None, is_lektura=None, is_audiobook=None,
              after=None, before=None, count=None):
