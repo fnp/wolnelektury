@@ -122,14 +122,12 @@ class BookDetails(object):
     @classmethod
     def url(cls, book):
         """ Returns Book's URL on the site. """
-
         return WL_BASE + book.get_absolute_url()
 
     @classmethod
     def children(cls, book):
         """ Returns all children for a book. """
-
-        return book.children.all()
+        return book.children.order_by('parent_number', 'sort_key')
 
     @classmethod
     def media(cls, book):
