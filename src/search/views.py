@@ -146,40 +146,34 @@ def main(request):
             'catalogue/search_too_long.html', {'prefix': query}, context_instance=RequestContext(request))
 
     query = remove_query_syntax_chars(query)
-    
-    search = Search()
 
-    theme_terms = search.index.analyze(text=query, field="themes_pl") \
-        + search.index.analyze(text=query, field="themes")
+    words = query.split()
+    if len(words) > 10:
+        query = ' '.join(words[:10])
+
+    search = Search()
 
     # change hints
     tags = search.hint_tags(query, pdcounter=True, prefix=False)
     tags = split_tags(tags)
 
-    author_results = search.search_phrase(query, 'authors', book=True)
-    translator_results = search.search_phrase(query, 'translators', book=True)
+    author_results = search.search_words(words, ['authors'])
 
-    title_results = search.search_phrase(query, 'title', book=True)
+    title_results = search.search_words(words, ['title'])
 
-    # Boost main author/title results with mixed search, and save some of its results for end of list.
-    # boost author, title results
-    author_title_mixed = search.search_some(query, ['authors', 'translators', 'title', 'tags'], query_terms=theme_terms)
+    author_title_mixed = search.search_words(words, ['authors', 'title', 'metadata'])
     author_title_rest = []
 
     for b in author_title_mixed:
-        also_in_mixed = filter(lambda ba: ba.book_id == b.book_id, author_results + translator_results + title_results)
+        also_in_mixed = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
         for b2 in also_in_mixed:
             b2.boost *= 1.1
-        if also_in_mixed is []:
+        if not also_in_mixed:
             author_title_rest.append(b)
 
-    # Do a phrase search but a term search as well - this can give us better snippets then search_everywhere,
-    # Because the query is using only one field.
-    text_phrase = SearchResult.aggregate(
-        search.search_phrase(query, 'text', snippets=True, book=False),
-        search.search_some(query, ['text'], snippets=True, book=False, query_terms=theme_terms))
+    text_phrase = SearchResult.aggregate(search.search_words(words, ['text'], book=False))
 
-    everywhere = search.search_everywhere(query, query_terms=theme_terms)
+    everywhere = search.search_words(words, ['metadata', 'text', 'themes_pl'], book=False)
 
     def already_found(results):
         def f(e):
@@ -190,17 +184,15 @@ def main(request):
                     return True
             return False
         return f
-    f = already_found(author_results + translator_results + title_results + text_phrase)
+    f = already_found(author_results + title_results + text_phrase)
     everywhere = filter(lambda x: not f(x), everywhere)
 
-    author_results = SearchResult.aggregate(author_results)
-    translator_results = SearchResult.aggregate(translator_results)
+    author_results = SearchResult.aggregate(author_results, author_title_rest)
     title_results = SearchResult.aggregate(title_results)
 
     everywhere = SearchResult.aggregate(everywhere, author_title_rest)
 
     for field, res in [('authors', author_results),
-                       ('translators', translator_results),
                        ('title', title_results),
                        ('text', text_phrase),
                        ('text', everywhere)]:
@@ -217,24 +209,15 @@ def main(request):
             return False
 
     author_results = filter(ensure_exists, author_results)
-    translator_results = filter(ensure_exists, translator_results)
     title_results = filter(ensure_exists, title_results)
     text_phrase = filter(ensure_exists, text_phrase)
     everywhere = filter(ensure_exists, everywhere)
 
     # ensure books do exists & sort them
-    for res in (author_results, translator_results, title_results, text_phrase, everywhere):
+    for res in (author_results, title_results, text_phrase):
         res.sort(reverse=True)
 
-    # We don't want to redirect to book text, but rather display result page even with one result.
-    # if len(results) == 1:
-    #     fragment_hits = filter(lambda h: 'fragment' in h, results[0].hits)
-    #     if len(fragment_hits) == 1:
-    #         #anchor = fragment_hits[0]['fragment']
-    #         #frag = Fragment.objects.get(anchor=anchor)
-    #         return HttpResponseRedirect(fragment_hits[0]['fragment'].get_absolute_url())
-    #     return HttpResponseRedirect(results[0].book.get_absolute_url())
-    if not (author_results or translator_results or title_results or text_phrase or everywhere):
+    if not (author_results or title_results or text_phrase or everywhere):
         form = PublishingSuggestForm(initial={"books": query + ", "})
         return render_to_response(
             'catalogue/search_no_hits.html',
@@ -253,7 +236,6 @@ def main(request):
             'prefix': query,
             'results': {
                 'author': author_results,
-                'translator': translator_results,
                 'title': title_results,
                 'content': text_phrase,
                 'other': everywhere

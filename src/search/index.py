@@ -240,7 +240,8 @@ class Index(SolrIndex):
             self.remove_book(book, remove_snippets=False)
 
         book_doc = self.create_book_doc(book)
-        meta_fields = self.extract_metadata(book, book_info, dc_only=['source_name', 'authors', 'translators', 'title'])
+        meta_fields = self.extract_metadata(book, book_info, dc_only=[
+            'source_name', 'authors', 'translators', 'title', 'epochs', 'kinds', 'genres'])
         # let's not index it - it's only used for extracting publish date
         if 'source_name' in meta_fields:
             del meta_fields['source_name']
@@ -257,8 +258,9 @@ class Index(SolrIndex):
             'published_date': meta_fields['published_date']
             }
 
-        if 'translators' in meta_fields:
-            book_fields['translators'] = meta_fields['translators']
+        for tag_name in ('translators', 'epochs', 'kinds', 'genres'):
+            if tag_name in meta_fields:
+                book_fields[tag_name] = meta_fields[tag_name]
 
         self.index_content(book, book_fields=book_fields)
 
@@ -726,71 +728,23 @@ class Search(SolrIndex):
 
         return q
 
-    def search_phrase(self, searched, field='text', book=False,
-                      filters=None,
-                      snippets=False):
-        if filters is None:
-            filters = []
+    def search_words(self, words, fields, book=True):
+        filters = []
+        for word in words:
+            word_filter = None
+            for field in fields:
+                q = self.index.Q(**{field: word})
+                if word_filter is None:
+                    word_filter = q
+                else:
+                    word_filter |= q
+            filters.append(word_filter)
         if book:
-            filters.append(self.index.Q(is_book=True))
-
-        q = self.index.query(**{field: searched})
-        q = self.apply_filters(q, filters).field_limit(score=True, all_fields=True)
-        res = q.paginate(rows=100).execute()
-        return [SearchResult(found, how_found=u'search_phrase') for found in res]
-
-    def search_some(self, searched, fields, book=True,
-                    filters=None, snippets=True, query_terms=None):
-        assert isinstance(fields, list)
-        if filters is None:
-            filters = []
-        if book:
-            filters.append(self.index.Q(is_book=True))
-
-        query = self.index.Q()
-
-        for fld in fields:
-            query = self.index.Q(query | self.make_term_query(searched, fld))
-
-        query = self.index.query(query)
+            query = self.index.query(is_book=True)
+        else:
+            query = self.index.query()
         query = self.apply_filters(query, filters).field_limit(score=True, all_fields=True)
-        res = query.execute()
-        return [SearchResult(found, how_found='search_some', query_terms=query_terms) for found in res]
-
-    def search_everywhere(self, searched, query_terms=None):
-        """
-        Tries to use search terms to match different fields of book (or its parts).
-        E.g. one word can be an author survey, another be a part of the title, and the rest
-        are some words from third chapter.
-        """
-        books = []
-        # content only query : themes x content
-        q = self.make_term_query(searched, 'text')
-        q_themes = self.make_term_query(searched, 'themes_pl')
-
-        query = self.index.query(q).query(q_themes).field_limit(score=True, all_fields=True)
-        res = query.execute()
-
-        for found in res:
-            books.append(SearchResult(found, how_found='search_everywhere_themesXcontent', query_terms=query_terms))
-
-        # query themes/content x author/title/tags
-        in_content = self.index.Q()
-        in_meta = self.index.Q()
-
-        for fld in ['themes_pl', 'text']:
-            in_content |= self.make_term_query(searched, field=fld)
-
-        for fld in ['tags', 'authors', 'title']:
-            in_meta |= self.make_term_query(searched, field=fld)
-
-        q = in_content & in_meta
-        res = self.index.query(q).field_limit(score=True, all_fields=True).execute()
-
-        for found in res:
-            books.append(SearchResult(found, how_found='search_everywhere', query_terms=query_terms))
-
-        return books
+        return [SearchResult(found, how_found='search_words') for found in query]
 
     def get_snippets(self, searchresult, query, field='text', num=1):
         """

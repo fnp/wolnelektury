@@ -139,7 +139,11 @@
 <!--   <field name="published_date" type="tdate" stored="false" indexed="true"/>-->
    <field name="published_date" type="string" stored="true" indexed="true"/>
 
-   <field name="metadata" type="lowercase" stored="false" indexed="true"/>
+   <field name="epochs" type="lowercase" stored="false" indexed="false" multiValued="true" />
+   <field name="kinds" type="lowercase" stored="false" indexed="false" multiValued="true" />
+   <field name="genres" type="lowercase" stored="false" indexed="false" multiValued="true" />
+
+   <field name="metadata" type="text_pl" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
 
    <field name="themes" type="lowercase" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
    <field name="themes_pl" type="text_pl" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
@@ -269,6 +273,11 @@
   <copyField source="themes" dest="themes_pl"/>
   <copyField source="tag_name" dest="tag_name_pl"/>
   <copyField source="title" dest="title_orig"/>
+
+  <copyField source="translators" dest="metadata"/>
+  <copyField source="epochs" dest="metadata"/>
+  <copyField source="kinds" dest="metadata"/>
+  <copyField source="genres" dest="metadata"/>
 
 <!--
    <copyField source="cat" dest="text"/>
