@@ -312,6 +312,13 @@ class FilterBooksHandler(AnonymousBooksHandler):
                 books = books.filter(media__type='mp3')
             else:
                 books = books.exclude(media__type='mp3')
+        for key in request.GET:
+            if key in category_singular:
+                category = category_singular[key]
+                if category in book_tag_categories:
+                    slugs = request.GET[key].split(',')
+                    tags = Tag.objects.filter(category=category, slug__in=slugs)
+                    books = Book.tagged.with_any(tags, books)
         return super(FilterBooksHandler, self).read(request, books=books, after=after, before=before, count=count)
 
 
