@@ -153,52 +153,35 @@ def main(request):
 
     search = Search()
 
-    # change hints
     tags = search.hint_tags(query, pdcounter=True, prefix=False)
     tags = split_tags(tags)
 
-    author_results = search.search_words(words, ['authors'])
+    results_parts = []
 
-    title_results = search.search_words(words, ['title'])
+    search_fields = []
+    fieldsets = (
+        (['authors'], True),
+        (['title'], True),
+        (['metadata'], True),
+        (['text', 'themes_pl'], False),
+    )
+    for fieldset, is_book in fieldsets:
+        search_fields += fieldset
+        results_parts.append(search.search_words(words, search_fields, book=is_book))
 
-    author_title_mixed = search.search_words(words, ['authors', 'title', 'metadata'])
-    author_title_rest = []
+    results = []
+    ids_results = {}
+    for results_part in results_parts:
+        for result in sorted(SearchResult.aggregate(results_part), reverse=True):
+            book_id = result.book_id
+            if book_id in ids_results:
+                ids_results[book_id].merge(result)
+            else:
+                results.append(result)
+                ids_results[book_id] = result
 
-    for b in author_title_mixed:
-        also_in_mixed = filter(lambda ba: ba.book_id == b.book_id, author_results + title_results)
-        for b2 in also_in_mixed:
-            b2.boost *= 1.1
-        if not also_in_mixed:
-            author_title_rest.append(b)
-
-    text_phrase = SearchResult.aggregate(search.search_words(words, ['text'], book=False))
-
-    everywhere = search.search_words(words, ['metadata', 'text', 'themes_pl'], book=False)
-
-    def already_found(results):
-        def f(e):
-            for r in results:
-                if e.book_id == r.book_id:
-                    e.boost = 0.9
-                    results.append(e)
-                    return True
-            return False
-        return f
-    f = already_found(author_results + title_results + text_phrase)
-    everywhere = filter(lambda x: not f(x), everywhere)
-
-    author_results = SearchResult.aggregate(author_results, author_title_rest)
-    title_results = SearchResult.aggregate(title_results)
-
-    everywhere = SearchResult.aggregate(everywhere, author_title_rest)
-
-    for field, res in [('authors', author_results),
-                       ('title', title_results),
-                       ('text', text_phrase),
-                       ('text', everywhere)]:
-        res.sort(reverse=True)
-        for r in res:
-            search.get_snippets(r, query, field, 3)
+    for result in results:
+        search.get_snippets(result, query, num=3)
 
     suggestion = u''
 
@@ -208,16 +191,9 @@ def main(request):
         except Book.DoesNotExist:
             return False
 
-    author_results = filter(ensure_exists, author_results)
-    title_results = filter(ensure_exists, title_results)
-    text_phrase = filter(ensure_exists, text_phrase)
-    everywhere = filter(ensure_exists, everywhere)
+    results = filter(ensure_exists, results)
 
-    # ensure books do exists & sort them
-    for res in (author_results, title_results, text_phrase):
-        res.sort(reverse=True)
-
-    if not (author_results or title_results or text_phrase or everywhere):
+    if not results:
         form = PublishingSuggestForm(initial={"books": query + ", "})
         return render_to_response(
             'catalogue/search_no_hits.html',
@@ -232,14 +208,9 @@ def main(request):
     return render_to_response(
         'catalogue/search_multiple_hits.html',
         {
-            'tags': tags,
+            'tags': tags['author'] + tags['kind'] + tags['genre'] + tags['epoch'] + tags['theme'],
             'prefix': query,
-            'results': {
-                'author': author_results,
-                'title': title_results,
-                'content': text_phrase,
-                'other': everywhere
-            },
+            'results': results,
             'did_you_mean': suggestion
         },
         context_instance=RequestContext(request))

@@ -14,42 +14,10 @@
     <span class="did_you_mean">{% trans "Did you mean" %}
       <a href="{% url 'search' %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a>?</span>
   {% endif %}
-  <!-- tu pójdą trafienia w tagi: Autorzy - z description oraz motywy i rodzaje -->
   <div class="inline-tag-lists top-tag-list">
-    {% if tags.author %}
+    {% if tags %}
       <div>
-        <h2>{% trans "Authors" %}:</h2>
-        {% for tag in tags.author %}
-          <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% include "catalogue/tag_box.html" %}
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
-    {% if tags.kind %}
-      <div>
-        <h2>{% trans "Kinds" %}:</h2>
-        {% for tag in tags.kind %}
-          <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% include "catalogue/tag_box.html" %}
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
-    {% if tags.genre %}
-      <div>
-        <h2>{% trans "Genres" %}:</h2>
-        {% for tag in tags.genre %}
-          <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% include "catalogue/tag_box.html" %}
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
-    {% if tags.epoch %}
-      <div class="inline-tag-list">
-        <h2>{% trans "Epochs" %}:</h2>
-        {% for tag in tags.epoch %}
+        {% for tag in tags %}
           <a class="tag-box" href="{{ tag.get_absolute_url }}">
             {% include "catalogue/tag_box.html" %}
           </a>
@@ -58,84 +26,13 @@
     {% endif %}
   </div>
 
-  {% if results.title %}
-    <div class="book-list-header">
-      <div class="book-box-inner">
-        <p>{% trans "Results by title" %}</p>
-      </div>
-    </div>
-    <div>
-      <ol class="work-list">
-        {% for result in results.title %}
-          <li class="Book-item">
-            {% ssi_include 'catalogue_book_short' pk=result.book.pk %}
-          </li>
-        {% endfor %}
-      </ol>
-    </div>
-  {% endif %}
-
-  {% if results.author %}
-    <div class="book-list-header">
-      <div class="book-box-inner">
-        <p>{% trans "Results by authors" %}</p>
-      </div>
-    </div>
-    <div>
-      <ol class="work-list">
-        {% for author in results.author %}
-          <li class="Book-item">{% ssi_include 'catalogue_book_short' pk=author.book.pk %}</li>
-        {% endfor %}
-      </ol>
-    </div>
-  {% endif %}
-
-  {% if results.translator %}
-    <div class="book-list-header">
-      <div class="book-box-inner">
-        <p>{% trans "Results by translators" %}</p>
-      </div>
-    </div>
-    <div>
-      <ol class="work-list">
-        {% for translator in results.translator %}
-          <li class="Book-item">{% ssi_include 'catalogue_book_short' pk=translator.book.pk %}</li>
-        {% endfor %}
-      </ol>
-    </div>
-  {% endif %}
-
-  {% if results.content %}
-  <div class="book-list-header">
-    <div class="book-box-inner">
-      <p>{% trans "Results in text" %}</p>
-    </div>
-  </div>
   <div>
-    <ol class="work-list">
-      {% for result in results.content %}
+    <ul class="work-list">
+      {% for result in results %}
         <li class="Book-item">
           {% book_searched result %}
         </li>
       {% endfor %}
-    </ol>
+    </ul>
   </div>
-  {% endif %}
-
-  {% if results.other %}
-    <div class="book-list-header">
-      <div class="book-box-inner">
-        <p>{% trans "Other results" %}</p>
-      </div>
-    </div>
-    <div>
-      <ol class="work-list">
-        {% for result in results.other %}
-          <li class="Book-item">
-            {% book_searched result %}
-          </li>
-        {% endfor %}
-      </ol>
-    </div>
-  {% endif %}
 {% endblock %}

@@ -22,13 +22,6 @@ register = template.Library()
 def book_searched(context, result):
     book = Book.objects.get(pk=result.book_id)
 
-    # snippets = []
-    # for hit in result.hits:
-    #     if hit['snippets']:
-    #         snippets.append(hit['snippets'])
-    #     elif hit['fragment']:
-    #         snippets.append(hit['fragment'].short_text)
-
     # We don't need hits which lead to sections but do not have
     # snippets.
     hits = filter(lambda (idx, h):
