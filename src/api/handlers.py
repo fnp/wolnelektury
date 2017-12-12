@@ -279,32 +279,23 @@ class EBooksHandler(AnonymousBooksHandler):
 
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'cover_source_image']
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'key', 'cover_source_image']
 
-    def read(self, request, title_part=None, author_part=None, is_lektura=None, is_audiobook=None,
-             after=None, before=None, count=None):
-        if 'title_part' in request.GET:
-            title_part = request.GET['title_part']
-        if 'author_part' in request.GET:
-            author_part = request.GET['author_part']
-        if 'is_lektura' in request.GET:
-            is_lektura = request.GET['is_lektura']
-        if 'is_audiobook' in request.GET:
-            is_audiobook = request.GET['is_audiobook']
+    def read(self, request):
+        key_sep = '$'
+        search_string = request.GET.get('search')
+        is_lektura = request.GET.get('lektura')
+        is_audiobook = request.GET.get('audiobook')
 
-        if count is None:
-            count = 50
+        after = request.GET.get('after')
+        count = request.GET.get('count', 50)
         if is_lektura in ('true', 'false'):
             is_lektura = is_lektura == 'true'
         else:
             is_lektura = None
         if is_audiobook in ('true', 'false'):
             is_audiobook = is_audiobook == 'true'
-        books = Book.objects.distinct()
-        if title_part:
-            books = books.filter(title__iregex='\m' + title_part)
-        if author_part is not None:
-            books = books.filter(cached_author__iregex='\m' + author_part)
+        books = Book.objects.distinct().order_by('slug')
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
         if is_audiobook is not None:
@@ -319,7 +310,40 @@ class FilterBooksHandler(AnonymousBooksHandler):
                     slugs = request.GET[key].split(',')
                     tags = Tag.objects.filter(category=category, slug__in=slugs)
                     books = Book.tagged.with_any(tags, books)
-        return super(FilterBooksHandler, self).read(request, books=books, after=after, before=before, count=count)
+        if (search_string is not None) and len(search_string) < 3:
+            search_string = None
+        if search_string:
+            books_author = books.filter(cached_author__iregex='\m' + search_string)
+            books_title = books.filter(title__iregex='\m' + search_string)
+            books_title = books_title.exclude(id__in=list(books_author.values_list('id', flat=True)))
+            if after and (key_sep in after):
+                which, slug = after.split(key_sep, 1)
+                if which == 'title':
+                    book_lists = [(books_title.filter(slug__gt=slug), 'title')]
+                else:  # which == 'author'
+                    book_lists = [(books_author.filter(slug__gt=slug), 'author'), (books_title, 'title')]
+            else:
+                book_lists = [(books_author, 'author'), (books_title, 'title')]
+        else:
+            if after and key_sep in after:
+                which, slug = after.split(key_sep, 1)
+                books = books.filter(slug__gt=slug)
+            book_lists = [(books, 'book')]
+
+        filtered_books = []
+        for book_list, label in book_lists:
+            book_list = book_list.only('slug', 'title', 'cover', 'cover_thumb')
+            for category in book_tag_categories:
+                book_list = prefetch_relations(book_list, category)
+            remaining_count = count - len(filtered_books)
+            new_books = list(book_list[:remaining_count])
+            for book in new_books:
+                book.key = '%s%s%s' % (label, key_sep, book.slug)
+            filtered_books += new_books
+            if len(filtered_books) == count:
+                break
+
+        return filtered_books
 
 
 # add categorized tags fields for Book

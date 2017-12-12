@@ -93,9 +93,7 @@ urlpatterns = patterns(
 
     url(r'^recommended/' + paginate_re, book_list_resource, {"recommended": True}, name='api_recommended_list'),
     url(r'^newest/', book_list_resource, {"newest": True, "count": 20}, name='api_newest_list'),
-    url(r'^filter-books/(?:title-part/(?P<title_part>[^/]+)/)?(?:author-part/(?P<author_part>[^/]+)/)?'
-        r'(?:lektura/(?P<is_lektura>(?:true|false))/)?(?:audiobook/(?P<is_audiobook>(?:true|false))/)?'
-        + paginate_re, filter_book_resource, name='api_filter_books'),
+    url(r'^filter-books/', filter_book_resource, name='api_filter_books'),
 
     url(r'^pictures/$', picture_resource),
 
