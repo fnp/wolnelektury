@@ -4,6 +4,8 @@
   {% load book_shelf_tags from social_tags %}
   {% load static %}
 
+  {% with ga=book.get_audiobooks %}
+  {% with audiobooks=ga.0 %}
   <div class="{% block box-class %}book-box{% if audiobooks %} audiobook-box{% endif %}{% endblock %}">
     <div class="book-box-inner">
 
@@ -11,6 +13,7 @@
       {% include "catalogue/snippets/like_button.html" %}
     {% endblock %}
 
+    {% with book.tags_by_category as tags %}
     <div class="book-left-column">
       <div class="book-box-body">
         {% block book-box-body-pre %}
@@ -20,11 +23,11 @@
           <div class="author">
             {% for tag in tags.author %}
               <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>{% if not forloop.last %},
-            {% endif %}{% endfor %}{% for parent in parents %},
+            {% endif %}{% endfor %}{% for parent in book.parents %},
               <a href="{{ parent.get_absolute_url }}">{{ parent.title }}</a>{% endfor %}
           </div>
           <div class="title">
-            {% if main_link %}<a href="{{ main_link }}">{% endif %}{{ book.title }}{% if main_link %}</a>{% endif %}
+            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
           </div>
           {% if book.translator %}
               <div class="author">
@@ -35,9 +38,9 @@
 
         <div class="cover-area">
           {% if book.cover_thumb %}
-            {% if main_link %}<a href="{{ main_link }}">{% endif %}
+            <a href="{{ book.get_absolute_url }}">
               <img src="{{ book.cover_thumb.url }}" alt="Cover" class="cover" />
-            {% if main_link %}</a>{% endif %}
+            </a>
           {% endif %}
           {% block cover-area-extra %}{% endblock %}
         </div>
@@ -67,7 +70,7 @@
             {% endfor %}
           </span></span>
 
-          {% if show_lang %}
+          {% if book.is_foreign %}
             <span class="category">
               <span class="mono"> {% trans "Language" %}:</span>&nbsp;<span class="book-box-tag">
                 <a>{{ book.language_name }}</a>
@@ -75,12 +78,14 @@
             </span>
           {% endif %}
 
-          {% if stage_note %}
+          {% with stage_note=book.stage_note %}
+          {% if stage_note.0 %}
             <br>
             <span class="category">
-              <a{% if stage_note_url %} href="{{ stage_note_url }}"{% endif %}>{{ stage_note }}</a>
+              <a{% if stage_note.1 %} href="{{ stage_note.1 }}"{% endif %}>{{ stage_note.0 }}</a>
             </span>
           {% endif %}
+          {% endwith %}
         </div>
       </div>
       {% book_shelf_tags book.pk %}
@@ -122,6 +127,7 @@
       {% block box-append %}
       {% endblock %}
     </div>
+    {% endwith %}
 
     {% block right-column %}
       {% if audiobooks %}
@@ -134,4 +140,6 @@
     <div class="clearboth"></div>
     </div>
   </div>
+  {% endwith %}
+  {% endwith %}
 {% endspaceless %}

@@ -21,7 +21,7 @@ from newtagging import managers
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, gallery_url, gallery_path
+from catalogue.utils import create_zip, gallery_url, gallery_path, split_tags
 from catalogue.models.tag import prefetched_relations
 from catalogue import app_settings
 from catalogue import tasks
@@ -118,6 +118,9 @@ class Book(models.Model):
             return ', '.join(rel.tag.name for rel in relations)
         else:
             return ', '.join(self.tags.filter(category=category).values_list('name', flat=True))
+
+    def tags_by_category(self):
+        return split_tags(self.tags.exclude(category__in=('set', 'theme')))
 
     def author_unicode(self):
         return self.tag_unicode('author')
@@ -224,6 +227,33 @@ class Book(models.Model):
         return bool(self.has_media("daisy"))
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
+
+    def get_audiobooks(self):
+        ogg_files = {}
+        for m in self.media.filter(type='ogg').order_by().iterator():
+            ogg_files[m.name] = m
+
+        audiobooks = []
+        projects = set()
+        for mp3 in self.media.filter(type='mp3').iterator():
+            # ogg files are always from the same project
+            meta = mp3.extra_info
+            project = meta.get('project')
+            if not project:
+                # temporary fallback
+                project = u'CzytamySłuchając'
+
+            projects.add((project, meta.get('funded_by', '')))
+
+            media = {'mp3': mp3}
+
+            ogg = ogg_files.get(mp3.name)
+            if ogg:
+                media['ogg'] = ogg
+            audiobooks.append(media)
+
+        projects = sorted(projects)
+        return audiobooks, projects
 
     def wldocument(self, parse_dublincore=True, inherit=True):
         from catalogue.import_utils import ORMDocProvider

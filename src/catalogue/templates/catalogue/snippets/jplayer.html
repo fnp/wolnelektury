@@ -2,7 +2,7 @@
 {% if audiobooks %}
   <div class="jp-type-playlist">
     <div id="jplayer" class="jp-jplayer" data-player="jp_container_{{ book.pk }}"
-         data-supplied="{% if have_oggs %}oga,{% endif %}mp3"></div>
+         data-supplied="oga,mp3"></div>
     <div id="jp_container_{{ book.pk }}" class="jp-audio">
       <div class="jp-type-single">
         <span class="title"></span>

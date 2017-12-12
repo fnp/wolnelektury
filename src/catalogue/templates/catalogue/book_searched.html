@@ -2,9 +2,12 @@
   {% load i18n %}
   {% load inline_tag_list from catalogue_tags %}
   {% load ssi_include from ssify %}
+  {% load cache %}
 
   <div class="search-result">
-    {% ssi_include 'catalogue_book_short' pk=book.pk %}
+    {% cache 86400 catalogue_book_short book.pk %}
+      {% include 'catalogue/book_short.html' %}
+    {% endcache %}
 
     <div class="snippets">
       {% for hit in hits %}

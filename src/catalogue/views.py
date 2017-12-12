@@ -286,44 +286,13 @@ def book_detail(request, slug):
     }, context_instance=RequestContext(request))
 
 
-def get_audiobooks(book):
-    ogg_files = {}
-    for m in book.media.filter(type='ogg').order_by().iterator():
-        ogg_files[m.name] = m
-
-    audiobooks = []
-    have_oggs = True
-    projects = set()
-    for mp3 in book.media.filter(type='mp3').iterator():
-        # ogg files are always from the same project
-        meta = mp3.extra_info
-        project = meta.get('project')
-        if not project:
-            # temporary fallback
-            project = u'CzytamySłuchając'
-
-        projects.add((project, meta.get('funded_by', '')))
-
-        media = {'mp3': mp3}
-
-        ogg = ogg_files.get(mp3.name)
-        if ogg:
-            media['ogg'] = ogg
-        else:
-            have_oggs = False
-        audiobooks.append(media)
-
-    projects = sorted(projects)
-    return audiobooks, projects, have_oggs
-
-
 # używane w publicznym interfejsie
 def player(request, slug):
     book = get_object_or_404(Book, slug=slug)
     if not book.has_media('mp3'):
         raise Http404
 
-    audiobooks, projects, have_oggs = get_audiobooks(book)
+    audiobooks, projects = book.get_audiobooks()
 
     return render_to_response('catalogue/player.html', {
         'book': book,
@@ -672,20 +641,9 @@ def book_mini(request, pk, with_link=True):
     ))(ssi_expect(pk, int)))
 def book_short(request, pk):
     book = get_object_or_404(Book, pk=pk)
-    stage_note, stage_note_url = book.stage_note()
-    audiobooks, projects, have_oggs = get_audiobooks(book)
 
     return render(request, 'catalogue/book_short.html', {
         'book': book,
-        'has_audio': book.has_media('mp3'),
-        'main_link': book.get_absolute_url(),
-        'parents': book.parents(),
-        'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
-        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
-        'stage_note': stage_note,
-        'stage_note_url': stage_note_url,
-        'audiobooks': audiobooks,
-        'have_oggs': have_oggs,
     })
 
 
@@ -698,24 +656,17 @@ def book_short(request, pk):
     ))(ssi_expect(pk, int)))
 def book_wide(request, pk):
     book = get_object_or_404(Book, pk=pk)
-    stage_note, stage_note_url = book.stage_note()
     extra_info = book.extra_info
-    audiobooks, projects, have_oggs = get_audiobooks(book)
 
     return render(request, 'catalogue/book_wide.html', {
         'book': book,
-        'has_audio': book.has_media('mp3'),
         'parents': book.parents(),
         'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
         'show_lang': book.language_code() != settings.LANGUAGE_CODE,
-        'stage_note': stage_note,
-        'stage_note_url': stage_note_url,
 
         'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
         'extra_info': extra_info,
         'hide_about': extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl'),
-        'audiobooks': audiobooks,
-        'have_oggs': have_oggs,
     })
 
 
