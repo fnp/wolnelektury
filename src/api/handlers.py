@@ -7,6 +7,7 @@ import json
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.utils.functional import lazy
+from django.db import models
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
@@ -277,6 +278,26 @@ class EBooksHandler(AnonymousBooksHandler):
     fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats) + ('slug',)
 
 
+class BookProxy(models.Model):
+    def __init__(self, book, key):
+        self.book = book
+        self.key = key
+
+    def __getattr__(self, item):
+        if item not in ('book', 'key'):
+            return self.book.__getattribute__(item)
+        else:
+            return self.__getattribute__(item)
+
+
+class QuerySetProxy(models.QuerySet):
+    def __init__(self, l):
+        self.list = l
+
+    def __iter__(self):
+        return iter(self.list)
+
+
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
         'href', 'title', 'url', 'cover', 'cover_thumb', 'key', 'cover_source_image']
@@ -288,7 +309,7 @@ class FilterBooksHandler(AnonymousBooksHandler):
         is_audiobook = request.GET.get('audiobook')
 
         after = request.GET.get('after')
-        count = request.GET.get('count', 50)
+        count = int(request.GET.get('count', 50))
         if is_lektura in ('true', 'false'):
             is_lektura = is_lektura == 'true'
         else:
@@ -336,14 +357,13 @@ class FilterBooksHandler(AnonymousBooksHandler):
             for category in book_tag_categories:
                 book_list = prefetch_relations(book_list, category)
             remaining_count = count - len(filtered_books)
-            new_books = list(book_list[:remaining_count])
-            for book in new_books:
-                book.key = '%s%s%s' % (label, key_sep, book.slug)
+            new_books = [BookProxy(book, '%s%s%s' % (label, key_sep, book.slug))
+                         for book in book_list[:remaining_count]]
             filtered_books += new_books
             if len(filtered_books) == count:
                 break
 
-        return filtered_books
+        return QuerySetProxy(filtered_books)
 
 
 # add categorized tags fields for Book
