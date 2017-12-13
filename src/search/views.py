@@ -10,7 +10,7 @@ from django.http import HttpResponse, JsonResponse
 from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
-from catalogue.models import Book
+from catalogue.models import Book, Tag
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from search.index import Search, SearchResult
 from suggest.forms import PublishingSuggestForm
@@ -66,26 +66,6 @@ def hint(request):
 
     prefix = remove_query_syntax_chars(prefix)
 
-    search = Search()
-    # tagi beda ograniczac tutaj
-    # ale tagi moga byc na ksiazce i na fragmentach
-    # jezeli tagi dot tylko ksiazki, to wazne zeby te nowe byly w tej samej ksiazce
-    # jesli zas dotycza themes, to wazne, zeby byly w tym samym fragmencie.
-
-    def is_dupe(tag):
-        if isinstance(tag, PDCounterAuthor):
-            if filter(lambda t: t.slug == tag.slug and t != tag, tags):
-                return True
-        elif isinstance(tag, PDCounterBook):
-            if filter(lambda b: b.slug == tag.slug, tags):
-                return True
-        return False
-
-    def category_name(c):
-        if c.startswith('pd_'):
-            c = c[len('pd_'):]
-        return _(c)
-
     try:
         limit = int(request.GET.get('max', ''))
     except ValueError:
@@ -94,33 +74,25 @@ def hint(request):
         if limit < 1:
             limit = -1
 
-    data = []
-
-    tags = search.hint_tags(prefix, pdcounter=True)
-    tags = filter(lambda t: not is_dupe(t), tags)
-    for t in tags:
-        if not limit:
-            break
-        limit -= 1
-        data.append({
-            'label': t.name,
-            'category': category_name(t.category),
-            'id': t.id,
-            'url': t.get_absolute_url()
-            })
-    if limit:
-        books = search.hint_books(prefix)
-        for b in books:
-            if not limit:
-                break
-            limit -= 1
-            data.append({
+    data = [
+        {
+            'label': author.name,
+            'category': _('author'),
+            'id': author.id,
+            'url': author.get_absolute_url(),
+        }
+        for author in Tag.objects.filter(category='author', name__iregex='\m' + prefix)[:10]
+    ]
+    if len(data) < limit:
+        data += [
+            {
                 'label': '<cite>%s</cite>, %s' % (b.title, b.author_unicode()),
                 'category': _('book'),
                 'id': b.id,
                 'url': b.get_absolute_url()
-                })
-
+            }
+            for b in Book.objects.filter(title__iregex='\m' + prefix)[:limit-len(data)]
+        ]
     callback = request.GET.get('callback', None)
     if callback:
         return HttpResponse("%s(%s);" % (callback, json.dumps(data)),

@@ -96,13 +96,7 @@
 
 .search-hint-label {
     display: inline-block;
-    @include size(font-size, 11px);
-    @include size(width, 275px);
+    @include size(font-size, 16px);
+    //@include size(width, 275px);
     line-height: 1.636em;
 }
-
-.search-hint-category {
-    @include size(font-size, 11px);
-    line-height: 1.636em;
-}
-

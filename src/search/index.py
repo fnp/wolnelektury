@@ -826,13 +826,9 @@ class Search(SolrIndex):
                 if is_pdcounter:
                     if category == 'pd_author':
                         tag = PDCounterAuthor.objects.get(id=doc.get('tag_id'))
-                    elif category == 'pd_book':
+                    else:  # category == 'pd_book':
                         tag = PDCounterBook.objects.get(id=doc.get('tag_id'))
                         tag.category = 'pd_book'  # make it look more lik a tag.
-                    else:
-                        # WTF
-                        print ("Warning. cannot get pdcounter tag_id=%d from db; cat=%s" % (
-                            int(doc.get('tag_id')), category)).encode('utf-8')
                     pd_tags.append(tag)
                 else:
                     tag = catalogue.models.Tag.objects.get(id=doc.get("tag_id"))
