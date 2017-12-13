@@ -1,14 +1,8 @@
-{% spaceless %}
-  {% load i18n %}
-  {% load inline_tag_list from catalogue_tags %}
-  {% load ssi_include from ssify %}
-  {% load cache %}
+{% extends "catalogue/book_short.html" %}
+{% load inline_tag_list from catalogue_tags %}
 
-  <div class="search-result">
-    {% cache 86400 catalogue_book_short book.pk %}
-      {% include 'catalogue/book_short.html' %}
-    {% endcache %}
-
+{% block right-column %}
+  <div class="book-right-column">
     <div class="snippets">
       {% for hit in hits %}
         {% if hit.snippet %}
@@ -21,17 +15,12 @@
               {% inline_tag_list hit.themes_hit  %}
             {% endif %}
             <a href="{{hit.fragment.get_absolute_url}}">
-              {% if hit.snippet %}
-                {{hit.snippet|safe}}
-              {% else %}
-                {{hit.fragment.text|truncatewords_html:15|safe}} {# bad, now impossible #}
-              {% endif %}
+              {{hit.snippet|safe}}
             </a>
           </div>
         {% endif %}
       {% endfor %}
     </div>
-
-    <div style="clear: right"></div>
+    {% include 'catalogue/snippets/jplayer.html' %}
   </div>
-{% endspaceless %}
+{% endblock %}

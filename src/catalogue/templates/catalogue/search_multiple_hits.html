@@ -30,7 +30,9 @@
     <ul class="work-list">
       {% for result in results %}
         <li class="Book-item">
-          {% book_searched result %}
+          <div class="search-result">
+            {% book_searched result %}
+          </div>
         </li>
       {% endfor %}
     </ul>

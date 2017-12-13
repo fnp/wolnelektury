@@ -131,7 +131,7 @@
   }
 }
 
-.audiobook-box {
+.audiobook-box, .search-result .book-box {
   .book-left-column {
     @media screen and (min-width: 1024px) {
       display: inline-block;
@@ -139,9 +139,10 @@
     }
   }
 
-  .audiobook-right-column {
+  .book-right-column {
     @media screen and (min-width: 1024px) {
       float: right;
+      @include size(padding-top, 15px);
       @include size(width, 360px);
     }
   }
@@ -151,7 +152,6 @@
 
     @media screen and (min-width: 1024px) {
       float: right;
-      margin-top: 48px;
     }
   }
 }
