@@ -16,6 +16,8 @@ class KonkursForm(ContactForm):
     form_tag = 'konkurs'
     form_title = u"Konkurs Trzy strony"
     admin_list = ['podpis', 'contact', 'temat']
+    ends_on = (2017, 11, 8)
+    disabled_template = 'contact/disabled_contact_form.html'
 
     opiekun_header = HeaderField(label=u'Dane\xa0Opiekuna/Opiekunki')
     opiekun_nazwisko = forms.CharField(label=u'Imię i nazwisko', max_length=128)
@@ -66,3 +68,34 @@ class KonkursForm(ContactForm):
         help_text=u'Wyrażam zgodę oraz potwierdzam, że autor/ka opowiadania (lub ich przedstawiciele ustawowi – '
               u'gdy dotyczy) wyrazili zgodę na fotografowanie i nagrywanie podczas gali wręczenia nagród i następnie '
               u'rozpowszechnianie ich wizerunków.')
+
+
+class WorkshopsForm(ContactForm):
+    form_tag = 'warsztaty'
+    form_title = u"Wolne Lektury Fest"
+    nazwisko = forms.CharField(label=u'Imię i nazwisko uczestnika', max_length=128)
+    instytucja = forms.CharField(label=u'Instytucja/organizacja', max_length=128, required=False)
+    contact = forms.EmailField(label=u'Adres e-mail', max_length=128)
+    tel = forms.CharField(label=u'Numer telefonu', max_length=32)
+    warsztat = forms.ChoiceField(choices=(
+        ('skad-i-jak', u'Skąd i jak bezpiecznie korzystać z darmowych i wolnych wideo i zdjęć w sieci? '
+                       u'Jak wykorzystać wolne licencje by zwiększyć zasięg Twoich publikacji?'),
+        ('jak-badac', u'Jak badać wykorzystanie zbiorów domeny publicznej?'),
+        ('kultura', u'Kultura dostępna dla wszystkich')),
+        widget=forms.RadioSelect,
+    )
+    agree_header = HeaderField(label=mark_safe_lazy(u'<strong>Oświadczenia</strong>'))
+    agree_data = forms.BooleanField(
+        label='Przetwarzanie danych osobowych',
+        help_text=u'Oświadczam, że wyrażam zgodę na przetwarzanie danych osobowych zawartych w niniejszym formularzu '
+              u'zgłoszeniowym przez Fundację Nowoczesna Polska (administratora danych) z siedzibą w Warszawie (00-514) '
+              u'przy ul. Marszałkowskiej 84/92 lok. 125 na potrzeby organizacji warsztatów w ramach wydarzenia '
+              u'„WOLNE LEKTURY FEST”. Jednocześnie oświadczam, że zostałam/em poinformowana/y o tym, że mam prawo '
+              u'wglądu w treść swoich danych i możliwość ich poprawiania oraz że ich podanie jest dobrowolne, '
+              u'ale niezbędne do dokonania zgłoszenia.')
+    agree_wizerunek = forms.BooleanField(
+        label='Rozpowszechnianie wizerunku',
+        help_text=u'Wyrażam zgodę na fotografowanie i nagrywanie podczas warsztatów „WOLNE LEKTURY FEST” '
+                  u'24.11.2017 roku i następnie rozpowszechnianie mojego wizerunku w celach promocyjnych.')
+    agree_gala = forms.BooleanField(
+        label=u'Wezmę udział w uroczystej gali o godz. 19.00.', required=False)

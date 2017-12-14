@@ -7,6 +7,7 @@ import json
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.utils.functional import lazy
+from django.db import models
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
@@ -40,13 +41,25 @@ for k, v in category_singular.items():
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 
-def read_tags(tags, allowed):
+def read_tags(tags, request, allowed):
     """ Reads a path of filtering tags.
 
     :param str tags: a path of category and slug pairs, like: authors/an-author/...
     :returns: list of Tag objects
     :raises: ValueError when tags can't be found
     """
+
+    def process(category, slug):
+        if category == 'book':
+            try:
+                books.append(Book.objects.get(slug=slug))
+            except Book.DoesNotExist:
+                raise ValueError('Unknown book.')
+        try:
+            real_tags.append(Tag.objects.get(category=category, slug=slug))
+        except Tag.DoesNotExist:
+            raise ValueError('Tag not found')
+
     if not tags:
         return [], []
 
@@ -64,17 +77,14 @@ def read_tags(tags, allowed):
 
         if category not in allowed:
             raise ValueError('Category not allowed.')
+        process(category, slug)
 
-        if category == 'book':
-            try:
-                books.append(Book.objects.get(slug=slug))
-            except Book.DoesNotExist:
-                raise ValueError('Unknown book.')
-
-        try:
-            real_tags.append(Tag.objects.get(category=category, slug=slug))
-        except Tag.DoesNotExist:
-            raise ValueError('Tag not found')
+    for key in request.GET:
+        if key in category_singular:
+            category = category_singular[key]
+            if category in allowed:
+                for slug in request.GET.getlist(key):
+                    process(category, slug)
     return real_tags, books
 
 
@@ -113,14 +123,12 @@ class BookDetails(object):
     @classmethod
     def url(cls, book):
         """ Returns Book's URL on the site. """
-
         return WL_BASE + book.get_absolute_url()
 
     @classmethod
     def children(cls, book):
         """ Returns all children for a book. """
-
-        return book.children.all()
+        return book.children.order_by('parent_number', 'sort_key')
 
     @classmethod
     def media(cls, book):
@@ -136,6 +144,11 @@ class BookDetails(object):
         return MEDIA_BASE + default.backend.get_thumbnail(
                     book.cover, "139x193").url if book.cover else ''
 
+    @classmethod
+    def cover_source_image(cls, book):
+        url = book.cover_source()
+        return url.rstrip('/') + '/file/'
+
 
 class BookDetailHandler(BaseHandler, BookDetails):
     """ Main handler for Book objects.
@@ -144,7 +157,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover', 'cover_thumb'] + [
+        'media', 'url', 'cover', 'cover_thumb', 'fragment_data'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -163,7 +176,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
 
     @classmethod
     def genres(cls, book):
@@ -171,7 +184,9 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         return book.tags.filter(category='genre')
 
     @piwik_track
-    def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None):
+    def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None,
+             recommended=False, newest=False, books=None,
+             after=None, before=None, count=None):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -187,9 +202,16 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 return rc.NOT_FOUND
 
         try:
-            tags, _ancestors = read_tags(tags, allowed=book_tag_categories)
+            tags, _ancestors = read_tags(tags, request, allowed=book_tag_categories)
         except ValueError:
             return rc.NOT_FOUND
+
+        if 'after' in request.GET:
+            after = request.GET['after']
+        if 'before' in request.GET:
+            before = request.GET['before']
+        if 'count' in request.GET:
+            count = request.GET['count']
 
         if tags:
             if top_level:
@@ -198,7 +220,8 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             else:
                 books = Book.tagged.with_all(tags)
         else:
-            books = Book.objects.all()
+            books = books if books is not None else Book.objects.all()
+        books = books.order_by('slug')
 
         if top_level:
             books = books.filter(parent=None)
@@ -206,14 +229,27 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             books = books.filter(media__type='mp3').distinct()
         if daisy:
             books = books.filter(media__type='daisy').distinct()
+        if recommended:
+            books = books.filter(recommended=True)
+        if newest:
+            books = books.order_by('-created_at')
+
+        if after:
+            books = books.filter(slug__gt=after)
+        if before:
+            books = books.filter(slug__lt=before)
 
         books = books.only('slug', 'title', 'cover', 'cover_thumb')
         for category in book_tag_categories:
             books = prefetch_relations(books, category)
-        if books:
-            return books
-        else:
-            return rc.NOT_FOUND
+
+        if count:
+            if before:
+                books = list(reversed(books.order_by('-slug')[:count]))
+            else:
+                books = books[:count]
+
+        return books
 
     def create(self, request, *args, **kwargs):
         return rc.FORBIDDEN
@@ -222,7 +258,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
     anonymous = AnonymousBooksHandler
 
     def create(self, request, *args, **kwargs):
@@ -239,7 +275,95 @@ class BooksHandler(BookDetailHandler):
 
 
 class EBooksHandler(AnonymousBooksHandler):
-    fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats)
+    fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats) + ('slug',)
+
+
+class BookProxy(models.Model):
+    def __init__(self, book, key):
+        self.book = book
+        self.key = key
+
+    def __getattr__(self, item):
+        if item not in ('book', 'key'):
+            return self.book.__getattribute__(item)
+        else:
+            return self.__getattribute__(item)
+
+
+class QuerySetProxy(models.QuerySet):
+    def __init__(self, l):
+        self.list = l
+
+    def __iter__(self):
+        return iter(self.list)
+
+
+class FilterBooksHandler(AnonymousBooksHandler):
+    fields = book_tag_categories + [
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'key', 'cover_source_image']
+
+    def read(self, request):
+        key_sep = '$'
+        search_string = request.GET.get('search')
+        is_lektura = request.GET.get('lektura')
+        is_audiobook = request.GET.get('audiobook')
+
+        after = request.GET.get('after')
+        count = int(request.GET.get('count', 50))
+        if is_lektura in ('true', 'false'):
+            is_lektura = is_lektura == 'true'
+        else:
+            is_lektura = None
+        if is_audiobook in ('true', 'false'):
+            is_audiobook = is_audiobook == 'true'
+        books = Book.objects.distinct().order_by('slug')
+        if is_lektura is not None:
+            books = books.filter(has_audience=is_lektura)
+        if is_audiobook is not None:
+            if is_audiobook:
+                books = books.filter(media__type='mp3')
+            else:
+                books = books.exclude(media__type='mp3')
+        for key in request.GET:
+            if key in category_singular:
+                category = category_singular[key]
+                if category in book_tag_categories:
+                    slugs = request.GET[key].split(',')
+                    tags = Tag.objects.filter(category=category, slug__in=slugs)
+                    books = Book.tagged.with_any(tags, books)
+        if (search_string is not None) and len(search_string) < 3:
+            search_string = None
+        if search_string:
+            books_author = books.filter(cached_author__iregex='\m' + search_string)
+            books_title = books.filter(title__iregex='\m' + search_string)
+            books_title = books_title.exclude(id__in=list(books_author.values_list('id', flat=True)))
+            if after and (key_sep in after):
+                which, slug = after.split(key_sep, 1)
+                if which == 'title':
+                    book_lists = [(books_title.filter(slug__gt=slug), 'title')]
+                else:  # which == 'author'
+                    book_lists = [(books_author.filter(slug__gt=slug), 'author'), (books_title, 'title')]
+            else:
+                book_lists = [(books_author, 'author'), (books_title, 'title')]
+        else:
+            if after and key_sep in after:
+                which, slug = after.split(key_sep, 1)
+                books = books.filter(slug__gt=slug)
+            book_lists = [(books, 'book')]
+
+        filtered_books = []
+        for book_list, label in book_lists:
+            book_list = book_list.only('slug', 'title', 'cover', 'cover_thumb')
+            for category in book_tag_categories:
+                book_list = prefetch_relations(book_list, category)
+            remaining_count = count - len(filtered_books)
+            new_books = [BookProxy(book, '%s%s%s' % (label, key_sep, book.slug))
+                         for book in book_list[:remaining_count]]
+            filtered_books += new_books
+            if len(filtered_books) == count:
+                break
+
+        return QuerySetProxy(filtered_books)
 
 
 # add categorized tags fields for Book
@@ -375,7 +499,7 @@ class TagsHandler(BaseHandler, TagDetails):
     """
     allowed_methods = ('GET',)
     model = Tag
-    fields = ['name', 'href', 'url']
+    fields = ['name', 'href', 'url', 'slug']
 
     @piwik_track
     def read(self, request, category=None, pk=None):
@@ -391,11 +515,24 @@ class TagsHandler(BaseHandler, TagDetails):
         except KeyError:
             return rc.NOT_FOUND
 
-        tags = Tag.objects.filter(category=category_sng).exclude(items=None)
-        if tags.exists():
-            return tags
-        else:
-            return rc.NOT_FOUND
+        after = request.GET.get('after')
+        before = request.GET.get('before')
+        count = request.GET.get('count')
+
+        tags = Tag.objects.filter(category=category_sng).exclude(items=None).order_by('slug')
+
+        if after:
+            tags = tags.filter(slug__gt=after)
+        if before:
+            tags = tags.filter(slug__lt=before)
+
+        if count:
+            if before:
+                tags = list(reversed(tags.order_by('-slug')[:count]))
+            else:
+                tags = tags[:count]
+
+        return tags
 
 
 class FragmentDetails(object):

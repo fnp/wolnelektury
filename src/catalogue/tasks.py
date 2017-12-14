@@ -2,14 +2,13 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from datetime import datetime
 from traceback import print_exc
 from celery.task import task
 from celery.utils.log import get_task_logger
 from django.conf import settings
+from django.utils import timezone
 
 from catalogue.utils import gallery_path
-from wolnelektury.utils import localtime_to_utc
 from waiter.models import WaitedFile
 
 task_logger = get_task_logger(__name__)
@@ -18,7 +17,7 @@ task_logger = get_task_logger(__name__)
 # TODO: move to model?
 def touch_tag(tag):
     update_dict = {
-        'changed_at': localtime_to_utc(datetime.now()),
+        'changed_at': timezone.now(),
     }
 
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
