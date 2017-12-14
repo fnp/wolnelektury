@@ -17,6 +17,8 @@ from suggest.forms import PublishingSuggestForm
 import re
 import json
 
+from wolnelektury.utils import re_escape
+
 
 def match_word_re(word):
     if 'sqlite' in settings.DATABASES['default']['ENGINE']:
@@ -29,7 +31,7 @@ query_syntax_chars = re.compile(r"[\\/*:(){}]")
 
 
 def remove_query_syntax_chars(query, replace=' '):
-    return query_syntax_chars.sub(' ', query)
+    return query_syntax_chars.sub(replace, query)
 
 
 def did_you_mean(query, tokens):
@@ -64,7 +66,7 @@ def hint(request):
     if len(prefix) < 2:
         return JsonResponse([], safe=False)
 
-    prefix = remove_query_syntax_chars(prefix)
+    prefix = re_escape(' '.join(remove_query_syntax_chars(prefix).split()))
 
     try:
         limit = int(request.GET.get('max', ''))
@@ -81,7 +83,7 @@ def hint(request):
             'id': author.id,
             'url': author.get_absolute_url(),
         }
-        for author in Tag.objects.filter(category='author', name__iregex='\m' + prefix)[:10]
+        for author in Tag.objects.filter(category='author', name__iregex=u'\m' + prefix)[:10]
     ]
     if len(data) < limit:
         data += [

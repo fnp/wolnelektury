@@ -19,6 +19,7 @@ from picture.models import Picture
 from picture.forms import PictureImportForm
 
 from stats.utils import piwik_track
+from wolnelektury.utils import re_escape
 
 from . import emitters  # Register our emitters
 
@@ -334,6 +335,7 @@ class FilterBooksHandler(AnonymousBooksHandler):
         if (search_string is not None) and len(search_string) < 3:
             search_string = None
         if search_string:
+            search_string = re_escape(search_string)
             books_author = books.filter(cached_author__iregex='\m' + search_string)
             books_title = books.filter(title__iregex='\m' + search_string)
             books_title = books_title.exclude(id__in=list(books_author.values_list('id', flat=True)))

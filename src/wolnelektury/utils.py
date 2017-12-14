@@ -12,6 +12,7 @@ from functools import wraps
 import pytz
 from inspect import getargspec
 
+import re
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template import RequestContext
@@ -149,3 +150,8 @@ class UnicodeCSVWriter(object):
     def writerows(self, rows):
         for row in rows:
             self.writerow(row)
+
+
+# the original re.escape messes with unicode
+def re_escape(s):
+    return re.sub(r"[(){}\[\].*?|^$\\+-]", r"\\\g<0>", s)
