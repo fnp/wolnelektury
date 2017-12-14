@@ -15,7 +15,11 @@
               {% inline_tag_list hit.themes_hit  %}
             {% endif %}
             <a href="{{hit.fragment.get_absolute_url}}">
-              {{hit.snippet|safe}}
+              {% if hit.snippet %}
+                {{hit.snippet|safe}}
+              {% else %}
+                {{hit.fragment.text|truncatewords_html:15|safe}}
+              {% endif %}
             </a>
           </div>
         {% endif %}

@@ -744,7 +744,7 @@ class Search(SolrIndex):
         else:
             query = self.index.query()
         query = self.apply_filters(query, filters).field_limit(score=True, all_fields=True)
-        return [SearchResult(found, how_found='search_words') for found in query.execute()]
+        return [SearchResult(found, how_found='search_words', query_terms=words) for found in query.execute()]
 
     def get_snippets(self, searchresult, query, field='text', num=1):
         """
