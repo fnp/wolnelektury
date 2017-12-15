@@ -7,4 +7,4 @@ from search.forms import SearchForm
 
 
 def search_form(request):
-    return {'search_form': SearchForm(reverse('search.views.hint')+'?max=10', request.GET)}
+    return {'search_form': SearchForm(reverse('search_hint') + '?max=10', request.GET)}

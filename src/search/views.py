@@ -7,11 +7,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators import cache
 from django.http import HttpResponse, JsonResponse
-from django.utils.translation import ugettext as _
 
 from catalogue.utils import split_tags
 from catalogue.models import Book, Tag
-from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from search.index import Search, SearchResult
 from suggest.forms import PublishingSuggestForm
 import re
@@ -76,20 +74,20 @@ def hint(request):
         if limit < 1:
             limit = 20
 
+    authors = Tag.objects.filter(
+        category='author', name__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
     data = [
         {
             'label': author.name,
-            'category': _('author'),
             'id': author.id,
             'url': author.get_absolute_url(),
         }
-        for author in Tag.objects.filter(category='author', name__iregex=u'\m' + prefix)[:limit]
+        for author in authors[:limit]
     ]
     if len(data) < limit:
         data += [
             {
                 'label': '<cite>%s</cite>, %s' % (b.title, b.author_unicode()),
-                'category': _('book'),
                 'id': b.id,
                 'url': b.get_absolute_url()
             }
