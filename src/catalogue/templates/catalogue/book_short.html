@@ -106,20 +106,28 @@
             {% if book.pdf_file %}
               <span><a href="{{ book.pdf_file.url}}">PDF</a></span>
             {% endif %}
-            {% custom_pdf_link_li book %}
             {% if book.epub_file %}
               <span><a href="{{ book.epub_file.url}}">EPUB</a></span>
             {% endif %}
             {% if book.mobi_file %}
               <span><a href="{{ book.mobi_file.url}}">MOBI</a></span>
             {% endif %}
-            {% if  book.fb2_file %}
-              <span><a href="{{ book.fb2_file.url}}">FB2</a></span>
+            {% if book.has_audio %}
+              <span><a href="{% url 'download_zip_mp3' book.slug %}">MP3</a></span>
             {% endif %}
-            {% if  book.txt_file %}
-              <span><a href="{{ book.txt_file.url}}">TXT</a></span>
-            {% endif %}
-            {% download_audio book %}
+            <a class="read-more-show hide" href="#">{% trans "more" %}</a>
+            <span class="read-more-content">
+              {% if  book.fb2_file %}
+                <span><a href="{{ book.fb2_file.url}}">FB2</a></span>
+              {% endif %}
+              {% if  book.txt_file %}
+                <span><a href="{{ book.txt_file.url}}">TXT</a></span>
+              {% endif %}
+              {% download_audio book mp3=False %}
+              <br>
+              {% custom_pdf_link_li book %}
+              <a class="read-more-hide hide" href="#">{% trans "less" %}</a>
+            </span>
           </div>
         </li>
       </ul>

@@ -403,9 +403,9 @@ def related_books(context, instance, limit=6, random=1, taken=0):
 
 
 @register.simple_tag
-def download_audio(book, daisy=True):
+def download_audio(book, daisy=True, mp3=True):
     links = []
-    if book.has_media('mp3'):
+    if mp3 and book.has_media('mp3'):
         links.append("<a href='%s'>%s</a>" % (
             reverse('download_zip_mp3', args=[book.slug]), BookMedia.formats['mp3'].name))
     if book.has_media('ogg'):

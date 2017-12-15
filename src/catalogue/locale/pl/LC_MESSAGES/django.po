@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 16:46+0200\n"
+"POT-Creation-Date: 2017-12-15 10:27+0100\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -157,14 +157,19 @@ msgstr "slug"
 msgid "language code"
 msgstr "Kod języka"
 
-#: models/book.py:56 models/book.py:208 models/collection.py:16
+#: models/book.py:56 models/book.py:224 models/collection.py:16
 #: models/tag.py:61 models/tag.py:183
 msgid "description"
 msgstr "opis"
 
-#: models/book.py:57 models/book.py:58 models/bookmedia.py:36 models/tag.py:68
-#: models/tag.py:69
+#: models/book.py:57 models/bookmedia.py:36 models/tag.py:68 models/tag.py:69
 msgid "creation date"
+msgstr "data utworzenia"
+
+#: models/book.py:58
+#, fuzzy
+#| msgid "creation date"
+msgid "change date"
 msgstr "data utworzenia"
 
 #: models/book.py:59
@@ -179,37 +184,41 @@ msgstr "dodatkowe informacje"
 msgid "print on demand"
 msgstr "druk na żądanie"
 
-#: models/book.py:67
+#: models/book.py:64
+msgid "recommended"
+msgstr "polecane"
+
+#: models/book.py:68
 msgid "cover"
 msgstr "okładka"
 
-#: models/book.py:73
+#: models/book.py:74
 msgid "cover thumbnail"
 msgstr "podgląd okładki"
 
-#: models/book.py:98 models/collection.py:22
+#: models/book.py:102 models/collection.py:22
 msgid "book"
 msgstr "książka"
 
-#: models/book.py:99
+#: models/book.py:103
 msgid "books"
 msgstr "książki"
 
-#: models/book.py:319
+#: models/book.py:362
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: models/book.py:332
+#: models/book.py:375
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: models/book.py:590
+#: models/book.py:633
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: models/book.py:630 models/bookmedia.py:29
+#: models/book.py:680 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -448,36 +457,52 @@ msgstr "Spis treści"
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: templates/catalogue/book_short.html:47
+#: templates/catalogue/book_short.html:50
 #: templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Epoka"
 
-#: templates/catalogue/book_short.html:55
+#: templates/catalogue/book_short.html:58
 #: templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: templates/catalogue/book_short.html:63
+#: templates/catalogue/book_short.html:66
 msgid "Genre"
 msgstr "Gatunek"
 
-#: templates/catalogue/book_short.html:72
+#: templates/catalogue/book_short.html:75
 msgid "Language"
 msgstr "Język"
 
-#: templates/catalogue/book_short.html:91
+#: templates/catalogue/book_short.html:96
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: templates/catalogue/book_short.html:94
+#: templates/catalogue/book_short.html:99
+msgid ""
+"Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
+"upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
+"<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne "
+"bezpłatnie."
+msgstr ""
+
+#: templates/catalogue/book_short.html:99
 msgid "Print on demand –"
 msgstr "Druk na żądanie z"
 
-#: templates/catalogue/book_short.html:99
-#: templates/catalogue/custom_pdf_form.html:19 views.py:630
+#: templates/catalogue/book_short.html:104
+#: templates/catalogue/custom_pdf_form.html:19 views.py:599
 msgid "Download"
 msgstr "Pobierz"
+
+#: templates/catalogue/book_short.html:118
+msgid "more"
+msgstr "więcej"
+
+#: templates/catalogue/book_short.html:129
+msgid "less"
+msgstr "mniej"
 
 #: templates/catalogue/book_text.html:31
 msgid "Table of contents"
@@ -570,7 +595,7 @@ msgstr[2] "oraz %(c)s innych"
 msgid "All collections"
 msgstr "Wszystkie kolekcje"
 
-#: templates/catalogue/custom_pdf_form.html:6 views.py:629
+#: templates/catalogue/custom_pdf_form.html:6 views.py:598
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
@@ -710,46 +735,6 @@ msgstr "Szukaj"
 msgid "Did you mean"
 msgstr "Czy chodziło Ci o"
 
-#: templates/catalogue/search_multiple_hits.html:21
-#: templates/catalogue/tagged_object_list.html:15
-msgid "Authors"
-msgstr "Autorzy"
-
-#: templates/catalogue/search_multiple_hits.html:31
-#: templates/catalogue/tagged_object_list.html:18
-msgid "Kinds"
-msgstr "Rodzaje"
-
-#: templates/catalogue/search_multiple_hits.html:41
-#: templates/catalogue/tagged_object_list.html:17
-msgid "Genres"
-msgstr "Gatunki"
-
-#: templates/catalogue/search_multiple_hits.html:51
-#: templates/catalogue/tagged_object_list.html:16
-msgid "Epochs"
-msgstr "Epoki"
-
-#: templates/catalogue/search_multiple_hits.html:64
-msgid "Results by title"
-msgstr "Znalezione w tytułach"
-
-#: templates/catalogue/search_multiple_hits.html:81
-msgid "Results by authors"
-msgstr "Znalezieni autorzy"
-
-#: templates/catalogue/search_multiple_hits.html:96
-msgid "Results by translators"
-msgstr "Znalezieni tłumacze"
-
-#: templates/catalogue/search_multiple_hits.html:111
-msgid "Results in text"
-msgstr "Znalezione w treści"
-
-#: templates/catalogue/search_multiple_hits.html:128
-msgid "Other results"
-msgstr "Inne wyniki"
-
 #: templates/catalogue/search_no_hits.html:20
 #: templates/catalogue/tagged_object_list.html:85
 msgid "Sorry! Search cirteria did not match any resources."
@@ -814,6 +799,22 @@ msgstr "Zobacz całą kategorię"
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
+#: templates/catalogue/tagged_object_list.html:15
+msgid "Authors"
+msgstr "Autorzy"
+
+#: templates/catalogue/tagged_object_list.html:16
+msgid "Epochs"
+msgstr "Epoki"
+
+#: templates/catalogue/tagged_object_list.html:17
+msgid "Genres"
+msgstr "Gatunki"
+
+#: templates/catalogue/tagged_object_list.html:18
+msgid "Kinds"
+msgstr "Rodzaje"
+
 #: templates/catalogue/tagged_object_list.html:71
 msgid "All matching works"
 msgstr "Wybrane utwory"
@@ -850,7 +851,7 @@ msgstr "w Culture.pl"
 msgid "Loading"
 msgstr "Ładowanie"
 
-#: views.py:595
+#: views.py:564
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -861,14 +862,29 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:597
+#: views.py:566
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: views.py:599
+#: views.py:568
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
+
+#~ msgid "Results by title"
+#~ msgstr "Znalezione w tytułach"
+
+#~ msgid "Results by authors"
+#~ msgstr "Znalezieni autorzy"
+
+#~ msgid "Results by translators"
+#~ msgstr "Znalezieni tłumacze"
+
+#~ msgid "Results in text"
+#~ msgstr "Znalezione w treści"
+
+#~ msgid "Other results"
+#~ msgstr "Inne wyniki"
 
 #~ msgid "Chosen"
 #~ msgstr "Wybrano"

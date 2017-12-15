@@ -195,6 +195,9 @@ class Book(models.Model):
         else:
             return self.media.filter(type=type_).exists()
 
+    def has_audio(self):
+        return self.has_media('mp3')
+
     def get_media(self, type_):
         if self.has_media(type_):
             if type_ in Book.formats:

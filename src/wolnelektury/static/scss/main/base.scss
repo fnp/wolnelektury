@@ -8,9 +8,13 @@ html, body {
   clear: both;
 }
 
+.hide {
+  display: none !important;
+}
+
 /* Basic colors and fonts */
 body {
-  font-family: Georgia;
+  font-family: Georgia, serif;
   background: #f7f7f7;
   color: black;
 
