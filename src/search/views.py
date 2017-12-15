@@ -71,10 +71,10 @@ def hint(request):
     try:
         limit = int(request.GET.get('max', ''))
     except ValueError:
-        limit = -1
+        limit = 20
     else:
         if limit < 1:
-            limit = -1
+            limit = 20
 
     data = [
         {
@@ -83,7 +83,7 @@ def hint(request):
             'id': author.id,
             'url': author.get_absolute_url(),
         }
-        for author in Tag.objects.filter(category='author', name__iregex=u'\m' + prefix)[:10]
+        for author in Tag.objects.filter(category='author', name__iregex=u'\m' + prefix)[:limit]
     ]
     if len(data) < limit:
         data += [
