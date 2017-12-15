@@ -50,8 +50,6 @@ urlpatterns += patterns(
     url(r'^lektury/(?P<slug>[a-zA-Z0-9-]+)/$', 'collection', name='collection'),
     url(r'^audiobooki/$', 'audiobooks', name='audiobook_list'),
     url(r'^daisy/$', 'daisy_list', name='daisy_list'),
-    url(r'^tags/$', 'tags_starting_with', name='hint'),
-    url(r'^jtags/?$', 'json_tags_starting_with', name='jhint'),
     url(r'^nowe/$', ListView.as_view(
         queryset=Book.objects.filter(parent=None).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),

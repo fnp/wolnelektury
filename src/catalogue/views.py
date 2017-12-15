@@ -3,14 +3,13 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import OrderedDict
-import re
 import random
 
 from django.conf import settings
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404, render, redirect
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -19,11 +18,9 @@ from django.utils import translation
 from django.utils.translation import ugettext as _, ugettext_lazy
 
 from ajaxable.utils import AjaxableFormView
-from pdcounter.models import BookStub, Author
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
 from ssify import ssi_included, ssi_expect, SsiVariable as Var
-from suggest.forms import PublishingSuggestForm
 from catalogue import constants
 from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
@@ -308,238 +305,6 @@ def book_text(request, slug):
     if not book.has_html_file():
         raise Http404
     return render_to_response('catalogue/book_text.html', {'book': book}, context_instance=RequestContext(request))
-
-
-# ==========
-# = Search =
-# ==========
-
-def _no_diacritics_regexp(query):
-    """ returns a regexp for searching for a query without diacritics
-
-    should be locale-aware """
-    names = {
-        u'a': u'aąĄ', u'c': u'cćĆ', u'e': u'eęĘ', u'l': u'lłŁ', u'n': u'nńŃ', u'o': u'oóÓ', u's': u'sśŚ',
-        u'z': u'zźżŹŻ',
-        u'ą': u'ąĄ', u'ć': u'ćĆ', u'ę': u'ęĘ', u'ł': u'łŁ', u'ń': u'ńŃ', u'ó': u'óÓ', u'ś': u'śŚ', u'ź': u'źŹ',
-        u'ż': u'żŻ'
-        }
-
-    def repl(m):
-        l = m.group()
-        return u"(?:%s)" % '|'.join(names[l])
-
-    return re.sub(u'[%s]' % (u''.join(names.keys())), repl, query)
-
-
-def unicode_re_escape(query):
-    """ Unicode-friendly version of re.escape """
-    s = list(query)
-    for i, c in enumerate(query):
-        if re.match(r'(?u)(\W)', c) and re.match(r'[\x00-\x7e]', c):
-            if c == "\000":
-                s[i] = "\\000"
-            else:
-                s[i] = "\\" + c
-    return query[:0].join(s)
-
-
-def _word_starts_with(name, prefix):
-    """returns a Q object getting models having `name` contain a word
-    starting with `prefix`
-
-    We define word characters as alphanumeric and underscore, like in JS.
-
-    Works for MySQL, PostgreSQL, Oracle.
-    For SQLite, _sqlite* version is substituted for this.
-    """
-    kwargs = {}
-
-    prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
-    # can't use [[:<:]] (word start),
-    # but we want both `xy` and `(xy` to catch `(xyz)`
-    kwargs['%s__iregex' % name] = u"(^|[^[:alnum:]_])%s" % prefix
-
-    return Q(**kwargs)
-
-
-def _word_starts_with_regexp(prefix):
-    prefix = _no_diacritics_regexp(unicode_re_escape(prefix))
-    return ur"(^|(?<=[^\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ]))%s" % prefix
-
-
-def _sqlite_word_starts_with(name, prefix):
-    """ version of _word_starts_with for SQLite
-
-    SQLite in Django uses Python re module
-    """
-    kwargs = {'%s__iregex' % name: _word_starts_with_regexp(prefix)}
-    return Q(**kwargs)
-
-
-if hasattr(settings, 'DATABASES'):
-    if settings.DATABASES['default']['ENGINE'] == 'django.db.backends.sqlite3':
-        _word_starts_with = _sqlite_word_starts_with
-elif settings.DATABASE_ENGINE == 'sqlite3':
-    _word_starts_with = _sqlite_word_starts_with
-
-
-class App:
-    def __init__(self, name, view):
-        self.name = name
-        self._view = view
-        self.lower = name.lower()
-        self.category = 'application'
-
-    def view(self):
-        return reverse(*self._view)
-
-_apps = (
-    App(u'Leśmianator', (u'lesmianator', )),
-    )
-
-
-def _tags_starting_with(prefix, user=None):
-    prefix = prefix.lower()
-    # PD counter
-    book_stubs = BookStub.objects.filter(_word_starts_with('title', prefix))
-    authors = Author.objects.filter(_word_starts_with('name', prefix))
-
-    books = Book.objects.filter(_word_starts_with('title', prefix))
-    tags = Tag.objects.filter(_word_starts_with('name', prefix))
-    if user and user.is_authenticated():
-        tags = tags.filter(~Q(category='set') | Q(user=user))
-    else:
-        tags = tags.exclude(category='set')
-
-    prefix_regexp = re.compile(_word_starts_with_regexp(prefix))
-    return list(books) + list(tags) + [app for app in _apps if prefix_regexp.search(app.lower)] + list(book_stubs) + \
-        list(authors)
-
-
-def _get_result_link(match, tag_list):
-    if isinstance(match, Tag):
-        return reverse('catalogue.views.tagged_object_list',
-                       kwargs={'tags': '/'.join(tag.url_chunk for tag in tag_list + [match])})
-    elif isinstance(match, App):
-        return match.view()
-    else:
-        return match.get_absolute_url()
-
-
-def _get_result_type(match):
-    if isinstance(match, Book) or isinstance(match, BookStub):
-        match_type = 'book'
-    else:
-        match_type = match.category
-    return match_type
-
-
-def books_starting_with(prefix):
-    prefix = prefix.lower()
-    return Book.objects.filter(_word_starts_with('title', prefix))
-
-
-def find_best_matches(query, user=None):
-    """ Finds a Book, Tag, BookStub or Author best matching a query.
-
-    Returns a with:
-      - zero elements when nothing is found,
-      - one element when a best result is found,
-      - more then one element on multiple exact matches
-
-    Raises a ValueError on too short a query.
-    """
-
-    query = query.lower()
-    if len(query) < 2:
-        raise ValueError("query must have at least two characters")
-
-    result = tuple(_tags_starting_with(query, user))
-    # remove pdcounter stuff
-    book_titles = set(match.pretty_title().lower() for match in result
-                      if isinstance(match, Book))
-    authors = set(match.name.lower() for match in result
-                  if isinstance(match, Tag) and match.category == 'author')
-    result = tuple(res for res in result if not (
-                 (isinstance(res, BookStub) and res.pretty_title().lower() in book_titles) or
-                 (isinstance(res, Author) and res.name.lower() in authors)
-             ))
-
-    exact_matches = tuple(res for res in result if res.name.lower() == query)
-    if exact_matches:
-        return exact_matches
-    else:
-        return tuple(result)[:1]
-
-
-def search(request):
-    tags = request.GET.get('tags', '')
-    prefix = request.GET.get('q', '')
-
-    try:
-        tag_list = Tag.get_tag_list(tags)
-    except (Tag.DoesNotExist, Tag.MultipleObjectsReturned, Tag.UrlDeprecationWarning):
-        tag_list = []
-
-    try:
-        result = find_best_matches(prefix, request.user)
-    except ValueError:
-        return render_to_response(
-            'catalogue/search_too_short.html', {'tags': tag_list, 'prefix': prefix},
-            context_instance=RequestContext(request))
-
-    if len(result) == 1:
-        return HttpResponseRedirect(_get_result_link(result[0], tag_list))
-    elif len(result) > 1:
-        return render_to_response(
-            'catalogue/search_multiple_hits.html',
-            {
-                'tags': tag_list, 'prefix': prefix,
-                'results': ((x, _get_result_link(x, tag_list), _get_result_type(x)) for x in result)
-            },
-            context_instance=RequestContext(request))
-    else:
-        form = PublishingSuggestForm(initial={"books": prefix + ", "})
-        return render_to_response(
-            'catalogue/search_no_hits.html',
-            {'tags': tag_list, 'prefix': prefix, "pubsuggest_form": form},
-            context_instance=RequestContext(request))
-
-
-def tags_starting_with(request):
-    prefix = request.GET.get('q', '')
-    # Prefix must have at least 2 characters
-    if len(prefix) < 2:
-        return HttpResponse('')
-    tags_list = []
-    result = ""
-    for tag in _tags_starting_with(prefix, request.user):
-        if tag.name not in tags_list:
-            result += "\n" + tag.name
-            tags_list.append(tag.name)
-    return HttpResponse(result)
-
-
-def json_tags_starting_with(request, callback=None):
-    # Callback for JSONP
-    prefix = request.GET.get('q', '')
-    callback = request.GET.get('callback', '')
-    # Prefix must have at least 2 characters
-    if len(prefix) < 2:
-        return HttpResponse('')
-    tags_list = []
-    for tag in _tags_starting_with(prefix, request.user):
-        if tag.name not in tags_list:
-            tags_list.append(tag.name)
-    if request.GET.get('mozhint', ''):
-        result = [prefix, tags_list]
-    else:
-        result = {"matches": tags_list}
-    response = JsonResponse(result, safe=False)
-    if callback:
-        response.content = callback + "(" + response.content + ");"
-    return response
 
 
 # =========
