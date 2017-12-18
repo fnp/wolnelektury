@@ -25,7 +25,7 @@ def book_searched(context, result):
     # We don't need hits which lead to sections but do not have
     # snippets.
     hits = filter(lambda (idx, h):
-                  result.snippets[idx] is not None or 'fragment' in h,
+                  result.snippets[idx] is not None or ('fragment' in h and h['themes_hit']),
                   enumerate(result.hits))
     # print "[tmpl: from %d hits selected %d]" % (len(result.hits), len(hits))
 

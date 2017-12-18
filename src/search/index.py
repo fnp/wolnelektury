@@ -670,7 +670,7 @@ class SearchResult(object):
             m.update(f[self.OTHER])
             hits.append(m)
 
-        hits.sort(lambda a, b: cmp(a['score'], b['score']), reverse=True)
+        hits.sort(key=lambda h: h['score'], reverse=True)
 
         self._processed_hits = hits
 
