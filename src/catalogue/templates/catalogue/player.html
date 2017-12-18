@@ -12,7 +12,7 @@
     <title>{% trans "Wolne Lektury" %} ::
         {{ book.title }} - {{ audiobook }}</title>
     <link rel="icon" href="{% static "img/favicon.png" %}" type="image/png" />
-    {% stylesheet "all" %}
+    {% stylesheet 'main' %}
     {% stylesheet "player" %}
   </head>
   <body id="{% block bodyid %}player{% endblock %}">
