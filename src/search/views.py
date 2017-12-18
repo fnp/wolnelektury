@@ -75,7 +75,7 @@ def hint(request):
             limit = 20
 
     authors = Tag.objects.filter(
-        category='author', name__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+        category='author', name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
     data = [
         {
             'label': author.name,
