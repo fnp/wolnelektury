@@ -28,7 +28,7 @@
                     <li data-mp3='{{ mp3 }}'>
                         <div class='play'>{{ title }}
                             <div class='extra-info'>
-                                {% if artist %}Czyta&nbsp;<span class='artist'>{{ artist }}</span>,{% endif %}
+                                {% if artist %}{% block artist_label %}Czyta{% endblock %}&nbsp;<span class='artist'>{{ artist }}</span>,{% endif %}
                                 {% if director %}reż.&nbsp;<span class='director'>{{ director }}</span>{% endif %}
                             </div>
                         </div>
