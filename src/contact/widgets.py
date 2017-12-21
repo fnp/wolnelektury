@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import forms
-from django.forms.util import flatatt
+from django.forms.utils import flatatt
 from django.utils.html import format_html
 
 
