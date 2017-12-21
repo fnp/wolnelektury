@@ -391,6 +391,11 @@ class Book(models.Model):
 
         meta_tags = Tag.tags_from_info(book_info)
 
+        for tag in meta_tags:
+            if not tag.for_books:
+                tag.for_books = True
+                tag.save()
+
         book.tags = set(meta_tags + book_shelves)
 
         cover_changed = old_cover != book.cover_info()

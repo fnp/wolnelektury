@@ -60,6 +60,9 @@ class Tag(TagBase):
         _('category'), max_length=50, blank=False, null=False, db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField(_('description'), blank=True)
 
+    for_books = models.BooleanField(default=False)
+    for_pictures = models.BooleanField(default=False)
+
     user = models.ForeignKey(User, blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     culturepl_link = models.CharField(blank=True, max_length=240)

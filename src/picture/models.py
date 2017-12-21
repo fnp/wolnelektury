@@ -198,6 +198,10 @@ class Picture(models.Model):
             picture.extra_info = picture_xml.picture_info.to_dict()
 
             picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))
+            for tag in picture_tags:
+                if not tag.for_pictures:
+                    tag.for_pictures = True
+                    tag.save()
 
             area_data = {'themes': {}, 'things': {}}
 
@@ -221,16 +225,20 @@ class Picture(models.Model):
                             tag.name = objname
                             setattr(tag, 'name_%s' % lang, tag.name)
                             tag.sort_key = sortify(tag.name)
+                            tag.for_pictures = True
                             tag.save()
-                        # thing_tags.add(tag)
                         area_data['things'][tag.slug] = {
                             'object': objname,
                             'coords': part['coords'],
                             }
 
                         _tags.add(tag)
+                        if not tag.for_pictures:
+                            tag.for_pictures = True
+                            tag.save()
                     area = PictureArea.rectangle(picture, 'thing', part['coords'])
                     area.save()
+                    # WTF thing area does not inherit tags from picture and theme area does, is it intentional?
                     area.tags = _tags
                 else:
                     _tags = set()
@@ -241,9 +249,13 @@ class Picture(models.Model):
                             if created:
                                 tag.name = motif
                                 tag.sort_key = sortify(tag.name)
+                                tag.for_pictures = True
                                 tag.save()
                             # motif_tags.add(tag)
                             _tags.add(tag)
+                            if not tag.for_pictures:
+                                tag.for_pictures = True
+                                tag.save()
                             area_data['themes'][tag.slug] = {
                                 'theme': motif,
                                 'coords': part['coords']
