@@ -14,6 +14,7 @@ import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _, get_language
+from django.utils.deconstruct import deconstructible
 import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
 from ssify import flush_ssi_includes
@@ -30,18 +31,22 @@ from wolnelektury.utils import makedirs
 bofh_storage = BofhFileSystemStorage()
 
 
-def _make_upload_to(path):
-    def _upload_to(i, n):
-        return path % i.slug
-    return _upload_to
+@deconstructible
+class UploadToPath(object):
+    def __init__(self, path):
+        self.path = path
+
+    def __call__(self, instance, filename):
+        return self.path % instance.slug
 
 
-_cover_upload_to = _make_upload_to('book/cover/%s.jpg')
-_cover_thumb_upload_to = _make_upload_to('book/cover_thumb/%s.jpg')
+_cover_upload_to = UploadToPath('book/cover/%s.jpg')
+_cover_thumb_upload_to = UploadToPath('book/cover_thumb/%s.jpg')
+_cover_api_thumb_opload_to = UploadToPath('book/cover_api_thumb/%s.jpg')
 
 
 def _ebook_upload_to(upload_path):
-    return _make_upload_to(upload_path)
+    return UploadToPath(upload_path)
 
 
 class Book(models.Model):
@@ -74,6 +79,11 @@ class Book(models.Model):
         'cover_thumb', _('cover thumbnail'),
         null=True, blank=True,
         upload_to=_cover_thumb_upload_to,
+        max_length=255)
+    cover_api_thumb = EbookField(
+        'cover_api_thumb', _('cover thumbnail for API'),
+        null=True, blank=True,
+        upload_to=_cover_api_thumb_opload_to,
         max_length=255)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
@@ -429,6 +439,7 @@ class Book(models.Model):
         if 'cover' not in dont_build:
             book.cover.build_delay()
             book.cover_thumb.build_delay()
+            book.cover_api_thumb.build_delay()
 
         # Build HTML and ebooks.
         book.html_file.build_delay()
@@ -531,6 +542,7 @@ class Book(models.Model):
             if 'cover' not in app_settings.DONT_BUILD:
                 self.cover.build_delay()
                 self.cover_thumb.build_delay()
+                self.cover_api_thumb.build_delay()
             for format_ in constants.EBOOK_FORMATS_WITH_COVERS:
                 if format_ not in app_settings.DONT_BUILD:
                     getattr(self, '%s_file' % format_).build_delay()
