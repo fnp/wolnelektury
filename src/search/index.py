@@ -271,14 +271,14 @@ class Index(SolrIndex):
         'dramat_wierszowany_lp',
         'dramat_wspolczesny', 'liryka_l', 'liryka_lp',
         'wywiad',
-        ]
+    ]
 
     ignore_content_tags = [
-        'uwaga', 'extra', 'nota_red',
+        'uwaga', 'extra', 'nota_red', 'abstrakt',
         'zastepnik_tekstu', 'sekcja_asterysk', 'separator_linia', 'zastepnik_wersu',
         'didaskalia',
         'naglowek_aktu', 'naglowek_sceny', 'naglowek_czesc',
-        ]
+    ]
 
     footnote_tags = ['pa', 'pt', 'pr', 'pe']
 
