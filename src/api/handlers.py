@@ -301,7 +301,7 @@ class QuerySetProxy(models.QuerySet):
 
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'key', 'cover_source_image']
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'key', 'cover_source_image']
 
     def read(self, request):
         key_sep = '$'
