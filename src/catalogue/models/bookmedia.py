@@ -30,7 +30,7 @@ class BookMedia(models.Model):
 
     type = models.CharField(_('type'), db_index=True, choices=format_choices, max_length=20)
     name = models.CharField(_('name'), max_length=512)
-    part_name = models.CharField(_('part name'), default='', max_length=512)
+    part_name = models.CharField(_('part name'), default='', blank=True, max_length=512)
     index = models.IntegerField(_('index'), default=0)
     file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=OverwriteStorage())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
