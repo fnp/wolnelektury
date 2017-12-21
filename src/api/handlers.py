@@ -523,6 +523,13 @@ class TagsHandler(BaseHandler, TagDetails):
 
         tags = Tag.objects.filter(category=category_sng).exclude(items=None).order_by('slug')
 
+        book_only = request.GET.get('book_only') == 'true'
+        picture_only = request.GET.get('picture_only') == 'true'
+        if book_only:
+            tags = tags.filter(for_books=True)
+        if picture_only:
+            tags = tags.filter(for_pictures=True)
+
         if after:
             tags = tags.filter(slug__gt=after)
         if before:
