@@ -253,6 +253,15 @@ class BuildCoverApiThumb(BuildEbook):
         return WLNoBoxCover(wldoc.book_info, height=500).output_file()
 
 
+@BuildEbook.register('simple_cover')
+@task(ignore_result=True)
+class BuildSimpleCover(BuildEbook):
+    @classmethod
+    def transform(cls, wldoc, fieldfile):
+        from librarian.cover import WLNoBoxCover
+        return WLNoBoxCover(wldoc.book_info, height=1000).output_file()
+
+
 # not used, but needed for migrations
 class OverwritingFieldFile(FieldFile):
     """

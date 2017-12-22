@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import migrations, models
+import catalogue.fields
+import catalogue.models.book
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('catalogue', '0020_book_cover_api_thumb'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='book',
+            name='simple_cover',
+            field=catalogue.fields.EbookField(b'simple_cover', max_length=255, upload_to=catalogue.models.book.UploadToPath(b'book/cover_simple/%s.jpg'), null=True, verbose_name='cover for mobile app', blank=True),
+        ),
+        migrations.AlterField(
+            model_name='book',
+            name='cover_api_thumb',
+            field=catalogue.fields.EbookField(b'cover_api_thumb', max_length=255, upload_to=catalogue.models.book.UploadToPath(b'book/cover_api_thumb/%s.jpg'), null=True, verbose_name='cover thumbnail for mobile app', blank=True),
+        ),
+    ]

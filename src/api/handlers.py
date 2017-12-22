@@ -150,9 +150,8 @@ class BookDetails(object):
         return MEDIA_BASE + book.cover_api_thumb.url if book.cover_api_thumb else ''
 
     @classmethod
-    def cover_source_image(cls, book):
-        url = book.cover_source()
-        return url.rstrip('/') + '/file/'
+    def simple_cover(cls, book):
+        return MEDIA_BASE + book.simple_cover.url if book.simple_cover else ''
 
 
 class BookDetailHandler(BaseHandler, BookDetails):
@@ -162,7 +161,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'fragment_data'] + [
+        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -305,7 +304,7 @@ class QuerySetProxy(models.QuerySet):
 
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key', 'cover_source_image']
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
 
     def read(self, request):
         key_sep = '$'
