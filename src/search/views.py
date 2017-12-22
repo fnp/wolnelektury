@@ -87,7 +87,8 @@ def hint(request):
     if len(data) < limit:
         data += [
             {
-                'label': '<cite>%s</cite>, %s' % (b.title, b.author_unicode()),
+                'label': b.title,
+                'author': b.author_unicode(),
                 'id': b.id,
                 'url': b.get_absolute_url()
             }
