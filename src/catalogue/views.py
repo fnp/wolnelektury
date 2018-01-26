@@ -6,6 +6,7 @@ from collections import OrderedDict
 import random
 
 from django.conf import settings
+from django.http.response import HttpResponseForbidden
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.shortcuts import render_to_response, get_object_or_404, render, redirect
@@ -27,6 +28,7 @@ from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment
 from catalogue.utils import split_tags
 from catalogue.models.tag import prefetch_relations
+from wolnelektury.utils import is_crawler
 
 staff_required = user_passes_test(lambda user: user.is_staff)
 
@@ -221,6 +223,9 @@ def tagged_object_list(request, tags, list_type):
         tags = analyse_tags(request, tags)
     except ResponseInstead as e:
         return e.response
+
+    if is_crawler(request) and len(tags) > 1:
+        return HttpResponseForbidden('address removed from crawling. check robots.txt')
 
     if list_type == 'gallery' and any(tag.category == 'set' for tag in tags):
         raise Http404
