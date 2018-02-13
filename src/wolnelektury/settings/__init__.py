@@ -59,6 +59,7 @@ INSTALLED_APPS_OUR = [
     'libraries',
     'newsletter',
     'contact',
+    'isbn',
 ]
 
 GETPAID_BACKENDS = (
