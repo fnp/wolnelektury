@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block title %}Potwierdź dane{% endblock %}
+
+{% block body %}
+
+  <h1>Potwierdź dane</h1>
+
+  <form method="post" class="submit-form" action="{% url 'save_wl_onix' %}">
+    {% csrf_token %}
+    <table>
+      <tr><th>Formaty</th><td>{{ data.formats|join:", " }}</td></tr>
+      <tr><th>Tytuł</th><td>{{ data.title }}</td></tr>
+      {% if data.part_number %}<tr><th>Numer części</th><td>{{ data.part_number }}</td></tr>{% endif %}
+      {% if data.name %}<tr><th>Nazwa autora</th><td>{{ data.name }}</td></tr>{% endif %}
+      {% if data.corporate_name %}<tr><th>Nazwa instytucji</th><td>{{ data.corporate_name }}</td></tr>{% endif %}
+      <tr><th>Język</th><td>{{ data.language }}</td></tr>
+      <tr><th>Imprint</th><td>{{ data.imprint }}</td></tr>
+      <tr><th>Data publikacji</th><td>{{ form.publishing_date.value }}</td></tr>
+      {{ form.as_table }}
+      <tr><td></td><td><button type="submit">Zatwierdź</button></td></tr>
+    </table>
+  </form>
+
+{% endblock %}

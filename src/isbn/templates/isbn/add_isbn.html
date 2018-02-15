@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}Dodaj ISBN{% endblock %}
+
+{% block body %}
+
+  <h1>Dodaj ISBN</h1>
+
+  <form method="post" class="submit-form" action="{{ next_view }}">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+      <tr><td></td><td><button type="submit">Wyślij</button></td></tr>
+    </table>
+  </form>
+
+{% endblock %}

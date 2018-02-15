@@ -4,8 +4,9 @@ from lxml import etree
 from django.core.management.base import BaseCommand
 
 from isbn.models import ISBNPool, ONIXRecord
+from librarian import XMLNamespace
 
-ONIXNS = '{http://ns.editeur.org/onix/3.0/reference}'
+ONIXNS = XMLNamespace('http://ns.editeur.org/onix/3.0/reference')
 
 DIRECT_FIELDS = {
     'product_form': 'ProductForm',
@@ -18,7 +19,7 @@ DIRECT_FIELDS = {
     'imprint': 'ImprintName',
 }
 
-UNNAMED = u'Autor nieznany'
+UNKNOWN = u'Autor nieznany'
 
 
 def parse_date(date_str):
@@ -31,7 +32,7 @@ def parse_date(date_str):
 def get_descendants(element, tags):
     if isinstance(tags, basestring):
         tags = [tags]
-    return element.findall('.//' + '/'.join(ONIXNS + tag for tag in tags))
+    return element.findall('.//' + '/'.join(ONIXNS(tag) for tag in tags))
 
 
 def get_field(element, tags, allow_multiple=False):
@@ -80,7 +81,7 @@ class Command(BaseCommand):
         for key, value in data.iteritems():
             if value:
                 contributor_data[key] = value
-        if contributor_data.get('name') == UNNAMED:
+        if contributor_data.get('name') == UNKNOWN:
             del contributor_data['name']
             contributor_data['unnamed'] = '01'
         for date_elem in get_descendants(contributor, 'ContributorDate'):

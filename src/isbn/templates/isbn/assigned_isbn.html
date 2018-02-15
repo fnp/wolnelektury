@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+{% block title %}Przypisane ISBN{% endblock %}
+
+{% block body %}
+
+  <h1>Przypisane ISBN</h1>
+  <h2>{{ title }}</h2>
+  <dl>
+    {% for format, isbn in isbn_formats %}
+      <dt>{{ format }}</dt><dd>{{ isbn }}</dd>
+    {% endfor %}
+  </dl>
+{% endblock %}
