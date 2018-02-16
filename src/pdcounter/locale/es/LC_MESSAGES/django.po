@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2018-02-16 16:17+0100\n"
 "PO-Revision-Date: 2012-05-17 22:05+0100\n"
 "Last-Translator: KG <kamila.gawron87@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,11 +79,14 @@ msgid "Read article about this author on Wikipedia"
 msgstr "Lea el artículo sobre este autor en Wikipedia"
 
 #: templates/pdcounter/author_detail.html:40
+#: templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr "Las obras de este autor tienen todos los derechos de autor reservados."
 
 #: templates/pdcounter/author_detail.html:41
 #: templates/pdcounter/author_detail.html:53
+#: templates/pdcounter/pd_author_box.html:10
+#: templates/pdcounter/pd_author_box.html:21
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -93,6 +96,7 @@ msgstr ""
 "autor."
 
 #: templates/pdcounter/author_detail.html:45
+#: templates/pdcounter/pd_author_box.html:14
 #, fuzzy
 msgid ""
 "This author's works are in public domain and will be published on Internet "
@@ -138,6 +142,18 @@ msgstr ""
 #: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Esta obra tiene todos los derechos de autor reservados."
+
+#: templates/pdcounter/pd_author_box.html:18
+#, fuzzy
+#| msgid ""
+#| "This author's works will become part of public domain and will be allowed "
+#| "to be published without restrictions in"
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in the year"
+msgstr ""
+"Las obras de este autor van a ser parte de dominio público y pronto serán "
+"publicadas sin restricciones en"
 
 #~ msgid "year of translator's death"
 #~ msgstr "año de la muerte del traductor"

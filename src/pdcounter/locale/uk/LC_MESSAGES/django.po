@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2018-02-16 16:17+0100\n"
 "PO-Revision-Date: 2012-05-28 14:18+0100\n"
 "Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,11 +78,14 @@ msgid "Read article about this author on Wikipedia"
 msgstr "Прочитати статтю про автора у Вікіпедії"
 
 #: templates/pdcounter/author_detail.html:40
+#: templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr "Твори цього автора охороняються авторським правом."
 
 #: templates/pdcounter/author_detail.html:41
 #: templates/pdcounter/author_detail.html:53
+#: templates/pdcounter/pd_author_box.html:10
+#: templates/pdcounter/pd_author_box.html:21
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -92,6 +95,7 @@ msgstr ""
 "опублікувати творів цього автора."
 
 #: templates/pdcounter/author_detail.html:45
+#: templates/pdcounter/pd_author_box.html:14
 #, fuzzy
 msgid ""
 "This author's works are in public domain and will be published on Internet "
@@ -138,6 +142,18 @@ msgstr ""
 #: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Цей твір охороняється авторським правом."
+
+#: templates/pdcounter/pd_author_box.html:18
+#, fuzzy
+#| msgid ""
+#| "This author's works will become part of public domain and will be allowed "
+#| "to be published without restrictions in"
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in the year"
+msgstr ""
+"Твори цього автора стануть частиною суспільного надбання і можна буде їх "
+"вільно публікувати у"
 
 #~ msgid "year of translator's death"
 #~ msgstr "рік смерті перекладача"

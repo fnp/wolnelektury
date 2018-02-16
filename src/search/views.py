@@ -3,13 +3,14 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators import cache
 from django.http import HttpResponse, JsonResponse
 
-from catalogue.utils import split_tags
 from catalogue.models import Book, Tag
+from pdcounter.models import Author
 from search.index import Search, SearchResult
 from suggest.forms import PublishingSuggestForm
 import re
@@ -126,8 +127,11 @@ def main(request):
 
     search = Search()
 
-    tags = search.hint_tags(query, pdcounter=True, prefix=False)
-    tags = split_tags(tags)
+    pd_authors = Author.objects.filter(name__icontains=query)
+    existing_slugs = Tag.objects.filter(
+        category='author', slug__in=list(pd_authors.values_list('slug', flat=True)))\
+        .values_list('slug', flat=True)
+    pd_authors = pd_authors.exclude(slug__in=existing_slugs)
 
     results_parts = []
 
@@ -166,23 +170,23 @@ def main(request):
 
     results = filter(ensure_exists, results)
 
-    if not results:
+    if not results and not pd_authors:
         form = PublishingSuggestForm(initial={"books": query + ", "})
         return render_to_response(
             'catalogue/search_no_hits.html',
             {
-                'tags': tags,
-                'prefix': query,
                 'form': form,
                 'did_you_mean': suggestion
             },
             context_instance=RequestContext(request))
 
+    if not results and len(pd_authors) == 1:
+        return HttpResponseRedirect(pd_authors[0].get_absolute_url())
+
     return render_to_response(
         'catalogue/search_multiple_hits.html',
         {
-            'tags': tags['author'] + tags['kind'] + tags['genre'] + tags['epoch'] + tags['theme'],
-            'prefix': query,
+            'pd_authors': pd_authors,
             'results': results,
             'did_you_mean': suggestion
         },

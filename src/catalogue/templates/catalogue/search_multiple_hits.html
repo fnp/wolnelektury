@@ -14,13 +14,13 @@
     <span class="did_you_mean">{% trans "Did you mean" %}
       <a href="{% url 'search' %}?q={{did_you_mean|urlencode}}">{{did_you_mean|lower}}</a>?</span>
   {% endif %}
-  <div class="inline-tag-lists top-tag-list">
-    {% if tags %}
+  <div class="top-tag-list">
+    {% if pd_authors %}
       <div>
-        {% for tag in tags %}
-          <a class="tag-box" href="{{ tag.get_absolute_url }}">
-            {% include "catalogue/tag_box.html" %}
-          </a>
+        {% for author in pd_authors %}
+          <div class="tag-box">
+            {% include "pdcounter/pd_author_box.html" %}
+          </div>
         {% endfor %}
       </div>
     {% endif %}

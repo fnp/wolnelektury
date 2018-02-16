@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2018-02-16 16:17+0100\n"
 "PO-Revision-Date: 2012-02-22 20:58+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,17 +78,21 @@ msgid "Read article about this author on Wikipedia"
 msgstr ""
 
 #: templates/pdcounter/author_detail.html:40
+#: templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr ""
 
 #: templates/pdcounter/author_detail.html:41
 #: templates/pdcounter/author_detail.html:53
+#: templates/pdcounter/pd_author_box.html:10
+#: templates/pdcounter/pd_author_box.html:21
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
 msgstr ""
 
 #: templates/pdcounter/author_detail.html:45
+#: templates/pdcounter/pd_author_box.html:14
 msgid ""
 "This author's works are in public domain and will be published on Internet "
 "library of Wolne Lektury soon."
@@ -121,6 +125,12 @@ msgstr ""
 
 #: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
+msgstr ""
+
+#: templates/pdcounter/pd_author_box.html:18
+msgid ""
+"This author's works will become part of public domain and will be allowed to "
+"be published without restrictions in the year"
 msgstr ""
 
 #~ msgid "year of translator's death"
