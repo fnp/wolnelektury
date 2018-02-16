@@ -36,15 +36,6 @@ class Search(Mock):
             results.append(res)
         return results
 
-    # WTF
-    def search_books(self, query, filters=None, max_results=10):
-        return self._find_some_books(max_results=max_results)
-
     def search_everywhere(self, searched, query_terms=None):
         return []
 
-    def hint_tags(self, query, pdcounter=True, prefix=True):
-        return Tag.objects.exclude(category='set').order_by('?')[:randint(1, 10)]
-
-    def hint_books(self, prefix):
-        return Book.objects.order_by('?')[:randint(1, 10)]

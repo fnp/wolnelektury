@@ -30,17 +30,6 @@ class BookSearchTests(WLTestCase):
         self.do_anusie = Book.from_xml_file(
             get_fixture('fraszka-do-anusie.xml', catalogue))
 
-    def test_search_perfect_book_author(self):
-        books = self.search.search_books(self.search.index.query(authors=u"sęp szarzyński"))
-        assert len(books) == 1
-        assert books[0].id == self.do_anusie.id
-
-        # here we lack slop functionality as well
-    def test_search_perfect_book_title(self):
-        books = self.search.search_books(self.search.index.query(title=u"fraszka do anusie"))
-        assert len(books) == 1
-        assert books[0].id == self.do_anusie.id
-
     # TODO: Add slop option to sunburnt
     # def test_search_perfect_parts(self):
     #     books = self.search.search_phrase(u"Jakoż hamować")
