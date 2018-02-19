@@ -573,10 +573,9 @@ class SearchResult(object):
 
     def merge(self, other):
         if self.book_id != other.book_id:
-            raise ValueError("this search result is or book %d; tried to merge with %d" % (self.book_id, other.book_id))
+            raise ValueError("this search result is for book %d; tried to merge with %d" % (self.book_id, other.book_id))
         self._hits += other._hits
-        if other.score > self.score:
-            self._score = other._score
+        self._score += max(other._score, 0) + 0.5
         return self
 
     def get_book(self):
