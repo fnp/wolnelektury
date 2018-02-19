@@ -20,6 +20,13 @@ from wolnelektury.utils import makedirs
 
 log = logging.getLogger('search')
 
+if os.path.isfile(settings.SOLR_STOPWORDS):
+    stopwords = set(
+        line.decode('utf-8').strip()
+        for line in open(settings.SOLR_STOPWORDS) if not line.startswith('#'))
+else:
+    stopwords = set()
+
 
 class SolrIndex(object):
     def __init__(self, mode=None):
@@ -731,14 +738,17 @@ class Search(SolrIndex):
     def search_words(self, words, fields, book=True):
         filters = []
         for word in words:
-            word_filter = None
-            for field in fields:
-                q = self.index.Q(**{field: word})
-                if word_filter is None:
-                    word_filter = q
-                else:
-                    word_filter |= q
-            filters.append(word_filter)
+            if word not in stopwords:
+                word_filter = None
+                for field in fields:
+                    q = self.index.Q(**{field: word})
+                    if word_filter is None:
+                        word_filter = q
+                    else:
+                        word_filter |= q
+                filters.append(word_filter)
+        if not filters:
+            return []
         if book:
             query = self.index.query(is_book=True)
         else:
