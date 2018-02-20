@@ -142,8 +142,8 @@ def main(request):
         (['metadata'], True),
         (['text', 'themes_pl'], False),
     )
-    for fieldset, is_book in fieldsets:
-        search_fields += fieldset
+    for fields, is_book in fieldsets:
+        search_fields += fields
         results_parts.append(search.search_words(words, search_fields, book=is_book))
 
     results = []
@@ -156,6 +156,10 @@ def main(request):
             else:
                 results.append(result)
                 ids_results[book_id] = result
+
+    descendant_ids = set(
+        Book.objects.filter(id__in=ids_results, ancestor__in=ids_results).values_list('id', flat=True))
+    results = [result for result in results if result.book_id not in descendant_ids]
 
     for result in results:
         search.get_snippets(result, query, num=3)

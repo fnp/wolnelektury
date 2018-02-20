@@ -558,6 +558,17 @@ class SearchResult(object):
 
             self._hits.append(hit)
 
+    @classmethod
+    def from_book(cls, book, how_found=None, query_terms=None):
+        doc = {
+            'score': book.popularity.count,
+            'book_id': book.id,
+            'published_date': 0,
+        }
+        result = cls(doc, how_found=how_found, query_terms=query_terms)
+        result._book = book
+        return result
+
     def __unicode__(self):
         return u"<SR id=%d %d(%d) hits score=%f %d snippets>" % \
             (self.book_id, len(self._hits),
@@ -575,7 +586,7 @@ class SearchResult(object):
         if self.book_id != other.book_id:
             raise ValueError("this search result is for book %d; tried to merge with %d" % (self.book_id, other.book_id))
         self._hits += other._hits
-        self._score += max(other._score, 0) + 0.5
+        self._score += max(other._score, 0)
         return self
 
     def get_book(self):
@@ -734,10 +745,19 @@ class Search(SolrIndex):
 
         return q
 
+    def search_by_author(self, words):
+        from catalogue.models import Book
+        books = Book.objects.filter(parent=None).order_by('-popularity__count')
+        for word in words:
+            books = books.filter(cached_author__iregex='\m%s\M' % word).select_related('popularity__count')
+        return [SearchResult.from_book(book, how_found='search_by_author', query_terms=words) for book in books[:30]]
+
     def search_words(self, words, fields, book=True):
+        if book and fields == ['authors']:
+            return self.search_by_author(words)
         filters = []
         for word in words:
-            if word not in stopwords:
+            if book or (word not in stopwords):
                 word_filter = None
                 for field in fields:
                     q = self.index.Q(**{field: word})

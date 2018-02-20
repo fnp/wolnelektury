@@ -134,7 +134,7 @@
    <field name="is_book" type="boolean" stored="false" indexed="true"/>
    <field name="authors" type="text_general" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true"/>
    <field name="translators" type="text_general" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
-   <field name="title" type="text_pl" stored="false" indexed="true"/>
+   <field name="title" type="text_pl_nonstop" stored="false" indexed="true"/>
    <field name="title_orig" type="lowercase" stored="false" indexed="true"/>
 <!--   <field name="published_date" type="tdate" stored="false" indexed="true"/>-->
    <field name="published_date" type="string" stored="true" indexed="true"/>
@@ -143,10 +143,10 @@
    <field name="kinds" type="lowercase" stored="false" indexed="false" multiValued="true" />
    <field name="genres" type="lowercase" stored="false" indexed="false" multiValued="true" />
 
-   <field name="metadata" type="text_pl" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
+   <field name="metadata" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
 
    <field name="themes" type="lowercase" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
-   <field name="themes_pl" type="text_pl" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
+   <field name="themes_pl" type="text_pl_nonstop" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
    <field name="header_index" type="int" stored="true" indexed="true"/>
    <field name="header_span" type="int" stored="true" indexed="true"/>
    <field name="header_type" type="lowercase" stored="true" indexed="false"/>
@@ -159,7 +159,7 @@
 
    <field name="tag_id" type="int" stored="true" indexed="true"/>
    <field name="tag_name" type="lowercase" stored="true" indexed="true" />
-   <field name="tag_name_pl" type="text_pl" stored="false" indexed="true" multiValued="true"/>
+   <field name="tag_name_pl" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true"/>
    <field name="tag_category" type="string" stored="true" indexed="true" />
    <field name="is_pdcounter" type="boolean" stored="true" indexed="true" />
 
@@ -1073,13 +1073,23 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pl.txt" format="snowball" enablePositionIncrements="true"/>
-	<filter class="solr.MorfologikFilterFactory" dictionary="MORFOLOGIK" />
+        <filter class="solr.MorfologikFilterFactory" dictionary="MORFOLOGIK" />
         <!-- less aggressive: <filter class="solr.PortugueseMinimalStemFilterFactory"/> -->
         <!-- more aggressive: <filter class="solr.SnowballPorterFilterFactory" language="Portuguese"/> -->
         <!-- most aggressive: <filter class="solr.PortugueseStemFilterFactory"/> -->
       </analyzer>
     </fieldType>
-    
+
+    <fieldType name="text_pl_nonstop" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.MorfologikFilterFactory" dictionary="MORFOLOGIK" />
+        <!-- less aggressive: <filter class="solr.PortugueseMinimalStemFilterFactory"/> -->
+        <!-- more aggressive: <filter class="solr.SnowballPorterFilterFactory" language="Portuguese"/> -->
+        <!-- most aggressive: <filter class="solr.PortugueseStemFilterFactory"/> -->
+      </analyzer>
+    </fieldType>
     
     <!-- Portuguese -->
     <fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
