@@ -304,7 +304,6 @@ class Index(SolrIndex):
             book_info = dcparser.parse(open(book.xml_file.path))
 
         fields['slug'] = book.slug
-        fields['tags'] = [t.name for t in book.tags]
         fields['is_book'] = True
 
         # validator, name

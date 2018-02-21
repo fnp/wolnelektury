@@ -129,13 +129,11 @@
 
    <field name="book_id" type="int" indexed="true" stored="true" />
    <field name="parent_id" type="int" indexed="false" stored="true" />
-   <field name="slug" type="text_general" stored="false" indexed="true" omitNorms="true"/> <!-- no norms -->
-   <field name="tags" type="lowercase" stored="false" indexed="true" multiValued="true"/>
+   <field name="slug" type="lowercase" stored="false" indexed="true" omitNorms="true"/> <!-- no norms -->
    <field name="is_book" type="boolean" stored="false" indexed="true"/>
-   <field name="authors" type="text_general" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true"/>
-   <field name="translators" type="text_general" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
+   <field name="authors" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true"/>
+   <field name="translators" type="text_pl_nonstop" stored="false" indexed="false" multiValued="true" />
    <field name="title" type="text_pl_nonstop" stored="false" indexed="true"/>
-   <field name="title_orig" type="lowercase" stored="false" indexed="true"/>
 <!--   <field name="published_date" type="tdate" stored="false" indexed="true"/>-->
    <field name="published_date" type="string" stored="true" indexed="true"/>
 
@@ -272,7 +270,6 @@
 
   <copyField source="themes" dest="themes_pl"/>
   <copyField source="tag_name" dest="tag_name_pl"/>
-  <copyField source="title" dest="title_orig"/>
 
   <copyField source="translators" dest="metadata"/>
   <copyField source="epochs" dest="metadata"/>
