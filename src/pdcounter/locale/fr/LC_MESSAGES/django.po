@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-16 16:17+0100\n"
+"POT-Creation-Date: 2018-02-21 13:28+0100\n"
 "PO-Revision-Date: 2012-02-22 20:58+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,8 +94,8 @@ msgstr ""
 #: templates/pdcounter/author_detail.html:45
 #: templates/pdcounter/pd_author_box.html:14
 msgid ""
-"This author's works are in public domain and will be published on Internet "
-"library of Wolne Lektury soon."
+"This author's works are in public domain, but they were not yet published on "
+"Internet library of Wolne Lektury."
 msgstr ""
 
 #: templates/pdcounter/author_detail.html:49
