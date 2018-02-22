@@ -38,8 +38,10 @@ class Command(BaseCommand):
                     if should_be != is_now:
                         if verbose:
                             print "ERROR! Wrong children for book:", book.slug
-                            print "Is:       ", is_now
-                            print "Should be:", should_be
+                            # print "Is:       ", is_now
+                            # print "Should be:", should_be
+                            from difflib import ndiff
+                            print '\n'.join(ndiff(is_now, should_be))
                             print "To resolve: republish parent book."
                             print
 
