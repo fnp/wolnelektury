@@ -37,7 +37,7 @@ class BookAdmin(TaggableModelAdmin):
     def change_view(self, request, object_id, extra_context=None):
         if 'advanced' not in request.GET:
             self.form = forms.ModelForm
-            self.fields = ('title', 'description', 'gazeta_link', 'wiki_link', 'recommended')
+            self.fields = ('title', 'description', 'wiki_link', 'recommended')
             self.readonly_fields = ('title',)
         else:
             self.form = TaggableModelForm

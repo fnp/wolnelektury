@@ -23,7 +23,6 @@ class Command(BaseCommand):
             (
                 Book,
                 [
-                    ('gazeta_link', lambda b: b.gazeta_link),
                     ('wiki_link', lambda b: b.wiki_link),
                     ('źródło', lambda b: b.extra_info.get('source_url')),
                 ],
@@ -32,7 +31,6 @@ class Command(BaseCommand):
             (
                 Picture,
                 [
-                    ('gazeta_link', lambda p: p.culturepl_link),
                     ('wiki_link', lambda p: p.wiki_link),
                     ('źródło', lambda p: p.extra_info.get('source_url')),
                 ],

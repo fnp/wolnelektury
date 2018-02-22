@@ -66,11 +66,6 @@
       {% trans "Book on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a>
     </div>
   {% endif %}
-  {% if book.gazeta_link %}
-    <div class="white-box">
-      <a href="{{ book.gazeta_link }}">{% trans "Book description on Lektury.Gazeta.pl" %}</a>
-    </div>
-  {% endif %}
   {% if book.wiki_link %}
     <div class="white-box">
       <a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a>

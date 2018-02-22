@@ -69,14 +69,6 @@
         {% if picture.info.about and not hide_about %}
           <li><a href="{{ picture.info.about }}">{% trans "Image on the Editor's Platform" %}</a></li>
         {% endif %}
-        {% comment %}
-        {% if book.gazeta_link %}
-          <li><a href="{{ book.gazeta_link }}">{% trans "Picture description on Lektury.Gazeta.pl" %}</a></li>
-        {% endif %}
-        {% if book.wiki_link %}
-          <li><a href="{{ book.wiki_link }}">{% trans "Book description on Wikipedia" %}</a></li>
-        {% endif %}
-        {% endcomment %}
       </ul>
       <p><a href="{{ picture.xml_file.url }}">{% trans "View XML source" %}</a></p>
     </div>
