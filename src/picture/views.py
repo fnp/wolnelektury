@@ -141,10 +141,7 @@ def picture_short(request, pk):
 
     return render(request, 'picture/picture_short.html', {
         'picture': picture,
-        'main_link': picture.get_absolute_url(),
-        'request': request,
-        'tags': split_tags(picture.tags),
-        })
+    })
 
 
 @ssi_included

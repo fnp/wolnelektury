@@ -14,6 +14,7 @@ from fnpdjango.utils.text.slughifi import slughifi
 from ssify import flush_ssi_includes
 
 from catalogue.models.tag import prefetched_relations
+from catalogue.utils import split_tags
 from picture import tasks
 from StringIO import StringIO
 import jsonfield
@@ -138,6 +139,9 @@ class Picture(models.Model):
 
     def author_unicode(self):
         return self.tag_unicode('author')
+
+    def tags_by_category(self):
+        return split_tags(self.tags)
 
     @permalink
     def get_absolute_url(self):
