@@ -94,6 +94,31 @@
 }
 
 
+.search-result {
+    @media screen and (min-width: 62.5em) {
+        .picture-left-column {
+            display: inline-block;
+            @include size(width, 800px);
+        }
+        .picture-right-column {
+            display: inline-block;
+            @include size(padding-top, 15px);
+            @include size(width, 150px);
+        }
+    }
+
+    .area-hit {
+        @include size(font-size, 16px);
+        @include size(margin, 13px 0);
+        @include size(padding-left, 20px);
+        @include size(padding-right, 20px);
+        @include size(padding-top, 1px);
+        @include size(padding-bottom, 20px);
+        background: #f7f7f7;
+    }
+}
+
+
 .search-hint-label {
     display: inline-block;
     @include size(font-size, 16px);

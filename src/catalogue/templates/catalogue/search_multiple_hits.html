@@ -27,14 +27,34 @@
   </div>
 
   <div>
-    <ul class="work-list">
-      {% for result in results %}
-        <li class="Book-item">
-          <div class="search-result">
-            {% book_searched result %}
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
+    {% if books %}
+      <ul class="work-list">
+        {% if pictures %}
+          <h1>{% trans "Books" %}</h1>
+        {% endif %}
+        {% for result in books %}
+          <li class="Book-item">
+            <div class="search-result">
+              {% book_searched result %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if pictures %}
+      <h1>{% trans "Pictures" %}</h1>
+      <ul class="work-list">
+        {% for result in pictures %}
+          <li class="Picture-item">
+            <div class="search-result">
+              {% with result.picture as picture %}
+                {% include "picture/picture_searched.html" %}
+              {% endwith %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 {% endblock %}

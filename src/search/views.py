@@ -11,7 +11,8 @@ from django.http import HttpResponse, JsonResponse
 
 from catalogue.models import Book, Tag
 from pdcounter.models import Author
-from search.index import Search, SearchResult
+from picture.models import Picture
+from search.index import Search, SearchResult, PictureResult
 from suggest.forms import PublishingSuggestForm
 import re
 import json
@@ -106,11 +107,6 @@ def hint(request):
 @cache.never_cache
 def main(request):
     query = request.GET.get('q', '')
-    query = ' '.join(query.split())
-    # filter out private use characters
-    import unicodedata
-    query = ''.join(ch for ch in query if unicodedata.category(ch) != 'Co')
-
     if len(query) < 2:
         return render_to_response(
             'catalogue/search_too_short.html', {'prefix': query},
@@ -119,23 +115,41 @@ def main(request):
         return render_to_response(
             'catalogue/search_too_long.html', {'prefix': query}, context_instance=RequestContext(request))
 
-    query = remove_query_syntax_chars(query)
+    query = prepare_query(query)
+    pd_authors = search_pd_authors(query)
+    books = search_books(query)
+    pictures = search_pictures(query)
+    suggestion = u''
 
-    words = query.split()
-    if len(words) > 10:
-        query = ' '.join(words[:10])
+    if not (books or pictures or pd_authors):
+        form = PublishingSuggestForm(initial={"books": query + ", "})
+        return render_to_response(
+            'catalogue/search_no_hits.html',
+            {
+                'form': form,
+                'did_you_mean': suggestion
+            },
+            context_instance=RequestContext(request))
 
+    if not (books or pictures) and len(pd_authors) == 1:
+        return HttpResponseRedirect(pd_authors[0].get_absolute_url())
+
+    return render_to_response(
+        'catalogue/search_multiple_hits.html',
+        {
+            'pd_authors': pd_authors,
+            'books': books,
+            'pictures': pictures,
+            'did_you_mean': suggestion
+        },
+        context_instance=RequestContext(request))
+
+
+def search_books(query):
     search = Search()
-
-    pd_authors = Author.objects.filter(name__icontains=query)
-    existing_slugs = Tag.objects.filter(
-        category='author', slug__in=list(pd_authors.values_list('slug', flat=True)))\
-        .values_list('slug', flat=True)
-    pd_authors = pd_authors.exclude(slug__in=existing_slugs)
-
     results_parts = []
-
     search_fields = []
+    words = query.split()
     fieldsets = (
         (['authors'], True),
         (['title'], True),
@@ -144,8 +158,7 @@ def main(request):
     )
     for fields, is_book in fieldsets:
         search_fields += fields
-        results_parts.append(search.search_words(words, search_fields, book=is_book))
-
+        results_parts.append(search.search_words(words, search_fields, required=fields, book=is_book))
     results = []
     ids_results = {}
     for results_part in results_parts:
@@ -156,15 +169,11 @@ def main(request):
             else:
                 results.append(result)
                 ids_results[book_id] = result
-
     descendant_ids = set(
         Book.objects.filter(id__in=ids_results, ancestor__in=ids_results).values_list('id', flat=True))
     results = [result for result in results if result.book_id not in descendant_ids]
-
     for result in results:
         search.get_snippets(result, query, num=3)
-
-    suggestion = u''
 
     def ensure_exists(r):
         try:
@@ -173,25 +182,61 @@ def main(request):
             return False
 
     results = filter(ensure_exists, results)
+    return results
 
-    if not results and not pd_authors:
-        form = PublishingSuggestForm(initial={"books": query + ", "})
-        return render_to_response(
-            'catalogue/search_no_hits.html',
-            {
-                'form': form,
-                'did_you_mean': suggestion
-            },
-            context_instance=RequestContext(request))
 
-    if not results and len(pd_authors) == 1:
-        return HttpResponseRedirect(pd_authors[0].get_absolute_url())
+def search_pictures(query):
+    search = Search()
+    results_parts = []
+    search_fields = []
+    words = query.split()
+    fieldsets = (
+        (['authors'], True),
+        (['title'], True),
+        (['metadata'], True),
+        (['themes_pl'], False),
+    )
+    for fields, is_book in fieldsets:
+        search_fields += fields
+        results_parts.append(search.search_words(words, search_fields, required=fields, book=is_book, picture=True))
+    results = []
+    ids_results = {}
+    for results_part in results_parts:
+        for result in sorted(PictureResult.aggregate(results_part), reverse=True):
+            picture_id = result.picture_id
+            if picture_id in ids_results:
+                ids_results[picture_id].merge(result)
+            else:
+                results.append(result)
+                ids_results[picture_id] = result
 
-    return render_to_response(
-        'catalogue/search_multiple_hits.html',
-        {
-            'pd_authors': pd_authors,
-            'results': results,
-            'did_you_mean': suggestion
-        },
-        context_instance=RequestContext(request))
+    def ensure_exists(r):
+        try:
+            return r.picture
+        except Picture.DoesNotExist:
+            return False
+
+    results = filter(ensure_exists, results)
+    return results
+
+
+def search_pd_authors(query):
+    pd_authors = Author.objects.filter(name__icontains=query)
+    existing_slugs = Tag.objects.filter(
+        category='author', slug__in=list(pd_authors.values_list('slug', flat=True))) \
+        .values_list('slug', flat=True)
+    pd_authors = pd_authors.exclude(slug__in=existing_slugs)
+    return pd_authors
+
+
+def prepare_query(query):
+    query = ' '.join(query.split())
+    # filter out private use characters
+    import unicodedata
+    query = ''.join(ch for ch in query if unicodedata.category(ch) != 'Co')
+    query = remove_query_syntax_chars(query)
+
+    words = query.split()
+    if len(words) > 10:
+        query = ' '.join(words[:10])
+    return query

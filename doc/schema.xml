@@ -155,6 +155,9 @@
    <field name="snippets_revision" type="int" stored="true" indexed="false"/>
    <field name="fragment_anchor" type="string" stored="true" indexed="false"/>
 
+   <field name="picture_id" type="int" indexed="true" stored="true" />
+   <field name="area_id" type="int" stored="true" indexed="false"/>
+
    <field name="tag_id" type="int" stored="true" indexed="true"/>
    <field name="tag_name" type="lowercase" stored="true" indexed="true" />
    <field name="tag_name_pl" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true"/>

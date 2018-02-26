@@ -10,6 +10,7 @@ from librarian import dcparser
 from librarian.parser import WLDocument
 from lxml import etree
 import catalogue.models
+import picture.models
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from itertools import chain
 import sunburnt
@@ -514,6 +515,47 @@ class Index(SolrIndex):
         finally:
             snippets.close()
 
+    def remove_picture(self, picture_or_id):
+        """Removes a picture from search index."""
+        if isinstance(picture_or_id, picture.models.Picture):
+            picture_id = picture_or_id.id
+        else:
+            picture_id = picture_or_id
+        self.delete_query(self.index.Q(picture_id=picture_id))
+
+    def index_picture(self, picture, picture_info=None, overwrite=True):
+        """
+        Indexes the picture.
+        Creates a lucene document for extracted metadata
+        and calls self.index_area() to index the contents of the picture.
+        """
+        if overwrite:
+            # we don't remove snippets, since they might be still needed by
+            # threads using not reopened index
+            self.remove_picture(picture)
+
+        picture_doc = {'picture_id': int(picture.id)}
+        meta_fields = self.extract_metadata(picture, picture_info, dc_only=[
+            'authors', 'title', 'epochs', 'kinds', 'genres'])
+
+        picture_doc.update(meta_fields)
+
+        picture_doc['uid'] = "picture%s" % picture_doc['picture_id']
+        self.index.add(picture_doc)
+        del picture_doc['is_book']
+        for area in picture.areas.all():
+            self.index_area(area, picture_fields=picture_doc)
+
+    def index_area(self, area, picture_fields):
+        """
+        Indexes themes and objects on the area.
+        """
+        doc = dict(picture_fields)
+        doc['area_id'] = area.id
+        doc['themes'] = list(area.tags.filter(category__in=('theme', 'thing')).values_list('name', flat=True))
+        doc['uid'] = 'area%s' % area.id
+        self.index.add(doc)
+
 
 class SearchResult(object):
     def __init__(self, doc, how_found=None, query_terms=None):
@@ -724,6 +766,110 @@ class SearchResult(object):
             return None
 
 
+class PictureResult(object):
+    def __init__(self, doc, how_found=None, query_terms=None):
+        self.boost = 1.0
+        self.query_terms = query_terms
+        self._picture = None
+        self._hits = []
+        self._processed_hits = None
+
+        if 'score' in doc:
+            self._score = doc['score']
+        else:
+            self._score = 0
+
+        self.picture_id = int(doc["picture_id"])
+
+        if doc.get('area_id'):
+            hit = (self._score, {
+                'how_found': how_found,
+                'area_id': doc['area_id'],
+                'themes': doc.get('themes', []),
+                'themes_pl': doc.get('themes_pl', []),
+            })
+
+            self._hits.append(hit)
+
+    def __unicode__(self):
+        return u"<PR id=%d score=%f >" % (self.picture_id, self._score)
+
+    def __repr__(self):
+        return unicode(self)
+
+    @property
+    def score(self):
+        return self._score * self.boost
+
+    def merge(self, other):
+        if self.picture_id != other.picture_id:
+            raise ValueError(
+                "this search result is for picture %d; tried to merge with %d" % (self.picture_id, other.picture_id))
+        self._hits += other._hits
+        self._score += max(other._score, 0)
+        return self
+
+    SCORE = 0
+    OTHER = 1
+
+    @property
+    def hits(self):
+        if self._processed_hits is not None:
+            return self._processed_hits
+
+        hits = []
+        for hit in self._hits:
+            try:
+                area = picture.models.PictureArea.objects.get(id=hit[self.OTHER]['area_id'])
+            except picture.models.PictureArea.DoesNotExist:
+                # stale index
+                continue
+            # Figure out if we were searching for a token matching some word in theme name.
+            themes_hit = set()
+            if self.query_terms is not None:
+                for i in range(0, len(hit[self.OTHER]['themes'])):
+                    tms = hit[self.OTHER]['themes'][i].split(r' +') + hit[self.OTHER]['themes_pl'][i].split(' ')
+                    tms = map(unicode.lower, tms)
+                    for qt in self.query_terms:
+                        if qt in tms:
+                            themes_hit.add(hit[self.OTHER]['themes'][i])
+                            break
+
+            m = {
+                'score': hit[self.SCORE],
+                'area': area,
+                'themes_hit': themes_hit,
+            }
+            m.update(hit[self.OTHER])
+            hits.append(m)
+
+        hits.sort(key=lambda h: h['score'], reverse=True)
+        hits = hits[:1]
+        self._processed_hits = hits
+        return hits
+
+    def get_picture(self):
+        if self._picture is None:
+            self._picture = picture.models.Picture.objects.get(id=self.picture_id)
+        return self._picture
+
+    picture = property(get_picture)
+
+    @staticmethod
+    def aggregate(*result_lists):
+        books = {}
+        for rl in result_lists:
+            for r in rl:
+                if r.picture_id in books:
+                    books[r.picture_id].merge(r)
+                else:
+                    books[r.picture_id] = r
+        return books.values()
+
+    def __cmp__(self, other):
+        return cmp(self.score, other.score)
+
+
 class Search(SolrIndex):
     """
     Search facilities.
@@ -751,12 +897,12 @@ class Search(SolrIndex):
             books = books.filter(cached_author__iregex='\m%s\M' % word).select_related('popularity__count')
         return [SearchResult.from_book(book, how_found='search_by_author', query_terms=words) for book in books[:30]]
 
-    def search_words(self, words, fields, book=True):
-        if book and fields == ['authors']:
+    def search_words(self, words, fields, required=None, book=True, picture=False):
+        if book and not picture and fields == ['authors']:
             return self.search_by_author(words)
         filters = []
         for word in words:
-            if book or (word not in stopwords):
+            if book or picture or (word not in stopwords):
                 word_filter = None
                 for field in fields:
                     q = self.index.Q(**{field: word})
@@ -765,14 +911,30 @@ class Search(SolrIndex):
                     else:
                         word_filter |= q
                 filters.append(word_filter)
+        if required:
+            required_filter = None
+            for field in required:
+                for word in words:
+                    if book or picture or (word not in stopwords):
+                        q = self.index.Q(**{field: word})
+                        if required_filter is None:
+                            required_filter = q
+                        else:
+                            required_filter |= q
+            filters.append(required_filter)
         if not filters:
             return []
+        params = {}
         if book:
-            query = self.index.query(is_book=True)
+            params['is_book'] = True
+        if picture:
+            params['picture_id__gt'] = 0
         else:
-            query = self.index.query()
+            params['book_id__gt'] = 0
+        query = self.index.query(**params)
         query = self.apply_filters(query, filters).field_limit(score=True, all_fields=True)
-        return [SearchResult(found, how_found='search_words', query_terms=words) for found in query.execute()]
+        result_class = PictureResult if picture else SearchResult
+        return [result_class(found, how_found='search_words', query_terms=words) for found in query.execute()]
 
     def get_snippets(self, searchresult, query, field='text', num=1):
         """
