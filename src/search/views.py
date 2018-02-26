@@ -147,28 +147,29 @@ def main(request):
 
 def search_books(query):
     search = Search()
-    results_parts = []
-    search_fields = []
+    # results_parts = []
+    # search_fields = []
     words = query.split()
     fieldsets = (
-        (['authors'], True),
-        (['title'], True),
-        (['metadata'], True),
-        (['text', 'themes_pl'], False),
+        (['authors'], True, 8),
+        (['title'], True, 4),
+        (['metadata'], True, 2),
+        (['text', 'themes_pl'], False, 1),
     )
-    for fields, is_book in fieldsets:
-        search_fields += fields
-        results_parts.append(search.search_words(words, search_fields, required=fields, book=is_book))
+    # for fields, is_book in fieldsets:
+    #     search_fields += fields
+    #     results_parts.append(search.search_words(words, search_fields, required=fields, book=is_book))
+    query_results = search.search_words(words, fieldsets)
     results = []
     ids_results = {}
-    for results_part in results_parts:
-        for result in sorted(SearchResult.aggregate(results_part), reverse=True):
-            book_id = result.book_id
-            if book_id in ids_results:
-                ids_results[book_id].merge(result)
-            else:
-                results.append(result)
-                ids_results[book_id] = result
+    # for results_part in results_parts:
+    for result in sorted(SearchResult.aggregate(query_results), reverse=True):
+        book_id = result.book_id
+        if book_id in ids_results:
+            ids_results[book_id].merge(result)
+        else:
+            results.append(result)
+            ids_results[book_id] = result
     descendant_ids = set(
         Book.objects.filter(id__in=ids_results, ancestor__in=ids_results).values_list('id', flat=True))
     results = [result for result in results if result.book_id not in descendant_ids]
@@ -187,28 +188,29 @@ def search_books(query):
 
 def search_pictures(query):
     search = Search()
-    results_parts = []
-    search_fields = []
+    # results_parts = []
+    # search_fields = []
     words = query.split()
     fieldsets = (
-        (['authors'], True),
-        (['title'], True),
-        (['metadata'], True),
-        (['themes_pl'], False),
+        (['authors'], True, 8),
+        (['title'], True, 4),
+        (['metadata'], True, 2),
+        (['themes_pl'], False, 1),
     )
-    for fields, is_book in fieldsets:
-        search_fields += fields
-        results_parts.append(search.search_words(words, search_fields, required=fields, book=is_book, picture=True))
+    # for fields, is_book in fieldsets:
+    #     search_fields += fields
+    #     results_parts.append(search.search_words(words, search_fields, required=fields, book=is_book, picture=True))
+    query_results = search.search_words(words, fieldsets, picture=True)
     results = []
     ids_results = {}
-    for results_part in results_parts:
-        for result in sorted(PictureResult.aggregate(results_part), reverse=True):
-            picture_id = result.picture_id
-            if picture_id in ids_results:
-                ids_results[picture_id].merge(result)
-            else:
-                results.append(result)
-                ids_results[picture_id] = result
+    # for results_part in results_parts:
+    for result in sorted(PictureResult.aggregate(query_results), reverse=True):
+        picture_id = result.picture_id
+        if picture_id in ids_results:
+            ids_results[picture_id].merge(result)
+        else:
+            results.append(result)
+            ids_results[picture_id] = result
 
     def ensure_exists(r):
         try:

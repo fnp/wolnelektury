@@ -897,36 +897,45 @@ class Search(SolrIndex):
             books = books.filter(cached_author__iregex='\m%s\M' % word).select_related('popularity__count')
         return [SearchResult.from_book(book, how_found='search_by_author', query_terms=words) for book in books[:30]]
 
-    def search_words(self, words, fields, required=None, book=True, picture=False):
-        if book and not picture and fields == ['authors']:
-            return self.search_by_author(words)
+    def search_words(self, words, fieldsets, picture=False):
+        # if book and not picture and fields == ['authors']:
+        #     return self.search_by_author(words)
         filters = []
         for word in words:
-            if book or picture or (word not in stopwords):
-                word_filter = None
-                for field in fields:
-                    q = self.index.Q(**{field: word})
-                    if word_filter is None:
-                        word_filter = q
-                    else:
-                        word_filter |= q
-                filters.append(word_filter)
-        if required:
-            required_filter = None
-            for field in required:
-                for word in words:
-                    if book or picture or (word not in stopwords):
+            word_filter = None
+            for fields, book, boost in fieldsets:
+                if book or picture or (word not in stopwords):
+                    fieldset_filter = None
+                    for field in fields:
                         q = self.index.Q(**{field: word})
-                        if required_filter is None:
-                            required_filter = q
+                        if fieldset_filter is None:
+                            fieldset_filter = q
                         else:
-                            required_filter |= q
-            filters.append(required_filter)
-        if not filters:
-            return []
+                            fieldset_filter |= q
+                    if book:
+                        fieldset_filter &= self.index.Q(is_book=True)
+                    fieldset_filter = fieldset_filter**boost
+                    if word_filter is None:
+                        word_filter = fieldset_filter
+                    else:
+                        word_filter |= fieldset_filter
+            filters.append(word_filter)
+        # if required:
+        #     required_filter = None
+        #     for field in required:
+        #         for word in words:
+        #             if book or picture or (word not in stopwords):
+        #                 q = self.index.Q(**{field: word})
+        #                 if required_filter is None:
+        #                     required_filter = q
+        #                 else:
+        #                     required_filter |= q
+        #     filters.append(required_filter)
+        # if not filters:
+        #     return []
         params = {}
-        if book:
-            params['is_book'] = True
+        # if book:
+        #     params['is_book'] = True
         if picture:
             params['picture_id__gt'] = 0
         else:
