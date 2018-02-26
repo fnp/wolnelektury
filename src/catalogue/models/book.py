@@ -715,4 +715,4 @@ add_file_fields()
 
 class BookPopularity(models.Model):
     book = models.OneToOneField(Book, related_name='popularity')
-    count = models.IntegerField(default=0)
+    count = models.IntegerField(default=0, db_index=True)
