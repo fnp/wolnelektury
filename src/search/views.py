@@ -27,7 +27,7 @@ def match_word_re(word):
         return "[[:<:]]%s[[:>:]]" % word
 
 
-query_syntax_chars = re.compile(r"[\\/*:(){}]")
+query_syntax_chars = re.compile(r"[\\/*:(){}?.]")
 
 
 def remove_query_syntax_chars(query, replace=' '):
