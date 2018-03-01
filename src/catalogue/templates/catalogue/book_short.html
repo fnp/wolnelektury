@@ -70,6 +70,13 @@
             {% endfor %}
           </span></span>
 
+          {% if book.extra_info.location %}
+            <span class="category">
+            <span class="mono"> {% trans "Region" %}:</span>&nbsp;<span class="book-box-tag">
+                {{ book.extra_info.location }}
+            </span></span>
+          {% endif %}
+
           {% if book.is_foreign %}
             <span class="category">
               <span class="mono"> {% trans "Language" %}:</span>&nbsp;<span class="book-box-tag">

@@ -355,7 +355,10 @@
       @include size(margin-bottom, 6px);
 
       @include min-screen($S_BOOK_SHORT_FULL) {
-        display: inline;
+        display: inline-block;
+        @include size(margin-top, 0px);
+        @include size(margin-bottom, 0px);
+        @include size(margin-right, 9px);
       }
 
       .mono {
