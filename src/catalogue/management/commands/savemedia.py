@@ -18,7 +18,9 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **options):
-        path, slug, name = args
+        path, slug, name, part_name, index, parts_count = args
+        index = int(index)
+        parts_count = int(parts_count)
 
         book = Book.objects.get(slug=slug)
 
@@ -39,5 +41,7 @@ class Command(BaseCommand):
             bm = BookMedia(book=book, type=ext)
             print "Creating new media"
         bm.name = name
+        bm.part_name = part_name
+        bm.index = index
         bm.file.save(None, ExistingFile(path))
-        bm.save()
+        bm.save(parts_count=parts_count)

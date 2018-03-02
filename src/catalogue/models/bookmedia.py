@@ -47,10 +47,11 @@ class BookMedia(models.Model):
         verbose_name_plural = _('book media')
         app_label = 'catalogue'
 
-    def save(self, *args, **kwargs):
+    def save(self, parts_count=None, *args, **kwargs):
         from catalogue.utils import ExistingFile, remove_zip
 
-        parts_count = 1 + BookMedia.objects.filter(book=self.book, type=self.type).exclude(pk=self.pk).count()
+        if not parts_count:
+            parts_count = 1 + BookMedia.objects.filter(book=self.book, type=self.type).exclude(pk=self.pk).count()
         if parts_count == 1:
             self.name = self.book.pretty_title()
         else:
