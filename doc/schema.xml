@@ -295,7 +295,14 @@
 
     <!-- Polish -->
     <fieldType name="text_pl" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
-      <analyzer> 
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pl.txt" format="snowball"/>
+        <filter class="solr.MorfologikFilterFactory" dictionary="morfologik/stemming/polish/polish.dict" />
+        <filter class="solr.ASCIIFoldingFilterFactory" preserveOriginal="true" />
+      </analyzer>
+      <analyzer type="query">
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pl.txt" format="snowball"/>
@@ -304,7 +311,13 @@
     </fieldType>
 
     <fieldType name="text_pl_nonstop" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
-      <analyzer>
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.MorfologikFilterFactory" dictionary="morfologik/stemming/polish/polish.dict" />
+        <filter class="solr.ASCIIFoldingFilterFactory" preserveOriginal="true" />
+      </analyzer>
+      <analyzer type="query">
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.MorfologikFilterFactory" dictionary="morfologik/stemming/polish/polish.dict" />
