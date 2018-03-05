@@ -90,42 +90,6 @@
       and back compatibility is not guaranteed.  Names with both leading and
       trailing underscores (e.g. _version_) are reserved.
    -->
-        
-   <!-- <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />  -->
-   <!-- <field name="sku" type="text_en_splitting_tight" indexed="true" stored="true" omitNorms="true"/> -->
-   <!-- <field name="name" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="manu" type="text_general" indexed="true" stored="true" omitNorms="true"/> -->
-   <!-- <field name="cat" type="string" indexed="true" stored="true" multiValued="true"/> -->
-   <!-- <field name="features" type="text_general" indexed="true" stored="true" multiValued="true"/> -->
-   <!-- <field name="includes" type="text_general" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true" /> -->
-
-   <!-- <field name="weight" type="float" indexed="true" stored="true"/> -->
-   <!-- <field name="price"  type="float" indexed="true" stored="true"/> -->
-   <!-- <field name="popularity" type="int" indexed="true" stored="true" /> -->
-   <!-- <field name="inStock" type="boolean" indexed="true" stored="true" /> -->
-
-   <!-- <field name="store" type="location" indexed="true" stored="true"/> -->
-
-   <!-- Common metadata fields, named specifically to match up with
-     SolrCell metadata when parsing rich documents such as Word, PDF.
-     Some fields are multiValued only because Tika currently may return
-     multiple values for them. Some metadata is parsed from the documents,
-     but there are some which come from the client context:
-       "content_type": From the HTTP headers of incoming stream
-       "resourcename": From SolrCell request param resource.name
-   -->
-   <!-- <field name="title" type="text_general" indexed="true" stored="true" multiValued="true"/> -->
-   <!-- <field name="subject" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="description" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="comments" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="author" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="keywords" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="category" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="resourcename" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="url" type="text_general" indexed="true" stored="true"/> -->
-   <!-- <field name="content_type" type="string" indexed="true" stored="true" multiValued="true"/> -->
-   <!-- <field name="last_modified" type="date" indexed="true" stored="true"/> -->
-   <!-- <field name="links" type="string" indexed="true" stored="true" multiValued="true"/> -->
 
    <field name="book_id" type="int" indexed="true" stored="true" />
    <field name="parent_id" type="int" indexed="false" stored="true" />
@@ -164,27 +128,6 @@
    <field name="tag_category" type="string" stored="true" indexed="true" />
    <field name="is_pdcounter" type="boolean" stored="true" indexed="true" />
 
-   <!-- Main body of document extracted by SolrCell.
-        NOTE: This field is not indexed by default, since it is also copied to "text"
-        using copyField below. This is to save space. Use this field for returning and
-        highlighting document content. Use the "text" field to search the content. -->
-   <!-- <field name="content" type="text_general" indexed="false" stored="true" multiValued="true"/> -->
-   
-
-   <!-- catchall field, containing all other searchable text fields (implemented
-        via copyField further on in this schema  -->
-   <!-- <field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/> -->
-
-   <!-- catchall text field that indexes tokens both normally and in reverse for efficient
-        leading wildcard queries. -->
-   <!-- <field name="text_rev" type="text_general_rev" indexed="true" stored="false" multiValued="true"/> -->
-
-   <!-- non-tokenized version of manufacturer to make it easier to sort or group
-        results by manufacturer.  copied from "manu" via copyField -->
-   <!-- <field name="manu_exact" type="string" indexed="true" stored="false"/> -->
-
-   <!-- <field name="payloads" type="payloads" indexed="true" stored="true"/> -->
-
    <field name="_version_" type="long" indexed="true" stored="true"/>
 
    <!-- Uncommenting the following will create a "timestamp" field using
@@ -208,21 +151,6 @@
    -->
  <uniqueKey>uid</uniqueKey>
 
- <!-- DEPRECATED: The defaultSearchField is consulted by various query parsers when
-  parsing a query string that isn't explicit about the field.  Machine (non-user)
-  generated queries are best made explicit, or they can use the "df" request parameter
-  which takes precedence over this.
-  Note: Un-commenting defaultSearchField will be insufficient if your request handler
-  in solrconfig.xml defines "df", which takes precedence. That would need to be removed.
- <defaultSearchField>text</defaultSearchField> -->
-
- <!-- DEPRECATED: The defaultOperator (AND|OR) is consulted by various query parsers
-  when parsing a query string to determine if a clause of the query should be marked as
-  required or optional, assuming the clause isn't already marked by some operator.
-  The default is OR, which is generally assumed so it is not a good idea to change it
-  globally here.  The "q.op" request parameter takes precedence over this.
- <solrQueryParser defaultOperator="OR"/> -->
-
   <!-- copyField commands copy one field to another at the time a document
         is added to the index.  It's used either to index the same field differently,
         or to add multiple fields to the same field for easier/faster searching.  -->
@@ -235,40 +163,6 @@
   <copyField source="kinds" dest="metadata"/>
   <copyField source="genres" dest="metadata"/>
 
-<!--
-   <copyField source="cat" dest="text"/>
-   <copyField source="name" dest="text"/>
-   <copyField source="manu" dest="text"/>
-   <copyField source="features" dest="text"/>
-   <copyField source="includes" dest="text"/>
-   <copyField source="manu" dest="manu_exact"/>
--->
-   <!-- Copy the price into a currency enabled field (default USD) -->
-<!--   <copyField source="price" dest="price_c"/>-->
-
-   <!-- Text fields from SolrCell to search by default in our catch-all field -->
-<!--   <copyField source="title" dest="text"/>
-   <copyField source="author" dest="text"/>
-   <copyField source="description" dest="text"/>
-   <copyField source="keywords" dest="text"/>
-   <copyField source="content" dest="text"/>
-   <copyField source="content_type" dest="text"/>
-   <copyField source="resourcename" dest="text"/>
-   <copyField source="url" dest="text"/>-->
-
-   <!-- Create a string version of author for faceting -->
-<!--   <copyField source="author" dest="author_s"/>-->
-	
-   <!-- Above, multiple source fields are copied to the [text] field. 
-	  Another way to map multiple source fields to the same 
-	  destination field is to use the dynamic field syntax. 
-	  copyField also supports a maxChars to copy setting.  -->
-	   
-   <!-- <copyField source="*_t" dest="text" maxChars="3000"/> -->
-
-   <!-- copy name to alphaNameSort, a field designed for sorting by name -->
-   <!-- <copyField source="name" dest="alphaNameSort"/> -->
- 
   <types>
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
@@ -287,8 +181,8 @@
     <!-- sortMissingLast and sortMissingFirst attributes are optional attributes are
          currently supported on types that are sorted internally as strings
          and on numeric types.
-	     This includes "string","boolean", and, as of 3.5 (and 4.x),
-	     int, float, long, date, double, including the "Trie" variants.
+         This includes "string","boolean", and, as of 3.5 (and 4.x),
+         int, float, long, date, double, including the "Trie" variants.
        - If sortMissingLast="true", then a sort on this field will cause documents
          without the field to come after documents with the field,
          regardless of the requested sort order (asc or desc).
@@ -366,26 +260,6 @@
          change the field name in the request.
      -->
     <fieldType name="random" class="solr.RandomSortField" indexed="true" />
-
-    <!-- solr.TextField allows the specification of custom text analyzers
-         specified as a tokenizer and a list of token filters. Different
-         analyzers may be specified for indexing and querying.
-
-         The optional positionIncrementGap puts space between multiple fields of
-         this type on the same document, with the purpose of preventing false phrase
-         matching across fields.
-
-         For more info on customizing your analyzer chain, please see
-         http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters
-     -->
-
-    <!-- One can also specify an existing Analyzer class that has a
-         default constructor via the class attribute on the analyzer element.
-         Example:
-    <fieldType name="text_greek" class="solr.TextField">
-      <analyzer class="org.apache.lucene.analysis.el.GreekAnalyzer"/>
-    </fieldType>
-    -->
 
     <fieldType name="uuid" class="solr.UUIDField" indexed="true" />
 
