@@ -126,14 +126,11 @@
                 </ul>
               </nav>
               <form id="search-area" action="{% url 'search' %}">
-                {% comment %}
                 <div id="search-field">
                   <label for="search">{{ search_form.q.label }}</label>
                   {{ search_form.q }}
                 </div>
                 <button type='submit'>{% trans "Search" %}</button>
-                {% endcomment %}
-                Wyszukiwanie jest tymczasowo wyłączone. Search is temporarily disabled.
               </form>
             </header>
           </div>

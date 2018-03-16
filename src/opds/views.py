@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.utils.feedgenerator import Atom1Feed
 from django.conf import settings
-from django.http import Http404, HttpResponse
+from django.http import Http404
 from django.contrib.sites.models import Site
 from django.utils.functional import lazy
 
@@ -360,9 +360,6 @@ class SearchFeed(AcquisitionFeed):
         }
 
     ATOM_PLACEHOLDER = re.compile(r"^{(atom|opds):\w+}$")
-
-    def __call__(self, *args, **kwargs):
-        return HttpResponse('Search is temporarily disabled', status=503)
 
     def get_object(self, request):
         """
