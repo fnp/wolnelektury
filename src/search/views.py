@@ -106,6 +106,7 @@ def hint(request):
 
 @cache.never_cache
 def main(request):
+    return HttpResponse('Search is temporarily disabled', status=503)
     query = request.GET.get('q', '')
     if len(query) < 2:
         return render_to_response(
