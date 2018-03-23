@@ -957,6 +957,8 @@ class Search(SolrIndex):
                 text = snippets.get((int(position),
                                      int(length)))
                 snip = self.index.highlight(text=text, field=field, q=query)
+                if not snip and field == 'text':
+                    snip = self.index.highlight(text=text, field='text_nonstem', q=query)
                 if snip not in snips:
                     snips[idx] = snip
                     if snip:
