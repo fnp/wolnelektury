@@ -151,10 +151,10 @@ def search_books(query):
     search_fields = []
     words = query.split()
     fieldsets = (
-        (['authors'], True),
-        (['title'], True),
-        (['metadata'], True),
-        (['text', 'themes_pl'], False),
+        (['authors', 'authors_nonstem'], True),
+        (['title', 'title_nonstem'], True),
+        (['metadata', 'metadata_nonstem'], True),
+        (['text', 'text_nonstem', 'themes_pl', 'themes_pl_nonstem'], False),
     )
     for fields, is_book in fieldsets:
         search_fields += fields
@@ -191,10 +191,10 @@ def search_pictures(query):
     search_fields = []
     words = query.split()
     fieldsets = (
-        (['authors'], True),
-        (['title'], True),
-        (['metadata'], True),
-        (['themes_pl'], False),
+        (['authors', 'authors_nonstem'], True),
+        (['title', 'title_nonstem'], True),
+        (['metadata', 'metadata_nonstem'], True),
+        (['themes_pl', 'themes_pl_nonstem'], False),
     )
     for fields, is_book in fieldsets:
         search_fields += fields

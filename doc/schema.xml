@@ -96,8 +96,10 @@
    <field name="slug" type="lowercase" stored="false" indexed="true" omitNorms="true"/> <!-- no norms -->
    <field name="is_book" type="boolean" stored="false" indexed="true"/>
    <field name="authors" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true"/>
+   <field name="authors_nonstem" type="text_ascii" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true"/>
    <field name="translators" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
    <field name="title" type="text_pl_nonstop" stored="false" indexed="true"/>
+   <field name="title_nonstem" type="text_ascii" stored="false" indexed="true"/>
 <!--   <field name="published_date" type="tdate" stored="false" indexed="true"/>-->
    <field name="published_date" type="string" stored="true" indexed="true"/>
 
@@ -106,13 +108,16 @@
    <field name="genres" type="lowercase" stored="false" indexed="false" multiValued="true" />
 
    <field name="metadata" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
+   <field name="metadata_nonstem" type="text_pl_nonstop" stored="false" indexed="true" multiValued="true" termPositions="true" termVectors="true" />
 
    <field name="themes" type="lowercase" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
    <field name="themes_pl" type="text_pl_nonstop" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
+   <field name="themes_pl_nonstem" type="text_ascii" stored="true" indexed="true" termVectors="true" termPositions="true" multiValued="true" />
    <field name="header_index" type="int" stored="true" indexed="true"/>
    <field name="header_span" type="int" stored="true" indexed="true"/>
    <field name="header_type" type="lowercase" stored="true" indexed="false"/>
    <field name="text" type="text_pl" stored="false" indexed="true" termVectors="true" termPositions="true" />
+   <field name="text_nonstem" type="text_pl_nonstem" stored="false" indexed="true" termVectors="true" termPositions="true" />
 
    <field name="snippets_position" type="int" stored="true" indexed="false"/>
    <field name="snippets_length" type="int" stored="true" indexed="false"/>
@@ -162,6 +167,16 @@
   <copyField source="epochs" dest="metadata"/>
   <copyField source="kinds" dest="metadata"/>
   <copyField source="genres" dest="metadata"/>
+
+  <copyField source="translators" dest="metadata_nonstem"/>
+  <copyField source="epochs" dest="metadata_nonstem"/>
+  <copyField source="kinds" dest="metadata_nonstem"/>
+  <copyField source="genres" dest="metadata_nonstem"/>
+
+  <copyField source="authors" dest="authors_nonstem"/>
+  <copyField source="title" dest="title_nonstem"/>
+  <copyField source="themes" dest="themes_pl_nonstem"/>
+  <copyField source="text" dest="text_nonstem"/>
 
   <types>
     <!-- field type definitions. The "name" attribute is
@@ -310,6 +325,20 @@
       </analyzer>
     </fieldType>
 
+    <fieldType name="text_pl_nonstem" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pl.txt" format="snowball"/>
+        <filter class="solr.ASCIIFoldingFilterFactory" preserveOriginal="true" />
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pl.txt" format="snowball"/>
+      </analyzer>
+    </fieldType>
+
     <fieldType name="text_pl_nonstop" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -324,6 +353,18 @@
       </analyzer>
     </fieldType>
 
+    <fieldType name="text_ascii" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory" preserveOriginal="true" />
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+cb
  </types>
   
   <!-- Similarity is the scoring routine for each document vs. a query.
