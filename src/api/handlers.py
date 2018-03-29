@@ -210,6 +210,8 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         except ValueError:
             return rc.NOT_FOUND
 
+        top_level = top_level or newest
+
         if 'after' in request.GET:
             after = request.GET['after']
         if 'before' in request.GET:
