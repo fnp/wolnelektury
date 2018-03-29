@@ -92,7 +92,7 @@ urlpatterns = patterns(
         book_list_resource, {"daisy": True}, name='api_daisy_list'),
 
     url(r'^recommended/' + paginate_re, book_list_resource, {"recommended": True}, name='api_recommended_list'),
-    url(r'^newest/', book_list_resource, {"newest": True, "count": 20}, name='api_newest_list'),
+    url(r'^newest/', book_list_resource, {"newest": True, "top_level": True, "count": 20}, name='api_newest_list'),
     url(r'^filter-books/', filter_book_resource, name='api_filter_books'),
 
     url(r'^pictures/$', picture_resource),
