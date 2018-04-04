@@ -10,10 +10,15 @@ from catalogue.models import Tag, Book, Fragment, BookMedia, Collection, Source
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'sort_key', 'category', 'has_description',)
+    list_display = ('name', 'slug', 'sort_key', 'category', 'has_description', 'occurrences')
     list_filter = ('category',)
     search_fields = ('name',)
     ordering = ('name',)
+    readonly_fields = ('occurrences',)
+
+    def occurrences(self, tag):
+        return tag.items.count()
+    occurrences.short_description = u'Wystąpienia'
 
     prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',)}
     radio_fields = {'category': admin.HORIZONTAL}
