@@ -41,7 +41,6 @@ def production():
     env.requirements_file = 'requirements/requirements.txt'
     env.pre_collectstatic = [
         ManageTask('update_counters'),
-        ManageTask('localepack', '-c'),
     ]
     env.services = [
         Supervisord('wolnelektury'),
@@ -60,7 +59,6 @@ def beta():
     env.requirements_file = 'requirements/requirements.txt'
     env.pre_collectstatic = [
         ManageTask('update_counters'),
-        ManageTask('localepack', '-c'),
     ]
     env.services = [
         Supervisord('beta'),

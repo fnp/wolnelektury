@@ -7,7 +7,6 @@ fabfile_local.py
 *.orig
 *.log
 .sass-cache
-*.mo
 *.css.map
 
 # Compress output
