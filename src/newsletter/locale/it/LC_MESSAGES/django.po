@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-15 13:32+0200\n"
+"POT-Creation-Date: 2018-04-04 17:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:16
+#: forms.py:17
 msgid "I want to receive Wolne Lektury's newsletter."
 msgstr ""
 
-#: forms.py:39
-msgid "Confirm your subscription to Wolne Lektury newsletter"
-msgstr ""
-
-#: forms.py:44 forms.py:52 models.py:10
+#: forms.py:46 forms.py:54 models.py:10
 msgid "email address"
 msgstr ""
 
-#: forms.py:59
+#: forms.py:61
 msgid "Email address not found."
 msgstr ""
 
-#: forms.py:70
+#: forms.py:72
 msgid "Unsubscribe from Wolne Lektury's newsletter."
 msgstr ""
 
@@ -63,9 +59,7 @@ msgid "Subscribe"
 msgstr ""
 
 #: templates/newsletter/subscribed.html:7
-msgid ""
-"You have requested subscription to Wolne Lektury newsletter. You'll receive "
-"a confirmation link by email."
+msgid "You have subscribed to Wolne Lektury newsletter."
 msgstr ""
 
 #: templates/newsletter/unsubscribe_form.html:13 views.py:56
@@ -83,7 +77,7 @@ msgid "Subscribe To Newsletter"
 msgstr ""
 
 #: views.py:28
-msgid "Confirmation link sent"
+msgid "Subscribed"
 msgstr ""
 
 #: views.py:43

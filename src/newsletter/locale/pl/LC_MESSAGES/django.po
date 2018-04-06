@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-15 13:32+0200\n"
+"POT-Creation-Date: 2018-04-04 17:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jan Szejko <jan.szejko@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:16
+#: forms.py:17
 msgid "I want to receive Wolne Lektury's newsletter."
 msgstr "Chcę otrzymywać newsletter Wolnych Lektur"
 
-#: forms.py:39
-msgid "Confirm your subscription to Wolne Lektury newsletter"
-msgstr "Potwierdź subskrypcję newslettera Wolnych Lektur"
-
-#: forms.py:44 forms.py:52 models.py:10
+#: forms.py:46 forms.py:54 models.py:10
 msgid "email address"
 msgstr "adres email"
 
-#: forms.py:59
+#: forms.py:61
 msgid "Email address not found."
 msgstr "Nie znaleziono adresu email."
 
-#: forms.py:70
+#: forms.py:72
 msgid "Unsubscribe from Wolne Lektury's newsletter."
 msgstr "Wypisuję się z newslettera Wolnych Lektur"
 
@@ -63,12 +59,8 @@ msgid "Subscribe"
 msgstr "Zapisz się"
 
 #: templates/newsletter/subscribed.html:7
-msgid ""
-"You have requested subscription to Wolne Lektury newsletter. You'll receive "
-"a confirmation link by email."
-msgstr ""
-"Przyjęto zgłoszenie do subskrypcji newslettera Wolnych Lektur. Otrzymasz "
-"wiadomość z linkiem potwierdzającym na adres email."
+msgid "You have subscribed to Wolne Lektury newsletter."
+msgstr "Zapisałaś/eś się do newslettera Wolnych Lektur."
 
 #: templates/newsletter/unsubscribe_form.html:13 views.py:56
 msgid "Unsubscribe"
@@ -87,8 +79,9 @@ msgid "Subscribe To Newsletter"
 msgstr "Zapisz się na newsletter"
 
 #: views.py:28
-msgid "Confirmation link sent"
-msgstr "Wysłano link potwierdzający"
+#| msgid "Subscribe"
+msgid "Subscribed"
+msgstr "Zapisano do newslettera"
 
 #: views.py:43
 msgid "Subscription confirmed"
@@ -97,3 +90,16 @@ msgstr "Potwierdzono subskrypcję"
 #: views.py:63
 msgid "Unsubscribed"
 msgstr "Usunięto subskrypcję"
+
+#~ msgid "Confirm your subscription to Wolne Lektury newsletter"
+#~ msgstr "Potwierdź subskrypcję newslettera Wolnych Lektur"
+
+#~ msgid ""
+#~ "You have requested subscription to Wolne Lektury newsletter. You'll "
+#~ "receive a confirmation link by email."
+#~ msgstr ""
+#~ "Przyjęto zgłoszenie do subskrypcji newslettera Wolnych Lektur. Otrzymasz "
+#~ "wiadomość z linkiem potwierdzającym na adres email."
+
+#~ msgid "Confirmation link sent"
+#~ msgstr "Wysłano link potwierdzający"

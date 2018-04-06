@@ -6,6 +6,7 @@ from django.forms.fields import EmailField
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _, ugettext
 
+from contact import mailing
 from newsletter.models import Subscription
 from wolnelektury.utils import send_noreply_mail
 
@@ -13,7 +14,7 @@ from wolnelektury.utils import send_noreply_mail
 class NewsletterForm(Form):
     email_field = 'email'
     agree_newsletter = BooleanField(
-        required=False, initial=True, label=_(u'I want to receive Wolne Lektury\'s newsletter.'), help_text='''\
+        required=False, initial=False, label=_(u'I want to receive Wolne Lektury\'s newsletter.'), help_text='''\
 Oświadczam, że wyrażam zgodę na przetwarzanie moich danych osobowych zawartych \
 w niniejszym formularzu zgłoszeniowym przez Fundację Nowoczesna Polska (administratora danych) z siedzibą \
 w Warszawie (00-514) przy ul. Marszałkowskiej 84/92 lok. 125 w celu otrzymywania newslettera Wolnych Lektur. \
@@ -34,10 +35,11 @@ możliwość ich poprawiania oraz że ich podanie jest dobrowolne, ale niezbędn
         except ValidationError:
             pass
         else:
-            subscription, created = Subscription.objects.get_or_create(email=email, defaults={'active': False})
-            send_noreply_mail(
-                ugettext(u'Confirm your subscription to Wolne Lektury newsletter'),
-                render_to_string('newsletter/subscribe_email.html', {'subscription': subscription}), [email])
+            # subscription, created = Subscription.objects.get_or_create(email=email, defaults={'active': False})
+            # send_noreply_mail(
+            #     ugettext(u'Confirm your subscription to Wolne Lektury newsletter'),
+            #     render_to_string('newsletter/subscribe_email.html', {'subscription': subscription}), [email])
+            mailing.subscribe(email)
 
 
 class SubscribeForm(NewsletterForm):
