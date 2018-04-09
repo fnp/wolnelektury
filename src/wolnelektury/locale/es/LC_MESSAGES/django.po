@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2018-04-09 15:02+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,6 +94,10 @@ msgstr "Importar libro"
 msgid "Forgot Password?"
 msgstr "¿Olvidaste tu contraseña?"
 
+#: templates/auth/login.html:17 templates/auth/register.html:17
+msgid "Sign in using:"
+msgstr "Iniciar sesión con:"
+
 #: templates/auth/login_register.html:9
 msgid "or register"
 msgstr "o registrarse"
@@ -102,7 +106,7 @@ msgstr "o registrarse"
 msgid "Wolne Lektury"
 msgstr "Regístrate en WolneLektury.pl"
 
-#: templates/base/superbase.html:53
+#: templates/base/superbase.html:56
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -135,55 +139,55 @@ msgstr[1] ""
 "href='%(r)s'>right to</a>\n"
 "                    "
 
-#: templates/base/superbase.html:63
+#: templates/base/superbase.html:66
 #, fuzzy
 #| msgid "Language versions"
 msgid "Language"
 msgstr "Versiones de idiomas"
 
-#: templates/base/superbase.html:89
+#: templates/base/superbase.html:92
 msgid "My shelf"
 msgstr "Mi estante"
 
-#: templates/base/superbase.html:93
+#: templates/base/superbase.html:96
 msgid "Administration"
 msgstr "Administración"
 
-#: templates/base/superbase.html:97
+#: templates/base/superbase.html:100
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: templates/base/superbase.html:101 views.py:71 views.py:72
+#: templates/base/superbase.html:104 views.py:71 views.py:72
 msgid "Sign in"
 msgstr "Iniciar sesión"
 
-#: templates/base/superbase.html:102 views.py:90 views.py:91 views.py:119
+#: templates/base/superbase.html:105 views.py:90 views.py:91 views.py:119
 msgid "Register"
 msgstr "Registrarse"
 
-#: templates/base/superbase.html:109
+#: templates/base/superbase.html:112
 msgid "Literature"
 msgstr ""
 
-#: templates/base/superbase.html:112
+#: templates/base/superbase.html:115
 msgid "Themes"
 msgstr "Temas"
 
-#: templates/base/superbase.html:115
+#: templates/base/superbase.html:118
 msgid "Audiobooks"
 msgstr "Audiolibros"
 
-#: templates/base/superbase.html:118
+#: templates/base/superbase.html:121
 msgid "Gallery"
 msgstr ""
 
-#: templates/base/superbase.html:121
+#: templates/base/superbase.html:124
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Todos los libros"
 
-#: templates/base/superbase.html:130
+#: templates/base/superbase.html:133
 msgid "Search"
 msgstr "Buscar"
 
@@ -260,98 +264,98 @@ msgstr ""
 msgid "More..."
 msgstr "Más..."
 
-#: templates/main_page.html:9 templates/main_page.html.py:10
+#: templates/main_page.html:10 templates/main_page.html.py:11
 msgid "Wolne Lektury internet library"
 msgstr "La biblioteca virtual WolneLektury.pl"
 
-#: templates/main_page.html:21
+#: templates/main_page.html:22
 msgid "In our digital library you will find"
 msgstr ""
 
-#: templates/main_page.html:32
+#: templates/main_page.html:33
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr ""
 
-#: templates/main_page.html:39
+#: templates/main_page.html:40
 msgid "Motifs and themes"
 msgstr "Temas"
 
-#: templates/main_page.html:41
+#: templates/main_page.html:42
 msgid "Theme"
 msgstr "Tema"
 
-#: templates/main_page.html:42
+#: templates/main_page.html:43
 msgid "Explore works with the same theme"
 msgstr ""
 
-#: templates/main_page.html:54
+#: templates/main_page.html:55
 #, fuzzy
 #| msgid "See our blog"
 msgid "See motifs catalog"
 msgstr "Ver nuestro blog"
 
-#: templates/main_page.html:94
+#: templates/main_page.html:95
 #, fuzzy
 #| msgid "Account Connections"
 msgid "Collections"
 msgstr "Conexiones de la cuenta de usuario"
 
-#: templates/main_page.html:98
+#: templates/main_page.html:99
 msgid "See collections catalog"
 msgstr ""
 
-#: templates/main_page.html:103
+#: templates/main_page.html:104
 msgid "Recent publications"
 msgstr "Publicaciones recientes"
 
-#: templates/main_page.html:109
+#: templates/main_page.html:110
 #, fuzzy
 #| msgid "Recent publications"
 msgid "More recent publications"
 msgstr "Publicaciones recientes"
 
-#: templates/main_page.html:115
+#: templates/main_page.html:116
 msgid "News"
 msgstr "Noticias"
 
-#: templates/main_page.html:120
+#: templates/main_page.html:121
 msgid "Utilities"
 msgstr "Herramientas"
 
-#: templates/main_page.html:123
+#: templates/main_page.html:124
 msgid "Report a bug or suggestion"
 msgstr "Reporta un error o una sugerencia"
 
-#: templates/main_page.html:125
+#: templates/main_page.html:126
 msgid "Download the catalogue in PDF format."
 msgstr "Descarga el catálogo en el formato PDF"
 
-#: templates/main_page.html:126
+#: templates/main_page.html:127
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:127
+#: templates/main_page.html:128
 msgid "Missing a book?"
 msgstr "¿Falta un libro?"
 
-#: templates/main_page.html:128 templates/publish_plan.html:4
+#: templates/main_page.html:129 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Plan de publicación"
 
-#: templates/main_page.html:133
+#: templates/main_page.html:134
 msgid "Newsletter"
 msgstr ""
 
-#: templates/main_page.html:138
+#: templates/main_page.html:139
 msgid "Information"
 msgstr "Información"
 
-#: templates/main_page.html:140
+#: templates/main_page.html:141
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:161
+#: templates/main_page.html:162
 msgid "Image used:"
 msgstr "La imagen usada:"
 
@@ -452,7 +456,7 @@ msgstr "Correo electrónico"
 msgid "Social accounts"
 msgstr "Cuentas sociales"
 
-#: utils.py:116
+#: utils.py:120
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
@@ -464,9 +468,6 @@ msgstr "Ya has iniciado sesión como usuario %(user)s"
 #: views.py:114
 msgid "You have to be logged in to continue"
 msgstr "Tienes que iniciar sesión para continuar"
-
-#~ msgid "Sign in using:"
-#~ msgstr "Iniciar sesión con:"
 
 #~ msgid "What's new?"
 #~ msgstr "Novedades"

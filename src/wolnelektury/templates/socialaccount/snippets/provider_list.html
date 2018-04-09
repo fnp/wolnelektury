@@ -1,7 +1,8 @@
 {% load socialaccount %}
 {% load static from staticfiles %}
 
-{% for provider in socialaccount.providers %}
+{% get_providers as providers %}
+{% for provider in providers %}
     {% if provider.id == "openid" %}
         {% for brand in provider.get_brands %}
             <li>

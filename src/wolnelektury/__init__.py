@@ -9,4 +9,4 @@ from .celery import app as celery_app
 default_app_config = 'wolnelektury.apps.WLCoreConfig'
 
 if False:
-    gettext("Please enter a correct %(username)s and password. Note that both fields may be case-sensitive.")
+    gettext("Please enter a correct %(username) and password. Note that both fields may be case-sensitive.")

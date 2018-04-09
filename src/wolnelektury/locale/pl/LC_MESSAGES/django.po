@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2018-04-09 15:02+0200\n"
 "PO-Revision-Date: 2015-12-31 16:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
 "be case-sensitive."
 msgstr ""
-"Wprowadź poprawną nazwę użytkownika oraz hasło. Uwaga: wielkość liter ma "
+"Wprowadź poprawne dane (%(username)s oraz hasło). Uwaga: wielkość liter ma "
 "znaczenie."
 
 #: templates/404.html:4
@@ -100,6 +100,10 @@ msgstr "Importuj książkę"
 msgid "Forgot Password?"
 msgstr "Nie pamiętasz hasła?"
 
+#: templates/auth/login.html:17 templates/auth/register.html:17
+msgid "Sign in using:"
+msgstr "Zaloguj się używając:"
+
 #: templates/auth/login_register.html:9
 msgid "or register"
 msgstr "albo załóż konto"
@@ -108,7 +112,7 @@ msgstr "albo załóż konto"
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base/superbase.html:53
+#: templates/base/superbase.html:56
 #, python-format
 msgid ""
 "\n"
@@ -136,51 +140,51 @@ msgstr[2] ""
 "<a href='%(r)s'>masz prawo</a>\n"
 "                    "
 
-#: templates/base/superbase.html:63
+#: templates/base/superbase.html:66
 msgid "Language"
 msgstr "Język"
 
-#: templates/base/superbase.html:89
+#: templates/base/superbase.html:92
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/base/superbase.html:93
+#: templates/base/superbase.html:96
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/base/superbase.html:97
+#: templates/base/superbase.html:100
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base/superbase.html:101 views.py:71 views.py:72
+#: templates/base/superbase.html:104 views.py:71 views.py:72
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: templates/base/superbase.html:102 views.py:90 views.py:91 views.py:119
+#: templates/base/superbase.html:105 views.py:90 views.py:91 views.py:119
 msgid "Register"
 msgstr "Załóż konto"
 
-#: templates/base/superbase.html:109
+#: templates/base/superbase.html:112
 msgid "Literature"
 msgstr "Literatura"
 
-#: templates/base/superbase.html:112
+#: templates/base/superbase.html:115
 msgid "Themes"
 msgstr "Motywy"
 
-#: templates/base/superbase.html:115
+#: templates/base/superbase.html:118
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/base/superbase.html:118
+#: templates/base/superbase.html:121
 msgid "Gallery"
 msgstr "Galeria"
 
-#: templates/base/superbase.html:121
+#: templates/base/superbase.html:124
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: templates/base/superbase.html:130
+#: templates/base/superbase.html:133
 msgid "Search"
 msgstr "Szukaj"
 
@@ -215,19 +219,19 @@ msgstr[0] ""
 "W serwisie Wolne Lektury już teraz opublikowany jest %(c)s utwór! Pomóż w "
 "rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://"
 "nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; "
-"podatku</a>.\n"
+"podatku</a>.\n "
 msgstr[1] ""
 "\n"
 "W serwisie Wolne Lektury już teraz opublikowane są %(c)s utwory! Pomóż w "
 "rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://"
 "nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; "
-"podatku</a>.\n"
+"podatku</a>.\n "
 msgstr[2] ""
 "\n"
 "W serwisie Wolne Lektury już teraz opublikowanych jest %(c)s utworów! Pomóż "
 "w rozwijaniu biblioteki i uwalnianiu nowych lektur <a href=\"http://"
 "nowoczesnapolska.org.pl/wesprzyj_nas/\">przekazując nam darowiznę lub 1&#37; "
-"podatku</a>.\n"
+"podatku</a>.\n "
 
 #: templates/info/join_us.html:22
 msgid ""
@@ -243,92 +247,92 @@ msgstr ""
 msgid "More..."
 msgstr "Więcej..."
 
-#: templates/main_page.html:9 templates/main_page.html.py:10
+#: templates/main_page.html:10 templates/main_page.html.py:11
 msgid "Wolne Lektury internet library"
 msgstr "Biblioteka internetowa Wolne Lektury"
 
-#: templates/main_page.html:21
+#: templates/main_page.html:22
 msgid "In our digital library you will find"
 msgstr "W naszej cyfrowej bibliotece znajdziesz"
 
-#: templates/main_page.html:32
+#: templates/main_page.html:33
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr "i wiele innych książek, wierszy, obrazów, audiobooków…"
 
-#: templates/main_page.html:39
+#: templates/main_page.html:40
 msgid "Motifs and themes"
 msgstr "Motywy i tematy"
 
-#: templates/main_page.html:41
+#: templates/main_page.html:42
 msgid "Theme"
 msgstr "Motyw"
 
-#: templates/main_page.html:42
+#: templates/main_page.html:43
 msgid "Explore works with the same theme"
 msgstr "Utwory, w których występuje ten motyw:"
 
-#: templates/main_page.html:54
+#: templates/main_page.html:55
 msgid "See motifs catalog"
 msgstr "Zobacz katalog motywów"
 
-#: templates/main_page.html:94
+#: templates/main_page.html:95
 msgid "Collections"
 msgstr "Kolekcje"
 
-#: templates/main_page.html:98
+#: templates/main_page.html:99
 msgid "See collections catalog"
 msgstr "Zobacz katalog kolekcji"
 
-#: templates/main_page.html:103
+#: templates/main_page.html:104
 msgid "Recent publications"
 msgstr "Ostatnie publikacje"
 
-#: templates/main_page.html:109
+#: templates/main_page.html:110
 msgid "More recent publications"
 msgstr "Więcej ostatnich publikacji"
 
-#: templates/main_page.html:115
+#: templates/main_page.html:116
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/main_page.html:120
+#: templates/main_page.html:121
 msgid "Utilities"
 msgstr "Narzędzia"
 
-#: templates/main_page.html:123
+#: templates/main_page.html:124
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: templates/main_page.html:125
+#: templates/main_page.html:126
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: templates/main_page.html:126
+#: templates/main_page.html:127
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: templates/main_page.html:127
+#: templates/main_page.html:128
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: templates/main_page.html:128 templates/publish_plan.html:4
+#: templates/main_page.html:129 templates/publish_plan.html:4
 #: templates/publish_plan.html.py:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: templates/main_page.html:133
+#: templates/main_page.html:134
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: templates/main_page.html:138
+#: templates/main_page.html:139
 msgid "Information"
 msgstr "Informacje"
 
-#: templates/main_page.html:140
+#: templates/main_page.html:141
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: templates/main_page.html:161
+#: templates/main_page.html:162
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
@@ -423,7 +427,7 @@ msgstr "E-mail"
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
 
-#: utils.py:116
+#: utils.py:120
 msgid "Message sent automatically. Please do not reply."
 msgstr "Wiadomość wysłana automatycznie. Prosimy nie odpowiadać."
 
@@ -435,9 +439,6 @@ msgstr "Zalogowano jako %(user)s"
 #: views.py:114
 msgid "You have to be logged in to continue"
 msgstr "Zaloguj się, aby kontynuować"
-
-#~ msgid "Sign in using:"
-#~ msgstr "Zaloguj się używając:"
 
 #~ msgid "What's new?"
 #~ msgstr "Co nowego?"
