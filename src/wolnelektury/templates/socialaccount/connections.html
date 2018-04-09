@@ -45,6 +45,7 @@
 <p>{% trans "You currently have no social network accounts connected to this account." %}</p>
 {% endif %}
 
+{% if USE_OPENID %}
 <h2>{% trans 'Add a 3rd Party Account' %}</h2>
 
 <ul class="socialaccount_providers">
@@ -52,6 +53,7 @@
 </ul>
 
 {% include "socialaccount/snippets/login_extra.html" %}
+{% endif %}
 </div>
 {% endblock %}
 
