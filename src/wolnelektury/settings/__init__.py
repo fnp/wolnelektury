@@ -99,6 +99,7 @@ INSTALLED_APPS_CONTRIB = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.openid',
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.twitter',
     ]
 
