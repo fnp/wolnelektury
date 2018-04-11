@@ -11,7 +11,7 @@ django-piston==0.2.2.1.2
 jsonfield>=1.0.3,<1.1
 django-picklefield
 django-modeltranslation>=0.10,<0.11
-django-allauth>=0.24,<0.25
+django-allauth>=0.32,<0.33
 django-extensions
 
 # contact
