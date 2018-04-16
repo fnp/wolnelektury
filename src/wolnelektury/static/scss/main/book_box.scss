@@ -297,7 +297,8 @@
 
   .book-box-head,
   .tags,
-  .book-box-tools {
+  .book-box-tools,
+  .abstract {
     @include min-screen($S_BOOK_SHORT_FULL) {
       margin-left: 154px;
     }
@@ -369,6 +370,18 @@
         @include size(margin-left, 4.4px);
         @include size(margin-right, 5.5px);
       }
+    }
+  }
+
+  .abstract {
+    @include size(font-size, 16px);
+    line-height: 1.2em;
+    @include size(margin-bottom, 18px);
+    @include size(margin-top, 18px);
+
+    p.paragraph {
+      @include size(margin-bottom, 9px);
+      @include size(margin-top, 9px);
     }
   }
 

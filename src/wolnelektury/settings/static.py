@@ -93,6 +93,7 @@ PIPELINE = {
                 'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',
                 'js/contrib/jquery.countdown-es.js', 'js/contrib/jquery.countdown-lt.js',
                 'js/contrib/jquery.countdown-ru.js', 'js/contrib/jquery.countdown-fr.js',
+                'js/contrib/jquery.shorten.js',
 
                 'js/contrib/jquery-ui-1.8.16.custom.min.js',
 

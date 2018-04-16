@@ -94,6 +94,11 @@
           {% endif %}
           {% endwith %}
         </div>
+        {% if book.abstract %}
+          <div class="abstract more">
+            {{ book.abstract|safe }}
+          </div>
+        {% endif %}
       </div>
       {% book_shelf_tags book.pk %}
 

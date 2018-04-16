@@ -57,6 +57,14 @@
             })
         });
 
+        $('.more').each(function () {
+            $(this).shorten({
+                showChars: 150,
+                moreText: "więcej",
+                lessText: "mniej"
+            });
+        });
+
 
 
         (function() {
