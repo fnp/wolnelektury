@@ -241,7 +241,7 @@ class Funding(models.Model):
     class Meta:
         verbose_name = _('funding')
         verbose_name_plural = _('fundings')
-        ordering = ['-payed_at']
+        ordering = ['-payed_at', 'pk']
 
     @classmethod
     def payed(cls):
