@@ -18,6 +18,8 @@ from django.utils.deconstruct import deconstructible
 import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
 from ssify import flush_ssi_includes
+
+from librarian.html import transform_abstrakt
 from newtagging import managers
 from catalogue import constants
 from catalogue.fields import EbookField
@@ -60,6 +62,7 @@ class Book(models.Model):
     common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     language = models.CharField(_('language code'), max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
     description = models.TextField(_('description'), blank=True)
+    abstract = models.TextField(_('abstract'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('change date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
@@ -345,6 +348,13 @@ class Book(models.Model):
                 ilustr_path = os.path.join(gallery_path, ilustr_src)
                 urllib.urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
 
+    def load_abstract(self):
+        abstract = self.wldocument().edoc.getroot().find('.//abstrakt')
+        if abstract is not None:
+            self.abstract = transform_abstrakt(abstract)
+        else:
+            self.abstract = ''
+
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -403,6 +413,7 @@ class Book(models.Model):
         else:
             book.common_slug = book.slug
         book.extra_info = book_info.to_dict()
+        book.load_abstract()
         book.save()
 
         meta_tags = Tag.tags_from_info(book_info)
