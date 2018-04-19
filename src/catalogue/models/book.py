@@ -349,7 +349,7 @@ class Book(models.Model):
                 urllib.urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
 
     def load_abstract(self):
-        abstract = self.wldocument().edoc.getroot().find('.//abstrakt')
+        abstract = self.wldocument(parse_dublincore=False).edoc.getroot().find('.//abstrakt')
         if abstract is not None:
             self.abstract = transform_abstrakt(abstract)
         else:

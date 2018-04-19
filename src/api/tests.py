@@ -28,7 +28,7 @@ class ApiTest(TestCase):
         try:
             data = json.loads(content)
         except ValueError:
-            self.fail('No JSON could be decoded:', content)
+            self.fail('No JSON could be decoded: %s' % content)
         return data
 
 

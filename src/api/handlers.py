@@ -283,6 +283,9 @@ class EBooksHandler(AnonymousBooksHandler):
 
 
 class BookProxy(models.Model):
+    class Meta:
+        managed = False
+
     def __init__(self, book, key):
         self.book = book
         self.key = key
