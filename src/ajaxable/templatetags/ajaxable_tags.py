@@ -39,7 +39,7 @@ def pretty_field(field, template=None):
 
 @register.filter
 def pretty_checkbox(field):
-    return pretty_field(field, template='''
+    return pretty_field(field, template=u'''
         <li class="checkbox">
           <span class="error">%(errors)s</span>
           <label class="nohide">%(input)s<span class="label"> %(label)s</span></label>
