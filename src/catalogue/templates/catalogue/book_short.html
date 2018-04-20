@@ -94,11 +94,6 @@
           {% endif %}
           {% endwith %}
         </div>
-        {% if book.abstract %}
-          <div class="abstract more">
-            {{ book.abstract|safe }}
-          </div>
-        {% endif %}
       </div>
       {% book_shelf_tags book.pk %}
 
@@ -143,6 +138,12 @@
           </div>
         </li>
       </ul>
+      <div class="clearboth"></div>
+      {% if book.abstract %}
+        <div class="abstract more">
+          {{ book.abstract|safe }}
+        </div>
+      {% endif %}
       {% block book-box-extra-info %}{% endblock %}
       {% block box-append %}
       {% endblock %}

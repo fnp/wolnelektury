@@ -373,18 +373,6 @@
     }
   }
 
-  .abstract {
-    @include size(font-size, 16px);
-    line-height: 1.2em;
-    @include size(margin-bottom, 18px);
-    @include size(margin-top, 18px);
-
-    p.paragraph {
-      @include size(margin-bottom, 9px);
-      @include size(margin-top, 9px);
-    }
-  }
-
 }
 
 .book-box-tools {
@@ -525,6 +513,42 @@
 
     @media screen and (min-width: 33em) {
       @include size(padding-left, 19px);
+    }
+  }
+}
+
+.abstract {
+  @include size(font-size, 16px);
+  line-height: 1.2em;
+  @include size(margin-bottom, 8px);
+  @include size(margin-top, 18px);
+  overflow: hidden;
+  position: relative;
+
+  p.paragraph {
+    margin-bottom: 0;
+    margin-top: 1.2em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &.short {
+    height: 3.6em;
+    &:after {
+       content:' ';
+       position:absolute;
+       bottom:0;
+       width:25%;
+       height:20px;
+       background-color:transparent;
+       /* assume ltr */
+       right:0;
+       background-image:-webkit-linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%);
+       background-image:-moz-linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%);
+       background-image:-o-linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%);
+       background-image:linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%)
     }
   }
 }
