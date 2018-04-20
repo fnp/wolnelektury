@@ -11,7 +11,7 @@
       {% blocktrans %}Confirm to authorize access to Wolne Lektury as user <strong>{{ user}}</strong>.{% endblocktrans %}
     </p>
 
-    <form action="{% url 'piston.authentication.oauth_user_auth' %}" method="POST">
+    <form action="{% url 'oauth_user_auth' %}" method="POST">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">{% trans "Confirm" %}</button>

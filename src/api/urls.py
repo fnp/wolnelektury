@@ -2,14 +2,16 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
-from piston.authentication import OAuthAuthentication, oauth_access_token
+from piston.authentication import OAuthAuthentication, oauth_access_token, oauth_request_token
 from piston.resource import Resource
 from ssify import ssi_included
+import catalogue.views
 from api import handlers
 from api.helpers import CsrfExemptResource
+from api.piston_patch import oauth_user_auth
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
 
@@ -50,21 +52,18 @@ def incl(request, model, pk, emitter_format):
     return resp
 
 
-urlpatterns = patterns(
-    'piston.authentication',
-    url(r'^oauth/request_token/$', 'oauth_request_token'),
-    url(r'^oauth/authorize/$', 'oauth_user_auth'),
+urlpatterns = [
+    url(r'^oauth/request_token/$', oauth_request_token),
+    url(r'^oauth/authorize/$', oauth_user_auth, name='oauth_user_auth'),
     url(r'^oauth/access_token/$', csrf_exempt(oauth_access_token)),
 
-) + patterns(
-    '',
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
     url(r'^include/(?P<model>book|fragment|tag)/(?P<pk>\d+)\.(?P<lang>.+)\.(?P<emitter_format>xml|json)$',
         incl, name='api_include'),
 
     # info boxes (used by mobile app)
-    url(r'book/(?P<book_id>\d*?)/info\.html$', 'catalogue.views.book_info'),
-    url(r'tag/(?P<tag_id>\d*?)/info\.html$', 'catalogue.views.tag_info'),
+    url(r'book/(?P<book_id>\d*?)/info\.html$', catalogue.views.book_info),
+    url(r'tag/(?P<tag_id>\d*?)/info\.html$', catalogue.views.tag_info),
 
     # books by collections
     url(r'^collections/$', collection_list_resource, name="api_collections"),
@@ -103,4 +102,4 @@ urlpatterns = patterns(
 
     # tags by category
     url(r'^(?P<category>[a-z0-9-]+)/$', tag_list_resource, name='api_tag_list'),
-)
+]
