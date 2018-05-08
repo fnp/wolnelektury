@@ -7,7 +7,7 @@ AUTHENTICATION_BACKENDS = [
     # 'allauth.account.auth_backends.AuthenticationBackend',
 ]
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
-LOGIN_URL = '/uzytkownik/login/'
+LOGIN_URL = '/uzytkownik/zaloguj-utworz/'
 
 LOGIN_REDIRECT_URL = '/'
 

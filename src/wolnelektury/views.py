@@ -115,7 +115,7 @@ class LoginRegisterFormView(LoginFormView):
 
     def extra_context(self, request, obj):
         return {
-            "register_form": placeholdized(UserCreationForm(prefix='register')),
+            "register_form": placeholdized(RegistrationForm(prefix='register')),
             "register_submit": _('Register'),
         }
 

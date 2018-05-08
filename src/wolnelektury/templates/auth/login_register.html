@@ -6,16 +6,5 @@
 {% block extra %}
   {{ block.super }}
 
-  <h1>{% trans "or register" %}:</h1>
-
-  <form action="{% url 'register' %}" method="post" accept-charset="utf-8"
-        class="cuteform hidelabels">
-    {% ssi_csrf_token %}
-    {% render_honeypot_field %}
-    <ol>
-      <div id="id_register-__all__"></div>
-      {{ register_form.as_ul }}
-      <li><input type="submit" value="{{ register_submit }}"/></li>
-    </ol>
-  </form>
+  {% include "auth/register_form.html" with form=register_form title=_("or register") action_url='register' action_query=request.GET.urlencode honeypot=True submit=register_submit %}
 {% endblock %}
