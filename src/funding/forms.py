@@ -4,6 +4,7 @@
 #
 from django import forms
 from django.utils import formats
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext, get_language
 
 from newsletter.forms import NewsletterForm
@@ -20,10 +21,14 @@ class FundingForm(NewsletterForm):
         label=_("Name"), required=False, help_text=_("Optional name for public list of contributors"))
     email = forms.EmailField(
         label=_("Contact e-mail"),
-        help_text=_(
+        help_text=mark_safe(_(
             "We'll use it to contact you about the <strong>details needed for your perks</strong>,<br/>"
             "and to send you updates about your payment and the fundraiser status (which you can always turn off).<br/>"
-            "Your e-mail won't be publicised."), required=False)
+            "Your e-mail won't be publicised.")), required=False)
+
+    data_processing_part2 = u'''\
+W przypadku podania danych zostaną one wykorzystane w sposób podany powyżej, a w przypadku wyrażenia dodatkowej zgody 
+adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
 
     def __init__(self, offer, *args, **kwargs):
         self.offer = offer

@@ -21,6 +21,10 @@ class SuggestForm(NewsletterForm):
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     description = forms.CharField(label=_('Description'), widget=forms.Textarea, required=True)
 
+    data_processing_part2 = u'''\
+Dane są przetwarzane w zakresie niezbędnym do obsługi zgłoszenia. W przypadku wyrażenia dodatkowej zgody \
+adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
+
     def save(self, request):
         super(SuggestForm, self).save()
         contact = self.cleaned_data['contact']
@@ -65,6 +69,8 @@ class PublishingSuggestForm(NewsletterForm):
     books = forms.CharField(label=_('books'), widget=forms.Textarea, required=True)
     ebook = forms.BooleanField(label=_('ebook'), required=False, initial=True)
     audiobook = forms.BooleanField(label=_('audiobook'), required=False)
+
+    data_processing_part2 = SuggestForm.data_processing_part2
 
     def clean(self):
         if not self.cleaned_data['ebook'] and not self.cleaned_data['audiobook']:

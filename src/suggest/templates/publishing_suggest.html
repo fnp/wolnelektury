@@ -9,10 +9,9 @@
   {{ form.ebook|pretty_checkbox }}
   {{ form.audiobook|pretty_checkbox }}
   {{ form.agree_newsletter|pretty_checkbox }}
+  <li><span class="helptext">{{ form.data_processing }}</span></li>
 {% endblock %}
 
-
-    <li><input type="submit" value="{% trans "Send report" %}"/></li>
-    <li>{% trans "Remember that we can only publish books in public domain, ie. 70 years after the death of the author!" %}</li>
-  </ol>
-</form>
+{% block extra %}
+  <p>{% trans "Remember that we can only publish books in public domain, ie. 70 years after the death of the author!" %}</p>
+{% endblock %}

@@ -4,6 +4,7 @@ from django.core.validators import validate_email
 from django.forms import Form, BooleanField
 from django.forms.fields import EmailField
 from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext
 
 from contact import mailing
@@ -14,12 +15,19 @@ from wolnelektury.utils import send_noreply_mail
 class NewsletterForm(Form):
     email_field = 'email'
     agree_newsletter = BooleanField(
-        required=False, initial=False, label=_(u'I want to receive Wolne Lektury\'s newsletter.'), help_text='''\
-Oświadczam, że wyrażam zgodę na przetwarzanie moich danych osobowych zawartych \
-w niniejszym formularzu zgłoszeniowym przez Fundację Nowoczesna Polska (administratora danych) z siedzibą \
-w Warszawie (00-514) przy ul. Marszałkowskiej 84/92 lok. 125 w celu otrzymywania newslettera Wolnych Lektur. \
-Jednocześnie oświadczam, że zostałam/em poinformowana/y o tym, że mam prawo wglądu w treść swoich danych i \
-możliwość ich poprawiania oraz że ich podanie jest dobrowolne, ale niezbędne do dokonania zgłoszenia.''')
+        required=False, initial=False, label=_(u'I want to receive Wolne Lektury\'s newsletter.'))
+
+    data_processing_part1 = u'''\
+Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
+Podanie danych osobowych jest dobrowolne.'''
+    data_processing_part2 = u'''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.'''
+    data_processing_part3 = u'''\
+Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
+Więcej informacji w <a href="">polityce prywatności.</a>'''
+
+    @property
+    def data_processing(self):
+        return mark_safe('%s %s %s' % (self.data_processing_part1, self.data_processing_part2, self.data_processing_part3))
 
     def save(self):
         try:

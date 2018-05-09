@@ -12,6 +12,7 @@
     <ol>
       <li>{{ form.email|pretty_field }}</li>
       <li>{{ form.agree_newsletter|pretty_checkbox }}</li>
+      <li><span class="helptext">{{ form.data_processing }}</span></li>
       <li><input type="submit" value="{% trans "Subscribe" %}"/></li>
     </ol>
   </form>

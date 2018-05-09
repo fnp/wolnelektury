@@ -7,6 +7,11 @@ from newsletter.forms import NewsletterForm
 
 # has to be this order, because otherwise the form is lacking fields
 class RegistrationForm(UserCreationForm, NewsletterForm):
+    data_processing_part2 = u'''\
+Dane są przetwarzane w zakresie niezbędnym do prowadzenia serwisu, a także w celach prowadzenia statystyk, \
+ewaluacji i sprawozdawczości. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany \
+także w celu przesyłania newslettera Wolnych Lektur.'''
+
     class Meta:
         model = User
         fields = ('username', 'email')
