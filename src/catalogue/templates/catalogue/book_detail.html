@@ -13,7 +13,9 @@
 {% block bodyid %}book-detail{% endblock %}
 
 {% block body %}
-  {% ssi_include 'catalogue_book_wide' pk=book.pk %}
+  {% cache 86400 book_wide book.pk book|status:user %}
+    {% include 'catalogue/book_wide.html' %}
+  {% endcache %}
 
   {% work_list book_children %}
 

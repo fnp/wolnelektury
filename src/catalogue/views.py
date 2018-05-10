@@ -426,17 +426,9 @@ def book_short(request, pk):
     ))(ssi_expect(pk, int)))
 def book_wide(request, pk):
     book = get_object_or_404(Book, pk=pk)
-    extra_info = book.extra_info
 
     return render(request, 'catalogue/book_wide.html', {
         'book': book,
-        'parents': book.parents(),
-        'tags': split_tags(book.tags.exclude(category__in=('set', 'theme'))),
-        'show_lang': book.language_code() != settings.LANGUAGE_CODE,
-
-        'main_link': reverse('book_text', args=[book.slug]) if book.html_file else None,
-        'extra_info': extra_info,
-        'hide_about': extra_info.get('about', '').startswith('http://wiki.wolnepodreczniki.pl'),
     })
 
 

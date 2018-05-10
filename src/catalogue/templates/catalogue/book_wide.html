@@ -9,8 +9,8 @@
 
 
 {% block cover-area-extra %}
-  {% if extra_info.license %}
-    {% license_icon extra_info.license %}
+  {% if book.extra_info.license %}
+    {% license_icon book.extra_info.license %}
   {% endif %}
 {% endblock %}
 
