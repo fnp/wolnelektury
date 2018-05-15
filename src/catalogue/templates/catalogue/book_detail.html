@@ -13,7 +13,7 @@
 {% block bodyid %}book-detail{% endblock %}
 
 {% block body %}
-  {% cache 86400 book_wide book.pk book|status:user %}
+  {% cache 86400 book_wide book.pk %} {# book|status:user #}
     {% include 'catalogue/book_wide.html' %}
   {% endcache %}
 
