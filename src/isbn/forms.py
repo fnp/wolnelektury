@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import date
 from urllib2 import urlopen
 
 from django import forms
@@ -13,7 +14,7 @@ from librarian.parser import WLDocument
 
 class WLISBNForm(forms.Form):
     platform_url = forms.URLField(label=u'Adres na platformie')
-    publishing_date = forms.DateField(label=u'Data publikacji')
+    publishing_date = forms.DateField(label=u'Data publikacji', initial=date.today)
 
     def prepare_data(self):
         platform_url = self.cleaned_data['platform_url']
