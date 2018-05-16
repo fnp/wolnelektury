@@ -354,3 +354,7 @@ def gallery_path(slug):
 
 def gallery_url(slug):
     return '%s%s%s/' % (settings.MEDIA_URL, settings.IMAGE_DIR, slug)
+
+
+def is_subscribed(user):
+    return user.is_authenticated()  # TEMPORARY

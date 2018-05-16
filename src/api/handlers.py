@@ -161,7 +161,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data'] + [
+        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data', 'preview'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -394,18 +394,18 @@ def add_tag_getters():
         setattr(BookDetails, plural, _tags_getter(singular))
         setattr(BookDetails, singular, _tag_getter(singular))
 
+
 add_tag_getters()
 
 
 # add fields for files in Book
 def _file_getter(book_format):
-    field = "%s_file" % book_format
 
-    @classmethod
-    def get_file(cls, book):
-        f = getattr(book, field)
-        if f:
-            return MEDIA_BASE + f.url
+    @staticmethod
+    def get_file(book):
+        f_url = book.media_url(book_format)
+        if f_url:
+            return MEDIA_BASE + f_url
         else:
             return ''
     return get_file

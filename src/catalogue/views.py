@@ -26,7 +26,7 @@ from catalogue import constants
 from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment
-from catalogue.utils import split_tags
+from catalogue.utils import split_tags, is_subscribed
 from catalogue.models.tag import prefetch_relations
 from wolnelektury.utils import is_crawler
 
@@ -307,6 +307,9 @@ def player(request, slug):
 def book_text(request, slug):
     book = get_object_or_404(Book, slug=slug)
 
+    if book.preview and not is_subscribed(request.user):
+        return HttpResponseRedirect(book.get_absolute_url())
+
     if not book.has_html_file():
         raise Http404
     return render_to_response('catalogue/book_text.html', {'book': book}, context_instance=RequestContext(request))
@@ -352,6 +355,18 @@ def tag_info(request, tag_id):
     return HttpResponse(tag.description)
 
 
+def embargo_link(request, format_, slug):
+    book = get_object_or_404(Book, slug=slug)
+    if format_ not in Book.formats:
+        raise Http404
+    media_file = book.get_media(format_)
+    if not book.preview:
+        return HttpResponseRedirect(media_file.url)
+    if not is_subscribed(request.user):
+        return HttpResponseRedirect(book.get_absolute_url())
+    return HttpResponse(media_file, content_type=constants.EBOOK_CONTENT_TYPES[format_])
+
+
 def download_zip(request, format, slug=None):
     if format in Book.ebook_formats:
         url = Book.zip_format(format)
@@ -379,8 +394,15 @@ class CustomPDFFormView(AjaxableFormView):
         """Override to parse view args and give additional args to the form."""
         return (obj,), {}
 
+    def validate_object(self, obj, request):
+        book = obj
+        if book.preview and not is_subscribed(request.user):
+            return HttpResponseRedirect(book.get_absolute_url())
+        return super(CustomPDFFormView, self).validate_object(obj, request)
+
     def get_object(self, request, slug, *args, **kwargs):
-        return get_object_or_404(Book, slug=slug)
+        book = get_object_or_404(Book, slug=slug)
+        return book
 
     def context_description(self, request, obj):
         return obj.pretty_title()

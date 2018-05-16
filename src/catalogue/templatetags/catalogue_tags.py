@@ -18,6 +18,7 @@ from ssify import ssi_variable
 from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
+from catalogue.utils import is_subscribed
 from picture.models import Picture
 
 register = template.Library()
@@ -491,3 +492,13 @@ def strip_tag(html, tag_name):
     # docelowo może być warto zainstalować BeautifulSoup do takich rzeczy
     import re
     return re.sub(r"<.?%s\b[^>]*>" % tag_name, "", html)
+
+
+@register.filter
+def status(book, user):
+    if not book.preview:
+        return 'open'
+    elif is_subscribed(user):
+        return 'preview'
+    else:
+        return 'closed'

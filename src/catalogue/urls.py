@@ -64,6 +64,7 @@ urlpatterns += patterns(
 
     url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
 
+    url(r'^pobierz/(?P<slug>%s).(?P<format_>[a-z0-9]*)$' % SLUG, 'embargo_link', name='embargo_link'),
 
     # zip
     url(r'^zip/pdf\.zip$', 'download_zip', {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
