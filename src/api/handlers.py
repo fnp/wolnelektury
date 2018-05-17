@@ -161,7 +161,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data'] + [
+        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data', 'audio_length'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -180,7 +180,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio']
 
     @classmethod
     def genres(cls, book):
@@ -307,7 +307,7 @@ class QuerySetProxy(models.QuerySet):
 
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'has_audio', 'slug', 'key']
 
     def read(self, request):
         key_sep = '$'

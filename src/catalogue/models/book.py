@@ -71,6 +71,7 @@ class Book(models.Model):
     wiki_link = models.CharField(blank=True, max_length=240)
     print_on_demand = models.BooleanField(_('print on demand'), default=False)
     recommended = models.BooleanField(_('recommended'), default=False)
+    audio_length = models.CharField(_('audio length'), blank=True, max_length=8)
 
     # files generated during publication
     cover = EbookField(
@@ -208,6 +209,32 @@ class Book(models.Model):
     def is_foreign(self):
         return self.language_code() != settings.LANGUAGE_CODE
 
+    def set_audio_length(self):
+        length = self.get_audio_length()
+        if length > 0:
+            self.audio_length = self.format_audio_length(length)
+            self.save()
+
+    @staticmethod
+    def format_audio_length(seconds):
+        if seconds < 60*60:
+            minutes = seconds // 60
+            seconds = seconds % 60
+            return '%d:%02d' % (minutes, seconds)
+        else:
+            hours = seconds // 3600
+            minutes = seconds % 3600 // 60
+            seconds = seconds % 60
+            return '%d:%02d:%02d' % (hours, minutes, seconds)
+
+    def get_audio_length(self):
+        from mutagen.mp3 import MP3
+        total = 0
+        for media in self.get_mp3():
+            audio = MP3(media.file.path)
+            total += audio.info.length
+        return int(total)
+
     def has_media(self, type_):
         if type_ in Book.formats:
             return bool(getattr(self, "%s_file" % type_))
@@ -243,19 +270,18 @@ class Book(models.Model):
     has_description.short_description = _('description')
     has_description.boolean = True
 
-    # ugly ugly ugly
     def has_mp3_file(self):
-        return bool(self.has_media("mp3"))
+        return self.has_media("mp3")
     has_mp3_file.short_description = 'MP3'
     has_mp3_file.boolean = True
 
     def has_ogg_file(self):
-        return bool(self.has_media("ogg"))
+        return self.has_media("ogg")
     has_ogg_file.short_description = 'OGG'
     has_ogg_file.boolean = True
 
     def has_daisy_file(self):
-        return bool(self.has_media("daisy"))
+        return self.has_media("daisy")
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
 

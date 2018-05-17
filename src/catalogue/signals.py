@@ -19,6 +19,7 @@ from .models import BookMedia, Book, Collection, Fragment, Tag
 
 @receiver([post_save, post_delete], sender=BookMedia)
 def bookmedia_save(sender, instance, **kwargs):
+    instance.book.set_audio_length()
     instance.book.save()
 
 
