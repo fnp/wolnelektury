@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import OrderedDict
-from datetime import date
+from datetime import date, timedelta
 from random import randint
 import os.path
 import re
@@ -433,7 +433,7 @@ class Book(models.Model):
             old_cover = None
             book.preview = bool(days)
             if book.preview:
-                book.preview_until = date.today()
+                book.preview_until = date.today() + timedelta(days)
         else:
             if not overwrite:
                 raise Book.AlreadyExists(_('Book %s already exists') % book_slug)
