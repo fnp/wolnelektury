@@ -136,6 +136,7 @@
     @media screen and (min-width: 1024px) {
       display: inline-block;
       @include size(width, 590px);
+      @include size(min-height, 196px);
     }
   }
 
@@ -175,6 +176,7 @@
       @media screen and (min-width: 62.5em) {
         float: left;
         @include size(width, 536px);
+        @include size(min-height, 196px);
       }
     }
 
@@ -524,6 +526,10 @@
   @include size(margin-top, 18px);
   overflow: hidden;
   position: relative;
+
+  @media screen and (min-width: 62.5em) {
+    @include size(width, 536px);
+  }
 
   p.paragraph {
     margin-bottom: 0;
