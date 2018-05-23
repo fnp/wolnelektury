@@ -32,7 +32,7 @@ def pretty_field(field, template=None):
     return mark_safe(template % {
         'errors': field.errors,
         'input': field,
-        'label': force_unicode(field.label),
+        'label': ('*' if field.field.required else '') + force_unicode(field.label),
         'helptext': force_unicode(field.help_text),
     })
 

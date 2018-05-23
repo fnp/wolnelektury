@@ -48,7 +48,7 @@ def require_login(request):
 
 def placeholdized(form):
     for field in form.fields.values():
-        field.widget.attrs['placeholder'] = field.label
+        field.widget.attrs['placeholder'] = field.label + ('*' if field.required else '')
     return form
 
 
