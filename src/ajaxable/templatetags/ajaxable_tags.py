@@ -23,7 +23,7 @@ def placeholdized_ul(form):
 @register.filter
 def pretty_field(field, template=None):
     if template is None:
-        template = '''
+        template = u'''
             <li>
               <span class="error">%(errors)s</span>
               <label class="nohide"><span class="label">%(label)s: </span>%(input)s</label>
