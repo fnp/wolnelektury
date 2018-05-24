@@ -29,10 +29,10 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
     def data_processing(self):
         return mark_safe('%s %s %s' % (self.data_processing_part1, self.data_processing_part2, self.data_processing_part3))
 
-    def save(self):
+    def save(self, *args, **kwargs):
         try:
             # multiple inheritance mode
-            super(NewsletterForm, self).save()
+            super(NewsletterForm, self).save(*args, **kwargs)
         except AttributeError:
             pass
         if not self.cleaned_data.get('agree_newsletter'):
