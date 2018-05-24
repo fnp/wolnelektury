@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^uzytkownik/signup/$', views.RegisterFormView(), name='register'),
     url(r'^uzytkownik/logout/$', views.logout_then_redirect, name='logout'),
     url(r'^uzytkownik/zaloguj-utworz/$', views.LoginRegisterFormView(), name='login_register'),
+    url(r'^uzytkownik/social/signup/$', views.SocialSignupView.as_view(), name='socialaccount_signup'),
 
     # Includes.
     url(r'^latests_blog_posts.html$', views.latest_blog_posts, name='latest_blog_posts'),

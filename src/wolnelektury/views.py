@@ -4,11 +4,12 @@
 #
 from datetime import date, datetime
 import feedparser
+from allauth.socialaccount.views import SignupView
 
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.core.cache import cache
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -22,7 +23,7 @@ from catalogue.models import Book, Collection, Tag, Fragment
 from ssify import ssi_included
 
 from social.utils import get_or_choose_cite
-from wolnelektury.forms import RegistrationForm
+from wolnelektury.forms import RegistrationForm, SocialSignupForm
 
 
 def main_page(request):
@@ -184,6 +185,10 @@ def latest_blog_posts(request, feed_url=None, posts_to_show=5):
 @ssi_included(use_lang=False)
 def widget(request):
     return render(request, 'widget.html')
+
+
+class SocialSignupView(SignupView):
+    form_class = SocialSignupForm
 
 
 def exception_test(request):
