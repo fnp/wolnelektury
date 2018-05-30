@@ -201,7 +201,7 @@ class AcquisitionFeed(Feed):
             return u''
 
     def item_enclosure_url(self, book):
-        return full_url(book.epub_file.url) if book.epub_file else None
+        return full_url(book.epub_url()) if book.epub_file else None
 
     def item_enclosure_length(self, book):
         return book.epub_file.size if book.epub_file else None
