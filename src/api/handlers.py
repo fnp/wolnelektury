@@ -6,6 +6,7 @@ import json
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.http.response import HttpResponse
 from django.utils.functional import lazy
 from django.db import models
 from piston.handler import AnonymousBaseHandler, BaseHandler
@@ -15,6 +16,7 @@ from sorl.thumbnail import default
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.models.tag import prefetch_relations
+from catalogue.utils import is_subscribed
 from picture.models import Picture
 from picture.forms import PictureImportForm
 
@@ -276,6 +278,18 @@ class BooksHandler(BookDetailHandler):
             return rc.CREATED
         else:
             return rc.NOT_FOUND
+
+
+class EpubHandler(BookDetailHandler):
+    def read(self, request, slug):
+        if not is_subscribed(request.user):
+            return rc.FORBIDDEN
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        response = HttpResponse(book.get_media('epub'))
+        return response
 
 
 class EBooksHandler(AnonymousBooksHandler):

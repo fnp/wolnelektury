@@ -20,6 +20,7 @@ ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 # book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 filter_book_resource = Resource(handler=handlers.FilterBooksHandler)
+epub_resource = Resource(handler=handlers.EpubHandler)
 
 collection_resource = Resource(handler=handlers.CollectionDetailHandler)
 collection_list_resource = Resource(handler=handlers.CollectionsHandler)
@@ -68,6 +69,9 @@ urlpatterns = [
     # books by collections
     url(r'^collections/$', collection_list_resource, name="api_collections"),
     url(r'^collections/(?P<slug>[^/]+)/$', collection_resource, name="api_collection"),
+
+    # epub preview
+    url(r'^epub/(?P<slug>[a-z0-9-]+)/$', epub_resource, name='api_epub'),
 
     # objects details
     url(r'^books/(?P<book>[a-z0-9-]+)/$', book_resource, name="api_book"),
