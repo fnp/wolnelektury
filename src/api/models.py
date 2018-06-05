@@ -2,6 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models.signals import pre_delete
@@ -38,3 +39,17 @@ def _pre_delete_handler(sender, instance, **kwargs):
             content_type=content_type, object_id=instance.id, created_at=instance.created_at, category=category,
             slug=instance.slug)
 pre_delete.connect(_pre_delete_handler)
+
+
+class BookUserData(models.Model):
+    book = models.ForeignKey(Book)
+    user = models.ForeignKey(User)
+    complete = models.BooleanField(default=False)
+
+    def get_state(self):
+        return 'complete' if self.complete else 'reading'
+
+    def set_state(self, state):
+        self.complete = state == 'complete'
+
+    state = property(get_state, set_state)

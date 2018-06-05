@@ -22,6 +22,9 @@ book_resource = Resource(handler=handlers.BookDetailHandler)
 filter_book_resource = Resource(handler=handlers.FilterBooksHandler)
 epub_resource = Resource(handler=handlers.EpubHandler)
 
+reading_resource = CsrfExemptResource(handler=handlers.UserDataHandler)
+shelf_resource = Resource(handler=handlers.UserShelfHandler)
+
 collection_resource = Resource(handler=handlers.CollectionDetailHandler)
 collection_list_resource = Resource(handler=handlers.CollectionsHandler)
 
@@ -72,6 +75,11 @@ urlpatterns = [
 
     # epub preview
     url(r'^epub/(?P<slug>[a-z0-9-]+)/$', epub_resource, name='api_epub'),
+
+    # reading data
+    url(r'^reading/(?P<slug>[a-z0-9-]+)/$', reading_resource, name='api_reading'),
+    url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', reading_resource, name='api_reading'),
+    url(r'^shelf/(?P<state>[a-z]+)/$', shelf_resource, name='api_shelf'),
 
     # objects details
     url(r'^books/(?P<book>[a-z0-9-]+)/$', book_resource, name="api_book"),

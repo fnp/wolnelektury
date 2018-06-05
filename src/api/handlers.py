@@ -13,6 +13,7 @@ from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
 
+from api.models import BookUserData
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.models.tag import prefetch_relations
@@ -649,3 +650,62 @@ class PictureHandler(BaseHandler):
             return rc.CREATED
         else:
             return rc.NOT_FOUND
+
+
+class UserDataHandler(BaseHandler):
+    model = BookUserData
+    fields = ('state',)
+    allowed_methods = ('GET', 'POST')
+
+    def read(self, request, slug):
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        try:
+            data = BookUserData.objects.get(book=book, user=request.user)
+        except BookUserData.DoesNotExist:
+            return {'state': 'not_started'}
+        return data
+
+    def create(self, request, slug, state):
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        if state not in ('reading', 'complete'):
+            return rc.NOT_FOUND
+        data, created = BookUserData.objects.get_or_create(book=book, user=request.user)
+        data.state = state
+        data.save()
+        return data
+
+
+class UserShelfHandler(BookDetailHandler):
+    fields = book_tag_categories + [
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
+
+    def parse_bool(self, s):
+        if s in ('true', 'false'):
+            return s == 'true'
+        else:
+            return None
+
+    def read(self, request, state):
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        if state not in ('reading', 'complete'):
+            return rc.NOT_FOUND
+        after = request.GET.get('after')
+        count = int(request.GET.get('count', 50))
+        ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete').values_list('book_id', flat=True)
+        books = Book.objects.filter(id__in=list(ids)).distinct().order_by('slug')
+        if after:
+            books = books.filter(slug__gt=after)
+        if count:
+            books = books[:count]
+        return books
