@@ -97,47 +97,51 @@
       </div>
       {% book_shelf_tags book.pk %}
 
-      <ul class="book-box-tools">
-        <li class="book-box-read">
-          {% if book.html_file %}
-            <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
-          {% endif %}
-          {% if book.print_on_demand %}
-            <a href="{{ book.ridero_link }}" class="downarrow print tlite-tooltip" title="{% trans "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia.<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne bezpłatnie." %}">{% trans "Print on demand –" %}
-                <img src="{% static 'img/ridero.png' %}" style="height: 0.8em;"/></a>
-          {% endif %}
-        </li>
-        <li class="book-box-download">
-          <a class="downarrow">{% trans "Download" %}:</a>
-          <div class="book-box-formats">
-            {% if book.pdf_file %}
-              <span><a href="{{ book.pdf_file.url}}">PDF</a></span>
+      {% if book|status:user != 'closed' %}
+        <ul class="book-box-tools">
+          <li class="book-box-read">
+            {% if book.html_file %}
+              <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
             {% endif %}
-            {% if book.epub_file %}
-              <span><a href="{{ book.epub_file.url}}">EPUB</a></span>
+            {% if book.print_on_demand %}
+              <a href="{{ book.ridero_link }}" class="downarrow print tlite-tooltip" title="{% trans "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia.<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne bezpłatnie." %}">{% trans "Print on demand –" %}
+                  <img src="{% static 'img/ridero.png' %}" style="height: 0.8em;"/></a>
             {% endif %}
-            {% if book.mobi_file %}
-              <span><a href="{{ book.mobi_file.url}}">MOBI</a></span>
-            {% endif %}
-            {% if book.has_audio %}
-              <span><a href="{% url 'download_zip_mp3' book.slug %}">MP3</a></span>
-            {% endif %}
-            <a class="read-more-show hide" href="#">{% trans "more" %}</a>
-            <span class="read-more-content">
-              {% if  book.fb2_file %}
-                <span><a href="{{ book.fb2_file.url}}">FB2</a></span>
+          </li>
+          <li class="book-box-download">
+            <a class="downarrow">{% trans "Download" %}:</a>
+            <div class="book-box-formats">
+              {% if book.pdf_file %}
+                <span><a href="{{ book.pdf_url}}">PDF</a></span>
               {% endif %}
-              {% if  book.txt_file %}
-                <span><a href="{{ book.txt_file.url}}">TXT</a></span>
+              {% if book.epub_file %}
+                <span><a href="{{ book.epub_url}}">EPUB</a></span>
               {% endif %}
-              {% download_audio book mp3=False %}
-              <br>
-              {% custom_pdf_link_li book %}
-              <a class="read-more-hide hide" href="#">{% trans "less" %}</a>
-            </span>
-          </div>
-        </li>
-      </ul>
+              {% if book.mobi_file %}
+                <span><a href="{{ book.mobi_url}}">MOBI</a></span>
+              {% endif %}
+              {% if book.has_audio %}
+                <span><a href="{% url 'download_zip_mp3' book.slug %}">MP3</a></span>
+              {% endif %}
+              <a class="read-more-show hide" href="#">{% trans "more" %}</a>
+              <span class="read-more-content">
+                {% if  book.fb2_file %}
+                  <span><a href="{{ book.fb2_url}}">FB2</a></span>
+                {% endif %}
+                {% if  book.txt_file %}
+                  <span><a href="{{ book.txt_url}}">TXT</a></span>
+                {% endif %}
+                {% download_audio book mp3=False %}
+                <br>
+                {% custom_pdf_link_li book %}
+                <a class="read-more-hide hide" href="#">{% trans "less" %}</a>
+              </span>
+            </div>
+          </li>
+        </ul>
+      {% else %}
+        <p class="book-box-tools">{% trans "For now this work is only available for our subscribers." %}</p>
+      {% endif %}
       {% block book-box-extra-info %}{% endblock %}
       {% block box-append %}{% endblock %}
     </div>

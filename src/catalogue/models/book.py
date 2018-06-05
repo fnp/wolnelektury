@@ -3,6 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import OrderedDict
+from datetime import date, timedelta
 from random import randint
 import os.path
 import re
@@ -72,6 +73,8 @@ class Book(models.Model):
     print_on_demand = models.BooleanField(_('print on demand'), default=False)
     recommended = models.BooleanField(_('recommended'), default=False)
     audio_length = models.CharField(_('audio length'), blank=True, max_length=8)
+    preview = models.BooleanField(_('preview'), default=False)
+    preview_until = models.DateField(_('preview until'), blank=True, null=True)
 
     # files generated during publication
     cover = EbookField(
@@ -265,6 +268,37 @@ class Book(models.Model):
     def get_daisy(self):
         return self.get_media("daisy")
 
+    def media_url(self, format_):
+        media = self.get_media(format_)
+        if media:
+            if self.preview:
+                return reverse('embargo_link', kwargs={'slug': self.slug, 'format_': format_})
+            else:
+                return media.url
+        else:
+            return None
+
+    def html_url(self):
+        return self.media_url('html')
+
+    def pdf_url(self):
+        return self.media_url('pdf')
+
+    def epub_url(self):
+        return self.media_url('epub')
+
+    def mobi_url(self):
+        return self.media_url('mobi')
+
+    def txt_url(self):
+        return self.media_url('txt')
+
+    def fb2_url(self):
+        return self.media_url('fb2')
+
+    def xml_url(self):
+        return self.media_url('xml')
+
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')
@@ -336,7 +370,7 @@ class Book(models.Model):
                 format_)
 
         field_name = "%s_file" % format_
-        books = Book.objects.filter(parent=None).exclude(**{field_name: ""})
+        books = Book.objects.filter(parent=None).exclude(**{field_name: ""}).exclude(preview=True)
         paths = [(pretty_file_name(b), getattr(b, field_name).path) for b in books.iterator()]
         return create_zip(paths, app_settings.FORMAT_ZIPS[format_])
 
@@ -359,6 +393,7 @@ class Book(models.Model):
             index.index.rollback()
             raise e
 
+    # will make problems in conjunction with paid previews
     def download_pictures(self, remote_gallery_url):
         gallery_path = self.gallery_path()
         # delete previous files, so we don't include old files in ebooks
@@ -399,7 +434,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           search_index_tags=True, remote_gallery_url=None):
+                           search_index_tags=True, remote_gallery_url=None, days=0):
         if dont_build is None:
             dont_build = set()
         dont_build = set.union(set(dont_build), set(app_settings.DONT_BUILD))
@@ -422,6 +457,9 @@ class Book(models.Model):
         if created:
             book_shelves = []
             old_cover = None
+            book.preview = bool(days)
+            if book.preview:
+                book.preview_until = date.today() + timedelta(days)
         else:
             if not overwrite:
                 raise Book.AlreadyExists(_('Book %s already exists') % book_slug)
@@ -431,6 +469,8 @@ class Book(models.Model):
 
         # Save XML file
         book.xml_file.save('%s.xml' % book.slug, raw_file, save=False)
+        if book.preview:
+            book.xml_file.set_readable(False)
 
         book.language = book_info.language
         book.title = book_info.title
@@ -747,6 +787,7 @@ def add_file_fields():
             blank=True,
             default=''
         ).contribute_to_class(Book, field_name)
+
 
 add_file_fields()
 

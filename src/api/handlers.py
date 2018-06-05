@@ -6,15 +6,18 @@ import json
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.http.response import HttpResponse
 from django.utils.functional import lazy
 from django.db import models
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
 
+from api.models import BookUserData
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.models.tag import prefetch_relations
+from catalogue.utils import is_subscribed
 from picture.models import Picture
 from picture.forms import PictureImportForm
 
@@ -161,7 +164,8 @@ class BookDetailHandler(BaseHandler, BookDetails):
     """
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
-        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data', 'audio_length'] + [
+        'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data', 'audio_length',
+        'preview'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -278,6 +282,18 @@ class BooksHandler(BookDetailHandler):
             return rc.NOT_FOUND
 
 
+class EpubHandler(BookDetailHandler):
+    def read(self, request, slug):
+        if not is_subscribed(request.user):
+            return rc.FORBIDDEN
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        response = HttpResponse(book.get_media('epub'))
+        return response
+
+
 class EBooksHandler(AnonymousBooksHandler):
     fields = ('author', 'href', 'title', 'cover') + tuple(Book.ebook_formats) + ('slug',)
 
@@ -309,20 +325,21 @@ class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
         'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'has_audio', 'slug', 'key']
 
+    def parse_bool(self, s):
+        if s in ('true', 'false'):
+            return s == 'true'
+        else:
+            return None
+
     def read(self, request):
         key_sep = '$'
         search_string = request.GET.get('search')
-        is_lektura = request.GET.get('lektura')
-        is_audiobook = request.GET.get('audiobook')
+        is_lektura = self.parse_bool(request.GET.get('lektura'))
+        is_audiobook = self.parse_bool(request.GET.get('audiobook'))
+        preview = self.parse_bool(request.GET.get('preview'))
 
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
-        if is_lektura in ('true', 'false'):
-            is_lektura = is_lektura == 'true'
-        else:
-            is_lektura = None
-        if is_audiobook in ('true', 'false'):
-            is_audiobook = is_audiobook == 'true'
         books = Book.objects.distinct().order_by('slug')
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
@@ -331,6 +348,8 @@ class FilterBooksHandler(AnonymousBooksHandler):
                 books = books.filter(media__type='mp3')
             else:
                 books = books.exclude(media__type='mp3')
+        if preview is not None:
+            books = books.filter(preview=preview)
         for key in request.GET:
             if key in category_singular:
                 category = category_singular[key]
@@ -394,18 +413,18 @@ def add_tag_getters():
         setattr(BookDetails, plural, _tags_getter(singular))
         setattr(BookDetails, singular, _tag_getter(singular))
 
+
 add_tag_getters()
 
 
 # add fields for files in Book
 def _file_getter(book_format):
-    field = "%s_file" % book_format
 
-    @classmethod
-    def get_file(cls, book):
-        f = getattr(book, field)
-        if f:
-            return MEDIA_BASE + f.url
+    @staticmethod
+    def get_file(book):
+        f_url = book.media_url(book_format)
+        if f_url:
+            return MEDIA_BASE + f_url
         else:
             return ''
     return get_file
@@ -414,6 +433,7 @@ def _file_getter(book_format):
 def add_file_getters():
     for book_format in Book.formats:
         setattr(BookDetails, book_format, _file_getter(book_format))
+
 
 add_file_getters()
 
@@ -606,7 +626,7 @@ class FragmentsHandler(BaseHandler, FragmentDetails):
 
         """
         try:
-            tags, ancestors = read_tags(tags, allowed=self.categories)
+            tags, ancestors = read_tags(tags, request, allowed=self.categories)
         except ValueError:
             return rc.NOT_FOUND
         fragments = Fragment.tagged.with_all(tags).select_related('book')
@@ -632,3 +652,63 @@ class PictureHandler(BaseHandler):
             return rc.CREATED
         else:
             return rc.NOT_FOUND
+
+
+class UserDataHandler(BaseHandler):
+    model = BookUserData
+    fields = ('state',)
+    allowed_methods = ('GET', 'POST')
+
+    def read(self, request, slug):
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        try:
+            data = BookUserData.objects.get(book=book, user=request.user)
+        except BookUserData.DoesNotExist:
+            return {'state': 'not_started'}
+        return data
+
+    def create(self, request, slug, state):
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        if state not in ('reading', 'complete'):
+            return rc.NOT_FOUND
+        data, created = BookUserData.objects.get_or_create(book=book, user=request.user)
+        data.state = state
+        data.save()
+        return data
+
+
+class UserShelfHandler(BookDetailHandler):
+    fields = book_tag_categories + [
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
+
+    def parse_bool(self, s):
+        if s in ('true', 'false'):
+            return s == 'true'
+        else:
+            return None
+
+    def read(self, request, state):
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        if state not in ('reading', 'complete'):
+            return rc.NOT_FOUND
+        after = request.GET.get('after')
+        count = int(request.GET.get('count', 50))
+        ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete')\
+            .values_list('book_id', flat=True)
+        books = Book.objects.filter(id__in=list(ids)).distinct().order_by('slug')
+        if after:
+            books = books.filter(slug__gt=after)
+        if count:
+            books = books[:count]
+        return books

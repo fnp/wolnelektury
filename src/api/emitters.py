@@ -69,3 +69,11 @@ class SsiXmlEmitter(SsiEmitterMixin, XMLEmitter):
                 '</resource><resource>'.join(self.construct().get_ssis('xml'))
 
 Emitter.register('xml', SsiXmlEmitter, 'text/xml; charset=utf-8')
+
+
+# hack
+class EpubEmitter(Emitter):
+    def render(self, request):
+        return self.data
+
+Emitter.register('epub', EpubEmitter, 'application/epub+zip')

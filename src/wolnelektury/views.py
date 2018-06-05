@@ -197,3 +197,7 @@ def exception_test(request):
         raise Exception('Exception test: %s' % msg)
     else:
         raise Exception('Exception test')
+
+
+def post_test(request):
+    return render(request, 'post_test.html', {'action': '/api/reading/jego-zasady/complete/'})

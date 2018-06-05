@@ -60,7 +60,7 @@
 
 {% block big-pane %}
   <article id="main-text">
-    <!--#include file='{{ book.html_file.url }}'-->
+    <!--#include file='{{ book.html_url }}'-->
   </article>
 
   <article id="other-text">
@@ -85,7 +85,7 @@
           {% for other_version in book.other_versions %}
             <li>
               <a class="display-other"
-                 data-other="{{ other_version.html_file.url }}"
+                 data-other="{{ other_version.html_url }}"
                  href="{% url 'book_text' other_version.slug %}">
                 {% cache 86400 book_mini_box other_version.pk %}
                   {% include 'catalogue/book_mini_box.html' with book=other_version no_link=True %}
@@ -110,7 +110,7 @@
   </div>
 
   <div class="box" id="book-short">
-    {% cache 86400 catalogue_book_short book.pk %}
+    {% cache 86400 catalogue_book_short book.pk book|status:user %}
       {% include 'catalogue/book_short.html' %}
     {% endcache %}
   </div>

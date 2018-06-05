@@ -77,6 +77,11 @@ class AjaxableFormView(object):
     def __call__(self, request, *args, **kwargs):
         """A view displaying a form, or JSON if request is AJAX."""
         obj = self.get_object(request, *args, **kwargs)
+
+        response = self.validate_object(obj, request)
+        if response:
+            return response
+
         form_args, form_kwargs = self.form_args(request, obj)
         if self.form_prefix:
             form_kwargs['prefix'] = self.form_prefix
@@ -149,6 +154,9 @@ class AjaxableFormView(object):
             }
         context.update(self.extra_context(request, obj))
         return render_to_response(template, context, context_instance=RequestContext(request))
+
+    def validate_object(self, obj, request):
+        return None
 
     def redirect_or_refresh(self, request, path, message=None):
         """If the form is AJAX, refresh the page. If not, go to `path`."""

@@ -26,6 +26,16 @@ EBOOK_FORMATS_WITH_COVERS = ['pdf', 'epub', 'mobi']
 
 EBOOK_FORMATS = EBOOK_FORMATS_WITHOUT_CHILDREN + EBOOK_FORMATS_WITH_CHILDREN
 
+EBOOK_CONTENT_TYPES = {
+    'html': 'text/html',
+    'pdf': 'application/pdf',
+    'txt': 'text/plain',
+    'epub': 'application/epub+zip',
+    'mobi': 'application/x-mobipocket-ebook',
+    'fb2': 'text/xml',
+    'xml': 'text/xml',
+}
+
 LANGUAGES_3TO2 = {
     'deu': 'de',
     'ger': 'de',

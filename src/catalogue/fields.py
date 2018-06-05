@@ -28,6 +28,14 @@ class EbookFieldFile(FieldFile):
         """Builds the ebook in a delayed task."""
         return self.field.builder.delay(self.instance, self.field.attname)
 
+    def get_url(self):
+        return self.instance.media_url(self.field.attname.split('_')[0])
+
+    def set_readable(self, readable):
+        import os
+        permissions = 0o644 if readable else 0o600
+        os.chmod(self.path, permissions)
+
 
 class EbookField(models.FileField):
     """Represents an ebook file field, attachable to a model."""
@@ -91,10 +99,15 @@ class BuildEbook(Task):
         obj.flush_includes()
         return ret
 
+    def set_file_permissions(self, fieldfile):
+        if fieldfile.instance.preview:
+            fieldfile.set_readable(False)
+
     def build(self, fieldfile):
         book = fieldfile.instance
         out = self.transform(book.wldocument(), fieldfile)
         fieldfile.save(None, File(open(out.get_filename())), save=False)
+        self.set_file_permissions(fieldfile)
         if book.pk is not None:
             type(book).objects.filter(pk=book.pk).update(**{
                 fieldfile.field.attname: fieldfile
@@ -169,6 +182,7 @@ class BuildHtml(BuildEbook):
                 lang = None
 
             fieldfile.save(None, ContentFile(html_output.get_string()), save=False)
+            self.set_file_permissions(fieldfile)
             type(book).objects.filter(pk=book.pk).update(**{
                 fieldfile.field.attname: fieldfile
             })
@@ -235,9 +249,14 @@ class BuildHtml(BuildEbook):
         return wldoc.as_html(options={'gallery': "'%s'" % gallery})
 
 
+class BuildCover(BuildEbook):
+    def set_file_permissions(self, fieldfile):
+        pass
+
+
 @BuildEbook.register('cover_thumb')
 @task(ignore_result=True)
-class BuildCoverThumb(BuildEbook):
+class BuildCoverThumb(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
         from librarian.cover import WLCover
@@ -246,7 +265,7 @@ class BuildCoverThumb(BuildEbook):
 
 @BuildEbook.register('cover_api_thumb')
 @task(ignore_result=True)
-class BuildCoverApiThumb(BuildEbook):
+class BuildCoverApiThumb(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
         from librarian.cover import WLNoBoxCover
@@ -255,7 +274,7 @@ class BuildCoverApiThumb(BuildEbook):
 
 @BuildEbook.register('simple_cover')
 @task(ignore_result=True)
-class BuildSimpleCover(BuildEbook):
+class BuildSimpleCover(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
         from librarian.cover import WLNoBoxCover

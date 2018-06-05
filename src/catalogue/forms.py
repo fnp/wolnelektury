@@ -16,6 +16,7 @@ class BookImportForm(forms.Form):
     book_xml_file = forms.FileField(required=False)
     book_xml = forms.CharField(required=False)
     gallery_url = forms.CharField(required=False)
+    days = forms.IntegerField(required=False)
 
     def clean(self):
         from django.core.files.base import ContentFile
@@ -30,7 +31,8 @@ class BookImportForm(forms.Form):
 
     def save(self, **kwargs):
         return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True,
-                                  remote_gallery_url=self.cleaned_data['gallery_url'], **kwargs)
+                                  remote_gallery_url=self.cleaned_data['gallery_url'],
+                                  days=self.cleaned_data['days'], **kwargs)
 
 
 FORMATS = [(f, f.upper()) for f in Book.ebook_formats]
@@ -98,7 +100,7 @@ class CustomPDFForm(forms.Form):
     def save(self, *args, **kwargs):
         if not self.cleaned_data['cust'] and self.book.pdf_file:
             # Don't build with default options, just redirect to the standard file.
-            return {"redirect": self.book.pdf_file.url}
+            return {"redirect": self.book.pdf_url()}
         url = WaitedFile.order(
             self.cleaned_data['path'],
             lambda p, waiter_id: build_custom_pdf.delay(self.book.id, self.cleaned_data['cust'], p, waiter_id),
