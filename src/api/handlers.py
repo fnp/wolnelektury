@@ -323,20 +323,21 @@ class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
         'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
 
+    def parse_bool(self, s):
+        if s in ('true', 'false'):
+            return s == 'true'
+        else:
+            return None
+
     def read(self, request):
         key_sep = '$'
         search_string = request.GET.get('search')
-        is_lektura = request.GET.get('lektura')
-        is_audiobook = request.GET.get('audiobook')
+        is_lektura = self.parse_bool(request.GET.get('lektura'))
+        is_audiobook = self.parse_bool(request.GET.get('audiobook'))
+        preview = self.parse_bool(request.GET.get('preview'))
 
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
-        if is_lektura in ('true', 'false'):
-            is_lektura = is_lektura == 'true'
-        else:
-            is_lektura = None
-        if is_audiobook in ('true', 'false'):
-            is_audiobook = is_audiobook == 'true'
         books = Book.objects.distinct().order_by('slug')
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
@@ -345,6 +346,8 @@ class FilterBooksHandler(AnonymousBooksHandler):
                 books = books.filter(media__type='mp3')
             else:
                 books = books.exclude(media__type='mp3')
+        if preview is not None:
+            books = books.filter(preview=preview)
         for key in request.GET:
             if key in category_singular:
                 category = category_singular[key]
