@@ -89,4 +89,5 @@ urlpatterns += [
 
 urlpatterns += [
     url(r'^error-test/$', views.exception_test),
+    # url(r'^post-test/$', views.post_test),
 ]
