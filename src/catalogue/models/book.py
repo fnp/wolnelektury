@@ -233,7 +233,7 @@ class Book(models.Model):
     def get_audio_length(self):
         from mutagen.mp3 import MP3
         total = 0
-        for media in self.get_mp3():
+        for media in self.get_mp3() or ():
             audio = MP3(media.file.path)
             total += audio.info.length
         return int(total)
