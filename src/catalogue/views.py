@@ -282,7 +282,6 @@ def book_detail(request, slug):
 
     return render_to_response('catalogue/book_detail.html', {
         'book': book,
-        'tags': book.tags.exclude(category__in=('set', 'theme')),
         'book_children': book.children.all().order_by('parent_number', 'sort_key'),
         'active_menu_item': 'books',
     }, context_instance=RequestContext(request))

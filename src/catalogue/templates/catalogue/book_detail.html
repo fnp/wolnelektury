@@ -47,10 +47,10 @@
 
 
   <h2>{% trans "Information about the work" %}</h2>
-  {% for tag in tags %}
+  {% for author in book.authors %}
     <div class="white-box">
-      <a style="display:block" href="{{ tag.get_absolute_url }}">
-        {% ssi_include 'catalogue_tag_box' pk=tag.pk %}
+      <a style="display:block" href="{{ author.get_absolute_url }}">
+        {% ssi_include 'catalogue_tag_box' pk=author.pk %}
       </a>
     </div>
   {% endfor %}
