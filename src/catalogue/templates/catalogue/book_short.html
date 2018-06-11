@@ -97,7 +97,7 @@
       </div>
       {% book_shelf_tags book.pk %}
 
-      {% if book|status:user != 'closed' %}
+      {% if book|status:request.user != 'closed' %}
         <ul class="book-box-tools">
           <li class="book-box-read">
             {% if book.html_file %}
