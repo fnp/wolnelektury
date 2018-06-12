@@ -15,6 +15,10 @@ from piston import oauth
 from piston.authentication import initialize_server_request, INVALID_PARAMS_RESPONSE, send_oauth_error
 
 
+class HttpResponseAppRedirect(HttpResponseRedirect):
+    allowed_schemes = HttpResponseRedirect.allowed_schemes + ['wolnelekturyapp']
+
+
 class OAuthAuthenticationForm(forms.Form):
     oauth_token = forms.CharField(widget=forms.HiddenInput)
     oauth_callback = forms.CharField(widget=forms.HiddenInput)  # changed from URLField - too strict
@@ -52,6 +56,7 @@ class OAuthAuthenticationForm(forms.Form):
 
 
 # The only thing changed in the views below is the form used
+# and also the Http Redirect class
 
 
 def oauth_auth_view(request, token, callback, params):
@@ -102,7 +107,7 @@ def oauth_user_auth(request):
                 callback = getattr(settings, 'OAUTH_CALLBACK_VIEW')
                 return get_callable(callback)(request, token)
 
-            response = HttpResponseRedirect(callback + args)
+            response = HttpResponseAppRedirect(callback + args)
 
         except oauth.OAuthError, err:
             response = send_oauth_error(err)
