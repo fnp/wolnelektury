@@ -80,6 +80,7 @@ urlpatterns = [
     url(r'^reading/(?P<slug>[a-z0-9-]+)/$', reading_resource, name='api_reading'),
     url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', reading_resource, name='api_reading'),
     url(r'^shelf/(?P<state>[a-z]+)/$', shelf_resource, name='api_shelf'),
+    url(r'^username/$', reading_resource, name='api_username'),
 
     # objects details
     url(r'^books/(?P<book>[a-z0-9-]+)/$', book_resource, name="api_book"),
