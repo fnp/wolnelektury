@@ -20,10 +20,10 @@ ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 # book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 filter_book_resource = Resource(handler=handlers.FilterBooksHandler)
-epub_resource = Resource(handler=handlers.EpubHandler)
+epub_resource = Resource(handler=handlers.EpubHandler, authentication=auth)
 
-reading_resource = CsrfExemptResource(handler=handlers.UserDataHandler)
-shelf_resource = Resource(handler=handlers.UserShelfHandler)
+reading_resource = CsrfExemptResource(handler=handlers.UserDataHandler, authentication=auth)
+shelf_resource = Resource(handler=handlers.UserShelfHandler, authentication=auth)
 
 collection_resource = Resource(handler=handlers.CollectionDetailHandler)
 collection_list_resource = Resource(handler=handlers.CollectionsHandler)
