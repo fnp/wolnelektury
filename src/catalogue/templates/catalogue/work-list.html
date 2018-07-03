@@ -1,7 +1,10 @@
 {% spaceless %}
 
+  {% load cache %}
+  {% load i18n %}
   {% load pagination_tags %}
   {% load class_name from catalogue_tags %}
+  {% load status from catalogue_tags %}
   {% load ssi_include from ssify %}
 
   {% autopaginate object_list 10 %}
@@ -9,7 +12,14 @@
   <ol class='work-list'>
     {% for item in object_list %}
       <li class='{{ item|class_name }}-item'>
-        {% ssi_include item.short_html_url_name pk=item.pk %}
+        {% if item|class_name == 'Book' %}
+          {% get_current_language as LANGUAGE_CODE %}
+          {% cache 86400 book_short item.pk item|status:request.user LANGUAGE_CODE %}
+            {% include "catalogue/book_short.html" with book=item %}
+          {% endcache %}
+        {% else %}
+          {% ssi_include item.short_html_url_name pk=item.pk %}
+        {% endif %}
       </li>
     {% endfor %}
   </ol>
