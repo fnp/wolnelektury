@@ -4,6 +4,7 @@
 #
 from django.conf import settings
 from django.core.cache import caches
+from django.core.exceptions import ImproperlyConfigured
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from ssify import flush_ssi_includes
@@ -51,6 +52,11 @@ def collection_delete(sender, instance, **kwargs):
 def book_save(sender, instance, **kwargs):
     # Books come out anywhere.
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
+    # deleting selectively is too much work
+    try:
+        caches['template_fragments'].clear()
+    except ImproperlyConfigured:
+        pass
     instance.flush_includes()
 
 
