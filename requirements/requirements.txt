@@ -63,3 +63,7 @@ django-ssify>=0.2.1,<0.3
 raven
 
 mailchimp3
+
+requests
+
+paypalrestsdk

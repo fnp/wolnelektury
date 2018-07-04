@@ -60,6 +60,7 @@ INSTALLED_APPS_OUR = [
     'newsletter',
     'contact',
     'isbn',
+    'paypal',
 ]
 
 GETPAID_BACKENDS = (

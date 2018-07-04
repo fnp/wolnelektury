@@ -1,0 +1,10 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+
+{% block body %}
+  {% if resource.error %}
+    {% include "paypal/error.html" with error=resource.error %}
+  {% else %}
+    <p>{% trans "Płatność potwierdzona i zlecona do wykonania." %}</p>
+  {% endif %}
+{% endblock %}

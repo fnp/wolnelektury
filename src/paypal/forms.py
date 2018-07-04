@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+
+
+class PaypalSubscriptionForm(forms.Form):
+    amount = forms.IntegerField(min_value=10, max_value=30000, initial=20, label=_('amount'))

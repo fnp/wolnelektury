@@ -1,0 +1,5 @@
+<h1>{% trans "PayPal Error" %}: {{ error.message }}</h1>
+{% for detail in error.details %}
+  <p>{{ detail.field }}: {{ detail.issue }}</p>
+{% endfor %}
+<p><a href="{{ error.information_link }}">{% trans "Learn more" %}</a></p>

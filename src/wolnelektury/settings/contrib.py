@@ -19,3 +19,9 @@ GETPAID_ORDER_DESCRIPTION = "{% load funding_tags %}{{ order|sanitize_payment_ti
 PIWIK_URL = ''
 PIWIK_SITE_ID = 0
 PIWIK_TOKEN = ''
+
+PAYPAL_CONFIG = {
+    'mode': 'sandbox',  # sandbox or live
+    'client_id': '',
+    'client_secret': '',
+}
