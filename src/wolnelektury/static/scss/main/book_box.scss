@@ -15,10 +15,10 @@
   @include size(margin-bottom, 5px);
 
   @include min-screen($S_BOOK_SHORT_FULL) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-right: 0;
+    //position: absolute;
+    //top: 0;
+    //left: 0;
+    //margin-right: 0;
   }
 
   img.cover {
