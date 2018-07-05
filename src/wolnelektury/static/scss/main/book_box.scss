@@ -526,6 +526,7 @@
   @include size(margin-top, 18px);
   overflow: hidden;
   position: relative;
+  clear: left;
 
   @media screen and (min-width: 62.5em) {
     @include size(width, 536px);
