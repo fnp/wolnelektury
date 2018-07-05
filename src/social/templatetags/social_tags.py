@@ -34,7 +34,7 @@ def render_cite(cite):
 @ssi_variable(register, patch_response=[ssi_vary_on_cookie])
 def book_shelf_tags(request, book_id):
     if not request.user.is_authenticated():
-        return None
+        return ''
     book = Book.objects.get(pk=book_id)
     lks = likes(request.user, book, request)
 
