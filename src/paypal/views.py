@@ -6,7 +6,7 @@ from decimal import Decimal
 
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 
 from paypal.forms import PaypalSubscriptionForm
@@ -14,9 +14,10 @@ from paypal.rest import execute_agreement, check_agreement, agreement_approval_u
 from paypal.models import BillingAgreement as BillingAgreementModel, BillingPlan
 
 
-@login_required
 def paypal_form(request):
     if request.POST:
+        if not request.user.is_authenticated():
+            return HttpResponseForbidden()
         form = PaypalSubscriptionForm(data=request.POST)
         if form.is_valid():
             amount = form.cleaned_data['amount']

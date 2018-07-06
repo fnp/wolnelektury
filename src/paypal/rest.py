@@ -74,8 +74,8 @@ def create_agreement(amount):
         plan_id = plan.plan_id
     start = (timezone.now() + timedelta(0, 3600*24)).astimezone(pytz.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     billing_agreement = BillingAgreement({
-        "name": "Subskrypcja klubu WL",
-        "description": "Cykliczne wspieranie Wolnych Lektur kwotą %s złotych" % amount,
+        "name": u"Subskrypcja klubu WL",
+        "description": u"Stałe wsparcie Wolnych Lektur kwotą %s złotych" % amount,
         "start_date": start,
         "plan": {
             "id": plan_id,

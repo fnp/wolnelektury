@@ -4,10 +4,15 @@
 {% block title %}{% trans "Subscription" %}{% endblock %}
 
 {% block body %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {# paypal submit button #}
-    <button type="submit">{% trans "Subscribe with PayPal" %}</button>
-  </form>
+  {# https://www.facebook.com/sharer/sharer.php?u=https%3A//wolnelektury.pl{% url 'paypal_form' %} #}
+  {% if user.is_authenticated %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {# paypal submit button #}
+      <button type="submit">{% trans "Subscribe with PayPal" %}</button>
+    </form>
+  {% else %}
+    {% trans "You must be logged in to subscribe." %}
+  {% endif %}
 {% endblock %}
