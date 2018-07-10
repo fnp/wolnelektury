@@ -93,6 +93,10 @@ INSTALLED_APPS_CONTRIB = [
     'django_extensions',
     'raven.contrib.django.raven_compat',
 
+    'migdal',
+    'django_comments',
+    'django_comments_xtd',
+
     # allauth stuff
     'uni_form',
     'allauth',

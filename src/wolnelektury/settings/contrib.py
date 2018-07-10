@@ -2,6 +2,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from fnpdjango.utils.text.textilepl import textile_pl
+
 HONEYPOT_FIELD_NAME = 'miut'
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 THUMBNAIL_QUALITY = 95
@@ -25,3 +27,7 @@ PAYPAL_CONFIG = {
     'client_id': '',
     'client_secret': '',
 }
+
+MARKUP_FIELD_TYPES = (
+    ('textile_pl', textile_pl),
+)
