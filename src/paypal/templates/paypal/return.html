@@ -5,6 +5,9 @@
   {% if resource.error %}
     {% include "paypal/error.html" with error=resource.error %}
   {% else %}
-    <p>{% trans "Płatność potwierdzona i zlecona do wykonania." %}</p>
+    <p>{% trans "Dziękujemy, że jesteś z nami i pomagasz nam rozwijać Wolne Lektury!" %}</p>
+    <p>{% trans "Pamiętaj, że zawsze możesz się z nami skontaktować:" %} <a href="mailto:wolnelektury@nowoczesnapolska.org.pl">wolnelektury@nowoczesnapolska.org.pl</a></p>
+
+    <p>{% trans "Do przeczytania!" %}<br>{% trans "Zespół Wolnych Lektur" %}</p>
   {% endif %}
 {% endblock %}
