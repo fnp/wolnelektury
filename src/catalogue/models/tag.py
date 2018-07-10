@@ -230,7 +230,7 @@ class Tag(TagBase):
 
     @staticmethod
     def tags_from_info(info):
-        from fnpdjango.utils.text.slughifi import slughifi
+        from slugify import slugify
         from sortify import sortify
         meta_tags = []
         categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))
@@ -251,7 +251,7 @@ class Tag(TagBase):
                     tag_name = tag_name.readable()
                 if lang == settings.LANGUAGE_CODE:
                     # Allow creating new tag, if it's in default language.
-                    tag, created = Tag.objects.get_or_create(slug=slughifi(tag_name), category=category)
+                    tag, created = Tag.objects.get_or_create(slug=slugify(tag_name), category=category)
                     if created:
                         tag_name = unicode(tag_name)
                         tag.name = tag_name

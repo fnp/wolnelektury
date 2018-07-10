@@ -2,7 +2,7 @@
 
 # django
 Django>=1.8,<1.9
-fnpdjango>=0.1.15,<0.2
+fnpdjango>=0.2.8,<0.3
 django-pipeline>=1.6,<1.7
 jsmin
 fnp-django-pagination

@@ -7,7 +7,7 @@ import tempfile
 from traceback import extract_stack
 from django.test import TestCase
 from django.test.utils import override_settings
-from fnpdjango.utils.text.slughifi import slughifi
+from slugify import slugify
 from librarian import WLURI
 from django.conf import settings
 
@@ -72,7 +72,7 @@ class BookInfoStub(object):
 
 def info_args(title, language=None):
     """ generate some keywords for comfortable BookInfoCreation  """
-    slug = unicode(slughifi(title))
+    slug = unicode(slugify(title))
     if language is None:
         language = u'pol'
     return {

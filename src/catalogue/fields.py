@@ -163,7 +163,7 @@ class BuildMobi(BuildEbook):
 class BuildHtml(BuildEbook):
     def build(self, fieldfile):
         from django.core.files.base import ContentFile
-        from fnpdjango.utils.text.slughifi import slughifi
+        from slugify import slugify
         from sortify import sortify
         from librarian import html
         from catalogue.models import Fragment, Tag
@@ -204,7 +204,7 @@ class BuildHtml(BuildEbook):
                     if lang == settings.LANGUAGE_CODE:
                         # Allow creating themes if book in default language.
                         tag, created = Tag.objects.get_or_create(
-                                            slug=slughifi(theme_name),
+                                            slug=slugify(theme_name),
                                             category='theme')
                         if created:
                             tag.name = theme_name

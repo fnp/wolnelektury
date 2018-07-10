@@ -10,7 +10,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import SortedDict
-from fnpdjango.utils.text.slughifi import slughifi
+from slugify import slugify
 from ssify import flush_ssi_includes
 
 from catalogue.models.tag import prefetched_relations
@@ -224,7 +224,7 @@ class Picture(models.Model):
                         # str.capitalize() is wrong, because it also lowers letters
                         objname = objname[0].upper() + objname[1:]
                         tag, created = catalogue.models.Tag.objects.get_or_create(
-                            slug=slughifi(objname), category='thing')
+                            slug=slugify(objname), category='thing')
                         if created:
                             tag.name = objname
                             setattr(tag, 'name_%s' % lang, tag.name)
@@ -249,7 +249,7 @@ class Picture(models.Model):
                     for motifs in part['themes']:
                         for motif in motifs.split(','):
                             tag, created = catalogue.models.Tag.objects.get_or_create(
-                                slug=slughifi(motif), category='theme')
+                                slug=slugify(motif), category='theme')
                             if created:
                                 tag.name = motif
                                 tag.sort_key = sortify(tag.name)

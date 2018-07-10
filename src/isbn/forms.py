@@ -4,7 +4,7 @@ from urllib2 import urlopen
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from fnpdjango.utils.text.slughifi import slughifi
+from slugify import slugify
 
 from isbn.management.commands.import_onix import UNKNOWN
 from isbn.models import ONIXRecord, ISBNPool
@@ -86,7 +86,7 @@ class FNPISBNForm(forms.Form):
         return {'role': 'A01', 'name': output_name}
 
     def slug(self):
-        return slughifi('fnp %s %s' % (self.cleaned_data['authors'], self.cleaned_data['title']))
+        return slugify('fnp %s %s' % (self.cleaned_data['authors'], self.cleaned_data['title']))
 
     def save(self):
         data = {

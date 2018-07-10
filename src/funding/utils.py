@@ -4,7 +4,7 @@
 #
 import re
 import string
-from fnpdjango.utils.text.slughifi import char_map
+from fnpdjango.utils.text import char_map
 
 # PayU chokes on non-Polish diacritics.
 # Punctuation is handled correctly and escaped as needed,

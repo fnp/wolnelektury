@@ -8,14 +8,14 @@ from collections import namedtuple
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 import jsonfield
-from fnpdjango.utils.text.slughifi import slughifi
+from slugify import slugify
 from mutagen import MutagenError
 
 from catalogue.fields import OverwriteStorage
 
 
 def _file_upload_to(i, _n):
-    return 'book/%(ext)s/%(name)s.%(ext)s' % {'ext': i.ext(), 'name': slughifi(i.name)}
+    return 'book/%(ext)s/%(name)s.%(ext)s' % {'ext': i.ext(), 'name': slugify(i.name)}
 
 
 class BookMedia(models.Model):
@@ -66,7 +66,7 @@ class BookMedia(models.Model):
             old = None
         else:
             # if name changed, change the file name, too
-            if slughifi(self.name) != slughifi(old.name):
+            if slugify(self.name) != slugify(old.name):
                 self.file.save(None, ExistingFile(self.file.path), save=False)
 
         super(BookMedia, self).save(*args, **kwargs)
