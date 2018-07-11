@@ -1,7 +1,6 @@
 {% spaceless %}
 
   {% load cache %}
-  {% load i18n %}
   {% load pagination_tags %}
   {% load class_name from catalogue_tags %}
   {% load status from catalogue_tags %}
@@ -13,10 +12,7 @@
     {% for item in object_list %}
       <li class='{{ item|class_name }}-item'>
         {% if item|class_name == 'Book' %}
-          {% get_current_language as LANGUAGE_CODE %}
-          {% cache 86400 book_short item.pk item|status:request.user LANGUAGE_CODE %}
-            {% include "catalogue/book_short.html" with book=item %}
-          {% endcache %}
+          {% include "catalogue/book_short.html" with book=item %}
         {% else %}
           {% ssi_include item.short_html_url_name pk=item.pk %}
         {% endif %}

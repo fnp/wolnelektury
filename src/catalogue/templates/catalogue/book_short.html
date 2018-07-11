@@ -1,5 +1,6 @@
 {% spaceless %}
   {% load i18n %}
+  {% load cache %}
   {% load catalogue_tags %}
   {% load book_shelf_tags from social_tags %}
   {% load static %}
@@ -28,6 +29,8 @@
           {% block cover-area-extra %}{% endblock %}
         </div>
 
+        {% get_current_language as LANGUAGE_CODE %}
+        {% cache 86400 book_box_head_tags book.pk LANGUAGE_CODE %}
         <div class="book-box-head">
           <div class="author">
             {% for tag in tags.author %}
@@ -94,9 +97,11 @@
           {% endif %}
           {% endwith %}
         </div>
+        {% endcache %}
       </div>
       {% book_shelf_tags book.pk %}
 
+      {% cache 86400 book_box_tools book.pk book|status:request.user LANGUAGE_CODE %}
       {% if book|status:request.user != 'closed' %}
         <ul class="book-box-tools">
           <li class="book-box-read">
@@ -142,6 +147,7 @@
       {% else %}
         <p class="book-box-tools">{% trans "For now this work is only available for our subscribers." %}</p>
       {% endif %}
+      {% endcache %}
       {% block book-box-extra-info %}{% endblock %}
       {% block box-append %}{% endblock %}
     </div>

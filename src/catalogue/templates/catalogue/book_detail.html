@@ -13,10 +13,7 @@
 {% block bodyid %}book-detail{% endblock %}
 
 {% block body %}
-  {% get_current_language as LANGUAGE_CODE %}
-  {% cache 86400 book_wide book.pk book|status:user LANGUAGE_CODE %}
-    {% include 'catalogue/book_wide.html' %}
-  {% endcache %}
+  {% include 'catalogue/book_wide.html' %}
 
   {% work_list book_children %}
 

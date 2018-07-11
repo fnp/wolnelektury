@@ -110,9 +110,6 @@
   </div>
 
   <div class="box" id="book-short">
-    {% get_current_language as LANGUAGE_CODE %}
-    {% cache 86400 book_short book.pk book|status:user LANGUAGE_CODE %}
-      {% include 'catalogue/book_short.html' %}
-    {% endcache %}
+    {% include 'catalogue/book_short.html' %}
   </div>
 {% endblock footer %}
