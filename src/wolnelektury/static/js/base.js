@@ -57,7 +57,7 @@
             })
         });
 
-        $('.more').each(function () {
+        $('.more-expand').each(function () {
             $(this).shorten({
                 showChars: 150,
                 moreText: "więcej",
