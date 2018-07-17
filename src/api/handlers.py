@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http.response import HttpResponse
 from django.utils.functional import lazy
 from django.db import models
+from migdal.models import Entry
 from piston.handler import AnonymousBaseHandler, BaseHandler
 from piston.utils import rc
 from sorl.thumbnail import default
@@ -714,3 +715,30 @@ class UserShelfHandler(BookDetailHandler):
         if count:
             books = books[:count]
         return books
+
+
+class BlogEntryHandler(BaseHandler):
+    model = Entry
+    fields = ('title', 'lead', 'body', 'place', 'time', 'image_url', 'gallery_urls', 'type', 'key')
+
+    def read(self, request):
+        after = request.GET.get('after')
+        count = int(request.GET.get('count', 20))
+        entries = Entry.published_objects.filter(in_stream=True).order_by('-first_published_at')
+        if after:
+            entries = entries.filter(first_published_at__lt=after)
+        if count:
+            entries = entries[:count]
+        return entries
+
+    @classmethod
+    def image_url(cls, entry):
+        return entry.image.url if entry.image else None
+
+    @classmethod
+    def gallery_urls(cls, entry):
+        return [photo.url() for photo in entry.photo_set.all()]
+
+    @classmethod
+    def key(cls, entry):
+        return entry.first_published_at

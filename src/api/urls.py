@@ -36,6 +36,8 @@ fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
 picture_resource = CsrfExemptResource(handler=handlers.PictureHandler, authentication=auth)
 
+blog_resource = Resource(handler=handlers.BlogEntryHandler)
+
 
 tags_re = r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})'
 paginate_re = r'(?:before/(?P<before>[a-z0-9-]+)/)?(?:after/(?P<after>[a-z0-9-]+)/)?(?:count/(?P<count>[0-9]+)/)?$'
@@ -108,6 +110,8 @@ urlpatterns = [
     url(r'^filter-books/', filter_book_resource, name='api_filter_books'),
 
     url(r'^pictures/$', picture_resource),
+
+    url(r'^blog/$', blog_resource),
 
     # fragments by book, tags, themes
     # this should be paged

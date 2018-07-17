@@ -69,6 +69,6 @@ requests
 paypalrestsdk
 
 django-haystack<2.8.0
-django-migdal>=0.7.6
+django-migdal>=0.8.1
 
 python-slugify
