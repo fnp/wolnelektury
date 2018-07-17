@@ -65,7 +65,7 @@ def get_link(links, rel):
             return link.href
 
 
-def create_agreement(amount):
+def create_agreement(amount, app=False):
     try:
         plan = BillingPlanModel.objects.get(amount=amount)
     except BillingPlanModel.DoesNotExist:
@@ -84,6 +84,10 @@ def create_agreement(amount):
             "payment_method": "paypal"
         },
     })
+    if app:
+        billing_agreement['override_merchant_preferences'] = {
+            'return_url': absolute_url('paypal_app_return'),
+        }
 
     response = billing_agreement.create()
     if response:
@@ -92,8 +96,8 @@ def create_agreement(amount):
         raise PaypalError(billing_agreement.error)
 
 
-def agreement_approval_url(amount):
-    agreement = create_agreement(amount)
+def agreement_approval_url(amount, app=False):
+    agreement = create_agreement(amount, app=app)
     return get_link(agreement.links, 'approval_url')
 
 
