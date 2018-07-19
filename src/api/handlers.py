@@ -19,6 +19,7 @@ from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.models.tag import prefetch_relations
 from catalogue.utils import is_subscribed
+from librarian.cover import WLCover
 from picture.models import Picture
 from picture.forms import PictureImportForm
 from social.utils import likes
@@ -158,6 +159,10 @@ class BookDetails(object):
     def simple_cover(cls, book):
         return MEDIA_BASE + book.simple_cover.url if book.simple_cover else ''
 
+    @classmethod
+    def cover_color(cls, book):
+        return WLCover.epoch_colors.get(book.extra_info['epoch'], '#000000')
+
 
 class BookDetailHandler(BaseHandler, BookDetails):
     """ Main handler for Book objects.
@@ -167,7 +172,7 @@ class BookDetailHandler(BaseHandler, BookDetails):
     allowed_methods = ['GET']
     fields = ['title', 'parent', 'children'] + Book.formats + [
         'media', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'simple_cover', 'fragment_data', 'audio_length',
-        'preview'] + [
+        'preview', 'cover_color'] + [
             category_plural[c] for c in book_tag_categories]
 
     @piwik_track
@@ -186,7 +191,8 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio']
+    fields = book_tag_categories + [
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color']
 
     @classmethod
     def genres(cls, book):
@@ -268,7 +274,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'slug']
+    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'cover_color', 'slug']
     anonymous = AnonymousBooksHandler
 
     def create(self, request, *args, **kwargs):
@@ -325,7 +331,7 @@ class QuerySetProxy(models.QuerySet):
 
 class FilterBooksHandler(AnonymousBooksHandler):
     fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'has_audio', 'slug', 'key']
+        'href', 'title', 'url', 'cover', 'cover_thumb', 'cover_color', 'simple_thumb', 'has_audio', 'slug', 'key']
 
     def parse_bool(self, s):
         if s in ('true', 'false'):
