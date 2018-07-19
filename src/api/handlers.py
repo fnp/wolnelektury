@@ -21,6 +21,7 @@ from catalogue.models.tag import prefetch_relations
 from catalogue.utils import is_subscribed
 from picture.models import Picture
 from picture.forms import PictureImportForm
+from social.utils import likes
 
 from stats.utils import piwik_track
 from wolnelektury.utils import re_escape
@@ -703,18 +704,48 @@ class UserShelfHandler(BookDetailHandler):
     def read(self, request, state):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
-        if state not in ('reading', 'complete'):
+        if state not in ('reading', 'complete', 'likes'):
             return rc.NOT_FOUND
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
-        ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete')\
-            .values_list('book_id', flat=True)
-        books = Book.objects.filter(id__in=list(ids)).distinct().order_by('slug')
+        if state == 'likes':
+            books = Book.tagged.with_any(request.user.tag_set.all())
+        else:
+            ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete')\
+                .values_list('book_id', flat=True)
+            books = Book.objects.filter(id__in=list(ids)).distinct().order_by('slug')
         if after:
             books = books.filter(slug__gt=after)
         if count:
             books = books[:count]
         return books
+
+
+class UserLikeHandler(BaseHandler):
+    fields = []
+    allowed_methods = ('GET', 'POST')
+
+    def read(self, request, slug):
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        return {'likes': likes(request.user, book)}
+
+    def create(self, request, slug, action='like'):
+        if not request.user.is_authenticated():
+            return rc.FORBIDDEN
+        try:
+            book = Book.objects.get(slug=slug)
+        except Book.DoesNotExist:
+            return rc.NOT_FOUND
+        if action == 'like':
+            book.like(request.user)
+        elif action == 'unlike':
+            book.unlike(request.user)
+        return {}
 
 
 class BlogEntryHandler(BaseHandler):

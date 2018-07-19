@@ -15,15 +15,22 @@ from api.piston_patch import oauth_user_auth
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
 
-book_list_resource = CsrfExemptResource(handler=handlers.BooksHandler, authentication=auth)
+
+def auth_resource(handler):
+    return CsrfExemptResource(handler=handler, authentication=auth)
+
+
+book_list_resource = auth_resource(handler=handlers.BooksHandler)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 # book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
 filter_book_resource = Resource(handler=handlers.FilterBooksHandler)
-epub_resource = Resource(handler=handlers.EpubHandler, authentication=auth)
+epub_resource = auth_resource(handler=handlers.EpubHandler)
 
-reading_resource = CsrfExemptResource(handler=handlers.UserDataHandler, authentication=auth)
-shelf_resource = Resource(handler=handlers.UserShelfHandler, authentication=auth)
+reading_resource = auth_resource(handler=handlers.UserDataHandler)
+shelf_resource = auth_resource(handler=handlers.UserShelfHandler)
+
+like_resource = auth_resource(handler=handlers.UserLikeHandler)
 
 collection_resource = Resource(handler=handlers.CollectionDetailHandler)
 collection_list_resource = Resource(handler=handlers.CollectionsHandler)
@@ -34,7 +41,7 @@ tag_resource = Resource(handler=handlers.TagDetailHandler)
 fragment_resource = Resource(handler=handlers.FragmentDetailHandler)
 fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
 
-picture_resource = CsrfExemptResource(handler=handlers.PictureHandler, authentication=auth)
+picture_resource = auth_resource(handler=handlers.PictureHandler)
 
 blog_resource = Resource(handler=handlers.BlogEntryHandler)
 
@@ -83,6 +90,8 @@ urlpatterns = [
     url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', reading_resource, name='api_reading'),
     url(r'^shelf/(?P<state>[a-z]+)/$', shelf_resource, name='api_shelf'),
     url(r'^username/$', reading_resource, name='api_username'),
+
+    url(r'^like/(?P<slug>[a-z0-9-]+)/$', like_resource, name='api_like'),
 
     # objects details
     url(r'^books/(?P<book>[a-z0-9-]+)/$', book_resource, name="api_book"),
