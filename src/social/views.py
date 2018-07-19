@@ -13,7 +13,6 @@ from catalogue.models import Book
 from ssify import ssi_included
 from social import forms
 from .models import Cite
-from social.utils import get_set, likes, set_sets
 
 
 # ====================
@@ -26,12 +25,25 @@ def like_book(request, slug):
     if not request.user.is_authenticated():
         return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
-    if not likes(request.user, book):
-        tag = get_set(request.user, '')
-        set_sets(request.user, book, [tag])
+
+    book.like(request.user)
 
     if request.is_ajax():
         return JsonResponse({"success": True, "msg": "ok", "like": True})
+    else:
+        return redirect(book)
+
+
+@require_POST
+def unlike_book(request, slug):
+    if not request.user.is_authenticated():
+        return HttpResponseForbidden('Login required.')
+    book = get_object_or_404(Book, slug=slug)
+
+    book.unlike(request.user)
+
+    if request.is_ajax():
+        return JsonResponse({"success": True, "msg": "ok", "like": False})
     else:
         return redirect(book)
 
@@ -58,20 +70,6 @@ class ObjectSetsFormView(AjaxableFormView):
 
     def form_args(self, request, obj):
         return (obj, request.user), {}
-
-
-@require_POST
-def unlike_book(request, slug):
-    if not request.user.is_authenticated():
-        return HttpResponseForbidden('Login required.')
-    book = get_object_or_404(Book, slug=slug)
-    if likes(request.user, book):
-        set_sets(request.user, book, [])
-
-    if request.is_ajax():
-        return JsonResponse({"success": True, "msg": "ok", "like": False})
-    else:
-        return redirect(book)
 
 
 @ssi_included

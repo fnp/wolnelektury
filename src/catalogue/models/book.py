@@ -770,6 +770,17 @@ class Book(models.Model):
     def ridero_link(self):
         return 'https://ridero.eu/%s/books/wl_%s/' % (get_language(), self.slug.replace('-', '_'))
 
+    def like(self, user):
+        from social.utils import likes, get_set, set_sets
+        if not likes(user, self):
+            tag = get_set(user, '')
+            set_sets(user, self, [tag])
+
+    def unlike(self, user):
+        from social.utils import likes, set_sets
+        if likes(user, self):
+            set_sets(user, self, [])
+
 
 def add_file_fields():
     for format_ in Book.formats:

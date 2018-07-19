@@ -62,11 +62,9 @@ class TagManager(models.Manager):
                 object_id=obj.pk,
                 tag__in=tags_for_removal).delete()
         # Add new tags
-        tags_to_add = [tag for tag in updated_tags
-                       if tag not in current_tags]
+        tags_to_add = [tag for tag in updated_tags if tag not in current_tags]
         for tag in tags_to_add:
-            if tag not in current_tags:
-                self.intermediary_table_model.objects.create(tag=tag, content_object=obj)
+            self.intermediary_table_model.objects.create(tag=tag, content_object=obj)
 
         tags_updated.send(sender=type(obj), instance=obj, affected_tags=tags_to_add + tags_for_removal)
 
@@ -77,6 +75,16 @@ class TagManager(models.Manager):
         content_type = ContentType.objects.get_for_model(obj)
         self.intermediary_table_model.objects.filter(
             content_type__pk=content_type.pk, object_id=obj.pk, tag=tag).delete()
+
+    def add_tag(self, obj, tag):
+        """
+        Add tag to an object.
+        """
+        content_type = ContentType.objects.get_for_model(obj)
+        relations = self.intermediary_table_model.objects.filter(
+            content_type__pk=content_type.pk, object_id=obj.pk, tag=tag)
+        if not relations:
+            self.intermediary_table_model.objects.create(tag=tag, content_object=obj)
 
     def get_for_object(self, obj):
         """

@@ -52,6 +52,15 @@ def get_set(user, name):
     except Tag.DoesNotExist:
         tag = Tag.objects.create(
             category='set', user=user, name=name, slug=utils.get_random_hash(name), sort_key=name.lower())
+    except Tag.MultipleObjectsReturned:
+        # fix duplicated noname shelf
+        tags = list(Tag.objects.filter(category='set', user=user, name=name))
+        tag = tags[0]
+        for other_tag in tags[1:]:
+            for item in other_tag.items.all():
+                Tag.objects.remove_tag(item, other_tag)
+                Tag.objects.add_tag(item, tag)
+            other_tag.delete()
     return tag
 
 
