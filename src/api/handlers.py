@@ -745,13 +745,14 @@ class UserLikeHandler(BaseHandler):
             return rc.NOT_FOUND
         return {'likes': likes(request.user, book)}
 
-    def create(self, request, slug, action='like'):
+    def create(self, request, slug):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
         try:
             book = Book.objects.get(slug=slug)
         except Book.DoesNotExist:
             return rc.NOT_FOUND
+        action = request.GET.get('action', 'like')
         if action == 'like':
             book.like(request.user)
         elif action == 'unlike':
