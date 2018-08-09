@@ -59,7 +59,8 @@ CUSTOMIZATION_OPTIONS = (
     )),
     ('fontsize', _("Font size"), (
         ('', _('Default')),
-        ('13pt', _('Big'))
+        ('13pt', _('Big')),
+        ('16pt', _('Bigger')),
     )),
     # ('pagesize', _("Paper size"), (
     #     ('a4paper', _('A4')),
