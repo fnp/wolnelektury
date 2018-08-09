@@ -27,6 +27,8 @@ book_resource = Resource(handler=handlers.BookDetailHandler)
 filter_book_resource = Resource(handler=handlers.FilterBooksHandler)
 epub_resource = auth_resource(handler=handlers.EpubHandler)
 
+preview_resource = Resource(handler=handlers.BookPreviewHandler)
+
 reading_resource = auth_resource(handler=handlers.UserDataHandler)
 shelf_resource = auth_resource(handler=handlers.UserShelfHandler)
 
@@ -115,8 +117,10 @@ urlpatterns = [
         book_list_resource, {"daisy": True}, name='api_daisy_list'),
 
     url(r'^recommended/' + paginate_re, book_list_resource, {"recommended": True}, name='api_recommended_list'),
-    url(r'^newest/', book_list_resource, {"newest": True, "top_level": True, "count": 20}, name='api_newest_list'),
-    url(r'^filter-books/', filter_book_resource, name='api_filter_books'),
+    url(r'^newest/$', book_list_resource, {"newest": True, "top_level": True, "count": 20}, name='api_newest_list'),
+    url(r'^filter-books/$', filter_book_resource, name='api_filter_books'),
+
+    url(r'^preview/$', preview_resource, name='api_preview'),
 
     url(r'^pictures/$', picture_resource),
 

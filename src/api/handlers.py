@@ -401,6 +401,11 @@ class FilterBooksHandler(AnonymousBooksHandler):
         return QuerySetProxy(filtered_books)
 
 
+class BookPreviewHandler(BookDetailHandler):
+    def read(self, request):
+        return Book.objects.filter(preview=True)
+
+
 # add categorized tags fields for Book
 def _tags_getter(category):
     @classmethod
