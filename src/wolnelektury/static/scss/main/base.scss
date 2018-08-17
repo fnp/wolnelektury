@@ -18,7 +18,7 @@ body {
   background: #f7f7f7;
   color: black;
 
-  @include size(font-size, 13px);
+  @include size(font-size, 15px);
 }
 
 a {
@@ -41,12 +41,12 @@ h1 {
 }
 
 h2 {
-  @include size(font-size, 20px);
+  @include size(font-size, 23px);
   font-weight: normal;
 }
 
 h3 {
-  @include size(font-size, 15px);
+  @include size(font-size, 17px);
   font-weight: normal;
 }
 
