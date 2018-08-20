@@ -72,7 +72,7 @@ class KonkursForm(ContactForm):
 
 class CoJaCzytamForm(ContactForm):
     form_tag = 'cojaczytam'
-    form_title = u"#cojaczytam? Co Ty czytasz? A oni? Pokażcie nam, że czytacie!"
+    form_title = u"#cojaczytam?"
     admin_list = ['opiekun_nazwisko', 'contact', 'nazwa_kampanii']
     ends_on = (2018, 11, 8)
     disabled_template = 'contact/disabled_contact_form.html'
@@ -120,7 +120,7 @@ class CoJaCzytamForm(ContactForm):
         label=u'Czy jest coś, co chcieliście zrealizować, a się nie udało? Jeśli tak, to dlaczego?', max_length=1024,
         widget=forms.Textarea)
     wnioski = forms.CharField(
-        label=u'Jakie wnioski na przyszłość wyciągnęliście z tego, co się nie udało zrealizować?', max_length=1024,
+        label=u'Jakie wnioski na przyszłość wyciągnęliście z tego, czego się nie udało zrealizować?', max_length=1024,
         widget=forms.Textarea)
     zasieg = forms.CharField(
         label=u'Do ilu odbiorców udało Wam się dotrzeć z Waszą kompanią? Podaj liczbę, może być szacunkowa.',
