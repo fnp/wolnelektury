@@ -762,7 +762,7 @@ class UserLikeHandler(BaseHandler):
 
 class BlogEntryHandler(BaseHandler):
     model = Entry
-    fields = ('title', 'lead', 'body', 'place', 'time', 'image_url', 'gallery_urls', 'type', 'key')
+    fields = ('title', 'lead', 'body', 'place', 'time', 'image_url', 'image_thumb', 'gallery_urls', 'type', 'key')
 
     def read(self, request):
         after = request.GET.get('after')
@@ -777,6 +777,11 @@ class BlogEntryHandler(BaseHandler):
     @classmethod
     def image_url(cls, entry):
         return (WL_BASE + entry.image.url) if entry.image else None
+
+    @classmethod
+    def image_thumb(cls, entry):
+        return MEDIA_BASE + default.backend.get_thumbnail(
+            entry.image, "193x193").url if entry.image else ''
 
     @classmethod
     def gallery_urls(cls, entry):
