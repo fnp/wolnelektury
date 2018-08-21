@@ -30,7 +30,7 @@ from wolnelektury.utils import re_escape
 from . import emitters  # Register our emitters
 
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
-    lambda: u'http://' + Site.objects.get_current().domain, unicode)()
+    lambda: u'https://' + Site.objects.get_current().domain, unicode)()
 
 
 category_singular = {
@@ -776,11 +776,11 @@ class BlogEntryHandler(BaseHandler):
 
     @classmethod
     def image_url(cls, entry):
-        return entry.image.url if entry.image else None
+        return (WL_BASE + entry.image.url) if entry.image else None
 
     @classmethod
     def gallery_urls(cls, entry):
-        return [photo.url() for photo in entry.photo_set.all()]
+        return [WL_BASE + photo.url() for photo in entry.photo_set.all()]
 
     @classmethod
     def key(cls, entry):
