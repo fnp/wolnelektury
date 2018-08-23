@@ -47,6 +47,9 @@ for k, v in category_singular.items():
 
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
+book_list_fields = book_tag_categories + [
+    'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color']
+
 
 def read_tags(tags, request, allowed):
     """ Reads a path of filtering tags.
@@ -191,8 +194,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color']
+    fields = book_list_fields
 
     @classmethod
     def genres(cls, book):
@@ -274,7 +276,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'cover_color', 'slug']
+    fields = book_list_fields
     anonymous = AnonymousBooksHandler
 
     def create(self, request, *args, **kwargs):
@@ -330,8 +332,7 @@ class QuerySetProxy(models.QuerySet):
 
 
 class FilterBooksHandler(AnonymousBooksHandler):
-    fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'cover_color', 'simple_thumb', 'has_audio', 'slug', 'key']
+    fields = book_list_fields + ['key']
 
     def parse_bool(self, s):
         if s in ('true', 'false'):
@@ -402,6 +403,8 @@ class FilterBooksHandler(AnonymousBooksHandler):
 
 
 class BookPreviewHandler(BookDetailHandler):
+    fields = BookDetailHandler.fields + ['slug']
+
     def read(self, request):
         return Book.objects.filter(preview=True)
 
@@ -703,8 +706,7 @@ class UserDataHandler(BaseHandler):
 
 
 class UserShelfHandler(BookDetailHandler):
-    fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
+    fields = book_list_fields
 
     def parse_bool(self, s):
         if s in ('true', 'false'):
@@ -762,7 +764,8 @@ class UserLikeHandler(BaseHandler):
 
 class BlogEntryHandler(BaseHandler):
     model = Entry
-    fields = ('title', 'lead', 'body', 'place', 'time', 'image_url', 'image_thumb', 'gallery_urls', 'type', 'key')
+    fields = (
+        'title', 'lead', 'body', 'place', 'time', 'image_url', 'image_thumb', 'gallery_urls', 'type', 'key', 'url')
 
     def read(self, request):
         after = request.GET.get('after')
@@ -790,3 +793,7 @@ class BlogEntryHandler(BaseHandler):
     @classmethod
     def key(cls, entry):
         return entry.first_published_at
+
+    @classmethod
+    def url(cls, entry):
+        return WL_BASE + entry.get_absolute_url()
