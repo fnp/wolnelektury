@@ -669,14 +669,14 @@ class PictureHandler(BaseHandler):
 
 class UserDataHandler(BaseHandler):
     model = BookUserData
-    fields = ('state', 'username')
+    fields = ('state', 'username', 'premium')
     allowed_methods = ('GET', 'POST')
 
     def read(self, request, slug=None):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
         if slug is None:
-            return {'username': request.user.username}
+            return {'username': request.user.username, 'premium': is_subscribed(request.user)}
         try:
             book = Book.objects.get(slug=slug)
         except Book.DoesNotExist:
