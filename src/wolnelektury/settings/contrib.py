@@ -18,6 +18,10 @@ MIGRATION_MODULES = {
 
 GETPAID_ORDER_DESCRIPTION = "{% load funding_tags %}{{ order|sanitize_payment_title }}"
 
+GETPAID_BACKENDS = (
+    'getpaid.backends.payu',
+)
+
 PIWIK_URL = ''
 PIWIK_SITE_ID = 0
 PIWIK_TOKEN = ''
