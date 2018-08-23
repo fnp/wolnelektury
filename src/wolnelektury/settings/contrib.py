@@ -3,6 +3,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from fnpdjango.utils.text.textilepl import textile_pl
+from migdal import EntryType
+from django.utils.translation import ugettext_lazy as _
 
 HONEYPOT_FIELD_NAME = 'miut'
 PAGINATION_INVALID_PAGE_RAISES_404 = True
@@ -34,4 +36,11 @@ PAYPAL_CONFIG = {
 
 MARKUP_FIELD_TYPES = (
     ('textile_pl', textile_pl),
+)
+
+MIGDAL_TYPES = (
+    EntryType('news', _('news'), commentable=False, on_main=True, promotable=True),
+    EntryType('publications', _('publications'), commentable=False),
+    EntryType('info', _('info'), commentable=False),
+    EntryType('event', _('events'), commentable=False),
 )

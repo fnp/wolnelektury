@@ -63,6 +63,7 @@ INSTALLED_APPS_CONTRIB = [
     'migdal',
     'django_comments',
     'django_comments_xtd',
+    'django_gravatar',
 
     # allauth stuff
     'uni_form',
