@@ -282,7 +282,7 @@ class BooksHandler(BookDetailHandler):
     # hack, because piston is stupid
     @classmethod
     def liked(cls, book):
-        return book.liked
+        return getattr(book, 'liked', None)
 
     def read(self, request, **kwargs):
         books = AnonymousBooksHandler().read(request, **kwargs)
@@ -424,7 +424,7 @@ class FilterBooksHandler(BooksHandler):
     # hack, because piston is stupid
     @classmethod
     def liked(cls, book):
-        return book.liked
+        return getattr(book, 'liked', None)
 
     def read(self, request):
         qsp = AnonFilterBooksHandler().read(request)
@@ -749,7 +749,7 @@ class UserShelfHandler(BookDetailHandler):
     # hack, because piston is stupid
     @classmethod
     def liked(cls, book):
-        return book.liked
+        return getattr(book, 'liked', None)
 
     def read(self, request, state):
         if not request.user.is_authenticated():
