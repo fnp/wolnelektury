@@ -16,7 +16,27 @@ from api.piston_patch import oauth_user_auth
 auth = OAuthAuthentication(realm="Wolne Lektury")
 
 
+class DjangoAuthentication(object):
+    """
+    Authentication handler that always returns
+    True, so no authentication is needed, nor
+    initiated (`challenge` is missing.)
+    """
+    def is_authenticated(self, request):
+        return request.user.is_authenticated()
+
+    def challenge(self):
+        from django.http import HttpResponse
+        resp = HttpResponse("Authorization Required")
+        resp.status_code = 401
+        return resp
+
+
 def auth_resource(handler):
+    from django.conf import settings
+    if settings.DEBUG:
+        django_auth = DjangoAuthentication()
+        return CsrfExemptResource(handler=handler, authentication=django_auth)
     return CsrfExemptResource(handler=handler, authentication=auth)
 
 
@@ -24,7 +44,7 @@ book_list_resource = auth_resource(handler=handlers.BooksHandler)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 # book_list_resource = Resource(handler=handlers.BooksHandler)
 book_resource = Resource(handler=handlers.BookDetailHandler)
-filter_book_resource = Resource(handler=handlers.FilterBooksHandler)
+filter_book_resource = auth_resource(handler=handlers.FilterBooksHandler)
 epub_resource = auth_resource(handler=handlers.EpubHandler)
 
 preview_resource = Resource(handler=handlers.BookPreviewHandler)

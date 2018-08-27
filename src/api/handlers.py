@@ -164,7 +164,7 @@ class BookDetails(object):
 
     @classmethod
     def cover_color(cls, book):
-        return WLCover.epoch_colors.get(book.extra_info['epoch'], '#000000')
+        return WLCover.epoch_colors.get(book.extra_info.get('epoch'), '#000000')
 
 
 class BookDetailHandler(BaseHandler, BookDetails):
@@ -276,8 +276,22 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = book_list_fields
+    fields = book_list_fields + ['liked']
     anonymous = AnonymousBooksHandler
+
+    # hack, because piston is stupid
+    @classmethod
+    def liked(cls, book):
+        return book.liked
+
+    def read(self, request, **kwargs):
+        books = AnonymousBooksHandler().read(request, **kwargs)
+        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
+
+        new_books = [
+            BookProxy(book).set('liked', book.id in likes)
+            for book in books]
+        return QuerySetProxy(new_books)
 
     def create(self, request, *args, **kwargs):
         if not request.user.has_perm('catalogue.add_book'):
@@ -312,15 +326,16 @@ class BookProxy(models.Model):
     class Meta:
         managed = False
 
-    def __init__(self, book, key):
+    def __init__(self, book, key=None):
         self.book = book
         self.key = key
 
+    def set(self, attr, value):
+        self.__setattr__(attr, value)
+        return self
+
     def __getattr__(self, item):
-        if item not in ('book', 'key'):
-            return self.book.__getattribute__(item)
-        else:
-            return self.__getattribute__(item)
+        return self.book.__getattribute__(item)
 
 
 class QuerySetProxy(models.QuerySet):
@@ -331,7 +346,7 @@ class QuerySetProxy(models.QuerySet):
         return iter(self.list)
 
 
-class FilterBooksHandler(AnonymousBooksHandler):
+class AnonFilterBooksHandler(AnonymousBooksHandler):
     fields = book_list_fields + ['key']
 
     def parse_bool(self, s):
@@ -400,6 +415,23 @@ class FilterBooksHandler(AnonymousBooksHandler):
                 break
 
         return QuerySetProxy(filtered_books)
+
+
+class FilterBooksHandler(BooksHandler):
+    anonymous = AnonFilterBooksHandler
+    fields = book_list_fields + ['key', 'liked']
+
+    # hack, because piston is stupid
+    @classmethod
+    def liked(cls, book):
+        return book.liked
+
+    def read(self, request):
+        qsp = AnonFilterBooksHandler().read(request)
+        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
+        for book in qsp.list:
+            book.set('liked', book.id in likes)
+        return qsp
 
 
 class BookPreviewHandler(BookDetailHandler):
@@ -706,7 +738,7 @@ class UserDataHandler(BaseHandler):
 
 
 class UserShelfHandler(BookDetailHandler):
-    fields = book_list_fields
+    fields = book_list_fields + ['liked']
 
     def parse_bool(self, s):
         if s in ('true', 'false'):
@@ -714,9 +746,15 @@ class UserShelfHandler(BookDetailHandler):
         else:
             return None
 
+    # hack, because piston is stupid
+    @classmethod
+    def liked(cls, book):
+        return book.liked
+
     def read(self, request, state):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
+        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
         if state not in ('reading', 'complete', 'likes'):
             return rc.NOT_FOUND
         after = request.GET.get('after')
@@ -731,7 +769,10 @@ class UserShelfHandler(BookDetailHandler):
             books = books.filter(slug__gt=after)
         if count:
             books = books[:count]
-        return books
+        new_books = []
+        for book in books:
+            new_books.append(BookProxy(book).set('liked', book.id in likes))
+        return QuerySetProxy(new_books)
 
 
 class UserLikeHandler(BaseHandler):
