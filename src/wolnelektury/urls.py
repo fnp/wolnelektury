@@ -52,6 +52,7 @@ urlpatterns += [
     url(r'^formularz/', include('contact.urls')),
     url(r'^isbn/', include('isbn.urls')),
     url(r'^paypal/', include('paypal.urls')),
+    url(r'^powiadomienie/', include('push.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', catalogue.views.import_book, name='import_book'),

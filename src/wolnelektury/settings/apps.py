@@ -32,6 +32,7 @@ INSTALLED_APPS_OUR = [
     'contact',
     'isbn',
     'paypal',
+    'push',
 ]
 
 INSTALLED_APPS_CONTRIB = [
