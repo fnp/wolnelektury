@@ -20,6 +20,7 @@ from django.core.files.uploadedfile import UploadedFile
 from django.http import HttpResponse
 from django.utils.encoding import force_unicode
 
+from paypal.rest import user_is_subscribed
 from reporting.utils import read_chunks
 
 # Use the system (hardware-based) random number generator if it exists.
@@ -357,4 +358,4 @@ def gallery_url(slug):
 
 
 def is_subscribed(user):
-    return user.is_authenticated()  # TEMPORARY
+    return user_is_subscribed(user)
