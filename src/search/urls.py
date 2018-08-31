@@ -6,6 +6,6 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns(
     'search.views',
-    url(r'^$', 'main', name='search'),
+    url(r'^$', 'main', name='wlsearch'),
     url(r'^hint/$', 'hint', name='search_hint'),
 )
