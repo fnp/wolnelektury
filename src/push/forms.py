@@ -18,6 +18,10 @@ class NotificationForm(forms.ModelForm):
     def save(self, commit=True):
         notification = super(NotificationForm, self).save(commit=commit)
         wl_base = u'https://' + Site.objects.get_current().domain
-        notification.message_id = send_fcm_push(notification.title, notification.body, wl_base + notification.image.url)
+        if notification.image:
+            image_url = wl_base + notification.image.url
+        else:
+            image_url = None
+        notification.message_id = send_fcm_push(notification.title, notification.body, image_url)
         if commit:
             notification.save()
