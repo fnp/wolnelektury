@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-30 15:57+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:10
+msgid "amount in PLN"
+msgstr ""
+
+#: templates/paypal/cancel.html:5
+msgid "Zrezygnowano z płatności :("
+msgstr ""
+
+#: templates/paypal/error.html:1
+msgid "PayPal Error"
+msgstr ""
+
+#: templates/paypal/error.html:5
+msgid "Learn more"
+msgstr ""
+
+#: templates/paypal/form.html:6 templates/paypal/form.html.py:9
+msgid "Wolne Lektury Friend Club"
+msgstr ""
+
+#: templates/paypal/form.html:17
+msgid "Subscribe with PayPal"
+msgstr ""
+
+#: templates/paypal/form.html:20
+msgid "You must be logged in to subscribe."
+msgstr ""
+
+#: templates/paypal/return.html:8
+msgid "Dziękujemy, że jesteś z nami i pomagasz nam rozwijać Wolne Lektury!"
+msgstr ""
+
+#: templates/paypal/return.html:9
+msgid "Pamiętaj, że zawsze możesz się z nami skontaktować:"
+msgstr ""
+
+#: templates/paypal/return.html:11
+msgid "Do przeczytania!"
+msgstr ""
+
+#: templates/paypal/return.html:11
+msgid "Zespół Wolnych Lektur"
+msgstr ""
