@@ -115,11 +115,8 @@ def check_agreement(agreement_id):
 
 
 def user_is_subscribed(user):
-    try:
-        agreement = BillingAgreementModel.objects.get(user=user)
-    except BillingAgreementModel.DoesNotExist:
-        return False
-    return agreement.check_agreement()
+    agreements = BillingAgreementModel.objects.filter(user=user)
+    return any(agreement.check_agreement() for agreement in agreements)
 
 
 def execute_agreement(token):
