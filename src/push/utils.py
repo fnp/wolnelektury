@@ -15,6 +15,10 @@ TOPIC = 'wolnelektury'
 def send_fcm_push(title, body, image_url=None):
     # See documentation on defining a message payload.
     data = {}
+    # data = {
+    #     'title': title,
+    #     'body': body,
+    # }
     if image_url:
         data['imageUrl'] = image_url
     message = messaging.Message(
