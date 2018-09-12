@@ -88,7 +88,7 @@ ul.plain {
 }
 
 @media screen and (min-width: 62.5em) {
-  .left-column .right-column {
+  .left-column, .right-column {
     @include size(width, 470px);
     padding-left: 0;
     padding-right: 0;
