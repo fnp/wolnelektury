@@ -83,15 +83,21 @@ ul.plain {
 
 .left-column, .right-column {
   @include size(max-width, 600px);
+  @include size(padding-left, 1em);
+  @include size(padding-right, 1em);
 }
 
 @media screen and (min-width: 62.5em) {
-  .left-column {
+  .left-column .right-column {
     @include size(width, 470px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .left-column {
     float: left;
   }
   .right-column {
-    @include size(width, 470px);
     float: right;
   }
 }
