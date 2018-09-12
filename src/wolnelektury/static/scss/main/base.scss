@@ -220,3 +220,7 @@ ul.plain {
     @include size(margin-bottom, 10px);
   }
 }
+
+@media screen and (max-width: 62.5em) {
+  .mobile-margins {margin-left: 1em; margin-right: 1em;}
+}
