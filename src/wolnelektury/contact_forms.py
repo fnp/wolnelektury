@@ -152,7 +152,7 @@ class CoJaCzytamForm(ContactForm):
         label='Licencja',
         help_text=mark_safe_lazy(
             u'Wyrażam zgodę oraz potwierdzam, że uczestnicy (lub ich przedstawiciele ustawowi – gdy dotyczy) '
-            u'wyrazili zgodę na korzystanie z opowiadania zgodnie z postanowieniami '
+            u'wyrazili zgodę na korzystanie ze stworzonych materiałów zgodnie z postanowieniami '
             u'<a href="http://freedomdefined.org/Definition/Pl">wolnej licencji</a>, takiej jak '
             u'<a href="https://creativecommons.org/licenses/by-sa/3.0/pl/">Creative Commons Uznanie autorstwa – '
             u'Na tych samych warunkach 3.0 PL</a>. Licencja pozwala każdemu na swobodne, nieodpłatne korzystanie '
@@ -162,7 +162,7 @@ class CoJaCzytamForm(ContactForm):
     agree_wizerunek = forms.BooleanField(
         label='Rozpowszechnianie wizerunku',
         help_text=u'Wyrażam zgodę oraz potwierdzam, że uczestnicy (lub ich przedstawiciele ustawowi – gdy dotyczy) '
-                  u'wyrazili zgodę na nagrywanie i następnie rozpowszechnianie ich '
+                  u'wyrazili zgodę na fotografowanie oraz nagrywanie, a następnie rozpowszechnianie ich '
                   u'wizerunków w celach promocyjnych.')
 
 
