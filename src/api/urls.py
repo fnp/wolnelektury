@@ -69,7 +69,7 @@ blog_resource = Resource(handler=handlers.BlogEntryHandler)
 
 
 tags_re = r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})'
-paginate_re = r'(?:before/(?P<before>[a-z0-9-]+)/)?(?:after/(?P<after>[a-z0-9-]+)/)?(?:count/(?P<count>[0-9]+)/)?$'
+paginate_re = r'(?:after/(?P<after>[a-z0-9-]+)/)?(?:count/(?P<count>[0-9]+)/)?$'
 
 
 @ssi_included

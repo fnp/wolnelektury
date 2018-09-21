@@ -204,7 +204,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     @piwik_track
     def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None,
              recommended=False, newest=False, books=None,
-             after=None, before=None, count=None):
+             after=None, count=None):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -226,8 +226,6 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 
         if 'after' in request.GET:
             after = request.GET['after']
-        if 'before' in request.GET:
-            before = request.GET['before']
         if 'count' in request.GET:
             count = request.GET['count']
 
@@ -252,20 +250,16 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         if newest:
             books = books.order_by('-created_at')
 
+        # beznadzieja
         if after:
             books = books.filter(slug__gt=after)
-        if before:
-            books = books.filter(slug__lt=before)
 
         books = books.only('slug', 'title', 'cover', 'cover_thumb')
         for category in book_tag_categories:
             books = prefetch_relations(books, category)
 
         if count:
-            if before:
-                books = list(reversed(books.order_by('-slug')[:count]))
-            else:
-                books = books[:count]
+            books = books[:count]
 
         return books
 
@@ -592,7 +586,6 @@ class TagsHandler(BaseHandler, TagDetails):
             return rc.NOT_FOUND
 
         after = request.GET.get('after')
-        before = request.GET.get('before')
         count = request.GET.get('count')
 
         tags = Tag.objects.filter(category=category_sng).exclude(items=None).order_by('slug')
@@ -606,14 +599,9 @@ class TagsHandler(BaseHandler, TagDetails):
 
         if after:
             tags = tags.filter(slug__gt=after)
-        if before:
-            tags = tags.filter(slug__lt=before)
 
         if count:
-            if before:
-                tags = list(reversed(tags.order_by('-slug')[:count]))
-            else:
-                tags = tags[:count]
+            tags = tags[:count]
 
         return tags
 
