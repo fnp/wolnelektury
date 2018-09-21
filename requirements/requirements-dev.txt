@@ -1,7 +1,8 @@
 -i https://py.mdrn.pl:8443/simple/
 
-django-debug-toolbar
+django-debug-toolbar<1.10
+django-debug-toolbar-template-timings
 Fabric
 sphinx
 pyinotify
-fnpdeploy>=0.2.2
+fnpdeploy>=0.2.3
