@@ -64,7 +64,10 @@ class TagManager(models.Manager):
         # Add new tags
         tags_to_add = [tag for tag in updated_tags if tag not in current_tags]
         for tag in tags_to_add:
-            self.intermediary_table_model.objects.get_or_create(tag=tag, content_object=obj)
+            existing = self.intermediary_table_model.objects.filter(
+                content_type__pk=content_type.pk, object_id=obj.pk, tag=tag)
+            if not existing:
+                self.intermediary_table_model.objects.create(tag=tag, content_object=obj)
 
         tags_updated.send(sender=type(obj), instance=obj, affected_tags=tags_to_add + tags_for_removal)
 
