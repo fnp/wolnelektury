@@ -6,6 +6,7 @@ import json
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from django.http.response import HttpResponse
 from django.utils.functional import lazy
 from django.db import models
@@ -32,6 +33,7 @@ from . import emitters  # Register our emitters
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
     lambda: u'https://' + Site.objects.get_current().domain, unicode)()
 
+SORT_KEY_SEP = '$'
 
 category_singular = {
     'authors': 'author',
@@ -48,7 +50,7 @@ for k, v in category_singular.items():
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 book_list_fields = book_tag_categories + [
-    'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color']
+    'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color', 'full_sort_key']
 
 
 def read_tags(tags, request, allowed):
@@ -166,6 +168,29 @@ class BookDetails(object):
     def cover_color(cls, book):
         return WLCover.epoch_colors.get(book.extra_info.get('epoch'), '#000000')
 
+    @classmethod
+    def full_sort_key(cls, book):
+        return '%s%s%s%s%s' % (book.sort_key_author, SORT_KEY_SEP, book.sort_key, SORT_KEY_SEP, book.id)
+
+    @staticmethod
+    def books_after(books, after, new_api):
+        if not new_api:
+            return books.filter(slug__gt=after)
+        try:
+            author, title, book_id = after.split(SORT_KEY_SEP)
+        except ValueError:
+            return []
+        return books.filter(Q(sort_key_author__gt=author)
+                            | (Q(sort_key_author=author) & Q(sort_key__gt=title))
+                            | (Q(sort_key_author=author) & Q(sort_key=title) & Q(id__gt=int(book_id))))
+
+    @staticmethod
+    def order_books(books, new_api):
+        if new_api:
+            return books.order_by('sort_key_author', 'sort_key', 'id')
+        else:
+            return books.order_by('slug')
+
 
 class BookDetailHandler(BaseHandler, BookDetails):
     """ Main handler for Book objects.
@@ -224,6 +249,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         except ValueError:
             return rc.NOT_FOUND
 
+        new_api = request.GET.get('new_api')
         if 'after' in request.GET:
             after = request.GET['after']
         if 'count' in request.GET:
@@ -237,7 +263,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 books = Book.tagged.with_all(tags)
         else:
             books = books if books is not None else Book.objects.all()
-        books = books.order_by('slug')
+        books = self.order_books(books, new_api)
 
         if top_level:
             books = books.filter(parent=None)
@@ -250,11 +276,13 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         if newest:
             books = books.order_by('-created_at')
 
-        # beznadzieja
         if after:
-            books = books.filter(slug__gt=after)
+            books = self.books_after(books, after, new_api)
 
-        books = books.only('slug', 'title', 'cover', 'cover_thumb')
+        if new_api:
+            books = books.only('slug', 'title', 'cover', 'cover_thumb', 'sort_key', 'sort_key_author')
+        else:
+            books = books.only('slug', 'title', 'cover', 'cover_thumb')
         for category in book_tag_categories:
             books = prefetch_relations(books, category)
 
@@ -356,9 +384,10 @@ class AnonFilterBooksHandler(AnonymousBooksHandler):
         is_audiobook = self.parse_bool(request.GET.get('audiobook'))
         preview = self.parse_bool(request.GET.get('preview'))
 
+        new_api = request.GET.get('new_api')
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
-        books = Book.objects.distinct().order_by('slug')
+        books = self.order_books(Book.objects.distinct(), new_api)
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
         if is_audiobook is not None:
@@ -383,27 +412,29 @@ class AnonFilterBooksHandler(AnonymousBooksHandler):
             books_title = books.filter(title__iregex='\m' + search_string)
             books_title = books_title.exclude(id__in=list(books_author.values_list('id', flat=True)))
             if after and (key_sep in after):
-                which, slug = after.split(key_sep, 1)
+                which, key = after.split(key_sep, 1)
                 if which == 'title':
-                    book_lists = [(books_title.filter(slug__gt=slug), 'title')]
+                    book_lists = [(self.books_after(books_title, key, new_api), 'title')]
                 else:  # which == 'author'
-                    book_lists = [(books_author.filter(slug__gt=slug), 'author'), (books_title, 'title')]
+                    book_lists = [(self.books_after(books_author, key, new_api), 'author'), (books_title, 'title')]
             else:
                 book_lists = [(books_author, 'author'), (books_title, 'title')]
         else:
             if after and key_sep in after:
-                which, slug = after.split(key_sep, 1)
-                books = books.filter(slug__gt=slug)
+                which, key = after.split(key_sep, 1)
+                books = self.books_after(books, key, new_api)
             book_lists = [(books, 'book')]
 
         filtered_books = []
         for book_list, label in book_lists:
-            book_list = book_list.only('slug', 'title', 'cover', 'cover_thumb')
+            book_list = book_list.only('slug', 'title', 'cover', 'cover_thumb', 'sort_key_author', 'sort_key')
             for category in book_tag_categories:
                 book_list = prefetch_relations(book_list, category)
             remaining_count = count - len(filtered_books)
-            new_books = [BookProxy(book, '%s%s%s' % (label, key_sep, book.slug))
-                         for book in book_list[:remaining_count]]
+            new_books = [
+                BookProxy(book, '%s%s%s' % (
+                    label, key_sep, book.slug if not new_api else self.full_sort_key(book)))
+                for book in book_list[:remaining_count]]
             filtered_books += new_books
             if len(filtered_books) == count:
                 break
@@ -745,6 +776,7 @@ class UserShelfHandler(BookDetailHandler):
         likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
         if state not in ('reading', 'complete', 'likes'):
             return rc.NOT_FOUND
+        new_api = request.GET.get('new_api')
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
         if state == 'likes':
@@ -752,9 +784,10 @@ class UserShelfHandler(BookDetailHandler):
         else:
             ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete')\
                 .values_list('book_id', flat=True)
-            books = Book.objects.filter(id__in=list(ids)).distinct().order_by('slug')
+            books = Book.objects.filter(id__in=list(ids)).distinct()
+            books = self.order_books(books, new_api)
         if after:
-            books = books.filter(slug__gt=after)
+            books = self.books_after(books, after, new_api)
         if count:
             books = books[:count]
         new_books = []
