@@ -358,7 +358,4 @@ def gallery_url(slug):
 
 
 def is_subscribed(user):
-    # do testowania
-    if user.username == 'paweld':
-        return True
     return user_is_subscribed(user)
