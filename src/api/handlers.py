@@ -179,7 +179,7 @@ class BookDetails(object):
         try:
             author, title, book_id = after.split(SORT_KEY_SEP)
         except ValueError:
-            return []
+            return Book.objects.none()
         return books.filter(Q(sort_key_author__gt=author)
                             | (Q(sort_key_author=author) & Q(sort_key__gt=title))
                             | (Q(sort_key_author=author) & Q(sort_key=title) & Q(id__gt=int(book_id))))
