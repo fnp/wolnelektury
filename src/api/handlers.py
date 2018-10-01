@@ -33,7 +33,7 @@ from . import emitters  # Register our emitters
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
     lambda: u'https://' + Site.objects.get_current().domain, unicode)()
 
-SORT_KEY_SEP = ','
+SORT_KEY_SEP = '$'
 
 category_singular = {
     'authors': 'author',
@@ -378,16 +378,13 @@ class AnonFilterBooksHandler(AnonymousBooksHandler):
             return None
 
     def read(self, request):
+        key_sep = '$'
         search_string = request.GET.get('search')
         is_lektura = self.parse_bool(request.GET.get('lektura'))
         is_audiobook = self.parse_bool(request.GET.get('audiobook'))
         preview = self.parse_bool(request.GET.get('preview'))
 
         new_api = request.GET.get('new_api')
-        if new_api:
-            key_sep = ','
-        else:
-            key_sep = '$'
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
         books = self.order_books(Book.objects.distinct(), new_api)
