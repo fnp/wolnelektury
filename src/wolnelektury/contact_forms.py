@@ -195,3 +195,39 @@ class WorkshopsForm(ContactForm):
                   u'24.11.2017 roku i następnie rozpowszechnianie mojego wizerunku w celach promocyjnych.')
     agree_gala = forms.BooleanField(
         label=u'Wezmę udział w uroczystej gali o godz. 19.00.', required=False)
+
+
+class WLFest2018Form(ContactForm):
+    form_tag = 'wlfest2018'
+    form_title = u"Wolne Lektury Fest"
+    nazwisko = forms.CharField(label=u'Imię i nazwisko uczestnika', max_length=128)
+    instytucja = forms.CharField(label=u'Instytucja/organizacja', max_length=128, required=False)
+    contact = forms.EmailField(label=u'Adres e-mail', max_length=128)
+    tel = forms.CharField(label=u'Numer telefonu', max_length=32)
+    warsztaty = forms.MultipleChoiceField(choices=(
+        ('kim-sa-odbiorcy', u'Kim są odbiorcy zdigitalizowanych zasobów kultury w Polsce? (9:30-11:30)'),
+        ('business-model-canvas', u'Business Model Canvas dla kultury (9:30-11:30)'),
+        ('jak-byc-glam', u'Jak być GLAM? Współpraca pomiędzy instytucjami kultury a Wikipedią (12:00-14:00)'),
+        ('wirtualne-muzea', u'Jak twórczo i zgodnie z prawem wykorzystywać zasoby dziedzictwa kulturowego '
+                            u'na przykładzie portalu „Wirtualne Muzea Małopolski” (12:00-14:00)'),
+        ('jak-legalnie-tworzyc', u'Jak legalnie tworzyć i korzystać z cudzej twórczości (15:00-17:00)'),
+        ('aplikacje-w-dzialaniach', u'Aplikacje w działaniach kulturalnych (15:00-17:00)')),
+        widget=forms.CheckboxSelectMultiple,
+    )
+    agree_header = HeaderField(label=mark_safe_lazy(u'<strong>Oświadczenia</strong>'))
+    agree_data = forms.BooleanField(
+        label='Przetwarzanie danych osobowych',
+        help_text=u'Administratorem danych osobowych przetwarzanych w związku z organizacją wydarzenia '
+                  u'„WOLNE LEKTURY FEST” jest Fundacja Nowoczesna Polska '
+                  u'(ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych jest konieczne '
+                  u'do dokonania rejestracji na wydarzenie. Dane są przetwarzane w zakresie niezbędnym '
+                  u'do przeprowadzenia wydarzenia, a także w celach prowadzenia statystyk, '
+                  u'ewaluacji i sprawozdawczości. Osobom, których dane są zbierane, przysługuje prawo dostępu '
+                  u'do treści swoich danych oraz ich poprawiania. Więcej informacji w polityce prywatności '
+                  u'(https://nowoczesnapolska.org.pl/prywatnosc/).')
+    agree_wizerunek = forms.BooleanField(
+        label='Rozpowszechnianie wizerunku',
+        help_text=u'Wyrażam zgodę na fotografowanie i nagrywanie podczas warsztatów „WOLNE LEKTURY FEST” '
+                  u'28.11.2018 roku i następnie rozpowszechnianie mojego wizerunku w celach promocyjnych.')
+    agree_gala = forms.BooleanField(
+        label=u'Wezmę udział w spotkaniu z Julią Fiedorczuk o godz. 17:30.', required=False)
