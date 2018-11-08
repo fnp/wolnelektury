@@ -74,7 +74,7 @@ class CoJaCzytamForm(ContactForm):
     form_tag = 'cojaczytam'
     form_title = u"#cojaczytam?"
     admin_list = ['opiekun_nazwisko', 'contact', 'nazwa_kampanii']
-    ends_on = (2018, 11, 8)
+    ends_on = (2018, 11, 16)
     disabled_template = 'contact/disabled_contact_form.html'
     submit_label = u'Wyślij'
 
