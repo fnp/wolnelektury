@@ -2,7 +2,7 @@
 
 https://{{site_domain}}{% url 'admin:contact_contact_change' contact.pk %}
 
-{% for k, v in contact.body.items %}
+{% for k, v in contact.items %}
 {{ k }}:
 {{ v|pretty_print }}
 {% endfor %}
