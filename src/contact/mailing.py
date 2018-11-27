@@ -48,3 +48,26 @@ def subscribe(email, mailing_lists=None):
             'interests': interests,
         }
     )
+
+
+def unsubscribe(email, mailing_lists=None):
+    client = MailChimp(mc_api=settings.MAILCHIMP_API_KEY, timeout=10.0)
+    try:
+        member = client.lists.members.get(settings.MAILCHIMP_LIST_ID, subscriber_hash(email))
+    except MailChimpError:
+        return
+    else:
+        if member['status'] != 'subscribed':
+            return
+    mailing_lists = mailing_lists or settings.MAILCHIMP_GROUP_IDS
+    interests = {
+        settings.MAILCHIMP_GROUP_IDS[mailing_list]: False
+        for mailing_list in mailing_lists
+        if mailing_list in settings.MAILCHIMP_GROUP_IDS
+    }
+    client.lists.members.update(
+        settings.MAILCHIMP_LIST_ID, subscriber_hash(email),
+        data={
+            'interests': interests,
+        }
+    )

@@ -82,6 +82,7 @@ class UnsubscribeForm(Form):
         subscription = self.cleaned_data['subscription']
         subscription.active = False
         subscription.save()
+        mailing.unsubscribe(subscription.email)
 
         context = {'subscription': subscription}
         # refactor to send_noreply_mail
