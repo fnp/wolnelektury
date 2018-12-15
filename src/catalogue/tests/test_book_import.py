@@ -7,7 +7,6 @@ from catalogue.test_utils import *
 from catalogue import models
 from librarian import WLURI
 
-from nose.tools import raises
 from os import path, makedirs
 
 
@@ -112,12 +111,12 @@ class BookImportLogicTests(WLTestCase):
         self.assertEqual(book.fragments.count(), 0)
         self.assertEqual(book.tags.filter(category='theme').count(), 0)
 
-    @raises(ValueError)
     def test_book_with_invalid_slug(self):
         """ Book with invalid characters in slug shouldn't be imported """
         self.book_info.url = WLURI.from_slug(u"default_book")
         book_text = "<utwor />"
-        models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
+        with self.assertRaises(ValueError):
+            models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
 
     def test_book_replace_title(self):
         book_text = """<utwor />"""

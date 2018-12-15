@@ -21,6 +21,7 @@ src/wolnelektury/static/scss/*.css
 coverage.xml
 pip-log.txt
 nosetests.xml
+/htmlcov
 
 # Mac OS X garbage
 .DS_Store

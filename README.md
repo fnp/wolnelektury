@@ -33,7 +33,7 @@ How to deploy (development version)
 1. Checkout the source code from Github and enter the directory
 2. Install libraries (we recommend using pip):
 
-    pip install -r requirements.txt
+    pip install -r requirements/requirements.txt
     git submodule update --init
 
 3. Setup your local configuration based on settings.py. You need to generate a new SECRET_KEY, database stuff and domain related stuff.
