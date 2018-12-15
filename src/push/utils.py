@@ -6,13 +6,18 @@ import firebase_admin
 from firebase_admin import credentials, messaging
 from django.conf import settings
 
-cred = credentials.Certificate(settings.FCM_PRIVATE_KEY_PATH)
-firebase_admin.initialize_app(cred)
+
+cred = None
+if hasattr(settings, 'FCM_PRIVATE_KEY_PATH'):
+    cred = credentials.Certificate(settings.FCM_PRIVATE_KEY_PATH)
+    firebase_admin.initialize_app(cred)
 
 TOPIC = 'wolnelektury'
 
 
 def send_fcm_push(title, body, image_url=None):
+    if cred is None:
+        return
     # See documentation on defining a message payload.
     data = {}
     # data = {
