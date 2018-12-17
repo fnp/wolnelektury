@@ -9,9 +9,8 @@ import pytz
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-from paypalrestsdk import BillingPlan, BillingAgreement, ResourceNotFound
 from django.conf import settings
-from .models import BillingPlan as BillingPlanModel, BillingAgreement as BillingAgreementModel
+from .models import BillingPlan, BillingAgreement
 
 paypalrestsdk.configure(settings.PAYPAL_CONFIG)
 
@@ -25,7 +24,7 @@ def absolute_url(url_name):
 
 
 def create_plan(amount):
-    billing_plan = BillingPlan({
+    billing_plan = paypalrestsdk.BillingPlan({
         "name": "Cykliczna darowizna na Wolne Lektury: %s zł" % amount,
         "description": "Cykliczna darowizna na wsparcie Wolnych Lektur",
         "merchant_preferences": {
@@ -55,7 +54,7 @@ def create_plan(amount):
         raise PaypalError(billing_plan.error)
     if not billing_plan.activate():
         raise PaypalError(billing_plan.error)
-    plan, created = BillingPlanModel.objects.get_or_create(amount=amount, defaults={'plan_id': billing_plan.id})
+    plan, created = BillingPlan.objects.get_or_create(amount=amount, defaults={'plan_id': billing_plan.id})
     return plan.plan_id
 
 
@@ -67,13 +66,13 @@ def get_link(links, rel):
 
 def create_agreement(amount, app=False):
     try:
-        plan = BillingPlanModel.objects.get(amount=amount)
-    except BillingPlanModel.DoesNotExist:
+        plan = BillingPlan.objects.get(amount=amount)
+    except BillingPlan.DoesNotExist:
         plan_id = create_plan(amount)
     else:
         plan_id = plan.plan_id
     start = (timezone.now() + timedelta(0, 3600*24)).astimezone(pytz.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-    billing_agreement = BillingAgreement({
+    billing_agreement = paypalrestsdk.BillingAgreement({
         "name": u"Subskrypcja klubu WL",
         "description": u"Stałe wsparcie Wolnych Lektur kwotą %s złotych" % amount,
         "start_date": start,
@@ -103,8 +102,8 @@ def agreement_approval_url(amount, app=False):
 
 def get_agreement(agreement_id):
     try:
-        return BillingAgreement.find(agreement_id)
-    except ResourceNotFound:
+        return paypalrestsdk.BillingAgreement.find(agreement_id)
+    except paypalrestsdk.ResourceNotFound:
         return None
 
 
@@ -115,9 +114,9 @@ def check_agreement(agreement_id):
 
 
 def user_is_subscribed(user):
-    agreements = BillingAgreementModel.objects.filter(user=user)
+    agreements = BillingAgreement.objects.filter(user=user)
     return any(agreement.check_agreement() for agreement in agreements)
 
 
 def execute_agreement(token):
-    return BillingAgreement.execute(token)
+    return paypalrestsdk.BillingAgreement.execute(token)

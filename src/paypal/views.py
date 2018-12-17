@@ -12,7 +12,7 @@ from django.shortcuts import render
 from api.piston_patch import HttpResponseAppRedirect
 from paypal.forms import PaypalSubscriptionForm
 from paypal.rest import execute_agreement, check_agreement, agreement_approval_url, PaypalError
-from paypal.models import BillingAgreement as BillingAgreementModel, BillingPlan
+from paypal.models import BillingAgreement, BillingPlan
 
 
 def paypal_form(request, app=False):
@@ -37,13 +37,13 @@ def paypal_return(request, app=False):
     token = request.GET.get('token')
     if not token:
         raise Http404
-    if not BillingAgreementModel.objects.filter(token=token):
+    if not BillingAgreement.objects.filter(token=token):
         resource = execute_agreement(token)
         if resource.id:
             amount = int(Decimal(resource.plan.payment_definitions[0].amount['value']))
             plan = BillingPlan.objects.get(amount=amount)
             active = check_agreement(resource.id)
-            BillingAgreementModel.objects.create(
+            BillingAgreement.objects.create(
                 agreement_id=resource.id, user=request.user, plan=plan, active=active, token=token)
     else:
         resource = None
