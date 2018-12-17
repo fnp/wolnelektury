@@ -72,7 +72,6 @@ class VisitTest(WLTestCase):
         prefix = '/katalog/'
         for expected_status, urls in url_map.items():
             for url in urls:
-                print(url)
                 status = self.client.get(prefix + url).status_code
                 self.assertEqual(
                     status, expected_status,

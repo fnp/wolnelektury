@@ -20,13 +20,14 @@ from django.utils.translation import ugettext as _, ugettext_lazy
 
 from ajaxable.utils import AjaxableFormView
 from pdcounter import views as pdcounter_views
+from paypal.rest import user_is_subscribed
 from picture.models import Picture, PictureArea
 from ssify import ssi_included, ssi_expect, SsiVariable as Var
 from catalogue import constants
 from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment
-from catalogue.utils import split_tags, is_subscribed
+from catalogue.utils import split_tags
 from catalogue.models.tag import prefetch_relations
 from wolnelektury.utils import is_crawler
 
@@ -140,15 +141,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
 
 def literature(request):
     books = Book.objects.filter(parent=None)
-
-    # last_published = Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:20]
-    # most_popular = Book.objects.exclude(cover_thumb='')\
-    #                    .order_by('-popularity__count', 'sort_key_author', 'sort_key')[:20]
     return object_list(request, books, related_tags=get_top_level_related_tags([]))
-    # extra={
-    #     'last_published': last_published,
-    #     'most_popular': most_popular,
-    # })
 
 
 def gallery(request):
@@ -306,7 +299,7 @@ def player(request, slug):
 def book_text(request, slug):
     book = get_object_or_404(Book, slug=slug)
 
-    if book.preview and not is_subscribed(request.user):
+    if book.preview and not user_is_subscribed(request.user):
         return HttpResponseRedirect(book.get_absolute_url())
 
     if not book.has_html_file():
@@ -361,7 +354,7 @@ def embargo_link(request, format_, slug):
     media_file = book.get_media(format_)
     if not book.preview:
         return HttpResponseRedirect(media_file.url)
-    if not is_subscribed(request.user):
+    if not user_is_subscribed(request.user):
         return HttpResponseRedirect(book.get_absolute_url())
     return HttpResponse(media_file, content_type=constants.EBOOK_CONTENT_TYPES[format_])
 
@@ -395,7 +388,7 @@ class CustomPDFFormView(AjaxableFormView):
 
     def validate_object(self, obj, request):
         book = obj
-        if book.preview and not is_subscribed(request.user):
+        if book.preview and not user_is_subscribed(request.user):
             return HttpResponseRedirect(book.get_absolute_url())
         return super(CustomPDFFormView, self).validate_object(obj, request)
 

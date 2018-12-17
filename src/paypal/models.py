@@ -19,10 +19,6 @@ class BillingAgreement(models.Model):
     active = models.BooleanField(max_length=32)
     token = models.CharField(max_length=32)
 
-    def get_agreement(self):
-        from .rest import get_agreement
-        return get_agreement(self.agreement_id)
-
     def check_agreement(self):
         from .rest import check_agreement
         return check_agreement(self.agreement_id)

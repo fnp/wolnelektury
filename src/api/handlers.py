@@ -19,8 +19,8 @@ from api.models import BookUserData
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.models.tag import prefetch_relations
-from catalogue.utils import is_subscribed
 from librarian.cover import WLCover
+from paypal.rest import user_is_subscribed
 from picture.models import Picture
 from picture.forms import PictureImportForm
 from social.utils import likes
@@ -330,7 +330,7 @@ class BooksHandler(BookDetailHandler):
 
 class EpubHandler(BookDetailHandler):
     def read(self, request, slug):
-        if not is_subscribed(request.user):
+        if not user_is_subscribed(request.user):
             return rc.FORBIDDEN
         try:
             book = Book.objects.get(slug=slug)
@@ -730,7 +730,7 @@ class UserDataHandler(BaseHandler):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
         if slug is None:
-            return {'username': request.user.username, 'premium': is_subscribed(request.user)}
+            return {'username': request.user.username, 'premium': user_is_subscribed(request.user)}
         try:
             book = Book.objects.get(slug=slug)
         except Book.DoesNotExist:
