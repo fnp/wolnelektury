@@ -42,13 +42,13 @@ def paypal_return(request, app=False):
         if resource.id:
             amount = int(Decimal(resource.plan.payment_definitions[0].amount['value']))
             plan = BillingPlan.objects.get(amount=amount)
-            active = check_agreement(resource.id)
+            active = check_agreement(resource.id) or False
             BillingAgreement.objects.create(
                 agreement_id=resource.id, user=request.user, plan=plan, active=active, token=token)
     else:
         resource = None
     if app:
-        if getattr(resource, 'error'):
+        if getattr(resource, 'error', None):
             return HttpResponseAppRedirect('wolnelekturyapp://paypal_error')
         else:
             return HttpResponseAppRedirect('wolnelekturyapp://paypal_return')
