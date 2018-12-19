@@ -36,6 +36,17 @@ class Contact(models.Model):
         data = '%s%s%s%s%s' % (self.id, self.contact, serialized_body, self.ip, self.form_tag)
         return sha1(data).hexdigest()
 
+    def keys(self):
+        try:
+            from .views import contact_forms
+            orig_fields = contact_forms[self.form_tag]().fields
+        except KeyError:
+            orig_fields = {}
+        return list(orig_fields.keys())
+
+    def items(self):
+        return [(key, self.body[key]) for key in self.keys() if key in self.body]
+
 
 class Attachment(models.Model):
     contact = models.ForeignKey(Contact)

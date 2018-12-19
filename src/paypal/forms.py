@@ -7,4 +7,4 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class PaypalSubscriptionForm(forms.Form):
-    amount = forms.IntegerField(min_value=10, max_value=30000, initial=20, label=_('amount'))
+    amount = forms.IntegerField(min_value=5, max_value=30000, initial=20, label=_('amount in PLN'))

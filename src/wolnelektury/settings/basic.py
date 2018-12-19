@@ -58,3 +58,23 @@ TEMPLATES = [{
         ),
     },
 }]
+
+MIDDLEWARE_CLASSES = [
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'ssify.middleware.SsiMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'ssify.middleware.PrepareForCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
+    'fnp_django_pagination.middleware.PaginationMiddleware',
+    'ssify.middleware.LocaleMiddleware',
+    'maintenancemode.middleware.MaintenanceModeMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+]
+
+ROOT_URLCONF = 'wolnelektury.urls'

@@ -11,7 +11,7 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 from paypalrestsdk import BillingPlan, BillingAgreement, ResourceNotFound
 from django.conf import settings
-from .models import BillingPlan as BillingPlanModel
+from .models import BillingPlan as BillingPlanModel, BillingAgreement as BillingAgreementModel
 
 paypalrestsdk.configure(settings.PAYPAL_CONFIG)
 
@@ -112,6 +112,11 @@ def check_agreement(agreement_id):
     a = get_agreement(agreement_id)
     if a:
         return a.state == 'Active'
+
+
+def user_is_subscribed(user):
+    agreements = BillingAgreementModel.objects.filter(user=user)
+    return any(agreement.check_agreement() for agreement in agreements)
 
 
 def execute_agreement(token):

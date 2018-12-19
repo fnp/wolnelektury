@@ -754,7 +754,10 @@ class Book(models.Model):
     def fragment_data(self):
         fragment = self.choose_fragment()
         if fragment:
-            return {'title': fragment.book.pretty_title(), 'html': fragment.get_short_text()}
+            return {
+                'title': fragment.book.pretty_title(),
+                'html': re.sub('</?blockquote[^>]*>', '', fragment.get_short_text()),
+            }
         else:
             return None
 

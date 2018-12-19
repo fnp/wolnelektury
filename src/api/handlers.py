@@ -6,6 +6,7 @@ import json
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from django.http.response import HttpResponse
 from django.utils.functional import lazy
 from django.db import models
@@ -30,8 +31,9 @@ from wolnelektury.utils import re_escape
 from . import emitters  # Register our emitters
 
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
-    lambda: u'http://' + Site.objects.get_current().domain, unicode)()
+    lambda: u'https://' + Site.objects.get_current().domain, unicode)()
 
+SORT_KEY_SEP = '$'
 
 category_singular = {
     'authors': 'author',
@@ -46,6 +48,9 @@ for k, v in category_singular.items():
     category_plural[v] = k
 
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
+
+book_list_fields = book_tag_categories + [
+    'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color', 'full_sort_key']
 
 
 def read_tags(tags, request, allowed):
@@ -161,7 +166,30 @@ class BookDetails(object):
 
     @classmethod
     def cover_color(cls, book):
-        return WLCover.epoch_colors.get(book.extra_info['epoch'], '#000000')
+        return WLCover.epoch_colors.get(book.extra_info.get('epoch'), '#000000')
+
+    @classmethod
+    def full_sort_key(cls, book):
+        return '%s%s%s%s%s' % (book.sort_key_author, SORT_KEY_SEP, book.sort_key, SORT_KEY_SEP, book.id)
+
+    @staticmethod
+    def books_after(books, after, new_api):
+        if not new_api:
+            return books.filter(slug__gt=after)
+        try:
+            author, title, book_id = after.split(SORT_KEY_SEP)
+        except ValueError:
+            return Book.objects.none()
+        return books.filter(Q(sort_key_author__gt=author)
+                            | (Q(sort_key_author=author) & Q(sort_key__gt=title))
+                            | (Q(sort_key_author=author) & Q(sort_key=title) & Q(id__gt=int(book_id))))
+
+    @staticmethod
+    def order_books(books, new_api):
+        if new_api:
+            return books.order_by('sort_key_author', 'sort_key', 'id')
+        else:
+            return books.order_by('slug')
 
 
 class BookDetailHandler(BaseHandler, BookDetails):
@@ -191,8 +219,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     """
     allowed_methods = ('GET',)
     model = Book
-    fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'slug', 'simple_thumb', 'has_audio', 'cover_color']
+    fields = book_list_fields
 
     @classmethod
     def genres(cls, book):
@@ -202,7 +229,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     @piwik_track
     def read(self, request, tags=None, top_level=False, audiobooks=False, daisy=False, pk=None,
              recommended=False, newest=False, books=None,
-             after=None, before=None, count=None):
+             after=None, count=None):
         """ Lists all books with given tags.
 
         :param tags: filtering tags; should be a path of categories
@@ -222,10 +249,9 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
         except ValueError:
             return rc.NOT_FOUND
 
+        new_api = request.GET.get('new_api')
         if 'after' in request.GET:
             after = request.GET['after']
-        if 'before' in request.GET:
-            before = request.GET['before']
         if 'count' in request.GET:
             count = request.GET['count']
 
@@ -237,7 +263,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 books = Book.tagged.with_all(tags)
         else:
             books = books if books is not None else Book.objects.all()
-        books = books.order_by('slug')
+        books = self.order_books(books, new_api)
 
         if top_level:
             books = books.filter(parent=None)
@@ -251,19 +277,17 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             books = books.order_by('-created_at')
 
         if after:
-            books = books.filter(slug__gt=after)
-        if before:
-            books = books.filter(slug__lt=before)
+            books = self.books_after(books, after, new_api)
 
-        books = books.only('slug', 'title', 'cover', 'cover_thumb')
+        if new_api:
+            books = books.only('slug', 'title', 'cover', 'cover_thumb', 'sort_key', 'sort_key_author')
+        else:
+            books = books.only('slug', 'title', 'cover', 'cover_thumb')
         for category in book_tag_categories:
             books = prefetch_relations(books, category)
 
         if count:
-            if before:
-                books = list(reversed(books.order_by('-slug')[:count]))
-            else:
-                books = books[:count]
+            books = books[:count]
 
         return books
 
@@ -274,8 +298,22 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
 class BooksHandler(BookDetailHandler):
     allowed_methods = ('GET', 'POST')
     model = Book
-    fields = book_tag_categories + ['href', 'title', 'url', 'cover', 'cover_thumb', 'cover_color', 'slug']
+    fields = book_list_fields + ['liked']
     anonymous = AnonymousBooksHandler
+
+    # hack, because piston is stupid
+    @classmethod
+    def liked(cls, book):
+        return getattr(book, 'liked', None)
+
+    def read(self, request, **kwargs):
+        books = AnonymousBooksHandler().read(request, **kwargs)
+        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
+
+        new_books = [
+            BookProxy(book).set('liked', book.id in likes)
+            for book in books]
+        return QuerySetProxy(new_books)
 
     def create(self, request, *args, **kwargs):
         if not request.user.has_perm('catalogue.add_book'):
@@ -310,15 +348,16 @@ class BookProxy(models.Model):
     class Meta:
         managed = False
 
-    def __init__(self, book, key):
+    def __init__(self, book, key=None):
         self.book = book
         self.key = key
 
+    def set(self, attr, value):
+        self.__setattr__(attr, value)
+        return self
+
     def __getattr__(self, item):
-        if item not in ('book', 'key'):
-            return self.book.__getattribute__(item)
-        else:
-            return self.__getattribute__(item)
+        return self.book.__getattribute__(item)
 
 
 class QuerySetProxy(models.QuerySet):
@@ -329,9 +368,8 @@ class QuerySetProxy(models.QuerySet):
         return iter(self.list)
 
 
-class FilterBooksHandler(AnonymousBooksHandler):
-    fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'cover_color', 'simple_thumb', 'has_audio', 'slug', 'key']
+class AnonFilterBooksHandler(AnonymousBooksHandler):
+    fields = book_list_fields + ['key']
 
     def parse_bool(self, s):
         if s in ('true', 'false'):
@@ -346,9 +384,10 @@ class FilterBooksHandler(AnonymousBooksHandler):
         is_audiobook = self.parse_bool(request.GET.get('audiobook'))
         preview = self.parse_bool(request.GET.get('preview'))
 
+        new_api = request.GET.get('new_api')
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
-        books = Book.objects.distinct().order_by('slug')
+        books = self.order_books(Book.objects.distinct(), new_api)
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
         if is_audiobook is not None:
@@ -373,32 +412,58 @@ class FilterBooksHandler(AnonymousBooksHandler):
             books_title = books.filter(title__iregex='\m' + search_string)
             books_title = books_title.exclude(id__in=list(books_author.values_list('id', flat=True)))
             if after and (key_sep in after):
-                which, slug = after.split(key_sep, 1)
+                which, key = after.split(key_sep, 1)
                 if which == 'title':
-                    book_lists = [(books_title.filter(slug__gt=slug), 'title')]
+                    book_lists = [(self.books_after(books_title, key, new_api), 'title')]
                 else:  # which == 'author'
-                    book_lists = [(books_author.filter(slug__gt=slug), 'author'), (books_title, 'title')]
+                    book_lists = [(self.books_after(books_author, key, new_api), 'author'), (books_title, 'title')]
             else:
                 book_lists = [(books_author, 'author'), (books_title, 'title')]
         else:
             if after and key_sep in after:
-                which, slug = after.split(key_sep, 1)
-                books = books.filter(slug__gt=slug)
+                which, key = after.split(key_sep, 1)
+                books = self.books_after(books, key, new_api)
             book_lists = [(books, 'book')]
 
         filtered_books = []
         for book_list, label in book_lists:
-            book_list = book_list.only('slug', 'title', 'cover', 'cover_thumb')
+            book_list = book_list.only('slug', 'title', 'cover', 'cover_thumb', 'sort_key_author', 'sort_key')
             for category in book_tag_categories:
                 book_list = prefetch_relations(book_list, category)
             remaining_count = count - len(filtered_books)
-            new_books = [BookProxy(book, '%s%s%s' % (label, key_sep, book.slug))
-                         for book in book_list[:remaining_count]]
+            new_books = [
+                BookProxy(book, '%s%s%s' % (
+                    label, key_sep, book.slug if not new_api else self.full_sort_key(book)))
+                for book in book_list[:remaining_count]]
             filtered_books += new_books
             if len(filtered_books) == count:
                 break
 
         return QuerySetProxy(filtered_books)
+
+
+class FilterBooksHandler(BooksHandler):
+    anonymous = AnonFilterBooksHandler
+    fields = book_list_fields + ['key', 'liked']
+
+    # hack, because piston is stupid
+    @classmethod
+    def liked(cls, book):
+        return getattr(book, 'liked', None)
+
+    def read(self, request):
+        qsp = AnonFilterBooksHandler().read(request)
+        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
+        for book in qsp.list:
+            book.set('liked', book.id in likes)
+        return qsp
+
+
+class BookPreviewHandler(BookDetailHandler):
+    fields = BookDetailHandler.fields + ['slug']
+
+    def read(self, request):
+        return Book.objects.filter(preview=True)
 
 
 # add categorized tags fields for Book
@@ -552,7 +617,6 @@ class TagsHandler(BaseHandler, TagDetails):
             return rc.NOT_FOUND
 
         after = request.GET.get('after')
-        before = request.GET.get('before')
         count = request.GET.get('count')
 
         tags = Tag.objects.filter(category=category_sng).exclude(items=None).order_by('slug')
@@ -566,14 +630,9 @@ class TagsHandler(BaseHandler, TagDetails):
 
         if after:
             tags = tags.filter(slug__gt=after)
-        if before:
-            tags = tags.filter(slug__lt=before)
 
         if count:
-            if before:
-                tags = list(reversed(tags.order_by('-slug')[:count]))
-            else:
-                tags = tags[:count]
+            tags = tags[:count]
 
         return tags
 
@@ -664,14 +723,14 @@ class PictureHandler(BaseHandler):
 
 class UserDataHandler(BaseHandler):
     model = BookUserData
-    fields = ('state', 'username')
+    fields = ('state', 'username', 'premium')
     allowed_methods = ('GET', 'POST')
 
     def read(self, request, slug=None):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
         if slug is None:
-            return {'username': request.user.username}
+            return {'username': request.user.username, 'premium': is_subscribed(request.user)}
         try:
             book = Book.objects.get(slug=slug)
         except Book.DoesNotExist:
@@ -698,8 +757,7 @@ class UserDataHandler(BaseHandler):
 
 
 class UserShelfHandler(BookDetailHandler):
-    fields = book_tag_categories + [
-        'href', 'title', 'url', 'cover', 'cover_thumb', 'simple_thumb', 'slug', 'key']
+    fields = book_list_fields + ['liked']
 
     def parse_bool(self, s):
         if s in ('true', 'false'):
@@ -707,11 +765,18 @@ class UserShelfHandler(BookDetailHandler):
         else:
             return None
 
+    # hack, because piston is stupid
+    @classmethod
+    def liked(cls, book):
+        return getattr(book, 'liked', None)
+
     def read(self, request, state):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
+        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
         if state not in ('reading', 'complete', 'likes'):
             return rc.NOT_FOUND
+        new_api = request.GET.get('new_api')
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
         if state == 'likes':
@@ -719,12 +784,16 @@ class UserShelfHandler(BookDetailHandler):
         else:
             ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete')\
                 .values_list('book_id', flat=True)
-            books = Book.objects.filter(id__in=list(ids)).distinct().order_by('slug')
+            books = Book.objects.filter(id__in=list(ids)).distinct()
+            books = self.order_books(books, new_api)
         if after:
-            books = books.filter(slug__gt=after)
+            books = self.books_after(books, after, new_api)
         if count:
             books = books[:count]
-        return books
+        new_books = []
+        for book in books:
+            new_books.append(BookProxy(book).set('liked', book.id in likes))
+        return QuerySetProxy(new_books)
 
 
 class UserLikeHandler(BaseHandler):
@@ -740,13 +809,14 @@ class UserLikeHandler(BaseHandler):
             return rc.NOT_FOUND
         return {'likes': likes(request.user, book)}
 
-    def create(self, request, slug, action='like'):
+    def create(self, request, slug):
         if not request.user.is_authenticated():
             return rc.FORBIDDEN
         try:
             book = Book.objects.get(slug=slug)
         except Book.DoesNotExist:
             return rc.NOT_FOUND
+        action = request.GET.get('action', 'like')
         if action == 'like':
             book.like(request.user)
         elif action == 'unlike':
@@ -756,7 +826,8 @@ class UserLikeHandler(BaseHandler):
 
 class BlogEntryHandler(BaseHandler):
     model = Entry
-    fields = ('title', 'lead', 'body', 'place', 'time', 'image_url', 'gallery_urls', 'type', 'key')
+    fields = (
+        'title', 'lead', 'body', 'place', 'time', 'image_url', 'image_thumb', 'gallery_urls', 'type', 'key', 'url')
 
     def read(self, request):
         after = request.GET.get('after')
@@ -770,12 +841,21 @@ class BlogEntryHandler(BaseHandler):
 
     @classmethod
     def image_url(cls, entry):
-        return entry.image.url if entry.image else None
+        return (WL_BASE + entry.image.url) if entry.image else None
+
+    @classmethod
+    def image_thumb(cls, entry):
+        return MEDIA_BASE + default.backend.get_thumbnail(
+            entry.image, "193x193").url if entry.image else ''
 
     @classmethod
     def gallery_urls(cls, entry):
-        return [photo.url() for photo in entry.photo_set.all()]
+        return [WL_BASE + photo.url() for photo in entry.photo_set.all()]
 
     @classmethod
     def key(cls, entry):
         return entry.first_published_at
+
+    @classmethod
+    def url(cls, entry):
+        return WL_BASE + entry.get_absolute_url()

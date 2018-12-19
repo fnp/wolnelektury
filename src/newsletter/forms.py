@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-from django.forms import Form, BooleanField
+from django.forms import Form, BooleanField, MultipleChoiceField
 from django.forms.fields import EmailField
+from django.forms.widgets import CheckboxSelectMultiple
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext
@@ -16,6 +17,8 @@ class NewsletterForm(Form):
     email_field = 'email'
     agree_newsletter = BooleanField(
         required=False, initial=False, label=_(u'I want to receive Wolne Lektury\'s newsletter.'))
+    mailing = False
+    mailing_field = 'agree_newsletter'
 
     data_processing_part1 = u'''\
 Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
@@ -35,7 +38,7 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
             super(NewsletterForm, self).save(*args, **kwargs)
         except AttributeError:
             pass
-        if not self.cleaned_data.get('agree_newsletter'):
+        if not (self.mailing or self.cleaned_data.get(self.mailing_field)):
             return
         email = self.cleaned_data[self.email_field]
         try:
@@ -47,15 +50,21 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
             # send_noreply_mail(
             #     ugettext(u'Confirm your subscription to Wolne Lektury newsletter'),
             #     render_to_string('newsletter/subscribe_email.html', {'subscription': subscription}), [email])
-            mailing.subscribe(email)
+            mailing.subscribe(email, mailing_lists=self.cleaned_data.get('mailing_lists'))
 
 
 class SubscribeForm(NewsletterForm):
+    mailing = True
+    agree_newsletter = None
+
     email = EmailField(label=_('email address'))
+    mailing_lists = MultipleChoiceField(
+        widget=CheckboxSelectMultiple,
+        choices=(('general', _(u'general newsletter')), ('contest', _(u'about the contest'))),
+        label=_(u'mailing list'))
 
     def __init__(self, *args, **kwargs):
         super(SubscribeForm, self).__init__(*args, **kwargs)
-        self.fields['agree_newsletter'].required = True
 
 
 class UnsubscribeForm(Form):
@@ -73,6 +82,7 @@ class UnsubscribeForm(Form):
         subscription = self.cleaned_data['subscription']
         subscription.active = False
         subscription.save()
+        mailing.unsubscribe(subscription.email)
 
         context = {'subscription': subscription}
         # refactor to send_noreply_mail

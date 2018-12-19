@@ -45,6 +45,7 @@ class BookUserData(models.Model):
     book = models.ForeignKey(Book)
     user = models.ForeignKey(User)
     complete = models.BooleanField(default=False)
+    last_changed = models.DateTimeField(auto_now=True)
 
     def get_state(self):
         return 'complete' if self.complete else 'reading'

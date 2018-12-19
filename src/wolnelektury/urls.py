@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.views.generic import RedirectView
 import django.views.static
+from migdal.urls import urlpatterns as migdal_urlpatterns
 import catalogue.views
 import picture.views
 from . import views
@@ -51,6 +52,7 @@ urlpatterns += [
     url(r'^formularz/', include('contact.urls')),
     url(r'^isbn/', include('isbn.urls')),
     url(r'^paypal/', include('paypal.urls')),
+    url(r'^powiadomienie/', include('push.urls')),
 
     # Admin panel
     url(r'^admin/catalogue/book/import$', catalogue.views.import_book, name='import_book'),
@@ -93,3 +95,5 @@ urlpatterns += [
     url(r'^error-test/$', views.exception_test),
     # url(r'^post-test/$', views.post_test),
 ]
+
+urlpatterns += migdal_urlpatterns

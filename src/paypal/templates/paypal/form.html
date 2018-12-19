@@ -1,18 +1,25 @@
 {% extends "base/base.html" %}
 {% load i18n %}
+{% load chunks %}
+{% load static from staticfiles %}
 
-{% block title %}{% trans "Subscription" %}{% endblock %}
+{% block title %}{% trans "Wolne Lektury Friend Club" %}{% endblock %}
 
 {% block body %}
+  <div class="mobile-margins">
+  <h1>{% trans "Wolne Lektury Friend Club" %}</h1>
+  <p>Poniżej możesz ustawić comiesięczną płatność <strong>(co najmniej 5 zł)</strong>, aby dołączyć do Przyjaciół Wolnych Lektur.</p>
   {# https://www.facebook.com/sharer/sharer.php?u=https%3A//wolnelektury.pl{% url 'paypal_form' %} #}
   {% if user.is_authenticated %}
     <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
+      {{ form.amount.label_tag }}{{ form.amount }}
       {# paypal submit button #}
-      <button type="submit">{% trans "Subscribe with PayPal" %}</button>
+      <input type="image" src="{% static 'img/btn_subscribe_LG_pl.gif' %}" alt="{% trans "Subscribe with PayPal" %}" style="margin-left: 2em; vertical-align: bottom;">
     </form>
   {% else %}
     {% trans "You must be logged in to subscribe." %}
   {% endif %}
+  {% chunk "klub_info" %}
+  </div>
 {% endblock %}

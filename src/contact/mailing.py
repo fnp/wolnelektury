@@ -2,17 +2,9 @@
 
 from hashlib import md5
 
-import requests
 from django.conf import settings
 from mailchimp3 import MailChimp
 from mailchimp3.mailchimpclient import MailChimpError
-
-INTERESTS = {settings.MAILCHIMP_GROUP_ID: True}
-
-
-def get_client():
-    headers = requests.utils.default_headers()
-    headers['User-Agent'] = '%s (%s)' % settings.MANAGERS[0]
 
 
 def subscriber_hash(email):
@@ -32,7 +24,7 @@ def remove_from_groups(email, client):
          data={'interests': interests})
 
 
-def subscribe(email):
+def subscribe(email, mailing_lists=None):
     client = MailChimp(mc_api=settings.MAILCHIMP_API_KEY, timeout=10.0)
     try:
         member = client.lists.members.get(settings.MAILCHIMP_LIST_ID, subscriber_hash(email))
@@ -41,12 +33,41 @@ def subscribe(email):
     else:
         if member['status'] != 'subscribed':
             remove_from_groups(email, client)
+    mailing_lists = mailing_lists or [settings.MAILCHIMP_DEFAULT_GROUP]
+    interests = {
+        settings.MAILCHIMP_GROUP_IDS[mailing_list]: True
+        for mailing_list in mailing_lists
+        if mailing_list in settings.MAILCHIMP_GROUP_IDS
+    }
     client.lists.members.create_or_update(
         settings.MAILCHIMP_LIST_ID, subscriber_hash(email),
         data={
             'email_address': email,
             'status_if_new': 'subscribed',
             'status': 'subscribed',
-            'interests': INTERESTS,
+            'interests': interests,
+        }
+    )
+
+
+def unsubscribe(email, mailing_lists=None):
+    client = MailChimp(mc_api=settings.MAILCHIMP_API_KEY, timeout=10.0)
+    try:
+        member = client.lists.members.get(settings.MAILCHIMP_LIST_ID, subscriber_hash(email))
+    except MailChimpError:
+        return
+    else:
+        if member['status'] != 'subscribed':
+            return
+    mailing_lists = mailing_lists or settings.MAILCHIMP_GROUP_IDS
+    interests = {
+        settings.MAILCHIMP_GROUP_IDS[mailing_list]: False
+        for mailing_list in mailing_lists
+        if mailing_list in settings.MAILCHIMP_GROUP_IDS
+    }
+    client.lists.members.update(
+        settings.MAILCHIMP_LIST_ID, subscriber_hash(email),
+        data={
+            'interests': interests,
         }
     )
