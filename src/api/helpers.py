@@ -2,13 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from time import mktime
 from piston.resource import Resource
-
-
-def timestamp(dtime):
-    """converts a datetime.datetime object to a timestamp int"""
-    return int(mktime(dtime.timetuple()))
 
 
 class CsrfExemptResource(Resource):

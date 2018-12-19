@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from piston.authentication import OAuthAuthentication, oauth_access_token, oauth_request_token
 from piston.resource import Resource
-from ssify import ssi_included
 import catalogue.views
 from api import handlers
 from api.helpers import CsrfExemptResource
@@ -72,29 +71,12 @@ tags_re = r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){0,6})'
 paginate_re = r'(?:after/(?P<after>[a-z0-9-]+)/)?(?:count/(?P<count>[0-9]+)/)?$'
 
 
-@ssi_included
-def incl(request, model, pk, emitter_format):
-    resource = {
-        'book': book_list_resource,
-        'fragment': fragment_list_resource,
-        'tag': tag_list_resource,
-        }[model]
-    request.piwik_track = False
-    resp = resource(request, pk=pk, emitter_format=emitter_format)
-    if emitter_format == 'xml':
-        # Ugly, but quick way of stripping <?xml?> header and <response> tags.
-        resp.content = resp.content[49:-11]
-    return resp
-
-
 urlpatterns = [
     url(r'^oauth/request_token/$', oauth_request_token),
     url(r'^oauth/authorize/$', oauth_user_auth, name='oauth_user_auth'),
     url(r'^oauth/access_token/$', csrf_exempt(oauth_access_token)),
 
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
-    url(r'^include/(?P<model>book|fragment|tag)/(?P<pk>\d+)\.(?P<lang>.+)\.(?P<emitter_format>xml|json)$',
-        incl, name='api_include'),
 
     # info boxes (used by mobile app)
     url(r'book/(?P<book_id>\d*?)/info\.html$', catalogue.views.book_info),

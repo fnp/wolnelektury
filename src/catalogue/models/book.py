@@ -115,8 +115,6 @@ class Book(models.Model):
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
 
-    short_html_url_name = 'catalogue_book_short'
-
     class AlreadyExists(Exception):
         pass
 
