@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 13:13+0100\n"
+"POT-Creation-Date: 2018-12-20 10:23+0100\n"
 "PO-Revision-Date: 2013-04-09 10:40+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,231 +24,257 @@ msgstr ""
 msgid "Free Art License 1.3"
 msgstr ""
 
-#: constants.py:45
+#: constants.py:58
 #, fuzzy
 #| msgid "author"
 msgid "authors"
 msgstr "автор"
 
-#: constants.py:46
+#: constants.py:59
 #, fuzzy
 #| msgid "epoch"
 msgid "epochs"
 msgstr "епоха"
 
-#: constants.py:47
+#: constants.py:60
 #, fuzzy
 #| msgid "kind"
 msgid "kinds"
 msgstr "рід"
 
-#: constants.py:48
+#: constants.py:61
 #, fuzzy
 #| msgid "genre"
 msgid "genres"
 msgstr "жанр"
 
-#: constants.py:49
+#: constants.py:62
 #, fuzzy
 #| msgid "theme"
 msgid "themes"
 msgstr "тема"
 
-#: constants.py:50
+#: constants.py:63
 msgid "sets"
 msgstr ""
 
-#: constants.py:51
+#: constants.py:64
 msgid "things"
 msgstr ""
 
-#: constants.py:55
+#: constants.py:68
 #, fuzzy
 #| msgid "author"
 msgid "All authors"
 msgstr "автор"
 
-#: constants.py:56
+#: constants.py:69
 #, fuzzy
 #| msgid "epoch"
 msgid "All epochs"
 msgstr "епоха"
 
-#: constants.py:57
+#: constants.py:70
 #, fuzzy
 #| msgid "kind"
 msgid "All kinds"
 msgstr "рід"
 
-#: constants.py:58
+#: constants.py:71
 #, fuzzy
 #| msgid "genre"
 msgid "All genres"
 msgstr "жанр"
 
-#: constants.py:59
+#: constants.py:72
 #, fuzzy
 #| msgid "theme"
 msgid "All themes"
 msgstr "тема"
 
-#: constants.py:60
+#: constants.py:73
 #, fuzzy
 #| msgid "collections"
 msgid "All sets"
 msgstr "колекції"
 
-#: constants.py:61
+#: constants.py:74
 #, fuzzy
 #| msgid "collections"
 msgid "All things"
 msgstr "колекції"
 
-#: forms.py:28
+#: forms.py:29
 msgid "Please supply an XML."
 msgstr "Введіть будь ласка XML."
 
-#: forms.py:47
+#: forms.py:49
 msgid "Don't show footnotes"
 msgstr "Сховати примітки"
 
-#: forms.py:48
+#: forms.py:50
 msgid "Don't disply themes"
 msgstr "Сховати теми"
 
-#: forms.py:49
+#: forms.py:51
 msgid "Don't use our custom font"
 msgstr "Не використовувати нашого настроюваного шрифту"
 
-#: forms.py:50
+#: forms.py:52
 msgid "Without cover"
 msgstr ""
 
 #: forms.py:53
+#, fuzzy
+#| msgid "Table of contents"
+msgid "Without table of contents"
+msgstr "Зміст"
+
+#: forms.py:56
 msgid "Leading"
 msgstr "Leading"
 
-#: forms.py:54
+#: forms.py:57
 msgid "Normal leading"
 msgstr "Normal leading"
 
-#: forms.py:55
+#: forms.py:58
 msgid "One and a half leading"
 msgstr "One and a half leading"
 
-#: forms.py:56
+#: forms.py:59
 msgid "Double leading"
 msgstr "Double leading"
 
-#: forms.py:58
+#: forms.py:61
 msgid "Font size"
 msgstr "Розмір шрифту"
 
-#: forms.py:59
+#: forms.py:62
 msgid "Default"
 msgstr "За умовчанням"
 
-#: forms.py:60
+#: forms.py:63
 msgid "Big"
 msgstr "Великий"
 
-#: forms.py:82
+#: forms.py:64
+msgid "Bigger"
+msgstr ""
+
+#: forms.py:86
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: models/book.py:55 models/collection.py:14
+#: models/book.py:58 models/collection.py:14
 msgid "title"
 msgstr "заголовок"
 
-#: models/book.py:56 models/tag.py:58
+#: models/book.py:59 models/tag.py:58
 msgid "sort key"
 msgstr "ключ сортування"
 
-#: models/book.py:58
+#: models/book.py:61
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Результати за авторами"
 
-#: models/book.py:59 models/book.py:60 models/collection.py:15
+#: models/book.py:62 models/book.py:63 models/collection.py:15
 #: models/collection.py:18 models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:61
+#: models/book.py:64
 msgid "language code"
 msgstr "мовний код"
 
-#: models/book.py:62 models/book.py:240 models/collection.py:16
+#: models/book.py:65 models/book.py:304 models/collection.py:16
 #: models/tag.py:61 models/tag.py:186
 msgid "description"
 msgstr "опис"
 
-#: models/book.py:63 models/bookmedia.py:36 models/tag.py:71 models/tag.py:72
+#: models/book.py:66
+msgid "abstract"
+msgstr ""
+
+#: models/book.py:67 models/bookmedia.py:36 models/tag.py:71 models/tag.py:72
 msgid "creation date"
 msgstr "дата створення"
 
-#: models/book.py:64
+#: models/book.py:68
 #, fuzzy
 #| msgid "creation date"
 msgid "change date"
 msgstr "дата створення"
 
-#: models/book.py:65
+#: models/book.py:69
 msgid "parent number"
 msgstr "номер батька"
 
-#: models/book.py:66 models/bookmedia.py:37
+#: models/book.py:70 models/bookmedia.py:37
 msgid "extra information"
 msgstr "додаткова інформація"
 
-#: models/book.py:69
+#: models/book.py:73
 msgid "print on demand"
 msgstr ""
 
-#: models/book.py:70
+#: models/book.py:74
 msgid "recommended"
 msgstr ""
 
-#: models/book.py:74
+#: models/book.py:75
+msgid "audio length"
+msgstr ""
+
+#: models/book.py:76
+msgid "preview"
+msgstr ""
+
+#: models/book.py:77
+msgid "preview until"
+msgstr ""
+
+#: models/book.py:81
 msgid "cover"
 msgstr "обкладинка"
 
-#: models/book.py:80
+#: models/book.py:87
 msgid "cover thumbnail"
 msgstr ""
 
-#: models/book.py:85
+#: models/book.py:92
 msgid "cover thumbnail for mobile app"
 msgstr ""
 
-#: models/book.py:90
+#: models/book.py:97
 msgid "cover for mobile app"
 msgstr ""
 
-#: models/book.py:118 models/collection.py:22
+#: models/book.py:125 models/collection.py:22
 msgid "book"
 msgstr "книжка"
 
-#: models/book.py:119
+#: models/book.py:126
 msgid "books"
 msgstr "книжки"
 
-#: models/book.py:378
+#: models/book.py:449
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Книжка \"%s\" не існує."
 
-#: models/book.py:391
+#: models/book.py:465
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книжка %s вже існує"
 
-#: models/book.py:658
+#: models/book.py:736
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:705 models/bookmedia.py:29
+#: models/book.py:797 models/bookmedia.py:29
 #, python-format
 msgid "%s file"
 msgstr "файл %s"
@@ -404,23 +430,23 @@ msgstr "книжки"
 msgid "in"
 msgstr "рід"
 
-#: templates/catalogue/book_detail.html:63
+#: templates/catalogue/book_detail.html:64
 msgid "Source XML file"
 msgstr "Файл джерела XML"
 
-#: templates/catalogue/book_detail.html:66
+#: templates/catalogue/book_detail.html:68
 msgid "Book on"
 msgstr "Книжка на"
 
-#: templates/catalogue/book_detail.html:66
+#: templates/catalogue/book_detail.html:68
 msgid "Editor's Platform"
 msgstr "Платформа редагування"
 
-#: templates/catalogue/book_detail.html:71
+#: templates/catalogue/book_detail.html:73
 msgid "Book description on Wikipedia"
 msgstr "Опис книжки на Вікіпедії"
 
-#: templates/catalogue/book_detail.html:75
+#: templates/catalogue/book_detail.html:77
 msgid "Mix this book"
 msgstr "Міксувати цю книжку"
 
@@ -510,31 +536,35 @@ msgstr "Зміст"
 msgid "↑ top ↑"
 msgstr "↑ вгору ↑"
 
-#: templates/catalogue/book_short.html:50
+#: templates/catalogue/book_short.html:53
 #: templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Епоха"
 
-#: templates/catalogue/book_short.html:58
+#: templates/catalogue/book_short.html:61
 #: templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Рід"
 
-#: templates/catalogue/book_short.html:66
+#: templates/catalogue/book_short.html:69
 msgid "Genre"
 msgstr "Жанр"
 
-#: templates/catalogue/book_short.html:75
+#: templates/catalogue/book_short.html:78
+msgid "Region"
+msgstr ""
+
+#: templates/catalogue/book_short.html:85
 #, fuzzy
 #| msgid "language code"
 msgid "Language"
 msgstr "мовний код"
 
-#: templates/catalogue/book_short.html:96
+#: templates/catalogue/book_short.html:109
 msgid "Read online"
 msgstr "Читати онлайн"
 
-#: templates/catalogue/book_short.html:99
+#: templates/catalogue/book_short.html:112
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
@@ -542,21 +572,25 @@ msgid ""
 "bezpłatnie."
 msgstr ""
 
-#: templates/catalogue/book_short.html:99
+#: templates/catalogue/book_short.html:112
 msgid "Print on demand –"
 msgstr ""
 
-#: templates/catalogue/book_short.html:104
-#: templates/catalogue/custom_pdf_form.html:19 views.py:369
+#: templates/catalogue/book_short.html:117
+#: templates/catalogue/custom_pdf_form.html:19 views.py:383
 msgid "Download"
 msgstr "Завантажити"
 
-#: templates/catalogue/book_short.html:118
+#: templates/catalogue/book_short.html:131
 msgid "more"
 msgstr ""
 
-#: templates/catalogue/book_short.html:129
+#: templates/catalogue/book_short.html:142
 msgid "less"
+msgstr ""
+
+#: templates/catalogue/book_short.html:148
+msgid "For now this work is only available for our subscribers."
 msgstr ""
 
 #: templates/catalogue/book_text.html:31
@@ -661,7 +695,7 @@ msgstr[1] ""
 msgid "All collections"
 msgstr "колекції"
 
-#: templates/catalogue/custom_pdf_form.html:6 views.py:368
+#: templates/catalogue/custom_pdf_form.html:6 views.py:382
 msgid "Download custom PDF"
 msgstr "Завантажити настроюваний PDF"
 
@@ -802,13 +836,13 @@ msgstr "Пошук"
 msgid "Did you mean"
 msgstr "Ви мали на увазі"
 
-#: templates/catalogue/search_multiple_hits.html:31
+#: templates/catalogue/search_multiple_hits.html:33
 #, fuzzy
 #| msgid "books"
 msgid "Books"
 msgstr "книжки"
 
-#: templates/catalogue/search_multiple_hits.html:42
+#: templates/catalogue/search_multiple_hits.html:46
 msgid "Pictures"
 msgstr ""
 
@@ -816,21 +850,6 @@ msgstr ""
 #: templates/catalogue/tagged_object_list.html:85
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "На жаль, Ваші критерії пошуку не відповідають жодним результатам."
-
-#: templates/catalogue/search_no_hits.html:22
-#, fuzzy
-#| msgid ""
-#| "Search engine supports following criteria: title, author, theme/topic, "
-#| "epoch, kind and genre.\n"
-#| "\t\tAs for now we do not support full text search."
-msgid ""
-"Search engine supports following criteria: title, author, theme/topic, "
-"epoch, kind and genre.\n"
-"        As for now we do not support full text search."
-msgstr ""
-"Система пошуку дозволяє здійснювати пошук за наступними критеріями: "
-"заголовок, автор, тема, епоха, рід та жанр.\n"
-"\t\tНа даний момент пошук у повному обсязі тексту не є можливим."
 
 #: templates/catalogue/search_too_long.html:13
 #, fuzzy
@@ -943,7 +962,7 @@ msgstr ""
 msgid "Loading"
 msgstr "Leading"
 
-#: views.py:334
+#: views.py:336
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -954,14 +973,28 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:336
+#: views.py:338
 msgid "Book imported successfully"
 msgstr "Книжку успішно завантажено"
 
-#: views.py:338
+#: views.py:340
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Помилка в завантаженні файла: %r"
+
+#, fuzzy
+#~| msgid ""
+#~| "Search engine supports following criteria: title, author, theme/topic, "
+#~| "epoch, kind and genre.\n"
+#~| "\t\tAs for now we do not support full text search."
+#~ msgid ""
+#~ "Search engine supports following criteria: title, author, theme/topic, "
+#~ "epoch, kind and genre.\n"
+#~ "        As for now we do not support full text search."
+#~ msgstr ""
+#~ "Система пошуку дозволяє здійснювати пошук за наступними критеріями: "
+#~ "заголовок, автор, тема, епоха, рід та жанр.\n"
+#~ "\t\tНа даний момент пошук у повному обсязі тексту не є можливим."
 
 #~ msgid "Book description on Lektury.Gazeta.pl"
 #~ msgstr "Опис книжки на Lektury.Gazeta.pl"

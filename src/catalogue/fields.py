@@ -135,7 +135,7 @@ class BuildPdf(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
         return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
-                            ilustr_path=gallery_path(wldoc.book_info.url.slug))
+                            ilustr_path=gallery_path(wldoc.book_info.url.slug), customizations=['notoc'])
 
     def build(self, fieldfile):
         BuildEbook.build(self, fieldfile)

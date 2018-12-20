@@ -50,6 +50,7 @@ CUSTOMIZATION_FLAGS = (
     ('nothemes', _("Don't disply themes")),
     ('nowlfont', _("Don't use our custom font")),
     ('nocover', _("Without cover")),
+    ('notoc', _("Without table of contents")),
     )
 CUSTOMIZATION_OPTIONS = (
     ('leading', _("Leading"), (
