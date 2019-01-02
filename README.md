@@ -88,3 +88,9 @@ Authors
 =======
  * Marek Stępniowski  <marek@stepniowski.com>
  * Łukasz Rekucki <lrekucki@gmail.com>
+ * Radek Czajka
+ * Łukasz Anwajler
+ * Marcin Koziej
+ * Aleksander Łukasz
+ * Jan Szejko
+ * Mariusz Machuta
