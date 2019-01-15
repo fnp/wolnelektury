@@ -3,11 +3,11 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from os import path
+import json
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.test.utils import override_settings
-import json
 
 from catalogue.models import Book, Tag
 from picture.forms import PictureImportForm
@@ -19,8 +19,6 @@ import picture.tests
     NO_SEARCH_INDEX=True,
     CACHES={'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}},
-    SSIFY_CACHE_ALIASES=['default'],
-    SSIFY_RENDER=True,
 )
 class ApiTest(TestCase):
     def load_json(self, url):
@@ -30,6 +28,12 @@ class ApiTest(TestCase):
         except ValueError:
             self.fail('No JSON could be decoded: %s' % content)
         return data
+
+    def assert_json_response(self, url, name):
+        data = self.load_json(url)
+        with open(path.join(path.dirname(__file__), 'res', 'responses', name)) as f:
+            good_data = json.load(f)
+        self.assertEqual(data, good_data, json.dumps(data, indent=4))
 
 
 class BookTests(ApiTest):
@@ -95,3 +99,21 @@ class PictureTests(ApiTest):
             import_form.save()
 
         Picture.objects.get(slug=slug)
+
+
+class URLTests(ApiTest):
+    fixtures = ['test-books.yaml']
+
+    def test_get(self):
+        # book lists
+        self.assert_json_response('/api/audiobooks/', 'audiobooks.json')
+        self.assert_json_response('/api/daisy/', 'daisy.json')
+        self.assert_json_response('/api/ebooks/', 'ebooks.json')
+        self.assert_json_response('/api/filter-books/', 'filter-books.json')
+        self.assert_json_response('/api/newest/', 'newest.json')
+
+        self.assert_json_response('/api/blog/', 'blog.json')
+        self.assert_json_response('/api/preview/', 'preview.json')
+        self.assert_json_response('/api/recommended/', 'recommended.json')
+
+        self.assert_json_response('/api/collections/', 'collections.json')

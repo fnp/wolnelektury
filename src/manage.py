@@ -8,7 +8,11 @@ sys.path = [
 ] + sys.path
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wolnelektury.settings")
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE",
+        "wolnelektury.settings.test"
+        if 'test' in sys.argv
+        else "wolnelektury.settings")
 
     from django.core.management import execute_from_command_line
 

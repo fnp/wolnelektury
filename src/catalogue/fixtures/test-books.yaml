@@ -1,0 +1,96 @@
+- model: catalogue.book
+  pk: 1
+  fields:
+    slug: parent
+    sort_key: parent
+    sort_key_author: john doe
+    epub_file: epub/parent.epub
+    mobi_file: mobi/parent.mobi
+    pdf_file: pdf/parent.pdf
+    cover: cover/parent.jpg
+    cover_api_thumb: cover/parent_cover_api_thumb.jpg
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+    extra_info: "{\"epoch\": \"Barok\"}"
+- model: catalogue.book
+  pk: 2
+  fields:
+    slug: child
+    sort_key: child
+    parent: 1
+    created_at: "1970-01-02 0:0Z"
+    changed_at: "1970-01-02 0:0Z"
+- model: catalogue.book
+  pk: 3
+  fields:
+    slug: grandchild
+    sort_key: grandchild
+    parent: 2
+    txt_file: txt/grandchild.txt
+    html_file: html/grandchild.html
+    fb2_file: fb2/grandchild.fb2
+    created_at: "1970-01-01 0:0Z"
+    changed_at: "1970-01-01 0:0Z"
+
+- model: catalogue.tag
+  pk: 1
+  fields:
+    slug: john-doe
+    sort_key: john doe
+    category: author
+    name: John Doe
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+- model: catalogue.tag
+  pk: 2
+  fields:
+    slug: liryka
+    sort_key: liryka
+    category: kind
+    name: Liryka
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+- model: catalogue.tag
+  pk: 3
+  fields:
+    slug: barok
+    sort_key: barok
+    category: epoch
+    name: Barok
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+- model: catalogue.tag
+  pk: 4
+  fields:
+    slug: sonet
+    sort_key: sonet
+    category: genre
+    name: Sonet
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+
+- model: catalogue.tagrelation
+  pk: 1
+  fields:
+    tag: 1
+    content_type: ['catalogue', 'book']
+    object_id: 1
+- model: catalogue.tagrelation
+  pk: 2
+  fields:
+    tag: 2
+    content_type: ['catalogue', 'book']
+    object_id: 1
+- model: catalogue.tagrelation
+  pk: 3
+  fields:
+    tag: 3
+    content_type: ['catalogue', 'book']
+    object_id: 1
+- model: catalogue.tagrelation
+  pk: 4
+  fields:
+    tag: 4
+    content_type: ['catalogue', 'book']
+    object_id: 1
+

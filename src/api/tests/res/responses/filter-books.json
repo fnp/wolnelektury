@@ -1,0 +1,50 @@
+[
+    {
+        "kind": "", 
+        "full_sort_key": "$child$2", 
+        "cover_color": "#000000", 
+        "author": "", 
+        "url": "https://example.com/katalog/lektura/child/", 
+        "has_audio": false, 
+        "cover": "", 
+        "epoch": "", 
+        "href": "https://example.com/api/books/child/", 
+        "key": "book$child", 
+        "genre": "", 
+        "simple_thumb": "", 
+        "slug": "child", 
+        "cover_thumb": ""
+    }, 
+    {
+        "kind": "", 
+        "full_sort_key": "$grandchild$3", 
+        "cover_color": "#000000", 
+        "author": "", 
+        "url": "https://example.com/katalog/lektura/grandchild/", 
+        "has_audio": false, 
+        "cover": "", 
+        "epoch": "", 
+        "href": "https://example.com/api/books/grandchild/", 
+        "key": "book$grandchild", 
+        "genre": "", 
+        "simple_thumb": "", 
+        "slug": "grandchild", 
+        "cover_thumb": ""
+    }, 
+    {
+        "kind": "Liryka", 
+        "full_sort_key": "john doe$parent$1", 
+        "cover_color": "#a6820a", 
+        "author": "John Doe", 
+        "url": "https://example.com/katalog/lektura/parent/", 
+        "has_audio": false, 
+        "cover": "cover/parent.jpg", 
+        "epoch": "Barok", 
+        "href": "https://example.com/api/books/parent/", 
+        "key": "book$parent", 
+        "genre": "Sonet", 
+        "simple_thumb": "https://example.com/media/cover/parent_cover_api_thumb.jpg", 
+        "slug": "parent", 
+        "cover_thumb": "https://example.com/media/cover/parent.jpg-139x193"
+    }
+]

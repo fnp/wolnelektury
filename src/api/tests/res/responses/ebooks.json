@@ -1,0 +1,35 @@
+[
+    {
+        "fb2": "", 
+        "mobi": "", 
+        "author": "", 
+        "cover": "", 
+        "href": "https://example.com/api/books/child/", 
+        "pdf": "", 
+        "txt": "", 
+        "slug": "child", 
+        "epub": ""
+    }, 
+    {
+        "fb2": "https://example.com/media/fb2/grandchild.fb2", 
+        "mobi": "", 
+        "author": "", 
+        "cover": "", 
+        "href": "https://example.com/api/books/grandchild/", 
+        "pdf": "", 
+        "txt": "https://example.com/media/txt/grandchild.txt", 
+        "slug": "grandchild", 
+        "epub": ""
+    }, 
+    {
+        "fb2": "", 
+        "mobi": "https://example.com/media/mobi/parent.mobi", 
+        "author": "John Doe", 
+        "cover": "cover/parent.jpg", 
+        "href": "https://example.com/api/books/parent/", 
+        "pdf": "https://example.com/media/pdf/parent.pdf", 
+        "txt": "", 
+        "slug": "parent", 
+        "epub": "https://example.com/media/epub/parent.epub"
+    }
+]
