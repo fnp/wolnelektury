@@ -3,7 +3,7 @@ License
 
   ![AGPL Logo](http://www.gnu.org/graphics/agplv3-155x51.png)
     
-    Copyright © 2008,2009,2010 Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org.pl>
+    Copyright © 2008-2019 Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org.pl>
     
     For full list of contributors see AUTHORS section at the end. 
 
