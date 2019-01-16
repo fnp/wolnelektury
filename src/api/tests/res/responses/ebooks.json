@@ -2,6 +2,7 @@
     {
         "fb2": "", 
         "mobi": "", 
+        "title": "Child",
         "author": "", 
         "cover": "", 
         "href": "https://example.com/api/books/child/", 
@@ -13,6 +14,7 @@
     {
         "fb2": "https://example.com/media/fb2/grandchild.fb2", 
         "mobi": "", 
+        "title": "Grandchild",
         "author": "", 
         "cover": "", 
         "href": "https://example.com/api/books/grandchild/", 
@@ -24,6 +26,7 @@
     {
         "fb2": "", 
         "mobi": "https://example.com/media/mobi/parent.mobi", 
+        "title": "Parent",
         "author": "John Doe", 
         "cover": "cover/parent.jpg", 
         "href": "https://example.com/api/books/parent/", 

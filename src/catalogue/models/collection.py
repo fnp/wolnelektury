@@ -14,10 +14,7 @@ class Collection(models.Model):
     title = models.CharField(_('title'), max_length=120, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, primary_key=True)
     description = models.TextField(_('description'), null=True, blank=True)
-
-    models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     book_slugs = models.TextField(_('book slugs'))
-
     kind = models.CharField(_('kind'), max_length=10, blank=False, default='book', db_index=True,
                             choices=(('book', _('book')), ('picture', _('picture'))))
 

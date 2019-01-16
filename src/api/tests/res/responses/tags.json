@@ -1,0 +1,14 @@
+[
+    {
+        "url": "https://example.com/katalog/gatunek/sonet/", 
+        "href": "https://example.com/api/genres/sonet/", 
+        "name": "Sonet", 
+        "slug": "sonet"
+    }, 
+    {
+        "url": "https://example.com/katalog/gatunek/wiersz/", 
+        "href": "https://example.com/api/genres/wiersz/", 
+        "name": "Wiersz", 
+        "slug": "wiersz"
+    }
+]

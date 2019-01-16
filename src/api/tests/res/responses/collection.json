@@ -1,0 +1,24 @@
+{
+    "url": "https://example.com/katalog/lektury/a-collection/", 
+    "books": [
+        {
+            "kind": "Liryka", 
+            "full_sort_key": "john doe$parent$1", 
+            "author": "John Doe", 
+            "url": "https://example.com/katalog/lektura/parent/", 
+            "cover_color": "#a6820a", 
+            "title": "Parent", 
+            "cover": "https://example.com/media/cover/parent.jpg", 
+            "liked": null, 
+            "slug": "parent", 
+            "epoch": "Barok", 
+            "href": "https://example.com/api/books/parent/", 
+            "genre": "Sonet", 
+            "simple_thumb": "https://example.com/media/cover_api_thumb/parent.jpg", 
+            "has_audio": true, 
+            "cover_thumb": "https://example.com/media/cover/parent.jpg-139x193"
+        }
+    ], 
+    "description": "Description", 
+    "title": "A Collection"
+}

@@ -91,3 +91,7 @@ def get_fixture(path, app=None):
         mod_path = extract_stack(limit=2)[0][0]
         f_path = join(dirname(abspath(mod_path)), 'files', path)
     return f_path
+
+
+def get_mp3_length(path):
+    return 60

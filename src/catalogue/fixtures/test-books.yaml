@@ -2,20 +2,25 @@
   pk: 1
   fields:
     slug: parent
+    title: Parent
     sort_key: parent
     sort_key_author: john doe
+    xml_file: xml/parent.xml
     epub_file: epub/parent.epub
     mobi_file: mobi/parent.mobi
     pdf_file: pdf/parent.pdf
     cover: cover/parent.jpg
-    cover_api_thumb: cover/parent_cover_api_thumb.jpg
+    cover_api_thumb: cover_api_thumb/parent.jpg
+    simple_cover: simple_cover/parent.jpg
+    recommended: true
     created_at: "1970-01-03 0:0Z"
     changed_at: "1970-01-03 0:0Z"
-    extra_info: "{\"epoch\": \"Barok\"}"
+    extra_info: '{"epoch": "Barok"}'
 - model: catalogue.book
   pk: 2
   fields:
     slug: child
+    title: Child
     sort_key: child
     parent: 1
     created_at: "1970-01-02 0:0Z"
@@ -24,6 +29,7 @@
   pk: 3
   fields:
     slug: grandchild
+    title: Grandchild
     sort_key: grandchild
     parent: 2
     txt_file: txt/grandchild.txt
@@ -68,29 +74,95 @@
     name: Sonet
     created_at: "1970-01-03 0:0Z"
     changed_at: "1970-01-03 0:0Z"
+- model: catalogue.tag
+  pk: 5
+  fields:
+    slug: wiersz
+    sort_key: wiersz
+    category: genre
+    name: Wiersz
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+
 
 - model: catalogue.tagrelation
-  pk: 1
   fields:
     tag: 1
     content_type: ['catalogue', 'book']
     object_id: 1
 - model: catalogue.tagrelation
-  pk: 2
   fields:
     tag: 2
     content_type: ['catalogue', 'book']
     object_id: 1
 - model: catalogue.tagrelation
-  pk: 3
   fields:
     tag: 3
     content_type: ['catalogue', 'book']
     object_id: 1
 - model: catalogue.tagrelation
-  pk: 4
   fields:
     tag: 4
     content_type: ['catalogue', 'book']
     object_id: 1
+- model: catalogue.tagrelation
+  fields:
+    tag: 4
+    content_type: ['catalogue', 'book']
+    object_id: 3
+- model: catalogue.tagrelation
+  fields:
+    tag: 5
+    content_type: ['catalogue', 'book']
+    object_id: 2
+
+- model: catalogue.bookmedia
+  fields:
+    book: 1
+    type: mp3
+    name: Parent Audiobook
+    file: mp3/parent.mp3
+    uploaded_at: "1970-01-03 0:0Z"
+    extra_info: {"director_name": "Director", "artist_name": "Artist"}
+- model: catalogue.bookmedia
+  fields:
+    book: 1
+    type: daisy
+    name: Parent DAISY
+    file: daisy/parent.daisy
+    uploaded_at: "1970-01-03 0:0Z"
+
+- model: catalogue.fragment
+  id: 1
+  fields:
+    short_text: "Fragment"
+    text: "A fragment"
+    anchor: "an-anchor"
+    book: 2
+- model: catalogue.tagrelation
+  fields:
+    tag: 5
+    content_type: ['catalogue', 'fragment']
+    object_id: 1
+- model: catalogue.tag
+  pk: 101
+  fields:
+    slug: koniec
+    sort_key: koniec
+    category: theme
+    name: Koniec
+    created_at: "1970-01-03 0:0Z"
+    changed_at: "1970-01-03 0:0Z"
+- model: catalogue.tagrelation
+  fields:
+    tag: 101
+    content_type: ['catalogue', 'fragment']
+    object_id: 1
+
+- model: catalogue.collection
+  fields:
+    title: A Collection
+    slug: a-collection
+    description: Description
+    book_slugs: parent
 

@@ -1,0 +1,52 @@
+{
+    "epochs": [], 
+    "fragment_data": {
+        "html": "Fragment", 
+        "title": "Parent, Child"
+    }, 
+    "txt": "https://example.com/media/txt/grandchild.txt", 
+    "children": [], 
+    "xml": "", 
+    "genres": [
+        {
+            "url": "https://example.com/katalog/gatunek/sonet/", 
+            "href": "https://example.com/api/genres/sonet/", 
+            "name": "Sonet", 
+            "slug": "sonet"
+        }
+    ], 
+    "title": "Grandchild", 
+    "media": [], 
+    "html": "https://example.com/media/html/grandchild.html", 
+    "preview": false, 
+    "fb2": "https://example.com/media/fb2/grandchild.fb2", 
+    "kinds": [], 
+    "parent": {
+        "kind": "", 
+        "full_sort_key": "$child$2", 
+        "author": "", 
+        "url": "https://example.com/katalog/lektura/child/", 
+        "cover_color": "#000000", 
+        "title": "Child", 
+        "cover": "", 
+        "liked": null, 
+        "slug": "child", 
+        "epoch": "", 
+        "href": "https://example.com/api/books/child/", 
+        "genre": "Wiersz", 
+        "simple_thumb": "", 
+        "has_audio": false, 
+        "cover_thumb": ""
+    }, 
+    "cover_color": "#000000", 
+    "simple_cover": "", 
+    "authors": [], 
+    "audio_length": "", 
+    "epub": "", 
+    "cover_thumb": "", 
+    "mobi": "", 
+    "url": "https://example.com/katalog/lektura/grandchild/", 
+    "cover": "", 
+    "pdf": "", 
+    "simple_thumb": ""
+}

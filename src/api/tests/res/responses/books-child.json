@@ -1,0 +1,70 @@
+{
+    "epochs": [], 
+    "fragment_data": {
+        "html": "Fragment", 
+        "title": "Parent, Child"
+    }, 
+    "txt": "", 
+    "children": [
+        {
+            "kind": "", 
+            "full_sort_key": "$grandchild$3", 
+            "author": "", 
+            "url": "https://example.com/katalog/lektura/grandchild/", 
+            "cover_color": "#000000", 
+            "title": "Grandchild", 
+            "cover": "", 
+            "liked": null, 
+            "slug": "grandchild", 
+            "epoch": "", 
+            "href": "https://example.com/api/books/grandchild/", 
+            "genre": "Sonet", 
+            "simple_thumb": "", 
+            "has_audio": false, 
+            "cover_thumb": ""
+        }
+    ], 
+    "xml": "", 
+    "genres": [
+        {
+            "url": "https://example.com/katalog/gatunek/wiersz/", 
+            "href": "https://example.com/api/genres/wiersz/", 
+            "name": "Wiersz", 
+            "slug": "wiersz"
+        }
+    ], 
+    "title": "Child", 
+    "media": [], 
+    "html": "", 
+    "preview": false, 
+    "fb2": "", 
+    "kinds": [], 
+    "parent": {
+        "kind": "Liryka", 
+        "full_sort_key": "john doe$parent$1", 
+        "author": "John Doe", 
+        "url": "https://example.com/katalog/lektura/parent/", 
+        "cover_color": "#a6820a", 
+        "title": "Parent", 
+        "cover": "https://example.com/media/cover/parent.jpg", 
+        "liked": null, 
+        "slug": "parent", 
+        "epoch": "Barok", 
+        "href": "https://example.com/api/books/parent/", 
+        "genre": "Sonet", 
+        "simple_thumb": "https://example.com/media/cover_api_thumb/parent.jpg", 
+        "has_audio": true, 
+        "cover_thumb": "https://example.com/media/cover/parent.jpg-139x193"
+    }, 
+    "cover_color": "#000000", 
+    "simple_cover": "", 
+    "authors": [], 
+    "audio_length": "", 
+    "epub": "", 
+    "cover_thumb": "", 
+    "mobi": "", 
+    "url": "https://example.com/katalog/lektura/child/", 
+    "cover": "", 
+    "pdf": "", 
+    "simple_thumb": ""
+}

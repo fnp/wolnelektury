@@ -355,3 +355,7 @@ def gallery_path(slug):
 def gallery_url(slug):
     return '%s%s%s/' % (settings.MEDIA_URL, settings.IMAGE_DIR, slug)
 
+
+def get_mp3_length(path):
+    from mutagen.mp3 import MP3
+    return int(MP3(path).info.length)

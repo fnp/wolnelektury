@@ -4,6 +4,7 @@
 #
 import logging
 from django.conf import settings as settings
+from django.utils.module_loading import import_string
 from catalogue.utils import AppSettings
 
 
@@ -25,6 +26,7 @@ class Settings(AppSettings):
     REDAKCJA_URL = "http://redakcja.wolnelektury.pl"
     GOOD_LICENSES = {r'CC BY \d\.\d', r'CC BY-SA \d\.\d'}
     RELATED_RANDOM_PICTURE_CHANCE = .5
+    GET_MP3_LENGTH = 'catalogue.utils.get_mp3_length'
 
     def _more_DONT_BUILD(self, value):
         for format_ in ['cover', 'pdf', 'epub', 'mobi', 'fb2', 'txt']:
@@ -44,6 +46,9 @@ class Settings(AppSettings):
                 logging.warn("%s is deprecated, use CATALOGUE_FORMAT_ZIPS[%s] instead", attname, format_)
                 value[format_] = getattr(settings, attname)
         return value
+
+    def _more_GET_MP3_LENGTH(self, value):
+        return import_string(value)
 
 
 app_settings = Settings('CATALOGUE')

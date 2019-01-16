@@ -1,0 +1,24 @@
+[
+    {
+        "url": "https://example.com/katalog/lektura/child.html#man-anchor", 
+        "book": {
+            "kind": "", 
+            "full_sort_key": "$child$2", 
+            "author": "", 
+            "url": "https://example.com/katalog/lektura/child/", 
+            "cover_color": "#000000", 
+            "title": "Child", 
+            "cover": "", 
+            "liked": null, 
+            "slug": "child", 
+            "epoch": "", 
+            "href": "https://example.com/api/books/child/", 
+            "genre": "Wiersz", 
+            "simple_thumb": "", 
+            "has_audio": false, 
+            "cover_thumb": ""
+        }, 
+        "anchor": "an-anchor", 
+        "href": "https://example.com/api/books/child/fragments/an-anchor/"
+    }
+]
