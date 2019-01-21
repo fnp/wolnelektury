@@ -38,6 +38,10 @@ thumbs.db
 # PyCharm
 .idea
 
+# Emacs
+\#*\#
+.\#*
+
 # Tags file
 TAGS
 

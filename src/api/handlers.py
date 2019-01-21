@@ -63,6 +63,7 @@ def read_tags(tags, request, allowed):
 
     def process(category, slug):
         if category == 'book':
+            # FIXME: Unused?
             try:
                 books.append(Book.objects.get(slug=slug))
             except Book.DoesNotExist:
@@ -221,6 +222,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
     model = Book
     fields = book_list_fields
 
+    # FIXME: Unused?
     @classmethod
     def genres(cls, book):
         """ Returns all media for a book. """
@@ -239,6 +241,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
              are returned.
         """
         if pk is not None:
+            # FIXME: Unused?
             try:
                 return Book.objects.get(pk=pk)
             except Book.DoesNotExist:
@@ -606,6 +609,7 @@ class TagsHandler(BaseHandler, TagDetails):
     def read(self, request, category=None, pk=None):
         """ Lists all tags in the category (eg. all themes). """
         if pk is not None:
+            # FIXME: Unused?
             try:
                 return Tag.objects.exclude(category='set').get(pk=pk)
             except Book.DoesNotExist:
@@ -759,6 +763,7 @@ class UserDataHandler(BaseHandler):
 class UserShelfHandler(BookDetailHandler):
     fields = book_list_fields + ['liked']
 
+    # FIXME: Unused?
     def parse_bool(self, s):
         if s in ('true', 'false'):
             return s == 'true'

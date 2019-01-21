@@ -12,16 +12,16 @@
         "epub": ""
     }, 
     {
-        "fb2": "https://example.com/media/fb2/grandchild.fb2", 
-        "mobi": "", 
+        "fb2": "https://example.com/katalog/pobierz/grandchild.fb2", 
+        "mobi": "https://example.com/katalog/pobierz/grandchild.mobi", 
         "title": "Grandchild",
         "author": "", 
         "cover": "", 
         "href": "https://example.com/api/books/grandchild/", 
-        "pdf": "", 
-        "txt": "https://example.com/media/txt/grandchild.txt", 
+        "pdf": "https://example.com/katalog/pobierz/grandchild.pdf", 
+        "txt": "https://example.com/katalog/pobierz/grandchild.txt", 
         "slug": "grandchild", 
-        "epub": ""
+        "epub": "https://example.com/katalog/pobierz/grandchild.epub"
     }, 
     {
         "fb2": "", 
