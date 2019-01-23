@@ -39,6 +39,13 @@ class ApiTest(TestCase):
             self.fail('No JSON could be decoded: %s' % content)
         return data
 
+    def assert_response(self, url, name):
+        content = self.client.get(url).content.rstrip()
+        filename = path.join(path.dirname(__file__), 'res', 'responses', name)
+        with open(filename) as f:
+            good_content = f.read().rstrip()
+        self.assertEqual(content, good_content, content)
+    
     def assert_json_response(self, url, name):
         data = self.load_json(url)
         filename = path.join(path.dirname(__file__), 'res', 'responses', name)
@@ -130,6 +137,7 @@ class BooksTests(ApiTest):
     def test_books(self):
         self.assert_json_response('/api/books/', 'books.json')
         self.assert_json_response('/api/books/?new_api=true', 'books.json')
+        self.assert_response('/api/books/?format=xml', 'books.xml')
 
         self.assert_slugs('/api/audiobooks/', ['parent'])
         self.assert_slugs('/api/daisy/', ['parent'])

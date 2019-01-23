@@ -1,7 +1,7 @@
 [
     {
         "url": "https://example.com/katalog/lektury/a-collection/", 
-        "href": "https://example.com/dapi/collections/a-collection/", 
+        "href": "https://example.com/api/collections/a-collection/", 
         "title": "A Collection"
     }
 ]
