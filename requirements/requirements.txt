@@ -13,6 +13,8 @@ django-picklefield>=1.0,<1.1
 django-modeltranslation>=0.10,<0.11
 django-allauth>=0.32,<0.33
 django-extensions
+djangorestframework<3.7
+djangorestframework-xml
 
 # contact
 pyyaml

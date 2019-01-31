@@ -44,3 +44,13 @@ MIGDAL_TYPES = (
     EntryType('info', _('info'), commentable=False),
     EntryType('event', _('events'), commentable=False),
 )
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'api.renderers.LegacyXMLRenderer',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    )
+}

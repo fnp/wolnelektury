@@ -1,8 +1,8 @@
 {
     "epochs": [
         {
-            "url": "https://example.com/katalog/epoka/barok/", 
-            "href": "https://example.com/api/epochs/barok/", 
+            "url": "http://testserver/katalog/epoka/barok/",
+            "href": "http://testserver/api/epochs/barok/",
             "name": "Barok", 
             "slug": "barok"
         }
@@ -14,25 +14,25 @@
             "kind": "", 
             "full_sort_key": "$child$2", 
             "author": "", 
-            "url": "https://example.com/katalog/lektura/child/", 
+            "url": "http://testserver/katalog/lektura/child/",
             "cover_color": "#000000", 
             "title": "Child", 
             "cover": "", 
             "liked": null, 
             "slug": "child", 
             "epoch": "", 
-            "href": "https://example.com/api/books/child/", 
+            "href": "http://testserver/api/books/child/",
             "genre": "Wiersz", 
             "simple_thumb": "", 
             "has_audio": false, 
             "cover_thumb": ""
         }
     ], 
-    "xml": "https://example.com/media/xml/parent.xml", 
+    "xml": "http://testserver/media/xml/parent.xml",
     "genres": [
         {
-            "url": "https://example.com/katalog/gatunek/sonet/", 
-            "href": "https://example.com/api/genres/sonet/", 
+            "url": "http://testserver/katalog/gatunek/sonet/",
+            "href": "http://testserver/api/genres/sonet/",
             "name": "Sonet", 
             "slug": "sonet"
         }
@@ -40,14 +40,14 @@
     "title": "Parent", 
     "media": [
         {
-            "url": "https://example.com/media/daisy/parent.daisy", 
+            "url": "http://testserver/media/daisy/parent.daisy",
             "director": "", 
             "type": "daisy", 
             "name": "Parent DAISY", 
             "artist": ""
         }, 
         {
-            "url": "https://example.com/media/mp3/parent.mp3", 
+            "url": "http://testserver/media/mp3/parent.mp3",
             "director": "Director", 
             "type": "mp3", 
             "name": "Parent Audiobook", 
@@ -59,29 +59,29 @@
     "fb2": "", 
     "kinds": [
         {
-            "url": "https://example.com/katalog/rodzaj/liryka/", 
-            "href": "https://example.com/api/kinds/liryka/", 
+            "url": "http://testserver/katalog/rodzaj/liryka/",
+            "href": "http://testserver/api/kinds/liryka/",
             "name": "Liryka", 
             "slug": "liryka"
         }
     ], 
     "parent": null, 
     "cover_color": "#a6820a", 
-    "simple_cover": "https://example.com/media/simple_cover/parent.jpg", 
+    "simple_cover": "http://testserver/media/simple_cover/parent.jpg",
     "authors": [
         {
-            "url": "https://example.com/katalog/autor/john-doe/", 
-            "href": "https://example.com/api/authors/john-doe/", 
+            "url": "http://testserver/katalog/autor/john-doe/",
+            "href": "http://testserver/api/authors/john-doe/",
             "name": "John Doe", 
             "slug": "john-doe"
         }
     ], 
     "audio_length": "1:00", 
-    "epub": "https://example.com/media/epub/parent.epub", 
-    "cover_thumb": "https://example.com/media/cover/parent.jpg-139x193", 
-    "mobi": "https://example.com/media/mobi/parent.mobi", 
-    "url": "https://example.com/katalog/lektura/parent/", 
-    "cover": "https://example.com/media/cover/parent.jpg", 
-    "pdf": "https://example.com/media/pdf/parent.pdf", 
-    "simple_thumb": "https://example.com/media/cover_api_thumb/parent.jpg"
+    "epub": "http://testserver/media/epub/parent.epub",
+    "cover_thumb": "http://testserver/media/cover/parent.jpg-139x193",
+    "mobi": "http://testserver/media/mobi/parent.mobi",
+    "url": "http://testserver/katalog/lektura/parent/",
+    "cover": "http://testserver/media/cover/parent.jpg",
+    "pdf": "http://testserver/media/pdf/parent.pdf",
+    "simple_thumb": "http://testserver/media/cover_api_thumb/parent.jpg"
 }

@@ -20,6 +20,7 @@ import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
 from ssify import flush_ssi_includes
 
+from librarian.cover import WLCover
 from librarian.html import transform_abstrakt
 from newtagging import managers
 from catalogue import constants
@@ -115,6 +116,8 @@ class Book(models.Model):
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
 
+    SORT_KEY_SEP = '$'
+
     class AlreadyExists(Exception):
         pass
 
@@ -136,6 +139,15 @@ class Book(models.Model):
     def authors(self):
         return self.tags.filter(category='author')
 
+    def epochs(self):
+        return self.tags.filter(category='epoch')
+
+    def genres(self):
+        return self.tags.filter(category='genre')
+
+    def kinds(self):
+        return self.tags.filter(category='kind')
+
     def tag_unicode(self, category):
         relations = prefetched_relations(self, category)
         if relations:
@@ -148,6 +160,15 @@ class Book(models.Model):
 
     def author_unicode(self):
         return self.cached_author
+
+    def kind_unicode(self):
+        return self.tag_unicode('kind')
+
+    def epoch_unicode(self):
+        return self.tag_unicode('epoch')
+
+    def genre_unicode(self):
+        return self.tag_unicode('genre')
 
     def translator(self):
         translators = self.extra_info.get('translators')
@@ -779,6 +800,12 @@ class Book(models.Model):
         from social.utils import likes, set_sets
         if likes(user, self):
             set_sets(user, self, [])
+
+    def full_sort_key(self):
+        return self.SORT_KEY_SEP.join((self.sort_key_author, self.sort_key, str(self.id)))
+
+    def cover_color(self):
+        return WLCover.epoch_colors.get(self.extra_info.get('epoch'), '#000000')
 
 
 def add_file_fields():

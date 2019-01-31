@@ -19,7 +19,6 @@ from api.models import BookUserData
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
 from catalogue.models.tag import prefetch_relations
-from librarian.cover import WLCover
 from paypal.rest import user_is_subscribed
 from picture.models import Picture
 from picture.forms import PictureImportForm
@@ -32,8 +31,6 @@ from . import emitters  # Register our emitters
 
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
     lambda: u'https://' + Site.objects.get_current().domain, unicode)()
-
-SORT_KEY_SEP = '$'
 
 category_singular = {
     'authors': 'author',
@@ -131,7 +128,7 @@ class BookDetails(object):
     @classmethod
     def href(cls, book):
         """ Returns an URI for a Book in the API. """
-        return API_BASE + reverse("api_book", args=[book.slug])
+        return API_BASE + reverse("catalogue_api_book", args=[book.slug])
 
     @classmethod
     def url(cls, book):
@@ -165,20 +162,12 @@ class BookDetails(object):
     def simple_cover(cls, book):
         return MEDIA_BASE + book.simple_cover.url if book.simple_cover else ''
 
-    @classmethod
-    def cover_color(cls, book):
-        return WLCover.epoch_colors.get(book.extra_info.get('epoch'), '#000000')
-
-    @classmethod
-    def full_sort_key(cls, book):
-        return '%s%s%s%s%s' % (book.sort_key_author, SORT_KEY_SEP, book.sort_key, SORT_KEY_SEP, book.id)
-
     @staticmethod
     def books_after(books, after, new_api):
         if not new_api:
             return books.filter(slug__gt=after)
         try:
-            author, title, book_id = after.split(SORT_KEY_SEP)
+            author, title, book_id = after.split(Book.SORT_KEY_SEP)
         except ValueError:
             return Book.objects.none()
         return books.filter(Q(sort_key_author__gt=author)
@@ -436,7 +425,7 @@ class AnonFilterBooksHandler(AnonymousBooksHandler):
             remaining_count = count - len(filtered_books)
             new_books = [
                 BookProxy(book, '%s%s%s' % (
-                    label, key_sep, book.slug if not new_api else self.full_sort_key(book)))
+                    label, key_sep, book.slug if not new_api else book.full_sort_key()))
                 for book in book_list[:remaining_count]]
             filtered_books += new_books
             if len(filtered_books) == count:
@@ -512,50 +501,6 @@ def add_file_getters():
 
 
 add_file_getters()
-
-
-class CollectionDetails(object):
-    """Custom Collection fields."""
-
-    @classmethod
-    def href(cls, collection):
-        """ Returns URI in the API for the collection. """
-
-        return API_BASE + reverse("api_collection", args=[collection.slug])
-
-    @classmethod
-    def url(cls, collection):
-        """ Returns URL on the site. """
-
-        return WL_BASE + collection.get_absolute_url()
-
-    @classmethod
-    def books(cls, collection):
-        return Book.objects.filter(collection.get_query())
-
-
-class CollectionDetailHandler(BaseHandler, CollectionDetails):
-    allowed_methods = ('GET',)
-    fields = ['url', 'title', 'description', 'books']
-
-    @piwik_track
-    def read(self, request, slug):
-        """ Returns details of a collection, identified by slug. """
-        try:
-            return Collection.objects.get(slug=slug)
-        except Collection.DoesNotExist:
-            return rc.NOT_FOUND
-
-
-class CollectionsHandler(BaseHandler, CollectionDetails):
-    allowed_methods = ('GET',)
-    model = Collection
-    fields = ['url', 'href', 'title']
-
-    @piwik_track
-    def read(self, request):
-        """ Returns all collections. """
-        return Collection.objects.all()
 
 
 class TagDetails(object):

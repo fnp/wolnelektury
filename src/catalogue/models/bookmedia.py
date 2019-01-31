@@ -146,3 +146,11 @@ class BookMedia(models.Model):
                 return None
         else:
             return None
+
+    @property
+    def director(self):
+        return self.extra_info.get('director_name', None)
+
+    @property
+    def artist(self):
+        return self.extra_info.get('artist_name', None)

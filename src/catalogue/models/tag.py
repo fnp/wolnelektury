@@ -166,6 +166,10 @@ class Tag(TagBase):
         else:
             return ''
 
+    @property
+    def category_plural(self):
+        return self.category + 's'
+
     @permalink
     def get_absolute_url(self):
         return 'tagged_object_list', [self.url_chunk]

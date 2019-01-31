@@ -365,6 +365,15 @@ class AuthorizedTests(ApiTest):
 
     def test_books(self):
         self.assertEqual(
+            [b['liked'] for b in self.signed_json('/api/books/')],
+            [False, False, False]
+        )
+        # This one fails in the legacy implementation
+        # data = self.signed_json('/api/books/child/')
+        # self.assertFalse(data['parent']['liked'])
+        # self.assertFalse(data['children'][0]['liked'])
+
+        self.assertEqual(
             self.signed_json('/api/like/parent/'),
             {"likes": False}
         )
@@ -377,6 +386,10 @@ class AuthorizedTests(ApiTest):
         self.assertTrue(self.signed_json('/api/parent_books/')[0]['liked'])
         self.assertTrue(self.signed_json(
             '/api/filter-books/', params={"search": "parent"})[0]['liked'])
+
+        # This one fails in the legacy implementation.
+        #self.assertTrue(self.signed_json(
+        #    '/api/books/child/')['parent']['liked'])
         # Liked books go on shelf.
         self.assertEqual(
             [x['slug'] for x in self.signed_json('/api/shelf/likes/')],

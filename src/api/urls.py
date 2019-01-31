@@ -2,7 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from piston.authentication import OAuthAuthentication, oauth_access_token, oauth_request_token
@@ -42,7 +42,6 @@ def auth_resource(handler):
 book_list_resource = auth_resource(handler=handlers.BooksHandler)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 # book_list_resource = Resource(handler=handlers.BooksHandler)
-book_resource = Resource(handler=handlers.BookDetailHandler)
 filter_book_resource = auth_resource(handler=handlers.FilterBooksHandler)
 epub_resource = auth_resource(handler=handlers.EpubHandler)
 
@@ -52,9 +51,6 @@ reading_resource = auth_resource(handler=handlers.UserDataHandler)
 shelf_resource = auth_resource(handler=handlers.UserShelfHandler)
 
 like_resource = auth_resource(handler=handlers.UserLikeHandler)
-
-collection_resource = Resource(handler=handlers.CollectionDetailHandler)
-collection_list_resource = Resource(handler=handlers.CollectionsHandler)
 
 tag_list_resource = Resource(handler=handlers.TagsHandler)
 tag_resource = Resource(handler=handlers.TagDetailHandler)
@@ -78,13 +74,12 @@ urlpatterns = [
 
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
 
+    # These are the new ones.
+    url(r'^', include('catalogue.api.urls')),
+
     # info boxes (used by mobile app)
     url(r'book/(?P<book_id>\d*?)/info\.html$', catalogue.views.book_info),
     url(r'tag/(?P<tag_id>\d*?)/info\.html$', catalogue.views.tag_info),
-
-    # books by collections
-    url(r'^collections/$', collection_list_resource, name="api_collections"),
-    url(r'^collections/(?P<slug>[^/]+)/$', collection_resource, name="api_collection"),
 
     # epub preview
     url(r'^epub/(?P<slug>[a-z0-9-]+)/$', epub_resource, name='api_epub'),
@@ -98,7 +93,6 @@ urlpatterns = [
     url(r'^like/(?P<slug>[a-z0-9-]+)/$', like_resource, name='api_like'),
 
     # objects details
-    url(r'^books/(?P<book>[a-z0-9-]+)/$', book_resource, name="api_book"),
     url(r'^(?P<category>[a-z0-9-]+)/(?P<slug>[a-z0-9-]+)/$',
         tag_resource, name="api_tag"),
     url(r'^books/(?P<book>[a-z0-9-]+)/fragments/(?P<anchor>[a-z0-9-]+)/$',

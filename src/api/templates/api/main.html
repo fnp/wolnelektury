@@ -53,12 +53,12 @@
 
         <li><a href='{% url "api_tag_list" "themes" %}'>
           {% url "api_tag_list" "themes" %}</a> – {% trans "List of all themes" %}</li>
-        <li><a href='{% url "api_collections" %}'>
-          {% url "api_collections" %}</a> – {% trans "Collections" %}</li>
+        <li><a href='{% url "catalogue_api_collections" %}'>
+          {% url "catalogue_api_collections" %}</a> – {% trans "Collections" %}</li>
     </ul>
 
     <p>
-      {% url "api_book" "studnia-i-wahadlo" as e1 %}
+      {% url "catalogue_api_book" "studnia-i-wahadlo" as e1 %}
       {% url "api_tag" "authors" "edgar-allan-poe" as e2 %}
       {% blocktrans %}
         Each element of those lists contains a link (in a "href") attibute

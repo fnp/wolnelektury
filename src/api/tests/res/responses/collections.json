@@ -1,7 +1,7 @@
 [
     {
-        "url": "https://example.com/katalog/lektury/a-collection/", 
-        "href": "https://example.com/api/collections/a-collection/", 
+        "url": "http://testserver/katalog/lektury/a-collection/",
+        "href": "http://testserver/api/collections/a-collection/",
         "title": "A Collection"
     }
 ]
