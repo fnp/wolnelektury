@@ -11,6 +11,7 @@ import catalogue.views
 from api import handlers
 from api.helpers import CsrfExemptResource
 from api.piston_patch import oauth_user_auth
+from . import views
 
 auth = OAuthAuthentication(realm="Wolne Lektury")
 
@@ -43,11 +44,9 @@ book_list_resource = auth_resource(handler=handlers.BooksHandler)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
 # book_list_resource = Resource(handler=handlers.BooksHandler)
 filter_book_resource = auth_resource(handler=handlers.FilterBooksHandler)
-epub_resource = auth_resource(handler=handlers.EpubHandler)
 
 preview_resource = Resource(handler=handlers.BookPreviewHandler)
 
-reading_resource = auth_resource(handler=handlers.UserDataHandler)
 shelf_resource = auth_resource(handler=handlers.UserShelfHandler)
 
 like_resource = auth_resource(handler=handlers.UserLikeHandler)
@@ -81,14 +80,11 @@ urlpatterns = [
     url(r'book/(?P<book_id>\d*?)/info\.html$', catalogue.views.book_info),
     url(r'tag/(?P<tag_id>\d*?)/info\.html$', catalogue.views.tag_info),
 
-    # epub preview
-    url(r'^epub/(?P<slug>[a-z0-9-]+)/$', epub_resource, name='api_epub'),
-
     # reading data
-    url(r'^reading/(?P<slug>[a-z0-9-]+)/$', reading_resource, name='api_reading'),
-    url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', reading_resource, name='api_reading'),
+    url(r'^reading/(?P<slug>[a-z0-9-]+)/$', views.BookUserDataView.as_view(), name='api_reading'),
+    url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', views.BookUserDataView.as_view(), name='api_reading'),
     url(r'^shelf/(?P<state>[a-z]+)/$', shelf_resource, name='api_shelf'),
-    url(r'^username/$', reading_resource, name='api_username'),
+    url(r'^username/$', views.UserView.as_view(), name='api_username'),
 
     url(r'^like/(?P<slug>[a-z0-9-]+)/$', like_resource, name='api_like'),
 

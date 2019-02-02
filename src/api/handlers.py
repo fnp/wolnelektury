@@ -27,7 +27,6 @@ from social.utils import likes
 from stats.utils import piwik_track
 from wolnelektury.utils import re_escape
 
-from . import emitters  # Register our emitters
 
 API_BASE = WL_BASE = MEDIA_BASE = lazy(
     lambda: u'https://' + Site.objects.get_current().domain, unicode)()
@@ -318,18 +317,6 @@ class BooksHandler(BookDetailHandler):
             return rc.CREATED
         else:
             return rc.NOT_FOUND
-
-
-class EpubHandler(BookDetailHandler):
-    def read(self, request, slug):
-        if not user_is_subscribed(request.user):
-            return rc.FORBIDDEN
-        try:
-            book = Book.objects.get(slug=slug)
-        except Book.DoesNotExist:
-            return rc.NOT_FOUND
-        response = HttpResponse(book.get_media('epub'))
-        return response
 
 
 class EBooksHandler(AnonymousBooksHandler):
@@ -668,41 +655,6 @@ class PictureHandler(BaseHandler):
             return rc.CREATED
         else:
             return rc.NOT_FOUND
-
-
-class UserDataHandler(BaseHandler):
-    model = BookUserData
-    fields = ('state', 'username', 'premium')
-    allowed_methods = ('GET', 'POST')
-
-    def read(self, request, slug=None):
-        if not request.user.is_authenticated():
-            return rc.FORBIDDEN
-        if slug is None:
-            return {'username': request.user.username, 'premium': user_is_subscribed(request.user)}
-        try:
-            book = Book.objects.get(slug=slug)
-        except Book.DoesNotExist:
-            return rc.NOT_FOUND
-        try:
-            data = BookUserData.objects.get(book=book, user=request.user)
-        except BookUserData.DoesNotExist:
-            return {'state': 'not_started'}
-        return data
-
-    def create(self, request, slug, state):
-        try:
-            book = Book.objects.get(slug=slug)
-        except Book.DoesNotExist:
-            return rc.NOT_FOUND
-        if not request.user.is_authenticated():
-            return rc.FORBIDDEN
-        if state not in ('reading', 'complete'):
-            return rc.NOT_FOUND
-        data, created = BookUserData.objects.get_or_create(book=book, user=request.user)
-        data.state = state
-        data.save()
-        return data
 
 
 class UserShelfHandler(BookDetailHandler):

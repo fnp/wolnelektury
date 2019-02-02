@@ -423,12 +423,13 @@ class AuthorizedTests(ApiTest):
             {"username": "test", "premium": False})
         self.assertEqual(
             self.signed('/api/epub/grandchild/').status_code,
-            401)  # Not 403 because Piston.
+            403)
 
-        with patch('api.handlers.user_is_subscribed', return_value=True):
+        with patch('api.fields.user_is_subscribed', return_value=True):
             self.assertEqual(
                 self.signed_json('/api/username/'),
                 {"username": "test", "premium": True})
+        with patch('paypal.permissions.user_is_subscribed', return_value=True):
             with patch('django.core.files.storage.Storage.open',
                        return_value=StringIO("<epub>")):
                 self.assertEqual(

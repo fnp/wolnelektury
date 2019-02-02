@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.core.urlresolvers import reverse
+from paypal.rest import user_is_subscribed
 
 
 class AbsoluteURLField(serializers.ReadOnlyField):
@@ -32,3 +33,11 @@ class LegacyMixin(object):
             if field in value and value[field] is None:
                 value[field] = ''
         return value
+
+
+class UserPremiumField(serializers.ReadOnlyField):
+    def __init__(self, *args, **kwargs):
+        super(UserPremiumField, self).__init__(*args, source='*', **kwargs)
+
+    def to_representation(self, value):
+        return user_is_subscribed(value)

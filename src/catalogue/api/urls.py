@@ -13,4 +13,6 @@ urlpatterns = [
         views.CollectionDetail.as_view(), name="collection-detail"),
 
     url(r'^books/(?P<slug>[^/]+)/$', views.BookDetail.as_view(), name='catalogue_api_book'),
+
+    url(r'^epub/(?P<slug>[a-z0-9-]+)/$', views.EpubView.as_view(), name='catalogue_api_epub'),
 ]

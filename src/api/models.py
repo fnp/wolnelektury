@@ -47,10 +47,13 @@ class BookUserData(models.Model):
     complete = models.BooleanField(default=False)
     last_changed = models.DateTimeField(auto_now=True)
 
-    def get_state(self):
+    @property
+    def state(self):
         return 'complete' if self.complete else 'reading'
 
-    def set_state(self, state):
-        self.complete = state == 'complete'
-
-    state = property(get_state, set_state)
+    @classmethod
+    def update(cls, book, user, state):
+        instance, created = cls.objects.get_or_create(book=book, user=user)
+        instance.complete = state == 'complete'
+        instance.save()
+        return instance
