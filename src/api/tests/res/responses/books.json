@@ -45,6 +45,6 @@
         "genre": "Sonet", 
         "simple_thumb": "http://testserver/media/cover_api_thumb/parent.jpg",
         "slug": "parent", 
-        "cover_thumb": "http://testserver/media/cover/parent.jpg-139x193"
+        "cover_thumb": "cover_thumb/parent.jpg"
     }
 ]

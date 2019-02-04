@@ -48,6 +48,6 @@
         "genre": "Sonet", 
         "simple_thumb": "https://example.com/media/cover_api_thumb/parent.jpg", 
         "slug": "parent", 
-        "cover_thumb": "https://example.com/media/cover/parent.jpg-139x193"
+        "cover_thumb": "cover_thumb/parent.jpg"
     }
 ]
