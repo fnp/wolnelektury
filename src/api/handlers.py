@@ -17,7 +17,7 @@ from sorl.thumbnail import default
 
 from api.models import BookUserData
 from catalogue.forms import BookImportForm
-from catalogue.models import Book, Tag, BookMedia, Fragment, Collection
+from catalogue.models import Book, Tag, BookMedia
 from catalogue.models.tag import prefetch_relations
 from paypal.rest import user_is_subscribed
 from picture.models import Picture
@@ -100,25 +100,7 @@ def read_tags(tags, request, allowed):
 # RESTful handlers
 
 
-class BookMediaHandler(BaseHandler):
-    """ Responsible for representing media in Books. """
 
-    model = BookMedia
-    fields = ['name', 'type', 'url', 'artist', 'director']
-
-    @classmethod
-    def url(cls, media):
-        """ Link to media on site. """
-
-        return MEDIA_BASE + media.file.url
-
-    @classmethod
-    def artist(cls, media):
-        return media.extra_info.get('artist_name', '')
-
-    @classmethod
-    def director(cls, media):
-        return media.extra_info.get('director_name', '')
 
 
 class BookDetails(object):
@@ -488,155 +470,6 @@ def add_file_getters():
 
 
 add_file_getters()
-
-
-class TagDetails(object):
-    """Custom Tag fields."""
-
-    @classmethod
-    def href(cls, tag):
-        """ Returns URI in the API for the tag. """
-
-        return API_BASE + reverse("api_tag", args=[category_plural[tag.category], tag.slug])
-
-    @classmethod
-    def url(cls, tag):
-        """ Returns URL on the site. """
-
-        return WL_BASE + tag.get_absolute_url()
-
-
-class TagDetailHandler(BaseHandler, TagDetails):
-    """ Responsible for details of a single Tag object. """
-
-    fields = ['name', 'url', 'sort_key', 'description']
-
-    @piwik_track
-    def read(self, request, category, slug):
-        """ Returns details of a tag, identified by category and slug. """
-
-        try:
-            category_sng = category_singular[category]
-        except KeyError:
-            return rc.NOT_FOUND
-
-        try:
-            return Tag.objects.get(category=category_sng, slug=slug)
-        except Tag.DoesNotExist:
-            return rc.NOT_FOUND
-
-
-class TagsHandler(BaseHandler, TagDetails):
-    """ Main handler for Tag objects.
-
-    Responsible for lists of Tag objects
-    and fields used for representing Tags.
-
-    """
-    allowed_methods = ('GET',)
-    model = Tag
-    fields = ['name', 'href', 'url', 'slug']
-
-    @piwik_track
-    def read(self, request, category=None, pk=None):
-        """ Lists all tags in the category (eg. all themes). """
-        if pk is not None:
-            # FIXME: Unused?
-            try:
-                return Tag.objects.exclude(category='set').get(pk=pk)
-            except Book.DoesNotExist:
-                return rc.NOT_FOUND
-
-        try:
-            category_sng = category_singular[category]
-        except KeyError:
-            return rc.NOT_FOUND
-
-        after = request.GET.get('after')
-        count = request.GET.get('count')
-
-        tags = Tag.objects.filter(category=category_sng).exclude(items=None).order_by('slug')
-
-        book_only = request.GET.get('book_only') == 'true'
-        picture_only = request.GET.get('picture_only') == 'true'
-        if book_only:
-            tags = tags.filter(for_books=True)
-        if picture_only:
-            tags = tags.filter(for_pictures=True)
-
-        if after:
-            tags = tags.filter(slug__gt=after)
-
-        if count:
-            tags = tags[:count]
-
-        return tags
-
-
-class FragmentDetails(object):
-    """Custom Fragment fields."""
-
-    @classmethod
-    def href(cls, fragment):
-        """ Returns URI in the API for the fragment. """
-
-        return API_BASE + reverse("api_fragment", args=[fragment.book.slug, fragment.anchor])
-
-    @classmethod
-    def url(cls, fragment):
-        """ Returns URL on the site for the fragment. """
-
-        return WL_BASE + fragment.get_absolute_url()
-
-    @classmethod
-    def themes(cls, fragment):
-        """ Returns a list of theme tags for the fragment. """
-
-        return fragment.tags.filter(category='theme')
-
-
-class FragmentDetailHandler(BaseHandler, FragmentDetails):
-    fields = ['book', 'anchor', 'text', 'url', 'themes']
-
-    @piwik_track
-    def read(self, request, book, anchor):
-        """ Returns details of a fragment, identified by book slug and anchor. """
-        try:
-            return Fragment.objects.get(book__slug=book, anchor=anchor)
-        except Fragment.DoesNotExist:
-            return rc.NOT_FOUND
-
-
-class FragmentsHandler(BaseHandler, FragmentDetails):
-    """ Main handler for Fragments.
-
-    Responsible for lists of Fragment objects
-    and fields used for representing Fragments.
-
-    """
-    model = Fragment
-    fields = ['book', 'url', 'anchor', 'href']
-    allowed_methods = ('GET',)
-
-    categories = {'author', 'epoch', 'kind', 'genre', 'book', 'theme'}
-
-    @piwik_track
-    def read(self, request, tags):
-        """ Lists all fragments with given book, tags, themes.
-
-        :param tags: should be a path of categories and slugs, i.e.:
-             books/book-slug/authors/an-author/themes/a-theme/
-
-        """
-        try:
-            tags, ancestors = read_tags(tags, request, allowed=self.categories)
-        except ValueError:
-            return rc.NOT_FOUND
-        fragments = Fragment.tagged.with_all(tags).select_related('book')
-        if fragments.exists():
-            return fragments
-        else:
-            return rc.NOT_FOUND
 
 
 class PictureHandler(BaseHandler):

@@ -35,9 +35,16 @@ class Fragment(models.Model):
     def get_absolute_url(self):
         return '%s#m%s' % (reverse('book_text', args=[self.book.slug]), self.anchor)
 
+    def get_api_url(self):
+        return reverse('catalogue_api_fragment', args=[self.book.slug, self.anchor])
+
     def get_short_text(self):
         """Returns short version of the fragment."""
         return self.short_text if self.short_text else self.text
+
+    @property
+    def themes(self):
+        return self.tags.filter(category='theme')
 
     def flush_includes(self, languages=True):
         if not languages:

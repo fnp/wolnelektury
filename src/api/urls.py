@@ -51,12 +51,6 @@ shelf_resource = auth_resource(handler=handlers.UserShelfHandler)
 
 like_resource = auth_resource(handler=handlers.UserLikeHandler)
 
-tag_list_resource = Resource(handler=handlers.TagsHandler)
-tag_resource = Resource(handler=handlers.TagDetailHandler)
-
-fragment_resource = Resource(handler=handlers.FragmentDetailHandler)
-fragment_list_resource = Resource(handler=handlers.FragmentsHandler)
-
 picture_resource = auth_resource(handler=handlers.PictureHandler)
 
 blog_resource = Resource(handler=handlers.BlogEntryHandler)
@@ -73,9 +67,6 @@ urlpatterns = [
 
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
 
-    # These are the new ones.
-    url(r'^', include('catalogue.api.urls')),
-
     # info boxes (used by mobile app)
     url(r'book/(?P<book_id>\d*?)/info\.html$', catalogue.views.book_info),
     url(r'tag/(?P<tag_id>\d*?)/info\.html$', catalogue.views.tag_info),
@@ -87,12 +78,6 @@ urlpatterns = [
     url(r'^username/$', views.UserView.as_view(), name='api_username'),
 
     url(r'^like/(?P<slug>[a-z0-9-]+)/$', like_resource, name='api_like'),
-
-    # objects details
-    url(r'^(?P<category>[a-z0-9-]+)/(?P<slug>[a-z0-9-]+)/$',
-        tag_resource, name="api_tag"),
-    url(r'^books/(?P<book>[a-z0-9-]+)/fragments/(?P<anchor>[a-z0-9-]+)/$',
-        fragment_resource, name="api_fragment"),
 
     # books by tags
     url(tags_re + r'books/' + paginate_re,
@@ -118,10 +103,5 @@ urlpatterns = [
 
     url(r'^blog/$', blog_resource),
 
-    # fragments by book, tags, themes
-    # this should be paged
-    url(r'^(?P<tags>(?:(?:[a-z0-9-]+/){2}){1,6})fragments/$', fragment_list_resource),
-
-    # tags by category
-    url(r'^(?P<category>[a-z0-9-]+)/$', tag_list_resource, name='api_tag_list'),
+    url(r'^', include('catalogue.api.urls')),
 ]

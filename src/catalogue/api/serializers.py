@@ -1,19 +1,27 @@
 from rest_framework import serializers
 from api.fields import AbsoluteURLField, LegacyMixin
-from catalogue.models import Book, Collection, Tag, BookMedia
+from catalogue.models import Book, Collection, Tag, BookMedia, Fragment
 from .fields import BookLiked, ThumbnailField
 
 
 class TagSerializer(serializers.ModelSerializer):
     url = AbsoluteURLField()
     href = AbsoluteURLField(
-        view_name='api_tag',
-        view_args=('category:category_plural', 'slug')
+        view_name='catalogue_api_tag',
+        view_args=('category', 'slug')
     )
 
     class Meta:
         model = Tag
         fields = ['url', 'href', 'name', 'slug']
+
+
+class TagDetailSerializer(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+
+    class Meta:
+        model = Tag
+        fields = ['name', 'url', 'sort_key', 'description']
 
 
 class BookSerializer(LegacyMixin, serializers.ModelSerializer):
@@ -100,3 +108,23 @@ class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
         fields = ['url', 'books', 'description', 'title']
+
+
+class FragmentSerializer(serializers.ModelSerializer):
+    book = BookSerializer()
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(source='get_api_url')
+
+    class Meta:
+        model = Fragment
+        fields = ['book', 'url', 'anchor', 'href']
+
+
+class FragmentDetailSerializer(serializers.ModelSerializer):
+    book = BookSerializer()
+    url = AbsoluteURLField()
+    themes = TagSerializer(many=True)
+
+    class Meta:
+        model = Fragment
+        fields = ['book', 'anchor', 'text', 'url', 'themes']

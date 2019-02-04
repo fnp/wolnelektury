@@ -1,18 +1,18 @@
 {
-    "url": "https://example.com/katalog/lektura/child.html#man-anchor", 
+    "url": "http://testserver/katalog/lektura/child.html#man-anchor",
     "text": "A fragment", 
     "book": {
         "kind": "", 
         "full_sort_key": "$child$2", 
         "author": "", 
-        "url": "https://example.com/katalog/lektura/child/", 
+        "url": "http://testserver/katalog/lektura/child/",
         "cover_color": "#000000", 
         "title": "Child", 
         "cover": "", 
         "liked": null, 
         "slug": "child", 
         "epoch": "", 
-        "href": "https://example.com/api/books/child/", 
+        "href": "http://testserver/api/books/child/",
         "genre": "Wiersz", 
         "simple_thumb": "", 
         "has_audio": false, 
@@ -21,8 +21,8 @@
     "anchor": "an-anchor", 
     "themes": [
         {
-            "url": "https://example.com/katalog/motyw/koniec/", 
-            "href": "https://example.com/api/themes/koniec/", 
+            "url": "http://testserver/katalog/motyw/koniec/",
+            "href": "http://testserver/api/themes/koniec/",
             "name": "Koniec", 
             "slug": "koniec"
         }
