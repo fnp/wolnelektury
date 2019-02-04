@@ -42,14 +42,7 @@ def auth_resource(handler):
 
 book_list_resource = auth_resource(handler=handlers.BooksHandler)
 ebook_list_resource = Resource(handler=handlers.EBooksHandler)
-# book_list_resource = Resource(handler=handlers.BooksHandler)
 filter_book_resource = auth_resource(handler=handlers.FilterBooksHandler)
-
-preview_resource = Resource(handler=handlers.BookPreviewHandler)
-
-shelf_resource = auth_resource(handler=handlers.UserShelfHandler)
-
-like_resource = auth_resource(handler=handlers.UserLikeHandler)
 
 picture_resource = auth_resource(handler=handlers.PictureHandler)
 
@@ -74,34 +67,20 @@ urlpatterns = [
     # reading data
     url(r'^reading/(?P<slug>[a-z0-9-]+)/$', views.BookUserDataView.as_view(), name='api_reading'),
     url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', views.BookUserDataView.as_view(), name='api_reading'),
-    url(r'^shelf/(?P<state>[a-z]+)/$', shelf_resource, name='api_shelf'),
     url(r'^username/$', views.UserView.as_view(), name='api_username'),
 
-    url(r'^like/(?P<slug>[a-z0-9-]+)/$', like_resource, name='api_like'),
-
     # books by tags
-    url(tags_re + r'books/' + paginate_re,
-        book_list_resource, name='api_book_list'),
     url(tags_re + r'ebooks/' + paginate_re,
         ebook_list_resource, name='api_ebook_list'),
-    url(tags_re + r'parent_books/' + paginate_re,
-        book_list_resource, {"top_level": True}, name='api_parent_book_list'),
     url(tags_re + r'parent_ebooks/' + paginate_re,
         ebook_list_resource, {"top_level": True}, name='api_parent_ebook_list'),
-    url(tags_re + r'audiobooks/' + paginate_re,
-        book_list_resource, {"audiobooks": True}, name='api_audiobook_list'),
-    url(tags_re + r'daisy/' + paginate_re,
-        book_list_resource, {"daisy": True}, name='api_daisy_list'),
 
-    url(r'^recommended/' + paginate_re, book_list_resource, {"recommended": True}, name='api_recommended_list'),
-    url(r'^newest/$', book_list_resource, {"newest": True, "top_level": True, "count": 20}, name='api_newest_list'),
     url(r'^filter-books/$', filter_book_resource, name='api_filter_books'),
-
-    url(r'^preview/$', preview_resource, name='api_preview'),
 
     url(r'^pictures/$', picture_resource),
 
     url(r'^blog/$', blog_resource),
 
+    url(r'^', include('social.api.urls')),
     url(r'^', include('catalogue.api.urls')),
 ]

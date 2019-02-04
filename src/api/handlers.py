@@ -16,6 +16,7 @@ from piston.utils import rc
 from sorl.thumbnail import default
 
 from api.models import BookUserData
+from catalogue.api.helpers import books_after, order_books
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Tag, BookMedia
 from catalogue.models.tag import prefetch_relations
@@ -143,25 +144,6 @@ class BookDetails(object):
     def simple_cover(cls, book):
         return MEDIA_BASE + book.simple_cover.url if book.simple_cover else ''
 
-    @staticmethod
-    def books_after(books, after, new_api):
-        if not new_api:
-            return books.filter(slug__gt=after)
-        try:
-            author, title, book_id = after.split(Book.SORT_KEY_SEP)
-        except ValueError:
-            return Book.objects.none()
-        return books.filter(Q(sort_key_author__gt=author)
-                            | (Q(sort_key_author=author) & Q(sort_key__gt=title))
-                            | (Q(sort_key_author=author) & Q(sort_key=title) & Q(id__gt=int(book_id))))
-
-    @staticmethod
-    def order_books(books, new_api):
-        if new_api:
-            return books.order_by('sort_key_author', 'sort_key', 'id')
-        else:
-            return books.order_by('slug')
-
 
 class BookDetailHandler(BaseHandler, BookDetails):
     """ Main handler for Book objects.
@@ -236,7 +218,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
                 books = Book.tagged.with_all(tags)
         else:
             books = books if books is not None else Book.objects.all()
-        books = self.order_books(books, new_api)
+        books = order_books(books, new_api)
 
         if top_level:
             books = books.filter(parent=None)
@@ -250,7 +232,7 @@ class AnonymousBooksHandler(AnonymousBaseHandler, BookDetails):
             books = books.order_by('-created_at')
 
         if after:
-            books = self.books_after(books, after, new_api)
+            books = books_after(books, after, new_api)
 
         if new_api:
             books = books.only('slug', 'title', 'cover', 'cover_thumb', 'sort_key', 'sort_key_author')
@@ -348,7 +330,7 @@ class AnonFilterBooksHandler(AnonymousBooksHandler):
         new_api = request.GET.get('new_api')
         after = request.GET.get('after')
         count = int(request.GET.get('count', 50))
-        books = self.order_books(Book.objects.distinct(), new_api)
+        books = order_books(Book.objects.distinct(), new_api)
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
         if is_audiobook is not None:
@@ -375,15 +357,15 @@ class AnonFilterBooksHandler(AnonymousBooksHandler):
             if after and (key_sep in after):
                 which, key = after.split(key_sep, 1)
                 if which == 'title':
-                    book_lists = [(self.books_after(books_title, key, new_api), 'title')]
+                    book_lists = [(books_after(books_title, key, new_api), 'title')]
                 else:  # which == 'author'
-                    book_lists = [(self.books_after(books_author, key, new_api), 'author'), (books_title, 'title')]
+                    book_lists = [(books_after(books_author, key, new_api), 'author'), (books_title, 'title')]
             else:
                 book_lists = [(books_author, 'author'), (books_title, 'title')]
         else:
             if after and key_sep in after:
                 which, key = after.split(key_sep, 1)
-                books = self.books_after(books, key, new_api)
+                books = books_after(books, key, new_api)
             book_lists = [(books, 'book')]
 
         filtered_books = []
@@ -418,13 +400,6 @@ class FilterBooksHandler(BooksHandler):
         for book in qsp.list:
             book.set('liked', book.id in likes)
         return qsp
-
-
-class BookPreviewHandler(BookDetailHandler):
-    fields = BookDetailHandler.fields + ['slug']
-
-    def read(self, request):
-        return Book.objects.filter(preview=True)
 
 
 # add categorized tags fields for Book
@@ -488,75 +463,6 @@ class PictureHandler(BaseHandler):
             return rc.CREATED
         else:
             return rc.NOT_FOUND
-
-
-class UserShelfHandler(BookDetailHandler):
-    fields = book_list_fields + ['liked']
-
-    # FIXME: Unused?
-    def parse_bool(self, s):
-        if s in ('true', 'false'):
-            return s == 'true'
-        else:
-            return None
-
-    # hack, because piston is stupid
-    @classmethod
-    def liked(cls, book):
-        return getattr(book, 'liked', None)
-
-    def read(self, request, state):
-        if not request.user.is_authenticated():
-            return rc.FORBIDDEN
-        likes = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
-        if state not in ('reading', 'complete', 'likes'):
-            return rc.NOT_FOUND
-        new_api = request.GET.get('new_api')
-        after = request.GET.get('after')
-        count = int(request.GET.get('count', 50))
-        if state == 'likes':
-            books = Book.tagged.with_any(request.user.tag_set.all())
-        else:
-            ids = BookUserData.objects.filter(user=request.user, complete=state == 'complete')\
-                .values_list('book_id', flat=True)
-            books = Book.objects.filter(id__in=list(ids)).distinct()
-            books = self.order_books(books, new_api)
-        if after:
-            books = self.books_after(books, after, new_api)
-        if count:
-            books = books[:count]
-        new_books = []
-        for book in books:
-            new_books.append(BookProxy(book).set('liked', book.id in likes))
-        return QuerySetProxy(new_books)
-
-
-class UserLikeHandler(BaseHandler):
-    fields = []
-    allowed_methods = ('GET', 'POST')
-
-    def read(self, request, slug):
-        if not request.user.is_authenticated():
-            return rc.FORBIDDEN
-        try:
-            book = Book.objects.get(slug=slug)
-        except Book.DoesNotExist:
-            return rc.NOT_FOUND
-        return {'likes': likes(request.user, book)}
-
-    def create(self, request, slug):
-        if not request.user.is_authenticated():
-            return rc.FORBIDDEN
-        try:
-            book = Book.objects.get(slug=slug)
-        except Book.DoesNotExist:
-            return rc.NOT_FOUND
-        action = request.GET.get('action', 'like')
-        if action == 'like':
-            book.like(request.user)
-        elif action == 'unlike':
-            book.unlike(request.user)
-        return {}
 
 
 class BlogEntryHandler(BaseHandler):
