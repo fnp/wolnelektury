@@ -24,12 +24,12 @@ class CollectionDetail(RetrieveAPIView):
 class BookList(ListAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Book.objects.none()  # Required for DjangoModelPermissions
-    serializer_class = serializers.BaseBookSerializer
+    serializer_class = serializers.BookListSerializer
 
     def get_queryset(self):
         try:
             tags, ancestors = read_tags(
-                self.kwargs['tags'], self.request,
+                self.kwargs.get('tags', ''), self.request,
                 allowed=('author', 'epoch', 'kind', 'genre')
             )
         except ValueError:

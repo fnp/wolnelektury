@@ -24,16 +24,17 @@ class TagDetailSerializer(serializers.ModelSerializer):
         fields = ['name', 'url', 'sort_key', 'description']
 
 
-class BaseBookSerializer(LegacyMixin, serializers.ModelSerializer):
+class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     author = serializers.CharField(source='author_unicode')
     kind = serializers.CharField(source='kind_unicode')
     epoch = serializers.CharField(source='epoch_unicode')
     genre = serializers.CharField(source='genre_unicode')
+    liked = BookLiked()
 
     simple_thumb = serializers.FileField(source='cover_api_thumb')
     href = AbsoluteURLField(view_name='catalogue_api_book', view_args=['slug'])
     url = AbsoluteURLField()
-    cover = serializers.CharField()
+    cover = serializers.FileField()
     cover_thumb = ThumbnailField('139x193', source='cover')
 
     class Meta:
@@ -41,20 +42,17 @@ class BaseBookSerializer(LegacyMixin, serializers.ModelSerializer):
         fields = [
             'kind', 'full_sort_key', 'title', 'url', 'cover_color', 'author',
             'cover', 'epoch', 'href', 'has_audio', 'genre',
-            'simple_thumb', 'slug', 'cover_thumb']
+            'simple_thumb', 'slug', 'cover_thumb', 'liked']
         legacy_non_null_fields = [
             'kind', 'author', 'epoch', 'genre',
             'cover', 'simple_thumb', 'cover_thumb']
 
 
-class BookSerializer(BaseBookSerializer):
-    liked = BookLiked()
-    cover = serializers.FileField()
+class BookListSerializer(BookSerializer):
+    cover = serializers.CharField()
+    cover_thumb = serializers.CharField()
 
-    class Meta:
-        model = Book
-        fields = BaseBookSerializer.Meta.fields + ['liked']
-        legacy_non_null_fields = BaseBookSerializer.Meta.legacy_non_null_fields
+    Meta = BookSerializer.Meta
 
 
 class MediaSerializer(LegacyMixin, serializers.ModelSerializer):
