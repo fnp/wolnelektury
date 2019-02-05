@@ -327,7 +327,7 @@ class AuthorizedTests(ApiTest):
         cls.consumer.delete()
         super(AuthorizedTests, cls).tearDownClass()
 
-    def signed(self, url, method='GET', params=None):
+    def signed(self, url, method='GET', params=None, data=None):
         auth_params = {
             "oauth_consumer_key": self.consumer.key,
             "oauth_nonce": "%f" % time(),
@@ -340,12 +340,14 @@ class AuthorizedTests(ApiTest):
         sign_params = {}
         if params:
             sign_params.update(params)
+        if data:
+            sign_params.update(data)
         sign_params.update(auth_params)
         raw = "&".join([
             method.upper(),
             quote('http://testserver' + url, safe=''),
             quote("&".join(
-                quote(str(k)) + "=" + quote(str(v))
+                quote(str(k), safe='') + "=" + quote(str(v), safe='')
                 for (k, v) in sorted(sign_params.items())))
         ])
         auth_params["oauth_signature"] = quote(b64encode(hmac.new(
@@ -357,11 +359,12 @@ class AuthorizedTests(ApiTest):
             url = url + '?' + urlencode(params)
         return getattr(self.client, method.lower())(
                 url,
+                data=data,
                 HTTP_AUTHORIZATION=auth
             )
 
-    def signed_json(self, url, method='GET', params=None):
-        return json.loads(self.signed(url, method, params).content)
+    def signed_json(self, url, method='GET', params=None, data=None):
+        return json.loads(self.signed(url, method, params, data).content)
 
     def test_books(self):
         self.assertEqual(
@@ -435,3 +438,39 @@ class AuthorizedTests(ApiTest):
                 self.assertEqual(
                     self.signed('/api/epub/grandchild/').content,
                     "<epub>")
+
+    def test_publish(self):
+        response = self.signed('/api/books/',
+                               method='POST',
+                               data={"data": json.dumps({})})
+        self.assertEqual(response.status_code, 403)
+
+        response = self.signed('/api/pictures/',
+                               method='POST',
+                               data={"data": json.dumps({})})
+        self.assertEqual(response.status_code, 403)
+
+        self.user.is_superuser = True
+        self.user.save()
+
+        with patch('catalogue.models.Book.from_xml_file') as mock:
+            response = self.signed('/api/books/',
+                                   method='POST',
+                                   data={"data": json.dumps({
+                                       "book_xml": "<utwor/>"
+                                   })})
+            self.assertTrue(mock.called)
+        self.assertEqual(response.status_code, 201)
+
+        with patch('picture.models.Picture.from_xml_file') as mock:
+            response = self.signed('/api/pictures/',
+                                   method='POST',
+                                   data={"data": json.dumps({
+                                       "picture_xml": "<utwor/>",
+                                       "picture_image_data": "Kg==",
+                                   })})
+            self.assertTrue(mock.called)
+        self.assertEqual(response.status_code, 201)
+
+        self.user.is_superuser = False
+        self.user.save()

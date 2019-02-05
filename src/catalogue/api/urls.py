@@ -33,6 +33,16 @@ urlpatterns = [
 
     url(r'^books/(?P<slug>[^/]+)/$', views.BookDetail.as_view(), name='catalogue_api_book'),
 
+    url(tags_re + r'ebooks/' + paginate_re,
+        views.EbookList.as_view(),
+        name='catalogue_api_ebook_list'),
+    url(tags_re + r'parent_ebooks/' + paginate_re,
+        views.EbookList.as_view(),
+        {"top_level": True},
+        name='catalogue_api_parent_ebook_list'),
+
+    url(r'^filter-books/$', views.FilterBookList.as_view(), name='catalogue_api_filter_books'),
+
     url(r'^epub/(?P<slug>[a-z0-9-]+)/$', views.EpubView.as_view(), name='catalogue_api_epub'),
 
     url(r'^preview/$', views.Preview.as_view(), name='catalogue_api_preview'),

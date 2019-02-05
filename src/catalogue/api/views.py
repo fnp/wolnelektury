@@ -1,13 +1,24 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
+import json
 from django.http import Http404, HttpResponse
 from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.response import Response
 from rest_framework import status
 from paypal.permissions import IsSubscribed
 from api.handlers import read_tags
 from .helpers import books_after, order_books
 from . import serializers
+from catalogue.forms import BookImportForm
 from catalogue.models import Book, Collection, Tag, Fragment
 from catalogue.models.tag import prefetch_relations
+from wolnelektury.utils import re_escape
+
+
+book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 
 class CollectionList(ListAPIView):
@@ -75,7 +86,7 @@ class BookList(ListAPIView):
 
         return books
 
-    def post(self, request):
+    def post(self, request, **kwargs):
         # Permission needed.
         data = json.loads(request.POST.get('data'))
         form = BookImportForm(data)
@@ -92,9 +103,84 @@ class BookDetail(RetrieveAPIView):
     serializer_class = serializers.BookDetailSerializer
 
 
+class EbookList(BookList):
+    serializer_class = serializers.EbookSerializer
+
+
 class Preview(ListAPIView):
     queryset = Book.objects.filter(preview=True)
     serializer_class = serializers.BookPreviewSerializer
+
+
+class FilterBookList(ListAPIView):
+    serializer_class = serializers.FilterBookListSerializer
+
+    def parse_bool(self, s):
+        if s in ('true', 'false'):
+            return s == 'true'
+        else:
+            return None
+
+    def get_queryset(self):
+        key_sep = '$'
+        search_string = self.request.query_params.get('search')
+        is_lektura = self.parse_bool(self.request.query_params.get('lektura'))
+        is_audiobook = self.parse_bool(self.request.query_params.get('audiobook'))
+        preview = self.parse_bool(self.request.query_params.get('preview'))
+
+        new_api = self.request.query_params.get('new_api')
+        after = self.request.query_params.get('after')
+        count = int(self.request.query_params.get('count', 50))
+        books = order_books(Book.objects.distinct(), new_api)
+        if is_lektura is not None:
+            books = books.filter(has_audience=is_lektura)
+        if is_audiobook is not None:
+            if is_audiobook:
+                books = books.filter(media__type='mp3')
+            else:
+                books = books.exclude(media__type='mp3')
+        if preview is not None:
+            books = books.filter(preview=preview)
+        for category in book_tag_categories:
+            category_plural = category + 's'
+            if category_plural in self.request.query_params:
+                slugs = self.request.query_params[category_plural].split(',')
+                tags = Tag.objects.filter(category=category, slug__in=slugs)
+                books = Book.tagged.with_any(tags, books)
+        if (search_string is not None) and len(search_string) < 3:
+            search_string = None
+        if search_string:
+            search_string = re_escape(search_string)
+            books_author = books.filter(cached_author__iregex=r'\m' + search_string)
+            books_title = books.filter(title__iregex=r'\m' + search_string)
+            books_title = books_title.exclude(id__in=list(books_author.values_list('id', flat=True)))
+            if after and (key_sep in after):
+                which, key = after.split(key_sep, 1)
+                if which == 'title':
+                    book_lists = [(books_after(books_title, key, new_api), 'title')]
+                else:  # which == 'author'
+                    book_lists = [(books_after(books_author, key, new_api), 'author'), (books_title, 'title')]
+            else:
+                book_lists = [(books_author, 'author'), (books_title, 'title')]
+        else:
+            if after and key_sep in after:
+                which, key = after.split(key_sep, 1)
+                books = books_after(books, key, new_api)
+            book_lists = [(books, 'book')]
+
+        filtered_books = []
+        for book_list, label in book_lists:
+            for category in book_tag_categories:
+                book_list = prefetch_relations(book_list, category)
+            remaining_count = count - len(filtered_books)
+            for book in book_list[:remaining_count]:
+                book.key = '%s%s%s' % (
+                    label, key_sep, book.slug if not new_api else book.full_sort_key())
+                filtered_books.append(book)
+            if len(filtered_books) == count:
+                break
+
+        return filtered_books
 
 
 class EpubView(RetrieveAPIView):

@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from rest_framework import serializers
-from api.fields import AbsoluteURLField, LegacyMixin
+from api.fields import AbsoluteURLField, LegacyMixin, ThumbnailField
 from catalogue.models import Book, Collection, Tag, BookMedia, Fragment
-from .fields import BookLiked, ThumbnailField
+from .fields import BookLiked
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -34,7 +38,6 @@ class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     simple_thumb = serializers.FileField(source='cover_api_thumb')
     href = AbsoluteURLField(view_name='catalogue_api_book', view_args=['slug'])
     url = AbsoluteURLField()
-    cover = serializers.FileField()
     cover_thumb = ThumbnailField('139x193', source='cover')
 
     class Meta:
@@ -53,6 +56,15 @@ class BookListSerializer(BookSerializer):
     cover_thumb = serializers.CharField()
 
     Meta = BookSerializer.Meta
+
+
+class FilterBookListSerializer(BookListSerializer):
+    key = serializers.CharField()
+
+    class Meta:
+        model = Book
+        fields = BookListSerializer.Meta.fields + ['key']
+        legacy_non_null_fields = BookListSerializer.Meta.legacy_non_null_fields
 
 
 class MediaSerializer(LegacyMixin, serializers.ModelSerializer):
@@ -107,7 +119,13 @@ class BookPreviewSerializer(BookDetailSerializer):
         legacy_non_null_fields = BookDetailSerializer.Meta.legacy_non_null_fields
 
 
-class EbookSerializer(BookSerializer):
+class EbookSerializer(BookListSerializer):
+    txt = AbsoluteURLField(source='txt_url')
+    fb2 = AbsoluteURLField(source='fb2_url')
+    epub = AbsoluteURLField(source='epub_url')
+    mobi = AbsoluteURLField(source='mobi_url')
+    pdf = AbsoluteURLField(source='pdf_url')
+
     class Meta:
         model = Book
         fields = ['author', 'href', 'title', 'cover', 'slug'] + Book.ebook_formats
