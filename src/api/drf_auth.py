@@ -1,20 +1,29 @@
-"""
-Transitional code: bridge between Piston's OAuth implementation
-and DRF views.
-"""
-from piston.authentication import OAuthAuthentication
+# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
+from oauthlib.oauth1 import ResourceEndpoint
 from rest_framework.authentication import BaseAuthentication
+from .request_validator import PistonRequestValidator
 
 
 class PistonOAuthAuthentication(BaseAuthentication):
     def __init__(self):
-        self.piston_auth = OAuthAuthentication()
+        validator = PistonRequestValidator()
+        self.provider = ResourceEndpoint(validator)
 
     def authenticate_header(self, request):
         return 'OAuth realm="API"'
 
     def authenticate(self, request):
-        if self.piston_auth.is_valid_request(request):
-            consumer, token, parameters = self.piston_auth.validate_token(request)
-            if consumer and token:
-                return token.user, token
+        v, r = self.provider.validate_protected_resource_request(
+            request.build_absolute_uri(),
+            http_method=request.method,
+            body=request.body,
+            headers={
+                "Authorization": request.META['HTTP_AUTHORIZATION'],
+                "Content-Type": request.content_type,
+            } if 'HTTP_AUTHORIZATION' in request.META else None
+        )
+        if v:
+            return r.token.user, r.token

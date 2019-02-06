@@ -13,7 +13,7 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^oauth/request_token/$', oauth_request_token),
+    url(r'^oauth/request_token/$', views.OAuth1RequestTokenView.as_view()),
     url(r'^oauth/authorize/$', oauth_user_auth, name='oauth_user_auth'),
     url(r'^oauth/access_token/$', csrf_exempt(oauth_access_token)),
 

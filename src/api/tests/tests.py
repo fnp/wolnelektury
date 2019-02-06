@@ -253,7 +253,7 @@ class OAuth1Tests(ApiTest):
         User.objects.all().delete()
 
     def test_create_token(self):
-        base_query = ("oauth_consumer_key=client&oauth_nonce=123&"
+        base_query = ("oauth_consumer_key=client&oauth_nonce=12345678&"
                       "oauth_signature_method=HMAC-SHA1&oauth_timestamp={}&"
                       "oauth_version=1.0".format(int(time())))
         raw = '&'.join([
@@ -274,7 +274,7 @@ class OAuth1Tests(ApiTest):
             key=request_token['oauth_token'][0], token_type=Token.REQUEST
         ).update(user=self.user, is_approved=True)
 
-        base_query = ("oauth_consumer_key=client&oauth_nonce=123&"
+        base_query = ("oauth_consumer_key=client&oauth_nonce=12345678&"
                       "oauth_signature_method=HMAC-SHA1&oauth_timestamp={}&"
                       "oauth_token={}&oauth_version=1.0".format(
                           int(time()), request_token['oauth_token'][0]))
@@ -330,7 +330,7 @@ class AuthorizedTests(ApiTest):
     def signed(self, url, method='GET', params=None, data=None):
         auth_params = {
             "oauth_consumer_key": self.consumer.key,
-            "oauth_nonce": "%f" % time(),
+            "oauth_nonce": ("%f" % time()).replace('.', ''),
             "oauth_signature_method": "HMAC-SHA1",
             "oauth_timestamp": int(time()),
             "oauth_token": self.token.key,
@@ -358,10 +358,11 @@ class AuthorizedTests(ApiTest):
         if params:
             url = url + '?' + urlencode(params)
         return getattr(self.client, method.lower())(
-                url,
-                data=data,
-                HTTP_AUTHORIZATION=auth
-            )
+            url,
+            data=urlencode(data) if data else None,
+            content_type='application/x-www-form-urlencoded',
+            HTTP_AUTHORIZATION=auth,
+        )
 
     def signed_json(self, url, method='GET', params=None, data=None):
         return json.loads(self.signed(url, method, params, data).content)
@@ -371,10 +372,9 @@ class AuthorizedTests(ApiTest):
             [b['liked'] for b in self.signed_json('/api/books/')],
             [False, False, False]
         )
-        # This one fails in the legacy implementation
-        # data = self.signed_json('/api/books/child/')
-        # self.assertFalse(data['parent']['liked'])
-        # self.assertFalse(data['children'][0]['liked'])
+        data = self.signed_json('/api/books/child/')
+        self.assertFalse(data['parent']['liked'])
+        self.assertFalse(data['children'][0]['liked'])
 
         self.assertEqual(
             self.signed_json('/api/like/parent/'),
@@ -390,9 +390,8 @@ class AuthorizedTests(ApiTest):
         self.assertTrue(self.signed_json(
             '/api/filter-books/', params={"search": "parent"})[0]['liked'])
 
-        # This one fails in the legacy implementation.
-        #self.assertTrue(self.signed_json(
-        #    '/api/books/child/')['parent']['liked'])
+        self.assertTrue(self.signed_json(
+            '/api/books/child/')['parent']['liked'])
         # Liked books go on shelf.
         self.assertEqual(
             [x['slug'] for x in self.signed_json('/api/shelf/likes/')],

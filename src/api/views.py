@@ -2,7 +2,10 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.http import Http404
+from django.http import Http404, HttpResponse
+from oauthlib.common import urlencode
+from oauthlib.oauth1 import RequestTokenEndpoint
+from piston.models import KEY_SIZE, SECRET_SIZE
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,6 +14,42 @@ from migdal.models import Entry
 from catalogue.models import Book
 from .models import BookUserData
 from . import serializers
+from .request_validator import PistonRequestValidator
+
+
+class OAuth1RequestTokenEndpoint(RequestTokenEndpoint):
+    def _create_request(self, *args, **kwargs):
+        r = super(OAuth1RequestTokenEndpoint, self)._create_request(*args, **kwargs)
+        r.redirect_uri = 'oob'
+        return r
+
+    def create_request_token(self, request, credentials):
+        token = {
+            'oauth_token': self.token_generator()[:KEY_SIZE],
+            'oauth_token_secret': self.token_generator()[:SECRET_SIZE],
+        }
+        token.update(credentials)
+        self.request_validator.save_request_token(token, request)
+        return urlencode(token.items())
+
+
+class OAuth1RequestTokenView(APIView):
+    def __init__(self):
+        self.endpoint = OAuth1RequestTokenEndpoint(PistonRequestValidator())
+    def dispatch(self, request):
+        headers, body, status = self.endpoint.create_request_token_response(
+            request.build_absolute_uri(),
+            request.method,
+            request.body,
+            {
+                "Authorization": request.META['HTTP_AUTHORIZATION']
+            } if 'HTTP_AUTHORIZATION' in request.META else None
+        )
+
+        response = HttpResponse(body, status=status)
+        for k, v in headers.items():
+            response[k] = v
+        return response
 
 
 class UserView(RetrieveAPIView):
