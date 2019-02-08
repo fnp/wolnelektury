@@ -5,6 +5,15 @@
 
 {% block titleextra %}{% if tags %}{% title_from_tags tags %}{% elif list_type == 'gallery' %}{% trans "Gallery" %}{% elif list_type == 'audiobooks' %}{% trans "Audiobooks" %}{% else %}{% trans "Literature" %}{% endif %}{% endblock %}
 
+
+{% block extrahead %}
+{{ block.super }}
+{% if request.path == '/katalog/lektury/' or request.path == '/katalog/audiobooki/' %}
+{% include "hotjar.html" %}
+{% endif %}
+{% endblock %}
+
+
 {% block bodyid %}tagged-object-list{% endblock %}
 
 {% block body %}

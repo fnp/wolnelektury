@@ -10,6 +10,11 @@
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 {% block ogtitle %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
+{% block extrahead %}
+{{ block.super }}
+{% include "hotjar.html" %}
+{% endblock %}
+
 {% block body %}
   {% spaceless %}
     {% if cite %}

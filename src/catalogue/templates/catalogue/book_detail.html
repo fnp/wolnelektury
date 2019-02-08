@@ -12,6 +12,14 @@
 
 {% block bodyid %}book-detail{% endblock %}
 
+{% block extrahead %}
+{{ block.super }}
+{% if request.path == '/katalog/lektura/pan-tadeusz/' %}
+{% include "hotjar.html" %}
+{% endif %}
+{% endblock %}
+
+
 {% block body %}
   {% include 'catalogue/book_wide.html' %}
 
