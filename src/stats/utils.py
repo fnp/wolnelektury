@@ -62,3 +62,16 @@ def piwik_track(klass_or_method):
         return klass
     else:
         return wrap
+
+
+def piwik_track_view(view):
+    if not getattr(settings, 'PIWIK_SITE_ID', 0):
+        return view
+
+    def wrap(request, *args, **kwargs):
+        if getattr(request, 'piwik_track', True):
+            track_request.delay(piwik_url(request))
+        return view(self, request, *args, **kwargs)
+
+    update_wrapper(wrap, view)
+    return wrap

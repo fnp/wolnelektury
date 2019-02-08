@@ -6,7 +6,7 @@ from django.conf.urls import url, include
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 import catalogue.views
-from api import handlers
+from stats.utils import piwik_track_view
 from api.piston_patch import oauth_user_auth
 from . import views
 
@@ -23,11 +23,18 @@ urlpatterns = [
     url(r'tag/(?P<tag_id>\d*?)/info\.html$', catalogue.views.tag_info),
 
     # reading data
-    url(r'^reading/(?P<slug>[a-z0-9-]+)/$', views.BookUserDataView.as_view(), name='api_reading'),
-    url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$', views.BookUserDataView.as_view(), name='api_reading'),
-    url(r'^username/$', views.UserView.as_view(), name='api_username'),
+    url(r'^reading/(?P<slug>[a-z0-9-]+)/$',
+        piwik_track_view(views.BookUserDataView.as_view()),
+        name='api_reading'),
+    url(r'^reading/(?P<slug>[a-z0-9-]+)/(?P<state>[a-z]+)/$',
+        piwik_track_view(views.BookUserDataView.as_view()),
+        name='api_reading'),
+    url(r'^username/$',
+        piwik_track_view(views.UserView.as_view()),
+        name='api_username'),
 
-    url(r'^blog/$', views.BlogView.as_view()),
+    url(r'^blog/$',
+        piwik_track_view(views.BlogView.as_view())),
 
     url(r'^pictures/$', include('picture.api.urls')),
     url(r'^', include('social.api.urls')),
