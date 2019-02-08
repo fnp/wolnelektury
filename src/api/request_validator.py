@@ -2,11 +2,14 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import time
 from oauthlib.oauth1 import RequestValidator
 from piston.models import Consumer, Nonce, Token
 
 
 class PistonRequestValidator(RequestValidator):
+    timestamp_threshold = 300
+
     dummy_access_token = '!'
     realms = ['API']
 
@@ -45,7 +48,8 @@ class PistonRequestValidator(RequestValidator):
 
     def validate_timestamp_and_nonce(self, client_key, timestamp, nonce,
                                      request, request_token=None, access_token=None):
-        # TODO: validate the timestamp
+        if abs(time.time() - int(timestamp)) > self.timestamp_threshold:
+            return False
         token = request_token or access_token
         # Yes, this is what Piston did.
         if token is None:
@@ -83,3 +87,24 @@ class PistonRequestValidator(RequestValidator):
             secret=token['oauth_token_secret'],
             consumer=request.oauth_consumer,
         )
+
+    def verify_request_token(self, token, request):
+        return Token.objects.filter(
+            token_type=Token.REQUEST, key=token, is_approved=False
+        ).exists()
+
+    def get_realms(self, *args, **kwargs):
+        return []
+
+    def save_verifier(self, token, verifier, request):
+        Token.objects.filter(
+            token_type=Token.REQUEST,
+            key=token,
+            is_approved=False
+        ).update(
+            is_approved=True,
+            user=verifier['user']
+        )
+
+    def get_redirect_uri(self, token, request):
+        return request.redirect_uri

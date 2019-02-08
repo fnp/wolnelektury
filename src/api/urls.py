@@ -5,7 +5,7 @@
 from django.conf.urls import url, include
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
-from piston.authentication import oauth_access_token, oauth_request_token
+from piston.authentication import oauth_access_token
 import catalogue.views
 from api import handlers
 from api.piston_patch import oauth_user_auth

@@ -2,7 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.http import Http404, HttpResponse
+from django.http import Http404
 from oauthlib.common import urlencode
 from oauthlib.oauth1 import RequestTokenEndpoint
 from piston.models import KEY_SIZE, SECRET_SIZE
@@ -15,6 +15,7 @@ from catalogue.models import Book
 from .models import BookUserData
 from . import serializers
 from .request_validator import PistonRequestValidator
+from .utils import oauthlib_request, oauthlib_response
 
 
 class OAuth1RequestTokenEndpoint(RequestTokenEndpoint):
@@ -36,20 +37,13 @@ class OAuth1RequestTokenEndpoint(RequestTokenEndpoint):
 class OAuth1RequestTokenView(APIView):
     def __init__(self):
         self.endpoint = OAuth1RequestTokenEndpoint(PistonRequestValidator())
-    def dispatch(self, request):
-        headers, body, status = self.endpoint.create_request_token_response(
-            request.build_absolute_uri(),
-            request.method,
-            request.body,
-            {
-                "Authorization": request.META['HTTP_AUTHORIZATION']
-            } if 'HTTP_AUTHORIZATION' in request.META else None
-        )
 
-        response = HttpResponse(body, status=status)
-        for k, v in headers.items():
-            response[k] = v
-        return response
+    def dispatch(self, request):
+        return oauthlib_response(
+            self.endpoint.create_request_token_response(
+                **oauthlib_request(request)
+            )
+        )
 
 
 class UserView(RetrieveAPIView):

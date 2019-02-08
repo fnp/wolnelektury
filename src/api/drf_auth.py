@@ -5,6 +5,7 @@
 from oauthlib.oauth1 import ResourceEndpoint
 from rest_framework.authentication import BaseAuthentication
 from .request_validator import PistonRequestValidator
+from .utils import oauthlib_request
 
 
 class PistonOAuthAuthentication(BaseAuthentication):
@@ -17,13 +18,7 @@ class PistonOAuthAuthentication(BaseAuthentication):
 
     def authenticate(self, request):
         v, r = self.provider.validate_protected_resource_request(
-            request.build_absolute_uri(),
-            http_method=request.method,
-            body=request.body,
-            headers={
-                "Authorization": request.META['HTTP_AUTHORIZATION'],
-                "Content-Type": request.content_type,
-            } if 'HTTP_AUTHORIZATION' in request.META else None
+            **oauthlib_request(request)
         )
         if v:
             return r.token.user, r.token
