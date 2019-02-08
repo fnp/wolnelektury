@@ -35,6 +35,7 @@
       {% block bodycontent %}
 
         {% block annoy %}
+          {% include "annoy.html" %}
           {% if not funding_no_show_current %}
             {% cache 120 funding_top_bar LANGUAGE_CODE %}
               {% funding_top_bar %}
