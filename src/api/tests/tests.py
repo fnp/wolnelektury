@@ -45,7 +45,7 @@ class ApiTest(TestCase):
         with open(filename) as f:
             good_content = f.read().rstrip()
         self.assertEqual(content, good_content, content)
-    
+
     def assert_json_response(self, url, name):
         data = self.load_json(url)
         filename = path.join(path.dirname(__file__), 'res', 'responses', name)

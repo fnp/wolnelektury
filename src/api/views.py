@@ -3,8 +3,9 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.http import Http404
+from django.views.generic.base import View
 from oauthlib.common import urlencode
-from oauthlib.oauth1 import RequestTokenEndpoint
+from oauthlib.oauth1 import RequestTokenEndpoint, AccessTokenEndpoint
 from piston.models import KEY_SIZE, SECRET_SIZE
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -34,13 +35,44 @@ class OAuth1RequestTokenEndpoint(RequestTokenEndpoint):
         return urlencode(token.items())
 
 
-class OAuth1RequestTokenView(APIView):
+class OAuth1RequestTokenView(View):
     def __init__(self):
         self.endpoint = OAuth1RequestTokenEndpoint(PistonRequestValidator())
 
     def dispatch(self, request):
         return oauthlib_response(
             self.endpoint.create_request_token_response(
+                **oauthlib_request(request)
+            )
+        )
+
+
+class OAuth1AccessTokenEndpoint(AccessTokenEndpoint):
+    def _create_request(self, *args, **kwargs):
+        r = super(OAuth1AccessTokenEndpoint, self)._create_request(*args, **kwargs)
+        r.verifier = 'x' * 20
+        return r
+
+    def create_access_token(self, request, credentials):
+        request.realms = self.request_validator.get_realms(
+            request.resource_owner_key, request)
+        token = {
+            'oauth_token': self.token_generator()[:KEY_SIZE],
+            'oauth_token_secret': self.token_generator()[:SECRET_SIZE],
+            'oauth_authorized_realms': ' '.join(request.realms)
+        }
+        token.update(credentials)
+        self.request_validator.save_access_token(token, request)
+        return urlencode(token.items())
+
+
+class OAuth1AccessTokenView(View):
+    def __init__(self):
+        self.endpoint = OAuth1AccessTokenEndpoint(PistonRequestValidator())
+
+    def dispatch(self, request):
+        return oauthlib_response(
+            self.endpoint.create_access_token_response(
                 **oauthlib_request(request)
             )
         )
