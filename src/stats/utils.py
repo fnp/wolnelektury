@@ -71,7 +71,7 @@ def piwik_track_view(view):
     def wrap(request, *args, **kwargs):
         if getattr(request, 'piwik_track', True):
             track_request.delay(piwik_url(request))
-        return view(self, request, *args, **kwargs)
+        return view(request, *args, **kwargs)
 
     update_wrapper(wrap, view)
     return wrap
