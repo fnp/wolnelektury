@@ -35,12 +35,12 @@
     </p>
 
     <ul>
-        <li><a href='{% url "api_book_list" "" %}'>
+        <li><a href='{% url "catalogue_api_book_list" "" %}'>
           {% url "catalogue_api_book_list" "" %}</a> – {% trans "All books" %}</li>
-        <li><a href='{% url "api_audiobook_list" "" %}'>
-          {% url "api_audiobook_list" "" %}</a> – {% trans "Audiobooks" %}</li>
-        <li><a href='{% url "api_daisy_list" "" %}'>
-          {% url "api_daisy_list" "" %}</a> – {% trans "DAISY" %}</li>
+        <li><a href='{% url "catalogue_api_audiobook_list" "" %}'>
+          {% url "catalogue_api_audiobook_list" "" %}</a> – {% trans "Audiobooks" %}</li>
+        <li><a href='{% url "catalogue_api_daisy_list" "" %}'>
+          {% url "catalogue_api_daisy_list" "" %}</a> – {% trans "DAISY" %}</li>
 
         <li><a href='{% url "catalogue_api_tag_list" "author" %}'>
           {% url "catalogue_api_tag_list" "author" %}</a> – {% trans "List of all authors" %}</li>

@@ -15,7 +15,7 @@ urlpatterns = [
     # books by collections
     url(r'^collections/$',
         piwik_track_view(views.CollectionList.as_view()),
-        name="api_collections"),
+        name="catalogue_api_collections"),
     url(r'^collections/(?P<slug>[^/]+)/$',
         piwik_track_view(views.CollectionDetail.as_view()),
         name="collection-detail"),
