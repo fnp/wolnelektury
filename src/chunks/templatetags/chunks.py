@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import template
 from django.core.cache import cache
+from django.utils.safestring import mark_safe
 from ..models import Chunk, Attachment
 
 
@@ -20,7 +21,7 @@ def chunk(key, cache_time=0):
         n = Chunk(key=key)
         n.save()
         return ''
-    return content
+    return mark_safe(content)
 
 
 @register.simple_tag

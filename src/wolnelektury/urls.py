@@ -67,11 +67,6 @@ urlpatterns += [
 
     url(r'^szukaj/', include('search.urls')),
 
-    # Static files
-    url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], django.views.static.serve,
-        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], django.views.static.serve,
-        {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
@@ -97,3 +92,13 @@ urlpatterns += [
 ]
 
 urlpatterns += migdal_urlpatterns
+
+
+if settings.DEBUG:
+    urlpatterns += [
+        # Static files
+        url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], django.views.static.serve,
+           {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], django.views.static.serve,
+            {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
+    ]

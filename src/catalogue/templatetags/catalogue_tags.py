@@ -11,6 +11,7 @@ from django import template
 from django.template import Node, Variable, Template, Context
 from django.core.urlresolvers import reverse
 from django.utils.cache import add_never_cache_headers
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
 from ssify import ssi_variable
@@ -57,7 +58,7 @@ def simple_title(tags):
 
 @register.simple_tag
 def book_title(book, html_links=False):
-    return book.pretty_title(html_links)
+    return mark_safe(book.pretty_title(html_links))
 
 
 @register.simple_tag
@@ -136,7 +137,7 @@ def book_tree(book_list, books_by_parent):
         ) for book in book_list)
 
     if text:
-        return "<ol>%s</ol>" % text
+        return mark_safe("<ol>%s</ol>" % text)
     else:
         return ''
 
@@ -149,14 +150,14 @@ def audiobook_tree(book_list, books_by_parent):
     ) for book in book_list)
 
     if text:
-        return "<ol>%s</ol>" % text
+        return mark_safe("<ol>%s</ol>" % text)
     else:
         return ''
 
 
 @register.simple_tag
 def book_tree_texml(book_list, books_by_parent, depth=1):
-    return "".join("""
+    return mark_safe("".join("""
             <cmd name='hspace'><parm>%(depth)dem</parm></cmd>%(title)s
             <spec cat='align' /><cmd name="note"><parm>%(audiences)s</parm></cmd>
             <spec cat='align' /><cmd name="note"><parm>%(audiobook)s</parm></cmd>
@@ -168,7 +169,7 @@ def book_tree_texml(book_list, books_by_parent, depth=1):
                 "audiences": ", ".join(book.audiences_pl()),
                 "audiobook": "audiobook" if book.has_media('mp3') else "",
                 "children": book_tree_texml(books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
-            } for book in book_list)
+            } for book in book_list))
 
 
 @register.simple_tag
@@ -181,7 +182,7 @@ def book_tree_csv(author, book_list, books_by_parent, depth=1, max_depth=3, deli
         except ValueError:
             return s
 
-    return "".join("""%(author)s%(d)s%(preindent)s%(title)s%(d)s%(postindent)s%(audiences)s%(d)s%(audiobook)s
+    return mark_safe("".join("""%(author)s%(d)s%(preindent)s%(title)s%(d)s%(postindent)s%(audiences)s%(d)s%(audiobook)s
 %(children)s""" % {
                 "d": delimeter,
                 "preindent": delimeter * (depth - 1),
@@ -192,7 +193,7 @@ def book_tree_csv(author, book_list, books_by_parent, depth=1, max_depth=3, deli
                 "audiences": ", ".join(book.audiences_pl()),
                 "audiobook": "audiobook" if book.has_media('mp3') else "",
                 "children": book_tree_csv(author, books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
-            } for book in book_list)
+            } for book in book_list))
 
 
 @register.simple_tag
@@ -415,7 +416,7 @@ def download_audio(book, daisy=True, mp3=True):
     if daisy and book.has_media('daisy'):
         for dsy in book.get_media('daisy'):
             links.append("<a href='%s'>%s</a>" % (dsy.file.url, BookMedia.formats['daisy'].name))
-    return "".join(links)
+    return mark_safe("".join(links))
 
 
 @register.inclusion_tag("catalogue/snippets/custom_pdf_link_li.html")
