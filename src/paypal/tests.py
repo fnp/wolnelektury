@@ -167,11 +167,15 @@ class PaypalTests(WLTestCase):
         self.client.login(username='test', password='test')
         BillingPlan.objects.create(amount=100)
         response = self.client.get('/paypal/app-return/?token=secret-token')
-        self.assertRedirects(response, 'wolnelekturyapp://paypal_return')
+        self.assertRedirects(
+            response, 'wolnelekturyapp://paypal_return',
+            fetch_redirect_response=False)
 
         # Repeated returns will not generate further agreements.
         response = self.client.get('/paypal/app-return/?token=secret-token')
-        self.assertRedirects(response, 'wolnelekturyapp://paypal_return')
+        self.assertRedirects(
+            response, 'wolnelekturyapp://paypal_return',
+            fetch_redirect_response=False)
         self.assertEqual(BillingAgreement.objects.all().count(), 1)
 
         self.assertTrue(user_is_subscribed(self.user))
@@ -185,7 +189,9 @@ class PaypalTests(WLTestCase):
                 execute=Mock(return_value=Mock(id=None)))):
             self.client.get('/paypal/app-return/?token=secret-token')
             response = self.client.get('/paypal/app-return/?token=secret-token')
-            self.assertRedirects(response, 'wolnelekturyapp://paypal_error')
+            self.assertRedirects(
+                response, 'wolnelekturyapp://paypal_error',
+                fetch_redirect_response=False)
 
         # No agreement created in our DB if not executed successfully.
         self.assertEqual(BillingAgreement.objects.all().count(), 0)
@@ -195,7 +201,9 @@ class PaypalTests(WLTestCase):
                 execute=BillingAgreementMock.execute,
                 find=Mock(side_effect=ResourceNotFound(None)))):
             response = self.client.get('/paypal/app-return/?token=secret-token')
-            self.assertRedirects(response, 'wolnelekturyapp://paypal_return')
+            self.assertRedirects(
+                response, 'wolnelekturyapp://paypal_return',
+                fetch_redirect_response=False)
 
         # Now the agreement exists in our DB, but is not active.
         self.assertEqual([b.active for b in BillingAgreement.objects.all()], [False])

@@ -68,7 +68,6 @@ INSTALLED_APPS_CONTRIB = [
     'django_gravatar',
 
     # allauth stuff
-    'uni_form',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

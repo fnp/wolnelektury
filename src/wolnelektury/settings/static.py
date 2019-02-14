@@ -33,9 +33,6 @@ PIPELINE = {
 
                 'css/annoy.css',
 
-                'uni_form/uni-form.css',
-                'uni_form/default.uni-form.css',
-
                 'css/ui-lightness/jquery-ui-1.8.16.custom.css',
 
                 'css/tlite.css',
@@ -111,8 +108,6 @@ PIPELINE = {
                 'player/openplayer.js',
                 'js/search.js',
                 'funding/funding.js',
-
-                'uni_form/uni-form.js',
 
                 'js/annoy.js',
                 ),

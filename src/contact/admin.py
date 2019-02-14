@@ -5,7 +5,7 @@ import json
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.http import HttpResponse, Http404
 
 from wolnelektury.utils import UnicodeCSVWriter
@@ -104,12 +104,10 @@ class ContactAdmin(admin.ModelAdmin):
         return super(ContactAdmin, self).changelist_view(request, extra_context=context)
 
     def get_urls(self):
-        # urls = super(ContactAdmin, self).get_urls()
-        return patterns(
-            '',
+        return [
             url(r'^extract/(?P<form_tag>[\w-]+)/(?P<extract_type_slug>[\w-]+)/$',
                 self.admin_site.admin_view(extract_view), name='contact_extract')
-        ) + super(ContactAdmin, self).get_urls()
+        ] + super(ContactAdmin, self).get_urls()
 
 
 def extract_view(request, form_tag, extract_type_slug):

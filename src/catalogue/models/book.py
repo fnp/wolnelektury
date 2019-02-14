@@ -205,12 +205,12 @@ class Book(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return 'catalogue.views.book_detail', [self.slug]
+        return 'book_detail', [self.slug]
 
     @staticmethod
     @permalink
     def create_url(slug):
-        return 'catalogue.views.book_detail', [slug]
+        return 'book_detail', [slug]
 
     def gallery_path(self):
         return gallery_path(self.slug)

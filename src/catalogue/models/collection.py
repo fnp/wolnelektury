@@ -40,7 +40,6 @@ class Collection(models.Model):
     def get_query(self):
         slugs = self.book_slugs.split()
         # allow URIs
-        # WTF
         slugs = [slug.rstrip('/').rsplit('/', 1)[-1] if '/' in slug else slug for slug in slugs]
         return models.Q(slug__in=slugs)
 

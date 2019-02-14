@@ -9,7 +9,6 @@ from sorl.thumbnail import ImageField
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
-from django.utils.datastructures import SortedDict
 from slugify import slugify
 from ssify import flush_ssi_includes
 
@@ -325,33 +324,6 @@ class Picture(models.Model):
         )
         annotated.paste(annotation.resize((img.size[0], 40), Image.ANTIALIAS), (0, img.size[1]))
         return annotated
-
-    # WTF/unused
-    @classmethod
-    def picture_list(cls, filter=None):
-        """Generates a hierarchical listing of all pictures
-        Pictures are optionally filtered with a test function.
-        """
-
-        pics = cls.objects.all().order_by('sort_key').only('title', 'slug', 'image_file')
-
-        if filter:
-            pics = pics.filter(filter).distinct()
-
-        pics_by_author = SortedDict()
-        orphans = []
-        for tag in catalogue.models.Tag.objects.filter(category='author'):
-            pics_by_author[tag] = []
-
-        for pic in pics.iterator():
-            authors = list(pic.authors().only('pk'))
-            if authors:
-                for author in authors:
-                    pics_by_author[author].append(pic)
-            else:
-                orphans.append(pic)
-
-        return pics_by_author, orphans
 
     @property
     def info(self):

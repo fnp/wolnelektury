@@ -68,7 +68,7 @@
                 </span>
                 <div id="lang-menu-items">
                   {% for lang in LANGUAGES %}
-                    <form action="{% url 'django.views.i18n.set_language' %}" method="post">
+                    <form action="{% url 'set_language' %}" method="post">
                       {% ssi_csrf_token %}
                       <input type="hidden" name="language" value="{{ lang.0 }}"/>
                       <button type="submit" lang="{{ lang.0 }}"

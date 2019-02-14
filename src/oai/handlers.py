@@ -56,7 +56,6 @@ def nsdcterms(name):
     return '{%s}%s' % (NS_DCTERMS, name)
 
 
-# WTF
 class Catalogue(common.ResumptionOAIPMH):
     TAG_CATEGORIES = ['author', 'epoch', 'kind', 'genre']
 

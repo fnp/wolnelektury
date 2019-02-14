@@ -10,23 +10,6 @@ from picture.models import Picture, PictureArea
 from catalogue.utils import split_tags
 from ssify import ssi_included
 from sponsors.models import Sponsor
-
-
-# WTF/unused
-# # was picture/picture_list.html list (without thumbs)
-# def picture_list(request, filter=None, get_filter=None, template_name='catalogue/picture_list.html',
-#                  cache_key=None, context=None):
-#     """ generates a listing of all books, optionally filtered with a test function """
-#
-#     if get_filter:
-#         filt = get_filter()
-#     pictures_by_author, orphans = Picture.picture_list(filt)
-#     books_nav = OrderedDict()
-#     for tag in pictures_by_author:
-#         if pictures_by_author[tag]:
-#             books_nav.setdefault(tag.sort_key[0], []).append(tag)
-#
-#     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
 from wolnelektury.utils import ajax
 
 
@@ -44,10 +27,6 @@ def picture_detail(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
 
     theme_things = split_tags(picture.related_themes())
-
-    # categories = SortedDict()
-    # for tag in picture.tags.iterator():
-    #     categories.setdefault(tag.category, []).append(tag)
 
     return render_to_response("picture/picture_detail.html", {
         'picture': picture,

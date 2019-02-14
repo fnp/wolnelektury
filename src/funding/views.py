@@ -88,7 +88,9 @@ class OfferDetailView(FormView):
                     raise Http404
         return super(OfferDetailView, self).dispatch(request, slug)
 
-    def get_form(self, form_class):
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
         if self.request.method == 'POST':
             return form_class(self.object, self.request.POST)
         else:

@@ -52,7 +52,6 @@ def book_list(request, filters=None, template_name='catalogue/book_list.html',
     for tag in books_by_author:
         if books_by_author[tag]:
             books_nav.setdefault(tag.sort_key[0], []).append(tag)
-    # WTF: dlaczego nie include?
     return render_to_response(template_name, {
         'rendered_nav': render_to_string(nav_template_name, {'books_nav': books_nav}),
         'rendered_book_list': render_to_string(list_template_name, {
