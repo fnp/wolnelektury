@@ -50,7 +50,7 @@ INSTALLED_APPS_CONTRIB = [
     'rest_framework',
     'fnp_django_pagination',
     'pipeline',
-    'piston',
+    'api.piston',
     'piwik',
     'sorl.thumbnail',
     'kombu.transport.django',

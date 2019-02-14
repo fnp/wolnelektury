@@ -2,7 +2,5 @@
 
 django-debug-toolbar<1.10
 django-debug-toolbar-template-timings
-Fabric
 sphinx
 pyinotify
-fnpdeploy>=0.2.3

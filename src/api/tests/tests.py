@@ -17,7 +17,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.test.utils import override_settings
 from mock import patch
-from piston.models import Consumer, Token
+from api.piston.models import Consumer, Token
 
 from catalogue.models import Book, Tag
 from picture.forms import PictureImportForm

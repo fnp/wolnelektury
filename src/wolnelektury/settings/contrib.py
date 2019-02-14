@@ -15,7 +15,6 @@ MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'pl'
 
 MIGRATION_MODULES = {
     'getpaid': 'wolnelektury.migrations.getpaid',
-    'piston': 'wolnelektury.migrations.piston',
 }
 
 GETPAID_ORDER_DESCRIPTION = "{% load funding_tags %}{{ order|sanitize_payment_title }}"

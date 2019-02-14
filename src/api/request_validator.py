@@ -4,7 +4,7 @@
 #
 import time
 from oauthlib.oauth1 import RequestValidator
-from piston.models import Consumer, Nonce, Token
+from api.piston.models import Consumer, Nonce, Token
 
 
 class PistonRequestValidator(RequestValidator):

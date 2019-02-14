@@ -7,7 +7,6 @@ django-pipeline>=1.6,<1.7
 jsmin
 fnp-django-pagination
 django-maintenancemode==0.10
-django-piston==0.2.2.1.2
 jsonfield>=1.0.3,<1.1
 django-picklefield>=1.0,<1.1
 django-modeltranslation>=0.10,<0.11
