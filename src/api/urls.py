@@ -33,7 +33,7 @@ urlpatterns = [
         piwik_track_view(views.UserView.as_view()),
         name='api_username'),
 
-    url(r'^blog/$',
+    url(r'^blog$',
         piwik_track_view(views.BlogView.as_view())),
 
     url(r'^pictures/', include('picture.api.urls')),
