@@ -44,6 +44,10 @@ MIGDAL_TYPES = (
     EntryType('event', _('events'), commentable=False),
 )
 
+MIGDAL_OPTIONAL_LANGUAGES = (
+    ('en', u'English'),
+)
+
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (
         'rest_framework.renderers.JSONRenderer',

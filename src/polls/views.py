@@ -3,8 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404, redirect, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators import cache
 from django.views.decorators.http import require_http_methods
 
@@ -30,7 +29,7 @@ def poll(request, slug):
                     poll_item.vote(request.session)
         return redirect(redirect_to)
     elif request.method == 'GET':
-        context = RequestContext(request)
+        context = {}
         context['poll'] = poll
         context['voted_already'] = poll.voted(request.session)
-        return render_to_response('polls/poll.html', context)
+        return render(request, 'polls/poll.html', context)

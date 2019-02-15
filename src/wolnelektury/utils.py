@@ -15,7 +15,6 @@ from inspect import getargspec
 import re
 from django.core.mail import send_mail
 from django.http import HttpResponse
-from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.conf import settings
@@ -101,7 +100,7 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
                 try:
                     res = fun(request, **kwargs)
                     if res and template:
-                        res = {'html': render_to_string(template, res, RequestContext(request))}
+                        res = {'html': render_to_string(template, res, request=request)}
                 except AjaxError as e:
                     res = {'result': e.args[0]}
             if 'result' not in res:

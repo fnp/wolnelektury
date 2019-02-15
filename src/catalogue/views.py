@@ -7,9 +7,8 @@ import random
 
 from django.conf import settings
 from django.http.response import HttpResponseForbidden
-from django.template import RequestContext
 from django.template.loader import render_to_string
-from django.shortcuts import render_to_response, get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from django.db.models import Q, QuerySet
@@ -52,14 +51,14 @@ def book_list(request, filters=None, template_name='catalogue/book_list.html',
     for tag in books_by_author:
         if books_by_author[tag]:
             books_nav.setdefault(tag.sort_key[0], []).append(tag)
-    return render_to_response(template_name, {
+    return render(request, template_name, {
         'rendered_nav': render_to_string(nav_template_name, {'books_nav': books_nav}),
         'rendered_book_list': render_to_string(list_template_name, {
             'books_by_author': books_by_author,
             'orphans': orphans,
             'books_by_parent': books_by_parent,
         })
-    }, context_instance=RequestContext(request))
+    })
 
 
 def daisy_list(request):
@@ -80,9 +79,9 @@ def differentiate_tags(request, tags, ambiguous_slugs):
             'url_args': '/'.join((beginning, tag.url_chunk, unparsed)).strip('/'),
             'tags': [tag]
         })
-    return render_to_response(
-        'catalogue/differentiate_tags.html', {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]},
-        context_instance=RequestContext(request))
+    return render(
+        request,
+        'catalogue/differentiate_tags.html', {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]})
 
 
 def object_list(request, objects, fragments=None, related_tags=None, tags=None, list_type='books', extra=None):
@@ -133,9 +132,10 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
     }
     if extra:
         result.update(extra)
-    return render_to_response(
+    return render(
+        request,
         'catalogue/tagged_object_list.html', result,
-        context_instance=RequestContext(request))
+    )
 
 
 def literature(request):
@@ -258,12 +258,15 @@ def book_fragments(request, slug, theme_slug):
     fragments = Fragment.tagged.with_all([theme]).filter(
         Q(book=book) | Q(book__ancestor=book))
 
-    return render_to_response('catalogue/book_fragments.html', {
-        'book': book,
-        'theme': theme,
-        'fragments': fragments,
-        'active_menu_item': 'books',
-    }, context_instance=RequestContext(request))
+    return render(
+        request,
+        'catalogue/book_fragments.html',
+        {
+            'book': book,
+            'theme': theme,
+            'fragments': fragments,
+            'active_menu_item': 'books',
+        })
 
 
 def book_detail(request, slug):
@@ -272,11 +275,14 @@ def book_detail(request, slug):
     except Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, slug)
 
-    return render_to_response('catalogue/book_detail.html', {
-        'book': book,
-        'book_children': book.children.all().order_by('parent_number', 'sort_key'),
-        'active_menu_item': 'books',
-    }, context_instance=RequestContext(request))
+    return render(
+        request,
+        'catalogue/book_detail.html',
+        {
+            'book': book,
+            'book_children': book.children.all().order_by('parent_number', 'sort_key'),
+            'active_menu_item': 'books',
+        })
 
 
 # używane w publicznym interfejsie
@@ -287,12 +293,15 @@ def player(request, slug):
 
     audiobooks, projects = book.get_audiobooks()
 
-    return render_to_response('catalogue/player.html', {
-        'book': book,
-        'audiobook': '',
-        'audiobooks': audiobooks,
-        'projects': projects,
-    }, context_instance=RequestContext(request))
+    return render(
+        request,
+        'catalogue/player.html',
+        {
+            'book': book,
+            'audiobook': '',
+            'audiobooks': audiobooks,
+            'projects': projects,
+        })
 
 
 def book_text(request, slug):
@@ -303,7 +312,7 @@ def book_text(request, slug):
 
     if not book.has_html_file():
         raise Http404
-    return render_to_response('catalogue/book_text.html', {'book': book}, context_instance=RequestContext(request))
+    return render(request, 'catalogue/book_text.html', {'book': book})
 
 
 # =========
@@ -338,7 +347,7 @@ def book_info(request, book_id, lang='pl'):
     book = get_object_or_404(Book, id=book_id)
     # set language by hand
     translation.activate(lang)
-    return render_to_response('catalogue/book_info.html', {'book': book}, context_instance=RequestContext(request))
+    return render(request, 'catalogue/book_info.html', {'book': book})
 
 
 def tag_info(request, tag_id):

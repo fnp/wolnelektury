@@ -4,8 +4,7 @@
 #
 from django.conf import settings
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.views.decorators import cache
 from django.http import HttpResponse, JsonResponse
 
@@ -108,12 +107,13 @@ def hint(request):
 def main(request):
     query = request.GET.get('q', '')
     if len(query) < 2:
-        return render_to_response(
-            'catalogue/search_too_short.html', {'prefix': query},
-            context_instance=RequestContext(request))
+        return render(
+            request, 'catalogue/search_too_short.html',
+            {'prefix': query})
     elif len(query) > 256:
-        return render_to_response(
-            'catalogue/search_too_long.html', {'prefix': query}, context_instance=RequestContext(request))
+        return render(
+            request, 'catalogue/search_too_long.html',
+            {'prefix': query})
 
     query = prepare_query(query)
     pd_authors = search_pd_authors(query)
@@ -123,27 +123,26 @@ def main(request):
 
     if not (books or pictures or pd_authors):
         form = PublishingSuggestForm(initial={"books": query + ", "})
-        return render_to_response(
+        return render(
+            request,
             'catalogue/search_no_hits.html',
             {
                 'form': form,
                 'did_you_mean': suggestion
-            },
-            context_instance=RequestContext(request))
+            })
 
     if not (books or pictures) and len(pd_authors) == 1:
         return HttpResponseRedirect(pd_authors[0].get_absolute_url())
 
-    return render_to_response(
+    return render(
+        request,
         'catalogue/search_multiple_hits.html',
         {
             'pd_authors': pd_authors,
             'books': books,
             'pictures': pictures,
             'did_you_mean': suggestion
-        },
-        context_instance=RequestContext(request))
-
+        })
 
 def search_books(query):
     search = Search()

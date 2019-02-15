@@ -230,7 +230,7 @@ class BooksTests(ApiTest):
 
 class BlogTests(ApiTest):
     def test_get(self):
-        self.assertEqual(self.load_json('/api/blog/'), [])
+        self.assertEqual(self.load_json('/api/blog'), [])
 
 
 class PreviewTests(ApiTest):

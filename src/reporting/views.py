@@ -7,8 +7,7 @@ from datetime import date
 from django.conf import settings
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Count
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
 from catalogue.models import Book, BookMedia
 from reporting.utils import render_to_pdf, render_to_csv, generated_file_view
@@ -30,10 +29,10 @@ def stats_page(request):
         (b.extra_info.get('license'), b.extra_info.get('license_description'))
         for b in Book.objects.all().iterator() if b.extra_info.get('license'))
 
-    return render_to_response('reporting/main.html', {
+    return render(request, 'reporting/main.html', {
         'media_types': media_types,
         'licenses': licenses,
-    }, context_instance=RequestContext(request))
+    })
 
 
 @generated_file_view('reports/katalog.pdf', 'application/pdf',

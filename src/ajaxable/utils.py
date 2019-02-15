@@ -5,8 +5,7 @@
 from functools import wraps
 
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.utils.encoding import force_unicode
 from django.utils.functional import Promise
 from django.utils.http import urlquote_plus
@@ -153,7 +152,7 @@ class AjaxableFormView(object):
                 "view_kwargs": kwargs,
             }
         context.update(self.extra_context(request, obj))
-        return render_to_response(template, context, context_instance=RequestContext(request))
+        return render(request, template, context)
 
     def validate_object(self, obj, request):
         return None

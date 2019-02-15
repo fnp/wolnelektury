@@ -4,8 +4,7 @@
 #
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required
-from django.shortcuts import render_to_response, get_object_or_404, render
-from django.template import RequestContext
+from django.shortcuts import render, get_object_or_404, render
 from picture.models import Picture, PictureArea
 from catalogue.utils import split_tags
 from ssify import ssi_included
@@ -20,7 +19,7 @@ def picture_list_thumb(request, filter=None, get_filter=None, template_name='pic
         pictures = pictures.filter(filter)
     if get_filter:
         pictures = pictures.filter(get_filter())
-    return render_to_response(template_name, {'book_list': list(pictures)}, context_instance=RequestContext(request))
+    return render(request, template_name, {'book_list': list(pictures)})
 
 
 def picture_detail(request, slug):
@@ -28,12 +27,12 @@ def picture_detail(request, slug):
 
     theme_things = split_tags(picture.related_themes())
 
-    return render_to_response("picture/picture_detail.html", {
+    return render(request, "picture/picture_detail.html", {
         'picture': picture,
         'themes': theme_things.get('theme', []),
         'things': theme_things.get('thing', []),
         'active_menu_item': 'gallery',
-    }, context_instance=RequestContext(request))
+    })
 
 
 def picture_viewer(request, slug):
@@ -43,10 +42,10 @@ def picture_viewer(request, slug):
         have_sponsors = Sponsor.objects.filter(name=sponsor)
         if have_sponsors.exists():
             sponsors.append(have_sponsors[0])
-    return render_to_response("picture/picture_viewer.html", {
+    return render(request, "picture/picture_viewer.html", {
         'picture': picture,
         'sponsors': sponsors,
-    }, context_instance=RequestContext(request))
+    })
 
 
 @ajax(method='get')
