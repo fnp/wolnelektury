@@ -104,7 +104,7 @@ class OPDSFeed(Atom1Feed):
         handler.addQuickElement(u"title", item['title'])
 
         # add a OPDS Navigation link if there's no enclosure
-        if item['enclosure'] is None:
+        if not item.get('enclosures') is None:
             handler.addQuickElement(
                 u"link", u"", {u"href": item['link'], u"rel": u"subsection", u"type": u"application/atom+xml"})
             # add a "green book" icon
@@ -144,14 +144,14 @@ class OPDSFeed(Atom1Feed):
             handler.addQuickElement(u"summary", item['description'], {u"type": u"text"})
 
         # Enclosure as OPDS Acquisition Link
-        if item['enclosure'] is not None:
+        for enc in item.get('enclosures', []):
             handler.addQuickElement(
                 u"link", '',
                 {
                     u"rel": u"http://opds-spec.org/acquisition",
-                    u"href": item['enclosure'].url,
-                    u"length": item['enclosure'].length,
-                    u"type": item['enclosure'].mime_type,
+                    u"href": enc.url,
+                    u"length": enc.length,
+                    u"type": enc.mime_type,
                 })
             # add a "red book" icon
             handler.addQuickElement(
