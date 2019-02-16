@@ -1,16 +1,16 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django>=1.10,<1.11
+Django==1.11.20
 fnpdjango==0.3
-django-pipeline==1.6.10
+django-pipeline==1.6.13
 jsmin
 fnp-django-pagination==2.2.2
 django-maintenancemode==0.10
 jsonfield==2.0.2
 django-picklefield>=1.0,<1.1
-django-modeltranslation==0.12
-django-allauth>=0.32,<0.33
+django-modeltranslation==0.12.1
+django-allauth==0.38.0
 django-extensions==1.7.8
 djangorestframework<3.7
 djangorestframework-xml
@@ -20,7 +20,7 @@ oauthlib>=3.0.1,<3.1
 pyyaml
 
 polib
-django-babel==0.6.0
+django-babel==0.6.1
 
 pytz
 

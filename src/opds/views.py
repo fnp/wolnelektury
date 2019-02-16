@@ -79,13 +79,13 @@ class OPDSFeed(Atom1Feed):
     _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")), str)()
     try:
         _book_parent_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book-parent.png")))
-    except IOError:
+    except OSError:
         _book_parent_img_size = ''
 
     _book_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book.png")), str)()
     try:
         _book_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book.png")))
-    except IOError:
+    except OSError:
         _book_img_size = ''
 
     def add_root_elements(self, handler):

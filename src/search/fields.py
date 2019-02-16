@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import forms
-from django.forms.widgets import flatatt
+from django.forms.utils import flatatt
 from django.utils.encoding import smart_unicode
 from django.utils.safestring import mark_safe
 from json import dumps
@@ -18,7 +18,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         return u'$(\'#%s\').autocomplete(%s).result(autocomplete_result_handler);' % (field_id, options)
 
     def render(self, name, value=None, attrs=None):
-        final_attrs = self.build_attrs(attrs, name=name)
+        final_attrs = self.build_attrs(self.attrs, attrs)
         if value:
             final_attrs['value'] = smart_unicode(value)
 

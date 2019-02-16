@@ -182,6 +182,7 @@ PIPELINE = {
 }
 
 STATICFILES_STORAGE = 'fnpdjango.pipeline_storage.GzipPipelineCachedStorage'
+#STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
 # PIPELINE_PYSCSS_ARGUMENTS = ''
@@ -190,5 +191,6 @@ STATICFILES_STORAGE = 'fnpdjango.pipeline_storage.GzipPipelineCachedStorage'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.CachedFileFinder',
     'pipeline.finders.PipelineFinder',
 ]
