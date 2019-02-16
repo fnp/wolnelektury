@@ -14,7 +14,7 @@ from django.db.models.query import Prefetch
 from django.dispatch import Signal
 from django.utils.translation import ugettext_lazy as _
 
-from newtagging.models import TagBase
+from newtagging.models import TagManager, TaggedItemManager
 from ssify import flush_ssi_includes
 
 
@@ -37,6 +37,8 @@ class TagRelation(models.Model):
     object_id = models.PositiveIntegerField(_('object id'), db_index=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
+    objects = TaggedItemManager()
+
     class Meta:
         db_table = 'catalogue_tag_relation'
         unique_together = (('tag', 'content_type', 'object_id'),)
@@ -48,7 +50,7 @@ class TagRelation(models.Model):
             return u'<deleted> [%s]' % self.tag
 
 
-class Tag(TagBase):
+class Tag(models.Model):
     """A tag attachable to books and fragments (and possibly anything).
 
     Used to represent searchable metadata (authors, epochs, genres, kinds),
@@ -74,6 +76,7 @@ class Tag(TagBase):
     after_change = Signal(providing_args=['instance', 'languages'])
 
     intermediary_table_model = TagRelation
+    objects = TagManager()
 
     class UrlDeprecationWarning(DeprecationWarning):
         def __init__(self, tags=None):
@@ -178,13 +181,6 @@ class Tag(TagBase):
     def get_absolute_gallery_url(self):
         return 'tagged_object_list_gallery', [self.url_chunk]
 
-    @classmethod
-    @permalink
-    def create_url(cls, category, slug):
-        return ('catalogue.views.tagged_object_list', [
-            '/'.join((cls.categories_dict[category], slug))
-        ])
-
     def has_description(self):
         return len(self.description) > 0
     has_description.short_description = _('description')
@@ -192,41 +188,38 @@ class Tag(TagBase):
 
     @staticmethod
     def get_tag_list(tag_str):
-        if isinstance(tag_str, basestring):
-            if not tag_str:
-                return []
-            tags = []
-            ambiguous_slugs = []
-            category = None
-            deprecated = False
-            tags_splitted = tag_str.split('/')
-            for name in tags_splitted:
-                if category:
-                    tags.append(Tag.objects.get(slug=name, category=category))
-                    category = None
-                elif name in Tag.categories_rev:
-                    category = Tag.categories_rev[name]
-                else:
-                    try:
-                        tags.append(Tag.objects.get(slug=name))
-                        deprecated = True
-                    except Tag.MultipleObjectsReturned:
-                        ambiguous_slugs.append(name)
-
+        if not tag_str:
+            return []
+        tags = []
+        ambiguous_slugs = []
+        category = None
+        deprecated = False
+        tags_splitted = tag_str.split('/')
+        for name in tags_splitted:
             if category:
-                # something strange left off
-                raise Tag.DoesNotExist()
-            if ambiguous_slugs:
-                # some tags should be qualified
-                e = Tag.MultipleObjectsReturned()
-                e.tags = tags
-                e.ambiguous_slugs = ambiguous_slugs
-                raise e
-            if deprecated:
-                raise Tag.UrlDeprecationWarning(tags=tags)
-            return tags
-        else:
-            return TagBase.get_tag_list(tag_str)
+                tags.append(Tag.objects.get(slug=name, category=category))
+                category = None
+            elif name in Tag.categories_rev:
+                category = Tag.categories_rev[name]
+            else:
+                try:
+                    tags.append(Tag.objects.get(slug=name))
+                    deprecated = True
+                except Tag.MultipleObjectsReturned:
+                    ambiguous_slugs.append(name)
+
+        if category:
+            # something strange left off
+            raise Tag.DoesNotExist()
+        if ambiguous_slugs:
+            # some tags should be qualified
+            e = Tag.MultipleObjectsReturned()
+            e.tags = tags
+            e.ambiguous_slugs = ambiguous_slugs
+            raise e
+        if deprecated:
+            raise Tag.UrlDeprecationWarning(tags=tags)
+        return tags
 
     @property
     def url_chunk(self):
@@ -273,6 +266,9 @@ class Tag(TagBase):
                     else:
                         meta_tags.append(tag)
         return meta_tags
+
+
+TagRelation.tag_model = Tag
 
 
 def prefetch_relations(objects, category, only_name=True):

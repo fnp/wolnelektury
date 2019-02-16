@@ -13,14 +13,14 @@ class VisitTest(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         author = PersonStub(("Jane",), "Doe")
-        book_info = BookInfoStub(author=author, genre="Genre",
+        book_info = BookInfoStub(author=author, genre="Sielanka",
             epoch='Epoch', kind="Kind", **info_args(u"A book"))
         self.book = models.Book.from_text_and_meta(ContentFile('''
             <utwor>
             <opowiadanie>
                 <akap>
                     <begin id="b1" />
-                    <motyw id="m1">Theme</motyw>
+                    <motyw id="m1">Sielanka</motyw>
                     Test
                     <end id="e1" />
                 </akap>
@@ -40,11 +40,13 @@ class VisitTest(WLTestCase):
                 'nowe/',
                 'lektura/a-book/',
                 'lektura/a-book.html',
-                'lektura/a-book/motyw/theme/',
-                'motyw/theme/',
+                'lektura/a-book/motyw/sielanka/',
+                'motyw/sielanka/',
+                'sielanka/',
                 'autor/jane-doe/',
+                'daisy/',
                 # 'autor/jane-doe/gatunek/genre/',
-                # 'autor/jane-doe/gatunek/genre/motyw/theme/',
+                # 'autor/jane-doe/gatunek/genre/motyw/sielanka/',
                 'b/%d/mini.pl.html' % self.book.pk,
                 'b/%d/mini_nolink.pl.html' % self.book.pk,
                 'b/%d/short.pl.html' % self.book.pk,
@@ -56,7 +58,7 @@ class VisitTest(WLTestCase):
                 'lektury/nonexistent/',  # Nonexistent Collection.
                 'lektura/nonexistent/',  # Nonexistent Book.
                 'lektura/nonexistent.html',  # Nonexistent Book's HTML.
-                'lektura/nonexistent/motyw/theme/',  # Nonexistent Book's theme.
+                'lektura/nonexistent/motyw/sielanka/',  # Nonexistent Book's theme.
                 'lektura/a-book/motyw/nonexistent/',  # Nonexistent theme in a Book.
                 'autor/nonexistent/',  # Nonexistent author.
                 'motyw/nonexistent/',  # Nonexistent theme.

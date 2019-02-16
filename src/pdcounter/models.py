@@ -36,7 +36,7 @@ class Author(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return 'catalogue.views.tagged_object_list', [self.url_chunk]
+        return 'tagged_object_list', [self.url_chunk]
 
     def has_description(self):
         return len(self.description) > 0
@@ -76,7 +76,7 @@ class BookStub(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return 'catalogue.views.book_detail', [self.slug]
+        return 'book_detail', [self.slug]
 
     def in_pd(self):
         return self.pd is not None and self.pd <= datetime.now().year

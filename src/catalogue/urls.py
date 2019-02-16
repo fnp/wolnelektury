@@ -18,7 +18,7 @@ urlpatterns = [
     # pictures - currently pictures are coupled with catalogue, hence the url is here
     url(r'^obraz/$', picture.views.picture_list_thumb, name='picture_list_thumb'),
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, picture.views.picture_viewer, name='picture_viewer'),
-    url(r'^obraz/(?P<slug>%s)/$' % SLUG, picture.views.picture_detail),
+    url(r'^obraz/(?P<slug>%s)/$' % SLUG, picture.views.picture_detail, name='picture_detail'),
 
     url(r'^p/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', picture.views.picture_mini, name='picture_mini'),
     url(r'^p/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', picture.views.picture_short, name='picture_short'),

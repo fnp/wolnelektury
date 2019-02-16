@@ -31,10 +31,13 @@ def get_queryset_and_model(queryset_or_model):
 # Managers #
 ############
 class TagManager(models.Manager):
-    def __init__(self, intermediary_table_model):
+    def __init__(self):
         super(TagManager, self).__init__()
-        self.intermediary_table_model = intermediary_table_model
         models.signals.pre_delete.connect(self.target_deleted)
+
+    @property
+    def intermediary_table_model(self):
+        return self.model.intermediary_table_model
 
     def target_deleted(self, instance, **kwargs):
         """ clear tag relations before deleting an object """
@@ -52,7 +55,7 @@ class TagManager(models.Manager):
         content_type = ContentType.objects.get_for_model(obj)
         current_tags = list(self.filter(items__content_type__pk=content_type.pk,
                                         items__object_id=obj.pk))
-        updated_tags = self.model.get_tag_list(tags)
+        updated_tags = tags
 
         # Remove tags which no longer apply
         tags_for_removal = [tag for tag in current_tags if tag not in updated_tags]
@@ -156,9 +159,9 @@ class TagManager(models.Manager):
 
 
 class TaggedItemManager(models.Manager):
-    def __init__(self, tag_model):
-        super(TaggedItemManager, self).__init__()
-        self.tag_model = tag_model
+    @property
+    def tag_model(self):
+        return self.model.tag_model
 
     def get_by_model(self, queryset_or_model, tags):
         """
@@ -166,7 +169,6 @@ class TaggedItemManager(models.Manager):
         model associated with a given tag or list of tags.
         """
         queryset, model = get_queryset_and_model(queryset_or_model)
-        tags = self.tag_model.get_tag_list(tags)
         if not tags:
             # No existing tags were given
             return queryset.none()
@@ -183,7 +185,6 @@ class TaggedItemManager(models.Manager):
         model associated with *any* of the given list of tags.
         """
         queryset, model = get_queryset_and_model(queryset_or_model)
-        tags = self.tag_model.get_tag_list(tags)
         if not tags:
             return queryset.none()
         # TODO: presumes reverse generic relation
@@ -200,38 +201,3 @@ class TaggedItemManager(models.Manager):
         # Do we know it's 'tags'?
         return queryset.filter(tag_relations__tag__in=obj.tags).annotate(
             count=models.Count('pk')).order_by('-count').exclude(pk=obj.pk)
-
-
-##########
-# Models #
-##########
-
-class TagMeta(ModelBase):
-    """Metaclass for tag models (models inheriting from TagBase)."""
-    def __new__(mcs, name, bases, attrs):
-        model = super(TagMeta, mcs).__new__(mcs, name, bases, attrs)
-        if not model._meta.abstract:
-            # Register custom managers for concrete models
-            TagManager(model.intermediary_table_model).contribute_to_class(model, 'objects')
-            TaggedItemManager(model).contribute_to_class(model.intermediary_table_model, 'objects')
-        return model
-
-
-class TagBase(models.Model):
-    """Abstract class to be inherited by model classes."""
-    __metaclass__ = TagMeta
-
-    class Meta:
-        abstract = True
-
-    @staticmethod
-    def get_tag_list(tag_list):
-        """
-        Utility function for accepting tag input in a flexible manner.
-
-        You should probably override this method in your subclass.
-        """
-        if isinstance(tag_list, TagBase):
-            return [tag_list]
-        else:
-            return tag_list

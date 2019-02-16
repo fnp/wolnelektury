@@ -144,7 +144,7 @@ class Picture(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return 'picture.views.picture_detail', [self.slug]
+        return 'picture_detail', [self.slug]
 
     def get_initial(self):
         try:

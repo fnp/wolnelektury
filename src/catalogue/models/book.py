@@ -207,11 +207,6 @@ class Book(models.Model):
     def get_absolute_url(self):
         return 'book_detail', [self.slug]
 
-    @staticmethod
-    @permalink
-    def create_url(slug):
-        return 'book_detail', [slug]
-
     def gallery_path(self):
         return gallery_path(self.slug)
 
