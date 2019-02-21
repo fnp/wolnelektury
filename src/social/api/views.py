@@ -8,12 +8,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from api.models import BookUserData
+from api.utils import vary_on_auth
 from catalogue.api.helpers import order_books, books_after
 from catalogue.api.serializers import BookSerializer
 from catalogue.models import Book
 from social.utils import likes
 
 
+@vary_on_auth
 class LikeView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -31,6 +33,7 @@ class LikeView(APIView):
         return Response({})
 
 
+@vary_on_auth
 class ShelfView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = BookSerializer

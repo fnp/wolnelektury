@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from paypal.permissions import IsSubscribed
 from api.handlers import read_tags
+from api.utils import vary_on_auth
 from .helpers import books_after, order_books
 from . import serializers
 from catalogue.forms import BookImportForm
@@ -26,12 +27,14 @@ class CollectionList(ListAPIView):
     serializer_class = serializers.CollectionListSerializer
 
 
+@vary_on_auth  # Because of 'liked'.
 class CollectionDetail(RetrieveAPIView):
     queryset = Collection.objects.all()
     lookup_field = 'slug'
     serializer_class = serializers.CollectionSerializer
 
 
+@vary_on_auth  # Because of 'liked'.
 class BookList(ListAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Book.objects.none()  # Required for DjangoModelPermissions
@@ -97,6 +100,7 @@ class BookList(ListAPIView):
             raise Http404
 
 
+@vary_on_auth  # Because of 'liked'.
 class BookDetail(RetrieveAPIView):
     queryset = Book.objects.all()
     lookup_field = 'slug'
@@ -107,11 +111,13 @@ class EbookList(BookList):
     serializer_class = serializers.EbookSerializer
 
 
+@vary_on_auth  # Because of 'liked'.
 class Preview(ListAPIView):
     queryset = Book.objects.filter(preview=True)
     serializer_class = serializers.BookPreviewSerializer
 
 
+@vary_on_auth  # Because of 'liked'.
 class FilterBookList(ListAPIView):
     serializer_class = serializers.FilterBookListSerializer
 
@@ -224,6 +230,7 @@ class TagView(RetrieveAPIView):
         )
 
 
+@vary_on_auth  # Because of 'liked'.
 class FragmentList(ListAPIView):
     serializer_class = serializers.FragmentSerializer
 
@@ -239,6 +246,7 @@ class FragmentList(ListAPIView):
         return Fragment.tagged.with_all(tags).select_related('book')
 
 
+@vary_on_auth  # Because of 'liked'.
 class FragmentView(RetrieveAPIView):
     serializer_class = serializers.FragmentDetailSerializer
 

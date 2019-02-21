@@ -16,7 +16,7 @@ from catalogue.models import Book
 from .models import BookUserData
 from . import serializers
 from .request_validator import PistonRequestValidator
-from .utils import oauthlib_request, oauthlib_response
+from .utils import oauthlib_request, oauthlib_response, vary_on_auth
 
 
 class OAuth1RequestTokenEndpoint(RequestTokenEndpoint):
@@ -35,6 +35,7 @@ class OAuth1RequestTokenEndpoint(RequestTokenEndpoint):
         return urlencode(token.items())
 
 
+# Never Cache
 class OAuth1RequestTokenView(View):
     def __init__(self):
         self.endpoint = OAuth1RequestTokenEndpoint(PistonRequestValidator())
@@ -66,6 +67,7 @@ class OAuth1AccessTokenEndpoint(AccessTokenEndpoint):
         return urlencode(token.items())
 
 
+# Never cache
 class OAuth1AccessTokenView(View):
     def __init__(self):
         self.endpoint = OAuth1AccessTokenEndpoint(PistonRequestValidator())
@@ -78,6 +80,7 @@ class OAuth1AccessTokenView(View):
         )
 
 
+@vary_on_auth
 class UserView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = serializers.UserSerializer
@@ -86,6 +89,7 @@ class UserView(RetrieveAPIView):
         return self.request.user
 
 
+@vary_on_auth
 class BookUserDataView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = serializers.BookUserDataSerializer

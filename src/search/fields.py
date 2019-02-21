@@ -19,6 +19,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
 
     def render(self, name, value=None, attrs=None):
         final_attrs = self.build_attrs(self.attrs, attrs)
+        final_attrs["name"] = name
         if value:
             final_attrs['value'] = smart_unicode(value)
 
