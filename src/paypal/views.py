@@ -9,7 +9,7 @@ from django.http import Http404
 from django.http.response import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 
-from api.piston_patch import HttpResponseAppRedirect
+from api.utils import HttpResponseAppRedirect
 from paypal.forms import PaypalSubscriptionForm
 from paypal.rest import execute_agreement, check_agreement, agreement_approval_url, PaypalError
 from paypal.models import BillingAgreement, BillingPlan

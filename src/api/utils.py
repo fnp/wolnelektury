@@ -2,7 +2,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.utils.encoding import iri_to_uri
 from django.views.decorators.vary import vary_on_headers
@@ -36,3 +36,7 @@ def oauthlib_response((headers, body, status)):
 
 
 vary_on_auth = method_decorator(vary_on_headers('Authorization'), 'dispatch')
+
+
+class HttpResponseAppRedirect(HttpResponseRedirect):
+    allowed_schemes = HttpResponseRedirect.allowed_schemes + ['wolnelekturyapp']

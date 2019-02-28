@@ -12,10 +12,9 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('api', '0004_bookuserdata_last_changed'),
-        ('piston', '0002_auto_20190228_2338'),
     ]
 
-    state_operations = [
+    operations = [
         migrations.CreateModel(
             name='Consumer',
             fields=[
@@ -50,8 +49,4 @@ class Migration(migrations.Migration):
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='tokens', to=settings.AUTH_USER_MODEL)),
             ],
         ),
-    ]
-
-    operations = [
-        migrations.SeparateDatabaseAndState(state_operations=state_operations),
     ]

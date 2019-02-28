@@ -7,13 +7,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 import catalogue.views
 from stats.utils import piwik_track_view
-from api.piston_patch import oauth_user_auth
 from . import views
 
 
 urlpatterns = [
     url(r'^oauth/request_token/$', views.OAuth1RequestTokenView.as_view()),
-    url(r'^oauth/authorize/$', oauth_user_auth, name='oauth_user_auth'),
+    url(r'^oauth/authorize/$', views.oauth_user_auth, name='oauth_user_auth'),
     url(r'^oauth/access_token/$', csrf_exempt(views.OAuth1AccessTokenView.as_view())),
 
     url(r'^$', TemplateView.as_view(template_name='api/main.html'), name='api'),
