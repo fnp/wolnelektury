@@ -14,7 +14,7 @@ from api.utils import vary_on_auth
 from .helpers import books_after, order_books
 from . import serializers
 from catalogue.forms import BookImportForm
-from catalogue.models import Book, Collection, Tag, Fragment
+from catalogue.models import Book, Collection, Tag, Fragment, BookMedia
 from catalogue.models.tag import prefetch_relations
 from wolnelektury.utils import re_escape
 
@@ -90,7 +90,12 @@ class BookList(ListAPIView):
         return books
 
     def post(self, request, **kwargs):
-        # Permission needed.
+        if kwargs.get('audiobooks'):
+            return self.post_audiobook(request, **kwargs)
+        else:
+            return self.post_book(request, **kwargs)
+
+    def post_book(self, request, **kwargs):
         data = json.loads(request.POST.get('data'))
         form = BookImportForm(data)
         if form.is_valid():
@@ -98,6 +103,30 @@ class BookList(ListAPIView):
             return Response({}, status=status.HTTP_201_CREATED)
         else:
             raise Http404
+
+    def post_audiobook(self, request, **kwargs):
+        index = int(request.POST['part_index'])
+        parts_count = int(request.POST['parts_count'])
+        media_type = request.POST['type'].lower()
+        source_sha1 = request.POST.get('source_sha1')
+        name = request.POST.get('name', '')
+        part_name = request.POST.get('part_name', '')
+
+        _rest, slug = request.POST['book'].rstrip('/').rsplit('/', 1)
+        book = Book.objects.get(slug=slug)
+
+        try:
+            assert source_sha1
+            bm = book.media.get(type=media_type, source_sha1=source_sha1)
+        except (AssertionError, BookMedia.DoesNotExist):
+            bm = BookMedia(book=book, type=media_type)
+        bm.name = name
+        bm.part_name = part_name
+        bm.index = index
+        bm.file.save(None, request.data['file'], save=False)
+        bm.save(parts_count=parts_count)
+
+        return Response({}, status=status.HTTP_201_CREATED)
 
 
 @vary_on_auth  # Because of 'liked'.
