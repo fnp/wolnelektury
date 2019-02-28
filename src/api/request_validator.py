@@ -4,7 +4,7 @@
 #
 import time
 from oauthlib.oauth1 import RequestValidator
-from api.piston.models import Consumer, Nonce, Token
+from api.models import Consumer, Nonce, Token
 
 
 class PistonRequestValidator(RequestValidator):
@@ -20,7 +20,7 @@ class PistonRequestValidator(RequestValidator):
     # iOS app generates 8-char nonces.
     nonce_length = 8, 250
 
-    # Because piston.models.Token.key is char(18).
+    # Because Token.key is char(18).
     request_token_length = 18, 32
     access_token_length = 18, 32
     # TODO: oauthlib request-access switch.

@@ -6,7 +6,7 @@ from django.http import Http404
 from django.views.generic.base import View
 from oauthlib.common import urlencode
 from oauthlib.oauth1 import RequestTokenEndpoint, AccessTokenEndpoint
-from api.piston.models import KEY_SIZE, SECRET_SIZE
+from api.models import KEY_SIZE, SECRET_SIZE
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
