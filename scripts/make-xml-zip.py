@@ -3,18 +3,15 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import sys
-sys.path.insert(0, '../apps')
-sys.path.insert(0, '../lib')
-sys.path.insert(0, '../lib/librarian')
-sys.path.insert(0, '..')
-
-from django.core.management import setup_environ
-from wolnelektury import settings
+import os
+import django
 import sys
 import zipfile
 
-setup_environ(settings)
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../src'))
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wolnelektury.settings")
+django.setup()
 
 from catalogue.models import Book
 

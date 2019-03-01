@@ -184,7 +184,7 @@ class BuildHtml(BuildEbook):
             if lang not in [ln[0] for ln in settings.LANGUAGES]:
                 lang = None
 
-            fieldfile.save(None, ContentFile(html_output.get_string()), save=False)
+            fieldfile.save(None, ContentFile(html_output.get_bytes()), save=False)
             self.set_file_permissions(fieldfile)
             type(book).objects.filter(pk=book.pk).update(**{
                 fieldfile.field.attname: fieldfile

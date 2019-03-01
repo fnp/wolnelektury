@@ -2,7 +2,6 @@
 
 
 deploy: src/wolnelektury/localsettings.py
-	git submodule update --init
 	pip install -r requirements/requirements.txt
 	src/manage.py migrate --noinput
 	src/manage.py update_counters

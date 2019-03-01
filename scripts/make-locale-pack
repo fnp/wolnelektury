@@ -4,38 +4,38 @@ ME=$0
 ROOT=$(git rev-parse --show-toplevel)
 DST=`mktemp -d`/wl-lokalizacja
 mkdir -p $DST
-MANAGE=$ROOT/manage.py
+MANAGE=$ROOT/src/manage.py
 
 
 export_po()
 {
-    for appdir in $ROOT/apps/*; do
+    for appdir in $ROOT/src/*/; do
 	app=`basename $appdir`
-	if [ -d $ROOT/apps/$app/locale ]; then
-	for langdir in $ROOT/apps/$app/locale/*; do
+	if [ -d $ROOT/src/$app/locale ]; then
+	for langdir in $ROOT/src/$app/locale/*; do
 	    lang=`basename $langdir`
 	    mkdir -p $DST/$lang
-	    cp -v ${ROOT}/apps/${app}/locale/${lang}/LC_MESSAGES/django.po $DST/${lang}/${app}.po
+	    cp -v ${ROOT}/src/${app}/locale/${lang}/LC_MESSAGES/django.po $DST/${lang}/${app}.po
 	done
 	fi
     done
 
-    for langdir in $ROOT/wolnelektury/locale-contrib/*/; do
-        lang = `basename $langdir`
+    for langdir in $ROOT/src/wolnelektury/locale-contrib/*/; do
+        lang=`basename $langdir`
         mkdir -p "$DST/$lang"
         cp -v "${langdir}LC_MESSAGES/django.po" "${DST}/$lang/contrib.po"
     done
 
-    cp -v ${ROOT}/wolnelektury/static/js/locale.js $DST/locale.js.txt
-    cp -v ${ROOT}/apps/infopages/fixtures/infopages.json $DST/infopages.json
+    cp -v ${ROOT}/src/wolnelektury/static/js/locale.js $DST/locale.js.txt
+    cp -v ${ROOT}/src/infopages/fixtures/infopages.json $DST/infopages.json
 
     ${0}-json.py $DST/infopages.json
 }
 
 
 (
-cd $ROOT/apps
-for i in *; do
+cd $ROOT/src
+for i in */; do
     if [ -e "$i/locale" ]; then
         echo "Generate po for app $i"
         ( cd $i; $MANAGE makemessages --all;
@@ -48,10 +48,10 @@ done
 
 (
     pybabel extract -F "$ROOT/babel.cfg" \
-      -o "$ROOT/wolnelektury/locale-contrib/django.pot" \
+      -o "$ROOT/src/wolnelektury/locale-contrib/django.pot" \
       "`python -c 'import os,allauth; print os.path.dirname(allauth.__file__)'`"
-    pybabel update -D django -i "$ROOT/wolnelektury/locale-contrib/django.pot" \
-      -d "$ROOT/wolnelektury/locale-contrib"
+    pybabel update -D django -i "$ROOT/src/wolnelektury/locale-contrib/django.pot" \
+      -d "$ROOT/src/wolnelektury/locale-contrib"
 )
 
 export_po

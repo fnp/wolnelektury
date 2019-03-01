@@ -1,14 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-import sys
-
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Add apps and lib directories to PYTHONPATH
-sys.path = [
-    os.path.join(ROOT, '../lib/librarian'),
-] + sys.path
-
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wolnelektury.settings")
 

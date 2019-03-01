@@ -2,7 +2,7 @@
 
 ME=$0
 ROOT=$(git rev-parse --show-toplevel)
-MANAGE=$ROOT/manage.py
+MANAGE=$ROOT/src/manage.py
 
 LOCALIZED=$1
 if [ ! -d "$LOCALIZED" ]; then
@@ -18,9 +18,9 @@ load_lang()
 	app=`basename "$pofile" .po`
 	echo $app
 	if [ "$app" = "contrib" ]; then
-	    cp -v "$pofile" "$ROOT/wolnelektury/locale-contrib/$L/LC_MESSAGES/django.po"
+	    cp -v "$pofile" "$ROOT/src/wolnelektury/locale-contrib/$L/LC_MESSAGES/django.po"
 	else
-	    cp -v "$pofile" "$ROOT/apps/$app/locale/$L/LC_MESSAGES/django.po"
+	    cp -v "$pofile" "$ROOT/src/$app/locale/$L/LC_MESSAGES/django.po"
 	fi
     done
 }
@@ -34,16 +34,16 @@ else
     done
 fi
 
-cp -v ${ROOT}/apps/infopages/fixtures/infopages.json "$LOCALIZED/infopages.json"
+cp -v ${ROOT}/src/infopages/fixtures/infopages.json "$LOCALIZED/infopages.json"
 ${0}-json.py "$LOCALIZED/infopages.json" $LNG
 if [ ! "$?" = 0 ]; then
     exit 1;
 fi
-cp -v "$LOCALIZED/infopages.json" ${ROOT}/apps/infopages/fixtures/infopages.json
-cp -v "$LOCALIZED/locale.js.txt" ${ROOT}/wolnelektury/static/js/locale.js
+cp -v "$LOCALIZED/infopages.json" ${ROOT}/src/infopages/fixtures/infopages.json
+cp -v "$LOCALIZED/locale.js.txt" ${ROOT}/src/wolnelektury/static/js/locale.js
 
-for i in $ROOT/apps/*; do 
+for i in $ROOT/src/*/; do
     cd $i;
     env PYTHONPATH=$ROOT ${VIRTUAL_ENV}/bin/django-admin.py compilemessages --settings=wolnelektury.settings
 done
-pybabel compile -D django -d $ROOT/wolnelektury/locale-contrib
+pybabel compile -D django -d $ROOT/src/wolnelektury/locale-contrib

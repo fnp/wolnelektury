@@ -126,7 +126,7 @@ class Continuations(models.Model):
         # count from this book only
         output = StringIO()
         wldoc = book.wldocument(parse_dublincore=False)
-        output = wldoc.as_text(('raw-text',)).get_string()
+        output = wldoc.as_text(('raw-text',)).get_bytes()
         del wldoc
 
         conts = {}

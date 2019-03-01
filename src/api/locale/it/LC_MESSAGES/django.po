@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2019-03-01 09:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:15
+#: models.py:17
 msgid "slug"
 msgstr ""
 
@@ -134,4 +134,21 @@ msgid ""
 "fragment's details, i.e.:\n"
 "        <a href=\"%(f)s\">%(f)s</a>.\n"
 "      "
+msgstr ""
+
+#: templates/oauth/authorize_token.html:4
+#: templates/oauth/authorize_token.html:7
+msgid "Authorize access to Wolne Lektury"
+msgstr "Autorizza accesso a Wolne Lektury"
+
+#: templates/oauth/authorize_token.html:11
+#, python-format
+msgid ""
+"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
+"strong>."
+msgstr "Conferma l'accesso autorizzato a Wolne Lektury come utente <strong>%(user)s</"
+"strong>."
+
+#: templates/oauth/authorize_token.html:17
+msgid "Confirm"
 msgstr ""

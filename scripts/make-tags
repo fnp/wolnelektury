@@ -9,5 +9,5 @@ else
     echo "No Virtual env enabled, will not add it to TAGS"
 fi
 
-find $ROOT/apps/wolnelektury_core/static/css -name '*.css' |xargs etags -a -o ${ROOT}/TAGS
-find $ROOT/apps/wolnelektury_core/static/js -name '*.js' |xargs etags -a -o ${ROOT}/TAGS
+find $ROOT/src/wolnelektury/static/css -name '*.css' |xargs etags -a -o ${ROOT}/TAGS
+find $ROOT/src/wolnelektury/static/js -name '*.js' |xargs etags -a -o ${ROOT}/TAGS
