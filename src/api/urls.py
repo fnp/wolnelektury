@@ -11,7 +11,7 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^oauth/request_token/$', views.OAuth1RequestTokenView.as_view()),
+    url(r'^oauth/request_token/$', csrf_exempt(views.OAuth1RequestTokenView.as_view())),
     url(r'^oauth/authorize/$', views.oauth_user_auth, name='oauth_user_auth'),
     url(r'^oauth/access_token/$', csrf_exempt(views.OAuth1AccessTokenView.as_view())),
 
