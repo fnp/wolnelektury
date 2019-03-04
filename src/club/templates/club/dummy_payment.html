@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+
+
+{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+
+
+{% block body %}
+<div class="white-box normal-text">
+
+	<h1>Testowa płatność</h1>
+
+	<p>	{{ schedule.email }}</p>
+	<p>	{{ schedule.amount }}</p>
+	<p>	{{ schedule.plan.get_interval_display }}</p>
+
+<form method="POST" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type='submit'>Zapłać</button>
+</form>
+
+</div>
+
+{% endblock %}

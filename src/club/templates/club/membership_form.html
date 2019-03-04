@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+
+{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+
+
+{% block body %}
+<div class="white-box normal-text">
+
+	<h1>{% if membership %}Odnów swoje członkostwo w Towarzystwie Wolnych Lektur{% else %}Dołącz do Towarzystwa Wolnych Lektur{% endif %}</h1>
+
+<form method="POST" action="">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+  <button type='submit'>Dołącz</button>
+</form>
+
+</div>
+
+{% endblock %}

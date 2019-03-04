@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-04 11:36+0100\n"
+"PO-Revision-Date: 2019-03-04 11:34+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: models.py:25
+msgid "a month"
+msgstr "miesięcznie"
+
+#: models.py:26
+msgid "a year"
+msgstr "rocznie"
+
+#: models.py:27
+msgid "in perpetuity"
+msgstr "na zawsze"
+
+#: models.py:30
+msgid "inteval"
+msgstr "okres"
+
+#: models.py:31
+msgid "min_amount"
+msgstr "minimalna kwota"
+
+#: models.py:32
+msgid "allow recurring"
+msgstr "płatności cykliczne"
+
+#: models.py:33
+msgid "allow one time"
+msgstr "płatności jednorazowe"
+
+#: models.py:36 models.py:69
+msgid "plan"
+msgstr "plan"
+
+#: models.py:37
+msgid "plans"
+msgstr "plany"
+
+#: models.py:66
+msgid "key"
+msgstr "klucz"
+
+#: models.py:67
+msgid "email"
+msgstr "email"
+
+#: models.py:68 models.py:123
+msgid "membership"
+msgstr "członkostwo"
+
+#: models.py:70
+msgid "amount"
+msgstr "kwota"
+
+#: models.py:71
+msgid "method"
+msgstr "metoda płatności"
+
+#: models.py:72
+msgid "active"
+msgstr "aktywny"
+
+#: models.py:73
+msgid "cancelled"
+msgstr "anulowany"
+
+#: models.py:74
+msgid "started at"
+msgstr "start"
+
+#: models.py:75
+msgid "expires_at"
+msgstr "wygasa"
+
+#: models.py:79 models.py:105
+msgid "schedule"
+msgstr "harmonogram"
+
+#: models.py:80
+msgid "schedules"
+msgstr "harmonogramy"
+
+#: models.py:106 models.py:120
+msgid "created at"
+msgstr "utworzone"
+
+#: models.py:107
+msgid "payed at"
+msgstr "opłacona"
+
+#: models.py:110
+msgid "payment"
+msgstr "płatność"
+
+#: models.py:111
+msgid "payments"
+msgstr "płatności"
+
+#: models.py:119
+msgid "user"
+msgstr "użytkownik"
+
+#: models.py:124
+msgid "memberships"
+msgstr "członkostwa"
+
+#: models.py:131
+msgid "days before"
+msgstr "dni przed"
+
+#: models.py:132
+msgid "subject"
+msgstr "temat"
+
+#: models.py:133
+msgid "body"
+msgstr "treść"
+
+#: models.py:136
+msgid "reminder email"
+msgstr "email z przypomnieniem"
+
+#: models.py:137
+msgid "reminder emails"
+msgstr "emaile z przypomnieniem"
+
+#: models.py:142
+#, python-format
+msgid "a day before expiration"
+msgid_plural "%d days before expiration"
+msgstr[0] "%d dzień przed wygaśnięciem"
+msgstr[1] "%d dni przed wygaśnięciem"
+msgstr[2] "%d dni przed wygaśnięciem"
+msgstr[3] "%d dni przed wygaśnięciem"
+
+#: models.py:144
+#, python-format
+msgid "a day after expiration"
+msgid_plural "%d days after expiration"
+msgstr[0] "%d dzień po wygaśnięciu"
+msgstr[1] "%d dni po wygaśnięciu"
+msgstr[2] "%d dni po wygaśnięciu"
+msgstr[3] "%d dni przed wygaśnięciem"

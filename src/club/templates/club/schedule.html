@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+
+{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+
+
+{% block body %}
+<div class="white-box normal-text">
+
+<h1>Plan płatności</h1>
+
+<div>{{ schedule.email }}</div>
+<div>{{ schedule.amount }}</div>
+<div>{{ schedule.plan.get_interval_display }}</div>
+
+<div>{{ schedule.is_active|yesno:"Aktywne,Nieaktywne" }}</div>
+
+<div>Start: {{ schedule.started_at }}</div>
+<div>Opłacone do: {{ schedule.expires_at|default:"brak" }} {% if schedule.is_cancelled %}(anulowana){% endif %}</div>
+
+{% if schedule.expires_at and not schedule.is_cancelled %}
+<form method='post' action="{% url 'club_cancel' schedule.key %}">
+	{% csrf_token %}
+	<button type="submit">Anuluj płatność</button>
+</form>
+{% endif %}
+
+{% if schedule.is_expired %}
+  Płatność wygasła. <a href="{% url 'club_join' %}">Wykonaj nową płatność</a>.
+{% endif %}
+
+{% if schedule.membership %}
+  <p>
+  Członek/członkini Towarzystwa nr {{ schedule.membership.id }} ({{ schedule.membership.user }}).
+  </p>
+{% else %}
+<p>
+Płatność nie przypisana do członkostwa.<br>
+<a href="{% url 'club_claim' schedule.key %}">Przypisz</a>
+</p>
+{% endif %}
+
+
+
+
+	
+<a href="">
+
+</div>
+
+{% endblock %}
