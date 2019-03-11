@@ -7,7 +7,6 @@ from django.conf import settings
 from django.contrib import admin
 from django.views.generic import RedirectView
 import django.views.static
-from migdal.urls import urlpatterns as migdal_urlpatterns
 import catalogue.views
 import picture.views
 from . import views
@@ -91,8 +90,6 @@ urlpatterns += [
     url(r'^error-test/$', views.exception_test),
     # url(r'^post-test/$', views.post_test),
 ]
-
-urlpatterns += migdal_urlpatterns
 
 
 if settings.DEBUG:

@@ -16,7 +16,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_404
-from migdal.models import Entry
 from catalogue.models import Book
 from .models import BookUserData
 from . import serializers
@@ -169,15 +168,6 @@ class BookUserDataView(RetrieveAPIView):
         return Response(serializer.data)
 
 
-class BlogView(ListAPIView):
-    serializer_class = serializers.BlogSerializer
-
-    def get_queryset(self):
-        after = self.request.query_params.get('after')
-        count = int(self.request.query_params.get('count', 20))
-        entries = Entry.published_objects.filter(in_stream=True).order_by('-first_published_at')
-        if after:
-            entries = entries.filter(first_published_at__lt=after)
-        if count:
-            entries = entries[:count]
-        return entries
+class BlogView(APIView):
+    def get(self, request):
+        return Response([])

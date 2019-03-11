@@ -1,6 +1,5 @@
 localsettings.py
 dev.sqlite
-fabfile_local.py
 *.db
 *.db-journal
 *~

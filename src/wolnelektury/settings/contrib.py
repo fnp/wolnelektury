@@ -2,8 +2,6 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from fnpdjango.utils.text.textilepl import textile_pl
-from migdal import EntryType
 from django.utils.translation import ugettext_lazy as _
 
 HONEYPOT_FIELD_NAME = 'miut'
@@ -32,21 +30,6 @@ PAYPAL_CONFIG = {
     'client_id': '',
     'client_secret': '',
 }
-
-MARKUP_FIELD_TYPES = (
-    ('textile_pl', textile_pl),
-)
-
-MIGDAL_TYPES = (
-    EntryType('news', _('news'), commentable=False, on_main=True, promotable=True),
-    EntryType('publications', _('publications'), commentable=False),
-    EntryType('info', _('info'), commentable=False),
-    EntryType('event', _('events'), commentable=False),
-)
-
-MIGDAL_OPTIONAL_LANGUAGES = (
-    ('en', u'English'),
-)
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (

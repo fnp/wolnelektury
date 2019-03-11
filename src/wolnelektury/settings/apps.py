@@ -62,7 +62,6 @@ INSTALLED_APPS_CONTRIB = [
     'raven.contrib.django.raven_compat',
 
     'club.apps.ClubConfig',
-    'migdal',
     'django_comments',
     'django_comments_xtd',
     'django_gravatar',
