@@ -1,30 +1,32 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from optparse import make_option
-
+import zipfile
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
-import zipfile
-
 from catalogue.models import Book, Tag
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('-t', '--tags', dest='tags', metavar='SLUG,...',
-                    help='Use only books tagged with this tags'),
-        make_option('-i', '--include', dest='include', metavar='SLUG,...',
-                    help='Include specific books by slug'),
-        make_option('-e', '--exclude', dest='exclude', metavar='SLUG,...',
-                    help='Exclude specific books by slug')
-    )
     help = 'Prepare ZIP package with files of given type.'
-    args = '[%s] output_path.zip' % '|'.join(Book.formats)
 
-    def handle(self, ftype, path, **options):
+    def add_arguments(self, parser):
+        parser.add_argument(
+                '-t', '--tags', dest='tags', metavar='SLUG,...',
+                help='Use only books tagged with this tags')
+        parser.add_argument(
+                '-i', '--include', dest='include', metavar='SLUG,...',
+                help='Include specific books by slug')
+        parser.add_argument(
+                '-e', '--exclude', dest='exclude', metavar='SLUG,...',
+                help='Exclude specific books by slug')
+        parser.add_argument('ftype', metavar='|'.join(Book.formats))
+        parser.add_argument('path', metavar='output_path.zip')
+
+    def handle(self, **options):
         self.style = color_style()
+        ftype = options['ftype']
+        path = options['path']
         verbose = int(options.get('verbosity'))
         tags = options.get('tags')
         include = options.get('include')
@@ -33,7 +35,7 @@ class Command(BaseCommand):
         if ftype in Book.formats:
             field = "%s_file" % ftype
         else:
-            print self.style.ERROR('Unknown file type.')
+            print(self.style.ERROR('Unknown file type.'))
             return
 
         books = []
@@ -54,11 +56,11 @@ class Command(BaseCommand):
         processed = skipped = 0
         for book in books:
             if verbose >= 2:
-                print 'Parsing', book.slug
+                print('Parsing', book.slug)
             content = getattr(book, field)
             if not content:
                 if verbose >= 1:
-                    print self.style.NOTICE('%s has no %s file' % (book.slug, ftype))
+                    print(self.style.NOTICE('%s has no %s file' % (book.slug, ftype)))
                 skipped += 1
                 continue
             archive.write(content.path, str('%s.%s' % (book.slug, ftype)))
@@ -67,11 +69,11 @@ class Command(BaseCommand):
 
         if not processed:
             if skipped:
-                print self.style.ERROR("No books with %s files found" % ftype)
+                print(self.style.ERROR("No books with %s files found" % ftype))
             else:
-                print self.style.ERROR("No books found")
+                print(self.style.ERROR("No books found"))
             return
 
         if verbose >= 1:
-            print "%d processed, %d skipped" % (processed, skipped)
-            print "Results written to %s" % path
+            print("%d processed, %d skipped" % (processed, skipped))
+            print("Results written to %s" % path)

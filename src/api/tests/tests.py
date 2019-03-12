@@ -7,16 +7,15 @@ from os import path
 import hashlib
 import hmac
 import json
-from StringIO import StringIO
+from io import BytesIO
 from time import time
-from urllib import quote, urlencode
-from urlparse import parse_qs
+from urllib.parse import quote, urlencode, parse_qs
 
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.test.utils import override_settings
-from mock import patch
+from unittest.mock import patch
 from api.models import Consumer, Token
 
 from catalogue.models import Book, Tag
@@ -40,7 +39,7 @@ class ApiTest(TestCase):
         return data
 
     def assert_response(self, url, name):
-        content = self.client.get(url).content.rstrip()
+        content = self.client.get(url).content.decode('utf-8').rstrip()
         filename = path.join(path.dirname(__file__), 'res', 'responses', name)
         with open(filename) as f:
             good_content = f.read().rstrip()
@@ -112,12 +111,12 @@ class PictureTests(ApiTest):
             'composition8.xml',
             open(path.join(
                 picture.tests.__path__[0], "files", slug + ".xml"
-            )).read())
+            ), 'rb').read())
         img = SimpleUploadedFile(
             'kompozycja-8.png',
             open(path.join(
                 picture.tests.__path__[0], "files", slug + ".png"
-            )).read())
+            ), 'rb').read())
 
         import_form = PictureImportForm({}, {
             'picture_xml_file': xml,
@@ -265,13 +264,15 @@ class OAuth1Tests(ApiTest):
             quote(base_query, safe='')
         ])
         h = hmac.new(
-            quote(self.consumer_secret) + '&', raw, hashlib.sha1
+            (quote(self.consumer_secret) + '&').encode('latin1'),
+            raw.encode('latin1'),
+            hashlib.sha1
         ).digest()
-        h = b64encode(h).rstrip('\n')
+        h = b64encode(h).rstrip(b'\n')
         sign = quote(h)
         query = "{}&oauth_signature={}".format(base_query, sign)
         response = self.client.get('/api/oauth/request_token/?' + query)
-        request_token_data = parse_qs(response.content)
+        request_token_data = parse_qs(response.content.decode('latin1'))
         request_token = request_token_data['oauth_token'][0]
         request_token_secret = request_token_data['oauth_token_secret'][0]
 
@@ -297,16 +298,16 @@ class OAuth1Tests(ApiTest):
             quote(base_query, safe='')
         ])
         h = hmac.new(
-            quote(self.consumer_secret) + '&' +
-            quote(request_token_secret, safe=''),
-            raw,
+            (quote(self.consumer_secret) + '&' +
+             quote(request_token_secret, safe='')).encode('latin1'),
+            raw.encode('latin1'),
             hashlib.sha1
         ).digest()
-        h = b64encode(h).rstrip('\n')
+        h = b64encode(h).rstrip(b'\n')
         sign = quote(h)
         query = u"{}&oauth_signature={}".format(base_query, sign)
         response = self.client.get(u'/api/oauth/access_token/?' + query)
-        access_token_data = parse_qs(response.content)
+        access_token_data = parse_qs(response.content.decode('latin1'))
         access_token = access_token_data['oauth_token'][0]
 
         self.assertTrue(
@@ -333,7 +334,7 @@ class AuthorizedTests(ApiTest):
             consumer=cls.consumer,
             token_type=Token.ACCESS,
             timestamp=time())
-        cls.key = cls.consumer.secret + '&' + cls.token.secret
+        cls.key = (cls.consumer.secret + '&' + cls.token.secret).encode('latin1')
 
     @classmethod
     def tearDownClass(cls):
@@ -365,7 +366,10 @@ class AuthorizedTests(ApiTest):
                 for (k, v) in sorted(sign_params.items())))
         ])
         auth_params["oauth_signature"] = quote(b64encode(hmac.new(
-            self.key, raw, hashlib.sha1).digest()).rstrip('\n'))
+            self.key,
+            raw.encode('latin1'),
+            hashlib.sha1
+        ).digest()).rstrip(b'\n'))
         auth = 'OAuth realm="API", ' + ', '.join(
             '{}="{}"'.format(k, v) for (k, v) in auth_params.items())
 
@@ -447,10 +451,10 @@ class AuthorizedTests(ApiTest):
                 {"username": "test", "premium": True})
         with patch('paypal.permissions.user_is_subscribed', return_value=True):
             with patch('django.core.files.storage.Storage.open',
-                       return_value=StringIO("<epub>")):
+                       return_value=BytesIO(b"<epub>")):
                 self.assertEqual(
                     self.signed('/api/epub/grandchild/').content,
-                    "<epub>")
+                    b"<epub>")
 
     def test_publish(self):
         response = self.signed('/api/books/',

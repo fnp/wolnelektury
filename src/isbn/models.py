@@ -22,7 +22,7 @@ class ISBNPool(models.Model):
     next_suffix = models.IntegerField()
     purpose = models.CharField(max_length=4, choices=PURPOSE_CHOICES)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.prefix
 
     @classmethod

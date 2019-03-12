@@ -15,7 +15,7 @@ from ssify import flush_ssi_includes
 from catalogue.models.tag import prefetched_relations
 from catalogue.utils import split_tags
 from picture import tasks
-from StringIO import StringIO
+from io import BytesIO
 import jsonfield
 import itertools
 import logging
@@ -123,7 +123,7 @@ class Picture(models.Model):
 
         return ret
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def authors(self):
@@ -179,7 +179,7 @@ class Picture(models.Model):
         close_image_file = False
 
         if image_file is not None and not isinstance(image_file, File):
-            image_file = File(open(image_file))
+            image_file = File(open(image_file, 'rb'))
             close_image_file = True
 
         if not isinstance(xml_file, File):
@@ -197,7 +197,7 @@ class Picture(models.Model):
                 raise Picture.AlreadyExists('Picture %s already exists' % picture_xml.slug)
 
             picture.areas.all().delete()
-            picture.title = unicode(picture_xml.picture_info.title)
+            picture.title = str(picture_xml.picture_info.title)
             picture.extra_info = picture_xml.picture_info.to_dict()
 
             picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))
@@ -282,7 +282,7 @@ class Picture(models.Model):
 
             picture.width, picture.height = modified.size
 
-            modified_file = StringIO()
+            modified_file = BytesIO()
             modified.save(modified_file, format='JPEG', quality=95)
             # FIXME: hardcoded extension - detect from DC format or orginal filename
             picture.image_file.save(path.basename(picture_xml.image_path), File(modified_file))
@@ -372,6 +372,6 @@ class Picture(models.Model):
                 index.index_tags()
             if commit:
                 index.index.commit()
-        except Exception, e:
+        except Exception as e:
             index.index.rollback()
             raise e

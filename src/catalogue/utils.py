@@ -18,7 +18,7 @@ from django.conf import settings
 from django.core.files.storage import DefaultStorage
 from django.core.files.uploadedfile import UploadedFile
 from django.http import HttpResponse
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 
 from reporting.utils import read_chunks
 
@@ -27,14 +27,19 @@ if hasattr(random, 'SystemRandom'):
     randrange = random.SystemRandom().randrange
 else:
     randrange = random.randrange
-MAX_SESSION_KEY = 18446744073709551616L     # 2 << 63
+MAX_SESSION_KEY = 18446744073709551616     # 2 << 63
 
 
 def get_random_hash(seed):
-    sha_digest = hashlib.sha1('%s%s%s%s' % (
-        randrange(0, MAX_SESSION_KEY), time.time(), unicode(seed).encode('utf-8', 'replace'), settings.SECRET_KEY)
-    ).digest()
-    return urlsafe_b64encode(sha_digest).replace('=', '').replace('_', '-').lower()
+    sha_digest = hashlib.sha1((
+        '%s%s%s%s' % (
+            randrange(0, MAX_SESSION_KEY),
+            time.time(),
+            str(seed).encode('utf-8', 'replace'),
+            settings.SECRET_KEY
+        )
+    ).encode('utf-8')).digest()
+    return urlsafe_b64encode(sha_digest).decode('latin1').replace('=', '').replace('_', '-').lower()
 
 
 def split_tags(*tag_lists):
@@ -241,7 +246,7 @@ def truncate_html_words(s, num, end_text='...'):
 
     This is just a version of django.utils.text.truncate_html_words with no space before the end_text.
     """
-    s = force_unicode(s)
+    s = force_text(s)
     length = int(num)
     if length <= 0:
         return u''

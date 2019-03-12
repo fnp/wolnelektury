@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import os.path
-from urlparse import urljoin
+from urllib.parse import urljoin
 
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
@@ -78,13 +78,13 @@ class OPDSFeed(Atom1Feed):
 
     _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")), str)()
     try:
-        _book_parent_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book-parent.png")))
+        _book_parent_img_size = str(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book-parent.png")))
     except OSError:
         _book_parent_img_size = ''
 
     _book_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book.png")), str)()
     try:
-        _book_img_size = unicode(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book.png")))
+        _book_img_size = str(os.path.getsize(os.path.join(settings.STATIC_ROOT, "img/book.png")))
     except OSError:
         _book_img_size = ''
 

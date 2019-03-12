@@ -15,8 +15,8 @@ class BookMediaTests(WLTestCase):
 
     def setUp(self):
         WLTestCase.setUp(self)
-        self.file = ContentFile('X')
-        self.file2 = ContentFile('Y')
+        self.file = ContentFile(b'X')
+        self.file2 = ContentFile(b'Y')
         self.book = models.Book.objects.create(slug='test-book', title='Test')
 
     def set_title(self, title):
@@ -50,7 +50,7 @@ class BookMediaTests(WLTestCase):
         bm.file.save(None, self.file)
         bm.file.save(None, self.file2)
 
-        self.assertEqual(bm.file.read(), 'Y')
+        self.assertEqual(bm.file.read(), b'Y')
         self.assertEqual(basename(bm.file.name), 'some-media.ogg')
 
     @skip('broken, but is it needed?')
@@ -67,8 +67,8 @@ class BookMediaTests(WLTestCase):
         bm2.file.save(None, self.file2)
         self.assertEqual(basename(bm.file.name), 'tytul.ogg')
         self.assertNotEqual(basename(bm2.file.name), 'tytul.ogg')
-        self.assertEqual(bm.file.read(), 'X')
-        self.assertEqual(bm2.file.read(), 'Y')
+        self.assertEqual(bm.file.read(), b'X')
+        self.assertEqual(bm2.file.read(), b'Y')
 
     def test_change_name(self):
         """
@@ -81,7 +81,7 @@ class BookMediaTests(WLTestCase):
         self.set_title("Other Title")
         bm.save()
         self.assertEqual(basename(bm.file.name), 'other-title.ogg')
-        self.assertEqual(bm.file.read(), 'X')
+        self.assertEqual(bm.file.read(), b'X')
 
     @skip('broken, but is it needed?')
     def test_change_name_no_clobber(self):
@@ -99,8 +99,8 @@ class BookMediaTests(WLTestCase):
         self.set_title("Title")
         bm2.save()
         self.assertNotEqual(basename(bm2.file.name), 'title.ogg')
-        self.assertEqual(bm.file.read(), 'X')
-        self.assertEqual(bm2.file.read(), 'Y')
+        self.assertEqual(bm.file.read(), b'X')
+        self.assertEqual(bm2.file.read(), b'Y')
 
     def test_zip_audiobooks(self):
         paths = [

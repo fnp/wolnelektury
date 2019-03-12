@@ -17,10 +17,10 @@ def rebuild_extra_info(apps, schema_editor):
         for field in areas_json[u'things'].values():
             field[u'object'] = field[u'object'].capitalize()
         pic.areas_json = areas_json
-        html_text = unicode(render_to_string('picture/picture_info.html', {
+        html_text = render_to_string('picture/picture_info.html', {
                     'things': pic.areas_json['things'],
                     'themes': pic.areas_json['themes'],
-                    }))
+                    })
         pic.html_file.save("%s.html" % pic.slug, ContentFile(html_text))
         pic.save()
 

@@ -52,6 +52,11 @@ class BookList(ListAPIView):
         new_api = self.request.query_params.get('new_api')
         after = self.request.query_params.get('after', self.kwargs.get('after'))
         count = self.request.query_params.get('count', self.kwargs.get('count'))
+        if count:
+            try:
+                count = int(count)
+            except TypeError:
+                raise Http404  # Fixme
 
         if tags:
             if self.kwargs.get('top_level'):

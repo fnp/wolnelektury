@@ -16,7 +16,7 @@ class Catalog(models.Model):
         verbose_name = _('catalog')
         verbose_name_plural = _('catalogs')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     @models.permalink
@@ -37,7 +37,7 @@ class Library(models.Model):
         verbose_name = _('library')
         verbose_name_plural = _('libraries')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     @models.permalink

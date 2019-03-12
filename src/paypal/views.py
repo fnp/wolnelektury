@@ -25,7 +25,7 @@ def paypal_form(request, app=False):
             try:
                 approval_url = agreement_approval_url(amount, app=app)
             except PaypalError as e:
-                return render(request, 'paypal/error_page.html', {'error': e.message})
+                return render(request, 'paypal/error_page.html', {'error': str(e)})
             return HttpResponseRedirect(approval_url)
     else:
         form = PaypalSubscriptionForm()

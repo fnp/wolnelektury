@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-from urllib2 import urlopen
+from urllib.request import urlopen
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _

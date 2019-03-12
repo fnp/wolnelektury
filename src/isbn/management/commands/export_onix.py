@@ -113,7 +113,7 @@ class Command(BaseCommand):
         for record in ONIXRecord.objects.all():
             xml += self.render_product(record)
         xml += FOOTER
-        print xml.encode('utf-8')
+        print(xml.encode('utf-8'))
 
     def render_product(self, record):
         if record.product_form_detail:

@@ -10,8 +10,8 @@ from fnpdjango.utils.text import char_map
 # Punctuation is handled correctly and escaped as needed,
 # with the notable exception of backslash.
 sane_in_payu_title = re.escape(
-    string.uppercase +
-    string.lowercase +
+    string.ascii_uppercase +
+    string.ascii_lowercase +
     u'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ' +
     string.digits +
     ' ' +
@@ -25,4 +25,4 @@ def replace_char(m):
 
 
 def sanitize_payment_title(value):
-    return re.sub('[^%s]' % sane_in_payu_title, replace_char, unicode(value))
+    return re.sub('[^%s]' % sane_in_payu_title, replace_char, str(value))

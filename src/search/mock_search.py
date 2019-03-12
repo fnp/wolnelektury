@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from mock import Mock
+from unittest.mock import Mock
 from catalogue.models import Book, Tag
 from random import randint, choice
 

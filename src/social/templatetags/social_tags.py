@@ -46,4 +46,4 @@ def book_shelf_tags(request, book_id):
             return ''
         ctx = {'tags': tags}
         return template.loader.render_to_string('social/shelf_tags.html', ctx)
-    return lazy(get_value, unicode)()
+    return lazy(get_value, str)()

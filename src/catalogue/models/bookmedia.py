@@ -38,7 +38,7 @@ class BookMedia(models.Model):
     book = models.ForeignKey('Book', related_name='media')
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
 
     class Meta:
@@ -77,7 +77,7 @@ class BookMedia(models.Model):
         remove_zip("%s_%s" % (self.book.slug, self.type))
 
         extra_info = self.extra_info
-        if isinstance(extra_info, basestring):
+        if isinstance(extra_info, str):
             # Walkaround for weird jsonfield 'no-decode' optimization.
             extra_info = json.loads(extra_info)
         extra_info.update(self.read_meta())

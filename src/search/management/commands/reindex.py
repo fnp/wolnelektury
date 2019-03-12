@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -6,8 +5,6 @@ import sys
 import traceback
 
 from django.core.management.base import BaseCommand
-
-from optparse import make_option
 
 
 def query_yes_no(question, default="yes"):
@@ -44,26 +41,31 @@ def query_yes_no(question, default="yes"):
 
 class Command(BaseCommand):
     help = 'Reindex everything.'
-    args = ''
-    
-    option_list = BaseCommand.option_list + (
-        make_option('-n', '--book-id', action='store_true', dest='book_id', default=False,
-                    help='book id instead of slugs'),
-        make_option('-t', '--just-tags', action='store_true', dest='just_tags', default=False,
-                    help='just reindex tags'),
-        make_option('--start', dest='start_from', default=None, help='start from this slug'),
-        make_option('--stop', dest='stop_after', default=None, help='stop after this slug'),
-    )
 
-    def handle(self, *args, **opts):
+    def add_arguments(self, parser):
+        parser.add_argument(
+                '-n', '--book-id', action='store_true', dest='book_id',
+                default=False, help='book id instead of slugs')
+        parser.add_argument(
+                '-t', '--just-tags', action='store_true', dest='just_tags',
+                default=False, help='just reindex tags')
+        parser.add_argument(
+                '--start', dest='start_from', default=None,
+                help='start from this slug')
+        parser.add_argument(
+                '--stop', dest='stop_after', default=None,
+                help='stop after this slug')
+        parser.add_argument('args', nargs='*', metavar='slug/id')
+
+    def handle(self, **opts):
         from catalogue.models import Book
         from search.index import Index
         idx = Index()
         
         if not opts['just_tags']:
-            if args:
+            if opts['args']:
                 books = []
-                for a in args:
+                for a in opts['args']:
                     if opts['book_id']:
                         books += Book.objects.filter(id=int(a)).all()
                     else:
@@ -83,7 +85,7 @@ class Command(BaseCommand):
                     if stop_after and slug > stop_after:
                         break
                     if not start_from or slug >= start_from:
-                        print b.slug
+                        print(b.slug)
                         idx.index_book(b)
                         idx.index.commit()
                     books.pop(0)
@@ -98,6 +100,6 @@ class Command(BaseCommand):
                     if not retry:
                         break
 
-        print 'Reindexing tags.'
+        print('Reindexing tags.')
         idx.index_tags()
         idx.index.commit()

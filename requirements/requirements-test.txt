@@ -1,4 +1,1 @@
--i https://py.mdrn.pl:8443/simple/
-
 coverage
-mock

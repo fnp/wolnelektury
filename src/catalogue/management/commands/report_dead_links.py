@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from __future__ import print_function, unicode_literals
-
 from django.core.management.base import BaseCommand
 
 
@@ -13,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, **options):
         from catalogue.models import Book
         from picture.models import Picture
-        from urllib2 import urlopen, HTTPError, URLError
+        from urllib.request import urlopen, HTTPError, URLError
         from django.core.urlresolvers import reverse
         from django.contrib.sites.models import Site
 
@@ -46,10 +43,10 @@ class Command(BaseCommand):
                     if url:
                         try:
                             urlopen(url)
-                        except (HTTPError, URLError, ValueError), e:
+                        except (HTTPError, URLError, ValueError) as e:
                             if clean:
                                 clean = False
-                                print(unicode(obj).encode('utf-8'))
+                                print(str(obj).encode('utf-8'))
                                 print(('Na stronie: https://%s%s' % (domain, obj.get_absolute_url())).encode('utf-8'))
                                 print(
                                     ('Administracja: https://%s%s' % (domain, reverse(admin_name, args=[obj.pk])))

@@ -22,8 +22,8 @@ class Suggestion(models.Model):
         verbose_name = _('suggestion')
         verbose_name_plural = _('suggestions')
 
-    def __unicode__(self):
-        return unicode(self.created_at)
+    def __str__(self):
+        return str(self.created_at)
 
 
 class PublishingSuggestion(models.Model):
@@ -69,5 +69,5 @@ class PublishingSuggestion(models.Model):
             spam = True
         return spam
 
-    def __unicode__(self):
-        return unicode(self.created_at)
+    def __str__(self):
+        return str(self.created_at)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -60,11 +59,7 @@ INSTALLED_APPS_CONTRIB = [
     'ssify',
     'django_extensions',
     'raven.contrib.django.raven_compat',
-
     'club.apps.ClubConfig',
-    'django_comments',
-    'django_comments_xtd',
-    'django_gravatar',
 
     # allauth stuff
     'allauth',

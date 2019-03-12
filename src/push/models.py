@@ -16,5 +16,5 @@ class Notification(models.Model):
     class Meta:
         ordering = ['-timestamp']
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s: %s' % (self.timestamp, self.title)

@@ -31,7 +31,7 @@ class Plan(models.Model):
         verbose_name = _('plan')
         verbose_name_plural = _('plans')
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s %s" % (self.min_amount, self.get_interval_display())
     
     class Meta:
@@ -74,7 +74,7 @@ class Schedule(models.Model):
         verbose_name = _('schedule')
         verbose_name_plural = _('schedules')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.key
 
     def save(self, *args, **kwargs):
@@ -109,7 +109,7 @@ class Payment(models.Model):
         verbose_name = _('payment')
         verbose_name_plural = _('payments')
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s %s" % (self.schedule, self.payed_at)
 
 
@@ -122,8 +122,8 @@ class Membership(models.Model):
         verbose_name = _('membership')
         verbose_name_plural = _('memberships')
 
-    def __unicode__(self):
-        return u'tow. ' + unicode(self.user)
+    def __str__(self):
+        return u'tow. ' + str(self.user)
 
 
 class ReminderEmail(models.Model):
@@ -136,7 +136,7 @@ class ReminderEmail(models.Model):
         verbose_name_plural = _('reminder emails')
         ordering = ['days_before']
 
-    def __unicode__(self):
+    def __str__(self):
         if self.days_before >= 0:
             return ungettext('a day before expiration', '%d days before expiration', n=self.days_before)
         else:

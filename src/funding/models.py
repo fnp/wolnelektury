@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import date, datetime
-from urllib import urlencode
+from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
@@ -48,7 +48,7 @@ class Offer(models.Model):
         verbose_name_plural = _('offers')
         ordering = ['-end']
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s - %s" % (self.author, self.title)
 
     def get_absolute_url(self):
@@ -218,7 +218,7 @@ class Perk(models.Model):
         verbose_name_plural = _('perks')
         ordering = ['-price']
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s%s)" % (self.name, self.price, u" for %s" % self.offer if self.offer else "")
 
 
@@ -248,8 +248,8 @@ class Funding(models.Model):
         """ QuerySet for all completed payments. """
         return cls.objects.exclude(payed_at=None)
 
-    def __unicode__(self):
-        return unicode(self.offer)
+    def __str__(self):
+        return str(self.offer)
 
     def get_absolute_url(self):
         return reverse('funding_funding', args=[self.pk])
@@ -318,8 +318,8 @@ class Spent(models.Model):
         verbose_name_plural = _('money spent on books')
         ordering = ['-timestamp']
 
-    def __unicode__(self):
-        return u"Spent: %s" % unicode(self.book)
+    def __str__(self):
+        return u"Spent: %s" % str(self.book)
 
 
 @receiver(getpaid.signals.new_payment_query)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -6,8 +5,6 @@ import sys
 import traceback
 
 from django.core.management.base import BaseCommand
-
-from optparse import make_option
 
 
 def query_yes_no(question, default="yes"):
@@ -44,21 +41,21 @@ def query_yes_no(question, default="yes"):
 
 class Command(BaseCommand):
     help = 'Reindex pictures.'
-    args = ''
 
-    option_list = BaseCommand.option_list + (
-        make_option('-n', '--picture-id', action='store_true', dest='picture_id', default=False,
-                    help='picture id instead of slugs'),
-    )
+    def add_arguments(self, parser):
+        self.add_argument(
+                '-n', '--picture-id', action='store_true', dest='picture_id',
+                default=False, help='picture id instead of slugs')
+        self.add_argument('slug/id', nargs='*', metavar='slug/id')
 
-    def handle(self, *args, **opts):
+    def handle(self, **opts):
         from picture.models import Picture
         from search.index import Index
         idx = Index()
 
-        if args:
+        if opts['args']:
             pictures = []
-            for a in args:
+            for a in opts['args']:
                 if opts['picture_id']:
                     pictures += Picture.objects.filter(id=int(a)).all()
                 else:
@@ -68,7 +65,7 @@ class Command(BaseCommand):
         while pictures:
             try:
                 p = pictures[0]
-                print p.slug
+                print(p.slug)
                 idx.index_picture(p)
                 idx.index.commit()
                 pictures.pop(0)

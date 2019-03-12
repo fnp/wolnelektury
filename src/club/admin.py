@@ -20,6 +20,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     list_search = ['email']
     list_filter = ['is_active', 'is_cancelled']
     date_hierarchy = 'started_at'
+    raw_id_fields = ['membership']
     inlines = [PaymentInline]
 
 admin.site.register(models.Schedule, ScheduleAdmin)
@@ -32,7 +33,9 @@ admin.site.register(models.Payment, PaymentAdmin)
 
 
 class MembershipAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['user']
+    raw_id_fields = ['user']
+    search_fields = ['user__username', 'user__email']
 
 admin.site.register(models.Membership, MembershipAdmin)
 

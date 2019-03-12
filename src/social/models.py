@@ -37,7 +37,7 @@ class Cite(models.Model):
         verbose_name = _('cite')
         verbose_name_plural = _('cites')
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s: %s…" % (self.vip, self.text[:60])
 
     def get_absolute_url(self):

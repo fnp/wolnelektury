@@ -20,7 +20,7 @@ class InfoPage(models.Model):
         verbose_name = _('info page')
         verbose_name_plural = _('info pages')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     @models.permalink

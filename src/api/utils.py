@@ -25,8 +25,9 @@ def oauthlib_request(request):
         "headers": headers,
     }
 
-def oauthlib_response((headers, body, status)):
+def oauthlib_response(response_tuple):
     """Creates a django.http.HttpResponse from (headers, body, status) tuple from OAuthlib."""
+    headers, body, status = response_tuple
     response = HttpResponse(body, status=status)
     for k, v in headers.items():
         if k == 'Location':

@@ -2,11 +2,11 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from sunburnt import sunburnt
+from scorched import connection
 from lxml import etree
-import urllib
+from urllib.parse import urlencode
 import warnings
-from sunburnt import search
+from scorched import search
 import copy
 from httplib2 import socket
 import re
@@ -25,7 +25,7 @@ class TermVectorOptions(search.Options):
     def update(self, positions=False, fields=None):
         if fields is None:
             fields = []
-        if isinstance(fields, basestring):
+        if isinstance(fields, (str, bytes)):
             fields = [fields]
         self.schema.check_fields(fields, {"stored": True})
         self.fields.update(fields)
@@ -42,13 +42,13 @@ class TermVectorOptions(search.Options):
         return opts
 
 
-class CustomSolrConnection(sunburnt.SolrConnection):
+class CustomSolrConnection(connection.SolrConnection):
     def __init__(self, *args, **kw):
         super(CustomSolrConnection, self).__init__(*args, **kw)
         self.analysis_url = self.url + "analysis/field/"
 
     def analyze(self, params):
-        qs = urllib.urlencode(params)
+        qs = urlencode(params)
         url = "%s?%s" % (self.analysis_url, qs)
         if len(url) > self.max_length_get_url:
             warnings.warn("Long query URL encountered - POSTing instead of GETting. "
@@ -63,11 +63,11 @@ class CustomSolrConnection(sunburnt.SolrConnection):
             kwargs = dict(method="GET")
         r, c = self.request(url, **kwargs)
         if r.status != 200:
-            raise sunburnt.SolrError(r, c)
+            raise connection.SolrError(r, c)
         return c
 
 
-# monkey patching sunburnt SolrSearch
+# monkey patching scorched SolrSearch
 search.SolrSearch.option_modules += ('term_vectorer',)
 
 
@@ -85,10 +85,10 @@ __original__init_common_modules = search.SolrSearch._init_common_modules
 setattr(search.SolrSearch, '_init_common_modules', __patched__init_common_modules)
 
 
-class CustomSolrInterface(sunburnt.SolrInterface):
+class CustomSolrInterface(connection.SolrInterface):
     # just copied from parent and SolrConnection -> CustomSolrConnection
     def __init__(self, url, schemadoc=None, http_connection=None, mode='', retry_timeout=-1,
-                 max_length_get_url=sunburnt.MAX_LENGTH_GET_URL):
+                 max_length_get_url=connection.MAX_LENGTH_GET_URL):
         self.conn = CustomSolrConnection(url, http_connection, retry_timeout, max_length_get_url)
         self.schemadoc = schemadoc
         if 'w' not in mode:
@@ -97,8 +97,8 @@ class CustomSolrInterface(sunburnt.SolrInterface):
             self.readable = False
         try:
             self.init_schema()
-        except socket.error, e:
-            raise socket.error, "Cannot connect to Solr server, and search indexing is enabled (%s)" % str(e)
+        except socket.error as e:
+            raise socket.error("Cannot connect to Solr server, and search indexing is enabled (%s)" % str(e))
 
     def _analyze(self, **kwargs):
         if not self.readable:
@@ -115,7 +115,7 @@ class CustomSolrInterface(sunburnt.SolrInterface):
         if 'query' in kwargs:
             args['q'] = kwargs['q']
 
-        params = map(lambda (k, v): (k.replace('_', '.'), v), sunburnt.params_from_dict(**args))
+        params = map(lambda k, v: (k.replace('_', '.'), v), connection.params_from_dict(**args))
 
         content = self.conn.analyze(params)
         doc = etree.fromstring(content)
@@ -139,7 +139,7 @@ class CustomSolrInterface(sunburnt.SolrInterface):
     def analyze(self, **kwargs):
         doc = self._analyze(**kwargs)
         terms = doc.xpath("//lst[@name='index']/arr[last()]/lst/str[1]")
-        terms = map(lambda n: unicode(n.text), terms)
+        terms = map(lambda n: str(n.text), terms)
         return terms
 
     def expand_margins(self, text, start, end):

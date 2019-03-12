@@ -29,7 +29,7 @@ class BooksByTagTests(WLTestCase):
                                         parts=[self.child_info.url],
                                         **info_args("Parent"))
 
-        self.book_file = ContentFile('<utwor />')
+        self.book_file = ContentFile(b'<utwor />')
 
     def test_nonexistent_tag(self):
         """ Looking for a non-existent tag should yield 404 """
@@ -95,8 +95,10 @@ class TagRelatedTagsTests(WLTestCase):
                     Ala ma kota
                 <end id="m01" />
                 </akap></opowiadanie></utwor>
-                """ % info.title.encode('utf-8')
-            book = models.Book.from_text_and_meta(ContentFile(book_text), info)
+                """ % info.title
+            book = models.Book.from_text_and_meta(
+                    ContentFile(book_text.encode('utf-8')),
+                    info)
             book.save()
 
         tag_empty = models.Tag(name='Empty tag', slug='empty', category='author')
@@ -157,7 +159,7 @@ class TagRelatedTagsTests(WLTestCase):
         self.assertTrue(
             ('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
             'wrong related kind tags on tag page, got: ' +
-            unicode([(tag.name, tag.count) for tag in cats['kind']]))
+            str([(tag.name, tag.count) for tag in cats['kind']]))
 
         # all occurencies of theme should be counted
         self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
@@ -171,7 +173,7 @@ class TagRelatedTagsTests(WLTestCase):
         cats = self.client.get('/katalog/gatunek/childgenre/').context['categories']
         self.assertTrue(('Epoch', 2) in [(tag.name, tag.count) for tag in cats['epoch']],
                         'wrong related kind tags on tag page, got: ' +
-                        unicode([(tag.name, tag.count) for tag in cats['epoch']]))
+                        str([(tag.name, tag.count) for tag in cats['epoch']]))
 
 
 class CleanTagRelationTests(WLTestCase):
@@ -187,7 +189,9 @@ class CleanTagRelationTests(WLTestCase):
             <end id="m01" />
             </akap></opowiadanie></utwor>
             """
-        self.book = models.Book.from_text_and_meta(ContentFile(book_text), book_info)
+        self.book = models.Book.from_text_and_meta(
+                ContentFile(book_text.encode('utf-8')),
+                book_info)
 
     @skip('Not implemented and not priority')
     def test_delete_objects(self):
@@ -228,7 +232,9 @@ class TestIdenticalTag(WLTestCase):
 
     def test_book_tags(self):
         """ there should be all related tags in relevant categories """
-        book = models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
+        book = models.Book.from_text_and_meta(
+                ContentFile(self.book_text.encode('utf-8')),
+                self.book_info)
 
         related_themes = book.related_themes()
         for category in 'author', 'kind', 'genre', 'epoch':
@@ -237,9 +243,11 @@ class TestIdenticalTag(WLTestCase):
         self.assertTrue('tag' in [tag.slug for tag in related_themes])
 
     def test_qualified_url(self):
-        models.Book.from_text_and_meta(ContentFile(self.book_text), self.book_info)
+        models.Book.from_text_and_meta(
+                ContentFile(self.book_text.encode('utf-8')),
+                self.book_info)
         categories = {'author': 'autor', 'theme': 'motyw', 'epoch': 'epoka', 'kind': 'rodzaj', 'genre': 'gatunek'}
-        for cat, localcat in categories.iteritems():
+        for cat, localcat in categories.items():
             context = self.client.get('/katalog/%s/tag/' % localcat).context
             self.assertEqual(1, len(context['object_list']))
             self.assertNotEqual({}, context['categories'])
@@ -267,8 +275,10 @@ class BookTagsTests(WLTestCase):
                     Ala ma kota
                 <end id="m01" />
                 </akap></opowiadanie></utwor>
-                """ % info.title.encode('utf-8')
-            models.Book.from_text_and_meta(ContentFile(book_text), info)
+                """ % info.title
+            models.Book.from_text_and_meta(
+                    ContentFile(book_text.encode('utf-8')),
+                    info)
 
     def test_book_tags(self):
         """ book should have own tags and whole tree's themes """

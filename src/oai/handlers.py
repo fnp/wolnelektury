@@ -116,7 +116,7 @@ class Catalogue(common.ResumptionOAIPMH):
     def identify(self, **kw):
         ident = common.Identify(
             'Wolne Lektury',  # generate
-            '%s/oaipmh' % unicode(WL_BASE),  # generate
+            '%s/oaipmh' % str(WL_BASE),  # generate
             '2.0',  # version
             [m[1] for m in settings.MANAGERS],  # adminEmails
             make_time_naive(self.earliest_datestamp),  # earliest datestamp of any change

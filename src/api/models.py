@@ -76,7 +76,7 @@ class Nonce(models.Model):
     consumer_key = models.CharField(max_length=KEY_SIZE)
     key = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"Nonce %s for %s" % (self.key, self.consumer_key)
 
 
@@ -88,7 +88,7 @@ class Consumer(models.Model):
     status = models.CharField(max_length=16, choices=CONSUMER_STATES, default='pending')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='consumers')
 
-    def __unicode__(self):
+    def __str__(self):
         return u"Consumer %s with key %s" % (self.name, self.key)
 
 
@@ -105,5 +105,5 @@ class Token(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='tokens')
     consumer = models.ForeignKey(Consumer)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)

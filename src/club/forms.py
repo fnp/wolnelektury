@@ -1,7 +1,6 @@
 # -*- coding: utf-8
 from django import forms
 from . import models
-from . import widgets
 from .payment_methods import method_by_slug 
 
 

@@ -10,6 +10,6 @@ from catalogue.models import Book
 class Command(BaseCommand):
     def handle(self, *args, **options):
         for b in Book.objects.order_by('slug'):
-            print b.slug
+            print(b.slug)
             b.load_abstract()
             b.save()

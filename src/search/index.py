@@ -13,8 +13,8 @@ import catalogue.models
 import picture.models
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
 from itertools import chain
-import sunburnt
-import custom
+import scorched
+from . import custom
 import operator
 import logging
 from wolnelektury.utils import makedirs
@@ -129,7 +129,7 @@ class Index(SolrIndex):
         """
         uids = set()
         for q in queries:
-            if isinstance(q, sunburnt.search.LuceneQuery):
+            if isinstance(q, scorched.search.LuceneQuery):
                 q = self.index.query(q)
             q.field_limiter.update(['uid'])
             st = 0
@@ -324,9 +324,9 @@ class Index(SolrIndex):
                 elif type_indicator == dcparser.as_person:
                     p = getattr(book_info, field.name)
                     if isinstance(p, dcparser.Person):
-                        persons = unicode(p)
+                        persons = str(p)
                     else:
-                        persons = ', '.join(map(unicode, p))
+                        persons = ', '.join(map(str, p))
                     fields[field.name] = persons
                 elif type_indicator == dcparser.as_date:
                     dt = getattr(book_info, field.name)
@@ -478,7 +478,7 @@ class Index(SolrIndex):
                         fid = start.attrib['id'][1:]
                         handle_text.append(lambda text: None)
                         if start.text is not None:
-                            fragments[fid]['themes'] += map(unicode.strip, map(unicode, (start.text.split(','))))
+                            fragments[fid]['themes'] += map(str.strip, map(str, (start.text.split(','))))
                     elif end is not None and end.tag == 'motyw':
                         handle_text.pop()
 
@@ -610,14 +610,14 @@ class SearchResult(object):
         result._book = book
         return result
 
-    def __unicode__(self):
+    def __str__(self):
         return u"<SR id=%d %d(%d) hits score=%f %d snippets>" % \
             (self.book_id, len(self._hits),
              len(self._processed_hits) if self._processed_hits else -1,
              self._score, len(self.snippets))
 
-    def __str__(self):
-        return unicode(self).encode('utf-8')
+    def __bytes__(self):
+        return str(self).encode('utf-8')
 
     @property
     def score(self):
@@ -705,7 +705,7 @@ class SearchResult(object):
             if self.query_terms is not None:
                 for i in range(0, len(f[self.OTHER]['themes'])):
                     tms = f[self.OTHER]['themes'][i].split(r' +') + f[self.OTHER]['themes_pl'][i].split(' ')
-                    tms = map(unicode.lower, tms)
+                    tms = map(str.lower, tms)
                     for qt in self.query_terms:
                         if qt in tms:
                             themes_hit.add(f[self.OTHER]['themes'][i])
@@ -791,11 +791,11 @@ class PictureResult(object):
 
             self._hits.append(hit)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"<PR id=%d score=%f >" % (self.picture_id, self._score)
 
     def __repr__(self):
-        return unicode(self)
+        return str(self)
 
     @property
     def score(self):
@@ -829,7 +829,7 @@ class PictureResult(object):
             if self.query_terms is not None:
                 for i in range(0, len(hit[self.OTHER]['themes'])):
                     tms = hit[self.OTHER]['themes'][i].split(r' +') + hit[self.OTHER]['themes_pl'][i].split(' ')
-                    tms = map(unicode.lower, tms)
+                    tms = map(str.lower, tms)
                     for qt in self.query_terms:
                         if qt in tms:
                             themes_hit.add(hit[self.OTHER]['themes'][i])
@@ -965,7 +965,7 @@ class Search(SolrIndex):
                         num -= 1
                 idx += 1
 
-        except IOError, e:
+        except IOError as e:
             book = catalogue.models.Book.objects.filter(id=book_id)
             if not book:
                 log.error("Book does not exist for book id = %d" % book_id)

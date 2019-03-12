@@ -23,7 +23,7 @@ class Chunk(models.Model):
         verbose_name = _('chunk')
         verbose_name_plural = _('chunks')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.key
 
     def save(self, *args, **kwargs):
@@ -45,5 +45,5 @@ class Attachment(models.Model):
         ordering = ('key',)
         verbose_name, verbose_name_plural = _('attachment'), _('attachments')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.key

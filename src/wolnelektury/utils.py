@@ -1,24 +1,23 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import codecs
 import csv
-import cStringIO
+from functools import wraps
+from inspect import getargspec
+from io import BytesIO
 import json
 import os
-from functools import wraps
-
 import pytz
-from inspect import getargspec
-
 import re
+
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.conf import settings
 from django.utils.translation import ugettext
+
 
 tz = pytz.timezone(settings.TIME_ZONE)
 
@@ -40,7 +39,7 @@ def makedirs(path):
 
 def stringify_keys(dictionary):
     return dict((keyword.encode('ascii'), value)
-                for keyword, value in dictionary.iteritems())
+                for keyword, value in dictionary.items())
 
 
 def json_encode(obj, sort_keys=True, ensure_ascii=False):
@@ -87,7 +86,7 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
                 if request_params:
                     request_params = dict(
                         (key, json_decode_fallback(value))
-                        for key, value in request_params.iteritems()
+                        for key, value in request_params.items()
                         if fun_kwargs or key in fun_params)
                     kwargs.update(stringify_keys(request_params))
                 res = None
@@ -129,7 +128,7 @@ class UnicodeCSVWriter(object):
 
     def __init__(self, f, dialect=csv.excel, encoding="utf-8", **kwds):
         # Redirect output to a queue
-        self.queue = cStringIO.StringIO()
+        self.queue = BytesIO()
         self.writer = csv.writer(self.queue, dialect=dialect, **kwds)
         self.stream = f
         self.encoder = codecs.getincrementalencoder(encoding)()

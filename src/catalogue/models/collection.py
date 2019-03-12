@@ -24,7 +24,7 @@ class Collection(models.Model):
         verbose_name_plural = _('collections')
         app_label = 'catalogue'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_initial(self):

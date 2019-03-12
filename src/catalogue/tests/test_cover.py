@@ -5,7 +5,7 @@
 from django.core.files.base import ContentFile
 from catalogue.test_utils import BookInfoStub, PersonStub, info_args, WLTestCase
 from catalogue.models import Book
-from mock import patch
+from unittest.mock import patch
 
 
 class CoverTests(WLTestCase):

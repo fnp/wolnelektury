@@ -33,8 +33,8 @@ def sortify(value):
 
     """
 
-    if not isinstance(value, unicode):
-        value = unicode(value, 'utf-8')
+    if not isinstance(value, str):
+        value = str(value, 'utf-8')
 
     # try to replace chars
     value = re.sub('[^a-zA-Z0-9\\s\\-]', replace_char, value)

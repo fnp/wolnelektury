@@ -19,7 +19,7 @@ class Qualifier(models.Model):
     class Meta:
         ordering = ['qualifier']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name or self.qualifier
 
 

@@ -30,7 +30,7 @@ def parse_date(date_str):
 
 
 def get_descendants(element, tags):
-    if isinstance(tags, basestring):
+    if isinstance(tags, str):
         tags = [tags]
     return element.findall('.//' + '/'.join(ONIXNS(tag) for tag in tags))
 
@@ -44,14 +44,17 @@ def get_field(element, tags, allow_multiple=False):
 
 class Command(BaseCommand):
     help = "Import data from ONIX."
-    args = 'filename'
 
-    def handle(self, filename, *args, **options):
+    def add_arguments(self, parser):
+        parser.add_argument('filename')
+
+    def handle(self, **options):
+        filename = options['filename']
         tree = etree.parse(open(filename))
         for product in get_descendants(tree, 'Product'):
             isbn = get_field(product, ['ProductIdentifier', 'IDValue'])
             assert len(isbn) == 13
-            pool = ISBNPool.objects.get(prefix__in=[isbn[:i] for i in xrange(8, 11)])
+            pool = ISBNPool.objects.get(prefix__in=[isbn[:i] for i in range(8, 11)])
             contributors = [
                 self.parse_contributor(contributor)
                 for contributor in get_descendants(product, 'Contributor')]
@@ -62,7 +65,7 @@ class Command(BaseCommand):
                     get_field(product, ['PublishingDate', 'Date'], allow_multiple=True)),
                 'contributors': contributors,
             }
-            for field, tag in DIRECT_FIELDS.iteritems():
+            for field, tag in DIRECT_FIELDS.items():
                 record_data[field] = get_field(product, tag) or ''
             record = ONIXRecord.objects.create(**record_data)
             ONIXRecord.objects.filter(pk=record.pk).update(datestamp=parse_date(product.attrib['datestamp']))
@@ -78,7 +81,7 @@ class Command(BaseCommand):
         contributor_data = {
             'role': get_field(contributor, 'ContributorRole'),
         }
-        for key, value in data.iteritems():
+        for key, value in data.items():
             if value:
                 contributor_data[key] = value
         if contributor_data.get('name') == UNKNOWN:

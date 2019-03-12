@@ -57,7 +57,7 @@ def area_thumbnail_url(area, geometry):
             crop="%dpx %dpx %dpx %dpx" % tuple(map(lambda d: max(0, d), tuple(coords[0] + coords[1]))))
     except ZeroDivisionError:
         return ''
-    except Exception, e:
+    except Exception as e:
         logging.exception("Error creating a thumbnail for PictureArea")
         return ''
 

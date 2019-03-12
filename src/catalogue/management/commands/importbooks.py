@@ -1,40 +1,41 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import os
 import sys
-from optparse import make_option
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
 from django.db import transaction
 from librarian.picture import ImageStore
-# from wolnelektury.management.profile import profile
 
 from catalogue.models import Book
 from picture.models import Picture
-
 from search.index import Index
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('-q', '--quiet', action='store_false', dest='verbose', default=True,
-                    help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'),
-        make_option('-f', '--force', action='store_true', dest='force', default=False,
-                    help='Overwrite works already in the catalogue'),
-        make_option('-D', '--dont-build', dest='dont_build',
-                    metavar="FORMAT,...",
-                    help="Skip building specified formats"),
-        make_option('-S', '--no-search-index', action='store_false', dest='search_index', default=True,
-                    help='Skip indexing imported works for search'),
-        make_option('-p', '--picture', action='store_true', dest='import_picture', default=False,
-                    help='Import pictures'),
-    )
     help = 'Imports books from the specified directories.'
-    args = 'directory [directory ...]'
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+                '-q', '--quiet', action='store_false', dest='verbose', default=True,
+                help='Verbosity level; 0=minimal output, 1=normal output, 2=all output')
+        parser.add_argument(
+                '-f', '--force', action='store_true', dest='force',
+                default=False, help='Overwrite works already in the catalogue')
+        parser.add_argument(
+                '-D', '--dont-build', dest='dont_build', metavar="FORMAT,...",
+                help="Skip building specified formats")
+        parser.add_argument(
+                '-S', '--no-search-index', action='store_false',
+                dest='search_index', default=True,
+                help='Skip indexing imported works for search')
+        parser.add_argument(
+                '-p', '--picture', action='store_true', dest='import_picture',
+                default=False, help='Import pictures')
+        parser.add_argument('directory', nargs='+')
 
     def import_book(self, file_path, options):
         verbose = options.get('verbose')
@@ -54,24 +55,23 @@ class Command(BaseCommand):
                     save=False
                     )
                 if verbose:
-                    print "Importing %s.%s" % (file_base, ebook_format)
+                    print("Importing %s.%s" % (file_base, ebook_format))
         book.save()
 
     def import_picture(self, file_path, options, continue_on_error=True):
         try:
             image_store = ImageStore(os.path.dirname(file_path))
             picture = Picture.from_xml_file(file_path, image_store=image_store, overwrite=options.get('force'))
-        except Exception, ex:
+        except Exception as ex:
             if continue_on_error:
-                print "%s: %s" % (file_path, ex)
+                print("%s: %s" % (file_path, ex))
                 return
             else:
                 raise ex
         return picture
 
-    # @profile
     @transaction.atomic
-    def handle(self, *directories, **options):
+    def handle(self, **options):
         self.style = color_style()
 
         verbose = options.get('verbose')
@@ -82,16 +82,16 @@ class Command(BaseCommand):
             try:
                 index.index_tags()
                 index.index.commit()
-            except Exception, e:
+            except Exception as e:
                 index.index.rollback()
                 raise e
 
         files_imported = 0
         files_skipped = 0
 
-        for dir_name in directories:
+        for dir_name in options['directory']:
             if not os.path.isdir(dir_name):
-                print self.style.ERROR("%s: Not a directory. Skipping." % dir_name)
+                print(self.style.ERROR("%s: Not a directory. Skipping." % dir_name))
             else:
                 # files queue
                 files = sorted(os.listdir(dir_name))
@@ -106,7 +106,7 @@ class Command(BaseCommand):
                         continue
 
                     if verbose > 0:
-                        print "Parsing '%s'" % file_path
+                        print("Parsing '%s'" % file_path)
                     else:
                         sys.stdout.write('.')
                         sys.stdout.flush()
@@ -121,16 +121,16 @@ class Command(BaseCommand):
                         files_imported += 1
 
                     except (Book.AlreadyExists, Picture.AlreadyExists):
-                        print self.style.ERROR(
+                        print(self.style.ERROR(
                             '%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
-                            file_path)
+                            file_path))
                         files_skipped += 1
 
-                    except Book.DoesNotExist, e:
+                    except Book.DoesNotExist as e:
                         if file_name not in postponed or postponed[file_name] < files_imported:
                             # push it back into the queue, maybe the missing child will show up
                             if verbose:
-                                print self.style.NOTICE('Waiting for missing children')
+                                print(self.style.NOTICE('Waiting for missing children'))
                             files.append(file_name)
                             postponed[file_name] = files_imported
                         else:
@@ -138,7 +138,7 @@ class Command(BaseCommand):
                             raise e
 
         # Print results
-        print
-        print "Results: %d files imported, %d skipped, %d total." % (
-            files_imported, files_skipped, files_imported + files_skipped)
-        print
+        print()
+        print("Results: %d files imported, %d skipped, %d total." % (
+            files_imported, files_skipped, files_imported + files_skipped))
+        print()

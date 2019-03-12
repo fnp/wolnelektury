@@ -127,7 +127,7 @@ class Book(models.Model):
         verbose_name_plural = _('books')
         app_label = 'catalogue'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_initial(self):
@@ -188,7 +188,7 @@ class Book(models.Model):
         from sortify import sortify
 
         self.sort_key = sortify(self.title)[:120]
-        self.title = unicode(self.title)  # ???
+        self.title = str(self.title)  # ???
 
         try:
             author = self.authors().first().sort_key
@@ -401,7 +401,7 @@ class Book(models.Model):
                 index.index_tags()
             if commit:
                 index.index.commit()
-        except Exception, e:
+        except Exception as e:
             index.index.rollback()
             raise e
 
@@ -672,7 +672,7 @@ class Book(models.Model):
 
     def publisher(self):
         publisher = self.extra_info['publisher']
-        if isinstance(publisher, basestring):
+        if isinstance(publisher, str):
             return publisher
         elif isinstance(publisher, list):
             return ', '.join(publisher)

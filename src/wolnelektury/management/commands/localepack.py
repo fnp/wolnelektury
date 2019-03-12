@@ -1,20 +1,17 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from optparse import make_option
+import os
+import shutil
+import sys
+import tempfile
+import allauth
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
-from .translation2po import get_languages
 from wolnelektury.utils import makedirs
+from .translation2po import get_languages
 
-import os
-import shutil
-import tempfile
-import sys
-
-import allauth
 
 ROOT = settings.ROOT_DIR
 
@@ -144,30 +141,42 @@ for appn in settings.INSTALLED_APPS:
     if is_our_app(app):
         try:
             SOURCES.append(AppLocale(app))
-        except LookupError, e:
-            print "no locales in %s" % app.__name__
+        except LookupError as e:
+            print("no locales in %s" % app.__name__)
 
 SOURCES.append(ModelTranslation('infopages', 'infopages_db'))
 SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load',
-                    default=False),
-        make_option('-c', '--compile', help='compile messages', action='store_true', dest='compile',
-                    default=False),
-        make_option('-g', '--generate', help='generate messages', action='store_true', dest='generate',
-                    default=False),
-        make_option('-L', '--lang', help='load just one language', dest='lang', default=None),
-        make_option('-d', '--directory', help='load from this directory', dest='directory', default=None),
-        make_option('-o', '--outfile', help='Resulting zip file', dest='outfile', default='./wl-locale.zip'),
-        make_option('-m', '--merge', help='Use git to merge. Please use with clean working directory.',
-                    action='store_true', dest='merge', default=False),
-        make_option('-M', '--message', help='commit message', dest='message', default='New locale'),
-    )
     help = 'Make a locale pack'
-    args = ''
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+                '-l', '--load', help='load locales back to source',
+                action='store_true', dest='load', default=False)
+        parser.add_argument(
+                '-c', '--compile', help='compile messages',
+                action='store_true', dest='compile', default=False)
+        parser.add_argument(
+                '-g', '--generate', help='generate messages',
+                action='store_true', dest='generate', default=False)
+        parser.add_argument(
+                '-L', '--lang', help='load just one language',
+                dest='lang', default=None)
+        parser.add_argument(
+                '-d', '--directory', help='load from this directory',
+                dest='directory', default=None)
+        parser.add_argument(
+                '-o', '--outfile', help='Resulting zip file',
+                dest='outfile', default='./wl-locale.zip')
+        parser.add_argument(
+                '-m', '--merge', action='store_true',
+                dest='merge', default=False,
+                help='Use git to merge. Please use with clean working directory.')
+        parser.add_argument(
+                '-M', '--message', help='commit message',
+                dest='message', default='New locale')
 
     def current_rev(self):
         return os.popen('git rev-parse HEAD').read()
@@ -227,10 +236,10 @@ class Command(BaseCommand):
         for src in SOURCES:
             src.compile()
 
-    def handle(self, *a, **options):
+    def handle(self, **options):
         if options['load']:
             if not options['directory'] or not os.path.exists(options['directory']):
-                print "Directory not provided or does not exist, please use -d"
+                print("Directory not provided or does not exist, please use -d")
                 sys.exit(1)
 
             if options['merge']:

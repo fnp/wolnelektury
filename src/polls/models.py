@@ -26,7 +26,7 @@ class Poll(models.Model):
             raise ValidationError(_('Slug of an open poll needs to be unique'))
         return super(Poll, self).clean()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.question[:100] + ' (' + self.slug + ')'
 
     def get_absolute_url(self):
@@ -50,8 +50,8 @@ class PollItem(models.Model):
         verbose_name = _('vote item')
         verbose_name_plural = _('vote items')
 
-    def __unicode__(self):
-        return self.content + ' @ ' + unicode(self.poll)
+    def __str__(self):
+        return self.content + ' @ ' + str(self.poll)
 
     @property
     def vote_ratio(self):

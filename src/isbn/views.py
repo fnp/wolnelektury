@@ -78,7 +78,7 @@ def get_format(record):
     if record.product_form_detail:
         return PRODUCT_FORMATS[record.product_form_detail][0]
     else:
-        return [key for key, value in PRODUCT_FORMS.iteritems() if value == record.product_form][0]
+        return [key for key, value in PRODUCT_FORMS.items() if value == record.product_form][0]
 
 
 @permission_required('add_onixrecord')

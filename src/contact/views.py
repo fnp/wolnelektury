@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from urllib import unquote
+from urllib.parse import unquote
 
 from datetime import datetime
 from django.contrib.auth.decorators import permission_required
@@ -40,7 +39,7 @@ def form(request, form_tag, force_enabled=False):
     if request.method == 'POST':
         formsets = {
             prefix: formset_class(request.POST, request.FILES, prefix=prefix)
-            for prefix, formset_class in formset_classes.iteritems()}
+            for prefix, formset_class in formset_classes.items()}
         if form.is_valid() and all(formset.is_valid() for formset in formsets.itervalues()):
             contact = form.save(request, formsets.values())
             if form.result_page:
@@ -48,7 +47,7 @@ def form(request, form_tag, force_enabled=False):
             else:
                 return redirect('contact_thanks', form_tag)
     else:
-        formsets = {prefix: formset_class(prefix=prefix) for prefix, formset_class in formset_classes.iteritems()}
+        formsets = {prefix: formset_class(prefix=prefix) for prefix, formset_class in formset_classes.items()}
 
     return render(
         request, ['contact/%s/form.html' % form_tag, 'contact/form.html'],

@@ -106,7 +106,7 @@ class BuildEbook(Task):
     def build(self, fieldfile):
         book = fieldfile.instance
         out = self.transform(book.wldocument(), fieldfile)
-        fieldfile.save(None, File(open(out.get_filename())), save=False)
+        fieldfile.save(None, File(open(out.get_filename(), 'rb')), save=False)
         self.set_file_permissions(fieldfile)
         if book.pk is not None:
             books = type(book).objects.filter(pk=book.pk)

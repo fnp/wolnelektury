@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Original version taken from http://www.djangosnippets.org/snippets/186/
 # Original author: udfalkso
 # Modified by: Shwagroo Team
@@ -9,7 +8,7 @@ import re
 import hotshot
 import hotshot.stats
 import tempfile
-import StringIO
+import io
 import pprint
 
 from django.conf import settings
@@ -101,7 +100,7 @@ class ProfileMiddleware(object):
         if (settings.DEBUG or request.user.is_superuser) and 'prof' in request.GET:
             self.prof.close()
 
-            out = StringIO.StringIO()
+            out = io.BytesIO()
             old_stdout = sys.stdout
             sys.stdout = out
 

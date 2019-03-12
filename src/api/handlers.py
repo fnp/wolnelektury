@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -8,7 +7,7 @@ from catalogue.models import Book, Tag
 
 
 WL_BASE = lazy(
-    lambda: u'https://' + Site.objects.get_current().domain, unicode)()
+    lambda: 'https://' + Site.objects.get_current().domain, str)()
 
 category_singular = {
     'authors': 'author',

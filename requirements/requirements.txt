@@ -38,7 +38,7 @@ mutagen>=1.31
 sorl-thumbnail>=12.3,<12.4
 
 # home-brewed & dependencies
-librarian==1.7.1
+librarian==1.7.2
 
 # celery tasks
 celery>=3.1.12,<3.2
@@ -48,10 +48,9 @@ kombu>=3.0.23,<3.1
 pyenchant
 
 # OAI-PMH
-pyoai==2.4.4
+pyoai==2.5.0
 
-## egenix-mx-base  # Doesn't play nice with mx in dist-packages.
-sunburnt
+scorched==0.12
 
 django-getpaid==1.8.0
 deprecated

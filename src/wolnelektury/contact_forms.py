@@ -9,7 +9,7 @@ from contact.forms import ContactForm
 from contact.fields import HeaderField
 from django import forms
 
-mark_safe_lazy = lazy(mark_safe, unicode)
+mark_safe_lazy = lazy(mark_safe, str)
 
 
 class KonkursForm(ContactForm):

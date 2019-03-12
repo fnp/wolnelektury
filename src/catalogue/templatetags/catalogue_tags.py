@@ -3,7 +3,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from random import randint, random
-from urlparse import urlparse
+from urllib.parse import urlparse
 from django.contrib.contenttypes.models import ContentType
 
 from django.conf import settings
@@ -93,39 +93,39 @@ def title_from_tags(tags):
     # Specjalny przypadek "Twórczość w pozytywizmie", wtedy gdy tylko epoka
     # jest wybrana przez użytkownika
     if 'epoch' in self and len(self) == 1:
-        text = u'Twórczość w %s' % flection.get_case(unicode(self['epoch']), u'miejscownik')
+        text = u'Twórczość w %s' % flection.get_case(str(self['epoch']), u'miejscownik')
         return capfirst(text)
 
     # Specjalny przypadek "Dramat w twórczości Sofoklesa", wtedy gdy podane
     # są tylko rodzaj literacki i autor
     if 'kind' in self and 'author' in self and len(self) == 2:
         text = u'%s w twórczości %s' % (
-            unicode(self['kind']), flection.get_case(unicode(self['author']), u'dopełniacz'))
+            str(self['kind']), flection.get_case(str(self['author']), u'dopełniacz'))
         return capfirst(text)
 
     # Przypadki ogólniejsze
     if 'theme' in self:
-        title += u'Motyw %s' % unicode(self['theme'])
+        title += u'Motyw %s' % str(self['theme'])
 
     if 'genre' in self:
         if 'theme' in self:
-            title += u' w %s' % flection.get_case(unicode(self['genre']), u'miejscownik')
+            title += u' w %s' % flection.get_case(str(self['genre']), u'miejscownik')
         else:
-            title += unicode(self['genre'])
+            title += str(self['genre'])
 
     if 'kind' in self or 'author' in self or 'epoch' in self:
         if 'genre' in self or 'theme' in self:
             if 'kind' in self:
-                title += u' w %s ' % flection.get_case(unicode(self['kind']), u'miejscownik')
+                title += u' w %s ' % flection.get_case(str(self['kind']), u'miejscownik')
             else:
                 title += u' w twórczości '
         else:
-            title += u'%s ' % unicode(self.get('kind', u'twórczość'))
+            title += u'%s ' % str(self.get('kind', u'twórczość'))
 
     if 'author' in self:
-        title += flection.get_case(unicode(self['author']), u'dopełniacz')
+        title += flection.get_case(str(self['author']), u'dopełniacz')
     elif 'epoch' in self:
-        title += flection.get_case(unicode(self['epoch']), u'dopełniacz')
+        title += flection.get_case(str(self['epoch']), u'dopełniacz')
 
     return capfirst(title)
 

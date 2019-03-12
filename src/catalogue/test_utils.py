@@ -58,25 +58,25 @@ class BookInfoStub(object):
     def __getattr__(self, key):
         try:
             return self.__dict[key]
-        except KeyError:
+        except KeyError as e:
             if key in self._empty_fields:
                 return None
             elif key in self._salias:
                 return [getattr(self, self._salias[key])]
             else:
-                raise
+                raise AttributeError(e)
 
     def to_dict(self):
-        return dict((key, unicode(value)) for key, value in self.__dict.items())
+        return dict((key, str(value)) for key, value in self.__dict.items())
 
 
 def info_args(title, language=None):
     """ generate some keywords for comfortable BookInfoCreation  """
-    slug = unicode(slugify(title))
+    slug = str(slugify(title))
     if language is None:
         language = u'pol'
     return {
-        'title': unicode(title),
+        'title': str(title),
         'url': WLURI.from_slug(slug),
         'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
         'language': language,

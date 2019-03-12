@@ -14,8 +14,8 @@ KEPT_FIELDS = {
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        for provider, kept_fields in KEPT_FIELDS.iteritems():
+        for provider, kept_fields in KEPT_FIELDS.items():
             for sa in SocialAccount.objects.filter(provider=provider):
-                trimmed_data = {k: v for k, v in sa.extra_data.iteritems() if k in kept_fields}
+                trimmed_data = {k: v for k, v in sa.extra_data.items() if k in kept_fields}
                 sa.extra_data = trimmed_data
                 sa.save()

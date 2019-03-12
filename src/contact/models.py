@@ -2,7 +2,7 @@
 import yaml
 from hashlib import sha1
 from django.db import models
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 from jsonfield import JSONField
 from . import app_settings
@@ -20,7 +20,7 @@ class Contact(models.Model):
         if type(value) in (tuple, list, dict):
             value = yaml.safe_dump(value, allow_unicode=True, default_flow_style=False)
             if for_html:
-                value = smart_unicode(value).replace(u" ", unichr(160))
+                value = smart_text(value).replace(u" ", unichr(160))
         return value
 
     class Meta:
@@ -28,11 +28,11 @@ class Contact(models.Model):
         verbose_name = _('submitted form')
         verbose_name_plural = _('submitted forms')
 
-    def __unicode__(self):
-        return unicode(self.created_at)
+    def __str__(self):
+        return str(self.created_at)
 
     def digest(self):
-        serialized_body = ';'.join(sorted('%s:%s' % item for item in self.body.iteritems()))
+        serialized_body = ';'.join(sorted('%s:%s' % item for item in self.body.items()))
         data = '%s%s%s%s%s' % (self.id, self.contact, serialized_body, self.ip, self.form_tag)
         return sha1(data).hexdigest()
 

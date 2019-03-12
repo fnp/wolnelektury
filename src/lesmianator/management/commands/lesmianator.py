@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import re
-from cPickle import dump
-from optparse import make_option
+from pickle import dump
 
 from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
@@ -17,15 +15,18 @@ re_text = re.compile(r'\n{3,}(.*?)\n*-----\n', re.S).search
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('-t', '--tags', dest='tags', metavar='SLUG,...',
-                    help='Use only books tagged with this tags'),
-        make_option('-i', '--include', dest='include', metavar='SLUG,...',
-                    help='Include specific books by slug'),
-        make_option('-e', '--exclude', dest='exclude', metavar='SLUG,...',
-                    help='Exclude specific books by slug')
-    )
-    help = 'Prepare data for Lesmianator.'
+    help = 'Prepare data for Leśmianator.'
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '-t', '--tags', dest='tags', metavar='SLUG,...',
+            help='Use only books tagged with this tags')
+        parser.add_argument(
+            '-i', '--include', dest='include', metavar='SLUG,...',
+            help='Include specific books by slug')
+        parser.add_argument(
+            '-e', '--exclude', dest='exclude', metavar='SLUG,...',
+            help='Exclude specific books by slug')
 
     def handle(self, *args, **options):
         self.style = color_style()
@@ -37,7 +38,7 @@ class Command(BaseCommand):
         try:
             path = settings.LESMIANATOR_PICKLE
         except AttributeError:
-            print self.style.ERROR('LESMIANATOR_PICKLE not set in the settings.')
+            print(self.style.ERROR('LESMIANATOR_PICKLE not set in the settings.'))
             return
 
         books = []
@@ -59,22 +60,22 @@ class Command(BaseCommand):
         processed = skipped = 0
         for book in books:
             if verbose >= 2:
-                print 'Parsing', book.slug
+                print('Parsing', book.slug)
             if not book.txt_file:
                 if verbose >= 1:
-                    print self.style.NOTICE('%s has no TXT file' % book.slug)
+                    print(self.style.NOTICE('%s has no TXT file' % book.slug))
                 skipped += 1
                 continue
             f = open(book.txt_file.path)
             m = re_text(f.read())
             if not m:
-                print self.style.ERROR("Unknown text format: %s" % book.slug)
+                print(self.style.ERROR("Unknown text format: %s" % book.slug))
                 skipped += 1
                 continue
 
             processed += 1
             last_word = ''
-            text = unicode(m.group(1), 'utf-8').lower()
+            text = str(m.group(1), 'utf-8').lower()
             for letter in text:
                 mydict = lesmianator.setdefault(last_word, {})
                 mydict.setdefault(letter, 0)
@@ -84,18 +85,18 @@ class Command(BaseCommand):
 
         if not processed:
             if skipped:
-                print self.style.ERROR("No books with TXT files found")
+                print(self.style.ERROR("No books with TXT files found"))
             else:
-                print self.style.ERROR("No books found")
+                print(self.style.ERROR("No books found"))
             return
 
         try:
             dump(lesmianator, open(path, 'w'))
         except IOError:
-            print self.style.ERROR("Couldn't write to $s" % path)
+            print(self.style.ERROR("Couldn't write to $s" % path))
             return
 
         dump(lesmianator, open(path, 'w'))
         if verbose >= 1:
-            print "%d processed, %d skipped" % (processed, skipped)
-            print "Results dumped to %s" % path
+            print("%d processed, %d skipped" % (processed, skipped))
+            print("Results dumped to %s" % path)

@@ -17,7 +17,8 @@ LICENSES = {
 LICENSES['http://creativecommons.org/licenses/by-sa/3.0/deed.pl'] = \
     LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
 
-for license, data in LICENSES.items():
+
+for license, data in list(LICENSES.items()):
     LICENSES[license.replace('http://', 'https://')] = data
 
 # Those will be generated only for books with own HTML.

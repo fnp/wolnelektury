@@ -2,11 +2,10 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-import cPickle
-from cPickle import PickleError
+import pickle
+from pickle import PickleError
 from datetime import datetime
 from random import randint
-from StringIO import StringIO
 
 from django.core.files.base import ContentFile
 from django.db import models
@@ -33,7 +32,7 @@ class Poem(models.Model):
 
     try:
         f = open(settings.LESMIANATOR_PICKLE)
-        global_dictionary = cPickle.load(f)
+        global_dictionary = pickle.load(f)
         f.close()
     except (IOError, AttributeError, PickleError):
         global_dictionary = {}
@@ -43,7 +42,7 @@ class Poem(models.Model):
         self.seen_at = datetime.utcnow().replace(tzinfo=utc)
         self.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s (%s...)" % (self.slug, self.text[:20])
 
     @staticmethod
@@ -109,8 +108,8 @@ class Continuations(models.Model):
     class Meta:
         unique_together = (('content_type', 'object_id'), )
 
-    def __unicode__(self):
-        return "Continuations for: %s" % unicode(self.content_object)
+    def __str__(self):
+        return "Continuations for: %s" % str(self.content_object)
 
     @staticmethod
     def join_conts(a, b):
@@ -124,7 +123,6 @@ class Continuations(models.Model):
     @classmethod
     def for_book(cls, book, length=3):
         # count from this book only
-        output = StringIO()
         wldoc = book.wldocument(parse_dublincore=False)
         output = wldoc.as_text(('raw-text',)).get_bytes()
         del wldoc
@@ -158,7 +156,7 @@ class Continuations(models.Model):
             if not obj.pickle:
                 raise cls.DoesNotExist
             f = open(obj.pickle.path)
-            keys, conts = cPickle.load(f)
+            keys, conts = pickle.load(f)
             f.close()
             if set(keys) != should_keys:
                 raise cls.DoesNotExist
@@ -172,6 +170,6 @@ class Continuations(models.Model):
                 raise NotImplementedError('Lesmianator continuations: only Book and Tag supported')
 
             c, created = cls.objects.get_or_create(content_type=object_type, object_id=sth.id)
-            c.pickle.save(sth.slug+'.p', ContentFile(cPickle.dumps((should_keys, conts))))
+            c.pickle.save(sth.slug+'.p', ContentFile(pickle.dumps((should_keys, conts))))
             c.save()
             return conts

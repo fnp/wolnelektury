@@ -1,17 +1,13 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import os
 import time
-from optparse import make_option
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db import models
-
 import polib
 from modeltranslation.translator import translator, NotRegistered
-
 from wolnelektury.utils import makedirs
 
 
@@ -48,18 +44,26 @@ def get_languages(langs):
 
 
 class Command(BaseCommand):
-    option_list = BaseCommand.option_list + (
-        make_option('-d', '--directory', help='Specify which directory should hold generated PO files',
-                    dest='directory', default=''),
-        make_option('-l', '--load', help='load locales back to source', action='store_true', dest='load',
-                    default=False),
-        make_option('-L', '--language', help='locales to load', dest='lang', default=None),
-        make_option('-n', '--poname', help='name of the po file [no extension]', dest='poname', default=None),
-        make_option('-k', '--keep-running', help='keep running even when missing an input file', dest='keep_running',
-                    default=False, action='store_true'),
-    )
     help = 'Export models from app to po files'
-    args = 'app'
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+                '-d', '--directory', dest='directory', default='',
+                help='Specify which directory should hold generated PO files')
+        parser.add_argument(
+                '-l', '--load', help='load locales back to source',
+                action='store_true', dest='load', default=False)
+        parser.add_argument(
+                '-L', '--language', help='locales to load',
+                dest='lang', default=None)
+        parser.add_argument(
+                '-n', '--poname', help='name of the po file [no extension]',
+                dest='poname', default=None)
+        parser.add_argument(
+                '-k', '--keep-running', dest='keep_running',
+                help='keep running even when missing an input file',
+                default=False, action='store_true')
+        parser.add_argument('app')
 
     def get_models(self, app):
         for mdname in dir(app.models):
@@ -78,7 +82,8 @@ class Command(BaseCommand):
             else:
                 yield (md, opts)
 
-    def handle(self, appname, **options):
+    def handle(self, **options):
+        appname = options['app']
         if not options['poname']:
             options['poname'] = appname
         app = __import__(appname)

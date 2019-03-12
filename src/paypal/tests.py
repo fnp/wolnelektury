@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib.auth.models import User
-from mock import MagicMock, Mock, patch, DEFAULT
+from unittest.mock import MagicMock, Mock, patch, DEFAULT
 from catalogue.test_utils import WLTestCase
 from .models import BillingAgreement, BillingPlan
 from .rest import user_is_subscribed

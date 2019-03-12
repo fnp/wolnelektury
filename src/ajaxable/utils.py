@@ -6,7 +6,7 @@ from functools import wraps
 
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 from django.utils.functional import Promise
 from django.utils.http import urlquote_plus
 import json
@@ -18,7 +18,7 @@ from honeypot.decorators import verify_honeypot_value
 class LazyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Promise):
-            return force_unicode(obj)
+            return force_text(obj)
         return obj
 
 

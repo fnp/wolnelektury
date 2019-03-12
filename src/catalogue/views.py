@@ -171,10 +171,10 @@ def analyse_tags(request, tag_str):
             raise ResponseInstead(pdcounter_views.author_detail(request, chunks[1]))
         else:
             raise Http404
-    except Tag.MultipleObjectsReturned, e:
+    except Tag.MultipleObjectsReturned as e:
         # Ask the user to disambiguate
         raise ResponseInstead(differentiate_tags(request, e.tags, e.ambiguous_slugs))
-    except Tag.UrlDeprecationWarning, e:
+    except Tag.UrlDeprecationWarning as e:
         raise ResponseInstead(HttpResponsePermanentRedirect(
             reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)])))
 

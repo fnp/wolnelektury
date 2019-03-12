@@ -43,7 +43,7 @@ class TagRelation(models.Model):
         db_table = 'catalogue_tag_relation'
         unique_together = (('tag', 'content_type', 'object_id'),)
 
-    def __unicode__(self):
+    def __str__(self):
         try:
             return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
         except ObjectDoesNotExist:
@@ -92,7 +92,7 @@ class Tag(models.Model):
         'polka': 'set',
         'obiekt': 'thing',
     }
-    categories_dict = dict((item[::-1] for item in categories_rev.iteritems()))
+    categories_dict = dict((item[::-1] for item in categories_rev.items()))
 
     class Meta:
         ordering = ('sort_key',)
@@ -155,7 +155,7 @@ class Tag(models.Model):
         flush_ssi_includes([
             '/katalog/%s.json' % lang for lang in languages])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def __repr__(self):
@@ -234,7 +234,7 @@ class Tag(models.Model):
         for field_name, category in categories:
             try:
                 tag_names = getattr(info, field_name)
-            except KeyError:
+            except (AttributeError, KeyError):  # TODO: shouldn't be KeyError here at all.
                 try:
                     tag_names = [getattr(info, category)]
                 except KeyError:
@@ -250,7 +250,7 @@ class Tag(models.Model):
                     # Allow creating new tag, if it's in default language.
                     tag, created = Tag.objects.get_or_create(slug=slugify(tag_name), category=category)
                     if created:
-                        tag_name = unicode(tag_name)
+                        tag_name = str(tag_name)
                         tag.name = tag_name
                         setattr(tag, "name_%s" % lang, tag_name)
                         tag.sort_key = sortify(tag_sort_key.lower())

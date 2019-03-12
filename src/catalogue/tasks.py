@@ -28,8 +28,8 @@ def index_book(book_id, book_info=None, **kwargs):
     from catalogue.models import Book
     try:
         return Book.objects.get(id=book_id).search_index(book_info, **kwargs)
-    except Exception, e:
-        print "Exception during index: %s" % e
+    except Exception as e:
+        print("Exception during index: %s" % e)
         print_exc()
         raise e
 
@@ -56,7 +56,7 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
                 morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
                 ilustr_path=gallery_path(wldoc.book_info.url.slug),
                 **kwargs)
-            DefaultStorage().save(file_name, File(open(pdf.get_filename())))
+            DefaultStorage().save(file_name, File(open(pdf.get_filename(), 'rb')))
     finally:
         if waiter_id is not None:
             WaitedFile.objects.filter(pk=waiter_id).delete()

@@ -157,11 +157,11 @@ def extract_view(request, form_tag, extract_type_slug):
                 for key in keys:
                     if key not in record:
                         record[key] = ''
-                    if isinstance(record[key], basestring):
+                    if isinstance(record[key], str):
                         pass
                     elif isinstance(record[key], bool):
                         record[key] = 'tak' if record[key] else 'nie'
-                    elif isinstance(record[key], (list, tuple)) and all(isinstance(v, basestring) for v in record[key]):
+                    elif isinstance(record[key], (list, tuple)) and all(isinstance(v, str) for v in record[key]):
                         record[key] = ', '.join(record[key])
                     else:
                         record[key] = json.dumps(record[key])

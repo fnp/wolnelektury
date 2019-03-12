@@ -4,7 +4,7 @@
 #
 import json
 import time
-from StringIO import StringIO
+from io import BytesIO
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
@@ -24,7 +24,7 @@ class Sponsor(models.Model):
     logo = models.ImageField(_('logo'), upload_to='sponsorzy/sponsor/logo')
     url = models.URLField(_('url'), blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def description(self):
@@ -75,7 +75,7 @@ class SponsorPage(models.Model):
                     (THUMB_WIDTH - simg.size[0]) / 2,
                     i * THUMB_HEIGHT + (THUMB_HEIGHT - simg.size[1]) / 2,
                     ))
-        imgstr = StringIO()
+        imgstr = BytesIO()
         sprite.save(imgstr, 'png')
 
         if self.sprite:
@@ -88,7 +88,7 @@ class SponsorPage(models.Model):
     html = property(fget=html)
 
     def save(self, *args, **kwargs):
-        if isinstance(self.sponsors, basestring):
+        if isinstance(self.sponsors, str):
             # Walkaround for weird jsonfield 'no-decode' optimization.
             self.sponsors = json.loads(self.sponsors)
         self.render_sprite()
@@ -103,5 +103,5 @@ class SponsorPage(models.Model):
     def flush_includes(self):
         flush_ssi_includes(['/sponsors/page/%s.html' % self.name])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name

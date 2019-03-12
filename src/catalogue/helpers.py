@@ -8,14 +8,14 @@ from django.core.cache import cache
 
 from .models import Tag, Book
 from os.path import getmtime
-import cPickle
+import pickle
 from collections import defaultdict
 
 
 BOOK_CATEGORIES = ('author', 'epoch', 'genre', 'kind')
 
 _COUNTERS = None
-_COUNTER_TIME = None
+_COUNTER_TIME = 0
 
 
 def get_top_level_related_tags(tags, categories=None):
@@ -28,10 +28,10 @@ def get_top_level_related_tags(tags, categories=None):
     global _COUNTERS, _COUNTER_TIME
     # First, check that we have a valid and recent version of the counters.
     if getmtime(settings.CATALOGUE_COUNTERS_FILE) > _COUNTER_TIME:
-        for i in xrange(10):
+        for i in range(10):
             try:
-                with open(settings.CATALOGUE_COUNTERS_FILE) as f:
-                    _COUNTERS = cPickle.load(f)
+                with open(settings.CATALOGUE_COUNTERS_FILE, 'rb') as f:
+                    _COUNTERS = pickle.load(f)
             except (EOFError, ValueError):
                 if i < 9:
                     continue
@@ -95,8 +95,8 @@ def update_counters():
         "next": dict(next_combinations),
     }
 
-    with open(settings.CATALOGUE_COUNTERS_FILE, 'w') as f:
-        cPickle.dump(counters, f)
+    with open(settings.CATALOGUE_COUNTERS_FILE, 'wb') as f:
+        pickle.dump(counters, f)
 
 
 def get_audiobook_tags():
