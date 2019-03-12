@@ -697,7 +697,7 @@ class Book(models.Model):
         """
 
         books_by_parent = {}
-        books = cls.objects.order_by('parent_number', 'sort_key').only('title', 'parent', 'slug')
+        books = cls.objects.order_by('parent_number', 'sort_key').only('title', 'parent', 'slug', 'extra_info')
         if book_filter:
             books = books.filter(book_filter).distinct()
 

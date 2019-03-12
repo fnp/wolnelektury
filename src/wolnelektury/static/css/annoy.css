@@ -60,3 +60,10 @@
 #annoy a#annoy-off:hover {
     cursor: pointer;
 }
+
+@media screen and (min-width: 1024px) {
+    #annoy-content {
+        width: 975px;
+        margin: auto;
+    }
+}
