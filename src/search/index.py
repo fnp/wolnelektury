@@ -1,29 +1,29 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf import settings
-
+from functools import total_ordering
+from itertools import chain
+import logging
+import operator
 import os
 import re
+from django.conf import settings
 from librarian import dcparser
 from librarian.parser import WLDocument
 from lxml import etree
+import scorched
 import catalogue.models
 import picture.models
 from pdcounter.models import Author as PDCounterAuthor, BookStub as PDCounterBook
-from itertools import chain
-import scorched
-from . import custom
-import operator
-import logging
 from wolnelektury.utils import makedirs
+from . import custom
 
 log = logging.getLogger('search')
 
+
 if os.path.isfile(settings.SOLR_STOPWORDS):
     stopwords = set(
-        line.decode('utf-8').strip()
+        line.strip()
         for line in open(settings.SOLR_STOPWORDS) if not line.startswith('#'))
 else:
     stopwords = set()
@@ -557,6 +557,7 @@ class Index(SolrIndex):
         self.index.add(doc)
 
 
+@total_ordering
 class SearchResult(object):
     def __init__(self, doc, how_found=None, query_terms=None):
         self.boost = 1.0
@@ -653,12 +654,12 @@ class SearchResult(object):
         # to sections and fragments
         frags = filter(lambda r: r[self.FRAGMENT] is not None, self._hits)
 
-        sect = filter(lambda r: r[self.FRAGMENT] is None, self._hits)
+        sect = [hit for hit in self._hits if hit[self.FRAGMENT] is None]
 
         # sections not covered by fragments
-        sect = filter(lambda s: 0 == len(filter(
+        sect = filter(lambda s: 0 == len(list(filter(
             lambda f: f[self.POSITION][self.POSITION_INDEX] <= s[self.POSITION][self.POSITION_INDEX] <
-                      f[self.POSITION][self.POSITION_INDEX] + f[self.POSITION][self.POSITION_SPAN], frags)), sect)
+                      f[self.POSITION][self.POSITION_INDEX] + f[self.POSITION][self.POSITION_SPAN], frags))), sect)
 
         def remove_duplicates(lst, keyfn, compare):
             els = {}
@@ -691,7 +692,7 @@ class SearchResult(object):
             m.update(s[self.OTHER])
             sections[si] = m
 
-        hits = sections.values()
+        hits = list(sections.values())
 
         for f in frags:
             try:
@@ -745,13 +746,13 @@ class SearchResult(object):
                     books[r.book_id] = r
         return books.values()
 
-    def __cmp__(self, other):
-        c = cmp(self.score, other.score)
-        if c == 0:
-            # this is inverted, because earlier date is better
-            return cmp(other.published_date, self.published_date)
-        else:
-            return c
+    def __lt__(self, other):
+        return (-self.score, self.published_date, self.book.sort_key_author, self.book.sort_key) > \
+               (-other.score, other.published_date, other.book.sort_key_author, other.book.sort_key)
+
+    def __eq__(self, other):
+        return (self.score, self.published_date, self.book.sort_key_author, self.book.sort_key) == \
+               (other.score, other.published_date, other.book.sort_key_author, other.book.sort_key)
 
     def __len__(self):
         return len(self.hits)
@@ -766,6 +767,7 @@ class SearchResult(object):
             return None
 
 
+@total_ordering
 class PictureResult(object):
     def __init__(self, doc, how_found=None, query_terms=None):
         self.boost = 1.0
@@ -866,8 +868,11 @@ class PictureResult(object):
                     books[r.picture_id] = r
         return books.values()
 
-    def __cmp__(self, other):
-        return cmp(self.score, other.score)
+    def __lt__(self, other):
+        return self.score < other.score
+
+    def __eq__(self, other):
+        return self.score == other.score
 
 
 class Search(SolrIndex):
@@ -975,8 +980,8 @@ class Search(SolrIndex):
         finally:
             snippets.close()
 
-            # remove verse end markers..
-        snips = map(lambda s: s and s.replace("/\n", "\n"), snips)
+        # remove verse end markers..
+        snips = [s.replace("/\n", "\n") if s else s for s in snips]
 
         searchresult.snippets = snips
 

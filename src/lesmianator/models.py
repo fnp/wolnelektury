@@ -31,7 +31,7 @@ class Poem(models.Model):
     view_count = models.IntegerField(_('view count'), default=1)
 
     try:
-        f = open(settings.LESMIANATOR_PICKLE)
+        f = open(settings.LESMIANATOR_PICKLE, 'rb')
         global_dictionary = pickle.load(f)
         f.close()
     except (IOError, AttributeError, PickleError):

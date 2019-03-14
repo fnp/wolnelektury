@@ -1,45 +1,12 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from scorched import connection
-from lxml import etree
+import re
 from urllib.parse import urlencode
 import warnings
-from scorched import search
-import copy
 from httplib2 import socket
-import re
-
-
-class TermVectorOptions(search.Options):
-    def __init__(self, schema, original=None):
-        self.schema = schema
-        if original is None:
-            self.fields = set()
-            self.positions = False
-        else:
-            self.fields = copy.copy(original.fields)
-            self.positions = copy.copy(original.positions)
-
-    def update(self, positions=False, fields=None):
-        if fields is None:
-            fields = []
-        if isinstance(fields, (str, bytes)):
-            fields = [fields]
-        self.schema.check_fields(fields, {"stored": True})
-        self.fields.update(fields)
-        self.positions = positions
-
-    def options(self):
-        opts = {}
-        if self.positions or self.fields:
-            opts['tv'] = 'true'
-        if self.positions:
-            opts['tv.positions'] = 'true'
-        if self.fields:
-            opts['tv.fl'] = ','.join(sorted(self.fields))
-        return opts
+from lxml import etree
+from scorched import connection, exc, search
 
 
 class CustomSolrConnection(connection.SolrConnection):
@@ -61,47 +28,42 @@ class CustomSolrConnection(connection.SolrConnection):
             )
         else:
             kwargs = dict(method="GET")
-        r, c = self.request(url, **kwargs)
-        if r.status != 200:
-            raise connection.SolrError(r, c)
-        return c
-
-
-# monkey patching scorched SolrSearch
-search.SolrSearch.option_modules += ('term_vectorer',)
-
-
-def __term_vector(self, positions=False, fields=None):
-    newself = self.clone()
-    newself.term_vectorer.update(positions, fields)
-    return newself
-setattr(search.SolrSearch, 'term_vector', __term_vector)
-
-
-def __patched__init_common_modules(self):
-    __original__init_common_modules(self)
-    self.term_vectorer = TermVectorOptions(self.schema)
-__original__init_common_modules = search.SolrSearch._init_common_modules
-setattr(search.SolrSearch, '_init_common_modules', __patched__init_common_modules)
+        response = self.request(url=url, **kwargs)
+        if response.status_code != 200:
+            raise exc.SolrError(response)
+        return response.content
 
 
 class CustomSolrInterface(connection.SolrInterface):
     # just copied from parent and SolrConnection -> CustomSolrConnection
-    def __init__(self, url, schemadoc=None, http_connection=None, mode='', retry_timeout=-1,
-                 max_length_get_url=connection.MAX_LENGTH_GET_URL):
-        self.conn = CustomSolrConnection(url, http_connection, retry_timeout, max_length_get_url)
-        self.schemadoc = schemadoc
-        if 'w' not in mode:
-            self.writeable = False
-        elif 'r' not in mode:
-            self.readable = False
-        try:
-            self.init_schema()
-        except socket.error as e:
-            raise socket.error("Cannot connect to Solr server, and search indexing is enabled (%s)" % str(e))
+    def __init__(self, url, http_connection=None, mode='',
+                 retry_timeout=-1, max_length_get_url=connection.MAX_LENGTH_GET_URL,
+                 search_timeout=()):
+        """
+        :param url: url to Solr
+        :type url: str
+        :param http_connection: optional -- already existing connection
+        :type http_connection: requests connection
+        :param mode: optional -- mode (readable, writable) Solr
+        :type mode: str
+        :param retry_timeout: optional -- timeout until retry
+        :type retry_timeout: int
+        :param max_length_get_url: optional -- max length until switch to post
+        :type max_length_get_url: int
+        :param search_timeout: (optional) How long to wait for the server to
+                               send data before giving up, as a float, or a
+                               (connect timeout, read timeout) tuple.
+        :type search_timeout: float or tuple
+        """
+
+        self.conn = CustomSolrConnection(
+            url, http_connection, mode, retry_timeout, max_length_get_url)
+        self.schema = self.init_schema()
+        self._datefields = self._extract_datefields(self.schema)
+
 
     def _analyze(self, **kwargs):
-        if not self.readable:
+        if not self.conn.readable:
             raise TypeError("This Solr instance is only for writing")
         args = {
             'analysis_showmatch': True
@@ -115,7 +77,10 @@ class CustomSolrInterface(connection.SolrInterface):
         if 'query' in kwargs:
             args['q'] = kwargs['q']
 
-        params = map(lambda k, v: (k.replace('_', '.'), v), connection.params_from_dict(**args))
+        params = [
+            (k.replace('_', '.'), v)
+            for (k, v) in search.params_from_dict(**args)
+        ]
 
         content = self.conn.analyze(params)
         doc = etree.fromstring(content)
@@ -178,7 +143,7 @@ class CustomSolrInterface(connection.SolrInterface):
             new_matches.append(m)
 
         snip = text[start:end]
-        new_matches.sort(lambda a, b: cmp(b[0], a[0]))
+        new_matches.sort(key=lambda a: -a[0])
 
         for (s, e) in new_matches:
             off = -start

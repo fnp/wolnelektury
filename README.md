@@ -23,20 +23,19 @@ License
 Dependencies
 ============
 
- * Python 2.7
+ * Python 3.4+
  * All packages listed in requirements.txt
  * Sass>=3.2
 
 How to deploy (development version)
 =============
 
-1. Checkout the source code from Github and enter the directory
+1. Checkout the source code from Git and enter the directory
 2. Install libraries (we recommend using pip):
 
     pip install -r requirements/requirements.txt
-    git submodule update --init
 
-3. Setup your local configuration based on settings.py. You need to generate a new SECRET_KEY, database stuff and domain related stuff.
+3. Setup your local configuration in src/wolnelektury/localsettings.py. You need to generate a new SECRET_KEY, database stuff and domain related stuff.
 4. Populate database:
     
     ./manage.py migrate
