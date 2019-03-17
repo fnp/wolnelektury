@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from functools import reduce
 import pickle
 from pickle import PickleError
 from datetime import datetime
@@ -155,7 +155,7 @@ class Continuations(models.Model):
             obj = cls.objects.get(content_type=object_type, object_id=sth.id)
             if not obj.pickle:
                 raise cls.DoesNotExist
-            f = open(obj.pickle.path)
+            f = open(obj.pickle.path, 'rb')
             keys, conts = pickle.load(f)
             f.close()
             if set(keys) != should_keys:

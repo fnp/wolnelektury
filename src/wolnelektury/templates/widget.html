@@ -15,7 +15,7 @@
         <a href="/">
           <img src="{% static 'img/logo-neon.png' %}">
         </a>
-        <form action="{% url 'search' %}" method="get" accept-charset="utf-8" id="wl-form">
+        <form action="{% url 'wlsearch' %}" method="get" accept-charset="utf-8" id="wl-form">
           <div id="wl-search">
             <input data-source="{% url 'search_hint' %}?max=3" id="id_qq" name="q" title="tytuł, autor, motyw/temat, epoka, rodzaj, gatunek, cytat" placeholder="tytuł, autor, motyw/temat, epoka, rodzaj, gatunek, cytat" type="text" value=""/>
           </div>

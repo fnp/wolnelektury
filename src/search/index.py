@@ -1,7 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from functools import total_ordering
+from functools import reduce, total_ordering
 from itertools import chain
 import logging
 import operator
@@ -713,12 +713,12 @@ class SearchResult(object):
                             break
 
             def theme_by_name(n):
-                th = filter(lambda t: t.name == n, themes)
+                th = list(filter(lambda t: t.name == n, themes))
                 if th:
                     return th[0]
                 else:
                     return None
-            themes_hit = filter(lambda a: a is not None, map(theme_by_name, themes_hit))
+            themes_hit = list(filter(lambda a: a is not None, map(theme_by_name, themes_hit)))
 
             m = {'score': f[self.SCORE],
                  'fragment': frag,

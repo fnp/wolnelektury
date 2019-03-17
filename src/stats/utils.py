@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -6,7 +5,7 @@ from django.conf import settings
 from datetime import datetime
 import logging
 from functools import update_wrapper
-import urllib
+from urllib.parse import urlencode
 from random import random
 from inspect import isclass
 
@@ -18,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 def piwik_url(request):
-    return urllib.urlencode(dict(
+    return urlencode(dict(
         idsite=getattr(settings, 'PIWIK_SITE_ID', '0'),
         rec=1,
         url=force_bytes('http://%s%s' % (request.META['HTTP_HOST'], request.path)),

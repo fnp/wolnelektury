@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from hashlib import md5
 
 from django.conf import settings
@@ -8,7 +6,7 @@ from mailchimp3.mailchimpclient import MailChimpError
 
 
 def subscriber_hash(email):
-    return md5(email).hexdigest()
+    return md5(email.encode('utf-8')).hexdigest()
 
 
 def remove_from_groups(email, client):

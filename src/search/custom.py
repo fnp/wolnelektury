@@ -23,7 +23,7 @@ class CustomSolrConnection(connection.SolrConnection):
             url = self.analysis_url
             kwargs = dict(
                 method="POST",
-                body=qs,
+                data=qs,
                 headers={"Content-Type": "application/x-www-form-urlencoded"},
             )
         else:
