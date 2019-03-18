@@ -130,7 +130,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='collection',
             name='kind',
-            field=models.CharField(default=b'book', max_length=10, verbose_name='kind', db_index=True, choices=[(b'book', 'book'), (b'picture', b'picture')]),
+            field=models.CharField(default='book', max_length=10, verbose_name='kind', db_index=True, choices=[('book', 'book'), ('picture', 'picture')]),
         ),
         migrations.AlterField(
             model_name='collection',
@@ -190,7 +190,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='tag',
             name='category',
-            field=models.CharField(db_index=True, max_length=50, verbose_name='category', choices=[(b'author', 'author'), (b'epoch', 'epoch'), (b'kind', 'kind'), (b'genre', 'genre'), (b'theme', 'theme'), (b'set', 'set'), (b'thing', 'thing')]),
+            field=models.CharField(db_index=True, max_length=50, verbose_name='category', choices=[('author', 'author'), ('epoch', 'epoch'), ('kind', 'kind'), ('genre', 'genre'), ('theme', 'theme'), ('set', 'set'), ('thing', 'thing')]),
         ),
         migrations.AlterField(
             model_name='tag',

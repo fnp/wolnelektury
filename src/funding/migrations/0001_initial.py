@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('start', models.DateField(verbose_name='start', db_index=True)),
                 ('end', models.DateField(verbose_name='end', db_index=True)),
                 ('redakcja_url', models.URLField(verbose_name='redakcja URL', blank=True)),
-                ('cover', models.ImageField(upload_to=b'funding/covers', verbose_name='Cover')),
+                ('cover', models.ImageField(upload_to='funding/covers', verbose_name='Cover')),
                 ('notified_near', models.DateTimeField(null=True, verbose_name='Near-end notifications sent', blank=True)),
                 ('notified_end', models.DateTimeField(null=True, verbose_name='End notifications sent', blank=True)),
                 ('book', models.ForeignKey(blank=True, to='catalogue.Book', help_text='Published book.', null=True)),

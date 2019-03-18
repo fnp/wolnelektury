@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Continuations',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('pickle', models.FileField(upload_to=b'lesmianator', verbose_name='Continuations file')),
+                ('pickle', models.FileField(upload_to='lesmianator', verbose_name='Continuations file')),
                 ('object_id', models.PositiveIntegerField()),
                 ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
             ],

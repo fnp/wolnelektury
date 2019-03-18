@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bookmedia',
             name='part_name',
-            field=models.CharField(default=b'', max_length=512, verbose_name='part name', blank=True),
+            field=models.CharField(default='', max_length=512, verbose_name='part name', blank=True),
         ),
     ]

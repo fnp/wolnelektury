@@ -35,6 +35,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='picturearea',
             name='kind',
-            field=models.CharField(db_index=True, max_length=10, verbose_name='kind', choices=[(b'thing', 'thing'), (b'theme', 'theme')]),
+            field=models.CharField(db_index=True, max_length=10, verbose_name='kind', choices=[('thing', 'thing'), ('theme', 'theme')]),
         ),
     ]

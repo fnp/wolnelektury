@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='isbnpool',
             name='purpose',
-            field=models.CharField(default='', max_length=4, choices=[(b'WL', b'Wolne Lektury'), (b'FNP', b'Fundacja Nowoczesna Polska')]),
+            field=models.CharField(default='', max_length=4, choices=[('WL', 'Wolne Lektury'), ('FNP', 'Fundacja Nowoczesna Polska')]),
             preserve_default=False,
         ),
     ]

@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='notification',
             name='image',
-            field=models.ImageField(upload_to=b'push/img', verbose_name='image', blank=True),
+            field=models.ImageField(upload_to='push/img', verbose_name='image', blank=True),
         ),
     ]

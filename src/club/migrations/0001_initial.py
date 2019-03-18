@@ -92,7 +92,7 @@ class Migration(migrations.Migration):
                 ('key', models.CharField(max_length=255, unique=True, verbose_name='key')),
                 ('email', models.EmailField(max_length=254, verbose_name='email')),
                 ('amount', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='amount')),
-                ('method', models.CharField(choices=[(b'payu', b'PayU'), (b'payu-re', b'PayU Recurring'), (b'paypal-re', b'PayPal Recurring')], max_length=255, verbose_name='method')),
+                ('method', models.CharField(choices=[('payu', 'PayU'), ('payu-re', 'PayU Recurring'), ('paypal-re', 'PayPal Recurring')], max_length=255, verbose_name='method')),
                 ('is_active', models.BooleanField(default=False, verbose_name='active')),
                 ('is_cancelled', models.BooleanField(default=False, verbose_name='cancelled')),
                 ('started_at', models.DateTimeField(auto_now_add=True, verbose_name='started at')),

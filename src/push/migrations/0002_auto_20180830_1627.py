@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='notification',
             name='image',
-            field=models.FileField(upload_to=b'push/img', verbose_name='image', blank=True),
+            field=models.FileField(upload_to='push/img', verbose_name='image', blank=True),
         ),
         migrations.AlterField(
             model_name='notification',

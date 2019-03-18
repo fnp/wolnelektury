@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='tag',
             name='category',
-            field=models.CharField(db_index=True, max_length=50, verbose_name='Category', choices=[(b'author', 'author'), (b'epoch', 'period'), (b'kind', 'form'), (b'genre', 'genre'), (b'theme', 'motif'), (b'set', 'set'), (b'thing', 'thing')]),
+            field=models.CharField(db_index=True, max_length=50, verbose_name='Category', choices=[('author', 'author'), ('epoch', 'period'), ('kind', 'form'), ('genre', 'genre'), ('theme', 'motif'), ('set', 'set'), ('thing', 'thing')]),
         ),
 
         migrations.RemoveField(

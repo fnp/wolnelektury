@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='ancestor',
-            field=models.ManyToManyField(related_name=b'descendant', null=True, editable=False, to='catalogue.Book', blank=True),
+            field=models.ManyToManyField(related_name='descendant', null=True, editable=False, to='catalogue.Book', blank=True),
             preserve_default=True,
         ),
     ]

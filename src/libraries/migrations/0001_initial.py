@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(max_length=120, unique=True, null=True, verbose_name='Slug')),
                 ('url', models.CharField(max_length=120, verbose_name='url', blank=True)),
                 ('description', models.TextField(verbose_name='Description', blank=True)),
-                ('catalog', models.ForeignKey(related_name=b'libraries', on_delete=django.db.models.deletion.PROTECT, to='libraries.Catalog')),
+                ('catalog', models.ForeignKey(related_name='libraries', on_delete=django.db.models.deletion.PROTECT, to='libraries.Catalog')),
             ],
             options={
                 'verbose_name': 'library',

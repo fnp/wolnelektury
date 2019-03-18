@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('key', models.CharField(max_length=18)),
                 ('secret', models.CharField(max_length=32)),
-                ('status', models.CharField(choices=[(b'pending', b'Pending approval'), (b'accepted', b'Accepted'), (b'canceled', b'Canceled')], default=b'pending', max_length=16)),
+                ('status', models.CharField(choices=[('pending', 'Pending approval'), ('accepted', 'Accepted'), ('canceled', 'Canceled')], default='pending', max_length=16)),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='consumers', to=settings.AUTH_USER_MODEL)),
             ],
         ),

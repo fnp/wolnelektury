@@ -7,7 +7,6 @@ from django.db import models, migrations
 import sorl.thumbnail.fields
 import jsonfield.fields
 import django.core.files.storage
-from django.utils.encoding import force_bytes
 
 
 class Migration(migrations.Migration):
@@ -26,9 +25,9 @@ class Migration(migrations.Migration):
                 ('sort_key_author', models.CharField(default='', verbose_name='sort key by author', max_length=120, editable=False, db_index=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
                 ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
-                ('xml_file', models.FileField(upload_to=b'xml', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=join(force_bytes(settings.MEDIA_ROOT), b'pictures')), verbose_name=b'xml_file')),
-                ('image_file', sorl.thumbnail.fields.ImageField(upload_to=b'images', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=join(force_bytes(settings.MEDIA_ROOT), b'pictures')), verbose_name='image_file')),
-                ('html_file', models.FileField(upload_to=b'html', storage=django.core.files.storage.FileSystemStorage(base_url=b'/media/pictures/', location=join(force_bytes(settings.MEDIA_ROOT), b'pictures')), verbose_name=b'html_file')),
+                ('xml_file', models.FileField(upload_to='xml', storage=django.core.files.storage.FileSystemStorage(base_url='/media/pictures/', location=join(settings.MEDIA_ROOT, 'pictures')), verbose_name='xml_file')),
+                ('image_file', sorl.thumbnail.fields.ImageField(upload_to='images', storage=django.core.files.storage.FileSystemStorage(base_url='/media/pictures/', location=join(settings.MEDIA_ROOT, 'pictures')), verbose_name='image_file')),
+                ('html_file', models.FileField(upload_to='html', storage=django.core.files.storage.FileSystemStorage(base_url='/media/pictures/', location=join(settings.MEDIA_ROOT, 'pictures')), verbose_name='html_file')),
                 ('areas_json', jsonfield.fields.JSONField(default={}, verbose_name='picture areas JSON', editable=False)),
                 ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information')),
                 ('culturepl_link', models.CharField(max_length=240, blank=True)),
@@ -49,8 +48,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('area', jsonfield.fields.JSONField(default={}, verbose_name='area', editable=False)),
-                ('kind', models.CharField(db_index=True, max_length=10, verbose_name='form', choices=[(b'thing', 'thing'), (b'theme', 'motif')])),
-                ('picture', models.ForeignKey(related_name=b'areas', to='picture.Picture')),
+                ('kind', models.CharField(db_index=True, max_length=10, verbose_name='form', choices=[('thing', 'thing'), ('theme', 'motif')])),
+                ('picture', models.ForeignKey(related_name='areas', to='picture.Picture')),
             ],
             options={
             },

@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='payment',
             name='status',
-            field=models.CharField(default=b'new', max_length=20, verbose_name='status', db_index=True, choices=[(b'new', 'new'), (b'in_progress', 'in progress'), (b'accepted_for_proc', 'accepted for processing'), (b'partially_paid', 'partially paid'), (b'paid', 'paid'), (b'cancelled', 'cancelled'), (b'failed', 'failed')]),
+            field=models.CharField(default='new', max_length=20, verbose_name='status', db_index=True, choices=[('new', 'new'), ('in_progress', 'in progress'), ('accepted_for_proc', 'accepted for processing'), ('partially_paid', 'partially paid'), ('paid', 'paid'), ('cancelled', 'cancelled'), ('failed', 'failed')]),
         ),
     ]

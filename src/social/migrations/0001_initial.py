@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('vip', models.CharField(max_length=128, null=True, verbose_name='VIP', blank=True)),
                 ('link', models.URLField(verbose_name='link')),
                 ('sticky', models.BooleanField(default=False, help_text='Sticky cites will take precedense.', db_index=True, verbose_name='sticky')),
-                ('image', models.ImageField(help_text='Best image is exactly 975px wide and weights under 100kB.', upload_to=b'social/cite', null=True, verbose_name='image', blank=True)),
+                ('image', models.ImageField(help_text='Best image is exactly 975px wide and weights under 100kB.', upload_to='social/cite', null=True, verbose_name='image', blank=True)),
                 ('image_shift', models.IntegerField(help_text='Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.', null=True, verbose_name='shift', blank=True)),
                 ('image_title', models.CharField(max_length=255, null=True, verbose_name='Title', blank=True)),
                 ('image_author', models.CharField(max_length=255, null=True, verbose_name='author', blank=True)),

@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('tag', models.CharField(max_length=64)),
-                ('file', models.FileField(upload_to=b'contact/attachment')),
+                ('file', models.FileField(upload_to='contact/attachment')),
             ],
         ),
         migrations.CreateModel(

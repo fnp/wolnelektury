@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('content', models.TextField(verbose_name='content')),
                 ('vote_count', models.IntegerField(default=0, verbose_name='vote count')),
-                ('poll', models.ForeignKey(related_name=b'items', to='polls.Poll')),
+                ('poll', models.ForeignKey(related_name='items', to='polls.Poll')),
             ],
             options={
                 'verbose_name': 'vote item',

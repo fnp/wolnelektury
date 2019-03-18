@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='onixrecord',
             name='dc_slug',
-            field=models.CharField(default=b'', max_length=256, db_index=True),
+            field=models.CharField(default='', max_length=256, db_index=True),
         ),
         migrations.AlterUniqueTogether(
             name='onixrecord',
