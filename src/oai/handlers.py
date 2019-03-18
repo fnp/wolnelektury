@@ -98,12 +98,12 @@ class Catalogue(common.ResumptionOAIPMH):
         identifier = self.slug_to_identifier(book.slug)
         if isinstance(book, Book):
             # setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
-            header = common.Header(identifier, make_time_naive(book.changed_at), [], False)
+            header = common.Header(None, identifier, make_time_naive(book.changed_at), [], False)
             if not headers_only:
                 meta = common.Metadata(self.metadata(book))
             about = None
         elif isinstance(book, Deleted):
-            header = common.Header(identifier, make_time_naive(book.deleted_at), [], True)
+            header = common.Header(None, identifier, make_time_naive(book.deleted_at), [], True)
             if not headers_only:
                 meta = common.Metadata({})
             about = None

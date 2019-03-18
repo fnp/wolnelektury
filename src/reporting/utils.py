@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -72,7 +71,7 @@ def render_to_csv(output_path, template, context=None, add_files=None):
     makedirs(os.path.dirname(output_path))
 
     rendered = render_to_string(template, context)
-    with open(output_path, 'w') as csv_file:
+    with open(output_path, 'wb') as csv_file:
         csv_file.write(rendered.encode('utf-8'))
 
 
@@ -111,7 +110,7 @@ def generated_file_view(file_name, mime_type, send_name=None, signals=None):
 
             response = HttpResponse(content_type=mime_type)
             response['Content-Disposition'] = 'attachment; filename=%s' % name
-            with open(file_path) as f:
+            with open(file_path, 'rb') as f:
                 for chunk in read_chunks(f):
                     response.write(chunk)
             return response

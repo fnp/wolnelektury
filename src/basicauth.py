@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #############################################################################
 # from http://djangosnippets.org/snippets/243/
 
@@ -29,7 +28,7 @@ def view_or_basicauth(view, request, test_func, realm="", *args, **kwargs):
             # NOTE: We are only support basic authentication for now.
             #
             if auth[0].lower() == "basic":
-                uname, passwd = base64.b64decode(auth[1]).split(':')
+                uname, passwd = base64.b64decode(auth[1].encode('utf-8')).decode('utf-8').split(':')
                 user = authenticate(username=uname, password=passwd)
                 if user is not None:
                     if user.is_active:

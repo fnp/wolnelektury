@@ -634,7 +634,10 @@ class SearchResult(object):
     def get_book(self):
         if self._book is not None:
             return self._book
-        self._book = catalogue.models.Book.objects.get(id=self.book_id)
+        try:
+            self._book = catalogue.models.Book.objects.get(id=self.book_id)
+        except catalogue.models.Book.DoesNotExist:
+            self._book = None
         return self._book
 
     book = property(get_book)
@@ -746,13 +749,17 @@ class SearchResult(object):
                     books[r.book_id] = r
         return books.values()
 
+    def get_sort_key(self):
+        return (-self.score,
+                self.published_date,
+                self.book.sort_key_author if self.book else '',
+                self.book.sort_key if self.book else '')
+
     def __lt__(self, other):
-        return (-self.score, self.published_date, self.book.sort_key_author, self.book.sort_key) > \
-               (-other.score, other.published_date, other.book.sort_key_author, other.book.sort_key)
+        return self.get_sort_key() > other.get_sort_key()
 
     def __eq__(self, other):
-        return (self.score, self.published_date, self.book.sort_key_author, self.book.sort_key) == \
-               (other.score, other.published_date, other.book.sort_key_author, other.book.sort_key)
+        return self.get_sort_key() == other.get_sort_key()
 
     def __len__(self):
         return len(self.hits)
