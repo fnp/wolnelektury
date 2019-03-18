@@ -10,8 +10,9 @@ from social.models import Cite, BannerGroup, Carousel, CarouselItem
 class CiteAdmin(admin.ModelAdmin):
     list_display = ['nonempty_text', 'created_at', 'sticky', 'vip', 'small', 'has_image']
     list_filter = ['group']
+    readonly_fields = ['created_at']
     fieldsets = (
-        (None, {'fields': ('group', 'sticky')}),
+        (None, {'fields': ('group', 'sticky', 'created_at')}),
         (_('Content'), {'fields': ('book', 'text', 'small', 'vip', 'link', 'video', 'picture', 'banner')}),
         (
             _('Background'),
@@ -35,7 +36,13 @@ class CiteAdmin(admin.ModelAdmin):
 
 admin.site.register(Cite, CiteAdmin)
 
-admin.site.register(BannerGroup)
+
+class BannerGroupAdmin(admin.ModelAdmin):
+    list_display = ['name', 'created_at']
+    fields = ['name', 'created_at']
+    readonly_fields = ['created_at']
+
+admin.site.register(BannerGroup, BannerGroupAdmin)
 
 
 class CarouselItemInline(OrderableAdmin, admin.TabularInline):

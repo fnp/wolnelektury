@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-18 13:38+0100\n"
+"POT-Creation-Date: 2019-03-18 13:48+0100\n"
 "PO-Revision-Date: 2014-01-24 10:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: admin.py:15
+#: admin.py:16
 msgid "Content"
 msgstr "Zawartość"
 
-#: admin.py:17
+#: admin.py:18
 msgid "Background"
 msgstr "Obraz tła"
 
-#: admin.py:28 models.py:32
+#: admin.py:29 models.py:32
 msgid "text"
 msgstr "tekst"
 
-#: admin.py:32 models.py:44
+#: admin.py:33 models.py:44
 msgid "image"
 msgstr "obraz"
 
@@ -95,7 +95,7 @@ msgstr "przyklejony"
 msgid "Sticky cites will take precedense."
 msgstr "Przyklejone cytaty mają pierwszeństwo."
 
-#: models.py:41 models.py:100
+#: models.py:41 models.py:60 models.py:100
 msgid "banner"
 msgstr "banner"
 
@@ -138,13 +138,9 @@ msgstr "adres licencji"
 msgid "group"
 msgstr "grupa"
 
-#: models.py:60
-msgid "cite"
-msgstr "cytat"
-
 #: models.py:61
-msgid "cites"
-msgstr "cytaty"
+msgid "banners"
+msgstr "bannery"
 
 #: models.py:87
 msgid "slug"
@@ -194,3 +190,9 @@ msgstr ""
 #: templates/social/sets_form.html:8
 msgid "Remove from my shelf"
 msgstr "Usuń z mojej półki"
+
+#~ msgid "cite"
+#~ msgstr "cytat"
+
+#~ msgid "cites"
+#~ msgstr "cytaty"

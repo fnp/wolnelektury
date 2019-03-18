@@ -57,8 +57,8 @@ class Cite(models.Model):
 
     class Meta:
         ordering = ('vip', 'text')
-        verbose_name = _('cite')
-        verbose_name_plural = _('cites')
+        verbose_name = _('banner')
+        verbose_name_plural = _('banners')
 
     def __str__(self):
         return u"%s: %s…" % (self.vip, self.text[:60])
