@@ -13,8 +13,8 @@ class ClubView(TemplateView):
 
 
 class JoinView(CreateView):
-    template_name = 'club/membership_form.html'
     form_class = ScheduleForm
+    template_name = 'club/membership_form.html'
 
     def get(self, request):
         schedule = get_active_schedule(request.user)
@@ -23,7 +23,7 @@ class JoinView(CreateView):
         else:
             return super(JoinView, self).get(request)
 
-    def get_context_data(self):
+    def get_context_data(self, form=None):
         c = super(JoinView, self).get_context_data()
         c['membership'] = getattr(self.request.user, 'membership', None)
         return c
@@ -40,6 +40,10 @@ class JoinView(CreateView):
             form.instance.membership, created = models.Membership.objects.get_or_create(user=self.request.user)
             form.instance.save()
         return retval
+
+
+class AppJoinView(JoinView):
+    template_name = 'club/membership_form_app.html'
 
 
 class ScheduleView(View):

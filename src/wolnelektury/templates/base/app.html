@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% spaceless %}
+  <html lang="{{ LANGUAGE_CODE }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    {% load pipeline i18n %}
+    {% load static from staticfiles %}
+    {% load catalogue_tags funding_tags reporting_stats %}
+    {% load piwik_tags %}
+    {% load ssi_include ssi_csrf_token from ssify %}
+    {% load user_username user_is_staff from common_tags %}
+    {% load cache %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta name="application-name" content="Wolne Lektury" />
+      <meta property="og:site_name" content="Wolne Lektury" />
+      <meta property="og:title" content="{% block ogtitle %}{{ page_title }}{% endblock %}" />
+      <meta property="og:type" content="{% block ogtype %}website{% endblock %}" />
+      <meta property="og:image" content="{% block ogimage %}{{ FULL_STATIC_URL }}img/wiatrak.jpg{% endblock %}" />
+      <meta name="description" content="{% block metadescription %}Darmowe, opracowane, pełne teksty lektur, e-booki, audiobooki i pliki DAISY na wolnej licencji.{% endblock %}" />
+      {% block ogextra %}{% endblock %}
+
+      <title>
+        {% block title %}{% block titleextra %}{{ page_title }}{% endblock %} :: {% trans "Wolne Lektury" %}{% endblock %}
+      </title>
+      <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury"
+            href="{% static 'opensearch.xml' %}"/>
+      <link rel="manifest" href="/manifest.json">
+      {% stylesheet "main" %}
+      {% block extrahead %}{% endblock %}
+    </head>
+    <body id="{% block bodyid %}base{% endblock %}">
+
+      {% block bodycontent %}
+
+        <div id="whole-header">
+          <div id="header-wrapper">
+            <header id="main">
+              <a href="/" id="logo">
+                <img src="{% static 'img/logo-neon.png' %}" alt="Wolne Lektury"/>
+              </a>
+
+              <div id="lang-menu" class="hoverget">
+                <span id='lang-button' class='hoverclick'>
+                  <span class="lang-flag">⚐</span>
+                  <span class="label"> {% trans "Language" %}</span>
+                </span>
+                <div id="lang-menu-items">
+                  {% for lang in LANGUAGES %}
+                    <form action="{% url 'set_language' %}" method="post">
+                      {% ssi_csrf_token %}
+                      <input type="hidden" name="language" value="{{ lang.0 }}"/>
+                      <button type="submit" lang="{{ lang.0 }}"
+                              class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %}">{{ lang.1 }}</button>
+                    </form>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <nav id="menu">
+                <ul id="user-info">
+                  {% user_username as user_username %}
+                  {% user_is_staff as user_is_staff %}
+                  {{ user_username.if }}
+                    <li>
+                      <a href="{% url 'user_settings' %}">
+                        <strong>{{ user_username }}</strong>
+                      </a>
+                    </li>
+                  {{ user_username.endif }}
+                  {{ user_username.if }}
+                    <li>
+                      <a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
+                    </li>
+                  {{ user_username.endif }}
+                </ul>
+
+              </nav>
+            </header>
+          </div>
+        </div>
+
+        <div id="main-content">
+          {% block body %}
+          {% endblock %}
+          <div class="clearboth"></div>
+        </div>
+
+      {% endblock bodycontent %}
+
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script type="text/javascript">
+        var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+        var STATIC_URL = "{{ STATIC_URL }}";
+      </script>
+      {% javascript "base" %}
+
+      {% tracking_code %}
+
+      {% block extrabody %}{% endblock %}
+
+      <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>
+    </body>
+  </html>
+{% endspaceless %}
