@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-18 13:30+0100\n"
+"POT-Creation-Date: 2019-03-18 13:38+0100\n"
 "PO-Revision-Date: 2014-01-24 10:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "created at"
 msgstr "utworzone"
 
-#: models.py:19
+#: models.py:19 models.py:101
 msgid "banner group"
 msgstr "grupa bannerów"
 
@@ -95,7 +95,7 @@ msgstr "przyklejony"
 msgid "Sticky cites will take precedense."
 msgstr "Przyklejone cytaty mają pierwszeństwo."
 
-#: models.py:41
+#: models.py:41 models.py:100
 msgid "banner"
 msgstr "banner"
 
@@ -150,7 +150,7 @@ msgstr "cytaty"
 msgid "slug"
 msgstr "slug"
 
-#: models.py:91
+#: models.py:91 models.py:99
 msgid "carousel"
 msgstr "karuzela"
 
@@ -158,15 +158,19 @@ msgstr "karuzela"
 msgid "carousels"
 msgstr "karuzele"
 
-#: models.py:104
+#: models.py:98
+msgid "order"
+msgstr "kolejność"
+
+#: models.py:106
 msgid "carousel item"
 msgstr "element karuzeli"
 
-#: models.py:105
+#: models.py:107
 msgid "carousel items"
 msgstr "elementy karuzeli"
 
-#: models.py:109 models.py:111
+#: models.py:114 models.py:116
 msgid "Either banner or banner group is required."
 msgstr "Proszę wskazać banner albo grupę bannerów."
 

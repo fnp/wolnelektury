@@ -95,10 +95,10 @@ class Carousel(models.Model):
         return self.slug
 
 class CarouselItem(models.Model):
-    order = models.PositiveSmallIntegerField(unique=True)
-    carousel = models.ForeignKey(Carousel, models.CASCADE)
-    banner = models.ForeignKey(Cite, models.CASCADE, null=True, blank=True)
-    banner_group = models.ForeignKey(BannerGroup, models.CASCADE, null=True, blank=True)
+    order = models.PositiveSmallIntegerField(_('order'), unique=True)
+    carousel = models.ForeignKey(Carousel, models.CASCADE, verbose_name=_('carousel'))
+    banner = models.ForeignKey(Cite, models.CASCADE, null=True, blank=True, verbose_name=_('banner'))
+    banner_group = models.ForeignKey(BannerGroup, models.CASCADE, null=True, blank=True, verbose_name=_('banner group'))
 
     class Meta:
         ordering = ('order',)
