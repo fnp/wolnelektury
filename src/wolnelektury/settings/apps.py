@@ -46,6 +46,7 @@ INSTALLED_APPS_CONTRIB = [
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.staticfiles',
+    'admin_ordering',
     'rest_framework',
     'fnp_django_pagination',
     'pipeline',

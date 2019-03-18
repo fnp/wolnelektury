@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2019-03-18 13:30+0100\n"
 "PO-Revision-Date: 2014-01-24 10:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,19 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: admin.py:16
+#: admin.py:15
+msgid "Content"
+msgstr "Zawartość"
+
+#: admin.py:17
 msgid "Background"
 msgstr "Obraz tła"
 
-#: admin.py:27 models.py:15
+#: admin.py:28 models.py:32
 msgid "text"
 msgstr "tekst"
 
-#: admin.py:31 models.py:23
+#: admin.py:32 models.py:44
 msgid "image"
 msgstr "obraz"
 
@@ -40,77 +44,137 @@ msgid "Name of the new shelf"
 msgstr "Nazwa nowej półki"
 
 #: models.py:14
+msgid "name"
+msgstr ""
+
+#: models.py:15 models.py:55
+msgid "created at"
+msgstr "utworzone"
+
+#: models.py:19
+msgid "banner group"
+msgstr "grupa bannerów"
+
+#: models.py:20
+msgid "banner groups"
+msgstr "grupy bannerów"
+
+#: models.py:31
 msgid "book"
 msgstr "książka"
 
-#: models.py:16
+#: models.py:33
 msgid "small"
 msgstr "mały"
 
-#: models.py:16
+#: models.py:33
 msgid "Make this cite display smaller."
 msgstr "Sprawia, że cytat wyświetla się mniejszym fontem."
 
-#: models.py:17
+#: models.py:34
 msgid "VIP"
 msgstr "VIP"
 
-#: models.py:18 models.py:30
+#: models.py:35 models.py:51
 msgid "link"
 msgstr "odnośnik"
 
-#: models.py:19
+#: models.py:36
+msgid "video"
+msgstr "wideo"
+
+#: models.py:37
+msgid "picture"
+msgstr "ilustracja"
+
+#: models.py:39
 msgid "sticky"
 msgstr "przyklejony"
 
-#: models.py:20
+#: models.py:40
 msgid "Sticky cites will take precedense."
 msgstr "Przyklejone cytaty mają pierwszeństwo."
 
-#: models.py:24
+#: models.py:41
+msgid "banner"
+msgstr "banner"
+
+#: models.py:41
+msgid "Adjust size to image, ignore the text"
+msgstr "Dostosuj wielkość do obrazu tła, zignoruj tekst."
+
+#: models.py:45
 msgid "Best image is exactly 975px wide and weights under 100kB."
 msgstr "Najlepszy obraz ma szerokość 975px i waży poniżej 100kB."
 
-#: models.py:26
+#: models.py:47
 msgid "shift"
 msgstr "przesunięcie"
 
-#: models.py:27
+#: models.py:48
 msgid ""
 "Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%."
 msgstr ""
 "Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 "
 "do dolnej. Domyślne jest 50%."
 
-#: models.py:28
+#: models.py:49
 msgid "title"
 msgstr "tytuł"
 
-#: models.py:29
+#: models.py:50
 msgid "author"
 msgstr "autor"
 
-#: models.py:31
+#: models.py:52
 msgid "license name"
 msgstr "nazwa licencji"
 
-#: models.py:32
+#: models.py:53
 msgid "license link"
 msgstr "adres licencji"
 
-#: models.py:36
+#: models.py:56
+msgid "group"
+msgstr "grupa"
+
+#: models.py:60
 msgid "cite"
 msgstr "cytat"
 
-#: models.py:37
+#: models.py:61
 msgid "cites"
 msgstr "cytaty"
 
-#: templates/social/cite_promo.html:11
+#: models.py:87
+msgid "slug"
+msgstr "slug"
+
+#: models.py:91
+msgid "carousel"
+msgstr "karuzela"
+
+#: models.py:92
+msgid "carousels"
+msgstr "karuzele"
+
+#: models.py:104
+msgid "carousel item"
+msgstr "element karuzeli"
+
+#: models.py:105
+msgid "carousel items"
+msgstr "elementy karuzeli"
+
+#: models.py:109 models.py:111
+msgid "Either banner or banner group is required."
+msgstr "Proszę wskazać banner albo grupę bannerów."
+
+#: templates/social/cite_promo.html:14
 msgid "recommends"
 msgstr "poleca"
 
-#: templates/social/my_shelf.html:5 templates/social/my_shelf.html.py:10
+#: templates/social/my_shelf.html:5 templates/social/my_shelf.html:10
 msgid "My shelf"
 msgstr "Moja półka"
 

@@ -1,17 +1,18 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-
-from social.models import Cite
+from admin_ordering.admin import OrderableAdmin
+from social.models import Cite, BannerGroup, Carousel, CarouselItem
 
 
 class CiteAdmin(admin.ModelAdmin):
-    list_display = ['nonempty_text', 'sticky', 'vip', 'small', 'has_image']
+    list_display = ['nonempty_text', 'created_at', 'sticky', 'vip', 'small', 'has_image']
+    list_filter = ['group']
     fieldsets = (
-        (None, {'fields': ('book', 'text', 'small', 'vip', 'link', 'sticky', 'banner')}),
+        (None, {'fields': ('group', 'sticky')}),
+        (_('Content'), {'fields': ('book', 'text', 'small', 'vip', 'link', 'video', 'picture', 'banner')}),
         (
             _('Background'),
             {'fields': (
@@ -33,3 +34,18 @@ class CiteAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Cite, CiteAdmin)
+
+admin.site.register(BannerGroup)
+
+
+class CarouselItemInline(OrderableAdmin, admin.TabularInline):
+    model = CarouselItem
+    ordering_field = 'order'
+
+
+class CarouselAdmin(admin.ModelAdmin):
+    inlines = [CarouselItemInline]
+
+
+admin.site.register(Carousel, CarouselAdmin)
+
