@@ -88,7 +88,6 @@ class Schedule(models.Model):
     def get_payment_method(self):
         return method_by_slug[self.method]
 
-
     def is_expired(self):
         return self.expires_at is not None and self.expires_at < now()
 
@@ -124,6 +123,16 @@ class Membership(models.Model):
 
     def __str__(self):
         return u'tow. ' + str(self.user)
+
+    @classmethod
+    def is_active_for(self, user):
+        if user.is_anonymous:
+            return False
+        return Schedule.objects.filter(
+                models.Q(expires_at=None) | models.Q(expires_at__lt=now()),
+                membership__user=user,
+                is_active=True,
+            ).exists()
 
 
 class ReminderEmail(models.Model):

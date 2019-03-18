@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -445,11 +444,10 @@ class AuthorizedTests(ApiTest):
             self.signed('/api/epub/grandchild/').status_code,
             403)
 
-        with patch('api.fields.user_is_subscribed', return_value=True):
+        with patch('club.models.Membership.is_active_for', return_value=True):
             self.assertEqual(
                 self.signed_json('/api/username/'),
                 {"username": "test", "premium": True})
-        with patch('paypal.permissions.user_is_subscribed', return_value=True):
             with patch('django.core.files.storage.Storage.open',
                        return_value=BytesIO(b"<epub>")):
                 self.assertEqual(

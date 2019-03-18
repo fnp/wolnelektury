@@ -17,8 +17,8 @@ from django.utils import translation
 from django.utils.translation import ugettext as _, ugettext_lazy
 
 from ajaxable.utils import AjaxableFormView
+from club.models import Membership
 from pdcounter import views as pdcounter_views
-from paypal.rest import user_is_subscribed
 from picture.models import Picture, PictureArea
 from ssify import ssi_included, ssi_expect, SsiVariable as Var
 from catalogue import constants
@@ -306,7 +306,7 @@ def player(request, slug):
 def book_text(request, slug):
     book = get_object_or_404(Book, slug=slug)
 
-    if book.preview and not user_is_subscribed(request.user):
+    if book.preview and not Membership.is_active_for(request.user):
         return HttpResponseRedirect(book.get_absolute_url())
 
     if not book.has_html_file():
@@ -361,7 +361,7 @@ def embargo_link(request, format_, slug):
     media_file = book.get_media(format_)
     if not book.preview:
         return HttpResponseRedirect(media_file.url)
-    if not user_is_subscribed(request.user):
+    if not Membership.is_active_for(request.user):
         return HttpResponseRedirect(book.get_absolute_url())
     return HttpResponse(media_file, content_type=constants.EBOOK_CONTENT_TYPES[format_])
 
@@ -395,7 +395,7 @@ class CustomPDFFormView(AjaxableFormView):
 
     def validate_object(self, obj, request):
         book = obj
-        if book.preview and not user_is_subscribed(request.user):
+        if book.preview and not Membership_is_active_for(request.user):
             return HttpResponseRedirect(book.get_absolute_url())
         return super(CustomPDFFormView, self).validate_object(obj, request)
 

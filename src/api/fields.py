@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from rest_framework import serializers
 from sorl.thumbnail import default
 from django.core.urlresolvers import reverse
-from paypal.rest import user_is_subscribed
+from club.models import Membership
 
 
 class AbsoluteURLField(serializers.ReadOnlyField):
@@ -45,7 +44,7 @@ class UserPremiumField(serializers.ReadOnlyField):
         super(UserPremiumField, self).__init__(*args, source='*', **kwargs)
 
     def to_representation(self, value):
-        return user_is_subscribed(value)
+        return Membership.is_active_for(value)
 
 
 class ThumbnailField(serializers.FileField):

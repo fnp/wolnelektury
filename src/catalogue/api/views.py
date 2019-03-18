@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -8,7 +7,6 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.response import Response
 from rest_framework import status
-from paypal.permissions import IsSubscribed
 from api.handlers import read_tags
 from api.utils import vary_on_auth
 from .helpers import books_after, order_books
@@ -16,6 +14,7 @@ from . import serializers
 from catalogue.forms import BookImportForm
 from catalogue.models import Book, Collection, Tag, Fragment, BookMedia
 from catalogue.models.tag import prefetch_relations
+from club.permissions import IsClubMember
 from wolnelektury.utils import re_escape
 
 
@@ -226,7 +225,7 @@ class FilterBookList(ListAPIView):
 class EpubView(RetrieveAPIView):
     queryset = Book.objects.all()
     lookup_field = 'slug'
-    permission_classes = [IsSubscribed]
+    permission_classes = [IsClubMember]
 
     def get(self, *args, **kwargs):
         return HttpResponse(self.get_object().get_media('epub'))
