@@ -66,14 +66,14 @@ class SponsorPage(models.Model):
             if simg.size[0] > THUMB_WIDTH or simg.size[1] > THUMB_HEIGHT:
                 size = (
                     min(THUMB_WIDTH,
-                        simg.size[0] * THUMB_HEIGHT / simg.size[1]),
+                        round(simg.size[0] * THUMB_HEIGHT / simg.size[1])),
                     min(THUMB_HEIGHT,
-                        simg.size[1] * THUMB_WIDTH / simg.size[0])
+                        round(simg.size[1] * THUMB_WIDTH / simg.size[0]))
                 )
                 simg = simg.resize(size, Image.ANTIALIAS)
             sprite.paste(simg, (
-                    (THUMB_WIDTH - simg.size[0]) / 2,
-                    i * THUMB_HEIGHT + (THUMB_HEIGHT - simg.size[1]) / 2,
+                    round((THUMB_WIDTH - simg.size[0]) / 2),
+                    round(i * THUMB_HEIGHT + (THUMB_HEIGHT - simg.size[1]) / 2),
                     ))
         imgstr = BytesIO()
         sprite.save(imgstr, 'png')
