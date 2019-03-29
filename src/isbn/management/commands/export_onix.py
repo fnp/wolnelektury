@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
@@ -113,7 +111,7 @@ class Command(BaseCommand):
         for record in ONIXRecord.objects.all():
             xml += self.render_product(record)
         xml += FOOTER
-        print(xml.encode('utf-8'))
+        print(xml)
 
     def render_product(self, record):
         if record.product_form_detail:
