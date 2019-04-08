@@ -100,12 +100,12 @@ class Catalogue(common.ResumptionOAIPMH):
             # setSpec = map(self.tag_to_setspec, book.tags.filter(category__in=self.TAG_CATEGORIES))
             header = common.Header(None, identifier, make_time_naive(book.changed_at), [], False)
             if not headers_only:
-                meta = common.Metadata(self.metadata(book))
+                meta = common.Metadata(None, self.metadata(book))
             about = None
         elif isinstance(book, Deleted):
             header = common.Header(None, identifier, make_time_naive(book.deleted_at), [], True)
             if not headers_only:
-                meta = common.Metadata({})
+                meta = common.Metadata(None, {})
             about = None
         else:
             raise TypeError('Unknown book class')
