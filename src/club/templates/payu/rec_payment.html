@@ -1,0 +1,44 @@
+{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+
+
+{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+
+
+{% block body %}
+<div class="white-box normal-text">
+
+	<h1>Płatność cykliczna przez PayU</h1>
+
+	<p>	{{ schedule.email }}</p>
+	<p>	{{ schedule.amount }}</p>
+	<p>	{{ schedule.plan.get_interval_display }}</p>
+
+	<form id="theform" method='POST'>
+		{% csrf_token %}
+		{{ form }}
+	</form>
+
+
+
+<script>
+	function yeahwellwhatever(data) {
+		$("#theform #id_token").val(data.value);
+		$("#theform").submit()
+	}
+</script>
+
+<div id="payu-widget"></div>
+<script
+     src="{{ pos.get_api_host }}/front/widget/js/payu-bootstrap.js"
+
+    {% for k, v in widget_args.items %}
+    	{{ k }}="{{ v }}"
+    {% endfor %}
+
+    success-callback="yeahwellwhatever"
+    sig="{{ widget_sig }}">
+</script>
+
+</div>
+
+{% endblock %}

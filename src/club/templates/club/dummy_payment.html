@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
 
 
 {% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
@@ -13,12 +13,60 @@
 	<p>	{{ schedule.amount }}</p>
 	<p>	{{ schedule.plan.get_interval_display }}</p>
 
-<form method="POST" action="">
+<!--form method="POST" action="">
   {% csrf_token %}
+
+  {{ form.as_p }}
+  <button type='submit'>Zapłać</button>
+</form-->
+
+
+{% if request.GET.p == 'inline' %}
+<div id="payu-widget"></div>
+{% else %}
+{% if request.GET.p == 'popup' %}
+<form action="http://exampledomain.com/processOrder.php" method="post">
+    <button id="pay-button">Pay now</button>
+</form>
+<script
+    src="https://secure.payu.com/front/widget/js/payu-bootstrap.js"
+    pay-button="#pay-button"
+    merchant-pos-id="145227"
+    shop-name="Nazwa sklepu"
+    total-amount="9.99"
+    currency-code="PLN"
+    customer-language="pl"
+    store-card="true"
+    customer-email="email@exampledomain.com"
+    sig="250f5f53e465777b6fefb04f171a21b598ccceb2899fc9f229604ad529c69532">
+</script>
+
+
+{% else %}
+ <form method="POST" action="">
+  {% csrf_token %}
+
   {{ form.as_p }}
   <button type='submit'>Zapłać</button>
 </form>
+{% endif %}
+{% endif %}
 
 </div>
+
+<script
+    src="https://secure.payu.com/front/widget/js/payu-bootstrap.js"
+    merchant-pos-id="145227"
+    shop-name="TEST"
+    total-amount="12345"
+    currency-code="PLN"
+    customer-language="en"
+    store-card="true"
+    payu-brand="false"
+    success-callback="test"
+    widget-mode="use"
+    customer-email="test@test.com"
+    sig="203ec8c4b9571ce6b4c03058f57264f04d06d00a86da19390d47ba1be4551578"
+</script>
 
 {% endblock %}

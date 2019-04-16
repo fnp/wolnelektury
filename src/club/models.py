@@ -1,14 +1,13 @@
-# -*- coding: utf-8
-from __future__ import unicode_literals
-
-from datetime import timedelta
+from datetime import datetime, timedelta
 from django.conf import settings
+from django.contrib.sites.models import Site
 from django.urls import reverse
 from django.db import models
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
 from catalogue.utils import get_random_hash
 from .payment_methods import methods, method_by_slug
+from .payu import models as payu_models
 
 
 class Plan(models.Model):
@@ -26,6 +25,7 @@ class Plan(models.Model):
     min_amount = models.DecimalField(_('min_amount'), max_digits=10, decimal_places=2)
     allow_recurring = models.BooleanField(_('allow recurring'))
     allow_one_time = models.BooleanField(_('allow one time'))
+    active = models.BooleanField(_('active'), default=True)
 
     class Meta:
         verbose_name = _('plan')
@@ -44,7 +44,7 @@ class Plan(models.Model):
 
     def get_next_installment(self, date):
         if self.interval == self.PERPETUAL:
-            return None
+            return datetime.max - timedelta(1)
         elif self.interval == self.YEAR:
             return date.replace(year=date.year + 1)
         elif self.interval == self.MONTH:
@@ -55,7 +55,6 @@ class Plan(models.Model):
             return date
             
 
-
 class Schedule(models.Model):
     """ Represents someone taking up a plan. """
     key = models.CharField(_('key'), max_length=255, unique=True)
@@ -64,11 +63,9 @@ class Schedule(models.Model):
     plan = models.ForeignKey(Plan, verbose_name=_('plan'), on_delete=models.PROTECT)
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
     method = models.CharField(_('method'), max_length=255, choices=[(method.slug, method.name) for method in methods])
-    is_active = models.BooleanField(_('active'), default=False)
     is_cancelled = models.BooleanField(_('cancelled'), default=False)
     started_at = models.DateTimeField(_('started at'), auto_now_add=True)
     expires_at = models.DateTimeField(_('expires_at'), null=True, blank=True)
-    # extra info?
 
     class Meta:
         verbose_name = _('schedule')
@@ -82,6 +79,12 @@ class Schedule(models.Model):
             self.key = get_random_hash(self.email)
         return super(Schedule, self).save(*args, **kwargs)
 
+    def initiate_payment(self, request):
+        return self.get_payment_method().initiate(request, self)
+
+    def pay(self, request):
+        return self.get_payment_method().pay(request, self)
+
     def get_absolute_url(self):
         return reverse('club_schedule', args=[self.key])
 
@@ -89,33 +92,17 @@ class Schedule(models.Model):
         return method_by_slug[self.method]
 
     def is_expired(self):
-        return self.expires_at is not None and self.expires_at < now()
+        return self.expires_at is not None and self.expires_at <= now()
 
-    def create_payment(self):
-        n = now()
-        self.expires_at = self.plan.get_next_installment(n)
-        self.is_active = True
-        self.save()
-        self.payment_set.create(payed_at=n)
-
-
-class Payment(models.Model):
-    schedule = models.ForeignKey(Schedule, verbose_name=_('schedule'), on_delete=models.PROTECT)
-    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
-    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
-
-    class Meta:
-        verbose_name = _('payment')
-        verbose_name_plural = _('payments')
-
-    def __str__(self):
-        return "%s %s" % (self.schedule, self.payed_at)
+    def is_active(self):
+        return self.expires_at is not None and self.expires_at > now()
 
 
 class Membership(models.Model):
     """ Represents a user being recognized as a member of the club. """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_('user'), on_delete=models.CASCADE)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    honorary = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _('membership')
@@ -125,13 +112,18 @@ class Membership(models.Model):
         return u'tow. ' + str(self.user)
 
     @classmethod
-    def is_active_for(self, user):
+    def is_active_for(cls, user):
         if user.is_anonymous:
             return False
+        try:
+            membership = user.membership
+        except cls.DoesNotExist:
+            return False
+        if membership.honorary:
+            return True
         return Schedule.objects.filter(
-                models.Q(expires_at=None) | models.Q(expires_at__lt=now()),
+                expires_at__gt=now(),
                 membership__user=user,
-                is_active=True,
             ).exists()
 
 
@@ -151,3 +143,55 @@ class ReminderEmail(models.Model):
         else:
             return ungettext('a day after expiration', '%d days after expiration', n=-self.days_before)
 
+
+########
+#      #
+# PayU #
+#      #
+########
+
+class PayUOrder(payu_models.Order):
+    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+
+    def get_amount(self):
+        return self.schedule.amount
+
+    def get_buyer(self):
+        return {
+            "email": self.schedule.email,
+            "language": get_language(),
+        }
+
+    def get_continue_url(self):
+        return "https://{}{}".format(
+            Site.objects.get_current().domain,
+            self.schedule.get_absolute_url())
+
+    def get_description(self):
+        return ugettext('Towarzystwo Wolnych Lektur')
+
+    def is_recurring(self):
+        return self.schedule.get_payment_method().is_recurring
+
+    def get_card_token(self):
+        return self.schedule.payucardtoken_set.order_by('-created_at').first()
+
+    def get_notify_url(self):
+        return "https://{}{}".format(
+            Site.objects.get_current().domain,
+            reverse('club_payu_notify', args=[self.pk]))
+
+    def status_updated(self):
+        if self.status == 'COMPLETED':
+            new_exp = self.schedule.plan.get_next_installment(now())
+            if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
+                self.schedule.expires_at = new_exp
+                self.schedule.save()
+
+
+class PayUCardToken(payu_models.CardToken):
+    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+
+
+class PayUNotification(payu_models.Notification):
+    order = models.ForeignKey(PayUOrder, models.CASCADE, related_name='notification_set')

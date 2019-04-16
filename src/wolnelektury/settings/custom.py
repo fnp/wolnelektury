@@ -30,3 +30,15 @@ CATALOGUE_MIN_INITIALS = 60
 PICTURE_PAGE_SIZE = 20
 
 CONTACT_FORMS_MODULE = 'wolnelektury.contact_forms'
+
+PAYU_POS = {
+    '300746': {
+        'client_secret': '2ee86a66e5d97e3fadc400c9f19b065d',
+        'secondary_key': 'b6ca15b0d1020e8094d9b5f8d163db54',
+        'sandbox': True,
+    },
+}
+
+CLUB_PAYU_POS = '300746'
+CLUB_PAYU_RECURRING_POS = '300746'
+

@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.views.generic import FormView, CreateView, TemplateView
+from django.shortcuts import get_object_or_404, render
+from django.views.generic import FormView, CreateView, TemplateView, DetailView
 from django.views import View
-from .forms import ScheduleForm
+from .payu import POSS
+from .payu import views as payu_views
+from .forms import ScheduleForm, PayUCardTokenForm
 from . import models
 from .helpers import get_active_schedule
+from .payment_methods import payure_method
 
 
 class ClubView(TemplateView):
@@ -16,12 +19,24 @@ class JoinView(CreateView):
     form_class = ScheduleForm
     template_name = 'club/membership_form.html'
 
+    def is_app(self):
+        return self.request.GET.get('app')
+
     def get(self, request):
+        if self.is_app():
+            request.session['from_app'] = True
+        elif request.session and 'from_app' in request.session:
+            del request.session['from_app']
         schedule = get_active_schedule(request.user)
         if schedule is not None:
             return HttpResponseRedirect(schedule.get_absolute_url())
         else:
             return super(JoinView, self).get(request)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
     def get_context_data(self, form=None):
         c = super(JoinView, self).get_context_data()
@@ -41,24 +56,21 @@ class JoinView(CreateView):
             form.instance.save()
         return retval
 
+    def get_success_url(self):
+        return self.object.initiate_payment(self.request)
 
-class AppJoinView(JoinView):
-    template_name = 'club/membership_form_app.html'
 
+class ScheduleView(DetailView):
+    model = models.Schedule
+    slug_field = slug_url_kwarg = 'key'
+    template_name = 'club/schedule.html'
 
-class ScheduleView(View):
-    def get(self, request, key):
-        schedule = models.Schedule.objects.get(key=key)
-        if not schedule.is_active:
-            return HttpResponseRedirect(schedule.get_payment_method().get_payment_url(schedule))
+    def post(self, request, key):
+        schedule = self.get_object()
+        if not schedule.is_active():
+            return HttpResponseRedirect(schedule.initiate_payment(request))
         else:
-            return render(
-                request,
-                'club/schedule.html',
-                {
-                    'schedule': schedule,
-                }
-            )
+            return HttpResponseRedirect(schedule.get_absolute_url())
 
 
 @login_required
@@ -88,3 +100,26 @@ class DummyPaymentView(TemplateView):
         schedule = models.Schedule.objects.get(key=key)
         schedule.create_payment()
         return HttpResponseRedirect(schedule.get_absolute_url())
+
+
+class PayUPayment(payu_views.Payment):
+    pass
+
+
+class PayURecPayment(payu_views.RecPayment):
+    form_class = PayUCardTokenForm
+
+    def get_schedule(self):
+        return get_object_or_404(models.Schedule, key=self.kwargs['key'])
+
+    def get_pos(self):
+        pos_id = payure_method.pos_id
+        return POSS[pos_id]
+
+    def get_success_url(self):
+        return self.get_schedule().pay(self.request)
+
+
+class PayUNotifyView(payu_views.NotifyView):
+    order_model = models.PayUOrder
+

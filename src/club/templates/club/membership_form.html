@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
 
 
 {% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}

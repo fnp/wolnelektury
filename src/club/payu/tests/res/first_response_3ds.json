@@ -1,0 +1,8 @@
+{
+     "orderId": "ORDER_ID",
+     "status": {
+         "statusCode": "WARNING_CONTINUE_3DS",
+         "severity": "WARNING"
+     },
+     "redirectUri": "{redirectUri}"
+}

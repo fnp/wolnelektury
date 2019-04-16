@@ -1,0 +1,18 @@
+{
+     "orderId": "ORDER_ID",
+     "payMethods": {
+         "payMethod": {
+              "card": {
+                   "number": "424242******4242",
+                   "expirationMonth": "12",
+                   "expirationYear": "2017"
+               },
+               "type": "CARD_TOKEN",
+               "value": "TOKC_KPNZVSLJUNR4DHF5NPVKDPJGMX7"
+           }
+       },
+       "status": {
+           "statusCode": "SUCCESS",
+           "statusDesc": "Request successful"
+       }
+}
