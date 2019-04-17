@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import FormView, CreateView, TemplateView, DetailView
+from django.views.generic import FormView, CreateView, TemplateView, DetailView, UpdateView
 from django.views import View
 from .payu import POSS
 from .payu import views as payu_views
@@ -67,10 +67,7 @@ class ScheduleView(DetailView):
 
     def post(self, request, key):
         schedule = self.get_object()
-        if not schedule.is_active():
-            return HttpResponseRedirect(schedule.initiate_payment(request))
-        else:
-            return HttpResponseRedirect(schedule.get_absolute_url())
+        return HttpResponseRedirect(schedule.initiate_payment(request))
 
 
 @login_required
@@ -123,3 +120,13 @@ class PayURecPayment(payu_views.RecPayment):
 class PayUNotifyView(payu_views.NotifyView):
     order_model = models.PayUOrder
 
+
+class MembershipView(UpdateView):
+    fields = ['name']
+
+    def get_success_url(self):
+        # TODO: get only current schedule if multiple.
+        return self.object.schedule_set.first().get_absolute_url()
+
+    def get_object(self):
+        return self.request.user.membership

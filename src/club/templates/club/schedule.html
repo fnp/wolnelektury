@@ -9,30 +9,69 @@
 
 <h1>Plan płatności</h1>
 
-<div>{{ schedule.email }}</div>
-<div>{{ schedule.amount }}</div>
-<div>{{ schedule.plan.get_interval_display }}</div>
+<div>E-mail: {{ schedule.email }}</div>
+<div>Składka: {{ schedule.amount }} zł {{ schedule.plan.get_interval_display }}</div>
+<div>Wybrana metoda płatności: {{ schedule.get_payment_method.name }}</div>
 
-<div>{{ schedule.is_active|yesno:"Aktywne,Nieaktywne" }}</div>
+{% if schedule.is_active %}
+  {% if schedule.plan.is_perpetual %}
+    Opłacona na zawsze.
+  {% endif %}
+  Aktualnie opłacona do: {{ schedule.expires_at }}
 
-<div>Start: {{ schedule.started_at }}</div>
-<div>Opłacone do: {{ schedule.expires_at|default:"brak" }} {% if schedule.is_cancelled %}(anulowana){% endif %}</div>
-
-{% if schedule.expires_at and not schedule.is_cancelled %}
-<form method='post' action="{% url 'club_cancel' schedule.key %}">
+  {% if schedule.get_payment_method.is_recurring %}
+  <form method='post' action="{% url 'club_cancel' schedule.key %}">
+        {% csrf_token %}
+        <button type="submit">Anuluj kolejną płatność</button>
+  </form>
+  {% else %}
+  <form method='post' action=''>
 	{% csrf_token %}
-	<button type="submit">Anuluj płatność</button>
-</form>
+	<button type="submit">Opłać kolejny okres</button>
+  </form>
+  {% endif %}
+
+
+{% else %}
+ {% if schedule.is_expired %}
+   Członkostwo wygasło.
+   <form method='post' action=''>
+        {% csrf_token %}
+        <button type="submit">Opłać kolejny okres</button>
+   </form>
+
+
+ {% else %}
+   Składka nie została jeszcze opłacona.
+   {% if schedule.payuorder_set.exists %}
+     Czekamy na potwierdzenie płatności.
+   {% else %}
+
+     <form method='post' action=''>
+        {% csrf_token %}
+        <button type="submit">Zapłać składkę</button>
+     </form>
+
+   {% endif %}
+ {% endif %}
 {% endif %}
 
-{% if schedule.is_expired %}
-  Płatność wygasła. <a href="{% url 'club_join' %}">Wykonaj nową płatność</a>.
-{% endif %}
+<hr>
+
+
 
 {% if schedule.membership %}
   <p>
   Członek/członkini Towarzystwa nr {{ schedule.membership.id }} ({{ schedule.membership.user }}).
   </p>
+
+  <form method='post' action='{% url "club_membership" %}'>
+	  {% csrf_token %}
+	  Imię i nazwisko na legitymację: <br>
+	  <input name="name" value="{{ schedule.membership.name|default:schedule.membership.user.username }}"><br>
+	  <button type="submit">Zapisz</button>
+  </form>
+
 {% else %}
 <p>
 Płatność nie przypisana do członkostwa.<br>

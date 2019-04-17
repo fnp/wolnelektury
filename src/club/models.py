@@ -102,6 +102,7 @@ class Membership(models.Model):
     """ Represents a user being recognized as a member of the club. """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_('user'), on_delete=models.CASCADE)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    name = models.CharField(max_length=255, blank=True)
     honorary = models.BooleanField(default=False)
 
     class Meta:
@@ -183,7 +184,8 @@ class PayUOrder(payu_models.Order):
 
     def status_updated(self):
         if self.status == 'COMPLETED':
-            new_exp = self.schedule.plan.get_next_installment(now())
+            since = self.schedule.expires_at or now()
+            new_exp = self.schedule.plan.get_next_installment(since)
             if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
                 self.schedule.expires_at = new_exp
                 self.schedule.save()

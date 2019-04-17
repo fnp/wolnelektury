@@ -16,4 +16,5 @@ urlpatterns = [
 
     url(r'notify/(?P<pk>\d+)/', views.PayUNotifyView.as_view(), name='club_payu_notify'),
 
+    url(r'czlonek/', views.MembershipView.as_view(), name='club_membership'),
 ]

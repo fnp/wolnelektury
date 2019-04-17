@@ -50,6 +50,10 @@ urlpatterns += [
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^formularz/', include('contact.urls')),
     url(r'^isbn/', include('isbn.urls')),
+
+    url(r'^paypal/app-form/$', RedirectView.as_view(
+        url='/towarzystwo/dolacz/?app=1', permanent=True)),
+
     url(r'^paypal/', include('paypal.urls')),
     url(r'^powiadomienie/', include('push.urls')),
     url(r'^towarzystwo/', include('club.urls')),
