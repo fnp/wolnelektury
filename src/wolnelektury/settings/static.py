@@ -108,6 +108,7 @@ PIPELINE = {
                 'player/openplayer.js',
                 'js/search.js',
                 'funding/funding.js',
+                'club/form.js',
 
                 'js/annoy.js',
                 ),

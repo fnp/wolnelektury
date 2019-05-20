@@ -38,9 +38,11 @@ class JoinView(CreateView):
         kwargs['request'] = self.request
         return kwargs
 
-    def get_context_data(self, form=None):
-        c = super(JoinView, self).get_context_data()
+    def get_context_data(self, **kwargs):
+        c = super(JoinView, self).get_context_data(**kwargs)
         c['membership'] = getattr(self.request.user, 'membership', None)
+        #if hasattr(form, 'errors'):
+        #    print(form.errors)
         return c
 
     def get_initial(self):

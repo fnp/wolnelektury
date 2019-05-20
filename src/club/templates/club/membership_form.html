@@ -5,15 +5,78 @@
 
 
 {% block body %}
+
+<style>
+  .payment-method.disabled {
+  opacity: .5;
+  filter: grayscale(100%);
+  }
+  
+  </style>
+
+
 <div class="white-box normal-text">
 
 	<h1>{% if membership %}Odnów swoje członkostwo w Towarzystwie Wolnych Lektur{% else %}Dołącz do Towarzystwa Wolnych Lektur{% endif %}</h1>
 
-<form method="POST" action="">
+<form method="POST" action="" id="payment-form" class="wlform">
   {% csrf_token %}
 
-  {{ form.as_p }}
-  <button type='submit'>Dołącz</button>
+  <h2>Składka</h2>
+  
+  <ul class="errorlist">
+  {% for e in  form.non_field_errors %}
+    <li>{{ e }}</li>
+  {% endfor %}
+    {% for e in  form.plan.errors %}
+    <li>{{ e }}</li>
+  {% endfor %}
+    {% for e in  form.amount.errors %}
+    <li>{{ e }}</li>
+    {% endfor %}
+  </ul>
+
+  {% for plan in form.plans %}
+  
+  <div>
+    <input class="plan" type="radio" name="plan" value="{{ plan.id }}" id="plan{{ plan.id }}" data-methods="{% for m in plan.payment_methods %}{{ m.slug }} {% endfor %}">
+    <label for="plan{{ plan.id }}">
+      <input
+        name="amount-{{ plan.id }}"
+        type="number"
+        placeholder="min. {{ plan.min_amount|floatformat:0 }}"
+        value="{{ plan.default_amount|floatformat:0 }}"
+        min="{{ plan.min_amount|floatformat:0 }}"
+        step="1"
+        style="width: 5em;"
+        > zł
+      {{ plan.get_interval_display }}
+    </label>
+  </div>
+
+  {% endfor %}
+
+  <h2>Metoda płatności</h2>
+  
+  <ul class="errorlist">
+  {% for e in form.method.errors %}
+  <li>{{ e }}</li>
+  {% endfor %}
+  </ul>
+  
+  {% for payment_method in form.payment_methods %}
+  <div class="payment-method" id="payment-method-{{ payment_method.slug }}">
+    <input type="radio" id="method{{ payment_method.slug }}" name="method" value="{{ payment_method.slug }}">
+    <label for="method{{ payment_method.slug }}" style="display:inline-block">
+      {% include payment_method.template_name %}
+    </label>
+  </div>
+  {% endfor %}
+
+  <p style="margin-top: 2em;">
+    {{ form.email.label }}:
+    {{ form.email }}</p>
+  <button class="submit" type='submit'>Dołącz</button>
 </form>
 
 </div>

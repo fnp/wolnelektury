@@ -29,3 +29,64 @@ form table {
         padding-left: 0;
     }
 }
+
+.wlform {
+    .errorlist {
+        color: red;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    h2 {
+        margin-top: 1.5em;
+    }
+    
+    input[type=number] {
+        height: 1.3em;
+    }
+    input[type=radio] {
+        margin-right: 1em;
+    }
+    
+    .submit {
+        background: #018189;
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        padding: 1em 2em;
+        font-size: 1.2em;
+    }
+}
+
+.wlform {
+    .payment-method {
+        input {
+            height: 50px;
+            vertical-align: middle;
+        }
+        
+        img {
+            vertical-align: middle;
+            margin-right: 1em;
+        }
+        label {
+            margin: .5em 0;
+            vertical-align: middle;
+        }
+
+        
+        .method {
+            //        border: 1px solid black;
+            border-radius: 10px;
+            line-height: 48px;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0 1em;
+            margin-right: 1em;
+            font-size: 1.25em;
+            background: #01818980;
+            color: white;
+        }
+    }
+}

@@ -3,6 +3,7 @@ from django.urls import reverse
 
 
 class PaymentMethod(object):
+    is_onetime = False
     is_recurring = False
 
     def initiate(self, request, schedule):
@@ -10,6 +11,7 @@ class PaymentMethod(object):
 
 
 class PayU(PaymentMethod):
+    is_onetime = True
     slug = 'payu'
     name = 'PayU'
     template_name = 'club/payment/payu.html'
@@ -51,11 +53,12 @@ class PayURe(PaymentMethod):
         return order.put()
         
 
-class PayPalRe(PaymentMethod):
-    slug='paypal-re'
-    name = 'PayPal Recurring'
-    template_name = 'club/payment/paypal-re.html'
+class PayPal(PaymentMethod):
+    slug='paypal'
+    name = 'PayPal'
+    template_name = 'club/payment/paypal.html'
     is_recurring = True
+    is_onetime = True
 
     def initiate(self, request, schedule):
         return reverse('club_dummy_payment', args=[schedule.key])
@@ -78,7 +81,7 @@ else:
     payure_method = None
 
 
-methods.append(PayPalRe())
+methods.append(PayPal())
 
 
 method_by_slug = {

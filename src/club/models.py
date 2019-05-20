@@ -22,7 +22,8 @@ class Plan(models.Model):
     ]
 
     interval = models.SmallIntegerField(_('inteval'), choices=intervals)
-    min_amount = models.DecimalField(_('min_amount'), max_digits=10, decimal_places=2)
+    min_amount = models.DecimalField(_('min amount'), max_digits=10, decimal_places=2)
+    default_amount = models.DecimalField(_('default amount'), max_digits=10, decimal_places=2)
     allow_recurring = models.BooleanField(_('allow recurring'))
     allow_one_time = models.BooleanField(_('allow one time'))
     active = models.BooleanField(_('active'), default=True)
