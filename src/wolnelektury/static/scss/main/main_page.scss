@@ -3,78 +3,74 @@
     color: white;
     padding: 0;
     margin: 0;
-    background-size: 100%;
+    background-size: cover;
     background-position: 50% 68%;
-    background-repeat: repeat-y;
 
     background-image: url(/static/img/backdrop/book-drawer2.jpg);
-
-    @media screen and (min-width: 62.5em) {
-        background-image: url(/static/img/backdrop/book-drawer2.jpg);
-    }
 
     &.banner {
         background: none;
     }
 
-    .cite-text, .cite-text-small {
-        @include size(padding, 46px 10px 48px 0);
+    .cite-box, .cite-box-text, .cite-text {
+	box-sizing: border-box;
+        //@include size(padding, 46px 10px 48px 0);
+	padding:
+		46/975*100vw
+		40/975*100vw
+		48/975*100vw
+		0;
+
         background: none;
         color: white;
 
-        @media screen and (min-width: 30em) {
-            @include size(padding-right, 40px);
+        @media screen and (min-width: 62.5em) {
+		padding: 46px 40px 48px 0;
         }
 
         .vip {
-            @include size(margin-left, 10px);
-            @include size(margin-top, 2.5px);
-            @include size(margin-bottom, 5px);
-            @include size(font-size, 11px);
+	    padding-left: 10%;
+	    margin:
+                2.5/975*100vw
+		0
+		5/975*100vw
+		10/975*100vw;
 
-            @media screen and (min-width: 16em) {
-                padding-left: 10%;
-                @include size(margin-left, -18px);
-            }
+            font-size: 11/975 * 100vw;
 
             @media screen and (min-width: 62.5em) {
-                float: left;
-                padding-left: 0;
-                @include size(margin-left, 16px);
-                text-align: right;
-                @include size(width, 147px);
+		margin: 2.5px 0 5px 10px;
+		font-size: 11px;
             }
         }
 
         .cite-body {
-            @include size(margin, .5px);
-            @include size(font-size, 20px);
+	    margin: .5 /975 * 100vw;
+	    font-size: (30 / 975) * 100vw;
             line-height: 1.16em;
 
-            @media screen and (min-width: 30em) {
-                @include size(font-size, 30px);
+            @media screen and (min-width: 62.5em) {
+		font-size: 30px;
+		margin: .5px;
             }
         }
 
         .source {
-            @include size(margin-top, 16px);
-            @include size(margin-bottom, 16px);
-            @include size(margin-right, 2px);
-            @include size(font-size, 12px);
+	    margin: 16/975*100vw 2/975*100vw 16/975*100vw 0;
+	    font-size: 12/975*100vw;
+	    @media screen and (min-width: 62.5em) {
+		margin: 16px 2px 16px 0;
+		font-size: 12px;
+	    }
         }
 
         /* Make cite body and source slide to the left. */
         .cite-body, .source {
-            @include size(margin-left, 10px);
-
-            @media screen and (min-width: 16em) {
-                padding-left: 21.9%;
-                @include size(margin-left, -38px);
-            }
+		padding-left: 21.9%;
+	    margin-left: -38/975*100vw;
 
             @media screen and (min-width: 62.5em) {
-                padding-left: 0;
-                @include size(margin-left, 175px);
+                @include size(margin-left, -38px);
             }
         }
 
@@ -92,10 +88,46 @@
         }
     }
 
+
+    .cite-text {
+	.vip {
+		float: left;
+		padding-left: 0;
+		margin-left: 16/975*100vw;
+		text-align: right;
+		width: 147/975*100vw;
+	}
+        .cite-body, .source {
+		padding-left: 0;
+		margin-left: 175/975*100vw;
+	}
+
+        @media screen and (min-width: 62.5em) {
+            .vip {
+                @include size(margin-left, 16px);
+                @include size(width, 147px);
+	    }
+	    .cite-body, .source {
+                @include size(margin-left, 175px);
+	    }
+
+        }
+    }
+
+
+    .cite-box-text {
+	    padding-left: (975 / 2 + 45) /975 * 100vw;
+
+	    @media screen and (min-width: 62.5em) {
+		    padding-left: 975px / 2 + 45px;
+	    }
+    }
+
     /* a long cite displays smaller */
     .cite-text-small .cite-body {
-        @include size(font-size, 16px);
-        @media screen and (min-width: 30em) {
+        //@include size(font-size, 16px);
+	font-size: (20/975) * 100vw;
+        @media screen and (min-width: 62.5em) {
             @include size(font-size, 20px);
         }
     }
@@ -262,6 +294,58 @@ section {
                 width: 340px;
                 padding-left: 80px;
             }
+        }
+    }
+}
+
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 315/975*100vw;
+    overflow: hidden;
+
+    @media screen and (min-width: 62.5em) {
+	width: 975px;
+	height: 315px;
+    }
+
+    .cycle-prev {
+        left: 0;
+        &::after {
+            content: "◀";
+        }
+    }
+    .cycle-next {
+        right: 0;
+        &::after {
+            content: "▶";
+        }
+    }
+
+    .cycle-prev, .cycle-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 15%;
+        z-index: 1000;
+        background: black;
+        color: white;
+        opacity: 0;
+
+        &::after {
+            font-size: 100/975*100vw;
+            display: block;
+            line-height: 315/975*100vw;
+            text-align: center;
+
+            @media screen and (min-width: 62.5em) {
+                font-size: 100px;
+                line-height: 315px;
+            }
+        }
+        &:hover {
+            opacity: .33;
         }
     }
 }

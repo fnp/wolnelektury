@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -30,14 +29,7 @@ def main_page(request):
     ctx = {
         'last_published': Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:6],
         'theme_books': [],
-        'cite': get_or_choose_cite(request),
     }
-
-    # for category in ('author', 'epoch', 'genre', 'kind'):
-    #     try:
-    #         ctx[category] = Tag.objects.filter(category=category).order_by('?')[:1][0]
-    #     except IndexError:
-    #         pass
 
     # FIXME: find this theme and books properly.
     if Fragment.objects.exists():

@@ -115,7 +115,7 @@ def choose_cite(book_id=None, tag_ids=None):
 def get_or_choose_cite(request, book_id=None, tag_ids=None):
     try:
         assert request.user.is_staff
-        assert 'choose_cite' in request.GET
-        return Cite.objects.get(pk=request.GET['choose_cite'])
+        assert 'banner' in request.GET
+        return Cite.objects.get(pk=request.GET['banner'])
     except (AssertionError, Cite.DoesNotExist):
         return choose_cite(book_id, tag_ids)

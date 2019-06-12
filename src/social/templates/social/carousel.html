@@ -1,15 +1,18 @@
 {% spaceless %}
 
-{% load i18n %}
+<div class="cycle-slideshow carousel carousel-{{ carousel.slug }}"
+     data-cycle-slides="section"
+     data-cycle-pause-on-hover="true"
+     >
 
-<div class="carousel carousel-{{ carousel.slug }}">
-  {% for item in carousel.carouselitem_set.all %}
-    {% with banner=item.get_banner %}
-    <!-- {{ banner.id }} -->
-      {% if banner %}
-        {% include 'social/cite_promo.html' with cite=banner main=True %}
-      {% endif %}
-    {% endwith %}
+  <div class="cycle-prev"></div>
+  <div class="cycle-next"></div>
+  <div class="cycle-pager"></div>
+
+  {% for banner in banners %}
+    {% if banner %}
+      {% include 'social/cite_promo.html' with cite=banner main=True %}
+    {% endif %}
   {% endfor %}
 </div>
 

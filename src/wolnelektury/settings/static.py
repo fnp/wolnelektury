@@ -83,7 +83,7 @@ PIPELINE = {
     'JAVASCRIPT': {
         'base': {
             'source_filenames': (
-                'js/contrib/jquery.cycle.min.js',
+                'js/contrib/jquery.cycle2.min.js',
                 'js/contrib/jquery.jqmodal.js',
                 'js/contrib/jquery.form.js',
                 'js/contrib/jquery.paging.min.js',

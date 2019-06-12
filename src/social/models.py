@@ -6,7 +6,7 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, string_concat
 from ssify import flush_ssi_includes
 from catalogue.models import Book
 
@@ -42,18 +42,27 @@ class Cite(models.Model):
     vip = models.CharField(_('VIP'), max_length=128, null=True, blank=True)
     link = models.URLField(_('link'))
     video = models.URLField(_('video'), blank=True)
-    picture = models.ImageField(_('picture'), blank=True)
+    picture = models.ImageField(_('picture'), blank=True,
+            help_text='Najlepsze wymiary: 975 x 315 z tekstem, 487 x 315 bez tekstu.')
+    picture_alt = models.CharField(_('picture alternative text'), max_length=255, blank=True)
+    picture_title = models.CharField(_('picture title'), max_length=255, null=True, blank=True)
+    picture_author = models.CharField(_('picture author'), max_length=255, blank=True, null=True)
+    picture_link = models.URLField(_('picture link'), blank=True, null=True)
+    picture_license = models.CharField(_('picture license name'), max_length=255, blank=True, null=True)
+    picture_license_link = models.URLField(_('picture license link'), blank=True, null=True)
 
     sticky = models.BooleanField(_('sticky'), default=False, db_index=True,
                                  help_text=_('Sticky cites will take precedense.'))
-    banner = models.BooleanField(_('banner'), default=False, help_text=_('Adjust size to image, ignore the text'))
+    banner = models.BooleanField(_('banner'), default=False, help_text=string_concat(_('Adjust size to image, ignore the text'), '<br>(Przestarzałe; użyj funkcji "Obraz" w sekcji "Media box")'))
 
+    background_plain = models.BooleanField(_('plain background'), default=False)
+    background_color = models.CharField(_('background color'), max_length=32, blank=True)
     image = models.ImageField(
         _('image'), upload_to='social/cite', null=True, blank=True,
         help_text=_('Best image is exactly 975px wide and weights under 100kB.'))
     image_shift = models.IntegerField(
         _('shift'), null=True, blank=True,
-        help_text=_(u'Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.'))
+        help_text=string_concat(_('Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.'), '<br>(Przestarzałe; użyj obrazka o właściwych proporcjach;)'))
     image_title = models.CharField(_('title'), max_length=255, null=True, blank=True)
     image_author = models.CharField(_('author'), max_length=255, blank=True, null=True)
     image_link = models.URLField(_('link'), blank=True, null=True)
@@ -69,11 +78,23 @@ class Cite(models.Model):
         verbose_name_plural = _('banners')
 
     def __str__(self):
-        return u"%s: %s…" % (self.vip, self.text[:60])
+        t = []
+        if self.text:
+            t.append(self.text[:60])
+        if self.book_id:
+            t.append('[ks.]'[:60])
+        t.append(self.link[:60])
+        if self.vip:
+            t.append('vip: ' + self.vip)
+        if self.picture:
+            t.append('[obr.]')
+        if self.video:
+            t.append('[vid.]')
+        return ', '.join(t)
 
     def get_absolute_url(self):
         """This is used for testing."""
-        return "%s?choose_cite=%d" % (reverse('main_page'), self.id)
+        return "%s?banner=%d" % (reverse('main_page'), self.id)
 
     def has_box(self):
         return self.video or self.picture
@@ -90,8 +111,6 @@ class Cite(models.Model):
             pieces.append('box')
         if self.has_body():
             pieces.append('text')
-            if self.small:
-                pieces.append('small')
         return '-'.join(pieces)
 
 

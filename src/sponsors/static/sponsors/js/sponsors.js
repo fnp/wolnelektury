@@ -1,7 +1,7 @@
 (function($) {
     $(function() {
 
-        $('.sponsor-logos').cycle({timeout: 3000});
+        $('.sponsor-logos').cycle({slides: 'a', timeout: 3000});
 
     });
 })(jQuery);

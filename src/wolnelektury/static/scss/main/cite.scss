@@ -1,18 +1,68 @@
 .big-cite {
-	height: 270px;
+	overflow: hidden;
+	height: (315 / 975) * 100vw;
+	width: 100%;
 
-	.cite-box,.cite-text {
+	@media screen and (min-width: 62.5em) {
+		height: 315px;
+		width: 975px;
+	}
+
+	.cite-box,.cite-box-text,.cite-text {
 		display: block;
 		height: 100%;
 		position: relative;
 	}
 }
 
-.cite-text, .cite-text-small {
+.box-c {
+	position: absolute;
+	text-align: center;
+	img.picture {
+		max-height: 100%;
+		max-width: 100%;
+	}
+}
+.cite-box {
+	.box-c {
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.cite-box-text {
+	padding: 30/975*100vw 20/975*100vw 1/975*100vw (975 / 2 + 45)/975*100vw;
+	@media screen and (min-width: 62.5em) {
+		@include size(padding, 30px 20px 1px 975px / 2 + 45px);
+	}
+	.box-c {
+		/*top: 45/975*100vw;
+		left: 45/975*100vw;
+		bottom: 45/975*100vw;
+		width: (975 / 2 - 90)/975 * 100vw;
+		@media screen and (min-width: 62.5em) {
+		top: 45px;
+		left: 45px;
+		bottom: 45px;
+		width: 975px / 2 - 90px;
+		}*/
+	top:0;
+	left:0;
+	bottom:0;
+	width:50%;
+	}
+}
+
+.cite-text {
+	@include size(padding, 30px 20px 1px 80px);
+}
+
+.cite-box-text, .cite-text {
     display: block;
     color: black;
     background: white;
-    @include size(padding, 30px 20px 1px 80px);
 
     .vip {
         margin: 0;
