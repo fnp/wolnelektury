@@ -153,11 +153,16 @@ PIPELINE = {
                 'js/contrib/raphael-min.js',
                 'player/openplayer.js',
                 'js/contrib/progressSpin.min.js',
-                'js/picture.js',
                 'js/annoy.js',
             ],
             'output_filename': 'js/book_text.js',
         },
+        'picture': {
+            'source_filenames': [
+                'js/picture.js',
+            ],
+            'output_filename': 'js/picture.min.js',
+        }
         'book_ie': {
             'source_filenames': ('js/contrib/ierange-m2.js',),
             'output_filename': 'js/book_ie.min.js',

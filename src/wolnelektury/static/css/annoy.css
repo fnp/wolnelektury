@@ -3,7 +3,7 @@
     line-height: 1.15em;
 
     background: orange;
-    z-index: 200;
+    z-index: 99;
     font-family: Arial, sans-serif;
     display: block;
     padding: .1em 1em;
@@ -23,7 +23,7 @@
     background: orange;
     font-family: Arial, sans-serif;
     position: relative;
-    z-index: 200;
+    z-index: 99;
 }
 #annoy p {
     margin: 0 0 0 10em;;
