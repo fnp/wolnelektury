@@ -51,6 +51,7 @@ PIPELINE = {
             'source_filenames': [
                 'scss/book_text.scss',
                 'css/new.book.css',
+                'css/annoy.css',
 
                 'css/master.picture.css',
             ],
@@ -153,6 +154,7 @@ PIPELINE = {
                 'player/openplayer.js',
                 'js/contrib/progressSpin.min.js',
                 'js/picture.js',
+                'js/annoy.js',
             ],
             'output_filename': 'js/book_text.js',
         },
