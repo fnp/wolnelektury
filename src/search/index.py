@@ -142,7 +142,8 @@ class Index(SolrIndex):
                     uids.add(res['uid'])
                 st += rows
         if uids:
-            self.index.delete(uids)
+            # FIXME: With Solr API change, this doesn't work.
+            #self.index.delete(uids)
             return True
         else:
             return False
