@@ -162,7 +162,7 @@ PIPELINE = {
                 'js/picture.js',
             ],
             'output_filename': 'js/picture.min.js',
-        }
+        },
         'book_ie': {
             'source_filenames': ('js/contrib/ierange-m2.js',),
             'output_filename': 'js/book_ie.min.js',
