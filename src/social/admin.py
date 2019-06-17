@@ -25,7 +25,7 @@ class CiteAdmin(admin.ModelAdmin):
     def nonempty_text(self, cite):
         if cite.text.strip():
             return cite.text
-        return "(%s)" % (cite.image_title.strip() or cite.link)
+        return "(%s)" % ((cite.image_title or '').strip() or cite.link)
     nonempty_text.short_description = _('text')
 
     def has_image(self, cite):
