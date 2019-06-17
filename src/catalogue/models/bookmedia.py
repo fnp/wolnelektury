@@ -99,10 +99,10 @@ class BookMedia(models.Model):
                 artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
                 director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
                 project = ", ".join([
-                    t.data for t in audio.getall('PRIV')
+                    t.data.decode('utf-8') for t in audio.getall('PRIV')
                     if t.owner == 'wolnelektury.pl?project'])
                 funded_by = ", ".join([
-                    t.data for t in audio.getall('PRIV')
+                    t.data.decode('utf-8') for t in audio.getall('PRIV')
                     if t.owner == 'wolnelektury.pl?funded_by'])
             except MutagenError:
                 pass
@@ -134,7 +134,7 @@ class BookMedia(models.Model):
         if filetype == 'mp3':
             try:
                 audio = id3.ID3(filepath)
-                return [t.data for t in audio.getall('PRIV')
+                return [t.data.decode('utf-8') for t in audio.getall('PRIV')
                         if t.owner == 'wolnelektury.pl?flac_sha1'][0]
             except (MutagenError, IndexError):
                 return None
