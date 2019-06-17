@@ -44,8 +44,8 @@ def html_title_from_tags(tags):
     if len(tags) < 2:
         return title_from_tags(tags)
     template = Template("{{ category }}: <a href='{{ tag.get_absolute_url }}'>{{ tag.name }}</a>")
-    return capfirst(",<br/>".join(
-        template.render(Context({'tag': tag, 'category': _(tag.category)})) for tag in tags))
+    return mark_safe(capfirst(",<br/>".join(
+        template.render(Context({'tag': tag, 'category': _(tag.category)})) for tag in tags)))
 
 
 def simple_title(tags):
