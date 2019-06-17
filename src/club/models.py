@@ -1,8 +1,10 @@
 from datetime import datetime, timedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.core.mail import send_mail
 from django.urls import reverse
 from django.db import models
+from django import template
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
 from catalogue.utils import get_random_hash
@@ -67,6 +69,7 @@ class Schedule(models.Model):
     is_cancelled = models.BooleanField(_('cancelled'), default=False)
     started_at = models.DateTimeField(_('started at'), auto_now_add=True)
     expires_at = models.DateTimeField(_('expires_at'), null=True, blank=True)
+    email_sent = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _('schedule')
@@ -89,6 +92,9 @@ class Schedule(models.Model):
     def get_absolute_url(self):
         return reverse('club_schedule', args=[self.key])
 
+    def get_thanks_url(self):
+        return reverse('club_thanks', args=[self.key])
+
     def get_payment_method(self):
         return method_by_slug[self.method]
 
@@ -97,6 +103,15 @@ class Schedule(models.Model):
 
     def is_active(self):
         return self.expires_at is not None and self.expires_at > now()
+
+    def send_email(self):
+        ctx = {'schedule': self}
+        send_mail(
+            template.loader.render_to_string('club/email/thanks_subject.txt', ctx).strip(),
+            template.loader.render_to_string('club/email/thanks.txt', ctx),
+            settings.CONTACT_EMAIL, [self.email], fail_silently=False)
+        self.email_sent = True
+        self.save()
 
 
 class Membership(models.Model):
@@ -167,7 +182,7 @@ class PayUOrder(payu_models.Order):
     def get_continue_url(self):
         return "https://{}{}".format(
             Site.objects.get_current().domain,
-            self.schedule.get_absolute_url())
+            self.schedule.get_thanks_url())
 
     def get_description(self):
         return ugettext('Towarzystwo Wolnych Lektur')
@@ -190,6 +205,9 @@ class PayUOrder(payu_models.Order):
             if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
                 self.schedule.expires_at = new_exp
                 self.schedule.save()
+
+            if not self.schedule.email_sent:
+                self.schedule.send_email()
 
 
 class PayUCardToken(payu_models.CardToken):

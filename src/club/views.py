@@ -1,6 +1,9 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from django.views.generic import FormView, CreateView, TemplateView, DetailView, UpdateView
 from django.views import View
 from .payu import POSS
@@ -14,6 +17,11 @@ from .payment_methods import payure_method
 class ClubView(TemplateView):
     template_name = 'club/index.html'
 
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        ctx['active_menu_item'] = 'club'
+        return ctx
+
 
 class JoinView(CreateView):
     form_class = ScheduleForm
@@ -23,6 +31,10 @@ class JoinView(CreateView):
         return self.request.GET.get('app')
 
     def get(self, request):
+        # TODO: configure as app-allowed hosts.
+        if settings.CLUB_APP_HOST and self.is_app() and request.META['HTTP_HOST'] != settings.CLUB_APP_HOST:
+            return HttpResponseRedirect("https://" + settings.CLUB_APP_HOST + request.get_full_path())
+
         if self.is_app():
             request.session['from_app'] = True
         elif request.session and 'from_app' in request.session:
@@ -41,8 +53,7 @@ class JoinView(CreateView):
     def get_context_data(self, **kwargs):
         c = super(JoinView, self).get_context_data(**kwargs)
         c['membership'] = getattr(self.request.user, 'membership', None)
-        #if hasattr(form, 'errors'):
-        #    print(form.errors)
+        c['active_menu_item'] = 'club'
         return c
 
     def get_initial(self):
@@ -62,10 +73,16 @@ class JoinView(CreateView):
         return self.object.initiate_payment(self.request)
 
 
+@method_decorator(never_cache, name='dispatch')
 class ScheduleView(DetailView):
     model = models.Schedule
     slug_field = slug_url_kwarg = 'key'
     template_name = 'club/schedule.html'
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        ctx['active_menu_item'] = 'club'
+        return ctx
 
     def post(self, request, key):
         schedule = self.get_object()
@@ -132,3 +149,15 @@ class MembershipView(UpdateView):
 
     def get_object(self):
         return self.request.user.membership
+
+
+class ScheduleThanksView(DetailView):
+    model = models.Schedule
+    slug_field = slug_url_kwarg = 'key'
+    template_name = 'club/thanks.html'
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        ctx['active_menu_item'] = 'club'
+        return ctx
+

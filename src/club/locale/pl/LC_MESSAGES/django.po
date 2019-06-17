@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-04 11:36+0100\n"
-"PO-Revision-Date: 2019-03-04 11:34+0100\n"
+"PO-Revision-Date: 2019-06-17 15:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -26,11 +26,11 @@ msgstr "miesięcznie"
 
 #: models.py:26
 msgid "a year"
-msgstr "rocznie"
+msgstr "raz do roku"
 
 #: models.py:27
 msgid "in perpetuity"
-msgstr "na zawsze"
+msgstr "raz na zawsze"
 
 #: models.py:30
 msgid "inteval"

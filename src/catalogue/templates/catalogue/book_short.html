@@ -145,7 +145,9 @@
           </li>
         </ul>
       {% else %}
-        <p class="book-box-tools">{% trans "For now this work is only available for our subscribers." %}</p>
+        <p class="book-box-tools">{% trans "For now this work is only available for our subscribers." %}
+	   <a href="/towarzystwo/">Dołącz do Towarzystwa Przyjaciół Wolnych Lektur</a>
+	</p>
       {% endif %}
       {% endcache %}
       {% block book-box-extra-info %}{% endblock %}
@@ -154,11 +156,11 @@
     {% endwith %}
 
     {% block right-column %}
-      {% if audiobooks %}
+      {% if audiobooks %}{% if book|status:request.user != 'closed' %}
         <div class="book-right-column">
           {% include 'catalogue/snippets/jplayer.html' %}
         </div>
-      {% endif %}
+      {% endif %}{% endif %}
     {% endblock %}
     {% if book.abstract %}
       <div class="abstract more-expand">

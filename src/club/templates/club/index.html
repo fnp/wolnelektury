@@ -1,22 +1,26 @@
 {% extends "base/base.html" %}
 {% load active_schedule from club %}
+{% load chunks %}
 
 
-{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+{% block titleextra %}Towarzystwo Przyjaciół Wolnych Lektur{% endblock %}
 
 
 {% block body %}
 <div class="white-box normal-text">
 
-	<h1>Towarzystwo Wolnych Lektur</h1>
+	<h1>Towarzystwo Przyjaciół Wolnych Lektur</h1>
 
 	<p>Towarzystwo jest fajne.</p>
+	{% chunk 'club' %}
 
+
+<p style="margin-top: 2em;">
 {% with schedule=request.user|active_schedule %}
 {% if schedule %}
-<p><a href="{{ schedule.get_absolute_url }}">Jesteś już w Towarzystwie</a>!</p>
+<a href="{{ schedule.get_absolute_url }}">Gratulacje – należysz już do Towarzystwa Przyjaciół Wolnych Lektur!</a></p>
 {% else %}
-<a href="{% url 'club_join' %}">Dołącz do Towarzystwa</a>.
+<a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="{% url 'club_join' %}">Dołącz do Towarzystwa</a></p>
 {% endif %}
 {% endwith %}
 

@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.http import urlquote_plus
 from django.utils import translation
 from django.utils.translation import ugettext as _, ugettext_lazy
+from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
 from club.models import Membership
@@ -354,6 +355,7 @@ def tag_info(request, tag_id):
     return HttpResponse(tag.description)
 
 
+@never_cache
 def embargo_link(request, format_, slug):
     book = get_object_or_404(Book, slug=slug)
     if format_ not in Book.formats:

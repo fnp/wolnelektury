@@ -1,0 +1,25 @@
+{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+{% load chunks %}
+
+
+{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+
+
+{% block body %}
+
+
+<div class="white-box normal-text">
+
+	<h1>Dziękujemy</h1>
+
+
+{% chunk 'club_thanks' %}
+
+{% if request.session.from_app %}
+  <a href="wolnelekturyapp://paypal_return">Wróć do aplikacji</a>
+{% else %}
+{% endif %}
+
+</div>
+
+{% endblock %}

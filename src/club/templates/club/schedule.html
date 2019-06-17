@@ -7,37 +7,44 @@
 {% block body %}
 <div class="white-box normal-text">
 
-<h1>Plan płatności</h1>
-
-<div>E-mail: {{ schedule.email }}</div>
-<div>Składka: {{ schedule.amount }} zł {{ schedule.plan.get_interval_display }}</div>
-<div>Wybrana metoda płatności: {{ schedule.get_payment_method.name }}</div>
+<h1>
+Cieszymy się, że jesteś z nami! Dziękujemy za wsparcie!
+</h1>
+<p>
+Od <strong>{{ schedule.started_at.date }}</strong>
+{% if schedule.expires_at %}
+  do <strong>{{ schedule.expires_at.date }}</strong>
+{% endif %}
+wspierasz nas kwotą {{ schedule.amount }} zł {{ schedule.plan.get_interval_display }}.
+</p>
 
 {% if schedule.is_active %}
-  {% if schedule.plan.is_perpetual %}
-    Opłacona na zawsze.
-  {% endif %}
-  Aktualnie opłacona do: {{ schedule.expires_at }}
-
   {% if schedule.get_payment_method.is_recurring %}
-  <form method='post' action="{% url 'club_cancel' schedule.key %}">
+     {% if schedule.is_cancelled %}
+         <p><strong>Płatność anulowana.</strong></p>
+         <p>
+           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/towarzystwo/dolacz/">Odnów składkę</a>
+         </p>
+     {% else %}
+       <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
         {% csrf_token %}
-        <button type="submit">Anuluj kolejną płatność</button>
-  </form>
+	<button type="submit" class="submit" style="font-size: .9em">Anuluj kolejną płatność</button>
+       </form>
+     {% endif %}
   {% else %}
-  <form method='post' action=''>
+     <form class="wlform" method='post' action=''>
 	{% csrf_token %}
-	<button type="submit">Opłać kolejny okres</button>
-  </form>
+	<button type="submit" class="submit">Opłać kolejny okres</button>
+     </form>
   {% endif %}
 
 
 {% else %}
  {% if schedule.is_expired %}
    Członkostwo wygasło.
-   <form method='post' action=''>
+   <form method='post' action='' class="wlform">
         {% csrf_token %}
-        <button type="submit">Opłać kolejny okres</button>
+	<button type="submit" class="submit">Opłać kolejny okres</button>
    </form>
 
 
@@ -49,33 +56,41 @@
 
      <form method='post' action=''>
         {% csrf_token %}
-        <button type="submit">Zapłać składkę</button>
+	<button type="submit" class="submit">Zapłać składkę</button>
      </form>
 
    {% endif %}
  {% endif %}
 {% endif %}
 
-<hr>
 
+<hr style="margin: 2em 0;">
+
+
+<h2>Towarzystwo Przyjaciół Wolnych Lektur</h2>
 
 
 {% if schedule.membership %}
   <p>
-  Członek/członkini Towarzystwa nr {{ schedule.membership.id }} ({{ schedule.membership.user }}).
-  </p>
+  Należysz już do Towarzystwa Przyjaciół Wolnych Lektur!</p>
 
-  <form method='post' action='{% url "club_membership" %}'>
+  <form class="wlform" method='post' action='{% url "club_membership" %}'>
 	  {% csrf_token %}
-	  Imię i nazwisko na legitymację: <br>
+	  Skontaktujemy się z Tobą w sprawie odbioru legitymacji członkowskiej.<br>Tutaj możesz podać imię i nazwisko, jakie ma na niej widnieć:<br>
 	  <input name="name" value="{{ schedule.membership.name|default:schedule.membership.user.username }}"><br>
-	  <button type="submit">Zapisz</button>
+	  <button class="submit" type="submit">Zmień dane</button>
   </form>
 
 {% else %}
+
 <p>
-Płatność nie przypisana do członkostwa.<br>
-<a href="{% url 'club_claim' schedule.key %}">Przypisz</a>
+Twoje wsparcie upoważnia Cię do członkostwa w Towarzystwie Przyjaciół Wolnych Lektur.
+Aby w pełni z niego korzystać, zapisz się do Towarzystwa swoim kontem użytkownika na Wolnych Lekturach.
+</p>
+
+
+<p>
+<a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em;" href="{% url 'club_claim' schedule.key %}">Zapisz się</a>
 </p>
 {% endif %}
 

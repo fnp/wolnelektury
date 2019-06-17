@@ -3,6 +3,8 @@
 #
 import json
 from django.http import Http404, HttpResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.response import Response
@@ -227,6 +229,7 @@ class EpubView(RetrieveAPIView):
     lookup_field = 'slug'
     permission_classes = [IsClubMember]
 
+    @method_decorator(never_cache)
     def get(self, *args, **kwargs):
         return HttpResponse(self.get_object().get_media('epub'))
 

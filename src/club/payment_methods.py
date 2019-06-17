@@ -32,7 +32,7 @@ class PayU(PaymentMethod):
 
 class PayURe(PaymentMethod):
     slug='payu-re'
-    name = 'PayU Recurring'
+    name = 'PayU (płatność odnawialna)'
     template_name = 'club/payment/payu-re.html'
     is_recurring = True
 
@@ -55,7 +55,7 @@ class PayURe(PaymentMethod):
 
 class PayPal(PaymentMethod):
     slug='paypal'
-    name = 'PayPal'
+    name = 'PayPal (płatność odnawialna)'
     template_name = 'club/payment/paypal.html'
     is_recurring = True
     is_onetime = True
@@ -66,13 +66,6 @@ class PayPal(PaymentMethod):
 
 methods = []
 
-pos = getattr(settings, 'CLUB_PAYU_POS', None)
-if pos:
-    payu_method = PayU(pos)
-    methods.append(payu_method)
-else:
-    payu_method = None
-
 pos= getattr(settings, 'CLUB_PAYU_RECURRING_POS', None)
 if pos:
     payure_method = PayURe(pos)
@@ -80,8 +73,15 @@ if pos:
 else:
     payure_method = None
 
+pos = getattr(settings, 'CLUB_PAYU_POS', None)
+if pos:
+    payu_method = PayU(pos)
+    methods.append(payu_method)
+else:
+    payu_method = None
 
-methods.append(PayPal())
+
+#methods.append(PayPal())
 
 
 method_by_slug = {

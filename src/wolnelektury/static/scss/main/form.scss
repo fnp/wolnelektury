@@ -61,6 +61,8 @@ form table {
 
 .wlform {
     .payment-method {
+	margin-top: 2em;
+
         input {
             height: 50px;
             vertical-align: middle;
@@ -69,24 +71,24 @@ form table {
         img {
             vertical-align: middle;
             margin-right: 1em;
+	    height: 36px;
         }
         label {
+	    display: inline;
             margin: .5em 0;
             vertical-align: middle;
         }
 
-        
         .method {
-            //        border: 1px solid black;
-            border-radius: 10px;
-            line-height: 48px;
+            border: 1px solid black;
+            border-radius: 5px;
+            line-height: 34px;
             display: inline-block;
             vertical-align: middle;
             padding: 0 1em;
             margin-right: 1em;
-            font-size: 1.25em;
-            background: #01818980;
-            color: white;
+            color: black;
+	    text-transform: uppercase;
         }
     }
 }

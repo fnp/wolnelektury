@@ -1,5 +1,5 @@
-{% load i18n %}
-{% if audiobooks %}
+{% load i18n catalogue_tags %}
+{% if audiobooks %}{% if book|status:request.user != 'closed' %}
   <div class="jp-type-playlist">
     <div id="jplayer" class="jp-jplayer" data-player="jp_container_{{ book.pk }}"
          data-supplied="oga,mp3"></div>
@@ -61,4 +61,4 @@
       {% endif %}
     </div>
   </div>
-{% endif %}
+{% endif %}{% endif %}

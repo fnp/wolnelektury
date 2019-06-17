@@ -52,7 +52,10 @@ urlpatterns += [
     url(r'^isbn/', include('isbn.urls')),
 
     url(r'^paypal/app-form/$', RedirectView.as_view(
-        url='/towarzystwo/dolacz/?app=1', permanent=True)),
+        url='/towarzystwo/?app=1', permanent=False)),
+    url(r'^towarzystwo/dolacz/$', RedirectView.as_view(
+        url='/towarzystwo/', permanent=False)),
+
 
     url(r'^paypal/', include('paypal.urls')),
     url(r'^powiadomienie/', include('push.urls')),

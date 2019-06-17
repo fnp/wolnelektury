@@ -1,0 +1,13 @@
+{% load chunks %}{% chunk "club_email_thanks" %}
+
+Od {{ schedule.started_at.date }} wspierasz nas kwotą {{ schedule.amount }} zł {{ schedule.plan.get_interval_display }}.
+
+{% if schedule.membership %}
+{% chunk "club_email_thanks_registered" %}
+{% else %}
+{% chunk "club_email_thanks_unregistered" %}
+
+https://wolnelektury.pl{{ schedule.get_absolute_url }}
+{% endif %}
+
+{% chunk "club_email_thanks_bottom" %}

@@ -120,7 +120,7 @@ class Order(models.Model):
         self.save()
 
         
-        return response.get('redirectUri', self.schedule.get_absolute_url())
+        return response.get('redirectUri', self.schedule.get_thanks_url())
 
 
 class Notification(models.Model):
