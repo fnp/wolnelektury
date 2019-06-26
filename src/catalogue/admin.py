@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -30,8 +29,11 @@ class MediaInline(admin.TabularInline):
     extra = 0
 
 
-class BookAdmin(TaggableModelAdmin):
-    tag_model = Tag
+#FIXME: Taggable admin is broken.
+#class BookAdmin(TaggableModelAdmin):
+class BookAdmin(admin.ModelAdmin):
+    #tag_model = Tag
+    #form = TaggableModelForm
 
     list_display = ('title', 'slug', 'created_at', 'has_epub_file', 'has_html_file', 'has_description',)
     search_fields = ('title',)
@@ -39,20 +41,11 @@ class BookAdmin(TaggableModelAdmin):
 
     inlines = [MediaInline]
 
-    def change_view(self, request, object_id, extra_context=None):
-        if 'advanced' not in request.GET:
-            self.form = forms.ModelForm
-            self.fields = ('title', 'description', 'wiki_link', 'recommended')
-            self.readonly_fields = ('title',)
-        else:
-            self.form = TaggableModelForm
-            self.fields = None
-            self.readonly_fields = ()
-        return super(BookAdmin, self).change_view(request, object_id, extra_context=extra_context)
 
-
-class FragmentAdmin(TaggableModelAdmin):
-    tag_model = Tag
+#FIXME: Taggable admin is broken.
+#class FragmentAdmin(TaggableModelAdmin):
+class FragmentAdmin(admin.ModelAdmin):
+    #tag_model = Tag
 
     list_display = ('book', 'anchor',)
     ordering = ('book', 'anchor',)

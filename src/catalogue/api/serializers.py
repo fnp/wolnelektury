@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from rest_framework import serializers
 from api.fields import AbsoluteURLField, LegacyMixin, ThumbnailField
 from catalogue.models import Book, Collection, Tag, BookMedia, Fragment
-from .fields import BookLiked
+from .fields import BookLiked, EmbargoURLField
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -68,7 +67,7 @@ class FilterBookListSerializer(BookListSerializer):
 
 
 class MediaSerializer(LegacyMixin, serializers.ModelSerializer):
-    url = serializers.FileField(source='file')
+    url = EmbargoURLField(source='file_url')
 
     class Meta:
         model = BookMedia
@@ -88,13 +87,13 @@ class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
     parent = BookSerializer()
     children = BookSerializer(many=True)
 
-    xml = AbsoluteURLField(source='xml_url')
-    html = AbsoluteURLField(source='html_url')
-    txt = AbsoluteURLField(source='txt_url')
-    fb2 = AbsoluteURLField(source='fb2_url')
-    epub = AbsoluteURLField(source='epub_url')
-    mobi = AbsoluteURLField(source='mobi_url')
-    pdf = AbsoluteURLField(source='pdf_url')
+    xml = EmbargoURLField(source='xml_url')
+    html = EmbargoURLField(source='html_url')
+    txt = EmbargoURLField(source='txt_url')
+    fb2 = EmbargoURLField(source='fb2_url')
+    epub = EmbargoURLField(source='epub_url')
+    mobi = EmbargoURLField(source='mobi_url')
+    pdf = EmbargoURLField(source='pdf_url')
     media = MediaSerializer(many=True)
     cover_thumb = ThumbnailField('139x193', source='cover')
     simple_thumb = serializers.FileField(source='cover_api_thumb')
@@ -120,11 +119,11 @@ class BookPreviewSerializer(BookDetailSerializer):
 
 
 class EbookSerializer(BookListSerializer):
-    txt = AbsoluteURLField(source='txt_url')
-    fb2 = AbsoluteURLField(source='fb2_url')
-    epub = AbsoluteURLField(source='epub_url')
-    mobi = AbsoluteURLField(source='mobi_url')
-    pdf = AbsoluteURLField(source='pdf_url')
+    txt = EmbargoURLField(source='txt_url')
+    fb2 = EmbargoURLField(source='fb2_url')
+    epub = EmbargoURLField(source='epub_url')
+    mobi = EmbargoURLField(source='mobi_url')
+    pdf = EmbargoURLField(source='pdf_url')
 
     class Meta:
         model = Book

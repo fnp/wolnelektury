@@ -26,7 +26,7 @@ from newtagging import managers
 from catalogue import constants
 from catalogue.fields import EbookField
 from catalogue.models import Tag, Fragment, BookMedia
-from catalogue.utils import create_zip, gallery_url, gallery_path, split_tags
+from catalogue.utils import create_zip, gallery_url, gallery_path, split_tags, get_random_hash
 from catalogue.models.tag import prefetched_relations
 from catalogue import app_settings
 from catalogue import tasks
@@ -76,6 +76,7 @@ class Book(models.Model):
     audio_length = models.CharField(_('audio length'), blank=True, max_length=8)
     preview = models.BooleanField(_('preview'), default=False)
     preview_until = models.DateField(_('preview until'), blank=True, null=True)
+    preview_key = models.CharField(max_length=32, blank=True, null=True)
 
     # files generated during publication
     cover = EbookField(
@@ -199,6 +200,9 @@ class Book(models.Model):
         self.cached_author = self.tag_unicode('author')
         self.has_audience = 'audience' in self.extra_info
 
+        if self.preview and not self.preview_key:
+            self.preview_key = get_random_hash(self.slug)[:32]
+
         ret = super(Book, self).save(force_insert, force_update, **kwargs)
 
         return ret
@@ -284,7 +288,7 @@ class Book(models.Model):
         media = self.get_media(format_)
         if media:
             if self.preview:
-                return reverse('embargo_link', kwargs={'slug': self.slug, 'format_': format_})
+                return reverse('embargo_link', kwargs={'key': self.preview_key, 'slug': self.slug, 'format_': format_})
             else:
                 return media.url
         else:

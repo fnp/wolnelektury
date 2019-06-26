@@ -142,14 +142,22 @@ class BookDetail(RetrieveAPIView):
     serializer_class = serializers.BookDetailSerializer
 
 
+@vary_on_auth  # Because of embargo links.
 class EbookList(BookList):
     serializer_class = serializers.EbookSerializer
 
 
 @vary_on_auth  # Because of 'liked'.
 class Preview(ListAPIView):
-    queryset = Book.objects.filter(preview=True)
+    #queryset = Book.objects.filter(preview=True)
     serializer_class = serializers.BookPreviewSerializer
+
+    def get_queryset(self):
+        qs = Book.objects.filter(preview=True)
+        # FIXME: temporary workaround for a problem with iOS app.
+        if 'Darwin' in self.request.META['HTTP_USER_AGENT']:
+            qs = qs.none()
+        return qs
 
 
 @vary_on_auth  # Because of 'liked'.

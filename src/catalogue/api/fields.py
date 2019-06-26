@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from rest_framework import serializers
+from api.fields import AbsoluteURLField
 from catalogue.models import Book
+from club.models import Membership
 
 
 class BookLiked(serializers.ReadOnlyField):
@@ -19,3 +20,12 @@ class BookLiked(serializers.ReadOnlyField):
                 request.liked_books = None
         if request.liked_books is not None:
             return value in request.liked_books
+
+
+class EmbargoURLField(AbsoluteURLField):
+    def to_representation(self, value):
+        request = self.context['request']
+        if Membership.is_active_for(request.user):
+            return super().to_representation(value)
+        else:
+            return None

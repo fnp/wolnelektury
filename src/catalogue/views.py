@@ -356,15 +356,15 @@ def tag_info(request, tag_id):
 
 
 @never_cache
-def embargo_link(request, format_, slug):
+def embargo_link(request, key, format_, slug):
     book = get_object_or_404(Book, slug=slug)
     if format_ not in Book.formats:
+        raise Http404
+    if key != book.preview_key:
         raise Http404
     media_file = book.get_media(format_)
     if not book.preview:
         return HttpResponseRedirect(media_file.url)
-    if not Membership.is_active_for(request.user):
-        return HttpResponseRedirect(book.get_absolute_url())
     return HttpResponse(media_file, content_type=constants.EBOOK_CONTENT_TYPES[format_])
 
 

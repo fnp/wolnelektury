@@ -154,3 +154,6 @@ class BookMedia(models.Model):
     @property
     def artist(self):
         return self.extra_info.get('artist_name', None)
+
+    def file_url(self):
+        return self.file.url
