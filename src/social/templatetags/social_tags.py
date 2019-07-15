@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import re
 from django import template
 from django.utils.functional import lazy
 from django.utils.cache import add_never_cache_headers
@@ -9,6 +9,7 @@ from catalogue.models import Book
 from ssify import ssi_variable
 from ssify.utils import ssi_vary_on_cookie
 from social.utils import likes, get_or_choose_cite
+from ..models import Carousel
 
 register = template.Library()
 
@@ -47,3 +48,24 @@ def book_shelf_tags(request, book_id):
         ctx = {'tags': tags}
         return template.loader.render_to_string('social/shelf_tags.html', ctx)
     return lazy(get_value, str)()
+
+
+@register.inclusion_tag('social/carousel.html')
+def carousel(slug):
+    # TODO: cache
+    try:
+        carousel = Carousel.objects.get(slug=slug)
+    except Carousel.DoesNotExist:
+        # TODO: add sanity check for install.
+        carousel = None
+    return {
+        'carousel': carousel
+    }
+
+
+@register.inclusion_tag('social/embed_video.html')
+def embed_video(url):
+    m = re.match(r'https://www.youtube.com/watch\?v=([^&;]+)', url)
+    return {
+        'youtube_id': m.group(1) if m else None,
+    }

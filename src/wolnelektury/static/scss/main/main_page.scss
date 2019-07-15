@@ -1,4 +1,4 @@
-#big-cite {
+.big-cite {
     background-color: #444;
     color: white;
     padding: 0;
@@ -17,7 +17,7 @@
         background: none;
     }
 
-    .cite {
+    .cite-text, .cite-text-small {
         @include size(padding, 46px 10px 48px 0);
         background: none;
         color: white;
@@ -93,7 +93,7 @@
     }
 
     /* a long cite displays smaller */
-    .cite-small .cite-body {
+    .cite-text-small .cite-body {
         @include size(font-size, 16px);
         @media screen and (min-width: 30em) {
             @include size(font-size, 20px);
@@ -245,7 +245,7 @@ section {
     .white-box {
         position: relative;
 
-        .cite {
+        .cite-text, .cite-text-small {
             display: none;
 
             @media screen and (min-width: 768px) {

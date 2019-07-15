@@ -62,6 +62,8 @@ INSTALLED_APPS_CONTRIB = [
     'raven.contrib.django.raven_compat',
     'club.apps.ClubConfig',
 
+    'debug_toolbar',
+
     # allauth stuff
     'allauth',
     'allauth.account',

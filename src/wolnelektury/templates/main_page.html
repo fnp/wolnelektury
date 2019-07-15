@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+{% load carousel from social_tags %}
 {% load static from staticfiles %}
 {% load i18n catalogue_tags infopages_tags %}
 {% load ssi_include from ssify %}
@@ -17,11 +18,7 @@
 
 {% block body %}
   {% spaceless %}
-    {% if cite %}
-      {% cache 3600 main_cite cite.pk %}
-        {% include "social/cite_promo.html" with main=True %}
-      {% endcache %}
-    {% endif %}
+    {% carousel 'main' %}
 
     <section id="main-library">
       <h1>{% trans "In our digital library you will find" %}</h1>

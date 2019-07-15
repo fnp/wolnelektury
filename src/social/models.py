@@ -1,6 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from random import randint
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -25,6 +26,13 @@ class BannerGroup(models.Model):
     def get_absolute_url(self):
         """This is used for testing."""
         return "%s?banner_group=%d" % (reverse('main_page'), self.id)
+
+    def get_banner(self):
+        banners = self.cite_set.all()
+        count = banners.count()
+        if not count:
+            return None
+        return banners[randint(0, count-1)]
 
 
 class Cite(models.Model):
@@ -66,6 +74,26 @@ class Cite(models.Model):
     def get_absolute_url(self):
         """This is used for testing."""
         return "%s?choose_cite=%d" % (reverse('main_page'), self.id)
+
+    def has_box(self):
+        return self.video or self.picture
+
+    def has_body(self):
+        return self.vip or self.text or self.book
+
+    def layout(self):
+        if self.banner:
+            # TODO: move all banners to pictures.
+            return 'banner'
+        pieces = []
+        if self.has_box():
+            pieces.append('box')
+        if self.has_body():
+            pieces.append('text')
+            if self.small:
+                pieces.append('small')
+        return '-'.join(pieces)
+
 
     def save(self, *args, **kwargs):
         ret = super(Cite, self).save(*args, **kwargs)
@@ -114,3 +142,6 @@ class CarouselItem(models.Model):
             raise ValidationError(_('Either banner or banner group is required.'))
         elif self.banner and self.banner_group:
             raise ValidationError(_('Either banner or banner group is required.'))
+
+    def get_banner(self):
+        return self.banner or self.banner_group.get_banner()

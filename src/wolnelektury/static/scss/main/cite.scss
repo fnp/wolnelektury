@@ -1,4 +1,14 @@
-.cite {
+.big-cite {
+	height: 270px;
+
+	.cite-box,.cite-text {
+		display: block;
+		height: 100%;
+		position: relative;
+	}
+}
+
+.cite-text, .cite-text-small {
     display: block;
     color: black;
     background: white;

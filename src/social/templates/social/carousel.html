@@ -1,0 +1,16 @@
+{% spaceless %}
+
+{% load i18n %}
+
+<div class="carousel carousel-{{ carousel.slug }}">
+  {% for item in carousel.carouselitem_set.all %}
+    {% with banner=item.get_banner %}
+    <!-- {{ banner.id }} -->
+      {% if banner %}
+        {% include 'social/cite_promo.html' with cite=banner main=True %}
+      {% endif %}
+    {% endwith %}
+  {% endfor %}
+</div>
+
+{% endspaceless %}

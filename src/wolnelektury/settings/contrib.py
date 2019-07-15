@@ -41,3 +41,8 @@ REST_FRAMEWORK = {
         'api.drf_auth.PistonOAuthAuthentication',
     )
 }
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    'RESULTS_CACHE_SIZE': 100,
+}
