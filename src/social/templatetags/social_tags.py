@@ -60,7 +60,7 @@ def carousel(context, slug):
         carousel = None
     banners = [
             item.get_banner()
-            for item in carousel.carouselitem_set.all()
+            for item in carousel.carouselitem_set.all().select_related('banner')
             ]
 
     request = context['request']
