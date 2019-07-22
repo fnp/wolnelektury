@@ -57,7 +57,7 @@ def carousel(context, slug):
         carousel = Carousel.objects.get(slug=slug)
     except Carousel.DoesNotExist:
         # TODO: add sanity check for install.
-        carousel = None
+        carousel = Carousel.objects.create(slug=slug)
     banners = [
             item.get_banner()
             for item in carousel.carouselitem_set.all().select_related('banner')

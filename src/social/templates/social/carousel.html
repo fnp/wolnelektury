@@ -5,9 +5,11 @@
      data-cycle-pause-on-hover="true"
      >
 
-  <div class="cycle-prev"></div>
-  <div class="cycle-next"></div>
-  <div class="cycle-pager"></div>
+  {% if banners|length > 1 %}
+    <div class="cycle-prev"></div>
+    <div class="cycle-next"></div>
+    <div class="cycle-pager"></div>
+  {% endif %}
 
   {% for banner in banners %}
     {% if banner %}
