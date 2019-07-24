@@ -25,6 +25,7 @@ from social.utils import get_or_choose_cite
 from wolnelektury.forms import RegistrationForm, SocialSignupForm
 
 
+@never_cache
 def main_page(request):
     ctx = {
         'last_published': Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:6],

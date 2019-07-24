@@ -325,27 +325,73 @@ section {
 
     .cycle-prev, .cycle-next {
         position: absolute;
-        top: 0;
-        bottom: 0;
+        top: 50/975 * 100vw;
+        bottom: 50/975 * 100vw;
         width: 15%;
         z-index: 1000;
         background: black;
         color: white;
         opacity: 0;
 
+        @media screen and (min-width: 62.5em) {
+            top: 50px;
+            bottom: 50px;
+        }
+
         &::after {
+            top: 50/975 * 100vw;
+            bottom: 50/975 * 100vw;
             font-size: 100/975*100vw;
             display: block;
-            line-height: 315/975*100vw;
+            line-height: (315-100)/975*100vw;
             text-align: center;
+            cursor: pointer;
 
             @media screen and (min-width: 62.5em) {
                 font-size: 100px;
-                line-height: 315px;
+                line-height: 315px - 100px;
+                top: 50px;
+                bottom: 50px;
             }
         }
         &:hover {
             opacity: .33;
         }
+    }
+}
+
+
+.cycle-pager {
+    text-align: center;
+    width: 100%;
+    z-index: 500;
+    position: absolute;
+    bottom: 8%;
+    overflow: hidden;
+
+    span {
+        font-family: arial;
+        font-size: 64 /975*100vw;
+        width: 32 /975*100vw;
+        height: 32 /975*100vw;
+        display: inline-block;
+        color: #ddd;
+        cursor: pointer;
+
+        text-shadow: 0px 0px 5px rgba(0,0,0,0.75);
+
+        @media screen and (min-width: 62.5em) {
+            font-size: 64px;
+            width: 32px;
+            height: 32px;
+        }
+
+        &.cycle-pager-active {
+            color: #018189;
+        }
+    }
+
+    > * {
+        cursor: pointer;
     }
 }

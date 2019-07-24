@@ -1,6 +1,6 @@
 {% if youtube_id %}
-<iframe style="position: absolute; left:0;right:0;height:100%;width:100%;"
+<iframe style="position: absolute; left:0;right:0;height:100%;width:100%; background-image:url('https://img.youtube.com/vi/{{ youtube_id }}/0.jpg'); background-position: 50%; background-size: cover;"
 	type="text/html" width="100%" height="360"
-						   src="http://www.youtube.com/embed/{{ youtube_id }}"
-	 frameborder="0"></iframe>
-	  {% endif %}
+	data-src="https://www.youtube.com/embed/{{ youtube_id }}"
+	frameborder="0"></iframe>
+{% endif %}

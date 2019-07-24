@@ -66,6 +66,14 @@
         });
 
 
+        $('.carousel').on('cycle-before', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
+            $("iframe", outgoingSlideEl).attr("src", '');
+            $("iframe", incomingSlideEl).attr("src", $("iframe", incomingSlideEl).attr('data-src'));
+        });
+        $('.carousel section').first().each(function() {
+            $("iframe", this).attr("src", $("iframe", this).attr('data-src'));
+        });
+
 
         (function() {
             var $current = null;
