@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from api.handlers import read_tags
 from api.utils import vary_on_auth
+from club.models import Membership
 from .helpers import books_after, order_books
 from . import serializers
 from catalogue.forms import BookImportForm
@@ -70,6 +71,9 @@ class BookList(ListAPIView):
         else:
             books = Book.objects.all()
         books = order_books(books, new_api)
+
+        if not Membership.is_active_for(self.request.user):
+            books = books.exclude(preview=True)
 
         if self.kwargs.get('top_level'):
             books = books.filter(parent=None)
@@ -147,15 +151,15 @@ class EbookList(BookList):
     serializer_class = serializers.EbookSerializer
 
 
-@vary_on_auth  # Because of 'liked'.
+@method_decorator(never_cache, name='dispatch')
 class Preview(ListAPIView):
     #queryset = Book.objects.filter(preview=True)
     serializer_class = serializers.BookPreviewSerializer
 
     def get_queryset(self):
         qs = Book.objects.filter(preview=True)
-        # FIXME: temporary workaround for a problem with iOS app.
-        if 'Darwin' in self.request.META['HTTP_USER_AGENT']:
+        # FIXME: temporary workaround for a problem with iOS app; see #3954.
+        if 'Darwin' in self.request.META['HTTP_USER_AGENT'] and 'debug' not in self.request.GET:
             qs = qs.none()
         return qs
 
@@ -176,6 +180,8 @@ class FilterBookList(ListAPIView):
         is_lektura = self.parse_bool(self.request.query_params.get('lektura'))
         is_audiobook = self.parse_bool(self.request.query_params.get('audiobook'))
         preview = self.parse_bool(self.request.query_params.get('preview'))
+        if not Membership.is_active_for(self.request.user):
+            preview = False
 
         new_api = self.request.query_params.get('new_api')
         after = self.request.query_params.get('after')

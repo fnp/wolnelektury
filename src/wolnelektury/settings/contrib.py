@@ -39,6 +39,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'api.drf_auth.PistonOAuthAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 }
 

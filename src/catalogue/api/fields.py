@@ -25,7 +25,8 @@ class BookLiked(serializers.ReadOnlyField):
 class EmbargoURLField(AbsoluteURLField):
     def to_representation(self, value):
         request = self.context['request']
-        if Membership.is_active_for(request.user):
+        # FIXME: See #3955.
+        if True or Membership.is_active_for(request.user):
             return super().to_representation(value)
         else:
             return None
