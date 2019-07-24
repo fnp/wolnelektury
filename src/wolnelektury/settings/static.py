@@ -202,3 +202,9 @@ STATICFILES_FINDERS = [
     'pipeline.finders.CachedFileFinder',
     'pipeline.finders.PipelineFinder',
 ]
+
+
+from machina import MACHINA_MAIN_STATIC_DIR
+STATICFILES_DIRS = (
+    MACHINA_MAIN_STATIC_DIR,
+)

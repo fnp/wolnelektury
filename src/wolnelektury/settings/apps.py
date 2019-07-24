@@ -1,7 +1,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
-#
-# These are the ones we should test.
+
+from machina import get_apps as get_machina_apps
+
 INSTALLED_APPS_OUR = [
     'wolnelektury',
     # our
@@ -72,6 +73,11 @@ INSTALLED_APPS_CONTRIB = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.twitter',
-]
+
+    # Machina related apps:
+    'mptt',
+    'haystack',
+    'widget_tweaks',
+] + get_machina_apps()
 
 INSTALLED_APPS = INSTALLED_APPS_OUR + INSTALLED_APPS_CONTRIB

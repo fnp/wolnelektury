@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -7,6 +6,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.views.generic import RedirectView
 import django.views.static
+from machina.app import board
 import catalogue.views
 import picture.views
 from . import views
@@ -75,6 +75,7 @@ urlpatterns += [
     url(r'^szukaj/', include('search.urls')),
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^forum/', include(board.urls)),
 ]
 
 urlpatterns += [
