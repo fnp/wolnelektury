@@ -45,9 +45,13 @@ class PayURe(PaymentMethod):
     def pay(self, request, schedule):
         # Create order, put it and see what happens next.
         from .models import PayUOrder
+        if request is not None:
+            ip = request.META['REMOTE_ADDR']
+        else:
+            ip = '127.0.0.1'
         order = PayUOrder.objects.create(
             pos_id=self.pos_id,
-            customer_ip=request.META['REMOTE_ADDR'],
+            customer_ip=ip,
             schedule=schedule,
         )
         return order.put()
