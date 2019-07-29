@@ -5,7 +5,7 @@
     {% load static from staticfiles %}
     {% load catalogue_tags funding_tags reporting_stats %}
     {% load piwik_tags %}
-    {% load ssi_include ssi_csrf_token from ssify %}
+    {% load ssi_include from ssify %}
     {% load user_username user_is_staff from common_tags %}
     {% load cache %}
     {% get_current_language as LANGUAGE_CODE %}
@@ -69,7 +69,7 @@
                 <div id="lang-menu-items">
                   {% for lang in LANGUAGES %}
                     <form action="{% url 'set_language' %}" method="post">
-                      {% ssi_csrf_token %}
+                      {% csrf_token %}
                       <input type="hidden" name="language" value="{{ lang.0 }}"/>
                       <button type="submit" lang="{{ lang.0 }}"
                               class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %}">{{ lang.1 }}</button>

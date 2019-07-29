@@ -91,7 +91,6 @@
                 {% cache 86400 book_mini_box other_version.pk %}
                   {% include 'catalogue/book_mini_box.html' with book=other_version no_link=True %}
                 {% endcache %}
-                {#% ssi_include 'catalogue_book_mini_nolink' pk=other_version.pk %#}
               </a>
             </li>
           {% endfor %}

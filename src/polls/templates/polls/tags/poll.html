@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load ssi_csrf_token from ssify %}
 
 {% if poll %}
     {% if voted_already %}
@@ -19,7 +18,7 @@
     {% else %}
         <div class="poll">
             <p>{{poll.question}}</p>
-            <form action="{{poll.get_absolute_url}}" method="post">{% ssi_csrf_token %}
+            <form action="{{poll.get_absolute_url}}" method="post">{% csrf_token %}
             {{ form.vote }}
             <input type="submit" value="{% trans "Submit" %}" />
             </form>

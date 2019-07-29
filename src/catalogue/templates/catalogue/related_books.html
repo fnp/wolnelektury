@@ -12,7 +12,6 @@
     {% cache 86400 book_mini_box book.pk %}
       {% include 'catalogue/book_mini_box.html' %}
     {% endcache %}
-    {#% ssi_include 'catalogue_book_mini' pk=book.pk %#}
   {% endfor %}
 
   {% if random %}

@@ -57,40 +57,6 @@
       <a class="more" href="{% url 'theme_catalogue' %}">{% trans "See motifs catalog" %}</a>
     </section>
 
-    {% comment %}
-    <section class="tag-box-section">
-      <h1>Autorzy</h1>
-      <a class="tag-box" href="{{ author.get_absolute_url }}">
-        {% ssi_include "catalogue_tag_box" pk=author.pk %}
-      </a>
-      <a class="more" href="{% url 'author_catalogue' %}">Zobacz katalog autorów</a>
-    </section>
-
-    <section class="tag-box-section">
-      <h1>Gatunki</h1>
-      <a class="tag-box" href="{{ genre.get_absolute_url }}">
-        {% ssi_include "catalogue_tag_box" pk=genre.pk %}
-      </a>
-      <a class="more" href="{% url 'genre_catalogue' %}">Zobacz katalog gatunków</a>
-    </section>
-
-    <section class="tag-box-section">
-      <h1>Rodzaje</h1>
-      <a class="tag-box" href="{{ kind.get_absolute_url }}">
-        {% ssi_include "catalogue_tag_box" pk=kind.pk %}
-      </a>
-      <a class="more" href="{% url 'kind_catalogue' %}">Zobacz katalog rodzajów</a>
-    </section>
-
-    <section class="tag-box-section">
-      <h1>Epoki</h1>
-      <a class="tag-box" href="{{ epoch.get_absolute_url }}">
-        {% ssi_include "catalogue_tag_box" pk=epoch.pk %}
-      </a>
-      <a class="more" href="{% url 'epoch_catalogue' %}">Zobacz katalog epok</a>
-    </section>
-    {% endcomment %}
-
     {% if collection %}
       <section>
         <h1>{% trans "Collections" %}</h1>

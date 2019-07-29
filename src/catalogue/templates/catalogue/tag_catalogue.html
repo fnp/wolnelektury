@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 {% load i18n %}
+{% load cache %}
 {% load plain_list from catalogue_tags %}
-{% load ssi_include from ssify %}
 
 {% block titleextra %}{{ title }}{% endblock %}
 
@@ -12,7 +12,9 @@
 
   {% for tag in best %}
     <a class="tag-box" href="{{ tag.get_absolute_url }}">
-      {% ssi_include "catalogue_tag_box" pk=tag.pk %}
+      {% cache 86400 catalogue_tag_box rel.pk %}
+        {% include 'catalogue/tag_box.html' %}
+      {% endcache %}
     </a>
   {% endfor %}
 

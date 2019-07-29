@@ -1,4 +1,3 @@
-{% load ssify %}
 {% load likes_book from social_tags %}
 {% likes_book book.pk as likes %}
 <div class="star {{ likes.if }}{{ likes.else }}un{{ likes.endif }}like">
@@ -10,7 +9,7 @@
     <form id="social-like-book-{{ book.slug }}"
           data-callback='social-like-book' method='post'
           class='ajax-form' action='{% url "social_like_book" book.slug %}'>
-      {% ssi_csrf_token %}
+      {% csrf_token %}
       <button type='submit'>☆</button>
     </form>
   </div>

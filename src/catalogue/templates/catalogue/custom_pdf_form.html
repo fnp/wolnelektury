@@ -1,12 +1,11 @@
 {% load i18n %}
 {% load honeypot %}
-{% load ssi_csrf_token from ssify %}
 {% load ajaxable_tags %}
 
 <h1>{% trans "Download custom PDF" %}</h1>
 
 <form id='custom-pdf-form' action="" method="post" accept-charset="utf-8" class="cuteform">
-  {% ssi_csrf_token %}
+  {% csrf_token %}
   {% render_honeypot_field %}
   <ol>
     {{ form.nofootnotes|pretty_checkbox }}

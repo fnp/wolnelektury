@@ -1,11 +1,10 @@
 {% load i18n %}
-{% load ssi_csrf_token from ssify %}
 
 <h1>{{ title }}</h1>
 
 <form action="{% if action_url %}{% url action_url %}{% else %}{{ action }}{% endif %}{% if action_query %}?{{ action_query }}{% endif %}" method="post" accept-charset="utf-8"
       class="cuteform{% if placeholdize %} hidelabels{% endif %}">
-  {% ssi_csrf_token %}
+  {% csrf_token %}
   {% if honeypot %}
     {% load honeypot %}
     {% render_honeypot_field %}
