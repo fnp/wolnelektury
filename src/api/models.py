@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -15,7 +14,7 @@ from catalogue.models import Book, Tag
 class Deleted(models.Model):
     object_id = models.IntegerField()
     slug = models.SlugField(_('slug'), max_length=120, blank=True, db_index=True)
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType, models.CASCADE)
     category = models.CharField(max_length=64, null=True, blank=True, db_index=True)
     created_at = models.DateTimeField(editable=False, db_index=True)
     deleted_at = models.DateTimeField(auto_now_add=True, db_index=True)
@@ -43,8 +42,8 @@ pre_delete.connect(_pre_delete_handler)
 
 
 class BookUserData(models.Model):
-    book = models.ForeignKey(Book)
-    user = models.ForeignKey(User)
+    book = models.ForeignKey(Book, models.CASCADE)
+    user = models.ForeignKey(User, models.CASCADE)
     complete = models.BooleanField(default=False)
     last_changed = models.DateTimeField(auto_now=True)
 
@@ -86,7 +85,7 @@ class Consumer(models.Model):
     key = models.CharField(max_length=KEY_SIZE)
     secret = models.CharField(max_length=SECRET_SIZE)
     status = models.CharField(max_length=16, choices=CONSUMER_STATES, default='pending')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='consumers')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, null=True, blank=True, related_name='consumers')
 
     def __str__(self):
         return u"Consumer %s with key %s" % (self.name, self.key)
@@ -102,8 +101,8 @@ class Token(models.Model):
     token_type = models.IntegerField(choices=TOKEN_TYPES)
     timestamp = models.IntegerField()
     is_approved = models.BooleanField(default=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name='tokens')
-    consumer = models.ForeignKey(Consumer)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, null=True, blank=True, related_name='tokens')
+    consumer = models.ForeignKey(Consumer, models.CASCADE)
 
     def __str__(self):
         return u"%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)

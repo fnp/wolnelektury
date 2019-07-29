@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
 from django.db import models
-from django.db.models import permalink
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime
 from django.db.models.signals import post_save, post_delete
@@ -34,9 +33,8 @@ class Author(models.Model):
     def __repr__(self):
         return "Author(slug=%r)" % self.slug
 
-    @permalink
     def get_absolute_url(self):
-        return 'tagged_object_list', [self.url_chunk]
+        return reverse('tagged_object_list', args=[self.url_chunk])
 
     def has_description(self):
         return len(self.description) > 0
@@ -74,9 +72,8 @@ class BookStub(models.Model):
     def __str__(self):
         return self.title
 
-    @permalink
     def get_absolute_url(self):
-        return 'book_detail', [self.slug]
+        return reverse('book_detail', args=[self.slug])
 
     def in_pd(self):
         return self.pd is not None and self.pd <= datetime.now().year

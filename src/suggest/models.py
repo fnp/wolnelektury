@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -15,7 +14,7 @@ class Suggestion(models.Model):
     description = models.TextField(_('description'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now=True)
     ip = models.GenericIPAddressField(_('IP address'))
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, models.SET_NULL, blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at',)
@@ -32,7 +31,7 @@ class PublishingSuggestion(models.Model):
     audiobooks = models.TextField(_('audiobooks'), null=True, blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True)
     ip = models.GenericIPAddressField(_('IP address'))
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, models.SET_NULL, blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at',)

@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
+import django.db.models.deletion
 import fnpdjango.storage
 import jsonfield.fields
 import catalogue.fields
@@ -45,7 +43,7 @@ class Migration(migrations.Migration):
                 ('mobi_file', catalogue.fields.EbookField('mobi', default='', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.book._mobi_upload_to, max_length=255, blank=True, verbose_name='MOBI file')),
                 ('html_file', catalogue.fields.EbookField('html', default='', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.book._html_upload_to, max_length=255, blank=True, verbose_name='HTML file')),
                 ('xml_file', catalogue.fields.EbookField('xml', default='', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.book._xml_upload_to, max_length=255, blank=True, verbose_name='XML file')),
-                ('parent', models.ForeignKey(related_name='children', blank=True, to='catalogue.Book', null=True)),
+                ('parent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='children', blank=True, to='catalogue.Book', null=True)),
             ],
             options={
                 'ordering': ('sort_key',),
@@ -64,7 +62,7 @@ class Migration(migrations.Migration):
                 ('uploaded_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
                 ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information', editable=False)),
                 ('source_sha1', models.CharField(max_length=40, null=True, editable=False, blank=True)),
-                ('book', models.ForeignKey(related_name='media', to='catalogue.Book')),
+                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='media', to='catalogue.Book')),
             ],
             options={
                 'ordering': ('type', 'name'),
@@ -114,7 +112,7 @@ class Migration(migrations.Migration):
                 ('text', models.TextField()),
                 ('short_text', models.TextField(editable=False)),
                 ('anchor', models.CharField(max_length=120)),
-                ('book', models.ForeignKey(related_name='fragments', to='catalogue.Book')),
+                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fragments', to='catalogue.Book')),
             ],
             options={
                 'ordering': ('book', 'anchor'),
@@ -188,7 +186,7 @@ class Migration(migrations.Migration):
                 ('wiki_link_uk', models.CharField(max_length=240, null=True, blank=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
                 ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
-                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
             options={
                 'ordering': ('sort_key',),
@@ -202,8 +200,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('object_id', models.PositiveIntegerField(verbose_name='object id', db_index=True)),
-                ('content_type', models.ForeignKey(verbose_name='content type', to='contenttypes.ContentType')),
-                ('tag', models.ForeignKey(related_name='items', verbose_name='tag', to='catalogue.Tag')),
+                ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, verbose_name='content type', to='contenttypes.ContentType')),
+                ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', verbose_name='tag', to='catalogue.Tag')),
             ],
             options={
                 'db_table': 'catalogue_tag_relation',

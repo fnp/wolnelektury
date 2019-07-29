@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
 import yaml
 from hashlib import sha1
 from django.db import models
+from django.urls import reverse
 from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 from jsonfield import JSONField
@@ -49,13 +49,12 @@ class Contact(models.Model):
 
 
 class Attachment(models.Model):
-    contact = models.ForeignKey(Contact)
+    contact = models.ForeignKey(Contact, models.CASCADE)
     tag = models.CharField(max_length=64)
     file = models.FileField(upload_to='contact/attachment')
 
-    @models.permalink
     def get_absolute_url(self):
-        return 'contact_attachment', [self.contact_id, self.tag]
+        return reverse('contact_attachment', args=[self.contact_id, self.tag])
 
 
 __import__(app_settings.FORMS_MODULE)

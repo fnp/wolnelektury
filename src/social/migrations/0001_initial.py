@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
+import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -27,7 +25,7 @@ class Migration(migrations.Migration):
                 ('image_link', models.URLField(null=True, verbose_name='link', blank=True)),
                 ('image_license', models.CharField(max_length=255, null=True, verbose_name='license name', blank=True)),
                 ('image_license_link', models.URLField(null=True, verbose_name='license link', blank=True)),
-                ('book', models.ForeignKey(verbose_name='book', blank=True, to='catalogue.Book', null=True)),
+                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, verbose_name='book', blank=True, to='catalogue.Book', null=True)),
             ],
             options={
                 'ordering': ('vip', 'text'),

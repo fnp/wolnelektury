@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -7,7 +6,7 @@ from datetime import timedelta
 import paypalrestsdk
 import pytz
 from django.contrib.sites.models import Site
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils import timezone
 from django.conf import settings
 from .models import BillingPlan, BillingAgreement

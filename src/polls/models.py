@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 USED_POLLS_KEY = 'used_polls'
@@ -42,7 +41,7 @@ class Poll(models.Model):
 
 class PollItem(models.Model):
 
-    poll = models.ForeignKey(Poll, related_name='items')
+    poll = models.ForeignKey(Poll, models.CASCADE, related_name='items')
     content = models.TextField(_('content'))
     vote_count = models.IntegerField(_('vote count'), default=0)
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -53,7 +52,7 @@ class ISBNPool(models.Model):
 
 
 class ONIXRecord(models.Model):
-    isbn_pool = models.ForeignKey(ISBNPool)
+    isbn_pool = models.ForeignKey(ISBNPool, models.PROTECT)
     datestamp = models.DateField(auto_now=True)
     suffix = models.IntegerField()
     product_form = models.CharField(max_length=4)

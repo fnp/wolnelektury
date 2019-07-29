@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
+import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -18,7 +16,7 @@ class Migration(migrations.Migration):
                 ('anchor', models.CharField(max_length=64)),
                 ('html', models.TextField()),
                 ('sort_key', models.CharField(max_length=128, db_index=True)),
-                ('book', models.ForeignKey(to='catalogue.Book')),
+                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalogue.Book')),
             ],
             options={
                 'ordering': ['sort_key'],

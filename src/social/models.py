@@ -5,7 +5,7 @@ from random import randint
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, string_concat
 from ssify import flush_ssi_includes
 from catalogue.models import Book
@@ -36,7 +36,7 @@ class BannerGroup(models.Model):
 
 
 class Cite(models.Model):
-    book = models.ForeignKey(Book, verbose_name=_('book'), null=True, blank=True)
+    book = models.ForeignKey(Book, models.CASCADE, verbose_name=_('book'), null=True, blank=True)
     text = models.TextField(_('text'), blank=True)
     small = models.BooleanField(_('small'), default=False, help_text=_('Make this cite display smaller.'))
     vip = models.CharField(_('VIP'), max_length=128, null=True, blank=True)

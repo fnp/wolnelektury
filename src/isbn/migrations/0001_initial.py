@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import migrations, models
+import django.db.models.deletion
 import jsonfield.fields
 
 
@@ -38,7 +36,7 @@ class Migration(migrations.Migration):
                 ('language', models.CharField(max_length=4)),
                 ('imprint', models.CharField(max_length=256)),
                 ('publishing_date', models.DateField()),
-                ('isbn_pool', models.ForeignKey(to='isbn.ISBNPool')),
+                ('isbn_pool', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='isbn.ISBNPool')),
             ],
         ),
     ]

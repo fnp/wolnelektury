@@ -8,7 +8,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 from django import template
 from django.template import Node, Variable, Template, Context
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.cache import add_never_cache_headers
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _

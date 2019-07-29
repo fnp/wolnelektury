@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -37,8 +36,8 @@ class Note(models.Model):
 
 class NoteSource(models.Model):
     """Represents a single annotation from a book."""
-    note = models.ForeignKey(Note)
-    book = models.ForeignKey(Book)
+    note = models.ForeignKey(Note, models.CASCADE)
+    book = models.ForeignKey(Book, models.CASCADE)
     anchor = models.CharField(max_length=64)
 
     class Meta:

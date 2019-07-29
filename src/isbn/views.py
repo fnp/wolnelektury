@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import permission_required
-from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.decorators.http import require_POST
 
 from isbn.forms import WLISBNForm, WLConfirmForm, FNPISBNForm

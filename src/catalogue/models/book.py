@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -10,10 +9,9 @@ import re
 import urllib
 from django.conf import settings
 from django.db import connection, models, transaction
-from django.db.models import permalink
 import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, get_language
 from django.utils.deconstruct import deconstructible
 import jsonfield
@@ -103,7 +101,7 @@ class Book(models.Model):
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
+    parent = models.ForeignKey('self', models.CASCADE, blank=True, null=True, related_name='children')
     ancestor = models.ManyToManyField('self', blank=True, editable=False, related_name='descendant', symmetrical=False)
 
     cached_author = models.CharField(blank=True, max_length=240, db_index=True)
@@ -207,9 +205,8 @@ class Book(models.Model):
 
         return ret
 
-    @permalink
     def get_absolute_url(self):
-        return 'book_detail', [self.slug]
+        return reverse('book_detail', args=[self.slug])
 
     def gallery_path(self):
         return gallery_path(self.slug)
@@ -829,5 +826,5 @@ add_file_fields()
 
 
 class BookPopularity(models.Model):
-    book = models.OneToOneField(Book, related_name='popularity')
+    book = models.OneToOneField(Book, models.CASCADE, related_name='popularity')
     count = models.IntegerField(default=0, db_index=True)

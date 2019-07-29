@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
@@ -17,7 +16,7 @@ class Fragment(models.Model):
     text = models.TextField()
     short_text = models.TextField(editable=False)
     anchor = models.CharField(max_length=120)
-    book = models.ForeignKey('Book', related_name='fragments')
+    book = models.ForeignKey('Book', models.CASCADE, related_name='fragments')
 
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)

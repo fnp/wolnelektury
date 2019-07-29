@@ -11,7 +11,7 @@ class Command(BaseCommand):
         from catalogue.models import Book
         from picture.models import Picture
         from urllib.request import urlopen, HTTPError, URLError
-        from django.core.urlresolvers import reverse
+        from django.urls import reverse
         from django.contrib.sites.models import Site
 
         domain = Site.objects.get_current().domain

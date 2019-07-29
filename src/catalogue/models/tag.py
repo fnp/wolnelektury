@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -9,9 +8,9 @@ from django.core.cache import caches
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from django.db.models import permalink
 from django.db.models.query import Prefetch
 from django.dispatch import Signal
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from newtagging.models import TagManager, TaggedItemManager
@@ -32,8 +31,8 @@ TAG_CATEGORIES = (
 
 class TagRelation(models.Model):
 
-    tag = models.ForeignKey('Tag', verbose_name=_('tag'), related_name='items')
-    content_type = models.ForeignKey(ContentType, verbose_name=_('content type'))
+    tag = models.ForeignKey('Tag', models.CASCADE, verbose_name=_('tag'), related_name='items')
+    content_type = models.ForeignKey(ContentType, models.CASCADE, verbose_name=_('content type'))
     object_id = models.PositiveIntegerField(_('object id'), db_index=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
@@ -65,7 +64,7 @@ class Tag(models.Model):
     for_books = models.BooleanField(default=False)
     for_pictures = models.BooleanField(default=False)
 
-    user = models.ForeignKey(User, blank=True, null=True)
+    user = models.ForeignKey(User, models.CASCADE, blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
@@ -173,13 +172,11 @@ class Tag(models.Model):
     def category_plural(self):
         return self.category + 's'
 
-    @permalink
     def get_absolute_url(self):
-        return 'tagged_object_list', [self.url_chunk]
+        return reverse('tagged_object_list', args=[self.url_chunk])
 
-    @permalink
     def get_absolute_gallery_url(self):
-        return 'tagged_object_list_gallery', [self.url_chunk]
+        return reverse('tagged_object_list_gallery', args=[self.url_chunk])
 
     def has_description(self):
         return len(self.description) > 0

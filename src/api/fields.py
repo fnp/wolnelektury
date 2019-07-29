@@ -3,7 +3,7 @@
 #
 from rest_framework import serializers
 from sorl.thumbnail import default
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from club.models import Membership
 
 

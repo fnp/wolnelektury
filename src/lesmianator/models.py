@@ -11,11 +11,11 @@ from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.conf import settings
+from django.urls import reverse
 
 from jsonfield import JSONField
 from catalogue.models import Book, Tag
@@ -24,7 +24,7 @@ from catalogue.models import Book, Tag
 class Poem(models.Model):
     slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     text = models.TextField(_('text'))
-    created_by = models.ForeignKey(User, null=True)
+    created_by = models.ForeignKey(User, models.SET_NULL, null=True)
     created_from = JSONField(_('extra information'), null=True, blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
     seen_at = models.DateTimeField(_('last view date'), auto_now_add=True, editable=False)
@@ -101,7 +101,7 @@ class Poem(models.Model):
 
 class Continuations(models.Model):
     pickle = models.FileField(_('Continuations file'), upload_to='lesmianator')
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType, models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 

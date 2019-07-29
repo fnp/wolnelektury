@@ -1,13 +1,12 @@
-# -*- coding: utf-8 -*-
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import UploadedFile
 from django.core.mail import send_mail, mail_managers
-from django.core.urlresolvers import reverse
 from django.core.validators import validate_email
 from django import forms
 from django.template.loader import render_to_string
 from django.template import RequestContext
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -6,11 +5,11 @@ from datetime import date, datetime
 from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
 from django.db import models
 from django.dispatch import receiver
 from django.template.loader import render_to_string
+from django.urls import reverse
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, override
 import getpaid
@@ -31,7 +30,7 @@ class Offer(models.Model):
     start = models.DateField(_('start'), db_index=True)
     end = models.DateField(_('end'), db_index=True)
     redakcja_url = models.URLField(_('redakcja URL'), blank=True)
-    book = models.ForeignKey(Book, null=True, blank=True, help_text=_('Published book.'))
+    book = models.ForeignKey(Book, models.PROTECT, null=True, blank=True, help_text=_('Published book.'))
     cover = models.ImageField(_('Cover'), upload_to='funding/covers')
     poll = models.ForeignKey(Poll, help_text=_('Poll'), null=True, blank=True, on_delete=models.SET_NULL)
 
@@ -207,7 +206,7 @@ class Perk(models.Model):
     If no attached to a particular Offer, applies to all.
 
     """
-    offer = models.ForeignKey(Offer, verbose_name=_('offer'), null=True, blank=True)
+    offer = models.ForeignKey(Offer, models.CASCADE, verbose_name=_('offer'), null=True, blank=True)
     price = models.DecimalField(_('price'), decimal_places=2, max_digits=10)
     name = models.CharField(_('name'), max_length=255)
     long_name = models.CharField(_('long name'), max_length=255)
@@ -228,7 +227,7 @@ class Funding(models.Model):
     The payment was completed if and only if payed_at is set.
 
     """
-    offer = models.ForeignKey(Offer, verbose_name=_('offer'))
+    offer = models.ForeignKey(Offer, models.PROTECT, verbose_name=_('offer'))
     name = models.CharField(_('name'), max_length=127, blank=True)
     email = models.EmailField(_('email'), blank=True, db_index=True)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
@@ -309,7 +308,7 @@ getpaid.register_to_payment(Funding, unique=False, related_name='payment')
 
 class Spent(models.Model):
     """ Some of the remaining money spent on a book. """
-    book = models.ForeignKey(Book)
+    book = models.ForeignKey(Book, models.PROTECT)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     timestamp = models.DateField(_('when'))
 

@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
+import django.db.models.deletion
 from django.conf import settings
 
 
@@ -21,7 +19,7 @@ class Migration(migrations.Migration):
                 ('audiobooks', models.TextField(null=True, verbose_name='audiobooks', blank=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date')),
                 ('ip', models.GenericIPAddressField(verbose_name='IP address')),
-                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
             options={
                 'ordering': ('-created_at',),
@@ -38,7 +36,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(verbose_name='Description', blank=True)),
                 ('created_at', models.DateTimeField(auto_now=True, verbose_name='creation date')),
                 ('ip', models.GenericIPAddressField(verbose_name='IP address')),
-                ('user', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
             options={
                 'ordering': ('-created_at',),

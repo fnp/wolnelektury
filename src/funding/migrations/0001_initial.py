@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 import django.db.models.deletion
 
@@ -47,7 +44,7 @@ class Migration(migrations.Migration):
                 ('cover', models.ImageField(upload_to='funding/covers', verbose_name='Cover')),
                 ('notified_near', models.DateTimeField(null=True, verbose_name='Near-end notifications sent', blank=True)),
                 ('notified_end', models.DateTimeField(null=True, verbose_name='End notifications sent', blank=True)),
-                ('book', models.ForeignKey(blank=True, to='catalogue.Book', help_text='Published book.', null=True)),
+                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, blank=True, to='catalogue.Book', help_text='Published book.', null=True)),
                 ('poll', models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, blank=True, to='polls.Poll', help_text='Poll', null=True)),
             ],
             options={
@@ -65,7 +62,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=255, verbose_name='name')),
                 ('long_name', models.CharField(max_length=255, verbose_name='long name')),
                 ('end_date', models.DateField(null=True, verbose_name='end date', blank=True)),
-                ('offer', models.ForeignKey(verbose_name='offer', blank=True, to='funding.Offer', null=True)),
+                ('offer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, verbose_name='offer', blank=True, to='funding.Offer', null=True)),
             ],
             options={
                 'ordering': ['-price'],
@@ -80,7 +77,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('amount', models.DecimalField(verbose_name='amount', max_digits=10, decimal_places=2)),
                 ('timestamp', models.DateField(verbose_name='when')),
-                ('book', models.ForeignKey(to='catalogue.Book')),
+                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalogue.Book')),
             ],
             options={
                 'ordering': ['-timestamp'],
@@ -92,7 +89,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='funding',
             name='offer',
-            field=models.ForeignKey(verbose_name='offer', to='funding.Offer'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, verbose_name='offer', to='funding.Offer'),
             preserve_default=True,
         ),
         migrations.AddField(

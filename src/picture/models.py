@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models, transaction
 import catalogue.models
-from django.db.models import permalink
 from sorl.thumbnail import ImageField
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
+from django.urls import reverse
 from slugify import slugify
 from ssify import flush_ssi_includes
 
@@ -34,7 +33,7 @@ picture_storage = FileSystemStorage(location=path.join(
 
 
 class PictureArea(models.Model):
-    picture = models.ForeignKey('picture.Picture', related_name='areas')
+    picture = models.ForeignKey('picture.Picture', models.CASCADE, related_name='areas')
     area = jsonfield.JSONField(_('area'), default={}, editable=False)
     kind = models.CharField(
         _('kind'), max_length=10, blank=False, null=False, db_index=True,
@@ -142,9 +141,8 @@ class Picture(models.Model):
     def tags_by_category(self):
         return split_tags(self.tags)
 
-    @permalink
     def get_absolute_url(self):
-        return 'picture_detail', [self.slug]
+        return reverse('picture_detail', args=[self.slug])
 
     def get_initial(self):
         try:

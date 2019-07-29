@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -35,7 +34,7 @@ class BookMedia(models.Model):
     file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=OverwriteStorage())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
-    book = models.ForeignKey('Book', related_name='media')
+    book = models.ForeignKey('Book', models.CASCADE, related_name='media')
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
     def __str__(self):

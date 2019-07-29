@@ -9,7 +9,7 @@ from django.http.response import HttpResponseForbidden
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.http import urlquote_plus

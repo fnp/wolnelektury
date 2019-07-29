@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -19,9 +19,8 @@ class Catalog(models.Model):
     def __str__(self):
         return self.name
 
-    @models.permalink
     def get_absolute_url(self):
-        return 'libraries_catalog_view', [self.slug]
+        return reverse('libraries_catalog_view', args=[self.slug])
 
 
 class Library(models.Model):
@@ -40,6 +39,5 @@ class Library(models.Model):
     def __str__(self):
         return self.name
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('libraries_library_view', [self.catalog.slug, self.slug])
+        return reverse('libraries_library_view', args=[self.catalog.slug, self.slug])

@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
+import django.db.models.deletion
 import getpaid.abstract_mixin
 
 
@@ -25,7 +23,7 @@ class Migration(migrations.Migration):
                 ('amount_paid', models.DecimalField(default=0, verbose_name='amount paid', max_digits=20, decimal_places=4)),
                 ('external_id', models.CharField(max_length=64, null=True, verbose_name='external id', blank=True)),
                 ('description', models.CharField(max_length=128, null=True, verbose_name='Description', blank=True)),
-                ('order', models.ForeignKey(related_name='payment', to='funding.Funding')),
+                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payment', to='funding.Funding')),
             ],
             options={
                 'ordering': ('-created_on',),

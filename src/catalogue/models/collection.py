@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from ssify import flush_ssi_includes
 import re
@@ -33,9 +33,8 @@ class Collection(models.Model):
         except AttributeError:
             return ''
 
-    @models.permalink
     def get_absolute_url(self):
-        return "collection", [self.slug]
+        return reverse("collection", args=[self.slug])
 
     def get_query(self):
         slugs = self.book_slugs.split()

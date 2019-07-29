@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from newsletter.forms import UnsubscribeForm, SubscribeForm
