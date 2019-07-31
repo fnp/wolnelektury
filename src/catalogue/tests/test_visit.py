@@ -47,8 +47,6 @@ class VisitTest(WLTestCase):
                 'daisy/',
                 # 'autor/jane-doe/gatunek/genre/',
                 # 'autor/jane-doe/gatunek/genre/motyw/sielanka/',
-                'b/%d/mini.pl.html' % self.book.pk,
-                'b/%d/mini_nolink.pl.html' % self.book.pk,
                 'b/%d/short.pl.html' % self.book.pk,
                 'b/%d/wide.pl.html' % self.book.pk,
                 'f/%d/promo.pl.html' % self.book.fragments.all()[0].pk,
@@ -63,8 +61,6 @@ class VisitTest(WLTestCase):
                 'autor/nonexistent/',  # Nonexistent author.
                 'motyw/nonexistent/',  # Nonexistent theme.
                 'zh.json',  # Nonexistent language.
-                'b/%d/mini.pl.html' % (self.book.pk + 100),  # Nonexistent book.
-                'b/%d/mini_nolink.pl.html' % (self.book.pk + 100),  # Nonexistent book.
                 'b/%d/short.pl.html' % (self.book.pk + 100),  # Nonexistent book.
                 'b/%d/wide.pl.html' % (self.book.pk + 100),  # Nonexistent book.
                 'f/%d/promo.pl.html' % (self.book.fragments.all()[0].pk + 100),  # Nonexistent fragment.

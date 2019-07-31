@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
 from django import template
 from django.core.cache import cache
 from django.utils.safestring import mark_safe
+from django.utils.translation import get_language
 from ..models import Chunk, Attachment
 
 
@@ -11,7 +11,7 @@ register = template.Library()
 @register.simple_tag
 def chunk(key, cache_time=0):
     try:
-        cache_key = 'chunk_' + key
+        cache_key = 'chunk:%s:%s' % (key, get_language())
         c = cache.get(cache_key)
         if c is None:
             c = Chunk.objects.get(key=key)

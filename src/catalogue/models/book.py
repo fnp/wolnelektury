@@ -28,7 +28,7 @@ from catalogue.utils import create_zip, gallery_url, gallery_path, split_tags, g
 from catalogue.models.tag import prefetched_relations
 from catalogue import app_settings
 from catalogue import tasks
-from wolnelektury.utils import makedirs
+from wolnelektury.utils import makedirs, cached_render, clear_cached_renders
 
 bofh_storage = BofhFileSystemStorage()
 
@@ -593,6 +593,8 @@ class Book(models.Model):
                     parent = parent.parent
 
     def flush_includes(self, languages=True):
+        clear_cached_renders(self.mini_box)
+        clear_cached_renders(self.mini_box_nolink)
         if not languages:
             return
         if languages is True:
@@ -600,8 +602,6 @@ class Book(models.Model):
         flush_ssi_includes([
             template % (self.pk, lang)
             for template in [
-                '/katalog/b/%d/mini.%s.html',
-                '/katalog/b/%d/mini_nolink.%s.html',
                 '/katalog/b/%d/short.%s.html',
                 '/katalog/b/%d/wide.%s.html',
                 '/api/include/book/%d.%s.json',
@@ -803,6 +803,18 @@ class Book(models.Model):
     def cover_color(self):
         return WLCover.epoch_colors.get(self.extra_info.get('epoch'), '#000000')
 
+    @cached_render('catalogue/book_mini_box.html')
+    def mini_box(self):
+        return {
+            'book': self
+        }
+
+    @cached_render('catalogue/book_mini_box.html')
+    def mini_box_nolink(self):
+        return {
+            'book': self,
+            'no_link': True,
+        }
 
 def add_file_fields():
     for format_ in Book.formats:

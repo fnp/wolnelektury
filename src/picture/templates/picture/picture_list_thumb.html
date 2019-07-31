@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load catalogue_tags %}
 {% load static %}
-{% load ssi_include from ssify %}
+{% load chunk from chunks %}
 
 {% block bodyid %}picture-list{% endblock %}
 
@@ -15,7 +15,7 @@
   <div class="left-column">
     <div class="normal-text">
       {% block book_list_info %}
-        {% ssi_include 'chunk' key='picture-list' %}
+        {% chunk 'picture-list' %}
       {% endblock %}
     </div>
   </div>

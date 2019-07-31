@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import json
 import time
 from io import BytesIO
+from django.core.cache import cache
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
@@ -12,7 +12,6 @@ from PIL import Image
 
 from jsonfield import JSONField
 from django.core.files.base import ContentFile
-from ssify import flush_ssi_includes
 
 THUMB_WIDTH = 120
 THUMB_HEIGHT = 120
@@ -97,11 +96,8 @@ class SponsorPage(models.Model):
             'page': self
         })
         ret = super(SponsorPage, self).save(*args, **kwargs)
-        self.flush_includes()
+        cache.delete('sponsor_page:' + name)
         return ret
-
-    def flush_includes(self):
-        flush_ssi_includes(['/sponsors/page/%s.html' % self.name])
 
     def __str__(self):
         return self.name

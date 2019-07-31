@@ -45,8 +45,6 @@ urlpatterns += [
     url(r'^wesprzyj/', include('funding.urls')),
     url(r'^ankieta/', include('polls.urls')),
     url(r'^biblioteki/', include('libraries.urls')),
-    url(r'^chunks/', include('chunks.urls')),
-    url(r'^sponsors/', include('sponsors.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^formularz/', include('contact.urls')),
     url(r'^isbn/', include('isbn.urls')),

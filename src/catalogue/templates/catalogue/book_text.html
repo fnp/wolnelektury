@@ -1,8 +1,7 @@
 {% extends "catalogue/viewer_base.html" %}
 {% load i18n %}
-{% load catalogue_tags ssify %}
+{% load catalogue_tags %}
 {% load thumbnail %}
-{% load cache %}
 
 
 {% block title %}{{ book.pretty_title }}{% endblock %}
@@ -61,7 +60,7 @@
 {% block big-pane %}
 
   <article id="main-text">
-    <!--#include file='{{ book.html_url }}' -->
+    {{ book.html_file.read|safe }}
   </article>
 
   <article id="other-text">
@@ -88,9 +87,7 @@
               <a class="display-other"
                  data-other="{{ other_version.html_url }}"
                  href="{% url 'book_text' other_version.slug %}">
-                {% cache 86400 book_mini_box other_version.pk %}
-                  {% include 'catalogue/book_mini_box.html' with book=other_version no_link=True %}
-                {% endcache %}
+                {{ other_version.mini_box_nolink }}
               </a>
             </li>
           {% endfor %}

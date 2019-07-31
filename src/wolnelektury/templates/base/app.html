@@ -3,11 +3,7 @@
   <html lang="{{ LANGUAGE_CODE }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
     {% load pipeline i18n %}
     {% load static from staticfiles %}
-    {% load catalogue_tags funding_tags reporting_stats %}
     {% load piwik_tags %}
-    {% load ssi_include from ssify %}
-    {% load user_username user_is_staff from common_tags %}
-    {% load cache %}
     {% get_current_language as LANGUAGE_CODE %}
     <head>
       <meta charset="utf-8">
@@ -60,20 +56,16 @@
 
               <nav id="menu">
                 <ul id="user-info">
-                  {% user_username as user_username %}
-                  {% user_is_staff as user_is_staff %}
-                  {{ user_username.if }}
+                  {% if request.user.is_authenticated %}
                     <li>
                       <a href="{% url 'user_settings' %}">
                         <strong>{{ user_username }}</strong>
                       </a>
                     </li>
-                  {{ user_username.endif }}
-                  {{ user_username.if }}
                     <li>
                       <a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
                     </li>
-                  {{ user_username.endif }}
+                  {% endif %}
                 </ul>
 
               </nav>

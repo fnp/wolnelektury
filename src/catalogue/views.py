@@ -269,6 +269,7 @@ def book_fragments(request, slug, theme_slug):
         })
 
 
+@never_cache
 def book_detail(request, slug):
     try:
         book = Book.objects.get(slug=slug)
@@ -412,19 +413,6 @@ class CustomPDFFormView(AjaxableFormView):
 ####
 # Includes
 ####
-
-
-@ssi_included
-def book_mini(request, pk, with_link=True):
-    # book = get_object_or_404(Book, pk=pk)
-    try:
-        book = Book.objects.only('cover_thumb', 'title', 'language', 'slug').get(pk=pk)
-    except Book.DoesNotExist:
-        raise Http404
-    return render(request, 'catalogue/book_mini_box.html', {
-        'book': book,
-        'no_link': not with_link,
-    })
 
 
 @ssi_included(get_ssi_vars=lambda pk: (lambda ipk: (

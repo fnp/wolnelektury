@@ -5,9 +5,9 @@
     {% load static from staticfiles %}
     {% load catalogue_tags funding_tags reporting_stats %}
     {% load piwik_tags %}
-    {% load ssi_include from ssify %}
-    {% load user_username user_is_staff from common_tags %}
     {% load cache %}
+    {% load chunk from chunks %}
+    {% load sponsor_page from sponsors %}
     {% get_current_language as LANGUAGE_CODE %}
     <head>
       <meta charset="utf-8">
@@ -81,31 +81,27 @@
               <a id="show-menu"></a>
               <nav id="menu">
                 <ul id="user-info">
-                  {% user_username as user_username %}
-                  {% user_is_staff as user_is_staff %}
-                  {{ user_username.if }}
+                  {% if request.user.is_authenticated %}
                     <li>
                       <a href="{% url 'user_settings' %}">
-                        <strong>{{ user_username }}</strong>
+                        <strong>{{ request.user.username }}</strong>
                       </a>
                     </li>
                     <li>
                       <a href="{% url 'social_my_shelf' %}" id="user-shelves-link">{% trans "My shelf" %}</a>
                     </li>
-                  {{ user_username.endif }}
-                  {{ user_is_staff.if }}
-                    <li><a href="{% url 'admin:index' %}">{% trans "Administration" %}</a></li>
-                  {{ user_is_staff.endif }}
-                  {{ user_username.if }}
+                    {% if request.user.is_staff %}
+                      <li><a href="{% url 'admin:index' %}">{% trans "Administration" %}</a></li>
+                    {% endif %}
                     <li>
                       <a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}">{% trans "Logout" %}</a>
                     </li>
-                  {{ user_username.else }}
+                  {% else %}
                     <li>
                       <a href="{% url 'login' %}?next={{ request.path }}" id="login">{% trans "Sign in" %}</a>
                       / <a href="{% url 'register' %}?next={{ request.path }}" id="register">{% trans "Register" %}</a>
                     </li>
-                  {{ user_username.endif }}
+                  {% endif %}
                 </ul>
 
                 <ul id="main-menu">
@@ -153,9 +149,9 @@
 
         <div id="footer-wrapper">
           <footer id="main">
-            {% ssi_include 'chunk' key='footer' %}
+            {% chunk 'footer' %}
             {% block add_footer %}{% endblock %}
-            {% ssi_include 'sponsor_page' name='footer' %}
+            {% sponsor_page 'footer' %}
           </footer>
         </div>
 

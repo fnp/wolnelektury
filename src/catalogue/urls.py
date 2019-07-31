@@ -20,7 +20,6 @@ urlpatterns = [
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, picture.views.picture_viewer, name='picture_viewer'),
     url(r'^obraz/(?P<slug>%s)/$' % SLUG, picture.views.picture_detail, name='picture_detail'),
 
-    url(r'^p/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', picture.views.picture_mini, name='picture_mini'),
     url(r'^p/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', picture.views.picture_short, name='picture_short'),
     url(r'^pa/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', picture.views.picturearea_short, name='picture_area_short'),
 
@@ -77,9 +76,6 @@ urlpatterns = [
     url(r'^isbn/(?P<book_format>(pdf|epub|mobi|txt|html))/(?P<slug>%s)/' % SLUG, views.get_isbn),
 
     # Includes.
-    url(r'^b/(?P<pk>\d+)/mini\.(?P<lang>.+)\.html', views.book_mini, name='catalogue_book_mini'),
-    url(r'^b/(?P<pk>\d+)/mini_nolink\.(?P<lang>.+)\.html', views.book_mini, {'with_link': False},
-        name='catalogue_book_mini_nolink'),
     url(r'^b/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', views.book_short, name='catalogue_book_short'),
     url(r'^b/(?P<pk>\d+)/wide\.(?P<lang>.+)\.html', views.book_wide, name='catalogue_book_wide'),
     url(r'^f/(?P<pk>\d+)/promo\.(?P<lang>.+)\.html', views.fragment_promo, name='catalogue_fragment_promo'),

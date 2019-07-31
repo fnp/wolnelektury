@@ -7,7 +7,6 @@ from django import template
 from django.urls import reverse
 from django.utils.cache import add_never_cache_headers
 import sorl.thumbnail.default
-from ssify import ssi_variable
 from catalogue.utils import split_tags
 from ..engine import CustomCroppingEngine
 from ..models import Picture
@@ -65,13 +64,13 @@ def area_thumbnail_url(area, geometry):
     return th.url
 
 
-@ssi_variable(register, patch_response=[add_never_cache_headers])
-def picture_random_picture(request, exclude_ids, unless=None):
+@register.simple_tag
+def picture_random_picture(exclude_ids, unless=None):
     if unless:
         return None
     queryset = Picture.objects.exclude(pk__in=exclude_ids).exclude(image_file='')
     count = queryset.count()
     if count:
-        return queryset[randint(0, count - 1)].pk
+        return queryset[randint(0, count - 1)]
     else:
         return None

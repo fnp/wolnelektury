@@ -103,16 +103,6 @@ def import_picture(request):
 
 
 @ssi_included
-def picture_mini(request, pk, with_link=True):
-    picture = get_object_or_404(Picture, pk=pk)
-    return render(request, 'picture/picture_mini_box.html', {
-        'picture': picture,
-        'author': picture.author_unicode(),
-        'with_link': with_link,
-    })
-
-
-@ssi_included
 def picture_short(request, pk):
     picture = get_object_or_404(Picture, pk=pk)
 

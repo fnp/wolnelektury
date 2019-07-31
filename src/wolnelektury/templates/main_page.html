@@ -25,9 +25,7 @@
       <div class="main-library-row">
         <div class="covers">
           {% for book in best %}
-            {% cache 86400 book_mini_box book.pk %}
-              {% include 'catalogue/book_mini_box.html' %}
-            {% endcache %}
+            {{ book.mini_box }}
           {% endfor %}
         </div>
         <a href="{% url "book_list" %}">
@@ -44,9 +42,7 @@
         <h2>{% trans "Theme" %}: {{ theme }}</h2>
         <p>{% trans "Explore works with the same theme" %}</p>
         {% for book in theme_books %}
-          {% cache 86400 book_mini_box book.pk %}
-            {% include 'catalogue/book_mini_box.html' %}
-          {% endcache %}
+          {{ book.mini_box }}
         {% endfor %}
         {% if theme_fragment %}
           {% cache 3600 fragment_promo theme_fragment.pk %}
@@ -70,9 +66,7 @@
     <section>
       <h1>{% trans "Recent publications" %}</h1>
         {% for book in last_published %}
-          {% cache 86400 book_mini_box book.pk %}
-            {% include 'catalogue/book_mini_box.html' %}
-          {% endcache %}
+          {{ book.mini_box }}
         {% endfor %}
       <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
     </section>

@@ -456,15 +456,16 @@ def source_name(url):
     return source.name or netloc
 
 
-@ssi_variable(register, patch_response=[add_never_cache_headers])
-def catalogue_random_book(request, exclude_ids):
+@register.simple_tag
+def catalogue_random_book(exclude_ids):
     from .. import app_settings
     if random() < app_settings.RELATED_RANDOM_PICTURE_CHANCE:
+        print('yay, picture')
         return None
     queryset = Book.objects.exclude(pk__in=exclude_ids)
     count = queryset.count()
     if count:
-        return queryset[randint(0, count - 1)].pk
+        return queryset[randint(0, count - 1)]
     else:
         return None
 

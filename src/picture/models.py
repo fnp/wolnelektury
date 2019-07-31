@@ -14,6 +14,7 @@ from ssify import flush_ssi_includes
 from catalogue.models.tag import prefetched_relations
 from catalogue.utils import split_tags
 from picture import tasks
+from wolnelektury.utils import cached_render, clear_cached_renders
 from io import BytesIO
 import jsonfield
 import itertools
@@ -342,11 +343,18 @@ class Picture(models.Model):
             names = [tag[0] for tag in names]
         return ', '.join(names)
 
+    @cached_render('picture/picture_mini_box.html')
+    def mini_box(self):
+        return {
+            'picture': self,
+        }
+
     def related_themes(self):
         return catalogue.models.Tag.objects.usage_for_queryset(
             self.areas.all(), counts=True).filter(category__in=('theme', 'thing'))
 
     def flush_includes(self, languages=True):
+        clear_cached_renders(self.mini_box)
         if not languages:
             return
         if languages is True:

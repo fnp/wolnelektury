@@ -1,6 +1,6 @@
 {% extends "base/base.html" %}
 {% load i18n %}
-{% load common_tags catalogue_tags %}
+{% load catalogue_tags %}
 {% load build_absolute_uri from fnp_common %}
 {% load cache %}
 
@@ -29,9 +29,7 @@
       <section class="see-also">
         <h1>{% trans "Other versions" %}:</h1>
         {% for rel in book.other_versions %}
-          {% cache 86400 book_mini_box rel.pk %}
-            {% include 'catalogue/book_mini_box.html' with book=rel %}
-          {% endcache %}
+	  {{ rel.mini_box }}
         {% endfor %}
       </section>
     {% endif %}

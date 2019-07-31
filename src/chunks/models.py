@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from ssify import flush_ssi_includes
 
 
 class Chunk(models.Model):
@@ -28,13 +27,9 @@ class Chunk(models.Model):
 
     def save(self, *args, **kwargs):
         ret = super(Chunk, self).save(*args, **kwargs)
-        self.flush_includes()
+        for lc, ln in settings.LANGUAGES:
+            cache.delete('chunk:%s:%s' % (self.key, lc))
         return ret
-
-    def flush_includes(self):
-        flush_ssi_includes([
-            '/chunks/chunk/%s.%s.html' % (self.key, lang)
-            for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
 
 
 class Attachment(models.Model):

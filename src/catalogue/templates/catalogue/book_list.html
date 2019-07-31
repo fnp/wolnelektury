@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
-{% load ssi_include from ssify %}
+{% load chunk from chunks %}
 
 {% block bodyid %}book-a-list{% endblock %}
 
@@ -13,7 +13,7 @@
 
     <div class="left-column"><div class="normal-text" style="margin-bottom: 2em">
       {% block book_list_info %}
-        {% ssi_include 'chunk' key='book-list' %}
+        {% chunk 'book-list' %}
       {% endblock %}
     </div></div>
 

@@ -11,11 +11,15 @@ import os
 import pytz
 import re
 
+from django.conf import settings
+from django.core.cache import cache
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils import timezone
+from django.utils.translation import get_language
 from django.conf import settings
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 
 
@@ -164,3 +168,42 @@ def is_crawler(request):
         return True
     user_agent = user_agent.lower()
     return any(bot_bit in user_agent for bot_bit in BOT_BITS)
+
+
+def get_cached_render_key(instance, property_name, language=None):
+    if language is None:
+        language = get_language()
+    return 'cached_render:%s.%s:%s:%s' % (
+            type(instance).__name__,
+            property_name,
+            instance.pk,
+            language
+        )
+
+
+def cached_render(template_name, timeout=24 * 60 * 60):
+    def decorator(method):
+        @wraps(method)
+        def wrapper(self):
+            key = get_cached_render_key(self, method.__name__)
+            content = cache.get(key)
+            if content is None:
+                context = method(self)
+                content = render_to_string(template_name, context)
+                cache.set(key, str(content), timeout=timeout)
+            else:
+                content = mark_safe(content)
+            return content
+        return wrapper
+    return decorator
+
+
+def clear_cached_renders(bound_method):
+    for lc, ln in settings.LANGUAGES:
+        cache.delete(
+            get_cached_render_key(
+                bound_method.__self__,
+                bound_method.__name__,
+                lc
+            )
+        )
