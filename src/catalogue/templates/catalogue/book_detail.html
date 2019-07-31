@@ -52,7 +52,7 @@
   {% for author in book.authors %}
     <div class="white-box">
       <a style="display:block" href="{{ author.get_absolute_url }}">
-	{% cache 86400 catalogue_tag_box rel.pk %}
+	{% cache 86400 catalogue_tag_box author.pk %}
           {% include 'catalogue/tag_box.html' with tag=author %}
 	{% endcache %}
       </a>
