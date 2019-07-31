@@ -54,7 +54,20 @@
 }
 
 .dropdown-body {
+    display: none;
     font-size: 0.8rem;
-    background-color: #444;
+    position: absolute;
+    left: 76px;
+    background-color: rgba(255, 255, 255, .8);
+    padding:  1em 1em 1em 0;
+    z-index: 500;
+    box-shadow: 1px 1px 10px black;
+}
+
+
+@media screen and (min-width: 37.5em) {
+    .dropdown-body {
+        left: 0;
+    }
 }
 
