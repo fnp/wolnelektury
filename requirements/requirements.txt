@@ -1,7 +1,7 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==1.11.20
+Django==1.11.22
 fnpdjango==0.3
 django-pipeline==1.6.13
 jsmin
@@ -41,7 +41,7 @@ mutagen>=1.31
 sorl-thumbnail>=12.3,<12.4
 
 # home-brewed & dependencies
-librarian==1.7.3
+librarian==1.7.4
 
 # celery tasks
 celery>=3.1.12,<3.2

@@ -6,7 +6,7 @@ from datetime import date, timedelta
 from random import randint
 import os.path
 import re
-import urllib
+from urllib.request import urlretrieve
 from django.conf import settings
 from django.db import connection, models, transaction
 import django.dispatch
@@ -420,7 +420,7 @@ class Book(models.Model):
             for ilustr in ilustr_elements:
                 ilustr_src = ilustr.get('src')
                 ilustr_path = os.path.join(gallery_path, ilustr_src)
-                urllib.urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
+                urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
 
     def load_abstract(self):
         abstract = self.wldocument(parse_dublincore=False).edoc.getroot().find('.//abstrakt')

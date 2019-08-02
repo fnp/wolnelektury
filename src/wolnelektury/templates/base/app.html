@@ -59,7 +59,7 @@
                   {% if request.user.is_authenticated %}
                     <li>
                       <a href="{% url 'user_settings' %}">
-                        <strong>{{ user_username }}</strong>
+                        <strong>{{ request.user.username }}</strong>
                       </a>
                     </li>
                     <li>
