@@ -5,8 +5,8 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
-from ssify import flush_ssi_includes
 import re
+from wolnelektury.utils import cached_render, clear_cached_renders
 
 
 class Collection(models.Model):
@@ -46,11 +46,11 @@ class Collection(models.Model):
         from catalogue.models import Book
         return Book.objects.filter(self.get_query())
 
-    def flush_includes(self, languages=True):
-        if not languages:
-            return
-        if languages is True:
-            languages = [lc for (lc, _ln) in settings.LANGUAGES]
+    @cached_render('catalogue/collection_box.html')
+    def box(self):
+        return {
+            'collection': self
+        }
 
-        flush_ssi_includes([
-            '/katalog/%s.json' % lang for lang in languages])
+    def clear_cache(self):
+        clear_cached_renders(self.box)

@@ -13,10 +13,10 @@ from django.urls import reverse
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, override
 import getpaid
-from ssify import flush_ssi_includes
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from polls.models import Poll
+from wolnelektury.utils import cached_render, clear_cached_renders
 from . import app_settings
 
 
@@ -58,26 +58,17 @@ class Offer(models.Model):
             self.book_id is not None and self.pk is not None and
             type(self).objects.values('book').get(pk=self.pk)['book'] != self.book_id)
         retval = super(Offer, self).save(*args, **kw)
-        self.flush_includes()
+        self.clear_cache()
         if published_now:
             self.notify_published()
         return retval
 
-    def flush_includes(self):
-        flush_ssi_includes([
-            template % (self.pk, lang)
-            for template in [
-                '/wesprzyj/o/%d/top-bar.%s.html',
-                '/wesprzyj/o/%d/detail-bar.%s.html',
-                '/wesprzyj/o/%d/list-bar.%s.html',
-                '/wesprzyj/o/%d/status.%s.html',
-                '/wesprzyj/o/%d/status-more.%s.html',
-                ] + [
-                    '/wesprzyj/o/%%d/fundings/%d.%%s.html' % page
-                    for page in range(1, len(self.funding_payed()) // 10 + 2)
-                ]
-            for lang in [lc for (lc, _ln) in settings.LANGUAGES]
-            ])
+    def clear_cache(self):
+        clear_cached_renders(self.top_bar)
+        clear_cached_renders(self.list_bar)
+        clear_cached_renders(self.detail_bar)
+        clear_cached_renders(self.status)
+        clear_cached_renders(self.status_more)
 
     def is_current(self):
         return self.start <= date.today() <= self.end and self == self.current()
@@ -199,6 +190,55 @@ class Offer(models.Model):
                 'current': self.current(),
             })
 
+    def basic_info(self):
+        offer_sum = self.sum()
+        return {
+            'offer': self,
+            'sum': offset_sum,
+            'is_current': self.is_current(),
+            'is_win': offer_sum >= self.target,
+            'missing': self.target - offer_sum,
+            'percentage': 100 * offer_sum / self.target,
+
+            'show_title': True,
+            'show_title_calling': True,
+        }
+
+    @cached_render('funding/includes/funding.html')
+    def top_bar(self):
+        ctx = self.basic_info()
+        ctx.update({
+            'link': True,
+            'closeable': True,
+            'add_class': 'funding-top-header',
+        })
+        return ctx
+
+    @cached_render('funding/includes/funding.html')
+    def list_bar(self):
+        ctx = self.basic_info()
+        ctx.update({
+            'link': True,
+            'show_title_calling': False,
+        })
+        return ctx
+
+    @cached_render('funding/includes/funding.html')
+    def detail_bar(self):
+        ctx = self.basic_info()
+        ctx.update({
+            'show_title': False,
+        })
+        return ctx
+
+    @cached_render('funding/includes/offer_status.html')
+    def status(self):
+        return {'offer': self}
+
+    @cached_render('funding/includes/offer_status_more.html')
+    def status_more(self):
+        return {'offer': self}
+
 
 class Perk(models.Model):
     """ A perk offer.
@@ -268,7 +308,7 @@ class Funding(models.Model):
         if self.email and not self.notify_key:
             self.notify_key = get_random_hash(self.email)
         ret = super(Funding, self).save(*args, **kwargs)
-        self.offer.flush_includes()
+        self.offer.clear_cache()
         return ret
 
     @classmethod

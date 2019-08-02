@@ -96,7 +96,7 @@ class BuildEbook(Task):
         """Just run `build` on FieldFile, can't pass it directly to Celery."""
         task_logger.info("%s -> %s" % (obj.slug, field_name))
         ret = self.build(getattr(obj, field_name))
-        obj.flush_includes()
+        obj.clear_cache()
         return ret
 
     def set_file_permissions(self, fieldfile):

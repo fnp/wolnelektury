@@ -13,8 +13,6 @@ from django.utils.cache import add_never_cache_headers
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
-from ssify import ssi_variable
-
 from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
@@ -277,7 +275,6 @@ class CatalogueURLNode(Node):
 
 # @register.inclusion_tag('catalogue/tag_list.html')
 def tag_list(tags, choices=None, category=None, list_type='books'):
-    # print(tags, choices, category)
     if choices is None:
         choices = []
 
@@ -460,7 +457,6 @@ def source_name(url):
 def catalogue_random_book(exclude_ids):
     from .. import app_settings
     if random() < app_settings.RELATED_RANDOM_PICTURE_CHANCE:
-        print('yay, picture')
         return None
     queryset = Book.objects.exclude(pk__in=exclude_ids)
     count = queryset.count()
@@ -470,13 +466,10 @@ def catalogue_random_book(exclude_ids):
         return None
 
 
-@ssi_variable(register, patch_response=[add_never_cache_headers])
-def choose_fragment(request, book_id=None, tag_ids=None, unless=False):
-    if unless:
-        return None
-
-    if book_id is not None:
-        fragment = Book.objects.get(pk=book_id).choose_fragment()
+@register.simple_tag
+def choose_fragment(book=None, tag_ids=None):
+    if book is not None:
+        fragment = book.choose_fragment()
     else:
         if tag_ids is not None:
             tags = Tag.objects.filter(pk__in=tag_ids)
@@ -485,7 +478,7 @@ def choose_fragment(request, book_id=None, tag_ids=None, unless=False):
             fragments = Fragment.objects.all().order_by().only('id')
         fragment_count = fragments.count()
         fragment = fragments[randint(0, fragment_count - 1)] if fragment_count else None
-    return fragment.pk if fragment is not None else None
+    return fragment
 
 
 @register.filter

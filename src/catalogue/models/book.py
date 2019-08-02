@@ -16,7 +16,6 @@ from django.utils.translation import ugettext_lazy as _, get_language
 from django.utils.deconstruct import deconstructible
 import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
-from ssify import flush_ssi_includes
 
 from librarian.cover import WLCover
 from librarian.html import transform_abstrakt
@@ -592,23 +591,9 @@ class Book(models.Model):
                     b.ancestor.add(parent)
                     parent = parent.parent
 
-    def flush_includes(self, languages=True):
+    def clear_cache(self):
         clear_cached_renders(self.mini_box)
         clear_cached_renders(self.mini_box_nolink)
-        if not languages:
-            return
-        if languages is True:
-            languages = [lc for (lc, _ln) in settings.LANGUAGES]
-        flush_ssi_includes([
-            template % (self.pk, lang)
-            for template in [
-                '/katalog/b/%d/short.%s.html',
-                '/katalog/b/%d/wide.%s.html',
-                '/api/include/book/%d.%s.json',
-                '/api/include/book/%d.%s.xml',
-                ]
-            for lang in languages
-            ])
 
     def cover_info(self, inherit=True):
         """Returns a dictionary to serve as fallback for BookInfo.

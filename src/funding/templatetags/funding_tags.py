@@ -1,27 +1,38 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import template
-from ssify import ssi_variable
-from ssify.utils import ssi_cache_control
+from django.template.loader import render_to_string
+from django.core.paginator import Paginator, InvalidPage
 
 from ..models import Offer
 from ..utils import sanitize_payment_title
-from ..views import offer_bar
+
 
 register = template.Library()
 
 
-@ssi_variable(register, patch_response=[ssi_cache_control(must_revalidate=True, max_age=0)])
-def current_offer(request=None):
-    offer = Offer.current()
-    return offer.pk if offer is not None else None
-
-
-@register.inclusion_tag('funding/includes/funding.html')
+@register.simple_tag
 def funding_top_bar():
-    return offer_bar(Offer.current(), link=True, closeable=True, add_class="funding-top-header")
+    offer = Offer.current()
+    return offer.top_bar() if offer is not None else ''
 
 
 register.filter(sanitize_payment_title)
+
+
+@register.simple_tag(takes_context=True)
+def fundings(context, offer):
+    fundings = offer.funding_payed()
+    page = context['request'].GET.get('page', 1)
+    paginator = Paginator(fundings, 10, 2)
+    try:
+        page_obj = paginator.page(int(page))
+    except InvalidPage:
+        return ''
+    else:
+        return render_to_string("funding/includes/fundings.html", {
+            "paginator": paginator,
+            "page_obj": page_obj,
+            "fundings": page_obj.object_list,
+        })

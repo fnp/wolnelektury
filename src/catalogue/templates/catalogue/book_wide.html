@@ -2,7 +2,6 @@
 {% load i18n %}
 {% load choose_fragment license_icon from catalogue_tags %}
 {% load choose_cite from social_tags %}
-{% load ssi_include from ssify %}
 
 
 {% block box-class %}book-wide-box{% endblock %}
@@ -18,14 +17,15 @@
 {% block right-column %}
   <div class="right-column">
     <div class="quote">
-      {% choose_cite book.pk as cite_promo %}
-      {% choose_fragment book.pk unless=cite_promo as fragment_promo %}
-      {{ cite_promo.if }}
-        {% ssi_include 'social_cite' pk=cite_promo %}
-      {{ cite_promo.endif }}
-      {{ fragment_promo.if }}
-        {% ssi_include 'catalogue_fragment_promo' pk=fragment_promo %}
-      {{ fragment_promo.endif }}
+      {% choose_cite book as cite_promo %}
+      {% if cite_promo %}
+        {{ cite.promo_box }}
+      {% else %}
+        {% choose_fragment book as fragment_promo %}
+	{% if fragment_promo %}
+	  {{ fragment_promo.promo_box }}
+	{% endif %}
+      {% endif %}
     </div>
     {% include 'catalogue/snippets/jplayer.html' %}
   </div>

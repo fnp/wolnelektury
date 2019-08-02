@@ -8,7 +8,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from newtagging import managers
 from catalogue.models import Tag
-from ssify import flush_ssi_includes
+from wolnelektury.utils import cached_render, clear_cached_renders
 
 
 class Fragment(models.Model):
@@ -22,8 +22,6 @@ class Fragment(models.Model):
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     tag_relations = GenericRelation(Tag.intermediary_table_model)
-
-    short_html_url_name = 'catalogue_fragment_short'
 
     class Meta:
         ordering = ('book', 'anchor',)
@@ -41,21 +39,18 @@ class Fragment(models.Model):
         """Returns short version of the fragment."""
         return self.short_text if self.short_text else self.text
 
+    @cached_render('catalogue/fragment_short.html')
+    def midi_box(self):
+        return {'fragment': self}
+
+    @cached_render('catalogue/fragment_promo.html')
+    def promo_box(self):
+        return {'fragment': self}
+
     @property
     def themes(self):
         return self.tags.filter(category='theme')
 
-    def flush_includes(self, languages=True):
-        if not languages:
-            return
-        if languages is True:
-            languages = [lc for (lc, _ln) in settings.LANGUAGES]
-        flush_ssi_includes([
-            template % (self.pk, lang)
-            for template in [
-                '/katalog/f/%d/short.%s.html',
-                '/api/include/fragment/%d.%s.json',
-                '/api/include/fragment/%d.%s.xml',
-                ]
-            for lang in languages
-            ])
+    def clear_cache(self):
+        clear_cached_renders(self.midi_box)
+        clear_cached_renders(self.promo_box)

@@ -4,9 +4,8 @@
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, render
-from picture.models import Picture, PictureArea
+from picture.models import Picture
 from catalogue.utils import split_tags
-from ssify import ssi_included
 from sponsors.models import Sponsor
 from wolnelektury.utils import ajax
 
@@ -100,24 +99,3 @@ def import_picture(request):
         return HttpResponse(_("Picture imported successfully"))
     else:
         return HttpResponse(_("Error importing file: %r") % import_form.errors)
-
-
-@ssi_included
-def picture_short(request, pk):
-    picture = get_object_or_404(Picture, pk=pk)
-
-    return render(request, 'picture/picture_short.html', {
-        'picture': picture,
-    })
-
-
-@ssi_included
-def picturearea_short(request, pk):
-    area = get_object_or_404(PictureArea, pk=pk)
-    themes = area.tags.filter(category='theme')
-    things = area.tags.filter(category='thing')
-    return render(request, 'picture/picturearea_short.html', {
-        'area': area,
-        'theme': themes[0] if themes else None,
-        'thing': things[0] if things else None,
-    })

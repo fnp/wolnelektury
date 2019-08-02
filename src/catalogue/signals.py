@@ -6,7 +6,6 @@ from django.core.cache import caches
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from ssify import flush_ssi_includes
 from newtagging.models import tags_updated
 from picture.models import Picture, PictureArea
 from .models import BookMedia, Book, Collection, Fragment, Tag
@@ -31,16 +30,7 @@ def bookmedia_save(sender, instance, **kwargs):
 @receiver(post_save, sender=Collection)
 def collection_save(sender, instance, **kwargs):
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-    flush_ssi_includes([
-        '/katalog/%s.json' % lang
-        for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
 
-
-@receiver(post_delete, sender=Collection)
-def collection_delete(sender, instance, **kwargs):
-    flush_ssi_includes([
-        '/katalog/%s.json' % lang
-        for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
 
 ####
 # Book
@@ -56,15 +46,12 @@ def book_save(sender, instance, **kwargs):
         caches['template_fragments'].clear()
     except ImproperlyConfigured:
         pass
-    instance.flush_includes()
+    instance.clear_cache()
 
 
 @receiver(post_delete, sender=Book)
 def book_delete(sender, instance, **kwargs):
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-    flush_ssi_includes([
-        '/katalog/%s.json' % lang
-        for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
 
     if not settings.NO_SEARCH_INDEX:
         # remove the book from search index, when it is deleted.
@@ -80,20 +67,17 @@ def book_delete(sender, instance, **kwargs):
 
 
 @receiver(Tag.after_change)
-def tag_after_change(sender, instance, languages, **kwargs):
+def tag_after_change(sender, instance, **kwargs):
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-    flush_ssi_includes([
-        '/katalog/%s.json' % lang
-        for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
 
     for model in Book, Picture:
         for model_instance in model.tagged.with_all([instance]).only('pk'):
-            model_instance.flush_includes()
+            model_instance.clear_cache()
 
     if instance.category == 'author':
         for model in Fragment, PictureArea:
             for model_instance in model.tagged.with_all([instance]).only('pk'):
-                model_instance.flush_includes()
+                model_instance.clear_cache()
 
 
 @receiver(tags_updated)
@@ -103,7 +87,4 @@ def receive_tags_updated(sender, instance, affected_tags, **kwargs):
         return
 
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-    instance.flush_includes()
-    flush_ssi_includes([
-        '/katalog/%s.json' % lang
-        for lang in [lc for (lc, _ln) in settings.LANGUAGES]])
+    instance.clear_cache()

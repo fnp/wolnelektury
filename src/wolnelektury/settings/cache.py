@@ -8,14 +8,6 @@ CACHES = {
             '127.0.0.1:11211',
         ]
     },
-    'ssify': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'TIMEOUT': None,
-        'KEY_PREFIX': 'ssify',
-        'LOCATION': [
-            '127.0.0.1:11211',
-        ],
-    },
     'template_fragments': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'TIMEOUT': 86400,

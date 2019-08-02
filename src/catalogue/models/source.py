@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -40,5 +39,5 @@ class Source(models.Model):
             for book in Book.objects.all():
                 source = book.extra_info.get('source_url', '')
                 if self.netloc in source or (old_netloc != self.netloc and old_netloc in source):
-                    book.flush_includes()
+                    book.clear_cache()
         return ret

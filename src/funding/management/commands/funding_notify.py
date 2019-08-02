@@ -27,7 +27,7 @@ class Command(BaseCommand):
                 print('Notify end:', offer)
             # The 'WL fund' list needs to be updated.
             caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-            offer.flush_includes()
+            offer.clear_cache()
             offer.notify_end()
 
         current = Offer.current()

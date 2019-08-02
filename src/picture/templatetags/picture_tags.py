@@ -65,9 +65,7 @@ def area_thumbnail_url(area, geometry):
 
 
 @register.simple_tag
-def picture_random_picture(exclude_ids, unless=None):
-    if unless:
-        return None
+def picture_random_picture(exclude_ids):
     queryset = Picture.objects.exclude(pk__in=exclude_ids).exclude(image_file='')
     count = queryset.count()
     if count:

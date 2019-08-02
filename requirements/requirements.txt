@@ -59,7 +59,6 @@ django-getpaid==1.8.0
 deprecated
 
 httplib2
-django-ssify==0.2.7
 
 raven
 

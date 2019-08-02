@@ -1,8 +1,8 @@
 {% extends "base/base.html" %}
+{% load latest_blog_posts from blog %}
 {% load carousel from social_tags %}
 {% load static from staticfiles %}
 {% load i18n catalogue_tags infopages_tags %}
-{% load ssi_include from ssify %}
 {% load cache %}
 {% load funding_tags %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -56,9 +56,7 @@
     {% if collection %}
       <section>
         <h1>{% trans "Collections" %}</h1>
-        {% cache 3600 collection_box collection.pk LANGUAGE_CODE %}
-          {% include 'catalogue/collection_box.html' %}
-        {% endcache %}
+	{{ collection.box }}
         <a class="more" href="{% url 'catalogue_collections' %}">{% trans "See collections catalog" %}</a>
       </section>
     {% endif %}
@@ -75,7 +73,9 @@
 
     <section class="infopages-box">
       <h1>{% trans "News" %}</h1>
-      {% ssi_include 'latest_blog_posts' %}
+      {% cache 1800 latest_blog_posts %}
+        {% latest_blog_posts %}
+      {% endcache %}
     </section>
 
     <section class="infopages-box">

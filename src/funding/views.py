@@ -1,15 +1,12 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.core.paginator import Paginator, InvalidPage
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView, ListView
 from getpaid.models import Payment
-from ssify import ssi_included
-from ssify.utils import ssi_cache_control
 from . import app_settings
 from .forms import FundingForm
 from .models import Offer, Spent, Funding
@@ -98,7 +95,6 @@ class OfferDetailView(FormView):
     def get_context_data(self, **kwargs):
         ctx = super(OfferDetailView, self).get_context_data(**kwargs)
         ctx['object'] = self.object
-        ctx['page'] = self.request.GET.get('page', 1)
         if self.object.is_current():
             ctx['funding_no_show_current'] = True
         return ctx
@@ -157,72 +153,3 @@ class DisableNotifications(TemplateView):
     def post(self, *args, **kwargs):
         self.object.disable_notifications()
         return redirect(self.request.get_full_path())
-
-
-def offer_bar(offer, link=False, closeable=False, show_title=True, show_title_calling=True, add_class=""):
-    if offer:
-        offer_sum = offer.sum()
-    else:
-        return {}
-    return {
-        'offer': offer,
-        'sum': offer_sum,
-        'is_current': offer.is_current(),
-        'is_win': offer_sum >= offer.target,
-        'missing': offer.target - offer_sum,
-        'percentage': 100 * offer_sum / offer.target,
-        'link': link,
-        'closeable': closeable,
-        'show_title': show_title,
-        'show_title_calling': show_title_calling,
-        'add_class': add_class,
-    }
-
-
-def render_offer_bar(request, pk, link=False, closeable=False, show_title=True, show_title_calling=True, add_class=""):
-    offer = get_object_or_404(Offer, pk=pk)
-    return render(request, "funding/includes/funding.html",
-                  offer_bar(offer, link, closeable, show_title, show_title_calling, add_class))
-
-
-@ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
-def top_bar(request, pk):
-    return render_offer_bar(request, pk, link=True, closeable=True, add_class="funding-top-header")
-
-
-@ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
-def list_bar(request, pk):
-    return render_offer_bar(request, pk, link=True, show_title_calling=False)
-
-
-@ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
-def detail_bar(request, pk):
-    return render_offer_bar(request, pk, show_title=False)
-
-
-@ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
-def offer_status(request, pk):
-    offer = get_object_or_404(Offer, pk=pk)
-    return render(request, "funding/includes/offer_status.html", {'offer': offer})
-
-
-@ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
-def offer_status_more(request, pk):
-    offer = get_object_or_404(Offer, pk=pk)
-    return render(request, "funding/includes/offer_status_more.html", {'offer': offer})
-
-
-@ssi_included(patch_response=[ssi_cache_control(must_revalidate=True)])
-def offer_fundings(request, pk, page):
-    offer = get_object_or_404(Offer, pk=pk)
-    fundings = offer.funding_payed()
-    paginator = Paginator(fundings, 10, 2)
-    try:
-        page_obj = paginator.page(int(page))
-    except InvalidPage:
-        raise Http404
-    return render(request, "funding/includes/fundings.html", {
-        "paginator": paginator,
-        "page_obj": page_obj,
-        "fundings": page_obj.object_list,
-    })

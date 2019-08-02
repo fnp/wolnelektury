@@ -4,7 +4,6 @@
   {% load pagination_tags %}
   {% load class_name from catalogue_tags %}
   {% load status from catalogue_tags %}
-  {% load ssi_include from ssify %}
 
   {% autopaginate object_list 10 %}
 
@@ -14,7 +13,7 @@
         {% if item|class_name == 'Book' %}
           {% include "catalogue/book_short.html" with book=item %}
         {% else %}
-          {% ssi_include item.short_html_url_name pk=item.pk %}
+	  {{ item.midi_box }}
         {% endif %}
       </li>
     {% endfor %}

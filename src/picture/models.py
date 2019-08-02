@@ -9,7 +9,6 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from slugify import slugify
-from ssify import flush_ssi_includes
 
 from catalogue.models.tag import prefetched_relations
 from catalogue.utils import split_tags
@@ -55,18 +54,18 @@ class PictureArea(models.Model):
         pa.area = coords
         return pa
 
-    def flush_includes(self, languages=True):
-        if not languages:
-            return
-        if languages is True:
-            languages = [lc for (lc, _ln) in settings.LANGUAGES]
-        flush_ssi_includes([
-            template % (self.pk, lang)
-            for template in [
-                '/katalog/pa/%d/short.%s.html',
-                ]
-            for lang in languages
-            ])
+    @cached_render('picture/picturearea_short.html')
+    def midi_box(self):
+        themes = self.tags.filter(category='theme')
+        things = self.tags.filter(category='thing')
+        return {
+            'area': self,
+            'theme': themes[0] if themes else None,
+            'thing': things[0] if things else None,
+        }
+
+    def clear_cache(self):
+        clear_cached_renders(self.midi_box)
 
 
 class Picture(models.Model):
@@ -349,24 +348,19 @@ class Picture(models.Model):
             'picture': self,
         }
 
+    @cached_render('picture/picture_short.html')
+    def midi_box(self):
+        return {
+            'picture': self,
+        }
+
     def related_themes(self):
         return catalogue.models.Tag.objects.usage_for_queryset(
             self.areas.all(), counts=True).filter(category__in=('theme', 'thing'))
 
-    def flush_includes(self, languages=True):
+    def clear_cache(self):
         clear_cached_renders(self.mini_box)
-        if not languages:
-            return
-        if languages is True:
-            languages = [lc for (lc, _ln) in settings.LANGUAGES]
-        flush_ssi_includes([
-            template % (self.pk, lang)
-            for template in [
-                '/katalog/p/%d/short.%s.html',
-                '/katalog/p/%d/mini.%s.html',
-                ]
-            for lang in languages
-            ])
+        clear_cached_renders(self.midi_box)
 
     def search_index(self, picture_info=None, index=None, index_tags=True, commit=True):
         if index is None:

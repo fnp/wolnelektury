@@ -1,6 +1,6 @@
 {% load likes_book from social_tags %}
-{% likes_book book.pk as likes %}
-<div class="star {{ likes.if }}{{ likes.else }}un{{ likes.endif }}like">
+{% likes_book book as likes %}
+<div class="star {% if not likes %}un{% endif %}like">
   <div class="if-like" >
     <a id="social-book-sets-{{ book.slug }}" data-callback='social-book-sets'
        class='ajaxable' href='{% url "social_book_sets" book.slug %}'>★</a>

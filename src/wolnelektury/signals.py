@@ -21,7 +21,7 @@ def flush_views_after_manual_change(sender, **kwargs):
     to just flush the cache on those instances.
 
     If changes become too often, relevant bits should be separated
-    as ssi_included views and flushed individually when needed.
+    and cached and flushed individually when needed.
 
     """
     if sender in (Catalog, Library, InfoPage, Author, BookStub, Spent):

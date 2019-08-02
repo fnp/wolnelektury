@@ -7,8 +7,8 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, string_concat
-from ssify import flush_ssi_includes
 from catalogue.models import Book
+from wolnelektury.utils import cached_render, clear_cached_renders
 
 
 class BannerGroup(models.Model):
@@ -116,18 +116,18 @@ class Cite(models.Model):
 
     def save(self, *args, **kwargs):
         ret = super(Cite, self).save(*args, **kwargs)
-        self.flush_includes()
+        self.clear_cache()
         return ret
 
-    def flush_includes(self):
-        flush_ssi_includes([
-            template % (self.pk, lang)
-            for template in [
-                '/ludzie/cite/%s.%s.html',
-                '/ludzie/cite_main/%s.%s.html',
-            ]
-            for lang in [lc for (lc, _ln) in settings.LANGUAGES]] +
-            ['/ludzie/cite_info/%s.html' % self.pk])
+    @cached_render('social/cite_promo.html')
+    def main_box(self):
+        return {
+            'cite': self,
+            'main': True,
+        }
+
+    def clear_cache(self):
+        clear_cached_renders(self.main_box)
 
 
 class Carousel(models.Model):

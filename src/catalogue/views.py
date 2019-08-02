@@ -21,7 +21,6 @@ from ajaxable.utils import AjaxableFormView
 from club.models import Membership
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
-from ssify import ssi_included, ssi_expect, SsiVariable as Var
 from catalogue import constants
 from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
@@ -408,70 +407,6 @@ class CustomPDFFormView(AjaxableFormView):
 
     def context_description(self, request, obj):
         return obj.pretty_title()
-
-
-####
-# Includes
-####
-
-
-@ssi_included(get_ssi_vars=lambda pk: (lambda ipk: (
-        ('ssify.get_csrf_token',),
-        ('social_tags.likes_book', (ipk,)),
-        ('social_tags.book_shelf_tags', (ipk,)),
-    ))(ssi_expect(pk, int)))
-def book_short(request, pk):
-    book = get_object_or_404(Book, pk=pk)
-
-    return render(request, 'catalogue/book_short.html', {
-        'book': book,
-    })
-
-
-@ssi_included(
-    get_ssi_vars=lambda pk: book_short.get_ssi_vars(pk) +
-    (lambda ipk: (
-        ('social_tags.choose_cite', [ipk]),
-        ('catalogue_tags.choose_fragment', [ipk], {
-            'unless': Var('social_tags.choose_cite', [ipk])}),
-    ))(ssi_expect(pk, int)))
-def book_wide(request, pk):
-    book = get_object_or_404(Book, pk=pk)
-
-    return render(request, 'catalogue/book_wide.html', {
-        'book': book,
-    })
-
-
-@ssi_included
-def fragment_short(request, pk):
-    fragment = get_object_or_404(Fragment, pk=pk)
-    return render(request, 'catalogue/fragment_short.html', {'fragment': fragment})
-
-
-@ssi_included
-def fragment_promo(request, pk):
-    fragment = get_object_or_404(Fragment, pk=pk)
-    return render(request, 'catalogue/fragment_promo.html', {'fragment': fragment})
-
-
-@ssi_included
-def tag_box(request, pk):
-    tag = get_object_or_404(Tag, pk=pk)
-    assert tag.category != 'set'
-
-    return render(request, 'catalogue/tag_box.html', {
-        'tag': tag,
-    })
-
-
-@ssi_included
-def collection_box(request, pk):
-    collection = get_object_or_404(Collection, pk=pk)
-
-    return render(request, 'catalogue/collection_box.html', {
-        'collection': collection,
-    })
 
 
 def tag_catalogue(request, category):

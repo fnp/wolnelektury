@@ -1,6 +1,5 @@
 {% extends "base/base.html" %}
 {% load i18n %}
-{% load ssi_include from ssify %}
 {% load pagination_tags %}
 
 {% block titleextra %}{% trans "All fundraisers" %}{% endblock %}
@@ -22,15 +21,15 @@
         <h2>{% trans "Previous fundraisers:" %}</h2>
       {% endif %}
 
-      {% ssi_include 'funding_list_bar' pk=offer.pk %}
+      {{ offer.list_bar }}
 
       <div class="white-box normal-text">
         {% if is_current %}
           <h3>{% trans "Help free the book!" %}</h3>
           {{ offer.description|safe }}
         {% endif %}
-        {% ssi_include 'funding_status' pk=offer.pk %}
-        {% ssi_include 'funding_status_more' pk=offer.pk %}
+	{{ offer.status }}
+	{{ offer.status_more }}
       </div>
 
       {% if is_current and not forloop.last %}

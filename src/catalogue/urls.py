@@ -20,9 +20,6 @@ urlpatterns = [
     url(r'^obraz/(?P<slug>%s).html$' % SLUG, picture.views.picture_viewer, name='picture_viewer'),
     url(r'^obraz/(?P<slug>%s)/$' % SLUG, picture.views.picture_detail, name='picture_detail'),
 
-    url(r'^p/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', picture.views.picture_short, name='picture_short'),
-    url(r'^pa/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', picture.views.picturearea_short, name='picture_area_short'),
-
     # old search page - redirected
     url(r'^szukaj/$', RedirectView.as_view(
             url='/szukaj/', query_string=True, permanent=True)),
@@ -74,14 +71,6 @@ urlpatterns = [
 
     url(r'^okladka-ridero/(?P<slug>%s).png$' % SLUG, views.ridero_cover),
     url(r'^isbn/(?P<book_format>(pdf|epub|mobi|txt|html))/(?P<slug>%s)/' % SLUG, views.get_isbn),
-
-    # Includes.
-    url(r'^b/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', views.book_short, name='catalogue_book_short'),
-    url(r'^b/(?P<pk>\d+)/wide\.(?P<lang>.+)\.html', views.book_wide, name='catalogue_book_wide'),
-    url(r'^f/(?P<pk>\d+)/promo\.(?P<lang>.+)\.html', views.fragment_promo, name='catalogue_fragment_promo'),
-    url(r'^f/(?P<pk>\d+)/short\.(?P<lang>.+)\.html', views.fragment_short, name='catalogue_fragment_short'),
-    url(r'^t/(?P<pk>\d+)/box\.(?P<lang>.+)\.html', views.tag_box, name='catalogue_tag_box'),
-    url(r'^c/(?P<pk>.+)/box\.(?P<lang>.+)\.html', views.collection_box, name='catalogue_collection_box'),
 
     # This should be the last pattern.
     url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'gallery'},

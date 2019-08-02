@@ -12,12 +12,13 @@
 
   {% if random %}
     {% catalogue_random_book random_excluded_books as random_book %}
-    {% picture_random_picture random_excluded_pics unless=random_book as random_pic %}
     {% if random_book %}
       {{ random_book.mini_box }}
-    {% endif %}
-    {% if random_pic %}
-      {{ random_pic.mini_box }}
+    {% else %}
+      {% picture_random_picture random_excluded_pics as random_pic %}
+      {% if random_pic %}
+        {{ random_pic.mini_box }}
+      {% endif %}
     {% endif %}
   {% endif %}
 {% endspaceless %}

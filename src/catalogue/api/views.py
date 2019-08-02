@@ -159,7 +159,7 @@ class Preview(ListAPIView):
     def get_queryset(self):
         qs = Book.objects.filter(preview=True)
         # FIXME: temporary workaround for a problem with iOS app; see #3954.
-        if 'Darwin' in self.request.META['HTTP_USER_AGENT'] and 'debug' not in self.request.GET:
+        if 'Darwin' in self.request.META.get('HTTP_USER_AGENT', '') and 'debug' not in self.request.GET:
             qs = qs.none()
         return qs
 

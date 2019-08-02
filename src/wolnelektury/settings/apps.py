@@ -58,7 +58,6 @@ INSTALLED_APPS_CONTRIB = [
     'fnpdjango',
     'getpaid',
     'getpaid.backends.payu',
-    'ssify',
     'django_extensions',
     'raven.contrib.django.raven_compat',
     'club.apps.ClubConfig',

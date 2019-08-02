@@ -13,7 +13,7 @@
 
   {% for banner in banners %}
     {% if banner %}
-      {% include 'social/cite_promo.html' with cite=banner main=True %}
+      {{ banner.main_box }}
     {% endif %}
   {% endfor %}
 </div>

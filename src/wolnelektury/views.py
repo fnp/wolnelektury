@@ -19,7 +19,6 @@ from django.views.decorators.cache import never_cache
 from ajaxable.utils import AjaxableFormView
 from ajaxable.utils import placeholdized
 from catalogue.models import Book, Collection, Tag, Fragment
-from ssify import ssi_included
 
 from social.utils import get_or_choose_cite
 from wolnelektury.forms import RegistrationForm, SocialSignupForm
@@ -154,28 +153,6 @@ def user_settings(request):
     return render(request, "user.html")
 
 
-@ssi_included(use_lang=False, timeout=1800)
-def latest_blog_posts(request, feed_url=None, posts_to_show=5):
-    if feed_url is None:
-        feed_url = settings.LATEST_BLOG_POSTS
-    try:
-        feed = feedparser.parse(str(feed_url))
-        posts = []
-        for i in range(posts_to_show):
-            pub_date = feed['entries'][i].published_parsed
-            published = date(pub_date[0], pub_date[1], pub_date[2])
-            posts.append({
-                'title': feed['entries'][i].title,
-                'summary': feed['entries'][i].summary,
-                'link': feed['entries'][i].link,
-                'date': published,
-                })
-    except:
-        posts = []
-    return render(request, 'latest_blog_posts.html', {'posts': posts})
-
-
-@ssi_included(use_lang=False)
 def widget(request):
     return render(request, 'widget.html')
 

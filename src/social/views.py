@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -10,9 +9,7 @@ from django.views.decorators.http import require_POST
 from ajaxable.utils import AjaxableFormView
 
 from catalogue.models import Book
-from ssify import ssi_included
 from social import forms
-from .models import Cite
 
 
 # ====================
@@ -70,20 +67,3 @@ class ObjectSetsFormView(AjaxableFormView):
 
     def form_args(self, request, obj):
         return (obj, request.user), {}
-
-
-@ssi_included
-def cite(request, pk, main=False):
-    cite = get_object_or_404(Cite, pk=pk)
-    return render(request, 'social/cite_promo.html', {
-        'main': main,
-        'cite': cite,
-    })
-
-
-@ssi_included(use_lang=False)
-def cite_info(request, pk):
-    cite = get_object_or_404(Cite, pk=pk)
-    return render(request, 'social/cite_info.html', {
-        'cite': cite,
-    })
