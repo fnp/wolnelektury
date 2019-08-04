@@ -194,7 +194,7 @@ class Offer(models.Model):
         offer_sum = self.sum()
         return {
             'offer': self,
-            'sum': offset_sum,
+            'sum': offer_sum,
             'is_current': self.is_current(),
             'is_win': offer_sum >= self.target,
             'missing': self.target - offer_sum,

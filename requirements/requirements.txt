@@ -2,10 +2,10 @@
 
 # django
 Django==1.11.22
-fnpdjango==0.3
+fnpdjango==0.4
 django-pipeline==1.6.13
 jsmin
-fnp-django-pagination==2.2.2
+fnp-django-pagination==2.2.3
 django-maintenancemode==0.11.3
 jsonfield==2.0.2
 django-picklefield==1.1.0
