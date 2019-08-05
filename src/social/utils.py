@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -15,7 +14,7 @@ from social.models import Cite
 
 
 def likes(user, work, request=None):
-    if not user.is_authenticated():
+    if not user.is_authenticated:
         return False
 
     if request is None:

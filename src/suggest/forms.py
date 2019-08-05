@@ -30,7 +30,7 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
         description = self.cleaned_data['description']
 
         suggestion = Suggestion(contact=contact, description=description, ip=request.META['REMOTE_ADDR'])
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             suggestion.user = request.user
         suggestion.save()
 
@@ -44,7 +44,7 @@ Kontakt: %(contact)s
 %(description)s''' % {
             'site': Site.objects.get_current().domain,
             'url': reverse('admin:suggest_suggestion_change', args=[suggestion.id]),
-            'user': str(request.user) if request.user.is_authenticated() else '',
+            'user': str(request.user) if request.user.is_authenticated else '',
             'contact': contact,
             'description': description,
             }, fail_silently=True)
@@ -89,7 +89,7 @@ class PublishingSuggestForm(NewsletterForm):
         suggestion = PublishingSuggestion(
             contact=contact, books=books,
             audiobooks=audiobooks, ip=request.META['REMOTE_ADDR'])
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             suggestion.user = request.user
         suggestion.save()
 
@@ -107,7 +107,7 @@ class PublishingSuggestForm(NewsletterForm):
     Audiobooki:
     %(audiobooks)s''' % {
                 'url': request.build_absolute_uri(reverse('admin:suggest_suggestion_change', args=[suggestion.id])),
-                'user': str(request.user) if request.user.is_authenticated() else '',
+                'user': str(request.user) if request.user.is_authenticated else '',
                 'contact': contact,
                 'books': books,
                 'audiobooks': audiobooks,

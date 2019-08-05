@@ -1,7 +1,7 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==1.11.22
+Django==2.0.13
 fnpdjango==0.4
 django-pipeline==1.6.13
 jsmin

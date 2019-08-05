@@ -66,7 +66,7 @@ class LoginFormView(AjaxableFormView):
     ajax_redirect = True
 
     def __call__(self, request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             return self.redirect_or_refresh(
                 request, '/',
                 message=_('Already logged in as user %(user)s', ) % {'user': request.user.username})
@@ -87,7 +87,7 @@ class RegisterFormView(AjaxableFormView):
     honeypot = True
 
     def __call__(self, request):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             return self.redirect_or_refresh(
                 request, '/',
                 message=_('Already logged in as user %(user)s', ) % {'user': request.user.username})

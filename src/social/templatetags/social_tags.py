@@ -27,7 +27,7 @@ def choose_cite(context, book_id=None, tag_ids=None):
 @register.simple_tag(takes_context=True)
 def book_shelf_tags(context, book_id):
     request = context['request']
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return ''
     book = Book.objects.get(pk=book_id)
     lks = likes(request.user, book, request)

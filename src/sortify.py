@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import re
 from fnpdjango.utils.text import char_map
 
@@ -6,7 +5,7 @@ from fnpdjango.utils.text import char_map
 # Specifies diacritics order.
 # Default order is zero, max is 9
 char_order = {
-    u'ż': 1, u'Ż': 1,
+    'ż': 1, 'Ż': 1,
 }
 
 
@@ -41,4 +40,4 @@ def sortify(value):
     value = value.lower()
     value = re.sub(r'[^a-z0-9~]+', ' ', value)
     
-    return value.encode('ascii', 'ignore')
+    return value.encode('ascii', 'ignore').decode('ascii')

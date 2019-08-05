@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -26,7 +25,7 @@ class ObjectSetsForm(forms.Form):
         self._obj = obj
         self._user = user
         data = kwargs.setdefault('data', {})
-        if 'tags' not in data and user.is_authenticated():
+        if 'tags' not in data and user.is_authenticated:
             data['tags'] = ', '.join(
                 obj.tags.filter(category='set', user=user).exclude(name__in=(None, '')).values_list('name', flat=True))
         super(ObjectSetsForm, self).__init__(*args, **kwargs)

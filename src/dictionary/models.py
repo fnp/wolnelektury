@@ -68,7 +68,6 @@ def build_notes(book):
                         fn_type=fn_type,
                         language=language
                         )
-
                 qualifier_objects = []
                 for qualifier in qualifiers:
                     obj, created = Qualifier.objects.get_or_create(
@@ -76,7 +75,7 @@ def build_notes(book):
                             'name': FN_QUALIFIERS.get(qualifier, '')
                         })
                     qualifier_objects.append(obj)
-                note.qualifiers = qualifier_objects
+                note.qualifiers.set(qualifier_objects)
                 note.notesource_set.create(book=book, anchor=anchor)
 
         Note.objects.filter(notesource=None).delete()

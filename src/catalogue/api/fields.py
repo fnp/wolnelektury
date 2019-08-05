@@ -14,7 +14,7 @@ class BookLiked(serializers.ReadOnlyField):
     def to_representation(self, value):
         request = self.context['request']
         if not hasattr(request, 'liked_books'):
-            if request.user.is_authenticated():
+            if request.user.is_authenticated:
                 request.liked_books = set(Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True))
             else:
                 request.liked_books = None

@@ -94,7 +94,7 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
                         if fun_kwargs or key in fun_params)
                     kwargs.update(stringify_keys(request_params))
                 res = None
-                if login_required and not request.user.is_authenticated():
+                if login_required and not request.user.is_authenticated:
                     res = {'result': 'logout'}
                 if (permission_required and
                         not request.user.has_perm(permission_required)):

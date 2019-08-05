@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -92,7 +91,7 @@ class AjaxableFormView(object):
                     return response
 
             # do I need to be logged in?
-            if self.POST_login and not request.user.is_authenticated():
+            if self.POST_login and not request.user.is_authenticated:
                 return require_login(request)
 
             form_kwargs['data'] = request.POST
@@ -123,7 +122,7 @@ class AjaxableFormView(object):
             if request.is_ajax():
                 return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
         else:
-            if self.POST_login and not request.user.is_authenticated() and not request.is_ajax():
+            if self.POST_login and not request.user.is_authenticated and not request.is_ajax():
                 return require_login(request)
 
             form = self.form_class(*form_args, **form_kwargs)

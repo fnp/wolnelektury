@@ -20,7 +20,7 @@ class DictionaryTests(WLTestCase):
         )
 
     def test_book_with_footnote(self):
-        book_text = """<utwor>
+        book_text = b"""<utwor>
         <opowiadanie>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>
             <akap><pe><slowo_obce>rose</slowo_obce> --- kind of a flower.</pe></akap>

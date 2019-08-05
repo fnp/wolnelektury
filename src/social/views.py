@@ -19,7 +19,7 @@ from social import forms
 
 @require_POST
 def like_book(request, slug):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
 
@@ -33,7 +33,7 @@ def like_book(request, slug):
 
 @require_POST
 def unlike_book(request, slug):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
 
