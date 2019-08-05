@@ -502,6 +502,7 @@ class Book(models.Model):
                 tag.save()
 
         book.tags = set(meta_tags + book_shelves)
+        book.save()  # update sort_key_author
 
         cover_changed = old_cover != book.cover_info()
         obsolete_children = set(b for b in book.children.all()
@@ -553,7 +554,6 @@ class Book(models.Model):
         for child in notify_cover_changed:
             child.parent_cover_changed()
 
-        book.save()  # update sort_key_author
         book.update_popularity()
         cls.published.send(sender=cls, instance=book)
         return book

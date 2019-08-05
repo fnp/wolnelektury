@@ -59,26 +59,23 @@ Bundled software
 ================
 
 * django-chunks
-  in `apps/chunks`
+  in `src/chunks`
   based on [django-chunks](http://code.google.com/p/django-chunks/)
   by Clint Ecker <clintecker@gmail.com>,
   [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
 * [django-newtagging](http://www.bitbucket.org/zuber/django-newtagging/)
-  in `apps/newtagging`
+  in `src/newtagging`
   by Marek Stępniowski <marek@stepniowski.com>,
   [MIT License](http://www.opensource.org/licenses/mit-license.php),
   based on [django-tagging](http://code.google.com/p/django-tagging/), also under [MIT License](http://www.opensource.org/licenses/mit-license.php)
 * [jPlayer](http://jplayer.org/)
-  in `apps/catalogue/static/jplayer`
+  in `src/catalogue/static/jplayer`
   by Happyworm,
   [MIT License](http://opensource.org/licenses/MIT)
 * [Switch template tag](http://djangosnippets.org/snippets/967/)
-  in `apps/wolnelektury_core/templatetags/switch_tag.py`
+  in `src/wolnelektury/templatetags/switch_tag.py`
   by adurdin
-* [Cropping engine for sorl-thumbnail](http://timmyomahony.com/blog/custom-cropping-engine-sorl-thumbnail/)
-  in `apps/picture/engine.py`
-  by Timmy O'Mahony
-* Javascript in `apps/wolnelektury_core/static/js/contrib`
+* Javascript in `src/wolnelektury/static/js/contrib`
   with relevant attribution and licensing
   
 

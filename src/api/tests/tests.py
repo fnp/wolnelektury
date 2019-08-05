@@ -177,12 +177,15 @@ class BooksTests(ApiTest):
             '/api/filter-books/?lektura=true',
             [])
 
-        self.assert_slugs(
-            '/api/filter-books/?preview=true',
-            ['grandchild'])
+        Book.objects.filter(slug='grandchild').update(preview=True)
+        # Skipping: we don't allow previewed books in filtered list.
+        #self.assert_slugs(
+        #    '/api/filter-books/?preview=true',
+        #    ['grandchild'])
         self.assert_slugs(
             '/api/filter-books/?preview=false',
             ['child', 'parent'])
+        Book.objects.filter(slug='grandchild').update(preview=False)
 
         self.assert_slugs(
             '/api/filter-books/?audiobook=true',
@@ -229,11 +232,6 @@ class BooksTests(ApiTest):
 class BlogTests(ApiTest):
     def test_get(self):
         self.assertEqual(self.load_json('/api/blog'), [])
-
-
-class PreviewTests(ApiTest):
-    def unauth(self):
-        self.assert_json_response('/api/preview/', 'preview.json')
 
 
 class OAuth1Tests(ApiTest):
@@ -436,6 +434,8 @@ class AuthorizedTests(ApiTest):
             ['parent'])
 
     def test_subscription(self):
+        Book.objects.filter(slug='grandchild').update(preview=True)
+
         self.assert_slugs('/api/preview/', ['grandchild'])
         self.assertEqual(
             self.signed_json('/api/username/'),
@@ -453,6 +453,8 @@ class AuthorizedTests(ApiTest):
                 self.assertEqual(
                     self.signed('/api/epub/grandchild/').content,
                     b"<epub>")
+
+        Book.objects.filter(slug='grandchild').update(preview=False)
 
     def test_publish(self):
         response = self.signed('/api/books/',

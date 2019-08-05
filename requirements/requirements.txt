@@ -44,8 +44,7 @@ sorl-thumbnail==12.5.0
 librarian==1.7.4
 
 # celery tasks
-celery>=3.1.12,<3.2
-kombu>=3.0.23,<3.1
+celery[redis]==4.3.0
 
 # spell checking
 pyenchant

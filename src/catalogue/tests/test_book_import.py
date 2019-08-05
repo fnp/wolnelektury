@@ -36,6 +36,7 @@ class BookImportLogicTests(WLTestCase):
     def test_empty_book(self):
         book_text = "<utwor />"
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
+        book.refresh_from_db()
 
         self.assertEqual(book.title, "Default Book")
         self.assertEqual(book.slug, "default-book")
@@ -68,6 +69,7 @@ class BookImportLogicTests(WLTestCase):
         """
 
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
+        book.refresh_from_db()
         self.assertTrue(book.has_html_file())
 
     def test_book_with_fragment(self):
@@ -78,6 +80,7 @@ class BookImportLogicTests(WLTestCase):
         """
 
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
+        book.refresh_from_db()
         self.assertTrue(book.has_html_file())
 
         self.assertEqual(book.fragments.count(), 1)

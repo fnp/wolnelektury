@@ -53,7 +53,6 @@ INSTALLED_APPS_CONTRIB = [
     'pipeline',
     'piwik',
     'sorl.thumbnail',
-    'kombu.transport.django',
     'honeypot',
     'fnpdjango',
     'getpaid',

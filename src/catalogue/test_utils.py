@@ -16,7 +16,7 @@ from django.conf import settings
     MEDIA_ROOT=tempfile.mkdtemp(prefix='djangotest_'),
     CATALOGUE_DONT_BUILD={'pdf', 'mobi', 'epub', 'txt', 'fb2', 'cover'},
     NO_SEARCH_INDEX=True,
-    CELERY_ALWAYS_EAGER=True,
+    CELERY_TASK_ALWAYS_EAGER=True,
     CACHES={
             'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
         },

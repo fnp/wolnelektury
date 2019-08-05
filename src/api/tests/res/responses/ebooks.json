@@ -12,16 +12,16 @@
         "epub": ""
     }, 
     {
-        "fb2": "http://testserver/katalog/pobierz/grandchild.fb2",
-        "mobi": "http://testserver/katalog/pobierz/grandchild.mobi",
+        "fb2": "http://testserver/media/fb2/grandchild.fb2",
+        "mobi": "http://testserver/media/mobi/grandchild.mobi",
         "title": "Grandchild",
         "author": "", 
         "cover": "", 
         "href": "http://testserver/api/books/grandchild/",
-        "pdf": "http://testserver/katalog/pobierz/grandchild.pdf",
-        "txt": "http://testserver/katalog/pobierz/grandchild.txt",
+        "pdf": "http://testserver/media/pdf/grandchild.pdf",
+        "txt": "http://testserver/media/txt/grandchild.txt",
         "slug": "grandchild", 
-        "epub": "http://testserver/katalog/pobierz/grandchild.epub"
+        "epub": "http://testserver/media/epub/grandchild.epub"
     }, 
     {
         "fb2": "", 
