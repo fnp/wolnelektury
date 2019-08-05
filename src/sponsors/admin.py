@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
-from jsonfield import JSONField
+from django.db.models import TextField
 from sponsors import models
 from sponsors import widgets
 
@@ -16,7 +15,7 @@ class SponsorAdmin(admin.ModelAdmin):
 
 class SponsorPageAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        JSONField: {'widget': widgets.SponsorPageWidget},
+        TextField: {'widget': widgets.SponsorPageWidget},
     }
     list_display = ('name',)
     search_fields = ('name',)

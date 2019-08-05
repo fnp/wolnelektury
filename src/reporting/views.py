@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -25,9 +24,11 @@ def stats_page(request):
         else:
             mt['deprecated'] = '-'
 
-    licenses = set(
-        (b.extra_info.get('license'), b.extra_info.get('license_description'))
-        for b in Book.objects.all().iterator() if b.extra_info.get('license'))
+    licenses = set()
+    for b in Book.objects.all().iterator():
+        extra_info = b.get_extra_info_json()
+        if extra_info.get('license'):
+            licenses.add((extra_info.get('license'), extra_info.get('license_description')))
 
     return render(request, 'reporting/main.html', {
         'media_types': media_types,

@@ -457,4 +457,4 @@ def ridero_cover(request, slug):
 
 def get_isbn(request, book_format, slug):
     book = Book.objects.get(slug=slug)
-    return HttpResponse(book.extra_info.get('isbn_%s' % book_format))
+    return HttpResponse(book.get_extra_info_json().get('isbn_%s' % book_format))

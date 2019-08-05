@@ -21,7 +21,7 @@ class Command(BaseCommand):
                 Book,
                 [
                     ('wiki_link', lambda b: b.wiki_link),
-                    ('źródło', lambda b: b.extra_info.get('source_url')),
+                    ('źródło', lambda b: b.get_extra_info_json().get('source_url')),
                 ],
                 'admin:catalogue_book_change'
             ),
@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 Picture,
                 [
                     ('wiki_link', lambda p: p.wiki_link),
-                    ('źródło', lambda p: p.extra_info.get('source_url')),
+                    ('źródło', lambda p: p.get_extra_info_json().get('source_url')),
                 ],
                 'admin:pictures_picture_change'
             )
@@ -51,8 +51,8 @@ class Command(BaseCommand):
                                 print(
                                     ('Administracja: https://%s%s' % (domain, reverse(admin_name, args=[obj.pk])))
                                     .encode('utf-8'))
-                                if obj.extra_info.get('about'):
-                                    print(('Redakcja: %s' % (obj.extra_info.get('about'),)).encode('utf-8'))
+                                if obj.get_extra_info_json().get('about'):
+                                    print(('Redakcja: %s' % (obj.get_extra_info_json().get('about'),)).encode('utf-8'))
                             print(('    %s (%s): %s' % (name, getattr(e, 'code', 'błąd'), url)).encode('utf-8'))
                 if not clean:
                     print()

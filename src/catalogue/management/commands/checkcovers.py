@@ -10,7 +10,7 @@ from catalogue import app_settings
 def ancestor_has_cover(book):
     while book.parent:
         book = book.parent
-        if book.extra_info.get('cover_url'):
+        if book.get_extra_info_json().get('cover_url'):
             return True
     return False
 
@@ -54,7 +54,7 @@ class Command(BaseCommand):
 
         with transaction.atomic():
             for book in Book.objects.all().order_by('slug').iterator():
-                extra_info = book.extra_info
+                extra_info = book.get_extra_info_json()
                 if not extra_info.get('cover_url'):
                     if ancestor_has_cover(book):
                         with_ancestral_cover.append(book)
@@ -100,9 +100,10 @@ Bad licenses used: %s (%d covers without license).
                 for book in no_license:
                     print()
                     print(full_url(book))
-                    print(book.extra_info.get('cover_by'))
-                    print(book.extra_info.get('cover_source'))
-                    print(book.extra_info.get('cover_url'))
+                    extra_info = book.get_extra_info_json()
+                    print(extra_info.get('cover_by'))
+                    print(extra_info.get('cover_source'))
+                    print(extra_info.get('cover_url'))
 
             if not_redakcja:
                 print()
@@ -111,9 +112,10 @@ Bad licenses used: %s (%d covers without license).
                 for book in not_redakcja:
                     print()
                     print(full_url(book))
-                    print(book.extra_info.get('cover_by'))
-                    print(book.extra_info.get('cover_source'))
-                    print(book.extra_info.get('cover_url'))
+                    extra_info = book.get_extra_info_json()
+                    print(extra_info.get('cover_by'))
+                    print(extra_info.get('cover_source'))
+                    print(extra_info.get('cover_url'))
 
             if without_cover:
                 print()

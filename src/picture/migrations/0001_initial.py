@@ -3,7 +3,6 @@ from django.conf import settings
 from django.db import models, migrations
 import django.db.models.deletion
 import sorl.thumbnail.fields
-import jsonfield.fields
 import django.core.files.storage
 
 
@@ -26,11 +25,11 @@ class Migration(migrations.Migration):
                 ('xml_file', models.FileField(upload_to='xml', storage=django.core.files.storage.FileSystemStorage(base_url='/media/pictures/', location=join(settings.MEDIA_ROOT, 'pictures')), verbose_name='xml_file')),
                 ('image_file', sorl.thumbnail.fields.ImageField(upload_to='images', storage=django.core.files.storage.FileSystemStorage(base_url='/media/pictures/', location=join(settings.MEDIA_ROOT, 'pictures')), verbose_name='image_file')),
                 ('html_file', models.FileField(upload_to='html', storage=django.core.files.storage.FileSystemStorage(base_url='/media/pictures/', location=join(settings.MEDIA_ROOT, 'pictures')), verbose_name='html_file')),
-                ('areas_json', jsonfield.fields.JSONField(default={}, verbose_name='picture areas JSON', editable=False)),
-                ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information')),
+                ('areas_json', models.TextField(default='{}', verbose_name='picture areas JSON', editable=False)),
+                ('extra_info', models.TextField(default={}, verbose_name='Additional information')),
                 ('culturepl_link', models.CharField(max_length=240, blank=True)),
                 ('wiki_link', models.CharField(max_length=240, blank=True)),
-                ('_related_info', jsonfield.fields.JSONField(null=True, editable=False, blank=True)),
+                ('_related_info', models.TextField(null=True, editable=False, blank=True)),
                 ('width', models.IntegerField(null=True)),
                 ('height', models.IntegerField(null=True)),
             ],
@@ -45,7 +44,7 @@ class Migration(migrations.Migration):
             name='PictureArea',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('area', jsonfield.fields.JSONField(default={}, verbose_name='area', editable=False)),
+                ('area', models.TextField(default='{}', verbose_name='area', editable=False)),
                 ('kind', models.CharField(db_index=True, max_length=10, verbose_name='form', choices=[('thing', 'thing'), ('theme', 'motif')])),
                 ('picture', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='areas', to='picture.Picture')),
             ],

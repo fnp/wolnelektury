@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import json
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators import cache
 
@@ -38,7 +38,7 @@ def poem_from_book(request, slug):
     user = request.user if request.user.is_authenticated() else None
     text = Poem.write(Continuations.get(book))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
-    p.created_from = [book.id]
+    p.created_from = json.dumps([book.id])
     p.save()
 
     return render(
@@ -54,7 +54,7 @@ def poem_from_set(request, shelf):
     text = Poem.write(Continuations.get(tag))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
     books = Book.tagged.with_any((tag,))
-    p.created_from = [b.id for b in books]
+    p.created_from = json.dumps([b.id for b in books])
     p.save()
 
     book = books[0] if len(books) == 1 else None
@@ -68,8 +68,9 @@ def poem_from_set(request, shelf):
 def get_poem(request, poem):
     p = get_object_or_404(Poem, slug=poem)
     p.visit()
-    if p.created_from:
-        books = Book.objects.filter(id__in=p.created_from)
+    created_from = json.loads(p.created_from or '[]')
+    if created_from:
+        books = Book.objects.filter(id__in=created_from)
         book = books[0] if len(books) == 1 else None
     else:
         books = book = None

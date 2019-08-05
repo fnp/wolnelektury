@@ -1,6 +1,5 @@
 from django.db import migrations, models
 import django.db.models.deletion
-import jsonfield.fields
 
 
 class Migration(migrations.Migration):
@@ -30,7 +29,7 @@ class Migration(migrations.Migration):
                 ('product_form_detail', models.CharField(max_length=8, blank=True)),
                 ('title', models.CharField(max_length=256)),
                 ('part_number', models.CharField(max_length=64, blank=True)),
-                ('contributors', jsonfield.fields.JSONField()),
+                ('contributors', models.TextField()),
                 ('edition_type', models.CharField(max_length=4)),
                 ('edition_number', models.IntegerField(default=1)),
                 ('language', models.CharField(max_length=4)),

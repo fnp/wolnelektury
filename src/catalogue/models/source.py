@@ -37,7 +37,7 @@ class Source(models.Model):
         # and invalidate their cached includes.
         if old_name != self.name or old_netloc != self.netloc:
             for book in Book.objects.all():
-                source = book.extra_info.get('source_url', '')
+                source = book.get_extra_info_json().get('source_url', '')
                 if self.netloc in source or (old_netloc != self.netloc and old_netloc in source):
                     book.clear_cache()
         return ret

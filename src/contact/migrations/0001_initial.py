@@ -1,6 +1,5 @@
 from django.db import migrations, models
 import django.db.models.deletion
-import jsonfield.fields
 
 
 class Migration(migrations.Migration):
@@ -25,7 +24,7 @@ class Migration(migrations.Migration):
                 ('ip', models.GenericIPAddressField(verbose_name='IP address')),
                 ('contact', models.EmailField(max_length=128, verbose_name='contact')),
                 ('form_tag', models.CharField(max_length=32, verbose_name='form', db_index=True)),
-                ('body', jsonfield.fields.JSONField(verbose_name='body')),
+                ('body', models.TextField(verbose_name='body')),
             ],
             options={
                 'ordering': ('-created_at',),

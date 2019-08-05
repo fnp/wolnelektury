@@ -36,7 +36,7 @@ def picture_detail(request, slug):
 def picture_viewer(request, slug):
     picture = get_object_or_404(Picture, slug=slug)
     sponsors = []
-    for sponsor in picture.extra_info.get('sponsors', []):
+    for sponsor in picture.get_extra_info_json().get('sponsors', []):
         have_sponsors = Sponsor.objects.filter(name=sponsor)
         if have_sponsors.exists():
             sponsors.append(have_sponsors[0])
@@ -60,7 +60,7 @@ def picture_page(request, key=None):
             'epoch': picture.tag_unicode('epoch'),
             'kind': picture.tag_unicode('kind'),
             'genre': picture.tag_unicode('genre'),
-            'style': picture.extra_info['style'],
+            'style': picture.get_extra_info_json()['style'],
             'image_url': picture.image_file.url,
             'width': picture.width,
             'height': picture.height,

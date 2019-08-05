@@ -15,8 +15,8 @@ from catalogue.utils import split_tags
 from picture import tasks
 from wolnelektury.utils import cached_render, clear_cached_renders
 from io import BytesIO
-import jsonfield
 import itertools
+import json
 import logging
 import re
 
@@ -34,7 +34,7 @@ picture_storage = FileSystemStorage(location=path.join(
 
 class PictureArea(models.Model):
     picture = models.ForeignKey('picture.Picture', models.CASCADE, related_name='areas')
-    area = jsonfield.JSONField(_('area'), default={}, editable=False)
+    area = models.TextField(_('area'), default='{}', editable=False)
     kind = models.CharField(
         _('kind'), max_length=10, blank=False, null=False, db_index=True,
         choices=(('thing', _('thing')), ('theme', _('theme'))))
@@ -51,8 +51,11 @@ class PictureArea(models.Model):
         pa = PictureArea()
         pa.picture = picture
         pa.kind = kind
-        pa.area = coords
+        pa.area = json.dumps(coords)
         return pa
+
+    def get_area_json(self):
+        return json.loads(self.area)
 
     @cached_render('picture/picturearea_short.html')
     def midi_box(self):
@@ -77,14 +80,14 @@ class Picture(models.Model):
     slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(
-        _('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
+        _('sort key by author'), max_length=120, db_index=True, editable=False, default='')
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
     xml_file = models.FileField(_('xml file'), upload_to="xml", storage=picture_storage)
     image_file = ImageField(_('image file'), upload_to="images", storage=picture_storage)
     html_file = models.FileField(_('html file'), upload_to="html", storage=picture_storage)
-    areas_json = jsonfield.JSONField(_('picture areas JSON'), default={}, editable=False)
-    extra_info = jsonfield.JSONField(_('extra information'), default={})
+    areas_json = models.TextField(_('picture areas JSON'), default='{}', editable=False)
+    extra_info = models.TextField(_('extra information'), default='{}')
     culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
@@ -196,7 +199,7 @@ class Picture(models.Model):
 
             picture.areas.all().delete()
             picture.title = str(picture_xml.picture_info.title)
-            picture.extra_info = picture_xml.picture_info.to_dict()
+            picture.extra_info = json.dumps(picture_xml.picture_info.to_dict())
 
             picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))
             for tag in picture_tags:
@@ -268,7 +271,7 @@ class Picture(models.Model):
                     area.tags = _tags.union(picture_tags)
 
             picture.tags = picture_tags
-            picture.areas_json = area_data
+            picture.areas_json = json.dumps(area_data)
 
             if image_file is not None:
                 img = image_file

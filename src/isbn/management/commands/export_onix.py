@@ -1,3 +1,4 @@
+import json
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
@@ -123,7 +124,7 @@ class Command(BaseCommand):
         else:
             part_number = ''
         contributors = ''
-        for no, contributor in enumerate(record.contributors, start=1):
+        for no, contributor in enumerate(json.loads(record.contributors), start=1):
             contributors += self.render_contributor(no, contributor)
         return PRODUCT % {
             'datestamp': record.datestamp.strftime('%Y%m%d'),

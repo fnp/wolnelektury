@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import migrations, models
-import jsonfield.fields
 
 
 class Migration(migrations.Migration):
@@ -15,7 +11,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='picture',
             name='extra_info',
-            field=jsonfield.fields.JSONField(default={}, verbose_name='extra information'),
+            field=models.TextField(default='{}', verbose_name='extra information'),
         ),
         migrations.AlterField(
             model_name='picture',

@@ -1,10 +1,11 @@
 {% load i18n %}
 {% load catalogue_tags %}
 
+{% with extra_info=book.get_extra_info_json %}
 <p>
-  {% if book.extra_info.license %}
+  {% if extra_info.license %}
     {% trans "This work is licensed under:" %}
-    <a href="{{ book.extra_info.license }}">{{ book.extra_info.license_description }}</a>
+    <a href="{{ extra_info.license }}">{{ extra_info.license_description }}</a>
   {% else %}
     {% blocktrans %}This work isn't covered by copyright and is part of the
     public domain, which means it can be freely used, published and
@@ -16,48 +17,50 @@
   {% endif %}
 </p>
 
-{% if book.extra_info.source_name %}
-  <p>{% trans "Resource prepared based on:" %} {{ book.extra_info.source_name }}</p>
+{% if extra_info.source_name %}
+  <p>{% trans "Resource prepared based on:" %} {{ extra_info.source_name }}</p>
 {% endif %}
 
-{% if book.extra_info.description %}
-  <p>{{ book.extra_info.description }}</p>
+{% if extra_info.description %}
+  <p>{{ extra_info.description }}</p>
 {% endif %}
 
-{% if book.extra_info.editor or book.extra_info.technical_editor %}
+{% if extra_info.editor or extra_info.technical_editor %}
   <p>
     {% if is_picture %}
       {% trans "Edited by:" %}
     {% else %}
       {% trans "Edited and annotated by:" %}
     {% endif %}
-    {% all_editors book.extra_info %}.
+    {% all_editors extra_info %}.
   </p>
 {% endif %}
 
-{% if book.extra_info.publisher %}
+{% if extra_info.publisher %}
   <p>
     {% trans "Publisher:" %}
     {{ book.publisher }}
   </p>
 {% endif %}
 
-{% if book.extra_info.funders %}
+{% if extra_info.funders %}
   <p>
     {% trans "Publication funded by:" %}
-    {% for funder in book.extra_info.funders %}{{ funder }}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}
+    {% for funder in extra_info.funders %}{{ funder }}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}
   </p>
 {% endif %}
 
-{% if book.extra_info.cover_by %}
+{% if extra_info.cover_by %}
   <p>
     {% trans "Cover image by:" %}
-    <a href="{{ book.extra_info.cover_source }}">{{ book.extra_info.cover_by }}</a>.
+    <a href="{{ extra_info.cover_source }}">{{ extra_info.cover_by }}</a>.
   </p>
 {% endif %}
 
-{% if book.extra_info.isbn_html %}
+{% if extra_info.isbn_html %}
   <p>
-    {{ book.extra_info.isbn_html }}
+    {{ extra_info.isbn_html }}
   </p>
 {% endif %}
+
+{% endwith %}

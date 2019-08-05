@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
 from datetime import date
+import json
 from urllib.request import urlopen
 
 from django import forms
@@ -48,7 +48,7 @@ class WLConfirmForm(WLISBNForm):
         for file_format in data['formats']:
             data['product_form'] = PRODUCT_FORMS[file_format]
             data['product_form_detail'] = PRODUCT_FORM_DETAILS[file_format]
-            data['contributors'] = self.contributors(data)
+            data['contributors'] = json.dumps(self.contributors(data))
             ONIXRecord.new_record(purpose=ISBNPool.PURPOSE_WL, data=data)
         return data
 
@@ -93,7 +93,7 @@ class FNPISBNForm(forms.Form):
             'title': self.cleaned_data['title'],
             'language': self.cleaned_data['language'],
             'publishing_date': self.cleaned_data['publishing_date'],
-            'contributors': [self.prepare_author(a) for a in self.cleaned_data['authors'].split(',')],
+            'contributors': json.dumps([self.prepare_author(a) for a in self.cleaned_data['authors'].split(',')]),
             'edition_type': 'NED',
             'imprint': 'Fundacja Nowoczesna Polska',
             'dc_slug': self.slug(),

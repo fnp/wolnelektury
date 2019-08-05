@@ -10,7 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.loader import render_to_string
 from PIL import Image
 
-from jsonfield import JSONField
 from django.core.files.base import ContentFile
 
 THUMB_WIDTH = 120
@@ -35,14 +34,17 @@ class Sponsor(models.Model):
 
 class SponsorPage(models.Model):
     name = models.CharField(_('name'), max_length=120)
-    sponsors = JSONField(_('sponsors'), default={})
+    sponsors = models.TextField(_('sponsors'), default='{}')
     _html = models.TextField(blank=True, editable=False)
     sprite = models.ImageField(upload_to='sponsorzy/sprite', blank=True)
+
+    def get_sponsors_json(self):
+        return json.loads(self.sponsors or '[]')
 
     def populated_sponsors(self):
         result = []
         offset = 0
-        for column in self.sponsors:
+        for column in self.get_sponsors_json():
             result_group = {'name': column['name'], 'sponsors': []}
             sponsor_objects = Sponsor.objects.in_bulk(column['sponsors'])
             for sponsor_pk in column['sponsors']:
@@ -56,7 +58,7 @@ class SponsorPage(models.Model):
 
     def render_sprite(self):
         sponsor_ids = []
-        for column in self.sponsors:
+        for column in self.get_sponsors_json():
             sponsor_ids.extend(column['sponsors'])
         sponsors = Sponsor.objects.in_bulk(sponsor_ids)
         sprite = Image.new('RGBA', (THUMB_WIDTH, len(sponsors) * THUMB_HEIGHT))
@@ -87,9 +89,6 @@ class SponsorPage(models.Model):
     html = property(fget=html)
 
     def save(self, *args, **kwargs):
-        if isinstance(self.sponsors, str):
-            # Walkaround for weird jsonfield 'no-decode' optimization.
-            self.sponsors = json.loads(self.sponsors)
         self.render_sprite()
         self._html = render_to_string('sponsors/page.html', {
             'sponsors': self.populated_sponsors(),

@@ -1,10 +1,10 @@
+import json
 import yaml
 from hashlib import sha1
 from django.db import models
 from django.urls import reverse
 from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
-from jsonfield import JSONField
 from . import app_settings
 
 
@@ -13,7 +13,7 @@ class Contact(models.Model):
     ip = models.GenericIPAddressField(_('IP address'))
     contact = models.EmailField(_('contact'), max_length=128)
     form_tag = models.CharField(_('form'), max_length=32, db_index=True)
-    body = JSONField(_('body'))
+    body = models.TextField(_('body'))
 
     @staticmethod
     def pretty_print(value, for_html=False):
@@ -32,7 +32,7 @@ class Contact(models.Model):
         return str(self.created_at)
 
     def digest(self):
-        serialized_body = ';'.join(sorted('%s:%s' % item for item in self.body.items()))
+        serialized_body = ';'.join(sorted('%s:%s' % item for item in self.get_body_json().items()))
         data = '%s%s%s%s%s' % (self.id, self.contact, serialized_body, self.ip, self.form_tag)
         return sha1(data).hexdigest()
 
@@ -45,7 +45,11 @@ class Contact(models.Model):
         return list(orig_fields.keys())
 
     def items(self):
-        return [(key, self.body[key]) for key in self.keys() if key in self.body]
+        body = self.get_body_json()
+        return [(key, body[key]) for key in self.keys() if key in body]
+
+    def get_body_json(self):
+        return json.loads(self.body or '{}')
 
 
 class Attachment(models.Model):

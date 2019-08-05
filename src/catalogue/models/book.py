@@ -2,6 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from collections import OrderedDict
+import json
 from datetime import date, timedelta
 from random import randint
 import os.path
@@ -14,7 +15,6 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, get_language
 from django.utils.deconstruct import deconstructible
-import jsonfield
 from fnpdjango.storage import BofhFileSystemStorage
 
 from librarian.cover import WLCover
@@ -65,7 +65,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('change date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info = jsonfield.JSONField(_('extra information'), default={})
+    extra_info = models.TextField(_('extra information'), default='{}')
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
     print_on_demand = models.BooleanField(_('print on demand'), default=False)
@@ -128,6 +128,9 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+    def get_extra_info_json(self):
+        return json.loads(self.extra_info or '{}')
+
     def get_initial(self):
         try:
             return re.search(r'\w', self.title, re.U).group(0)
@@ -169,7 +172,7 @@ class Book(models.Model):
         return self.tag_unicode('genre')
 
     def translator(self):
-        translators = self.extra_info.get('translators')
+        translators = self.get_extra_info_json().get('translators')
         if not translators:
             return None
         if len(translators) > 3:
@@ -180,7 +183,7 @@ class Book(models.Model):
         return ', '.join(u'\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators) + others
 
     def cover_source(self):
-        return self.extra_info.get('cover_source', self.parent.cover_source() if self.parent else '')
+        return self.get_extra_info_json().get('cover_source', self.parent.cover_source() if self.parent else '')
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
@@ -195,7 +198,7 @@ class Book(models.Model):
         self.sort_key_author = author
 
         self.cached_author = self.tag_unicode('author')
-        self.has_audience = 'audience' in self.extra_info
+        self.has_audience = 'audience' in self.get_extra_info_json()
 
         if self.preview and not self.preview_key:
             self.preview_key = get_random_hash(self.slug)[:32]
@@ -340,7 +343,7 @@ class Book(models.Model):
         projects = set()
         for mp3 in self.media.filter(type='mp3').iterator():
             # ogg files are always from the same project
-            meta = mp3.extra_info
+            meta = mp3.get_extra_info_json()
             project = meta.get('project')
             if not project:
                 # temporary fallback
@@ -377,7 +380,7 @@ class Book(models.Model):
     def zip_format(format_):
         def pretty_file_name(book):
             return "%s/%s.%s" % (
-                book.extra_info['author'],
+                book.get_extra_info_json()['author'],
                 book.slug,
                 format_)
 
@@ -490,7 +493,7 @@ class Book(models.Model):
             book.common_slug = book_info.variant_of.slug
         else:
             book.common_slug = book.slug
-        book.extra_info = book_info.to_dict()
+        book.extra_info = json.dumps(book_info.to_dict())
         book.load_abstract()
         book.save()
 
@@ -603,7 +606,7 @@ class Book(models.Model):
         need = False
         info = {}
         for field in ('cover_url', 'cover_by', 'cover_source'):
-            val = self.extra_info.get(field)
+            val = self.get_extra_info_json().get(field)
             if val:
                 info[field] = val
             else:
@@ -657,7 +660,7 @@ class Book(models.Model):
         return ', '.join(names)
 
     def publisher(self):
-        publisher = self.extra_info['publisher']
+        publisher = self.get_extra_info_json()['publisher']
         if isinstance(publisher, str):
             return publisher
         elif isinstance(publisher, list):
@@ -724,12 +727,12 @@ class Book(models.Model):
     }
 
     def audiences_pl(self):
-        audiences = self.extra_info.get('audiences', [])
+        audiences = self.get_extra_info_json().get('audiences', [])
         audiences = sorted(set([self._audiences_pl.get(a, (99, a)) for a in audiences]))
         return [a[1] for a in audiences]
 
     def stage_note(self):
-        stage = self.extra_info.get('stage')
+        stage = self.get_extra_info_json().get('stage')
         if stage and stage < '0.4':
             return (_('This work needs modernisation'),
                     reverse('infopage', args=['wymagajace-uwspolczesnienia']))
@@ -786,7 +789,7 @@ class Book(models.Model):
         return self.SORT_KEY_SEP.join((self.sort_key_author, self.sort_key, str(self.id)))
 
     def cover_color(self):
-        return WLCover.epoch_colors.get(self.extra_info.get('epoch'), '#000000')
+        return WLCover.epoch_colors.get(self.get_extra_info_json().get('epoch'), '#000000')
 
     @cached_render('catalogue/book_mini_box.html')
     def mini_box(self):

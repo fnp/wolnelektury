@@ -46,7 +46,7 @@ def area_thumbnail_url(area, geometry):
     # what to do about this?
     _engine = sorl.thumbnail.default.engine
     sorl.thumbnail.default.engine = cropper
-    coords = to_square(area.area)
+    coords = to_square(area.get_area_json())
 
     try:
         th = sorl.thumbnail.default.backend.get_thumbnail(

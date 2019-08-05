@@ -3,7 +3,6 @@
 #
 from django.db import models
 from django.db.models import F
-from jsonfield import JSONField
 
 
 class ISBNPool(models.Model):
@@ -59,7 +58,7 @@ class ONIXRecord(models.Model):
     product_form_detail = models.CharField(max_length=8, blank=True)
     title = models.CharField(max_length=256)
     part_number = models.CharField(max_length=64, blank=True)
-    contributors = JSONField()  # roles, names, optional: ISNI, date of birth/death
+    contributors = models.TextField()  # roles, names, optional: ISNI, date of birth/death
     edition_type = models.CharField(max_length=4)
     edition_number = models.IntegerField(default=1)
     language = models.CharField(max_length=4)

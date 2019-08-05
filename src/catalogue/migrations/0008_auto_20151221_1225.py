@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import jsonfield.fields
 import catalogue.fields
 import catalogue.models.bookmedia
 
@@ -40,7 +39,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='book',
             name='extra_info',
-            field=jsonfield.fields.JSONField(default={}, verbose_name='extra information'),
+            field=models.TextField(default='{}', verbose_name='extra information'),
         ),
         migrations.AlterField(
             model_name='book',
@@ -65,7 +64,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bookmedia',
             name='extra_info',
-            field=jsonfield.fields.JSONField(default={}, verbose_name='extra information', editable=False),
+            field=models.TextField(default='{}', verbose_name='extra information', editable=False),
         ),
         migrations.AlterField(
             model_name='bookmedia',

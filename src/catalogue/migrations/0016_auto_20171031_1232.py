@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
@@ -12,7 +9,7 @@ def refresh_books(apps, schema_editor):
         book.cached_author = ', '.join(
             TagRelation.objects.filter(content_type__model='book', object_id=book.id, tag__category='author')
             .values_list('tag__name', flat=True))
-        book.has_audience = 'audience' in book.extra_info
+        book.has_audience = 'audience' in book.get_extra_info_json()
         book.save()
 
 

@@ -73,12 +73,14 @@
             {% endfor %}
           </span></span>
 
-          {% if book.extra_info.location %}
-            <span class="category">
-            <span class="mono"> {% trans "Region" %}:</span>&nbsp;<span class="book-box-tag">
-                {{ book.extra_info.location }}
-            </span></span>
-          {% endif %}
+	  {% with extra_info=book.get_extra_info_json %}
+            {% if extra_info.location %}
+              <span class="category">
+              <span class="mono"> {% trans "Region" %}:</span>&nbsp;<span class="book-box-tag">
+                  {{ extra_info.location }}
+              </span></span>
+            {% endif %}
+	  {% endwith %}
 
           {% if book.is_foreign %}
             <span class="category">

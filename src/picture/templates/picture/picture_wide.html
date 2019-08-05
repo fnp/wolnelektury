@@ -15,10 +15,11 @@
 
 
 {% block extra_categories %}
-  {% if picture.extra_info.styles %}
+  {% with extra_info=picture.get_extra_info_json %}
+  {% if extra_info.styles %}
     <span class="category">
       <span class="mono"> {% trans "Style" %}:</span>&nbsp;<span class="book-box-tag">
-        {% for tag in picture.extra_info.styles %}
+        {% for tag in extra_info.styles %}
           <a>{{ tag }}</a>
           {% if not forloop.last %}<span>, </span>{% endif %}
         {% endfor %}
@@ -26,27 +27,28 @@
     </span>
   {% endif %}
 
-  {% if picture.extra_info.medium %}
+  {% if extra_info.medium %}
     <span class="category">
       <span class="mono"> {% trans "Medium" %}:</span>&nbsp;<span class="book-box-tag">
-        <a>{{ picture.extra_info.medium }}</a>
+        <a>{{ extra_info.medium }}</a>
       </span>
     </span>
   {% endif %}
 
-  {% if picture.extra_info.original_dimensions %}
+  {% if extra_info.original_dimensions %}
     <span class="category">
       <span class="mono"> {% trans "Dimensions" %}:</span>&nbsp;<span class="book-box-tag">
-        <a>{{ picture.extra_info.original_dimensions }}</a>
+        <a>{{ extra_info.original_dimensions }}</a>
       </span>
     </span>
   {% endif %}
 
   <span class="category">
     <span class="mono"> {% trans "Date" %}:</span>&nbsp;<span class="book-box-tag">
-      <a>{{ picture.extra_info.created_at }}</a>
+      <a>{{ extra_info.created_at }}</a>
     </span>
   </span>
+  {% endwith %}
 {% endblock %}
 
 
@@ -82,16 +84,17 @@
 
 
 {% block right-column %}
+  {% with extra_info=picture.get_extra_info_json %}
   <div class="right-column">
     <div class="other-tools">
       <h2 class="mono">{% trans "See" %}</h2>
       <ul class="plain">
-        {% if picture.extra_info.source_url %}
-          <li><a href="{{ picture.extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the picture" %}</li>
+        {% if extra_info.source_url %}
+          <li><a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the picture" %}</li>
         {% endif %}
         <li><a href="{{ picture.xml_file.url }}">{% trans "Source XML file" %}</a></li>
-        {% if picture.extra_info.about and not hide_about %}
-          <li>{% trans "Picture on" %} <a href="{{ picture.extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
+        {% if extra_info.about and not hide_about %}
+          <li>{% trans "Picture on" %} <a href="{{ extra_info.about }}">{% trans "Editor's Platform" %}</a></li>
         {% endif %}
         {% if picture.wiki_link %}
           <li><a href="{{ picture.wiki_link }}">{% trans "Picture description on Wikipedia" %}</a></li>
@@ -99,4 +102,5 @@
       </ul>
     </div>
   </div>
+  {% endwith %}
 {% endblock %}

@@ -6,7 +6,6 @@ import json
 from collections import namedtuple
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-import jsonfield
 from slugify import slugify
 from mutagen import MutagenError
 
@@ -33,7 +32,7 @@ class BookMedia(models.Model):
     index = models.IntegerField(_('index'), default=0)
     file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=OverwriteStorage())
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
-    extra_info = jsonfield.JSONField(_('extra information'), default={}, editable=False)
+    extra_info = models.TextField(_('extra information'), default='{}', editable=False)
     book = models.ForeignKey('Book', models.CASCADE, related_name='media')
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
@@ -45,6 +44,9 @@ class BookMedia(models.Model):
         verbose_name = _('book media')
         verbose_name_plural = _('book media')
         app_label = 'catalogue'
+
+    def get_extra_info_json(self):
+        return json.loads(self.extra_info or '{}')
 
     def save(self, parts_count=None, *args, **kwargs):
         from catalogue.utils import ExistingFile, remove_zip
@@ -75,12 +77,9 @@ class BookMedia(models.Model):
             remove_zip("%s_%s" % (old.book.slug, old.type))
         remove_zip("%s_%s" % (self.book.slug, self.type))
 
-        extra_info = self.extra_info
-        if isinstance(extra_info, str):
-            # Walkaround for weird jsonfield 'no-decode' optimization.
-            extra_info = json.loads(extra_info)
+        extra_info = self.get_extra_info_json()
         extra_info.update(self.read_meta())
-        self.extra_info = extra_info
+        self.extra_info = json.dumps(extra_info)
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
         return super(BookMedia, self).save(*args, **kwargs)
 
@@ -148,11 +147,11 @@ class BookMedia(models.Model):
 
     @property
     def director(self):
-        return self.extra_info.get('director_name', None)
+        return self.get_extra_info_json().get('director_name', None)
 
     @property
     def artist(self):
-        return self.extra_info.get('artist_name', None)
+        return self.get_extra_info_json().get('artist_name', None)
 
     def file_url(self):
         return self.file.url

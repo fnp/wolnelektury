@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import csv
 import json
 
@@ -36,7 +35,7 @@ class ContactAdmin(admin.ModelAdmin):
         except BaseException:
             return ''
         else:
-            return Contact.pretty_print(obj.body.get(field_name, ''), for_html=True)
+            return Contact.pretty_print(obj.get_body_json().get(field_name, ''), for_html=True)
 
     def __getattr__(self, name):
         if name.startswith('admin_list_'):
@@ -48,13 +47,14 @@ class ContactAdmin(admin.ModelAdmin):
         if object_id:
             try:
                 instance = Contact.objects.get(pk=object_id)
-                assert isinstance(instance.body, dict)
+                body = instance.get_body_json()
+                assert isinstance(body, dict)
             except (Contact.DoesNotExist, AssertionError):
                 pass
             else:
                 # Create readonly fields from the body JSON.
                 attachments = list(instance.attachment_set.all())
-                body_keys = instance.body.keys() + [a.tag for a in attachments]
+                body_keys = body.keys() + [a.tag for a in attachments]
 
                 # Find the original form.
                 try:
@@ -82,7 +82,7 @@ class ContactAdmin(admin.ModelAdmin):
                     f.short_description = orig_fields[key].label if key in orig_fields else _(key)
                     setattr(self, "body__%s" % key, f)
 
-                for k, v in instance.body.items():
+                for k, v in body.items():
                     attach_getter(k, Contact.pretty_print(v, for_html=True))
 
                 download_link = "<a href='%(url)s'>%(url)s</a>"
@@ -133,7 +133,7 @@ def extract_view(request, form_tag, extract_type_slug):
         if extract_type_slug == 'contacts':
             keys = ['contact']
         elif extract_type_slug == 'all':
-            keys = contact.body.keys() + ['contact']
+            keys = contact.get_body_json().keys() + ['contact']
             keys = [key for key in orig_keys if key in keys] + [key for key in keys if key not in orig_keys]
         else:
             keys = form.get_extract_fields(contact, extract_type_slug)
@@ -149,7 +149,7 @@ def extract_view(request, form_tag, extract_type_slug):
             if extract_type_slug == 'contacts':
                 records = [dict(contact=contact.contact)]
             elif extract_type_slug == 'all':
-                records = [dict(contact=contact.contact, **contact.body)]
+                records = [dict(contact=contact.contact, **contact.get_body_json())]
             else:
                 records = form.get_extract_records(keys, contact, extract_type_slug)
 

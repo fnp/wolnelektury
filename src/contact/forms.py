@@ -1,3 +1,4 @@
+import json
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import UploadedFile
@@ -56,7 +57,7 @@ class ContactForm(forms.Form):
                     body.setdefault(f.form_tag, []).append(sub_body)
 
         contact = Contact.objects.create(
-            body=body,
+            body=json.dumps(body),
             ip=request.META['REMOTE_ADDR'],
             contact=self.cleaned_data['contact'],
             form_tag=self.form_tag)

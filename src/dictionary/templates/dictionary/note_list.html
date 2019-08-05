@@ -100,7 +100,7 @@
           {% for note_source in obj.notesource_set.all %}
             <div class='dictionary-note-source'>
               <a href='{% url "book_text" note_source.book.slug %}#{{ note_source.anchor }}'>{{ note_source.book.pretty_title }}</a>
-              (<a href='{{ note_source.book.extra_info.about }}'>źródło na Platformie Redakcyjnej</a>)
+              (<a href='{{ note_source.book.get_extra_info_json.about }}'>źródło na Platformie Redakcyjnej</a>)
             </div>
           {% endfor %}
         </div>

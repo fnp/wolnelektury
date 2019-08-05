@@ -1,7 +1,6 @@
 from django.db import models, migrations
 import django.db.models.deletion
 import fnpdjango.storage
-import jsonfield.fields
 import catalogue.fields
 import catalogue.models.bookmedia
 from django.conf import settings
@@ -30,12 +29,12 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
                 ('changed_at', models.DateTimeField(auto_now=True, verbose_name='creation date', db_index=True)),
                 ('parent_number', models.IntegerField(default=0, verbose_name='Parent number')),
-                ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information')),
+                ('extra_info', models.TextField(default='{}', verbose_name='Additional information')),
                 ('gazeta_link', models.CharField(max_length=240, blank=True)),
                 ('wiki_link', models.CharField(max_length=240, blank=True)),
                 ('cover', catalogue.fields.EbookField('cover', upload_to=catalogue.models.book._cover_upload_to, storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, null=True, verbose_name='cover')),
                 ('cover_thumb', catalogue.fields.EbookField('cover_thumb', max_length=255, upload_to=catalogue.models.book._cover_thumb_upload_to, null=True, verbose_name='cover thumbnail', blank=True)),
-                ('_related_info', jsonfield.fields.JSONField(null=True, editable=False, blank=True)),
+                ('_related_info', models.TextField(null=True, editable=False, blank=True)),
                 ('txt_file', catalogue.fields.EbookField('txt', default='', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.book._txt_upload_to, max_length=255, blank=True, verbose_name='TXT file')),
                 ('fb2_file', catalogue.fields.EbookField('fb2', default='', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.book._fb2_upload_to, max_length=255, blank=True, verbose_name='FB2 file')),
                 ('pdf_file', catalogue.fields.EbookField('pdf', default='', storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.book._pdf_upload_to, max_length=255, blank=True, verbose_name='PDF file')),
@@ -60,7 +59,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=512, verbose_name='name')),
                 ('file', catalogue.fields.OverwritingFileField(upload_to=catalogue.models.bookmedia._file_upload_to, max_length=600, verbose_name='XML file')),
                 ('uploaded_at', models.DateTimeField(auto_now_add=True, verbose_name='creation date', db_index=True)),
-                ('extra_info', jsonfield.fields.JSONField(default={}, verbose_name='Additional information', editable=False)),
+                ('extra_info', models.TextField(default='{}', verbose_name='Additional information', editable=False)),
                 ('source_sha1', models.CharField(max_length=40, null=True, editable=False, blank=True)),
                 ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='media', to='catalogue.Book')),
             ],
