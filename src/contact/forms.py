@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import json
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
@@ -26,9 +29,8 @@ class ContactFormMeta(forms.Form.__class__):
         return model
 
 
-class ContactForm(forms.Form):
+class ContactForm(forms.Form, metaclass=ContactFormMeta):
     """Subclass and define some fields."""
-    __metaclass__ = ContactFormMeta
 
     form_tag = None
     form_title = _('Contact form')

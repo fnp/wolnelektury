@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from allauth.socialaccount.forms import SignupForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -8,7 +10,7 @@ from newsletter.forms import NewsletterForm
 
 # has to be this order, because otherwise the form is lacking fields
 class RegistrationForm(UserCreationForm, NewsletterForm):
-    data_processing_part2 = u'''\
+    data_processing_part2 = '''\
 Dane są przetwarzane w zakresie niezbędnym do prowadzenia serwisu, a także w celach prowadzenia statystyk, \
 ewaluacji i sprawozdawczości. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany \
 także w celu przesyłania newslettera Wolnych Lektur.'''
@@ -23,7 +25,7 @@ także w celu przesyłania newslettera Wolnych Lektur.'''
 
 
 class SocialSignupForm(NewsletterForm, SignupForm):
-    data_processing_part2 = u'''\
+    data_processing_part2 = '''\
 Dane są przetwarzane w zakresie niezbędnym do prowadzenia serwisu, a także w celach prowadzenia statystyk, \
 ewaluacji i sprawozdawczości. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany \
 także w celu przesyłania newslettera Wolnych Lektur.'''

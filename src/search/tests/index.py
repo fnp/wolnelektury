@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -15,7 +14,7 @@ import opds
 
 @override_settings(SEARCH_INDEX=tempfile.mkdtemp(prefix='djangotest_search_'))
 @skipIf(getattr(settings, 'NO_SEARCH_INDEX', False),
-        u'Requires search server and NO_SEARCH_INDEX=False.')
+        'Requires search server and NO_SEARCH_INDEX=False.')
 class BookSearchTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
@@ -32,7 +31,7 @@ class BookSearchTests(WLTestCase):
 
     # TODO: Add slop option to sunburnt
     # def test_search_perfect_parts(self):
-    #     books = self.search.search_phrase(u"Jakoż hamować")
+    #     books = self.search.search_phrase("Jakoż hamować")
     #     assert len(books) == 2
     #     for b in books:
     #         b.book_id == self.book.id

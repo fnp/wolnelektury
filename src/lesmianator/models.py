@@ -47,7 +47,7 @@ class Poem(models.Model):
     @staticmethod
     def choose_letter(word, continuations):
         if word not in continuations:
-            return u'\n'
+            return '\n'
 
         choices = sum((continuations[word][letter]
                        for letter in continuations[word]))
@@ -66,7 +66,7 @@ class Poem(models.Model):
             return ''
 
         letters = []
-        word = u''
+        word = ''
 
         finished_stanza_verses = 0
         current_stanza_verses = 0
@@ -82,7 +82,7 @@ class Poem(models.Model):
             word = word[-length + 1:] + letter
             char_count += 1
 
-            if letter == u'\n':
+            if letter == '\n':
                 if verse_start:
                     finished_stanza_verses += current_stanza_verses
                     current_stanza_verses = 0

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -26,7 +25,7 @@ class FundingForm(NewsletterForm):
             "and to send you updates about your payment and the fundraiser status (which you can always turn off).<br/>"
             "Your e-mail won't be publicised.")), required=False)
 
-    data_processing_part2 = u'''\
+    data_processing_part2 = '''\
 W przypadku podania danych zostaną one wykorzystane w sposób podany powyżej, a w przypadku wyrażenia dodatkowej zgody 
 adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
 

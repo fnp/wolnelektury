@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -23,7 +22,7 @@ def placeholdized_ul(form):
 @register.filter
 def pretty_field(field, template=None):
     if template is None:
-        template = u'''
+        template = '''
             <li>
               <span class="error">%(errors)s</span>
               <label class="nohide"><span class="label">%(label)s: </span>%(input)s</label>
@@ -39,7 +38,7 @@ def pretty_field(field, template=None):
 
 @register.filter
 def pretty_checkbox(field):
-    return pretty_field(field, template=u'''
+    return pretty_field(field, template='''
         <li class="checkbox">
           <span class="error">%(errors)s</span>
           <label class="nohide">%(input)s<span class="label"> %(label)s</span></label>

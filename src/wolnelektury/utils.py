@@ -118,8 +118,8 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
 
 def send_noreply_mail(subject, message, recipient_list, **kwargs):
     send_mail(
-        u'[WolneLektury] ' + subject,
-        message + u"\n\n-- \n" + ugettext(u'Message sent automatically. Please do not reply.'),
+        '[WolneLektury] ' + subject,
+        message + "\n\n-- \n" + ugettext('Message sent automatically. Please do not reply.'),
         'no-reply@wolnelektury.pl', recipient_list, **kwargs)
 
 

@@ -72,8 +72,8 @@ def create_agreement(amount, app=False):
         plan_id = plan.plan_id
     start = (timezone.now() + timedelta(0, 3600*24)).astimezone(pytz.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     billing_agreement = paypalrestsdk.BillingAgreement({
-        "name": u"Subskrypcja klubu WL",
-        "description": u"Stałe wsparcie Wolnych Lektur kwotą %s złotych" % amount,
+        "name": "Subskrypcja klubu WL",
+        "description": "Stałe wsparcie Wolnych Lektur kwotą %s złotych" % amount,
         "start_date": start,
         "plan": {
             "id": plan_id,

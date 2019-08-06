@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -119,7 +118,7 @@ def main(request):
     pd_authors = search_pd_authors(query)
     books = search_books(query)
     pictures = search_pictures(query)
-    suggestion = u''
+    suggestion = ''
 
     if not (books or pictures or pd_authors):
         form = PublishingSuggestForm(initial={"books": query + ", "})

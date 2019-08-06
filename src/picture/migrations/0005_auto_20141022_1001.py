@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import json
 from django.core.files.base import ContentFile
 from django.db import models, migrations

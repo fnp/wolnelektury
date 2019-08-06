@@ -6,7 +6,7 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _, string_concat
+from django.utils.translation import ugettext_lazy as _
 from catalogue.models import Book
 from wolnelektury.utils import cached_render, clear_cached_renders
 
@@ -53,7 +53,9 @@ class Cite(models.Model):
 
     sticky = models.BooleanField(_('sticky'), default=False, db_index=True,
                                  help_text=_('Sticky cites will take precedense.'))
-    banner = models.BooleanField(_('banner'), default=False, help_text=string_concat(_('Adjust size to image, ignore the text'), '<br>(Przestarzałe; użyj funkcji "Obraz" w sekcji "Media box")'))
+    banner = models.BooleanField(_('banner'), default=False, help_text=
+            'Dostosuj wielkość do obrazu tła, zignoruj tekst.'
+            '<br>(Przestarzałe; użyj funkcji "Obraz" w sekcji "Media box")')
 
     background_plain = models.BooleanField(_('plain background'), default=False)
     background_color = models.CharField(_('background color'), max_length=32, blank=True)
@@ -62,7 +64,8 @@ class Cite(models.Model):
         help_text=_('Best image is exactly 975px wide and weights under 100kB.'))
     image_shift = models.IntegerField(
         _('shift'), null=True, blank=True,
-        help_text=string_concat(_('Vertical shift, in percents. 0 means top, 100 is bottom. Default is 50%.'), '<br>(Przestarzałe; użyj obrazka o właściwych proporcjach;)'))
+        help_text='Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 do dolnej. Domyślne jest 50%.'
+            '<br>(Przestarzałe; użyj obrazka o właściwych proporcjach;)')
     image_title = models.CharField(_('title'), max_length=255, null=True, blank=True)
     image_author = models.CharField(_('author'), max_length=255, blank=True, null=True)
     image_link = models.URLField(_('link'), blank=True, null=True)

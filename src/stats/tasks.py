@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -23,7 +22,7 @@ except AttributeError:
 
 @task(ignore_result=True)
 def track_request(piwik_args):
-    piwik_url = "%s%s%s" % (settings.PIWIK_URL, u"/piwik.php?", piwik_args)
+    piwik_url = "%s%s%s" % (settings.PIWIK_URL, "/piwik.php?", piwik_args)
     conn = HTTPConnection(_host)
     conn.request('GET', piwik_url)
     conn.close()

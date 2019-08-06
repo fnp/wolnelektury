@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -15,9 +14,9 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         super(JQueryAutoCompleteWidget, self).__init__(*args, **kwargs)
 
     def render_js(self, field_id, options):
-        return u'$(\'#%s\').autocomplete(%s).result(autocomplete_result_handler);' % (field_id, options)
+        return '$(\'#%s\').autocomplete(%s).result(autocomplete_result_handler);' % (field_id, options)
 
-    def render(self, name, value=None, attrs=None):
+    def render(self, name, value=None, attrs=None, renderer=None):
         final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs["name"] = name
         if value:
@@ -26,7 +25,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         if 'id' not in self.attrs:
             final_attrs['id'] = 'id_%s' % name
 
-        html = u'''<input type="text" %(attrs)s/>
+        html = '''<input type="text" %(attrs)s/>
             <script type="text/javascript">//<!--
             %(js)s//--></script>
             ''' % {
@@ -42,7 +41,7 @@ class JQueryAutoCompleteSearchWidget(JQueryAutoCompleteWidget):
         super(JQueryAutoCompleteSearchWidget, self).__init__(*args, **kwargs)
 
     def render_js(self, field_id, options):
-        return u""
+        return ""
 
 
 class JQueryAutoCompleteField(forms.CharField):

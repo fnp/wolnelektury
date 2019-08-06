@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -17,7 +16,7 @@ def book_stub_detail(request, slug):
     else:
         pd_counter = None
 
-    form = PublishingSuggestForm(initial={"books": u"%s — %s, \n" % (book.author, book.title)})
+    form = PublishingSuggestForm(initial={"books": "%s — %s, \n" % (book.author, book.title)})
 
     return render(request, 'pdcounter/book_stub_detail.html', {
         'book': book,

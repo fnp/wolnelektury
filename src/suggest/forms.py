@@ -20,7 +20,7 @@ class SuggestForm(NewsletterForm):
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     description = forms.CharField(label=_('Description'), widget=forms.Textarea, required=True)
 
-    data_processing_part2 = u'''\
+    data_processing_part2 = '''\
 Dane są przetwarzane w zakresie niezbędnym do obsługi zgłoszenia. W przypadku wyrażenia dodatkowej zgody \
 adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
 
@@ -34,7 +34,7 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
             suggestion.user = request.user
         suggestion.save()
 
-        mail_managers(u'Nowa sugestia na stronie WolneLektury.pl', u'''\
+        mail_managers('Nowa sugestia na stronie WolneLektury.pl', '''\
 Zgłoszono nową sugestię w serwisie WolneLektury.pl.
 http://%(site)s%(url)s
 
@@ -55,8 +55,8 @@ Kontakt: %(contact)s
             pass
         else:
             send_noreply_mail(
-                ugettext(u'Thank you for your suggestion.'),
-                ugettext(u"""\
+                ugettext('Thank you for your suggestion.'),
+                ugettext("""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator."""),
                 [contact], fail_silently=True)
@@ -73,7 +73,7 @@ class PublishingSuggestForm(NewsletterForm):
 
     def clean(self):
         if not self.cleaned_data['ebook'] and not self.cleaned_data['audiobook']:
-            msg = ugettext(u"One of these options is required.")
+            msg = ugettext("One of these options is required.")
             self._errors['ebook'] = self.error_class([msg])
             self._errors['audiobook'] = self.error_class([msg])
         return super(PublishingSuggestForm, self).clean()
@@ -94,7 +94,7 @@ class PublishingSuggestForm(NewsletterForm):
         suggestion.save()
 
         if not suggestion.is_spam():
-            mail_managers(u'Konsultacja planu wydawniczego na WolneLektury.pl', u'''\
+            mail_managers('Konsultacja planu wydawniczego na WolneLektury.pl', '''\
     Zgłoszono nową sugestię nt. planu wydawniczego w serwisie WolneLektury.pl.
     %(url)s
 
@@ -119,8 +119,8 @@ class PublishingSuggestForm(NewsletterForm):
                 pass
             else:
                 send_noreply_mail(
-                    ugettext(u'Thank you for your suggestion.'),
-                    ugettext(u"""\
+                    ugettext('Thank you for your suggestion.'),
+                    ugettext("""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator."""),
                     [contact], fail_silently=True)

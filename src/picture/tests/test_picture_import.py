@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from __future__ import with_statement
-
 from os import path
 from picture.models import Picture
 from catalogue.test_utils import WLTestCase
@@ -18,8 +15,8 @@ class PictureTest(WLTestCase):
         for area in picture.areas.all():
             themes.update([
                 (tag.category, tag.name)
-                for tag in area.tags if tag.category in (u'theme', u'thing')])
-        assert themes == {(u'theme', u'nieporządek'), (u'thing', u'Kosmos')}, \
+                for tag in area.tags if tag.category in ('theme', 'thing')])
+        assert themes == {('theme', 'nieporządek'), ('thing', 'Kosmos')}, \
             'Bad themes on Picture areas: %s' % themes
 
         pic_themes = set([tag.name for tag in picture.tags if tag.category in ('theme', 'thing')])

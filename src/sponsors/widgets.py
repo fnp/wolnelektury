@@ -20,12 +20,12 @@ class SponsorPageWidget(forms.Textarea):
             'all': (settings.STATIC_URL + 'sponsors/css/footer_admin.css',),
         }
 
-    def render(self, name, value, attrs=None):
-        output = [super(SponsorPageWidget, self).render(name, value, attrs)]
+    def render(self, name, value, attrs=None, renderer=None):
+        output = [super(SponsorPageWidget, self).render(name, value, attrs, renderer)]
         sponsors = [(str(obj), obj.pk, obj.logo.url) for obj in models.Sponsor.objects.all().iterator()]
         sponsors_js = ', '.join('{name: "%s", id: %d, image: "%s"}' % sponsor for sponsor in sponsors)
         output.append('<script type="text/javascript">$(function(e) {')
         # TODO: "id_" is hard-coded here. This should instead use the correct
         # API to determine the ID dynamically.
-        output.append(u'$("#id_%s").sponsorsFooter({sponsors: [%s]}); });</script>\n' % (name, sponsors_js))
-        return mark_safe(u''.join(output))
+        output.append('$("#id_%s").sponsorsFooter({sponsors: [%s]}); });</script>\n' % (name, sponsors_js))
+        return mark_safe(''.join(output))

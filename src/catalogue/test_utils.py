@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -73,11 +72,11 @@ def info_args(title, language=None):
     """ generate some keywords for comfortable BookInfoCreation  """
     slug = str(slugify(title))
     if language is None:
-        language = u'pol'
+        language = 'pol'
     return {
         'title': str(title),
         'url': WLURI.from_slug(slug),
-        'about': u"http://wolnelektury.pl/example/URI/%s" % slug,
+        'about': "http://wolnelektury.pl/example/URI/%s" % slug,
         'language': language,
     }
 

@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from datetime import date
 import json
 from urllib.request import urlopen
@@ -13,8 +16,8 @@ from librarian.parser import WLDocument
 
 
 class WLISBNForm(forms.Form):
-    platform_url = forms.URLField(label=u'Adres na platformie')
-    publishing_date = forms.DateField(label=u'Data publikacji', initial=date.today)
+    platform_url = forms.URLField(label='Adres na platformie')
+    publishing_date = forms.DateField(label='Data publikacji', initial=date.today)
 
     def prepare_data(self):
         platform_url = self.cleaned_data['platform_url']
@@ -63,20 +66,20 @@ class FNPISBNForm(forms.Form):
         ('SOFT', _('Soft cover book')),
     )
     LANGUAGE_CHOICES = (
-        ('pol', u'polski'),
-        ('eng', u'angielski'),
-        ('ger', u'niemiecki'),
-        ('fre', u'francuski'),
+        ('pol', 'polski'),
+        ('eng', 'angielski'),
+        ('ger', 'niemiecki'),
+        ('fre', 'francuski'),
     )
 
     title = forms.CharField()
-    authors = forms.CharField(help_text=u'wartości oddzielone przecinkami lub „Wielu autorów”')
+    authors = forms.CharField(help_text='wartości oddzielone przecinkami lub „Wielu autorów”')
     formats = forms.MultipleChoiceField(choices=FORMAT_CHOICES)
     language = forms.ChoiceField(choices=LANGUAGE_CHOICES)
     publishing_date = forms.DateField()
 
     def prepare_author(self, name):
-        if name == u'Wielu autorów':
+        if name == 'Wielu autorów':
             return {'role': 'A01', 'unnamed': '04'}
         if ' ' in name:
             first_name, last_name = [s.strip() for s in name.rsplit(' ', 1)]

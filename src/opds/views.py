@@ -28,39 +28,39 @@ log = logging.getLogger('opds')
 
 _root_feeds = (
     {
-        u"category": u"",
-        u"link": u"opds_user",
-        u"link_args": [],
-        u"title": u"Moje półki",
-        u"description": u"Półki użytkownika dostępne po zalogowaniu"
+        "category": "",
+        "link": "opds_user",
+        "link_args": [],
+        "title": "Moje półki",
+        "description": "Półki użytkownika dostępne po zalogowaniu"
     },
     {
-        u"category": u"author",
-        u"link": u"opds_by_category",
-        u"link_args": [u"author"],
-        u"title": u"Autorzy",
-        u"description": u"Utwory wg autorów"
+        "category": "author",
+        "link": "opds_by_category",
+        "link_args": ["author"],
+        "title": "Autorzy",
+        "description": "Utwory wg autorów"
     },
     {
-        u"category": u"kind",
-        u"link": u"opds_by_category",
-        u"link_args": [u"kind"],
-        u"title": u"Rodzaje",
-        u"description": u"Utwory wg rodzajów"
+        "category": "kind",
+        "link": "opds_by_category",
+        "link_args": ["kind"],
+        "title": "Rodzaje",
+        "description": "Utwory wg rodzajów"
     },
     {
-        u"category": u"genre",
-        u"link": u"opds_by_category",
-        u"link_args": [u"genre"],
-        u"title": u"Gatunki",
-        u"description": u"Utwory wg gatunków"
+        "category": "genre",
+        "link": "opds_by_category",
+        "link_args": ["genre"],
+        "title": "Gatunki",
+        "description": "Utwory wg gatunków"
     },
     {
-        u"category": u"epoch",
-        u"link": u"opds_by_category",
-        u"link_args": [u"epoch"],
-        u"title": u"Epoki",
-        u"description": u"Utwory wg epok"
+        "category": "epoch",
+        "link": "opds_by_category",
+        "link_args": ["epoch"],
+        "title": "Epoki",
+        "description": "Utwory wg epok"
     },
 )
 
@@ -73,8 +73,8 @@ def full_url(url):
 
 
 class OPDSFeed(Atom1Feed):
-    link_rel = u"subsection"
-    link_type = u"application/atom+xml"
+    link_rel = "subsection"
+    link_type = "application/atom+xml"
 
     _book_parent_img = lazy(lambda: full_url(os.path.join(settings.STATIC_URL, "img/book-parent.png")), str)()
     try:
@@ -90,45 +90,45 @@ class OPDSFeed(Atom1Feed):
 
     def add_root_elements(self, handler):
         super(OPDSFeed, self).add_root_elements(handler)
-        handler.addQuickElement(u"link", None,
-                                {u"href": reverse("opds_authors"),
-                                 u"rel": u"start",
-                                 u"type": u"application/atom+xml"})
-        handler.addQuickElement(u"link", None,
-                                {u"href": full_url(os.path.join(settings.STATIC_URL, "opensearch.xml")),
-                                 u"rel": u"search",
-                                 u"type": u"application/opensearchdescription+xml"})
+        handler.addQuickElement("link", None,
+                                {"href": reverse("opds_authors"),
+                                 "rel": "start",
+                                 "type": "application/atom+xml"})
+        handler.addQuickElement("link", None,
+                                {"href": full_url(os.path.join(settings.STATIC_URL, "opensearch.xml")),
+                                 "rel": "search",
+                                 "type": "application/opensearchdescription+xml"})
 
     def add_item_elements(self, handler, item):
         """ modified from Atom1Feed.add_item_elements """
-        handler.addQuickElement(u"title", item['title'])
+        handler.addQuickElement("title", item['title'])
 
         # add a OPDS Navigation link if there's no enclosure
         if not item.get('enclosures') is None:
             handler.addQuickElement(
-                u"link", u"", {u"href": item['link'], u"rel": u"subsection", u"type": u"application/atom+xml"})
+                "link", "", {"href": item['link'], "rel": "subsection", "type": "application/atom+xml"})
             # add a "green book" icon
             handler.addQuickElement(
-                u"link", '',
+                "link", '',
                 {
-                    u"rel": u"http://opds-spec.org/thumbnail",
-                    u"href": self._book_parent_img,
-                    u"length": self._book_parent_img_size,
-                    u"type": u"image/png",
+                    "rel": "http://opds-spec.org/thumbnail",
+                    "href": self._book_parent_img,
+                    "length": self._book_parent_img_size,
+                    "type": "image/png",
                 })
         if item['pubdate'] is not None:
             # FIXME: rfc3339_date is undefined, is this ever run?
-            handler.addQuickElement(u"updated", rfc3339_date(item['pubdate']).decode('utf-8'))
+            handler.addQuickElement("updated", rfc3339_date(item['pubdate']).decode('utf-8'))
 
         # Author information.
         if item['author_name'] is not None:
-            handler.startElement(u"author", {})
-            handler.addQuickElement(u"name", item['author_name'])
+            handler.startElement("author", {})
+            handler.addQuickElement("name", item['author_name'])
             if item['author_email'] is not None:
-                handler.addQuickElement(u"email", item['author_email'])
+                handler.addQuickElement("email", item['author_email'])
             if item['author_link'] is not None:
-                handler.addQuickElement(u"uri", item['author_link'])
-            handler.endElement(u"author")
+                handler.addQuickElement("uri", item['author_link'])
+            handler.endElement("author")
 
         # Unique ID.
         if item['unique_id'] is not None:
@@ -136,54 +136,54 @@ class OPDSFeed(Atom1Feed):
         else:
             # FIXME: get_tag_uri is undefined, is this ever run?
             unique_id = get_tag_uri(item['link'], item['pubdate'])
-        handler.addQuickElement(u"id", unique_id)
+        handler.addQuickElement("id", unique_id)
 
         # Summary.
         # OPDS needs type=text
         if item['description'] is not None:
-            handler.addQuickElement(u"summary", item['description'], {u"type": u"text"})
+            handler.addQuickElement("summary", item['description'], {"type": "text"})
 
         # Enclosure as OPDS Acquisition Link
         for enc in item.get('enclosures', []):
             handler.addQuickElement(
-                u"link", '',
+                "link", '',
                 {
-                    u"rel": u"http://opds-spec.org/acquisition",
-                    u"href": enc.url,
-                    u"length": enc.length,
-                    u"type": enc.mime_type,
+                    "rel": "http://opds-spec.org/acquisition",
+                    "href": enc.url,
+                    "length": enc.length,
+                    "type": enc.mime_type,
                 })
             # add a "red book" icon
             handler.addQuickElement(
-                u"link", '',
+                "link", '',
                 {
-                    u"rel": u"http://opds-spec.org/thumbnail",
-                    u"href": self._book_img,
-                    u"length": self._book_img_size,
-                    u"type": u"image/png",
+                    "rel": "http://opds-spec.org/thumbnail",
+                    "href": self._book_img,
+                    "length": self._book_img_size,
+                    "type": "image/png",
                 })
 
         # Categories.
         for cat in item['categories']:
-            handler.addQuickElement(u"category", u"", {u"term": cat})
+            handler.addQuickElement("category", "", {"term": cat})
 
         # Rights.
         if item['item_copyright'] is not None:
-            handler.addQuickElement(u"rights", item['item_copyright'])
+            handler.addQuickElement("rights", item['item_copyright'])
 
 
 class AcquisitionFeed(Feed):
     feed_type = OPDSFeed
-    link = u'http://www.wolnelektury.pl/'
+    link = 'http://www.wolnelektury.pl/'
     item_enclosure_mime_type = "application/epub+zip"
-    author_name = u"Wolne Lektury"
-    author_link = u"http://www.wolnelektury.pl/"
+    author_name = "Wolne Lektury"
+    author_link = "http://www.wolnelektury.pl/"
 
     def item_title(self, book):
         return book.title
 
     def item_description(self):
-        return u''
+        return ''
 
     def item_link(self, book):
         return book.get_absolute_url()
@@ -192,13 +192,13 @@ class AcquisitionFeed(Feed):
         try:
             return book.authors().first().name
         except AttributeError:
-            return u''
+            return ''
 
     def item_author_link(self, book):
         try:
             return book.authors().first().get_absolute_url()
         except AttributeError:
-            return u''
+            return ''
 
     def item_enclosure_url(self, book):
         return full_url(book.epub_url()) if book.epub_file else None
@@ -210,11 +210,11 @@ class AcquisitionFeed(Feed):
 @piwik_track
 class RootFeed(Feed):
     feed_type = OPDSFeed
-    title = u'Wolne Lektury'
-    link = u'http://wolnelektury.pl/'
-    description = u"Spis utworów na stronie http://WolneLektury.pl"
-    author_name = u"Wolne Lektury"
-    author_link = u"http://wolnelektury.pl/"
+    title = 'Wolne Lektury'
+    link = 'http://wolnelektury.pl/'
+    description = "Spis utworów na stronie http://WolneLektury.pl"
+    author_name = "Wolne Lektury"
+    author_link = "http://wolnelektury.pl/"
 
     def items(self):
         return _root_feeds
@@ -232,10 +232,10 @@ class RootFeed(Feed):
 @piwik_track
 class ByCategoryFeed(Feed):
     feed_type = OPDSFeed
-    link = u'http://wolnelektury.pl/'
-    description = u"Spis utworów na stronie http://WolneLektury.pl"
-    author_name = u"Wolne Lektury"
-    author_link = u"http://wolnelektury.pl/"
+    link = 'http://wolnelektury.pl/'
+    description = "Spis utworów na stronie http://WolneLektury.pl"
+    author_name = "Wolne Lektury"
+    author_link = "http://wolnelektury.pl/"
 
     def get_object(self, request, category):
         feed = [feed for feed in _root_feeds if feed['category'] == category]
@@ -259,7 +259,7 @@ class ByCategoryFeed(Feed):
         return reverse("opds_by_tag", args=[item.category, item.slug])
 
     def item_description(self):
-        return u''
+        return ''
 
 
 @piwik_track
@@ -271,7 +271,7 @@ class ByTagFeed(AcquisitionFeed):
         return tag.name
 
     def description(self, tag):
-        return u"Spis utworów na stronie http://WolneLektury.pl"
+        return "Spis utworów na stronie http://WolneLektury.pl"
 
     def get_object(self, request, category, slug):
         return get_object_or_404(Tag, category=category, slug=slug)
@@ -284,16 +284,16 @@ class ByTagFeed(AcquisitionFeed):
 @piwik_track
 class UserFeed(Feed):
     feed_type = OPDSFeed
-    link = u'http://www.wolnelektury.pl/'
-    description = u"Półki użytkownika na stronie http://WolneLektury.pl"
-    author_name = u"Wolne Lektury"
-    author_link = u"http://wolnelektury.pl/"
+    link = 'http://www.wolnelektury.pl/'
+    description = "Półki użytkownika na stronie http://WolneLektury.pl"
+    author_name = "Wolne Lektury"
+    author_link = "http://wolnelektury.pl/"
 
     def get_object(self, request):
         return request.user
 
     def title(self, user):
-        return u"Półki użytkownika %s" % user.username
+        return "Półki użytkownika %s" % user.username
 
     def items(self, user):
         return Tag.objects.filter(category='set', user=user).exclude(items=None)
@@ -305,7 +305,7 @@ class UserFeed(Feed):
         return reverse("opds_user_set", args=[item.slug])
 
     def item_description(self):
-        return u''
+        return ''
 
 
 @factory_decorator(logged_in_or_basicauth())
@@ -318,7 +318,7 @@ class UserSetFeed(AcquisitionFeed):
         return tag.name
 
     def description(self, tag):
-        return u"Spis utworów na stronie http://WolneLektury.pl"
+        return "Spis utworów na stronie http://WolneLektury.pl"
 
     def get_object(self, request, slug):
         return get_object_or_404(Tag, category='set', slug=slug, user=request.user)
@@ -329,8 +329,8 @@ class UserSetFeed(AcquisitionFeed):
 
 @piwik_track
 class SearchFeed(AcquisitionFeed):
-    description = u"Wyniki wyszukiwania na stronie WolneLektury.pl"
-    title = u"Wyniki wyszukiwania"
+    description = "Wyniki wyszukiwania na stronie WolneLektury.pl"
+    title = "Wyniki wyszukiwania"
 
     QUOTE_OR_NOT = r'(?:(?=["])"([^"]+)"|([^ ]+))'
     INLINE_QUERY_RE = re.compile(

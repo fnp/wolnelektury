@@ -76,7 +76,7 @@ class Nonce(models.Model):
     key = models.CharField(max_length=255)
 
     def __str__(self):
-        return u"Nonce %s for %s" % (self.key, self.consumer_key)
+        return "Nonce %s for %s" % (self.key, self.consumer_key)
 
 
 class Consumer(models.Model):
@@ -88,13 +88,13 @@ class Consumer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, null=True, blank=True, related_name='consumers')
 
     def __str__(self):
-        return u"Consumer %s with key %s" % (self.name, self.key)
+        return "Consumer %s with key %s" % (self.name, self.key)
 
 
 class Token(models.Model):
     REQUEST = 1
     ACCESS = 2
-    TOKEN_TYPES = ((REQUEST, u'Request'), (ACCESS, u'Access'))
+    TOKEN_TYPES = ((REQUEST, 'Request'), (ACCESS, 'Access'))
 
     key = models.CharField(max_length=KEY_SIZE)
     secret = models.CharField(max_length=SECRET_SIZE)
@@ -105,4 +105,4 @@ class Token(models.Model):
     consumer = models.ForeignKey(Consumer, models.CASCADE)
 
     def __str__(self):
-        return u"%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)
+        return "%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)

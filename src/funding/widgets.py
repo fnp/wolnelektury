@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -12,7 +11,7 @@ class PerksAmountWidget(forms.Textarea):
     def perks_input_name(name):
         return "_%s_perk" % name
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         try:
             value = Decimal(value)
         except DecimalException:

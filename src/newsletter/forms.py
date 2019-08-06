@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.forms import Form, BooleanField, MultipleChoiceField
@@ -16,15 +18,15 @@ from wolnelektury.utils import send_noreply_mail
 class NewsletterForm(Form):
     email_field = 'email'
     agree_newsletter = BooleanField(
-        required=False, initial=False, label=_(u'I want to receive Wolne Lektury\'s newsletter.'))
+        required=False, initial=False, label=_('I want to receive Wolne Lektury\'s newsletter.'))
     mailing = False
     mailing_field = 'agree_newsletter'
 
-    data_processing_part1 = u'''\
+    data_processing_part1 = '''\
 Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
 Podanie danych osobowych jest dobrowolne.'''
-    data_processing_part2 = u'''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.'''
-    data_processing_part3 = u'''\
+    data_processing_part2 = '''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.'''
+    data_processing_part3 = '''\
 Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
 Więcej informacji w <a href="">polityce prywatności.</a>'''
 
@@ -48,7 +50,7 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
         else:
             # subscription, created = Subscription.objects.get_or_create(email=email, defaults={'active': False})
             # send_noreply_mail(
-            #     ugettext(u'Confirm your subscription to Wolne Lektury newsletter'),
+            #     ugettext('Confirm your subscription to Wolne Lektury newsletter'),
             #     render_to_string('newsletter/subscribe_email.html', {'subscription': subscription}), [email])
             mailing.subscribe(email, mailing_lists=self.cleaned_data.get('mailing_lists'))
 
@@ -60,8 +62,8 @@ class SubscribeForm(NewsletterForm):
     email = EmailField(label=_('email address'))
     mailing_lists = MultipleChoiceField(
         widget=CheckboxSelectMultiple,
-        choices=(('general', _(u'general newsletter')), ('contest', _(u'about the contest'))),
-        label=_(u'mailing list'))
+        choices=(('general', _('general newsletter')), ('contest', _('about the contest'))),
+        label=_('mailing list'))
 
     def __init__(self, *args, **kwargs):
         super(SubscribeForm, self).__init__(*args, **kwargs)
@@ -75,7 +77,7 @@ class UnsubscribeForm(Form):
         try:
             subscription = Subscription.objects.get(email=email)
         except Subscription.DoesNotExist:
-            raise ValidationError(ugettext(u'Email address not found.'))
+            raise ValidationError(ugettext('Email address not found.'))
         self.cleaned_data['subscription'] = subscription
 
     def save(self):
@@ -87,6 +89,6 @@ class UnsubscribeForm(Form):
         context = {'subscription': subscription}
         # refactor to send_noreply_mail
         send_noreply_mail(
-            ugettext(u'Unsubscribe from Wolne Lektury\'s newsletter.'),
+            ugettext('Unsubscribe from Wolne Lektury\'s newsletter.'),
             render_to_string('newsletter/unsubscribe_email.html', context),
             [subscription.email], fail_silently=True)

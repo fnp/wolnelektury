@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from datetime import datetime, timedelta
 from django.conf import settings
 from django.contrib.sites.models import Site
@@ -126,7 +129,7 @@ class Membership(models.Model):
         verbose_name_plural = _('memberships')
 
     def __str__(self):
-        return u'tow. ' + str(self.user)
+        return str(self.user)
 
     @classmethod
     def is_active_for(cls, user):

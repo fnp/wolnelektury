@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import json
 import yaml
 from hashlib import sha1
@@ -20,7 +23,7 @@ class Contact(models.Model):
         if type(value) in (tuple, list, dict):
             value = yaml.safe_dump(value, allow_unicode=True, default_flow_style=False)
             if for_html:
-                value = smart_text(value).replace(u" ", unichr(160))
+                value = smart_text(value).replace(" ", unichr(160))
         return value
 
     class Meta:

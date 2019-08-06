@@ -1,10 +1,13 @@
-# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from datetime import date
 from lxml import etree
 from django.core.management.base import BaseCommand
 
 from isbn.models import ISBNPool, ONIXRecord
 from librarian import XMLNamespace
+
 
 ONIXNS = XMLNamespace('http://ns.editeur.org/onix/3.0/reference')
 
@@ -19,7 +22,7 @@ DIRECT_FIELDS = {
     'imprint': 'ImprintName',
 }
 
-UNKNOWN = u'Autor nieznany'
+UNKNOWN = 'Autor nieznany'
 
 
 def parse_date(date_str):

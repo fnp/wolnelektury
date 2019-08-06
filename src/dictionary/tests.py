@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -16,7 +15,7 @@ class DictionaryTests(WLTestCase):
             kind="X-Kind",
             genre="X-Genre",
             epoch="X-Epoch",
-            **info_args(u"Default Book")
+            **info_args("Default Book")
         )
 
     def test_book_with_footnote(self):

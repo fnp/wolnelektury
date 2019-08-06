@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -16,10 +15,10 @@ class BookDescTests(WLTestCase):
         authors = PersonStub(("Common",), "Man"), PersonStub(("Jane",), "Doe")
 
         child_info = BookInfoStub(authors=authors, genre="Genre", epoch='Epoch', kind="Kind",
-                                  **info_args(u"Child"))
+                                  **info_args("Child"))
         parent_info = BookInfoStub(authors=authors, genre="Genre", epoch='Epoch', kind="Kind",
                                    parts=[child_info.url],
-                                   **info_args(u"Parent"))
+                                   **info_args("Parent"))
 
         self.child = models.Book.from_text_and_meta(ContentFile('<utwor/>'), child_info)
         models.Book.from_text_and_meta(ContentFile('<utwor/>'), parent_info)

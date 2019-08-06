@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -23,14 +22,14 @@ def gettext(s):
     return s
 
 LANGUAGES = tuple(sorted([
-    ('pl', u'polski'),
-    ('de', u'Deutsch'),
-    ('en', u'English'),
-    ('lt', u'lietuvių'),
-    ('fr', u'français'),
-    ('ru', u'русский'),
-    ('es', u'español'),
-    ('uk', u'українська'),
-    # ('jp', u'日本語'),
-    ('it', u'italiano'),
+    ('pl', 'polski'),
+    ('de', 'Deutsch'),
+    ('en', 'English'),
+    ('lt', 'lietuvių'),
+    ('fr', 'français'),
+    ('ru', 'русский'),
+    ('es', 'español'),
+    ('uk', 'українська'),
+    # ('jp', '日本語'),
+    ('it', 'italiano'),
 ], key=lambda x: x[0]))

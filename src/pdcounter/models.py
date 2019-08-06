@@ -14,7 +14,7 @@ class Author(models.Model):
     slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
     description = models.TextField(_('description'), blank=True)
-    death = models.IntegerField(_(u'year of death'), blank=True, null=True)
+    death = models.IntegerField(_('year of death'), blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 

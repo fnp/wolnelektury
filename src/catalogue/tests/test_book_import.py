@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -15,14 +14,14 @@ class BookImportLogicTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         self.book_info = BookInfoStub(
-            url=WLURI.from_slug(u"default-book"),
-            about=u"http://wolnelektury.pl/example/URI/default_book",
-            title=u"Default Book",
+            url=WLURI.from_slug("default-book"),
+            about="http://wolnelektury.pl/example/URI/default_book",
+            title="Default Book",
             author=PersonStub(("Jim",), "Lazy"),
             kind="X-Kind",
             genre="X-Genre",
             epoch="X-Epoch",
-            language=u"pol",
+            language="pol",
         )
 
         self.expected_tags = [
@@ -84,7 +83,7 @@ class BookImportLogicTests(WLTestCase):
         self.assertTrue(book.has_html_file())
 
         self.assertEqual(book.fragments.count(), 1)
-        self.assertEqual(book.fragments.all()[0].text, u'<p class="paragraph">Ala ma kota</p>\n')
+        self.assertEqual(book.fragments.all()[0].text, '<p class="paragraph">Ala ma kota</p>\n')
 
         self.assert_(('theme', 'love') in [(tag.category, tag.slug) for tag in book.fragments.all()[0].tags])
 
@@ -116,7 +115,7 @@ class BookImportLogicTests(WLTestCase):
 
     def test_book_with_invalid_slug(self):
         """ Book with invalid characters in slug shouldn't be imported """
-        self.book_info.url = WLURI.from_slug(u"default_book")
+        self.book_info.url = WLURI.from_slug("default_book")
         book_text = "<utwor />"
         with self.assertRaises(ValueError):
             models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
@@ -124,7 +123,7 @@ class BookImportLogicTests(WLTestCase):
     def test_book_replace_title(self):
         book_text = """<utwor />"""
         models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
-        self.book_info.title = u"Extraordinary"
+        self.book_info.title = "Extraordinary"
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info, overwrite=True)
 
         tags = [(tag.category, tag.slug) for tag in book.tags]
@@ -290,14 +289,14 @@ class TreeImportTest(WLTestCase):
         self.assertEqual(
                 list(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
                 [self.parent],
-                u"There should be only parent on common tag page."
+                "There should be only parent on common tag page."
             )
         # pies = models.Tag.objects.get(slug='pies')
         themes = self.parent.related_themes()
-        self.assertEqual(len(themes), 1, u"There should be child theme in parent theme counter.")
+        self.assertEqual(len(themes), 1, "There should be child theme in parent theme counter.")
         # TODO: book_count is deprecated, update here.
         # epoch = models.Tag.objects.get(slug='x-epoch')
-        # self.assertEqual(epoch.book_count, 1, u"There should be only parent in common tag's counter.")
+        # self.assertEqual(epoch.book_count, 1, "There should be only parent in common tag's counter.")
 
     def test_child_republish(self):
         child_text = """<utwor>
@@ -311,15 +310,15 @@ class TreeImportTest(WLTestCase):
         self.assertEqual(
                 list(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
                 [self.parent],
-                u"There should only be parent on common tag page."
+                "There should only be parent on common tag page."
             )
         # pies = models.Tag.objects.get(slug='pies')
         # kot = models.Tag.objects.get(slug='kot')
         self.assertEqual(len(self.parent.related_themes()), 2,
-                         u"There should be child themes in parent theme counter.")
+                         "There should be child themes in parent theme counter.")
         # TODO: book_count is deprecated, update here.
         # epoch = models.Tag.objects.get(slug='x-epoch')
-        # self.assertEqual(epoch.book_count, 1, u"There should only be parent in common tag's counter.")
+        # self.assertEqual(epoch.book_count, 1, "There should only be parent in common tag's counter.")
 
     def test_book_change_child(self):
         second_child_info = BookInfoStub(
@@ -346,24 +345,24 @@ class TreeImportTest(WLTestCase):
         self.assertEqual(
             set(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
             {self.parent, self.child},
-            u"There should be parent and old child on common tag page."
+            "There should be parent and old child on common tag page."
         )
         # kot = models.Tag.objects.get(slug='kot')
         self.assertEqual(len(self.parent.related_themes()), 1,
-                         u"There should only be new child themes in parent theme counter.")
+                         "There should only be new child themes in parent theme counter.")
         # # book_count deprecated, update test.
         # epoch = models.Tag.objects.get(slug='x-epoch')
         # self.assertEqual(epoch.book_count, 2,
-        #                  u"There should be parent and old child in common tag's counter.")
+        #                  "There should be parent and old child in common tag's counter.")
         self.assertEqual(
             list(self.client.get('/katalog/lektura/parent/motyw/kot/').context['fragments']),
             [second_child.fragments.all()[0]],
-            u"There should be new child's fragments on parent's theme page."
+            "There should be new child's fragments on parent's theme page."
         )
         self.assertEqual(
             list(self.client.get('/katalog/lektura/parent/motyw/pies/').context['fragments']),
             [],
-            u"There should be no old child's fragments on parent's theme page."
+            "There should be no old child's fragments on parent's theme page."
         )
 
 
@@ -378,7 +377,7 @@ class MultilingualBookImportTest(WLTestCase):
             kind='X-Kind',
             author=PersonStub(("Joe",), "Doe"),
             variant_of=common_uri,
-            **info_args(u"Książka")
+            **info_args("Książka")
         )
 
         self.eng_info = BookInfoStub(

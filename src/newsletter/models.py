@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import hashlib
 
 from django.db.models import Model, EmailField, DateTimeField, BooleanField
@@ -8,7 +10,7 @@ from django.conf import settings
 
 class Subscription(Model):
     email = EmailField(verbose_name=_('email address'), unique=True)
-    active = BooleanField(default=True, verbose_name=_(u'active'))
+    active = BooleanField(default=True, verbose_name=_('active'))
     created_at = DateTimeField(auto_now_add=True)
     last_modified = DateTimeField(auto_now=True)
 

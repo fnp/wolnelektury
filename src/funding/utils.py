@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -12,7 +11,7 @@ from fnpdjango.utils.text import char_map
 sane_in_payu_title = re.escape(
     string.ascii_uppercase +
     string.ascii_lowercase +
-    u'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ' +
+    'ąćęłńóśźżĄĆĘŁŃÓŚŹŻ' +
     string.digits +
     ' ' +
     "".join(set(string.punctuation) - set('\\'))

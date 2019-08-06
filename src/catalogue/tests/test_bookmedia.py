@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -24,7 +23,7 @@ class BookMediaTests(WLTestCase):
         self.book.save()
 
     def test_diacritics(self):
-        bm = models.BookMedia(book=self.book, type="ogg", name=u"Zażółć gęślą jaźń")
+        bm = models.BookMedia(book=self.book, type="ogg", name="Zażółć gęślą jaźń")
         self.set_title(bm.name)
         bm.file.save(None, self.file)
         self.assertEqual(basename(bm.file.name), 'zazolc-gesla-jazn.ogg')
@@ -59,10 +58,10 @@ class BookMediaTests(WLTestCase):
             File save doesn't clobber some other media with similar name.
         """
 
-        bm = models.BookMedia(book=self.book, type='ogg', name=u"Tytul")
+        bm = models.BookMedia(book=self.book, type='ogg', name="Tytul")
         self.set_title(bm.name)
         bm.file.save(None, self.file)
-        bm2 = models.BookMedia(book=self.book, type='ogg', name=u"Tytuł")
+        bm2 = models.BookMedia(book=self.book, type='ogg', name="Tytuł")
         self.set_title(bm2.name)
         bm2.file.save(None, self.file2)
         self.assertEqual(basename(bm.file.name), 'tytul.ogg')

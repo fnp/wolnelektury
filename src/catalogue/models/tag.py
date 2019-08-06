@@ -43,9 +43,9 @@ class TagRelation(models.Model):
 
     def __str__(self):
         try:
-            return u'%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
+            return '%s [%s]' % (self.content_type.get_object_for_this_type(pk=self.object_id), self.tag)
         except ObjectDoesNotExist:
-            return u'<deleted> [%s]' % self.tag
+            return '<deleted> [%s]' % self.tag
 
 
 class Tag(models.Model):

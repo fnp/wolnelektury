@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Source: http://djangosnippets.org/snippets/967/
 # Author: adurdin
 # Posted: August 13, 2008

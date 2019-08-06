@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -13,7 +12,7 @@ default_app_config = 'catalogue.apps.CatalogueConfig'
 
 class Settings(AppSettings):
     """Default settings for catalogue app."""
-    DEFAULT_LANGUAGE = u'pol'
+    DEFAULT_LANGUAGE = 'pol'
     # PDF needs TeXML + XeLaTeX, MOBI needs Calibre.
     DONT_BUILD = {'pdf', 'mobi'}
     FORMAT_ZIPS = {

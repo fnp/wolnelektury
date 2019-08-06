@@ -56,7 +56,7 @@ class Book(models.Model):
     title = models.CharField(_('title'), max_length=32767)
     sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(
-        _('sort key by author'), max_length=120, db_index=True, editable=False, default=u'')
+        _('sort key by author'), max_length=120, db_index=True, editable=False, default='')
     slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
     common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
     language = models.CharField(_('language code'), max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
@@ -180,7 +180,7 @@ class Book(models.Model):
             others = ' i inni'
         else:
             others = ''
-        return ', '.join(u'\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators) + others
+        return ', '.join('\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators) + others
 
     def cover_source(self):
         return self.get_extra_info_json().get('cover_source', self.parent.cover_source() if self.parent else '')
@@ -194,7 +194,7 @@ class Book(models.Model):
         try:
             author = self.authors().first().sort_key
         except AttributeError:
-            author = u''
+            author = ''
         self.sort_key_author = author
 
         self.cached_author = self.tag_unicode('author')
@@ -347,7 +347,7 @@ class Book(models.Model):
             project = meta.get('project')
             if not project:
                 # temporary fallback
-                project = u'CzytamySłuchając'
+                project = 'CzytamySłuchając'
 
             projects.add((project, meta.get('funded_by', '')))
 
@@ -716,14 +716,14 @@ class Book(models.Model):
         return books_by_author, orphans, books_by_parent
 
     _audiences_pl = {
-        "SP": (1, u"szkoła podstawowa"),
-        "SP1": (1, u"szkoła podstawowa"),
-        "SP2": (1, u"szkoła podstawowa"),
-        "SP3": (1, u"szkoła podstawowa"),
-        "P": (1, u"szkoła podstawowa"),
-        "G": (2, u"gimnazjum"),
-        "L": (3, u"liceum"),
-        "LP": (3, u"liceum"),
+        "SP": (1, "szkoła podstawowa"),
+        "SP1": (1, "szkoła podstawowa"),
+        "SP2": (1, "szkoła podstawowa"),
+        "SP3": (1, "szkoła podstawowa"),
+        "P": (1, "szkoła podstawowa"),
+        "G": (2, "gimnazjum"),
+        "L": (3, "liceum"),
+        "LP": (3, "liceum"),
     }
 
     def audiences_pl(self):

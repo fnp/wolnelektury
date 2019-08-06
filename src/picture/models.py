@@ -118,7 +118,7 @@ class Picture(models.Model):
         try:
             author = self.authors().first().sort_key
         except AttributeError:
-            author = u''
+            author = ''
         self.sort_key_author = author
 
         ret = super(Picture, self).save(force_insert, force_update)

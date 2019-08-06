@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from django.http import Http404
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -17,14 +20,14 @@ def subscribe_form(request):
     else:
         form = SubscribeForm()
     return render(request, 'newsletter/subscribe_form.html', {
-        'page_title': _(u'Subscribe To Newsletter'),
+        'page_title': _('Subscribe To Newsletter'),
         'form': form,
     })
 
 
 def subscribed(request):
     return render(request, 'newsletter/subscribed.html', {
-        'page_title': _(u'Subscribed'),
+        'page_title': _('Subscribed'),
     })
 
 
@@ -39,7 +42,7 @@ def confirm_subscription(request, subscription_id, hashcode):
     subscription.active = True
     subscription.save()
     return render(request, 'newsletter/confirm_subscription.html', {
-        'page_title': _(u'Subscription confirmed')
+        'page_title': _('Subscription confirmed')
     })
 
 
@@ -52,12 +55,12 @@ def unsubscribe_form(request):
     else:
         form = UnsubscribeForm()
     return render(request, 'newsletter/unsubscribe_form.html', {
-        'page_title': _(u'Unsubscribe'),
+        'page_title': _('Unsubscribe'),
         'form': form,
     })
 
 
 def unsubscribed(request):
     return render(request, 'newsletter/unsubscribed.html', {
-        'page_title': _(u'Unsubscribed'),
+        'page_title': _('Unsubscribed'),
     })

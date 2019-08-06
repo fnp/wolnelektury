@@ -302,8 +302,8 @@ class OAuth1Tests(ApiTest):
         ).digest()
         h = b64encode(h).rstrip(b'\n')
         sign = quote(h)
-        query = u"{}&oauth_signature={}".format(base_query, sign)
-        response = self.client.get(u'/api/oauth/access_token/?' + query)
+        query = "{}&oauth_signature={}".format(base_query, sign)
+        response = self.client.get('/api/oauth/access_token/?' + query)
         access_token_data = parse_qs(response.content.decode('latin1'))
         access_token = access_token_data['oauth_token'][0]
 

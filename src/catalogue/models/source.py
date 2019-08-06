@@ -25,7 +25,7 @@ class Source(models.Model):
             str(self.pk)
             old_self = type(self).objects.get(pk=self)
         except type(self).DoesNotExist:
-            old_name = u''
+            old_name = ''
             old_netloc = self.netloc
         else:
             old_name = old_self.name

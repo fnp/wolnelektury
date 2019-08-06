@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -78,15 +77,15 @@ class TagRelatedTagsTests(WLTestCase):
         author = PersonStub(("Common",), "Man")
 
         gchild_info = BookInfoStub(author=author, genre="GchildGenre", epoch='Epoch', kind="Kind",
-                                   **info_args(u"GChild"))
+                                   **info_args("GChild"))
         child1_info = BookInfoStub(author=author, genre="ChildGenre", epoch='Epoch', kind="ChildKind",
                                    parts=[gchild_info.url],
-                                   **info_args(u"Child1"))
+                                   **info_args("Child1"))
         child2_info = BookInfoStub(author=author, genre="ChildGenre", epoch='Epoch', kind="ChildKind",
-                                   **info_args(u"Child2"))
+                                   **info_args("Child2"))
         parent_info = BookInfoStub(author=author, genre="Genre", epoch='Epoch', kind="Kind",
                                    parts=[child1_info.url, child2_info.url],
-                                   **info_args(u"Parent"))
+                                   **info_args("Parent"))
 
         for info in gchild_info, child1_info, child2_info, parent_info:
             book_text = """<utwor><opowiadanie><akap>
@@ -183,7 +182,7 @@ class CleanTagRelationTests(WLTestCase):
         WLTestCase.setUp(self)
         author = PersonStub(("Common",), "Man")
 
-        book_info = BookInfoStub(author=author, genre="G", epoch='E', kind="K", **info_args(u"Book"))
+        book_info = BookInfoStub(author=author, genre="G", epoch='E', kind="K", **info_args("Book"))
         book_text = """<utwor><opowiadanie><akap>
             <begin id="m01" /><motyw id="m01">Theme</motyw>Ala ma kota
             <end id="m01" />
@@ -220,7 +219,7 @@ class TestIdenticalTag(WLTestCase):
         WLTestCase.setUp(self)
         author = PersonStub((), "Tag")
 
-        self.book_info = BookInfoStub(author=author, genre="tag", epoch='tag', kind="tag", **info_args(u"tag"))
+        self.book_info = BookInfoStub(author=author, genre="tag", epoch='tag', kind="tag", **info_args("tag"))
         self.book_text = """<utwor>
             <opowiadanie>
             <akap>
@@ -263,10 +262,10 @@ class BookTagsTests(WLTestCase):
         author2 = PersonStub(("Jim",), "Lazy")
 
         child_info = BookInfoStub(authors=(author1, author2), genre="ChildGenre", epoch='Epoch', kind="ChildKind",
-                                  **info_args(u"Child"))
+                                  **info_args("Child"))
         parent_info = BookInfoStub(author=author1, genre="Genre", epoch='Epoch', kind="Kind",
                                    parts=[child_info.url],
-                                   **info_args(u"Parent"))
+                                   **info_args("Parent"))
 
         for info in child_info, parent_info:
             book_text = """<utwor><opowiadanie><akap>

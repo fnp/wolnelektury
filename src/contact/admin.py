@@ -1,3 +1,6 @@
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 import csv
 import json
 
@@ -19,8 +22,7 @@ class ContactAdminMeta(admin.ModelAdmin.__class__):
         raise AttributeError(name)
 
 
-class ContactAdmin(admin.ModelAdmin):
-    __metaclass__ = ContactAdminMeta
+class ContactAdmin(admin.ModelAdmin, metaclass=ContactAdminMeta):
     date_hierarchy = 'created_at'
     list_display = ['created_at', 'contact', 'form_tag'] + \
         ["admin_list_%d" % i for i in range(admin_list_width)]

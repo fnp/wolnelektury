@@ -38,7 +38,7 @@ class Offer(models.Model):
     notified_end = models.DateTimeField(_('End notifications sent'), blank=True, null=True)
 
     def cover_img_tag(self):
-        return u'<img src="%s" />' % self.cover.url
+        return '<img src="%s" />' % self.cover.url
     cover_img_tag.short_description = _('Cover preview')
     cover_img_tag.allow_tags = True
 
@@ -48,7 +48,7 @@ class Offer(models.Model):
         ordering = ['-end']
 
     def __str__(self):
-        return u"%s - %s" % (self.author, self.title)
+        return "%s - %s" % (self.author, self.title)
 
     def get_absolute_url(self):
         return reverse('funding_offer', args=[self.slug])
@@ -258,7 +258,7 @@ class Perk(models.Model):
         ordering = ['-price']
 
     def __str__(self):
-        return "%s (%s%s)" % (self.name, self.price, u" for %s" % self.offer if self.offer else "")
+        return "%s (%s%s)" % (self.name, self.price, " for %s" % self.offer if self.offer else "")
 
 
 class Funding(models.Model):
@@ -358,7 +358,7 @@ class Spent(models.Model):
         ordering = ['-timestamp']
 
     def __str__(self):
-        return u"Spent: %s" % str(self.book)
+        return "Spent: %s" % str(self.book)
 
 
 @receiver(getpaid.signals.new_payment_query)

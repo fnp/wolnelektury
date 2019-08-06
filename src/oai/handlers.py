@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -75,7 +74,7 @@ class Catalogue(common.ResumptionOAIPMH):
 
         try:
             earliest_delete = \
-                Deleted.objects.exclude(slug__exact=u'').order_by('deleted_at')[0].deleted_at
+                Deleted.objects.exclude(slug__exact='').order_by('deleted_at')[0].deleted_at
         except IndexError:
             earliest_delete = year_zero
 
@@ -134,7 +133,7 @@ class Catalogue(common.ResumptionOAIPMH):
             # books = Book.tagged.with_all([tag])
         else:
             books = Book.objects.filter(preview=False)
-        deleted = Deleted.objects.exclude(slug__exact=u'')
+        deleted = Deleted.objects.exclude(slug__exact='')
 
         books = books.order_by('changed_at')
         deleted = deleted.order_by('deleted_at')

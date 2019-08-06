@@ -58,11 +58,11 @@ class AudiobookFeed(Feed):
         extra_info = item.get_extra_info_json()
         artist = extra_info.get('artist_name', None)
         if artist is not None:
-            lines.append(u'Czyta: %s' % artist)
+            lines.append('Czyta: %s' % artist)
         director = extra_info.get('director_name', None)
         if director is not None:
-            lines.append(u'Reżyseria: %s' % director)
-        return u'<br/>\n'.join(lines)
+            lines.append('Reżyseria: %s' % director)
+        return '<br/>\n'.join(lines)
 
     def item_link(self, item):
         return item.book.get_absolute_url()

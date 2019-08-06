@@ -23,8 +23,8 @@ def book_searched(context, result):
             continue
         snip = result.snippets[idx]
         # fix some formattting
-        snip = re.sub(r"[ \t\n]*\n[ \t\n]*", u"\n", snip)
-        snip = re.sub(r"(^[ \t\n]+|[ \t\n]+$)", u"", snip)
+        snip = re.sub(r"[ \t\n]*\n[ \t\n]*", "\n", snip)
+        snip = re.sub(r"(^[ \t\n]+|[ \t\n]+$)", "", snip)
 
         snip = snip.replace("\n", "<br />").replace('---', '&mdash;')
         hit['snippet'] = snip

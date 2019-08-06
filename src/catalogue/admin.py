@@ -4,7 +4,6 @@
 from django.contrib import admin
 from django import forms
 
-from newtagging.admin import TaggableModelAdmin, TaggableModelForm
 from catalogue.models import Tag, Book, Fragment, BookMedia, Collection, Source
 
 
@@ -17,7 +16,7 @@ class TagAdmin(admin.ModelAdmin):
 
     def occurrences(self, tag):
         return tag.items.count()
-    occurrences.short_description = u'Wystąpienia'
+    occurrences.short_description = 'Wystąpienia'
 
     prepopulated_fields = {'slug': ('name',), 'sort_key': ('name',)}
     radio_fields = {'category': admin.HORIZONTAL}
@@ -29,12 +28,7 @@ class MediaInline(admin.TabularInline):
     extra = 0
 
 
-#FIXME: Taggable admin is broken.
-#class BookAdmin(TaggableModelAdmin):
 class BookAdmin(admin.ModelAdmin):
-    #tag_model = Tag
-    #form = TaggableModelForm
-
     list_display = ('title', 'slug', 'created_at', 'has_epub_file', 'has_html_file', 'has_description',)
     search_fields = ('title',)
     ordering = ('title',)
@@ -42,11 +36,7 @@ class BookAdmin(admin.ModelAdmin):
     inlines = [MediaInline]
 
 
-#FIXME: Taggable admin is broken.
-#class FragmentAdmin(TaggableModelAdmin):
 class FragmentAdmin(admin.ModelAdmin):
-    #tag_model = Tag
-
     list_display = ('book', 'anchor',)
     ordering = ('book', 'anchor',)
 

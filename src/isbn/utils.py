@@ -1,5 +1,8 @@
-# -*- coding: utf-8 -*-
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
+#
 from librarian import RDFNS, DCNS
+
 
 FORMATS = ('PDF', 'HTML', 'TXT', 'EPUB', 'MOBI')
 
@@ -30,11 +33,11 @@ PRODUCT_FORMATS = {
     'E127': ('mobi', 'application/x-mobipocket-ebook'),
 }
 
-VOLUME_SEPARATORS = (u'. część ', u', część ', u', tom ', u'. der tragödie ')
+VOLUME_SEPARATORS = ('. część ', ', część ', ', tom ', '. der tragödie ')
 
 
 def is_institution(name):
-    return name.startswith(u'Zgromadzenie Ogólne')
+    return name.startswith('Zgromadzenie Ogólne')
 
 
 def get_volume(title):

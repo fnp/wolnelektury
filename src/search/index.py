@@ -390,16 +390,16 @@ class Index(SolrIndex):
             return
 
         def fix_format(text):
-            # separator = [u" ", u"\t", u".", u";", u","]
+            # separator = [" ", "\t", ".", ";", ","]
             if isinstance(text, list):
                 # need to join it first
                 text = filter(lambda s: s is not None, content)
-                text = u' '.join(text)
+                text = ' '.join(text)
                 # for i in range(len(text)):
                 #     if i > 0:
                 #         if text[i][0] not in separator\
                 #             and text[i - 1][-1] not in separator:
-                #          text.insert(i, u" ")
+                #          text.insert(i, " ")
 
             return re.sub("(?m)/$", "", text)
 
@@ -463,7 +463,7 @@ class Index(SolrIndex):
                     elif end is not None and footnote is not [] and end.tag in self.footnote_tags:
                         handle_text.pop()
                         doc = add_part(snippets, header_index=position, header_type=header.tag,
-                                       text=u''.join(footnote),
+                                       text=''.join(footnote),
                                        is_footnote=True)
                         self.index.add(doc)
                         footnote = []
@@ -613,7 +613,7 @@ class SearchResult(object):
         return result
 
     def __str__(self):
-        return u"<SR id=%d %d(%d) hits score=%f %d snippets>" % \
+        return "<SR id=%d %d(%d) hits score=%f %d snippets>" % \
             (self.book_id, len(self._hits),
              len(self._processed_hits) if self._processed_hits else -1,
              self._score, len(self.snippets))
@@ -802,7 +802,7 @@ class PictureResult(object):
             self._hits.append(hit)
 
     def __str__(self):
-        return u"<PR id=%d score=%f >" % (self.picture_id, self._score)
+        return "<PR id=%d score=%f >" % (self.picture_id, self._score)
 
     def __repr__(self):
         return str(self)

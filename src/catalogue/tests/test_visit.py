@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -14,7 +13,7 @@ class VisitTest(WLTestCase):
         WLTestCase.setUp(self)
         author = PersonStub(("Jane",), "Doe")
         book_info = BookInfoStub(author=author, genre="Sielanka",
-            epoch='Epoch', kind="Kind", **info_args(u"A book"))
+            epoch='Epoch', kind="Kind", **info_args("A book"))
         self.book = models.Book.from_text_and_meta(ContentFile('''
             <utwor>
             <opowiadanie>
