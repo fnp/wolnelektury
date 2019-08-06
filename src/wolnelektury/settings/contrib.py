@@ -1,8 +1,6 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.utils.translation import ugettext_lazy as _
-
 HONEYPOT_FIELD_NAME = 'miut'
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 THUMBNAIL_QUALITY = 95

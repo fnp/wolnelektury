@@ -58,7 +58,6 @@ INSTALLED_APPS_CONTRIB = [
     'getpaid',
     'getpaid.backends.payu',
     'django_extensions',
-    'raven.contrib.django.raven_compat',
     'club.apps.ClubConfig',
 
     'debug_toolbar',

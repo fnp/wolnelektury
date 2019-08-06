@@ -58,7 +58,7 @@ deprecated
 
 httplib2
 
-raven
+sentry-sdk==0.10.2
 
 mailchimp3
 

@@ -58,5 +58,5 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
             amount=self.cleaned_data['amount'],
             language_code=get_language(),
         )
-        funding.perks = funding.offer.get_perks(funding.amount)
+        funding.perks.set(funding.offer.get_perks(funding.amount))
         return funding
