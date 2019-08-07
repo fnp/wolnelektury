@@ -312,7 +312,12 @@ def book_text(request, slug):
 
     if not book.has_html_file():
         raise Http404
-    return render(request, 'catalogue/book_text.html', {'book': book})
+    with book.html_file.open('r') as f:
+        book_text = f.read()
+    return render(request, 'catalogue/book_text.html', {
+        'book': book,
+        'book_text': book_text,
+    })
 
 
 # =========
