@@ -56,6 +56,12 @@ PIPELINE = {
             ],
             'output_filename': 'css/compressed/book_text.css',
         },
+        'forum': {
+            'source_filenames': [
+                'scss/forum.scss',
+            ],
+            'output_filename': 'css/compressed/compressed/forum.css',
+        },
         'picture': {
             'source_filenames': [
                 'css/master.book.css',

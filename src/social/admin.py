@@ -22,7 +22,7 @@ class CiteAdmin(admin.ModelAdmin):
     list_display = ['nonempty_text', 'created_at', 'sticky', 'vip', 'small', 'has_image']
     list_filter = ['group']
     readonly_fields = ['created_at']
-    raw_id_fields = ['book']
+    autocomplete_fields = ['book']
     fieldsets = (
         (None, {'fields': ('group', 'sticky', 'created_at', 'book')}),
         (_('Content'), {'fields': ('link', 'vip', 'text', 'small')}),
@@ -31,15 +31,12 @@ class CiteAdmin(admin.ModelAdmin):
             'picture', 'picture_alt',
                 'picture_title', 'picture_author', 'picture_link',
                 'picture_license', 'picture_license_link'
-
-            #'banner',
         )}),
         (
             _('Background'),
             {'fields': (
                 ('background_plain', 'background_color'),
-                'image', 'image_shift',
-                'banner',
+                'image',
                 'image_title', 'image_author', 'image_link',
                 'image_license', 'image_license_link'
             )},

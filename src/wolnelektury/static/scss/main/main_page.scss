@@ -4,13 +4,9 @@
     padding: 0;
     margin: 0;
     background-size: cover;
-    background-position: 50% 68%;
+    background-position: 50% 50%;
 
-    background-image: url(/static/img/backdrop/book-drawer2.jpg);
-
-    &.banner {
-        background: none;
-    }
+    background-image: url(/static/img/backdrop/book-drawer-315.jpg);
 
     .cite-box, .cite-box-text, .cite-text {
 	box-sizing: border-box;

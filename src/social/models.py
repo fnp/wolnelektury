@@ -53,24 +53,16 @@ class Cite(models.Model):
 
     sticky = models.BooleanField(_('sticky'), default=False, db_index=True,
                                  help_text=_('Sticky cites will take precedense.'))
-    banner = models.BooleanField(_('banner'), default=False, help_text=
-            'Dostosuj wielkość do obrazu tła, zignoruj tekst.'
-            '<br>(Przestarzałe; użyj funkcji "Obraz" w sekcji "Media box")')
-
     background_plain = models.BooleanField(_('plain background'), default=False)
     background_color = models.CharField(_('background color'), max_length=32, blank=True)
     image = models.ImageField(
-        _('image'), upload_to='social/cite', null=True, blank=True,
-        help_text=_('Best image is exactly 975px wide and weights under 100kB.'))
-    image_shift = models.IntegerField(
-        _('shift'), null=True, blank=True,
-        help_text='Przesunięcie w pionie, w procentach. 0 to wyrównanie do górnej krawędzi, 100 do dolnej. Domyślne jest 50%.'
-            '<br>(Przestarzałe; użyj obrazka o właściwych proporcjach;)')
-    image_title = models.CharField(_('title'), max_length=255, null=True, blank=True)
-    image_author = models.CharField(_('author'), max_length=255, blank=True, null=True)
-    image_link = models.URLField(_('link'), blank=True, null=True)
-    image_license = models.CharField(_('license name'), max_length=255, blank=True, null=True)
-    image_license_link = models.URLField(_('license link'), blank=True, null=True)
+        _('background image'), upload_to='social/cite', null=True, blank=True,
+        help_text=_('Best background is 975 x 315 px and under 100kB.'))
+    image_title = models.CharField(_('background title'), max_length=255, null=True, blank=True)
+    image_author = models.CharField(_('background author'), max_length=255, blank=True, null=True)
+    image_link = models.URLField(_('background link'), blank=True, null=True)
+    image_license = models.CharField(_('background license name'), max_length=255, blank=True, null=True)
+    image_license_link = models.URLField(_('background license link'), blank=True, null=True)
 
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     group = models.ForeignKey(BannerGroup, verbose_name=_('group'), null=True, blank=True, on_delete=models.SET_NULL)
@@ -106,9 +98,6 @@ class Cite(models.Model):
         return self.vip or self.text or self.book
 
     def layout(self):
-        if self.banner:
-            # TODO: move all banners to pictures.
-            return 'banner'
         pieces = []
         if self.has_box():
             pieces.append('box')

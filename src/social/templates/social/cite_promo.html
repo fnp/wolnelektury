@@ -3,15 +3,11 @@
   {% load embed_video from social_tags %}
 
   {% if main %}
-    <section class="big-cite"{% if cite.image or cite.background_plain %}{% if not cite.banner %} style="{% if cite.image %}background-image: url('{{ cite.image.url }}'); background-position: 50% {{ cite.image_shift|default_if_none:50 }}%;{% else %}background-image: none; background-color: {{ cite.background_color|default:"#000000" }};{% endif %}"{% endif %}{% endif %} {% if cite.banner %}class="banner"{% endif %}>
+    <section class="big-cite"{% if cite.image or cite.background_plain %} style="{% if cite.image %}background-image: url('{{ cite.image.url }}');{% else %}background-image: none; background-color: {{ cite.background_color|default:"#000000" }};{% endif %}"{% endif %}>
   {% endif %}
 
   {% if cite %}
   <a href="{{ cite.link }}" class="cite-{{ cite.layout }}">
-      {% if cite.banner %}
-        {# Obsolete #}
-        <img src="{{ cite.image.url }}" width="100%"/>
-      {% else %}
         {% if cite.video %}
           <div class="box-c">
 	    {% embed_video cite.video %}
@@ -35,7 +31,6 @@
           <p class="source mono"><span>{{ cite.book.pretty_title }}</span></p>
         {% endif %}
 	</div>
-      {% endif %}
     </a>
   {% endif %}
 
