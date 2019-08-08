@@ -3,7 +3,12 @@
 # django
 Django==2.1.11
 fnpdjango==0.4
-django-pipeline==1.6.13
+
+#django-pipeline==1.6.13
+# Because of https://github.com/jazzband/django-pipeline/pull/682 + https://github.com/getsentry/sentry-python/issues/436
+-e git+https://github.com/jazzband/django-pipeline@3cd2f93bb47bf8d34447e13ff691f7027e7b07a2#egg=django-pipeline
+
+
 jsmin
 fnp-django-pagination==2.2.3
 django-maintenancemode==0.11.3
