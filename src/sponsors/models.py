@@ -53,7 +53,8 @@ class SponsorPage(models.Model):
                     offset -= THUMB_HEIGHT
                 except KeyError:
                     pass
-            result.append(result_group)
+            if result_group['sponsors']:
+                result.append(result_group)
         return result
 
     def render_sprite(self):
@@ -95,7 +96,7 @@ class SponsorPage(models.Model):
             'page': self
         })
         ret = super(SponsorPage, self).save(*args, **kwargs)
-        cache.delete('sponsor_page:' + name)
+        cache.delete('sponsor_page:' + self.name)
         return ret
 
     def __str__(self):

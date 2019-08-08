@@ -76,7 +76,7 @@ class CustomPDFForm(forms.Form):
         for name, label in CUSTOMIZATION_FLAGS:
             self.fields[name] = forms.BooleanField(required=False, label=label)
         for name, label, choices in CUSTOMIZATION_OPTIONS:
-            self.fields[name] = forms.ChoiceField(choices, required=False, label=label)
+            self.fields[name] = forms.ChoiceField(choices=choices, required=False, label=label)
 
     def clean(self):
         self.cleaned_data['cust'] = self.customizations

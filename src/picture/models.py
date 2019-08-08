@@ -110,6 +110,9 @@ class Picture(models.Model):
         verbose_name = _('picture')
         verbose_name_plural = _('pictures')
 
+    def get_extra_info_json(self):
+        return json.loads(self.extra_info or '{}')
+
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 
