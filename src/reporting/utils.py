@@ -32,7 +32,7 @@ def render_to_pdf(output_path, template, context=None, add_files=None):
     texml = BytesIO(rendered.encode('utf-8'))
     tempdir = mkdtemp(prefix="render_to_pdf-")
     tex_path = os.path.join(tempdir, "doc.tex")
-    with open(tex_path, 'w') as tex_file:
+    with open(tex_path, 'wb') as tex_file:
         Texml.processor.process(texml, tex_file, encoding="utf-8")
 
     if add_files:
