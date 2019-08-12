@@ -39,7 +39,7 @@ class BookImportLogicTests(WLTestCase):
 
         self.assertEqual(book.title, "Default Book")
         self.assertEqual(book.slug, "default-book")
-        self.assert_(book.parent is None)
+        self.assertTrue(book.parent is None)
         self.assertFalse(book.has_html_file())
 
         # no fragments generated
@@ -85,7 +85,7 @@ class BookImportLogicTests(WLTestCase):
         self.assertEqual(book.fragments.count(), 1)
         self.assertEqual(book.fragments.all()[0].text, '<p class="paragraph">Ala ma kota</p>\n')
 
-        self.assert_(('theme', 'love') in [(tag.category, tag.slug) for tag in book.fragments.all()[0].tags])
+        self.assertTrue(('theme', 'love') in [(tag.category, tag.slug) for tag in book.fragments.all()[0].tags])
 
     def test_book_with_empty_theme(self):
         """ empty themes should be ignored """
@@ -97,7 +97,7 @@ class BookImportLogicTests(WLTestCase):
         """
 
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
-        self.assert_([('theme', 'love')],
+        self.assertTrue([('theme', 'love')],
                      book.fragments.all()[0].tags.filter(category='theme').values_list('category', 'slug'))
 
     def test_book_with_no_theme(self):
