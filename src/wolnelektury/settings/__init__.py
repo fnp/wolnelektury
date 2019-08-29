@@ -23,6 +23,22 @@ except ImportError:
     pass
 
 
+# If Celery broker not configured, enable always-eager mode.
+try:
+    CELERY_BROKER_URL
+except NameError:
+    CELERY_TASK_ALWAYS_EAGER = True
+
+
+# If SEARCH_INDEX not configured, disable the search.
+try:
+    SOLR
+except NameError:
+    NO_SEARCH_INDEX = True
+else:
+    NO_SEARCH_INDEX = False
+
+
 try:
     SENTRY_DSN
 except NameError:
@@ -32,3 +48,11 @@ else:
         dsn=SENTRY_DSN,
         integrations=[DjangoIntegration()]
     )
+
+
+# Dummy secret key for development.
+try:
+    SECRET_KEY
+except NameError:
+    if DEBUG:
+        SECRET_KEY = 'not-a-secret-key'

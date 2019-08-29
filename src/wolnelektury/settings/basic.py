@@ -5,7 +5,7 @@ from os import path
 from machina import MACHINA_MAIN_TEMPLATE_DIR
 from .paths import PROJECT_DIR
 
-DEBUG = False
+DEBUG = True
 MAINTENANCE_MODE = False
 
 ADMINS = [
@@ -26,7 +26,6 @@ DATABASES = {
     }
 }
 
-SOLR = "http://localhost:8983/solr/wl/"
 SOLR_TEST = "http://localhost:8983/solr/wl_test/"
 SOLR_STOPWORDS = "/path/to/solr/data/conf/lang/stopwords_pl.txt"
 

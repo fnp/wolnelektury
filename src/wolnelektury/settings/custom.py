@@ -7,7 +7,6 @@ from .paths import VAR_DIR
 # limit number of filtering tags
 MAX_TAG_LIST = 6
 
-NO_SEARCH_INDEX = False
 NO_CUSTOM_PDF = True
 
 CATALOGUE_DEFAULT_LANGUAGE = 'pol'

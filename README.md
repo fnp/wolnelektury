@@ -1,3 +1,14 @@
+# Wolne Lektury
+
+![Wolne Lektury](src/wolnelektury/static/img/logo-bez.png)
+
+
+Wolne Lektury is a free internet library maintained by Modern Poland Foundation.
+
+It's a service based on [Django](https://www.djangoproject.com/), using
+[Librarian](https://git.mdrn.pl/librarian.git) to publish books in various formats.
+
+
 License
 -------
 
@@ -20,12 +31,13 @@ License
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
+
 Dependencies
 ============
 
- * Python 3.4+
+ * Python 3.5-3.7
  * All packages listed in requirements.txt
- * Sass>=3.2
+
 
 How to deploy (development version)
 =============
@@ -55,6 +67,7 @@ How to deploy (development version)
    Translation strings are based on gettext and can be found under 'locale' dir.
    There are also JavaScript files for jQuery countdown plugin (static/js/jquery.countdown-*.js).
 
+
 Bundled software
 ================
 
@@ -78,7 +91,6 @@ Bundled software
 * Javascript in `src/wolnelektury/static/js/contrib`
   with relevant attribution and licensing
   
-
 
 Authors
 =======

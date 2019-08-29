@@ -237,6 +237,12 @@ class Book(models.Model):
 
     @staticmethod
     def format_audio_length(seconds):
+        """
+        >>> Book.format_audio_length(1)
+        '0:01'
+        >>> Book.format_audio_length(3661)
+        '1:01:01'
+        """
         if seconds < 60*60:
             minutes = seconds // 60
             seconds = seconds % 60

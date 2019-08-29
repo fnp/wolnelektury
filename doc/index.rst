@@ -9,7 +9,9 @@ Welcome to Wolne Lektury's documentation!
 .. toctree::
    :maxdepth: 2
 
-   installation
+   basic-setup
+   advanced-setup
+   deployment
    architecture
    reference
 

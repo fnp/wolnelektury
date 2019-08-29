@@ -185,12 +185,7 @@ PIPELINE = {
     'CSS_COMPRESSOR': None,
     'JS_COMPRESSOR': 'pipeline.compressors.jsmin.JSMinCompressor',
     'COMPILERS': (
-        'pipeline.compilers.sass.SASSCompiler',
-        # We could probably use PySCSS instead,
-        # but they have some serious problems, like:
-        # https://github.com/Kronuz/pyScss/issues/166 (empty list syntax)
-        # https://github.com/Kronuz/pyScss/issues/258 (bad @media order)
-        # 'pyscss_compiler.PySCSSCompiler',
+        'libsasscompiler.LibSassCompiler',
     )
 }
 
