@@ -13,6 +13,7 @@ class HeaderField(forms.CharField):
             widget = HeaderWidget
         super(HeaderField, self).__init__(required=False, widget=widget, *args, **kwargs)
         self.label = mark_safe('<b>' + conditional_escape(self.label) + '</b>')
+        self.label_suffix = ''
 
 
 class SeparatorField(HeaderField):

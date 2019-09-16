@@ -42,8 +42,7 @@ urlpatterns += [
     url(r'^ankieta/', include('polls.urls')),
     url(r'^biblioteki/', include('libraries.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
-    url(r'^formularz-new/', include('forms_builder.forms.urls')),
-    url(r'^formularz/', include('contact.urls')),
+    url(r'^formularz/', include('forms_builder.forms.urls')),
     url(r'^isbn/', include('isbn.urls')),
 
     url(r'^paypal/app-form/$', RedirectView.as_view(
