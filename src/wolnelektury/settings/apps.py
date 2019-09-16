@@ -32,6 +32,7 @@ INSTALLED_APPS_OUR = [
     'isbn',
     'paypal',
     'push',
+    'club.apps.ClubConfig',
 ]
 
 INSTALLED_APPS_CONTRIB = [
@@ -58,7 +59,7 @@ INSTALLED_APPS_CONTRIB = [
     'getpaid',
     'getpaid.backends.payu',
     'django_extensions',
-    'club.apps.ClubConfig',
+    'forms_builder.forms',
 
     'debug_toolbar',
 

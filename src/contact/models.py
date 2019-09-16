@@ -23,7 +23,7 @@ class Contact(models.Model):
         if type(value) in (tuple, list, dict):
             value = yaml.safe_dump(value, allow_unicode=True, default_flow_style=False)
             if for_html:
-                value = smart_text(value).replace(" ", unichr(160))
+                value = smart_text(value).replace(" ", chr(160))
         return value
 
     class Meta:

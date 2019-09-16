@@ -51,3 +51,14 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+
+
+FORMS_BUILDER_USE_SITES = False
+FORMS_BUILDER_EDITABLE_FIELD_MAX_LENGTH = True
+FORMS_BUILDER_EDITABLE_SLUGS = True
+FORMS_BUILDER_EXTRA_FIELDS = [
+        (100, 'contact.fields.HeaderField', 'Header'),
+        (101, 'contact.fields.SeparatorField', 'Separator'),
+]
+FORMS_BUILDER_HELPTEXT_MAX_LENGTH = 2048
+FORMS_BUILDER_REQUIRED_CSS_CLASS = 'required'

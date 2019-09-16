@@ -70,7 +70,7 @@ class KonkursForm(ContactForm):
 
 
 class CoJaCzytamForm(ContactForm):
-    form_tag = 'cojaczytam'
+    form_tag = 'cojaczytam2019'
     form_title = "#cojaczytam?"
     admin_list = ['opiekun_nazwisko', 'contact', 'nazwa_kampanii']
     # ends_on = (2018, 11, 16)
@@ -80,17 +80,22 @@ class CoJaCzytamForm(ContactForm):
     opiekun_nazwisko = forms.CharField(label='Imię i nazwisko Opiekuna/ki', max_length=128)
     contact = forms.EmailField(label='Adres e-mail Opiekuna/ki', max_length=128)
     opiekun_tel = forms.CharField(label='Numer telefonu Opiekuna/ki', max_length=32)
-    nazwa_dkk = forms.CharField(label='Nazwa szkoły/biblioteki publicznej', max_length=128)
-    adres_dkk = forms.CharField(label='Adres szkoły/biblioteki publicznej', max_length=128)
 
+    hadres = HeaderField(label=mark_safe('<b>Placówka</b>'))
+    nazwa_dkk = forms.CharField(label='Nazwa placówki', max_length=128)
+    adres1_dkk = forms.CharField(label='Ulica i numer', max_length=128)
+    adres2_dkk = forms.CharField(label='Miejscowość', max_length=128)
+    adres3_dkk = forms.CharField(label='Kod pocztowy', max_length=128)
+
+    hkampania = HeaderField(label=mark_safe('<b>Kampania</b>'))
     nazwa_kampanii = forms.CharField(label='Nazwa kampanii', max_length=255)
 
     wiek = forms.ChoiceField(label='Grupa wiekowa', choices=(
-        ('9-14', 'uczniowie kl. IV-VIII szkół podstawowych w wieku 9-14 lat,'),
-        ('15-19', 'uczniowie gimnazjum oraz wszystkich typów szkół ponadpodstawowych w wieku 15-19.'),
+        ('9-14', 'uczestnicy w wieku 9-14 lat,'),
+        ('15-19', 'uczestnicy w wieku 15-19.'),
     ), widget=forms.RadioSelect)
 
-    uczestnik1_header = HeaderField(label='Dane\xa0Uczestników (3 do 5)')
+    uczestnik1_header = HeaderField(label=mark_safe('<b>Dane\xa0Uczestników (3\xa0do\xa05)</b>'))
     uczestnik1_imie = forms.CharField(label='Imię', max_length=128)
     uczestnik1_nazwisko = forms.CharField(label='Nazwisko', max_length=128)
     uczestnik1_email = forms.EmailField(label='Adres e-mail', max_length=128)
@@ -111,33 +116,32 @@ class CoJaCzytamForm(ContactForm):
     uczestnik5_nazwisko = forms.CharField(label='Nazwisko', max_length=128, required=False)
     uczestnik5_email = forms.EmailField(label='Adres e-mail', max_length=128, required=False)
 
-    ankieta_header = HeaderField(label='')
-    opis_kampanii = forms.CharField(
-        label='Krótki opis realizacji oraz przebiegu kampanii', max_length=255, widget=forms.Textarea)
-    co_sie_udalo = forms.CharField(label='Co udało Wam się zrealizować?', max_length=1024, widget=forms.Textarea)
-    co_sie_nie_udalo = forms.CharField(
-        label='Czy jest coś, co chcieliście zrealizować, a się nie udało? Jeśli tak, to dlaczego?', max_length=1024,
+    ankieta_header = HeaderField(label=mark_safe('<b>Efekty</b>'))
+    opis_kampanii = forms.CharField(help_text='maks. 250 znaków',
+        label='Krótki opis realizacji oraz przebiegu kampanii', max_length=250, widget=forms.Textarea)
+    co_sie_udalo = forms.CharField(help_text='maks. 1000 znaków',label='Co udało Wam się zrealizować?', max_length=1000, widget=forms.Textarea)
+    co_sie_nie_udalo = forms.CharField(help_text='maks. 1000 znaków',
+        label='Czy jest coś, co chcieliście zrealizować, a się nie udało? Jeśli tak, to dlaczego?', max_length=1000,
         widget=forms.Textarea)
-    wnioski = forms.CharField(
-        label='Jakie wnioski na przyszłość wyciągnęliście z tego, czego się nie udało zrealizować?', max_length=1024,
+    wnioski = forms.CharField(help_text='maks. 1000 znaków',
+        label='Jakie wnioski na przyszłość wyciągnęliście z tego, czego się nie udało zrealizować?', max_length=1000,
         widget=forms.Textarea)
-    zasieg = forms.CharField(
+    zasieg = forms.CharField(help_text='maks. 1000 znaków',
         label='Do ilu odbiorców udało Wam się dotrzeć z Waszą kompanią? Podaj liczbę, może być szacunkowa.',
-        max_length=1024, widget=forms.Textarea)
-    grupy_odbiorcow = forms.CharField(
+        max_length=1000, widget=forms.Textarea)
+    grupy_odbiorcow = forms.CharField(help_text='maks. 1000 znaków',
         label='Do jakich grup odbiorców dotarliście (np. uczniowie, nauczyciele, rodzice, seniorzy, inni)?',
-        max_length=1024, widget=forms.Textarea)
+        max_length=1000, widget=forms.Textarea)
     plik = forms.FileField(
         label='Plik .zip ze stworzonymi materiałami (np. zdjęcia, dokumenty tekstowe)')
-    materialy = forms.CharField(
-        label='Adresy stworzonych materiałów online (jeśli dotyczy)', max_length=1024, widget=forms.Textarea,
-        required=False)
+    materialy = forms.CharField(help_text='maks. 1000 znaków',
+        label='Adresy stworzonych materiałów online', max_length=1000, widget=forms.Textarea)
 
-    agree_header = HeaderField(label='Oświadczenia')
+    agree_header = HeaderField(label=mark_safe('<b>Oświadczenia</b>'))
     agree_terms = forms.BooleanField(
         label='Regulamin',
         help_text=mark_safe_lazy(
-            'Znam i akceptuję <a href="/media/chunks/attachment/Regulamin_konkursu_cojaczytam_edycja_2018.pdf">'
+            'Znam i akceptuję <a href="/media/chunks/attachment/Regulamin_konkursu_cojaczytam_edycja_2019.pdf">'
             'Regulamin Konkursu</a>.'),
     )
     agree_data = forms.BooleanField(

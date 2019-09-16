@@ -76,15 +76,14 @@ class ContactForm(forms.Form, metaclass=ContactFormMeta):
             'site_domain': getattr(self, 'site_domain', site.domain),
             'contact': contact,
         }
-        context = RequestContext(request)
         mail_managers_subject = render_to_string([
                 'contact/%s/mail_managers_subject.txt' % self.form_tag,
                 'contact/mail_managers_subject.txt', 
-            ], dictionary, context).strip()
+            ], dictionary, request).strip()
         mail_managers_body = render_to_string([
                 'contact/%s/mail_managers_body.txt' % self.form_tag,
                 'contact/mail_managers_body.txt', 
-            ], dictionary, context)
+            ], dictionary, request)
         mail_managers(mail_managers_subject, mail_managers_body, fail_silently=True)
 
         try:
@@ -95,19 +94,19 @@ class ContactForm(forms.Form, metaclass=ContactFormMeta):
             mail_subject = render_to_string([
                     'contact/%s/mail_subject.txt' % self.form_tag,
                     'contact/mail_subject.txt', 
-                ], dictionary, context).strip()
+                ], dictionary, request).strip()
             if self.result_page:
                 mail_body = render_to_string(
                     'contact/%s/results_email.txt' % contact.form_tag,
                     {
                         'contact': contact,
                         'results': self.results(contact),
-                    }, context)
+                    }, request)
             else:
                 mail_body = render_to_string([
                         'contact/%s/mail_body.txt' % self.form_tag,
                         'contact/mail_body.txt',
-                    ], dictionary, context)
+                    ], dictionary, request)
             send_mail(mail_subject, mail_body, 'no-reply@%s' % site.domain, [contact.contact], fail_silently=True)
 
         return contact

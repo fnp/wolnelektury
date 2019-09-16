@@ -56,7 +56,7 @@ class ContactAdmin(admin.ModelAdmin, metaclass=ContactAdminMeta):
             else:
                 # Create readonly fields from the body JSON.
                 attachments = list(instance.attachment_set.all())
-                body_keys = body.keys() + [a.tag for a in attachments]
+                body_keys = list(body.keys()) + [a.tag for a in attachments]
 
                 # Find the original form.
                 try:

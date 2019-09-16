@@ -43,7 +43,7 @@ def form(request, form_tag, force_enabled=False):
         formsets = {
             prefix: formset_class(request.POST, request.FILES, prefix=prefix)
             for prefix, formset_class in formset_classes.items()}
-        if form.is_valid() and all(formset.is_valid() for formset in formsets.itervalues()):
+        if form.is_valid() and all(formset.is_valid() for formset in formsets.values()):
             contact = form.save(request, formsets.values())
             if form.result_page:
                 return redirect('contact_results', contact.id, contact.digest())

@@ -1,0 +1,8 @@
+{% extends form.base_template|default:"base/base.html" %}
+{% load forms_builder_tags %}
+
+{% block title %}{{ form.title }}{% endblock %}
+
+{% block body %}
+   {% render_built_form form %}
+{% endblock %}
