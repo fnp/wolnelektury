@@ -43,7 +43,7 @@ class ScheduleInline(admin.TabularInline):
 class MembershipAdmin(admin.ModelAdmin):
     list_display = ['user']
     raw_id_fields = ['user']
-    search_fields = ['user__username', 'user__email']
+    search_fields = ['user__username', 'user__email', 'schedule__email']
     inlines = [ScheduleInline]
 
 admin.site.register(models.Membership, MembershipAdmin)

@@ -85,3 +85,5 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'
+
+FILE_UPLOAD_PERMISSIONS = 0o640
