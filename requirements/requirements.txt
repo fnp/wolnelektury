@@ -3,6 +3,7 @@
 # django
 Django==2.2.5
 fnpdjango==0.4
+docutils
 
 #django-pipeline==1.6.13
 # Because of https://github.com/jazzband/django-pipeline/pull/682 + https://github.com/getsentry/sentry-python/issues/436

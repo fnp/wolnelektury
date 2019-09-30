@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-04 11:36+0100\n"
-"PO-Revision-Date: 2019-06-17 15:08+0200\n"
+"POT-Creation-Date: 2019-09-30 15:58+0200\n"
+"PO-Revision-Date: 2019-09-30 16:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -20,25 +20,29 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: models.py:25
+#: models.py:24
 msgid "a month"
 msgstr "miesięcznie"
 
-#: models.py:26
+#: models.py:25
 msgid "a year"
 msgstr "raz do roku"
 
-#: models.py:27
+#: models.py:26
 msgid "in perpetuity"
 msgstr "raz na zawsze"
 
-#: models.py:30
+#: models.py:29
 msgid "inteval"
 msgstr "okres"
 
-#: models.py:31
-msgid "min_amount"
+#: models.py:30
+msgid "min amount"
 msgstr "minimalna kwota"
+
+#: models.py:31
+msgid "default amount"
+msgstr "domyślna kwota"
 
 #: models.py:32
 msgid "allow recurring"
@@ -48,11 +52,15 @@ msgstr "płatności cykliczne"
 msgid "allow one time"
 msgstr "płatności jednorazowe"
 
-#: models.py:36 models.py:69
+#: models.py:34
+msgid "active"
+msgstr "aktywny"
+
+#: models.py:37 models.py:69
 msgid "plan"
 msgstr "plan"
 
-#: models.py:37
+#: models.py:38
 msgid "plans"
 msgstr "plany"
 
@@ -64,7 +72,7 @@ msgstr "klucz"
 msgid "email"
 msgstr "email"
 
-#: models.py:68 models.py:123
+#: models.py:68 models.py:129
 msgid "membership"
 msgstr "członkostwo"
 
@@ -77,12 +85,12 @@ msgid "method"
 msgstr "metoda płatności"
 
 #: models.py:72
-msgid "active"
-msgstr "aktywny"
-
-#: models.py:73
 msgid "cancelled"
 msgstr "anulowany"
+
+#: models.py:73
+msgid "payed at"
+msgstr "opłacona"
 
 #: models.py:74
 msgid "started at"
@@ -92,7 +100,7 @@ msgstr "start"
 msgid "expires_at"
 msgstr "wygasa"
 
-#: models.py:79 models.py:105
+#: models.py:79
 msgid "schedule"
 msgstr "harmonogram"
 
@@ -100,51 +108,39 @@ msgstr "harmonogram"
 msgid "schedules"
 msgstr "harmonogramy"
 
-#: models.py:106 models.py:120
-msgid "created at"
-msgstr "utworzone"
-
-#: models.py:107
-msgid "payed at"
-msgstr "opłacona"
-
-#: models.py:110
-msgid "payment"
-msgstr "płatność"
-
-#: models.py:111
-msgid "payments"
-msgstr "płatności"
-
-#: models.py:119
+#: models.py:123
 msgid "user"
 msgstr "użytkownik"
 
 #: models.py:124
+msgid "created at"
+msgstr "utworzone"
+
+#: models.py:130
 msgid "memberships"
 msgstr "członkostwa"
 
-#: models.py:131
+#: models.py:152
 msgid "days before"
 msgstr "dni przed"
 
-#: models.py:132
+#: models.py:153
 msgid "subject"
 msgstr "temat"
 
-#: models.py:133
+#: models.py:154 payu/models.py:136
 msgid "body"
 msgstr "treść"
 
-#: models.py:136
+#: models.py:157
 msgid "reminder email"
 msgstr "email z przypomnieniem"
 
-#: models.py:137
+#: models.py:158
 msgid "reminder emails"
 msgstr "emaile z przypomnieniem"
 
-#: models.py:142
+#: models.py:163
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
@@ -153,7 +149,7 @@ msgstr[1] "%d dni przed wygaśnięciem"
 msgstr[2] "%d dni przed wygaśnięciem"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: models.py:144
+#: models.py:165
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
@@ -161,3 +157,85 @@ msgstr[0] "%d dzień po wygaśnięciu"
 msgstr[1] "%d dni po wygaśnięciu"
 msgstr[2] "%d dni po wygaśnięciu"
 msgstr[3] "%d dni przed wygaśnięciem"
+
+#: models.py:192
+msgid "Towarzystwo Wolnych Lektur"
+msgstr ""
+
+#: payu/models.py:16 payu/models.py:28
+msgid "POS id"
+msgstr ""
+
+#: payu/models.py:17
+msgid "disposable token"
+msgstr "token jednorazowy"
+
+#: payu/models.py:18
+msgid "reusable token"
+msgstr "token wielokrotnego użytku"
+
+#: payu/models.py:19
+msgid "created_at"
+msgstr "utworzone"
+
+#: payu/models.py:23
+msgid "PayU card token"
+msgstr "token PayU karty płatniczej"
+
+#: payu/models.py:24
+msgid "PayU card tokens"
+msgstr "tokeny PayU kart płatniczych"
+
+#: payu/models.py:29
+msgid "customer IP"
+msgstr "adres IP klienta"
+
+#: payu/models.py:30
+msgid "order ID"
+msgstr "ID zamówienia"
+
+#: payu/models.py:33
+msgid "Pending"
+msgstr "Czeka"
+
+#: payu/models.py:34
+msgid "Waiting for confirmation"
+msgstr "Czeka na potwierdzenie"
+
+#: payu/models.py:35
+msgid "Completed"
+msgstr "Ukończone"
+
+#: payu/models.py:36
+msgid "Canceled"
+msgstr "Anulowane"
+
+#: payu/models.py:37
+msgid "Rejected"
+msgstr "Odrzucone"
+
+#: payu/models.py:42
+msgid "PayU order"
+msgstr "zamówienie PayU"
+
+#: payu/models.py:43
+msgid "PayU orders"
+msgstr "zamówienia PayU"
+
+#: payu/models.py:137
+msgid "received_at"
+msgstr "odebrana"
+
+#: payu/models.py:141
+msgid "PayU notification"
+msgstr "notyfikacja PayU"
+
+#: payu/models.py:142
+msgid "PayU notifications"
+msgstr "notyfikacje PayU"
+
+#~ msgid "payment"
+#~ msgstr "płatność"
+
+#~ msgid "payments"
+#~ msgstr "płatności"

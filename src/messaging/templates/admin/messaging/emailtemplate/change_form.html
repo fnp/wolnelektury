@@ -1,0 +1,19 @@
+{% extends 'admin/change_form.html' %}
+
+
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+
+	<script>
+(function($) {
+	$("#id_state").on('change', function() {
+		$this = $(this);
+		$.get("/messaging/states/" + $(this).val() + "/info.json", function(data) {
+			$(".help", $this.parent()).html(data.help);
+		}, "json");
+	});
+})(django.jQuery);
+
+	</script>
+
+{% endblock %}

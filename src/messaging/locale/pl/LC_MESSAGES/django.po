@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-30 16:09+0200\n"
+"PO-Revision-Date: 2019-09-30 16:10+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: models.py:11
+msgid "state"
+msgstr "stan"
+
+#: models.py:12 models.py:68
+msgid "subject"
+msgstr "temat"
+
+#: models.py:13 models.py:69
+msgid "body"
+msgstr "treść"
+
+#: models.py:14
+msgid "days"
+msgstr "dni"
+
+#: models.py:15
+msgid "hour"
+msgstr "godzina"
+
+#: models.py:18
+msgid "email template"
+msgstr "szablon e-maila"
+
+#: models.py:19
+msgid "email templates"
+msgstr "szablony e-maili"
+
+#: models.py:67
+msgid "e-mail"
+msgstr "e-mail"
+
+#: models.py:72
+msgid "email sent"
+msgstr "wysłany e-mail"
+
+#: models.py:73
+msgid "emails sent"
+msgstr "wysłane e-maile"
+
+#: states.py:47
+msgid "club membership expiring"
+msgstr "członkostwo w Towarzystwie wygasa"
+
+#: states.py:61
+msgid "club payment unfinished"
+msgstr "niedokończona płatność w Towarzystwie"
+
+#: views.py:19
+#, python-format
+msgid ""
+"Context:<br>\n"
+"       <code>{{ %(model_name)s }}</code> – a <a href=\"%(docs_url)s\">"
+"%(verbose_name)s</a> object.<br>\n"
+"       You can put it in in the fields <em>Subject</em> and <em>Body</em> "
+"using dot notation, like this:<br>\n"
+"       <code>{{ %(model_name)s.id }}</code>."
+msgstr ""
+"Kontest:<br>\n"
+"       <code>{{ %(model_name)s }}</code> – obiekt typu <a href=\"%(docs_url)s"
+"\">%(verbose_name)s</a>.<br>\n"
+"       Możesz użyć go w polach <em>Temat</em> i <em>Treść</em>, korzystając "
+"z notacji z kropką, np.:<br>\n"
+"       <code>{{ %(model_name)s.id }}</code>."
+
+#~ msgid "New member"
+#~ msgstr "Nowy członek"
+
+#~ msgid "event"
+#~ msgstr "zdarzenie"
+
+#~ msgid "Select an event to see more details."
+#~ msgstr "Wybierz zdarzenie by zobaczyć więcej szczegółów."

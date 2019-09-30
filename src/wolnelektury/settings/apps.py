@@ -12,6 +12,7 @@ INSTALLED_APPS_OUR = [
     'dictionary',
     'infopages',
     'lesmianator',
+    'messaging',
     'newtagging',
     'opds',
     'pdcounter',

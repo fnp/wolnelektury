@@ -44,6 +44,7 @@ urlpatterns += [
     url(r'^newsletter/', include('newsletter.urls')),
     url(r'^formularz/', include('forms_builder.forms.urls')),
     url(r'^isbn/', include('isbn.urls')),
+    url(r'^messaging/', include('messaging.urls')),
 
     url(r'^paypal/app-form/$', RedirectView.as_view(
         url='/towarzystwo/?app=1', permanent=False)),
