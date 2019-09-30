@@ -70,6 +70,7 @@ class Schedule(models.Model):
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
     method = models.CharField(_('method'), max_length=255, choices=[(method.slug, method.name) for method in methods])
     is_cancelled = models.BooleanField(_('cancelled'), default=False)
+    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
     started_at = models.DateTimeField(_('started at'), auto_now_add=True)
     expires_at = models.DateTimeField(_('expires_at'), null=True, blank=True)
     email_sent = models.BooleanField(default=False)
@@ -105,7 +106,7 @@ class Schedule(models.Model):
         return self.expires_at is not None and self.expires_at <= now()
 
     def is_active(self):
-        return self.expires_at is not None and self.expires_at > now()
+        return self.payed_at is not None and (self.expires_at is None or self.expires_at > now())
 
     def send_email(self):
         ctx = {'schedule': self}
@@ -203,8 +204,12 @@ class PayUOrder(payu_models.Order):
 
     def status_updated(self):
         if self.status == 'COMPLETED':
-            since = self.schedule.expires_at or now()
+            since = self.schedule.expires_at
+            if since is None or since < self.received_at:
+                since = self.received_at
             new_exp = self.schedule.plan.get_next_installment(since)
+            if self.schedule.payed_at is None:
+                self.schedule.payed_at = self.received_at
             if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
                 self.schedule.expires_at = new_exp
                 self.schedule.save()

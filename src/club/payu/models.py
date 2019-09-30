@@ -7,35 +7,40 @@ from urllib.request import HTTPError
 from django.contrib.sites.models import Site
 from django.db import models
 from django.urls import reverse
+from django.utils.translation import ugettext_lazy as _
 from . import POSS
 
 
 class CardToken(models.Model):
     """ This should be attached to a payment schedule. """
-    pos_id = models.CharField(max_length=255)
-    disposable_token = models.CharField(max_length=255)
-    reusable_token = models.CharField(max_length=255, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    pos_id = models.CharField(_('POS id'), max_length=255)
+    disposable_token = models.CharField(_('disposable token'), max_length=255)
+    reusable_token = models.CharField(_('reusable token'), max_length=255, null=True, blank=True)
+    created_at = models.DateTimeField(_('created_at'), auto_now_add=True)
 
     class Meta:
         abstract = True
+        verbose_name = _('PayU card token')
+        verbose_name_plural = _('PayU card tokens')
 
 
 class Order(models.Model):
-    pos_id = models.CharField(max_length=255)   # TODO: redundant?
-    customer_ip = models.GenericIPAddressField()
-    order_id = models.CharField(max_length=255, blank=True)
+    pos_id = models.CharField(_('POS id'), max_length=255)   # TODO: redundant?
+    customer_ip = models.GenericIPAddressField(_('customer IP'))
+    order_id = models.CharField(_('order ID'), max_length=255, blank=True)
 
     status = models.CharField(max_length=128, blank=True, choices=[
-        ('PENDING', 'Pending'),
-        ('WAITING_FOR_CONFIRMATION', 'Waiting for confirmation'),
-        ('COMPLETED', 'Completed'),
-        ('CANCELED', 'Canceled'),
-        ('REJECTED', 'Rejected'),
+        ('PENDING', _('Pending')),
+        ('WAITING_FOR_CONFIRMATION', _('Waiting for confirmation')),
+        ('COMPLETED', _('Completed')),
+        ('CANCELED', _('Canceled')),
+        ('REJECTED', _('Rejected')),
     ])
 
     class Meta:
         abstract = True
+        verbose_name = _('PayU order')
+        verbose_name_plural = _('PayU orders')
 
     # These need to be provided in a subclass.
 
@@ -128,11 +133,13 @@ class Order(models.Model):
 
 class Notification(models.Model):
     """ Add `order` FK to real Order model. """
-    body = models.TextField()
-    received_at = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(_('body'))
+    received_at = models.DateTimeField(_('received_at'), auto_now_add=True)
 
     class Meta:
         abstract = True
+        verbose_name = _('PayU notification')
+        verbose_name_plural = _('PayU notifications')
 
     def get_status(self):
         return json.loads(self.body)['order']['status']

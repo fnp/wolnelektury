@@ -8,5 +8,7 @@ from .models import Schedule
 def get_active_schedule(user):
     if not user.is_authenticated:
         return None
-    return Schedule.objects.filter(membership__user=user, expires_at__gt=now()).first()
+    return Schedule.objects.filter(
+            membership__user=user
+        ).exclude(payed_at=None).exclude(expires_at__lt=now()).first()
 

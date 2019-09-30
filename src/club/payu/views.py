@@ -75,7 +75,7 @@ class NotifyView(View):
             return http.HttpResponseBadRequest('wrong')
 
         notification = order.notification_set.create(
-            body=request.body
+            body=request.body.decode('utf-8')
         )
         notification.apply()
 

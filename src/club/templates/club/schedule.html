@@ -49,6 +49,7 @@ wspierasz nas kwotą {{ schedule.amount }} zł {{ schedule.plan.get_interval_dis
 
 
  {% else %}
+  {% if not schedule.payed_at %}
    Składka nie została jeszcze opłacona.
    {% if schedule.payuorder_set.exists %}
      Czekamy na potwierdzenie płatności.
@@ -60,6 +61,7 @@ wspierasz nas kwotą {{ schedule.amount }} zł {{ schedule.plan.get_interval_dis
      </form>
 
    {% endif %}
+  {% endif %}
  {% endif %}
 {% endif %}
 
