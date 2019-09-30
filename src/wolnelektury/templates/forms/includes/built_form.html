@@ -12,7 +12,9 @@
     {% render_honeypot_field %}
     <table>
         {{ form_for_form.as_table }}
-        <tr><td></td><td><button>{{ form.button_text }}</button></td></tr>
+        {% if form_for_form.fields %}
+            <tr><td></td><td><button>{{ form.button_text }}</button></td></tr>
+        {% endif %}
     </table>
     </form>
 
