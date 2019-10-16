@@ -205,11 +205,12 @@ class PayUOrder(payu_models.Order):
     def status_updated(self):
         if self.status == 'COMPLETED':
             since = self.schedule.expires_at
-            if since is None or since < self.received_at:
-                since = self.received_at
+            n = now()
+            if since is None or since < n:
+                since = n
             new_exp = self.schedule.plan.get_next_installment(since)
             if self.schedule.payed_at is None:
-                self.schedule.payed_at = self.received_at
+                self.schedule.payed_at = n
             if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
                 self.schedule.expires_at = new_exp
                 self.schedule.save()

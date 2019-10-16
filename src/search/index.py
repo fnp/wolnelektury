@@ -665,20 +665,18 @@ class SearchResult(object):
             lambda f: f[self.POSITION][self.POSITION_INDEX] <= s[self.POSITION][self.POSITION_INDEX] <
                       f[self.POSITION][self.POSITION_INDEX] + f[self.POSITION][self.POSITION_SPAN], frags))), sect)
 
-        def remove_duplicates(lst, keyfn, compare):
+        def remove_duplicates(lst, keyfn, larger):
             els = {}
             for e in lst:
                 eif = keyfn(e)
                 if eif in els:
-                    if compare(els[eif], e) >= 1:
+                    if larger(els[eif], e):
                         continue
                 els[eif] = e
             return els.values()
 
         # remove fragments with duplicated fid's and duplicated snippets
-        frags = remove_duplicates(frags, lambda f: f[self.FRAGMENT], lambda a, b: cmp(a[self.SCORE], b[self.SCORE]))
-        # frags = remove_duplicates(frags, lambda f: f[OTHER]['snippet_pos'] and f[OTHER]['snippet_pos'] or f[FRAGMENT],
-        #                           lambda a, b: cmp(a[SCORE], b[SCORE]))
+        frags = remove_duplicates(frags, lambda f: f[self.FRAGMENT], lambda a, b: a[self.SCORE] > b[self.SCORE])
 
         # remove duplicate sections
         sections = {}
