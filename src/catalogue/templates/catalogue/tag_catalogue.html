@@ -12,7 +12,7 @@
 
   {% for tag in best %}
     <a class="tag-box" href="{{ tag.get_absolute_url }}">
-      {% cache 86400 catalogue_tag_box rel.pk %}
+      {% cache 86400 catalogue_tag_box tag.pk %}
         {% include 'catalogue/tag_box.html' %}
       {% endcache %}
     </a>
