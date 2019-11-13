@@ -16,20 +16,20 @@
 }
 
 #annoy {
-    font-size: 13px;
-    line-height: 1.15em;
     padding: 1em 5em 1em 0;
     display: none;
     background: orange;
-    font-family: Arial, sans-serif;
     position: relative;
     z-index: 99;
 }
 #annoy p {
-    margin: 0 0 0 10em;;
+    margin: 0;
 }
 #annoy a {
-    color: #4E56C8;
+    color: black;
+    display: block;
+    font-size: 2em;
+    text-align: center;
 }
 
 #annoy .banner {
@@ -55,6 +55,7 @@
     top: 0;
     right: 0;
     color: black;
+    font-size: 13px;
 }
 #annoy a#annoy-off:hover {
     cursor: pointer;
