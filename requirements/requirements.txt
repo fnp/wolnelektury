@@ -40,7 +40,6 @@ pytz
 django-honeypot==0.7.0
 
 python-memcached
-django-piwik
 python-fb
 
 # Feedparser

@@ -53,7 +53,6 @@ INSTALLED_APPS_CONTRIB = [
     'rest_framework',
     'fnp_django_pagination',
     'pipeline',
-    'piwik',
     'sorl.thumbnail',
     'honeypot',
     'fnpdjango',
