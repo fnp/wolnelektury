@@ -30,7 +30,7 @@ msgstr "raz do roku"
 
 #: models.py:26
 msgid "in perpetuity"
-msgstr "raz na zawsze"
+msgstr "jednorazowo"
 
 #: models.py:29
 msgid "inteval"
