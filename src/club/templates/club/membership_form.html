@@ -67,17 +67,20 @@
    .inna.active .button {display: none;}
 
    .ambassador {
-       padding: 2em 145px 2em 2em;
+       padding: 2em;
        margin-bottom: 1em;
        border: 1px solid #ddd;
        position: relative;
+   }
+   .ambassador.with-photo {
+       padding-right: 145px;
    }
    .ambassador img {
        border-radius: 100%;
        height: 100px;
        width: 100px;
        position: absolute;
-       top: 30px;
+       top: 35px;
        right: 30px;
    }
    .ambassador div {
@@ -179,7 +182,7 @@
 
       <div class="club-form-info">
         {% if ambassador %}
-          <div class="ambassador">
+	<div class="ambassador {% if ambassador.photo %}with-photo{% endif %}">
             <div>
               <em>
                 {{ ambassador.text }}
