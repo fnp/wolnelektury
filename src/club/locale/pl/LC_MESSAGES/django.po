@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 15:58+0200\n"
-"PO-Revision-Date: 2019-09-30 16:09+0200\n"
+"POT-Creation-Date: 2019-11-28 22:34+0100\n"
+"PO-Revision-Date: 2019-11-28 22:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -18,129 +18,121 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: models.py:24
-msgid "a month"
-msgstr "miesięcznie"
-
-#: models.py:25
-msgid "a year"
-msgstr "raz do roku"
-
-#: models.py:26
-msgid "in perpetuity"
-msgstr "jednorazowo"
-
-#: models.py:29
-msgid "inteval"
-msgstr "okres"
-
-#: models.py:30
-msgid "min amount"
+#: models.py:20
+msgid "minimum amount"
 msgstr "minimalna kwota"
 
-#: models.py:31
-msgid "default amount"
-msgstr "domyślna kwota"
+#: models.py:21
+msgid "minimum amount for year"
+msgstr "minimalna kwota na rok"
 
-#: models.py:32
-msgid "allow recurring"
-msgstr "płatności cykliczne"
+#: models.py:22
+msgid "proposed amounts for single payment"
+msgstr "proponowane kwoty dla pojedynczej wpłaty"
 
-#: models.py:33
-msgid "allow one time"
-msgstr "płatności jednorazowe"
+#: models.py:23
+msgid "default single amount"
+msgstr "domyślna kwota dla pojedynczej wpłaty"
 
-#: models.py:34
-msgid "active"
-msgstr "aktywny"
+#: models.py:24
+msgid "proposed amounts for monthly payments"
+msgstr "proponowane kwoty dla miesięcznych wpłat"
 
-#: models.py:37 models.py:69
-msgid "plan"
-msgstr "plan"
+#: models.py:25
+msgid "default monthly amount"
+msgstr "domyślna kwota dla miesięcznych wpłat"
 
-#: models.py:38
-msgid "plans"
-msgstr "plany"
+#: models.py:28
+msgid "club"
+msgstr "towarzystwo"
 
-#: models.py:66
+#: models.py:29
+msgid "clubs"
+msgstr "towarzystwa"
+
+#: models.py:43
 msgid "key"
 msgstr "klucz"
 
-#: models.py:67
+#: models.py:44
 msgid "email"
 msgstr "email"
 
-#: models.py:68 models.py:129
+#: models.py:45 models.py:120
 msgid "membership"
 msgstr "członkostwo"
 
-#: models.py:70
+#: models.py:46
 msgid "amount"
 msgstr "kwota"
 
-#: models.py:71
-msgid "method"
-msgstr "metoda płatności"
+#: models.py:47
+msgid "monthly"
+msgstr "miesięcznie"
 
-#: models.py:72
+#: models.py:48
+msgid "yearly"
+msgstr "rocznie"
+
+#: models.py:50
 msgid "cancelled"
 msgstr "anulowany"
 
-#: models.py:73
+#: models.py:51
 msgid "payed at"
 msgstr "opłacona"
 
-#: models.py:74
+#: models.py:52
 msgid "started at"
 msgstr "start"
 
-#: models.py:75
+#: models.py:53
 msgid "expires_at"
 msgstr "wygasa"
 
-#: models.py:79
+#: models.py:57
 msgid "schedule"
 msgstr "harmonogram"
 
-#: models.py:80
+#: models.py:58
 msgid "schedules"
 msgstr "harmonogramy"
 
-#: models.py:123
+#: models.py:114
 msgid "user"
 msgstr "użytkownik"
 
-#: models.py:124
+#: models.py:115
 msgid "created at"
 msgstr "utworzone"
 
-#: models.py:130
+#: models.py:121
 msgid "memberships"
 msgstr "członkostwa"
 
-#: models.py:152
+#: models.py:143
 msgid "days before"
 msgstr "dni przed"
 
-#: models.py:153
+#: models.py:144
 msgid "subject"
 msgstr "temat"
 
-#: models.py:154 payu/models.py:136
+#: models.py:145 payu/models.py:136
 msgid "body"
 msgstr "treść"
 
-#: models.py:157
+#: models.py:148
 msgid "reminder email"
 msgstr "email z przypomnieniem"
 
-#: models.py:158
+#: models.py:149
 msgid "reminder emails"
 msgstr "emaile z przypomnieniem"
 
-#: models.py:163
+#: models.py:154
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
@@ -149,7 +141,7 @@ msgstr[1] "%d dni przed wygaśnięciem"
 msgstr[2] "%d dni przed wygaśnięciem"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: models.py:165
+#: models.py:156
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
@@ -158,7 +150,27 @@ msgstr[1] "%d dni po wygaśnięciu"
 msgstr[2] "%d dni po wygaśnięciu"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: models.py:192
+#: models.py:160
+msgid "name"
+msgstr "nazwisko"
+
+#: models.py:161
+msgid "photo"
+msgstr "zdjęcie"
+
+#: models.py:162
+msgid "text"
+msgstr "tekst"
+
+#: models.py:165
+msgid "ambassador"
+msgstr "ambasador"
+
+#: models.py:166
+msgid "ambassadors"
+msgstr "ambasadorowie"
+
+#: models.py:197
 msgid "Towarzystwo Wolnych Lektur"
 msgstr ""
 
@@ -233,6 +245,30 @@ msgstr "notyfikacja PayU"
 #: payu/models.py:142
 msgid "PayU notifications"
 msgstr "notyfikacje PayU"
+
+#~ msgid "in perpetuity"
+#~ msgstr "jednorazowo"
+
+#~ msgid "inteval"
+#~ msgstr "okres"
+
+#~ msgid "allow recurring"
+#~ msgstr "płatności cykliczne"
+
+#~ msgid "allow one time"
+#~ msgstr "płatności jednorazowe"
+
+#~ msgid "active"
+#~ msgstr "aktywny"
+
+#~ msgid "plan"
+#~ msgstr "plan"
+
+#~ msgid "plans"
+#~ msgstr "plany"
+
+#~ msgid "method"
+#~ msgstr "metoda płatności"
 
 #~ msgid "payment"
 #~ msgstr "płatność"

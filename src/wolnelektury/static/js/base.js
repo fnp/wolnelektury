@@ -270,6 +270,83 @@
           p.prev('.read-more-show').removeClass('hide'); // Hide only the preceding "Read More"
           e.preventDefault();
         });
+
+
+        function update_info() {
+            var amount = parseInt($("#id_amount").val());
+            var monthly =  $("#id_monthly").val() == 'True';
+            if (monthly) slug = "monthly";
+            else if (amount >= parseInt($("#plan-single").attr('data-min-for-year'))) slug = 'single-year';
+            else slug = 'single';
+
+            var chunk = $('.club-form-info .chunk-' + slug);
+            if (chunk.css('display') == 'none') {
+                $('.chunk-alt').css('height', $('.chunk-alt').height());
+                $('.chunk-alt .chunk').css('position', 'absolute');
+
+                $('.club-form-info .chunk').fadeOut();
+                $('.club-form-info .chunk.chunk-' + slug).fadeIn(function() {
+                    $('.chunk-alt .chunk').css('position', 'static');
+                    $('.chunk-alt').css('height', 'auto');
+                });
+                $('.chunk-alt').animate({height: chunk.height()}, 100);
+            }
+        }
+        
+        $("#id_amount").val($("#plan-monthly").attr('data-amount'));
+        
+        $(".button.kwota").click(function() {
+            var plan = $(this).closest('.plan');
+            $('.kwota', plan).removeClass('active')
+            $('.inna', plan).removeClass('active')
+            $(this).addClass('active');
+
+            var amount = $(this).text();
+            plan.attr("data-amount", amount);
+            $("#id_amount").val(amount);
+
+            update_info();
+            return false;
+        });
+
+        $(".plan-toggle").click(function() {
+            $(".plan-toggle").removeClass('active');
+            $(this).addClass('active')
+            $(".plan").hide();
+            var plan = $("#" + $(this).attr('data-plan'));
+            plan.show();
+            $("#id_amount").val(plan.attr('data-amount'));
+            $("#id_monthly").val(plan.attr('data-monthly'));
+
+            update_info();
+            return false;
+        });
+
+        $(".inna .button").click(function() {
+            var plan = $(this).closest('.plan');
+            $('.kwota', plan).removeClass('active');
+            $(this).parent().addClass('active');
+            $('input', plan).focus();
+
+            var amount = $('input', $(this).parent()).val();
+            plan.attr("data-amount", amount);
+            $("#id_amount").val(amount);
+
+            update_info();
+            return false;
+        });
+        
+        $(".inna input").on('input', function() {
+            var plan = $(this).closest('.plan');
+            $('.kwota', plan).removeClass('active');
+            var amount = $(this).val();
+            plan.attr("data-amount", amount);
+            $("#id_amount").val(amount);
+
+            update_info();
+            return false;
+        });
+
     });
 })(jQuery);
 

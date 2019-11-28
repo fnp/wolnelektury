@@ -71,27 +71,14 @@ class PayPal(PaymentMethod):
         return reverse('club_dummy_payment', args=[schedule.key])
 
 
-methods = []
-
-pos= getattr(settings, 'CLUB_PAYU_RECURRING_POS', None)
+pos = getattr(settings, 'CLUB_PAYU_RECURRING_POS', None)
 if pos:
-    payure_method = PayURe(pos)
-    methods.append(payure_method)
+    recurring_payment_method = PayURe(pos)
 else:
-    payure_method = None
+    recurring_payment_method = None
 
 pos = getattr(settings, 'CLUB_PAYU_POS', None)
 if pos:
-    payu_method = PayU(pos)
-    methods.append(payu_method)
+    single_payment_method = PayU(pos)
 else:
-    payu_method = None
-
-
-#methods.append(PayPal())
-
-
-method_by_slug = {
-    m.slug: m
-    for m in methods
-}
+    single_payment_method = None

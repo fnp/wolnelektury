@@ -7,11 +7,9 @@
 {% block body %}
 <div class="white-box normal-text">
 
-	<h1>Płatność cykliczna przez PayU</h1>
+	<h1>Wspierasz Wolne Lektury</h1>
 
-	<p>	{{ schedule.email }}</p>
-	<p>	{{ schedule.amount }}</p>
-	<p>	{{ schedule.plan.get_interval_display }}</p>
+	<p>Zlecasz comiesięczną płatność w wysokości {{ schedule.amount}} zł. Dziękujemy!</p>
 
 	<form id="theform" method='POST'>
 		{% csrf_token %}

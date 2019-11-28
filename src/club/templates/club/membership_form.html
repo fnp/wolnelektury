@@ -1,91 +1,208 @@
 {% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
 {% load chunks %}
-
+{% load thumbnail %}
 
 {% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
 
 
 {% block body %}
 
-<style>
-  .payment-method.disabled {
-  opacity: .5;
-  filter: grayscale(100%);
-  }
-  
+  <style>
+   .payment-method.disabled {
+       opacity: .5;
+       filter: grayscale(100%);
+   }
+
+   .button {
+       box-sizing: border-box;
+       display: inline-block;
+       text-align: center;
+   }
+   .kwota, .inna .button, .plan-toggle, .inna input {
+       border: 1px solid black;
+       background: none;
+       cursor: pointer;
+       padding: 10px 0;
+       margin-right: 3%;
+       margin-bottom: 10px;
+       line-height: 3em;
+   }
+   .plan-toggle {
+       width: 46.5%;
+   }
+   .kwota {
+       width: 30%;
+   }
+   .kwota:after {
+       content: " zł";
+   }
+   .kwota.yearly {
+       background: orange;
+
+   }
+   .inna .button {
+       width: 63%;
+   }
+   .inna input {
+       width: 60%;
+       padding-left: 1.5%;
+       padding-right: 1.5%;
+       height: 3em !important;
+       text-align: center;
+   }
+   .chunk-alt {
+       position: relative;
+       overflow: hidden;
+   }
+   .chunk-alt .chunk {
+       top: 0;
+   }
+
+   .kwota.active, .plan-toggle.active {
+       background: black;
+       color: white;
+   }
+   .inna input {display: none;}
+   .inna.active input {display: inline;}
+   .inna.active .button {display: none;}
+
+   .ambassador {
+       display: flex;
+       justify-content: end;
+       padding: 2em;
+       margin-bottom: 1em;
+       border: 1px solid #ddd;
+   }
+   .ambassador img {
+       border-radius: 100%;
+       margin-left: 1em;
+       align-self: center;
+   }
+   .ambassador div {
+       text-align: right;
+       align-self: center;
+       line-height: 1.5em;
+   }
+
+   .club-form-info {
+       line-height: 1.5em;
+   }
+
+   @media screen and (max-width: 1023px) {
+       .club-form-info {
+           margin-top: 2em;
+       }
+   }
+
+
+   @media screen and (min-width: 1024px) {
+       .club-form-info {
+           border-left: 1px solid #ddd;
+           padding-left: 2em;
+           margin-left: 2em;
+       }
+       .twocol {
+           display: flex;
+       }
+       .twocol > form, .twocol > div {
+           flex: 1;
+       }
+   }
+
   </style>
 
 
-<div class="white-box normal-text">
+  <div class="white-box normal-text">
 
-    <h1>{% if membership %}Odnów swoje członkostwo w Towarzystwie Przyjaciół Wolnych Lektur{% else %}Dołącz do Towarzystwa Przyjaciół Wolnych Lektur{% endif %}</h1>
+    <h1>Wspieraj Wolne Lektury</h1>
+    <h2 style="margin-bottom:2em;">
+      {% if membership %}Dziękujemy za Twoje dotychczasowe zaangażowanie! Wesprzyj nas ponownie!{% else %}Dziękujemy, że chcesz razem z nami uwalniać książki!{% endif %}</h2>
 
-{% chunk 'club_form_top' %}
+    {% chunk 'club_form_top' %}
+    <div class='twocol'>
 
-<form method="POST" action="" id="payment-form" class="wlform">
-  {% csrf_token %}
+      <form method="POST" action="" id="payment-form" class="wlform">
+        {% csrf_token %}
+        <h3>Zadeklaruj, jak często i jaką kwotą chcesz nas wspierać:</h3>
 
-  <h2>Zadeklaruj, jak często i jaką kwotą chcesz nas wspierać:</h2>
+        <ul class="errorlist">
+          {% for e in  form.non_field_errors %}
+            <li>{{ e }}</li>
+          {% endfor %}
+          {% for e in  form.plan.errors %}
+            <li>{{ e }}</li>
+          {% endfor %}
+          {% for e in  form.amount.errors %}
+            <li>{{ e }}</li>
+          {% endfor %}
+        </ul>
 
-  <ul class="errorlist">
-  {% for e in  form.non_field_errors %}
-    <li>{{ e }}</li>
-  {% endfor %}
-    {% for e in  form.plan.errors %}
-    <li>{{ e }}</li>
-  {% endfor %}
-    {% for e in  form.amount.errors %}
-    <li>{{ e }}</li>
-    {% endfor %}
-  </ul>
+        {{ form.amount }}
+        {{ form.monthly }}
+        <div>
+          <span class="button plan-toggle" data-plan="plan-single" data-monthly="False">jednorazowo</span>
+          <span class="button plan-toggle active" data-plan="plan-monthly" data-monthly="True">miesięcznie</span>
+        </div>
 
-  {% for plan in form.plans %}
-  
-  <div>
-    <input class="plan" type="radio" name="plan" value="{{ plan.id }}" id="plan{{ plan.id }}" data-methods="{% for m in plan.payment_methods %}{{ m.slug }} {% endfor %}">
-    <label for="plan{{ plan.id }}">
-      <input
-        name="amount-{{ plan.id }}"
-        type="number"
-        placeholder="min. {{ plan.min_amount|floatformat:0 }}"
-        value="{{ plan.default_amount|floatformat:0 }}"
-        min="{{ plan.min_amount|floatformat:0 }}"
-        step="1"
-        style="width: 5em;"
-        > zł
-      {{ plan.get_interval_display }}
-    </label>
+        <div class="plan" id="plan-single" style="display:none;" data-monthly="False" data-min-for-year="{{ club.min_for_year }}" data-amount="{{ club.default_single_amount }}">
+          {% for amount in club.proposed_single_amounts %}
+            <span class="button kwota{% if amount == club.default_single_amount %} active{% endif %}{% if amount >= club.min_for_year %} yearly{% endif %}">{{ amount }}</span>
+          {% endfor %}
+
+          <span class="inna">
+            <span class="button">inna kwota</span>
+            <input type="number" min="{{ club.min_amount }}">
+          </span>
+        </div>
+
+
+        <div class="plan" id="plan-monthly" data-monthly="True" data-amount="{{ club.default_monthly_amount }}">
+          {% for amount in club.proposed_monthly_amounts %}
+            <span class="button kwota{% if amount == club.default_monthly_amount %} active{% endif %}">{{ amount }}</span>
+          {% endfor %}
+
+          <span class="inna">
+            <span class="button">inna kwota</span>
+            <input type="number" min="{{ club.min_amount }}">
+          </span>
+        </div>
+
+        <h3>
+          Podaj nam swój adres e-mail, żebyśmy mogli się z Tobą skontaktować:
+        </h3>
+
+        <p>
+          {{ form.email }}</p>
+        <button class="submit" type='submit'>Dołącz</button>
+      </form>
+
+      <div class="club-form-info">
+        {% if ambassador %}
+          <div class="ambassador">
+            <div>
+              <em>
+                {{ ambassador.text }}
+              </em>
+              <div style="font-size: 1.2em">{{ ambassador.name }}</div>
+            </div>
+            {% if ambassador.photo %}
+              <img src="{% thumbnail ambassador.photo "100x100" as thumb %}{{ thumb.url }}{% empty %}{{ ambassador.photo.url }}{% endthumbnail %}">
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="chunk-alt">
+          <div class="chunk chunk-monthly">
+            {% chunk 'club-form-info-monthly' %}
+          </div>
+          <div class="chunk chunk-single" style="display: none;">
+            {% chunk 'club-form-info-single' %}
+          </div>
+          <div class="chunk chunk-single-year" style="display: none;">
+            {% chunk 'club-form-info-single-year' %}
+          </div>
   </div>
-
-  {% endfor %}
-
-  <h2>Wybierz metodę płatności:</h2>
-  
-  <ul class="errorlist">
-  {% for e in form.method.errors %}
-  <li>{{ e }}</li>
-  {% endfor %}
-  </ul>
-  
-  {% for payment_method in form.payment_methods %}
-  <div class="payment-method" id="payment-method-{{ payment_method.slug }}">
-    <input type="radio" id="method{{ payment_method.slug }}" name="method" value="{{ payment_method.slug }}">
-    <label for="method{{ payment_method.slug }}">
-      {% include payment_method.template_name %}
-    </label>
-  </div>
-  {% endfor %}
-
-  <h2>
-    Podaj nam swój adres e-mail, żebyśmy mogli się z Tobą skontaktować:
-  </h2>
-
-  <p>
-    {{ form.email }}</p>
-  <button class="submit" type='submit'>Dołącz</button>
-</form>
-
-{% chunk 'club_form_bottom' %}
+</div>
+</div>
 
 </div>
 

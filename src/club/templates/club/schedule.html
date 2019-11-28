@@ -15,11 +15,11 @@ Od <strong>{{ schedule.started_at.date }}</strong>
 {% if schedule.expires_at %}
   do <strong>{{ schedule.expires_at.date }}</strong>
 {% endif %}
-wspierasz nas kwotą {{ schedule.amount }} zł {{ schedule.plan.get_interval_display }}.
+wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięcznie{% endif %}{% if schedule.yearly %} rocznie{% endif %}.
 </p>
 
 {% if schedule.is_active %}
-  {% if schedule.get_payment_method.is_recurring %}
+  {% if schedule.is_recurring %}
      {% if schedule.is_cancelled %}
          <p><strong>Płatność anulowana.</strong></p>
          <p>

@@ -14,7 +14,7 @@ from .payu import views as payu_views
 from .forms import ScheduleForm, PayUCardTokenForm
 from . import models
 from .helpers import get_active_schedule
-from .payment_methods import payure_method
+from .payment_methods import recurring_payment_method
 
 
 class ClubView(TemplateView):
@@ -48,15 +48,13 @@ class JoinView(CreateView):
         else:
             return super(JoinView, self).get(request)
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['request'] = self.request
-        return kwargs
-
     def get_context_data(self, **kwargs):
         c = super(JoinView, self).get_context_data(**kwargs)
         c['membership'] = getattr(self.request.user, 'membership', None)
         c['active_menu_item'] = 'club'
+        c['club'] = models.Club.objects.first()
+
+        c['ambassador'] = models.Ambassador.objects.all().order_by('?').first()
         return c
 
     def get_initial(self):
@@ -132,7 +130,7 @@ class PayURecPayment(payu_views.RecPayment):
         return get_object_or_404(models.Schedule, key=self.kwargs['key'])
 
     def get_pos(self):
-        pos_id = payure_method.pos_id
+        pos_id = recurring_payment_method.pos_id
         return POSS[pos_id]
 
     def get_success_url(self):

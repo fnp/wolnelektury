@@ -9,7 +9,7 @@ from club.models import Schedule
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        for s in Schedule.objects.filter(is_cancelled=False, expires_at__lt=now() + timedelta(1)):
+        for s in Schedule.objects.exclude(monthly=False, yearly=False).filter(is_cancelled=False, expires_at__lt=now() + timedelta(1)):
             print(s, s.email, s.expires_at)
             s.pay(None)
 

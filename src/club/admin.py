@@ -9,10 +9,7 @@ from modeltranslation.admin import TranslationAdmin
 from . import models
 
 
-class PlanAdmin(admin.ModelAdmin):
-    list_display = ['min_amount', 'interval']
-
-admin.site.register(models.Plan, PlanAdmin)
+admin.site.register(models.Club)
 
 
 class PayUOrderInline(admin.TabularInline):
@@ -41,7 +38,7 @@ class PayUCardTokenInline(admin.TabularInline):
 
 
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ['email', 'started_at', 'payed_at', 'expires_at', 'plan', 'amount', 'is_cancelled']
+    list_display = ['email', 'started_at', 'payed_at', 'expires_at', 'amount', 'monthly', 'yearly', 'is_cancelled']
     list_search = ['email']
     list_filter = ['is_cancelled']
     date_hierarchy = 'started_at'
@@ -53,7 +50,7 @@ admin.site.register(models.Schedule, ScheduleAdmin)
 
 class ScheduleInline(admin.TabularInline):
     model = models.Schedule
-    fields = ['email', 'plan', 'amount', 'method', 'is_cancelled', 'started_at', 'payed_at', 'expires_at', 'email_sent']
+    fields = ['email', 'amount', 'is_cancelled', 'started_at', 'payed_at', 'expires_at', 'email_sent']
     readonly_fields = fields
     extra = 0
     show_change_link = True
@@ -116,3 +113,6 @@ class PayUOrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.PayUOrder, PayUOrderAdmin)
+
+
+admin.site.register(models.Ambassador)

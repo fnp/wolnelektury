@@ -11,64 +11,42 @@ from django import template
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
 from catalogue.utils import get_random_hash
-from .payment_methods import methods, method_by_slug
+from .payment_methods import recurring_payment_method, single_payment_method
 from .payu import models as payu_models
+from . import utils
 
 
-class Plan(models.Model):
-    """ Plans are set up by administrators. """
-    MONTH = 30
-    YEAR = 365
-    PERPETUAL = 999
-    intervals = [
-        (MONTH, _('a month')),
-        (YEAR, _('a year')),
-        (PERPETUAL, _('in perpetuity')),
-    ]
-
-    interval = models.SmallIntegerField(_('inteval'), choices=intervals)
-    min_amount = models.DecimalField(_('min amount'), max_digits=10, decimal_places=2)
-    default_amount = models.DecimalField(_('default amount'), max_digits=10, decimal_places=2)
-    allow_recurring = models.BooleanField(_('allow recurring'))
-    allow_one_time = models.BooleanField(_('allow one time'))
-    active = models.BooleanField(_('active'), default=True)
+class Club(models.Model):
+    min_amount = models.IntegerField(_('minimum amount'))
+    min_for_year = models.IntegerField(_('minimum amount for year'))
+    single_amounts = models.CharField(_('proposed amounts for single payment'), max_length=255)
+    default_single_amount = models.IntegerField(_('default single amount'))
+    monthly_amounts = models.CharField(_('proposed amounts for monthly payments'), max_length=255)
+    default_monthly_amount = models.IntegerField(_('default monthly amount'))
 
     class Meta:
-        verbose_name = _('plan')
-        verbose_name_plural = _('plans')
-
-    def __str__(self):
-        return "%s %s" % (self.min_amount, self.get_interval_display())
+        verbose_name = _('club')
+        verbose_name_plural = _('clubs')
     
-    class Meta:
-        ordering = ('interval',)
+    def __str__(self):
+        return 'Klub'
+    
+    def proposed_single_amounts(self):
+        return [int(x) for x in self.single_amounts.split(',')]
 
-    def payment_methods(self):
-        for method in methods:
-            if self.allow_recurring and method.is_recurring or self.allow_one_time and not method.is_recurring:
-                yield method
+    def proposed_monthly_amounts(self):
+        return [int(x) for x in self.monthly_amounts.split(',')]
 
-    def get_next_installment(self, date):
-        if self.interval == self.PERPETUAL:
-            return datetime.max - timedelta(1)
-        elif self.interval == self.YEAR:
-            return date.replace(year=date.year + 1)
-        elif self.interval == self.MONTH:
-            day = date.day
-            date = (date.replace(day=1) + timedelta(31)).replace(day=1) + timedelta(day - 1)
-            if date.day != day:
-                date = date.replace(day=1)
-            return date
-            
 
 class Schedule(models.Model):
     """ Represents someone taking up a plan. """
     key = models.CharField(_('key'), max_length=255, unique=True)
     email = models.EmailField(_('email'))
     membership = models.ForeignKey('Membership', verbose_name=_('membership'), null=True, blank=True, on_delete=models.PROTECT)
-    plan = models.ForeignKey(Plan, verbose_name=_('plan'), on_delete=models.PROTECT)
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
-    method = models.CharField(_('method'), max_length=255, choices=[(method.slug, method.name) for method in methods])
+    monthly = models.BooleanField(_('monthly'), default=True)
+    yearly = models.BooleanField(_('yearly'), default=False)
+    
     is_cancelled = models.BooleanField(_('cancelled'), default=False)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
     started_at = models.DateTimeField(_('started at'), auto_now_add=True)
@@ -100,13 +78,26 @@ class Schedule(models.Model):
         return reverse('club_thanks', args=[self.key])
 
     def get_payment_method(self):
-        return method_by_slug[self.method]
+        return recurring_payment_method if self.monthly or self.yearly else single_payment_method
 
     def is_expired(self):
         return self.expires_at is not None and self.expires_at <= now()
 
     def is_active(self):
         return self.payed_at is not None and (self.expires_at is None or self.expires_at > now())
+
+    def is_recurring(self):
+        return self.monthly or self.yearly
+
+    def get_next_installment(self, date):
+        if self.yearly:
+            return utils.add_year(date)
+        if self.monthly:
+            return utils.add_month(date)
+        club = Club.objects.first()
+        if club is not None and self.amount >= club.min_for_year:
+            return utils.add_year(date)
+        return utils.add_month(date)
 
     def send_email(self):
         ctx = {'schedule': self}
@@ -165,6 +156,20 @@ class ReminderEmail(models.Model):
             return ungettext('a day after expiration', '%d days after expiration', n=-self.days_before)
 
 
+class Ambassador(models.Model):
+    name = models.CharField(_('name'), max_length=255)
+    photo = models.ImageField(_('photo'), blank=True)
+    text = models.CharField(_('text'), max_length=1024)
+
+    class Meta:
+        verbose_name = _('ambassador')
+        verbose_name_plural = _('ambassadors')
+        ordering = ['name']
+    
+    def __str__(self):
+        return self.name
+
+        
 ########
 #      #
 # PayU #
@@ -208,7 +213,7 @@ class PayUOrder(payu_models.Order):
             n = now()
             if since is None or since < n:
                 since = n
-            new_exp = self.schedule.plan.get_next_installment(since)
+            new_exp = self.schedule.get_next_installment(since)
             if self.schedule.payed_at is None:
                 self.schedule.payed_at = n
             if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
@@ -225,3 +230,5 @@ class PayUCardToken(payu_models.CardToken):
 
 class PayUNotification(payu_models.Notification):
     order = models.ForeignKey(PayUOrder, models.CASCADE, related_name='notification_set')
+
+
