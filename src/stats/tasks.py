@@ -3,9 +3,10 @@
 #
 from celery.task import task
 from django.conf import settings
-from http.client import HTTPConnection
 import logging
 from urllib.parse import urlsplit
+from urllib.request import urlopen
+
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +23,4 @@ except AttributeError:
 
 @task(ignore_result=True)
 def track_request(piwik_args):
-    piwik_url = "%s%s%s" % (settings.PIWIK_URL, "/piwik.php?", piwik_args)
-    conn = HTTPConnection(_host)
-    conn.request('GET', piwik_url)
-    conn.close()
+    urlopen("https:%s%s%s" % (settings.PIWIK_URL, "piwik.php?", piwik_args))
