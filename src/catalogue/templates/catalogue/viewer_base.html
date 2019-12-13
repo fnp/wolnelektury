@@ -3,6 +3,7 @@
 {% load static from static %}
 {% load pipeline %}
 {% load piwik_tags %}
+{% load annoy_banner from annoy %}
 <html class="no-js">
   <head>
     <meta charset="utf-8">
@@ -13,7 +14,7 @@
     {% block extrahead %}{% endblock %}
   </head>
   <body id="{% block body-id %}reader{% endblock %}">
-    {% include "annoy.html" %}
+    {% annoy_banner 'top' %}
     <nav id="no-menu"><ul>
       <li><a href="#" id="menu-toggle-on"></a></li>
       {% block no-menu-extra %}{% endblock %}

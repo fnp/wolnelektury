@@ -1,7 +1,9 @@
 {% extends "catalogue/viewer_base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
+{% load chunks %}
 {% load thumbnail %}
+{% load annoy_banners from annoy %}
 
 
 {% block title %}{{ book.pretty_title }}{% endblock %}
@@ -108,5 +110,24 @@
 
   <div class="box" id="book-short">
     {% include 'catalogue/book_short.html' %}
+  </div>
+
+  <div id="annoy-stubs">
+    {% annoy_banners 'book-text-intermission' %}
+
+    {% for insert in inserts %}
+      {% with text=insert.choose %}
+        <div class="dynamic-insert{% if text.image %} with-image{% endif %}" style="{% if text.text_color %}color: {{ text.text_color }};{% endif %}{% if text.background_color %}{{ text.background_color }}{% endif %}" data-paragraphs="{{ insert.paragraphs }}">
+          <a href="{% url 'club' %}">
+            <div class="text">
+              {{ text.text }}
+            </div>
+            {% if text.image %}
+              <img src="{% thumbnail text.image '120x120' as thumb %}{{ thumb.url }}{% empty %}{{ text.image.url }}{% endthumbnail %}">
+            {% endif %}
+          </a>
+        </div>
+      {% endwith %}
+    {% endfor %}
   </div>
 {% endblock footer %}

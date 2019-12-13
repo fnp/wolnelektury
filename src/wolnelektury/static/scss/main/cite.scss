@@ -111,6 +111,8 @@
 
 
 .book-wide-box .cite {
+    display: block;
+    color: black;
     background-color: #f7f7f7;
     vertical-align: middle;
     @include min-screen(1000px) {

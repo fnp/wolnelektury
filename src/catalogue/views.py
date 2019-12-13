@@ -19,6 +19,7 @@ from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
 from club.models import Membership
+from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
 from catalogue import constants
@@ -314,9 +315,11 @@ def book_text(request, slug):
         raise Http404
     with book.html_file.open('r') as f:
         book_text = f.read()
+
     return render(request, 'catalogue/book_text.html', {
         'book': book,
         'book_text': book_text,
+        'inserts': DynamicTextInsert.objects.all()
     })
 
 

@@ -8,6 +8,7 @@
     {% load cache %}
     {% load chunk from chunks %}
     {% load sponsor_page from sponsors %}
+    {% load annoy_banner from annoy %}
     {% get_current_language as LANGUAGE_CODE %}
     <head>
       <meta charset="utf-8">
@@ -35,7 +36,8 @@
       {% block bodycontent %}
 
         {% block annoy %}
-          {% include "annoy.html" %}
+          {% annoy_banner 'blackout' %}
+          {% annoy_banner 'top' %}
           {% if not funding_no_show_current %}
             {% cache 120 funding_top_bar LANGUAGE_CODE %}
               {% funding_top_bar %}

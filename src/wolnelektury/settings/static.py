@@ -30,7 +30,7 @@ PIPELINE = {
 
                 'sponsors/css/sponsors.css',
 
-                'css/annoy.css',
+                'annoy/banner.scss',
 
                 'css/ui-lightness/jquery-ui-1.8.16.custom.css',
 
@@ -50,7 +50,8 @@ PIPELINE = {
             'source_filenames': [
                 'scss/book_text.scss',
                 'css/new.book.css',
-                'css/annoy.css',
+                'annoy/banner.scss',
+                'annoy/book_text.scss',
 
                 'css/master.picture.css',
             ],
@@ -116,7 +117,7 @@ PIPELINE = {
                 'funding/funding.js',
                 'club/form.js',
 
-                'js/annoy.js',
+                'annoy/banner.js',
                 ),
             'output_filename': 'js/base.min.js',
         },
@@ -153,12 +154,13 @@ PIPELINE = {
                 'js/book_text/toc.js',
                 'js/locale.js',
                 'js/dialogs.js',
+                'annoy/book_text.js',
 
                 'js/contrib/jquery.highlightfade.js',
                 'js/contrib/raphael-min.js',
                 'player/openplayer.js',
                 'js/contrib/progressSpin.min.js',
-                'js/annoy.js',
+                'annoy/banner.js',
             ],
             'output_filename': 'js/book_text.js',
         },

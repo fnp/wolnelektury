@@ -1,0 +1,28 @@
+{% if banner %}
+  {% if closable %}
+    <a class='annoy-banner-on annoy-banner-on_{{ banner.place }}'
+       href="{{ banner.url }}"
+       data-target="#annoy-banner-{{ banner.id }}"
+    >
+      {{ banner.open_label }}
+    </a>
+  {% endif %}
+  <div class="annoy-banner annoy-banner_{{ banner.place }}" id="annoy-banner-{{ banner.id }}">
+    <div class="annoy-banner-inner">
+      {% if banner.action_label %}
+        {{ banner.text|safe|linebreaks }}
+        <a class="action" href="{{ banner.url }}">
+          {{ banner.action_label }}
+        </a>
+      {% else %}
+        <a href="{{ banner.url }}">
+          {{ banner.text|safe|linebreaks }}
+        </a>
+      {% endif %}
+      {% if closable %}
+        <a class='annoy-banner-off annoy-banner-off_{{ banner.place }}'>{{ banner.close_label|default:"x" }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+{% endif %}

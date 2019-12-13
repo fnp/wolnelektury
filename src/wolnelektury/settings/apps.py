@@ -6,6 +6,7 @@ INSTALLED_APPS_OUR = [
     'wolnelektury',
     # our
     'ajaxable',
+    'annoy',
     'api',
     'catalogue',
     'chunks',

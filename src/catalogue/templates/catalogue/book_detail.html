@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load catalogue_tags %}
 {% load build_absolute_uri from fnp_common %}
+{% load annoy_banner from annoy %}
 {% load cache %}
 
 {% block titleextra %}{{ book.pretty_title }}{% endblock %}
@@ -26,6 +27,8 @@
         {% endfor %}
       </section>
     {% endif %}
+
+    {% annoy_banner 'book-page' %}
 
     <section class="see-also">
       <h2>{% trans "See also" %}:</h2>

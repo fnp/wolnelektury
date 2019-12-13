@@ -1,0 +1,213 @@
+.annoy-banner {
+    background: orange;
+
+    p {
+        text-align: center;
+    }
+
+    a {
+        color: black;
+        display: block;
+        padding: 1em 2em;
+    }
+}
+
+
+.annoy-banner-off {
+    cursor: pointer;
+}
+
+.annoy-banner_top {
+    display: none;
+
+    p {
+        margin: 0;
+        font-size: 2em;
+    }
+    
+    .annoy-banner-off {
+        padding: .5em 1em .5em;
+        width: 1em;
+        text-align:center;
+        font-family: Arial, sans-serif;
+        display: block;
+        
+        border-radius: 0 0 0 1em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: black;
+        font-size: 13px;
+    }
+}
+
+.annoy-banner-on_top {
+    font-size: 13px;
+    line-height: 1.15em;
+
+    background: orange;
+    z-index: 99;
+    font-family: Arial, sans-serif;
+    display: block;
+    padding: .1em 1em;
+    text-align:center;
+    border-radius: 0 0 0 1em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: black;
+}
+
+
+.annoy-banner_book-page {
+    margin-top: 30px;
+    font-size: 2em;
+
+    p {
+        margin: 0;
+    }
+}
+
+
+.annoy-banner_book-fragment-list {
+    margin-right: 2em;
+}
+
+
+
+.annoy-banner_blackout {
+    display: none;
+    
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    color: white;
+    font-size: 16pt;
+    line-height: 26pt;
+    padding: 0;
+
+    .annoy-banner-inner {
+        padding: 0 40% 0 15%;
+        height: 100%;
+        overflow-y: scroll;
+        padding-top: 20vh;
+        padding-bottom: 2em;
+        width: 101vw;
+        box-sizing: border-box;
+    }
+
+    p {
+        text-align: left;
+    }
+    
+    a {
+        color: white;
+        position: absolute;
+        right: 10%;
+        width: 25%;
+        border-radius: 24px;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 1em;
+
+        &.annoy-banner-off {
+            bottom: 20vh;
+            background: #666;
+            border-radius: auto 100%;
+            font-size: .75em;
+            padding: .5em;
+            width: 20%;
+            margin-right: 2.5%;
+        }
+
+        &.action {
+            bottom: 33vh;
+            background: #018189;
+            color: white;
+            border-radius: auto 100%;
+            padding: 1.5em 1em;
+        }
+    }    
+
+    @media screen and (max-height: 1000px) {
+        .annoy-banner-inner {
+            padding-top: 5vh;
+        }
+    }
+    
+    @media screen and (max-width: 1280px) {
+        .annoy-banner-inner {
+            padding-left: 5%;
+            padding-right: 50%;
+            padding-left: 5%;
+            padding-right: 50%;
+        }
+
+        a {
+            right: 5%;
+            width: 40%;
+
+            &.annoy-banner-off {
+                width: 40%;
+                margin-right: 0%;
+            }
+        }
+        
+    }
+    @media screen and (max-width: 1024px) {
+        font-size: 14pt;
+        line-height: 21pt;        
+    }
+    @media screen and (max-height: 820px) {
+        .annoy-banner-inner {
+            padding-top: 5vh;
+        }
+    }
+    @media screen and (max-width: 820px) and (max-height: 820px) {
+        a.action {
+            bottom: 20vh;
+        }
+        a.annoy-banner-off {
+            bottom: 5vh;
+        }
+    }
+    @media screen and (max-height: 400px) {
+        a.action {
+            bottom: 30vh;
+        }
+    }
+
+    
+}
+.annoy-banner-on_blackout {
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    right: 0;
+    background: black;
+    color: white;
+    border-radius: 1em 0 0 0;
+    padding: .1em 1em;
+}
+
+
+
+.dynamic-insert.with-image {
+    min-height: 120px;
+    padding: 0;
+
+    a {
+        position: relative;
+        .text {
+        }
+        img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    }
+}

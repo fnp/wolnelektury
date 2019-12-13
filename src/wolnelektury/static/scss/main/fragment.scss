@@ -9,7 +9,11 @@
     .toggle {
         @include size(font-size, 11px);
         display: block;
-        @include size(padding, 5px 0);
+        @include size(padding, 5px 16px);
+    }
+    .source {
+        padding: 16px;
+        margin: 0;
     }
 }
 
