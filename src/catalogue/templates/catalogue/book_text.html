@@ -117,9 +117,9 @@
 
     {% for insert in inserts %}
       {% with text=insert.choose %}
-        <div class="dynamic-insert{% if text.image %} with-image{% endif %}" style="{% if text.text_color %}color: {{ text.text_color }};{% endif %}{% if text.background_color %}{{ text.background_color }}{% endif %}" data-paragraphs="{{ insert.paragraphs }}">
+        <div class="dynamic-insert{% if text.image %} with-image{% endif %}" style="{% if text.text_color %}color: {{ text.text_color }};{% endif %}" data-paragraphs="{{ insert.paragraphs }}">
           <a href="{% url 'club' %}">
-            <div class="text">
+            <div class="text" style="{% if text.background_color %}background-color:{{ text.background_color }}{% endif %}">
               {{ text.text }}
             </div>
             {% if text.image %}
