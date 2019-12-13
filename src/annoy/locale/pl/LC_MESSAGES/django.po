@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-13 13:42+0100\n"
+"PO-Revision-Date: 2019-12-13 13:45+0100\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.2.4\n"
+
+#: models.py:10
+msgid "place"
+msgstr "miejsce"
+
+#: models.py:12
+msgid "action label"
+msgstr "etykieta akcji"
+
+#: models.py:14
+msgid "If empty, whole banner will serve as a link"
+msgstr "Jeśli pusta, cały banner będzie służył jako link."
+
+#: models.py:16
+msgid "open label"
+msgstr "etykieta otwierania"
+
+#: models.py:17
+msgid "close label"
+msgstr "etykieta zamykania"
+
+#: models.py:18 models.py:84
+msgid "text"
+msgstr "tekst"
+
+#: models.py:19
+msgid "url"
+msgstr "URL"
+
+#: models.py:21
+msgid "priority"
+msgstr "priortytet"
+
+#: models.py:22
+msgid "Banners with higher priority come first."
+msgstr "Bannery z wyższym priorytetem mają pierwszeństwo."
+
+#: models.py:23
+msgid "since"
+msgstr "od"
+
+#: models.py:24
+msgid "until"
+msgstr "do"
+
+#: models.py:25
+msgid "show members"
+msgstr "widoczny dla członków klubu"
+
+#: models.py:26
+msgid "staff preview"
+msgstr "podgląd tylko dla zespołu"
+
+#: models.py:29
+msgid "banner"
+msgstr "banner"
+
+#: models.py:30
+msgid "banners"
+msgstr "bannery"
+
+#: models.py:65
+msgid "pararaphs"
+msgstr "akapity"
+
+#: models.py:69
+msgid "dynamic insert"
+msgstr "dynamiczna wstawka"
+
+#: models.py:70
+msgid "dynamic inserts"
+msgstr "dynamiczne wstawki"
+
+#: places.py:4
+msgid "Top of all pages."
+msgstr "U góry wszystkich stron"
+
+#: places.py:5
+msgid "Book page"
+msgstr "Strona książki"
+
+#: places.py:6
+msgid "Book text intermission"
+msgstr "Przerwa w treści książki"
+
+#: places.py:7
+msgid "Next to list of book fragments."
+msgstr "Obok listy fragmentów książki"
+
+#: places.py:8
+msgid "Blackout"
+msgstr "Blackout"

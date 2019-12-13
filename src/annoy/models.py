@@ -7,20 +7,23 @@ from .places import PLACES, PLACE_CHOICES
 
 
 class Banner(models.Model):
-    place = models.SlugField(choices=PLACE_CHOICES)
+    place = models.SlugField(_('place'), choices=PLACE_CHOICES)
     action_label = models.CharField(
+        _('action label'),
         max_length=255, blank=True,
-        help_text=_('')
+        help_text=_('If empty, whole banner will serve as a link')
     )
-    open_label = models.CharField(max_length=255, blank=True)
-    close_label = models.CharField(max_length=255, blank=True)
-    text = models.TextField()
-    url = models.CharField(max_length=1024)
-    priority = models.PositiveSmallIntegerField(default=0)
-    since = models.DateTimeField(null=True, blank=True)
-    until = models.DateTimeField(null=True, blank=True)
-    show_members = models.BooleanField(default=False)
-    staff_preview = models.BooleanField(default=False)
+    open_label = models.CharField(_('open label'), max_length=255, blank=True)
+    close_label = models.CharField(_('close label'), max_length=255, blank=True)
+    text = models.TextField(_('text'))
+    url = models.CharField(_('url'), max_length=1024)
+    priority = models.PositiveSmallIntegerField(
+        _('priority'), default=0,
+        help_text=_('Banners with higher priority come first.'))
+    since = models.DateTimeField(_('since'), null=True, blank=True)
+    until = models.DateTimeField(_('until'), null=True, blank=True)
+    show_members = models.BooleanField(_('show members'), default=False)
+    staff_preview = models.BooleanField(_('staff preview'), default=False)
 
     class Meta:
         verbose_name = _('banner')
