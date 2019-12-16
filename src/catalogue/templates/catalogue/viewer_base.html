@@ -12,6 +12,7 @@
     <link rel="icon" href="{% static "img/favicon.png" %}" type="image/x-icon" />
     {% stylesheet "book_text" %}
     {% block extrahead %}{% endblock %}
+    {% tracking_code %}
   </head>
   <body id="{% block body-id %}reader{% endblock %}">
     {% annoy_banner 'blackout' %}
@@ -66,7 +67,6 @@
     </script>
     {% javascript "book_text" %}
 
-    {% tracking_code %}
     {% block extrabody %}{% endblock %}
     <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>
   </body>

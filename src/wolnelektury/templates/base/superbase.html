@@ -30,6 +30,7 @@
       <link rel="manifest" href="/manifest.json">
       {% stylesheet "main" %}
       {% block extrahead %}{% endblock %}
+      {% tracking_code %}
     </head>
     <body id="{% block bodyid %}base{% endblock %}">
 
@@ -172,8 +173,6 @@
         var STATIC_URL = "{{ STATIC_URL }}";
       </script>
       {% javascript "base" %}
-
-      {% tracking_code %}
 
       {% block extrabody %}{% endblock %}
 

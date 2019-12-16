@@ -319,7 +319,7 @@ def book_text(request, slug):
     return render(request, 'catalogue/book_text.html', {
         'book': book,
         'book_text': book_text,
-        'inserts': DynamicTextInsert.objects.all()
+        'inserts': DynamicTextInsert.get_all(request)
     })
 
 

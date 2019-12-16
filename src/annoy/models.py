@@ -74,6 +74,14 @@ class DynamicTextInsert(models.Model):
     def __str__(self):
         return str(self.paragraphs)
 
+    @classmethod
+    def get_all(cls, request):
+        Membership = apps.get_model('club', 'Membership')
+        if Membership.is_active_for(request.user) and not request.user.is_staff:
+            return cls.objects.none()
+        return cls.objects.all()
+
+
     def choose(self):
         return self.dynamictextinserttext_set.order_by('?').first()
 

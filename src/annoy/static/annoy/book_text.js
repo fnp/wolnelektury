@@ -30,6 +30,7 @@
             var counter = 0;
             $(".paragraph, .stanza").each(function() {
                 var p = $(this);
+                if (p.prev().hasClass('anchor')) p = p.prev();
                 if (!underFold) {
                     if (p.offset().top > fold) {
                         underFold = true;

@@ -1,15 +1,17 @@
-<!-- Piwik --> 
+<!-- Matomo -->
 <script type="text/javascript">
-  var pkBaseURL = "{{ url }}";
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {{ id }});
-{% for ab, abval in AB.items %}
-  piwikTracker.setCustomVariable({{ forloop.counter }}, "{{ ab }}", "{{ abval }}", "page");
-{% endfor %}
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="{{ url }}piwik.php?idsite={{ id }}" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tracking Code -->
+  var _paq = window._paq || [];
+  {% for ab, abval in AB.items %}
+    _paq.push(['setCustomVariable', '{{ forloop.counter }}', "{{ ab }}", "{{ abval }}", "page"]);
+  {% endfor %}
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="{{ url }}";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '{{ id }}']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script><noscript><p><img src="{{ url }}matomo.php?idsite={{ id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
