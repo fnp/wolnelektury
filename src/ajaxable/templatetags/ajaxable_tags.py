@@ -4,8 +4,9 @@
 from django import template
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
-
 from ajaxable.utils import placeholdized
+
+
 register = template.Library()
 
 

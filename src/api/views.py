@@ -10,13 +10,12 @@ from django.views.generic.base import View
 from oauthlib.common import urlencode
 from oauthlib.oauth1 import RequestTokenEndpoint, AccessTokenEndpoint
 from oauthlib.oauth1 import AuthorizationEndpoint, OAuth1Error
-from api.models import KEY_SIZE, SECRET_SIZE
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_404
+from rest_framework.generics import RetrieveAPIView, get_object_or_404
 from catalogue.models import Book
-from .models import BookUserData
+from .models import BookUserData, KEY_SIZE, SECRET_SIZE
 from . import serializers
 from .request_validator import PistonRequestValidator
 from .utils import oauthlib_request, oauthlib_response, vary_on_auth
@@ -86,7 +85,7 @@ def oauth_user_auth(request):
 
         return render(request, 'oauth/authorize_token.html', {'form': form})
 
-    elif request.method == "POST":
+    if request.method == "POST":
         try:
             response = oauthlib_response(
                 endpoint.create_authorization_response(

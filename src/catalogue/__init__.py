@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import logging
-from django.conf import settings as settings
+from django.conf import settings
 from django.utils.module_loading import import_string
 from catalogue.utils import AppSettings
 
@@ -16,11 +16,11 @@ class Settings(AppSettings):
     # PDF needs TeXML + XeLaTeX, MOBI needs Calibre.
     DONT_BUILD = {'pdf', 'mobi'}
     FORMAT_ZIPS = {
-            'epub': 'wolnelektury_pl_epub',
-            'pdf': 'wolnelektury_pl_pdf',
-            'mobi': 'wolnelektury_pl_mobi',
-            'fb2': 'wolnelektury_pl_fb2',
-        }
+        'epub': 'wolnelektury_pl_epub',
+        'pdf': 'wolnelektury_pl_pdf',
+        'mobi': 'wolnelektury_pl_mobi',
+        'fb2': 'wolnelektury_pl_fb2',
+    }
 
     REDAKCJA_URL = "http://redakcja.wolnelektury.pl"
     GOOD_LICENSES = {r'CC BY \d\.\d', r'CC BY-SA \d\.\d'}
@@ -42,7 +42,10 @@ class Settings(AppSettings):
         for format_ in ['epub', 'pdf', 'mobi', 'fb2']:
             attname = 'ALL_%s_ZIP' % format_.upper()
             if hasattr(settings, attname):
-                logging.warn("%s is deprecated, use CATALOGUE_FORMAT_ZIPS[%s] instead", attname, format_)
+                logging.warn(
+                    "%s is deprecated, use CATALOGUE_FORMAT_ZIPS[%s] instead",
+                    attname, format_
+                )
                 value[format_] = getattr(settings, attname)
         return value
 

@@ -1,9 +1,9 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib import admin
+from django.urls import include, path
 from django.views.generic import RedirectView
 import django.views.static
 import catalogue.views
@@ -12,100 +12,97 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.main_page, name='main_page'),
-    url(r'^planowane/$', views.publish_plan, name='publish_plan'),
-    url(r'^widget\.html$', views.widget, name='widget'),
+    path('', views.main_page, name='main_page'),
+    path('planowane/', views.publish_plan, name='publish_plan'),
+    path('widget.html', views.widget, name='widget'),
 
-    url(r'^zegar/$', views.clock, name='clock'),
+    path('zegar/', views.clock, name='clock'),
 
     # Authentication
-    url(r'^uzytkownik/$', views.user_settings, name='user_settings'),
-    url(r'^uzytkownik/login/$', views.LoginFormView(), name='login'),
-    url(r'^uzytkownik/signup/$', views.RegisterFormView(), name='register'),
-    url(r'^uzytkownik/logout/$', views.logout_then_redirect, name='logout'),
-    url(r'^uzytkownik/zaloguj-utworz/$', views.LoginRegisterFormView(), name='login_register'),
-    url(r'^uzytkownik/social/signup/$', views.SocialSignupView.as_view(), name='socialaccount_signup'),
+    path('uzytkownik/', views.user_settings, name='user_settings'),
+    path('uzytkownik/login/', views.LoginFormView(), name='login'),
+    path('uzytkownik/signup/', views.RegisterFormView(), name='register'),
+    path('uzytkownik/logout/', views.logout_then_redirect, name='logout'),
+    path('uzytkownik/zaloguj-utworz/', views.LoginRegisterFormView(), name='login_register'),
+    path('uzytkownik/social/signup/', views.SocialSignupView.as_view(), name='socialaccount_signup'),
 ]
 
 urlpatterns += [
-    url(r'^katalog/', include('catalogue.urls')),
-    url(r'^opds/', include('opds.urls')),
-    url(r'^sugestia/', include('suggest.urls')),
-    url(r'^lesmianator/', include('lesmianator.urls')),
-    url(r'^przypisy/', include('dictionary.urls')),
-    url(r'^raporty/', include('reporting.urls')),
-    url(r'^info/', include('infopages.urls')),
-    url(r'^ludzie/', include('social.urls')),
-    url(r'^uzytkownik/', include('allauth.urls')),
-    url(r'^czekaj/', include('waiter.urls')),
-    url(r'^wesprzyj/', include('funding.urls')),
-    url(r'^ankieta/', include('polls.urls')),
-    url(r'^biblioteki/', include('libraries.urls')),
-    url(r'^newsletter/', include('newsletter.urls')),
-    url(r'^formularz/', include('forms_builder.forms.urls')),
-    url(r'^isbn/', include('isbn.urls')),
-    url(r'^messaging/', include('messaging.urls')),
+    path('katalog/', include('catalogue.urls')),
+    path('opds/', include('opds.urls')),
+    path('sugestia/', include('suggest.urls')),
+    path('lesmianator/', include('lesmianator.urls')),
+    path('przypisy/', include('dictionary.urls')),
+    path('raporty/', include('reporting.urls')),
+    path('info/', include('infopages.urls')),
+    path('ludzie/', include('social.urls')),
+    path('uzytkownik/', include('allauth.urls')),
+    path('czekaj/', include('waiter.urls')),
+    path('wesprzyj/', include('funding.urls')),
+    path('ankieta/', include('polls.urls')),
+    path('biblioteki/', include('libraries.urls')),
+    path('newsletter/', include('newsletter.urls')),
+    path('formularz/', include('forms_builder.forms.urls')),
+    path('isbn/', include('isbn.urls')),
+    path('messaging/', include('messaging.urls')),
 
-    url(r'^paypal/app-form/$', RedirectView.as_view(
+    path('paypal/app-form/', RedirectView.as_view(
         url='/towarzystwo/?app=1', permanent=False)),
-    url(r'^towarzystwo/dolacz/$', RedirectView.as_view(
+    path('towarzystwo/dolacz/', RedirectView.as_view(
         url='/towarzystwo/', permanent=False)),
 
-
-    url(r'^paypal/', include('paypal.urls')),
-    url(r'^powiadomienie/', include('push.urls')),
-    url(r'^towarzystwo/', include('club.urls')),
+    path('paypal/', include('paypal.urls')),
+    path('powiadomienie/', include('push.urls')),
+    path('towarzystwo/', include('club.urls')),
 
     # Admin panel
-    url(r'^admin/catalogue/book/import$', catalogue.views.import_book, name='import_book'),
-    url(r'^admin/catalogue/picture/import$', picture.views.import_picture, name='import_picture'),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', admin.site.urls),
+    path('admin/catalogue/book/import', catalogue.views.import_book, name='import_book'),
+    path('admin/catalogue/picture/import', picture.views.import_picture, name='import_picture'),
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
+    path('admin/', admin.site.urls),
 
     # API
-    url(r'^api/', include('api.urls')),
+    path('api/', include('api.urls')),
     # OAIPMH
-    url(r'^oaipmh/', include('oai.urls')),
+    path('oaipmh/', include('oai.urls')),
 
-    url(r'^szukaj/', include('search.urls')),
+    path('szukaj/', include('search.urls')),
 
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^forum/', include('machina.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('forum/', include('machina.urls')),
 ]
 
 urlpatterns += [
     # old static pages - redirected
-    url(r'^1procent/$', RedirectView.as_view(
+    path('1procent/', RedirectView.as_view(
         url='http://nowoczesnapolska.org.pl/wesprzyj_nas/', permanent=True)),
-    url(r'^epub/$', RedirectView.as_view(
+    path('epub/', RedirectView.as_view(
         url='/katalog/lektury/', permanent=False)),
-    url(r'^mozesz-nam-pomoc/$', RedirectView.as_view(
+    path('mozesz-nam-pomoc/', RedirectView.as_view(
         url='/info/wlacz-sie-w-prace/', permanent=True)),
-    url(r'^o-projekcie/$', RedirectView.as_view(
+    path('o-projekcie/', RedirectView.as_view(
         url='/info/o-projekcie/', permanent=True)),
-    url(r'^widget/$', RedirectView.as_view(
+    path('widget/', RedirectView.as_view(
         url='/info/widget/', permanent=True)),
-    url(r'^wolontariat/$', RedirectView.as_view(
+    path('wolontariat/', RedirectView.as_view(
         url='/info/wlacz-sie-w-prace/', permanent=False)),
 ]
 
 urlpatterns += [
-    url(r'^error-test/$', views.exception_test),
-    # url(r'^post-test/$', views.post_test),
+    # path('error-test/', views.exception_test),
+    # path('post-test/', views.post_test),
 ]
 
 
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
+        path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
 
 if settings.DEBUG:
     urlpatterns += [
         # Static files
-        url(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], django.views.static.serve,
+        path('%s<path:path>' % settings.MEDIA_URL[1:], django.views.static.serve,
            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        url(r'^%s(?P<path>.*)$' % settings.STATIC_URL[1:], django.views.static.serve,
-            {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
     ]

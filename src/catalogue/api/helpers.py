@@ -20,6 +20,4 @@ def books_after(books, after, new_api):
 def order_books(books, new_api):
     if new_api:
         return books.order_by('sort_key_author', 'sort_key', 'id')
-    else:
-        return books.order_by('slug')
-
+    return books.order_by('slug')

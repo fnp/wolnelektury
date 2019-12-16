@@ -81,10 +81,13 @@ def differentiate_tags(request, tags, ambiguous_slugs):
         })
     return render(
         request,
-        'catalogue/differentiate_tags.html', {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]})
+        'catalogue/differentiate_tags.html',
+        {'tags': tags, 'options': options, 'unparsed': ambiguous_slugs[1:]}
+    )
 
 
-def object_list(request, objects, fragments=None, related_tags=None, tags=None, list_type='books', extra=None):
+def object_list(request, objects, fragments=None, related_tags=None, tags=None,
+                list_type='books', extra=None):
     if not tags:
         tags = []
     tag_ids = [tag.pk for tag in tags]
@@ -94,7 +97,9 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
         related_tag_lists.append(related_tags)
     else:
         related_tag_lists.append(
-            Tag.objects.usage_for_queryset(objects, counts=True).exclude(category='set').exclude(pk__in=tag_ids))
+            Tag.objects.usage_for_queryset(
+                objects, counts=True
+            ).exclude(category='set').exclude(pk__in=tag_ids))
     if not (extra and extra.get('theme_is_set')):
         if fragments is None:
             if list_type == 'gallery':
@@ -102,7 +107,9 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None, 
             else:
                 fragments = Fragment.objects.filter(book__in=objects)
         related_tag_lists.append(
-            Tag.objects.usage_for_queryset(fragments, counts=True).filter(category='theme').exclude(pk__in=tag_ids)
+            Tag.objects.usage_for_queryset(
+                fragments, counts=True
+            ).filter(category='theme').exclude(pk__in=tag_ids)
             .only('name', 'sort_key', 'category', 'slug'))
         if isinstance(objects, QuerySet):
             objects = prefetch_relations(objects, 'author')
@@ -169,8 +176,7 @@ def analyse_tags(request, tag_str):
         chunks = tag_str.split('/')
         if len(chunks) == 2 and chunks[0] == 'autor':
             raise ResponseInstead(pdcounter_views.author_detail(request, chunks[1]))
-        else:
-            raise Http404
+        raise Http404
     except Tag.MultipleObjectsReturned as e:
         # Ask the user to disambiguate
         raise ResponseInstead(differentiate_tags(request, e.tags, e.ambiguous_slugs))
@@ -243,7 +249,9 @@ def tagged_object_list(request, tags, list_type):
         params = {
             'objects': Book.tagged.with_all(tags, audiobooks),
             'extra': {
-                'daisy': Book.tagged.with_all(tags, audiobooks.filter(media__type='daisy').distinct()),
+                'daisy': Book.tagged.with_all(
+                    tags, audiobooks.filter(media__type='daisy').distinct()
+                ),
             }
         }
     else:
@@ -342,11 +350,13 @@ def import_book(request):
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
             return HttpResponse(
-                    _("An error occurred: %(exception)s\n\n%(tb)s") % {'exception': exception, 'tb': tb},
-                    mimetype='text/plain')
+                _("An error occurred: %(exception)s\n\n%(tb)s") % {
+                    'exception': exception, 'tb': tb
+                },
+                mimetype='text/plain'
+            )
         return HttpResponse(_("Book imported successfully"))
-    else:
-        return HttpResponse(_("Error importing file: %r") % book_import_form.errors)
+    return HttpResponse(_("Error importing file: %r") % book_import_form.errors)
 
 
 # info views for API
@@ -405,7 +415,7 @@ class CustomPDFFormView(AjaxableFormView):
 
     def validate_object(self, obj, request):
         book = obj
-        if book.preview and not Membership_is_active_for(request.user):
+        if book.preview and not Membership.is_active_for(request.user):
             return HttpResponseRedirect(book.get_absolute_url())
         return super(CustomPDFFormView, self).validate_object(obj, request)
 

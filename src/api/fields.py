@@ -17,7 +17,7 @@ class AbsoluteURLField(serializers.ReadOnlyField):
         if view_args:
             for v in view_args:
                 fields = v.split(':', 1)
-                self.view_args[fields[0]] = fields[1] if len(fields)>1 else fields[0]
+                self.view_args[fields[0]] = fields[1] if len(fields) > 1 else fields[0]
 
     def to_representation(self, value):
         if self.view_name is not None:
@@ -29,7 +29,7 @@ class AbsoluteURLField(serializers.ReadOnlyField):
         return self.context['request'].build_absolute_uri(value)
 
 
-class LegacyMixin(object):
+class LegacyMixin:
     def to_representation(self, value):
         value = super(LegacyMixin, self).to_representation(value)
         non_null_fields = getattr(getattr(self, 'Meta', None), 'legacy_non_null_fields', [])

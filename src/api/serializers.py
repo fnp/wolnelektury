@@ -3,7 +3,7 @@
 #
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .fields import UserPremiumField, AbsoluteURLField, ThumbnailField
+from .fields import UserPremiumField
 from .models import BookUserData
 
 

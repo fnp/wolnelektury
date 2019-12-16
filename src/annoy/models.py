@@ -40,9 +40,9 @@ class Banner(models.Model):
 
         if hasattr(request, 'annoy_banner_exempt'):
             return cls.objects.none()
-        
+
         if settings.DEBUG:
-            assert place in PLACES, "Banner place `{}` must be defined in annoy.places.".format(place)
+            assert place in PLACES, f"Banner place `{place}` must be defined in annoy.places."
 
         n = now()
         banners = cls.objects.filter(
@@ -60,8 +60,8 @@ class Banner(models.Model):
             if Membership.is_active_for(request.user):
                 banners = banners.filter(show_members=True)
         return banners
-        
-        
+
+
 class DynamicTextInsert(models.Model):
     paragraphs = models.IntegerField(_('pararaphs'))
     url = models.CharField(max_length=1024)

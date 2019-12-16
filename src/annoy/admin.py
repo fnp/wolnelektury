@@ -7,7 +7,7 @@ from . import models
 class BannerAdmin(TranslationAdmin):
     list_display = ['place', 'text', 'priority', 'since', 'until', 'show_members', 'staff_preview']
 
-    
+
 admin.site.register(models.Banner, BannerAdmin)
 
 
@@ -27,7 +27,7 @@ class DynamicTextInsertTextInline(admin.TabularInline):
     fields = ['text', 'image', 'own_colors', 'background_color', 'text_color']
     extra = 0
     min_num = 1
-    
+
 
 
 class DynamicTextInsertAdmin(admin.ModelAdmin):

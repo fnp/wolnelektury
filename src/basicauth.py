@@ -44,7 +44,7 @@ def view_or_basicauth(view, request, test_func, realm="", *args, **kwargs):
     response.status_code = 401
     response['WWW-Authenticate'] = 'Basic realm="%s"' % realm
     return response
-    
+
 
 #
 def logged_in_or_basicauth(realm=""):

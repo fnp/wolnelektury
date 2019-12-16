@@ -9,7 +9,4 @@ class BannerTranslationOptions(TranslationOptions):
     fields = ('text',)
 
 
-
 translator.register(models.Banner, BannerTranslationOptions)
-
-

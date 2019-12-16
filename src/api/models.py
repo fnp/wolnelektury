@@ -30,14 +30,17 @@ def _pre_delete_handler(sender, instance, **kwargs):
         if sender == Tag:
             if instance.category in ('book', 'set'):
                 return
-            else:
-                category = instance.category
+            category = instance.category
         else:
             category = None
         content_type = ContentType.objects.get_for_model(sender)
         Deleted.objects.create(
-            content_type=content_type, object_id=instance.id, created_at=instance.created_at, category=category,
-            slug=instance.slug)
+            content_type=content_type,
+            object_id=instance.id,
+            created_at=instance.created_at,
+            category=category,
+            slug=instance.slug
+        )
 pre_delete.connect(_pre_delete_handler)
 
 
@@ -57,7 +60,6 @@ class BookUserData(models.Model):
         instance.complete = state == 'complete'
         instance.save()
         return instance
-from django.conf import settings
 
 
 KEY_SIZE = 18
@@ -85,7 +87,10 @@ class Consumer(models.Model):
     key = models.CharField(max_length=KEY_SIZE)
     secret = models.CharField(max_length=SECRET_SIZE)
     status = models.CharField(max_length=16, choices=CONSUMER_STATES, default='pending')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, null=True, blank=True, related_name='consumers')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, models.CASCADE,
+        null=True, blank=True, related_name='consumers'
+    )
 
     def __str__(self):
         return "Consumer %s with key %s" % (self.name, self.key)
@@ -101,7 +106,10 @@ class Token(models.Model):
     token_type = models.IntegerField(choices=TOKEN_TYPES)
     timestamp = models.IntegerField()
     is_approved = models.BooleanField(default=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, null=True, blank=True, related_name='tokens')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, models.CASCADE,
+        null=True, blank=True, related_name='tokens'
+    )
     consumer = models.ForeignKey(Consumer, models.CASCADE)
 
     def __str__(self):

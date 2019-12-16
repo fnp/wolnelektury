@@ -133,8 +133,9 @@ class BuildTxt(BuildEbook):
 class BuildPdf(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_pdf(morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
-                            ilustr_path=gallery_path(wldoc.book_info.url.slug), customizations=['notoc'])
+        return wldoc.as_pdf(
+            morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
+            ilustr_path=gallery_path(wldoc.book_info.url.slug), customizations=['notoc'])
 
     def build(self, fieldfile):
         BuildEbook.build(self, fieldfile)
@@ -203,8 +204,9 @@ class BuildHtml(BuildEbook):
                     if lang == settings.LANGUAGE_CODE:
                         # Allow creating themes if book in default language.
                         tag, created = Tag.objects.get_or_create(
-                                            slug=slugify(theme_name),
-                                            category='theme')
+                            slug=slugify(theme_name),
+                            category='theme'
+                        )
                         if created:
                             tag.name = theme_name
                             setattr(tag, "name_%s" % lang, theme_name)
@@ -215,7 +217,10 @@ class BuildHtml(BuildEbook):
                     elif lang is not None:
                         # Don't create unknown themes in non-default languages.
                         try:
-                            tag = Tag.objects.get(category='theme', **{"name_%s" % lang: theme_name})
+                            tag = Tag.objects.get(
+                                category='theme',
+                                **{"name_%s" % lang: theme_name}
+                            )
                         except Tag.DoesNotExist:
                             pass
                         else:
@@ -227,7 +232,12 @@ class BuildHtml(BuildEbook):
                 short_text = truncate_html_words(text, 15)
                 if text == short_text:
                     short_text = ''
-                new_fragment = Fragment.objects.create(anchor=fragment.id, book=book, text=text, short_text=short_text)
+                new_fragment = Fragment.objects.create(
+                    anchor=fragment.id,
+                    book=book,
+                    text=text,
+                    short_text=short_text
+                )
 
                 new_fragment.save()
                 new_fragment.tags = set(meta_tags + themes)

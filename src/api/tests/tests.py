@@ -2,25 +2,25 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from base64 import b64encode
-from os import path
 import hashlib
 import hmac
-import json
 from io import BytesIO
+import json
+from os import path
 from time import time
+from unittest.mock import patch
 from urllib.parse import quote, urlencode, parse_qs
 
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.test.utils import override_settings
-from unittest.mock import patch
-from api.models import Consumer, Token
 
 from catalogue.models import Book, Tag
 from picture.forms import PictureImportForm
 from picture.models import Picture
 import picture.tests
+from api.models import Consumer, Token
 
 
 @override_settings(
@@ -275,7 +275,11 @@ class OAuth1Tests(ApiTest):
 
         # Request token authorization.
         self.client.login(username='test', password='test')
-        response = self.client.get('/api/oauth/authorize/?oauth_token=%s&oauth_callback=test://oauth.callback/' % request_token)
+        response = self.client.get(
+            '/api/oauth/authorize/?oauth_token=%s&oauth_callback=test://oauth.callback/' % (
+                request_token,
+            )
+        )
         post_data = response.context['form'].initial
 
         response = self.client.post('/api/oauth/authorize/?' + urlencode(post_data))

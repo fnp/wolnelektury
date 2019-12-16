@@ -4,11 +4,11 @@
 from os.path import abspath, dirname, join
 import tempfile
 from traceback import extract_stack
+from django.conf import settings
 from django.test import TestCase
 from django.test.utils import override_settings
 from slugify import slugify
 from librarian import WLURI
-from django.conf import settings
 
 
 @override_settings(
@@ -17,8 +17,8 @@ from django.conf import settings
     NO_SEARCH_INDEX=True,
     CELERY_TASK_ALWAYS_EAGER=True,
     CACHES={
-            'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
-        },
+        'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+    },
     SOLR=settings.SOLR_TEST,
 )
 class WLTestCase(TestCase):
@@ -28,7 +28,7 @@ class WLTestCase(TestCase):
     longMessage = True
 
 
-class PersonStub(object):
+class PersonStub:
 
     def __init__(self, first_names, last_name):
         self.first_names = first_names
@@ -38,7 +38,7 @@ class PersonStub(object):
         return " ".join(self.first_names + (self.last_name,))
 
 
-class BookInfoStub(object):
+class BookInfoStub:
     _empty_fields = ['cover_url', 'variant_of']
     # allow single definition for multiple-value fields
     _salias = {
@@ -59,10 +59,9 @@ class BookInfoStub(object):
         except KeyError as e:
             if key in self._empty_fields:
                 return None
-            elif key in self._salias:
+            if key in self._salias:
                 return [getattr(self, self._salias[key])]
-            else:
-                raise AttributeError(e)
+            raise AttributeError(e)
 
     def to_dict(self):
         return dict((key, str(value)) for key, value in self.__dict.items())

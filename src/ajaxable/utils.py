@@ -2,23 +2,23 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from functools import wraps
+import json
 
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 from django.utils.encoding import force_text
 from django.utils.functional import Promise
 from django.utils.http import urlquote_plus
-import json
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.vary import vary_on_headers
 from honeypot.decorators import verify_honeypot_value
 
 
 class LazyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Promise):
-            return force_text(obj)
-        return obj
+    def default(self, o):
+        if isinstance(o, Promise):
+            return force_text(o)
+        return o
 
 
 def method_decorator(function_decorator):
@@ -40,8 +40,7 @@ def require_login(request):
     """Return 403 if request is AJAX. Redirect to login page if not."""
     if request.is_ajax():
         return HttpResponseForbidden('Not logged in')
-    else:
-        return HttpResponseRedirect('/uzytkownicy/zaloguj')  # next?=request.build_full_path())
+    return HttpResponseRedirect('/uzytkownicy/zaloguj')  # next?=request.build_full_path())
 
 
 def placeholdized(form):
@@ -50,7 +49,7 @@ def placeholdized(form):
     return form
 
 
-class AjaxableFormView(object):
+class AjaxableFormView:
     """Subclass this to create an ajaxable view for any form.
 
     In the subclass, provide at least form_class.
@@ -107,7 +106,7 @@ class AjaxableFormView(object):
                     response_data.update(add_args)
                 if not request.is_ajax() and response_data['redirect']:
                     return HttpResponseRedirect(urlquote_plus(
-                            response_data['redirect'], safe='/?=&'))
+                        response_data['redirect'], safe='/?=&'))
             elif request.is_ajax():
                 # Form was sent with errors. Send them back.
                 if self.form_prefix:
@@ -139,17 +138,17 @@ class AjaxableFormView(object):
         if self.placeholdize:
             form = placeholdized(form)
         context = {
-                self.formname: form,
-                "title": title,
-                "honeypot": self.honeypot,
-                "placeholdize": self.placeholdize,
-                "submit": self.submit,
-                "action": self.action,
-                "response_data": response_data,
-                "ajax_template": self.template,
-                "view_args": args,
-                "view_kwargs": kwargs,
-            }
+            self.formname: form,
+            "title": title,
+            "honeypot": self.honeypot,
+            "placeholdize": self.placeholdize,
+            "submit": self.submit,
+            "action": self.action,
+            "response_data": response_data,
+            "ajax_template": self.template,
+            "view_args": args,
+            "view_kwargs": kwargs,
+        }
         context.update(self.extra_context(request, obj))
         return render(request, template, context)
 
@@ -163,8 +162,7 @@ class AjaxableFormView(object):
             if message:
                 output = "<div class='normal-text'>" + message + "</div>" + output
             return HttpResponse(output)
-        else:
-            return HttpResponseRedirect(path)
+        return HttpResponseRedirect(path)
 
     def get_object(self, request, *args, **kwargs):
         """Override to parse view args and get some associated data."""

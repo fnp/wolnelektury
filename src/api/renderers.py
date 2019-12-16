@@ -11,4 +11,3 @@ class LegacyXMLRenderer(XMLRenderer):
 
     item_tag_name = 'resource'
     root_tag_name = 'response'
-

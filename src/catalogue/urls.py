@@ -1,7 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf.urls import url
+from django.urls import path, re_path
 from django.db.models import Max
 from django.views.generic import ListView, RedirectView
 from catalogue.feeds import AudiobookFeed
@@ -10,72 +10,71 @@ from catalogue import views
 import picture.views
 
 
-SLUG = r'[a-z0-9-]*'
-
 urlpatterns = [
-    url(r'^obraz/strona/$', picture.views.picture_page, name='picture_page'),
+    path('obraz/strona/', picture.views.picture_page, name='picture_page'),
     # pictures - currently pictures are coupled with catalogue, hence the url is here
-    url(r'^obraz/$', picture.views.picture_list_thumb, name='picture_list_thumb'),
-    url(r'^obraz/(?P<slug>%s).html$' % SLUG, picture.views.picture_viewer, name='picture_viewer'),
-    url(r'^obraz/(?P<slug>%s)/$' % SLUG, picture.views.picture_detail, name='picture_detail'),
+    path('obraz/', picture.views.picture_list_thumb, name='picture_list_thumb'),
+    path('obraz/<slug:slug>.html', picture.views.picture_viewer, name='picture_viewer'),
+    path('obraz/<slug:slug>/', picture.views.picture_detail, name='picture_detail'),
 
     # old search page - redirected
-    url(r'^szukaj/$', RedirectView.as_view(
-            url='/szukaj/', query_string=True, permanent=True)),
+    path('szukaj/', RedirectView.as_view(
+        url='/szukaj/', query_string=True, permanent=True)),
 
-    url(r'^$', views.catalogue, name='catalogue'),
+    path('', views.catalogue, name='catalogue'),
 
-    url(r'^autor/$', views.tag_catalogue, {'category': 'author'}, name='author_catalogue'),
-    url(r'^epoka/$', views.tag_catalogue, {'category': 'epoch'}, name='epoch_catalogue'),
-    url(r'^gatunek/$', views.tag_catalogue, {'category': 'genre'}, name='genre_catalogue'),
-    url(r'^rodzaj/$', views.tag_catalogue, {'category': 'kind'}, name='kind_catalogue'),
-    url(r'^motyw/$', views.tag_catalogue, {'category': 'theme'}, name='theme_catalogue'),
+    path('autor/', views.tag_catalogue, {'category': 'author'}, name='author_catalogue'),
+    path('epoka/', views.tag_catalogue, {'category': 'epoch'}, name='epoch_catalogue'),
+    path('gatunek/', views.tag_catalogue, {'category': 'genre'}, name='genre_catalogue'),
+    path('rodzaj/', views.tag_catalogue, {'category': 'kind'}, name='kind_catalogue'),
+    path('motyw/', views.tag_catalogue, {'category': 'theme'}, name='theme_catalogue'),
 
-    url(r'^galeria/$', views.gallery, name='gallery'),
-    url(r'^kolekcje/$', views.collections, name='catalogue_collections'),
+    path('galeria/', views.gallery, name='gallery'),
+    path('kolekcje/', views.collections, name='catalogue_collections'),
 
-    url(r'^lektury/$', views.literature, name='book_list'),
-    url(r'^lektury/(?P<slug>[a-zA-Z0-9-]+)/$', views.collection, name='collection'),
-    url(r'^audiobooki/$', views.audiobooks, name='audiobook_list'),
-    url(r'^daisy/$', views.daisy_list, name='daisy_list'),
-    url(r'^nowe/$', ListView.as_view(
+    path('lektury/', views.literature, name='book_list'),
+    path('lektury/<slug:slug>/', views.collection, name='collection'),
+    path('audiobooki/', views.audiobooks, name='audiobook_list'),
+    path('daisy/', views.daisy_list, name='daisy_list'),
+    path('nowe/', ListView.as_view(
         queryset=Book.objects.filter(parent=None).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),
-    url(r'^nowe/audiobooki/$', ListView.as_view(
+    path('nowe/audiobooki/', ListView.as_view(
         queryset=Book.objects.filter(media__type='ogg').annotate(m=Max('media__uploaded_at')).order_by('-m'),
         template_name='catalogue/recent_audiobooks_list.html'), name='recent_audiobooks_list'),
-    url(r'^nowe/daisy/$', ListView.as_view(
+    path('nowe/daisy/', ListView.as_view(
         queryset=Book.objects.filter(media__type='daisy').annotate(m=Max('media__uploaded_at')).order_by('-m'),
         template_name='catalogue/recent_daisy_list.html'), name='recent_daisy_list'),
 
-    url(r'^custompdf/(?P<slug>%s)/$' % SLUG, views.CustomPDFFormView(), name='custom_pdf_form'),
+    path('custompdf/<slug:slug>/', views.CustomPDFFormView(), name='custom_pdf_form'),
 
-    url(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
+    re_path(r'^audiobooki/(?P<type>mp3|ogg|daisy|all).xml$', AudiobookFeed(), name='audiobook_feed'),
 
-    url(r'^pobierz/(?P<key>.*)/(?P<slug>%s).(?P<format_>[a-z0-9]*)$' % SLUG, views.embargo_link, name='embargo_link'),
+    path('pobierz/<key>/<slug:slug>.<slug:format_>', views.embargo_link, name='embargo_link'),
 
     # zip
-    url(r'^zip/pdf\.zip$', views.download_zip, {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
-    url(r'^zip/epub\.zip$', views.download_zip, {'format': 'epub', 'slug': None}, 'download_zip_epub'),
-    url(r'^zip/mobi\.zip$', views.download_zip, {'format': 'mobi', 'slug': None}, 'download_zip_mobi'),
-    url(r'^zip/mp3/(?P<slug>%s)\.zip' % SLUG, views.download_zip, {'format': 'mp3'}, 'download_zip_mp3'),
-    url(r'^zip/ogg/(?P<slug>%s)\.zip' % SLUG, views.download_zip, {'format': 'ogg'}, 'download_zip_ogg'),
+    path('zip/pdf.zip', views.download_zip, {'format': 'pdf', 'slug': None}, 'download_zip_pdf'),
+    path('zip/epub.zip', views.download_zip, {'format': 'epub', 'slug': None}, 'download_zip_epub'),
+    path('zip/mobi.zip', views.download_zip, {'format': 'mobi', 'slug': None}, 'download_zip_mobi'),
+    path('zip/mp3/<slug:slug>.zip', views.download_zip, {'format': 'mp3'}, 'download_zip_mp3'),
+    path('zip/ogg/<slug:slug>.zip', views.download_zip, {'format': 'ogg'}, 'download_zip_ogg'),
 
     # Public interface. Do not change this URLs.
-    url(r'^lektura/(?P<slug>%s)\.html$' % SLUG, views.book_text, name='book_text'),
-    url(r'^lektura/(?P<slug>%s)/audiobook/$' % SLUG, views.player, name='book_player'),
-    url(r'^lektura/(?P<slug>%s)/$' % SLUG, views.book_detail, name='book_detail'),
-    url(r'^lektura/(?P<slug>%s)/motyw/(?P<theme_slug>[a-zA-Z0-9-]+)/$' % SLUG,
-        views.book_fragments, name='book_fragments'),
+    path('lektura/<slug:slug>.html', views.book_text, name='book_text'),
+    path('lektura/<slug:slug>/audiobook/', views.player, name='book_player'),
+    path('lektura/<slug:slug>/', views.book_detail, name='book_detail'),
+    path('lektura/<slug:slug>/motyw/<slug:theme_slug>/',
+         views.book_fragments, name='book_fragments'),
 
-    url(r'^okladka-ridero/(?P<slug>%s).png$' % SLUG, views.ridero_cover),
-    url(r'^isbn/(?P<book_format>(pdf|epub|mobi|txt|html))/(?P<slug>%s)/' % SLUG, views.get_isbn),
+    path('okladka-ridero/<slug:slug>.png', views.ridero_cover),
+    path('isbn/<slug:book_format>/<slug:slug>/', views.get_isbn),
 
     # This should be the last pattern.
-    url(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'gallery'},
+    re_path(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'gallery'},
         name='tagged_object_list_gallery'),
-    url(r'^audiobooki/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'audiobooks'},
+    re_path(r'^audiobooki/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'audiobooks'},
         name='tagged_object_list_audiobooks'),
-    url(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'books'},
+    re_path(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'books'},
         name='tagged_object_list'),
+
 ]

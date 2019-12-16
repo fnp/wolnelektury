@@ -2,8 +2,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
-from django import forms
-
 from catalogue.models import Tag, Book, Fragment, BookMedia, Collection, Source
 
 
@@ -29,7 +27,9 @@ class MediaInline(admin.TabularInline):
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'created_at', 'has_epub_file', 'has_html_file', 'has_description',)
+    list_display = (
+        'title', 'slug', 'created_at', 'has_epub_file', 'has_html_file', 'has_description',
+    )
     search_fields = ('title',)
     ordering = ('title',)
 

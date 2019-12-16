@@ -25,10 +25,10 @@ class BookImportLogicTests(WLTestCase):
         )
 
         self.expected_tags = [
-           ('author', 'jim-lazy'),
-           ('genre', 'x-genre'),
-           ('epoch', 'x-epoch'),
-           ('kind', 'x-kind'),
+            ('author', 'jim-lazy'),
+            ('genre', 'x-genre'),
+            ('epoch', 'x-epoch'),
+            ('kind', 'x-kind'),
         ]
         self.expected_tags.sort()
 
@@ -97,8 +97,14 @@ class BookImportLogicTests(WLTestCase):
         """
 
         book = models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
-        self.assertTrue([('theme', 'love')],
-                     book.fragments.all()[0].tags.filter(category='theme').values_list('category', 'slug'))
+        self.assertEqual(
+            [('theme', 'love')],
+            list(
+                book.fragments.all()[0].tags.filter(
+                    category='theme'
+                ).values_list('category', 'slug')
+            )
+        )
 
     def test_book_with_no_theme(self):
         """ fragments with no themes shouldn't be created at all """
@@ -180,10 +186,10 @@ class BookImportLogicTests(WLTestCase):
         self.book_info.epochs = self.book_info.epoch, 'Y-Epoch',
 
         self.expected_tags.extend([
-           ('author', 'joe-dilligent'),
-           ('genre', 'y-genre'),
-           ('epoch', 'y-epoch'),
-           ('kind', 'y-kind'),
+            ('author', 'joe-dilligent'),
+            ('genre', 'y-genre'),
+            ('epoch', 'y-epoch'),
+            ('kind', 'y-kind'),
         ])
         self.expected_tags.sort()
 
@@ -287,10 +293,10 @@ class TreeImportTest(WLTestCase):
 
     def test_ok(self):
         self.assertEqual(
-                list(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
-                [self.parent],
-                "There should be only parent on common tag page."
-            )
+            list(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
+            [self.parent],
+            "There should be only parent on common tag page."
+        )
         # pies = models.Tag.objects.get(slug='pies')
         themes = self.parent.related_themes()
         self.assertEqual(len(themes), 1, "There should be child theme in parent theme counter.")
@@ -308,10 +314,10 @@ class TreeImportTest(WLTestCase):
         models.Book.from_text_and_meta(
             ContentFile(child_text), self.child_info, overwrite=True)
         self.assertEqual(
-                list(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
-                [self.parent],
-                "There should only be parent on common tag page."
-            )
+            list(self.client.get('/katalog/gatunek/x-genre/').context['object_list']),
+            [self.parent],
+            "There should only be parent on common tag page."
+        )
         # pies = models.Tag.objects.get(slug='pies')
         # kot = models.Tag.objects.get(slug='kot')
         self.assertEqual(len(self.parent.related_themes()), 2,
@@ -396,7 +402,7 @@ class MultilingualBookImportTest(WLTestCase):
         models.Book.from_text_and_meta(ContentFile(book_text), self.eng_info)
 
         self.assertEqual(
-            set([b.language for b in models.Book.objects.all()]),
+            {b.language for b in models.Book.objects.all()},
             {'pol', 'eng'},
             'Books imported in wrong languages.'
         )

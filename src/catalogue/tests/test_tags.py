@@ -96,8 +96,9 @@ class TagRelatedTagsTests(WLTestCase):
                 </akap></opowiadanie></utwor>
                 """ % info.title
             book = models.Book.from_text_and_meta(
-                    ContentFile(book_text.encode('utf-8')),
-                    info)
+                ContentFile(book_text.encode('utf-8')),
+                info
+            )
             book.save()
 
         tag_empty = models.Tag(name='Empty tag', slug='empty', category='author')

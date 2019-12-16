@@ -1,7 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 from django.http.response import HttpResponse
 from django.views.decorators.cache import never_cache
@@ -16,7 +16,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super(SubscriptionAdmin, self).get_urls()
         my_urls = [
-            url(r'^extract/$', self.extract_subscribers, name='extract_subscribers'),
+            path('extract/', self.extract_subscribers, name='extract_subscribers'),
         ]
         return my_urls + urls
 
