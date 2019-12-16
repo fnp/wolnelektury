@@ -7,22 +7,31 @@
       {{ banner.open_label }}
     </a>
   {% endif %}
-  <div class="annoy-banner annoy-banner_{{ banner.place }}" id="annoy-banner-{{ banner.id }}">
+  <div class="annoy-banner annoy-banner_{{ banner.place }}{% if banner.image %} with-image{% endif %}" id="annoy-banner-{{ banner.id }}">
+    {% if not banner.action_label %}
+      <a href="{{ banner.url }}">
+    {% endif %}
     <div class="annoy-banner-inner">
-      {% if banner.action_label %}
+
+      {% if banner.image %}
+        <img src="{{ banner.image.url }}">
+      {% endif %}
+      <div class="text">
         {{ banner.text|safe|linebreaks }}
+      </div>
+
+      {% if banner.action_label %}
         <a class="action" href="{{ banner.url }}">
           {{ banner.action_label }}
         </a>
-      {% else %}
-        <a href="{{ banner.url }}">
-          {{ banner.text|safe|linebreaks }}
-        </a>
-      {% endif %}
-      {% if closable %}
-        <a class='annoy-banner-off annoy-banner-off_{{ banner.place }}'>{{ banner.close_label|default:"x" }}</a>
       {% endif %}
     </div>
+    {% if not banner.action_label %}
+      </a>
+    {% endif %}
+    {% if closable %}
+      <a class='annoy-banner-off annoy-banner-off_{{ banner.place }}'>{{ banner.close_label|default:"x" }}</a>
+    {% endif %}
   </div>
 
 {% endif %}

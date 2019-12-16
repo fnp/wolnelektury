@@ -16,6 +16,7 @@ class Banner(models.Model):
     open_label = models.CharField(_('open label'), max_length=255, blank=True)
     close_label = models.CharField(_('close label'), max_length=255, blank=True)
     text = models.TextField(_('text'))
+    image = models.FileField(_('image'), upload_to='annoy/banners/', blank=True)
     url = models.CharField(_('url'), max_length=1024)
     priority = models.PositiveSmallIntegerField(
         _('priority'), default=0,
@@ -79,7 +80,8 @@ class DynamicTextInsert(models.Model):
 
 class DynamicTextInsertText(models.Model):
     insert = models.ForeignKey(DynamicTextInsert, models.CASCADE)
+    own_colors = models.BooleanField(default=False)
     background_color = models.CharField(max_length=10, blank=True)
     text_color = models.CharField(max_length=10, blank=True)
     text = models.TextField(_('text'))
-    image = models.FileField(blank=True)
+    image = models.FileField(blank=True, upload_to='annoy/inserts/')

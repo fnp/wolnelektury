@@ -1,0 +1,14 @@
+{% load thumbnail %}
+
+{% with text=insert.choose %}
+  <div class="dynamic-insert{% if text.image %} with-image{% endif %}" style="{% if text.own_colors %}background-color: {{ text.background_color }};{% endif %}" data-paragraphs="{{ insert.paragraphs }}">
+    <a href="{% url 'club' %}">
+      <div class="text" style="{% if text.own_colors %}color:{{ text.text_color }}{% endif %}">
+        {{ text.text|safe|linebreaks }}
+      </div>
+      {% if text.image %}
+        <img src="{% thumbnail text.image '120x120' as thumb %}{{ thumb.url }}{% empty %}{{ text.image.url }}{% endthumbnail %}">
+      {% endif %}
+    </a>
+  </div>
+{% endwith %}

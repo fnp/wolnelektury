@@ -11,9 +11,23 @@ class BannerAdmin(TranslationAdmin):
 admin.site.register(models.Banner, BannerAdmin)
 
 
+class DTITForm(forms.ModelForm):
+    class Meta:
+        model = models.DynamicTextInsertText
+        fields = '__all__'
+        widgets = {
+            'background_color': forms.TextInput(attrs={"type": "color"}),
+            'text_color': forms.TextInput(attrs={"type": "color"}),
+        }
+
+
 class DynamicTextInsertTextInline(admin.TabularInline):
     model = models.DynamicTextInsertText
-    fields = ['text', 'image', 'background_color', 'text_color']
+    form = DTITForm
+    fields = ['text', 'image', 'own_colors', 'background_color', 'text_color']
+    extra = 0
+    min_num = 1
+    
 
 
 class DynamicTextInsertAdmin(admin.ModelAdmin):
