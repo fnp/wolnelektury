@@ -42,11 +42,11 @@ class JoinView(CreateView):
             request.session['from_app'] = True
         elif request.session and 'from_app' in request.session:
             del request.session['from_app']
-        schedule = get_active_schedule(request.user)
-        if schedule is not None:
-            return HttpResponseRedirect(schedule.get_absolute_url())
-        else:
-            return super(JoinView, self).get(request)
+        #schedule = get_active_schedule(request.user)
+        #if schedule is not None:
+        #    return HttpResponseRedirect(schedule.get_absolute_url())
+        #else:
+        return super(JoinView, self).get(request)
 
     def get_context_data(self, **kwargs):
         c = super(JoinView, self).get_context_data(**kwargs)
@@ -119,8 +119,14 @@ class DummyPaymentView(TemplateView):
         return HttpResponseRedirect(schedule.get_absolute_url())
 
 
-class PayUPayment(payu_views.Payment):
-    pass
+class PayUPayment(DetailView):
+    model = models.Schedule
+    slug_field = slug_url_kwarg = 'key'
+
+    def get(self, request, key):
+        schedule = self.get_object()
+        return HttpResponseRedirect(schedule.initiate_payment(request))
+
 
 
 class PayURecPayment(payu_views.RecPayment):

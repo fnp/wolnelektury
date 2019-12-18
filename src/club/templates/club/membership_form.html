@@ -1,6 +1,7 @@
 {% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
 {% load chunks %}
 {% load thumbnail %}
+{% load club %}
 
 {% block titleextra %}Uwalniaj książki razem z nami!{% endblock %}
 {% block metadescription %}„Wolne Lektury należy wspierać, bo są” - Filip Springer{% endblock %}
@@ -122,6 +123,12 @@
     <h1>Wspieraj Wolne Lektury</h1>
     <h2 style="margin-bottom:2em;">
       {% if membership %}Dziękujemy za Twoje dotychczasowe zaangażowanie! Wesprzyj nas ponownie!{% else %}Dziękujemy, że chcesz razem z nami uwalniać książki!{% endif %}</h2>
+
+    {% with schedule=request.user|active_schedule %}
+     {% if schedule %}
+      <p><a href="{{ schedule.get_absolute_url }}">Zobacz swoje dotychczasowe wsparcie.</a></p>
+     {% endif %}
+    {% endwith %}
 
     {% chunk 'club_form_top' %}
     <div class='twocol'>
