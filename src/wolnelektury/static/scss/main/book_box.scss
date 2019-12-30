@@ -390,6 +390,15 @@
     @include size(margin-left, 139px + 15px);
   }
 
+  &.book-box-tools-warn {
+     font-size: 1rem;
+     margin-bottom: 1em;
+     max-width: 32em;
+     border: 1px solid #888;
+     padding: 1em;
+  }
+
+
   li {
     @include mono;
     margin-top: 0;

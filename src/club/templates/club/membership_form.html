@@ -10,6 +10,22 @@
 {% block body %}
 
   <style>
+
+.methods {
+ color: #888;
+line-height: 30px;
+}
+.methods .method {
+  border: 1px solid #888;
+  border-radius: 5px;
+display: inline-block;
+padding: 0 5px;
+}
+.methods img {
+height: 30px;
+margin-right: 10px;
+vertical-align: middle;
+}
    .payment-method.disabled {
        opacity: .5;
        filter: grayscale(100%);
@@ -165,6 +181,7 @@
             <span class="button">inna kwota</span>
             <input type="number" min="{{ club.min_amount }}">
           </span>
+<div class="methods">{% include 'club/payment/payu.html' %}</div>
         </div>
 
 
@@ -177,6 +194,7 @@
             <span class="button">inna kwota</span>
             <input type="number" min="{{ club.min_amount }}">
           </span>
+<div class="methods">{% include 'club/payment/payu-re.html' %}</div>
         </div>
 
         <h3>
@@ -185,7 +203,7 @@
 
         <p>
           {{ form.email }}</p>
-        <button class="submit" type='submit'>Dołącz</button>
+        <button class="submit" type='submit'>Wpłać</button>
       </form>
 
       <div class="club-form-info">

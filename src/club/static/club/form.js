@@ -16,5 +16,9 @@ $(function() {
     }
     update_methods();
     $("#payment-form .plan").change(update_methods);
-    
+
+
+    $("#payment-form").submit(function() {
+        _paq.push(['trackGoal', 12, $("#id_amount").val()]);
+    });
 });

@@ -56,6 +56,7 @@
   {% endfor %}
 
 
+{% with extra_info=book.get_extra_info_json %}
   {% if extra_info.source_url %}
     <div class="white-box">
       <a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}
@@ -78,5 +79,6 @@
   <div class="white-box">
     <a href="{% url 'poem_from_book' book.slug %}">{% trans "Mix this book" %}</a>
   </div>
+{% endwith %}
 
 {% endblock %}
