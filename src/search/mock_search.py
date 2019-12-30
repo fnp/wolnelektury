@@ -23,7 +23,7 @@ class Search(Mock):
     def _find_some_books(query_terms=None, max_results=20):
         from .index import SearchResult
 
-        qs = Book.objects.order_by('?')
+        qs = Book.objects.filter(findable=True).order_by('?')
         results = []
         for book in qs[:randint(1, max_results)]:
             doc = {

@@ -74,6 +74,7 @@ class Book(models.Model):
     preview = models.BooleanField(_('preview'), default=False)
     preview_until = models.DateField(_('preview until'), blank=True, null=True)
     preview_key = models.CharField(max_length=32, blank=True, null=True)
+    findable = models.BooleanField(_('findable'), default=True, db_index=True)
 
     # files generated during publication
     cover = EbookField(
@@ -391,7 +392,7 @@ class Book(models.Model):
                 format_)
 
         field_name = "%s_file" % format_
-        books = Book.objects.filter(parent=None).exclude(**{field_name: ""}).exclude(preview=True)
+        books = Book.objects.filter(parent=None).exclude(**{field_name: ""}).exclude(preview=True).exclude(findable=False)
         paths = [(pretty_file_name(b), getattr(b, field_name).path) for b in books.iterator()]
         return create_zip(paths, app_settings.FORMAT_ZIPS[format_])
 
@@ -401,6 +402,8 @@ class Book(models.Model):
         return create_zip(paths, "%s_%s" % (self.slug, format_))
 
     def search_index(self, book_info=None, index=None, index_tags=True, commit=True):
+        if not self.findable:
+            return
         if index is None:
             from search.index import Index
             index = Index()
@@ -455,7 +458,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           search_index_tags=True, remote_gallery_url=None, days=0):
+                           search_index_tags=True, remote_gallery_url=None, days=0, findable=True):
         if dont_build is None:
             dont_build = set()
         dont_build = set.union(set(dont_build), set(app_settings.DONT_BUILD))
@@ -493,6 +496,7 @@ class Book(models.Model):
         if book.preview:
             book.xml_file.set_readable(False)
 
+        book.findable = findable
         book.language = book_info.language
         book.title = book_info.title
         if book_info.variant_of:
@@ -557,7 +561,7 @@ class Book(models.Model):
             if format_ not in dont_build:
                 getattr(book, '%s_file' % format_).build_delay()
 
-        if not settings.NO_SEARCH_INDEX and search_index:
+        if not settings.NO_SEARCH_INDEX and search_index and findable:
             tasks.index_book.delay(book.id, book_info=book_info, index_tags=search_index_tags)
 
         for child in notify_cover_changed:
@@ -644,7 +648,7 @@ class Book(models.Model):
 
     def other_versions(self):
         """Find other versions (i.e. in other languages) of the book."""
-        return type(self).objects.filter(common_slug=self.common_slug).exclude(pk=self.pk)
+        return type(self).objects.filter(common_slug=self.common_slug, findable=True).exclude(pk=self.pk)
 
     def parents(self):
         books = []
@@ -681,7 +685,7 @@ class Book(models.Model):
 
         """
         objects = cls.tagged.with_all(tags)
-        return objects.exclude(ancestor__in=objects)
+        return objects.filter(findable=True).exclude(ancestor__in=objects)
 
     @classmethod
     def book_list(cls, book_filter=None):
@@ -692,7 +696,7 @@ class Book(models.Model):
         """
 
         books_by_parent = {}
-        books = cls.objects.order_by('parent_number', 'sort_key').only('title', 'parent', 'slug', 'extra_info')
+        books = cls.objects.filter(findable=True).order_by('parent_number', 'sort_key').only('title', 'parent', 'slug', 'extra_info')
         if book_filter:
             books = books.filter(book_filter).distinct()
 

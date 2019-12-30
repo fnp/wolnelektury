@@ -70,6 +70,7 @@ class BookList(ListAPIView):
                 books = Book.tagged.with_all(tags)
         else:
             books = Book.objects.all()
+        books = books.filter(findable=True)
         books = order_books(books, new_api)
 
         if not Membership.is_active_for(self.request.user):
@@ -187,6 +188,7 @@ class FilterBookList(ListAPIView):
         after = self.request.query_params.get('after')
         count = int(self.request.query_params.get('count', 50))
         books = order_books(Book.objects.distinct(), new_api)
+        books = books.filter(findable=True)
         if is_lektura is not None:
             books = books.filter(has_audience=is_lektura)
         if is_audiobook is not None:
@@ -293,7 +295,7 @@ class FragmentList(ListAPIView):
             )
         except ValueError:
             raise Http404
-        return Fragment.tagged.with_all(tags).select_related('book')
+        return Fragment.tagged.with_all(tags).filter(book__findable=True).select_related('book')
 
 
 @vary_on_auth  # Because of 'liked'.

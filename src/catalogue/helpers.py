@@ -77,7 +77,7 @@ def update_counters():
             count_for_book(child, count_by_combination, combs_for_child)
 
     count_by_combination = defaultdict(lambda: 0)
-    for b in Book.objects.filter(parent=None):
+    for b in Book.objects.filter(findable=True, parent=None):
         count_for_book(b, count_by_combination)
 
     next_combinations = defaultdict(set)
@@ -101,7 +101,7 @@ def update_counters():
 def get_audiobook_tags():
     audiobook_tag_ids = cache.get('audiobook_tags')
     if audiobook_tag_ids is None:
-        books_with_audiobook = Book.objects.filter(media__type__in=('mp3', 'ogg'))\
+        books_with_audiobook = Book.objects.filter(findable=True, media__type__in=('mp3', 'ogg'))\
             .distinct().values_list('pk', flat=True)
         audiobook_tag_ids = Tag.objects.filter(
             items__content_type=ContentType.objects.get_for_model(Book),

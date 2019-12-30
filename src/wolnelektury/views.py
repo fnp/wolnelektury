@@ -27,7 +27,7 @@ from wolnelektury.forms import RegistrationForm, SocialSignupForm
 @never_cache
 def main_page(request):
     ctx = {
-        'last_published': Book.objects.exclude(cover_thumb='').filter(parent=None).order_by('-created_at')[:6],
+        'last_published': Book.objects.exclude(cover_thumb='').filter(findable=True, parent=None).order_by('-created_at')[:6],
         'theme_books': [],
     }
 
@@ -35,7 +35,7 @@ def main_page(request):
     if Fragment.objects.exists():
         while True:
             ctx['theme'] = Tag.objects.filter(category='theme').order_by('?')[:1][0]
-            tf = Fragment.tagged.with_any([ctx['theme']]).select_related('book').order_by('?')[:100]
+            tf = Fragment.tagged.with_any([ctx['theme']]).select_related('book').filter(book__findable=True).order_by('?')[:100]
             if not tf:
                 continue
             ctx['theme_fragment'] = tf[0]
@@ -52,7 +52,7 @@ def main_page(request):
     except IndexError:
         pass
 
-    ctx['best'] = Book.objects.order_by('?')[:5]
+    ctx['best'] = Book.objects.filter(findable=True).order_by('?')[:5]
 
     return render(request, "main_page.html", ctx)
 

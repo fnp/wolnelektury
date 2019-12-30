@@ -68,7 +68,7 @@ class Catalogue(common.ResumptionOAIPMH):
         year_zero = timezone.make_aware(datetime(1990, 1, 1, 0, 0, 0), timezone.utc)
 
         try:
-            earliest_change = Book.objects.filter(preview=False).order_by('changed_at')[0].changed_at
+            earliest_change = Book.objects.filter(findable=True, preview=False).order_by('changed_at')[0].changed_at
         except IndexError:
             earliest_change = year_zero
 
@@ -132,7 +132,7 @@ class Catalogue(common.ResumptionOAIPMH):
             raise error.NoSetHierarchyError("Wolne Lektury does not support sets.")
             # books = Book.tagged.with_all([tag])
         else:
-            books = Book.objects.filter(preview=False)
+            books = Book.objects.filter(findable=True, preview=False)
         deleted = Deleted.objects.exclude(slug__exact='')
 
         books = books.order_by('changed_at')

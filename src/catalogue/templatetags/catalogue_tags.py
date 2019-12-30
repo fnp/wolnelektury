@@ -379,7 +379,7 @@ def related_books(context, instance, limit=6, random=1, taken=0):
         # Reserve one spot for an image.
         max_books -= 1
 
-    books_qs = Book.objects.all()
+    books_qs = Book.objects.filter(findable=True)
     if not is_picture:
         books_qs = books_qs.exclude(common_slug=instance.common_slug).exclude(ancestor=instance)
     books = Book.tagged.related_to(instance, books_qs)[:max_books]
@@ -458,7 +458,7 @@ def catalogue_random_book(exclude_ids):
     from .. import app_settings
     if random() < app_settings.RELATED_RANDOM_PICTURE_CHANCE:
         return None
-    queryset = Book.objects.exclude(pk__in=exclude_ids)
+    queryset = Book.objects.filter(findable=True).exclude(pk__in=exclude_ids)
     count = queryset.count()
     if count:
         return queryset[randint(0, count - 1)]
@@ -473,9 +473,9 @@ def choose_fragment(book=None, tag_ids=None):
     else:
         if tag_ids is not None:
             tags = Tag.objects.filter(pk__in=tag_ids)
-            fragments = Fragment.tagged.with_all(tags).order_by().only('id')
+            fragments = Fragment.tagged.with_all(tags).filter(book__findable=True).order_by().only('id')
         else:
-            fragments = Fragment.objects.all().order_by().only('id')
+            fragments = Fragment.objects.filter(book__findable=True).order_by().only('id')
         fragment_count = fragments.count()
         fragment = fragments[randint(0, fragment_count - 1)] if fragment_count else None
     return fragment

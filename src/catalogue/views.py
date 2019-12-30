@@ -35,7 +35,7 @@ staff_required = user_passes_test(lambda user: user.is_staff)
 
 def catalogue(request):
     return render(request, 'catalogue/catalogue.html', {
-        'books': Book.objects.filter(parent=None),
+        'books': Book.objects.filter(findable=True, parent=None),
         'pictures': Picture.objects.all(),
         'collections': Collection.objects.all(),
         'active_menu_item': 'all_works',
@@ -146,7 +146,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
 
 
 def literature(request):
-    books = Book.objects.filter(parent=None)
+    books = Book.objects.filter(parent=None, findable=True)
     return object_list(request, books, related_tags=get_top_level_related_tags([]))
 
 
@@ -155,9 +155,9 @@ def gallery(request):
 
 
 def audiobooks(request):
-    audiobooks = Book.objects.filter(media__type__in=('mp3', 'ogg')).distinct()
+    audiobooks = Book.objects.filter(findable=True, media__type__in=('mp3', 'ogg')).distinct()
     return object_list(request, audiobooks, list_type='audiobooks', extra={
-        'daisy': Book.objects.filter(media__type='daisy').distinct(),
+        'daisy': Book.objects.filter(findable=True, media__type='daisy').distinct(),
     })
 
 
@@ -205,6 +205,8 @@ def theme_list(request, tags, list_type):
         # TODO: Pictures on shelves not supported yet.
         books = Book.tagged.with_all(shelf_tags).order_by()
         fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
+    else:
+        fragments = fragments.filter(book__findable=True)
 
     if not fragments and len(tags) == 1 and list_type == 'books':
         if PictureArea.tagged.with_any(tags).exists() or Picture.tagged.with_any(tags).exists():
@@ -237,15 +239,16 @@ def tagged_object_list(request, tags, list_type):
         if any(tag.category == 'set' for tag in tags):
             params = {'objects': books}
         else:
+            books = books.filter(findable=True)
             params = {
-                'objects': Book.tagged_top_level(tags),
+                'objects': Book.tagged_top_level(tags).filter(findable=True),
                 'fragments': Fragment.objects.filter(book__in=books),
                 'related_tags': get_top_level_related_tags(tags),
             }
     elif list_type == 'gallery':
         params = {'objects': Picture.tagged.with_all(tags)}
     elif list_type == 'audiobooks':
-        audiobooks = Book.objects.filter(media__type__in=('mp3', 'ogg')).distinct()
+        audiobooks = Book.objects.filter(findable=True, media__type__in=('mp3', 'ogg')).distinct()
         params = {
             'objects': Book.tagged.with_all(tags, audiobooks),
             'extra': {

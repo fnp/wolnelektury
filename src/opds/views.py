@@ -434,7 +434,7 @@ class SearchFeed(AcquisitionFeed):
         results = q.execute()
 
         book_scores = dict([(r['book_id'], r['score']) for r in results])
-        books = Book.objects.filter(id__in=set([r['book_id'] for r in results]))
+        books = Book.objects.filter(findable=True, id__in=set([r['book_id'] for r in results]))
         books = list(books)
         books.sort(reverse=True, key=lambda book: book_scores[book.id])
         return books

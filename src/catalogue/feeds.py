@@ -39,6 +39,7 @@ class AudiobookFeed(Feed):
 
     def items(self, args):
         objects = models.BookMedia.objects.order_by('-uploaded_at')
+        objects = objects.filter(book__findable=True)
         if type == 'all':
             objects = objects.filter(type__in=('mp3', 'ogg', 'daisy'))
         else:

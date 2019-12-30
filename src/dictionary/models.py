@@ -46,6 +46,8 @@ class NoteSource(models.Model):
 
 @task(ignore_result=True)
 def build_notes(book):
+    if not book.findable:
+        return
     task_logger.info(book.slug)
     with transaction.atomic():
         book.notesource_set.all().delete()
@@ -82,5 +84,6 @@ def build_notes(book):
 
 
 def notes_from_book(sender, instance, **kwargs):
-    build_notes.delay(instance)
+    if instance.findable:
+        build_notes.delay(instance)
 Book.html_built.connect(notes_from_book)

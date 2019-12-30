@@ -92,7 +92,7 @@ def hint(request):
                 'id': b.id,
                 'url': b.get_absolute_url()
             }
-            for b in Book.objects.filter(title__iregex='\m' + prefix)[:limit-len(data)]
+            for b in Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]
         ]
     callback = request.GET.get('callback', None)
     if callback:

@@ -33,6 +33,10 @@ class Command(BaseCommand):
                 dest='search_index', default=True,
                 help='Skip indexing imported works for search')
         parser.add_argument(
+                '-F', '--not-findable', action='store_false',
+                dest='findable', default=True,
+                help='Set book as not findable.')
+        parser.add_argument(
                 '-p', '--picture', action='store_true', dest='import_picture',
                 default=False, help='Import pictures')
         parser.add_argument('directory', nargs='+')
@@ -46,7 +50,9 @@ class Command(BaseCommand):
         file_base, ext = os.path.splitext(file_path)
         book = Book.from_xml_file(file_path, overwrite=options.get('force'),
                                   dont_build=dont_build,
-                                  search_index_tags=False)
+                                  search_index_tags=False,
+                                  findable=options.get('findable'),
+                                  )
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):
                 getattr(book, '%s_file' % ebook_format).save(
