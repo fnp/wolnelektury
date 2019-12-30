@@ -32,7 +32,17 @@ class PistonRequestValidator(RequestValidator):
         return request.token.secret
 
     def get_access_token_secret(self, client_key, token, request):
-        return request.token.secret
+        if request.token:
+            return request.token.secret
+        else:
+            try:
+                token = Token.objects.get(
+                    token_type=Token.ACCESS,
+                    consumer__key=client_key,
+                    key=token
+                )
+            except: return None
+            return token.secret
 
     def get_default_realms(self, client_key, request):
         return ['API']
