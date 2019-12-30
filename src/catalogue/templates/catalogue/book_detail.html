@@ -56,13 +56,20 @@
   {% endfor %}
 
 
-{% with extra_info=book.get_extra_info_json %}
-  {% if extra_info.source_url %}
-    <div class="white-box">
-      <a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}
-      {% trans "in" %} {% source_name extra_info.source_url %}
-    </div>
-  {% endif %}
+  {% with extra_info=book.get_extra_info_json %}
+    {% for source_url in extra_info.source_urls %}
+      <div class="white-box">
+        <a href="{{ source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}
+        {% trans "in" %} {% source_name source_url %}
+      </div>
+    {% empty %}
+      {% if extra_info.source_url %}
+        <div class="white-box">
+          <a href="{{ extra_info.source_url }}">{% trans "Source" %}</a> {% trans "of the book" %}
+          {% trans "in" %} {% source_name extra_info.source_url %}
+        </div>
+      {% endif %}
+    {% endfor %}
   {% if book|status:user != 'closed' %}
     <div class="white-box"><a href="{{ book.xml_url }}">{% trans "Source XML file" %}</a></div>
   {% endif %}
