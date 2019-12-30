@@ -205,7 +205,7 @@ def theme_list(request, tags, list_type):
         # TODO: Pictures on shelves not supported yet.
         books = Book.tagged.with_all(shelf_tags).order_by()
         fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
-    else:
+    elif list_type == 'books':
         fragments = fragments.filter(book__findable=True)
 
     if not fragments and len(tags) == 1 and list_type == 'books':

@@ -80,7 +80,7 @@
 
 
 {% block footer %}
-  {{ picture.html_file.read|safe }}
+  {{ picture.html_file.read.decode|safe }}
 
   <div id="info" class="box">
     <div class="sponsors">
