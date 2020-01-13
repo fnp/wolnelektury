@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 22:34+0100\n"
-"PO-Revision-Date: 2019-11-28 22:36+0100\n"
+"POT-Creation-Date: 2020-01-13 11:44+0100\n"
+"PO-Revision-Date: 2020-01-13 11:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -120,7 +120,7 @@ msgstr "dni przed"
 msgid "subject"
 msgstr "temat"
 
-#: models.py:145 payu/models.py:136
+#: models.py:145 payu/models.py:140
 msgid "body"
 msgstr "treść"
 
@@ -174,77 +174,94 @@ msgstr "ambasadorowie"
 msgid "Towarzystwo Wolnych Lektur"
 msgstr ""
 
-#: payu/models.py:16 payu/models.py:28
+#: payu/models.py:17 payu/models.py:29
 msgid "POS id"
 msgstr ""
 
-#: payu/models.py:17
+#: payu/models.py:18
 msgid "disposable token"
 msgstr "token jednorazowy"
 
-#: payu/models.py:18
+#: payu/models.py:19
 msgid "reusable token"
 msgstr "token wielokrotnego użytku"
 
-#: payu/models.py:19
+#: payu/models.py:20
 msgid "created_at"
 msgstr "utworzone"
 
-#: payu/models.py:23
+#: payu/models.py:24
 msgid "PayU card token"
 msgstr "token PayU karty płatniczej"
 
-#: payu/models.py:24
+#: payu/models.py:25
 msgid "PayU card tokens"
 msgstr "tokeny PayU kart płatniczych"
 
-#: payu/models.py:29
+#: payu/models.py:30
 msgid "customer IP"
 msgstr "adres IP klienta"
 
-#: payu/models.py:30
+#: payu/models.py:31
 msgid "order ID"
 msgstr "ID zamówienia"
 
-#: payu/models.py:33
+#: payu/models.py:34
 msgid "Pending"
 msgstr "Czeka"
 
-#: payu/models.py:34
+#: payu/models.py:35
 msgid "Waiting for confirmation"
 msgstr "Czeka na potwierdzenie"
 
-#: payu/models.py:35
+#: payu/models.py:36
 msgid "Completed"
 msgstr "Ukończone"
 
-#: payu/models.py:36
+#: payu/models.py:37
 msgid "Canceled"
 msgstr "Anulowane"
 
-#: payu/models.py:37
+#: payu/models.py:38
 msgid "Rejected"
 msgstr "Odrzucone"
 
-#: payu/models.py:42
+#: payu/models.py:44
 msgid "PayU order"
 msgstr "zamówienie PayU"
 
-#: payu/models.py:43
+#: payu/models.py:45
 msgid "PayU orders"
 msgstr "zamówienia PayU"
 
-#: payu/models.py:137
+#: payu/models.py:141
 msgid "received_at"
 msgstr "odebrana"
 
-#: payu/models.py:141
+#: payu/models.py:145
 msgid "PayU notification"
 msgstr "notyfikacja PayU"
 
-#: payu/models.py:142
+#: payu/models.py:146
 msgid "PayU notifications"
 msgstr "notyfikacje PayU"
+
+#: templates/club/year_summary.html:10
+#, python-format
+msgid "Summary of donations in the year %(year)s for the address %(email)s."
+msgstr "Zestawienie darowizn w roku %(year)s dla adresu %(email)s."
+
+#: templates/club/year_summary.html:15
+msgid "Date"
+msgstr "Data"
+
+#: templates/club/year_summary.html:16
+msgid "Amount"
+msgstr "Kwota"
+
+#: templates/club/year_summary.html:27
+msgid "Total"
+msgstr "Suma"
 
 #~ msgid "in perpetuity"
 #~ msgstr "jednorazowo"
