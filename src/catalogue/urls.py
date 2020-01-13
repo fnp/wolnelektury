@@ -37,7 +37,7 @@ urlpatterns = [
     path('audiobooki/', views.audiobooks, name='audiobook_list'),
     path('daisy/', views.daisy_list, name='daisy_list'),
     path('nowe/', ListView.as_view(
-        queryset=Book.objects.filter(parent=None).order_by('-created_at'),
+        queryset=Book.objects.filter(parent=None, findable=True).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),
     path('nowe/audiobooki/', ListView.as_view(
         queryset=Book.objects.filter(media__type='ogg').annotate(m=Max('media__uploaded_at')).order_by('-m'),

@@ -1,6 +1,6 @@
 {% load chunks %}{% chunk "club_email_thanks" %}
 
-Od {{ schedule.started_at.date }} wspierasz nas kwotą {{ schedule.amount }} zł {{ schedule.plan.get_interval_display }}.
+W dniu {{ schedule.started_at.date }} wsparłeś/-aś nas kwotą {{ schedule.amount }} zł.
 
 {% if schedule.membership %}
 {% chunk "club_email_thanks_registered" %}

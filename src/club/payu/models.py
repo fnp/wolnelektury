@@ -124,6 +124,8 @@ class Order(models.Model):
                 token.save()
             # else?
 
+        if 'orderId' not in response:
+            raise ValueError("Expecting dict with `orderId` key, got: %s" % response)
         self.order_id = response['orderId']
         self.save()
 
