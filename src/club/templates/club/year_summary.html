@@ -1,0 +1,33 @@
+{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+{% load chunks i18n %}
+
+
+{% block titleextra %}Towarzystwo Przyjaciół Wolnych Lektur{% endblock %}
+
+
+{% block body %}
+  <div class="white-box normal-text">
+    <h1>{% blocktrans with year=view.kwargs.year email=object.email %}Summary of donations in the year {{ year }} for the address {{ email }}.{% endblocktrans %}</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{% trans "Date" %}</th>
+          <th>{% trans "Amount" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in payments %}
+          <tr>
+	    <td>{{ order.completed_at.date }}</td>
+	    <td>{{ order.get_amount }} zł</td>
+          </tr>
+        {% endfor %}
+        <tr>
+	  <th>{% trans "Total" %}:</th>
+	  <th>{{ total_amount|default:0 }} zł</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

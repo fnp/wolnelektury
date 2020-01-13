@@ -3,6 +3,7 @@
 #
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
@@ -168,3 +169,18 @@ class ScheduleThanksView(DetailView):
         ctx['active_menu_item'] = 'club'
         return ctx
 
+
+class YearSummaryView(DetailView):
+    model = models.Schedule
+    slug_field = slug_url_kwarg = 'key'
+    template_name = 'club/year_summary.html'
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        ctx['payments'] = models.PayUOrder.objects.filter(
+            status='COMPLETED',
+            completed_at__year=self.kwargs['year'],
+            schedule__email=self.object.email,
+        ).order_by('completed_at')
+        ctx['total_amount'] = ctx['payments'].aggregate(s=Sum('schedule__amount'))['s']
+        return ctx

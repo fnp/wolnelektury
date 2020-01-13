@@ -226,3 +226,15 @@ ul.plain {
 @media screen and (max-width: 62.5em) {
   .mobile-margins {margin-left: 1em; margin-right: 1em;}
 }
+
+
+table.table {
+    margin: auto;
+    border-collapse: collapse;
+    
+    td, th {
+        border: 1px solid #444;
+        padding: .5em;
+        text-align: center;
+    }
+}

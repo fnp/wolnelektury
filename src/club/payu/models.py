@@ -7,6 +7,7 @@ from urllib.request import HTTPError
 from django.contrib.sites.models import Site
 from django.db import models
 from django.urls import reverse
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 from . import POSS
 
@@ -36,6 +37,7 @@ class Order(models.Model):
         ('CANCELED', _('Canceled')),
         ('REJECTED', _('Rejected')),
     ])
+    completed_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -150,5 +152,7 @@ class Notification(models.Model):
         status = self.get_status()
         if self.order.status not in (status, 'COMPLETED'):
             self.order.status = status
+            if status == 'COMPLETED':
+                self.order.completed_at = now()
             self.order.save()
             self.order.status_updated()
