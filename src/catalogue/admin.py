@@ -30,6 +30,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = (
         'title', 'slug', 'created_at', 'has_epub_file', 'has_html_file', 'has_description',
     )
+    list_filter = ['print_on_demand']
     search_fields = ('title',)
     ordering = ('title',)
 
