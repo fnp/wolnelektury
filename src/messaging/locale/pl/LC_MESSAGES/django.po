@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 16:09+0200\n"
-"PO-Revision-Date: 2019-09-30 16:10+0200\n"
+"POT-Creation-Date: 2020-01-17 13:27+0100\n"
+"PO-Revision-Date: 2020-01-17 13:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: models.py:11
 msgid "state"
 msgstr "stan"
 
-#: models.py:12 models.py:68
+#: models.py:12 models.py:69
 msgid "subject"
 msgstr "temat"
 
-#: models.py:13 models.py:69
+#: models.py:13 models.py:70
 msgid "body"
 msgstr "treść"
 
@@ -40,23 +40,27 @@ msgstr "dni"
 msgid "hour"
 msgstr "godzina"
 
-#: models.py:18
+#: models.py:16
+msgid "active"
+msgstr "aktywny"
+
+#: models.py:19
 msgid "email template"
 msgstr "szablon e-maila"
 
-#: models.py:19
+#: models.py:20
 msgid "email templates"
 msgstr "szablony e-maili"
 
-#: models.py:67
+#: models.py:68
 msgid "e-mail"
 msgstr "e-mail"
 
-#: models.py:72
+#: models.py:73
 msgid "email sent"
 msgstr "wysłany e-mail"
 
-#: models.py:73
+#: models.py:74
 msgid "emails sent"
 msgstr "wysłane e-maile"
 
@@ -64,9 +68,13 @@ msgstr "wysłane e-maile"
 msgid "club membership expiring"
 msgstr "członkostwo w Towarzystwie wygasa"
 
-#: states.py:61
+#: states.py:62
 msgid "club payment unfinished"
 msgstr "niedokończona płatność w Towarzystwie"
+
+#: states.py:74
+msgid "club recurring payment problem"
+msgstr "problem z płatnością cykliczną w Towarzystwie"
 
 #: views.py:19
 #, python-format
