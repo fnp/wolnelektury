@@ -13,6 +13,7 @@ class EmailTemplate(models.Model):
     body = models.TextField(_('body'))
     days = models.SmallIntegerField(_('days'), null=True, blank=True)
     hour = models.IntegerField(_('hour'), null=True, blank=True)
+    is_active = models.BooleanField(_('active'), default=False)
 
     class Meta:
         verbose_name = _('email template')

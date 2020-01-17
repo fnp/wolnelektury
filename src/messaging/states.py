@@ -56,6 +56,7 @@ class ClubMembershipExpiring(State):
     def get_hashed_value(self, obj):
         return '%s:%s' % (obj.pk, obj.expires_at.isoformat())
 
+
 class ClubPaymentUnfinished(State):
     slug = 'club-payment-unfinished'
     name = _('club payment unfinished')
@@ -68,8 +69,18 @@ class ClubPaymentUnfinished(State):
             )
 
 
+class ClubRecurringPaymentProblem(State):
+    slug = 'club-recurring-payment-problem'
+    name = _('club recurring payment problem')
+
+    def get_objects(self):
+        from club.models import Schedule
+        return Schedule.objects.none()
+
+
 states = [
     ClubMembershipExpiring,
     ClubPaymentUnfinished,
+    ClubRecurringPaymentProblem,
 ]
 
