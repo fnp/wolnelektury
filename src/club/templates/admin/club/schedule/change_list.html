@@ -2,6 +2,22 @@
 {% load club %}
 
 {% block content %}
-  <p>Aktywne miesięczne wpłaty: {% club_active_monthly_count %} sztuk, {% club_active_monthly_sum %} zł.</p>
+  <table class="table">
+    <tr>
+      <td>Aktywne miesięczne wpłaty cykliczne:</td>
+      <td>{% club_active_monthly_count %} sztuk</td>
+      <td>{% club_active_monthly_sum %} zł.</td>
+    </tr>
+    <tr>
+      <td>Aktywne roczne wpłaty cykliczne:</td>
+      <td>{% club_active_yearly_count %} sztuk</td>
+      <td>{% club_active_yearly_sum %} zł.</td>
+    </tr>
+    <tr>
+      <td>Jednorazowe wpłaty w ciągu ostatnich 30 dni:</td>
+      <td>{% club_active_30day_count %} sztuk</td>
+      <td>{% club_active_30day_sum %} zł.</td>
+    </tr>
+  </table>
   {{ block.super }}
 {% endblock content %}
