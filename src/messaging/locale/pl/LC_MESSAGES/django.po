@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 22:49+0100\n"
-"PO-Revision-Date: 2020-01-28 22:51+0100\n"
+"POT-Creation-Date: 2020-01-29 10:10+0100\n"
+"PO-Revision-Date: 2020-01-29 10:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -20,147 +20,157 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: admin.py:27
+#: admin.py:28
 msgid "E-mail content"
 msgstr "Zawartość e-maila"
 
-#: admin.py:30
+#: admin.py:31
 msgid "Sending constraints"
 msgstr "Ograniczenia wysyłki"
 
-#: models.py:11
+#: admin.py:41
+#, python-format
+msgid "Test e-mail has been sent to %(email)s."
+msgstr "Na adres %(email)s zostały wysłany testowy e-mail."
+
+#: admin.py:43
+msgid "You have no email set. Test e-mail not sent."
+msgstr ""
+"Nie masz ustawionego adresu e-mail. Wiadomość testowa nie została wysłana."
+
+#: models.py:13
 msgid "state"
 msgstr "stan"
 
-#: models.py:12 models.py:79
+#: models.py:14 models.py:86
 msgid "subject"
 msgstr "temat"
 
-#: models.py:13 models.py:80
+#: models.py:15 models.py:87
 msgid "body"
 msgstr "treść"
 
-#: models.py:14
+#: models.py:16
 msgid "min days since"
 msgstr "dni po, od"
 
-#: models.py:15
+#: models.py:17
 msgid "max days since"
 msgstr "dni po, do"
 
-#: models.py:16
-msgid "max hour"
-msgstr "do godziny"
-
-#: models.py:17
+#: models.py:18
 msgid "min hour"
 msgstr "od godziny"
 
-#: models.py:18
+#: models.py:19
+msgid "max hour"
+msgstr "do godziny"
+
+#: models.py:20
 msgid "min day of month"
 msgstr "od dnia miesiąca"
 
-#: models.py:19
+#: models.py:21
 msgid "max day of month"
 msgstr "do dnia miesiąca"
 
-#: models.py:20
+#: models.py:22
 msgid "Monday"
 msgstr "poniedziałek"
 
-#: models.py:21
+#: models.py:23
 msgid "Tuesday"
 msgstr "wtorek"
 
-#: models.py:22
+#: models.py:24
 msgid "Wednesday"
 msgstr "środa"
 
-#: models.py:23
+#: models.py:25
 msgid "Thursday"
 msgstr "czwartek"
 
-#: models.py:24
+#: models.py:26
 msgid "Friday"
 msgstr "piątek"
 
-#: models.py:25
+#: models.py:27
 msgid "Saturday"
 msgstr "sobota"
 
-#: models.py:26
+#: models.py:28
 msgid "Sunday"
 msgstr "niedziela"
 
-#: models.py:27
+#: models.py:29
 msgid "active"
 msgstr "aktywny"
 
-#: models.py:30
+#: models.py:32
 msgid "email template"
 msgstr "szablon e-maila"
 
-#: models.py:31
+#: models.py:33
 msgid "email templates"
 msgstr "szablony e-maili"
 
-#: models.py:78
+#: models.py:85
 msgid "e-mail"
 msgstr "e-mail"
 
-#: models.py:83
+#: models.py:90
 msgid "email sent"
 msgstr "wysłany e-mail"
 
-#: models.py:84
+#: models.py:91
 msgid "emails sent"
 msgstr "wysłane e-maile"
 
-#: models.py:101
+#: models.py:108
 msgid "Would-be donor"
 msgstr "Niedoszły darczyńca"
 
-#: models.py:102
+#: models.py:109
 msgid "One-time donor"
 msgstr "Darczyńca z jednorazową wpłatą"
 
-#: models.py:103
+#: models.py:110
 msgid "Recurring donor"
 msgstr "Darczyńca z wpłatą cykliczną"
 
-#: models.py:104
+#: models.py:111
 msgid "Cold"
 msgstr "Lodówka"
 
-#: models.py:105
+#: models.py:112
 msgid "Opt out"
 msgstr "Opt-out"
 
-#: states.py:46
+#: states.py:65
 msgid "club one-time donors"
 msgstr "darczyńcy z jednorazową wpłatą"
 
-#: states.py:52
+#: states.py:71
 msgid "club one-time donors with donation expiring"
 msgstr "darczyńcy z wygasającą jednorazową wpłatą"
 
-#: states.py:67
+#: states.py:86
 msgid "club would-be donors"
 msgstr "niedoszli darczyńcy"
 
-#: states.py:79
+#: states.py:98
 msgid "club recurring donors"
 msgstr "darczyńcy z wpłatą cykluczną"
 
-#: states.py:84
+#: states.py:103
 msgid "club recurring donors with donation expired"
 msgstr "darczyńcy z wygasającą wpłatą cykliczną"
 
-#: states.py:93
+#: states.py:112
 msgid "cold group"
 msgstr "lodówka"
 
-#: views.py:19
+#: views.py:18
 #, python-format
 msgid ""
 "Context:<br>\n"
