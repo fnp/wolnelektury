@@ -7,8 +7,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk import capture_exception
 from catalogue.utils import get_random_hash
-from .recipient import Recipient
-from .states import states
+from .states import Level, states
 
 
 class EmailTemplate(models.Model):
@@ -38,100 +37,77 @@ class EmailTemplate(models.Model):
         return '%s (%+d)' % (self.get_state_display(), self.min_days_since or 0)
 
     def run(self, time=None, verbose=False, dry_run=False):
-        state = self.get_state()
-        recipients = state(time=time, offset=self.days).get_recipients()
-        hash_values = set(recipient.hash_value for recipient in recipients)
-        sent = set(EmailSent.objects.filter(
-                template=self, hash_value__in=hash_values
-            ).values_list('hash_value', flat=True))
-        for recipient in recipients:
-            if recipient.hash_value in sent:
-                continue
-            self.send(recipient, verbose=verbose, dry_run=dry_run)
+        state = self.get_state(time=time)
+        contacts = state.get_contacts()
+    
+        contacts = contacts.exclude(emailsent_set__template=self)
+        for contact in contacts:
+            self.send(contact, verbose=verbose, dry_run=dry_run)
 
-    def get_state(self):
+    def get_state(self, time=None, test=False):
         for s in states:
             if s.slug == self.state:
-                return s
+                return s(
+                    time=time,
+                    min_days_since=self.min_days_since,
+                    max_days_since=self.max_days_since,
+                    test=test
+                )
         raise ValueError('Unknown state', s.state)
 
-    def send(self, recipient, verbose=False, dry_run=False, test=False):
-        ctx = Context(recipient.context)
-
-        if test:
-            contact = Contact(email=recipient.email, key='test')
-        else:
-            # TODO: actually, we should just use Contacts instead of recipients.
-            contact = Contact.objects.get(email=recipient.email)
-
+    def send(self, contact, verbose=False, dry_run=False, test=False):
+        state = self.get_state(test=test)
+        ctx = state.get_context(contact)
         ctx['contact'] = contact
+        ctx = Context(ctx)
 
         subject = Template(self.subject).render(ctx)
-
         if test:
             subject = "[test] " + subject
 
         body_template = '{% extends "messaging/email_body.html" %}{% block body %}' + self.body + '{% endblock %}'
-
         body = Template(body_template).render(ctx)
+
         if verbose:
-            print(recipient.email, subject)
+            print(contact.email, subject)
         if not dry_run:
             try:
-                send_mail(subject, body, settings.CONTACT_EMAIL, [recipient.email], fail_silently=False)
+                send_mail(subject, body, settings.CONTACT_EMAIL, [contact.email], fail_silently=False)
             except:
                 capture_exception()
             else:
                 if not test:
                     self.emailsent_set.create(
-                        hash_value=recipient.hash_value,
-                        email=recipient.email,
+                        contact=contact,
                         subject=subject,
                         body=body,
                     )
 
     def send_test_email(self, email):
-        state = self.get_state()()
-        recipient = state.get_example_recipient(email)
-        self.send(recipient, test=True)
-
-
-class EmailSent(models.Model):
-    template = models.ForeignKey(EmailTemplate, models.CASCADE)
-    hash_value = models.CharField(max_length=1024)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    email = models.CharField(_('e-mail'), max_length=1024)
-    subject = models.CharField(_('subject'), max_length=1024)
-    body = models.TextField(_('body'))
-
-    class Meta:
-        verbose_name = _('email sent')
-        verbose_name_plural = _('emails sent')
-        ordering = ('-timestamp',)
-
-    def __str__(self):
-        return '%s %s' % (self.email, self.timestamp)
+        contact = Contact(
+                email=email,
+                key='test'
+            )
+        self.send(contact, test=True)
 
 
 class Contact(models.Model):
-    COLD = 10
-    TRIED = 20
-    SINGLE = 30
-    RECURRING = 40
-    OPT_OUT = 50
-
     email = models.EmailField(unique=True)
     level = models.PositiveSmallIntegerField(
         choices=[
-            (TRIED, _('Would-be donor')),
-            (SINGLE, _('One-time donor')),
-            (RECURRING, _('Recurring donor')),
-            (COLD, _('Cold')),
-            (OPT_OUT, _('Opt out')),
+            (Level.COLD, _('Cold')),
+            (Level.TRIED, _('Would-be donor')),
+            (Level.SINGLE, _('One-time donor')),
+            (Level.RECURRING, _('Recurring donor')),
+            (Level.OPT_OUT, _('Opt out')),
         ])
     since = models.DateTimeField()
     expires_at = models.DateTimeField(null=True, blank=True)
     key = models.CharField(max_length=64, blank=True)
+
+    class Meta:
+        verbose_name = _('contact')
+        verbose_name_plural = _('contacts')
 
     def save(self, *args, **kwargs):
         if not self.key:
@@ -166,4 +142,20 @@ class Contact(models.Model):
             self.since = since
             self.expires_at = expires_at
         self.save()
+
+
+class EmailSent(models.Model):
+    template = models.ForeignKey(EmailTemplate, models.CASCADE)
+    contact = models.ForeignKey(Contact, models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    subject = models.CharField(_('subject'), max_length=1024)
+    body = models.TextField(_('body'))
+
+    class Meta:
+        verbose_name = _('email sent')
+        verbose_name_plural = _('emails sent')
+        ordering = ('-timestamp',)
+
+    def __str__(self):
+        return '%s %s' % (self.email, self.timestamp)
 

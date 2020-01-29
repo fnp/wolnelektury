@@ -1,115 +1,153 @@
 from datetime import timedelta
+from django.apps import apps
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
-from .recipient import Recipient
+
+
+class Level:
+    COLD = 10
+    TRIED = 20
+    SINGLE = 30
+    RECURRING = 40
+    OPT_OUT = 50
 
 
 class State:
     allow_negative_offset = False
-    context_fields = []
+    level = None
+    expired = None
 
-
-    def __init__(self, time=None, min_days_since=None, max_days_since=None):
+    def __init__(self, time=None, min_days_since=None, max_days_since=None, test=False):
         self.time = time or now()
         self.min_days_since = min_days_since
         self.max_days_since = max_days_since
+        self.test = test
 
-    def get_recipients(self):
-        return [
-            self.get_recipient(obj)
-            for obj in self.get_objects()
-        ]
+    def get_contacts(self):
+        Contact = apps.get_model('messaging', 'Contact')
+        contacts = Contact.objects.filter(level=self.level)
 
-    def get_recipient(self, obj):
-        return Recipient(
-                hash_value=self.get_hash_value(obj),
-                email=self.get_email(obj),
-                context=self.get_context(obj),
-            )
+        if self.min_days_since is not None or self.expired:
+            cutoff = self.time - timedelta(self.min_days_since or 0)
+            if self.expired:
+                contacts = contacts.filter(expires_at__lt=cutoff)
+            else:
+                contacts = contacts.filter(since__lt=cutoff)
 
-    def get_example_recipient(self, email):
-        return self.get_recipient(
-                self.get_example_object(email)
-            )
+        if self.max_days_since is not None:
+            cutoff = self.time - timedelta(self.max_days_since)
+            if self.expired:
+                contacts = contacts.filter(expires_at__gt=cutoff)
+            else:
+                contacts = contacts.filter(since__gt=cutoff)
 
-    def get_example_object(self, email):
-        from club.models import Schedule
-        n = now()
-        return Schedule(
-                email=email,
+        if self.expired is False:
+            contacts = contacts.exclude(expires_at__lt=self.time)
+
+        return contacts
+
+    def get_context(self, contact):
+        if self.test:
+            return self.get_example_context(contact)
+
+        Schedule = apps.get_model('club', 'Schedule')
+        schedules = Schedule.objects.filter(email=contact.email)
+        return {
+            "schedule": self.get_schedule(schedules)
+        }
+
+    def get_example_context(self, contact):
+        Schedule = apps.get_model('club', 'Schedule')
+        return {
+            "schedule": Schedule(
+                email=contact.email,
                 key='xxxxxxxxx',
                 amount=100,
-                payed_at=n - timedelta(2),
-                started_at=n - timedelta(1),
-                expires_at=n + timedelta(1),
+                payed_at=self.time - timedelta(2),
+                started_at=self.time - timedelta(1),
+                expires_at=self.time + timedelta(1),
             )
-
-    def get_objects(self):
-        raise NotImplemented
-
-    def get_hash_value(self, obj):
-        return str(obj.pk)
-    
-    def get_email(self, obj):
-        return obj.email
-
-    def get_context(self, obj):
-        ctx = {
-            obj._meta.model_name: obj,
         }
-        return ctx
 
 
 class ClubSingle(State):
     slug = 'club-single'
     name = _('club one-time donors')
+    level = Level.SINGLE
+    expired = False
+
+    def get_schedule(self, schedules):
+        # Find first single non-expired schedule.
+        return schedules.filter(
+            monthly=False, yearly=False,
+            expires_at__gt=self.time
+        ).order_by('started_at').first()
 
 
 class ClubSingleExpired(State):
     slug = 'club-membership-expiring'
     allow_negative_offset = True
     name = _('club one-time donors with donation expiring')
+    level = Level.SINGLE
+    expired = True
 
-    def get_objects(self):
-        from club.models import Schedule
-        return Schedule.objects.filter(
-                is_active=True,
-                expires_at__lt=self.time - self.offset
-            )
-
-    def get_hashed_value(self, obj):
-        return '%s:%s' % (obj.pk, obj.expires_at.isoformat())
+    def get_schedule(self, schedules):
+        # Find last single expired schedule.
+        return schedules.filter(
+            monthly=False, yearly=False,
+            expires_at__lt=self.time
+        ).order_by('-expires_at').first()
 
 
 class ClubTried(State):
     slug = 'club-payment-unfinished'
     name = _('club would-be donors')
+    level = Level.TRIED
 
-    def get_objects(self):
-        from club.models import Schedule
-        return Schedule.objects.filter(
-                payuorder=None,
-                started_at__lt=self.time - self.offset,
-            )
+    def get_schedule(self, schedules):
+        # Find last unpaid schedule.
+        return schedules.filter(
+            payed_at=None
+        ).order_by('-started_at').first()
 
 
 class ClubRecurring(State):
     slug = 'club-recurring'
     name = _('club recurring donors')
+    level = Level.RECURRING
+    expired = False
+
+    def get_schedule(self, schedules):
+        # Find first recurring non-expired schedule.
+        return schedules.exclude(
+            monthly=False, yearly=False
+        ).filter(
+            expires_at__gt=self.time
+        ).order_by('started_at').first()
 
 
 class ClubRecurringExpired(State):
     slug = 'club-recurring-payment-problem'
     name = _('club recurring donors with donation expired')
+    level = Level.RECURRING
+    expired = True
 
-    def get_objects(self):
-        from club.models import Schedule
-        return Schedule.objects.none()
+    def get_schedule(self, schedules):
+        # Find last recurring expired schedule.
+        return schedules.exclude(
+            monthly=False, yearly=False
+        ).filter(
+            expires_at__lt=self.time
+        ).order_by('-expires_at').first()
 
 
 class Cold(State):
     slug = 'cold'
     name = _('cold group')
+    level = Level.COLD
+
+    def get_context(self, contact):
+        return {}
 
 
 states = [

@@ -6,8 +6,8 @@ from . import models
 
 class EmailSentInline(admin.TabularInline):
     model = models.EmailSent
-    fields = ['timestamp', 'email', 'subject']
-    readonly_fields = ['timestamp', 'email', 'subject']
+    fields = ['timestamp', 'contact', 'subject']
+    readonly_fields = ['timestamp', 'contact', 'subject']
     extra = 0
     can_delete = False
     show_change_link = True
@@ -56,8 +56,8 @@ admin.site.register(models.EmailTemplate, EmailTemplateAdmin)
 
 class EmailSentAdmin(admin.ModelAdmin):
     list_filter = ['template']
-    list_display = ['timestamp', 'template', 'email', 'subject']
-    fields = ['timestamp', 'template', 'email', 'subject', 'body', 'hash_value']
+    list_display = ['timestamp', 'template', 'contact', 'subject']
+    fields = ['timestamp', 'template', 'contact', 'subject', 'body']
     readonly_fields = fields
     change_links = ['template']
 

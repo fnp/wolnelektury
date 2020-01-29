@@ -12,6 +12,7 @@ from django import template
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
 from catalogue.utils import get_random_hash
+from messaging.states import Level
 from .payment_methods import recurring_payment_method, single_payment_method
 from .payu import models as payu_models
 from . import utils
@@ -113,14 +114,14 @@ class Schedule(models.Model):
     def update_contact(self):
         Contact = apps.get_model('messaging', 'Contact')
         if not self.payed_at:
-            level = Contact.TRIED
+            level = Level.TRIED
             since = self.started_at
         else:
             since = self.payed_at
             if self.is_recurring():
-                level = Contact.RECURRING
+                level = Level.RECURRING
             else:
-                level = Contact.SINGLE
+                level = Level.SINGLE
         Contact.update(self.email, level, since, self.expires_at)
 
 
