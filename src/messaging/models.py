@@ -40,7 +40,7 @@ class EmailTemplate(models.Model):
         state = self.get_state(time=time)
         contacts = state.get_contacts()
     
-        contacts = contacts.exclude(emailsent_set__template=self)
+        contacts = contacts.exclude(emailsent__template=self)
         for contact in contacts:
             self.send(contact, verbose=verbose, dry_run=dry_run)
 
