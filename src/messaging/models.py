@@ -1,9 +1,11 @@
+from django.apps import apps
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models
 from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk import capture_exception
+from .recipient import Recipient
 from .states import states
 
 
@@ -51,7 +53,7 @@ class EmailTemplate(models.Model):
                 return s
         raise ValueError('Unknown state', s.state)
 
-    def send(self, recipient, verbose=False, dry_run=False):
+    def send(self, recipient, verbose=False, dry_run=False, test=False):
         subject = Template(self.subject).render(Context(recipient.context))
         body = Template(self.body).render(Context(recipient.context))
         if verbose:
@@ -62,12 +64,18 @@ class EmailTemplate(models.Model):
             except:
                 capture_exception()
             else:
-                self.emailsent_set.create(
-                    hash_value=recipient.hash_value,
-                    email=recipient.email,
-                    subject=subject,
-                    body=body,
-                )
+                if not test:
+                    self.emailsent_set.create(
+                        hash_value=recipient.hash_value,
+                        email=recipient.email,
+                        subject=subject,
+                        body=body,
+                    )
+
+    def send_test_email(self, email):
+        state = self.get_state()()
+        recipient = state.get_example_recipient(email)
+        self.send(recipient, test=True)
 
 
 class EmailSent(models.Model):

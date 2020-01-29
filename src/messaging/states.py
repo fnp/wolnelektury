@@ -9,21 +9,40 @@ class State:
     context_fields = []
 
 
-    def __init__(self, offset=0, time=None):
+    def __init__(self, time=None, min_days_since=None, max_days_since=None):
         self.time = time or now()
-        if isinstance(offset, int):
-            offset = timedelta(offset)
-        self.offset = offset
+        self.min_days_since = min_days_since
+        self.max_days_since = max_days_since
 
     def get_recipients(self):
         return [
-            Recipient(
+            self.get_recipient(obj)
+            for obj in self.get_objects()
+        ]
+
+    def get_recipient(self, obj):
+        return Recipient(
                 hash_value=self.get_hash_value(obj),
                 email=self.get_email(obj),
                 context=self.get_context(obj),
             )
-            for obj in self.get_objects()
-        ]
+
+    def get_example_recipient(self, email):
+        return self.get_recipient(
+                self.get_example_object(email)
+            )
+
+    def get_example_object(self, email):
+        from club.models import Schedule
+        n = now()
+        return Schedule(
+                email=email,
+                key='xxxxxxxxx',
+                amount=100,
+                payed_at=n - timedelta(2),
+                started_at=n - timedelta(1),
+                expires_at=n + timedelta(1),
+            )
 
     def get_objects(self):
         raise NotImplemented

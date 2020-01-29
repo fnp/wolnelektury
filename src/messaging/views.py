@@ -13,8 +13,7 @@ def state_info(request, slug):
     else:
         return JsonResponse({})
 
-    meta = state().get_objects().model._meta
-
+    meta = state().get_example_object('').model._meta
 
     help_text = _('''Context:<br>
        <code>{{ %(model_name)s }}</code> – a <a href="%(docs_url)s">%(verbose_name)s</a> object.<br>

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from . import models
 
@@ -33,6 +34,21 @@ class EmailTemplateAdmin(admin.ModelAdmin):
             ('min_hour', 'max_hour'),
         ]}),
     ]
+
+    def _test_email(self, request, obj):
+        if request.user.email:
+            obj.send_test_email(request.user.email)
+            messages.info(request, _('Test e-mail has been sent to %(email)s.') % {"email": request.user.email})
+        else:
+            messages.warning(request, _('You have no email set. Test e-mail not sent.'))
+
+    def response_add(self, request, obj):
+        self._test_email(request, obj)
+        return super().response_add(request, obj)
+
+    def response_change(self, request, obj):
+        self._test_email(request, obj)
+        return super().response_change(request, obj)
 
 
 admin.site.register(models.EmailTemplate, EmailTemplateAdmin)
