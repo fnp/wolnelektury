@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
+from django.views.generic import UpdateView
+from . import models
 from .states import states
 
 
@@ -27,4 +29,11 @@ def state_info(request, slug):
     return JsonResponse({
         "help": help_text,
     })
+
+
+class OptOutView(UpdateView):
+    model = models.Contact
+    slug_url_kwarg = 'key'
+    slug_field = 'key'
+    fields = ['level']
 

@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+
+<h1>Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres {{ object.email }}?</h1>
+
+<form method="POST" action="">
+	<button type="submit">Tak, wypisz mnie</button>
+</form>
+
+{% endblock %}

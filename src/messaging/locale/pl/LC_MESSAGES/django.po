@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 10:10+0100\n"
-"PO-Revision-Date: 2020-01-29 10:11+0100\n"
+"PO-Revision-Date: 2020-01-29 10:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -31,7 +31,7 @@ msgstr "Ograniczenia wysyłki"
 #: admin.py:41
 #, python-format
 msgid "Test e-mail has been sent to %(email)s."
-msgstr "Na adres %(email)s zostały wysłany testowy e-mail."
+msgstr "Na adres %(email)s została wysłana testowa wiadomość."
 
 #: admin.py:43
 msgid "You have no email set. Test e-mail not sent."

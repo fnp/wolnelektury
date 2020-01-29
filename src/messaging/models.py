@@ -3,8 +3,10 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models
 from django.template import Template, Context
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk import capture_exception
+from catalogue.utils import get_random_hash
 from .recipient import Recipient
 from .states import states
 
@@ -54,8 +56,24 @@ class EmailTemplate(models.Model):
         raise ValueError('Unknown state', s.state)
 
     def send(self, recipient, verbose=False, dry_run=False, test=False):
-        subject = Template(self.subject).render(Context(recipient.context))
-        body = Template(self.body).render(Context(recipient.context))
+        ctx = Context(recipient.context)
+
+        if test:
+            contact = Contact(email=recipient.email, key='test')
+        else:
+            # TODO: actually, we should just use Contacts instead of recipients.
+            contact = Contact.objects.get(email=recipient.email)
+
+        ctx['contact'] = contact
+
+        subject = Template(self.subject).render(ctx)
+
+        if test:
+            subject = "[test] " + subject
+
+        body_template = '{% extends "messaging/email_body.html" %}{% block body %}' + self.body + '{% endblock %}'
+
+        body = Template(body_template).render(ctx)
         if verbose:
             print(recipient.email, subject)
         if not dry_run:
@@ -113,6 +131,15 @@ class Contact(models.Model):
         ])
     since = models.DateTimeField()
     expires_at = models.DateTimeField(null=True, blank=True)
+    key = models.CharField(max_length=64, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.key:
+            self.key = get_random_hash(self.email)
+        super().save(*args, **kwargs)
+
+    def get_optout_url(self):
+        return reverse('messaging_optout', args=[self.key])
 
     @classmethod
     def update(cls, email, level, since, expires_at=None):
