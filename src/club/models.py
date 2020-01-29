@@ -2,6 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import datetime, timedelta
+from django.apps import apps
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail
@@ -63,7 +64,8 @@ class Schedule(models.Model):
     def save(self, *args, **kwargs):
         if not self.key:
             self.key = get_random_hash(self.email)
-        return super(Schedule, self).save(*args, **kwargs)
+        super(Schedule, self).save(*args, **kwargs)
+        self.update_contact()
 
     def initiate_payment(self, request):
         return self.get_payment_method().initiate(request, self)
@@ -107,6 +109,19 @@ class Schedule(models.Model):
             settings.CONTACT_EMAIL, [self.email], fail_silently=False)
         self.email_sent = True
         self.save()
+
+    def update_contact(self):
+        Contact = apps.get_model('messaging', 'Contact')
+        if not self.payed_at:
+            level = Contact.TRIED
+            since = self.started_at
+        else:
+            since = self.payed_at
+            if self.is_recurring():
+                level = Contact.RECURRING
+            else:
+                level = Contact.SINGLE
+        Contact.update(self.email, level, since, self.expires_at)
 
 
 class Membership(models.Model):

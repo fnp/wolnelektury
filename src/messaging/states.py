@@ -41,10 +41,15 @@ class State:
         return ctx
 
 
-class ClubMembershipExpiring(State):
+class ClubSingle(State):
+    slug = 'club-single'
+    name = _('club one-time donors')
+
+
+class ClubSingleExpired(State):
     slug = 'club-membership-expiring'
     allow_negative_offset = True
-    name = _('club membership expiring')
+    name = _('club one-time donors with donation expiring')
 
     def get_objects(self):
         from club.models import Schedule
@@ -57,9 +62,9 @@ class ClubMembershipExpiring(State):
         return '%s:%s' % (obj.pk, obj.expires_at.isoformat())
 
 
-class ClubPaymentUnfinished(State):
+class ClubTried(State):
     slug = 'club-payment-unfinished'
-    name = _('club payment unfinished')
+    name = _('club would-be donors')
 
     def get_objects(self):
         from club.models import Schedule
@@ -69,18 +74,31 @@ class ClubPaymentUnfinished(State):
             )
 
 
-class ClubRecurringPaymentProblem(State):
+class ClubRecurring(State):
+    slug = 'club-recurring'
+    name = _('club recurring donors')
+
+
+class ClubRecurringExpired(State):
     slug = 'club-recurring-payment-problem'
-    name = _('club recurring payment problem')
+    name = _('club recurring donors with donation expired')
 
     def get_objects(self):
         from club.models import Schedule
         return Schedule.objects.none()
 
 
+class Cold(State):
+    slug = 'cold'
+    name = _('cold group')
+
+
 states = [
-    ClubMembershipExpiring,
-    ClubPaymentUnfinished,
-    ClubRecurringPaymentProblem,
+    Cold,
+    ClubTried,
+    ClubSingle,
+    ClubSingleExpired,
+    ClubRecurring,
+    ClubRecurringExpired,
 ]
 

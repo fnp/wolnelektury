@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-17 13:27+0100\n"
-"PO-Revision-Date: 2020-01-17 13:27+0100\n"
+"POT-Creation-Date: 2020-01-28 22:49+0100\n"
+"PO-Revision-Date: 2020-01-28 22:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -20,61 +20,145 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 2.2.4\n"
 
+#: admin.py:27
+msgid "E-mail content"
+msgstr "Zawartość e-maila"
+
+#: admin.py:30
+msgid "Sending constraints"
+msgstr "Ograniczenia wysyłki"
+
 #: models.py:11
 msgid "state"
 msgstr "stan"
 
-#: models.py:12 models.py:69
+#: models.py:12 models.py:79
 msgid "subject"
 msgstr "temat"
 
-#: models.py:13 models.py:70
+#: models.py:13 models.py:80
 msgid "body"
 msgstr "treść"
 
 #: models.py:14
-msgid "days"
-msgstr "dni"
+msgid "min days since"
+msgstr "dni po, od"
 
 #: models.py:15
-msgid "hour"
-msgstr "godzina"
+msgid "max days since"
+msgstr "dni po, do"
 
 #: models.py:16
+msgid "max hour"
+msgstr "do godziny"
+
+#: models.py:17
+msgid "min hour"
+msgstr "od godziny"
+
+#: models.py:18
+msgid "min day of month"
+msgstr "od dnia miesiąca"
+
+#: models.py:19
+msgid "max day of month"
+msgstr "do dnia miesiąca"
+
+#: models.py:20
+msgid "Monday"
+msgstr "poniedziałek"
+
+#: models.py:21
+msgid "Tuesday"
+msgstr "wtorek"
+
+#: models.py:22
+msgid "Wednesday"
+msgstr "środa"
+
+#: models.py:23
+msgid "Thursday"
+msgstr "czwartek"
+
+#: models.py:24
+msgid "Friday"
+msgstr "piątek"
+
+#: models.py:25
+msgid "Saturday"
+msgstr "sobota"
+
+#: models.py:26
+msgid "Sunday"
+msgstr "niedziela"
+
+#: models.py:27
 msgid "active"
 msgstr "aktywny"
 
-#: models.py:19
+#: models.py:30
 msgid "email template"
 msgstr "szablon e-maila"
 
-#: models.py:20
+#: models.py:31
 msgid "email templates"
 msgstr "szablony e-maili"
 
-#: models.py:68
+#: models.py:78
 msgid "e-mail"
 msgstr "e-mail"
 
-#: models.py:73
+#: models.py:83
 msgid "email sent"
 msgstr "wysłany e-mail"
 
-#: models.py:74
+#: models.py:84
 msgid "emails sent"
 msgstr "wysłane e-maile"
 
-#: states.py:47
-msgid "club membership expiring"
-msgstr "członkostwo w Towarzystwie wygasa"
+#: models.py:101
+msgid "Would-be donor"
+msgstr "Niedoszły darczyńca"
 
-#: states.py:62
-msgid "club payment unfinished"
-msgstr "niedokończona płatność w Towarzystwie"
+#: models.py:102
+msgid "One-time donor"
+msgstr "Darczyńca z jednorazową wpłatą"
 
-#: states.py:74
-msgid "club recurring payment problem"
-msgstr "problem z płatnością cykliczną w Towarzystwie"
+#: models.py:103
+msgid "Recurring donor"
+msgstr "Darczyńca z wpłatą cykliczną"
+
+#: models.py:104
+msgid "Cold"
+msgstr "Lodówka"
+
+#: models.py:105
+msgid "Opt out"
+msgstr "Opt-out"
+
+#: states.py:46
+msgid "club one-time donors"
+msgstr "darczyńcy z jednorazową wpłatą"
+
+#: states.py:52
+msgid "club one-time donors with donation expiring"
+msgstr "darczyńcy z wygasającą jednorazową wpłatą"
+
+#: states.py:67
+msgid "club would-be donors"
+msgstr "niedoszli darczyńcy"
+
+#: states.py:79
+msgid "club recurring donors"
+msgstr "darczyńcy z wpłatą cykluczną"
+
+#: states.py:84
+msgid "club recurring donors with donation expired"
+msgstr "darczyńcy z wygasającą wpłatą cykliczną"
+
+#: states.py:93
+msgid "cold group"
+msgstr "lodówka"
 
 #: views.py:19
 #, python-format
@@ -92,6 +176,12 @@ msgstr ""
 "       Możesz użyć go w polach <em>Temat</em> i <em>Treść</em>, korzystając "
 "z notacji z kropką, np.:<br>\n"
 "       <code>{{ %(model_name)s.id }}</code>."
+
+#~ msgid "days"
+#~ msgstr "dni"
+
+#~ msgid "club payment unfinished"
+#~ msgstr "niedokończona płatność w Towarzystwie"
 
 #~ msgid "New member"
 #~ msgstr "Nowy członek"

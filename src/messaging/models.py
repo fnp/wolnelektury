@@ -11,8 +11,19 @@ class EmailTemplate(models.Model):
     state = models.CharField(_('state'), max_length=128, choices=[(s.slug, s.name) for s in states], help_text='?')
     subject = models.CharField(_('subject'), max_length=1024)
     body = models.TextField(_('body'))
-    days = models.SmallIntegerField(_('days'), null=True, blank=True)
-    hour = models.IntegerField(_('hour'), null=True, blank=True)
+    min_days_since = models.SmallIntegerField(_('min days since'), null=True, blank=True)
+    max_days_since = models.SmallIntegerField(_('max days since'), null=True, blank=True)
+    min_hour = models.PositiveSmallIntegerField(_('min hour'), null=True, blank=True)
+    max_hour = models.PositiveSmallIntegerField(_('max hour'), null=True, blank=True)
+    min_day_of_month = models.PositiveSmallIntegerField(_('min day of month'), null=True, blank=True)
+    max_day_of_month = models.PositiveSmallIntegerField(_('max day of month'), null=True, blank=True)
+    dow_1 = models.BooleanField(_('Monday'), default=True)
+    dow_2 = models.BooleanField(_('Tuesday'), default=True)
+    dow_3 = models.BooleanField(_('Wednesday'), default=True)
+    dow_4 = models.BooleanField(_('Thursday'), default=True)
+    dow_5 = models.BooleanField(_('Friday'), default=True)
+    dow_6 = models.BooleanField(_('Saturday'), default=True)
+    dow_7 = models.BooleanField(_('Sunday'), default=True)
     is_active = models.BooleanField(_('active'), default=False)
 
     class Meta:
@@ -60,7 +71,6 @@ class EmailTemplate(models.Model):
                 )
 
 
-
 class EmailSent(models.Model):
     template = models.ForeignKey(EmailTemplate, models.CASCADE)
     hash_value = models.CharField(max_length=1024)
@@ -76,3 +86,50 @@ class EmailSent(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.email, self.timestamp)
+
+
+class Contact(models.Model):
+    COLD = 10
+    TRIED = 20
+    SINGLE = 30
+    RECURRING = 40
+    OPT_OUT = 50
+
+    email = models.EmailField(unique=True)
+    level = models.PositiveSmallIntegerField(
+        choices=[
+            (TRIED, _('Would-be donor')),
+            (SINGLE, _('One-time donor')),
+            (RECURRING, _('Recurring donor')),
+            (COLD, _('Cold')),
+            (OPT_OUT, _('Opt out')),
+        ])
+    since = models.DateTimeField()
+    expires_at = models.DateTimeField(null=True, blank=True)
+
+    @classmethod
+    def update(cls, email, level, since, expires_at=None):
+        obj, created = cls.objects.get_or_create(email=email, defaults={
+                "level": level,
+                "since": since,
+                "expires_at": expires_at
+            })
+        if not created:
+            obj.ascend(level, since, expires_at)
+
+    def ascend(self, level, since, expires_at=None):
+        if level < self.level:
+            return
+        if level == self.level:
+            self.since = min(since, self.since)
+
+            if expires_at and self.expires_at:
+                self.expires_at = max(expires_at, self.expires_at)
+            else:
+                self.expires_at = expires_at
+        else:
+            self.level = level
+            self.since = since
+            self.expires_at = expires_at
+        self.save()
+
