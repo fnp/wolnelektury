@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.db import models
 from django.template import Template, Context
 from django.urls import reverse
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk import capture_exception
 from catalogue.utils import get_random_hash
@@ -127,7 +128,9 @@ class Contact(models.Model):
         if not created:
             obj.ascend(level, since, expires_at)
 
-    def ascend(self, level, since, expires_at=None):
+    def ascend(self, level, since=None, expires_at=None):
+        if since is None:
+            since = now()
         if level < self.level:
             return
         if level == self.level:

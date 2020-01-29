@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+
+<h1>Adres wypisany</h1>
+
+{% if contact.level == 50 %}
+<p>Potwierdzamy, że adres {{ contact.email }} został wypisany z korespondencji.</p>
+{% else %}
+Błąd.
+{% endif %}
+
+{% endblock %}

@@ -4,9 +4,9 @@ from django.urls import reverse
 from django.shortcuts import render
 from django.utils.translation import ugettext as _
 from django.views.decorators import cache
-from django.views.generic import UpdateView
+from django.views.generic import DetailView, UpdateView
 from . import models
-from .states import states
+from .states import Level, states
 
 
 def describe(value):
@@ -46,5 +46,19 @@ class OptOutView(UpdateView):
     model = models.Contact
     slug_url_kwarg = 'key'
     slug_field = 'key'
-    fields = ['level']
+    fields = []
+
+    def get_success_url(self):
+        return reverse('messaging_optout_ok', args=[self.object.key])
+
+    def form_valid(self, form):
+        self.object.ascend(Level.OPT_OUT)
+        return super().form_valid(form)
+
+
+class OptOutOkView(DetailView):
+    model = models.Contact
+    slug_url_kwarg = 'key'
+    slug_field = 'key'
+
 

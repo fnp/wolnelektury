@@ -5,6 +5,7 @@
 <h1>Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres {{ object.email }}?</h1>
 
 <form method="POST" action="">
+	{% csrf_token %}
 	<button type="submit">Tak, wypisz mnie</button>
 </form>
 
