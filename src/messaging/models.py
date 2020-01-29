@@ -31,7 +31,7 @@ class EmailTemplate(models.Model):
         verbose_name_plural = _('email templates')
 
     def __str__(self):
-        return '%s (%+d)' % (self.get_state_display(), self.min_days_since)
+        return '%s (%+d)' % (self.get_state_display(), self.min_days_since or 0)
 
     def run(self, time=None, verbose=False, dry_run=False):
         state = self.get_state()
