@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 10:10+0100\n"
-"PO-Revision-Date: 2020-01-29 10:18+0100\n"
+"POT-Creation-Date: 2020-01-29 10:51+0100\n"
+"PO-Revision-Date: 2020-01-29 10:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -38,111 +38,111 @@ msgid "You have no email set. Test e-mail not sent."
 msgstr ""
 "Nie masz ustawionego adresu e-mail. Wiadomość testowa nie została wysłana."
 
-#: models.py:13
+#: models.py:15
 msgid "state"
 msgstr "stan"
 
-#: models.py:14 models.py:86
+#: models.py:16 models.py:104
 msgid "subject"
 msgstr "temat"
 
-#: models.py:15 models.py:87
+#: models.py:17 models.py:105
 msgid "body"
 msgstr "treść"
 
-#: models.py:16
+#: models.py:18
 msgid "min days since"
 msgstr "dni po, od"
 
-#: models.py:17
+#: models.py:19
 msgid "max days since"
 msgstr "dni po, do"
 
-#: models.py:18
+#: models.py:20
 msgid "min hour"
 msgstr "od godziny"
 
-#: models.py:19
+#: models.py:21
 msgid "max hour"
 msgstr "do godziny"
 
-#: models.py:20
+#: models.py:22
 msgid "min day of month"
 msgstr "od dnia miesiąca"
 
-#: models.py:21
+#: models.py:23
 msgid "max day of month"
 msgstr "do dnia miesiąca"
 
-#: models.py:22
+#: models.py:24
 msgid "Monday"
 msgstr "poniedziałek"
 
-#: models.py:23
+#: models.py:25
 msgid "Tuesday"
 msgstr "wtorek"
 
-#: models.py:24
+#: models.py:26
 msgid "Wednesday"
 msgstr "środa"
 
-#: models.py:25
+#: models.py:27
 msgid "Thursday"
 msgstr "czwartek"
 
-#: models.py:26
+#: models.py:28
 msgid "Friday"
 msgstr "piątek"
 
-#: models.py:27
+#: models.py:29
 msgid "Saturday"
 msgstr "sobota"
 
-#: models.py:28
+#: models.py:30
 msgid "Sunday"
 msgstr "niedziela"
 
-#: models.py:29
+#: models.py:31
 msgid "active"
 msgstr "aktywny"
 
-#: models.py:32
+#: models.py:34
 msgid "email template"
 msgstr "szablon e-maila"
 
-#: models.py:33
+#: models.py:35
 msgid "email templates"
 msgstr "szablony e-maili"
 
-#: models.py:85
+#: models.py:103
 msgid "e-mail"
 msgstr "e-mail"
 
-#: models.py:90
+#: models.py:108
 msgid "email sent"
 msgstr "wysłany e-mail"
 
-#: models.py:91
+#: models.py:109
 msgid "emails sent"
 msgstr "wysłane e-maile"
 
-#: models.py:108
+#: models.py:126
 msgid "Would-be donor"
 msgstr "Niedoszły darczyńca"
 
-#: models.py:109
+#: models.py:127
 msgid "One-time donor"
 msgstr "Darczyńca z jednorazową wpłatą"
 
-#: models.py:110
+#: models.py:128
 msgid "Recurring donor"
 msgstr "Darczyńca z wpłatą cykliczną"
 
-#: models.py:111
+#: models.py:129
 msgid "Cold"
 msgstr "Lodówka"
 
-#: models.py:112
+#: models.py:130
 msgid "Opt out"
 msgstr "Opt-out"
 
@@ -170,7 +170,13 @@ msgstr "darczyńcy z wygasającą wpłatą cykliczną"
 msgid "cold group"
 msgstr "lodówka"
 
-#: views.py:18
+#: templates/messaging/email_body.html:5
+msgid "Visit this address if you don't want to be contacted in the future:"
+msgstr ""
+"Odwiedź ten adres, jeśli nie chcesz, byśmy się kontaktowali z Tobą w "
+"przyszłości:"
+
+#: views.py:20
 #, python-format
 msgid ""
 "Context:<br>\n"
