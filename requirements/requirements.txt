@@ -1,7 +1,7 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==2.2.9
+Django==2.2.10
 fnpdjango==0.4
 docutils
 
@@ -50,7 +50,7 @@ mutagen>=1.31
 sorl-thumbnail==12.5.0
 
 # home-brewed & dependencies
-librarian==1.7.7
+librarian==1.7.8
 
 # celery tasks
 celery[redis]==4.3.0

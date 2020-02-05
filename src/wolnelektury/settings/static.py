@@ -145,6 +145,7 @@ PIPELINE = {
         },
         'book_text': {
             'source_filenames': [
+                'js/contrib/jquery.cycle2.min.js',
                 'js/contrib/jquery.form.js',
                 'js/contrib/jquery.jqmodal.js',
                 'js/book_text/info.js',
