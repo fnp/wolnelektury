@@ -230,6 +230,10 @@
 .dynamic-insert {
     background: orange;
     margin: 1em 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 
     &.with-image {
         min-height: 120px;

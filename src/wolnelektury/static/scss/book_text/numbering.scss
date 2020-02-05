@@ -48,6 +48,10 @@
         padding: 2px;
         text-align: center;
         color: #ccc;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 
         &:before {
             display: none;

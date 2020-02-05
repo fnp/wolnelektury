@@ -104,6 +104,10 @@ p {
     padding-left: 2px;
     position: relative;
     top: -4px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #footnotes {
@@ -115,6 +119,10 @@ p {
     float: left;
     width: 2.5em;
     clear: both;
+    user-select: auto;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 #footnotes div {

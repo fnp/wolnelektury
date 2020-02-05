@@ -80,6 +80,10 @@ nav #menu-themes {
     letter-spacing: 0;
     text-transform: none;
     text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 
     @include min-screen(600px) {
         @include theme-showing;
