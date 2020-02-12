@@ -76,17 +76,21 @@ h2 {
     line-height: 1.5em;
 }
 
-h3 {
+h3, .subtitle2 {
     font-size: 1.5em;
     margin: 1.5em 0 0;
     font-weight: normal;
     line-height: 1.5em;
 }
 
-h4 {
+h4, .subtitle3 {
     font-size: 1em;
     margin: 1.5em 0 0;
     line-height: 1.5em;
+}
+
+.subtitle4 {
+    font-weight: bold;
 }
 
 p {
