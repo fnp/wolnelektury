@@ -43,7 +43,8 @@ class EmailTemplate(models.Model):
     
         contacts = contacts.exclude(emailsent__template=self)
         for contact in contacts:
-            self.send(contact, verbose=verbose, dry_run=dry_run)
+            if not contact.is_annoyed:
+                self.send(contact, verbose=verbose, dry_run=dry_run)
 
     def get_state(self, time=None, test=False):
         for s in states:
@@ -114,6 +115,11 @@ class Contact(models.Model):
         if not self.key:
             self.key = get_random_hash(self.email)
         super().save(*args, **kwargs)
+
+    @property
+    def is_annoyed(self):
+        cutoff = now() - timedelta(settings.MESSAGING_MIN_DAYS)
+        return self.emailsent_set.filter(timestamp__gte=cutoff).exists()
 
     def get_optout_url(self):
         return reverse('messaging_optout', args=[self.key])

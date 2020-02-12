@@ -42,3 +42,5 @@ CLUB_APP_HOST = None
 AB_TESTS = {
     'PAYLOGO': 2,
 }
+
+MESSAGING_MIN_DAYS = 2

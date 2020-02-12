@@ -9,6 +9,6 @@ class Command(BaseCommand):
         parser.add_argument('--dry-run', action='store_true', help='Dry run')
 
     def handle(self, *args, **options):
-        for et in EmailTemplate.objects.filter(is_active=True):
+        for et in EmailTemplate.objects.order_by('min_days_since').filter(is_active=True):
             et.run(verbose=True, dry_run=options['dry_run'])
 
