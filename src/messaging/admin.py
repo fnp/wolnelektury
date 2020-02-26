@@ -65,7 +65,20 @@ class EmailSentAdmin(admin.ModelAdmin):
 admin.site.register(models.EmailSent, EmailSentAdmin)
 
 
+class ContactEmailSentInline(admin.TabularInline):
+    model = models.EmailSent
+    fields = ['timestamp', 'template', 'subject']
+    readonly_fields = ['timestamp', 'template', 'subject']
+    extra = 0
+    can_delete = False
+    show_change_link = True
+
+    def has_add_permission(self, request, obj):
+        return False
+
+
 class ContactAdmin(admin.ModelAdmin):
+    inlines = [ContactEmailSentInline]
     list_filter = ['level']
     list_display = ['email', 'level', 'since', 'expires_at']
     search_fields = ['email']

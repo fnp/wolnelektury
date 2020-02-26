@@ -14,6 +14,12 @@ img {
     max-width: 37.5rem;
     margin-top: 1em;
 }
+.animacja {
+    margin-top: 1em;
+}
+.animacja img {
+    margin-top: 0;
+}
 
 /* ================================== */
 /* = Header with logo and menu      = */

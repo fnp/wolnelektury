@@ -1,10 +1,11 @@
+from datetime import timedelta
 from django.apps import apps
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models
 from django.template import Template, Context
 from django.urls import reverse
-from django.utils.timezone import now
+from django.utils.timezone import now, get_current_timezone
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk import capture_exception
 from catalogue.utils import get_random_hash
@@ -36,6 +37,16 @@ class EmailTemplate(models.Model):
 
     def __str__(self):
         return '%s (%+d)' % (self.get_state_display(), self.min_days_since or 0)
+
+    @classmethod
+    def get_current(cls, time=None):
+        time = (time or now()).astimezone(get_current_timezone())
+        weekday = time.isoweekday()
+        qs = cls.objects.filter(is_active=True)
+        qs = qs.exclude(min_hour__gt=time.hour).exclude(max_hour__lte=time.hour)
+        qs = qs.exclude(min_day_of_month__gt=time.day).exclude(max_day_of_month__lte=time.day)
+        qs = qs.exclude(**{f'dow_{weekday}': False})
+        return qs
 
     def run(self, time=None, verbose=False, dry_run=False):
         state = self.get_state(time=time)
@@ -71,7 +82,7 @@ class EmailTemplate(models.Model):
         body = Template(body_template).render(ctx)
 
         if verbose:
-            print(contact.email, subject)
+            print(self.pk, subject, contact.email)
         if not dry_run:
             try:
                 send_mail(subject, body, settings.CONTACT_EMAIL, [contact.email], fail_silently=False)
@@ -166,5 +177,5 @@ class EmailSent(models.Model):
         ordering = ('-timestamp',)
 
     def __str__(self):
-        return '%s %s' % (self.email, self.timestamp)
+        return '%s %s' % (self.contact.email, self.timestamp)
 
