@@ -39,7 +39,7 @@ class PayUCardTokenInline(admin.TabularInline):
 
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = ['email', 'started_at', 'payed_at', 'expires_at', 'amount', 'monthly', 'yearly', 'is_cancelled']
-    list_search = ['email']
+    search_fields = ['email']
     list_filter = ['is_cancelled']
     date_hierarchy = 'started_at'
     raw_id_fields = ['membership']
