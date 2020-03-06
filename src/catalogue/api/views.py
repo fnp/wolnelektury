@@ -2,6 +2,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import json
+import os.path
+from django.conf import settings
 from django.http import Http404, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -41,6 +43,16 @@ class BookList(ListAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Book.objects.none()  # Required for DjangoModelPermissions
     serializer_class = serializers.BookListSerializer
+
+    def get(self, request, filename=None, **kwargs):
+        if filename and 'count' not in request.query_params:
+            try:
+                with open(os.path.join(settings.MEDIA_ROOT, 'api', '%s.%s' % (filename, request.accepted_renderer.format)), 'rb') as f:
+                    content = f.read()
+                return HttpResponse(content, content_type=request.accepted_media_type)
+            except:
+                pass
+        return super().get(request, filename=filename, **kwargs)
 
     def get_queryset(self):
         try:

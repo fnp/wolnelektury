@@ -75,7 +75,7 @@ class Command(BaseCommand):
 
             processed += 1
             last_word = ''
-            text = str(m.group(1), 'utf-8').lower()
+            text = m.group(1).lower()
             for letter in text:
                 mydict = lesmianator.setdefault(last_word, {})
                 mydict.setdefault(letter, 0)
@@ -91,12 +91,11 @@ class Command(BaseCommand):
             return
 
         try:
-            dump(lesmianator, open(path, 'w'))
+            dump(lesmianator, open(path, 'wb'))
         except IOError:
             print(self.style.ERROR("Couldn't write to $s" % path))
             return
 
-        dump(lesmianator, open(path, 'w'))
         if verbose >= 1:
             print("%d processed, %d skipped" % (processed, skipped))
             print("Results dumped to %s" % path)
