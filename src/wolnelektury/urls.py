@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
 import django.views.static
+from annoy.utils import banner_exempt
 import catalogue.views
 import picture.views
 from . import views
@@ -20,11 +21,11 @@ urlpatterns = [
 
     # Authentication
     path('uzytkownik/', views.user_settings, name='user_settings'),
-    path('uzytkownik/login/', views.LoginFormView(), name='login'),
-    path('uzytkownik/signup/', views.RegisterFormView(), name='register'),
+    path('uzytkownik/login/', banner_exempt(views.LoginFormView()), name='login'),
+    path('uzytkownik/signup/', banner_exempt(views.RegisterFormView()), name='register'),
     path('uzytkownik/logout/', views.logout_then_redirect, name='logout'),
-    path('uzytkownik/zaloguj-utworz/', views.LoginRegisterFormView(), name='login_register'),
-    path('uzytkownik/social/signup/', views.SocialSignupView.as_view(), name='socialaccount_signup'),
+    path('uzytkownik/zaloguj-utworz/', banner_exempt(views.LoginRegisterFormView()), name='login_register'),
+    path('uzytkownik/social/signup/', banner_exempt(views.SocialSignupView.as_view()), name='socialaccount_signup'),
 ]
 
 urlpatterns += [
