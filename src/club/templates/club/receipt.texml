@@ -1,0 +1,89 @@
+<TeXML xmlns="http://getfo.sourceforge.net/texml/ns1">
+<TeXML escape="0"><![CDATA[
+\documentclass[a4paper,14pt]{letter}
+\usepackage[MeX]{polski}
+\usepackage[xetex]{graphicx}
+%\usepackage{xltxtra}
+%\usepackage{xunicode}
+\usepackage{longtable}
+
+\usepackage[colorlinks=true,linkcolor=black,setpagesize=false,urlcolor=black,xetex]{hyperref}
+
+
+
+\begin{document}
+\pagestyle{empty}
+\large
+
+
+\begin{flushright}
+  Warszawa, \today
+\end{flushright}
+\vskip -2.15em
+
+\includegraphics[width=10em]{fnp.eps}
+
+
+
+\vskip 4em
+
+\begin{center}
+  {\LARGE Potwierdzenie darowizn {{ year }} }
+\end{center}
+
+\vskip 1.5em
+
+Fundacja Nowoczesna Polska prowadząca bibliotekę Wolne Lektury
+potwierdza otrzymanie od Darczyńcy, na swój
+rachunek płatniczy, darowizn pieniężnych w~łącznej kwocie {{ total }} zł.
+
+\vskip 1.5em
+
+{\renewcommand{\arraystretch}{1.2}% for the vertical padding
+         
+\begin{longtable}{cc}
+  \hline
+  \textbf{Data} & \textbf{Darowizna} \\
+  \hline
+  {% for obj in orders %}{{ obj.completed_at.date }} & {{ obj.get_amount }} zł \\
+  {% endfor %}
+  \hline
+\end{longtable}
+
+{\renewcommand{\arraystretch}{1}% for the vertical padding
+
+\vskip 1em
+
+Darowizny zostały dokonane na rzecz Fundacji Nowoczesna Polska
+prowadzącej działalność pożytku publicznego, w tym posiadającej status
+organizacji pożytku publicznego.
+
+\vskip 1em
+
+{\Large \textbf{Dane identyfikujące Darczyńcę:}}
+
+\begin{longtable}{ r l }
+  \textbf{adres e-mail:} & ]]><TeXML escape="1">text_x+x-{{ email }}</TeXML><![CDATA[
+\end{longtable}
+
+{\Large \textbf{Dane identyfikujące Obdarowanego:}}
+
+\begin{longtable}{ l }
+  Fundacja Nowoczesna Polska\\
+  Marszałkowska 84/92 lok. 125\\
+  00-514 Warszawa\\
+  KRS: 0000070056\\
+\end{longtable}
+
+\vskip 1em
+
+\begin{flushright}
+  Zarząd Fundacji Nowoczesna Polska\\
+\end{flushright}
+
+
+    \end{document}
+
+]]>
+</TeXML>
+</TeXML>

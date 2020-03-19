@@ -1,0 +1,27 @@
+Dzień dobry,
+
+Czy wiesz, że możesz odliczyć od podatku darowizny przekazane
+Fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
+Kliknij i zobacz swoje zestawienie darowizn za rok {{ year }}!
+
+Dane z zaświadczenia wprowadź do formularza PIT. Pamiętaj, że musisz
+mieć potwierdzenie wykonanych przelewów z Twojego banku. Zaświadczenie
+będzie dostępne do końca kwietnia {{ next_year }} roku.
+
+Pamiętaj, że podczas wypełniania swojego PIT-a możesz przekazać
+1% swojego podatku na wybraną organizację pożytku publicznego.
+Chcesz dodatkowo wesprzeć Wolne Lektury? Nic prostszego!
+Wystarczy, że w swoim zeznaniu podatkowym w odpowiednim polu
+podasz "Fundacja Nowoczesna Polska" oraz numer KRS: 0000070056.
+
+Serdecznie dziękujemy za Twoje wsparcie!
+
+zespół Wolnych Lektur
+
+
+Administratorem danych osobowych jest Fundacja Nowoczesna Polska
+(ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych
+jest dobrowolne. Dane są przetwarzane w zakresie niezbędnym do wysyłania
+informacji darczyńcom Wolnych Lektur. Osobom, których dane są zbierane,
+przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
+Więcej informacji w polityce prywatności (https://nowoczesnapolska.org.pl/prywatnosc/).
