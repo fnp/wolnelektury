@@ -17,7 +17,7 @@
         <img src="{{ banner.image.url }}">
       {% endif %}
       <div class="text">
-        {{ banner.text|safe|linebreaks }}
+        {{ banner.get_text|safe|linebreaks }}
       </div>
 
       {% if banner.action_label %}

@@ -18,6 +18,10 @@ def active_schedule(user):
 
 
 @register.simple_tag
+def club_count_recurring():
+    return Schedule.objects.exclude(monthly=False, yearly=False).filter(expires_at__gt=now()).count()
+
+@register.simple_tag
 def club_active_monthly_count():
     return Schedule.objects.filter(
         expires_at__gt=now(),
