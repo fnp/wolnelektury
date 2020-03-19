@@ -2,10 +2,12 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import datetime, timedelta
+import os
+import tempfile
 from django.apps import apps
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.urls import reverse
 from django.db import models
 from django import template
@@ -13,6 +15,7 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
 from catalogue.utils import get_random_hash
 from messaging.states import Level
+from reporting.utils import render_to_pdf
 from .payment_methods import recurring_payment_method, single_payment_method
 from .payu import models as payu_models
 from . import utils
@@ -238,6 +241,33 @@ class PayUOrder(payu_models.Order):
 
             if not self.schedule.email_sent:
                 self.schedule.send_email()
+
+    @classmethod
+    def send_receipt(cls, email, year):
+        qs = cls.objects.filter(status='COMPLETED', schedule__email=email, completed_at__year=year).order_by('completed_at')
+        if not qs.exists(): return
+        ctx = {
+            "email": email,
+            "year": year,
+            "next_year": year + 1,
+            "total": qs.aggregate(s=models.Sum('schedule__amount'))['s'],
+            "orders": qs,
+        }
+        temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
+        temp.close()
+        render_to_pdf(temp.name, 'club/receipt.texml', ctx, {
+            "fnp.eps": os.path.join(settings.STATIC_ROOT, "img/fnp.eps"),
+            })
+
+        message = EmailMessage(
+                f'Odlicz od podatku swoje darowizny przekazane dla Wolnych Lektur',
+                template.loader.render_to_string('club/receipt_email.txt', ctx),
+                settings.CONTACT_EMAIL, [email]
+            )
+        with open(temp.name, 'rb') as f:
+            message.attach('wolnelektury-darowizny.pdf', f.read(), 'application/pdf')
+        message.send()
+        os.unlink(f.name)
 
 
 class PayUCardToken(payu_models.CardToken):
