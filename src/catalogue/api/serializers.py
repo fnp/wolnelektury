@@ -27,6 +27,10 @@ class TagDetailSerializer(serializers.ModelSerializer):
         fields = ['name', 'url', 'sort_key', 'description']
 
 
+class TranslatorSerializer(serializers.Serializer):
+    name = serializers.CharField(source='*')
+
+
 class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     author = serializers.CharField(source='author_unicode')
     kind = serializers.CharField(source='kind_unicode')
@@ -79,6 +83,7 @@ class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
     url = AbsoluteURLField()
 
     authors = TagSerializer(many=True)
+    translators = TranslatorSerializer(many=True)
     epochs = TagSerializer(many=True)
     genres = TagSerializer(many=True)
     kinds = TagSerializer(many=True)
@@ -102,7 +107,7 @@ class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
         model = Book
         fields = [
             'title', 'url',
-            'epochs', 'genres', 'kinds', 'authors',
+            'epochs', 'genres', 'kinds', 'authors', 'translators',
             'fragment_data', 'children', 'parent', 'preview',
             'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml', 'media', 'audio_length',
             'cover_color', 'simple_cover', 'cover_thumb', 'cover', 'simple_thumb'
