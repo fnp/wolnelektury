@@ -1,0 +1,18 @@
+{
+  "short_name": "Wolne Lektury",
+  "name": "Wolne Lektury",
+  "icons": [
+    {
+      "src": "app-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.moiseum.wolnelektury"
+    }
+  ]
+}

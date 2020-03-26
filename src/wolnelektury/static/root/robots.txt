@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /czekaj/
+Disallow: /lesmianator/lektura/
+Disallow: /lesmianator/polka/
+Disallow: /lesmianator/wiersz/$
+Disallow: /szukaj/
+Disallow: /uzytkownik/
+Disallow: /zegar/
+
