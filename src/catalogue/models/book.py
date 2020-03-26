@@ -173,7 +173,7 @@ class Book(models.Model):
         return self.tag_unicode('genre')
 
     def translators(self):
-        translators = self.get_extra_info_json().get('translators')
+        translators = self.get_extra_info_json().get('translators') or []
         return [
             '\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators
         ]
