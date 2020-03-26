@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from fnpdjango.actions import export_as_csv_action
 from . import models
 
 
@@ -83,6 +84,7 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ['email', 'level', 'since', 'expires_at']
     search_fields = ['email']
     date_hierarchy = 'since'
+    actions = [export_as_csv_action(fields=['id', 'email', 'get_level_display', 'since', 'expires_at'])]
 
 
 admin.site.register(models.Contact, ContactAdmin)

@@ -2,7 +2,7 @@
 
 # django
 Django==2.2.10
-fnpdjango==0.4
+fnpdjango==0.4.5
 docutils
 
 #django-pipeline==1.6.13
