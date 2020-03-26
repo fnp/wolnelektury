@@ -159,17 +159,6 @@ def re_escape(s):
     return re.sub(r"[(){}\[\].*?|^$\\+-]", r"\\\g<0>", s)
 
 
-BOT_BITS = ['bot', 'slurp', 'spider', 'facebook', 'crawler', 'parser', 'http']
-
-
-def is_crawler(request):
-    user_agent = request.META.get('HTTP_USER_AGENT')
-    if not user_agent:
-        return True
-    user_agent = user_agent.lower()
-    return any(bot_bit in user_agent for bot_bit in BOT_BITS)
-
-
 def get_cached_render_key(instance, property_name, language=None):
     if language is None:
         language = get_language()
