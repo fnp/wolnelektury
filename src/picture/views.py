@@ -17,7 +17,7 @@ def picture_list_thumb(request, filter=None, get_filter=None, template_name='pic
         pictures = pictures.filter(filter)
     if get_filter:
         pictures = pictures.filter(get_filter())
-    return render(request, template_name, {'book_list': list(pictures)})
+    return render(request, template_name, {'picture_list': list(pictures)})
 
 
 def picture_detail(request, slug):
