@@ -110,7 +110,8 @@ class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
             'epochs', 'genres', 'kinds', 'authors', 'translators',
             'fragment_data', 'children', 'parent', 'preview',
             'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml', 'media', 'audio_length',
-            'cover_color', 'simple_cover', 'cover_thumb', 'cover', 'simple_thumb'
+            'cover_color', 'simple_cover', 'cover_thumb', 'cover', 'simple_thumb',
+            'isbn_pdf', 'isbn_epub', 'isbn_mobi',
         ]
         legacy_non_null_fields = ['html', 'txt', 'fb2', 'epub', 'mobi', 'pdf',
                                   'cover', 'simple_cover', 'cover_thumb', 'simple_thumb']

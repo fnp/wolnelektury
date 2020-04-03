@@ -198,6 +198,19 @@ class Book(models.Model):
     def cover_source(self):
         return self.get_extra_info_json().get('cover_source', self.parent.cover_source() if self.parent else '')
 
+    @property
+    def isbn_pdf(self):
+        return self.get_extra_info_json().get('isbn_pdf')
+
+    @property
+    def isbn_epub(self):
+        return self.get_extra_info_json().get('isbn_epub')
+
+    @property
+    def isbn_mobi(self):
+        return self.get_extra_info_json().get('isbn_mobi')
+
+
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify
 
