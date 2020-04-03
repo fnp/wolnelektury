@@ -293,6 +293,15 @@ class BuildSimpleCover(BuildCover):
         return WLNoBoxCover(wldoc.book_info, height=1000).output_file()
 
 
+@BuildEbook.register('cover_ebookpoint')
+@task(ignore_result=True)
+class BuildCoverEbookpoint(BuildCover):
+    @classmethod
+    def fransform(cls, wldoc, fieldfile):
+        from librarian.cover import EbookpointCover
+        return EbookpointCover(wldoc.book_info).output_file()
+
+
 # not used, but needed for migrations
 class OverwritingFieldFile(FieldFile):
     """
