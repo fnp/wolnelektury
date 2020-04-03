@@ -297,7 +297,7 @@ class BuildSimpleCover(BuildCover):
 @task(ignore_result=True)
 class BuildCoverEbookpoint(BuildCover):
     @classmethod
-    def fransform(cls, wldoc, fieldfile):
+    def transform(cls, wldoc, fieldfile):
         from librarian.cover import EbookpointCover
         return EbookpointCover(wldoc.book_info).output_file()
 
