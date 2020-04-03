@@ -45,6 +45,7 @@ _cover_upload_to = UploadToPath('book/cover/%s.jpg')
 _cover_thumb_upload_to = UploadToPath('book/cover_thumb/%s.jpg')
 _cover_api_thumb_upload_to = UploadToPath('book/cover_api_thumb/%s.jpg')
 _simple_cover_upload_to = UploadToPath('book/cover_simple/%s.jpg')
+_cover_ebookpoint_upload_to = UploadToPath('book/cover_ebookpoint/%s.jpg')
 
 
 def _ebook_upload_to(upload_path):
@@ -97,6 +98,11 @@ class Book(models.Model):
         'simple_cover', _('cover for mobile app'),
         null=True, blank=True,
         upload_to=_simple_cover_upload_to,
+        max_length=255)
+    cover_ebookpoint = EbookField(
+        'cover_ebookpoint', _('cover for Ebookpoint'),
+        null=True, blank=True,
+        upload_to=_cover_ebookpoint_upload_to,
         max_length=255)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
@@ -556,6 +562,7 @@ class Book(models.Model):
             book.cover_thumb.build_delay()
             book.cover_api_thumb.build_delay()
             book.simple_cover.build_delay()
+            book.cover_ebookpoint.build_delay()
 
         # Build HTML and ebooks.
         book.html_file.build_delay()
