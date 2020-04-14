@@ -29,6 +29,8 @@ from api.models import Consumer, Token
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}},
 )
 class ApiTest(TestCase):
+    maxDiff = None
+
     def load_json(self, url):
         content = self.client.get(url).content
         try:

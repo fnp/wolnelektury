@@ -76,6 +76,7 @@
             "slug": "john-doe"
         }
     ], 
+    "translators": [],
     "audio_length": "1:00", 
     "epub": "http://testserver/media/epub/parent.epub",
     "cover_thumb": "http://testserver/media/cover/parent.jpg-139x193",
@@ -83,5 +84,8 @@
     "url": "http://testserver/katalog/lektura/parent/",
     "cover": "http://testserver/media/cover/parent.jpg",
     "pdf": "http://testserver/media/pdf/parent.pdf",
-    "simple_thumb": "http://testserver/media/cover_api_thumb/parent.jpg"
+    "simple_thumb": "http://testserver/media/cover_api_thumb/parent.jpg",
+    "isbn_epub": null,
+    "isbn_mobi": null,
+    "isbn_pdf": null
 }
