@@ -5,21 +5,8 @@ from fnpdjango.actions import export_as_csv_action
 from . import models
 
 
-class EmailSentInline(admin.TabularInline):
-    model = models.EmailSent
-    fields = ['timestamp', 'contact', 'subject']
-    readonly_fields = ['timestamp', 'contact', 'subject']
-    extra = 0
-    can_delete = False
-    show_change_link = True
-
-    def has_add_permission(self, request, obj):
-        return False
-
-
 class EmailTemplateAdmin(admin.ModelAdmin):
     list_display = ['state', 'min_days_since', 'subject', 'min_hour']
-    inlines = [EmailSentInline]
     fieldsets = [
         (None, {"fields": [
             'state',
