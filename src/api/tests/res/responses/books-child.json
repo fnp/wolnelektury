@@ -66,5 +66,10 @@
     "url": "http://testserver/katalog/lektura/child/",
     "cover": "", 
     "pdf": "", 
-    "simple_thumb": ""
+    "simple_thumb": "",
+    "translators": [],
+    "isbn_epub": null,
+    "isbn_mobi": null,
+    "isbn_pdf": null
+
 }
