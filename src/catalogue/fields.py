@@ -7,13 +7,17 @@ from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
-from catalogue.constants import LANGUAGES_3TO2
+from catalogue.constants import LANGUAGES_3TO2, EBOOK_FORMATS_WITH_CHILDREN, EBOOK_FORMATS_WITHOUT_CHILDREN
 from catalogue.utils import remove_zip, truncate_html_words, gallery_path, gallery_url
 from celery.task import Task, task
 from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
 
 task_logger = get_task_logger(__name__)
+
+ETAG_SCHEDULED_SUFFIX = '-scheduled'
+EBOOK_BUILD_PRIORITY = 0
+EBOOK_REBUILD_PRIORITY = 9
 
 
 class EbookFieldFile(FieldFile):
@@ -23,9 +27,15 @@ class EbookFieldFile(FieldFile):
         """Build the ebook immediately."""
         return self.field.builder.build(self)
 
-    def build_delay(self):
+    def build_delay(self, priority=EBOOK_BUILD_PRIORITY):
         """Builds the ebook in a delayed task."""
-        return self.field.builder.delay(self.instance, self.field.attname)
+        self.update_etag(
+            "".join([self.field.get_current_etag(), ETAG_SCHEDULED_SUFFIX])
+        )
+        return self.field.builder.apply_async(
+            [self.instance, self.field.attname],
+            priority=priority
+        )
 
     def get_url(self):
         return self.instance.media_url(self.field.attname.split('_')[0])
@@ -35,10 +45,16 @@ class EbookFieldFile(FieldFile):
         permissions = 0o644 if readable else 0o600
         os.chmod(self.path, permissions)
 
+    def update_etag(self, etag):
+        setattr(self.instance, self.field.etag_field_name, etag)
+        if self.instance.pk:
+            self.instance.save(update_fields=[self.field.etag_field_name])
+
 
 class EbookField(models.FileField):
     """Represents an ebook file field, attachable to a model."""
     attr_class = EbookFieldFile
+    registry = []
 
     def __init__(self, format_name, *args, **kwargs):
         super(EbookField, self).__init__(*args, **kwargs)
@@ -57,13 +73,53 @@ class EbookField(models.FileField):
     def contribute_to_class(self, cls, name):
         super(EbookField, self).contribute_to_class(cls, name)
 
+        self.etag_field_name = f'{name}_etag'
+
         def has(model_instance):
             return bool(getattr(model_instance, self.attname, None))
         has.__doc__ = None
         has.__name__ = str("has_%s" % self.attname)
         has.short_description = self.name
         has.boolean = True
+
+        self.registry.append(self)
+
         setattr(cls, 'has_%s' % self.attname, has)
+
+    def get_current_etag(self):
+        import pkg_resources
+        librarian_version = pkg_resources.get_distribution("librarian").version
+        return librarian_version
+
+    def schedule_stale(self, queryset=None):
+        """Schedule building this format for all the books where etag is stale."""
+        # If there is not ETag field, bail. That's true for xml file field.
+        if not hasattr(self.model, f'{self.attname}_etag'):
+            return
+
+        etag = self.get_current_etag()
+        if queryset is None:
+            queryset = self.model.objects.all()
+
+        if self.format_name in EBOOK_FORMATS_WITHOUT_CHILDREN + ['html']:
+            queryset = queryset.filter(children=None)
+
+        queryset = queryset.exclude(**{
+            f'{self.etag_field_name}__in': [
+                etag, f'{etag}{ETAG_SCHEDULED_SUFFIX}'
+            ]
+        })
+        for obj in queryset:
+            fieldfile = getattr(obj, self.attname)
+            priority = EBOOK_REBUILD_PRIORITY if fieldfile else EBOOK_BUILD_PRIORITY
+            fieldfile.build_delay(priority=priority)
+
+    @classmethod
+    def schedule_all_stale(cls):
+        """Schedules all stale ebooks of all formats to rebuild."""
+        for field in cls.registry:
+            field.schedule_stale()
+
 
 
 class BuildEbook(Task):
@@ -93,8 +149,13 @@ class BuildEbook(Task):
 
     def run(self, obj, field_name):
         """Just run `build` on FieldFile, can't pass it directly to Celery."""
-        task_logger.info("%s -> %s" % (obj.slug, field_name))
+        fieldfile = getattr(obj, field_name)
+
+        # Get etag value before actually building the file.
+        etag = fieldfile.field.get_current_etag()
+        task_logger.info("%s -> %s@%s" % (obj.slug, field_name, etag))
         ret = self.build(getattr(obj, field_name))
+        fieldfile.update_etag(etag)
         obj.clear_cache()
         return ret
 

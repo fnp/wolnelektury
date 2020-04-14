@@ -83,27 +83,32 @@ class Book(models.Model):
         null=True, blank=True,
         upload_to=_cover_upload_to,
         storage=bofh_storage, max_length=255)
+    cover_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     # Cleaner version of cover for thumbs
     cover_thumb = EbookField(
         'cover_thumb', _('cover thumbnail'),
         null=True, blank=True,
         upload_to=_cover_thumb_upload_to,
         max_length=255)
+    cover_thumb_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     cover_api_thumb = EbookField(
         'cover_api_thumb', _('cover thumbnail for mobile app'),
         null=True, blank=True,
         upload_to=_cover_api_thumb_upload_to,
         max_length=255)
+    cover_api_thumb_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     simple_cover = EbookField(
         'simple_cover', _('cover for mobile app'),
         null=True, blank=True,
         upload_to=_simple_cover_upload_to,
         max_length=255)
+    simple_cover_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     cover_ebookpoint = EbookField(
         'cover_ebookpoint', _('cover for Ebookpoint'),
         null=True, blank=True,
         upload_to=_cover_ebookpoint_upload_to,
         max_length=255)
+    cover_ebookpoint_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
@@ -856,6 +861,8 @@ def add_file_fields():
             blank=True,
             default=''
         ).contribute_to_class(Book, field_name)
+        if format_ != 'xml':
+            models.CharField(max_length=255, editable=False, default='', db_index=True).contribute_to_class(Book, f'{field_name}_etag')
 
 
 add_file_fields()
