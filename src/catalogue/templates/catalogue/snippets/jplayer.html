@@ -35,6 +35,7 @@
                   {% with extra_info=i.mp3.get_extra_info_json %}
                     {% trans "Artist:" %}&nbsp;<span class='artist'>{{ extra_info.artist_name }}</span>,
                     {% trans "director:" %}&nbsp;<span class='director'>{{ extra_info.director_name }}</span>
+                    {% if extra_info.license %}{% license_icon extra_info.license %}{% endif %}
                     <p>
                       {% with fb=extra_info.funded_by %}
                         {% if fb %}Dofinansowano ze środków: {{ fb }}.{% endif %}

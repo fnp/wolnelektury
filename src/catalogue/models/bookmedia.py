@@ -96,6 +96,7 @@ class BookMedia(models.Model):
                 audio = id3.ID3(self.file.path)
                 artist_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE1'))
                 director_name = ', '.join(', '.join(tag.text) for tag in audio.getall('TPE3'))
+                license = ', '.join(tag.url for tag in audio.getall('WCOP'))
                 project = ", ".join([
                     t.data.decode('utf-8') for t in audio.getall('PRIV')
                     if t.owner == 'wolnelektury.pl?project'])
@@ -109,6 +110,7 @@ class BookMedia(models.Model):
                 audio = mutagen.File(self.file.path)
                 artist_name = ', '.join(audio.get('artist', []))
                 director_name = ', '.join(audio.get('conductor', []))
+                license = ', '.join(audio.get('license', []))
                 project = ", ".join(audio.get('project', []))
                 funded_by = ", ".join(audio.get('funded_by', []))
             except (MutagenError, AttributeError):
@@ -116,7 +118,7 @@ class BookMedia(models.Model):
         else:
             return {}
         return {'artist_name': artist_name, 'director_name': director_name,
-                'project': project, 'funded_by': funded_by}
+                'project': project, 'funded_by': funded_by, 'license': license}
 
     def ext(self):
         return self.formats[self.type].ext
