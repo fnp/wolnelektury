@@ -3,9 +3,13 @@
 #
 import json
 from django.contrib import admin
+from django.db.models.functions import Now
+from django.db.models import Q
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin
+from wolnelektury.utils import YesNoFilter
 from . import models
 
 
@@ -37,10 +41,22 @@ class PayUCardTokenInline(admin.TabularInline):
         return False
 
 
+class PayedFilter(YesNoFilter):
+    title = _('payment complete')
+    parameter_name = 'payed'
+    q = ~Q(payed_at=None)
+
+
+class ExpiredFilter(YesNoFilter):
+    title = _('schedule expired')
+    parameter_name = 'expired'
+    q = Q(expires_at__isnull=False, expires_at__lt=Now())
+
+
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = ['email', 'started_at', 'payed_at', 'expires_at', 'amount', 'monthly', 'yearly', 'is_cancelled']
     search_fields = ['email']
-    list_filter = ['is_cancelled']
+    list_filter = ['is_cancelled', 'monthly', 'yearly', PayedFilter, ExpiredFilter]
     date_hierarchy = 'started_at'
     raw_id_fields = ['membership']
     inlines = [PayUOrderInline, PayUCardTokenInline]
