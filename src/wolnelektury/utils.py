@@ -12,6 +12,7 @@ import pytz
 import re
 
 from django.conf import settings
+from django.contrib import admin
 from django.core.cache import cache
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -20,7 +21,7 @@ from django.utils import timezone
 from django.utils.translation import get_language
 from django.conf import settings
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext
+from django.utils.translation import gettext as _
 
 
 tz = pytz.timezone(settings.TIME_ZONE)
@@ -119,7 +120,7 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
 def send_noreply_mail(subject, message, recipient_list, **kwargs):
     send_mail(
         '[WolneLektury] ' + subject,
-        message + "\n\n-- \n" + ugettext('Message sent automatically. Please do not reply.'),
+        message + "\n\n-- \n" + _('Message sent automatically. Please do not reply.'),
         'no-reply@wolnelektury.pl', recipient_list, **kwargs)
 
 
@@ -196,3 +197,17 @@ def clear_cached_renders(bound_method):
                 lc
             )
         )
+
+
+class YesNoFilter(admin.SimpleListFilter):
+    def lookups(self, request, model_admin):
+        return (
+            ('yes', _('Yes')),
+            ('no', _('No')),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            return queryset.filter(self.q)
+        elif self.value() == 'no':
+            return queryset.exclude(self.q)
