@@ -106,7 +106,7 @@ class PublishingSuggestForm(NewsletterForm):
 
     Audiobooki:
     %(audiobooks)s''' % {
-                'url': request.build_absolute_uri(reverse('admin:suggest_suggestion_change', args=[suggestion.id])),
+                'url': request.build_absolute_uri(reverse('admin:suggest_publishingsuggestion_change', args=[suggestion.id])),
                 'user': str(request.user) if request.user.is_authenticated else '',
                 'contact': contact,
                 'books': books,
