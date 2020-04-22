@@ -45,6 +45,10 @@
                 }
                 return inserts.length > 0;
             });
+	    /* Special case for short poems. */
+	    if (inserts && !counter) {
+		inserts[0].insertAfter($(".paragraph, .stanza").last());
+	    }
         };
 
         
