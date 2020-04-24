@@ -28,7 +28,7 @@
   {% endif %}
 
   <li id="menu-toc">
-    <a href="#" data-box="toc">
+    <a href="#" data-box="wltoc">
       <span class="label">{% trans "Table of contents" %}</span>
     </a>
   </li>
@@ -62,8 +62,18 @@
 {% block big-pane %}
 
   <article id="main-text">
-    {{ book_text|safe }}
+    {% with next=book.get_next_text prev=book.get_prev_text %}
+      {% if next %}
+        <a style="float:right; padding: 1em;" href="{% url 'book_text' next.slug %}">{{ next.title }}&nbsp;&rarr;</a>
+      {% endif %}
+      {% if prev %}
+        <a style="display:inline-block;padding: 1em;" href="{% url 'book_text' prev.slug %}">&larr;&nbsp;{{ prev.title }}</a>
+      {% endif %}
+      {{ book_text|safe }}
+    {% endwith %}
   </article>
+
+
 
   <article id="other-text">
     <a class="other-text-close" href="#">{% trans "Close" %}</a>
@@ -72,8 +82,39 @@
   </article>
 {% endblock big-pane %}
 
-
 {% block footer %}
+  <div id="wltoc" class="box">
+    {% if book.parent %}
+      {% for b in book.ancestor.all %}
+        {% if forloop.counter > 1 %}
+          <li>
+        {% endif %}
+        <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+        <ol>
+      {% endfor %}
+        {% for b in book.get_siblings %}
+          <li>
+            {% if b == book %}
+              <strong>{{ b.title }}</strong>
+              <div id="heretoc"></div>
+            {% else %}
+              <a href="{% url 'book_text' b.slug %}">{{ b.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+
+        {% for b in book.ancestor.all %}
+        </ol>
+        {% if not forloop.counter.last %}
+          </li>
+        {% endif %}
+        {% endfor %}
+    {% else %}
+      <strong>{{ book.title }}</strong>
+      <div id="heretoc"></div>
+    {% endif %}
+  </div>
+
   <div id="info" class="box">
       {% book_info book %}
   </div>

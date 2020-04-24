@@ -15,10 +15,6 @@ $(function() {
     }
 
     $.highlightFade.defaults.speed = 3000;
-    $('#toc').hide();
-    if ($('#toc li').length == 0) {
-        $('#menu li a[href="#toc"]').remove();
-    }
     if ($('#themes li').length == 0) {
         $('#menu li a[href="#themes"]').remove();
     }
