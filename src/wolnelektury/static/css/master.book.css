@@ -95,7 +95,7 @@ img {
 }
 
 
-#toc, #themes, #nota_red, #info, #other-versions, #objects {
+#wltoc, #themes, #nota_red, #info, #other-versions, #objects {
     position: fixed;
     left: 0;
     top: 1.5em;
@@ -128,30 +128,30 @@ img {
     z-index: 99;
 }
 
-#toc ol, #themes ol, #objects ol {
+#wltoc ol, #themes ol, #objects ol {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#toc ol li {
+#wltoc ol li {
     font-weight: bold;
 }
 
-#toc ol ol {
+#wltoc ol ol {
     padding: 0 0 1.5em 1.5em;
     margin: 0;
 }
 
-#toc ol ol li {
+#wltoc ol ol li {
     font-weight: normal;
 }
 
-#toc h2 {
+#wltoc h2 {
     display: none;
 }
 
-#toc .anchor {
+#wltoc .anchor {
     float: none;
     margin: 0;
     color: blue;

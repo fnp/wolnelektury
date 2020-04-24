@@ -313,3 +313,9 @@ def gallery_url(slug):
 def get_mp3_length(path):
     from mutagen.mp3 import MP3
     return int(MP3(path).info.length)
+
+
+def set_file_permissions(self, fieldfile):
+    if fieldfile.instance.preview:
+        fieldfile.set_readable(False)
+

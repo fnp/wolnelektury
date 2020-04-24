@@ -247,6 +247,41 @@ class Book(models.Model):
     def gallery_url(self):
         return gallery_url(self.slug)
 
+    def get_first_text(self):
+        if self.html_file:
+            return self
+        child = self.children.all().order_by('parent_number').first()
+        if child is not None:
+            return child.get_first_text()
+
+    def get_last_text(self):
+        if self.html_file:
+            return self
+        child = self.children.all().order_by('parent_number').last()
+        if child is not None:
+            return child.get_last_text()
+
+    def get_prev_text(self):
+        if not self.parent:
+            return None
+        sibling = self.parent.children.filter(parent_number__lt=self.parent_number).order_by('-parent_number').first()
+        if sibling is not None:
+            return sibling.get_last_text()
+        return self.parent.get_prev_text()
+
+    def get_next_text(self):
+        if not self.parent:
+            return None
+        sibling = self.parent.children.filter(parent_number__gt=self.parent_number).order_by('parent_number').first()
+        if sibling is not None:
+            return sibling.get_first_text()
+        return self.parent.get_next_text()
+
+    def get_siblings(self):
+        if not self.parent:
+            return []
+        return self.parent.children.all().order_by('parent_number')
+
     @property
     def name(self):
         return self.title
