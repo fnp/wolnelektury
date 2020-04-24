@@ -98,7 +98,7 @@
               <strong>{{ b.title }}</strong>
               <div id="heretoc"></div>
             {% else %}
-              <a href="{% url 'book_text' b.slug %}">{{ b.title }}</a>
+              <a href="{% url 'book_text' b.get_first_text.slug %}">{{ b.title }}</a>
             {% endif %}
           </li>
         {% endfor %}
