@@ -122,7 +122,7 @@
 
 #book-text {
     @include size(max-width, $W_BOOK_TEXT_MAX);
-    @include size(margin, 20px auto);
+    @include size(margin, 20px auto 30px);
 
     font-size: .8em;
 

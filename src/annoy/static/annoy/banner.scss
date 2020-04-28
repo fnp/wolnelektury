@@ -87,6 +87,10 @@
     top: 0;
     right: 0;
     color: black;
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -223,6 +227,10 @@
     color: white;
     border-radius: 1em 0 0 0;
     padding: .1em 1em;
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
