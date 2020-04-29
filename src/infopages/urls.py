@@ -2,9 +2,10 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.urls import path
+from annoy.utils import banner_exempt
 from . import views
 
 
 urlpatterns = [
-    path('<slug>/', views.infopage, name='infopage'),
+    path('<slug>/', banner_exempt(views.infopage), name='infopage'),
 ]
