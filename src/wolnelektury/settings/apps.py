@@ -35,6 +35,7 @@ INSTALLED_APPS_OUR = [
     'paypal',
     'push',
     'club.apps.ClubConfig',
+    'redirects.apps.RedirectsConfig',
 ]
 
 INSTALLED_APPS_CONTRIB = [
