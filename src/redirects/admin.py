@@ -9,6 +9,8 @@ class RedirectAdmin(admin.ModelAdmin):
     fields = ['slug', 'url', 'counter', 'created_at', 'full_url']
 
     def full_url(self, obj):
+        if not obj.slug:
+            return None
         site = Site.objects.get_current()
         url = obj.get_absolute_url()
         return f'https://{site.domain}{url}'
