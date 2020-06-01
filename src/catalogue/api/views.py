@@ -45,7 +45,7 @@ class BookList(ListAPIView):
     serializer_class = serializers.BookListSerializer
 
     def get(self, request, filename=None, **kwargs):
-        if filename and 'count' not in request.query_params:
+        if filename and not kwargs.get('tags') and 'count' not in request.query_params:
             try:
                 with open(os.path.join(settings.MEDIA_ROOT, 'api', '%s.%s' % (filename, request.accepted_renderer.format)), 'rb') as f:
                     content = f.read()

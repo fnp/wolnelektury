@@ -75,14 +75,6 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
 {% if schedule.membership %}
   <p>
   Należysz już do Towarzystwa Przyjaciół Wolnych Lektur!</p>
-
-  <form class="wlform" method='post' action='{% url "club_membership" %}'>
-	  {% csrf_token %}
-	  Skontaktujemy się z Tobą w sprawie odbioru legitymacji członkowskiej.<br>Tutaj możesz podać imię i nazwisko, jakie ma na niej widnieć:<br>
-	  <input name="name" value="{{ schedule.membership.name|default:schedule.membership.user.username }}"><br>
-	  <button class="submit" type="submit">Zmień dane</button>
-  </form>
-
 {% else %}
 
 <p>

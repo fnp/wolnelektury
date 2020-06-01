@@ -90,7 +90,7 @@ class BookMedia(models.Model):
         import mutagen
         from mutagen import id3
 
-        artist_name = director_name = project = funded_by = ''
+        artist_name = director_name = project = funded_by = license = ''
         if self.type == 'mp3':
             try:
                 audio = id3.ID3(self.file.path)
