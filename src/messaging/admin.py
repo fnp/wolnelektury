@@ -6,7 +6,7 @@ from . import models
 
 
 class EmailTemplateAdmin(admin.ModelAdmin):
-    list_display = ['state', 'min_days_since', 'subject', 'min_hour']
+    list_display = ['state', 'min_days_since', 'subject', 'min_hour', 'is_active']
     fieldsets = [
         (None, {"fields": [
             'state',
