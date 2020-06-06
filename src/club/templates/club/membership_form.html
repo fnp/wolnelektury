@@ -11,6 +11,9 @@
 
   <style>
 
+   .plan-select {
+       margin-bottom: 15px;
+   }
 .methods {
  color: #888;
 line-height: 30px;
@@ -167,7 +170,7 @@ vertical-align: middle;
 
         {{ form.amount }}
         {{ form.monthly }}
-        <div>
+        <div class="plan-select">
           <span class="button plan-toggle" data-plan="plan-single" data-monthly="False">jednorazowo</span>
           <span class="button plan-toggle active" data-plan="plan-monthly" data-monthly="True">miesięcznie</span>
         </div>
