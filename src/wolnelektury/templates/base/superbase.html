@@ -120,11 +120,8 @@
                   <li{% if active_menu_item == 'audiobooks' %} class="active"{% endif %}>
                     <a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a>
                   </li>
-                  {% url 'subscribe' as u %}
-                  <li{% if request.path == u %} class="active"{% endif %}>
-                    <a href="{{ u }}">
-                      {% trans "Newsletter" %}
-                    </a>
+                  <li{% if active_menu_item == 'all_works' %} class="active"{% endif %}>
+                    <a href="{% url 'catalogue' %}">{% trans "All works" %}</a>
                   </li>
                 </ul>
               </nav>
