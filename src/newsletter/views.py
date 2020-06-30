@@ -11,16 +11,16 @@ from newsletter.forms import UnsubscribeForm, SubscribeForm
 from newsletter.models import Subscription
 
 
-def subscribe_form(request):
+def subscribe_form(request, mailing_list='general', title=None):
     if request.POST:
-        form = SubscribeForm(request.POST)
+        form = SubscribeForm(mailing_list, request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('subscribed'))
     else:
-        form = SubscribeForm()
+        form = SubscribeForm(mailing_list)
     return render(request, 'newsletter/subscribe_form.html', {
-        'page_title': _('Subscribe To Newsletter'),
+        'page_title': title or _('Subscribe To Newsletter'),
         'form': form,
     })
 

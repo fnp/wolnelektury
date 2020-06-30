@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path('zapisz-sie/', views.subscribe_form, name='subscribe'),
+    path('zapisz-sie/konkurs/', views.subscribe_form, {"title": "Zapisz się na newsletter Konkursu", "mailing_list": "contest"}, name='subscribe-contest'),
     path('zapis/', views.subscribed, name='subscribed'),
     path('potwierdzenie/<int:subscription_id>/<slug:hashcode>/',
         views.confirm_subscription, name='confirm_subscription'),

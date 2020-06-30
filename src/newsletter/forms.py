@@ -52,7 +52,7 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
             # send_noreply_mail(
             #     ugettext('Confirm your subscription to Wolne Lektury newsletter'),
             #     render_to_string('newsletter/subscribe_email.html', {'subscription': subscription}), [email])
-            mailing.subscribe(email, mailing_lists=self.cleaned_data.get('mailing_lists'))
+            mailing.subscribe(email, mailing_lists=[self.mailing_list])
 
 
 class SubscribeForm(NewsletterForm):
@@ -60,12 +60,9 @@ class SubscribeForm(NewsletterForm):
     agree_newsletter = None
 
     email = EmailField(label=_('email address'))
-    mailing_lists = MultipleChoiceField(
-        widget=CheckboxSelectMultiple,
-        choices=(('general', _('general newsletter')), ('contest', _('about the contest'))),
-        label=_('mailing list'))
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, mailing_list, *args, **kwargs):
+        self.mailing_list = mailing_list
         super(SubscribeForm, self).__init__(*args, **kwargs)
 
 
