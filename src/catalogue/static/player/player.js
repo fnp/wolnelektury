@@ -46,7 +46,11 @@
                 var initialElem = $('.play', $root).first();
                 var initialTime = 0;
                 if (Modernizr.localstorage) {
-                    audiobooks = JSON.parse(localStorage["audiobook-history"]);
+                    try {
+                        audiobooks = JSON.parse(localStorage["audiobook-history"]);
+                    } catch {
+                        audiobooks = {};
+                    }
                     last = audiobooks[$root.attr("data-book-id")]
                     if (last) {
                         initialElem = $('[data-media-id="' + last[1] + '"] .play', $root).first();
