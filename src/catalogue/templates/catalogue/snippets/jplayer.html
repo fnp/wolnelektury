@@ -1,6 +1,6 @@
 {% load i18n catalogue_tags %}
 {% if audiobooks %}{% if book|status:request.user != 'closed' %}
-  <div class="jp-type-playlist">
+  <div class="jp-type-playlist" data-book-id="{{ book.pk }}">
     <div id="jplayer" class="jp-jplayer" data-player="jp_container_{{ book.pk }}"
          data-supplied="oga,mp3"></div>
     <div id="jp_container_{{ book.pk }}" class="jp-audio">
@@ -29,7 +29,7 @@
         <div class="jp-playlist">
           <ul>
             {% for i in audiobooks %}
-              <li data-mp3='{{ i.mp3.file.url }}' data-ogg='{{ i.ogg.file.url }}'>
+              <li data-mp3='{{ i.mp3.file.url }}' data-ogg='{{ i.ogg.file.url }}' data-media-id="{{ i.mp3.id }}">
                 <div class='play'>{{ i.mp3.name }}
                   <div class='extra-info'>
                   {% with extra_info=i.mp3.get_extra_info_json %}
