@@ -19,9 +19,9 @@
 
                     media['mp3'] = li.attr('data-mp3');
                     media['oga'] = li.attr('data-ogg');
+                    media['id'] = li.attr('data-media-id');
 
                     $(".title", $root).html(li.html());
-                    $root.attr('data-media-id', li.attr('data-media-id'));
                     player.jPlayer("setMedia", media);
                     player.jPlayer("pause", time);
                 };
@@ -51,7 +51,12 @@
                     } catch {
                         audiobooks = {};
                     }
-                    last = audiobooks[$root.attr("data-book-id")]
+                    last = audiobooks[$root.attr("data-book-slug")]
+                    // Fallback for book id;
+                    if (!last) {
+                        last = audiobooks[$root.attr("data-book-id")]
+                    }
+
                     if (last) {
                         initialElem = $('[data-media-id="' + last[1] + '"] .play', $root).first();
                         initialTime = last[2];
@@ -61,13 +66,24 @@
             },
 
             timeupdate: function(event) {
-                if (Modernizr.localstorage) {
+                if (event.jPlayer.status.currentTime && Modernizr.localstorage) {
                     try {
                         audiobooks = JSON.parse(localStorage["audiobook-history"]);
                     } catch {
                         audiobooks = {};
                     }
-                    audiobooks[$root.attr("data-book-id")] = [Date.now(), $root.attr("data-media-id"), event.jPlayer.status.currentTime];
+                    t = event.jPlayer.status.currentTime;
+                    if (t && event.jPlayer.status.duration - t > 10) {
+                        audiobooks[$root.attr("data-book-slug")] = [
+                            Date.now(),
+                            event.jPlayer.status.media.id,
+                            event.jPlayer.status.currentTime
+                        ];
+                    } else {
+                        delete audiobooks[$root.attr("data-book-slug")];
+                    }
+                    // Remove old book id, if present.
+                    delete audiobooks[$root.attr("data-book-id")];
                     localStorage["audiobook-history"] = JSON.stringify(audiobooks);
                 }
             }
