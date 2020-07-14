@@ -24,6 +24,7 @@
                     $(".title", $root).html(li.html());
                     player.jPlayer("setMedia", media);
                     player.jPlayer("pause", time);
+                    return player;
                 };
 
                 $('.play-next', $root).click(function() {
