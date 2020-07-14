@@ -5,6 +5,7 @@
 {% load thumbnail %}
 {% load build_absolute_uri from fnp_common %}
 {% load fundings from funding_tags %}
+{% load chunks %}
 
 
 {% block titleextra %}{{ object }}{% endblock %}
@@ -27,13 +28,7 @@
       <div class="normal-text">
         <h3>{% trans "Help free the book!" %}</h3>
         {{ object.description|safe }}
-	{{ object.status }}
-        <a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
-	{{ object.status_more }}
-        <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
       </div>
-
-      <div style="clear:both;"></div>
     </div>
 
     {% if object.is_current %}
@@ -73,9 +68,17 @@
         </form>
       </div>
 
+      {% chunk "funding_form_bottom" %}
+
+         {{ object.status }}
+        <a href='//nowoczesnapolska.org.pl/pomoz-nam/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='//nowoczesnapolska.org.pl/wp-content/themes/koed/annoy/procent.png' alt='1%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1% podatku na rozwój biblioteki. &rarr;</a>
+        {{ object.status_more }}
+        <p><a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.</p>
+
       {% url 'funding_current' object.slug as current %}
       <p class="normal-text">{% trans "Tell your friends!" %}</p>
       <p class="share">{% share current _("Support Wolne Lektury!") "big" %}</p>
+      <div style="clear:both;"></div>
     {% endif %}
 
     <p class="normal-text"><a href="{% url 'funding' %}">{% trans "See all fundraisers." %}</a></p>

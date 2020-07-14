@@ -485,7 +485,7 @@ msgstr ""
 
 #: templates/funding/offer_detail.html:42
 msgid "Support the publication"
-msgstr "Wesprzyj publikację"
+msgstr "Wpłać przez bezpieczny formularz"
 
 #: templates/funding/offer_detail.html:63
 msgid "Donate!"
