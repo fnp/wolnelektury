@@ -106,7 +106,7 @@ class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = [
-            'title', 'url',
+            'title', 'url', 'language',
             'epochs', 'genres', 'kinds', 'authors', 'translators',
             'fragment_data', 'children', 'parent', 'preview',
             'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml', 'media', 'audio_length',
