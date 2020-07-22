@@ -98,8 +98,10 @@ body.menu-on {
     #user-info {
         @include mono;
         position: absolute;
-        right: 150px;
-        top: 4px;
+        right: 0px;
+        top: 3px;
+        margin: 0;
+        @include size(line-height, 43px);
         @include size(font-size, 10px);
         list-style: none;
 

@@ -1,0 +1,6 @@
+OOjs UI icon language-ltr
+
+Author: Mun May Tee-Galloway (Wikimedia Foundation)
+Source: https://creativecommons.org/licenses/by-sa/3.0/deed.en
+License: CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/deed.en)
+

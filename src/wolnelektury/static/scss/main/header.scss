@@ -68,6 +68,9 @@ header#main {
     @include size(top, 3px);
     @include size(left, 255px);
     @include size(font-size, 13px);
+    margin: 0;
+    @include size(line-height, 43px);
+    
 
     @media screen and (min-width: 1024px) {
       display: block;
@@ -83,7 +86,8 @@ header#main {
     @include mono;
 
     #lang-button {
-      display: block;
+        display: block;
+        cursor: pointer;
 
       @include size(font-size, 10px);
       @include size(line-height, 17px);
@@ -100,9 +104,8 @@ header#main {
         }
       }
 
-      .lang-flag {
-        @include size(font-size, 13px);
-        @include size(line-height, 15px);
+      img {
+          vertical-align: middle;
       }
     }
 
@@ -134,7 +137,7 @@ header#main {
       }
     }
 
-    &:hover, &.hover {
+    &.hover {
       #lang-menu-items {
         position: absolute;
         padding: 0;
@@ -146,6 +149,9 @@ header#main {
       }
     }
 
+    @media screen and (min-width: 1024px) {
+        right: 300px;
+    }
   }
 
   #main-menu-toggle {
