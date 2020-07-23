@@ -5,30 +5,30 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
-"PO-Revision-Date: 2012-01-27 16:41+0100\n"
+"POT-Creation-Date: 2020-07-23 13:59+0200\n"
+"PO-Revision-Date: 2020-07-23 13:59+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.3\n"
 
-#: forms.py:12 templates/newsearch/search.html:16
+#: forms.py:11 templates/newsearch/search.html:16
 msgid "Search"
 msgstr "Szukaj"
 
-#: forms.py:22
-msgid "title, author, theme/topic, epoch, kind, genre, phrase"
-msgstr "tytuł, autor, motyw/temat, epoka, rodzaj, gatunek, cytat"
+#: forms.py:21
+msgid "title, author, epoch, kind, genre, phrase"
+msgstr "tytuł, autor, epoka, rodzaj, gatunek, cytat"
 
-#: views.py:119
-msgid "book"
-msgstr "utwór"
+#~ msgid "book"
+#~ msgstr "utwór"
 
 #~ msgid "off"
 #~ msgstr "wył."

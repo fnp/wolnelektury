@@ -18,4 +18,4 @@ class SearchForm(forms.Form):
         self.fields['q'].widget.attrs['autocomplete'] = 'off'
         self.fields['q'].widget.attrs['data-source'] = source
         if 'q' not in self.data:
-            self.fields['q'].widget.attrs['placeholder'] = _('title, author, theme/topic, epoch, kind, genre, phrase')
+            self.fields['q'].widget.attrs['placeholder'] = _('title, author, epoch, kind, genre, phrase')
