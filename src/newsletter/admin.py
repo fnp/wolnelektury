@@ -5,8 +5,8 @@ from django.urls import path
 from django.contrib import admin
 from django.http.response import HttpResponse
 from django.views.decorators.cache import never_cache
-
-from newsletter.models import Subscription
+from modeltranslation.admin import TranslationAdmin
+from newsletter.models import Subscription, Newsletter
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
@@ -28,3 +28,6 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Subscription, SubscriptionAdmin)
+
+
+admin.site.register(Newsletter, TranslationAdmin)

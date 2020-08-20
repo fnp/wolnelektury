@@ -3,16 +3,12 @@
 #
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-from django.forms import Form, BooleanField, MultipleChoiceField
+from django.forms import Form, BooleanField
 from django.forms.fields import EmailField
-from django.forms.widgets import CheckboxSelectMultiple
-from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _, ugettext
-
-from contact import mailing
-from newsletter.models import Subscription
-from wolnelektury.utils import send_noreply_mail
+from django.utils.translation import ugettext_lazy as _
+from newsletter.subscribe import subscribe
+from .models import Newsletter
 
 
 class NewsletterForm(Form):
@@ -21,7 +17,7 @@ class NewsletterForm(Form):
         required=False, initial=False, label=_('I want to receive Wolne Lektury\'s newsletter.'))
     mailing = False
     mailing_field = 'agree_newsletter'
-    mailing_list = 'general'
+    newsletter = None
 
     data_processing_part1 = '''\
 Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
@@ -36,6 +32,10 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
         return mark_safe('%s %s %s' % (self.data_processing_part1, self.data_processing_part2, self.data_processing_part3))
 
     def save(self, *args, **kwargs):
+        newsletter = self.newsletter or Newsletter.objects.filter(slug='').first()
+        if not newsletter:
+            return
+
         try:
             # multiple inheritance mode
             super(NewsletterForm, self).save(*args, **kwargs)
@@ -49,11 +49,7 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
         except ValidationError:
             pass
         else:
-            # subscription, created = Subscription.objects.get_or_create(email=email, defaults={'active': False})
-            # send_noreply_mail(
-            #     ugettext('Confirm your subscription to Wolne Lektury newsletter'),
-            #     render_to_string('newsletter/subscribe_email.html', {'subscription': subscription}), [email])
-            mailing.subscribe(email, mailing_lists=[self.mailing_list])
+            subscribe(email, newsletter=newsletter)
 
 
 class SubscribeForm(NewsletterForm):
@@ -62,31 +58,7 @@ class SubscribeForm(NewsletterForm):
 
     email = EmailField(label=_('email address'))
 
-    def __init__(self, mailing_list, *args, **kwargs):
-        self.mailing_list = mailing_list
+    def __init__(self, newsletter, *args, **kwargs):
+        self.newsletter = newsletter
         super(SubscribeForm, self).__init__(*args, **kwargs)
 
-
-class UnsubscribeForm(Form):
-    email = EmailField(label=_('email address'))
-
-    def clean(self):
-        email = self.cleaned_data.get('email')
-        try:
-            subscription = Subscription.objects.get(email=email)
-        except Subscription.DoesNotExist:
-            raise ValidationError(ugettext('Email address not found.'))
-        self.cleaned_data['subscription'] = subscription
-
-    def save(self):
-        subscription = self.cleaned_data['subscription']
-        subscription.active = False
-        subscription.save()
-        mailing.unsubscribe(subscription.email)
-
-        context = {'subscription': subscription}
-        # refactor to send_noreply_mail
-        send_noreply_mail(
-            ugettext('Unsubscribe from Wolne Lektury\'s newsletter.'),
-            render_to_string('newsletter/unsubscribe_email.html', context),
-            [subscription.email], fail_silently=True)

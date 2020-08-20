@@ -3,16 +3,16 @@
 #
 import hashlib
 
-from django.db.models import Model, EmailField, DateTimeField, BooleanField
+from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 
-class Subscription(Model):
-    email = EmailField(verbose_name=_('email address'), unique=True)
-    active = BooleanField(default=True, verbose_name=_('active'))
-    created_at = DateTimeField(auto_now_add=True)
-    last_modified = DateTimeField(auto_now=True)
+class Subscription(models.Model):
+    email = models.EmailField(verbose_name=_('email address'), unique=True)
+    active = models.BooleanField(default=True, verbose_name=_('active'))
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = _('subscription')
@@ -23,3 +23,9 @@ class Subscription(Model):
 
     def hashcode(self):
         return hashlib.sha224(self.email + settings.SECRET_KEY).hexdigest()[:30]
+
+
+class Newsletter(models.Model):
+    slug = models.SlugField(blank=True)
+    page_title = models.CharField(max_length=255, blank=True)
+    phplist_id = models.IntegerField()
