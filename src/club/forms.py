@@ -3,11 +3,12 @@
 #
 from decimal import Decimal
 from django import forms
+from newsletter.forms import NewsletterForm
 from . import models
 from .payu.forms import CardTokenForm
 
 
-class ScheduleForm(forms.ModelForm):
+class ScheduleForm(NewsletterForm, forms.ModelForm):
     class Meta:
         model = models.Schedule
         fields = ['monthly', 'amount', 'email']

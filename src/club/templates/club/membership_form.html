@@ -82,7 +82,7 @@ vertical-align: middle;
    }
 
    .kwota.active, .plan-toggle.active {
-       background: #b2ce1f;
+       background: #9ACD32;
    }
    .inna input {display: none;}
    .inna.active input {display: inline;}
@@ -150,12 +150,12 @@ vertical-align: middle;
      {% endif %}
     {% endwith %}
 
-    {% chunk 'club_form_top' %}
     <div class='twocol'>
 
       <form method="POST" action="" id="payment-form" class="wlform">
         {% csrf_token %}
-        <h3>Zadeklaruj, jak często i jaką kwotą chcesz nas wspierać:</h3>
+
+        {% chunk 'club_form_top' %}
 
         <ul class="errorlist">
           {% for e in  form.non_field_errors %}
@@ -169,12 +169,16 @@ vertical-align: middle;
           {% endfor %}
         </ul>
 
+        <h3>1. Wybierz rodzaj wsparcia</h3>
+
         {{ form.amount }}
         {{ form.monthly }}
         <div class="plan-select">
           <span class="button plan-toggle" data-plan="plan-single" data-monthly="False">jednorazowo</span>
           <span class="button plan-toggle active" data-plan="plan-monthly" data-monthly="True">miesięcznie</span>
         </div>
+
+        <h3>2. Wybierz kwotę</h3>
 
         <div class="plan" id="plan-single" style="display:none;" data-monthly="False" data-min-for-year="{{ club.min_for_year }}" data-amount="{{ club.default_single_amount }}">
           {% for amount in club.proposed_single_amounts %}
@@ -201,13 +205,23 @@ vertical-align: middle;
 <div class="methods">{% include 'club/payment/payu-re.html' %}</div>
         </div>
 
-        <h3>
-          Podaj nam swój adres e-mail, żebyśmy mogli się z Tobą skontaktować:
-        </h3>
+        <h3>3. Podaj adres e-mail</h3>
+
+        <p>{{ form.email }}</p>
 
         <p>
-          {{ form.email }}</p>
-        <button class="submit" type='submit'>Wpłać</button>
+          {{ form.agree_newsletter }}
+          <label for="agree_newsletter">
+            Chcę dostawać informacje o nowościach
+          </label>
+        </p>
+
+        <p>W każdej chwili możesz zrezygnować z subskrypcji. Więcej w <a href="https://nowoczesnapolska.org.pl/prywatnosc/">polityce prywatności</a>.</p>
+
+        <div><button class="submit" type='submit'>Wpłać</button></div>
+
+        {% chunk 'club_form_bottom' %}
+
       </form>
 
       <div class="club-form-info">
@@ -237,8 +251,6 @@ vertical-align: middle;
   </div>
 </div>
 </div>
-
-{% chunk 'club_form_bottom' %}
 
 </div>
 
