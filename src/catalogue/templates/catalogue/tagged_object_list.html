@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load catalogue_tags switch_tag social_tags %}
 
-{% block titleextra %}{% if tags %}{% title_from_tags tags %}{% elif list_type == 'gallery' %}{% trans "Gallery" %}{% elif list_type == 'audiobooks' %}{% trans "Audiobooks" %}{% else %}{% trans "Literature" %}{% endif %}{% endblock %}
+{% block titleextra %}{% if tags %}{% title_from_tags tags %}{% elif list_type == 'gallery' %}{% trans "Art" %}{% elif list_type == 'audiobooks' %}{% trans "Audiobooks" %}{% else %}{% trans "Literature" %}{% endif %}{% endblock %}
 
 
 {% block bodyid %}tagged-object-list{% endblock %}

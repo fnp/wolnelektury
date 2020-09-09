@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 15:02+0200\n"
+"POT-Creation-Date: 2020-09-09 22:17+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-
-#: __init__.py:12
-#, python-format
-msgid ""
-"Please enter a correct %(username)s and password. Note that both fields may "
-"be case-sensitive."
-msgstr ""
 
 #: templates/404.html:4
 msgid "Page does not exist"
@@ -45,7 +38,7 @@ msgstr ""
 msgid "main page"
 msgstr "головна сторінка"
 
-#: templates/500.html:6 templates/500.html.py:17
+#: templates/500.html:6 templates/500.html:17
 msgid "Server error"
 msgstr "Помилка сервера"
 
@@ -61,7 +54,7 @@ msgstr ""
 "href='mailto:fundacja@nowoczesnapolska.org.pl'>адміністраторів</a> про "
 "помилку.</p>"
 
-#: templates/503.html:6 templates/503.html.py:17
+#: templates/503.html:6 templates/503.html:17
 msgid "Service unavailable"
 msgstr "Послуга недоступна"
 
@@ -70,13 +63,9 @@ msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr ""
 "У зв'язку з технічними роботами сервіс Wolnelektury.pl тимчасово недоступний."
 
-#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
+#: templates/admin/base_site.html:4 templates/admin/base_site.html:7
 msgid "Site administration"
 msgstr "Адміністрація сайту"
-
-#: templates/admin/base_site.html:9
-msgid "Translations"
-msgstr "Переклади"
 
 #: templates/admin/catalogue/book/change_form.html:6
 #: templates/admin/catalogue/book/change_form.html:36
@@ -91,23 +80,35 @@ msgstr "спрощений"
 msgid "Import book"
 msgstr "Імпортувати книжку"
 
-#: templates/auth/login.html:12
+#: templates/auth/login.html:11
 msgid "Forgot Password?"
 msgstr "Забули пароль?"
 
-#: templates/auth/login.html:17 templates/auth/register.html:17
+#: templates/auth/login.html:17 templates/auth/register.html:8
 msgid "Sign in using:"
 msgstr "Увійти за допомогою:"
 
-#: templates/auth/login_register.html:9
+#: templates/auth/login_register.html:8
 msgid "or register"
 msgstr "або зареєструватися"
 
-#: templates/base/superbase.html:24
+#: templates/base/app.html:20 templates/base/superbase.html:25
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base/superbase.html:56
+#: templates/base/app.html:42 templates/base/app.html:43
+#: templates/base/superbase.html:69 templates/base/superbase.html:70
+#, fuzzy
+#| msgid "Language versions"
+msgid "Language"
+msgstr "Мовні версії"
+
+#: templates/base/app.html:66 templates/base/superbase.html:100
+#: templates/board_base.html:48
+msgid "Logout"
+msgstr "Вийти "
+
+#: templates/base/superbase.html:60
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -145,65 +146,61 @@ msgstr[2] ""
 "маєш <a href='%(r)s'>право</a>\n"
 "                    "
 
-#: templates/base/superbase.html:66
-#, fuzzy
-#| msgid "Language versions"
-msgid "Language"
-msgstr "Мовні версії"
-
-#: templates/base/superbase.html:92
+#: templates/base/superbase.html:94
 msgid "My shelf"
 msgstr "Моя полиця"
 
-#: templates/base/superbase.html:96
+#: templates/base/superbase.html:97 templates/board_base.html:43
 msgid "Administration"
 msgstr "Адміністрація"
 
-#: templates/base/superbase.html:100
-msgid "Logout"
-msgstr "Вийти "
-
-#: templates/base/superbase.html:104 views.py:71 views.py:72
+#: templates/base/superbase.html:104 views.py:64 views.py:65
 msgid "Sign in"
 msgstr "Увійти"
 
-#: templates/base/superbase.html:105 views.py:90 views.py:91 views.py:119
+#: templates/base/superbase.html:105 views.py:83 views.py:84 views.py:112
 msgid "Register"
 msgstr "Зареєструватися"
 
 #: templates/base/superbase.html:112
-msgid "Literature"
+msgid "Wesprzyj nas"
 msgstr ""
 
 #: templates/base/superbase.html:115
+msgid "Literature"
+msgstr ""
+
+#: templates/base/superbase.html:118
 msgid "Themes"
 msgstr "Теми"
 
-#: templates/base/superbase.html:118
+#: templates/base/superbase.html:121
 msgid "Audiobooks"
 msgstr "Аудіокниги"
 
-#: templates/base/superbase.html:121
-msgid "Gallery"
-msgstr ""
-
-#: templates/base/superbase.html:124
+#: templates/base/superbase.html:124 templates/main_page.html:83
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Всі книжки"
 
-#: templates/base/superbase.html:133
+#: templates/base/superbase.html:133 templates/board_base.html:28
 msgid "Search"
 msgstr "Пошук"
 
-#: templates/base/superbase.html:161
+#: templates/base/superbase.html:164
 msgid "Close"
 msgstr "Закрити"
 
-#: templates/base/superbase.html:163
+#: templates/base/superbase.html:166
 msgid "Loading"
 msgstr "Завантажується"
+
+#: templates/board_base.html:31
+#, fuzzy
+#| msgid "advanced"
+msgid "Advanced search"
+msgstr "розширений"
 
 #: templates/info/join_us.html:6
 #, fuzzy, python-format
@@ -278,106 +275,112 @@ msgstr ""
 msgid "More..."
 msgstr "Більше..."
 
-#: templates/main_page.html:10 templates/main_page.html.py:11
+#: templates/main_page.html:11 templates/main_page.html:12
 msgid "Wolne Lektury internet library"
 msgstr "Електронна бібліотека WolneLektury.pl"
 
-#: templates/main_page.html:22
+#: templates/main_page.html:19
 msgid "In our digital library you will find"
 msgstr ""
 
-#: templates/main_page.html:33
+#: templates/main_page.html:28
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr ""
 
-#: templates/main_page.html:40
+#: templates/main_page.html:35
 msgid "Motifs and themes"
 msgstr "Мотиви та теми"
 
-#: templates/main_page.html:42
+#: templates/main_page.html:37
 msgid "Theme"
 msgstr "Тема"
 
-#: templates/main_page.html:43
+#: templates/main_page.html:38
 msgid "Explore works with the same theme"
 msgstr ""
 
-#: templates/main_page.html:55
+#: templates/main_page.html:48
 #, fuzzy
 #| msgid "See our blog"
 msgid "See motifs catalog"
 msgstr "Дивитись наш блог"
 
-#: templates/main_page.html:95
+#: templates/main_page.html:53
 #, fuzzy
 #| msgid "Account Connections"
 msgid "Collections"
 msgstr "Пов'язані акаунти"
 
-#: templates/main_page.html:99
+#: templates/main_page.html:55
 msgid "See collections catalog"
 msgstr ""
 
-#: templates/main_page.html:104
+#: templates/main_page.html:60
 msgid "Recent publications"
 msgstr "останні публікації"
 
-#: templates/main_page.html:110
+#: templates/main_page.html:64
 #, fuzzy
 #| msgid "Recent publications"
 msgid "More recent publications"
 msgstr "останні публікації"
 
-#: templates/main_page.html:116
+#: templates/main_page.html:70
 msgid "News"
 msgstr "Новості"
 
-#: templates/main_page.html:121
+#: templates/main_page.html:77
 msgid "Utilities"
 msgstr "утиліти"
 
-#: templates/main_page.html:124
+#: templates/main_page.html:80
 msgid "Report a bug or suggestion"
 msgstr "Повідомити про помилку або надіслати свої пропозиції"
 
-#: templates/main_page.html:126
+#: templates/main_page.html:81
 msgid "Download the catalogue in PDF format."
 msgstr "Завантажити каталог у форматі PDF."
 
-#: templates/main_page.html:127
+#: templates/main_page.html:82
+#, fuzzy
+#| msgid "Artist"
+msgid "Art"
+msgstr "Митець"
+
+#: templates/main_page.html:85
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:128
+#: templates/main_page.html:86
 msgid "Missing a book?"
 msgstr "Не знайшли книжки?"
 
-#: templates/main_page.html:129 templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
+#: templates/main_page.html:87 templates/publish_plan.html:4
+#: templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "План публікації"
 
-#: templates/main_page.html:134
+#: templates/main_page.html:92
 msgid "Newsletter"
 msgstr ""
 
-#: templates/main_page.html:139
+#: templates/main_page.html:97
 msgid "Information"
 msgstr "інформація"
 
-#: templates/main_page.html:141
+#: templates/main_page.html:99
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:162
+#: templates/main_page.html:120
 msgid "Image used:"
 msgstr "Використано графіку:"
 
-#: templates/openid/login.html:6 templates/openid/login.html.py:9
+#: templates/openid/login.html:5 templates/openid/login.html:8
 msgid "OpenID Sign In"
 msgstr "Увійти за допомогою OpenID"
 
-#: templates/openid/login.html:22
+#: templates/openid/login.html:16
 msgid "Sign In"
 msgstr "Увійти"
 
@@ -391,24 +394,6 @@ msgstr "попередня"
 msgid "next"
 msgstr "наступна"
 
-#: templates/piston/authorize_token.html:4
-#: templates/piston/authorize_token.html:7
-msgid "Authorize access to Wolne Lektury"
-msgstr "Авторизувати доступ до Wolne Lektury"
-
-#: templates/piston/authorize_token.html:11
-#, python-format
-msgid ""
-"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-"strong>."
-msgstr ""
-"Підтвердити, щоб авторизувати доступ до Wolne Lektury від імені користувача "
-"<strong>%(user)s</strong>."
-
-#: templates/piston/authorize_token.html:17
-msgid "Confirm"
-msgstr ""
-
 #: templates/socialaccount/connections.html:5
 #: templates/socialaccount/connections.html:10
 msgid "Account Connections"
@@ -421,16 +406,16 @@ msgid ""
 msgstr ""
 "Можете увійти у Ваш акаунт за допомогою інших облікових записів таких, як:"
 
-#: templates/socialaccount/connections.html:37
+#: templates/socialaccount/connections.html:33
 msgid "Remove"
 msgstr "Видалити"
 
-#: templates/socialaccount/connections.html:45
+#: templates/socialaccount/connections.html:39
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr "У Вас немає зараз жодних облікових записів пов'язаних з цим акаунтом."
 
-#: templates/socialaccount/connections.html:48
+#: templates/socialaccount/connections.html:43
 msgid "Add a 3rd Party Account"
 msgstr "Додати інший обліковий запис "
 
@@ -450,7 +435,26 @@ msgstr ""
 "Якщо це помилка, перейдіть до сторінки <a href=\"%(login_url)s\">реєстрації</"
 "a>."
 
-#: templates/user.html:5 templates/user.html.py:9
+#: templates/socialaccount/signup.html:6
+#, fuzzy
+#| msgid "Sign in"
+msgid "Signup"
+msgstr "Увійти"
+
+#: templates/socialaccount/signup.html:9 templates/socialaccount/signup.html:25
+#, fuzzy
+#| msgid "Sign in"
+msgid "Sign Up"
+msgstr "Увійти"
+
+#: templates/socialaccount/signup.html:11
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: templates/user.html:5 templates/user.html:9
 msgid "User"
 msgstr "Користувач"
 
@@ -466,18 +470,39 @@ msgstr "Електронна адреса"
 msgid "Social accounts"
 msgstr "Облікові записи в соціальних мережах"
 
-#: utils.py:120
+#: utils.py:123
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
-#: views.py:79 views.py:100
+#: utils.py:205
+msgid "Yes"
+msgstr ""
+
+#: utils.py:206
+msgid "No"
+msgstr ""
+
+#: views.py:72 views.py:93
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Ви вже увійшли як користувач %(user)s"
 
-#: views.py:114
+#: views.py:107
 msgid "You have to be logged in to continue"
 msgstr "Щоб продовжити, увійдіть в свій акаунт."
+
+#~ msgid "Translations"
+#~ msgstr "Переклади"
+
+#~ msgid "Authorize access to Wolne Lektury"
+#~ msgstr "Авторизувати доступ до Wolne Lektury"
+
+#~ msgid ""
+#~ "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
+#~ "strong>."
+#~ msgstr ""
+#~ "Підтвердити, щоб авторизувати доступ до Wolne Lektury від імені "
+#~ "користувача <strong>%(user)s</strong>."
 
 #~ msgid "What's new?"
 #~ msgstr "Що нового?"
@@ -781,9 +806,6 @@ msgstr "Щоб продовжити, увійдіть в свій акаунт."
 
 #~ msgid "Download as"
 #~ msgstr "Завантажити як"
-
-#~ msgid "Artist"
-#~ msgstr "Митець"
 
 #~ msgid "Director"
 #~ msgstr "Режисер"

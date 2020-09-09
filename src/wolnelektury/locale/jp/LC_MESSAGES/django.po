@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
+"POT-Creation-Date: 2020-09-09 22:17+0200\n"
 "PO-Revision-Date: 2012-02-07 15:50+0100\n"
 "Last-Translator: Marcin Koziej <marcin@lolownia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,42 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: views.py:34 views.py:35 templates/superbase.html:85
-msgid "Sign in"
-msgstr "Zaloguj"
-
-#: views.py:41 views.py:62
-#, python-format
-msgid "Already logged in as user %(user)s"
-msgstr ""
-
-#: views.py:53 views.py:54 views.py:82 templates/superbase.html:89
-msgid "Register"
-msgstr ""
-
-#: views.py:77
-msgid "You have to be logged in to continue"
-msgstr ""
-
-#: templates/404.html:5
+#: templates/404.html:4
 msgid "Page does not exist"
 msgstr ""
 
-#: templates/404.html:10
+#: templates/404.html:8
 msgid "Page not found"
 msgstr ""
 
-#: templates/404.html:14
+#: templates/404.html:11
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
 msgstr ""
 
-#: templates/404.html:14
+#: templates/404.html:12
 msgid "main page"
 msgstr ""
 
-#: templates/500.html:6 templates/500.html.py:17
+#: templates/500.html:6 templates/500.html:17
 msgid "Server error"
 msgstr ""
 
@@ -63,7 +46,7 @@ msgid ""
 "error.</p>"
 msgstr ""
 
-#: templates/503.html:6 templates/503.html.py:17
+#: templates/503.html:6 templates/503.html:17
 msgid "Service unavailable"
 msgstr ""
 
@@ -71,268 +54,287 @@ msgstr ""
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr ""
 
-#: templates/main_page.html:6 templates/main_page.html.py:7
-msgid "Wolne Lektury internet library"
-msgstr ""
-
-#: templates/main_page.html:23
-msgid "What's new?"
-msgstr ""
-
-#: templates/main_page.html:31
-msgid "Recent publications"
-msgstr ""
-
-#: templates/main_page.html:41
-msgid "News"
-msgstr ""
-
-#: templates/main_page.html:50
-msgid "Utilities"
-msgstr ""
-
-#: templates/main_page.html:53
-msgid "Report a bug or suggestion"
-msgstr ""
-
-#: templates/main_page.html:56
-msgid "Download the catalogue in PDF format."
-msgstr ""
-
-#: templates/main_page.html:58
-msgid "Widget"
-msgstr ""
-
-#: templates/main_page.html:59
-msgid "Missing a book?"
-msgstr ""
-
-#: templates/main_page.html:60 templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
-msgid "Publishing plan"
-msgstr ""
-
-#: templates/main_page.html:71
-msgid "Information"
-msgstr ""
-
-#: templates/main_page.html:73
-msgid "Privacy policy"
-msgstr ""
-
-#: templates/main_page.html:98
-msgid "Image used:"
-msgstr ""
-
-#: templates/superbase.html:18
-msgid "Wolne Lektury"
-msgstr ""
-
-#: templates/superbase.html:55
-#, python-format
-msgid ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
-msgid_plural ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                    "
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/superbase.html:66
-msgid "Welcome"
-msgstr ""
-
-#: templates/superbase.html:72 templates/user.html:12
-msgid "Password"
-msgstr ""
-
-#: templates/superbase.html:73 templates/user.html:13
-msgid "E-mail"
-msgstr ""
-
-#: templates/superbase.html:74 templates/user.html:14
-msgid "Social accounts"
-msgstr ""
-
-#: templates/superbase.html:77
-msgid "My shelf"
-msgstr ""
-
-#: templates/superbase.html:79
-msgid "Administration"
-msgstr ""
-
-#: templates/superbase.html:81
-msgid "Logout"
-msgstr ""
-
-#: templates/superbase.html:111
-msgid "Search"
-msgstr ""
-
-#: templates/superbase.html:131
-msgid "Language versions"
-msgstr ""
-
-#: templates/superbase.html:165
-msgid ""
-"\n"
-"\t\t\t\tWolne Lektury is a project lead by <a href=\"http://nowoczesnapolska."
-"org.pl/\">Modern Poland Foundation</a>.\n"
-"\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
-"\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
-"\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-"\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
-"\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-"\t\t\t\t"
-msgstr ""
-
-#: templates/superbase.html:172
-msgid ""
-"\n"
-"\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
-"lok. 125, tel/fax: (22) 621-30-17\n"
-"                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-"\">fundacja@nowoczesnapolska.org.pl</a>\n"
-"\t\t\t\t"
-msgstr ""
-
-#: templates/superbase.html:189
-msgid "Close"
-msgstr ""
-
-#: templates/superbase.html:191
-msgid "Loading"
-msgstr ""
-
-#: templates/user.html:5 templates/user.html.py:9
-msgid "User"
-msgstr ""
-
-#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
+#: templates/admin/base_site.html:4 templates/admin/base_site.html:7
 msgid "Site administration"
 msgstr ""
 
-#: templates/admin/base_site.html:9
-msgid "Translations"
-msgstr ""
-
 #: templates/admin/catalogue/book/change_form.html:6
-#: templates/admin/catalogue/book/change_form.html:35
+#: templates/admin/catalogue/book/change_form.html:36
 msgid "advanced"
 msgstr ""
 
-#: templates/admin/catalogue/book/change_form.html:33
+#: templates/admin/catalogue/book/change_form.html:34
 msgid "simplified"
 msgstr ""
 
-#: templates/admin/catalogue/book/change_list.html:7
+#: templates/admin/catalogue/book/change_list.html:9
 msgid "Import book"
 msgstr ""
 
-#: templates/auth/login.html:10
+#: templates/auth/login.html:11
 msgid "Forgot Password?"
 msgstr ""
 
-#: templates/auth/login.html:15 templates/auth/register.html:7
+#: templates/auth/login.html:17 templates/auth/register.html:8
 #, fuzzy
 msgid "Sign in using:"
 msgstr "Zaloguj"
 
-#: templates/auth/login_register.html:9
+#: templates/auth/login_register.html:8
 msgid "or register"
+msgstr ""
+
+#: templates/base/app.html:20 templates/base/superbase.html:25
+msgid "Wolne Lektury"
+msgstr ""
+
+#: templates/base/app.html:42 templates/base/app.html:43
+#: templates/base/superbase.html:69 templates/base/superbase.html:70
+msgid "Language"
+msgstr ""
+
+#: templates/base/app.html:66 templates/base/superbase.html:100
+#: templates/board_base.html:48
+msgid "Logout"
+msgstr ""
+
+#: templates/base/superbase.html:60
+#, python-format
+msgid ""
+"\n"
+"                  <a href='%(b)s'>%(c)s</a> free reading you have <a "
+"href='%(r)s'>right to</a>\n"
+"                "
+msgid_plural ""
+"\n"
+"                  <a href='%(b)s'>%(c)s</a> free readings you have <a "
+"href='%(r)s'>right to</a>\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/base/superbase.html:94
+msgid "My shelf"
+msgstr ""
+
+#: templates/base/superbase.html:97 templates/board_base.html:43
+msgid "Administration"
+msgstr ""
+
+#: templates/base/superbase.html:104 views.py:64 views.py:65
+msgid "Sign in"
+msgstr "Zaloguj"
+
+#: templates/base/superbase.html:105 views.py:83 views.py:84 views.py:112
+msgid "Register"
+msgstr ""
+
+#: templates/base/superbase.html:112
+msgid "Wesprzyj nas"
+msgstr ""
+
+#: templates/base/superbase.html:115
+msgid "Literature"
+msgstr ""
+
+#: templates/base/superbase.html:118
+msgid "Themes"
+msgstr ""
+
+#: templates/base/superbase.html:121
+msgid "Audiobooks"
+msgstr ""
+
+#: templates/base/superbase.html:124 templates/main_page.html:83
+msgid "All works"
+msgstr ""
+
+#: templates/base/superbase.html:133 templates/board_base.html:28
+msgid "Search"
+msgstr ""
+
+#: templates/base/superbase.html:164
+msgid "Close"
+msgstr ""
+
+#: templates/base/superbase.html:166
+msgid "Loading"
+msgstr ""
+
+#: templates/board_base.html:31
+msgid "Advanced search"
 msgstr ""
 
 #: templates/info/join_us.html:6
 #, python-format
 msgid ""
 "\n"
-"We have %(c)s work published in Wolne Lektury!\n"
-"Help us expand the library and set new readings free by\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a donation\n"
-"or transferring 1&#37; of your income tax</a>.\n"
+"    We have %(c)s work published in Wolne Lektury!\n"
+"    Help us expand the library and set new readings free by\n"
+"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
+"donation\n"
+"    or transferring 1&#37; of your income tax</a>.\n"
+"  "
 msgid_plural ""
 "\n"
-"We have %(c)s works published in Wolne Lektury!\n"
-"Help us expand the library and set new readings free by\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a donation\n"
-"or transferring 1&#37; of your income tax</a>.\n"
+"    We have %(c)s works published in Wolne Lektury!\n"
+"    Help us expand the library and set new readings free by\n"
+"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
+"donation\n"
+"    or transferring 1&#37; of your income tax</a>.\n"
+"  "
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/info/join_us.html:20
+#: templates/info/join_us.html:22
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
-"we're currently working on a reading you're looking for and prepare\n"
-"a publication by yourself by logging into the Editorial Platform."
+"    we're currently working on a reading you're looking for and prepare\n"
+"    a publication by yourself by logging into the Editorial Platform."
 msgstr ""
 
-#: templates/info/join_us.html:23
+#: templates/info/join_us.html:25
 msgid "More..."
 msgstr ""
 
-#: templates/openid/login.html:6 templates/openid/login.html.py:10
+#: templates/main_page.html:11 templates/main_page.html:12
+msgid "Wolne Lektury internet library"
+msgstr ""
+
+#: templates/main_page.html:19
+msgid "In our digital library you will find"
+msgstr ""
+
+#: templates/main_page.html:28
+msgid "and many other books, poems, pictures, audiobooks…"
+msgstr ""
+
+#: templates/main_page.html:35
+msgid "Motifs and themes"
+msgstr ""
+
+#: templates/main_page.html:37
+msgid "Theme"
+msgstr ""
+
+#: templates/main_page.html:38
+msgid "Explore works with the same theme"
+msgstr ""
+
+#: templates/main_page.html:48
+msgid "See motifs catalog"
+msgstr ""
+
+#: templates/main_page.html:53
+msgid "Collections"
+msgstr ""
+
+#: templates/main_page.html:55
+msgid "See collections catalog"
+msgstr ""
+
+#: templates/main_page.html:60
+msgid "Recent publications"
+msgstr ""
+
+#: templates/main_page.html:64
+msgid "More recent publications"
+msgstr ""
+
+#: templates/main_page.html:70
+msgid "News"
+msgstr ""
+
+#: templates/main_page.html:77
+msgid "Utilities"
+msgstr ""
+
+#: templates/main_page.html:80
+msgid "Report a bug or suggestion"
+msgstr ""
+
+#: templates/main_page.html:81
+msgid "Download the catalogue in PDF format."
+msgstr ""
+
+#: templates/main_page.html:82
+msgid "Art"
+msgstr ""
+
+#: templates/main_page.html:85
+msgid "Footnotes"
+msgstr ""
+
+#: templates/main_page.html:86
+msgid "Missing a book?"
+msgstr ""
+
+#: templates/main_page.html:87 templates/publish_plan.html:4
+#: templates/publish_plan.html:8
+msgid "Publishing plan"
+msgstr ""
+
+#: templates/main_page.html:92
+msgid "Newsletter"
+msgstr ""
+
+#: templates/main_page.html:97
+msgid "Information"
+msgstr ""
+
+#: templates/main_page.html:99
+msgid "Privacy policy"
+msgstr ""
+
+#: templates/main_page.html:120
+msgid "Image used:"
+msgstr ""
+
+#: templates/openid/login.html:5 templates/openid/login.html:8
 msgid "OpenID Sign In"
 msgstr ""
 
-#: templates/openid/login.html:27
+#: templates/openid/login.html:16
 #, fuzzy
 msgid "Sign In"
 msgstr "Zaloguj"
 
-#: templates/pagination/pagination.html:5
-#: templates/pagination/pagination.html:7
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
 msgid "previous"
 msgstr ""
 
-#: templates/pagination/pagination.html:21
-#: templates/pagination/pagination.html:23
+#: templates/pagination/pagination.html:22
+#: templates/pagination/pagination.html:24
 msgid "next"
 msgstr ""
 
-#: templates/piston/authorize_token.html:4
-#: templates/piston/authorize_token.html:7
-msgid "Authorize access to Wolne Lektury"
-msgstr ""
-
-#: templates/piston/authorize_token.html:10
-#, python-format
-msgid ""
-"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-"strong>."
-msgstr ""
-
 #: templates/socialaccount/connections.html:5
-#: templates/socialaccount/connections.html:8
+#: templates/socialaccount/connections.html:10
 msgid "Account Connections"
 msgstr ""
 
-#: templates/socialaccount/connections.html:12
+#: templates/socialaccount/connections.html:13
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr ""
 
-#: templates/socialaccount/connections.html:36
+#: templates/socialaccount/connections.html:33
 msgid "Remove"
 msgstr ""
 
-#: templates/socialaccount/connections.html:44
+#: templates/socialaccount/connections.html:39
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr ""
 
-#: templates/socialaccount/connections.html:47
+#: templates/socialaccount/connections.html:43
 msgid "Add a 3rd Party Account"
 msgstr ""
 
 #: templates/socialaccount/login_cancelled.html:5
-#: templates/socialaccount/login_cancelled.html:9
+#: templates/socialaccount/login_cancelled.html:10
 msgid "Login Cancelled"
 msgstr ""
 
@@ -342,4 +344,60 @@ msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
 "accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
 "\">sign in</a>."
+msgstr ""
+
+#: templates/socialaccount/signup.html:6
+#, fuzzy
+#| msgid "Sign in"
+msgid "Signup"
+msgstr "Zaloguj"
+
+#: templates/socialaccount/signup.html:9 templates/socialaccount/signup.html:25
+#, fuzzy
+#| msgid "Sign in"
+msgid "Sign Up"
+msgstr "Zaloguj"
+
+#: templates/socialaccount/signup.html:11
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: templates/user.html:5 templates/user.html:9
+msgid "User"
+msgstr ""
+
+#: templates/user.html:11
+msgid "Password"
+msgstr ""
+
+#: templates/user.html:12
+msgid "E-mail"
+msgstr ""
+
+#: templates/user.html:13
+msgid "Social accounts"
+msgstr ""
+
+#: utils.py:123
+msgid "Message sent automatically. Please do not reply."
+msgstr ""
+
+#: utils.py:205
+msgid "Yes"
+msgstr ""
+
+#: utils.py:206
+msgid "No"
+msgstr ""
+
+#: views.py:72 views.py:93
+#, python-format
+msgid "Already logged in as user %(user)s"
+msgstr ""
+
+#: views.py:107
+msgid "You have to be logged in to continue"
 msgstr ""

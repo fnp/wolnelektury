@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 15:02+0200\n"
+"POT-Creation-Date: 2020-09-09 22:17+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -17,13 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-
-#: __init__.py:12
-#, python-format
-msgid ""
-"Please enter a correct %(username)s and password. Note that both fields may "
-"be case-sensitive."
-msgstr ""
 
 #: templates/404.html:4
 msgid "Page does not exist"
@@ -46,7 +39,7 @@ msgstr ""
 msgid "main page"
 msgstr "Startseite"
 
-#: templates/500.html:6 templates/500.html.py:17
+#: templates/500.html:6 templates/500.html:17
 msgid "Server error"
 msgstr "Serverfehler"
 
@@ -62,7 +55,7 @@ msgstr ""
 "Informieren Sie uns <a href = \"mailto: fundacja@nowoczesnapolska.org.pl\" > "
 "Administratoren </ a> über den Fehler. </ p>"
 
-#: templates/503.html:6 templates/503.html.py:17
+#: templates/503.html:6 templates/503.html:17
 msgid "Service unavailable"
 msgstr "Service nicht verfügbar"
 
@@ -70,13 +63,9 @@ msgstr "Service nicht verfügbar"
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr "Wolnelektury.pl wegen Wartungsarbeiten momentan nicht verfügbar."
 
-#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
+#: templates/admin/base_site.html:4 templates/admin/base_site.html:7
 msgid "Site administration"
 msgstr "Webseite-Administration"
-
-#: templates/admin/base_site.html:9
-msgid "Translations"
-msgstr "Übersetzungen"
 
 #: templates/admin/catalogue/book/change_form.html:6
 #: templates/admin/catalogue/book/change_form.html:36
@@ -91,24 +80,36 @@ msgstr "vereinfacht "
 msgid "Import book"
 msgstr "Buch importieren"
 
-#: templates/auth/login.html:12
+#: templates/auth/login.html:11
 msgid "Forgot Password?"
 msgstr "Password vergessen?"
 
-#: templates/auth/login.html:17 templates/auth/register.html:17
+#: templates/auth/login.html:17 templates/auth/register.html:8
 #, fuzzy
 msgid "Sign in using:"
 msgstr "Einloggen"
 
-#: templates/auth/login_register.html:9
+#: templates/auth/login_register.html:8
 msgid "or register"
 msgstr "oder Registrieren"
 
-#: templates/base/superbase.html:24
+#: templates/base/app.html:20 templates/base/superbase.html:25
 msgid "Wolne Lektury"
 msgstr "in WolneLektury.pl"
 
-#: templates/base/superbase.html:56
+#: templates/base/app.html:42 templates/base/app.html:43
+#: templates/base/superbase.html:69 templates/base/superbase.html:70
+#, fuzzy
+#| msgid "Language versions"
+msgid "Language"
+msgstr "Sprachversionen"
+
+#: templates/base/app.html:66 templates/base/superbase.html:100
+#: templates/board_base.html:48
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: templates/base/superbase.html:60
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -141,65 +142,61 @@ msgstr[1] ""
 "Verfügung</a>\n"
 "                    "
 
-#: templates/base/superbase.html:66
-#, fuzzy
-#| msgid "Language versions"
-msgid "Language"
-msgstr "Sprachversionen"
-
-#: templates/base/superbase.html:92
+#: templates/base/superbase.html:94
 #, fuzzy
 msgid "My shelf"
 msgstr "Mein Bücherregal"
 
-#: templates/base/superbase.html:96
+#: templates/base/superbase.html:97 templates/board_base.html:43
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/base/superbase.html:100
-msgid "Logout"
-msgstr "Ausloggen"
-
-#: templates/base/superbase.html:104 views.py:71 views.py:72
+#: templates/base/superbase.html:104 views.py:64 views.py:65
 msgid "Sign in"
 msgstr "Einloggen"
 
-#: templates/base/superbase.html:105 views.py:90 views.py:91 views.py:119
+#: templates/base/superbase.html:105 views.py:83 views.py:84 views.py:112
 msgid "Register"
 msgstr "Registrieren"
 
 #: templates/base/superbase.html:112
-msgid "Literature"
+msgid "Wesprzyj nas"
 msgstr ""
 
 #: templates/base/superbase.html:115
+msgid "Literature"
+msgstr ""
+
+#: templates/base/superbase.html:118
 msgid "Themes"
 msgstr "Motive"
 
-#: templates/base/superbase.html:118
+#: templates/base/superbase.html:121
 msgid "Audiobooks"
 msgstr "Audiobücher"
 
-#: templates/base/superbase.html:121
-msgid "Gallery"
-msgstr ""
-
-#: templates/base/superbase.html:124
+#: templates/base/superbase.html:124 templates/main_page.html:83
 #, fuzzy
 msgid "All works"
 msgstr "Alle Bücher"
 
-#: templates/base/superbase.html:133
+#: templates/base/superbase.html:133 templates/board_base.html:28
 msgid "Search"
 msgstr "Suchen"
 
-#: templates/base/superbase.html:161
+#: templates/base/superbase.html:164
 msgid "Close"
 msgstr "Schließen"
 
-#: templates/base/superbase.html:163
+#: templates/base/superbase.html:166
 msgid "Loading"
 msgstr "Laden"
+
+#: templates/board_base.html:31
+#, fuzzy
+#| msgid "advanced"
+msgid "Advanced search"
+msgstr "fortgeschritten"
 
 #: templates/info/join_us.html:6
 #, fuzzy, python-format
@@ -270,108 +267,114 @@ msgstr ""
 msgid "More..."
 msgstr "Mehr..."
 
-#: templates/main_page.html:10 templates/main_page.html.py:11
+#: templates/main_page.html:11 templates/main_page.html:12
 msgid "Wolne Lektury internet library"
 msgstr "Internetbibliothek WolneLektury.pl"
 
-#: templates/main_page.html:22
+#: templates/main_page.html:19
 msgid "In our digital library you will find"
 msgstr ""
 
-#: templates/main_page.html:33
+#: templates/main_page.html:28
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr ""
 
-#: templates/main_page.html:40
+#: templates/main_page.html:35
 msgid "Motifs and themes"
 msgstr "Motive und Themen"
 
-#: templates/main_page.html:42
+#: templates/main_page.html:37
 msgid "Theme"
 msgstr "Motiv"
 
-#: templates/main_page.html:43
+#: templates/main_page.html:38
 msgid "Explore works with the same theme"
 msgstr ""
 
-#: templates/main_page.html:55
+#: templates/main_page.html:48
 #, fuzzy
 #| msgid "See our blog"
 msgid "See motifs catalog"
 msgstr "Siehe unseren Blog"
 
-#: templates/main_page.html:95
+#: templates/main_page.html:53
 #, fuzzy
 #| msgid "Account Connections"
 msgid "Collections"
 msgstr "Konto-Beziehungen"
 
-#: templates/main_page.html:99
+#: templates/main_page.html:55
 msgid "See collections catalog"
 msgstr ""
 
-#: templates/main_page.html:104
+#: templates/main_page.html:60
 msgid "Recent publications"
 msgstr "Letzte Publikationen"
 
-#: templates/main_page.html:110
+#: templates/main_page.html:64
 #, fuzzy
 #| msgid "Recent publications"
 msgid "More recent publications"
 msgstr "Letzte Publikationen"
 
-#: templates/main_page.html:116
+#: templates/main_page.html:70
 msgid "News"
 msgstr "News"
 
-#: templates/main_page.html:121
+#: templates/main_page.html:77
 msgid "Utilities"
 msgstr "Leistungen"
 
-#: templates/main_page.html:124
+#: templates/main_page.html:80
 msgid "Report a bug or suggestion"
 msgstr "Melden Sie einen Bug oder Vorschlag."
 
-#: templates/main_page.html:126
+#: templates/main_page.html:81
 msgid "Download the catalogue in PDF format."
 msgstr "Der Katalog als PDF-Datei herunterladen."
 
-#: templates/main_page.html:127
+#: templates/main_page.html:82
+#, fuzzy
+#| msgid "Artist"
+msgid "Art"
+msgstr "Schriftsteller"
+
+#: templates/main_page.html:85
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:128
+#: templates/main_page.html:86
 #, fuzzy
 msgid "Missing a book?"
 msgstr "Brauchen Sie ein Buch?"
 
-#: templates/main_page.html:129 templates/publish_plan.html:4
-#: templates/publish_plan.html.py:8
+#: templates/main_page.html:87 templates/publish_plan.html:4
+#: templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan der Veröffentlichung"
 
-#: templates/main_page.html:134
+#: templates/main_page.html:92
 msgid "Newsletter"
 msgstr ""
 
-#: templates/main_page.html:139
+#: templates/main_page.html:97
 #, fuzzy
 msgid "Information"
 msgstr "Format öffnen"
 
-#: templates/main_page.html:141
+#: templates/main_page.html:99
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:162
+#: templates/main_page.html:120
 msgid "Image used:"
 msgstr "das genutzte Bild"
 
-#: templates/openid/login.html:6 templates/openid/login.html.py:9
+#: templates/openid/login.html:5 templates/openid/login.html:8
 msgid "OpenID Sign In"
 msgstr "OpenID registrieren"
 
-#: templates/openid/login.html:22
+#: templates/openid/login.html:16
 #, fuzzy
 msgid "Sign In"
 msgstr "Einloggen"
@@ -386,23 +389,6 @@ msgstr "zurück"
 msgid "next"
 msgstr "weiter"
 
-#: templates/piston/authorize_token.html:4
-#: templates/piston/authorize_token.html:7
-msgid "Authorize access to Wolne Lektury"
-msgstr "Den Zugang zu Wolne Lektury authorisieren"
-
-#: templates/piston/authorize_token.html:11
-#, python-format
-msgid ""
-"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-"strong>."
-msgstr ""
-"Bitte bestätigen Sie den Zugang zu Wolne Lektury <strong>%(user)s</strong>."
-
-#: templates/piston/authorize_token.html:17
-msgid "Confirm"
-msgstr ""
-
 #: templates/socialaccount/connections.html:5
 #: templates/socialaccount/connections.html:10
 msgid "Account Connections"
@@ -414,17 +400,17 @@ msgid ""
 "accounts:"
 msgstr "Sie können mithilfe folgenden fremden Accounts registrieren."
 
-#: templates/socialaccount/connections.html:37
+#: templates/socialaccount/connections.html:33
 #, fuzzy
 msgid "Remove"
 msgstr "löschen"
 
-#: templates/socialaccount/connections.html:45
+#: templates/socialaccount/connections.html:39
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr "Sie haben noch kein Social-Networt-Konto mit diesem Konto verbunden."
 
-#: templates/socialaccount/connections.html:48
+#: templates/socialaccount/connections.html:43
 msgid "Add a 3rd Party Account"
 msgstr "Füge ein fremdes Konto hinzu"
 
@@ -444,7 +430,26 @@ msgstr ""
 "einzuloggen. Wenn es aus Versehen passiert ist, gehen Sie bitte <a href="
 "\"%(login_url)s\">Registrieren</a> voran."
 
-#: templates/user.html:5 templates/user.html.py:9
+#: templates/socialaccount/signup.html:6
+#, fuzzy
+#| msgid "Sign in"
+msgid "Signup"
+msgstr "Einloggen"
+
+#: templates/socialaccount/signup.html:9 templates/socialaccount/signup.html:25
+#, fuzzy
+#| msgid "Sign in"
+msgid "Sign Up"
+msgstr "Einloggen"
+
+#: templates/socialaccount/signup.html:11
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to\n"
+"%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: templates/user.html:5 templates/user.html:9
 msgid "User"
 msgstr "User"
 
@@ -461,18 +466,39 @@ msgstr "E-Mail"
 msgid "Social accounts"
 msgstr "oder melde dich an:"
 
-#: utils.py:120
+#: utils.py:123
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
-#: views.py:79 views.py:100
+#: utils.py:205
+msgid "Yes"
+msgstr ""
+
+#: utils.py:206
+msgid "No"
+msgstr ""
+
+#: views.py:72 views.py:93
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Eingeloggt als User %(user)s"
 
-#: views.py:114
+#: views.py:107
 msgid "You have to be logged in to continue"
 msgstr "Sie müssen eingeloggt sein, um fortzusetzen."
+
+#~ msgid "Translations"
+#~ msgstr "Übersetzungen"
+
+#~ msgid "Authorize access to Wolne Lektury"
+#~ msgstr "Den Zugang zu Wolne Lektury authorisieren"
+
+#~ msgid ""
+#~ "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
+#~ "strong>."
+#~ msgstr ""
+#~ "Bitte bestätigen Sie den Zugang zu Wolne Lektury <strong>%(user)s</"
+#~ "strong>."
 
 #~ msgid "What's new?"
 #~ msgstr "Was Neues?"
@@ -782,9 +808,6 @@ msgstr "Sie müssen eingeloggt sein, um fortzusetzen."
 
 #~ msgid "Download as"
 #~ msgstr "Herunterladen als"
-
-#~ msgid "Artist"
-#~ msgstr "Schriftsteller"
 
 #~ msgid "Director"
 #~ msgstr "Regisseur"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 10:05+0100\n"
+"POT-Creation-Date: 2020-09-09 22:17+0200\n"
 "PO-Revision-Date: 2020-02-12 10:05+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -19,18 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.2.4\n"
-
-#: __init__.py:11
-#, fuzzy
-#| msgid ""
-#| "Please enter a correct %(username)s and password. Note that both fields "
-#| "may be case-sensitive."
-msgid ""
-"Please enter a correct %(username) and password. Note that both fields may "
-"be case-sensitive."
-msgstr ""
-"Wprowadź poprawne dane (%(username)s oraz hasło). Uwaga: wielkość liter ma "
-"znaczenie."
 
 #: templates/404.html:4
 msgid "Page does not exist"
@@ -111,7 +99,8 @@ msgstr "albo załóż konto"
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base/app.html:43 templates/base/superbase.html:70
+#: templates/base/app.html:42 templates/base/app.html:43
+#: templates/base/superbase.html:69 templates/base/superbase.html:70
 msgid "Language"
 msgstr "Język"
 
@@ -165,39 +154,34 @@ msgid "Register"
 msgstr "Załóż konto"
 
 #: templates/base/superbase.html:112
-msgid "Literature"
-msgstr "Literatura"
-
-#: templates/base/superbase.html:115
-msgid "Themes"
-msgstr "Motywy"
-
-#: templates/base/superbase.html:118
-msgid "Audiobooks"
-msgstr "Audiobooki"
-
-#: templates/base/superbase.html:121
 msgid "Wesprzyj nas"
 msgstr ""
 
-#: templates/base/superbase.html:125
-#, python-format
-msgid "Donate 1%%"
-msgstr "Przekaż 1%%"
+#: templates/base/superbase.html:115
+msgid "Literature"
+msgstr "Literatura"
 
-#: templates/base/superbase.html:127
+#: templates/base/superbase.html:118
+msgid "Themes"
+msgstr "Motywy"
+
+#: templates/base/superbase.html:121
+msgid "Audiobooks"
+msgstr "Audiobooki"
+
+#: templates/base/superbase.html:124 templates/main_page.html:83
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: templates/base/superbase.html:136 templates/board_base.html:28
+#: templates/base/superbase.html:133 templates/board_base.html:28
 msgid "Search"
 msgstr "Szukaj"
 
-#: templates/base/superbase.html:167
+#: templates/base/superbase.html:164
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/base/superbase.html:169
+#: templates/base/superbase.html:166
 msgid "Loading"
 msgstr "Ładowanie"
 
@@ -317,36 +301,40 @@ msgstr "Narzędzia"
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: templates/main_page.html:82
+#: templates/main_page.html:81
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: templates/main_page.html:83
+#: templates/main_page.html:82
+msgid "Art"
+msgstr "Sztuka"
+
+#: templates/main_page.html:85
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: templates/main_page.html:84
+#: templates/main_page.html:86
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: templates/main_page.html:85 templates/publish_plan.html:4
+#: templates/main_page.html:87 templates/publish_plan.html:4
 #: templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: templates/main_page.html:90
+#: templates/main_page.html:92
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: templates/main_page.html:95
+#: templates/main_page.html:97
 msgid "Information"
 msgstr "Informacje"
 
-#: templates/main_page.html:97
+#: templates/main_page.html:99
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: templates/main_page.html:118
+#: templates/main_page.html:120
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
@@ -443,9 +431,17 @@ msgstr "E-mail"
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
 
-#: utils.py:122
+#: utils.py:123
 msgid "Message sent automatically. Please do not reply."
 msgstr "Wiadomość wysłana automatycznie. Prosimy nie odpowiadać."
+
+#: utils.py:205
+msgid "Yes"
+msgstr ""
+
+#: utils.py:206
+msgid "No"
+msgstr ""
 
 #: views.py:72 views.py:93
 #, python-format
@@ -455,6 +451,20 @@ msgstr "Zalogowano jako %(user)s"
 #: views.py:107
 msgid "You have to be logged in to continue"
 msgstr "Zaloguj się, aby kontynuować"
+
+#, fuzzy
+#~| msgid ""
+#~| "Please enter a correct %(username)s and password. Note that both fields "
+#~| "may be case-sensitive."
+#~ msgid ""
+#~ "Please enter a correct %(username) and password. Note that both fields "
+#~ "may be case-sensitive."
+#~ msgstr ""
+#~ "Wprowadź poprawne dane (%(username)s oraz hasło). Uwaga: wielkość liter "
+#~ "ma znaczenie."
+
+#~ msgid "Donate 1%%"
+#~ msgstr "Przekaż 1%%"
 
 #~ msgid "Translations"
 #~ msgstr "Tłumaczenia"
@@ -769,9 +779,6 @@ msgstr "Zaloguj się, aby kontynuować"
 
 #~ msgid "Download as"
 #~ msgstr "Pobierz jako"
-
-#~ msgid "Artist"
-#~ msgstr "Czyta"
 
 #~ msgid "Director"
 #~ msgstr "Reżyseruje"
