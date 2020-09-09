@@ -7,7 +7,7 @@
 {% block box-class %}book-wide-box{% endblock %}
 
 
-{% block cover-link %}{% url 'book_text' book.get_first_text.slug %}{% endblock %}
+{% block cover-link %}{% if book.get_first_text %}{% url 'book_text' book.get_first_text.slug %}{% endif %}{% endblock %}
 
 
 {% block cover-area-extra %}
