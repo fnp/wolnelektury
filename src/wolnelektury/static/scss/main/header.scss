@@ -246,24 +246,24 @@ header#main {
         @include size(border-radius, 5px);
         @include box-shadow(0 0 6.5px #444444 inset);
 
-        font-family: Georgia, serif;
+        font-family: Gelasio, Georgia, serif;
         @include size(font-size, 13px);
         background-color: white;
         color: black;
 
         /* styling search placeholder */
         &::placeholder {
-          font-family: Georgia, serif;
+          font-family: Gelasio, Georgia, serif;
           font-style: italic;
           color: #767676;
         }
         &::-webkit-input-placeholder {
-          font-family: Georgia, serif;
+          font-family: Gelasio, Georgia, serif;
           font-style: italic;
           color: #767676;
         }
         &::-moz-placeholder {
-          font-family: Georgia, serif;
+          font-family: Gelasio, Georgia, serif;
           font-style: italic;
           color: #767676;
         }

@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 body {
     font-size: 16px;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Gelasio, Georgia, "Times New Roman", serif;
     line-height: 1.5em;
     margin: 0;
 }
