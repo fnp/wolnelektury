@@ -25,6 +25,8 @@ PIPELINE = {
         'main': {
             # styles both for mobile and for big screen
             'source_filenames': [
+                'css/import/gelasio.css',
+
                 'css/jquery.countdown.css',
                 'jplayer/jplayer.blue.monday.css',
 
@@ -42,12 +44,14 @@ PIPELINE = {
         },
         'book': {
             'source_filenames': [
+                'css/import/gelasio.css',
                 'css/master.book.css',
             ],
             'output_filename': 'css/compressed/book.css',
         },
         'book_text': {
             'source_filenames': [
+                'css/import/gelasio.css',
                 'scss/book_text.scss',
                 'css/new.book.css',
                 'annoy/banner.scss',
@@ -65,6 +69,7 @@ PIPELINE = {
         },
         'picture': {
             'source_filenames': [
+                'css/import/gelasio.css',
                 'css/master.book.css',
                 'css/master.picture.css',
             ],
