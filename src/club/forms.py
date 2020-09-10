@@ -8,7 +8,7 @@ from . import models
 from .payu.forms import CardTokenForm
 
 
-class ScheduleForm(NewsletterForm, forms.ModelForm):
+class ScheduleForm(forms.ModelForm, NewsletterForm):
     class Meta:
         model = models.Schedule
         fields = ['monthly', 'amount', 'email']
@@ -23,6 +23,10 @@ class ScheduleForm(NewsletterForm, forms.ModelForm):
         if club and value < club.min_amount:
             raise forms.ValidationError('Minimalna kwota to %d zł.' % club.min_amount)
         return value
+
+    def save(self, *args, **kwargs):
+        NewsletterForm.save(self, *args, **kwargs)
+        return super().save(*args, **kwargs)
 
 
 class PayUCardTokenForm(CardTokenForm):

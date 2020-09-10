@@ -2,6 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import requests
+from django.conf import settings
 
 
 def subscribe(email, newsletter):
@@ -13,9 +14,15 @@ def subscribe(email, newsletter):
         "htmlemail": 1,
         "subscribe": "Subscribe",
     }
-    response = requests.post(
-        'https://mailing.mdrn.pl/?p=subscribe',
-        data=data,
-    )
-    response.raise_for_status()
+    if settings.NEWSLETTER_PHPLIST_SUBSCRIBE_URL:
+        response = requests.post(
+            settings.NEWSLETTER_PHPLIST_SUBSCRIBE_URL,
+            data=data,
+        )
+        response.raise_for_status()
+    else:
+        print("Newsletter not configured, "
+            "NEWSLETTER_PHPLIST_SUBSCRIBE_URL not set. "
+            f"Trying to subscribe email: {email} to newsletter: {list_id}."
+        )
 

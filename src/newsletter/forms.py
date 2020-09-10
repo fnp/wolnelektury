@@ -36,11 +36,6 @@ Więcej informacji w <a href="">polityce prywatności.</a>'''
         if not newsletter:
             return
 
-        try:
-            # multiple inheritance mode
-            super(NewsletterForm, self).save(*args, **kwargs)
-        except AttributeError:
-            pass
         if not (self.mailing or self.cleaned_data.get(self.mailing_field)):
             return
         email = self.cleaned_data[self.email_field]
