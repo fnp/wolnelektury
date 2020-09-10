@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:23+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jan Szejko <jan.szejko@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,89 +18,79 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:19
+#: newsletter/forms.py:17
 msgid "I want to receive Wolne Lektury's newsletter."
 msgstr "Chcę otrzymywać newsletter Wolnych Lektur"
 
-#: forms.py:60 forms.py:71 models.py:10
+#: newsletter/forms.py:54 newsletter/models.py:12
 msgid "email address"
 msgstr "adres email"
 
-#: forms.py:63
-msgid "general newsletter"
-msgstr "ogólny newsletter"
-
-#: forms.py:63
-msgid "about the contest"
-msgstr "informacje o konkursie"
-
-#: forms.py:64
-msgid "mailing list"
-msgstr "lista mailowa"
-
-#: forms.py:78
-msgid "Email address not found."
-msgstr "Nie znaleziono adresu email."
-
-#: forms.py:89
-msgid "Unsubscribe from Wolne Lektury's newsletter."
-msgstr "Wypisuję się z newslettera Wolnych Lektur"
-
-#: models.py:11
+#: newsletter/models.py:13
 msgid "active"
 msgstr "aktywna"
 
-#: models.py:16
+#: newsletter/models.py:18
 msgid "subscription"
 msgstr "subskrypcja"
 
-#: models.py:17
+#: newsletter/models.py:19
 msgid "subscriptions"
 msgstr "subskrypcje"
 
-#: templates/admin/newsletter/subscription/change_list.html:9
+#: newsletter/templates/admin/newsletter/subscription/change_list.html:9
 msgid "Extract"
 msgstr "Ekstrakt"
 
-#: templates/newsletter/confirm_subscription.html:6
+#: newsletter/templates/newsletter/confirm_subscription.html:6
 msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
 msgstr "Potwierdzono subskrypcję newslettera Wolnych Lektur. Dziękujemy!"
 
-#: templates/newsletter/subscribe_form.html:16
+#: newsletter/templates/newsletter/subscribe_form.html:14
 msgid "Subscribe"
 msgstr "Zapisz się"
 
-#: templates/newsletter/subscribed.html:7
+#: newsletter/templates/newsletter/subscribed.html:7
 msgid "You have subscribed to Wolne Lektury newsletter."
 msgstr "Zapisałaś/eś się do newslettera Wolnych Lektur."
 
-#: templates/newsletter/unsubscribe_form.html:13 views.py:56
-msgid "Unsubscribe"
-msgstr "Usuń subskrypcję"
-
-#: templates/newsletter/unsubscribed.html:6
-msgid ""
-"You have unsubscribed from Wolne Lektury newsletter. You'll receive a "
-"confirmation by email."
-msgstr ""
-"Wypisałaś/eś się z newslettera Wolnych Lektur. Otrzymasz potwierdzenie na "
-"adres email."
-
-#: views.py:21
-msgid "Subscribe To Newsletter"
-msgstr "Zapisz się na newsletter"
-
-#: views.py:28
+#: newsletter/views.py:29
 msgid "Subscribed"
 msgstr "Zapisano do newslettera"
 
-#: views.py:43
-msgid "Subscription confirmed"
-msgstr "Potwierdzono subskrypcję"
+#~ msgid "general newsletter"
+#~ msgstr "ogólny newsletter"
 
-#: views.py:63
-msgid "Unsubscribed"
-msgstr "Usunięto subskrypcję"
+#~ msgid "about the contest"
+#~ msgstr "informacje o konkursie"
+
+#~ msgid "mailing list"
+#~ msgstr "lista mailowa"
+
+#~ msgid "Email address not found."
+#~ msgstr "Nie znaleziono adresu email."
+
+#~ msgid "Unsubscribe from Wolne Lektury's newsletter."
+#~ msgstr "Wypisuję się z newslettera Wolnych Lektur"
+
+#~ msgid "Unsubscribe"
+#~ msgstr "Usuń subskrypcję"
+
+#~ msgid ""
+#~ "You have unsubscribed from Wolne Lektury newsletter. You'll receive a "
+#~ "confirmation by email."
+#~ msgstr ""
+#~ "Wypisałaś/eś się z newslettera Wolnych Lektur. Otrzymasz potwierdzenie na "
+#~ "adres email."
+
+#~ msgid "Subscribe To Newsletter"
+#~ msgstr "Zapisz się na newsletter"
+
+#~ msgid "Subscription confirmed"
+#~ msgstr "Potwierdzono subskrypcję"
+
+#~ msgid "Unsubscribed"
+#~ msgstr "Usunięto subskrypcję"
 
 #~ msgid "Confirm your subscription to Wolne Lektury newsletter"
 #~ msgstr "Potwierdź subskrypcję newslettera Wolnych Lektur"

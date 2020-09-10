@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: uk <yourteam@example.com>\n"
@@ -11,31 +11,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:12
+#: infopages/models.py:12
 msgid "main page priority"
 msgstr ""
 
-#: models.py:13
+#: infopages/models.py:13
 msgid "slug"
 msgstr ""
 
-#: models.py:14
+#: infopages/models.py:14
 msgid "title"
 msgstr ""
 
-#: models.py:15
+#: infopages/models.py:15
 msgid "left column"
 msgstr ""
 
-#: models.py:16
+#: infopages/models.py:16
 msgid "right column"
 msgstr ""
 
-#: models.py:20
+#: infopages/models.py:20
 msgid "info page"
 msgstr ""
 
-#: models.py:21
+#: infopages/models.py:21
 msgid "info pages"
 msgstr ""
 

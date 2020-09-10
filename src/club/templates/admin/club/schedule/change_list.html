@@ -1,20 +1,20 @@
 {% extends "admin/change_list.html" %}
-{% load club %}
+{% load club i18n %}
 
 {% block content %}
   <table class="table">
     <tr>
-      <td>Aktywne miesięczne wpłaty cykliczne:</td>
+      <td>{% trans "Active monthly recurring donations %}:</td>
       <td>{% club_active_monthly_count %} sztuk</td>
       <td>{% club_active_monthly_sum %} zł.</td>
     </tr>
     <tr>
-      <td>Aktywne roczne wpłaty cykliczne:</td>
+      <td>{% trans "Active yearly recurring donations %}:</td>
       <td>{% club_active_yearly_count %} sztuk</td>
       <td>{% club_active_yearly_sum %} zł.</td>
     </tr>
     <tr>
-      <td>Jednorazowe wpłaty w ciągu ostatnich 30 dni:</td>
+      <td>{% trans "One-time donations in last 30 days %}:</td>
       <td>{% club_active_30day_count %} sztuk</td>
       <td>{% club_active_30day_sum %} zł.</td>
     </tr>

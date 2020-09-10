@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,285 +18,289 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:25
+#: funding/admin.py:24
 msgid "payment complete"
 msgstr ""
 
-#: admin.py:30 admin.py:47
+#: funding/admin.py:29 funding/admin.py:46
 msgid "Yes"
 msgstr ""
 
-#: admin.py:31 admin.py:48
+#: funding/admin.py:30 funding/admin.py:47
 msgid "No"
 msgstr ""
 
-#: admin.py:42 models.py:218 models.py:236
+#: funding/admin.py:41 funding/models.py:257 funding/models.py:275
 msgid "perks"
 msgstr ""
 
-#: forms.py:18 templates/funding/wlfund.html:29
+#: funding/forms.py:18 funding/templates/funding/wlfund.html:29
 msgid "Amount"
 msgstr ""
 
-#: forms.py:20
+#: funding/forms.py:20
 msgid "Name"
 msgstr ""
 
-#: forms.py:20
+#: funding/forms.py:20
 msgid "Optional name for public list of contributors"
 msgstr ""
 
-#: forms.py:22
+#: funding/forms.py:22
 msgid "Contact e-mail"
 msgstr ""
 
-#: forms.py:24
+#: funding/forms.py:24
 msgid ""
 "We'll use it to contact you about the <strong>details needed for your perks</"
 "strong>,<br/>and to send you updates about your payment and the fundraiser "
 "status (which you can always turn off).<br/>Your e-mail won't be publicised."
 msgstr ""
 
-#: forms.py:39
+#: funding/forms.py:43
 #, python-format
 msgid "The minimum amount is %(amount)s PLN."
 msgstr ""
 
-#: forms.py:45
+#: funding/forms.py:49
 msgid "This offer is out of date."
 msgstr ""
 
-#: models.py:26
+#: funding/models.py:25
 msgid "author"
 msgstr ""
 
-#: models.py:27
+#: funding/models.py:26
 msgid "title"
 msgstr ""
 
-#: models.py:28
+#: funding/models.py:27
 msgid "slug"
 msgstr ""
 
-#: models.py:29
+#: funding/models.py:28
 msgid "description"
 msgstr ""
 
-#: models.py:30
+#: funding/models.py:29
 msgid "target"
 msgstr ""
 
-#: models.py:31
+#: funding/models.py:30
 msgid "start"
 msgstr ""
 
-#: models.py:32
+#: funding/models.py:31
 msgid "end"
 msgstr ""
 
-#: models.py:33
+#: funding/models.py:32
 msgid "redakcja URL"
 msgstr ""
 
-#: models.py:34
+#: funding/models.py:33
 msgid "Published book."
 msgstr ""
 
-#: models.py:35
+#: funding/models.py:34
 msgid "Cover"
 msgstr ""
 
-#: models.py:36
+#: funding/models.py:35
 msgid "Poll"
 msgstr ""
 
-#: models.py:38
+#: funding/models.py:37
 msgid "Near-end notifications sent"
 msgstr ""
 
-#: models.py:39
+#: funding/models.py:38
 msgid "End notifications sent"
 msgstr ""
 
-#: models.py:43
+#: funding/models.py:42
 msgid "Cover preview"
 msgstr ""
 
-#: models.py:47 models.py:210 models.py:231
+#: funding/models.py:46 funding/models.py:249 funding/models.py:270
 msgid "offer"
 msgstr ""
 
-#: models.py:48
+#: funding/models.py:47
 msgid "offers"
 msgstr ""
 
-#: models.py:164
+#: funding/models.py:154
 msgid "The fundraiser has ended!"
 msgstr ""
 
-#: models.py:181
+#: funding/models.py:171
 msgid "The fundraiser will end soon!"
 msgstr ""
 
-#: models.py:195
+#: funding/models.py:185
 msgid "The book you helped fund has been published."
 msgstr ""
 
-#: models.py:211
+#: funding/models.py:250
 msgid "price"
 msgstr ""
 
-#: models.py:212 models.py:232
+#: funding/models.py:251 funding/models.py:271
 msgid "name"
 msgstr ""
 
-#: models.py:213
+#: funding/models.py:252
 msgid "long name"
 msgstr ""
 
-#: models.py:214
+#: funding/models.py:253
 msgid "end date"
 msgstr ""
 
-#: models.py:217
+#: funding/models.py:256
 msgid "perk"
 msgstr ""
 
-#: models.py:233
+#: funding/models.py:272
 msgid "email"
 msgstr ""
 
-#: models.py:234 models.py:313
+#: funding/models.py:273 funding/models.py:352
 msgid "amount"
 msgstr ""
 
-#: models.py:235
+#: funding/models.py:274
 msgid "payed at"
 msgstr ""
 
-#: models.py:238
+#: funding/models.py:277
 msgid "notifications"
 msgstr ""
 
-#: models.py:242
+#: funding/models.py:281
 msgid "funding"
 msgstr ""
 
-#: models.py:243 templates/admin/funding/offer/change_form.html:18
+#: funding/models.py:282
+#: funding/templates/admin/funding/offer/change_form.html:18
 msgid "fundings"
 msgstr ""
 
-#: models.py:314
+#: funding/models.py:353
 msgid "when"
 msgstr ""
 
-#: models.py:317
+#: funding/models.py:356
 msgid "money spent on a book"
 msgstr ""
 
-#: models.py:318
+#: funding/models.py:357
 msgid "money spent on books"
 msgstr ""
 
-#: models.py:346 templates/funding/thanks.html:6
-#: templates/funding/thanks.html.py:13
+#: funding/models.py:385 funding/templates/funding/thanks.html:6
+#: funding/templates/funding/thanks.html:13
 msgid "Thank you for your support!"
 msgstr ""
 
-#: templates/funding/disable_notifications.html:5
-#: templates/funding/no_thanks.html:5 templates/funding/no_thanks.html.py:8
+#: funding/templates/funding/disable_notifications.html:5
+#: funding/templates/funding/no_thanks.html:5
+#: funding/templates/funding/no_thanks.html:8
 msgid "Payment failed"
 msgstr ""
 
-#: templates/funding/disable_notifications.html:8
-#: templates/funding/disable_notifications.html:15
+#: funding/templates/funding/disable_notifications.html:8
+#: funding/templates/funding/disable_notifications.html:15
 msgid "Disable notifications"
 msgstr ""
 
-#: templates/funding/disable_notifications.html:12
+#: funding/templates/funding/disable_notifications.html:12
 #, python-format
 msgid "Are you sure you want to disable notifications for address %(e)s?"
 msgstr ""
 
-#: templates/funding/disable_notifications.html:19
+#: funding/templates/funding/disable_notifications.html:19
 #, python-format
 msgid "Notifications for address %(e)s have been successfully disabled."
 msgstr ""
 
-#: templates/funding/disable_notifications.html:25
+#: funding/templates/funding/disable_notifications.html:25
 #, python-format
 msgid "Return to the <a href=\"%(current)s\">current fundraiser</a>."
 msgstr ""
 
-#: templates/funding/email/base.txt:1
+#: funding/templates/funding/email/base.txt:1
 msgid "Hi"
 msgstr ""
 
-#: templates/funding/email/base.txt:4
+#: funding/templates/funding/email/base.txt:6
 msgid ""
 "Cheers,\n"
 "Wolne Lektury team"
 msgstr ""
 
-#: templates/funding/email/base.txt:8
+#: funding/templates/funding/email/base.txt:10
 msgid "If you don't want to receive any more updates, please visit this page:"
 msgstr ""
 
-#: templates/funding/email/end.txt:6
+#: funding/templates/funding/email/end.txt:6
 msgid ""
 "we succesfully collected the full amount needed\n"
 "for the book you contributed to:"
 msgstr ""
 
-#: templates/funding/email/end.txt:12
+#: funding/templates/funding/email/end.txt:12
 msgid ""
 "We will now digitize it, develop and publish it in the library,\n"
 "in various formats, free for everyone."
 msgstr ""
 
-#: templates/funding/email/end.txt:15
+#: funding/templates/funding/email/end.txt:15
 msgid ""
 "Your name will be included on the list of contributors, irrespectively\n"
 "of the amount of your contribution."
 msgstr ""
 
-#: templates/funding/email/end.txt:18
+#: funding/templates/funding/email/end.txt:18
 msgid ""
 "We will contact you again about details needed\n"
 "to deliver your perks."
 msgstr ""
 
-#: templates/funding/email/end.txt:21
+#: funding/templates/funding/email/end.txt:21
 #, python-format
 msgid ""
 "All of the money remaining after this fundraiser (%(r)s PLN)\n"
 "will be spent on liberating other books still waiting for publication."
 msgstr ""
 
-#: templates/funding/email/end.txt:23 templates/funding/email/end.txt.py:34
+#: funding/templates/funding/email/end.txt:23
+#: funding/templates/funding/email/end.txt:34
 msgid "You can see how we're spending these funds on this page:"
 msgstr ""
 
-#: templates/funding/email/end.txt:26
+#: funding/templates/funding/email/end.txt:26
 msgid ""
 "unfortunately, we were unable to collect the full amount needed\n"
 "for the book you contributed to:"
 msgstr ""
 
-#: templates/funding/email/end.txt:32
+#: funding/templates/funding/email/end.txt:32
 #, python-format
 msgid ""
 "All of the money we collected in this fundraiser (%(x)s PLN)\n"
 "will be spent on liberating other books still waiting for publication."
 msgstr ""
 
-#: templates/funding/email/end.txt:37 templates/funding/email/published.txt:12
+#: funding/templates/funding/email/end.txt:37
+#: funding/templates/funding/email/published.txt:12
 msgid ""
 "If you'd like to help liberate another book, or invite your friends\n"
 "to do so, we're currently raising money for:"
 msgstr ""
 
-#: templates/funding/email/near.txt:5
+#: funding/templates/funding/email/near.txt:5
 #, python-format
 msgid "there's only %(d)s day left until the end of the fundraiser for:\n"
 msgid_plural ""
@@ -304,88 +308,90 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/funding/email/near.txt:10
+#: funding/templates/funding/email/near.txt:10
 #, python-format
 msgid "We managed to collect %(x)s PLN so far."
 msgstr ""
 
-#: templates/funding/email/near.txt:12
+#: funding/templates/funding/email/near.txt:12
 msgid ""
 "The fundraiser is a success already, but the more money\n"
 "we collect, the more other books we'll publish."
 msgstr ""
 
-#: templates/funding/email/near.txt:14
+#: funding/templates/funding/email/near.txt:14
 #, python-format
 msgid "We still need %(x)s PLN more."
 msgstr ""
 
-#: templates/funding/email/near.txt:16
+#: funding/templates/funding/email/near.txt:16
 msgid "There's still time to let your friends know about the fundraiser!"
 msgstr ""
 
-#: templates/funding/email/published.txt:4
+#: funding/templates/funding/email/published.txt:4
 msgid "we have just published the book you contributed to:"
 msgstr ""
 
-#: templates/funding/email/published.txt:9
+#: funding/templates/funding/email/published.txt:9
 msgid ""
 "Thanks to you, it is now available for free,\n"
 "in various formats, to everyone."
 msgstr ""
 
-#: templates/funding/email/thanks.txt:6
+#: funding/templates/funding/email/thanks.txt:6
 msgid ""
 "Thank you for your support - thanks to you we will set another book free."
 msgstr ""
 
-#: templates/funding/email/thanks.txt:8
+#: funding/templates/funding/email/thanks.txt:8
 msgid "The book will be supplemented with your name as a donor."
 msgstr ""
 
-#: templates/funding/email/thanks.txt:10
+#: funding/templates/funding/email/thanks.txt:10
 msgid "We will contact you about details needed for your perks."
 msgstr ""
 
-#: templates/funding/email/thanks.txt:12
+#: funding/templates/funding/email/thanks.txt:12
 msgid ""
 "We will keep you informed about status changes to this fundraiser\n"
 "and the upcoming ones that we plan to launch."
 msgstr ""
 
-#: templates/funding/includes/funding.html:12
+#: funding/templates/funding/includes/funding.html:12
 msgid "Support!"
 msgstr ""
 
-#: templates/funding/includes/funding.html:15
-#: templates/funding/offer_detail.html:34 templates/funding/thanks.html:28
-#: templates/funding/wlfund.html:18
+#: funding/templates/funding/includes/funding.html:15
+#: funding/templates/funding/offer_detail.html:76
+#: funding/templates/funding/thanks.html:28
+#: funding/templates/funding/wlfund.html:18
 msgid "Learn more"
 msgstr ""
 
-#: templates/funding/includes/funding.html:24
-#: templates/funding/includes/funding.html:48
-#: templates/funding/offer_detail.html:29 templates/funding/offer_list.html:30
+#: funding/templates/funding/includes/funding.html:24
+#: funding/templates/funding/includes/funding.html:48
+#: funding/templates/funding/offer_detail.html:29
+#: funding/templates/funding/offer_list.html:28
 msgid "Help free the book!"
 msgstr ""
 
-#: templates/funding/includes/funding.html:30
+#: funding/templates/funding/includes/funding.html:30
 msgid "collected"
 msgstr ""
 
-#: templates/funding/includes/funding.html:33
+#: funding/templates/funding/includes/funding.html:33
 msgid "needed"
 msgstr ""
 
-#: templates/funding/includes/funding.html:36
+#: funding/templates/funding/includes/funding.html:36
 msgid "until fundraiser end"
 msgstr ""
 
-#: templates/funding/includes/fundings.html:13
+#: funding/templates/funding/includes/fundings.html:13
 msgid "Anonymous"
 msgstr ""
 
-#: templates/funding/includes/offer_status.html:6
+#: funding/templates/funding/includes/offer_status.html:6
 #, python-format
 msgid ""
 "The fundraiser\n"
@@ -394,127 +400,130 @@ msgid ""
 "      more books."
 msgstr ""
 
-#: templates/funding/includes/offer_status.html:13
+#: funding/templates/funding/includes/offer_status.html:13
 #, python-format
 msgid ""
 "We need %(target)s zł to digitize it,\n"
 "    compile it and publish for free in multiple formats."
 msgstr ""
 
-#: templates/funding/includes/offer_status.html:17
+#: funding/templates/funding/includes/offer_status.html:17
 #, python-format
 msgid ""
 "If we raise enough money before %(end)s we will\n"
 "    publish it and make it available for everyone."
 msgstr ""
 
-#: templates/funding/includes/offer_status.html:24
-#: templates/funding/thanks.html:17
+#: funding/templates/funding/includes/offer_status.html:24
+#: funding/templates/funding/thanks.html:17
 msgid "Full amount was successfully raised!"
 msgstr ""
 
-#: templates/funding/includes/offer_status.html:28
+#: funding/templates/funding/includes/offer_status.html:28
 msgid "The amount needed was not raised."
 msgstr ""
 
-#: templates/funding/includes/offer_status_more.html:8
+#: funding/templates/funding/includes/offer_status_more.html:8
 msgid "Fundraiser span"
 msgstr ""
 
-#: templates/funding/includes/offer_status_more.html:12
+#: funding/templates/funding/includes/offer_status_more.html:12
 #, python-format
 msgid ""
 "The book\n"
 "        <a href=\"%(bu)s\">%(bt)s</a> has been already published."
 msgstr ""
 
-#: templates/funding/includes/offer_status_more.html:16
+#: funding/templates/funding/includes/offer_status_more.html:16
 #, python-format
 msgid ""
 "You can follow\n"
 "          the work on the <a href=\"%(r)s\">Editorial Platform</a>."
 msgstr ""
 
-#: templates/funding/no_thanks.html:10
+#: funding/templates/funding/no_thanks.html:10
 msgid "You're support has not been processed successfully."
 msgstr ""
 
-#: templates/funding/no_thanks.html:13
+#: funding/templates/funding/no_thanks.html:13
 #, python-format
 msgid ""
 "Return to the <a href=\"%(current)s\">current fundraiser</a> and try again "
 "or try to use a different payment method."
 msgstr ""
 
-#: templates/funding/offer_detail.html:42
+#: funding/templates/funding/offer_detail.html:36
 msgid "Support the publication"
 msgstr ""
 
-#: templates/funding/offer_detail.html:63
+#: funding/templates/funding/offer_detail.html:63
 msgid "Donate!"
 msgstr ""
 
-#: templates/funding/offer_detail.html:72 templates/funding/thanks.html:35
+#: funding/templates/funding/offer_detail.html:79
+#: funding/templates/funding/thanks.html:35
 msgid "Tell your friends!"
 msgstr ""
 
-#: templates/funding/offer_detail.html:73
+#: funding/templates/funding/offer_detail.html:80
 msgid "Support Wolne Lektury!"
 msgstr ""
 
-#: templates/funding/offer_detail.html:76
+#: funding/templates/funding/offer_detail.html:84
 msgid "See all fundraisers."
 msgstr ""
 
-#: templates/funding/offer_detail.html:79
+#: funding/templates/funding/offer_detail.html:87
 msgid "Supporters"
 msgstr ""
 
-#: templates/funding/offer_list.html:7 templates/funding/offer_list.html:12
+#: funding/templates/funding/offer_list.html:5
+#: funding/templates/funding/offer_list.html:10
 msgid "All fundraisers"
 msgstr ""
 
-#: templates/funding/offer_list.html:16
+#: funding/templates/funding/offer_list.html:14
 msgid "Current fundraiser:"
 msgstr ""
 
-#: templates/funding/offer_list.html:22
+#: funding/templates/funding/offer_list.html:20
 msgid "No fundraiser is currently running."
 msgstr ""
 
-#: templates/funding/offer_list.html:23 templates/funding/offer_list.html:38
+#: funding/templates/funding/offer_list.html:21
+#: funding/templates/funding/offer_list.html:36
 msgid "Previous fundraisers:"
 msgstr ""
 
-#: templates/funding/snippets/any_remaining.html:4
+#: funding/templates/funding/snippets/any_remaining.html:4
 #, python-format
 msgid ""
 "Any <a href=\"%(wlfund)s\">remaining funds</a> will be spent\n"
 "on other books waiting to be published."
 msgstr ""
 
-#: templates/funding/snippets/any_remaining.html:7
+#: funding/templates/funding/snippets/any_remaining.html:7
 msgid ""
 "We will supplement every book with your name as a donor, no matter how\n"
 "big your support will be."
 msgstr ""
 
-#: templates/funding/thanks.html:9
+#: funding/templates/funding/thanks.html:9
 msgid "Thank you!"
 msgstr ""
 
-#: templates/funding/thanks.html:14
+#: funding/templates/funding/thanks.html:14
 msgid "We will contact you if you qualify for perks."
 msgstr ""
 
-#: templates/funding/thanks.html:18
+#: funding/templates/funding/thanks.html:18
 #, python-format
 msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
 "      publishing the book %(b)s in multiple formats."
 msgstr ""
 
-#: templates/funding/thanks.html:21
+#: funding/templates/funding/thanks.html:21
 #, python-format
 msgid ""
 "If the full amount needed is raised,\n"
@@ -522,27 +531,28 @@ msgid ""
 "      publishing the book %(b)s in multiple formats."
 msgstr ""
 
-#: templates/funding/thanks.html:32
+#: funding/templates/funding/thanks.html:32
 msgid "Go back to the current fundraiser."
 msgstr ""
 
-#: templates/funding/thanks.html:36
+#: funding/templates/funding/thanks.html:36
 msgid "I support Wolne Lektury."
 msgstr ""
 
-#: templates/funding/thanks.html:39
+#: funding/templates/funding/thanks.html:39
 msgid "Vote for a book for the next fundraiser"
 msgstr ""
 
-#: templates/funding/widgets/amount.html:17
+#: funding/templates/funding/widgets/amount.html:17
 msgid "Other amount"
 msgstr ""
 
-#: templates/funding/wlfund.html:4 templates/funding/wlfund.html.py:7
+#: funding/templates/funding/wlfund.html:4
+#: funding/templates/funding/wlfund.html:7
 msgid "Remaining funds"
 msgstr ""
 
-#: templates/funding/wlfund.html:11
+#: funding/templates/funding/wlfund.html:11
 #, python-format
 msgid ""
 "\n"
@@ -554,30 +564,30 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/funding/wlfund.html:21
+#: funding/templates/funding/wlfund.html:21
 msgid "Spending these remaining funds is recorded in this table."
 msgstr ""
 
-#: templates/funding/wlfund.html:27
+#: funding/templates/funding/wlfund.html:27
 msgid "Date"
 msgstr ""
 
-#: templates/funding/wlfund.html:28
+#: funding/templates/funding/wlfund.html:28
 msgid "Operation"
 msgstr ""
 
-#: templates/funding/wlfund.html:30
+#: funding/templates/funding/wlfund.html:30
 msgid "Balance"
 msgstr ""
 
-#: templates/funding/wlfund.html:38
+#: funding/templates/funding/wlfund.html:38
 msgid "Money spent on publishing the book"
 msgstr ""
 
-#: templates/funding/wlfund.html:48
+#: funding/templates/funding/wlfund.html:48
 msgid "Money remaining from the fundraiser for"
 msgstr ""
 
-#: templates/funding/wlfund.html:58
+#: funding/templates/funding/wlfund.html:58
 msgid "There are no previous fundraisers to show yet."
 msgstr ""

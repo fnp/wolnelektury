@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:12 models.py:30
+#: libraries/models.py:12 libraries/models.py:29
 msgid "name"
 msgstr ""
 
-#: models.py:13 models.py:31
+#: libraries/models.py:13 libraries/models.py:30
 msgid "slug"
 msgstr ""
 
-#: models.py:16
+#: libraries/models.py:16
 msgid "catalog"
 msgstr ""
 
-#: models.py:17
+#: libraries/models.py:17
 msgid "catalogs"
 msgstr ""
 
-#: models.py:33
+#: libraries/models.py:32
 msgid "url"
 msgstr ""
 
-#: models.py:34
+#: libraries/models.py:33
 msgid "description"
 msgstr ""
 
-#: models.py:37
+#: libraries/models.py:36
 msgid "library"
 msgstr ""
 
-#: models.py:38
+#: libraries/models.py:37
 msgid "libraries"
 msgstr ""
 
-#: templates/libraries/catalog_view.html:4
+#: libraries/templates/libraries/catalog_view.html:4
 msgid "Libraries directory"
 msgstr ""
 
-#: templates/libraries/main_view.html:4 templates/libraries/main_view.html:7
+#: libraries/templates/libraries/main_view.html:4
+#: libraries/templates/libraries/main_view.html:7
 msgid "Library directories"
 msgstr ""

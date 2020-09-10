@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-09 22:17+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2020-02-12 10:05+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -20,15 +20,15 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: templates/404.html:4
+#: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr "Podana strona nie istnieje"
 
-#: templates/404.html:8
+#: wolnelektury/templates/404.html:8
 msgid "Page not found"
 msgstr "Strona nie znaleziona"
 
-#: templates/404.html:11
+#: wolnelektury/templates/404.html:11
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
@@ -36,15 +36,15 @@ msgstr ""
 "Przepraszamy, ale ta strona nie istnieje. Sprawdź czy podałeś dobry adres, "
 "lub przejdź do"
 
-#: templates/404.html:12
+#: wolnelektury/templates/404.html:12
 msgid "main page"
 msgstr "strony głównej"
 
-#: templates/500.html:6 templates/500.html:17
+#: wolnelektury/templates/500.html:6 wolnelektury/templates/500.html:17
 msgid "Server error"
 msgstr "Błąd serwera"
 
-#: templates/500.html:19
+#: wolnelektury/templates/500.html:19
 msgid ""
 "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
 "<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
@@ -56,60 +56,66 @@ msgstr ""
 "<p>Powiadom <a href='mailto:fundacja@nowoczesnapolska.org."
 "pl'>administratorów</a> o błędzie.</p>"
 
-#: templates/503.html:6 templates/503.html:17
+#: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
 msgid "Service unavailable"
 msgstr "Serwis niedostępny"
 
-#: templates/503.html:19
+#: wolnelektury/templates/503.html:19
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr ""
 "Serwis Wolnelektury.pl jest obecnie niedostępny z powodu prac "
 "konserwacyjnych."
 
-#: templates/admin/base_site.html:4 templates/admin/base_site.html:7
+#: wolnelektury/templates/admin/base_site.html:4
+#: wolnelektury/templates/admin/base_site.html:7
 msgid "Site administration"
 msgstr "Administracja stroną"
 
-#: templates/admin/catalogue/book/change_form.html:6
-#: templates/admin/catalogue/book/change_form.html:36
+#: wolnelektury/templates/admin/catalogue/book/change_form.html:6
+#: wolnelektury/templates/admin/catalogue/book/change_form.html:36
 msgid "advanced"
 msgstr "zaawansowane"
 
-#: templates/admin/catalogue/book/change_form.html:34
+#: wolnelektury/templates/admin/catalogue/book/change_form.html:34
 msgid "simplified"
 msgstr "uproszczone"
 
-#: templates/admin/catalogue/book/change_list.html:9
+#: wolnelektury/templates/admin/catalogue/book/change_list.html:9
 msgid "Import book"
 msgstr "Importuj książkę"
 
-#: templates/auth/login.html:11
+#: wolnelektury/templates/auth/login.html:11
 msgid "Forgot Password?"
 msgstr "Nie pamiętasz hasła?"
 
-#: templates/auth/login.html:17 templates/auth/register.html:8
+#: wolnelektury/templates/auth/login.html:17
+#: wolnelektury/templates/auth/register.html:8
 msgid "Sign in using:"
 msgstr "Zaloguj się używając:"
 
-#: templates/auth/login_register.html:8
+#: wolnelektury/templates/auth/login_register.html:8
 msgid "or register"
 msgstr "albo załóż konto"
 
-#: templates/base/app.html:20 templates/base/superbase.html:25
+#: wolnelektury/templates/base/app.html:20
+#: wolnelektury/templates/base/superbase.html:25
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base/app.html:42 templates/base/app.html:43
-#: templates/base/superbase.html:69 templates/base/superbase.html:70
+#: wolnelektury/templates/base/app.html:42
+#: wolnelektury/templates/base/app.html:43
+#: wolnelektury/templates/base/superbase.html:69
+#: wolnelektury/templates/base/superbase.html:70
 msgid "Language"
 msgstr "Język"
 
-#: templates/base/app.html:66 templates/base/superbase.html:100
-#: templates/board_base.html:48
+#: wolnelektury/templates/base/app.html:66
+#: wolnelektury/templates/base/superbase.html:100
+#: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base/superbase.html:60
+#: wolnelektury/templates/base/superbase.html:60
 #, python-format
 msgid ""
 "\n"
@@ -137,61 +143,66 @@ msgstr[2] ""
 "<a href='%(r)s'>masz prawo</a>\n"
 "                    "
 
-#: templates/base/superbase.html:94
+#: wolnelektury/templates/base/superbase.html:94
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/base/superbase.html:97 templates/board_base.html:43
+#: wolnelektury/templates/base/superbase.html:97
+#: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Administracja"
 
-#: templates/base/superbase.html:104 views.py:64 views.py:65
+#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:64
+#: wolnelektury/views.py:65
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: templates/base/superbase.html:105 views.py:83 views.py:84 views.py:112
+#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:83
+#: wolnelektury/views.py:84 wolnelektury/views.py:112
 msgid "Register"
 msgstr "Załóż konto"
 
-#: templates/base/superbase.html:112
+#: wolnelektury/templates/base/superbase.html:112
 msgid "Wesprzyj nas"
 msgstr ""
 
-#: templates/base/superbase.html:115
+#: wolnelektury/templates/base/superbase.html:115
 msgid "Literature"
 msgstr "Literatura"
 
-#: templates/base/superbase.html:118
+#: wolnelektury/templates/base/superbase.html:118
 msgid "Themes"
 msgstr "Motywy"
 
-#: templates/base/superbase.html:121
+#: wolnelektury/templates/base/superbase.html:121
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/base/superbase.html:124 templates/main_page.html:83
+#: wolnelektury/templates/base/superbase.html:124
+#: wolnelektury/templates/main_page.html:83
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: templates/base/superbase.html:133 templates/board_base.html:28
+#: wolnelektury/templates/base/superbase.html:133
+#: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Szukaj"
 
-#: templates/base/superbase.html:164
+#: wolnelektury/templates/base/superbase.html:164
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/base/superbase.html:166
+#: wolnelektury/templates/base/superbase.html:166
 msgid "Loading"
 msgstr "Ładowanie"
 
-#: templates/board_base.html:31
+#: wolnelektury/templates/board_base.html:31
 #, fuzzy
 #| msgid "advanced"
 msgid "Advanced search"
 msgstr "zaawansowane"
 
-#: templates/info/join_us.html:6
+#: wolnelektury/templates/info/join_us.html:6
 #, python-format
 msgid ""
 "\n"
@@ -231,7 +242,7 @@ msgstr[2] ""
 "podatku</a>.\n"
 " "
 
-#: templates/info/join_us.html:22
+#: wolnelektury/templates/info/join_us.html:22
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
 "    we're currently working on a reading you're looking for and prepare\n"
@@ -241,152 +252,155 @@ msgstr ""
 "pracujemy nad publikacją wyszukiwanej przez ciebie lektury i samodzielnie "
 "przygotuj publikację logując się na Platformie Redakcyjnej."
 
-#: templates/info/join_us.html:25
+#: wolnelektury/templates/info/join_us.html:25
 msgid "More..."
 msgstr "Więcej..."
 
-#: templates/main_page.html:11 templates/main_page.html:12
+#: wolnelektury/templates/main_page.html:11
+#: wolnelektury/templates/main_page.html:12
 msgid "Wolne Lektury internet library"
 msgstr "Biblioteka internetowa Wolne Lektury"
 
-#: templates/main_page.html:19
+#: wolnelektury/templates/main_page.html:19
 msgid "In our digital library you will find"
 msgstr "W naszej cyfrowej bibliotece znajdziesz"
 
-#: templates/main_page.html:28
+#: wolnelektury/templates/main_page.html:28
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr "i wiele innych książek, wierszy, obrazów, audiobooków…"
 
-#: templates/main_page.html:35
+#: wolnelektury/templates/main_page.html:35
 msgid "Motifs and themes"
 msgstr "Motywy i tematy"
 
-#: templates/main_page.html:37
+#: wolnelektury/templates/main_page.html:37
 msgid "Theme"
 msgstr "Motyw"
 
-#: templates/main_page.html:38
+#: wolnelektury/templates/main_page.html:38
 msgid "Explore works with the same theme"
 msgstr "Utwory, w których występuje ten motyw:"
 
-#: templates/main_page.html:48
+#: wolnelektury/templates/main_page.html:48
 msgid "See motifs catalog"
 msgstr "Zobacz katalog motywów"
 
-#: templates/main_page.html:53
+#: wolnelektury/templates/main_page.html:53
 msgid "Collections"
 msgstr "Kolekcje"
 
-#: templates/main_page.html:55
+#: wolnelektury/templates/main_page.html:55
 msgid "See collections catalog"
 msgstr "Zobacz katalog kolekcji"
 
-#: templates/main_page.html:60
+#: wolnelektury/templates/main_page.html:60
 msgid "Recent publications"
 msgstr "Ostatnie publikacje"
 
-#: templates/main_page.html:64
+#: wolnelektury/templates/main_page.html:64
 msgid "More recent publications"
 msgstr "Więcej ostatnich publikacji"
 
-#: templates/main_page.html:70
+#: wolnelektury/templates/main_page.html:70
 msgid "News"
 msgstr "Aktualności"
 
-#: templates/main_page.html:77
+#: wolnelektury/templates/main_page.html:77
 msgid "Utilities"
 msgstr "Narzędzia"
 
-#: templates/main_page.html:80
+#: wolnelektury/templates/main_page.html:80
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: templates/main_page.html:81
+#: wolnelektury/templates/main_page.html:81
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: templates/main_page.html:82
+#: wolnelektury/templates/main_page.html:82
 msgid "Art"
 msgstr "Sztuka"
 
-#: templates/main_page.html:85
+#: wolnelektury/templates/main_page.html:85
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: templates/main_page.html:86
+#: wolnelektury/templates/main_page.html:86
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: templates/main_page.html:87 templates/publish_plan.html:4
-#: templates/publish_plan.html:8
+#: wolnelektury/templates/main_page.html:87
+#: wolnelektury/templates/publish_plan.html:4
+#: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: templates/main_page.html:92
+#: wolnelektury/templates/main_page.html:92
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:97
 msgid "Information"
 msgstr "Informacje"
 
-#: templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:99
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:120
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
-#: templates/openid/login.html:5 templates/openid/login.html:8
+#: wolnelektury/templates/openid/login.html:5
+#: wolnelektury/templates/openid/login.html:8
 msgid "OpenID Sign In"
 msgstr "Logowanie przez OpenID"
 
-#: templates/openid/login.html:16
+#: wolnelektury/templates/openid/login.html:16
 msgid "Sign In"
 msgstr "Zaloguj się"
 
-#: templates/pagination/pagination.html:6
-#: templates/pagination/pagination.html:8
+#: wolnelektury/templates/pagination/pagination.html:6
+#: wolnelektury/templates/pagination/pagination.html:8
 msgid "previous"
 msgstr "poprzedni"
 
-#: templates/pagination/pagination.html:22
-#: templates/pagination/pagination.html:24
+#: wolnelektury/templates/pagination/pagination.html:22
+#: wolnelektury/templates/pagination/pagination.html:24
 msgid "next"
 msgstr "następny"
 
-#: templates/socialaccount/connections.html:5
-#: templates/socialaccount/connections.html:10
+#: wolnelektury/templates/socialaccount/connections.html:5
+#: wolnelektury/templates/socialaccount/connections.html:10
 msgid "Account Connections"
 msgstr "Powiązania konta"
 
-#: templates/socialaccount/connections.html:13
+#: wolnelektury/templates/socialaccount/connections.html:13
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr ""
 "Możesz się zalogować na swoje konto używając następujących kont zewnętrznych:"
 
-#: templates/socialaccount/connections.html:33
+#: wolnelektury/templates/socialaccount/connections.html:33
 msgid "Remove"
 msgstr "Usuń"
 
-#: templates/socialaccount/connections.html:39
+#: wolnelektury/templates/socialaccount/connections.html:39
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr "Aktualnie do Twojego konta nie są podłączone żadne konta zewnętrzne."
 
-#: templates/socialaccount/connections.html:43
+#: wolnelektury/templates/socialaccount/connections.html:43
 msgid "Add a 3rd Party Account"
 msgstr "Dodaj konto zewnętrzne"
 
-#: templates/socialaccount/login_cancelled.html:5
-#: templates/socialaccount/login_cancelled.html:10
+#: wolnelektury/templates/socialaccount/login_cancelled.html:5
+#: wolnelektury/templates/socialaccount/login_cancelled.html:10
 msgid "Login Cancelled"
 msgstr "Anulowano logowanie"
 
-#: templates/socialaccount/login_cancelled.html:15
+#: wolnelektury/templates/socialaccount/login_cancelled.html:15
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
@@ -396,59 +410,60 @@ msgstr ""
 "Logowanie przy użyciu zewnętrznego konta zostało anulowane. Jeśli był to "
 "błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
 
-#: templates/socialaccount/signup.html:6
+#: wolnelektury/templates/socialaccount/signup.html:6
 #, fuzzy
 #| msgid "Sign in"
 msgid "Signup"
 msgstr "Zaloguj się"
 
-#: templates/socialaccount/signup.html:9 templates/socialaccount/signup.html:25
+#: wolnelektury/templates/socialaccount/signup.html:9
+#: wolnelektury/templates/socialaccount/signup.html:25
 #, fuzzy
 #| msgid "Sign in"
 msgid "Sign Up"
 msgstr "Zaloguj się"
 
-#: templates/socialaccount/signup.html:11
+#: wolnelektury/templates/socialaccount/signup.html:11
 #, python-format
 msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: templates/user.html:5 templates/user.html:9
+#: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
 msgid "User"
 msgstr "Użytkownik"
 
-#: templates/user.html:11
+#: wolnelektury/templates/user.html:11
 msgid "Password"
 msgstr "Hasło"
 
-#: templates/user.html:12
+#: wolnelektury/templates/user.html:12
 msgid "E-mail"
 msgstr "E-mail"
 
-#: templates/user.html:13
+#: wolnelektury/templates/user.html:13
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
 
-#: utils.py:123
+#: wolnelektury/utils.py:123
 msgid "Message sent automatically. Please do not reply."
 msgstr "Wiadomość wysłana automatycznie. Prosimy nie odpowiadać."
 
-#: utils.py:205
+#: wolnelektury/utils.py:205
 msgid "Yes"
 msgstr ""
 
-#: utils.py:206
+#: wolnelektury/utils.py:206
 msgid "No"
 msgstr ""
 
-#: views.py:72 views.py:93
+#: wolnelektury/views.py:72 wolnelektury/views.py:93
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Zalogowano jako %(user)s"
 
-#: views.py:107
+#: wolnelektury/views.py:107
 msgid "You have to be logged in to continue"
 msgstr "Zaloguj się, aby kontynuować"
 

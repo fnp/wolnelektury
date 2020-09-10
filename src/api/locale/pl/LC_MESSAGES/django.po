@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-01 09:45+0100\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2013-06-14 11:45+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,15 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: models.py:17
+#: api/models.py:16
 msgid "slug"
 msgstr "slug"
 
-#: templates/api/main.html:5
+#: api/templates/api/main.html:5
 msgid "WolneLektury.pl API"
 msgstr "API serwisu WolneLektury.pl"
 
-#: templates/api/main.html:15
+#: api/templates/api/main.html:15
 #, python-format
 msgid ""
 "\n"
@@ -40,9 +40,10 @@ msgstr ""
 "\n"
 "API serwisu WolneLektury.pl znajduje się pod adresem <code>%(u)s</code>.\n"
 "Za jego pomocą można uzyskać informacje o utworach, ich fragmentach i "
-"metadanych.\n "
+"metadanych.\n"
+" "
 
-#: templates/api/main.html:23
+#: api/templates/api/main.html:23
 msgid ""
 "\n"
 "        Default data serialization format is\n"
@@ -56,55 +57,56 @@ msgstr ""
 "wiki/JSON\">JSON</a>,\n"
 "ale dostępny jest też format XML – wystarczy dodać parametr <code>?"
 "format=xml</code>\n"
-"do każdego zapytania.\n "
+"do każdego zapytania.\n"
+" "
 
-#: templates/api/main.html:32
+#: api/templates/api/main.html:32
 msgid ""
 "\n"
 "        The URLs in WolneLektury.pl API are:\n"
 "      "
 msgstr ""
-
 "\n"
-"API Wolnych Lektur zawiera następujące adresy URL:\n "
+"API Wolnych Lektur zawiera następujące adresy URL:\n"
+" "
 
-#: templates/api/main.html:39
+#: api/templates/api/main.html:39
 msgid "All books"
 msgstr "Wszystkie utwory"
 
-#: templates/api/main.html:41
+#: api/templates/api/main.html:41
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: templates/api/main.html:43
+#: api/templates/api/main.html:43
 msgid "DAISY"
 msgstr "DAISY"
 
-#: templates/api/main.html:46
+#: api/templates/api/main.html:46
 msgid "List of all authors"
 msgstr "Lista autorów"
 
-#: templates/api/main.html:48
+#: api/templates/api/main.html:48
 msgid "List of all epochs"
 msgstr "Lista epok"
 
-#: templates/api/main.html:50
+#: api/templates/api/main.html:50
 msgid "List of all genres"
 msgstr "Lista gatunków literackich"
 
-#: templates/api/main.html:52
+#: api/templates/api/main.html:52
 msgid "List of all kinds"
 msgstr "Lista rodzajów literackich"
 
-#: templates/api/main.html:55
+#: api/templates/api/main.html:55
 msgid "List of all themes"
 msgstr "Lista motywów i tematów literackich"
 
-#: templates/api/main.html:57
+#: api/templates/api/main.html:57
 msgid "Collections"
 msgstr "Kolekcje"
 
-#: templates/api/main.html:63
+#: api/templates/api/main.html:63
 #, python-format
 msgid ""
 "\n"
@@ -118,9 +120,10 @@ msgstr ""
 "\n"
 "Każdy element na tych listach zawiera adres (w atrybucie „href”), pod którym "
 "można znaleźć szczegółowe dane, np. <a href=\"%(e1)s\">%(e1)s</a> czy <a "
-"href=\"%(e2)s\">%(e2)s</a>.\n "
+"href=\"%(e2)s\">%(e2)s</a>.\n"
+" "
 
-#: templates/api/main.html:72
+#: api/templates/api/main.html:72
 #, python-format
 msgid ""
 "\n"
@@ -132,9 +135,10 @@ msgid ""
 msgstr ""
 "\n"
 "Można łączyć autorów, epoki, gatunki i rodzaje, aby wybrać tylko utwory "
-"odpowiadające zadanym kryteriom. Na przykład: <a href=\"%(e)s\">%(e)s</a>.\n "
+"odpowiadające zadanym kryteriom. Na przykład: <a href=\"%(e)s\">%(e)s</a>.\n"
+" "
 
-#: templates/api/main.html:80
+#: api/templates/api/main.html:80
 #, python-format
 msgid ""
 "\n"
@@ -146,9 +150,10 @@ msgstr ""
 "\n"
 "Aby spośród wszystkich pasujących wybrać tylko utwory najwyższego poziomu "
 "(pomijając ich podutwory), można użyć zapytania /parent_books/, np.: <a href="
-"\"%(e)s\">%(e)s</a>.\n "
+"\"%(e)s\">%(e)s</a>.\n"
+" "
 
-#: templates/api/main.html:88
+#: api/templates/api/main.html:88
 #, python-format
 msgid ""
 "\n"
@@ -165,20 +170,22 @@ msgstr ""
 "wyszukiwać fragmenty:<a href=\"%(e)s\">%(e)s</a>. \n"
 "Każdy element uzyskanej listy w atrybucie „href” zawiera link do "
 "szczegółowego opisu danego fragmentu, np.:\n"
-"<a href=\"%(f)s\">%(f)s</a>.\n "
+"<a href=\"%(f)s\">%(f)s</a>.\n"
+" "
 
-#: templates/oauth/authorize_token.html:4
-#: templates/oauth/authorize_token.html:7
+#: api/templates/oauth/authorize_token.html:4
+#: api/templates/oauth/authorize_token.html:7
 msgid "Authorize access to Wolne Lektury"
 msgstr "Zezwól na dostęp do Wolnych Lektur"
 
-#: templates/oauth/authorize_token.html:11
+#: api/templates/oauth/authorize_token.html:11
 #, python-format
 msgid ""
 "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
 "strong>."
-msgstr "Potwierdź dostęp do Wolnych Lektur jako użytkownik <strong>%(user)s</strong>."
+msgstr ""
+"Potwierdź dostęp do Wolnych Lektur jako użytkownik <strong>%(user)s</strong>."
 
-#: templates/oauth/authorize_token.html:17
+#: api/templates/oauth/authorize_token.html:17
 msgid "Confirm"
 msgstr "Potwierdź"

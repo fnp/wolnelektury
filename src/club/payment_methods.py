@@ -16,7 +16,6 @@ class PaymentMethod(object):
 class PayU(PaymentMethod):
     is_onetime = True
     slug = 'payu'
-    name = 'PayU'
     template_name = 'club/payment/payu.html'
 
     def __init__(self, pos_id):
@@ -35,7 +34,6 @@ class PayU(PaymentMethod):
 
 class PayURe(PaymentMethod):
     slug='payu-re'
-    name = 'PayU (płatność odnawialna)'
     template_name = 'club/payment/payu-re.html'
     is_recurring = True
 
@@ -62,7 +60,6 @@ class PayURe(PaymentMethod):
 
 class PayPal(PaymentMethod):
     slug='paypal'
-    name = 'PayPal (płatność odnawialna)'
     template_name = 'club/payment/paypal.html'
     is_recurring = True
     is_onetime = True

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:23+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,84 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: forms.py:19
+#: newsletter/forms.py:17
 msgid "I want to receive Wolne Lektury's newsletter."
 msgstr ""
 
-#: forms.py:60 forms.py:71 models.py:10
+#: newsletter/forms.py:54 newsletter/models.py:12
 msgid "email address"
 msgstr ""
 
-#: forms.py:63
-msgid "general newsletter"
-msgstr ""
-
-#: forms.py:63
-msgid "about the contest"
-msgstr ""
-
-#: forms.py:64
-msgid "mailing list"
-msgstr ""
-
-#: forms.py:78
-msgid "Email address not found."
-msgstr ""
-
-#: forms.py:89
-msgid "Unsubscribe from Wolne Lektury's newsletter."
-msgstr ""
-
-#: models.py:11
+#: newsletter/models.py:13
 msgid "active"
 msgstr ""
 
-#: models.py:16
+#: newsletter/models.py:18
 msgid "subscription"
 msgstr ""
 
-#: models.py:17
+#: newsletter/models.py:19
 msgid "subscriptions"
 msgstr ""
 
-#: templates/admin/newsletter/subscription/change_list.html:9
+#: newsletter/templates/admin/newsletter/subscription/change_list.html:9
 msgid "Extract"
 msgstr ""
 
-#: templates/newsletter/confirm_subscription.html:6
+#: newsletter/templates/newsletter/confirm_subscription.html:6
 msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
 msgstr ""
 
-#: templates/newsletter/subscribe_form.html:16
+#: newsletter/templates/newsletter/subscribe_form.html:14
 msgid "Subscribe"
 msgstr ""
 
-#: templates/newsletter/subscribed.html:7
+#: newsletter/templates/newsletter/subscribed.html:7
 msgid "You have subscribed to Wolne Lektury newsletter."
 msgstr ""
 
-#: templates/newsletter/unsubscribe_form.html:13 views.py:56
-msgid "Unsubscribe"
-msgstr ""
-
-#: templates/newsletter/unsubscribed.html:6
-msgid ""
-"You have unsubscribed from Wolne Lektury newsletter. You'll receive a "
-"confirmation by email."
-msgstr ""
-
-#: views.py:21
-msgid "Subscribe To Newsletter"
-msgstr ""
-
-#: views.py:28
+#: newsletter/views.py:29
 msgid "Subscribed"
-msgstr ""
-
-#: views.py:43
-msgid "Subscription confirmed"
-msgstr ""
-
-#: views.py:63
-msgid "Unsubscribed"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,182 +18,182 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: forms.py:25
+#: picture/forms.py:24
 msgid "Please supply an XML."
 msgstr ""
 
-#: forms.py:33
+#: picture/forms.py:32
 msgid "Please supply an image."
 msgstr ""
 
-#: models.py:38
+#: picture/models.py:37
 msgid "area"
 msgstr ""
 
-#: models.py:40
+#: picture/models.py:39
 msgid "kind"
 msgstr ""
 
-#: models.py:41
+#: picture/models.py:40
 msgid "thing"
 msgstr ""
 
-#: models.py:41
+#: picture/models.py:40
 msgid "theme"
 msgstr ""
 
-#: models.py:77
+#: picture/models.py:79
 msgid "title"
 msgstr ""
 
-#: models.py:78
+#: picture/models.py:80
 msgid "slug"
 msgstr ""
 
-#: models.py:79
+#: picture/models.py:81
 msgid "sort key"
 msgstr ""
 
-#: models.py:81
+#: picture/models.py:83
 msgid "sort key by author"
 msgstr ""
 
-#: models.py:82 models.py:83
+#: picture/models.py:84 picture/models.py:85
 msgid "creation date"
 msgstr ""
 
-#: models.py:84
+#: picture/models.py:86
 msgid "xml file"
 msgstr ""
 
-#: models.py:85
+#: picture/models.py:87
 msgid "image file"
 msgstr ""
 
-#: models.py:86
+#: picture/models.py:88
 msgid "html file"
 msgstr ""
 
-#: models.py:87
+#: picture/models.py:89
 msgid "picture areas JSON"
 msgstr ""
 
-#: models.py:88
+#: picture/models.py:90
 msgid "extra information"
 msgstr ""
 
-#: models.py:108
+#: picture/models.py:110
 msgid "picture"
 msgstr ""
 
-#: models.py:109
+#: picture/models.py:111
 msgid "pictures"
 msgstr ""
 
-#: templates/admin/picture/picture/change_list.html:9
+#: picture/templates/admin/picture/picture/change_list.html:9
 msgid "Image"
 msgstr ""
 
-#: templates/admin/picture/picture/change_list.html:10
+#: picture/templates/admin/picture/picture/change_list.html:10
 msgid "Import picture"
 msgstr ""
 
-#: templates/picture/picture_detail.html:19
+#: picture/templates/picture/picture_detail.html:19
 msgid "See also"
 msgstr ""
 
-#: templates/picture/picture_list_thumb.html:9
-#: templates/picture/picture_list_thumb.html:13
+#: picture/templates/picture/picture_list_thumb.html:9
+#: picture/templates/picture/picture_list_thumb.html:13
 msgctxt "gallery"
 msgid "Listing of all works"
 msgstr ""
 
-#: templates/picture/picture_short.html:36
+#: picture/templates/picture/picture_short.html:39
 msgid "Epoch"
 msgstr ""
 
-#: templates/picture/picture_short.html:45
+#: picture/templates/picture/picture_short.html:48
 msgid "Kind"
 msgstr ""
 
-#: templates/picture/picture_short.html:54
+#: picture/templates/picture/picture_short.html:57
 msgid "Genre"
 msgstr ""
 
-#: templates/picture/picture_short.html:69
+#: picture/templates/picture/picture_short.html:74
 msgid "View online"
 msgstr ""
 
-#: templates/picture/picture_short.html:72
+#: picture/templates/picture/picture_short.html:77
 msgid "download original"
 msgstr ""
 
-#: templates/picture/picture_viewer.html:52
-#: templates/picture/picture_wide.html:69
+#: picture/templates/picture/picture_viewer.html:51
+#: picture/templates/picture/picture_wide.html:71
 msgid "Objects"
 msgstr ""
 
-#: templates/picture/picture_viewer.html:53
+#: picture/templates/picture/picture_viewer.html:52
 msgid "Themes"
 msgstr ""
 
-#: templates/picture/picture_viewer.html:57
+#: picture/templates/picture/picture_viewer.html:56
 msgid "Infobox"
 msgstr ""
 
-#: templates/picture/picture_wide.html:20
+#: picture/templates/picture/picture_wide.html:21
 msgid "Style"
 msgstr ""
 
-#: templates/picture/picture_wide.html:31
+#: picture/templates/picture/picture_wide.html:32
 msgid "Medium"
 msgstr ""
 
-#: templates/picture/picture_wide.html:39
+#: picture/templates/picture/picture_wide.html:40
 msgid "Dimensions"
 msgstr ""
 
-#: templates/picture/picture_wide.html:46
+#: picture/templates/picture/picture_wide.html:47
 msgid "Date"
 msgstr ""
 
-#: templates/picture/picture_wide.html:57
+#: picture/templates/picture/picture_wide.html:59
 msgid "Motifs, themes and objects"
 msgstr ""
 
-#: templates/picture/picture_wide.html:61
+#: picture/templates/picture/picture_wide.html:63
 msgid "Motifs and themes"
 msgstr ""
 
-#: templates/picture/picture_wide.html:87
+#: picture/templates/picture/picture_wide.html:90
 msgid "See"
 msgstr ""
 
-#: templates/picture/picture_wide.html:90
+#: picture/templates/picture/picture_wide.html:93
 msgid "Source"
 msgstr ""
 
-#: templates/picture/picture_wide.html:90
+#: picture/templates/picture/picture_wide.html:93
 msgid "of the picture"
 msgstr ""
 
-#: templates/picture/picture_wide.html:92
+#: picture/templates/picture/picture_wide.html:95
 msgid "Source XML file"
 msgstr ""
 
-#: templates/picture/picture_wide.html:94
+#: picture/templates/picture/picture_wide.html:97
 msgid "Picture on"
 msgstr ""
 
-#: templates/picture/picture_wide.html:94
+#: picture/templates/picture/picture_wide.html:97
 msgid "Editor's Platform"
 msgstr ""
 
-#: templates/picture/picture_wide.html:97
+#: picture/templates/picture/picture_wide.html:100
 msgid "Picture description on Wikipedia"
 msgstr ""
 
-#: views.py:121
+#: picture/views.py:97
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -201,11 +201,11 @@ msgid ""
 "%(tb)s"
 msgstr ""
 
-#: views.py:123
+#: picture/views.py:99
 msgid "Picture imported successfully"
 msgstr ""
 
-#: views.py:125
+#: picture/views.py:101
 #, python-format
 msgid "Error importing file: %r"
 msgstr ""

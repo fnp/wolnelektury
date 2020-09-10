@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2012-01-27 16:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
 
-#: models.py:26
+#: lesmianator/models.py:24
 msgid "slug"
 msgstr "slug"
 
-#: models.py:27
+#: lesmianator/models.py:25
 msgid "text"
 msgstr "tekst"
 
-#: models.py:29
+#: lesmianator/models.py:27
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
-#: models.py:30
+#: lesmianator/models.py:28
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models.py:31
+#: lesmianator/models.py:29
 msgid "last view date"
 msgstr "data ostatniego obejrzenia"
 
-#: models.py:32
+#: lesmianator/models.py:30
 msgid "view count"
 msgstr "licznik obejrzeń"
 
-#: models.py:104
+#: lesmianator/models.py:102
 msgid "Continuations file"
 msgstr "plik kontynuacji"

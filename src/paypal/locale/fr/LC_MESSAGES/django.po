@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 15:57+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: forms.py:10
+#: paypal/forms.py:9
 msgid "amount in PLN"
 msgstr ""
 
-#: templates/paypal/cancel.html:5
+#: paypal/templates/paypal/cancel.html:5
 msgid "Zrezygnowano z płatności :("
 msgstr ""
 
-#: templates/paypal/error.html:1
+#: paypal/templates/paypal/error.html:2
 msgid "PayPal Error"
 msgstr ""
 
-#: templates/paypal/error.html:5
+#: paypal/templates/paypal/error.html:6
 msgid "Learn more"
 msgstr ""
 
-#: templates/paypal/form.html:6 templates/paypal/form.html.py:9
+#: paypal/templates/paypal/form.html:6 paypal/templates/paypal/form.html:10
 msgid "Wolne Lektury Friend Club"
 msgstr ""
 
-#: templates/paypal/form.html:17
+#: paypal/templates/paypal/form.html:18
 msgid "Subscribe with PayPal"
 msgstr ""
 
-#: templates/paypal/form.html:20
+#: paypal/templates/paypal/form.html:21
 msgid "You must be logged in to subscribe."
 msgstr ""
 
-#: templates/paypal/return.html:8
+#: paypal/templates/paypal/return.html:8
 msgid "Dziękujemy, że jesteś z nami i pomagasz nam rozwijać Wolne Lektury!"
 msgstr ""
 
-#: templates/paypal/return.html:9
+#: paypal/templates/paypal/return.html:9
 msgid "Pamiętaj, że zawsze możesz się z nami skontaktować:"
 msgstr ""
 
-#: templates/paypal/return.html:11
+#: paypal/templates/paypal/return.html:11
 msgid "Do przeczytania!"
 msgstr ""
 
-#: templates/paypal/return.html:11
+#: paypal/templates/paypal/return.html:11
 msgid "Zespół Wolnych Lektur"
 msgstr ""

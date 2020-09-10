@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,50 +18,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:16
+#: polls/models.py:15
 msgid "question"
 msgstr ""
 
-#: models.py:17
+#: polls/models.py:16
 msgid "slug"
 msgstr ""
 
-#: models.py:18
+#: polls/models.py:17
 msgid "open"
 msgstr ""
 
-#: models.py:21
+#: polls/models.py:20
 msgid "Poll"
 msgstr ""
 
-#: models.py:22
+#: polls/models.py:21
 msgid "Polls"
 msgstr ""
 
-#: models.py:26
+#: polls/models.py:25
 msgid "Slug of an open poll needs to be unique"
 msgstr ""
 
-#: models.py:46
+#: polls/models.py:45
 msgid "content"
 msgstr ""
 
-#: models.py:47
+#: polls/models.py:46
 msgid "vote count"
 msgstr ""
 
-#: models.py:50
+#: polls/models.py:49
 msgid "vote item"
 msgstr ""
 
-#: models.py:51
+#: polls/models.py:50
 msgid "vote items"
 msgstr ""
 
-#: templates/polls/poll.html:11
+#: polls/templates/polls/poll.html:11
 msgid "Thanks for voting! You can see current results below."
 msgstr ""
 
-#: templates/polls/tags/poll.html:24
+#: polls/templates/polls/tags/poll.html:23
 msgid "Submit"
 msgstr ""

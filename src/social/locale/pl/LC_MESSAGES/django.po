@@ -7,9 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-06 23:20+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2019-08-06 23:24+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,197 +18,197 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.6\n"
-"Language-Team: \n"
 
-#: admin.py:28
+#: social/admin.py:28
 msgid "Content"
 msgstr "Zawartość"
 
-#: admin.py:29
+#: social/admin.py:29
 msgid "Media box"
 msgstr ""
 
-#: admin.py:36
+#: social/admin.py:36
 msgid "Background"
 msgstr "Obraz tła"
 
-#: admin.py:50 models.py:40
+#: social/admin.py:50 social/models.py:40
 msgid "text"
 msgstr "tekst"
 
-#: admin.py:54
+#: social/admin.py:54
 msgid "image"
 msgstr "obraz"
 
-#: forms.py:21
+#: social/forms.py:21
 msgid "Tags (comma-separated)"
 msgstr "Tagi (rozdzielone przecinkami)"
 
-#: forms.py:44
+#: social/forms.py:44
 msgid "Name of the new shelf"
 msgstr "Nazwa nowej półki"
 
-#: models.py:15
+#: social/models.py:15
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:16 models.py:67
+#: social/models.py:16 social/models.py:67
 msgid "created at"
 msgstr "utworzone"
 
-#: models.py:20 models.py:140
+#: social/models.py:20 social/models.py:140
 msgid "banner group"
 msgstr "grupa bannerów"
 
-#: models.py:21
+#: social/models.py:21
 msgid "banner groups"
 msgstr "grupy bannerów"
 
-#: models.py:39
+#: social/models.py:39
 msgid "book"
 msgstr "książka"
 
-#: models.py:41
+#: social/models.py:41
 msgid "small"
 msgstr "mały"
 
-#: models.py:41
+#: social/models.py:41
 msgid "Make this cite display smaller."
 msgstr "Sprawia, że cytat wyświetla się mniejszym fontem."
 
-#: models.py:42
+#: social/models.py:42
 msgid "VIP"
 msgstr "VIP"
 
-#: models.py:43
+#: social/models.py:43
 msgid "link"
 msgstr "odnośnik"
 
-#: models.py:44
+#: social/models.py:44
 msgid "video"
 msgstr "wideo"
 
-#: models.py:45
+#: social/models.py:45
 msgid "picture"
 msgstr "ilustracja"
 
-#: models.py:47
+#: social/models.py:47
 msgid "picture alternative text"
 msgstr "alternatywny tekst ilustracji"
 
-#: models.py:48
+#: social/models.py:48
 msgid "picture title"
 msgstr "tytuł ilustracji"
 
-#: models.py:49
+#: social/models.py:49
 msgid "picture author"
 msgstr "autor ilustracji"
 
-#: models.py:50
+#: social/models.py:50
 msgid "picture link"
 msgstr "link ilustracji"
 
-#: models.py:51
+#: social/models.py:51
 msgid "picture license name"
 msgstr "nazwa licencji ilustracji"
 
-#: models.py:52
+#: social/models.py:52
 msgid "picture license link"
 msgstr "adres licencji ilustracji"
 
-#: models.py:54
+#: social/models.py:54
 msgid "sticky"
 msgstr "przyklejony"
 
-#: models.py:55
+#: social/models.py:55
 msgid "Sticky cites will take precedense."
 msgstr "Przyklejone cytaty mają pierwszeństwo."
 
-#: models.py:56
+#: social/models.py:56
 msgid "plain background"
 msgstr "jednobarwne tło"
 
-#: models.py:57
+#: social/models.py:57
 msgid "background color"
 msgstr "kolor tła"
 
-#: models.py:59
+#: social/models.py:59
 msgid "background image"
 msgstr "obraz tła"
 
-#: models.py:60
+#: social/models.py:60
 msgid "Best background is 975 x 315 px and under 100kB."
 msgstr "Najlepsze tło ma wielkość 975 x 315 px i waży poniżej 100kB."
 
-#: models.py:61
+#: social/models.py:61
 msgid "background title"
 msgstr "tytuł obrazu tła"
 
-#: models.py:62
+#: social/models.py:62
 msgid "background author"
 msgstr "autor obrazu tła"
 
-#: models.py:63
+#: social/models.py:63
 msgid "background link"
 msgstr "link obrazu tła"
 
-#: models.py:64
+#: social/models.py:64
 msgid "background license name"
 msgstr "nazwa licencji obrazu tła"
 
-#: models.py:65
+#: social/models.py:65
 msgid "background license link"
 msgstr "adres licencji obrazu tła"
 
-#: models.py:68
+#: social/models.py:68
 msgid "group"
 msgstr "grupa"
 
-#: models.py:72 models.py:139
+#: social/models.py:72 social/models.py:139
 msgid "banner"
 msgstr "banner"
 
-#: models.py:73
+#: social/models.py:73
 msgid "banners"
 msgstr "bannery"
 
-#: models.py:126
+#: social/models.py:126
 msgid "slug"
 msgstr "slug"
 
-#: models.py:130 models.py:138
+#: social/models.py:130 social/models.py:138
 msgid "carousel"
 msgstr "karuzela"
 
-#: models.py:131
+#: social/models.py:131
 msgid "carousels"
 msgstr "karuzele"
 
-#: models.py:137
+#: social/models.py:137
 msgid "order"
 msgstr "kolejność"
 
-#: models.py:145
+#: social/models.py:145
 msgid "carousel item"
 msgstr "element karuzeli"
 
-#: models.py:146
+#: social/models.py:146
 msgid "carousel items"
 msgstr "elementy karuzeli"
 
-#: models.py:153 models.py:155
+#: social/models.py:153 social/models.py:155
 msgid "Either banner or banner group is required."
 msgstr "Proszę wskazać banner albo grupę bannerów."
 
-#: templates/social/cite_promo.html:23
+#: social/templates/social/cite_promo.html:23
 msgid "recommends"
 msgstr "poleca"
 
-#: templates/social/my_shelf.html:5 templates/social/my_shelf.html:10
+#: social/templates/social/my_shelf.html:5
+#: social/templates/social/my_shelf.html:10
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: templates/social/my_shelf.html:15
+#: social/templates/social/my_shelf.html:15
 msgid ""
 "Add works to your shelf by clicking on the star on the page of the work. The "
 "work will then show up on My shelf page."
@@ -216,7 +217,7 @@ msgstr ""
 "na stronie utworu. Po jej zaznaczeniu publikacja pojawi się w zakładce Moja "
 "półka."
 
-#: templates/social/sets_form.html:7
+#: social/templates/social/sets_form.html:7
 msgid "Remove from my shelf"
 msgstr "Usuń z mojej półki"
 

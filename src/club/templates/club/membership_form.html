@@ -1,10 +1,11 @@
 {% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+{% load i18n %}
 {% load chunks %}
 {% load thumbnail %}
 {% load club %}
 
-{% block titleextra %}Uwalniaj książki razem z nami!{% endblock %}
-{% block metadescription %}„Wolne Lektury należy wspierać, bo są” - Filip Springer{% endblock %}
+{% block titleextra %}{% trans "Join us in freeing the books!" %}{% endblock %}
+{% block metadescription %}{% trans "„Wolne Lektury należy wspierać, bo są” - Filip Springer" %}{% endblock %}
 
 
 {% block body %}
@@ -140,17 +141,23 @@ vertical-align: middle;
 
   <div class="white-box normal-text">
 
-    <h1>Wspieraj Wolne Lektury</h1>
+    <h1>{% trans "Support Wolne Lektury" %}</h1>
     <h2 style="margin-bottom:2em;">
-      {% if membership %}Dziękujemy za Twoje dotychczasowe zaangażowanie! Wesprzyj nas ponownie!{% else %}Dziękujemy, że chcesz razem z nami uwalniać książki!{% endif %}</h2>
+      {% if membership %}
+        {# Displays to members. #}
+        {% trans "Thank you for your support! Support us again!" %}
+      {% else %}
+        {# Displays to non-supporters. #}
+        {% trans "Thank you for wanting to free the books with us!" %}
+      {% endif %}</h2>
 
-    {% with schedule=request.user|active_schedule %}
-     {% if schedule %}
-      <p><a href="{{ schedule.get_absolute_url }}">Zobacz swoje dotychczasowe wsparcie.</a></p>
-     {% endif %}
-    {% endwith %}
+      {% with schedule=request.user|active_schedule %}
+        {% if schedule %}
+          <p><a href="{{ schedule.get_absolute_url }}">{% trans "See your past support." %}</a></p>
+        {% endif %}
+      {% endwith %}
 
-    <div class='twocol'>
+      <div class='twocol'>
 
       <form method="POST" action="" id="payment-form" class="wlform">
         {% csrf_token %}
@@ -169,16 +176,16 @@ vertical-align: middle;
           {% endfor %}
         </ul>
 
-        <h3>1. Wybierz rodzaj wsparcia</h3>
+        <h3>1. {% trans "Choose your type of support" %}</h3>
 
         {{ form.amount }}
         {{ form.monthly }}
         <div class="plan-select">
-          <span class="button plan-toggle" data-plan="plan-single" data-monthly="False">jednorazowo</span>
-          <span class="button plan-toggle active" data-plan="plan-monthly" data-monthly="True">miesięcznie</span>
+          <span class="button plan-toggle" data-plan="plan-single" data-monthly="False">{% trans "one-time" %}</span>
+          <span class="button plan-toggle active" data-plan="plan-monthly" data-monthly="True">{% trans "monthly" %}</span>
         </div>
 
-        <h3>2. Wybierz kwotę</h3>
+        <h3>2. {% trans "Choose the amount" %}</h3>
 
         <div class="plan" id="plan-single" style="display:none;" data-monthly="False" data-min-for-year="{{ club.min_for_year }}" data-amount="{{ club.default_single_amount }}">
           {% for amount in club.proposed_single_amounts %}
@@ -186,10 +193,10 @@ vertical-align: middle;
           {% endfor %}
 
           <span class="inna">
-            <span class="button">inna kwota</span>
+            <span class="button">{% trans "different amount" %}</span>
             <input type="number" min="{{ club.min_amount }}">
           </span>
-<div class="methods">{% include 'club/payment/payu.html' %}</div>
+          <div class="methods">{% include 'club/payment/payu.html' %}</div>
         </div>
 
 
@@ -199,26 +206,26 @@ vertical-align: middle;
           {% endfor %}
 
           <span class="inna">
-            <span class="button">inna kwota</span>
+            <span class="button">{% trans "different amount" %}</span>
             <input type="number" min="{{ club.min_amount }}">
           </span>
-<div class="methods">{% include 'club/payment/payu-re.html' %}</div>
+          <div class="methods">{% include 'club/payment/payu-re.html' %}</div>
         </div>
 
-        <h3>3. Podaj adres e-mail</h3>
+        <h3>3. {% trans "Provide an e-mail address" %}</h3>
 
         <p>{{ form.email }}</p>
 
         <p>
           {{ form.agree_newsletter }}
           <label for="id_agree_newsletter">
-            Chcę dostawać informacje o nowościach
+            {% trans "I'd like to receive informations about new publications." %}
           </label>
         </p>
 
-        <p>W każdej chwili możesz zrezygnować z subskrypcji. Więcej w <a target="_blank" href="https://nowoczesnapolska.org.pl/prywatnosc/">polityce prywatności</a>.</p>
+        <p>{% trans 'You can unsubscribe at any point. More in the <a target="_blank" href="https://nowoczesnapolska.org.pl/prywatnosc/">privacy policy</a>.' %}</p>
 
-        <div><button class="submit" type='submit'>Wpłać</button></div>
+        <div><button class="submit" type='submit'>{% trans "Donate" %}</button></div>
 
         {% chunk 'club_form_bottom' %}
 

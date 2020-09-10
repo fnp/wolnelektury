@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-16 13:47+0100\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2019-12-16 13:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,98 +20,98 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: models.py:10
+#: annoy/models.py:11
 msgid "place"
 msgstr "miejsce"
 
-#: models.py:12
+#: annoy/models.py:13
 msgid "action label"
 msgstr "etykieta akcji"
 
-#: models.py:14
+#: annoy/models.py:15
 msgid "If empty, whole banner will serve as a link"
 msgstr "Jeśli pusta, cały banner będzie służył jako link."
 
-#: models.py:16
+#: annoy/models.py:17
 msgid "open label"
 msgstr "etykieta otwierania"
 
-#: models.py:17
+#: annoy/models.py:18
 msgid "close label"
 msgstr "etykieta zamykania"
 
-#: models.py:18 models.py:86
+#: annoy/models.py:19 annoy/models.py:98
 msgid "text"
 msgstr "tekst"
 
-#: models.py:19
+#: annoy/models.py:20
 msgid "image"
 msgstr "obraz"
 
-#: models.py:20
+#: annoy/models.py:21
 msgid "url"
 msgstr "URL"
 
-#: models.py:22
+#: annoy/models.py:23
 msgid "priority"
 msgstr "priortytet"
 
-#: models.py:23
+#: annoy/models.py:24
 msgid "Banners with higher priority come first."
 msgstr "Bannery z wyższym priorytetem mają pierwszeństwo."
 
-#: models.py:24
+#: annoy/models.py:25
 msgid "since"
 msgstr "od"
 
-#: models.py:25
+#: annoy/models.py:26
 msgid "until"
 msgstr "do"
 
-#: models.py:26
+#: annoy/models.py:27
 msgid "show members"
 msgstr "widoczny dla członków klubu"
 
-#: models.py:27
+#: annoy/models.py:28
 msgid "staff preview"
 msgstr "podgląd tylko dla zespołu"
 
-#: models.py:30
+#: annoy/models.py:31
 msgid "banner"
 msgstr "banner"
 
-#: models.py:31
+#: annoy/models.py:32
 msgid "banners"
 msgstr "bannery"
 
-#: models.py:66
+#: annoy/models.py:70
 msgid "pararaphs"
 msgstr "akapity"
 
-#: models.py:70
+#: annoy/models.py:74
 msgid "dynamic insert"
 msgstr "dynamiczna wstawka"
 
-#: models.py:71
+#: annoy/models.py:75
 msgid "dynamic inserts"
 msgstr "dynamiczne wstawki"
 
-#: places.py:4
+#: annoy/places.py:4
 msgid "Top of all pages."
 msgstr "U góry wszystkich stron"
 
-#: places.py:5
+#: annoy/places.py:5
 msgid "Book page"
 msgstr "Strona książki"
 
-#: places.py:6
+#: annoy/places.py:6
 msgid "Book text intermission"
 msgstr "Przerwa w treści książki"
 
-#: places.py:7
+#: annoy/places.py:7
 msgid "Next to list of book fragments."
 msgstr "Obok listy fragmentów książki"
 
-#: places.py:8
+#: annoy/places.py:8
 msgid "Blackout"
 msgstr "Blackout"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2011-06-09 13:06+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
 
-#: forms.py:21 forms.py:64
+#: suggest/forms.py:20 suggest/forms.py:67
 msgid "Contact"
 msgstr "Kontakt"
 
-#: forms.py:22
+#: suggest/forms.py:21
 msgid "Description"
 msgstr "Opis"
 
-#: forms.py:55 forms.py:117
+#: suggest/forms.py:58 suggest/forms.py:122
 msgid "Thank you for your suggestion."
 msgstr "Dziękujemy za zgłoszenie."
 
-#: forms.py:56 forms.py:118
+#: suggest/forms.py:59 suggest/forms.py:123
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -37,67 +37,63 @@ msgstr ""
 "Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
 "Sugestia została przekazana koordynatorce projektu."
 
-#: forms.py:65 models.py:31
+#: suggest/forms.py:68 suggest/models.py:30
 msgid "books"
 msgstr "książki"
 
-#: forms.py:66
+#: suggest/forms.py:69
 msgid "ebook"
 msgstr "ebook"
 
-#: forms.py:67
+#: suggest/forms.py:70
 msgid "audiobook"
 msgstr "audiobook"
 
-#: forms.py:71
+#: suggest/forms.py:76
 msgid "One of these options is required."
 msgstr "Proszę zaznaczyć co najmniej jedną opcję."
 
-#: models.py:14 models.py:30
+#: suggest/models.py:13 suggest/models.py:29
 msgid "contact"
 msgstr "kontakt"
 
-#: models.py:15
+#: suggest/models.py:14
 msgid "description"
 msgstr "opis"
 
-#: models.py:16 models.py:33
+#: suggest/models.py:15 suggest/models.py:32
 msgid "creation date"
 msgstr "data utworzenia"
 
-#: models.py:17 models.py:34
+#: suggest/models.py:16 suggest/models.py:33
 msgid "IP address"
 msgstr "adres IP"
 
-#: models.py:22
+#: suggest/models.py:21
 msgid "suggestion"
 msgstr "sugestia"
 
-#: models.py:23
+#: suggest/models.py:22
 msgid "suggestions"
 msgstr "sugestie"
 
-#: models.py:32
+#: suggest/models.py:31
 msgid "audiobooks"
 msgstr "audiobooki"
 
-#: models.py:39
+#: suggest/models.py:38
 msgid "publishing suggestion"
 msgstr "sugestia publikacji"
 
-#: models.py:40
+#: suggest/models.py:39
 msgid "publishing suggestions"
 msgstr "sugestie publikacji"
 
-#: templates/publishing_suggest.html:7
+#: suggest/templates/publishing_suggest.html:7
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Chciałabym/chciałbym znaleźć w bibliotece Wolne Lektury następujące"
 
-#: templates/publishing_suggest.html:15 views.py:16 views.py:26
-msgid "Send report"
-msgstr "Wyślij zgłoszenie"
-
-#: templates/publishing_suggest.html:16
+#: suggest/templates/publishing_suggest.html:16
 msgid ""
 "Remember that we can only publish books in public domain, ie. 70 years after "
 "the death of the author!"
@@ -105,15 +101,19 @@ msgstr ""
 "Pamiętaj, że możemy publikować jedynie książki w domenie publicznej, czyli "
 "70 lat po śmierci autora!"
 
-#: views.py:14
+#: suggest/views.py:13
 msgid "Didn't find a book? Make a suggestion."
 msgstr "Nie znalazłeś utworu na stronie? Zgłoś sugestię."
 
-#: views.py:17 views.py:27
+#: suggest/views.py:15 suggest/views.py:25
+msgid "Send report"
+msgstr "Wyślij zgłoszenie"
+
+#: suggest/views.py:16 suggest/views.py:26
 msgid "Report was sent successfully."
 msgstr "Zgłoszenie zostało wysłane."
 
-#: views.py:24
+#: suggest/views.py:23
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 

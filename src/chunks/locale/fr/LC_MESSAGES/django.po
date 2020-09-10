@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2012-02-22 20:52+0100\n"
 "Last-Translator: Ela Janota <amarillis5@wp.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,38 +16,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:16 models.py:41
+#: chunks/models.py:15 chunks/models.py:36
 msgid "key"
 msgstr "clé"
 
-#: models.py:16
+#: chunks/models.py:15
 msgid "A unique name for this chunk of content"
 msgstr "Un nom unique pour ce fragment du contenu"
 
-#: models.py:18
+#: chunks/models.py:17
 msgid "description"
 msgstr "description"
 
-#: models.py:19
+#: chunks/models.py:18
 msgid "content"
 msgstr "contenu"
 
-#: models.py:23
+#: chunks/models.py:22
 msgid "chunk"
 msgstr "fragment"
 
-#: models.py:24
+#: chunks/models.py:23
 msgid "chunks"
 msgstr "fragments"
 
-#: models.py:41
+#: chunks/models.py:36
 msgid "A unique name for this attachment"
 msgstr "Un nom unique pour cette pièce jointe"
 
-#: models.py:46
+#: chunks/models.py:41
 msgid "attachment"
 msgstr "pièce jointe"
 
-#: models.py:46
+#: chunks/models.py:41
 msgid "attachments"
 msgstr "pièces jointes"

@@ -1,0 +1,370 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: club/admin.py:45
+msgid "payment complete"
+msgstr ""
+
+#: club/admin.py:51
+msgid "schedule expired"
+msgstr ""
+
+#: club/apps.py:10
+msgid "Club"
+msgstr ""
+
+#: club/forms.py:26
+#, python-format
+msgid "Minimal amount is %(amount)d PLN."
+msgstr ""
+
+#: club/models.py:25
+msgid "minimum amount"
+msgstr ""
+
+#: club/models.py:26
+msgid "minimum amount for year"
+msgstr ""
+
+#: club/models.py:27
+msgid "proposed amounts for single payment"
+msgstr ""
+
+#: club/models.py:28
+msgid "default single amount"
+msgstr ""
+
+#: club/models.py:29
+msgid "proposed amounts for monthly payments"
+msgstr ""
+
+#: club/models.py:30
+msgid "default monthly amount"
+msgstr ""
+
+#: club/models.py:33
+msgid "club"
+msgstr ""
+
+#: club/models.py:34
+msgid "clubs"
+msgstr ""
+
+#: club/models.py:48
+msgid "key"
+msgstr ""
+
+#: club/models.py:49
+msgid "email"
+msgstr ""
+
+#: club/models.py:50 club/models.py:139
+msgid "membership"
+msgstr ""
+
+#: club/models.py:51
+msgid "amount"
+msgstr ""
+
+#: club/models.py:52 club/templates/club/membership_form.html:185
+msgid "monthly"
+msgstr ""
+
+#: club/models.py:53
+msgid "yearly"
+msgstr ""
+
+#: club/models.py:55
+msgid "cancelled"
+msgstr ""
+
+#: club/models.py:56
+msgid "payed at"
+msgstr ""
+
+#: club/models.py:57
+msgid "started at"
+msgstr ""
+
+#: club/models.py:58
+msgid "expires_at"
+msgstr ""
+
+#: club/models.py:62
+msgid "schedule"
+msgstr ""
+
+#: club/models.py:63
+msgid "schedules"
+msgstr ""
+
+#: club/models.py:133
+msgid "user"
+msgstr ""
+
+#: club/models.py:134
+msgid "created at"
+msgstr ""
+
+#: club/models.py:140
+msgid "memberships"
+msgstr ""
+
+#: club/models.py:162
+msgid "days before"
+msgstr ""
+
+#: club/models.py:163
+msgid "subject"
+msgstr ""
+
+#: club/models.py:164 club/payu/models.py:140
+msgid "body"
+msgstr ""
+
+#: club/models.py:167
+msgid "reminder email"
+msgstr ""
+
+#: club/models.py:168
+msgid "reminder emails"
+msgstr ""
+
+#: club/models.py:173
+#, python-format
+msgid "a day before expiration"
+msgid_plural "%d days before expiration"
+msgstr[0] ""
+msgstr[1] ""
+
+#: club/models.py:175
+#, python-format
+msgid "a day after expiration"
+msgid_plural "%d days after expiration"
+msgstr[0] ""
+msgstr[1] ""
+
+#: club/models.py:179
+msgid "name"
+msgstr ""
+
+#: club/models.py:180
+msgid "photo"
+msgstr ""
+
+#: club/models.py:181
+msgid "text"
+msgstr ""
+
+#: club/models.py:184
+msgid "ambassador"
+msgstr ""
+
+#: club/models.py:185
+msgid "ambassadors"
+msgstr ""
+
+#: club/models.py:216 club/templates/club/index.html:7
+#: club/templates/club/index.html:13 club/templates/club/thanks.html:6
+#: club/templates/payu/rec_payment.html:5
+msgid "Towarzystwo Przyjaciół Wolnych Lektur"
+msgstr ""
+
+#: club/payu/models.py:17 club/payu/models.py:29
+msgid "POS id"
+msgstr ""
+
+#: club/payu/models.py:18
+msgid "disposable token"
+msgstr ""
+
+#: club/payu/models.py:19
+msgid "reusable token"
+msgstr ""
+
+#: club/payu/models.py:20
+msgid "created_at"
+msgstr ""
+
+#: club/payu/models.py:24
+msgid "PayU card token"
+msgstr ""
+
+#: club/payu/models.py:25
+msgid "PayU card tokens"
+msgstr ""
+
+#: club/payu/models.py:30
+msgid "customer IP"
+msgstr ""
+
+#: club/payu/models.py:31
+msgid "order ID"
+msgstr ""
+
+#: club/payu/models.py:34
+msgid "Pending"
+msgstr ""
+
+#: club/payu/models.py:35
+msgid "Waiting for confirmation"
+msgstr ""
+
+#: club/payu/models.py:36
+msgid "Completed"
+msgstr ""
+
+#: club/payu/models.py:37
+msgid "Canceled"
+msgstr ""
+
+#: club/payu/models.py:38
+msgid "Rejected"
+msgstr ""
+
+#: club/payu/models.py:44
+msgid "PayU order"
+msgstr ""
+
+#: club/payu/models.py:45
+msgid "PayU orders"
+msgstr ""
+
+#: club/payu/models.py:141
+msgid "received_at"
+msgstr ""
+
+#: club/payu/models.py:145
+msgid "PayU notification"
+msgstr ""
+
+#: club/payu/models.py:146
+msgid "PayU notifications"
+msgstr ""
+
+#: club/templates/club/index.html:20
+msgid "Congratulations – you're already a supporter of Wolne Lektury!"
+msgstr ""
+
+#: club/templates/club/index.html:22
+msgid "Become a supporter"
+msgstr ""
+
+#: club/templates/club/membership_form.html:7
+msgid "Join us in freeing the books!"
+msgstr ""
+
+#: club/templates/club/membership_form.html:8
+msgid "„Wolne Lektury należy wspierać, bo są” - Filip Springer"
+msgstr ""
+
+#: club/templates/club/membership_form.html:144
+msgid "Support Wolne Lektury"
+msgstr ""
+
+#: club/templates/club/membership_form.html:148
+msgid "Thank you for your support! Support us again!"
+msgstr ""
+
+#: club/templates/club/membership_form.html:151
+msgid "Thank you for wanting to free the books with us!"
+msgstr ""
+
+#: club/templates/club/membership_form.html:156
+msgid "See your past support."
+msgstr ""
+
+#: club/templates/club/membership_form.html:179
+msgid "Choose your type of support"
+msgstr ""
+
+#: club/templates/club/membership_form.html:184
+msgid "one-time"
+msgstr ""
+
+#: club/templates/club/membership_form.html:188
+msgid "Choose the amount"
+msgstr ""
+
+#: club/templates/club/membership_form.html:196
+#: club/templates/club/membership_form.html:209
+msgid "different amount"
+msgstr ""
+
+#: club/templates/club/membership_form.html:215
+msgid "Provide an e-mail address"
+msgstr ""
+
+#: club/templates/club/membership_form.html:222
+msgid "I'd like to receive informations about new publications."
+msgstr ""
+
+#: club/templates/club/membership_form.html:226
+msgid ""
+"You can unsubscribe at any point. More in the <a target=\"_blank\" href="
+"\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
+msgstr ""
+
+#: club/templates/club/membership_form.html:228
+msgid "Donate"
+msgstr ""
+
+#: club/templates/club/payment/payu-re.html:4
+#: club/templates/club/payment/payu.html:4
+msgid "Safe payments"
+msgstr ""
+
+#: club/templates/club/payment/payu.html:10
+msgid "transfer"
+msgstr ""
+
+#: club/templates/club/thanks.html:14
+msgid "Thank you"
+msgstr ""
+
+#: club/templates/club/year_summary.html:10
+#, python-format
+msgid "Summary of donations in the year %(year)s for the address %(email)s."
+msgstr ""
+
+#: club/templates/club/year_summary.html:15
+msgid "Date"
+msgstr ""
+
+#: club/templates/club/year_summary.html:16
+msgid "Amount"
+msgstr ""
+
+#: club/templates/club/year_summary.html:27
+msgid "Total"
+msgstr ""
+
+#: club/templates/payu/rec_payment.html:12
+msgid "Supporting Wolne Lektury"
+msgstr ""
+
+#: club/templates/payu/rec_payment.html:15
+#, python-format
+msgid ""
+"\n"
+"        You are setting up a monthly payment in the amount of %(amount)s "
+"PLN. Thank you!\n"
+"      "
+msgstr ""

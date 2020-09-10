@@ -3,6 +3,7 @@
 #
 from decimal import Decimal
 from django import forms
+from django.utils.translation import ugettext as _
 from newsletter.forms import NewsletterForm
 from . import models
 from .payu.forms import CardTokenForm
@@ -21,7 +22,11 @@ class ScheduleForm(forms.ModelForm, NewsletterForm):
         value = self.cleaned_data['amount']
         club = models.Club.objects.first()
         if club and value < club.min_amount:
-            raise forms.ValidationError('Minimalna kwota to %d zł.' % club.min_amount)
+            raise forms.ValidationError(
+                _('Minimal amount is %(amount)d PLN.') % {
+                    'amount': club.min_amount
+                }
+            )
         return value
 
     def save(self, *args, **kwargs):

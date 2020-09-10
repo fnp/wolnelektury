@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury-dictionary\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2014-10-24 11:58+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,55 +19,55 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: constants.py:11
+#: dictionary/constants.py:8
 msgid "author's footnotes"
 msgstr "przypisy autorskie"
 
-#: constants.py:12
+#: dictionary/constants.py:9
 msgid "Wolne Lektury editorial footnotes"
 msgstr "przypisy redaktorów Wolnych Lektur"
 
-#: constants.py:13
+#: dictionary/constants.py:10
 msgid "source editorial footnotes"
 msgstr "przypisy redakcji źródła"
 
-#: constants.py:14
+#: dictionary/constants.py:11
 msgid "translator's footnotes"
 msgstr "przypisy tłumacza"
 
-#: templates/dictionary/note_list.html:8
-#: templates/dictionary/note_list.html:12
+#: dictionary/templates/dictionary/note_list.html:8
+#: dictionary/templates/dictionary/note_list.html:12
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: templates/dictionary/note_list.html:16
+#: dictionary/templates/dictionary/note_list.html:16
 msgid "By first letter"
 msgstr "Pierwsza litera"
 
-#: templates/dictionary/note_list.html:18
-#: templates/dictionary/note_list.html:20
-#: templates/dictionary/note_list.html:36
-#: templates/dictionary/note_list.html:38
-#: templates/dictionary/note_list.html:55
-#: templates/dictionary/note_list.html:57
-#: templates/dictionary/note_list.html:73
-#: templates/dictionary/note_list.html:75
+#: dictionary/templates/dictionary/note_list.html:18
+#: dictionary/templates/dictionary/note_list.html:20
+#: dictionary/templates/dictionary/note_list.html:36
+#: dictionary/templates/dictionary/note_list.html:38
+#: dictionary/templates/dictionary/note_list.html:55
+#: dictionary/templates/dictionary/note_list.html:57
+#: dictionary/templates/dictionary/note_list.html:73
+#: dictionary/templates/dictionary/note_list.html:75
 msgid "all"
 msgstr "wszystkie"
 
-#: templates/dictionary/note_list.html:34
+#: dictionary/templates/dictionary/note_list.html:34
 msgid "By type"
 msgstr "Według typu"
 
-#: templates/dictionary/note_list.html:53
+#: dictionary/templates/dictionary/note_list.html:53
 msgid "By qualifier"
 msgstr "Według kwalifikatora"
 
-#: templates/dictionary/note_list.html:71
+#: dictionary/templates/dictionary/note_list.html:71
 msgid "By language"
 msgstr "Według języka"
 
-#: templates/dictionary/note_list.html:91
+#: dictionary/templates/dictionary/note_list.html:91
 #, python-format
 msgid "%(c)s footnote found"
 msgid_plural "%(c)s footnotes found"

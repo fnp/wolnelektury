@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,43 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: models.py:12 models.py:30
+#: libraries/models.py:12 libraries/models.py:29
 msgid "name"
 msgstr "nazwa"
 
-#: models.py:13 models.py:31
+#: libraries/models.py:13 libraries/models.py:30
 msgid "slug"
 msgstr "slug"
 
-#: models.py:16
+#: libraries/models.py:16
 msgid "catalog"
 msgstr "katalog"
 
-#: models.py:17
+#: libraries/models.py:17
 msgid "catalogs"
 msgstr "katalogi"
 
-#: models.py:33
+#: libraries/models.py:32
 msgid "url"
 msgstr "url"
 
-#: models.py:34
+#: libraries/models.py:33
 msgid "description"
 msgstr "opis"
 
-#: models.py:37
+#: libraries/models.py:36
 msgid "library"
 msgstr "biblioteka"
 
-#: models.py:38
+#: libraries/models.py:37
 msgid "libraries"
 msgstr "biblioteki"
 
-#: templates/libraries/catalog_view.html:4
+#: libraries/templates/libraries/catalog_view.html:4
 msgid "Libraries directory"
 msgstr "Katalog bibliotek"
 
-#: templates/libraries/main_view.html:4 templates/libraries/main_view.html:7
+#: libraries/templates/libraries/main_view.html:4
+#: libraries/templates/libraries/main_view.html:7
 msgid "Library directories"
 msgstr "Katalogi bibliotek"

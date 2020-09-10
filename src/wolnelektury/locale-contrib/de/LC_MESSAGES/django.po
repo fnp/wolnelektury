@@ -6,822 +6,445 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2012-08-14 17:50+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
-"Language: de\n"
 "Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "Generated-By: Babel 2.2.0\n"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/adapter.py:223
+#: isbn/forms.py:66
+msgid "Soft cover book"
+msgstr ""
+
+#: push/models.py:10
+msgid "title"
+msgstr ""
+
+#: push/models.py:11
+msgid "content"
+msgstr ""
+
+#: push/models.py:12
+msgid "image"
+msgstr ""
+
+#: push/templates/push/notification_form.html:4
+#: push/templates/push/notification_sent.html:4
+msgid "Notifications"
+msgstr ""
+
 #, fuzzy
-msgid "Usernames can only contain letters, digits and @/./+/-/_."
-msgstr "Usernamen können nur aus Buchstaben, Ziffern"
+#~ msgid "Usernames can only contain letters, digits and @/./+/-/_."
+#~ msgstr "Usernamen können nur aus Buchstaben, Ziffern"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/adapter.py:230
-msgid "Username can not be used. Please use other username."
-msgstr ""
+#~ msgid "This username is already taken. Please choose another."
+#~ msgstr "Dieser Username ist schon besetzt. Wählen Sie bitte einen anderen."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/adapter.py:244
-msgid "This username is already taken. Please choose another."
-msgstr "Dieser Username ist schon besetzt. Wählen Sie bitte einen anderen."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/adapter.py:261
-msgid "Password must be a minimum of {0} characters."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/apps.py:8
 #, fuzzy
-msgid "Accounts"
-msgstr "Account"
+#~ msgid "Accounts"
+#~ msgstr "Account"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:54
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:282
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:382
-msgid "Password"
-msgstr "Password"
+#~ msgid "Password"
+#~ msgstr "Password"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:55
-msgid "Remember Me"
-msgstr "Einspeichern"
+#~ msgid "Remember Me"
+#~ msgstr "Einspeichern"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:61
-msgid "This account is currently inactive."
-msgstr "Dieses Account ist zurzeit inaktiv."
+#~ msgid "This account is currently inactive."
+#~ msgstr "Dieses Account ist zurzeit inaktiv."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:64
-msgid "The e-mail address and/or password you specified are not correct."
-msgstr "Die E-Mail-Adresse und/oder das Password sind nicht korrekt."
+#~ msgid "The e-mail address and/or password you specified are not correct."
+#~ msgstr "Die E-Mail-Adresse und/oder das Password sind nicht korrekt."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:67
-msgid "The username and/or password you specified are not correct."
-msgstr "Der Username ist nicht korrekt."
+#~ msgid "The username and/or password you specified are not correct."
+#~ msgstr "Der Username ist nicht korrekt."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:70
 #, fuzzy
-msgid "The login and/or password you specified are not correct."
-msgstr "Der Username ist nicht korrekt."
+#~ msgid "The login and/or password you specified are not correct."
+#~ msgstr "Der Username ist nicht korrekt."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:78
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:216
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:327
 #, fuzzy
-msgid "E-mail address"
-msgstr "E-Mail Adresse"
+#~ msgid "E-mail address"
+#~ msgstr "E-Mail Adresse"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:80
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:229
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:323
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:401
-msgid "E-mail"
-msgstr "E-Mail"
+#~ msgid "E-mail"
+#~ msgstr "E-Mail"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:85
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:88
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:207
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:212
-msgid "Username"
-msgstr "Username"
+#~ msgid "Username"
+#~ msgstr "Username"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:95
-msgid "Username or e-mail"
-msgstr ""
+#~ msgid "E-mail (optional)"
+#~ msgstr "E-Mail (fakultativ)"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:97
-msgctxt "field label"
-msgid "Login"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:232
-msgid "E-mail (optional)"
-msgstr "E-Mail (fakultativ)"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:264
 #, fuzzy
-msgid "A user is already registered with this e-mail address."
-msgstr "Ein User ist schon mit dieser E-Mail-Adresse verbunden."
+#~ msgid "A user is already registered with this e-mail address."
+#~ msgstr "Ein User ist schon mit dieser E-Mail-Adresse verbunden."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:283
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:383
-msgid "Password (again)"
-msgstr "Password (nochmals)"
+#~ msgid "Password (again)"
+#~ msgstr "Password (nochmals)"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:300
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:372
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:390
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:466
-msgid "You must type the same password each time."
-msgstr "Sie müssen dasselbe Password jedesmal eintippen."
+#~ msgid "You must type the same password each time."
+#~ msgstr "Sie müssen dasselbe Password jedesmal eintippen."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:333
 #, fuzzy
-msgid "This e-mail address is already associated with this account."
-msgstr "Die E-Mail ist schon mit diesem Account verbunden."
+#~ msgid "This e-mail address is already associated with this account."
+#~ msgstr "Die E-Mail ist schon mit diesem Account verbunden."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:335
 #, fuzzy
-msgid "This e-mail address is already associated with another account."
-msgstr "Diese E-Mail-Adresse ist schon mit einem anderen Account verbunden."
+#~ msgid "This e-mail address is already associated with another account."
+#~ msgstr "Diese E-Mail-Adresse ist schon mit einem anderen Account verbunden."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:357
-msgid "Current Password"
-msgstr "Aktuelles Password"
+#~ msgid "Current Password"
+#~ msgstr "Aktuelles Password"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:358
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:452
-msgid "New Password"
-msgstr "Neues Password"
+#~ msgid "New Password"
+#~ msgstr "Neues Password"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:359
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:453
-msgid "New Password (again)"
-msgstr "Neues Password (nochmals)"
+#~ msgid "New Password (again)"
+#~ msgstr "Neues Password (nochmals)"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:363
-msgid "Please type your current password."
-msgstr "Tippe Ihr Password ein."
+#~ msgid "Please type your current password."
+#~ msgstr "Tippe Ihr Password ein."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:410
-msgid "The e-mail address is not assigned to any user account"
-msgstr "Diese E-Mail-Adresse ist noch mit keinem anderen Account verbunden."
+#~ msgid "The e-mail address is not assigned to any user account"
+#~ msgstr "Diese E-Mail-Adresse ist noch mit keinem anderen Account verbunden."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/forms.py:483
-msgid "The password reset token was invalid."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:25
-msgid "user"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:28
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:84
 #, fuzzy
-msgid "e-mail address"
-msgstr "E-Mail Adresse"
+#~ msgid "e-mail address"
+#~ msgstr "E-Mail Adresse"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:29
 #, fuzzy
-msgid "verified"
-msgstr "Unverifiziert"
+#~ msgid "verified"
+#~ msgstr "Unverifiziert"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:30
 #, fuzzy
-msgid "primary"
-msgstr "Primär"
+#~ msgid "primary"
+#~ msgstr "Primär"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:35
 #, fuzzy
-msgid "email address"
-msgstr "E-Mail Adresse"
+#~ msgid "email address"
+#~ msgstr "E-Mail Adresse"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:36
 #, fuzzy
-msgid "email addresses"
-msgstr "E-Mail Adresse"
+#~ msgid "email addresses"
+#~ msgstr "E-Mail Adresse"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:85
-msgid "created"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:87
-msgid "sent"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:88
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:50
-msgid "key"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:93
 #, fuzzy
-msgid "email confirmation"
-msgstr "E-Mail-Adresse-Bestätigung"
+#~ msgid "email confirmation"
+#~ msgstr "E-Mail-Adresse-Bestätigung"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/account/models.py:94
 #, fuzzy
-msgid "email confirmations"
-msgstr "E-Mail-Adresse-Bestätigung"
+#~ msgid "email confirmations"
+#~ msgstr "E-Mail-Adresse-Bestätigung"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/adapter.py:118
 #, fuzzy
-msgid "Your account has no password set up."
-msgstr "Ihr lokales Account hat keine Schlüsselworteinstellung"
+#~ msgid "Your account has no password set up."
+#~ msgstr "Ihr lokales Account hat keine Schlüsselworteinstellung"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/adapter.py:125
 #, fuzzy
-msgid "Your account has no verified e-mail address."
-msgstr "Ihr lokales Account hat keine verfizierte Email-Adresse"
+#~ msgid "Your account has no verified e-mail address."
+#~ msgstr "Ihr lokales Account hat keine verfizierte Email-Adresse"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/apps.py:8
-msgid "Social Accounts"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/forms.py:41
-#, python-format
-msgid ""
-"An account already exists with this e-mail address. Please sign in to "
-"that account first, then connect your %s account."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:38
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:71
-msgid "provider"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:41
 #, fuzzy
-msgid "name"
-msgstr "Username"
+#~ msgid "name"
+#~ msgstr "Username"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:43
-msgid "client id"
-msgstr ""
+#~ msgid "Invalid response while obtaining request token from \"%s\"."
+#~ msgstr "Falsche Antwort beim Erhalten des Fragentokens von \"%s\"."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:45
-msgid "App ID, or consumer key"
-msgstr ""
+#~ msgid "Invalid response while obtaining access token from \"%s\"."
+#~ msgstr "Falsche Antwort beim Erhalten des Zugangstokens von \"%s\"."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:46
-msgid "secret key"
-msgstr ""
+#~ msgid "No request token saved for \"%s\"."
+#~ msgstr "Keine Fragentokens für \"%s\" gespeichert."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:48
-msgid "API secret, client secret, or consumer secret"
-msgstr ""
+#~ msgid "No access token saved for \"%s\"."
+#~ msgstr "Keine Zugangstokens für \"%s\" gespeichert."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:53
-msgid "Key"
-msgstr ""
+#~ msgid "No access to private resources at \"%s\"."
+#~ msgstr "Kein Zugagng zu privaten Angaben bei \"%s\"."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:61
-msgid "social application"
-msgstr ""
+#~ msgid "Account Inactive"
+#~ msgstr "Inaktives Account"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:62
-msgid "social applications"
-msgstr ""
+#~ msgid "This account is inactive."
+#~ msgstr "Dieses Account ist inaktiv."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:90
-msgid "uid"
-msgstr ""
+#~ msgid "Account"
+#~ msgstr "Account"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:92
-msgid "last login"
-msgstr ""
+#~ msgid "E-mail Addresses"
+#~ msgstr "E-Mail Adresse"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:94
-msgid "date joined"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:96
-msgid "extra data"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:100
-msgid "social account"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:101
-msgid "social accounts"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:127
-msgid "token"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:128
-msgid "\"oauth_token\" (OAuth1) or access token (OAuth2)"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:132
-msgid "token secret"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:133
-msgid "\"oauth_token_secret\" (OAuth1) or refresh token (OAuth2)"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:136
-msgid "expires at"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:140
-msgid "social application token"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/models.py:141
-msgid "social application tokens"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/providers/oauth/client.py:77
-#, python-format
-msgid "Invalid response while obtaining request token from \"%s\"."
-msgstr "Falsche Antwort beim Erhalten des Fragentokens von \"%s\"."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/providers/oauth/client.py:103
-#, python-format
-msgid "Invalid response while obtaining access token from \"%s\"."
-msgstr "Falsche Antwort beim Erhalten des Zugangstokens von \"%s\"."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/providers/oauth/client.py:119
-#, python-format
-msgid "No request token saved for \"%s\"."
-msgstr "Keine Fragentokens für \"%s\" gespeichert."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/providers/oauth/client.py:168
-#, python-format
-msgid "No access token saved for \"%s\"."
-msgstr "Keine Zugangstokens für \"%s\" gespeichert."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/socialaccount/providers/oauth/client.py:188
-#, python-format
-msgid "No access to private resources at \"%s\"."
-msgstr "Kein Zugagng zu privaten Angaben bei \"%s\"."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/account_inactive.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/account_inactive.html:8
-msgid "Account Inactive"
-msgstr "Inaktives Account"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/account_inactive.html:10
-msgid "This account is inactive."
-msgstr "Dieses Account ist inaktiv."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:5
-msgid "Account"
-msgstr "Account"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:8
-msgid "E-mail Addresses"
-msgstr "E-Mail Adresse"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:10
 #, fuzzy
-msgid "The following e-mail addresses are associated with your account:"
-msgstr "Die folgenden E-Mail-Adressen wurden mit Ihrem Account verbunden:"
+#~ msgid "The following e-mail addresses are associated with your account:"
+#~ msgstr "Die folgenden E-Mail-Adressen wurden mit Ihrem Account verbunden:"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:24
-msgid "Verified"
-msgstr "Verifiziert"
+#~ msgid "Verified"
+#~ msgstr "Verifiziert"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:26
-msgid "Unverified"
-msgstr "Unverifiziert"
+#~ msgid "Unverified"
+#~ msgstr "Unverifiziert"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:28
-msgid "Primary"
-msgstr "Primär"
+#~ msgid "Primary"
+#~ msgstr "Primär"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:34
-msgid "Make Primary"
-msgstr "Stelle als primär ein"
+#~ msgid "Make Primary"
+#~ msgstr "Stelle als primär ein"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:35
-msgid "Re-send Verification"
-msgstr "Verifizierung wiedersenden"
+#~ msgid "Re-send Verification"
+#~ msgstr "Verifizierung wiedersenden"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:36
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:35
-msgid "Remove"
-msgstr "Entfernen"
+#~ msgid "Remove"
+#~ msgstr "Entfernen"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:43
-msgid "Warning:"
-msgstr "Warnung:"
+#~ msgid "Warning:"
+#~ msgstr "Warnung:"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:43
-msgid ""
-"You currently do not have any e-mail address set up. You should really "
-"add an e-mail address so you can receive notifications, reset your "
-"password, etc."
-msgstr ""
-"Sie haben jetzt keine Email-Adresse eingestellt. Sie sollen eine Email-"
-"Adresse einstellen, um Ihr Schlüsselwort zu resetieren, um wichtige "
-"Informationen zu bekommen."
+#~ msgid ""
+#~ "You currently do not have any e-mail address set up. You should really "
+#~ "add an e-mail address so you can receive notifications, reset your "
+#~ "password, etc."
+#~ msgstr ""
+#~ "Sie haben jetzt keine Email-Adresse eingestellt. Sie sollen eine Email-"
+#~ "Adresse einstellen, um Ihr Schlüsselwort zu resetieren, um wichtige "
+#~ "Informationen zu bekommen."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:48
-msgid "Add E-mail Address"
-msgstr "E-Mail-Adress eintippen"
+#~ msgid "Add E-mail Address"
+#~ msgstr "E-Mail-Adress eintippen"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:53
-msgid "Add E-mail"
-msgstr "Add E-Mail eintippen"
+#~ msgid "Add E-mail"
+#~ msgstr "Add E-Mail eintippen"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email.html:62
-msgid "Do you really want to remove the selected e-mail address?"
-msgstr "Wollen Sie wirklich die angegebene E-Mail-Adresse löschen?"
+#~ msgid "Do you really want to remove the selected e-mail address?"
+#~ msgstr "Wollen Sie wirklich die angegebene E-Mail-Adresse löschen?"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirm.html:6
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirm.html:10
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirmed.html:6
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirmed.html:11
 #, fuzzy
-msgid "Confirm E-mail Address"
-msgstr "Die Haupt-Email-Adresse eingestellt"
+#~ msgid "Confirm E-mail Address"
+#~ msgstr "Die Haupt-Email-Adresse eingestellt"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirm.html:16
-#, fuzzy, python-format
-msgid ""
-"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
-"e-mail address for user %(user_display)s."
-msgstr ""
-"Sie haben bestätigt, dass <a href=\"mailto:%(email)s\">%(email)s</a> ist "
-"mit dem User '%(user_display)s' verbunden."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirm.html:20
-msgid "Confirm"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirm.html:27
-#, python-format
-msgid ""
-"This e-mail confirmation link expired or is invalid. Please <a "
-"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email_confirmed.html:15
-#, fuzzy, python-format
-msgid ""
-"You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
-"e-mail address for user %(user_display)s."
-msgstr ""
-"Sie haben bestätigt, dass <a href=\"mailto:%(email)s\">%(email)s</a> ist "
-"mit dem User '%(user_display)s' verbunden."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:6
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:10
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:43
-msgid "Sign In"
-msgstr "Anmelden"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:17
-#, fuzzy, python-format
-msgid ""
-"Please sign in with one\n"
-"of your existing third party accounts. Or, <a "
-"href=\"%(signup_url)s\">sign up</a>\n"
-"for a %(site_name)s account and sign in below:"
-msgstr ""
-"Loggen Sie sich bitte ein mit einem\n"
-"von Accounts einer dritten Partei. Oder, <a \n"
-"href=\"%(signup_url)s\">registrieren Sie</a> for a %(site_name)s den "
-"Account und loggen Sie sich ein\n"
-"hierunter:"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:25
-msgid "or"
-msgstr "oder"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:33
-#, python-format
-msgid ""
-"If you have not created an account yet, then please\n"
-"<a href=\"%(signup_url)s\">sign up</a> first."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/login.html:42
-msgid "Forgot Password?"
-msgstr "Password vergessen?"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:8
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:17
 #, fuzzy
-msgid "Sign Out"
-msgstr "Ausgeloggt"
+#~ msgid ""
+#~ "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-"
+#~ "mail address for user %(user_display)s."
+#~ msgstr ""
+#~ "Sie haben bestätigt, dass <a href=\"mailto:%(email)s\">%(email)s</a> ist "
+#~ "mit dem User '%(user_display)s' verbunden."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/logout.html:10
-msgid "Are you sure you want to sign out?"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_change.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_change.html:8
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_change.html:13
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:4
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:7
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key_done.html:4
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key_done.html:7
-msgid "Change Password"
-msgstr "Password ändern"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:6
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:10
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_done.html:6
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_done.html:9
-msgid "Password Reset"
-msgstr "Password neu erstellen"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:15
-msgid ""
-"Forgotten your password? Enter your e-mail address below, and we'll send "
-"you an e-mail allowing you to reset it."
-msgstr ""
-"Password vergessen? Tippe unten Ihre E-Mail-Adresse ein, dann senden wir "
-"Ihnen eine E-Mail, um das Password zu ändern."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:20
-msgid "Reset My Password"
-msgstr "Password neu erstellen"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset.html:23
-msgid "Please contact us if you have any trouble resetting your password."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_done.html:15
 #, fuzzy
-msgid ""
-"We have sent you an e-mail. Please contact us if you do not receive it "
-"within a few minutes."
-msgstr ""
-"Wir haben Ihnen eine Email geschickt. Falls Sie sie nicht innerhalb von "
-"einigen Minuten erhalten, wenden Sie sich bitte an uns <a "
-"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+#~ msgid ""
+#~ "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
+#~ "e-mail address for user %(user_display)s."
+#~ msgstr ""
+#~ "Sie haben bestätigt, dass <a href=\"mailto:%(email)s\">%(email)s</a> ist "
+#~ "mit dem User '%(user_display)s' verbunden."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:7
-msgid "Bad Token"
-msgstr "Falscher Token"
+#~ msgid "Sign In"
+#~ msgstr "Anmelden"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:11
-#, python-format
-msgid ""
-"The password reset link was invalid, possibly because it has already been"
-" used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
-"reset</a>."
-msgstr ""
-"Der Passwort-Reset-Link war falsch, da er schon möglicherweise benutzt "
-"worden war. Bitten Sie um ein <a href=\"%(passwd_reset_url)s\">Reset "
-"eines neuen Passwortes</a>."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:17
-msgid "change password"
-msgstr "Password ändern"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key.html:20
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_reset_from_key_done.html:8
-msgid "Your password is now changed."
-msgstr "Password wurde geändert"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_set.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_set.html:8
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/password_set.html:13
-msgid "Set Password"
-msgstr "Password erstellen"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:5
-msgid "Signup"
-msgstr "Registrieren"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:8
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:18
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:8
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:19
-msgid "Sign Up"
-msgstr "Anmelden"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup.html:10
-#, python-format
-msgid ""
-"Already have an account? Then please <a href=\"%(login_url)s\">sign "
-"in</a>."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup_closed.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup_closed.html:8
-msgid "Sign Up Closed"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/signup_closed.html:10
-msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verification_sent.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verification_sent.html:8
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verified_email_required.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verified_email_required.html:8
-msgid "Verify Your E-mail Address"
-msgstr "Verifizieren Sie Ihre E-Mail-Adresse"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verification_sent.html:10
 #, fuzzy
-msgid ""
-"We have sent an e-mail to you for verification. Follow the link provided "
-"to finalize the signup process. Please contact us if you do not receive "
-"it within a few minutes."
-msgstr ""
-"Wir haben Ihnen eine Email geschickt. Falls Sie sie nicht innerhalb von "
-"einigen Minuten erhalten, wenden Sie sich bitte an uns <a "
-"href=\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
+#~ msgid ""
+#~ "Please sign in with one\n"
+#~ "of your existing third party accounts. Or, <a href=\"%(signup_url)s"
+#~ "\">sign up</a>\n"
+#~ "for a %(site_name)s account and sign in below:"
+#~ msgstr ""
+#~ "Loggen Sie sich bitte ein mit einem\n"
+#~ "von Accounts einer dritten Partei. Oder, <a \n"
+#~ "href=\"%(signup_url)s\">registrieren Sie</a> for a %(site_name)s den "
+#~ "Account und loggen Sie sich ein\n"
+#~ "hierunter:"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verified_email_required.html:14
-msgid ""
-"This part of the site requires us to verify that\n"
-"you are who you claim to be. For this purpose, we require that you\n"
-"verify ownership of your e-mail address. "
-msgstr ""
+#~ msgid "or"
+#~ msgstr "oder"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verified_email_required.html:18
-msgid ""
-"We have sent an e-mail to you for\n"
-"verification. Please click on the link inside this e-mail. Please\n"
-"contact us if you do not receive it within a few minutes."
-msgstr ""
+#~ msgid "Forgot Password?"
+#~ msgstr "Password vergessen?"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/verified_email_required.html:20
-#, python-format
-msgid ""
-"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change "
-"your e-mail address</a>."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/email_confirmation_message.txt:6
-#, python-format
-msgid ""
-"Hello from %(site_name)s!\n"
-"\n"
-"You're receiving this e-mail because user %(user_display)s at "
-"%(site_domain)s has given yours as an e-mail address to connect their "
-"account.\n"
-"\n"
-"To confirm this is correct, go to %(activate_url)s\n"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/email_confirmation_message.txt:8
-#, python-format
-msgid ""
-"Thank you from %(site_name)s!\n"
-"%(site_domain)s"
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/email_confirmation_subject.txt:3
 #, fuzzy
-msgid "Please Confirm Your E-mail Address"
-msgstr "Die Haupt-Email-Adresse eingestellt"
+#~ msgid "Sign Out"
+#~ msgstr "Ausgeloggt"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/password_reset_key_message.txt:4
-#, python-format
-msgid ""
-"Hello from %(site_name)s!\n"
-"\n"
-"You're receiving this e-mail because you or someone else has requested a "
-"password for your user account at %(site_domain)s.\n"
-"It can be safely ignored if you did not request a password reset. Click "
-"the link below to reset your password."
-msgstr ""
+#~ msgid "Change Password"
+#~ msgstr "Password ändern"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/password_reset_key_message.txt:8
-#, python-format
-msgid "In case you forgot, your username is %(username)s."
-msgstr ""
+#~ msgid "Password Reset"
+#~ msgstr "Password neu erstellen"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/password_reset_key_message.txt:11
-#, python-format
-msgid ""
-"Thank you for using %(site_name)s!\n"
-"%(site_domain)s"
-msgstr ""
+#~ msgid ""
+#~ "Forgotten your password? Enter your e-mail address below, and we'll send "
+#~ "you an e-mail allowing you to reset it."
+#~ msgstr ""
+#~ "Password vergessen? Tippe unten Ihre E-Mail-Adresse ein, dann senden wir "
+#~ "Ihnen eine E-Mail, um das Password zu ändern."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/email/password_reset_key_subject.txt:3
-msgid "Password Reset E-mail"
-msgstr "Password neu stellen E-Mail"
+#~ msgid "Reset My Password"
+#~ msgstr "Password neu erstellen"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/cannot_delete_primary_email.txt:2
-#, fuzzy, python-format
-msgid "You cannot remove your primary e-mail address (%(email)s)."
-msgstr "Die E-Mail-Adresse %(email)s gelöscht."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/email_confirmation_sent.txt:2
-#, fuzzy, python-format
-msgid "Confirmation e-mail sent to %(email)s."
-msgstr "BestBestätigungsmail an %(email)s gesendet"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/email_confirmed.txt:2
-#, python-format
-msgid "You have confirmed %(email)s."
-msgstr ""
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/email_deleted.txt:2
-#, fuzzy, python-format
-msgid "Removed e-mail address %(email)s."
-msgstr "Die E-Mail-Adresse %(email)s gelöscht."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/logged_in.txt:4
-#, fuzzy, python-format
-msgid "Successfully signed in as %(name)s."
-msgstr "Erfolgreich als %(name)s eingeloggt."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/logged_out.txt:2
-msgid "You have signed out."
-msgstr "Sie haben sich ausgeloggt."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/password_changed.txt:2
-msgid "Password successfully changed."
-msgstr "Password erfolgreich geändert."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/password_set.txt:2
-msgid "Password successfully set."
-msgstr "Password erfolgreich erstellt."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/primary_email_set.txt:2
 #, fuzzy
-msgid "Primary e-mail address set."
-msgstr "Die Haupt-Email-Adresse eingestellt"
+#~ msgid ""
+#~ "We have sent you an e-mail. Please contact us if you do not receive it "
+#~ "within a few minutes."
+#~ msgstr ""
+#~ "Wir haben Ihnen eine Email geschickt. Falls Sie sie nicht innerhalb von "
+#~ "einigen Minuten erhalten, wenden Sie sich bitte an uns <a href=\"mailto:"
+#~ "%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/messages/unverified_primary_email.txt:2
+#~ msgid "Bad Token"
+#~ msgstr "Falscher Token"
+
+#~ msgid ""
+#~ "The password reset link was invalid, possibly because it has already been "
+#~ "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password "
+#~ "reset</a>."
+#~ msgstr ""
+#~ "Der Passwort-Reset-Link war falsch, da er schon möglicherweise benutzt "
+#~ "worden war. Bitten Sie um ein <a href=\"%(passwd_reset_url)s\">Reset "
+#~ "eines neuen Passwortes</a>."
+
+#~ msgid "change password"
+#~ msgstr "Password ändern"
+
+#~ msgid "Your password is now changed."
+#~ msgstr "Password wurde geändert"
+
+#~ msgid "Set Password"
+#~ msgstr "Password erstellen"
+
+#~ msgid "Signup"
+#~ msgstr "Registrieren"
+
+#~ msgid "Sign Up"
+#~ msgstr "Anmelden"
+
+#~ msgid "Verify Your E-mail Address"
+#~ msgstr "Verifizieren Sie Ihre E-Mail-Adresse"
+
 #, fuzzy
-msgid "Your primary e-mail address must be verified."
-msgstr "Ihre E-Mail-Adresse wurd erfolgreich verifiziert."
+#~ msgid ""
+#~ "We have sent an e-mail to you for verification. Follow the link provided "
+#~ "to finalize the signup process. Please contact us if you do not receive "
+#~ "it within a few minutes."
+#~ msgstr ""
+#~ "Wir haben Ihnen eine Email geschickt. Falls Sie sie nicht innerhalb von "
+#~ "einigen Minuten erhalten, wenden Sie sich bitte an uns <a href=\"mailto:"
+#~ "%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
-msgid "Note"
-msgstr "Notiz"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/account/snippets/already_logged_in.html:5
-#, python-format
-msgid "you are already logged in as %(user_display)s."
-msgstr "Sie sind schon als %(user_display)s eingeloggt."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/openid/login.html:9
-msgid "OpenID Sign In"
-msgstr "OpenID Registrieren"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/authentication_error.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/authentication_error.html:8
-msgid "Social Network Login Failure"
-msgstr "Social-Networt-Login Fehler"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/authentication_error.html:10
 #, fuzzy
-msgid ""
-"An error occurred while attempting to login via your social network "
-"account."
-msgstr "Ein Fehler ist eingetreten beim Einloggen mithilfe Social-Networt-Account."
+#~ msgid "Please Confirm Your E-mail Address"
+#~ msgstr "Die Haupt-Email-Adresse eingestellt"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:8
-msgid "Account Connections"
-msgstr "Account-Beziehungen"
+#~ msgid "Password Reset E-mail"
+#~ msgstr "Password neu stellen E-Mail"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:11
-msgid ""
-"You can sign in to your account using any of the following third party "
-"accounts:"
-msgstr "Sie können sich einloggen mittels eines von folgenden Accounts Dritter:"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:43
 #, fuzzy
-msgid "You currently have no social network accounts connected to this account."
-msgstr "Das Social-Network-Account wurde mit Ihrem Account verbunden."
+#~ msgid "You cannot remove your primary e-mail address (%(email)s)."
+#~ msgstr "Die E-Mail-Adresse %(email)s gelöscht."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/connections.html:46
-msgid "Add a 3rd Party Account"
-msgstr "Fügen Sie ein fremdes Account hinzu."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/login_cancelled.html:5
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/login_cancelled.html:9
-msgid "Login Cancelled"
-msgstr "Login annulliert"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/login_cancelled.html:13
-#, fuzzy, python-format
-msgid ""
-"You decided to cancel logging in to our site using one of your existing "
-"accounts. If this was a mistake, please proceed to <a "
-"href=\"%(login_url)s\">sign in</a>."
-msgstr ""
-"Sie haben sich entschieden, das Einloggen in unsere Webseite mittels "
-"eines von Ihren existierenden Accounts. Falls dies ein Fehler war, gehen "
-"Sie auf <a href=\"%(login_url)s\">sign in</a>."
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/signup.html:11
-#, fuzzy, python-format
-msgid ""
-"You are about to use your %(provider_name)s account to login to\n"
-"%(site_name)s. As a final step, please complete the following form:"
-msgstr ""
-"Sie werden Ihr  %(provider_name)s Account benutzen, um\n"
-"sich in %(site_name)s einzuloggen. Der letzte Schritt ist, den folgenden "
-"Formular auszufüllen"
-
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/messages/account_connected.txt:2
 #, fuzzy
-msgid "The social account has been connected."
-msgstr "Das Social-Account wurde abgeschaltet."
+#~ msgid "Confirmation e-mail sent to %(email)s."
+#~ msgstr "BestBestätigungsmail an %(email)s gesendet"
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/messages/account_connected_other.txt:2
 #, fuzzy
-msgid "The social account is already connected to a different account."
-msgstr "Das Social-Account wurde abgeschaltet."
+#~ msgid "Removed e-mail address %(email)s."
+#~ msgstr "Die E-Mail-Adresse %(email)s gelöscht."
 
-#: /home/janek/.virtualenvs/lektury/local/lib/python2.7/site-packages/allauth/templates/socialaccount/messages/account_disconnected.txt:2
 #, fuzzy
-msgid "The social account has been disconnected."
-msgstr "Das Social-Account wurde abgeschaltet."
+#~ msgid "Successfully signed in as %(name)s."
+#~ msgstr "Erfolgreich als %(name)s eingeloggt."
+
+#~ msgid "You have signed out."
+#~ msgstr "Sie haben sich ausgeloggt."
+
+#~ msgid "Password successfully changed."
+#~ msgstr "Password erfolgreich geändert."
+
+#~ msgid "Password successfully set."
+#~ msgstr "Password erfolgreich erstellt."
+
+#, fuzzy
+#~ msgid "Primary e-mail address set."
+#~ msgstr "Die Haupt-Email-Adresse eingestellt"
+
+#, fuzzy
+#~ msgid "Your primary e-mail address must be verified."
+#~ msgstr "Ihre E-Mail-Adresse wurd erfolgreich verifiziert."
+
+#~ msgid "Note"
+#~ msgstr "Notiz"
+
+#~ msgid "you are already logged in as %(user_display)s."
+#~ msgstr "Sie sind schon als %(user_display)s eingeloggt."
+
+#~ msgid "OpenID Sign In"
+#~ msgstr "OpenID Registrieren"
+
+#~ msgid "Social Network Login Failure"
+#~ msgstr "Social-Networt-Login Fehler"
+
+#, fuzzy
+#~ msgid ""
+#~ "An error occurred while attempting to login via your social network "
+#~ "account."
+#~ msgstr ""
+#~ "Ein Fehler ist eingetreten beim Einloggen mithilfe Social-Networt-Account."
+
+#~ msgid "Account Connections"
+#~ msgstr "Account-Beziehungen"
+
+#~ msgid ""
+#~ "You can sign in to your account using any of the following third party "
+#~ "accounts:"
+#~ msgstr ""
+#~ "Sie können sich einloggen mittels eines von folgenden Accounts Dritter:"
+
+#, fuzzy
+#~ msgid ""
+#~ "You currently have no social network accounts connected to this account."
+#~ msgstr "Das Social-Network-Account wurde mit Ihrem Account verbunden."
+
+#~ msgid "Add a 3rd Party Account"
+#~ msgstr "Fügen Sie ein fremdes Account hinzu."
+
+#~ msgid "Login Cancelled"
+#~ msgstr "Login annulliert"
+
+#, fuzzy
+#~ msgid ""
+#~ "You decided to cancel logging in to our site using one of your existing "
+#~ "accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
+#~ "\">sign in</a>."
+#~ msgstr ""
+#~ "Sie haben sich entschieden, das Einloggen in unsere Webseite mittels "
+#~ "eines von Ihren existierenden Accounts. Falls dies ein Fehler war, gehen "
+#~ "Sie auf <a href=\"%(login_url)s\">sign in</a>."
+
+#, fuzzy
+#~ msgid ""
+#~ "You are about to use your %(provider_name)s account to login to\n"
+#~ "%(site_name)s. As a final step, please complete the following form:"
+#~ msgstr ""
+#~ "Sie werden Ihr  %(provider_name)s Account benutzen, um\n"
+#~ "sich in %(site_name)s einzuloggen. Der letzte Schritt ist, den folgenden "
+#~ "Formular auszufüllen"
+
+#, fuzzy
+#~ msgid "The social account has been connected."
+#~ msgstr "Das Social-Account wurde abgeschaltet."
+
+#, fuzzy
+#~ msgid "The social account is already connected to a different account."
+#~ msgstr "Das Social-Account wurde abgeschaltet."
+
+#, fuzzy
+#~ msgid "The social account has been disconnected."
+#~ msgstr "Das Social-Account wurde abgeschaltet."
 
 #~ msgid "Delete Password"
 #~ msgstr "Password löschen"
@@ -834,4 +457,3 @@ msgstr "Das Social-Account wurde abgeschaltet."
 
 #~ msgid "Your password has been deleted."
 #~ msgstr "Password wurde gelöscht."
-

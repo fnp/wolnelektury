@@ -1,30 +1,28 @@
 {% extends "base/base.html" %}
+{% load i18n %}
 {% load active_schedule from club %}
 {% load chunks %}
 
 
-{% block titleextra %}Towarzystwo Przyjaciół Wolnych Lektur{% endblock %}
+{% block titleextra %}{% trans "Towarzystwo Przyjaciół Wolnych Lektur" %}{% endblock %}
 
 
 {% block body %}
-<div class="white-box normal-text">
+  <div class="white-box normal-text">
 
-	<h1>Towarzystwo Przyjaciół Wolnych Lektur</h1>
+    <h1>{% trans "Towarzystwo Przyjaciół Wolnych Lektur" %}</h1>
 
-	<p>Towarzystwo jest fajne.</p>
-	{% chunk 'club' %}
+    {% chunk 'club' %}
 
-
-<p style="margin-top: 2em;">
-{% with schedule=request.user|active_schedule %}
-{% if schedule %}
-<a href="{{ schedule.get_absolute_url }}">Gratulacje – należysz już do Towarzystwa Przyjaciół Wolnych Lektur!</a></p>
-{% else %}
-<a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="{% url 'club_join' %}">Dołącz do Towarzystwa</a></p>
-{% endif %}
-{% endwith %}
-
-
-</div>
+    <p style="margin-top: 2em;">
+      {% with schedule=request.user|active_schedule %}
+        {% if schedule %}
+          <a href="{{ schedule.get_absolute_url }}">{% trans "Congratulations – you're already a supporter of Wolne Lektury!" %}</a>
+        {% else %}
+          <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="{% url 'club_join' %}">{% trans "Become a supporter" %}</a>
+        {% endif %}
+      {% endwith %}
+    </p>
+  </div>
 
 {% endblock %}

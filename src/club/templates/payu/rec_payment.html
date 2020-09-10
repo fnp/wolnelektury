@@ -1,15 +1,21 @@
 {% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+{% load i18n %}
 
 
-{% block titleextra %}Towarzystwo Wolnych Lektur{% endblock %}
+{% block titleextra %}{% trans "Towarzystwo Przyjaciół Wolnych Lektur" %}{% endblock %}
 
 
 {% block body %}
-<div class="white-box normal-text">
+  <div class="white-box normal-text">
 
-	<h1>Wspierasz Wolne Lektury</h1>
+    {# On the card payment page. #}
+    <h1>{% trans "Supporting Wolne Lektury" %}</h1>
 
-	<p>Zlecasz comiesięczną płatność w wysokości {{ schedule.amount}} zł. Dziękujemy!</p>
+    <p>
+      {% blocktrans with amount=schedule.amount %}
+        You are setting up a monthly payment in the amount of {{ amount }} PLN. Thank you!
+      {% endblocktrans %}
+    </p>
 
 	<form id="theform" method='POST'>
 		{% csrf_token %}
@@ -19,21 +25,21 @@
 
 
 <script>
-	function yeahwellwhatever(data) {
-		$("#theform #id_token").val(data.value);
-		$("#theform").submit()
-	}
+ function paymentcallback(data) {
+     $("#theform #id_token").val(data.value);
+     $("#theform").submit()
+ }
 </script>
 
 <div id="payu-widget"></div>
 <script
-     src="{{ pos.get_api_host }}/front/widget/js/payu-bootstrap.js"
+    src="{{ pos.get_api_host }}/front/widget/js/payu-bootstrap.js"
 
     {% for k, v in widget_args.items %}
     	{{ k }}="{{ v }}"
     {% endfor %}
 
-    success-callback="yeahwellwhatever"
+    success-callback="paymentcallback"
     sig="{{ widget_sig }}">
 </script>
 

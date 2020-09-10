@@ -43,10 +43,6 @@ class JoinView(CreateView):
             request.session['from_app'] = True
         elif request.session and 'from_app' in request.session:
             del request.session['from_app']
-        #schedule = get_active_schedule(request.user)
-        #if schedule is not None:
-        #    return HttpResponseRedirect(schedule.get_absolute_url())
-        #else:
         return super(JoinView, self).get(request)
 
     def get_context_data(self, **kwargs):

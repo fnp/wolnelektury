@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,30 +19,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: models.py:12
+#: infopages/models.py:12
 msgid "main page priority"
 msgstr ""
 
-#: models.py:13
+#: infopages/models.py:13
 msgid "slug"
 msgstr ""
 
-#: models.py:14
+#: infopages/models.py:14
 msgid "title"
 msgstr ""
 
-#: models.py:15
+#: infopages/models.py:15
 msgid "left column"
 msgstr ""
 
-#: models.py:16
+#: infopages/models.py:16
 msgid "right column"
 msgstr ""
 
-#: models.py:20
+#: infopages/models.py:20
 msgid "info page"
 msgstr ""
 
-#: models.py:21
+#: infopages/models.py:21
 msgid "info pages"
 msgstr ""

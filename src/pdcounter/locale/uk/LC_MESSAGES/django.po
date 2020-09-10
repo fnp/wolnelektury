@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-21 13:28+0100\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2012-05-28 14:18+0100\n"
 "Last-Translator: Natalia Kertyczak <natalczyk@o2.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,76 +16,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:14
+#: pdcounter/models.py:13
 msgid "name"
 msgstr "назва"
 
-#: models.py:15 models.py:66
+#: pdcounter/models.py:14 pdcounter/models.py:64
 msgid "slug"
 msgstr "slug"
 
-#: models.py:16
+#: pdcounter/models.py:15
 msgid "sort key"
 msgstr "ключ сортування"
 
-#: models.py:17 models.py:43
+#: pdcounter/models.py:16 pdcounter/models.py:41
 msgid "description"
 msgstr "опис"
 
-#: models.py:18
+#: pdcounter/models.py:17
 msgid "year of death"
 msgstr "дата смерті"
 
-#: models.py:24 models.py:64
+#: pdcounter/models.py:23 pdcounter/models.py:62
 msgid "author"
 msgstr "автор"
 
-#: models.py:25
+#: pdcounter/models.py:24
 msgid "authors"
 msgstr "автори"
 
-#: models.py:63
+#: pdcounter/models.py:61
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:65
+#: pdcounter/models.py:63
 msgid "goes to public domain"
 msgstr "входить у суспільне надбання"
 
-#: models.py:67
+#: pdcounter/models.py:65
 msgid "translator"
 msgstr "перекладач"
 
-#: models.py:71
+#: pdcounter/models.py:69
 msgid "book stub"
 msgstr "заготовка книжки"
 
-#: models.py:72
+#: pdcounter/models.py:70
 msgid "book stubs"
 msgstr "заготовки книжок"
 
-#: templates/pdcounter/author_detail.html:7
-#: templates/pdcounter/book_stub_detail.html:7
+#: pdcounter/templates/pdcounter/author_detail.html:7
+#: pdcounter/templates/pdcounter/book_stub_detail.html:7
 msgid "Public domain counter"
 msgstr ""
 
-#: templates/pdcounter/author_detail.html:26
-msgid "Read work's study of this author on Lektury.Gazeta.pl"
-msgstr "Прочитати обговорення твору автора на Lektury.Gazeta.pl"
-
-#: templates/pdcounter/author_detail.html:33
+#: pdcounter/templates/pdcounter/author_detail.html:26
 msgid "Read article about this author on Wikipedia"
 msgstr "Прочитати статтю про автора у Вікіпедії"
 
-#: templates/pdcounter/author_detail.html:40
-#: templates/pdcounter/pd_author_box.html:9
+#: pdcounter/templates/pdcounter/author_detail.html:33
+#: pdcounter/templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr "Твори цього автора охороняються авторським правом."
 
-#: templates/pdcounter/author_detail.html:41
-#: templates/pdcounter/author_detail.html:53
-#: templates/pdcounter/pd_author_box.html:10
-#: templates/pdcounter/pd_author_box.html:21
+#: pdcounter/templates/pdcounter/author_detail.html:34
+#: pdcounter/templates/pdcounter/author_detail.html:46
+#: pdcounter/templates/pdcounter/pd_author_box.html:10
+#: pdcounter/templates/pdcounter/pd_author_box.html:21
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
@@ -94,8 +90,8 @@ msgstr ""
 "publiczna/'>Дізнайтеся</a>, чому електронні бібліотеки не можуть "
 "опублікувати творів цього автора."
 
-#: templates/pdcounter/author_detail.html:45
-#: templates/pdcounter/pd_author_box.html:14
+#: pdcounter/templates/pdcounter/author_detail.html:38
+#: pdcounter/templates/pdcounter/pd_author_box.html:14
 #, fuzzy
 msgid ""
 "This author's works are in public domain, but they were not yet published on "
@@ -104,7 +100,7 @@ msgstr ""
 "Твори цього автора є частиною суспільного надбання і скоро будуть "
 "опубліковані у шкільній електронній бібліотеці Wolne Lektury."
 
-#: templates/pdcounter/author_detail.html:49
+#: pdcounter/templates/pdcounter/author_detail.html:42
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
@@ -112,7 +108,7 @@ msgstr ""
 "Твори цього автора стануть частиною суспільного надбання і можна буде їх "
 "вільно публікувати у"
 
-#: templates/pdcounter/book_stub_detail.html:16
+#: pdcounter/templates/pdcounter/book_stub_detail.html:16
 #, fuzzy
 msgid ""
 "This work is in public domain and will be published on Internet library of "
@@ -121,7 +117,7 @@ msgstr ""
 "Цей твір є частиною суспільного надбання і скоро буде опублікований у "
 "шкільній електронній бібліотеці Wolne Lektury."
 
-#: templates/pdcounter/book_stub_detail.html:20
+#: pdcounter/templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
 "published without restrictions in"
@@ -129,8 +125,8 @@ msgstr ""
 "Цей твір стане частиною суспільного надбання і можна буде його вільно "
 "публікувати у"
 
-#: templates/pdcounter/book_stub_detail.html:24
-#: templates/pdcounter/book_stub_detail.html:29
+#: pdcounter/templates/pdcounter/book_stub_detail.html:24
+#: pdcounter/templates/pdcounter/book_stub_detail.html:29
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
@@ -139,11 +135,11 @@ msgstr ""
 "publiczna/'>Дізнайтеся</a>, чому електронні бібліотеки не можуть "
 "опублікувати цього твору."
 
-#: templates/pdcounter/book_stub_detail.html:28
+#: pdcounter/templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Цей твір охороняється авторським правом."
 
-#: templates/pdcounter/pd_author_box.html:18
+#: pdcounter/templates/pdcounter/pd_author_box.html:18
 #, fuzzy
 #| msgid ""
 #| "This author's works will become part of public domain and will be allowed "
@@ -154,6 +150,9 @@ msgid ""
 msgstr ""
 "Твори цього автора стануть частиною суспільного надбання і можна буде їх "
 "вільно публікувати у"
+
+#~ msgid "Read work's study of this author on Lektury.Gazeta.pl"
+#~ msgstr "Прочитати обговорення твору автора на Lektury.Gazeta.pl"
 
 #~ msgid "year of translator's death"
 #~ msgstr "рік смерті перекладача"

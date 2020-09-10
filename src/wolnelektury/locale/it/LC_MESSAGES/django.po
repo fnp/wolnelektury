@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-09 22:17+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: templates/404.html:4
+#: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr "Questa pagina non esiste"
 
-#: templates/404.html:8
+#: wolnelektury/templates/404.html:8
 msgid "Page not found"
 msgstr "La pagina non è stata trovata"
 
-#: templates/404.html:11
+#: wolnelektury/templates/404.html:11
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
@@ -33,15 +33,15 @@ msgstr ""
 "Siamo spiacenti, ma questa pagina non esiste. Si prega di verificare se "
 "l'indirizzo è stato inserito correttamente oppure andare su"
 
-#: templates/404.html:12
+#: wolnelektury/templates/404.html:12
 msgid "main page"
 msgstr "pagina principale"
 
-#: templates/500.html:6 templates/500.html:17
+#: wolnelektury/templates/500.html:6 wolnelektury/templates/500.html:17
 msgid "Server error"
 msgstr "Errore del server"
 
-#: templates/500.html:19
+#: wolnelektury/templates/500.html:19
 msgid ""
 "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
 "<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
@@ -53,63 +53,69 @@ msgstr ""
 "pl'>blog</a>.</p> <p>Si prega di informare i nostri <a href='mailto:"
 "fundacja@nowoczesnapolska.org.pl'>amministratori</a> sull'errore. </p>"
 
-#: templates/503.html:6 templates/503.html:17
+#: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
 msgid "Service unavailable"
 msgstr "Servizio non disponibile"
 
-#: templates/503.html:19
+#: wolnelektury/templates/503.html:19
 msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
 msgstr ""
 "A causa di lavori di manutenzione il sito WolneLektury.pl non è "
 "momentaneamente disponibile."
 
-#: templates/admin/base_site.html:4 templates/admin/base_site.html:7
+#: wolnelektury/templates/admin/base_site.html:4
+#: wolnelektury/templates/admin/base_site.html:7
 msgid "Site administration"
 msgstr "Amministrazione del sito"
 
-#: templates/admin/catalogue/book/change_form.html:6
-#: templates/admin/catalogue/book/change_form.html:36
+#: wolnelektury/templates/admin/catalogue/book/change_form.html:6
+#: wolnelektury/templates/admin/catalogue/book/change_form.html:36
 msgid "advanced"
 msgstr "avanzato"
 
-#: templates/admin/catalogue/book/change_form.html:34
+#: wolnelektury/templates/admin/catalogue/book/change_form.html:34
 msgid "simplified"
 msgstr "semplificato"
 
-#: templates/admin/catalogue/book/change_list.html:9
+#: wolnelektury/templates/admin/catalogue/book/change_list.html:9
 msgid "Import book"
 msgstr "Importa un libro"
 
-#: templates/auth/login.html:11
+#: wolnelektury/templates/auth/login.html:11
 msgid "Forgot Password?"
 msgstr ""
 
-#: templates/auth/login.html:17 templates/auth/register.html:8
+#: wolnelektury/templates/auth/login.html:17
+#: wolnelektury/templates/auth/register.html:8
 #, fuzzy
 msgid "Sign in using:"
 msgstr "Accedi"
 
-#: templates/auth/login_register.html:8
+#: wolnelektury/templates/auth/login_register.html:8
 msgid "or register"
 msgstr "oppure registrati"
 
-#: templates/base/app.html:20 templates/base/superbase.html:25
+#: wolnelektury/templates/base/app.html:20
+#: wolnelektury/templates/base/superbase.html:25
 msgid "Wolne Lektury"
 msgstr "Wolne Lektury"
 
-#: templates/base/app.html:42 templates/base/app.html:43
-#: templates/base/superbase.html:69 templates/base/superbase.html:70
+#: wolnelektury/templates/base/app.html:42
+#: wolnelektury/templates/base/app.html:43
+#: wolnelektury/templates/base/superbase.html:69
+#: wolnelektury/templates/base/superbase.html:70
 #, fuzzy
 #| msgid "Language versions"
 msgid "Language"
 msgstr "Versioni in altre lingue"
 
-#: templates/base/app.html:66 templates/base/superbase.html:100
-#: templates/board_base.html:48
+#: wolnelektury/templates/base/app.html:66
+#: wolnelektury/templates/base/superbase.html:100
+#: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Esci"
 
-#: templates/base/superbase.html:60
+#: wolnelektury/templates/base/superbase.html:60
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -142,63 +148,68 @@ msgstr[1] ""
 "href='%(r)s'>right to</a>\n"
 "                    "
 
-#: templates/base/superbase.html:94
+#: wolnelektury/templates/base/superbase.html:94
 msgid "My shelf"
 msgstr "Il mio scaffale"
 
-#: templates/base/superbase.html:97 templates/board_base.html:43
+#: wolnelektury/templates/base/superbase.html:97
+#: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Amministrazione"
 
-#: templates/base/superbase.html:104 views.py:64 views.py:65
+#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:64
+#: wolnelektury/views.py:65
 msgid "Sign in"
 msgstr "Accedi"
 
-#: templates/base/superbase.html:105 views.py:83 views.py:84 views.py:112
+#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:83
+#: wolnelektury/views.py:84 wolnelektury/views.py:112
 msgid "Register"
 msgstr "Registrati"
 
-#: templates/base/superbase.html:112
+#: wolnelektury/templates/base/superbase.html:112
 msgid "Wesprzyj nas"
 msgstr ""
 
-#: templates/base/superbase.html:115
+#: wolnelektury/templates/base/superbase.html:115
 msgid "Literature"
 msgstr ""
 
-#: templates/base/superbase.html:118
+#: wolnelektury/templates/base/superbase.html:118
 msgid "Themes"
 msgstr "Temi"
 
-#: templates/base/superbase.html:121
+#: wolnelektury/templates/base/superbase.html:121
 msgid "Audiobooks"
 msgstr "Audiolibri"
 
-#: templates/base/superbase.html:124 templates/main_page.html:83
+#: wolnelektury/templates/base/superbase.html:124
+#: wolnelektury/templates/main_page.html:83
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Tutti i libri"
 
-#: templates/base/superbase.html:133 templates/board_base.html:28
+#: wolnelektury/templates/base/superbase.html:133
+#: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Cerca"
 
-#: templates/base/superbase.html:164
+#: wolnelektury/templates/base/superbase.html:164
 msgid "Close"
 msgstr "Chiudi"
 
-#: templates/base/superbase.html:166
+#: wolnelektury/templates/base/superbase.html:166
 msgid "Loading"
 msgstr "Caricamento"
 
-#: templates/board_base.html:31
+#: wolnelektury/templates/board_base.html:31
 #, fuzzy
 #| msgid "advanced"
 msgid "Advanced search"
 msgstr "avanzato"
 
-#: templates/info/join_us.html:6
+#: wolnelektury/templates/info/join_us.html:6
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -245,162 +256,165 @@ msgstr[1] ""
 "donazione\n"
 "oppure con un trasferimento 1&#37; della tua imposta sul reddito</a>.\n"
 
-#: templates/info/join_us.html:22
+#: wolnelektury/templates/info/join_us.html:22
 msgid ""
 "Become an editor of Wolne Lektury! Find out if\n"
 "    we're currently working on a reading you're looking for and prepare\n"
 "    a publication by yourself by logging into the Editorial Platform."
 msgstr ""
 
-#: templates/info/join_us.html:25
+#: wolnelektury/templates/info/join_us.html:25
 msgid "More..."
 msgstr "Più"
 
-#: templates/main_page.html:11 templates/main_page.html:12
+#: wolnelektury/templates/main_page.html:11
+#: wolnelektury/templates/main_page.html:12
 msgid "Wolne Lektury internet library"
 msgstr "Wolne Lektury biblioteca online"
 
-#: templates/main_page.html:19
+#: wolnelektury/templates/main_page.html:19
 msgid "In our digital library you will find"
 msgstr ""
 
-#: templates/main_page.html:28
+#: wolnelektury/templates/main_page.html:28
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr ""
 
-#: templates/main_page.html:35
+#: wolnelektury/templates/main_page.html:35
 msgid "Motifs and themes"
 msgstr "Motivi e temi"
 
-#: templates/main_page.html:37
+#: wolnelektury/templates/main_page.html:37
 msgid "Theme"
 msgstr "tema"
 
-#: templates/main_page.html:38
+#: wolnelektury/templates/main_page.html:38
 msgid "Explore works with the same theme"
 msgstr ""
 
-#: templates/main_page.html:48
+#: wolnelektury/templates/main_page.html:48
 msgid "See motifs catalog"
 msgstr ""
 
-#: templates/main_page.html:53
+#: wolnelektury/templates/main_page.html:53
 msgid "Collections"
 msgstr ""
 
-#: templates/main_page.html:55
+#: wolnelektury/templates/main_page.html:55
 msgid "See collections catalog"
 msgstr ""
 
-#: templates/main_page.html:60
+#: wolnelektury/templates/main_page.html:60
 msgid "Recent publications"
 msgstr ""
 
-#: templates/main_page.html:64
+#: wolnelektury/templates/main_page.html:64
 msgid "More recent publications"
 msgstr ""
 
-#: templates/main_page.html:70
+#: wolnelektury/templates/main_page.html:70
 msgid "News"
 msgstr ""
 
-#: templates/main_page.html:77
+#: wolnelektury/templates/main_page.html:77
 msgid "Utilities"
 msgstr ""
 
-#: templates/main_page.html:80
+#: wolnelektury/templates/main_page.html:80
 msgid "Report a bug or suggestion"
 msgstr "Segnala un'errore o una proposta"
 
-#: templates/main_page.html:81
+#: wolnelektury/templates/main_page.html:81
 msgid "Download the catalogue in PDF format."
 msgstr "Scarica il catalogo nel formato PDF."
 
-#: templates/main_page.html:82
+#: wolnelektury/templates/main_page.html:82
 #, fuzzy
 #| msgid "Artist"
 msgid "Art"
 msgstr "Artista"
 
-#: templates/main_page.html:85
+#: wolnelektury/templates/main_page.html:85
 msgid "Footnotes"
 msgstr ""
 
-#: templates/main_page.html:86
+#: wolnelektury/templates/main_page.html:86
 msgid "Missing a book?"
 msgstr "Manca un libro?"
 
-#: templates/main_page.html:87 templates/publish_plan.html:4
-#: templates/publish_plan.html:8
+#: wolnelektury/templates/main_page.html:87
+#: wolnelektury/templates/publish_plan.html:4
+#: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Programma editoriale"
 
-#: templates/main_page.html:92
+#: wolnelektury/templates/main_page.html:92
 msgid "Newsletter"
 msgstr ""
 
-#: templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:97
 msgid "Information"
 msgstr ""
 
-#: templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:99
 msgid "Privacy policy"
 msgstr ""
 
-#: templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:120
 msgid "Image used:"
 msgstr "Immagine usata"
 
-#: templates/openid/login.html:5 templates/openid/login.html:8
+#: wolnelektury/templates/openid/login.html:5
+#: wolnelektury/templates/openid/login.html:8
 msgid "OpenID Sign In"
 msgstr ""
 
-#: templates/openid/login.html:16
+#: wolnelektury/templates/openid/login.html:16
 #, fuzzy
 msgid "Sign In"
 msgstr "Accedi"
 
-#: templates/pagination/pagination.html:6
-#: templates/pagination/pagination.html:8
+#: wolnelektury/templates/pagination/pagination.html:6
+#: wolnelektury/templates/pagination/pagination.html:8
 msgid "previous"
 msgstr "precedente"
 
-#: templates/pagination/pagination.html:22
-#: templates/pagination/pagination.html:24
+#: wolnelektury/templates/pagination/pagination.html:22
+#: wolnelektury/templates/pagination/pagination.html:24
 msgid "next"
 msgstr "seguente"
 
-#: templates/socialaccount/connections.html:5
-#: templates/socialaccount/connections.html:10
+#: wolnelektury/templates/socialaccount/connections.html:5
+#: wolnelektury/templates/socialaccount/connections.html:10
 msgid "Account Connections"
 msgstr ""
 
-#: templates/socialaccount/connections.html:13
+#: wolnelektury/templates/socialaccount/connections.html:13
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
 msgstr ""
 
-#: templates/socialaccount/connections.html:33
+#: wolnelektury/templates/socialaccount/connections.html:33
 #, fuzzy
 msgid "Remove"
 msgstr "elimina"
 
-#: templates/socialaccount/connections.html:39
+#: wolnelektury/templates/socialaccount/connections.html:39
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr ""
 
-#: templates/socialaccount/connections.html:43
+#: wolnelektury/templates/socialaccount/connections.html:43
 msgid "Add a 3rd Party Account"
 msgstr ""
 
-#: templates/socialaccount/login_cancelled.html:5
-#: templates/socialaccount/login_cancelled.html:10
+#: wolnelektury/templates/socialaccount/login_cancelled.html:5
+#: wolnelektury/templates/socialaccount/login_cancelled.html:10
 msgid "Login Cancelled"
 msgstr ""
 
-#: templates/socialaccount/login_cancelled.html:15
+#: wolnelektury/templates/socialaccount/login_cancelled.html:15
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
@@ -408,59 +422,60 @@ msgid ""
 "\">sign in</a>."
 msgstr ""
 
-#: templates/socialaccount/signup.html:6
+#: wolnelektury/templates/socialaccount/signup.html:6
 #, fuzzy
 #| msgid "Sign in"
 msgid "Signup"
 msgstr "Accedi"
 
-#: templates/socialaccount/signup.html:9 templates/socialaccount/signup.html:25
+#: wolnelektury/templates/socialaccount/signup.html:9
+#: wolnelektury/templates/socialaccount/signup.html:25
 #, fuzzy
 #| msgid "Sign in"
 msgid "Sign Up"
 msgstr "Accedi"
 
-#: templates/socialaccount/signup.html:11
+#: wolnelektury/templates/socialaccount/signup.html:11
 #, python-format
 msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: templates/user.html:5 templates/user.html:9
+#: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
 msgid "User"
 msgstr ""
 
-#: templates/user.html:11
+#: wolnelektury/templates/user.html:11
 msgid "Password"
 msgstr ""
 
-#: templates/user.html:12
+#: wolnelektury/templates/user.html:12
 msgid "E-mail"
 msgstr ""
 
-#: templates/user.html:13
+#: wolnelektury/templates/user.html:13
 msgid "Social accounts"
 msgstr ""
 
-#: utils.py:123
+#: wolnelektury/utils.py:123
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
-#: utils.py:205
+#: wolnelektury/utils.py:205
 msgid "Yes"
 msgstr ""
 
-#: utils.py:206
+#: wolnelektury/utils.py:206
 msgid "No"
 msgstr ""
 
-#: views.py:72 views.py:93
+#: wolnelektury/views.py:72 wolnelektury/views.py:93
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr ""
 
-#: views.py:107
+#: wolnelektury/views.py:107
 msgid "You have to be logged in to continue"
 msgstr " Per poter continuare devi essere loggato"
 

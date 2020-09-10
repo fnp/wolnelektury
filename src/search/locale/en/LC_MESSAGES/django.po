@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2012-03-10 13:31+0100\n"
 "Last-Translator: Kamil <kjaklukowski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:12 templates/newsearch/search.html:16
+#: search/forms.py:11 search/templates/newsearch/search.html:16
 msgid "Search"
 msgstr "Search"
 
-#: forms.py:22
-msgid "title, author, theme/topic, epoch, kind, genre, phrase"
+#: search/forms.py:21
+#, fuzzy
+#| msgid "title, author, theme/topic, epoch, kind, genre, phrase"
+msgid "title, author, epoch, kind, genre, phrase"
 msgstr "title, author, theme/topic, period, form, genre, phrase"
 
-#: views.py:119
-msgid "book"
-msgstr "book"
+#~ msgid "book"
+#~ msgstr "book"

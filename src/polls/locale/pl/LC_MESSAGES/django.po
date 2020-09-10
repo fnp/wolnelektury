@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,51 +18,51 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: models.py:16
+#: polls/models.py:15
 msgid "question"
 msgstr "Pytanie"
 
-#: models.py:17
+#: polls/models.py:16
 msgid "slug"
 msgstr "slug"
 
-#: models.py:18
+#: polls/models.py:17
 msgid "open"
 msgstr "otwarta"
 
-#: models.py:21
+#: polls/models.py:20
 msgid "Poll"
 msgstr "Ankieta"
 
-#: models.py:22
+#: polls/models.py:21
 msgid "Polls"
 msgstr "Ankiety"
 
-#: models.py:26
+#: polls/models.py:25
 msgid "Slug of an open poll needs to be unique"
 msgstr "Slug otwartej ankiety musi być unikalny"
 
-#: models.py:46
+#: polls/models.py:45
 msgid "content"
 msgstr "treść"
 
-#: models.py:47
+#: polls/models.py:46
 msgid "vote count"
 msgstr "licznik głosów"
 
-#: models.py:50
+#: polls/models.py:49
 msgid "vote item"
 msgstr "Pozycja ankiety"
 
-#: models.py:51
+#: polls/models.py:50
 msgid "vote items"
 msgstr "Pozycje ankiety"
 
-#: templates/polls/poll.html:11
+#: polls/templates/polls/poll.html:11
 msgid "Thanks for voting! You can see current results below."
 msgstr ""
 "Dziękujemy za oddanie głosu w ankiecie! Poniżej znajdują się bieżące wyniki."
 
-#: templates/polls/tags/poll.html:24
+#: polls/templates/polls/tags/poll.html:23
 msgid "Submit"
 msgstr "Wyślij"

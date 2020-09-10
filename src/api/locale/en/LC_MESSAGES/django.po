@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:34+0200\n"
+"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:15
+#: api/models.py:16
 msgid "slug"
 msgstr ""
 
-#: templates/api/main.html:5
+#: api/templates/api/main.html:5
 msgid "WolneLektury.pl API"
 msgstr ""
 
-#: templates/api/main.html:15
+#: api/templates/api/main.html:15
 #, python-format
 msgid ""
 "\n"
@@ -36,7 +36,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/api/main.html:23
+#: api/templates/api/main.html:23
 msgid ""
 "\n"
 "        Default data serialization format is\n"
@@ -46,50 +46,50 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/api/main.html:32
+#: api/templates/api/main.html:32
 msgid ""
 "\n"
 "        The URLs in WolneLektury.pl API are:\n"
 "      "
 msgstr ""
 
-#: templates/api/main.html:39
+#: api/templates/api/main.html:39
 msgid "All books"
 msgstr ""
 
-#: templates/api/main.html:41
+#: api/templates/api/main.html:41
 msgid "Audiobooks"
 msgstr ""
 
-#: templates/api/main.html:43
+#: api/templates/api/main.html:43
 msgid "DAISY"
 msgstr ""
 
-#: templates/api/main.html:46
+#: api/templates/api/main.html:46
 msgid "List of all authors"
 msgstr ""
 
-#: templates/api/main.html:48
+#: api/templates/api/main.html:48
 msgid "List of all epochs"
 msgstr ""
 
-#: templates/api/main.html:50
+#: api/templates/api/main.html:50
 msgid "List of all genres"
 msgstr ""
 
-#: templates/api/main.html:52
+#: api/templates/api/main.html:52
 msgid "List of all kinds"
 msgstr ""
 
-#: templates/api/main.html:55
+#: api/templates/api/main.html:55
 msgid "List of all themes"
 msgstr ""
 
-#: templates/api/main.html:57
+#: api/templates/api/main.html:57
 msgid "Collections"
 msgstr ""
 
-#: templates/api/main.html:63
+#: api/templates/api/main.html:63
 #, python-format
 msgid ""
 "\n"
@@ -101,7 +101,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/api/main.html:72
+#: api/templates/api/main.html:72
 #, python-format
 msgid ""
 "\n"
@@ -112,7 +112,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/api/main.html:80
+#: api/templates/api/main.html:80
 #, python-format
 msgid ""
 "\n"
@@ -122,7 +122,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/api/main.html:88
+#: api/templates/api/main.html:88
 #, python-format
 msgid ""
 "\n"
@@ -133,4 +133,20 @@ msgid ""
 "fragment's details, i.e.:\n"
 "        <a href=\"%(f)s\">%(f)s</a>.\n"
 "      "
+msgstr ""
+
+#: api/templates/oauth/authorize_token.html:4
+#: api/templates/oauth/authorize_token.html:7
+msgid "Authorize access to Wolne Lektury"
+msgstr ""
+
+#: api/templates/oauth/authorize_token.html:11
+#, python-format
+msgid ""
+"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
+"strong>."
+msgstr ""
+
+#: api/templates/oauth/authorize_token.html:17
+msgid "Confirm"
 msgstr ""
