@@ -23,7 +23,7 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
      {% if schedule.is_cancelled %}
          <p><strong>Płatność anulowana.</strong></p>
          <p>
-           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/towarzystwo/dolacz/">Odnów składkę</a>
+           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/towarzystwo/dolacz/">Wpłać ponownie</a>
          </p>
      {% else %}
        <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
@@ -34,7 +34,7 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
   {% else %}
      <form class="wlform" method='post' action=''>
 	{% csrf_token %}
-	<button type="submit" class="submit">Opłać kolejny okres</button>
+	<button type="submit" class="submit">Dorzuć się ponownie</button>
      </form>
   {% endif %}
 
@@ -44,20 +44,20 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
    Członkostwo wygasło.
    <form method='post' action='' class="wlform">
         {% csrf_token %}
-	<button type="submit" class="submit">Opłać kolejny okres</button>
+	<button type="submit" class="submit">Dorzuć się ponownie</button>
    </form>
 
 
  {% else %}
   {% if not schedule.payed_at %}
-   Składka nie została jeszcze opłacona.
+   <p>Płatność nie została jeszcze wykonana.</p>
    {% if schedule.payuorder_set.exists %}
      Czekamy na potwierdzenie płatności.
    {% else %}
 
      <form method='post' action=''>
         {% csrf_token %}
-	<button type="submit" class="submit">Zapłać składkę</button>
+	<button type="submit" class="submit">Dorzuć się</button>
      </form>
 
    {% endif %}
