@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 15:34+0200\n"
-"PO-Revision-Date: 2020-09-10 15:41+0200\n"
+"POT-Creation-Date: 2020-09-16 12:08+0200\n"
+"PO-Revision-Date: 2020-09-16 12:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 2.3\n"
 
-#: club/admin.py:45
+#: club/admin.py:46
 msgid "payment complete"
 msgstr "płatność zakończona"
 
-#: club/admin.py:51
+#: club/admin.py:52
 msgid "schedule expired"
 msgstr "harmonogram przedawniony"
 
@@ -265,6 +265,18 @@ msgstr "notyfikacja PayU"
 msgid "PayU notifications"
 msgstr "notyfikacje PayU"
 
+#: club/templates/admin/club/schedule/change_list.html:7
+msgid "Active monthly recurring donations"
+msgstr "Aktywne miesięczne wpłaty cykliczne"
+
+#: club/templates/admin/club/schedule/change_list.html:12
+msgid "Active yearly recurring donations"
+msgstr "Aktywne roczne wpłaty cykliczne"
+
+#: club/templates/admin/club/schedule/change_list.html:17
+msgid "One-time donations in last 30 days"
+msgstr "Jednorazowe wpłaty w ciągu ostatnich 30 dni"
+
 #: club/templates/club/index.html:20
 msgid "Congratulations – you're already a supporter of Wolne Lektury!"
 msgstr "Gratulacje – należysz już do Towarzystwa Przyjaciół Wolnych Lektur!"
@@ -328,8 +340,8 @@ msgid ""
 "You can unsubscribe at any point. More in the <a target=\"_blank\" href="
 "\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
 msgstr ""
-"W każdej chwili możesz zrezygnować z subskrypcji. Więcej w <a target="
-"\"_blank\" href=\"https://nowoczesnapolska.org.pl/prywatnosc/\">polityce "
+"W każdej chwili możesz zrezygnować z subskrypcji. Więcej w <a target=\"_blank"
+"\" href=\"https://nowoczesnapolska.org.pl/prywatnosc/\">polityce "
 "prywatności</a>."
 
 #: club/templates/club/membership_form.html:228

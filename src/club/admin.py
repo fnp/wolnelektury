@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+from fnpdjango.actions import export_as_csv_action
 from modeltranslation.admin import TranslationAdmin
 from wolnelektury.utils import YesNoFilter
 from . import models
@@ -60,6 +61,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     date_hierarchy = 'started_at'
     raw_id_fields = ['membership']
     inlines = [PayUOrderInline, PayUCardTokenInline]
+    actions = [export_as_csv_action()]
 
 admin.site.register(models.Schedule, ScheduleAdmin)
 

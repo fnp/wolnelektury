@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 15:34+0200\n"
+"POT-Creation-Date: 2020-09-16 12:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: club/admin.py:45
+#: club/admin.py:46
 msgid "payment complete"
 msgstr ""
 
-#: club/admin.py:51
+#: club/admin.py:52
 msgid "schedule expired"
 msgstr ""
 
@@ -259,6 +259,18 @@ msgstr ""
 
 #: club/payu/models.py:146
 msgid "PayU notifications"
+msgstr ""
+
+#: club/templates/admin/club/schedule/change_list.html:7
+msgid "Active monthly recurring donations"
+msgstr ""
+
+#: club/templates/admin/club/schedule/change_list.html:12
+msgid "Active yearly recurring donations"
+msgstr ""
+
+#: club/templates/admin/club/schedule/change_list.html:17
+msgid "One-time donations in last 30 days"
 msgstr ""
 
 #: club/templates/club/index.html:20
