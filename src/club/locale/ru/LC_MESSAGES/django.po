@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 12:08+0200\n"
+"POT-Creation-Date: 2020-09-17 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -351,6 +351,10 @@ msgstr ""
 
 #: club/templates/club/thanks.html:14
 msgid "Thank you"
+msgstr ""
+
+#: club/templates/club/thanks.html:19
+msgid "Go back to the app"
 msgstr ""
 
 #: club/templates/club/year_summary.html:10
