@@ -449,7 +449,7 @@ def tag_catalogue(request, category):
 
 
 def collections(request):
-    objects = Collection.objects.filter(role='')
+    objects = Collection.objects.all()
 
     if len(objects) > 3:
         best = random.sample(list(objects), 3)
