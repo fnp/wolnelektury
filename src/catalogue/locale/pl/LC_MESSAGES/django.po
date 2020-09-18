@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 15:34+0200\n"
-"PO-Revision-Date: 2015-12-31 16:45+0100\n"
+"POT-Creation-Date: 2020-09-17 10:36+0200\n"
+"PO-Revision-Date: 2020-09-18 15:34+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 2.3\n"
 
 #: catalogue/constants.py:9
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
@@ -233,10 +233,8 @@ msgid "cover for mobile app"
 msgstr "okładka dla aplikacji"
 
 #: catalogue/models/book.py:107
-#, fuzzy
-#| msgid "cover for mobile app"
 msgid "cover for Ebookpoint"
-msgstr "okładka dla aplikacji"
+msgstr "okładka dla Ebookpoint"
 
 #: catalogue/models/book.py:136 catalogue/models/collection.py:19
 msgid "book"

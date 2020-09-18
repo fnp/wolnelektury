@@ -17,6 +17,10 @@ class Collection(models.Model):
     book_slugs = models.TextField(_('book slugs'))
     kind = models.CharField(_('kind'), max_length=10, blank=False, default='book', db_index=True,
                             choices=(('book', _('book')), ('picture', _('picture'))))
+    role = models.CharField(max_length=128, blank=True, db_index=True, choices=[
+        ('', '–'),
+        ('recommend', _('recommended')),
+    ])
 
     class Meta:
         ordering = ('title',)

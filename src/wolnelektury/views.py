@@ -52,7 +52,21 @@ def main_page(request):
     except IndexError:
         pass
 
-    ctx['best'] = Book.objects.filter(findable=True).order_by('?')[:5]
+    best = []
+    best_places = 5
+    for recommended in Collection.objects.filter(role='recommend').order_by('?'):
+        books = list(recommended.get_books().exclude(id__in=[b.id for b in best]).order_by('?')[:best_places])
+        best.extend(books)
+        best_places -= len(books)
+        if not best_places:
+            break
+    if best_places:
+        best.extend(
+            list(
+                Book.objects.filter(findable=True).exclude(id__in=[b.id for b in best]).order_by('?')[:best_places]
+            )
+        )
+    ctx['best'] = best
 
     return render(request, "main_page.html", ctx)
 
