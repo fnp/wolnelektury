@@ -179,7 +179,7 @@ def search_books(query):
         except Book.DoesNotExist:
             return False
 
-    results = filter(ensure_exists, results)
+    results = [r for r in results if ensure_exists(r)]
     return results
 
 
@@ -214,7 +214,7 @@ def search_pictures(query):
         except Picture.DoesNotExist:
             return False
 
-    results = filter(ensure_exists, results)
+    results = [r for r in results if ensure_exists(r)]
     return results
 
 
