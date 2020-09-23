@@ -5,7 +5,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 10:36+0200\n"
 "PO-Revision-Date: 2020-09-18 15:34+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
@@ -196,7 +195,7 @@ msgstr "dodatkowe informacje"
 msgid "print on demand"
 msgstr "druk na żądanie"
 
-#: catalogue/models/book.py:73
+#: catalogue/models/book.py:73 catalogue/models/collection.py:22
 msgid "recommended"
 msgstr "polecane"
 
@@ -300,11 +299,11 @@ msgstr "rodzaj"
 msgid "picture"
 msgstr "obraz"
 
-#: catalogue/models/collection.py:23
+#: catalogue/models/collection.py:27
 msgid "collection"
 msgstr "kolekcja"
 
-#: catalogue/models/collection.py:24
+#: catalogue/models/collection.py:28
 msgid "collections"
 msgstr "kolekcje"
 

@@ -7,7 +7,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 10:36+0200\n"
 "PO-Revision-Date: 2013-04-09 10:38+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -222,7 +221,7 @@ msgstr "information supplémentaire"
 msgid "print on demand"
 msgstr ""
 
-#: catalogue/models/book.py:73
+#: catalogue/models/book.py:73 catalogue/models/collection.py:22
 msgid "recommended"
 msgstr ""
 
@@ -329,11 +328,11 @@ msgstr "type"
 msgid "picture"
 msgstr ""
 
-#: catalogue/models/collection.py:23
+#: catalogue/models/collection.py:27
 msgid "collection"
 msgstr "collection"
 
-#: catalogue/models/collection.py:24
+#: catalogue/models/collection.py:28
 msgid "collections"
 msgstr "collections"
 

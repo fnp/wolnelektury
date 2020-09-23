@@ -7,7 +7,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 15:34+0200\n"
 "PO-Revision-Date: 2013-04-09 10:43+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
@@ -158,13 +157,13 @@ msgstr "Mein Bücherregal"
 msgid "Administration"
 msgstr "Administration"
 
-#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:64
-#: wolnelektury/views.py:65
+#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:78
+#: wolnelektury/views.py:79
 msgid "Sign in"
 msgstr "Einloggen"
 
-#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:83
-#: wolnelektury/views.py:84 wolnelektury/views.py:112
+#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:97
+#: wolnelektury/views.py:98 wolnelektury/views.py:126
 msgid "Register"
 msgstr "Registrieren"
 
@@ -493,12 +492,12 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: wolnelektury/views.py:72 wolnelektury/views.py:93
+#: wolnelektury/views.py:86 wolnelektury/views.py:107
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Eingeloggt als User %(user)s"
 
-#: wolnelektury/views.py:107
+#: wolnelektury/views.py:121
 msgid "You have to be logged in to continue"
 msgstr "Sie müssen eingeloggt sein, um fortzusetzen."
 
