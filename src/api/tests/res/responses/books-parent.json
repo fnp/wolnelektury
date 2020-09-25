@@ -65,6 +65,7 @@
             "slug": "liryka"
         }
     ], 
+    "language": "pol",
     "parent": null, 
     "cover_color": "#a6820a", 
     "simple_cover": "http://testserver/media/simple_cover/parent.jpg",

@@ -39,6 +39,7 @@
     "preview": false, 
     "fb2": "", 
     "kinds": [], 
+    "language": "pol",
     "parent": {
         "kind": "Liryka", 
         "full_sort_key": "john doe$parent$1", 

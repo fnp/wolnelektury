@@ -21,6 +21,7 @@
     "preview": false, 
     "fb2": "http://testserver/media/fb2/grandchild.fb2",
     "kinds": [], 
+    "language": "pol",
     "parent": {
         "kind": "", 
         "full_sort_key": "$child$2", 
