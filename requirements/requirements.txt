@@ -13,8 +13,6 @@ libsasscompiler==0.1.5
 
 jsmin
 fnp-django-pagination==2.2.3
-django-maintenancemode==0.11.3
-django-picklefield==1.1.0
 django-modeltranslation==0.13
 django-allauth==0.39
 django-extensions==2.2.1
@@ -53,7 +51,7 @@ sorl-thumbnail==12.5.0
 librarian==1.8.3
 
 # celery tasks
-celery[redis]==4.3.0
+celery[redis]==4.4.7
 
 # OAI-PMH
 pyoai==2.5.0

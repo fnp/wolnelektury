@@ -6,13 +6,11 @@ from django.urls import reverse
 from django.db import models
 from waiter.settings import WAITER_URL, WAITER_MAX_QUEUE
 from waiter.utils import check_abspath
-from picklefield import PickledObjectField
 
 
 class WaitedFile(models.Model):
     path = models.CharField(max_length=255, unique=True, db_index=True)
     task_id = models.CharField(max_length=128, db_index=True, null=True, blank=True)
-    task = PickledObjectField(null=True, editable=False)
     description = models.CharField(max_length=255, null=True, blank=True)
 
     @classmethod
@@ -52,7 +50,7 @@ class WaitedFile(models.Model):
         if not already:
             waited, created = cls.objects.get_or_create(path=path)
             if created:
-                waited.task = task_creator(check_abspath(path), waited.pk)
+                task_creator(check_abspath(path), waited.pk)
                 waited.task_id = waited.task.task_id
                 waited.description = description
                 waited.save()

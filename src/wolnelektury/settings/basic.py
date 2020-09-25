@@ -6,7 +6,6 @@ from machina import MACHINA_MAIN_TEMPLATE_DIR
 from .paths import PROJECT_DIR
 
 DEBUG = True
-MAINTENANCE_MODE = False
 
 ADMINS = [
     # ('Your Name', 'your_email@domain.com'),
@@ -77,7 +76,6 @@ MIDDLEWARE = [
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'fnp_django_pagination.middleware.PaginationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'maintenancemode.middleware.MaintenanceModeMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
