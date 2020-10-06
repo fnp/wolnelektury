@@ -169,12 +169,7 @@ class BuildEbook(Task):
         fieldfile.save(None, File(open(out.get_filename(), 'rb')), save=False)
         self.set_file_permissions(fieldfile)
         if book.pk is not None:
-            books = type(book).objects.filter(pk=book.pk)
-            books.update(**{
-                fieldfile.field.attname: fieldfile
-            })
-            for book in books:
-                book.save()  # just to trigger post-save
+            book.save(update_fields=[fieldfile.field.attname])
         if fieldfile.field.format_name in app_settings.FORMAT_ZIPS:
             remove_zip(app_settings.FORMAT_ZIPS[fieldfile.field.format_name])
 # Don't decorate BuildEbook, because we want to subclass it.
