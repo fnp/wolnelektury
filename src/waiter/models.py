@@ -50,8 +50,8 @@ class WaitedFile(models.Model):
         if not already:
             waited, created = cls.objects.get_or_create(path=path)
             if created:
-                task_creator(check_abspath(path), waited.pk)
-                waited.task_id = waited.task.task_id
+                task = task_creator(check_abspath(path), waited.pk)
+                waited.task_id = task.task_id
                 waited.description = description
                 waited.save()
             return reverse("waiter", args=[path])
