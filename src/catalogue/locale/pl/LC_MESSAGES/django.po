@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-09-18 15:34+0200\n"
+"PO-Revision-Date: 2020-10-16 09:51+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -382,6 +382,7 @@ msgstr "Zobacz też"
 
 #: catalogue/templates/catalogue/book_detail.html:41
 #: catalogue/templates/catalogue/book_text.html:38
+#: catalogue/templates/catalogue/book_text.html:57
 #: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr "Motywy"
@@ -557,46 +558,37 @@ msgid "Table of contents"
 msgstr "Spis treści"
 
 #: catalogue/templates/catalogue/book_text.html:44
-#: catalogue/templates/catalogue/book_text.html:144
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: catalogue/templates/catalogue/book_text.html:50
 msgid "Edit. note"
 msgstr "Nota red."
 
-#: catalogue/templates/catalogue/book_text.html:56
+#: catalogue/templates/catalogue/book_text.html:50
 msgid "Infobox"
 msgstr "Informacje"
 
-#: catalogue/templates/catalogue/book_text.html:80
+#: catalogue/templates/catalogue/book_text.html:55
+msgid "Numbering"
+msgstr "Numeracja"
+
+#: catalogue/templates/catalogue/book_text.html:59
+msgid "Footnotes"
+msgstr "Przypisy"
+
+#: catalogue/templates/catalogue/book_text.html:82
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr "Zamknij"
 
-#: catalogue/templates/catalogue/book_text.html:81
+#: catalogue/templates/catalogue/book_text.html:83
 msgid "Please wait..."
 msgstr "Proszę czekać…"
 
-#: catalogue/templates/catalogue/book_text.html:125
+#: catalogue/templates/catalogue/book_text.html:127
 msgid "Other versions of the book"
 msgstr "Inne wersje utworu"
 
-#: catalogue/templates/catalogue/book_text.html:126
+#: catalogue/templates/catalogue/book_text.html:128
 msgid "Close the other version"
 msgstr "Zamknij drugą wersję"
-
-#: catalogue/templates/catalogue/book_text.html:146
-msgid "Display line numbers"
-msgstr "Wyświetlaj numerację"
-
-#: catalogue/templates/catalogue/book_text.html:148
-msgid "Display themes"
-msgstr "Wyświetlaj motywy"
-
-#: catalogue/templates/catalogue/book_text.html:150
-msgid "Display footnotes"
-msgstr "Wyświetlaj przypisy"
 
 #: catalogue/templates/catalogue/catalogue.html:6
 msgid "Catalogue"
@@ -913,6 +905,15 @@ msgstr "Książka zaimportowana"
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
+
+#~ msgid "Settings"
+#~ msgstr "Ustawienia"
+
+#~ msgid "Display line numbers"
+#~ msgstr "Wyświetlaj numerację"
+
+#~ msgid "Display themes"
+#~ msgstr "Wyświetlaj motywy"
 
 #~ msgid "Gallery"
 #~ msgstr "Galeria"

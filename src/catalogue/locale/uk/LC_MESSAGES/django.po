@@ -418,6 +418,7 @@ msgstr "Дивіться також"
 
 #: catalogue/templates/catalogue/book_detail.html:41
 #: catalogue/templates/catalogue/book_text.html:38
+#: catalogue/templates/catalogue/book_text.html:57
 #: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr "Теми"
@@ -612,52 +613,39 @@ msgid "Table of contents"
 msgstr "Зміст"
 
 #: catalogue/templates/catalogue/book_text.html:44
-#: catalogue/templates/catalogue/book_text.html:144
-msgid "Settings"
-msgstr ""
-
-#: catalogue/templates/catalogue/book_text.html:50
 msgid "Edit. note"
 msgstr "Редакторський коментар"
 
-#: catalogue/templates/catalogue/book_text.html:56
+#: catalogue/templates/catalogue/book_text.html:50
 msgid "Infobox"
 msgstr "Інфобокс"
 
-#: catalogue/templates/catalogue/book_text.html:80
+#: catalogue/templates/catalogue/book_text.html:55
+msgid "Numbering"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:59
+#, fuzzy
+#| msgid "Don't show footnotes"
+msgid "Footnotes"
+msgstr "Сховати примітки"
+
+#: catalogue/templates/catalogue/book_text.html:82
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:81
+#: catalogue/templates/catalogue/book_text.html:83
 msgid "Please wait..."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:125
+#: catalogue/templates/catalogue/book_text.html:127
 msgid "Other versions of the book"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:126
+#: catalogue/templates/catalogue/book_text.html:128
 msgid "Close the other version"
 msgstr ""
-
-#: catalogue/templates/catalogue/book_text.html:146
-#, fuzzy
-#| msgid "parent number"
-msgid "Display line numbers"
-msgstr "номер батька"
-
-#: catalogue/templates/catalogue/book_text.html:148
-#, fuzzy
-#| msgid "Don't disply themes"
-msgid "Display themes"
-msgstr "Сховати теми"
-
-#: catalogue/templates/catalogue/book_text.html:150
-#, fuzzy
-#| msgid "Don't show footnotes"
-msgid "Display footnotes"
-msgstr "Сховати примітки"
 
 #: catalogue/templates/catalogue/catalogue.html:6
 msgid "Catalogue"
@@ -998,6 +986,16 @@ msgstr "Книжку успішно завантажено"
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Помилка в завантаженні файла: %r"
+
+#, fuzzy
+#~| msgid "parent number"
+#~ msgid "Display line numbers"
+#~ msgstr "номер батька"
+
+#, fuzzy
+#~| msgid "Don't disply themes"
+#~ msgid "Display themes"
+#~ msgstr "Сховати теми"
 
 #, fuzzy
 #~| msgid ""

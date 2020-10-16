@@ -1,47 +1,48 @@
 @mixin switch-on {
-    background: #aaa;
-    border-top-color: #888;
-    border-left-color: #888;
-    border-bottom-color: #ddd;
-    border-right-color: #ddd;
-
-    border-width: 2px;
-    border-style: solid;
-
+    left: 10px;
+    right: 0;
 }
 @mixin switch-off {
-    background: none;
-    border-color: #aaa;
+    left: 0;
+    right: 10px;
 }
 .settings-switch {
     display: block;
     padding: .5em;
     margin: .5em;
-    //border: 1px solid #aaa;
-    border-radius: 1em;
     color: black;
-    border-width: 2px;
-    border-style: solid;
+    background: linear-gradient(90deg, #018189 50%, #9e3610 50%);
+    border-radius: 1em;
+    position: relative;
+    height: 1em;
+
+    span {
+        background: #444 ;
+        color: #eee;
+        font-size: 12px;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        border-radius: 16px;
+        line-height: 32px;
+        transition: left .2s, right .2s;
+    }
 }
 
-nav #menu-settings {
-    display: none;
-}
-
-#settings-annotations {@include switch-on;}
+#settings-annotations span {@include switch-on;}
 .no-annotations {
-    #settings-annotations {@include switch-off;}
+    #settings-annotations span {@include switch-off;}
     .annotation {display: none;}
 }
 
-#settings-themes {@include switch-on;}
+#settings-themes span {@include switch-on;}
 .always-hide-themes {
-    #settings-themes {@include switch-off;}
+    #settings-themes span {@include switch-off;}
 }
 
-#settings-line-numbers {@include switch-on;}
+#settings-line-numbers span {@include switch-on;}
 .always-hide-line-numbers {
-    #settings-line-numbers {@include switch-off;}
+    #settings-line-numbers span {@include switch-off;}
 }
 
 

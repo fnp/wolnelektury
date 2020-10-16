@@ -39,12 +39,6 @@
     </a>
   </li>
 
-  <li id="menu-settings">
-    <a href="#" data-box="settings">
-      <span class="label">{% trans "Settings" %}</span>
-    </a>
-  </li>
-
   <li id="menu-nota_red">
     <a href="#" data-box="nota_red">
       <span class="label">{% trans "Edit. note" %}</span>
@@ -56,6 +50,14 @@
       <span class="label">{% trans "Infobox" %}</span>
     </a>
   </li>
+
+  <a href="#" class="settings-switch" id="settings-line-numbers"
+     data-setting="always-hide-line-numbers"><span>{% trans "Numbering" %}</span></a>
+  <a href="#" class="settings-switch" id="settings-themes"
+     data-setting="always-hide-themes"><span>{% trans "Themes" %}</span></a>
+    <a href="#" class="settings-switch" id="settings-annotations"
+       data-setting="no-annotations"><span>{% trans "Footnotes" %}</span></a>
+
 {% endblock menu %}
 
 
@@ -139,16 +141,6 @@
       </ul>
     </div>
   {% endif %}
-
-  <div class="box" id="settings">
-    <h2>{% trans "Settings" %}</h2>
-    <a href="#" class="settings-switch" id="settings-line-numbers"
-       data-setting="always-hide-line-numbers">{% trans "Display line numbers" %}</a><br/>
-    <a href="#" class="settings-switch" id="settings-themes"
-       data-setting="always-hide-themes">{% trans "Display themes" %}</a><br/>
-    <a href="#" class="settings-switch" id="settings-annotations"
-       data-setting="no-annotations">{% trans "Display footnotes" %}</a><br/>
-  </div>
 
   <div class="box" id="book-short">
     {% include 'catalogue/book_short.html' %}

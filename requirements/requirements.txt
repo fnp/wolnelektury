@@ -14,7 +14,7 @@ libsasscompiler==0.1.5
 jsmin
 fnp-django-pagination==2.2.3
 django-modeltranslation==0.13
-django-allauth==0.39
+django-allauth==0.42
 django-extensions==2.2.1
 djangorestframework==3.9.4
 djangorestframework-xml
