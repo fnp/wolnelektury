@@ -163,6 +163,9 @@ class Contact(models.Model):
             self.expires_at = expires_at
         self.save()
 
+    def wl_optout_url(self):
+        return 'https://wolnelektury.pl' + self.get_optout_url()
+
 
 class EmailSent(models.Model):
     template = models.ForeignKey(EmailTemplate, models.CASCADE)
