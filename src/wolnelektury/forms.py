@@ -24,7 +24,7 @@ także w celu przesyłania newslettera Wolnych Lektur.'''
         NewsletterForm.save(self)
 
 
-class SocialSignupForm(NewsletterForm, SignupForm):
+class SocialSignupForm(SignupForm, NewsletterForm):
     data_processing_part2 = '''\
 Dane są przetwarzane w zakresie niezbędnym do prowadzenia serwisu, a także w celach prowadzenia statystyk, \
 ewaluacji i sprawozdawczości. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany \
@@ -32,3 +32,4 @@ także w celu przesyłania newslettera Wolnych Lektur.'''
 
     def save(self, *args, **kwargs):
         super(SocialSignupForm, self).save(*args, **kwargs)
+        NewsletterForm.save(self)
