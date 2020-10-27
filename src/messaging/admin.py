@@ -72,7 +72,7 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ['email']
     date_hierarchy = 'since'
     actions = [
-        export_as_csv_action(fields=['id', 'email', 'get_level_display', 'since', 'expires_at']),
+#        export_as_csv_action(fields=['id', 'email', 'get_level_display', 'since', 'expires_at']),
         export_as_csv_action('Eksport dla PHPList', fields=['email', 'wl_optout_url'])
     ]
 
