@@ -65,3 +65,10 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
 def update_counters():
     from .helpers import update_counters
     update_counters()
+
+
+@task(ignore_result=True)
+def update_references(book_id):
+    from catalogue.models import Book
+    Book.objects.get(id=book_id).update_references()
+

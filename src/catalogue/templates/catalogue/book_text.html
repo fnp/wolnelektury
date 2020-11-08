@@ -1,5 +1,5 @@
 {% extends "catalogue/viewer_base.html" %}
-{% load i18n %}
+{% load i18n l10n %}
 {% load catalogue_tags %}
 {% load chunks %}
 {% load thumbnail %}
@@ -8,6 +8,15 @@
 
 {% block title %}{{ book.pretty_title }}{% endblock %}
 
+
+{% block extrahead %}
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+         crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+{% endblock %}
 
 {% block menu %}
   <li>
@@ -55,8 +64,10 @@
      data-setting="always-hide-line-numbers"><span>{% trans "Numbering" %}</span></a>
   <a href="#" class="settings-switch" id="settings-themes"
      data-setting="always-hide-themes"><span>{% trans "Themes" %}</span></a>
-    <a href="#" class="settings-switch" id="settings-annotations"
-       data-setting="no-annotations"><span>{% trans "Footnotes" %}</span></a>
+  <a href="#" class="settings-switch" id="settings-annotations"
+     data-setting="no-annotations"><span>{% trans "Footnotes" %}</span></a>
+  <a href="#" class="settings-switch" id="settings-references"
+     data-setting="no-references"><span>{% trans "References" %}</span></a>
 
 {% endblock menu %}
 
@@ -83,6 +94,17 @@
     <div id="other-text-waiter">{% trans "Please wait..." %}</div>
     <div id="other-text-body" style="display: none;"></div>
   </article>
+
+  <div id="reference-box">
+    <div id="reference-map"></div>
+    <a id="reference-close" href="#">x</a>
+    <div id="reference-images">
+    </div>
+    <a id="reference-link" target="_blank"></a>
+  </div>
+
+
+
 {% endblock big-pane %}
 
 {% block footer %}
@@ -153,4 +175,24 @@
       {% include 'annoy/dynamic_insert.html' %}
     {% endfor %}
   </div>
+
+  {% localize off %}
+  <script type="application/json" id="interesting-references">
+   {
+       {% for ref in book.reference_set.all %}
+       {% if ref.entity.is_interesting %}
+       "{{ ref.entity.uri }}": {
+           {% if ref.entity.lat and ref.entity.lon %}
+           "location": [{{ ref.entity.lat }}, {{ ref.entity.lon }}],
+           {% endif %}
+           "images": {{ ref.entity.images|safe }},
+           "label": "{{ ref.entity.label }}",
+           "description": "{{ ref.entity.description }}",
+           "wikipedia_link": "{{ ref.entity.wikipedia_link }}"
+       }{% if not forloop.last %},{% endif %}
+       {% endif %}
+       {% endfor %}
+  }
+  </script>
+  {% endlocalize %}
 {% endblock footer %}

@@ -1,0 +1,49 @@
+a.reference.interesting::after {
+    content: "📌";
+}
+.no-references .reference.interesting:after {
+    display: none;
+}
+
+#reference-box {
+    display: none;
+    width: 300px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index:100;
+    background: #eee;
+    #reference-map {
+        height:400px;
+        width: 300px;
+    }
+    #reference-images {
+        padding: 10px;
+        white-space: nowrap;
+        overflow-x: auto;
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 10px 0 0;
+            img {
+                margin: 0;
+                height: 100px;
+            }
+        }
+    }
+    #reference-link {
+        display: block;
+        font-size: 1.5em;
+        padding: 10px;
+    }
+
+    #reference-close {
+        font-size: 30px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        font-family: sans-serif;
+        color: black;
+    }
+}

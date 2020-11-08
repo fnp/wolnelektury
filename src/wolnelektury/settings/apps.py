@@ -17,6 +17,7 @@ INSTALLED_APPS_OUR = [
     'newtagging',
     'opds',
     'pdcounter',
+    'references',
     'reporting',
     'sponsors',
     'stats',

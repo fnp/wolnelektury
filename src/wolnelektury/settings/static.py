@@ -156,6 +156,7 @@ PIPELINE = {
                 'js/book_text/info.js',
                 'js/book_text/menu.js',
                 'js/book_text/note.js',
+                'js/book_text/references.js',
                 'js/book_text/settings.js',
                 'js/book_text/toc.js',
                 'js/locale.js',

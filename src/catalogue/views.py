@@ -351,7 +351,7 @@ def import_book(request):
                 _("An error occurred: %(exception)s\n\n%(tb)s") % {
                     'exception': exception, 'tb': tb
                 },
-                mimetype='text/plain'
+                content_type='text/plain'
             )
         return HttpResponse(_("Book imported successfully"))
     return HttpResponse(_("Error importing file: %r") % book_import_form.errors)

@@ -45,4 +45,8 @@
     #settings-line-numbers span {@include switch-off;}
 }
 
+#settings-references span {@include switch-on;}
+.no-references {
+    #settings-references span {@include switch-off;}
+}
 

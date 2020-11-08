@@ -634,9 +634,49 @@ class Book(models.Model):
             child.parent_cover_changed()
 
         book.update_popularity()
+        tasks.update_references.delay(book.id)
+
         cls.published.send(sender=cls, instance=book)
         return book
 
+    def get_master(self):
+        master_tags = [
+            'opowiadanie',
+            'powiesc',
+            'dramat_wierszowany_l',
+            'dramat_wierszowany_lp',
+            'dramat_wspolczesny', 'liryka_l', 'liryka_lp',
+            'wywiad',
+        ]
+        from librarian.parser import WLDocument
+        wld = WLDocument.from_file(self.xml_file.path, parse_dublincore=False)
+        root = wld.edoc.getroot()
+        for master in root.iter():
+            if master.tag in master_tags:
+                return master
+    
+    def update_references(self):
+        from references.models import Entity, Reference
+        master = self.get_master()
+        found = set()
+        for i, sec in enumerate(master):
+            for ref in sec.findall('.//ref'):
+                href = ref.attrib.get('href', '')
+                if not href or href in found:
+                    continue
+                found.add(href)
+                entity, created = Entity.objects.get_or_create(
+                    uri=href
+                )
+                ref, created = Reference.objects.get_or_create(
+                    book=self,
+                    entity=entity
+                )
+                ref.first_section = 'sec%d' % (i + 1)
+                entity.populate()
+                entity.save()
+        Reference.objects.filter(book=self).exclude(entity__uri__in=found).delete()
+    
     @classmethod
     @transaction.atomic
     def repopulate_ancestors(cls):
