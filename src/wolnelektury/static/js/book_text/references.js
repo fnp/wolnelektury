@@ -29,7 +29,8 @@
     }
     
 
-    $("#reference-close").on("click", function() {
+    $("#reference-close").on("click", function(event) {
+        event.preventDefault();
         $("#reference-box").hide();
     });
     
