@@ -8,10 +8,8 @@
         $("#settings-references").css('display', 'block');
     }
 
-    
-    
     var map_enabled = false;
-    var marker = L.marker([0,0]);
+    var marker = L.circleMarker([0,0]);
     var map = null;
 
     function enable_map() {
@@ -62,7 +60,6 @@
             enable_map();
 
             marker.setLatLng(ref.location);
-            //marker.setContent(ref.label);
             marker.bindTooltip(ref.label).openTooltip();
             map.addLayer(marker);
             map.panTo(ref.location, {

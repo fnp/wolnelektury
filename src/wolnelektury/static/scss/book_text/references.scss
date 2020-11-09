@@ -13,6 +13,11 @@ a.reference.interesting::after {
     right: 0;
     z-index:100;
     background: #eee;
+
+    img {
+        margin: 0;
+    }
+    
     #reference-map {
         height:400px;
         width: 300px;
@@ -29,7 +34,6 @@ a.reference.interesting::after {
             vertical-align: middle;
             margin: 0 10px 0 0;
             img {
-                margin: 0;
                 height: 100px;
             }
         }
