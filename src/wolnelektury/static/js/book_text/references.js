@@ -74,7 +74,7 @@
             }
         }
 
-        $("#reference-images img").remove();
+        $("#reference-images a").remove();
         if (ref.images) {
             $.each(ref.images, function(i, e) {
                 $i = $("<a target='_blank'><img></a>");
