@@ -4,7 +4,7 @@
     if (interestingReferences) {
         interestingReferences = $.parseJSON(interestingReferences);
     }
-    if (interestingReferences) {
+    if (Object.keys(interestingReferences).length) {
         $("#settings-references").css('display', 'block');
     }
 
