@@ -5,7 +5,7 @@
         interestingReferences = $.parseJSON(interestingReferences);
     }
     if (interestingReferences) {
-        $("#settings-references").show();
+        $("#settings-references").css('display', 'block');
     }
 
     
