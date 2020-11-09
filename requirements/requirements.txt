@@ -74,3 +74,5 @@ paypalrestsdk
 python-slugify
 
 firebase-admin
+Wikidata==0.7.0
+
