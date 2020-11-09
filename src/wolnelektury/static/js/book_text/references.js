@@ -5,7 +5,7 @@
         interestingReferences = $.parseJSON(interestingReferences);
     }
     if (interestingReferences) {
-        $("settings-references").show();
+        $("#settings-references").show();
     }
 
     
@@ -36,7 +36,6 @@
     $('a.reference').each(function() {
         $this = $(this);
         uri = $this.attr('data-uri');
-        console.log('check ' + uri);
         if (interestingReferences.hasOwnProperty(uri)) {
             $this.addClass('interesting');
             ref = interestingReferences[uri];
