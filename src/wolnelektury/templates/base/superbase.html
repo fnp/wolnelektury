@@ -123,6 +123,9 @@
                   <li{% if active_menu_item == 'all_works' %} class="active"{% endif %}>
                     <a href="{% url 'catalogue' %}">{% trans "All works" %}</a>
                   </li>
+                  <li>
+                    <a href="{% url 'subscribe' %}">{% trans "Newsletter" %}</a>
+                  </li>
                 </ul>
               </nav>
               <form id="search-area" action="{% url 'wlsearch' %}">
