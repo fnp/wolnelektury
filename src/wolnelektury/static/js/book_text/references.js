@@ -18,8 +18,8 @@
         if (map_enabled) return;
 
         map = L.map('reference-map').setView([0, 0], 11);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+        L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=a8a97f0ae5134403ac38c1a075b03e15', {
+            attribution: 'Maps © <a href="http://www.thunderforest.com">Thunderforest</a>, Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         }).addTo(map);
 
         map_enabled = true;
