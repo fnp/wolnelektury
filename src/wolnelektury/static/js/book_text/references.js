@@ -18,7 +18,7 @@
         if (map_enabled) return;
 
         map = L.map('reference-map').setView([0, 0], 11);
-        L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png?lang=pl', {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         }).addTo(map);
 
