@@ -16,6 +16,9 @@ a.reference.interesting::after {
     #reference-map {
         height:400px;
         width: 300px;
+        @media screen and (max-height: 800px) {
+            height: 300px;
+        }
     }
     #reference-images {
         padding: 10px;
