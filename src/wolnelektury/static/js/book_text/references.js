@@ -15,6 +15,8 @@
     var map = null;
 
     function enable_map() {
+        $("#reference-map").show('slow');
+
         if (map_enabled) return;
 
         map = L.map('reference-map').setView([0, 0], 11);
