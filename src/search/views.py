@@ -59,8 +59,8 @@ def did_you_mean(query, tokens):
 
 
 @cache.never_cache
-def hint(request):
-    prefix = request.GET.get('term', '')
+def hint(request, mozhint=False, param='term'):
+    prefix = request.GET.get(param, '')
     if len(prefix) < 2:
         return JsonResponse([], safe=False)
 
@@ -94,6 +94,16 @@ def hint(request):
             }
             for b in Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]
         ]
+
+    if mozhint:
+        data = [
+            prefix,
+            [
+                item['label']
+                for item in data
+            ]
+        ]
+
     callback = request.GET.get('callback', None)
     if callback:
         return HttpResponse("%s(%s);" % (callback, json.dumps(data)),

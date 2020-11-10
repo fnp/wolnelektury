@@ -8,6 +8,7 @@ from catalogue.feeds import AudiobookFeed
 from catalogue.models import Book
 from catalogue import views
 import picture.views
+import search.views
 
 
 urlpatterns = [
@@ -36,6 +37,7 @@ urlpatterns = [
     path('lektury/<slug:slug>/', views.collection, name='collection'),
     path('audiobooki/', views.audiobooks, name='audiobook_list'),
     path('daisy/', views.daisy_list, name='daisy_list'),
+    path('jtags/', search.views.hint, {'param': 'q', 'mozhint': True}, name='jhint'),
     path('nowe/', ListView.as_view(
         queryset=Book.objects.filter(parent=None, findable=True).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),
