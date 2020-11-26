@@ -167,7 +167,7 @@ class Membership(models.Model):
             membership = user.membership
         except cls.DoesNotExist:
             return False
-        if membership.honorary:
+        if membership.manual:
             return True
         return Schedule.objects.filter(
                 expires_at__gt=now(),
