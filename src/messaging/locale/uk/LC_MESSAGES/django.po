@@ -41,11 +41,11 @@ msgstr ""
 msgid "state"
 msgstr ""
 
-#: messaging/models.py:17 messaging/models.py:171
+#: messaging/models.py:17 messaging/models.py:185
 msgid "subject"
 msgstr ""
 
-#: messaging/models.py:18 messaging/models.py:172
+#: messaging/models.py:18 messaging/models.py:186
 msgid "body"
 msgstr ""
 
@@ -130,46 +130,50 @@ msgid "Recurring donor"
 msgstr ""
 
 #: messaging/models.py:115
+msgid "Manually set as member"
+msgstr ""
+
+#: messaging/models.py:116
 msgid "Opt out"
 msgstr ""
 
-#: messaging/models.py:122
+#: messaging/models.py:123
 msgid "contact"
 msgstr ""
 
-#: messaging/models.py:123
+#: messaging/models.py:124
 msgid "contacts"
 msgstr ""
 
-#: messaging/models.py:175
+#: messaging/models.py:189
 msgid "email sent"
 msgstr ""
 
-#: messaging/models.py:176
+#: messaging/models.py:190
 msgid "emails sent"
 msgstr ""
 
-#: messaging/states.py:75
+#: messaging/states.py:76
 msgid "club one-time donors"
 msgstr ""
 
-#: messaging/states.py:90
+#: messaging/states.py:91
 msgid "club one-time donors with donation expiring"
 msgstr ""
 
-#: messaging/states.py:104
+#: messaging/states.py:105
 msgid "club would-be donors"
 msgstr ""
 
-#: messaging/states.py:116
+#: messaging/states.py:117
 msgid "club recurring donors"
 msgstr ""
 
-#: messaging/states.py:131
+#: messaging/states.py:132
 msgid "club recurring donors with donation expired"
 msgstr ""
 
-#: messaging/states.py:146
+#: messaging/states.py:147
 msgid "cold group"
 msgstr ""
 

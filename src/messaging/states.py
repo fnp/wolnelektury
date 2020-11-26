@@ -9,6 +9,7 @@ class Level:
     TRIED = 20
     SINGLE = 30
     RECURRING = 40
+    MANUAL_MEMBER = 45
     OPT_OUT = 50
 
 

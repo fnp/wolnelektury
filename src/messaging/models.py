@@ -112,6 +112,7 @@ class Contact(models.Model):
             (Level.TRIED, _('Would-be donor')),
             (Level.SINGLE, _('One-time donor')),
             (Level.RECURRING, _('Recurring donor')),
+            (Level.MANUAL_MEMBER, _('Manually set as member')),
             (Level.OPT_OUT, _('Opt out')),
         ])
     since = models.DateTimeField()
@@ -162,6 +163,16 @@ class Contact(models.Model):
             self.since = since
             self.expires_at = expires_at
         self.save()
+
+    @classmethod
+    def reset(cls, email):
+        cls.objects.filter(email=email).delete()
+        Schedule = apps.get_model('club', 'Schedule')
+        Membership = apps.get_model('club', 'Membership')
+        for schedule in Schedule.objects.filter(email=email):
+            schedule.update_contact()
+        for membership in Membership.objects.filter(manual=True, user__email=email):
+            membership.update_contact()
 
     def wl_optout_url(self):
         return 'https://wolnelektury.pl' + self.get_optout_url()

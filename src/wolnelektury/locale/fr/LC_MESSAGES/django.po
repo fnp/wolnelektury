@@ -189,16 +189,21 @@ msgstr "Livres audio"
 msgid "All works"
 msgstr "Tous les livres"
 
-#: wolnelektury/templates/base/superbase.html:133
+#: wolnelektury/templates/base/superbase.html:127
+#: wolnelektury/templates/main_page.html:92
+msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/base/superbase.html:136
 #: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Rechercher"
 
-#: wolnelektury/templates/base/superbase.html:164
+#: wolnelektury/templates/base/superbase.html:167
 msgid "Close"
 msgstr "Fermer"
 
-#: wolnelektury/templates/base/superbase.html:166
+#: wolnelektury/templates/base/superbase.html:169
 msgid "Loading"
 msgstr "Chargement en cours"
 
@@ -354,10 +359,6 @@ msgstr "Il vous manque un livre?"
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan de publication"
-
-#: wolnelektury/templates/main_page.html:92
-msgid "Newsletter"
-msgstr ""
 
 #: wolnelektury/templates/main_page.html:97
 msgid "Information"

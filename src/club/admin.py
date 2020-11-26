@@ -79,9 +79,11 @@ class ScheduleInline(admin.TabularInline):
 
 
 class MembershipAdmin(admin.ModelAdmin):
-    list_display = ['user']
+    list_display = ['user', 'manual', 'updated_at', 'notes']
+    list_filter = ['manual']
+    date_hierarchy = 'updated_at'
     raw_id_fields = ['user']
-    search_fields = ['user__username', 'user__email', 'schedule__email']
+    search_fields = ['user__username', 'user__email', 'schedule__email', 'notes']
     inlines = [ScheduleInline]
 
 admin.site.register(models.Membership, MembershipAdmin)

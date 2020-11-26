@@ -193,16 +193,21 @@ msgstr "Аудіокниги"
 msgid "All works"
 msgstr "Всі книжки"
 
-#: wolnelektury/templates/base/superbase.html:133
+#: wolnelektury/templates/base/superbase.html:127
+#: wolnelektury/templates/main_page.html:92
+msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/base/superbase.html:136
 #: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Пошук"
 
-#: wolnelektury/templates/base/superbase.html:164
+#: wolnelektury/templates/base/superbase.html:167
 msgid "Close"
 msgstr "Закрити"
 
-#: wolnelektury/templates/base/superbase.html:166
+#: wolnelektury/templates/base/superbase.html:169
 msgid "Loading"
 msgstr "Завантажується"
 
@@ -371,10 +376,6 @@ msgstr "Не знайшли книжки?"
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "План публікації"
-
-#: wolnelektury/templates/main_page.html:92
-msgid "Newsletter"
-msgstr ""
 
 #: wolnelektury/templates/main_page.html:97
 msgid "Information"

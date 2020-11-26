@@ -280,11 +280,11 @@ msgstr "Il libro \"%s\" non esiste."
 msgid "Book %s already exists"
 msgstr "Il libro %s esiste già"
 
-#: catalogue/models/book.py:813
+#: catalogue/models/book.py:853
 msgid "This work needs modernisation"
 msgstr ""
 
-#: catalogue/models/book.py:892 catalogue/models/bookmedia.py:27
+#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:27
 #, python-format
 msgid "%s file"
 msgstr "i %s di file"
@@ -407,7 +407,7 @@ msgid "tags"
 msgstr "i tag"
 
 #: catalogue/templates/catalogue/book_detail.html:24
-#: catalogue/templates/catalogue/book_text.html:25
+#: catalogue/templates/catalogue/book_text.html:34
 #, fuzzy
 #| msgid "Other resources"
 msgid "Other versions"
@@ -418,8 +418,8 @@ msgid "See also"
 msgstr "Vedi anche"
 
 #: catalogue/templates/catalogue/book_detail.html:41
-#: catalogue/templates/catalogue/book_text.html:38
-#: catalogue/templates/catalogue/book_text.html:57
+#: catalogue/templates/catalogue/book_text.html:47
+#: catalogue/templates/catalogue/book_text.html:66
 #: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr "Temi"
@@ -609,42 +609,46 @@ msgstr ""
 msgid "For now this work is only available for our subscribers."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:32
+#: catalogue/templates/catalogue/book_text.html:41
 msgid "Table of contents"
 msgstr "Indice"
 
-#: catalogue/templates/catalogue/book_text.html:44
+#: catalogue/templates/catalogue/book_text.html:53
 msgid "Edit. note"
 msgstr "Modifica. nota"
 
-#: catalogue/templates/catalogue/book_text.html:50
+#: catalogue/templates/catalogue/book_text.html:59
 msgid "Infobox"
 msgstr "Infobox"
 
-#: catalogue/templates/catalogue/book_text.html:55
+#: catalogue/templates/catalogue/book_text.html:64
 msgid "Numbering"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:59
+#: catalogue/templates/catalogue/book_text.html:68
 #, fuzzy
 #| msgid "Don't show footnotes"
 msgid "Footnotes"
 msgstr "Non mostrare le note"
 
-#: catalogue/templates/catalogue/book_text.html:82
+#: catalogue/templates/catalogue/book_text.html:70
+msgid "References"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:93
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:83
+#: catalogue/templates/catalogue/book_text.html:94
 msgid "Please wait..."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:127
+#: catalogue/templates/catalogue/book_text.html:149
 msgid "Other versions of the book"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:128
+#: catalogue/templates/catalogue/book_text.html:150
 msgid "Close the other version"
 msgstr ""
 

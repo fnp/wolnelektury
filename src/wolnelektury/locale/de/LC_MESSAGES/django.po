@@ -189,16 +189,21 @@ msgstr "Audiobücher"
 msgid "All works"
 msgstr "Alle Bücher"
 
-#: wolnelektury/templates/base/superbase.html:133
+#: wolnelektury/templates/base/superbase.html:127
+#: wolnelektury/templates/main_page.html:92
+msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/base/superbase.html:136
 #: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Suchen"
 
-#: wolnelektury/templates/base/superbase.html:164
+#: wolnelektury/templates/base/superbase.html:167
 msgid "Close"
 msgstr "Schließen"
 
-#: wolnelektury/templates/base/superbase.html:166
+#: wolnelektury/templates/base/superbase.html:169
 msgid "Loading"
 msgstr "Laden"
 
@@ -364,10 +369,6 @@ msgstr "Brauchen Sie ein Buch?"
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan der Veröffentlichung"
-
-#: wolnelektury/templates/main_page.html:92
-msgid "Newsletter"
-msgstr ""
 
 #: wolnelektury/templates/main_page.html:97
 #, fuzzy

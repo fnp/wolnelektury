@@ -182,16 +182,21 @@ msgstr "Audiobooki"
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: wolnelektury/templates/base/superbase.html:133
+#: wolnelektury/templates/base/superbase.html:127
+#: wolnelektury/templates/main_page.html:92
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: wolnelektury/templates/base/superbase.html:136
 #: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Szukaj"
 
-#: wolnelektury/templates/base/superbase.html:164
+#: wolnelektury/templates/base/superbase.html:167
 msgid "Close"
 msgstr "Zamknij"
 
-#: wolnelektury/templates/base/superbase.html:166
+#: wolnelektury/templates/base/superbase.html:169
 msgid "Loading"
 msgstr "Ładowanie"
 
@@ -333,10 +338,6 @@ msgstr "Nie znalazłeś/-aś utworu?"
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
-
-#: wolnelektury/templates/main_page.html:92
-msgid "Newsletter"
-msgstr "Newsletter"
 
 #: wolnelektury/templates/main_page.html:97
 msgid "Information"

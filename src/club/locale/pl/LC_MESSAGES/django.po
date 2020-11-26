@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-09-17 10:37+0200\n"
+"PO-Revision-Date: 2020-11-26 12:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -76,7 +76,7 @@ msgstr "klucz"
 msgid "email"
 msgstr "email"
 
-#: club/models.py:50 club/models.py:139
+#: club/models.py:50 club/models.py:141
 msgid "membership"
 msgstr "członkostwo"
 
@@ -124,31 +124,47 @@ msgstr "użytkownik"
 msgid "created at"
 msgstr "utworzone"
 
-#: club/models.py:140
+#: club/models.py:135 club/models.py:196
+msgid "name"
+msgstr "nazwisko"
+
+#: club/models.py:136
+msgid "manual"
+msgstr "ustawiony ręcznie"
+
+#: club/models.py:137
+msgid "notes"
+msgstr "notatki"
+
+#: club/models.py:138
+msgid "updated at"
+msgstr "aktualizacja"
+
+#: club/models.py:142
 msgid "memberships"
 msgstr "członkostwa"
 
-#: club/models.py:162
+#: club/models.py:179
 msgid "days before"
 msgstr "dni przed"
 
-#: club/models.py:163
+#: club/models.py:180
 msgid "subject"
 msgstr "temat"
 
-#: club/models.py:164 club/payu/models.py:140
+#: club/models.py:181 club/payu/models.py:140
 msgid "body"
 msgstr "treść"
 
-#: club/models.py:167
+#: club/models.py:184
 msgid "reminder email"
 msgstr "email z przypomnieniem"
 
-#: club/models.py:168
+#: club/models.py:185
 msgid "reminder emails"
 msgstr "emaile z przypomnieniem"
 
-#: club/models.py:173
+#: club/models.py:190
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
@@ -157,7 +173,7 @@ msgstr[1] "%d dni przed wygaśnięciem"
 msgstr[2] "%d dni przed wygaśnięciem"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: club/models.py:175
+#: club/models.py:192
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
@@ -166,27 +182,23 @@ msgstr[1] "%d dni po wygaśnięciu"
 msgstr[2] "%d dni po wygaśnięciu"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: club/models.py:179
-msgid "name"
-msgstr "nazwisko"
-
-#: club/models.py:180
+#: club/models.py:197
 msgid "photo"
 msgstr "zdjęcie"
 
-#: club/models.py:181
+#: club/models.py:198
 msgid "text"
 msgstr "tekst"
 
-#: club/models.py:184
+#: club/models.py:201
 msgid "ambassador"
 msgstr "ambasador"
 
-#: club/models.py:185
+#: club/models.py:202
 msgid "ambassadors"
 msgstr "ambasadorowie"
 
-#: club/models.py:216 club/templates/club/index.html:7
+#: club/models.py:233 club/templates/club/index.html:7
 #: club/templates/club/index.html:13 club/templates/club/thanks.html:6
 #: club/templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"

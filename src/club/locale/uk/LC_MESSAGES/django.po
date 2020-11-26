@@ -77,7 +77,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: club/models.py:50 club/models.py:139
+#: club/models.py:50 club/models.py:141
 msgid "membership"
 msgstr ""
 
@@ -125,65 +125,77 @@ msgstr ""
 msgid "created at"
 msgstr ""
 
-#: club/models.py:140
+#: club/models.py:135 club/models.py:196
+msgid "name"
+msgstr ""
+
+#: club/models.py:136
+msgid "manual"
+msgstr ""
+
+#: club/models.py:137
+msgid "notes"
+msgstr ""
+
+#: club/models.py:138
+msgid "updated at"
+msgstr ""
+
+#: club/models.py:142
 msgid "memberships"
 msgstr ""
 
-#: club/models.py:162
+#: club/models.py:179
 msgid "days before"
 msgstr ""
 
-#: club/models.py:163
+#: club/models.py:180
 msgid "subject"
 msgstr ""
 
-#: club/models.py:164 club/payu/models.py:140
+#: club/models.py:181 club/payu/models.py:140
 msgid "body"
 msgstr ""
 
-#: club/models.py:167
+#: club/models.py:184
 msgid "reminder email"
 msgstr ""
 
-#: club/models.py:168
+#: club/models.py:185
 msgid "reminder emails"
 msgstr ""
 
-#: club/models.py:173
+#: club/models.py:190
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
 msgstr[0] ""
 msgstr[1] ""
 
-#: club/models.py:175
+#: club/models.py:192
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
 msgstr[0] ""
 msgstr[1] ""
 
-#: club/models.py:179
-msgid "name"
-msgstr ""
-
-#: club/models.py:180
+#: club/models.py:197
 msgid "photo"
 msgstr ""
 
-#: club/models.py:181
+#: club/models.py:198
 msgid "text"
 msgstr ""
 
-#: club/models.py:184
+#: club/models.py:201
 msgid "ambassador"
 msgstr ""
 
-#: club/models.py:185
+#: club/models.py:202
 msgid "ambassadors"
 msgstr ""
 
-#: club/models.py:216 club/templates/club/index.html:7
+#: club/models.py:233 club/templates/club/index.html:7
 #: club/templates/club/index.html:13 club/templates/club/thanks.html:6
 #: club/templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"

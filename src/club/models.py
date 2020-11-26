@@ -132,8 +132,10 @@ class Membership(models.Model):
     """ Represents a user being recognized as a member of the club. """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_('user'), on_delete=models.CASCADE)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
-    name = models.CharField(max_length=255, blank=True)
-    honorary = models.BooleanField(default=False)
+    name = models.CharField(_('name'), max_length=255, blank=True)
+    manual = models.BooleanField(_('manual'), default=False)
+    notes = models.CharField(_('notes'), max_length=2048, blank=True)
+    updated_at = models.DateField(_('updated at'), auto_now=True, blank=True)
 
     class Meta:
         verbose_name = _('membership')
@@ -141,6 +143,21 @@ class Membership(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.update_contact()
+
+    def update_contact(self):
+        email = self.user.email
+        if not email:
+            return
+
+        Contact = apps.get_model('messaging', 'Contact')
+        if self.manual:
+            Contact.update(email, Level.MANUAL_MEMBER, self.updated_at)
+        else:
+            Contact.reset(email)
 
     @classmethod
     def is_active_for(cls, user):
