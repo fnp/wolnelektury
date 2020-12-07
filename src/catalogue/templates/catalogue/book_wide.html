@@ -2,6 +2,8 @@
 {% load i18n %}
 {% load choose_fragment license_icon from catalogue_tags %}
 {% load choose_cite from social_tags %}
+{% load status from catalogue_tags %}
+{% load chunks %}
 
 
 {% block box-class %}book-wide-box{% endblock %}
@@ -19,6 +21,16 @@
 {% endblock %}
 
 
+{% block preview-info %}
+  <p class="book-box-tools book-box-tools-warn">
+    {% chunk "book-preview-warn" %}
+  </p>
+
+  {% include "club/payment_info.html" %}
+{% endblock %}
+
+
+
 {% block right-column %}
   <div class="right-column">
     <div class="quote">
@@ -33,6 +45,17 @@
       {% endif %}
     </div>
     {% include 'catalogue/snippets/jplayer.html' %}
+
+    {% if book|status:request.user == 'closed' %}
+      {% with form=club_form %}
+        <form method="POST" action="/towarzystwo/" id="payment-form" class="wlform">
+          {% csrf_token %}
+          {% include "club/payment_form.html" %}
+          {% chunk 'club_form_bottom' %}
+        </form>
+      {% endwith %}
+    {% endif %}
+
   </div>
 {% endblock %}
 

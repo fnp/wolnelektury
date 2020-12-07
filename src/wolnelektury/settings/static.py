@@ -39,6 +39,7 @@ PIPELINE = {
                 'css/tlite.css',
 
                 'scss/main.scss',
+                'club/club.scss',
             ],
             'output_filename': 'css/compressed/main.css',
         },

@@ -17,6 +17,7 @@ from django.utils.translation import ugettext as _, ugettext_lazy
 from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
+from club.forms import ScheduleForm
 from club.models import Membership
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
@@ -289,6 +290,7 @@ def book_detail(request, slug):
             'book': book,
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),
             'active_menu_item': 'books',
+            'club_form': ScheduleForm() if book.preview else None,
         })
 
 
