@@ -25,8 +25,6 @@
   <p class="book-box-tools book-box-tools-warn">
     {% chunk "book-preview-warn" %}
   </p>
-
-  {% include "club/payment_info.html" %}
 {% endblock %}
 
 
@@ -54,7 +52,10 @@
           {% chunk 'club_form_bottom' %}
         </form>
       {% endwith %}
+
+      {% include "club/payment_info.html" %}
     {% endif %}
+
 
   </div>
 {% endblock %}

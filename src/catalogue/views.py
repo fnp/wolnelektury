@@ -18,7 +18,7 @@ from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
 from club.forms import ScheduleForm
-from club.models import Membership
+from club.models import Club, Membership
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
@@ -291,6 +291,7 @@ def book_detail(request, slug):
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),
             'active_menu_item': 'books',
             'club_form': ScheduleForm() if book.preview else None,
+            'club': Club.objects.first() if book.preview else None,
         })
 
 
