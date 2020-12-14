@@ -2,7 +2,7 @@
 <script type="text/javascript">
   var _paq = window._paq || [];
   {% for ab, abval in AB.items %}
-    _paq.push(['setCustomVariable', '{{ forloop.counter }}', "{{ ab }}", "{{ abval }}", "page"]);
+    _paq.push(['setCustomVariable', '{{ forloop.counter }}', "{{ ab }}", "{{ abval }}", "visit"]);
   {% endfor %}
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
