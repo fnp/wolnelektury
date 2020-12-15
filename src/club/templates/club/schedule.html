@@ -28,7 +28,7 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
      {% else %}
        <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
         {% csrf_token %}
-	<button type="submit" class="submit" style="font-size: .9em">Anuluj kolejną płatność</button>
+	<button type="submit" class="submit" style="font-size: .9em">Zrezygnuj z kolejnej płatności</button>
        </form>
      {% endif %}
   {% else %}
