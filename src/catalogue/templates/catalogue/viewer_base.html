@@ -15,9 +15,7 @@
     {% tracking_code %}
   </head>
   <body id="{% block body-id %}reader{% endblock %}">
-    {% if AB.BLACKOUT %}
-      {% annoy_banner 'blackout' %}
-    {% endif %}
+    {% annoy_banner 'blackout' %}
     {% annoy_banner 'top' %}
     <nav id="no-menu"><ul>
       <li><a href="#" id="menu-toggle-on"></a></li>

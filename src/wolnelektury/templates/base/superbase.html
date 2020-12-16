@@ -37,9 +37,7 @@
       {% block bodycontent %}
 
         {% block annoy %}
-          {% if AB.BLACKOUT %}
-            {% annoy_banner 'blackout' %}
-          {% endif %}
+          {% annoy_banner 'blackout' %}
           {% annoy_banner 'top' %}
           {% if not funding_no_show_current %}
             {% cache 120 funding_top_bar LANGUAGE_CODE %}
