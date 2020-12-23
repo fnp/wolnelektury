@@ -29,7 +29,7 @@
 
                 $('.play-next', $root).click(function() {
                     var next = parseInt($number.text()) + 1;
-                    var p = $('.play:eq(' + next + ')', $root);
+                    var p = $('.jp-playlist .play:eq(' + (next - 1) + ')', $root);
                     if (p.length) {
                         setMedia(p).jPlayer("play");
                         $number.text(next)
@@ -39,12 +39,12 @@
                     var next = parseInt($number.text()) - 1;
                     if (next < 1)
                         return;
-                    var p = $('.play:eq(' + next + ')', $root);
+                    var p = $('.jp-playlist .play:eq(' + (next - 1) + ')', $root);
                     setMedia(p).jPlayer("play");
                     $number.text(next)
                 });
 
-                var initialElem = $('.play', $root).first();
+                var initialElem = $('.jp-playlist .play', $root).first();
                 var initialTime = 0;
                 if (Modernizr.localstorage) {
                     try {
@@ -61,6 +61,7 @@
                     if (last) {
                         initialElem = $('[data-media-id="' + last[1] + '"] .play', $root).first();
                         initialTime = last[2];
+                        $number.text($(".jp-playlist .play", $root).index(initialElem) + 1);
                     }
                 }
                 setMedia(initialElem, initialTime);
