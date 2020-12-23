@@ -13,7 +13,13 @@ from catalogue.fields import OverwriteStorage
 
 
 def _file_upload_to(i, _n):
-    return 'book/%(ext)s/%(name)s.%(ext)s' % {'ext': i.ext(), 'name': slugify(i.name)}
+    name = i.book.slug
+    if i.index:
+        name += f'_{i.index:03d}'
+    if i.part_name:
+        name += f'_' + slugify(i.part_name)
+    ext = i.ext()
+    return f'book/{ext}/{name}.{ext}'
 
 
 class BookMedia(models.Model):
@@ -37,10 +43,10 @@ class BookMedia(models.Model):
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
     def __str__(self):
-        return "%s (%s)" % (self.name, self.file.name.split("/")[-1])
+        return self.file.name.split("/")[-1]
 
     class Meta:
-        ordering = ('type', 'name')
+        ordering = ('type', 'index')
         verbose_name = _('book media')
         verbose_name_plural = _('book media')
         app_label = 'catalogue'
