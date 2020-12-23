@@ -313,7 +313,7 @@ class BuildHtml(BuildEbook):
         if url_elem is None:
             gallery = ''
         else:
-            gallery = gallery_url(slug=url_elem.text.rsplit('/', 1)[1])
+            gallery = gallery_url(slug=url_elem.text.rstrip('/').rsplit('/', 1)[1])
         return wldoc.as_html(options={'gallery': "'%s'" % gallery})
 
 

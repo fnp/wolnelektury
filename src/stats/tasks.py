@@ -23,4 +23,4 @@ except AttributeError:
 
 @task(ignore_result=True)
 def track_request(piwik_args):
-    urlopen("https:%s%s%s" % (settings.PIWIK_URL, "piwik.php?", piwik_args))
+    urlopen("%s%s%s" % (settings.PIWIK_URL, "piwik.php?", piwik_args))
