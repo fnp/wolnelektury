@@ -66,3 +66,15 @@ def club_active_30day_sum():
         yearly=False, monthly=False,
         payed_at__gte=now() - timedelta(days=30)
     ).aggregate(s=Sum('amount'))['s'] or 0
+
+
+@register.simple_tag
+def club_monthly_since(start):
+    return Schedule.objects.filter(
+        monthly=True, payed_at__gte=start).count()
+
+
+@register.simple_tag
+def club_monthly_missing_since(start, target):
+    return target - Schedule.objects.filter(
+        monthly=True, payed_at__gte=start).count()
