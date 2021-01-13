@@ -25,7 +25,7 @@
             }
         };
 
-        if (inserts) {
+        if (inserts.length) {
             var underFold = false;
             var counter = 0;
             $(".paragraph, .stanza").each(function() {
@@ -46,7 +46,7 @@
                 return inserts.length > 0;
             });
 	    /* Special case for short poems. */
-	    if (inserts && !counter) {
+	    if (inserts.length && !counter) {
 		inserts[0].insertAfter($(".paragraph, .stanza").last());
 	    }
         };
