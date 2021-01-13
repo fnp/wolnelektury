@@ -20,6 +20,8 @@ class Command(BaseCommand):
         parser.add_argument(
                 '-e', '--exclude', dest='exclude', metavar='SLUG,...',
                 help='Exclude specific books by slug')
+        parser.add_argument(
+                '--top-level', dest='top_level', action='store_true')
         parser.add_argument('ftype', metavar='|'.join(Book.formats))
         parser.add_argument('path', metavar='output_path.zip')
 
@@ -31,6 +33,7 @@ class Command(BaseCommand):
         tags = options.get('tags')
         include = options.get('include')
         exclude = options.get('exclude')
+        top_level = options.get('top_level')
 
         if ftype in Book.formats:
             field = "%s_file" % ftype
@@ -46,7 +49,10 @@ class Command(BaseCommand):
         if tags:
             books += list(Book.tagged.with_all(Tag.objects.filter(slug__in=tags.split(','))).only('slug', field))
         elif not include:
-            books = list(Book.objects.all().only('slug', field))
+            books = Book.objects.all()
+            if top_level:
+                books = books.filter(parent=None)
+            books = list(books.only('slug', field))
 
         if exclude:
             books = [book for book in books if book.slug not in exclude.split(',')]
