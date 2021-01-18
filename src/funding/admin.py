@@ -3,6 +3,7 @@
 #
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
+from fnpdjango.actions import export_as_csv_action
 from .models import Offer, Perk, Funding, Spent
 
 
@@ -59,6 +60,7 @@ class FundingAdmin(admin.ModelAdmin):
     list_display = ['payed_at', 'offer', 'amount', 'name', 'email', 'perk_names']
     search_fields = ['name', 'email', 'offer__title', 'offer__author']
     list_filter = [PayedFilter, 'offer', PerksFilter]
+    actions = [export_as_csv_action()]
 
 
 class SpentAdmin(admin.ModelAdmin):
