@@ -77,7 +77,11 @@ class OfferDetailView(FormView):
     def dispatch(self, request, slug=None):
         if getattr(self, 'object', None) is None:
             if slug:
-                self.object = get_object_or_404(Offer.public(), slug=slug)
+                if request.user.is_staff:
+                    offers = Offer.objects.all()
+                else:
+                    offers = Offer.public()
+                self.object = get_object_or_404(offers, slug=slug)
             else:
                 self.object = Offer.current()
                 if self.object is None:
