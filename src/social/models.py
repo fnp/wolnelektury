@@ -6,7 +6,7 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, get_language
 from catalogue.models import Book
 from wolnelektury.utils import cached_render, clear_cached_renders
 
@@ -123,15 +123,27 @@ class Cite(models.Model):
 
 
 class Carousel(models.Model):
-    slug = models.SlugField(_('slug'), unique=True)
+    placement = models.SlugField(_('placement'), choices=[
+        ('main', 'main'),
+    ])
+    priority = models.SmallIntegerField(_('priority'), default=0)
+    language = models.CharField(_('language'), max_length=2, blank=True, default='', choices=settings.LANGUAGES)
 
     class Meta:
-        ordering = ('slug',)
+#        ordering = ('placement', '-priority')
         verbose_name = _('carousel')
         verbose_name_plural = _('carousels')
 
     def __str__(self):
-        return self.slug
+        return self.placement
+
+    @classmethod
+    def get(cls, placement):
+        carousel = cls.objects.filter(models.Q(language='') | models.Q(language=get_language()), placement=placement).order_by('-priority', '?').first()
+        if carousel is None:
+            carousel = cls.objects.create(placement=placement)
+        return carousel
+
 
 class CarouselItem(models.Model):
     order = models.PositiveSmallIntegerField(_('order'), unique=True)

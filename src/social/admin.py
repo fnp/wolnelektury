@@ -72,6 +72,7 @@ class CarouselItemInline(OrderableAdmin, admin.TabularInline):
 
 
 class CarouselAdmin(admin.ModelAdmin):
+    list_display = ['placement', 'priority', 'language']
     inlines = [CarouselItemInline]
 
 

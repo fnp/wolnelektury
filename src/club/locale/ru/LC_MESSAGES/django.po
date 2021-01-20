@@ -68,133 +68,133 @@ msgstr ""
 msgid "clubs"
 msgstr ""
 
-#: club/models.py:48
+#: club/models.py:47
 msgid "key"
 msgstr ""
 
-#: club/models.py:49
+#: club/models.py:48
 msgid "email"
 msgstr ""
 
-#: club/models.py:50 club/models.py:141
+#: club/models.py:49 club/models.py:155
 msgid "membership"
 msgstr ""
 
-#: club/models.py:51
-msgid "amount"
-msgstr ""
-
-#: club/models.py:52 club/templates/club/membership_form.html:185
-msgid "monthly"
-msgstr ""
-
-#: club/models.py:53
-msgid "yearly"
-msgstr ""
-
-#: club/models.py:55
-msgid "cancelled"
-msgstr ""
-
-#: club/models.py:56
+#: club/models.py:50
 msgid "payed at"
 msgstr ""
 
-#: club/models.py:57
-msgid "started at"
-msgstr ""
-
-#: club/models.py:58
+#: club/models.py:51
 msgid "expires_at"
 msgstr ""
 
-#: club/models.py:62
+#: club/models.py:71
+msgid "amount"
+msgstr ""
+
+#: club/models.py:72 club/templates/club/payment_form.html:21
+msgid "monthly"
+msgstr ""
+
+#: club/models.py:73
+msgid "yearly"
+msgstr ""
+
+#: club/models.py:75
+msgid "cancelled"
+msgstr ""
+
+#: club/models.py:76
+msgid "started at"
+msgstr ""
+
+#: club/models.py:79
 msgid "schedule"
 msgstr ""
 
-#: club/models.py:63
+#: club/models.py:80
 msgid "schedules"
 msgstr ""
 
-#: club/models.py:133
+#: club/models.py:147
 msgid "user"
 msgstr ""
 
-#: club/models.py:134
+#: club/models.py:148
 msgid "created at"
 msgstr ""
 
-#: club/models.py:135 club/models.py:196
+#: club/models.py:149 club/models.py:210
 msgid "name"
 msgstr ""
 
-#: club/models.py:136
+#: club/models.py:150
 msgid "manual"
 msgstr ""
 
-#: club/models.py:137
+#: club/models.py:151
 msgid "notes"
 msgstr ""
 
-#: club/models.py:138
+#: club/models.py:152
 msgid "updated at"
 msgstr ""
 
-#: club/models.py:142
+#: club/models.py:156
 msgid "memberships"
 msgstr ""
 
-#: club/models.py:179
+#: club/models.py:193
 msgid "days before"
 msgstr ""
 
-#: club/models.py:180
+#: club/models.py:194
 msgid "subject"
 msgstr ""
 
-#: club/models.py:181 club/payu/models.py:140
+#: club/models.py:195 club/payu/models.py:140
 msgid "body"
 msgstr ""
 
-#: club/models.py:184
+#: club/models.py:198
 msgid "reminder email"
 msgstr ""
 
-#: club/models.py:185
+#: club/models.py:199
 msgid "reminder emails"
 msgstr ""
 
-#: club/models.py:190
+#: club/models.py:204
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
 msgstr[0] ""
 msgstr[1] ""
 
-#: club/models.py:192
+#: club/models.py:206
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
 msgstr[0] ""
 msgstr[1] ""
 
-#: club/models.py:197
+#: club/models.py:211
 msgid "photo"
 msgstr ""
 
-#: club/models.py:198
+#: club/models.py:212
 msgid "text"
 msgstr ""
 
-#: club/models.py:201
+#: club/models.py:215
 msgid "ambassador"
 msgstr ""
 
-#: club/models.py:202
+#: club/models.py:216
 msgid "ambassadors"
 msgstr ""
 
-#: club/models.py:233 club/templates/club/index.html:7
+#: club/models.py:247 club/templates/club/index.html:7
 #: club/templates/club/index.html:13 club/templates/club/thanks.html:6
 #: club/templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"
@@ -300,56 +300,58 @@ msgstr ""
 msgid "„Wolne Lektury należy wspierać, bo są” - Filip Springer"
 msgstr ""
 
-#: club/templates/club/membership_form.html:144
+#: club/templates/club/membership_form.html:14
 msgid "Support Wolne Lektury"
 msgstr ""
 
-#: club/templates/club/membership_form.html:148
+#: club/templates/club/membership_form.html:18
 msgid "Thank you for your support! Support us again!"
 msgstr ""
 
-#: club/templates/club/membership_form.html:151
+#: club/templates/club/membership_form.html:21
 msgid "Thank you for wanting to free the books with us!"
 msgstr ""
 
-#: club/templates/club/membership_form.html:156
+#: club/templates/club/membership_form.html:26
 msgid "See your past support."
 msgstr ""
 
-#: club/templates/club/membership_form.html:179
-msgid "Choose your type of support"
+#: club/templates/club/membership_form.html:40
+msgid "Help us get 100 new Friends by the end of the school semester."
 msgstr ""
 
-#: club/templates/club/membership_form.html:184
-msgid "one-time"
-msgstr ""
-
-#: club/templates/club/membership_form.html:188
-msgid "Choose the amount"
-msgstr ""
-
-#: club/templates/club/membership_form.html:196
-#: club/templates/club/membership_form.html:209
-msgid "different amount"
-msgstr ""
-
-#: club/templates/club/membership_form.html:215
-msgid "Provide an e-mail address"
-msgstr ""
-
-#: club/templates/club/membership_form.html:222
-msgid "I'd like to receive informations about new publications."
-msgstr ""
-
-#: club/templates/club/membership_form.html:226
+#: club/templates/club/membership_form.html:41
+#, python-format
 msgid ""
-"You can unsubscribe at any point. More in the <a target=\"_blank\" href="
-"\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
-msgstr ""
+"\n"
+"\t    So far <b style=\"color: #0d7e85\">%(supporters)s</b> reader has "
+"already supported us with a regular donation,\n"
+"\t    "
+msgid_plural ""
+"\n"
+"\t    So far <b style=\"color: #0d7e85\">%(supporters)s</b> readers have "
+"already supported us with a regular donation,\n"
+"\t  "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: club/templates/club/membership_form.html:228
-msgid "Donate"
-msgstr ""
+#: club/templates/club/membership_form.html:46
+#, python-format
+msgid ""
+"\n"
+"\t    <b style=\"color: #0d7e85\">%(missing_supporters)s</b> is missing.\n"
+"            "
+msgid_plural ""
+"\n"
+"            <b style=\"color: #0d7e85\">%(missing_supporters)s</b> are "
+"missing.\n"
+"\t  "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: club/templates/club/payment/payu-re.html:4
 #: club/templates/club/payment/payu.html:4
@@ -358,6 +360,41 @@ msgstr ""
 
 #: club/templates/club/payment/payu.html:10
 msgid "transfer"
+msgstr ""
+
+#: club/templates/club/payment_form.html:15
+msgid "Choose your type of support"
+msgstr ""
+
+#: club/templates/club/payment_form.html:20
+msgid "one-time"
+msgstr ""
+
+#: club/templates/club/payment_form.html:24
+msgid "Choose the amount"
+msgstr ""
+
+#: club/templates/club/payment_form.html:32
+#: club/templates/club/payment_form.html:45
+msgid "different amount"
+msgstr ""
+
+#: club/templates/club/payment_form.html:51
+msgid "Provide an e-mail address"
+msgstr ""
+
+#: club/templates/club/payment_form.html:58
+msgid "I'd like to receive informations about new publications."
+msgstr ""
+
+#: club/templates/club/payment_form.html:62
+msgid ""
+"You can unsubscribe at any point. More in the <a target=\"_blank\" href="
+"\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
+msgstr ""
+
+#: club/templates/club/payment_form.html:64
+msgid "Donate"
 msgstr ""
 
 #: club/templates/club/thanks.html:14

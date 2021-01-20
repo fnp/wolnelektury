@@ -44,13 +44,8 @@ def book_shelf_tags(context, book_id):
 
 
 @register.inclusion_tag('social/carousel.html', takes_context=True)
-def carousel(context, slug):
-    # TODO: cache
-    try:
-        carousel = Carousel.objects.get(slug=slug)
-    except Carousel.DoesNotExist:
-        # TODO: add sanity check for install.
-        carousel = Carousel.objects.create(slug=slug)
+def carousel(context, placement):
+    carousel = Carousel.get(placement)
     banners = [
             item.get_banner()
             for item in carousel.carouselitem_set.all().select_related('banner')

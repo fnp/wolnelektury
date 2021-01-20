@@ -54,7 +54,7 @@ msgstr ""
 msgid "created at"
 msgstr ""
 
-#: social/models.py:20 social/models.py:140
+#: social/models.py:20 social/models.py:152
 msgid "banner group"
 msgstr ""
 
@@ -162,7 +162,7 @@ msgstr ""
 msgid "group"
 msgstr ""
 
-#: social/models.py:72 social/models.py:139
+#: social/models.py:72 social/models.py:151
 msgid "banner"
 msgstr ""
 
@@ -171,30 +171,38 @@ msgid "banners"
 msgstr ""
 
 #: social/models.py:126
-msgid "slug"
+msgid "placement"
 msgstr ""
 
-#: social/models.py:130 social/models.py:138
+#: social/models.py:129
+msgid "priority"
+msgstr ""
+
+#: social/models.py:130
+msgid "language"
+msgstr ""
+
+#: social/models.py:134 social/models.py:150
 msgid "carousel"
 msgstr ""
 
-#: social/models.py:131
+#: social/models.py:135
 msgid "carousels"
 msgstr ""
 
-#: social/models.py:137
+#: social/models.py:149
 msgid "order"
 msgstr ""
 
-#: social/models.py:145
+#: social/models.py:157
 msgid "carousel item"
 msgstr ""
 
-#: social/models.py:146
+#: social/models.py:158
 msgid "carousel items"
 msgstr ""
 
-#: social/models.py:153 social/models.py:155
+#: social/models.py:165 social/models.py:167
 msgid "Either banner or banner group is required."
 msgstr ""
 

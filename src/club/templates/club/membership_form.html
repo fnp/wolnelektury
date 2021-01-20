@@ -34,10 +34,22 @@
 
         {% chunk 'club_form_top' %}
 
-        {% club_monthly_since '2020-12-01' as cc %}
-        {% club_monthly_missing_since '2020-12-01' 100 as cm %}
-        <p>Pomóż nam zdobyć 100 nowych Przyjaciół do końca roku. W grudniu stałą wpłatą wsparło nas już <b style="color: #0d7e85">{{ cc }}</b> czytelników i czytelniczek, brakuje  <b style="color: #0d7e85">{{ cm }}</b>.</p>
-        <div class="funding" style="background: none;"><div class="description"><div class="progress" style="text-align: center; background-size: {{ cc }}% 1px;"><span class="piece progress-collected">&nbsp;{{ cc }}</span><span class="piece progress-target">{{ cm }}&nbsp;</span><div style="clear: both"></div></div></div></div>
+        {% club_monthly_since '2020-12-01' as supporters %}
+        {% club_monthly_missing_since '2020-12-01' 100 as missing_supporters %}
+	<p>
+	  {% blocktrans %}Help us get 100 new Friends by the end of the school semester.{% endblocktrans %}
+	  {% blocktrans count supporters=supporters %}
+	    So far <b style="color: #0d7e85">{{ supporters }}</b> reader has already supported us with a regular donation,
+	    {% plural %}
+	    So far <b style="color: #0d7e85">{{ supporters }}</b> readers have already supported us with a regular donation,
+	  {% endblocktrans %}
+	  {% blocktrans count missing_supporters=missing_supporters %}
+	    <b style="color: #0d7e85">{{ missing_supporters }}</b> is missing.
+            {% plural %}
+            <b style="color: #0d7e85">{{ missing_supporters }}</b> are missing.
+	  {% endblocktrans %}
+        </p>
+        <div class="funding" style="background: none;"><div class="description"><div class="progress" style="text-align: center; background-size: {{ supporters }}% 1px;"><span class="piece progress-collected">&nbsp;{{ supporters }}</span><span class="piece progress-target">{{ missing_supporters }}&nbsp;</span><div style="clear: both"></div></div></div></div>
 
         {% include "club/payment_form.html" %}
 
