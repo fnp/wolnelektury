@@ -3,18 +3,20 @@
 #
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 from fnpdjango.actions import export_as_csv_action
 from .models import Offer, Perk, Funding, Spent
 
 
-class OfferAdmin(admin.ModelAdmin):
+class OfferAdmin(TranslationAdmin):
     model = Offer
     list_display = ['title', 'author', 'target', 'sum', 'is_win', 'start', 'end']
     search_fields = ['title', 'author']
     readonly_fields = ('cover_img_tag',)
+    autocomplete_fields = ['book']
 
 
-class PerkAdmin(admin.ModelAdmin):
+class PerkAdmin(TranslationAdmin):
     model = Perk
     search_fields = ['name', 'long_name']
     list_display = ['name', 'long_name', 'price', 'end_date', 'offer']

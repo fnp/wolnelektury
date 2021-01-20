@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: funding/admin.py:24
+#: funding/admin.py:27
 msgid "payment complete"
 msgstr ""
 
-#: funding/admin.py:29 funding/admin.py:46
+#: funding/admin.py:32 funding/admin.py:49
 msgid "Yes"
 msgstr ""
 
-#: funding/admin.py:30 funding/admin.py:47
+#: funding/admin.py:33 funding/admin.py:50
 msgid "No"
 msgstr ""
 
-#: funding/admin.py:41 funding/models.py:257 funding/models.py:275
+#: funding/admin.py:44 funding/models.py:257 funding/models.py:275
 msgid "perks"
 msgstr ""
 
@@ -65,59 +65,59 @@ msgstr ""
 msgid "This offer is out of date."
 msgstr ""
 
-#: funding/models.py:25
+#: funding/models.py:26
 msgid "author"
 msgstr ""
 
-#: funding/models.py:26
+#: funding/models.py:27
 msgid "title"
 msgstr ""
 
-#: funding/models.py:27
+#: funding/models.py:28
 msgid "slug"
 msgstr ""
 
-#: funding/models.py:28
+#: funding/models.py:29
 msgid "description"
 msgstr ""
 
-#: funding/models.py:29
+#: funding/models.py:30
 msgid "target"
 msgstr ""
 
-#: funding/models.py:30
+#: funding/models.py:31
 msgid "start"
 msgstr ""
 
-#: funding/models.py:31
+#: funding/models.py:32
 msgid "end"
 msgstr ""
 
-#: funding/models.py:32
+#: funding/models.py:33
 msgid "redakcja URL"
 msgstr ""
 
-#: funding/models.py:33
+#: funding/models.py:34
 msgid "Published book."
 msgstr ""
 
-#: funding/models.py:34
+#: funding/models.py:35
 msgid "Cover"
 msgstr ""
 
-#: funding/models.py:35
+#: funding/models.py:36
 msgid "Poll"
 msgstr ""
 
-#: funding/models.py:37
+#: funding/models.py:38
 msgid "Near-end notifications sent"
 msgstr ""
 
-#: funding/models.py:38
+#: funding/models.py:39
 msgid "End notifications sent"
 msgstr ""
 
-#: funding/models.py:42
+#: funding/models.py:43
 msgid "Cover preview"
 msgstr ""
 

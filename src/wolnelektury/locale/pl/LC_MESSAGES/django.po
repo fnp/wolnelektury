@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-02-12 10:05+0100\n"
+"PO-Revision-Date: 2021-01-20 13:47+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
@@ -33,7 +33,7 @@ msgid ""
 "correct address or go to "
 msgstr ""
 "Przepraszamy, ale ta strona nie istnieje. Sprawdź czy podałeś dobry adres, "
-"lub przejdź do"
+"lub przejdź do "
 
 #: wolnelektury/templates/404.html:12
 msgid "main page"
@@ -115,7 +115,17 @@ msgid "Logout"
 msgstr "Wyloguj"
 
 #: wolnelektury/templates/base/superbase.html:60
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
+#| "href='%(r)s'>right to</a>\n"
+#| "                    "
+#| msgid_plural ""
+#| "\n"
+#| "                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
+#| "href='%(r)s'>right to</a>\n"
+#| "                  "
 msgid ""
 "\n"
 "                  <a href='%(b)s'>%(c)s</a> free reading you have <a "
@@ -162,8 +172,8 @@ msgid "Register"
 msgstr "Załóż konto"
 
 #: wolnelektury/templates/base/superbase.html:112
-msgid "Wesprzyj nas"
-msgstr ""
+msgid "Support us"
+msgstr "Wesprzyj nas"
 
 #: wolnelektury/templates/base/superbase.html:115
 msgid "Literature"
@@ -201,10 +211,8 @@ msgid "Loading"
 msgstr "Ładowanie"
 
 #: wolnelektury/templates/board_base.html:31
-#, fuzzy
-#| msgid "advanced"
 msgid "Advanced search"
-msgstr "zaawansowane"
+msgstr "Wyszukiwanie zaawansowane"
 
 #: wolnelektury/templates/info/join_us.html:6
 #, python-format
@@ -411,15 +419,11 @@ msgstr ""
 "błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
 
 #: wolnelektury/templates/socialaccount/signup.html:6
-#, fuzzy
-#| msgid "Sign in"
 msgid "Signup"
 msgstr "Zaloguj się"
 
 #: wolnelektury/templates/socialaccount/signup.html:9
 #: wolnelektury/templates/socialaccount/signup.html:25
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign Up"
 msgstr "Zaloguj się"
 
@@ -429,6 +433,8 @@ msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
+"Używasz konta %(provider_name)s do zalogowania się w \n"
+"%(site_name)s. Jako ostatni krok, proszę wypełnij formularz:"
 
 #: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
 msgid "User"
@@ -452,11 +458,11 @@ msgstr "Wiadomość wysłana automatycznie. Prosimy nie odpowiadać."
 
 #: wolnelektury/utils.py:205
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: wolnelektury/utils.py:206
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: wolnelektury/views.py:86 wolnelektury/views.py:107
 #, python-format

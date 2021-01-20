@@ -167,7 +167,7 @@ msgid "Register"
 msgstr "Inscrivez-vous"
 
 #: wolnelektury/templates/base/superbase.html:112
-msgid "Wesprzyj nas"
+msgid "Support us"
 msgstr ""
 
 #: wolnelektury/templates/base/superbase.html:115

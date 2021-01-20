@@ -10,6 +10,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils.html import mark_safe
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, override
 import getpaid
@@ -38,9 +39,8 @@ class Offer(models.Model):
     notified_end = models.DateTimeField(_('End notifications sent'), blank=True, null=True)
 
     def cover_img_tag(self):
-        return '<img src="%s" />' % self.cover.url
+        return mark_safe('<img src="%s" />' % self.cover.url)
     cover_img_tag.short_description = _('Cover preview')
-    cover_img_tag.allow_tags = True
 
     class Meta:
         verbose_name = _('offer')
