@@ -10,6 +10,8 @@ from .payu.forms import CardTokenForm
 
 
 class ScheduleForm(forms.ModelForm, NewsletterForm):
+    data_processing = '''Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych jest dobrowolne, ale konieczne do przeprowadzenia wpłaty. Dane są przetwarzane w zakresie niezbędnym do zaksięgowania darowizny i przekazywania Tobie powiadomień dotyczących wpłaty, a także wysyłania Tobie wiadomości mailowych promujących zbiórki i inne formy wsparcia Fundacji. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany także w zakresie niezbędnym do wysyłania newslettera odbiorcom. Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.'''
+
     class Meta:
         model = models.Schedule
         fields = ['monthly', 'amount', 'email']
