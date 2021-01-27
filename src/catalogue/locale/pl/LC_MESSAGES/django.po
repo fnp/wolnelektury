@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-11-09 00:53+0100\n"
+"PO-Revision-Date: 2021-01-27 10:47+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -174,7 +174,7 @@ msgstr "opis"
 msgid "abstract"
 msgstr "abstrakt"
 
-#: catalogue/models/book.py:66 catalogue/models/bookmedia.py:34
+#: catalogue/models/book.py:66 catalogue/models/bookmedia.py:40
 #: catalogue/models/tag.py:71 catalogue/models/tag.py:72
 msgid "creation date"
 msgstr "data utworzenia"
@@ -187,7 +187,7 @@ msgstr "data modyfikacji"
 msgid "parent number"
 msgstr "numer rodzica"
 
-#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:35
+#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:41
 msgid "extra information"
 msgstr "dodatkowe informacje"
 
@@ -257,33 +257,33 @@ msgstr "Książka %s już istnieje"
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:27
+#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:33
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
 
-#: catalogue/models/bookmedia.py:29
+#: catalogue/models/bookmedia.py:35
 msgid "type"
 msgstr "typ"
 
-#: catalogue/models/bookmedia.py:30 catalogue/models/source.py:11
+#: catalogue/models/bookmedia.py:36 catalogue/models/source.py:11
 #: catalogue/models/tag.py:56
 msgid "name"
 msgstr "nazwa"
 
-#: catalogue/models/bookmedia.py:31
+#: catalogue/models/bookmedia.py:37
 msgid "part name"
 msgstr "nazwa części"
 
-#: catalogue/models/bookmedia.py:32
+#: catalogue/models/bookmedia.py:38
 msgid "index"
 msgstr "indeks"
 
-#: catalogue/models/bookmedia.py:33
+#: catalogue/models/bookmedia.py:39
 msgid "file"
 msgstr "plik"
 
-#: catalogue/models/bookmedia.py:44 catalogue/models/bookmedia.py:45
+#: catalogue/models/bookmedia.py:50 catalogue/models/bookmedia.py:51
 msgid "book media"
 msgstr "media książki"
 
@@ -520,11 +520,11 @@ msgstr "Region"
 msgid "Language"
 msgstr "Język"
 
-#: catalogue/templates/catalogue/book_short.html:111
+#: catalogue/templates/catalogue/book_short.html:112
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: catalogue/templates/catalogue/book_short.html:114
+#: catalogue/templates/catalogue/book_short.html:123
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
@@ -532,24 +532,24 @@ msgid ""
 "bezpłatnie."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:114
+#: catalogue/templates/catalogue/book_short.html:123
 msgid "Print on demand –"
 msgstr "Druk na żądanie z"
 
-#: catalogue/templates/catalogue/book_short.html:119
-#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:401
+#: catalogue/templates/catalogue/book_short.html:128
+#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:404
 msgid "Download"
 msgstr "Pobierz"
 
-#: catalogue/templates/catalogue/book_short.html:133
+#: catalogue/templates/catalogue/book_short.html:142
 msgid "more"
 msgstr "więcej"
 
-#: catalogue/templates/catalogue/book_short.html:144
+#: catalogue/templates/catalogue/book_short.html:153
 msgid "less"
 msgstr "mniej"
 
-#: catalogue/templates/catalogue/book_short.html:150
+#: catalogue/templates/catalogue/book_short.html:161
 msgid "For now this work is only available for our subscribers."
 msgstr "Jak na razie ten utwór jest dostępny wyłącznie dla naszych Przyjaciół."
 
@@ -577,20 +577,20 @@ msgstr "Przypisy"
 msgid "References"
 msgstr "Odniesienia"
 
-#: catalogue/templates/catalogue/book_text.html:93
+#: catalogue/templates/catalogue/book_text.html:96
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr "Zamknij"
 
-#: catalogue/templates/catalogue/book_text.html:94
+#: catalogue/templates/catalogue/book_text.html:97
 msgid "Please wait..."
 msgstr "Proszę czekać…"
 
-#: catalogue/templates/catalogue/book_text.html:149
+#: catalogue/templates/catalogue/book_text.html:152
 msgid "Other versions of the book"
 msgstr "Inne wersje utworu"
 
-#: catalogue/templates/catalogue/book_text.html:150
+#: catalogue/templates/catalogue/book_text.html:153
 msgid "Close the other version"
 msgstr "Zamknij drugą wersję"
 
@@ -642,7 +642,7 @@ msgstr[2] "oraz %(c)s innych"
 msgid "All collections"
 msgstr "Wszystkie kolekcje"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:400
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:403
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
@@ -801,6 +801,10 @@ msgstr "Przepraszamy! Zapytanie jest zbyt długie."
 msgid "Sorry! Search query must have at least two characters."
 msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 
+#: catalogue/templates/catalogue/snippets/content_warning.html:4
+msgid "Caution: text contains"
+msgstr "Uwaga, tekst zawiera"
+
 #: catalogue/templates/catalogue/snippets/custom_pdf_link_li.html:3
 msgid "Download a custom PDF"
 msgstr "Stwórz własny plik PDF"
@@ -890,7 +894,11 @@ msgstr "w Culture.pl"
 msgid "Loading"
 msgstr "Ładowanie"
 
-#: catalogue/views.py:351
+#: catalogue/templatetags/catalogue_tags.py:504
+msgid "vulgar language"
+msgstr "wulgaryzmy"
+
+#: catalogue/views.py:354
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -901,11 +909,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: catalogue/views.py:356
+#: catalogue/views.py:359
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: catalogue/views.py:357
+#: catalogue/views.py:360
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"

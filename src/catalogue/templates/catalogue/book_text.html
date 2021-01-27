@@ -82,6 +82,9 @@
       {% if prev %}
         <a style="display:inline-block;padding: 1em;" href="{% url 'book_text' prev.slug %}">&larr;&nbsp;{{ prev.title }}</a>
       {% endif %}
+      <div style="text-align:center; margin-top:1em;">
+      {% content_warning book %}
+      </div>
       <div style="clear:both;"></div>
       {{ book_text|safe }}
     {% endwith %}

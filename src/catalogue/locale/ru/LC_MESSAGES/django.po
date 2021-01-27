@@ -199,7 +199,7 @@ msgstr "описание"
 msgid "abstract"
 msgstr ""
 
-#: catalogue/models/book.py:66 catalogue/models/bookmedia.py:34
+#: catalogue/models/book.py:66 catalogue/models/bookmedia.py:40
 #: catalogue/models/tag.py:71 catalogue/models/tag.py:72
 msgid "creation date"
 msgstr "дата создания"
@@ -214,7 +214,7 @@ msgstr "дата создания"
 msgid "parent number"
 msgstr "номер родителя"
 
-#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:35
+#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:41
 msgid "extra information"
 msgstr "дополнительная информация"
 
@@ -284,36 +284,36 @@ msgstr "Книга %s уже существует"
 msgid "This work needs modernisation"
 msgstr ""
 
-#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:27
+#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:33
 #, fuzzy, python-format
 msgid "%s file"
 msgstr "XML файл"
 
-#: catalogue/models/bookmedia.py:29
+#: catalogue/models/bookmedia.py:35
 msgid "type"
 msgstr "тип"
 
-#: catalogue/models/bookmedia.py:30 catalogue/models/source.py:11
+#: catalogue/models/bookmedia.py:36 catalogue/models/source.py:11
 #: catalogue/models/tag.py:56
 msgid "name"
 msgstr "название"
 
-#: catalogue/models/bookmedia.py:31
+#: catalogue/models/bookmedia.py:37
 #, fuzzy
 #| msgid "name"
 msgid "part name"
 msgstr "название"
 
-#: catalogue/models/bookmedia.py:32
+#: catalogue/models/bookmedia.py:38
 msgid "index"
 msgstr ""
 
-#: catalogue/models/bookmedia.py:33
+#: catalogue/models/bookmedia.py:39
 #, fuzzy
 msgid "file"
 msgstr "XML файл"
 
-#: catalogue/models/bookmedia.py:44 catalogue/models/bookmedia.py:45
+#: catalogue/models/bookmedia.py:50 catalogue/models/bookmedia.py:51
 msgid "book media"
 msgstr "аудиокнига"
 
@@ -578,11 +578,11 @@ msgstr ""
 msgid "Language"
 msgstr "код языка"
 
-#: catalogue/templates/catalogue/book_short.html:111
+#: catalogue/templates/catalogue/book_short.html:112
 msgid "Read online"
 msgstr "Читать онлайн"
 
-#: catalogue/templates/catalogue/book_short.html:114
+#: catalogue/templates/catalogue/book_short.html:123
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
@@ -590,24 +590,24 @@ msgid ""
 "bezpłatnie."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:114
+#: catalogue/templates/catalogue/book_short.html:123
 msgid "Print on demand –"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:119
-#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:401
+#: catalogue/templates/catalogue/book_short.html:128
+#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:404
 msgid "Download"
 msgstr "Загрузить"
 
-#: catalogue/templates/catalogue/book_short.html:133
+#: catalogue/templates/catalogue/book_short.html:142
 msgid "more"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:144
+#: catalogue/templates/catalogue/book_short.html:153
 msgid "less"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:150
+#: catalogue/templates/catalogue/book_short.html:161
 msgid "For now this work is only available for our subscribers."
 msgstr ""
 
@@ -637,20 +637,20 @@ msgstr "Не показывать сноски"
 msgid "References"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:93
+#: catalogue/templates/catalogue/book_text.html:96
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:94
+#: catalogue/templates/catalogue/book_text.html:97
 msgid "Please wait..."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:149
+#: catalogue/templates/catalogue/book_text.html:152
 msgid "Other versions of the book"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:150
+#: catalogue/templates/catalogue/book_text.html:153
 msgid "Close the other version"
 msgstr ""
 
@@ -709,7 +709,7 @@ msgstr[1] ""
 msgid "All collections"
 msgstr "сборы"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:400
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:403
 msgid "Download custom PDF"
 msgstr "Скачать PDF пользователя"
 
@@ -876,6 +876,10 @@ msgid "Sorry! Search query must have at least two characters."
 msgstr ""
 "Извините! У искаемого вопроса должны быть по крайней мере два свойства."
 
+#: catalogue/templates/catalogue/snippets/content_warning.html:4
+msgid "Caution: text contains"
+msgstr ""
+
 #: catalogue/templates/catalogue/snippets/custom_pdf_link_li.html:3
 msgid "Download a custom PDF"
 msgstr "Скачать PDF"
@@ -977,7 +981,13 @@ msgstr ""
 msgid "Loading"
 msgstr "Ведение"
 
-#: catalogue/views.py:351
+#: catalogue/templatetags/catalogue_tags.py:504
+#, fuzzy
+#| msgid "language code"
+msgid "vulgar language"
+msgstr "код языка"
+
+#: catalogue/views.py:354
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -988,11 +998,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: catalogue/views.py:356
+#: catalogue/views.py:359
 msgid "Book imported successfully"
 msgstr "Вы удачно заимпортировали книгу"
 
-#: catalogue/views.py:357
+#: catalogue/views.py:360
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Ошибка импорта файла: %r"

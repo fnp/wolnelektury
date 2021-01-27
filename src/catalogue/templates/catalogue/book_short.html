@@ -108,6 +108,7 @@
         <ul class="book-box-tools">
           <li class="book-box-read">
             {% if book.html_file %}
+	    <div>{% content_warning book %}</div>
               <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
             {% endif %}
             {% if book.print_on_demand %}
@@ -152,6 +153,7 @@
             {% trans "For now this work is only available for our subscribers." %}
 	    <a href="/towarzystwo/">Dołącz do Towarzystwa Przyjaciół Wolnych Lektur</a>
 	  </p>
+          <div>{% content_warning book %}</div>
         {% endblock %}
       {% endif %}
       {% endcache %}
