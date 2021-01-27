@@ -311,10 +311,13 @@ class BuildHtml(BuildEbook):
         from librarian import DCNS
         url_elem = wldoc.edoc.getroot().find('.//' + DCNS('identifier.url'))
         if url_elem is None:
-            gallery = ''
+            gal_url = ''
+            gal_path = ''
         else:
-            gallery = gallery_url(slug=url_elem.text.rstrip('/').rsplit('/', 1)[1])
-        return wldoc.as_html(options={'gallery': "'%s'" % gallery})
+            slug = url_elem.text.rstrip('/').rsplit('/', 1)[1]
+            gal_url = gallery_url(slug=slug)
+            gal_path = gallery_path(slug=slug)
+        return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url)
 
 
 class BuildCover(BuildEbook):

@@ -52,6 +52,7 @@ class Command(BaseCommand):
                                   dont_build=dont_build,
                                   search_index_tags=False,
                                   findable=options.get('findable'),
+                                  remote_gallery_url='file://' + os.path.dirname(os.path.abspath(file_base)) + '/img/'
                                   )
         for ebook_format in Book.ebook_formats:
             if os.path.isfile(file_base + '.' + ebook_format):

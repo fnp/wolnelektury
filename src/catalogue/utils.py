@@ -303,7 +303,7 @@ def delete_from_cache_by_language(cache, key_template):
 
 
 def gallery_path(slug):
-    return os.path.join(settings.MEDIA_ROOT, settings.IMAGE_DIR, slug)
+    return os.path.join(settings.MEDIA_ROOT, settings.IMAGE_DIR, slug) + '/'
 
 
 def gallery_url(slug):

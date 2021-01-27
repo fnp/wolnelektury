@@ -503,7 +503,7 @@ def content_warning(book):
     warnings_def = {
         'wulgaryzmy': _('vulgar language'),
     }
-    warnings = book.get_extra_info_json().get('content_warnings')
+    warnings = book.get_extra_info_json().get('content_warnings', [])
     warnings = sorted(
         warnings_def.get(w, w)
         for w in warnings
