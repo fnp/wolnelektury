@@ -34,8 +34,9 @@
 
         {% chunk 'club_form_top' %}
 
-        {% club_monthly_since '2020-12-01' as supporters %}
-        {% club_monthly_missing_since '2020-12-01' 100 as missing_supporters %}
+	{% if supporters_target %}
+        {% club_monthly_since supporters_since as supporters %}
+        {% club_monthly_missing_since supporters_since supporters_target as missing_supporters %}
 	<p>
 	  {% blocktrans %}Help us get 100 new Friends by the end of the school semester.{% endblocktrans %}
 	  {% blocktrans count supporters=supporters %}
@@ -50,6 +51,7 @@
 	  {% endblocktrans %}
         </p>
         <div class="funding" style="background: none;"><div class="description"><div class="progress" style="text-align: center; background-size: {{ supporters }}% 1px;"><span class="piece progress-collected">&nbsp;{{ supporters }}</span><span class="piece progress-target">{{ missing_supporters }}&nbsp;</span><div style="clear: both"></div></div></div></div>
+	{% endif %}
 
         {% include "club/payment_form.html" %}
 
