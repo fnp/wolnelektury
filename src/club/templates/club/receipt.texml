@@ -45,7 +45,7 @@ rachunek płatniczy, darowizn pieniężnych w~łącznej kwocie {{ total }} zł.
   \hline
   \textbf{Data} & \textbf{Darowizna} \\
   \hline
-  {% for obj in orders %}{{ obj.completed_at.date }} & {{ obj.get_amount }} zł \\
+  {% for payment in payments %}{{ payment.timestamp.date }} & {{ payment.amount }} zł \\
   {% endfor %}
   \hline
 \end{longtable}
@@ -63,7 +63,7 @@ organizacji pożytku publicznego.
 {\Large \textbf{Dane identyfikujące Darczyńcę:}}
 
 \begin{longtable}{ r l }
-  \textbf{adres e-mail:} & ]]><TeXML escape="1">text_x+x-{{ email }}</TeXML><![CDATA[
+  \textbf{adres e-mail:} & ]]><TeXML escape="1">{{ email }}</TeXML><![CDATA[
 \end{longtable}
 
 {\Large \textbf{Dane identyfikujące Obdarowanego:}}

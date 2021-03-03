@@ -261,14 +261,36 @@ class PayUOrder(payu_models.Order):
 
     @classmethod
     def send_receipt(cls, email, year):
+        Funding = apps.get_model('funding', 'Funding')
+        payments = []
+
         qs = cls.objects.filter(status='COMPLETED', schedule__email=email, completed_at__year=year).order_by('completed_at')
-        if not qs.exists(): return
+        for order in qs:
+            payments.append({
+                'timestamp': order.completed_at,
+                'amount': order.get_amount(),
+            })
+            
+        fundings = Funding.objects.filter(
+            email=email,
+            payed_at__year=year
+        ).order_by('payed_at')
+        for funding in fundings:
+            payments.append({
+                'timestamp': funding.payed_at,
+                'amount': funding.amount,
+            })
+
+        if not payments: return
+
+        payments.sort(key=lambda x: x['timestamp'])
+
         ctx = {
             "email": email,
             "year": year,
             "next_year": year + 1,
-            "total": qs.aggregate(s=models.Sum('schedule__amount'))['s'],
-            "orders": qs,
+            "total": sum(x['amount'] for x in payments),
+            "payments": payments,
         }
         temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
         temp.close()
