@@ -36,10 +36,13 @@
                     {% trans "Artist:" %}&nbsp;<span class='artist'>{{ extra_info.artist_name }}</span>,
                     {% trans "director:" %}&nbsp;<span class='director'>{{ extra_info.director_name }}</span>
                     {% if extra_info.license %}{% license_icon extra_info.license %}{% endif %}
+                    {% if i.mp3.project_icon %}<img src="{{ i.mp3.project_icon }}">{% endif %}
                     <p>
+                     {% if i.mp3.project_description %}{{ i.mp3.project_description }}{% else %}
                       {% with fb=extra_info.funded_by %}
                         {% if fb %}Dofinansowano ze środków: {{ fb }}.{% endif %}
                       {% endwith %}
+		     {% endif %}
                     </p>
 		  {% endwith %}
                   </div>
