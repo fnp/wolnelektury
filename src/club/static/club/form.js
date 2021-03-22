@@ -19,6 +19,6 @@ $(function() {
 
 
     $("#payment-form").submit(function() {
-        _paq.push(['trackGoal', 12, $("#id_amount").val()]);
+        _paq.push(['trackGoal', 12, parseFloat($("#id_amount").val())]);
     });
 });
