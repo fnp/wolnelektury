@@ -36,6 +36,7 @@
     img {
         margin: 0;
         align-self: center;
+        width: auto;
         max-height: 40px;
         @media screen and (min-width: 400px) {
             max-height: 60px;
