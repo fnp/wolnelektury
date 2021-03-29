@@ -214,7 +214,7 @@ msgstr "creation date"
 msgid "parent number"
 msgstr "Parent number"
 
-#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:41
+#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:43
 msgid "extra information"
 msgstr "Additional information"
 
@@ -312,7 +312,7 @@ msgstr ""
 msgid "file"
 msgstr "XML file"
 
-#: catalogue/models/bookmedia.py:50 catalogue/models/bookmedia.py:51
+#: catalogue/models/bookmedia.py:52 catalogue/models/bookmedia.py:53
 msgid "book media"
 msgstr "book media"
 
@@ -578,7 +578,7 @@ msgstr "language code"
 msgid "Read online"
 msgstr "Read online"
 
-#: catalogue/templates/catalogue/book_short.html:123
+#: catalogue/templates/catalogue/book_short.html:115
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
@@ -586,24 +586,24 @@ msgid ""
 "bezpłatnie."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:123
+#: catalogue/templates/catalogue/book_short.html:115
 msgid "Print on demand –"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:128
+#: catalogue/templates/catalogue/book_short.html:120
 #: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:404
 msgid "Download"
 msgstr "Download"
 
-#: catalogue/templates/catalogue/book_short.html:142
+#: catalogue/templates/catalogue/book_short.html:134
 msgid "more"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:153
+#: catalogue/templates/catalogue/book_short.html:145
 msgid "less"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:161
+#: catalogue/templates/catalogue/book_short.html:153
 msgid "For now this work is only available for our subscribers."
 msgstr ""
 
@@ -889,15 +889,15 @@ msgstr "Reader"
 msgid "director:"
 msgstr "Director"
 
-#: catalogue/templates/catalogue/snippets/jplayer.html:61
+#: catalogue/templates/catalogue/snippets/jplayer.html:64
 msgid "previous"
 msgstr ""
 
-#: catalogue/templates/catalogue/snippets/jplayer.html:62
+#: catalogue/templates/catalogue/snippets/jplayer.html:65
 msgid "Part"
 msgstr ""
 
-#: catalogue/templates/catalogue/snippets/jplayer.html:63
+#: catalogue/templates/catalogue/snippets/jplayer.html:66
 msgid "next"
 msgstr ""
 

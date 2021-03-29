@@ -7,7 +7,7 @@ from celery.utils.log import get_task_logger
 from django.conf import settings
 from django.utils import timezone
 
-from catalogue.utils import gallery_url
+from catalogue.utils import absolute_url, gallery_url
 from waiter.models import WaitedFile
 
 task_logger = get_task_logger(__name__)
@@ -53,7 +53,7 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
             pdf = wldoc.as_pdf(
                 customizations=customizations,
                 morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
-                base_url=gallery_url(wldoc.book_info.url.slug),
+                base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)),
                 **kwargs)
             DefaultStorage().save(file_name, File(open(pdf.get_filename(), 'rb')))
     finally:

@@ -8,7 +8,7 @@ from django.db import models
 from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
 from catalogue.constants import LANGUAGES_3TO2, EBOOK_FORMATS_WITH_CHILDREN, EBOOK_FORMATS_WITHOUT_CHILDREN
-from catalogue.utils import remove_zip, truncate_html_words, gallery_path, gallery_url
+from catalogue.utils import absolute_url, remove_zip, truncate_html_words, gallery_path, gallery_url
 from celery.task import Task, task
 from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
@@ -191,7 +191,7 @@ class BuildPdf(BuildEbook):
     def transform(wldoc, fieldfile):
         return wldoc.as_pdf(
             morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
-            base_url=gallery_url(wldoc.book_info.url.slug), customizations=['notoc'])
+            base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)), customizations=['notoc'])
 
     def build(self, fieldfile):
         BuildEbook.build(self, fieldfile)
@@ -203,7 +203,7 @@ class BuildPdf(BuildEbook):
 class BuildEpub(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_epub(cover=True, base_url=gallery_url(wldoc.book_info.url.slug))
+        return wldoc.as_epub(cover=True, base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)))
 
 
 @BuildEbook.register('mobi')
@@ -211,7 +211,7 @@ class BuildEpub(BuildEbook):
 class BuildMobi(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_mobi(cover=True, base_url=gallery_url(wldoc.book_info.url.slug))
+        return wldoc.as_mobi(cover=True, base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)))
 
 
 @BuildEbook.register('html')
@@ -317,7 +317,7 @@ class BuildHtml(BuildEbook):
             slug = url_elem.text.rstrip('/').rsplit('/', 1)[1]
             gal_url = gallery_url(slug=slug)
             gal_path = gallery_path(slug=slug)
-        return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url, base_url=gal_url)
+        return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url, base_url=absolute_url(gal_url))
 
 
 class BuildCover(BuildEbook):

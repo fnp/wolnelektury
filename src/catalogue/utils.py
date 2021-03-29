@@ -11,8 +11,10 @@ from collections import defaultdict
 from errno import EEXIST, ENOENT
 from fcntl import flock, LOCK_EX
 from os import mkdir, path, unlink
+from urllib.parse import urljoin
 from zipfile import ZipFile
 
+from django.apps import apps
 from django.conf import settings
 from django.core.files.storage import DefaultStorage
 from django.core.files.uploadedfile import UploadedFile
@@ -308,6 +310,16 @@ def gallery_path(slug):
 
 def gallery_url(slug):
     return '%s%s%s/' % (settings.MEDIA_URL, settings.IMAGE_DIR, slug)
+
+
+def absolute_url(url):
+    Site = apps.get_model('sites', 'Site')
+    site = Site.objects.get_current()
+    base_url = '%s://%s' % (
+        'https' if settings.SESSION_COOKIE_SECURE else 'http',
+        site.domain
+    )
+    return urljoin(base_url, url)
 
 
 def get_mp3_length(path):
