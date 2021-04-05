@@ -1,18 +1,18 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==2.2.16
+Django==2.2.19
 fnpdjango==0.4.5
-docutils
+docutils==0.16
 
 django-pipeline==2.0.5
 libsasscompiler==0.1.8
 jsmin==2.2.2
 
 fnp-django-pagination==2.2.3
-django-modeltranslation==0.13
-django-allauth==0.42
-django-extensions==2.2.1
+django-modeltranslation==0.16.2
+django-allauth==0.44
+django-extensions==3.1.1
 djangorestframework==3.9.4
 djangorestframework-xml
 django-admin-ordering==0.10.0
@@ -25,24 +25,23 @@ django-machina==1.0.2
 oauthlib>=3.0.1,<3.1
 
 # contact
-pyyaml
+pyyaml==5.4.1
 
-polib
+polib==1.1.1
 django-babel==0.6.2
 
-pytz
+pytz==2021.1
 
-django-honeypot==0.7.0
+django-honeypot==0.9.0
 
-python-memcached
-python-fb
+python-memcached==1.59
+python-fb==0.2
 
-# Feedparser
-Feedparser>=5.1
+Feedparser==6.0.2
 
-Pillow
-mutagen>=1.31
-sorl-thumbnail==12.5.0
+Pillow==8.1.2
+mutagen==1.45.1
+sorl-thumbnail==12.7.0
 
 # home-brewed & dependencies
 librarian==1.15
@@ -61,8 +60,6 @@ deprecated
 httplib2
 
 sentry-sdk==0.10.2
-
-mailchimp3
 
 requests
 
