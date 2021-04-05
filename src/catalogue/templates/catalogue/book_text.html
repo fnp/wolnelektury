@@ -182,7 +182,7 @@
   {% localize off %}
   <script type="application/json" id="interesting-references">
    {
-       {% for ref in book.reference_set.all %}
+       {% for ref in book.references %}
        {% if ref.entity.is_interesting %}
        "{{ ref.entity.uri }}": {
            {% if ref.entity.lat and ref.entity.lon %}

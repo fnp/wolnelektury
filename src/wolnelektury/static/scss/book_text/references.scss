@@ -34,7 +34,11 @@ a.reference.interesting::after {
             vertical-align: middle;
             margin: 0 10px 0 0;
             img {
-                height: 100px;
+		width: auto;
+		border: 5px solid white;
+		box-shadow: 4px 4px 4px #666;
+		max-width: 240px;
+		max-height: 200px;
             }
         }
     }

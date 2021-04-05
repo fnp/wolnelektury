@@ -78,7 +78,11 @@
             $.each(ref.images, function(i, e) {
                 $i = $("<a target='_blank'><img></a>");
                 $i.attr('href', e.page);
-                $('img', $i).attr('src', e.url);
+                $('img', $i).attr('src', e.thumburl || e.url);
+                if (e.thumbresolution) {
+                    $('img', $i).attr('width', e.thumbresolution[0]).attr('height', e.thumbresolution[1]);
+                }
+
                 $("#reference-images").append($i);
             })
         }

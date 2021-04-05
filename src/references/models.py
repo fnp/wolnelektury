@@ -1,4 +1,5 @@
 import json
+import urllib.parse
 from django.db import models
 from wikidata.client import Client
 
@@ -8,6 +9,7 @@ class Entity(models.Model):
     WIKIDATA_IMAGE = 'P18'
     WIKIDATA_COORDINATE_LOCATION = 'P625'
     WIKIDATA_EARTH = 'Q2'
+    WIKIDATA_IMAGE_QUERY = './w/api.php?action=query&titles={}&format=json&prop=imageinfo&iiprop=url&iiurlwidth=240&iiurlheight=200'
 
     uri = models.CharField(max_length=255, unique=True, db_index=True)
     label = models.CharField(max_length=1024, blank=True)
@@ -43,13 +45,31 @@ class Entity(models.Model):
             self.lon = location.longitude
 
         images = entity.getlist(client.get(self.WIKIDATA_IMAGE))
-        self.images = json.dumps([
-            {
+        image_data_list = []
+        for image in images:
+            image_data = {
                 "url": image.image_url,
                 "page": image.page_url,
                 "resolution": image.image_resolution,
-            } for image in images
-        ])
+            }
+
+            result = client.request(
+                self.WIKIDATA_IMAGE_QUERY.format(
+                    urllib.parse.quote(image.title)
+                )
+            )
+
+            result_data = next(iter(result['query']['pages'].values()))['imageinfo'][0]
+            image_data['thumburl'] = result_data['thumburl']
+            image_data['thumbresolution'] = [
+                result_data['thumbwidth'],
+                result_data['thumbheight']
+            ]
+            image_data['responsiveUrls'] = result_data['responsiveUrls']
+
+            image_data_list.append(image_data)
+
+        self.images = json.dumps(image_data_list)
 
 
 class Reference(models.Model):

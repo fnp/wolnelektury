@@ -677,6 +677,10 @@ class Book(models.Model):
                 entity.save()
         Reference.objects.filter(book=self).exclude(entity__uri__in=found).delete()
     
+    @property
+    def references(self):
+        return self.reference_set.all().select_related('entity')
+
     @classmethod
     @transaction.atomic
     def repopulate_ancestors(cls):
