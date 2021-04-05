@@ -65,7 +65,8 @@ class Entity(models.Model):
                 result_data['thumbwidth'],
                 result_data['thumbheight']
             ]
-            image_data['responsiveUrls'] = result_data['responsiveUrls']
+            if 'responsiveUrls' in result_data:
+                image_data['responsiveUrls'] = result_data['responsiveUrls']
 
             image_data_list.append(image_data)
 
