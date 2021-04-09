@@ -135,9 +135,8 @@ class BookList(ListAPIView):
         name = request.POST.get('name', '')
         part_name = request.POST.get('part_name', '')
 
-        project_data = request.POST.get('project', {})
-        project_description = project_data.get('description', '')
-        project_icon = project_data.get('icon', '')
+        project_description = request.POST.get('project_description', '')
+        project_icon = request.POST.get('project_icon', '')
 
         _rest, slug = request.POST['book'].rstrip('/').rsplit('/', 1)
         book = Book.objects.get(slug=slug)
