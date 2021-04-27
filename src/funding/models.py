@@ -304,6 +304,9 @@ class Funding(models.Model):
                 'key': self.notify_key,
             }))
 
+    def wl_optout_url(self):
+        return 'https://wolnelektury.pl' + self.get_disable_notifications_url()
+
     def save(self, *args, **kwargs):
         if self.email and not self.notify_key:
             self.notify_key = get_random_hash(self.email)
