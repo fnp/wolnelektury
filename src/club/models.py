@@ -261,8 +261,26 @@ class PayUOrder(payu_models.Order):
 
     @classmethod
     def send_receipt(cls, email, year):
+        Contact = apps.get_model('messaging', 'Contact')
         Funding = apps.get_model('funding', 'Funding')
         payments = []
+
+        try:
+            contact = Contact.objects.get(email=email)
+        except Contact.DoesNotExist:
+            funding = Funding.objects.filter(
+                email=email,
+                payed_at__year=year,
+                notifications=True).order_by('payed_at').first()
+            if funding is None:
+                print('no notifications')
+                return
+            optout = funding.wl_optout_url()
+        else:
+            if contact.level == Level.OPT_OUT:
+                print('opt-out')
+                return
+            optout = contact.wl_optout_url()
 
         qs = cls.objects.filter(status='COMPLETED', schedule__email=email, completed_at__year=year).order_by('completed_at')
         for order in qs:
@@ -270,7 +288,7 @@ class PayUOrder(payu_models.Order):
                 'timestamp': order.completed_at,
                 'amount': order.get_amount(),
             })
-            
+
         fundings = Funding.objects.filter(
             email=email,
             payed_at__year=year
@@ -291,6 +309,7 @@ class PayUOrder(payu_models.Order):
             "next_year": year + 1,
             "total": sum(x['amount'] for x in payments),
             "payments": payments,
+            "optout": optout,
         }
         temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
         temp.close()

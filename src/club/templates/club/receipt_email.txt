@@ -1,12 +1,37 @@
 Dzień dobry,
 
-Czy wiesz, że możesz odliczyć od podatku darowizny przekazane
+Tytuł: Przekaż 1% na książki, odlicz darowiznę na Wolne Lektury
+
+
+Dzień dobry, 
+
+czy planujesz rozliczyć podatki w najbliższych dniach? Jeśli tak, pamiętaj,
+że możesz odliczyć darowizny na Wolne Lektury – szczegółowe informacje
+na temat kwoty znajdziesz poniżej. Będziemy Ci także wdzięczni
+za przekazanie na rozwój naszej biblioteki 1% podatku. Wystarczy,
+że wpiszesz KRS 00000 70056 i nazwę fundacji Nowoczesna Polska
+w odpowiednią rubrykę. Nawet najmniejsza kwota pomoże nam udostępnić
+kolejne wartościowe książki tysiącom Czytelniczek i Czytelników.
+
+Dziękujemy za Twoje wsparcie!
+
+Zespół Wolnych Lektur
+
+
+
+PS Poniżej znajdziesz email sprzed kilku tygodni, który być może Ci umknął.
+
+===
+
+
+
+
+Czy wiesz, że możesz odliczyć od dochodu darowizny przekazane
 Fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
 Kliknij i zobacz swoje zestawienie darowizn za rok {{ year }}!
 
 Dane z zaświadczenia wprowadź do formularza PIT. Pamiętaj, że musisz
-mieć potwierdzenie wykonanych przelewów z Twojego banku. Zaświadczenie
-będzie dostępne do końca kwietnia {{ next_year }} roku.
+mieć potwierdzenie wykonanych przelewów z Twojego banku.
 
 Pamiętaj, że podczas wypełniania swojego PIT-a możesz przekazać
 1% swojego podatku na wybraną organizację pożytku publicznego.
@@ -25,3 +50,8 @@ jest dobrowolne. Dane są przetwarzane w zakresie niezbędnym do wysyłania
 informacji darczyńcom Wolnych Lektur. Osobom, których dane są zbierane,
 przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
 Więcej informacji w polityce prywatności (https://nowoczesnapolska.org.pl/prywatnosc/).
+
+
+-- 
+Jeśli nie chcesz już dostawać podobnych wiadomości, kliknij:
+{{ optout }}
