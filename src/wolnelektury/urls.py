@@ -49,7 +49,7 @@ urlpatterns += [
     path('re/', include('redirects.urls')),
 
     path('paypal/app-form/', RedirectView.as_view(
-        url='/towarzystwo/?app=1', permanent=False)),
+        url='/towarzystwo/?pk_campaign=aplikacja', permanent=False)),
     path('towarzystwo/dolacz/', RedirectView.as_view(
         url='/towarzystwo/', permanent=False)),
 
