@@ -29,7 +29,7 @@ $(function() {
         if (!camp && window.location.pathname !== "/towarzystwo/") {
             camp = window.location.pathname;
         }
-        let dims = camp ? {dimension2: camp} : {};
+        let dims = camp ? {dimension1: camp} : {};
         _paq.push(['trackGoal', 12, parseFloat($("#id_amount").val()), dims]);
     });
 });
