@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-12-16 13:47+0100\n"
+"PO-Revision-Date: 2021-04-29 15:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -17,81 +17,89 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 
 #: annoy/models.py:11
 msgid "place"
 msgstr "miejsce"
 
 #: annoy/models.py:13
+msgid "style"
+msgstr "styl"
+
+#: annoy/models.py:15
+msgid "Affects blackout."
+msgstr "Dotyczy blackoutu."
+
+#: annoy/models.py:18
 msgid "action label"
 msgstr "etykieta akcji"
 
-#: annoy/models.py:15
+#: annoy/models.py:20
 msgid "If empty, whole banner will serve as a link"
 msgstr "Jeśli pusta, cały banner będzie służył jako link."
 
-#: annoy/models.py:17
+#: annoy/models.py:22
 msgid "open label"
 msgstr "etykieta otwierania"
 
-#: annoy/models.py:18
+#: annoy/models.py:23
 msgid "close label"
 msgstr "etykieta zamykania"
 
-#: annoy/models.py:19 annoy/models.py:98
+#: annoy/models.py:24 annoy/models.py:103
 msgid "text"
 msgstr "tekst"
 
-#: annoy/models.py:20
+#: annoy/models.py:25
 msgid "image"
 msgstr "obraz"
 
-#: annoy/models.py:21
+#: annoy/models.py:26
 msgid "url"
 msgstr "URL"
 
-#: annoy/models.py:23
+#: annoy/models.py:28
 msgid "priority"
 msgstr "priortytet"
 
-#: annoy/models.py:24
+#: annoy/models.py:29
 msgid "Banners with higher priority come first."
 msgstr "Bannery z wyższym priorytetem mają pierwszeństwo."
 
-#: annoy/models.py:25
+#: annoy/models.py:30
 msgid "since"
 msgstr "od"
 
-#: annoy/models.py:26
+#: annoy/models.py:31
 msgid "until"
 msgstr "do"
 
-#: annoy/models.py:27
+#: annoy/models.py:32
 msgid "show members"
 msgstr "widoczny dla członków klubu"
 
-#: annoy/models.py:28
+#: annoy/models.py:33
 msgid "staff preview"
 msgstr "podgląd tylko dla zespołu"
 
-#: annoy/models.py:31
+#: annoy/models.py:36
 msgid "banner"
 msgstr "banner"
 
-#: annoy/models.py:32
+#: annoy/models.py:37
 msgid "banners"
 msgstr "bannery"
 
-#: annoy/models.py:70
+#: annoy/models.py:75
 msgid "pararaphs"
 msgstr "akapity"
 
-#: annoy/models.py:74
+#: annoy/models.py:79
 msgid "dynamic insert"
 msgstr "dynamiczna wstawka"
 
-#: annoy/models.py:75
+#: annoy/models.py:80
 msgid "dynamic inserts"
 msgstr "dynamiczne wstawki"
 
@@ -114,3 +122,11 @@ msgstr "Obok listy fragmentów książki"
 #: annoy/places.py:8
 msgid "Blackout"
 msgstr "Blackout"
+
+#: annoy/places.py:9
+msgid "Full screen"
+msgstr "Cały ekran"
+
+#: annoy/places.py:11
+msgid "Upper half of screen"
+msgstr "Górna połowa ekranu"

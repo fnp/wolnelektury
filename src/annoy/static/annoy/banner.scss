@@ -126,6 +126,7 @@
     font-size: 16pt;
     line-height: 26pt;
     padding: 0;
+    overflow: hidden;
 
     .annoy-banner-inner {
         padding: 0 40% 0 15%;
@@ -133,7 +134,7 @@
         overflow-y: scroll;
         padding-top: 20vh;
         padding-bottom: 2em;
-        width: 101vw;
+        width: 101%;
         box-sizing: border-box;
     }
 
@@ -218,8 +219,53 @@
         }
     }
 
+    &.annoy-banner-style_blackout_centre {
+        background: rgba(0,0,0,.5);
+
+        .annoy-banner-inner {
+            background: black;
+            position: absolute;
+            top: 14%;
+            left: 14%;
+            right: 14%;
+            bottom: 14%;
+            width: auto;
+            height: auto;
+            border: 2px solid white;
+            overflow-y: auto;
+        }
+
+    }
+    @media screen and (min-height: 500px) {
+        &.annoy-banner-style_blackout_upper {
+            background: rgba(0,0,0,.5);
+
+            .annoy-banner-inner {
+                background: black;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 50%;
+                width: auto;
+                height: auto;
+                border-bottom: 2px solid white;
+                overflow-y: auto;
+                
+                .action {
+                    bottom: 20vh;
+                }
+            }
+
+            .annoy-banner-off {
+                bottom: 60vh;
+            }
+        }
+    }
     
 }
+
+
 .annoy-banner-on_blackout {
     position: fixed;
     z-index: 9999;

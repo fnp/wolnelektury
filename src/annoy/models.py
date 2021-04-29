@@ -4,11 +4,16 @@ from django.db import models
 from django.template import Context, Template
 from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
-from .places import PLACES, PLACE_CHOICES
+from .places import PLACES, PLACE_CHOICES, STYLES
 
 
 class Banner(models.Model):
     place = models.SlugField(_('place'), choices=PLACE_CHOICES)
+    style = models.CharField(
+        _('style'), max_length=255, blank=True,
+        choices=STYLES,
+        help_text=_('Affects blackout.')
+    )
     action_label = models.CharField(
         _('action label'),
         max_length=255, blank=True,
