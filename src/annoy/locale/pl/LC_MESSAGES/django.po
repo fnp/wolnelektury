@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-04-29 15:39+0200\n"
+"PO-Revision-Date: 2021-04-30 13:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -31,75 +31,79 @@ msgstr "styl"
 msgid "Affects blackout."
 msgstr "Dotyczy blackoutu."
 
-#: annoy/models.py:18
+#: annoy/models.py:17
+msgid "small font"
+msgstr "mały font"
+
+#: annoy/models.py:19
 msgid "action label"
 msgstr "etykieta akcji"
 
-#: annoy/models.py:20
+#: annoy/models.py:21
 msgid "If empty, whole banner will serve as a link"
 msgstr "Jeśli pusta, cały banner będzie służył jako link."
 
-#: annoy/models.py:22
+#: annoy/models.py:23
 msgid "open label"
 msgstr "etykieta otwierania"
 
-#: annoy/models.py:23
+#: annoy/models.py:24
 msgid "close label"
 msgstr "etykieta zamykania"
 
-#: annoy/models.py:24 annoy/models.py:103
+#: annoy/models.py:25 annoy/models.py:104
 msgid "text"
 msgstr "tekst"
 
-#: annoy/models.py:25
+#: annoy/models.py:26
 msgid "image"
 msgstr "obraz"
 
-#: annoy/models.py:26
+#: annoy/models.py:27
 msgid "url"
 msgstr "URL"
 
-#: annoy/models.py:28
+#: annoy/models.py:29
 msgid "priority"
 msgstr "priortytet"
 
-#: annoy/models.py:29
+#: annoy/models.py:30
 msgid "Banners with higher priority come first."
 msgstr "Bannery z wyższym priorytetem mają pierwszeństwo."
 
-#: annoy/models.py:30
+#: annoy/models.py:31
 msgid "since"
 msgstr "od"
 
-#: annoy/models.py:31
+#: annoy/models.py:32
 msgid "until"
 msgstr "do"
 
-#: annoy/models.py:32
+#: annoy/models.py:33
 msgid "show members"
 msgstr "widoczny dla członków klubu"
 
-#: annoy/models.py:33
+#: annoy/models.py:34
 msgid "staff preview"
 msgstr "podgląd tylko dla zespołu"
 
-#: annoy/models.py:36
+#: annoy/models.py:37
 msgid "banner"
 msgstr "banner"
 
-#: annoy/models.py:37
+#: annoy/models.py:38
 msgid "banners"
 msgstr "bannery"
 
-#: annoy/models.py:75
+#: annoy/models.py:76
 msgid "pararaphs"
 msgstr "akapity"
 
-#: annoy/models.py:79
+#: annoy/models.py:80
 msgid "dynamic insert"
 msgstr "dynamiczna wstawka"
 
-#: annoy/models.py:80
+#: annoy/models.py:81
 msgid "dynamic inserts"
 msgstr "dynamiczne wstawki"
 

@@ -7,7 +7,13 @@
       {{ banner.open_label }}
     </a>
   {% endif %}
-  <div class="annoy-banner annoy-banner_{{ banner.place }} annoy-banner-style_{{ banner.style }}{% if banner.image %} with-image{% endif %}" id="annoy-banner-{{ banner.id }}">
+  <div class="
+              annoy-banner
+              annoy-banner_{{ banner.place }}
+              annoy-banner-style_{{ banner.style }}
+              {% if banner.image %}with-image{% endif %}
+              {% if banner.smallfont %}banner-smallfont{% endif %}
+              " id="annoy-banner-{{ banner.id }}">
     {% if not banner.action_label %}
       <a href="{{ banner.url }}">
     {% endif %}

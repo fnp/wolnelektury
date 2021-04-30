@@ -128,6 +128,11 @@
     padding: 0;
     overflow: hidden;
 
+    &.banner-smallfont {
+        font-size: 13pt;
+        line-height: 22pt;
+    }
+    
     .annoy-banner-inner {
         padding: 0 40% 0 15%;
         height: 100%;
