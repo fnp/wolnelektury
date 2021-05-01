@@ -59,10 +59,18 @@
         if (ref.location) {
             enable_map();
 
-            marker.setLatLng(ref.location);
+            let newLoc = [
+                ref.location[0],
+                ref.location[1] + Math.round(
+                    (map.getCenter().lng - ref.location[1]) / 360
+                ) * 360
+            ];
+
+            marker.setLatLng(newLoc);
             marker.bindTooltip(ref.label).openTooltip();
             map.addLayer(marker);
-            map.panTo(ref.location, {
+
+            map.panTo(newLoc, {
                 animate: true,
                 duration: 1,
             });
