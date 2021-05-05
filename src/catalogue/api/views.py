@@ -27,7 +27,7 @@ book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 
 class CollectionList(ListAPIView):
-    queryset = Collection.objects.all()
+    queryset = Collection.objects.filter(listed=True)
     serializer_class = serializers.CollectionListSerializer
 
 

@@ -48,13 +48,13 @@ def main_page(request):
 
     # Choose a collection for main.
     try:
-        ctx['collection'] = Collection.objects.order_by('?')[:1][0]
+        ctx['collection'] = Collection.objects.filter(listed=True).order_by('?')[:1][0]
     except IndexError:
         pass
 
     best = []
     best_places = 5
-    for recommended in Collection.objects.filter(role='recommend').order_by('?'):
+    for recommended in Collection.objects.filter(listed=True, role='recommend').order_by('?'):
         books = list(recommended.get_books().exclude(id__in=[b.id for b in best]).order_by('?')[:best_places])
         best.extend(books)
         best_places -= len(books)

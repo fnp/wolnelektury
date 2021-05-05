@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-01-27 10:47+0100\n"
+"PO-Revision-Date: 2021-05-05 10:02+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -195,7 +195,7 @@ msgstr "dodatkowe informacje"
 msgid "print on demand"
 msgstr "druk na żądanie"
 
-#: catalogue/models/book.py:73 catalogue/models/collection.py:22
+#: catalogue/models/book.py:73 catalogue/models/collection.py:23
 msgid "recommended"
 msgstr "polecane"
 
@@ -253,11 +253,11 @@ msgstr "Utwór \"%s\" nie istnieje."
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: catalogue/models/book.py:853
+#: catalogue/models/book.py:857
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:33
+#: catalogue/models/book.py:936 catalogue/models/bookmedia.py:33
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -299,11 +299,15 @@ msgstr "rodzaj"
 msgid "picture"
 msgstr "obraz"
 
-#: catalogue/models/collection.py:27
+#: catalogue/models/collection.py:20
+msgid "listed"
+msgstr "na liście"
+
+#: catalogue/models/collection.py:28
 msgid "collection"
 msgstr "kolekcja"
 
-#: catalogue/models/collection.py:28
+#: catalogue/models/collection.py:29
 msgid "collections"
 msgstr "kolekcje"
 
@@ -989,9 +993,6 @@ msgstr "Błąd podczas importowania pliku: %r"
 
 #~ msgid "for advanced usage"
 #~ msgstr "do zadań specjalnych"
-
-#~ msgid "Listen"
-#~ msgstr "Słuchaj"
 
 #~ msgid "See"
 #~ msgstr "Zobacz"

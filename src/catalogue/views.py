@@ -36,7 +36,7 @@ def catalogue(request):
     return render(request, 'catalogue/catalogue.html', {
         'books': Book.objects.filter(findable=True, parent=None),
         'pictures': Picture.objects.all(),
-        'collections': Collection.objects.all(),
+        'collections': Collection.objects.filter(listed=True),
         'active_menu_item': 'all_works',
     })
 
@@ -452,7 +452,7 @@ def tag_catalogue(request, category):
 
 
 def collections(request):
-    objects = Collection.objects.all()
+    objects = Collection.objects.filter(listed=True)
 
     if len(objects) > 3:
         best = random.sample(list(objects), 3)
