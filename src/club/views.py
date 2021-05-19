@@ -60,6 +60,11 @@ class JoinView(CreateView):
                 'email': self.request.user.email,
             }
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
+        return kwargs
+
     def form_valid(self, form):
         retval = super(JoinView, self).form_valid(form)
         if self.request.user.is_authenticated:

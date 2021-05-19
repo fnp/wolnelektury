@@ -51,7 +51,9 @@ class Schedule(models.Model):
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
     monthly = models.BooleanField(_('monthly'), default=True)
     yearly = models.BooleanField(_('yearly'), default=False)
-    
+
+    source = models.CharField(_('source'), max_length=255, blank=True)
+
     is_cancelled = models.BooleanField(_('cancelled'), default=False)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
     started_at = models.DateTimeField(_('started at'), auto_now_add=True)

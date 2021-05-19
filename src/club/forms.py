@@ -20,6 +20,10 @@ class ScheduleForm(forms.ModelForm, NewsletterForm):
             'monthly': forms.HiddenInput,
         }
 
+    def __init__(self, referer=None, **kwargs):
+        self.referer = referer
+        super().__init__(**kwargs)
+
     def clean_amount(self):
         value = self.cleaned_data['amount']
         club = models.Club.objects.first()
@@ -33,6 +37,7 @@ class ScheduleForm(forms.ModelForm, NewsletterForm):
 
     def save(self, *args, **kwargs):
         NewsletterForm.save(self, *args, **kwargs)
+        self.instance.source = self.referer or ''
         return super().save(*args, **kwargs)
 
 
