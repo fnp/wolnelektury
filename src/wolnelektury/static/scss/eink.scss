@@ -1,0 +1,140 @@
+.media-eink{
+    a {
+    }
+    
+    body {
+        background: white;
+    }
+
+    #header-wrapper {
+        background: none;
+       
+        header#main {
+            background: none;
+            color: black;
+            
+            a {
+                color: black;
+                text-decoration: underline;
+            }
+
+            #logo {
+                background-image: url('../img/logo-bez.png');
+                background-size: contain;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                
+                img {
+                    opacity: 0;
+                }
+            }
+
+            form#search-area {
+                background: none;
+
+                #search-field {
+                    right: 93px;
+                    top: -1px;
+                    
+                    input#search {
+                        box-sizing: border-box;
+                        box-shadow: none;
+                        border: 1px solid black;
+                        border-radius: 0;
+                        height: 45px;
+                        &::placeholder {
+                            opacity: 1;
+                            color: black;
+                        }
+                    }
+                }
+
+                button {
+                    background: none;
+                    color: black;
+                    border: 1px solid black;
+                }
+            }
+        }
+    }
+
+    #main-menu {
+        background: none;
+    }
+
+    .book-mini-box {
+        .book-mini-box-inner, .white-box {
+            border: 1px solid black;
+        }
+    }
+    .white-box {
+        border: 1px solid black;
+    }
+
+
+
+
+    .book-wide-box {
+        .book-box-inner {
+            border: 1px solid black;
+            
+            .cite {
+                background: white;
+                border-width: 0 1px 1px 1px;
+                border-style: solid;
+                border-color: black;
+            }
+        }
+    }
+
+
+
+    .book-box-tools {
+        .book-box-read {
+            a {
+                background: white;
+                color: black;
+                border: 1px solid black;
+                &:before {
+                    filter: invert(1);
+                }
+            }
+        }
+        
+        .book-box-download a {
+            color: black;
+            &.downarrow {
+                color: black;
+            }
+        }
+    }
+
+
+    .plain-list a, .white-box a {
+        color: black;
+        text-decoration: underline;
+    }
+
+
+    #show-menu {
+        background: white;
+        color: black;
+        &:before, &:after {
+            border-color: black;
+        }
+    }
+    #menu {
+        background: white;
+        border-right: 3px solid black;
+    }
+
+    
+    .annoy-banner {
+        background: white !important;
+        color: black !important;
+        border: 3px solid black;
+    }
+
+}
+
+
