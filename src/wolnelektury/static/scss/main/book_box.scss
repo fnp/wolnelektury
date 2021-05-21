@@ -459,14 +459,16 @@
     }
 
     .book-box-formats {
-      display: inline-block;
       max-width: 300px;
       vertical-align: top;
       padding-top: 6px;
+      border-collapse: collapse;
 
       a {
-        display: inline-block;
+        display: table-cell;
         @include size(padding, .2em 1em);
+        border:1px solid black;
+        line-height: 20px;
       }
     }
   }

@@ -117,33 +117,28 @@
             {% endif %}
           </li>
           <li class="book-box-download">
-            <a class="downarrow">{% trans "Download" %}:</a>
             <div class="book-box-formats">
               {% if book.pdf_file %}
-                <span><a href="{{ book.pdf_url}}">PDF</a></span>
+                <a href="{{ book.pdf_url}}">PDF</a>
               {% endif %}
               {% if book.epub_file %}
-                <span><a href="{{ book.epub_url}}">EPUB</a></span>
+                <a href="{{ book.epub_url}}">EPUB</a>
               {% endif %}
               {% if book.mobi_file %}
-                <span><a href="{{ book.mobi_url}}">MOBI</a></span>
+                <a href="{{ book.mobi_url}}">MOBI</a>
               {% endif %}
-              {% if book.has_audio %}
-                <span><a href="{% url 'download_zip_mp3' book.slug %}">MP3</a></span>
+              {% if  book.fb2_file %}
+                <a href="{{ book.fb2_url}}">FB2</a>
               {% endif %}
-              <a class="read-more-show hide" href="#">{% trans "more" %}</a>
-              <span class="read-more-content">
-                {% if  book.fb2_file %}
-                  <span><a href="{{ book.fb2_url}}">FB2</a></span>
-                {% endif %}
-                {% if  book.txt_file %}
-                  <span><a href="{{ book.txt_url}}">TXT</a></span>
-                {% endif %}
-                {% download_audio book mp3=False %}
-                <br>
+              {% if  book.txt_file %}
+                <a href="{{ book.txt_url}}">TXT</a>
+              {% endif %}
+            </div>
+            <div class="book-box-formats">
+              {% download_audio book %}
+            </div>
+            <div class="book-box-formats">
                 {% custom_pdf_link_li book %}
-                <a class="read-more-hide hide" href="#">{% trans "less" %}</a>
-              </span>
             </div>
           </li>
         </ul>
