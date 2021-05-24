@@ -74,6 +74,8 @@
             $("iframe", this).attr("src", $("iframe", this).attr('data-src'));
         });
 
+        $(".media-eink .carousel").cycle({fx: "none"});
+
 
         (function() {
             var $current = null;
