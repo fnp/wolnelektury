@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-05-05 10:02+0200\n"
+"PO-Revision-Date: 2021-05-24 13:06+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -376,7 +376,7 @@ msgid "tags"
 msgstr "tagi"
 
 #: catalogue/templates/catalogue/book_detail.html:24
-#: catalogue/templates/catalogue/book_text.html:34
+#: catalogue/templates/catalogue/book_text.html:35
 msgid "Other versions"
 msgstr "Inne wersje"
 
@@ -385,8 +385,8 @@ msgid "See also"
 msgstr "Zobacz też"
 
 #: catalogue/templates/catalogue/book_detail.html:41
-#: catalogue/templates/catalogue/book_text.html:47
-#: catalogue/templates/catalogue/book_text.html:66
+#: catalogue/templates/catalogue/book_text.html:48
+#: catalogue/templates/catalogue/book_text.html:67
 #: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr "Motywy"
@@ -540,61 +540,60 @@ msgstr ""
 msgid "Print on demand –"
 msgstr "Druk na żądanie z"
 
-#: catalogue/templates/catalogue/book_short.html:120
-#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:404
-msgid "Download"
-msgstr "Pobierz"
+#: catalogue/templates/catalogue/book_short.html:121
+msgid "Download an ebook"
+msgstr "Pobierz ebook"
 
-#: catalogue/templates/catalogue/book_short.html:134
-msgid "more"
-msgstr "więcej"
+#: catalogue/templates/catalogue/book_short.html:140
+msgid "Download audiobook"
+msgstr "Pobierz audiobook"
 
-#: catalogue/templates/catalogue/book_short.html:145
-msgid "less"
-msgstr "mniej"
-
-#: catalogue/templates/catalogue/book_short.html:153
+#: catalogue/templates/catalogue/book_short.html:152
 msgid "For now this work is only available for our subscribers."
 msgstr "Jak na razie ten utwór jest dostępny wyłącznie dla naszych Przyjaciół."
 
-#: catalogue/templates/catalogue/book_text.html:41
+#: catalogue/templates/catalogue/book_text.html:24
+msgid "Click to download"
+msgstr "Kliknij by pobrać"
+
+#: catalogue/templates/catalogue/book_text.html:42
 msgid "Table of contents"
 msgstr "Spis treści"
 
-#: catalogue/templates/catalogue/book_text.html:53
+#: catalogue/templates/catalogue/book_text.html:54
 msgid "Edit. note"
 msgstr "Nota red."
 
-#: catalogue/templates/catalogue/book_text.html:59
+#: catalogue/templates/catalogue/book_text.html:60
 msgid "Infobox"
 msgstr "Informacje"
 
-#: catalogue/templates/catalogue/book_text.html:64
+#: catalogue/templates/catalogue/book_text.html:65
 msgid "Numbering"
 msgstr "Numeracja"
 
-#: catalogue/templates/catalogue/book_text.html:68
+#: catalogue/templates/catalogue/book_text.html:69
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: catalogue/templates/catalogue/book_text.html:70
+#: catalogue/templates/catalogue/book_text.html:71
 msgid "References"
 msgstr "Odniesienia"
 
-#: catalogue/templates/catalogue/book_text.html:96
+#: catalogue/templates/catalogue/book_text.html:97
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr "Zamknij"
 
-#: catalogue/templates/catalogue/book_text.html:97
+#: catalogue/templates/catalogue/book_text.html:98
 msgid "Please wait..."
 msgstr "Proszę czekać…"
 
-#: catalogue/templates/catalogue/book_text.html:152
+#: catalogue/templates/catalogue/book_text.html:153
 msgid "Other versions of the book"
 msgstr "Inne wersje utworu"
 
-#: catalogue/templates/catalogue/book_text.html:153
+#: catalogue/templates/catalogue/book_text.html:154
 msgid "Close the other version"
 msgstr "Zamknij drugą wersję"
 
@@ -649,6 +648,10 @@ msgstr "Wszystkie kolekcje"
 #: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:403
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
+
+#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:404
+msgid "Download"
+msgstr "Pobierz"
 
 #: catalogue/templates/catalogue/daisy_list.html:7
 #: catalogue/templates/catalogue/daisy_list.html:15
@@ -921,6 +924,12 @@ msgstr "Książka zaimportowana"
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"
+
+#~ msgid "more"
+#~ msgstr "więcej"
+
+#~ msgid "less"
+#~ msgstr "mniej"
 
 #~ msgid "Settings"
 #~ msgstr "Ustawienia"

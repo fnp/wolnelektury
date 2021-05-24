@@ -4,7 +4,7 @@
 {% load pipeline %}
 {% load piwik_tags %}
 {% load annoy_banner from annoy %}
-<html class="no-js">
+<html class="no-js {% if VARIANT %}{{ VARIANT }}{% endif %}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

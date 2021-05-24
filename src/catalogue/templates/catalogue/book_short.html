@@ -118,6 +118,7 @@
           </li>
           <li class="book-box-download">
             <div class="book-box-formats">
+              {% trans "Download an ebook" %}:<br>
               {% if book.pdf_file %}
                 <a href="{{ book.pdf_url}}">PDF</a>
               {% endif %}
@@ -134,9 +135,12 @@
                 <a href="{{ book.txt_url}}">TXT</a>
               {% endif %}
             </div>
-            <div class="book-box-formats">
-              {% download_audio book %}
-            </div>
+            {% if book.has_mp3_file %}
+              <div class="book-box-formats">
+                {% trans "Download audiobook" %}:<br>
+                {% download_audio book %}
+              </div>
+            {% endif %}
             <div class="book-box-formats">
                 {% custom_pdf_link_li book %}
             </div>

@@ -21,6 +21,7 @@
 {% block menu %}
   <li>
     <a href="{{ book.get_absolute_url }}" id="menu-book" data-box="book-short">
+      <span class="label">{% trans "Click to download" %}:</span>
       <img src="{% if book.cover_thumb %}{% thumbnail book.cover_thumb '240x332' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover_thumb.url }}{% endthumbnail %}{% endif %}"
            width="120" height="166"
            alt="{{ book.pretty_title }}"
