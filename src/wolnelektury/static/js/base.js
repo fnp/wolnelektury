@@ -74,7 +74,13 @@
             $("iframe", this).attr("src", $("iframe", this).attr('data-src'));
         });
 
-        $(".media-eink .carousel").cycle({fx: "none"});
+        $(".carousel").each(function() {
+            opts = {};
+            if ($('html').hasClass('media-eink')) {
+                opts.fx = 'none'
+            }
+            $(this).cycle(opts);
+        });
 
 
         (function() {
