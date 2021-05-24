@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-05-24 13:06+0200\n"
+"PO-Revision-Date: 2021-05-24 17:25+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -554,7 +554,7 @@ msgstr "Jak na razie ten utwór jest dostępny wyłącznie dla naszych Przyjaci�
 
 #: catalogue/templates/catalogue/book_text.html:24
 msgid "Click to download"
-msgstr "Kliknij by pobrać"
+msgstr "Kliknij, by pobrać"
 
 #: catalogue/templates/catalogue/book_text.html:42
 msgid "Table of contents"
