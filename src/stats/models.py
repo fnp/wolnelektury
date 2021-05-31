@@ -25,7 +25,7 @@ class Visits(models.Model):
             m = re.match('^/katalog/lektura/([^,]+)\.html,', line)
             if m is not None:
                 slug = m.group(1)
-                _url, uviews, views = line.split(',', 3)
+                _url, uviews, views, _rest = line.split(',', 3)
                 uviews = int(uviews)
                 views = int(views)
                 try:
