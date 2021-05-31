@@ -1,4 +1,6 @@
 import re
+from urllib.request import urlopen
+from django.apps import apps
 from django.conf import settings
 from django.db import models
 
@@ -12,6 +14,7 @@ class Visits(models.Model):
 
     @classmethod
     def build_month(cls, year, month):
+        Book = apps.get_model('catalogue', 'Book')
         ### TODO: Delete existing?
 
         date = f'{year}-{month:02d}'
