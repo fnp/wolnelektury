@@ -8,7 +8,7 @@
     {% endif %}
     </div>
     <div class="covers">
-      {% for book in collection.get_books|slice:":5" %}
+      {% for book in collection.get_books|slice:":6" %}
         <a href="{{ book.get_absolute_url }}">
           <img src="{{ book.cover_thumb.url }}" alt="{{ book.pretty_title }}" title="{{ book.pretty_title }}">
         </a>
