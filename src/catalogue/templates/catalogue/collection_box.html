@@ -1,7 +1,7 @@
 {% spaceless %}
   {% load i18n %}
   <div class="collection-box white-box">
-    <h2><a href="{{ collection.get_absolute_url }}">{% trans "Collection" %}: {{ collection }}</a></h2>
+    <h2><a href="{{ collection.get_absolute_url }}">{{ collection }}</a></h2>
     <div class="description">
     {% if collection.description %}
       {{ collection.description|safe|truncatewords_html:40 }}
