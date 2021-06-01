@@ -66,7 +66,10 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(Collection, slug=slug)
-    return render(request, 'catalogue/collection.html', {'collection': coll})
+    return render(request, 'catalogue/collection.html', {
+        'collection': coll,
+        'active_menu_item': 'collections',
+    })
 
 
 def differentiate_tags(request, tags, ambiguous_slugs):
@@ -455,13 +458,14 @@ def collections(request):
     objects = Collection.objects.filter(listed=True)
 
     if len(objects) > 3:
-        best = random.sample(list(objects), 3)
+        best = random.sample(list(objects), 4)
     else:
         best = objects
 
     return render(request, 'catalogue/collections.html', {
         'objects': objects,
         'best': best,
+        'active_menu_item': 'collections'
     })
 
 

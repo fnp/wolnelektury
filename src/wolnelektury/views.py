@@ -46,11 +46,8 @@ def main_page(request):
                     break
             break
 
-    # Choose a collection for main.
-    try:
-        ctx['collection'] = Collection.objects.filter(listed=True).order_by('?')[:1][0]
-    except IndexError:
-        pass
+    # Choose collections for main.
+    ctx['collections'] = Collection.objects.filter(listed=True).order_by('?')[:4]
 
     best = []
     best_places = 5

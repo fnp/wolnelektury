@@ -31,8 +31,39 @@
       </div>
     </section>
 
+    <section>
+      <h1>
+        <a  href="{% url 'recent_list' %}">
+          {% trans "Recent publications" %}
+          &rarr;
+        </a>
+      </h1>
+      {% for book in last_published %}
+        {{ book.mini_box }}
+      {% endfor %}
+    </section>
+
+    {% if collections %}
+      <section>
+        <h1>
+          <a href="{% url 'catalogue_collections' %}">
+            {% trans "Collections" %}
+            &rarr;
+          </a>
+        </h1>
+        {% for collection in collections %}
+	  {{ collection.box }}
+        {% endfor %}
+      </section>
+    {% endif %}
+
     <section id="main-theme">
-      <h1>{% trans "Motifs and themes" %}</h1>
+      <h1>
+        <a href="{% url 'theme_catalogue' %}">
+          {% trans "Motifs and themes" %}
+          &rarr;
+        </a>
+      </h1>
       <div class="white-box normal-text">
         <h2>{% trans "Theme" %}: {{ theme }}</h2>
         <p>{% trans "Explore works with the same theme" %}</p>
@@ -45,23 +76,6 @@
           {% endcache %}
         {% endif %}
       </div>
-      <a class="more" href="{% url 'theme_catalogue' %}">{% trans "See motifs catalog" %}</a>
-    </section>
-
-    {% if collection %}
-      <section>
-        <h1>{% trans "Collections" %}</h1>
-	{{ collection.box }}
-        <a class="more" href="{% url 'catalogue_collections' %}">{% trans "See collections catalog" %}</a>
-      </section>
-    {% endif %}
-
-    <section>
-      <h1>{% trans "Recent publications" %}</h1>
-        {% for book in last_published %}
-          {{ book.mini_box }}
-        {% endfor %}
-      <a class="more" href="{% url 'recent_list' %}">{% trans "More recent publications" %}</a>
     </section>
 
     <div class="clearboth"></div>

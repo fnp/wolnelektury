@@ -27,3 +27,21 @@
         @include size(padding, 26px);
     }
 }
+
+
+.collection-box {
+    display: inline-block;
+    vertical-align: top;
+
+    @media screen and (min-width:500px) {
+        width: 465px;
+    }
+
+    p {
+        height: 75px;
+        overflow: hidden;
+    }
+    .covers {
+        line-height: 0;
+    }
+}
