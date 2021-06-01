@@ -7,8 +7,7 @@ from django.db import models
 
 class Visits(models.Model):
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
-    year = models.PositiveSmallIntegerField()
-    month = models.PositiveSmallIntegerField()
+    date = models.DateField()
     views = models.IntegerField()
     unique_views = models.IntegerField()
 
@@ -16,7 +15,7 @@ class Visits(models.Model):
     def build_month(cls, year, month):
         Book = apps.get_model('catalogue', 'Book')
 
-        date = f'{year}-{month:02d}'
+        date = f'{year}-{month:02d}-01'
         url = f'{settings.PIWIK_URL}?date={date}&filter_limit=-1&format=CSV&idSite={settings.PIWIK_SITE_ID}&language=pl&method=Actions.getPageUrls&module=API&period=month&segment=&token_auth={settings.PIWIK_TOKEN}&flat=1'
         data = urlopen(url).read().decode('utf-16')
         lines = data.split('\n')[1:]
