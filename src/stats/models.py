@@ -32,6 +32,6 @@ class Visits(models.Model):
                     continue
                 else:
                     cls.objects.update_or_create(
-                        book=book, year=year, month=month,
+                        book=book, date=date,
                         defaults={'views': views, 'unique_views': uviews}
                     )
