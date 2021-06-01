@@ -30,10 +30,10 @@ class Visits(models.Model):
                 views = int(views)
                 try:
                     book = Book.objects.get(slug=slug)
-                except Book.DoesNotExists:
+                except Book.DoesNotExist:
                     continue
                 else:
                     cls.objects.create(
                         book=book, year=year, month=month,
-                        views=views, uviews=uviews
+                        views=views, unique_views=uviews
                     )
