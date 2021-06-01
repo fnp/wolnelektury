@@ -47,6 +47,7 @@ urlpatterns += [
     path('isbn/', include('isbn.urls')),
     path('messaging/', include('messaging.urls')),
     path('re/', include('redirects.urls')),
+    path('stats/', include('stats.urls')),
 
     path('paypal/app-form/', RedirectView.as_view(
         url='/towarzystwo/?pk_campaign=aplikacja', permanent=False)),

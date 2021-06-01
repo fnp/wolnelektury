@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+
+{% block body %}
+  <div class="white-box">
+    {{ form.as_p }}
+    <hr>
+
+    <table>
+      <tr>
+        <th>Książka</th>
+        <th>Unikalne odsłony</th>
+        <th>Odsłony</th>
+      </tr>
+      {% for v in visits %}
+        <tr>
+          <td>
+            <a href="/katalog/lektura/{{ v.book__slug }}/">
+              {{ v.book__slug }}
+            </a>
+          </td>
+          <td>
+            {{ v.unique_views }}
+          </td>
+          <td>
+            {{ v.views }}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}
