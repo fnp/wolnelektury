@@ -38,9 +38,13 @@
     }
 
     .description {
-        height: 75px;
-        overflow: hidden;
         margin: 15px 0;
+
+        @media screen and (min-width:500px) {
+            height: 75px;
+            overflow: hidden;
+        }
+
         p {
             margin: 0 0 15px 0;
         }
