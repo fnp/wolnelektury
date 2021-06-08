@@ -7,10 +7,12 @@ LICENSES = {
     'http://creativecommons.org/licenses/by-sa/3.0/': {
         'icon': 'cc-by-sa',
         'description': _('Creative Commons Attribution-ShareAlike 3.0 Unported'),
+        'locative': 'licencji CC-BY-SA 3.0 PL',
     },
     'http://artlibre.org/licence/lal/pl/': {
         'icon': 'lal',
         'description': _('Free Art License 1.3'),
+        'locative': 'Licencji Wolnej Sztuki 1.3',
     }
 }
 LICENSES['http://creativecommons.org/licenses/by-sa/3.0/deed.pl'] = \

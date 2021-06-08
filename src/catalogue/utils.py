@@ -97,7 +97,7 @@ class LockFile(object):
 
 
 # @task
-def create_zip(paths, zip_slug):
+def create_zip(paths, zip_slug, file_contents=None):
     """
     Creates a zip in MEDIA_ROOT/zip directory containing files from path.
     Resulting archive filename is ${zip_slug}.zip
@@ -121,6 +121,9 @@ def create_zip(paths, zip_slug):
                     if arcname is None:
                         arcname = path.basename(p)
                     zipf.write(p, arcname)
+                if file_contents:
+                    for arcname, content in file_contents.items():
+                        zipf.writestr(arcname, content)
             finally:
                 zipf.close()
 

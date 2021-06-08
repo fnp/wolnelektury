@@ -436,6 +436,11 @@ def license_icon(license_url):
     }
 
 
+@register.simple_tag
+def license_locative(license_url, default):
+    return LICENSES.get(license_url, {}).get('locative', default)
+
+
 @register.filter
 def class_name(obj):
     return obj.__class__.__name__

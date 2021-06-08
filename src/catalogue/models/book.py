@@ -12,6 +12,7 @@ from django.conf import settings
 from django.db import connection, models, transaction
 import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, get_language
 from django.utils.deconstruct import deconstructible
@@ -464,7 +465,17 @@ class Book(models.Model):
     def zip_audiobooks(self, format_):
         bm = BookMedia.objects.filter(book=self, type=format_)
         paths = map(lambda bm: (None, bm.file.path), bm)
-        return create_zip(paths, "%s_%s" % (self.slug, format_))
+        licenses = set()
+        for m in bm:
+            license = constants.LICENSES.get(
+                m.get_extra_info_json().get('license'), {}
+            ).get('locative')
+            if license:
+                licenses.add(license)
+        readme = render_to_string('catalogue/audiobook_zip_readme.txt', {
+            'licenses': licenses,
+        })
+        return create_zip(paths, "%s_%s" % (self.slug, format_), {'informacje.txt': readme})
 
     def search_index(self, book_info=None, index=None, index_tags=True, commit=True):
         if not self.findable:
