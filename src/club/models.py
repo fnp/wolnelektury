@@ -47,7 +47,7 @@ class Schedule(models.Model):
     """ Represents someone taking up a plan. """
     key = models.CharField(_('key'), max_length=255, unique=True)
     email = models.EmailField(_('email'))
-    membership = models.ForeignKey('Membership', verbose_name=_('membership'), null=True, blank=True, on_delete=models.PROTECT)
+    membership = models.ForeignKey('Membership', verbose_name=_('membership'), null=True, blank=True, on_delete=models.SET_NULL)
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
     monthly = models.BooleanField(_('monthly'), default=True)
     yearly = models.BooleanField(_('yearly'), default=False)
