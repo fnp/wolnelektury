@@ -52,8 +52,7 @@ msgstr ""
 
 #: funding/forms.py:24
 msgid ""
-"We'll use it to contact you about the <strong>details needed for your perks</"
-"strong>,<br/>and to send you updates about your payment and the fundraiser "
+"We'll use it to send you updates about your payment and the fundraiser "
 "status (which you can always turn off).<br/>Your e-mail won't be publicised."
 msgstr ""
 
@@ -166,7 +165,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: funding/models.py:273 funding/models.py:352
+#: funding/models.py:273 funding/models.py:355
 msgid "amount"
 msgstr ""
 
@@ -187,19 +186,19 @@ msgstr ""
 msgid "fundings"
 msgstr ""
 
-#: funding/models.py:353
+#: funding/models.py:356
 msgid "when"
 msgstr ""
 
-#: funding/models.py:356
+#: funding/models.py:359
 msgid "money spent on a book"
 msgstr ""
 
-#: funding/models.py:357
+#: funding/models.py:360
 msgid "money spent on books"
 msgstr ""
 
-#: funding/models.py:385 funding/templates/funding/thanks.html:6
+#: funding/models.py:388 funding/templates/funding/thanks.html:6
 #: funding/templates/funding/thanks.html:13
 msgid "Thank you for your support!"
 msgstr ""

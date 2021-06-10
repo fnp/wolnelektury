@@ -51,12 +51,16 @@ def main_page(request):
 
     best = []
     best_places = 5
+    recommended_collection = None
     for recommended in Collection.objects.filter(listed=True, role='recommend').order_by('?'):
+        if recommended_collection is None:
+            recommended_collection = recommended
         books = list(recommended.get_books().exclude(id__in=[b.id for b in best]).order_by('?')[:best_places])
         best.extend(books)
         best_places -= len(books)
         if not best_places:
             break
+    ctx['recommended_collection'] = recommended_collection
     if best_places:
         best.extend(
             list(

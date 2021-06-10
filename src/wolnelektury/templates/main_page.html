@@ -23,7 +23,7 @@
             {{ book.mini_box }}
           {% endfor %}
         </div>
-        <a href="{% url "book_list" %}">
+	<a href="{% if recommended_collection %}{{ recommended_collection.get_absolute_url }}{% else %}{% url "book_list" %}{% endif %}">
           <div class="note white-box normal-text" style="font-size: 18px">
             {% trans "and many other books, poems, pictures, audiobooks…" %}
           </div>

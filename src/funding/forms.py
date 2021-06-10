@@ -21,8 +21,8 @@ class FundingForm(NewsletterForm):
     email = forms.EmailField(
         label=_("Contact e-mail"),
         help_text=mark_safe(_(
-            "We'll use it to contact you about the <strong>details needed for your perks</strong>,<br/>"
-            "and to send you updates about your payment and the fundraiser status (which you can always turn off).<br/>"
+            "We'll use it to "
+            "send you updates about your payment and the fundraiser status (which you can always turn off).<br/>"
             "Your e-mail won't be publicised.")), required=False)
 
     data_processing_part2 = '''\

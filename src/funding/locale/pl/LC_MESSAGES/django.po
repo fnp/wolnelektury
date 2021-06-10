@@ -5,18 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-04-16 13:13+0100\n"
+"PO-Revision-Date: 2021-06-10 14:06+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.4.1\n"
+"Language-Team: \n"
 
 #: funding/admin.py:27
 msgid "payment complete"
@@ -53,14 +53,12 @@ msgstr "E-mail kontaktowy"
 
 #: funding/forms.py:24
 msgid ""
-"We'll use it to contact you about the <strong>details needed for your perks</"
-"strong>,<br/>and to send you updates about your payment and the fundraiser "
+"We'll use it to send you updates about your payment and the fundraiser "
 "status (which you can always turn off).<br/>Your e-mail won't be publicised."
 msgstr ""
-"Użyjemy go do kontaktu w sprawie <strong>danych potrzebnych do realizacji "
-"prezentów</strong><br/>i do informowania Cię o zmianach statusu płatności i "
-"zbiórki (z czego zawsze możesz zrezygnować).<br/>Twój adres e-mail nie "
-"będzie upubliczniony."
+"Użyjemy go do informowania Cię o zmianach statusu płatności i zbiórki (z "
+"czego zawsze możesz zrezygnować).<br/>Twój adres e-mail nie będzie "
+"upubliczniony."
 
 #: funding/forms.py:43
 #, python-format
@@ -171,7 +169,7 @@ msgstr "prezent"
 msgid "email"
 msgstr "e-mail"
 
-#: funding/models.py:273 funding/models.py:352
+#: funding/models.py:273 funding/models.py:355
 msgid "amount"
 msgstr "kwota"
 
@@ -192,19 +190,19 @@ msgstr "wpłata"
 msgid "fundings"
 msgstr "wpłaty"
 
-#: funding/models.py:353
+#: funding/models.py:356
 msgid "when"
 msgstr "kiedy"
 
-#: funding/models.py:356
+#: funding/models.py:359
 msgid "money spent on a book"
 msgstr "pieniądze wydane na książkę"
 
-#: funding/models.py:357
+#: funding/models.py:360
 msgid "money spent on books"
 msgstr "pieniądze wydane na książki"
 
-#: funding/models.py:385 funding/templates/funding/thanks.html:6
+#: funding/models.py:388 funding/templates/funding/thanks.html:6
 #: funding/templates/funding/thanks.html:13
 msgid "Thank you for your support!"
 msgstr "Dziękujemy za Twoje wsparcie!"
