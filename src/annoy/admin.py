@@ -5,7 +5,11 @@ from . import models
 
 
 class BannerAdmin(TranslationAdmin):
-    list_display = ['place', 'text', 'priority', 'since', 'until', 'show_members', 'staff_preview']
+    list_display = [
+            'place', 'text',
+            'text_color', 'background_color',
+            'priority', 'since', 'until',
+            'show_members', 'staff_preview']
 
 
 admin.site.register(models.Banner, BannerAdmin)

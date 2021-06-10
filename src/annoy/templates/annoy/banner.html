@@ -13,7 +13,12 @@
               annoy-banner-style_{{ banner.style }}
               {% if banner.image %}with-image{% endif %}
               {% if banner.smallfont %}banner-smallfont{% endif %}
-              " id="annoy-banner-{{ banner.id }}">
+              "
+        id="annoy-banner-{{ banner.id }}"
+	style="
+           {% if banner.text_color %}color: {{ banner.text_color }};{% endif %}
+           {% if banner.background_color %}background-color: {{ banner.background_color }};{% endif %}
+        ">
     {% if not banner.action_label %}
       <a href="{{ banner.url }}">
     {% endif %}

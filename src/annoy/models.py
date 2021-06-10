@@ -15,6 +15,8 @@ class Banner(models.Model):
         help_text=_('Affects blackout.')
     )
     smallfont = models.BooleanField(_('small font'), default=False)
+    text_color = models.CharField(max_length=10, blank=True)
+    background_color = models.CharField(max_length=10, blank=True)
     action_label = models.CharField(
         _('action label'),
         max_length=255, blank=True,
