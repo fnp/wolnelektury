@@ -5,18 +5,21 @@ from django.conf import settings
 from django.db import models
 
 
-class Visits(models.Model):
+class VisitsBase(models.Model):
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
     date = models.DateField()
     views = models.IntegerField()
     unique_views = models.IntegerField()
 
+    class Meta:
+        abstract = True
+
     @classmethod
-    def build_month(cls, year, month):
+    def build_for_date(cls, date, period):
         Book = apps.get_model('catalogue', 'Book')
 
-        date = f'{year}-{month:02d}-01'
-        url = f'{settings.PIWIK_URL}?date={date}&filter_limit=-1&format=CSV&idSite={settings.PIWIK_SITE_ID}&language=pl&method=Actions.getPageUrls&module=API&period=month&segment=&token_auth={settings.PIWIK_TOKEN}&flat=1'
+        date = date.isoformat()
+        url = f'{settings.PIWIK_URL}?date={date}&filter_limit=-1&format=CSV&idSite={settings.PIWIK_SITE_ID}&language=pl&method=Actions.getPageUrls&module=API&period={period}&segment=&token_auth={settings.PIWIK_TOKEN}&flat=1'
         data = urlopen(url).read().decode('utf-16')
         lines = data.split('\n')[1:]
         for line in lines:
@@ -35,3 +38,16 @@ class Visits(models.Model):
                         book=book, date=date,
                         defaults={'views': views, 'unique_views': uviews}
                     )
+
+
+class Visits(VisitsBase):
+    @classmethod
+    def build_month(cls, date):
+        cls.build_for_date(date.replace(day=1), 'month')
+
+
+class DayVisits(VisitsBase):
+    @classmethod
+    def build_day(cls, date):
+        cls.build_for_date(date, 'day')
+
