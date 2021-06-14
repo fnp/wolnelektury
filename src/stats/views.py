@@ -6,6 +6,7 @@ from . import models
 
 
 class TopView(PermissionRequiredMixin, TemplateView):
+    model = models.Visits
     permission_required = 'stats.view_visits'
     template_name = 'stats/top.html'
 
@@ -13,7 +14,7 @@ class TopView(PermissionRequiredMixin, TemplateView):
         ctx = super().get_context_data(**kwargs)
         form = forms.VisitsForm(self.request.GET)
         assert form.is_valid()
-        visits = models.Visits.objects.all()
+        visits = self.model.objects.all()
         if form.cleaned_data['date_since']:
             visits = visits.filter(date__gte=form.cleaned_data['date_since'].replace(day=1))
         if form.cleaned_data['date_until']:
@@ -27,3 +28,6 @@ class TopView(PermissionRequiredMixin, TemplateView):
         ctx['visits'] = visits
         return ctx
 
+
+class DailyTopView(TopView):
+    model = models.DayVisits

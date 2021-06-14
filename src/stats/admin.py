@@ -10,3 +10,4 @@ class VisitsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Visits, VisitsAdmin)
+admin.site.register(models.DayVisits, VisitsAdmin)
