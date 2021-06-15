@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-05-19 15:02+0200\n"
+"PO-Revision-Date: 2021-06-15 15:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: club/admin.py:46
 msgid "payment complete"
@@ -80,7 +80,7 @@ msgstr "email"
 msgid "membership"
 msgstr "członkostwo"
 
-#: club/models.py:51
+#: club/models.py:51 club/models.py:360
 msgid "amount"
 msgstr "kwota"
 
@@ -207,6 +207,74 @@ msgstr "ambasadorowie"
 #: club/templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"
 msgstr ""
+
+#: club/models.py:342
+msgid "first name"
+msgstr "imię"
+
+#: club/models.py:343
+msgid "last name"
+msgstr "nazwisko"
+
+#: club/models.py:344
+msgid "sex"
+msgstr "płeć"
+
+#: club/models.py:348
+msgid "date of birth"
+msgstr "data urodzenia"
+
+#: club/models.py:349
+msgid "street"
+msgstr "ulica"
+
+#: club/models.py:350
+msgid "building"
+msgstr "numer domu"
+
+#: club/models.py:351
+msgid "flat"
+msgstr "numer mieszkania"
+
+#: club/models.py:352
+msgid "town"
+msgstr "miasto"
+
+#: club/models.py:353
+msgid "postal code"
+msgstr "kod"
+
+#: club/models.py:354
+msgid "phone"
+msgstr "numer telefonu"
+
+#: club/models.py:355
+msgid "e-mail"
+msgstr "e-mail"
+
+#: club/models.py:356
+msgid "IBAN"
+msgstr "numer rachunku"
+
+#: club/models.py:357
+msgid "payment identifier"
+msgstr "identyfikator płatności"
+
+#: club/models.py:358
+msgid "agree newsletter"
+msgstr "zgoda na newsletter"
+
+#: club/models.py:359
+msgid "date"
+msgstr "data"
+
+#: club/models.py:363
+msgid "direct debit"
+msgstr "polecenie zapłaty"
+
+#: club/models.py:364
+msgid "direct debits"
+msgstr "polecenia zapłaty"
 
 #: club/payu/models.py:17 club/payu/models.py:29
 msgid "POS id"

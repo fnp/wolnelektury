@@ -338,3 +338,28 @@ class PayUNotification(payu_models.Notification):
     order = models.ForeignKey(PayUOrder, models.CASCADE, related_name='notification_set')
 
 
+class DirectDebit(models.Model):
+    first_name = models.CharField(_('first name'), max_length=255, blank=True)
+    last_name = models.CharField(_('last name'), max_length=255, blank=True)
+    sex = models.CharField(_('sex'), max_length=1, blank=True, choices=[
+        ('M', 'M'),
+        ('F', 'F'),
+    ])
+    date_of_birth = models.DateField(_('date of birth'), null=True, blank=True)
+    street = models.CharField(_('street'), max_length=255, blank=True)
+    building = models.CharField(_('building'), max_length=255, blank=True)
+    flat = models.CharField(_('flat'), max_length=255, blank=True)
+    town = models.CharField(_('town'), max_length=255, blank=True)
+    postal_code = models.CharField(_('postal code'),  max_length=255, blank=True)
+    phone = models.CharField(_('phone'), max_length=255, blank=True)
+    email = models.CharField(_('e-mail'), max_length=255, blank=True)
+    iban = models.CharField(_('IBAN'), max_length=255, blank=True)
+    payment_id = models.CharField(_('payment identifier'), max_length=255, blank=True)
+    agree_newsletter = models.BooleanField(_('agree newsletter'))
+    date = models.DateField(_('date'))
+    amount = models.IntegerField(_('amount'))
+
+    class Meta:
+        verbose_name = _('direct debit')
+        verbose_name_plural = _('direct debits')
+
