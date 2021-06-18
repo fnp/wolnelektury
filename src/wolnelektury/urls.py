@@ -57,6 +57,10 @@ urlpatterns += [
     path('paypal/', include('paypal.urls')),
     path('powiadomienie/', include('push.urls')),
     path('towarzystwo/', include('club.urls')),
+    #path('pomagam/', include('club.urls2')),
+    path('pomagam/', RedirectView.as_view(
+        url='/towarzystwo/', permanent=False)),
+    
 
     # Admin panel
     path('admin/catalogue/book/import', catalogue.views.import_book, name='import_book'),
