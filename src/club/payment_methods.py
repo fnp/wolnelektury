@@ -3,6 +3,7 @@
 #
 from django.conf import settings
 from django.urls import reverse
+from paypal.rest import agreement_approval_url
 
 
 class PaymentMethod(object):
@@ -16,6 +17,7 @@ class PaymentMethod(object):
 class PayU(PaymentMethod):
     is_onetime = True
     slug = 'payu'
+    name = 'PayU'
     template_name = 'club/payment/payu.html'
 
     def __init__(self, pos_id):
@@ -33,7 +35,8 @@ class PayU(PaymentMethod):
 
 
 class PayURe(PaymentMethod):
-    slug='payu-re'
+    slug = 'payu-re'
+    name = 'PayU recurring'
     template_name = 'club/payment/payu-re.html'
     is_recurring = True
 
@@ -59,23 +62,35 @@ class PayURe(PaymentMethod):
         
 
 class PayPal(PaymentMethod):
-    slug='paypal'
+    slug = 'paypal'
+    name = 'PayPal'
     template_name = 'club/payment/paypal.html'
     is_recurring = True
-    is_onetime = True
+    is_onetime = False
 
     def initiate(self, request, schedule):
-        return reverse('club_dummy_payment', args=[schedule.key])
+        app = request.GET.get('app')
+        return agreement_approval_url(schedule.amount, schedule.key, app=app)
 
+
+methods = []
 
 pos = getattr(settings, 'CLUB_PAYU_RECURRING_POS', None)
 if pos:
     recurring_payment_method = PayURe(pos)
+    methods.append(recurring_payment_method)
 else:
     recurring_payment_method = None
 
 pos = getattr(settings, 'CLUB_PAYU_POS', None)
 if pos:
     single_payment_method = PayU(pos)
+    methods.append(single_payment_method)
 else:
     single_payment_method = None
+
+
+
+methods.append(
+    PayPal()
+)

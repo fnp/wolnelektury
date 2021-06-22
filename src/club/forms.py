@@ -5,7 +5,7 @@ from decimal import Decimal
 from django import forms
 from django.utils.translation import ugettext as _
 from newsletter.forms import NewsletterForm
-from . import models
+from . import models, payment_methods
 from .payu.forms import CardTokenForm
 
 
@@ -14,10 +14,11 @@ class ScheduleForm(forms.ModelForm, NewsletterForm):
 
     class Meta:
         model = models.Schedule
-        fields = ['monthly', 'amount', 'email']
+        fields = ['monthly', 'amount', 'email', 'method']
         widgets = {
             'amount': forms.HiddenInput,
             'monthly': forms.HiddenInput,
+            'method': forms.HiddenInput,
         }
 
     def __init__(self, referer=None, **kwargs):
@@ -35,6 +36,18 @@ class ScheduleForm(forms.ModelForm, NewsletterForm):
             )
         return value
 
+    def clean_method(self):
+        value = self.cleaned_data['method']
+        monthly = self.cleaned_data['monthly']
+        for m in payment_methods.methods:
+            if m.slug == value:
+                if (monthly and m.is_recurring) or (not monthly and m.is_onetime):
+                    return value
+        if monthly:
+            return payment_methods.recurring_payment_method.slug
+        else:
+            return payment_methods.single_payment_method.slug
+    
     def save(self, *args, **kwargs):
         NewsletterForm.save(self, *args, **kwargs)
         self.instance.source = self.referer or ''

@@ -10,12 +10,16 @@
   {% for e in  form.amount.errors %}
     <li>{{ e }}</li>
   {% endfor %}
+  {% for e in  form.method.errors %}
+    <li>{{ e }}</li>
+  {% endfor %}
 </ul>
 
 <h3>1. {% trans "Choose your type of support" %}</h3>
 
 {{ form.amount }}
 {{ form.monthly }}
+{{ form.method }}
 <div class="plan-select">
   <span class="button plan-toggle" data-plan="plan-single" data-monthly="False">{% trans "one-time" %}</span>
   <span class="button plan-toggle active" data-plan="plan-monthly" data-monthly="True">{% trans "monthly" %}</span>
@@ -45,7 +49,9 @@
     <span class="button">{% trans "different amount" %}</span>
     <input type="number" min="{{ club.min_amount }}">
   </span>
-  <div class="methods">{% include 'club/payment/payu-re.html' %}</div>
+  <div class="methods">
+    {% include 'club/payment/payu-re.html' %}
+  </div>
 </div>
 
 <h3>3. {% trans "Provide an e-mail address" %}</h3>

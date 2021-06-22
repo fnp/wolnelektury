@@ -1,8 +1,13 @@
 {% load i18n %}
 {% load static %}
-<span style="vertical-align: bottom; padding-right: 5px; font-size: 12px">
+<span style="padding-right: 5px; font-size: 12px">
   {% trans "Safe payments" %}
 </span>
-<img src="{% static 'club/payu/payu.png' %}">
-<img src="{% static 'club/visa-100.png' %}">
-<img src="{% static 'club/mastercard.png' %}">
+<span class="button active" data-method="payu-re">
+  <img src="{% static 'club/payu/payu.png' %}" alt="PayU">
+  <img src="{% static 'club/visa-100.png' %}" alt="Visa" >
+  <img src="{% static 'club/mastercard.png' %}" alt="Mastercard">
+</span>
+<span class="button" data-method="paypal">
+  <img src="{% static 'club/paypal2.png' %}" alt="PayPal">
+</span>

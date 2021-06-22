@@ -355,6 +355,13 @@
             return false;
         });
 
+        $("#id_method").val('payu-re');
+        $(".methods .button").click(function() {
+            $("#id_method").val($(this).attr('data-method'));
+            $(".methods .button").removeClass('active');
+            $(this).addClass("active");
+        });
+
     });
 })(jQuery);
 

@@ -18,8 +18,8 @@ class PaypalError(Exception):
     pass
 
 
-def absolute_url(url_name):
-    return "http://%s%s" % (Site.objects.get_current().domain, reverse(url_name))
+def absolute_url(url_name, kwargs=None):
+    return "http://%s%s" % (Site.objects.get_current().domain, reverse(url_name, kwargs=kwargs))
 
 
 def create_plan(amount):
@@ -28,7 +28,7 @@ def create_plan(amount):
         "description": "Cykliczna darowizna na wsparcie Wolnych Lektur",
         "merchant_preferences": {
             "auto_bill_amount": "yes",
-            "return_url": absolute_url('paypal_return'),
+            "return_url": absolute_url('paypal_return', {'key': '-'}),
             "cancel_url": absolute_url('paypal_cancel'),
             # "initial_fail_amount_action": "continue",
             "max_fail_attempts": "3",
@@ -63,7 +63,7 @@ def get_link(links, rel):
             return link.href
 
 
-def create_agreement(amount, app=False):
+def create_agreement(amount, key, app=False):
     try:
         plan = BillingPlan.objects.get(amount=amount)
     except BillingPlan.DoesNotExist:
@@ -84,8 +84,13 @@ def create_agreement(amount, app=False):
     })
     if app:
         billing_agreement['override_merchant_preferences'] = {
-            'return_url': absolute_url('paypal_app_return'),
+            'return_url': absolute_url('paypal_app_return', {'key': key}),
         }
+    else:
+        billing_agreement['override_merchant_preferences'] = {
+            'return_url': absolute_url('paypal_return', {'key': key}),
+        }
+        
 
     response = billing_agreement.create()
     if response:
@@ -94,8 +99,8 @@ def create_agreement(amount, app=False):
         raise PaypalError(billing_agreement.error)
 
 
-def agreement_approval_url(amount, app=False):
-    agreement = create_agreement(amount, app=app)
+def agreement_approval_url(amount, key, app=False):
+    agreement = create_agreement(amount, key, app=app)
     return get_link(agreement.links, 'approval_url')
 
 

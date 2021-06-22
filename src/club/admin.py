@@ -55,9 +55,12 @@ class ExpiredFilter(YesNoFilter):
 
 
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ['email', 'started_at', 'payed_at', 'expires_at', 'amount', 'monthly', 'yearly', 'is_cancelled']
+    list_display = [
+        'email', 'started_at', 'payed_at', 'expires_at', 'amount', 'monthly', 'yearly', 'is_cancelled',
+        'method'
+    ]
     search_fields = ['email']
-    list_filter = ['is_cancelled', 'monthly', 'yearly', PayedFilter, ExpiredFilter, 'source']
+    list_filter = ['is_cancelled', 'monthly', 'yearly', 'method', PayedFilter, ExpiredFilter, 'source']
     date_hierarchy = 'started_at'
     raw_id_fields = ['membership']
     inlines = [PayUOrderInline, PayUCardTokenInline]

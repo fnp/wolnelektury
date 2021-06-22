@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, ge
 from catalogue.utils import get_random_hash
 from messaging.states import Level
 from reporting.utils import render_to_pdf
-from .payment_methods import recurring_payment_method, single_payment_method
+from .payment_methods import methods
 from .payu import models as payu_models
 from . import utils
 
@@ -49,6 +49,9 @@ class Schedule(models.Model):
     email = models.EmailField(_('email'))
     membership = models.ForeignKey('Membership', verbose_name=_('membership'), null=True, blank=True, on_delete=models.SET_NULL)
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
+    method = models.CharField(_('method'), max_length=32, choices=[
+        (m.slug, m.name) for m in methods
+        ])
     monthly = models.BooleanField(_('monthly'), default=True)
     yearly = models.BooleanField(_('yearly'), default=False)
 
@@ -86,7 +89,7 @@ class Schedule(models.Model):
         return reverse('club_thanks', args=[self.key])
 
     def get_payment_method(self):
-        return recurring_payment_method if self.monthly or self.yearly else single_payment_method
+        return [m for m in methods if m.slug == self.method][0]
 
     def is_expired(self):
         return self.expires_at is not None and self.expires_at <= now()
@@ -97,6 +100,21 @@ class Schedule(models.Model):
     def is_recurring(self):
         return self.monthly or self.yearly
 
+    def set_payed(self):
+        since = self.expires_at
+        n = now()
+        if since is None or since < n:
+            since = n
+        new_exp = self.get_next_installment(since)
+        if self.payed_at is None:
+            self.payed_at = n
+        if self.expires_at is None or self.expires_at < new_exp:
+            self.expires_at = new_exp
+            self.save()
+
+        if not self.email_sent:
+            self.send_email()
+    
     def get_next_installment(self, date):
         if self.yearly:
             return utils.add_year(date)
@@ -247,19 +265,8 @@ class PayUOrder(payu_models.Order):
 
     def status_updated(self):
         if self.status == 'COMPLETED':
-            since = self.schedule.expires_at
-            n = now()
-            if since is None or since < n:
-                since = n
-            new_exp = self.schedule.get_next_installment(since)
-            if self.schedule.payed_at is None:
-                self.schedule.payed_at = n
-            if self.schedule.expires_at is None or self.schedule.expires_at < new_exp:
-                self.schedule.expires_at = new_exp
-                self.schedule.save()
-
-            if not self.schedule.email_sent:
-                self.schedule.send_email()
+            self.schedule.set_payed()
+            
 
     @classmethod
     def send_receipt(cls, email, year):

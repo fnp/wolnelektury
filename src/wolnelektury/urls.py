@@ -59,7 +59,7 @@ urlpatterns += [
     path('towarzystwo/', include('club.urls')),
     #path('pomagam/', include('club.urls2')),
     path('pomagam/', RedirectView.as_view(
-        url='/towarzystwo/', permanent=False)),
+        url='/towarzystwo/?pk_campaign=pomagam', permanent=False)),
     
 
     # Admin panel

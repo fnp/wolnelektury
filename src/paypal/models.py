@@ -13,7 +13,7 @@ class BillingPlan(models.Model):
 
 class BillingAgreement(models.Model):
     agreement_id = models.CharField(max_length=32)
-    user = models.ForeignKey(User, models.PROTECT)
+    schedule = models.ForeignKey('club.Schedule', models.PROTECT)
     plan = models.ForeignKey(BillingPlan, models.PROTECT)
     active = models.BooleanField(max_length=32)
     token = models.CharField(max_length=32)

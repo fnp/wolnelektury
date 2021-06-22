@@ -6,9 +6,10 @@ from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.http.response import HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from api.utils import HttpResponseAppRedirect
+from club.models import Schedule
 from paypal.forms import PaypalSubscriptionForm
 from paypal.rest import execute_agreement, check_agreement, agreement_approval_url, PaypalError
 from paypal.models import BillingAgreement, BillingPlan
@@ -32,7 +33,9 @@ def paypal_form(request, app=False):
 
 
 @login_required
-def paypal_return(request, app=False):
+def paypal_return(request, key, app=False):
+    schedule = get_object_or_404(Schedule, key=key)
+    
     token = request.GET.get('token')
     if not token:
         raise Http404
@@ -43,7 +46,9 @@ def paypal_return(request, app=False):
             plan = BillingPlan.objects.get(amount=amount)
             active = check_agreement(resource.id) or False
             BillingAgreement.objects.create(
-                agreement_id=resource.id, user=request.user, plan=plan, active=active, token=token)
+                agreement_id=resource.id, schedule=schedule, plan=plan, active=active, token=token)
+            if active:
+                schedule.set_payed()
     else:
         resource = None
     if app:
@@ -52,7 +57,7 @@ def paypal_return(request, app=False):
         else:
             return HttpResponseAppRedirect('wolnelekturyapp://paypal_return')
     else:
-        return render(request, 'paypal/return.html', {'resource': resource})
+        return HttpResponseRedirect(schedule.get_thanks_url())
 
 
 def paypal_cancel(request):
