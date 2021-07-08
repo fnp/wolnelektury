@@ -449,6 +449,17 @@ class Book(models.Model):
             parse_dublincore=parse_dublincore,
             meta_fallbacks=meta_fallbacks)
 
+    def wldocument2(self):
+        from catalogue.import_utils import ORMDocProvider
+        from librarian.document import WLDocument
+        doc = WLDocument(
+            self.xml_file.path,
+            provider=ORMDocProvider(self)
+        )
+        doc.meta.update(self.cover_info())
+        return doc
+
+
     @staticmethod
     def zip_format(format_):
         def pretty_file_name(book):

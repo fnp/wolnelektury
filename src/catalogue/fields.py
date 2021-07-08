@@ -1,6 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+import os
 from django.conf import settings
 from django.core.files import File
 from django.core.files.storage import FileSystemStorage
@@ -55,6 +56,7 @@ class EbookField(models.FileField):
     """Represents an ebook file field, attachable to a model."""
     attr_class = EbookFieldFile
     registry = []
+    librarian2_api = False
 
     def __init__(self, format_name, *args, **kwargs):
         super(EbookField, self).__init__(*args, **kwargs)
@@ -165,7 +167,9 @@ class BuildEbook(Task):
 
     def build(self, fieldfile):
         book = fieldfile.instance
-        out = self.transform(book.wldocument(), fieldfile)
+        out = self.transform(
+            book.wldocument2() if self.librarian2_api else book.wldocument(),
+            fieldfile)
         fieldfile.save(None, File(open(out.get_filename(), 'rb')), save=False)
         self.set_file_permissions(fieldfile)
         if book.pk is not None:
@@ -201,9 +205,15 @@ class BuildPdf(BuildEbook):
 @BuildEbook.register('epub')
 @task(ignore_result=True)
 class BuildEpub(BuildEbook):
+    librarian2_api = True
+
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_epub(cover=True, base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)))
+        from librarian.builders import EpubBuilder
+        return EpubBuilder(
+                base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
+                fundraising=settings.EPUB_FUNDRAISING
+            ).build(wldoc)
 
 
 @BuildEbook.register('mobi')
