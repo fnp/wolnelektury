@@ -13,6 +13,7 @@ from django.db import models
 from django import template
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
+from django_countries.fields import CountryField
 from catalogue.utils import get_random_hash
 from messaging.states import Level
 from reporting.utils import render_to_pdf
@@ -43,6 +44,19 @@ class Club(models.Model):
         return [int(x) for x in self.monthly_amounts.split(',')]
 
 
+class Consent(models.Model):
+    order = models.IntegerField()
+    active = models.BooleanField(default=True)
+    text = models.CharField(max_length=2048)
+    required = models.BooleanField()
+
+    class Meta:
+        ordering = ['order']
+    
+    def __str__(self):
+        return self.text
+
+
 class Schedule(models.Model):
     """ Represents someone taking up a plan. """
     key = models.CharField(_('key'), max_length=255, unique=True)
@@ -63,6 +77,16 @@ class Schedule(models.Model):
     expires_at = models.DateTimeField(_('expires_at'), null=True, blank=True)
     email_sent = models.BooleanField(default=False)
 
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
+    phone = models.CharField(max_length=255, blank=True)
+    postal = models.CharField(max_length=255, blank=True)
+    postal_code = models.CharField(max_length=255, blank=True)
+    postal_town = models.CharField(max_length=255, blank=True)
+    postal_country = CountryField(default='PL', blank=True)
+
+    consent = models.ManyToManyField(Consent)
+    
     class Meta:
         verbose_name = _('schedule')
         verbose_name_plural = _('schedules')
@@ -146,6 +170,9 @@ class Schedule(models.Model):
             else:
                 level = Level.SINGLE
         Contact.update(self.email, level, since, self.expires_at)
+
+
+
 
 
 class Membership(models.Model):

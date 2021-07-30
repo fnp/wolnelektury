@@ -63,6 +63,7 @@ INSTALLED_APPS_CONTRIB = [
     'getpaid.backends.payu',
     'django_extensions',
     'forms_builder.forms',
+    'django_countries',
 
     'debug_toolbar',
 

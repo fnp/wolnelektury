@@ -140,3 +140,74 @@
         }
     }
 }
+
+
+label.required {
+    &::before {
+        content: " * ";
+        color: red;
+    }
+}
+
+
+
+.helptext {
+    position: relative;
+
+    .short {
+        height: 1.5em;
+        overflow: hidden;
+        position: relative;
+        
+        &:after {
+            content:' ';
+            position:absolute;
+            bottom:0;
+            width:25%;
+            height:20px;
+            background-color:transparent;
+            overflow: hidden;
+            /* assume ltr */
+            right:0;
+            background-image:-webkit-linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%);
+            background-image:-moz-linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%);
+            background-image:-o-linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%);
+            background-image:linear-gradient(to right,rgba(255,255,255,0),#ffffff 50%)
+        }
+    }
+
+    .morelink {
+        position: absolute;
+        top: 0;
+        right: 0;
+        &:after {
+            content: " ↓";
+        }
+    }
+}
+
+
+#payment-form {
+    textarea {
+        box-sizing: border-box;
+        padding: 8px;
+        width: 440px;
+        height: 4em;
+    }
+    input[type="text"], input[type="email"] {
+        box-sizing: border-box;
+        width: 440px;
+        padding: 8px;
+        &#id_postal_code {
+            width: 120px;
+        }
+        &#id_postal_town {
+            width: 320px;
+        }
+    }
+    select {
+        box-sizing: border-box;
+        width: 440px;
+        padding: 8px;
+    }
+}

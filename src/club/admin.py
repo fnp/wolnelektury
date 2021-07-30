@@ -61,6 +61,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     ]
     search_fields = ['email']
     list_filter = ['is_cancelled', 'monthly', 'yearly', 'method', PayedFilter, ExpiredFilter, 'source']
+    filter_horizontal = ['consent']
     date_hierarchy = 'started_at'
     raw_id_fields = ['membership']
     inlines = [PayUOrderInline, PayUCardTokenInline]
@@ -159,3 +160,13 @@ class DirectDebitAdmin(admin.ModelAdmin):
         'amount'
     ]
     
+
+@admin.register(models.Consent)
+class ConsentAdmin(admin.ModelAdmin):
+    list_display = ['text', 'order', 'active', 'required']
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ['text']
+        else:
+            return []
