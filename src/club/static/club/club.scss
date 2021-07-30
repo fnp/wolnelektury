@@ -191,23 +191,23 @@ label.required {
     textarea {
         box-sizing: border-box;
         padding: 8px;
-        width: 440px;
+        width: 400px;
         height: 4em;
     }
     input[type="text"], input[type="email"] {
         box-sizing: border-box;
-        width: 440px;
+        width: 400px;
         padding: 8px;
         &#id_postal_code {
-            width: 120px;
+            width: 100px;
         }
         &#id_postal_town {
-            width: 320px;
+            width: 300px;
         }
     }
     select {
         box-sizing: border-box;
-        width: 440px;
+        width: 400px;
         padding: 8px;
     }
 }
