@@ -56,7 +56,6 @@ class EbookField(models.FileField):
     """Represents an ebook file field, attachable to a model."""
     attr_class = EbookFieldFile
     registry = []
-    librarian2_api = False
 
     def __init__(self, format_name, *args, **kwargs):
         super(EbookField, self).__init__(*args, **kwargs)
@@ -125,6 +124,8 @@ class EbookField(models.FileField):
 
 
 class BuildEbook(Task):
+    librarian2_api = False
+
     formats = {}
 
     @classmethod
