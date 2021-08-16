@@ -1,10 +1,10 @@
 {% load honeypot %}
-{% load chunks %}
+{% load more %}
 
 <h1>{{ form.title }}</h1>
 
     <div class="form-info">
-	{{ form.intro|safe }}
+	{{ form.intro|first_part:"---"|safe }}
     </div>
 
     {{ form_for_form.media }}
@@ -21,5 +21,5 @@
 
 
     <div class="form-info">
-        {% chunk 'formularz_'|add:form.slug %}
+	{{ form.intro|second_part:"---"|safe }}
     </div>
