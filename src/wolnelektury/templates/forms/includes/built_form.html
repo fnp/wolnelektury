@@ -1,4 +1,5 @@
 {% load honeypot %}
+{% load chunks %}
 
 <h1>{{ form.title }}</h1>
 
@@ -18,3 +19,7 @@
     </table>
     </form>
 
+
+    <div class="form-info">
+        {% chunk 'formularz_'|add:form.slug %}
+    </div>
