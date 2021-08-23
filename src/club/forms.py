@@ -52,7 +52,7 @@ Twoje dane osobowe nie będą profilowane, ani przesyłane do państw trzecich i
             'first_name': forms.TextInput(attrs={"placeholder": _('first name')}),
             'last_name': forms.TextInput(attrs={"placeholder": _('last name')}),
 
-            'postal': forms.Textarea(attrs={"placeholder": _("If you leave your address, we'll be able to send you a postcard and other gadgets.")}),
+            'postal': forms.Textarea(attrs={"placeholder": _("street address")}),
             'postal_code': forms.TextInput(attrs={"placeholder": _('postal code')}),
             'postal_town': forms.TextInput(attrs={"placeholder": _('town')}),
         }

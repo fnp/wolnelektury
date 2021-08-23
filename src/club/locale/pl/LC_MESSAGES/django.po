@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-30 14:57+0200\n"
+"PO-Revision-Date: 2021-08-23 11:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -40,12 +40,8 @@ msgid "last name"
 msgstr "nazwisko"
 
 #: club/forms.py:55
-msgid ""
-"If you leave your address, we'll be able to send you a postcard and other "
-"gadgets."
-msgstr ""
-"Jeśli zostawisz nam swój adres, to będziemy mogli wysłać Ci pocztówkę i inne "
-"gadżety Wolnych Lektur."
+msgid "street address"
+msgstr "ulica i numer"
 
 #: club/forms.py:56 club/models.py:387
 msgid "postal code"
@@ -496,23 +492,23 @@ msgstr "Podaj dane kontaktowe"
 msgid "First and last name:"
 msgstr "Imię i nazwisko:"
 
-#: club/templates/club/payment_form.html:67
+#: club/templates/club/payment_form.html:68
 msgid "E-mail:"
 msgstr "E-mail"
 
-#: club/templates/club/payment_form.html:72
+#: club/templates/club/payment_form.html:73
 msgid "Phone number:"
 msgstr "Numer telefonu:"
 
-#: club/templates/club/payment_form.html:77
+#: club/templates/club/payment_form.html:78
 msgid "Postal address:"
 msgstr "Adres pocztowy:"
 
-#: club/templates/club/payment_form.html:96
+#: club/templates/club/payment_form.html:97
 msgid "I'd like to subscribe the newsletter."
 msgstr "Zapisuję się na newsletter."
 
-#: club/templates/club/payment_form.html:100
+#: club/templates/club/payment_form.html:101
 msgid ""
 "You can unsubscribe at any point. More in the <a target=\"_blank\" href="
 "\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
@@ -521,7 +517,7 @@ msgstr ""
 "\" href=\"https://nowoczesnapolska.org.pl/prywatnosc/\">polityce "
 "prywatności</a>."
 
-#: club/templates/club/payment_form.html:104
+#: club/templates/club/payment_form.html:105
 msgid "Donate"
 msgstr "Wpłać"
 
@@ -564,6 +560,13 @@ msgid ""
 msgstr ""
 "\n"
 "Zlecasz comiesięczną płatność w wysokości %(amount)s zł. Dziękujemy!"
+
+#~ msgid ""
+#~ "If you leave your address, we'll be able to send you a postcard and other "
+#~ "gadgets."
+#~ msgstr ""
+#~ "Jeśli zostawisz nam swój adres, to będziemy mogli wysłać Ci pocztówkę i "
+#~ "inne gadżety Wolnych Lektur."
 
 #~ msgid "I'd like to receive informations about new publications."
 #~ msgstr "Chcę dostawać informacje o nowościach"
