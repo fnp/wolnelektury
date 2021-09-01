@@ -72,6 +72,21 @@ class PayPal(PaymentMethod):
         app = request.GET.get('app')
         return agreement_approval_url(schedule.amount, schedule.key, app=app)
 
+    def pay(self, request, schedule):
+        from datetime import date, timedelta, datetime
+        from pytz import utc
+        tomorrow = datetime(*(date.today() + timedelta(2)).timetuple()[:3], tzinfo=utc)
+        any_active = False
+        for ba in schedule.billingagreement_set.all():
+            active = ba.check_agreement()
+            ba.active = active
+            ba.save()
+            if active:
+                any_active = True
+        if any_active:
+            schedule.expires_at = tomorrow
+            schedule.save()
+
 
 methods = []
 
