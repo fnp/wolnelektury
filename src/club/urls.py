@@ -24,4 +24,6 @@ urlpatterns = [
     path('notify/<int:pk>/', views.PayUNotifyView.as_view(), name='club_payu_notify'),
 
     path('czlonek/', views.MembershipView.as_view(), name='club_membership'),
+
+    path('weryfikacja/', views.member_verify, name='club_member_verify'),
 ]

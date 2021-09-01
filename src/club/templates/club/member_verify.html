@@ -1,0 +1,8 @@
+<html>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <textarea name="emails" cols="80" rows="20"></textarea>
+      <button type="submit">Sprawdź</button>
+    </form>
+    <textarea cols="100" rows="20">{{ result }}</textarea>

@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -185,3 +185,42 @@ class YearSummaryView(DetailView):
         ).order_by('completed_at')
         ctx['total_amount'] = ctx['payments'].aggregate(s=Sum('schedule__amount'))['s']
         return ctx
+
+
+@permission_required('club.schedule_view')
+def member_verify(request):
+    if request.method == 'POST':
+        emails = request.POST.get('emails').strip().split('\n')
+        rows = ['email;członek;nazwa użytkownika;aktywny;co najmniej do']
+        for email in emails:
+            row = [email]
+            schedules = models.Schedule.objects.filter(email=email).exclude(payed_at=None)
+            if schedules.exists():
+                row.append('tak')
+                akt = False
+                unames = set()
+                exp = None
+                for s in schedules:
+                    if s.is_active():
+                        akt = True
+                    if s.membership:
+                        unames.add(s.membership.user.username) 
+                    if exp is None or s.expires_at > exp:
+                        exp = s.expires_at
+                row.append(','.join(sorted(unames)))
+                row.append('tak' if akt else 'nie')
+                row.append(exp.date().isoformat())
+            else:
+                row.append('nie')
+            rows.append(';'.join(row))
+        rows = '\n'.join(rows)
+    else:
+        rows = ''
+
+    return render(
+        request,
+        'club/member_verify.html',
+        {
+            'result': rows
+        }
+    )
