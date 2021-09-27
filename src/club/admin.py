@@ -142,23 +142,6 @@ admin.site.register(models.PayUOrder, PayUOrderAdmin)
 admin.site.register(models.Ambassador)
 
 
-
-@admin.register(models.DirectDebit)
-class DirectDebitAdmin(admin.ModelAdmin):
-    list_display = ['date', 'amount', 'first_name', 'last_name']
-    fields = [
-        ('first_name', 'sex', 'date_of_birth'),
-        'last_name',
-        ('street', 'building'),
-        ('town', 'flat'),
-        ('postal_code', 'phone'),
-        'email',
-        'iban',
-        'payment_id',
-        'agree_newsletter',
-        'date',
-        'amount'
-    ]
     
 
 @admin.register(models.Consent)

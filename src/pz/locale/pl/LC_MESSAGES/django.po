@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2021-09-27 15:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: pz/admin.py:32
+msgid "Processing"
+msgstr "Przetwarzanie"
+
+#: pz/admin.py:46
+msgid "obligatory"
+msgstr "obowiązkowo"
+
+#: pz/admin.py:47
+msgid "agree contact"
+msgstr "zgoda na kontakt"
+
+#: pz/models.py:6 pz/models.py:18
+msgid "name"
+msgstr "nazwa"
+
+#: pz/models.py:7
+msgid "description"
+msgstr "opis"
+
+#: pz/models.py:10 pz/models.py:66
+msgid "campaign"
+msgstr "kampania"
+
+#: pz/models.py:11
+msgid "campaigns"
+msgstr "kampanie"
+
+#: pz/models.py:21 pz/models.py:54
+msgid "fundraiser"
+msgstr "fundraiser"
+
+#: pz/models.py:22
+msgid "fundraisers"
+msgstr "fundraiserzy"
+
+#: pz/models.py:29
+msgid "first name"
+msgstr "imię"
+
+#: pz/models.py:30
+msgid "last name"
+msgstr "nazwisko"
+
+#: pz/models.py:31
+msgid "sex"
+msgstr "płeć"
+
+#: pz/models.py:32
+msgid "M"
+msgstr "M"
+
+#: pz/models.py:33
+msgid "F"
+msgstr "K"
+
+#: pz/models.py:35
+msgid "date of birth"
+msgstr "data urodzenia"
+
+#: pz/models.py:36
+msgid "street"
+msgstr "ulica"
+
+#: pz/models.py:37
+msgid "building"
+msgstr "nr domu"
+
+#: pz/models.py:38
+msgid "flat"
+msgstr "nr mieszkania"
+
+#: pz/models.py:39
+msgid "town"
+msgstr "miejscowość"
+
+#: pz/models.py:40
+msgid "postal code"
+msgstr "kod pocztowy"
+
+#: pz/models.py:41
+msgid "phone"
+msgstr "telefon"
+
+#: pz/models.py:42
+msgid "e-mail"
+msgstr "e-mail"
+
+#: pz/models.py:43
+msgid "IBAN"
+msgstr "nr rachunku"
+
+#: pz/models.py:44
+msgid "is a consumer"
+msgstr "konsument"
+
+#: pz/models.py:45
+msgid "payment identifier"
+msgstr "identyfikator płatności"
+
+#: pz/models.py:46
+msgid "agree fundraising"
+msgstr "zgoda na kontakt fundraisingowy"
+
+#: pz/models.py:47
+msgid "agree newsletter"
+msgstr "zgoda na newsletter"
+
+#: pz/models.py:49
+msgid "acquisition date"
+msgstr "data pozyskania"
+
+#: pz/models.py:49
+msgid "Date from the form"
+msgstr "Data z formularza"
+
+#: pz/models.py:50
+msgid "submission date"
+msgstr "data dostarczenia"
+
+#: pz/models.py:50
+msgid "Date the fundaiser submitted the form"
+msgstr "Data złożenia formularza przez fundraisera"
+
+#: pz/models.py:51
+msgid "bank submission date"
+msgstr "data złożenia do banku"
+
+#: pz/models.py:51
+msgid "Date when the form data is submitted to the bank"
+msgstr "Data przesłania danych z formularza do banku"
+
+#: pz/models.py:52
+msgid "bank accepted date"
+msgstr "data akceptacji przez bank"
+
+#: pz/models.py:52
+msgid "Date when bank accepted the form"
+msgstr "Data kiedy bank przekazał informację o akceptacji danych z formularza"
+
+#: pz/models.py:55
+msgid "fundraiser commission"
+msgstr "prowizja fundraisera"
+
+#: pz/models.py:56
+msgid "fundaiser bill number"
+msgstr "nr rachunku wystawionego przez fundraisera"
+
+#: pz/models.py:58
+msgid "amount"
+msgstr "kwota"
+
+#: pz/models.py:60
+msgid "notes"
+msgstr "uwagi"
+
+#: pz/models.py:62
+msgid "needs redo"
+msgstr "do powtórki"
+
+#: pz/models.py:63
+msgid "is cancelled"
+msgstr "anulowane"
+
+#: pz/models.py:64
+msgid "optout"
+msgstr "optout"
+
+#: pz/models.py:69
+msgid "direct debit"
+msgstr "polecenie zapłaty"
+
+#: pz/models.py:70
+msgid "direct debits"
+msgstr "polecenia zapłaty"
