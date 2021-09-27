@@ -1,4 +1,4 @@
--i https://py.mdrn.pl:8443/simple/
+-i https://py.mdrn.pl/simple/
 
 django-debug-toolbar<1.10
 django-debug-toolbar-template-timings

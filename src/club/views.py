@@ -193,6 +193,7 @@ def member_verify(request):
         emails = request.POST.get('emails').strip().split('\n')
         rows = ['email;członek;nazwa użytkownika;aktywny;co najmniej do']
         for email in emails:
+            email = email.strip()
             row = [email]
             schedules = models.Schedule.objects.filter(email=email).exclude(payed_at=None)
             if schedules.exists():

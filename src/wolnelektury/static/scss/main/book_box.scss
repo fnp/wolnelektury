@@ -185,6 +185,12 @@
       @include size(margin-top, 5px);
     }
 
+    .project-icon {
+      @include size(max-width, 100px);
+      @include size(max-height, 100px);
+    }
+
+
     @include min-screen($S_BOOK_SHORT_FULL) {
       // Show full title on the work's page.
 
