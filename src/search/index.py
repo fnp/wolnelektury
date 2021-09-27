@@ -636,7 +636,7 @@ class SearchResult(object):
         if self._book is not None:
             return self._book
         try:
-            self._book = catalogue.models.Book.objects.get(id=self.book_id)
+            self._book = catalogue.models.Book.objects.get(id=self.book_id, findable=True)
         except catalogue.models.Book.DoesNotExist:
             self._book = None
         return self._book
@@ -903,7 +903,7 @@ class Search(SolrIndex):
 
     def search_by_author(self, words):
         from catalogue.models import Book
-        books = Book.objects.filter(parent=None).order_by('-popularity__count')
+        books = Book.objects.filter(parent=None, findable=True).order_by('-popularity__count')
         for word in words:
             books = books.filter(cached_author__iregex='\m%s\M' % word).select_related('popularity__count')
         return [SearchResult.from_book(book, how_found='search_by_author', query_terms=words) for book in books[:30]]
@@ -977,7 +977,7 @@ class Search(SolrIndex):
                 idx += 1
 
         except IOError as e:
-            book = catalogue.models.Book.objects.filter(id=book_id)
+            book = catalogue.models.Book.objects.filter(id=book_id, findable=True)
             if not book:
                 log.error("Book does not exist for book id = %d" % book_id)
             elif not book.get().children.exists():

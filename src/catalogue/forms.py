@@ -16,6 +16,7 @@ class BookImportForm(forms.Form):
     book_xml = forms.CharField(required=False)
     gallery_url = forms.CharField(required=False)
     days = forms.IntegerField(required=False)
+    hidden = forms.BooleanField(required=False)
 
     def clean(self):
         from django.core.files.base import ContentFile
@@ -31,7 +32,9 @@ class BookImportForm(forms.Form):
     def save(self, **kwargs):
         return Book.from_xml_file(self.cleaned_data['book_xml_file'], overwrite=True,
                                   remote_gallery_url=self.cleaned_data['gallery_url'],
-                                  days=self.cleaned_data['days'], **kwargs)
+                                  days=self.cleaned_data['days'],
+                                  findable=not self.cleaned_data['hidden'],
+                                  **kwargs)
 
 
 FORMATS = [(f, f.upper()) for f in Book.ebook_formats]
