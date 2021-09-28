@@ -320,9 +320,6 @@
       @include size(min-height, 70px);
     }
 
-    a {
-      color: black;
-    }
     .author {
       @include size(font-size, 11px);
       @include mono;
@@ -344,6 +341,10 @@
         margin-bottom: 0;
         @include size(height, 57.6px);
         overflow: hidden;
+      }
+
+      a {
+	color: black;
       }
     }
   }
