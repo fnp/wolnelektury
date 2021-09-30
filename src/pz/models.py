@@ -41,12 +41,13 @@ class DirectDebit(models.Model):
     phone = models.CharField(_('phone'), max_length=255, blank=True)
     email = models.CharField(_('e-mail'), max_length=255, blank=True)
     iban = models.CharField(_('IBAN'), max_length=255, blank=True)
+    iban_valid = models.NullBooleanField(_('IBAN valid'), default=False)
     is_consumer = models.BooleanField(_('is a consumer'), default=True)
     payment_id = models.CharField(_('payment identifier'), max_length=255, blank=True, unique=True)
-    agree_fundraising = models.BooleanField(_('agree fundraising'))
-    agree_newsletter = models.BooleanField(_('agree newsletter'))
+    agree_fundraising = models.BooleanField(_('agree fundraising'), default=False)
+    agree_newsletter = models.BooleanField(_('agree newsletter'), default=False)
 
-    acquisition_date = models.DateField(_('acquisition date'), help_text=_('Date from the form'))
+    acquisition_date = models.DateField(_('acquisition date'), help_text=_('Date from the form'), null=True, blank=True)
     submission_date = models.DateField(_('submission date'), null=True, blank=True, help_text=_('Date the fundaiser submitted the form'))
     bank_submission_date = models.DateField(_('bank submission date'), null=True, blank=True, help_text=_('Date when the form data is submitted to the bank'))
     bank_acceptance_date = models.DateField(_('bank accepted date'), null=True, blank=True, help_text=_('Date when bank accepted the form'))
@@ -55,7 +56,7 @@ class DirectDebit(models.Model):
     fundraiser_commission = models.IntegerField(_('fundraiser commission'), null=True, blank=True)
     fundraiser_bill = models.CharField(_('fundaiser bill number'), max_length=255, blank=True)
 
-    amount = models.IntegerField(_('amount'))
+    amount = models.IntegerField(_('amount'), null=True, blank=True)
 
     notes = models.TextField(_('notes'), blank=True)
 
@@ -68,6 +69,10 @@ class DirectDebit(models.Model):
     class Meta:
         verbose_name = _('direct debit')
         verbose_name_plural = _('direct debits')
+
+    def save(self, **kwargs):
+        self.iban_valid = not self.iban_warning() if self.iban else None
+        super().save(**kwargs)
 
     @classmethod
     def get_next_payment_id(cls):
@@ -88,3 +93,12 @@ class DirectDebit(models.Model):
                 break
         return payment_id
 
+    def iban_warning(self):
+        if not self.iban:
+            return 'No IBAN'
+        if len(self.iban) != 26:
+            return 'Bad IBAN length'
+        if int(self.iban[2:] + '2521' + self.iban[:2]) % 97 != 1:
+            return 'This IBAN number looks invalid'
+        return ''
+    iban_warning.short_description = ''
