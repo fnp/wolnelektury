@@ -148,6 +148,17 @@
     }
   }
 
+    .license-icon {
+      display: block;
+      @include size(margin-top, 5px);
+    }
+
+    .project-icon {
+      @include size(max-width, 100px);
+      @include size(max-height, 100px);
+    }
+
+
   .jp-type-playlist {
     margin-top: 24px;
 
