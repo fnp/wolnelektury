@@ -1,15 +1,17 @@
 from django.db import models
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
+from .bank import parse_export_feedback
 
 
 class Campaign(models.Model):
     name = models.CharField(_('name'), max_length=255, unique=True)
     description = models.TextField(_('description'), blank=True)
 
-    class Meta: 
+    class Meta:
         verbose_name = _('campaign')
         verbose_name_plural = _('campaigns')
-   
+
     def __str__(self):
         return self.name
 
@@ -17,7 +19,7 @@ class Campaign(models.Model):
 class Fundraiser(models.Model):
     name = models.CharField(_('name'), max_length=255, unique=True)
 
-    class Meta: 
+    class Meta:
         verbose_name = _('fundraiser')
         verbose_name_plural = _('fundraisers')
 
@@ -70,6 +72,9 @@ class DirectDebit(models.Model):
         verbose_name = _('direct debit')
         verbose_name_plural = _('direct debits')
 
+    def __str__(self):
+        return self.payment_id
+
     def save(self, **kwargs):
         self.iban_valid = not self.iban_warning() if self.iban else None
         super().save(**kwargs)
@@ -93,6 +98,20 @@ class DirectDebit(models.Model):
                 break
         return payment_id
 
+    @property
+    def full_name(self):
+        return ' '.join((self.first_name, self.last_name)).strip()
+
+    @property
+    def street_address(self):
+        street_addr = self.street
+        if self.building:
+            street_addr += ' ' + self.building
+        if self.flat:
+            street_addr += ' m. ' + self.flat
+        street_addr = street_addr.strip()
+        return street_addr
+
     def iban_warning(self):
         if not self.iban:
             return 'No IBAN'
@@ -102,3 +121,41 @@ class DirectDebit(models.Model):
             return 'This IBAN number looks invalid'
         return ''
     iban_warning.short_description = ''
+
+
+class BankExportFeedback(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    csv = models.FileField(upload_to='pz/feedback/')
+
+    def save(self, **kwargs):
+        super().save(**kwargs)
+        for payment_id, status, comment in parse_export_feedback(self.csv):
+            debit = DirectDebit.objects.get(payment_id = payment_id)
+            b, created = self.bankexportfeedbackline_set.get_or_create(
+                debit=debit,
+                defaults={
+                    "status": status,
+                    "comment": comment,
+                }
+            )
+            if not created:
+                b.status = status
+                b.comment = comment
+                b.save()
+            if status == 1 and not debit.bank_acceptance_date:
+                debit.bank_acceptance_date = now().date()
+                debit.save()
+
+
+class BankExportFeedbackLine(models.Model):
+    feedback = models.ForeignKey(BankExportFeedback, models.CASCADE)
+    debit = models.ForeignKey(DirectDebit, models.CASCADE)
+    status = models.SmallIntegerField()
+    comment = models.CharField(max_length=255)
+
+
+
+class BankOrder(models.Model):
+    payment_date = models.DateField(null=True, blank=True)
+    sent = models.DateTimeField(null=True, blank=True)
+    debits = models.ManyToManyField(DirectDebit, blank=True)

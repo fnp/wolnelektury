@@ -1,4 +1,8 @@
 from django.contrib import admin
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import path, reverse
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 from fnpdjango.actions import export_as_csv_action
@@ -8,6 +12,12 @@ from . import models
 
 admin.site.register(models.Fundraiser)
 admin.site.register(models.Campaign)
+
+
+class BankExportFeedbackLineInline(admin.TabularInline):
+    model = models.BankExportFeedbackLine
+    extra = 0
+
 
 @admin.register(models.DirectDebit)
 class DirectDebitAdmin(admin.ModelAdmin):
@@ -70,12 +80,25 @@ class DirectDebitAdmin(admin.ModelAdmin):
         })
     ]
     readonly_fields = ['agree_contact', 'iban_valid', 'iban_warning']
+    inlines = [BankExportFeedbackLineInline]
 
-    def set_bank_submission(m,r,q):
+    def set_bank_submission(m, r, q):
         q.update(bank_submission_date=now())
+
+    def create_bank_order(m, request, queryset):
+        bo = models.BankOrder.objects.create()
+        bo.debits.set(queryset)
+        messages.info(request, mark_safe(
+            '<a href="{}">Bank order</a> created.'.format(
+                reverse('admin:pz_bankorder_change', args=[bo.pk])
+            )
+        ))
+
+
     actions = [
         bank.bank_export,
         set_bank_submission,
+        create_bank_order,
         export_as_csv_action(),
     ]
 
@@ -87,3 +110,46 @@ class DirectDebitAdmin(admin.ModelAdmin):
         return {
             'payment_id': models.DirectDebit.get_next_payment_id(),
         }
+
+
+@admin.register(models.BankExportFeedback)
+class BankExportFeedbackAdmin(admin.ModelAdmin):
+    inlines = [BankExportFeedbackLineInline]
+
+
+
+@admin.register(models.BankOrder)
+class BankOrderAdmin(admin.ModelAdmin):
+    fields = ['payment_date', 'debits', 'sent', 'download']
+    filter_horizontal = ['debits']
+
+    def get_readonly_fields(self, request, obj=None):
+        fields = ['download']
+        if obj is not None and obj.sent:
+            fields += ['debits', 'payment_date']
+        return fields
+
+    def download(self, obj):
+        return mark_safe('<a href="{}">Download</a>'.format(
+            reverse('admin:pz_bankorder_download', args=[obj.pk])
+        ))
+
+    def get_urls(self):
+        urls = super().get_urls()
+        my_urls = [
+            path(
+                '<int:pk>/download/',
+                self.admin_site.admin_view(self.download_view),
+                name='pz_bankorder_download',
+            ),
+        ]
+        return my_urls + urls
+
+    def download_view(self, request, pk):
+        order = get_object_or_404(
+            models.BankOrder, pk=pk)
+        try:
+            return bank.bank_order(order.payment_date, order.debits.all())
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('admin:pz_bankorder_change', pk)
