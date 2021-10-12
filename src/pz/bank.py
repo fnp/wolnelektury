@@ -13,6 +13,7 @@ def bank_export(modeladmin, request, queryset):
     writer.writerow([
         'Identyfikator płatności (IDP)',
         'Nazwa Płatnika',
+        '',
         'Adres Płatnika Ulica + numer domu',
         'Adres Płatnika kod+miejscowość',
         'Numer kierunkowy banku Płatnika',
@@ -27,6 +28,7 @@ def bank_export(modeladmin, request, queryset):
         writer.writerow([
             obj.payment_id,
             obj.full_name,
+            '',
             obj.street_address,
             ' '.join([obj.postal_code, obj.town]).strip(),
             obj.iban[2:10],
