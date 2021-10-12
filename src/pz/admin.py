@@ -130,9 +130,12 @@ class BankOrderAdmin(admin.ModelAdmin):
         return fields
 
     def download(self, obj):
-        return mark_safe('<a href="{}">Download</a>'.format(
-            reverse('admin:pz_bankorder_download', args=[obj.pk])
-        ))
+        if obj is not None and obj.pk:
+            return mark_safe('<a href="{}">Download</a>'.format(
+                reverse('admin:pz_bankorder_download', args=[obj.pk])
+            ))
+        else:
+            return ''
 
     def get_urls(self):
         urls = super().get_urls()
