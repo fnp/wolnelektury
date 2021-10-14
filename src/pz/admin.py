@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.contrib.admin.filters import FieldListFilter
 from django.contrib import messages
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import path, reverse
 from django.utils.safestring import mark_safe
@@ -12,6 +14,40 @@ from . import models
 
 admin.site.register(models.Fundraiser)
 admin.site.register(models.Campaign)
+
+
+# Backport from Django 3.1.
+class EmptyFieldListFilter(FieldListFilter):
+    def __init__(self, field, request, params, model, model_admin, field_path):
+        self.lookup_kwarg = '%s__isempty' % field_path
+        self.lookup_val = params.get(self.lookup_kwarg)
+        super().__init__(field, request, params, model, model_admin, field_path)
+
+    def queryset(self, request, queryset):
+        if self.lookup_kwarg not in self.used_parameters:
+            return queryset
+        if self.lookup_val not in ('0', '1'):
+            raise IncorrectLookupParameters
+
+        lookup_condition = Q(**{'%s__isnull' % self.field_path: True})
+        if self.lookup_val == '1':
+            return queryset.filter(lookup_condition)
+        return queryset.exclude(lookup_condition)
+
+    def expected_parameters(self):
+        return [self.lookup_kwarg]
+
+    def choices(self, changelist):
+        for lookup, title in (
+            (None, _('All')),
+            ('1', _('Empty')),
+            ('0', _('Not empty')),
+        ):
+            yield {
+                'selected': self.lookup_val == lookup,
+                'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}),
+                'display': title,
+            }
 
 
 class BankExportFeedbackLineInline(admin.TabularInline):
@@ -41,7 +77,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
         'agree_newsletter',
         'fundraiser',
         'campaign',
-        'is_cancelled',
+        ('cancelled_at', EmptyFieldListFilter),
         'needs_redo',
         'optout',
         'amount',
@@ -69,7 +105,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
             ]
         }),
         (_('Processing'), {"fields": [
-            ('is_cancelled', 'needs_redo', 'optout'),
+            ('cancelled_at', 'needs_redo', 'optout'),
             'submission_date',
             'fundraiser_commission',
             'fundraiser_bill',
@@ -152,7 +188,11 @@ class BankOrderAdmin(admin.ModelAdmin):
         order = get_object_or_404(
             models.BankOrder, pk=pk)
         try:
-            return bank.bank_order(order.payment_date, order.debits.all())
+            return bank.bank_order(
+                order.payment_date,
+                order.sent,
+                order.debits.all()
+            )
         except Exception as e:
             messages.error(request, str(e))
             return redirect('admin:pz_bankorder_change', pk)

@@ -48,13 +48,14 @@ def parse_export_feedback(f):
         yield payment_id, status, comment
 
 
-def bank_order(date, queryset):
+def bank_order(date, sent_at, queryset):
     response = HttpResponse(content_type='application/octet-stream')
     response['Content-Disposition'] = 'attachment; filename=order.PLD'
     rows = []
 
     no_dates = []
     no_amounts = []
+    cancelled = []
 
     if date is None:
         raise ValueError('Payment date not set yet.')
@@ -64,8 +65,10 @@ def bank_order(date, queryset):
             no_dates.append(debit)
         if debit.amount is None:
             no_amounts.append(debit)
+        if debit.cancelled_at and debit.cancelled_at.date() <= date and (sent_at is None or debit.cancelled_at < sent_at):
+            cancelled.append(debit)
 
-    if no_dates or no_amounts:
+    if no_dates or no_amounts or cancelled:
         t = ''
         if no_dates:
             t += 'Bank acceptance not received for: '
@@ -83,6 +86,15 @@ def bank_order(date, queryset):
                     debit.pk, debit
                 )
                 for debit in no_amounts
+            )
+            t += '. '
+        if cancelled:
+            t += 'Debits have been cancelled: '
+            t += ', '.join(
+                '<a href="/admin/pz/directdebit/{}/change">{}</a>'.format(
+                    debit.pk, debit
+                )
+                for debit in cancelled
             )
             t += '. '
         raise ValueError(mark_safe(t))

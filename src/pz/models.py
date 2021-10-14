@@ -63,7 +63,7 @@ class DirectDebit(models.Model):
     notes = models.TextField(_('notes'), blank=True)
 
     needs_redo = models.BooleanField(_('needs redo'), default=False)
-    is_cancelled = models.BooleanField(_('is cancelled'), default=False)
+    cancelled_at = models.DateTimeField(_('cancelled at'), null=True, blank=True)
     optout = models.BooleanField(_('optout'), default=False)
 
     campaign = models.ForeignKey(Campaign, models.PROTECT, null=True, blank=True, verbose_name=_('campaign'))
