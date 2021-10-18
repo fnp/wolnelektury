@@ -34,7 +34,7 @@ EBOOK_FORMATS = EBOOK_FORMATS_WITHOUT_CHILDREN + EBOOK_FORMATS_WITH_CHILDREN
 EBOOK_CONTENT_TYPES = {
     'html': 'text/html',
     'pdf': 'application/pdf',
-    'txt': 'text/plain',
+    'txt': 'text/plain; charset=utf-8',
     'epub': 'application/epub+zip',
     'mobi': 'application/x-mobipocket-ebook',
     'fb2': 'text/xml',
