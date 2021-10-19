@@ -10,19 +10,6 @@ def bank_export(modeladmin, request, queryset):
     response = HttpResponse(content_type='text/csv; charset=cp1250')
     response['Content-Disposition'] = 'attachment; filename=export.csv'
     writer = csv.writer(response)
-    writer.writerow([
-        'Identyfikator płatności (IDP)',
-        'Nazwa Płatnika',
-        '',
-        'Adres Płatnika Ulica + numer domu',
-        'Adres Płatnika kod+miejscowość',
-        'Numer kierunkowy banku Płatnika',
-        'Numer rachunku bankowego Płatnika',
-        'Identyfikator Odbiorcy (NIP Odbiorcy)',
-        'Osobowość prawna Płatnika (Osoba fizyczna)'
-    ])
-
-    # TODO: ansi encoding
 
     for obj in queryset:
         writer.writerow([
