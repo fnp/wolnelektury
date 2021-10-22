@@ -1,0 +1,18 @@
+.l-navigation {
+  max-width: 1140px;
+  margin: 0 auto;
+  border-bottom: 2px solid #CCCCCC;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.l-navigation__button {
+  appearance: none;
+  border: 0;
+  background: 0;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}

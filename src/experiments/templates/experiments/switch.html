@@ -1,0 +1,55 @@
+{% if tests %}
+  <div id="test-switcher" class="{% if explicit %}test-switcher-explicit{% endif %}">
+    <div class="test-switcher-content">
+      {% for test, currval in tests %}
+        {% for cohort in test.cohorts %}
+          {% if cohort.value != currval %}
+            <a onclick="document.cookie='AB_{{test.slug}}={{cohort.value}}; path=/'; window.location.reload(true);">{{ cohort.name }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <style>
+   #test-switcher {
+       background: white;
+       color: black;
+       position: absolute;
+       top: 0;
+       left: 0;
+       padding-left: 1.5em;
+       height: 2em;
+   }
+   #test-switcher:before {
+       content: ">";
+       display: inline-block;
+       vertical-align: top;
+       margin-left: -1em;
+       transition: opacity .2s;
+       line-height: 2em;
+   }
+   #test-switcher:hover .test-switcher-content {
+       width: 200px;
+   }
+   #test-switcher:hover:before,
+   .test-switcher-explicit:before {
+       opacity: 0;
+   }
+   .test-switcher-content {
+       width: 0;
+       overflow: hidden;
+       transition: width .2s;
+       display: inline-block;
+       line-height: 2em;
+       white-space: nowrap;
+   }
+   .test-switcher-explicit .test-switcher-content {
+       width: 200px;
+   }
+   .test-switcher-content a {
+       cursor: pointer;
+   }
+  </style>
+{% endif %}

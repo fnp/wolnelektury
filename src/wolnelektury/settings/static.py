@@ -22,6 +22,12 @@ IMAGE_DIR = 'book/pictures/'
 
 PIPELINE = {
     'STYLESHEETS': {
+        '2021': {
+            'source_filenames': [
+                '2021/css/main.scss',
+            ],
+            'output_filename': 'css/compressed/2021.css',
+        },
         'main': {
             # styles both for mobile and for big screen
             'source_filenames': [

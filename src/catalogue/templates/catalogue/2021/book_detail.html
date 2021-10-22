@@ -1,0 +1,335 @@
+<!doctype html>
+{% load pipeline %}
+{% load static %}
+{% load choose_cite from social_tags %}
+{% load choose_fragment license_icon from catalogue_tags %}
+{% load catalogue_tags %}
+
+
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WolneLektury.pl</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    {% stylesheet '2021' %}
+    <script src="scripts/modernizr.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <nav class="l-navigation">
+      <a href="/" class="l-navigation__logo">
+        <img src="{% static '2021/images/logo.png' %}" alt="WolneLektury.pl">
+      </a>
+      <button class="l-navigation__button js-menu" aria-label="Menu">
+        <span class="c-hamburger">
+            <span class="bar"></span>
+        </span>
+      </button>
+    </nav>
+
+    <header class="l-header">
+      <figure class="l-header__img">
+        <img src="{% if book.cover_thumb %}{{ book.cover_thumb.url }}{% endif %}" alt="{{ book.pretty_title }}">
+      </figure>
+      <div class="l-header__content">
+        <p>
+          {% for author in book.authors %}
+            <a href="{{ author.get_absolute_url  }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+          {% if book.translators %}
+            (tłum. {% for translator in book.translators %}{{ translator }}{% endfor %})
+          {% endif %}
+        </p>
+        <h1>{{ book.title }}</h1>
+        <ul>
+          {# Wielkość liter zmieniona sztucznie. Docelowo należy ustalić. #}
+          {% for tag in book.kinds %}
+            <li><a href="{{ tag.get_absolute_url }}">{{ tag|lower }}</a></li>
+          {% endfor %}
+          {% for tag in book.genres %}
+            <li><a href="{{ tag.get_absolute_url }}">{{ tag|lower }}</a></li>
+          {% endfor %}
+          {% for tag in book.epochs %}
+            <li><a href="{{ tag.get_absolute_url }}">{{ tag|lower }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="l-header__actions">
+        <button class="l-button l-button--fav">
+          <img src="{% static '2021/images/fav.svg' %}" alt="Dodaj do ulubionych">
+        </button>
+      </div>
+    </header>
+
+    <main class="l-main">
+      <section class="l-section">
+        <aside class="l-aside">
+          {% if book.parent or book.children.all %}
+            <h3>należy do zbiorów</h3>
+
+            {% if book.parent %}
+              <ul>
+              {% for b in book.ancestor.all %}
+                <li>
+                  <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+                  <ul>
+              {% endfor %}
+              {% for b in book.get_siblings %}
+                <li>
+                  {% if b == book %}
+                    <strong>{{ b.title }}</strong>
+                    <ul>
+                      {% for c in book.children.all %}
+                        <li>
+                          <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+                  {% endif %}
+                </li>
+              {% endfor %}
+
+              {% for b in book.ancestor.all %}
+                </ul>
+                </li>
+              {% endfor %}
+              </ul>
+
+            {% else %}
+              <ul>
+                <li>
+                  <strong>{{ book.title }}</strong>
+                  <ul>
+                    {% for c in book.children.all %}
+                      <li>
+                        <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              </ul>
+            {% endif %}
+
+
+          {% endif  %}
+
+
+          <ul class="c-externals">
+            <li><a href="{{ book.xml_file.url }}" target="_blank">źródłowy plik XML</a></li>
+            <li><a href="{% url 'poem_from_book' book.slug %}" target="_blank">miksuj treść utworu</a></li>
+
+            <li><a href="{{ book.get_extra_info_json.about }}" target="_blank">utwór na Platformie Redakcyjnej</a></li>
+          </ul>
+        </aside>
+        <article class="l-article">
+
+          <div class="quote l-article__lead">
+            {% choose_cite book as cite_promo %}
+            {% if cite_promo %}
+              {{ cite.promo_box }}
+            {% else %}
+              {% choose_fragment book as fragment_promo %}
+              {% if fragment_promo %}
+                {{  fragment_promo.get_short_text|safe }}
+              {% endif %}
+            {% endif %}
+          </div>
+
+          <div class="c-media">
+            <div class="c-media__actions">
+              <div class="c-media__btn">
+                <div class="l-button l-button--media">
+                  pobierz audiobook
+                </div>
+                <ul>
+                  <li>mp3</li>
+                  <li>ogg</li>
+                  <li>DAISY</li>
+                </ul>
+              </div>
+              <div class="c-media__btn">
+                <div class="l-button l-button--media">
+                  pobierz książkę
+                </div>
+                <ul>
+                  <li>PDF</li>
+                  <li>epub</li>
+                  <li>mobi</li>
+                </ul>
+              </div>
+              <div class="c-media__btn">
+                {#% if book.get_first_text %#}
+                  <a href="{#% url 'book_text' book.get_first_text.slug %#}">
+                    <div class="l-button l-button--media l-button--media--full">
+                      czytaj
+                    </div>
+                  </a>
+                  <!-- ul>
+                    <li>PDF</li>
+                    <li>epub</li>
+                    <li>mobi</li>
+                  </ul-->
+                {#% endif %#}
+              </div>
+            </div>
+            <div class="c-media__player">
+              <h2>słuchaj audiobooka w naszym serwisie</h2>
+              <div class="c-player">
+                <button class="c-player__btn">
+                  <img src="{% static '2021/images/play.svg' %}" alt="słuchaj audiobooka w naszym serwisie">
+                </button>
+                <div class="c-player__timeline">
+                  <span></span>
+                  <time class="c-player__length">1h 20m</time>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{ book.abstract|safe }}
+
+        </article>
+      </section>
+
+
+      <section class="l-section">
+        <div class="c-support">
+          <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki darowiznom od osób takich jak Ty!</h2>
+          <a href="/towarzystwo/">DORZUĆ SIĘ!</a>
+        </div>
+      </section>
+
+
+      {% for author in book.authors %}
+        <section class="l-section">
+          <div class="l-author">
+            <article class="l-author__info">
+              <h3>
+                <a href="{{ author.get_absolute_url }}">
+                  {{ author.name }}
+                </a>
+              </h3>
+
+              {{ author.description|safe }}
+
+            </article>
+            {% if HAVE_AUTHOR_PHOTO %}
+              <figure class="l-author__photo">
+                <img src="{% static '2021/images/author.jpg' %}" alt="Adam Mickiewicz">
+                <figcaption>
+                  Wikipedia
+                </figcaption>
+              </figure>
+            {% endif %}
+          </div>
+        </section>
+      {% endfor %}
+
+      {% with book.related_themes as themes %}
+        {% if themes %}
+          <section class="l-section">
+            <div class="l-themes__wrapper">
+              <h2>motywy występujące w tym utworze</h2>
+              <div class="l-themes">
+                <ul>
+                  {% for item in themes %}
+                    <li><a href="{% url 'book_fragments' book.slug item.slug %}">{{ item|lower }}&nbsp;({{ item.count}})</a></li>
+                  {% endfor %}
+                </ul>
+                <a class="button" href="{% url 'theme_catalogue' %}">zobacz wszystkie motywy</a>
+              </div>
+            </div>
+          </section>
+        {% endif %}
+      {% endwith %}
+
+
+      <section class="l-section">
+        <div class="l-books__wrapper">
+          <h2>inne tytuły w naszej bibliotece</h2>
+          <div class="l-books">
+
+            {% if book.other_versions %}
+              {% for rel in book.other_versions %}
+
+                <article class="l-books__item">
+                  <figure class="l-books__item__img">
+                    <a href="{{ rel.get_absolute_url }}">
+                      <img src="{% if rel.cover %}{{ rel.cover.url }}{% endif %}" alt="{{ rel.pretty_title }}">
+                    </a>
+                  </figure>
+                  <h3>
+                    {% for author in rel.authors %}
+                      <a href="{{ author.get_absolute_url }}">{{ author|upper }}</a>
+                    {% endfor %}
+                  </h3>
+                  <h2><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></h2>
+                </article>
+              {% endfor %}
+            {% endif %}
+
+            {% related_books_2021 book taken=book.other_versions|length as related_books %}
+            {% for rel in related_books %}
+              <article class="l-books__item">
+                <figure class="l-books__item__img">
+                  <a href="{{ rel.get_absolute_url }}">
+                    <img src="{% if rel.cover %}{{ rel.cover.url }}{% endif %}" alt="{{ rel.pretty_title }}">
+                  </a>
+                </figure>
+                <h3>
+                  {% for author in rel.authors %}
+                    <a href="{{ author.get_absolute_url }}">{{ author|upper }}</a>
+                  {% endfor %}
+                </h3>
+                <h2><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></h2>
+              </article>
+            {% endfor %}
+
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="l-footer">
+      <div class="l-footer__row">
+        <div class="l-footer__col">
+          <p>Wolne Lektury to projekt prowadzony przez fundację Nowoczesna Polska.</p>
+          <p>Reprodukcje cyfrowe wykonane przez Bibliotekę Narodową, Bibliotekę Śląską i Bibliotekę Elbląską z egzemplarzy pochodzących ze zbiorów BN, BŚ i BE.</p>
+          <p>Hosting: ICM.</p>
+        </div>
+        <div class="l-footer__col">
+          <ul>
+            <li>Fundacja Nowoczesna Polska</li>
+            <li>ul. Marszałkowska 84/92 lok. 125</li>
+            <li>00-514 Warszawa</li>
+          </ul>
+          <ul>
+            <li>tel: <a href="tel:+48226213017">(22) 621-30-17</a></li>
+            <li>e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="l-footer__row">
+        <p>
+          Nowa strona biblioteki Wolne Lektury powstała dzięki środkom otrzymanym w ramach Programu Operacyjnego Fundusz
+          Inicjatyw Obywatelskich, Senatu RP (zadanie realizowane w ramach zlecania przez Kancelarię Senatu zadań
+          w zakresie opieki nad Polonią i Polakami za granicą w 2011 r.) oraz Narodowego Instytutu Audiowizualnego
+          w ramach programu Dziedzictwo Cyfrowe.
+        </p>
+      </div>
+    </div>
+
+    <script src="{% static '2021/scripts/vendor.js' %}"></script>
+    <script src="{% static '2021/scripts/main.js' %}"></script>
+  </body>
+</html>

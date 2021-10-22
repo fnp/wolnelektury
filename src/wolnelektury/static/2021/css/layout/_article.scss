@@ -1,0 +1,35 @@
+.l-article {
+  color: $color-gray;
+  border-left: 2px solid $color-light-gray;
+  padding-bottom: 30px;
+  padding-left: 21px;
+  margin-left: 15px;
+
+  h2 {}
+  h3 {}
+  h4 {}
+  p {
+    font-style: normal;
+    font-weight: $regular;
+    @include font-size(18px);
+    line-height: 166%;
+    letter-spacing: -0.005em;
+  }
+  ul {}
+  ol {}
+}
+
+.l-article__lead {
+  margin-top: 0;
+  font-weight: $light;
+  @include font-size(24px);
+  font-family: $secondary-font;
+  line-height: 166%;
+}
+
+
+
+.quote p {
+
+    margin-top: inherit;
+}

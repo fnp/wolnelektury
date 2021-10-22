@@ -1,0 +1,44 @@
+.c-player {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.c-player__btn {
+  background: $color-primary;
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  img {}
+}
+
+.c-player__timeline {
+  width: calc(100% - 60px);
+
+  span {
+    height: 5px;
+    width: 100%;
+    background: $color-primary;
+    display: block;
+  }
+}
+
+.c-player__length {
+  position: absolute;
+  right: 0;
+  padding-top: 3px;
+  font-weight: bold;
+  @include font-size(16px);
+  line-height: 19px;
+  text-align: right;
+  letter-spacing: 0.01em;
+}

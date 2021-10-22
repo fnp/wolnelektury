@@ -1,0 +1,78 @@
+.l-footer {}
+
+.l-footer__row {}
+
+.l-footer__col {
+  p {}
+}
+
+.l-footer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-top: 60px;
+  border-top: 4px solid #CCCCCC;
+  margin-top: 100px;
+}
+
+.l-footer__row {
+  display: flex;
+}
+
+
+.l-footer__col {
+  width: 100%;
+}
+
+.l-footer p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  letter-spacing: 0.01em;
+  color: #666666;
+  margin-top: 22px;
+}
+
+.l-footer__col p:not(:last-child) {
+  padding-bottom: 37px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.l-footer__row .l-footer__col:first-child {
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.l-footer__col ul {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 125%;
+  /* or 30px */
+  letter-spacing: -0.01em;
+  color: #666666;
+  list-style: none;
+  padding-left: 10px;
+}
+
+.l-footer__col ul:first-child {
+  margin-top: 0;
+}
+
+.l-footer__col p:first-child {
+  margin-top: 5px;
+}
+
+.l-footer__col p:last-child {
+  padding-bottom: 10px;
+}
+
+.l-footer__row:last-child {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 12px solid #CCCCCC;
+}
+
+.l-footer__row:last-child p {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}

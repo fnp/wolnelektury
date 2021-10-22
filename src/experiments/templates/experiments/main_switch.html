@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+
+{% block body %}
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/MH1Asimulator.JPG" style="width:100">
+
+  {% for exp in experiments %}
+    <div class="experiment" data-slug="{{ exp.config.slug }}">
+      {{ exp.config.name }}
+      {% for cohort in exp.config.cohorts %}
+        <button
+            {% if exp.value == cohort.value %}
+            disabled class="active"
+            {% endif %}
+            data-value="{{ cohort.value }}">{{ cohort.name }}</button>
+      {% endfor %}
+    </div>
+
+    <script>
+    </script>
+
+  {% endfor %}
+{% endblock %}
+
+{% block extrabody %}
+  <style>
+   .experiment {
+       margin: 1em 0;
+       font-size: 1.5em;
+   }
+   .experiment button {
+       margin: 0 1em;
+       padding: .5em;
+       font-size: 1em;
+
+   }
+  </style>
+  <script>
+   $(".experiment button").click(function() {
+       document.cookie = 'EXPERIMENT_' + $(this).parent().data('slug') + '=' + $(this).data('value') + '; path=/';
+       window.location.reload(true);
+   });
+  </script>
+{% endblock %}

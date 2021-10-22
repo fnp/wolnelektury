@@ -59,7 +59,6 @@ TEMPLATES = [{
             'django.template.context_processors.media',
             'django.template.context_processors.request',
             'wolnelektury.context_processors.extra_settings',
-            'wolnelektury.abtests.context_processor',
             'search.context_processors.search_form',
             'machina.core.context_processors.metadata',
         ),
@@ -81,6 +80,7 @@ MIDDLEWARE = [
     'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
+    'experiments.middleware.experiments_middleware',
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'

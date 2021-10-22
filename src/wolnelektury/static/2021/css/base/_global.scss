@@ -1,0 +1,39 @@
+/* ------------------------------
+    Base: Global
+------------------------------ */
+
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+:focus {
+  outline: $color-black auto 2px;
+  outline-offset: 2px;
+}
+
+html,
+body {
+  -webkit-overflow-scrolling: auto;
+}
+
+body {
+	color: $color-black;
+	background-color: $color-white;
+
+  &.using-mouse {
+    *:focus {
+      outline: 0 !important;
+    }
+  }
+}
+
+.visibility-hidden {
+  visibility: hidden !important;
+}
+
+.simpleParallax {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

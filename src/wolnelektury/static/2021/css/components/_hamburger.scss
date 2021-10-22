@@ -1,0 +1,106 @@
+/* ------------------------------
+    Component: Hamburger
+------------------------------ */
+
+$bar-width:   35px;
+$bar-height:  3px;
+$bar-spacing: 8px;
+$bar-color:   $color-gray;
+
+.c-hamburger {
+  display: flex;
+  height: $bar-height + $bar-spacing*2;
+  transition: transform $ease-out 400ms;
+  backface-visibility: hidden;
+  position: relative;
+  cursor: pointer;
+
+  @include rwd(tablet) {
+    margin-right: 0;
+  }
+
+  border: 0;
+  margin: 0; padding: 0;
+  background-color: transparent;
+  appearance: none;
+
+  &:after {
+    content: attr(data-label);
+    transform: translateX(50%);
+    @include font-size(18px);
+    top: -3px; left: -7px;
+    font-weight: $medium;
+    padding-left: 17px;
+    position: absolute;
+    transition: color 300ms $ease-out;
+  }
+
+  &.is-clicked {
+    z-index: $master-layer + 2;
+
+    @include rwd(tablet) {
+      position: fixed;
+      top: 2rem; right: 1rem;
+    }
+
+    &:after {
+      color: $color-black;
+    }
+  }
+
+  .bar,
+  .bar:after,
+  .bar:before {
+    width: $bar-width;
+    height: $bar-height;
+    border-radius: 10px;
+  }
+
+  .bar {
+    position: relative;
+    transform: translateY($bar-spacing);
+    background-color: rgba($bar-color, 1);
+    transition: all 0ms 300ms;
+
+    &:before,
+    &:after {
+      left: 0;
+      content: "";
+      position: absolute;
+      bottom: $bar-spacing;
+      background-color: rgba($bar-color, 1);
+    }
+
+    &:before {
+      bottom: $bar-spacing;
+      transition: bottom 300ms 300ms $ease-out,
+      transform 300ms $ease-out,
+      background-color 300ms $ease-out;
+    }
+
+    &:after {
+      top: $bar-spacing;
+      transition: top 300ms 300ms $ease-out,
+      transform 300ms $ease-out,
+      background-color 300ms $ease-out;
+    }
+
+    &.animate {
+      background-color: rgba(255, 255, 255, 0);
+
+      &:before {
+        bottom: 0;
+        transform: rotate(-45deg);
+        transition: bottom 300ms $ease-out,
+        transform 300ms 300ms $ease-out;
+      }
+
+      &:after {
+        top: 0;
+        transform: rotate(45deg);
+        transition: top 300ms $ease-out,
+        transform 300ms 300ms $ease-out;
+      }
+    }
+  }
+}

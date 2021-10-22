@@ -1,0 +1,55 @@
+.l-books__wrapper {
+  border-top: 4px solid $color-light-gray;
+  margin-top: 100px;
+  width: 100%;
+
+  h2 {
+    font-weight: $bold;
+    @include font-size(32px);
+    letter-spacing: -0.02em;
+    color: $color-primary;
+    line-height: 100%;
+    margin-top: 53px;
+  }
+}
+
+.l-books__wrapper
+
+.l-books {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.l-books__item {
+  width: 25%;
+
+  h2 {
+    font-weight: $bold;
+    @include font-size(18px);
+    line-height: 21px;
+    letter-spacing: -0.01em;
+    color: $color-gray;
+    margin: 0;
+  }
+  h3 {
+    font-weight: $bold;
+    @include font-size(14px);
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: $color-gray;
+    margin: 0;
+  }
+}
+
+.l-books__item__img {
+  margin: 0;
+  font-size: 0;
+  margin-bottom: 25px;
+
+  a {}
+  img {
+      width: 194px;
+      height: 280px;
+  }
+}

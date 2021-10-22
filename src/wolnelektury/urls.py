@@ -29,6 +29,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
+    path('eksperymenty/', include('experiments.urls')),
     path('katalog/', include('catalogue.urls')),
     path('opds/', include('opds.urls')),
     path('sugestia/', include('suggest.urls')),

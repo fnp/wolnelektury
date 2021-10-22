@@ -288,13 +288,15 @@ def book_detail(request, slug):
 
     return render(
         request,
-        'catalogue/book_detail.html',
+        'catalogue/2021/book_detail.html' if request.EXPERIMENTS['layout'] == 'new' else 'catalogue/book_detail.html',
         {
             'book': book,
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),
             'active_menu_item': 'books',
             'club_form': ScheduleForm() if book.preview else None,
             'club': Club.objects.first() if book.preview else None,
+
+            'EXPERIMENTS_SWITCHABLE_layout': True,
         })
 
 

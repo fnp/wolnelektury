@@ -1,0 +1,52 @@
+.l-author {
+  display: flex;
+  padding: 60px;
+  margin-top: 100px;
+  justify-content: space-between;
+  border: 8px solid $color-light-gray;
+}
+
+.l-author__info {
+  max-width: 755px;
+
+  h3 {
+    margin: 0;
+    @include font-size(32px);
+    letter-spacing: -0.02em;
+    color: $color-primary;
+    font-weight: $bold;
+    line-height: 100%;
+  }
+  p, dl, ul {
+    font-weight: $regular;
+    @include font-size(18px);
+    letter-spacing: -0.005em;
+    color: $color-gray;
+    line-height: 166%;
+    font-size: 18px;
+  }
+
+  ul.meta {
+      list-style: none;
+      margin: 1em 0 0 0;
+      padding: 0;
+      text-align: right;
+      
+  }
+  dt {
+      float: left;
+  }
+  
+}
+
+.l-author__photo {
+  margin: 0;
+  img {}
+  figcaption {
+    font-weight: 500;
+    @include font-size(14px);
+    line-height: 140%;
+    letter-spacing: 0.0015em;
+    color: $color-gray;
+  }
+}
