@@ -1,6 +1,6 @@
 -i https://py.mdrn.pl/simple/
 
-django-debug-toolbar<1.10
+django-debug-toolbar==3.2.2
 django-debug-toolbar-template-timings
 sphinx
 pyinotify
