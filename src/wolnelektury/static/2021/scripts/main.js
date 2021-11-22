@@ -27,3 +27,24 @@
     }
   });
 })();
+
+// Ebook/Audiobook Btns
+(function() {
+  let button = $('.c-media__btn button');
+  let closeButton = $('.c-media__popup__close');
+
+  button.on('click', function () {
+    let target = $(this).attr('id');
+    $('[data-popup=' + target).addClass('is-open');
+  });
+
+  closeButton.on('click', function() {
+    $(this).closest('.c-media__popup').removeClass('is-open');
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode === 27) {
+      $('.c-media__popup').removeClass('is-open');
+    }
+  });
+})();

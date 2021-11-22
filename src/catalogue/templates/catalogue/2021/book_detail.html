@@ -147,9 +147,7 @@
           <div class="c-media">
             <div class="c-media__actions">
               <div class="c-media__btn">
-                <div class="l-button l-button--media">
-                  pobierz audiobook
-                </div>
+                <button class="l-button l-button--media" id="audiobook">pobierz audiobook</button>
                 <ul>
                   <li>mp3</li>
                   <li>ogg</li>
@@ -157,9 +155,7 @@
                 </ul>
               </div>
               <div class="c-media__btn">
-                <div class="l-button l-button--media">
-                  pobierz książkę
-                </div>
+                <button class="l-button l-button--media" id="ebook">pobierz książkę</button>
                 <ul>
                   <li>PDF</li>
                   <li>epub</li>
@@ -191,6 +187,113 @@
                   <span></span>
                   <time class="c-player__length">1h 20m</time>
                 </div>
+              </div>
+            </div>
+            <div class="c-media__popup" data-popup="ebook">
+              <div class="c-media__popup__box">
+                <div class="c-media__popup__box__lead">
+                  <h2>Pobieranie e-booka</h2>
+                  <p>Wybierz wersję dla siebie:</p>
+                </div>
+                <div class="c-media__popup__box__items">
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>.pdf</h3>
+                      <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">.pdf</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>.epub</h3>
+                      <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">.epub</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>.mobi</h3>
+                      <p>Natywny format dla czytnika Amazon Kindle.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">.mobi</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>synchrobook (epub3)</h3>
+                      <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>inne formaty</h3>
+                      <ul>
+                        <li><a href="#">plik tekstowy (.txt)</a></li>
+                        <li><a href="#">FictionBook</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <button class="c-media__popup__close">
+                  <img src="{% static '2021/images/close.svg' %}" alt="Zamknij">
+                </button>
+              </div>
+            </div>
+            <div class="c-media__popup" data-popup="audiobook">
+              <div class="c-media__popup__box">
+                <div class="c-media__popup__box__lead">
+                  <h2>Pobieranie audiobooka</h2>
+                  <p>Wybierz wersję dla siebie:</p>
+                </div>
+                <div class="c-media__popup__box__items">
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>.mp3</h3>
+                      <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">.mp3</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>OggVorbis</h3>
+                      <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">.ogg</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>DAISY</h3>
+                      <p>Format dla osób z dysfunkcjami czytania.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">DAISY</a>
+                    </div>
+                  </div>
+                  <div class="c-media__popup__box__item">
+                    <div>
+                      <h3>synchrobook</h3>
+                      <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
+                    </div>
+                    <div>
+                      <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                    </div>
+                  </div>
+                </div>
+                <button class="c-media__popup__close">
+                  <img src="{% static '2021/images/close.svg' %}" alt="Zamknij">
+                </button>
               </div>
             </div>
           </div>

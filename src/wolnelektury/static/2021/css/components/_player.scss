@@ -17,8 +17,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all $ease-dynamic 350ms;
 
-  img {}
+  &:hover {
+    background: darken($color-primary, 3%);
+    border-color: darken($color-primary, 3%);
+  }
 }
 
 .c-player__timeline {

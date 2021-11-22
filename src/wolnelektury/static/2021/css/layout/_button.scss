@@ -10,11 +10,17 @@
     padding: 19px 20px;
     cursor: pointer;
     transition: all $ease-dynamic 350ms;
+    background-color: $color-white;
+    outline: 0;
 
     &:hover,
     &.l-button--media--full {
       color: $color-white;
       background: $color-primary;
+      &:hover {
+        background: darken($color-primary, 3%);
+        border-color: darken($color-primary, 3%);
+      }
     }
   }
 }
