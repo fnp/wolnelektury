@@ -147,36 +147,43 @@
           <div class="c-media">
             <div class="c-media__actions">
               <div class="c-media__btn">
-                <button class="l-button l-button--media" id="audiobook">pobierz audiobook</button>
-                <ul>
-                  <li>mp3</li>
-                  <li>ogg</li>
-                  <li>DAISY</li>
-                </ul>
+                {% if book.has_mp3_file %}
+                  <button class="l-button l-button--media" id="audiobook">pobierz audiobook</button>
+                  <ul>
+                    <li><a href="{% url 'download_zip_mp3' book.slug %}">mp3</a></li>
+                    {% if book.has_ogg_file %}
+                      <li><a href="{% url 'download_zip_ogg' book.slug %}">ogg</a></li>
+                    {% endif %}
+                    {% for dsy in book.media_daisy %}
+                      <li><a href="{{ dsy.file.url }}">DAISY</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               </div>
               <div class="c-media__btn">
                 <button class="l-button l-button--media" id="ebook">pobierz książkę</button>
                 <ul>
-                  <li>PDF</li>
-                  <li>epub</li>
-                  <li>mobi</li>
+                  {% if book.pdf_file %}<li><a href="{{ book.pdf_url }}">PDF</a</li>{% endif %}
+                  {% if book.epub_file %}<li><a href="{{ book.epub_url }}">epub</a></li>{% endif %}
+                  {% if book.mobi_file %}<li><a href="{{ book.mobi_url }}">mobi</a></li>{% endif %}
                 </ul>
               </div>
               <div class="c-media__btn">
-                {#% if book.get_first_text %#}
-                  <a href="{#% url 'book_text' book.get_first_text.slug %#}">
-                    <div class="l-button l-button--media l-button--media--full">
-                      czytaj
-                    </div>
-                  </a>
-                  <!-- ul>
-                    <li>PDF</li>
-                    <li>epub</li>
-                    <li>mobi</li>
-                  </ul-->
-                {#% endif %#}
+                {% if book.get_first_text %}
+                <a href="{% url 'book_text' book.get_first_text.slug %}">
+                  <div class="l-button l-button--media l-button--media--full">
+                    czytaj
+                  </div>
+                </a>
+                <!-- ul>
+                     <li>PDF</li>
+                     <li>epub</li>
+                     <li>mobi</li>
+                     </ul-->
+                {% endif %}
               </div>
             </div>
+            {% if book.has_mp3_file %}
             <div class="c-media__player">
               <h2>słuchaj audiobooka w naszym serwisie</h2>
               <div class="c-player">
@@ -189,6 +196,7 @@
                 </div>
               </div>
             </div>
+            {% endif %}
             <div class="c-media__popup" data-popup="ebook">
               <div class="c-media__popup__box">
                 <div class="c-media__popup__box__lead">
@@ -196,48 +204,56 @@
                   <p>Wybierz wersję dla siebie:</p>
                 </div>
                 <div class="c-media__popup__box__items">
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>.pdf</h3>
-                      <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
+                  {% if book.pdf_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>.pdf</h3>
+                        <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
+                      </div>
+                      <div>
+                        <a href="{{ book.pdf_url }}" class="l-button l-button--media l-button--media--full">.pdf</a>
+                      </div>
                     </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">.pdf</a>
+                  {% endif %}
+                  {% if book.epub_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>.epub</h3>
+                        <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
+                      </div>
+                      <div>
+                        <a href="{{ book.epub_url }}" class="l-button l-button--media l-button--media--full">.epub</a>
+                      </div>
                     </div>
-                  </div>
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>.epub</h3>
-                      <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
+                  {% endif %}
+                  {% if book.mobi_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>.mobi</h3>
+                        <p>Natywny format dla czytnika Amazon Kindle.</p>
+                      </div>
+                      <div>
+                        <a href="{{ book.mobi_url }}" class="l-button l-button--media l-button--media--full">.mobi</a>
+                      </div>
                     </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">.epub</a>
+                  {% endif %}
+                  {% if book.synchrobook_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>synchrobook (epub3)</h3>
+                        <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
+                      </div>
+                      <div>
+                        <a href="{{ book.synchrobook_url }}" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                      </div>
                     </div>
-                  </div>
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>.mobi</h3>
-                      <p>Natywny format dla czytnika Amazon Kindle.</p>
-                    </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">.mobi</a>
-                    </div>
-                  </div>
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>synchrobook (epub3)</h3>
-                      <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
-                    </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
-                    </div>
-                  </div>
+                  {% endif %}
                   <div class="c-media__popup__box__item">
                     <div>
                       <h3>inne formaty</h3>
                       <ul>
-                        <li><a href="#">plik tekstowy (.txt)</a></li>
-                        <li><a href="#">FictionBook</a></li>
+                        <li><a href="{{ book.txt_url }}">plik tekstowy (.txt)</a></li>
+                        <li><a href="{{ book.fb2_url }}">FictionBook</a></li>
                       </ul>
                     </div>
                   </div>
@@ -247,55 +263,65 @@
                 </button>
               </div>
             </div>
-            <div class="c-media__popup" data-popup="audiobook">
-              <div class="c-media__popup__box">
-                <div class="c-media__popup__box__lead">
-                  <h2>Pobieranie audiobooka</h2>
-                  <p>Wybierz wersję dla siebie:</p>
+            {% if book.has_mp3_file %}
+              <div class="c-media__popup" data-popup="audiobook">
+                <div class="c-media__popup__box">
+                  <div class="c-media__popup__box__lead">
+                    <h2>Pobieranie audiobooka</h2>
+                    <p>Wybierz wersję dla siebie:</p>
+                  </div>
+                  <div class="c-media__popup__box__items">
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>.mp3</h3>
+                        <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
+                      </div>
+                      <div>
+                        <a href="{% url 'download_zip_mp3' book.slug %}" class="l-button l-button--media l-button--media--full">.mp3</a>
+                      </div>
+                    </div>
+                    {% if book.has_ogg_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>OggVorbis</h3>
+                        <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
+                      </div>
+                      <div>
+                        <a href="{% url 'download_zip_ogg' book.slug %}" class="l-button l-button--media l-button--media--full">.ogg</a>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if book.has_daisy_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>DAISY</h3>
+                        <p>Format dla osób z dysfunkcjami czytania.</p>
+                      </div>
+                      <div>
+                        {% for dsy in book.media_daisy %}
+                          <a href="{{ dsy.file.url }}" class="l-button l-button--media l-button--media--full">DAISY</a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if book.synchrobook_file %}
+                    <div class="c-media__popup__box__item">
+                      <div>
+                        <h3>synchrobook</h3>
+                        <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
+                      </div>
+                      <div>
+                        <a href="{{ book.synchrobook_url }}" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <button class="c-media__popup__close">
+                    <img src="{% static '2021/images/close.svg' %}" alt="Zamknij">
+                  </button>
                 </div>
-                <div class="c-media__popup__box__items">
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>.mp3</h3>
-                      <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
-                    </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">.mp3</a>
-                    </div>
-                  </div>
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>OggVorbis</h3>
-                      <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
-                    </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">.ogg</a>
-                    </div>
-                  </div>
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>DAISY</h3>
-                      <p>Format dla osób z dysfunkcjami czytania.</p>
-                    </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">DAISY</a>
-                    </div>
-                  </div>
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>synchrobook</h3>
-                      <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
-                    </div>
-                    <div>
-                      <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
-                    </div>
-                  </div>
-                </div>
-                <button class="c-media__popup__close">
-                  <img src="{% static '2021/images/close.svg' %}" alt="Zamknij">
-                </button>
               </div>
-            </div>
+            {% endif %}
           </div>
 
           {{ book.abstract|safe }}

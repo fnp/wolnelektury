@@ -407,6 +407,10 @@ class Book(models.Model):
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
 
+    @property
+    def media_daisy(self):
+        return self.get_media('daisy')
+    
     def get_audiobooks(self):
         ogg_files = {}
         for m in self.media.filter(type='ogg').order_by().iterator():
