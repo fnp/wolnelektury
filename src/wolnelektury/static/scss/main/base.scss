@@ -21,6 +21,10 @@ body {
   @include size(font-size, 15px);
 }
 
+p {
+    margin: 1em 0;
+}
+
 a {
   color: #0d7e85;
   text-decoration: none;
