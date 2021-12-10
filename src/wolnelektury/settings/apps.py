@@ -37,8 +37,8 @@ INSTALLED_APPS_OUR = [
     'isbn',
     'paypal',
     'push',
-    'club.apps.ClubConfig',
-    'redirects.apps.RedirectsConfig',
+    'club',
+    'redirects',
 ]
 
 INSTALLED_APPS_CONTRIB = [

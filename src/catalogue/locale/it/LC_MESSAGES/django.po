@@ -20,271 +20,271 @@ msgstr ""
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 
-#: catalogue/constants.py:13
+#: catalogue/constants.py:14
 msgid "Free Art License 1.3"
 msgstr ""
 
-#: catalogue/constants.py:58
+#: catalogue/constants.py:60
 #, fuzzy
 #| msgid "author"
 msgid "authors"
 msgstr "autore"
 
-#: catalogue/constants.py:59
+#: catalogue/constants.py:61
 #, fuzzy
 #| msgid "epoch"
 msgid "epochs"
 msgstr "epoca"
 
-#: catalogue/constants.py:60
+#: catalogue/constants.py:62
 #, fuzzy
 #| msgid "kind"
 msgid "kinds"
 msgstr "categoria"
 
-#: catalogue/constants.py:61
+#: catalogue/constants.py:63
 #, fuzzy
 #| msgid "genre"
 msgid "genres"
 msgstr "genere"
 
-#: catalogue/constants.py:62
+#: catalogue/constants.py:64
 #, fuzzy
 #| msgid "theme"
 msgid "themes"
 msgstr "tema"
 
-#: catalogue/constants.py:63
+#: catalogue/constants.py:65
 msgid "sets"
 msgstr ""
 
-#: catalogue/constants.py:64
+#: catalogue/constants.py:66
 msgid "things"
 msgstr ""
 
-#: catalogue/constants.py:68
+#: catalogue/constants.py:70
 #, fuzzy
 #| msgid "author"
 msgid "All authors"
 msgstr "autore"
 
-#: catalogue/constants.py:69
+#: catalogue/constants.py:71
 #, fuzzy
 #| msgid "epoch"
 msgid "All epochs"
 msgstr "epoca"
 
-#: catalogue/constants.py:70
+#: catalogue/constants.py:72
 #, fuzzy
 #| msgid "kind"
 msgid "All kinds"
 msgstr "categoria"
 
-#: catalogue/constants.py:71
+#: catalogue/constants.py:73
 #, fuzzy
 #| msgid "genre"
 msgid "All genres"
 msgstr "genere"
 
-#: catalogue/constants.py:72
+#: catalogue/constants.py:74
 #, fuzzy
 #| msgid "theme"
 msgid "All themes"
 msgstr "tema"
 
-#: catalogue/constants.py:73
+#: catalogue/constants.py:75
 #, fuzzy
 #| msgid "collections"
 msgid "All sets"
 msgstr " raccolte"
 
-#: catalogue/constants.py:74
+#: catalogue/constants.py:76
 #, fuzzy
 #| msgid "collections"
 msgid "All things"
 msgstr " raccolte"
 
-#: catalogue/forms.py:28
+#: catalogue/forms.py:29
 msgid "Please supply an XML."
 msgstr "Si prega di fornire un XML."
 
-#: catalogue/forms.py:48
+#: catalogue/forms.py:51
 msgid "Don't show footnotes"
 msgstr "Non mostrare le note"
 
-#: catalogue/forms.py:49
+#: catalogue/forms.py:52
 msgid "Don't disply themes"
 msgstr "Non visualizzare i temi"
 
-#: catalogue/forms.py:50
+#: catalogue/forms.py:53
 msgid "Don't use our custom font"
 msgstr "Non utilizzare il nostro font personalizzato"
 
-#: catalogue/forms.py:51
+#: catalogue/forms.py:54
 msgid "Without cover"
 msgstr ""
 
-#: catalogue/forms.py:52
+#: catalogue/forms.py:55
 #, fuzzy
 #| msgid "Table of contents"
 msgid "Without table of contents"
 msgstr "Indice"
 
-#: catalogue/forms.py:55
+#: catalogue/forms.py:58
 msgid "Leading"
 msgstr "Interlinea"
 
-#: catalogue/forms.py:56
+#: catalogue/forms.py:59
 msgid "Normal leading"
 msgstr "Interlinea normale"
 
-#: catalogue/forms.py:57
+#: catalogue/forms.py:60
 msgid "One and a half leading"
 msgstr " Interlinea 1,5"
 
-#: catalogue/forms.py:58
+#: catalogue/forms.py:61
 msgid "Double leading"
 msgstr "Interlinea doppia"
 
-#: catalogue/forms.py:60
+#: catalogue/forms.py:63
 msgid "Font size"
 msgstr "Grandezza del carattere"
 
-#: catalogue/forms.py:61
+#: catalogue/forms.py:64
 msgid "Default"
 msgstr "Predefinito"
 
-#: catalogue/forms.py:62
+#: catalogue/forms.py:65
 msgid "Big"
 msgstr "Grande"
 
-#: catalogue/forms.py:63
+#: catalogue/forms.py:66
 msgid "Bigger"
 msgstr ""
 
-#: catalogue/forms.py:85
+#: catalogue/forms.py:88
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: catalogue/models/book.py:57 catalogue/models/collection.py:14
+#: catalogue/models/book.py:58 catalogue/models/collection.py:14
 msgid "title"
 msgstr "titolo"
 
-#: catalogue/models/book.py:58 catalogue/models/tag.py:58
+#: catalogue/models/book.py:59 catalogue/models/tag.py:58
 msgid "sort key"
 msgstr "chiave di ordinamento"
 
-#: catalogue/models/book.py:60
+#: catalogue/models/book.py:61
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Risultati per autore"
 
-#: catalogue/models/book.py:61 catalogue/models/book.py:62
+#: catalogue/models/book.py:62 catalogue/models/book.py:63
 #: catalogue/models/collection.py:15 catalogue/models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
-#: catalogue/models/book.py:63
+#: catalogue/models/book.py:64
 msgid "language code"
 msgstr "codice della lingua"
 
-#: catalogue/models/book.py:64 catalogue/models/book.py:391
+#: catalogue/models/book.py:65 catalogue/models/book.py:392
 #: catalogue/models/collection.py:16 catalogue/models/tag.py:61
 #: catalogue/models/tag.py:135
 msgid "description"
 msgstr "descrizione"
 
-#: catalogue/models/book.py:65
+#: catalogue/models/book.py:66
 msgid "abstract"
 msgstr ""
 
-#: catalogue/models/book.py:66 catalogue/models/bookmedia.py:40
+#: catalogue/models/book.py:67 catalogue/models/bookmedia.py:40
 #: catalogue/models/tag.py:71 catalogue/models/tag.py:72
 msgid "creation date"
 msgstr "data di creazione"
 
-#: catalogue/models/book.py:67
+#: catalogue/models/book.py:68
 #, fuzzy
 #| msgid "creation date"
 msgid "change date"
 msgstr "data di creazione"
 
-#: catalogue/models/book.py:68
+#: catalogue/models/book.py:69
 msgid "parent number"
 msgstr "numero del genitore"
 
-#: catalogue/models/book.py:69 catalogue/models/bookmedia.py:43
+#: catalogue/models/book.py:70 catalogue/models/bookmedia.py:43
 msgid "extra information"
 msgstr " ulteriori informazioni"
 
-#: catalogue/models/book.py:72
+#: catalogue/models/book.py:73
 msgid "print on demand"
 msgstr ""
 
-#: catalogue/models/book.py:73 catalogue/models/collection.py:22
+#: catalogue/models/book.py:74 catalogue/models/collection.py:23
 msgid "recommended"
 msgstr ""
 
-#: catalogue/models/book.py:74
+#: catalogue/models/book.py:75
 msgid "audio length"
 msgstr ""
 
-#: catalogue/models/book.py:75
+#: catalogue/models/book.py:76
 msgid "preview"
 msgstr ""
 
-#: catalogue/models/book.py:76
+#: catalogue/models/book.py:77
 msgid "preview until"
 msgstr ""
 
-#: catalogue/models/book.py:78
+#: catalogue/models/book.py:79
 msgid "findable"
 msgstr ""
 
-#: catalogue/models/book.py:82
+#: catalogue/models/book.py:83
 msgid "cover"
 msgstr "copertina"
 
-#: catalogue/models/book.py:89
+#: catalogue/models/book.py:90
 msgid "cover thumbnail"
 msgstr ""
 
-#: catalogue/models/book.py:95
+#: catalogue/models/book.py:96
 msgid "cover thumbnail for mobile app"
 msgstr ""
 
-#: catalogue/models/book.py:101
+#: catalogue/models/book.py:102
 msgid "cover for mobile app"
 msgstr ""
 
-#: catalogue/models/book.py:107
+#: catalogue/models/book.py:108
 msgid "cover for Ebookpoint"
 msgstr ""
 
-#: catalogue/models/book.py:136 catalogue/models/collection.py:19
+#: catalogue/models/book.py:137 catalogue/models/collection.py:19
 msgid "book"
 msgstr "libro"
 
-#: catalogue/models/book.py:137
+#: catalogue/models/book.py:138
 msgid "books"
 msgstr "Libri"
 
-#: catalogue/models/book.py:538
+#: catalogue/models/book.py:564
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Il libro \"%s\" non esiste."
 
-#: catalogue/models/book.py:554
+#: catalogue/models/book.py:580
 #, python-format
 msgid "Book %s already exists"
 msgstr "Il libro %s esiste già"
 
-#: catalogue/models/book.py:853
+#: catalogue/models/book.py:883
 msgid "This work needs modernisation"
 msgstr ""
 
-#: catalogue/models/book.py:932 catalogue/models/bookmedia.py:33
+#: catalogue/models/book.py:962 catalogue/models/bookmedia.py:33
 #, python-format
 msgid "%s file"
 msgstr "i %s di file"
@@ -328,11 +328,17 @@ msgstr "categoria"
 msgid "picture"
 msgstr ""
 
-#: catalogue/models/collection.py:27
+#: catalogue/models/collection.py:20
+#, fuzzy
+#| msgid "Listen"
+msgid "listed"
+msgstr "Ascolta"
+
+#: catalogue/models/collection.py:28
 msgid "collection"
 msgstr "raccolta"
 
-#: catalogue/models/collection.py:28
+#: catalogue/models/collection.py:29
 msgid "collections"
 msgstr " raccolte"
 
@@ -407,7 +413,7 @@ msgid "tags"
 msgstr "i tag"
 
 #: catalogue/templates/catalogue/book_detail.html:24
-#: catalogue/templates/catalogue/book_text.html:34
+#: catalogue/templates/catalogue/book_text.html:35
 #, fuzzy
 #| msgid "Other resources"
 msgid "Other versions"
@@ -418,8 +424,8 @@ msgid "See also"
 msgstr "Vedi anche"
 
 #: catalogue/templates/catalogue/book_detail.html:41
-#: catalogue/templates/catalogue/book_text.html:47
-#: catalogue/templates/catalogue/book_text.html:66
+#: catalogue/templates/catalogue/book_text.html:48
+#: catalogue/templates/catalogue/book_text.html:67
 #: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr "Temi"
@@ -475,65 +481,28 @@ msgstr "tema"
 msgid "in work "
 msgstr "in corso"
 
-#: catalogue/templates/catalogue/book_info.html:7
-msgid "This work is licensed under:"
-msgstr "Questa opera è pubblicata su licenza:"
-
-#: catalogue/templates/catalogue/book_info.html:10
-#, fuzzy
-#| msgid ""
-#| "This work isn't covered by copyright and is part of the\n"
-#| "        public domain, which means it can be freely used, published and\n"
-#| "        distributed. If there are any additional copyrighted materials\n"
-#| "        provided with this work (such as annotations, motifs etc.), "
-#| "those\n"
-#| "        materials are licensed under the \n"
-#| "        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/"
-#| "\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
-#| "        license."
-msgid ""
-"This work isn't covered by copyright and is part of the\n"
-"    public domain, which means it can be freely used, published and\n"
-"    distributed. If there are any additional copyrighted materials\n"
-"    provided with this work (such as annotations, motifs etc.), those\n"
-"    materials are licensed under the\n"
-"    <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
-"Commons Attribution-ShareAlike 3.0</a>\n"
-"    license."
-msgstr ""
-"Questa opera non è sotto il diritto d'autore e fa parte del\n"
-"pubblico dominio, il che significa che è possibile pubblicarla \n"
-"e distribuirla liberamente. Se un'opera è completata con i materiali "
-"aggiuntivi \n"
-"(le annotazioni, i motivi letterari ecc.) che sono protette dal diritto "
-"d'autore, quei\n"
-"materiali aggiuntivi sono disponibili secondo la \n"
-"  <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
-"Commons Attribution-ShareAlike 3.0</a>\n"
-"licenza."
-
-#: catalogue/templates/catalogue/book_info.html:21
+#: catalogue/templates/catalogue/book_info.html:28
 #, fuzzy
 msgid "Resource prepared based on:"
 msgstr "Il testo preparato e basato su:"
 
-#: catalogue/templates/catalogue/book_info.html:31
+#: catalogue/templates/catalogue/book_info.html:38
 msgid "Edited by:"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_info.html:33
+#: catalogue/templates/catalogue/book_info.html:40
 msgid "Edited and annotated by:"
 msgstr "Curato ed elaborato da:"
 
-#: catalogue/templates/catalogue/book_info.html:41
+#: catalogue/templates/catalogue/book_info.html:48
 msgid "Publisher:"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_info.html:48
+#: catalogue/templates/catalogue/book_info.html:55
 msgid "Publication funded by:"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_info.html:55
+#: catalogue/templates/catalogue/book_info.html:62
 msgid "Cover image by:"
 msgstr ""
 
@@ -592,63 +561,66 @@ msgstr ""
 msgid "Print on demand –"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:120
-#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:404
-msgid "Download"
-msgstr "Scarica"
+#: catalogue/templates/catalogue/book_short.html:121
+#, fuzzy
+#| msgid "Download as"
+msgid "Download an ebook"
+msgstr "Scarica come"
 
-#: catalogue/templates/catalogue/book_short.html:134
-msgid "more"
-msgstr ""
+#: catalogue/templates/catalogue/book_short.html:140
+#, fuzzy
+#| msgid "Download as"
+msgid "Download audiobook"
+msgstr "Scarica come"
 
-#: catalogue/templates/catalogue/book_short.html:145
-msgid "less"
-msgstr ""
-
-#: catalogue/templates/catalogue/book_short.html:153
+#: catalogue/templates/catalogue/book_short.html:152
 msgid "For now this work is only available for our subscribers."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:41
+#: catalogue/templates/catalogue/book_text.html:24
+msgid "Click to download"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:42
 msgid "Table of contents"
 msgstr "Indice"
 
-#: catalogue/templates/catalogue/book_text.html:53
+#: catalogue/templates/catalogue/book_text.html:54
 msgid "Edit. note"
 msgstr "Modifica. nota"
 
-#: catalogue/templates/catalogue/book_text.html:59
+#: catalogue/templates/catalogue/book_text.html:60
 msgid "Infobox"
 msgstr "Infobox"
 
-#: catalogue/templates/catalogue/book_text.html:64
+#: catalogue/templates/catalogue/book_text.html:65
 msgid "Numbering"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:68
+#: catalogue/templates/catalogue/book_text.html:69
 #, fuzzy
 #| msgid "Don't show footnotes"
 msgid "Footnotes"
 msgstr "Non mostrare le note"
 
-#: catalogue/templates/catalogue/book_text.html:70
+#: catalogue/templates/catalogue/book_text.html:71
 msgid "References"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:96
+#: catalogue/templates/catalogue/book_text.html:97
 #: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:97
+#: catalogue/templates/catalogue/book_text.html:98
 msgid "Please wait..."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:152
+#: catalogue/templates/catalogue/book_text.html:153
 msgid "Other versions of the book"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:153
+#: catalogue/templates/catalogue/book_text.html:154
 msgid "Close the other version"
 msgstr ""
 
@@ -689,27 +661,19 @@ msgstr " raccolte"
 msgid "Art"
 msgstr "Artista"
 
-#: catalogue/templates/catalogue/collection_box.html:4
-#, fuzzy
-msgid "Collection"
-msgstr " raccolte"
-
-#: catalogue/templates/catalogue/collection_box.html:14
-#, python-format
-msgid "and one more"
-msgid_plural "and %(c)s more"
-msgstr[0] ""
-msgstr[1] ""
-
 #: catalogue/templates/catalogue/collections.html:16
 #, fuzzy
 #| msgid "collections"
 msgid "All collections"
 msgstr " raccolte"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:403
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:408
 msgid "Download custom PDF"
 msgstr "Scarica PDF personalizzato"
+
+#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:409
+msgid "Download"
+msgstr "Scarica"
 
 #: catalogue/templates/catalogue/daisy_list.html:7
 #: catalogue/templates/catalogue/daisy_list.html:15
@@ -981,13 +945,13 @@ msgstr ""
 msgid "Loading"
 msgstr "Interlinea"
 
-#: catalogue/templatetags/catalogue_tags.py:504
+#: catalogue/templatetags/catalogue_tags.py:521
 #, fuzzy
 #| msgid "language code"
 msgid "vulgar language"
 msgstr "codice della lingua"
 
-#: catalogue/views.py:354
+#: catalogue/views.py:359
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -998,14 +962,53 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: catalogue/views.py:359
+#: catalogue/views.py:364
 msgid "Book imported successfully"
 msgstr "Libro scaricato con successo"
 
-#: catalogue/views.py:360
+#: catalogue/views.py:365
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Errore dell'importazione del file: %r"
+
+#~ msgid "This work is licensed under:"
+#~ msgstr "Questa opera è pubblicata su licenza:"
+
+#, fuzzy
+#~| msgid ""
+#~| "This work isn't covered by copyright and is part of the\n"
+#~| "        public domain, which means it can be freely used, published and\n"
+#~| "        distributed. If there are any additional copyrighted materials\n"
+#~| "        provided with this work (such as annotations, motifs etc.), "
+#~| "those\n"
+#~| "        materials are licensed under the \n"
+#~| "        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/"
+#~| "\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
+#~| "        license."
+#~ msgid ""
+#~ "This work isn't covered by copyright and is part of the\n"
+#~ "    public domain, which means it can be freely used, published and\n"
+#~ "    distributed. If there are any additional copyrighted materials\n"
+#~ "    provided with this work (such as annotations, motifs etc.), those\n"
+#~ "    materials are licensed under the\n"
+#~ "    <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
+#~ "Commons Attribution-ShareAlike 3.0</a>\n"
+#~ "    license."
+#~ msgstr ""
+#~ "Questa opera non è sotto il diritto d'autore e fa parte del\n"
+#~ "pubblico dominio, il che significa che è possibile pubblicarla \n"
+#~ "e distribuirla liberamente. Se un'opera è completata con i materiali "
+#~ "aggiuntivi \n"
+#~ "(le annotazioni, i motivi letterari ecc.) che sono protette dal diritto "
+#~ "d'autore, quei\n"
+#~ "materiali aggiuntivi sono disponibili secondo la \n"
+#~ "  <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
+#~ "Commons Attribution-ShareAlike 3.0</a>\n"
+#~ "licenza."
+
+#, fuzzy
+#~ msgid "Collection"
+#~ msgstr " raccolte"
 
 #, fuzzy
 #~| msgid "parent number"
@@ -1057,9 +1060,6 @@ msgstr "Errore dell'importazione del file: %r"
 
 #~ msgid "Latest Ogg Vorbis audiobooks"
 #~ msgstr "Ultimi audiolibri Ogg Vorbis"
-
-#~ msgid "Listen"
-#~ msgstr "Ascolta"
 
 #~ msgid "Download all audiobooks for this book"
 #~ msgstr "Scarica tutti gli audiolibri per questo libro."

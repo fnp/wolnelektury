@@ -8,7 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:21 models.py:37
+#: sponsors/models.py:20 sponsors/models.py:36
 msgid "name"
 msgstr ""
 
-#: models.py:22
+#: sponsors/models.py:21
 msgid "description"
 msgstr ""
 
-#: models.py:23
+#: sponsors/models.py:22
 msgid "logo"
 msgstr ""
 
-#: models.py:24
+#: sponsors/models.py:23
 msgid "url"
 msgstr ""
 
-#: models.py:38
+#: sponsors/models.py:37
 msgid "sponsors"
 msgstr ""

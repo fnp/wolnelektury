@@ -360,7 +360,7 @@ msgstr ""
 
 #: funding/templates/funding/includes/funding.html:15
 #: funding/templates/funding/offer_detail.html:76
-#: funding/templates/funding/thanks.html:28
+#: funding/templates/funding/thanks.html:27
 #: funding/templates/funding/wlfund.html:18
 msgid "Learn more"
 msgstr ""
@@ -412,7 +412,7 @@ msgid ""
 msgstr ""
 
 #: funding/templates/funding/includes/offer_status.html:24
-#: funding/templates/funding/thanks.html:17
+#: funding/templates/funding/thanks.html:16
 msgid "Full amount was successfully raised!"
 msgstr ""
 
@@ -458,7 +458,7 @@ msgid "Donate!"
 msgstr ""
 
 #: funding/templates/funding/offer_detail.html:79
-#: funding/templates/funding/thanks.html:35
+#: funding/templates/funding/thanks.html:34
 msgid "Tell your friends!"
 msgstr ""
 
@@ -509,18 +509,14 @@ msgstr ""
 msgid "Thank you!"
 msgstr ""
 
-#: funding/templates/funding/thanks.html:14
-msgid "We will contact you if you qualify for perks."
-msgstr ""
-
-#: funding/templates/funding/thanks.html:18
+#: funding/templates/funding/thanks.html:17
 #, python-format
 msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
 "      publishing the book %(b)s in multiple formats."
 msgstr ""
 
-#: funding/templates/funding/thanks.html:21
+#: funding/templates/funding/thanks.html:20
 #, python-format
 msgid ""
 "If the full amount needed is raised,\n"
@@ -528,15 +524,15 @@ msgid ""
 "      publishing the book %(b)s in multiple formats."
 msgstr ""
 
-#: funding/templates/funding/thanks.html:32
+#: funding/templates/funding/thanks.html:31
 msgid "Go back to the current fundraiser."
 msgstr ""
 
-#: funding/templates/funding/thanks.html:36
+#: funding/templates/funding/thanks.html:35
 msgid "I support Wolne Lektury."
 msgstr ""
 
-#: funding/templates/funding/thanks.html:39
+#: funding/templates/funding/thanks.html:38
 msgid "Vote for a book for the next fundraiser"
 msgstr ""
 

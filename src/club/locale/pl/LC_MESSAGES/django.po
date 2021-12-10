@@ -31,11 +31,11 @@ msgstr "harmonogram przedawniony"
 msgid "Club"
 msgstr "Towarzystwo"
 
-#: club/forms.py:52 club/models.py:376
+#: club/forms.py:52
 msgid "first name"
 msgstr "imię"
 
-#: club/forms.py:53 club/models.py:377
+#: club/forms.py:53
 msgid "last name"
 msgstr "nazwisko"
 
@@ -43,11 +43,11 @@ msgstr "nazwisko"
 msgid "street address"
 msgstr "ulica i numer"
 
-#: club/forms.py:56 club/models.py:387
+#: club/forms.py:56
 msgid "postal code"
 msgstr "kod pocztowy"
 
-#: club/forms.py:57 club/models.py:386
+#: club/forms.py:57
 msgid "town"
 msgstr "miejscowość"
 
@@ -100,7 +100,7 @@ msgstr "email"
 msgid "membership"
 msgstr "członkostwo"
 
-#: club/models.py:65 club/models.py:394
+#: club/models.py:65
 msgid "amount"
 msgstr "kwota"
 
@@ -231,58 +231,6 @@ msgstr "ambasadorowie"
 #: club/templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"
 msgstr ""
-
-#: club/models.py:378
-msgid "sex"
-msgstr "płeć"
-
-#: club/models.py:382
-msgid "date of birth"
-msgstr "data urodzenia"
-
-#: club/models.py:383
-msgid "street"
-msgstr "ulica"
-
-#: club/models.py:384
-msgid "building"
-msgstr "numer domu"
-
-#: club/models.py:385
-msgid "flat"
-msgstr "numer mieszkania"
-
-#: club/models.py:388
-msgid "phone"
-msgstr "numer telefonu"
-
-#: club/models.py:389
-msgid "e-mail"
-msgstr "e-mail"
-
-#: club/models.py:390
-msgid "IBAN"
-msgstr "numer rachunku"
-
-#: club/models.py:391
-msgid "payment identifier"
-msgstr "identyfikator płatności"
-
-#: club/models.py:392
-msgid "agree newsletter"
-msgstr "zgoda na newsletter"
-
-#: club/models.py:393
-msgid "date"
-msgstr "data"
-
-#: club/models.py:397
-msgid "direct debit"
-msgstr "polecenie zapłaty"
-
-#: club/models.py:398
-msgid "direct debits"
-msgstr "polecenia zapłaty"
 
 #: club/payu/models.py:17 club/payu/models.py:29
 msgid "POS id"
@@ -560,6 +508,45 @@ msgid ""
 msgstr ""
 "\n"
 "Zlecasz comiesięczną płatność w wysokości %(amount)s zł. Dziękujemy!"
+
+#~ msgid "sex"
+#~ msgstr "płeć"
+
+#~ msgid "date of birth"
+#~ msgstr "data urodzenia"
+
+#~ msgid "street"
+#~ msgstr "ulica"
+
+#~ msgid "building"
+#~ msgstr "numer domu"
+
+#~ msgid "flat"
+#~ msgstr "numer mieszkania"
+
+#~ msgid "phone"
+#~ msgstr "numer telefonu"
+
+#~ msgid "e-mail"
+#~ msgstr "e-mail"
+
+#~ msgid "IBAN"
+#~ msgstr "numer rachunku"
+
+#~ msgid "payment identifier"
+#~ msgstr "identyfikator płatności"
+
+#~ msgid "agree newsletter"
+#~ msgstr "zgoda na newsletter"
+
+#~ msgid "date"
+#~ msgstr "data"
+
+#~ msgid "direct debit"
+#~ msgstr "polecenie zapłaty"
+
+#~ msgid "direct debits"
+#~ msgstr "polecenia zapłaty"
 
 #~ msgid ""
 #~ "If you leave your address, we'll be able to send you a postcard and other "

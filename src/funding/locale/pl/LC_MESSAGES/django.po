@@ -9,6 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-06-10 14:06+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,7 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.4.1\n"
-"Language-Team: \n"
 
 #: funding/admin.py:27
 msgid "payment complete"
@@ -389,7 +389,7 @@ msgstr "Wesprzyj!"
 
 #: funding/templates/funding/includes/funding.html:15
 #: funding/templates/funding/offer_detail.html:76
-#: funding/templates/funding/thanks.html:28
+#: funding/templates/funding/thanks.html:27
 #: funding/templates/funding/wlfund.html:18
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
@@ -447,7 +447,7 @@ msgstr ""
 "dostępna dla wszystkich."
 
 #: funding/templates/funding/includes/offer_status.html:24
-#: funding/templates/funding/thanks.html:17
+#: funding/templates/funding/thanks.html:16
 msgid "Full amount was successfully raised!"
 msgstr "Udało się zebrać pełną kwotę!"
 
@@ -495,7 +495,7 @@ msgid "Donate!"
 msgstr "Wpłać!"
 
 #: funding/templates/funding/offer_detail.html:79
-#: funding/templates/funding/thanks.html:35
+#: funding/templates/funding/thanks.html:34
 msgid "Tell your friends!"
 msgstr "Powiedz swoim znajomym!"
 
@@ -550,11 +550,7 @@ msgstr ""
 msgid "Thank you!"
 msgstr "Dziękujemy!"
 
-#: funding/templates/funding/thanks.html:14
-msgid "We will contact you if you qualify for perks."
-msgstr "Skontaktujemy się z Tobą w sprawie prezentów, które wybrałeś/-aś."
-
-#: funding/templates/funding/thanks.html:18
+#: funding/templates/funding/thanks.html:17
 #, python-format
 msgid ""
 "Your donation will be spent on digitizing, compiling and\n"
@@ -563,7 +559,7 @@ msgstr ""
 "Wpłacone przez Ciebie pieniądze przeznaczymy na digitalizację, opracowanie i "
 "udostępnienie książki %(b)s w bibliotece w wielu formatach."
 
-#: funding/templates/funding/thanks.html:21
+#: funding/templates/funding/thanks.html:20
 #, python-format
 msgid ""
 "If the full amount needed is raised,\n"
@@ -574,15 +570,15 @@ msgstr ""
 "przeznaczymy na digitalizację, opracowanie i udostępnienie książki %(b)s w "
 "bibliotece w wielu formatach."
 
-#: funding/templates/funding/thanks.html:32
+#: funding/templates/funding/thanks.html:31
 msgid "Go back to the current fundraiser."
 msgstr "Wróć do aktualnej zbiórki."
 
-#: funding/templates/funding/thanks.html:36
+#: funding/templates/funding/thanks.html:35
 msgid "I support Wolne Lektury."
 msgstr "Wspieram Wolne Lektury"
 
-#: funding/templates/funding/thanks.html:39
+#: funding/templates/funding/thanks.html:38
 msgid "Vote for a book for the next fundraiser"
 msgstr "Pomóż wybrać następną książkę, na którą będziemy zbierać pieniądze"
 
@@ -638,6 +634,9 @@ msgstr "Pieniądze pozostałe ze zbiórki na"
 #: funding/templates/funding/wlfund.html:58
 msgid "There are no previous fundraisers to show yet."
 msgstr "Nie ma jeszcze żadnych zakończonych zbiórek."
+
+#~ msgid "We will contact you if you qualify for perks."
+#~ msgstr "Skontaktujemy się z Tobą w sprawie prezentów, które wybrałeś/-aś."
 
 #~ msgid "due"
 #~ msgstr "data publikacji"

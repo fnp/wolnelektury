@@ -8,7 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-09 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,499 +16,493 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: constants.py:9
+#: catalogue/constants.py:9
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
 msgstr ""
 
-#: constants.py:13
+#: catalogue/constants.py:14
 msgid "Free Art License 1.3"
 msgstr ""
 
-#: constants.py:58
+#: catalogue/constants.py:60
 msgid "authors"
 msgstr ""
 
-#: constants.py:59
+#: catalogue/constants.py:61
 msgid "epochs"
 msgstr ""
 
-#: constants.py:60
+#: catalogue/constants.py:62
 msgid "kinds"
 msgstr ""
 
-#: constants.py:61
+#: catalogue/constants.py:63
 msgid "genres"
 msgstr ""
 
-#: constants.py:62
+#: catalogue/constants.py:64
 msgid "themes"
 msgstr ""
 
-#: constants.py:63
+#: catalogue/constants.py:65
 msgid "sets"
 msgstr ""
 
-#: constants.py:64
+#: catalogue/constants.py:66
 msgid "things"
 msgstr ""
 
-#: constants.py:68
+#: catalogue/constants.py:70
 msgid "All authors"
 msgstr ""
 
-#: constants.py:69
+#: catalogue/constants.py:71
 msgid "All epochs"
 msgstr ""
 
-#: constants.py:70
+#: catalogue/constants.py:72
 msgid "All kinds"
 msgstr ""
 
-#: constants.py:71
+#: catalogue/constants.py:73
 msgid "All genres"
 msgstr ""
 
-#: constants.py:72
+#: catalogue/constants.py:74
 msgid "All themes"
 msgstr ""
 
-#: constants.py:73
+#: catalogue/constants.py:75
 msgid "All sets"
 msgstr ""
 
-#: constants.py:74
+#: catalogue/constants.py:76
 msgid "All things"
 msgstr ""
 
-#: forms.py:28
+#: catalogue/forms.py:29
 msgid "Please supply an XML."
 msgstr ""
 
-#: forms.py:48
+#: catalogue/forms.py:51
 msgid "Don't show footnotes"
 msgstr ""
 
-#: forms.py:49
+#: catalogue/forms.py:52
 msgid "Don't disply themes"
 msgstr ""
 
-#: forms.py:50
+#: catalogue/forms.py:53
 msgid "Don't use our custom font"
 msgstr ""
 
-#: forms.py:51
+#: catalogue/forms.py:54
 msgid "Without cover"
 msgstr ""
 
-#: forms.py:52
+#: catalogue/forms.py:55
 msgid "Without table of contents"
 msgstr ""
 
-#: forms.py:55
+#: catalogue/forms.py:58
 msgid "Leading"
 msgstr ""
 
-#: forms.py:56
+#: catalogue/forms.py:59
 msgid "Normal leading"
 msgstr ""
 
-#: forms.py:57
+#: catalogue/forms.py:60
 msgid "One and a half leading"
 msgstr ""
 
-#: forms.py:58
+#: catalogue/forms.py:61
 msgid "Double leading"
 msgstr ""
 
-#: forms.py:60
+#: catalogue/forms.py:63
 msgid "Font size"
 msgstr ""
 
-#: forms.py:61
+#: catalogue/forms.py:64
 msgid "Default"
 msgstr ""
 
-#: forms.py:62
+#: catalogue/forms.py:65
 msgid "Big"
 msgstr ""
 
-#: forms.py:63
+#: catalogue/forms.py:66
 msgid "Bigger"
 msgstr ""
 
-#: forms.py:85
+#: catalogue/forms.py:88
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: models/book.py:57 models/collection.py:14
+#: catalogue/models/book.py:58 catalogue/models/collection.py:14
 msgid "title"
 msgstr ""
 
-#: models/book.py:58 models/tag.py:58
+#: catalogue/models/book.py:59 catalogue/models/tag.py:58
 msgid "sort key"
 msgstr ""
 
-#: models/book.py:60
+#: catalogue/models/book.py:61
 msgid "sort key by author"
 msgstr ""
 
-#: models/book.py:61 models/book.py:62 models/collection.py:15 models/tag.py:57
+#: catalogue/models/book.py:62 catalogue/models/book.py:63
+#: catalogue/models/collection.py:15 catalogue/models/tag.py:57
 msgid "slug"
 msgstr ""
 
-#: models/book.py:63
+#: catalogue/models/book.py:64
 msgid "language code"
 msgstr ""
 
-#: models/book.py:64 models/book.py:391 models/collection.py:16
-#: models/tag.py:61 models/tag.py:135
+#: catalogue/models/book.py:65 catalogue/models/book.py:392
+#: catalogue/models/collection.py:16 catalogue/models/tag.py:61
+#: catalogue/models/tag.py:135
 msgid "description"
 msgstr ""
 
-#: models/book.py:65
+#: catalogue/models/book.py:66
 msgid "abstract"
 msgstr ""
 
-#: models/book.py:66 models/bookmedia.py:34 models/tag.py:71 models/tag.py:72
+#: catalogue/models/book.py:67 catalogue/models/bookmedia.py:40
+#: catalogue/models/tag.py:71 catalogue/models/tag.py:72
 msgid "creation date"
 msgstr ""
 
-#: models/book.py:67
+#: catalogue/models/book.py:68
 msgid "change date"
 msgstr ""
 
-#: models/book.py:68
+#: catalogue/models/book.py:69
 msgid "parent number"
 msgstr ""
 
-#: models/book.py:69 models/bookmedia.py:35
+#: catalogue/models/book.py:70 catalogue/models/bookmedia.py:43
 msgid "extra information"
 msgstr ""
 
-#: models/book.py:72
+#: catalogue/models/book.py:73
 msgid "print on demand"
 msgstr ""
 
-#: models/book.py:73
+#: catalogue/models/book.py:74 catalogue/models/collection.py:23
 msgid "recommended"
 msgstr ""
 
-#: models/book.py:74
+#: catalogue/models/book.py:75
 msgid "audio length"
 msgstr ""
 
-#: models/book.py:75
+#: catalogue/models/book.py:76
 msgid "preview"
 msgstr ""
 
-#: models/book.py:76
+#: catalogue/models/book.py:77
 msgid "preview until"
 msgstr ""
 
-#: models/book.py:78
+#: catalogue/models/book.py:79
 msgid "findable"
 msgstr ""
 
-#: models/book.py:82
+#: catalogue/models/book.py:83
 msgid "cover"
 msgstr ""
 
-#: models/book.py:89
+#: catalogue/models/book.py:90
 msgid "cover thumbnail"
 msgstr ""
 
-#: models/book.py:95
+#: catalogue/models/book.py:96
 msgid "cover thumbnail for mobile app"
 msgstr ""
 
-#: models/book.py:101
+#: catalogue/models/book.py:102
 msgid "cover for mobile app"
 msgstr ""
 
-#: models/book.py:107
+#: catalogue/models/book.py:108
 msgid "cover for Ebookpoint"
 msgstr ""
 
-#: models/book.py:136 models/collection.py:19
+#: catalogue/models/book.py:137 catalogue/models/collection.py:19
 msgid "book"
 msgstr ""
 
-#: models/book.py:137
+#: catalogue/models/book.py:138
 msgid "books"
 msgstr ""
 
-#: models/book.py:538
+#: catalogue/models/book.py:564
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr ""
 
-#: models/book.py:554
+#: catalogue/models/book.py:580
 #, python-format
 msgid "Book %s already exists"
 msgstr ""
 
-#: models/book.py:813
+#: catalogue/models/book.py:883
 msgid "This work needs modernisation"
 msgstr ""
 
-#: models/book.py:892 models/bookmedia.py:27
+#: catalogue/models/book.py:962 catalogue/models/bookmedia.py:33
 #, python-format
 msgid "%s file"
 msgstr ""
 
-#: models/bookmedia.py:29
+#: catalogue/models/bookmedia.py:35
 msgid "type"
 msgstr ""
 
-#: models/bookmedia.py:30 models/source.py:11 models/tag.py:56
+#: catalogue/models/bookmedia.py:36 catalogue/models/source.py:11
+#: catalogue/models/tag.py:56
 msgid "name"
 msgstr ""
 
-#: models/bookmedia.py:31
+#: catalogue/models/bookmedia.py:37
 msgid "part name"
 msgstr ""
 
-#: models/bookmedia.py:32
+#: catalogue/models/bookmedia.py:38
 msgid "index"
 msgstr ""
 
-#: models/bookmedia.py:33
+#: catalogue/models/bookmedia.py:39
 msgid "file"
 msgstr ""
 
-#: models/bookmedia.py:44 models/bookmedia.py:45
+#: catalogue/models/bookmedia.py:52 catalogue/models/bookmedia.py:53
 msgid "book media"
 msgstr ""
 
-#: models/collection.py:17
+#: catalogue/models/collection.py:17
 msgid "book slugs"
 msgstr ""
 
-#: models/collection.py:18 models/tag.py:23
+#: catalogue/models/collection.py:18 catalogue/models/tag.py:23
 msgid "kind"
 msgstr ""
 
-#: models/collection.py:19
+#: catalogue/models/collection.py:19
 msgid "picture"
 msgstr ""
 
-#: models/collection.py:23
+#: catalogue/models/collection.py:20
+msgid "listed"
+msgstr ""
+
+#: catalogue/models/collection.py:28
 msgid "collection"
 msgstr ""
 
-#: models/collection.py:24
+#: catalogue/models/collection.py:29
 msgid "collections"
 msgstr ""
 
-#: models/fragment.py:28
+#: catalogue/models/fragment.py:28
 msgid "fragment"
 msgstr ""
 
-#: models/fragment.py:29
+#: catalogue/models/fragment.py:29
 msgid "fragments"
 msgstr ""
 
-#: models/source.py:10
+#: catalogue/models/source.py:10
 msgid "network location"
 msgstr ""
 
-#: models/source.py:15
+#: catalogue/models/source.py:15
 msgid "source"
 msgstr ""
 
-#: models/source.py:16
+#: catalogue/models/source.py:16
 msgid "sources"
 msgstr ""
 
-#: models/tag.py:21
+#: catalogue/models/tag.py:21
 msgid "author"
 msgstr ""
 
-#: models/tag.py:22
+#: catalogue/models/tag.py:22
 msgid "epoch"
 msgstr ""
 
-#: models/tag.py:24
+#: catalogue/models/tag.py:24
 msgid "genre"
 msgstr ""
 
-#: models/tag.py:25
+#: catalogue/models/tag.py:25
 msgid "theme"
 msgstr ""
 
-#: models/tag.py:26
+#: catalogue/models/tag.py:26
 msgid "set"
 msgstr ""
 
-#: models/tag.py:27
+#: catalogue/models/tag.py:27
 msgid "thing"
 msgstr ""
 
-#: models/tag.py:33 models/tag.py:97
+#: catalogue/models/tag.py:33 catalogue/models/tag.py:97
 msgid "tag"
 msgstr ""
 
-#: models/tag.py:34
+#: catalogue/models/tag.py:34
 msgid "content type"
 msgstr ""
 
-#: models/tag.py:35
+#: catalogue/models/tag.py:35
 msgid "object id"
 msgstr ""
 
-#: models/tag.py:60
+#: catalogue/models/tag.py:60
 msgid "category"
 msgstr ""
 
-#: models/tag.py:98
+#: catalogue/models/tag.py:98
 msgid "tags"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:24
-#: templates/catalogue/book_text.html:25
+#: catalogue/templates/catalogue/book_detail.html:24
+#: catalogue/templates/catalogue/book_text.html:35
 msgid "Other versions"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:34
+#: catalogue/templates/catalogue/book_detail.html:34
 msgid "See also"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:41
-#: templates/catalogue/book_text.html:38
-#: templates/catalogue/tagged_object_list.html:20
+#: catalogue/templates/catalogue/book_detail.html:41
+#: catalogue/templates/catalogue/book_text.html:48
+#: catalogue/templates/catalogue/book_text.html:67
+#: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:47
+#: catalogue/templates/catalogue/book_detail.html:47
 msgid "Information about the work"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:62
-#: templates/catalogue/book_detail.html:68
+#: catalogue/templates/catalogue/book_detail.html:62
+#: catalogue/templates/catalogue/book_detail.html:68
 msgid "Source"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:62
-#: templates/catalogue/book_detail.html:68
+#: catalogue/templates/catalogue/book_detail.html:62
+#: catalogue/templates/catalogue/book_detail.html:68
 msgid "of the book"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:63
-#: templates/catalogue/book_detail.html:69
+#: catalogue/templates/catalogue/book_detail.html:63
+#: catalogue/templates/catalogue/book_detail.html:69
 msgid "in"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:74
+#: catalogue/templates/catalogue/book_detail.html:74
 msgid "Source XML file"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:78
+#: catalogue/templates/catalogue/book_detail.html:78
 msgid "Book on"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:78
+#: catalogue/templates/catalogue/book_detail.html:78
 msgid "Editor's Platform"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:83
+#: catalogue/templates/catalogue/book_detail.html:83
 msgid "Book description on Wikipedia"
 msgstr ""
 
-#: templates/catalogue/book_detail.html:87
+#: catalogue/templates/catalogue/book_detail.html:87
 msgid "Mix this book"
 msgstr ""
 
-#: templates/catalogue/book_fragments.html:6
-#: templates/catalogue/book_fragments.html:12
+#: catalogue/templates/catalogue/book_fragments.html:6
+#: catalogue/templates/catalogue/book_fragments.html:12
 msgid "Theme"
 msgstr ""
 
-#: templates/catalogue/book_fragments.html:6
-#: templates/catalogue/book_fragments.html:14
+#: catalogue/templates/catalogue/book_fragments.html:6
+#: catalogue/templates/catalogue/book_fragments.html:14
 msgid "in work "
 msgstr ""
 
-#: templates/catalogue/book_info.html:7
-msgid "This work is licensed under:"
-msgstr ""
-
-#: templates/catalogue/book_info.html:10
-msgid ""
-"This work isn't covered by copyright and is part of the\n"
-"    public domain, which means it can be freely used, published and\n"
-"    distributed. If there are any additional copyrighted materials\n"
-"    provided with this work (such as annotations, motifs etc.), those\n"
-"    materials are licensed under the\n"
-"    <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
-"Commons Attribution-ShareAlike 3.0</a>\n"
-"    license."
-msgstr ""
-
-#: templates/catalogue/book_info.html:21
+#: catalogue/templates/catalogue/book_info.html:28
 msgid "Resource prepared based on:"
 msgstr ""
 
-#: templates/catalogue/book_info.html:31
+#: catalogue/templates/catalogue/book_info.html:38
 msgid "Edited by:"
 msgstr ""
 
-#: templates/catalogue/book_info.html:33
+#: catalogue/templates/catalogue/book_info.html:40
 msgid "Edited and annotated by:"
 msgstr ""
 
-#: templates/catalogue/book_info.html:41
+#: catalogue/templates/catalogue/book_info.html:48
 msgid "Publisher:"
 msgstr ""
 
-#: templates/catalogue/book_info.html:48
+#: catalogue/templates/catalogue/book_info.html:55
 msgid "Publication funded by:"
 msgstr ""
 
-#: templates/catalogue/book_info.html:55
+#: catalogue/templates/catalogue/book_info.html:62
 msgid "Cover image by:"
 msgstr ""
 
-#: templates/catalogue/book_list.html:8 templates/catalogue/book_list.html:12
-#: templates/catalogue/picture_list.html:8
-#: templates/catalogue/picture_list.html:10
+#: catalogue/templates/catalogue/book_list.html:8
+#: catalogue/templates/catalogue/book_list.html:12
+#: catalogue/templates/catalogue/picture_list.html:8
+#: catalogue/templates/catalogue/picture_list.html:10
 msgid "Listing of all works"
 msgstr ""
 
-#: templates/catalogue/book_list.html:25
+#: catalogue/templates/catalogue/book_list.html:25
 msgid "Table of Content"
 msgstr ""
 
-#: templates/catalogue/book_list.html:35
+#: catalogue/templates/catalogue/book_list.html:35
 msgid "↑ top ↑"
 msgstr ""
 
-#: templates/catalogue/book_short.html:53
-#: templates/catalogue/picture_detail.html:52
+#: catalogue/templates/catalogue/book_short.html:53
+#: catalogue/templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr ""
 
-#: templates/catalogue/book_short.html:61
-#: templates/catalogue/picture_detail.html:58
+#: catalogue/templates/catalogue/book_short.html:61
+#: catalogue/templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr ""
 
-#: templates/catalogue/book_short.html:69
+#: catalogue/templates/catalogue/book_short.html:69
 msgid "Genre"
 msgstr ""
 
-#: templates/catalogue/book_short.html:79
+#: catalogue/templates/catalogue/book_short.html:79
 msgid "Region"
 msgstr ""
 
-#: templates/catalogue/book_short.html:87
+#: catalogue/templates/catalogue/book_short.html:87
 msgid "Language"
 msgstr ""
 
-#: templates/catalogue/book_short.html:111
+#: catalogue/templates/catalogue/book_short.html:112
 msgid "Read online"
 msgstr ""
 
-#: templates/catalogue/book_short.html:114
+#: catalogue/templates/catalogue/book_short.html:115
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
@@ -517,359 +510,358 @@ msgid ""
 "bezpłatnie."
 msgstr ""
 
-#: templates/catalogue/book_short.html:114
+#: catalogue/templates/catalogue/book_short.html:115
 msgid "Print on demand –"
 msgstr ""
 
-#: templates/catalogue/book_short.html:119
-#: templates/catalogue/custom_pdf_form.html:18 views.py:401
-msgid "Download"
+#: catalogue/templates/catalogue/book_short.html:121
+msgid "Download an ebook"
 msgstr ""
 
-#: templates/catalogue/book_short.html:133
-msgid "more"
+#: catalogue/templates/catalogue/book_short.html:140
+msgid "Download audiobook"
 msgstr ""
 
-#: templates/catalogue/book_short.html:144
-msgid "less"
-msgstr ""
-
-#: templates/catalogue/book_short.html:150
+#: catalogue/templates/catalogue/book_short.html:152
 msgid "For now this work is only available for our subscribers."
 msgstr ""
 
-#: templates/catalogue/book_text.html:32
+#: catalogue/templates/catalogue/book_text.html:24
+msgid "Click to download"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:42
 msgid "Table of contents"
 msgstr ""
 
-#: templates/catalogue/book_text.html:44 templates/catalogue/book_text.html:144
-msgid "Settings"
-msgstr ""
-
-#: templates/catalogue/book_text.html:50
+#: catalogue/templates/catalogue/book_text.html:54
 msgid "Edit. note"
 msgstr ""
 
-#: templates/catalogue/book_text.html:56
+#: catalogue/templates/catalogue/book_text.html:60
 msgid "Infobox"
 msgstr ""
 
-#: templates/catalogue/book_text.html:80
-#: templates/catalogue/viewer_base.html:54
+#: catalogue/templates/catalogue/book_text.html:65
+msgid "Numbering"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:69
+msgid "Footnotes"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:71
+msgid "References"
+msgstr ""
+
+#: catalogue/templates/catalogue/book_text.html:97
+#: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr ""
 
-#: templates/catalogue/book_text.html:81
+#: catalogue/templates/catalogue/book_text.html:98
 msgid "Please wait..."
 msgstr ""
 
-#: templates/catalogue/book_text.html:125
+#: catalogue/templates/catalogue/book_text.html:153
 msgid "Other versions of the book"
 msgstr ""
 
-#: templates/catalogue/book_text.html:126
+#: catalogue/templates/catalogue/book_text.html:154
 msgid "Close the other version"
 msgstr ""
 
-#: templates/catalogue/book_text.html:146
-msgid "Display line numbers"
-msgstr ""
-
-#: templates/catalogue/book_text.html:148
-msgid "Display themes"
-msgstr ""
-
-#: templates/catalogue/book_text.html:150
-msgid "Display footnotes"
-msgstr ""
-
-#: templates/catalogue/catalogue.html:6
+#: catalogue/templates/catalogue/catalogue.html:6
 msgid "Catalogue"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:11
-#: templates/catalogue/tagged_object_list.html:57
+#: catalogue/templates/catalogue/catalogue.html:11
+#: catalogue/templates/catalogue/tagged_object_list.html:57
 msgid "All works"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:15
+#: catalogue/templates/catalogue/catalogue.html:15
 msgid "Download the catalogue in PDF format."
 msgstr ""
 
-#: templates/catalogue/catalogue.html:19
-#: templates/catalogue/tag_list_split.html:4
-#: templates/catalogue/tagged_object_list.html:5
+#: catalogue/templates/catalogue/catalogue.html:19
+#: catalogue/templates/catalogue/tag_list_split.html:4
+#: catalogue/templates/catalogue/tagged_object_list.html:5
 msgid "Literature"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:22 templates/catalogue/collections.html:5
-#: templates/catalogue/collections.html:10
+#: catalogue/templates/catalogue/catalogue.html:22
+#: catalogue/templates/catalogue/collections.html:5
+#: catalogue/templates/catalogue/collections.html:10
 msgid "Collections"
 msgstr ""
 
-#: templates/catalogue/catalogue.html:25
-#: templates/catalogue/search_multiple_hits.html:45
-#: templates/catalogue/tag_list_split.html:9
-#: templates/catalogue/tagged_object_list.html:5
+#: catalogue/templates/catalogue/catalogue.html:25
+#: catalogue/templates/catalogue/search_multiple_hits.html:45
+#: catalogue/templates/catalogue/tag_list_split.html:9
+#: catalogue/templates/catalogue/tagged_object_list.html:5
 msgid "Art"
 msgstr ""
 
-#: templates/catalogue/collection_box.html:4
-msgid "Collection"
-msgstr ""
-
-#: templates/catalogue/collection_box.html:14
-#, python-format
-msgid "and one more"
-msgid_plural "and %(c)s more"
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/catalogue/collections.html:16
+#: catalogue/templates/catalogue/collections.html:16
 msgid "All collections"
 msgstr ""
 
-#: templates/catalogue/custom_pdf_form.html:5 views.py:400
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:408
 msgid "Download custom PDF"
 msgstr ""
 
-#: templates/catalogue/daisy_list.html:7 templates/catalogue/daisy_list.html:15
+#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:409
+msgid "Download"
+msgstr ""
+
+#: catalogue/templates/catalogue/daisy_list.html:7
+#: catalogue/templates/catalogue/daisy_list.html:15
 msgid "Listing of all DAISY files"
 msgstr ""
 
-#: templates/catalogue/daisy_list.html:11
+#: catalogue/templates/catalogue/daisy_list.html:11
 msgid "Latest DAISY audiobooks"
 msgstr ""
 
-#: templates/catalogue/differentiate_tags.html:12
+#: catalogue/templates/catalogue/differentiate_tags.html:12
 msgid "The criteria are ambiguous. Please select one of the following options:"
 msgstr ""
 
-#: templates/catalogue/fragment_short.html:12
+#: catalogue/templates/catalogue/fragment_short.html:12
 msgid "Expand fragment"
 msgstr ""
 
-#: templates/catalogue/fragment_short.html:22
+#: catalogue/templates/catalogue/fragment_short.html:22
 msgid "Hide fragment"
 msgstr ""
 
-#: templates/catalogue/inline_tag_list.html:22
+#: catalogue/templates/catalogue/inline_tag_list.html:22
 msgid "Other"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:29
+#: catalogue/templates/catalogue/picture_detail.html:29
 msgid "Work is licensed under "
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:31
+#: catalogue/templates/catalogue/picture_detail.html:31
 msgid "Based on"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:43
+#: catalogue/templates/catalogue/picture_detail.html:43
 msgid "Details"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:46
+#: catalogue/templates/catalogue/picture_detail.html:46
 msgid "Author"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:64
+#: catalogue/templates/catalogue/picture_detail.html:64
 msgid "Other resources"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:67
+#: catalogue/templates/catalogue/picture_detail.html:67
 msgid "Source of the image"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:70
+#: catalogue/templates/catalogue/picture_detail.html:70
 msgid "Image on the Editor's Platform"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:73
+#: catalogue/templates/catalogue/picture_detail.html:73
 msgid "View XML source"
 msgstr ""
 
-#: templates/catalogue/picture_detail.html:76
+#: catalogue/templates/catalogue/picture_detail.html:76
 msgid "Work's themes "
 msgstr ""
 
-#: templates/catalogue/player.html:12 templates/catalogue/viewer_base.html:11
+#: catalogue/templates/catalogue/player.html:12
+#: catalogue/templates/catalogue/viewer_base.html:11
 msgid "Wolne Lektury"
 msgstr ""
 
-#: templates/catalogue/player.html:29
+#: catalogue/templates/catalogue/player.html:29
 msgid "Book's page"
 msgstr ""
 
-#: templates/catalogue/player.html:30
+#: catalogue/templates/catalogue/player.html:30
 msgid "Download as"
 msgstr ""
 
-#: templates/catalogue/player.html:46
+#: catalogue/templates/catalogue/player.html:46
 msgid "Audiobooks were prepared as a part of the projects:"
 msgstr ""
 
-#: templates/catalogue/player.html:51
+#: catalogue/templates/catalogue/player.html:51
 #, python-format
 msgid "%(cs)s, funded by %(fb)s"
 msgstr ""
 
-#: templates/catalogue/player.html:62
+#: catalogue/templates/catalogue/player.html:62
 #, python-format
 msgid ""
 "Audiobooks were prepared as a part of the <em>%(cs)s</em> project funded by "
 "%(fb)s."
 msgstr ""
 
-#: templates/catalogue/player.html:64
+#: catalogue/templates/catalogue/player.html:64
 #, python-format
 msgid "Audiobooks were prepared as a part of the <em>%(cs)s</em> project."
 msgstr ""
 
-#: templates/catalogue/recent_audiobooks_list.html:5
-#: templates/catalogue/recent_audiobooks_list.html:10
+#: catalogue/templates/catalogue/recent_audiobooks_list.html:5
+#: catalogue/templates/catalogue/recent_audiobooks_list.html:10
 msgid "Recent audiobooks"
 msgstr ""
 
-#: templates/catalogue/recent_daisy_list.html:5
-#: templates/catalogue/recent_daisy_list.html:10
+#: catalogue/templates/catalogue/recent_daisy_list.html:5
+#: catalogue/templates/catalogue/recent_daisy_list.html:10
 msgid "Recent DAISY files"
 msgstr ""
 
-#: templates/catalogue/recent_list.html:5
-#: templates/catalogue/recent_list.html:10
+#: catalogue/templates/catalogue/recent_list.html:5
+#: catalogue/templates/catalogue/recent_list.html:10
 msgid "Recent publications"
 msgstr ""
 
-#: templates/catalogue/recent_list.html:15
+#: catalogue/templates/catalogue/recent_list.html:15
 #, python-format
 msgid ""
 "You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
 "    and <a href=\"%(d)s\">recent DAISY files</a>."
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:7
-#: templates/catalogue/search_no_hits.html:5
-#: templates/catalogue/search_no_hits.html:10
-#: templates/catalogue/search_too_long.html:5
-#: templates/catalogue/search_too_long.html:10
-#: templates/catalogue/search_too_short.html:5
-#: templates/catalogue/search_too_short.html:10
+#: catalogue/templates/catalogue/search_multiple_hits.html:7
+#: catalogue/templates/catalogue/search_no_hits.html:5
+#: catalogue/templates/catalogue/search_no_hits.html:10
+#: catalogue/templates/catalogue/search_too_long.html:5
+#: catalogue/templates/catalogue/search_too_long.html:10
+#: catalogue/templates/catalogue/search_too_short.html:5
+#: catalogue/templates/catalogue/search_too_short.html:10
 msgid "Search"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:13
-#: templates/catalogue/search_no_hits.html:16
+#: catalogue/templates/catalogue/search_multiple_hits.html:13
+#: catalogue/templates/catalogue/search_no_hits.html:16
 msgid "Did you mean"
 msgstr ""
 
-#: templates/catalogue/search_multiple_hits.html:32
+#: catalogue/templates/catalogue/search_multiple_hits.html:32
 msgid "Books"
 msgstr ""
 
-#: templates/catalogue/search_no_hits.html:20
-#: templates/catalogue/tagged_object_list.html:66
+#: catalogue/templates/catalogue/search_no_hits.html:20
+#: catalogue/templates/catalogue/tagged_object_list.html:66
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr ""
 
-#: templates/catalogue/search_too_long.html:13
+#: catalogue/templates/catalogue/search_too_long.html:13
 msgid "Sorry! Search query is too long to be processed."
 msgstr ""
 
-#: templates/catalogue/search_too_short.html:13
+#: catalogue/templates/catalogue/search_too_short.html:13
 msgid "Sorry! Search query must have at least two characters."
 msgstr ""
 
-#: templates/catalogue/snippets/custom_pdf_link_li.html:3
+#: catalogue/templates/catalogue/snippets/content_warning.html:4
+msgid "Caution: text contains"
+msgstr ""
+
+#: catalogue/templates/catalogue/snippets/custom_pdf_link_li.html:3
 msgid "Download a custom PDF"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:36
+#: catalogue/templates/catalogue/snippets/jplayer.html:36
 msgid "Artist:"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:37
+#: catalogue/templates/catalogue/snippets/jplayer.html:37
 msgid "director:"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:61
+#: catalogue/templates/catalogue/snippets/jplayer.html:64
 msgid "previous"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:62
+#: catalogue/templates/catalogue/snippets/jplayer.html:65
 msgid "Part"
 msgstr ""
 
-#: templates/catalogue/snippets/jplayer.html:63
+#: catalogue/templates/catalogue/snippets/jplayer.html:66
 msgid "next"
 msgstr ""
 
-#: templates/catalogue/snippets/license_icon.html:6
-#: templates/catalogue/snippets/license_icon.html:7
+#: catalogue/templates/catalogue/snippets/license_icon.html:6
+#: catalogue/templates/catalogue/snippets/license_icon.html:7
 msgid "Free license"
 msgstr ""
 
-#: templates/catalogue/tag_catalogue.html:11
+#: catalogue/templates/catalogue/tag_catalogue.html:11
 msgid "on Wolne Lektury"
 msgstr ""
 
-#: templates/catalogue/tag_list.html:7
+#: catalogue/templates/catalogue/tag_list.html:7
 msgid "See full category"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:5
+#: catalogue/templates/catalogue/tagged_object_list.html:5
 msgid "Audiobooks"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:15
+#: catalogue/templates/catalogue/tagged_object_list.html:15
 msgid "Authors"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:16
+#: catalogue/templates/catalogue/tagged_object_list.html:16
 msgid "Epochs"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:17
+#: catalogue/templates/catalogue/tagged_object_list.html:17
 msgid "Genres"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:18
+#: catalogue/templates/catalogue/tagged_object_list.html:18
 msgid "Kinds"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:52
+#: catalogue/templates/catalogue/tagged_object_list.html:52
 msgid "All matching works"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:55
+#: catalogue/templates/catalogue/tagged_object_list.html:55
 msgid "Listing of all audiobooks"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:62
+#: catalogue/templates/catalogue/tagged_object_list.html:62
 msgid "DAISY files"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:72
+#: catalogue/templates/catalogue/tagged_object_list.html:72
 msgid "Motifs and themes"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:84
+#: catalogue/templates/catalogue/tagged_object_list.html:84
 msgid "No description."
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:91
+#: catalogue/templates/catalogue/tagged_object_list.html:91
 msgid "in Wikipedia"
 msgstr ""
 
-#: templates/catalogue/tagged_object_list.html:97
+#: catalogue/templates/catalogue/tagged_object_list.html:97
 msgid "in Culture.pl"
 msgstr ""
 
-#: templates/catalogue/viewer_base.html:56
+#: catalogue/templates/catalogue/viewer_base.html:56
 msgid "Loading"
 msgstr ""
 
-#: views.py:351
+#: catalogue/templatetags/catalogue_tags.py:521
+msgid "vulgar language"
+msgstr ""
+
+#: catalogue/views.py:359
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -877,11 +869,11 @@ msgid ""
 "%(tb)s"
 msgstr ""
 
-#: views.py:356
+#: catalogue/views.py:364
 msgid "Book imported successfully"
 msgstr ""
 
-#: views.py:357
+#: catalogue/views.py:365
 #, python-format
 msgid "Error importing file: %r"
 msgstr ""
