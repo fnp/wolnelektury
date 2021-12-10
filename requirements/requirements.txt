@@ -1,7 +1,7 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==2.2.24
+Django==2.2.25
 fnpdjango==0.4.5
 docutils==0.16
 
