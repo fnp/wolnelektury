@@ -35,75 +35,75 @@ msgstr "Dotyczy blackoutu."
 msgid "small font"
 msgstr "mały font"
 
-#: annoy/models.py:19
+#: annoy/models.py:21
 msgid "action label"
 msgstr "etykieta akcji"
 
-#: annoy/models.py:21
+#: annoy/models.py:23
 msgid "If empty, whole banner will serve as a link"
 msgstr "Jeśli pusta, cały banner będzie służył jako link."
 
-#: annoy/models.py:23
+#: annoy/models.py:25
 msgid "open label"
 msgstr "etykieta otwierania"
 
-#: annoy/models.py:24
+#: annoy/models.py:26
 msgid "close label"
 msgstr "etykieta zamykania"
 
-#: annoy/models.py:25 annoy/models.py:104
+#: annoy/models.py:27 annoy/models.py:106
 msgid "text"
 msgstr "tekst"
 
-#: annoy/models.py:26
+#: annoy/models.py:28
 msgid "image"
 msgstr "obraz"
 
-#: annoy/models.py:27
+#: annoy/models.py:29
 msgid "url"
 msgstr "URL"
 
-#: annoy/models.py:29
+#: annoy/models.py:31
 msgid "priority"
 msgstr "priortytet"
 
-#: annoy/models.py:30
+#: annoy/models.py:32
 msgid "Banners with higher priority come first."
 msgstr "Bannery z wyższym priorytetem mają pierwszeństwo."
 
-#: annoy/models.py:31
+#: annoy/models.py:33
 msgid "since"
 msgstr "od"
 
-#: annoy/models.py:32
+#: annoy/models.py:34
 msgid "until"
 msgstr "do"
 
-#: annoy/models.py:33
+#: annoy/models.py:35
 msgid "show members"
 msgstr "widoczny dla członków klubu"
 
-#: annoy/models.py:34
+#: annoy/models.py:36
 msgid "staff preview"
 msgstr "podgląd tylko dla zespołu"
 
-#: annoy/models.py:37
+#: annoy/models.py:39
 msgid "banner"
 msgstr "banner"
 
-#: annoy/models.py:38
+#: annoy/models.py:40
 msgid "banners"
 msgstr "bannery"
 
-#: annoy/models.py:76
+#: annoy/models.py:78
 msgid "pararaphs"
 msgstr "akapity"
 
-#: annoy/models.py:80
+#: annoy/models.py:82
 msgid "dynamic insert"
 msgstr "dynamiczna wstawka"
 
-#: annoy/models.py:81
+#: annoy/models.py:83
 msgid "dynamic inserts"
 msgstr "dynamiczne wstawki"
 

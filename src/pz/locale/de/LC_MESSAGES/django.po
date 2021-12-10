@@ -16,178 +16,195 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: pz/admin.py:32
+
+#: pz/admin.py:42
+msgid "All"
+msgstr ""
+
+#: pz/admin.py:43
+msgid "Empty"
+msgstr ""
+
+#: pz/admin.py:44
+msgid "Not empty"
+msgstr ""
+
+#: pz/admin.py:107
 msgid "Processing"
 msgstr ""
 
-#: pz/admin.py:46
+#: pz/admin.py:142
 msgid "obligatory"
 msgstr ""
 
-#: pz/admin.py:47
+#: pz/admin.py:143
 msgid "agree contact"
 msgstr ""
 
-#: pz/models.py:6 pz/models.py:18
+#: pz/models.py:9 pz/models.py:21
 msgid "name"
 msgstr ""
 
-#: pz/models.py:7
+#: pz/models.py:10
 msgid "description"
 msgstr ""
 
-#: pz/models.py:10 pz/models.py:66
+#: pz/models.py:13 pz/models.py:70
 msgid "campaign"
 msgstr ""
 
-#: pz/models.py:11
+#: pz/models.py:14
 msgid "campaigns"
 msgstr ""
 
-#: pz/models.py:21 pz/models.py:54
+#: pz/models.py:24 pz/models.py:58
 msgid "fundraiser"
 msgstr ""
 
-#: pz/models.py:22
+#: pz/models.py:25
 msgid "fundraisers"
 msgstr ""
 
-#: pz/models.py:29
+#: pz/models.py:32
 msgid "first name"
 msgstr ""
 
-#: pz/models.py:30
+#: pz/models.py:33
 msgid "last name"
 msgstr ""
 
-#: pz/models.py:31
+#: pz/models.py:34
 msgid "sex"
 msgstr ""
 
-#: pz/models.py:32
+#: pz/models.py:35
 msgid "M"
 msgstr ""
 
-#: pz/models.py:33
+#: pz/models.py:36
 msgid "F"
 msgstr ""
 
-#: pz/models.py:35
+#: pz/models.py:38
 msgid "date of birth"
 msgstr ""
 
-#: pz/models.py:36
+#: pz/models.py:39
 msgid "street"
 msgstr ""
 
-#: pz/models.py:37
+#: pz/models.py:40
 msgid "building"
 msgstr ""
 
-#: pz/models.py:38
+#: pz/models.py:41
 msgid "flat"
 msgstr ""
 
-#: pz/models.py:39
+#: pz/models.py:42
 msgid "town"
 msgstr ""
 
-#: pz/models.py:40
+#: pz/models.py:43
 msgid "postal code"
 msgstr ""
 
-#: pz/models.py:41
+#: pz/models.py:44
 msgid "phone"
 msgstr ""
 
-#: pz/models.py:42
+#: pz/models.py:45
 msgid "e-mail"
 msgstr ""
 
-#: pz/models.py:43
+#: pz/models.py:46
 msgid "IBAN"
 msgstr ""
 
-#: pz/models.py:44
+#: pz/models.py:47
+msgid "IBAN valid"
+msgstr ""
+
+#: pz/models.py:48
 msgid "is a consumer"
 msgstr ""
 
-#: pz/models.py:45
+#: pz/models.py:49
 msgid "payment identifier"
 msgstr ""
 
-#: pz/models.py:46
+#: pz/models.py:50
 msgid "agree fundraising"
 msgstr ""
 
-#: pz/models.py:47
+#: pz/models.py:51
 msgid "agree newsletter"
 msgstr ""
 
-#: pz/models.py:49
+#: pz/models.py:53
 msgid "acquisition date"
 msgstr ""
 
-#: pz/models.py:49
+#: pz/models.py:53
 msgid "Date from the form"
 msgstr ""
 
-#: pz/models.py:50
+#: pz/models.py:54
 msgid "submission date"
 msgstr ""
 
-#: pz/models.py:50
+#: pz/models.py:54
 msgid "Date the fundaiser submitted the form"
 msgstr ""
 
-#: pz/models.py:51
+#: pz/models.py:55
 msgid "bank submission date"
 msgstr ""
 
-#: pz/models.py:51
+#: pz/models.py:55
 msgid "Date when the form data is submitted to the bank"
 msgstr ""
 
-#: pz/models.py:52
+#: pz/models.py:56
 msgid "bank accepted date"
 msgstr ""
 
-#: pz/models.py:52
+#: pz/models.py:56
 msgid "Date when bank accepted the form"
 msgstr ""
 
-#: pz/models.py:55
+#: pz/models.py:59
 msgid "fundraiser commission"
 msgstr ""
 
-#: pz/models.py:56
+#: pz/models.py:60
 msgid "fundaiser bill number"
 msgstr ""
 
-#: pz/models.py:58
+#: pz/models.py:62
 msgid "amount"
 msgstr ""
 
-#: pz/models.py:60
+#: pz/models.py:64
 msgid "notes"
 msgstr ""
 
-#: pz/models.py:62
+#: pz/models.py:66
 msgid "needs redo"
 msgstr ""
 
-#: pz/models.py:63
-msgid "is cancelled"
+#: pz/models.py:67
+msgid "cancelled at"
 msgstr ""
 
-#: pz/models.py:64
+#: pz/models.py:68
 msgid "optout"
 msgstr ""
 
-#: pz/models.py:69
+#: pz/models.py:73
 msgid "direct debit"
 msgstr ""
 
-#: pz/models.py:70
+#: pz/models.py:74
 msgid "direct debits"
 msgstr ""

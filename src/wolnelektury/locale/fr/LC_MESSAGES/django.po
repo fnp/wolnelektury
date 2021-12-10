@@ -156,13 +156,13 @@ msgstr "Mon étagère"
 msgid "Administration"
 msgstr "Administration"
 
-#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:78
-#: wolnelektury/views.py:79
+#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:79
+#: wolnelektury/views.py:80
 msgid "Sign in"
 msgstr "Connexion"
 
-#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:97
-#: wolnelektury/views.py:98 wolnelektury/views.py:126
+#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:98
+#: wolnelektury/views.py:99 wolnelektury/views.py:127
 msgid "Register"
 msgstr "Inscrivez-vous"
 
@@ -183,14 +183,12 @@ msgid "Audiobooks"
 msgstr "Livres audio"
 
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/main_page.html:83
-#, fuzzy
-#| msgid "All books"
-msgid "All works"
-msgstr "Tous les livres"
+#: wolnelektury/templates/main_page.html:50
+msgid "Collections"
+msgstr ""
 
 #: wolnelektury/templates/base/superbase.html:127
-#: wolnelektury/templates/main_page.html:92
+#: wolnelektury/templates/main_page.html:106
 msgid "Newsletter"
 msgstr ""
 
@@ -290,85 +288,73 @@ msgstr ""
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:35
-msgid "Motifs and themes"
-msgstr "Motifs et thèmes"
-
 #: wolnelektury/templates/main_page.html:37
-msgid "Theme"
-msgstr "Thème"
-
-#: wolnelektury/templates/main_page.html:38
-msgid "Explore works with the same theme"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:48
-msgid "See motifs catalog"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:53
-msgid "Collections"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:55
-msgid "See collections catalog"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:60
 msgid "Recent publications"
 msgstr "Publications récentes"
 
-#: wolnelektury/templates/main_page.html:64
-#, fuzzy
-#| msgid "Recent publications"
-msgid "More recent publications"
-msgstr "Publications récentes"
+#: wolnelektury/templates/main_page.html:63
+msgid "Motifs and themes"
+msgstr "Motifs et thèmes"
 
-#: wolnelektury/templates/main_page.html:70
+#: wolnelektury/templates/main_page.html:68
+msgid "Theme"
+msgstr "Thème"
+
+#: wolnelektury/templates/main_page.html:69
+msgid "Explore works with the same theme"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:84
 msgid "News"
 msgstr "Actualités"
 
-#: wolnelektury/templates/main_page.html:77
+#: wolnelektury/templates/main_page.html:91
 msgid "Utilities"
 msgstr "Outils"
 
-#: wolnelektury/templates/main_page.html:80
+#: wolnelektury/templates/main_page.html:94
 msgid "Report a bug or suggestion"
 msgstr "Rapportez une erreur ou faites une suggestion"
 
-#: wolnelektury/templates/main_page.html:81
+#: wolnelektury/templates/main_page.html:95
 msgid "Download the catalogue in PDF format."
 msgstr "Téléchargez le catalogue au format PDF"
 
-#: wolnelektury/templates/main_page.html:82
+#: wolnelektury/templates/main_page.html:96
 #, fuzzy
 #| msgid "Artist"
 msgid "Art"
 msgstr "Artiste"
 
-#: wolnelektury/templates/main_page.html:85
+#: wolnelektury/templates/main_page.html:97
+#, fuzzy
+#| msgid "All books"
+msgid "All works"
+msgstr "Tous les livres"
+
+#: wolnelektury/templates/main_page.html:99
 msgid "Footnotes"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:86
+#: wolnelektury/templates/main_page.html:100
 msgid "Missing a book?"
 msgstr "Il vous manque un livre?"
 
-#: wolnelektury/templates/main_page.html:87
+#: wolnelektury/templates/main_page.html:101
 #: wolnelektury/templates/publish_plan.html:4
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan de publication"
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:111
 msgid "Information"
 msgstr "Informations"
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:113
 msgid "Privacy policy"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:134
 msgid "Image used:"
 msgstr "L'image utilisé:"
 
@@ -479,14 +465,19 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: wolnelektury/views.py:86 wolnelektury/views.py:107
+#: wolnelektury/views.py:87 wolnelektury/views.py:108
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr ""
 
-#: wolnelektury/views.py:121
+#: wolnelektury/views.py:122
 msgid "You have to be logged in to continue"
 msgstr "Vous devez être connecter pour continuer"
+
+#, fuzzy
+#~| msgid "Recent publications"
+#~ msgid "More recent publications"
+#~ msgstr "Publications récentes"
 
 #~ msgid "Translations"
 #~ msgstr "Traductions"

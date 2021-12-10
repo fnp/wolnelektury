@@ -25,74 +25,86 @@ msgid "place"
 msgstr ""
 
 #: annoy/models.py:13
-msgid "action label"
+msgid "style"
 msgstr ""
 
 #: annoy/models.py:15
-msgid "If empty, whole banner will serve as a link"
+msgid "Affects blackout."
 msgstr ""
 
 #: annoy/models.py:17
-msgid "open label"
-msgstr ""
-
-#: annoy/models.py:18
-msgid "close label"
-msgstr ""
-
-#: annoy/models.py:19 annoy/models.py:98
-msgid "text"
-msgstr ""
-
-#: annoy/models.py:20
-msgid "image"
+msgid "small font"
 msgstr ""
 
 #: annoy/models.py:21
-msgid "url"
+msgid "action label"
 msgstr ""
 
 #: annoy/models.py:23
-msgid "priority"
-msgstr ""
-
-#: annoy/models.py:24
-msgid "Banners with higher priority come first."
+msgid "If empty, whole banner will serve as a link"
 msgstr ""
 
 #: annoy/models.py:25
-msgid "since"
+msgid "open label"
 msgstr ""
 
 #: annoy/models.py:26
-msgid "until"
+msgid "close label"
 msgstr ""
 
-#: annoy/models.py:27
-msgid "show members"
+#: annoy/models.py:27 annoy/models.py:106
+msgid "text"
 msgstr ""
 
 #: annoy/models.py:28
-msgid "staff preview"
+msgid "image"
+msgstr ""
+
+#: annoy/models.py:29
+msgid "url"
 msgstr ""
 
 #: annoy/models.py:31
-msgid "banner"
+msgid "priority"
 msgstr ""
 
 #: annoy/models.py:32
+msgid "Banners with higher priority come first."
+msgstr ""
+
+#: annoy/models.py:33
+msgid "since"
+msgstr ""
+
+#: annoy/models.py:34
+msgid "until"
+msgstr ""
+
+#: annoy/models.py:35
+msgid "show members"
+msgstr ""
+
+#: annoy/models.py:36
+msgid "staff preview"
+msgstr ""
+
+#: annoy/models.py:39
+msgid "banner"
+msgstr ""
+
+#: annoy/models.py:40
 msgid "banners"
 msgstr ""
 
-#: annoy/models.py:70
+#: annoy/models.py:78
 msgid "pararaphs"
 msgstr ""
 
-#: annoy/models.py:74
+#: annoy/models.py:82
 msgid "dynamic insert"
 msgstr ""
 
-#: annoy/models.py:75
+#: annoy/models.py:83
 msgid "dynamic inserts"
 msgstr ""
 
@@ -114,4 +126,12 @@ msgstr ""
 
 #: annoy/places.py:8
 msgid "Blackout"
+msgstr ""
+
+#: annoy/places.py:9
+msgid "Full screen"
+msgstr ""
+
+#: annoy/places.py:11
+msgid "Upper half of screen"
 msgstr ""

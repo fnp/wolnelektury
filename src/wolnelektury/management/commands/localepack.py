@@ -5,7 +5,6 @@ import os
 import shutil
 import sys
 import tempfile
-import allauth
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
@@ -99,41 +98,6 @@ class ModelTranslation(Locale):
                      load=True, lang=','.join(zip(*languages)[0]), poname=self.poname, keep_running=True)
 
 
-class CustomLocale(Locale):
-    def __init__(self, app_dir,
-                 config=os.path.join(ROOT, "babel.cfg"),
-                 out_file=os.path.join(ROOT, 'src/wolnelektury/locale-contrib/django.pot'),
-                 name=None):
-        self.app_dir = app_dir
-        self.config = config
-        self.out_file = out_file
-        self.name = name
-
-    def generate(self, languages):
-        os.system('pybabel extract -F "%s" -o "%s" "%s"' % (self.config, self.out_file, self.app_dir))
-        os.system('pybabel update -D django -i %s -d %s' % (self.out_file, os.path.dirname(self.out_file)))
-
-    def po_file(self, language):
-        d = os.path.dirname(self.out_file)
-        n = os.path.basename(self.out_file).split('.')[0]
-        return os.path.join(d, language, 'LC_MESSAGES', n + '.po')
-
-    def save(self, output_directory, languages):
-        for lc in zip(*languages)[0]:
-            if os.path.exists(self.po_file(lc)):
-                copy_f(self.po_file(lc),
-                       os.path.join(output_directory, lc, self.name + '.po'))
-
-    def load(self, input_directory, languages):
-        for lc in zip(*languages)[0]:
-            copy_f(os.path.join(input_directory, lc, self.name + '.po'),
-                   self.po_file(lc))
-        self.compile()
-
-    def compile(self):
-        os.system('pybabel compile -D django -d %s' % os.path.dirname(self.out_file))
-
-
 SOURCES = []
 
 for appn in settings.INSTALLED_APPS:
@@ -145,7 +109,6 @@ for appn in settings.INSTALLED_APPS:
             print("no locales in %s" % app.__name__)
 
 SOURCES.append(ModelTranslation('infopages', 'infopages_db'))
-SOURCES.append(CustomLocale(os.path.dirname(allauth.__file__), name='contrib'))
 
 
 class Command(BaseCommand):

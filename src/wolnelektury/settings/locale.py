@@ -10,7 +10,7 @@ USE_I18N = True
 USE_L10N = True
 
 LOCALE_PATHS = [
-    path.join(PROJECT_DIR, 'locale-contrib')
+    path.join(PROJECT_DIR, 'locale')
 ]
 
 # Language code for this installation. All choices can be found here:
