@@ -56,6 +56,17 @@ class BookMedia(models.Model):
     def get_extra_info_json(self):
         return json.loads(self.extra_info or '{}')
 
+    def get_nice_filename(self):
+        parts_count = 1 + type(self).objects.filter(book=self.book, type=self.type).exclude(pk=self.pk).count()
+
+        name = self.book.slug
+        if parts_count > 0:
+            name += f'_{self.index:03d}'
+        if self.part_name:
+            name += f'_' + slugify(self.part_name)
+        ext = self.ext()
+        return f'{name}.{ext}'
+
     def save(self, parts_count=None, *args, **kwargs):
         from catalogue.utils import ExistingFile, remove_zip
 
@@ -73,13 +84,9 @@ class BookMedia(models.Model):
             old = BookMedia.objects.get(pk=self.pk)
         except BookMedia.DoesNotExist:
             old = None
-        else:
-            # if name changed, change the file name, too
-            if slugify(self.name) != slugify(old.name):
-                self.file.save(None, ExistingFile(self.file.path), save=False)
 
         super(BookMedia, self).save(*args, **kwargs)
-
+        
         # remove the zip package for book with modified media
         if old:
             remove_zip("%s_%s" % (old.book.slug, old.type))

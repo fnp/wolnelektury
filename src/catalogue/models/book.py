@@ -479,7 +479,7 @@ class Book(models.Model):
 
     def zip_audiobooks(self, format_):
         bm = BookMedia.objects.filter(book=self, type=format_)
-        paths = map(lambda bm: (None, bm.file.path), bm)
+        paths = map(lambda bm: (bm.get_nice_filename(), bm.file.path), bm)
         licenses = set()
         for m in bm:
             license = constants.LICENSES.get(
