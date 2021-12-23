@@ -220,9 +220,15 @@ class BuildEpub(BuildEbook):
 @BuildEbook.register('mobi')
 @task(ignore_result=True)
 class BuildMobi(BuildEbook):
+    librarian2_api = True
+
     @staticmethod
     def transform(wldoc, fieldfile):
-        return wldoc.as_mobi(cover=True, base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)))
+        from librarian.builders import MobiBuilder
+        return MobiBuilder(
+                base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
+                fundraising=settings.EPUB_FUNDRAISING
+            ).build(wldoc)
 
 
 @BuildEbook.register('html')
