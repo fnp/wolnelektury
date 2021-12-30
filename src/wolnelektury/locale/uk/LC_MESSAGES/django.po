@@ -100,20 +100,33 @@ msgstr "Wolne Lektury"
 
 #: wolnelektury/templates/base/app.html:42
 #: wolnelektury/templates/base/app.html:43
-#: wolnelektury/templates/base/superbase.html:69
-#: wolnelektury/templates/base/superbase.html:70
+#: wolnelektury/templates/base/superbase.html:75
 #, fuzzy
 #| msgid "Language versions"
 msgid "Language"
 msgstr "Мовні версії"
 
 #: wolnelektury/templates/base/app.html:66
-#: wolnelektury/templates/base/superbase.html:100
+#: wolnelektury/templates/base/superbase.html:105
 #: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Вийти "
 
-#: wolnelektury/templates/base/superbase.html:60
+#: wolnelektury/templates/base/superbase.html:37
+#, fuzzy
+#| msgid "Table of contents"
+msgid "Go to content"
+msgstr "Зміст"
+
+#: wolnelektury/templates/base/superbase.html:38
+msgid "Go to search"
+msgstr ""
+
+#: wolnelektury/templates/base/superbase.html:39
+msgid "Go to page footer"
+msgstr ""
+
+#: wolnelektury/templates/base/superbase.html:65
 #, fuzzy, python-format
 #| msgid ""
 #| "\n"
@@ -151,63 +164,35 @@ msgstr[2] ""
 "маєш <a href='%(r)s'>право</a>\n"
 "                    "
 
-#: wolnelektury/templates/base/superbase.html:94
+#: wolnelektury/templates/base/superbase.html:99
 msgid "My shelf"
 msgstr "Моя полиця"
 
-#: wolnelektury/templates/base/superbase.html:97
+#: wolnelektury/templates/base/superbase.html:102
 #: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Адміністрація"
 
-#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:79
+#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:79
 #: wolnelektury/views.py:80
 msgid "Sign in"
 msgstr "Увійти"
 
-#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:98
+#: wolnelektury/templates/base/superbase.html:110 wolnelektury/views.py:98
 #: wolnelektury/views.py:99 wolnelektury/views.py:127
 msgid "Register"
 msgstr "Зареєструватися"
 
-#: wolnelektury/templates/base/superbase.html:112
-msgid "Support us"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:115
-msgid "Literature"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:118
-msgid "Themes"
-msgstr "Теми"
-
-#: wolnelektury/templates/base/superbase.html:121
-msgid "Audiobooks"
-msgstr "Аудіокниги"
-
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/main_page.html:50
-#, fuzzy
-#| msgid "Account Connections"
-msgid "Collections"
-msgstr "Пов'язані акаунти"
-
-#: wolnelektury/templates/base/superbase.html:127
-#: wolnelektury/templates/main_page.html:106
-msgid "Newsletter"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:136
 #: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Пошук"
 
-#: wolnelektury/templates/base/superbase.html:167
+#: wolnelektury/templates/base/superbase.html:162
 msgid "Close"
 msgstr "Закрити"
 
-#: wolnelektury/templates/base/superbase.html:169
+#: wolnelektury/templates/base/superbase.html:164
 msgid "Loading"
 msgstr "Завантажується"
 
@@ -290,86 +275,118 @@ msgstr ""
 msgid "More..."
 msgstr "Більше..."
 
+#: wolnelektury/templates/main_menu.html:4
+msgid "Support us"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:7
+msgid "Literature"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:10
+msgid "Themes"
+msgstr "Теми"
+
+#: wolnelektury/templates/main_menu.html:13
+msgid "Audiobooks"
+msgstr "Аудіокниги"
+
+#: wolnelektury/templates/main_menu.html:16
+#: wolnelektury/templates/main_page.html:52
+#, fuzzy
+#| msgid "Account Connections"
+msgid "Collections"
+msgstr "Пов'язані акаунти"
+
+#: wolnelektury/templates/main_menu.html:19
+#: wolnelektury/templates/main_page.html:108
+msgid "Newsletter"
+msgstr ""
+
 #: wolnelektury/templates/main_page.html:11
 #: wolnelektury/templates/main_page.html:12
 msgid "Wolne Lektury internet library"
 msgstr "Електронна бібліотека WolneLektury.pl"
 
-#: wolnelektury/templates/main_page.html:19
+#: wolnelektury/templates/main_page.html:21
 msgid "In our digital library you will find"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:28
+#: wolnelektury/templates/main_page.html:30
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:37
+#: wolnelektury/templates/main_page.html:39
 msgid "Recent publications"
 msgstr "останні публікації"
 
-#: wolnelektury/templates/main_page.html:63
+#: wolnelektury/templates/main_page.html:65
 msgid "Motifs and themes"
 msgstr "Мотиви та теми"
 
-#: wolnelektury/templates/main_page.html:68
+#: wolnelektury/templates/main_page.html:70
 msgid "Theme"
 msgstr "Тема"
 
-#: wolnelektury/templates/main_page.html:69
+#: wolnelektury/templates/main_page.html:71
 msgid "Explore works with the same theme"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:84
+#: wolnelektury/templates/main_page.html:86
 msgid "News"
 msgstr "Новості"
 
-#: wolnelektury/templates/main_page.html:91
+#: wolnelektury/templates/main_page.html:93
 msgid "Utilities"
 msgstr "утиліти"
 
-#: wolnelektury/templates/main_page.html:94
+#: wolnelektury/templates/main_page.html:96
 msgid "Report a bug or suggestion"
 msgstr "Повідомити про помилку або надіслати свої пропозиції"
 
-#: wolnelektury/templates/main_page.html:95
+#: wolnelektury/templates/main_page.html:97
 msgid "Download the catalogue in PDF format."
 msgstr "Завантажити каталог у форматі PDF."
 
-#: wolnelektury/templates/main_page.html:96
+#: wolnelektury/templates/main_page.html:98
 #, fuzzy
 #| msgid "Artist"
 msgid "Art"
 msgstr "Митець"
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:99
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Всі книжки"
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:101
 msgid "Footnotes"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:100
+#: wolnelektury/templates/main_page.html:102
 msgid "Missing a book?"
 msgstr "Не знайшли книжки?"
 
-#: wolnelektury/templates/main_page.html:101
+#: wolnelektury/templates/main_page.html:103
 #: wolnelektury/templates/publish_plan.html:4
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "План публікації"
 
-#: wolnelektury/templates/main_page.html:111
+#: wolnelektury/templates/main_page.html:113
 msgid "Information"
 msgstr "інформація"
 
-#: wolnelektury/templates/main_page.html:113
+#: wolnelektury/templates/main_page.html:115
 msgid "Privacy policy"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:134
+#: wolnelektury/templates/main_page.html:120
+msgid "Follow us on Facebook"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:133
 msgid "Image used:"
 msgstr "Використано графіку:"
 
@@ -667,9 +684,6 @@ msgstr "Щоб продовжити, увійдіть в свій акаунт."
 
 #~ msgid "Listen"
 #~ msgstr "Слухати"
-
-#~ msgid "Table of contents"
-#~ msgstr "Зміст"
 
 #~ msgid "Edit. note"
 #~ msgstr "Коментар редактора"

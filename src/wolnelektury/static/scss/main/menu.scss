@@ -92,7 +92,9 @@ body.menu-on {
 }
 
 
-
+#main-menu {
+    display: none;
+}
 
 @media screen and (min-width: 1024px) {
     #user-info {
@@ -117,7 +119,12 @@ body.menu-on {
         }
     }
 
+    #main-menu-side {
+        display: none;
+    }
+    
     #main-menu {
+        display: block;
         list-style: none;
         padding: 0;
         margin: 0;

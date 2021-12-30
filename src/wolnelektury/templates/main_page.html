@@ -11,6 +11,8 @@
 {% block title %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 {% block ogtitle %}{% trans "Wolne Lektury internet library" %}{% endblock %}
 
+{% block footerlink %}#main-footer{% endblock %}
+
 {% block body %}
   {% spaceless %}
     {% carousel 'main' %}
@@ -23,11 +25,11 @@
             {{ book.mini_box }}
           {% endfor %}
         </div>
-	<a href="{% if recommended_collection %}{{ recommended_collection.get_absolute_url }}{% else %}{% url "book_list" %}{% endif %}">
-          <div class="note white-box normal-text" style="font-size: 18px">
+        <div class="note white-box normal-text" style="font-size: 18px">
+	  <a href="{% if recommended_collection %}{{ recommended_collection.get_absolute_url }}{% else %}{% url "book_list" %}{% endif %}" style="display: block; height: 100%">
             {% trans "and many other books, poems, pictures, audiobooks…" %}
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -78,7 +80,7 @@
       </div>
     </section>
 
-    <div class="clearboth"></div>
+    <div id="main-footer" class="clearboth"></div>
 
     <section class="infopages-box">
       <h1>{% trans "News" %}</h1>
@@ -115,11 +117,8 @@
       </ul>
 
       <div class="social-links">
-        <a href="https://www.facebook.com/wolnelektury/" title='Wolne Lektury @ Facebook'>
+        <a href="https://www.facebook.com/wolnelektury/" title='{% trans "Follow us on Facebook" %}'>
           <img src="{% static "img/social/f.png" %}" alt="Wolne Lektury @ Facebook" />
-        </a>
-        <a href="https://nk.pl/profile/30441509" title='Wolne Lektury @ NK'>
-          <img src="{% static "img/social/nk.png" %}" alt="Wolne Lektury @ NK.pl" />
         </a>
       </div>
     </section>

@@ -33,6 +33,11 @@
       {% tracking_code %}
     </head>
     <body id="{% block bodyid %}base{% endblock %}">
+      <ul id="skiplinks">
+        <li><a href="#main-content">{% trans "Go to content" %}</a></li>
+        <li><a id="skiplink-search" href="#search"">{% trans "Go to search" %}</a></li>
+        <li><a href="{% block footerlink %}#footer-wrapper{% endblock %}">{% trans "Go to page footer" %}</a></li>
+      </ul>
 
       {% block bodycontent %}
 
@@ -65,8 +70,8 @@
               </p>
 
               <div id="lang-menu" class="hoverget">
-                <span id='lang-button' class='hoverclick'>
-                  <img src="{% static "img/contrib/language/language.svg" %}" alt="{% trans "Language" %}">
+                <span id='lang-button' class='hoverclick' tabindex="0">
+                  <img src="{% static "img/contrib/language/language.svg" %}" alt="">
                   <span class="label"> {% trans "Language" %}</span>
                 </span>
                 <div id="lang-menu-items">
@@ -74,7 +79,7 @@
                     <form action="{% url 'set_language' %}" method="post">
                       {% csrf_token %}
                       <input type="hidden" name="language" value="{{ lang.0 }}"/>
-                      <button type="submit" lang="{{ lang.0 }}"
+                      <button type="submit" lang="{{ lang.0 }}" tabindex="121"
                               class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %}">{{ lang.1 }}</button>
                     </form>
                   {% endfor %}
@@ -107,25 +112,8 @@
                   {% endif %}
                 </ul>
 
-                <ul id="main-menu">
-                  <li{% if active_menu_item == 'club' %} class="active"{% endif %}>
-                    <a href="{% url 'club_join' %}">{% trans "Support us" %}</a>
-                  </li>
-                  <li{% if active_menu_item == 'books' %} class="active"{% endif %}>
-                    <a href="{% url 'book_list' %}">{% trans "Literature" %}</a>
-                  </li>
-                  <li{% if active_menu_item == 'theme' %} class="active"{% endif %}>
-                    <a href="{% url 'theme_catalogue' %}">{% trans "Themes" %}</a>
-                  </li>
-                  <li{% if active_menu_item == 'audiobooks' %} class="active"{% endif %}>
-                    <a href="{% url 'audiobook_list' %}">{% trans "Audiobooks" %}</a>
-                  </li>
-                  <li{% if active_menu_item == 'collections' %} class="active"{% endif %}>
-                    <a href="{% url 'catalogue_collections' %}">{% trans "Collections" %}</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'subscribe' %}">{% trans "Newsletter" %}</a>
-                  </li>
+                <ul id="main-menu-side">
+                  {% include "main_menu.html" %}
                 </ul>
               </nav>
               <form id="search-area" action="{% url 'wlsearch' %}">
@@ -135,6 +123,13 @@
                 </div>
                 <button type='submit'>{% trans "Search" %}</button>
               </form>
+
+              <ul id="main-menu">
+                {% include "main_menu.html" %}
+              </ul>
+
+
+
             </header>
           </div>
         </div>

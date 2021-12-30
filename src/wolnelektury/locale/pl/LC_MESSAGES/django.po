@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-03-04 17:02+0100\n"
+"PO-Revision-Date: 2021-12-30 15:33+0100\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
@@ -103,18 +103,29 @@ msgstr "Wolne Lektury"
 
 #: wolnelektury/templates/base/app.html:42
 #: wolnelektury/templates/base/app.html:43
-#: wolnelektury/templates/base/superbase.html:69
-#: wolnelektury/templates/base/superbase.html:70
+#: wolnelektury/templates/base/superbase.html:75
 msgid "Language"
 msgstr "Język"
 
 #: wolnelektury/templates/base/app.html:66
-#: wolnelektury/templates/base/superbase.html:100
+#: wolnelektury/templates/base/superbase.html:105
 #: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: wolnelektury/templates/base/superbase.html:60
+#: wolnelektury/templates/base/superbase.html:37
+msgid "Go to content"
+msgstr "Przejdź do treści"
+
+#: wolnelektury/templates/base/superbase.html:38
+msgid "Go to search"
+msgstr "Przejdź do wyszukiwarki"
+
+#: wolnelektury/templates/base/superbase.html:39
+msgid "Go to page footer"
+msgstr "Przejdź do stopki strony"
+
+#: wolnelektury/templates/base/superbase.html:65
 #, python-format
 msgid ""
 "\n"
@@ -142,61 +153,35 @@ msgstr[2] ""
 "<a href='%(r)s'>masz prawo</a>\n"
 "                    "
 
-#: wolnelektury/templates/base/superbase.html:94
+#: wolnelektury/templates/base/superbase.html:99
 msgid "My shelf"
 msgstr "Moja półka"
 
-#: wolnelektury/templates/base/superbase.html:97
+#: wolnelektury/templates/base/superbase.html:102
 #: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Administracja"
 
-#: wolnelektury/templates/base/superbase.html:104 wolnelektury/views.py:79
+#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:79
 #: wolnelektury/views.py:80
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: wolnelektury/templates/base/superbase.html:105 wolnelektury/views.py:98
+#: wolnelektury/templates/base/superbase.html:110 wolnelektury/views.py:98
 #: wolnelektury/views.py:99 wolnelektury/views.py:127
 msgid "Register"
 msgstr "Załóż konto"
 
-#: wolnelektury/templates/base/superbase.html:112
-msgid "Support us"
-msgstr "Wesprzyj nas"
-
-#: wolnelektury/templates/base/superbase.html:115
-msgid "Literature"
-msgstr "Literatura"
-
-#: wolnelektury/templates/base/superbase.html:118
-msgid "Themes"
-msgstr "Motywy"
-
-#: wolnelektury/templates/base/superbase.html:121
-msgid "Audiobooks"
-msgstr "Audiobooki"
-
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/main_page.html:50
-msgid "Collections"
-msgstr "Kolekcje"
-
-#: wolnelektury/templates/base/superbase.html:127
-#: wolnelektury/templates/main_page.html:106
-msgid "Newsletter"
-msgstr "Newsletter"
-
-#: wolnelektury/templates/base/superbase.html:136
 #: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Szukaj"
 
-#: wolnelektury/templates/base/superbase.html:167
+#: wolnelektury/templates/base/superbase.html:162
 msgid "Close"
 msgstr "Zamknij"
 
-#: wolnelektury/templates/base/superbase.html:169
+#: wolnelektury/templates/base/superbase.html:164
 msgid "Loading"
 msgstr "Ładowanie"
 
@@ -258,82 +243,112 @@ msgstr ""
 msgid "More..."
 msgstr "Więcej..."
 
+#: wolnelektury/templates/main_menu.html:4
+msgid "Support us"
+msgstr "Wesprzyj nas"
+
+#: wolnelektury/templates/main_menu.html:7
+msgid "Literature"
+msgstr "Literatura"
+
+#: wolnelektury/templates/main_menu.html:10
+msgid "Themes"
+msgstr "Motywy"
+
+#: wolnelektury/templates/main_menu.html:13
+msgid "Audiobooks"
+msgstr "Audiobooki"
+
+#: wolnelektury/templates/main_menu.html:16
+#: wolnelektury/templates/main_page.html:52
+msgid "Collections"
+msgstr "Kolekcje"
+
+#: wolnelektury/templates/main_menu.html:19
+#: wolnelektury/templates/main_page.html:108
+msgid "Newsletter"
+msgstr "Newsletter"
+
 #: wolnelektury/templates/main_page.html:11
 #: wolnelektury/templates/main_page.html:12
 msgid "Wolne Lektury internet library"
 msgstr "Biblioteka internetowa Wolne Lektury"
 
-#: wolnelektury/templates/main_page.html:19
+#: wolnelektury/templates/main_page.html:21
 msgid "In our digital library you will find"
 msgstr "W naszej cyfrowej bibliotece znajdziesz"
 
-#: wolnelektury/templates/main_page.html:28
+#: wolnelektury/templates/main_page.html:30
 msgid "and many other books, poems, pictures, audiobooks…"
 msgstr "i wiele innych książek, wierszy, obrazów, audiobooków…"
 
-#: wolnelektury/templates/main_page.html:37
+#: wolnelektury/templates/main_page.html:39
 msgid "Recent publications"
 msgstr "Ostatnie publikacje"
 
-#: wolnelektury/templates/main_page.html:63
+#: wolnelektury/templates/main_page.html:65
 msgid "Motifs and themes"
 msgstr "Motywy i tematy"
 
-#: wolnelektury/templates/main_page.html:68
+#: wolnelektury/templates/main_page.html:70
 msgid "Theme"
 msgstr "Motyw"
 
-#: wolnelektury/templates/main_page.html:69
+#: wolnelektury/templates/main_page.html:71
 msgid "Explore works with the same theme"
 msgstr "Utwory, w których występuje ten motyw:"
 
-#: wolnelektury/templates/main_page.html:84
+#: wolnelektury/templates/main_page.html:86
 msgid "News"
 msgstr "Aktualności"
 
-#: wolnelektury/templates/main_page.html:91
+#: wolnelektury/templates/main_page.html:93
 msgid "Utilities"
 msgstr "Narzędzia"
 
-#: wolnelektury/templates/main_page.html:94
+#: wolnelektury/templates/main_page.html:96
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: wolnelektury/templates/main_page.html:95
+#: wolnelektury/templates/main_page.html:97
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: wolnelektury/templates/main_page.html:96
+#: wolnelektury/templates/main_page.html:98
 msgid "Art"
 msgstr "Sztuka"
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:99
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:101
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: wolnelektury/templates/main_page.html:100
+#: wolnelektury/templates/main_page.html:102
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: wolnelektury/templates/main_page.html:101
+#: wolnelektury/templates/main_page.html:103
 #: wolnelektury/templates/publish_plan.html:4
 #: wolnelektury/templates/publish_plan.html:8
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: wolnelektury/templates/main_page.html:111
+#: wolnelektury/templates/main_page.html:113
 msgid "Information"
 msgstr "Informacje"
 
-#: wolnelektury/templates/main_page.html:113
+#: wolnelektury/templates/main_page.html:115
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: wolnelektury/templates/main_page.html:134
+#: wolnelektury/templates/main_page.html:120
+msgid "Follow us on Facebook"
+msgstr "Obserwuj nas na Facebooku"
+
+#: wolnelektury/templates/main_page.html:133
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
@@ -641,9 +656,6 @@ msgstr "Zaloguj się, aby kontynuować"
 
 #~ msgid "Listen"
 #~ msgstr "Słuchaj"
-
-#~ msgid "Table of contents"
-#~ msgstr "Spis treści"
 
 #~ msgid "Edit. note"
 #~ msgstr "Nota red."

@@ -176,6 +176,12 @@
         });
 
         $('.hoverclick').click(function() {$(this).closest('.hoverget').toggleClass('hover');});
+        $('.hoverclick').keydown(function(event){ 
+            var keyCode = (event.keyCode ? event.keyCode : event.which);   
+            if (keyCode == 13) {
+                $(this).trigger('click');
+            }
+        });
 
         $(function(){
             $("#search").search();
@@ -362,6 +368,13 @@
             $(this).addClass("active");
         });
 
+
+        $("#skiplink-search").click(function() {
+            console.log('skiplink search');
+            $("#search").focus();
+            return false;
+        });
+        
     });
 })(jQuery);
 
