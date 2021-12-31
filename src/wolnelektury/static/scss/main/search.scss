@@ -125,3 +125,20 @@
     //@include size(width, 275px);
     line-height: 1.636em;
 }
+
+
+
+
+.search-filter {
+    a {
+        margin-right: 1em;
+    }
+    strong {
+        display: inline-block;
+        width: 5em;
+    }
+    em {
+        margin-right: 1em;
+    }
+        
+}

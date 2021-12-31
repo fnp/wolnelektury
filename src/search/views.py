@@ -115,6 +115,13 @@ def hint(request, mozhint=False, param='term'):
 @cache.never_cache
 def main(request):
     query = request.GET.get('q', '')
+
+    format = request.GET.get('format')
+    lang = request.GET.get('lang')
+    epoch = request.GET.get('epoch')
+    kind = request.GET.get('kind')
+    genre = request.GET.get('genre')
+
     if len(query) < 2:
         return render(
             request, 'catalogue/search_too_short.html',
@@ -125,9 +132,32 @@ def main(request):
             {'prefix': query})
 
     query = prepare_query(query)
-    pd_authors = search_pd_authors(query)
-    books = search_books(query)
-    pictures = search_pictures(query)
+    if not (format or lang or epoch or kind or genre):
+        pd_authors = search_pd_authors(query)
+    else:
+        pd_authors = []
+    if not format or format != 'obraz':
+        books = search_books(
+            query,
+            lang=lang,
+            only_audio=format=='audio',
+            only_synchro=format=='synchro',
+            epoch=epoch,
+            kind=kind,
+            genre=genre
+        )
+    else:
+        books = []
+    if (not format or format == 'obraz') and not lang:
+        pictures = search_pictures(
+            query,
+            epoch=epoch,
+            kind=kind,
+            genre=genre
+        )
+    else:
+        pictures = []
+    
     suggestion = ''
 
     if not (books or pictures or pd_authors):
@@ -150,10 +180,22 @@ def main(request):
             'pd_authors': pd_authors,
             'books': books,
             'pictures': pictures,
-            'did_you_mean': suggestion
+            'did_you_mean': suggestion,
+            'set': {
+                'lang': lang,
+                'format': format,
+                'epoch': epoch,
+                'kind': kind,
+                'genre': genre,
+            },
+            'tags': {
+                'epoch': Tag.objects.filter(category='epoch'),
+                'genre': Tag.objects.filter(category='genre'),
+                'kind': Tag.objects.filter(category='kind'),
+            },
         })
 
-def search_books(query):
+def search_books(query, lang=None, only_audio=False, only_synchro=False, epoch=None, kind=None, genre=None):
     search = Search()
     results_parts = []
     search_fields = []
@@ -185,15 +227,31 @@ def search_books(query):
 
     def ensure_exists(r):
         try:
-            return r.book
+            r.book
         except Book.DoesNotExist:
             return False
+
+        print(lang, r.book.language)
+        if lang and r.book.language != lang:
+            return False
+        if only_audio and not r.book.has_mp3_file():
+            return False
+        if only_synchro and not r.book.has_daisy_file():
+            return False
+        if epoch and not r.book.tags.filter(category='epoch', slug=epoch).exists():
+            return False
+        if kind and not r.book.tags.filter(category='kind', slug=kind).exists():
+            return False
+        if genre and not r.book.tags.filter(category='genre', slug=genre).exists():
+            return False
+
+        return True
 
     results = [r for r in results if ensure_exists(r)]
     return results
 
 
-def search_pictures(query):
+def search_pictures(query, epoch=None, kind=None, genre=None):
     search = Search()
     results_parts = []
     search_fields = []
@@ -222,6 +280,13 @@ def search_pictures(query):
         try:
             return r.picture
         except Picture.DoesNotExist:
+            return False
+
+        if epoch and not r.picture.tags.filter(category='epoch', slug=epoch).exists():
+            return False
+        if kind and not r.picture.tags.filter(category='kind', slug=kind).exists():
+            return False
+        if genre and not r.picture.tags.filter(category='genre', slug=genre).exists():
             return False
 
     results = [r for r in results if ensure_exists(r)]

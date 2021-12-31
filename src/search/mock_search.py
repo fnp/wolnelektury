@@ -19,9 +19,12 @@ class Search(Mock):
 
     index = MockIndex()
 
-    @staticmethod
-    def _find_some_books(query_terms=None, max_results=20):
+    def search_words(self, words, fields, required=None, book=True, picture=False):
         from .index import SearchResult
+
+        max_results = 20
+        
+        if picture: return []
 
         qs = Book.objects.filter(findable=True).order_by('?')
         results = []
@@ -31,10 +34,7 @@ class Search(Mock):
                 'book_id': book.pk,
                 'published_date': randint(1000, 1920),
                 }
-            res = SearchResult(doc, how_found='mock', query_terms=query_terms)
+            res = SearchResult(doc, how_found='mock', query_terms=words)
             results.append(res)
         return results
-
-    def search_everywhere(self, searched, query_terms=None):
-        return []
 
