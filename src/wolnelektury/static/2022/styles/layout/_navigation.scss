@@ -1,0 +1,55 @@
+.l-navigation {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #083F4D;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .l-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.l-navigation__button {
+  appearance: none;
+  border: 0;
+  background: 0;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+.l-naviagion__search {
+  width: 60%;
+  max-width: 580px;
+  margin-left: 60px;
+  margin-right: auto;
+
+  input {
+    font-family: $base-font;
+    font-size: 18px;
+    font-style: italic;
+    border: 0;
+    padding: 10px;
+    border-radius: 52px;
+    width: 100%;
+    max-width: 580px;
+    outline: 0;
+  }
+}
+
+.l-navigation__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon-liked {
+    color: #85C7CC;
+    font-size: 30px;
+    margin-right: 25px;
+  }
+}

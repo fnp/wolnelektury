@@ -1,0 +1,60 @@
+/* ------------------------------
+    Util: Vars
+------------------------------ */
+
+/* Env */
+$production: false;
+
+$images-path: "/images" !default;
+
+@if $production == true {
+  $images-path: "/images";
+} @else {
+  $images-path: "../images";
+}
+
+/* Colors */
+$color-primary: 		  #018189;
+$color-secondary: 		#96C13D;
+
+$color-white:         #ffffff;
+$color-black:         #000000;
+$color-darker:        #0e0f0f;
+$color-dark:          #3E3E3E;
+$color-gray:          #666666;
+$color-light-gray:    #CCCCCC;
+
+$color-light-blue:    #E5F4FF;
+$color-yellow:        #FBC40F;
+
+
+$color-action:        #3498db;
+$color-error:         #e33147;
+$color-success:       #2ecc71;
+
+/* Typography */
+$base-font-size: 16px;
+$base-font: 'Source Sans Pro', sans-serif;
+$secondary-font: 'Source Sans Pro', sans-serif;
+$font-path: "../fonts" !default;
+
+$light:    300;
+$regular:  400;
+$medium:   500;
+$semibold: 600;
+$bold:     700;
+
+/* Layers */
+$master-layer:  15;
+$top-layer:     10;
+$middle-layer:  5;
+$default-layer: 0;
+$bottom-layer: -5;
+
+/* Animations */
+$ease:         cubic-bezier(.4, 0, .2, 1);
+$ease-in:      cubic-bezier(.4, 0, 1, 1);
+$ease-out:     cubic-bezier(.0, 0, .2, 1);
+$ease-dynamic: cubic-bezier(0.25, 1, 0.5, 1);
+$duration: 250ms;
+

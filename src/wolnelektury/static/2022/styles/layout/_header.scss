@@ -1,0 +1,59 @@
+.l-header {
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto 55px;
+}
+
+.l-header__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: #007880;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 37px;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #083F4D;
+    margin: 0;
+  }
+
+  ul {
+    letter-spacing: -0.02em;
+    color: $color-secondary;
+    font-weight: $bold;
+    @include font-size(24px);
+    list-style: none;
+    line-height: 100%;
+    display: flex;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-right: 10px;
+      &:not(:last-child):after { content: "/";margin-left: 10px; }
+    }
+  }
+}
+
+.l-header__actions {
+  .l-button {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+}

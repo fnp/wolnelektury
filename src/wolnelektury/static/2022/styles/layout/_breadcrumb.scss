@@ -1,0 +1,39 @@
+.l-breadcrumb {
+  display: flex;
+  margin: 18px 0;
+  align-items: center;
+
+  a {
+    font-size: 15px;
+    line-height: 160%;
+    color: #474747;
+
+    &:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    &:not(:last-child) {
+      &:after {
+        font-size: 9px;
+        color: #007880;
+        content: $icon-arrow-right;
+        margin: 0 14px;
+
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: '#{$icomoon-font-family}' !important;
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
+  }
+}

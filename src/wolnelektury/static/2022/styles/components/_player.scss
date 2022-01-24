@@ -1,0 +1,113 @@
+.c-player {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  padding: 25px 34px;
+  background-color: #D5ECED;
+  border-radius: 5px;
+}
+
+.c-player__btn {
+  background: white;
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $ease-dynamic 350ms;
+
+  &:hover {
+    background: #083F4D;
+    .icon {color: white;}
+  }
+
+  .icon {
+    color: #007880;
+    font-size: 26px;
+    position: relative;
+    left: 3px;
+    transition: all $ease-dynamic 350ms;
+  }
+}
+
+.c-player__timeline {
+  max-width: 590px;
+  width: calc(100% - 60px);
+  margin-left: auto;
+  margin-right: 0;
+  position: relative;
+
+  &:before {
+    content: "1×";
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 120%;
+    text-align: center;
+    color: #007880;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -70px;
+  }
+
+  & > span {
+    height: 10px;
+    width: 100%;
+    display: block;
+    background: #FFFFFF;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+
+    span {
+      width: 40%;
+      height: 100%;
+      position: absolute;
+      border-radius: 5px;
+      background-color: #083F4D;
+      top: 0; left: 0;
+    }
+  }
+}
+
+.c-player__info {
+  top: -27px;
+  right: 0;
+  position: absolute;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0.05em;
+  color: #083F4D;
+}
+
+.c-player__length {
+  width: 100%;
+  display: block;
+  position: relative;
+
+  span {
+    position: absolute;
+    padding-top: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0.05em;
+    color: #083F4D;
+
+    &:nth-child(1) { left: 0; }
+    &:nth-child(2) { right: 0; }
+  }
+}
