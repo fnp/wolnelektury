@@ -60,6 +60,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
     list_display = [
         'payment_id', 'acquisition_date',
         'iban_valid',
+        'latest_status',
         'bank_submission_date',
         'bank_acceptance_date',
         'amount', 'first_name', 'last_name',
@@ -78,11 +79,14 @@ class DirectDebitAdmin(admin.ModelAdmin):
         'fundraiser',
         'campaign',
         ('cancelled_at', EmptyFieldListFilter),
+        'latest_status',
         'needs_redo',
         'optout',
         'amount',
         'sex',
         'is_consumer',
+        ('fundraiser_commission', EmptyFieldListFilter),
+        ('fundraiser_bonus', EmptyFieldListFilter),
     ]
     fieldsets = [
         (None, {
@@ -94,7 +98,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
                 ('postal_code', 'phone'),
                 'email',
                 ('iban', 'iban_valid', 'iban_warning'),
-                'payment_id',
+                ('payment_id', 'latest_status'),
                 'agree_contact',
                 'agree_fundraising',
                 'agree_newsletter',
@@ -108,6 +112,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
             ('cancelled_at', 'needs_redo', 'optout'),
             'submission_date',
             'fundraiser_commission',
+            'fundraiser_bonus',
             'fundraiser_bill',
             'bank_submission_date',
             'bank_acceptance_date',
@@ -115,7 +120,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
             ]
         })
     ]
-    readonly_fields = ['agree_contact', 'iban_valid', 'iban_warning']
+    readonly_fields = ['agree_contact', 'iban_valid', 'iban_warning', 'latest_status']
     inlines = [BankExportFeedbackLineInline]
 
     def set_bank_submission(m, r, q):

@@ -57,6 +57,7 @@ class DirectDebit(models.Model):
 
     fundraiser = models.ForeignKey(Fundraiser, models.PROTECT, blank=True, null=True, verbose_name=_('fundraiser'))
     fundraiser_commission = models.IntegerField(_('fundraiser commission'), null=True, blank=True)
+    fundraiser_bonus = models.IntegerField(_('fundraiser bonus'), null=True, blank=True)
     fundraiser_bill = models.CharField(_('fundaiser bill number'), max_length=255, blank=True)
 
     amount = models.IntegerField(_('amount'), null=True, blank=True)
@@ -69,15 +70,23 @@ class DirectDebit(models.Model):
 
     campaign = models.ForeignKey(Campaign, models.PROTECT, null=True, blank=True, verbose_name=_('campaign'))
 
+    latest_status = models.CharField(max_length=255, blank=True)
+    
     class Meta:
         verbose_name = _('direct debit')
         verbose_name_plural = _('direct debits')
 
     def __str__(self):
-        return self.payment_id
+        return "{} {}".format(self.payment_id, self.latest_status)
+
+    def get_latest_status(self):
+        line = self.bankexportfeedbackline_set.order_by('-feedback__created_at').first()
+        if line is None: return ""
+        return line.comment
 
     def save(self, **kwargs):
         self.iban_valid = not self.iban_warning() if self.iban else None
+        self.latest_status = self.get_latest_status()
         super().save(**kwargs)
 
     @classmethod
