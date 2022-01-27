@@ -268,9 +268,17 @@ class Book(models.Model):
         sibling = self.parent.children.filter(parent_number__lt=self.parent_number).order_by('-parent_number').first()
         if sibling is not None:
             return sibling.get_last_text()
+
+        if self.parent.html_file:
+            return self.parent
+        
         return self.parent.get_prev_text()
 
     def get_next_text(self):
+        child = self.children.order_by('parent_number').first()
+        if child is not None:
+            return child.get_first_text()
+
         if not self.parent:
             return None
         sibling = self.parent.children.filter(parent_number__gt=self.parent_number).order_by('parent_number').first()
@@ -283,6 +291,9 @@ class Book(models.Model):
             return []
         return self.parent.children.all().order_by('parent_number')
 
+    def get_children(self):
+        return self.children.all().order_by('parent_number')
+    
     @property
     def name(self):
         return self.title

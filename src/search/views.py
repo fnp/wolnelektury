@@ -189,9 +189,9 @@ def main(request):
                 'genre': genre,
             },
             'tags': {
-                'epoch': Tag.objects.filter(category='epoch'),
-                'genre': Tag.objects.filter(category='genre'),
-                'kind': Tag.objects.filter(category='kind'),
+                'epoch': Tag.objects.filter(category='epoch', for_books=True),
+                'genre': Tag.objects.filter(category='genre', for_books=True),
+                'kind': Tag.objects.filter(category='kind', for_books=True),
             },
         })
 
@@ -227,11 +227,11 @@ def search_books(query, lang=None, only_audio=False, only_synchro=False, epoch=N
 
     def ensure_exists(r):
         try:
-            r.book
+            if not r.book:
+                return False
         except Book.DoesNotExist:
             return False
 
-        print(lang, r.book.language)
         if lang and r.book.language != lang:
             return False
         if only_audio and not r.book.has_mp3_file():
@@ -278,7 +278,8 @@ def search_pictures(query, epoch=None, kind=None, genre=None):
 
     def ensure_exists(r):
         try:
-            return r.picture
+            if not r.picture:
+                return False
         except Picture.DoesNotExist:
             return False
 
@@ -288,6 +289,8 @@ def search_pictures(query, epoch=None, kind=None, genre=None):
             return False
         if genre and not r.picture.tags.filter(category='genre', slug=genre).exists():
             return False
+
+        return True
 
     results = [r for r in results if ensure_exists(r)]
     return results

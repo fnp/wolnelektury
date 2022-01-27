@@ -95,7 +95,10 @@ class Snippets(object):
         of the snippet stored there.
         """
         self.file.seek(pos[0], 0)
-        txt = self.file.read(pos[1]).decode('utf-8')
+        try:
+            txt = self.file.read(pos[1]).decode('utf-8')
+        except:
+            return ''
         return txt
 
     def close(self):

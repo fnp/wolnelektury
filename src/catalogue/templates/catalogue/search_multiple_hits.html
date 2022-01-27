@@ -19,7 +19,7 @@
       <strong>format:</strong>
       {% if not set.format %}<em>dowolny</em>{% else %}<a href="{% set_get_parameter format='' %}">dowolny</a>{% endif %}
       {% if set.format == "tekst" %}<em>tekst</em>{% else %}<a href="{% set_get_parameter format='tekst' %}">tekst</a>{% endif %}
-      {% if set.format == "audio" %}<em>audiobook</em>{% else %}<a href="{% set_get_parameter format='audio' %}">tekst</a>{% endif %}
+      {% if set.format == "audio" %}<em>audiobook</em>{% else %}<a href="{% set_get_parameter format='audio' %}">audiobook</a>{% endif %}
       {% if set.format == "synchro" %}<em>DAISY</em>{% else %}<a href="{% set_get_parameter format='synchro' %}">DAISY</a>{% endif %}
       {% if set.format == "obraz" %}<em>obraz</em>{% else %}<a href="{% set_get_parameter format='obraz' %}">obraz</a>{% endif %}
     </p>
@@ -38,6 +38,7 @@
     <p class="search-filter">
       <strong>{% trans "epoch" %}: </strong>
       {% if not set.epoch %}<em>dowolna</em>{% else %}<a href="{% set_get_parameter epoch='' %}">dowolna</a>{% endif %}
+
       {% for tag in tags.epoch %}
         {% if set.epoch == tag.slug %}
           <em>{{ tag.name }}</em>

@@ -118,7 +118,7 @@
         {% if forloop.counter > 1 %}
           <li>
         {% endif %}
-        <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+        <a href="{% if b.html_file %}{% url 'book_text' b.slug %}{% else %}{{ b.get_absolute_url }}{% endif %}">{{ b.title }}</a>
         <ol>
       {% endfor %}
         {% for b in book.get_siblings %}
@@ -141,6 +141,11 @@
     {% else %}
       <strong>{{ book.title }}</strong>
       <div id="heretoc"></div>
+      <ol>
+        {% for c in book.get_children %}
+          <li><a href="{% url 'book_text' c.get_first_text.slug %}">{{ c.title }}</a></li>
+        {% endfor %}
+      </ol>
     {% endif %}
   </div>
 
