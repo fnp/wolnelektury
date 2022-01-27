@@ -1,0 +1,32 @@
+.l-article {
+  color: $color-gray;
+
+  h2 {}
+  h3 {
+    font-weight: 600;
+    font-size: 21.5px;
+    line-height: 140%;
+    border-bottom: 1px solid #D9D9D9;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    letter-spacing: -0.01em;
+    color: #007880;
+  }
+  h4 {}
+  p {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 150%;
+    color: #474747;
+  }
+  ul {}
+  ol {}
+}
+
+.l-article__lead {
+  margin-top: 0;
+  font-weight: $light;
+  @include font-size(24px);
+  font-family: $secondary-font;
+  line-height: 166%;
+}

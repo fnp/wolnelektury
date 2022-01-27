@@ -1,0 +1,53 @@
+.c-support {
+  display: flex;
+  margin-top: 50px;
+  background: #FFF1BF url(../images/bg.png) top center no-repeat;
+  border-radius: 15px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    padding-left: 44px;
+    padding-right: 20px;
+    margin: 0 auto;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 72px;
+    letter-spacing: -0.02em;
+    color: #333333;
+  }
+
+  figure {
+    margin: 0;
+    font-size: 0;
+    position: relative;
+  }
+
+  a {
+    bottom: 34px;
+    left: 0; right: 0;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 343px;
+    position: absolute;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 22px 14px 28px;
+    background: #FFF1BF;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: all $ease-dynamic 350ms;
+
+    &:hover {
+      background: $color-yellow;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+/* ------------------------------
+    Base: Icons
+------------------------------ */
+
+$icomoon-font-family: "wl" !default;
+$icomoon-font-path:   "../fonts" !default;
+
+$icon-liked: "\e900";
+$icon-arrow-right: "\e901";
+$icon-arrow-up: "\e902";
+$icon-audio: "\e903";
+$icon-book: "\e904";
+$icon-eye: "\e905";
+$icon-play: "\e906";
+$icon-quote: "\e907";
+$icon-search: "\e908";
+$icon-acc-1: "\e909";
+$icon-acc-2: "\e90a";
+$icon-acc-3: "\e90b";
+$icon-all: "\e90c";
+$icon-arrow-down: "\e90d";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?79zz52') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?79zz52') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?79zz52##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-liked {
+  &:before {
+    content: $icon-liked;
+  }
+}
+.icon-arrow-right {
+  &:before {
+    content: $icon-arrow-right;
+  }
+}
+.icon-arrow-up {
+  &:before {
+    content: $icon-arrow-up;
+  }
+}
+.icon-audio {
+  &:before {
+    content: $icon-audio;
+  }
+}
+.icon-book {
+  &:before {
+    content: $icon-book;
+  }
+}
+.icon-eye {
+  &:before {
+    content: $icon-eye;
+  }
+}
+.icon-play {
+  &:before {
+    content: $icon-play;
+  }
+}
+.icon-quote {
+  &:before {
+    content: $icon-quote;
+  }
+}
+.icon-search {
+  &:before {
+    content: $icon-search;
+  }
+}
+.icon-acc-1 {
+  &:before {
+    content: $icon-acc-1;
+  }
+}
+.icon-acc-2 {
+  &:before {
+    content: $icon-acc-2;
+  }
+}
+.icon-acc-3 {
+  &:before {
+    content: $icon-acc-3;
+  }
+}
+.icon-all {
+  &:before {
+    content: $icon-all;
+  }
+}
+.icon-arrow-down {
+  &:before {
+    content: $icon-arrow-down;
+  }
+}
