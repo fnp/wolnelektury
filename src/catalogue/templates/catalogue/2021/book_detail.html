@@ -68,7 +68,7 @@
             <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
             <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
           </ul>
-          {% if book.parent or book.children.all %}
+          {% if book.parent or book.get_children %}
             <ul class="l-aside__zbiory">
               {% if book.parent %}
                 {% for b in book.ancestors %}
@@ -81,7 +81,7 @@
                     {% if b == book %}
                       <strong>{{ b.title }}</strong>
                       <ul>
-                        {% for c in book.children.all %}
+                        {% for c in book.get_children %}
                           <li>
                             <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
                           </li>
@@ -101,7 +101,7 @@
                 <li>
                   <strong>{{ book.title }}</strong>
                   <ul>
-                    {% for c in book.children.all %}
+                    {% for c in book.get_children %}
                       <li>
                         <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
                       </li>
