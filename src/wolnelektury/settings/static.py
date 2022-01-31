@@ -22,11 +22,12 @@ IMAGE_DIR = 'book/pictures/'
 
 PIPELINE = {
     'STYLESHEETS': {
-        '2021': {
+        '2022': {
             'source_filenames': [
-                '2021/css/main.scss',
+                '2022/styles/main.scss',
+                '2022/more.scss',
             ],
-            'output_filename': 'css/compressed/2021.css',
+            'output_filename': 'css/compressed/2022.css',
         },
         'main': {
             # styles both for mobile and for big screen
@@ -140,6 +141,14 @@ PIPELINE = {
                 'player/player.js',
             ],
             'output_filename': 'js/player.min.js',
+        },
+        '2022_player': {
+            'source_filenames': [
+                'jplayer/jquery.jplayer.min.js',
+                'jplayer/jplayer.playlist.min.js',
+                'player/2022_player.js',
+            ],
+            'output_filename': 'js/2022_player.min.js',
         },
         'book': {
             'source_filenames': [

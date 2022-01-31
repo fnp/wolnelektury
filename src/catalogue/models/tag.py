@@ -67,6 +67,8 @@ class Tag(models.Model):
     gazeta_link = models.CharField(blank=True, max_length=240)
     culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
+    photo = models.FileField(blank=True, null=True, upload_to='catalogue/tag/')
+    photo_attribution = models.CharField(max_length=255, blank=True)
 
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)

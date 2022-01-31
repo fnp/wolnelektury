@@ -6,7 +6,7 @@ from django import template
 from django.utils.functional import lazy
 from django.utils.cache import add_never_cache_headers
 from catalogue.models import Book
-from social.utils import likes, get_or_choose_cite
+from social.utils import likes, get_or_choose_cite, choose_cite as cs
 from ..models import Carousel, Cite
 
 register = template.Library()
@@ -22,6 +22,11 @@ def likes_book(context, book):
 def choose_cite(context, book_id=None, tag_ids=None):
     request = context['request']
     return get_or_choose_cite(request, book_id, tag_ids)
+
+
+@register.simple_tag
+def choose_cites(book, number):
+    return  book.choose_fragments(number) # todo: cites?
 
 
 @register.simple_tag(takes_context=True)

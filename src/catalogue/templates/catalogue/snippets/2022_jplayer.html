@@ -1,0 +1,70 @@
+{% load i18n catalogue_tags %}
+
+<div class="c-media__player" id="jp_container_{{ book.pk }}">
+  <div class="jp-jplayer" data-player="jp_container_{{ book.pk }}"
+       data-supplied="oga,mp3"></div>
+
+  <div class="c-player">
+    <button class="c-player__btn jp-play">
+      <i class="icon icon-play"></i>
+    </button>
+    <button class="c-player__btn jp-pause">
+      <i class="icon icon-play"></i>
+    </button>
+    <div class="c-player__timeline">
+      <div class="c-player__title">
+      </div>
+      <div class="c-player__info"></div>
+      <span>
+        <span class="jp-seek-bar">
+          <span class="jp-play-bar"></span>
+        </span>
+      </span>
+      <time class="c-player__length">
+        <span class="jp-current-time"></span>
+        <span>
+          <span class="jp-duration"></span>
+        </span>
+      </time>
+    </div>
+  </div>
+  <div class="c-media__caption">
+    <div class="license"></div>
+    <div class="project-logo"></div>
+    <div class="content"></div>
+  </div>
+
+  <ul class="jp-playlist" style="display: none;">
+    {% for i in book.get_audiobooks.0 %}
+      <li
+          data-mp3='{{ i.mp3.file.url }}'
+          data-ogg='{{ i.ogg.file.url }}'
+          data-media-id="{{ i.mp3.id }}"
+      >
+        {% with extra_info=i.mp3.get_extra_info_json %}
+          <span class="title">
+            {{ i.mp3.part_name }}
+          </span>
+          <span class="attribution">
+            {% trans "Artist:" %}&nbsp;<span class='artist'>{{ extra_info.artist_name }}</span>,
+            {% trans "director:" %}&nbsp;<span class='director'>{{ extra_info.director_name }}</span>
+          </span>
+          <span class="license">
+            {% if extra_info.license %}{% license_icon extra_info.license %}{% endif %}
+          </span>
+          <span class="project-icon">
+            {% if i.mp3.project_icon %}<img class="project-icon" src="{{ i.mp3.project_icon }}">{% endif %}
+          </span>
+          <span class="project-description">
+            {% if i.mp3.project_description %}{{ i.mp3.project_description }}{% else %}
+              {% with fb=extra_info.funded_by %}
+                {% if fb %}Dofinansowano ze środków: {{ fb }}.{% endif %}
+              {% endwith %}
+	    {% endif %}
+          </span>
+	{% endwith %}
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>

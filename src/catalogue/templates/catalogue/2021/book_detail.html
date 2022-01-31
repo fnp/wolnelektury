@@ -1,7 +1,7 @@
 <!doctype html>
 {% load pipeline %}
 {% load static %}
-{% load choose_cite from social_tags %}
+{% load choose_cites from social_tags %}
 {% load choose_fragment license_icon from catalogue_tags %}
 {% load catalogue_tags %}
 
@@ -14,98 +14,90 @@
     <title>WolneLektury.pl</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    {% stylesheet '2021' %}
-    <script src="scripts/modernizr.js"></script>
+    {% stylesheet '2022' %}
+      <script src="scripts/modernizr.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
 
     <nav class="l-navigation">
-      <a href="/" class="l-navigation__logo">
-        <img src="{% static '2021/images/logo.png' %}" alt="WolneLektury.pl">
-      </a>
-      <button class="l-navigation__button js-menu" aria-label="Menu">
-        <span class="c-hamburger">
-            <span class="bar"></span>
-        </span>
-      </button>
+      <div class="l-container">
+        <a href="/" class="l-navigation__logo">
+          <img src="{% static "2022/images/logo.png" %}" alt="WolneLektury.pl">
+        </a>
+        <div class="l-naviagion__search">
+          <form action="/szukaj/">
+            <input name="q" type="text" placeholder="szukaj tytułu, autora, motywów…">
+          </form>
+        </div>
+        <div class="l-navigation__actions">
+          <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
+          <button class="l-navigation__button js-menu" aria-label="Menu">
+            <span class="c-hamburger">
+              <span class="bar"></span>
+            </span>
+          </button>
+        </div>
+      </div>
     </nav>
 
-    <header class="l-header">
-      <figure class="l-header__img">
-        <img src="{% if book.cover_thumb %}{{ book.cover_thumb.url }}{% endif %}" alt="{{ book.pretty_title }}">
-      </figure>
-      <div class="l-header__content">
-        <p>
-          {% for author in book.authors %}
-            <a href="{{ author.get_absolute_url  }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}
-          {% endfor %}
-          {% if book.translators %}
-            (tłum. {% for translator in book.translators %}{{ translator }}{% endfor %})
-          {% endif %}
-        </p>
-        <h1>{{ book.title }}</h1>
-        <ul>
-          {# Wielkość liter zmieniona sztucznie. Docelowo należy ustalić. #}
-          {% for tag in book.kinds %}
-            <li><a href="{{ tag.get_absolute_url }}">{{ tag|lower }}</a></li>
-          {% endfor %}
-          {% for tag in book.genres %}
-            <li><a href="{{ tag.get_absolute_url }}">{{ tag|lower }}</a></li>
-          {% endfor %}
-          {% for tag in book.epochs %}
-            <li><a href="{{ tag.get_absolute_url }}">{{ tag|lower }}</a></li>
-          {% endfor %}
-        </ul>
+
+    {# TODO: BREADCRUMBS #}
+    <div class="l-container">
+      <div class="l-breadcrumb">
+        <a href="/"><span>Strona główna</span></a>
+        <a href="/katalog/lektury/"><span>Literatura</span></a>
+        {% for ancestor in book.ancestors %}
+          <a href="{{ ancestor.get_absolute_url }}">{{ ancestor.title }}</a>
+        {% endfor %}
       </div>
-      <div class="l-header__actions">
-        <button class="l-button l-button--fav">
-          <img src="{% static '2021/images/fav.svg' %}" alt="Dodaj do ulubionych">
-        </button>
-      </div>
-    </header>
+    </div>
+
 
     <main class="l-main">
       <section class="l-section">
         <aside class="l-aside">
+          <figure>
+            <img src="{% if book.cover_thumb %}{{ book.cover_thumb.url }}{% endif %}" alt="{{ book.pretty_title }}" width="238">
+          </figure>
+          <ul class="l-aside__info">
+            <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
+            <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
+            <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
+          </ul>
           {% if book.parent or book.children.all %}
-            <h3>należy do zbiorów</h3>
-
-            {% if book.parent %}
-              <ul>
-              {% for b in book.ancestor.all %}
-                <li>
-                  <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
-                  <ul>
-              {% endfor %}
-              {% for b in book.get_siblings %}
-                <li>
-                  {% if b == book %}
-                    <strong>{{ b.title }}</strong>
-                    <ul>
-                      {% for c in book.children.all %}
-                        <li>
-                          <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  {% else %}
+            <ul class="l-aside__zbiory">
+              {% if book.parent %}
+                {% for b in book.ancestors %}
+                  <li>
                     <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
-                  {% endif %}
-                </li>
-              {% endfor %}
+                    <ul>
+                {% endfor %}
+                {% for b in book.get_siblings %}
+                  <li>
+                    {% if b == book %}
+                      <strong>{{ b.title }}</strong>
+                      <ul>
+                        {% for c in book.children.all %}
+                          <li>
+                            <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+                    {% endif %}
+                  </li>
+                {% endfor %}
 
-              {% for b in book.ancestor.all %}
-                </ul>
-                </li>
-              {% endfor %}
-              </ul>
-
-            {% else %}
-              <ul>
+                {% for b in book.ancestor.all %}
+                    </ul>
+                  </li>
+                {% endfor %}
+              {% else %}
                 <li>
                   <strong>{{ book.title }}</strong>
                   <ul>
@@ -116,279 +108,280 @@
                     {% endfor %}
                   </ul>
                 </li>
-              </ul>
-            {% endif %}
-
-
-          {% endif  %}
-
-
-          <ul class="c-externals">
-            <li><a href="{{ book.xml_file.url }}" target="_blank">źródłowy plik XML</a></li>
-            <li><a href="{% url 'poem_from_book' book.slug %}" target="_blank">miksuj treść utworu</a></li>
-
-            <li><a href="{{ book.get_extra_info_json.about }}" target="_blank">utwór na Platformie Redakcyjnej</a></li>
-          </ul>
-        </aside>
-        <article class="l-article">
-
-          <div class="quote l-article__lead">
-            {% choose_cite book as cite_promo %}
-            {% if cite_promo %}
-              {{ cite.promo_box }}
-            {% else %}
-              {% choose_fragment book as fragment_promo %}
-              {% if fragment_promo %}
-                {{  fragment_promo.get_short_text|safe }}
               {% endif %}
-            {% endif %}
-          </div>
-
-          <div class="c-media">
-            <div class="c-media__actions">
-              <div class="c-media__btn">
-                {% if book.has_mp3_file %}
-                  <button class="l-button l-button--media" id="audiobook">pobierz audiobook</button>
-                  <ul>
-                    <li><a href="{% url 'download_zip_mp3' book.slug %}">mp3</a></li>
-                    {% if book.has_ogg_file %}
-                      <li><a href="{% url 'download_zip_ogg' book.slug %}">ogg</a></li>
+            </ul>
+          {% endif  %}
+        </aside>
+        <div class="l-content">
+          <header class="l-header">
+            <div class="l-header__content">
+              <p>{% for author in book.authors %}<a href="{{ author.get_absolute_url }}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+                {% if book.translators %}
+                  (tłum. {% for translator in book.translators %}{{ translator }}{% endfor %})
+                {% endif %}
+              </p>
+              <h1>{{ book.title }}</h1>
+            </div>
+            <div class="l-header__actions">
+              <button class="l-button l-button--fav">
+                <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
+              </button>
+            </div>
+          </header>
+          <article class="l-article">
+            <div class="c-media">
+              <div class="c-media__actions">
+                <div class="c-media__btn">
+                  {% if book.has_mp3_file %}
+                    <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> pobierz audiobook</button>
+                  {% endif %}
+                </div>
+                <div class="c-media__btn">
+                  <button class="l-button l-button--media" id="ebook"><i class="icon icon-book"></i> pobierz książkę</button>
+                </div>
+                <div class="c-media__btn">
+                  {% with t=book.get_first_text %}
+                    {% if t %}
+                      <a href="{% url 'book_text' t.slug %}" class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> czytaj online</a>
                     {% endif %}
-                    {% for dsy in book.media_daisy %}
-                      <li><a href="{{ dsy.file.url }}">DAISY</a></li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-              <div class="c-media__btn">
-                <button class="l-button l-button--media" id="ebook">pobierz książkę</button>
-                <ul>
-                  {% if book.pdf_file %}<li><a href="{{ book.pdf_url }}">PDF</a</li>{% endif %}
-                  {% if book.epub_file %}<li><a href="{{ book.epub_url }}">epub</a></li>{% endif %}
-                  {% if book.mobi_file %}<li><a href="{{ book.mobi_url }}">mobi</a></li>{% endif %}
-                </ul>
-              </div>
-              <div class="c-media__btn">
-                {% if book.get_first_text %}
-                <a href="{% url 'book_text' book.get_first_text.slug %}">
-                  <div class="l-button l-button--media l-button--media--full">
-                    czytaj
-                  </div>
-                </a>
-                <!-- ul>
-                     <li>PDF</li>
-                     <li>epub</li>
-                     <li>mobi</li>
-                     </ul-->
-                {% endif %}
-              </div>
-            </div>
-            {% if book.has_mp3_file %}
-            <div class="c-media__player">
-              <h2>słuchaj audiobooka w naszym serwisie</h2>
-              <div class="c-player">
-                <button class="c-player__btn">
-                  <img src="{% static '2021/images/play.svg' %}" alt="słuchaj audiobooka w naszym serwisie">
-                </button>
-                <div class="c-player__timeline">
-                  <span></span>
-                  <time class="c-player__length">1h 20m</time>
+                  {% endwith %}
                 </div>
               </div>
-            </div>
-            {% endif %}
-            <div class="c-media__popup" data-popup="ebook">
-              <div class="c-media__popup__box">
-                <div class="c-media__popup__box__lead">
-                  <h2>Pobieranie e-booka</h2>
-                  <p>Wybierz wersję dla siebie:</p>
-                </div>
-                <div class="c-media__popup__box__items">
-                  {% if book.pdf_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.pdf</h3>
-                        <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
-                      </div>
-                      <div>
-                        <a href="{{ book.pdf_url }}" class="l-button l-button--media l-button--media--full">.pdf</a>
-                      </div>
-                    </div>
-                  {% endif %}
-                  {% if book.epub_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.epub</h3>
-                        <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
-                      </div>
-                      <div>
-                        <a href="{{ book.epub_url }}" class="l-button l-button--media l-button--media--full">.epub</a>
-                      </div>
-                    </div>
-                  {% endif %}
-                  {% if book.mobi_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.mobi</h3>
-                        <p>Natywny format dla czytnika Amazon Kindle.</p>
-                      </div>
-                      <div>
-                        <a href="{{ book.mobi_url }}" class="l-button l-button--media l-button--media--full">.mobi</a>
-                      </div>
-                    </div>
-                  {% endif %}
-                  {% if book.synchrobook_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>synchrobook (epub3)</h3>
-                        <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
-                      </div>
-                      <div>
-                        <a href="{{ book.synchrobook_url }}" class="l-button l-button--media l-button--media--full">synchrobook</a>
-                      </div>
-                    </div>
-                  {% endif %}
-                  <div class="c-media__popup__box__item">
-                    <div>
-                      <h3>inne formaty</h3>
-                      <ul>
-                        <li><a href="{{ book.txt_url }}">plik tekstowy (.txt)</a></li>
-                        <li><a href="{{ book.fb2_url }}">FictionBook</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <button class="c-media__popup__close">
-                  <img src="{% static '2021/images/close.svg' %}" alt="Zamknij">
-                </button>
-              </div>
-            </div>
-            {% if book.has_mp3_file %}
-              <div class="c-media__popup" data-popup="audiobook">
+
+
+
+              {% if book.has_mp3_file %}
+                {% include 'catalogue/snippets/2022_jplayer.html' %}
+              {% endif %}
+
+
+
+
+              <div class="c-media__popup" data-popup="ebook">
                 <div class="c-media__popup__box">
                   <div class="c-media__popup__box__lead">
-                    <h2>Pobieranie audiobooka</h2>
+                    <h2>Pobieranie e-booka</h2>
                     <p>Wybierz wersję dla siebie:</p>
                   </div>
                   <div class="c-media__popup__box__items">
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.mp3</h3>
-                        <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
+                    {% if book.pdf_file %}
+                      <div class="c-media__popup__box__item">
+                        <div>
+                          <h3>.pdf</h3>
+                          <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
+                        </div>
+                        <div>
+                          <a href="{{ book.pdf_url }}" class="l-button l-button--media l-button--media--full">.pdf</a>
+                        </div>
                       </div>
-                      <div>
-                        <a href="{% url 'download_zip_mp3' book.slug %}" class="l-button l-button--media l-button--media--full">.mp3</a>
-                      </div>
-                    </div>
-                    {% if book.has_ogg_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>OggVorbis</h3>
-                        <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
-                      </div>
-                      <div>
-                        <a href="{% url 'download_zip_ogg' book.slug %}" class="l-button l-button--media l-button--media--full">.ogg</a>
-                      </div>
-                    </div>
                     {% endif %}
-                    {% if book.has_daisy_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>DAISY</h3>
-                        <p>Format dla osób z dysfunkcjami czytania.</p>
+                    {% if book.epub_file %}
+                      <div class="c-media__popup__box__item">
+                        <div>
+                          <h3>.epub</h3>
+                          <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
+                        </div>
+                        <div>
+                          <a href="{{ book.epub_url }}" class="l-button l-button--media l-button--media--full">.epub</a>
+                        </div>
                       </div>
-                      <div>
-                        {% for dsy in book.media_daisy %}
-                          <a href="{{ dsy.file.url }}" class="l-button l-button--media l-button--media--full">DAISY</a>
-                        {% endfor %}
-                      </div>
-                    </div>
                     {% endif %}
-                    {% if book.synchrobook_file %}
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>synchrobook</h3>
-                        <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
+                    {% if book.mobi_file %}
+                      <div class="c-media__popup__box__item">
+                        <div>
+                          <h3>.mobi</h3>
+                          <p>Natywny format dla czytnika Amazon Kindle.</p>
+                        </div>
+                        <div>
+                          <a href="{{ book.mobi_url }}" class="l-button l-button--media l-button--media--full">.mobi</a>
+                        </div>
                       </div>
-                      <div>
-                        <a href="{{ book.synchrobook_url }}" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                    {% endif %}
+                    {% if book.synchro_file %}
+                      <div class="c-media__popup__box__item">
+                        <div>
+                          <h3>synchrobook (epub3)</h3>
+                          <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
+                        </div>
+                        <div>
+                          <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                        </div>
                       </div>
-                    </div>
+                    {% endif %}
+                    {% if book.txt_file or book.fb2_file %}
+                      <div class="c-media__popup__box__item">
+                        <div>
+                          <h3>inne formaty</h3>
+                          <ul>
+                            {% if book.txt_file %}<li><a href="{{ book.txt_url }}">plik tekstowy (.txt)</a></li>{% endif %}
+                            {% if book.fb2_file %}<li><a href="{{ book.fb2_url }}">FictionBook</a></li>{% endif %}
+                          </ul>
+                        </div>
+                      </div>
                     {% endif %}
                   </div>
                   <button class="c-media__popup__close">
-                    <img src="{% static '2021/images/close.svg' %}" alt="Zamknij">
+                    <img src="{% static '2022/images/close.svg' %}" alt="Zamknij">
                   </button>
                 </div>
               </div>
-            {% endif %}
-          </div>
+              {% if book.has_mp3_file %}
+                <div class="c-media__popup" data-popup="audiobook">
+                  <div class="c-media__popup__box">
+                    <div class="c-media__popup__box__lead">
+                      <h2>Pobieranie audiobooka</h2>
+                      <p>Wybierz wersję dla siebie:</p>
+                    </div>
+                    <div class="c-media__popup__box__items">
+                      <div class="c-media__popup__box__item">
+                        <div>
+                          <h3>.mp3</h3>
+                          <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
+                        </div>
+                        <div>
+                          <a href="{% url 'download_zip_mp3' book.slug %}" class="l-button l-button--media l-button--media--full">.mp3</a>
+                        </div>
+                      </div>
+                      {% if book.has_ogg_file %}
+                        <div class="c-media__popup__box__item">
+                          <div>
+                            <h3>OggVorbis</h3>
+                            <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
+                          </div>
+                          <div>
+                            <a href="{% url 'download_zip_ogg' book.slug %}" class="l-button l-button--media l-button--media--full">.ogg</a>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if book.has_daisy_file %}
+                        <div class="c-media__popup__box__item">
+                          <div>
+                            <h3>DAISY</h3>
+                            <p>Format dla osób z dysfunkcjami czytania.</p>
+                          </div>
+                          <div>
+                            {% for dsy in book.media_daisy %}
+                              <a href="{{ dsy.file.url }}" class="l-button l-button--media l-button--media--full">DAISY</a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if book.has_synchro_file %}
+                        <div class="c-media__popup__box__item">
+                          <div>
+                            <h3>synchrobook</h3>
+                            <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
+                          </div>
+                          <div>
+                            <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <button class="c-media__popup__close">
+                      <img src="{% static '2022/images/close.svg' %}" alt="Zamknij">
+                    </button>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
 
-          {{ book.abstract|safe }}
-
-        </article>
+            <h3>Opis</h3>
+            {{ book.abstract|safe }}
+          </article>
+        </div>
       </section>
-
-
       <section class="l-section">
         <div class="c-support">
           <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki darowiznom od osób takich jak Ty!</h2>
-          <a href="/towarzystwo/">DORZUĆ SIĘ!</a>
+          <figure>
+            <img src="{% static '2022/images/img-1.jpg' %}" alt="Dorzuć się!">
+            <a href="/towarzystwo/">Dorzuć się!</a>
+          </figure>
         </div>
       </section>
-
 
       {% for author in book.authors %}
         <section class="l-section">
           <div class="l-author">
-            <article class="l-author__info">
-              <h3>
-                <a href="{{ author.get_absolute_url }}">
-                  {{ author.name }}
-                </a>
-              </h3>
+            <div class="row">
+              <h2>O autorze</h2>
+              <div>
+                {% if author.photo %}
+                  <figure class="l-author__photo">
+                    <img src="{{ author.photo.url }}" alt="{{ author.name }}" style="width: 238px;">
+                    <figcaption>
+                      {{ author.photo_attribution|safe }}
+                    </figcaption>
+                  </figure>
+                {% endif %}
+                <article class="l-author__info">
+                  <h3>{{ author.name }}</h3>
+                  {{ author.description|safe }}
+                </article>
+              </div>
+            </div>
 
-              {{ author.description|safe }}
-
-            </article>
-            {% if HAVE_AUTHOR_PHOTO %}
-              <figure class="l-author__photo">
-                <img src="" alt="{{ author.name }}">
-                <figcaption>
-                </figcaption>
-              </figure>
-            {% endif %}
+            <div class="row">
+              <div class="l-author__quotes">
+                <div class="l-author__quotes__slider">
+                  {% choose_cites book 3 as cites %}
+                  {% for fragment in cites %}
+                    <div class="l-author__quotes__slider__item">
+                      <em>
+                        {{ fragment.short_text|safe }}
+                      </em>
+                      <p>{{ fragment.book.pretty_title }}</p>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
       {% endfor %}
 
-      {% with book.related_themes as themes %}
-        {% if themes %}
-          <section class="l-section">
-            <div class="l-themes__wrapper">
-              <h2>motywy występujące w tym utworze</h2>
+      <section class="l-section">
+        <div class="l-themes__wrapper">
+          {% with book.related_themes as themes %}
+            {% if themes %}
+              <h2>Motywy występujące w tym utworze <a href="/katalog/motyw/"><span>Wszystkie motywy</span> <i class="icon icon-arrow-right"></i></a></h2>
               <div class="l-themes">
                 <ul>
                   {% for item in themes %}
                     <li><a href="{% url 'book_fragments' book.slug item.slug %}">{{ item|lower }}&nbsp;({{ item.count}})</a></li>
                   {% endfor %}
                 </ul>
-                <a class="button" href="{% url 'theme_catalogue' %}">zobacz wszystkie motywy</a>
               </div>
-            </div>
-          </section>
-        {% endif %}
-      {% endwith %}
+            {% endif %}
+          {% endwith %}
+          <ul class="links">
+            <li>
+              <a href="{{ book.xml_url }}">źródłowy plik XML</a>
+            </li>
+            <li>
+              <a target="_blank" href="{% url 'poem_from_book' book.slug %}">miksuj treść utworu</a>
+            </li>
+            <li>
+              <a target="_blank" href="{{ book.get_extra_info_json.about }}">utwór na Platformie Redakcyjnej</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
 
-      <section class="l-section">
-        <div class="l-books__wrapper">
-          <h2>inne tytuły w naszej bibliotece</h2>
+
+
+
+    <section class="l-section">
+      <div class="l-books__wrapper">
+        <div class="l-container">
+          <h2>Tytuły powiązane</h2>
           <div class="l-books">
-
             {% if book.other_versions %}
               {% for rel in book.other_versions %}
-
                 <article class="l-books__item">
                   <figure class="l-books__item__img">
                     <a href="{{ rel.get_absolute_url }}">
@@ -397,13 +390,14 @@
                   </figure>
                   <h3>
                     {% for author in rel.authors %}
-                      <a href="{{ author.get_absolute_url }}">{{ author|upper }}</a>
+                      <a href="{{ author.get_absolute_url }}">{{ author }}</a>
                     {% endfor %}
                   </h3>
                   <h2><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></h2>
                 </article>
               {% endfor %}
             {% endif %}
+
 
             {% related_books_2021 book taken=book.other_versions|length as related_books %}
             {% for rel in related_books %}
@@ -422,42 +416,47 @@
               </article>
             {% endfor %}
 
+            <article class="l-books__item l-books__item--link">
+              <a href="/katalog/kolekcje/">i wiele innych książek, wierszy, obrazów, audiobooków…</a>
+              <a href="/katalog/kolekcje/" class="icon-link"><i class="icon icon-all"></i></a>
+            </article>
 
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
     <div class="l-footer">
-      <div class="l-footer__row">
-        <div class="l-footer__col">
-          <p>Wolne Lektury to projekt prowadzony przez fundację Nowoczesna Polska.</p>
-          <p>Reprodukcje cyfrowe wykonane przez Bibliotekę Narodową, Bibliotekę Śląską i Bibliotekę Elbląską z egzemplarzy pochodzących ze zbiorów BN, BŚ i BE.</p>
-          <p>Hosting: ICM.</p>
-        </div>
-        <div class="l-footer__col">
+      <div class="l-container">
+        <div class="l-footer__row">
+          <a href="#"><img src="{% static '2022/images/FNP-logo.png' %}" alt="FUNDACJA Nowoczesna Polska"></a>
           <ul>
-            <li>Fundacja Nowoczesna Polska</li>
             <li>ul. Marszałkowska 84/92 lok. 125</li>
             <li>00-514 Warszawa</li>
           </ul>
-          <ul>
-            <li>tel: <a href="tel:+48226213017">(22) 621-30-17</a></li>
-            <li>e-mail: <a href="mailto:fundacja@nowoczesnapolska.org.pl">fundacja@nowoczesnapolska.org.pl</a></li>
+          <ul class="teal">
+            <li>tel. <a href="#">(22) 621 30 17</a></li>
+            <li>email <a href="#">fundacja@nowoczesnapolska.org.pl</a></li>
           </ul>
         </div>
-      </div>
-      <div class="l-footer__row">
-        <p>
-          Nowa strona biblioteki Wolne Lektury powstała dzięki środkom otrzymanym w ramach Programu Operacyjnego Fundusz
-          Inicjatyw Obywatelskich, Senatu RP (zadanie realizowane w ramach zlecania przez Kancelarię Senatu zadań
-          w zakresie opieki nad Polonią i Polakami za granicą w 2011 r.) oraz Narodowego Instytutu Audiowizualnego
-          w ramach programu Dziedzictwo Cyfrowe.
-        </p>
+        <div class="l-footer__row">
+          <div>
+            Wolne Lektury to projekt prowadzony przez fundację <a href="#">Nowoczesna Polska</a>. <br>
+            Hosting: <a href="#">ICM</a>.
+          </div>
+          <div>
+            <a href="#"><img src="{% static '2022/images/MKiDN.png' %}" alt="MKiDN"></a>
+          </div>
+          <div>
+            Strona biblioteki Wolne Lektury powstała dzięki dofinansowaniu ze środków Ministra <a href="#">Kultury i Dziedzictwa Narodowego</a>
+            pochodzących z <a href="#">Funduszu Promocji Kultury</a> – państwowego funduszu celowego.
+          </div>
+        </div>
       </div>
     </div>
 
-    <script src="{% static '2021/scripts/vendor.js' %}"></script>
-    <script src="{% static '2021/scripts/main.js' %}"></script>
+    <script src="{% static '2022/scripts/vendor.js' %}"></script>
+    <script src="{% static '2022/scripts/main.js' %}"></script>
+    {% javascript '2022_player' %}
   </body>
 </html>

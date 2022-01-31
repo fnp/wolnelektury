@@ -751,6 +751,15 @@ class Book(models.Model):
                     b.ancestor.add(parent)
                     parent = parent.parent
 
+    @property
+    def ancestors(self):
+        if self.parent:
+            for anc in self.parent.ancestors:
+                yield anc
+            yield self.parent
+        else:
+            return []
+                    
     def clear_cache(self):
         clear_cached_renders(self.mini_box)
         clear_cached_renders(self.mini_box_nolink)
@@ -896,19 +905,27 @@ class Book(models.Model):
         else:
             return None, None
 
-    def choose_fragment(self):
+    def choose_fragments(self, number):
         fragments = self.fragments.order_by()
         fragments_count = fragments.count()
         if not fragments_count and self.children.exists():
             fragments = Fragment.objects.filter(book__ancestor=self).order_by()
             fragments_count = fragments.count()
         if fragments_count:
-            return fragments[randint(0, fragments_count - 1)]
+            offset = randint(0, fragments_count - number)
+            return fragments[offset : offset + number]
         elif self.parent:
-            return self.parent.choose_fragment()
+            return self.parent.choose_fragments(number)
+        else:
+            return []
+
+    def choose_fragment(self):
+        fragments = self.choose_fragments(1)
+        if fragments:
+            return fragments[0]
         else:
             return None
-
+        
     def fragment_data(self):
         fragment = self.choose_fragment()
         if fragment:
