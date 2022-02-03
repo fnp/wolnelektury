@@ -286,8 +286,22 @@
               {% endif %}
             </div>
 
-            <h3>Opis</h3>
-            {{ book.abstract|safe }}
+            <div class="l-article__overlay" data-max-height="327">
+              <h3>Opis</h3>
+              {{ book.abstract|safe }}
+
+              <h4>Spis treści:</h4>
+              <ul>
+                <li>Dziady. Poema</li>
+                <li>Przedmowa</li>
+                <li>Upiór</li>
+                <li>Dziady, część II</li>
+                <li>Dziady, część IV</li>
+                <li>Dziady, część III</li>
+                <li>Dziady. Widowisko, część I</li>
+              </ul>
+            </div>
+            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
           </article>
         </div>
       </section>
@@ -317,7 +331,10 @@
                 {% endif %}
                 <article class="l-author__info">
                   <h3>{{ author.name }}</h3>
-                  {{ author.description|safe }}
+                  <div class="l-article__overlay" data-max-height="327">
+                    {{ author.description|safe }}
+                  </div>
+                  <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
                 </article>
               </div>
             </div>
@@ -338,7 +355,6 @@
               </div>
             </div>
           </div>
-        </div>
       </section>
       {% endfor %}
 
