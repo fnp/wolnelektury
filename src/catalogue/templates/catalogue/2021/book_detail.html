@@ -30,7 +30,7 @@
         </a>
         <div class="l-naviagion__search">
           <form action="/szukaj/">
-            <input name="q" type="text" placeholder="szukaj tytułu, autora, motywów…">
+            <input id="search" name="q" type="text" placeholder="szukaj tytułu, autora, motywów…" autocomplete="off" data-source="/szukaj/hint/?max=10">
           </form>
         </div>
         <div class="l-navigation__actions">
@@ -457,6 +457,8 @@
 
     <script src="{% static '2022/scripts/vendor.js' %}"></script>
     <script src="{% static '2022/scripts/main.js' %}"></script>
+
+    {% javascript '2022' %}
     {% javascript '2022_player' %}
   </body>
 </html>

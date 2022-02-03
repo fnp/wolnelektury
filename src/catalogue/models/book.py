@@ -912,7 +912,10 @@ class Book(models.Model):
             fragments = Fragment.objects.filter(book__ancestor=self).order_by()
             fragments_count = fragments.count()
         if fragments_count:
-            offset = randint(0, fragments_count - number)
+            if fragments_count > number:
+                offset = randint(0, fragments_count - number)
+            else:
+                offset = 0
             return fragments[offset : offset + number]
         elif self.parent:
             return self.parent.choose_fragments(number)

@@ -24,8 +24,9 @@ PIPELINE = {
     'STYLESHEETS': {
         '2022': {
             'source_filenames': [
+                'contrib/jquery-ui-1.13.1.custom/jquery-ui.css',
                 '2022/styles/main.scss',
-                '2022/more.scss',
+                '2022/more.scss', 
             ],
             'output_filename': 'css/compressed/2022.css',
         },
@@ -133,6 +134,14 @@ PIPELINE = {
                 'annoy/banner.js',
                 ),
             'output_filename': 'js/base.min.js',
+        },
+        '2022': {
+            'source_filenames': [
+                'contrib/jquery-ui-1.13.1.custom/jquery-ui.js',
+                'js/search.js',
+                'js/2022.js',
+            ],
+            'output_filename': 'js/2022.min.js'
         },
         'player': {
             'source_filenames': [
