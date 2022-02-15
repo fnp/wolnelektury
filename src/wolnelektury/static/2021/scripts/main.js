@@ -48,3 +48,29 @@
     }
   });
 })();
+
+// Text overlay toggler
+(function () {
+  let overlays = $('.l-article__overlay');
+  let button = $('.l-article__read-more');
+
+  overlays.each(function () {
+    let maxHeight = $(this).attr('data-max-height');
+    if($(this).outerHeight() > maxHeight) {
+      $(this).css({'maxHeight': maxHeight+'px'}).addClass('is-active');
+    } else {
+      $(this).next('.l-article__read-more').hide();
+    }
+  });
+
+  button.on('click', function() {
+    let dataLabel = $(this).attr('data-label');
+    let dataAction = $(this).attr('data-action');
+    $(this).parent().find('.l-article__overlay').toggleClass('is-clicked');
+    if($(this).text() === dataLabel) {
+      $(this).text(dataAction);
+    } else {
+      $(this).text(dataLabel);
+    }
+  });
+})();
