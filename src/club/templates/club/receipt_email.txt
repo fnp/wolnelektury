@@ -1,47 +1,24 @@
 Dzień dobry,
 
-Tytuł: Przekaż 1% na książki, odlicz darowiznę na Wolne Lektury
+czy wiesz, że możesz odliczyć od podstawy opodatkowanie wszystkie darowizny
+przekazane fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
+Zestawienie darowizn za rok {{ year }} znajdziesz w załączniku!
 
+Dane z załącznika wprowadź do formularza PIT. Pamiętaj, że w przypadku
+kontroli z urzędu skarbowego musisz mieć potwierdzenie wykonanych przelewów
+z Twojego banku.
 
-Dzień dobry, 
-
-czy planujesz rozliczyć podatki w najbliższych dniach? Jeśli tak, pamiętaj,
-że możesz odliczyć darowizny na Wolne Lektury – szczegółowe informacje
-na temat kwoty znajdziesz poniżej. Będziemy Ci także wdzięczni
-za przekazanie na rozwój naszej biblioteki 1% podatku. Wystarczy,
-że wpiszesz KRS 00000 70056 i nazwę fundacji Nowoczesna Polska
-w odpowiednią rubrykę. Nawet najmniejsza kwota pomoże nam udostępnić
-kolejne wartościowe książki tysiącom Czytelniczek i Czytelników.
-
-Dziękujemy za Twoje wsparcie!
-
-Zespół Wolnych Lektur
-
-
-
-PS Poniżej znajdziesz email sprzed kilku tygodni, który być może Ci umknął.
-
-===
-
-
-
-
-Czy wiesz, że możesz odliczyć od dochodu darowizny przekazane
-Fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
-Kliknij i zobacz swoje zestawienie darowizn za rok {{ year }}!
-
-Dane z zaświadczenia wprowadź do formularza PIT. Pamiętaj, że musisz
-mieć potwierdzenie wykonanych przelewów z Twojego banku.
-
-Pamiętaj, że podczas wypełniania swojego PIT-a możesz przekazać
-1% swojego podatku na wybraną organizację pożytku publicznego.
-Chcesz dodatkowo wesprzeć Wolne Lektury? Nic prostszego!
-Wystarczy, że w swoim zeznaniu podatkowym w odpowiednim polu
-podasz "Fundacja Nowoczesna Polska" oraz numer KRS: 0000070056.
+Podczas wypełniania swojego PIT-u możesz także przekazać 1% swojego podatku
+na Wolne Lektury. Dzięki temu ufundujesz darmową e-książkę, która trafi
+do tysięcy dzieciaków. Wystarczy, że w odpowiednim polu wpiszesz nazwę
+organizacji "fundacja Nowoczesna Polska" oraz numer KRS 0000070056.
+Wspierasz Wolne Lektury w ten sposób już od dawna? W takim razie nic
+nie musisz zmieniać, bo system ponownie sam wprowadzi dane fundacji.
 
 Serdecznie dziękujemy za Twoje wsparcie!
 
-zespół Wolnych Lektur
+Paulina Choromańska i Jarosław Lipszyc
+w imieniu całego zespołu Wolnych Lektur
 
 
 Administratorem danych osobowych jest Fundacja Nowoczesna Polska

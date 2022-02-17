@@ -354,7 +354,7 @@ class PayUOrder(payu_models.Order):
             })
 
         message = EmailMessage(
-                f'Odlicz od podatku swoje darowizny przekazane dla Wolnych Lektur',
+                'Odlicz darowiznę na Wolne Lektury od podatku',
                 template.loader.render_to_string('club/receipt_email.txt', ctx),
                 settings.CONTACT_EMAIL, [email]
             )
