@@ -1,23 +1,14 @@
 Dzień dobry,
 
-czy wiesz, że możesz odliczyć od podstawy opodatkowanie wszystkie darowizny
-przekazane fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
+czy wiesz, że możesz odliczyć od podstawy opodatkowanie wszystkie darowizny przekazane fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
 
-Łącznie w {{ year }} otrzymaliśmy od Ciebie {{ total }} zł na zapewnienie
-dostępu do książek wszystkim dzieciakom.
+Łącznie w {{ year }} otrzymaliśmy od Ciebie {{ total }} zł na zapewnienie dostępu do książek wszystkim dzieciakom.
 
 Zestawienie darowizn za rok {{ year }} znajdziesz w załączniku!
 
-Dane z załącznika wprowadź do formularza PIT. Pamiętaj, że w przypadku
-kontroli z urzędu skarbowego musisz mieć potwierdzenie wykonanych przelewów
-z Twojego banku.
+Dane z załącznika wprowadź do formularza PIT. Pamiętaj, że w przypadku kontroli z urzędu skarbowego musisz mieć potwierdzenie wykonanych przelewów z Twojego banku.
 
-Podczas wypełniania swojego PIT-u możesz także przekazać 1% swojego podatku
-na Wolne Lektury. Dzięki temu ufundujesz darmową e-książkę, która trafi
-do tysięcy dzieciaków. Wystarczy, że w odpowiednim polu wpiszesz nazwę
-organizacji "fundacja Nowoczesna Polska" oraz numer KRS 0000070056.
-Wspierasz Wolne Lektury w ten sposób już od dawna? W takim razie nic
-nie musisz zmieniać, bo system ponownie sam wprowadzi dane fundacji.
+Podczas wypełniania swojego PIT-u możesz także przekazać 1% swojego podatku na Wolne Lektury. Dzięki temu ufundujesz darmową e-książkę, która trafi do tysięcy dzieciaków. Wystarczy, że w odpowiednim polu wpiszesz nazwę organizacji "fundacja Nowoczesna Polska" oraz numer KRS 0000070056. Wspierasz Wolne Lektury w ten sposób już od dawna? W takim razie nic nie musisz zmieniać, bo system ponownie sam wprowadzi dane fundacji.
 
 Serdecznie dziękujemy za Twoje wsparcie!
 
@@ -25,12 +16,7 @@ Paulina Choromańska i Jarosław Lipszyc
 w imieniu całego zespołu Wolnych Lektur
 
 
-Administratorem danych osobowych jest Fundacja Nowoczesna Polska
-(ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych
-jest dobrowolne. Dane są przetwarzane w zakresie niezbędnym do wysyłania
-informacji darczyńcom Wolnych Lektur. Osobom, których dane są zbierane,
-przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
-Więcej informacji w polityce prywatności (https://nowoczesnapolska.org.pl/prywatnosc/).
+Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych jest dobrowolne. Dane są przetwarzane w zakresie niezbędnym do wysyłania informacji darczyńcom Wolnych Lektur. Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania. Więcej informacji w polityce prywatności (https://nowoczesnapolska.org.pl/prywatnosc/).
 
 
 -- 
