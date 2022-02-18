@@ -2,6 +2,10 @@ Dzień dobry,
 
 czy wiesz, że możesz odliczyć od podstawy opodatkowanie wszystkie darowizny
 przekazane fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
+
+Łącznie w {{ year }} otrzymaliśmy od Ciebie {{ total }} zł na zapewnienie
+dostępu do książek wszystkim dzieciakom.
+
 Zestawienie darowizn za rok {{ year }} znajdziesz w załączniku!
 
 Dane z załącznika wprowadź do formularza PIT. Pamiętaj, że w przypadku
