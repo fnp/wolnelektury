@@ -299,6 +299,7 @@ class PayUOrder(payu_models.Order):
     def send_receipt(cls, email, year):
         Contact = apps.get_model('messaging', 'Contact')
         Funding = apps.get_model('funding', 'Funding')
+        BillingAgreement = apps.get_model('paypal', 'BillingAgreement')
         payments = []
 
         try:
@@ -324,6 +325,9 @@ class PayUOrder(payu_models.Order):
                 'timestamp': order.completed_at,
                 'amount': order.get_amount(),
             })
+
+        for ba in BillingAgreement.objects.filter(schedule__email=email):
+            payments.extend(ba.get_donations(year))
 
         fundings = Funding.objects.filter(
             email=email,

@@ -21,3 +21,7 @@ class BillingAgreement(models.Model):
     def check_agreement(self):
         from .rest import check_agreement
         return check_agreement(self.agreement_id)
+
+    def get_donations(self, year):
+        from .rest import get_donations
+        return get_donations(self.agreement_id, year)

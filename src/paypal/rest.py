@@ -1,8 +1,8 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from datetime import timedelta
-
+from datetime import datetime, timedelta
+from decimal import Decimal
 import paypalrestsdk
 import pytz
 from django.contrib.sites.models import Site
@@ -90,7 +90,7 @@ def create_agreement(amount, key, app=False):
         billing_agreement['override_merchant_preferences'] = {
             'return_url': absolute_url('paypal_return', {'key': key}),
         }
-        
+
 
     response = billing_agreement.create()
     if response:
@@ -124,3 +124,25 @@ def user_is_subscribed(user):
 
 def execute_agreement(token):
     return paypalrestsdk.BillingAgreement.execute(token)
+
+
+def get_donations(agreement_id, year):
+    a = get_agreement(agreement_id)
+    transactions = []
+    for transaction in a.search_transactions(
+            date(year - 1, 12, 31),
+            date(year + 1, 1, 1))['agreement_transaction_list']:
+        if transaction['status'] != 'Completed':
+            continue
+        dt = datetime.strptime(
+            transaction['time_stamp'],
+            '%Y-%m-%dT%H:%M:%S%z'
+        ).astimezone()
+        if dt.year != year:
+            continue
+        assert transaction['amount']['currency'] == 'PLN'
+        transactions.append({
+            'timestamp': dt,
+            'amount': Decimal(transaction['amount']['value'])
+        })
+    return transactions
