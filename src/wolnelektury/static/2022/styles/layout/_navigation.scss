@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
 
   .l-container {
     display: flex;
@@ -52,4 +53,54 @@
     font-size: 30px;
     margin-right: 25px;
   }
+}
+
+.l-change-pop {
+  align-items: center;
+  max-width: 1140px;
+  border-radius: 10px;
+  padding: 10px 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #FBC40F;
+  position: relative;
+  display: none;
+
+  &.show {
+    display: flex;
+  }
+
+  h3 {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #333333;
+    margin: 0;
+    min-width: 189px;
+    margin-right: 48px;
+  }
+
+  p {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 150%;
+    color: #333333;
+    margin: 0;
+    max-width: 590px;
+  }
+}
+
+.l-change-pop__close {
+  border: 0;
+  background: transparent;
+  color: #333333;
+  outline: 0;
+  position: absolute;
+  right: 26px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
 }

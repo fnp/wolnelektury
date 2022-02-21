@@ -3,7 +3,7 @@
 ------------------------------ */
 
 *, *:after, *:before {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :focus {
@@ -17,9 +17,14 @@ body {
 }
 
 body {
-	color: $color-black;
-	background-color: $color-white;
+  color: $color-black;
+  background-color: $color-white;
   overflow-x: hidden;
+
+  &.popup-open {
+    overflow-y: hidden;
+    height: 100vh;
+  }
 
   &.using-mouse {
     *:focus {
