@@ -12,20 +12,22 @@ $icon-audio: "\e903";
 $icon-book: "\e904";
 $icon-eye: "\e905";
 $icon-play: "\e906";
-$icon-quote: "\e907";
-$icon-search: "\e908";
-$icon-acc-1: "\e909";
-$icon-acc-2: "\e90a";
-$icon-acc-3: "\e90b";
-$icon-all: "\e90c";
-$icon-arrow-down: "\e90d";
+$icon-pause: "\e907";
+$icon-quote: "\e908";
+$icon-search: "\e909";
+$icon-acc-1: "\e90a";
+$icon-acc-2: "\e90b";
+$icon-acc-3: "\e90c";
+$icon-all: "\e90d";
+$icon-arrow-down: "\e90e";
+$icon-close: "\e90f";
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?79zz52') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?79zz52') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?79zz52##{$icomoon-font-family}') format('svg');
+          url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?79zz52') format('truetype'),
+          url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?79zz52') format('woff'),
+          url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?79zz52##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -81,6 +83,11 @@ $icon-arrow-down: "\e90d";
     content: $icon-play;
   }
 }
+.icon-pause {
+  &:before {
+    content: $icon-pause;
+  }
+}
 .icon-quote {
   &:before {
     content: $icon-quote;
@@ -114,5 +121,10 @@ $icon-arrow-down: "\e90d";
 .icon-arrow-down {
   &:before {
     content: $icon-arrow-down;
+  }
+}
+.icon-close {
+  &:before {
+    content: $icon-close;
   }
 }

@@ -74,3 +74,23 @@
     }
   });
 })();
+
+//Zmieniamy się popup
+(function() {
+  let $change = $('.l-change-pop');
+  function change() {
+    if(localStorage.getItem('change') === null) {
+      $change.addClass('show');
+    } else {
+      $change.remove();
+      return false;
+    }
+
+    $change.on('click', '.l-change-pop__close', function () {
+      $change.slideUp();
+      localStorage.setItem('change', 'showed');
+    });
+  }
+
+  if($change.length) { change(); }
+})();
