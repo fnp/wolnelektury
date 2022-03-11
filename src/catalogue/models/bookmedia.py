@@ -7,7 +7,8 @@ from collections import namedtuple
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from slugify import slugify
-from mutagen import MutagenError
+import mutagen
+from mutagen import id3
 
 from catalogue.fields import OverwriteStorage
 
@@ -37,6 +38,7 @@ class BookMedia(models.Model):
     part_name = models.CharField(_('part name'), default='', blank=True, max_length=512)
     index = models.IntegerField(_('index'), default=0)
     file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=OverwriteStorage())
+    duration = models.IntegerField(null=True, blank=True)
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     project_description = models.CharField(max_length=2048, blank=True)
     project_icon = models.CharField(max_length=2048, blank=True)
@@ -96,15 +98,19 @@ class BookMedia(models.Model):
         extra_info.update(self.read_meta())
         self.extra_info = json.dumps(extra_info)
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
+        self.duration = self.read_duration()
         return super(BookMedia, self).save(*args, **kwargs)
+
+    def read_duration(self):
+        try:
+            return mutagen.File(self.file.path).info.length
+        except:
+            return None
 
     def read_meta(self):
         """
             Reads some metadata from the audiobook.
         """
-        import mutagen
-        from mutagen import id3
-
         artist_name = director_name = project = funded_by = license = ''
         if self.type == 'mp3':
             try:
@@ -118,7 +124,7 @@ class BookMedia(models.Model):
                 funded_by = ", ".join([
                     t.data.decode('utf-8') for t in audio.getall('PRIV')
                     if t.owner == 'wolnelektury.pl?funded_by'])
-            except MutagenError:
+            except mutagen.MutagenError:
                 pass
         elif self.type == 'ogg':
             try:
@@ -128,7 +134,7 @@ class BookMedia(models.Model):
                 license = ', '.join(audio.get('license', []))
                 project = ", ".join(audio.get('project', []))
                 funded_by = ", ".join(audio.get('funded_by', []))
-            except (MutagenError, AttributeError):
+            except (mutagen.MutagenError, AttributeError):
                 pass
         else:
             return {}
@@ -143,21 +149,18 @@ class BookMedia(models.Model):
         """
             Reads source file SHA1 from audiobok metadata.
         """
-        import mutagen
-        from mutagen import id3
-
         if filetype == 'mp3':
             try:
                 audio = id3.ID3(filepath)
                 return [t.data.decode('utf-8') for t in audio.getall('PRIV')
                         if t.owner == 'wolnelektury.pl?flac_sha1'][0]
-            except (MutagenError, IndexError):
+            except (mutagen.MutagenError, IndexError):
                 return None
         elif filetype == 'ogg':
             try:
                 audio = mutagen.File(filepath)
                 return audio.get('flac_sha1', [None])[0]
-            except (MutagenError, AttributeError, IndexError):
+            except (mutagen.MutagenError, AttributeError, IndexError):
                 return None
         else:
             return None

@@ -342,6 +342,15 @@ class BuildCover(BuildEbook):
         pass
 
 
+@BuildEbook.register('cover_clean')
+@task(ignore_result=True)
+class BuildCoverClean(BuildCover):
+    @classmethod
+    def transform(cls, wldoc, fieldfile):
+        from librarian.cover import WLCover
+        return WLCover(wldoc.book_info, width=240).output_file()
+
+
 @BuildEbook.register('cover_thumb')
 @task(ignore_result=True)
 class BuildCoverThumb(BuildCover):

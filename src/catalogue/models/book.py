@@ -8,6 +8,7 @@ from random import randint
 import os.path
 import re
 from urllib.request import urlretrieve
+from django.apps import apps
 from django.conf import settings
 from django.db import connection, models, transaction
 import django.dispatch
@@ -17,7 +18,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, get_language
 from django.utils.deconstruct import deconstructible
 from fnpdjango.storage import BofhFileSystemStorage
-
+from lxml import html
 from librarian.cover import WLCover
 from librarian.html import transform_abstrakt
 from newtagging import managers
@@ -43,6 +44,7 @@ class UploadToPath(object):
 
 
 _cover_upload_to = UploadToPath('book/cover/%s.jpg')
+_cover_clean_upload_to = UploadToPath('book/cover_clean/%s.jpg')
 _cover_thumb_upload_to = UploadToPath('book/cover_thumb/%s.jpg')
 _cover_api_thumb_upload_to = UploadToPath('book/cover_api_thumb/%s.jpg')
 _simple_cover_upload_to = UploadToPath('book/cover_simple/%s.jpg')
@@ -64,6 +66,7 @@ class Book(models.Model):
     language = models.CharField(_('language code'), max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
     description = models.TextField(_('description'), blank=True)
     abstract = models.TextField(_('abstract'), blank=True)
+    toc = models.TextField(_('toc'), blank=True)
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('change date'), auto_now=True, db_index=True)
     parent_number = models.IntegerField(_('parent number'), default=0)
@@ -86,6 +89,13 @@ class Book(models.Model):
         storage=bofh_storage, max_length=255)
     cover_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     # Cleaner version of cover for thumbs
+    cover_clean = EbookField(
+        'cover_clean', _('clean cover'),
+        null=True, blank=True,
+        upload_to=_cover_clean_upload_to,
+        max_length=255
+    )
+    cover_clean_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
     cover_thumb = EbookField(
         'cover_thumb', _('cover thumbnail'),
         null=True, blank=True,
@@ -286,6 +296,17 @@ class Book(models.Model):
             return sibling.get_first_text()
         return self.parent.get_next_text()
 
+    def get_child_audiobook(self):
+        BookMedia = apps.get_model('catalogue', 'BookMedia')
+        if not BookMedia.objects.filter(book__ancestor=self).exists():
+            return None
+        for child in self.children.all():
+            if child.has_mp3_file():
+                return child
+            child_sub = child.get_child_audiobook()
+            if child_sub is not None:
+                return child_sub
+
     def get_siblings(self):
         if not self.parent:
             return []
@@ -429,6 +450,7 @@ class Book(models.Model):
 
         audiobooks = []
         projects = set()
+        total_duration = 0
         for mp3 in self.media.filter(type='mp3').iterator():
             # ogg files are always from the same project
             meta = mp3.get_extra_info_json()
@@ -438,6 +460,7 @@ class Book(models.Model):
                 project = 'CzytamySłuchając'
 
             projects.add((project, meta.get('funded_by', '')))
+            total_duration += mp3.duration or 0
 
             media = {'mp3': mp3}
 
@@ -447,7 +470,11 @@ class Book(models.Model):
             audiobooks.append(media)
 
         projects = sorted(projects)
-        return audiobooks, projects
+        total_duration = '%d:%02d' % (
+            total_duration // 60,
+            total_duration % 60
+        )
+        return audiobooks, projects, total_duration
 
     def wldocument(self, parse_dublincore=True, inherit=True):
         from catalogue.import_utils import ORMDocProvider
@@ -542,6 +569,20 @@ class Book(models.Model):
         else:
             self.abstract = ''
 
+    def load_toc(self):
+        self.toc = ''
+        if self.html_file:
+            parser = html.HTMLParser(encoding='utf-8')
+            tree = html.parse(self.html_file.path, parser=parser)
+            toc = tree.find('//div[@id="toc"]/ol')
+            if toc is None or not len(toc):
+                return
+            html_link = reverse('book_text', args=[self.slug])
+            for a in toc.findall('.//a'):
+                a.attrib['href'] = html_link + a.attrib['href']
+            self.toc = html.tostring(toc, encoding='unicode')
+            # div#toc
+            
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -607,6 +648,7 @@ class Book(models.Model):
             book.common_slug = book.slug
         book.extra_info = json.dumps(book_info.to_dict())
         book.load_abstract()
+        book.load_toc()
         book.save()
 
         meta_tags = Tag.tags_from_info(book_info)
@@ -649,6 +691,7 @@ class Book(models.Model):
         # Build cover.
         if 'cover' not in dont_build:
             book.cover.build_delay()
+            book.cover_clean.build_delay()
             book.cover_thumb.build_delay()
             book.cover_api_thumb.build_delay()
             book.simple_cover.build_delay()
@@ -793,9 +836,11 @@ class Book(models.Model):
         if not self.cover_info(inherit=False):
             if 'cover' not in app_settings.DONT_BUILD:
                 self.cover.build_delay()
+                self.cover_clean.build_delay()
                 self.cover_thumb.build_delay()
                 self.cover_api_thumb.build_delay()
                 self.simple_cover.build_delay()
+                self.cover_ebookpoint.build_delay()
             for format_ in constants.EBOOK_FORMATS_WITH_COVERS:
                 if format_ not in app_settings.DONT_BUILD:
                     getattr(self, '%s_file' % format_).build_delay()

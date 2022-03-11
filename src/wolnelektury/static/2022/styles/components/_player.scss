@@ -69,13 +69,20 @@
     height: 10px;
     width: 100%;
     display: block;
-    background: #FFFFFF;
+    background: #F2F2F2;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
 
-    span {
-      width: 40%;
+    span.jp-seek-bar {
+      height: 100%;
+      position: absolute;
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      top: 0; left: 0;
+    }
+    
+    span.jp-play-bar {
       height: 100%;
       position: absolute;
       border-radius: 5px;
@@ -84,6 +91,20 @@
     }
   }
 }
+
+
+.c-player__title {
+  top: -27px;
+  left: 0;
+  position: absolute;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0.05em;
+  color: #083F4D;
+}
+
 
 .c-player__info {
   top: -27px;
@@ -102,7 +123,7 @@
   display: block;
   position: relative;
 
-  span {
+  > span {
     position: absolute;
     padding-top: 10px;
     font-style: normal;
