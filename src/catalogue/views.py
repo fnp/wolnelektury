@@ -3,6 +3,7 @@
 #
 from collections import OrderedDict
 import random
+import re
 
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -286,9 +287,14 @@ def book_detail(request, slug):
     except Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, slug)
 
+    new_layout = request.EXPERIMENTS['layout']
+    # Not for preview books.
+    if new_layout.value and not book.is_accessible_to(request.user):
+        new_layout.override(None)
+    
     return render(
         request,
-        'catalogue/2021/book_detail.html' if request.EXPERIMENTS['layout'] == 'new' else 'catalogue/book_detail.html',
+        'catalogue/2021/book_detail.html' if new_layout.value else 'catalogue/book_detail.html',
         {
             'book': book,
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),

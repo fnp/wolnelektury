@@ -226,6 +226,11 @@ class Book(models.Model):
     def isbn_mobi(self):
         return self.get_extra_info_json().get('isbn_mobi')
 
+    def is_accessible_to(self, user):
+        if not self.preview:
+            return True
+        Membership = apps.get_model('club', 'Membership')
+        return Membership.is_active_for(user)
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify

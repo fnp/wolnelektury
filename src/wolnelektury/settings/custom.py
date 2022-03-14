@@ -39,18 +39,6 @@ CLUB_PAYU_POS = '300746'
 CLUB_PAYU_RECURRING_POS = '300746'
 CLUB_APP_HOST = None
 
-
-EXPERIMENTS = [
-    {
-        "name": "Eksperymentalny układ strony utworu",
-        "slug": "layout",
-        "cohorts": [
-            {"size": 0,   "value": "new", "name": "eksperymentalny układ", "explicit": True},
-            {             "value": "old", "name": "stary układ"},
-        ],
-    },
-]
-
 MESSAGING_MIN_DAYS = 2
 
 NEWSLETTER_PHPLIST_SUBSCRIBE_URL = None

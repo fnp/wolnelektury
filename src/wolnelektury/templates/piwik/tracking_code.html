@@ -1,8 +1,8 @@
 <!-- Matomo -->
 <script type="text/javascript">
   var _paq = window._paq || [];
-  {% for experiment, value in request.EXPERIMENTS.items %}
-    _paq.push(['setCustomVariable', '{{ forloop.counter }}', "{{ experiment }}", "{{ value }}", "visit"]);
+  {% for slug, experiment in request.EXPERIMENTS.items %}
+    _paq.push(['setCustomVariable', '{{ forloop.counter }}', "{{ slug }}", "{{ experiment.value|yesno:"on,off," }}", "visit"]);
   {% endfor %}
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
