@@ -738,6 +738,8 @@ class Book(models.Model):
     def update_references(self):
         from references.models import Entity, Reference
         master = self.get_master()
+        if master is None:
+            master = []
         found = set()
         for i, sec in enumerate(master):
             for ref in sec.findall('.//ref'):

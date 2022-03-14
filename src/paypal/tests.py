@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from unittest import skip
 from unittest.mock import MagicMock, Mock, patch, DEFAULT
 from catalogue.test_utils import WLTestCase
+from club.models import Membership, Schedule
 from .models import BillingAgreement, BillingPlan
-from .rest import user_is_subscribed
 from paypalrestsdk import ResourceNotFound
 
 
@@ -60,6 +60,16 @@ class PaypalTests(WLTestCase):
     def tearDownClass(cls):
         cls.user.delete()
 
+    def setUp(self):
+        super().setUp()
+        s = Schedule.objects.create(
+            key='schedule-key',
+            amount=10,
+            membership=Membership.objects.create(
+                user=self.user
+            )
+        )
+        
     @skip("Changing the flow.")
     def test_paypal_form(self):
         response = self.client.get('/paypal/form/')
@@ -157,34 +167,34 @@ class PaypalTests(WLTestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(BillingAgreement.objects.all().count(), 0)
 
-        response = self.client.get('/paypal/return/?token=secret-token')
-        self.assertEqual(response.status_code, 200)
+        response = self.client.get('/paypal/return/schedule-key/?token=secret-token')
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(BillingAgreement.objects.all().count(), 1)
 
         # Repeated returns will not generate further agreements.
-        response = self.client.get('/paypal/return/?token=secret-token')
-        self.assertEqual(response.status_code, 200)
+        response = self.client.get('/paypal/return/schedule-key/?token=secret-token')
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(BillingAgreement.objects.all().count(), 1)
 
-        self.assertTrue(user_is_subscribed(self.user))
+        self.assertTrue(Membership.is_active_for(self.user))
 
     @patch('paypalrestsdk.BillingAgreement', BillingAgreementMock)
     def test_paypal_app_return(self):
         self.client.login(username='test', password='test')
         BillingPlan.objects.create(amount=100)
-        response = self.client.get('/paypal/app-return/?token=secret-token')
+        response = self.client.get('/paypal/app-return/schedule-key/?token=secret-token')
         self.assertRedirects(
             response, 'wolnelekturyapp://paypal_return',
             fetch_redirect_response=False)
 
         # Repeated returns will not generate further agreements.
-        response = self.client.get('/paypal/app-return/?token=secret-token')
+        response = self.client.get('/paypal/app-return/schedule-key/?token=secret-token')
         self.assertRedirects(
             response, 'wolnelekturyapp://paypal_return',
             fetch_redirect_response=False)
         self.assertEqual(BillingAgreement.objects.all().count(), 1)
 
-        self.assertTrue(user_is_subscribed(self.user))
+        self.assertTrue(Membership.is_active_for(self.user))
 
     def test_paypal_return_error(self):
         self.client.login(username='test', password='test')
@@ -194,7 +204,7 @@ class PaypalTests(WLTestCase):
         with patch('paypalrestsdk.BillingAgreement', Mock(
                 execute=Mock(return_value=Mock(id=None)))):
             self.client.get('/paypal/app-return/?token=secret-token')
-            response = self.client.get('/paypal/app-return/?token=secret-token')
+            response = self.client.get('/paypal/app-return/schedule-key/?token=secret-token')
             self.assertRedirects(
                 response, 'wolnelekturyapp://paypal_error',
                 fetch_redirect_response=False)
@@ -206,7 +216,7 @@ class PaypalTests(WLTestCase):
         with patch('paypalrestsdk.BillingAgreement', Mock(
                 execute=BillingAgreementMock.execute,
                 find=Mock(side_effect=ResourceNotFound(None)))):
-            response = self.client.get('/paypal/app-return/?token=secret-token')
+            response = self.client.get('/paypal/app-return/schedule-key/?token=secret-token')
             self.assertRedirects(
                 response, 'wolnelekturyapp://paypal_return',
                 fetch_redirect_response=False)
@@ -216,7 +226,7 @@ class PaypalTests(WLTestCase):
 
         with patch('paypalrestsdk.BillingAgreement', Mock(
                 find=Mock(return_value=Mock(state='Mocked')))):
-            self.assertFalse(user_is_subscribed(self.user))
+            self.assertFalse(Membership.is_active_for(self.user))
 
     def test_paypal_cancel(self):
         response = self.client.get('/paypal/cancel/')

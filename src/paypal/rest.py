@@ -117,11 +117,6 @@ def check_agreement(agreement_id):
         return a.state == 'Active'
 
 
-def user_is_subscribed(user):
-    agreements = BillingAgreement.objects.filter(user=user)
-    return any(agreement.check_agreement() for agreement in agreements)
-
-
 def execute_agreement(token):
     return paypalrestsdk.BillingAgreement.execute(token)
 
