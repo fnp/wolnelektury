@@ -29,7 +29,7 @@
         <p>
           Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd strony książki.
           Będziemy bardzo! wdzięczni za Twoją opinię – w prawym dolnym rogu znajdziesz przycisk oceny.
-          Jeżeli wolisz klasyczny wygląd - wystarczy, że <a href="#">klikniesz tutaj</a>
+          Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
         </p>
         <button class="l-change-pop__close">
           <i class="icon icon-close"></i>
@@ -133,11 +133,11 @@
               </p>
               <h1>{{ book.title }}</h1>
             </div>
-            <div class="l-header__actions">
+            <!-- div class="l-header__actions">
               <button class="l-button l-button--fav">
                 <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
               </button>
-            </div>
+            </div-->
           </header>
           <article class="l-article">
             <div class="c-media">
@@ -316,10 +316,12 @@
             <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
           </article>
           <div class="c-support">
-            <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki darowiznom od osób takich jak Ty!</h2>
+            <div>
+              <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki <span>darowiznom</span> od osób takich jak <span>Ty</span>!</h2>
+              <a href="/towarzystwo/">Dorzuć się!</a>
+            </div>
             <figure>
               <img src="{% static '2022/images/img-1.jpg' %}" alt="Dorzuć się!">
-              <a href="/towarzystwo/">Dorzuć się!</a>
             </figure>
           </div>
         </div>
@@ -484,7 +486,7 @@
     </div>
 
     <script src="{% static '2022/scripts/vendor.js' %}"></script>
-    <script src="{% static '2021/scripts/main.js' %}"></script>
+    <script src="{% static '2022/scripts/main.js' %}"></script>
 
     {% javascript '2022' %}
     {% javascript '2022_player' %}

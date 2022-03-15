@@ -80,6 +80,21 @@
       font-weight: normal;
     }
   }
+
+  dt {
+      float: left;
+      clear: left;
+      margin-right: .4em;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 150%;
+  }
+  dd {
+      margin-left: 0;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 150%;
+  }
 }
 
 .l-author__photo {
@@ -144,8 +159,14 @@
       line-height: 140%;
       letter-spacing: -0.02em;
       color: #083F4D;
+
+      p {
+          font-size: inherit;
+          line-height: inherit;
+          margin-top: 0;
+      }
     }
-    p {
+    > p {
       font-style: normal;
       font-weight: normal;
       font-size: 15px;

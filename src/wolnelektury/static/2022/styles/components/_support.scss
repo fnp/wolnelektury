@@ -1,7 +1,12 @@
+$green: #96C13D;
+$teal: #007880;
+$darkteal: #083F4D;
+
+
 .c-support {
   display: flex;
   margin-top: 50px;
-  background: #96C13D;
+  background: $darkteal;
   border-radius: 15px;
   overflow: hidden;
   justify-content: center;
@@ -16,10 +21,18 @@
     letter-spacing: -0.02em;
     color: #ffffff;
     span {
-      color: #007880;
+        color: $green;
     }
   }
 
+  div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 30px 30px;
+      height: 280px;
+  }
+  
   figure {
     margin: 0;
     font-size: 0;
@@ -28,17 +41,16 @@
 
   a {
     width: 100%;
-    margin: 40px auto 0;
     font-weight: 600;
     font-size: 22px;
     line-height: 28px;
-    color: #ffffff;
+    color: $darkteal;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 12px 22px 14px 28px;
-    background: #007880;
+    background: $green;
     border-radius: 5px;
     transition: all $ease-dynamic 350ms;
 

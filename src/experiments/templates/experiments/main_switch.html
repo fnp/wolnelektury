@@ -36,7 +36,7 @@
   </style>
   <script>
    $(".experiment button").click(function() {
-       document.cookie = 'EXPERIMENT_' + $(this).parent().data('slug') + '=' + $(this).data('value') + '; path=/';
+       document.cookie = 'EXPERIMENT_' + $(this).parent().data('slug') + '=' + $(this).data('value') + '; path=/; max-age=31536000';
        window.location.reload(true);
    });
   </script>
