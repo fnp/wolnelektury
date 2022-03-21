@@ -37,6 +37,10 @@ $darkteal: #083F4D;
     margin: 0;
     font-size: 0;
     position: relative;
+
+    img {
+        width: 270px;
+    }
   }
 
   a {
@@ -50,12 +54,12 @@ $darkteal: #083F4D;
     justify-content: center;
     text-align: center;
     padding: 12px 22px 14px 28px;
-    background: $green;
+    background: $color-yellow;
     border-radius: 5px;
     transition: all $ease-dynamic 350ms;
 
     &:hover {
-      background: $color-yellow;
+      background: $green;
     }
   }
 }

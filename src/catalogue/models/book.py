@@ -836,7 +836,7 @@ class Book(models.Model):
     def related_themes(self):
         return Tag.objects.usage_for_queryset(
             Fragment.objects.filter(models.Q(book=self) | models.Q(book__ancestor=self)),
-            counts=True).filter(category='theme')
+            counts=True).filter(category='theme').order_by('-count')
 
     def parent_cover_changed(self):
         """Called when parent book's cover image is changed."""

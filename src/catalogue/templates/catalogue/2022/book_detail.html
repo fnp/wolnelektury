@@ -28,12 +28,12 @@
         <h3>Zmieniamy się!</h3>
         <p>
           Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd strony książki.
-          Będziemy bardzo! wdzięczni za Twoją opinię – w prawym dolnym rogu znajdziesz przycisk oceny.
+          Będziemy bardzo! wdzięczni za Twoją opinię – <a href='{% url 'suggest' %}' target="_blank">możesz nam ją przesłać tutaj</a>.
           Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
         </p>
-        <button class="l-change-pop__close">
+        <!-- button class="l-change-pop__close">
           <i class="icon icon-close"></i>
-        </button>
+        </button -->
       </div>
       <div class="l-container">
         <a href="/" class="l-navigation__logo">
@@ -46,17 +46,16 @@
         </div>
         <div class="l-navigation__actions">
           <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
-          <button class="l-navigation__button js-menu" aria-label="Menu">
+          <!-- button class="l-navigation__button js-menu" aria-label="Menu">
             <span class="c-hamburger">
               <span class="bar"></span>
             </span>
-          </button>
+          </button-->
         </div>
       </div>
     </nav>
 
 
-    {# TODO: BREADCRUMBS #}
     <div class="l-container">
       <div class="l-breadcrumb">
         <a href="/"><span>Strona główna</span></a>
@@ -72,12 +71,14 @@
       <section class="l-section">
         <aside class="l-aside">
           <figure>
-            <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
+            <a href="{% url 'book_text' book.slug %}">
+              <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
+            </a>
           </figure>
           <ul class="l-aside__info">
-            <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
-            <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
-            <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name|lower }}</a> {% endfor %}</li>
+            <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+            <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+            <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
           </ul>
           {% if book.parent or book.get_children %}
             <ul class="l-aside__zbiory">
@@ -131,13 +132,16 @@
                   (tłum. {% for translator in book.translators %}{{ translator }}{% endfor %})
                 {% endif %}
               </p>
-              <h1>{{ book.title }}</h1>
+              <h1><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h1>
             </div>
-            <!-- div class="l-header__actions">
-              <button class="l-button l-button--fav">
-                <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
-              </button>
-            </div-->
+            <div class="l-header__actions">
+              <form method='post' action='{% url 'social_like_book' book.slug %}'>
+                {% csrf_token %}
+                <button class="l-button l-button--fav">
+                  <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
+                </button>
+              </form>
+            </div>
           </header>
           <article class="l-article">
             <div class="c-media">
@@ -305,7 +309,6 @@
             </div>
 
             <div class="l-article__overlay" data-max-height="327">
-              <h3>Opis</h3>
               {{ book.abstract|safe }}
 
               {% if book.toc %}
@@ -321,7 +324,7 @@
               <a href="/towarzystwo/">Dorzuć się!</a>
             </div>
             <figure>
-              <img src="{% static '2022/images/img-1.jpg' %}" alt="Dorzuć się!">
+              <img src="{% static '2022/images/dziecko.jpeg' %}" alt="Dorzuć się!">
             </figure>
           </div>
         </div>
@@ -357,12 +360,13 @@
                 <div class="l-author__quotes">
                   <div class="l-author__quotes__slider">
                     {% for fragment in cites %}
-                      <div class="l-author__quotes__slider__item">
+                      <a class="l-author__quotes__slider__item" href="{{ fragment.get_absolute_url }}">
+
                         <em>
                           {{ fragment.short_text|safe }}
                         </em>
                         <p>{{ fragment.book.pretty_title }}</p>
-                      </div>
+                      </a>
                     {% endfor %}
                   </div>
                 </div>
@@ -377,13 +381,15 @@
           {% with book.related_themes as themes %}
             {% if themes %}
               <h2>Motywy występujące w tym utworze <a href="/katalog/motyw/"><span>Wszystkie motywy</span> <i class="icon icon-arrow-right"></i></a></h2>
-              <div class="l-themes">
+              <div class="l-themes l-article__overlay" data-max-height="80">
                 <ul>
                   {% for item in themes %}
-                    <li><a href="{% url 'book_fragments' book.slug item.slug %}">{{ item|lower }}&nbsp;({{ item.count}})</a></li>
+                    <li><a href="{% url 'book_fragments' book.slug item.slug %}">{{ item }}&nbsp;({{ item.count}})</a></li>
                   {% endfor %}
                 </ul>
               </div>
+              <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Zobacz więcej</button>
+
             {% endif %}
           {% endwith %}
           <ul class="links">
@@ -408,7 +414,7 @@
     <section class="l-section">
       <div class="l-books__wrapper">
         <div class="l-container">
-          <h2>Tytuły powiązane</h2>
+          <h2>Czytaj także</h2>
           <div class="l-books">
             {% if book.other_versions %}
               {% for rel in book.other_versions %}

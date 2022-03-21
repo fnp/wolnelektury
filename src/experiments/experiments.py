@@ -13,7 +13,7 @@ class NewLayout(Experiment):
 
         if re.search(
                 'iphone|mobile|androidtouch',
-                request.META['HTTP_USER_AGENT'],
+                request.META.get('HTTP_USER_AGENT', ''),
                 re.IGNORECASE):
             return False
 

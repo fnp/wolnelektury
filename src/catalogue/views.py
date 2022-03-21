@@ -312,7 +312,7 @@ def player(request, slug):
     if not book.has_media('mp3'):
         raise Http404
 
-    audiobooks, projects = book.get_audiobooks()
+    audiobooks, projects, total_duration = book.get_audiobooks()
 
     return render(
         request,

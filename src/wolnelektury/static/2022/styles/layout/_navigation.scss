@@ -1,3 +1,6 @@
+$teal: #007880;
+
+
 .l-navigation {
   max-width: 100%;
   margin: 0 auto;
@@ -89,6 +92,10 @@
     color: #333333;
     margin: 0;
     max-width: 590px;
+
+    a {
+        color: $teal;
+    }
   }
 }
 
