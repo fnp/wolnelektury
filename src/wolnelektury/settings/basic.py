@@ -40,17 +40,12 @@ SITE_ID = 1
 
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'APP_DIRS': True,
     'DIRS': (
         path.join(PROJECT_DIR, 'templates'),  # Duplicate, because of Machina<1 weird configuration.
         MACHINA_MAIN_TEMPLATE_DIR,
     ),
     'OPTIONS': {
-        'loaders': (
-            ('django.template.loaders.cached.Loader', (
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader',
-            )),
-        ),
         'context_processors': (
             'django.contrib.auth.context_processors.auth',
             'django.contrib.messages.context_processors.messages',
