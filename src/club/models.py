@@ -19,6 +19,7 @@ from messaging.states import Level
 from reporting.utils import render_to_pdf
 from .payment_methods import methods
 from .payu import models as payu_models
+from .civicrm import report_activity
 from . import utils
 
 
@@ -293,7 +294,36 @@ class PayUOrder(payu_models.Order):
     def status_updated(self):
         if self.status == 'COMPLETED':
             self.schedule.set_payed()
-            
+        self.report_activity()
+
+    @property
+    def updated_at(self):
+        try:
+            return self.notification_set.all().order_by('-received_at')[0].received_at
+        except IndexError:
+            return None
+    
+    def report_activity(self):
+        if self.status not in ['COMPLETED', 'CANCELED', 'REJECTED']:
+            return
+
+        if self.status != 'COMPLETED':
+            name = settings.CIVICRM_ACTIVITIES['Failed contribution']
+        elif self.is_recurring():
+            name = settings.CIVICRM_ACTIVITIES['Recurring contribution']
+        else:
+            name = settings.CIVICRM_ACTIVITIES['Contribution']
+
+        report_activity.delay(
+            self.schedule.email,
+            self.schedule.key,
+            f'payu:{self.id}',
+            name,
+            self.updated_at,
+            {
+                'kwota': self.schedule.amount,
+            }
+        )            
 
     @classmethod
     def send_receipt(cls, email, year):

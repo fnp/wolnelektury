@@ -48,3 +48,12 @@ VARIANTS = {
 }
 
 EPUB_FUNDRAISING = []
+
+CIVICRM_BASE = None
+CIVICRM_KEY = None
+
+CIVICRM_ACTIVITIES = {
+    'Contribution': 'Wpłata',
+    'Recurring contribution': 'Wpłata cykliczna',
+    'Failed contribution': 'Nieudana wpłata',
+}
