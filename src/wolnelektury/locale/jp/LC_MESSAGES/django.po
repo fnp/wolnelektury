@@ -15,6 +15,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: isbn/forms.py:66
+msgid "Soft cover book"
+msgstr ""
+
+#: push/models.py:10
+msgid "title"
+msgstr ""
+
+#: push/models.py:11
+msgid "content"
+msgstr ""
+
+#: push/models.py:12
+msgid "image"
+msgstr ""
+
+#: push/templates/push/notification_form.html:4
+#: push/templates/push/notification_sent.html:4
+msgid "Notifications"
+msgstr ""
+
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr ""
@@ -221,6 +242,10 @@ msgstr ""
 #: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:108
 msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:22
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11

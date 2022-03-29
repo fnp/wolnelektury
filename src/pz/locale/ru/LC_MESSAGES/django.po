@@ -31,15 +31,15 @@ msgstr ""
 msgid "Not empty"
 msgstr ""
 
-#: pz/admin.py:107
+#: pz/admin.py:111
 msgid "Processing"
 msgstr ""
 
-#: pz/admin.py:142
+#: pz/admin.py:147
 msgid "obligatory"
 msgstr ""
 
-#: pz/admin.py:143
+#: pz/admin.py:148
 msgid "agree contact"
 msgstr ""
 
@@ -51,7 +51,7 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: pz/models.py:13 pz/models.py:70
+#: pz/models.py:13 pz/models.py:71
 msgid "campaign"
 msgstr ""
 
@@ -180,33 +180,37 @@ msgid "fundraiser commission"
 msgstr ""
 
 #: pz/models.py:60
+msgid "fundraiser bonus"
+msgstr ""
+
+#: pz/models.py:61
 msgid "fundaiser bill number"
 msgstr ""
 
-#: pz/models.py:62
+#: pz/models.py:63
 msgid "amount"
 msgstr ""
 
-#: pz/models.py:64
+#: pz/models.py:65
 msgid "notes"
 msgstr ""
 
-#: pz/models.py:66
+#: pz/models.py:67
 msgid "needs redo"
 msgstr ""
 
-#: pz/models.py:67
+#: pz/models.py:68
 msgid "cancelled at"
 msgstr ""
 
-#: pz/models.py:68
+#: pz/models.py:69
 msgid "optout"
 msgstr ""
 
-#: pz/models.py:73
+#: pz/models.py:76
 msgid "direct debit"
 msgstr ""
 
-#: pz/models.py:74
+#: pz/models.py:77
 msgid "direct debits"
 msgstr ""

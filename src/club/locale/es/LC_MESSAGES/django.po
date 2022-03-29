@@ -54,173 +54,173 @@ msgstr ""
 msgid "Minimal amount is %(amount)d PLN."
 msgstr ""
 
-#: club/models.py:26
+#: club/models.py:27
 msgid "minimum amount"
 msgstr ""
 
-#: club/models.py:27
+#: club/models.py:28
 msgid "minimum amount for year"
 msgstr ""
 
-#: club/models.py:28
+#: club/models.py:29
 msgid "proposed amounts for single payment"
 msgstr ""
 
-#: club/models.py:29
+#: club/models.py:30
 msgid "default single amount"
 msgstr ""
 
-#: club/models.py:30
+#: club/models.py:31
 msgid "proposed amounts for monthly payments"
 msgstr ""
 
-#: club/models.py:31
+#: club/models.py:32
 msgid "default monthly amount"
 msgstr ""
 
-#: club/models.py:34
+#: club/models.py:35
 msgid "club"
 msgstr ""
 
-#: club/models.py:35
+#: club/models.py:36
 msgid "clubs"
 msgstr ""
 
-#: club/models.py:62
+#: club/models.py:63
 msgid "key"
 msgstr ""
 
-#: club/models.py:63
+#: club/models.py:64
 msgid "email"
 msgstr ""
 
-#: club/models.py:64 club/models.py:188
+#: club/models.py:65 club/models.py:189
 msgid "membership"
 msgstr ""
 
-#: club/models.py:65
+#: club/models.py:66
 msgid "amount"
 msgstr ""
 
-#: club/models.py:66
+#: club/models.py:67
 msgid "method"
 msgstr ""
 
-#: club/models.py:69 club/templates/club/payment_form.html:25
+#: club/models.py:70 club/templates/club/payment_form.html:25
 msgid "monthly"
 msgstr ""
 
-#: club/models.py:70
+#: club/models.py:71
 msgid "yearly"
 msgstr ""
 
-#: club/models.py:72
+#: club/models.py:73
 msgid "source"
 msgstr ""
 
-#: club/models.py:74
+#: club/models.py:75
 msgid "cancelled"
 msgstr ""
 
-#: club/models.py:75
+#: club/models.py:76
 msgid "payed at"
 msgstr ""
 
-#: club/models.py:76
+#: club/models.py:77
 msgid "started at"
 msgstr ""
 
-#: club/models.py:77
+#: club/models.py:78
 msgid "expires_at"
 msgstr ""
 
-#: club/models.py:91
+#: club/models.py:92
 msgid "schedule"
 msgstr ""
 
-#: club/models.py:92
+#: club/models.py:93
 msgid "schedules"
 msgstr ""
 
-#: club/models.py:180
+#: club/models.py:181
 msgid "user"
 msgstr ""
 
-#: club/models.py:181
+#: club/models.py:182
 msgid "created at"
 msgstr ""
 
-#: club/models.py:182 club/models.py:243
+#: club/models.py:183 club/models.py:244
 msgid "name"
 msgstr ""
 
-#: club/models.py:183
+#: club/models.py:184
 msgid "manual"
 msgstr ""
 
-#: club/models.py:184
+#: club/models.py:185
 msgid "notes"
 msgstr ""
 
-#: club/models.py:185
+#: club/models.py:186
 msgid "updated at"
 msgstr ""
 
-#: club/models.py:189
+#: club/models.py:190
 msgid "memberships"
 msgstr ""
 
-#: club/models.py:226
+#: club/models.py:227
 msgid "days before"
 msgstr ""
 
-#: club/models.py:227
+#: club/models.py:228
 msgid "subject"
 msgstr ""
 
-#: club/models.py:228 club/payu/models.py:140
+#: club/models.py:229 club/payu/models.py:140
 msgid "body"
 msgstr ""
 
-#: club/models.py:231
+#: club/models.py:232
 msgid "reminder email"
 msgstr ""
 
-#: club/models.py:232
+#: club/models.py:233
 msgid "reminder emails"
 msgstr ""
 
-#: club/models.py:237
+#: club/models.py:238
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
 msgstr[0] ""
 msgstr[1] ""
 
-#: club/models.py:239
+#: club/models.py:240
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
 msgstr[0] ""
 msgstr[1] ""
 
-#: club/models.py:244
+#: club/models.py:245
 msgid "photo"
 msgstr ""
 
-#: club/models.py:245
+#: club/models.py:246
 msgid "text"
 msgstr ""
 
-#: club/models.py:248
+#: club/models.py:249
 msgid "ambassador"
 msgstr ""
 
-#: club/models.py:249
+#: club/models.py:250
 msgid "ambassadors"
 msgstr ""
 
-#: club/models.py:280 club/templates/club/index.html:7
+#: club/models.py:281 club/templates/club/index.html:7
 #: club/templates/club/index.html:13 club/templates/club/thanks.html:6
 #: club/templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"

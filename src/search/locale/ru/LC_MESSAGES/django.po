@@ -17,6 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: search/forms.py:11 search/templates/newsearch/search.html:16
+#: search/templates/search/search.html:7
 msgid "Search"
 msgstr "Поиск"
 
@@ -25,6 +26,10 @@ msgstr "Поиск"
 #| msgid "title, author, theme/topic, epoch, kind, genre, phrase"
 msgid "title, author, epoch, kind, genre, phrase"
 msgstr "название, автор, тема/сюжет, епоха, вид, жанр, фраза"
+
+#: search/templates/search/search.html:27
+msgid "Did you mean"
+msgstr ""
 
 #~ msgid "book"
 #~ msgstr "книга"

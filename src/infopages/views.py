@@ -24,4 +24,5 @@ def infopage(request, slug):
         'page': page,
         'left_column': left_column,
         'right_column': right_column,
+        'active_menu_item': f'info:{slug}',
     })

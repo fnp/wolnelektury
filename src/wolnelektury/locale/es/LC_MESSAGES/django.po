@@ -17,6 +17,31 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
+#: isbn/forms.py:66
+#, fuzzy
+#| msgid "of the book"
+msgid "Soft cover book"
+msgstr "del libro"
+
+#: push/models.py:10
+msgid "title"
+msgstr ""
+
+#: push/models.py:11
+#, fuzzy
+#| msgid "Table of contents"
+msgid "content"
+msgstr "Índice"
+
+#: push/models.py:12
+msgid "image"
+msgstr ""
+
+#: push/templates/push/notification_form.html:4
+#: push/templates/push/notification_sent.html:4
+msgid "Notifications"
+msgstr ""
+
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr "Página no existe"
@@ -287,6 +312,10 @@ msgstr "Conexiones de la cuenta de usuario"
 #: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:108
 msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:22
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11
@@ -693,9 +722,6 @@ msgstr "Tienes que iniciar sesión para continuar"
 
 #~ msgid "Source"
 #~ msgstr "Fuente"
-
-#~ msgid "of the book"
-#~ msgstr "del libro"
 
 #~ msgid "Source XML file"
 #~ msgstr "Archivo XML fuente"

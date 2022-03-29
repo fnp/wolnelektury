@@ -18,3 +18,6 @@
 <li>
   <a href="{% url 'subscribe' %}">{% trans "Newsletter" %}</a>
 </li>
+<li{% if active_menu_item == 'info:lektury-szkolne' %} class="active"{% endif %}>
+  <a href="{% url 'infopage' 'lektury-szkolne' %}">{% trans "School readings" %}</a>
+</li>

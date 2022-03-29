@@ -136,7 +136,7 @@ body.menu-on {
 
         li {
             display: inline-block;
-            @include size(width, 16.6%);
+            @include size(width, 14.2%);
 
             &.active {
                 background-color: white;

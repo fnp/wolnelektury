@@ -31,15 +31,15 @@ msgstr ""
 msgid "Not empty"
 msgstr ""
 
-#: pz/admin.py:107
+#: pz/admin.py:111
 msgid "Processing"
 msgstr "Przetwarzanie"
 
-#: pz/admin.py:142
+#: pz/admin.py:147
 msgid "obligatory"
 msgstr "obowiązkowo"
 
-#: pz/admin.py:143
+#: pz/admin.py:148
 msgid "agree contact"
 msgstr "zgoda na kontakt"
 
@@ -51,7 +51,7 @@ msgstr "nazwa"
 msgid "description"
 msgstr "opis"
 
-#: pz/models.py:13 pz/models.py:70
+#: pz/models.py:13 pz/models.py:71
 msgid "campaign"
 msgstr "kampania"
 
@@ -180,35 +180,41 @@ msgid "fundraiser commission"
 msgstr "prowizja fundraisera"
 
 #: pz/models.py:60
+#, fuzzy
+#| msgid "fundraisers"
+msgid "fundraiser bonus"
+msgstr "fundraiserzy"
+
+#: pz/models.py:61
 msgid "fundaiser bill number"
 msgstr "nr rachunku wystawionego przez fundraisera"
 
-#: pz/models.py:62
+#: pz/models.py:63
 msgid "amount"
 msgstr "kwota"
 
-#: pz/models.py:64
+#: pz/models.py:65
 msgid "notes"
 msgstr "uwagi"
 
-#: pz/models.py:66
+#: pz/models.py:67
 msgid "needs redo"
 msgstr "do powtórki"
 
-#: pz/models.py:67
+#: pz/models.py:68
 #, fuzzy
 #| msgid "is cancelled"
 msgid "cancelled at"
 msgstr "anulowane"
 
-#: pz/models.py:68
+#: pz/models.py:69
 msgid "optout"
 msgstr "optout"
 
-#: pz/models.py:73
+#: pz/models.py:76
 msgid "direct debit"
 msgstr "polecenie zapłaty"
 
-#: pz/models.py:74
+#: pz/models.py:77
 msgid "direct debits"
 msgstr "polecenia zapłaty"

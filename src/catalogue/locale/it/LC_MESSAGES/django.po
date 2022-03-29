@@ -166,153 +166,163 @@ msgstr ""
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: catalogue/models/book.py:58 catalogue/models/collection.py:14
+#: catalogue/models/book.py:60 catalogue/models/collection.py:14
 msgid "title"
 msgstr "titolo"
 
-#: catalogue/models/book.py:59 catalogue/models/tag.py:58
+#: catalogue/models/book.py:61 catalogue/models/tag.py:58
 msgid "sort key"
 msgstr "chiave di ordinamento"
 
-#: catalogue/models/book.py:61
+#: catalogue/models/book.py:63
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Risultati per autore"
 
-#: catalogue/models/book.py:62 catalogue/models/book.py:63
+#: catalogue/models/book.py:64 catalogue/models/book.py:65
 #: catalogue/models/collection.py:15 catalogue/models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
-#: catalogue/models/book.py:64
+#: catalogue/models/book.py:66
 msgid "language code"
 msgstr "codice della lingua"
 
-#: catalogue/models/book.py:65 catalogue/models/book.py:392
+#: catalogue/models/book.py:67 catalogue/models/book.py:429
 #: catalogue/models/collection.py:16 catalogue/models/tag.py:61
-#: catalogue/models/tag.py:135
+#: catalogue/models/tag.py:137
 msgid "description"
 msgstr "descrizione"
 
-#: catalogue/models/book.py:66
+#: catalogue/models/book.py:68
 msgid "abstract"
 msgstr ""
 
-#: catalogue/models/book.py:67 catalogue/models/bookmedia.py:40
-#: catalogue/models/tag.py:71 catalogue/models/tag.py:72
+#: catalogue/models/book.py:69
+msgid "toc"
+msgstr ""
+
+#: catalogue/models/book.py:70 catalogue/models/bookmedia.py:42
+#: catalogue/models/tag.py:73 catalogue/models/tag.py:74
 msgid "creation date"
 msgstr "data di creazione"
 
-#: catalogue/models/book.py:68
+#: catalogue/models/book.py:71
 #, fuzzy
 #| msgid "creation date"
 msgid "change date"
 msgstr "data di creazione"
 
-#: catalogue/models/book.py:69
+#: catalogue/models/book.py:72
 msgid "parent number"
 msgstr "numero del genitore"
 
-#: catalogue/models/book.py:70 catalogue/models/bookmedia.py:43
+#: catalogue/models/book.py:73 catalogue/models/bookmedia.py:45
 msgid "extra information"
 msgstr " ulteriori informazioni"
 
-#: catalogue/models/book.py:73
+#: catalogue/models/book.py:76
 msgid "print on demand"
 msgstr ""
 
-#: catalogue/models/book.py:74 catalogue/models/collection.py:23
+#: catalogue/models/book.py:77 catalogue/models/collection.py:23
 msgid "recommended"
 msgstr ""
 
-#: catalogue/models/book.py:75
+#: catalogue/models/book.py:78
 msgid "audio length"
 msgstr ""
 
-#: catalogue/models/book.py:76
+#: catalogue/models/book.py:79
 msgid "preview"
 msgstr ""
 
-#: catalogue/models/book.py:77
+#: catalogue/models/book.py:80
 msgid "preview until"
 msgstr ""
 
-#: catalogue/models/book.py:79
+#: catalogue/models/book.py:82
 msgid "findable"
 msgstr ""
 
-#: catalogue/models/book.py:83
+#: catalogue/models/book.py:86
 msgid "cover"
 msgstr "copertina"
 
-#: catalogue/models/book.py:90
+#: catalogue/models/book.py:93
+#, fuzzy
+#| msgid "cover"
+msgid "clean cover"
+msgstr "copertina"
+
+#: catalogue/models/book.py:100
 msgid "cover thumbnail"
 msgstr ""
 
-#: catalogue/models/book.py:96
+#: catalogue/models/book.py:106
 msgid "cover thumbnail for mobile app"
 msgstr ""
 
-#: catalogue/models/book.py:102
+#: catalogue/models/book.py:112
 msgid "cover for mobile app"
 msgstr ""
 
-#: catalogue/models/book.py:108
+#: catalogue/models/book.py:118
 msgid "cover for Ebookpoint"
 msgstr ""
 
-#: catalogue/models/book.py:137 catalogue/models/collection.py:19
+#: catalogue/models/book.py:147 catalogue/models/collection.py:19
 msgid "book"
 msgstr "libro"
 
-#: catalogue/models/book.py:138
+#: catalogue/models/book.py:148
 msgid "books"
 msgstr "Libri"
 
-#: catalogue/models/book.py:564
+#: catalogue/models/book.py:621
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Il libro \"%s\" non esiste."
 
-#: catalogue/models/book.py:580
+#: catalogue/models/book.py:637
 #, python-format
 msgid "Book %s already exists"
 msgstr "Il libro %s esiste già"
 
-#: catalogue/models/book.py:883
+#: catalogue/models/book.py:955
 msgid "This work needs modernisation"
 msgstr ""
 
-#: catalogue/models/book.py:962 catalogue/models/bookmedia.py:33
+#: catalogue/models/book.py:1045 catalogue/models/bookmedia.py:34
 #, python-format
 msgid "%s file"
 msgstr "i %s di file"
 
-#: catalogue/models/bookmedia.py:35
+#: catalogue/models/bookmedia.py:36
 msgid "type"
 msgstr "tipo"
 
-#: catalogue/models/bookmedia.py:36 catalogue/models/source.py:11
+#: catalogue/models/bookmedia.py:37 catalogue/models/source.py:11
 #: catalogue/models/tag.py:56
 msgid "name"
 msgstr "nome"
 
-#: catalogue/models/bookmedia.py:37
+#: catalogue/models/bookmedia.py:38
 #, fuzzy
 #| msgid "name"
 msgid "part name"
 msgstr "nome"
 
-#: catalogue/models/bookmedia.py:38
+#: catalogue/models/bookmedia.py:39
 msgid "index"
 msgstr ""
 
-#: catalogue/models/bookmedia.py:39
+#: catalogue/models/bookmedia.py:40
 msgid "file"
 msgstr "file"
 
-#: catalogue/models/bookmedia.py:52 catalogue/models/bookmedia.py:53
+#: catalogue/models/bookmedia.py:54 catalogue/models/bookmedia.py:55
 msgid "book media"
 msgstr "book media"
 
@@ -321,6 +331,7 @@ msgid "book slugs"
 msgstr " slug del libro "
 
 #: catalogue/models/collection.py:18 catalogue/models/tag.py:23
+#: catalogue/templates/catalogue/search_multiple_hits.html:53
 msgid "kind"
 msgstr "categoria"
 
@@ -373,6 +384,7 @@ msgid "author"
 msgstr "autore"
 
 #: catalogue/models/tag.py:22
+#: catalogue/templates/catalogue/search_multiple_hits.html:39
 msgid "epoch"
 msgstr "epoca"
 
@@ -392,7 +404,7 @@ msgstr "raccolta"
 msgid "thing"
 msgstr ""
 
-#: catalogue/models/tag.py:33 catalogue/models/tag.py:97
+#: catalogue/models/tag.py:33 catalogue/models/tag.py:99
 msgid "tag"
 msgstr "tag"
 
@@ -408,7 +420,7 @@ msgstr ""
 msgid "category"
 msgstr "categoria"
 
-#: catalogue/models/tag.py:98
+#: catalogue/models/tag.py:100
 msgid "tags"
 msgstr "i tag"
 
@@ -616,11 +628,11 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:153
+#: catalogue/templates/catalogue/book_text.html:158
 msgid "Other versions of the book"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:154
+#: catalogue/templates/catalogue/book_text.html:159
 msgid "Close the other version"
 msgstr ""
 
@@ -653,7 +665,7 @@ msgid "Collections"
 msgstr " raccolte"
 
 #: catalogue/templates/catalogue/catalogue.html:25
-#: catalogue/templates/catalogue/search_multiple_hits.html:45
+#: catalogue/templates/catalogue/search_multiple_hits.html:117
 #: catalogue/templates/catalogue/tag_list_split.html:9
 #: catalogue/templates/catalogue/tagged_object_list.html:5
 #, fuzzy
@@ -667,11 +679,11 @@ msgstr "Artista"
 msgid "All collections"
 msgstr " raccolte"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:408
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:414
 msgid "Download custom PDF"
 msgstr "Scarica PDF personalizzato"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:409
+#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:415
 msgid "Download"
 msgstr "Scarica"
 
@@ -800,7 +812,8 @@ msgid ""
 "    and <a href=\"%(d)s\">recent DAISY files</a>."
 msgstr ""
 
-#: catalogue/templates/catalogue/search_multiple_hits.html:7
+#: catalogue/templates/catalogue/search_multiple_hits.html:8
+#: catalogue/templates/catalogue/search_multiple_hits.html:14
 #: catalogue/templates/catalogue/search_no_hits.html:5
 #: catalogue/templates/catalogue/search_no_hits.html:10
 #: catalogue/templates/catalogue/search_too_long.html:5
@@ -810,12 +823,18 @@ msgstr ""
 msgid "Search"
 msgstr "Cerca"
 
-#: catalogue/templates/catalogue/search_multiple_hits.html:13
+#: catalogue/templates/catalogue/search_multiple_hits.html:28
+#, fuzzy
+#| msgid "language code"
+msgid "language"
+msgstr "codice della lingua"
+
+#: catalogue/templates/catalogue/search_multiple_hits.html:85
 #: catalogue/templates/catalogue/search_no_hits.html:16
 msgid "Did you mean"
 msgstr "Volevi dire"
 
-#: catalogue/templates/catalogue/search_multiple_hits.html:32
+#: catalogue/templates/catalogue/search_multiple_hits.html:104
 #, fuzzy
 #| msgid "books"
 msgid "Books"
@@ -840,6 +859,20 @@ msgstr ""
 "Siamo spiacenti! La ricerca viene effettuata su parole con almeno due "
 "caratteri."
 
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:53
+#: catalogue/templates/catalogue/snippets/jplayer.html:36
+#, fuzzy
+#| msgid "Artist"
+msgid "Artist:"
+msgstr "Artista"
+
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:54
+#: catalogue/templates/catalogue/snippets/jplayer.html:37
+#, fuzzy
+#| msgid "Director"
+msgid "director:"
+msgstr "Direttore"
+
 #: catalogue/templates/catalogue/snippets/content_warning.html:4
 msgid "Caution: text contains"
 msgstr ""
@@ -847,18 +880,6 @@ msgstr ""
 #: catalogue/templates/catalogue/snippets/custom_pdf_link_li.html:3
 msgid "Download a custom PDF"
 msgstr " Scarica un PDF personalizzato"
-
-#: catalogue/templates/catalogue/snippets/jplayer.html:36
-#, fuzzy
-#| msgid "Artist"
-msgid "Artist:"
-msgstr "Artista"
-
-#: catalogue/templates/catalogue/snippets/jplayer.html:37
-#, fuzzy
-#| msgid "Director"
-msgid "director:"
-msgstr "Direttore"
 
 #: catalogue/templates/catalogue/snippets/jplayer.html:64
 msgid "previous"
@@ -951,7 +972,7 @@ msgstr "Interlinea"
 msgid "vulgar language"
 msgstr "codice della lingua"
 
-#: catalogue/views.py:359
+#: catalogue/views.py:365
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -962,11 +983,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: catalogue/views.py:364
+#: catalogue/views.py:370
 msgid "Book imported successfully"
 msgstr "Libro scaricato con successo"
 
-#: catalogue/views.py:365
+#: catalogue/views.py:371
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Errore dell'importazione del file: %r"

@@ -17,6 +17,30 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
+#: isbn/forms.py:66
+#, fuzzy
+msgid "Soft cover book"
+msgstr "Buchquelle"
+
+#: push/models.py:10
+msgid "title"
+msgstr ""
+
+#: push/models.py:11
+#, fuzzy
+#| msgid "Table of contents"
+msgid "content"
+msgstr "Inhalt"
+
+#: push/models.py:12
+msgid "image"
+msgstr ""
+
+#: push/templates/push/notification_form.html:4
+#: push/templates/push/notification_sent.html:4
+msgid "Notifications"
+msgstr ""
+
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr "Die gewünschte Webseite existiert nicht"
@@ -294,6 +318,10 @@ msgstr "Konto-Beziehungen"
 #: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:108
 msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:22
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11
@@ -703,10 +731,6 @@ msgstr "Sie müssen eingeloggt sein, um fortzusetzen."
 
 #~ msgid "Source"
 #~ msgstr "Quelle"
-
-#, fuzzy
-#~ msgid "of the book"
-#~ msgstr "Buchquelle"
 
 #~ msgid "Source XML file"
 #~ msgstr "Quelle der XML-Datei"

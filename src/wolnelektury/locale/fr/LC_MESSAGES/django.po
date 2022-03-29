@@ -16,6 +16,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 
+#: isbn/forms.py:66
+#, fuzzy
+#| msgid "of the book"
+msgid "Soft cover book"
+msgstr "du livre"
+
+#: push/models.py:10
+msgid "title"
+msgstr ""
+
+#: push/models.py:11
+#, fuzzy
+#| msgid "Table of contents"
+msgid "content"
+msgstr "Table des matières"
+
+#: push/models.py:12
+msgid "image"
+msgstr ""
+
+#: push/templates/push/notification_form.html:4
+#: push/templates/push/notification_sent.html:4
+msgid "Notifications"
+msgstr ""
+
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr "Site n'existe pas"
@@ -286,6 +311,10 @@ msgstr ""
 #: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:108
 msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:22
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11
@@ -684,9 +713,6 @@ msgstr "Vous devez être connecter pour continuer"
 
 #~ msgid "Source"
 #~ msgstr "Source"
-
-#~ msgid "of the book"
-#~ msgstr "du livre"
 
 #~ msgid "Source XML file"
 #~ msgstr "Fichier source XML"

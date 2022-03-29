@@ -19,12 +19,17 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #: search/forms.py:11 search/templates/newsearch/search.html:16
+#: search/templates/search/search.html:7
 msgid "Search"
 msgstr "Szukaj"
 
 #: search/forms.py:21
 msgid "title, author, epoch, kind, genre, phrase"
 msgstr "tytuł, autor, epoka, rodzaj, gatunek, cytat"
+
+#: search/templates/search/search.html:27
+msgid "Did you mean"
+msgstr ""
 
 #~ msgid "book"
 #~ msgstr "utwór"

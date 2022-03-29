@@ -18,6 +18,31 @@ msgstr ""
 "Plural-Forms: nplurals=3;   plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
+#: isbn/forms.py:66
+#, fuzzy
+#| msgid "of the book"
+msgid "Soft cover book"
+msgstr "данной книги"
+
+#: push/models.py:10
+msgid "title"
+msgstr ""
+
+#: push/models.py:11
+#, fuzzy
+#| msgid "Table of contents"
+msgid "content"
+msgstr "Оглавление"
+
+#: push/models.py:12
+msgid "image"
+msgstr ""
+
+#: push/templates/push/notification_form.html:4
+#: push/templates/push/notification_sent.html:4
+msgid "Notifications"
+msgstr ""
+
 #: wolnelektury/templates/404.html:4
 msgid "Page does not exist"
 msgstr "Сайт не существует"
@@ -302,6 +327,10 @@ msgstr ""
 #: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:108
 msgid "Newsletter"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:22
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11
@@ -705,9 +734,6 @@ msgstr "Вы должны войти, чтобы продолжaть"
 
 #~ msgid "Source"
 #~ msgstr "Источник"
-
-#~ msgid "of the book"
-#~ msgstr "данной книги"
 
 #~ msgid "Source XML file"
 #~ msgstr "Исходный файл"
