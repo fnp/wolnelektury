@@ -1,443 +1,496 @@
 <!doctype html>
 <html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WolneLektury.pl</title>
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/modernizr.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WolneLektury.pl</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-  </head>
-  <body>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="scripts/modernizr.js"></script>
 
-    <nav class="l-navigation">
-      <div class="l-container">
-        <a href="/" class="l-navigation__logo">
-          <img src="images/logo.png" alt="WolneLektury.pl">
-        </a>
-        <div class="l-naviagion__search">
-          <input type="text" placeholder="szukaj tytułu, autora, motywów…">
-        </div>
-        <div class="l-navigation__actions">
-          <a href="#"><i class="icon icon-liked"></i></a>
-          <button class="l-navigation__button js-menu" aria-label="Menu">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="l-navigation">
+  <div class="l-change-pop">
+    <h3>Zmieniamy się!</h3>
+    <p>
+      Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd strony książki.
+      Będziemy bardzo! wdzięczni za Twoją opinię – w prawym dolnym rogu znajdziesz przycisk oceny.
+      Jeżeli wolisz klasyczny wygląd - wystarczy, że <a href="#">klikniesz tutaj</a>
+    </p>
+    <button class="l-change-pop__close">
+      <i class="icon icon-close"></i>
+    </button>
+  </div>
+  <div class="l-container">
+    <a href="/" class="l-navigation__logo">
+      <img src="images/logo.svg" alt="WolneLektury.pl">
+    </a>
+    <div class="l-naviagion__search">
+      <input type="text" placeholder="szukaj tytułu, autora, motywów…">
+    </div>
+    <div class="l-navigation__actions">
+      <a href="#"><i class="icon icon-liked"></i></a>
+      <button class="l-navigation__button js-menu" aria-label="Menu">
             <span class="c-hamburger">
                 <span class="bar"></span>
             </span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="l-container">
+  <div class="l-breadcrumb">
+    <a href="#"><span>Strona główna</span></a>
+    <a href="#"><span>Literatura</span></a>
+    <a href="#"><span>romantyzm</span></a>
+  </div>
+</div>
+
+<main class="l-main">
+  <section class="l-section">
+    <aside class="l-aside">
+      <figure>
+        <img src="images/header.jpg" alt="">
+      </figure>
+      <ul class="l-aside__info">
+        <li><span>Epoka:</span> romantyzm</li>
+        <li><span>Rodzaj:</span> dramat</li>
+        <li><span>Gatunek:</span> dramat romantyczny</li>
+      </ul>
+      <ul class="l-aside__zbiory">
+        <li>
+          <a href="#">Dziady</a>
+          <ul>
+            <li><a href="#">Upiór</a></li>
+            <li><a href="#">Dziady, część II</a></li>
+            <li><a href="#">Dziady, część IV</a></li>
+            <li><a href="#">Dziady, część III</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <div class="l-content">
+      <header class="l-header">
+        <div class="l-header__content">
+          <p>Adam Mickiewicz (tłum. Janina Kowalska-Nowak)</p>
+          <h1>Dziady, część IV</h1>
+        </div>
+        <div class="l-header__actions">
+          <button class="l-button l-button--fav">
+            <img src="images/fav.svg" alt="Dodaj do ulubionych">
           </button>
         </div>
-      </div>
-    </nav>
-
-    <div class="l-container">
-      <div class="l-breadcrumb">
-        <a href="#"><span>Strona główna</span></a>
-        <a href="#"><span>Literatura</span></a>
-        <a href="#"><span>romantyzm</span></a>
-      </div>
-    </div>
-
-    <main class="l-main">
-      <section class="l-section">
-        <aside class="l-aside">
-          <figure>
-            <img src="images/header.jpg" alt="">
-          </figure>
-          <ul class="l-aside__info">
-            <li><span>Epoka:</span> romantyzm</li>
-            <li><span>Rodzaj:</span> dramat</li>
-            <li><span>Gatunek:</span> dramat romantyczny</li>
-          </ul>
-          <ul class="l-aside__zbiory">
-            <li>
-              <a href="#">Dziady</a>
-              <ul>
-                <li><a href="#">Upiór</a></li>
-                <li><a href="#">Dziady, część II</a></li>
-                <li><a href="#">Dziady, część IV</a></li>
-                <li><a href="#">Dziady, część III</a></li>
-              </ul>
-            </li>
-          </ul>
-        </aside>
-        <div class="l-content">
-          <header class="l-header">
-            <div class="l-header__content">
-              <p>Adam Mickiewicz (tłum. Janina Kowalska-Nowak)</p>
-              <h1>Dziady, część IV</h1>
+      </header>
+      <article class="l-article">
+        <div class="c-media">
+          <div class="c-media__actions">
+            <div class="c-media__btn">
+              <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> pobierz audiobook</button>
             </div>
-            <div class="l-header__actions">
-              <button class="l-button l-button--fav">
-                <img src="images/fav.svg" alt="Dodaj do ulubionych">
-              </button>
+            <div class="c-media__btn">
+              <button class="l-button l-button--media" id="ebook"><i class="icon icon-book"></i> pobierz książkę</button>
             </div>
-          </header>
-          <article class="l-article">
-            <div class="c-media">
-              <div class="c-media__actions">
-                <div class="c-media__btn">
-                  <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> pobierz audiobook</button>
-                </div>
-                <div class="c-media__btn">
-                  <button class="l-button l-button--media" id="ebook"><i class="icon icon-book"></i> pobierz książkę</button>
-                </div>
-                <div class="c-media__btn">
-                  <button class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> czytaj online</button>
+            <div class="c-media__btn">
+              <button class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> czytaj online</button>
+            </div>
+          </div>
+          <div class="c-media__player">
+            <div class="c-player__head">
+              <span>Henryk Sienkiewicz, Potop, Potop, tom pierwszy, tom 1, rozdział 1. Czyta Jasiek Staszczyk, reż. Jasiek Staszczyk</span>
+            </div>
+            <div class="c-player">
+              <div class="c-player__btns">
+                <button><i class="icon icon-prev"></i></button>
+                <button class="c-player__btn--md"><i class="icon icon-play"></i></button>
+                <button><i class="icon icon-next"></i></button>
+                <div class="c-select">
+                  <ul>
+                    <li>2×</li>
+                    <li>1.75×</li>
+                    <li>1.5×</li>
+                    <li>1.25×</li>
+                    <li class="is-active">1×</li>
+                    <li>0.75×</li>
+                    <li>0.5×</li>
+                    <li>0.25×</li>
+                  </ul>
                 </div>
               </div>
-              <div class="c-media__player">
-                <div class="c-player">
-                  <button class="c-player__btn">
-                    <i class="icon icon-play"></i>
-                  </button>
-                  <div class="c-player__timeline">
-                    <div class="c-player__info">Czyta Wiktor Korzeniewski, reż. Adam Bień</div>
-                    <span>
+              <div class="c-player__timeline">
+                <div class="c-player__info">1. <strong>Godzina pierwsza</strong> – godzina miłości</div>
+                <div class="c-player__chapters">
+                  <span>Rozdziały</span>
+                  <ul>
+                    <li>Godzina pierwsza – godzina miłości</li>
+                    <li>Druga godzina – godzina rozpaczy</li>
+                    <li>Trzecia godzina – godzina przestrogi</li>
+                  </ul>
+                </div>
+                <span>
                       <span></span>
                     </span>
-                    <time class="c-player__length">
-                      <span>2:35</span>
-                      <span>60:20</span>
-                    </time>
-                  </div>
-                </div>
-                <div class="c-media__caption">
-                  <div class="icons">
-                    <i class="icon icon-acc-1"></i>
-                    <i class="icon icon-acc-2"></i>
-                    <i class="icon icon-acc-3"></i>
-                  </div>
-                  <div class="content">
-                    <p>Dofinansowano ze środków: Priorytet 4 Udostępnienie publikacji w formatach cyfrowych w ramach Narodowego Programu Rozwoju Czytelnictwa.</p>
-                  </div>
-                </div>
+                <time class="c-player__length">
+                  <span>2:35</span>
+                  <span>60:20</span>
+                </time>
               </div>
-              <div class="c-media__popup" data-popup="ebook">
-                <div class="c-media__popup__box">
-                  <div class="c-media__popup__box__lead">
-                    <h2>Pobieranie e-booka</h2>
-                    <p>Wybierz wersję dla siebie:</p>
-                  </div>
-                  <div class="c-media__popup__box__items">
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.pdf</h3>
-                        <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">.pdf</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.epub</h3>
-                        <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">.epub</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.mobi</h3>
-                        <p>Natywny format dla czytnika Amazon Kindle.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">.mobi</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>synchrobook (epub3)</h3>
-                        <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>inne formaty</h3>
-                        <ul>
-                          <li><a href="#">plik tekstowy (.txt)</a></li>
-                          <li><a href="#">FictionBook</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="c-media__popup__close">
-                    <img src="images/close.svg" alt="Zamknij">
-                  </button>
-                </div>
-              </div>
-              <div class="c-media__popup" data-popup="audiobook">
-                <div class="c-media__popup__box">
-                  <div class="c-media__popup__box__lead">
-                    <h2>Pobieranie audiobooka</h2>
-                    <p>Wybierz wersję dla siebie:</p>
-                  </div>
-                  <div class="c-media__popup__box__items">
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>.mp3</h3>
-                        <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">.mp3</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>OggVorbis</h3>
-                        <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">.ogg</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>DAISY</h3>
-                        <p>Format dla osób z dysfunkcjami czytania.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">DAISY</a>
-                      </div>
-                    </div>
-                    <div class="c-media__popup__box__item">
-                      <div>
-                        <h3>synchrobook</h3>
-                        <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
-                      </div>
-                      <div>
-                        <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="c-media__popup__close">
-                    <img src="images/close.svg" alt="Zamknij">
-                  </button>
-                </div>
+              <div class="c-player__volume">
+                <i class="icon icon-volume"></i>
+                <input type="range" value="60" min="0" max="100" id="range" oninput="rangenumber.value=value">
               </div>
             </div>
+            <div class="c-media__caption">
+              <div class="icons">
+                <i class="icon icon-acc-1"></i>
+                <i class="icon icon-acc-2"></i>
+                <i class="icon icon-acc-3"></i>
+              </div>
+              <div class="content">
+                <p>Dofinansowano ze środków: Priorytet 4 Udostępnienie publikacji w formatach cyfrowych w ramach Narodowego Programu Rozwoju Czytelnictwa.</p>
+              </div>
+            </div>
+          </div>
+          <div class="c-media__popup" data-popup="ebook">
+            <div class="c-media__popup__box">
+              <div class="c-media__popup__box__lead">
+                <h2>Pobieranie e-booka</h2>
+                <p>Wybierz wersję dla siebie:</p>
+              </div>
+              <div class="c-media__popup__box__items">
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>.pdf</h3>
+                    <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">.pdf</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>.epub</h3>
+                    <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">.epub</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>.mobi</h3>
+                    <p>Natywny format dla czytnika Amazon Kindle.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">.mobi</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>synchrobook (epub3)</h3>
+                    <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>inne formaty</h3>
+                    <ul>
+                      <li><a href="#">plik tekstowy (.txt)</a></li>
+                      <li><a href="#">FictionBook</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <button class="c-media__popup__close">
+                <img src="images/close.svg" alt="Zamknij">
+              </button>
+            </div>
+          </div>
+          <div class="c-media__popup" data-popup="audiobook">
+            <div class="c-media__popup__box">
+              <div class="c-media__popup__box__lead">
+                <h2>Pobieranie audiobooka</h2>
+                <p>Wybierz wersję dla siebie:</p>
+              </div>
+              <div class="c-media__popup__box__items">
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>.mp3</h3>
+                    <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">.mp3</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>OggVorbis</h3>
+                    <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">.ogg</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>DAISY</h3>
+                    <p>Format dla osób z dysfunkcjami czytania.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">DAISY</a>
+                  </div>
+                </div>
+                <div class="c-media__popup__box__item">
+                  <div>
+                    <h3>synchrobook</h3>
+                    <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
+                  </div>
+                  <div>
+                    <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                  </div>
+                </div>
+              </div>
+              <button class="c-media__popup__close">
+                <img src="images/close.svg" alt="Zamknij">
+              </button>
+            </div>
+          </div>
+        </div>
 
-            <h3>Opis</h3>
-
-            <p>
-              Pericord i Brown dokonali wspólnie wielu wynalazków. Ich umiejętności doskonale się uzupełniają: pierwszy to geniusz twórczy, a drugi — umysł praktyczny, doskonale rozumie projekty współpracownika i wciela je w życie.
-            </p>
-            <p>
-              Wspólnicy pracują nad kolejnym pomysłem — maszyną latającą. Prototyp jest już prawie gotów i niebawem można będzie go przetestować. Na ostatnich etapach pracy między wspólnikami pojawia się kwestia sporna: komu należy się patent? Wynalazcy — autorowi projektu czy mechanikowi — temu, który skonstruował maszynę?
-            </p>
-            <p>
-              Trup w obłokach czyli historia maszyny latającej w powietrzu (oryg. The Great Brown-Pericord Motor) to opowiadanie z dreszczykiem, pióra Arthura Conana Doyle'a, autora Przygód Sherlocka Holmesa.
-            </p>
+        <div class="l-article__overlay" data-max-height="327">
+          <h3>Opis</h3>
+          <p>
+            Pericord i Brown dokonali wspólnie wielu wynalazków. Ich umiejętności doskonale się uzupełniają:
+            pierwszy to geniusz twórczy, a drugi — umysł praktyczny, doskonale rozumie projekty współpracownika
+            i wciela je w życie.
+          </p>
+          <p>
+            Wspólnicy pracują nad kolejnym pomysłem — maszyną latającą. Prototyp jest już prawie gotów i niebawem
+            można będzie go przetestować. Na ostatnich etapach pracy między wspólnikami pojawia się kwestia sporna:
+            komu należy się patent? Wynalazcy — autorowi projektu czy mechanikowi — temu, który skonstruował maszynę?
+          </p>
+          <p>
+            Trup w obłokach czyli historia maszyny latającej w powietrzu (oryg. The Great Brown-Pericord Motor)
+            to opowiadanie z dreszczykiem, pióra Arthura Conana Doyle'a, autora Przygód Sherlocka Holmesa.
+          </p>
+          <h4>Spis treści:</h4>
+          <ul>
+            <li>Dziady. Poema</li>
+            <li>Przedmowa</li>
+            <li>Upiór</li>
+            <li>Dziady, część II</li>
+            <li>Dziady, część IV</li>
+            <li>Dziady, część III</li>
+            <li>Dziady. Widowisko, część I</li>
+          </ul>
+        </div>
+        <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
+      </article>
+      <div class="c-support">
+        <div class="c-support__content">
+          <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki <span>darowiznom</span> od osób takich jak <span>Ty</span>!</h2>
+          <a href="#">Dorzuć się!</a>
+        </div>
+        <figure>
+          <img src="images/img-1.jpg" alt="Dorzuć się!">
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="l-section">
+    <div class="l-author">
+      <div class="row">
+        <h2>O autorze</h2>
+        <div>
+          <figure class="l-author__photo">
+            <img src="images/author.jpg" alt="Adam Mickiewicz">
+            <figcaption>
+              Źródło: Wikipedia
+            </figcaption>
+          </figure>
+          <article class="l-author__info">
+            <h3>Adam Mickiewicz</h3>
+            <div class="l-article__overlay" data-max-height="327">
+              <p>
+                Ur. 24 grudnia 1798 r. w Zaosiu koło Nowogródka <br>
+                Zm. 26 listopada 1855 r. w Konstantynopolu (dziś: Stambuł)
+              </p>
+            </div>
+            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
           </article>
         </div>
-      </section>
-      <section class="l-section">
-        <div class="c-support">
-          <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki darowiznom od osób takich jak Ty!</h2>
-          <figure>
-            <img src="images/img-1.jpg" alt="Dorzuć się!">
-            <a href="#">Dorzuć się!</a>
-          </figure>
-        </div>
-      </section>
-      <section class="l-section">
-        <div class="l-author">
-          <div class="row">
-            <h2>O autorze</h2>
-            <div>
-              <figure class="l-author__photo">
-                <img src="images/author.jpg" alt="Adam Mickiewicz">
-                <figcaption>
-                  Źródło: Wikipedia
-                </figcaption>
-              </figure>
-              <article class="l-author__info">
-                <h3>Adam Mickiewicz</h3>
-                <p>
-                  Ur. 24 grudnia 1798 r. w Zaosiu koło Nowogródka <br>
-                  Zm. 26 listopada 1855 r. w Konstantynopolu (dziś: Stambuł)
-                </p>
-                <p>
-                  <strong>Najważniejsze dzieła:</strong> <br>
-                  Ballady i romanse (1822), Grażyna (1823), Sonety krymskie (1826), Konrad Wallenrod (1828),
-                  Dziady (cz.II i IV 1823, cz.III 1832), Księgi narodu polskiego i pielgrzymstwa polskiego (1833),
-                  Pan Tadeusz (1834); wiersze: Oda do młodości (1820), Do Matki Polki (1830), Śmierć pułkownika (1831),
-                  Reduta Ordona (1831)...
-                </p>
-              </article>
-            </div>
-          </div>
-          <div class="row">
-            <div class="l-author__quotes">
-              <div class="l-author__quotes__slider">
-                <div class="l-author__quotes__slider__item">
-                  <em>
-                    Cicho wszędzie, głucho wszędzie, co to będzie co to będzie? Kto nie doznał goryczy ni razu ten
-                    nie dozna słodyczy w niebie. Bo kto nie był człowiekiem ni razu temu człowiek nie pomoże.
-                  </em>
-                  <p>Adam Mickiewicz – Dziady, część I</p>
-                </div>
-                <div class="l-author__quotes__slider__item">
-                  <em>
-                    Cicho wszędzie, głucho wszędzie, co to będzie co to będzie? Kto nie doznał goryczy ni razu ten
-                    nie dozna słodyczy w niebie. Bo kto nie był człowiekiem ni razu temu człowiek nie pomoże.
-                  </em>
-                  <p>Adam Mickiewicz – Dziady, część II</p>
-                </div>
-                <div class="l-author__quotes__slider__item">
-                  <em>
-                    Cicho wszędzie, głucho wszędzie, co to będzie co to będzie? Kto nie doznał goryczy ni razu ten
-                    nie dozna słodyczy w niebie. Bo kto nie był człowiekiem ni razu temu człowiek nie pomoże.
-                  </em>
-                  <p>Adam Mickiewicz – Dziady, część III</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="l-section">
-        <div class="l-themes__wrapper">
-          <h2>Motywy występujące w tym utworze <a href="#"><span>Wszystkie motywy</span> <i class="icon icon-arrow-right"></i></a></h2>
-          <div class="l-themes">
-            <ul>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">bitwa <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">antysemityzm <span>(9)</span></a></li>
-              <li><a href="#">bijatyka <span>(9)</span></a></li>
-              <li><a href="#">błądzenie <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">bitwa <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">antysemityzm <span>(9)</span></a></li>
-              <li><a href="#">bijatyka <span>(9)</span></a></li>
-              <li><a href="#">błądzenie <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">bitwa <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">antysemityzm <span>(9)</span></a></li>
-              <li><a href="#">bijatyka <span>(9)</span></a></li>
-              <li><a href="#">błądzenie <span>(9)</span></a></li>
-              <li><a href="#">bitwa <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">błądzenie <span>(9)</span></a></li>
-              <li><a href="#">bijatyka <span>(9)</span></a></li>
-              <li><a href="#">błądzenie <span>(9)</span></a></li>
-              <li><a href="#">bijatyka <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">bitwa <span>(9)</span></a></li>
-              <li><a href="#">alkohol <span>(9)</span></a></li>
-              <li><a href="#">antysemityzm <span>(9)</span></a></li>
-              <li><a href="#">bijatyka <span>(9)</span></a></li>
-              <li><a href="#">błądzenie <span>(9)</span></a></li>
-            </ul>
-          </div>
-          <ul class="links">
-            <li>
-              <a href="#">źródłowy plik XML</a>
-            </li>
-            <li>
-              <a href="#">miksuj treść utworu</a>
-            </li>
-            <li>
-              <a href="#">utwór na Platformie Redakcyjnej</a>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <section class="l-section">
-      <div class="l-books__wrapper">
-        <div class="l-container">
-          <h2>Tytuły powiązane</h2>
-          <div class="l-books">
-            <article class="l-books__item">
-              <figure class="l-books__item__img">
-                <a href="#">
-                  <img src="images/book-1.jpg" alt="Poetyka">
-                </a>
-              </figure>
-              <h3><a href="#">Arystoteles</a></h3>
-              <h2><a href="#">Poetyka</a></h2>
-            </article>
-            <article class="l-books__item">
-              <figure class="l-books__item__img">
-                <a href="#">
-                  <img src="images/book-2.jpg" alt="Wstęp do filozofii">
-                </a>
-              </figure>
-              <h3><a href="#">Stanisław Brzozowski</a></h3>
-              <h2><a href="#">Wstęp do filozofii</a></h2>
-            </article>
-            <article class="l-books__item">
-              <figure class="l-books__item__img">
-                <a href="#">
-                  <img src="images/book-3.jpg" alt="Etyka">
-                </a>
-              </figure>
-              <h3><a href="#">Benedykt de Spinoza</a></h3>
-              <h2><a href="#">Etyka</a></h2>
-            </article>
-            <article class="l-books__item">
-              <figure class="l-books__item__img">
-                <a href="#">
-                  <img src="images/book-3.jpg" alt="Wstęp do filozofii">
-                </a>
-              </figure>
-              <h3><a href="#">Stanisław Brzozowski</a></h3>
-              <h2><a href="#">Wstęp do filozofii</a></h2>
-            </article>
-            <article class="l-books__item l-books__item--link">
-              <a href="#">i wiele innych książek, wierszy, obrazów, audiobooków…</a>
-              <a href="#" class="icon-link"><i class="icon icon-all"></i></a>
-            </article>
-          </div>
-        </div>
       </div>
-    </section>
-
-    <div class="l-footer">
-      <div class="l-container">
-        <div class="l-footer__row">
-          <a href="#"><img src="images/FNP-logo.png" alt="FUNDACJA Nowoczesna Polska"></a>
-          <ul>
-            <li>ul. Marszałkowska 84/92 lok. 125</li>
-            <li>00-514 Warszawa</li>
-          </ul>
-          <ul class="teal">
-            <li>tel. <a href="#">(22) 621 30 17</a></li>
-            <li>email <a href="#">fundacja@nowoczesnapolska.org.pl</a></li>
-          </ul>
-        </div>
-        <div class="l-footer__row">
-          <div>
-            Wolne Lektury to projekt prowadzony przez fundację <a href="#">Nowoczesna Polska</a>. <br>
-            Hosting: <a href="#">ICM</a>.
-          </div>
-          <div>
-            <a href="#"><img src="images/MKiDN.png" alt="MKiDN"></a>
-          </div>
-          <div>
-            Strona biblioteki Wolne Lektury powstała dzięki dofinansowaniu ze środków Ministra <a href="#">Kultury i Dziedzictwa Narodowego</a>
-            pochodzących z <a href="#">Funduszu Promocji Kultury</a> – państwowego funduszu celowego.
+      <div class="row">
+        <div class="l-author__quotes">
+          <div class="l-author__quotes__slider">
+            <div class="l-author__quotes__slider__item">
+              <em>
+                Cicho wszędzie, głucho wszędzie, co to będzie co to będzie? Kto nie doznał goryczy ni razu ten
+                nie dozna słodyczy w niebie. Bo kto nie był człowiekiem ni razu temu człowiek nie pomoże.
+              </em>
+              <p>Adam Mickiewicz – Dziady, część I</p>
+            </div>
+            <div class="l-author__quotes__slider__item">
+              <em>
+                Cicho wszędzie, głucho wszędzie, co to będzie co to będzie? Kto nie doznał goryczy ni razu ten
+                nie dozna słodyczy w niebie. Bo kto nie był człowiekiem ni razu temu człowiek nie pomoże.
+              </em>
+              <p>Adam Mickiewicz – Dziady, część II</p>
+            </div>
+            <div class="l-author__quotes__slider__item">
+              <em>
+                Cicho wszędzie, głucho wszędzie, co to będzie co to będzie? Kto nie doznał goryczy ni razu ten
+                nie dozna słodyczy w niebie. Bo kto nie był człowiekiem ni razu temu człowiek nie pomoże.
+              </em>
+              <p>Adam Mickiewicz – Dziady, część III</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
+  <section class="l-section">
+    <div class="l-themes__wrapper">
+      <h2>Motywy występujące w tym utworze <a href="#"><span>Wszystkie motywy</span> <i class="icon icon-arrow-right"></i></a></h2>
+      <div class="l-themes">
+        <ul>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">bitwa <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">antysemityzm <span>(9)</span></a></li>
+          <li><a href="#">bijatyka <span>(9)</span></a></li>
+          <li><a href="#">błądzenie <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">bitwa <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">antysemityzm <span>(9)</span></a></li>
+          <li><a href="#">bijatyka <span>(9)</span></a></li>
+          <li><a href="#">błądzenie <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">bitwa <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">antysemityzm <span>(9)</span></a></li>
+          <li><a href="#">bijatyka <span>(9)</span></a></li>
+          <li><a href="#">błądzenie <span>(9)</span></a></li>
+          <li><a href="#">bitwa <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">błądzenie <span>(9)</span></a></li>
+          <li><a href="#">bijatyka <span>(9)</span></a></li>
+          <li><a href="#">błądzenie <span>(9)</span></a></li>
+          <li><a href="#">bijatyka <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">bitwa <span>(9)</span></a></li>
+          <li><a href="#">alkohol <span>(9)</span></a></li>
+          <li><a href="#">antysemityzm <span>(9)</span></a></li>
+          <li><a href="#">bijatyka <span>(9)</span></a></li>
+          <li><a href="#">błądzenie <span>(9)</span></a></li>
+        </ul>
+      </div>
+      <ul class="links">
+        <li>
+          <a href="#">źródłowy plik XML</a>
+        </li>
+        <li>
+          <a href="#">miksuj treść utworu</a>
+        </li>
+        <li>
+          <a href="#">utwór na Platformie Redakcyjnej</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
 
-    <script src="scripts/vendor.js"></script>
-    <script src="scripts/main.js"></script>
-  </body>
+<section class="l-section">
+  <div class="l-books__wrapper">
+    <div class="l-container">
+      <h2>Tytuły powiązane</h2>
+      <div class="l-books">
+        <article class="l-books__item">
+          <figure class="l-books__item__img">
+            <a href="#">
+              <img src="images/book-1.jpg" alt="Poetyka">
+            </a>
+          </figure>
+          <h3><a href="#">Arystoteles</a></h3>
+          <h2><a href="#">Poetyka</a></h2>
+        </article>
+        <article class="l-books__item">
+          <figure class="l-books__item__img">
+            <a href="#">
+              <img src="images/book-2.jpg" alt="Wstęp do filozofii">
+            </a>
+          </figure>
+          <h3><a href="#">Stanisław Brzozowski</a></h3>
+          <h2><a href="#">Wstęp do filozofii</a></h2>
+        </article>
+        <article class="l-books__item">
+          <figure class="l-books__item__img">
+            <a href="#">
+              <img src="images/book-3.jpg" alt="Etyka">
+            </a>
+          </figure>
+          <h3><a href="#">Benedykt de Spinoza</a></h3>
+          <h2><a href="#">Etyka</a></h2>
+        </article>
+        <article class="l-books__item">
+          <figure class="l-books__item__img">
+            <a href="#">
+              <img src="images/book-3.jpg" alt="Wstęp do filozofii">
+            </a>
+          </figure>
+          <h3><a href="#">Stanisław Brzozowski</a></h3>
+          <h2><a href="#">Wstęp do filozofii</a></h2>
+        </article>
+        <article class="l-books__item l-books__item--link">
+          <a href="#">i wiele innych książek, wierszy, obrazów, audiobooków…</a>
+          <a href="#" class="icon-link"><i class="icon icon-all"></i></a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="l-footer">
+  <div class="l-container">
+    <div class="l-footer__row">
+      <a href="#"><img src="images/FNP-logo.png" alt="FUNDACJA Nowoczesna Polska"></a>
+      <ul>
+        <li>ul. Marszałkowska 84/92 lok. 125</li>
+        <li>00-514 Warszawa</li>
+      </ul>
+      <ul class="teal">
+        <li>tel. <a href="#">(22) 621 30 17</a></li>
+        <li>email <a href="#">fundacja@nowoczesnapolska.org.pl</a></li>
+      </ul>
+    </div>
+    <div class="l-footer__row">
+      <div>
+        Wolne Lektury to projekt prowadzony przez fundację <a href="#">Nowoczesna Polska</a>. <br>
+        Hosting: <a href="#">ICM</a>.
+      </div>
+      <div>
+        <a href="#"><img src="images/MKiDN.png" alt="MKiDN"></a>
+      </div>
+      <div>
+        Strona biblioteki Wolne Lektury powstała dzięki dofinansowaniu ze środków Ministra <a href="#">Kultury i Dziedzictwa Narodowego</a>
+        pochodzących z <a href="#">Funduszu Promocji Kultury</a> – państwowego funduszu celowego.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/vendor.js"></script>
+<script src="scripts/main.js"></script>
+</body>
 </html>

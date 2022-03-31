@@ -42,16 +42,11 @@
   background: #F2F2F2;
   padding: 15px 24px;
   border-radius: 0 0 5px 5px;
-  max-width: 830px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  .project-logo {
-      padding-left: 35px;
-  }
-  
   .icons {}
   .content {
     padding-left: 35px;
@@ -80,12 +75,19 @@
   z-index: 10;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
   background-color: rgba($color-black, 0.35);
   display: none;
+  overflow-y: scroll;
+  padding: 150px 40px 40px 40px;
+  width: 100%;
+
+  @include rwd(screen-md) {
+    padding: 40px 40px 40px 40px;
+    align-items: flex-start;
+  }
 
   &.is-open {
     display: flex;
