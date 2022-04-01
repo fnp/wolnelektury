@@ -3,9 +3,19 @@
   width: 100%;
   align-items: center;
   position: relative;
-  padding: 25px 34px;
   background-color: #D5ECED;
-  border-radius: 5px;
+  padding: 25px 34px 25px 14px;
+}
+
+.c-player__head {
+  background: #006066;
+  padding: 8px 14px;
+  border-radius: 5px 5px 0px 0px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
 }
 
 .c-player__btn {
@@ -41,29 +51,57 @@
   }
 }
 
+.c-player__btns {
+  display: flex;
+  align-items: center;
+
+  button {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+    outline: 0;
+    border: 1px solid transparent;
+    transition: border-color $ease-out 450ms;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      border-color: rgba(#007880, 0.5);
+    }
+
+    &.c-player__btn--md {
+      width: 50px; height: 50px;
+      .icon-play {
+        font-size: 20px;
+        position: relative;
+        left: 2px;
+      }
+      .icon-pause {
+        font-size: 20px;
+      }
+    }
+
+    .icon {
+      color: #007880;
+      font-size: 16px;
+    }
+  }
+}
+
 .c-player__timeline {
   max-width: 590px;
   width: calc(100% - 60px);
   margin-left: auto;
   margin-right: 0;
   position: relative;
-
-  &:before {
-    content: "1×";
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 120%;
-    text-align: center;
-    color: #007880;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: -70px;
-  }
 
   & > span {
     height: 10px;
@@ -86,7 +124,7 @@
       height: 100%;
       position: absolute;
       border-radius: 5px;
-      background-color: #083F4D;
+      background-color: #006066;
       top: 0; left: 0;
     }
   }
@@ -108,6 +146,18 @@
 
 .c-player__info {
   top: -27px;
+  left: 0;
+  position: absolute;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0.05em;
+  color: #083F4D;
+}
+
+.c-player__chapters {
+  top: -27px;
   right: 0;
   position: absolute;
   font-style: normal;
@@ -116,6 +166,105 @@
   line-height: 140%;
   letter-spacing: 0.05em;
   color: #083F4D;
+  z-index: 1;
+
+  &.is-active {
+    span {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+    ul {
+      opacity: 1;
+      transform: none;
+      pointer-events: all;
+    }
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:after {
+      margin-left: 5px;
+      content: $icon-arrow-down;
+      font-family: '#{$icomoon-font-family}' !important;
+      transition: transform $ease-out 450ms;
+    }
+  }
+
+  ul {
+    width: 283px;
+    position: absolute;
+    background-color: #083F4D;
+    transform: translateY(-10px);
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(1, 129, 137, 0.2);
+    transition: all $ease-out 450ms;
+    list-style-position: inside;
+    border-radius: 10px;
+    right: 0;
+    margin: 10px 0 0;
+    padding: 15px;
+    pointer-events: none;
+    li {
+      font-size: 12px;
+      line-height: 140%;
+      letter-spacing: 0.05em;
+      list-style-type: decimal;
+      margin: 5px 0;
+      color: white;
+    }
+  }
+}
+
+.c-player__volume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+
+  .icon {
+    font-size: 21px;
+    color: #007880;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  input[type=range] {
+    width: 100px;
+    -webkit-appearance: none;
+    background: 0 0;
+    border: 0;
+    border-radius: 5px;
+    height: 10px;
+    color: #006066;
+    display: block;
+    margin: 0;
+    padding: 0;
+    transition: box-shadow .3s ease;
+    outline: 0;
+
+    background: white;
+    background-image: linear-gradient(#006066, #006066);
+    background-size: 60% 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 10px;
+  width: 10px;
+  background: #006066;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type=range],
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
 }
 
 .c-player__length {

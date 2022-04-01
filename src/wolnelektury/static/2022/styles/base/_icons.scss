@@ -6,28 +6,32 @@ $icomoon-font-family: "wl" !default;
 $icomoon-font-path:   "../fonts" !default;
 
 $icon-liked: "\e900";
-$icon-arrow-right: "\e901";
-$icon-arrow-up: "\e902";
 $icon-audio: "\e903";
 $icon-book: "\e904";
 $icon-eye: "\e905";
+$icon-prev: "\e901";
+$icon-next: "\e902";
 $icon-play: "\e906";
 $icon-pause: "\e907";
-$icon-quote: "\e908";
-$icon-search: "\e909";
-$icon-acc-1: "\e90a";
-$icon-acc-2: "\e90b";
-$icon-acc-3: "\e90c";
-$icon-all: "\e90d";
-$icon-arrow-down: "\e90e";
-$icon-close: "\e90f";
+$icon-volume: "\e908";
+$icon-mute: "\e909";
+$icon-quote: "\e90a";
+$icon-search: "\e90b";
+$icon-acc-1: "\e90c";
+$icon-acc-2: "\e90d";
+$icon-acc-3: "\e90e";
+$icon-all: "\e90f";
+$icon-arrow-right: "\e910";
+$icon-arrow-up: "\e911";
+$icon-arrow-down: "\e912";
+$icon-close: "\e913";
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-          url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?79zz52') format('truetype'),
-          url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?79zz52') format('woff'),
-          url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?79zz52##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?79zz52') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?79zz52') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?79zz52##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -53,16 +57,6 @@ $icon-close: "\e90f";
     content: $icon-liked;
   }
 }
-.icon-arrow-right {
-  &:before {
-    content: $icon-arrow-right;
-  }
-}
-.icon-arrow-up {
-  &:before {
-    content: $icon-arrow-up;
-  }
-}
 .icon-audio {
   &:before {
     content: $icon-audio;
@@ -78,6 +72,16 @@ $icon-close: "\e90f";
     content: $icon-eye;
   }
 }
+.icon-prev {
+  &:before {
+    content: $icon-prev;
+  }
+}
+.icon-next {
+  &:before {
+    content: $icon-next;
+  }
+}
 .icon-play {
   &:before {
     content: $icon-play;
@@ -86,6 +90,16 @@ $icon-close: "\e90f";
 .icon-pause {
   &:before {
     content: $icon-pause;
+  }
+}
+.icon-volume {
+  &:before {
+    content: $icon-volume;
+  }
+}
+.icon-mute {
+  &:before {
+    content: $icon-mute;
   }
 }
 .icon-quote {
@@ -116,6 +130,16 @@ $icon-close: "\e90f";
 .icon-all {
   &:before {
     content: $icon-all;
+  }
+}
+.icon-arrow-right {
+  &:before {
+    content: $icon-arrow-right;
+  }
+}
+.icon-arrow-up {
+  &:before {
+    content: $icon-arrow-up;
   }
 }
 .icon-arrow-down {
