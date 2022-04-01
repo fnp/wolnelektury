@@ -153,8 +153,8 @@ PIPELINE = {
         },
         '2022_player': {
             'source_filenames': [
-                'jplayer/jquery.jplayer.min.js',
-                'jplayer/jplayer.playlist.min.js',
+                'js/contrib/jplayer/jquery.jplayer.min.js',
+                'js/contrib/jplayer/jplayer.playlist.min.js',
                 'player/2022_player.js',
             ],
             'output_filename': 'js/2022_player.min.js',

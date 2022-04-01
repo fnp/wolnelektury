@@ -39,14 +39,6 @@
   let selectItem = $('.c-select li');
   let volumeButton = $('.icon-volume');
 
-  /*playButton.on('click', function() {
-    if($(this).find('.icon').hasClass('icon-play')) {
-      $(this).find('.icon-play').removeClass('icon-play').addClass('icon-pause');
-    } else if($(this).find('.icon').hasClass('icon-pause')) {
-      $(this).find('.icon-pause').removeClass('icon-pause').addClass('icon-play');
-    }
-  });*/
-
   button.on('click', function () {
     let target = $(this).attr('id');
     $('[data-popup=' + target).addClass('is-open');
@@ -79,18 +71,6 @@
     $(this).addClass('is-active');
   });
 
-  volumeButton.on('click', function() {
-    if($(this).hasClass('icon-volume')) {
-      $(this).removeClass('icon-volume').addClass('icon-mute');
-      $(this).next().val(0);
-      $(this).next().css('background-size', '0% 100%');
-    } else if($(this).hasClass('icon-mute')) {
-      $(this).removeClass('icon-mute').addClass('icon-volume');
-      $(this).next().val(50);
-      $(this).next().css('background-size', '50% 100%');
-    }
-  });
-
   $(document).keyup(function(e) {
     if (e.keyCode === 27) {
       $('.c-media__popup').removeClass('is-open');
@@ -98,24 +78,6 @@
   });
 })();
 
-// Range
-const rangeInputs = document.querySelectorAll('input[type="range"]')
-
-function handleInputChange(e) {
-  let target = e.target
-  if (e.target.type !== 'range') {
-    target = document.getElementById('range')
-  }
-  const min = target.min
-  const max = target.max
-  const val = target.value
-
-  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
-}
-
-rangeInputs.forEach(input => {
-  input.addEventListener('input', handleInputChange)
-});
 
 // Quotes slider
 (function () {

@@ -87,6 +87,7 @@ $icon-close: "\e913";
     content: $icon-play;
   }
 }
+.jp-state-playing .icon-play,
 .icon-pause {
   &:before {
     content: $icon-pause;
@@ -97,6 +98,7 @@ $icon-close: "\e913";
     content: $icon-volume;
   }
 }
+.jp-state-muted .icon-volume,
 .icon-mute {
   &:before {
     content: $icon-mute;

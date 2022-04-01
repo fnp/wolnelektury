@@ -5,13 +5,14 @@
             console.log('starting player')
       	var $self = $(this);
         var $root = $self.parent();
+        var $currentMedia = null
 
-            //  //  var $number = $('.number', $root);
         $self.jPlayer({
-            swfPath: "/static/jplayer/",
+            swfPath: "/static/js/contrib/jplayer/",
             solution: "html,flash",
             supplied: 'oga,mp3',
             cssSelectorAncestor: "#" + $self.attr("data-player"),
+            useStateClassSkin: true,
 
             ready: function() {
                 var player = $(this);
@@ -25,32 +26,51 @@
                     media['oga'] = elem.attr('data-ogg');
                     media['id'] = elem.attr('data-media-id');
 
-                    $(".c-player__title", $root).html($(".title", elem).html());
-                    $(".c-player__info", $root).html($(".attribution", elem).html());
+                    $(".c-player__head", $root).html(
+                        $(".attribution", elem).html())
+                    ;
+                    $(".c-player__info", $root).html(
+                        $(".title", elem).html()
+                    );
                     $(".c-media__caption .content", $root).html($(".project-description", elem).html());
                     $(".c-media__caption .license", $root).html($(".license", elem).html());
                     $(".c-media__caption .project-logo", $root).html($(".project-icon", elem).html());
                     
                     player.jPlayer("setMedia", media);
                     player.jPlayer("pause", time);
+
+                    $currentMedia = elem;
+                    $(".play-prev", $root).prop("disabled", !elem.prev().length);
+                    $(".play-next", $root).prop("disabled", !elem.next().length);
+
                     return player;
                 };
 
+                let selectItem = $('.c-select li');
+                selectItem.on('click', function() {
+                    let speed = parseFloat(this.innerHTML);
+                    console.log(speed);
+                    console.log($('audio'));
+                    $("audio")[0].playbackRate = speed;
+                });
+                
+                
                 $('.play-next', $root).click(function() {
-                    var next = parseInt($number.text()) + 1;
-                    var p = $('.jp-playlist .play:eq(' + (next - 1) + ')', $root);
+                    let p = $currentMedia.next();
                     if (p.length) {
                         setMedia(p).jPlayer("play");
-                        $number.text(next)
                     }
                 });
                 $('.play-prev', $root).click(function() {
-                    var next = parseInt($number.text()) - 1;
-                    if (next < 1)
-                        return;
-                    var p = $('.jp-playlist .play:eq(' + (next - 1) + ')', $root);
-                    setMedia(p).jPlayer("play");
-                    $number.text(next)
+                    let p = $currentMedia.prev();
+                    if (p.length) {
+                        setMedia(p).jPlayer("play");
+                    }
+                });
+
+                $('.jp-playlist li', $root).click(function() {
+                    console.log(this);
+                    setMedia($(this));
                 });
 
                 console.log(1);
