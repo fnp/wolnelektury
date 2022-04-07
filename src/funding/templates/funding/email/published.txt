@@ -4,14 +4,23 @@
 {% blocktrans %}we have just published the book you contributed to:{% endblocktrans %}
 
   {{ author }} – {{ offer.book.title }}
-  http://{{ site.domain }}{{ offer.book.get_absolute_url }}
+  https://{{ site.domain }}{{ offer.book.get_absolute_url }}
 
+{% if book.preview %}
+Dzięki Tobie, niedługo będzie bezpłatnie dla wszystkich w wielu formatach. Tymczasem możesz przeczytać ją już teraz jako prapremierę.
+{% if funding.user %}Wystarczy, że zalogujesz się na Wolnych Lekturach (jako {{ funding.user.username }}).
+{% else %}Wystarczy, że zalogujesz się na Wolnych Lekturach i wejdziesz pod ten adres, aby uzyskać wcześniejszy dostęp:
+https://{{ site.domain }}{% url 'funding_claim' funding.notify_key %}
+{% endif %}
+{% else %}
 {% blocktrans %}Thanks to you, it is now available for free,
 in various formats, to everyone.{% endblocktrans %}
+{% endif %}
+
 {% if current %}
 {% blocktrans %}If you'd like to help liberate another book, or invite your friends
 to do so, we're currently raising money for:{% endblocktrans %}
 
   {{ current.author }} – {{ current.title }}
-  http://{{ site.domain }}{% url 'funding_current' %}
+  https://{{ site.domain }}{% url 'funding_current' %}
 {% endif %}{% endblock %}

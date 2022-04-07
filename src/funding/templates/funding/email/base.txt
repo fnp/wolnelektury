@@ -2,11 +2,11 @@
 {% block body %}
 {% endblock %}{% get_current_language as LANGUAGE_CODE %}
 {% if LANGUAGE_CODE == 'pl' %}Chcesz wiedzieć więcej o działaniach realizowanych w ramach projektu Wolne Lektury?
-Zapisz się na nasz newsletter http://{{ site.domain }}{% url 'subscribe' %}, a już nigdy nie przegapisz żadnej publikacji nowej książki czy kolejnej zbiórki.{% endif %}
+Zapisz się na nasz newsletter https://{{ site.domain }}{% url 'subscribe' %}, a już nigdy nie przegapisz żadnej publikacji nowej książki czy kolejnej zbiórki.{% endif %}
 {% blocktrans %}Cheers,
 Wolne Lektury team{% endblocktrans %}
 
 -- 
 {% blocktrans %}If you don't want to receive any more updates, please visit this page:{% endblocktrans %}
-http://{{site.domain}}{{ funding.get_disable_notifications_url }}
+https://{{site.domain}}{{ funding.get_disable_notifications_url }}
 {% endautoescape %}

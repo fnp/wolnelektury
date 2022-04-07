@@ -270,6 +270,7 @@ class Funding(models.Model):
     offer = models.ForeignKey(Offer, models.PROTECT, verbose_name=_('offer'))
     name = models.CharField(_('name'), max_length=127, blank=True)
     email = models.EmailField(_('email'), blank=True, db_index=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.SET_NULL, blank=True, null=True)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
     payed_at = models.DateTimeField(_('payed at'), null=True, blank=True, db_index=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)

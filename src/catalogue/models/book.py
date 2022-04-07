@@ -230,7 +230,12 @@ class Book(models.Model):
         if not self.preview:
             return True
         Membership = apps.get_model('club', 'Membership')
-        return Membership.is_active_for(user)
+        if Membership.is_active_for(user):
+            return True
+        Funding = apps.get_model('funding', 'Funding')
+        if Funding.objects.filter(user=user, offer__book=self):
+            return True
+        return False
 
     def save(self, force_insert=False, force_update=False, **kwargs):
         from sortify import sortify

@@ -29,8 +29,9 @@ class FundingForm(NewsletterForm):
 W przypadku podania danych zostaną one wykorzystane w sposób podany powyżej, a w przypadku wyrażenia dodatkowej zgody 
 adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
 
-    def __init__(self, offer, *args, **kwargs):
+    def __init__(self, request, offer, *args, **kwargs):
         self.offer = offer
+        self.user = request.user if request.user.is_authenticated else None
         super(FundingForm, self).__init__(*args, **kwargs)
         self.fields['amount'].widget.form_instance = self
 
@@ -57,6 +58,7 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
             email=self.cleaned_data['email'],
             amount=self.cleaned_data['amount'],
             language_code=get_language(),
+            user=self.user,
         )
         funding.perks.set(funding.offer.get_perks(funding.amount))
         return funding

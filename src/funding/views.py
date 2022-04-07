@@ -1,9 +1,10 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView, ListView
 from getpaid.models import Payment
@@ -92,9 +93,9 @@ class OfferDetailView(FormView):
         if form_class is None:
             form_class = self.get_form_class()
         if self.request.method == 'POST':
-            return form_class(self.object, self.request.POST)
+            return form_class(self.request, self.object, self.request.POST)
         else:
-            return form_class(self.object, initial={'amount': app_settings.DEFAULT_AMOUNT})
+            return form_class(self.request, self.object, initial={'amount': app_settings.DEFAULT_AMOUNT})
 
     def get_context_data(self, **kwargs):
         ctx = super(OfferDetailView, self).get_context_data(**kwargs)
@@ -157,3 +158,16 @@ class DisableNotifications(TemplateView):
     def post(self, *args, **kwargs):
         self.object.disable_notifications()
         return redirect(self.request.get_full_path())
+
+
+@login_required
+def claim(request, key):
+    funding = get_object_or_404(Funding, notify_key=key)
+    if funding.user is None:
+        funding.user = request.user
+        funding.save()
+    return HttpResponseRedirect(
+        funding.offer.book.get_absolute_url() if funding.offer.book is not None
+        else funding.offer.get_absolute_url()
+    )
+

@@ -19,7 +19,7 @@ from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
 from club.forms import ScheduleForm
-from club.models import Club, Membership
+from club.models import Club
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
@@ -328,7 +328,7 @@ def player(request, slug):
 def book_text(request, slug):
     book = get_object_or_404(Book, slug=slug)
 
-    if book.preview and not Membership.is_active_for(request.user):
+    if not book.is_accessible_to(request.user):
         return HttpResponseRedirect(book.get_absolute_url())
 
     if not book.has_html_file():
@@ -427,7 +427,7 @@ class CustomPDFFormView(AjaxableFormView):
 
     def validate_object(self, obj, request):
         book = obj
-        if book.preview and not Membership.is_active_for(request.user):
+        if not book.is_accessible_to(request.user):
             return HttpResponseRedirect(book.get_absolute_url())
         return super(CustomPDFFormView, self).validate_object(obj, request)
 

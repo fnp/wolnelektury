@@ -509,7 +509,7 @@ def strip_tag(html, tag_name):
 def status(book, user):
     if not book.preview:
         return 'open'
-    elif Membership.is_active_for(user):
+    elif book.is_accessible_to(user):
         return 'preview'
     else:
         return 'closed'

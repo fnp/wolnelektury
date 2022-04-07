@@ -18,6 +18,7 @@ urlpatterns = [
     path('niepowodzenie/', banner_exempt(views.NoThanksView.as_view()), name='funding_nothanks'),
 
     path('wylacz_email/', banner_exempt(views.DisableNotifications.as_view()), name='funding_disable_notifications'),
+    path('przylacz/<key>/', banner_exempt(views.claim), name='funding_claim'),
 
     path('getpaid/', include('getpaid.urls')),
 ]
