@@ -229,6 +229,8 @@ class Book(models.Model):
     def is_accessible_to(self, user):
         if not self.preview:
             return True
+        if not user.is_authenticated:
+            return False
         Membership = apps.get_model('club', 'Membership')
         if Membership.is_active_for(user):
             return True
