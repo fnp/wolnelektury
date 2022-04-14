@@ -9,7 +9,7 @@ class BannerAdmin(TranslationAdmin):
             'place', 'text',
             'text_color', 'background_color',
             'priority', 'since', 'until',
-            'show_members', 'staff_preview']
+            'show_members', 'staff_preview', 'only_authenticated']
 
 
 admin.site.register(models.Banner, BannerAdmin)

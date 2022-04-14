@@ -34,6 +34,7 @@ class Banner(models.Model):
     until = models.DateTimeField(_('until'), null=True, blank=True)
     show_members = models.BooleanField(_('show members'), default=False)
     staff_preview = models.BooleanField(_('staff preview'), default=False)
+    only_authenticated = models.BooleanField(_('only for authenticated users'), default=False)
 
     class Meta:
         verbose_name = _('banner')
@@ -65,12 +66,15 @@ class Banner(models.Model):
             until__lt=n
         ).order_by('-priority', '?')
 
+        if not request.user.is_authenticated:
+            banners = banners.filter(only_authenticated=False)
+
         if not request.user.is_staff:
             banners = banners.filter(staff_preview=False)
 
-        if request:
-            if Membership.is_active_for(request.user):
-                banners = banners.filter(show_members=True)
+        if Membership.is_active_for(request.user):
+            banners = banners.filter(show_members=True)
+
         return banners
 
 
