@@ -2,7 +2,7 @@
 {% load i18n %}
 
 
-{% block titleextra %}{% trans "Towarzystwo Przyjaciół Wolnych Lektur" %}{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury need your help!" %}{% endblock %}
 
 
 {% block body %}
@@ -17,31 +17,31 @@
       {% endblocktrans %}
     </p>
 
-	<form id="theform" method='POST'>
-		{% csrf_token %}
-		{{ form }}
-	</form>
+    <form id="theform" method='POST'>
+      {% csrf_token %}
+      {{ form }}
+    </form>
 
 
 
-<script>
- function paymentcallback(data) {
-     $("#theform #id_token").val(data.value);
-     $("#theform").submit()
- }
-</script>
+    <script>
+     function paymentcallback(data) {
+         $("#theform #id_token").val(data.value);
+         $("#theform").submit()
+     }
+    </script>
 
-<div id="payu-widget"></div>
-<script
-    src="{{ pos.get_api_host }}/front/widget/js/payu-bootstrap.js"
+    <div id="payu-widget"></div>
+    <script
+        src="{{ pos.get_api_host }}/front/widget/js/payu-bootstrap.js"
 
-    {% for k, v in widget_args.items %}
-    	{{ k }}="{{ v }}"
-    {% endfor %}
+        {% for k, v in widget_args.items %}
+    	     {{ k }}="{{ v }}"
+        {% endfor %}
 
-    success-callback="paymentcallback"
-    sig="{{ widget_sig }}">
-</script>
+        success-callback="paymentcallback"
+        sig="{{ widget_sig }}">
+    </script>
 
 </div>
 

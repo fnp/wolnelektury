@@ -12,7 +12,7 @@
     <p><a href="{% url 'account_email' %}">{% trans "E-mail" %}</a></p>
     <p><a href="{% url 'socialaccount_connections' %}">{% trans "Social accounts" %}</a></p>
     {% if request.user.membership %}
-      <p><a href="{% url 'club_join' %}">Należysz do Towarzystwa Przyjaciół Wolnych Lektur</a></p> 
+      <p><a href="{% url 'club_join' %}">Wspierasz Wolne Lektury, dziękujemy!</a></p>
     {% endif %}
   </div>
 {% endblock %}

@@ -9,6 +9,9 @@ from paypal.rest import agreement_approval_url
 class PaymentMethod(object):
     is_onetime = False
     is_recurring = False
+    expiration_reliable = False
+    cancellable = False
+    updateable = False
 
     def initiate(self, request, schedule):
         return reverse('club_dummy_payment', args=[schedule.key])
@@ -16,6 +19,7 @@ class PaymentMethod(object):
 
 class PayU(PaymentMethod):
     is_onetime = True
+    expiration_reliable = True
     slug = 'payu'
     name = 'PayU'
     template_name = 'club/payment/payu.html'
@@ -39,6 +43,9 @@ class PayURe(PaymentMethod):
     name = 'PayU recurring'
     template_name = 'club/payment/payu-re.html'
     is_recurring = True
+    expiration_reliable = True
+    cancellable = True
+    updateable = True
 
     def __init__(self, pos_id):
         self.pos_id = pos_id

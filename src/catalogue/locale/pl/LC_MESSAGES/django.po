@@ -164,7 +164,7 @@ msgstr "slug"
 msgid "language code"
 msgstr "Kod języka"
 
-#: catalogue/models/book.py:67 catalogue/models/book.py:429
+#: catalogue/models/book.py:67 catalogue/models/book.py:436
 #: catalogue/models/collection.py:16 catalogue/models/tag.py:61
 #: catalogue/models/tag.py:137
 msgid "description"
@@ -253,21 +253,21 @@ msgstr "książka"
 msgid "books"
 msgstr "książki"
 
-#: catalogue/models/book.py:621
+#: catalogue/models/book.py:628
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Utwór \"%s\" nie istnieje."
 
-#: catalogue/models/book.py:637
+#: catalogue/models/book.py:644
 #, python-format
 msgid "Book %s already exists"
 msgstr "Książka %s już istnieje"
 
-#: catalogue/models/book.py:955
+#: catalogue/models/book.py:962
 msgid "This work needs modernisation"
 msgstr "Ten utwór wymaga uwspółcześnienia"
 
-#: catalogue/models/book.py:1045 catalogue/models/bookmedia.py:34
+#: catalogue/models/book.py:1052 catalogue/models/bookmedia.py:34
 #, python-format
 msgid "%s file"
 msgstr "plik %s"
@@ -792,12 +792,14 @@ msgstr "Przepraszamy! Zapytanie jest zbyt długie."
 msgid "Sorry! Search query must have at least two characters."
 msgstr "Przepraszamy! Zapytanie musi zawierać co najmniej dwa znaki."
 
-#: catalogue/templates/catalogue/snippets/2022_jplayer.html:53
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:47
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:113
 #: catalogue/templates/catalogue/snippets/jplayer.html:36
 msgid "Artist:"
 msgstr "Czyta"
 
-#: catalogue/templates/catalogue/snippets/2022_jplayer.html:54
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:48
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:114
 #: catalogue/templates/catalogue/snippets/jplayer.html:37
 msgid "director:"
 msgstr "reż."

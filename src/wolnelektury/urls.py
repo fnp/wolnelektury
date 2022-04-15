@@ -49,19 +49,11 @@ urlpatterns += [
     path('messaging/', include('messaging.urls')),
     path('re/', include('redirects.urls')),
     path('stats/', include('stats.urls')),
-
-    path('paypal/app-form/', RedirectView.as_view(
-        url='/towarzystwo/?pk_campaign=aplikacja', permanent=False)),
-    path('towarzystwo/dolacz/', RedirectView.as_view(
-        url='/towarzystwo/', permanent=False)),
-
     path('paypal/', include('paypal.urls')),
     path('powiadomienie/', include('push.urls')),
-    path('towarzystwo/', include('club.urls')),
-    #path('pomagam/', include('club.urls2')),
-    path('pomagam/', RedirectView.as_view(
-        url='/towarzystwo/?pk_campaign=pomagam', permanent=False)),
-    
+    path('pomagam/', include('club.urls')),
+    path('towarzystwo/<path:path>', RedirectView.as_view(
+        url='/pomagam/%(path)s', permanent=False)),
 
     # Admin panel
     path('admin/catalogue/book/import', catalogue.views.import_book, name='import_book'),

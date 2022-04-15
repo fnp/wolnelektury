@@ -2,12 +2,15 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.urls import path
+from django.views.generic import RedirectView
 from annoy.utils import banner_exempt
 from . import views
 
 
 urlpatterns = [
     path('', banner_exempt(views.JoinView.as_view()), name='club_join'),
+    path('dolacz/', RedirectView.as_view(
+        url='/pomagam/', permanent=False)),
     path('info/', banner_exempt(views.ClubView.as_view()), name='club'),
 
     path('plan/<key>/', banner_exempt(views.ScheduleView.as_view()), name='club_schedule'),
@@ -22,8 +25,6 @@ urlpatterns = [
     path('platnosc/payu/<key>/', banner_exempt(views.PayUPayment.as_view()), name='club_payu_payment'),
 
     path('notify/<int:pk>/', views.PayUNotifyView.as_view(), name='club_payu_notify'),
-
-    path('czlonek/', views.MembershipView.as_view(), name='club_membership'),
 
     path('weryfikacja/', views.member_verify, name='club_member_verify'),
 ]

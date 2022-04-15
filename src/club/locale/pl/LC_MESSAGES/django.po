@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-08-23 11:23+0200\n"
+"PO-Revision-Date: 2022-04-15 16:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 
 #: club/admin.py:46
 msgid "payment complete"
@@ -226,12 +226,6 @@ msgstr "ambasador"
 msgid "ambassadors"
 msgstr "ambasadorowie"
 
-#: club/models.py:281 club/templates/club/index.html:7
-#: club/templates/club/index.html:13 club/templates/club/thanks.html:6
-#: club/templates/payu/rec_payment.html:5
-msgid "Towarzystwo Przyjaciół Wolnych Lektur"
-msgstr ""
-
 #: club/payu/models.py:17 club/payu/models.py:29
 msgid "POS id"
 msgstr ""
@@ -316,6 +310,15 @@ msgstr "Aktywne roczne wpłaty cykliczne"
 msgid "One-time donations in last 30 days"
 msgstr "Jednorazowe wpłaty w ciągu ostatnich 30 dni"
 
+#: club/templates/club/dummy_payment.html:4 club/templates/club/index.html:7
+#: club/templates/club/index.html:13
+#: club/templates/club/membership_form_app.html:5
+#: club/templates/club/schedule.html:5 club/templates/club/thanks.html:6
+#: club/templates/club/year_summary.html:5
+#: club/templates/payu/rec_payment.html:5
+msgid "Wolne Lektury need your help!"
+msgstr "Wolne Lektury potrzebują Twojej pomocy!"
+
 #: club/templates/club/index.html:20
 msgid "Congratulations – you're already a supporter of Wolne Lektury!"
 msgstr "Gratulacje – należysz już do Towarzystwa Przyjaciół Wolnych Lektur!"
@@ -341,19 +344,19 @@ msgid "Thank you for your support! Support us again!"
 msgstr ""
 "Dziękujemy za Twoje dotychczasowe zaangażowanie! Wesprzyj nas ponownie!"
 
-#: club/templates/club/membership_form.html:21
-msgid "Thank you for wanting to free the books with us!"
-msgstr "Dziękujemy, że chcesz razem z nami uwalniać książki!"
-
-#: club/templates/club/membership_form.html:26
+#: club/templates/club/membership_form.html:20
 msgid "See your past support."
 msgstr "Zobacz swoje dotychczasowe wsparcie."
 
-#: club/templates/club/membership_form.html:41
+#: club/templates/club/membership_form.html:24
+msgid "Thank you for wanting to free the books with us!"
+msgstr "Dziękujemy, że chcesz razem z nami uwalniać książki!"
+
+#: club/templates/club/membership_form.html:43
 msgid "Help us get 100 new Friends by the end of the school semester."
 msgstr "Pomóż nam zdobyć 100 nowych Przyjaciół do końca semestru szkolnego."
 
-#: club/templates/club/membership_form.html:42
+#: club/templates/club/membership_form.html:44
 #, python-format
 msgid ""
 "\n"
@@ -382,7 +385,7 @@ msgstr[3] ""
 "Od początku tej kampanii stałą wpłatą wsparło nas już <b style=\"color: "
 "#0d7e85\">%(supporters)s</b> czytelników i czytelniczek,"
 
-#: club/templates/club/membership_form.html:47
+#: club/templates/club/membership_form.html:49
 #, python-format
 msgid ""
 "\n"
@@ -508,6 +511,11 @@ msgid ""
 msgstr ""
 "\n"
 "Zlecasz comiesięczną płatność w wysokości %(amount)s zł. Dziękujemy!"
+
+#, fuzzy
+#~| msgid "Support Wolne Lektury"
+#~ msgid "Wolne Lektury"
+#~ msgstr "Wspieraj Wolne Lektury"
 
 #~ msgid "sex"
 #~ msgstr "płeć"

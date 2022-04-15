@@ -1,35 +1,75 @@
 {% extends "base/base.html" %}
+{% load i18n %}
 
 
-{% block titleextra %}Towarzystwo Przyjaciół Wolnych Lektur{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury need your help!" %}{% endblock %}
 
 
 {% block body %}
 <div class="white-box normal-text">
 
-<h1>
-Cieszymy się, że jesteś z nami! Dziękujemy za wsparcie!
-</h1>
-<p>
-Od <strong>{{ schedule.started_at.date }}</strong>
-{% if schedule.expires_at %}
-  do <strong>{{ schedule.expires_at.date }}</strong>
-{% endif %}
-wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięcznie{% endif %}{% if schedule.yearly %} rocznie{% endif %}.
-</p>
+  <h1>
+    Cieszymy się, że jesteś z nami! Dziękujemy za wsparcie!
+  </h1>
+  <p>
+
+
+    {% if schedule.payed_at %}
+      Kwota:
+      {{ schedule.amount }} zł
+
+      <br>
+
+      Pierwsza wpłata:
+      {{ schedule.payed_at.date }}
+
+      <br>
+
+      {% if schedule.is_expired %}
+        <strong style="color: red">
+          Status darczyńcy nieaktywny od
+          {{ schedule.expires_at.date }}
+        </strong>
+      {% else %}
+        <strong style="color: green">
+          Status darczyńcy aktywny
+          {% if schedule.get_payment_method.expiration_reliable %}
+            do
+            {{ schedule.expires_at.date }}
+          {% endif %}
+        </strong>
+      {% endif %}
+
+      <br>
+
+  {% endif %}
+
+
 
 {% if schedule.is_active %}
   {% if schedule.is_recurring %}
      {% if schedule.is_cancelled %}
          <p><strong>Płatność anulowana.</strong></p>
          <p>
-           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/towarzystwo/dolacz/">Wpłać ponownie</a>
+           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/pomagam/">Wpłać ponownie</a>
          </p>
      {% else %}
-       <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
-        {% csrf_token %}
-	<button type="submit" class="submit" style="font-size: .9em">Zrezygnuj z kolejnej płatności</button>
-       </form>
+         {% if schedule.get_payment_method.updateable %}
+           <form method='post' action='' class="wlform">
+             {% csrf_token %}
+             <button type="submit" class="submit">
+               Zaktualizuj dane płatności
+             </button>
+           </form>
+           <br>
+         {% endif %}
+
+         {% if schedule.get_payment_method.cancellable %}
+           <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
+             {% csrf_token %}
+	     <button type="submit" class="submit" style="font-size: .9em">Zrezygnuj z kolejnych płatności</button>
+           </form>
+         {% endif %}
      {% endif %}
   {% else %}
      <form class="wlform" method='post' action=''>
@@ -40,12 +80,18 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
 
 
 {% else %}
- {% if schedule.is_expired %}
-   Członkostwo wygasło.
-   <form method='post' action='' class="wlform">
-        {% csrf_token %}
-	<button type="submit" class="submit">Dorzuć się ponownie</button>
-   </form>
+  {% if schedule.is_expired %}
+
+    <form method='post' action='' class="wlform">
+      {% csrf_token %}
+      <button type="submit" class="submit">
+        {% if schedule.is_recurring %}
+          Zaktualizuj dane płatności
+        {% else %}
+          Dorzuć się ponownie
+        {% endif %}
+      </button>
+    </form>
 
 
  {% else %}
@@ -55,9 +101,9 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
      Czekamy na potwierdzenie płatności.
    {% else %}
 
-     <form method='post' action=''>
+     <form method='post' action='' class="wlform">
         {% csrf_token %}
-	<button type="submit" class="submit">Dorzuć się</button>
+       <button type="submit" class="submit">Dokończ płatność</button>
      </form>
 
    {% endif %}
@@ -66,32 +112,34 @@ wspierasz nas kwotą {{ schedule.amount }} zł{% if schedule.monthly %} miesięc
 {% endif %}
 
 
-<hr style="margin: 2em 0;">
+{% if not schedule.membership %}
 
+  <hr style="margin: 2em 0;">
 
-<h2>Towarzystwo Przyjaciół Wolnych Lektur</h2>
+  <h2>Powiązanie z kontem użytkownika</h2>
 
-
-{% if schedule.membership %}
-  <p>
-  Należysz już do Towarzystwa Przyjaciół Wolnych Lektur!</p>
-{% else %}
 
 <p>
-Twoje wsparcie upoważnia Cię do członkostwa w Towarzystwie Przyjaciół Wolnych Lektur.
-Aby w pełni z niego korzystać, zapisz się do Towarzystwa swoim kontem użytkownika na Wolnych Lekturach.
+Twoje wsparcie upoważnia Cię do przedpremierowego dostępu do publikacji.
+Aby z niego korzystać, powiąż darowiznę ze swoim kontem użytkownika na Wolnych Lekturach.
 </p>
 
 
-<p>
-<a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em;" href="{% url 'club_claim' schedule.key %}">Zapisz się</a>
+<p style="margin-top:2em;">
+  <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em;" href="{% url 'club_claim' schedule.key %}">
+    {% if request.user.is_authenticated %}
+      Powiąż darowiznę z kontem <strong>{{ request.user.username }}</strong>
+    {% else %}
+      Zaloguj się i powiąż darowiznę z kontem
+    {% endif %}
+  </a>
 </p>
 {% endif %}
 
 
 
 
-	
+
 <a href="">
 
 </div>

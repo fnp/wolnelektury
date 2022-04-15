@@ -18,6 +18,6 @@ class SandboxTestCase(StaticLiveServerTestCase):
         super().tearDownClass()
 
     def test_payment(self):
-        self.selenium.get('%s%s' % (self.live_server_url, '/towarzystwo/'))
+        self.selenium.get('%s%s' % (self.live_server_url, '/pomagam/'))
         from time import sleep
         sleep(10)

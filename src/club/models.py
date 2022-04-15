@@ -278,7 +278,7 @@ class PayUOrder(payu_models.Order):
             self.schedule.get_thanks_url())
 
     def get_description(self):
-        return ugettext('Towarzystwo Przyjaciół Wolnych Lektur')
+        return 'Wolne Lektury'
 
     def is_recurring(self):
         return self.schedule.get_payment_method().is_recurring

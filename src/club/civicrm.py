@@ -9,8 +9,8 @@ import yaml
 class CiviCRM:
     def __init__(self, base, key):
         self.base = base
-        self.api_base = base + 'civicrm/ajax/api4/'
         self.key = key
+        self.api_base = (base or '') + 'civicrm/ajax/api4/'
         self.enabled = bool(self.base and self.key)
 
     def request(self, resource, method, params):
@@ -89,6 +89,9 @@ class CiviCRM:
                 
 
     def report_activity(self, email, tpwl_key, key, name, datetime, details):
+        if not self.enabled:
+            return
+
         contact_id = self.create_or_update_contact(email, tpwl_key)
 
         activity_id = self.get_activity_id(key)

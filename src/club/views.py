@@ -149,17 +149,6 @@ class PayUNotifyView(payu_views.NotifyView):
     order_model = models.PayUOrder
 
 
-class MembershipView(UpdateView):
-    fields = ['name']
-
-    def get_success_url(self):
-        # TODO: get only current schedule if multiple.
-        return self.object.schedule_set.first().get_absolute_url()
-
-    def get_object(self):
-        return self.request.user.membership
-
-
 class ScheduleThanksView(DetailView):
     model = models.Schedule
     slug_field = slug_url_kwarg = 'key'

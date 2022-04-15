@@ -3,20 +3,20 @@
 {% load i18n %}
 
 
-{% block titleextra %}{% trans "Towarzystwo Przyjaciół Wolnych Lektur" %}{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury need your help!" %}{% endblock %}
 
 
 {% block body %}
 
 
-<div class="white-box normal-text">
+  <div class="white-box normal-text">
 
-  <h1>{% trans "Thank you" %}</h1>
+    <h1>{% trans "Thank you" %}</h1>
 
-  {% chunk 'club_thanks' %}
+    {% chunk 'club_thanks' %}
 
-  {% if request.session.from_app %}
-    <a href="wolnelekturyapp://paypal_return">{% trans "Go back to the app" %}</a>
+    {% if request.session.from_app %}
+      <a href="wolnelekturyapp://paypal_return">{% trans "Go back to the app" %}</a>
   {% endif %}
 
 </div>

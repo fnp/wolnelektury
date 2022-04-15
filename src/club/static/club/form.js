@@ -26,7 +26,7 @@ $(function() {
 
     $("#payment-form").submit(function() {
         let camp = qs('pk_campaign');
-        if (!camp && window.location.pathname !== "/towarzystwo/") {
+        if (!camp && window.location.pathname !== "/pomagam/") {
             camp = window.location.pathname;
         }
         let dims = camp ? {dimension1: camp} : {};

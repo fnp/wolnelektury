@@ -1,7 +1,7 @@
 Ten audiobook pochodzi z darmowej biblioteki internetowej Wolne Lektury. Znajdziesz w niej tysiące ebooków i setki audiobooków.
 Wolne Lektury to projekt prowadzony przez fundację Nowoczesna Polska. Jesteśmy organizacją pozarządową. Działamy dzięki wsparciu darczyńców takich jak Ty. 
 Wspólnie możemy udostępnić kolejne książki. Wspieraj Wolne Lektury stałą comiesięczną kwotą. Dzięki temu wcześniej uzyskasz dostęp do wyjątkowych publikacji! Możesz też wesprzeć nas jednorazowo. 
-Wejdź na https://wolnelektury.pl/towarzystwo/ i dorzuć się do nowych nagrań.
+Wejdź na https://wolnelektury.pl/pomagam/ i dorzuć się do nowych nagrań.
 
 Audiobooki Wolnych Lektur są udostępniane na wolnych licencjach, co oznacza, że możesz je swobodnie wykorzystywać, udostępniać i publikować pod warunkiem zachowania warunków licencji i zgodnie z Zasadami wykorzystania Wolnych Lektur: https://wolnelektury.pl/info/zasady-wykorzystania/ 
 
@@ -9,7 +9,7 @@ Audiobooki Wolnych Lektur są udostępniane na wolnych licencjach, co oznacza, �
 
 {% endif %}Przekaż 1% na wolną bibliotekę KRS 0000070056: https://wolnelektury.pl/info/wesprzyj-nas/
 
-Zostań Przyjacielem Wolnych Lektur: https://wolnelektury.pl/towarzystwo/
+Zostań Przyjacielem Wolnych Lektur: https://wolnelektury.pl/pomagam/
 
 Słuchaj nas na YouTube: https://wolnelektury.pl/re/WolneLekturyYT/
 

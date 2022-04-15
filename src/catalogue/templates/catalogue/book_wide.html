@@ -46,7 +46,7 @@
 
     {% if book|status:request.user == 'closed' %}
       {% with form=club_form %}
-        <form method="POST" action="/towarzystwo/" id="payment-form" class="wlform">
+        <form method="POST" action="{% url 'club_join' %}" id="payment-form" class="wlform">
           {% csrf_token %}
           {% include "club/payment_form.html" %}
           {% chunk 'club_form_bottom' %}

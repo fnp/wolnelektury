@@ -89,7 +89,7 @@ class Order(models.Model):
             "merchantPosId": self.pos_id,
             "currencyCode": self.get_pos().currency_code,
             "totalAmount": str(int(self.get_amount() * 100)),
-            "extOrderId": "wolne-lektury-rcz-%d" % self.pk,
+            "extOrderId": "wolne-lektury-%d" % self.pk,
 
             "buyer": self.get_buyer() or {},
             "continueUrl": self.get_continue_url(),
