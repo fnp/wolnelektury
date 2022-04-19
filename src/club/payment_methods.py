@@ -3,6 +3,7 @@
 #
 from django.conf import settings
 from django.urls import reverse
+from django.utils.timezone import now
 from paypal.rest import agreement_approval_url
 
 
@@ -60,13 +61,41 @@ class PayURe(PaymentMethod):
             ip = request.META['REMOTE_ADDR']
         else:
             ip = '127.0.0.1'
+
+        if request is None:
+            if not self.needs_retry(schedule):
+                return
+            
         order = PayUOrder.objects.create(
             pos_id=self.pos_id,
             customer_ip=ip,
             schedule=schedule,
         )
         return order.put()
+
+    def needs_retry(self, schedule):
+        retry_last = schedule.payuorder_set.exclude(
+            created_at=None).order_by('-created_at').first()
+        if retry_last is None:
+            return True
+
+        n = now().date()
+        days_since_last = (n - retry_last.created_at.date()).days
+
+        retry_start = max(
+            schedule.expires_at.date(),
+            settings.CLUB_RETRIES_START
+        )
+        retry_days = (n - retry_start).days
         
+        if retry_days > settings.CLUB_RETRY_DAYS_MAX:
+            print('expired')
+            return False
+        if retry_days > settings.CLUB_RETRY_DAYS_DAILY:
+            print('retry less often now')
+            return days_since_last > settings.CLUB_RETRY_LESS
+        return days_since_last > 0
+
 
 class PayPal(PaymentMethod):
     slug = 'paypal'

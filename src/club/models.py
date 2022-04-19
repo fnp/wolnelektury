@@ -150,6 +150,16 @@ class Schedule(models.Model):
             return utils.add_year(date)
         return utils.add_month(date)
 
+    def get_other_active_recurring(self):
+        schedules = type(self).objects.exclude(
+            monthly=False, yearly=False
+        ).filter(is_cancelled=False, expires_at__gt=now()).exclude(pk=self.pk)
+        mine_q = models.Q(email=self.email)
+        if self.membership is not None:
+            mine_q |= models.Q(membership__user=self.membership.user)
+        schedules = schedules.filter(mine_q)
+        return schedules.order_by('-expires_at').first()
+    
     def send_email(self):
         ctx = {'schedule': self}
         send_mail(
@@ -159,6 +169,17 @@ class Schedule(models.Model):
         self.email_sent = True
         self.save()
 
+    def send_email_failed_recurring(self):
+        ctx = {
+            'schedule': self,
+            'other': self.get_other_active_recurring(),
+        }
+        send_mail(
+            'Darowizna na Wolne Lektury — problem z płatnością',
+            template.loader.render_to_string('club/email/failed_recurring.txt', ctx),
+            settings.CONTACT_EMAIL, [self.email], fail_silently=False
+        )
+        
     def update_contact(self):
         Contact = apps.get_model('messaging', 'Contact')
         if not self.payed_at:
@@ -294,6 +315,11 @@ class PayUOrder(payu_models.Order):
     def status_updated(self):
         if self.status == 'COMPLETED':
             self.schedule.set_payed()
+
+        elif self.status == 'CANCELED':
+            if self.is_recurring() and self.schedule.expires_at:
+                self.schedule.send_email_failed_recurring()
+            
         self.report_activity()
 
     @property

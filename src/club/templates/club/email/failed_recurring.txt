@@ -1,0 +1,15 @@
+Darowizna na Wolne Lektury — problem z płatnością.
+
+Coś poszło nie tak. Prawdopodobnie Twoja karta jest nieaktywna – być może skończył się termin jej ważności.
+{% if other %}Dotyczy to płatności ustawionej {{ schedule.payed_at.date }} na {{ schedule.amount }} zł.
+{% endif %}Kliknij link i podaj numer nowej karty:
+https://wolnelektury.pl{% url 'club_payu_rec_payment' schedule.key %}
+
+Być może chwilowo zabrakło środków na koncie – nic nie musisz robić, ponowimy próbę płatności.
+
+Masz pytania dotyczące Twojej płatności? Zajrzyj tu:
+https://wolnelektury.pl/info/pytania-platnosci/
+
+{% if other %}
+PS Masz także inna płatność na {{ other.amount }} zł ustawioną {{ other.payed_at.date }}{% if other.is_active %} - tutaj wszystko działa, dziękujemy{% endif %}!
+{% endif %}

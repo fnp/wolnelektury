@@ -37,6 +37,7 @@ class Order(models.Model):
         ('CANCELED', _('Canceled')),
         ('REJECTED', _('Rejected')),
     ])
+    created_at = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:

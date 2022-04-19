@@ -1,6 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from datetime import date
 import os
 from .paths import VAR_DIR
 
@@ -38,6 +39,11 @@ PAYU_POS = {
 CLUB_PAYU_POS = '300746'
 CLUB_PAYU_RECURRING_POS = '300746'
 CLUB_APP_HOST = None
+
+CLUB_RETRIES_START = date(2022, 4, 20)
+CLUB_RETRY_DAYS_MAX = 90
+CLUB_RETRY_DAYS_DAILY = 3
+CLUB_RETRY_LESS = 7
 
 MESSAGING_MIN_DAYS = 2
 
