@@ -3,6 +3,9 @@
 <li{% if active_menu_item == 'club' %} class="active"{% endif %}>
   <a href="{% url 'club_join' %}">{% trans "Support us" %}</a>
 </li>
+<li{% if active_menu_item == 'info:lektury-szkolne' %} class="active"{% endif %}>
+  <a href="{% url 'infopage' 'lektury-szkolne' %}">{% trans "School readings" %}</a>
+</li>
 <li{% if active_menu_item == 'books' %} class="active"{% endif %}>
   <a href="{% url 'book_list' %}">{% trans "Literature" %}</a>
 </li>
@@ -17,7 +20,4 @@
 </li>
 <li>
   <a href="{% url 'subscribe' %}">{% trans "Newsletter" %}</a>
-</li>
-<li{% if active_menu_item == 'info:lektury-szkolne' %} class="active"{% endif %}>
-  <a href="{% url 'infopage' 'lektury-szkolne' %}">{% trans "School readings" %}</a>
 </li>
