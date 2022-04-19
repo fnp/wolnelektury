@@ -8,6 +8,7 @@ from django.views.generic import RedirectView
 import django.views.static
 from annoy.utils import banner_exempt
 import catalogue.views
+import club.views
 import picture.views
 from . import views
 
@@ -52,6 +53,7 @@ urlpatterns += [
     path('paypal/', include('paypal.urls')),
     path('powiadomienie/', include('push.urls')),
     path('pomagam/', include('club.urls')),
+    path('towarzystwo/notify/<int:pk>/',  club.views.PayUNotifyView.as_view(), name='club_payu_notify'),
     path('towarzystwo/<path:path>', RedirectView.as_view(
         url='/pomagam/%(path)s', permanent=False)),
 
