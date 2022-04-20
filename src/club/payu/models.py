@@ -36,6 +36,8 @@ class Order(models.Model):
         ('COMPLETED', _('Completed')),
         ('CANCELED', _('Canceled')),
         ('REJECTED', _('Rejected')),
+
+        ('ERR-INVALID_TOKEN', _('Invalid token')),
     ])
     created_at = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
@@ -128,11 +130,17 @@ class Order(models.Model):
             # else?
 
         if 'orderId' not in response:
-            raise ValueError("Expecting dict with `orderId` key, got: %s" % response)
-        self.order_id = response['orderId']
-        self.save()
+            code = response.get('status', {}).get('codeLiteral', '')
+            if code:
+                self.status = 'ERR-' + str(code)
+                self.save()
+                self.status_updated()
+            else:
+                raise ValueError("Expecting dict with `orderId` key, got: %s" % response)
+        else:
+            self.order_id = response['orderId']
+            self.save()
 
-        
         return response.get('redirectUri', self.schedule.get_thanks_url())
 
 

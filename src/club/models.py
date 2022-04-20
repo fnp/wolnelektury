@@ -316,7 +316,7 @@ class PayUOrder(payu_models.Order):
         if self.status == 'COMPLETED':
             self.schedule.set_payed()
 
-        elif self.status == 'CANCELED':
+        elif self.status == 'CANCELED' or self.status.startswith('ERR-'):
             if self.is_recurring() and self.schedule.expires_at:
                 self.schedule.send_email_failed_recurring()
             
