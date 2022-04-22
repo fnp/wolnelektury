@@ -28,7 +28,7 @@
   });
 })();
 
-// Ebook/Audiobook Btns
+/// Ebook/Audiobook Btns
 (function() {
   let button = $('.c-media__btn button:not(.l-button--media--full)');
   let popupLayer = $('.c-media__popup');
@@ -138,6 +138,14 @@
   }
 
   if($change.length) { change(); }
+
+
+    function quit_experiment() {
+        document.cookie = 'EXPERIMENT_layout=off; path=/; max-age=31536000';
+        window.location.reload(true);
+    }
+    $(".quit-experiment").click(quit_experiment);
+
 })();
 
 //Switch

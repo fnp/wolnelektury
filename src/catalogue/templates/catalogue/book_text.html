@@ -114,7 +114,7 @@
 {% block footer %}
   <div id="wltoc" class="box">
     {% if book.parent %}
-      {% for b in book.ancestor.all %}
+      {% for b in book.ancestors %}
         {% if forloop.counter > 1 %}
           <li>
         {% endif %}

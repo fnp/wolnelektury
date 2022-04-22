@@ -296,23 +296,24 @@ class Book(models.Model):
         
         return self.parent.get_prev_text()
 
-    def get_next_text(self):
-        child = self.children.order_by('parent_number').first()
-        if child is not None:
-            return child.get_first_text()
+    def get_next_text(self, inside=True):
+        if inside:
+            child = self.children.order_by('parent_number').first()
+            if child is not None:
+                return child.get_first_text()
 
         if not self.parent:
             return None
         sibling = self.parent.children.filter(parent_number__gt=self.parent_number).order_by('parent_number').first()
         if sibling is not None:
             return sibling.get_first_text()
-        return self.parent.get_next_text()
+        return self.parent.get_next_text(inside=False)
 
     def get_child_audiobook(self):
         BookMedia = apps.get_model('catalogue', 'BookMedia')
         if not BookMedia.objects.filter(book__ancestor=self).exists():
             return None
-        for child in self.children.all():
+        for child in self.children.order_by('parent_number').all():
             if child.has_mp3_file():
                 return child
             child_sub = child.get_child_audiobook()
