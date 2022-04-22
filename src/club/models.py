@@ -352,7 +352,7 @@ class PayUOrder(payu_models.Order):
         )            
 
     @classmethod
-    def send_receipt(cls, email, year):
+    def send_receipt(cls, email, year, resend=False):
         Contact = apps.get_model('messaging', 'Contact')
         Funding = apps.get_model('funding', 'Funding')
         BillingAgreement = apps.get_model('paypal', 'BillingAgreement')
@@ -406,6 +406,7 @@ class PayUOrder(payu_models.Order):
             "total": sum(x['amount'] for x in payments),
             "payments": payments,
             "optout": optout,
+            "resend": resend,
         }
         temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
         temp.close()

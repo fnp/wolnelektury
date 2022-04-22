@@ -1,4 +1,18 @@
-Dzień dobry,
+{% if resend %}Dzień dobry,
+
+czy planujesz rozliczyć podatki w najbliższych dniach? Jeśli tak, pamiętaj, że możesz odliczyć darowizny na Wolne Lektury – szczegółowe informacje na temat kwoty znajdziesz poniżej. Będziemy Ci także wdzięczni za przekazanie na rozwój naszej biblioteki 1% podatku. Wystarczy, że wpiszesz KRS 00000 70056 i nazwę fundacji Nowoczesna Polska w odpowiednią rubrykę. Nawet najmniejsza kwota pomoże nam udostępnić kolejne wartościowe książki tysiącom Czytelniczek i Czytelników.
+
+Dziękujemy za Twoje wsparcie!
+
+Zespół Wolnych Lektur
+
+
+
+PS Poniżej znajdziesz email sprzed kilku tygodni, który być może Ci umknął.
+
+===
+
+{% endif %}Dzień dobry,
 
 czy wiesz, że możesz odliczyć od podstawy opodatkowanie wszystkie darowizny przekazane fundacji Nowoczesna Polska na prowadzenie biblioteki Wolne Lektury?
 

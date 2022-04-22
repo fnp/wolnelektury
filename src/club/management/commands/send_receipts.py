@@ -18,6 +18,9 @@ class Command(BaseCommand):
         parser.add_argument(
             '--emails',
             help='Send only to these emails.')
+        parser.add_argument(
+            '--resend', action='store_true',
+            help='This is a re-send.')
 
     def handle(self, *args, **options):
         year = options['year']
@@ -48,6 +51,6 @@ class Command(BaseCommand):
         for email in emails:
             print(email)
             try:
-                PayUOrder.send_receipt(email, year)
+                PayUOrder.send_receipt(email, year, resend=options['resend'])
             except:
                 print('ERROR')
