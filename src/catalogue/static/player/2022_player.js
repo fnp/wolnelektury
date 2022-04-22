@@ -1,11 +1,17 @@
 (function($) {
     $(function() {
 
+        $.jPlayer.timeFormat.showHour = true;
+
         $(".jp-jplayer").each(function() {
             console.log('starting player')
-      	var $self = $(this);
-        var $root = $self.parent();
-        var $currentMedia = null
+            var $self = $(this);
+            var $root = $self.parent();
+            var $currentMedia = null
+            var currentDuration = 0;
+            var speed = 1;
+            var totalDurationLeft = 0;
+            var lastUpdate = 0;
 
         $self.jPlayer({
             swfPath: "/static/js/contrib/jplayer/",
@@ -37,23 +43,30 @@
                     $(".c-media__caption .project-logo", $root).html($(".project-icon", elem).html());
                     
                     player.jPlayer("setMedia", media);
+                    $("audio")[0].playbackRate = speed;
                     player.jPlayer("pause", time);
 
                     $currentMedia = elem;
                     $(".play-prev", $root).prop("disabled", !elem.prev().length);
                     $(".play-next", $root).prop("disabled", !elem.next().length);
 
+                    let du = elem.data('duration');
+                    currentDuration = du;
+                    elem.nextAll().each(function() {
+                        du += $(this).data('duration');
+                    });
+                    totalDurationLeft = du;
+
                     return player;
                 };
 
                 let selectItem = $('.c-select li');
                 selectItem.on('click', function() {
-                    let speed = parseFloat(this.innerHTML);
-                    console.log(speed);
-                    console.log($('audio'));
+                    let speedStr = $(this).data('speed');
+                    speed = parseFloat(speedStr);
                     $("audio")[0].playbackRate = speed;
+                    localStorage['audiobook-speed'] = speedStr;
                 });
-                
                 
                 $('.play-next', $root).click(function() {
                     let p = $currentMedia.next();
@@ -69,15 +82,22 @@
                 });
 
                 $('.jp-playlist li', $root).click(function() {
-                    console.log(this);
-                    setMedia($(this));
+                    setMedia($(this)).jPlayer("play");
+                    $('.c-player__chapters').removeClass('is-active');
                 });
-
-                console.log(1);
 
                 var initialElem = $('.jp-playlist li', $root).first();
                 var initialTime = 0;
                 if (true || Modernizr.localstorage) {
+                    try {
+                        let speedStr = localStorage['audiobook-speed'];
+                        if (speedStr) {
+                            speed = parseFloat(speedStr);
+                            $(".speed .is-active").removeClass("is-active");
+                            $(".speed [data-speed='" + speedStr + "']").addClass("is-active");
+                        }
+                    } catch {}
+
                     try {
                         audiobooks = JSON.parse(localStorage["audiobook-history"]);
                     } catch {
@@ -90,26 +110,32 @@
                     }
 
                     if (last) {
-                        initialElem = $('[data-media-id="' + last[1] + '"] .play', $root).first();
+                        initialElem = $('[data-media-id="' + last[1] + '"]', $root).first();
                         initialTime = last[2];
-                        $number.text($(".jp-playlist .play", $root).index(initialElem) + 1);
                     }
                 }
                 setMedia(initialElem, initialTime);
             },
 
             timeupdate: function(event) {
-                //event.jPlayer.status.currentTime
+                t = event.jPlayer.status.currentTime;
+                ttl = (totalDurationLeft - t) / speed;
+                ttl = $.jPlayer.convertTime(ttl);
+                $(".total-time-left").text('Czas do końca: ' + ttl);
+
+                $(".time-left").text('– ' + $.jPlayer.convertTime(
+                    currentDuration - t,
+                ));
                 
                 
-                if (true || (event.jPlayer.status.currentTime && Modernizr.localstorage)) {
+                if (Math.abs(t - lastUpdate) > 3) {
                     try {
                         audiobooks = JSON.parse(localStorage["audiobook-history"]);
                     } catch {
                         audiobooks = {};
                     }
-                    t = event.jPlayer.status.currentTime;
                     if (t && event.jPlayer.status.duration - t > 10) {
+                        console.log('writer');
                         audiobooks[$root.attr("data-book-slug")] = [
                             Date.now(),
                             event.jPlayer.status.media.id,
@@ -121,6 +147,7 @@
                     // Remove old book id, if present.
                     delete audiobooks[$root.attr("data-book-id")];
                     localStorage["audiobook-history"] = JSON.stringify(audiobooks);
+                    lastUpdate = t;
                 }
             }
         });

@@ -242,6 +242,7 @@
       list-style-type: decimal;
       margin: 5px 0;
       color: white;
+      cursor: pointer;
 
       span {
           display: none;
@@ -299,5 +300,10 @@
 
     &:nth-child(1) { left: 0; }
     &:nth-child(2) { right: 0; }
+    &:nth-child(3) {
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
   }
 }

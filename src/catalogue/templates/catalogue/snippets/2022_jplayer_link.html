@@ -1,21 +1,24 @@
 {% load i18n catalogue_tags %}
 
 <div class="c-media__player" id="jp_container_{{ book.pk }}">
-  <div class="jp-jplayer"></div>
+  <div class="c-player__head">
+    <span>&nbsp;</span>
+  </div>
 
   <div class="c-player">
-    <a class="c-player__btn" href="{{ book.get_absolute_url }}">
-      <i class="icon icon-next">⏭</i>
-    </a>
-      <div class="c-player__timeline">
-        <div class="c-player__title">
-          {{ book.title }}
-        </div>
-        <span>
-          <span class="jp-seek-bar">
-            <span class="jp-play-bar"></span>
-          </span>
-        </span>
-      </div>
+    <div class="c-player__btns">
+      <button disabled class="play-prev"><i class="icon icon-prev"></i></button>
+      <button disabled class="c-player__btn--md"><i class="icon icon-play"></i></button>
+      <form action='{{ book.get_absolute_url }}'>
+        <button class="play-next"><i class="icon icon-next"></i></button>
+      </form>
     </div>
+
+    <div class="c-player__timeline">
+      <div class="c-player__info">{{ book.pretty_title }}</div>
+    </div>
+
   </div>
+  <div class="c-media__caption">
+  </div>
+</div>
