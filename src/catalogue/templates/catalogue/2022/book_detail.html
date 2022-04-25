@@ -4,6 +4,7 @@
 {% load choose_cites from social_tags %}
 {% load choose_fragment license_icon from catalogue_tags %}
 {% load catalogue_tags %}
+{% load likes_book from social_tags %}
 
 
 <html class="no-js">
@@ -79,7 +80,9 @@
             <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
             <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
             <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+
           </ul>
+
           {% if book.parent or book.get_children %}
             <ul class="l-aside__zbiory">
               {% if book.parent %}
@@ -123,6 +126,7 @@
               {% endif %}
             </ul>
           {% endif  %}
+
         </aside>
         <div class="l-content">
           <header class="l-header">
@@ -140,12 +144,22 @@
               {% endif %}
             </div>
             <div class="l-header__actions">
-              <form method='post' action='{% url 'social_like_book' book.slug %}'>
-                {% csrf_token %}
-                <button class="l-button l-button--fav">
-                  <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
-                </button>
-              </form>
+              {% likes_book book as likes %}
+              {% if likes %}
+                <form method='post' action='{% url 'social_unlike_book' book.slug %}'>
+                  {% csrf_token %}
+                  <button class="l-button l-button--fav">
+                    <img src="{% static '2022/images/faved.svg' %}" alt="Usuń z ulubionych">
+                  </button>
+                </form>
+              {% else %}
+                <form method='post' action='{% url 'social_like_book' book.slug %}'>
+                  {% csrf_token %}
+                  <button class="l-button l-button--fav">
+                    <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
+                  </button>
+                </form>
+              {% endif %}
             </div>
           </header>
           <article class="l-article">
@@ -240,6 +254,7 @@
                         <div>
                           <h3>inne formaty</h3>
                           <ul>
+                            <li><a href="{% url 'custom_pdf_form' book.slug %}">Stwórz własny PDF</a></li>
                             {% if book.txt_file %}<li><a href="{{ book.txt_url }}">plik tekstowy (.txt)</a></li>{% endif %}
                             {% if book.fb2_file %}<li><a href="{{ book.fb2_url }}">FictionBook</a></li>{% endif %}
                           </ul>
@@ -350,7 +365,7 @@
                   </figure>
                 {% endif %}
                 <article class="l-author__info">
-                  <h3>{{ author.name }}</h3>
+                  <h3><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></h3>
                   <div class="l-article__overlay" data-max-height="327">
                     {{ author.description|safe }}
                   </div>
@@ -378,7 +393,7 @@
               </div>
             {% endif %}
           </div>
-      </section>
+        </section>
       {% endfor %}
 
       <section class="l-section">
@@ -398,6 +413,9 @@
             {% endif %}
           {% endwith %}
           <ul class="links">
+            {% if book.wiki_link %}
+              <li><a href="{{ book.wiki_link }}">strona utworu w Wikipedii</a></li>
+            {% endif %}
             <li>
               <a href="{{ book.xml_url }}">źródłowy plik XML</a>
             </li>

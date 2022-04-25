@@ -4,7 +4,6 @@
         $.jPlayer.timeFormat.showHour = true;
 
         $(".jp-jplayer").each(function() {
-            console.log('starting player')
             var $self = $(this);
             var $root = $self.parent();
             var $currentMedia = null
@@ -15,7 +14,6 @@
             var player = null;
 
             var setMedia = function(elem, time=0) {
-                console.log('setMedia', elem, time);
                 var media = {}
 
                 media['mp3'] = elem.attr('data-mp3');
@@ -37,7 +35,6 @@
                 player.jPlayer("pause", time);
 
                 $currentMedia = elem;
-                $(".play-prev", $root).prop("disabled", !elem.prev().length);
                 $(".play-next", $root).prop("disabled", !elem.next().length);
 
                 let du = elem.data('duration');
@@ -60,7 +57,6 @@
 
             ready: function() {
                 player = $(this);
-                console.log(1);
 
                 let selectItem = $('.c-select li');
                 selectItem.on('click', function() {
@@ -80,6 +76,9 @@
                     let p = $currentMedia.prev();
                     if (p.length) {
                         setMedia(p).jPlayer("play");
+                    } else {
+                        // If in first part, restart it.
+                        setMedia($currentMedia).jPlayer("play");
                     }
                 });
 
@@ -137,7 +136,6 @@
                         audiobooks = {};
                     }
                     if (t && event.jPlayer.status.duration - t > 10) {
-                        console.log('writer');
                         audiobooks[$root.attr("data-book-slug")] = [
                             Date.now(),
                             event.jPlayer.status.media.id,

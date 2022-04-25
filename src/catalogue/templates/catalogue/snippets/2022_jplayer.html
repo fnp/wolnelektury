@@ -30,7 +30,9 @@
       <div class="c-player__timeline">
         <div class="c-player__info"></div>
         <div class="c-player__chapters">
-          <span>Rozdziały</span>
+          {% if audiobooks.0|length > 1 %}
+            <span>Rozdziały</span>
+          {% endif %}
           <ul class="jp-playlist">
             {% for i in audiobooks.0 %}
               <li
