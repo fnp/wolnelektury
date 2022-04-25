@@ -12,7 +12,45 @@
             var speed = 1;
             var totalDurationLeft = 0;
             var lastUpdate = 0;
+            var player = null;
 
+            var setMedia = function(elem, time=0) {
+                console.log('setMedia', elem, time);
+                var media = {}
+
+                media['mp3'] = elem.attr('data-mp3');
+                media['oga'] = elem.attr('data-ogg');
+                media['id'] = elem.attr('data-media-id');
+
+                $(".c-player__head", $root).html(
+                    $(".attribution", elem).html())
+                ;
+                $(".c-player__info", $root).html(
+                    $(".title", elem).html()
+                );
+                $(".c-media__caption .content", $root).html($(".project-description", elem).html());
+                $(".c-media__caption .license", $root).html($(".license", elem).html());
+                $(".c-media__caption .project-logo", $root).html($(".project-icon", elem).html());
+
+                player.jPlayer("setMedia", media);
+                player.jPlayer("option", "playbackRate", speed);
+                player.jPlayer("pause", time);
+
+                $currentMedia = elem;
+                $(".play-prev", $root).prop("disabled", !elem.prev().length);
+                $(".play-next", $root).prop("disabled", !elem.next().length);
+
+                let du = elem.data('duration');
+                currentDuration = du;
+                elem.nextAll().each(function() {
+                    du += $(this).data('duration');
+                });
+                totalDurationLeft = du;
+
+                return player;
+            };
+
+            
         $self.jPlayer({
             swfPath: "/static/js/contrib/jplayer/",
             solution: "html,flash",
@@ -21,50 +59,14 @@
             useStateClassSkin: true,
 
             ready: function() {
-                var player = $(this);
+                player = $(this);
                 console.log(1);
-
-                var setMedia = function(elem, time=0) {
-                    console.log('setMedia', elem, time);
-                    var media = {}
-
-                    media['mp3'] = elem.attr('data-mp3');
-                    media['oga'] = elem.attr('data-ogg');
-                    media['id'] = elem.attr('data-media-id');
-
-                    $(".c-player__head", $root).html(
-                        $(".attribution", elem).html())
-                    ;
-                    $(".c-player__info", $root).html(
-                        $(".title", elem).html()
-                    );
-                    $(".c-media__caption .content", $root).html($(".project-description", elem).html());
-                    $(".c-media__caption .license", $root).html($(".license", elem).html());
-                    $(".c-media__caption .project-logo", $root).html($(".project-icon", elem).html());
-                    
-                    player.jPlayer("setMedia", media);
-                    $("audio")[0].playbackRate = speed;
-                    player.jPlayer("pause", time);
-
-                    $currentMedia = elem;
-                    $(".play-prev", $root).prop("disabled", !elem.prev().length);
-                    $(".play-next", $root).prop("disabled", !elem.next().length);
-
-                    let du = elem.data('duration');
-                    currentDuration = du;
-                    elem.nextAll().each(function() {
-                        du += $(this).data('duration');
-                    });
-                    totalDurationLeft = du;
-
-                    return player;
-                };
 
                 let selectItem = $('.c-select li');
                 selectItem.on('click', function() {
                     let speedStr = $(this).data('speed');
                     speed = parseFloat(speedStr);
-                    $("audio")[0].playbackRate = speed;
+                    player.jPlayer("option", "playbackRate", speed);
                     localStorage['audiobook-speed'] = speedStr;
                 });
                 
@@ -148,6 +150,14 @@
                     delete audiobooks[$root.attr("data-book-id")];
                     localStorage["audiobook-history"] = JSON.stringify(audiobooks);
                     lastUpdate = t;
+                }
+            },
+
+
+            ended: function(event) {
+                let p = $currentMedia.next();
+                if (p.length) {
+                    setMedia(p).jPlayer("play");
                 }
             }
         });

@@ -1,6 +1,6 @@
 
 var __bind = function (self, fn) {
-    return function() { fn.apply(self, arguments); };
+    return function() { return fn.apply(self, arguments); };
 };
 
 (function($){
@@ -19,8 +19,9 @@ var __bind = function (self, fn) {
                     source: this.element.data('source')
             };
 
-            this.element.autocomplete($.extend(opts, this.options))
-            .data("autocomplete")._renderItem = __bind(this, this.render_item);
+            this.element.autocomplete($.extend(opts, this.options));
+            this.element.autocomplete('instance')._renderItem = __bind(this, this.render_item_2022);
+            this.element.data('autocomplete')._renderItem = __bind(this, this.render_item);;
         },
 
         enter: function(event, ui) {
@@ -40,6 +41,18 @@ var __bind = function (self, fn) {
             }
             return $("<li></li>").data('item.autocomplete', item)
             .append('<a href="'+this.options.host+item.url+'"><span class="search-hint-label">'+label+'</span>')
+            .appendTo(ul);
+        },
+
+        render_item_2022: function (ul, item) {
+            var label;
+            if (item['author']) {
+                label = '<cite>' + item.label + '</cite>, ' + item['author'];
+            } else {
+                label = item.label;
+            }
+            return $("<li></li>")
+            .append('<a href="'+this.options.host+item.url+'">'+label+'</a>')
             .appendTo(ul);
         },
 

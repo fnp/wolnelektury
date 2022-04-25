@@ -128,11 +128,16 @@
           <header class="l-header">
             <div class="l-header__content">
               <p>{% for author in book.authors %}<a href="{{ author.get_absolute_url }}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
-                {% if book.translators %}
-                  (tłum. {% for translator in book.translators %}{{ translator }}{% endfor %})
-                {% endif %}
               </p>
               <h1><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h1>
+              {% if book.translators %}
+                <p class="l-header__translators">
+                  tłum.
+                  {% for translator in book.translators %}
+                    {{ translator }}{% if not forloop.last %}, {% endif %}
+                  {% endfor %}
+                </p>
+              {% endif %}
             </div>
             <div class="l-header__actions">
               <form method='post' action='{% url 'social_like_book' book.slug %}'>

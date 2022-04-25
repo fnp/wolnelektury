@@ -46,6 +46,11 @@
       &:not(:last-child):after { content: "/";margin-left: 10px; }
     }
   }
+
+  .l-header__translators {
+      font-size: 18px;
+      margin-top: 5px;
+  }
 }
 
 .l-header__actions {
