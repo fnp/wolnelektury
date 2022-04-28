@@ -11,9 +11,8 @@
         display: block;
     }
   }
-
-  .l-aside__info {
-    & + .l-aside__zbiory {
+  > ul {
+    & + ul {
       margin-top: 15px;
     }
   }
@@ -71,6 +70,7 @@
     }
 
     a {
+      color: #007880;
       &:hover {
         text-decoration: underline;
       }

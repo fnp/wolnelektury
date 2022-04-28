@@ -18,4 +18,4 @@ def tracking_code(context):
         url = settings.PIWIK_URL
     except AttributeError:
         raise ImproperlyConfigured('PIWIK_URL does not exist.')
-    return {'id': id, 'url': url, 'AB': context.get('AB')}
+    return {'id': id, 'url': url, 'request': context.get('request')}

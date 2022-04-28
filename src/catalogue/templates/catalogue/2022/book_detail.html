@@ -5,6 +5,7 @@
 {% load choose_fragment license_icon from catalogue_tags %}
 {% load catalogue_tags %}
 {% load likes_book from social_tags %}
+{% load piwik_tags %}
 
 
 <html class="no-js">
@@ -21,6 +22,8 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+      {% tracking_code %}
   </head>
   <body>
 
@@ -29,12 +32,12 @@
         <h3>Zmieniamy się!</h3>
         <p>
           Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd strony książki.
-          Będziemy bardzo! wdzięczni za Twoją opinię – <a href='{% url 'suggest' %}' target="_blank">możesz nam ją przesłać tutaj</a>.
+          Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
           Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
         </p>
         <!-- button class="l-change-pop__close">
-          <i class="icon icon-close"></i>
-        </button -->
+             <i class="icon icon-close"></i>
+             </button -->
       </div>
       <div class="l-container">
         <a href="/" class="l-navigation__logo">
@@ -48,10 +51,10 @@
         <div class="l-navigation__actions">
           <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
           <!-- button class="l-navigation__button js-menu" aria-label="Menu">
-            <span class="c-hamburger">
-              <span class="bar"></span>
-            </span>
-          </button-->
+               <span class="c-hamburger">
+               <span class="bar"></span>
+               </span>
+               </button-->
         </div>
       </div>
     </nav>
@@ -76,12 +79,6 @@
               <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
             </a>
           </figure>
-          <ul class="l-aside__info">
-            <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
-            <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
-            <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
-
-          </ul>
 
           {% if book.parent or book.get_children %}
             <ul class="l-aside__zbiory">
@@ -127,6 +124,12 @@
             </ul>
           {% endif  %}
 
+          <ul class="l-aside__info">
+            <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+            <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+            <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+
+          </ul>
         </aside>
         <div class="l-content">
           <header class="l-header">
@@ -444,7 +447,7 @@
                 <article class="l-books__item">
                   <figure class="l-books__item__img">
                     <a href="{{ rel.get_absolute_url }}">
-                      <img src="{% if rel.cover %}{{ rel.cover.url }}{% endif %}" alt="{{ rel.pretty_title }}">
+                      <img src="{% if rel.cover_clean %}{{ rel.cover_clean.url }}{% endif %}" alt="{{ rel.pretty_title }}">
                     </a>
                   </figure>
                   <h3>
@@ -463,7 +466,7 @@
               <article class="l-books__item">
                 <figure class="l-books__item__img">
                   <a href="{{ rel.get_absolute_url }}">
-                    <img src="{% if rel.cover %}{{ rel.cover.url }}{% endif %}" alt="{{ rel.pretty_title }}">
+                    <img src="{% if rel.cover_clean %}{{ rel.cover_clean.url }}{% endif %}" alt="{{ rel.pretty_title }}">
                   </a>
                 </figure>
                 <h3>
@@ -518,6 +521,17 @@
     <script src="{% static '2021/scripts/main.js' %}"></script>
 
     {% javascript '2022' %}
-    {% javascript '2022_player' %}
+      {% javascript '2022_player' %}
+        <!-- Hotjar Tracking Code for https://wolnelektury.pl/ -->
+        <script>
+         (function(h,o,t,j,a,r){
+             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+             h._hjSettings={hjid:2661024,hjsv:6};
+             a=o.getElementsByTagName('head')[0];
+             r=o.createElement('script');r.async=1;
+             r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+             a.appendChild(r);
+         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
   </body>
 </html>

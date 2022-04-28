@@ -63,3 +63,5 @@ CIVICRM_ACTIVITIES = {
     'Recurring contribution': 'Wpłata cykliczna',
     'Failed contribution': 'Nieudana wpłata',
 }
+
+EXPERIMENTS_LAYOUT = 0
