@@ -18,46 +18,46 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: paypal/forms.py:9
+#: forms.py:9
 msgid "amount in PLN"
-msgstr ""
+msgstr "сумма в PLN"
 
-#: paypal/templates/paypal/cancel.html:5
+#: templates/paypal/cancel.html:5
 msgid "Zrezygnowano z płatności :("
-msgstr ""
+msgstr "Оплата не прошла :("
 
-#: paypal/templates/paypal/error.html:2
+#: templates/paypal/error.html:2
 msgid "PayPal Error"
-msgstr ""
+msgstr "Ошибка PayPal"
 
-#: paypal/templates/paypal/error.html:6
+#: templates/paypal/error.html:6
 msgid "Learn more"
-msgstr ""
+msgstr "Узнать больше"
 
-#: paypal/templates/paypal/form.html:6 paypal/templates/paypal/form.html:10
+#: templates/paypal/form.html:6 templates/paypal/form.html:10
 msgid "Wolne Lektury Friend Club"
-msgstr ""
+msgstr "Клуб друзей Wolne Lektury/Свободное чтение"
 
-#: paypal/templates/paypal/form.html:18
+#: templates/paypal/form.html:18
 msgid "Subscribe with PayPal"
-msgstr ""
+msgstr "Подписаться с PayPal"
 
-#: paypal/templates/paypal/form.html:21
+#: templates/paypal/form.html:21
 msgid "You must be logged in to subscribe."
-msgstr ""
+msgstr "Для подписки необходимо войти под логином"
 
-#: paypal/templates/paypal/return.html:8
+#: templates/paypal/return.html:8
 msgid "Dziękujemy, że jesteś z nami i pomagasz nam rozwijać Wolne Lektury!"
-msgstr ""
+msgstr "Спасибо, что ты с нами и помогаешь развивать Wolne Lektury/Свободное чтение! "
 
-#: paypal/templates/paypal/return.html:9
+#: templates/paypal/return.html:9
 msgid "Pamiętaj, że zawsze możesz się z nami skontaktować:"
-msgstr ""
+msgstr "Помни, что всегда можешь связаться с нами:"
 
-#: paypal/templates/paypal/return.html:11
+#: templates/paypal/return.html:11
 msgid "Do przeczytania!"
-msgstr ""
+msgstr "Прочти!"
 
-#: paypal/templates/paypal/return.html:11
+#: templates/paypal/return.html:11
 msgid "Zespół Wolnych Lektur"
-msgstr ""
+msgstr "Команда Wolny Lektury/Свободное чтение"

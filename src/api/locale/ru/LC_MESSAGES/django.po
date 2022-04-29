@@ -18,15 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: api/models.py:16
+#: models.py:16
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
-#: api/templates/api/main.html:5
+#: templates/api/main.html:5
 msgid "WolneLektury.pl API"
-msgstr ""
+msgstr "API сервиса WolneLektury.pl"
 
-#: api/templates/api/main.html:15
+#: templates/api/main.html:15
 #, python-format
 msgid ""
 "\n"
@@ -37,60 +37,67 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:23
-msgid ""
-"\n"
+#: templates/api/main.html:23
+msgid "API сервиса WolneLektury.pl расположен по адресу <code>%(u)s</code>.\n"
+"С его помощью вы можете искать информацию о произведениях, отрывках из них и метаданных ""and\n"
 "        Default data serialization format is\n"
 "        <a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>,\n"
 "        but you can also use XML by appending <code>?format=xml</code>\n"
 "        query parameter to each URL.\n"
 "      "
-msgstr ""
+msgstr "По умолчанию данные сериализуются в формате"
+"        <a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>,\n"
+"        но также можно использовать формат XML требуется добавить параметр <code>?format=xml</code>\n"
+"        параметр запроса для каждого URL.\n"
+" "
 
-#: api/templates/api/main.html:32
+#: templates/api/main.html:32
 msgid ""
 "\n"
 "        The URLs in WolneLektury.pl API are:\n"
 "      "
 msgstr ""
+"\n"
+"        API ресурса WolneLektury.pl принадлежат URL:\n"
+" "
 
-#: api/templates/api/main.html:39
+#: templates/api/main.html:39
 msgid "All books"
-msgstr ""
+msgstr "Все произведения"
 
-#: api/templates/api/main.html:41
+#: templates/api/main.html:41
 msgid "Audiobooks"
-msgstr ""
+msgstr "Аудиокниги"
 
-#: api/templates/api/main.html:43
+#: templates/api/main.html:43
 msgid "DAISY"
-msgstr ""
+msgstr "DAISY"
 
-#: api/templates/api/main.html:46
+#: templates/api/main.html:46
 msgid "List of all authors"
-msgstr ""
+msgstr "Список авторов"
 
-#: api/templates/api/main.html:48
+#: templates/api/main.html:48
 msgid "List of all epochs"
-msgstr ""
+msgstr "Список эпох"
 
-#: api/templates/api/main.html:50
+#: templates/api/main.html:50
 msgid "List of all genres"
-msgstr ""
+msgstr "Список литературных жанров"
 
-#: api/templates/api/main.html:52
+#: templates/api/main.html:52
 msgid "List of all kinds"
-msgstr ""
+msgstr "Список видов литературы"
 
-#: api/templates/api/main.html:55
+#: templates/api/main.html:55
 msgid "List of all themes"
-msgstr ""
+msgstr "Список сюжетов и тем"
 
-#: api/templates/api/main.html:57
+#: templates/api/main.html:57
 msgid "Collections"
-msgstr ""
+msgstr "Коллекции"
 
-#: api/templates/api/main.html:63
+#: templates/api/main.html:63
 #, python-format
 msgid ""
 "\n"
@@ -101,8 +108,14 @@ msgid ""
 "        <a href=\"%(e2)s\">%(e2)s</a>.\n"
 "      "
 msgstr ""
-
-#: api/templates/api/main.html:72
+"\n"
+"        Каждый элемент списка содержит ссылку (in a \"href\") "
+"attibute\n"
+"        по которой можно перейти к подробной информации, например:\n"
+"        <a href=\"%(e1)s\">%(e1)s</a> or\n"
+"        <a href=\"%(e2)s\">%(e2)s</a>.\n"
+"      "
+#: templates/api/main.html:72
 #, python-format
 msgid ""
 "\n"
@@ -112,8 +125,14 @@ msgid ""
 "        <a href=\"%(e)s\">%(e)s</a>.\n"
 "      "
 msgstr ""
+"\n"
+"        Можно сочетать авторов, эпохи, жанры и виды для поиска книги"
+"matching\n"
+"        Отвечающие заданным критериям. например:\n"
+"        <a href=\"%(e)s\">%(e)s</a>.\n"
+"      "
 
-#: api/templates/api/main.html:80
+#: templates/api/main.html:80
 #, python-format
 msgid ""
 "\n"
@@ -122,8 +141,13 @@ msgid ""
 "        <a href=\"%(e)s\">%(e)s</a>.\n"
 "      "
 msgstr ""
+"\n"
+"        Чтобы из списка всех релевантных выбрать наиболее точно отвечающие критериям, вы можете "
+"можно задавать вопросы/parent_books/, например:\n"
+"        <a href=\"%(e)s\">%(e)s</a>.\n"
+"      "
 
-#: api/templates/api/main.html:88
+#: templates/api/main.html:88
 #, python-format
 msgid ""
 "\n"
@@ -135,13 +159,21 @@ msgid ""
 "        <a href=\"%(f)s\">%(f)s</a>.\n"
 "      "
 msgstr ""
+"\n"
+"        Тем же способом, используя выбирая книги или сюжеты, можно искать в списке"
+"по фрагментам:\n"
+"        <a href=\"%(e)s\">%(e)s</a>.\n"
+"        Каждый элемент найденного списка \"href\" содержит ссылку, ведущую к"
+"подробному описанию, например:\n"
+"        <a href=\"%(f)s\">%(f)s</a>.\n"
+"      "
 
-#: api/templates/oauth/authorize_token.html:4
-#: api/templates/oauth/authorize_token.html:7
+#: templates/oauth/authorize_token.html:4
+#: templates/oauth/authorize_token.html:7
 msgid "Authorize access to Wolne Lektury"
 msgstr "Авторизация доступа к Wolne Lektury"
 
-#: api/templates/oauth/authorize_token.html:11
+#: templates/oauth/authorize_token.html:11
 #, python-format
 msgid ""
 "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
@@ -150,6 +182,6 @@ msgstr ""
 "Подтверждение для авторизации доступа к Wolne Lektury как пользователь "
 "<strong>%(user)s </strong>."
 
-#: api/templates/oauth/authorize_token.html:17
+#: templates/oauth/authorize_token.html:17
 msgid "Confirm"
-msgstr ""
+msgstr "Подтверждаю"

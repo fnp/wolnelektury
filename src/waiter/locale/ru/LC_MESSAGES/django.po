@@ -18,45 +18,52 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: waiter/templates/waiter/wait.html:7 waiter/templates/waiter/wait.html:33
+#: templates/waiter/wait.html:7 templates/waiter/wait.html:33
 msgid "The file is ready for download!"
-msgstr ""
+msgstr "Файл готов к скачиванию!"
 
-#: waiter/templates/waiter/wait.html:10 waiter/templates/waiter/wait.html:46
+#: templates/waiter/wait.html:10 templates/waiter/wait.html:46
 msgid "Your file is being prepared, please wait."
-msgstr ""
+msgstr "Ваш файл готовится, пожалуйста, ждите."
 
-#: waiter/templates/waiter/wait.html:12 waiter/templates/waiter/wait.html:58
+#: templates/waiter/wait.html:12 templates/waiter/wait.html:58
 msgid "Something went wrong."
-msgstr ""
+msgstr "Что-то пошло не так."
 
-#: waiter/templates/waiter/wait.html:37
+#: templates/waiter/wait.html:37
 #, python-format
 msgid ""
 "Your file is ready!\n"
 "          If the download doesn't start in a few seconds,\n"
 "          feel free to use this <a href=\"%(file_url)s\">direct link</a>."
 msgstr ""
-
-#: waiter/templates/waiter/wait.html:45
+"Ваш файл готов!\n"
+"          Если загрузка не началась в течение нескольких секунд,\n"
+"          пожалуйста, воспользуйтесь <a href=\"%(file_url)s\">этой ссылкой</a>."
+#: templates/waiter/wait.html:45
 msgid "Please wait"
-msgstr ""
+msgstr "Пожалуйста, ждите"
 
-#: waiter/templates/waiter/wait.html:50
+#: templates/waiter/wait.html:50
 #, python-format
 msgid "The file you requested was: <em>%(d)s</em>."
-msgstr ""
+msgstr "Вами был запрошен файл: <em>%(d)s</em>."
 
-#: waiter/templates/waiter/wait.html:53
+#: templates/waiter/wait.html:53
 msgid ""
 "<strong>Be aware:</strong> Generating the file can take a while.\n"
 "            Please be patient, or bookmark this page and come back later."
 msgstr ""
+"<strong>Предупреждаем::</strong> Создание файла может занять некоторое время.\n"
+"            Пожалуйста, подождите, или создайте закладку и вернитесь позже."
 
-#: waiter/templates/waiter/wait.html:63
+#: templates/waiter/wait.html:63
 #, python-format
 msgid ""
 "Something seems to have gone wrong while generating your file.\n"
 "            Please order it again or <a id='suggest' class='ajaxable' href="
 "\"%(s)s\">complain to us</a> about it."
 msgstr ""
+"Что-то пошло не так во время создания вашего файла.\n"
+"            Пожалуйста, отправьте запрос снова, или <a id='suggest' class='ajaxable' href="
+"\"%(s)s\">напишите нам</a> о проблеме."

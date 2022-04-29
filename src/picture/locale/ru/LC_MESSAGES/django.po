@@ -18,194 +18,196 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: picture/forms.py:24
+#: forms.py:24
 msgid "Please supply an XML."
-msgstr ""
+msgstr "Пожалуйста, загрузите XML."
 
-#: picture/forms.py:32
+#: forms.py:32
 msgid "Please supply an image."
-msgstr ""
+msgstr "Пожалуйста, загрузите изображение"
 
-#: picture/models.py:37
+#: models.py:37
 msgid "area"
-msgstr ""
+msgstr "область"
 
-#: picture/models.py:39
+#: models.py:39
 msgid "kind"
-msgstr ""
+msgstr "вид"
 
-#: picture/models.py:40
+#: models.py:40
 msgid "thing"
-msgstr ""
+msgstr "предмет"
 
-#: picture/models.py:40
+#: models.py:40
 msgid "theme"
-msgstr ""
+msgstr "тема"
 
-#: picture/models.py:79
+#: models.py:79
 msgid "title"
-msgstr ""
+msgstr "название"
 
-#: picture/models.py:80
+#: models.py:80
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
-#: picture/models.py:81
+#: models.py:81
 msgid "sort key"
-msgstr ""
+msgstr "ключ сортировки"
 
-#: picture/models.py:83
+#: models.py:83
 msgid "sort key by author"
-msgstr ""
+msgstr "ключ сортировки по имени автора"
 
-#: picture/models.py:84 picture/models.py:85
+#: models.py:84 models.py:85
 msgid "creation date"
-msgstr ""
+msgstr "дата создания"
 
-#: picture/models.py:86
+#: models.py:86
 msgid "xml file"
-msgstr ""
+msgstr "файл xml"
 
-#: picture/models.py:87
+#: models.py:87
 msgid "image file"
-msgstr ""
+msgstr "файл изображения"
 
-#: picture/models.py:88
+#: models.py:88
 msgid "html file"
-msgstr ""
+msgstr "файл html"
 
-#: picture/models.py:89
+#: models.py:89
 msgid "picture areas JSON"
-msgstr ""
+msgstr "области изображения JSON "
 
-#: picture/models.py:90
+#: models.py:90
 msgid "extra information"
-msgstr ""
+msgstr "дополнительная информация"
 
-#: picture/models.py:110
+#: models.py:110
 msgid "picture"
-msgstr ""
+msgstr "изображение"
 
-#: picture/models.py:111
+#: models.py:111
 msgid "pictures"
-msgstr ""
+msgstr "изображения"
 
-#: picture/templates/admin/picture/picture/change_list.html:9
+#: templates/admin/picture/picture/change_list.html:9
 msgid "Image"
-msgstr ""
+msgstr "Картинка"
 
-#: picture/templates/admin/picture/picture/change_list.html:10
+#: templates/admin/picture/picture/change_list.html:10
 msgid "Import picture"
-msgstr ""
+msgstr "Импорт изображения"
 
-#: picture/templates/picture/picture_detail.html:19
+#: templates/picture/picture_detail.html:19
 msgid "See also"
-msgstr ""
+msgstr "Смотрите также"
 
-#: picture/templates/picture/picture_list_thumb.html:9
-#: picture/templates/picture/picture_list_thumb.html:13
+#: templates/picture/picture_list_thumb.html:9
+#: templates/picture/picture_list_thumb.html:13
 msgctxt "gallery"
 msgid "Listing of all works"
-msgstr ""
+msgstr "Список всех работ"
 
-#: picture/templates/picture/picture_short.html:39
+#: templates/picture/picture_short.html:39
 msgid "Epoch"
-msgstr ""
+msgstr "Эпоха"
 
-#: picture/templates/picture/picture_short.html:48
+#: templates/picture/picture_short.html:48
 msgid "Kind"
-msgstr ""
+msgstr "Вид"
 
-#: picture/templates/picture/picture_short.html:57
+#: templates/picture/picture_short.html:57
 msgid "Genre"
-msgstr ""
+msgstr "Жанр"
 
-#: picture/templates/picture/picture_short.html:74
+#: templates/picture/picture_short.html:74
 msgid "View online"
-msgstr ""
+msgstr "Смотреть онлайн"
 
-#: picture/templates/picture/picture_short.html:77
+#: templates/picture/picture_short.html:77
 msgid "download original"
-msgstr ""
+msgstr "скачать оригинал"
 
-#: picture/templates/picture/picture_viewer.html:51
-#: picture/templates/picture/picture_wide.html:71
+#: templates/picture/picture_viewer.html:51
+#: templates/picture/picture_wide.html:71
 msgid "Objects"
-msgstr ""
+msgstr "Объекты"
 
-#: picture/templates/picture/picture_viewer.html:52
+#: templates/picture/picture_viewer.html:52
 msgid "Themes"
-msgstr ""
+msgstr "Темы"
 
-#: picture/templates/picture/picture_viewer.html:56
+#: templates/picture/picture_viewer.html:56
 msgid "Infobox"
-msgstr ""
+msgstr "Инфобокс"
 
-#: picture/templates/picture/picture_wide.html:21
+#: templates/picture/picture_wide.html:21
 msgid "Style"
-msgstr ""
+msgstr "Стиль"
 
-#: picture/templates/picture/picture_wide.html:32
+#: templates/picture/picture_wide.html:32
 msgid "Medium"
-msgstr ""
+msgstr "Средний"
 
-#: picture/templates/picture/picture_wide.html:40
+#: templates/picture/picture_wide.html:40
 msgid "Dimensions"
-msgstr ""
+msgstr "Размеры"
 
-#: picture/templates/picture/picture_wide.html:47
+#: templates/picture/picture_wide.html:47
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
-#: picture/templates/picture/picture_wide.html:59
+#: templates/picture/picture_wide.html:59
 msgid "Motifs, themes and objects"
-msgstr ""
+msgstr "Сюжеты, темы и объекты"
 
-#: picture/templates/picture/picture_wide.html:63
+#: templates/picture/picture_wide.html:63
 msgid "Motifs and themes"
-msgstr ""
+msgstr "Сюжеты и темы"
 
-#: picture/templates/picture/picture_wide.html:90
+#: templates/picture/picture_wide.html:90
 msgid "See"
-msgstr ""
+msgstr "Смотреть"
 
-#: picture/templates/picture/picture_wide.html:93
+#: templates/picture/picture_wide.html:93
 msgid "Source"
-msgstr ""
+msgstr "Источник"
 
-#: picture/templates/picture/picture_wide.html:93
+#: templates/picture/picture_wide.html:93
 msgid "of the picture"
-msgstr ""
+msgstr "изображения"
 
-#: picture/templates/picture/picture_wide.html:95
+#: templates/picture/picture_wide.html:95
 msgid "Source XML file"
-msgstr ""
+msgstr "Источник файла XML"
 
-#: picture/templates/picture/picture_wide.html:97
+#: templates/picture/picture_wide.html:97
 msgid "Picture on"
-msgstr ""
+msgstr "Изображение на"
 
-#: picture/templates/picture/picture_wide.html:97
+#: templates/picture/picture_wide.html:97
 msgid "Editor's Platform"
-msgstr ""
+msgstr "Редакторская платформа"
 
-#: picture/templates/picture/picture_wide.html:100
+#: templates/picture/picture_wide.html:100
 msgid "Picture description on Wikipedia"
-msgstr ""
+msgstr "Описание изображения на Википедии"
 
-#: picture/views.py:97
+#: views.py:97
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
 "\n"
 "%(tb)s"
-msgstr ""
+msgstr "Обнаружена ошибка: %(exception)s\n"
+"\n"
+"%(tb)s"
 
-#: picture/views.py:99
+#: views.py:99
 msgid "Picture imported successfully"
-msgstr ""
+msgstr "Изображение успешно импортировано"
 
-#: picture/views.py:101
+#: views.py:101
 #, python-format
 msgid "Error importing file: %r"
-msgstr ""
+msgstr "Ошибка загрузки файла: %r"

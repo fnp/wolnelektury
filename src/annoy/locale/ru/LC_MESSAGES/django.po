@@ -19,118 +19,118 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: annoy/models.py:11
+#: models.py:11
 msgid "place"
-msgstr ""
+msgstr "место"
 
-#: annoy/models.py:13
+#: models.py:13
 msgid "style"
-msgstr ""
+msgstr "стиль"
 
-#: annoy/models.py:15
+#: models.py:15
 msgid "Affects blackout."
-msgstr ""
+msgstr "Влияет на blackout"
 
-#: annoy/models.py:17
+#: models.py:17
 msgid "small font"
-msgstr ""
+msgstr "мелкий шрифт"
 
-#: annoy/models.py:21
+#: models.py:21
 msgid "action label"
-msgstr ""
+msgstr "ярлык действия"
 
-#: annoy/models.py:23
+#: models.py:23
 msgid "If empty, whole banner will serve as a link"
-msgstr ""
+msgstr "Ссылка длинной во весь баннер, если оставить пустым"
 
-#: annoy/models.py:25
+#: models.py:25
 msgid "open label"
-msgstr ""
+msgstr "ярлык открытия"
 
-#: annoy/models.py:26
+#: models.py:26
 msgid "close label"
-msgstr ""
+msgstr "ярлык закрытия"
 
-#: annoy/models.py:27 annoy/models.py:106
+#: models.py:27 models.py:106
 msgid "text"
-msgstr ""
+msgstr "текст"
 
-#: annoy/models.py:28
+#: models.py:28
 msgid "image"
-msgstr ""
+msgstr "картинка"
 
-#: annoy/models.py:29
+#: models.py:29
 msgid "url"
-msgstr ""
+msgstr "url"
 
-#: annoy/models.py:31
+#: models.py:31
 msgid "priority"
-msgstr ""
+msgstr "важно"
 
-#: annoy/models.py:32
+#: models.py:32
 msgid "Banners with higher priority come first."
-msgstr ""
+msgstr "Баннер с приоритетом важности имеет преимущество"
 
-#: annoy/models.py:33
+#: models.py:33
 msgid "since"
-msgstr ""
+msgstr "от"
 
-#: annoy/models.py:34
+#: models.py:34
 msgid "until"
-msgstr ""
+msgstr "до"
 
-#: annoy/models.py:35
+#: models.py:35
 msgid "show members"
-msgstr ""
+msgstr "показать участникам"
 
-#: annoy/models.py:36
+#: models.py:36
 msgid "staff preview"
-msgstr ""
+msgstr "видно только команде"
 
-#: annoy/models.py:39
+#: models.py:39
 msgid "banner"
-msgstr ""
+msgstr "баннер"
 
-#: annoy/models.py:40
+#: models.py:40
 msgid "banners"
-msgstr ""
+msgstr "баннеры"
 
-#: annoy/models.py:78
+#: models.py:78
 msgid "pararaphs"
-msgstr ""
+msgstr "параграф"
 
-#: annoy/models.py:82
+#: models.py:82
 msgid "dynamic insert"
-msgstr ""
+msgstr "быстрая вставка"
 
-#: annoy/models.py:83
+#: models.py:83
 msgid "dynamic inserts"
-msgstr ""
+msgstr "быстрые вставки"
 
-#: annoy/places.py:4
+#: places.py:4
 msgid "Top of all pages."
-msgstr ""
+msgstr "Поверх всех страниц"
 
-#: annoy/places.py:5
+#: places.py:5
 msgid "Book page"
-msgstr ""
+msgstr "Страница книги"
 
-#: annoy/places.py:6
+#: places.py:6
 msgid "Book text intermission"
-msgstr ""
+msgstr "Разрыв страниц книги"
 
-#: annoy/places.py:7
+#: places.py:7
 msgid "Next to list of book fragments."
-msgstr ""
+msgstr "Рядом со списком отрывков из книги"
 
-#: annoy/places.py:8
+#: places.py:8
 msgid "Blackout"
-msgstr ""
+msgstr "Blackout"
 
-#: annoy/places.py:9
+#: places.py:9
 msgid "Full screen"
-msgstr ""
+msgstr "Во весь экран"
 
-#: annoy/places.py:11
+#: places.py:11
 msgid "Upper half of screen"
-msgstr ""
+msgstr "Верхняя половина экрана"

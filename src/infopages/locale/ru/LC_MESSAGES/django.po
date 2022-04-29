@@ -18,30 +18,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: infopages/models.py:12
+#: models.py:12
 msgid "main page priority"
-msgstr ""
+msgstr "очередность на главной странице"
 
-#: infopages/models.py:13
+#: models.py:13
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
-#: infopages/models.py:14
+#: models.py:14
 msgid "title"
-msgstr ""
+msgstr "название"
 
-#: infopages/models.py:15
+#: models.py:15
 msgid "left column"
-msgstr ""
+msgstr "левая колонка"
 
-#: infopages/models.py:16
+#: models.py:16
 msgid "right column"
-msgstr ""
+msgstr "правая колонка"
 
-#: infopages/models.py:20
+#: models.py:20
 msgid "info page"
-msgstr ""
+msgstr "информационная страница"
 
-#: infopages/models.py:21
+#: models.py:21
 msgid "info pages"
-msgstr ""
+msgstr "информационные страницы"

@@ -18,50 +18,50 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: polls/models.py:15
+#: models.py:15
 msgid "question"
-msgstr ""
+msgstr "вопрос"
 
-#: polls/models.py:16
+#: models.py:16
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
-#: polls/models.py:17
+#: models.py:17
 msgid "open"
-msgstr ""
+msgstr "открыть"
 
-#: polls/models.py:20
+#: models.py:20
 msgid "Poll"
-msgstr ""
+msgstr "Анкета"
 
-#: polls/models.py:21
+#: models.py:21
 msgid "Polls"
-msgstr ""
+msgstr "Анкеты"
 
-#: polls/models.py:25
+#: models.py:25
 msgid "Slug of an open poll needs to be unique"
-msgstr ""
+msgstr "Slug открытой анкеты должен быть уникальным"
 
-#: polls/models.py:45
+#: models.py:45
 msgid "content"
-msgstr ""
+msgstr "содержимое"
 
-#: polls/models.py:46
+#: models.py:46
 msgid "vote count"
-msgstr ""
+msgstr "подсчет голосов"
 
-#: polls/models.py:49
+#: models.py:49
 msgid "vote item"
-msgstr ""
+msgstr "позиция анкеты"
 
-#: polls/models.py:50
+#: models.py:50
 msgid "vote items"
-msgstr ""
+msgstr "позиции анкеты"
 
-#: polls/templates/polls/poll.html:11
+#: templates/polls/poll.html:11
 msgid "Thanks for voting! You can see current results below."
-msgstr ""
+msgstr "Спасибо, что проголосовали! Вы можете посмотреть текущие результаты ниже"
 
-#: polls/templates/polls/tags/poll.html:23
+#: templates/polls/tags/poll.html:23
 msgid "Submit"
-msgstr ""
+msgstr "Подтвердить"

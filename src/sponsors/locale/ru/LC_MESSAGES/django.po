@@ -15,22 +15,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: sponsors/models.py:20 sponsors/models.py:36
+#: models.py:20 models.py:36
 msgid "name"
 msgstr "Ф.И.О./название"
 
-#: sponsors/models.py:21
+#: models.py:21
 msgid "description"
 msgstr "описание"
 
-#: sponsors/models.py:22
+#: models.py:22
 msgid "logo"
 msgstr "логотип"
 
-#: sponsors/models.py:23
+#: models.py:23
 msgid "url"
 msgstr "url"
 
-#: sponsors/models.py:37
+#: models.py:37
 msgid "sponsors"
-msgstr "покровители"
+msgstr "спонсоры"

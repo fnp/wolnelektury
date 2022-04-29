@@ -18,57 +18,56 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: dictionary/constants.py:8
+#: constants.py:8
 msgid "author's footnotes"
-msgstr ""
+msgstr "заметки автора"
 
-#: dictionary/constants.py:9
+#: constants.py:9
 msgid "Wolne Lektury editorial footnotes"
-msgstr ""
+msgstr "редакторские заметки Wolne Lektury"
 
-#: dictionary/constants.py:10
+#: constants.py:10
 msgid "source editorial footnotes"
-msgstr ""
+msgstr "редакторские заметки источника"
 
-#: dictionary/constants.py:11
+#: constants.py:11
 msgid "translator's footnotes"
-msgstr ""
+msgstr "заметки переводчика"
 
-#: dictionary/templates/dictionary/note_list.html:8
-#: dictionary/templates/dictionary/note_list.html:12
+#: templates/dictionary/note_list.html:8 templates/dictionary/note_list.html:12
 msgid "Footnotes"
-msgstr ""
+msgstr "Заметки"
 
-#: dictionary/templates/dictionary/note_list.html:16
+#: templates/dictionary/note_list.html:16
 msgid "By first letter"
-msgstr ""
+msgstr "С начала"
 
-#: dictionary/templates/dictionary/note_list.html:18
-#: dictionary/templates/dictionary/note_list.html:20
-#: dictionary/templates/dictionary/note_list.html:36
-#: dictionary/templates/dictionary/note_list.html:38
-#: dictionary/templates/dictionary/note_list.html:55
-#: dictionary/templates/dictionary/note_list.html:57
-#: dictionary/templates/dictionary/note_list.html:73
-#: dictionary/templates/dictionary/note_list.html:75
+#: templates/dictionary/note_list.html:18
+#: templates/dictionary/note_list.html:20
+#: templates/dictionary/note_list.html:36
+#: templates/dictionary/note_list.html:38
+#: templates/dictionary/note_list.html:55
+#: templates/dictionary/note_list.html:57
+#: templates/dictionary/note_list.html:73
+#: templates/dictionary/note_list.html:75
 msgid "all"
-msgstr ""
+msgstr "все"
 
-#: dictionary/templates/dictionary/note_list.html:34
+#: templates/dictionary/note_list.html:34
 msgid "By type"
-msgstr ""
+msgstr "По типу"
 
-#: dictionary/templates/dictionary/note_list.html:53
+#: templates/dictionary/note_list.html:53
 msgid "By qualifier"
-msgstr ""
+msgstr "По определителю"
 
-#: dictionary/templates/dictionary/note_list.html:71
+#: templates/dictionary/note_list.html:71
 msgid "By language"
-msgstr ""
+msgstr "По языку"
 
-#: dictionary/templates/dictionary/note_list.html:91
+#: templates/dictionary/note_list.html:91
 #, python-format
 msgid "%(c)s footnote found"
 msgid_plural "%(c)s footnotes found"
-msgstr[0] ""
+msgstr[0] " Найдено %(c)s заметок"
 msgstr[1] ""

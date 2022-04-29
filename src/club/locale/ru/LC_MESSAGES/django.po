@@ -19,336 +19,335 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: club/admin.py:46
+#: admin.py:46
 msgid "payment complete"
-msgstr ""
+msgstr "оплата совершена"
 
-#: club/admin.py:52
+#: admin.py:52
 msgid "schedule expired"
-msgstr ""
+msgstr "срок истек"
 
-#: club/apps.py:10
+#: apps.py:10
 msgid "Club"
-msgstr ""
+msgstr "Клуб"
 
-#: club/forms.py:52
+#: forms.py:52
 msgid "first name"
-msgstr ""
+msgstr "имя"
 
-#: club/forms.py:53
+#: forms.py:53
 msgid "last name"
-msgstr ""
+msgstr "фамилия"
 
-#: club/forms.py:55
+#: forms.py:55
 msgid "street address"
 msgstr ""
 
-#: club/forms.py:56
+#: forms.py:56
 msgid "postal code"
-msgstr ""
+msgstr "почтовый индекс"
 
-#: club/forms.py:57
+#: forms.py:57
 msgid "town"
-msgstr ""
+msgstr "город"
 
-#: club/forms.py:84
+#: forms.py:84
 #, python-format
 msgid "Minimal amount is %(amount)d PLN."
-msgstr ""
+msgstr "Минимальная сумма  %(amount)d PLN."
 
-#: club/models.py:27
+#: models.py:26
 msgid "minimum amount"
-msgstr ""
+msgstr "минимальная сумма"
 
-#: club/models.py:28
+#: models.py:27
 msgid "minimum amount for year"
-msgstr ""
+msgstr "минимальная сумма ежегодного платежа"
 
-#: club/models.py:29
+#: models.py:28
 msgid "proposed amounts for single payment"
-msgstr ""
+msgstr "предлагаемая сумма разовой оплаты"
 
-#: club/models.py:30
+#: models.py:29
 msgid "default single amount"
-msgstr ""
+msgstr "разовый платеж по умолчанию"
 
-#: club/models.py:31
+#: models.py:30
 msgid "proposed amounts for monthly payments"
-msgstr ""
+msgstr "предлагаемая сумма ежемесячной оплаты"
 
-#: club/models.py:32
+#: models.py:31
 msgid "default monthly amount"
-msgstr ""
+msgstr "сумма ежегодного платежа пот умолчанию"
 
-#: club/models.py:35
+#: models.py:34
 msgid "club"
-msgstr ""
+msgstr "клуб"
 
-#: club/models.py:36
+#: models.py:35
 msgid "clubs"
-msgstr ""
+msgstr "клубы"
 
-#: club/models.py:63
+#: models.py:62
 msgid "key"
-msgstr ""
+msgstr "ключ"
 
-#: club/models.py:64
+#: models.py:63
 msgid "email"
-msgstr ""
+msgstr "email"
 
-#: club/models.py:65 club/models.py:189
+#: models.py:64 models.py:188
 msgid "membership"
-msgstr ""
+msgstr "членство"
 
-#: club/models.py:66
+#: models.py:65
 msgid "amount"
-msgstr ""
+msgstr "сумма"
 
-#: club/models.py:67
+#: models.py:66
 msgid "method"
-msgstr ""
+msgstr "способ"
 
-#: club/models.py:70 club/templates/club/payment_form.html:25
+#: models.py:69 templates/club/payment_form.html:25
 msgid "monthly"
-msgstr ""
+msgstr "ежемесячный"
 
-#: club/models.py:71
+#: models.py:70
 msgid "yearly"
-msgstr ""
+msgstr "годовой"
 
-#: club/models.py:73
+#: models.py:72
 msgid "source"
-msgstr ""
+msgstr "источник"
 
-#: club/models.py:75
+#: models.py:74
 msgid "cancelled"
-msgstr ""
+msgstr "отменено"
 
-#: club/models.py:76
+#: models.py:75
 msgid "payed at"
-msgstr ""
+msgstr "оплачено:"
 
-#: club/models.py:77
+#: models.py:76
 msgid "started at"
-msgstr ""
+msgstr "начато: "
 
-#: club/models.py:78
+#: models.py:77
 msgid "expires_at"
-msgstr ""
+msgstr "истекло_at:"
 
-#: club/models.py:92
+#: models.py:91
 msgid "schedule"
-msgstr ""
+msgstr "запланировано:"
 
-#: club/models.py:93
+#: models.py:92
 msgid "schedules"
-msgstr ""
+msgstr "сроки:"
 
-#: club/models.py:181
+#: models.py:180
 msgid "user"
-msgstr ""
+msgstr "пользователь"
 
-#: club/models.py:182
+#: models.py:181
 msgid "created at"
-msgstr ""
+msgstr "создано:"
 
-#: club/models.py:183 club/models.py:244
+#: models.py:182 models.py:243
 msgid "name"
-msgstr ""
+msgstr "имя"
 
-#: club/models.py:184
+#: models.py:183
 msgid "manual"
-msgstr ""
+msgstr "инструкция"
 
-#: club/models.py:185
+#: models.py:184
 msgid "notes"
-msgstr ""
+msgstr "заметки"
 
-#: club/models.py:186
+#: models.py:185
 msgid "updated at"
-msgstr ""
+msgstr "обновлено_at"
 
-#: club/models.py:190
+#: models.py:189
 msgid "memberships"
-msgstr ""
+msgstr "членство"
 
-#: club/models.py:227
+#: models.py:226
 msgid "days before"
-msgstr ""
+msgstr "период до"
 
-#: club/models.py:228
+#: models.py:227
 msgid "subject"
-msgstr ""
+msgstr "предмет"
 
-#: club/models.py:229 club/payu/models.py:140
+#: models.py:228 payu/models.py:140
 msgid "body"
-msgstr ""
+msgstr "текст"
 
-#: club/models.py:232
+#: models.py:231
 msgid "reminder email"
-msgstr ""
+msgstr "письмо-напоминание"
 
-#: club/models.py:233
+#: models.py:232
 msgid "reminder emails"
-msgstr ""
+msgstr "письма-напоминания"
 
-#: club/models.py:238
+#: models.py:237
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d день до истечения срока"
+msgstr[1] "%d дней до истечения срока"
 
-#: club/models.py:240
+#: models.py:239
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d день по истечении срока"
+msgstr[1] "%d дней по истечении срока"
 
-#: club/models.py:245
+#: models.py:244
 msgid "photo"
-msgstr ""
+msgstr "фото"
 
-#: club/models.py:246
+#: models.py:245
 msgid "text"
-msgstr ""
+msgstr "текст"
 
-#: club/models.py:249
+#: models.py:248
 msgid "ambassador"
-msgstr ""
+msgstr "посол"
 
-#: club/models.py:250
+#: models.py:249
 msgid "ambassadors"
-msgstr ""
+msgstr "послы"
 
-#: club/models.py:281 club/templates/club/index.html:7
-#: club/templates/club/index.html:13 club/templates/club/thanks.html:6
-#: club/templates/payu/rec_payment.html:5
+#: models.py:280 templates/club/index.html:7 templates/club/index.html:13
+#: templates/club/thanks.html:6 templates/payu/rec_payment.html:5
 msgid "Towarzystwo Przyjaciół Wolnych Lektur"
-msgstr ""
+msgstr "Содружество любителей Wolnych Lektur/Свободного чтения"
 
-#: club/payu/models.py:17 club/payu/models.py:29
+#: payu/models.py:17 payu/models.py:29
 msgid "POS id"
 msgstr ""
 
-#: club/payu/models.py:18
+#: payu/models.py:18
 msgid "disposable token"
-msgstr ""
+msgstr "одноразовый жетон"
 
-#: club/payu/models.py:19
+#: payu/models.py:19
 msgid "reusable token"
-msgstr ""
+msgstr "многоразовый жетон"
 
-#: club/payu/models.py:20
+#: payu/models.py:20
 msgid "created_at"
-msgstr ""
+msgstr "создан_at:"
 
-#: club/payu/models.py:24
+#: payu/models.py:24
 msgid "PayU card token"
-msgstr ""
+msgstr "жетон PayU"
 
-#: club/payu/models.py:25
+#: payu/models.py:25
 msgid "PayU card tokens"
-msgstr ""
+msgstr "жетоны PayU"
 
-#: club/payu/models.py:30
+#: payu/models.py:30
 msgid "customer IP"
-msgstr ""
+msgstr "IP клиента"
 
-#: club/payu/models.py:31
+#: payu/models.py:31
 msgid "order ID"
-msgstr ""
+msgstr "ID заказа"
 
-#: club/payu/models.py:34
+#: payu/models.py:34
 msgid "Pending"
-msgstr ""
+msgstr "Ожидание"
 
-#: club/payu/models.py:35
+#: payu/models.py:35
 msgid "Waiting for confirmation"
-msgstr ""
+msgstr "Ожидание подтверждения"
 
-#: club/payu/models.py:36
+#: payu/models.py:36
 msgid "Completed"
-msgstr ""
+msgstr "Завершено"
 
-#: club/payu/models.py:37
+#: payu/models.py:37
 msgid "Canceled"
-msgstr ""
+msgstr "Отменено"
 
-#: club/payu/models.py:38
+#: payu/models.py:38
 msgid "Rejected"
-msgstr ""
+msgstr "Отказано"
 
-#: club/payu/models.py:44
+#: payu/models.py:44
 msgid "PayU order"
-msgstr ""
+msgstr "заявка PayU"
 
-#: club/payu/models.py:45
+#: payu/models.py:45
 msgid "PayU orders"
-msgstr ""
+msgstr "заявки PayU"
 
-#: club/payu/models.py:141
+#: payu/models.py:141
 msgid "received_at"
-msgstr ""
+msgstr "получено_at:"
 
-#: club/payu/models.py:145
+#: payu/models.py:145
 msgid "PayU notification"
-msgstr ""
+msgstr "подтверждение PayU"
 
-#: club/payu/models.py:146
+#: payu/models.py:146
 msgid "PayU notifications"
-msgstr ""
+msgstr "уведомление PayU"
 
-#: club/templates/admin/club/schedule/change_list.html:7
+#: templates/admin/club/schedule/change_list.html:7
 msgid "Active monthly recurring donations"
-msgstr ""
+msgstr "Активные ежемесячные оплаты с автоматическим продлением"
 
-#: club/templates/admin/club/schedule/change_list.html:12
+#: templates/admin/club/schedule/change_list.html:12
 msgid "Active yearly recurring donations"
-msgstr ""
+msgstr "Активные ежегодные оплаты с автоматическим продлением"
 
-#: club/templates/admin/club/schedule/change_list.html:17
+#: templates/admin/club/schedule/change_list.html:17
 msgid "One-time donations in last 30 days"
-msgstr ""
+msgstr "Разовые пожертвования за последние 30 дней"
 
-#: club/templates/club/index.html:20
+#: templates/club/index.html:20
 msgid "Congratulations – you're already a supporter of Wolne Lektury!"
-msgstr ""
+msgstr "Поздравляем! Теперь вы состоите в товариществе любителей Wolnych Lektur/Свободного чтения"
 
-#: club/templates/club/index.html:22
+#: templates/club/index.html:22
 msgid "Become a supporter"
-msgstr ""
+msgstr "Стать участником"
 
-#: club/templates/club/membership_form.html:7
+#: templates/club/membership_form.html:7
 msgid "Join us in freeing the books!"
-msgstr ""
+msgstr "Делай книги свободнее с нами!"
 
-#: club/templates/club/membership_form.html:8
+#: templates/club/membership_form.html:8
 msgid "„Wolne Lektury należy wspierać, bo są” - Filip Springer"
-msgstr ""
+msgstr "«Wolne Lektury/Свободное чтение стоит поддерживать, потому что» - Филипп Спрингер"
 
-#: club/templates/club/membership_form.html:14
+#: templates/club/membership_form.html:14
 msgid "Support Wolne Lektury"
-msgstr ""
+msgstr "Поддержать Wolne Lektury"
 
-#: club/templates/club/membership_form.html:18
+#: templates/club/membership_form.html:18
 msgid "Thank you for your support! Support us again!"
-msgstr ""
+msgstr "Спасибо за вашу поддержку! Ждем вас снова!"
 
-#: club/templates/club/membership_form.html:21
+#: templates/club/membership_form.html:21
 msgid "Thank you for wanting to free the books with us!"
-msgstr ""
+msgstr "Спасибо за поддержку свободного распространения книг! Мы вместе!"
 
-#: club/templates/club/membership_form.html:26
+#: templates/club/membership_form.html:26
 msgid "See your past support."
-msgstr ""
+msgstr "Посмотрите ваши предыдущие пожертвования"
 
-#: club/templates/club/membership_form.html:41
+#: templates/club/membership_form.html:41
 msgid "Help us get 100 new Friends by the end of the school semester."
-msgstr ""
+msgstr "Помоги нам набрать 100 друзей до окончания школьного семестра"
 
-#: club/templates/club/membership_form.html:42
+#: templates/club/membership_form.html:42
 #, python-format
 msgid ""
 "\n"
@@ -361,11 +360,15 @@ msgid_plural ""
 "already supported us with a regular donation,\n"
 "\t  "
 msgstr[0] ""
+"\n"
+"\t    С начала кампании читатели поддержали нас регулярными пожертвованиями <b style=\"color: #0d7e85\">%(supporters)s</b>,\n"
+" "
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+"\n"
+"\t    С начала кампании читатели поддержали нас регулярными пожертвованиями <b style=\"color: #0d7e85\">%(supporters)s</b>,\n"
+" "
 
-#: club/templates/club/membership_form.html:47
+#: templates/club/membership_form.html:47
 #, python-format
 msgid ""
 "\n"
@@ -377,100 +380,105 @@ msgid_plural ""
 "missing.\n"
 "\t  "
 msgstr[0] ""
+"\n"
+"            <b style=\"color: #0d7e85\">%(missing_supporters)s</b> "
+"отсутствуют.\n"
+"\t  "
 msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+"\n"
+"            <b style=\"color: #0d7e85\">%(missing_supporters)s</b> "
+"отсутствуют.\n"
+"\t  "
 
-#: club/templates/club/payment/payu-re.html:4
-#: club/templates/club/payment/payu.html:4
+#: templates/club/payment/payu-re.html:4 templates/club/payment/payu.html:4
 msgid "Safe payments"
-msgstr ""
+msgstr "Безопасные платежи"
 
-#: club/templates/club/payment/payu.html:10
+#: templates/club/payment/payu.html:10
 msgid "transfer"
-msgstr ""
+msgstr "перевод"
 
-#: club/templates/club/payment_form.html:18
+#: templates/club/payment_form.html:18
 msgid "Choose your type of support"
-msgstr ""
+msgstr "Выбери свой способ поддержки"
 
-#: club/templates/club/payment_form.html:24
+#: templates/club/payment_form.html:24
 msgid "one-time"
-msgstr ""
+msgstr "разово"
 
-#: club/templates/club/payment_form.html:28
+#: templates/club/payment_form.html:28
 msgid "Choose the amount"
-msgstr ""
+msgstr "Выбери сумму"
 
-#: club/templates/club/payment_form.html:36
-#: club/templates/club/payment_form.html:49
+#: templates/club/payment_form.html:36 templates/club/payment_form.html:49
 msgid "different amount"
-msgstr ""
+msgstr "другая сумма"
 
-#: club/templates/club/payment_form.html:57
+#: templates/club/payment_form.html:57
 msgid "Provide contact details"
-msgstr ""
+msgstr "Уточни контактную информацию"
 
-#: club/templates/club/payment_form.html:60
+#: templates/club/payment_form.html:60
 msgid "First and last name:"
-msgstr ""
+msgstr "Имя и фамилия"
 
-#: club/templates/club/payment_form.html:68
+#: templates/club/payment_form.html:68
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail:"
 
-#: club/templates/club/payment_form.html:73
+#: templates/club/payment_form.html:73
 msgid "Phone number:"
-msgstr ""
+msgstr "Номер телефона"
 
-#: club/templates/club/payment_form.html:78
+#: templates/club/payment_form.html:78
 msgid "Postal address:"
-msgstr ""
+msgstr "Почтовый адрес:"
 
-#: club/templates/club/payment_form.html:97
+#: templates/club/payment_form.html:97
 msgid "I'd like to subscribe the newsletter."
-msgstr ""
+msgstr "Хочу подписаться на получение информации"
 
-#: club/templates/club/payment_form.html:101
+#: templates/club/payment_form.html:101
 msgid ""
 "You can unsubscribe at any point. More in the <a target=\"_blank\" href="
 "\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
 msgstr ""
-
-#: club/templates/club/payment_form.html:105
+"Вы можете отписаться в любой момент. Узнать больше <a target=\"_blank\" href="
+"\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
+#: templates/club/payment_form.html:105
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвование"
 
-#: club/templates/club/thanks.html:14
+#: templates/club/thanks.html:14
 msgid "Thank you"
-msgstr ""
+msgstr "Спасибо"
 
-#: club/templates/club/thanks.html:19
+#: templates/club/thanks.html:19
 msgid "Go back to the app"
-msgstr ""
+msgstr "Вернуться в приложение"
 
-#: club/templates/club/year_summary.html:10
+#: templates/club/year_summary.html:10
 #, python-format
 msgid "Summary of donations in the year %(year)s for the address %(email)s."
-msgstr ""
+msgstr "Сумма пожертвований за год %(year)s for the address %(email)s."
 
-#: club/templates/club/year_summary.html:15
+#: templates/club/year_summary.html:15
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
-#: club/templates/club/year_summary.html:16
+#: templates/club/year_summary.html:16
 msgid "Amount"
-msgstr ""
+msgstr "Сумма"
 
-#: club/templates/club/year_summary.html:27
+#: templates/club/year_summary.html:27
 msgid "Total"
-msgstr ""
+msgstr "Итого"
 
-#: club/templates/payu/rec_payment.html:12
+#: templates/payu/rec_payment.html:12
 msgid "Supporting Wolne Lektury"
-msgstr ""
+msgstr "Поддерживаешь Wolne Lektury"
 
-#: club/templates/payu/rec_payment.html:15
+#: templates/payu/rec_payment.html:15
 #, python-format
 msgid ""
 "\n"
@@ -478,3 +486,7 @@ msgid ""
 "PLN. Thank you!\n"
 "      "
 msgstr ""
+"\n"
+"      Вы выбрали ежемесячный платеж на сумму %(amount)s "
+"PLN. Спасибо!\n"
+" "

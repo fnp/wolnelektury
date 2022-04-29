@@ -19,198 +19,198 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: pz/admin.py:42
+#: admin.py:42
 msgid "All"
-msgstr ""
+msgstr "Все"
 
-#: pz/admin.py:43
+#: admin.py:43
 msgid "Empty"
-msgstr ""
+msgstr "Пустой"
 
-#: pz/admin.py:44
+#: admin.py:44
 msgid "Not empty"
-msgstr ""
+msgstr "Не пустой"
 
-#: pz/admin.py:111
+#: admin.py:111
 msgid "Processing"
-msgstr ""
+msgstr "В обработке"
 
-#: pz/admin.py:147
+#: admin.py:147
 msgid "obligatory"
-msgstr ""
+msgstr "обязательно"
 
-#: pz/admin.py:148
+#: admin.py:148
 msgid "agree contact"
-msgstr ""
+msgstr "согласен на контакт"
 
-#: pz/models.py:9 pz/models.py:21
+#: models.py:9 models.py:21
 msgid "name"
-msgstr ""
+msgstr "имя"
 
-#: pz/models.py:10
+#: models.py:10
 msgid "description"
-msgstr ""
+msgstr "описание"
 
-#: pz/models.py:13 pz/models.py:71
+#: models.py:13 models.py:71
 msgid "campaign"
-msgstr ""
+msgstr "кампания"
 
-#: pz/models.py:14
+#: models.py:14
 msgid "campaigns"
-msgstr ""
+msgstr "кампании"
 
-#: pz/models.py:24 pz/models.py:58
+#: models.py:24 models.py:58
 msgid "fundraiser"
-msgstr ""
+msgstr "сбор средств"
 
-#: pz/models.py:25
+#: models.py:25
 msgid "fundraisers"
-msgstr ""
+msgstr "сборы средств"
 
-#: pz/models.py:32
+#: models.py:32
 msgid "first name"
 msgstr ""
 
-#: pz/models.py:33
+#: models.py:33
 msgid "last name"
-msgstr ""
+msgstr "имя"
 
-#: pz/models.py:34
+#: models.py:34
 msgid "sex"
-msgstr ""
+msgstr "пол"
 
-#: pz/models.py:35
+#: models.py:35
 msgid "M"
-msgstr ""
+msgstr "М"
 
-#: pz/models.py:36
+#: models.py:36
 msgid "F"
-msgstr ""
+msgstr "Ж"
 
-#: pz/models.py:38
+#: models.py:38
 msgid "date of birth"
-msgstr ""
+msgstr "Дата рождения"
 
-#: pz/models.py:39
+#: models.py:39
 msgid "street"
-msgstr ""
+msgstr "улица"
 
-#: pz/models.py:40
+#: models.py:40
 msgid "building"
-msgstr ""
+msgstr "номер дома"
 
-#: pz/models.py:41
+#: models.py:41
 msgid "flat"
-msgstr ""
+msgstr "квартира"
 
-#: pz/models.py:42
+#: models.py:42
 msgid "town"
-msgstr ""
+msgstr "город"
 
-#: pz/models.py:43
+#: models.py:43
 msgid "postal code"
-msgstr ""
+msgstr "почтовый индекс"
 
-#: pz/models.py:44
+#: models.py:44
 msgid "phone"
-msgstr ""
+msgstr "номер телефона"
 
-#: pz/models.py:45
+#: models.py:45
 msgid "e-mail"
-msgstr ""
+msgstr "email"
 
-#: pz/models.py:46
+#: models.py:46
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
-#: pz/models.py:47
+#: models.py:47
 msgid "IBAN valid"
 msgstr ""
 
-#: pz/models.py:48
+#: models.py:48
 msgid "is a consumer"
-msgstr ""
+msgstr "пользователь"
 
-#: pz/models.py:49
+#: models.py:49
 msgid "payment identifier"
-msgstr ""
+msgstr "идентификатор платежа"
 
-#: pz/models.py:50
+#: models.py:50
 msgid "agree fundraising"
-msgstr ""
+msgstr "согласен на участие в сборе средств"
 
-#: pz/models.py:51
+#: models.py:51
 msgid "agree newsletter"
-msgstr ""
+msgstr "согласен на получение газеты"
 
-#: pz/models.py:53
+#: models.py:53
 msgid "acquisition date"
-msgstr ""
+msgstr "дата запроса"
 
-#: pz/models.py:53
+#: models.py:53
 msgid "Date from the form"
-msgstr ""
+msgstr "дата в анкете"
 
-#: pz/models.py:54
+#: models.py:54
 msgid "submission date"
-msgstr ""
+msgstr "дата подтверждения"
 
-#: pz/models.py:54
+#: models.py:54
 msgid "Date the fundaiser submitted the form"
-msgstr ""
+msgstr "дата подтверждения анкеты сборщиком средств"
 
-#: pz/models.py:55
+#: models.py:55
 msgid "bank submission date"
-msgstr ""
+msgstr "дата подтверждения банком"
 
-#: pz/models.py:55
+#: models.py:55
 msgid "Date when the form data is submitted to the bank"
-msgstr ""
+msgstr "Дата отправки данных анкеты банку"
 
-#: pz/models.py:56
+#: models.py:56
 msgid "bank accepted date"
-msgstr ""
+msgstr "банк принял дату"
 
-#: pz/models.py:56
+#: models.py:56
 msgid "Date when bank accepted the form"
-msgstr ""
+msgstr "Дата приема анкеты банком"
 
-#: pz/models.py:59
+#: models.py:59
 msgid "fundraiser commission"
-msgstr ""
+msgstr "комиссия сборщика средств"
 
-#: pz/models.py:60
+#: models.py:60
 msgid "fundraiser bonus"
-msgstr ""
+msgstr "бонус для сборщика средств"
 
-#: pz/models.py:61
+#: models.py:61
 msgid "fundaiser bill number"
-msgstr ""
+msgstr "номер счета сборщика средств"
 
-#: pz/models.py:63
+#: models.py:63
 msgid "amount"
-msgstr ""
+msgstr "сумма"
 
-#: pz/models.py:65
+#: models.py:65
 msgid "notes"
-msgstr ""
+msgstr "заметки"
 
-#: pz/models.py:67
+#: models.py:67
 msgid "needs redo"
-msgstr ""
+msgstr "к повторению"
 
-#: pz/models.py:68
+#: models.py:68
 msgid "cancelled at"
-msgstr ""
+msgstr "отмена"
 
-#: pz/models.py:69
+#: models.py:69
 msgid "optout"
-msgstr ""
+msgstr "optout"
 
-#: pz/models.py:76
+#: models.py:76
 msgid "direct debit"
-msgstr ""
+msgstr "предложение оплаты"
 
-#: pz/models.py:77
+#: models.py:77
 msgid "direct debits"
-msgstr ""
+msgstr "предложения оплаты"

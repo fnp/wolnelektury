@@ -18,30 +18,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: lesmianator/models.py:24
+#: models.py:24
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
-#: lesmianator/models.py:25
+#: models.py:25
 msgid "text"
-msgstr ""
+msgstr "текст"
 
-#: lesmianator/models.py:27
+#: models.py:27
 msgid "extra information"
-msgstr ""
+msgstr "дополнительная информация"
 
-#: lesmianator/models.py:28
+#: models.py:28
 msgid "creation date"
-msgstr ""
+msgstr "дата создания"
 
-#: lesmianator/models.py:29
+#: models.py:29
 msgid "last view date"
-msgstr ""
+msgstr "дата последнего просмотра"
 
-#: lesmianator/models.py:30
+#: models.py:30
 msgid "view count"
-msgstr ""
+msgstr "счетчик просмотров"
 
-#: lesmianator/models.py:102
+#: models.py:102
 msgid "Continuations file"
-msgstr ""
+msgstr "Continuations file"

@@ -18,42 +18,42 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: newsletter/forms.py:17
+#: forms.py:17
 msgid "I want to receive Wolne Lektury's newsletter."
-msgstr ""
+msgstr "Я хочу получать газету Wolne Lektury/Свободное чтение."
 
-#: newsletter/forms.py:54 newsletter/models.py:12
+#: forms.py:54 models.py:12
 msgid "email address"
-msgstr ""
+msgstr "email адрес"
 
-#: newsletter/models.py:13
+#: models.py:13
 msgid "active"
-msgstr ""
+msgstr "активно"
 
-#: newsletter/models.py:18
+#: models.py:18
 msgid "subscription"
-msgstr ""
+msgstr "подписка"
 
-#: newsletter/models.py:19
+#: models.py:19
 msgid "subscriptions"
-msgstr ""
+msgstr "подписки"
 
-#: newsletter/templates/admin/newsletter/subscription/change_list.html:9
+#: templates/admin/newsletter/subscription/change_list.html:9
 msgid "Extract"
-msgstr ""
+msgstr "Выдержка"
 
-#: newsletter/templates/newsletter/confirm_subscription.html:6
+#: templates/newsletter/confirm_subscription.html:6
 msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
-msgstr ""
+msgstr "Ваша подписка на газету Wolne Lektury/Свободное чтение подтверждена. Спасибо!"
 
-#: newsletter/templates/newsletter/subscribe_form.html:14
+#: templates/newsletter/subscribe_form.html:14
 msgid "Subscribe"
-msgstr ""
+msgstr "Подписаться"
 
-#: newsletter/templates/newsletter/subscribed.html:7
+#: templates/newsletter/subscribed.html:7
 msgid "You have subscribed to Wolne Lektury newsletter."
-msgstr ""
+msgstr "Вы подписаны на газету Wolne Lektury/Свободное чтение."
 
-#: newsletter/views.py:29
+#: views.py:29
 msgid "Subscribed"
-msgstr ""
+msgstr "Подписка оформлена"

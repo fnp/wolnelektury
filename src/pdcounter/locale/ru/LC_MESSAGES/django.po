@@ -16,118 +16,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 
-#: pdcounter/models.py:13
+#: models.py:13
 msgid "name"
-msgstr "название"
+msgstr "имя"
 
-#: pdcounter/models.py:14 pdcounter/models.py:64
+#: models.py:14 models.py:64
 msgid "slug"
 msgstr "slug"
 
-#: pdcounter/models.py:15
+#: models.py:15
 msgid "sort key"
 msgstr "ключ сортировки "
 
-#: pdcounter/models.py:16 pdcounter/models.py:41
+#: models.py:16 models.py:41
 msgid "description"
 msgstr "описание"
 
-#: pdcounter/models.py:17
+#: models.py:17
 msgid "year of death"
 msgstr "год смерти"
 
-#: pdcounter/models.py:23 pdcounter/models.py:62
+#: models.py:23 models.py:62
 msgid "author"
 msgstr "автор"
 
-#: pdcounter/models.py:24
+#: models.py:24
 msgid "authors"
 msgstr "авторы"
 
-#: pdcounter/models.py:61
+#: models.py:61
 msgid "title"
-msgstr "заглавие"
+msgstr "название"
 
-#: pdcounter/models.py:63
+#: models.py:63
 msgid "goes to public domain"
-msgstr "идёт к публичной домене"
+msgstr "является общественным достоянием"
 
-#: pdcounter/models.py:65
+#: models.py:65
 msgid "translator"
 msgstr "переводчик"
 
-#: pdcounter/models.py:69
+#: models.py:69
 msgid "book stub"
 msgstr "анонс книги"
 
-#: pdcounter/models.py:70
+#: models.py:70
 msgid "book stubs"
 msgstr "анонсы книги"
 
-#: pdcounter/templates/pdcounter/author_detail.html:7
-#: pdcounter/templates/pdcounter/book_stub_detail.html:7
+#: templates/pdcounter/author_detail.html:7
+#: templates/pdcounter/book_stub_detail.html:7
 msgid "Public domain counter"
-msgstr ""
+msgstr "Счетчик общественное достояние"
 
-#: pdcounter/templates/pdcounter/author_detail.html:26
+#: templates/pdcounter/author_detail.html:26
 msgid "Read article about this author on Wikipedia"
-msgstr ""
+msgstr "Читать статью об этом авторе на Википедии"
 
-#: pdcounter/templates/pdcounter/author_detail.html:33
-#: pdcounter/templates/pdcounter/pd_author_box.html:9
+#: templates/pdcounter/author_detail.html:33
+#: templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
-msgstr ""
+msgstr "Работы автора защищены авторскими правами"
 
-#: pdcounter/templates/pdcounter/author_detail.html:34
-#: pdcounter/templates/pdcounter/author_detail.html:46
-#: pdcounter/templates/pdcounter/pd_author_box.html:10
-#: pdcounter/templates/pdcounter/pd_author_box.html:21
+#: templates/pdcounter/author_detail.html:34
+#: templates/pdcounter/author_detail.html:46
+#: templates/pdcounter/pd_author_box.html:10
+#: templates/pdcounter/pd_author_box.html:21
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this author's works."
 msgstr ""
-
-#: pdcounter/templates/pdcounter/author_detail.html:38
-#: pdcounter/templates/pdcounter/pd_author_box.html:14
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Узнать</"
+"a> почему интернет библиотеки не могут публиковать работы этого автора."
+#: templates/pdcounter/author_detail.html:38
+#: templates/pdcounter/pd_author_box.html:14
 msgid ""
 "This author's works are in public domain, but they were not yet published on "
 "Internet library of Wolne Lektury."
 msgstr ""
-
-#: pdcounter/templates/pdcounter/author_detail.html:42
+"Работы этого автора являются общественным достоянием, но еще не были опубликованы в "
+"интернет библиотеке Wolne Lektury/Свободное чтение."
+#: templates/pdcounter/author_detail.html:42
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
 msgstr ""
-
-#: pdcounter/templates/pdcounter/book_stub_detail.html:16
+"Работы этого автора станут общественным достоянием и будут доступны через "
+"для публикации без ограничений"
+#: templates/pdcounter/book_stub_detail.html:16
 msgid ""
 "This work is in public domain and will be published on Internet library of "
 "Wolne Lektury soon."
 msgstr ""
-
-#: pdcounter/templates/pdcounter/book_stub_detail.html:20
+"Эта работа является общественным достоянием и скоро будет опубликована в интернет библиотеке "
+"Wolne Lektury/Свободное чтение."
+#: templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
 "published without restrictions in"
 msgstr ""
+"Работы этого автора станут общественным достоянием и будут доступны через "
+"для публикации без ограничений"
 
-#: pdcounter/templates/pdcounter/book_stub_detail.html:24
-#: pdcounter/templates/pdcounter/book_stub_detail.html:29
+#: templates/pdcounter/book_stub_detail.html:24
+#: templates/pdcounter/book_stub_detail.html:29
 msgid ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> why Internet libraries can't publish this work."
 msgstr ""
+"<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Узнать</"
+"a> почему интернет библиотеки не могут публиковать работы этого автора."
 
-#: pdcounter/templates/pdcounter/book_stub_detail.html:28
+#: templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
-msgstr ""
+msgstr "Работа защищена авторскими правами"
 
-#: pdcounter/templates/pdcounter/pd_author_box.html:18
+#: templates/pdcounter/pd_author_box.html:18
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in the year"
-msgstr ""
+msgstr "Работы этого автора станут общественным достоянием и будут доступны в году "
+"для публикации без ограничений"
 
 #~ msgid "year of translator's death"
 #~ msgstr "год смерти переводчика"
