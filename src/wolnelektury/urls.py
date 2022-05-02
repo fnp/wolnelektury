@@ -54,7 +54,7 @@ urlpatterns += [
     path('powiadomienie/', include('push.urls')),
     path('pomagam/', include('club.urls')),
     path('towarzystwo/notify/<int:pk>/',  club.views.PayUNotifyView.as_view(), name='club_payu_notify'),
-    path('towarzystwo/', RedirectView.as_view(url='/pomagam/', permanent=False)),
+    path('towarzystwo/', RedirectView.as_view(url='/pomagam/', permanent=False, query_string=True)),
     path('towarzystwo/<path:path>', RedirectView.as_view(
         url='/pomagam/%(path)s', permanent=False)),
 
