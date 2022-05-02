@@ -561,6 +561,7 @@ class Book(models.Model):
 
     # will make problems in conjunction with paid previews
     def download_pictures(self, remote_gallery_url):
+        # This is only needed for legacy relative image paths.
         gallery_path = self.gallery_path()
         # delete previous files, so we don't include old files in ebooks
         if os.path.isdir(gallery_path):
@@ -572,6 +573,8 @@ class Book(models.Model):
             makedirs(gallery_path)
             for ilustr in ilustr_elements:
                 ilustr_src = ilustr.get('src')
+                if '/' in ilustr_src:
+                    continue
                 ilustr_path = os.path.join(gallery_path, ilustr_src)
                 urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
 
