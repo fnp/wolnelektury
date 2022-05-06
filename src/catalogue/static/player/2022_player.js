@@ -64,27 +64,45 @@
                     speed = parseFloat(speedStr);
                     player.jPlayer("option", "playbackRate", speed);
                     localStorage['audiobook-speed'] = speedStr;
+                    _paq.push(['trackEvent', 'audiobook', 'speed', speedStr]);
                 });
                 
+                $('.jp-play', $root).click(function() {
+                    _paq.push(['trackEvent', 'audiobook', 'play']);
+                });
+                $('.jp-seek-bar', $root).click(function() {
+                    _paq.push(['trackEvent', 'audiobook', 'seek']);
+                });
+                $('.jp-mute', $root).click(function() {
+                    _paq.push(['trackEvent', 'audiobook', 'mute']);
+                });
+                $('.jp-volume-bar', $root).click(function() {
+                    _paq.push(['trackEvent', 'audiobook', 'volume']);
+                });
+
                 $('.play-next', $root).click(function() {
                     let p = $currentMedia.next();
                     if (p.length) {
                         setMedia(p).jPlayer("play");
+                        _paq.push(['trackEvent', 'audiobook', 'next']);
                     }
                 });
                 $('.play-prev', $root).click(function() {
                     let p = $currentMedia.prev();
                     if (p.length) {
                         setMedia(p).jPlayer("play");
+                        _paq.push(['trackEvent', 'audiobook', 'prev']);
                     } else {
                         // If in first part, restart it.
                         setMedia($currentMedia).jPlayer("play");
+                        _paq.push(['trackEvent', 'audiobook', 'rewind']);
                     }
                 });
 
                 $('.jp-playlist li', $root).click(function() {
                     setMedia($(this)).jPlayer("play");
                     $('.c-player__chapters').removeClass('is-active');
+                    _paq.push(['trackEvent', 'audiobook', 'chapter']);
                 });
 
                 var initialElem = $('.jp-playlist li', $root).first();
