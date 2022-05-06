@@ -12,26 +12,27 @@ class Experiment:
         return True
 
     def __init__(self, request):
-        self.value = self.get_value(request)
+        self.value, self.manual = self.get_value(request)
 
     def override(self, value):
         self.value = value
+        self.manual = False
         
     def get_value(self, request):
         overrides = getattr(settings, 'EXPERIMENTS_OVERRIDES', {})
         slug = self.slug
         if slug in overrides:
-            return overrides[slug]
+            return overrides[slug], False
 
         if self.qualify(request) is False:
-            return None
+            return None, False
 
         cookie_value = request.COOKIES.get(f'EXPERIMENT_{slug}')
         if cookie_value is not None:
             if cookie_value == 'on':
-                return True
+                return True, True
             elif cookie_value == 'off':
-                return False
+                return False, True
 
         number = int(
             hashlib.md5(
@@ -39,4 +40,4 @@ class Experiment:
             ).hexdigest(),
             16
         ) % 10e6 / 10e6
-        return number < self.size
+        return number < self.size, False

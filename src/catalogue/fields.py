@@ -347,8 +347,11 @@ class BuildCover(BuildEbook):
 class BuildCoverClean(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
-        from librarian.cover import WLCover
-        return WLCover(wldoc.book_info, width=240).output_file()
+        if wldoc.book_info.cover_box_position == 'none':
+            from librarian.cover import WLCover
+            return WLCover(wldoc.book_info, width=240).output_file()
+        from librarian.covers.marquise import MarquiseCover
+        return MarquiseCover(wldoc.book_info, width=240).output_file()
 
 
 @BuildEbook.register('cover_thumb')
